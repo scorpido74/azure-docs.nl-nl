@@ -3,12 +3,12 @@ title: Inleiding tot betrouw bare verzamelingen
 description: Service Fabric stateful services bieden betrouw bare verzamelingen waarmee u Maxi maal beschik bare Cloud toepassingen kunt schrijven die Maxi maal beschikbaar zijn.
 ms.topic: conceptual
 ms.date: 3/10/2020
-ms.openlocfilehash: 78ecc57a4da43bf416839226253e6d0e2f4c1651
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e0f39b994087fe44038e62e85326945589c719a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81398434"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245123"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Inleiding tot betrouw bare verzamelingen in azure Service Fabric stateful Services
 
@@ -40,8 +40,8 @@ De betrouw bare verzamelingen-Api's zijn een evolutie van gelijktijdige verzamel
 
 Vandaag, **micro soft. ServiceFabric. data. Collections** bevat drie verzamelingen:
 
-* [Betrouw bare woorden lijst](https://msdn.microsoft.com/library/azure/dn971511.aspx): vertegenwoordigt een gerepliceerde, transactionele en asynchrone verzameling sleutel-waardeparen. Net als bij **ConcurrentDictionary**kunnen zowel de sleutel als de waarde van elk type zijn.
-* [Betrouw bare wachtrij](https://msdn.microsoft.com/library/azure/dn971527.aspx): vertegenwoordigt een FIFO-wachtrij (een gerepliceerde, transactionele en asynchrone strikte first-out). Net als bij **ConcurrentQueue**kan de waarde van elk type zijn.
+* [Betrouw bare woorden lijst](/dotnet/api/microsoft.servicefabric.data.collections.ireliabledictionary-2?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliabledictionary_2): vertegenwoordigt een gerepliceerde, transactionele en asynchrone verzameling sleutel-waardeparen. Net als bij **ConcurrentDictionary**kunnen zowel de sleutel als de waarde van elk type zijn.
+* [Betrouw bare wachtrij](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1): vertegenwoordigt een FIFO-wachtrij (een gerepliceerde, transactionele en asynchrone strikte first-out). Net als bij **ConcurrentQueue**kan de waarde van elk type zijn.
 * [Betrouw bare gelijktijdige wachtrij](service-fabric-reliable-services-reliable-concurrent-queue.md): vertegenwoordigt een gerepliceerde, transactionele en asynchrone bestel wachtrij voor Best effort voor hoge door voer. Net als bij de **ConcurrentQueue**kan de waarde van elk type zijn.
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -57,4 +57,4 @@ Vandaag, **micro soft. ServiceFabric. data. Collections** bevat drie verzameling
   * [Configuratie van betrouw bare status Manager](service-fabric-reliable-services-configuration.md)
 * Andere
   * [Snelstartgids Reliable Services](service-fabric-reliable-services-quick-start.md)
-  * [Naslag informatie voor ontwikkel aars voor betrouw bare verzamelingen](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+  * [Naslag informatie voor ontwikkel aars voor betrouw bare verzamelingen](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)

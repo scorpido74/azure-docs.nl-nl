@@ -5,11 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: dekapur
-ms.openlocfilehash: 0f9b625dfbe9c39bea7771dcc5fd58805ce19811
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8a1fdfb23b6e0aee9b9bdd04f70c554824f4c35
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75458372"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246568"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>Configuratie-instellingen voor een zelfstandig Windows-cluster
 In dit artikel worden de configuratie-instellingen van een zelfstandige Azure Service Fabric-cluster beschreven die kunnen worden ingesteld in de *ClusterConfig.jsvoor* het bestand. U gebruikt dit bestand om informatie op te geven over de knoop punten van het cluster, beveiligings configuraties en de netwerk topologie in termen van fout-en upgrade domeinen.  Nadat u configuratie-instellingen hebt gewijzigd of toegevoegd, kunt u [een zelfstandig cluster maken](service-fabric-cluster-creation-for-windows-server.md) of [de configuratie van een zelfstandig cluster bijwerken](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -88,7 +89,7 @@ In de sectie diagnosticsStore kunt u para meters configureren voor het inschakel
 }
 ```
 
-De meta gegevens zijn een beschrijving van uw cluster diagnostiek en kunnen worden ingesteld op basis van uw instellingen. Deze variabelen helpen bij het verzamelen van ETW-traceer logboeken en crash dumps en prestatie meter items. Zie [Tracelog](https://msdn.microsoft.com/library/windows/hardware/ff552994.aspx) en [etw-tracering](https://msdn.microsoft.com/library/ms751538.aspx)voor meer informatie over etw-traceer Logboeken. Alle logboeken, met inbegrip van [crash dumps](https://blogs.technet.microsoft.com/askperf/2008/01/08/understanding-crash-dump-files/) en [prestatie meter items](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx), kunnen worden omgeleid naar de map Connections Tring op uw computer. U kunt opslag ook gebruiken om diagnostische gegevens op te slaan. Raadpleeg het volgende voorbeeld fragment:
+De meta gegevens zijn een beschrijving van uw cluster diagnostiek en kunnen worden ingesteld op basis van uw instellingen. Deze variabelen helpen bij het verzamelen van ETW-traceer logboeken en crash dumps en prestatie meter items. Zie [Tracelog](/windows-hardware/drivers/devtest/tracelog) en [etw-tracering](/dotnet/framework/wcf/samples/etw-tracing)voor meer informatie over etw-traceer Logboeken. Alle logboeken, met inbegrip van [crash dumps](https://techcommunity.microsoft.com/t5/ask-the-performance-team/bg-p/AskPerf) en [prestatie meter items](/windows/win32/perfctrs/performance-counters-portal), kunnen worden omgeleid naar de map Connections Tring op uw computer. U kunt opslag ook gebruiken om diagnostische gegevens op te slaan. Raadpleeg het volgende voorbeeld fragment:
 
 ```json
 "diagnosticsStore": {
@@ -192,7 +193,7 @@ Als u invoeg toepassingen wilt configureren, configureert u de apiVersion als 04
     ]
 }
 ```
-Alle beschik bare invoeg toepassingen kunnen worden weer gegeven in de [Naslag informatie over Service Fabric rest API](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-addonfeatures).
+Alle beschik bare invoeg toepassingen kunnen worden weer gegeven in de [Naslag informatie over Service Fabric rest API](/rest/api/servicefabric/sfrp-model-addonfeatures).
 
 ### <a name="container-support"></a>Ondersteuning voor containers
 Als u container ondersteuning wilt inschakelen voor zowel Windows Server-containers als Hyper-V-containers voor zelfstandige clusters, moet u de functie voor DNS toevoegen inschakelen.
@@ -203,4 +204,3 @@ Nadat u een volledigClusterConfig.jshebt voor het bestand dat is geconfigureerd 
 Als u een zelfstandig cluster hebt geïmplementeerd, kunt u ook [de configuratie van een zelfstandig cluster bijwerken](service-fabric-cluster-config-upgrade-windows-server.md). 
 
 Meer informatie over [het visualiseren van uw cluster met Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).
-

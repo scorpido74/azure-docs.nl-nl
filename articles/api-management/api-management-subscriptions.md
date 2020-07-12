@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 9144af131e1427d0b3226655c871921ac1d91665
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 137cbec270b40042503fc7687c9deb39b0df1aa4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70073410"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243287"
 ---
 # <a name="subscriptions-in-azure-api-management"></a>Abonnementen maken in Azure API Management
 
@@ -33,7 +33,7 @@ Als u een abonnements sleutel voor toegang tot Api's wilt ophalen, is een abonne
 > API Management ondersteunt ook andere mechanismen voor het beveiligen van de toegang tot Api's, met inbegrip van de volgende voor beelden:
 > - [OAuth 2.0](api-management-howto-protect-backend-with-aad.md)
 > - [Client certificaten](api-management-howto-mutual-certificates-for-clients.md)
-> - [IP-white list](https://docs.microsoft.com/azure/api-management/api-management-access-restriction-policies#RestrictCallerIPs)
+> - [IP-white list](./api-management-access-restriction-policies.md#RestrictCallerIPs)
 
 ## <a name="scope-of-subscriptions"></a>Bereik van abonnementen
 

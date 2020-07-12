@@ -3,11 +3,12 @@ title: Betrouw bare verzameling van object-serialisatie
 description: Meer informatie over de serialisatie van Azure Service Fabric reliable Collections-objecten, met inbegrip van de standaard strategie en het definiëren van aangepaste serialisatie.
 ms.topic: conceptual
 ms.date: 5/8/2017
-ms.openlocfilehash: 666e1bb45a9c75ee143f15a0d871d6ae1408eca9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7a0dc56c181ddd6a98ab0e263180c222368dafb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75639544"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245990"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Betrouw bare serialisatie van verzamelings objecten in azure Service Fabric
 Betrouw bare verzamelingen repliceren en blijven hun items om ervoor te zorgen dat ze duurzaam zijn in de machine storingen en stroom uitval.
@@ -18,7 +19,7 @@ Betrouw bare status beheerder bevat ingebouwde serialisatiefuncties en kan aange
 
 ## <a name="built-in-serializers"></a>Ingebouwde Serialisatiefunctie
 
-Betrouw bare status Manager bevat een ingebouwde serialisatiefunctie voor een aantal algemene typen, zodat deze standaard efficiënt kunnen worden geserialiseerd. Voor andere typen is betrouw bare status beheer terugvallen op het gebruik van de [DataContractSerializer](https://msdn.microsoft.com/library/system.runtime.serialization.datacontractserializer(v=vs.110).aspx).
+Betrouw bare status Manager bevat een ingebouwde serialisatiefunctie voor een aantal algemene typen, zodat deze standaard efficiënt kunnen worden geserialiseerd. Voor andere typen is betrouw bare status beheer terugvallen op het gebruik van de [DataContractSerializer](/dotnet/api/system.runtime.serialization.datacontractserializer?view=netcore-3.1).
 Ingebouwde serialisatiefuncties zijn efficiënter omdat ze weten dat hun typen niet kunnen worden gewijzigd en ze hoeven geen informatie over het type op te nemen zoals de type naam ervan.
 
 Betrouw bare status Manager heeft ingebouwde serialisatiefunctie voor de volgende typen: 
@@ -43,7 +44,7 @@ Betrouw bare status Manager heeft ingebouwde serialisatiefunctie voor de volgend
 
 Aangepaste serialisatiefunctie worden vaak gebruikt om de prestaties te verbeteren of om de gegevens te versleutelen via de kabel en op schijf. Aangepaste serialisatiefunctieen zijn over het algemeen efficiënter dan generieke serialisatiefunctie, omdat ze geen informatie over het type hoeven te serialiseren. 
 
-[IReliableStateManager. TryAddStateSerializer \<T> ](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) wordt gebruikt voor het registreren van een aangepaste serialisatiefunctie voor het opgegeven type T. Deze registratie moet plaatsvinden in de bouw van de StatefulServiceBase om ervoor te zorgen dat voordat het herstel wordt gestart, alle betrouw bare verzamelingen toegang hebben tot de relevante serialisatiefunctie om hun persistente gegevens te lezen.
+[IReliableStateManager. TryAddStateSerializer \<T> ](/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) wordt gebruikt voor het registreren van een aangepaste serialisatiefunctie voor het opgegeven type T. Deze registratie moet plaatsvinden in de bouw van de StatefulServiceBase om ervoor te zorgen dat voordat het herstel wordt gestart, alle betrouw bare verzamelingen toegang hebben tot de relevante serialisatiefunctie om hun persistente gegevens te lezen.
 
 ```csharp
 public StatefulBackendService(StatefulServiceContext context)
@@ -61,7 +62,7 @@ public StatefulBackendService(StatefulServiceContext context)
 
 ### <a name="how-to-implement-a-custom-serializer"></a>Een aangepaste serialisatiefunctie implementeren
 
-Een aangepaste serialisatiefunctie moet de [IStateSerializer \<T> ](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1) -interface implementeren.
+Een aangepaste serialisatiefunctie moet de [IStateSerializer \<T> ](/dotnet/api/microsoft.servicefabric.data.istateserializer-1) -interface implementeren.
 
 > [!NOTE]
 > IStateSerializer \<T> bevat een overbelasting voor schrijven en lezen die een extra T wordt genoemd. Deze API is voor differentiële serialisatie. Momenteel wordt de functie voor differentiële serialisatie niet weer gegeven. Deze twee Overloads worden daarom pas aangeroepen als differentiële serialisatie wordt weer gegeven en ingeschakeld.
@@ -130,7 +131,7 @@ Als u ingebouwde serialisatiefunctie gebruikt, hoeft u zich geen zorgen te maken
 Als u echter een aangepaste serialisatiefunctie of de DataContractSerializer gebruikt, moeten de gegevens oneindig achterwaarts zijn en compatibel worden doorgestuurd.
 Met andere woorden, elke versie van serialisatiefunctie moet een wille keurige versie van het type kunnen serialiseren en deserialiseren.
 
-Gebruikers van het gegevens contract moeten de goed gedefinieerde versie regels volgen om velden toe te voegen, te verwijderen en te wijzigen. Data contract biedt ook ondersteuning voor het afhandelen van onbekende velden, het koppelen van het serialisatie proces en het afhandelen van klasse-overname. Zie [using data contract](https://msdn.microsoft.com/library/ms733127.aspx)(Engelstalig) voor meer informatie.
+Gebruikers van het gegevens contract moeten de goed gedefinieerde versie regels volgen om velden toe te voegen, te verwijderen en te wijzigen. Data contract biedt ook ondersteuning voor het afhandelen van onbekende velden, het koppelen van het serialisatie proces en het afhandelen van klasse-overname. Zie [using data contract](/dotnet/framework/wcf/feature-details/using-data-contracts)(Engelstalig) voor meer informatie.
 
 Aangepaste serialisatiefunctie-gebruikers moeten voldoen aan de richt lijnen van de serialisatiefunctie die ze gebruiken om ervoor te zorgen dat deze achterwaarts en doorgestuurd compatibel zijn.
 Gang bare methode voor het ondersteunen van alle versies is het toevoegen van grootte-informatie aan het begin en alleen het toevoegen van optionele eigenschappen.
@@ -138,7 +139,7 @@ Op deze manier kan elke versie zoveel mogelijk worden gelezen en over het rester
 
 ## <a name="next-steps"></a>Volgende stappen
   * [Serialisatie en upgrade](service-fabric-application-upgrade-data-serialization.md)
-  * [Naslag informatie voor ontwikkel aars voor betrouw bare verzamelingen](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+  * [Naslag informatie voor ontwikkel aars voor betrouw bare verzamelingen](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
   * Als u een [upgrade uitvoert van uw toepassing met behulp van Visual Studio](service-fabric-application-upgrade-tutorial.md) , wordt u begeleid bij een toepassings upgrade met Visual Studio.
   * Als u uw toepassing bijwerkt [met Power shell](service-fabric-application-upgrade-tutorial-powershell.md) , kunt u een toepassings upgrade uitvoeren met behulp van Power shell.
   * Bepalen hoe uw toepassing wordt bijgewerkt met behulp van [upgrade parameters](service-fabric-application-upgrade-parameters.md).

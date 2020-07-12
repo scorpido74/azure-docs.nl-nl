@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 0bc4792b44ccff23a141460c3521d684801c4567
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bddb4ea3759d19d1e122739fb69cf9bf96c66635
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84674258"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243542"
 ---
 # <a name="error-handling-in-api-management-policies"></a>Fout bij het verwerken van API Management-beleid
 
@@ -50,7 +51,7 @@ Tijdens de verwerking van een aanvraag worden de ingebouwde stappen uitgevoerd, 
 De `on-error` sectie beleid kan worden gebruikt in elk bereik. API-uitgevers kunnen aangepaste gedragingen configureren, zoals het vastleggen van de fout in Event hubs of het maken van een nieuw antwoord om terug te keren naar de aanroeper.
 
 > [!NOTE]
-> De `on-error` sectie is standaard niet in beleids regels aanwezig. Als u de `on-error` sectie wilt toevoegen aan een beleid, bladert u naar het gewenste beleid in de beleids editor en voegt u het toe. Zie [beleid in API Management](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/)voor meer informatie over het configureren van beleid.
+> De `on-error` sectie is standaard niet in beleids regels aanwezig. Als u de `on-error` sectie wilt toevoegen aan een beleid, bladert u naar het gewenste beleid in de beleids editor en voegt u het toe. Zie [beleid in API Management](./api-management-howto-policies.md)voor meer informatie over het configureren van beleid.
 >
 > Als er geen `on-error` sectie is, ontvangen aanroepers 400-of 500-HTTP-antwoord berichten als er een fout optreedt.
 
@@ -79,15 +80,15 @@ Het volgende beleid kan worden gebruikt in de `on-error` sectie Policy.
 
 Als er een fout optreedt en er wordt verwezen naar de `on-error` beleids sectie, wordt de fout opgeslagen in de [context. ](api-management-policy-expressions.md#ContextVariables)De eigenschap Last error, die kan worden geopend door beleid in de `on-error` sectie. Last error heeft de volgende eigenschappen.
 
-| Naam       | Type   | Description                                                                                               | Vereist |
+| Naam       | Type   | Beschrijving                                                                                               | Vereist |
 | ---------- | ------ | --------------------------------------------------------------------------------------------------------- | -------- |
-| `Source`   | tekenreeks | De naam van het element waarop de fout is opgetreden. Dit kan een beleids regel of een ingebouwde pijplijn naam zijn.      | Yes      |
-| `Reason`   | tekenreeks | Machine vriendelijke fout code, die kan worden gebruikt voor het afhandelen van fouten.                                       | No       |
-| `Message`  | tekenreeks | Beschrijving van door de mens lees bare fout.                                                                         | Yes      |
-| `Scope`    | tekenreeks | De naam van het bereik waarin de fout is opgetreden en kan een van de volgende zijn: ' Global ', ' product ', ' API ' of ' Operation ' | No       |
-| `Section`  | tekenreeks | Sectie naam waarin fout is opgetreden. Mogelijke waarden: ' binnenkomend ', ' back-end ', ' outbound ' of ' on-error '.      | No       |
-| `Path`     | tekenreeks | Hiermee geeft u genest beleid op, bijvoorbeeld ' Kies [3]/when [2] '.                                                 | No       |
-| `PolicyId` | tekenreeks | Waarde van het `id` kenmerk, indien opgegeven door de klant, op het beleid waar fout is opgetreden             | No       |
+| `Source`   | tekenreeks | De naam van het element waarop de fout is opgetreden. Dit kan een beleids regel of een ingebouwde pijplijn naam zijn.      | Ja      |
+| `Reason`   | tekenreeks | Machine vriendelijke fout code, die kan worden gebruikt voor het afhandelen van fouten.                                       | Nee       |
+| `Message`  | tekenreeks | Beschrijving van door de mens lees bare fout.                                                                         | Ja      |
+| `Scope`    | tekenreeks | De naam van het bereik waarin de fout is opgetreden en kan een van de volgende zijn: ' Global ', ' product ', ' API ' of ' Operation ' | Nee       |
+| `Section`  | tekenreeks | Sectie naam waarin fout is opgetreden. Mogelijke waarden: ' binnenkomend ', ' back-end ', ' outbound ' of ' on-error '.      | Nee       |
+| `Path`     | tekenreeks | Hiermee geeft u genest beleid op, bijvoorbeeld ' Kies [3]/when [2] '.                                                 | Nee       |
+| `PolicyId` | tekenreeks | Waarde van het `id` kenmerk, indien opgegeven door de klant, op het beleid waar fout is opgetreden             | Nee       |
 
 > [!TIP]
 > U kunt de status code openen met behulp van context. Response. status code.
@@ -188,5 +189,5 @@ Zie voor meer informatie over het gebruik van beleid:
 
 -   [Beleid in API Management](api-management-howto-policies.md)
 -   [Api's transformeren](transform-api.md)
--   [Beleids verwijzing](api-management-policy-reference.md) voor een volledige lijst met beleids instructies en hun instellingen
+-   [Beleids verwijzing](./api-management-policies.md) voor een volledige lijst met beleids instructies en hun instellingen
 -   [Voor beelden van beleid](policy-samples.md)

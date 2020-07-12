@@ -3,12 +3,12 @@ title: Meer informatie over Azure Service Fabric
 description: Meer informatie over de belangrijkste concepten en belang rijke gebieden van Azure Service Fabric. Biedt een uitgebreid overzicht van Service Fabric en hoe u micro Services maakt.
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: 573b1ec662bdc7e72f964698f5e0670860895586
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d578d6b3e0232d0733097d68bac22af566b2083
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82791847"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246256"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Wilt u meer informatie over Service Fabric?
 Azure Service Fabric is een gedistribueerde systemen platform waarmee u gemakkelijk pakket, implementeren en beheren van schaalbare en betrouwbare microservices.  Service Fabric heeft echter een grote surface area, maar er is veel te leren.  In dit artikel vindt u een samen vatting van Service Fabric en worden de belangrijkste concepten, programmeer modellen, toepassings levenscyclus, testen, clusters en status controle beschreven. Lees het [overzicht](service-fabric-overview.md) en [Wat zijn micro Services?](service-fabric-overview-microservices.md) voor een inleiding en hoe service Fabric kan worden gebruikt om micro services te maken. Dit artikel bevat geen uitgebreide inhouds lijst, maar bevat een koppeling naar overzicht en aan de slag-artikelen voor elk gebied van Service Fabric. 
@@ -87,7 +87,7 @@ Een [uitvoerbaar gast bestand](service-fabric-guest-executables-introduction.md)
 ## <a name="application-lifecycle"></a>Toepassingslevenscyclus
 Net als bij andere platforms gaat een toepassing op Service Fabric doorgaans door de volgende fasen: ontwerpen, ontwikkelen, testen, implementeren, bijwerken, onderhoud en verwijderen. Service Fabric biedt eersteklas ondersteuning voor de volledige levens cyclus van toepassingen van Cloud toepassingen, van ontwikkeling tot implementatie tot en met het dagelijks beheer en het onderhoud om te voor komen dat ze buiten gebruik worden gesteld. Het service model maakt het mogelijk dat verschillende rollen onafhankelijk deel nemen in de levens cyclus van de toepassing. [Service Fabric levens cyclus van toepassingen](service-fabric-application-lifecycle.md) biedt een overzicht van de api's en hoe deze worden gebruikt door de verschillende rollen in de fasen van de levens cyclus van de service Fabric-toepassing. 
 
-De volledige levens cyclus van de app kan worden beheerd met behulp van [Power shell-cmdlets](/powershell/module/ServiceFabric/), [cli-opdrachten](service-fabric-sfctl.md), [C#-api's](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [Java-api's](/java/api/overview/azure/servicefabric)en [rest api's](/rest/api/servicefabric/). U kunt ook doorlopende integratie/doorlopende implementatie pijplijnen instellen met behulp van hulpprogram ma's als [Azure-pijp lijnen](service-fabric-set-up-continuous-integration.md) of [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md).
+De volledige levens cyclus van de app kan worden beheerd met behulp van [Power shell-cmdlets](/powershell/module/ServiceFabric/), [cli-opdrachten](service-fabric-sfctl.md), [C#-api's](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [Java-api's](/java/api/overview/azure/servicefabric)en [rest api's](/rest/api/servicefabric/). U kunt ook doorlopende integratie/doorlopende implementatie pijplijnen instellen met behulp van hulpprogram ma's als [Azure-pijp lijnen](./service-fabric-tutorial-deploy-app-with-cicd-vsts.md) of [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md).
 
 ## <a name="test-applications-and-services"></a>Testtoepassingen en -services
 Om echt Services voor de Cloud schaal te maken, is het belang rijk om te controleren of uw toepassingen en services zich in de praktijk kunnen voordoen. De fout analyse service is ontworpen voor het testen van services die zijn gebouwd op Service Fabric. Met de [Fout analyse service](service-fabric-testability-overview.md)kunt u zinvolle fouten tegen komen en volledige test scenario's uitvoeren voor uw toepassingen. Deze fouten en scenario's oefenen en valideren de talrijke statussen en overgangen die gedurende de levens duur van een service worden ervaren, op een gecontroleerde, veilige en consistente manier.
@@ -112,7 +112,7 @@ Service Fabric clusters kunnen worden gemaakt op virtuele of fysieke machines me
 ### <a name="clusters-on-azure"></a>Clusters op Azure
 Het uitvoeren van Service Fabric clusters in Azure biedt integratie met andere Azure-functies en-services, waardoor bewerkingen en beheer van het cluster eenvoudiger en betrouwbaarder kunnen worden. Een cluster is een Azure Resource Manager bron, zodat u clusters zoals andere resources in azure kunt model leren. Resource Manager biedt ook eenvoudig beheer van alle resources die worden gebruikt door het cluster als één eenheid. Clusters op Azure zijn geïntegreerd met Azure Diagnostics en Azure Monitor logs. Cluster knooppunt typen zijn [virtuele-machine schaal sets](/azure/virtual-machine-scale-sets/index), waardoor de functionaliteit voor automatisch schalen is ingebouwd.
 
-U kunt een cluster op Azure maken via de [Azure Portal](service-fabric-cluster-creation-via-portal.md), vanuit een [sjabloon](service-fabric-cluster-creation-via-arm.md)of vanuit [Visual Studio](service-fabric-cluster-creation-via-visual-studio.md).
+U kunt een cluster op Azure maken via de [Azure Portal](service-fabric-cluster-creation-via-portal.md), vanuit een [sjabloon](service-fabric-cluster-creation-via-arm.md)of vanuit [Visual Studio](./service-fabric-cluster-creation-via-arm.md).
 
 Met Service Fabric op Linux kunt u Maxi maal beschik bare, zeer schaal bare toepassingen op Linux bouwen, implementeren en beheren, net zoals u zou doen met Windows. De Service Fabric Frameworks (Reliable Services en Reliable Actors) zijn beschikbaar in Java onder Linux, naast C# (.NET core). U kunt ook [uitvoer bare gast Services](service-fabric-guest-executables-introduction.md) bouwen met elke taal of elk Framework. Orchestrator docker-containers worden ook ondersteund. Docker-containers kunnen uitvoer bare gast bestanden of systeem eigen Service Fabric Services uitvoeren die gebruikmaken van de Service Fabric frameworks. Lees voor meer informatie over [service fabric in Linux](service-fabric-deploy-anywhere.md).
 
@@ -191,7 +191,7 @@ Er zijn meerdere producten beschikbaar die deze drie gebieden beslaan, en u kunt
 * Meer informatie over het [beheren en organiseren van cluster resources](service-fabric-cluster-resource-manager-introduction.md).
 * Bekijk de Service Fabric-voor [beelden](https://aka.ms/servicefabricsamples).
 * Meer informatie over [service Fabric ondersteunings opties](service-fabric-support.md).
-* Lees het [Team blog](https://blogs.msdn.microsoft.com/azureservicefabric/) voor artikelen en aankondigingen.
+* Lees het [Team blog](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) voor artikelen en aankondigingen.
 
 
 [cluster-application-instances]: media/service-fabric-content-roadmap/cluster-application-instances.png

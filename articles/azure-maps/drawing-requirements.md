@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: c8699ff86573084e3199b096b25dd5d97cce2985
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ba9edba97ce89cede54287076e50eb587af10f3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791568"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242471"
 ---
 # <a name="drawing-package-requirements"></a>Vereisten voor tekenpakketten
 
@@ -28,7 +29,7 @@ De [Azure Maps conversie service](https://docs.microsoft.com/rest/api/maps/conve
 
 Woorden lijst met termen die in dit document worden gebruikt.
 
-| Termijn  | Definitie |
+| Term  | Definitie |
 |:-------|:------------|
 | Laag | Een AutoCAD DWG-laag.|
 | Niveau | Een gebied van een gebouw bij een ingestelde uitbrei ding. Bijvoorbeeld de basis van een gebouw. |
@@ -79,10 +80,10 @@ De onderstaande tabel bevat een overzicht van de ondersteunde entiteits typen en
 | Laag | Entiteitstypen | Functies |
 | :----- | :-------------------| :-------
 | [Postzegel](#exterior-layer) | Veelhoek, poly lijn (gesloten), cirkel | Niveaus
-| [Teleenheid](#unit-layer) |  Veelhoek, poly lijn (gesloten), cirkel | Verticale binnendringingen, eenheden
+| [Eenheid](#unit-layer) |  Veelhoek, poly lijn (gesloten), cirkel | Verticale binnendringingen, eenheden
 | [Muren](#wall-layer)  | Veelhoek, poly lijn (gesloten), cirkel | Niet van toepassing. Zie de laag met de [wand](#wall-layer)voor meer informatie.
 | [Door](#door-layer) | Veelhoek, poly lijn, lijn, CircularArc, cirkel | Openingen
-| [Gebied](#zone-layer) | Veelhoek, poly lijn (gesloten), cirkel | Zone
+| [Zone](#zone-layer) | Veelhoek, poly lijn (gesloten), cirkel | Zone
 | [UnitLabel](#unitlabel-layer) | Tekst (één regel) | Niet van toepassing. Deze laag kan alleen eigenschappen toevoegen aan de eenheids functies van de laag eenheden. Zie de [UnitLabel-laag](#unitlabel-layer)voor meer informatie.
 | [ZoneLabel](#zonelabel-layer) | Tekst (één regel) | Niet van toepassing. Deze laag kan alleen eigenschappen toevoegen aan zone functies van de ZonesLayer. Zie de [ZoneLabel-laag](#zonelabel-layer) voor meer informatie.
 

@@ -5,11 +5,12 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 06/22/2020
-ms.openlocfilehash: 095746b9cf3cada9cebf7d169078eff9eb64a52d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1bcdfb4bb3c910feeac0521308e1e7d733fbd959
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444264"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244069"
 ---
 # <a name="reduce-latency-with-proximity-placement-groups-preview"></a>Minder latentie met proximity-plaatsings groepen (preview-versie)
 
@@ -73,7 +74,7 @@ De eerste resource die u implementeert met een proximity-plaatsings groep, wordt
 
 In het volgende voor beeld wordt de opdracht [AZ Group Create][az-group-create] gebruikt voor het maken van een resource groep met de naam *myResourceGroup* in de regio *middenus* . Er wordt een AKS-cluster met de naam *myAKSCluster* gemaakt met behulp van de opdracht [AZ AKS Create][az-aks-create] . 
 
-Versneld netwerken verbetert de netwerk prestaties van virtuele machines aanzienlijk. In het ideale geval moet u proximity-plaatsings groepen gebruiken in combi natie met versneld netwerken. AKS maakt standaard gebruik van versnelde netwerken op [ondersteunde instanties van virtuele machines](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli?toc=/azure/virtual-machines/linux/toc.json#limitations-and-constraints), waaronder de meeste virtuele machines van Azure met twee of meer vcpu's.
+Versneld netwerken verbetert de netwerk prestaties van virtuele machines aanzienlijk. In het ideale geval moet u proximity-plaatsings groepen gebruiken in combi natie met versneld netwerken. AKS maakt standaard gebruik van versnelde netwerken op [ondersteunde instanties van virtuele machines](../virtual-network/create-vm-accelerated-networking-cli.md?toc=/azure/virtual-machines/linux/toc.json#limitations-and-constraints), waaronder de meeste virtuele machines van Azure met twee of meer vcpu's.
 
 Maak een nieuw AKS-cluster met een proximity-plaatsings groep:
 
@@ -134,7 +135,7 @@ az aks nodepool add \
     --ppg myPPGResourceID
 ```
 
-## <a name="clean-up"></a>Opruimen
+## <a name="clean-up"></a>Opschonen
 
 Als u het cluster wilt verwijderen, gebruikt u de [`az group delete`][az-group-delete] opdracht om de resource groep AKS te verwijderen:
 
@@ -163,4 +164,3 @@ az group delete --name myResourceGroup --yes --no-wait
 [az-aks-create]: /cli/azure/aks#az-aks-create
 [az-group-create]: /cli/azure/group#az-group-create
 [az-group-delete]: /cli/azure/group#az-group-delete
-

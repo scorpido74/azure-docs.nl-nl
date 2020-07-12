@@ -12,11 +12,12 @@ ms.workload: mobile
 ms.topic: article
 ms.date: 06/24/2020
 ms.author: apimpm
-ms.openlocfilehash: 72899e743e167eef5ee7d1be04cb50cafc1f2a95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 455444fe78171e3e2b37a309fd5708f283121ed6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445505"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243406"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Een API beveiligen met behulp van OAuth 2.0 met Azure Active Directory en API Management
 
@@ -145,7 +146,7 @@ In dit voor beeld is de ontwikkelaars console de client-app. In de volgende stap
 
 1. Als u **v1** -eind punten gebruikt, voegt u een body-para meter met de naam **resource**toe. Gebruik de **toepassings-id** van de back-end-app voor de waarde van deze para meter. 
 
-1. Als u **v2** -eind punten gebruikt, gebruikt u het bereik dat u hebt gemaakt voor de back-end-app in het **standaard bereik** veld. Zorg er ook voor dat u de waarde voor de [`accessTokenAcceptedVersion`](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#accesstokenacceptedversion-attribute) eigenschap instelt op `2` in het manifest van de [toepassing](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest).
+1. Als u **v2** -eind punten gebruikt, gebruikt u het bereik dat u hebt gemaakt voor de back-end-app in het **standaard bereik** veld. Zorg er ook voor dat u de waarde voor de [`accessTokenAcceptedVersion`](../active-directory/develop/reference-app-manifest.md#accesstokenacceptedversion-attribute) eigenschap instelt op `2` in het manifest van de [toepassing](../active-directory/develop/reference-app-manifest.md).
 
 1. Geef vervolgens de client referenties op. Dit zijn de referenties voor de client-app.
 
@@ -202,7 +203,7 @@ Wanneer een gebruiker op dit moment probeert een aanroep te doen vanuit de ontwi
 
 Wat gebeurt er echter als iemand uw API aanroept zonder een token of met een ongeldig token? U kunt bijvoorbeeld proberen om de API aan te roepen zonder de `Authorization` header, maar de aanroep gaat door. De reden hiervoor is dat API Management het toegangs token op dit moment niet valideert. De header wordt gewoon door gegeven `Authorization` aan de back-end-API.
 
-Gebruik de [validatie JWT](https://docs.microsoft.com/azure/api-management/api-management-access-restriction-policies#ValidateJWT) -beleid om aanvragen vooraf te autoriseren in API Management door de toegangs tokens van elke binnenkomende aanvraag te valideren. Als een aanvraag geen geldig token heeft, wordt deze door API Management geblokkeerd. Voeg bijvoorbeeld het volgende beleid toe aan de `<inbound>` sectie beleid van de `Echo API` . Hiermee wordt de claim van een doel groep in een toegangs token gecontroleerd en wordt een fout bericht geretourneerd als het token ongeldig is. Zie [beleid instellen of bewerken](https://docs.microsoft.com/azure/api-management/set-edit-policies)voor meer informatie over het configureren van beleid.
+Gebruik de [validatie JWT](./api-management-access-restriction-policies.md#ValidateJWT) -beleid om aanvragen vooraf te autoriseren in API Management door de toegangs tokens van elke binnenkomende aanvraag te valideren. Als een aanvraag geen geldig token heeft, wordt deze door API Management geblokkeerd. Voeg bijvoorbeeld het volgende beleid toe aan de `<inbound>` sectie beleid van de `Echo API` . Hiermee wordt de claim van een doel groep in een toegangs token gecontroleerd en wordt een fout bericht geretourneerd als het token ongeldig is. Zie [beleid instellen of bewerken](./set-edit-policies.md)voor meer informatie over het configureren van beleid.
 
 
 ```xml
@@ -227,7 +228,7 @@ In deze hand leiding hebt u de ontwikkelaars console in API Management gebruikt 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [Azure Active Directory en OAuth 2.0](../active-directory/develop/authentication-scenarios.md).
+- Meer informatie over [Azure Active Directory en OAuth 2.0](../active-directory/develop/authentication-vs-authorization.md).
 - Bekijk meer [Video's](https://azure.microsoft.com/documentation/videos/index/?services=api-management) over API management.
 - Zie [wederzijdse verificatie van certificaten](./api-management-howto-mutual-certificates.md)voor andere manieren om uw back-end-service te beveiligen.
 - [Een API Management service-exemplaar maken](./get-started-create-service-instance.md).

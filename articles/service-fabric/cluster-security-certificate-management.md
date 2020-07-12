@@ -4,11 +4,12 @@ description: Meer informatie over het beheren van certificaten in een Service Fa
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev
-ms.openlocfilehash: 6be9cbe77ef5e64659e56447d0a5b6be30b05272
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb5d19e1cceacfeabc4bc670de98e56d3fbc2596
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324739"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246704"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Certificaat beheer in Service Fabric clusters
 
@@ -75,8 +76,8 @@ Deze stappen worden hieronder beschreven. Let op de verschillen in de inrichting
 ![Het inrichtings certificaat dat is gedeclareerd door de algemene naam voor het onderwerp][Image2]
 
 ### <a name="certificate-enrollment"></a>Certificaat inschrijving
-In dit onderwerp wordt gedetailleerd beschreven in de Key Vault [documentatie](../key-vault/create-certificate.md). Hier vindt u een samen vatting voor continuïteit en gemakkelijker Naslag informatie. Als u doorgaat met Azure als de context en Azure Key Vault gebruikt als de service van het geheim beheer, moet een geautoriseerde certificaat aanvrager ten minste machtigingen voor certificaat beheer hebben op de kluis die wordt verleend door de eigenaar van de kluis. de aanvrager moet zich als volgt aanmelden bij een certificaat:
-    - Hiermee maakt u een certificaat beleid in Azure Key Vault (Azure), dat het domein/het onderwerp van het certificaat opgeeft, de gewenste verlener, het sleutel type en de lengte, het beoogde sleutel gebruik en meer; Zie [certificaten in azure Key Vault](../key-vault/certificate-scenarios.md) voor meer informatie. 
+In dit onderwerp wordt gedetailleerd beschreven in de Key Vault [documentatie](../key-vault/certificates/create-certificate.md). Hier vindt u een samen vatting voor continuïteit en gemakkelijker Naslag informatie. Als u doorgaat met Azure als de context en Azure Key Vault gebruikt als de service van het geheim beheer, moet een geautoriseerde certificaat aanvrager ten minste machtigingen voor certificaat beheer hebben op de kluis die wordt verleend door de eigenaar van de kluis. de aanvrager moet zich als volgt aanmelden bij een certificaat:
+    - Hiermee maakt u een certificaat beleid in Azure Key Vault (Azure), dat het domein/het onderwerp van het certificaat opgeeft, de gewenste verlener, het sleutel type en de lengte, het beoogde sleutel gebruik en meer; Zie [certificaten in azure Key Vault](../key-vault/certificates/certificate-scenarios.md) voor meer informatie. 
     - Hiermee maakt u een certificaat in dezelfde kluis met het hierboven opgegeven beleid. Dit genereert op zijn beurt een sleutel paar als kluis objecten, een aanvraag voor certificaat ondertekening die is ondertekend met de persoonlijke sleutel en die vervolgens wordt doorgestuurd naar de aangewezen verlener voor ondertekening
     - Zodra de uitgever (certificerings instantie) antwoordt met het ondertekende certificaat, wordt het resultaat in de kluis samengevoegd en is het certificaat beschikbaar voor de volgende bewerkingen:
       - onder {vaultUri}/certificates/{name}: het certificaat met de open bare sleutel en meta gegevens
@@ -209,7 +210,7 @@ Zoals eerder vermeld, wordt een certificaat dat is ingericht als een geheim voor
 
 Alle volgende fragmenten moeten worden geïmplementeerd concomitantly: ze worden afzonderlijk weer gegeven voor analyse en uitleg bij Play-by-Play.
 
-Eerst een door de gebruiker toegewezen identiteit definiëren (standaard waarden zijn opgenomen als voor beelden): Raadpleeg de [officiële documentatie](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm#create-a-user-assigned-managed-identity) voor actuele informatie.
+Eerst een door de gebruiker toegewezen identiteit definiëren (standaard waarden zijn opgenomen als voor beelden): Raadpleeg de [officiële documentatie](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md#create-a-user-assigned-managed-identity) voor actuele informatie.
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -240,7 +241,7 @@ Eerst een door de gebruiker toegewezen identiteit definiëren (standaard waarden
   ]}
 ```
 
-Ken deze identiteit vervolgens toegang tot de kluis geheimen-Raadpleeg de [officiële documentatie](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy) voor actuele informatie:
+Ken deze identiteit vervolgens toegang tot de kluis geheimen-Raadpleeg de [officiële documentatie](/rest/api/keyvault/vaults/updateaccesspolicy) voor actuele informatie:
 ```json
   "resources":
   [{
@@ -265,7 +266,7 @@ Ken deze identiteit vervolgens toegang tot de kluis geheimen-Raadpleeg de [offic
 In de volgende stap:
   - de door de gebruiker toegewezen identiteit toewijzen aan de schaalset voor virtuele machines
   - de afhankelijkheid van de virtuele-machine Scale set declareren bij het maken van de beheerde identiteit en op basis van het verlenen van toegang tot de kluis
-  - Declareer de naam van de VM-extensie voor de virtuele machine, zodat er waargenomen certificaten worden opgehaald bij het opstarten ([officiële documentatie](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows))
+  - Declareer de naam van de VM-extensie voor de virtuele machine, zodat er waargenomen certificaten worden opgehaald bij het opstarten ([officiële documentatie](../virtual-machines/extensions/key-vault-windows.md))
   - werk de definitie van de Service Fabric VM-extensie zodanig bij dat deze afhankelijk is van de KVVM-extensie en om het cluster certificaat te converteren naar de algemene naam (deze wijzigingen worden in één stap aangebracht, omdat ze onder het bereik van dezelfde resource vallen.)
 
 ```json
@@ -419,12 +420,12 @@ De KVVM-extensie, als inrichtings agent, wordt continu uitgevoerd op basis van e
 #### <a name="certificate-linking-explained"></a>Certificaat koppeling, uitleg
 Mogelijk hebt u de vlag ' linkOnRenewal ' van de KVVM-extensie gezien en is het feit dat deze is ingesteld op false. We adresseren hier dieper aan het gedrag dat door deze vlag wordt geregeld en de implicaties voor het functioneren van een cluster. Houd er rekening mee dat dit gedrag specifiek is voor Windows.
 
-Volgens de [definitie](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows#extension-schema):
+Volgens de [definitie](../virtual-machines/extensions/key-vault-windows.md#extension-schema):
 ```json
 "linkOnRenewal": <Only Windows. This feature enables auto-rotation of SSL certificates, without necessitating a re-deployment or binding.  e.g.: false>,
 ```
 
-Certificaten die worden gebruikt om een TLS-verbinding tot stand te brengen, worden doorgaans [verkregen als een ingang](https://docs.microsoft.com/windows/win32/api/sspi/nf-sspi-acquirecredentialshandlea) via de beveiligings serviceprovider van S-Channel. dat wil zeggen dat de client niet rechtstreeks toegang heeft tot de persoonlijke sleutel van het certificaat zelf. S-Channel ondersteunt omleiding (koppeling) van referenties in de vorm van een certificaat extensie ([CERT_RENEWAL_PROP_ID](https://docs.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certsetcertificatecontextproperty#cert_renewal_prop_id)): als deze eigenschap is ingesteld, vertegenwoordigt de waarde van de vinger afdruk van het certificaat vernieuwen en wordt in plaats daarvan het gekoppelde certificaat geladen. De IT-lijst wordt door lopen totdat deze is verbonden met het ' laatste ' certificaat, een zonder een verlengings teken. Deze functie, wanneer dit verstandig wordt gebruikt, is een uitstekende beperking tegen het verlies van Beschik baarheid, veroorzaakt door verlopen certificaten (bijvoorbeeld). In andere gevallen kan dit de oorzaak zijn van uitval die lastig zijn om te diagnosticeren en te beperken. S-Channel voert het Trans Port van certificaten op hun verlengings eigenschappen onvoorwaardelijk uit, onafhankelijk van het onderwerp, verleners of andere specifieke kenmerken die deel uitmaken van de validatie van het resulterende certificaat door de client. Het is mogelijk dat het resulterende certificaat geen gekoppelde persoonlijke sleutel heeft, of dat de sleutel niet is ACLed aan de potentiële verbruiker van de gebruiker. 
+Certificaten die worden gebruikt om een TLS-verbinding tot stand te brengen, worden doorgaans [verkregen als een ingang](/windows/win32/api/sspi/nf-sspi-acquirecredentialshandlea) via de beveiligings serviceprovider van S-Channel. dat wil zeggen dat de client niet rechtstreeks toegang heeft tot de persoonlijke sleutel van het certificaat zelf. S-Channel ondersteunt omleiding (koppeling) van referenties in de vorm van een certificaat extensie ([CERT_RENEWAL_PROP_ID](/windows/win32/api/wincrypt/nf-wincrypt-certsetcertificatecontextproperty#cert_renewal_prop_id)): als deze eigenschap is ingesteld, vertegenwoordigt de waarde van de vinger afdruk van het certificaat vernieuwen en wordt in plaats daarvan het gekoppelde certificaat geladen. De IT-lijst wordt door lopen totdat deze is verbonden met het ' laatste ' certificaat, een zonder een verlengings teken. Deze functie, wanneer dit verstandig wordt gebruikt, is een uitstekende beperking tegen het verlies van Beschik baarheid, veroorzaakt door verlopen certificaten (bijvoorbeeld). In andere gevallen kan dit de oorzaak zijn van uitval die lastig zijn om te diagnosticeren en te beperken. S-Channel voert het Trans Port van certificaten op hun verlengings eigenschappen onvoorwaardelijk uit, onafhankelijk van het onderwerp, verleners of andere specifieke kenmerken die deel uitmaken van de validatie van het resulterende certificaat door de client. Het is mogelijk dat het resulterende certificaat geen gekoppelde persoonlijke sleutel heeft, of dat de sleutel niet is ACLed aan de potentiële verbruiker van de gebruiker. 
  
 Als koppelen is ingeschakeld, wordt bij het ophalen van een waargenomen certificaat van de kluis door de VM-extensie van de sleutel kluis geprobeerd overeenkomende, bestaande certificaten te vinden om deze te koppelen via de verlengings extensie-eigenschap. De overeenkomst is (exclusief) op basis van de alternatieve naam voor het onderwerp (SAN) en werkt als geïllustreerd hieronder.
 Stel dat er twee bestaande certificaten zijn: A: CN = "Bureau-accessoires", SAN = {"alice.universalexports.com"}, vernieuwing = ' B: CN = "Bob-bits", SAN = {"bob.universalexports.com", "bob.universalexports.net"}, verlenging = "'
@@ -491,4 +492,3 @@ Voor micro soft-Internal Pki's raadpleegt u de interne documentatie over de eind
 
 [Image1]:./media/security-cluster-certificate-mgmt/certificate-journey-thumbprint.png
 [Image2]:./media/security-cluster-certificate-mgmt/certificate-journey-common-name.png
-

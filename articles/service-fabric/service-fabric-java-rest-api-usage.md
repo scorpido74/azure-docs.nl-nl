@@ -5,11 +5,12 @@ author: rapatchi
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: rapatchi
-ms.openlocfilehash: 0a243c1cd0ab0dcb93a1cc6169c89ba18606f346
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c093958b9a8c5a21cb6996db891705ec8c3d21ab
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75451672"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246279"
 ---
 # <a name="azure-service-fabric-java-client-apis"></a>Api's van Azure Service Fabric Java-client
 
@@ -124,5 +125,4 @@ Voor elke API vindt u vier overbelasting van de implementatie. Als er optionele 
     * Deze variant van de API-aanroep kan worden gebruikt als u asynchrone programmering wilt gebruiken en wilt omgaan met onbewerkt rest-antwoord
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over [service Fabric rest-api's](https://docs.microsoft.com/rest/api/servicefabric/)
-
+* Meer informatie over [service Fabric rest-api's](/rest/api/servicefabric/)

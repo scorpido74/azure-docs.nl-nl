@@ -13,22 +13,23 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 533f287693ca8aac76a3233674d95f3f49d4ae22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0cffbd1fa09abef9853e0ef853696c3c8ed353c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82857172"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246806"
 ---
 # <a name="design-secure-applications-on-azure"></a>Veilige toepassingen ontwerpen in azure
 In dit artikel bieden we beveiligings activiteiten en-controles waarmee u rekening moet houden bij het ontwerpen van toepassingen voor de Cloud. Trainings bronnen samen met beveiligings vragen en concepten die u kunt overwegen tijdens de vereisten en ontwerp fasen van micro soft [Security Development Lifecycle (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) , worden gedekt. Het doel is om u te helpen bij het definiëren van activiteiten en Azure-Services die u kunt gebruiken om een veiligere toepassing te ontwerpen.
 
 In dit artikel komen de volgende SDL-fasen aan bod:
 
-- Training
+- Bezig met trainen
 - Vereisten
-- Ontwerp
+- Ontwerpen
 
-## <a name="training"></a>Training
+## <a name="training"></a>Bezig met trainen
 Voordat u begint met het ontwikkelen van uw Cloud toepassing, is het tijd om inzicht te krijgen in de beveiliging en privacy van Azure. Als u deze stap uitvoert, kunt u het aantal en de ernst van de zwakke plekken in uw toepassing beperken. U bent er meer voor bereid om op de juiste manier te reageren op de steeds veranderende bedreigings breedte.
 
 Gebruik de volgende resources tijdens de trainings fase om vertrouwd te raken met de Azure-Services die beschikbaar zijn voor ontwikkel aars en met best practices voor beveiliging op Azure:
@@ -96,7 +97,7 @@ U wilt echter ook [aannemen dat er](https://docs.microsoft.com/azure/devops/lear
 
   - Hoe kan ik de aanval herstellen, zoals gegevens lekken of knoeien?
 
-## <a name="design"></a>Ontwerp
+## <a name="design"></a>Ontwerpen
 
 De ontwerp fase is essentieel voor het opstellen van aanbevolen procedures voor ontwerp-en functionele specificaties. Het is ook essentieel voor het uitvoeren van een risico analyse waardoor beveiligings-en privacy-problemen in een project worden verholpen.
 
@@ -153,11 +154,11 @@ Het ontwerpen van het ontwerp van de toepassing en het opsommen van [STRIDE](htt
 | Bedreiging | Beveiligings eigenschap | Potentieel beperking van het Azure-platform |
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Adresvervalsing (spoofing)               | Verificatie        | [HTTPS-verbindingen vereisen](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio). |
-| Knoeien              | Gegevensintegriteit             | SSL/TLS-certificaten valideren. Toepassingen die gebruikmaken van SSL/TLS moeten de X. 509-certificaten van de entiteiten waarmee ze verbinding maken, volledig controleren. Gebruik Azure Key Vault certificaten om [uw x509-certificaten te beheren](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-certificates). |
-| Ging            | Niet-afwijzing       | [Bewaking en diagnose](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)van Azure inschakelen.|
-| Vrijgeven van informatie | Vertrouwelijkheid       | Versleutel gevoelige gegevens in [rust](../fundamentals/encryption-atrest.md) en [onderweg](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit). |
-| Denial of service      | Beschikbaarheid          | Bewaak de prestatie gegevens voor mogelijke denial of service-voor waarden. Verbindings filters implementeren. [Azure DDoS Protection](../../virtual-network/ddos-protection-overview.md#next-steps), gecombineerd met aanbevolen procedures voor het ontwerpen van toepassingen, biedt bescherming tegen DDoS-aanvallen.|
-| Uitbrei ding van bevoegdheden | Autorisatie         | Gebruik Azure Active Directory <span class="underline"> </span> [privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md).|
+| Manipulatie              | Integriteit             | SSL/TLS-certificaten valideren. Toepassingen die gebruikmaken van SSL/TLS moeten de X. 509-certificaten van de entiteiten waarmee ze verbinding maken, volledig controleren. Gebruik Azure Key Vault certificaten om [uw x509-certificaten te beheren](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-certificates). |
+| Weerlegbaarheid            | Niet-weerlegbaarheid       | [Bewaking en diagnose](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)van Azure inschakelen.|
+| Openbaarmaking van informatie | Vertrouwelijkheid       | Versleutel gevoelige gegevens in [rust](../fundamentals/encryption-atrest.md) en [onderweg](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit). |
+| Denial of Service      | Beschikbaarheid          | Bewaak de prestatie gegevens voor mogelijke denial of service-voor waarden. Verbindings filters implementeren. [Azure DDoS Protection](../../virtual-network/ddos-protection-overview.md#next-steps), gecombineerd met aanbevolen procedures voor het ontwerpen van toepassingen, biedt bescherming tegen DDoS-aanvallen.|
+| Verhoging van bevoegdheden | Autorisatie         | Gebruik Azure Active Directory <span class="underline"> </span> [privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md).|
 
 ### <a name="reduce-your-attack-surface"></a>Verminder de kwets baarheid voor aanvallen
 
@@ -208,7 +209,7 @@ Gebruik twee ledige verificatie. Verificatie met twee factoren is de huidige sta
 
 Gebruik platform verificatie-en autorisatie mechanismen in plaats van aangepaste code. Dit komt doordat het ontwikkelen van aangepaste verificatie code gevoelig voor fouten kan zijn. Commerciële code (bijvoorbeeld van micro soft) wordt vaak uitgebreid gecontroleerd op beveiliging. [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) is de Azure-oplossing voor identiteits-en toegangs beheer. Deze Azure AD-hulpprogram ma's en-services helpen bij veilige ontwikkeling:
 
-- [Azure AD Identity platform (Azure AD voor ontwikkel aars)](../../active-directory/develop/about-microsoft-identity-platform.md) is een Cloud-identiteits service die ontwikkel aars gebruiken om apps te bouwen waarmee gebruikers zich veilig kunnen aanmelden. Azure AD helpt ontwikkel aars die een LOB-app (line-of-Business) en ontwikkel aars van één Tenant bouwen die apps voor meerdere tenants willen ontwikkelen. Naast de eenvoudige aanmelding kunnen apps die zijn gebouwd met behulp van Azure AD, micro soft-Api's en aangepaste Api's aanroepen die zijn gebouwd op het Azure AD-platform. Het Azure AD-identiteits platform ondersteunt industrie-standaard protocollen zoals OAuth 2,0 en OpenID Connect Connect.
+- [Micro soft Identity platform](/azure/active-directory/develop/) is een set onderdelen die ontwikkel aars gebruiken om apps te bouwen die veilig gebruikers kunnen aanmelden. Het platform helpt ontwikkel aars die een LOB-app (line-of-Business) en ontwikkel aars van één Tenant bouwen die apps voor meerdere tenants willen ontwikkelen. Apps die zijn gebouwd met behulp van het micro soft Identity-platform kunnen naast de eenvoudige aanmelding ook micro soft-Api's en aangepaste Api's aanroepen. Het micro soft-identiteits platform ondersteunt industrie-standaard protocollen zoals OAuth 2,0 en OpenID Connect Connect.
 
 - [Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/index.yml) is een service voor identiteits beheer die u kunt gebruiken voor het aanpassen en bepalen van de manier waarop gebruikers zich aanmelden, aanmelden en hun profielen beheren wanneer ze uw toepassingen gebruiken. Dit geldt ook voor toepassingen die zijn ontwikkeld voor iOS, Android en .NET, onder andere. Azure AD B2C maakt deze acties mogelijk tijdens het beveiligen van de identiteiten van klanten.
 

@@ -5,11 +5,12 @@ author: aagup
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: 1737102ee652cc2263bd0a908c1336bc93a6757b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f98bf4f4518abd5f1b1a826e355c851acc055852
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75377902"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246687"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Back-up herstellen in azure Service Fabric
 
@@ -51,7 +52,7 @@ Een herstel bewerking kan worden geactiveerd voor een van de volgende scenario's
 
 ### <a name="data-restore-in-the-case-of-disaster-recovery"></a>Gegevens herstellen in het geval van nood herstel
 
-Als een volledig Service Fabric cluster verloren is gegaan, kunt u de gegevens herstellen voor de partities van de betrouw bare stateful service en Reliable Actors. De gewenste back-up kan worden geselecteerd in de lijst wanneer u [GetBackupAPI gebruikt met details van back-upopslag](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getbackupsfrombackuplocation). De inventarisatie van de back-up kan zijn voor een toepassing, service of partitie.
+Als een volledig Service Fabric cluster verloren is gegaan, kunt u de gegevens herstellen voor de partities van de betrouw bare stateful service en Reliable Actors. De gewenste back-up kan worden geselecteerd in de lijst wanneer u [GetBackupAPI gebruikt met details van back-upopslag](/rest/api/servicefabric/sfclient-api-getbackupsfrombackuplocation). De inventarisatie van de back-up kan zijn voor een toepassing, service of partitie.
 
 In het volgende voor beeld wordt ervan uitgegaan dat het verloren cluster hetzelfde cluster is als waarnaar wordt verwezen in het [inschakelen van periodieke back-ups voor betrouw bare stateful service en reliable actors](service-fabric-backuprestoreservice-quickstart-azurecluster.md#enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors). In dit geval `SampleApp` wordt het back-upbeleid ingeschakeld en worden de back-ups geconfigureerd om Azure Storage.
 
@@ -165,7 +166,7 @@ Restore-SFPartition  -PartitionId '1c42c47f-439e-4e09-98b9-88b8f60800c6' -Backup
 
 #### <a name="rest-call-using-powershell"></a>Rest-aanroep met Power shell
 
-U vraagt de herstel bewerking af op de partitie van het back-upcluster met behulp van de volgende [Restore API](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-restorepartition):
+U vraagt de herstel bewerking af op de partitie van het back-upcluster met behulp van de volgende [Restore API](/rest/api/servicefabric/sfclient-api-restorepartition):
 
 ```powershell
 
@@ -305,7 +306,7 @@ De herstel aanvraag vordert in de volgende volg orde:
         RestoredEpoch : 
         RestoredLsn   : 0
         ```
-    - **Time-out**: een herstel status _time-out_ geeft aan dat de aanvraag een time-out heeft. Maak een nieuwe herstel aanvraag met een grotere [RestoreTimeout](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition#backuptimeout). De standaard time-out is 10 minuten. Zorg ervoor dat de partitie geen gegevens verlies status heeft voordat u de herstel bewerking opnieuw aanvraagt.
+    - **Time-out**: een herstel status _time-out_ geeft aan dat de aanvraag een time-out heeft. Maak een nieuwe herstel aanvraag met een grotere [RestoreTimeout](/rest/api/servicefabric/sfclient-api-backuppartition#backuptimeout). De standaard time-out is 10 minuten. Zorg ervoor dat de partitie geen gegevens verlies status heeft voordat u de herstel bewerking opnieuw aanvraagt.
      
         ```
         RestoreState  : Timeout
@@ -319,12 +320,12 @@ De herstel aanvraag vordert in de volgende volg orde:
 U kunt betrouw bare stateful service-en Reliable Actors partities configureren in het Service Fabric-cluster voor _automatisch herstel_. Stel in het back-upbeleid in `AutoRestore` op _waar_. Als u _automatisch terugzetten_ inschakelt, worden gegevens automatisch teruggezet vanaf de nieuwste partitie back-up wanneer gegevens verlies wordt gerapporteerd. Zie voor meer informatie:
 
 - [Activering automatisch herstellen in back-upbeleid](service-fabric-backuprestoreservice-configure-periodic-backup.md#auto-restore-on-data-loss)
-- [RestorePartition API-naslag informatie](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-restorepartition)
-- [GetPartitionRestoreProgress API-naslag informatie](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionrestoreprogress)
+- [RestorePartition API-naslag informatie](/rest/api/servicefabric/sfclient-api-restorepartition)
+- [GetPartitionRestoreProgress API-naslag informatie](/rest/api/servicefabric/sfclient-api-getpartitionrestoreprogress)
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Inzicht in periodieke back-upconfiguratie](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
-- [Naslag informatie over back-up terugzetten REST API](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
+- [Naslag informatie over back-up terugzetten REST API](/rest/api/servicefabric/sfclient-index-backuprestore)
 
 [2]: ./media/service-fabric-backuprestoreservice/restore-partition-backup.png
 [3]: ./media/service-fabric-backuprestoreservice/restore-partition-fileshare.png

@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 7dfb863da9f06cfc0c81944aa4037933cdd650ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 43dc0020f64a80e10f179fd194c4878f2fec41ad
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83649182"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243202"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Gebruikers registratie en product abonnement delegeren
 
@@ -185,10 +186,10 @@ Zie de volgende video voor meer informatie over delegering:
 
 [Delegating developer sign in and sign up]: #delegate-signin-up
 [Delegating product subscription]: #delegate-product-subscription
-[een SSO-token (single sign-on) aanvragen]: https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/User/GenerateSsoUrl
-[een gebruiker maken]: https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/user/createorupdate
-[de REST API voor abonnementen aanroepen]: https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/subscription/createorupdate
+[een SSO-token (single sign-on) aanvragen]: /rest/api/apimanagement/2019-12-01/user/generatessourl
+[een gebruiker maken]: /rest/api/apimanagement/2019-12-01/user/createorupdate
+[de REST API voor abonnementen aanroepen]: /rest/api/apimanagement/2019-12-01/subscription/createorupdate
 [Next steps]: #next-steps
 [voorbeeld code die hieronder wordt vermeld]: #delegate-example-code
 
-[api-management-delegation-signin-up]: ./media/api-management-howto-setup-delegation/api-management-delegation-signin-up.png 
+[api-management-delegation-signin-up]: ./media/api-management-howto-setup-delegation/api-management-delegation-signin-up.png

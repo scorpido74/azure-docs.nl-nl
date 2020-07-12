@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: juluk
 ms.date: 06/29/2020
 author: jluk
-ms.openlocfilehash: d98261629f9e1612966bf74084ae0e0fa70d3605
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c5d6bf83d9aa9c3717b0f8e08785b0fc897577d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85829246"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244443"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route"></a>Cluster uitgang aanpassen met een door de gebruiker gedefinieerde route
 
@@ -75,9 +75,9 @@ Ter illustratie van de toepassing van een cluster met een uitgaand type met behu
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [overzicht van Azure Networking UDR](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview).
+Zie [overzicht van Azure Networking UDR](../virtual-network/virtual-networks-udr-overview.md).
 
-Zie [een route tabel maken, wijzigen of verwijderen](https://docs.microsoft.com/azure/virtual-network/manage-route-table).
+Zie [een route tabel maken, wijzigen of verwijderen](../virtual-network/manage-route-table.md).
 
 <!-- LINKS - internal -->
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials

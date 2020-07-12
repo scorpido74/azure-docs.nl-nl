@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 219681351159de6ac6bb48ff979cc68aa4ee18d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72f9381a320dc0fb946dbf6f48c5bcab5390aed5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82233479"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243576"
 ---
 # <a name="azure-api-management-faqs"></a>Veelgestelde vragen over Azure API Management
 Krijg antwoorden op veelgestelde vragen, patronen en aanbevolen procedures voor Azure API Management.
@@ -68,7 +68,7 @@ Ja, u kunt API Management programmatisch beheren met behulp van:
 
 * Het [API Management rest API](/rest/api/apimanagement/).
 * De [SDK voor de ApiManagement-Service beheer bibliotheek van Microsoft Azure](https://aka.ms/apimsdk).
-* De [service-implementatie](https://docs.microsoft.com/powershell/module/wds) -en [Service Management](https://docs.microsoft.com/powershell/azure/servicemanagement/overview) Power shell-cmdlets.
+* De [service-implementatie](/powershell/module/wds) -en [Service Management](/powershell/azure/servicemanagement/overview) Power shell-cmdlets.
 
 ### <a name="how-do-i-add-a-user-to-the-administrators-group"></a>Hoe voeg ik een gebruiker toe aan de groep Beheerders?
 U kunt als volgt een gebruiker toevoegen aan de groep Administrators:
@@ -77,7 +77,7 @@ U kunt als volgt een gebruiker toevoegen aan de groep Administrators:
 2. Ga naar de resource groep met de API Management instantie die u wilt bijwerken.
 3. Wijs in API Management de rol van **API Management-service Inzender** toe aan de gebruiker.
 
-De zojuist toegevoegde mede werker kan nu Azure PowerShell- [cmdlets](https://docs.microsoft.com/powershell/azure/overview)gebruiken. U kunt als volgt aanmelden als beheerder:
+De zojuist toegevoegde mede werker kan nu Azure PowerShell- [cmdlets](/powershell/azure/overview)gebruiken. U kunt als volgt aanmelden als beheerder:
 
 1. Gebruik de `Connect-AzAccount` cmdlet om u aan te melden.
 2. Stel de context in op het abonnement dat de service heeft met behulp van `Set-AzContext -SubscriptionID <subscriptionGUID>` .
@@ -85,7 +85,7 @@ De zojuist toegevoegde mede werker kan nu Azure PowerShell- [cmdlets](https://do
 4. Gebruik de URL voor toegang tot de beheer Portal.
 
 ### <a name="why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor"></a>Waarom is het beleid dat ik wil toevoegen, niet beschikbaar in de beleids editor?
-Als het beleid dat u wilt toevoegen lichter gekleurd of grijs wordt weer gegeven in de beleids editor, moet u ervoor zorgen dat u het juiste bereik voor het beleid hebt. Elke beleids instructie is ontworpen voor gebruik in specifieke bereiken en beleids secties. Zie de sectie gebruik van het beleid in [API management-beleid](/azure/api-management/api-management-policies)voor het controleren van de beleids secties en-bereiken voor een beleid.
+Als het beleid dat u wilt toevoegen lichter gekleurd of grijs wordt weer gegeven in de beleids editor, moet u ervoor zorgen dat u het juiste bereik voor het beleid hebt. Elke beleids instructie is ontworpen voor gebruik in specifieke bereiken en beleids secties. Zie de sectie gebruik van het beleid in [API management-beleid](./api-management-policies.md)voor het controleren van de beleids secties en-bereiken voor een beleid.
 
 ### <a name="how-do-i-set-up-multiple-environments-in-a-single-api"></a>Hoe kan ik meerdere omgevingen in één API in te stellen?
 Als u meerdere omgevingen, bijvoorbeeld een test omgeving en een productie omgeving, in één API wilt instellen, hebt u twee opties. U kunt:
@@ -94,7 +94,7 @@ Als u meerdere omgevingen, bijvoorbeeld een test omgeving en een productie omgev
 * Host dezelfde Api's op verschillende tenants.
 
 ### <a name="can-i-use-soap-with-api-management"></a>Kan ik SOAP gebruiken met API Management?
-[SOAP Pass-Through-](https://blogs.msdn.microsoft.com/apimanagement/2016/10/13/soap-pass-through/) ondersteuning is nu beschikbaar. Beheerders kunnen de WSDL van de SOAP-service importeren en Azure API Management maakt een SOAP-front-end. Documentatie voor de ontwikkelaars Portal, de test console, het beleid en de analyse zijn allemaal beschikbaar voor SOAP-services.
+[SOAP Pass-Through-](https://azure.microsoft.com/blog/soap-pass-through/) ondersteuning is nu beschikbaar. Beheerders kunnen de WSDL van de SOAP-service importeren en Azure API Management maakt een SOAP-front-end. Documentatie voor de ontwikkelaars Portal, de test console, het beleid en de analyse zijn allemaal beschikbaar voor SOAP-services.
 
 ### <a name="can-i-configure-an-oauth-20-authorization-server-with-ad-fs-security"></a>Kan ik een OAuth 2,0-autorisatie server met AD FS beveiliging configureren?
 Zie [ADFS gebruiken in API Management](https://phvbaars.wordpress.com/2016/02/06/using-adfs-in-api-management/)voor meer informatie over het configureren van een OAuth 2,0-autorisatie server met Active Directory Federation Services (AD FS) beveiliging.
@@ -109,7 +109,7 @@ Ja. Bekijk de Quick Start-sjablonen voor [Azure API Management service](https://
 Ja. Dit kan worden gedaan via Power shell of door rechtstreeks naar de API te verzenden. Hiermee wordt validatie van de certificaat keten uitgeschakeld en kunt u zelfondertekende of privé-ondertekende certificaten gebruiken bij de communicatie van API Management naar de back-end-services.
 
 #### <a name="powershell-method"></a>Power shell-methode ####
-Gebruik de [`New-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend) (voor nieuwe back-end) of [`Set-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend) (voor bestaande back-end) Power shell-cmdlets en stel de `-SkipCertificateChainValidation` para meter in op `True` .
+Gebruik de [`New-AzApiManagementBackend`](/powershell/module/az.apimanagement/new-azapimanagementbackend) (voor nieuwe back-end) of [`Set-AzApiManagementBackend`](/powershell/module/az.apimanagement/set-azapimanagementbackend) (voor bestaande back-end) Power shell-cmdlets en stel de `-SkipCertificateChainValidation` para meter in op `True` .
 
 ```powershell
 $context = New-AzApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'

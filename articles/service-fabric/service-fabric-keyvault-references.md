@@ -3,11 +3,12 @@ title: Azure-Service Fabric-Service Fabric toepassing sleutel kluis verwijzingen
 description: In dit artikel wordt uitgelegd hoe u de KeyVaultReference-ondersteuning van service Fabric gebruikt voor toepassings geheimen.
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: f7d8a083ea5ec4b66c29d392ee98927915465875
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f1ac3ac50c5ac7cbabb03561c5db7f9c14150de4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76545480"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246160"
 ---
 #  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>KeyVaultReference-ondersteuning voor Service Fabric toepassingen (preview)
 
@@ -157,4 +158,4 @@ KeyVaultReference is een ondersteund type voor container RepositoryCredentials. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Documentatie voor Azure-sleutel kluis](https://docs.microsoft.com/azure/key-vault/)
+* [Documentatie voor Azure-sleutel kluis](../key-vault/index.yml)

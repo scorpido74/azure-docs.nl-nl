@@ -7,14 +7,14 @@ ms.topic: article
 ms.date: 07/07/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 84800f978790a114b80c415a5e5e3dad77eaf8da
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: fc0464c226b8edc2dae01f8ea54c3e5b2e11f2d6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122302"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244257"
 ---
-# <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Azure RBAC gebruiken voor Kubernetes-autorisatie (preview-versie)
+# <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Azure RBAC gebruiken voor Kubernetes-autorisatie (preview)
 
 U kunt nu al gebruikmaken [van geïntegreerde verificatie tussen Azure Active Directory (Azure AD) en AKS](managed-aad.md). Als deze integratie is ingeschakeld, kunnen klanten Azure AD-gebruikers,-groepen of-service-principals gebruiken als onderwerpen in Kubernetes RBAC. Zie [hier](azure-ad-rbac.md)meer informatie.
 Met deze functie kunt u gebruikers identiteiten en referenties voor Kubernetes niet afzonderlijk beheren. U moet echter nog steeds Azure RBAC en Kubernetes RBAC afzonderlijk instellen en beheren. Zie [hier](concepts-identity.md)voor meer informatie over verificatie, autorisatie en RBAC op AKS.
@@ -122,7 +122,7 @@ Een geslaagde het maken van een cluster met Azure AD-integratie en Azure RBAC vo
 AKS biedt de volgende vier ingebouwde rollen:
 
 
-| Rol                                | Description  |
+| Rol                                | Beschrijving  |
 |-------------------------------------|--------------|
 | RBAC-viewer voor Azure Kubernetes service  | Hiermee staat u alleen-lezen toegang toe om de meeste objecten in een naam ruimte weer te geven. Het weer geven van functies of functie bindingen is niet toegestaan. Deze rol staat weer gave niet toe `Secrets` , omdat het lezen van de inhoud van geheimen toegang biedt tot serviceaccount-referenties in de naam ruimte, waardoor API-toegang zou worden toegestaan als serviceaccount in de naam ruimte (een vorm van bevoegdheden escalatie)  |
 | RBAC-schrijver van Azure Kubernetes service | Hiermee wordt lees-/schrijftoegang tot de meeste objecten in een naam ruimte toegestaan. Deze rol staat het weer geven of wijzigen van rollen of rollen bindingen niet toe. Met deze rol is het echter mogelijk `Secrets` om de serviceaccount in de naam ruimte te benaderen en uit te voeren, zodat deze kan worden gebruikt om de API-toegangs niveaus van een wille keurige serviceaccount in de naam ruimte te verkrijgen. |
@@ -215,7 +215,7 @@ az aks get-credentials -g MyResourceGroup -n MyManagedCluster
 ```
 
 > [!IMPORTANT]
-> U hebt de [Azure Kubernetes service-cluster gebruiker](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#azure-kubernetes-service-cluster-user-role) ingebouwde rol nodig om de bovenstaande stap uit te voeren.
+> U hebt de [Azure Kubernetes service-cluster gebruiker](../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role) ingebouwde rol nodig om de bovenstaande stap uit te voeren.
 
 Nu kunt u kubectl gebruiken om bijvoorbeeld de knoop punten in het cluster weer te geven. De eerste keer dat u deze uitvoert, moet u zich aanmelden en volgende opdrachten gebruiken het respectieve toegangs token.
 
@@ -254,7 +254,7 @@ aks-nodepool1-93451573-vmss000002   Ready    agent   3h6m   v1.15.11
 ```
 
 
-## <a name="clean-up"></a>Opruimen
+## <a name="clean-up"></a>Opschonen
 
 ### <a name="clean-role-assignment"></a>Roltoewijzing opschonen
 

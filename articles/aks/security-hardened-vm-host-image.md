@@ -7,16 +7,16 @@ ms.topic: article
 ms.date: 09/11/2019
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: b7552fc083c5ed340dc54c2a31160b0c8b4bd076
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84b826ce33b5395db5bd38e883b3a0fb3425725b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80420906"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244035"
 ---
 # <a name="security-hardening-for-aks-agent-node-host-os"></a>Beveiligings beveiliging voor AKS-agent knooppunt host-besturings systeem
 
-Azure Kubernetes service (AKS) is een veilige service die voldoet aan SOC-, ISO-, PCI DSS-en HIPAA-normen. Dit artikel heeft betrekking op de beveiligings beveiliging die wordt toegepast op hosts met virtuele AKS-machines. Zie voor meer informatie over AKS-beveiliging [beveiligings concepten voor toepassingen en clusters in azure Kubernetes service (AKS)](https://docs.microsoft.com/azure/aks/concepts-security).
+Azure Kubernetes service (AKS) is een veilige service die voldoet aan SOC-, ISO-, PCI DSS-en HIPAA-normen. Dit artikel heeft betrekking op de beveiligings beveiliging die wordt toegepast op hosts met virtuele AKS-machines. Zie voor meer informatie over AKS-beveiliging [beveiligings concepten voor toepassingen en clusters in azure Kubernetes service (AKS)](./concepts-security.md).
 
 > [!Note]
 > Dit document is alleen van toepassing op Linux-agents in AKS.
@@ -32,7 +32,7 @@ Het doel van het besturings systeem voor de beveiliging van beveiligde hosts is 
 
 * AKS biedt standaard een geoptimaliseerd host-besturings systeem voor beveiliging. Er is geen optie om een ander besturings systeem te selecteren.
 
-* Azure past dagelijkse patches (inclusief beveiligings patches) toe aan AKS van virtuele machines. Voor sommige van deze patches moet de computer opnieuw worden opgestart, terwijl anderen dat niet doen. U bent zelf verantwoordelijk voor het plannen van het opnieuw opstarten van AKS VM-host. Zie [patching AKS nodes](https://docs.microsoft.com/azure/aks/node-updates-kured)(Engelstalig) voor meer informatie over het AUTOMATISEREN van AKS-patches.
+* Azure past dagelijkse patches (inclusief beveiligings patches) toe aan AKS van virtuele machines. Voor sommige van deze patches moet de computer opnieuw worden opgestart, terwijl anderen dat niet doen. U bent zelf verantwoordelijk voor het plannen van het opnieuw opstarten van AKS VM-host. Zie [patching AKS nodes](./node-updates-kured.md)(Engelstalig) voor meer informatie over het AUTOMATISEREN van AKS-patches.
 
 ## <a name="what-is-configured"></a>Wat is er geconfigureerd?
 
@@ -85,8 +85,8 @@ Het doel van het besturings systeem voor de beveiliging van beveiligde hosts is 
 
 Raadpleeg de volgende artikelen voor meer informatie over AKS-beveiliging: 
 
-[Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/intro-kubernetes)
+[Azure Kubernetes Service (AKS)](./intro-kubernetes.md)
 
-[Beveiligings overwegingen voor AKS](https://docs.microsoft.com/azure/aks/concepts-security)
+[Beveiligings overwegingen voor AKS](./concepts-security.md)
 
-[Best practices voor AKS](https://docs.microsoft.com/azure/aks/best-practices)
+[Best practices voor AKS](./best-practices.md)

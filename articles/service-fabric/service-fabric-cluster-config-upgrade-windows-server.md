@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: dekapur
-ms.openlocfilehash: 8d0279cc323f7eee87feb2a596a4c2df0b4667e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4817c7b76ccd127d5f310a9d2abcecdb094944dc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82790844"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246602"
 ---
 # <a name="upgrade-the-configuration-of-a-standalone-cluster"></a>De configuratie van een zelfstandig cluster bijwerken 
 
@@ -53,7 +53,7 @@ TestConfiguration.ps1 -ClusterConfigFilePath <Path to the new Configuration File
 Sommige configuraties kunnen niet worden bijgewerkt, zoals eind punten, cluster naam, knooppunt-IP, enzovoort. De nieuwe JSON van de cluster configuratie wordt getest op basis van de oude en genereert fouten in het Power shell-venster als er een probleem is.
 
 ## <a name="upgrade-the-cluster-configuration"></a>De cluster configuratie upgraden
-Voer [Start-ServiceFabricClusterConfigurationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade)uit om de upgrade van de cluster configuratie bij te werken. De upgrade van de configuratie wordt verwerkt op basis van het upgrade domein.
+Voer [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade)uit om de upgrade van de cluster configuratie bij te werken. De upgrade van de configuratie wordt verwerkt op basis van het upgrade domein.
 
 ```powershell
 Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>

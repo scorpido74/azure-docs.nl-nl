@@ -4,11 +4,12 @@ description: Een overzicht van het bouwen van Cloud toepassingen met een micro S
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: sfrev
-ms.openlocfilehash: 9e0c93423b3639fb2bc3739f0d6569c4c4cec8da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b8fbe5096014b116c3d5c5deaa7615874135d001
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82792865"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246017"
 ---
 # <a name="why-use-a-microservices-approach-to-building-applications"></a>Waarom een micro Services-benadering gebruiken voor het ontwikkelen van toepassingen
 
@@ -130,7 +131,7 @@ De status wijkt af van de diagnostische gegevens. De status is van toepassing op
 
 ## <a name="guidance-for-designing-microservices-on-azure"></a>Richt lijnen voor het ontwerpen van micro Services op Azure
 
-Ga naar het Azure Architecture Center voor meer informatie over het [ontwerpen en bouwen van micro Services in azure](https://docs.microsoft.com/azure/architecture/microservices/).
+Ga naar het Azure Architecture Center voor meer informatie over het [ontwerpen en bouwen van micro Services in azure](/azure/architecture/microservices/).
 
 ## <a name="service-fabric-as-a-microservices-platform"></a>Service Fabric als een micro services-platform
 
@@ -190,7 +191,7 @@ De doel stelling van Service Fabric is het verminderen van de complexiteit van h
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Micro Services: een toepassings revolutie die wordt aangedreven door de Cloud](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)
-* [Azure Architecture Center: Micro Services op Azure bouwen](https://docs.microsoft.com/azure/architecture/microservices/)
+* [Azure Architecture Center: Micro Services op Azure bouwen](/azure/architecture/microservices/)
 * [Aanbevolen procedures voor Azure Service Fabric-toepassing en-cluster](service-fabric-best-practices-overview.md)
 * [Overzicht van Service Fabric terminologie](service-fabric-technical-overview.md)
 

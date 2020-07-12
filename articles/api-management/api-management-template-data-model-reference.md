@@ -13,22 +13,23 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 5625ff7e4fc51b9b6b894698719247902a480f44
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 868ad3d1c6e7e7ef2cf32dcf675bc471a614f3ed
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84690028"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243151"
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Naslag informatie over Azure API Management-sjabloon gegevens model
 In dit onderwerp worden de entiteits-en type representaties beschreven voor algemene items die worden gebruikt in de gegevens modellen voor de sjablonen voor de ontwikkelaars Portal in azure API Management.  
   
- Zie [de API Management ontwikkelaars portal aanpassen met behulp van sjablonen](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)voor meer informatie over het werken met sjablonen.  
+ Zie [de API Management ontwikkelaars portal aanpassen met behulp van sjablonen](./api-management-developer-portal-templates.md)voor meer informatie over het werken met sjablonen.  
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="reference"></a>Verwijzing
+## <a name="reference"></a>Naslaginformatie
 
 -   [API](#API)  
 -   [API-samen vatting](#APISummary)  
@@ -37,7 +38,7 @@ In dit onderwerp worden de entiteits-en type representaties beschreven voor alge
 -   [Codevoorbeeld](#Sample)  
 -   [Opmerking](#Comment)  
 -   [Filteren](#Filtering)  
--   [Journaalkop](#Header)  
+-   [Header](#Header)  
 -   [HTTP-aanvraag](#HTTPRequest)  
 -   [HTTP-antwoord](#HTTPResponse)  
 -   [Probleem](#Issue)  
@@ -66,7 +67,7 @@ In dit onderwerp worden de entiteits-en type representaties beschreven voor alge
 |`serviceUrl`|tekenreeks|Absolute URL van de back-end-service die deze API implementeert.|  
 |`path`|tekenreeks|Relatieve URL is een unieke identificatie van deze API en alle bijbehorende bron paden binnen het API Management service-exemplaar. Het wordt toegevoegd aan de URL van het API-eind punt dat is opgegeven tijdens het maken van het service-exemplaar om een open bare URL voor deze API te vormen.|  
 |`protocols`|matrix van getal|Hierin wordt beschreven op welke protocollen de bewerkingen in deze API kunnen worden aangeroepen. Toegestane waarden zijn `1 - http` en `2 - https` , of beide.|  
-|`authenticationSettings`|[Verificatie server authenticatie-instellingen](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#AuthenticationSettings)|Verzameling van verificatie-instellingen die zijn opgenomen in deze API.|  
+|`authenticationSettings`|[Verificatie server authenticatie-instellingen](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#AuthenticationSettings)|Verzameling van verificatie-instellingen die zijn opgenomen in deze API.|  
 |`subscriptionKeyParameterNames`|object|Een optionele eigenschap die kan worden gebruikt om aangepaste namen op te geven voor query-en/of header-para meters die de abonnements sleutel bevatten. Wanneer deze eigenschap aanwezig is, moet deze ten minste een van de volgende twee eigenschappen bevatten.<br /><br /> `{   "subscriptionKeyParameterNames":   {     "query": “customQueryParameterName",     "header": “customHeaderParameterName"   } }`|  
   
 ##  <a name="api-summary"></a><a name="APISummary"></a>API-samen vatting  
@@ -126,7 +127,7 @@ In dit onderwerp worden de entiteits-en type representaties beschreven voor alge
 ##  <a name="comment"></a><a name="Comment"></a>Heffen  
  De `API` entiteit heeft de volgende eigenschappen:  
   
-|Eigenschap|Type|Description|  
+|Eigenschap|Type|Beschrijving|  
 |--------------|----------|-----------------|  
 |`Id`|getal|De ID van de opmerking.|  
 |`CommentText`|tekenreeks|De hoofd tekst van de opmerking. Kan HTML bevatten.|  
@@ -183,7 +184,7 @@ In dit onderwerp worden de entiteits-en type representaties beschreven voor alge
 ##  <a name="http-response"></a><a name="HTTPResponse"></a>HTTP-antwoord  
  In deze sectie wordt de `response` representatie beschreven.  
   
-|Eigenschap|Type|Description|  
+|Eigenschap|Type|Beschrijving|  
 |--------------|----------|-----------------|  
 |`statusCode`|positief geheel getal|Status code van bewerkings antwoord.|  
 |`description`|tekenreeks|Beschrijving van bewerkings antwoord.|  
@@ -226,7 +227,7 @@ In dit onderwerp worden de entiteits-en type representaties beschreven voor alge
 ##  <a name="paging"></a><a name="Paging"></a>Haalt  
  De `paging` entiteit heeft de volgende eigenschappen:  
   
-|Eigenschap|Type|Description|  
+|Eigenschap|Type|Beschrijving|  
 |--------------|----------|-----------------|  
 |`Page`|getal|Het huidige pagina nummer.|  
 |`PageSize`|getal|De maximum resultaten die op één pagina worden weer gegeven.|  
@@ -263,7 +264,7 @@ In dit onderwerp worden de entiteits-en type representaties beschreven voor alge
 ##  <a name="provider"></a><a name="Provider"></a>Providers  
  De `provider` entiteit heeft de volgende eigenschappen:  
   
-|Eigenschap|Type|Description|  
+|Eigenschap|Type|Beschrijving|  
 |--------------|----------|-----------------|  
 |`Properties`|teken reeks woordenlijst|Eigenschappen voor deze verificatie provider.|  
 |`AuthenticationType`|tekenreeks|Het provider type. (Azure Active Directory, Facebook-aanmelding, Google-account, micro soft-account, Twitter).|  

@@ -3,12 +3,12 @@ title: Naslaginformatie over app-instellingen voor Azure Functions
 description: Referentie documentatie voor de Azure Functions app-instellingen of omgevings variabelen.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: adb11f29460bd6dee7171fa97a6ebfc958cfad12
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 2be13fbdbf8ce75a051448bfb46d2a41ad425be8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169903"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242760"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Naslaginformatie over app-instellingen voor Azure Functions
 
@@ -17,6 +17,9 @@ App-instellingen in een functie-app bevatten globale configuratie opties die van
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
 Er zijn andere globale configuratie opties in de [host.jsop](functions-host-json.md) bestand en in de [local.settings.jsvoor](functions-run-local.md#local-settings-file) het bestand.
+
+> [!NOTE]  
+> U kunt toepassings instellingen gebruiken om host.jsvoor het instellen van waarden te negeren zonder dat u de host.jsin het bestand zelf hoeft te wijzigen. Dit is handig voor scenario's waarin u specifieke host.jsvoor instellingen voor een specifieke omgeving moet configureren of wijzigen. Op deze manier kunt u host.jsop instellingen wijzigen zonder dat u het project opnieuw hoeft te publiceren. Zie de [host.jsover referentie artikel](functions-host-json.md#override-hostjson-values)voor meer informatie.  
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 

@@ -5,11 +5,12 @@ author: alexwun
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: alexwun
-ms.openlocfilehash: c3395248188c2a16736cfc8cea262fe163a6944b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8fc0239dd18fc7071823a129a7dbc4f102023d66
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75645664"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246194"
 ---
 # <a name="understand-the-imagestoreconnectionstring-setting"></a>Meer informatie over de instelling ImageStoreConnectionString
 
@@ -37,7 +38,7 @@ De bestandssysteem provider wordt gebruikt in plaats van de Image Store-service 
 
 Daarnaast moet de provider van het bestands systeem of de Azure Storage niet worden gebruikt als methode voor het delen van een Image Store tussen meerdere clusters. Dit leidt ertoe dat de cluster configuratie gegevens beschadigd raken, omdat elk cluster conflicterende gegevens naar de Image Store kan schrijven. Als u de ingerichte toepassings pakketten tussen meerdere clusters wilt delen, gebruikt u [sfpkg][12] -bestanden in plaats daarvan, die kunnen worden geüpload naar een externe opslag met een download-URI.
 
-Dus wanneer de ImageStoreConnectionString is geconfigureerd, gebruikt u gewoon de standaard instelling. Wanneer u naar Azure publiceert via Visual Studio, wordt de para meter automatisch voor u ingesteld. Voor een programmatische implementatie naar clusters die worden gehost in azure, is het connection string altijd ' Fabric: installatie kopie opslag '. Hoewel de waarde ervan onzeker is, kan deze altijd worden geverifieerd door het cluster manifest op te halen door [Power shell](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclustermanifest), [.net](https://msdn.microsoft.com/library/azure/mt161375.aspx)of [rest](https://docs.microsoft.com/rest/api/servicefabric/get-a-cluster-manifest). Zowel on-premises test-als productie clusters moeten altijd worden geconfigureerd voor het gebruik van de Image Store-service provider.
+Dus wanneer de ImageStoreConnectionString is geconfigureerd, gebruikt u gewoon de standaard instelling. Wanneer u naar Azure publiceert via Visual Studio, wordt de para meter automatisch voor u ingesteld. Voor een programmatische implementatie naar clusters die worden gehost in azure, is het connection string altijd ' Fabric: installatie kopie opslag '. Hoewel de waarde ervan onzeker is, kan deze altijd worden geverifieerd door het cluster manifest op te halen door [Power shell](/powershell/module/servicefabric/get-servicefabricclustermanifest), [.net](/previous-versions/azure/reference/mt161375(v=azure.100))of [rest](/rest/api/servicefabric/get-a-cluster-manifest). Zowel on-premises test-als productie clusters moeten altijd worden geconfigureerd voor het gebruik van de Image Store-service provider.
 
 ### <a name="next-steps"></a>Volgende stappen
 [Toepassingen implementeren en verwijderen met behulp van Power shell][10]

@@ -4,12 +4,12 @@ description: Meer informatie over het oplossen van veelvoorkomende problemen bij
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 08668289faa2341389a80b00cba11a33021da608
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: f334f501335e9e384cfcc35b356e61ab66efe7a8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054386"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243678"
 ---
 # <a name="aks-troubleshooting"></a>AKS-problemen oplossen
 
@@ -22,7 +22,7 @@ Er is ook een [hand leiding](https://github.com/feiskyer/kubernetes-handbook/blo
 
 ## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>Ik krijg de fout ' quotum overschreden ' tijdens het maken of upgraden. Wat moet ik doen? 
 
- [Vraag meer kernen](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)aan.
+ [Vraag meer kernen](../azure-portal/supportability/resource-manager-core-quotas-request.md)aan.
 
 ## <a name="what-is-the-maximum-pods-per-node-setting-for-aks"></a>Wat is het maximum aantal instellingen per knoop punt voor AKS?
 
@@ -34,7 +34,7 @@ De maximale instelling per knoop punt is standaard 110 als u een AKS-cluster imp
 Deze fout geeft aan dat een subnet dat wordt gebruikt voor een cluster niet langer beschik bare Ip's in de CIDR heeft voor een succes volle resource toewijzing. Voor Kubenet-clusters is de vereiste voldoende IP-adres ruimte voor elk knoop punt in het cluster. Voor Azure CNI-clusters is de vereiste voldoende IP-adres ruimte voor elk knoop punt en pod in het cluster.
 Lees meer over het [ontwerp van Azure cni om ip's toe te wijzen aan een Peul](configure-azure-cni.md#plan-ip-addressing-for-your-cluster).
 
-Deze fouten worden ook weer gegeven in [AKS Diagnostics](https://docs.microsoft.com/azure/aks/concepts-diagnostics) , die proactief problemen ondervinden, zoals een ontoereikende subnet-grootte.
+Deze fouten worden ook weer gegeven in [AKS Diagnostics](./concepts-diagnostics.md) , die proactief problemen ondervinden, zoals een ontoereikende subnet-grootte.
 
 In de volgende drie (3) gevallen treedt er een fout op onvoldoende subnet-grootte op:
 

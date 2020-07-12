@@ -5,11 +5,12 @@ author: PavanKunapareddyMSFT
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: 1d3be958a0649ed3e80df2d63adbdf0b91831dbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b86f68126825f146a50ed21edf2acbda2b5181cf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75639595"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245174"
 ---
 # <a name="reliable-services-lifecycle"></a>Levenscyclus van Reliable Services
 > [!div class="op_single_selector"]
@@ -114,7 +115,7 @@ Services die de annulering niet op de juiste manier afhandelen, kunnen diverse p
 
 Omdat de services stateful zijn, is het ook waarschijnlijk dat de services gebruikmaken van [betrouw bare verzamelingen](service-fabric-reliable-services-reliable-collections.md). In Service Fabric, wanneer een primaire laag wordt gedegradeerd, is een van de eerste dingen die schrijf toegang tot de onderliggende status is ingetrokken. Dit leidt tot een tweede set problemen die van invloed kunnen zijn op de levens cyclus van de service. De verzamelingen retour uitzonde ringen op basis van de timing en of de replica wordt verplaatst of afgesloten. Het is belang rijk om deze uitzonde ringen correct af te handelen. 
 
-Uitzonde ringen die worden veroorzaakt door service Fabric zijn permanent [( `FabricException` )](https://docs.microsoft.com/java/api/system.fabric.exception) of tijdelijk [( `FabricTransientException` )](https://docs.microsoft.com/java/api/system.fabric.exception.fabrictransientexception). Permanente uitzonde ringen moeten worden vastgelegd en gegenereerd. Tijdelijke uitzonde ringen kunnen opnieuw worden uitgevoerd op basis van de logica voor opnieuw proberen.
+Uitzonde ringen die worden veroorzaakt door service Fabric zijn permanent [( `FabricException` )](/java/api/system.fabric.exception) of tijdelijk [( `FabricTransientException` )](/java/api/system.fabric.exception.fabrictransientexception). Permanente uitzonde ringen moeten worden vastgelegd en gegenereerd. Tijdelijke uitzonde ringen kunnen opnieuw worden uitgevoerd op basis van de logica voor opnieuw proberen.
 
 Een belang rijk onderdeel van het testen en valideren van Reliable Services is het afhandelen van de uitzonde ringen die afkomstig zijn van het gebruik `ReliableCollections` in combi natie met Service Lifecycle-gebeurtenissen. U wordt aangeraden uw service altijd onder belasting te voeren. U moet ook upgrades uitvoeren en [chaos testen](service-fabric-controlled-chaos.md) voordat u de productie implementeert. Met deze eenvoudige stappen kunt u ervoor zorgen dat uw service correct wordt geïmplementeerd en dat er levenscyclus gebeurtenissen correct worden verwerkt.
 
@@ -129,4 +130,3 @@ Een belang rijk onderdeel van het testen en valideren van Reliable Services is h
 ## <a name="next-steps"></a>Volgende stappen
 * [Inleiding tot Reliable Services](service-fabric-reliable-services-introduction.md)
 * [Snelstartgids Reliable Services](service-fabric-reliable-services-quick-start-java.md)
-

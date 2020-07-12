@@ -5,11 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: a9699eae17657e96b38b3bccc95e8f84326efbb3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f473b70d260c552dc67d00715b6ee4bc56b670e0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84259470"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246551"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>Een Service Fabric cluster beschrijven met cluster resource manager
 De functie cluster resource manager van Azure Service Fabric biedt verschillende methoden voor het beschrijven van een cluster:
@@ -35,7 +36,7 @@ In de Azure-omgeving gebruikt Service Fabric de fout domein gegevens die door de
 > [!WARNING]
 > Het is belang rijk dat de fout domein gegevens die aan Service Fabric worden verstrekt nauw keurig zijn. Stel bijvoorbeeld dat de knoop punten van uw Service Fabric-cluster worden uitgevoerd binnen 10 virtuele machines, die worden uitgevoerd op 5 fysieke hosts. In dit geval, zelfs als er tien virtuele machines zijn, zijn er slechts 5 verschillende fout domeinen (op het hoogste niveau). Het delen van dezelfde fysieke host zorgt ervoor dat Vm's hetzelfde hoofd fout domein delen, omdat de Vm's zich in een gecoördineerde storing voordoen als de fysieke host mislukt.  
 >
-> Service Fabric verwacht dat het fout domein van een knoop punt niet kan worden gewijzigd. Andere mechanismen voor het garanderen van een hoge Beschik baarheid van de virtuele machines, zoals [ha-vm's](https://technet.microsoft.com/library/cc967323.aspx), kunnen leiden tot conflicten met Service Fabric. Deze mechanismen maken gebruik van transparante migratie van Vm's van de ene host naar een andere. Ze configureren of melden de actieve code niet opnieuw in de virtuele machine. Daarom worden ze *niet ondersteund* als omgevingen voor het uitvoeren van service Fabric clusters. 
+> Service Fabric verwacht dat het fout domein van een knoop punt niet kan worden gewijzigd. Andere mechanismen voor het garanderen van een hoge Beschik baarheid van de virtuele machines, zoals [ha-vm's](/previous-versions/system-center/virtual-machine-manager-2008-r2/cc967323(v=technet.10)), kunnen leiden tot conflicten met Service Fabric. Deze mechanismen maken gebruik van transparante migratie van Vm's van de ene host naar een andere. Ze configureren of melden de actieve code niet opnieuw in de virtuele machine. Daarom worden ze *niet ondersteund* als omgevingen voor het uitvoeren van service Fabric clusters. 
 >
 > Service Fabric moet de enige technologie zijn die als hoge Beschik baarheid wordt gebruikt. Mechanismen als Livemigratie en San's van de VM zijn niet nodig. Als deze mechanismen worden gebruikt in combi natie met Service Fabric, _beperken_ ze de beschik baarheid en betrouw baarheid van de toepassing. De reden hiervoor is dat ze extra complexiteit introduceren, gecentraliseerde bronnen van fouten toevoegen en Betrouwbaarheids-en beschikbaarheids strategieën gebruiken die in Service Fabric conflicteren. 
 >

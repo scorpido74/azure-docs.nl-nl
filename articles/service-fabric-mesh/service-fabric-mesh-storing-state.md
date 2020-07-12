@@ -5,15 +5,16 @@ author: dkkapur
 ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0b0bd611fa86d155bb5bf2e07808e7365e28871c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d56ce811155f7b7f60fa870dbdae2550afab2eac
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84692679"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246823"
 ---
 # <a name="state-management-with-service-fabric"></a>Status beheer met Service Fabric
 
-Service Fabric ondersteunt veel verschillende opties voor status opslag. Zie [service Fabric concepten: State](/azure/service-fabric/service-fabric-concepts-state)(Engelstalig) voor een conceptueel overzicht van de patronen voor status beheer en service Fabric. Al deze concepten zijn van toepassing, ongeacht of uw services binnen of buiten Service Fabric net worden uitgevoerd. 
+Service Fabric ondersteunt veel verschillende opties voor status opslag. Zie [service Fabric concepten: State](../service-fabric/service-fabric-concepts-state.md)(Engelstalig) voor een conceptueel overzicht van de patronen voor status beheer en service Fabric. Al deze concepten zijn van toepassing, ongeacht of uw services binnen of buiten Service Fabric net worden uitgevoerd. 
 
 Met Service Fabric net kunt u eenvoudig een nieuwe toepassing implementeren en deze verbinden met een bestaande gegevens opslag die wordt gehost in Azure. Naast het gebruik van een externe data base, zijn er verschillende opties voor het opslaan van gegevens, afhankelijk van of de service lokale of externe opslag wenst. 
 

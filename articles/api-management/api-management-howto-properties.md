@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: dc8ca7296658f4113d86765f230ca0158727255f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28a9f37f58a6c056bf23a85fcf2641f407988891
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83649211"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243474"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Benoemde waarden gebruiken in azure API Management-beleid
 
@@ -33,13 +34,13 @@ Elk API Management service-exemplaar heeft een verzameling sleutel-waardeparen, 
 
 ![Benoemde waarden](./media/api-management-howto-properties/named-values.png)
 
-Benoemde waarden kunnen letterlijke teken reeksen en [beleids expressies](/azure/api-management/api-management-policy-expressions)bevatten. De waarde van `Expression` is bijvoorbeeld een beleids expressie die een teken reeks retourneert met de huidige datum en tijd. De benoemde waarde `Credential` is gemarkeerd als geheim, waardoor de waarde ervan niet standaard wordt weer gegeven.
+Benoemde waarden kunnen letterlijke teken reeksen en [beleids expressies](./api-management-policy-expressions.md)bevatten. De waarde van `Expression` is bijvoorbeeld een beleids expressie die een teken reeks retourneert met de huidige datum en tijd. De benoemde waarde `Credential` is gemarkeerd als geheim, waardoor de waarde ervan niet standaard wordt weer gegeven.
 
-| Name       | Waarde                      | Geheim | Tags          |
+| Naam       | Waarde                      | Geheim | Tags          |
 | ---------- | -------------------------- | ------ | ------------- |
-| Waarde      | 42                         | False  | cruciale cijfers |
-| Referentie | ••••••••••••••••••••••     | True   | security      |
-| Expression | @ (DateTime. Now. ToString ()) | False  |               |
+| Waarde      | 42                         | Niet waar  | cruciale cijfers |
+| Referentie | ••••••••••••••••••••••     | Waar   | security      |
+| Expression | @ (DateTime. Now. ToString ()) | Niet waar  |               |
 
 > [!NOTE]
 > In plaats van benoemde waarden die zijn opgeslagen in een API Management-service, kunt u waarden gebruiken die zijn opgeslagen in de [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) -service, zoals wordt geïllustreerd door dit [voor beeld](https://github.com/Azure/api-management-policy-snippets/blob/master/examples/Look%20up%20Key%20Vault%20secret%20using%20Managed%20Service%20Identity.policy.xml).
@@ -54,7 +55,7 @@ Benoemde waarden kunnen letterlijke teken reeksen en [beleids expressies](/azure
 
     Naam en waarde zijn vereiste waarden. Als de waarde een geheim is, schakelt u het selectie vakje _Dit is een geheim_ in. Voer een of meer optionele Tags in om u te helpen bij het ordenen van uw benoemde waarden en klik op opslaan.
 
-4. Klik op **Create**.
+4. Klik op **Maken**.
 
 Zodra de benoemde waarde is gemaakt, kunt u deze bewerken door erop te klikken. Als u de naam van de benoemde waarde wijzigt, worden alle beleids regels die verwijzen naar deze benoemde waarde, automatisch bijgewerkt voor gebruik van de nieuwe naam.
 
@@ -109,8 +110,8 @@ Hoewel benoemde waarden beleids expressies kunnen bevatten, kunnen ze geen ander
 
 -   Meer informatie over het werken met beleids regels
     -   [Beleid in API Management](api-management-howto-policies.md)
-    -   [Naslaginformatie over beleidsregels](/azure/api-management/api-management-policies)
-    -   [Beleidsexpressies](/azure/api-management/api-management-policy-expressions)
+    -   [Naslaginformatie over beleidsregels](./api-management-policies.md)
+    -   [Beleidsexpressies](./api-management-policy-expressions.md)
 
 [api-management-send-results]: ./media/api-management-howto-properties/api-management-send-results.png
 [api-management-properties-filter]: ./media/api-management-howto-properties/api-management-properties-filter.png

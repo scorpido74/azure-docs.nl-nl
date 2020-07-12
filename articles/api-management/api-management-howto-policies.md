@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: apimpm
-ms.openlocfilehash: c10939b50a66cd608d27a71f02d959fbc2380f59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc19c5ea7a45f78110818bc6c8cea8fbe25981c0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70072310"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243440"
 ---
 # <a name="policies-in-azure-api-management"></a>Beleidsregels in Azure API Management
 
@@ -58,7 +58,7 @@ De configuratie is onderverdeeld in `inbound` , `backend` ,, `outbound` en `on-e
 </policies> 
 ```
 
-Als er een fout optreedt tijdens de verwerking van een aanvraag, worden alle resterende stappen in `inbound` de `backend` secties, of `outbound` worden overgeslagen en wordt de uitvoering naar de instructies in de `on-error` sectie geleid. Door beleids instructies in de `on-error` sectie in te stellen, kunt u de fout controleren met behulp van de `context.LastError` eigenschap, het fout bericht controleren en aanpassen met behulp van het `set-body` beleid en configureren wat er gebeurt als er een fout optreedt. Er zijn fout codes voor ingebouwde stappen en voor fouten die kunnen optreden tijdens het verwerken van beleids instructies. Zie [fout afhandeling in API management-beleid](/azure/api-management/api-management-error-handling-policies)voor meer informatie.
+Als er een fout optreedt tijdens de verwerking van een aanvraag, worden alle resterende stappen in `inbound` de `backend` secties, of `outbound` worden overgeslagen en wordt de uitvoering naar de instructies in de `on-error` sectie geleid. Door beleids instructies in de `on-error` sectie in te stellen, kunt u de fout controleren met behulp van de `context.LastError` eigenschap, het fout bericht controleren en aanpassen met behulp van het `set-body` beleid en configureren wat er gebeurt als er een fout optreedt. Er zijn fout codes voor ingebouwde stappen en voor fouten die kunnen optreden tijdens het verwerken van beleids instructies. Zie [fout afhandeling in API management-beleid](./api-management-error-handling-policies.md)voor meer informatie.
 
 ## <a name="how-to-configure-policies"></a><a name="scopes"> </a>Beleids regels configureren
 
@@ -66,7 +66,7 @@ Zie [beleid instellen of bewerken](set-edit-policies.md)voor meer informatie ove
 
 ## <a name="policy-reference"></a>Beleids verwijzing
 
-Zie de [beleids verwijzing](api-management-policy-reference.md) voor een volledige lijst met beleids instructies en de bijbehorende instellingen.
+Zie de [beleids verwijzing](./api-management-policies.md) voor een volledige lijst met beleids instructies en de bijbehorende instellingen.
 
 ## <a name="policy-samples"></a>Voor beelden van beleid
 
@@ -118,17 +118,17 @@ Als u binnenkomende aanvragen wilt beperken en alleen die van een IP-adres van 1
 Zie voor meer informatie over het gebruik van beleid:
 
 + [Api's transformeren](transform-api.md)
-+ [Beleids verwijzing](api-management-policy-reference.md) voor een volledige lijst met beleids instructies en hun instellingen
++ [Beleids verwijzing](./api-management-policies.md) voor een volledige lijst met beleids instructies en hun instellingen
 + [Voor beelden van beleid](policy-samples.md)   
 
-[Policy Reference]: api-management-policy-reference.md
+[Policy Reference]: ./api-management-policies.md
 [Product]: api-management-howto-add-products.md
 [API]: api-management-howto-add-products.md
-[Operation]: api-management-howto-add-operations.md
+[Operation]: ./mock-api-responses.md
 
-[Advanced policies]: https://msdn.microsoft.com/library/azure/dn894085.aspx
-[Control flow]: https://msdn.microsoft.com/library/azure/dn894085.aspx#choose
-[Set variable]: https://msdn.microsoft.com/library/azure/dn894085.aspx#set_variable
-[Policy expressions]: https://msdn.microsoft.com/library/azure/dn910913.aspx
+[Advanced policies]: ./api-management-advanced-policies.md
+[Control flow]: ./api-management-advanced-policies.md#choose
+[Set variable]: ./api-management-advanced-policies.md#set-variable
+[Policy expressions]: ./api-management-policy-expressions.md
 
 [policies-restrict]: ./media/api-management-howto-policies/api-management-policies-restrict.png

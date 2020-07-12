@@ -6,11 +6,12 @@ author: lachie83
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: laevenso
-ms.openlocfilehash: 041767474fbc56ee7a53bcbd54f27873d17dab77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 216705ef4ff7c235179c1f1be38a993ecd2fe782
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85413634"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244409"
 ---
 # <a name="http-application-routing"></a>Routering van HTTP-toepassing
 
@@ -19,7 +20,7 @@ Met de oplossing voor het routeren van HTTP-toepassingen kunt u eenvoudig toegan
 Wanneer de invoeg toepassing is ingeschakeld, wordt er een DNS-zone in uw abonnement gemaakt. Zie [DNS-prijzen][dns-pricing]voor meer informatie over DNS-kosten.
 
 > [!CAUTION]
-> De invoeg toepassing voor het routeren van HTTP-toepassingen is ontworpen om snel een ingangs controller te maken en toegang te krijgen tot uw toepassingen. Deze invoeg toepassing wordt niet aanbevolen voor productie gebruik. Zie [een HTTPS ingress-controller maken](https://docs.microsoft.com/azure/aks/ingress-tls)voor implementaties van kant-en-klare ingebruiknames met meerdere REPLICA'S en TLS-ondersteuning.
+> De invoeg toepassing voor het routeren van HTTP-toepassingen is ontworpen om snel een ingangs controller te maken en toegang te krijgen tot uw toepassingen. Deze invoeg toepassing wordt niet aanbevolen voor productie gebruik. Zie [een HTTPS ingress-controller maken](./ingress-tls.md)voor implementaties van kant-en-klare ingebruiknames met meerdere REPLICA'S en TLS-ondersteuning.
 
 ## <a name="http-routing-solution-overview"></a>Overzicht van de oplossing voor HTTP-route ring
 
@@ -281,7 +282,7 @@ I0426 21:51:58.042932       9 controller.go:179] ingress backend successfully re
 167.220.24.46 - [167.220.24.46] - - [26/Apr/2018:21:53:20 +0000] "GET / HTTP/1.1" 200 234 "" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)" 197 0.001 [default-party-clippy-80] 10.244.0.13:8080 234 0.004 200
 ```
 
-## <a name="clean-up"></a>Opruimen
+## <a name="clean-up"></a>Opschonen
 
 Verwijder de gekoppelde Kubernetes-objecten die in dit artikel zijn gemaakt met behulp van `kubectl delete` .
 

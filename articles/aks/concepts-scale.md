@@ -4,12 +4,12 @@ description: Meer informatie over schalen in azure Kubernetes service (AKS), met
 services: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: 7c9c3cf159d67d2f4acaaab943ecf9d99263ae55
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 41d4088a0942eb408d3d3c9eeb2d13ff38fc0362
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223836"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244511"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Schaalopties voor toepassingen in Azure Kubernetes Service (AKS)
 
@@ -26,7 +26,7 @@ In dit artikel worden de belangrijkste concepten geïntroduceerd waarmee u toepa
 
 U kunt replica's (peul) en knoop punten hand matig schalen om te testen hoe uw toepassing reageert op een wijziging in de beschik bare resources en de status. Door resources hand matig te schalen, kunt u ook een ingestelde hoeveelheid resources definiëren die moeten worden gebruikt voor het onderhouden van vaste kosten, zoals het aantal knoop punten. Als u hand matig wilt schalen, definieert u de replica of het aantal knoop punten. Met de Kubernetes-API wordt vervolgens gepland dat er meer dan een of meer knoop punten worden gemaakt op basis van die replica of het aantal knoop punten.
 
-Bij het omlaag schalen van knoop punten roept de Kubernetes-API de relevante Azure Compute-API aan die is gekoppeld aan het reken type dat door uw cluster wordt gebruikt. Bijvoorbeeld, voor clusters die zijn gebouwd op VM Scale Sets de logica voor het selecteren van de knoop punten die moeten worden verwijderd, wordt bepaald door de VM Scale Sets-API. Zie de [Veelgestelde vragen over VMSS](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-faq#if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed)voor meer informatie over hoe u de geselecteerde knoop punten op schaal kunt verwijderen.
+Bij het omlaag schalen van knoop punten roept de Kubernetes-API de relevante Azure Compute-API aan die is gekoppeld aan het reken type dat door uw cluster wordt gebruikt. Bijvoorbeeld, voor clusters die zijn gebouwd op VM Scale Sets de logica voor het selecteren van de knoop punten die moeten worden verwijderd, wordt bepaald door de VM Scale Sets-API. Zie de [Veelgestelde vragen over VMSS](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed)voor meer informatie over hoe u de geselecteerde knoop punten op schaal kunt verwijderen.
 
 Zie [toepassingen schalen in AKS][aks-scale]om aan de slag te gaan met het hand matig schalen van peulen en knoop punten.
 
@@ -111,7 +111,7 @@ Raadpleeg de volgende artikelen voor meer informatie over de belangrijkste Kuber
 [aks-scale]: tutorial-kubernetes-scale.md
 [aks-manually-scale-pods]: tutorial-kubernetes-scale.md#manually-scale-pods
 [aks-manually-scale-nodes]: tutorial-kubernetes-scale.md#manually-scale-aks-nodes
-[aks-cluster-autoscaler]: autoscaler.md
+[aks-cluster-autoscaler]: ./cluster-autoscaler.md
 [aks-concepts-clusters-workloads]: concepts-clusters-workloads.md
 [aks-concepts-security]: concepts-security.md
 [aks-concepts-storage]: concepts-storage.md

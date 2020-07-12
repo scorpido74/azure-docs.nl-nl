@@ -5,16 +5,17 @@ author: motanv
 ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: motanv
-ms.openlocfilehash: 37b451abd0a519dff17aba9b2d6c42b4762f30cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 33ad837195c747a4e7f9a4609d745659be69dc9a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75463169"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246177"
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>Beheerde chaos in Service Fabric clusters induceren
 Grootschalige gedistribueerde systemen zoals Cloud infrastructuren zijn inherent onbetrouwbaar. Met Azure Service Fabric kunnen ontwikkel aars betrouw bare gedistribueerde services bovenop een onbetrouwbare infra structuur schrijven. Ontwikkel aars moeten de stabiliteit van hun services kunnen testen om robuuste gedistribueerde services boven op een onbetrouwbare infra structuur te schrijven, terwijl de onderliggende onbetrouwbare infra structuur in gecompliceerde status overgangen door problemen gaat.
 
-De [fout injectie en de cluster analyse service](https://docs.microsoft.com/azure/service-fabric/service-fabric-testability-overview) (ook wel bekend als de fout analyse service) biedt ontwikkel aars de mogelijkheid fouten te ontzeggen om hun services te testen. Deze gesimuleerde fouten, zoals het [opnieuw starten van een partitie](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricpartitionrestart?view=azureservicefabricps), kunnen helpen bij het uitoefenen van de meest voorkomende status overgangen. Doel gesimuleerde fouten worden echter bepaald door definitie en kunnen fouten veroorzaken die alleen worden weer gegeven in een moeilijk te voors pellen, lange en ingewikkelde volg orde van status overgangen. Voor een onzuivere test kunt u chaos gebruiken.
+De [fout injectie en de cluster analyse service](./service-fabric-testability-overview.md) (ook wel bekend als de fout analyse service) biedt ontwikkel aars de mogelijkheid fouten te ontzeggen om hun services te testen. Deze gesimuleerde fouten, zoals het [opnieuw starten van een partitie](/powershell/module/servicefabric/start-servicefabricpartitionrestart?view=azureservicefabricps), kunnen helpen bij het uitoefenen van de meest voorkomende status overgangen. Doel gesimuleerde fouten worden echter bepaald door definitie en kunnen fouten veroorzaken die alleen worden weer gegeven in een moeilijk te voors pellen, lange en ingewikkelde volg orde van status overgangen. Voor een onzuivere test kunt u chaos gebruiken.
 
 Chaos simuleert periodieke, Interleaved fouten (zowel gefeliciteerd als zonder enige uitstel) in het hele cluster gedurende een langere periode. Een correcte fout bestaat uit een set Service Fabric-API-aanroepen, bijvoorbeeld een fout bij het opnieuw starten van de replica, omdat dit een sluiten is, gevolgd door een open op een replica. Verwijder de replica, verplaats de primaire replica en verplaats de secundaire replica naar een andere probleemloze fout die wordt veroorzaakt door chaos. Niet-verwerkings fouten zijn proces afsluiten, zoals het opnieuw starten van het knoop punt en het opnieuw starten van code pakket. 
 
@@ -24,7 +25,7 @@ Wanneer u chaos hebt geconfigureerd met het aantal en het soort fouten, kunt u c
 > In het huidige formulier induceert chaos alleen veilige storingen, wat impliceert dat bij afwezigheid van externe fouten een quorum verlies of gegevens verlies optreedt.
 >
 
-Terwijl chaos wordt uitgevoerd, worden er verschillende gebeurtenissen gegenereerd waarmee de status van de uitvoering op het moment wordt vastgelegd. Een ExecutingFaultsEvent bevat bijvoorbeeld alle fouten die chaos heeft besloten om in die iteratie uit te voeren. Een ValidationFailedEvent bevat de details van een validatie fout (status-of stabiliteits problemen) die zijn gevonden tijdens de validatie van het cluster. U kunt de GetChaosReport-API (C#, Power shell of REST) aanroepen om het rapport van chaos-uitvoeringen weer te geven. Deze gebeurtenissen worden bewaard in een [betrouw bare woorden lijst](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-reliable-collections), die een Afbrekings beleid heeft dat door twee configuraties wordt bepaald: **MaxStoredChaosEventCount** (standaard waarde is 25000) en **StoredActionCleanupIntervalInSeconds** (standaard waarde is 3600). Elke *StoredActionCleanupIntervalInSeconds* chaos-controle en alle, behalve de meest recente *MaxStoredChaosEventCount* -gebeurtenissen, worden verwijderd uit de betrouw bare woorden lijst.
+Terwijl chaos wordt uitgevoerd, worden er verschillende gebeurtenissen gegenereerd waarmee de status van de uitvoering op het moment wordt vastgelegd. Een ExecutingFaultsEvent bevat bijvoorbeeld alle fouten die chaos heeft besloten om in die iteratie uit te voeren. Een ValidationFailedEvent bevat de details van een validatie fout (status-of stabiliteits problemen) die zijn gevonden tijdens de validatie van het cluster. U kunt de GetChaosReport-API (C#, Power shell of REST) aanroepen om het rapport van chaos-uitvoeringen weer te geven. Deze gebeurtenissen worden bewaard in een [betrouw bare woorden lijst](./service-fabric-reliable-services-reliable-collections.md), die een Afbrekings beleid heeft dat door twee configuraties wordt bepaald: **MaxStoredChaosEventCount** (standaard waarde is 25000) en **StoredActionCleanupIntervalInSeconds** (standaard waarde is 3600). Elke *StoredActionCleanupIntervalInSeconds* chaos-controle en alle, behalve de meest recente *MaxStoredChaosEventCount* -gebeurtenissen, worden verwijderd uit de betrouw bare woorden lijst.
 
 ## <a name="faults-induced-in-chaos"></a>Fouten die zijn opgetreden in chaos
 Chaos genereert fouten in het hele Service Fabric cluster en comprimeert fouten die in maanden of jaren in een paar uur worden weer gegeven. De combi natie van Interleaved fouten met het hoge fout aantal detecteert hoek gevallen die anders kunnen worden gemist. Deze oefening van chaos leidt tot een aanzienlijke verbetering van de code kwaliteit van de service.

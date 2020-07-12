@@ -8,14 +8,17 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: d017472715e8fe924a11080fc837ac837f5bd48f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 598a8383350cae98d61b8ab74f7687161d3d33e8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84982149"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245288"
 ---
 # <a name="aml-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>AML-vaardigheid in een Azure Cognitive Search-verrijkings pijplijn
+
+> [!IMPORTANT] 
+> Deze vaardigheid is momenteel beschikbaar als open bare preview. Deze previewfunctie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. Er is momenteel geen ondersteuning voor .NET SDK.
 
 Met de **AML** -vaardigheid kunt u AI-verrijking uitbreiden met een aangepast [Azure machine learning](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml) (AML)-model. Zodra een AML-model is [getraind en geïmplementeerd](https://docs.microsoft.com/azure/machine-learning/concept-azure-machine-learning-architecture#workflow), wordt het door een **AML** -vaardigheid geïntegreerd in AI-verrijking.
 
@@ -165,7 +168,7 @@ Naast uw AML is niet beschikbaar of het verzenden van niet-geslaagde status code
 
 Als de AML-service niet beschikbaar is of een HTTP-fout retourneert, wordt een beschrijvende fout met alle beschik bare Details over de HTTP-fout toegevoegd aan de indexerings geschiedenis.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 + [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)
 + [Problemen met de AML-service oplossen](https://docs.microsoft.com/azure/machine-learning/how-to-troubleshoot-deployment)

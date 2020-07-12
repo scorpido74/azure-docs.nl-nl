@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 1c86570850894a47f57a2d3587811411cc9a76eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac5f6b4d2d197bbd4f4aff9236837eab062b4a63
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77190015"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243304"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Externe services van de Azure API Management-service gebruiken
 De beschik bare beleids regels in azure API Management service kunnen een breed scala aan nuttige werk wijze hebben op basis van de inkomende aanvraag, het uitgaande antwoord en de basis configuratie-informatie. Als u echter met externe services van API Management beleid wilt werken, worden er veel meer mogelijkheden geopend.
@@ -26,7 +27,7 @@ De beschik bare beleids regels in azure API Management service kunnen een breed 
 U hebt eerder gezien hoe u kunt communiceren met de [Azure Event hub-service voor logboek registratie, bewaking en analyses](api-management-log-to-eventhub-sample.md). In dit artikel wordt uitgelegd hoe u kunt communiceren met een externe HTTP-gebaseerde service. Deze beleids regels kunnen worden gebruikt voor het activeren van externe gebeurtenissen of voor het ophalen van informatie die wordt gebruikt om de oorspronkelijke aanvraag en het antwoord op een of andere manier te manipuleren.
 
 ## <a name="send-one-way-request"></a>Send-eenrichtings aanvraag
-Mogelijk is de eenvoudigste externe interactie de brand-en-vergeet-stijl van een aanvraag waarmee een externe service op de hoogte wordt gebracht van een soort belang rijke gebeurtenis. Het controle stroom beleid `choose` kan worden gebruikt om te bepalen welke voor waarde u wilt gebruiken.  Als aan de voor waarde is voldaan, kunt u een externe HTTP-aanvraag indienen via het beleid voor het [aanvragen van een aanvraag voor eenmalige verzen ding](/azure/api-management/api-management-advanced-policies#SendOneWayRequest) . Dit kan een aanvraag zijn voor een berichten systeem zoals Hipchat of toegestane vertraging, of een e-mail-API zoals SendGrid of MailChimp, of voor essentiële ondersteunings incidenten zoals PagerDuty. Al deze berichten systemen hebben eenvoudige HTTP-Api's die kunnen worden aangeroepen.
+Mogelijk is de eenvoudigste externe interactie de brand-en-vergeet-stijl van een aanvraag waarmee een externe service op de hoogte wordt gebracht van een soort belang rijke gebeurtenis. Het controle stroom beleid `choose` kan worden gebruikt om te bepalen welke voor waarde u wilt gebruiken.  Als aan de voor waarde is voldaan, kunt u een externe HTTP-aanvraag indienen via het beleid voor het [aanvragen van een aanvraag voor eenmalige verzen ding](./api-management-advanced-policies.md#SendOneWayRequest) . Dit kan een aanvraag zijn voor een berichten systeem zoals Hipchat of toegestane vertraging, of een e-mail-API zoals SendGrid of MailChimp, of voor essentiële ondersteunings incidenten zoals PagerDuty. Al deze berichten systemen hebben eenvoudige HTTP-Api's die kunnen worden aangeroepen.
 
 ### <a name="alerting-with-slack"></a>Waarschuwingen met toegestane vertraging
 In het volgende voor beeld ziet u hoe u een bericht verzendt naar een ruimte voor de chat room als de status code van het HTTP-antwoord groter is dan of gelijk is aan 500. Een 500-bereik fout wijst op een probleem met de back-end-API dat de client van de API zichzelf niet kan oplossen. Normaal gesp roken is enige soort interventie op API Management onderdeel vereist.  
@@ -61,7 +62,7 @@ De toegestane vertraging is het principe van inkomende webhooks. Bij het configu
 ![Toegestane webhook](./media/api-management-sample-send-request/api-management-slack-webhook.png)
 
 ### <a name="is-fire-and-forget-good-enough"></a>Is de brand-en vergeet goed genoeg?
-Er zijn bepaalde afwegingen bij het gebruik van een brand-en-vergeet-stijl voor de aanvraag. Als de aanvraag om een of andere reden mislukt, wordt de fout niet gerapporteerd. In deze specifieke situatie is de complexiteit van het gebruik van een secundair systeem voor fout rapportage en de extra prestatie kosten voor het reageren op het antwoord niet gerechtvaardigd. Voor scenario's waarbij het van essentieel belang is om het antwoord te controleren, is het beleid voor het [verzenden van aanvragen](/azure/api-management/api-management-advanced-policies#SendRequest) een betere optie.
+Er zijn bepaalde afwegingen bij het gebruik van een brand-en-vergeet-stijl voor de aanvraag. Als de aanvraag om een of andere reden mislukt, wordt de fout niet gerapporteerd. In deze specifieke situatie is de complexiteit van het gebruik van een secundair systeem voor fout rapportage en de extra prestatie kosten voor het reageren op het antwoord niet gerechtvaardigd. Voor scenario's waarbij het van essentieel belang is om het antwoord te controleren, is het beleid voor het [verzenden van aanvragen](./api-management-advanced-policies.md#SendRequest) een betere optie.
 
 ## <a name="send-request"></a>Verzenden/aanvragen
 `send-request`Met het beleid kunt u een externe service gebruiken om complexe verwerkings functies uit te voeren en gegevens te retour neren naar de API Management-service die kan worden gebruikt voor verdere beleids verwerking.
@@ -212,7 +213,7 @@ Zodra u deze informatie hebt, kunt u aanvragen indienen voor alle back-end-syste
 Deze aanvragen worden in de juiste volg orde uitgevoerd. Dit is niet ideaal. 
 
 ### <a name="responding"></a>Reageert
-Als u het samengestelde antwoord wilt maken, kunt u het beleid voor [retour reacties](/azure/api-management/api-management-advanced-policies#ReturnResponse) gebruiken. Het `set-body` element kan een expressie gebruiken om een nieuw item samen te stellen `JObject` met alle onderdelen die als eigenschappen zijn Inge sloten.
+Als u het samengestelde antwoord wilt maken, kunt u het beleid voor [retour reacties](./api-management-advanced-policies.md#ReturnResponse) gebruiken. Het `set-body` element kan een expressie gebruiken om een nieuw item samen te stellen `JObject` met alle onderdelen die als eigenschappen zijn Inge sloten.
 
 ```xml
 <return-response response-variable-name="existing response variable">
@@ -286,4 +287,3 @@ In de configuratie van de tijdelijke aanduiding kunt u de resource van het dash 
 
 ## <a name="summary"></a>Samenvatting
 Azure API Management-service biedt een flexibel beleid dat selectief kan worden toegepast op HTTP-verkeer en waarmee back-end-services kunnen worden samengesteld. Of u uw API-gateway wilt verbeteren met waarschuwings functies, verificatie, validatie mogelijkheden of het maken van nieuwe samengestelde resources op basis van meerdere back-endservers, `send-request` maar het beleid en de bijbehorende beleids regels openen een wereld van mogelijkheden.
-

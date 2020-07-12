@@ -5,12 +5,12 @@ author: BharatNarasimman
 ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 326075b947ea61384681fb2353c27d3e1450156d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d9ebf77862f7b9b019507613e269126501abfd8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84735333"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244919"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Reverse proxy in azure Service Fabric
 Met omgekeerde proxy die in azure Service Fabric is ingebouwd, kunnen micro services die worden uitgevoerd in een Service Fabric cluster worden gedetecteerd en gecommuniceerd met andere services met http-eind punten.
@@ -117,7 +117,7 @@ De Service Fabric reverse-proxy probeert een service adres opnieuw op te lossen 
 
 Replica's of service-exemplaren kunnen echter een hostproces delen en kunnen ook een poort delen als deze wordt gehost door een webserver op basis van http.sys, waaronder:
 
-* [System .net. HttpListener](https://msdn.microsoft.com/library/system.net.httplistener%28v=vs.110%29.aspx)
+* [System .net. HttpListener](/dotnet/api/system.net.httplistener?view=netcore-3.1)
 * [Weblistener ASP.NET Core](https://docs.asp.net/latest/fundamentals/servers.html#weblistener)
 * [Katana](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.OwinSelfHost/)
 
@@ -155,7 +155,7 @@ Voor Service Fabric services die worden uitgevoerd binnen docker-samenstel bare 
 * [Omgekeerde-proxygebeurtenissen onderzoeken](service-fabric-reverse-proxy-diagnostics.md)
 * Bekijk een voor beeld van HTTP-communicatie tussen services in een [voorbeeld project op github](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started).
 * [Externe procedure aanroepen met Reliable Services externe toegang](service-fabric-reliable-services-communication-remoting.md)
-* [Web-API die gebruikmaakt van OWIN in Reliable Services](service-fabric-reliable-services-communication-webapi.md)
+* [Web-API die gebruikmaakt van OWIN in Reliable Services](./service-fabric-reliable-services-communication-aspnetcore.md)
 * [WCF-communicatie met behulp van Reliable Services](service-fabric-reliable-services-communication-wcf.md)
 
 [0]: ./media/service-fabric-reverseproxy/external-communication.png

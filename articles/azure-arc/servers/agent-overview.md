@@ -8,12 +8,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 07/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 38c487928f15e953a1c660c5007398bc5c2b3f7d
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: ed95b902c2c0768f50a0c6dadbfc617292932c2b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206614"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242947"
 ---
 # <a name="overview-of-azure-arc-for-servers-agent"></a>Overzicht van Azure Arc voor servers agent
 
@@ -62,7 +62,7 @@ Na de installatie van de verbonden machine-agent voor Windows, worden de volgend
 
     |Map |Beschrijving |
     |-------|------------|
-    |C:\Program Files\AzureConnectedMachineAgent |Standaardpad met de agent ondersteunings bestanden.|
+    |%ProgramFiles%\AzureConnectedMachineAgent |Standaardpad met de agent ondersteunings bestanden.|
     |%ProgramData%\AzureConnectedMachineAgent |Bevat de configuratie bestanden voor de agent.|
     |%ProgramData%\AzureConnectedMachineAgent\Tokens |Bevat de verkregen tokens.|
     |%ProgramData%\AzureConnectedMachineAgent\Config |Bevat het configuratie bestand van de agent waarin de `agentconfig.json` registratie gegevens van de service worden vastgelegd.|
@@ -99,7 +99,7 @@ Na de installatie van de verbonden machine-agent voor Windows, worden de volgend
 
 * Tijdens het verwijderen van de agent worden de volgende artefacten niet verwijderd.
 
-    * C:\Program Files\AzureConnectedMachineAgent\Logs
+    * %ProgramFiles%\AzureConnectedMachineAgent\Logs
     * %ProgramData%\AzureConnectedMachineAgent en submappen
     * %ProgramData%\GuestConfig
 
@@ -170,9 +170,9 @@ De volgende versies van het Windows-en Linux-besturings systeem worden officieel
 
 ### <a name="required-permissions"></a>Vereiste machtigingen
 
-- Voor de onboarding van machines bent u lid van de rol **Azure Connected machine** .
+* Voor de onboarding van machines bent u lid van de rol **Azure Connected machine** .
 
-- Als u een machine wilt lezen, wijzigen, opnieuw wilt indelen en verwijderen, bent u lid van de **Azure Connected machine resource Administrator** -rol. 
+* Als u een machine wilt lezen, wijzigen, opnieuw wilt indelen en verwijderen, bent u lid van de **Azure Connected machine resource Administrator** -rol. 
 
 ### <a name="azure-subscription-and-service-limits"></a>Azure-abonnement en service limieten
 
@@ -195,8 +195,8 @@ Als de uitgaande connectiviteit wordt beperkt door uw firewall of proxy server, 
 
 Service Tags:
 
-- AzureActiveDirectory
-- AzureTrafficManager
+* AzureActiveDirectory
+* AzureTrafficManager
 
 Adres
 
@@ -218,8 +218,8 @@ De Url's in de vorige tabel zijn vereist naast de IP-adres bereik gegevens van d
 
 Azure Arc voor servers (preview) is afhankelijk van de volgende Azure-resource providers in uw abonnement om deze service te kunnen gebruiken:
 
-- **Micro soft. HybridCompute**
-- **Micro soft. GuestConfiguration**
+* **Micro soft. HybridCompute**
+* **Micro soft. GuestConfiguration**
 
 Als ze niet zijn geregistreerd, kunt u ze registreren met de volgende opdrachten:
 

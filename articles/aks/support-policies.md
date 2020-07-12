@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: ec58f8df5507fd9c52950e880c062e6cad964b7a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: ce014fc338ebfad18b91ba65b614ca0a380a3f7c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106982"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243848"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Ondersteunings beleid voor de Azure Kubernetes-service
 
@@ -75,7 +75,7 @@ Micro soft biedt geen technische ondersteuning voor het volgende:
   > Micro soft kan de beste ondersteuning bieden voor open-source projecten van derden, zoals helm en Kured. Wanneer het open source-hulp programma van derden is geïntegreerd met de Kubernetes Azure-Cloud provider of andere AKS, ondersteunt micro soft de voor beelden en toepassingen van micro soft-documentatie.
 * Afgesloten bron software van derden. Deze software kan beveiligings scan Programma's en netwerk apparaten of-software omvatten.
 * Problemen met Build-outs met multiclouds of multivendors. Micro soft biedt bijvoorbeeld geen ondersteuning voor problemen die betrekking hebben op het uitvoeren van een federatieve oplossing voor de leverancier van de Cloud.
-* Andere netwerk aanpassingen dan die vermeld in de [AKS-documentatie](https://docs.microsoft.com/azure/aks/).
+* Andere netwerk aanpassingen dan die vermeld in de [AKS-documentatie](./index.yml).
   > [!NOTE]
   > Micro soft biedt ondersteuning voor problemen en fouten die betrekking hebben op netwerk beveiligings groepen (Nsg's). Microsoft Ondersteuning kunt bijvoorbeeld vragen beantwoorden over een NSG-fout bij het bijwerken of een onverwachte NSG of load balancer gedrag.
 
@@ -88,7 +88,7 @@ Micro soft en klanten delen de verantwoordelijkheid voor Kubernetes-worker-knoop
 * De basis installatie kopie van het besturings systeem heeft vereiste toevoegingen (zoals controle-en netwerk agents).
 * De worker-knoop punten ontvangen automatisch OS-patches.
 * Problemen met de Kubernetes-besturings vlak onderdelen die worden uitgevoerd op de worker-knoop punten, worden automatisch hersteld. Onderdelen zijn onder andere:
-  * Uitvoeren-proxy
+  * Kube-proxy
   * Netwerk tunnels die communicatie paden naar de hoofd onderdelen van de Kubernetes bieden
   * Kubelet
   * Docker-of Moby-daemon
