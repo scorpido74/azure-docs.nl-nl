@@ -3,12 +3,12 @@ title: 'Quickstart: Uw eerste portalquery'
 description: In deze quickstart volgt u de stappen om uw eerste query vanuit de Azure-portal uit te voeren met behulp van Azure Resource Graph Explorer.
 ms.date: 05/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: a4b8e0b792dfda1bbd1866444ddc6c4ec8d289b6
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: 1e506ee1b1c610381f300323f80c38eb6bf67caa
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148035"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958804"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Quickstart: Uw eerste Resource Graph-query uitvoeren met Azure Resource Graph Explorer
 
@@ -90,11 +90,11 @@ Als u voorbeelden van Resource Graph-query's wilt bekijken of als u wilt weten h
 
 - [Resource Graph Explorer-voorbeelddashboard 1](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-1/resourcegraphexplorer-sample-1.json)
 
-  [![Voorbeeldafbeelding van voorbeelddashboard 1](./media/arge-sample1-small.png)](./media/arge-sample1-large.png#lightbox)
+  :::image type="content" source="./media/arge-sample1-small.png" alt-text="Voorbeeldafbeelding van voorbeelddashboard 1" lightbox="./media/arge-sample1-large.png":::
 
 - [Resource Graph Explorer-voorbeelddashboard 2](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-2/resourcegraphexplorer-sample-2.json)
 
-  [![Voorbeeldafbeelding van voorbeelddashboard 2](./media/arge-sample2-small.png)](./media/arge-sample2-large.png#lightbox)
+  :::image type="content" source="./media/arge-sample2-small.png" alt-text="Voorbeeldafbeelding van voorbeelddashboard 2" lightbox="./media/arge-sample2-large.png":::
 
 > [!NOTE]
 > De aantallen en grafieken in de bovenstaande schermafbeeldingen van de voorbeelddashboards kunnen per Azure-omgeving verschillen.

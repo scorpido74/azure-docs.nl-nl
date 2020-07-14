@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: jrasnick
 ms.date: 06/09/2020
-ms.openlocfilehash: 766a41b61f32804c7d7f59c946530f8e1a7b869a
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 3f84cd92a4c4f96831d39cac783df6710c5ea5f4
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85296267"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513410"
 ---
 # <a name="quickstart-create-an-azure-synapse-analytics-sql-pool-by-using-an-arm-template"></a>Quickstart: Een Azure Synapse Analytics SQL-pool maken met een ARM-sjabloon
 
-Met deze sjabloon wordt een Azure Synapse Analytics SQL-pool gemaakt waarvoor Transparent Data Encryption is ingeschakeld. Synapse SQL-pool verwijst naar de functies voor datawarehousing voor ondernemingen, die algemeen beschikbaar zijn in Azure Synapse.
+Met deze Azure Resource Manager-sjabloon (ARM-sjabloon) wordt een Azure Synapse Analytics SQL-pool gemaakt waarvoor Transparent Data Encryption is ingeschakeld. Synapse SQL-pool verwijst naar de functies voor datawarehousing voor ondernemingen, die algemeen beschikbaar zijn in Azure Synapse.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -107,8 +107,8 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart hebt u een Azure Synapse Analytics SQL-pool gemaakt met behulp van een Azure Resource Manager-sjabloon en de implementatie gevalideerd. Als u meer wilt weten over Azure Synapse Analytics en Azure Resource Manager, vindt u meer informatie in de onderstaande artikelen.
+In deze quickstart hebt u een Azure Synapse Analytics SQL-pool gemaakt met behulp van een ARM-sjabloon en de implementatie gevalideerd. Als u meer wilt weten over Azure Synapse Analytics en Azure Resource Manager, vindt u meer informatie in de onderstaande artikelen.
 
 - Lees een [Overzicht van Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md)
 - Meer informatie over [Azure Resource Manager](../../azure-resource-manager/management/overview.md)
-- [Uw eerste Azure Resource Manager-sjabloon maken en implementeren](../../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+- [Uw eerste ARM-sjabloon maken en implementeren](../../azure-resource-manager/templates/template-tutorial-create-first-template.md)

@@ -4,21 +4,21 @@ description: In deze snelstartgids leert u hoe u een IoT Edge-apparaat maakt en 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/06/2019
+ms.date: 06/30/2020
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: e015999d8c1f60340fb30609c6563f770c5c824f
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: a5829057aed913ea824cbd2fd6b52369b5e70d88
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726210"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85801836"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>Quickstart: Uw eerste IoT Edge-module implementeren op een virtueel Linux-apparaat
 
-Probeer Azure IoT Edge uit in deze snelstart door containercode te implementeren op een virtueel IoT Edge-apparaat. Met IoT Edge kunt u code op uw apparaten op afstand beheren zodat u meer van uw workloads naar de rand kunt verzenden. Voor deze snelstart raden wij u aan een virtuele machine van Azure te gebruiken voor uw IoT Edge-apparaat, zodat u snel een testmachine kunt maken waarbij alle vereisten zijn geïnstalleerd en deze vervolgens kunt verwijderen wanneer u klaar bent.
+Probeer Azure IoT Edge uit in deze quickstart door containercode te implementeren op een virtueel Linux IoT Edge-apparaat. Met IoT Edge kunt u code op uw apparaten op afstand beheren zodat u meer van uw workloads naar de rand kunt verzenden. Voor deze quickstart kunt u het beste een virtuele machine van Azure voor uw IoT Edge-apparaat gebruiken, zodat u snel een testmachine kunt maken waarop de IoT Edge-service is geïnstalleerd en deze kunt verwijderen wanneer u klaar bent.
 
 In deze snelstart leert u de volgende zaken:
 
@@ -29,7 +29,7 @@ In deze snelstart leert u de volgende zaken:
 
 ![Diagram - Snelstartarchitectuur voor apparaat en cloud](./media/quickstart-linux/install-edge-full.png)
 
-In deze snelstart leert u hoe u een virtuele Linux-machine maakt die geconfigureerd is als IoT Edge-apparaat. Vervolgens implementeert u een module vanuit Azure Portal op uw apparaat. De module die u in deze snelstart implementeert, is een gesimuleerde sensor waarmee temperatuur-, luchtvochtigheids- en drukgegevens worden gegenereerd. De andere Azure IoT Edge-zelfstudies bouwen voort op het werk dat u hier doet door modules te implementeren waarmee de gesimuleerde gegevens worden geanalyseerd voor zakelijke inzichten.
+In deze quickstart leert u hoe u een virtuele Linux-machine maakt die is geconfigureerd als een IoT Edge-apparaat. Vervolgens implementeert u een module vanuit Azure Portal op uw apparaat. De module die in deze quickstart wordt gebruikt, is een gesimuleerde sensor waarmee temperatuur-, luchtvochtigheids- en drukgegevens worden gegenereerd. De andere Azure IoT Edge-zelfstudies bouwen voort op het werk dat u hier doet door aanvullende modules te implementeren waarmee de gesimuleerde gegevens worden geanalyseerd voor zakelijke inzichten.
 
 Als u nog geen actief abonnement op Azure hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free) aan voordat u begint.
 
@@ -42,33 +42,18 @@ Voeg de Azure IoT-extensie toe aan het exemplaar van Cloud Shell.
    ```azurecli-interactive
    az extension add --name azure-iot
    ```
-   
+
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
 Cloudresources:
 
-* Een resourcegroep voor het beheren van alle resources die u in deze snelstart maakt.
+* Een resourcegroep voor het beheren van alle resources die u in deze snelstart maakt. We gebruiken de voorbeeldnaam van de resourcegroep **IoTEdgeResources** in deze quickstart en de volgende zelfstudies.
 
    ```azurecli-interactive
    az group create --name IoTEdgeResources --location westus2
    ```
-
-IoT Edge-apparaat:
-
-* Een virtueel Linux-apparaat of een virtuele Linux-computer die fungeert als uw IoT Edge-apparaat. U moet de door Microsoft geleverde virtuele [Azure IoT Edge-machine op Ubuntu](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu) gebruiken, waarmee alles dat u nodig hebt om IoT Edge op een apparaat uit te voeren vooraf wordt geïnstalleerd. Ga akkoord met de gebruiksvoorwaarden en maak deze virtuele machine met de volgende opdrachten:
-
-   ```azurecli-interactive
-   az vm image terms accept --urn microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest
-   az vm create --resource-group IoTEdgeResources --name EdgeVM --image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys
-   ```
-
-   Het maken en starten van de nieuwe virtuele machine kan een paar minuten duren.
-
-   Wanneer u een nieuwe virtuele machine maakt, noteert u het **publicIpAddress**, dat deel uitmaakt van de uitvoer van de opdracht create. U gebruikt dit openbare IP-adres later in deze quickstart om verbinding te maken met de virtuele machine.
-
-* Als u liever wilt dat Azure IoT Edge-runtime op uw eigen apparaat wordt uitgevoerd, volgt u de instructies in [Azure IoT Edge-runtime installeren op Linux](how-to-install-iot-edge-linux.md).
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 
@@ -76,7 +61,7 @@ Begin met de snelstart door een IoT Hub met Azure CLI te maken.
 
 ![Diagram - Een IoT-hub maken in de cloud](./media/quickstart-linux/create-iot-hub.png)
 
-Het gratis niveau van IoT Hub werkt voor deze snelstart. Als u in het verleden IoT Hub hebt gebruikt en al een gratis hub hebt gemaakt, kunt u die IoT-hub gebruiken. Elk abonnement biedt toegang tot slechts één gratis IoT-hub.
+Het gratis niveau van IoT Hub werkt voor deze snelstart. Als u in het verleden IoT Hub hebt gebruikt en al een hub hebt gemaakt, kunt u die IoT-hub gebruiken.
 
 Met de volgende code wordt een gratis **F1**-hub gemaakt in de resourcegroep **IoTEdgeResources**. Vervang `{hub_name}` door een unieke naam voor uw IoT-hub.
 
@@ -84,7 +69,7 @@ Met de volgende code wordt een gratis **F1**-hub gemaakt in de resourcegroep **I
    az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 --partition-count 2
    ```
 
-   Als er een fout optreedt omdat er al één gratis hub in uw abonnement is, wijzigt u de SKU in **S1**. Als u het foutbericht ontvangt dat de naam van de IoT Hub niet beschikbaar is, betekent dit dat iemand anders al een hub met die naam heeft. Probeer een andere naam.
+   Als er een fout optreedt omdat er al één gratis hub in uw abonnement is, wijzigt u de SKU in **S1**. Elk abonnement biedt toegang tot slechts één gratis IoT-hub. Als u het foutbericht ontvangt dat de naam van de IoT Hub niet beschikbaar is, betekent dit dat iemand anders al een hub met die naam heeft. Probeer een andere naam.
 
 ## <a name="register-an-iot-edge-device"></a>Een IoT Edge-apparaat registreren
 
@@ -99,53 +84,86 @@ Omdat IoT Edge-apparaten zich anders gedragen en anders kunnen worden beheerd da
 1. Voer in Azure Cloud Shell de volgende opdracht in om een ​​apparaat met de naam **myEdgeDevice** in uw hub te maken.
 
    ```azurecli-interactive
-   az iot hub device-identity create --hub-name {hub_name} --device-id myEdgeDevice --edge-enabled
+   az iot hub device-identity create --device-id myEdgeDevice --edge-enabled --hub-name {hub_name}
    ```
 
    Als u een foutbericht over iothubowner-beleidssleutels ontvangt, controleer dan of in de cloudshell de meest recente versie van de azure-iot-extensie wordt uitgevoerd.
 
-2. Haal de verbindingsreeks voor uw apparaat op, zodat uw fysieke apparaat aan de bijbehorende identiteit in IoT Hub wordt gekoppeld.
+2. Bekijk de verbindingsreeks voor uw apparaat. Hiermee wordt uw fysieke apparaat aan de bijbehorende identiteit in IoT Hub gekoppeld. De verbindingsreeks bevat de naam van uw IoT-hub, de naam van uw apparaat en vervolgens een gedeelde sleutel waarmee verbindingen tussen de twee worden geverifieerd. Deze verbindingsreeks wordt in de volgende sectie opnieuw gebruikt om uw IoT Edge-apparaat in te stellen.
 
    ```azurecli-interactive
    az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name {hub_name}
    ```
 
-3. Kopieer de waarde van de sleutel `connectionString` uit de JSON-uitvoer en sla deze op. Deze waarde is de verbindingsreeks van het apparaat. In de volgende sectie gaat u deze verbindingsreeks gebruiken om de IoT Edge-runtime te configureren.
-
-   ![Verbindingsreeks ophalen uit de CLI-uitvoer](./media/quickstart/retrieve-connection-string.png)
+   ![Verbindingsreeks uit de CLI-uitvoer weergeven](./media/quickstart/retrieve-connection-string.png)
 
 ## <a name="configure-your-iot-edge-device"></a>Een IoT Edge-apparaat configureren
 
-Start de Azure IoT Edge-runtime op uw IoT Edge-apparaat.
+Maak een virtuele machine met de Azure IoT Edge-runtime.
 
 ![Diagram - De runtime op apparaat starten](./media/quickstart-linux/start-runtime.png)
 
-De IoT Edge-runtime wordt op alle IoT Edge-apparaten geïmplementeerd. Deze bevat drie onderdelen. De **IoT Edge-beveiligingsdaemon** wordt telkens gestart wanneer een IoT Edge-apparaat wordt opgestart en start het apparaat op door de IoT Edge-agent te starten. De **IoT Edge-agent** faciliteert de implementatie en bewaking van modules op het IoT Edge-apparaat, inclusief de IoT Edge-hub. Met de **IoT Edge-hub** wordt de communicatie tussen modules op het IoT Edge-apparaat en tussen het apparaat en IoT Hub beheerd.
+De IoT Edge-runtime wordt op alle IoT Edge-apparaten geïmplementeerd. Deze bevat drie onderdelen. De *IoT Edge-beveiligingsdaemon* wordt telkens gestart wanneer een IoT Edge-apparaat wordt opgestart en start het apparaat op door de IoT Edge-agent te starten. De *IoT Edge-agent* faciliteert de implementatie en bewaking van modules op het IoT Edge-apparaat, inclusief de IoT Edge-hub. Met de *IoT Edge-hub* wordt de communicatie tussen modules op het IoT Edge-apparaat en tussen het apparaat en IoT Hub beheerd.
 
-Tijdens de installatie van de runtime geeft u een apparaatverbindingsreeks op. Gebruik de tekenreeks die u hebt opgehaald via de Azure CLI. Deze tekenreeks koppelt uw fysieke apparaat aan de IoT Edge-apparaat-id in Azure.
+Tijdens de installatie van de runtime geeft u een apparaatverbindingsreeks op. Dit is de tekenreeks die u hebt opgehaald via de Azure CLI. Deze tekenreeks koppelt uw fysieke apparaat aan de IoT Edge-apparaat-id in Azure.
 
-### <a name="set-the-connection-string-on-the-iot-edge-device"></a>De verbindingsreeks instellen op het IoT Edge-apparaat
+### <a name="deploy-the-iot-edge-device"></a>Het IoT Edge-apparaat implementeren
 
-Als u op de virtuele machine voor Ubuntu de Azure IoT Edge gebruikt die in de vereisten is beschreven, is de IoT Edge-runtime al op uw apparaat geïnstalleerd. U hoeft alleen nog uw apparaat te configureren met de apparaatverbindingsreeks die u in de vorige sectie hebt opgehaald. U kunt dit op afstand doen zonder verbinding te maken met de virtuele machine. Voer de volgende opdracht uit, waarbij u `{device_connection_string}` door uw eigen reeks vervangt.
+In deze sectie wordt een Azure Resource Manager-sjabloon gebruikt om een nieuwe virtuele machine te maken en de IoT Edge-runtime hierop te installeren. Als u in plaats daarvan uw eigen Linux-apparaat wilt gebruiken, kunt u de installatiestappen in [De Azure IoT Edge-runtime op Linux installeren](how-to-install-iot-edge-linux.md) volgen en vervolgens terugkeren naar deze quickstart.
+
+Gebruik de volgende CLI-opdracht om uw IoT Edge-apparaat te maken op basis van de vooraf gemaakte sjabloon [iotedge-vm-deploy](https://github.com/Azure/iotedge-vm-deploy).
+
+* Bash- of Cloud Shell-gebruikers kunnen de volgende opdracht naar een teksteditor kopiëren, de tekst van de tijdelijke aanduiding vervangen door hun eigen informatie en de tijdelijke aanduiding kopiëren naar het Bash- of Cloud Shell-venster:
 
    ```azurecli-interactive
-   az vm run-command invoke -g IoTEdgeResources -n EdgeVM --command-id RunShellScript --script "/etc/iotedge/configedge.sh '{device_connection_string}'"
+   az deployment group create \
+   --resource-group IoTEdgeResources \
+   --template-uri "https://aka.ms/iotedge-vm-deploy" \
+   --parameters dnsLabelPrefix='my-edge-vm' \
+   --parameters adminUsername='azureUser' \
+   --parameters deviceConnectionString=$(az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) \
+   --parameters authenticationType='password' \
+   --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
    ```
 
-Als u IoT Edge op uw lokale computer of op een ARM32- of ARM64-apparaat uitvoert, moet u de IoT Edge-runtime en de vereisten installeren op uw apparaat. Volg de instructies in [Azure IoT Edge-runtime installeren op Linux](how-to-install-iot-edge-linux.md) en ga vervolgens terug naar deze snelstart.
+* PowerShell-gebruiken kunnen de volgende opdracht naar hun PowerShell-venster kopiëren en vervolgens de tekst van de tijdelijke aanduiding vervangen door uw eigen informatie:
+
+   ```azurecli
+   az deployment group create `
+   --resource-group IoTEdgeResources `
+   --template-uri "https://aka.ms/iotedge-vm-deploy" `
+   --parameters dnsLabelPrefix='my-edge-vm1' `
+   --parameters adminUsername='azureUser' `
+   --parameters deviceConnectionString=$(az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) `
+   --parameters authenticationType='password' `
+   --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
+   ```
+
+Voor deze sjabloon worden de volgende parameters gebruikt:
+
+| Parameter | Beschrijving |
+| --------- | ----------- |
+| **resource-group** | De resourcegroep waarin de resources worden gemaakt. Gebruik de standaardinstelling **IoTEdgeResources** die in dit artikel is gebruikt of geef de naam op van een bestaande resourcegroep in uw abonnement. |
+| **template-uri** | Een verwijzing naar de Resource Manager-sjabloon die we gebruiken. |
+| **dnsLabelPrefix** | Een tekenreeks die wordt gebruikt om de hostnaam van de virtuele machine te maken. Gebruik het voorbeeld **my-edge-vm** of geef een nieuwe tekenreeks op. |
+| **adminUsername** | Een gebruikersnaam voor het beheerdersaccount van de virtuele machine. Gebruik het voorbeeld **azureUser** of geef een nieuwe gebruikersnaam op. |
+| **deviceConnectionString** | De verbindingsreeks van de apparaat-id in IoT Hub, die wordt gebruikt om de IoT Edge-runtime op de virtuele machine te configureren. De CLI-opdracht in deze parameter haalt de verbindingsreeks voor u op. Vervang de tekst van de tijdelijke aanduiding door de naam van uw IoT-hub. |
+| **authenticationType** | De verificatiemethode voor het beheerdersaccount. Deze quickstart maakt gebruik van **wachtwoordverificatie**, maar u kunt deze parameter ook instellen op **sshPublicKey**. |
+| **adminPasswordOrKey** | Het wachtwoord of de waarde voor de SSH-sleutel voor het beheerdersaccount. Vervang de tekst van de tijdelijke aanduiding door een veilig wachtwoord. Uw wachtwoord moet ten minste 12 tekens lang zijn en drie van de volgende vier typen tekens bevatten: kleine letters, hoofdletters, cijfers en speciale tekens. |
+
+Zodra de implementatie is voltooid, ontvangt u de uitvoer met JSON-indeling in de CLI die de SSH-gegevens bevat om verbinding te maken met de virtuele machine. Kopieer de waarde van de **openbare SSH-vermelding** in het gedeelte met **uitvoer**:
+
+   ![De openbare SSH-waarde ophalen uit de uitvoer](./media/quickstart-linux/outputs-public-ssh.png)
 
 ### <a name="view-the-iot-edge-runtime-status"></a>De IoT Edge runtime-status bekijken
 
-De overige opdrachten in deze snelstart worden toegepast op uw IoT Edge-apparaat zelf, zodat u kunt zien wat er op het apparaat gebeurt. Als u een virtuele machine gebruikt, moet u verbinding maken met die machine met het openbare IP-adres dat is uitgevoerd door de maakopdracht. U kunt het openbare IP-adres ook vinden op de overzichtspagina van de virtuele machine in de Azure-portal. Gebruik de volgende opdracht om verbinding te maken met uw virtuele machine. Vervang `{azureuser}` als u een andere gebruikersnaam hebt gebruikt dan de naam die is voorgesteld in de vereisten. Vervang `{publicIpAddress}` door het adres van de computer.
+De overige opdrachten in deze snelstart worden toegepast op uw IoT Edge-apparaat zelf, zodat u kunt zien wat er op het apparaat gebeurt. Als u een virtuele machine gebruikt, maakt u nu verbinding met die machine. Gebruik hiervoor de gebruikersnaam van de beheerder die u hebt ingesteld en de DNS-naam die door de implementatieopdracht is uitgevoerd. U kunt de DNS-naam ook vinden op de overzichtspagina van de virtuele machine in Azure Portal. Gebruik de volgende opdracht om verbinding te maken met uw virtuele machine. Vervang `{admin username}` en `{DNS name}` door uw eigen waarden.
 
    ```console
-   ssh azureuser@{publicIpAddress}
+   ssh {admin username}@{DNS name}
    ```
 
-Controleer of de runtime goed is geïnstalleerd en geconfigureerd op uw IoT Edge-apparaat.
-
->[!TIP]
->U hebt verhoogde bevoegdheden nodig om `iotedge`-opdrachten uit te voeren. Nadat u zich de eerste keer na de installatie van de IoT Edge-runtime hebt afgemeld en opnieuw hebt aangemeld, worden uw machtigingen automatisch bijgewerkt. Gebruik tot die tijd `sudo` voorafgaand aan de opdrachten.
+Zodra er verbinding met uw virtuele machine is gemaakt, controleert u of de runtime goed is geïnstalleerd en geconfigureerd op uw IoT Edge-apparaat.
 
 1. Controleer of de IoT Edge-beveiligingsdaemon wordt uitgevoerd als een systeemservice.
 
@@ -155,13 +173,16 @@ Controleer of de runtime goed is geïnstalleerd en geconfigureerd op uw IoT Edge
 
    ![Zie hoe de IoT Edge-beveiligingsdeamon wordt uitgevoerd als een systeemservice](./media/quickstart-linux/iotedged-running.png)
 
+   >[!TIP]
+   >U hebt verhoogde bevoegdheden nodig om `iotedge`-opdrachten uit te voeren. Nadat u zich de eerste keer na de installatie van de IoT Edge-runtime hebt afgemeld en opnieuw hebt aangemeld, worden uw machtigingen automatisch bijgewerkt. Gebruik tot die tijd `sudo` voorafgaand aan de opdrachten.
+
 2. Als u problemen met de service moet oplossen, haalt u de servicelogboeken op.
 
    ```bash
    journalctl -u iotedge
    ```
 
-3. Bekijk de modules die op uw apparaat worden uitgevoerd.
+3. Bekijk alle modules die op uw IoT Edge-apparaat worden uitgevoerd. Aangezien de service net voor het eerst is gestart, zou u moeten zien dat alleen de **edgeAgent**-module actief is. De edgeAgent-module wordt standaard uitgevoerd en helpt bij het installeren en starten van aanvullende modules die u op uw apparaat implementeert.
 
    ```bash
    sudo iotedge list
@@ -174,6 +195,7 @@ Uw IoT Edge-apparaat is nu geconfigureerd. Het is gereed voor de uitvoering van 
 ## <a name="deploy-a-module"></a>Een module implementeren
 
 Beheer uw Azure IoT Edge-apparaat vanuit de cloud om een module te implementeren waarmee telemetriegegevens worden verzonden naar IoT Hub.
+
 ![Diagram - Module implementeren vanuit cloud op apparaat](./media/quickstart-linux/deploy-module.png)
 
 [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
@@ -182,7 +204,7 @@ Beheer uw Azure IoT Edge-apparaat vanuit de cloud om een module te implementeren
 
 In deze snelstart hebt u een nieuw IoT Edge-apparaat gemaakt en de IoT Edge-runtime erop geïnstalleerd. Vervolgens hebt u de Azure-portal gebruikt om een IoT Edge-module te implementeren om te worden uitgevoerd op het apparaat zonder dat er wijzigingen aan het apparaat zelf hoefden te worden aangebracht.
 
-In dit geval worden met de module die u hebt gepusht voorbeeldgegevens gemaakt die u voor testen kunt gebruiken. De gesimuleerde temperatuursensormodule genereert omgevingsgegevens die u later kunt gebruiken voor testen. De gesimuleerde sensor bewaakt zowel een machine als de omgeving rond die machine. Deze sensor kan zich bijvoorbeeld in een serverruimte, in een fabriek of op een windturbine bevinden. Het bericht bevat informatie over de omgevingstemperatuur, de luchtvochtigheid, de machinetemperatuur en de druk, evenals een tijdstempel. In de IoT Edge-zelfstudies worden gegevens van deze module gebruikt als testgegevens voor analyses.
+In dit geval worden met de module die u hebt gepusht, gegevens voor een voorbeeldomgeving gegenereerd die u later voor testen kunt gebruiken. De gesimuleerde sensor bewaakt zowel een machine als de omgeving rond die machine. Deze sensor kan zich bijvoorbeeld in een serverruimte, in een fabriek of op een windturbine bevinden. Het bericht bevat informatie over de omgevingstemperatuur, de luchtvochtigheid, de machinetemperatuur en de druk, evenals een tijdstempel. In de IoT Edge-zelfstudies worden gegevens van deze module gebruikt als testgegevens voor analyses.
 
 Open opnieuw de opdrachtprompt op uw IoT Edge-apparaat of gebruik de SSH-verbinding vanuit de Azure CLI. Bevestig dat de module die vanuit de cloud is geïmplementeerd, op uw IoT Edge -apparaat wordt uitgevoerd:
 

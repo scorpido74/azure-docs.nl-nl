@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: banders
-ms.openlocfilehash: 8552b6732736d1d10711479639fa45114f8b039b
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 5fb8a9cd5e00bf3a6ebeddaf44a09ac48b94fe7c
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298001"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849075"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Per factuur betalen voor uw Azure-abonnement
 
@@ -42,28 +42,28 @@ Als u wilt overstappen op betalen via factuur, dient u uw factuur per cheque/dir
 
 5. Voer de volgende gegevens in het vak **Details** in en selecteer **Volgende**.
 
-         New or existing customer:
-         If existing, current payment method:
-         Order ID (requesting for invoice option):
-         Account Admins Live ID (or Org ID) (should be company domain):
-         Commerce Account ID:
-         Company Name (as registered under VAT or Government Website):
-         Company Address (as registered under VAT or Government Website):
-         Company Website:
-         Country:
-         TAX ID/ VAT ID:
-         Company Established on (Year):
-         Any prior business with Microsoft:
-         Contact Name:
-         Contact Phone:
-         Contact Email:
-         Justification on why you prefer Invoice option over credit card:
+     Nieuwe of bestaande klant:<br>
+     Indien bestaande klant, huidige betalingswijze:<br>
+     Order-id (optie voor betaling per factuur aanvragen):<br>
+     Live ID (of organisatie-id) van accountbeheerders (moet bedrijfsdomein zijn):<br>
+     Commerce-account-id:<br>
+     Naam van het bedrijf (zoals geregistreerd voor btw of overheidswebsite):<br>
+     Adres van het bedrijf (zoals geregistreerd voor btw of overheidswebsite):<br>
+     Website van bedrijf:<br>
+     Land/regio:<br>
+     BELASTING-ID/BTW-NUMMER:<br>
+     Bedrijf opgericht in (jaar):<br>
+     Eventuele eerdere zaken met Microsoft:<br>
+     Naam van contactpersoon:<br>
+     Telefoonnummer van contactpersoon:<br>
+     E-mailadres van contactpersoon:<br>
+     Verklaring waarom u betaling liever via factuur dan creditcard verwerkt:<br>
 
-         For cores increase, provide the following additional information:
+     Geef voor verhoging van kerngeheugens de volgende aanvullende informatie op:<br>
 
-         (Old quota) Existing Cores:
-         (New quota) Requested cores:
-         Specific region & series of Subscription:
+     (Oud quotum) Bestaande kerngeheugens:<br>
+     (Nieuw quotum) Aangevraagde kerngeheugens:<br>
+     Specifieke regio en serie van abonnement:<br>
 
     - De **Bedrijfsnaam** en het **Bedrijfsadres** moeten overeenkomen met de informatie die u hebt opgegeven voor het Azure-account. Als u de informatie wilt weergeven of bijwerken, raadpleegt u [Profielgegevens van uw Azure-account wijzigen](change-azure-account-profile.md).
     - Voeg de gegevens over de contactpersoon voor facturering toe aan Azure Portal voordat de kredietlimiet kan worden goedgekeurd. De contactgegevens moeten zijn gerelateerd aan de afdelingen Crediteuren of Financiën van het bedrijf. Als u de gegevens van de contactpersoon voor facturering wilt bijwerken, gaat u naar het [Azure-accountcentrum](https://account.azure.com/Profile).

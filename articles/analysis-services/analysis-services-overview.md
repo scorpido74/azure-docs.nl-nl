@@ -4,16 +4,16 @@ description: Meer informatie over Azure Analysis Services, een volledig beheerd 
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 04/13/2020
+ms.date: 06/24/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 0fb0e9e2611ed882bffa1df62adeb617e7211354
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: f1e70c5b7eb4efdde1bfc20b1ec3e058bfa5b054
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84191972"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85918950"
 ---
 # <a name="what-is-azure-analysis-services"></a>Wat is Azure Analysis Services?
 
@@ -65,14 +65,13 @@ Deze laag is de meest geschikte voor essentiële productietoepassingen waarvoor 
 |S1    |    100     |    25     |
 |S2    |    200     |    50     |
 |S4    |    400     |    100     |
-|S8 <sup>[1](#depr)</sup>, <sup>[2](#rec)</sup>    |    320    |    200     |
-|S9 <sup>[1](#depr)</sup>, <sup>[2](#rec)</sup>    |    640    |    400     |
-|S8v2 <sup>[1](#depr)</sup>   |    640     |    200     |
-|S9v2 <sup>[1](#depr)</sup>    |    1280    |    400     |
+|S8 <sup>[1](#naar)</sup>, <sup>[2](#rec)</sup>   |    320    |    200     |
+|S9 <sup>[1](#naar)</sup>, <sup>[2](#rec)</sup>    |    640    |    400     |
+|S8v2 <sup>[1](#naar)</sup>   |    640     |    200     |
+|S9v2 <sup>[1](#naar)</sup>    |    1280    |    400     |
 
-<a name="depr">1</a>: niet beschikbaar in alle regio’s.   
-<a name="rec">2</a>: dit abonnement is afgeschaft. v2 wordt aanbevolen.
-
+<a name="naar">1</a>: niet beschikbaar in alle regio’s.   
+<a name="rec">2</a> - v2 wordt aanbevolen.
 
 ## <a name="availability-by-region"></a>Beschikbaarheid per regio
 
@@ -86,15 +85,15 @@ Azure Analysis Services wordt ondersteund in regio's in de hele wereld. Onderste
 |Canada - midden    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
 |VS - oost     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
 |VS - oost 2     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
-|VS - oost 2     |     S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2   |    1    |
+|VS - oost 2     |     S8, S9, S8v2, S9v2   |    1    |
 |VS - noord-centraal     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
 |VS - centraal     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |VS - zuid-centraal     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |VS - west-centraal   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
 |VS - west     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
-|VS - west     |    S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2   |    2  |
+|VS - west     |    S8, S9, S8v2, S9v2   |    2  |
 |VS - west 2    |    B1, B2, S0, S1, S2, S4, D1    |    3   |
-|VS - west 2    |    S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2  |    1     |
+|VS - west 2    |    S8, S9, S8v2, S9v2  |    1     |
 
 ### <a name="europe"></a>Europa
 
@@ -104,17 +103,17 @@ Azure Analysis Services wordt ondersteund in regio's in de hele wereld. Onderste
 |Europa - noord     |    S8v2, S9v2      |    3     |
 |Verenigd Koninkrijk Zuid     |    B1, B2, S0, S1, S2, S4, D1      |     1    |
 |Europa -west     |    B1, B2, S0, S1, S2, S4, D1   |    7    |
-|Europa -west    |   S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2  |  1  |
+|Europa -west    |   S8, S9, S8v2, S9v2  |  1  |
 
 ### <a name="asia-pacific"></a>Azië en Stille Oceaan 
 
 |Regio  | Ondersteunde abonnementen | Queryreplica's (alleen Standard-abonnementen) |
 |---------|---------|:---------:|
 |Australië - oost     |    B1, B2, S0, S1, S2, S4     |    3     |
-|Australië - oost     |    S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2    |    1     |
+|Australië - oost     |    S8, S9, S8v2, S9v2    |    1     |
 |Australië - zuidoost     | B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Japan - oost     |   B1, B2, S0, S1, S2, S4, D1       |    1     |
-|Azië - zuidoost     |     B1, B2, S0, S1, S2, S4, S8<sup>[2](#rec)</sup>, S9<sup>[2](#rec)</sup>, S8v2, S9v2, D1     |   1      |
+|Azië - zuidoost     |     B1, B2, S0, S1, S2, S4, S8, S9, S8v2, S9v2, D1     |   1      |
 |India - west     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 
 ## <a name="scale-to-your-needs"></a>Schalen naar uw behoeften
@@ -133,15 +132,17 @@ Net zoals bij het wijzigen van lagen, kunt u queryreplica's uitschalen als dat n
 
 ## <a name="pricing"></a>Prijzen
 
-Totale kosten zijn afhankelijk van een aantal factoren; bijvoorbeeld uw gekozen regio, laag, queryreplica's en onderbreken/hervatten. Gebruik de calculator voor [Prijzen voor Azure Analysis Services](https://azure.microsoft.com/pricing/details/analysis-services/) om typische prijzen voor uw regio te bepalen. Dit hulpprogramma berekent prijzen voor één single-serverexemplaar voor één regio. Denk eraan dat queryreplica's worden gefactureerd tegen hetzelfde tarief als de server. 
+De totale kosten zijn afhankelijk van een aantal factoren. Bijvoorbeeld uw gekozen regio, laag, queryreplica's en onderbreken/hervatten. Gebruik de calculator voor [Prijzen voor Azure Analysis Services](https://azure.microsoft.com/pricing/details/analysis-services/) om typische prijzen voor uw regio te bepalen. Dit hulpprogramma berekent prijzen voor één single-serverexemplaar voor één regio. Denk eraan dat queryreplica's worden gefactureerd tegen hetzelfde tarief als de server. 
 
 ## <a name="built-on-sql-server-analysis-services"></a>Gebaseerd op SQL Server Analysis Services
 
 Azure Analysis Services is compatibel met veel geweldige functies die al deel uitmaken van SQL Server Analysis Services Enterprise Edition. Azure Analysis Services ondersteunt tabellarische modellen met het [compatibiliteitsniveau](analysis-services-compat-level.md) 1200 of hoger. Tabellarische modellen zijn constructies voor relationele modellering (model, tabellen, kolommen), geformuleerd in tabellarische metagegevensobjectdefinities in TMSL- (Tabular Model Scripting Language) en TOM-code (Tabular Object Model. Partities, perspectieven, beveiliging op rijniveau, bidirectionele relaties en vertalingen worden allemaal ondersteund\*. Multidimensionale modellen en PowerPivot voor SharePoint *worden niet* ondersteund in Azure Analysis Services.
 
-Tabellarische modellen in zowel in-memory- als DirectQuery-modi worden ondersteund. In de in-memory-modus (standaard) ondersteunen tabellarische modellen meerdere gegevensbronnen. Omdat modelgegevens in hoge mate worden gecomprimeerd en in het geheugen worden gecachet, biedt deze modus de snelste queryrespons op grote hoeveelheden gegevens. Deze modus biedt ook de meeste flexibiliteit voor complexe gegevenssets en query's. Partitionering maakt incrementele belastingen mogelijk, verhoogt de parallellisatie en vermindert het geheugenverbruik. Andere geavanceerde functies voor gegevensmodellering, zoals berekende tabellen, en alle DAX-functies worden ondersteund. Geheugenmodellen moeten worden vernieuwd (verwerkt) om gecachete gegevens uit gegevensbronnen bij te werken. Dankzij Azure-service-principal-ondersteuning bieden onbeheerde vernieuwingsbewerkingen met PowerShell, TOM, TMSL en REST flexibiliteit om ervoor te zorgen dat uw modelgegevens altijd up-to-date zijn. 
+Tabellarische modellen in zowel in-memory- als DirectQuery-modi worden ondersteund. In de in-memory-modus (standaard) ondersteunen tabellarische modellen meerdere gegevensbronnen. Omdat modelgegevens in hoge mate worden gecomprimeerd en in het geheugen worden gecachet, biedt deze modus de snelste queryrespons op grote hoeveelheden gegevens. Deze modus biedt ook de meeste flexibiliteit voor complexe gegevenssets en query's. 
 
-DirectQuery-modus* maakt gebruik van de relationele back-end-database voor opslag en query-uitvoering. Extreem grote gegevenssets in afzonderlijke SQL Server-, SQL Server Data Warehouse-, Azure SQL Database-, Azure Synapse Analytics- (SQL Data Warehouse), Oracle- en Teradata-gegevensbronnen worden ondersteund. Backend-gegevenssets kunnen het beschikbare serverresourcesgeheugen overschrijden. Complexe scenario's voor het vernieuwen van gegevensmodellen zijn niet nodig. Er zijn ook enkele beperkingen, zoals beperkte gegevensbrontypen en DAX-formulebeperkingen, en enkele geavanceerde functies voor gegevensmodellering worden niet ondersteund. Zie [DirectQuery-modus](https://docs.microsoft.com/analysis-services/tabular-models/directquery-mode-ssas-tabular)voordat u bepaalt wat voor u de beste modus is.
+Partitionering maakt incrementele belastingen mogelijk, verhoogt de parallellisatie en vermindert het geheugenverbruik. Andere geavanceerde functies voor gegevensmodellering, zoals berekende tabellen, en alle DAX-functies worden ondersteund. Geheugenmodellen moeten worden vernieuwd (verwerkt) om gecachete gegevens uit gegevensbronnen bij te werken. Dankzij Azure-service-principal-ondersteuning bieden onbeheerde vernieuwingsbewerkingen met PowerShell, TOM, TMSL en REST flexibiliteit om ervoor te zorgen dat uw modelgegevens altijd up-to-date zijn. 
+
+DirectQuery-modus* maakt gebruik van de relationele back-end-database voor opslag en query-uitvoering. Extreem grote gegevenssets in afzonderlijke SQL Server-, SQL Server Data Warehouse-, Azure SQL Database-, Azure Synapse Analytics- (voorheen SQL Data Warehouse), Oracle- en Teradata-gegevensbronnen worden ondersteund. Backend-gegevenssets kunnen het beschikbare serverresourcesgeheugen overschrijden. Complexe scenario's voor het vernieuwen van gegevensmodellen zijn niet nodig. Er zijn ook enkele beperkingen, zoals beperkte gegevensbrontypen en DAX-formulebeperkingen, en enkele geavanceerde functies voor gegevensmodellering worden niet ondersteund. Zie [DirectQuery-modus](https://docs.microsoft.com/analysis-services/tabular-models/directquery-mode-ssas-tabular)voordat u bepaalt wat voor u de beste modus is.
 
 \* Welke functies beschikbaar zijn hangt af van de laag.
 

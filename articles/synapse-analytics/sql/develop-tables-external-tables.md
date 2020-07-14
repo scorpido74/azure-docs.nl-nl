@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: bf014c7188232f07a399cc3e438d1d894c96a233
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 7c795e6077bc5a7b755a388a6f50848ad6094d48
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701439"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921809"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Externe tabellen gebruiken met Synapse SQL
 
@@ -96,13 +96,17 @@ data_source_name
 Hiermee geeft u de naam voor de gegevensbron op die door de gebruiker is gedefinieerd. De naam moet uniek zijn binnen de database.
 
 #### <a name="location"></a>Locatie
-LOCATION = `'<prefix>://<path>'`: geeft het verbindingsprotocol en het pad naar de externe gegevensbron aan. Het pad kan een container bevatten in de vorm van `'<prefix>://<path>/container'` en een map in de vorm van `'<prefix>://<path>/container/folder'`.
+LOCATION = `'<prefix>://<path>'`: geeft het verbindingsprotocol en het pad naar de externe gegevensbron aan. De volgende patronen kunnen worden gebruikt voor locatie:
 
 | Externe gegevensbron        | Voorvoegsel voor locatie | Pad voor locatie                                         |
 | --------------------------- | --------------- | ----------------------------------------------------- |
 | Azure Blob Storage          | `wasb[s]`       | `<container>@<storage_account>.blob.core.windows.net` |
+|                             | `https`         | `<storage_account>.blob.core.windows.net/<container>/subfolders` |
 | Azure Data Lake Store Gen 1 | `adl`           | `<storage_account>.azuredatalake.net`                 |
 | Azure Data Lake Store Gen 2 | `abfs[s]`       | `<container>@<storage_account>.dfs.core.windows.net`  |
+|                             | `https`         | `<storage_account>.dfs.core.windows.net/<container>/subfolders`  |
+
+Met het voorvoegsel `https:` kunt u een submap gebruiken in het pad.
 
 #### <a name="credential"></a>Referentie
 CREDENTIAL = `<database scoped credential>` is een optionele referentie die wordt gebruikt voor verificatie in Azure Storage. Een externe gegevensbron zonder referentie heeft toegang tot een openbaar opslagaccount. 
@@ -124,7 +128,7 @@ In het volgende voorbeeld wordt een externe gegevensbron gemaakt voor Azure Data
 CREATE EXTERNAL DATA SOURCE AzureDataLakeStore
 WITH
   -- Please note the abfss endpoint when your account has secure transfer enabled
-  ( LOCATION = 'abfss://newyorktaxidataset.azuredatalakestore.net' ,
+  ( LOCATION = 'abfss://data@newyorktaxidataset.dfs.core.windows.net' ,
     CREDENTIAL = ADLS_credential ,
     TYPE = HADOOP
   ) ;

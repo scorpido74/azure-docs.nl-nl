@@ -1,232 +1,102 @@
 ### YamlMime:Landing
 title: Documentatie voor Microsoft Identity Platform
-summary: Met het Microsoft Identity Platform kunnen ontwikkelaars toepassingen maken waarbij gebruikers zich met alle Microsoft-identiteiten kunnen aanmelden en waarmee tokens worden opgehaald voor het aanroepen van Microsoft-API's, zoals Microsoft Graph, of API's die u hebt gemaakt. Dit is een zeer uitgebreid platform dat bestaat uit een verificatieservice die voldoet aan de normen voor OAuth 2.0 en OpenID Connect, open source-bibliotheken, registratie en configuratie van toepassingen, robuuste conceptuele en referentiedocumentatie, quickstarts, codevoorbeelden, zelfstudies en handleidingen.
+summary: Het Microsoft Identity Platform bestaat uit een verificatieservice, opensourcebibliotheken en hulpprogramma's voor toepassingsbeheer. Leer hoe u moderne, op standaarden gebaseerde verificatieoplossingen maakt met onze quickstarts, zelfstudies en codevoorbeelden. Bouw toepassingen waarbij uw gebruikers en klanten zich aanmelden met hun Microsoft-identiteiten of sociale accounts en toegang verkrijgen tot uw API's of Microsoft-API's, zoals Microsoft Graph.
 metadata:
   ms.topic: landing-page
-  ms.date: 06/22/2019
+  ms.date: 07/13/2020
   author: CelesteDG
   ms.author: celested
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: d1f3958fd47f6e3e5f3971697de546b4cb738b3d
-  ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+  ms.openlocfilehash: 689fb9953f6de9c717d774e222824c5b3701527e
+  ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 06/17/2020
-  ms.locfileid: "84886905"
+  ms.lasthandoff: 07/10/2020
+  ms.locfileid: "86230346"
 landingContent:
 - title: Over het Microsoft Identity Platform
   linkLists:
   - linkListType: overview
     links:
-    - text: Microsoft Identity Platform (v2.0)
+    - text: Wat is het Microsoft Identity Platform?
       url: v2-overview.md
-    - text: Evolutie van het Microsoft Identity Platform
-      url: about-microsoft-identity-platform.md
-    - text: Apps migreren naar MSAL
+    - text: Codevoorbeelden
+      url: sample-v2-code.md
+    - text: ADAL-apps naar MSAL migreren
       url: msal-migration.md
-    - text: Azure Active Directory voor ontwikkelaars (v1.0)
-      url: ../azuread-dev/v1-overview.md
-  - linkListType: concept
+- title: Fundamentele concepten
+  linkLists:
+  - linkListType: learn
     links:
     - text: Basisbeginselen van verificatie
-      url: authentication-scenarios.md
+      url: authentication-vs-authorization.md
     - text: Verificatiestromen en app-scenario's
       url: authentication-flows-app-scenarios.md
     - text: Aanbevelingen en best practices
       url: identity-platform-integration-checklist.md
+- title: Video-learning-serie
+  linkLists:
   - linkListType: video
     links:
-    - text: 'Reeks: Identity platform voor ontwikkelaars'
-      url: identity-videos.md
-- title: Een app met één pagina maken
+    - text: Identity platform voor ontwikkelaars
+      url: identity-videos.md#microsoft-identity-platform-for-developers
+    - text: Basisprincipes van verificatie
+      url: identity-videos.md#authentication-fundamentals
+    - text: 'Eén dev-vraag: basisbeginselen van platform'
+      url: identity-videos.md#microsoft-identity-platform-basics
+- title: App met één pagina (SPA)
   linkLists:
   - linkListType: get-started
     links:
-    - text: Overzicht van scenario's
-      url: scenario-spa-overview.md
-  - linkListType: quickstart
-    links:
-    - text: JavaScript - Verificatiecode
-      url: quickstart-v2-javascript-auth-code.md
-    - text: JavaScript - Impliciet
-      url: quickstart-v2-javascript.md
     - text: Angular
       url: quickstart-v2-angular.md
-  - linkListType: tutorial
-    links:
-    - text: JavaScript - Verificatiecode
-      url: tutorial-v2-javascript-auth-code.md
-    - text: JavaScript - Impliciet
-      url: tutorial-v2-javascript-spa.md
-  - linkListType: download
-    links:
-    - text: Voorbeelden - JavaScript, Angular
-      url: sample-v2-code.md#single-page-applications
-    - text: Voorbeeld - SPA met Azure AD B2C
-      url: https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp
-- title: Een web-app bouwen waarmee gebruikers worden aangemeld
+    - text: JavaScript - Verificatiecodestroom
+      url: quickstart-v2-javascript-auth-code.md
+    - text: JavaScript - Impliciete stroom
+      url: quickstart-v2-javascript.md
+- title: Web-app
   linkLists:
   - linkListType: get-started
     links:
-    - text: Overzicht van scenario's
-      url: scenario-web-app-sign-user-overview.md
-  - linkListType: quickstart
-    links:
-    - text: ASP.NET Core
-      url: quickstart-v2-aspnet-core-webapp.md
     - text: ASP.NET
       url: quickstart-v2-aspnet-webapp.md
-    - text: Java
-      url: quickstart-v2-java-webapp.md
+    - text: ASP.NET Core
+      url: quickstart-v2-aspnet-core-webapp.md
     - text: Python
       url: quickstart-v2-python-webapp.md
-  - linkListType: tutorial
-    links:
-    - text: ASP.NET Core
-      url: https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2
-  - linkListType: download
-    links:
-    - text: Voorbeelden - ASP.NET Core, ASP.NET, Java, Python
-      url: sample-v2-code.md#web-applications
-- title: Een web-app bouwen waarmee web-API's worden aangeroepen
+- title: Mobiele/systeemeigen apps
   linkLists:
   - linkListType: get-started
     links:
-    - text: Overzicht van scenario's
-      url: scenario-web-app-call-api-overview.md
-  - linkListType: quickstart
-    links:
-    - text: Java
-      url: quickstart-v2-java-webapp.md
-    - text: Python
-      url: quickstart-v2-python-webapp.md
-  - linkListType: tutorial
-    links:
-    - text: ASP.NET Core
-      url: https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2#scope-of-this-tutorial
-  - linkListType: download
-    links:
-    - text: Voorbeelden - ASP.NET Core, ASP.NET, Node.js, Ruby, Java, Python
-      url: sample-v2-code.md#web-applications
-- title: Een beveiligde web-API bouwen
-  linkLists:
-  - linkListType: get-started
-    links:
-    - text: Overzicht van scenario's
-      url: scenario-protected-web-api-overview.md
-  - linkListType: tutorial
-    links:
-    - text: ASP.NET Core-web-API
-      url: https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2
-  - linkListType: download
-    links:
-    - text: Voorbeeld - ASP.NET
-      url: https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2
-- title: Web-API die web-API's aanroept
-  linkLists:
-  - linkListType: get-started
-    links:
-    - text: Overzicht van scenario's
-      url: scenario-web-api-call-api-overview.md
-  - linkListType: tutorial
-    links:
-    - text: ASP.NET Core-web-API die Microsoft Graph aanroept
-      url: https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph
-    - text: Java-web-API die Microsoft Graph aanroept
-      url: https://github.com/Azure-Samples/ms-identity-java-webapi
-- title: Een desktop-app bouwen die web-API's aanroept
-  linkLists:
-  - linkListType: get-started
-    links:
-    - text: Overzicht van scenario's
-      url: scenario-desktop-overview.md
-  - linkListType: quickstart
-    links:
-    - text: Een token verkrijgen en Microsoft Graph API aanroepen (Windows-desktop)
-      url: quickstart-v2-windows-desktop.md
-    - text: Een token verkrijgen en Microsoft Graph API aanroepen (UWP)
-      url: quickstart-v2-uwp.md
-  - linkListType: tutorial
-    links:
-    - text: Microsoft Graph API aanroepen (Windows-desktop)
-      url: tutorial-v2-windows-desktop.md
-    - text: Microsoft Graph API aanroepen (UWP)
-      url: tutorial-v2-windows-uwp.md
-  - linkListType: download
-    links:
-    - text: Voorbeeld - .NET, .NET Core, Java, Python
-      url: sample-v2-code.md#desktop-and-mobile-public-client-apps
-- title: Een daemon-app bouwen die web-API's aanroept
-  linkLists:
-  - linkListType: get-started
-    links:
-    - text: Overzicht van scenario's
-      url: scenario-daemon-overview.md
-  - linkListType: quickstart
-    links:
-    - text: Een token verkrijgen en Microsoft Graph API aanroepen (.NET Core-console)
-      url: quickstart-v2-netcore-daemon.md
-    - text: Een token verkrijgen en Microsoft Graph API aanroepen (ASP.NET-web-app)
-      url: https://github.com/Azure-Samples/ms-identity-aspnet-daemon-webapp
-  - linkListType: download
-    links:
-    - text: Voorbeelden - ASP.NET console, ASP.NET web, Java, Python
-      url: sample-v2-code.md#daemon-applications
-- title: Een mobiele app bouwen die web-API's aanroept
-  linkLists:
-  - linkListType: get-started
-    links:
-    - text: Overzicht van scenario's
-      url: scenario-mobile-overview.md
-  - linkListType: quickstart
-    links:
-    - text: Een token verkrijgen en Microsoft Graph API aanroepen (Android)
+    - text: Android
       url: quickstart-v2-android.md
-    - text: Een token verkrijgen en Microsoft Graph API aanroepen (iOS)
+    - text: iOS en macOS
       url: quickstart-v2-ios.md
-    - text: Een token verkrijgen en Microsoft Graph API aanroepen (Xamarin iOS en Android)
-      url: https://github.com/Azure-Samples/active-directory-xamarin-native-v2
-  - linkListType: tutorial
-    links:
-    - text: Gebruikers aanmelden en Microsoft Graph API aanroepen (Android)
-      url: tutorial-v2-android.md
-    - text: Gebruikers aanmelden en Microsoft Graph API aanroepen (iOS)
-      url: tutorial-v2-ios.md
-  - linkListType: download
-    links:
-    - text: Voorbeeld - Android, iOS, Xamarin
-      url: sample-v2-code.md#desktop-and-mobile-public-client-apps
-- title: Microsoft Graph API aanroepen
+    - text: Windows-bureaublad (WPF)
+      url: quickstart-v2-windows-desktop.md
+- title: Beveiligde web-API
   linkLists:
-  - linkListType: overview
+  - linkListType: get-started
     links:
-    - text: Over Microsoft Graph
-      url: https://docs.microsoft.com/graph/overview
-  - linkListType: quickstart
-    links:
-    - text: Binnen drie minuten aan de slag
-      url: https://developer.microsoft.com/graph/get-started
-  - linkListType: learn
-    links:
-    - text: De API gebruiken
-      url: https://docs.microsoft.com/graph/use-the-api
-    - text: Microsoft Graph REST API v1.0
-      url: https://docs.microsoft.com/graph/api/overview?toc=.%2Fref%2Ftoc.json&view=graph-rest-1.0
-    - text: Microsoft Graph REST API bèta
-      url: https://docs.microsoft.com/graph/api/overview?toc=.%2Fref%2Ftoc.json&view=graph-rest-beta
-  - linkListType: deploy
-    links:
-    - text: Graph Explorer
-      url: https://developer.microsoft.com/graph/graph-explorer/
-- title: Een klantgerichte app bouwen waarmee sociale en lokale identiteiten worden aangemeld
+    - text: ASP.NET
+      url: quickstart-v2-dotnet-native-aspnet.md
+    - text: ASP.NET Core
+      url: https://docs.microsoft.com/samples/azure-samples/active-directory-dotnet-native-aspnetcore-v2/calling-an-aspnet-core-web-api-from-a-wpf-application-using-azure-ad-v2/
+- title: Microsoft Graph
   linkLists:
-  - linkListType: overview
+  - linkListType: get-started
     links:
-    - text: Over Azure AD B2C
-      url: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview
-  - linkListType: tutorial
+    - text: De Microsoft Graph API gebruiken
+      url: microsoft-graph-intro.md
+    - text: Autorisatieoverzicht van Microsoft Graph
+      url: https://docs.microsoft.com/graph/auth/
+- title: SAML 2.0
+  linkLists:
+  - linkListType: get-started
     links:
-    - text: Id-providers toevoegen aan uw apps in Azure AD B2C
-      url: https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers
+    - text: Hoe Azure Active Directory het SAML-protocol gebruikt
+      url: active-directory-saml-protocol-reference.md
+    - text: SAML SSO in Azure Active Directory
+      url: single-sign-on-saml-protocol.md

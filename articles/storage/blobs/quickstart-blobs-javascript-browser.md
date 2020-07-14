@@ -7,12 +7,12 @@ ms.date: 04/18/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 4d486b8ffc921a5ca2f38bef912ba6dc46ecec40
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: af76025317436f7046b857731e4c8af9b504201f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83634092"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833414"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -285,7 +285,7 @@ In de [Azure-portal](https://portal.azure.com) kunt u de resultaten van de API-a
 #### <a name="step-4---delete-the-container"></a>Stap 4 - De container verwijderen
 
 1. Selecteer in de web-app **Container verwijderen**. De status geeft aan dat een container is verwijderd.
-2. Selecteer in de Azure-portal de koppeling **\<account-naam\> | Containers** linksboven in het portal-deelvenster.
+2. Selecteer in Azure Portal de koppeling **\<account-name\> | Containers** linksboven in het portaldeelvenster.
 3. Selecteer **Vernieuwen**. De nieuwe container verdwijnt.
 4. Sluit de web-app.
 
@@ -302,7 +302,7 @@ In deze quickstart hebt u geleerd hoe u blobs kunt uploaden, downloaden, weergev
 Voor zelfstudies, voorbeelden, quickstarts en andere documentatie gaat u naar:
 
 > [!div class="nextstepaction"]
-> [Documentatie over Azure voor JavaScript](/azure/javascript/)
+> [Documentatie over Azure voor JavaScript](/azure/developer/javascript/)
 
 * Zie de [Azure Blob-opslag-clientbibliotheek voor JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob)voor meer informatie.
 * Als u voorbeeld-apps voor blob-opslag wilt zien, gaat u verder met [Voorbeelden van Azure Blob-opslag-clientbibliotheek v12 JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples).

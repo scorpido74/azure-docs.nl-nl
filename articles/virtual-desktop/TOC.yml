@@ -23,7 +23,7 @@
     - name: Verbinding maken met Windows Virtual Desktop-resources
       items:
         - name: Verbinding maken met de Windows Desktop-client
-          href: connect-windows-7-and-10.md
+          href: connect-windows-7-10.md
         - name: Verbinding maken met de webclient
           href: connect-web.md
         - name: Verbinding maken met de Android-client
@@ -38,6 +38,8 @@
       items:
         - name: PowerShell
           href: create-host-pools-powershell.md
+        - name: Een virtuele Windows 7-machine implementeren
+          href: deploy-windows-7-virtual-machine.md
         - name: Een sessiehost op basis van GPU implementeren
           href: configure-vm-gpu.md
         - name: Een bestaande hostpool uitbreiden
@@ -90,6 +92,8 @@
       href: language-packs.md
 - name: Concepten
   items:
+    - name: Lijst met veilige URL's
+      href: safe-url-list.md
     - name: Windows Virtual Desktop-omgeving
       href: environment-setup.md
     - name: Latentie van gebruikersverbinding bepalen

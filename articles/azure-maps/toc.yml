@@ -232,6 +232,24 @@
           href: how-to-add-tile-layer-android-map.md
         - name: Verkeergegevens weergeven
           href: how-to-show-traffic-android.md
+    - name: Azure Maps gebruiken in Power BI
+      items:
+        - name: Aan de slag
+          href: power-bi-visual-getting-started.md
+        - name: Informatie over lagen
+          href: power-bi-visual-understanding-layers.md
+        - name: Een bubbellaag toevoegen
+          href: power-bi-visual-add-bubble-layer.md
+        - name: Een laag met een staafdiagram toevoegen
+          href: power-bi-visual-add-bar-chart-layer.md
+        - name: Een referentielaag toevoegen
+          href: power-bi-visual-add-reference-layer.md
+        - name: Een titellaag toevoegen
+          href: power-bi-visual-add-tile-layer.md
+        - name: Realtime verkeer weergeven
+          href: power-bi-visual-show-real-time-traffic.md
+        - name: Toegang beheren
+          href: power-bi-visual-manage-access.md
     - name: Gegevensfeedback geven
       href: how-to-use-feedback-tool.md
 - name: Naslaginformatie

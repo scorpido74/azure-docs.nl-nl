@@ -434,6 +434,8 @@
                   items:
                     - name: Vanaf een VM
                       href: ../image-version-vm-powershell.md
+                    - name: Vanaf een VHD of momentopname
+                      href: ../image-version-snapshot-powershell.md
                     - name: Migreren vanaf een beheerde installatiekopie
                       href: ../image-version-managed-image-powershell.md
                     - name: Kopiëren uit een andere galerie
@@ -454,6 +456,8 @@
                   items:
                     - name: Vanaf een VM
                       href: ../image-version-vm-cli.md
+                    - name: Vanaf een VHD of momentopname
+                      href: ../image-version-snapshot-cli.md
                     - name: Migreren vanaf een beheerde installatiekopie
                       href: ../image-version-managed-image-cli.md
                     - name: Kopiëren uit een andere galerie
@@ -508,6 +512,8 @@
               href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
         - name: Installatiekopieën zoeken en gebruiken
           href: cli-ps-findimage.md
+        - name: Aankoopplaninformatie
+          href: ../marketplace-images.md
         - name: De virtuele machine voorbereiden voor de upload
           href: prepare-for-upload-vhd-image.md
         - name: Een virtuele machine vastleggen in een installatiekopie
@@ -853,10 +859,18 @@
           href: disks-incremental-snapshots-portal.md
         - name: Back-up maken van niet-beheerde schijven
           href: incremental-snapshots.md
+        - name: Versleuteling
+          items:
+            - name: Op hosts gebaseerde versleuteling inschakelen - PowerShell
+              href: disks-enable-host-based-encryption-powershell.md
+            - name: Door de klant beheerde sleutels inschakelen - PowerShell
+              href: disks-enable-customer-managed-keys-powershell.md
+            - name: Door de klant beheerde sleutels inschakelen - portal
+              href: disks-enable-customer-managed-keys-portal.md
+            - name: Dubbele versleuteling in rust inschakelen
+              href: disks-enable-double-encryption-at-rest-powershell.md
         - name: Migratie en conversie
           items:
-            - name: Converteren naar versleuteling aan serverzijde
-              href: disks-ade-sse-conversion-powershell.md
             - name: Een schijf converteren van Standard naar Premium
               href: convert-disk-storage.md
             - name: Migreren naar Premium Storage met Azure Site Recovery

@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: de Anomaliey detector-client bibliotheek gebruiken'
+title: 'Quickstart: de Anomaly Detector-clientbibliotheek gebruiken'
 titleSuffix: Azure Cognitive Services
-description: De anomalie detectie-API biedt client bibliotheken voor het detecteren van afwijkingen in uw gegevens reeksen als batch-of gegevens stromen.
+description: De Anomaly Detector-API biedt clientbibliotheken om afwijkingen in uw gegevensreeksen als batch of op streaminggegevens te detecteren.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -9,17 +9,17 @@ zone_pivot_groups: programming-languages-set-seventeen
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 04/16/2020
+ms.date: 06/30/2020
 ms.author: aahi
 ms.custom: tracking-python
-ms.openlocfilehash: 523bfea7dd09f4d7ba2eeb3ef93578ddf6b3f1ea
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.openlocfilehash: 5a8e1d99aee7035cddabce8069d55a038261872a
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84611117"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986101"
 ---
-# <a name="quickstart-use-the-anomaly-detector-client-library"></a>Snelstartgids: de Anomaliey detector-client bibliotheek gebruiken
+# <a name="quickstart-use-the-anomaly-detector-client-library"></a>Quickstart: de Anomaly Detector-clientbibliotheek gebruiken
 
 ::: zone pivot="programming-language-csharp"
 

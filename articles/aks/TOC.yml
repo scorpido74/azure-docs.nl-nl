@@ -257,6 +257,8 @@
           href: private-clusters.md
         - name: BYOK voor schijven
           href: azure-disk-customer-managed-keys.md
+        - name: Op hosts gebaseerde versleuteling inschakelen
+          href: enable-host-encryption.md
     - name: Bewaking en registratie
       items:
         - name: Azure Monitor voor containers
@@ -282,9 +284,9 @@
         - name: Het Kubernetes-dashboard gebruiken
           href: kubernetes-dashboard.md
         - name: Dockerfiles voor Windows Server-containers maken
-          href: 'https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/manage-windows-dockerfile?context=/azure/aks/context/aks-context'
+          href: /virtualization/windowscontainers/manage-docker/manage-windows-dockerfile?context=/azure/aks/context/aks-context
         - name: Dockerfiles voor Windows Server-containers optimaliseren
-          href: 'https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/optimize-windows-dockerfile?context=/azure/aks/context/aks-context'
+          href: /virtualization/windowscontainers/manage-docker/optimize-windows-dockerfile?context=/azure/aks/context/aks-context
     - name: Toepassingen ontwikkelen en uitvoeren
       items:
         - name: Lokaal proces met Kubernetes gebruiken met Visual Studio Code (preview)

@@ -1,14 +1,14 @@
 ---
 title: Overzicht van Azure Resource Graph
 description: Meer informatie over hoe u met de Azure Resource Graph-service complexe query's op schaal kunt uitvoeren op resources in abonnementen en tenants.
-ms.date: 03/02/2020
+ms.date: 06/29/2020
 ms.topic: overview
-ms.openlocfilehash: a084215f6f2d1b5a8ed34ca59266e1c0087f608b
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 9c15ff12f21c1d3d168828eae67de51069cdcada
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167261"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970600"
 ---
 # <a name="what-is-azure-resource-graph"></a>Wat is Azure Resource Graph?
 
@@ -29,7 +29,7 @@ In deze documentatie komt elke mogelijkheid gedetailleerd aan bod.
 
 ## <a name="how-does-resource-graph-complement-azure-resource-manager"></a>Hoe Resource Graph Azure Resource Manager aanvult
 
-Azure Resource Manager biedt momenteel ondersteuning voor query's op velden van elementaire resources, met name Resourcenaam, Id, Type, Resourcegroep, Abonnement en Locatie. Resource Manager biedt ook voorzieningen voor het per resource aanroepen van afzonderlijke resourceproviders voor gedetailleerde eigenschappen.
+Resource Manager biedt momenteel ondersteuning voor query's op velden van elementaire resources, met name Resourcenaam, Id, Type, Resourcegroep, Abonnement en Locatie. Resource Manager biedt ook voorzieningen voor het per resource aanroepen van afzonderlijke resourceproviders voor gedetailleerde eigenschappen.
 
 Met Azure Resource Graph hebt u toegang tot de eigenschappen die de resourceproviders retourneren zonder dat u elke resourceprovider afzonderlijk moet aanroepen. Voor een lijst met ondersteunde resourcetypen raadpleegt u de [verwijzing naar tabel- en resourcetype](./reference/supported-tables-resources.md). Een alternatieve manier om ondersteunde resourcetypen te bekijken, is via de [ schemabrowser van Azure Resource Graph Explorer](./first-query-portal.md#schema-browser).
 
@@ -52,8 +52,7 @@ Nu u weet wat Azure Resource Graph is, leert u hoe u query's kunt maken.
 
 Het is belangrijk te weten dat de querytaal van Azure Resource Graph is gebaseerd op de [querytaal van Kusto](/azure/data-explorer/data-explorer-overview) die wordt gebruikt door Azure Data Explorer.
 
-Voor meer informatie over bewerkingen en functies die kunnen worden gebruikt met Azure Resource Graph raadpleegt u eerst [De querytaal van Resource Graph](./concepts/query-language.md).
-Zie [Resources verkennen](./concepts/explore-resources.md) als u de resources wilt bekijken.
+Voor meer informatie over bewerkingen en functies die kunnen worden gebruikt met Azure Resource Graph raadpleegt u eerst [De querytaal van Resource Graph](./concepts/query-language.md). Zie [Resources verkennen](./concepts/explore-resources.md) als u de resources wilt bekijken.
 
 ## <a name="permissions-in-azure-resource-graph"></a>Machtigingen in Azure Resource Graph
 
@@ -62,8 +61,7 @@ Om Resource Graph te kunnen gebruiken, moet u over de juiste machtigingen beschi
 > [!NOTE]
 > Resource Graph gebruikt de voor een principal beschikbare abonnementen tijdens de aanmelding. Als u resources van een nieuw abonnement wilt zien die tijdens een actieve sessie zijn toegevoegd, moet de principal de context vernieuwen. Deze actie wordt automatisch uitgevoerd wanneer u zich afmeldt en opnieuw aanmeldt.
 
-Azure CLI en Azure PowerShell gebruiken abonnementen waartoe de gebruiker toegang heeft. Wanneer u REST API rechtstreeks gebruikt, wordt de lijst met abonnementen aangeboden door de gebruiker. Als de gebruiker toegang heeft tot een van de abonnementen in de lijst, worden de queryresultaten geretourneerd voor de abonnementen waartoe de gebruiker toegang heeft. Dit gedrag is hetzelfde als u bij het aanroepen van [Resourcegroepen - Lijst](/rest/api/resources/resourcegroups/list) \- resourcegroepen krijgt waartoe u toegang hebt, zonder enige indicatie dat het resultaat gedeeltelijk kan zijn.
-Als er geen abonnementen zijn in de lijst abonnementen waarvoor de gebruiker de juiste rechten heeft, is het antwoord een _403_ (verboden).
+Azure CLI en Azure PowerShell gebruiken abonnementen waartoe de gebruiker toegang heeft. Wanneer u REST API rechtstreeks gebruikt, wordt de lijst met abonnementen aangeboden door de gebruiker. Als de gebruiker toegang heeft tot een van de abonnementen in de lijst, worden de queryresultaten geretourneerd voor de abonnementen waartoe de gebruiker toegang heeft. Dit gedrag is hetzelfde als u bij het aanroepen van [Resourcegroepen - Lijst](/rest/api/resources/resourcegroups/list) \- resourcegroepen krijgt waartoe u toegang hebt, zonder enige indicatie dat het resultaat gedeeltelijk kan zijn. Als er geen abonnementen zijn in de lijst abonnementen waarvoor de gebruiker de juiste rechten heeft, is het antwoord een _403_ (verboden).
 
 ## <a name="throttling"></a>Beperking
 

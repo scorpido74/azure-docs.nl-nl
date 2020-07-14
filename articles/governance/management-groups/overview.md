@@ -1,16 +1,16 @@
 ---
 title: Uw resources organiseren met beheergroepen - Azure Governance
 description: Informatie over de managementgroepen, hoe hun machtigingen werken en hoe u ze gebruikt.
-ms.date: 04/15/2020
+ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: 43c8bb2bdb71b0b75d2fcc31451952214978093c
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: b3d031b68ee7dba9c80ee0c7e97898bb8b439a47
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773148"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963679"
 ---
-# <a name="organize-your-resources-with-azure-management-groups"></a>Uw resources organiseren met Azure-beheergroepen
+# <a name="what-are-azure-management-groups"></a>Wat zijn Azure-beheergroepen?
 
 Als uw organisatie veel abonnementen heeft, moet u de toegang, beleidsregels en naleving voor deze abonnementen op een efficiënte manier kunnen beheren. Azure-beheergroepen bieden een scopeniveau boven abonnementen. U ordent abonnementen in containers, zogenaamde 'beheergroepen', en past uw governancevoorwaarden hierop toe. Alle abonnementen in een beheergroep nemen automatisch de voorwaarden over die op de beheergroep zijn toegepast. Beheergroepen bieden u beheer van bedrijfskwaliteit op grote schaal, ongeacht de typen abonnementen die u hebt.
 Alle abonnementen binnen een beheergroep moeten afhankelijk zijn van dezelfde Azure Active Directory-tenant.
@@ -199,6 +199,4 @@ Voor meer informatie over beheergroepen gaat u naar:
 
 - [Beheergroepen maken om Azure-resources te ordenen](./create.md)
 - [Uw beheergroepen wijzigen, verwijderen of beheren](./manage.md)
-- [Beheergroepen bekijken via de module voor Azure PowerShell-resources](/powershell/module/az.resources#resources)
-- [Beheergroepen bekijken via de REST-API](/rest/api/resources/managementgroups)
-- [Beheergroepen bekijken via de Azure-CLI](/cli/azure/account/management-group)
+- Bekijk opties voor [Uw resourcehiërarchie beveiligen](./how-to/protect-resource-hierarchy.md)

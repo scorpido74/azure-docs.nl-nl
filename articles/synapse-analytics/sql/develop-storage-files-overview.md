@@ -1,5 +1,5 @@
 ---
-title: Query-opslagbestanden die SQL on-demand (preview) gebruiken binnen Synapse SQL
+title: Toegang krijgen tot bestanden in opslag met behulp van SQL on demand (preview) binnen Synapse SQL
 description: Beschrijft query-opslagbestanden die SQL on-demand-resources (preview) gebruiken binnen Synapse SQL.
 services: synapse-analytics
 author: azaricstefan
@@ -9,220 +9,172 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: bfea79fe232fbb6f1b39c03a5cc8e9fe06bee867
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: c251b70d1988be82821f1e133151dae1ac6d1bc9
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85204936"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921292"
 ---
-# <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Query-opslagbestanden die SQL on-demand-resources (preview) gebruiken binnen Synapse SQL
+# <a name="accessing-external-storage-in-synapse-sql-on-demand"></a>Toegang krijgen tot een externe opslag in Synapse SQL (on-demand)
 
-Met SQL on-demand (preview) kunt u een query uitvoeren op uw gegevens in uw data lake. Het biedt een T-SQL query-surface area dat geschikt is voor semi-gestructureerde en ongestructureerde gegevensquery's.
+In dit document wordt beschreven hoe gebruikers gegevens kunnen lezen van bestanden die zijn opgeslagen op Azure Storage in Synapse SQL (on-demand). Gebruikers hebben de volgende opties om toegang te krijgen tot de opslag:
 
-Voor het uitvoeren van query's worden de volgende T-SQL-aspecten ondersteund:
+- De functie [OPENROWSET](develop-openrowset.md) die ad-hocquery's voor de bestanden in Azure Storage mogelijk maakt.
+- [Externe tabel](develop-tables-external-tables.md) dat een vooraf gedefinieerde gegevensstructuur is die boven op de set externe bestanden is gebouwd.
 
-- Volledige [SELECT](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)-surface area, met inbegrip van de meeste SQL-functies, -operatoren en meer.
-- Met CREATE EXTERNAL TABLE AS SELECT ([CETAS](develop-tables-cetas.md)) wordt een [externe tabel](develop-tables-external-tables.md) gemaakt en parallel de resultaten van een Transact-SQL SELECT-instructie geëxporteerd naar Azure Storage.
+Een gebruiker kan [verschillende verificatiemethoden gebruiken](develop-storage-files-storage-access-control.md) zoals Azure AD-passthrough-verificatie (standaard voor Azure AD-principals) en SAS-verificatie (standaard voor SQL-principals).
 
-Lees het artikel [SQL on-demand-overzicht](on-demand-workspace-overview.md) voor meer informatie ten opzichte van wat momenteel niet wordt ondersteund.
+## <a name="openrowset"></a>OPENROWSET
 
-Wanneer Azure AD-gebruikers qurey's uitvoeren worden de opslagaccounts standaard geopend met het Azure AD-pass-through-verificatieprotocol. Gebruikers worden op die manier geïmiteerd en de machtigingen gecontroleerd op het opslagniveau. U kunt [opslagtoegang aanpassen](develop-storage-files-storage-access-control.md) aan uw behoeften.
+Met de functie [OPENROWSET](develop-openrowset.md) kan de gebruiker de bestanden uit Azure Storage lezen.
 
-## <a name="extensions"></a>Extensies
+### <a name="query-files-using-openrowset"></a>Query's uitvoeren op bestanden met OPENROWSET
 
-Om een soepele ervaring te kunnen bieden voor het lokaal zoeken naar gegevens die zich bevinden in Azure-opslagbestanden gebruikt SQL on-demand de functie [OPENROWSET](develop-openrowset.md) met aanvullende mogelijkheden:
+Met OPENROWSET kunnen gebruikers externe bestanden in Azure Storage opvragen als ze toegang hebben tot de opslag. Een gebruiker die is verbonden met het Synapse SQL on demand-eindpunt moet de volgende query gebruiken om de inhoud van de bestanden in Azure Storage te kunnen lezen:
 
-- [Meerdere bestanden of mappen doorzoeken](#query-multiple-files-or-folders)
-- [Bestandsindeling PARQUET](#parquet-file-format)
-- [Aanvullende opties voor werken met gescheiden tekst (veldeindteken, rij-eindteken, escape-teken)](#additional-options-for-working-with-delimited-text)
-- [Een gekozen subset van kolommen lezen](#read-a-chosen-subset-of-columns)
-- [Schema-deductie](#schema-inference)
-- [Bestandsnaamfunctie](#filename-function)
-- [Bestandspadfunctie](#filepath-function)
-- [Werken met complexe types en geneste of herhaalde gegevensstructuren](#work-with-complex-types-and-nested-or-repeated-data-structures)
-
-### <a name="query-multiple-files-or-folders"></a>Meerdere bestanden of mappen doorzoeken
-
-Geef een pad of een map of een patroon (met jokertekens) over een verzameling bestanden of mappen op om een T-SQL-query uit te voeren op een verzameling bestanden in een map of een verzameling mappen en ze te behandelen als een enkele entiteit of rijenset.
-
-De volgende regels zijn van toepassing:
-
-- Patronen kunnen voorkomen in een deel van een mappad of in een bestandsnaam.
-- Verschillende patronen kunnen in dezelfde mapstap of bestandsnaam verschijnen.
-- Als er meerdere jokertekens zijn gebruikt, worden alle bestanden in overeenkomende paden inbegrepen in de resulterende bestandsverzameling.
-
-```
-N'https://myaccount.blob.core.windows.net/myroot/*/mysubfolder/*.csv'
+```sql
+SELECT * FROM
+ OPENROWSET(BULK 'http://storage...com/container/file/path/*.csv', format= 'parquet') as rows
 ```
 
-Raadpleeg [Query uitvoeren op mappen en meerdere bestanden](query-folders-multiple-csv-files.md) voor gebruiksvoorbeelden.
+Een gebruiker kan toegang krijgen tot de opslag met de volgende toegangsregels:
 
-### <a name="parquet-file-format"></a>Bestandsindeling PARQUET
+- Een Azure AD-gebruiker gebruikt via OPENROWSET de Azure AD-identiteit van aanroeper om toegang te krijgen tot Azure Storage of om toegang te krijgen tot opslag met anonieme toegang.
+- Een SQL-gebruiker heeft via OPENROWSET anonieme toegang tot opslag.
 
-FORMAT = 'PARQUET' gebruiken om een query uit te voeren op Parquet-gegevens
+SQL-principals kunnen ook OPENROWSET gebruiken om rechtstreeks bestanden op te vragen die zijn beveiligd met SAS-tokens of beheerde identiteit van de werkruimte. Als een SQL-gebruiker deze functie uitvoert, moet een hoofdgebruiker met de machtiging ALTER ANY CREDENTIAL referenties binnen serverbereik maken die overeenkomen met de URL in de functie (met behulp van de opslagnaam en container) en de machtiging REFERENCES heeft verleend voor de aanroeper van de OPENROWSET-functie:
 
-```syntaxsql
-OPENROWSET
-(
-    { BULK 'data_file' ,
-    { FORMATFILE = 'format_file_path' [ <bulk_options>] } }
-)
-AS table_alias(column_alias,...n)
-<bulk_options> ::=
-...
-[ , FORMAT = {'CSV' | 'PARQUET'} ]
+```sql
+EXECUTE AS somepoweruser
+
+CREATE CREDENTIAL [http://storage.dfs.com/container]
+ WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'sas token';
+
+GRANT REFERENCES CREDENTIAL::[http://storage.dfs.com/container] TO sqluser
 ```
 
-Lees het artikel [Query uitvoeren op Parquet-bestanden](query-parquet-files.md) voor gebruiksvoorbeelden.
-
-### <a name="additional-options-for-working-with-delimited-text"></a>Aanvullende opties voor werken met gescheiden tekst
-
-Deze extra parameters zijn uitgebracht voor het werken met CSV-bestanden (gescheiden tekst):
-
-```syntaxsql
-<bulk_options> ::=
-...
-[ , FIELDTERMINATOR = 'char' ]
-[ , ROWTERMINATOR = 'char' ]
-[ , ESCAPE_CHAR = 'char' ]
-...
-```
-
-- ESCAPE_CHAR = 'char' Het teken in het bestand dat wordt gebruikt om zichzelf te escapen evenals alle scheidingstekens in het bestand. Als het escape-teken wordt gevolgd door ofwel een andere waarde dan het teken zelf, of een van de scheidingstekens, wordt het escape-teken genegeerd bij het lezen van de waarde.
-De parameter ESCAPE_CHAR wordt toegepast ongeacht of FIELDQUOTE al dan niet is ingeschakeld. De parameter wordt niet gebruikt om het aanhalingsteken te escapen. Het aanhalingsteken moet worden a”gesloten door een ander aanhalingsteken. Een aanhalingsteken kan alleen in een kolomwaarde worden weer gegeven als de waarde tussen aanhalingstekens staat.
-- FIELDTERMINATOR ='field_terminator' Geeft aan welk teken moet worden gebruikt om het einde van een veld aan te geven. Het standaardeindteken voor velden is een komma (' **,** ')
-- ROWTERMINATOR ='row_terminator' Geeft aan welk teken moet worden gebruikt om het einde van een regel aan te geven. Het standaardeindteken voor riijen is een teken voor nieuwe regel: **\r\n**.
-
-### <a name="read-a-chosen-subset-of-columns"></a>Een gekozen subset van kolommen lezen
-
-Om aan te geven welke kolommen u witl lezen, kunt u een optionele WITH-clausule opgeven binnen uw OPENROWSET-opdracht.
-
-- Als u wilt dat alle kolommen worden gelezen uit CSV-gegevensbestanden, geeft u de kolomnamen en de bijbehorende gegevenstypen op. Als u een subset van deze kolommen wilt opvragen, gebruikt u rangtelwoorden om de kolommen uit de oorspronkelijke gegevensbestanden te kiezen op rangtelwoord. Kolommen worden gebonden op aanduiding via rangnummer.
-- Als het Parquet-gegevensbestanden betreft, geeft u kolomnamen op die overeenkomen met de kolomnamen in de oorspronkelijke gegevensbestanden. Kolommen worden op naam gebonden.
-
-```syntaxsql
-OPENROWSET
-...
-| BULK 'data_file',
-{ FORMATFILE = 'format_file_path' [ <bulk_options>] } }
-) AS table_alias(column_alias,...n) | WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
-```
-
-Raadpleeg [CSV-bestanden lezen zonder alle kolommen op te geven](query-single-csv-file.md#returning-subset-of-columns) voor voorbeelden.
-
-### <a name="schema-inference"></a>Schema-deductie
-
-Door de WITH-clausule weg te laten in de OPENROWSET-opdracht, kunt u de service de opdracht geven automatisch het schema te detecteren (deduceren) van de onderliggende bestanden.
+Als er geen CREDENTIAL op serverniveau is die overeenkomt met de URL of als de SQL-gebruiker geen REFERENCES-machtiging voor deze referenties heeft, wordt de fout geretourneerd. SQL-principals kunnen niet imiteren met een Azure AD-identiteit.
 
 > [!NOTE]
-> Dit werkt momenteel alleen voor de PARQUET-bestandsindeling.
+> Deze versie van OPENROWSET is ontworpen om snel en eenvoudig gegevens te verkennen met behulp van standaardauthenticatie. Als u imitatie of beheerde identiteit wilt gebruiken, gebruikt u OPENROWSET met DATASOURCE zoals in de volgende sectie wordt beschreven.
+
+### <a name="querying-data-sources-using-openrowset"></a>Query's uitvoeren op gegevensbronnen met OPENROWSET
+
+Met OPENROWSET kunnen gebruikers een query uitvoeren op bestanden die in een externe gegevensbron zijn geplaatst:
 
 ```sql
-OPENROWSET(
-BULK N'path_to_file(s)', FORMAT='PARQUET');
+SELECT * FROM
+ OPENROWSET(BULK 'file/path/*.parquet',
+ DATASOURCE = MyAzureInvoices,
+ FORMAT= 'parquet') as rows
 ```
 
-Zorg ervoor dat [de juiste gededuceerde datatypes](best-practices-sql-on-demand.md#check-inferred-data-types) worden gebruikt voor de beste prestatie. 
-
-### <a name="filename-function"></a>Bestandsnaamfunctie
-
-Deze functie retourneert de bestandsnaam waaruit de rij afkomstig is. 
-
-Lees de sectie Bestandsnaam in het artikel [Query's uitvoeren op specifieke bestanden](query-specific-files.md#filename)om een query uit te voeren op specifieke bestanden.
-
-Het retourgegevenstype is nvarchar(1024). Cast het resultaat van de functie bestandsnaam altijd naar het juiste gegevenstype voor de beste prestatie. Als u een tekengegevenstype gebruikt, zorg er dan voor dat de juiste lengte wordt gebruikt.
-
-### <a name="filepath-function"></a>Bestandspadfunctie
-
-Deze functie retourneert een volledig pad of een deel van een pad:
-
-- Wanneer de functie wordt aangeroepen zonder parameter, wordt het volledige bestandspad geretourneerd waaruit een rij afkomstig is.
-- Wanneer de functie wordt aangeroepen met parameter, wordt het deel van het pad geretourneerd dat overeenkomt met het jokerteken op de positie die is gespecificeerd in de parameter. Parameterwaarde 1 zou bijvoorbeeld het deel van het pad retourneren dat overeenkomt met het eerste jokerteken.
-
-Lees de sectie Bestandspad van het artikel [Query uitvoeren op specifieke bestanden](query-specific-files.md#filepath) voor meer informatie.
-
-Het retourgegevenstype is nvarchar(1024). Cast het resultaat van de functie bestandspad altijd naar het juiste gegevenstype voor de beste prestatie. Als u een tekengegevenstype gebruikt, zorg er dan voor dat de juiste lengte wordt gebruikt.
-
-### <a name="work-with-complex-types-and-nested-or-repeated-data-structures"></a>Werken met complexe types en geneste of herhaalde gegevensstructuren
-
-SQL on-demand heeft onderstaande extensies toegevoegd om een soepele ervaring te kunnen bieden bij het werken met gegevens die zijn opgeslagen in geneste of herhaalde gegevenstypes, zoals in [Parquet](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#nested-types)-bestanden.
-
-#### <a name="project-nested-or-repeated-data"></a>Geneste of herhaalde gegevens projecteren
-
-Voer een SELECT-opdracht uit op het Parquet-bestand dat kolommen of geneste gegevenstypes bevat om gegevens te projecteren. Geneste waarden worden met serienummer in JSON geplaatst en geretourneerd als een SQL-gegevenstype varchar(8000).
+Een hoofdgebruiker met de machtiging CONTROL DATABASE moet DATABASE SCOPED CREDENTIAL maken, dat wordt gebruikt om toegang te krijgen tot opslag, en EXTERNAL DATA SOURCE, waarmee de URL van de gegevensbron en te gebruiken referenties worden opgegeven:
 
 ```sql
-    SELECT * FROM
-    OPENROWSET
-    (   BULK 'unstructured_data_path' ,
-        FORMAT = 'PARQUET' )
-    [AS alias]
+CREATE DATABASE SCOPED CREDENTIAL AccessAzureInvoices
+ WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
+ SECRET = '******srt=sco&amp;sp=rwac&amp;se=2017-02-01T00:55:34Z&amp;st=201********' ;
+
+CREATE EXTERNAL DATA SOURCE MyAzureInvoices
+ WITH ( LOCATION = 'https://newinvoices.blob.core.windows.net/week3' ,
+ CREDENTIAL = AccessAzureInvoices) ;
 ```
 
-Raadpleeg de sectie Geneste of herhaalde gegevens projecteren van het artikel [Query uitvoeren op met Parquet geneste typen](query-parquet-nested-types.md#project-nested-or-repeated-data) voor meer informatie.
+Met DATABASE SCOPED CREDENTIAL geeft u op hoe gebruikers toegang kunnen krijgen tot bestanden op de gegevensbron waarnaar wordt verwezen (momenteel SAS en beheerde identiteit).
 
-#### <a name="access-elements-from-nested-columns"></a>Elementen benaderen vanuit geneste kolommen
+Een aanroeper moet een van de volgende machtigingen hebben voor het uitvoeren van de OPENROWSET-functie:
 
-Gebruik 'puntnotatie' om veldnamen samen te voegen in het pad om geneste elementen te benaderen van een geneste kolom, zoals Struct. Geef het pad als kolomnaam in de WITH-clausule van de functie OPENROWSET op.
+- Een van de machtigingen voor het uitvoeren van OPENROWSET:
+  - Met ADMINISTER BULK OPERATION kan een gebruiker via aanmelding de OPENROWSET-functie uitvoeren.
+  - Met ADMINISTER DATABASE BULK OPERATION kan een gebruiker binnen een databasebereik de OPENROWSET-functie uitvoeren.
+- REFERENCES DATABASE SCOPED CREDENTIAL naar de referenties waarnaar wordt verwezen in EXTERNAL DATA SOURCE
 
-Het voorbeeld van het syntaxisfragment ziet er als volgt uit:
+#### <a name="accessing-anonymous-data-sources"></a>Toegang tot anonieme gegevensbronnen
 
-```syntaxsql
-    OPENROWSET
-    (   BULK 'unstructured_data_path' ,
-        FORMAT = 'PARQUET' )
-    WITH ({'column_name' 'column_type',})
-    [AS alias]
-    'column_name' ::= '[field_name.] field_name'
+Een gebruiker kan EXTERNAL DATA SOURCE maken zonder CREDENTIAL die verwijst naar een openbaar toegankelijke opslag OF Azure AD-passthrough-verificatie gebruiken:
+
+```sql
+CREATE EXTERNAL DATA SOURCE MyAzureInvoices
+ WITH ( LOCATION = 'https://newinvoices.blob.core.windows.net/week3') ;
 ```
 
-De functie OPENROWSET zoekt standaard naar overeenkomsten van de bronveldnaam en het bronveldpad met de kolomnamen die zijn opgegeven in de WITH-clausule. Elementen binnen verschillende nestniveaus binnen hetzelfde Parquet-bronbestand kunnen worden benaderd via de WITH-clausule.
+## <a name="external-table"></a>EXTERNAL TABLE
 
-**Retourwaarden**
+Een gebruiker met de machtigingen voor het lezen van de tabel kan toegang krijgen tot externe bestanden met behulp van een EXTERNAL TABLE die wordt gemaakt boven op de set Azure Storage-mappen en -bestanden.
 
-- Voor alle Parquet-types die zich niet in de groep Genest type bevinden, retourneert deze functie een scalaire waarde, zoals integer, decimaal en varchar van het opgegeven element en op het opgegeven pad.
-- Als het pad wijst naar een element van het Geneste type, retourneert de functie een JSON-fragment dat begint met het hoogste element in het opgegeven pad. Het JSON-fragment is van het type varchar(8000).
-- Als de eigenschap niet kan worden gevonden in de opgegeven kolomnaam, retourneert de functie een fout.
-- Als de eigenschap niet kan worden gevonden in de opgegeven kolomnaam, retourneert de functie, afhankelijk van [Padmodus](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#PATHMODE), een fout in de strict-modus of null in de lax-modus.
+Een gebruiker met [-machtigingen voor het maken van een externe tabel](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=sql-server-ver15#permissions) (bijvoorbeeld CREATE TABLE en ALTER ANY CREDENTIAL of REFERENCES DATABASE SCOPED CREDENTIAL) kunnen het volgende script gebruiken om een tabel boven op Azure Storage-gegevensbron te maken:
 
-Raadpleeg de sectie Elementen benaderen vanuit geneste kolommen in het artikel [Query uitvoeren op met Parquet geneste typen](query-parquet-nested-types.md#access-elements-from-nested-columns) voor voorbeelden van query's.
-
-#### <a name="access-elements-from-repeated-columns"></a>Elementen benaderen vanuit herhaalde kolommen
-
-Gebruik de functie [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) voor elk scalair element dat u wilt projecteren om elementen van een herhaalde kolom te benaderen, zoals een element van een Matrix of Map en geef het volgende op:
-
-- als eerste parameter Geneste of herhaalde kolom
-- als tweede parameter een [JSON-pad](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) dat de elementen of de eigenschappen opgeeft die moeten worden benaderd
-
-Gebruik de functie [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) voor elk niet-scalair element dat u wilt projecteren om niet-scalaire elementen van een herhaalde kolom te benaderen en geef het volgende op:
-
-- als eerste parameter Geneste of herhaalde kolom
-- als tweede parameter een [JSON-pad](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) dat de elementen of de eigenschappen opgeeft die moeten worden benaderd
-
-Zie hieronder een syntaxis-fragment:
-
-```syntaxsql
-    SELECT
-       { JSON_VALUE (column_name, path_to_sub_element), }
-       { JSON_QUERY (column_name [ , path_to_sub_element ]), )
-    FROM
-    OPENROWSET
-    (   BULK 'unstructured_data_path' ,
-        FORMAT = 'PARQUET' )
-    [AS alias]
+```sql
+CREATE EXTERNAL TABLE [dbo].[DimProductexternal]
+( ProductKey int, ProductLabel nvarchar, ProductName nvarchar )
+WITH
+(
+LOCATION='/DimProduct/year=*/month=*' ,
+DATA_SOURCE = AzureDataLakeStore ,
+FILE_FORMAT = TextFileFormat
+) ;
 ```
 
-U kunt voorbeelden van query's voor het benaderen van elementen van herhaalde kolommen vinden in het artikel [Query uitvoeren op met Parquet geneste typen](query-parquet-nested-types.md#access-elements-from-repeated-columns).
+Een gebruiker met de machtiging CONTROL DATABASE moet DATABASE SCOPED CREDENTIAL maken dat wordt gebruikt om toegang te krijgen tot opslag en EXTERNAL DATA SOURCE waarmee de URL van de gegevensbron en te gebruiken referenties worden opgegeven:
+
+```sql
+CREATE DATABASE SCOPED CREDENTIAL cred
+ WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
+ SECRET = '******srt=sco&sp=rwac&se=2017-02-01T00:55:34Z&st=201********' ;
+
+CREATE EXTERNAL DATA SOURCE AzureDataLakeStore
+ WITH ( LOCATION = 'https://samples.blob.core.windows.net/products' ,
+ CREDENTIAL = cred
+ ) ;
+```
+
+Met DATABASE SCOPED CREDENTIAL geeft u op hoe gebruikers toegang kunnen krijgen tot bestanden op de gegevensbron waarnaar wordt verwezen.
+
+### <a name="reading-external-files-with-external-table"></a>Externe bestanden met EXTERNAL TABLE lezen
+
+Met EXTERNAL TABLE kunt u gegevens lezen van de bestanden waarnaar wordt verwezen via de gegevensbron met behulp van de SQL SELECT-standaardinstructie:
+
+```sql
+SELECT *
+FROM dbo.DimProductsExternal
+```
+
+Een aanroeper moet de volgende machtigingen hebben om gegevens te lezen:
+- `SELECT`-machtiging IN de externe tabel
+- `REFERENCES DATABASE SCOPED CREDENTIAL`-machtiging als `DATA SOURCE` over `CREDENTIAL` beschikt
+
+## <a name="permissions"></a>Machtigingen
+
+De volgende tabel geeft een lijst van de vereiste machtigingen voor de hierboven genoemde bewerkingen.
+
+| Query’s uitvoeren | Vereiste machtigingen|
+| --- | --- |
+| OPENROWSET(BULK) zonder gegevensbron | `ADMINISTER BULK ADMIN`, `ADMINISTER DATABASE BULK ADMIN`of SQL-aanmelding moet over REFERENCES CREDENTIAL::\<URL> beschikken voor met SAS beveiligde opslag |
+| OPENROWSET(BULK) met gegevensbron zonder referenties | `ADMINISTER BULK ADMIN` of `ADMINISTER DATABASE BULK ADMIN`, |
+| OPENROWSET(BULK) met gegevensbron en referenties | `ADMINISTER BULK ADMIN`, `ADMINISTER DATABASE BULK ADMIN` of `REFERENCES DATABASE SCOPED CREDENTIAL` |
+| CREATE EXTERNAL DATA SOURCE | `ALTER ANY EXTERNAL DATA SOURCE` en `REFERENCES DATABASE SCOPED CREDENTIAL` |
+| CREATE EXTERNAL TABLE | `CREATE TABLE`, `ALTER ANY SCHEMA`, `ALTER ANY EXTERNAL FILE FORMAT` en `ALTER ANY EXTERNAL DATA SOURCE` |
+| SELECT FROM EXTERNAL TABLE | `SELECT TABLE` en `REFERENCES DATABASE SCOPED CREDENTIAL` |
+| CETAS | Voor het maken van een tabel - `CREATE TABLE`, `ALTER ANY SCHEMA`, `ALTER ANY DATA SOURCE` en `ALTER ANY EXTERNAL FILE FORMAT`. Gegevens lezen: `ADMIN BULK OPERATIONS` of `REFERENCES CREDENTIAL` of `SELECT TABLE` per tabel/weergave/functie in query + lezen/schrijven-machtiging voor opslag |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende artikelen voor meer informatie over het uitvoeren van query's op verschillende bestandstypes en het maken en gebruiken van weergaven:
+U kunt nu doorgaan met de volgende Help-artikelen:
 
-- [Query's uitvoeren op één CSV-bestand](query-single-csv-file.md)
+- [Query uitvoeren op gegevens in opslag](query-data-storage.md)
+
+- [Query uitvoeren op CSV-bestand](query-single-csv-file.md)
+
+- [Query uitvoeren op mappen en meerdere bestanden](query-folders-multiple-csv-files.md)
+
+- [Query's uitvoeren op specifieke bestanden](query-specific-files.md)
+
 - [Query's uitvoeren op Parquet-bestanden](query-parquet-files.md)
+
+- [Query uitvoeren op geneste typen](query-parquet-nested-types.md)
+
 - [Query's uitvoeren op JSON-bestanden](query-json-files.md)
-- [Query uitvoeren op met Parquet geneste typen](query-parquet-nested-types.md)
-- [Query's uitvoeren op mappen en meerdere CSV-bestanden](query-folders-multiple-csv-files.md)
-- [Metagegevens van bestand gebruiken in query's](query-specific-files.md)
+
 - [Weergaven maken en gebruiken](create-use-views.md)

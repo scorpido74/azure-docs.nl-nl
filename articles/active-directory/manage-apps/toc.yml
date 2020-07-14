@@ -5,6 +5,8 @@
   items:
     - name: Wat is toepassingsbeheer?
       href: what-is-application-management.md
+    - name: Wat is eenmalige aanmelding?
+      href: what-is-single-sign-on.md
 - name: Snelstartgidsen
   items:
     - name: Uw apps weergeven
@@ -19,6 +21,8 @@
       href: delete-application-portal.md
 - name: Zelfstudies
   items:
+    - name: Een app toevoegen die niet in de galerie staat
+      href: add-non-gallery-app.md
     - name: 'Geïntegreerde galerie-apps (bijvoorbeeld ServiceNow, Salesforce, Dropbox)'
       href: /azure/active-directory/saas-apps/
     - name: Een on-premises app toevoegen met een toepassingsproxy
@@ -46,8 +50,6 @@
               href: developer-guidance-for-integrating-applications.md
         - name: Eenmalige aanmelding
           items:
-            - name: Wat is eenmalige aanmelding?
-              href: what-is-single-sign-on.md
             - name: SSO inschakelen voor uw toepassing met meerdere tenants
               href: isv-sso-content.md
             - name: Een Azure-tenant maken voor een toepassing met meerdere tenants
@@ -103,10 +105,6 @@
   items:
     - name: Cloud-apps en eenmalige aanmelding
       items:
-        - name: Een cloud-app toevoegen
-          items:
-            - name: Een app toevoegen die niet in de galerie voorkomt
-              href: add-non-gallery-app.md
         - name: Eenmalige aanmelding configureren
           items:
             - name: Eenmalige aanmelding op basis van SAML configureren
@@ -143,6 +141,8 @@
               href: configure-admin-consent-workflow.md
             - name: Een gebruiker of groep toewijzen aan een app
               href: assign-user-or-group-access-portal.md
+            - name: Verleende machtigingen voor apps controleren
+              href: manage-application-permissions.md
             - name: Verzamelingen maken in mijn apps
               href: access-panel-collections.md
             - name: Selfservice-app-toegang gebruiken

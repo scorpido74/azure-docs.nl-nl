@@ -5,16 +5,16 @@ services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2c470483cee8b621475fa70dd09c80aa126173be
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 43f0dfa5fd413d201eb8c63aa752a6fd8db68f6c
+ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609145"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85807873"
 ---
 # <a name="azure-synapse-analytics-workspaces-preview-frequently-asked-questions"></a>Veelgestelde vragen over Azure Synapse Analytics (preview-versie van werkruimten)
 
@@ -48,6 +48,10 @@ A: Azure Synapse biedt de volgende mogelijkheden:
 A: Azure Synapse Analytics is een evolutie van Azure SQL Data Warehouse naar een analyseplatform, waaronder SQL-pool als de Data Warehouse-oplossing. Dit platform combineert gegevensverkenning, opname, transformatie, voorbereiding en een analyse-laag voor services.
 
 ## <a name="use-cases"></a>Gebruiksvoorbeelden
+
+### <a name="q-how-do-i-rename-a-published-artifact-dataset-notebook-sql-script-and-so-on-in-azure-synapse"></a>V: Hoe kan ik de naam wijzigen van een gepubliceerd artefact (gegevensset, notebook, SQL-script enzovoort) in Azure Synapse?
+
+A: Als u de naam wilt wijzigen van een gepubliceerd artefactbestand, moet u eerst het bestand klonen en de naam van het nieuwe bestand wijzigen in de gewenste bestandsnaam. U moet alle verwijzingen van het artefact handmatig bijwerken naar de nieuwe bestandsnaam en de oude verwijderen.
 
 ### <a name="q-what-is-a-good-use-case-for-synapse-sql-pool"></a>V: Wat is een goed gebruiksvoorbeeld voor een Synapse SQL-pool
 

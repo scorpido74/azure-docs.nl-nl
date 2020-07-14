@@ -17,6 +17,8 @@
       href: integration-patterns-in-azure-farmbeats.md
     - name: Partnerintegratie voor sensoren
       href: sensor-partner-integration-in-azure-farmbeats.md
+    - name: Partnerintegratie voor weer
+      href: weather-partner-integration-in-azure-farmbeats.md
     - name: Partnerintegratie voor afbeeldingen
       href: imagery-partner-integration-in-azure-farmbeats.md
 - name: Handleidingen
@@ -29,6 +31,8 @@
       href: manage-farms-in-azure-farmbeats.md
     - name: Sensorgegevens ophalen
       href: get-sensor-data-from-sensor-partner.md
+    - name: Weergegevens ophalen
+      href: get-weather-data-from-weather-partner.md
     - name: Kaarten genereren
       href: generate-maps-in-azure-farmbeats.md
     - name: Regels configureren en waarschuwingen beheren

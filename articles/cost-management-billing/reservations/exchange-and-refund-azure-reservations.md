@@ -4,14 +4,14 @@ description: Meer informatie over hoe u Azure-reserveringen kunt inwisselen of r
 author: yashesvi
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 06/12/2020
+ms.date: 07/01/2020
 ms.author: banders
-ms.openlocfilehash: 3c2f92db1f65a4e9e57ad443a9f000ab3f6567d5
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: 4a25bb13bfa5b2e4f13ddf437bcd9577f9602aed
+ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85101034"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85807686"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Selfserviceopties voor inruilen en retourneren voor Azure Reservations
 
@@ -20,6 +20,9 @@ Azure-reserveringen bieden flexibiliteit om te voldoen aan uw evoluerende behoef
 De selfserviceoptie voor inwisselen en annuleren is niet beschikbaar voor Enterprise Agreement-klanten van de Amerikaanse overheid. Andere abonnementstypen voor de Amerikaanse overheid, zoals Betalen per gebruik en CSP, (Cloud Solution Provider) worden wel ondersteund.
 
 U moet eigenaarsrechten voor de reserveringsorder hebben om een bestaande reservering in te wisselen of er een restitutie voor te krijgen. U kunt [Gebruikers toevoegen of wijzigen die een reservering kunnen beheren](https://docs.microsoft.com/azure/cost-management-billing/reservations/manage-reserved-vm-instance#add-or-change-users-who-can-manage-a-reservation).
+
+> [!NOTE]
+> Microsoft brengt momenteel geen kosten in rekening voor vroegtijdige beëindiging voor restitutie van reserveringen. Mogelijk worden in de toekomst wel kosten voor restituties in rekening gebracht. Momenteel staat er geen datum voor het inschakelen van de kosten gepland.
 
 ## <a name="how-to-exchange-or-refund-an-existing-reservation"></a>Een bestaande reservering inwisselen of restitueren
 
@@ -72,7 +75,7 @@ Azure heeft de volgende beleidsregels voor annuleringen, inwisselingen en restit
 
 **Restitutiebeleid**
 
-- Er worden voor annuleringen mogelijk kosten voor vroege beëindiging in rekening gebracht van 12%.
+- Momenteel worden geen kosten voor vroegtijdige beëindiging in rekening gebracht, maar mogelijk geldt in de toekomst bij annuleringen een tarief van 12% voor vroegtijdige beëindiging.
 - De totaal geannuleerde toezegging mag niet groter zijn dan USD 50.000 in een voortschrijdende periode van 12 maanden. Bijvoorbeeld: voor een reservering van drie jaar à USD 100 per maand die in de 18e maand is terugbetaald, bedraagt de geannuleerde toezegging USD 1800. Na de terugbetaling is uw nieuwe beschikbare limiet voor restitutie USD 48.200. Binnen 365 dagen na deze restitutie wordt de limiet van USD 48.200 met USD 1800 verhoogd en heeft uw nieuwe pool een waarde van USD 50.000. Elke andere annulering van een reservering wordt van dezelfde pool afgetrokken en dezelfde aanvullingslogica wordt toegepast.
 - Restituties worden berekend op basis van de laagste prijs, zijnde de aankoopprijs of de huidige prijs van de reservering, welke het laagste is.
 - Alleen eigenaren van reserveringsorders kunnen een restitutie verwerken. [Meer informatie over het toevoegen of wijzigen van gebruikers die een reservering kunnen beheren](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).

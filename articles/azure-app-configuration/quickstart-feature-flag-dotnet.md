@@ -1,6 +1,6 @@
 ---
-title: Quick start voor het toevoegen van functie vlaggen aan .NET Framework-apps | Microsoft Docs | Microsoft Docs
-description: Een Snelstartgids voor het toevoegen van functie vlaggen voor het .NET Framework van apps en het beheren ervan in Azure-app configuratie
+title: Quickstart voor het toevoegen van functievlaggen aan .NET Framework-apps | Microsoft Docs | Microsoft Docs
+description: Een quickstart voor het toevoegen van functievlaggen voor .NET Framework-apps en het beheren ervan in Azure App Configuration
 services: azure-app-configuration
 documentationcenter: ''
 author: lisaguthrie
@@ -14,47 +14,47 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: 5ea9749c07aadc7037e753160e9b053992bebae2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: bf2ccd93a94036c6ab5b6224456cd1f5a13239c5
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77619335"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855018"
 ---
-# <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>Snelstartgids: functie vlaggen toevoegen aan een .NET Framework-app
+# <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>Quickstart: Functievlaggen toevoegen aan een .NET Framework-app
 
-In deze Snelstartgids neemt u Azure-app configuratie op in een .NET Framework-app om een end-to-end-implementatie van functie beheer te maken. U kunt de app Configuration-service gebruiken om al uw functie vlaggen centraal op te slaan en hun status te bepalen. 
+In deze quickstart neemt u Azure App Configuration op in een .NET Framework-app om een end-to-end-implementatie van functiebeheer te maken. U kunt de App Configuration-service gebruiken om al uw functievlaggen centraal op te slaan en hun status te bepalen. 
 
-De beheer bibliotheken van .NET-onderdelen breiden het Framework uit met uitgebreide ondersteuning voor functie vlaggen. Deze bibliotheken worden boven op het .NET-configuratie systeem gebouwd. Ze kunnen naadloos worden geïntegreerd met de configuratie van de app via de .NET-configuratie provider.
+De .NET-functiebeheerbibliotheken breiden het framework uit met uitgebreide ondersteuning voor functievlaggen. Deze bibliotheken worden boven op het .NET-configuratiesysteem gebouwd. Ze kunnen naadloos worden geïntegreerd met App Configuration via de configuratieprovider voor .NET.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
+- Azure-abonnement: [u kunt een gratis abonnement nemen](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
-- [.NET Framework 4,8](https://dotnet.microsoft.com/download)
+- [.NET Framework 4.8](https://dotnet.microsoft.com/download)
 
-## <a name="create-an-app-configuration-store"></a>Een app-configuratie archief maken
+## <a name="create-an-app-configuration-store"></a>Een App Configuration-archief maken
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Selecteer **feature Manager** > **+ toevoegen** om een functie vlag met de `Beta`naam toe te voegen.
+6. Selecteer **Functiebeheer** >  **+ Toevoegen** om een functievlag met de naam `Beta` toe te voegen.
 
     > [!div class="mx-imgBorder"]
-    > ![Functie vlag met de naam Beta inschakelen](media/add-beta-feature-flag.png)
+    > ![Functievlag met de naam Beta inschakelen](media/add-beta-feature-flag.png)
 
-    `label` Zorg ervoor dat u dit nu niet opgeeft.
+    Laat `label` voor dit moment niet-gedefinieerd.
 
 ## <a name="create-a-net-console-app"></a>Een .NET Core-consoletoepassing maken
 
-1. Start Visual Studio en selecteer **bestand** > **New** > **project**.
+1. Start Visual Studio en selecteer **Bestand** > **Nieuw** > **Project**.
 
-1. In **een nieuw project maken**filtert u op het type **console** project en klikt u op **console-app (.NET Framework)**. Klik op **Volgende**.
+1. In **Een nieuw project maken**, filtert u op het projecttype **Console** en klikt u op **Console-app (.NET Framework)** . Klik op **Volgende**.
 
-1. Voer in **uw nieuwe project configureren**een project naam in. Onder **Framework**selecteert u **.NET Framework 4,8** of hoger. Klik op **maken**.
+1. Voer in **Uw nieuwe project configureren** een projectnaam in. Selecteer onder **Framework** **.NET Framework 4.8** of hoger. Klik op **Create**.
 
-## <a name="connect-to-an-app-configuration-store"></a>Verbinding maken met een app-configuratie archief
+## <a name="connect-to-an-app-configuration-store"></a>Verbinding maken met een App Configuration-archief
 
-1. Klik met de rechter muisknop op het project en selecteer **NuGet-pakketten beheren**. Zoek op het tabblad **Bladeren** de volgende NuGet-pakketten aan uw project en voeg deze toe. Als u deze niet kunt vinden, schakelt u het selectie vakje **include Prerelease** in.
+1. Klik met de rechtermuisknop op het project en selecteer **NuGet-pakketten beheren**. Zoek op het tabblad **Bladeren** de volgende NuGet-pakketten op en voeg deze toe aan uw project. Als u deze niet kunt vinden, schakelt u het selectievakje **Prerelease insluiten** in.
 
     ```
     Microsoft.Extensions.DependencyInjection
@@ -62,7 +62,7 @@ De beheer bibliotheken van .NET-onderdelen breiden het Framework uit met uitgebr
     Microsoft.FeatureManagement
     ```
 
-1. Open *Program.cs* en voeg de volgende-instructies toe:
+1. Open *Program.cs* en voeg de volgende instructies toe:
 
     ```csharp
     using Microsoft.Extensions.DependencyInjection;
@@ -71,7 +71,7 @@ De beheer bibliotheken van .NET-onderdelen breiden het Framework uit met uitgebr
     using Microsoft.FeatureManagement;
     ```
 
-1. Werk de `Main` methode bij om verbinding te maken met de app `UseFeatureFlags` -configuratie, waarbij u de optie opgeeft zodat functie vlaggen worden opgehaald. Vervolgens wordt een bericht weer gegeven `Beta` als de functie vlag is ingeschakeld.
+1. Werk de `Main`-methode bij om verbinding te maken met App Configuration, waarbij u de `UseFeatureFlags`-optie opgeeft, zodat er functievlaggen worden opgehaald. Vervolgens wordt een bericht weergegeven als de functievlag `Beta` is ingeschakeld.
 
     ```csharp
         public static async Task Main(string[] args)
@@ -103,19 +103,23 @@ De beheer bibliotheken van .NET-onderdelen breiden het Framework uit met uitgebr
 
 ## <a name="build-and-run-the-app-locally"></a>De app lokaal compileren en uitvoeren
 
-1. Stel een omgevings variabele met de naam **Connections Tring** in op de Connection String van de app-configuratie opslag. Als u de Windows-opdracht prompt gebruikt, voert u de volgende opdracht uit:
+1. Stel een omgevingsvariabele met de naam **ConnectionString** in en stel deze in op de toegangssleutel van uw App Configuration-archief. Als u de Windows-opdrachtprompt gebruikt, moet u de volgende opdracht uitvoeren:
 
+    ```console
         setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```
 
-    Als u Windows Power shell gebruikt, voert u de volgende opdracht uit:
+    Als u Windows PowerShell gebruikt, voert u de volgende opdracht uit:
 
+    ```powershell
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```
 
 1. Start Visual Studio opnieuw zodat de wijziging kan worden doorgevoerd. 
 
-1. Druk op CTRL + F5 om de console-app te bouwen en uit te voeren.
+1. Druk op Ctrl + F5 om de consoletoepassing te bouwen en uit te voeren.
 
-    ![App met functie vlag ingeschakeld](./media/quickstarts/dotnet-app-feature-flag.png)
+    ![App met functievlag ingeschakeld](./media/quickstarts/dotnet-app-feature-flag.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -123,7 +127,7 @@ De beheer bibliotheken van .NET-onderdelen breiden het Framework uit met uitgebr
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u een functie vlag in app-configuratie gemaakt en gebruikt met een .NET Framework-console-app. Ga verder met de volgende zelf studie als u wilt weten hoe u functie vlaggen en andere configuratie waarden dynamisch kunt bijwerken zonder de toepassing opnieuw te starten.
+In deze quickstart hebt u een functievlag in App Configuration gemaakt en dit gebruikt met een .NET Framework-console-app. Ga verder met de volgende zelfstudie als u wilt weten hoe u functievlaggen en andere configuratiewaarden dynamisch kunt bijwerken zonder de toepassing opnieuw te hoeven starten.
 
 > [!div class="nextstepaction"]
 > [Dynamische configuratie inschakelen](./enable-dynamic-configuration-dotnet.md)

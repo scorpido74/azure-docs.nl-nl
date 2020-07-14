@@ -3,23 +3,25 @@ title: Aan de slag met Azure Cost Management voor partners
 description: In dit artikel wordt uitgelegd hoe partners Azure Cost Management-functies gebruiken en hoe ze toegang tot Cost Management voor hun klanten mogelijk maken.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/08/2020
+ms.date: 07/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 08037cbd3723604720a273722bd5dbee3fb79b8e
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 0b0b5eb8ec41eccf99c23b671cef42a9c1bc8859
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84554557"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849845"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Aan de slag met Azure Cost Management voor partners
 
-Azure Cost Management is standaard beschikbaar voor directe partners die hun klanten hebben voorbereid op een Microsoft-klantovereenkomst en [een Azure-plan hebben gekocht](/partner-center/purchase-azure-plan). In dit artikel wordt uitgelegd hoe partners [Azure Cost Management](../index.yml)-functies gebruiken om de kosten voor abonnementen in het Azure-plan weer te geven. Ook wordt beschreven hoe partners toegang tot Cost Management bieden voor hun klanten.
+Azure Cost Management is standaard beschikbaar voor directe partners die hun klanten hebben voorbereid op een Microsoft-klantovereenkomst en [een Azure-plan hebben gekocht](/partner-center/purchase-azure-plan). In dit artikel wordt uitgelegd hoe partners [Azure Cost Management](../index.yml)-functies gebruiken om de kosten voor abonnementen in het Azure-plan weer te geven. Ook wordt beschreven hoe partners toegang tot Cost Management bieden voor hun klanten tegen verkoopprijzen.
 
-Voor directe partners en indirecte providers hebben de globale beheerder en beheerderagents van de indirecte provider toegang tot Cost Management in de partnertenant. Resellers en klanten hebben toegang tot Cost Management in de tenant van de klant en kunnen abonnementskosten weergeven, waarbij de kosten worden berekend en weergegeven in tarieven voor de detailhandel. Ze moeten wel RBAC-toegang tot het abonnement in de tenant van de klant hebben om de kosten te kunnen zien. Het beleid voor de zichtbaarheid van kosten moet zijn ingeschakeld door de provider van de tenant van de klant.
+Voor directe partners en indirecte providers hebben de globale beheerder en beheerderagents toegang tot Cost Management in de partnertenant en kosten beheren tegen gefactureerde prijzen.
+
+Resellers en klanten hebben toegang tot Cost Management in de tenant van de klant en kunnen abonnementskosten weergeven, waarbij de kosten worden berekend en weergegeven in tarieven voor de detailhandel. Ze moeten wel RBAC-toegang tot het abonnement in de tenant van de klant hebben om de kosten te kunnen zien. Het beleid voor de zichtbaarheid van kosten moet zijn ingeschakeld door de provider van de tenant van de klant.
 
 Klanten kunnen Cost Management-functies gebruiken wanneer ze zijn ingeschakeld door hun CSP-partner.
 
@@ -33,10 +35,12 @@ CSP-partners gebruiken Cost Management voor het volgende:
 - Exporteer hun kosten- en gebruiksgegevens naar een opslag-blob met een betalen per gebruik-abonnement.
 
 Hier volgt een voorbeeld van de kosten voor alle klanten.
-![Voorbeeld van de kosten voor alle klanten](./media/get-started-partners/customer-costs1.png)
+
+[![Voorbeeld van de kosten voor alle klanten](./media/get-started-partners/customer-costs1.png)](./media/get-started-partners/customer-costs1.png#lightbox)
 
 Hier volgt een voorbeeld van de kosten voor één klant.
-![Voorbeeld van de kosten voor één klant](./media/get-started-partners/customer-costs2.png)
+
+[![Voorbeeld van de kosten voor één klant](./media/get-started-partners/customer-costs2.png)](./media/get-started-partners/customer-costs2.png#lightbox)
 
 Alle functionaliteit die beschikbaar is in Azure Cost Management is ook beschikbaar met REST-API's. Gebruik de API's om kostenbeheertaken te automatiseren.
 
@@ -50,8 +54,7 @@ Azure Cost Management heeft leestoegang tot uw factureringsrekening of abonnemen
 
 Zie [Gebruikersrollen en machtigingen toewijzen](/partner-center/permissions-overview) voor meer informatie over het inschakelen en toewijzen van toegang tot Azure Cost Management voor een factureringsrekening. De rollen **Globale beheerder** en **Beheerdersagent** kunnen de kosten voor een factureringsrekening beheren.
 
-Om toegang te krijgen tot Azure Cost Management op het abonnementsbereik, kunnen gebruikers met RBAC-toegang tot een abonnement de kosten bekijken op detailhandel-tarieven (betalen naar gebruik). Het beleid voor de zichtbaarheid van kosten voor de tenant van de klant moet echter zijn ingeschakeld. Zie voor een volledige lijst met ondersteunde accounttypen [Gegevens van Cost Management begrijpen](understand-cost-mgt-data.md).
-
+Om toegang te krijgen tot Azure Cost Management op het abonnementsbereik, kunnen gebruikers met RBAC-toegang tot een abonnement de kosten bekijken op detailhandel-tarieven (betalen naar gebruik). Het beleid voor de [zichtbaarheid van kosten voor de tenant van de klant](#enable-the-policy-to-view-azure-usage-charges) moet echter zijn ingeschakeld. Zie voor een volledige lijst met ondersteunde accounttypen [Gegevens van Cost Management begrijpen](understand-cost-mgt-data.md).
 
 ## <a name="how-cost-management-uses-scopes"></a>Hoe Cost Management bereiken gebruikt
 
@@ -110,13 +113,13 @@ Het bereik van de klant bevat geen klanten die zich in de huidige CSP-aanbieding
 
 Alleen gebruikers met de rollen **Globale beheerder** en **Beheerdersagent** kunnen de kosten voor factureringsrekeningen, factureringsprofielen en klanten rechtstreeks in de Azure-Tenant van de partner beheren en weergeven. Zie [Gebruikersrollen en -machtigingen toewijzen](/partner-center/permissions-overview) voor meer informatie over de rollen van het partnercentrum.
 
-## <a name="enable-cost-management-in-the-customer-tenant"></a>Kostenbeheer inschakelen in de tenant van de klant
+## <a name="enable-cost-management-for-customer-tenant-subscriptions"></a>Kostenbeheer inschakelen voor tenantabonnementen van klanten
 
-Partners kunnen toegang tot Cost Management mogelijk maken nadat klanten zijn voorbereid op een Microsoft-klantovereenkomst. Vervolgens kunnen partners een beleid inschakelen waarmee klanten hun kosten bekijken die worden berekend op basis van betalen naar gebruik-detailhandelstarieven. Kosten worden weergegeven in de factureringsvaluta van de klant voor het verbruikte gebruik van het abonnement en de resourcegroepen van het RBAC.
+Partners kunnen toegang tot Cost Management mogelijk maken nadat klanten zijn voorbereid op een Microsoft-klantovereenkomst. Vervolgens kunnen partners een beleid inschakelen waarmee klanten hun kosten voor gebruikte services in Azure bekijken die worden berekend op basis van betalen naar gebruik-detailhandelstarieven. Kosten worden weergegeven in de factureringsvaluta van de klant voor het verbruikte gebruik van het abonnement en de resourcegroepen van het RBAC.
 
 Wanneer het beleid voor de zichtbaarheid van kosten wordt ingeschakeld door de partner, kan elke gebruiker met Azure Resource Manager-toegang tot het abonnement, kosten op basis van betalen naar gebruik-tarieven beheren en analyseren. Effectief kunnen wederverkopers en klanten die de juiste RBAC-toegang hebben tot de Azure-abonnementen, kosten bekijken.
 
-Ongeacht het beleid kunnen partners ook de kosten weergeven als ze toegang hebben tot het abonnement en de resourcegroep.
+Ongeacht het beleid kunnen globale beheerders en beheerdersagenten van de provider abonnementskosten bekijken als ze toegang hebben tot het abonnement en de resourcegroep.
 
 ### <a name="enable-the-policy-to-view-azure-usage-charges"></a>Het beleid inschakelen voor het weergeven van Azure-gebruiks kosten
 
@@ -126,7 +129,7 @@ Meld u aan bij de partner-tenant in de Azure-portal en selecteer **Cost Manageme
 
 Selecteer in de lijst met klanten de klant waarvoor u de kosten wilt weergeven.
 
-![Klanten selecteren in Cost Management](./media/get-started-partners/customer-list.png)
+[![Klanten selecteren in Cost Management](./media/get-started-partners/customer-list.png)](./media/get-started-partners/customer-list.png#lightbox)
 
 Selecteer **Beleid**onder **Instellingen**.
 
@@ -139,16 +142,17 @@ Wanneer het kostenbeleid is ingesteld op **Ja**, kunnen abonnementsgebruikers di
 
 Wanneer het beleid voor het berekenen van de kosten is ingeschakeld, worden voor alle services waarvoor het abonnementsgebruik geldt, kosten op basis van Betalen naar gebruik-tarieven weergegeven. Het gebruik van de reservering wordt weergegeven met nul kosten voor de werkelijke en afgeschreven kosten. Aankopen en rechten zijn niet gekoppeld aan een specifiek abonnement. Aankopen worden dus niet weergegeven in het abonnementsbereik.
 
+### <a name="view-subscription-costs-in-the-customer-tenant"></a>Abonnementskosten bekijken in de tenant van de klant
 
-### <a name="view-customer-costs"></a>Klantkosten weergeven
+Als u de kosten voor een abonnement wilt bekijken, opent u **Kostenbeheer en facturering** in de Azure-tenant van de klant. Selecteer **Kostenanalyse** het vereiste abonnement om te beginnen met het controleren van de kosten. U kunt de verbruikskosten voor elk abonnement afzonderlijk bekijken in de tenant van de klant.
 
-Als u de kosten voor de tenant van de klant wilt weergeven, opent u **Kostenbeheer en facturering**. Selecteer **Kostenanalyse** en wijzig vervolgens het bereik naar het tenant-abonnement van de klant om de kosten te bekijken.
-
-![Kostenanalyse als een klant weergeven ](./media/get-started-partners/customer-tenant-view-cost-analysis.png)
+[![Kostenanalyse als klant weergeven](./media/get-started-partners/subscription-costs.png)](./media/get-started-partners/subscription-costs.png#lightbox)
 
 Kostenanalyse, budgetten en waarschuwingen zijn beschikbaar voor het abonnement en de RBAC-scopes van de resourcegroep tegen kosten op basis van Betalen per gebruik.
 
 Bij afgeschreven weergaven en werkelijke kosten voor gereserveerde instanties in de RBAC-bereiken worden nul kosten weergegeven. Kosten voor gereserveerde instanties worden alleen weergegeven in factureringsbereiken waar de aankopen zijn gedaan.
+
+De verkoopprijzen die worden gebruikt voor het berekenen van de kosten in de weergave zijn dezelfde prijzen die worden weergegeven in de Azure-prijscalculator voor alle klanten. De kosten die worden weergegeven, omvatten geen eventuele kortingen of tegoeden van de partner, zoals door partner verdiende tegoeden (PEC), niveaukortingen en Global Service-kortingen.
 
 ## <a name="analyze-costs-in-cost-analysis"></a>Kosten in kostenanalyse beoordelen
 

@@ -1,18 +1,18 @@
 ---
 title: 'Quickstart: Een blauwdruk maken met de REST-API'
 description: In deze quickstart gebruikt u Azure Blueprints om artefacten te maken, te definiëren en te implementeren met de REST API.
-ms.date: 02/26/2020
+ms.date: 06/29/2020
 ms.topic: quickstart
-ms.openlocfilehash: ec84e8396ad65aa01f73414b971f27bc95396e2f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: e3cdf28cfe523e52aceefe20294042d28b98e1e2
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745099"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971195"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Quickstart: Een Azure Blueprint definiëren en toewijzen met REST API
 
-Als u leert hoe u blauwdrukken in Azure maakt en toewijst, kunnen er algemene patronen worden gedefinieerd voor de ontwikkeling van herbruikbare en snel implementeerbare configuraties op basis van Resource Manager-sjablonen, beleid, beveiliging en meer. In deze zelfstudie leert u hoe u Azure Blueprints gebruikt om algemene taken uit te voeren met betrekking tot het maken, publiceren en toewijzen van een blauwdruk binnen uw organisatie, zoals:
+Als u leert hoe u blauwdrukken maakt en toewijst, kunnen er algemene patronen worden gedefinieerd voor de ontwikkeling van herbruikbare en snel implementeerbare configuraties op basis van Azure Resource Manager-sjablonen (ARM-sjablonen), beleid, beveiliging en meer. In deze zelfstudie leert u hoe u Azure Blueprints gebruikt om algemene taken uit te voeren met betrekking tot het maken, publiceren en toewijzen van een blauwdruk binnen uw organisatie, zoals:
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -52,7 +52,7 @@ Vervang `{subscriptionId}` in de bovenstaande variabele **$restUri** om informat
 
 ## <a name="create-a-blueprint"></a>Een blauwdruk maken
 
-De eerste stap bij het definiëren van een standaardpatroon voor naleving bestaat uit het samenstellen van een blauwdruk uit de beschikbare resources. U maakt een blauwdruk met de naam MyBlueprint om de rol en de beleidstoewijzingen voor het abonnement te configureren. Vervolgens voegt u een resourcegroep en een Resource Manager-sjabloon toe en voegt u een roltoewijzing aan de resourcegroep toe.
+De eerste stap bij het definiëren van een standaardpatroon voor naleving bestaat uit het samenstellen van een blauwdruk uit de beschikbare resources. U maakt een blauwdruk met de naam MyBlueprint om de rol en de beleidstoewijzingen voor het abonnement te configureren. Vervolgens voegt u een resourcegroep en een ARM-sjabloon toe en voegt u een roltoewijzing aan de resourcegroep toe.
 
 > [!NOTE]
 > Wanneer u de REST API gebruikt, wordt het object _blauwdruk_ eerst gemaakt. Voor elk _artefact_ dat wordt toegevoegd en parameters bevat, moeten de parameters vooraf worden gedefinieerd in de eerste _blauwdruk_.
@@ -200,7 +200,7 @@ In elke REST API-URI zijn er verschillende variabelen die worden gebruikt en die
      }
      ```
 
-1. Voeg een sjabloon toe onder resourcegroep. De **aanvraagbody** voor een Resource Manager-sjabloon omvat de normale JSON-component van de sjabloon en definieert de doelresourcegroep met **properties.resourceGroup**. De sjabloon maakt ook opnieuw gebruik van de blauwdrukparameters **storageAccountType**, **tagName** en **tagValue** door ze allemaal door te geven aan de sjabloon. De blauwdrukparameters zijn voor de sjabloon beschikbaar door **properties.parameters** te definiëren. Binnen de sjabloon-JSON wordt die sleutel/waarde gebruikt om de waarde in te voeren. De namen van de blauwdruk- en sjabloonparameters kunnen dezelfde zijn, maar zijn verschillend gemaakt om aan te geven hoe elke parameter wordt doorgegeven van de blauwdruk aan de sjabloonartefact.
+1. Voeg een sjabloon toe onder resourcegroep. De **aanvraagbody** voor een ARM-sjabloon omvat de normale JSON-component van de sjabloon en definieert de doelresourcegroep met **properties.resourceGroup**. De sjabloon maakt ook opnieuw gebruik van de blauwdrukparameters **storageAccountType**, **tagName** en **tagValue** door ze allemaal door te geven aan de sjabloon. De blauwdrukparameters zijn voor de sjabloon beschikbaar door **properties.parameters** te definiëren. Binnen de sjabloon-JSON wordt die sleutel/waarde gebruikt om de waarde in te voeren. De namen van de blauwdruk- en sjabloonparameters kunnen dezelfde zijn, maar zijn verschillend gemaakt om aan te geven hoe elke parameter wordt doorgegeven van de blauwdruk aan de sjabloonartefact.
 
    - REST API-URI
 

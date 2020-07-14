@@ -106,6 +106,8 @@
           href: how-to-connect-install-express.md
         - name: Azure AD Connect met federatie installeren of andere aangepaste instellingen
           href: how-to-connect-install-custom.md
+        - name: Configuratie-instellingen voor import en export
+          href: how-to-connect-import-export-config.md
         - name: Azure AD Connect installeren met Pass-through-verificatie (PTA)
           href: how-to-connect-pta-quick-start.md
         - name: Azure AD Connect Health installeren

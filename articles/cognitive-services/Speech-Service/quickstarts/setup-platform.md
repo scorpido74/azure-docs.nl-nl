@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: platform voor ontwikkel aars instellen'
+title: 'Quickstart: Ontwikkelplatform instellen'
 titleSuffix: Azure Cognitive Services
-description: In deze Quick Start leert u hoe u de Speech SDK kunt installeren voor de combi natie van uw voorkeurs platform en programmeer taal.
+description: In deze quickstart leert u hoe u de Speech SDK kunt installeren voor de platform- en programmeertaalcombinatie van uw voorkeur.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -9,21 +9,21 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
-ms.author: dapine
+ms.author: trbye
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-speech-services-one-nomore
-ms.openlocfilehash: ef498f0660613afdc5a2842898b4538454444759
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.openlocfilehash: a2370d7a79ea54adf9d12ecb645019aec348f8c7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609283"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85834145"
 ---
-# <a name="quickstart-setup-development-environment"></a>Snelstartgids: ontwikkel omgeving instellen
+# <a name="quickstart-setup-development-environment"></a>Quickstart: Ontwikkelomgeving instellen
 
 ::: zone pivot="programming-language-csharp"
 
-**Kies uw doel omgeving**
+**Uw doelomgeving kiezen**
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -50,13 +50,13 @@ ms.locfileid: "84609283"
 
 ::: zone pivot="programming-language-cpp"
 
-**Kies uw doel omgeving**
+**Uw doelomgeving kiezen**
 
 # <a name="linux"></a>[Linux](#tab/linux)
 
 [!INCLUDE [linux](../includes/quickstarts/platform/cpp-linux.md)]
 
-# <a name="macos"></a>[macOS](#tab/macos)
+# <a name="macos"></a>[MacOS](#tab/macos)
 
 [!INCLUDE [macos](../includes/quickstarts/platform/cpp-macos.md)]
 
@@ -69,9 +69,9 @@ ms.locfileid: "84609283"
 
 ::: zone pivot="programming-language-java"
 
-**Kies uw doel omgeving**
+**Uw doelomgeving kiezen**
 
-# <a name="java-runtime"></a>[Java-runtime](#tab/jre)
+# <a name="java-runtime"></a>[Java Runtime](#tab/jre)
 
 [!INCLUDE [jre](../includes/quickstarts/platform/java-jre.md)]
 
@@ -97,9 +97,9 @@ ms.locfileid: "84609283"
 
 ::: zone pivot="programming-language-javascript"
 
-**Kies uw doel omgeving**
+**Uw doelomgeving kiezen**
 
-#### <a name="browser-based"></a>[Op browser gebaseerd](#tab/browser)
+#### <a name="browser-based"></a>[Browser-based](#tab/browser)
 
 [!INCLUDE [browser](../includes/quickstarts/platform/javascript-browser.md)]
 

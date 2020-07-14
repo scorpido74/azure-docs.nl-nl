@@ -4,18 +4,18 @@ description: Maak een nieuw project in Azure Notebooks (preview-versie) dat is g
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.custom: tracking-python
-ms.openlocfilehash: 03935b9672c25db11b91733fac1c63f1f5978b87
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: c5f73b73b4bab99e07874c2d16d47da69f8026ba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559747"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85832896"
 ---
 # <a name="quickstart-create-a-project-with-a-custom-environment-in-azure-notebooks-preview"></a>Quickstart: Een project met een aangepaste omgeving maken in Azure Notebooks (preview-versie)
 
-Een project in Azure Notebooks is een verzameling bestanden, zoals notebooks, gegevensbestanden, documentatie, afbeeldingen, enzovoort, naast een omgeving die kan worden geconfigureerd met specifieke installatieopdrachten. Door de omgeving bij het project te definiëren, beschikt iedereen die het project naar zijn of haar eigen Azure Notebooks-account kloont, over alle benodigde informatie om de benodigde omgeving na te maken.
-
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+Een project in Azure Notebooks is een verzameling bestanden, zoals notebooks, gegevensbestanden, documentatie, afbeeldingen, enzovoort, naast een omgeving die kan worden geconfigureerd met specifieke installatieopdrachten. Door de omgeving bij het project te definiëren, beschikt iedereen die het project naar zijn of haar eigen Azure Notebooks-account kloont, over alle benodigde informatie om de benodigde omgeving na te maken.
 
 ## <a name="create-a-project"></a>Een project maken
 

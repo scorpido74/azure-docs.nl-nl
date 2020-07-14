@@ -3,16 +3,16 @@ title: 'Quickstart: Een blauwdruk maken met de Azure CLI'
 description: In deze quickstart gebruikt u Azure Blueprints om artefacten te maken, te definiëren en te implementeren met de Azure CLI.
 ms.date: 06/02/2020
 ms.topic: quickstart
-ms.openlocfilehash: 7d144edca0794679e67358ff820e1508736ba723
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 30a450fc7eab55424da7ce971ad234cbf2248b30
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613347"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969665"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-azure-cli"></a>Quickstart: Een Azure Blueprint definiëren en toewijzen met Azure CLI
 
-Als u leert hoe u blauwdrukken in Azure maakt en toewijst, kunnen er algemene patronen worden gedefinieerd voor de ontwikkeling van herbruikbare en snel implementeerbare configuraties op basis van Resource Manager-sjablonen, beleid, beveiliging en meer. In deze zelfstudie leert u hoe u Azure Blueprints gebruikt om algemene taken uit te voeren met betrekking tot het maken, publiceren en toewijzen van een blauwdruk binnen uw organisatie, zoals:
+Als u leert hoe u blauwdrukken maakt en toewijst, kunnen er algemene patronen worden gedefinieerd voor de ontwikkeling van herbruikbare en snel implementeerbare configuraties op basis van Azure Resource Manager-sjablonen (ARM-sjablonen), beleid, beveiliging en meer. In deze zelfstudie leert u hoe u Azure Blueprints gebruikt om algemene taken uit te voeren met betrekking tot het maken, publiceren en toewijzen van een blauwdruk binnen uw organisatie, zoals:
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -46,7 +46,7 @@ Deze extensie werkt overal waar Azure CLI kan worden gebruikt, met inbegrip van 
 
 ## <a name="create-a-blueprint"></a>Een blauwdruk maken
 
-De eerste stap bij het definiëren van een standaardpatroon voor naleving bestaat uit het samenstellen van een blauwdruk uit de beschikbare resources. U maakt een blauwdruk met de naam MyBlueprint om de rol en de beleidstoewijzingen voor het abonnement te configureren. Vervolgens voegt u een resourcegroep en een Resource Manager-sjabloon toe en voegt u een roltoewijzing aan de resourcegroep toe.
+De eerste stap bij het definiëren van een standaardpatroon voor naleving bestaat uit het samenstellen van een blauwdruk uit de beschikbare resources. U maakt een blauwdruk met de naam MyBlueprint om de rol en de beleidstoewijzingen voor het abonnement te configureren. Vervolgens voegt u een resourcegroep en een ARM-sjabloon toe en voegt u een roltoewijzing aan de resourcegroep toe.
 
 > [!NOTE]
 > Wanneer u de Azure CLI gebruikt, wordt het object _blauwdruk_ eerst gemaakt. Voor elk _artefact_ dat wordt toegevoegd en parameters bevat, moeten de parameters vooraf worden gedefinieerd in de eerste _blauwdruk_.
@@ -193,9 +193,9 @@ De eerste stap bij het definiëren van een standaardpatroon voor naleving bestaa
         --parameters artifacts\policyStorageTags.json
      ```
 
-1. Voeg een sjabloon toe onder resourcegroep. De parameter **template** voor een Resource Manager-sjabloon bevat de normale JSON-onderdelen van de sjabloon. De sjabloon maakt ook opnieuw gebruik van de blauwdrukparameters **storageAccountType**, **tagName** en **tagValue** door ze allemaal door te geven aan de sjabloon. De blauwdrukparameters zijn voor de sjabloon beschikbaar door de parameter **parameters** te gebruiken. Binnen de sjabloon-JSON wordt dat sleutel-waardepaar gebruikt om de waarde in te voeren. De namen van de blauwdruk- en sjabloonparameters kunnen dezelfde zijn.
+1. Voeg een sjabloon toe onder resourcegroep. De parameter **template** voor een ARM-sjabloon bevat de normale JSON-onderdelen van de sjabloon. De sjabloon maakt ook opnieuw gebruik van de blauwdrukparameters **storageAccountType**, **tagName** en **tagValue** door ze allemaal door te geven aan de sjabloon. De blauwdrukparameters zijn voor de sjabloon beschikbaar door de parameter **parameters** te gebruiken. Binnen de sjabloon-JSON wordt dat sleutel-waardepaar gebruikt om de waarde in te voeren. De namen van de blauwdruk- en sjabloonparameters kunnen dezelfde zijn.
 
-   - JSON Azure Resource Manager-sjabloonbestand - artifacts\templateStorage.json
+   - JSON ARM-sjabloonbestand - artifacts\templateStorage.json
 
      ```json
      {
@@ -249,7 +249,7 @@ De eerste stap bij het definiëren van een standaardpatroon voor naleving bestaa
      }
      ```
 
-   - Parameterbestand voor JSON-Azure Resource Manager-sjabloon - artifacts\templateStorageParams.json
+   - Parameterbestand voor JSON ARM-sjabloon - artifacts\templateStorageParams.json
 
      ```json
      {
