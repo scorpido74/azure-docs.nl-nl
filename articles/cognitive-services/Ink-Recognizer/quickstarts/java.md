@@ -1,45 +1,45 @@
 ---
-title: 'Snelstartgids: digitale inkt herkennen met de inkt Recognizer REST API en Java'
+title: 'Quickstart: Digitale inkt herkennen met de Ink Recognizer-REST API en Java'
 titleSuffix: Azure Cognitive Services
-description: Gebruik de API voor inkt herkenning om digitale inkt streken in deze Quick Start te herkennen.
+description: Gebruik de Ink Recognizer-API om digitale pennenstreken te herkennen in deze quickstart.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 06/30/2020
 ms.author: aahi
-ms.openlocfilehash: d2cd4e56477ea39587ce318538c9ddd84c51b03b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: bc7dfcef45917081ec9ea1e97f4c36e4348dd9e7
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448124"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985272"
 ---
-# <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-java"></a>Snelstartgids: digitale inkt herkennen met de inkt Recognizer REST API en Java
+# <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-java"></a>Quickstart: Digitale inkt herkennen met de Ink Recognizer-REST API en Java
 
-Gebruik deze Quick Start om de inkt Recognizer-API te gebruiken voor digitale inkt streken. Deze Java-toepassing verstuurt een API-aanvraag met gegevens over de JSON-indeling en ontvangt de reactie.
+Gebruik deze quickstart om te beginnen met de Ink Recognizer-API te gebruiken voor digitale pennenstreken. Met deze Java-toepassing wordt een API-aanvraag met gegevens over de pennenstreken met JSON-indeling verstuurd en het antwoord ontvangen.
 
 Hoewel deze toepassing in Java is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
-Normaal gesp roken roept u de API aan vanuit een digitale hand schrift-app. Deze Quick Start verzendt inkt lijn gegevens voor het volgende handgeschreven voor beeld vanuit een JSON-bestand.
+Normaal gesproken zou u de API aanroepen vanuit een digitaal handschrift-app. In deze quickstart wordt gegevens over pennenstreken voor het volgende handgeschreven voorbeeld verzonden vanuit een JSON-bestand.
 
 ![een afbeelding van handgeschreven tekst](../media/handwriting-sample.jpg)
 
-De bron code voor deze snelstartgids vindt u op [github](https://go.microsoft.com/fwlink/?linkid=2089904).
+De broncode voor deze quickstart is te vinden op [GitHub](https://go.microsoft.com/fwlink/?linkid=2089904).
 
 ## <a name="prerequisites"></a>Vereisten
 
 - De [Java&trade; Development Kit (JDK) 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) of hoger.
 
-- Deze bibliotheken importeren vanuit de Maven-opslag plaats
-    - [Json in Java](https://mvnrepository.com/artifact/org.json/json) -pakket
-    - [Apache httpclient maakt](https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient) -pakket
+- Deze bibliotheken importeren vanuit de Maven-opslagplaats
+    - [JSON in Java](https://mvnrepository.com/artifact/org.json/json)-pakket
+    - [Apache HttpClient](https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient)-pakket
 
-- De voorbeeld gegevens voor de inkt lijn voor deze snelstartgids vindt u op [github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/InkRecognition/quickstart/example-ink-strokes.json).
+- De voorbeeldgegevens over pennenstreken voor deze quickstart vindt u op [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/InkRecognition/quickstart/example-ink-strokes.json).
 
-### <a name="create-an-ink-recognizer-resource"></a>Een bron voor een inkt herkenning maken
+### <a name="create-an-ink-recognizer-resource"></a>Een Ink Recognizer-resource maken
 
 [!INCLUDE [creating an ink recognizer resource](../includes/setup-instructions.md)]
 
@@ -49,52 +49,52 @@ De bron code voor deze snelstartgids vindt u op [github](https://go.microsoft.co
     
     [!code-java[import statements](~/cognitive-services-rest-samples/java/InkRecognition/quickstart/RecognizeInk.java?name=imports)]
 
-2. Maak variabelen voor uw abonnements sleutel, eind punt en JSON-bestand. Het eind punt wordt later toegevoegd aan de URI van de inkt herkenning.
+2. Maak variabelen voor uw abonnementssleutel, eindpunt en JSON-bestand. Het eindpunt wordt later toegevoegd aan de URI van Ink Recognizer.
 
     [!code-java[initial vars](~/cognitive-services-rest-samples/java/InkRecognition/quickstart/RecognizeInk.java?name=vars)]
 
-## <a name="create-a-function-to-send-requests"></a>Een functie maken om aanvragen te verzenden
+## <a name="create-a-function-to-send-requests"></a>Een functie maken voor het verzenden van aanvragen
 
-1. Maak een nieuwe functie met `sendRequest()` de naam die de hierboven gemaakte variabelen accepteert. Voer vervolgens de volgende stappen uit.
+1. Maak een nieuwe functie met de naam `sendRequest()` die de hierboven gemaakte variabelen gebruikt. Voer vervolgens de volgende stappen uit.
 
-2. Maak een `CloseableHttpClient` object waarmee aanvragen kunnen worden verzonden naar de API. De aanvraag verzenden naar een `HttpPut` aanvraag object door uw eind punt te combi neren en de URL voor de Handschrift herkenning.
+2. Maak een `CloseableHttpClient`-object waarmee aanvragen kunnen worden verzonden naar de API. Verzend de aanvraag naar een `HttpPut`-aanvraagobject door de combinatie van uw eindpunt en de Ink Recognizer-URL.
 
-3. Gebruik de functie van `setHeader()` de aanvraag om de `Content-Type` header in `application/json`te stellen op en voeg uw abonnements sleutel `Ocp-Apim-Subscription-Key` toe aan de koptekst.
+3. Stel met behulp van `setHeader()`-functie van de aanvraag de `Content-Type`-header in op `application/json`, en voeg uw abonnementssleutel toe aan de `Ocp-Apim-Subscription-Key`-header.
 
-4. Gebruik de functie van `setEntity()` de aanvraag voor de gegevens die moeten worden verzonden.   
+4. Gebruik de `setEntity()`-functie van de aanvraag voor de te verzenden gegevens.   
 
-5. Gebruik de functie van `execute()` de client om de aanvraag te verzenden en op te slaan `CloseableHttpResponse` in een-object. 
+5. Gebruik de `execute()`-functie van de client om de aanvraag te verzenden en sla deze op in een `CloseableHttpResponse`-object. 
 
-6. Maak een `HttpEntity` object om de antwoord inhoud op te slaan. De inhoud ophalen met `getEntity()`. Als het antwoord niet leeg is, retourneert u het.
+6. Maak een `HttpEntity`-object voor het opslaan van de inhoud van het antwoord. Haal de inhoud op met `getEntity()`. Als het antwoord niet leeg is, retourneert u het.
     
     [!code-java[send a request](~/cognitive-services-rest-samples/java/InkRecognition/quickstart/RecognizeInk.java?name=sendRequest)]
 
-## <a name="send-an-ink-recognition-request"></a>Een aanvraag voor inkt herkenning verzenden
+## <a name="send-an-ink-recognition-request"></a>Een aanvraag voor handschriftherkenning verzenden
 
-Maak een methode die `recognizeInk()` wordt aangeroepen om uw inkt lijn gegevens te herkennen. Roep de `sendRequest()` hierboven gemaakte methode aan met uw eind punt, URL, abonnements sleutel en JSON-gegevens. Bekijk het resultaat en druk het af op de-console.
+Maak een methode met de naam `recognizeInk()` om uw pennenstreekgegevens te herkennen. Roep de hierboven gemaakte `sendRequest()`-methode aan met uw eindpunt, URL, abonnementssleutel en JSON-gegevens. Haal het resultaat op en druk het af naar de console.
 
 [!code-java[recognizeInk](~/cognitive-services-rest-samples/java/InkRecognition/quickstart/RecognizeInk.java?name=recognizeInk)]
 
-## <a name="load-your-digital-ink-data-and-send-the-request"></a>Laad de gegevens van uw digitale inkt en verzend de aanvraag
+## <a name="load-your-digital-ink-data-and-send-the-request"></a>Laad de gegevens van uw digitale handschrift en verzend de aanvraag
 
-1. In de hoofd methode van uw toepassing leest u in het JSON-bestand dat de gegevens bevat die aan de aanvragen worden toegevoegd.
+1. In de hoofdmethode van uw toepassing kunt u het JSON-bestand inlezen met de gegevens die aan de aanvragen worden toegevoegd.
 
-2. Roep de functie voor inkt herkenning aan die hierboven is gemaakt.
+2. Roep de functie voor handschriftherkenning aan die hierboven is gemaakt.
     
     [!code-java[main method](~/cognitive-services-rest-samples/java/InkRecognition/quickstart/RecognizeInk.java?name=main)]
 
 
-## <a name="run-the-application-and-view-the-response"></a>De toepassing uitvoeren en het antwoord weer geven
+## <a name="run-the-application-and-view-the-response"></a>De toepassing uitvoeren en het antwoord bekijken
 
-Voer de toepassing uit. Een geslaagde reactie wordt geretourneerd in JSON-indeling. U kunt ook het JSON-antwoord vinden op [github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/InkRecognition/quickstart/example-response.json).
+Voer de toepassing uit. Er wordt een geslaagd antwoord geretourneerd in JSON-indeling. U kunt ook het JSON-antwoord vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/InkRecognition/quickstart/example-response.json).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [REST API referentie](https://go.microsoft.com/fwlink/?linkid=2089907)
+> [Naslaginformatie over REST API](https://go.microsoft.com/fwlink/?linkid=2089907)
 
 
-Bekijk de volgende voorbeeld toepassingen op GitHub voor meer informatie over de werking van de API voor inkt herkenning in een digitale hand schrift-app:
+Bekijk de volgende voorbeeldtoepassingen op GitHub voor meer informatie over de werking van de Ink Recognition-API in een app voor digitaal handschrift:
 * [C# en Universal Windows Platform (UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  
 * [C# en Windows Presentation Foundation (WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
 * [Webbrowser-app (Javascript)](https://go.microsoft.com/fwlink/?linkid=2089908)       

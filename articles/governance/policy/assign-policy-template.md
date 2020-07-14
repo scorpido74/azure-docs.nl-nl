@@ -1,17 +1,17 @@
 ---
 title: 'Quickstart: Nieuwe beleidstoewijzing met sjablonen'
-description: In deze quickstart gebruikt u een Resource Manager-sjabloon om een beleidstoewijzing te maken om niet-compatibele resources te identificeren.
+description: In deze quickstart gebruikt u een Azure Resource Manager-sjabloon (ARM-sjabloon) om een beleidstoewijzing te maken om niet-compatibele resources te identificeren.
 ms.date: 05/21/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: 7b9e372e8b86e1ac5b0a99d0aba77982896b4d11
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: c3a37e9086744fb45c8d1e4ebe3bd16da7a83770
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83757446"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971127"
 ---
-# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>Quickstart: Een beleidstoewijzing maken met behulp van een Resource Manager-sjabloon om niet-compatibele resources te identificeren
+# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-an-azure-resource-manager-template"></a>Quickstart: Een beleidstoewijzing maken met behulp van een Azure Resource Manager-sjabloon om niet-compatibele resources te identificeren
 
 De eerste stap in het begrijpen van naleving in Azure is het identificeren van de status van uw resources.
 In deze quickstart gaat u een beleidstoewijzing maken voor het identificeren van virtuele machines die geen beheerde schijven gebruiken. Als u dit proces helemaal hebt doorlopen, kunt u virtuele machines identificeren die geen beheerde schijven gebruiken. Ze zijn _niet-compatibel_ met de beleidstoewijzing.
@@ -43,14 +43,14 @@ De resource die is gedefinieerd in de sjabloon:
 
 1. Selecteer de volgende afbeelding om u aan te melden bij de Azure-portal en open de sjabloon:
 
-   [![De Policy-sjabloon implementeren in Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json)
+   :::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="De ARM-sjabloon voor het toewijzen van Azure Policy aan Azure implementeren" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json":::
 
 1. Typ of selecteer de volgende waarden:
 
    | Naam | Waarde |
    |------|-------|
    | Abonnement | Selecteer uw Azure-abonnement. |
-   | Resourcegroep | Selecteer **Nieuwe maken**, geef een naam op en selecteer vervolgens **OK**. In de schermopname is de naam van de resource groep _mypolicyquickstart\< en de datum in MMDD \>rg_. |
+   | Resourcegroep | Selecteer **Nieuwe maken**, geef een naam op en selecteer vervolgens **OK**. In de schermopname is de naam van de resource groep _mypolicyquickstart\<Date in MMDD\>rg_. |
    | Locatie | Selecteer een regio. Bijvoorbeeld **VS - centraal**. |
    | Naam voor beleidstoewijzing | Geef een naam op voor de beleidstoewijzing. U kunt de weergave voor de beleidsdefinitie gebruiken, als u wilt. Bijvoorbeeld **Controleer virtuele machines die niet gebruikmaken van beheerde schijven**. |
    | Rg-naam | Geef een naam op voor de resourcegroep waaraan u het beleid wilt toewijzen. In deze quickstart gebruikt u de standaardwaarde **[resourceGroup ().name]** . **[resourceGroup()](../../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)** is een sjabloonfunctie waarmee de resourcegroep wordt opgehaald. |
@@ -63,7 +63,7 @@ Een aantal aanvullende bronnen:
 
 - Zie [Azure Snel Starten-sjabloon](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Authorization&pageNumber=1&sort=Popular) voor meer voorbeelden van sjablonen.
 - Ga naar [Azure-sjabloonverwijzing](/azure/templates/microsoft.authorization/allversions) om de sjabloonverwijzing te zien.
-- Raadpleeg [Azure Resource Manager-documentatie](../../azure-resource-manager/management/overview.md) voor meer informatie over het ontwikkelen van Resource Manager-sjablonen.
+- Raadpleeg [Azure Resource Manager-documentatie](../../azure-resource-manager/management/overview.md) voor meer informatie over het ontwikkelen van Resource Manager-sjablonen (ARM-sjablonen).
 - Raadpleeg [Resourcegroepen en resources maken op abonnementsniveau](../../azure-resource-manager/templates/deploy-to-subscription.md) voor informatie over implementatie op abonnementsniveau.
 
 ## <a name="validate-the-deployment"></a>De implementatie valideren

@@ -3,16 +3,16 @@ title: Aan de slag met de Azure Enterprise-portal
 description: In dit artikel wordt uitgelegd hoe klanten van de Azure Enterprise Agreement (Azure EA) de Azure Enterprise-portal kunnen gebruiken.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/01/2020
+ms.date: 06/29/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 7983afa32ff8104d181fbcdc75a50d12e2240128
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 6b31f3cd8ca6baa2d20d0281de51ed83424eca17
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298105"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85560356"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Aan de slag met de Azure Enterprise-portal
 
@@ -471,6 +471,7 @@ Inactieve inschrijvingen worden niet weergegeven in de Azure Enterprise-portal. 
 
 ### <a name="enrollment-statuses"></a>Statussen van inschrijving
 
+- **Nieuw**: Deze status wordt toegewezen aan een enrollment die binnen 24 uur is gemaakt en wordt binnen 24 uur worden bijgewerkt naar de status In behandeling.
 - **In behandeling**: De inschrijvingsbeheerder moet zich aanmelden bij de Azure Enterprise-portal. Zodra de beheerder zich heeft aangemeld, krijgt de inschrijving de status Actief.
 - **Actief**: De inschrijving is actief en de gebruiker kan accounts en abonnementen maken in de Azure Enterprise-portal. De inschrijving blijft actief tot de einddatum van de Enterprise Agreement.
 - **Onbeperkte verlengde termijn**: Een onbeperkte verlengde termijn wordt toegekend nadat de einddatum van de Enterprise Agreement is verstreken. Hiermee kunnen Azure EA-klanten die zich voor de verlengde termijn hebben aangemeld aan het einde van hun Enterprise Agreement onbeperkt gebruik blijven maken van Azure-services.

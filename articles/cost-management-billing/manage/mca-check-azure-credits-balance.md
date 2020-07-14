@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 06/24/2019
 ms.author: banders
-ms.openlocfilehash: e65637f20d14b93c212b1af2f20695ff5dfeb350
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e238a409adda674e1182c0ffd40a4f666d362731
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199684"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361503"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>Saldo van Azure-tegoed voor Microsoft-klantovereenkomst bijhouden
 
@@ -21,15 +21,18 @@ U kunt het saldo van het Azure-tegoed voor uw type factureringsaccount voor een 
 
 In de factureringsrekening voor een Microsoft-klantovereenkomst wordt een tegoed toegewezen aan een factureringsprofiel. Elk factureringsprofiel heeft zijn eigen tegoed dat automatisch wordt toegepast op de kosten voor de bijbehorende factuur. U moet beschikken over de rol van eigenaar van het factureringsprofiel, inzender, lezer of factuurbeheerder voor het factureringsprofiel of de rol van eigenaar, inzender of lezer voor de factureringsrekening om het Azure-tegoed voor een factureringsprofiel te kunnen bekijken. Zie [Informatie over beheerdersrollen voor Microsoft-klantovereenkomsten in Azure](understand-mca-roles.md) voor meer informatie over de rollen.
 
-Dit artikel is van toepassing op een factureringsrekening voor een Microsoft-klantovereenkomst. [Controleer of u toegang hebt tot een Microsoft-klantovereenkomst](#check-access-to-a-microsoft-customer-agreement).
+> [!NOTE]
+> Het kan tot 24 uur duren voordat nieuwe tegoed wordt weergegeven in Azure Portal. Als u nieuw tegoed krijgt en dit niet in de portal kunt zien, wacht u 24 uur totdat het tegoed wordt weergegeven.
+
+Dit artikel is van toepassing op een factureringsaccount voor een Microsoft-klantovereenkomst. [Controleer of u toegang hebt tot een Microsoft-klantovereenkomst](#check-access-to-a-microsoft-customer-agreement).
 
 ## <a name="check-your-credit-balance"></a>Het saldo van uw tegoed controleren
 
-### <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+### <a name="azure-portal"></a>[Azure-portal](#tab/portal)
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-2. Zoek naar **Cost Management en facturering**.
+2. Zoek naar **Kostenbeheer en facturering**.
 
     ![Schermopname van de zoekopdracht naar kostenbeheer en facturering in de Azure-portal](./media/mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
 
@@ -96,7 +99,7 @@ Dit artikel is van toepassing op een factureringsrekening voor een Microsoft-kla
 
     ![Schermopname van tegoedlijst voor een factureringsaccount](./media/mca-check-azure-credits-balance/mca-account-credit-list.png)
 
-### <a name="rest-api"></a>[REST-API](#tab/rest)
+### <a name="rest-api"></a>[REST API](#tab/rest)
 
 U kunt de [Azure Billing](https://docs.microsoft.com/rest/api/billing/)- en [Consumption](https://docs.microsoft.com/rest/api/consumption/)-API's gebruiken om het tegoedsaldo voor uw factureringsrekening programmatisch op te halen.
 
@@ -387,9 +390,9 @@ U wijst tegoed toe dat u aanschaft voor een factureringsprofiel. Als er een fact
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Toegang tot een Microsoft-klantovereenkomst controleren
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-support"></a>Hulp nodig? Neem contact op met ondersteuning.
+## <a name="need-help-contact-support"></a>Hebt u hulp nodig? Neem contact op met ondersteuning.
 
-Als u hulp nodig hebt, kunt u [contact opnemen met ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel op te lossen.
+Als u hulp nodig hebt, neemt u [contact op met ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel op te lossen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
