@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: a3e66e7f6857361136fb4b7839953790f66b4db5
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 82cdd8519f1e3fce80aaf051d6bc5fc40a9b8be9
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219113"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959584"
 ---
 ::: zone target="docs"
 
@@ -62,7 +62,7 @@ Onder blok-blob- en pagina-blob-shares zijn entiteiten op het eerste niveau cont
 
 In de volgende tabel ziet u het UNC-pad naar de shares op uw Data Box en de URL van het Azure Storage-pad waarnaar de gegevens worden geüpload. De uiteindelijke URL van het Azure Storage-pad kan worden afgeleid van het UNC-pad naar de shares.
  
-|                   |                                                            |
+|Azure-opslagtypen  | Data Box-shares            |
 |-------------------|--------------------------------------------------------------------------------|
 | Azure-blok-blobs | <li>UNC-pad naar shares: `\\<DeviceIPAddress>\<StorageAccountName_BlockBlob>\<ContainerName>\files\a.txt`</li><li>Azure Storage-URL: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li> |  
 | Azure-pagina-blobs  | <li>UNC-pad naar shares: `\\<DeviceIPAddres>\<StorageAccountName_PageBlob>\<ContainerName>\files\a.txt`</li><li>Azure Storage-URL: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li>   |  
@@ -70,32 +70,32 @@ In de volgende tabel ziet u het UNC-pad naar de shares op uw Data Box en de URL 
 
 Als u een hostcomputer met Windows Server gebruikt, voert u deze stappen uit om verbinding met de Data Box te maken.
 
-1. U moet eerst een verificatie uitvoeren en een sessie starten. Ga naar **Verbinding maken en kopiëren**. Klik op **Referenties ophalen** om de toegangsreferenties te krijgen voor de shares die aan uw opslagaccount zijn gekoppeld. 
+1. U moet eerst een verificatie uitvoeren en een sessie starten. Ga naar **Verbinding maken en kopiëren**. Selecteer **SMB** om de toegangsreferenties op te halen voor de shares die aan uw opslagaccount zijn gekoppeld. 
 
     ![Sharereferenties 1 ophalen](media/data-box-deploy-copy-data/get-share-credentials1.png)
 
-2. Kopieer in het dialoogvenster Verbinding maken met share en gegevens kopiëren de **Gebruikersnaam** en het **Wachtwoord** voor de share. Klik op **OK**.
+2. Kopieer in het dialoogvenster Verbinding maken met share en gegevens kopiëren de **Gebruikersnaam** en het **Wachtwoord** voor de share. Selecteer **OK**.
     
     ![Sharereferenties 1 ophalen](media/data-box-deploy-copy-data/get-share-credentials2.png)
 
-3. Om vanaf uw hostcomputer toegang te krijgen tot de shares die zijn gekoppeld aan uw opslagaccount (*devicemanagertest1* in het volgende voorbeeld), opent u een opdrachtvenster. Typ in de opdrachtprompt:
+3. Om vanaf uw hostcomputer toegang te krijgen tot de shares die zijn gekoppeld aan uw opslagaccount (*utsac1* in het volgende voorbeeld), opent u een opdrachtvenster. Typ in de opdrachtprompt:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
     Afhankelijk van de gegevensindeling, zijn dit de paden voor de shares:
-    - Azure-blok-blob - `\\10.126.76.172\devicemanagertest1_BlockBlob`
-    - Azure-pagina-blob - `\\10.126.76.172\devicemanagertest1_PageBlob`
-    - Azure Files - `\\10.126.76.172\devicemanagertest1_AzFile`
+    - Azure-blok-blob - `\\10.126.76.138\utSAC1_202006051000_BlockBlob`
+    - Azure-pagina-blob - `\\10.126.76.138\utSAC1_202006051000_PageBlob`
+    - Azure Files - `\\10.126.76.138\utSAC1_202006051000_AzFile`
 
 4. Voer het wachtwoord voor de share in wanneer er om wordt gevraagd. Het volgende voorbeeld laat zien hoe u verbinding met een share kunt maken via de voorgaande opdracht.
 
     ```
-    C:\Users\Databoxuser>net use \\10.126.76.172\devicemanagertest1_BlockBlob /u:devicemanagertest1
-    Enter the password for 'devicemanagertest1' to connect to '10.126.76.172':
+    C:\Users\Databoxuser>net use \\10.126.76.138\utSAC1_202006051000_BlockBlob /u:testuser1
+    Enter the password for 'testuser1' to connect to '10.126.76.138':
     The command completed successfully.
     ```
 
-4. Druk op Windows-toets+R. Geef in het venster **Uitvoeren** het `\\<device IP address>` op. Klik op **OK** om Verkenner te openen.
+4. Druk op Windows-toets+R. Geef in het venster **Uitvoeren** het `\\<device IP address>` op. Selecteer **OK** om Verkenner te openen.
     
     ![Verbinding met de share maken via Verkenner 2](media/data-box-deploy-copy-data/connect-shares-file-explorer1.png)
 
@@ -107,7 +107,7 @@ Als u een hostcomputer met Windows Server gebruikt, voert u deze stappen uit om 
     
 Als u een Linux-client gebruikt, gebruikt u de volgende opdracht om de SMB-share koppelen. De parameter "vers" hieronder is de versie van SMB die ondersteuning biedt voor uw Linux-host. Geef de juiste versie op in de onderstaande opdracht. Zie [Ondersteunde bestandssystemen voor Linux-clients](https://docs.microsoft.com/azure/databox/data-box-system-requirements#supported-file-systems-for-linux-clients) voor versies van SMB die door Data Box worden ondersteund 
 
-    `sudo mount -t nfs -o vers=2.1 10.126.76.172:/devicemanagertest1_BlockBlob /home/databoxubuntuhost/databox`
+    `sudo mount -t nfs -o vers=2.1 10.126.76.138:/utSAC1_202006051000_BlockBlob /home/databoxubuntuhost/databox`
 
 ## <a name="copy-data-to-data-box"></a>Gegevens kopiëren naar Data Box
 
@@ -215,11 +215,23 @@ Gebruik de volgende parameters in Robocopy om de prestaties te optimaliseren als
 
 Ga voor meer informatie over opdrachten voor Robocopy naar [Robocopy en een paar voorbeelden](https://social.technet.microsoft.com/wiki/contents/articles/1073.robocopy-and-a-few-examples.aspx).
 
-Open de doelmap om de gekopieerde bestanden weer te geven en te controleren. Download de foutbestanden om problemen op te lossen als er fouten zijn opgetreden tijdens het kopiëren. Zie [Foutenlogboeken bekijken tijdens het kopiëren van gegevens naar Data Box](data-box-logs.md#view-error-log-during-data-copy) voor meer informatie. Zie [Problemen met Data Box oplossen](data-box-troubleshoot.md) voor een gedetailleerde lijst met fouten tijdens het kopiëren van gegevens.
+Als er fouten zijn tijdens het kopieerproces, krijgt u een melding.
+
+![Fouten downloaden en bekijken op Verbinding maken en kopiëren](media/data-box-deploy-copy-data/view-errors-1.png)
+
+Selecteer **Lijst met problemen downloaden**.
+
+![Fouten downloaden en bekijken op Verbinding maken en kopiëren](media/data-box-deploy-copy-data/view-errors-2.png)
+
+Open de lijst om de details van de fout weer te geven en selecteer de oplossings-URL om de aanbevolen oplossing weer te geven.
+
+![Fouten downloaden en bekijken op Verbinding maken en kopiëren](media/data-box-deploy-copy-data/view-errors-3.png)
+
+Zie [Foutenlogboeken bekijken tijdens het kopiëren van gegevens naar Data Box](data-box-logs.md#view-error-log-during-data-copy) voor meer informatie. Zie [Problemen met Data Box oplossen](data-box-troubleshoot.md) voor een gedetailleerde lijst met fouten tijdens het kopiëren van gegevens.
 
 Om de gegevensintegriteit te garanderen wordt de controlesom inline berekend terwijl de gegevens worden gekopieerd. Verifieer de gebruikte ruimte en vrije ruimte op uw apparaat na het kopiëren.
 
-   ![Vrije en ongebruikte ruimte verifiëren op het dashboard](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
+![Vrije en ongebruikte ruimte verifiëren op het dashboard](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
 ::: zone-end
 

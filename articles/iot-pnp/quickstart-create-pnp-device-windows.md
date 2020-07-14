@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 4f9b8f3edc475ec50eaf11080020aa9f62a0d2c1
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: b02455c153c6205b87a64a388d5588c3c431e0c9
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700876"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963492"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-windows"></a>Quickstart: Een IoT Plug and Play-apparaat maken met behulp van een apparaatondersteuningsprofiel (preview in Windows)
 
@@ -78,7 +78,7 @@ In deze quickstart gebruikt u [Vcpkg](https://github.com/microsoft/vcpkg) (een p
 1. Installeer de Azure IoT C Device SDK:
 
     ```cmd
-    .\vcpkg.exe install azure-iot-sdk-c[public-preview,use_prov_client]
+    .\vcpkg.exe install azure-iot-sdk-c[public-preview,use-prov-client]
     ```
 
 ## <a name="author-your-model"></a>Het model ontwerpen
@@ -87,7 +87,7 @@ In deze quickstart gebruikt u een bestaand voorbeeld van een apparaatondersteuni
 
 1. Maak een `pnp_app` map op het lokale station. U gebruikt deze map voor de bestanden van het apparaatmodel en de codestubs.
 
-1. Download het [apparaatondersteuningsprofiel en de voorbeeldbestanden van de interface](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/SampleDevice.model.json) en het [interfacevoorbeeld ](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/EnvironmentalSensor.interface.json) en sla de bestanden op in de map `pnp_app`.
+1. Download de [apparaatondersteuningsmodel](https://github.com/Azure/opendigitaltwins-dtdl/blob/9004219bff1e958b7cd6ff2a52209f4b7ae19396/samples/SampleDevice.capabilitymodel.json)- en [interfacevoorbeeld](https://github.com/Azure/opendigitaltwins-dtdl/blob/9004219bff1e958b7cd6ff2a52209f4b7ae19396/samples/EnvironmentalSensor.interface.json)bestanden en sla ze op in de map `pnp_app`.
 
     > [!TIP]
     > Als u een bestand wilt downloaden van GitHub, gaat u naar het bestand, klikt u er met de rechtermuisknop op, selecteert u **Raw** en selecteert u vervolgens **Koppeling opslaan als** (of een vergelijkbare opdracht).

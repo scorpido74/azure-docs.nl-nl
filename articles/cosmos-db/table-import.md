@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/07/2017
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 3d1efc0a116a38686fa929a2058fa88e4c2cfa82
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 0023308c74d58b1c94bf13fcb47ffb8aa7ade1d6
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85119474"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85557616"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>Gegevens migreren naar een Azure Cosmos DB Table-API-account
 
@@ -45,26 +45,26 @@ Als u tabelgegevens wilt migreren, moet u de volgende taken uitvoeren:
     dt.exe [/<option>:<value>] /s:<source-name> [/s.<source-option>:<value>] /t:<target-name> [/t.<target-option>:<value>] 
    ```
 
-Opties voor de opdracht zijn:
+De ondersteunde opties voor deze opdracht zijn:
 
-    /ErrorLog: Optional. Name of the CSV file to redirect data transfer failures
-    /OverwriteErrorLog: Optional. Overwrite error log file
-    /ProgressUpdateInterval: Optional, default is 00:00:01. Time interval to refresh on-screen data transfer progress
-    /ErrorDetails: Optional, default is None. Specifies that detailed error information should be displayed for the following errors: None, Critical, All
-    /EnableCosmosTableLog: Optional. Direct the log to a cosmos table account. If set, this defaults to destination account connection string unless /CosmosTableLogConnectionString is also provided. This is useful if multiple instances of DT are being run simultaneously.
-    /CosmosTableLogConnectionString: Optional. ConnectionString to direct the log to a remote cosmos table account. 
+* **/ErrorLog:** Optioneel. Naam van het CSV-bestand voor het omleiden van fouten in de gegevensoverdracht
+* **/OverwriteErrorLog:** Optioneel. Foutenlogboekbestand overschrijven
+* **/ProgressUpdateInterval:** Optioneel; standaardwaarde is 00:00:01. Tijdsinterval voor het vernieuwen van de voortgang van de gegevensoverdracht
+* **/ErrorDetails:** Optioneel; standaardwaarde is Geen. Hiermee geeft u op dat gedetailleerde foutgegevens moeten worden weergegeven voor de volgende fouten: Geen, Kritiek, Alles
+* **/EnableCosmosTableLog:** Optioneel. Het logboek naar een cosmos-tabel account sturen. Als deze instelling is ingesteld, wordt dit ook de standaardinstelling van de verbindingsreeks voor de doelaccount tenzij er ook /CosmosTableLogConnectionString is opgegeven. Dit is handig als er meerdere exemplaren van DT tegelijk worden uitgevoerd.
+* **/CosmosTableLogConnectionString:** Optioneel. Verbindingsreeks om het logboek naar een extern cosmos-tabelaccount te sturen.
 
 ### <a name="command-line-source-settings"></a>Broninstellingen voor de opdrachtregel
 
 Gebruik de volgende bronopties bij het definiëren van Azure Table Storage of Table-API preview als de bron van de migratie.
 
-    /s:AzureTable: Reads data from Azure Table storage
-    /s.ConnectionString: Connection string for the table endpoint. This can be retrieved from the Azure portal
-    /s.LocationMode: Optional, default is PrimaryOnly. Specifies which location mode to use when connecting to Azure Table storage: PrimaryOnly, PrimaryThenSecondary, SecondaryOnly, SecondaryThenPrimary
-    /s.Table: Name of the Azure Table
-    /s.InternalFields: Set to All for table migration as RowKey and PartitionKey are required for import.
-    /s.Filter: Optional. Filter string to apply
-    /s.Projection: Optional. List of columns to select
+* **/s:AzureTable:** Gegevens lezen uit Azure Table Storage
+* **/s.ConnectionString:** Verbindingsreeks voor het eindpunt van de tabel. Het kan worden opgehaald uit de Azure-portal
+* **/s.LocationMode:** Optioneel; standaardwaarde is PrimaryOnly. Hiermee geeft u op welke locatiemodus moet worden gebruikt bij het maken van verbinding met Azure Table Storage: PrimaryOnly, PrimaryThenSecondary, SecondaryOnly, SecondaryThenPrimary
+* **/s.Table:** Naam van de Azure-tabel
+* **/s.InternalFields:** Ingesteld op alle voor de tabelmigratie als RowKey en PartitionKey zijn vereist voor het importeren.
+* **/s.Filter:** Optioneel. Filterreeks die moet worden toegepast
+* **/s.Projection:** Optioneel. Lijst met te selecteren kolommen
 
 Als u de verbindingsreeks voor de bron wilt ophalen bij het importeren uit Azure Table Storage, opent u Azure Portal, klikt u op **Storage-accounts** > **Account** > **Toegangssleutels** en kopieert u vervolgens de **verbindingsreeks** met de knop Kopiëren.
 
@@ -82,28 +82,29 @@ Als u de verbindingsreeks voor de bron wilt ophalen bij het importeren uit een A
 
 Gebruik de volgende doelopties bij het definiëren van de Azure Cosmos DB Table-API als het doel van de migratie.
 
-    /t:TableAPIBulk: Uploads data into Azure CosmosDB Table in batches
-    /t.ConnectionString: Connection string for the table endpoint
-    /t.TableName: Specifies the name of the table to write to
-    /t.Overwrite: Optional, default is false. Specifies if existing values should be overwritten
-    /t.MaxInputBufferSize: Optional, default is 1GB. Approximate estimate of input bytes to buffer before flushing data to sink
-    /t.Throughput: Optional, service defaults if not specified. Specifies throughput to configure for table
-    /t.MaxBatchSize: Optional, default is 2MB. Specify the batch size in bytes
+* **/t:TableAPIBulk:** Hiermee worden gegevens geüpload naar Azure CosmosDB-tabel in batches
+* **/t.ConnectionString:** Verbindingsreeks voor het eindpunt van de tabel
+* **/t.TableName:** Geeft de naam van de tabel waarnaar moet worden geschreven
+* **/t.Overwrite:** Optioneel; standaardwaarde is false. Hiermee wordt aangegeven of bestaande waarden moeten worden overschreven
+* **/t.MaxInputBufferSize:** Optioneel; standaardwaarde is 1GB. Geschatte invoerbytes om te bufferen vóór het leegmaken van gegevens naar sink
+* **/t.Throughput:** Optioneel, standaardinstellingen van service als niet opgegeven. Specificeert de doorvoer voor het configureren van de tabel
+* **/t.MaxBatchSize:** Optioneel; standaardwaarde is 2MB. De batchgrootte in bytes opgeven
 
 <a id="azure-table-storage"></a>
 ### <a name="sample-command-source-is-azure-table-storage"></a>Voorbeeldopdracht: bron is Azure-tabelopslag
 
 Hier ziet u een voorbeeld van een opdrachtregel voor het importeren vanuit Azure Table Storage in Table-API:
 
-```
+```bash
 dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Table storage account name>;AccountKey=<Account Key>;EndpointSuffix=core.windows.net /s.Table:<Table name> /t:TableAPIBulk /t.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Cosmos DB account name>;AccountKey=<Azure Cosmos DB account key>;TableEndpoint=https://<Account name>.table.cosmosdb.azure.com:443 /t.TableName:<Table name> /t.Overwrite
 ```
+
 <a id="table-api-preview"></a>
 ### <a name="sample-command-source-is-azure-cosmos-db-table-api-preview"></a>Voorbeeldopdracht: bron is Azure Cosmos DB Table-API (preview)
 
 Hier ziet u een voorbeeld van een opdrachtregel voor het importeren vanuit Table-API preview in een algemeen beschikbare Table-API:
 
-```
+```bash
 dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Table API preview account name>;AccountKey=<Table API preview account key>;TableEndpoint=https://<Account Name>.documents.azure.com; /s.Table:<Table name> /t:TableAPIBulk /t.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Cosmos DB account name>;AccountKey=<Azure Cosmos DB account key>;TableEndpoint=https://<Account name>.table.cosmosdb.azure.com:443 /t.TableName:<Table name> /t.Overwrite
 ```
 
@@ -115,7 +116,7 @@ Bij het importeren in Azure Cosmos DB kunt u de volgende opdracht als voorbeeld 
 
 Voorbeeld van opdracht voor importeren:
 
-```
+```bash
 AzCopy /Source:C:\myfolder\ /Dest:https://myaccount.table.cosmosdb.windows.net/mytable1/ /DestKey:key /Manifest:"myaccount_mytable_20140103T112020.manifest" /EntityOperation:InsertOrReplace
 ```
 
@@ -123,7 +124,6 @@ AzCopy /Source:C:\myfolder\ /Dest:https://myaccount.table.cosmosdb.windows.net/m
 
 > [!WARNING]
 > Als u direct voordeel wilt hebben van de algemeen beschikbare tabellen, migreert u uw bestaande previewtabellen zoals in deze sectie is beschreven. Anders worden de tabellen de komende weken automatisch gemigreerd voor bestaande previewklanten. Houd er echter rekening mee dat er voor automatisch gemigreerde previewtabellen bepaalde beperkingen gelden die niet van toepassing zijn op onlangs gemaakte tabellen.
-> 
 
 De Table-API is nu algemeen beschikbaar. Er zijn verschillen tussen de previewversie en de algemeen beschikbare versie voor tabellen in de code die wordt uitgevoerd in de cloud en in de code die wordt uitgevoerd op de client. Daarom wordt het niet aangeraden om een preview SDK-client te combineren met een account voor een algemeen beschikbare Table-API. Als klanten van de Table-API preview de bestaande tabellen willen blijven gebruiken in een productieomgeving, moeten ze de tabellen vanuit de previewomgeving migreren naar de omgeving met een algemeen beschikbare Table-API of wachten totdat de tabellen automatisch worden gemigreerd. Als u wacht op de automatische migratie, krijgt u een melding over de beperkingen die voor de gemigreerde tabellen gelden. Na de migratie kunt u voor uw bestaande account nieuwe tabellen zonder beperkingen maken (alleen gemigreerde tabellen hebben beperkingen).
 

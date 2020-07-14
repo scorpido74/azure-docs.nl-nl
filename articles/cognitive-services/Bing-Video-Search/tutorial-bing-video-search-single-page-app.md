@@ -1,7 +1,7 @@
 ---
 title: 'Zelfstudie: Een Bing Video Search-app met één pagina bouwen'
 titleSuffix: Azure Cognitive Services
-description: In deze zelf studie wordt uitgelegd hoe u de Bing Video's zoeken-API gebruikt in een webtoepassing met één pagina.
+description: In deze zelfstudie wordt uitgelegd hoe u de Bing Video Search-API kunt gebruiken in een webtoepassing met één pagina.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: tutorial
 ms.date: 02/03/2020
 ms.author: aahi
-ms.openlocfilehash: fb989825ed27cc83c14c36e6394e37ae2db2c12a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: c6e36bdbb3d58878e6afa28610ab2b214f47de20
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76988257"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800722"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>Zelfstudie: Video's zoeken-app met één pagina
 Met de Bing Video Search-API kunt u op internet zoeken en videoresultaten ophalen die relevant zijn voor een zoekquery. In deze zelfstudie bouwen we een webtoepassing met één pagina die gebruikmaakt van de Bing Search-API om resultaten op de pagina weer te geven. De toepassing omvat HTML-, CSS- en JavaScript-onderdelen.
@@ -138,10 +138,10 @@ function bingSearchOptions(form) {
 }
 ```
 
-De `SafeSearch` para meter in een API- `strict` `moderate` `moderate` aanroep kan bijvoorbeeld de standaard waarde zijn.
+De parameter `SafeSearch` in een werkelijke API-aanroep kan bijvoorbeeld `strict` of `moderate` zijn, waarbij `moderate` de standaardwaarde is.
 
 ## <a name="performing-the-request"></a>De aanvraag uitvoeren
-Nadat de query, de tekenreeks met opties en de API-sleutel zijn opgegeven, gebruikt de functie `BingWebSearch` een `XMLHttpRequest`-object om een aanvraag in te dienen bij het Bing Search-eindpunt. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
+Nadat de query, de tekenreeks met opties en de API-sleutel zijn opgegeven, gebruikt de functie `BingWebSearch` een `XMLHttpRequest`-object om een aanvraag in te dienen bij het Bing Search-eindpunt. U kunt het volgende globale eindpunt gebruiken of het eindpunt [aangepaste subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in de Azure-portal voor uw resource.
 
 ```javascript
 // Search on the query, using search options, authenticated by the key.
@@ -310,7 +310,7 @@ Met de Bing News Search-API worden maximaal vier verschillende soorten gerelatee
 
 |Relatie|Beschrijving|
 |-|-|
-|`pivotSuggestions`|Query’s die een beschrijvend woord in de oorspronkelijke zoekopdracht vervangen door een ander beschrijvend woord. Als u bijvoorbeeld zoekt naar ‘rode bloemen', is ‘rood' een beschrijvend woord, en is ‘gele bloemen' een mogelijke suggestie.|
+|`pivotSuggestions`|Query's die een beschrijvend woord in de oorspronkelijke zoekopdracht vervangen door een ander beschrijvend woord. Als u bijvoorbeeld zoekt naar ‘rode bloemen', is ‘rood' een beschrijvend woord, en is ‘gele bloemen' een mogelijke suggestie.|
 |`queryExpansions`|Query's die de oorspronkelijke zoekopdracht verfijnen door meer zoektermen toe te voegen. Als u bijvoorbeeld zoekt naar ‘Microsoft Surface', is ‘Microsoft Surface Pro' een mogelijke uitbreiding van de query.|
 |`relatedSearches`|Query's die ook zijn ingevoerd door andere gebruikers die de oorspronkelijke zoekopdracht hebben ingevoerd. Als u bijvoorbeeld zoekt naar ‘Mount Rainier', is ‘Mt. Saint Helens' een gerelateerde zoekopdracht.|
 |`similarTerms`|Query's die qua betekenis vergelijkbaar zijn met de oorspronkelijke zoekopdracht. Als u bijvoorbeeld zoekt naar ‘scholen', is ‘onderwijs' een vergelijkbare term.|
@@ -373,14 +373,14 @@ Met de renderer worden de volgende handelingen uitgevoerd:
 > * De HTML-`<a>`-tags worden gebouwd die zijn gekoppeld aan de afbeelding en aan de pagina die de afbeelding bevat.
 > * De beschrijving met informatie over de afbeelding en de bijbehorende site wordt samengesteld.
 
-De miniatuurgrootte wordt gebruik in de `<img>`-tag en in de velden `h` en `w` in de URL van de miniatuur. Er wordt een [miniatuur](../bing-web-search/resize-and-crop-thumbnails.md) van exact die grootte door Bing geretourneerd.
+De miniatuurgrootte wordt gebruik in de `<img>`-tag en in de velden `h` en `w` in de URL van de miniatuur. Bing retourneert een [miniatuur](../bing-web-search/resize-and-crop-thumbnails.md) van precies die grootte.
 
 ## <a name="persisting-client-id"></a>Permanente client-id
-Antwoorden van de Bing Search-API kunnen een `X-MSEdge-ClientID`-header omvatten die bij volgende aanvragen moet worden teruggestuurd naar de API. Als er meerdere Bing Zoeken-API’s worden gebruikt, moet voor al deze API’s, indien mogelijk, dezelfde client-id worden gebruikt.
+Antwoorden van de Bing Search-API kunnen een `X-MSEdge-ClientID`-header omvatten die bij volgende aanvragen moet worden teruggestuurd naar de API. Als er meerdere Bing Search-API's worden gebruikt, moet voor al deze API's, indien mogelijk, dezelfde client-id worden gebruikt.
 
 Door de `X-MSEdge-ClientID`-header op te geven kunnen met Bing-API's alle zoekopdrachten van een gebruiker worden gekoppeld. Dit heeft twee belangrijke voordelen.
 
-Ten eerste kan met de Bing-zoekmachine vroegere context worden toegepast op zoekopdrachten om beter kloppende resultaten te vinden voor de gebruiker. Als een gebruiker bijvoorbeeld eerder heeft gezocht naar termen die zijn gerelateerd aan zeilen, kan bij een latere zoekopdracht naar ‘knopen’ de voorkeur worden gegeven aan informatie over knopen die worden gebruikt bij zeilen.
+Ten eerste kan met de Bing-zoekmachine vroegere context worden toegepast op zoekopdrachten om beter kloppende resultaten te vinden voor de gebruiker. Als een gebruiker bijvoorbeeld eerder heeft gezocht naar termen die zijn gerelateerd aan zeilen, kan bij een latere zoekopdracht naar ‘knopen' de voorkeur worden gegeven aan informatie over knopen die worden gebruikt bij zeilen.
 
 Ten tweede kunnen in Bing willekeurig gebruikers worden geselecteerd om nieuwe functies uit te proberen voordat deze algemeen beschikbaar worden. Door bij elke aanvraag dezelfde client-id op te geven zien gebruikers die de functie zien, deze altijd. Zonder de client-id kan het gebeuren dat de gebruiker een functie, schijnbaar willekeurig, ziet verschijnen en verdwijnen in de zoekresultaten.
 
@@ -389,22 +389,25 @@ Beveiligingsbeleid voor browsers (CORS) kan ervoor zorgen dat de `X-MSEdge-Clien
 > [!NOTE]
 > In een webtoepassing die bedoeld is voor productie, moet u de aanvraag aan de serverzijde uitvoeren. Anders moet de sleutel voor de Bing Search-API worden opgenomen op de webpagina, waar deze beschikbaar is voor iedereen die de bron weergeeft. Al uw gebruik van de API-abonnementssleutel wordt in rekening gebracht, zelfs aanvragen die zijn gedaan door partijen die niet zijn gemachtigd. Het is daarom van groot belang dat u uw sleutel niet algemeen beschikbaar maakt.
 
-Voor ontwikkelingsdoeleinden kunt u de aanvraag van de Bing Web Search-API via een CORS-proxy doen. Het antwoord van een dergelijke proxy heeft een `Access-Control-Expose-Headers` koptekst die antwoord headers toestaat en deze beschikbaar maakt voor Java script.
+Voor ontwikkelingsdoeleinden kunt u de aanvraag van de Bing Web Search-API via een CORS-proxy doen. Het antwoord van een dergelijke proxy heeft een `Access-Control-Expose-Headers`-header waardoor antwoordheaders worden opgenomen in de acceptatielist en beschikbaar gemaakt voor JavaScript.
 
 U kunt eenvoudig een CORS-proxy installeren zodat de zelfstudie-app toegang krijgt tot de client-id-header. Als u [Node.js](https://nodejs.org/en/download/) nog niet hebt, moet u dit eerst installeren. Voer vervolgens de volgende opdracht uit in een opdrachtvenster:
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
-Wijzig vervolgens het Bing Web Search-eindpunt in het HTML-bestand in:
-
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
+Wijzig vervolgens het Bing Web Search-eindpunt in het HTML-bestand in :\
+`http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search`
 
 Start ten slotte de CORS-proxy met de volgende opdracht:
 
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 Laat het opdrachtvenster geopend terwijl u de zelfstudie-app gebruikt. Als u het venster sluit, wordt de proxy gestopt. In de uitbreidbare sectie met HTTP-headers onder de zoekresultaten ziet u nu (onder andere) de `X-MSEdge-ClientID`-header en kunt u controleren of deze voor elke aanvraag gelijk is.
 
 ## <a name="next-steps"></a>Volgende stappen
 > [!div class="nextstepaction"]
-> [Referentie voor de Bing Video’s zoeken-API](//docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference)
+> [Referentie voor de Bing Video Search-API](//docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference)

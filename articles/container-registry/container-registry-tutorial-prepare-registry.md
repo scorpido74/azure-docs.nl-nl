@@ -2,14 +2,14 @@
 title: Zelfstudie - Geo-gerepliceerd register maken
 description: Een Azure-containerregister maken, geo-replicatie configureren, een Docker-installatiekopie voorbereiden en implementeren in het register. Deel één van een serie van drie.
 ms.topic: tutorial
-ms.date: 04/30/2017
+ms.date: 06/30/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 70dc664d27fde3b7cf9fe4e5e3a99c041236ac16
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 159426b7258d83fc28fc7d126c064167bbe00975
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84693225"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799445"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Zelfstudie: Een Azure-containerregister met geo-replicatie voorbereiden
 
@@ -37,29 +37,32 @@ Azure Cloud Shell bevat niet de vereiste Docker-onderdelen die nodig zijn om elk
 
 ## <a name="create-a-container-registry"></a>Een containerregister maken
 
+Voor deze zelfstudie hebt u een Azure-containerregister in de Premium-servicelaag nodig. Om een nieuw Azure-containerregister te maken, volgt u de stappen in deze sectie.
+
+> [!TIP]
+> Zie [Wijzigingslagen](container-registry-skus.md#changing-tiers) als u eerder een register hebt gemaakt en een upgrade wilt uitvoeren. 
+
 Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 Selecteer **Een resource maken** > **Containers** > **Azure Container Registry**.
 
-![Een containerregister maken met Azure Portal][tut-portal-01]
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-01.png" alt-text="Een containerregister maken met Azure Portal":::
 
-Configureer uw nieuwe register met de volgende instellingen:
+Configureer uw nieuwe register met de volgende instellingen. Op het tabblad **Basis**:
 
 * **Registernaam**: Een registernaam maken die globaal uniek is binnen Azure en 5-50 alfanumerieke tekens bevat
 * **Resourcegroep**: **Nieuwe maken** > `myResourceGroup`
 * **Locatie**: `West US`
-* **Gebruiker met beheerdersrechten**: `Enable` (vereist voor Web App for Containers voor het pullen van installatiekopieën)
 * **SKU**: `Premium` (vereist voor de geo-replicatie)
 
-Selecteer **Maken** om de ACR-instantie te implementeren.
+Selecteer **Beoordelen en maken** en **Maken** om het exemplaar van het register te maken.
 
-![Een containerregister maken met Azure Portal][tut-portal-02]
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-02.png" alt-text="Een containerregister configureren in de Azure Portal":::
 
 In de rest van deze zelfstudie gebruiken we `<acrName>` als tijdelijke aanduiding voor de gekozen **containerregisternaam**.
 
 > [!TIP]
 > Omdat Azure-containerregisters doorgaans lang meegaande resources zijn die op meerdere hosts van de container worden gebruikt, wordt u aangeraden het register in een eigen resourcegroep te maken. Als u registers met geo-replicatie en webhooks configureert, worden deze extra resources in dezelfde resourcegroep geplaatst.
->
 
 ## <a name="configure-geo-replication"></a>Geo-replicatie configureren
 
@@ -67,23 +70,33 @@ Nu u een Premium-register hebt, kunt u geo-replicatie configureren. Uw web-app, 
 
 Navigeer naar uw nieuwe containerregister in Azure Portal en selecteer **Replicaties** onder **Services**:
 
-![Replicaties in de containerregister-UI van Azure Portal][tut-portal-03]
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-03.png" alt-text="Replicaties in de containerregister-UI van Azure Portal":::
 
 Er wordt een kaart weergegeven met groene zeshoeken die Azure-regio's vertegenwoordigen die beschikbaar zijn voor geo-replicatie:
 
- ![Kaart met regio's in Azure Portal][tut-map-01]
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-map-01.png" alt-text="Kaart met regio's in Azure Portal":::
 
 Repliceer uw register naar de regio VS - oost door de groene zeshoek te selecteren. Selecteer vervolgens **Maken** onder **Replicatie maken**:
 
- ![Gebruikersinterface voor het maken van een replicatie in Azure Portal][tut-portal-04]
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-04.png" alt-text="Gebruikersinterface voor het maken van een replicatie in Azure Portal":::
 
 Wanneer de replicatie is voltooid, geeft de portal *Gereed* weer voor beide regio's. Gebruik de knop **Vernieuwen** om de status van de replicatie te vernieuwen. Het kan een paar minuten duren voordat de replica's zijn gemaakt en gesynchroniseerd.
 
-![Gebruikersinterface voor de replicatiestatus in Azure Portal][tut-portal-05]
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-05.png" alt-text="Gebruikersinterface voor de replicatiestatus in Azure Portal":::
+
+
+## <a name="enable-admin-account"></a>Beheerdersaccount schakelen
+
+In volgende zelfstudies implementeert u een containerinstallatiekopie vanuit het register rechtstreeks naar Web App for Containers. Als u deze mogelijkheid wilt inschakelen, moet u ook het [beheerdersaccount](container-registry-authentication.md#admin-account) van het register inschakelen.
+
+Navigeer naar uw nieuwe containerregister in Azure Portal en selecteer **Toegangssleutels** onder **Instellingen**: Selecteer onder **Gebruiker met beheerdersrechten** de optie **Inschakelen**.
+
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-06.png" alt-text="Beheerdersaccount inschakelen in Azure Portal":::
+
 
 ## <a name="container-registry-login"></a>Aanmelden bij het containerregister
 
-Nu u geo-replicatie hebt geconfigureerd, maakt u een containerinstallatiekopie en pusht u deze naar het register. U moet u eerst aanmelden bij de ACR-instantie voordat u er installatiekopieën naar pusht.
+Nu u geo-replicatie hebt geconfigureerd, maakt u een containerinstallatiekopie en pusht u deze naar het register. U moet u eerst aanmelden bij uw register voordat u er installatiekopieën naar pusht.
 
 Gebruik de opdracht [az acr login](https://docs.microsoft.com/cli/azure/acr#az-acr-login) om de referenties voor het register te verifiëren en in de cache te plaatsen. Vervang `<acrName>` door de naam van het register dat u eerder hebt gemaakt.
 
@@ -97,7 +110,7 @@ De opdracht retourneert `Login Succeeded` nadat deze is voltooid.
 
 Het voorbeeld in deze zelfstudie bevat een kleine webtoepassing die is gebouwd in [ASP.NET Core][aspnet-core]. De app dient voor een HTML-pagina waarop de regio wordt weergegeven waaruit de installatiekopie is geïmplementeerd door Azure Container Registry.
 
-![Zelfstudie-app weergegeven in browser][tut-app-01]
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-app-01.png" alt-text="Zelfstudie-app weergegeven in browser":::
 
 Gebruik Git om het voorbeeld te downloaden naar een lokale map en `cd` naar de map:
 
@@ -228,15 +241,6 @@ Ga naar de volgende zelfstudie om uw container te implementeren op meerdere Web 
 
 > [!div class="nextstepaction"]
 > [Web-app implementeren vanuit Azure Container Registry](container-registry-tutorial-deploy-app.md)
-
-<!-- IMAGES -->
-[tut-portal-01]: ./media/container-registry-tutorial-prepare-registry/tut-portal-01.png
-[tut-portal-02]: ./media/container-registry-tutorial-prepare-registry/tut-portal-02.png
-[tut-portal-03]: ./media/container-registry-tutorial-prepare-registry/tut-portal-03.png
-[tut-portal-04]: ./media/container-registry-tutorial-prepare-registry/tut-portal-04.png
-[tut-portal-05]: ./media/container-registry-tutorial-prepare-registry/tut-portal-05.png
-[tut-app-01]: ./media/container-registry-tutorial-prepare-registry/tut-app-01.png
-[tut-map-01]: ./media/container-registry-tutorial-prepare-registry/tut-map-01.png
 
 <!-- LINKS - External -->
 [acr-helloworld-zip]: https://github.com/Azure-Samples/acr-helloworld/archive/master.zip

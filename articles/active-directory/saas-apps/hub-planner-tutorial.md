@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/12/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc1cc89beb1e704428fdb4e10868e72e837804d3
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 0b5a52d0a54a9671052b9b7d46810cc65c22951f
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84765256"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799881"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hub-planner"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met Hub Planner
 
@@ -43,7 +43,7 @@ U hebt het volgende nodig om aan de slag te gaan:
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Hub Planner ondersteunt door **SP** geïnitieerde eenmalige aanmelding
+* Hub Planner ondersteunt door **SP** geïnitieerde eenmalige aanmelding.
 * Zodra u Hub Planner hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-hub-planner-from-the-gallery"></a>Hub Planner toevoegen vanuit de galerie
@@ -85,9 +85,9 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://<SUBDOMAIN>.hubplanner.com`
 
-    b. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://<SUBDOMAIN>.hubplanner.com/sso/metadata`
+    b. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://app.hubplanner.com/sso/metadata`
 
-    c. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://<SUBDOMAIN>.hubplanner.com/sso/callback`
+    c. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://app.hubplanner.com/sso/callback`
 
     > [!NOTE]
     > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke id, de antwoord-URL en de aanmeldings-URL. Neem contact op met het [klantondersteuningsteam van Hub Planner](mailto:hello@hubplanner.com) om deze waarden op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
@@ -133,9 +133,29 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 Als u eenmalige aanmelding aan de **Hub Planner**-zijde wilt configureren, moet u het gedownloade **Certificaat (Base64)** en de correct van de Microsoft Azure-portal gekopieerde URL's naar het [Hub Planner-ondersteuningsteam ](mailto:hello@hubplanner.com) verzenden. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
+### <a name="install-the-extension-in-hub-planner"></a>De uitbreiding installeren in Hub Planner
+
+Als u SSO-functionaliteit wilt inschakelen, moet u eerst de uitbreiding inschakelen. Als eigenaar van het account of met gelijkwaardige machtigingen, voert u de volgende stappen uit:
+
+1. Ga naar **Settings**.
+1. Selecteer in het menu aan de zijkant **Uitbreidingen beheren** > **Extensies toevoegen/verwijderen**.
+1. Zoek de uitbreiding voor eenmalige aanmelding en Toevoegen of Gratis uitproberen.
+1. Wanneer u hierom wordt gevraagd, gaat u akkoord met de voorwaarden en selecteert u **Nu toevoegen**.
+
+### <a name="enable-sso"></a>SSO inschakelen
+
+Nadat de uitbreiding is ingeschakeld, moet u SSO inschakelen voor uw account. 
+
+1. Ga naar **Settings**.
+1. Selecteer in het menu aan de zijkant **Verificatie**.
+1. Selecteer **SSO (eenmalige aanmelding)** .
+1. Voer aanvullende verificatie gegevens in, zoals wordt weergegeven in de volgende afbeelding, en selecteer **Opslaan**.
+
+![Schermopname van SSO-instellingen](media/hub-planner-tutorial/sso-settings.png)
+
 ### <a name="create-hub-planner-test-user"></a>Een Hub Planner-testgebruiker maken
 
-In deze sectie gaat u een gebruiker in Hub Planner maken met de naam Britta Simon. Werk samen met het ondersteuningsteam van [Hub Planner](mailto:hello@hubplanner.com) om de gebruikers toe te voegen aan het Hub Planner-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+Als u andere gebruikers wilt toevoegen, gaat u naar **Instellingen** > **Resources beheren** en gebruikers toevoegen. Zorg ervoor dat u het e-mailadres toevoegt en ze vervolgens uitnodigt. Zodra ze zijn uitgenodigd, ontvangen ze een e-mail en kunnen ze via SSO toegang krijgen. 
 
 ## <a name="test-sso"></a>Eenmalige aanmelding testen 
 

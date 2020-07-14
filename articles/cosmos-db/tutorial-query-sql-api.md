@@ -1,6 +1,6 @@
 ---
-title: "Zelf studie: query's uitvoeren met SQL in Azure Cosmos DB?"
-description: "Zelf studie: informatie over het opvragen van query's met SQL-query's in Azure Cosmos DB met behulp van Thw-query Playground"
+title: "Zelfstudie: Query's uitvoeren met SQL in Azure Cosmos DB?"
+description: "Zelfstudie: Meer informatie over het uitvoeren van query's met SQL-query's in Azure Cosmos DB met behulp van de query Playground"
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.custom: tutorial-develop, mvc
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 7e83ed0f9e635ed24b7e6115eeaaa9057d422c69
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: e8d1498520ea0c59372ec4e1096b6f2b4bcf885f
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74870068"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921129"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Zelfstudie: Query's uitvoeren in Azure Cosmos DB met behulp van de SQL-API
 
@@ -56,6 +56,7 @@ In de SQL-query's in dit artikel wordt het volgende voorbeelddocument gebruikt.
   "isRegistered": false
 }
 ```
+
 ## <a name="where-can-i-run-sql-queries"></a>Waar kan ik SQL-query's uitvoeren?
 
 U kunt query's uitvoeren met de Data Explorer in de Azure-portal, via de [REST API en SDK's](sql-api-sdk-dotnet.md) en zelfs de [query-speelplaats](https://www.documentdb.com/sql/demo), waar query's worden uitgevoerd voor een bestaande reeks voorbeeldgegevens.
@@ -65,19 +66,21 @@ Meer informatie over SQL-query's vindt u in:
 
 ## <a name="prerequisites"></a>Vereisten
 
-In deze zelfstudie wordt ervan uitgegaan dat u een Azure Cosmos DB-account en een verzameling hebt. Hebt u geen van beide? Voltooi de [snelstart van 5 minuten](create-cosmosdb-resources-portal.md).
+In deze zelfstudie wordt ervan uitgegaan dat u een Azure Cosmos DB-account en een verzameling hebt. Hebt u geen van deze resources? Voltooi de [snelstart van 5 minuten](create-cosmosdb-resources-portal.md).
 
 ## <a name="example-query-1"></a>Voorbeeldquery 1
 
 Op basis van het bovenstaand voorbeelddocument van een familie retourneert de volgende SQL-query de documenten waarin het id-veld gelijk is aan `WakefieldFamily`. Omdat het een `SELECT *`-instructie is, is de uitvoer van de query het volledige JSON-document:
 
-**Query’s uitvoeren**
+**Query**
 
+```sql
     SELECT * 
     FROM Families f 
     WHERE f.id = "WakefieldFamily"
+```
 
-**Resultaten**
+**Results**
 
 ```json
 {
@@ -112,16 +115,27 @@ Op basis van het bovenstaand voorbeelddocument van een familie retourneert de vo
 
 De volgende query retourneert alle opgegeven namen van kinderen in de familie waarvan de id overeenkomt met `WakefieldFamily`, gesorteerd op leerjaar.
 
-**Query’s uitvoeren**
+**Query**
 
+```sql
     SELECT c.givenName 
     FROM Families f 
     JOIN c IN f.children 
     WHERE f.id = 'WakefieldFamily'
+```
 
-**Resultaten**
+**Results**
 
-[ { "givenName": "Jesse" }, { "givenName": "Lisa" } ]
+```
+[
+    {
+        "givenName": "Jesse"
+    },
+    {
+        "givenName": "Lisa"
+    }
+]
+```
 
 
 ## <a name="next-steps"></a>Volgende stappen

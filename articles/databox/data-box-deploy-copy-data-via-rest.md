@@ -1,5 +1,5 @@
 ---
-title: "Zelfstudie: Rest-API's gebruiken om naar blobopslag te kopiëren"
+title: "Zelfstudie: Naar blobopslag kopiëren via REST API's"
 titleSuffix: Azure Data Box
 description: In deze zelfstudie leest u hoe u gegevens kopieert naar uw Azure Data Box-blobopslag via REST API's
 services: databox
@@ -7,16 +7,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 05/09/2019
+ms.date: 07/02/2020
 ms.author: alkohli
-ms.openlocfilehash: aa59d2dea4456b977afee92103fa66d6afe9bf31
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 50c4daabe3dc980937f52db7e56cd778890b84d8
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219142"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960674"
 ---
-# <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Zelfstudie: Gegevens kopiëren naar Azure Data Box-blobopslag via REST API's  
+# <a name="tutorial-use-rest-apis-to-copy-data-to-azure-data-box-blob-storage"></a>Zelfstudie: Gegevens kopiëren naar Azure Data Box-Blob-opslag met REST API's  
 
 In deze zelfstudie worden procedures beschreven voor het maken van een *http*- of *https*-verbinding met Azure Data Box-blobopslag via REST API's. Als de verbinding tot stand is gebracht, worden ook de benodigde stappen voor het kopiëren van de gegevens naar Data Box-blobopslag en het voor verzending voorbereiden van Data Box beschreven.
 
@@ -186,15 +186,19 @@ U kunt AzCopy gebruiken om alle bestanden in een map te uploaden naar Blob-opsla
 
 #### <a name="linux"></a>Linux
 
-    azcopy \
-        --source /mnt/myfolder \
-        --destination https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
-        --dest-key <key> \
-        --recursive
+```azcopy
+azcopy \
+    --source /mnt/myfolder \
+    --destination https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
+    --dest-key <key> \
+    --recursive
+```
 
 #### <a name="windows"></a>Windows
 
-    AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S
+```
 
 Vervang `<key>` door uw accountsleutel. Ga naar uw opslagaccount om uw accountsleutel in Azure Portal op te halen. Ga naar **Instellingen > Toegangssleutels**, selecteer een sleutel en plak deze in de AzCopy-opdracht.
 
@@ -209,16 +213,21 @@ Gebruik AzCopy om bestanden te uploaden op basis van de datum/tijd waarop deze h
 Als u alleen resources wilt kopiëren die niet in het doel bestaan, geeft u zowel `--exclude-older` als `--exclude-newer` (Linux) of `/XO` als `/XN` (Windows) als parameters op in de AzCopy-opdracht. Door AzCopy worden alleen de bijgewerkte gegevens geüpload, op basis van het tijdstempel.
 
 #### <a name="linux"></a>Linux
-    azcopy \
-    --source /mnt/myfolder \
-    --destination https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
-    --dest-key <key> \
-    --recursive \
-    --exclude-older
+
+```azcopy
+azcopy \
+--source /mnt/myfolder \
+--destination https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
+--dest-key <key> \
+--recursive \
+--exclude-older
+```
 
 #### <a name="windows"></a>Windows
 
-    AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
+```
 
 Zie [Problemen oplossen met Data Box-blobopslag](data-box-troubleshoot-rest.md) als er fouten optreden tijdens het maken van de verbinding of het kopiëren.
 

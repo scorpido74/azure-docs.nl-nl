@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met Promaster (door Inlogik) | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Promaster (door Inlogik).
+title: 'Zelfstudie: Integratie van Azure Active Directory met ProMaster (van Inlogik) | Microsoft Docs'
+description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en ProMaster (van Inlogik).
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,71 +14,71 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 03/12/2020
 ms.author: jeedes
-ms.openlocfilehash: b48d11e15d452b72426c5b83d387f9e004e95dc7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: a1563cc9baff0be844f7a654f8b028356c285b40
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80293928"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800857"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-promaster-by-inlogik"></a>Zelf studie: integratie Azure Active Directory met Promaster (door Inlogik)
+# <a name="tutorial-azure-active-directory-integration-with-promaster-by-inlogik"></a>Zelfstudie: Integratie van Azure Active Directory met ProMaster (van Inlogik)
 
-In deze zelf studie leert u hoe u Promaster (door Inlogik) integreert met Azure Active Directory (Azure AD).
-Het integreren van Promaster (door Inlogik) met Azure AD biedt de volgende voor delen:
+In deze zelfstudie leert u hoe u ProMaster (van Inlogik) kunt integreren met Azure Active Directory (Azure AD).
+De integratie van ProMaster (van Inlogik) met Azure AD heeft de volgende voordelen:
 
-* U kunt beheren in azure AD die toegang heeft tot Promaster (door Inlogik).
-* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij Promaster (door Inlogik) (met eenmalige aanmelding) met hun Azure AD-accounts.
+* U kunt in Azure AD bepalen wie er toegang heeft tot ProMaster (van Inlogik).
+* U kunt inschakelen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij ProMaster (van Inlogik) (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-integratie met Promaster (door Inlogik) wilt configureren, hebt u de volgende items nodig:
+U hebt de volgende zaken nodig om Azure AD-integratie met ProMaster (van Inlogik) te kunnen configureren:
 
 * Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
-* Promaster (met Inlogik) abonnement voor eenmalige aanmelding
+* Een abonnement op ProMaster (van Inlogik) waarvoor eenmalige aanmelding is ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Promaster (door Inlogik) ondersteunt SSO die door **SP** en **IDP** is geïnitieerd
-* Nadat u de Promaster (door Inlogik) hebt geconfigureerd, kunt u sessie beheer afdwingen, waardoor de gevoelige gegevens van uw organisatie in realtime worden beschermd tegen exfiltration en infiltratie. Sessie beheer is uitgebreid met voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud app Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* ProMaster (van Inlogik) biedt ondersteuning voor door **SP** en **IDP** geïnitieerde eenmalige aanmelding
+* Zodra u ProMaster (van Inlogik) hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="adding-promaster-by-inlogik-from-the-gallery"></a>Promaster (door Inlogik) toevoegen vanuit de galerie
+## <a name="adding-promaster-by-inlogik-from-the-gallery"></a>ProMaster (van Inlogik) toevoegen vanuit de galerie
 
-Als u de integratie van Promaster (door Inlogik) wilt configureren in azure AD, moet u prostramien (door Inlogik) uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van ProMaster (van Inlogik) wilt configureren voor Azure AD moet u ProMaster (van Inlogik) vanuit de galerie toevoegen aan uw lijst beheerde SaaS-apps.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
-1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
-1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. Typ in de sectie **toevoegen vanuit de galerie** **prostramien (per Inlogik)** in het zoekvak.
-1. Selecteer **prostramien (per Inlogik)** in het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **Nieuwe toepassing** om een nieuwe toepassing toe te voegen.
+1. Typ in de sectie **Toevoegen uit de galerie** **ProMaster (van Inlogik)** in het zoekvak.
+1. Selecteer **ProMaster (van Inlogik)** in het resultatenvenster en voeg de app vervolgens toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met Promaster (door Inlogik) op basis van een test gebruiker met de naam **B. Simon**.
-Voor een goede werking van eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Promaster (door Inlogik) worden gemaakt.
+In deze sectie gaat u eenmalige aanmelding met Azure Active Directory bij ProMaster (van Inlogik) configureren en testen op basis van een testgebruiker met de naam **B.Simon**.
+Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in ProMaster (van Inlogik) tot stand is gebracht.
 
-Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met Promaster (door Inlogik), moet u de volgende bouw stenen volt ooien:
+Voor het configureren en testen van eenmalige aanmelding van Azure AD met ProMaster (van Inlogik), moet u de volgende stappen uitvoeren:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
-    * **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
-    * **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
-1. **[Promaster (door Inlogik)-SSO configureren](#configure-promaster-by-inlogik-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-    * **[Maak een Promaster (door Inlogik) test gebruiker](#create-promaster-by-inlogik-test-user)** : als u een tegen hanger wilt hebben van B. Simon in Promaster (door Inlogik) dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
+1. **[Eenmalige aanmelding van Azure AD configureren](#configure-azure-ad-sso)** : zodat uw gebruikers deze functie kunnen gebruiken.
+    * **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : om eenmalige aanmelding van Azure AD te testen met B.Simon.
+    * **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** zodat B.Simon eenmalige aanmelding van Azure AD kan gebruiken.
+1. **[Eenmalige aanmelding van ProMaster (van Inlogik) configureren](#configure-promaster-by-inlogik-sso)** : als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wilt configureren.
+    * **[Testgebruiker voor ProMaster (van Inlogik) maken](#create-promaster-by-inlogik-test-user)** : als u een tegenhanger van B.Simon in ProMaster (van Inlogik) wilt hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+1. **[Eenmalige aanmelding testen](#test-sso)** : om te controleren of de configuratie werkt.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
+### <a name="configure-azure-ad-sso"></a>Eenmalige aanmelding van Azure AD configureren
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met Promaster (door Inlogik):
+Voer de volgende stappen uit om eenmalige aanmelding van Azure AD te configureren voor ProMaster (van Inlogik):
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **Promaster (op Inlogik)** Application Integration de optie **eenmalige aanmelding**.
+1. In [Azure Portal](https://portal.azure.com/) selecteert u op de integratiepagina van de **ProMaster (van Inlogik)** -toepassing de optie **Eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -90,36 +90,33 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
     ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-4. Als u de toepassing in de gestarte modus van **IDP** wilt configureren, voert u de volgende stappen uit in de sectie **basis configuratie van SAML** :
+4. In het gedeelte **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
-    a. In het tekstvak **Id** typt u een URL met het volgende patroon: 
+    a. In het tekstvak **Id** typt u een URL met het volgende patroon:
 
-    | |
-    |-|-|
-    | `https://secure.inlogik.com/<COMPANYNAME>`|
-    | `https://<CUSTOMDOMAIN>/SAMLBASE`|
-    | |
+    ```http
+    https://secure.inlogik.com/<COMPANYNAME>
+    https://<CUSTOMDOMAIN>/SAMLBASE
+    ```
 
-    b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: 
+    b. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon:
 
-    | |
-    |-|-|
-    | `https://secure.inlogik.com/<COMPANYNAME>/saml/acs`|
-    | `https://<CUSTOMDOMAIN>/SAMLBASE/saml/acs`|
-    | |
+    ```http
+    https://secure.inlogik.com/<COMPANYNAME>/saml/acs
+    https://<CUSTOMDOMAIN>/SAMLBASE/saml/acs
+    ```
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: 
+    Typ in het tekstvak **Aanmeldings-URL** een URL met het volgende patroon:
 
-    | |
-    |-|-|
-    | `https://secure.inlogik.com/<COMPANYNAME>`|
-    | `https://<CUSTOMDOMAIN>/SAMLBASE`|
-    | |
+    ```http
+    https://secure.inlogik.com/<COMPANYNAME>
+    https://<CUSTOMDOMAIN>/SAMLBASE
+    ```
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Neem contact op met het [ondersteunings team van Promaster (door Inlogik)](https://www.inlogik.com/contact) om deze waarden op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Neem contact op met het [ondersteuningsteam van ProMaster (van Inlogik)](https://www.inlogik.com/contact) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 6. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op de kopieerknop om de **URL voor federatieve metagegevens van de app** te kopiëren en slaat u deze op uw computer op.
 
@@ -127,58 +124,58 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
+In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
-1. Selecteer **nieuwe gebruiker** boven aan het scherm.
-1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
    1. Voer in het veld **Naam**`B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
-   1. Klik op **maken**.
+   1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
+   1. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan Promaster (door Inlogik).
+In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot ProMaster (van Inlogik).
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
-1. Selecteer in de lijst toepassingen **Promaster (op Inlogik)**.
-1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
+1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **ProMaster (van Inlogik)** in de lijst met toepassingen.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
-    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
-1. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
+1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-## <a name="configure-promaster-by-inlogik-sso"></a>Promaster-SSO (door Inlogik) configureren
+## <a name="configure-promaster-by-inlogik-sso"></a>Eenmalige aanmelding van ProMaster (van Inlogik) configureren
 
-Als u eenmalige aanmelding wilt configureren op **Promaster (door Inlogik)** , moet u de URL voor de **federatieve meta gegevens** van de app naar [Promaster (door Inlogik)](https://www.inlogik.com/contact)verzenden. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding aan de zijde van **ProMaster (van Inlogik)** wilt configureren, moet u de **App-URL voor federatieve metagegevens** verzenden naar het [ondersteuningsteam van ProMaster (van Inlogik)](https://www.inlogik.com/contact). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
-### <a name="create-promaster-by-inlogik-test-user"></a>Een promasters (door Inlogik)-test gebruiker maken
+### <a name="create-promaster-by-inlogik-test-user"></a>Testgebruiker voor ProMaster (van Inlogik) maken
 
-In deze sectie maakt u een gebruiker met de naam B. Simon in Promaster (door Inlogik). Werk met het [ondersteunings team van Promaster (door Inlogik)](https://www.inlogik.com/contact) om de gebruikers toe te voegen aan het Promaster (door Inlogik)-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In dit gedeelte maakt u in ProMaster (van Inlogik) een gebruiker met de naam B.Simon. Werk samen met het ondersteuningsteam van [ProMaster (van Inlogik)](https://www.inlogik.com/contact) om de gebruikers toe te voegen aan het platform van ProMaster (van Inlogik). Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
-### <a name="test-sso"></a>SSO testen
+### <a name="test-sso"></a>Eenmalige aanmelding testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Promaster (per Inlogik) in het toegangs venster klikt, moet u automatisch worden aangemeld bij de Promaster (door Inlogik) waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel ProMaster (van Inlogik) in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van ProMaster (van Inlogik) waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Promaster (door Inlogik) proberen met Azure AD](https://aad.portal.azure.com/)
+- [ProMaster (van Inlogik) gebruiken met Azure AD](https://aad.portal.azure.com/)
 
-- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [Promaster beveiligen (door Inlogik) met geavanceerde zicht baarheid en besturings elementen](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [ProMaster (van Inlogik) beveiligen met geavanceerde zichtbaarheid en besturingselementen](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

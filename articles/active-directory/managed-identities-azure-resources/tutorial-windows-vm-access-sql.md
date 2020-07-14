@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd3d3aeecb66ba332d9c32c944d527ac3a07f2fe
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 13be33843172f505ed8f12293137c0808e9bd2a0
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014312"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920373"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>Zelfstudie: een door het Windows-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure SQL
 
@@ -66,10 +66,10 @@ U moet twee stappen uitvoeren om uw virtuele machine toegang te verlenen tot een
 
 In dit gedeelte wordt getoond hoe u een ingesloten gebruiker in de database maakt die staat voor de door de systeem toegewezen id van de VM. Voor deze stap hebt u [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) nodig. Voordat u begint, kan het ook handig zijn de volgende artikelen te lezen voor meer achtergrondinformatie over Azure AD-integratie:
 
-* [Universele verificatie met SQL Database en SQL Data Warehouse (SSMS-ondersteuning voor MFA)](/azure/sql-database/sql-database-ssms-mfa-authentication)
-* [Azure Active Directory-verificatie configureren en beheren met SQL Database of SQL Data Warehouse](/azure/sql-database/sql-database-aad-authentication-configure)
+- [Universele verificatie met SQL Database en Azure Synapse Analytics (SSMS-ondersteuning voor MFA)](/azure/sql-database/sql-database-ssms-mfa-authentication)
+- [Azure Active Directory-verificatie configureren en beheren met SQL Database of Azure Synapse Analytics](/azure/sql-database/sql-database-aad-authentication-configure)
 
-Voor SQL Database zijn unieke AAD-weergavenamen vereist. Hiermee moeten de AAD-accounts, zoals gebruikers, groepen en service-principals (toepassingen), en VM-namen die voor een beheerde identiteit zijn ingeschakeld, voor wat betreft de weergavenamen uniek zijn gedefinieerd in AAD. In SQL Database wordt de AAD-weergavenaam gecontroleerd tijdens het maken van dergelijke gebruikers met T-SQL. Als de naam niet uniek is, kan er geen unieke AAD-weergavenaam voor een bepaald account worden aangevraagd.
+Voor SQL DB zijn unieke AAD-weergavenamen vereist. Hiermee moeten de AAD-accounts, zoals gebruikers, groepen en service-principals (toepassingen), en VM-namen die voor een beheerde identiteit zijn ingeschakeld, voor wat betreft de weergavenamen uniek zijn gedefinieerd in AAD. In SQL DB wordt de AAD-weergavenaam gecontroleerd tijdens het maken van dergelijke gebruikers met T-SQL. Als de naam niet uniek is, kan er geen unieke AAD-weergavenaam voor een bepaald account worden aangevraagd.
 
 **Een ingesloten gebruiker maken:**
 
@@ -109,7 +109,7 @@ Code die wordt uitgevoerd op de VM kan nu een token verkrijgen via de door het s
 
 In dit gedeelte wordt getoond hoe u een toegangstoken kunt ophalen met behulp van de door het systeem toegewezen beheerde identiteit van de VM en dit kunt gebruiken om Azure SQL aan te roepen. Azure SQL biedt systeemeigen ondersteuning voor Azure AD-verificatie, zodat toegangstokens die zijn verkregen met behulp van beheerde identiteiten voor Azure-resources direct kunnen worden geaccepteerd. U gebruikt de toegangsmethode met het **toegangstoken** voor het maken van een verbinding met SQL. Dit maakt deel uit van de integratie van Azure SQL met Azure AD en wijkt af van het opgeven van referenties in de verbindingsreeks.
 
-Hier volgt een voorbeeld van .NET-code voor het openen van een verbinding met SQL met behulp van een toegangstoken. Deze code moet worden uitgevoerd op de virtuele machine om toegang te krijgen tot het eindpunt van de door het systeem toegewezen beheerde identiteit van de virtuele machine. **.NET framework 4.6** of hoger of **.NET Core 2.2** is vereist voor het gebruik van de toegangsmethode met een toegangstoken. Vervang AZURE-SQL-SERVERNAME en DATABASE door de benodigde waarden. De resource-id voor Azure SQL is `https://database.windows.net/`.
+Hier volgt een voorbeeld van .NET-code voor het openen van een verbinding met SQL met behulp van een toegangstoken. De code moet worden uitgevoerd op de virtuele machine om toegang te krijgen tot het eindpunt van de door het systeem toegewezen beheerde identiteit van de virtuele machine. **.NET framework 4.6** of hoger of **.NET Core 2.2** is vereist voor het gebruik van de toegangsmethode met een toegangstoken. Vervang AZURE-SQL-SERVERNAME en DATABASE door de benodigde waarden. De resource-id voor Azure SQL is `https://database.windows.net/`.
 
 ```csharp
 using System.Net;

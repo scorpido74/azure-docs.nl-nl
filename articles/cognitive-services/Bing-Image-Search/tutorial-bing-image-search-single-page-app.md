@@ -10,18 +10,18 @@ ms.subservice: bing-image-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 9227417d28eb09a322dd4757033ee62fee97d91c
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: 6a88ca1f028efcb3b9614df532b6d2dcc9dcfac8
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78943893"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800901"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Zelfstudie: Een app van één pagina maken met de Bing Afbeeldingen zoeken-API
 
 Met de Bing Afbeeldingen zoeken-API kunt u internet doorzoeken op hoogwaardige en relevante afbeeldingen. Gebruik deze zelfstudie om een webtoepassing van één pagina te bouwen waarmee zoekquery's naar de API kunnen worden verzonden. De resultaten worden dan op de webpagina weergegeven. Deze zelfstudie is vergelijkbaar met de [bijbehorende zelfstudie](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md) voor Bing Web Search.
 
-In de zelfstudie-app leert u het volgende:
+In de zelfstudie-app ziet u hoe u de volgende acties kunt uitvoeren:
 
 > [!div class="checklist"]
 > * Een Bing Afbeeldingen zoeken-API-aanroep uitvoeren in JavaScript
@@ -29,7 +29,7 @@ In de zelfstudie-app leert u het volgende:
 > * De zoekresultaten weergeven en erdoor bladeren
 > * Een API-abonnementssleutel en een Bing-client-id aanvragen en verwerken.
 
-De volledig broncode voor deze zelfstudie is beschikbaar op [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Image-Search).
+De volledige broncode voor deze zelfstudie is beschikbaar op [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Image-Search).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -40,7 +40,7 @@ De volledig broncode voor deze zelfstudie is beschikbaar op [GitHub](https://git
 
 ## <a name="manage-and-store-user-subscription-keys"></a>Abonnementssleutels van gebruikers beheren en opslaan
 
-In deze toepassing wordt gebruikgemaakt van de permanente opslag van webbrowsers om API-abonnementssleutels op te slaan. Als er geen sleutel is opgeslagen, wordt de gebruiker op de webpagina om de sleutel gevraagd. De sleutel wordt vervolgens voor later gebruik opgeslagen. Als de sleutel later door de API wordt geweigerd, verwijdert de app de sleutel uit de opslag. In dit voor beeld wordt het globale eind punt gebruikt. U kunt ook het [aangepaste subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource.
+In deze toepassing wordt gebruikgemaakt van de permanente opslag van webbrowsers om API-abonnementssleutels op te slaan. Als er geen sleutel is opgeslagen, wordt de gebruiker op de webpagina om de sleutel gevraagd. De sleutel wordt vervolgens voor later gebruik opgeslagen. Als de sleutel later door de API wordt geweigerd, verwijdert de app de sleutel uit de opslag. In dit voorbeeld wordt het globale eindpunt gebruikt. U kunt ook het eindpunt [aangepast subdomein](../../cognitive-services/cognitive-services-custom-subdomains.md) gebruiken dat wordt weergegeven in de Azure-portal voor uw resource.
 
 
 Definieer de functies `storeValue` en `retrieveValue` voor gebruik van het `localStorage`-object (als de browser dit ondersteunt) of een cookie.
@@ -318,7 +318,7 @@ Met de Bing Afbeeldingen zoeken-API kunnen vier typen zoeksuggesties worden gere
 
 | Suggestie         | Beschrijving                                                                                                                                                                                                         |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `pivotSuggestions` | Query’s die een beschrijvend woord in de oorspronkelijke zoekopdracht vervangen door een ander beschrijvend woord. Als u bijvoorbeeld zoekt naar ‘rode bloemen', is ‘rood' een beschrijvend woord, en is ‘gele bloemen' een mogelijke suggestie. |
+| `pivotSuggestions` | Query's die een beschrijvend woord in de oorspronkelijke zoekopdracht vervangen door een ander beschrijvend woord. Als u bijvoorbeeld zoekt naar ‘rode bloemen', is ‘rood' een beschrijvend woord, en is ‘gele bloemen' een mogelijke suggestie. |
 | `queryExpansions`  | Query's die de oorspronkelijke zoekopdracht verfijnen door meer zoektermen toe te voegen. Als u bijvoorbeeld zoekt naar ‘Microsoft Surface', is ‘Microsoft Surface Pro' een mogelijke uitbreiding van de query.                                   |
 | `relatedSearches`  | Query's die ook zijn ingevoerd door andere gebruikers die de oorspronkelijke zoekopdracht hebben ingevoerd. Als u bijvoorbeeld zoekt naar ‘Mount Rainier', is ‘Mt. Saint Helens' een gerelateerde zoekopdracht.                       |
 | `similarTerms`     | Query's die qua betekenis vergelijkbaar zijn met de oorspronkelijke zoekopdracht. Als u bijvoorbeeld zoekt naar 'kittens', is 'schattig' een vergelijkbare term.                                                                   |
@@ -377,28 +377,31 @@ Antwoorden van de Bing Zoeken-API’s kunnen een `X-MSEdge-ClientID`-header omva
 
 Door de `X-MSEdge-ClientID`-header op te geven kunnen met Bing-API's alle zoekopdrachten van een gebruiker worden gekoppeld. Dit is handig, want
 
-Ten eerste kan met de Bing-zoekmachine vroegere context worden toegepast op zoekopdrachten om beter kloppende resultaten te vinden voor de gebruiker. Als een gebruiker bijvoorbeeld eerder heeft gezocht naar termen die zijn gerelateerd aan zeilen, kan bij een latere zoekopdracht naar ‘knopen’ de voorkeur worden gegeven aan informatie over knopen die worden gebruikt bij zeilen.
+Ten eerste kan met de Bing-zoekmachine vroegere context worden toegepast op zoekopdrachten om beter kloppende resultaten te vinden voor de gebruiker. Als een gebruiker bijvoorbeeld eerder heeft gezocht naar termen die zijn gerelateerd aan zeilen, kan bij een latere zoekopdracht naar ‘knopen' de voorkeur worden gegeven aan informatie over knopen die worden gebruikt bij zeilen.
 
-Ten tweede kunnen in Bing willekeurig gebruikers worden geselecteerd om nieuwe functies uit te proberen voordat deze algemeen beschikbaar worden. Door bij elke aanvraag dezelfde client-id op te geven, zien gebruikers die de functie zien, deze altijd. Zonder de client-id kan het gebeuren dat de gebruiker een functie, schijnbaar willekeurig, ziet verschijnen en verdwijnen in de zoekresultaten.
+Ten tweede kunnen in Bing willekeurig gebruikers worden geselecteerd om nieuwe functies te proberen voordat deze algemeen beschikbaar worden. Door bij elke aanvraag dezelfde client-id op te geven, zien gebruikers die de functie zien, deze altijd. Zonder de client-id kan het gebeuren dat de gebruiker een functie, schijnbaar willekeurig, ziet verschijnen en verdwijnen in de zoekresultaten.
 
 Beveiligingsbeleid voor browsers (CORS) kan ervoor zorgen dat de `X-MSEdge-ClientID`-header niet beschikbaar is in JavaScript. Deze beperking treedt op wanneer het antwoord op een zoekopdracht een andere oorsprong heeft dan de pagina waarop de zoekopdracht is uitgevoerd. In een productieomgeving kunt u dit beleid omzeilen door een serverscript te hosten waarmee de API wordt aangeroepen in hetzelfde domein als de webpagina. Omdat het script dezelfde oorsprong heeft als de webpagina, is de `X-MSEdge-ClientID`-header vervolgens beschikbaar voor JavaScript.
 
 > [!NOTE]
 > In een webtoepassing die bedoeld is voor productie, moet u de aanvraag toch aan de serverzijde uitvoeren. Anders moet de sleutel voor de Bing Search-API worden opgenomen op de webpagina, waar deze beschikbaar is voor iedereen die de bron weergeeft. Al uw gebruik van de API-abonnementssleutel wordt in rekening gebracht, zelfs aanvragen die zijn gedaan door partijen die niet zijn gemachtigd. Het is daarom van groot belang dat u uw sleutel niet algemeen beschikbaar maakt.
 
-Voor ontwikkelingsdoeleinden kunt u de aanvraag van de Bing Web Search-API via een CORS-proxy doen. Het antwoord van een dergelijke proxy heeft een `Access-Control-Expose-Headers` koptekst die antwoord headers toestaat en deze beschikbaar maakt voor Java script.
+Voor ontwikkelingsdoeleinden kunt u de aanvraag van de Bing Web Search-API via een CORS-proxy doen. Het antwoord van een dergelijke proxy heeft een `Access-Control-Expose-Headers`-header waardoor antwoordheaders worden opgenomen in de acceptatielist en beschikbaar gemaakt voor JavaScript.
 
 U kunt eenvoudig een CORS-proxy installeren zodat de zelfstudie-app toegang krijgt tot de client-id-header. Als u [Node.js](https://nodejs.org/en/download/) nog niet hebt, moet u dit eerst installeren. Voer vervolgens de volgende opdracht uit in een opdrachtvenster:
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
-Wijzig vervolgens het Bing Web Search-eindpunt in het HTML-bestand in:
-
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
+Wijzig vervolgens het Bing Web Search-eindpunt in het HTML-bestand in :\
+`http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search`
 
 Start ten slotte de CORS-proxy met de volgende opdracht:
 
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 Laat het opdrachtvenster geopend terwijl u de zelfstudie-app gebruikt. Als u het venster sluit, wordt de proxy gestopt. In de uitbreidbare sectie met HTTP-headers onder de zoekresultaten ziet u nu (onder andere) de `X-MSEdge-ClientID`-header en kunt u controleren of deze voor elke aanvraag gelijk is.
 

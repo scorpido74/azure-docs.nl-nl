@@ -1,39 +1,39 @@
 ---
-title: Voor beelden van Jupyter-notebooks voor Azure Notebooks preview
-description: Voor beelden zijn een uitstekende manier om Jupyter-notebooks uit te voeren die worden uitgevoerd in de gratis Azure Notebooks Cloud Services.
+title: Voorbeelden van Jupyter Notebooks voor preview van Azure Notebooks
+description: Voorbeelden zijn een uitstekende manier om Jupyter Notebooks te ervaren die worden uitgevoerd in de kosteloze Azure Notebooks-cloudservices.
 ms.topic: sample
 ms.date: 01/11/2019
-ms.openlocfilehash: f67c37d0ffe0e90e13e05bb50ed6c523e0b3a14e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 397e40f628e6e935fef74d2225d2e477aac7b276
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75646310"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833992"
 ---
-# <a name="discover-and-use-sample-notebooks-in-azure-notebooks-preview"></a>Voor beelden van notitie blokken in Azure Notebooks preview detecteren en gebruiken
-
-Het internet heeft veel verzamelingen interessante en nuttige Jupyter-notebooks die u eenvoudig kunt meebrengen in Azure Notebooks. In dit artikel vindt u een overzicht van de belangrijkste voor beelden.
+# <a name="discover-and-use-sample-notebooks-in-azure-notebooks-preview"></a>Voorbeelden van notebooks ontdekken en gebruiken in de preview van Azure Notebooks.
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-Wanneer u een notitie blok hebt geïdentificeerd dat u graag wilt verkennen, kunt u het volgende weten:
+Op het internet zijn een groot aantal interessante en nuttige Jupyter Notebooks te vinden die u eenvoudig kunt overbrengen naar Azure Notebooks. In dit artikel vindt u een overzicht van de belangrijkste voorbeelden.
 
-- Als er al een notitie blok in Azure Notebooks, gebruikt u de knop **klonen** in het project dashboard om een kopie van het project in uw eigen account te maken.
-- Voor sommige notebooks moeten specifieke pakketten worden uitgevoerd. Hoewel u (python `!pip install` ) of `install.packages` (R) kunt gebruiken voor het installeren van pakketten van een notebook zelf, kunt u ook [een Azure notebooks project configureren met de juiste omgeving](configure-manage-azure-notebooks-projects.md).
+Wanneer u een notebook hebt gezien dat u graag wilt verkennen, zijn dit een aantal belangrijke punten:
 
-## <a name="great-sample-notebooks"></a>Fantastische voorbeeld notitieblokken
+- Als er zich al een notebook in Azure Notebooks bevindt, gebruikt u de knop **Klonen** in het projectdashboard om een kopie van het project in uw eigen account te maken.
+- Voor sommige notebooks moeten specifieke pakketten worden uitgevoerd. Hoewel u `!pip install` (Python) of `install.packages` (R) kunt gebruiken voor het installeren van pakketten van een notebook zelf, kunt u ook [een Azure Notebooks-project configureren met de juiste omgeving](configure-manage-azure-notebooks-projects.md).
 
-- [Azure notebooks starter set](https://notebooks.azure.com/#sample-redirect) bevat Inleiding tot python, R en F #, samen met notebooks die gegevens toegang, Azure machine learning en een paar data Science-oefeningen tonen.
-- [Inleiding tot Jupyter-notebooks](https://nbviewer.jupyter.org/github/jupyter/notebook/blob/master/docs/source/examples/Notebook/Notebook%20Basics.ipynb) (jupyter.org)
-- [Inleiding tot data wetenschappen](https://github.com/jakevdp/PythonDataScienceHandbook/tree/master/notebooks) door Sjaak Vanderplas.
-- [Galerie met interessante notitie blokken](https://github.com/ipython/ipython/wiki/A-gallery-of-interesting-IPython-Notebooks) (Jupyter-project op github)
+## <a name="great-sample-notebooks"></a>Goede voorbeelden van notebooks
+
+- [Azure Notebooks-beginnersset](https://notebooks.azure.com/#sample-redirect) bevat een inleiding tot Python, R en F#, samen met notebooks die gegevenstoegang, Azure Machine Learning en een paar Data Science-oefeningen demonstreren.
+- [Inleiding tot Jupyter Notebooks](https://nbviewer.jupyter.org/github/jupyter/notebook/blob/master/docs/source/examples/Notebook/Notebook%20Basics.ipynb) (jupyter.org)
+- [Inleiding tot Data Science](https://github.com/jakevdp/PythonDataScienceHandbook/tree/master/notebooks) door Sjaak Vanderplas.
+- [Galerie met interessante notebooks](https://github.com/ipython/ipython/wiki/A-gallery-of-interesting-IPython-Notebooks) (Jupyter-project op GitHub)
 - [nbviewer.jupyter.org](https://nbviewer.jupyter.org)
-- Fysieke instructie van de [Afdeling Fysica van de Britse school van Londen](https://notebooks.azure.com/cvanbreu/libraries)
-- [Voor beelden Azure Machine Learning aan de slag](https://notebooks.azure.com/azureml/projects/azureml-getting-started)
+- Instructie over fysica van de [afdeling Fysica van het Imperial College of London](https://notebooks.azure.com/cvanbreu/libraries)
+- [Azure Machine Learning-voorbeelden om mee te beginnen](https://notebooks.azure.com/azureml/projects/azureml-getting-started)
 
 ## <a name="next-steps"></a>Volgende stappen  
 
-- [Procedure: projecten configureren en beheren](configure-manage-azure-notebooks-projects.md)
-- [Procedure: werken met gegevens bestanden](work-with-project-data-files.md)
-- [Informatie over toegang tot gegevens bronnen](access-data-resources-jupyter-notebooks.md)
+- [Procedure: Projecten configureren en beheren](configure-manage-azure-notebooks-projects.md)
+- [Procedure: Werken met gegevensbestanden](work-with-project-data-files.md)
+- [Procedure: Toegang tot gegevensbronnen](access-data-resources-jupyter-notebooks.md)
 - [Procedure: Azure Machine Learning gebruiken](use-machine-learning-services-jupyter-notebooks.md)

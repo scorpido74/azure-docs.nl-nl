@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met IdeaScale | Microsoft Docs'
+title: 'Zelfstudie: Azure Active Directory-integratie met IdeaScale | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en IdeaScale.
 services: active-directory
 documentationCenter: na
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81594e6a21372f2b4dacedbda638cc87bad966db
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: cee9bb5d3be6bb8fe5defaa91bce766c8a0f5c05
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74227570"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85798920"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>Zelf studie: integratie Azure Active Directory met IdeaScale
+# <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>Zelfstudie: Azure Active Directory-integratie met IdeaScale
 
 In deze zelfstudie leert u hoe u IdeaScale kunt integreren met Azure Active Directory (Azure AD).
 De integratie van IdeaScale met Azure AD biedt de volgende voordelen:
@@ -33,7 +33,7 @@ De integratie van IdeaScale met Azure AD biedt de volgende voordelen:
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -77,12 +77,12 @@ Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure 
 
 Om Azure AD-eenmalige aanmelding met IdeaScale te configureren en te testen, moet u de volgende bouwstenen uitvoeren:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[IdeaScale voor eenmalige aanmelding configureren](#configure-ideascale-single-sign-on)**: als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wil configureren.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Testgebruiker voor IdeaScale maken](#create-ideascale-test-user)**: als u een tegenhanger van Britta Simon in IdeaScale wilt hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[IdeaScale voor eenmalige aanmelding configureren](#configure-ideascale-single-sign-on)** : als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wil configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Testgebruiker voor IdeaScale maken](#create-ideascale-test-user)** : als u een tegenhanger van Britta Simon in IdeaScale wilt hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
@@ -108,17 +108,17 @@ Voor het configureren van eenmalige aanmelding bij Azure Active Directory met Id
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<companyname>.ideascale.com`
 
-    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon: 
+    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon:
     
-    | |
-    |--|
-    | `http://<companyname>.ideascale.com`  |
-    | `https://<companyname>.ideascale.com` |
+    ```http
+    http://<companyname>.ideascale.com
+    https://<companyname>.ideascale.com
+    ```
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met het [IdeaScale-ondersteuningsteam](https://support.ideascale.com/) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en id. Neem contact op met het [IdeaScale-ondersteuningsteam](https://support.ideascale.com/) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
+5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens**  te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
@@ -142,15 +142,15 @@ Voor het configureren van eenmalige aanmelding bij Azure Active Directory met Id
 
 3. Ga naar **Beveiliging \> Instellingen voor eenmalige aanmelding**.
 
-    ![Instellingen voor één aanmelding](./media/ideascale-tutorial/ic790848.png "Instellingen voor één aanmelding")
+    ![Instellingen voor eenmalige aanmelding](./media/ideascale-tutorial/ic790848.png "Instellingen voor eenmalige aanmelding")
 
 4. Selecteer **SAML 2.0** als **Type eenmalige aanmelding**.
 
-    ![Type enkelvoudige aanmelding](./media/ideascale-tutorial/ic790849.png "Type enkelvoudige aanmelding")
+    ![Type eenmalige aanmelding](./media/ideascale-tutorial/ic790849.png "Type eenmalige aanmelding")
 
 5. Voer in het dialoogvenster **Instellingen voor eenmalige aanmelding** de volgende stappen uit:
 
-    ![Instellingen voor één aanmelding](./media/ideascale-tutorial/ic790850.png "Instellingen voor één aanmelding")
+    ![Instellingen voor eenmalige aanmelding](./media/ideascale-tutorial/ic790850.png "Instellingen voor eenmalige aanmelding")
 
     a. Plak in het tekstvak **SAML idP entiteits-id** de waarde van de **Azure AD-id** die u hebt gekopieerd uit de Azure-portal.
 
@@ -158,7 +158,7 @@ Voor het configureren van eenmalige aanmelding bij Azure Active Directory met Id
 
     c. Plak in het tekstvak **Afmelding voltooid-URL** de waarde van **Afmeldings-URL** die u hebt gekopieerd uit de Azure-portal.
 
-    d. Klik op **wijzigingen opslaan**.
+    d. Klik op **Wijzigingen opslaan**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
@@ -168,7 +168,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -176,14 +176,14 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam****Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
+    b. In het veld **Gebruikersnaam** typt u **brittasimon\@yourcompanydomain.extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **maken**.
+    d. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -205,9 +205,9 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
+6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
@@ -215,7 +215,7 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
 Als u wilt dat gebruikers van Azure AD zich kunnen aanmelden bij IdeaScale, moeten ze worden ingericht voor IdeaScale. In het geval van IdeaScale is het inrichten een handmatige taak.
 
-**Voer de volgende stappen uit om de inrichting van gebruikers te configureren:**
+**Voer de volgende stappen uit om de gebruikersinrichting te configureren:**
 
 1. Meld u aan bij uw **IdeaScale**-bedrijfssite als beheerder.
 
@@ -227,7 +227,7 @@ Als u wilt dat gebruikers van Azure AD zich kunnen aanmelden bij IdeaScale, moet
 
 4. Klik op **Lid toevoegen**.
 
-    ![Leden beheer](./media/ideascale-tutorial/ic790852.png "Leden beheer")
+    ![Ledenbeheer](./media/ideascale-tutorial/ic790852.png "Ledenbeheer")
 
 5. Voer in het gedeelte Nieuw lid toevoegen de volgende stappen uit:
 
@@ -235,13 +235,13 @@ Als u wilt dat gebruikers van Azure AD zich kunnen aanmelden bij IdeaScale, moet
 
     a. Typ in het tekstvak **E-mailadressen** het e-mailadres van een geldig Azure AD-account dat u wilt inrichten.
 
-    b. Klik op **wijzigingen opslaan**.
+    b. Klik op **Wijzigingen opslaan**.
 
     > [!NOTE]
     > De houder van het Azure Active Directory-account ontvangt een e-mail met een koppeling om het account te bevestigen voordat het actief wordt.
 
 > [!NOTE]
-> U kunt alle andere hulpprogram ma's voor het maken van IdeaScale-gebruikers accounts of Api's die worden geleverd door IdeaScale, gebruiken om Azure AD-gebruikers accounts in te richten.
+> U kunt de Aazure AD-gebruikersaccounts ook inrichten met behulp van andere hulpprogramma's of API's van IdeaScale voor het maken van gebruikersaccounts.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
@@ -253,7 +253,7 @@ Wanneer u in het toegangsvenster op de tegel IdeaScale klikt, wordt u automatisc
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

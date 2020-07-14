@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met Qlik Sense Enter prise | Microsoft Docs'
+title: 'Zelfstudie: Azure Active Directory-integratie met Qlik Sense Enterprise | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Qlik Sense Enterprise.
 services: active-directory
 documentationCenter: na
@@ -15,126 +15,125 @@ ms.topic: tutorial
 ms.date: 03/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec9349d8ed330a00a64922a44f99910f9eeeb0df
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 6a2d4799966e070f7c50c39c350456b594664c9a
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79136445"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800665"
 ---
-# <a name="tutorial-integrate-qlik-sense-enterprise-with-azure-active-directory"></a>Zelf studie: Qlik Sense Enter prise integreren met Azure Active Directory
+# <a name="tutorial-integrate-qlik-sense-enterprise-with-azure-active-directory"></a>Zelfstudie: Qlik Sense Enterprise integreren met Azure Active Directory
 
-In deze zelf studie leert u hoe u Qlik Sense Enter prise integreert met Azure Active Directory (Azure AD). Wanneer u Qlik Sense Enter prise integreert met Azure AD, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u Qlik Sense Enterprise integreert in Azure Active Directory (Azure AD). Wanneer u Qlik Sense Enterprise met Azure AD integreert, kunt u:
 
-* Controle in azure AD die toegang heeft tot Qlik Sense-onderneming.
-* Zorg ervoor dat uw gebruikers automatisch worden aangemeld bij Qlik Sense Enter prise met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure Portal.
+* Bepaal in Azure AD wie toegang krijgt tot Qlik Sense Enterprise.
+* Ervoor zorgen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij Qlik Sense Enterprise.
+* Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](/azure/active-directory/manage-apps/what-is-single-sign-on)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](/azure/active-directory/manage-apps/what-is-single-sign-on) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende items nodig om aan de slag te gaan:
+U hebt het volgende nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/)een gratis proef versie van één maand ontvangen.
-* Eenmalige aanmelding (SSO) voor Qlik Sense-abonnement.
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) een gratis proefversie van één maand ontvangen.
+* Een abonnement op Qlik Sense Enterprise waarvoor eenmalige aanmelding is ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving. 
-* Qlik Sense Enter prise ondersteunt door **SP** geïnitieerde SSO.
-* Qlik Sense Enter prise ondersteunt **just-in-time-inrichting**
+In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen. 
+* Qlik Sense Enterprise ondersteunt door **SP** geïnitieerde eenmalige aanmelding.
+* Qlik Sense Enterprise ondersteunt **Just-In-Time-inrichting**
 
-* Zodra u Qlik Sense Enter prise hebt geconfigureerd, kunt u sessie beheer afdwingen, waardoor exfiltration en infiltratie van de gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessie beheer is uitgebreid met voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Zodra u Qlik Sense Enterprise hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-qlik-sense-enterprise-from-the-gallery"></a>Qlik Sense Enterprise uit de galerie toevoegen
 
 Als u de integratie van Qlik Sense Enterprise in Azure AD wilt configureren, moet u Qlik Sense Enterprise vanuit de galerie toevoegen aan uw lijst beheerde SaaS-apps.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
-1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
-1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. In de sectie **toevoegen vanuit de galerie** typt u **Qlik Sense Enter prise** in het zoekvak.
-1. Selecteer **Qlik Sense Enter prise** uit het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **Nieuwe toepassing** om een nieuwe toepassing toe te voegen.
+1. In de sectie **Toevoegen uit de galerie** typt u **Qlik Sense Enterprise** in het zoekvak.
+1. Selecteer **Qlik Sense Enterprise** in het resultatenvenster en voeg vervolgens de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-Azure AD SSO met Qlik Sense Enter prise configureren en testen met behulp van een test gebruiker met de naam **Julia Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Qlik Sense Enter prise.
+Configureer en test eenmalige aanmelding van Azure AD met Qlik Sense Enterprise met behulp van de testgebruiker **Britta Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Qlik Sense Enterprise.
 
-Als u Azure AD SSO wilt configureren en testen met Qlik Sense Enter prise, voltooit u de volgende bouw stenen:
+Voltooi de volgende bouwstenen om eenmalige aanmelding van Azure AD met Qlik Sense Enterprise te configureren en te testen:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
-    * **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-    * **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-1. **[Qlik Sense Enter PRISE SSO configureren](#configure-qlik-sense-enterprise-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-    * **[Een Qlik Sense Enterprise-testgebruiker maken](#create-qlik-sense-enterprise-test-user)**: als u een equivalent van Britta Simon wilt maken in Qlik Sense Enterprise dat is gekoppeld aan de Azure AD-versie van de gebruiker.
-1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
+1. **[Eenmalige aanmelding van Azure AD configureren](#configure-azure-ad-sso)** : zodat uw gebruikers deze functie kunnen gebruiken.
+    * **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+    * **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+1. **[Eenmalige aanmelding bij Qlik Sense Enterprise configureren](#configure-qlik-sense-enterprise-sso)** : als u de instellingen voor eenmalige aanmelding aan de clientzijde wilt configureren.
+    * **[Een Qlik Sense Enterprise-testgebruiker maken](#create-qlik-sense-enterprise-test-user)** : als u een equivalent van Britta Simon wilt maken in Qlik Sense Enterprise dat is gekoppeld aan de Azure AD-versie van de gebruiker.
+1. **[Eenmalige aanmelding testen](#test-sso)** : om te controleren of de configuratie werkt.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
+### <a name="configure-azure-ad-sso"></a>Eenmalige aanmelding van Azure AD configureren
 
-Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
+Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Zoek in de [Azure Portal](https://portal.azure.com/)op de pagina **Qlik Sense Enter prise** Application Integration de sectie **Manage** en selecteer **eenmalige aanmelding**.
-1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
+1. Zoek in [Azure Portal](https://portal.azure.com/) op de integratiepagina van de toepassing **Qlik Sense Enterprise** de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Voer op de pagina **basis configuratie van SAML** de waarden in voor de volgende velden:
+1. Op de pagina **Standaard-SAML-configuratie** voert u de waarden in voor de volgende velden:
 
-    a. Typ in het tekstvak **URL voor aanmelding** een URL met het volgende patroon:`https://<Fully Qualified Domain Name>:443{/virtualproxyprefix}/hub`
+    a. Typ in het tekstvak **Aanmeldings-URL** een URL met het volgende patroon: `https://<Fully Qualified Domain Name>:443{/virtualproxyprefix}/hub`
 
-    b. Typ in het tekstvak **id** een URL met behulp van een van de volgende patronen:
+    b. In het tekstvak **Id** typt u een van de URL's met het volgende patroon:
 
-    | |
-    |--|
-    | `https://<Fully Qualified Domain Name>.qlikpoc.com`|
-    | `https://<Fully Qualified Domain Name>.qliksense.com`|
-    | |
+    ```http
+    https://<Fully Qualified Domain Name>.qlikpoc.com
+    https://<Fully Qualified Domain Name>.qliksense.com
+    ```
 
-    c. In het tekstvak **Antwoord-URL** typt u een URL met behulp van het volgende patroon: 
+    c. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie:
 
     `https://<Fully Qualified Domain Name>:443{/virtualproxyprefix}/samlauthn/`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL, id en antwoord-URL die verderop in deze zelfstudie worden beschreven of neem contact op met het [Qlik Sense Enterprise-ondersteuningsteam](https://www.qlik.com/us/services/support) om deze waarden te verkrijgen. De standaard poort voor de Url's is 443, maar u kunt deze aanpassen op basis van de behoeften van uw organisatie.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL, id en antwoord-URL die verderop in deze zelfstudie worden beschreven of neem contact op met het [Qlik Sense Enterprise-ondersteuningsteam](https://www.qlik.com/us/services/support) om deze waarden te verkrijgen. De standaardpoort voor de URL's is 443, maar u kunt deze aanpassen op basis van de behoeften van uw organisatie.
 
-1. Op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , vindt u de **federatieve meta gegevens-XML** van de opgegeven opties volgens uw vereiste en slaat u deze op uw computer op.
+1. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** zoekt u het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een test gebruiker in de Azure Portal met de naam Julia Simon.
+In deze sectie gaat u een testgebruiker met de naam Britta Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
-1. Selecteer **nieuwe gebruiker** boven aan het scherm.
-1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
    1. Voer in het veld **Naam**`Britta Simon` in.  
-   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `BrittaSimon@contoso.com`.
-   1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
-   1. Klik op **maken**.
+   1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `BrittaSimon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
+   1. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan Qlik Sense Enter prise.
+In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van Azure-eenmalige aanmelding door haar toegang te geven tot Qlik Sense Enterprise.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
-1. Selecteer in de lijst toepassingen de optie **Qlik Sense Enter prise**.
-1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
+1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **Qlik Sense Enterprise** in de lijst met toepassingen.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
-    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
-1. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
+1. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst Gebruikers en klik op de knop **Selecteren** onder aan het scherm.
+1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-## <a name="configure-qlik-sense-enterprise-sso"></a>Qlik Sense Enter prise SSO configureren
+## <a name="configure-qlik-sense-enterprise-sso"></a>Qlik Sense Enterprise-eenmalige aanmelding configureren
 
 1. Bereid het XML-bestand met federatieve metagegevens voor zodat u die naar de Qlik Sense-server kunt uploaden.
 
@@ -211,7 +210,7 @@ In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te ge
 
     ![QlikSense][qs13]
 
-    De acceptatie lijst van de host identificeert hostnamen die worden geaccepteerd bij het maken van verbinding met de Qlik Sense-server.  **Voer de hostnaam in die gebruikers opgeven wanneer deze verbinding maken met de Qlik Sense-server.** De hostnaam heeft dezelfde waarde als de host-URI van SAML zonder de https://.
+    Op de lijst met toegestane hosts bevinden zich hostnamen die worden geaccepteerd wanneer deze verbinding maken met de Qlik Sense-server.  **Voer de hostnaam in die gebruikers opgeven wanneer deze verbinding maken met de Qlik Sense-server.** De hostnaam heeft dezelfde waarde als de host-URI van SAML zonder de https://.
 
 11. Klik op de knop **Toepassen**.
 
@@ -253,21 +252,21 @@ In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te ge
 
 ### <a name="create-qlik-sense-enterprise-test-user"></a>Een Qlik Sense Enterprise-testgebruiker maken
 
-Qlik Sense Enter prise ondersteunt **just-in-time-inrichting**, gebruikers worden automatisch toegevoegd aan de opslag plaats ' gebruikers ' van Qlik Sense Enter prise als ze de SSO-functie gebruiken. Daarnaast kunnen clients gebruikmaken van de QMC en een UDC (User Directory Connector) maken voor het vooraf invullen van gebruikers in Qlik Sense-onderneming vanuit hun LDAP-keuze, zoals Active Directory, en andere.
+Qlik Sense Enterprise ondersteunt **Just-In-Time-inrichting**. Gebruikers worden automatisch toegevoegd aan de opslagplaats 'GEBRUIKERS' van Qlik Sense Enterprise als ze de functie voor eenmalige aanmelding gebruiken. Daarnaast kunnen klanten de QMC gebruiken en een UDC (User Directory Connector) aanmaken om gebruikers vooraf in te vullen in Qlik Sense Enterprise van hun LDAP naar keuze, zoals Active Directory en anderen.
 
-### <a name="test-sso"></a>SSO testen
+### <a name="test-sso"></a>Eenmalige aanmelding testen
 
-Wanneer u de tegel Qlik Sense ENTER selecteert in het toegangs venster, moet u automatisch worden aangemeld bij de Qlik Sense-onderneming waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u de tegel Qlik Sense Enterprise in het toegangsvenster selecteert, wordt u automatisch aangemeld bij de instantie van Qlik Sense Enterprise waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [What is application access and single sign-on with Azure Active Directory?](/azure/active-directory/manage-apps/what-is-single-sign-on) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 <!--Image references-->
 

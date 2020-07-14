@@ -1,19 +1,18 @@
 ---
-title: Aankondigingen van nieuwe functies
-titleSuffix: Azure Cognitive Search
+title: Nieuwe functies in Azure Cognitive Search
 description: Aankondigingen van nieuwe en verbeterde functies, waaronder een wijziging van de servicenaam van Azure Search in Azure Cognitive Search.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 06/08/2020
-ms.openlocfilehash: 97defe2af5b82cccbaf289ccbd805b608b978a43
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.date: 06/30/2020
+ms.openlocfilehash: 078892691bfaec62f71f9d601a42de3f80221149
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84736081"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958154"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Nieuwe functies in Azure Cognitive Search
 
@@ -23,23 +22,33 @@ Meer informatie over nieuwe functies in de service. Voeg een bladwijzer toe aan 
 
 ### <a name="june-2020"></a>Juni 2020
 
-De Azure Machine Learning-vaardigheid is een nieuw vaardigheidstype om een deductie-eindpunt van Azure Machine Learning te integreren. De portal-ervaring ondersteunt de detectie en integratie van uw Azure Machine Learning-eindpunt binnen een Cognitive Search-vaardighedenset. Voor de detectie moeten uw Cognitive Search- en Azure ML-services in hetzelfde abonnement zijn geïmplementeerd. Als u zich wilt registreren voor de preview-versie van de AML-vaardigheid, [vul dan het formulier in](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0jK7x7HQYdDm__YfEsbtcZUMTFGTFVTOE5XMkVUMFlDVFBTTlYzSlpLTi4u). Ga aan de slag met [deze zelfstudie](cognitive-search-tutorial-aml-custom-skill.md).
++ [Kennisarchief](knowledge-store-concept-intro.md) is nu algemeen beschikbaar.
+
++ [Search Service REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) is de nieuwe stabiele versie van de REST API's. Naast het kennisarchief bevat deze algemeen beschikbare versie verbeteringen wat betreft de relevantie en scoren van de zoekresultaten.
+
++ Het nieuwe algoritme voor relevantieclassificatie is nu [BM25](https://en.wikipedia.org/wiki/Okapi_BM25) voor alle nieuwe services die u maakt. Voor bestaande services kunt u het gebruiken door de eigenschap `similarity` in te stellen op indexvelden. Deze eigenschap is algemeen beschikbaar.
+
++ De `executionEnvironment` van nieuwe indexeerfuncties kan expliciet worden ingesteld op `private`. Deze mogelijkheid ondersteunt toegang van indexeerfuncties tot externe gegevens via privé-eindpunten, en is algemeen beschikbaar.
+
++ [Azure Machine Learning (AML)](cognitive-search-aml-skill.md) is een nieuw vaardigheidstype voor het integreren van een deductie-eindpunt van Azure Machine Learning. De portal-ervaring ondersteunt de detectie en integratie van uw Azure Machine Learning-eindpunt binnen een Cognitive Search-vaardighedenset. Voor de detectie moeten uw Cognitive Search- en Azure ML-services in hetzelfde abonnement zijn geïmplementeerd. Deze vaardigheid is algemeen beschikbaar. Ga aan de slag met [deze zelfstudie](cognitive-search-tutorial-aml-custom-skill.md).
 
 ### <a name="may-2020-microsoft-build"></a>Mei 2020 (Microsoft Build)
 
-+ De functie [Foutopsporingssessies](cognitive-search-debug-session.md) is nu beschikbaar als preview-versie. [Registreer u om toegang aan te vragen](https://aka.ms/DebugSessions). Foutopsporingssessies biedt een portalinterface waarin u problemen kunt onderzoeken en oplossen met een vaardighedenset. Fixes die zijn gemaakt in de foutopsporingssessie, kunnen worden opgeslagen in de productievaardighedenset. Ga aan de slag met [deze zelfstudie](cognitive-search-tutorial-debug-sessions.md).
++ De functie [Foutopsporingssessies](cognitive-search-debug-session.md) is nu beschikbaar als preview-versie. Foutopsporingssessies bieden een portalinterface waarin u problemen kunt onderzoeken en oplossen met een vaardighedenset. Fixes die zijn gemaakt in de foutopsporingssessie, kunnen worden opgeslagen in de productievaardighedenset. Ga aan de slag met [deze zelfstudie](cognitive-search-tutorial-debug-sessions.md).
 
-+ Beveiligingsverbeteringen bevatten de mogelijkheid om [een privé-eindpunt voor zoeken (preview) in te stellen](service-create-private-endpoint.md) dat niet toegankelijk is op het openbare internet. U kunt ook [IP-regels configureren voor de ondersteuning van inkomende firewalls (preview)](service-configure-firewall.md).
++ Scherm een zoekservice-eindpunt af van het openbare internet door [IP-regels te configureren voor inkomende firewall-ondersteuning](service-configure-firewall.md) of door gebruik te maken van [Azure Private Link voor een privé-zoekeindpunt](service-create-private-endpoint.md). Beide mogelijkheden zijn algemeen beschikbaar.
 
 + Gebruik een [door het systeem beheerde identiteit (preview)](search-howto-managed-identities-data-sources.md) om een verbinding met een Azure-gegevensbron in te stellen voor indexeren. Geldt voor [indexeerfuncties](search-indexer-overview.md) die inhoud opnemen uit Azure-gegevensbronnen, zoals Azure SQL Database, Azure Cosmos DB en Azure Storage.
 
-+ Wijzig de basis voor het berekenen van zoekscores, van per shard in alle shards, met behulp van de queryparameters [scoringStatistics=global](index-similarity-and-scoring.md#scoring-statistics) en sessionId.
++ Wijzig de basis voor het berekenen van zoekscores, van per shard in alle shards, met behulp van de queryparameters [sessionId](index-similarity-and-scoring.md) en [scoringStatistics=global](index-similarity-and-scoring.md#scoring-statistics). Deze parameters zijn algemeen beschikbaar.
+
++ Voeg een [featuresMode (preview)](index-similarity-and-scoring.md#featuresMode-param) queryparameter toe om een relevantiescore uit te breiden om meer details weer te geven: vergelijkbaarheidsscore per veld, termfrequentie per veld, en gematcht aantal unieke tokens per veld. U kunt deze gegevenspunten gebruiken in aangepaste scorealgoritmen. Zie [Add machine learning (LearnToRank) to search relevance](https://github.com/Azure-Samples/search-ranking-tutorial) voor een voorbeeld waarin deze mogelijkheid wordt gedemonstreerd.
 
 ### <a name="march-2020"></a>Maart 2020
 
 + Met [Systeemeigen voorlopig verwijderde blobs (preview)](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection) herkent de Azure Blob Storage-indexeerfunctie in Azure Cognitive Search de blobs die de status Voorlopig verwijderd hebben, en wordt het bijbehorende zoekdocument verwijderd tijdens het indexeren.
 
-+ Nieuwe stabiele [REST API voor beheer (13-03-2020)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) is nu beschikbaar. 
++ Nieuwe stabiele [REST API voor beheer (13-03-2020)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) is nu algemeen beschikbaar. 
 
 ### <a name="february-2020"></a>Februari 2020
 
@@ -49,17 +58,15 @@ De Azure Machine Learning-vaardigheid is een nieuw vaardigheidstype om een deduc
 
 ### <a name="january-2020"></a>Januari 2020
 
-+ [Door de klant beheerde versleutelingssleutels](search-security-manage-encryption-keys.md) zijn nu algemeen beschikbaar. Als u REST gebruikt, kunt u de functie openen met `api-version=2019-05-06`. Voor beheerde code is het juiste pakket nog steeds [.NET SDK versie 8.0-preview](search-dotnet-sdk-migration-version-9.md), ook al is de preview-fase van de functie voorbij. 
++ [Door de klant beheerde versleutelingssleutels](search-security-manage-encryption-keys.md) zijn nu algemeen beschikbaar. Als u REST gebruikt, kunt u de functie gebruiken met `api-version=2019-05-06` of later. Voor beheerde code is het juiste pakket nog steeds [.NET SDK versie 8.0-preview](search-dotnet-sdk-migration-version-9.md), ook al is de preview-fase van de functie voorbij. 
 
 + Privétoegang tot een zoekservice is beschikbaar via twee mechanismen, beide momenteel als preview-versie:
 
   + U kunt de toegang tot specifieke IP-adressen beperken met de REST API voor beheer `api-version=2019-10-01-Preview` om de service te maken. De preview-API bevat de nieuwe eigenschappen **IpRule** en **NetworkRuleSet** in [CreateOrUpdate-API](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service). Deze preview-functie is beschikbaar in bepaalde regio's. Zie [De REST API voor beheer gebruiken](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api) voor meer informatie.
 
-  + Dit is momenteel beschikbaar via een preview met beperkte toegang. U kunt een Azure Search-service inrichten die Azure Private Endpoint ondersteunt voor verbindingen van clients op hetzelfde virtuele netwerk. Zie [Een privé-eindpunt maken voor een veilige verbinding](service-create-private-endpoint.md) voor meer informatie.
-
 ### <a name="december-2019"></a>December 2019
 
-+ [App maken (preview)](search-create-app-portal.md) is een nieuwe wizard in de portal waarmee een downloadbaar HTML-bestand wordt gegenereerd. Het bestand wordt geleverd met een ingesloten script waarmee een operationele 'localhost' -achtige web-app wordt weergegeven die is gebonden aan een index in uw zoekservice. Pagina's kunnen worden geconfigureerd in de wizard en kunnen een zoekbalk, een resultaatgebied, navigatie in de zijbalk en ondersteuning voor typeahead-query's bevatten. U kunt de HTML offline wijzigen om de werkstroom of weergave uit te breiden of aan te passen.
++ [Demo-app maken (preview)](search-create-app-portal.md) is een nieuwe wizard in de portal waarmee een downloadbaar HTML-bestand wordt gegenereerd met query-toegang (alleen-lezen) tot een index. Het bestand wordt geleverd met een ingesloten script waarmee een operationele 'localhost' -achtige web-app wordt weergegeven die is gebonden aan een index in uw zoekservice. Pagina's kunnen worden geconfigureerd in de wizard en kunnen een zoekbalk, een resultaatgebied, navigatie in de zijbalk en ondersteuning voor typeahead-query's bevatten. U kunt de HTML offline wijzigen om de werkstroom of weergave uit te breiden of aan te passen. Een demo-app kan niet gemakkelijk worden uitgebreid met de beveiligings- en hosting-lagen die gewoonlijk nodig zijn in productiescenario's. U dient dit te beschouwen als een validatie- en testhulpmiddel, en niet als een kortere weg naar een volledige client-app.
 
 + In [Een privé-eindpunt maken voor veilige verbindingen (preview)](service-create-private-endpoint.md) wordt uitgelegd hoe u Private Link instelt voor veilige verbindingen met uw zoekservice. Deze preview-functie is op aanvraag beschikbaar en gebruikt [Azure Private Link](../private-link/private-link-overview.md) en [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) als onderdeel van de oplossing.
 

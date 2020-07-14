@@ -1,6 +1,6 @@
 ---
-title: 'Quick Start: Stel & een geheim op te halen uit Key Vault met behulp van Power shell'
-description: In deze Quick Start leert u hoe u met behulp van Azure PowerShell geheimen kunt maken, ophalen en verwijderen uit een Azure Key Vault.
+title: 'Quickstart: Een geheim in Key Vault instellen en daaruit ophalen met PowerShell'
+description: In deze quickstart leert u hoe u met behulp van Azure PowerShell geheimen kunt maken, ophalen en verwijderen in een Azure-sleutelkluis.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -11,18 +11,18 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3bac3cc2a5cedbd4b963a0759e6c8b940d2ca924
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 459c9f2d68d8a3a3c1b597665914146987aecdc2
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81424984"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85801662"
 ---
-# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>Snelstart: Een geheim uit Azure Key Vault instellen en ophalen met PowerShell
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>Quickstart: Een geheim uit Azure Key Vault instellen en ophalen met PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Azure Key Vault is een cloudservice die werkt als een beveiligd geheimenarchief. U kunt veilig sleutels, wachtwoorden, certificaten en andere geheime informatie opslaan. Zie het [overzicht](../general/overview.md)voor meer informatie over Key Vault. In deze snelstart gebruikt u PowerShell om een sleutelkluis te maken. Vervolgens slaat u een geheim op in de zojuist gemaakte kluis.
+Azure Key Vault is een cloudservice die werkt als een beveiligd geheimenarchief. U kunt veilig sleutels, wachtwoorden, certificaten en andere geheime informatie opslaan. U kunt het [Overzicht](../general/overview.md) raadplegen voor meer informatie over Key Vault. In deze snelstart gebruikt u PowerShell om een sleutelkluis te maken. Vervolgens slaat u een geheim op in de zojuist gemaakte kluis.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -46,11 +46,11 @@ New-AzResourceGroup -Name ContosoResourceGroup -Location EastUS
 
 Vervolgens maakt u een sleutelkluis. Om deze stap te kunnen uitvoeren, hebt u enkele gegevens nodig:
 
-Hoewel we ' contoso KeyVault2 ' gebruiken als naam voor onze Key Vault in deze Snelstartgids, moet u een unieke naam gebruiken.
+Hoewel we in deze quickstart 'Contoso KeyVault2' als naam voor de sleutelkluis gebruiken, moet u een unieke naam opgeven.
 
 - **Kluisnaam** Contoso-Vault2.
 - **Naam van resourcegroep** ContosoResourceGroup.
-- **Locatie** VS-Oost.
+- **Locatie** VS - oost.
 
 ```azurepowershell-interactive
 New-AzKeyVault -Name 'Contoso-Vault2' -ResourceGroupName 'ContosoResourceGroup' -Location 'East US'
@@ -59,11 +59,18 @@ New-AzKeyVault -Name 'Contoso-Vault2' -ResourceGroupName 'ContosoResourceGroup' 
 De uitvoer van deze cmdlet toont eigenschappen van de nieuw gemaakte sleutelkluis. Let op de onderstaande twee eigenschappen:
 
 * **Kluisnaam**: in het voorbeeld is dat **Contoso-Vault2**. U gebruikt deze naam voor andere Sleutelkluis-cmdlets.
-* **Vault URI**: in dit voorbeeld is dat https://Contoso-Vault2.vault.azure.net/. Toepassingen die via de REST API gebruikmaken van uw kluis, moeten deze URI gebruiken.
+* **Kluis-URI**: in dit voorbeeld is dat https://Contoso-Vault2.vault.azure.net/. Toepassingen die via de REST API gebruikmaken van uw kluis, moeten deze URI gebruiken.
 
 Nadat de kluis is gemaakt, is uw Azure-account het enige account dat iets met deze nieuwe kluis mag doen.
 
 ![Uitvoer nadat de opdracht voor het maken van de sleutelkluis is voltooid](../media/quick-create-powershell/output-after-creating-keyvault.png)
+
+## <a name="give-your-user-account-permissions-to-manage-secrets-in-key-vault"></a>Geef uw gebruikersaccount machtigingen voor het beheren van geheimen in Key Vault
+
+Gebruik de cmdlet Set-AzKeyVaultAccessPolicy van Azure PowerShell om het toegangsbeleid van Key Vault bij te werken en geheimmachtigingen toe te voegen aan uw gebruikersaccount.
+```azurepowershell-interactive
+Set-AzKeyVaultAccessPolicy -VaultName 'Contoso-Vault2' -UserPrincipalName 'user@domain.com' -PermissionsToSecrets get,set,delete
+```
 
 ## <a name="adding-a-secret-to-key-vault"></a>Een geheim toevoegen aan Key Vault
 
@@ -101,8 +108,8 @@ Remove-AzResourceGroup -Name ContosoResourceGroup
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u een Key Vault gemaakt en een geheim opgeslagen. Ga verder met de volgende artikelen voor meer informatie over Key Vault en hoe u deze integreert met uw toepassingen.
+In deze quickstart hebt u een sleutelkluis gemaakt en daar een geheim in opgeslagen. Voor meer informatie over Key Vault en hoe u Key Vault integreert met uw toepassingen gaat u verder naar de artikelen hieronder.
 
-- Een [overzicht van Azure Key Vault](../general/overview.md) lezen
-- Zie de naslag informatie voor de [Azure PowerShell Key Vault-cmdlets](/powershell/module/az.keyvault/?view=azps-2.6.0#key_vault)
-- [Azure Key Vault aanbevolen procedures](../general/best-practices.md) controleren
+- Lees een [Overzicht van Azure Key Vault](../general/overview.md)
+- Zie de referentie voor de [Azure PowerShell Key Vault-cmdlets](/powershell/module/az.keyvault/?view=azps-2.6.0#key_vault)
+- Bekijk de [best practices voor Azure Key Vault](../general/best-practices.md)

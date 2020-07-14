@@ -1,70 +1,70 @@
 ---
-title: Een Block chain-netwerk verbinden met een Azure-service
-description: Verbinding maken met een Azure Block Chain service-netwerk met behulp van het gebruik van een gemask en een slim contract implementeren.
+title: MetaMask verbinden met een Azure Blockchain Service-netwerk
+description: Maak verbinding met een Azure Block Chain Service-netwerk met behulp van MetaMask en implementeer een slim contract.
 ms.date: 09/12/2019
 ms.topic: quickstart
 ms.reviewer: janders
-ms.openlocfilehash: c0bad9efde44ce53f6b0656af3ac4af32ffe051d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: abb2479b81d4811b311d27fb0be9900f2827e939
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79205099"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920580"
 ---
-# <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>Snelstartgids: een slim masker gebruiken om verbinding te maken en een intelligent contract te implementeren
+# <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>Quickstart: MetaMask gebruiken om verbinding te maken en een slim contract te implementeren
 
-In deze Snelstartgids gebruikt u het block chain om verbinding te maken met een Azure-service netwerk en kunt u Remix gebruiken om een slim contract te implementeren. Het-opdracht masker is een browser uitbreiding voor het beheren van een ether wallet en het uitvoeren van actie-acties voor intelligente contracten.
+In deze quickstart gebruikt u MetaMask om verbinding te maken met een Azure Blockchain Service-netwerk, en gebruikt u Remix om een slim contract te implementeren. MetaMask is een browseruitbreiding voor het beheren van een Ether-wallet en het uitvoeren van acties voor slimme contracten.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Volledige [Snelstartgids: Maak een Block Chain-lid met behulp van de Azure Portal](create-member.md) of [Quick Start: een Azure Block Chain Service Block Chain-lid maken met behulp van Azure cli](create-member-cli.md)
-* De [extensie van de Webmask-browser](https://metamask.io) installeren
-* Een demaskeer [Wallet](https://metamask.zendesk.com/hc/en-us/articles/360015488971-New-to-MetaMask-Learn-How-to-Setup-MetaMask-the-First-Time) genereren
+* [Quickstart: Een blockchainlid maken met behulp van de Azure-portal](create-member.md) of [Quickstart: Een blockchainlid in Azure Blockchain Service maken met behulp van de Azure CLI voltooien](create-member-cli.md)
+* [MetaMask-browseruitbreiding](https://metamask.io) installeren
+* Een MetaMask-[wallet](https://metamask.zendesk.com/hc/en-us/articles/360015488971-New-to-MetaMask-Learn-How-to-Setup-MetaMask-the-First-Time) genereren
 
-## <a name="get-endpoint-address"></a>Eindpunt adres ophalen
+## <a name="get-endpoint-address"></a>Eindpuntadres ophalen
 
-U hebt het Azure Block Chain service-eindpunt adres nodig om verbinding te maken met het block chain-netwerk. Het eindpunt adres en de toegangs sleutels bevinden zich in de Azure Portal.
+U hebt het Azure Blockchain Service-eindpuntadres nodig om verbinding te maken met het blockchainnetwerk. Het eindpuntadres en de toegangssleutels bevinden zich in de Azure-portal.
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Navigeer naar uw Azure Block Chain service-lid.
-1. Selecteer **transactie knooppunten** en de koppeling standaard transactie knooppunt.
+1. Navigeer naar het lid van Azure Block Chain Service.
+1. Selecteer **Transactieknooppunten** en de koppeling voor het standaardtransactieknooppunt.
 
-    ![Standaard transactie knooppunt selecteren](./media/connect-metamask/transaction-nodes.png)
+    ![Standaardtransactieknooppunt selecteren](./media/connect-metamask/transaction-nodes.png)
 
-1. Selecteer **verbindings reeksen > toegangs sleutels**.
-1. Kopieer het eindpunt adres van **https (toegangs sleutel 1)**.
+1. Selecteer **Verbindingsreeksen > Toegangssleutels**.
+1. Kopieer het eindpuntadres van **HTTPS (toegangssleutel 1)** .
 
     ![Verbindingsreeks](./media/connect-metamask/connection-string.png)
 
-## <a name="connect-metamask"></a>Het verbinden van het-bitmapmasker
+## <a name="connect-metamask"></a>MetaMask verbinden
 
-1. Open de module voor het demaskeren van de browser en meld u aan.
-1. Selecteer in de vervolg keuzelijst netwerk de optie **aangepaste RPC**.
+1. Open de MetaMask-browseruitbreiding en meld u aan.
+1. Selecteer in de netwerkvervolgkeuzelijst **Custom RPC** (aangepaste RPC).
 
     ![Aangepaste RPC](./media/connect-metamask/custom-rpc.png)
 
-1. Plak in **nieuw netwerk > nieuwe RPC-URL**het eindpunt adres dat u hierboven hebt gekopieerd.
+1. Plak het eindpuntadres dat u hierboven hebt gekopieerd in **New Network > New RPC URL** (Nieuw netwerk > Nieuwe RPC-URL).
 1. Selecteer **Opslaan**.
 
-    Als de verbinding is geslaagd, wordt het particuliere netwerk weer gegeven in de vervolg keuzelijst netwerk.
+    Als de verbinding is geslaagd, wordt het privénetwerk weergegeven in de netwerkvervolgkeuzelijst.
 
     ![Nieuw netwerk](./media/connect-metamask/new-network.png)
 
 ## <a name="deploy-smart-contract"></a>Slim contract implementeren
 
-Remix is een op een browser gebaseerde omgeving voor het ontwikkelen van volheid. U kunt met behulp van het gebruik van het Remix en de combi natie van intelligente contracten acties uitvoeren.
+Remix is een browserontwikkelingsomgeving voor Solidity. Door MetaMask en Remix samen te gebruiken, kunt u slimme contracten implementeren en daar acties op uitvoeren.
 
 1. Ga in de browser naar `https://remix.ethereum.org`.
-1. Selecteer in het tabblad **Start** onder **bestand**de optie **nieuw bestand** .
+1. Selecteer **New file** (Nieuw bestand) op het tabblad **Home** (Start) onder **File** (Bestand).
 
-    Geef het nieuwe bestand `simple.sol`een naam.
+    Geef het nieuwe bestand de naam `simple.sol`.
 
     ![Bestand maken](./media/connect-metamask/create-file.png)
 
     Selecteer **OK**.
-1. Plak in de Remix-editor de volgende **eenvoudige info contract** code.
+1. Plak in de Remix-editor de volgende code voor een **eenvoudig slim contract**.
 
     ```solidity
     pragma solidity ^0.5.0;
@@ -86,57 +86,57 @@ Remix is een op een browser gebaseerde omgeving voor het ontwikkelen van volheid
     }
     ```
 
-    Het **eenvoudige contract** declareert een status variabele met de naam **saldo**. Er zijn twee functies gedefinieerd. Met de functie **toevoegen** wordt een getal toegevoegd om te **verdelen**. De functie **Get** retourneert de waarde **saldo**.
-1. Als u het contract wilt compileren, selecteert u eerst het deel venster volheid compiler en selecteert u vervolgens **Simple. Sol compileren**.
+    In het **eenvoudige contract** wordt een statusvariabele met de naam **balance** (saldo) gedeclareerd. Er worden twee functies gedefinieerd. De functie **add** (optellen) telt een getal op bij **balance**. De functie **get** (ophalen) retourneert de waarde van **balance**.
+1. Selecteer om het contract te compileren eerst het compilervenster van Solidity en selecteer vervolgens **Compile simple.sol**.
 
-    ![Verzamelen](./media/connect-metamask/compile.png)
+    ![Compileren](./media/connect-metamask/compile.png)
 
-1. Selecteer het deel venster **implementatie & uitvoeren** en stel vervolgens de **omgeving** in op **injected Web3** om verbinding te maken via het block Chain-lid.
+1. Selecteer het deelvenster **Deploy & Run** (Implementeren en uitvoeren) en stel vervolgens de **Environment** (Omgeving) in op **Injected Web3** om via MetaMask verbinding te maken met het blockchainlid.
 
-    ![Tabblad uitvoeren](./media/connect-metamask/injected-web3.png)
+    ![Tabblad Run (Uitvoeren)](./media/connect-metamask/injected-web3.png)
 
-1. Selecteer het **eenvoudige** contract en **Implementeer**het.
+1. Selecteer het **simple** contract en vervolgens **Deploy** (Implementeren).
 
     ![Implementeren](./media/connect-metamask/deploy.png)
 
 
-1. Een-bericht van een-tekst masker waarschuwt u over onvoldoende middelen om de trans actie uit te voeren.
+1. Een bericht van MetaMask waarschuwt u dat u onvoldoende middelen hebt om de transactie uit te voeren.
 
-    Voor een openbaar Block chain-netwerk moet u ether hebben om de transactie kosten te betalen. Aangezien dit een privé netwerk in een consortium is, kunt u de aardgas prijs instellen op nul.
+    Voor een openbaar blockchainnetwerk zou u Ether moeten hebben om de transactiekosten te betalen. Aangezien dit een privénetwerk in een consortium is, kunt u de benzineprijs instellen op nul.
 
-1.  Selecteer de kosten voor het **gas > bewerk > Geavanceerd**en stel de **gas-prijs** in op 0.
+1.  Selecteer **Gas Fee > Edit > Advanced** (Benzinekosten > Bewerken > Geavanceerd) en stel de **Gas Price** (Benzineprijs) in op 0.
 
-    ![Benzine prijs](./media/connect-metamask/gas-price.png)
+    ![Benzineprijs](./media/connect-metamask/gas-price.png)
 
     Selecteer **Opslaan**.
 
-1. Selecteer **bevestigen** om het slimme contract te implementeren op de Block chain.
-1. Vouw in het gedeelte **geïmplementeerde contracten** het **eenvoudige** contract uit.
+1. Selecteer **Confirm** (Bevestigen) om het slimme contract te implementeren op de blockchain.
+1. Vouw in de sectie **Deployed Contracts** (Geïmplementeerde contracten) het **simple** contract uit.
 
     ![Geïmplementeerd contract](./media/connect-metamask/deployed-contract.png)
 
-    Twee acties, **toevoegen** en **ophalen**, toewijzen aan de functies die zijn gedefinieerd in het contract.
+    Twee acties, **add** (optellen) en **get** (ophalen), komen overeen met de functies die in het contract zijn gedefinieerd.
 
-1. Als u een trans actie **toevoegen** wilt uitvoeren op de Block Chain, voert u een nummer in dat u wilt toevoegen en selecteert u vervolgens **toevoegen**. U ontvangt mogelijk een fout bericht over het oplossen van een gas van Remix: "u stuurt de trans actie naar een privé Block chain die geen gas vereist." Selecteer **trans actie verzenden** om de trans actie af te dwingen.
-1. Net als bij het implementeren van het contract, wordt u met een informatie over een-Adresmask gewaarschuwd dat er onvoldoende middelen zijn om de trans actie uit te voeren.
+1. Om een **add**-transactie uit te voeren op de blockchain voert u een op te tellen getal in en selecteert u **add**. Mogelijk krijgt u van Remix een foutmelding voor de benzineschatting: "You are sending the transaction to a private blockchain that does not require gas" (U stuurt de transactie naar een privéblockchain waarvoor geen benzine vereist is). Selecteer **Send transaction** (Transactie verzenden) om de transactie af te dwingen.
+1. Net als toen u het contract implementeerde, waarschuwt een bericht van MetaMask u dat u onvoldoende middelen hebt om de transactie uit te voeren.
 
-    Aangezien dit een privé netwerk in een consortium is, kunnen we de prijs van een gas instellen op nul.
+    Aangezien dit een privénetwerk in een consortium is, kunnen we de benzineprijs instellen op nul.
 
-1. Selecteer de kosten voor het **gas > bewerk > Geavanceerd**, stel de **aardgas prijs** in op 0 en selecteer **Opslaan**.
-1. Selecteer **bevestigen** om de trans actie naar het block chain te verzenden.
-1. Selecteer actie **ophalen** . Dit is een aanroep voor het opvragen van knooppunt gegevens. Een trans actie is niet nodig.
+1. Selecteer **Gas Fee > Edit > Advanced** (Benzinekosten > Bewerken > Geavanceerd) en stel de **Gas Price** (Benzineprijs) in op 0 en selecteer **Save** (Opslaan).
+1. Selecteer **Confirm** (Bevestigen) om de transactie naar de blockchain te verzenden.
+1. Selecteer de actie **get** (ophalen). Dit is een aanroep voor het opvragen van knooppuntgegevens. Er is geen transactie nodig.
 
-Het deel venster fout opsporing van Remix toont details over de trans acties op de Block chain:
+Het foutopsporingsvenster van Remix laat details zien over de transacties op de blockchain:
 
-    ![Debug history](./media/connect-metamask/debug.png)
+![Geschiedenis van foutopsporing](./media/connect-metamask/debug.png)
 
-    You can see the **simple** contract creation, transaction for **simple.add**, and call to **simple.get**.
+U ziet het maken van het contract **simple**, de transactie voor **simple.add** en de aanroep van **simple.get**.
 
-Als u de transactie geschiedenis in het deel venster wilt zien, opent u de module voor het indeel masker browser en zoekt u in het gedeelte **geschiedenis** naar een logboek van het geïmplementeerde contract en de gedistribueerde trans acties.
+Als u de transactiegeschiedenis in MetaMask wilt zien, opent u de MetaMask-browseruitbreiding en zoekt u in de sectie **History** (Geschiedenis) naar een logboek van het geïmplementeerde contract en de transacties.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u de module voor het maken van een webmask-browser gebruikt voor verbinding met een Azure Block Chain-Service transactie knooppunt, een slim contract implementeren en een trans actie naar de Block Chain verzenden. Probeer de volgende zelf studie voor het gebruik van Azure Block Chain Development Kit voor Ethereum en Truffle voor het maken, bouwen, implementeren en uitvoeren van een slimme contract functie via een trans actie.
+In deze quickstart hebt u de browseruitbreiding MetaMask gebruikt om verbinding te maken met een transactieknooppunt in Azure Blockchain Service, een slim contract te implementeren en een transactie naar de blockchain te verzenden. In de volgende zelfstudie gebruikt u de Azure Blockchain Development Kit voor Ethereum en Truffle om een functie voor een slim contract te maken, samen te stellen, te implementeren en uit te voeren via een transactie.
 
 > [!div class="nextstepaction"]
-> [Slimme contracten maken, bouwen en implementeren in azure Block Chain Service](send-transaction.md)
+> [Slimme contracten maken, bouwen en implementeren in Azure Blockchain Service](send-transaction.md)

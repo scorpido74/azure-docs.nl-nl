@@ -1,23 +1,25 @@
 ---
-title: Een zoek-app maken in Azure Portal
+title: Een demo-app maken in Azure Portal
 titleSuffix: Azure Cognitive Search
-description: Voer de wizard App maken (preview) uit om HTML-pagina's en een script te genereren voor een operationele web-app. De pagina bevat een zoekbalk, resultaatgebied, zijbalk en typeahead-ondersteuning.
+description: Voer de wizard Demo-app maken (preview) uit om HTML-pagina's en een script te genereren voor een operationele web-app. De pagina bevat een zoekbalk, resultaatgebied, zijbalk en typeahead-ondersteuning.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/07/2020
-ms.openlocfilehash: 6c956c937027b16d51141ded4de5ff9b019c37d4
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.date: 07/01/2020
+ms.openlocfilehash: 11dd12fce669d6b6a027eb182d5f9e6e493577ad
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488168"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955689"
 ---
-# <a name="quickstart-create-a-search-app-in-the-portal-azure-cognitive-search"></a>Quickstart: Een zoek-app maken in de portal (Azure Cognitive Search)
+# <a name="quickstart-create-a-demo-app-in-the-portal-azure-cognitive-search"></a>Quickstart: Een demo-app maken in de portal (Azure Cognitive Search)
 
-Gebruik de wizard **App voor zoeken maken** van Azure Portal om een te downloaden web-app in localhost-stijl te genereren die in een browser wordt uitgevoerd. Afhankelijk van de configuratie is de gegenereerde app operationeel bij het eerste gebruik en bevat deze een liveverbinding met een externe index. Een standaard-app kan een zoekbalk, resultaatgebied, zijbalkfilters en typeahead-ondersteuning bevatten.
+Gebruik de wizard **Demo-app maken** van Azure Portal om een te downloaden web-app in localhost-stijl te genereren die in een browser wordt uitgevoerd. Afhankelijk van de configuratie is de gegenereerde app operationeel bij het eerste gebruik en bevat deze een live alleen-lezenverbinding met een externe index. Een standaard-app kan een zoekbalk, resultaatgebied, zijbalkfilters en typeahead-ondersteuning bevatten.
+
+De demo-app kan u helpen bij het visualiseren van de werking van een index in een client-app, maar is niet bedoeld voor productiescenario's. Client-apps moeten logica voor beveiliging, foutafhandeling en hosting bevatten die niet beschikbaar is op de gegenereerde HTML-pagina. Wanneer u klaar bent om een client-app te maken, raadpleegt u [Uw eerste Zoek-app maken met behulp van de .NET-SDK-](tutorial-csharp-create-first-app.md) voor de volgende stappen.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -45,7 +47,7 @@ Wanneer de index klaar is voor gebruik, gaat u verder met de volgende stap.
 
 1. Kies *realestate-us-sample-index* in de lijst met bestaande indexen.
 
-1. Selecteer bovenaan de indexpagina **App voor zoeken maken (preview)** om de wizard te starten.
+1. Selecteer bovenaan de indexpagina **Demo-app maken (preview)** om de wizard te starten.
 
 1. Selecteer op de eerste pagina van de wizard **Cross Origin Resource Sharing (CORS)** om CORS-ondersteuning toe te voegen aan uw indexdefinitie. Deze stap is optioneel, maar zonder kan uw lokale web-app kan geen verbinding maken met de externe index.
 
@@ -85,7 +87,7 @@ In de volgende schermopname ziet u de opties in de wizard met daarnaast een weer
 
 ## <a name="create-download-and-execute"></a>Maken, downloaden en uitvoeren
 
-1. Selecteer **App voor zoeken maken** om het HTML-bestand te genereren.
+1. Selecteer **Demo-app maken** om het HTML-bestand te genereren.
 
 1. Selecteer desgevraagd **Uw app downloaden** om het bestand te downloaden.
 

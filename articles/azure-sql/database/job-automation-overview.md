@@ -2,7 +2,8 @@
 title: Automatisering van taken
 description: Gebruik Taakautomatisering voor het uitvoeren van Transact-SQL-scripts (T-SQL) in een set van een of meer databases
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
+ms.subservice: features
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: overview
@@ -10,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 03/10/2020
-ms.openlocfilehash: 1b27eac1a8b5989734d3451bf21c5b13dd5cc0af
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 537c989271800c15444d5323cfce8e133c8eeeba
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220573"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984639"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Beheertaken automatiseren met behulp van databasetaken
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -54,8 +55,8 @@ Hier volgen enkele noemenswaardige verschillen tussen SQL Agent (on-premises bes
 
 | |Elastische taken |SQL Agent |
 |---------|---------|---------|
-|Bereik | Elk gewenst aantal databases in Azure SQL Database en/of datawarehouses in dezelfde Azure-cloud als de taakagent. Doelen kunnen zich op verschillende servers en in verschillende abonnementen en/of regio's bevinden. <br><br>Doelgroepen kunnen bestaan uit afzonderlijke databases of datawarehouses of alle databases in een server, pool of shardkaart (dynamisch opgesomd tijdens het uitvoeren van een taak). | Een afzonderlijke database in hetzelfde exemplaar als de SQL Agent. |
-|Ondersteunde API's en hulpprogramma's | Portal, PowerShell, T-SQL, Azure Resource Manager | T-SQL, SQL Server Management Studio (SSMS) |
+|**Bereik** | Elk gewenst aantal databases in Azure SQL Database en/of datawarehouses in dezelfde Azure-cloud als de taakagent. Doelen kunnen zich op verschillende servers en in verschillende abonnementen en/of regio's bevinden. <br><br>Doelgroepen kunnen bestaan uit afzonderlijke databases of datawarehouses of alle databases in een server, pool of shardkaart (dynamisch opgesomd tijdens het uitvoeren van een taak). | Een afzonderlijke database in hetzelfde exemplaar als de SQL Agent. |
+|**Ondersteunde API's en hulpprogramma's** | Portal, PowerShell, T-SQL, Azure Resource Manager | T-SQL, SQL Server Management Studio (SSMS) |
 
 ## <a name="sql-agent-jobs"></a>SQL Agent-taken
 

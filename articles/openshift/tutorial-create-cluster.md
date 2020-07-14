@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: f8b34f1678d39471a1d0b91756ac93a01cbfedba
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 61b6ad0bedb4817c262b4269a6e9f6930a6caa6c
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800166"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985685"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Zelfstudie: Een Azure Red Hat OpenShift 4-cluster maken
 
@@ -26,7 +26,7 @@ Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure
 
 ### <a name="verify-your-permissions"></a>Uw machtigingen controleren
 
-Als u een Azure Red Hat OpenShift-cluster wilt maken, controleert u of u de volgende machtigingen heeft voor uw Azure-account en -gebruiker:
+Als u een Azure Red Hat OpenShift-cluster wilt maken, controleert u of u de volgende machtigingen hebt voor uw Azure-abonnement, Azure Active Directory-gebruiker of service-principal:
 
 |Machtigingen|Resourcegroep die het VNet bevat|Gebruiker die `az aro create` uitvoert|Service-principal doorgegeven als `–client-id`|
 |----|:----:|:----:|:----:|

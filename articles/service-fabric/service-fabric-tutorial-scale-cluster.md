@@ -1,26 +1,26 @@
 ---
 title: Een Service Fabric-cluster schalen in Azure
-description: In deze zelf studie leert u hoe u een Service Fabric cluster kunt schalen in azure out and in en hoe u overgebleven resources opschoont.
+description: In deze zelfstudie leert u hoe u een Service Fabric-cluster in Azure in- en uitschaalt en hoe u resterende resources opschoont.
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 6e8dbb5a56bf313bf35ad97ec6ea7df8ce483be9
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.openlocfilehash: ed212083a29836e1da593ec42c31bbf86b907546
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82788818"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611642"
 ---
-# <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Zelfstudie: Een Service Fabric-cluster schalen
+# <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Zelfstudie: Een Service Fabric-cluster schalen in Azure
 
-Deze zelf studie is deel drie van een reeks en laat zien hoe u uw bestaande cluster uit en in kunt schalen. Aan het einde van deze zelfstudie weet u hoe u een cluster kunt schalen en eventuele resterende resources kunt opschonen.  Lees [service Fabric clusters schalen](service-fabric-cluster-scaling.md)voor meer informatie over het schalen van een cluster dat wordt uitgevoerd in Azure.
+Deze zelfstudie is deel drie van een serie. Hier ziet u hoe u een bestaand cluster kunt in- en uitschalen. Aan het einde van deze zelfstudie weet u hoe u een cluster kunt schalen en eventuele resterende resources kunt opschonen.  Lees [Service Fabric-clusters schalen](service-fabric-cluster-scaling.md) voor meer informatie over het aanpassen van de schaal van een cluster dat in Azure wordt uitgevoerd.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Knoop punten toevoegen en verwijderen (uitschalen en schalen in)
-> * Knooppunt typen toevoegen en verwijderen (uitschalen en schalen in)
-> * Knooppunt resources verg Roten (omhoog schalen)
+> * Knooppunten toevoegen en verwijderen (uitschalen en inschalen)
+> * Knooppunttypen toevoegen en verwijderen (uitschalen en inschalen)
+> * Het aantal knooppuntresources verhogen (opschalen)
 
 In deze zelfstudiereeks leert u het volgende:
 > [!div class="checklist"]
@@ -37,77 +37,77 @@ In deze zelfstudiereeks leert u het volgende:
 
 Voor u met deze zelfstudie begint:
 
-* Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan
-* Installeer [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) of [Azure cli](/cli/azure/install-azure-cli).
+* Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Installeer [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) of [Azure CLI](/cli/azure/install-azure-cli).
 * Een beveiligd [Windows-cluster](service-fabric-tutorial-create-vnet-and-windows-cluster.md) maken in Azure
 
-## <a name="important-considerations-and-guidelines"></a>Belang rijke overwegingen en richt lijnen
+## <a name="important-considerations-and-guidelines"></a>Belangrijke overwegingen en richtlijnen
 
-Werk belastingen van toepassingen veranderen na verloop van tijd, uw bestaande services hebben meer (of minder) resources nodig?  [Knoop punten toevoegen aan of verwijderen](#add-nodes-to-or-remove-nodes-from-a-node-type) uit een knooppunt type om cluster bronnen te verg Roten of verkleinen.
+Toepassingsworkloads veranderen in de loop van de tijd. Hebt u voor uw bestaande services meer (of minder) resources nodig?  [Voeg knooppunten toe of verwijder deze](#add-nodes-to-or-remove-nodes-from-a-node-type) van een knooppunttype om het aantal clusterresources uit te breiden of te beperken.
 
-Wilt u meer dan 100 knoop punten toevoegen aan uw cluster?  Een enkele Service Fabric knooppunt type/schaalset mag niet meer dan 100 knoop punten/Vm's bevatten.  Als u een cluster wilt schalen dat groter is dan 100 knoop punten, [voegt u extra knooppunt typen toe](#add-nodes-to-or-remove-nodes-from-a-node-type).
+Moet u meer dan 100 knooppunten aan uw cluster toevoegen?  Eén Service Fabric-knooppunttype/-schaalset mag niet meer dan 100 knooppunten/virtuele machines bevatten.  Als u de schaal van een cluster met meer dan 100 knooppunten wilt uitbreiden, [voegt u aanvullende knooppunttypen toe](#add-nodes-to-or-remove-nodes-from-a-node-type).
 
-Heeft uw toepassing meerdere services en moeten ze openbaar of Internet zijn gericht?  Typische toepassingen bevatten een front-end Gateway Service die invoer ontvangt van een client en een of meer back-end-services die communiceren met de front-end-services. In dit geval raden we u aan [ten minste twee knooppunt typen](#add-nodes-to-or-remove-nodes-from-a-node-type) aan het cluster toe te voegen.  
+Biedt uw toepassing meerdere services en moeten hiervan een of meer service openbaar zijn of op internet gericht?  Typische toepassingen bevatten een front-endgatewayservice waarop invoer van een client wordt ontvangen en een of meer back-endservices die met de front-endservices communiceren. In dit geval kunt u het beste [ten minste twee knooppunttypen](#add-nodes-to-or-remove-nodes-from-a-node-type) aan het cluster toevoegen.  
 
-Hebben uw Services verschillende vereisten voor de infra structuur, zoals meer RAM-geheugen of hogere CPU-cycli? Uw toepassing bevat bijvoorbeeld een front-end-service en een back-end-service. De front-end-service kan worden uitgevoerd op kleinere Vm's (VM-grootten zoals D2) die poorten hebben geopend op internet. De back-end-service is echter reken intensief en moet worden uitgevoerd op grotere Vm's (met VM-grootten zoals D4, D6, D15) die niet op internet zijn gericht. In dit geval raden we u aan [twee of meer knooppunt typen](#add-nodes-to-or-remove-nodes-from-a-node-type) aan uw cluster toe te voegen. Hierdoor kan elk knooppunt type verschillende eigenschappen hebben, zoals Internet verbinding of VM-grootte. Het aantal virtuele machines kan ook afzonderlijk worden geschaald.
+Hebt u voor uw services verschillende infrastructuren nodig, zoals meer RAM of hogere CPU-cycli? Uw toepassing bevat bijvoorbeeld een front-endservice en een back-endservice. De front-endservice kan op kleinere virtuele machines (VM-grootten zoals D2) worden uitgevoerd, die over poorten beschikken die openstaan voor internet. De back-endservice vergt echter veel van het rekenvermogen en moet worden uitgevoerd op grotere virtuele machines (met VM-grootten zoals D4, D6, D15) die niet op internet zijn gericht. In dit geval wordt u aangeraden [twee of meer knooppunttypen](#add-nodes-to-or-remove-nodes-from-a-node-type) aan uw cluster toe te voegen. Hierdoor kan elk knooppunttype verschillende eigenschappen hebben, zoals internetconnectiviteit of VM-grootte. Het aantal virtuele machines kan ook afzonderlijk worden geschaald.
 
-Houd bij het schalen van een Azure-cluster de volgende richt lijnen in acht:
+Wanneer u de schaal van een Azure-cluster aanpast, moet u rekening houden met de volgende richtlijnen:
 
-* Een enkele Service Fabric knooppunt type/schaalset mag niet meer dan 100 knoop punten/Vm's bevatten.  Als u een cluster wilt schalen dat groter is dan 100 knoop punten, voegt u extra knooppunt typen toe.
-* Primaire knooppunt typen die werk belastingen uitvoeren, moeten een [duurzaamheids niveau][durability] van goud of zilver hebben en moeten altijd vijf of meer knoop punten hebben.
-* Niet-primaire knooppunt typen waarvoor stateful productie workloads worden uitgevoerd, moeten altijd vijf of meer knoop punten hebben.
-* Niet-primaire knooppunt typen waarvoor stateless productie werkbelastingen worden uitgevoerd, moeten altijd twee of meer knoop punten hebben.
-* Elk knooppunt type van het [duurzaamheids niveau][durability] goud of zilver moet altijd vijf of meer knoop punten bevatten.
-* Bij het schalen van (knoop punten verwijderen uit) van een primair knooppunt type moet u nooit het aantal exemplaren verminderen tot minder dan wat het [betrouwbaarheids niveau][reliability] vereist.
+* Eén Service Fabric-knooppunttype/-schaalset mag niet meer dan 100 knooppunten/virtuele machines bevatten.  Als u de schaal van een cluster met meer dan 100 knooppunten wilt uitbreiden, voegt u aanvullende knooppunttypen toe.
+* Primaire knooppunttypen waarop productieworkloads worden uitgevoerd, moeten Gold of Silver als [duurzaamheidsniveau][durability] hebben en altijd over vijf of meer knooppunten beschikken.
+* Niet-primaire knooppunttypen waarop stateful productieworkloads worden uitgevoerd, moeten altijd over vijf of meer knooppunten beschikken.
+* Niet-primaire knooppunttypen waarop stateless productieworkloads worden uitgevoerd, moeten altijd over twee of meer knooppunten beschikken.
+* Elk knooppunttype van met Gold of Silver als [duurzaamheidsniveau][durability] moet altijd over vijf of meer knooppunten beschikken.
+* Als u een primair knooppunttype inschaalt (knooppunten verwijdert), mag u nooit het aantal exemplaren kleiner maken dan wat voor het [betrouwbaarheidsniveau][reliability] is vereist.
 
-Lees voor meer informatie de [richt lijnen voor cluster capaciteit](service-fabric-cluster-capacity.md).
+Lees [de richtlijnen voor clustercapaciteit](service-fabric-cluster-capacity.md) voor meer informatie.
 
 ## <a name="export-the-template-for-the-resource-group"></a>De sjabloon voor de resourcegroep exporteren
 
-Nadat u een beveiligd [Windows-cluster](service-fabric-tutorial-create-vnet-and-windows-cluster.md) hebt gemaakt en de resource groep hebt ingesteld, exporteert u de Resource Manager-sjabloon voor de resource groep. Als u de sjabloon exporteert, kunt u toekomstige implementaties van het cluster en de bijbehorende resources automatiseren, omdat de sjabloon alle volledige infra structuur bevat.  Lees [Azure Resource Manager resource groepen beheren met behulp van de Azure Portal](/azure/azure-resource-manager/manage-resource-groups-portal)voor meer informatie over het exporteren van sjablonen.
+Nadat u een beveiligd [Windows-cluster](service-fabric-tutorial-create-vnet-and-windows-cluster.md) hebt gemaakt en uw resourcegroep hebt ingesteld, exporteert u de Resource Manager-sjabloon voor de resourcegroep. Door de sjabloon te exporteren, kunt toekomstige implementaties van het cluster en de bijbehorende resources automatiseren omdat de sjabloon de volledige infrastructuur bevat.  Lees [Azure Resource Manager-resourcegroepen beheren met behulp van Azure Portal](/azure/azure-resource-manager/manage-resource-groups-portal) voor meer informatie over het exporteren van sjablonen.
 
-1. Ga in het [Azure Portal](https://portal.azure.com)naar de resource groep met het cluster (**sfclustertutorialgroup**als u deze zelf studie volgt). 
+1. Ga in [Azure Portal](https://portal.azure.com) naar de resourcegroep met het cluster (**sfclustertutorialgroup**, als u deze zelfstudie volgt). 
 
-2. Selecteer in het linkerdeel venster **implementaties**of selecteer de koppeling onder **implementaties**. 
+2. Selecteer in het linkerdeelvenster **Implementaties**, of selecteer de koppeling onder **Implementaties**. 
 
 3. Selecteer de meest recente geslaagde implementatie uit de lijst.
 
-4. Selecteer in het linkerdeel venster **sjabloon** en selecteer vervolgens **downloaden** om de sjabloon te exporteren als een zip-bestand.  Sla de sjabloon en de para meters op de lokale computer op.
+4. In het linkerdeelvenster selecteert u **Sjabloon** en vervolgens **Downloaden** om de sjabloon te exporteren als een ZIP-bestand.  Sla de sjabloon en parameters op naar uw lokale computer.
 
-## <a name="add-nodes-to-or-remove-nodes-from-a-node-type"></a>Knoop punten toevoegen aan of verwijderen uit een knooppunt type
+## <a name="add-nodes-to-or-remove-nodes-from-a-node-type"></a>Knooppunten toevoegen aan of verwijderen van een knooppunttype
 
-Als u het aantal knoop punten in het cluster wilt schalen of horizon taal wilt schalen, wijzigt u in en uit. Wanneer u in-of uitschaalt, voegt u meer exemplaren van virtuele machines toe aan de schaalset. Deze instanties worden de knooppunten die door Service Fabric worden gebruikt. Service Fabric weet wanneer er meer exemplaren aan de schaalset zijn toegevoegd (door uitschaling) en reageert daar automatisch op. U kunt het cluster op elk gewenst moment schalen, zelfs wanneer werk belastingen op het cluster worden uitgevoerd.
+Door in- en uitschalen, of horizontale schaalaanpassing, wordt het aantal knooppunten in het cluster gewijzigd. Wanneer u in- of uitschaalt, voegt u meer instanties van de virtuele machine toe aan de schaalset. Deze instanties worden de knooppunten die door Service Fabric worden gebruikt. Service Fabric weet wanneer er meer exemplaren aan de schaalset zijn toegevoegd (door uitschaling) en reageert daar automatisch op. U kunt de schaal van het cluster op elk gewenst moment aanpassen, zelfs als er workloads op het cluster worden uitgevoerd.
 
 ### <a name="update-the-template"></a>De sjabloon bijwerken
 
-[Exporteer een sjabloon en parameter bestand](#export-the-template-for-the-resource-group) uit de resource groep voor de meest recente implementatie.  Open het bestand *para meters. json* .  Als u het cluster in deze zelf studie hebt geïmplementeerd met behulp van de [voorbeeld sjabloon][template] , zijn er drie knooppunt typen in het cluster en drie para meters die het aantal knoop punten voor elk knooppunt type instellen: *nt0InstanceCount*, *nt1InstanceCount*en *nt2InstanceCount*.  De para meter *nt1InstanceCount* stelt bijvoorbeeld het aantal exemplaren voor het tweede knooppunt type in en stelt het aantal virtuele machines in de gekoppelde schaalset voor virtuele machines in.
+[Exporteer een sjabloon en parameterbestand](#export-the-template-for-the-resource-group) van de resourcegroep voor de meest recente implementatie.  Open het bestand *parameters.json*.  Als u het cluster hebt geïmplementeerd met behulp van de [voorbeeldsjabloon][template] in deze zelfstudie, zijn er drie knooppunttypen in het cluster en drie parameters waarmee het aantal knooppunten voor elk knooppunttype wordt ingesteld: *nt0InstanceCount*, *nt1InstanceCount* en *nt2InstanceCount*.  Met de parameter *nt1InstanceCount* wordt bijvoorbeeld het aantal exemplaren voor het tweede knooppunttype ingesteld en wordt ook het aantal virtuele machines in de gekoppelde virtuele-machineschaalset ingesteld.
 
-Dus door de waarde van de *nt1InstanceCount* te wijzigen, wijzigt u het aantal knoop punten in het tweede knooppunt type.  Houd er rekening mee dat u een knooppunt type niet naar meer dan 100 knoop punten kunt schalen.  Niet-primaire knooppunt typen waarvoor stateful productie workloads worden uitgevoerd, moeten altijd vijf of meer knoop punten hebben. Niet-primaire knooppunt typen waarvoor stateless productie werkbelastingen worden uitgevoerd, moeten altijd twee of meer knoop punten hebben.
+Dus door de waarde van *nt1InstanceCount* bij te werken, wijzigt u het aantal knooppunten in het tweede knooppunttype.  Vergeet niet dat u een knooppunttype niet naar meer dan 100 knooppunten kunt uitschalen.  Niet-primaire knooppunttypen waarop stateful productieworkloads worden uitgevoerd, moeten altijd over vijf of meer knooppunten beschikken. Niet-primaire knooppunttypen waarop stateless productieworkloads worden uitgevoerd, moeten altijd over twee of meer knooppunten beschikken.
 
-Als u schaalt in, knoop punten verwijdert uit, een knooppunt type van Bronze [duurzaamheids niveau][durability] , moet u [de status van deze knoop punten hand matig verwijderen](service-fabric-cluster-scale-in-out.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set).  Voor Silver-en Gold-duurzaamheids lagen worden deze stappen automatisch uitgevoerd door het platform.
+Wanneer u een knooppunttype met het [duurzaamheidsniveau][durability] Bronze inschaalt (hieruit knooppunten verwijdert), moet u [de status van die knooppunten handmatig verwijderen](service-fabric-cluster-scale-in-out.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set).  Voor de duurzaamheidscategorieën Silver en Gold worden deze stappen automatisch door het platform uitgevoerd.
 
 ### <a name="deploy-the-updated-template"></a>De bijgewerkte sjabloon implementeren
-Sla de wijzigingen op in de *sjabloon. json* en de *para meters. json* -bestanden.  Voer de volgende opdracht uit om de bijgewerkte sjabloon te implementeren:
+Sla eventuele wijzigingen op in de bestanden *template.json* en *parameters.json*.  Voer de volgende opdracht uit om de bijgewerkte sjabloon te implementeren:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ChangingInstanceCount"
 ```
-Of de volgende Azure CLI-opdracht:
+Of voer de volgende Azure CLI-opdracht uit:
 ```azurecli
 az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
-## <a name="add-a-node-type-to-the-cluster"></a>Een knooppunt type toevoegen aan het cluster
+## <a name="add-a-node-type-to-the-cluster"></a>Een knooppunttype aan het cluster toevoegen
 
-Elk knooppunt type dat is gedefinieerd in een Service Fabric cluster dat in azure wordt uitgevoerd, wordt ingesteld als een [afzonderlijke schaalset voor virtuele machines](service-fabric-cluster-nodetypes.md). Elk knooppunt type kan vervolgens afzonderlijk worden beheerd. U kunt elk knooppunt type omhoog of omlaag schalen, verschillende sets poorten openen en verschillende capaciteits metrieken gebruiken. U kunt ook de SKU van het besturings systeem dat wordt uitgevoerd op elk cluster knooppunt onafhankelijk wijzigen, maar houd er rekening mee dat u geen mengeling van Windows en Linux kunt uitvoeren in het voorbeeld cluster. Een type/schaalset met één knoop punt kan niet meer dan 100 knoop punten bevatten.  U kunt een cluster horizon taal schalen naar meer dan 100 knoop punten door extra typen knoop punten/schaal sets toe te voegen. U kunt het cluster op elk gewenst moment schalen, zelfs wanneer werk belastingen op het cluster worden uitgevoerd.
+Elk knooppunttype dat is gedefinieerd in een Service Fabric-cluster dat in Azure wordt uitgevoerd, wordt ingesteld als een [afzonderlijke virtuele-machineschaalset](service-fabric-cluster-nodetypes.md). Elk knooppunttype kan vervolgens afzonderlijk worden beheerd. U kunt elk knooppunttype onafhankelijk omhoog of omlaag schalen, verschillende sets poorten openzetten en verschillende capaciteitsmeetwaarden gebruiken. U kunt ook de besturingssysteem-SKU die op elk clusterknooppunt wordt uitgevoerd, onafhankelijk wijzigen, maar houd er rekening mee dat u niet Windows en Linux tegelijk in het voorbeeldcluster kunt uitvoeren. Eén knooppunttype/schaalset mag niet meer dan 100 knooppunten bevatten.  U kunt de schaal van een cluster horizontaal aanpassen naar meer dan 100 knooppunten door aanvullende knooppunttypen/schaalsets toe te voegen. U kunt de schaal van het cluster op elk gewenst moment aanpassen, zelfs als er workloads op het cluster worden uitgevoerd.
 
 ### <a name="update-the-template"></a>De sjabloon bijwerken
 
-[Exporteer een sjabloon en parameter bestand](#export-the-template-for-the-resource-group) uit de resource groep voor de meest recente implementatie.  Open het bestand *para meters. json* .  Als u het cluster hebt geïmplementeerd met behulp van de [voorbeeld sjabloon][template] in deze zelf studie, zijn er drie knooppunt typen in het cluster.  In deze sectie voegt u een vierde knooppunt type toe door een resource manager-sjabloon bij te werken en te implementeren. 
+[Exporteer een sjabloon en parameterbestand](#export-the-template-for-the-resource-group) van de resourcegroep voor de meest recente implementatie.  Open het bestand *parameters.json*.  Als u het cluster hebt geïmplementeerd met behulp van de [voorbeeldsjabloon][template] in deze zelfstudie, zijn er drie knooppunttypen in het cluster.  In deze sectie gaat u een vierde knooppunttype toevoegen door een Resource Manager-sjabloon bij te werken en te implementeren. 
 
-Naast het nieuwe knooppunt type, voegt u ook de gekoppelde virtuele-machine schaalset (die wordt uitgevoerd in een afzonderlijk subnet van het virtuele netwerk) en de netwerk beveiligings groep toe.  U kunt ervoor kiezen om een nieuw of bestaand openbaar IP-adres en Azure load balancer-resources toe te voegen voor de nieuwe schaalset.  Het nieuwe knooppunt type heeft een [duurzaamheids niveau][durability] van zilver en grootte van "Standard_D2_V2".
+Naast het nieuwe knooppunttype voegt u ook de gekoppelde virtuele-machineschaalset (die in een afzonderlijk subnet van het virtuele netwerk wordt uitgevoerd) en netwerkbeveiligingsgroep toe.  U kunt ervoor kiezen om nieuwe of bestaande openbare IP-adressen en Azure-taakverdelingsresources voor de nieuwe schaalset toe te voegen.  Het nieuwe knooppunttype heeft Silver als [duurzaamheidsniveau][durability] en de grootte Standard_D2_V2.
 
-Voeg in het bestand *Template. json* de volgende nieuwe para meters toe:
+Voeg in het bestand *template.json* de volgende nieuwe parameters toe:
 ```json
 "nt3InstanceCount": {
     "defaultValue": 5,
@@ -122,7 +122,7 @@ Voeg in het bestand *Template. json* de volgende nieuwe para meters toe:
 },
 ```
 
-Voeg in het bestand *Template. json* de volgende nieuwe variabelen toe:
+Voeg in het bestand *template.json* de volgende nieuwe variabelen toe:
 ```json
 "lbID3": "[resourceId('Microsoft.Network/loadBalancers',concat('LB','-', parameters('clusterName'),'-',variables('vmNodeType3Name')))]",
 "lbIPConfig3": "[concat(variables('lbID3'),'/frontendIPConfigurations/LoadBalancerIPConfig')]",
@@ -144,7 +144,7 @@ Voeg in het bestand *Template. json* de volgende nieuwe variabelen toe:
 "subnet3Ref": "[concat(variables('vnetID'),'/subnets/',variables('subnet3Name'))]",
 ```
 
-Voeg in het bestand *Template. json* een nieuw subnet toe aan de bron van het virtuele netwerk:
+Voeg in het bestand *template.json* een nieuwe subnet toe aan de virtuele-netwerkresource:
 ```json
 {
     "type": "Microsoft.Network/virtualNetworks",
@@ -181,7 +181,7 @@ Voeg in het bestand *Template. json* een nieuw subnet toe aan de bron van het vi
 },
 ```
 
-Voeg in het bestand *Template. json* een nieuw openbaar IP-adres en Load Balancer resources toe:
+Voeg in het bestand *template.json* nieuwe openbare IP-adressen en taakverdelingresources toe:
 ```json
 {
     "type": "Microsoft.Network/publicIPAddresses",
@@ -362,7 +362,7 @@ Voeg in het bestand *Template. json* een nieuw openbaar IP-adres en Load Balance
 },
 ```
 
-Voeg in het bestand *Template. json* een nieuwe netwerk beveiligings groep en resources voor virtuele-machine schaal sets toe.  De eigenschap NodeTypeRef in de eigenschappen van de Service Fabric-extensie van de virtuele-machine schaalset wijst het opgegeven knooppunt type toe aan de schaalset.
+Voeg in het bestand *template.json* nieuwe netwerkbeveiligingsgroepen en virtuele-machineschaalsetresources toe.  Met de eigenschap NodeTypeRef bij de Service Fabric-extensie-eigenschappen van de virtuele-machineschaalset wijst u het opgegeven knooppunttype toe aan de schaalset.
 
 ```json
 {
@@ -746,7 +746,7 @@ Voeg in het bestand *Template. json* een nieuwe netwerk beveiligings groep en re
 },
 ```
 
-Werk in het bestand *Template. json* de cluster bron bij en voeg een nieuw knooppunt type toe:
+Werk in het bestand *template.json* de clusterresource bij en voeg een nieuw knooppunttype toe:
 ```json
 {
     "type": "Microsoft.ServiceFabric/clusters",
@@ -782,7 +782,7 @@ Werk in het bestand *Template. json* de cluster bron bij en voeg een nieuw knoop
 }                
 ```
 
-Voeg in het bestand *para meters. json* de volgende nieuwe para meters en waarden toe:
+Voeg in het bestand *parameters.json* de volgende nieuwe parameters en waarden toe:
 ```json
 "nt3InstanceCount": {
     "Value": 5    
@@ -793,23 +793,23 @@ Voeg in het bestand *para meters. json* de volgende nieuwe para meters en waarde
 ```
 
 ### <a name="deploy-the-updated-template"></a>De bijgewerkte sjabloon implementeren
-Sla de wijzigingen op in de *sjabloon. json* en de *para meters. json* -bestanden.  Voer de volgende opdracht uit om de bijgewerkte sjabloon te implementeren:
+Sla eventuele wijzigingen op in de bestanden *template.json* en *parameters.json*.  Voer de volgende opdracht uit om de bijgewerkte sjabloon te implementeren:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "AddingNodeType"
 ```
-Of de volgende Azure CLI-opdracht:
+Of voer de volgende Azure CLI-opdracht uit:
 ```azurecli
 az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
-## <a name="remove-a-node-type-from-the-cluster"></a>Een knooppunt type verwijderen uit het cluster
-Nadat u een Service Fabric cluster hebt gemaakt, kunt u horizon taal een cluster schalen door een knooppunt type (virtuele-machine schaalset) en alle knoop punten ervan te verwijderen. U kunt het cluster op elk gewenst moment schalen, zelfs wanneer werk belastingen op het cluster worden uitgevoerd. Naarmate het cluster wordt geschaald, worden uw toepassingen ook automatisch geschaald.
+## <a name="remove-a-node-type-from-the-cluster"></a>Een knooppunttype uit het cluster verwijderen
+Nadat u een Service Fabric-cluster hebt gemaakt, kunt u de schaal van een cluster horizontaal aanpassen door een knooppunttype (virtuele-machineschaalset) en alle bijbehorende knooppunten te verwijderen. U kunt de schaal van het cluster op elk gewenst moment aanpassen, zelfs als er workloads op het cluster worden uitgevoerd. Tijdens het schalen van het cluster worden uw toepassingen ook automatisch geschaald.
 
 > [!WARNING]
-> Het gebruik van Remove-AzServiceFabricNodeType om een knooppunt type van een productie cluster te verwijderen, wordt niet aanbevolen om regel matig te worden gebruikt. Het is een gevaarlijke opdracht, omdat hiermee de bron van de virtuele-machine schaalset wordt verwijderd achter het knooppunt type. 
+> Het wordt afgeraden om Remove-AzServiceFabricNodeType op frequente basis te gebruiken om een knooppunttype uit een productiecluster te verwijderen. Het is een gevaarlijke opdracht omdat hiermee de virtuele-machineschaalsetresource achter het knooppunttype wordt verwijderd. 
 
-Als u het knooppunt type wilt verwijderen, voert u de cmdlet [Remove-AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) uit.  Het knooppunt type moet zilver of goud [duurzaamheids niveau][durability] de cmdlet verwijdert de schaalset die is gekoppeld aan het knooppunt type en neemt enige tijd in beslag.  Voer vervolgens de cmdlet [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) uit op elk van de knoop punten die u wilt verwijderen. Hiermee wordt de knooppunt status verwijderd en worden de knoop punten uit het cluster verwijderd. Als er services worden uitgevoerd op de knoop punten, worden de services voor het eerst naar een ander knoop punt verplaatst. Als cluster beheer geen knoop punt voor de replica/service kan vinden, wordt de bewerking uitgesteld/geblokkeerd.
+Voer de cmdlet [Remove-AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) uit om het knooppunttype te verwijderen.  Het knooppunttype moet Silver of Gold als [duurzaamheidsniveau][durability] hebben. Met de cmdlet wordt de schaalset verwijderd die aan het knooppunttype is gekoppeld; dit kan enige tijd duren.  Voer vervolgens de cmdlet [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) uit op alle knooppunten om te verwijderen. Hiermee verwijdert u de knooppuntstatus en worden de knooppunten uit het cluster verwijderd. Als er services bestaan op de knooppunten, worden de services vervolgens eerst naar een ander knooppunt verplaatst. Als de clusterbeheerder geen knooppunt voor de replica/service kan vinden, wordt de bewerking vervolgens uitgesteld/geblokkeerd.
 
 ```powershell
 $groupname = "sfclustertutorialgroup"
@@ -832,30 +832,29 @@ Foreach($node in $nodes)
 }
 ```
 
-## <a name="increase-node-resources"></a>Knooppunt resources verg Roten 
-Nadat u een Service Fabric cluster hebt gemaakt, kunt u het type van een cluster knooppunt verticaal schalen (de resources van de knoop punten wijzigen) of het besturings systeem van het knooppunt type Vm's bijwerken.  
+## <a name="increase-node-resources"></a>Het aantal knooppuntresources verhogen 
+Nadat u een Service Fabric-cluster hebt gemaakt, kunt u de schaal van een clusterknooppunttype verticaal aanpassen (de resources van de knooppunten wijzigen) of het besturingssysteem van de virtuele machines van het knooppunttype upgraden door het oorspronkelijke knooppunttype te vervangen door een nieuw knooppunttype (met een bijgewerkte VM-SKU of installatiekopie van het besturingssysteem). Zie [Een Azure Service Fabric-knooppunttype opschalen](service-fabric-scale-up-node-type.md) voor meer informatie.
 
-> [!WARNING]
-> We raden u aan de VM-SKU van een schaalset/knooppunt type alleen te wijzigen als deze wordt uitgevoerd in een zilver duurzaamheid of hoger. Het wijzigen van de VM-SKU-grootte is een in-place infrastructuur bewerking voor het uitvoeren van gegevens. Zonder enige mogelijkheid om deze wijziging te vertragen of te bewaken, is het mogelijk dat de bewerking gegevens verlies kan veroorzaken voor stateful Services of andere onvoorziene operationele problemen veroorzaakt, zelfs voor stateless workloads.
+> [!IMPORTANT]
+> Probeer een VM-SKU of installatiekopie van het besturingssysteem nooit ter plekke zelf te wijzigen. Dit is een gevaarlijke bewerking die niet wordt ondersteund.
 
-> [!WARNING]
-> We raden u aan de VM-SKU van het primaire knooppunt type niet te wijzigen, wat een gevaarlijke bewerking is en niet wordt ondersteund.  Als u meer cluster capaciteit nodig hebt, kunt u meer VM-exemplaren of extra knooppunt typen toevoegen.  Als dat niet mogelijk is, kunt u een nieuw cluster maken en de [toepassings status](service-fabric-reliable-services-backup-restore.md) (indien van toepassing) herstellen van het oude cluster.  Als dat niet mogelijk is, kunt u [de VM-SKU van het primaire knooppunt type wijzigen](service-fabric-scale-up-node-type.md).
+Als dat niet mogelijk is, kunt u een nieuw cluster maken en [de toepassingsstatus herstellen](service-fabric-reliable-services-backup-restore.md) (indien van toepassing) op basis van uw oude cluster. U hoeft geen systeemservicestatussen te herstellen; deze worden opnieuw gemaakt wanneer u uw toepassingen op uw nieuwe cluster implementeert. Als u alleen stateless toepassingen op uw cluster uitvoerde, hoeft u alleen uw toepassingen naar het nieuwe cluster te implementeren. U hoeft niets te herstellen.
 
 ### <a name="update-the-template"></a>De sjabloon bijwerken
 
-[Exporteer een sjabloon en parameter bestand](#export-the-template-for-the-resource-group) uit de resource groep voor de meest recente implementatie.  Open het bestand *para meters. json* .  Als u het cluster hebt geïmplementeerd met behulp van de [voorbeeld sjabloon][template] in deze zelf studie, zijn er drie knooppunt typen in het cluster.  
+[Exporteer een sjabloon en parameterbestand](#export-the-template-for-the-resource-group) van de resourcegroep voor de meest recente implementatie.  Open het bestand *parameters.json*.  Als u het cluster hebt geïmplementeerd met behulp van de [voorbeeldsjabloon][template] in deze zelfstudie, zijn er drie knooppunttypen in het cluster.  
 
-De grootte van de virtuele machines in het tweede knooppunt type wordt ingesteld in de para meter *vmNodeType1Size* .  Wijzig de waarde van de para meter *vmNodeType1Size* van Standard_D2_V2 naar [Standard_D3_V2](../virtual-machines/dv2-dsv2-series.md), waarmee de resources van elk VM-exemplaar worden verdubbeld.
+De grootte van de virtuele machines in het tweede knooppunttype wordt ingesteld in de parameter *vmNodeType1Size*.  Wijzig de parameterwaarde *vmNodeType1Size* van Standard_D2_V2 in [Standard_D3_V2](../virtual-machines/dv2-dsv2-series.md). Hiermee verdubbelt u het aantal resources van elk VM-exemplaar.
 
-De VM-SKU voor alle drie de knooppunt typen wordt ingesteld in de para meter *vmImageSku* .  Het wijzigen van de VM-SKU van een knooppunt type moet voorzichtig zijn en wordt niet aanbevolen voor het primaire knooppunt type.
+De VM-SKU voor alle drie knooppunttypen wordt ingesteld in de parameter *vmImageSku*.  Nogmaals: wees voorzichtig met het wijzigen van de VM-SKU van een knooppunttype. Dit wordt niet aanbevolen voor het primaire knooppunttype.
 
 ### <a name="deploy-the-updated-template"></a>De bijgewerkte sjabloon implementeren
-Sla de wijzigingen op in de *sjabloon. json* en de *para meters. json* -bestanden.  Voer de volgende opdracht uit om de bijgewerkte sjabloon te implementeren:
+Sla eventuele wijzigingen op in de bestanden *template.json* en *parameters.json*.  Voer de volgende opdracht uit om de bijgewerkte sjabloon te implementeren:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ScaleUpNodeType"
 ```
-Of de volgende Azure CLI-opdracht:
+Of voer de volgende Azure CLI-opdracht uit:
 ```azurecli
 az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
@@ -865,27 +864,15 @@ az group deployment create --resource-group sfclustertutorialgroup --template-fi
 In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
-> * Knoop punten toevoegen en verwijderen (uitschalen en schalen in)
-> * Knooppunt typen toevoegen en verwijderen (uitschalen en schalen in)
-> * Knooppunt resources verg Roten (omhoog schalen)
+> * Knooppunten toevoegen en verwijderen (uitschalen en inschalen)
+> * Knooppunttypen toevoegen en verwijderen (uitschalen en inschalen)
+> * Het aantal knooppuntresources verhogen (opschalen)
 
 Daarna gaat u verder met de volgende zelfstudie, waarin u leert hoe u een upgrade uitvoert van de runtime van een cluster.
 > [!div class="nextstepaction"]
 > [De runtime van een cluster upgraden](service-fabric-tutorial-upgrade-cluster.md)
 
-[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
-[reliability]: service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster
-[template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
-[parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json
-
-> * Knooppunt typen toevoegen en verwijderen (uitschalen en schalen in)
-> * Knooppunt resources verg Roten (omhoog schalen)
-
-Daarna gaat u verder met de volgende zelfstudie, waarin u leert hoe u een upgrade uitvoert van de runtime van een cluster.
-> [!div class="nextstepaction"]
-> [De runtime van een cluster upgraden](service-fabric-tutorial-upgrade-cluster.md)
-
-[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
-[reliability]: service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster
+[durability]: service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster
+[reliability]: service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster
 [template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
 [parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json

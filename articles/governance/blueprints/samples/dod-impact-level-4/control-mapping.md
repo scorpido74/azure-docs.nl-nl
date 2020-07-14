@@ -1,14 +1,14 @@
 ---
 title: Beheeropties voor DoD Impact Level 4-blauwdrukvoorbeeld
 description: Beheeropties toewijzen voor het DoD Impact Level 4-blauwdrukvoorbeeld. Elke beheeroptie wordt toegewezen aan een of meer Azure-beleidsregels die helpt bij de evaluatie.
-ms.date: 05/12/2020
+ms.date: 06/30/2020
 ms.topic: sample
-ms.openlocfilehash: 48734e62f47c38feb8bc34409f9ba41af2648e7a
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 54eb1807e4986bb56b72e064cdae9df973ed7a81
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84168978"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800423"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-4-blueprint-sample"></a>Beheeropties toewijzen voor het DoD Impact Level 4-blauwdrukvoorbeeld
 
@@ -175,21 +175,21 @@ Voor dit ingebouwde beleid moet u een matrix met resourcetypen opgeven om te con
 
 ## <a name="cm-7-2-least-functionality--prevent-program-execution"></a>CM-7 (2) Least Functionality | Programma-uitvoering voorkomen
 
-Adaptief toepassingsbeheer in Azure Security Center is een intelligente, geautomatiseerde end-to-end oplossing voor het goedkeuren van toepassingen die kan blokkeren of voorkomen dat specifieke software wordt uitgevoerd op uw virtuele machines. Toepassingsbeheer kan worden uitgevoerd in een afdwingingsmodus waardoor niet-goedgekeurde toepassingen niet kunnen worden uitgevoerd. Met deze blauwdruk wordt een Azure Policy-definitie toegewezen waarmee u virtuele machines kunt bewaken waarvoor een toegestane lijst voor toepassingen wordt aanbevolen, maar die nog niet is geconfigureerd.
+Adaptief toepassingsbeheer in Azure Security Center is een intelligente, geautomatiseerde end-to-end oplossing voor het accepteren van toepassingen die kan blokkeren of voorkomen dat specifieke software wordt uitgevoerd op uw virtuele machines. Toepassingsbeheer kan worden uitgevoerd in een afdwingingsmodus waardoor niet-goedgekeurde toepassingen niet kunnen worden uitgevoerd. Met deze blauwdruk wordt een Azure Policy-definitie toegewezen waarmee u virtuele machines kunt bewaken waarvoor een acceptatielijst voor toepassingen wordt aanbevolen, maar die nog niet is geconfigureerd.
 
-- Beheeropties voor adaptieve toepassingen moeten worden ingeschakeld op virtuele machines
+- Adaptieve toepassingsbesturingselementen voor het definiëren van veilige toepassingen moeten worden ingeschakeld op uw computers
 
 ## <a name="cm-7-5-least-functionality--authorized-software--whitelisting"></a>CM-7 (5) Least Functionality | Geautoriseerde software/in whitelist opnemen
 
-Adaptief toepassingsbeheer in Azure Security Center is een intelligente, geautomatiseerde end-to-end oplossing voor het goedkeuren van toepassingen die kan blokkeren of voorkomen dat specifieke software wordt uitgevoerd op uw virtuele machines. Met toepassingsbeheer kunt u lijsten met goedgekeurde toepassingen maken voor uw virtuele machines. Met deze blauwdruk wordt een [Azure Policy](../../../policy/overview.md)-definitie toegewezen waarmee u virtuele machines kunt bewaken waarvoor een toegestane lijst voor toepassingen wordt aanbevolen, maar die nog niet is geconfigureerd.
+Adaptief toepassingsbeheer in Azure Security Center is een intelligente, geautomatiseerde end-to-end oplossing voor het accepteren van toepassingen die kan blokkeren of voorkomen dat specifieke software wordt uitgevoerd op uw virtuele machines. Met toepassingsbeheer kunt u lijsten met goedgekeurde toepassingen maken voor uw virtuele machines. Met deze blauwdruk wordt een [Azure Policy](../../../policy/overview.md)-definitie toegewezen waarmee u virtuele machines kunt bewaken waarvoor een acceptatielijst voor toepassingen wordt aanbevolen, maar die nog niet is geconfigureerd.
 
-- Beheeropties voor adaptieve toepassingen moeten worden ingeschakeld op virtuele machines
+- Adaptieve toepassingsbesturingselementen voor het definiëren van veilige toepassingen moeten worden ingeschakeld op uw computers
 
 ## <a name="cm-11-user-installed-software"></a>CM-11 User-Installed Software
 
-Adaptief toepassingsbeheer in Azure Security Center is een intelligente, geautomatiseerde end-to-end oplossing voor het goedkeuren van toepassingen die kan blokkeren of voorkomen dat specifieke software wordt uitgevoerd op uw virtuele machines. Met toepassingsbeheer kunt u naleving van softwarerestrictiebeleid afdwingen en bewaken. Met deze blauwdruk wordt een [Azure Policy](../../../policy/overview.md)-definitie toegewezen waarmee u virtuele machines kunt bewaken waarvoor een toegestane lijst voor toepassingen wordt aanbevolen, maar die nog niet is geconfigureerd.
+Adaptief toepassingsbeheer in Azure Security Center is een intelligente, geautomatiseerde end-to-end oplossing voor het accepteren van toepassingen die kan blokkeren of voorkomen dat specifieke software wordt uitgevoerd op uw virtuele machines. Met toepassingsbeheer kunt u naleving van softwarerestrictiebeleid afdwingen en bewaken. Met deze blauwdruk wordt een [Azure Policy](../../../policy/overview.md)-definitie toegewezen waarmee u virtuele machines kunt bewaken waarvoor een acceptatielijst voor toepassingen wordt aanbevolen, maar die nog niet is geconfigureerd.
 
-- Beheeropties voor adaptieve toepassingen moeten worden ingeschakeld op virtuele machines
+- Adaptieve toepassingsbesturingselementen voor het definiëren van veilige toepassingen moeten worden ingeschakeld op uw computers
 
 ## <a name="cp-7-alternate-processing-site"></a>CP-7 Alternate Processing Site
 
@@ -339,22 +339,22 @@ Met deze blauwdruk kunt u fouten in informatiesystemen beheren door [Azure Polic
 Met deze blauwdruk worden beleidsdefinities toegewezen waarmee u ervoor kunt zorgen dat toepassingen de nieuwste versie van .NET Framework, HTTP, Java, PHP, Python en TLS gebruiken. Met deze blauwdruk wordt ook een beleidsdefinitie toegewezen die ervoor zorgt dat Kubernetes-services worden bijgewerkt naar een niet-kwetsbare versie.
 
 - Controleren of de versie van ‘.NET Framework’ de meest recente is, als deze wordt gebruikt als onderdeel van de API-app
-- Controleren of de versie van ‘.NET Framework’ de meest recente is, als deze wordt gebruikt als onderdeel van de Function-app
+- Controleren of de versie van .NET Framework de meest recente is als deze wordt gebruikt als onderdeel van de functie-app
 - Controleren of de versie van ‘.NET Framework’ de meest recente is, als deze wordt gebruikt als onderdeel van de web-app
 - Controleren of de HTTP-versie de meest recente is, als deze wordt gebruikt om de API-app uit te voeren
-- Controleren of de HTTP-versie de meest recente is, als deze wordt gebruikt om de Function-app uit te voeren
+- Controleren of de HTTP-versie de meest recente is als deze wordt gebruikt om de functie-app te openen
 - Controleren of de HTTP-versie de meest recente is, als deze wordt gebruikt om de web-app te openen
 - Controleren of de Java-versie de meest recente is, als deze wordt gebruikt als onderdeel van de API-app
-- Controleren of de nieuwste versie van Java wordt gebruikt als onderdeel van de Function-app
+- Zorg ervoor dat de nieuwste versie van Java wordt gebruikt als onderdeel van de functie-app
 - Controleren of de Java-versie de meest recente is, als deze wordt gebruikt als onderdeel van de web-app
 - Controleren of de PHP-versie de meest recente is, als deze wordt gebruikt als onderdeel van de API-app
-- Controleren of de PHP-versie de meest recente is, als deze wordt gebruikt als onderdeel van de Function-app
+- Controleren of de PHP-versie de meest recente is als deze wordt gebruikt als onderdeel van de functie-app
 - Controleren of de PHP-versie de meest recente is, als deze wordt gebruikt als onderdeel van de web-app
 - Controleren of de Python-versie de meest recente is, als deze wordt gebruikt als onderdeel van de API-app
-- Controleren of de Python-versie de meest recente is, als deze wordt gebruikt als onderdeel van de Function-app
+- Controleren of de Python-versie de meest recente is als deze wordt gebruikt als onderdeel van de functie-app
 - Controleren of de Python-versie de meest recente is, als deze wordt gebruikt als onderdeel van de web-app
 - De nieuwste TLS-versie moet worden gebruikt in uw API-app
-- De nieuwste TLS-versie moet worden gebruikt in uw Function-app
+- De nieuwste TLS-versie moet worden gebruikt in uw functie-app
 - De nieuwste TLS-versie moet worden gebruikt in uw web-app
 - \[Preview\]: Kubernetes-services moeten worden geüpgraded naar een niet-kwetsbare Kubernetes-versie
 

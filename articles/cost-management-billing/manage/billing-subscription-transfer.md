@@ -7,21 +7,21 @@ ms.reviewer: amberb
 tags: billing,top-support-issue
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 07/01/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 633f406d042ce5b8ddde5b28022bdb33fdd70377
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 722d1bca7f983c124c85e6d675f51d29c5357522
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85052162"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85854944"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Eigendom van de facturering van een Azure-abonnement overdragen aan een ander account
 
 Mogelijk wilt u het eigendom van de facturering van uw Azure-abonnement overdragen als u uw organisatie verlaat of wilt u dat het abonnement wordt gefactureerd aan een ander account. Door het eigendom van de facturering aan een ander account over te dragen, zijn de beheerders in het nieuwe account gemachtigd factureringstaken uit te voeren. Ze kunnen de betalingswijze veranderen, kosten bekijken en het abonnement annuleren.
 
-Zie [Uw Azure-abonnement overzetten naar een andere aanbieding](switch-azure-offer.md) als het abonnement uw eigendom moet blijven maar u het type abonnement wilt wijzigen. Zie [Ingebouwde rollen voor Azure-resources](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) als u wilt bepalen wie resources in het abonnement kan beheren.
+Zie [Uw Azure-abonnement overzetten naar een andere aanbieding](switch-azure-offer.md) als het abonnement uw eigendom moet blijven maar u het type abonnement wilt wijzigen. Zie [Ingebouwde rollen van Azure](../../role-based-access-control/built-in-roles.md) als u wilt bepalen wie toegang hebben tot resources in het abonnement.
 
 Als u een EA-klant (Enterprise Agreement) bent, kan uw ondernemingsbeheerder het eigendom van de facturering overdragen naar andere accounts. Zie [Eigendom van facturering overdragen voor EA-abonnementen (Enterprise Agreement)](#EA) voor meer informatie.
 
@@ -45,7 +45,7 @@ Als u een EA-klant (Enterprise Agreement) bent, kan uw ondernemingsbeheerder het
 
     > [!IMPORTANT]
     >
-    > Als u ervoor kiest om het abonnement te verplaatsen naar de Azure AD-tenant van het nieuwe account, worden alle [RBAC-toewijzingen](../../role-based-access-control/overview.md) (op rollen gebaseerd toegangsbeheer) voor het beheren van de resources in het abonnement definitief verwijderd. Alleen de gebruiker in het nieuwe account die uw overdrachtsaanvraag accepteert, heeft toegang om de resources in het abonnement te beheren. Zie [Abonnementen overdragen naar een gebruiker in een andere Azure AD-tenant](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories) voor meer informatie. U kunt eventueel het vinkje voor Subscription Azure AD-tenant verwijderen om het eigendom van de facturering over te dragen zonder dat het abonnement naar de tenant van het nieuwe account wordt verplaatst. Als u dit doet, blijven de bestaande RBAC-machtigingen voor het beheer van Azure-resources behouden.
+    > Als u ervoor kiest om het abonnement te verplaatsen naar de Azure AD-tenant van het nieuwe account, worden alle [Azure-roltoewijzingen](../../role-based-access-control/role-assignments-portal.md) voor toegang tot de resources in het abonnement definitief verwijderd. Alleen de gebruiker in het nieuwe account die uw overdrachtsaanvraag accepteert, heeft toegang om de resources in het abonnement te beheren. Zie de volgende sectie, [Een abonnement overdragen naar een account in een andere Azure AD-tenant](#transfer-a-subscription-to-another-azure-ad-tenant-account), voor meer informatie. U kunt eventueel het vinkje voor **Azure AD-tenant van abonnement** verwijderen om het eigendom van de facturering over te dragen zonder dat het abonnement naar de tenant van het nieuwe account wordt verplaatst. Als u dat doet, blijven bestaande Azure-roltoewijzingen voor toegang tot Azure-resources intact.
 
     ![Overdrachtspagina verzenden](./media/billing-subscription-transfer/billing-send-transfer-request.PNG)
 
@@ -71,7 +71,7 @@ Er wordt een Azure Active Directory-tenant (AD) voor u gemaakt wanneer u zich aa
 
 Wanneer u een nieuw abonnement maakt, wordt dit gehost in de Azure AD-tenant van uw account. Als u anderen toegang wilt geven tot uw abonnement of de bijbehorende resources, moet u ze uitnodigen om lid te worden van uw tenant. Zo kunt u de toegang tot uw abonnementen en resources beheren.
 
-Wanneer u het eigendom van de facturering van uw abonnement overdraagt naar een account in een andere Azure AD-tenant, kunt u het abonnement verplaatsen naar de tenant van het nieuwe account. Als u dit doet, raken alle gebruikers, groepen of service-principals die [op rollen gebaseerde toegang (RBAC)](../../role-based-access-control/role-assignments-portal.md) hadden om abonnementen en de bijbehorende resources te beheren, hun toegang kwijt. Alleen de gebruiker in het nieuwe account die uw overdrachtsaanvraag accepteert, heeft toegang om de resources te beheren. De nieuwe eigenaar moet [deze gebruikers handmatig toevoegen aan het abonnement](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) om toegang te bieden voor gebruikers die geen toegang meer hadden.
+Wanneer u het eigendom van de facturering van uw abonnement overdraagt naar een account in een andere Azure AD-tenant, kunt u het abonnement verplaatsen naar de tenant van het nieuwe account. Als u dit doet, raken alle gebruikers, groepen of service-principals die [Azure-roltoewijzingen](../../role-based-access-control/role-assignments-portal.md) hadden om abonnementen en de bijbehorende resources te beheren, hun toegang kwijt. Alleen de gebruiker in het nieuwe account die uw overdrachtsaanvraag accepteert, heeft toegang om de resources te beheren. De nieuwe eigenaar moet deze gebruikers handmatig toevoegen aan het abonnement om toegang te bieden voor gebruikers die de toegang zijn kwijtgeraakt. Zie voor meer informatie [Transfer an Azure subscription to a different Azure AD directory (Preview)](../../role-based-access-control/transfer-subscription.md).
 
 
 ## <a name="transfer-visual-studio-and-partner-network-subscriptions"></a>Visual Studio- en Microsoft Partner Network-abonnementen overdragen
@@ -89,7 +89,7 @@ De ondernemingsbeheerder kan het eigendom van abonnementen overdragen tussen acc
 
 Als u het eigendom van de facturering van een Azure-abonnement hebt geaccepteerd, is het raadzaam de volgende stappen te volgen:
 
-1. Controleer de servicebeheerders, co-beheerder en andere RBAC-rollen en werk ze bij. Zie [Toevoegen of wijzigen van de beheerders van Azure-abonnementen](add-change-subscription-administrator.md) en [Toegang beheren met behulp van RBAC en Azure Portal](../../role-based-access-control/role-assignments-portal.md) voor meer informatie.
+1. Controleer de servicebeheerder, co-beheerders en andere Azure-roltoewijzingen en werk ze bij. Zie [Toevoegen of wijzigen van de beheerders van Azure-abonnementen](add-change-subscription-administrator.md) en [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure Portal](../../role-based-access-control/role-assignments-portal.md) voor meer informatie.
 1. Referenties bijwerken die zijn gekoppeld aan de services van dit abonnement, waaronder:
    1. Beheercertificaten die de gebruiker beheerdersrechten verlenen voor de abonnementsresources. Zie [Een beheercertificaat voor Azure maken en uploaden](../../cloud-services/cloud-services-certs-create.md) voor meer informatie
    1. Toegangssleutels voor services zoals Storage. Zie [Over Azure-opslagaccounts](../../storage/common/storage-create-storage-account.md) voor meer informatie
@@ -142,7 +142,7 @@ Als u niet zeker weet wie de accountbeheerder is voor een abonnement, gebruikt u
 
 ### <a name="does-everything-transfer-including-resource-groups-vms-disks-and-other-running-services"></a>Wordt alles overgedragen? Inclusief resourcegroepen, Vm's, schijven en andere actieve services?
 
-Alle resources zoals VM's, schijven en websites worden overgedragen naar het nieuwe account. Als u echter een abonnement overdraagt naar een account in een andere Azure AD-tenant, worden de [beheerdersrollen](add-change-subscription-administrator.md) en het [ RBAC-toewijzingen (op rollen gebaseerd toegangsbeheer)](../../role-based-access-control/role-assignments-portal.md) voor het abonnement [niet overgedragen](#transfer-a-subscription-to-another-azure-ad-tenant-account). Bovendien worden [app-registraties](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md) en andere tenantspecifieke services niet overgedragen met het abonnement.
+Alle resources zoals VM's, schijven en websites worden overgedragen naar het nieuwe account. Als u echter een abonnement overdraagt naar een account in een andere Azure AD-tenant, worden de [beheerdersrollen](add-change-subscription-administrator.md) en [Azure-roltoewijzingen](../../role-based-access-control/role-assignments-portal.md) voor het abonnement [niet overgedragen](#transfer-a-subscription-to-another-azure-ad-tenant-account). Bovendien worden [app-registraties](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md) en andere tenantspecifieke services niet overgedragen met het abonnement.
 
 ### <a name="can-i-transfer-ownership-to-an-account-in-another-countryregion"></a>Kan ik het eigendom overdragen naar een account in een ander land of andere regio?
 U kunt geen overdrachten naar andere landen/regio's uitvoeren in de Azure Portal. Als u uw abonnement wilt overdragen naar landen/regio's, [neemt u contact op met de ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
@@ -152,7 +152,7 @@ Ja, u kunt een abonnement overdragen tussen uw accounts. Uw accounts worden conc
 
 ### <a name="does-a-subscription-transfer-result-in-any-service-downtime"></a>Resulteert een abonnementsoverdracht in servicedowntime?
 
-Als u een abonnement overdraagt naar een account in dezelfde Azure AD-tenant, is dit niet van invloed op de actieve resources in het abonnement. Contextgegevens die zijn opgeslagen in PowerShell, worden echter niet bijgewerkt, dus moet u deze mogelijk wissen of instellingen wijzigen. Als u het abonnement overdraagt naar een account in een andere tenant en besluit het abonnement naar de tenant te verplaatsen, verliezen alle gebruikers, groepen en service-principals met [op rollen gebaseerde toegang (RBAC)](../../role-based-access-control/overview.md) voor het beheren van de resources in het abonnement, hun toegang. Uitvaltijd van de service kan het gevolg zijn.
+Als u een abonnement overdraagt naar een account in dezelfde Azure AD-tenant, is dit niet van invloed op de actieve resources in het abonnement. Contextgegevens die zijn opgeslagen in PowerShell, worden echter niet bijgewerkt, dus moet u deze mogelijk wissen of instellingen wijzigen. Als u het abonnement overdraagt naar een account in een andere tenant en besluit het abonnement naar de tenant te verplaatsen, verliezen alle gebruikers, groepen en service-principals die [Azure-roltoewijzingen](../../role-based-access-control/role-assignments-portal.md) hadden voor toegang tot resources in het abonnement, hun toegang. Uitvaltijd van de service kan het gevolg zijn.
 
 ### <a name="can-users-in-new-account-access-usage-and-billing-history"></a>Hebben gebruikers in het nieuwe account toegang tot de gebruiks- en factureringsgeschiedenis?
 
@@ -173,13 +173,13 @@ Deze veelgestelde vragen zijn van toepassing op gebruikers die het eigendom van 
 
 ### <a name="if-i-take-over-billing-ownership-of-a-subscription-from-another-account-do-users-in-that-account-continue-to-have-access-to-my-resources"></a>Als ik het eigendom van de facturering van een abonnement van een ander account overneem, hebben gebruikers in dat account dan nog steeds toegang tot mijn resources?
 
-Ja. [Beheerdersrollen](add-change-subscription-administrator.md) en [RBAC-toewijzingen (op rollen gebaseerd toegangsbeheer)](../../role-based-access-control/role-assignments-portal.md) kunnen worden verwijderd. De toegang wordt verbroken als uw account zich in een andere Azure AD-tenant bevindt dan de tenant van het abonnement en de gebruiker die de overdrachtaanvraag heeft verzonden, het abonnement verplaatst naar de tenant van uw account. Als u de gebruikers wilt weergeven die [toegang op basis van rollen (RBAC)](../../role-based-access-control/overview.md) hebben om de resources in het abonnement te beheren, gebruikt u de volgende stappen:
+Ja. [Beheerdersrollen](add-change-subscription-administrator.md) en [Azure-roltoewijzingen](../../role-based-access-control/role-assignments-portal.md) kunnen echter worden verwijderd. De toegang wordt verbroken als uw account zich in een andere Azure AD-tenant bevindt dan de tenant van het abonnement en de gebruiker die de overdrachtaanvraag heeft verzonden, het abonnement verplaatst naar de tenant van uw account. Als u de gebruikers wilt weergeven die Azure-roltoewijzingen hebben om toegang te krijgen tot de resources in het abonnement, gebruikt u de volgende stappen:
 
 1. Ga naar de [pagina Abonnement in Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 1. Selecteer het abonnement dat u wilt controleren en selecteer in het linkerdeelvenster vervolgens **Toegangsbeheer (IAM)** .
-1. Selecteer bovenaan de pagina **Roltoewijzingen**. De pagina met roltoewijzingen bevat een overzicht van alle gebruikers met RBAC-toegang voor het abonnement.
+1. Selecteer bovenaan de pagina **Roltoewijzingen**. De pagina met roltoewijzingen bevat een overzicht van alle gebruikers met toegang voor het abonnement.
 
-Zelfs als de [RBAC-toewijzingen (op rollen gebaseerd toegangsbeheer)](../../role-based-access-control/role-assignments-portal.md) tijdens de overdracht worden verwijderd, hebben gebruikers in het account van de oorspronkelijke eigenaar via beveiligingsmechanismen mogelijk nog toegang tot het abonnement, inclusief:
+Zelfs als de [Azure-roltoewijzingen](../../role-based-access-control/role-assignments-portal.md) tijdens de overdracht worden verwijderd, hebben gebruikers in het account van de oorspronkelijke eigenaar mogelijk nog toegang tot het abonnement via andere beveiligingsmechanismen, waaronder:
 
 * Beheercertificaten die de gebruiker beheerdersrechten verlenen voor de abonnementsresources. Zie [Een beheercertificaat voor Azure maken en uploaden](../../cloud-services/cloud-services-certs-create.md) voor meer informatie.
 * Toegangssleutels voor services zoals Storage. Zie [Over Azure-opslagaccounts](../../storage/common/storage-create-storage-account.md) voor meer informatie.
@@ -225,4 +225,4 @@ Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Controleer de servicebeheerders, co-beheerder en andere RBAC-rollen en werk ze bij. Zie [Toevoegen of wijzigen van de beheerders van Azure-abonnementen](add-change-subscription-administrator.md) en [Toegang beheren met behulp van RBAC en Azure Portal](../../role-based-access-control/role-assignments-portal.md) voor meer informatie.
+- Controleer de servicebeheerder, co-beheerders en andere Azure-roltoewijzingen en werk ze bij. Zie [Toevoegen of wijzigen van de beheerders van Azure-abonnementen](add-change-subscription-administrator.md) en [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure Portal](../../role-based-access-control/role-assignments-portal.md) voor meer informatie.

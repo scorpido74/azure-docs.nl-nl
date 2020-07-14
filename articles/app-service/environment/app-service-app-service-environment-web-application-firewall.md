@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: stefsch
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 33fd0b6a3a07fa4fbc5448a97ca93c75a3e239d5
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: d629aca791794de6c3e065fdc9f4a9e7f6d8a5df
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684215"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833178"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Een Web Application Firewall (WAF) voor App Service Environment configureren
 ## <a name="overview"></a>Overzicht
@@ -91,7 +91,9 @@ Om Traffic Manager-pings naar uw toepassing door te verbinden vanaf uw WAF, moet
 ## <a name="securing-traffic-to-app-service-environment-using-network-security-groups-nsg"></a>Verkeer naar App Service Environment beveiligen met behulp van Netwerkbeveiligingsgroepen (NSG)
 Volg de [Documentatie van binnenkomend verkeer beheren](app-service-app-service-environment-control-inbound-traffic.md) voor meer informatie over het beperken van verkeer tot uw App Service Environment vanaf de WAF met behulp van alleen het VIP-adres van uw cloudservice. Hier volgt een PowerShell-voorbeeldopdracht voor het uitvoeren van deze taak voor TCP-poort 80.
 
-    Get-AzureNetworkSecurityGroup -Name "RestrictWestUSAppAccess" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP Barracuda" -Type Inbound -Priority 201 -Action Allow -SourceAddressPrefix '191.0.0.1'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
+```azurepowershell-interactive
+Get-AzureNetworkSecurityGroup -Name "RestrictWestUSAppAccess" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP Barracuda" -Type Inbound -Priority 201 -Action Allow -SourceAddressPrefix '191.0.0.1'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
+```
 
 Vervang de SourceAddressPrefix door het virtuele IP-adres (VIP) van uw WAF-cloudservice.
 

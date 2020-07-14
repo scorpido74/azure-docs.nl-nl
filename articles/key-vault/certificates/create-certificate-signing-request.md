@@ -10,16 +10,16 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: 9772ea320ff28325ffdc8cdcb6e35947b182d1b3
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: ae2d6259bac6a2034edc98de9b0405f32f17fbc3
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85095317"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849494"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>CSR in Key Vault maken en samenvoegen
 
-Azure Key Vault biedt ondersteuning voor het maken van de aanvraag voor certificaatondertekening met een persoonlijk-openbaar sleutelpaar en het is ondertekend door een certificeringsinstantie van uw keuze. Dit kan een interne ondernemings-CA of een externe openbare CA zijn. Een aanvraag voor certificaatondertekening (ook CSR of certificerings aanvraag) is een bericht dat door de gebruiker naar een certificeringsinstantie (CA) wordt verzonden om de uitgifte van een digitaal certificaat aan te vragen.
+Azure Key Vault ondersteunt het opslaan van digitaal certificaat dat is uitgegeven door een certificeringsinstantie van uw keuze in uw sleutelkluis. Het biedt ondersteuning voor het maken van de aanvraag voor certificaatondertekening met een persoonlijk-openbaar sleutelpaar en kan worden ondertekend door elke gekozen certificeringsinstantie. Dit kan een interne ondernemings-CA of een externe openbare CA zijn. Een aanvraag voor certificaatondertekening (ook CSR of certificerings aanvraag) is een bericht dat door de gebruiker naar een certificeringsinstantie (CA) wordt verzonden om de uitgifte van een digitaal certificaat aan te vragen.
 
 Zie [Azure Key Vault-certificaten](/azure/key-vault/certificates/about-certificates) voor meer algemene informatie over certificaten.
 
@@ -85,7 +85,7 @@ De certificaataanvraag is nu succesvol samengevoegd.
 
 Als het certificaat is uitgegeven in de status 'uitgeschakeld' in de Azure-portal, gaat u door met het weergeven van de **Certificaatbewerking** om het foutbericht voor dat certificaat te bekijken.
 
-Raadpleeg de [Certificaatbewerkingen in de Key Vault REST API-referentie](/rest/api/keyvault) voor meer informatie. Raadpleeg voor meer informatie over het instellen van machtigingen [Kluizen - Maken of Bijwerken](/rest/api/keyvault/vaults/createorupdate) en [Kluizen - Toegangsbeleid bijwerken](/rest/api/keyvault/vaults/updateaccesspolicy).
+Raadpleeg de [Certificaatbewerkingen in de Key Vault REST API-referentie](/rest/api/keyvault) voor meer informatie. Raadpleeg [Kluizen: maken of bijwerken](/rest/api/keyvault/vaults/createorupdate) en [Kluizen: toegangsbeleid bijwerken](/rest/api/keyvault/vaults/updateaccesspolicy) voor meer informatie over het instellen van machtigingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

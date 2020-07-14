@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Google Cloud (G suite)-connector | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en de Google Cloud (G suite)-connector.
+title: 'Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met Google Cloud (G Suite) Connector | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Google Cloud (G Suite) Connector.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,64 +15,64 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b025d98c230bc82b86a736785fb8e6581ec4519c
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
-ms.translationtype: MT
+ms.openlocfilehash: 091129d1fbca4141e9841af6a9991d44a6663801
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864416"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799187"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Google Cloud (G suite)-connector
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met Google Cloud (G Suite) Connector
 
-In deze zelf studie leert u hoe u de Google Cloud (G suite)-connector integreert met Azure Active Directory (Azure AD). Wanneer u de Google Cloud (G suite)-connector integreert met Azure AD, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u Google Cloud (G Suite) Connector kunt integreren met Azure Active Directory (Azure AD). Wanneer u Google Cloud (G Suite) Connector integreert met Azure AD, kunt u het volgende doen:
 
-* Controle in azure AD die toegang heeft tot de Google Cloud (G suite)-connector.
-* Uw gebruikers in staat stellen om automatisch te worden aangemeld bij de Google Cloud (G suite)-connector met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure Portal.
+* In Azure AD beheren wie toegang heeft tot Google Cloud (G Suite) Connector.
+* Ervoor zorgen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij Google Cloud (G Suite) Connector.
+* Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende items nodig om aan de slag te gaan:
+U hebt het volgende nodig om aan de slag te gaan:
 
 - Een Azure AD-abonnement
-- Het abonnement van de Google Cloud (G suite)-connector voor eenmalige aanmelding (SSO) is ingeschakeld.
+- Een abonnement op Google Cloud (G Suite) Connector waarvoor eenmalige aanmelding is ingeschakeld.
 - Een Google Apps-abonnement of Google Cloud Platform-abonnement.
 
 > [!NOTE]
-> Als u de stappen in deze zelfstudie wilt testen, is het raadzaam om niet de productieomgeving te gebruiken. Dit document is gemaakt met behulp van de nieuwe ervaring voor eenmalige aanmelding. Als u nog steeds gebruikmaakt van de oude versie, ziet de installatie er anders uit. U kunt de nieuwe ervaring inschakelen in de instellingen voor eenmalige aanmelding van de G Suite-toepassing. Ga naar **Azure AD, zakelijke toepassingen**, selecteer **Google Cloud (G suite) connector**, selecteer **eenmalige aanmelding** en klik vervolgens op **onze nieuwe ervaring proberen**.
+> Als u de stappen in deze zelfstudie wilt testen, is het raadzaam om niet de productieomgeving te gebruiken. Dit document is gemaakt met behulp van de nieuwe ervaring voor eenmalige aanmelding. Als u nog steeds gebruikmaakt van de oude versie, ziet de installatie er anders uit. U kunt de nieuwe ervaring inschakelen in de instellingen voor eenmalige aanmelding van de G Suite-toepassing. Ga naar **Azure AD, bedrijfstoepassingen**, selecteer **Google Cloud (G Suite) Connector**, selecteer **Eenmalige aanmelding** en klik vervolgens op **Nieuwe ervaring uitproberen**.
 
 Volg deze aanbevelingen als u de stappen in deze zelfstudie wilt testen:
 
 - Gebruik niet de productieomgeving, tenzij dit echt nodig is.
-- Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
+- Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/).
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
-1. **V: ondersteunt deze integratie Google Cloud Platform-SSO-integratie met Azure AD?**
+1. **V: Biedt deze integratie ondersteuning voor Google Cloud Platform-integratie voor eenmalige aanmelding met Azure AD?**
 
     A: Ja. Google Cloud Platform en Google Apps delen hetzelfde verificatieplatform. Voor de GCP-integratie moet u dus de eenmalige aanmelding met Google Apps configureren.
 
-2. **V: zijn Chromebooks en andere Chrome-apparaten die compatibel zijn met de eenmalige aanmelding van Azure AD?**
+2. **V: Zijn Chromebooks en andere Chrome-apparaten compatibel met eenmalige aanmelding in Azure AD?**
   
-    A: Ja, gebruikers kunnen zich aanmelden bij hun Chromebook-apparaten met hun Azure AD-referenties. Zie dit [ondersteunings artikel voor de Google Cloud (G suite)-connector](https://support.google.com/chrome/a/answer/6060880) voor informatie over waarom gebruikers twee keer om referenties wordt gevraagd.
+    A: Ja, gebruikers kunnen zich met behulp van hun Azure AD-referenties aanmelden bij hun Chromebook-apparaten. Bekijk dit [ondersteuningsartikel over Google Cloud (G Suite) Connector](https://support.google.com/chrome/a/answer/6060880) voor informatie over waarom gebruikers mogelijk tweemaal om hun referenties wordt gevraagd.
 
-3. **V: als ik eenmalige aanmelding inschakel, kunnen gebruikers hun Azure AD-referenties gebruiken om zich aan te melden bij een Google-product, zoals Google Classroom, GMail, Google Drive, YouTube, enzovoort?**
+3. **V: Kunnen gebruikers, als ik eenmalige aanmelding inschakel, hun Azure AD-referenties gebruiken om zich aan te melden bij Google-producten, zoals Google Classroom, GMail, Google Drive, YouTube, enzovoort?**
 
-    A: Ja, afhankelijk van de [Google Cloud (G suite)-connector](https://support.google.com/a/answer/182442?hl=en&ref_topic=1227583) die u voor uw organisatie wilt in-of uitschakelen.
+    A: Ja, afhankelijk van [de Google Cloud (G Suite) Connector](https://support.google.com/a/answer/182442?hl=en&ref_topic=1227583) die u inschakelt of uitschakelt voor uw organisatie.
 
-4. **V: kan ik eenmalige aanmelding inschakelen voor slechts een subset van de gebruikers van de Google Cloud (G suite)-connector?**
+4. **V: Kan ik eenmalige aanmelding voor alleen een subset van gebruikers van Google Cloud (G Suite) Connector inschakelen?**
 
-    A: Nee, wanneer u eenmalige aanmelding inschakelt, moeten alle gebruikers van de Google Cloud (G suite)-connector zich aanmelden met hun Azure AD-referenties. Omdat de Google Cloud (G suite)-connector geen ondersteuning biedt voor meerdere id-providers, kan de ID-provider voor uw Google Cloud (G suite)-connector omgeving zowel Azure AD als Google zijn, maar niet beide tegelijk.
+    A: Nee, als u eenmalige aanmelding inschakelt, moeten onmiddellijk alle gebruikers van Google Cloud (G Suite) Connector zich verifiëren met hun Azure AD-referenties. Omdat Google Cloud (G Suite) Connector geen ondersteuning biedt voor meerdere id-providers, kan de id-provider voor uw Google Cloud (G Suite) Connector-omgeving Azure AD of Google zijn, maar niet beide tegelijkertijd.
 
-5. **V: als een gebruiker is aangemeld via Windows, worden ze automatisch geverifieerd bij de Google Cloud (G suite)-connector zonder dat om een wacht woord wordt gevraagd?**
+5. **V: Wordt een gebruiker die is aangemeld via Windows, automatisch gevraagd om zich te verifiëren bij Google Cloud (G Suite) Connector, zonder dat om een wachtwoord wordt gevraagd?**
 
-    A: er zijn twee opties voor het inschakelen van dit scenario. Ten eerste kan een gebruiker zich via [Deelnemen aan Azure Active Directory](../device-management-introduction.md) aanmelden bij een Windows 10-apparaat. Gebruikers kunnen zich ook aanmelden bij Windows-apparaten die zijn toegevoegd aan een domein in on-premises Active Directory waarvoor eenmalige aanmelding bij Azure AD is ingeschakeld via een [AD FS-implementatie (Active Directory Federation Services)](../hybrid/plan-connect-user-signin.md). Voor beide opties moet u de stappen in de volgende zelf studie uitvoeren om eenmalige aanmelding in te scha kelen tussen de Azure AD-en de Google Cloud-connector (G suite).
+    A: Er zijn twee opties waarbij dit scenario zich voordoet. Ten eerste kan een gebruiker zich via [Deelnemen aan Azure Active Directory](../device-management-introduction.md) aanmelden bij een Windows 10-apparaat. Gebruikers kunnen zich ook aanmelden bij Windows-apparaten die zijn toegevoegd aan een domein in on-premises Active Directory waarvoor eenmalige aanmelding bij Azure AD is ingeschakeld via een [AD FS-implementatie (Active Directory Federation Services)](../hybrid/plan-connect-user-signin.md). Voor beide opties moet u de stappen in de volgende zelfstudie uitvoeren om eenmalige aanmelding tussen Azure AD en Google Cloud (G Suite) Connector in te schakelen.
 
-6. **V: wat moet ik doen als ik het fout bericht ' ongeldige e-mail ' Ontvang?**
+6. **V: Wat moet ik doen als ik een foutbericht over ongeldige e-mail krijg?**
 
-    A: voor deze installatie is het e-mail kenmerk vereist zodat de gebruikers zich kunnen aanmelden. Dit kenmerk kan niet handmatig worden ingesteld.
+    A: Voor deze installatie is het e-mailkenmerk vereist voor de gebruikers om zich te kunnen aanmelden. Dit kenmerk kan niet handmatig worden ingesteld.
 
     Het e-mailkenmerk wordt automatisch ingevuld voor elke gebruiker met een geldige Exchange-licentie. Als e-mail niet is ingeschakeld voor een gebruiker, wordt dit foutbericht ontvangen omdat de toepassing dit kenmerk moet ophalen om toegang te kunnen verlenen.
 
@@ -82,137 +82,136 @@ Volg deze aanbevelingen als u de stappen in deze zelfstudie wilt testen:
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
+In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Google Cloud (G suite)-connector ondersteunt door **SP** GEÏNITIEERDe SSO
+* De Google Cloud (G Suite) Connector biedt ondersteuning voor door **SP** geïnitieerde eenmalige aanmelding
 
-* Google Cloud (G suite)-connector ondersteunt [ **geautomatiseerde** gebruikers inrichting](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)
-* Wanneer u de connector van de Google Cloud (G suite) hebt geconfigureerd, kunt u sessie beheer afdwingen, waardoor exfiltration en infiltratie van de gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessie beheer is uitgebreid met voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Google Cloud (G Suite) Connector biedt ondersteuning voor [**Geautomatiseerde** gebruikersinrichting](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)
+* Zodra u Google Cloud (G Suite) Connector hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
-## <a name="adding-google-cloud-g-suite-connector-from-the-gallery"></a>De Google Cloud (G suite)-connector toevoegen vanuit de galerie
+## <a name="adding-google-cloud-g-suite-connector-from-the-gallery"></a>Google Cloud (G Suite) Connector toevoegen vanuit de galerie
 
-Als u de integratie van de Google Cloud (G suite)-connector wilt configureren in azure AD, moet u de Google Cloud (G suite)-connector toevoegen vanuit de galerie aan uw lijst met beheerde SaaS-apps.
+Om de integratie van Google Cloud (G Suite) Connector in Azure AD te configureren, moet u Google Cloud (G Suite) Connector vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
-1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
-1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. In de sectie **toevoegen vanuit de galerie** typt u **Google Cloud (G suite) connector** in het zoekvak.
-1. Selecteer **Google Cloud (G suite)-connector** in het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **Nieuwe toepassing** om een nieuwe toepassing toe te voegen.
+1. Typ **Google Cloud (G Suite) Connector** in het zoekvak in de sectie **Toevoegen uit de galerie**.
+1. Selecteer **Google Cloud (G Suite) Connector** in het resultatenvenster en voeg de app vervolgens toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-google-cloud-g-suite-connector"></a>Eenmalige aanmelding voor Azure AD configureren en testen voor de Google Cloud (G suite)-connector
+## <a name="configure-and-test-azure-ad-single-sign-on-for-google-cloud-g-suite-connector"></a>Eenmalige aanmelding van Azure AD configureren en testen voor Google Cloud (G Suite) Connector
 
-Azure AD SSO met de Google Cloud (G suite)-connector configureren en testen met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in de Google Cloud (G suite)-connector.
+Configureer en test eenmalige aanmelding van Azure AD met Google Cloud (G Suite) Connector met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Google Cloud (G Suite) Connector.
 
-Als u Azure AD SSO wilt configureren en testen met de Google Cloud (G suite)-connector, voltooit u de volgende bouw stenen:
+Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met Google Cloud (G Suite) Connector te configureren en te testen:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
-    1. **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
-    1. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
-1. De **[SSO-connector van Google Cloud (G suite) configureren](#configure-google-cloud-g-suite-connector-sso)** voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-    1. Een **[test gebruiker voor de Google Cloud (g Suite)-connector maken](#create-google-cloud-g-suite-connector-test-user)** : als u een equivalent van B. Simon wilt hebben in de Google Cloud (g Suite)-connector die is gekoppeld aan de Azure AD-representatie van de gebruiker.
-1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
+1. **[Eenmalige aanmelding van Azure AD configureren](#configure-azure-ad-sso)** : zodat uw gebruikers deze functie kunnen gebruiken.
+    1. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : om eenmalige aanmelding van Azure AD te testen met B.Simon.
+    1. **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** zodat B.Simon eenmalige aanmelding van Azure AD kan gebruiken.
+1. **[Eenmalige aanmelding van Google Cloud (G Suite) Connector configureren](#configure-google-cloud-g-suite-connector-sso)** : als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wilt configureren.
+    1. **[Testgebruiker maken voor Google Cloud (G Suite) Connector](#create-google-cloud-g-suite-connector-test-user)** : als u een tegenhanger van Britta Simon in Google Cloud (G Suite) Connector wilt hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+1. **[Eenmalige aanmelding testen](#test-sso)** : om te controleren of de configuratie werkt.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
+## <a name="configure-azure-ad-sso"></a>Eenmalige aanmelding van Azure AD configureren
 
-Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
+Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Ga in het [Azure Portal](https://portal.azure.com/)naar de pagina met de integratie van de app **-connector van Google Cloud (G suite)** , zoek de sectie **beheren** en selecteer **eenmalige aanmelding**.
-1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
+1. Zoek in de [Azure-portal](https://portal.azure.com/) op de integratiepagina van de toepassing **Google Cloud (G Suite) Connector** de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
 1. Voer in het gedeelte **Standaard SAML-configuratie** de volgende stappen uit als u wilt configureren voor **Gmail**:
 
-    a. Typ in het tekstvak **URL voor aanmelding** een URL met het volgende patroon:`https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com`
+    a. Typ in het tekstvak **Aanmeldings-URL** een URL met het volgende patroon: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com`
 
     b. In het tekstvak **Id** typt u een URL met het volgende patroon:
 
-    | |
-    |--|
-    | `google.com/a/<yourdomain.com>` |
-    | `google.com` |
-    | `https://google.com` |
-    | `https://google.com/a/<yourdomain.com>` |
+    ```http
+    google.com/a/<yourdomain.com>
+    google.com
+    https://google.com
+    https://google.com/a/<yourdomain.com>
+    ```
 
-    c. In het tekstvak **Antwoord-URL** typt u een URL met behulp van het volgende patroon:  
+    c. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: 
 
-    | |
-    |--|
-    | `https://www.google.com` |
-    | `https://www.google.com/a/<yourdomain.com>` |
-
+    ```http
+    https://www.google.com
+    https://www.google.com/a/<yourdomain.com>
+    ```
 
 1. Voer in het gedeelte **Standaard SAML-configuratie** de volgende stappen uit als u wilt configureren voor **Google Cloud Platform**:
 
-    a. Typ in het tekstvak **URL voor aanmelding** een URL met het volgende patroon:`https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://console.cloud.google.com`
+    a. Typ in het tekstvak **Aanmeldings-URL** een URL met het volgende patroon: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://console.cloud.google.com`
 
     b. In het tekstvak **Id** typt u een URL met het volgende patroon:
     
-    | |
-    |--|
-    | `google.com/a/<yourdomain.com>` |
-    | `google.com` |
-    | `https://google.com` |
-    | `https://google.com/a/<yourdomain.com>` |
+    ```http
+    google.com/a/<yourdomain.com>
+    google.com
+    https://google.com
+    https://google.com/a/<yourdomain.com>
+    ```
     
-    c. In het tekstvak **Antwoord-URL** typt u een URL met behulp van het volgende patroon:  
+    c. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: 
     
-    | |
-    |--|
-    | `https://www.google.com` |
-    | `https://www.google.com/a/<yourdomain.com>` |
+    ```http
+    https://www.google.com
+    https://www.google.com/a/<yourdomain.com>
+    ```
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de daadwerkelijke aanmeldings-URL en id. De Google Cloud (G suite)-connector biedt geen Entiteits-ID/ID-waarde voor de configuratie van eenmalige aanmelding, dus als u de optie voor de **specifieke uitgever** van het domein uitschakelt, is de id-waarde `google.com`. Als u de optie **domein specifieke uitgever** inschakelt, is `google.com/a/<yourdomainname.com>`dit. Als u de optie **specifieke certificaat verlener** wilt in-of uitschakelen, gaat u naar de sectie **SSO-connector van Google Cloud (G suite) configureren** die verderop in de zelf studie wordt beschreven. Neem contact op met het [ondersteunings team van de Google Cloud (G suite)-connector](https://www.google.com/contact/)voor meer informatie.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de daadwerkelijke aanmeldings-URL en id. Google Cloud (G Suite) Connector biedt geen waarde voor Entiteits-id/id-waarde voor de configuratie van eenmalige aanmelding. Wanneer u dus de optie voor **domeinspecifieke uitgever** uitschakelt, wordt de id-waarde `google.com`. Als u de optie voor de **domeinspecifieke uitgever** inschakelt, wordt deze `google.com/a/<yourdomainname.com>`. Als u de optie voor de **domeinspecifieke uitgever** wilt in-/uitschakelen, gaat u naar het gedeelte **Eenmalige aanmelding bij Google Cloud (G Suite) Connector configureren**, dat verderop in de zelfstudie wordt besproken. Neem contact op met het [ondersteuningsteam van Google Cloud (G Suite) Connector](https://www.google.com/contact/) voor meer informatie.
 
-1. Uw Google Cloud (G suite)-connector toepassing verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermopname ziet u een voorbeeld hiervan. De standaard waarde van de **unieke gebruikers-id** is **User. userPrincipalName** , maar de Google Cloud (G suite)-connector verwacht dat dit moet worden toegewezen aan het e-mail adres van de gebruiker. Hiervoor kunt u het kenmerk **user.mail** in de lijst gebruiken of de juiste kenmerkwaarde op basis van uw organisatieconfiguratie.
+1. De toepassing Google Cloud (G Suite) Connector verwacht de SAML-asserties in een specifieke indeling. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermopname ziet u een voorbeeld hiervan. De standaardwaarde van **Unieke gebruikers-id** is **user.userprincipalname**, maar in Google Cloud (G Suite) Connector wordt verwacht dat aan deze waarde het e-mailadres van de gebruiker is toegewezen. Hiervoor kunt u het kenmerk **user.mail** in de lijst gebruiken of de juiste kenmerkwaarde op basis van uw organisatieconfiguratie.
 
-    ![installatiekopie](common/default-attributes.png)
+    ![image](common/default-attributes.png)
 
 
-1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , naar **certificaat (base64)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
+1. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** gaat u naar **Certificaat (Base64)** en selecteert u **Downloaden** om het certificaat te downloaden en op te slaan op uw computer.
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-1. Kopieer de gewenste URL ('s) op basis van uw vereiste op de sectie **Google Cloud (G suite)-connector instellen** .
+1. In de sectie **Google Cloud (G Suite) Connector instellen** kopieert u de juiste URL('s) op basis van uw behoeften.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
+In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
-1. Selecteer **nieuwe gebruiker** boven aan het scherm.
-1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
    1. Voer in het veld **Naam**`B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
-   1. Klik op **Maken**.
+   1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
+   1. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot de Google Cloud (G suite)-connector.
+In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot Google Cloud (G Suite) Connector.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
-1. Selecteer in de lijst toepassingen de optie **Google Cloud (G suite) connector**.
-1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
+1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **Google Cloud (G Suite) Connector** in de lijst met toepassingen.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
-    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
-1. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
+1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-## <a name="configure-google-cloud-g-suite-connector-sso"></a>SSO-connector voor Google Cloud (G suite) configureren
+## <a name="configure-google-cloud-g-suite-connector-sso"></a>Eenmalige aanmelding bij Google Cloud (G Suite) Connector configureren
 
-1. Open een nieuw tabblad in uw browser en meld u aan bij de [beheer console van de Google Cloud (G suite)-connector](https://admin.google.com/) met uw beheerders account.
+1. Open een nieuw tabblad in uw browser en meld u met uw beheerdersaccount aan bij de [beheerconsole van Google Cloud (G Suite) Connector](https://admin.google.com/).
 
 2. Klik op **Beveiliging**. Als u de koppeling niet ziet, is deze mogelijk verborgen in het menu **Meer besturingselementen** onder aan het scherm.
 
@@ -228,51 +227,51 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
     a. Selecteer **Installatie van eenmalige aanmelding met id-provider van derden**.
 
-    b. Plak de waarde van de **aanmeldings-URL** die u hebt gekopieerd van Azure Portal in het URL-veld voor de **aanmeldings pagina** in de Google Cloud (G suite)-connector.
+    b. Plak in het veld **URL van aanmeldingspagina** in Google Cloud (G Suite) Connector de waarde van **Aanmeldings-URL** die u hebt gekopieerd in de Azure-portal.
 
-    c. Plak de waarde van de **Afmeldings-URL** die u uit Azure Portal hebt gekopieerd in het URL-veld voor de **afmeldings pagina** in de Google Cloud (G suite)-connector.
+    c. Plak in het veld **URL van afmeldingspagina** in Google Cloud (G Suite) Connector de waarde van **Afmeldings-URL** die u hebt gekopieerd in de Azure-portal.
 
-    d. In het veld **wacht woord-URL wijzigen** in Google Cloud (G suite) connector, plakt u de waarde van de **wachtwoord-URL** die u hebt gekopieerd uit Azure Portal.
+    d. Plak in het veld **URL voor wachtwoord wijzigen** in Google Cloud (G Suite) Connector de waarde van **URL voor wachtwoord wijzigen** die u hebt gekopieerd in de Azure-portal.
 
-    e. Upload het certificaat dat u van Azure Portal hebt gedownload in de Google Cloud (G suite)-connector voor het **verificatie certificaat**.
+    e. Upload in Google Cloud (G Suite) Connector voor **Verificatiecertificaat** het certificaat dat u hebt gedownload in de Azure-portal.
 
-    f. Schakel het selectie vakje **een specifieke certificaat Verlener gebruiken** in/uit, zoals vermeld in de bovenstaande **basis configuratie van SAML** in azure AD.
+    f. Schakel de optie **Een domeinspecifieke uitgever gebruiken** optie in/uit volgens de opmerking in de bovenstaande sectie **Standaard SAML-configuratie** in Azure AD.
 
-    g. Klik op **wijzigingen opslaan**.
+    g. Klik op **Wijzigingen opslaan**.
 
-### <a name="create-google-cloud-g-suite-connector-test-user"></a>Test gebruiker van Google Cloud (G suite)-connector maken
+### <a name="create-google-cloud-g-suite-connector-test-user"></a>Testgebruiker voor Google Cloud (G Suite) Connector maken
 
-Het doel van deze sectie is het [maken van een gebruiker in de Google Cloud-connector (G suite) met de](https://support.google.com/a/answer/33310?hl=en) naam B. Simon. Nadat de gebruiker hand matig is gemaakt in de Google Cloud (G suite)-connector, kan de gebruiker zich nu aanmelden met hun aanmeldings referenties voor Office 365.
+Het doel van deze sectie is het [maken van een gebruiker in Google Cloud (G Suite) Connector](https://support.google.com/a/answer/33310?hl=en) met de naam B.Simon. Nadat de gebruiker handmatig is gemaakt in Google Cloud (G Suite) Connector, kan de gebruiker zich nu aanmelden met haar aanmeldingsreferenties voor Office 365.
 
-De Google Cloud (G suite)-connector biedt ook ondersteuning voor automatische gebruikers inrichting. Als u het automatisch inrichten van gebruikers wilt configureren, moet u eerst de [Google Cloud (G suite)-connector configureren voor automatische gebruikers inrichting](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial).
+Google Cloud (G Suite) Connector biedt ook ondersteuning voor automatische gebruikersinrichting. Als u het automatisch inrichten van gebruikers wilt configureren, moet u de [Google Cloud (G Suite) Connector eerst configureren voor automatische gebruikersinrichting](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial).
 
 > [!NOTE]
-> Zorg ervoor dat uw gebruiker al bestaat in de Google Cloud (G suite)-connector als inrichten in azure AD niet is ingeschakeld voordat u eenmalige aanmelding test.
+> Zorg ervoor dat uw gebruiker al bestaat in Google Cloud (G Suite) Connector, als inrichten in Azure AD niet is ingeschakeld vóór het testen van eenmalige aanmelding.
 
 > [!NOTE]
 > Neem contact op met het [ondersteuningsteam van Google](https://www.google.com/contact/) als u handmatig een gebruiker moet maken.
 
-## <a name="test-sso"></a>SSO testen 
+## <a name="test-sso"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel van de Google Cloud (G suite)-connector in het toegangs venster klikt, moet u automatisch worden aangemeld bij de Google Cloud (G suite)-connector waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel van Google Cloud (G Suite) Connector klikt, zou u automatisch moeten worden aangemeld bij het exemplaar van Google Cloud (G Suite) Connector waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Lijst met zelf studies voor het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
-- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+- [Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Gebruikers inrichten configureren](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)
+- [Inrichten van gebruikers configureren](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)
 
-- [De Google Cloud (G suite)-connector uitproberen met Azure AD](https://aad.portal.azure.com/)
+- [Google Cloud (G Suite) Connector gebruiken met Azure AD](https://aad.portal.azure.com/)
 
-- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [De Google Cloud (G suite)-connector beveiligen met geavanceerde zicht baarheid en besturings elementen](https://docs.microsoft.com/cloud-app-security/protect-gsuite)
+- [Google Cloud (G Suite) Connector beveiligen met geavanceerde zichtbaarheid en besturingselementen](https://docs.microsoft.com/cloud-app-security/protect-gsuite)
 
 <!--Image references-->
 

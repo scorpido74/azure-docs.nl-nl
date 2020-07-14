@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 12/11/2019
 ms.author: komammas
 ms.custom: mvc, tracking-python
-ms.openlocfilehash: c60f9df87930519684c6c29b1194624342b11528
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: a8f6fe49faf0624f6ef6d4fa8a346e22c69da599
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84555057"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851734"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>Zelfstudie: Python-scripts uitvoeren via Azure Data Factory met behulp van Azure Batch
 
@@ -116,27 +116,27 @@ In deze sectie maakt en valideert u een pijplijn met behulp van uw Python-script
 1. Selecteer in het vak **Factory-resources** de +-knop (plusteken) en selecteer vervolgens **Pijplijn**
 1. Stel op het tabblad **Algemeen** de naam van de pijplijn in als "Python uitvoeren"
 
-    ![](./media/run-python-batch-azure-data-factory/create-pipeline.png)
+    ![Stel op het tabblad Algemeen de naam van de pijplijn in als 'Python uitvoeren'](./media/run-python-batch-azure-data-factory/create-pipeline.png)
 
 1. Vouw in het vak **Activiteiten** **Batch-service** uit. Sleep de aangepaste activiteit uit de werkset **Activiteiten** naar het ontwerpoppervlak voor pijplijnen.
 1. Geef op het tabblad **Algemeen** **testPipeline** op als Naam
 
-    ![](./media/run-python-batch-azure-data-factory/create-custom-task.png)
+    ![Geef op het tabblad Algemeen testPipeline op als naam](./media/run-python-batch-azure-data-factory/create-custom-task.png)
 1. Voeg op het tabblad **Azure Batch** de **Batch-account** toe die in de vorige stappen is gemaakt en kies **Verbinding testen** om ervoor te zorgen dat het succesvol is
 
-    ![](./media/run-python-batch-azure-data-factory/integrate-pipeline-with-azure-batch.png)
+    ![Voeg op het tabblad Azure Batch het Batch-account toe dat in de vorige stappen is gemaakt en test vervolgens de verbinding](./media/run-python-batch-azure-data-factory/integrate-pipeline-with-azure-batch.png)
 
 1. Voer de opdracht **in op het tabblad**Instellingen`python main.py`.
 1. Voeg voor de **Resource gekoppelde service** het opslagaccount toe dat in de vorige stappen is gemaakt. Test de verbinding om er zeker van te zijn dat deze is geslaagd.
 1. Selecteer in het pad **Map** de naam van de **Azure Blob Storage**-container die het Python-script en de bijbehorende invoer bevat. Hiermee worden de geselecteerde bestanden van de container naar de exemplaren voor het groepsknooppunt gedownload voordat het Python-script wordt uitgevoerd.
 
-    ![](./media/run-python-batch-azure-data-factory/create-custom-task-py-script-command.png)
+    ![Selecteer in het mappad de naam van de Azure Blob Storage-container](./media/run-python-batch-azure-data-factory/create-custom-task-py-script-command.png)
 1. Klik in de pijplijnwerkbalk boven het canvas op **Valideren** om de instellingen voor de pijplijn te valideren. Controleer of de pijplijn is gevalideerd. Klik op de &gt;&gt; (pijl-rechts) om de uitvoergegevens van de validatie te sluiten.
 1. Klik op **fouten opsporen** om de pijplijn te testen en te controleren of deze correct werkt.
 1. Klik op **Publiceren** om de pijplijn te publiceren.
 1. Klik op **Activeren** om het Python-script uit te voeren als onderdeel van een batch-proces.
 
-    ![](./media/run-python-batch-azure-data-factory/create-custom-task-py-success-run.png)
+    ![Klik op Activeren om het Python-script uit te voeren als onderdeel van een batch-proces.](./media/run-python-batch-azure-data-factory/create-custom-task-py-success-run.png)
 
 ### <a name="monitor-the-log-files"></a>De logboekbestanden bewaken
 

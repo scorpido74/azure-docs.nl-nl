@@ -1,5 +1,5 @@
 ---
-title: Azure-tabel opslag of Azure Cosmos DB Table-API van node. js gebruiken
+title: Azure Table Storage of de Azure Cosmos DB Table-API van Node.js
 description: Sla gestructureerde gegevens op in de cloud met Azure Table Storage of de Azure Cosmos DB Table-API.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 04/05/2018
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: d04cf082f5dc7ca3ae07b60dc193c66613fa5c4f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 1f0541cd3ae7cf2c78d3cd2bf6844fed930e7968
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76771079"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833144"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Azure Table Storage of de Azure Cosmos DB Table-API van Node.js gebruiken
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -41,16 +41,19 @@ U hebt voor het gebruik van Azure Storage of Azure Cosmos DB de Azure Storage SD
 1. Gebruik een opdrachtregelinterface zoals **PowerShell** (Windows), **Terminal** (Mac) of **Bash** (Unix) en ga naar de map waar u uw toepassing hebt gemaakt.
 2. Typ **npm install azure-storage** in het opdrachtvenster. De uitvoer van de opdracht is vergelijkbaar met het volgende voorbeeld.
 
-       azure-storage@0.5.0 node_modules\azure-storage
-       +-- extend@1.2.1
-       +-- xmlbuilder@0.4.3
-       +-- mime@1.2.11
-       +-- node-uuid@1.4.3
-       +-- validator@3.22.2
-       +-- underscore@1.4.4
-       +-- readable-stream@1.0.33 (string_decoder@0.10.31, isarray@0.0.1, inherits@2.0.1, core-util-is@1.0.1)
-       +-- xml2js@0.2.7 (sax@0.5.2)
-       +-- request@2.57.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, oauth-sign@0.8.0, tunnel-agent@0.4.1, isstream@0.1.2, json-stringify-safe@5.0.1, bl@0.9.4, combined-stream@1.0.5, qs@3.1.0, mime-types@2.0.14, form-data@0.2.0, http-signature@0.11.0, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
+   ```bash
+    azure-storage@0.5.0 node_modules\azure-storage
+    +-- extend@1.2.1
+    +-- xmlbuilder@0.4.3
+    +-- mime@1.2.11
+    +-- node-uuid@1.4.3
+    +-- validator@3.22.2
+    +-- underscore@1.4.4
+    +-- readable-stream@1.0.33 (string_decoder@0.10.31, isarray@0.0.1, inherits@2.0.1, core-util-is@1.0.1)
+    +-- xml2js@0.2.7 (sax@0.5.2)
+    +-- request@2.57.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, oauth-sign@0.8.0, tunnel-agent@0.4.1, isstream@0.1.2, json-stringify-safe@5.0.1, bl@0.9.4, combined-stream@1.0.5, qs@3.1.0, mime-types@2.0.14, form-data@0.2.0, http-signature@0.11.0, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
+   ```
+
 3. U kunt de **ls**-opdracht handmatig uitvoeren om te controleren of een **node_modules**-map is gemaakt. In deze map vindt u het **azure-storage**-pakket. Dit pakket bevat de bibliotheken die u nodig hebt om toegang te krijgen tot opslag.
 
 ### <a name="import-the-package"></a>Het pakket importeren
@@ -68,14 +71,14 @@ var tableSvc = azure.createTableService('myaccount', 'myaccesskey');
 ```
 
 ## <a name="add-an-azure-cosmos-db-connection"></a>Een Azure Cosmos DB-verbinding toevoegen
-Als u een Azure Cosmos DB-verbinding wilt toevoegen, maakt u een **TableService**-object en geeft u uw accountnaam, primaire sleutel en eindpunt op. U kunt deze waarden kopiëren uit de**verbindings reeks** **instellingen** > in de Azure portal voor uw Cosmos DB-account. Bijvoorbeeld:
+Als u een Azure Cosmos DB-verbinding wilt toevoegen, maakt u een **TableService**-object en geeft u uw accountnaam, primaire sleutel en eindpunt op. U kunt deze waarden kopiëren uit **Instellingen** > **Verbindingsreeks** in Azure Portal voor uw Cosmos DB-account. Bijvoorbeeld:
 
 ```javascript
 var tableSvc = azure.createTableService('myaccount', 'myprimarykey', 'myendpoint');
-```  
+```
 
 ## <a name="create-a-table"></a>Een tabel maken
-Met de volgende code maakt u een **TableService**-object en gebruikt u dit om een nieuwe tabel te maken. 
+Met de volgende code maakt u een **TableService**-object en gebruikt u dit om een nieuwe tabel te maken.
 
 ```javascript
 var tableSvc = azure.createTableService();
@@ -94,7 +97,7 @@ tableSvc.createTableIfNotExists('mytable', function(error, result, response){
 `result.created` is `true` als een nieuwe tabel wordt gemaakt, en `false` als de tabel al bestaat. De `response` bevat informatie over de aanvraag.
 
 ### <a name="filters"></a>Filters
-U optioneel filters toepassen op de bewerkingen die worden uitgevoerd met behulp van **TableService**. Filter bewerkingen kunnen logboek registratie, automatische nieuwe pogingen, enzovoort zijn. Filters zijn objecten die een methode implementeren met de hand tekening:
+U optioneel filters toepassen op de bewerkingen die worden uitgevoerd met behulp van **TableService**. Filterbewerkingen kunnen logboekregistratie, automatische nieuwe pogingen, enzovoort bevatten. Filters zijn objecten die een methode implementeren met de handtekening:
 
 ```javascript
 function handle (requestOptions, next)
@@ -136,8 +139,6 @@ var task = {
 
 > [!NOTE]
 > Er is ook een veld **Tijdstempel** voor elk record. Deze wordt door Azure ingesteld wanneer een entiteit wordt ingevoegd of bijgewerkt.
->
->
 
 U kunt ook de **entityGenerator** gebruiken om entiteiten te maken. In het volgende voorbeeld wordt de dezelfde taakentiteit gemaakt met behulp van de **entityGenerator**.
 
@@ -173,8 +174,6 @@ Voorbeeld van een reactie:
 > **insertEntity** retourneert niet standaard de ingevoegde entiteit als onderdeel van de `response`-informatie. Als u van plan bent andere bewerkingen uit te voeren op deze entiteit of de informatie in de cache wilt plaatsen, kan het handig zijn om de entiteit te retourneren als onderdeel van de `result`. U kunt dit doen door **echoContent** in te schakelen, als volgt:
 >
 > `tableSvc.insertEntity('mytable', task, {echoContent: true}, function (error, result, response) {...}`
->
->
 
 ## <a name="update-an-entity"></a>Een entiteit bijwerken
 Er zijn meerdere methoden beschikbaar voor het bijwerken van een bestaande entiteit:
@@ -365,7 +364,7 @@ dc.table.queryEntities(tableName,
 
 Als u het `continuationToken`-object inspecteert, vindt u eigenschappen zoals `nextPartitionKey`, `nextRowKey` en `targetLocation`, die kunnen worden gebruikt om door alle resultaten te lopen.
 
-U kunt ook samen `top` gebruiken `continuationToken` om de pagina grootte in te stellen. 
+U kunt ook `top` ook in combinatie met `continuationToken` om de paginagrootte in te stellen.
 
 ## <a name="work-with-shared-access-signatures"></a>Werken met handtekeningen voor gedeelde toegang
 Shared Access Signatures (SAS) zijn een veilige manier om op detailniveau toegang te bieden tot tabellen zonder dat u de naam of sleutels van uw opslagaccount hoeft te geven. SAS wordt vaak gebruikt voor beperkte toegang tot uw gegevens, bijvoorbeeld om een mobiele app toe te staan om een query uit te voeren op records.
@@ -394,7 +393,7 @@ var host = tableSvc.host;
 
 Houd er rekening mee dat u ook de informatie over de host moet opgeven, aangezien dit is vereist wanneer de SAS-houder toegang probeert te krijgen tot de tabel.
 
-De clienttoepassing maakt dan gebruik van de SAS met **TableServiceWithSAS** om bewerkingen op de tabel uit te voeren. In het volgende voorbeeld wordt verbinding gemaakt met de tabel en een query uitgevoerd. Zie [beperkte toegang verlenen tot Azure storage resources met behulp van het artikel voor Shared Access signatures (SAS)](../storage/common/storage-sas-overview.md) voor de indeling van tableSAS. 
+De clienttoepassing maakt dan gebruik van de SAS met **TableServiceWithSAS** om bewerkingen op de tabel uit te voeren. In het volgende voorbeeld wordt verbinding gemaakt met de tabel en een query uitgevoerd. Zie het artikel [Beperkte toegang verlenen tot Azure Storage-resources via SAS (Shared Access Signatures)](../storage/common/storage-sas-overview.md) voor de indeling van tableSAS.
 
 ```javascript
 // Note in the following command, host is in the format: `https://<your_storage_account_name>.table.core.windows.net` and the tableSAS is in the format: `sv=2018-03-28&si=saspolicy&tn=mytable&sig=9aCzs76n0E7y5BpEi2GvsSv433BZa22leDOZXX%2BXXIU%3D`;
@@ -459,6 +458,6 @@ Zie de volgende informatie bronnen voor meer informatie:
 
 * [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) is een gratis, zelfstandige app van Microsoft waarmee u visueel met Azure Storage-gegevens kunt werken in Windows, macOS en Linux.
 * [Azure Storage SDK voor Node.js](https://github.com/Azure/azure-storage-node)-opslag op GitHub.
-* [Azure voor Node.js-ontwikkelaars](https://docs.microsoft.com/azure/javascript/)
+* [Azure voor Node.js-ontwikkelaars](https://docs.microsoft.com/azure/developer/javascript/)
 * [Een Node.js-web-app maken in Azure](../app-service/app-service-web-get-started-nodejs.md)
 * [Een Node.js-toepassing bouwen en implementeren in een Azure Cloud Service](../cloud-services/cloud-services-nodejs-develop-deploy-app.md) (met Windows PowerShell)

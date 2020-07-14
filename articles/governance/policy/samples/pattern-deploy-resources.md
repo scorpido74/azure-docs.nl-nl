@@ -1,22 +1,22 @@
 ---
-title: 'Patroon: resources implementeren met een beleids definitie'
-description: Dit Azure Policy patroon bevat een voor beeld van het implementeren van resources met een beleids definitie.
+title: 'Patroon: Resources implementeren met een beleidsdefinitie'
+description: Dit Azure Policy-patroon biedt een voorbeeld van het implementeren van resources met een beleidsdefinitie.
 ms.date: 01/31/2020
 ms.topic: sample
-ms.openlocfilehash: a8b6528afbd21c7c667e48965574c9b48c403654
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 7ce93f4895a86905cd31889e853f95a3de640b13
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77172672"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970855"
 ---
-# <a name="azure-policy-pattern-deploy-resources"></a>Azure Policy patroon: resources implementeren
+# <a name="azure-policy-pattern-deploy-resources"></a>Azure Policy-patroon: resources implementeren
 
-Het effect [deployIfNotExists](../concepts/effects.md#deployifnotexists) maakt het mogelijk om een [Azure Resource Manager sjabloon](../../../azure-resource-manager/templates/overview.md) te implementeren bij het maken of bijwerken van een resource die niet aan het beleid voldoet. Deze methode kan worden gebruikt om het afwijzen te gebruiken omdat er resources kunnen worden gemaakt, maar zorgt ervoor dat de wijzigingen worden [doorgevoerd om](../concepts/effects.md#deny) ze compatibel te maken.
+Met het effect [deployIfNotExists](../concepts/effects.md#deployifnotexists) kunt u een [ARM-sjabloon](../../../azure-resource-manager/templates/overview.md) (Azure Resource Manager) implementeren wanneer u een resource maakt of bijwerkt die niet compatibel is. U kunt de voorkeur geven aan deze methode, boven het gebruik van het effect [weigeren](../concepts/effects.md#deny), omdat er nog steeds resources worden gemaakt, maar de wijzigingen in deze resources altijd compatibel zijn.
 
-## <a name="sample-policy-definition"></a>Voor beeld van beleids definitie
+## <a name="sample-policy-definition"></a>Voorbeeld van beleidsdefinitie
 
-Deze beleids definitie maakt gebruik van de operator **Field** om `type` de resource te evalueren die is gemaakt of bijgewerkt. Wanneer die resource een _micro soft. Network/virtualNetworks_is, zoekt het beleid naar een netwerk-Watcher op de locatie van de nieuwe of bijgewerkte bron. Als er geen overeenkomende Network Watcher is gevonden, wordt de Resource Manager-sjabloon geïmplementeerd om de ontbrekende bron te maken.
+Deze beleidsdefinitie maakt gebruik van de operator **veld** om de `type` van de gemaakte of bijgewerkte resource te evalueren. Als deze resource een _Microsoft.Network/virtualNetworks_ is, zoekt het beleid naar een network watcher op de locatie van de nieuwe of bijgewerkte resource. Als er geen overeenkomende network watcher is gevonden, wordt de ARM-sjabloon geïmplementeerd om de ontbrekende resource te maken.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-deploy-resources.json":::
 
@@ -26,25 +26,25 @@ Deze beleids definitie maakt gebruik van de operator **Field** om `type` de reso
 
 :::code language="json" source="~/policy-templates/patterns/pattern-deploy-resources.json" range="18-23":::
 
-De **Eigenschappen. policyRule. then. Details** blok vertelt Azure Policy wat er moet worden gezocht naar de gemaakte of bijgewerkte bron in het **Eigenschappen. policyRule. If** -blok. In dit voor beeld moet een netwerk-Watcher in het **networkWatcherRG** van de resource groep bestaan met een **veld** `location` dat gelijk is aan de locatie van de nieuwe of bijgewerkte bron. Met de `field()` functie krijgt de **existenceCondition** toegang tot de eigenschappen van de nieuwe of bijgewerkte resource, met `location` name de eigenschap.
+Het blok **properties.policyRule.then.details** geeft aan waar met Azure Policy naar moet worden gezocht, gerelateerd aan de gemaakte of bijgewerkte resource in het blok **properties.policyRule.if**. In dit voorbeeld moet een network watcher bestaan in de resourcegroep **networkWatcherRG**, waarbij **veld** `location` gelijk is aan de locatie van de nieuwe of bijgewerkte resource. Met de functie `field()` kan **existenceCondition** toegang krijgen tot eigenschappen van de nieuwe of bijgewerkte resource, met name de eigenschap `location`.
 
 #### <a name="roledefinitionids"></a>roleDefinitionIds
 
 :::code language="json" source="~/policy-templates/patterns/pattern-deploy-resources.json" range="24-26":::
 
-De **roleDefinitionIds** _matrix_ eigenschap roleDefinitionIds in de **Eigenschappen. policyRule. then. Details** blok vertelt de beleids definitie die de beheerde identiteit nodig heeft voor het implementeren van de opgenomen Resource Manager-sjabloon. Deze eigenschap moet worden ingesteld op rollen met de machtigingen die nodig zijn voor de sjabloon implementatie, maar moet het concept ' beginsel van minimale bevoegdheid ' gebruiken, maar alleen de benodigde bewerkingen en niets meer.
+De _matrix_eigenschap **roleDefinitionIds** in het blok **properties.policyRule.then.details** geeft aan de beleidsdefinitie door welke rechten de beheerde identiteit nodig heeft om de opgenomen Resource Manager-sjabloon te implementeren. Deze eigenschap moet zijn ingesteld om rollen te omvatten die machtigingen hebben die nodig zijn voor de sjabloonimplementatie, maar moet gebruikmaken van het concept ‘principe van minste machtigingen’, en mag alleen de benodigde bewerkingen hebben en niets meer.
 
 #### <a name="deployment-template"></a>Implementatiesjabloon
 
-Het gedeelte **implementatie** van de beleids definitie heeft een **Eigenschappen** blok dat de drie kern onderdelen definieert:
+Het **implementatie**gedeelte van de beleidsdefinitie heeft een blok **eigenschappen** waarmee drie kernonderdelen worden gedefinieerd:
 
-- **mode** : met deze eigenschap wordt de [implementatie modus](../../../azure-resource-manager/templates/deployment-modes.md) van de sjabloon ingesteld.
+- **modus**: met deze eigenschap wordt de [implementatiemodus](../../../azure-resource-manager/templates/deployment-modes.md) van de sjabloon ingesteld.
 
-- **sjabloon** : deze eigenschap bevat de sjabloon zelf. In dit voor beeld stelt de **locatie** sjabloon parameter de locatie van de nieuwe Network Watcher-resource in.
+- **sjabloon**: deze eigenschap bevat de sjabloon zelf. In dit voorbeeld wordt met de sjabloonparameter **locatie** de locatie van de nieuwe network watcher-resource ingesteld.
 
   :::code language="json" source="~/policy-templates/patterns/pattern-deploy-resources.json" range="30-44":::
   
-- **para meters** : deze eigenschap definieert de para meters die aan de **sjabloon**worden gegeven. De parameter namen moeten overeenkomen met wat zijn gedefinieerd in de **sjabloon**. In dit voor beeld heeft de para meter de naam **locatie** die overeenkomt met. De waarde van de **locatie** gebruikt `field()` de functie opnieuw om de waarde van de geëvalueerde resource op te halen. Dit is het virtuele netwerk in de **policyRule. If** blok keren.
+- **parameters**: deze eigenschap definieert parameters die worden opgegeven voor de **sjabloon**. De parameternamen moeten overeenkomen met de namen die zijn gedefinieerd voor **sjabloon**. In dit voorbeeld heet de parameter **locatie** zodat deze overeenkomt. De waarde van **locatie** maakt opnieuw gebruik van de functie `field()` om de waarde van de geëvalueerde resource op te halen, wat het virtuele netwerk in het blok **policyRule.if** is.
 
   :::code language="json" source="~/policy-templates/patterns/pattern-deploy-resources.json" range="45-49":::
 

@@ -1,30 +1,23 @@
 ---
-title: Azure CLI-voorbeelden
-description: Azure CLI-voorbeelden voor Azure Batch-service. Meer informatie over het maken van een Batch-account en het toevoegen van een toepassing.
+title: Azure CLI-voorbeelden voor Azure Batch
+description: Meer informatie over het maken van een Batch-account en het toevoegen van een toepassing met Azure CLI.
 ms.topic: sample
-ms.date: 01/29/2018
+ms.date: 07/01/2020
 ms.custom: mvc
-ms.openlocfilehash: 59fc944024e2d51b16193db01ff06f2d434ad1e7
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: ff18043f4d411a70be7ad7f4d373d7c6a8b0e4e1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725751"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85832267"
 ---
 # <a name="azure-cli-examples-for-azure-batch"></a>Azure CLI-voorbeelden voor Azure Batch
 
-De volgende tabel bevat koppelingen naar Azure CLI-voorbeelden voor Azure Batch.
+In de volgende voorbeelden ziet u hoe u met Batch kunt werken aan de hand van Azure CLI.
 
-|  |  |
-|---|---|
-|**Een Batch-account maken**||
-| [Een Batch-account maken in Batch-servicemodus](./scripts/batch-cli-sample-create-account.md) | Hiermee maakt u een Batch-account in de standaardmodus en koppelt het aan een opslagaccount. |
-| [Een Batch-account maken in gebruikersabonnementmodus](./scripts/batch-cli-sample-create-user-subscription-account.md) | Hiermee maakt u een Batch-account in gebruikersabonnementmodus. |
-|**Een toepassing toevoegen**||
-| [Een toepassing toevoegen aan een Batch-account](./scripts/batch-cli-sample-add-application.md) | Hiermee voegt u een toepassing toe en worden pakketten met binaire bestanden geüpload.|
-|**Groepen rekenknooppunten maken en beheren**||
-| [Een Linux-groep maken en beheren](./scripts/batch-cli-sample-manage-linux-pool.md) | Laat zien hoe u een Linux-groep maakt en deze groter of kleiner maakt en beheert. |
-| [Een Windows-groep maken en beheren](./scripts/batch-cli-sample-manage-windows-pool.md) | Laat zien hoe u een Windows-groep maakt en deze groter of kleiner maakt en beheert. |
-|**Jobs en taken uitvoeren**||
-| [Een functie en taken uitvoeren met Batch](./scripts/batch-cli-sample-run-job.md) | In dit script ziet u hoe u een functie uitvoert en taken toevoegt. |
-
+- [Hiermee maakt u een Batch-account in de standaardmodus en koppelt het aan een opslagaccount](./scripts/batch-cli-sample-create-account.md)
+- [Een Batch-account maken in gebruikersabonnementmodus](./scripts/batch-cli-sample-create-user-subscription-account.md)
+- [Een toepassing toevoegen aan een Batch-account en pakketten met binaire bestanden uploaden](./scripts/batch-cli-sample-add-application.md)
+- [Een Linux-groep maken en beheren](./scripts/batch-cli-sample-manage-linux-pool.md)
+- [Een Windows-groep maken en beheren](./scripts/batch-cli-sample-manage-windows-pool.md)
+- [Een functie en taken uitvoeren met Batch](./scripts/batch-cli-sample-run-job.md)

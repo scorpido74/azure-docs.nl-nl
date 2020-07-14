@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met F5 | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en F5.
+title: 'Zelfstudie: Integratie van eenmalige aanmelding (SSO) van Azure Active Directory met F5 | Microsoft Docs'
+description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en F5.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,237 +16,237 @@ ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 984fd0c7946a50922315269c87e08b1c35b74348
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 0fc56fe040528df5b4bd5e9217bd614c4a640c15
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74074762"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608045"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met F5
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Zelfstudie: Integratie van eenmalige aanmelding via Azure Active Directory met F5
 
-In deze zelf studie leert u hoe u F5 kunt integreren met Azure Active Directory (Azure AD). Wanneer u F5 integreert met Azure AD, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u F5 integreert met Azure Active Directory (Azure AD). Wanneer u F5 integreert met Azure AD, kunt u het volgende doen:
 
-* Controle in azure AD die toegang heeft tot F5.
-* Stel uw gebruikers in staat om automatisch te worden aangemeld bij F5 met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure Portal.
+* In Azure AD bepalen wie toegang heeft tot F5.
+* Uw gebruikers zich met hun Azure AD-account automatisch laten aanmelden bij F5.
+* Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende items nodig om aan de slag te gaan:
+U hebt het volgende nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
-* F5-abonnement dat is ingeschakeld voor eenmalige aanmelding (SSO).
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/).
+* Een abonnement op F5 waarvoor eenmalige aanmelding is ingeschakeld.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
+In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* F5 ondersteunt door **SP en IDP** GEÏNITIEERDe SSO
-* F5 SSO kan op drie verschillende manieren worden geconfigureerd.
+* F5 ondersteunt door **SP en IDP** geïnitieerde eenmalige aanmelding
+* Eenmalige aanmelding bij F5 kan op drie verschillende manieren worden geconfigureerd.
 
-- [Eenmalige aanmelding voor F5 configureren voor de geavanceerde Kerberos-toepassing](#configure-f5-single-sign-on-for-advanced-kerberos-application)
+- [Eenmalige aanmelding bij F5 configureren voor geavanceerde Kerberos-toepassing](#configure-f5-single-sign-on-for-advanced-kerberos-application)
 
-- [Eenmalige aanmelding voor F5 configureren voor een toepassing op basis van koptekst](headerf5-tutorial.md)
+- [Eenmalige aanmelding bij F5 configureren voor op een header gebaseerde toepassing](headerf5-tutorial.md)
 
-- [Eenmalige aanmelding voor F5 configureren voor Kerberos-toepassing](kerbf5-tutorial.md)
+- [Eenmalige aanmelding bij F5 configureren voor een Kerberos-toepassing](kerbf5-tutorial.md)
 
 ## <a name="adding-f5-from-the-gallery"></a>F5 toevoegen vanuit de galerie
 
-Als u de integratie van F5 wilt configureren in azure AD, moet u F5 toevoegen vanuit de galerie naar uw lijst met beheerde SaaS-apps.
+Als u de integratie van F5 in Azure AD wilt configureren, moet u F5 vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
-1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
-1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. Typ in de sectie **toevoegen vanuit de galerie** **F5** in het zoekvak.
-1. Selecteer **F5** in het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **Nieuwe toepassing** om een nieuwe toepassing toe te voegen.
+1. Typ in de sectie **Toevoegen vanuit de galerie** **F5** in het zoekvak.
+1. Selecteer **F5** in het resultatenvenster en voeg vervolgens de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-f5"></a>Eenmalige aanmelding voor Azure AD voor F5 configureren en testen
+## <a name="configure-and-test-azure-ad-single-sign-on-for-f5"></a>Eenmalige aanmelding van Azure AD configureren en testen voor F5
 
-Azure AD SSO met F5 configureren en testen met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker op F5.
+Configureer en test eenmalige aanmelding van Azure AD met F5 met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in F5.
 
-Als u Azure AD SSO met F5 wilt configureren en testen, voltooit u de volgende bouw stenen:
+Voltooi de volgende stappen om eenmalige aanmelding bij F5 met Azure AD te configureren en te testen:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
-    1. **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
-    1. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
-1. **[F5-SSO configureren](#configure-f5-sso)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-    1. **[Maak een gebruiker van F5 test](#create-f5-test-user)** : als u een tegen hanger wilt hebben van B. Simon in F5 dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
+1. **[Eenmalige aanmelding van Azure AD configureren](#configure-azure-ad-sso)** : zodat uw gebruikers deze functie kunnen gebruiken.
+    1. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : om eenmalige aanmelding van Azure AD te testen met B.Simon.
+    1. **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** zodat B.Simon eenmalige aanmelding van Azure AD kan gebruiken.
+1. **[Eenmalige aanmelding bij F5 configureren](#configure-f5-sso)** : hier kunt u de instellingen voor eenmalige aanmelding aan de kant van de toepassing configureren.
+    1. **[Een testgebruiker voor F5 maken](#create-f5-test-user)** : als u een tegenhanger van B.Simon in F5 wilt hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+1. **[Eenmalige aanmelding testen](#test-sso)** : om te controleren of de configuratie werkt.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
+## <a name="configure-azure-ad-sso"></a>Eenmalige aanmelding van Azure AD configureren
 
-Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
+Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Ga in het [Azure Portal](https://portal.azure.com/)naar de pagina voor de integratie van de **F5** -toepassing, zoek de sectie **beheren** en selecteer **eenmalige aanmelding**.
-1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
+1. Zoek in [Azure Portal](https://portal.azure.com/) op de integratiepagina van de toepassing **F5** de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Als u de toepassing in de gestarte modus **IDP** wilt configureren, voert u in de sectie **basis configuratie van SAML** de waarden voor de volgende velden in:
+1. Voer in de sectie **Standaard SAML-configuratie** de waarden voor de volgende velden in, als u de toepassing in de met **IDP** geïnitieerde modus wilt configureren:
 
-    a. Typ in het tekstvak **id** een URL met het volgende patroon:`https://<YourCustomFQDN>.f5.com/`
+    a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://<YourCustomFQDN>.f5.com/`
 
     b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://<YourCustomFQDN>.f5.com/`
 
 1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://<YourCustomFQDN>.f5.com/`
+    In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<YourCustomFQDN>.f5.com/`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Neem contact op met het [ondersteunings team](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) van de client om deze waarden op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Neem contact op met het [F5-ondersteuningsteam](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , de **federatieve meta gegevens-XML** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
+1. Ga op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** naar **XML-bestand met federatieve metagegevens** en selecteer **Downloaden** om het certificaat te downloaden. Sla dit vervolgens op de computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-1. Kopieer op de sectie **F5 instellen** de gewenste URL ('s) op basis van uw vereiste.
+1. In de sectie **F5 instellen** kopieert u de juiste URL('s) op basis van uw behoeften.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
+In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
-1. Selecteer **nieuwe gebruiker** boven aan het scherm.
-1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
    1. Voer in het veld **Naam**`B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
-   1. Klik op **maken**.
+   1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
+   1. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan F5.
+In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot F5.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
-1. Selecteer in de lijst toepassingen de optie **F5**.
-1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
+1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **F5** in de lijst met toepassingen.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
-    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
-1. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
+1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-## <a name="configure-f5-sso"></a>F5 SSO configureren
+## <a name="configure-f5-sso"></a>Eenmalige aanmelding bij F5 configureren
 
-- [Eenmalige aanmelding voor F5 configureren voor een toepassing op basis van koptekst](headerf5-tutorial.md)
+- [Eenmalige aanmelding bij F5 configureren voor op een header gebaseerde toepassing](headerf5-tutorial.md)
 
-- [Eenmalige aanmelding voor F5 configureren voor Kerberos-toepassing](kerbf5-tutorial.md)
+- [Eenmalige aanmelding bij F5 configureren voor een Kerberos-toepassing](kerbf5-tutorial.md)
 
-### <a name="configure-f5-single-sign-on-for-advanced-kerberos-application"></a>Eenmalige aanmelding voor F5 configureren voor de geavanceerde Kerberos-toepassing
+### <a name="configure-f5-single-sign-on-for-advanced-kerberos-application"></a>Eenmalige aanmelding bij F5 configureren voor geavanceerde Kerberos-toepassing
 
-1. Open een nieuw webbrowser venster en meld u aan bij uw bedrijfs site van F5 (Geavanceerd Kerberos) als beheerder en voer de volgende stappen uit:
+1. Open een nieuw webbrowservenster en meld u als beheerder bij uw F5 (geavanceerde Kerberos)-bedrijfssite aan en voer de volgende stappen uit:
 
-1. U moet het meta gegevens certificaat importeren in F5 (Advanced Kerberos), dat later wordt gebruikt in het installatie proces. Ga naar **System > Certificate management > Traffic Certificate management >> lijst met SSL-certificaten**. Klik op **importeren** van de rechter bovenhoek.
+1. U moet het metagegevenscertificaat importeren in F5 (geavanceerde Kerberos); dit wordt later gebruikt in het installatieproces. Ga naar **Systeem > Certificaatbeheer > Verkeerscertificaatbeheer >> Lijst met SSL-certificaten**. Klik op **Importeren** in de rechterhoek.
 
-    ![F5-configuratie (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure01.png)
+    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure01.png)
  
-1. Als u de SAML-IDP wilt instellen, gaat u naar **Access > Federation > SAML-Service Provider > > maken op basis van meta gegevens**.
+1. Voor het instellen van de SAML IDP gaat u naar **Toegang > Federation > SAML-serviceprovider > Maken > Uit metagegevens**.
 
-    ![F5-configuratie (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure02.png)
+    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure02.png)
 
-    ![F5-configuratie (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure03.png)
+    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure03.png)
  
-    ![F5-configuratie (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure04.png)
+    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure04.png)
 
-    ![F5-configuratie (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure05.png)
+    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure05.png)
  
-1. Geef het certificaat op dat uit taak 3 is geüpload
+1. Het certificaat opgeven dat bij taak 3 is geüpload
 
-    ![F5-configuratie (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure06.png)
+    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure06.png)
 
-    ![F5-configuratie (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure07.png)
+    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure07.png)
 
- 1. Als u de SAML-SP wilt instellen, gaat u naar **Access > federation > SAML service federation > Local SP Services > maken**.
+ 1. Voor het instellen van de SAML SP gaat u naar **Toegang > Federation > SAML Service Federation > Lokale SP-services > Maken**.
 
-    ![F5-configuratie (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure08.png)
+    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure08.png)
  
 1. Klik op **OK**.
 
-1. Selecteer de SP-configuratie en klik op **BIND/BIND IDP connectes**.
+1. Selecteer de SP-configuratie en klik op **IdP-connectors verbinden/verbinding verbreken**.
 
-     ![F5-configuratie (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure09.png)
+     ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure09.png)
  
  
-1. Klik op **nieuwe rij toevoegen** en selecteer de **externe IDP-connector** die u in de vorige stap hebt gemaakt.
+1. Klik op **Nieuwe rij toevoegen** en selecteer de **Externe IdP-connector** die u in de vorige stap hebt gemaakt.
 
-    ![F5-configuratie (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure10.png)
+    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure10.png)
  
-1. Voor het configureren van Kerberos SSO, **toegang > > Kerberos voor eenmalige aanmelding**
+1. Voor het configureren van Kerberos SSO gaat u naar **Toegang > Eenmalige aanmelding > Kerberos**
 
     >[!Note]
-    >U moet het account voor Kerberos-delegering maken en opgeven. Zie de sectie KCD (Zie de bijlage voor variabelen verwijzingen)
+    >U moet het Kerberos-delegatieaccount maken en opgeven. Verwijzen naar KCD-sectie (verwijzen naar bijlage voor referenties voor variabelen)
 
-    • Bron van gebruikers naam`session.saml.last.attr.name.http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
+    •   Bron voor gebruikersnaam `session.saml.last.attr.name.http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
 
-    • Bron van gebruikers-realm`session.logon.last.domain`
+    •   Bron voor gebruikersrealm `session.logon.last.domain`
 
-    ![F5-configuratie (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure11.png)
+    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure11.png)
 
-1. Voor het configureren van toegangs profielen, **toegang > profiel/beleids regels > toegangs Profiel (per sessie beleid)**.
+1. Voor het configureren van een toegangsprofiel gaat u naar **Toegang > Profiel/Beleid > Toegangsprofiel (beleidsregels per sessie)** .
 
-    ![F5-configuratie (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure12.png)
+    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure12.png)
 
-    ![F5-configuratie (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure13.png)
+    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure13.png)
 
-    ![F5-configuratie (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure14.png)
+    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure14.png)
 
-    ![F5-configuratie (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure15.png)
+    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure15.png)
 
-    ![F5-configuratie (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure16.png)
+    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure16.png)
  
-    * Session. Logon. Last. usernameUPN expr {[mcget {sessie. SAML. Last. Identity}]}
+    * session.logon.last.usernameUPN   expr {[mcget {session.saml.last.identity}]}
 
-    * Session. ad. lastactualdomain tekst-superdemo. Live
+    * session.ad.lastactualdomain  TEXT superdemo.live
 
-    ![F5-configuratie (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure17.png)
+    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure17.png)
 
-    * (userPrincipalName =% {Session. Logon. Last. usernameUPN})
+    * (userPrincipalName=%{session.logon.last.usernameUPN})
 
-    ![F5-configuratie (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure18.png)
+    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure18.png)
 
-    ![F5-configuratie (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure19.png)
+    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure19.png)
 
-    * sessie. Logon. Last. gebruikers naam expr {"[mcget {Session. ad. Last. attr. sAMAccountName}]"}
+    * session.logon.last.username  expr { "[mcget {session.ad.last.attr.sAMAccountName}]" }
 
-    ![F5-configuratie (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure20.png)
+    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure20.png)
 
-    * mcget {Session. Logon. Last. username}
-    * mcget {Session. Logon. Last. password}
+    * mcget {session.logon.last.username}
+    * mcget {session.logon.last.password}
 
-1. Voor het toevoegen van een nieuw knoop punt gaat u naar **lokaal verkeer > knooppunten > knooppunt lijst > +**.
+1. Voor het toevoegen van een nieuw knooppunt gaat u naar **Lokaal verkeer > Knooppunten > Lijst met knooppunten > +** .
 
-    ![F5-configuratie (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure21.png)
+    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure21.png)
  
-1. Als u een nieuwe groep wilt maken, gaat u naar **lokaal verkeer > pools > pool lijst > maken**.
+1. Voor het maken van een nieuwe pool gaat u naar **Lokaal verkeer > Pools > Lijst met pools > Maken**.
 
-     ![F5-configuratie (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure22.png)
+     ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure22.png)
 
- 1. Als u een nieuwe virtuele server wilt maken, gaat u naar **lokaal verkeer > Virtuele Servers > virtuele-server lijst > +**.
+ 1. Voor het maken van een nieuwe virtuele server gaat u naar **Lokaal verkeer > Virtuele servers > Lijst met virtuele servers > +** .
 
-    ![F5-configuratie (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure23.png)
+    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure23.png)
 
-1. Geef het toegangs profiel op dat u in de vorige stap hebt gemaakt.
+1. Geef het toegangsprofiel op dat in de vorige stap is gemaakt.
 
-    ![F5-configuratie (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure24.png) 
+    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure24.png) 
 
 ### <a name="setting-up-kerberos-delegation"></a>Kerberos-delegatie instellen 
 
 >[!Note]
->Zie [hier](https://www.f5.com/pdf/deployment-guides/kerberos-constrained-delegation-dg.pdf) voor meer informatie
+>Kijk [hier](https://www.f5.com/pdf/deployment-guides/kerberos-constrained-delegation-dg.pdf) voor meer details
 
-* **Stap 1: een delegerings account maken**
+* **Stap 1: Een delegatieaccount maken**
 
     * Voorbeeld
     ```
@@ -256,87 +256,87 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
     New-ADUser -Name "APM Delegation Account" -UserPrincipalName host/big-ipuser.superdemo.live@superdemo.live -SamAccountName "big-ipuser" -PasswordNeverExpires $true -Enabled $true -AccountPassword (Read-Host -AsSecureString "Password!1234")
     ```
 
-* **Stap 2: SPN instellen (op het APM delegerings account)**
+* **Stap 2: SPN instellen (in het APM-delegatieaccount)**
 
     *  Voorbeeld
     ```
     setspn –A host/big-ipuser.superdemo.live big-ipuser
     ```
 
-* **Stap 3: SPN-overdracht (voor het App Service-account)**
+* **Stap 3: SPN-delegatie (voor het App Service-account)**
 
-    * Stel de juiste overdracht voor het account voor de F5-delegering in.
-    * In het onderstaande voor beeld wordt APM-delegering account geconfigureerd voor KCD voor FRP-App1. superdemo. live.
+    * Stel de juiste delegatie voor het F5-delegatieaccount in.
+    * In het onderstaande voorbeeld wordt een APM-delegatieaccount geconfigureerd voor KCD voor de app FRP-App1.superdemo.live.
 
-        ![F5-configuratie (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure25.png)
+        ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure25.png)
 
-1. Geef de [Details op zoals](https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-authentication-single-sign-on-11-5-0/2.html) vermeld in het bovenstaande referentie document
+1. Geef de details op zoals [hier](https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-authentication-single-sign-on-11-5-0/2.html) in het bovenstaande referentiedocument wordt vermeld
 
-1. Bijlage-overzicht van de volgende IP-adressen van SAML – F5 voor BIGx:
+1. Bijlage - Toewijzingen van SAML – F5 BIG-IP-variabelen wordt hieronder weergegeven:
 
-    ![F5-configuratie (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure26.png)
+    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure26.png)
 
-    ![F5-configuratie (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure27.png) 
+    ![Configuratie van F5 (geavanceerde Kerberos)](./media/advance-kerbf5-tutorial/configure27.png) 
 
-1. Hieronder ziet u de volledige lijst met standaard-SAML-kenmerken. De OpgegevenNaam wordt weer gegeven met de volgende teken reeks.
+1. Hieronder ziet u de hele lijst met SAML-standaardkenmerken. GivenName wordt weergegeven met behulp van de volgende tekenreeks.
 `session.saml.last.attr.name.http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
 
-| | |
+| Sessie | Kenmerk |
 | -- | -- |
-| eb46b6b6. Session. SAML. Last. assertionID | `<TENANT ID>` |
-| eb46b6b6. Session. SAML. Last. assertionIssueInstant  | `<ID>` |
-| eb46b6b6. Session. SAML. Last. assertionIssuer | `https://sts.windows.net/<TENANT ID>`/ |
-| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.Microsoft.com/claims/authnmethodsreferences | `http://schemas.microsoft.com/ws/2008/06/identity/authenticationmethod/password` |
-| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.Microsoft.com/Identity/claims/DisplayName | user0 |
-| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.Microsoft.com/Identity/claims/identityprovider | `https://sts.windows.net/<TENANT ID>/` |
-| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.Microsoft.com/Identity/claims/objectidentifier | `<TENANT ID>` |
-| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.Microsoft.com/Identity/claims/tenantid | `<TENANT ID>` |
-| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.xmlsoap.org/WS/2005/05/Identity/claims/EmailAddress | `user0@superdemo.live` |
-| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.xmlsoap.org/WS/2005/05/Identity/claims/givenName | user0 |
-| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.xmlsoap.org/WS/2005/05/Identity/claims/name | `user0@superdemo.live` |
-| eb46b6b6. Session. SAML. Last. attr. name. http:\//schemas.xmlsoap.org/WS/2005/05/Identity/claims/surname | 0 |
-| eb46b6b6. Session. SAML. Last. doelgroep | `https://kerbapp.superdemo.live` |
-| eb46b6b6. Session. SAML. Last. authNContextClassRef | urn: Oasis: names: TC: SAML: 2.0: AC: classes: password |
-| eb46b6b6. Session. SAML. Last. authNInstant | `<ID>` |
-| eb46b6b6. Session. SAML. Last. Identity | `user0@superdemo.live` |
-| eb46b6b6. Session. SAML. Last. inResponseTo | `<TENANT ID>` |
-| eb46b6b6. Session. SAML. Last. nameIDValue | `user0@superdemo.live` |
-| eb46b6b6. Session. SAML. Last. nameIdFormat | urn: Oasis: names: TC: SAML: 1.1: NameID-indeling: emailAddress |
-| eb46b6b6. Session. SAML. Last. responseDestination | `https://kerbapp.superdemo.live/saml/sp/profile/post/acs` |
-| eb46b6b6. Session. SAML. Last. responseId | `<TENANT ID>` |
-| eb46b6b6. Session. SAML. Last. responseIssueInstant | `<ID>` |
-| eb46b6b6. Session. SAML. Last. responseIssuer | `https://sts.windows.net/<TENANT ID>/` |
-| eb46b6b6. Session. SAML. Last. Result | 1 |
-| eb46b6b6. Session. SAML. Last. samlVersion | 2.0 |
-| eb46b6b6. Session. SAML. Last. sessionIndex | `<TENANT ID>` |
-| eb46b6b6. Session. SAML. Last. statusValue | urn: Oasis: names: TC: SAML: 2.0: status: geslaagd |
-| eb46b6b6. Session. SAML. Last. subjectConfirmDataNotOnOrAfter | `<ID>` |
-| eb46b6b6. Session. SAML. Last. subjectConfirmDataRecipient | `https://kerbapp.superdemo.live/saml/sp/profile/post/acs` |
-| eb46b6b6. Session. SAML. Last. subjectConfirmMethod | urn: Oasis: names: TC: SAML: 2,0: cm: Bearer |
-| eb46b6b6. Session. SAML. Last. validityNotBefore | `<ID>` |
-| eb46b6b6. Session. SAML. Last. validityNotOnOrAfter | `<ID>` |
+| eb46b6b6.session.saml.last.assertionID | `<TENANT ID>` |
+| eb46b6b6.session.saml.last.assertionIssueInstant  | `<ID>` |
+| eb46b6b6.session.saml.last.assertionIssuer | `https://sts.windows.net/<TENANT ID>`/ |
+| eb46b6b6.session.saml.last.attr.name.http:\//schemas.microsoft.com/claims/authnmethodsreferences | `http://schemas.microsoft.com/ws/2008/06/identity/authenticationmethod/password` |
+| eb46b6b6.session.saml.last.attr.name.http:\//schemas.microsoft.com/identity/claims/displayname | user0 |
+| eb46b6b6.session.saml.last.attr.name.http:\//schemas.microsoft.com/identity/claims/identityprovider | `https://sts.windows.net/<TENANT ID>/` |
+| eb46b6b6.session.saml.last.attr.name.http:\//schemas.microsoft.com/identity/claims/objectidentifier | `<TENANT ID>` |
+| eb46b6b6.session.saml.last.attr.name.http:\//schemas.microsoft.com/identity/claims/tenantid | `<TENANT ID>` |
+| eb46b6b6.session.saml.last.attr.name.http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress | `user0@superdemo.live` |
+| eb46b6b6.session.saml.last.attr.name.http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname | user0 |
+| eb46b6b6.session.saml.last.attr.name.http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/name | `user0@superdemo.live` |
+| eb46b6b6.session.saml.last.attr.name.http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/surname | 0 |
+| eb46b6b6.session.saml.last.audience | `https://kerbapp.superdemo.live` |
+| eb46b6b6.session.saml.last.authNContextClassRef | urn:oasis:names:tc:SAML:2.0:ac:classes:Password |
+| eb46b6b6.session.saml.last.authNInstant | `<ID>` |
+| eb46b6b6.session.saml.last.identity | `user0@superdemo.live` |
+| eb46b6b6.session.saml.last.inResponseTo | `<TENANT ID>` |
+| eb46b6b6.session.saml.last.nameIDValue | `user0@superdemo.live` |
+| eb46b6b6.session.saml.last.nameIdFormat | urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress |
+| eb46b6b6.session.saml.last.responseDestination | `https://kerbapp.superdemo.live/saml/sp/profile/post/acs` |
+| eb46b6b6.session.saml.last.responseId | `<TENANT ID>` |
+| eb46b6b6.session.saml.last.responseIssueInstant | `<ID>` |
+| eb46b6b6.session.saml.last.responseIssuer | `https://sts.windows.net/<TENANT ID>/` |
+| eb46b6b6.session.saml.last.result | 1 |
+| eb46b6b6.session.saml.last.samlVersion | 2.0 |
+| eb46b6b6.session.saml.last.sessionIndex | `<TENANT ID>` |
+| eb46b6b6.session.saml.last.statusValue | urn:oasis:names:tc:SAML:2.0:status:Success |
+| eb46b6b6.session.saml.last.subjectConfirmDataNotOnOrAfter | `<ID>` |
+| eb46b6b6.session.saml.last.subjectConfirmDataRecipient | `https://kerbapp.superdemo.live/saml/sp/profile/post/acs` |
+| eb46b6b6.session.saml.last.subjectConfirmMethod | urn:oasis:names:tc:SAML:2.0:cm:bearer |
+| eb46b6b6.session.saml.last.validityNotBefore | `<ID>` |
+| eb46b6b6.session.saml.last.validityNotOnOrAfter | `<ID>` |
 
-### <a name="create-f5-test-user"></a>Een F5 test gebruiker maken
+### <a name="create-f5-test-user"></a>Een F5-testgebruiker maken
 
-In deze sectie maakt u een gebruiker met de naam B. Simon in F5. Werk samen met het [ondersteunings team voor F5-clients](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) om de gebruikers toe te voegen op het F5-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken. 
+In dit gedeelte maakt u in F5 een gebruiker met de naam B.Simon. Werk samen met het  [ondersteuningsteam van F5 Client](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) om de gebruikers toe te voegen in het F5-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken. 
 
-## <a name="test-sso"></a>SSO testen 
+## <a name="test-sso"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de F5-tegel in het toegangs venster klikt, moet u automatisch worden aangemeld bij de F5 waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel F5 in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van F5 waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Lijst met zelf studies voor het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
 - [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Probeer F5 met Azure AD](https://aad.portal.azure.com/)
+- [F5 proberen met Azure AD](https://aad.portal.azure.com/)
 
-- [Eenmalige aanmelding voor F5 configureren voor een toepassing op basis van koptekst](headerf5-tutorial.md)
+- [Eenmalige aanmelding bij F5 configureren voor op een header gebaseerde toepassing](headerf5-tutorial.md)
 
-- [Eenmalige aanmelding voor F5 configureren voor Kerberos-toepassing](kerbf5-tutorial.md)
+- [Eenmalige aanmelding bij F5 configureren voor een Kerberos-toepassing](kerbf5-tutorial.md)
 

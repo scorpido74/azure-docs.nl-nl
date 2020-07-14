@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 06/25/2019
+ms.date: 07/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 81732f13b85a7c0b514aad61c40802f4547957c2
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 2b5789acfbb088ca8dbeb731b1ce7748041233cb
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219126"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960508"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Zelfstudie: Gegevens kopiëren naar Azure Data Box via NFS
 
@@ -48,7 +48,7 @@ Onder blok-blob- en pagina-blob-shares zijn entiteiten op het eerste niveau cont
 
 In de volgende tabel ziet u het UNC-pad naar de shares op uw Data Box en de URL van het Azure Storage-pad waarnaar de gegevens worden geüpload. De uiteindelijke URL van het Azure Storage-pad kan worden afgeleid van het UNC-pad naar de shares.
  
-|                   |                                                            |
+| Azure Storage-type| Data Box-shares                                       |
 |-------------------|--------------------------------------------------------------------------------|
 | Azure-blok-blobs | <li>UNC-pad naar shares: `//<DeviceIPAddress>/<StorageAccountName_BlockBlob>/<ContainerName>/files/a.txt`</li><li>Azure Storage-URL: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li> |  
 | Azure-pagina-blobs  | <li>UNC-pad naar shares: `//<DeviceIPAddres>/<StorageAccountName_PageBlob>/<ContainerName>/files/a.txt`</li><li>Azure Storage-URL: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li>   |  
@@ -58,7 +58,7 @@ Voer de volgende stappen uit om Data Box zo te configureren dat toegang tot NFS-
 
 1. Geef de IP-adressen op van de clients die toegang hebben tot de share. Ga in de lokale gebruikersinterface naar de pagina **Verbinding maken en kopiëren**. Klik onder **NFS-instellingen** op **NFS-clienttoegang**. 
 
-    ![NFS-clienttoegang configureren 1](media/data-box-deploy-copy-data/nfs-client-access.png)
+    ![NFS-clienttoegang configureren 1](media/data-box-deploy-copy-data/nfs-client-access-1.png)
 
 2. Geef het IP-adres op van de NFS-client en klik op **Toevoegen**. U kunt deze stap herhalen om toegang voor meerdere NFS-clients te configureren. Klik op **OK**.
 
@@ -139,7 +139,19 @@ Volg deze richtlijnen als u rsync gebruikt voor een kopie met meerdere threads:
 > [!IMPORTANT]
 > De volgende Linux-bestandstypen worden niet ondersteund: symbolische koppelingen, tekenbestanden, blokbestanden, sockets en pijpen. Deze bestandstypen veroorzaken fouten tijdens de stap **Voorbereiden voor verzending**.
 
-Open de doelmap om de gekopieerde bestanden weer te geven en te controleren. Download de foutbestanden om problemen op te lossen als er fouten zijn opgetreden tijdens het kopiëren. Zie [Foutenlogboeken bekijken tijdens het kopiëren van gegevens naar Data Box](data-box-logs.md#view-error-log-during-data-copy) voor meer informatie. Zie [Problemen met Data Box oplossen](data-box-troubleshoot.md) voor een gedetailleerde lijst met fouten tijdens het kopiëren van gegevens.
+Als er fouten zijn tijdens het kopieerproces, krijgt u een melding.
+
+![Fouten downloaden en bekijken op Verbinding maken en kopiëren](media/data-box-deploy-copy-data/view-errors-1.png)
+
+Selecteer **Lijst met problemen downloaden**.
+
+![Fouten downloaden en bekijken op Verbinding maken en kopiëren](media/data-box-deploy-copy-data/view-errors-2.png)
+
+Open de lijst om de details van de fout weer te geven en selecteer de oplossings-URL om de aanbevolen oplossing weer te geven.
+
+![Fouten downloaden en bekijken op Verbinding maken en kopiëren](media/data-box-deploy-copy-data/view-errors-3.png)
+
+Zie [Foutenlogboeken bekijken tijdens het kopiëren van gegevens naar Data Box](data-box-logs.md#view-error-log-during-data-copy) voor meer informatie. Zie [Problemen met Data Box oplossen](data-box-troubleshoot.md) voor een gedetailleerde lijst met fouten tijdens het kopiëren van gegevens.
 
 Om de gegevensintegriteit te garanderen wordt de controlesom inline berekend terwijl de gegevens worden gekopieerd. Verifieer de gebruikte ruimte en vrije ruimte op uw apparaat na het kopiëren.
 

@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: 515fd9bfedc5bc5d3cefda2a357c351f515fb5f5
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: ebf948fdb1df76cb7bcb03ee5d85f581d856524f
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194668"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85918727"
 ---
 # <a name="introduction"></a>Inleiding
 
@@ -30,7 +30,7 @@ De Azure Synapse Apache Spark pool naar Synapse SQL-connector is een gegevensbro
 
 ## <a name="authentication-in-azure-synapse-analytics"></a>Verificatie in Azure Synapse Analytics
 
-Verificatie tussen systemen wordt in Azure Synapse Analytics naadloos gemaakt. Er is een tokenservice die verbinding maakt met Azure Active Directory om beveiligingstokens te verkrijgen die kunnen worden gebruikt bij het openen van het opslagaccount of de datawarehouse-server. 
+Verificatie tussen systemen wordt in Azure Synapse Analytics naadloos gemaakt. Er is een tokenservice die verbinding maakt met Azure Active Directory om beveiligingstokens te verkrijgen die kunnen worden gebruikt bij het openen van het opslagaccount of de datawarehouse-server.
 
 Daarom is het niet nodig om referenties te maken of op te geven in de connector-API zolang AAD-verificatie is geconfigureerd op het opslagaccount en de datawarehouse-server. Als dat niet het geval is, kan de SQL-verificatie worden opgegeven. Meer informatie vindt u in de sectie [Gebruik](#usage).
 
@@ -40,19 +40,27 @@ Daarom is het niet nodig om referenties te maken of op te geven in de connector-
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Laat d erol **db_exporter** in de database/SQL-pool waarnaar u gegevens wilt overdragen.
+- Moet lid zijn van de rol **db_exporter** in de database/SQL-pool waarnaar of waaruit u gegevens wilt overdragen.
+- Moet lid zijn van de rol Inzender voor Storage Blob-gegevens voor het standaardopslagaccount.
 
-Als u gebruikers wilt maken, maakt u verbinding met de database en volgt u deze voorbeelden:
+Als u gebruikers wilt maken, maakt u verbinding met de SQL-pooldatabase en volgt u deze voorbeelden:
 
 ```sql
+--SQL User
 CREATE USER Mary FROM LOGIN Mary;
+
+--Azure Active Directory User
 CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 ```
 
 Om een rol toe te wijzen:
 
 ```sql
+--SQL User
 EXEC sp_addrolemember 'db_exporter', 'Mary';
+
+--Azure Active Directory User
+EXEC sp_addrolemember 'db_exporter',[mike@contoso.com]
 ```
 
 ## <a name="usage"></a>Gebruik
@@ -72,7 +80,7 @@ De instructies voor importeren zijn niet vereist, ze worden vooraf geïmporteerd
 #### <a name="read-api"></a>API lezen
 
 ```scala
-val df = spark.read.sqlanalytics("[DBName].[Schema].[TableName]")
+val df = spark.read.sqlanalytics("<DBName>.<Schema>.<TableName>")
 ```
 
 De bovenstaande API werkt zowel voor interne (beheerde) als voor externe tabellen in de SQL-pool.
@@ -80,17 +88,51 @@ De bovenstaande API werkt zowel voor interne (beheerde) als voor externe tabelle
 #### <a name="write-api"></a>API schrijven
 
 ```scala
-df.write.sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
+df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
-waarbij Table Type Constants.INTERNAL of Constants.EXTERNAL kan zijn
+De schrijf-API maakt de tabel in de SQL-pool en roept vervolgens Polybase aan om de gegevens te laden.  De tabel mag niet voorkomen in de SQL-pool, anders wordt er een foutbericht geretourneerd met de mededeling dat er al een object met die naam bestaat.
+
+TableType-waarden
+
+- Constants.INTERNAL: beheerde tabel in SQL-pool
+- Constants.EXTERNAL: externe tabel in SQL-pool
+
+Beheerde tabel in SQL-pool
 
 ```scala
-df.write.sqlanalytics("[DBName].[Schema].[TableName]", Constants.INTERNAL)
-df.write.sqlanalytics("[DBName].[Schema].[TableName]", Constants.EXTERNAL)
+df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", Constants.INTERNAL)
 ```
 
-De verificatie voor opslag en de SQL-server is voltooid
+Externe tabel in SQL-pool
+
+Als u naar een externe tabel van een SQL-pool wilt schrijven, moeten er een EXTERNE GEGEVENSBRON en een EXTERNE BESTANDSINDELING bestaan in de SQL-pool.  Lees voor meer informatie [een externe gegevensbron maken](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) en [externe bestandsindelingen](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) in SQL-pool.  Hieronder staan voorbeelden voor het maken van een externe gegevensbron en externe bestandsindelingen in SQL-pool.
+
+```sql
+--For an external table, you need to pre-create the data source and file format in SQL pool using SQL queries:
+CREATE EXTERNAL DATA SOURCE <DataSourceName>
+WITH
+  ( LOCATION = 'abfss://...' ,
+    TYPE = HADOOP
+  ) ;
+
+CREATE EXTERNAL FILE FORMAT <FileFormatName>
+WITH (  
+    FORMAT_TYPE = PARQUET,  
+    DATA_COMPRESSION = 'org.apache.hadoop.io.compress.SnappyCodec'  
+);
+```
+
+Een EXTERN REFERENTIEOBJECT is niet nodig bij het gebruik van Azure Active Directory-pass-through-verificatie voor het opslagaccount.  Zorg ervoor dat u lid bent van de rol 'Inzender voor Storage Blob-gegevens' voor het opslagaccount.
+
+```scala
+
+df.write.
+    option(Constants.DATA_SOURCE, <DataSourceName>).
+    option(Constants.FILE_FORMAT, <FileFormatName>).
+    sqlanalytics("<DBName>.<Schema>.<TableName>", Constants.EXTERNAL)
+
+```
 
 ### <a name="if-you-are-transferring-data-to-or-from-a-sql-pool-or-database-outside-the-workspace"></a>Als u gegevens overbrengt naar of van een SQL-pool of database buiten de werkruimte
 
@@ -114,8 +156,8 @@ sqlanalytics("<DBName>.<Schema>.<TableName>")
 
 ```scala
 df.write.
-option(Constants.SERVER, "[samplews].[database.windows.net]").
-sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
+option(Constants.SERVER, "samplews.database.windows.net").
+sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
 ### <a name="using-sql-auth-instead-of-aad"></a>SQL-verificatie gebruiken in plaats van AAD
@@ -127,8 +169,8 @@ De connector biedt momenteel geen ondersteuning voor verificatie op basis van to
 ```scala
 val df = spark.read.
 option(Constants.SERVER, "samplews.database.windows.net").
-option(Constants.USER, [SQLServer Login UserName]).
-option(Constants.PASSWORD, [SQLServer Login Password]).
+option(Constants.USER, <SQLServer Login UserName>).
+option(Constants.PASSWORD, <SQLServer Login Password>).
 sqlanalytics("<DBName>.<Schema>.<TableName>")
 ```
 
@@ -136,10 +178,10 @@ sqlanalytics("<DBName>.<Schema>.<TableName>")
 
 ```scala
 df.write.
-option(Constants.SERVER, "[samplews].[database.windows.net]").
-option(Constants.USER, [SQLServer Login UserName]).
-option(Constants.PASSWORD, [SQLServer Login Password]).
-sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
+option(Constants.SERVER, "samplews.database.windows.net").
+option(Constants.USER, <SQLServer Login UserName>).
+option(Constants.PASSWORD, <SQLServer Login Password>).
+sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
 ### <a name="using-the-pyspark-connector"></a>De PySpark-connector gebruiken
@@ -166,7 +208,7 @@ pysparkdftemptable.write.sqlanalytics("sqlpool.dbo.PySparkTable", Constants.INTE
 
 Lees in het leesscenario de gegevens met behulp van Scala en schrijf deze in een tijdelijke tabel, en gebruik Spark SQL in PySpark om de tijdelijke tabel in een dataframe aan te vragen.
 
-## <a name="allowing-other-users-to-use-the-dw-connector-in-your-workspace"></a>Andere gebruikers toestaan de DW-connector in uw werkruimte te gebruiken
+## <a name="allowing-other-users-to-use-the-azure-synapse-apache-spark-to-synapse-sql-connector-in-your-workspace"></a>Andere gebruikers toestaan om de connector van Azure Synapse Apache Spark naar Synapse SQL in uw werkruimte te gebruiken
 
 U moet de eigenaar van de opslagblobgegevens zijn op het ADLS Gen2-opslagaccount dat is verbonden met de werkruimte om ontbrekende machtigingen voor anderen te wijzigen. Zorg ervoor dat de gebruiker toegang heeft tot de werkruimte en de machtigingen voor het uitvoeren van notebooks.
 
@@ -178,7 +220,7 @@ U moet de eigenaar van de opslagblobgegevens zijn op het ADLS Gen2-opslagaccount
 
 - Geef de volgende ACL's op in de mappenstructuur:
 
-| Map | / | synapse | workspaces  | <workspacename> | sparkpools | <sparkpoolname>  | sparkpoolinstances  |
+| Map | / | synapse | workspaces  | \<workspacename> | sparkpools | \<sparkpoolname>  | sparkpoolinstances  |
 |--|--|--|--|--|--|--|--|
 | Toegangsmachtigingen | --X | --X | --X | --X | --X | --X | -WX |
 | Standaardmachtigingen | ---| ---| ---| ---| ---| ---| ---|

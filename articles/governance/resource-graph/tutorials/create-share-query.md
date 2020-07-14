@@ -1,18 +1,18 @@
 ---
 title: "Zelfstudie: Query's beheren in Azure-portal"
 description: In deze zelfstudie maakt u een Resource Graph-query en deelt u de nieuwe query met anderen in het Azure-portal.
-ms.date: 05/20/2020
+ms.date: 06/29/2020
 ms.topic: tutorial
-ms.openlocfilehash: 80725bd03d31a4985374005fe68a62e16aaef000
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: c3da623e8bea44cc49e4ef46517ce461459405a9
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148018"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970583"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Zelfstudie: Een Azure Resource Graph-query maken en delen in het Azure-portal
 
-Met Azure Resource Graph Explorer kunt u uw Resource Graph-query's rechtstreeks in de Azure-portal opslaan. Er zijn twee soorten query's: _Persoonlijke_ en _gedeelde_. Een persoonlijke query wordt opgeslagen in de instellingen van uw Azure-portal. Een gedeelde query is een resource voor Resource Manager die kan worden beheerd met op rollen gebaseerd toegangsbeheer (RBAC) en beveiligd met resourcevergrendelingen. Beide typen query's zijn versleuteld als ze inactief zijn.
+Met Azure Resource Graph Explorer kunt u uw Resource Graph-query's rechtstreeks in de Azure-portal opslaan. Er zijn twee soorten query's: _Persoonlijke_ en _gedeelde_. Een persoonlijke query wordt opgeslagen in de instellingen van uw Azure-portal. Een gedeelde query is een resource voor Azure Resource Manager die kan worden beheerd met op rollen gebaseerd toegangsbeheer (RBAC) en beveiligd met resourcevergrendelingen. Beide typen query's zijn versleuteld als ze inactief zijn.
 
 Door query's op te slaan in de Azure-portal bespaart u de tijd die u anders mogelijk kwijt bent met het zoeken naar uw favoriete of veelgebruikte query's. Wanneer u query's deelt, helpt u uw team doelstellingen van consistentie en efficiëntie te halen door middel van herhaling.
 
@@ -45,7 +45,6 @@ Persoonlijke query's zijn alleen toegankelijk en zichtbaar voor het account dat 
    Selecteer **Query uitvoeren** om de zoekresultaten in het onderste deelvenster weer te geven.
 
    Zie [Voorbeelden, aantal virtuele machines per type besturingssysteem](../samples/starter.md#count-os) voor meer informatie over deze query.
-
 
 1. Selecteer **Opslaan** of **Opslaan als**, voer **Aantal vm's per besturingssysteem** in als naam en laat het type staan op **Persoonlijke query**. Selecteer dan **Opslaan** aan de onderkant van het deelvenster **Query opslaan**. De titel van het tabblad verandert van **Query 1** naar **Aantal vm's per besturingssysteem**.
 
@@ -80,8 +79,7 @@ Om een nieuwe gedeelde query te maken, volgt u deze stappen:
 
 1. Selecteer **Opslaan** of **Opslaan als**.
 
-   
-   ![Sla de nieuwe query op met de knop Opslaan](../media/create-share-query/save-shared-query-buttons.png)
+   :::image type="content" source="../media/create-share-query/save-shared-query-buttons.png" alt-text="Sla de nieuwe query op met de knop Opslaan" border="false":::
 
 1. Voer in het deelvenster **Query opslaan** de naam **Aantal vm's per besturingssysteem** in.
 
@@ -91,7 +89,7 @@ Om een nieuwe gedeelde query te maken, volgt u deze stappen:
 
 1. Selecteer **Opslaan** aan de onderkant van het deelvenster **Query opslaan**. De titel van het tabblad verandert van **Query 1** naar **Aantal vm's per besturingssysteem**. De eerste keer dat de resourcegroep **resource-graph-query's** wordt gebruikt, duurt het opslaan langer dan verwacht, omdat de resourcegroep wordt gemaakt.
    
-   ![De nieuwe query opslaan als een gedeelde query](../media/create-share-query/save-shared-query-window.png)
+   :::image type="content" source="../media/create-share-query/save-shared-query-window.png" alt-text="De nieuwe query opslaan als een gedeelde query" border="false":::
 
    > [!NOTE] 
    > U kunt het selectievakje **Publiceren naar resourcegroep resource-graph-query's** uitschakelen als u de naam van een bestaande resourcegroep wilt opgeven om de query in op te slaan. Als u de standaardnaam van de resourcegroep gebruikt voor query's, zijn de gedeelde query's eenvoudiger te vinden. Ook is zo het doel van die resourcegroep duidelijker. U kunt er echter om beveiligingsredenen op basis van bestaande machtigingen voor kiezen een bestaande resourcegroep te selecteren.
@@ -100,7 +98,7 @@ Om een nieuwe gedeelde query te maken, volgt u deze stappen:
 
 1. Selecteer **Een query openen**. Controleer of het type is ingesteld op **Gedeelde query** en dat de combinatie van **Abonnement** en **Resourcegroep** overeenkomen met waar u de query hebt opgeslagen. Nu verschijnt het item **Aantal vm's per besturingssysteem** in de lijst met **Querynamen**. Selecteer de titelkoppeling van de opgeslagen query om deze te laden in een nieuw tabblad met de naam van die query. Omdat het een gedeelde query is, wordt er in het tabblad naast de naam een pictogram weergegeven om aan te geven dat de query is gedeeld.
 
-   ![De gedeelde query met pictogram weergeven](../media/create-share-query/show-saved-shared-query.png)
+   :::image type="content" source="../media/create-share-query/show-saved-shared-query.png" alt-text="De gedeelde query met pictogram weergeven" border="false":::
 
    > [!NOTE] 
    > Wanneer een opgeslagen query is geopend en het tabblad de naam weergeeft, wordt met de knop **Opslaan** de query bijgewerkt met alle aangebrachte wijzigingen. Om een nieuwe opgeslagen query te maken, selecteert u **Opslaan als** en gaat u door alsof u een nieuwe query opslaat.
@@ -136,6 +134,10 @@ Resources
 | where type == "microsoft.resourcegraph/queries"
 | project name, properties.timeModified, properties.query
 ```
+
+## <a name="run-a-shared-query"></a>Een gedeelde query uitvoeren
+
+Een gedeelde Resource Graph-query kan worden uitgevoerd met de syntaxis `{{shared-query-uri}}` (preview). Zie [Syntaxis voor gedeelde query filteren](../concepts/query-language.md#shared-query-syntax) voor meer informatie.
 
 ## <a name="delete-a-shared-query"></a>Een gedeelde query verwijderen
 

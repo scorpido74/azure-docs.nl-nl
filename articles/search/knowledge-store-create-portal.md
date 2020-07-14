@@ -1,24 +1,21 @@
 ---
-title: Een kennisarchief (preview) maken in het Azure-portal
+title: Een kennisarchief maken in de Azure-portal
 titleSuffix: Azure Cognitive Search
-description: Gebruik de wizard gegevens importeren om een kennisarchief te maken om verrijkte inhoud op te slaan. Maak verbinding met een kennisarchief voor analyses van andere apps of om verrijkte content te sturen naar downstreamprocessen. Deze functie is momenteel beschikbaar als openbare preview-versie.
+description: Gebruik de wizard gegevens importeren om een kennisarchief te maken om verrijkte inhoud op te slaan. Maak verbinding met een kennisarchief voor analyses van andere apps of om verrijkte content te sturen naar downstreamprocessen.
 author: HeidiSteen
 ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/07/2020
-ms.openlocfilehash: 06ddb50173299bbb99518921d1589d2f15b0aa88
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.date: 06/30/2020
+ms.openlocfilehash: 5d21508a794683096009f53314bebca4e4f2ac98
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488678"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565300"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>Quickstart: Een Azure Cognitive Search-kennisarchief maken in het Azure-portal
-
-> [!IMPORTANT] 
-> Dit kennisarchief is momenteel beschikbaar als openbare preview-versie. Deze previewfunctie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie [Aanvullende gebruiksvoorwaarden](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. 
 
 Kennisarchief is een functie van Azure Cognitive Search die uitvoer van een pijplijn voor inhoudsverwerking opslaat voor verdere analyse of downstreamverwerking. 
 
@@ -34,10 +31,10 @@ Voordat u begint, moet u het volgende hebben:
 
 + Een Azure Cognitive Search-service. [Maak een service](search-create-service-portal.md) of [zoek een bestaande service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) in uw huidige abonnement. U kunt een gratis service voor deze quickstart gebruiken. 
 
-+ Een Azure Storage-account met [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/).
++ Een Azure Storage-account met [Blob-opslag](https://docs.microsoft.com/azure/storage/blobs/).
 
 > [!NOTE]
-> Deze quickstart maakt ook gebruik van [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) voor de AI. Omdat de werkbelasting zo klein is, wordt de gratis verwerking (maximaal 20 transacties) van Cognitive Services achter de schermen gebruikt. Dit betekent dat u deze oefening kunt doen zonder dat u een nieuwe Cognitive Services-resource moet aanmaken.
+> Deze quickstart maakt ook gebruik van [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) voor de AI. Omdat de workload zo klein is, wordt de gratis verwerking (maximaal 20 transacties) van Cognitive Services achter de schermen gebruikt. Dit betekent dat u deze oefening kunt doen zonder dat u een nieuwe Cognitive Services-resource moet aanmaken.
 
 ## <a name="set-up-your-data"></a>Uw gegevens voorbereiden
 

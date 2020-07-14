@@ -1,6 +1,6 @@
 ---
-title: "Zelf studie: gegevens kopiëren naar Azure Data Box Blob-opslag via REST-Api's"
-description: Meer informatie over het kopiëren van gegevens naar uw Azure Data Box Heavy Blob-opslag via REST-Api's
+title: "Zelfstudie: Gegevens kopiëren naar Azure Data Box-blobopslag via REST API's"
+description: In deze zelfstudie leest u hoe u gegevens kopieert naar uw Azure Data Box Heavy-blobopslag via REST API's
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 9f3ba0a7e9f7cf72b0eade16679d980fe2207f98
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: a57dc6c57e10c82f9548490c4c2e98fd87f677af
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80297216"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849416"
 ---
-# <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Zelf studie: gegevens kopiëren naar Azure Data Box Blob-opslag via REST-Api's  
+# <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Zelfstudie: Gegevens kopiëren naar Azure Data Box-blobopslag via REST API's  
 
-In deze zelfstudie worden procedures beschreven voor het maken van een *http*- of *https*-verbinding met Azure Data Box-blobopslag via REST API's. Nadat de verbinding tot stand is gebracht, worden de stappen beschreven die nodig zijn om de gegevens naar Data Box Blob-opslag te kopiëren.
+In deze zelfstudie worden procedures beschreven voor het maken van een *http*- of *https*-verbinding met Azure Data Box-blobopslag via REST API's. Als de verbinding tot stand is gebracht, worden ook de benodigde stappen voor het kopiëren van de gegevens naar Data Box-blobopslag beschreven.
 
 In deze zelfstudie leert u het volgende:
 
@@ -30,11 +30,11 @@ In deze zelfstudie leert u het volgende:
 
 Zorg voordat u begint voor het volgende:
 
-1. U hebt de [zelf studie voltooid: stel Azure data Box Heavy](data-box-heavy-deploy-set-up.md)in.
+1. U hebt de zelfstudie [ Azure Data Box Heavy instellen](data-box-heavy-deploy-set-up.md) voltooid.
 2. U hebt de Data Box Heavy ontvangen en de orderstatus in de portal is **Geleverd**.
 3. U hebt de [systeemvereisten voor Data Box-blobopslag](data-box-system-requirements-rest.md) bekeken en bent bekend met de ondersteunde versies van API's, SDK's en hulpprogramma's.
-4. U hebt toegang tot een hostcomputer met de gegevens die u wilt kopiëren naar Data Box Heavy. Op uw hostcomputer moet
-    - Een [ondersteund besturings systeem](data-box-system-requirements.md)uitvoeren.
+4. U hebt toegang tot een hostcomputer waarop de gegevens staan die u naar Data Box Heavy wilt kopiëren. Op uw hostcomputer moet
+    - Een [ondersteund besturingssysteem](data-box-system-requirements.md) worden uitgevoerd.
     - Verbonden zijn met een netwerk met hoge snelheid. Voor de snelste kopieersnelheden kunnen twee verbindingen van 40 GbE (één per knooppunt) naast elkaar worden gebruikt. Als u niet beschikt over een 40-GbE-verbinding, is het advies dat u ten minste twee verbindingen van 10 GbE (één per knooppunt) gebruikt. 
 5. [Download AzCopy 7.1.0](https://aka.ms/azcopyforazurestack20170417) op de hostcomputer. U gebruikt AzCopy om gegevens te kopiëren van uw hostcomputer naar Azure Data Box-blobopslag.
 
@@ -43,10 +43,10 @@ Zorg voordat u begint voor het volgende:
 
 U kunt verbinding maken met Data Box-blobopslag via *http* of *https*.
 
-- *Https* is de veilige en aanbevolen manier om verbinding te maken met data Box Blob-opslag.
+- *Https* is de veiligste en aanbevolen verbindingsmethode voor Data Box-blobopslag.
 - *Http* wordt gebruikt voor verbindingen via vertrouwde netwerken.
 
-De stappen om verbinding te maken wijken af wanneer u verbinding maakt met Data Box Blob-opslag via *http* of *https*.
+De stappen om verbinding te maken zijn afhankelijk van of u verbinding maakt met Data Box-blobopslag via *http* of *https*.
 
 ## <a name="connect-via-http"></a>Verbinding maken via http
 
@@ -58,9 +58,9 @@ Voor een verbinding met Data Box-blobopslag via REST API's via *http* zijn de vo
 Deze stappen worden afzonderlijk beschreven in de volgende gedeelten.
 
 > [!IMPORTANT]
-> Voor Data Box Heavy moet u alle verbindings instructies herhalen om verbinding te maken met het tweede knoop punt.
+> Voor Data Box Heavy moet u alle verbindingsinstructies herhalen om verbinding te maken met het tweede knooppunt.
 
-### <a name="add-device-ip-address-and-blob-service-endpoint"></a>IP-adres van apparaat en BLOB service-eind punt toevoegen
+### <a name="add-device-ip-address-and-blob-service-endpoint"></a>Het IP-adres van het apparaat en het blobservice-eindpunt toevoegen
 
 [!INCLUDE [data-box-add-device-ip](../../includes/data-box-add-device-ip.md)]
 
@@ -77,14 +77,14 @@ Deze stappen worden afzonderlijk beschreven in de volgende gedeelten.
 Voor een verbinding met Azure-blobopslag via REST API's via https zijn de volgende stappen vereist:
 
 - Het certificaat downloaden van Azure Portal
-- Het certificaat op de client of de externe host importeren
-- Het IP-adres van het apparaat en het BLOB-service-eind punt toevoegen aan de client of externe host
+- Het certificaat importeren op de client externe host
+- De apparaat-IP en het blobservice-eindpunt aan de client of externe host toevoegen
 - Software van derden configureren en de verbinding controleren
 
 Deze stappen worden afzonderlijk beschreven in de volgende gedeelten.
 
 > [!IMPORTANT]
-> Voor Data Box Heavy moet u alle verbindings instructies herhalen om verbinding te maken met het tweede knoop punt.
+> Voor Data Box Heavy moet u alle verbindingsinstructies herhalen om verbinding te maken met het tweede knooppunt.
 
 ### <a name="download-certificate"></a>Certificaat downloaden
 
@@ -92,30 +92,30 @@ Gebruik Azure Portal om het certificaat te downloaden.
 
 1. Meld u aan bij Azure Portal.
 2. Ga naar uw Data Box-bestelling en ga vervolgens naar **Algemeen > Apparaatdetails**.
-3. Ga onder **Apparaatreferenties** naar **API-toegang** tot het apparaat. Klik op **downloaden**. Met deze actie wordt ** \<de naam van uw order>. CER** -certificaat bestand gedownload. **Sla** dit bestand op. U installeert dit certificaat op de client- of hostcomputer waarmee u verbinding maakt met het apparaat.
+3. Ga onder **Apparaatreferenties** naar **API-toegang** tot het apparaat. Klik op **Downloaden**. Er wordt een certificaatbestand ( **\<your order name>.cer**) gedownload. **Sla** dit bestand op. U installeert dit certificaat op de client- of hostcomputer waarmee u verbinding maakt met het apparaat.
 
     ![Certificaat downloaden in Azure Portal](media/data-box-deploy-copy-data-via-rest/download-cert-1.png)
  
 ### <a name="import-certificate"></a>Certificaat importeren 
 
-Voor toegang tot Data Box Blob-opslag via HTTPS is een TLS/SSL-certificaat vereist voor het apparaat. De manier waarop dit certificaat beschikbaar wordt gesteld aan de client toepassing, is afhankelijk van de toepassing en andere besturings systemen en distributies. Sommige toepassingen hebben toegang tot het certificaat nadat het is geïmporteerd in het certificaat archief van het systeem, terwijl andere toepassingen geen gebruik maken van dat mechanisme.
+Voor toegang tot Data Box-blobopslag over HTTPS is een TLS-/SSL-certificaat voor het apparaat vereist. De manier waarop dit certificaat beschikbaar wordt gesteld aan de clienttoepassing is afhankelijk van de toepassing, het besturingssysteem en de distributie. Sommige toepassingen kunnen het certificaat openen nadat het is geïmporteerd in het certificaatarchief van het systeem, andere toepassingen maken geen gebruik van dat mechanisme.
 
-In deze sectie wordt specifieke informatie voor sommige toepassingen vermeld. Raadpleeg de documentatie voor de toepassing en het gebruikte besturings systeem voor meer informatie over andere toepassingen.
+In deze sectie wordt specifieke informatie voor bepaalde toepassingen vermeld. Raadpleeg de documentatie voor de toepassing en het gebruikte besturingssysteem voor meer informatie over andere toepassingen.
 
-Volg deze stappen om het `.cer` bestand te importeren in het basis archief van een Windows-of Linux-client. Op een Windows-systeem kunt u Windows Power shell of de Windows Server-gebruikers interface gebruiken om het certificaat te importeren en te installeren op uw systeem.
+Volg deze stappen om het `.cer`-bestand te importeren in het basisarchief van een Windows- of Linux-client. Op een Windows-systeem kunt u Windows PowerShell of de gebruikersinterface van Windows Server gebruiken om het certificaat op uw systeem te importeren en te installeren.
 
 #### <a name="use-windows-powershell"></a>Windows PowerShell gebruiken
 
 1. Start een Windows PowerShell-sessie als beheerder.
-2. Typ het volgende na de opdrachtprompt:
+2. Typ in de opdrachtprompt:
 
     ```
     Import-Certificate -FilePath C:\temp\localuihttps.cer -CertStoreLocation Cert:\LocalMachine\Root
     ```
 
-#### <a name="use-windows-server-ui"></a>Windows Server-gebruikers interface gebruiken
+#### <a name="use-windows-server-ui"></a>Gebruikersinterface voor Windows Server gebruiken
 
-1.  Klik met de rechter `.cer` muisknop op het bestand en selecteer **certificaat installeren**. Met deze actie wordt de wizard Certificaat importeren gestart.
+1.  Klik met de rechtermuisknop op het `.cer`-bestand en selecteer **Certificaat installeren**. Deze actie start de wizard Certificaat importeren.
 2.  Selecteer bij **Archieflocatie** de optie **Lokale computer** en klik op **Volgende**.
 
     ![Certificaat importeren met PowerShell](media/data-box-deploy-copy-data-via-rest/import-cert-ws-1.png)
@@ -130,37 +130,37 @@ Volg deze stappen om het `.cer` bestand te importeren in het basis archief van e
 
 #### <a name="use-a-linux-system"></a>Een Linux-systeem gebruiken
 
-De methode voor het importeren van een certificaat varieert per distributie.
+De methode om een certificaat te importeren varieert per distributie.
 
 > [!IMPORTANT]
-> Voor Data Box Heavy moet u alle verbindings instructies herhalen om verbinding te maken met het tweede knoop punt.
+> Voor Data Box Heavy moet u alle verbindingsinstructies herhalen om verbinding te maken met het tweede knooppunt.
 
-Verschillende, zoals Ubuntu en Debian, gebruikt u de `update-ca-certificates` opdracht.  
+Verschillende distributies, zoals Ubuntu en Debian, gebruiken de opdracht `update-ca-certificates`.  
 
-- Wijzig de naam van het certificaat bestand met `.crt` base64-code ring en kopieer het naar `/usr/local/share/ca-certificates directory`de.
+- Hernoem het met Base64 gecodeerde certificaatbestaand met een `.crt`-extensie en kopieer het in de `/usr/local/share/ca-certificates directory`.
 - Voer de opdracht `update-ca-certificates` uit.
 
-Recente versies van RHEL, Fedora en CentOS gebruiken de `update-ca-trust` opdracht.
+Recente versies van RHEL, Fedora en CentOS gebruiken de opdracht `update-ca-trust`.
 
-- Kopieer het certificaat bestand naar de `/etc/pki/ca-trust/source/anchors` map.
+- Kopieer het bestand naar de map `/etc/pki/ca-trust/source/anchors`.
 - Voer `update-ca-trust` uit.
 
-Raadpleeg de documentatie die specifiek is voor uw distributie voor meer informatie.
+Raadpleeg de documentatie behorend bij uw distributie voor meer informatie.
 
-### <a name="add-device-ip-address-and-blob-service-endpoint"></a>IP-adres van apparaat en BLOB service-eind punt toevoegen 
+### <a name="add-device-ip-address-and-blob-service-endpoint"></a>Het IP-adres van het apparaat en het blobservice-eindpunt toevoegen 
 
-Volg dezelfde stappen om het [IP-adres van het apparaat en het eind punt van de BLOB-service toe te voegen bij het verbinden via *http*](#add-device-ip-address-and-blob-service-endpoint)
+Volg dezelfde stappen om [het IP-adres van het apparaat en het bloB toe te voegen wanneer u verbinding maakt via *http*](#add-device-ip-address-and-blob-service-endpoint).
 
 ### <a name="configure-partner-software-and-verify-connection"></a>Partnersoftware configureren en verbinding controleren
 
-Volg de stappen voor het [configureren van partner software die u hebt gebruikt bij het maken van verbinding via *http*](#configure-partner-software-and-verify-connection). Het enige verschil is dat u de optie *HTTP gebruiken* uitgeschakeld laat.
+Volg de stappen om [Partner-software te configureren die u hebt gebruikt bij het maken van een verbinding via *http*](#configure-partner-software-and-verify-connection). Het enige verschil is dat u de optie *HTTP gebruiken* uitgeschakeld laat.
 
 ## <a name="copy-data-to-data-box-heavy"></a>Gegevens kopiëren naar Data Box Heavy
 
 Nadat u verbinding met de Data Box-blobopslag hebt gemaakt, moet u de gegevens kopiëren. Neem de volgende overwegingen door voordat u gegevens kopieert:
 
--  Zorg er bij het kopiëren van gegevens voor dat de gegevens grootte voldoet aan de grootte limieten die zijn beschreven in de [Azure Storage-en data Box Heavy-limieten](data-box-limits.md).
-- Als gegevens, die door Data Box Heavy worden geüpload, gelijktijdig worden geüpload door andere toepassingen buiten Data Box Heavy, kan dit leiden tot fouten bij het uploaden van taken en beschadiging van gegevens.
+-  Zorg er tijdens het kopiëren van de gegevens voor dat de gegevensgrootte voldoet aan de limieten die staan beschreven in de [limieten voor Azure-opslag en Data Box Heavy](data-box-limits.md).
+- Als de gegevens die door Data Box Heavy worden geüpload gelijktijdig door andere toepassingen buiten Data Box Heavy worden geüpload, kan dit mogelijk fouten met de uploadtaak veroorzaken en daardoor beschadigde gegevens opleveren.
 
 In deze zelfstudie wordt AzCopy gebruikt om gegevens te kopiëren naar Data Box-blobopslag. U kunt de gegevens ook kopiëren met Azure Storage Explorer (als u liever een GUI-hulpprogramma gebruikt) of met partnersoftware.
 
@@ -174,7 +174,7 @@ De kopieerprocedure bestaat uit de volgende stappen:
 Deze stappen worden afzonderlijk in detail beschreven in de volgende gedeelten.
 
 > [!IMPORTANT]
-> Voor Data Box Heavy moet u alle kopieer instructies herhalen om gegevens naar het tweede knoop punt te kopiëren.
+> Voor Data Box Heavy moet u alle kopieerinstructies herhalen om gegevens naar het tweede knooppunt te kopiëren.
 
 ### <a name="create-a-container"></a>Een container maken
 
@@ -197,16 +197,19 @@ U kunt AzCopy gebruiken om alle bestanden in een map te uploaden naar Blob-opsla
 
 #### <a name="linux"></a>Linux
 
-    azcopy \
-        --source /mnt/myfolder \
-        --destination https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
-        --dest-key <key> \
-        --recursive
+```azcopy
+azcopy \
+    --source /mnt/myfolder \
+    --destination https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
+    --dest-key <key> \
+    --recursive
+```
 
 #### <a name="windows"></a>Windows
 
-    AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S
-
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S
+```
 
 Vervang `<key>` door uw accountsleutel. Ga naar uw opslagaccount om uw accountsleutel in Azure Portal op te halen. Ga naar **Instellingen > Toegangssleutels**, selecteer een sleutel en plak deze in de AzCopy-opdracht.
 
@@ -221,18 +224,23 @@ Gebruik AzCopy om bestanden te uploaden op basis van de datum/tijd waarop deze h
 Als u alleen resources wilt kopiëren die niet in het doel bestaan, geeft u zowel `--exclude-older` als `--exclude-newer` (Linux) of `/XO` als `/XN` (Windows) als parameters op in de AzCopy-opdracht. Door AzCopy worden alleen de bijgewerkte gegevens geüpload, op basis van het tijdstempel.
 
 #### <a name="linux"></a>Linux
-    azcopy \
-    --source /mnt/myfolder \
-    --destination https://data-box-heavy-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
-    --dest-key <key> \
-    --recursive \
-    --exclude-older
+
+```azcopy
+azcopy \
+--source /mnt/myfolder \
+--destination https://data-box-heavy-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ \
+--dest-key <key> \
+--recursive \
+--exclude-older
+```
 
 #### <a name="windows"></a>Windows
 
-    AzCopy /Source:C:\myfolder /Dest:https://data-box-heavy-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
+```azcopy
+AzCopy /Source:C:\myfolder /Dest:https://data-box-heavy-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
+```
 
-Zie problemen [met data Box Blobopslag oplossen](data-box-troubleshoot-rest.md)als er fouten zijn opgetreden tijdens de bewerking voor maken of kopiëren.
+Zie [Problemen oplossen met Data Box-blobopslag](data-box-troubleshoot-rest.md) als er fouten optreden tijdens het maken van de verbinding of het kopiëren.
 
 In de laatste stap gaat u het apparaat voorbereiden voor verzending.
 

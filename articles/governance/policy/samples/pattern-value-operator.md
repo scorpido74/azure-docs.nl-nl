@@ -1,25 +1,25 @@
 ---
-title: 'Patroon: de waarde-operator in een beleids definitie'
-description: Dit Azure Policy patroon bevat een voor beeld van het gebruik van de waarde-operator in een beleids definitie.
-ms.date: 01/31/2020
+title: 'Patroon: De waarde-operator in een beleidsdefinitie'
+description: Dit Azure Policy-patroon biedt een voorbeeld van het gebruik van de waarde-operator in een beleidsdefinitie.
+ms.date: 06/29/2020
 ms.topic: sample
-ms.openlocfilehash: ace7b7cd4a765cdb8c7aa764b52b180c60508ab2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: e246e3a5e2517fa80626081227070bcb2f967784
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77172784"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565659"
 ---
-# <a name="azure-policy-pattern-the-value-operator"></a>Azure Policy patroon: de waarde-operator
+# <a name="azure-policy-pattern-the-value-operator"></a>Azure Policy-patroon: de waarde-operator
 
-De operator [waarde](../concepts/definition-structure.md#value) evalueert [para meters](../concepts/definition-structure.md#parameters), [ondersteunde sjabloon functies](../concepts/definition-structure.md#policy-functions)of letterlijke waarden naar een opgegeven waarde voor een bepaalde [voor waarde](../concepts/definition-structure.md#conditions).
+De [waarde](../concepts/definition-structure.md#value)-operator evalueert [parameters](../concepts/definition-structure.md#parameters), [ondersteunde sjabloonfuncties](../concepts/definition-structure.md#policy-functions), of letterlijke waarde voor een opgegeven waarde voor een bepaalde [voorwaarde](../concepts/definition-structure.md#conditions).
 
 > [!WARNING]
-> Als het resultaat van een _sjabloon functie_ een fout is, mislukt de beleids evaluatie. Een mislukte evaluatie is een impliciete **weigering**. Zie voor meer informatie [sjabloon fouten voor komen](../concepts/definition-structure.md#avoiding-template-failures).
+> Als het resultaat van een _sjabloonfunctie_ een fout is, mislukt de beleidsevaluatie. Een mislukte evaluatie is een impliciete **weigering**. Zie [sjabloonfouten vermijden](../concepts/definition-structure.md#avoiding-template-failures) voor meer informatie.
 
-## <a name="sample-policy-definition"></a>Voor beeld van beleids definitie
+## <a name="sample-policy-definition"></a>Voorbeeld van beleidsdefinitie
 
-Deze beleids definitie voegt of vervangt de tag die is opgegeven in de para meter **tagName** (_teken reeks_) op resources en neemt de waarde voor **tagName** over van de resource groep waarin de resource zich bevindt. Deze evaluatie treedt op wanneer de resource wordt gemaakt of bijgewerkt. Als [wijzigings](../concepts/effects.md#modify) effect kan het herstel worden uitgevoerd op bestaande resources via een [herstel taak](../how-to/remediate-resources.md).
+Met deze beleidsdefinitie wordt het label dat is opgegeven in de parameter **tagName** (_string_) op resources toegevoegd of vervangen en wordt de waarde voor **tagName** overgenomen van de resourcegroep waarin de resource zich bevindt. Deze evaluatie gebeurt wanneer de resource wordt gemaakt of bijgewerkt. Als effect [wijzigen](../concepts/effects.md#modify) kan het herstel worden uitgevoerd voor bestaande resources via een [hersteltaak](../how-to/remediate-resources.md).
 
 :::code language="json" source="~/policy-templates/patterns/pattern-value-operator.json":::
 
@@ -27,9 +27,9 @@ Deze beleids definitie voegt of vervangt de tag die is opgegeven in de para mete
 
 :::code language="json" source="~/policy-templates/patterns/pattern-value-operator.json" range="20-30" highlight="7,8":::
 
-De **waarde** -operator wordt gebruikt binnen de **policyRule. If** -blok in **Eigenschappen**. In dit voor beeld wordt de [logische operator](../concepts/definition-structure.md#logical-operators) **overzet** gebruikt om te controleren of beide voorwaardelijke instructies waar moeten zijn voor het effect, de **wijziging**moeten worden uitgevoerd.
+De operator **waarde** wordt gebruikt in het blok **policyRule.if** binnen **eigenschappen**. In dit voorbeeld wordt de [logische operator](../concepts/definition-structure.md#logical-operators) **allOf** gebruikt om te controleren of aan beide voorwaarden voldaan moet worden opdat het effect, **wijzigen** kan plaatsvinden.
 
-**waarde** evalueert het resultaat van de sjabloon functie [resourceGroup ()](../../../azure-resource-manager/templates/template-functions-resource.md#resourcegroup) naar de voor waarde **notEquals** van een lege waarde. Als de naam van het label in **tagName** voor de bovenliggende resource groep bestaat, wordt de voorwaardelijke expressie geëvalueerd naar waar.
+**waarde** evalueert het resultaat van de sjabloonfunctie [resourceGroup ()](../../../azure-resource-manager/templates/template-functions-resource.md#resourcegroup) voor de voorwaarde **notEquals** van een lege waarde. Als de labelnaam opgegeven in **tagName** voor de bovenliggende resourcegroep bestaat, dan wordt de voorwaarde als waar beschouwd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

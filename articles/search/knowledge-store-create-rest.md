@@ -1,24 +1,21 @@
 ---
-title: Een kennisarchief (preview) maken met behulp van REST
+title: Een kennisarchief maken met behulp van REST
 titleSuffix: Azure Cognitive Search
-description: Gebruik de REST API en Postman om een Azure Cognitive Search-kennisarchief te maken voor persistente verrijkingen van een AI-verrijkingspijplijn. Deze functie is momenteel beschikbaar als openbare preview-versie.
+description: Gebruik de REST API en Postman om een Azure Cognitive Search-kennisarchief te maken voor persistente verrijkingen van een AI-verrijkingspijplijn.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/23/2020
-ms.openlocfilehash: f030fc81ab33ecd0531040662346e1ed44f5d17c
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.date: 06/30/2020
+ms.openlocfilehash: f496413cf1a5175cee65bce46a2f7f6260d5451d
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85263021"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565230"
 ---
 # <a name="create-a-knowledge-store-using-rest-and-postman"></a>Een kennisarchief maken met behulp van REST en Postman
-
-> [!IMPORTANT] 
-> Dit kennisarchief is momenteel beschikbaar als openbare preview-versie. Deze previewfunctie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. De [REST API-versie 2019-05-06-Preview](search-api-preview.md) biedt preview-functies. Er is momenteel beperkte ondersteuning voor portals en geen ondersteuning voor de .NET-SDK.
 
 Een kennisarchief bevat uitvoer van een Azure Cognitive Search-verrijkingspijplijn voor latere analyses of andere verwerking in een later stadium. Een met AI verrijkte pijplijn accepteert afbeeldingsbestanden of ongestructureerde tekstbestanden, indexeert deze met behulp van Azure Cognitive Search, past AI-verrijkingen van Cognitive Services (zoals afbeeldingsanalyse en natuurlijke taalverwerking) toe en slaat de resultaten vervolgens op in een kennisarchief in Azure Storage. U kunt hulpprogramma's zoals Power BI of Storage Explorer in Azure Portal gebruiken om het kennisarchief te verkennen.
 
@@ -81,7 +78,7 @@ Ga naar de Azure Cognitive Search-service en selecteer het tabblad **Sleutels** 
 | Variabele    | Waar te verkrijgen? |
 |-------------|-----------------|
 | `admin-key` | Op de pagina **Sleutels** van de Azure Cognitive Search-service.  |
-| `api-version` | Laat deze staan op **2019-05-06-Preview**. |
+| `api-version` | Laat deze staan op **2020-06-30**. |
 | `datasource-name` | Laat deze staan op **hotel-reviews-ds**. | 
 | `indexer-name` | Laat deze staan op **hotel-reviews-ixr**. | 
 | `index-name` | Laat deze staan op **hotel-reviews-ix**. | 

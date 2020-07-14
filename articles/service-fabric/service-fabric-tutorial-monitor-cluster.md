@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: srrengar
 ms.custom: mvc
-ms.openlocfilehash: 338ebc584cc718fd9d3b587d17ec0895483dfb0c
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 048161ec13edbd0cf474fb6598fdd9ff981077ae
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560441"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611676"
 ---
 # <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>Zelfstudie: Een Service Fabric-cluster bewaken in Azure
 
@@ -41,7 +41,7 @@ In deze zelfstudiereeks leert u het volgende:
 Voor u met deze zelfstudie begint:
 
 * Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* Installeer [Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps) of [Azure CLI](/cli/azure/install-azure-cli).
+* Installeer [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) of [Azure CLI](/cli/azure/install-azure-cli).
 * Een beveiligd [Windows-cluster](service-fabric-tutorial-create-vnet-and-windows-cluster.md) maken 
 * [Diagnostische verzameling](service-fabric-tutorial-create-vnet-and-windows-cluster.md#configurediagnostics_anchor) voor het cluster instellen
 * De [EventStore-service](service-fabric-tutorial-create-vnet-and-windows-cluster.md#configureeventstore_anchor) in het cluster inschakelen
@@ -191,7 +191,7 @@ ServiceFabricReliableServiceEvent
 | sort by TimeGenerated desc
 ```
 
-U kunt verschillende gebeurtenissen zien wanneer de service runasync wordt gestart en voltooid, wat doorgaans gebeurt bij implementaties en upgrades.
+U kunt verschillende gebeurtenissen zien wanneer de service `runasync` wordt gestart en voltooid, wat doorgaans gebeurt bij implementaties en upgrades.
 
 ![Service Fabric-oplossing Reliable Services](media/service-fabric-tutorial-monitor-cluster/oms-reliable-services-events-selection.png)
 
@@ -487,5 +487,5 @@ Ga nu verder met de volgende zelfstudie om te leren hoe u een cluster kunt schal
 > [!div class="nextstepaction"]
 > [Een cluster schalen](service-fabric-tutorial-scale-cluster.md)
 
-[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
+[durability]: service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster
 [template]: https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json

@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: app-configuratie dynamische configuratie in ASP.NET Core gebruiken'
+title: 'Zelfstudie: Dynamische configuratie van App Configuration in ASP.NET Core gebruiken'
 titleSuffix: Azure App Configuration
 description: In deze zelfstudie leert u hoe u de configuratiegegevens voor ASP.NET Core-apps dynamisch bijwerkt
 services: azure-app-configuration
@@ -15,60 +15,60 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: e9df6d2e7a8219d16e7b60f7c3b8d826a87e6110
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 5ac09aae724cf7481245ba9e898b52945b394cae
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80348859"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856524"
 ---
-# <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Zelf studie: dynamische configuratie in een ASP.NET Core-app gebruiken
+# <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Zelfstudie: Dynamische configuratie in een ASP.NET Core-app gebruiken
 
-ASP.NET Core heeft een pluggable configuratie systeem waarmee configuratie gegevens kunnen worden gelezen uit verschillende bronnen. Het kan dynamisch wijzigingen verwerken zonder dat de toepassing opnieuw wordt gestart. ASP.NET Core ondersteunt de binding van configuratie-instellingen tot sterk getypeerde .NET-klassen. Ze worden in uw code ingevoegd met behulp van de `IOptions<T>` verschillende patronen. Een van deze patronen, in `IOptionsSnapshot<T>`het bijzonder, laadt de configuratie van de toepassing automatisch opnieuw wanneer de onderliggende gegevens worden gewijzigd. U kunt `IOptionsSnapshot<T>` in domeincontrollers in uw toepassing invoeren voor toegang tot de meest recente configuratiegegevens die zijn opgeslagen in Azure-app-configuratie.
+ASP.NET Core heeft een pluggable configuratiesysteem waarmee configuratiegegevens uit verschillende bronnen kunnen worden gelezen. Het kan dynamisch wijzigingen verwerken zonder dat de toepassing opnieuw moet worden gestart. ASP.NET Core ondersteunt de binding van configuratie-instellingen tot sterk getypeerde .NET-klassen. Ze worden in uw code ingevoegd met behulp van de verschillende `IOptions<T>`-patronen. Een van deze patronen, met name `IOptionsSnapshot<T>`, laadt de configuratie van de toepassing opnieuw wanneer de onderliggende gegevens wijzigen. U kunt `IOptionsSnapshot<T>` in domeincontrollers in uw toepassing invoeren voor toegang tot de meest recente configuratiegegevens die zijn opgeslagen in Azure-app-configuratie.
 
-U kunt ook de app-configuratie ASP.NET Core client bibliotheek instellen om een set configuratie-instellingen dynamisch te vernieuwen met behulp van een middleware. De configuratie-instellingen worden elke keer bijgewerkt met de configuratie opslag, zolang de web-app aanvragen ontvangt.
+U kunt ook de ASP.NET Core-clientbibliotheek van App Configuration instellen om een set configuratie-instellingen dynamisch te vernieuwen met behulp van middleware. De configuratie-instellingen worden elke keer bijgewerkt met het configuratiearchief zolang de web-app aanvragen ontvangt.
 
-Bij app-configuratie wordt elke instelling automatisch in de cache opgeslagen om te veel aanroepen naar het configuratie archief te voor komen. De vernieuwings bewerking wacht totdat de waarde in de cache van een instelling verloopt om deze instelling bij te werken, zelfs wanneer de waarde ervan in het configuratie archief wordt gewijzigd. De standaard waarde voor de verval tijd van de cache is 30 seconden. U kunt deze verloop tijd, indien nodig, overschrijven.
+App Configuration slaat elke instelling automatisch in de cache op om te veel aanroepen naar het configuratiearchief te voorkomen. De vernieuwingsbewerking wacht totdat de waarde van een instelling in de cache verloopt om deze instelling bij te werken, zelfs wanneer de waarde ervan in het configuratiearchief wordt gewijzigd. De standaardwaarde voor de vervaltijd van de cache is 30 seconden. U kunt deze vervaltijd, indien nodig, overschrijven.
 
-In deze zelfstudie leert hoe u dynamische configuratie-updates kunt implementeren in uw code. Dit is gebaseerd op de web-app die is geïntroduceerd in de quickstarts. Voordat u doorgaat, moet u eerst [een ASP.net core-app maken met de app-configuratie](./quickstart-aspnet-core-app.md) .
+In deze zelfstudie leert hoe u dynamische configuratie-updates kunt implementeren in uw code. Dit is gebaseerd op de web-app die is geïntroduceerd in de quickstarts. Volg eerst [Een ASP.NET Core-app maken met App Configuration](./quickstart-aspnet-core-app.md) voordat u verder gaat.
 
-U kunt elke code-editor gebruiken om de stappen in deze zelf studie uit te voeren. [Visual Studio code](https://code.visualstudio.com/) is een uitstekende optie die beschikbaar is op de Windows-, macOS-en Linux-platformen.
+U kunt elke code-editor gebruiken om de stappen in deze zelfstudie uit te voeren. [Visual Studio Code](https://code.visualstudio.com/) is een uitstekende optie die beschikbaar is op de Windows-, macOS- en Linux-platforms.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Stel uw toepassing in om de configuratie bij te werken als reactie op wijzigingen in een app-configuratie archief.
-> * Injecteer de meest recente configuratie in de controllers van uw toepassing.
+> * Uw toepassing instellen voor het bijwerken van de configuratie als reactie op wijzigingen in een App Configuration-archief.
+> * De meest recente configuratie in de controllers van uw toepassing invoeren.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u deze zelf studie wilt uitvoeren, installeert u de [.net core SDK](https://dotnet.microsoft.com/download).
+Als u deze zelfstudie wilt uitvoeren, installeert u de [.NET Core SDK](https://dotnet.microsoft.com/download).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-Voordat u doorgaat, moet u eerst [een ASP.net core-app maken met de app-configuratie](./quickstart-aspnet-core-app.md) .
+Volg eerst [Een ASP.NET Core-app maken met App Configuration](./quickstart-aspnet-core-app.md) voordat u verder gaat.
 
 ## <a name="add-a-sentinel-key"></a>Een Sentinel-sleutel toevoegen
 
-Een *Sentinel-sleutel* is een speciale sleutel die wordt gebruikt om te Signa leren wanneer de configuratie is gewijzigd. Uw app controleert de verklikker sleutel op wijzigingen. Wanneer een wijziging wordt gedetecteerd, vernieuwt u alle configuratie waarden. Deze aanpak vermindert het totale aantal aanvragen dat door uw app naar de app-configuratie wordt gemaakt, vergeleken met het bewaken van alle sleutels voor wijzigingen.
+Een *Sentinel-sleutel* is een speciale sleutel die wordt gebruikt om te signaleren wanneer de configuratie is gewijzigd. Uw app controleert de Sentinel-sleutel op wijzigingen. Wanneer een wijziging wordt gedetecteerd, vernieuwt u alle configuratiewaarden. Deze benadering vermindert het totale aantal aanvragen dat door uw app naar de App Configuration wordt gedaan in vergelijking met het bewaken van alle sleutels voor wijzigingen.
 
-1. Selecteer in de Azure Portal **configuratie Explorer > > sleutel waarde te maken**.
+1. Selecteer in de Azure Portal **Configuratieverkenner> Maken > Sleutelwaarde**.
 
-1. Voer voor **sleutel** *TestApp: instellingen: Sentinel*in. Voer voor **waarde**1 in. Laat het **Label** en het **inhouds type** leeg.
+1. Voer bij **Sleutel** *TestApp:Settings:Sentinel* in. Voer 1 in bij **Waarde**. Laat **Label** en **Inhoudstype** leeg.
 
 1. Selecteer **Toepassen**.
 
 ## <a name="reload-data-from-app-configuration"></a>Gegevens opnieuw laden vanuit app-configuratie
 
-1. Voeg een verwijzing naar het `Microsoft.Azure.AppConfiguration.AspNetCore` NuGet-pakket toe door de volgende opdracht uit te voeren:
+1. Voeg een verwijzing aan het NuGet-pakket `Microsoft.Azure.AppConfiguration.AspNetCore` toe door de volgende opdracht uit te voeren:
 
     ```dotnetcli
     dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore
     ```
 
-1. Open *Program.cs*en werk de `CreateWebHostBuilder` methode bij om de `config.AddAzureAppConfiguration()` methode toe te voegen.
+1. Open *Program.cs* en werk de methode `CreateWebHostBuilder` bij om de methode `config.AddAzureAppConfiguration()` toe te voegen.
 
-    #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
+    #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -90,7 +90,7 @@ Een *Sentinel-sleutel* is een speciale sleutel die wordt gebruikt om te Signa le
             .UseStartup<Startup>();
     ```
 
-    #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
+    #### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
 
     ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -113,14 +113,14 @@ Een *Sentinel-sleutel* is een speciale sleutel die wordt gebruikt om te Signa le
     ```
     ---
 
-    De `ConfigureRefresh` -methode wordt gebruikt om de instellingen op te geven die worden gebruikt voor het bijwerken van de configuratie gegevens met het app-configuratie archief wanneer een vernieuwings bewerking wordt geactiveerd. De `refreshAll` para meter voor `Register` de methode geeft aan dat alle configuratie waarden moeten worden vernieuwd als de Sentinel-sleutel wordt gewijzigd.
+    De methode `ConfigureRefresh` wordt gebruikt om de instellingen op te geven die worden gebruikt voor het bijwerken van de configuratiegegevens met het app-configuratiearchief wanneer een vernieuwingsbewerking wordt geactiveerd. De parameter `refreshAll` voor de methode `Register` geeft aan dat alle configuratiewaarden moeten worden vernieuwd als de Sentinel-sleutel wordt gewijzigd.
 
-    De `SetCacheExpiration` methode overschrijft ook de standaard verval tijd van de cache van 30 seconden, waarbij een tijd van vijf minuten wordt opgegeven. Dit beperkt het aantal aanvragen voor de app-configuratie.
+    De methode `SetCacheExpiration` overschrijft ook de standaardvervaltijd van de cache van 30 seconden en geeft in plaats daarvan een tijd van vijf minuten op. Dit beperkt het aantal aanvragen dat wordt gedaan aan App Configuration.
 
     > [!NOTE]
-    > Voor test doeleinden wilt u de verval tijd van de cache wellicht verlagen.
+    > Voor testdoeleinden wilt u de vervaltijd van de cache mogelijk verlagen.
 
-    Als u een vernieuwings bewerking daad werkelijk wilt activeren, moet u een middleware voor het vernieuwen van de toepassing configureren om de configuratie gegevens te vernieuwen wanneer er wijzigingen optreden. In een latere stap ziet u hoe u dit doet.
+    Als u een vernieuwingsbewerking daadwerkelijk wilt activeren, moet u middleware voor het vernieuwen van de toepassing configureren om de configuratiegegevens te vernieuwen wanneer er wijzigingen optreden. In een latere stap ziet u hoe u dit doet.
 
 2. Voeg een *Settings.cs*-bestand toe dat een nieuwe `Settings`-klasse definieert en implementeert.
 
@@ -137,9 +137,9 @@ Een *Sentinel-sleutel* is een speciale sleutel die wordt gebruikt om te Signa le
     }
     ```
 
-3. Open *Startup.cs*en gebruik `IServiceCollection.Configure<T>` in de `ConfigureServices` methode om configuratie gegevens te binden aan de `Settings` klasse.
+3. Open *Startup.cs* en gebruik `IServiceCollection.Configure<T>` in de methode `ConfigureServices` bij om configuratiegegevens te binden aan de klasse `Settings`.
 
-    #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
+    #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -149,7 +149,7 @@ Een *Sentinel-sleutel* is een speciale sleutel die wordt gebruikt om te Signa le
     }
     ```
 
-    #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
+    #### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -160,10 +160,10 @@ Een *Sentinel-sleutel* is een speciale sleutel die wordt gebruikt om te Signa le
     ```
     ---
 
-4. Werk de `Configure` -methode bij, `UseAzureAppConfiguration` waarbij de middleware wordt toegevoegd zodat de configuratie-instellingen die zijn geregistreerd voor vernieuwen, kunnen worden bijgewerkt terwijl de ASP.net core web-app aanvragen blijft ontvangen.
+4. Werk de methode `Configure` bij, waarbij de middleware `UseAzureAppConfiguration` wordt toegevoegd zodat de configuratie-instellingen die voor vernieuwing zijn geregistreerd, kunnen worden bijgewerkt terwijl de ASP.NET Core-web-app aanvragen blijft ontvangen.
 
 
-    #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
+    #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -180,7 +180,7 @@ Een *Sentinel-sleutel* is een speciale sleutel die wordt gebruikt om te Signa le
     }
     ```
 
-    #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
+    #### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
 
     ```csharp
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -217,19 +217,19 @@ Een *Sentinel-sleutel* is een speciale sleutel die wordt gebruikt om te Signa le
     ```
     ---
     
-    De middleware maakt gebruik van de vernieuwings `AddAzureAppConfiguration` configuratie die `Program.cs` is opgegeven in de methode in om een vernieuwing te activeren voor elke aanvraag die wordt ontvangen door de ASP.net core web-app. Voor elke aanvraag wordt een vernieuwings bewerking geactiveerd en controleert de client bibliotheek of de in de cache opgeslagen waarde voor de geregistreerde configuratie-instelling is verlopen. Als de service is verlopen, wordt deze vernieuwd.
+    De middleware maakt gebruik van de vernieuwingsconfiguratie die is opgegeven in de methode `AddAzureAppConfiguration` in `Program.cs` om een vernieuwing te activeren voor elke aanvraag die wordt ontvangen door de ASP.NET Core-web-app. Voor elke aanvraag wordt een vernieuwingsbewerking geactiveerd en de clientbibliotheek controleert of de in de cache opgeslagen waarde voor de geregistreerde configuratie-instelling is verlopen. Als de configuratie-instelling is verlopen, wordt deze vernieuwd.
 
 ## <a name="use-the-latest-configuration-data"></a>De meest recente configuratiegegevens gebruiken
 
-1. Open *HomeController.cs* in de map controllers en voeg een verwijzing naar het `Microsoft.Extensions.Options` pakket toe.
+1. Open *HomeController.cs* in de map Controllers en voeg een verwijzing naar het pakket `Microsoft.Extensions.Options` toe.
 
     ```csharp
     using Microsoft.Extensions.Options;
     ```
 
-2. Werk de `HomeController` klasse bij om `Settings` deze via afhankelijkheids injectie te ontvangen en gebruik de waarden ervan.
+2. Werk de klasse `HomeController` bij voor het ontvangen van `Settings` via afhankelijkheidsinjectie en gebruik de waarden ervan.
 
-    #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
+    #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
     public class HomeController : Controller
@@ -252,7 +252,7 @@ Een *Sentinel-sleutel* is een speciale sleutel die wordt gebruikt om te Signa le
     }
     ```
 
-    #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
+    #### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
 
     ```csharp
     public class HomeController : Controller
@@ -283,7 +283,7 @@ Een *Sentinel-sleutel* is een speciale sleutel die wordt gebruikt om te Signa le
 
 
 
-3. Open *index. cshtml* in de weer gaven > basismap en vervang de inhoud door het volgende script:
+3. Open *Index.cshtml* in de directory Views > Home en vervang de inhoud ervan door het volgende script:
 
     ```html
     <!DOCTYPE html>
@@ -308,31 +308,36 @@ Een *Sentinel-sleutel* is een speciale sleutel die wordt gebruikt om te Signa le
 
 ## <a name="build-and-run-the-app-locally"></a>De app lokaal compileren en uitvoeren
 
-1. Als u de app wilt bouwen met behulp van de .NET Core SLI, voert u de volgende opdracht uit in de opdracht shell:
+1. Compileer de app met behulp van de .NET Core CLI door de volgende opdracht uit te voeren in de opdrachtshell:
 
+```console
         dotnet build
+```
 
-1. Wanneer de build is voltooid, voert u de volgende opdracht uit om de web-app lokaal uit te voeren:
+1. Nadat het bouwen is voltooid, voert u de volgende opdracht uit om de web-app lokaal uit te voeren:
 
+```console
         dotnet run
-1. Open een browser venster en ga naar de URL die wordt weer gegeven `dotnet run` in de uitvoer.
+```
 
-    ![De Quick Start-app wordt lokaal gestart](./media/quickstarts/aspnet-core-app-launch-local-before.png)
+1. Open een browservenster en ga naar de URL die wordt weergegeven in de `dotnet run`-uitvoer.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **alle resources**en selecteer de app-configuratie Store-instantie die u hebt gemaakt in de Quick Start.
+    ![Quickstart-app lokaal starten](./media/quickstarts/aspnet-core-app-launch-local-before.png)
 
-1. Selecteer **Configuration Explorer**en werk de waarden van de volgende sleutels bij:
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **Alle resources** en selecteer de instantie van het App Configuration-archief dat u in de quickstart hebt gemaakt.
+
+1. Selecteer **Configuratieverkenner** en werk de waarde van de volgende sleutels bij:
 
     | Sleutel | Waarde |
     |---|---|
-    | TestApp:Settings:BackgroundColor | green |
+    | TestApp:Settings:BackgroundColor | groen |
     | TestApp:Settings:FontColor | lightGray |
     | TestApp:Settings:Message | Gegevens uit Azure-app-configuratie - nu met live updates! |
-    | TestApp: instellingen: Sentinel | 2 |
+    | TestApp:Settings:Sentinel | 2 |
 
 1. Vernieuw de browserpagina om de nieuwe configuratie-instellingen te zien. Mogelijk moet u meer dan één keer vernieuwen voordat de wijzigingen worden doorgevoerd.
 
-    ![De bijgewerkte Snelstartgids-app lokaal starten](./media/quickstarts/aspnet-core-app-launch-local-after.png)
+    ![Bijgewerkte quickstart-app lokaal starten](./media/quickstarts/aspnet-core-app-launch-local-after.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -340,7 +345,7 @@ Een *Sentinel-sleutel* is een speciale sleutel die wordt gebruikt om te Signa le
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u uw ASP.NET Core web-app ingeschakeld om de configuratie-instellingen van de app-configuratie dynamisch te vernieuwen. Ga verder met de volgende zelf studie als u wilt weten hoe u een door Azure beheerde identiteit kunt gebruiken om de toegang tot de app-configuratie te stroom lijnen.
+In deze zelfstudie hebt u uw ASP.NET Core-web-app ingeschakeld voor het dynamisch vernieuwen van configuratie-instellingen vanuit App Configuration. Als u wilt weten hoe u een door Azure beheerde identiteit kunt gebruiken om de toegang tot App Configuration te stroomlijnen, gaat u verder met de volgende zelfstudie.
 
 > [!div class="nextstepaction"]
-> [Beheerde identiteits integratie](./howto-integrate-azure-managed-service-identity.md)
+> [Integratie van beheerde identiteit](./howto-integrate-azure-managed-service-identity.md)

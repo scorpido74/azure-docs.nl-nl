@@ -1,9 +1,8 @@
 ---
-title: Azure Resource Manager-sjablonen
-titleSuffix: Azure SQL Database & SQL Managed Instance
+title: Azure Resource Manager-sjablonen - Azure SQL Database en een met Azure SQL beheerd exemplaar
 description: Gebruik sjablonen van Azure Resource Manager voor het maken en configureren van Azure SQL Database en een met Azure SQL beheerd exemplaar.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: service
 ms.custom: overview-samples sqldbrb=2
 ms.devlang: ''
@@ -12,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/04/2019
-ms.openlocfilehash: 76b9b1301a0aeee24b698b15a3871754de8ca0b9
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: ee2c6580285246d3b170602e507aed038b2507f4
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84718798"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85983635"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database--sql-managed-instance"></a>Azure Resource Manager-sjablonen voor Azure SQL Database en een met Azure SQL beheerd exemplaar
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -28,7 +27,7 @@ Azure Resource Manager-sjablonen maken het mogelijk om uw infrastructuur als cod
 
 De volgende tabel bevat koppelingen naar Azure Resource Manager-sjablonen voor Azure SQL Database.
 
-| |  |
+|Koppeling |Beschrijving|
 |---|---|
 | [SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-database-transparent-encryption-create) | Met deze Azure Resource Manager-sjabloon maakt u één database in Azure SQL Database en configureert u de firewallregels op serverniveau. |
 | [Server](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-logical-server) | Met deze Azure Resource Manager-sjabloon maakt u een server voor Azure SQL Database. |
@@ -47,7 +46,7 @@ De volgende tabel bevat koppelingen naar Azure Resource Manager-sjablonen voor A
 
 De volgende tabel bevat koppelingen naar Azure Resource Manager-sjablonen voor een met Azure SQL beheerd exemplaar.
 
-| |  |
+|Koppeling|Beschrijving|
 |---|---|
 | [Met SQL beheerd exemplaar in een nieuw VNet](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet) | Met deze Azure Resource Manager-sjabloon maakt u een nieuw geconfigureerd virtueel Azure-netwerk en een beheerd exemplaar in het virtuele netwerk. |
 | [Netwerkomgeving voor een met SQL beheerd exemplaar](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment) | Met deze implementatie maakt u een geconfigureerd virtueel Azure-netwerk met twee subnetten: één subnet dat is gereserveerd voor uw beheerde exemplaren en een ander subnet voor het opslaan van andere resources (zoals VM's, App Service-omgevingen, enzovoort). Met deze sjabloon maakt u een correct geconfigureerde netwerkomgeving waarin u beheerde exemplaren kunt implementeren. |

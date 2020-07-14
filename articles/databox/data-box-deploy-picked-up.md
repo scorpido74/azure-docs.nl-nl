@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/20/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 03fe40cea5891e87f42f0d6a50eedee80a68f25e
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: efcc5e8f629c8b6ccc903478473b54989c0e9fd6
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200522"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959454"
 ---
 ::: zone target="docs"
 
@@ -46,7 +46,7 @@ In deze zelfstudie vindt u informatie over onderwerpen als:
 Zorg voordat u begint voor het volgende:
 
 - U hebt de [Zelfstudie: Gegevens kopiëren naar Azure Data Box en deze gegevens controleren](data-box-deploy-copy-data.md). 
-- Kopieertaken zijn voltooid. Voorbereiding voor verzending kan niet worden uitgevoerd als er nog kopieertaken worden uitgevoerd.
+- Kopieertaken zijn voltooid en er zijn geen fouten op de pagina **Verbinding maken en kopiëren**. Voorbereiding voor verzending kan niet worden uitgevoerd als er kopieertaken worden uitgevoerd of als er fouten zijn op de pagina **Verbinding maken en kopiëren**.
 
 ## <a name="prepare-to-ship"></a>Voorbereiding voor verzending
 

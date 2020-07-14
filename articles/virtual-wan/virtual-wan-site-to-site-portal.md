@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 11/04/2019
+ms.date: 06/29/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: b4278cb2e8c5152f522258a37c37acda5efbacf8
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 13949bef7b26058c577a3ab85b4fb2e736bba8f5
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84687919"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563006"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Zelfstudie: Een site-naar-site-verbinding maken met Azure Virtual WAN
 
@@ -29,7 +29,7 @@ In deze zelfstudie leert u het volgende:
 > * Een VPN-site verbinden met een hub
 > * Een VNet verbinden met een hub
 > * Een configuratiebestand downloaden
-> * Uw virtuele WAN weergeven
+> * Uw VPN-gateway configureren
 
 > [!NOTE]
 > Als u veel sites hebt, zou u normaal gesproken een [Virtual WAN-partner](https://aka.ms/virtualwan) gebruiken om deze configuratie te maken. U kunt deze configuratie echter ook zelf maken als bekend bent met netwerktechnologie en uw eigen VPN-apparaat kunt configureren.
@@ -251,11 +251,20 @@ Als u instructies nodig hebt voor het configureren van uw apparaat, kunt u de in
 * Een nieuw virtueel WAN kan ondersteuning bieden voor zowel IKEv1 als IKEv2.
 * Virtual WAN kan gebruikmaken van op beleid en op route gebaseerde VPN-apparaten en apparaatinstructies.
 
-## <a name="view-your-virtual-wan"></a><a name="viewwan"></a>Uw virtuele WAN weergeven
+## <a name="configure-your-vpn-gateway"></a><a name="gateway-config"></a>Uw VPN-gateway configureren
 
-1. Navigeer naar uw virtuele WAN.
-2. Op de pagina **Overzicht** vertegenwoordigt elk punt op de kaart een hub. Beweeg de muisaanwijzer boven een willekeurig punt om het statusoverzicht van de hub, de verbindingsstatus en de binnenkomende en uitgaande bytes weer te geven.
-3. In de sectie Hubs en verbindingen kunt u de status van de hub, VPN-sites, enzovoort weergeven. Voor aanvullende informatie klikt u op een specifieke hubnaam en gaat u naar de VPN-site.
+U kunt de instellingen van uw VPN-gateway op elk gewenst moment weergeven en configureren door **Weergeven/configureren** te selecteren.
+
+:::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-1.png" alt-text="Configuratie weergeven" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-1-expand.png":::
+
+Op de pagina **VPN-gateway bewerken** ziet u de volgende instellingen:
+
+* Openbaar IP-adres van VPN-gateway (toegewezen door Azure)
+* Privé-IP-adres van VPN-gateway (toegewezen door Azure)
+* Standaard BGP-IP-adres van VPN-gateway (toegewezen door Azure)
+* Configuratie-optie voor aangepast BGP-IP-adres: Dit veld is voorbehouden voor APIPA (Automatic Private IP Addressing). Azure ondersteunt BGP-IP in het bereik 169.254.21.* en 169.254.22.*
+
+   :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-2.png" alt-text="Configuratie weergeven" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-2-expand.png":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

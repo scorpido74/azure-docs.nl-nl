@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: tutorial
-ms.openlocfilehash: ca23bbc2b53eaaaf1848a7a98228be23c9ffed0c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 65baff827417cebe2289cc821df94acd38a1ae61
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117077"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964801"
 ---
 # <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>Zelfstudie: Een Blender-scène met Batch Explorer renderen
 
@@ -27,9 +27,9 @@ In deze zelfstudie leert u het volgende:
 
 U hebt een abonnement op basis van betalen-per-gebruik of een andere betaalde Azure-optie nodig om renderingtoepassingen in Batch te kunnen gebruiken op basis van betalen per gebruik. Licenties op basis van betalen per gebruik worden niet ondersteund als u gebruikmaakt van een gratis Azure-aanbieding die een financieel tegoed biedt.
 
-U hebt een Azure Batch-account nodig met een gekoppeld opslagaccount.  Bekijk een van de Batch-snelstarts, zoals het [CLI-artikel](https://docs.microsoft.com/azure/batch/quick-create-cli) voor het maken van een Batch-account.
+U hebt een Azure Batch-account nodig met een gekoppeld opslagaccount.  Bekijk een van de Batch-snelstarts, zoals het [CLI-artikel](./quick-create-cli.md) voor het maken van een Batch-account.
 
-Een kerngeheugenquotum met lage prioriteit van ten minste 50 kernen is vereist voor de VM-grootte en het aantal virtuele machines die zijn opgegeven in deze zelfstudie; het standaardquotum kan worden gebruikt, maar dan moet een kleinere virtuele machine worden gebruikt, waardoor het langer duurt om de installatiekopieën te renderen. Het proces voor het aanvragen van een verbeterd kerngeheugenquotum wordt beschreven in [dit artikel](https://docs.microsoft.com/azure/batch/batch-quota-limit).
+Een kerngeheugenquotum met lage prioriteit van ten minste 50 kernen is vereist voor de VM-grootte en het aantal virtuele machines die zijn opgegeven in deze zelfstudie; het standaardquotum kan worden gebruikt, maar dan moet een kleinere virtuele machine worden gebruikt, waardoor het langer duurt om de installatiekopieën te renderen. Het proces voor het aanvragen van een verbeterd kerngeheugenquotum wordt beschreven in [dit artikel](./batch-quota-limit.md).
 
 Ten slotte moet [Batch Explorer](https://azure.github.io/BatchExplorer/) zijn geïnstalleerd; deze is beschikbaar voor Windows, OSX en Linux. Dit is optioneel, maar als [Blender](https://www.blender.org/download/) is geïnstalleerd kan vervolgens het voorbeeldbestand voor het model worden weergegeven.
 
@@ -88,7 +88,7 @@ Maak een Batch-pool met rendering van de Microsoft Azure Marketplace VM-installa
 > [!WARNING]
 > Houd er rekening mee dat wanneer virtuele machines aanwezig zijn in een groep, de kosten van deze virtuele machines in rekening worden gebracht op uw Azure-abonnement. De groep of de virtuele machines moeten worden verwijderd om het in rekening brengen van de kosten te stoppen. Verwijder de groep aan het einde van deze zelfstudie om te voorkomen dat er nog kosten in rekening worden gebracht.
 
-De status van de pool van toepassingen en virtuele machines kan worden gecontroleerd in de weergave 'Pools'. In het volgende voorbeeld ziet u dat alle drie de VM's zijn toegewezen, twee zijn gestart en niet actief, een wordt nog steeds opgestart: ![Heatmap van pool](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_pool_heatmap.png)
+De status van de pool van toepassingen en virtuele machines kan worden gecontroleerd in de weergave 'Pools'. In het volgende voorbeeld ziet u dat alle drie de VM's zijn toegewezen, twee zijn gestart en niet actief, een wordt nog steeds opgestart: ![Pool-heatmap](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_pool_heatmap.png)
 
 ## <a name="create-a-rendering-job"></a>Een renderingtaak maken
 
@@ -107,25 +107,25 @@ Maak een renderingtaak voor het renderen van een aantal frames met behulp van de
 
 ![Sjabloon voor taken voor Blender](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_job_template.png)
 
-Zodra de job en alle taken zijn gemaakt, wordt de taak wordt weergegeven, samen met de opdrachten van de taak: ![Lijst met taakopdrachten](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_task_list.png)
+Zodra de job en alle taken zijn gemaakt, wordt de taak wordt weergegeven, samen met de opdrachten van de taak: ![Lijst met taken](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_task_list.png)
 
 Wanneer een taak voor de eerste keer start met uitvoeren op een VM-pool, wordt een voorbereidingsopdracht voor de Batch-taak uitgevoerd waarvan de scènebestanden uit de bestandsopslaggroep naar de virtuele machine worden gekopieerd, zodat ze kunnen worden geopend door Blender.
 De status van de weergave kan worden bepaald door het logboekbestand voor stdout.txt te bekijken dat wordt gemaakt door Blender.  Selecteer een taak. 'Taakuitvoer' wordt standaard weergegeven en het bestand 'stdout.txt' kan worden geselecteerd en bekeken.
 ![stdout-bestand](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_stdout.png)
 
-Als de 'blender-windows'-pool is geselecteerd, is de groep virtuele machines zichtbaar in een uitvoerende status: ![Heatmap van pool waarbij knooppunten worden uitgevoerd](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_pool_heatmap_running.png)
+Als de 'blender-windows'-pool is geselecteerd, is de groep virtuele machines zichtbaar in een uitvoerende status: ![Pool-heatmap met actieve knooppunten](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_pool_heatmap_running.png)
 
 Het duurt enkele minuten om de gerenderde installatiekopieën te produceren, afhankelijk van de geselecteerde VM-grootte.  Met behulp van de eerder opgegeven VM F16 duurde het ongeveer 16 minuten om frames te renderen.
 
 ## <a name="view-the-rendering-output"></a>De gerenderde uitvoer bekijken
 
-Wanneer frames klaar zijn met renderen, worden deze taken weergegeven als voltooid: ![Taken voltooien](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_tasks_complete.png)
+Wanneer frames klaar zijn met renderen, worden deze taken weergegeven als voltooid: ![Taken aan het voltooien](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_tasks_complete.png)
 
-De gerenderde installatiekopie wordt eerst naar de virtuele machine geschreven en kan worden weergegeven door het selecteren van de map 'wd': ![Rendered afbeelding op een poolknooppunt](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_output_image.png)
+De gerenderde installatiekopie wordt eerst naar de virtuele machine geschreven en kan worden weergegeven door het selecteren van de map 'wd': ![Gerenderde installatiekopie het poolknooppunt](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_output_image.png)
 
-Het sjabloon van de taak geeft ook aan dat de uitvoerbestanden en logboekbestanden worden teruggeschreven naar de opgegeven Microsoft Azure Storage-accountgroep wanneer de taak is gemaakt.  De 'Gegevens'-gebruikersinterface kan worden gebruikt om de logboeken en de uitvoerbestanden weer te geven. Deze kan ook worden gebruikt om de bestanden te downloaden: ![Gerenderde installatiekopie in de opslaggroep van het bestand](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_output_image_storage.png)
+Het sjabloon van de taak geeft ook aan dat de uitvoerbestanden en logboekbestanden worden teruggeschreven naar de opgegeven Microsoft Azure Storage-accountgroep wanneer de taak is gemaakt.  De 'Gegevens'-gebruikersinterface kan worden gebruikt om de logboeken en de uitvoerbestanden weer te geven. Deze kan ook worden gebruikt om de bestanden te downloaden: ![Gerenderde afbeelding in bestandsgroep voor opslag](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_output_image_storage.png)
 
-Wanneer alle taken zijn voltooid, wordt de taak gemarkeerd als voltooid: ![Taak en alle opdrachten zijn voltooid](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_job_alltasks_complete.png)
+Wanneer alle taken zijn voltooid, wordt de taak gemarkeerd als voltooid: ![Elk taak is voltooid](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_job_alltasks_complete.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -139,4 +139,4 @@ Wanneer alle taken zijn voltooid, wordt de taak gemarkeerd als voltooid: ![Taak 
 ## <a name="next-steps"></a>Volgende stappen
 * Verken de rendering-toepassingen die beschikbaar zijn via de Batch Explorer in de sectie 'Galerie'.
 * Er zijn voor elke toepassing verschillende sjablonen beschikbaar, die na verloop van tijd worden uitgebreid.  Voor Blender bestaan bijvoorbeeld sjablonen die één installatiekopie in tegels opsplitsen, dus delen van een installatiekopie kunnen parallel worden gerenderd.
-* Bekijk de reeks artikelen [hier](https://docs.microsoft.com/azure/batch/batch-rendering-service)voor een uitgebreide beschrijving van de mogelijkheden voor rendering.
+* Bekijk de reeks artikelen [hier](./batch-rendering-service.md)voor een uitgebreide beschrijving van de mogelijkheden voor rendering.

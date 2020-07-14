@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met ClickTime | Microsoft Docs'
+title: 'Zelfstudie: Microsoft Azure Active Directory-integratie met ClickTime | Microsoft Docs'
 description: Lees hoe u eenmalige aanmelding configureert tussen Azure Active Directory en ClickTime.
 services: active-directory
 documentationCenter: na
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 233ddde25645cbdd9073011eeec2a20e42c8e9a8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 27803187e06ee523ff7e6b773bd302eed7422111
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73157404"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608862"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>Zelf studie: integratie Azure Active Directory met ClickTime
+# <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>Zelfstudie: Azure Active Directory-integratie met ClickTime
 
 In deze zelfstudie leert u hoe u ClickTime kunt integreren met Microsoft Azure Active Directory (Azure AD).
 Het integreren van ClickTime met Azure Active Directory biedt u de volgende voordelen:
@@ -33,7 +33,7 @@ Het integreren van ClickTime met Azure Active Directory biedt u de volgende voor
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -77,12 +77,12 @@ Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure 
 
 Om eenmalige aanmelding van Azure Active Directory met ClickTime te configureren en te testen, moet u de volgende bouwstenen voltooien:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[ClickTime-eenmalige aanmelding configureren](#configure-clicktime-single-sign-on)**: als u de instellingen voor eenmalige aanmelding aan de clientzijde wil configureren.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Testgebruiker voor ClickTime maken](#create-clicktime-test-user)**: als u een tegenhanger van Britta Simon in ClickTime wilt hebben die is gekoppeld aan de Azure Active Directory-weergave van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[ClickTime-eenmalige aanmelding configureren](#configure-clicktime-single-sign-on)** : als u de instellingen voor eenmalige aanmelding aan de clientzijde wil configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Testgebruiker voor ClickTime maken](#create-clicktime-test-user)** : als u een tegenhanger van Britta Simon in ClickTime wilt hebben die is gekoppeld aan de Azure Active Directory-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
@@ -106,14 +106,14 @@ Om eenmalige aanmelding van Azure Active Directory met ClickTime te configureren
 
     ![Informatie over ClickTime-domein en -URL’s voor eenmalige aanmelding](common/idp-intiated.png)
 
-    a. Typ een URL in het tekstvak **id** :`https://app.clicktime.com/sp/`
+    a. In het tekstvak **Id** typt u een URL: `https://app.clicktime.com/sp/`
 
-    b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: 
+    b. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon:
     
-    | |
-    |--|
-    | `https://app.clicktime.com/Login/` |
-    | `https://app.clicktime.com/App/Login/Consume.aspx` |
+        ```https
+        https://app.clicktime.com/Login/
+        https://app.clicktime.com/App/Login/Consume.aspx
+        ```
 
 4. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Base64)** te downloaden uit de opgegeven opties overeenkomstig uw behoeften, en slaat u dit op uw computer op.
 
@@ -155,7 +155,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -163,14 +163,14 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam****Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
+    b. In het veld **Gebruikersnaam** typt u **brittasimon\@yourcompanydomain.extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **maken**.
+    d. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -192,9 +192,9 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
+6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
@@ -206,7 +206,7 @@ In het geval van ClickTime is inrichten een handmatige taak.
 > [!NOTE]
 > U kunt ook alle andere hulpprogramma's voor het creëren van ClickTime-gebruikersaccounts of API's van ClickTime gebruiken om Azure Active Directory-gebruikersaccounts in te richten.
 
-**Voer de volgende stappen uit als u een gebruikersaccount wilt inrichten:**
+**Als u een gebruikersaccount wilt inrichten, voert u de volgende stappen uit:**
 
 1. Meld u aan bij uw **ClickTime**-tenant.
 
@@ -224,7 +224,7 @@ In het geval van ClickTime is inrichten een handmatige taak.
    
     a.  Typ in het tekstvak **full name** de volledige naam van de gebruiker, zoals **Britta Simon**. 
   
-    b.  Typ in het tekstvak **e-mail adres** het e-mail bericht van de gebruiker, zoals **\@brittasimon contoso.com**.
+    b.  Typ in het tekstvak **email-adres** het e-mailadres van de gebruiker, bijvoorbeeld **brittasimon\@contoso.com**.
        
     > [!NOTE]
     > U kunt desgewenst extra eigenschappen voor het nieuwe persoonsobject instellen.
@@ -241,7 +241,7 @@ Wanneer u in het toegangsvenster op de tegel ClickTime klikt, wordt u automatisc
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

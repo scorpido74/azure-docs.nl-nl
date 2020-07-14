@@ -10,17 +10,17 @@ ms.date: 05/06/2020
 ms.subservice: language-understanding
 ms.topic: include
 ms.author: diberry
-ms.openlocfilehash: 2a98e2a97a9154d9e256a4662bb292896c6d1e77
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: MT
+ms.openlocfilehash: a6e6c89c34723fb9e11b0c7e4ab8c9bedb8aa9ca
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588775"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959017"
 ---
-Kopieer in het gedeelte **beheren** (in de rechter bovenhoek) op de pagina **Azure-resources** (menu links) de **voorbeeld query** -URL en plak deze in een nieuw browser tabblad.
+Kopieer de URL van de **Voorbeeldquery** in de sectie **Beheren** (menu rechterbovenhoek) op de pagina **Azure-resourcers** (menu links) en plak deze in een nieuw browsertabblad.
 
-De eind punt-URL ziet eruit als in de volgende notatie, met uw eigen aangepaste subdomein, App-ID en de sleutel van het eind punt, waarbij de APP-ID en de sleutel-ID worden vervangen:
+De eindpunt-URL ziet er als volgt uit, met uw eigen aangepaste subdomein, app-ID en de eindpuntsleutel, waarbij de APP-ID en de SLEUTEL-ID worden vervangen:
 
 ```console
-https://YOUR-CUSTOM-SUBDMAIN.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/APP-ID/slots/production/predict?subscription-key=KEY-ID&verbose=true&show-all-intents=true&log=true&query=YOUR_QUERY_HERE
+https://YOUR-CUSTOM-SUBDOMAIN.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/APP-ID/slots/production/predict?subscription-key=KEY-ID&verbose=true&show-all-intents=true&log=true&query=YOUR_QUERY_HERE
 ```

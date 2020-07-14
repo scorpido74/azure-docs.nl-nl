@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: een Playbook uitvoeren in azure Sentinel'
-description: 'Zelf studie: in dit artikel wordt beschreven hoe u een Playbook uitvoert in azure Sentinel.'
+title: 'Zelfstudie: Een playbook uitvoeren in Azure Sentinel'
+description: Gebruik deze zelfstudie om beveiligingsplaybooks te gebruiken in Azure Sentinel om geautomatiseerde bedreigingsreacties in te stellen voor beveiligingsproblemen.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -16,96 +16,96 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/18/2019
 ms.author: yelevin
-ms.openlocfilehash: f6adcb978dbe540d3bdd352089d4dde407d0fb4c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 5bc6ca30b9dff3686b16fe5237f815f16f849e9e
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77585081"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85558469"
 ---
-# <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel"></a>Zelf studie: automatische bedreigings reacties instellen in azure Sentinel
+# <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel"></a>Zelfstudie: Geautomatiseerde bedreigingsreacties instellen in Azure Sentinel
 
 
 
-Deze zelf studie helpt u bij het gebruik van beveiligings-playbooks in azure Sentinel om automatische bedreigings reacties in te stellen op beveiligings problemen die worden gedetecteerd door Azure Sentinel.
+Gebruik deze zelfstudie om beveiligingsplaybooks te gebruiken in Azure Sentinel om geautomatiseerde bedreigingsreacties in te stellen voor beveiligingsproblemen die gedetecteerd worden door Azure Sentinel.
 
 
 > [!div class="checklist"]
-> * Informatie over playbooks
-> * Een Playbook maken
-> * Een Playbook uitvoeren
-> * Bedreigings reacties automatiseren
+> * Meer informatie over playbooks
+> * Een playbook maken
+> * Een playbook uitvoeren
+> * Bedreigingsreacties automatiseren
 
 
-## <a name="what-is-a-security-playbook-in-azure-sentinel"></a>Wat is een beveiligings Playbook in azure Sentinel?
+## <a name="what-is-a-security-playbook-in-azure-sentinel"></a>Wat is een beveiligingsplaybook in Azure Sentinel?
 
-Een beveiligings Playbook is een verzameling procedures die vanuit Azure Sentinel kan worden uitgevoerd als reactie op een waarschuwing. Een beveiligings Playbook kan u helpen uw antwoord te automatiseren en te organiseren, en kan hand matig worden uitgevoerd of ingesteld om automatisch te worden uitgevoerd wanneer specifieke waarschuwingen worden geactiveerd. Beveiligings playbooks in azure Sentinel zijn gebaseerd op [Azure Logic apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps), wat betekent dat u alle Power, aanpassings mogelijkheden en ingebouwde sjablonen van Logic apps krijgt. Elke Playbook wordt gemaakt voor het specifieke abonnement dat u kiest, maar wanneer u de pagina Playbooks bekijkt, worden alle geselecteerde abonnementen weer geven.
+Een beveiligingsplaybook is een groep procedures die uitgevoerd kunnen worden vanaf Azure Sentinel als reactie op een waarschuwing. Een beveiligingsplaybook kan u helpen uw reactie te automatiseren en te organiseren, en kan handmatig worden uitgevoerd of worden ingesteld voor automatische uitvoering wanneer bepaalde waarschuwingen geactiveerd worden. Beveiliging playbooks in Azure Sentinel zijn gebaseerd op [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps), wat betekent dat u alle kracht, mogelijkheden voor aanpassing en ingebouwde sjablonen van Logic Apps krijgt. Elke playbook wordt ontworpen voor het specifieke abonnement dat u kiest, maar wanneer u naar de pagina Playbooks kijkt, dan ziet u alle playbooks voor de geselecteerde abonnementen.
 
 > [!NOTE]
-> Playbooks maakt gebruik van Azure Logic Apps, daarom zijn er kosten in rekening gebracht. Ga naar de pagina met prijzen voor [Azure Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/) voor meer informatie.
+> Playbooks maken gebruik van Azure Logic Apps, en hiervoor worden kosten in rekening gebracht. Ga naar de pagina met prijzen voor [Azure Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/) voor meer informatie.
 
-Als u zich bijvoorbeeld zorgen maakt over kwaad aardige aanvallers die toegang hebben tot uw netwerk bronnen, kunt u een waarschuwing instellen die zoekt naar schadelijke IP-adressen die toegang hebben tot uw netwerk. Vervolgens kunt u een Playbook maken die het volgende doet:
-1. Wanneer de waarschuwing wordt geactiveerd, opent u een ticket in ServiceNow of een ander IT-ticket systeem.
-2. Stuur een bericht naar uw beveiligings kanaal in micro soft teams of een toegestane vertraging om te controleren of uw beveiligings analisten op de hoogte zijn van het incident.
-3. Stuur alle informatie in de waarschuwing naar uw senior netwerk beheerder en beveiligings beheerder. Het e-mail bericht bevat ook twee gebruikers keuze rondjes **blok keren** of **negeren**.
-4. De Playbook blijft actief nadat een antwoord is ontvangen van de beheerders.
-5. Als de beheerders **blok keren**kiezen, wordt het IP-adres in de firewall geblokkeerd en wordt de gebruiker uitgeschakeld in azure AD.
-6. Als de beheerders de optie **negeren**kiezen, wordt de waarschuwing gesloten in azure Sentinel en wordt het incident gesloten in ServiceNow.
+Als u zich bijvoorbeeld zorgen maakt over kwaadaardige aanvallers die toegang hebben tot uw netwerkresources, kunt u een waarschuwing instellen die schadelijke IP-adressen die verbinding maken met uw netwerk opspoort. Vervolgens kunt u een playbook maken dat het volgende doet:
+1. Wanneer de waarschuwing wordt geactiveerd, opent u een ticket in ServiceNow of een ander IT-ticketsysteem.
+2. Stuur een bericht naar uw beveiligingskanaal in Microsoft Teams of Slack om ervoor te zorgen dat uw beveilligingsanalisten op de hoogte zijn van het incident.
+3. Deel alle informatie in de waarschuwing met uw senior netwerkbeheerder en beveiligingsbeheerder. Het e-mailbericht bevat ook twee knoppen voor gebruikersopties, **Blokkeren** of **Negeren**.
+4. De Playbook blijft actief na het antwoord van de beheerders.
+5. Als de beheerders kiezen voor **Blokkeren**, dan wordt het IP-adres geblokkeerd in de firewall en de gebruiker uitgeschakeld in Azure AD.
+6. Als de beheerders kiezen voor **Negeren**, dan wordt de waarschuwing gesloten in Azure Sentinel en het incident gesloten in ServiceNow.
 
-Beveiligings-playbooks kunnen hand matig of automatisch worden uitgevoerd. Als u deze hand matig uitvoert, kunt u ervoor kiezen om een Playbook op aanvraag uit te voeren als reactie op de geselecteerde waarschuwing. Als u deze uitvoert, betekent dit dat u tijdens het ontwerpen van de correlatie regel automatisch een of meer playbooks wilt uitvoeren wanneer de waarschuwing wordt geactiveerd.
+Beveiligingsplaybooks kunnen handmatig of automatisch worden uitgevoerd. Als u ze handmatig uitvoert, kunt u ervoor kiezen om een playbook op aanvraag uit te voeren als reactie op de geselecteerde waarschuwing. Automatisch uitvoeren betekent dat u de correlatieregel instelt om automatisch één of meer playbooks uit te voeren wanneer de waarschuwing geactiveerd wordt.
 
 
-## <a name="create-a-security-playbook"></a>Een beveiligings Playbook maken
+## <a name="create-a-security-playbook"></a>Een beveiligingsplaybook maken
 
-Volg deze stappen voor het maken van een nieuwe beveiligings Playbook in azure Sentinel:
+Volg deze stappen om een nieuw beveiligingsplaybook te maken in Azure Sentinel:
 
-1. Open het **Azure Sentinel** -dash board.
-2. Onder **beheer**selecteert u **Playbooks**.
+1. Open het **Azure Sentinel**-dashboard.
+2. Selecteer **Playbooks**onder **Beheer**.
 
    ![Logische apps](./media/tutorial-respond-threats-playbook/playbookimg.png)
 
-3. Klik op de pagina **Sentinel-Playbooks van Azure** op de knop **toevoegen** .
+3. Klik op de knop **Toevoegen** op de pagina **Azure Sentinel - Playbooks**.
 
    ![Logische app maken](./media/tutorial-respond-threats-playbook/create-playbook.png) 
 
-4. Typ op de pagina **logische app maken** de aangevraagde informatie voor het maken van uw nieuwe logische app en klik op **maken**. 
+4. Geef op de pagina **Logische app maken** de benodigde gegevens op voor het maken van de nieuwe logische app en klik op **Maken**. 
 
-5. Selecteer de sjabloon die u wilt gebruiken in de [**ontwerp functie voor logische apps**](../logic-apps/logic-apps-overview.md). Als u een sjabloon selecteert die referenties vereist, moet u deze opgeven. U kunt ook een volledig nieuwe, lege Playbook maken. Selecteer **lege logische app**. 
+5. Selecteer in de [**Logic app Designer**](../logic-apps/logic-apps-overview.md) de sjabloon die u wilt gebruiken. Als u een sjabloon selecteert waarvoor referenties nodig zijn, dan moet u deze opgeven. U kunt ook een nieuw playbook maken vanaf nul. Selecteer **Lege logische app**. 
 
    ![Ontwerper van logische app](./media/tutorial-respond-threats-playbook/playbook-template.png)
 
-6. U wordt naar de ontwerp functie voor logische apps geleid, waar u een nieuwe sjabloon kunt maken of bewerken. Voor meer informatie over het maken van een Playbook met [Logic apps](../logic-apps/logic-apps-create-logic-apps-from-templates.md).
+6. U wordt naar de Logic App Designer geleid, waar u een nieuwe app kunt maken of het sjabloon kunt bewerken. Voor meer informatie over een playbook maken met [Logic Apps](../logic-apps/logic-apps-create-logic-apps-from-templates.md).
 
-7. Als u een lege Playbook maakt, typt u in het veld **alle connectors en triggers doorzoeken** de tekst *Azure Sentinel*en selecteert **u wanneer een reactie op een Azure-Sentinel waarschuwing wordt geactiveerd**. <br>Nadat deze is gemaakt, wordt de nieuwe Playbook weer gegeven in de lijst **Playbooks** . Als deze niet wordt weer gegeven, klikt u op **vernieuwen**.
+7. Als u een nieuw playbook maakt, typ dan *Azure Sentinel* in het veld **Alle connectors en triggers doorzoeken** en selecteer **Wanneer een reactie op een Azure Sentinel-waarschuwing is geactiveerd**. <br>Nadat deze gemaakt is verschijnt de nieuwe playbook in de lijst **Playbooks**. Als dat niet het geval is, klikt u op **Vernieuwen**.
 
-1. Gebruik de functies **Get entities** , waarmee u de relevante entiteiten kunt ophalen in de lijst **entiteiten** , zoals accounts, IP-adressen en hosts. Hiermee kunt u acties uitvoeren voor specifieke entiteiten.
+1. Gebruik de functies **Entiteiten ophalen** om de relevante entiteiten op te halen vanuit de lijst **Entiteiten**, zoals accounts, IP-adressen en hosts. Hiermee kunt u acties uitvoeren voor specifieke entiteiten.
 
-7. Nu kunt u bepalen wat er moet gebeuren wanneer de playbook wordt geactiveerd. U kunt een actie, een logische voor waarde, Case voorwaarden of lussen toevoegen.
+7. Nu kunt u bepalen wat er moet gebeuren wanneer de playbook wordt geactiveerd. U kunt een actie, een logische voorwaarde, switch case-voorwaarden of lussen toevoegen.
 
    ![Ontwerper van logische app](./media/tutorial-respond-threats-playbook/logic-app.png)
 
-## <a name="how-to-run-a-security-playbook"></a>Een beveiligings Playbook uitvoeren
+## <a name="how-to-run-a-security-playbook"></a>Een beveiligingsplaybook uitvoeren
 
-U kunt op aanvraag een Playbook uitvoeren.
+U kunt een playbook uitvoeren op aanvraag.
 
-Een Playbook op aanvraag uitvoeren:
+Een playbook uitvoeren op aanvraag:
 
-1. Selecteer op de pagina **incidenten** een incident en klik op **volledige details weer geven**.
+1. Selecteer op de pagina **incidenten** een incident en klik op **Volledige gegevens weergeven**.
 
-2. Klik op het tabblad **waarschuwingen** op de waarschuwing waarmee u de Playbook wilt uitvoeren en schuif helemaal naar rechts en klik op **playbooks weer geven** en selecteer een Playbook om uit te **voeren** in de lijst met beschik bare playbooks van het abonnement. 
+2. Klik in het tabblad **Waarschuwingen** op de waarschuwing waar u de playbook op wilt uitvoeren, schuif helemaal naar rechts en klik op **Playbooks weergeven** en selecteer een playbook om **uit te voeren** in de lijst met beschikbare playbooks in het abonnement. 
 
 
 
-## <a name="automate-threat-responses"></a>Bedreigings reacties automatiseren
+## <a name="automate-threat-responses"></a>Bedreigingsreacties automatiseren
 
-SIEM/SOC-teams kunnen regel matig worden overspoeld met beveiligings waarschuwingen. Het gegenereerde volume van waarschuwingen is zo zeer groot dat beschik bare beveiligings beheerders worden overspoeld. Dit resulteert al te vaak in situaties waarin veel waarschuwingen niet kunnen worden onderzocht, waardoor de organisatie kwetsbaar is voor aanvallen die niet meer worden opgemerkt. 
+SIEM/SOC-teams worden regelmatig overspoeld met beveiligingswaarschuwingen. Het aantal waarschuwingen is zo groot dat beveiligingsbeheerders overweldigd worden. Het resultaat is vaak dat waarschuwingen niet onderzocht kunnen worden, zodat de organisatie kwetsbaar is en aanvallen niet gedetecteerd worden. 
 
-Veel, indien niet de meeste, van deze waarschuwingen voldoen aan terugkerende patronen die kunnen worden aangepakt door specifieke en gedefinieerde herstel acties. Met Azure Sentinel kunt u al uw herbemiddeling definiëren in playbooks. Het is ook mogelijk om realtime-automatisering in te stellen als onderdeel van de Playbook-definitie zodat u een bepaald antwoord op bepaalde beveiligings waarschuwingen volledig kunt automatiseren. Met behulp van realtime-automatisering kunnen antwoord teams hun werk belasting aanzienlijk verminderen door de routine reacties op terugkerende waarschuwingen volledig te automatiseren, waardoor u meer kunt concentreren op unieke waarschuwingen, patronen kunt analyseren, de jacht kunt automatiseren en meer.
+Veel, of zelfs alle, van deze waarschuwingen passen in terugkerende patronen die aangepakt kunnen worden met specifieke en vastgelegde herstelacties. Met Azure Sentinel kunt u al uw herstelacties vastleggen in playbooks. Het is ook mogelijk om realtime automatisering op te nemen in uw playbook om een volledig geautomatiseerde reactie in te stellen voor bepaalde beveiligingswaarschuwingen. Door realtime-automatisering te gebruiken, wordt de workload voor herstelteams aanzienlijk verlaagd. Ze kunnen de gebruikelijke reactie op veel voorkomende soorten waarschuwingen volledig automatiseren, zodat u zich kunt richten op meer unieke waarschuwingen, patronen kunt analyseren, bedreigingen kunt opsporen en meer.
 
-Voor het automatiseren van antwoorden:
+Om reacties te automatiseren:
 
-1. Selecteer de waarschuwing waarvoor u het antwoord wilt automatiseren.
-1. Kies op de pagina **waarschuwings regel bewerken** onder **realtime automatisering**de **geactiveerde Playbook** die u wilt uitvoeren wanneer deze waarschuwings regel overeenkomt.
+1. Selecteer de waarschuwing waarvoor u de reactie wilt automatiseren.
+1. Kies op de pagina **Waarschuwingsregel bewerken**, onder **Realtime-automatisering**, de **Geactiveerde playbooks** die u wilt uitvoeren wanneer er een overeenkomst is met een waarschuwingsregel.
 1. Selecteer **Opslaan**.
 
    ![realtime-automatisering](./media/tutorial-detect-threats/rt-configuration.png)
@@ -117,6 +117,6 @@ Voor het automatiseren van antwoorden:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u geleerd hoe u een Playbook in azure Sentinel uitvoert. Ga door met het [proactief zoeken naar bedreigingen](hunting.md) met Azure Sentinel.
+In deze zelfstudie hebt u geleerd hoe u een playbook uitvoert in Azure Sentinel. Ga door naar [Proactief bedreigingen opsporen](hunting.md) met behulp van Azure Sentinel.
 
 

@@ -1,73 +1,88 @@
 ---
-title: 'Voor beeld: gezichten identificeren in afbeeldingen-gezicht'
+title: 'Voorbeeld: Gezichten in afbeeldingen identificeren - Face'
 titleSuffix: Azure Cognitive Services
-description: In deze hand leiding wordt gedemonstreerd hoe u onbekende gezichten identificeert met behulp van PersonGroup-objecten, die van bekende mensen vooraf worden gemaakt.
+description: In deze handleiding ziet u hoe u onbekende gezichten identificeert met PersonGroups-objecten, die vooraf worden gemaakt op basis van bekende personen.
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: sample
-ms.date: 04/10/2019
+ms.date: 07/02/2020
 ms.author: sbowles
-ms.openlocfilehash: 248bae81db1bc8cb69bac4618bd7593658336636
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.openlocfilehash: 607f67258c5d069590f934891c09ccada780c977
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84986710"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85918742"
 ---
-# <a name="example-identify-faces-in-images"></a>Voor beeld: gezichten identificeren in afbeeldingen
+# <a name="example-identify-faces-in-images"></a>Voorbeeld: Gezichten in afbeeldingen identificeren
 
-In deze hand leiding wordt gedemonstreerd hoe u onbekende gezichten identificeert met behulp van PersonGroup-objecten, die van bekende mensen vooraf worden gemaakt. De voor beelden zijn geschreven in C# met behulp van de Azure Cognitive Services Face-client bibliotheek.
+In deze handleiding ziet u hoe u onbekende gezichten identificeert met PersonGroups-objecten, die vooraf worden gemaakt op basis van bekende personen. De voorbeelden worden geschreven in C# met behulp van de Face-clientbibliotheek van Azure Cognitive Services.
 
-## <a name="preparation"></a>Voorbereiding
+In dit voorbeeld krijgt u instructies voor het volgende:
 
-In dit voor beeld ziet u het volgende:
+- Het maken van een PersonGroup. Deze PersonGroup bevat een lijst met bekende personen.
+- Het toewijzen van gezichten aan elke persoon. Deze gezichten worden als een basislijn gebruikt om personen te identificeren. U wordt aangeraden om duidelijke frontale weergaven van gezichten te gebruiken. Denk bijvoorbeeld aan een foto-id. Een goede verzameling foto's bevat gezichten van dezelfde persoon in verschillende poses, in verschillende kleuren kleding of met verschillende haarstijlen.
 
-- Een PersonGroup maken. Deze PersonGroup bevat een lijst met bekende personen.
-- Hoe u gezichten aan elke persoon toewijst. Deze gezichten worden gebruikt als basis voor het identificeren van personen. U wordt aangeraden om duidelijke front-weer gaven van gezichten te gebruiken. Een voor beeld is een foto-ID. Een goede set Foto's bevat gezichten van dezelfde persoon in verschillende poses, kleding kleuren of Hairstyles.
+## <a name="prerequisites"></a>Vereisten
+* De huidige versie van [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
+* Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/cognitive-services/)
+* Zodra u een Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="Een Face-resource maken"  target="_blank">maakt u een Face-resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> in Azure Portal om uw sleutel en eindpunt op te halen. Nadat de app is geïmplementeerd, klikt u op **Naar de resource gaan** en kopieert u uw sleutel.
+* Een aantal foto's met de gezichten van geïdentificeerde personen. [Download voorbeeldfoto's](https://github.com/Microsoft/Cognitive-Face-Windows/tree/master/Data) voor Anna, Bill en Clare.
+* Een reeks testfoto's. De foto's hoeven niet per se de gezichten van de geïdentificeerde personen te bevatten. Gebruik een aantal afbeeldingen via de koppeling naar voorbeeldfoto's.
 
-Als u de demonstratie van dit voor beeld wilt uitvoeren, bereidt u het volgende voor:
+## <a name="setting-up"></a>Instellen
 
-- Enkele foto's van het gezicht van de persoon. [Down load voorbeeld Foto's](https://github.com/Microsoft/Cognitive-Face-Windows/tree/master/Data) voor Anna, Bill en Clare.
-- Een reeks test foto's. De Foto's kunnen of niet de gezichten van Anna, Bill of Clare bevatten. Ze worden gebruikt om identificatie te testen. Selecteer ook enkele voor beelden van installatie kopieën van de voor gaande koppeling.
+### <a name="create-a-new-c-application"></a>Een nieuwe C#-toepassing maken
+
+Maak een nieuwe .NET Core-toepassing in uw favoriete editor of IDE. 
+
+Gebruik in een consolevenster (zoals cmd, PowerShell of Bash) de opdracht `dotnet new` om een nieuwe console-app te maken met de naam `face-identify`. Met deze opdracht maakt u een eenvoudig Hallo wereld-C#-project met één bronbestand: *Program.cs*. 
+
+```dotnetcli
+dotnet new console -n face-quickstart
+```
+
+Wijzig uw map in de zojuist gemaakte app-map. U kunt de toepassing maken met:
+
+```dotnetcli
+dotnet build
+```
+
+De build-uitvoer mag geen waarschuwingen of fouten bevatten. 
+
+```output
+...
+Build succeeded.
+ 0 Warning(s)
+ 0 Error(s)
+...
+```
 
 ## <a name="step-1-authorize-the-api-call"></a>Stap 1: De API-aanroep autoriseren
 
-Voor elke aanroep naar de Face-API is een abonnementssleutel vereist. Deze sleutel kan worden door gegeven via een query reeks parameter of worden opgegeven in de aanvraag header. Als u de abonnements sleutel via een query reeks wilt door geven, raadpleegt u de aanvraag-URL voor de detectie van het [gezicht](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) als voor beeld:
-```
-https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes]
-&subscription-key=<Subscription key>
-```
-
-Als alternatief geeft u de abonnements sleutel op in de header van de HTTP-aanvraag **OCP-APIM-Subscription-Key: &lt; Subscription Key &gt; **.
-Wanneer u een client bibliotheek gebruikt, wordt de abonnements sleutel door gegeven via de constructor van de FaceClient-klasse. Bijvoorbeeld:
+Voor elke aanroep naar de Face-API is een abonnementssleutel vereist. Deze sleutel kan worden doorgegeven via een tekenreeksparameter of worden opgegeven in de aanvraagheader. Als u gebruikmaakt van een clientbibliotheek wordt de abonnementssleutel doorgegeven via de constructor van de klasse **FaceClient**. Voeg de volgende code toe aan de methode **Main** in het bestand *Program.cs*.
  
 ```csharp 
 private readonly IFaceClient faceClient = new FaceClient(
-            new ApiKeyServiceClientCredentials("<subscription key>"),
-            new System.Net.Http.DelegatingHandler[] { });
+    new ApiKeyServiceClientCredentials("<subscription key>"),
+    new System.Net.Http.DelegatingHandler[] { });
 ```
- 
-Volg deze instructies om een sleutel op te halen.
-
-1. Maak een [Azure-account](https://azure.microsoft.com/free/cognitive-services/). Als u er al een hebt, kunt u door gaan naar de volgende stap.
-2. Maak een [gezichts bron](https://portal.azure.com/#create/Microsoft.CognitiveServicesFace) in de Azure Portal om uw sleutel op te halen. Zorg ervoor dat u de gratis laag (F0) selecteert tijdens de installatie. 
-3. Nadat de resources zijn geïmplementeerd, klikt u op **Ga naar resource** om uw sleutel te verzamelen. 
 
 ## <a name="step-2-create-the-persongroup"></a>Stap 2: De PersonGroup maken
 
-In deze stap bevat een PersonGroup met de naam ' MyFriends ' de volgende Anna, factuur en Clare. Voor elke persoon zijn verschillende gezichten geregistreerd. De gezichten moeten worden gedetecteerd vanuit de installatie kopieën. Nadat al deze stappen zijn uitgevoerd, hebt u een PersonGroup die eruitziet als deze afbeelding:
+In deze stap bevat een **PersonGroup** met de naam MyFriends Anna, Bill en Clare. Voor elke persoon zijn verschillende gezichten geregistreerd. De gezichten moeten worden gedetecteerd in de afbeeldingen. Nadat al deze stappen zijn uitgevoerd, hebt u een **PersonGroup** die eruitziet als deze afbeelding:
 
 ![MyFriends](../Images/group.image.1.jpg)
 
-### <a name="step-21-define-people-for-the-persongroup"></a>Stap 2,1: gebruikers definiëren voor de PersonGroup
-Een persoon is een basisidentificatie-eenheid. Een gebruiker kan een of meer bekende gezichten geregistreerd hebben. Een PersonGroup is een verzameling personen. Elke persoon is gedefinieerd binnen een bepaalde PersonGroup. Identificatie wordt uitgevoerd op basis van een PersonGroup. De taak is het maken van een PersonGroup en het maken van de personen hierin, zoals Anna, Bill en Clare.
+### <a name="step-21-define-people-for-the-persongroup"></a>Stap 2.1: Personen voor de PersonGroup definiëren
+Een persoon is een basisidentificatie-eenheid. Een gebruiker kan een of meer bekende gezichten geregistreerd hebben. Een **PersonGroup** is een verzameling personen. Elke persoon wordt gedefinieerd binnen een specifieke **PersonGroup**. Identificatie wordt uitgevoerd op basis van een **PersonGroup**. De taak bestaat uit het maken van een **PersonGroup** en het maken van de personen in die PersonGroup, zoals Anna, Bill en Clare.
 
-Maak eerst een nieuwe PersonGroup met behulp van de [PersonGroup-Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) API. De bijbehorende API van de client bibliotheek is de methode CreatePersonGroupAsync voor de klasse FaceClient. De groeps-ID die is opgegeven voor het maken van de groep is uniek voor elk abonnement. U kunt PersonGroups ook ophalen, bijwerken of verwijderen met behulp van andere PersonGroup-Api's. 
+Maak eerst een nieuwe **PersonGroup** met behulp van de API [PersonGroup - Maken](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244). De bijbehorende clientbibliotheek-API is de methode **CreatePersonGroupAsync** voor de klasse **FaceClient**. De groeps-id die is opgegeven om de groep te maken, is uniek voor elk abonnement. U kunt ook **PersonGroups** ophalen, bijwerken of verwijderen met behulp van andere **PersonGroup**-API's. 
 
-Nadat u een groep hebt gedefinieerd, kunt u personen binnen deze groepen definiëren met behulp van de [PersonGroup-Create-](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c) API. De clientbibliotheekmethode is CreatePersonAsync. U kunt een gezicht toevoegen aan elke persoon nadat deze is gemaakt.
+Nadat een groep is gedefinieerd, kunt u personen in de groep definiëren met behulp van de API [PersonGroup Person - Maken](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c). De clientbibliotheekmethode is **CreatePersonAsync**. Nadat de personen zijn gemaakt, kunt u aan elke persoon een gezicht toevoegen.
 
 ```csharp 
 // Create an empty PersonGroup
@@ -84,10 +99,10 @@ CreatePersonResult friend1 = await faceClient.PersonGroupPerson.CreateAsync(
  
 // Define Bill and Clare in the same way
 ```
-### <a name="step-22-detect-faces-and-register-them-to-the-correct-person"></a><a name="step2-2"></a>Stap 2,2: gezichten detecteren en deze registreren bij de juiste persoon
-De detectie wordt uitgevoerd door een POST-webaanvraag naar de API [Face - Detecteren](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) te verzenden met het afbeeldingsbestand in de HTTP-aanvraagbody. Wanneer u de-client bibliotheek gebruikt, wordt de detectie van het gezicht uitgevoerd via een van de detectie.. Async-methoden van de FaceClient-klasse.
+### <a name="step-22-detect-faces-and-register-them-to-the-correct-person"></a><a name="step2-2"></a> Stap 2.2: Gezichten detecteren en deze registreren bij de juiste persoon
+De detectie wordt uitgevoerd door een POST-webaanvraag naar de API [Face - Detecteren](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) te verzenden met het afbeeldingsbestand in de HTTP-aanvraagbody. Wanneer u de clientbibliotheek gebruikt, wordt gezichtsdetectie uitgevoerd met een van de Detect..Async-methoden van de FaceClient-klasse.
 
-Voor elk gezicht dat wordt gedetecteerd, kunt u contact opnemen met [PersonGroup. Voeg het gezicht](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) toe om het aan de juiste persoon toe te voegen.
+Voor elk gedetecteerd gezicht roept u [PersonGroup Person – Gezicht toevoegen](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) aan om het gezicht toe te voegen aan de juiste persoon.
 
 In de volgende code ziet u het proces voor het detecteren van een gezicht in een afbeelding en het toevoegen van het gezicht aan een persoon:
 
@@ -106,17 +121,17 @@ foreach (string imagePath in Directory.GetFiles(friend1ImageDir, "*.jpg"))
 }
 // Do the same for Bill and Clare
 ``` 
-Als de afbeelding meer dan één gezicht bevat, wordt alleen het grootste gezicht toegevoegd. U kunt andere gezichten toevoegen aan de persoon. Geef een teken reeks met de notatie ' targetFace = left, top, width, height ' door aan [PersonGroup persoon-add face-](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) API van de targetFace-query parameter. U kunt ook de optionele para meter targetFace gebruiken voor de methode AddPersonFaceAsync om andere gezichten toe te voegen. Elk gezicht dat wordt toegevoegd aan de persoon krijgt een unieke ID voor het permanente gezicht. U kunt deze ID gebruiken in [PersonGroup-persoon – face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523e) en [Face-identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239).
+Als de afbeelding meer dan één gezicht bevat, wordt alleen het grootste gezicht toegevoegd. U kunt andere gezichten aan de persoon toevoegen. Geef een tekenreeks met de indeling 'targetFace = left, top, width, height' door aan de targetFace-queryparameter van de API [PersonGroup Person - Gezicht toevoegen](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b). U kunt ook de optionele parameter targetFace voor de AddPersonFaceAsync-methode gebruiken om andere gezichten toe te voegen. Aan elk gezicht dat aan de persoon wordt toegevoegd, wordt een unieke, permanente gezichts-id gegeven. U kunt deze id gebruiken in [PersonGroup Person – Gezicht verwijderen](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523e) en [Face – Identificeren](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239).
 
 ## <a name="step-3-train-the-persongroup"></a>Stap 3: De PersonGroup trainen
 
-De PersonGroup moet worden getraind voordat een identificatie kan worden uitgevoerd door deze te gebruiken. De PersonGroup moet opnieuw worden getraind nadat u een persoon hebt toegevoegd of verwijderd of als u het geregistreerde gezicht van een persoon bewerkt. De training wordt uitgevoerd met behulp van de API [PersonGroup – Trainen](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249). Wanneer u de-client bibliotheek gebruikt, is dit een aanroep van de methode TrainPersonGroupAsync:
+De **PersonGroup** moet worden getraind voordat u er gezichten van personen mee kunt identificeren. De **PersonGroup** moet opnieuw worden getraind nadat u een persoon toevoegt of verwijdert, of wanneer u het geregistreerde gezicht van een persoon bewerkt. De training wordt uitgevoerd met behulp van de API [PersonGroup – Trainen](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249). Wanneer u de clientbibliotheek gebruikt, hoeft u alleen de methode **TrainPersonGroupAsync** aan te roepen:
  
 ```csharp 
 await faceClient.PersonGroup.TrainAsync(personGroupId);
 ```
  
-Training is een asynchroon proces. De bewerking kan niet worden voltooid, zelfs niet nadat de TrainPersonGroupAsync-methode is geretourneerd. Mogelijk moet u een query uitvoeren op de trainings status. Gebruik de [PersonGroup-trainings status-](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395247) API of de methode GetPersonGroupTrainingStatusAsync van de client bibliotheek. De volgende code toont een eenvoudige logica voor het volt ooien van de PersonGroup-training:
+Trainen is een asynchroon proces. Dit proces kan nog actief zijn nadat de methode **TrainPersonGroupAsync** is geretourneerd. Mogelijk moet u een query uitvoeren op de trainingsstatus. Gebruik de API [PersonGroup - Trainingsstatus ophalen](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395247) of de methode **GetPersonGroupTrainingStatusAsync** van de clientbibliotheek. In de volgende code ziet u eenvoudige logica van een **PersonGroup**-training in afwachting van voltooiing:
  
 ```csharp 
 TrainingStatus trainingStatus = null;
@@ -135,11 +150,11 @@ while(true)
 
 ## <a name="step-4-identify-a-face-against-a-defined-persongroup"></a>Stap 4: Een gezicht identificeren op basis van een gedefinieerde PersonGroup
 
-Wanneer de face-service id's uitvoert, wordt de gelijkenis van een test vlak tussen alle gezichten in een groep berekend. Het retourneert de meest vergelijk bare personen voor het test gezicht. Dit proces wordt uitgevoerd door de API voor het identificeren van het [gezicht](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) of de methode IdentifyAsync van de client bibliotheek.
+Wanneer met de Face-service identificaties worden uitgevoerd, wordt berekend in hoeverre een testgezicht vergelijkbaar is met alle gezichten in een groep. De personen die het meest vergelijkbaar zijn met het testgezicht, worden geretourneerd. Dit proces wordt uitgevoerd met behulp van de API [Face - Identificeren](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) of de methode IdentifyAsync van de clientbibliotheek.
 
-Het test gezicht moet worden gedetecteerd met behulp van de vorige stappen. Vervolgens wordt de face-ID door gegeven aan de id-API als een tweede argument. Meerdere gezichts-Id's kunnen tegelijkertijd worden geïdentificeerd. Het resultaat bevat alle geïdentificeerde resultaten. Het identificatie proces retourneert standaard slechts één persoon die voldoet aan het test gezicht. U kunt desgewenst de optionele para meter maxNumOfCandidatesReturned opgeven, zodat het identificatie proces meer kandidaten retourneert.
+Het testgezicht moet worden gedetecteerd met behulp van de vorige stappen. Vervolgens wordt de gezichts-id als een tweede argument doorgegeven aan de identificatie-API. Er kunnen meerdere gezichts-id's tegelijk worden geïdentificeerd. Het resultaat bevat alle geïdentificeerde resultaten. Standaard wordt alleen de persoon weergegeven die het meeste overeenkomt met het testgezicht. Desgewenst kunt u de optionele parameter _maxNumOfCandidatesReturned_ gebruiken om meer kandidaten te retourneren.
 
-De volgende code toont het identificatie proces:
+In de volgende code ziet u hoe het identificatieproces in zijn werk gaat:
 
 ```csharp 
 string testImageFile = @"D:\Pictures\test_img1.jpg";
@@ -168,28 +183,27 @@ using (Stream s = File.OpenRead(testImageFile))
 }
 ``` 
 
-Nadat u de stappen hebt voltooid, kunt u proberen om verschillende gezichten te identificeren. Bekijk of de gezichten van Anna, Bill of Clare correct kunnen worden geïdentificeerd op basis van de afbeeldingen die zijn geüpload voor gezichts detectie. Zie de volgende voorbeelden:
+Nadat u de stappen hebt voltooid, probeert u verschillende gezichten te identificeren. Kijk of de gezichten van Anna, Bill of Clare goed kunnen worden geïdentificeerd volgens de afbeeldingen die u voor gezichtsdetectie hebt geüpload. Zie de volgende voorbeelden:
 
 ![Verschillende gezichten identificeren](../Images/identificationResult.1.jpg )
 
-## <a name="step-5-request-for-large-scale"></a>Stap 5: aanvraag voor grote schaal
+## <a name="step-5-request-for-large-scale"></a>Stap 5: Aanvraag voor grote schaal
 
-Een PersonGroup kan tot 10.000 personen bevatten op basis van de vorige ontwerp beperking.
-Zie voor meer informatie over scenario's met grootschalige capaciteit voor maximaal een miljoen personen [De functie Grootschalig gebruiken](how-to-use-large-scale.md).
+Een **PersonGroup** kan maximaal 10.000 personen bevatten op basis van beperkingen in het vorige ontwerp. Zie voor meer informatie over scenario's met grootschalige capaciteit voor maximaal een miljoen personen [De functie Grootschalig gebruiken](how-to-use-large-scale.md).
 
 ## <a name="summary"></a>Samenvatting
 
-In deze hand leiding hebt u het proces voor het maken van een PersonGroup geleerd en het identificeren van een persoon. De volgende functies zijn uitgelegd en aangetoond:
+In deze handleiding hebt u het proces voor het maken van een **PersonGroup** en het identificeren van gezichten geleerd. De volgende functies zijn uitgelegd en gedemonstreerd:
 
-- Spoor gezichten door gebruik te maken van de detectie-API voor het [gezichts](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d) licht.
-- PersonGroups maken met behulp van de [PersonGroup-Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) API.
-- Personen maken met behulp van de [PersonGroup-API maken](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c) .
-- Train een PersonGroup met behulp van de [PersonGroup – Train](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249) API.
-- Identificeer onbekende gezichten voor de PersonGroup met behulp van de [Face-identify-](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) API.
+- Gezichten detecteren met behulp van de API [Face - Detecteren](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d).
+- PersonGroups maken met behulp van de API [PersonGroup - Maken](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244).
+- Personen maken met behulp van de API [PersonGroup Person - Maken](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c).
+- Een PersonGroup trainen met behulp van de API [PersonGroup – Trainen](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249).
+- Onbekende gezichten identificeren op basis van de PersonGroup met behulp van de API [Face - Identificeren](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239).
 
 ## <a name="related-topics"></a>Verwante onderwerpen
 
-- [Concepten voor gezichts herkenning](../concepts/face-recognition.md)
+- [Gezichtsherkenningsconcepten](../concepts/face-recognition.md)
 - [Gezichten in een afbeelding detecteren](HowtoDetectFacesinImage.md)
 - [Gezichten toevoegen](how-to-add-faces.md)
 - [De functie Grootschalig gebruiken](how-to-use-large-scale.md)

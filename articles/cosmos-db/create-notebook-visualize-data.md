@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: dfcde775780cdb42f9df1d677ff2f2475de92843
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 9b2ef5ddb56e3d0422a2a876993ddda0bd97e4ff
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85115275"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961095"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Zelfstudie: Een notebook in Azure Cosmos DB maken om de gegevens te analyseren en visualiseren
 
@@ -235,7 +235,7 @@ In deze sectie gaat u een aantal query's uitvoeren op de opgehaalde gegevens.
 
    Bij de uitvoer wordt de wereldkaart met verschillende kleuren weergegeven. De kleuren van donker naar licht staan voor de landen/regio's met de hoogste naar de laagste omzet.
 
-   ![Visualisatie op een kaart van de omzet per land/regio](./media/create-notebook-visualize-data/countries-revenue-map-visualization.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/countries-revenue-map-visualization.png" alt-text="Visualisatie op een kaart van de omzet per land/regio":::
 
 1. Laten we eens een andere toepassing van gegevensvisualisatie bekijken. In de WebsiteData-container staat een record van gebruikers die een item hebben bekeken, dit aan hun winkelwagen hebben toegevoegd en het item hebben aangeschaft. Laten we de conversieverhouding van aangeschafte items eens uittekenen. Voer de volgende code uit in een nieuwe cel om de conversieverhouding voor elk item te visualiseren:
 

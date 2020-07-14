@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: Apache Storm met Apache Kafka-Azure HDInsight'
+title: 'Zelfstudie: Apache Storm met Apache Kafka in Azure HDInsight'
 description: Lees hoe u in HDInsight een streaming-pijplijn maakt met Apache Storm en Apache Kafka. In deze zelfstudie gebruikt u de componenten KafkaBolt en KafkaSpout om gegevens te streamen vanuit Kafka.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: eac9bee6992520492b846e3b579d8a05c327e749
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 6c600c4cfe96b849786664aa878ec1f84407da5b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73494362"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963526"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Zelfstudie: Apache Storm gebruiken met Apache Kafka in HDInsight
 
@@ -58,28 +58,28 @@ U kunt de volgende omgevingsvariabelen instellen wanneer u Java en de JDK instal
 > 
 > Voor uw gemak is dit document gekoppeld aan een sjabloon waarmee u alle vereiste Azure-resources kunt maken. 
 >
-> Zie het document [een virtueel netwerk plannen voor hdinsight](hdinsight-plan-virtual-network-deployment.md) voor meer informatie over het gebruik van HDInsight in een virtueel netwerk.
+> Zie het document [Plan een virtueel netwerk voor HDInsight](hdinsight-plan-virtual-network-deployment.md) voor meer informatie over het gebruik van HDInsight in een virtueel netwerk.
 
 ## <a name="storm-and-kafka"></a>Storm en Kafka
 
 Apache Storm biedt de verschillende onderdelen voor het werken met Apache Kafka. In deze zelfstudie worden de volgende onderdelen gebruikt:
 
-* `org.apache.storm.kafka.KafkaSpout`: met dit onderdeel worden gegevens gelezen uit Kafka. Dit onderdeel is afhankelijk van de volgende onderdelen:
+* `org.apache.storm.kafka.KafkaSpout`: met dit onderdeel worden gegevens vanuit Kafka gelezen. Dit onderdeel is afhankelijk van de volgende onderdelen:
 
-    * `org.apache.storm.kafka.SpoutConfig`: bevat de configuratie voor het spout-onderdeel.
+    * `org.apache.storm.kafka.SpoutConfig`: dit onderdeel bevat de configuratie voor het spout-onderdeel.
 
-    * `org.apache.storm.spout.SchemeAsMultiScheme` en `org.apache.storm.kafka.StringScheme`: bepalen hoe de gegevens uit Kafka worden omgezet in een Storm-tuple.
+    * `org.apache.storm.spout.SchemeAsMultiScheme` en `org.apache.storm.kafka.StringScheme`: deze onderdelen bepalen hoe de gegevens uit Kafka worden omgezet in een Storm-tuple.
 
 * `org.apache.storm.kafka.bolt.KafkaBolt`: met dit onderdeel worden gegevens weggeschreven naar Kafka. Dit onderdeel is afhankelijk van de volgende onderdelen:
 
-    * `org.apache.storm.kafka.bolt.selector.DefaultTopicSelector`: beschrijving van het onderwerp waarnaar wordt weggeschreven.
+    * `org.apache.storm.kafka.bolt.selector.DefaultTopicSelector`: dit onderdeel beschrijft het onderwerp waarnaar wordt weggeschreven.
 
-    * `org.apache.kafka.common.serialization.StringSerializer`: hiermee wordt de bolt geconfigureerd voor het serialiseren van gegevens als een tekenreekswaarde.
+    * `org.apache.kafka.common.serialization.StringSerializer`: met dit onderdeel wordt de bolt geconfigureerd voor het serialiseren van gegevens als een tekenreekswaarde.
 
-    * `org.apache.storm.kafka.bolt.mapper.FieldNameBasedTupleToKafkaMapper`: hiermee worden gegevens vanuit de tuple-structuur binnen de Storm-topologie toegewezen aan velden die zijn opgeslagen in Kafka.
+    * `org.apache.storm.kafka.bolt.mapper.FieldNameBasedTupleToKafkaMapper`: met dit onderdeel worden gegevens vanuit de tuple-structuur binnen de Storm-topologie toegewezen aan velden die zijn opgeslagen in Kafka.
 
 Deze onderdelen zijn beschikbaar in het pakket `org.apache.storm : storm-kafka`. Gebruik de pakketversie die overeenkomt met de Storm-versie. Voor HDInsight 3.6 is dit Storm versie 1.1.0.
-U hebt ook het pakket `org.apache.kafka : kafka_2.10` nodig, met daarin aanvullende Kafka-onderdelen. Gebruik de pakketversie die overeenkomt met de Kafka-versie. Voor HDInsight 3,6 is de Kafka-versie 1.1.1.
+U hebt ook het pakket `org.apache.kafka : kafka_2.10` nodig, met daarin aanvullende Kafka-onderdelen. Gebruik de pakketversie die overeenkomt met de Kafka-versie. Voor HDInsight 3.6 is dit Kafka versie 1.1.1.
 
 De volgende XML vormt de afhankelijksdeclaratie in de `pom.xml` voor een [Apache Maven](https://maven.apache.org/)-project:
 
@@ -115,26 +115,26 @@ De volgende XML vormt de afhankelijksdeclaratie in de `pom.xml` voor een [Apache
 
 ## <a name="understanding-the-code"></a>De code begrijpen
 
-De code die in dit document wordt gebruikt, [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka)is beschikbaar op.
+De code die wordt gebruikt in dit document is beschikbaar op [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka).
 
 Er worden twee topologieën meegeleverd in deze zelfstudie:
 
-* Kafka-writer: genereert willekeurig zinnen en slaat deze op Kafka.
+* Kafka-writer: genereert willekeurige zinnen en slaat deze op in Kafka.
 
-* Kafka-reader: leest de gegevens uit Kafka en slaat deze vervolgens op in het HDFS-compatibele bestandsarchief voor het Storm-cluster.
+* Kafka-reader: leest gegevens uit Kafka en slaat deze vervolgens op in het HDFS-compatibele bestandsarchief voor het Storm-cluster.
 
     > [!WARNING]  
     > Om het Storm-cluster te laten werken met de HDFS-compatibele opslag die wordt gebruikt door HDInsight, is een scriptactie vereist. Het script installeert verschillende jar-bestanden naar het pad `extlib` voor Storm. De sjabloon in deze zelfstudie gebruikt automatisch het script tijdens het maken van het cluster.
     >
     > Als u de sjabloon in dit document niet gebruikt om het Storm-cluster te maken, moet u de scriptactie handmatig toepassen op het cluster.
     >
-    > De script actie bevindt [https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh](https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh) zich op en wordt toegepast op de Super Visor en Nimbus-knoop punten van het Storm-cluster. Zie het document [Op Linux gebaseerde HDInsight-clusters aanpassen met behulp van scriptacties](hdinsight-hadoop-customize-cluster-linux.md) voor meer informatie over het gebruik van scriptacties.
+    > De scriptactie bevindt zich op [https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh](https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh) en wordt toegepast op de supervisor- en nimbus-knooppunten van het Storm-cluster. Zie het document [Op Linux gebaseerde HDInsight-clusters aanpassen met behulp van scriptacties](hdinsight-hadoop-customize-cluster-linux.md) voor meer informatie over het gebruik van scriptacties.
 
 De topologieën worden gedefinieerd met [Flux](https://storm.apache.org/releases/current/flux.html). Flux werd geïntroduceerd in Storm 0.10.x en stelt u in staat om de topologieconfiguratie te scheiden van de code. In het geval van topologieën die gebruikmaken van het Flux-framework, wordt de topologie gedefinieerd in een YAML-bestand. Het YAML-bestand kan worden opgenomen als onderdeel van de topologie. Het kan ook een zelfstandig bestand zijn dat wordt gebruikt wanneer u de topologie indient. Flux ondersteunt ook het vervangen van variabelen tijdens runtime, wat we in dit voorbeeld doen.
 
 De volgende parameters worden tijdens runtime ingesteld voor deze topologieën:
 
-* `${kafka.topic}`: de naam van het onderwerp Kafka waaruit/waarnaar de topologieën lezen/schrijven.
+* `${kafka.topic}`: de naam van het Kafka-onderwerp waaruit/waarnaar de topologieën lezen/schrijven.
 
 * `${kafka.broker.hosts}`: de hosts waarop de Kafka-brokers worden uitgevoerd. De broker-gegevens worden door de KafkaBolt gebruikt bij het schrijven van gegevens naar Kafka.
 
@@ -142,9 +142,9 @@ De volgende parameters worden tijdens runtime ingesteld voor deze topologieën:
 
 * `${hdfs.url}`: de URL van het bestandssysteem voor het HDFSBolt-onderdeel. Hiermee wordt aangegeven of de gegevens worden geschreven naar een Azure Storage-account of Azure Data Lake Storage.
 
-* `${hdfs.write.dir}`: de map waarnaar gegevens worden geschreven.
+* `${hdfs.write.dir}`: de map waarnaar gegevens worden weggeschreven.
 
-Zie [https://storm.apache.org/releases/current/flux.html](https://storm.apache.org/releases/current/flux.html)voor meer informatie over stroom-topologieën.
+Zie [https://storm.apache.org/releases/current/flux.html](https://storm.apache.org/releases/current/flux.html) voor meer informatie over Flux-topologieën.
 
 ### <a name="kafka-writer"></a>Kafka-writer
 
@@ -391,7 +391,7 @@ Gebruik de volgende stappen om eerst een virtueel Azure-netwerk te maken en verv
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-storm-java-kafka%2Fmaster%2Fcreate-kafka-storm-clusters-in-vnet.json" target="_blank"><img src="./media/hdinsight-apache-storm-with-kafka/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
-    De Azure Resource Manager-sjabloon bevindt zich op **https://github.com/Azure-Samples/hdinsight-storm-java-kafka/blob/master/create-kafka-storm-clusters-in-vnet.json**. Met deze sjabloon maakt u de volgende resources:
+    De Azure Resource Manager-sjabloon bevindt zich op **https://github.com/Azure-Samples/hdinsight-storm-java-kafka/blob/master/create-kafka-storm-clusters-in-vnet.json** . Met deze sjabloon maakt u de volgende resources:
 
     * Azure-resourcegroep
     * Azure Virtual Network
@@ -429,7 +429,7 @@ Gebruik de volgende stappen om eerst een virtueel Azure-netwerk te maken en verv
 
 ## <a name="build-the-topology"></a>De topologie samenstellen
 
-1. Down load het project van in uw ontwikkel omgeving [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka)vanuit, open een opdracht regel en wijzig de mappen in de locatie waar u het project hebt gedownload.
+1. Download in de ontwikkelomgeving het project op [https://github.com/Azure-Samples/hdinsight-storm-java-kafka](https://github.com/Azure-Samples/hdinsight-storm-java-kafka), open een opdrachtregel en ga naar de map waarnaar u het project hebt gedownload.
 
 2. Gebruik in de map **hdinsight-storm-java-kafka** de volgende opdracht om het project te compileren en een pakket voor implementatie te maken:
 
@@ -500,7 +500,9 @@ Gebruik de volgende stappen om eerst een virtueel Azure-netwerk te maken en verv
 
     De geretourneerde waarde ziet er ongeveer zo uit:
 
-        zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
+    ```output
+    zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
+    ```
 
     > [!IMPORTANT]  
     > Hoewel er meer dan twee Zookeeper-knooppunten zijn, hoeft u niet een volledige lijst van alle hosts te leveren aan de clients. Een of twee is voldoende.
@@ -509,9 +511,11 @@ Gebruik de volgende stappen om eerst een virtueel Azure-netwerk te maken en verv
 
 3. Bewerk het bestand `dev.properties` in de hoofdmap van het project. Voeg de gegevens van de Broker- en Zookeeper-hosts voor het __Kafka__-cluster toe aan de overeenkomende regels in dit bestand. Het volgende voorbeeld is geconfigureerd aan de hand van de voorbeeldwaarden uit de vorige stappen:
 
-        kafka.zookeeper.hosts: zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
-        kafka.broker.hosts: wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
-        kafka.topic: stormtopic
+    ```bash
+    kafka.zookeeper.hosts: zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
+    kafka.broker.hosts: wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
+    kafka.topic: stormtopic
+    ```
 
     > [!IMPORTANT]  
     > De vermelding `hdfs.url` is geconfigureerd voor een cluster dat gebruikmaakt van een Azure Storage-account. Als u deze topologie wilt gebruiken met een Storm-cluster dat gebruikmaakt van Data Lake Storage, wijzigt u deze waarde van `wasb` in `adl`.
@@ -572,7 +576,7 @@ Kafka slaat gegevens op in een _onderwerp_. U moet het onderwerp maken voordat u
 
     * `-R /writer.yaml`: gebruik het bestand `writer.yaml` voor het configureren van de topologie. `-R` geeft aan dat deze resource wordt opgenomen in het jar-bestand. De resource bevindt zich in de hoofdmap van de jar en dus is `/writer.yaml` het pad naar de resource.
 
-    * `--filter`: vul vermeldingen in de topologie `writer.yaml` in met behulp van de waarden in het bestand `dev.properties`. Zo moet de waarde van de vermelding `kafka.topic` in het bestand worden gebruikt in plaats van de vermelding `${kafka.topic}` in de definitie van de topologie.
+    * `--filter`: vul vermeldingen in de topologie `writer.yaml` in met behulp van de waarden in bestand `dev.properties`. Zo moet de waarde van de vermelding `kafka.topic` in het bestand worden gebruikt in plaats van de vermelding `${kafka.topic}` in de definitie van de topologie.
 
 ## <a name="start-the-reader"></a>De lezer starten
 
@@ -590,11 +594,13 @@ Kafka slaat gegevens op in een _onderwerp_. U moet het onderwerp maken voordat u
 
     De uitvoer lijkt op het volgende:
 
-        Found 173 items
-        -rw-r--r--   1 storm supergroup       5137 2018-04-09 19:00 /stormdata/hdfs-bolt-4-0-1523300453088.txt
-        -rw-r--r--   1 storm supergroup       5128 2018-04-09 19:00 /stormdata/hdfs-bolt-4-1-1523300453624.txt
-        -rw-r--r--   1 storm supergroup       5131 2018-04-09 19:00 /stormdata/hdfs-bolt-4-10-1523300455170.txt
-        ...
+    ```output
+    Found 173 items
+      -rw-r--r--   1 storm supergroup       5137 2018-04-09 19:00 /stormdata/hdfs-bolt-4-0-1523300453088.txt
+      -rw-r--r--   1 storm supergroup       5128 2018-04-09 19:00 /stormdata/hdfs-bolt-4-1-1523300453624.txt
+      -rw-r--r--   1 storm supergroup       5131 2018-04-09 19:00 /stormdata/hdfs-bolt-4-10-1523300455170.txt
+      ...
+    ```
 
 3. Als u de inhoud van het bestand wilt weergeven, gebruikt u de volgende opdracht. Vervang `filename.txt` door de naam van een bestand:
 
@@ -604,13 +610,19 @@ Kafka slaat gegevens op in een _onderwerp_. U moet het onderwerp maken voordat u
 
     De volgende tekst is een voorbeeld van de inhoud van het bestand:
 
-        four score and seven years ago
-        snow white and the seven dwarfs
-        i am at two with nature
-        snow white and the seven dwarfs
-        i am at two with nature
-        four score and seven years ago
-        an apple a day keeps the doctor away
+    > achtenzeventig jaar geleden
+    >
+    > sneeuwwitje en de zeven dwergen
+    >
+    > Ik ben twee met de natuur
+    >
+    > sneeuwwitje en de zeven dwergen
+    >
+    > Ik ben twee met de natuur
+    >
+    > achtenzeventig jaar geleden
+    >
+    > gezond eten is belangrijk
 
 ## <a name="stop-the-topologies"></a>De topologieën stoppen
 

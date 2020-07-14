@@ -1,23 +1,23 @@
 ---
-title: 'Patroon: groeps beleids definities met initiatieven'
-description: Dit Azure Policy patroon bevat een voor beeld van het groeperen van beleids definities in een initiatief
-ms.date: 01/31/2020
+title: 'Patroon: Beleidsdefinities groeperen met initiatieven'
+description: Dit Azure Policy-patroon laat zien hoe u beleidsdefinities kunt groeperen in een initiatief
+ms.date: 06/29/2020
 ms.topic: sample
-ms.openlocfilehash: 41c2b0cf3b8f677cdc408e85088c3ca6c2049d6b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 065e7632d76feccdd6d2d5a411ba7cdf50aeaf68
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77172854"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565692"
 ---
-# <a name="azure-policy-pattern-group-policy-definitions"></a>Azure Policy patroon: groeps beleids definities
+# <a name="azure-policy-pattern-group-policy-definitions"></a>Azure Policy-patroon: beleidsdefinities groeperen
 
-Een initiatief is een groep beleids definities. Door gerelateerde beleids definities in één object te groeperen, kunt u één toewijzing maken die meerdere toewijzingen zou hebben.
+Een initiatief is een groep beleidsdefinities. Door verwante beleidsdefinities in één object te groeperen, kunt u één toewijzing maken in de plaats van meerdere.
 
-## <a name="sample-initiative-definition"></a>Voor beeld-initiatief definitie
+## <a name="sample-initiative-definition"></a>Voorbeeld van initiatiefdefinitie
 
-Dit initiatief implementeert twee beleids definities die elk de para meters **tagName** en **tagValue** . Het initiatief zelf heeft twee para meters: **costCenterValue** en **productNameValue**.
-Deze initiatief parameters worden elk gegeven aan elk van de gegroepeerde beleids definities. Dit ontwerp maximaliseert het opnieuw gebruiken van de bestaande beleids definities en beperkt het aantal toewijzingen dat wordt gemaakt om ze zo nodig te implementeren.
+Dit initiatief implementeert twee beleidsdefinities die allebeide de parameters **tagName** en **tagValue** overnemen. Het initiatief zelf heeft twee parameters: **costCenterValue** en **productNameValue**.
+Deze initiatiefparameters worden beide gegeven aan elk van de beleidsdefinities in de groep. Dit ontwerp hergebruikt zoveel mogelijk bestaande beleidsdefinities en beperkt het aantal toewijzingen dat wordt gemaakt voor de implementatie.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-group-with-initiative.json":::
 
@@ -25,14 +25,14 @@ Deze initiatief parameters worden elk gegeven aan elk van de gegroepeerde beleid
 
 #### <a name="initiative-parameters"></a>Initiatiefparameters
 
-Een initiatief kan de eigen para meters definiëren die vervolgens worden door gegeven aan de gegroepeerde beleids definities.
-In dit voor beeld worden zowel **costCenterValue** als **productNameValue** gedefinieerd als initiatief parameters. De waarden worden gegeven wanneer het initiatief is toegewezen.
+Een initiatief kan zijn eigen parameters definiëren, die vervolgens worden doorgegeven aan de beleidsdefinities in de groep.
+In dit voorbeeld worden zowel **costCenterValue** als **productNameValue** gedefinieerd als parameters van het initiatief. De waarden worden opgegeven bij toewijzing van het initiatief.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-group-with-initiative.json" range="5-18":::
 
-#### <a name="includes-policy-definitions"></a>Bevat beleids definities
+#### <a name="includes-policy-definitions"></a>Inclusief beleidsdefinities
 
-Elke opgenomen beleids definitie moet de **policyDefinitionId** en een **parameter** matrix opgeven als de beleids definitie para meters accepteert. In het onderstaande fragment worden met de opgenomen beleids definitie twee para meters gebruikt: **tagName** en **tagValue**. **tagName** is gedefinieerd met een letterlijke waarde, maar **tagValue** gebruikt de para meter **costCenterValue** die is gedefinieerd door het initiatief. Deze Passthrough van waarden verbetert hergebruik.
+Elke opgenomen beleidsdefinitie moet de **policyDefinitionId** en een matrix met **parameters** opgeven als de beleidsdefinitie parameters accepteert. In het onderstaande fragment heeft de opgenomen beleidsdefinitie twee parameters: **tagName** en **tagValue**. **tagName** wordt gedefinieerd met een letterlijke waarde, maar **tagValue** gebruikt de parameter **costCenterValue** die gedefinieerd wordt door het initiatief. Deze passthrough van waarden zorgt voor beter hergebruik.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-group-with-initiative.json" range="30-40":::
 

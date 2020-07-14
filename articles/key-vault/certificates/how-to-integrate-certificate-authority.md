@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: d6cb8d386efbcdaf053f0740d955b249c0e636b4
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: 7627625a917a8f652da62d4197368f023ad8c110
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84907812"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964495"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>Key Vault integreren met DigiCert-certificeringsinstantie
 
@@ -57,7 +57,7 @@ Nadat u de bovenstaande gegevens van het DigiCert CertCentral-account hebt verza
  ![Certificaateigenschappen](../media/certificates/how-to-integrate-certificate-authority/add-certificate-authority.png)
 5.  Kies in het scherm **Een certificeringsinstantie maken** de volgende waarden:
     -   **Naam**: Voeg een herkenbare naam van een certificaatverlener toe. Voorbeeld van DigicertCA
-    -   **Geef op**: Selecteer DigiCert in het menu.
+    -   **Provider**: Selecteer DigiCert in het menu.
     -   **Account-id**: Voer de id van uw DigiCert CertCentral-account in
     -   **Accountwachtwoord**: Voer de API-sleutel in die u hebt gegenereerd in uw DigiCert CertCentral-account
     -   **Organisatie-id**: Voer OrgID in, opgehaald uit het DigiCert CertCentral-account 
