@@ -5,13 +5,14 @@ author: harelbr
 ms.author: harelbr
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 6/2/2020
+ms.date: 7/9/2020
 ms.subservice: alerts
-ms.openlocfilehash: e9a1980eccb42342ebc5cb739b2c1f5a539e9f18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4d8ec0c76259a8567906e9ac415864e2cd37a9cd
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84299295"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187571"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Een waarschuwing voor metrische gegevens maken met een Resource Manager-sjabloon
 
@@ -1520,7 +1521,9 @@ In deze sectie worden Azure Resource Manager-sjablonen beschreven voor drie scen
 
 > [!NOTE]
 >
-> In een metrische waarschuwingsregel die meerdere resources controleert is slechts één voorwaarde toegestaan.
+> In een metrische waarschuwings regel waarmee meerdere bronnen worden bewaakt, gelden de volgende beperkingen:
+> - Het bereik van de waarschuwings regel moet ten minste één resource van het geselecteerde resource type bevatten.
+> - De waarschuwings regel kan slechts één voor waarde bevatten.
 
 ### <a name="static-threshold-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>Waarschuwing voor een statische drempelwaarde voor alle virtuele machines in een of meer resourcegroepen
 

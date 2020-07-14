@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b62d69220a931bef8d91a85bcbbaedfbce86110a
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: b3f337798525860748cf7b535c2bce478dad8e27
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85211388"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042999"
 ---
 # <a name="azure-key-vault-logging"></a>Logboekregistratie voor Azure Key Vault
 
@@ -95,7 +95,7 @@ In de [zelfstudie Aan de slag](../secrets/quick-create-cli.md) was de naam van d
 $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 ```
 
-## <a name="enable-logging-using-azure-powershell"></a><a id="enable"></a>Logboekregistratie inschakelen met Azure Powershell
+## <a name="enable-logging-using-azure-powershell"></a><a id="enable"></a>Logboekregistratie inschakelen met Azure PowerShell
 
 Als u logboekregistratie wilt inschakelen voor Key Vault, gebruikt u de cmdlet **Set-AzDiagnosticSetting**, samen met de variabelen die we voor het nieuwe opslagaccount en de sleutelkluis hebben gemaakt. We moeten de markering **-Ingeschakeld** instellen op **$true** en de categorie instellen op **AuditEvent** (de enige categorie voor logboekregistratie van Key Vault):
 
@@ -105,15 +105,17 @@ Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Ena
 
 De uitvoer ziet er als volgt uit:
 
-    StorageAccountId   : /subscriptions/<subscription-GUID>/resourceGroups/ContosoResourceGroup/providers/Microsoft.Storage/storageAccounts/ContosoKeyVaultLogs
-    ServiceBusRuleId   :
-    StorageAccountName :
-        Logs
-        Enabled           : True
-        Category          : AuditEvent
-        RetentionPolicy
-        Enabled : False
-        Days    : 0
+```output
+StorageAccountId   : /subscriptions/<subscription-GUID>/resourceGroups/ContosoResourceGroup/providers/Microsoft.Storage/storageAccountContosoKeyVaultLogs
+ServiceBusRuleId   :
+StorageAccountName :
+    Logs
+    Enabled           : True
+    Category          : AuditEvent
+    RetentionPolicy
+    Enabled : False
+    Days    : 0
+```
 
 Deze uitvoer bevestigt dat logboekregistratie nu is ingeschakeld voor uw sleutelkluis, en slaat informatie op in uw opslagaccount.
 
@@ -330,5 +332,3 @@ Zie [Azure Key Vault in een webtoepassing gebruiken](tutorial-net-create-vault-a
 Zie de [Ontwikkelaarshandleiding voor Azure Key Vault](developers-guide.md) voor het programmeren van verwijzingen.
 
 Zie [Cmdlets voor Azure Key Vault](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault) voor een lijst met Azure PowerShell 1.0-cmdlets voor Azure Key Vault.
-
-Zie [Key Vault instellen met end-to-end sleutelrotatie en controle](../secrets/key-rotation-log-monitoring.md) voor een zelfstudie over sleutelrotatie en logboekcontrole met Azure Key Vault.

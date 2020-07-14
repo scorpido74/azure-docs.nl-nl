@@ -172,7 +172,7 @@ Als u een NSG wilt implementeren voor het subnet dat door uw Azure-SSIS IR wordt
 | Uitgaand | TCP | VirtualNetwork | * | Internet | 80 | Beschrijving De knoop punten van uw Azure-SSIS IR in het virtuele netwerk gebruiken deze poort om een certificaatintrekkingslijst van Internet te downloaden. Als u dit verkeer blokkeert, kan dit leiden tot prestatie downgrade bij het starten van IR en verliest u de mogelijkheid om de intrekkings lijst voor certificaten te controleren op het gebruik van certificaten. Als u de bestemming verder wilt beperken tot bepaalde FQDN-verwijzingen, raadpleegt u de sectie **Azure ExpressRoute of UDR gebruiken**|
 | Uitgaand | TCP | VirtualNetwork | * | SQL | 1433, 11000-11999 | Beschrijving Deze regel is alleen vereist wanneer de knoop punten van uw Azure-SSIS IR in het virtuele netwerk toegang hebben tot een SSISDB die wordt gehost door uw server. Als uw server verbindings beleid is ingesteld op **proxy** in plaats van **omleiden**, is alleen poort 1433 vereist. <br/><br/> Deze uitgaande beveiligings regel is niet van toepassing op een SSISDB die wordt gehost door uw SQL Managed instance in het virtuele netwerk of SQL Database geconfigureerd met een persoonlijk eind punt. |
 | Uitgaand | TCP | VirtualNetwork | * | VirtualNetwork | 1433, 11000-11999 | Beschrijving Deze regel is alleen vereist wanneer de knoop punten van uw Azure-SSIS IR in het virtuele netwerk toegang hebben tot een SSISDB die wordt gehost door uw SQL Managed instance in het virtuele netwerk of SQL Database geconfigureerd met een persoonlijk eind punt. Als uw server verbindings beleid is ingesteld op **proxy** in plaats van **omleiden**, is alleen poort 1433 vereist. |
-| Uitgaand | TCP | VirtualNetwork | * | Opslag | 445 | Beschrijving Deze regel is alleen vereist als u SSIS-pakket wilt uitvoeren dat is opgeslagen in Azure Files. |
+| Uitgaand | TCP | VirtualNetwork | * | Storage | 445 | Beschrijving Deze regel is alleen vereist als u SSIS-pakket wilt uitvoeren dat is opgeslagen in Azure Files. |
 ||||||||
 
 ### <a name="use-azure-expressroute-or-udr"></a><a name="route"></a>Azure ExpressRoute of UDR gebruiken
@@ -338,7 +338,7 @@ Gebruik de portal om een Azure Resource Manager virtueel netwerk te configureren
 
 1. Start micro soft Edge of Google Chrome. Momenteel ondersteunen alleen deze webbrowsers de Data Factory-gebruikers interface. 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 
 1. Selecteer **meer services**. Filter voor en selecteer **virtuele netwerken**. 
 
@@ -368,7 +368,7 @@ Gebruik de portal om een klassiek virtueel netwerk te configureren voordat u pro
 
 1. Start micro soft Edge of Google Chrome. Momenteel ondersteunen alleen deze webbrowsers de Data Factory-gebruikers interface. 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 
 1. Selecteer **meer services**. Filter voor en selecteer **virtuele netwerken (klassiek)**. 
 

@@ -1,16 +1,16 @@
 ---
 title: Overzicht van Azure Management - Azure Governance
 description: Overzicht van de beheergebieden voor de Azure-toepassingen en -resources met koppelingen naar inhoud in Azure-beheerhulpprogramma's.
-ms.date: 05/22/2020
+ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: e293ab743b7c3b49a13cab97200c136a9bd044f5
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 81d655db706a7330fc541724d490a4885cc2fe8b
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828144"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86041911"
 ---
-# <a name="overview-of-management-services-in-azure"></a>Overzicht van beheerservices in Azure
+# <a name="what-are-the-azure-management-areas"></a>Wat zijn de Azure Management-gebieden?
 
 Governance in Azure is slechts één aspect van Azure Management. In dit artikel worden de verschillende beheergebieden besproken voor het implementeren en onderhouden van uw resources in Azure.
 
@@ -26,7 +26,7 @@ In de volgende gedeelten worden kort de diverse beheergebieden beschreven. Ook v
 
 ## <a name="monitor"></a>Controleren
 
-Controleren of monitoring is het verzamelen en analyseren van gegevens om de prestaties, status en beschikbaarheid van uw resources te controleren. Een efficiënte controlestrategie biedt inzicht in de werking van onderdelen en helpt u om door middel van meldingen uw uptime te vergroten. In [Bewaking van Azure-toepassingen en -resources](../monitoring/monitoring-overview.md) vindt u een overzicht van bewaking in Azure en welke services hiervoor worden gebruikt.
+Controleren of monitoring is het verzamelen en analyseren van gegevens om de prestaties, status en beschikbaarheid van uw resources te controleren. Een efficiënte controlestrategie biedt inzicht in de werking van onderdelen en helpt u om door middel van meldingen uw uptime te vergroten. In [Bewaking van Azure-toepassingen en -resources](../azure-monitor/overview.md) vindt u een overzicht van bewaking in Azure en welke services hiervoor worden gebruikt.
 
 ## <a name="configure"></a>Configureren
 
@@ -46,9 +46,16 @@ De beveiliging van uw resources en gegevens beheren. Een beveiligingsprogramma o
 
 ## <a name="protect"></a>Beschermen
 
-Bescherming is bedoeld om uw toepassingen en gegevens beschikbaar te houden, zelfs als er storingen optreden die buiten uw beheer vallen. Bescherming in Azure wordt door twee services geboden. [Azure Backup](../backup/backup-introduction-to-azure-backup.md) biedt back-ups en herstel van uw gegevens in de cloud of on-premises. [Azure Site Recovery](../site-recovery/site-recovery-overview.md) biedt bedrijfscontinuïteit en onmiddellijke herstel tijdens een noodgeval.
+Bescherming is bedoeld om uw toepassingen en gegevens beschikbaar te houden, zelfs als er storingen optreden die buiten uw beheer vallen. Bescherming in Azure wordt door twee services geboden. [Azure Backup](../backup/backup-overview.md) biedt back-ups en herstel van uw gegevens in de cloud of on-premises. [Azure Site Recovery](../site-recovery/site-recovery-overview.md) biedt bedrijfscontinuïteit en onmiddellijke herstel tijdens een noodgeval.
 
 ## <a name="migrate"></a>Migreren
 
 Migratie heeft betrekking op het overhevelen naar de Azure-cloud van workloads die momenteel on-premises worden uitgevoerd.
-[Azure Migrate](../migrate/migrate-overview.md) is een service waarmee u de geschiktheid voor migratie kunt beoordelen. Met Azure Site Recovery kunt u virtuele machines [van on-premises](../site-recovery/migrate-tutorial-on-premises-azure.md) of [vanuit Amazon Web Services](../site-recovery/migrate-tutorial-aws-azure.md) migreren. [Azure Database Migration](../dms/dms-overview.md) helpt u bij de migratie van meerdere databasebronnen naar Azure Data-platforms.
+[Azure Migrate](../migrate/migrate-services-overview.md) is een service waarmee u de geschiktheid voor migratie kunt beoordelen. Met Azure Site Recovery kunt u virtuele machines [van on-premises](../site-recovery/migrate-tutorial-on-premises-azure.md) of [vanuit Amazon Web Services](../site-recovery/migrate-tutorial-aws-azure.md) migreren. [Azure Database Migration](../dms/dms-overview.md) helpt u bij de migratie van meerdere databasebronnen naar Azure Data-platforms.
+
+## <a name="next-steps"></a>Volgende stappen
+
+Raadpleeg de volgende artikelen voor meer informatie over Azure-governance:
+
+- Zie de [Azure-governance-hub](./index.yml).
+- Zie [Governance in het Cloud Adoption Framework voor Azure](/azure/cloud-adoption-framework/govern/)

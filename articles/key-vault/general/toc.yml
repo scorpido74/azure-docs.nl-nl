@@ -100,6 +100,8 @@
           href: event-grid-logicapps.md
         - name: Meldingen ontvangen via Azure Event Grid en Azure Automation
           href: event-grid-tutorial.md
+        - name: Back-ups maken van individuele Key Vault-objecten
+          href: backup.md
     - name: Beveiligen
       items:
         - name: Integreren met de Azure Private Link-service

@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 06/30/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 94a2f77326487aa4bb180dd62ec05f4e23ca6218
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 35938ca3b9d8f3aedd0892740a3dbfa0fb5b036a
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057786"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186857"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Netwerk isolatie tijdens de training & afleiding met persoonlijke virtuele netwerken
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -67,6 +67,9 @@ U kunt ook [persoonlijke Azure-koppelingen inschakelen](how-to-configure-private
 
 Als uw gegevens worden opgeslagen in een virtueel netwerk, moet u een [beheerde identiteit](../active-directory/managed-identities-azure-resources/overview.md) voor een werk ruimte gebruiken om de toegang tot uw gegevens te verlenen aan de Studio.
 
+> [!IMPORTANT]
+> Hoewel het meren deel van Studio werkt met gegevens die zijn opgeslagen in een virtueel netwerk, hebben geïntegreerde notebooks __dit niet__. Geïntegreerde notebooks bieden geen ondersteuning voor het gebruik van opslag die zich in een virtueel netwerk bevindt. In plaats daarvan kunt u Jupyter-notebooks van een reken instantie gebruiken. Zie de sectie [toegang tot gegevens in een reken instantie-notitie blok](#access-data-in-a-compute-instance-notebook) voor meer informatie.
+
 Als u geen toegang tot Studio krijgt, ontvangt u deze fout `Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.` en schakelt u de volgende bewerkingen uit:
 
 * Bekijk de gegevens in de Studio.
@@ -85,7 +88,7 @@ De Studio ondersteunt het lezen van gegevens uit de volgende gegevensopslag type
 
 Voeg uw werk ruimte en opslag account toe aan hetzelfde virtuele netwerk, zodat ze toegang hebben tot elkaar.
 
-1. Als u uw werk ruimte wilt verbinden met het virtuele netwerk, schakelt u de [persoonlijke Azure-koppeling](how-to-configure-private-link.md)in.
+1. Als u uw werk ruimte wilt verbinden met het virtuele netwerk, schakelt u de [persoonlijke Azure-koppeling](how-to-configure-private-link.md)in. Deze functie is momenteel beschikbaar als preview-versie en is verkrijgbaar in de regio VS Oost, VS West 2, VS Zuid-Centraal.
 
 1. Als u uw opslag account wilt verbinden met het virtuele netwerk, [configureert u de firewalls en de instellingen voor virtuele netwerken](#use-a-storage-account-for-your-workspace).
 
@@ -519,7 +522,7 @@ except:
     aks_target.wait_for_completion(show_output = True)
 ```
 
-__Azure-CLI__
+__Azure CLI__
 
 ```azurecli-interactive
 az rest --method put --uri https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.MachineLearningServices/workspaces/<workspace>/computes/<compute>?api-version=2018-11-19 --body @body.json
@@ -635,13 +638,13 @@ Zie [Azure machine learning-werk ruimte gebruiken achter Azure firewall](how-to-
 
 1. Gebruik een van de volgende methoden om de naam van de Azure Container Registry voor uw werk ruimte te vinden:
 
-    __Azure-portal__
+    __Azure Portal__
 
     Vanuit het gedeelte Overzicht van uw werk ruimte koppelt de __register__ waarde aan de Azure container Registry.
 
     :::image type="content" source="./media/how-to-enable-virtual-network/azure-machine-learning-container-registry.png" alt-text="Azure Container Registry voor de werk ruimte" border="true":::
 
-    __Azure-CLI__
+    __Azure CLI__
 
     Als u [de machine learning extensie voor Azure cli hebt geïnstalleerd](reference-azure-machine-learning-cli.md), kunt u de `az ml workspace show` opdracht gebruiken om de werkruimte gegevens weer te geven.
 
@@ -765,7 +768,7 @@ Zie [deploying Azure Databricks in uw Azure Virtual Network](https://docs.azured
 
 Als u een virtuele machine of een Azure HDInsight-cluster in een virtueel netwerk met uw werk ruimte wilt gebruiken, gebruikt u de volgende stappen:
 
-1. Maak een virtuele machine of een HDInsight-cluster met behulp van de Azure Portal of de Azure CLI en plaats het cluster in een virtueel Azure-netwerk. Raadpleeg voor meer informatie de volgende artikelen:
+1. Maak een virtuele machine of een HDInsight-cluster met behulp van de Azure Portal of de Azure CLI en plaats het cluster in een virtueel Azure-netwerk. Raadpleeg de volgende artikelen voor meer informatie:
     * [Virtuele Azure-netwerken voor Linux-Vm's maken en beheren](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
 
     * [HDInsight uitbreiden met behulp van een virtueel Azure-netwerk](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network)

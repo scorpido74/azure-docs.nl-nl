@@ -176,6 +176,8 @@
               href: configure-authentication-provider-microsoft.md
             - name: Verifiëren met Twitter
               href: configure-authentication-provider-twitter.md
+            - name: Verifiëren met een OpenID Connect-provider (Preview)
+              href: configure-authentication-provider-openid-connect.md
         - name: Geavanceerde verificatie
           href: app-service-authentication-how-to.md
         - name: Toegang beperken

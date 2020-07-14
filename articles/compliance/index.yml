@@ -14,12 +14,12 @@ metadata:
   ms.author: terrylan
   manager: rkarlin
   ms.date: 07/07/2020
-  ms.openlocfilehash: f36190edbdbfe4840f9f03d612d6fe2353ad5f5b
-  ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+  ms.openlocfilehash: 0cf2dbdf69ec2cd7af7cf23816db5fb03dacd76e
+  ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
   ms.translationtype: HT
   ms.contentlocale: nl-NL
   ms.lasthandoff: 07/08/2020
-  ms.locfileid: "86134069"
+  ms.locfileid: "86143715"
 conceptualContent:
   title: Nalevingsaanbiedingen
   items:
@@ -375,13 +375,15 @@ additionalContent:
     - title: Handleidingen voor privacy en naleving in verschillende landen/regio's
       links:
       - text: Australische beveiligings- en privacyvereisten
-        url: https://gallery.technet.microsoft.com/Azure-Compliance-in-the-0c790495
+        url: https://azure.microsoft.com/resources/microsoft-azure-compliance-and-australian-security-and-privacy-requirements/
       - text: Singaporese beveiligings- en privacyvereisten
-        url: https://gallery.technet.microsoft.com/Azure-Compliance-in-the-ced8dbf9
+        url: https://azure.microsoft.com/resources/microsoft-azure-compliance-in-the-context-of-singapore/
+      - text: Japanse beveiligings- en privacyvereisten
+        url: https://azure.microsoft.com/resources/microsoft-azure-compliance-and-the-japan-security-and-privacy-requirements/
       - text: Maleisische beveiligings- en privacyvereisten
         url: https://gallery.technet.microsoft.com/Azure-Compliance-in-the-8b936d6a
       - text: Nieuw-Zeelandse beveiligings- en privacyvereisten
-        url: https://gallery.technet.microsoft.com/Azure-Compliance-in-the-f19e44c2
+        url: https://azure.microsoft.com/resources/microsoft-azure-compliance-in-the-context-of-new-zealand/
       - text: Uw weg vinden naar de cloud in Europa
         url: https://www.microsoft.com/en-ie/lcc_cloud/default.aspx
       - text: Uw weg vinden naar de cloud in Azië

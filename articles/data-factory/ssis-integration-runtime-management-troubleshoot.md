@@ -11,11 +11,12 @@ ms.reviewer: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
-ms.openlocfilehash: e928a6b54e53f9076ffe184ed4868e7741661d7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2c1d08656ce9ef6b76e34a943f133859b78345a
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84118821"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86172023"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Problemen met SSIS Integration Runtime Management in Azure Data Factory oplossen
 
@@ -114,7 +115,7 @@ Deze fout betekent dat de poging om de logboeken voor de uitvoering van de aange
 ## <a name="virtual-network-configuration"></a>Configuratie van virtueel netwerk
 
 Als u SSIS IR toevoegt aan Azure Virtual Network, maakt SSIS IR gebruik van het virtuele netwerk onder dit gebruikersabonnement. Zie [Azure-SSIS Integration Runtime toevoegen aan een virtueel netwerk](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network) voor meer informatie.
-
+Nadat SSIS IR is gestart, kunt u, als u problemen met de netwerk verbinding ondervindt, proberen om het probleem op te lossen met het [hulp programma voor diagnose verbindingen](ssis-integration-runtime-diagnose-connectivity-faq.md) .
 Wanneer er een probleem optreedt dat is gerelateerd aan een virtueel netwerk, ziet u een van de volgende fouten.
 
 ### <a name="invalidvnetconfiguration"></a>InvalidVnetConfiguration

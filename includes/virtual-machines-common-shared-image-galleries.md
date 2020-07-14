@@ -4,19 +4,19 @@ description: bestand opnemen
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/16/2020
+ms.date: 07/08/2020
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 1ca9d41134bf33a9e007da4b5a56652ccdbd4e22
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 2d0030549acdb55ce2be94534ec59bb07b11869d
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86218213"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221630"
 ---
-Galerie met gedeelde afbeeldingen is een service die u helpt bij het bouwen van structuur en organisatie rond uw beheerde installatie kopieën. Galerieën met gedeelde afbeeldingen bieden:
+Galerie met gedeelde afbeeldingen is een service die u helpt bij het bouwen van structuur en organisatie rond uw installatie kopieën. Galerieën met gedeelde afbeeldingen bieden:
 
-- Beheerde algemene replicatie van installatie kopieën.
+- Wereldwijde replicatie van installatiekopieën.
 - Versiebeheer en groepering van installatiekopieën voor eenvoudiger beheer.
 - Maxi maal beschik bare installatie kopieën met ZRS-accounts (zone redundant Storage) in regio's die Beschikbaarheidszones ondersteunen. ZRS biedt betere flexibiliteit tegen zonegebonden fouten.
 - Ondersteuning voor Premium Storage (Premium_LRS).
@@ -33,7 +33,7 @@ De functie Shared Image Gallery heeft meerdere resourcetypen:
 
 | Resource | Beschrijving|
 |----------|------------|
-| **Bron van installatie kopie** | Dit is een resource die kan worden gebruikt voor het maken van een **installatie kopie versie** in een galerie met installatie kopieën. Een installatie kopie bron kan bestaan uit een bestaande virtuele machine van Azure die is [gegeneraliseerde of gespecialiseerde](#generalized-and-specialized-images), een beheerde installatie kopie, een moment opname of een installatie kopie-versie in een andere galerie met installatie kopieën. |
+| **Bron van installatie kopie** | Dit is een resource die kan worden gebruikt voor het maken van een **installatie kopie versie** in een galerie met installatie kopieën. Een installatie kopie bron kan bestaan uit een bestaande virtuele machine van Azure die is [gegeneraliseerde of gespecialiseerde](#generalized-and-specialized-images), een beheerde installatie kopie, een moment opname, een VHD of een installatie kopie-versie in een andere galerie met installatie kopieën. |
 | **Galerie met installatie kopieën** | Net als de Azure Marketplace is een **afbeeldings galerie** een opslag plaats voor het beheren en delen van installatie kopieën, maar u bepaalt wie toegang heeft. |
 | **Definitie van installatie kopie** | Afbeeldings definities worden in een galerie gemaakt en bevatten informatie over de installatie kopie en vereisten voor het intern gebruik. Dit betekent of de installatie kopie Windows of Linux, release opmerkingen en minimale en maximale geheugen vereisten is. Het is een definitie van een type installatie kopie. |
 | **Versie van installatiekopie** | Een **installatie kopie versie** is wat u gebruikt om een virtuele machine te maken wanneer u een galerie gebruikt. U kunt meerdere versies van een installatie kopie naar behoefte hebben voor uw omgeving. Net als bij een beheerde installatie kopie wordt de versie van de installatie kopie gebruikt voor het maken van nieuwe schijven voor de virtuele machine wanneer u een **installatie kopie** gebruikt voor het maken van een virtuele machine. Installatie kopie versies kunnen meerdere keren worden gebruikt. |
@@ -68,6 +68,7 @@ Hieronder ziet u andere para meters die kunnen worden ingesteld voor de definiti
 * Minimale en maximale vCPU-en geheugen aanbevelingen: als uw installatie kopie vCPU en geheugen aanbevelingen heeft, kunt u die gegevens koppelen aan de definitie van uw installatie kopie.
 * Niet-toegestane schijf typen: u kunt informatie geven over de opslag behoeften voor uw VM. Als de installatie kopie bijvoorbeeld niet geschikt is voor standaard HDD-schijven, voegt u deze toe aan de lijst niet toegestaan.
 * Genereren van Hyper-V: u kunt opgeven of de installatie kopie is gemaakt op basis van een virtuele harde schijf van 1 of 2 Hyper-V.
+* Plan informatie voor installatie kopieën van Marketplace- `-PurchasePlanPublisher ` , `-PurchasePlanName` , en `-PurchasePlanProduct` . Zie voor meer informatie over informatie over het aankoop plan [afbeeldingen zoeken in azure Marketplace](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage) en [informatie over het aankoop plan van Azure Marketplace leveren bij het maken van installatie kopieën](../articles/virtual-machines/marketplace-images.md).
 
 ## <a name="generalized-and-specialized-images"></a>Gegeneraliseerde en gespecialiseerde installatie kopieën
 
@@ -82,11 +83,7 @@ Gespecialiseerde Vm's zijn niet via een proces voor het verwijderen van computer
 
 ## <a name="regional-support"></a>Regionale ondersteuning
 
-De bron regio's worden weer gegeven in de volgende tabel. Alle open bare regio's kunnen doel regio's zijn, maar om naar Australië-centraal te repliceren en Australië-centraal 2 moet u uw abonnement white list. Als u White List wilt aanvragen, gaat u naar:https://azure.microsoft.com/global-infrastructure/australia/contact/
-
-> Australië-centraal, China-oost, India-zuid, Europa-west, Australië-centraal 2, China-oost 2, Zuidoost-Azië, UK-zuid, Australië-oost, China-noord, Japan-Oost, UK-west, Australië-zuidoost, China-noord 2, Japan-West, US DoD-centraal, Brazilië-zuid, Azië-oost, Korea-centraal, US DoD-oost, Canada-centraal, VS-Oost, Korea-zuid, US Gov-Arizona, Canada-Oost, VS Oost 2, Noord-Centraal VS , US Gov-Texas, Centraal-India, VS-Oost 2 EUAP, Europa-noord, US Gov-Virginia, centraal VS, Frankrijk-centraal, Zuid-Centraal VS, West-India, centraal VS EUAP, Frankrijk-zuid, West-Centraal VS, VS-West, VS-West 2 |
-
-
+Alle open bare regio's kunnen doel regio's zijn, maar om naar Australië-centraal te repliceren en Australië-centraal 2 moet u uw abonnement white list. Als u White List wilt aanvragen, gaat u naar:https://azure.microsoft.com/global-infrastructure/australia/contact/
 
 ## <a name="limits"></a>Limieten 
 
@@ -126,7 +123,7 @@ De regio's waarvan een versie van de gedeelde installatie kopie wordt gereplicee
 
 ![Afbeelding die laat zien hoe u installatie kopieën kunt repliceren](./media/shared-image-galleries/replication.png)
 
-## <a name="access"></a>Toegang
+## <a name="access"></a>Access
 
 Aangezien de galerie met gedeelde afbeeldingen, de afbeeldings definitie en de versie van de installatie kopie alle resources zijn, kunnen ze worden gedeeld met behulp van de ingebouwde systeem eigen Azure RBAC-besturings elementen. Met RBAC kunt u deze resources delen met andere gebruikers, service-principals en groepen. U kunt zelfs toegang delen voor personen buiten de Tenant waarin deze zijn gemaakt. Zodra een gebruiker toegang heeft tot de versie van de gedeelde installatie kopie, kunnen ze een virtuele machine of een VM-Schaalset implementeren.  Dit is de matrix voor delen waarmee u begrijpt waarover de gebruiker toegang krijgt:
 
@@ -233,13 +230,7 @@ Ja. Er zijn drie scenario's die zijn gebaseerd op de typen installatie kopieën 
 
 ### <a name="can-i-create-an-image-version-from-a-specialized-disk"></a>Kan ik een installatie kopie versie van een gespecialiseerde schijf maken?
 
-Ja, ondersteuning voor speciale schijven als installatie kopieën is in de preview-versie. U kunt alleen een virtuele machine maken op basis van een gespecialiseerde installatie kopie met behulp van de portal, Power shell of de API. 
-
-
-Gebruik [Power shell om een installatie kopie van een gespecialiseerde virtuele machine te maken](../articles/virtual-machines/image-version-vm-powershell.md).
-
-De portal gebruiken voor het maken van een [Windows](../articles/virtual-machines/linux/shared-images-portal.md) -of [Linux] (.. /Articles/virtual-machines/Linux/Shared-images-Portal.MD)-installatie kopie. 
-
+Ja, kan een virtuele machine maken op basis van een gespecialiseerde installatie kopie met behulp van de [cli](../articles/virtual-machines/vm-specialized-image-version-cli.md), [Power shell](../articles/virtual-machines/vm-specialized-image-version-powershell.md)of de API. 
 
 ### <a name="can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created"></a>Kan ik de resource van de gedeelde afbeeldingen galerie verplaatsen naar een ander abonnement nadat deze is gemaakt?
 

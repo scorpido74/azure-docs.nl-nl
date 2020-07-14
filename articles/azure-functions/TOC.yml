@@ -55,6 +55,7 @@
       href: machine-learning-pytorch.md
     - name: Een aangepaste Linux-installatiekopie maken
       href: functions-create-function-linux-custom-image.md
+      displayName: 'container, docker'
     - name: Functions op IoT Edge-apparaat
       href: ../iot-edge/tutorial-deploy-function.md?toc=%2fazure%2fazure-functions%2ftoc.json
     - name: Java met Azure Cosmos DB en Event Hubs
@@ -252,7 +253,7 @@
           href: run-functions-from-deployment-package.md
         - name: Functies in Kubernetes
           href: functions-kubernetes-keda.md
-          displayName: keda
+          displayName: 'keda, container, docker'
         - name: Resource-implementatie automatiseren
           href: functions-infrastructure-as-code.md
         - name: On-premises functies
@@ -296,6 +297,8 @@
               href: ../app-service/configure-authentication-provider-microsoft.md?toc=%2fazure%2fazure-functions%2ftoc.json
             - name: Verifiëren met Twitter
               href: ../app-service/configure-authentication-provider-twitter.md?toc=%2fazure%2fazure-functions%2ftoc.json
+            - name: Verifiëren met een OpenID Connect-provider (Preview)
+              href: ../app-service/configure-authentication-provider-openid-connect.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: Geavanceerde verificatie
           href: ../app-service/app-service-authentication-how-to.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: IP-adressen beperken
@@ -500,6 +503,8 @@
   items:
     - name: Uw vaardigheden ontwikkelen met Microsoft Learn
       href: /learn/browse/?products=azure-functions
+    - name: Uitleg bij architectuur
+      href: 'https://docs.microsoft.com/azure/architecture/serverless-quest/serverless-overview'
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
     - name: Prijzen

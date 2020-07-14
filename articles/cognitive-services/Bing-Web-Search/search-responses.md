@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 7933d5e5cf7d82de013e18b221f3a0c3ce6b5229
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 284f8c8432d732fdfa7e16b43a47578437bcf0ba
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800525"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202249"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Bing Webzoekopdrachten-API-antwoord structuur en-antwoord typen  
 
@@ -293,10 +293,10 @@ Een wiskundige expressie kan de volgende symbolen bevatten:
 |Symbool|Beschrijving|
 |------------|-----------------|
 |+|Optellen|
-|-|Aftrekking|
+|-|Aftrekken|
 |/|Afdeling|
 |*|Vermenigvuldigen|
-|^|Voeding|
+|^|Vermogen|
 |!|Faculteit|
 |.|Decimal|
 |()|Rang groepering|
@@ -435,7 +435,7 @@ Als Bing bepaalt dat de gebruiker mogelijk is bedoeld om iets anders te zoeken, 
 
 Antwoorden van de Bing Webzoekopdrachten-API kunnen de volgende headers bevatten:
 
-|||
+| Header | Beschrijving |
 |-|-|
 |`X-MSEdge-ClientID`|De unieke ID die Bing aan de gebruiker heeft toegewezen|
 |`BingAPIs-Market`|De markt die is gebruikt om aan de aanvraag te voldoen|

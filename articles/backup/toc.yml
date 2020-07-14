@@ -369,8 +369,10 @@
           href: backup-azure-security-feature.md
         - name: Privé-eindpunten
           href: private-endpoints.md
-        - name: Versleuteling
+        - name: Versleuteling in Azure Backup
           href: backup-encryption.md
+        - name: Versleuteling met door de klant beheerde sleutels
+          href: encryption-at-rest-with-cmk.md
         - name: Ingebouwde beveiligingsmaatregelen
           href: backup-security-controls.md
         - name: Beveiligingsbasislijn

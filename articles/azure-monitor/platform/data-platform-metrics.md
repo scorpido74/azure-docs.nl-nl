@@ -9,11 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 23e4d104697b5b688330c6ab3a93beebf62f3c6a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 839347ce0a04cc1ca1bf16c68e0ccc36fcf0f7fc
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83799957"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200797"
 ---
 # <a name="metrics-in-azure-monitor"></a>Metrische gegevens in Azure Monitor
 
@@ -28,15 +29,15 @@ Metrische gegevens zijn numerieke waarden die verschillende aspecten van een sys
 ## <a name="what-can-you-do-with-azure-monitor-metrics"></a>Wat kunt u doen met Azure Monitor metrische gegevens?
 De volgende tabel geeft een lijst van de verschillende manieren waarop u metrische gegevens in Azure Monitor kunt gebruiken.
 
-|  |  |
+|  | Beschrijving |
 |:---|:---|
-| Analyseren | Met [metrische gegevens Verkenner](metrics-charts.md) kunt u de verzamelde metrische gegevens in een grafiek analyseren en de metrische gegevens van verschillende resources vergelijken. |
-| Visualiseren | Een grafiek vastmaken aan een [Azure-dash board](../learn/tutorial-app-dashboards.md)vanuit de metrics Explorer.<br>Een [werkmap](../platform/workbooks-overview.md) maken om te combi neren met meerdere gegevens sets in een interactief rapport. De resultaten van een query exporteren naar [Grafana](grafana-plugin.md) om gebruik te maken van Dash boards en combi neren met andere gegevens bronnen. |
-| Waarschuwing | Configureer een [waarschuwings regel voor metrische gegevens](alerts-metric.md) die een melding verzendt of [geautomatiseerd actie](action-groups.md) onderneemt wanneer de metrische waarde een drempel overschrijdt. |
-| Automatiseren |  Gebruik [automatisch schalen](autoscale-overview.md) om resources te verg Roten of te verkleinen op basis van een metrische waarde die een drempel overschrijdt. |
-| Exporteren | U [kunt metrische gegevens naar Logboeken routeren](resource-logs-collect-storage.md) voor het analyseren van informatie in azure monitor metrieken samen met gegevens in azure monitor-logboeken en om meet waarden langer dan 93 dagen op te slaan.<br>Meet gegevens streamen naar een [Event hub](stream-monitoring-data-event-hubs.md) om ze naar externe systemen te routeren. |
-| Ophalen | Toegang krijgen tot metrische waarden van een opdracht regel met behulp van [Power shell-cmdlets](https://docs.microsoft.com/powershell/module/az.applicationinsights)<br>Toegang krijgen tot meet waarden van aangepaste toepassing met behulp van [rest API](rest-api-walkthrough.md).<br>Toegang krijgen tot meet waarden van een opdracht regel met behulp van [cli](/cli/azure/monitor/metrics). |
-| Archiveren | [Archiveer](..//learn/tutorial-archive-data.md) de prestaties of de status geschiedenis van uw resource voor naleving, controle of offline rapportage. |
+| **Analyseren** | Met [metrische gegevens Verkenner](metrics-charts.md) kunt u de verzamelde metrische gegevens in een grafiek analyseren en de metrische gegevens van verschillende resources vergelijken. |
+| **Visualiseren** | Een grafiek vastmaken aan een [Azure-dash board](../learn/tutorial-app-dashboards.md)vanuit de metrics Explorer.<br>Een [werkmap](../platform/workbooks-overview.md) maken om te combi neren met meerdere gegevens sets in een interactief rapport. De resultaten van een query exporteren naar [Grafana](grafana-plugin.md) om gebruik te maken van Dash boards en combi neren met andere gegevens bronnen. |
+| **Waarschuwing** | Configureer een [waarschuwings regel voor metrische gegevens](alerts-metric.md) die een melding verzendt of [geautomatiseerd actie](action-groups.md) onderneemt wanneer de metrische waarde een drempel overschrijdt. |
+| **Automatiseren** |  Gebruik [automatisch schalen](autoscale-overview.md) om resources te verg Roten of te verkleinen op basis van een metrische waarde die een drempel overschrijdt. |
+| **Exporteren** | U [kunt metrische gegevens naar Logboeken routeren](resource-logs-collect-storage.md) voor het analyseren van informatie in azure monitor metrieken samen met gegevens in azure monitor-logboeken en om meet waarden langer dan 93 dagen op te slaan.<br>Meet gegevens streamen naar een [Event hub](stream-monitoring-data-event-hubs.md) om ze naar externe systemen te routeren. |
+| **Ophalen** | Toegang krijgen tot metrische waarden van een opdracht regel met behulp van [Power shell-cmdlets](https://docs.microsoft.com/powershell/module/az.applicationinsights)<br>Toegang krijgen tot meet waarden van aangepaste toepassing met behulp van [rest API](rest-api-walkthrough.md).<br>Toegang krijgen tot meet waarden van een opdracht regel met behulp van [cli](/cli/azure/monitor/metrics). |
+| **Faxberichten** | [Archiveer](..//learn/tutorial-archive-data.md) de prestaties of de status geschiedenis van uw resource voor naleving, controle of offline rapportage. |
 
 ## <a name="how-is-data-in-azure-monitor-metrics-structured"></a>Hoe worden gegevens in Azure Monitor meet waarden gestructureerd?
 Gegevens die worden verzameld door Azure Monitor metrieken worden opgeslagen in een Data Base met een tijd reeks die is geoptimaliseerd voor het analyseren van gegevens met tijds tempel. Elke set metrische waarden is een tijd reeks met de volgende eigenschappen:

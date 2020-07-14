@@ -6,18 +6,18 @@ author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: how-to
+ms.topic: tutorial
 ms.workload: identity
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbefcec884fcf179c182cd50efeb58a0fc357378
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5db8aed0a47e7d8d928ef3287010d60efbc5e5da
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555128"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200451"
 ---
 # <a name="add-an-unlisted-non-gallery-application-to-your-azure-ad-organization"></a>Een niet-gevermeldde (niet-Gallery) toepassing toevoegen aan uw Azure AD-organisatie
 
@@ -30,7 +30,7 @@ Naast de opties in de [Azure AD-toepassings galerie](https://azure.microsoft.com
 
 In dit artikel wordt beschreven hoe u een niet-galerie toepassing kunt toevoegen aan **bedrijfs toepassingen** in het Azure Portal zonder code te schrijven. Zie [verificatie scenario's voor Azure AD](../develop/authentication-scenarios.md)als u in plaats daarvan de richt lijnen voor ontwikkel aars zoekt over het integreren van aangepaste apps met Azure AD. Wanneer u een App ontwikkelt die gebruikmaakt van een modern protocol zoals [OpenID Connect Connect/OAuth](../develop/active-directory-v2-protocols.md) om gebruikers te verifiëren, kunt u dit registreren bij het micro soft Identity-platform met behulp van de [app-registraties](../develop/quickstart-register-app.md) -ervaring in de Azure Portal.
 
-## <a name="add-a-non-gallery-application"></a>Een niet-galerie toepassing toevoegen
+## <a name="add-a-non-gallery-application"></a>Een toepassing toevoegen die niet in de galerie staat
 
 1. Meld u aan bij de [Azure Active Directory Portal](https://aad.portal.azure.com/) met behulp van uw micro soft Identity platform Administrator-account.
 

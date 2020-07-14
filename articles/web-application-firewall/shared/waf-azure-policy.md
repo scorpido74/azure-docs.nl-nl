@@ -7,12 +7,12 @@ services: web-application-firewall
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: rimansdo
-ms.openlocfilehash: 12ad18edbb434bdfaec2ae817ea079a843661ef6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 937f220980d602b755b6329da4d93df0e4b372ab
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111338"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224057"
 ---
 # <a name="azure-web-application-firewall-and-azure-policy"></a>Azure Web Application firewall en Azure Policy
 
@@ -38,10 +38,12 @@ Er zijn verschillende ingebouwde Azure-beleids regels voor het beheren van WAF-r
 
 2.  Selecteer in de Azure Policy-service onder **ontwerpen**de optie **toewijzingen**.
 
+[!div class="mx-imgBorder"]
 ![Azure Web Application Firewall](../media/waf-azure-policy/policy-home.png)
 
 3.  Selecteer op de pagina Toewijzingen het pictogram **beleid** aan de bovenkant.
 
+[!div class="mx-imgBorder"]
 ![Azure Web Application Firewall](../media/waf-azure-policy/assign-policy.png)
 
 4.  Werk op het tabblad basis beginselen van beleid toewijzen de volgende velden bij:
@@ -49,6 +51,7 @@ Er zijn verschillende ingebouwde Azure-beleids regels voor het beheren van WAF-r
     2.  **Uitsluitingen**: Selecteer alle resources uit het bereik die u wilt uitsluiten van het beleid 
     3.  **Beleids definitie**: selecteer de Azure Policy die u wilt Toep assen op het bereik met uitsluitingen. Typ ' Web Application Firewall ' in de zoek balk om de relevante Web Application firewall-Azure Policy te kiezen.
 
+[!div class="mx-imgBorder"]
 ![Azure Web Application Firewall](../media/waf-azure-policy/policy-listing.png)
 
 

@@ -159,6 +159,8 @@
           href: streaming-policy-concept.md
         - name: Beleid voor inhoudssleutels
           href: content-key-policy-concept.md
+        - name: Inhoudsbeveiliging met Azure AD
+          href: azure-ad-content-protection.md
     - name: Bewaking
       items:
         - name: Gebeurtenissen met Event Grid

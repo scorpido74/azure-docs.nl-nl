@@ -14,30 +14,52 @@
               href: data-box-quickstart-portal.md
         - name: Zelfstudies
           items:
-            - name: 1 - Bestellen
-              href: data-box-deploy-ordered.md
-            - name: 2 - Instellen
-              href: data-box-deploy-set-up.md
-            - name: 3 - Verbinding maken en kopiëren
+            - name: Gegevens naar Azure importeren
               items:
-                - name: Via SMB
-                  href: data-box-deploy-copy-data.md
-                - name: Via NFS
-                  href: data-box-deploy-copy-data-via-nfs.md
-                - name: Via REST
-                  href: data-box-deploy-copy-data-via-rest.md
-                - name: Via gegevenskopieerservice
-                  href: data-box-deploy-copy-data-via-copy-service.md
-                - name: Naar beheerde schijven
-                  href: data-box-deploy-copy-data-from-vhds.md
-            - name: '4 - Terugsturen, uploaden, controleren'
-              href: data-box-deploy-picked-up.md
+                - name: 1 - Bestellen
+                  href: data-box-deploy-ordered.md
+                - name: 2 - Instellen
+                  href: data-box-deploy-set-up.md
+                - name: 3 - Verbinding maken en kopiëren
+                  items:
+                    - name: Via SMB
+                      href: data-box-deploy-copy-data.md
+                    - name: Via NFS
+                      href: data-box-deploy-copy-data-via-nfs.md
+                    - name: Via REST
+                      href: data-box-deploy-copy-data-via-rest.md
+                    - name: Via gegevenskopieerservice
+                      href: data-box-deploy-copy-data-via-copy-service.md
+                    - name: Naar beheerde schijven
+                      href: data-box-deploy-copy-data-from-vhds.md
+                - name: '4 - Terugsturen, uploaden, controleren'
+                  href: data-box-deploy-picked-up.md
+            - name: Gegevens importeren uit Azure
+              items:
+                - name: 1 - Bestellen
+                  href: data-box-deploy-export-ordered.md
+                - name: 2 - Instellen
+                  href: data-box-deploy-set-up.md
+                - name: 3 - Verbinding maken en kopiëren
+                  items:
+                    - name: Via SMB
+                      href: data-box-deploy-export-copy-data.md
+                    - name: Via NFS
+                      href: data-box-deploy-export-copy-data-via-nfs.md
+                - name: 4 - Retourneren
+                  href: data-box-deploy-export-picked-up.md
         - name: Concepten
           items:
             - name: Lees de veiligheidsrichtlijnen
               href: data-box-safety.md
             - name: Tracering en logboekregistratie beoordelen
-              href: data-box-logs.md
+              items:
+                - name: Voor importorders
+                  href: data-box-logs.md
+                - name: Voor exportorders
+                  href: data-box-export-logs.md
+            - name: Auditlogboeken weergeven
+              href: data-box-audit-logs.md
             - name: Vereisten beoordelen
               items:
                 - name: Voor Data Box
@@ -64,6 +86,8 @@
               href: data-box-portal-customer-managed-shipping.md
             - name: Door de klant beheerde sleutel inschakelen
               href: data-box-customer-managed-encryption-key-portal.md
+            - name: Klanten-lockbox gebruiken
+              href: data-box-customer-lockbox.md
             - name: Gegevens verplaatsen naar een blob-laag
               href: data-box-how-to-set-data-tier.md
             - name: Het apparaat bekabelen

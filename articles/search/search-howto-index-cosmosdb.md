@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/02/2020
-ms.openlocfilehash: 13c55f2a7470a0d33e12e9e6f0da9df3421242fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60f4ed9940c70ed479c3108f3637aa55f2a42811
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85556252"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146889"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Cosmos DB-gegevens indexeren met behulp van een indexeerfunctie in Azure Cognitive Search 
 
@@ -154,6 +154,8 @@ Een **gegevens bron** geeft de gegevens aan die moeten worden geïndexeerd, refe
 
 Als u een gegevens bron wilt maken, moet u een POST-aanvraag formuleren:
 
+```http
+
     POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [Search service admin key]
@@ -170,6 +172,7 @@ Als u een gegevens bron wilt maken, moet u een POST-aanvraag formuleren:
             "highWaterMarkColumnName": "_ts"
         }
     }
+```
 
 De hoofd tekst van de aanvraag bevat de definitie van de gegevens bron, die de volgende velden moet bevatten:
 
@@ -190,6 +193,7 @@ U kunt een SQL-query opgeven voor het samen voegen van geneste eigenschappen of 
 
 Voorbeeld document:
 
+```http
     {
         "userId": 10001,
         "contact": {
@@ -199,30 +203,37 @@ Voorbeeld document:
         "company": "microsoft",
         "tags": ["azure", "cosmosdb", "search"]
     }
+```
 
 Filter query:
 
-    SELECT * FROM c WHERE c.company = "microsoft" and c._ts >= @HighWaterMark ORDER BY c._ts
+```sql
+SELECT * FROM c WHERE c.company = "microsoft" and c._ts >= @HighWaterMark ORDER BY c._ts
+```
 
 Afvlakking van query:
 
-    SELECT c.id, c.userId, c.contact.firstName, c.contact.lastName, c.company, c._ts FROM c WHERE c._ts >= @HighWaterMark ORDER BY c._ts
-    
-    
+```sql
+SELECT c.id, c.userId, c.contact.firstName, c.contact.lastName, c.company, c._ts FROM c WHERE c._ts >= @HighWaterMark ORDER BY c._ts
+```
+
 Projectie query:
 
-    SELECT VALUE { "id":c.id, "Name":c.contact.firstName, "Company":c.company, "_ts":c._ts } FROM c WHERE c._ts >= @HighWaterMark ORDER BY c._ts
-
+```sql
+SELECT VALUE { "id":c.id, "Name":c.contact.firstName, "Company":c.company, "_ts":c._ts } FROM c WHERE c._ts >= @HighWaterMark ORDER BY c._ts
+```
 
 Query voor het afvlakken van matrices:
 
-    SELECT c.id, c.userId, tag, c._ts FROM c JOIN tag IN c.tags WHERE c._ts >= @HighWaterMark ORDER BY c._ts
-
+```sql
+SELECT c.id, c.userId, tag, c._ts FROM c JOIN tag IN c.tags WHERE c._ts >= @HighWaterMark ORDER BY c._ts
+```
 
 ### <a name="3---create-a-target-search-index"></a>3-een doel index voor zoeken maken 
 
 [Maak een doel-Azure-Cognitive search index](/rest/api/searchservice/create-index) als u er nog geen hebt. In het volgende voor beeld wordt een index gemaakt met het veld ID en beschrijving:
 
+```http
     POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [Search service admin key]
@@ -243,6 +254,7 @@ Query voor het afvlakken van matrices:
          "suggestions": true
        }]
      }
+```
 
 Zorg ervoor dat het schema van uw doel index compatibel is met het schema van de bron-JSON-documenten of de uitvoer van uw aangepaste query projectie.
 
@@ -267,6 +279,7 @@ Zorg ervoor dat het schema van uw doel index compatibel is met het schema van de
 
 Zodra de index en gegevens bron zijn gemaakt, kunt u de Indexeer functie nu maken:
 
+```http
     POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -277,6 +290,7 @@ Zodra de index en gegevens bron zijn gemaakt, kunt u de Indexeer functie nu make
       "targetIndexName" : "mysearchindex",
       "schedule" : { "interval" : "PT2H" }
     }
+```
 
 Deze Indexeer functie wordt elke twee uur uitgevoerd (schema-interval is ingesteld op "PT2H"). Als u een Indexeer functie elke 30 minuten wilt uitvoeren, stelt u het interval in op ' PT30M '. Het kortste ondersteunde interval is 5 minuten. Het schema is optioneel: als u dit weglaat, wordt een Indexeer functie slechts eenmaal uitgevoerd wanneer deze wordt gemaakt. U kunt echter op elk gewenst moment een Indexeer functie op aanvraag uitvoeren.   
 
@@ -299,10 +313,12 @@ De algemeen beschik bare .NET SDK heeft volledige pariteit met de algemeen besch
 
 Het doel van het detectie beleid voor gegevens wijzigingen is het efficiënt identificeren van gewijzigde gegevens items. Momenteel wordt het enige ondersteunde beleid [`HighWaterMarkChangeDetectionPolicy`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.highwatermarkchangedetectionpolicy) gebruikt voor het gebruik van de `_ts` eigenschap (Time Stamp) van Azure Cosmos DB, die als volgt wordt opgegeven:
 
+```http
     {
         "@odata.type" : "#Microsoft.Azure.Search.HighWaterMarkChangeDetectionPolicy",
         "highWaterMarkColumnName" : "_ts"
     }
+```
 
 Het gebruik van dit beleid wordt sterk aanbevolen om te zorgen voor een goede prestaties van de Indexeer functie. 
 
@@ -318,11 +334,13 @@ Als u incrementele voortgang wilt inschakelen wanneer u een aangepaste query geb
 
 In sommige gevallen, zelfs als uw query een `ORDER BY [collection alias]._ts` component bevat, kan Azure Cognitive Search mogelijk niet afleiden dat de query wordt gesorteerd door de `_ts` . U kunt Azure Cognitive Search vertellen dat de resultaten worden geordend met behulp van de `assumeOrderByHighWaterMarkColumn` configuratie-eigenschap. Als u deze Hint wilt opgeven, maakt of bijwerkt u de Indexeer functie als volgt: 
 
+```http
     {
      ... other indexer definition properties
      "parameters" : {
             "configuration" : { "assumeOrderByHighWaterMarkColumn" : true } }
     } 
+```
 
 <a name="DataDeletionDetectionPolicy"></a>
 
@@ -330,16 +348,19 @@ In sommige gevallen, zelfs als uw query een `ORDER BY [collection alias]._ts` co
 
 Wanneer rijen uit de verzameling worden verwijderd, wilt u deze rijen meestal ook verwijderen uit de zoek index. Het doel van het detectie beleid voor het verwijderen van gegevens is het efficiënt identificeren van verwijderde gegevens items. Momenteel is het enige ondersteunde beleid het `Soft Delete` beleid (verwijderen is gemarkeerd met een vlag van een sorteer bewerking), dat als volgt wordt opgegeven:
 
+```http
     {
         "@odata.type" : "#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy",
         "softDeleteColumnName" : "the property that specifies whether a document was deleted",
         "softDeleteMarkerValue" : "the value that identifies a document as deleted"
     }
+```
 
 Als u een aangepaste query gebruikt, zorg er dan voor dat de eigenschap waarnaar wordt verwezen, `softDeleteColumnName` wordt geprojecteerd door de query.
 
 In het volgende voor beeld wordt een gegevens bron gemaakt met een voorlopig verwijderings beleid:
 
+```http
     POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [Search service admin key]
@@ -361,10 +382,11 @@ In het volgende voor beeld wordt een gegevens bron gemaakt met een voorlopig ver
             "softDeleteMarkerValue": "true"
         }
     }
+```
 
 ## <a name="next-steps"></a><a name="NextSteps"></a>Volgende stappen
 
-Gefeliciteerd U hebt geleerd hoe u Azure Cosmos DB met Azure Cognitive Search integreert met behulp van een Indexeer functie.
+Gefeliciteerd. U hebt geleerd hoe u Azure Cosmos DB met Azure Cognitive Search integreert met behulp van een Indexeer functie.
 
 * Zie de [pagina Azure Cosmos DB Service](https://azure.microsoft.com/services/cosmos-db/)voor meer informatie over Azure Cosmos db.
 * Zie de [pagina zoek service](https://azure.microsoft.com/services/search/)voor meer informatie over Azure Cognitive Search.

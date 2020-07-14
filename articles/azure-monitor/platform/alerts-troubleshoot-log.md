@@ -6,11 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 10/29/2018
-ms.openlocfilehash: ab6ee597cfdc5d169bd33b77a061880b19e134b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7be1c350af6c9bb84669b45a9bc8a1d9dd808133
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300307"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165631"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Problemen met logboek waarschuwingen in Azure Monitor oplossen  
 
@@ -182,9 +183,10 @@ Elke waarschuwings regel voor logboeken die in Azure Monitor is gemaakt als onde
 - Er is geen gegevens stroom naar het analyse platform. De [uitvoering van de query levert een fout](https://dev.loganalytics.io/documentation/Using-the-API/Errors) op omdat er geen gegevens voor de gegeven query zijn.
 - Wijzigingen in de [query taal](https://docs.microsoft.com/azure/kusto/query/) bevatten een gewijzigde indeling voor opdrachten en functies. De query die eerder in een waarschuwings regel is gegeven, is dus niet meer geldig.
 
-[Azure Advisor](../../advisor/advisor-overview.md) wordt u gewaarschuwd over dit gedrag. Er wordt een aanbeveling toegevoegd voor de specifieke waarschuwings regel voor het logboek op Azure Advisor, onder de categorie hoge Beschik baarheid met gemiddelde impact en een beschrijving van de regel voor logboek waarschuwing herstellen om ervoor te zorgen dat deze wordt gecontroleerd. Als een waarschuwings query in de waarschuwings regel van het logboek niet wordt verholpen nadat Azure Advisor zeven dagen een aanbeveling heeft gegeven, wordt door Azure Monitor de waarschuwing voor het logboek uitgeschakeld en zorgt u ervoor dat u niet onnodig wordt gefactureerd als de regel niet continu kan worden uitgevoerd voor een bepaalde periode (bijvoorbeeld een week).
+[Azure Advisor](../../advisor/advisor-overview.md) wordt u gewaarschuwd over dit gedrag. Er wordt een aanbeveling toegevoegd voor de specifieke waarschuwings regel voor het logboek op Azure Advisor, onder de categorie hoge Beschik baarheid met gemiddelde impact en een beschrijving van de regel voor logboek waarschuwing herstellen om te controleren of deze is ingeschakeld.
 
-U kunt de exacte tijd voor het Azure Monitor uitschakelen van de waarschuwings regel voor het logboek vinden door te zoeken naar een gebeurtenis in het [activiteiten logboek van Azure](../../azure-resource-manager/management/view-activity-logs.md).
+> [!NOTE]
+> Als een waarschuwings query in de waarschuwings regel van het logboek niet is opgelost nadat Azure Advisor zeven dagen een aanbeveling heeft gegeven, schakelt Azure Monitor de logboek waarschuwing uit en zorgt u ervoor dat er geen kosten in rekening worden gebracht wanneer de regel niet continu kan worden uitgevoerd voor een verkleinde periode (7 dagen). U kunt de exacte tijd voor het Azure Monitor uitschakelen van de waarschuwings regel voor het logboek vinden door te zoeken naar een gebeurtenis in het [activiteiten logboek van Azure](../../azure-resource-manager/management/view-activity-logs.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

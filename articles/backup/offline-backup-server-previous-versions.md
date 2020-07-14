@@ -3,12 +3,12 @@ title: Offline back-up voor Data Protection Manager (DPM) en Microsoft Azure Bac
 description: Met Azure Backup kunt u gegevens van het netwerk verzenden met behulp van de Azure import/export-service. In dit artikel wordt de werk stroom voor offline back-ups voor DPM en Azure Backup Server uitgelegd.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: f39e93973deab09eb328eeafcff4e49b326483f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 128051210984a55620be60a5965a7067e74de7c7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374828"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186942"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-previous-versions"></a>Offline back-upwerk stroom voor DPM en Azure Backup Server (vorige versies)
 
@@ -44,6 +44,9 @@ Offline back-ups worden ondersteund voor alle implementatie modellen van Azure B
 > * Back-ups maken van bestanden en mappen met de MARS-agent of de Azure Backup-Agent.
 > * Back-ups maken van alle werk belastingen en bestanden met DPM.
 > * Back-ups maken van alle werk belastingen en bestanden met MABS.
+
+>[!NOTE]
+>Azure CSP-abonnementen worden niet ondersteund voor gebruik met offline seeding voor DPM 2019 RTM en eerdere versies, en MABS v3 RTM en eerdere versies. Online back-ups via het netwerk worden nog steeds ondersteund.
 
 ## <a name="prerequisites"></a>Vereisten
 

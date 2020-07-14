@@ -76,7 +76,7 @@ De volgende tabel bevat een overzicht van de verschillen tussen de serverloze Co
 
 SQL Database serverloze wordt momenteel alleen ondersteund in de laag Algemeen op generatie 5 in het vCore-aankoop model.
 
-## <a name="autoscaling"></a>Automatische schaalaanpassing
+## <a name="autoscaling"></a>Automatisch schalen
 
 ### <a name="scaling-responsiveness"></a>Reactie tijd van schalen
 
@@ -254,7 +254,7 @@ Het wijzigen van de maximale of minimale vCores en de vertraging voor autopause 
 Het wijzigen van de maximale of minimale vCores en de vertraging voor autopause wordt uitgevoerd met behulp van de opdracht [AZ SQL DB Update](/cli/azure/sql/db#az-sql-db-update) in azure CLI met behulp van de `capacity` `min-capacity` argumenten, en `auto-pause-delay` .
 
 
-## <a name="monitoring"></a>Controle
+## <a name="monitoring"></a>Bewaking
 
 ### <a name="resources-used-and-billed"></a>Gebruikte resources en gefactureerd
 
@@ -272,7 +272,7 @@ De resource groep van de gebruiker is de binnenste grenzen voor bron beheer voor
 
 De metrische gegevens voor het bewaken van het resource gebruik van het app-pakket en de gebruikers groep van een serverloze Data Base worden weer gegeven in de volgende tabel:
 
-|Entiteit|Metrische waarde|Beschrijving|Eenheden|
+|Entiteit|Gegevens|Beschrijving|Eenheden|
 |---|---|---|---|
 |App-pakket|app_cpu_percent|Het percentage vCores dat door de app wordt gebruikt ten opzichte van het maximale aantal vCores dat voor de app is toegestaan.|Percentage|
 |App-pakket|app_cpu_billed|De hoeveelheid reken kracht die tijdens de rapportage periode in rekening wordt gebracht voor de app. Het betaalde bedrag tijdens deze periode is het product van deze metrische waarde en de vCore eenheids prijs. <br><br>Waarden van deze metrische gegevens worden bepaald door het samen voegen van het maximum van CPU-gebruik en het geheugen dat elke seconde wordt gebruikt. Als de gebruikte hoeveelheid kleiner is dan de minimum hoeveelheid die is ingericht zoals ingesteld door de min-vCores en het minimale geheugen, wordt de ingerichte minimum hoeveelheid gefactureerd.Als u de CPU wilt vergelijken met geheugen voor facturerings doeleinden, wordt geheugen genormaliseerd in eenheden van vCores door de hoeveelheid geheugen in GB met 3 GB per vCore opnieuw te schalen.|vCore seconden|

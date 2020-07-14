@@ -39,12 +39,34 @@
       href: ../../application-gateway/security-baseline.md
     - name: Automation-beveiligingsbasislijn
       href: ../../automation/security-baseline.md
+    - name: Azure Backup-beveiligingsbasislijn
+      href: ../../backup/security-baseline.md
     - name: Azure Cache voor Redis-beveiligingsbasislijn
       href: ../../azure-cache-for-redis/security-baseline.md
+    - name: Azure Data Box-beveiligingsbasislijn
+      href: ../../databox/security-baseline.md
+    - name: Azure Data Explorer-beveiligingsbasislijn
+      href: /azure/data-explorer/security-baseline
+    - name: Azure Data Factory-beveiligingsbasislijn
+      href: ../../data-factory/security-baseline.md
+    - name: Azure Database for MySQL-beveiligingsbasislijn
+      href: ../../mysql/security-baseline.md
+    - name: Azure Database for MariaDB-beveiligingsbasislijn
+      href: ../../mariadb/security-baseline.md
+    - name: Azure Database for PostgreSQL-beveiligingsbasislijn
+      href: ../../postgresql/security-baseline.md
+    - name: Azure Databricks-beveiligingsbasislijn
+      href: ../../azure-databricks/security-baseline.md
+    - name: Azure Functions-beveiligingsbasislijn
+      href: ../../azure-functions/security-baseline.md
     - name: Azure Policy-beveiligingsbasislijn
       href: ../../governance/policy/concepts/azure-security-benchmark-baseline.md
-    - name: Basislijn voor back-ups
-      href: ../../backup/security-baseline.md
+    - name: Azure Resource Graph-beveiligingsbasislijn
+      href: ../../governance/resource-graph/concepts/azure-security-benchmark-baseline.md
+    - name: Azure SQL Database-beveiligingsbasislijn
+      href: ../../sql-database/security-baseline.md
+    - name: Azure Storage-beveiligingsbasislijn
+      href: ../../storage/common/security-baseline.md
     - name: Basislijn voor batch-beveiliging
       href: ../../batch/security-baseline.md
     - name: Cognitive Services-beveiligingsbasislijn
@@ -57,39 +79,19 @@
       href: ../../cosmos-db/security-baseline.md
     - name: Customer Lockbox-beveiligingsbasislijn
       href: ../fundamentals/customer-lockbox-security-baseline.md
-    - name: Data Box-beveiligingsbasislijn
-      href: ../../databox/security-baseline.md
-    - name: Basislijn voor Data Explorer-beveiliging
-      href: /azure/data-explorer/security-baseline
-    - name: Data Factory-beveiligingsbasislijn
-      href: ../../data-factory/security-baseline.md
-    - name: Databricks-beveiligingsbasislijn
-      href: ../../azure-databricks/security-baseline.md
     - name: Basislijn voor Event Hubs-beveiliging
       href: ../../event-hubs/security-baseline.md
     - name: ExpressRoute-beveiligingsbasislijn
       href: ../../expressroute/security-baseline.md
-    - name: Functions-beveiligingsbasislijn
-      href: ../../azure-functions/security-baseline.md
     - name: Basislijn voor HDInsight-beveiliging
       href: ../../hdinsight/security-baseline.md
     - name: Basislijn voor Key Vault-beveiliging
       href: ../../key-vault/security-baseline.md
     - name: Logic Apps-beveiligingsbasislijn
       href: ../../logic-apps/security-baseline.md
-    - name: Basislijn voor MariaDB-beveiliging
-      href: ../../mariadb/security-baseline.md
-    - name: Basislijn voor MySQL-beveiliging
-      href: ../../mysql/security-baseline.md
     - name: Network Watcher-beveiligingsbasislijn
       href: ../../network-watcher/security-baseline.md
-    - name: Basislijn voor PostgreSQL-beveiliging
-      href: ../../postgresql/security-baseline.md
-    - name: Basislijn voor SQL Database-beveiliging
-      href: ../../sql-database/security-baseline.md
     - name: Stream Analytics-basislijn
       href: ../../stream-analytics/security-baseline.md
-    - name: Basislijn voor opslagbeveiliging
-      href: ../../storage/common/security-baseline.md
     - name: Synapse Analytics-beveiligingsbasislijn
       href: ../../synapse-analytics/security-baseline.md

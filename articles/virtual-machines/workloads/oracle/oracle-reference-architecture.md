@@ -2,21 +2,22 @@
 title: Referentie architecturen voor Oracle-data bases op Azure | Microsoft Docs
 description: Verwijst naar architecturen voor het uitvoeren van Oracle Database Enterprise Edition-data bases op Microsoft Azure Virtual Machines.
 services: virtual-machines-linux
-author: BorisB2015
-manager: gwallace
+author: rgardler
+manager: ''
 tags: ''
 ms.service: virtual-machines
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/13/2019
-ms.author: borisb
+ms.author: rogardle
 ms.custom: ''
-ms.openlocfilehash: bbb6665299ce9b6521eeb8801d8621dfbdc17f4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9125d8d2177b9bc40bb280f414cdfb2797ccf8fe
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81683488"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221609"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Referentie architecturen voor Oracle Database Enterprise Edition op Azure
 
@@ -40,7 +41,7 @@ Ten slotte is het belang rijk dat u bij het migreren of maken van toepassingen v
 
 ### <a name="oracle-rac-in-the-cloud"></a>Oracle RAC in de Cloud
 
-Oracle Real Application Cluster (RAC) is een oplossing van Oracle waarmee klanten hoge door Voer kunnen bereiken door veel instanties die toegang hebben tot één database opslag (gedeeld patroon van alle architectuur). Hoewel Oracle RAC ook on-premises kan worden gebruikt voor hoge Beschik baarheid, kan Oracle RAC alleen worden gebruikt voor hoge Beschik baarheid in de Cloud omdat het alleen bescherming biedt tegen storingen op exemplaar niveau en niet tegen storingen op het niveau van het rek of het Data Center. Daarom raadt Oracle aan Oracle Data Guard te gebruiken met uw data base (of één exemplaar of RAC) voor hoge Beschik baarheid. Klanten hebben doorgaans een hoge SLA nodig voor het uitvoeren van hun essentiële toepassingen. Oracle RAC is momenteel niet gecertificeerd of wordt niet ondersteund door Oracle in Azure. Azure biedt echter functies als Azure biedt Beschikbaarheidszones en geplande onderhouds Vensters om te helpen beschermen tegen storingen op exemplaar niveau. Klanten kunnen daarnaast gebruikmaken van technologieën als Oracle Data Guard, Oracle Golden Gate en Oracle sharding voor hoge prestaties en resiliancy door hun data bases te beschermen tegen rack niveau en op datacenter niveau en geo-politieke fouten.
+Oracle Real Application Cluster (RAC) is een oplossing van Oracle waarmee klanten hoge door Voer kunnen bereiken door veel instanties die toegang hebben tot één database opslag (gedeeld patroon van alle architectuur). Hoewel Oracle RAC ook on-premises kan worden gebruikt voor hoge Beschik baarheid, kan Oracle RAC alleen worden gebruikt voor hoge Beschik baarheid in de Cloud omdat het alleen bescherming biedt tegen storingen op exemplaar niveau en niet tegen storingen op het niveau van het rek of het Data Center. Daarom raadt Oracle aan Oracle Data Guard te gebruiken met uw data base (of één exemplaar of RAC) voor hoge Beschik baarheid. Klanten hebben doorgaans een hoge SLA nodig voor het uitvoeren van hun essentiële toepassingen. Oracle RAC is momenteel niet gecertificeerd of wordt niet ondersteund door Oracle in Azure. Azure biedt echter functies als Azure biedt Beschikbaarheidszones en geplande onderhouds Vensters om te helpen beschermen tegen storingen op exemplaar niveau. Klanten kunnen daarnaast gebruikmaken van technologieën als Oracle Data Guard, Oracle Golden Gate en Oracle sharding voor hoge prestaties en meer flexibiliteit door hun data bases te beschermen tegen rack niveau en op datacenter niveau en geo-politieke fouten.
 
 Bij het uitvoeren van Oracle-data bases in meerdere [beschikbaarheids zones](https://docs.microsoft.com/azure/availability-zones/az-overview) in combi natie met Oracle Data Guard of Golden Gate, kunnen klanten een sla voor de uptime van 99,99% ophalen. In azure-regio's waar beschikbaarheids zones nog niet aanwezig zijn, kunnen klanten [beschikbaarheids sets](https://docs.microsoft.com/azure/virtual-machines/linux/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) gebruiken en een sla voor de uptime van 99,95% verzorgen.
 

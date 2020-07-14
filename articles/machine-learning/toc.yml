@@ -443,6 +443,9 @@
     - name: Resourcequota beheren
       displayName: limits
       href: how-to-manage-quotas.md
+    - name: Bronnen beheren voor VS Code
+      displayName: 'vscode,resources'
+      href: how-to-manage-resources-vscode.md
     - name: Gegevens exporteren en verwijderen
       displayName: GDPR
       href: how-to-export-delete-data.md
@@ -495,3 +498,6 @@
     - name: Designer-toegankelijkheidsfuncties
       displayName: 'accessibility, designer, visual interface, screen reader, keyboard shortcuts'
       href: designer-accessibility.md
+    - name: Gecureerde omgevingen
+      displayName: 'environments, curated environments'
+      href: resource-curated-environments.md

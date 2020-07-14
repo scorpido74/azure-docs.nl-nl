@@ -103,6 +103,8 @@
       href: howto-import-export-data.md
     - name: Gebeurtenissen routeren naar een aangepast eindpunt
       href: howto-app-configuration-event.md
+    - name: Automatisch back-ups maken van configuratiearchief
+      href: howto-backup-config-store.md
     - name: Aanbevolen procedures
       href: howto-best-practices.md
 - name: Naslaginformatie

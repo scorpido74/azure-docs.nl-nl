@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 6854400f2152a5952a7b24dbd860d7ad4bfc943d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5523b7c39763fb53d0847b79c70d5ab8b9d3b52
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76774922"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169320"
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Een Asset coderen met behulp van Media Encoder Standard
 > [!div class="op_single_selector"]
@@ -43,7 +44,7 @@ U wordt aangeraden om uw bron bestanden altijd te coderen in een adaptieve bitsn
 
 Als uw uitvoer activum is versleuteld, moet u het beleid voor de levering van assets configureren. Zie voor meer informatie beleid voor het [leveren van assets configureren](media-services-rest-configure-asset-delivery-policy.md).
 
-## <a name="considerations"></a>Overwegingen
+## <a name="considerations"></a>Aandachtspunten
 
 Wanneer u entiteiten in Media Services opent, moet u specifieke header-velden en-waarden in uw HTTP-aanvragen instellen. Zie [Setup for Media Services rest API Development](media-services-rest-how-to-use.md)(Engelstalig) voor meer informatie.
 
@@ -68,30 +69,36 @@ In het volgende voor beeld ziet u hoe u een taak maakt en post met één taakset
 
 Aanvraag:
 
-    POST https://media.windows.net/API/Jobs HTTP/1.1
-    Content-Type: application/json;odata=verbose
-    Accept: application/json;odata=verbose
-    DataServiceVersion: 3.0
-    MaxDataServiceVersion: 3.0
-    x-ms-version: 2.19
-        Authorization: Bearer <ENCODED JWT TOKEN> 
-        x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
-        Host: media.windows.net
+```console
+POST https://media.windows.net/API/Jobs HTTP/1.1
+Content-Type: application/json;odata=verbose
+Accept: application/json;odata=verbose
+DataServiceVersion: 3.0
+MaxDataServiceVersion: 3.0
+x-ms-version: 2.19
+    Authorization: Bearer <ENCODED JWT TOKEN> 
+    x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
+    Host: media.windows.net
 
-    {"Name" : "NewTestJob", "InputMediaAssets" : [{"__metadata" : {"uri" : "https://media.windows.net/api/Assets('nb%3Acid%3AUUID%3Aaab7f15b-3136-4ddf-9962-e9ecb28fb9d2')"}}],  "Tasks" : [{"Configuration" : "Adaptive Streaming", "MediaProcessorId" : "nb:mpid:UUID:ff4df607-d419-42f0-bc17-a481b1331e56",  "TaskBody" : "<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset>JobOutputAsset(0)</outputAsset></taskBody>"}]}
+{"Name" : "NewTestJob", "InputMediaAssets" : [{"__metadata" : {"uri" : "https://media.windows.net/api/Assets('nb%3Acid%3AUUID%3Aaab7f15b-3136-4ddf-9962-e9ecb28fb9d2')"}}],  "Tasks" : [{"Configuration" : "Adaptive Streaming", "MediaProcessorId" : "nb:mpid:UUID:ff4df607-d419-42f0-bc17-a481b1331e56",  "TaskBody" : "<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset>JobOutputAsset(0)</outputAsset></taskBody>"}]}
+```
 
 Reactie:
 
-    HTTP/1.1 201 Created
+```console
+HTTP/1.1 201 Created
 
-    . . .
+. . .
+```
 
 ### <a name="set-the-output-assets-name"></a>De naam van het uitvoer activum instellen
 In het volgende voor beeld ziet u hoe u het kenmerk assets instelt:
 
-    { "TaskBody" : "<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset assetName=\"CustomOutputAssetName\">JobOutputAsset(0)</outputAsset></taskBody>"}
+```console
+{ "TaskBody" : "<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset assetName=\"CustomOutputAssetName\">JobOutputAsset(0)</outputAsset></taskBody>"}`
+```
 
-## <a name="considerations"></a>Overwegingen
+## <a name="considerations"></a>Aandachtspunten
 * TaskBody-eigenschappen moeten letterlijke XML gebruiken om het aantal invoer-of uitvoer activa te definiëren dat door de taak wordt gebruikt. Het taak artikel bevat de XML-schema definitie voor de XML.
 * In de TaskBody-definitie moet elke interne waarde voor `<inputAsset>` en `<outputAsset>` worden ingesteld op JobInputAsset (waarde) of JobOutputAsset (waarde).
 * Een taak kan meerdere uitvoer assets hebben. Een JobOutputAsset (x) kan slechts één keer worden gebruikt als uitvoer van een taak in een taak.
@@ -110,40 +117,41 @@ Ontwikkel aars willen in veel toepassings scenario's een reeks verwerkings taken
 >
 >
 
-    POST https://media.windows.net/api/Jobs HTTP/1.1
-    Content-Type: application/json;odata=verbose
-    Accept: application/json;odata=verbose
-    DataServiceVersion: 3.0
-    MaxDataServiceVersion: 3.0
-    x-ms-version: 2.19
-    Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
+```console
+POST https://media.windows.net/api/Jobs HTTP/1.1
+Content-Type: application/json;odata=verbose
+Accept: application/json;odata=verbose
+DataServiceVersion: 3.0
+MaxDataServiceVersion: 3.0
+x-ms-version: 2.19
+Authorization: Bearer <ENCODED JWT TOKEN> 
+x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
 
-    {  
-       "Name":"NewTestJob",
-       "InputMediaAssets":[  
-          {  
-             "__metadata":{  
-                "uri":"https://testrest.cloudapp.net/api/Assets('nb%3Acid%3AUUID%3A910ffdc1-2e25-4b17-8a42-61ffd4b8914c')"
-             }
-          }
-       ],
-       "Tasks":[  
-          {  
-             "Configuration":"H264 Adaptive Bitrate MP4 Set 720p",
-             "MediaProcessorId":"nb:mpid:UUID:ff4df607-d419-42f0-bc17-a481b1331e56",
-             "TaskBody":"<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset>JobOutputAsset(0)</outputAsset></taskBody>"
-          },
-          {  
-             "Configuration":"H264 Smooth Streaming 720p",
-             "MediaProcessorId":"nb:mpid:UUID:ff4df607-d419-42f0-bc17-a481b1331e56",
-             "TaskBody":"<?xml version=\"1.0\" encoding=\"utf-16\"?><taskBody><inputAsset>JobOutputAsset(0)</inputAsset><outputAsset>JobOutputAsset(1)</outputAsset></taskBody>"
-          }
-       ]
-    }
+{  
+   "Name":"NewTestJob",
+   "InputMediaAssets":[  
+      {  
+         "__metadata":{  
+            "uri":"https://testrest.cloudapp.net/api/Assets('nb%3Acid%3AUUID%3A910ffdc1-2e25-4b17-8a42-61ffd4b8914c')"
+         }
+      }
+   ],
+   "Tasks":[  
+      {  
+         "Configuration":"H264 Adaptive Bitrate MP4 Set 720p",
+         "MediaProcessorId":"nb:mpid:UUID:ff4df607-d419-42f0-bc17-a481b1331e56",
+         "TaskBody":"<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset>JobOutputAsset(0)</outputAsset></taskBody>"
+      },
+      {  
+         "Configuration":"H264 Smooth Streaming 720p",
+         "MediaProcessorId":"nb:mpid:UUID:ff4df607-d419-42f0-bc17-a481b1331e56",
+         "TaskBody":"<?xml version=\"1.0\" encoding=\"utf-16\"?><taskBody><inputAsset>JobOutputAsset(0)</inputAsset><outputAsset>JobOutputAsset(1)</outputAsset></taskBody>"
+      }
+   ]
+}
+```
 
-
-### <a name="considerations"></a>Overwegingen
+### <a name="considerations"></a>Aandachtspunten
 Taak koppeling inschakelen:
 
 * Een taak moet ten minste twee taken bevatten.
@@ -152,62 +160,63 @@ Taak koppeling inschakelen:
 ## <a name="use-odata-batch-processing"></a>OData-batch verwerking gebruiken
 In het volgende voor beeld ziet u hoe u OData-batch verwerking gebruikt om een taak en taken te maken. Zie voor meer informatie over batch verwerking [Open Data Protocol (OData) batch processing (Engelstalig)](https://www.odata.org/documentation/odata-version-3-0/batch-processing/).
 
-    POST https://media.windows.net/api/$batch HTTP/1.1
-    DataServiceVersion: 1.0;NetFx
-    MaxDataServiceVersion: 3.0;NetFx
-    Content-Type: multipart/mixed; boundary=batch_a01a5ec4-ba0f-4536-84b5-66c5a5a6d34e
-    Accept: multipart/mixed
-    Accept-Charset: UTF-8
-    Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.19
-    x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
-    Host: media.windows.net
+```console
+POST https://media.windows.net/api/$batch HTTP/1.1
+DataServiceVersion: 1.0;NetFx
+MaxDataServiceVersion: 3.0;NetFx
+Content-Type: multipart/mixed; boundary=batch_a01a5ec4-ba0f-4536-84b5-66c5a5a6d34e
+Accept: multipart/mixed
+Accept-Charset: UTF-8
+Authorization: Bearer <ENCODED JWT TOKEN> 
+x-ms-version: 2.19
+x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
+Host: media.windows.net
 
 
-    --batch_a01a5ec4-ba0f-4536-84b5-66c5a5a6d34e
-    Content-Type: multipart/mixed; boundary=changeset_122fb0a4-cd80-4958-820f-346309967e4d
+--batch_a01a5ec4-ba0f-4536-84b5-66c5a5a6d34e
+Content-Type: multipart/mixed; boundary=changeset_122fb0a4-cd80-4958-820f-346309967e4d
 
-    --changeset_122fb0a4-cd80-4958-820f-346309967e4d
-    Content-Type: application/http
-    Content-Transfer-Encoding: binary
+--changeset_122fb0a4-cd80-4958-820f-346309967e4d
+Content-Type: application/http
+Content-Transfer-Encoding: binary
 
-    POST https://media.windows.net/api/Jobs HTTP/1.1
-    Content-ID: 1
-    Content-Type: application/json
-    Accept: application/json
-    DataServiceVersion: 3.0
-    MaxDataServiceVersion: 3.0
-    Accept-Charset: UTF-8
-    Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.19
-    x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
+POST https://media.windows.net/api/Jobs HTTP/1.1
+Content-ID: 1
+Content-Type: application/json
+Accept: application/json
+DataServiceVersion: 3.0
+MaxDataServiceVersion: 3.0
+Accept-Charset: UTF-8
+Authorization: Bearer <ENCODED JWT TOKEN> 
+x-ms-version: 2.19
+x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
 
-    {"Name" : "NewTestJob", "InputMediaAssets@odata.bind":["https://media.windows.net/api/Assets('nb%3Acid%3AUUID%3A2a22445d-1500-80c6-4b34-f1e5190d33c6')"]}
+{"Name" : "NewTestJob", "InputMediaAssets@odata.bind":["https://media.windows.net/api/Assets('nb%3Acid%3AUUID%3A2a22445d-1500-80c6-4b34-f1e5190d33c6')"]}
 
-    --changeset_122fb0a4-cd80-4958-820f-346309967e4d
-    Content-Type: application/http
-    Content-Transfer-Encoding: binary
+--changeset_122fb0a4-cd80-4958-820f-346309967e4d
+Content-Type: application/http
+Content-Transfer-Encoding: binary
 
-    POST https://media.windows.net/api/$1/Tasks HTTP/1.1
-    Content-ID: 2
-    Content-Type: application/json;odata=verbose
-    Accept: application/json;odata=verbose
-    DataServiceVersion: 3.0
-    MaxDataServiceVersion: 3.0
-    Accept-Charset: UTF-8
-    Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.19
-    x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
+POST https://media.windows.net/api/$1/Tasks HTTP/1.1
+Content-ID: 2
+Content-Type: application/json;odata=verbose
+Accept: application/json;odata=verbose
+DataServiceVersion: 3.0
+MaxDataServiceVersion: 3.0
+Accept-Charset: UTF-8
+Authorization: Bearer <ENCODED JWT TOKEN> 
+x-ms-version: 2.19
+x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
 
-    {  
-       "Configuration":"H264 Adaptive Bitrate MP4 Set 720p",
-       "MediaProcessorId":"nb:mpid:UUID:ff4df607-d419-42f0-bc17-a481b1331e56",
-       "TaskBody":"<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset assetName=\"Custom output name\">JobOutputAsset(0)</outputAsset></taskBody>"
-    }
+{  
+   "Configuration":"H264 Adaptive Bitrate MP4 Set 720p",
+   "MediaProcessorId":"nb:mpid:UUID:ff4df607-d419-42f0-bc17-a481b1331e56",
+   "TaskBody":"<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset assetName=\"Custom output name\">JobOutputAsset(0)</outputAsset></taskBody>"
+}
 
-    --changeset_122fb0a4-cd80-4958-820f-346309967e4d--
-    --batch_a01a5ec4-ba0f-4536-84b5-66c5a5a6d34e--
-
+--changeset_122fb0a4-cd80-4958-820f-346309967e4d--
+--batch_a01a5ec4-ba0f-4536-84b5-66c5a5a6d34e--
+```
 
 
 ## <a name="create-a-job-by-using-a-jobtemplate"></a>Een taak maken met behulp van een JobTemplate
@@ -215,18 +224,19 @@ Wanneer u meerdere assets verwerkt met behulp van een algemene set taken, gebrui
 
 In het volgende voor beeld ziet u hoe u een JobTemplate maakt met een TaskTemplate die in line is gedefinieerd. De TaskTemplate gebruikt de Media Encoder Standard als MediaProcessor voor het coderen van het activa bestand. Andere MediaProcessors kunnen echter ook worden gebruikt.
 
-    POST https://media.windows.net/API/JobTemplates HTTP/1.1
-    Content-Type: application/json;odata=verbose
-    Accept: application/json;odata=verbose
-    DataServiceVersion: 3.0
-    MaxDataServiceVersion: 3.0
-    x-ms-version: 2.19
-    Authorization: Bearer <ENCODED JWT TOKEN> 
-    Host: media.windows.net
+```console
+POST https://media.windows.net/API/JobTemplates HTTP/1.1
+Content-Type: application/json;odata=verbose
+Accept: application/json;odata=verbose
+DataServiceVersion: 3.0
+MaxDataServiceVersion: 3.0
+x-ms-version: 2.19
+Authorization: Bearer <ENCODED JWT TOKEN> 
+Host: media.windows.net
 
 
-    {"Name" : "NewJobTemplate25", "JobTemplateBody" : "<?xml version=\"1.0\" encoding=\"utf-8\"?><jobTemplate><taskBody taskTemplateId=\"nb:ttid:UUID:071370A3-E63E-4E81-A099-AD66BCAC3789\"><inputAsset>JobInputAsset(0)</inputAsset><outputAsset>JobOutputAsset(0)</outputAsset></taskBody></jobTemplate>", "TaskTemplates" : [{"Id" : "nb:ttid:UUID:071370A3-E63E-4E81-A099-AD66BCAC3789", "Configuration" : "H264 Smooth Streaming 720p", "MediaProcessorId" : "nb:mpid:UUID:ff4df607-d419-42f0-bc17-a481b1331e56", "Name" : "SampleTaskTemplate2", "NumberofInputAssets" : 1, "NumberofOutputAssets" : 1}] }
-
+{"Name" : "NewJobTemplate25", "JobTemplateBody" : "<?xml version=\"1.0\" encoding=\"utf-8\"?><jobTemplate><taskBody taskTemplateId=\"nb:ttid:UUID:071370A3-E63E-4E81-A099-AD66BCAC3789\"><inputAsset>JobInputAsset(0)</inputAsset><outputAsset>JobOutputAsset(0)</outputAsset></taskBody></jobTemplate>", "TaskTemplates" : [{"Id" : "nb:ttid:UUID:071370A3-E63E-4E81-A099-AD66BCAC3789", "Configuration" : "H264 Smooth Streaming 720p", "MediaProcessorId" : "nb:mpid:UUID:ff4df607-d419-42f0-bc17-a481b1331e56", "Name" : "SampleTaskTemplate2", "NumberofInputAssets" : 1, "NumberofOutputAssets" : 1}] }
+```
 
 > [!NOTE]
 > In tegens telling tot andere Media Services entiteiten moet u een nieuwe GUID-id definiëren voor elke TaskTemplate en deze in de eigenschap taskTemplateId en id in de aanvraag tekst plaatsen. Het inhouds identificatie schema moet volgen volgens het schema dat wordt beschreven in Azure Media Services entiteiten identificeren. Ook kan JobTemplates niet worden bijgewerkt. In plaats daarvan moet u een nieuw abonnement maken met de bijgewerkte wijzigingen.
@@ -235,31 +245,35 @@ In het volgende voor beeld ziet u hoe u een JobTemplate maakt met een TaskTempla
 
 Als dit lukt, wordt het volgende antwoord geretourneerd:
 
-    HTTP/1.1 201 Created
+```console
+HTTP/1.1 201 Created
 
-    . . .
-
+. . .
+```
 
 In het volgende voor beeld ziet u hoe u een taak maakt die verwijst naar een JobTemplate-id:
 
-    POST https://media.windows.net/API/Jobs HTTP/1.1
-    Content-Type: application/json;odata=verbose
-    Accept: application/json;odata=verbose
-    DataServiceVersion: 3.0
-    MaxDataServiceVersion: 3.0
-    x-ms-version: 2.19
-    Authorization: Bearer <ENCODED JWT TOKEN> 
-    Host: media.windows.net
+```console
+POST https://media.windows.net/API/Jobs HTTP/1.1
+Content-Type: application/json;odata=verbose
+Accept: application/json;odata=verbose
+DataServiceVersion: 3.0
+MaxDataServiceVersion: 3.0
+x-ms-version: 2.19
+Authorization: Bearer <ENCODED JWT TOKEN> 
+Host: media.windows.net
 
 
-    {"Name" : "NewTestJob", "InputMediaAssets" : [{"__metadata" : {"uri" : "https://media.windows.net/api/Assets('nb%3Acid%3AUUID%3A3f1fe4a2-68f5-4190-9557-cd45beccef92')"}}], "TemplateId" : "nb:jtid:UUID:15e6e5e6-ac85-084e-9dc2-db3645fbf0aa"}
-
+{"Name" : "NewTestJob", "InputMediaAssets" : [{"__metadata" : {"uri" : "https://media.windows.net/api/Assets('nb%3Acid%3AUUID%3A3f1fe4a2-68f5-4190-9557-cd45beccef92')"}}], "TemplateId" : "nb:jtid:UUID:15e6e5e6-ac85-084e-9dc2-db3645fbf0aa"}
+```
 
 Als dit lukt, wordt het volgende antwoord geretourneerd:
 
-    HTTP/1.1 201 Created
+```console
+HTTP/1.1 201 Created
 
-    . . .
+. . .
+```
 
 
 ## <a name="advanced-encoding-features-to-explore"></a>Geavanceerde coderings functies voor verkennen
@@ -278,5 +292,5 @@ Als dit lukt, wordt het volgende antwoord geretourneerd:
 ## <a name="next-steps"></a>Volgende stappen
 Nu u weet hoe u een taak kunt maken om een Asset te coderen, raadpleegt u de [voortgang van de taak controleren met Media Services](media-services-rest-check-job-progress.md).
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 [Media processors ophalen](media-services-rest-get-media-processor.md)

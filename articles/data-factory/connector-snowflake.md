@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/15/2020
-ms.openlocfilehash: 347f37fb999656a1c4951f01a75a392887b5b882
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 07/09/2020
+ms.openlocfilehash: 43839e19eb252c9fa7ab46605fd247f3a798d223
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045668"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220300"
 ---
 # <a name="copy-data-from-and-to-snowflake-by-using-azure-data-factory"></a>Gegevens van en naar sneeuw kopiëren met behulp van Azure Data Factory
 
@@ -48,9 +48,9 @@ De volgende eigenschappen worden ondersteund voor een service met sneeuw-koppeli
 
 | Eigenschap         | Beschrijving                                                  | Vereist |
 | :--------------- | :----------------------------------------------------------- | :------- |
-| type             | De eigenschap type moet worden ingesteld op **sneeuw vlokken**.              | Yes      |
-| Verbindings | Configureer de [volledige account naam](https://docs.snowflake.net/manuals/user-guide/connecting.html#your-snowflake-account-name) (inclusief aanvullende segmenten die de regio en het Cloud platform identificeren), de gebruikers naam, het wacht woord, de data base en het magazijn. Geef de JDBC-connection string op om verbinding te maken met het sneeuw-exemplaar. U kunt ook wacht woord in Azure Key Vault plaatsen. Raadpleeg de voor beelden onder de tabel, evenals de [archief referenties in azure Key Vault](store-credentials-in-key-vault.md) artikel, voor meer informatie.| Yes      |
-| connectVia       | De [Integration runtime](concepts-integration-runtime.md) die wordt gebruikt om verbinding te maken met het gegevens archief. U kunt de Azure Integration runtime of een zelf-hostende Integration runtime gebruiken (als uw gegevens archief zich in een particulier netwerk bevindt). Als u niets opgeeft, wordt de standaard Azure Integration runtime gebruikt. | No       |
+| type             | De eigenschap type moet worden ingesteld op **sneeuw vlokken**.              | Ja      |
+| Verbindings | Configureer de [volledige account naam](https://docs.snowflake.net/manuals/user-guide/connecting.html#your-snowflake-account-name) (inclusief aanvullende segmenten die de regio en het Cloud platform identificeren), de gebruikers naam, het wacht woord, de data base en het magazijn. Geef de JDBC-connection string op om verbinding te maken met het sneeuw-exemplaar. U kunt ook wacht woord in Azure Key Vault plaatsen. Raadpleeg de voor beelden onder de tabel, evenals de [archief referenties in azure Key Vault](store-credentials-in-key-vault.md) artikel, voor meer informatie.| Ja      |
+| connectVia       | De [Integration runtime](concepts-integration-runtime.md) die wordt gebruikt om verbinding te maken met het gegevens archief. U kunt de Azure Integration runtime of een zelf-hostende Integration runtime gebruiken (als uw gegevens archief zich in een particulier netwerk bevindt). Als u niets opgeeft, wordt de standaard Azure Integration runtime gebruikt. | Nee       |
 
 **Voorbeeld:**
 
@@ -60,7 +60,7 @@ De volgende eigenschappen worden ondersteund voor een service met sneeuw-koppeli
     "properties": {
         "type": "Snowflake",
         "typeProperties": {
-            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&password=<password>&db=<database>&warehouse=<warehouse>(optional)"
+            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&password=<password>&db=<database>&warehouse=<warehouse>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -78,7 +78,7 @@ De volgende eigenschappen worden ondersteund voor een service met sneeuw-koppeli
     "properties": {
         "type": "Snowflake",
         "typeProperties": {
-            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&db=<database>&warehouse=<warehouse>(optional)",
+            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&db=<database>&warehouse=<warehouse>",
             "password": {
                 "type": "AzureKeyVaultSecret",
                 "store": { 
@@ -104,9 +104,9 @@ De volgende eigenschappen worden ondersteund voor de gegevensset van sneeuw vlok
 
 | Eigenschap  | Beschrijving                                                  | Vereist                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
-| type      | De eigenschap type van de DataSet moet worden ingesteld op **SnowflakeTable**. | Yes                         |
+| type      | De eigenschap type van de DataSet moet worden ingesteld op **SnowflakeTable**. | Ja                         |
 | schema | De naam van het schema. |Nee voor bron, ja voor Sink  |
-| tabel | De naam van de tabel/weer gave. |Nee voor bron, ja voor Sink  |
+| table | De naam van de tabel/weer gave. |Nee voor bron, ja voor Sink  |
 
 **Voorbeeld:**
 
@@ -142,13 +142,13 @@ Als u gegevens van sneeuw vlokken wilt kopiëren, worden de volgende eigenschapp
 
 | Eigenschap                     | Beschrijving                                                  | Vereist |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
-| type                         | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **SnowflakeSource**. | Yes      |
-| query          | Hiermee geeft u de SQL-query op voor het lezen van gegevens van sneeuw.<br>Het uitvoeren van een opgeslagen procedure wordt niet ondersteund. | No       |
-| exportSettings | Geavanceerde instellingen voor het ophalen van gegevens uit sneeuw. U kunt de bestanden configureren die worden ondersteund door de opdracht kopiëren naar, die Data Factory door gegeven wanneer u de instructie aanroept. | No       |
+| type                         | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **SnowflakeSource**. | Ja      |
+| query          | Hiermee geeft u de SQL-query op voor het lezen van gegevens van sneeuw.<br>Het uitvoeren van een opgeslagen procedure wordt niet ondersteund. | Nee       |
+| exportSettings | Geavanceerde instellingen voor het ophalen van gegevens uit sneeuw. U kunt de bestanden configureren die worden ondersteund door de opdracht kopiëren naar, die Data Factory door gegeven wanneer u de instructie aanroept. | Nee       |
 | ***Onder `exportSettings` :*** |  |  |
-| type | Het type export opdracht, ingesteld op **SnowflakeExportCopyCommand**. | Yes |
-| additionalCopyOptions | Aanvullende kopieer opties, gegeven als een woorden lijst met sleutel-waardeparen. Voor beelden: MAX_FILE_SIZE, OVERSCHRIJVEN. Zie Opties voor het [kopiëren van sneeuw vlokken](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#copy-options-copyoptions)voor meer informatie. | No |
-| additionalFormatOptions | Aanvullende opties voor bestands indelingen die als een woorden lijst met sleutel-waardeparen worden meegeleverd. Voor beelden: DATE_FORMAT, TIME_FORMAT TIMESTAMP_FORMAT. Zie [Opties voor type sneeuw-indeling](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#format-type-options-formattypeoptions)voor meer informatie. | No |
+| type | Het type export opdracht, ingesteld op **SnowflakeExportCopyCommand**. | Ja |
+| additionalCopyOptions | Aanvullende kopieer opties, gegeven als een woorden lijst met sleutel-waardeparen. Voor beelden: MAX_FILE_SIZE, OVERSCHRIJVEN. Zie Opties voor het [kopiëren van sneeuw vlokken](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#copy-options-copyoptions)voor meer informatie. | Nee |
+| additionalFormatOptions | Aanvullende opties voor bestands indelingen die als een woorden lijst met sleutel-waardeparen worden meegeleverd. Voor beelden: DATE_FORMAT, TIME_FORMAT TIMESTAMP_FORMAT. Zie [Opties voor type sneeuw-indeling](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#format-type-options-formattypeoptions)voor meer informatie. | Nee |
 
 #### <a name="direct-copy-from-snowflake"></a>Directe kopie van sneeuw
 
@@ -156,15 +156,20 @@ Als uw Sink-gegevens archief en-indeling voldoen aan de criteria die in deze sec
 
 - De **gekoppelde Sink-service** is [**Azure Blob-opslag**](connector-azure-blob-storage.md) met verificatie van de **Shared Access-hand tekening** .
 
-- De **sink-gegevens indeling** is **Parquet** of **gescheiden tekst**, met de volgende configuraties:
+- De **sink-gegevens indeling** is **Parquet**, **tekst met scheidings tekens**of **JSON** met de volgende configuraties:
 
-   - Voor de indeling **Parquet** is de compressie-codec **geen**, **Snappy**of **lzo**.
-   - Voor **tekst indeling met scheidings tekens** :
-     - `rowDelimiter`is **\r\n**of een wille keurig teken.
-     - `compression`kan **geen compressie**, **gzip**, **bzip2**of **Deflate**zijn.
-     - `encodingName`is standaard ingesteld op **UTF-8**.
-     - `quoteChar`is **dubbele aanhalings**tekens, **enkele aanhalings**tekens of **lege teken reeks** (geen aanhalings teken).
-- In de bron van de Kopieer activiteit `additionalColumns` is niet opgegeven.
+    - Voor de indeling **Parquet** is de compressie-codec **geen**, **Snappy**of **lzo**.
+    - Voor **tekst indeling met scheidings tekens** :
+        - `rowDelimiter`is **\r\n**of een wille keurig teken.
+        - `compression`kan **geen compressie**, **gzip**, **bzip2**of **Deflate**zijn.
+        - `encodingName`is standaard ingesteld op **UTF-8**.
+        - `quoteChar`is **dubbele aanhalings**tekens, **enkele aanhalings** tekens of **lege teken reeks** (geen aanhalings teken).
+    - Voor de **JSON** -indeling biedt direct kopiëren alleen ondersteuning voor het geval dat de bron sneeuw Table of het query resultaat slechts één kolom heeft en het gegevens type van deze kolom **Variant**, **object**of **matrix**is.
+        - `compression`kan **geen compressie**, **gzip**, **bzip2**of **Deflate**zijn.
+        - `encodingName`is standaard ingesteld op **UTF-8**.
+        - `filePattern`de Sink voor kopieer activiteiten is standaard ingesteld op **setOfObjects**.
+
+- De bron van de Kopieer activiteit `additionalColumns` is niet opgegeven.
 - Er is geen kolom toewijzing opgegeven.
 
 **Voorbeeld:**
@@ -268,13 +273,13 @@ Als u gegevens wilt kopiëren naar sneeuw vlokken, worden de volgende eigenschap
 
 | Eigenschap          | Beschrijving                                                  | Vereist                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
-| type              | De eigenschap type van de Sink van de Kopieer activiteit is ingesteld op **SnowflakeSink**. | Yes                                           |
-| preCopyScript     | Geef een SQL-query op voor het uitvoeren van de Kopieer activiteit die moet worden uitgevoerd voordat er in elke uitvoering gegevens naar sneeuw worden geschreven. Gebruik deze eigenschap om de vooraf geladen gegevens op te schonen. | No                                            |
-| importSettings | Geavanceerde instellingen voor het schrijven van gegevens naar sneeuw. U kunt de bestanden configureren die worden ondersteund door de opdracht kopiëren naar, die Data Factory door gegeven wanneer u de instructie aanroept. | No |
+| type              | De eigenschap type van de Sink van de Kopieer activiteit is ingesteld op **SnowflakeSink**. | Ja                                           |
+| preCopyScript     | Geef een SQL-query op voor het uitvoeren van de Kopieer activiteit die moet worden uitgevoerd voordat er in elke uitvoering gegevens naar sneeuw worden geschreven. Gebruik deze eigenschap om de vooraf geladen gegevens op te schonen. | Nee                                            |
+| importSettings | Geavanceerde instellingen voor het schrijven van gegevens naar sneeuw. U kunt de bestanden configureren die worden ondersteund door de opdracht kopiëren naar, die Data Factory door gegeven wanneer u de instructie aanroept. | Nee |
 | ***Onder `importSettings` :*** |                                                              |  |
-| type | Het type van de opdracht importeren, ingesteld op **SnowflakeImportCopyCommand**. | Yes |
-| additionalCopyOptions | Aanvullende kopieer opties, gegeven als een woorden lijst met sleutel-waardeparen. Voor beelden: ON_ERROR, FORCEren, LOAD_UNCERTAIN_FILES. Zie Opties voor het [kopiëren van sneeuw vlokken](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#copy-options-copyoptions)voor meer informatie. | No |
-| additionalFormatOptions | Aanvullende opties voor de bestands indeling die worden meegeleverd met de Kopieer opdracht, als een woorden lijst met sleutel-waardeparen. Voor beelden: DATE_FORMAT, TIME_FORMAT TIMESTAMP_FORMAT. Zie [Opties voor type sneeuw-indeling](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#format-type-options-formattypeoptions)voor meer informatie. | No |
+| type | Het type van de opdracht importeren, ingesteld op **SnowflakeImportCopyCommand**. | Ja |
+| additionalCopyOptions | Aanvullende kopieer opties, gegeven als een woorden lijst met sleutel-waardeparen. Voor beelden: ON_ERROR, FORCEren, LOAD_UNCERTAIN_FILES. Zie Opties voor het [kopiëren van sneeuw vlokken](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#copy-options-copyoptions)voor meer informatie. | Nee |
+| additionalFormatOptions | Aanvullende opties voor de bestands indeling die worden meegeleverd met de Kopieer opdracht, als een woorden lijst met sleutel-waardeparen. Voor beelden: DATE_FORMAT, TIME_FORMAT TIMESTAMP_FORMAT. Zie [Opties voor type sneeuw-indeling](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#format-type-options-formattypeoptions)voor meer informatie. | Nee |
 
 #### <a name="direct-copy-to-snowflake"></a>Directe kopie naar sneeuw vlokken
 
@@ -282,15 +287,19 @@ Als uw bron gegevens opslag en-indeling voldoen aan de criteria die in deze sect
 
 - De **gekoppelde bron service** is [**Azure Blob-opslag**](connector-azure-blob-storage.md) met verificatie van de **hand tekening voor gedeelde toegang** .
 
-- De **indeling van de bron gegevens** is **Parquet** of **tekst met scheidings tekens**, met de volgende configuraties:
+- De **indeling van de bron gegevens** is **Parquet**, **tekst met scheidings tekens**of **JSON** met de volgende configuraties:
 
-   - Voor de indeling **Parquet** is de compressie-codec **geen** of **Snappy**.
+    - Voor de indeling **Parquet** is de compressie-codec **geen**of **Snappy**.
 
-   - Voor **tekst indeling met scheidings tekens** :
-     - `rowDelimiter`is **\r\n**of een wille keurig teken. Als het scheidings teken van de rij niet ' \r\n ' is, `firstRowAsHeader` moet **Onwaar**zijn en `skipLineCount` niet opgegeven.
-     - `compression`kan **geen compressie**, **gzip**, **bzip2**of **Deflate**zijn.
-     - `encodingName`is standaard ingesteld op ' UTF-8 ', ' UTF-16 ', ' UTF-16BE ', ' UTF-32 ', ' UTF-32BE ', ' BIG5 ', ' EUC-JP ', ' EUC-KR ', ' GB18030 ', ' ISO-2022-JP ', ' ISO-2022-KR ', ' ISO-8859-1 "," ISO-8859-2 "," ISO-8859-5 "," ISO-8859-6 "," ISO-8859-7 "," ISO-8859-8 "," ISO-8859-9 "," WINDOWS-1250 "," WINDOWS-1251 "," WINDOWS-1252 "," WINDOWS-1253 "," WINDOWS-1254 "," WINDOWS-1255 ".
-     - `quoteChar`is **dubbele aanhalings**tekens, **enkele aanhalings**tekens of **lege teken reeks** (geen aanhalings teken).
+    - Voor **tekst indeling met scheidings tekens** :
+        - `rowDelimiter`is **\r\n**of een wille keurig teken. Als het scheidings teken van de rij niet ' \r\n ' is, `firstRowAsHeader` moet **Onwaar**zijn en `skipLineCount` niet opgegeven.
+        - `compression`kan **geen compressie**, **gzip**, **bzip2**of **Deflate**zijn.
+        - `encodingName`is standaard ingesteld op ' UTF-8 ', ' UTF-16 ', ' UTF-16BE ', ' UTF-32 ', ' UTF-32BE ', ' BIG5 ', ' EUC-JP ', ' EUC-KR ', ' GB18030 ', ' ISO-2022-JP ', ' ISO-2022-KR ', ' ISO-8859-1 "," ISO-8859-2 "," ISO-8859-5 "," ISO-8859-6 "," ISO-8859-7 "," ISO-8859-8 "," ISO-8859-9 "," WINDOWS-1250 "," WINDOWS-1251 "," WINDOWS-1252 "," WINDOWS-1253 "," WINDOWS-1254 "," WINDOWS-1255 ".
+        - `quoteChar`is **dubbele aanhalings**tekens, **enkele aanhalings** tekens of **lege teken reeks** (geen aanhalings teken).
+    - Voor de **JSON** -indeling ondersteunt direct kopiëren alleen het geval dat de tabel met de Sink-sneeuw vlokken slechts één kolom heeft en het gegevens type van deze kolom **Variant**, **object**of **matrix**is.
+        - `compression`kan **geen compressie**, **gzip**, **bzip2**of **Deflate**zijn.
+        - `encodingName`is standaard ingesteld op **UTF-8**.
+        - Er is geen kolom toewijzing opgegeven.
 
 - In de bron van de Kopieer activiteit: 
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: fe7b74b0d4d065d4f222fefbbdc4a1d434d1163b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 635a8fc5409e18da9529763b06e4a531a36d0156
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80518251"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169201"
 ---
 # <a name="interoperability-in-azure--data-plane-analysis"></a>Interoperabiliteit in Azure: gegevens vlak analyse
 
@@ -29,13 +29,15 @@ Gegevens vlak analyse onderzoekt het pad dat wordt gebruikt door pakketten die v
 
 Met peering van virtuele netwerken (VNet) wordt de functionaliteit van de netwerk brug geëmuleerd tussen de twee VNets die gelijkwaardig zijn. Traceroute uitvoer van een hub-VNet naar een virtuele machine in het spoke VNet wordt hier weer gegeven:
 
-    C:\Users\rb>tracert 10.11.30.4
+```console
+C:\Users\rb>tracert 10.11.30.4
 
-    Tracing route to 10.11.30.4 over a maximum of 30 hops
+Tracing route to 10.11.30.4 over a maximum of 30 hops
 
-      1     2 ms     1 ms     1 ms  10.11.30.4
+  1     2 ms     1 ms     1 ms  10.11.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 In de volgende afbeelding ziet u de grafische verbindings weergave van de hub VNet en de spoke VNet vanuit het perspectief van Azure Network Watcher:
 
@@ -46,15 +48,17 @@ In de volgende afbeelding ziet u de grafische verbindings weergave van de hub VN
 
 Traceroute uitvoer van een hub-VNet naar een virtuele machine in het filiaal VNet wordt hier weer gegeven:
 
-    C:\Users\rb>tracert 10.11.30.68
+```console
+C:\Users\rb>tracert 10.11.30.68
 
-    Tracing route to 10.11.30.68 over a maximum of 30 hops
+Tracing route to 10.11.30.68 over a maximum of 30 hops
 
-      1     1 ms     1 ms     1 ms  10.10.30.142
-      2     *        *        *     Request timed out.
-      3     2 ms     2 ms     2 ms  10.11.30.68
+  1     1 ms     1 ms     1 ms  10.10.30.142
+  2     *        *        *     Request timed out.
+  3     2 ms     2 ms     2 ms  10.11.30.68
 
-    Trace complete.
+Trace complete.
+```
 
 In deze traceroute is de eerste hop de VPN-gateway in azure VPN Gateway van de hub VNet. De tweede hop is de VPN-gateway van het filiaal-VNet. Het IP-adres van de VPN-gateway van het filiaal-VNet wordt niet geadverteerd in de hub VNet. De derde hop is de virtuele machine op het filiaal-VNet.
 
@@ -70,16 +74,18 @@ Voor dezelfde verbinding wordt in de volgende afbeelding de raster weergave in N
 
 Traceroute uitvoer van een hub-VNet naar een virtuele machine in on-premises locatie 1 wordt hier weer gegeven:
 
-    C:\Users\rb>tracert 10.2.30.10
+```console
+C:\Users\rb>tracert 10.2.30.10
 
-    Tracing route to 10.2.30.10 over a maximum of 30 hops
+Tracing route to 10.2.30.10 over a maximum of 30 hops
 
-      1     2 ms     2 ms     2 ms  10.10.30.132
-      2     *        *        *     Request timed out.
-      3     *        *        *     Request timed out.
-      4     2 ms     2 ms     2 ms  10.2.30.10
+  1     2 ms     2 ms     2 ms  10.10.30.132
+  2     *        *        *     Request timed out.
+  3     *        *        *     Request timed out.
+  4     2 ms     2 ms     2 ms  10.2.30.10
 
-    Trace complete.
+Trace complete.
+```
 
 In deze traceroute is de eerste hop het tunnel eindpunt van de Azure ExpressRoute-gateway naar een micro soft Enter prise edge-router (MSEE). De tweede en derde hop zijn de klant Edge (CE)-router en de on-premises locatie 1 LAN Ip's. Deze IP-adressen worden niet geadverteerd in het hub-VNet. De vierde hop is de virtuele machine op de on-premises locatie 1.
 
@@ -88,16 +94,18 @@ In deze traceroute is de eerste hop het tunnel eindpunt van de Azure ExpressRout
 
 Traceroute uitvoer van een hub-VNet naar een virtuele machine in on-premises locatie 2 wordt hier weer gegeven:
 
-    C:\Users\rb>tracert 10.1.31.10
+```console
+C:\Users\rb>tracert 10.1.31.10
 
-    Tracing route to 10.1.31.10 over a maximum of 30 hops
+Tracing route to 10.1.31.10 over a maximum of 30 hops
 
-      1    76 ms    75 ms    75 ms  10.10.30.134
-      2     *        *        *     Request timed out.
-      3     *        *        *     Request timed out.
-      4    75 ms    75 ms    75 ms  10.1.31.10
+  1    76 ms    75 ms    75 ms  10.10.30.134
+  2     *        *        *     Request timed out.
+  3     *        *        *     Request timed out.
+  4    75 ms    75 ms    75 ms  10.1.31.10
 
-    Trace complete.
+Trace complete.
+```
 
 In deze traceroute is de eerste hop het tunnel eindpunt van de ExpressRoute-gateway naar een MSEE. De tweede en derde hop zijn de CE-router en de on-premises locatie 2 LAN Ip's. Deze IP-adressen worden niet geadverteerd in het hub-VNet. De vierde hop is de virtuele machine op de on-premises locatie 2.
 
@@ -105,15 +113,17 @@ In deze traceroute is de eerste hop het tunnel eindpunt van de ExpressRoute-gate
 
 Traceroute uitvoer van een hub-VNet naar een virtuele machine in het externe VNet wordt hier weer gegeven:
 
-    C:\Users\rb>tracert 10.17.30.4
+```console
+C:\Users\rb>tracert 10.17.30.4
 
-    Tracing route to 10.17.30.4 over a maximum of 30 hops
+Tracing route to 10.17.30.4 over a maximum of 30 hops
 
-      1     2 ms     2 ms     2 ms  10.10.30.132
-      2     *        *        *     Request timed out.
-      3    69 ms    68 ms    69 ms  10.17.30.4
+  1     2 ms     2 ms     2 ms  10.10.30.132
+  2     *        *        *     Request timed out.
+  3    69 ms    68 ms    69 ms  10.17.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 In deze traceroute is de eerste hop het tunnel eindpunt van de ExpressRoute-gateway naar een MSEE. De tweede hop is het IP-adres van de gateway van het externe VNet. Het tweede hop IP-bereik wordt niet geadverteerd in de hub VNet. De derde hop is de virtuele machine op het externe VNet.
 
@@ -125,27 +135,31 @@ De spoke VNet deelt de netwerk weergave van het hub-VNet. Via VNet-peering gebru
 
 Traceroute uitvoer van de spoke VNet naar een virtuele machine in de hub-VNet wordt hier weer gegeven:
 
-    C:\Users\rb>tracert 10.10.30.4
+```console
+C:\Users\rb>tracert 10.10.30.4
 
-    Tracing route to 10.10.30.4 over a maximum of 30 hops
+Tracing route to 10.10.30.4 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.10.30.4
+  1    <1 ms    <1 ms    <1 ms  10.10.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 ### <a name="path-to-the-branch-vnet"></a>Pad naar het filiaal-VNet
 
 Traceroute uitvoer van het spoke VNet naar een virtuele machine in het filiaal VNet wordt hier weer gegeven:
 
-    C:\Users\rb>tracert 10.11.30.68
+```console
+C:\Users\rb>tracert 10.11.30.68
 
-    Tracing route to 10.11.30.68 over a maximum of 30 hops
+Tracing route to 10.11.30.68 over a maximum of 30 hops
 
-      1     1 ms    <1 ms    <1 ms  10.10.30.142
-      2     *        *        *     Request timed out.
-      3     3 ms     2 ms     2 ms  10.11.30.68
+  1     1 ms    <1 ms    <1 ms  10.10.30.142
+  2     *        *        *     Request timed out.
+  3     3 ms     2 ms     2 ms  10.11.30.68
 
-    Trace complete.
+Trace complete.
+```
 
 In deze traceroute is de eerste hop de VPN-gateway van de hub VNet. De tweede hop is de VPN-gateway van het filiaal-VNet. Het IP-adres van de VPN-gateway van het filiaal-VNet wordt niet geadverteerd binnen de hub/spoke VNet. De derde hop is de virtuele machine op het filiaal-VNet.
 
@@ -153,16 +167,18 @@ In deze traceroute is de eerste hop de VPN-gateway van de hub VNet. De tweede ho
 
 Traceroute uitvoer van het spoke VNet naar een virtuele machine in on-premises locatie 1 wordt hier weer gegeven:
 
-    C:\Users\rb>tracert 10.2.30.10
+```console
+C:\Users\rb>tracert 10.2.30.10
 
-    Tracing route to 10.2.30.10 over a maximum of 30 hops
+Tracing route to 10.2.30.10 over a maximum of 30 hops
 
-      1    24 ms     2 ms     3 ms  10.10.30.132
-      2     *        *        *     Request timed out.
-      3     *        *        *     Request timed out.
-      4     3 ms     2 ms     2 ms  10.2.30.10
+  1    24 ms     2 ms     3 ms  10.10.30.132
+  2     *        *        *     Request timed out.
+  3     *        *        *     Request timed out.
+  4     3 ms     2 ms     2 ms  10.2.30.10
 
-    Trace complete.
+Trace complete.
+```
 
 In deze traceroute is de eerste hop het ExpressRoute gateway tunnel-eind punt van de hub VNet naar een MSEE. De tweede en derde hop zijn de CE-router en de on-premises locatie 1 LAN Ip's. Deze IP-adressen worden niet geadverteerd in de hub/spoke VNet. De vierde hop is de virtuele machine op de on-premises locatie 1.
 
@@ -170,17 +186,18 @@ In deze traceroute is de eerste hop het ExpressRoute gateway tunnel-eind punt va
 
 Traceroute uitvoer van het spoke VNet naar een virtuele machine in on-premises locatie 2 wordt hier weer gegeven:
 
+```console
+C:\Users\rb>tracert 10.1.31.10
 
-    C:\Users\rb>tracert 10.1.31.10
+Tracing route to 10.1.31.10 over a maximum of 30 hops
 
-    Tracing route to 10.1.31.10 over a maximum of 30 hops
+  1    76 ms    75 ms    76 ms  10.10.30.134
+  2     *        *        *     Request timed out.
+  3     *        *        *     Request timed out.
+  4    75 ms    75 ms    75 ms  10.1.31.10
 
-      1    76 ms    75 ms    76 ms  10.10.30.134
-      2     *        *        *     Request timed out.
-      3     *        *        *     Request timed out.
-      4    75 ms    75 ms    75 ms  10.1.31.10
-
-    Trace complete.
+Trace complete.
+```
 
 In deze traceroute is de eerste hop het ExpressRoute gateway tunnel-eind punt van de hub VNet naar een MSEE. De tweede en derde hop zijn de CE-router en de on-premises locatie 2 LAN Ip's. Deze IP-adressen worden niet geadverteerd in de hub/spoke-VNets. De vierde hop is de virtuele machine op de on-premises locatie 2.
 
@@ -188,15 +205,17 @@ In deze traceroute is de eerste hop het ExpressRoute gateway tunnel-eind punt va
 
 Traceroute uitvoer van het spoke VNet naar een virtuele machine in het externe VNet wordt hier weer gegeven:
 
-    C:\Users\rb>tracert 10.17.30.4
+```console
+C:\Users\rb>tracert 10.17.30.4
 
-    Tracing route to 10.17.30.4 over a maximum of 30 hops
+Tracing route to 10.17.30.4 over a maximum of 30 hops
 
-      1     2 ms     1 ms     1 ms  10.10.30.133
-      2     *        *        *     Request timed out.
-      3    71 ms    70 ms    70 ms  10.17.30.4
+  1     2 ms     1 ms     1 ms  10.10.30.133
+  2     *        *        *     Request timed out.
+  3    71 ms    70 ms    70 ms  10.17.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 In deze traceroute is de eerste hop het ExpressRoute gateway tunnel-eind punt van de hub VNet naar een MSEE. De tweede hop is het IP-adres van de gateway van het externe VNet. Het tweede hop IP-bereik wordt niet geadverteerd in de hub/spoke VNet. De derde hop is de virtuele machine op het externe VNet.
 
@@ -206,15 +225,17 @@ In deze traceroute is de eerste hop het ExpressRoute gateway tunnel-eind punt va
 
 Traceroute uitvoer van het filiaal-VNet naar een virtuele machine in de hub VNet wordt hier weer gegeven:
 
-    C:\Windows\system32>tracert 10.10.30.4
+```console
+C:\Windows\system32>tracert 10.10.30.4
 
-    Tracing route to 10.10.30.4 over a maximum of 30 hops
+Tracing route to 10.10.30.4 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.11.30.100
-      2     *        *        *     Request timed out.
-      3     4 ms     3 ms     3 ms  10.10.30.4
+  1    <1 ms    <1 ms    <1 ms  10.11.30.100
+  2     *        *        *     Request timed out.
+  3     4 ms     3 ms     3 ms  10.10.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 In deze traceroute is de eerste hop de VPN-gateway van het filiaal-VNet. De tweede hop is de VPN-gateway van het hub-VNet. Het IP-adres van de VPN-gateway van de hub VNet wordt niet geadverteerd in het externe VNet. De derde hop is de virtuele machine op het hub-VNet.
 
@@ -222,15 +243,17 @@ In deze traceroute is de eerste hop de VPN-gateway van het filiaal-VNet. De twee
 
 Traceroute uitvoer van het filiaal-VNet naar een virtuele machine in het spoke-VNet wordt hier weer gegeven:
 
-    C:\Users\rb>tracert 10.11.30.4
+```console
+C:\Users\rb>tracert 10.11.30.4
 
-    Tracing route to 10.11.30.4 over a maximum of 30 hops
+Tracing route to 10.11.30.4 over a maximum of 30 hops
 
-      1     1 ms    <1 ms     1 ms  10.11.30.100
-      2     *        *        *     Request timed out.
-      3     4 ms     3 ms     2 ms  10.11.30.4
+  1     1 ms    <1 ms     1 ms  10.11.30.100
+  2     *        *        *     Request timed out.
+  3     4 ms     3 ms     2 ms  10.11.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 In deze traceroute is de eerste hop de VPN-gateway van het filiaal-VNet. De tweede hop is de VPN-gateway van het hub-VNet. Het IP-adres van de VPN-gateway van de hub VNet wordt niet geadverteerd in het externe VNet. De derde hop is de virtuele machine op de spoke-VNet.
 
@@ -238,17 +261,19 @@ In deze traceroute is de eerste hop de VPN-gateway van het filiaal-VNet. De twee
 
 Traceroute uitvoer van het filiaal-VNet naar een virtuele machine in on-premises locatie 1 wordt hier weer gegeven:
 
-    C:\Users\rb>tracert 10.2.30.10
+```console
+C:\Users\rb>tracert 10.2.30.10
 
-    Tracing route to 10.2.30.10 over a maximum of 30 hops
+Tracing route to 10.2.30.10 over a maximum of 30 hops
 
-      1     1 ms    <1 ms    <1 ms  10.11.30.100
-      2     *        *        *     Request timed out.
-      3     3 ms     2 ms     2 ms  10.2.30.125
-      4     *        *        *     Request timed out.
-      5     3 ms     3 ms     3 ms  10.2.30.10
+  1     1 ms    <1 ms    <1 ms  10.11.30.100
+  2     *        *        *     Request timed out.
+  3     3 ms     2 ms     2 ms  10.2.30.125
+  4     *        *        *     Request timed out.
+  5     3 ms     3 ms     3 ms  10.2.30.10
 
-    Trace complete.
+Trace complete.
+```
 
 In deze traceroute is de eerste hop de VPN-gateway van het filiaal-VNet. De tweede hop is de VPN-gateway van het hub-VNet. Het IP-adres van de VPN-gateway van de hub VNet wordt niet geadverteerd in het externe VNet. De derde hop is het eind punt van de VPN-tunnel op de primaire CE-router. De vierde hop is een intern IP-adres van on-premises locatie 1. Dit LAN IP-adres wordt niet geadverteerd buiten de CE-router. De vijfde hop is de doel-VM op de on-premises locatie 1.
 
@@ -256,27 +281,29 @@ In deze traceroute is de eerste hop de VPN-gateway van het filiaal-VNet. De twee
 
 Zoals we in de Control-vlak analyse hebben besproken, heeft het filiaal VNet geen zicht baarheid op on-premises locatie 2 of op het externe VNet per netwerk configuratie. De volgende resultaten van de ping worden bevestigd: 
 
-    C:\Users\rb>ping 10.1.31.10
+```console
+C:\Users\rb>ping 10.1.31.10
 
-    Pinging 10.1.31.10 with 32 bytes of data:
+Pinging 10.1.31.10 with 32 bytes of data:
 
-    Request timed out.
-    ...
-    Request timed out.
+Request timed out.
+...
+Request timed out.
 
-    Ping statistics for 10.1.31.10:
-        Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+Ping statistics for 10.1.31.10:
+    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
 
-    C:\Users\rb>ping 10.17.30.4
+C:\Users\rb>ping 10.17.30.4
 
-    Pinging 10.17.30.4 with 32 bytes of data:
+Pinging 10.17.30.4 with 32 bytes of data:
 
-    Request timed out.
-    ...
-    Request timed out.
+Request timed out.
+...
+Request timed out.
 
-    Ping statistics for 10.17.30.4:
-        Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+Ping statistics for 10.17.30.4:
+    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+```
 
 ## <a name="data-path-from-on-premises-location-1"></a>Gegevenspad van on-premises locatie 1
 
@@ -284,17 +311,19 @@ Zoals we in de Control-vlak analyse hebben besproken, heeft het filiaal VNet gee
 
 Traceroute uitvoer van on-premises locatie 1 naar een virtuele machine in het hub-VNet wordt hier weer gegeven:
 
-    C:\Users\rb>tracert 10.10.30.4
+```console
+C:\Users\rb>tracert 10.10.30.4
 
-    Tracing route to 10.10.30.4 over a maximum of 30 hops
+Tracing route to 10.10.30.4 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.2.30.3
-      2    <1 ms    <1 ms    <1 ms  192.168.30.0
-      3    <1 ms    <1 ms    <1 ms  192.168.30.18
-      4     *        *        *     Request timed out.
-      5     2 ms     2 ms     2 ms  10.10.30.4
+  1    <1 ms    <1 ms    <1 ms  10.2.30.3
+  2    <1 ms    <1 ms    <1 ms  192.168.30.0
+  3    <1 ms    <1 ms    <1 ms  192.168.30.18
+  4     *        *        *     Request timed out.
+  5     2 ms     2 ms     2 ms  10.10.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 In deze traceroute maken de eerste twee hops deel uit van het on-premises netwerk. De derde hop is de primaire MSEE-interface die de CE-router bevindt. De vierde hop is de ExpressRoute-gateway van de hub VNet. Het IP-bereik van de ExpressRoute-gateway van de hub VNet wordt niet geadverteerd naar het on-premises netwerk. De vijfde hop is de doel-VM.
 
@@ -306,15 +335,17 @@ In de volgende afbeelding ziet u de topologie weergave van de on-premises locati
 
 Zoals eerder besproken, maakt de test installatie gebruik van een site-naar-site-VPN als back-upconnectiviteit voor ExpressRoute tussen de on-premises locatie 1 en de hub-VNet. Om het pad naar de back-upgegevens te testen, gaan we een ExpressRoute-koppelings fout maken tussen de on-premises locatie 1 primaire CE-router en de bijbehorende MSEE. Als u een ExpressRoute-koppelings fout wilt veroorzaken, sluit u de CE-interface die de MSEE getoont:
 
-    C:\Users\rb>tracert 10.10.30.4
+```console
+C:\Users\rb>tracert 10.10.30.4
 
-    Tracing route to 10.10.30.4 over a maximum of 30 hops
+Tracing route to 10.10.30.4 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.2.30.3
-      2    <1 ms    <1 ms    <1 ms  192.168.30.0
-      3     3 ms     2 ms     3 ms  10.10.30.4
+  1    <1 ms    <1 ms    <1 ms  10.2.30.3
+  2    <1 ms    <1 ms    <1 ms  192.168.30.0
+  3     3 ms     2 ms     3 ms  10.10.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 In de volgende afbeelding ziet u de topologie weergave van de on-premises locatie 1 VM-verbinding met de VM op het hub-VNet via site-naar-site VPN-verbinding wanneer ExpressRoute-connectiviteit is uitgeschakeld:
 
@@ -326,17 +357,19 @@ Traceroute uitvoer van on-premises locatie 1 naar een virtuele machine in het sp
 
 We gaan de primaire ExpressRoute-verbinding terugbrengen om de gegevenspath-analyse uit te voeren naar de spoke-VNet:
 
-    C:\Users\rb>tracert 10.11.30.4
+```console
+C:\Users\rb>tracert 10.11.30.4
 
-    Tracing route to 10.11.30.4 over a maximum of 30 hops
+Tracing route to 10.11.30.4 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.2.30.3
-      2    <1 ms    <1 ms    <1 ms  192.168.30.0
-      3    <1 ms    <1 ms    <1 ms  192.168.30.18
-      4     *        *        *     Request timed out.
-      5     3 ms     2 ms     2 ms  10.11.30.4
+  1    <1 ms    <1 ms    <1 ms  10.2.30.3
+  2    <1 ms    <1 ms    <1 ms  192.168.30.0
+  3    <1 ms    <1 ms    <1 ms  192.168.30.18
+  4     *        *        *     Request timed out.
+  5     3 ms     2 ms     2 ms  10.11.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 Breng de primaire ExpressRoute 1-connectiviteit voor de rest van de analyse van het gegevenspad.
 
@@ -344,46 +377,52 @@ Breng de primaire ExpressRoute 1-connectiviteit voor de rest van de analyse van 
 
 Traceroute uitvoer van on-premises locatie 1 naar een virtuele machine in het filiaal VNet wordt hier weer gegeven:
 
-    C:\Users\rb>tracert 10.11.30.68
+```console
+C:\Users\rb>tracert 10.11.30.68
 
-    Tracing route to 10.11.30.68 over a maximum of 30 hops
+Tracing route to 10.11.30.68 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.2.30.3
-      2    <1 ms    <1 ms    <1 ms  192.168.30.0
-      3     3 ms     2 ms     2 ms  10.11.30.68
+  1    <1 ms    <1 ms    <1 ms  10.2.30.3
+  2    <1 ms    <1 ms    <1 ms  192.168.30.0
+  3     3 ms     2 ms     2 ms  10.11.30.68
 
-    Trace complete.
+Trace complete.
+```
 
 ### <a name="path-to-on-premises-location-2"></a>Pad naar de on-premises locatie 2
 
 Bij het bespreken van de [controle vlak analyse][Control-Analysis]is de on-premises locatie 1 niet zichtbaar voor on-premises locatie 2 per netwerk configuratie. De volgende resultaten van de ping worden bevestigd: 
 
-    C:\Users\rb>ping 10.1.31.10
-    
-    Pinging 10.1.31.10 with 32 bytes of data:
+```console
+C:\Users\rb>ping 10.1.31.10
 
-    Request timed out.
-    ...
-    Request timed out.
+Pinging 10.1.31.10 with 32 bytes of data:
 
-    Ping statistics for 10.1.31.10:
-        Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+Request timed out.
+...
+Request timed out.
+
+Ping statistics for 10.1.31.10:
+    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+```
 
 ### <a name="path-to-the-remote-vnet"></a>Pad naar het externe VNet
 
 Traceroute uitvoer van on-premises locatie 1 naar een virtuele machine in het externe VNet wordt hier weer gegeven:
 
-    C:\Users\rb>tracert 10.17.30.4
+```console
+C:\Users\rb>tracert 10.17.30.4
 
-    Tracing route to 10.17.30.4 over a maximum of 30 hops
+Tracing route to 10.17.30.4 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.2.30.3
-      2     2 ms     5 ms     7 ms  192.168.30.0
-      3    <1 ms    <1 ms    <1 ms  192.168.30.18
-      4     *        *        *     Request timed out.
-      5    69 ms    70 ms    69 ms  10.17.30.4
+  1    <1 ms    <1 ms    <1 ms  10.2.30.3
+  2     2 ms     5 ms     7 ms  192.168.30.0
+  3    <1 ms    <1 ms    <1 ms  192.168.30.18
+  4     *        *        *     Request timed out.
+  5    69 ms    70 ms    69 ms  10.17.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 ## <a name="data-path-from-on-premises-location-2"></a>Gegevenspad van on-premises locatie 2
 
@@ -391,32 +430,36 @@ Traceroute uitvoer van on-premises locatie 1 naar een virtuele machine in het ex
 
 Traceroute uitvoer van on-premises locatie 2 naar een virtuele machine in het hub-VNet wordt hier weer gegeven:
 
-    C:\Windows\system32>tracert 10.10.30.4
+```console
+C:\Windows\system32>tracert 10.10.30.4
 
-    Tracing route to 10.10.30.4 over a maximum of 30 hops
+Tracing route to 10.10.30.4 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.1.31.3
-      2    <1 ms    <1 ms    <1 ms  192.168.31.4
-      3    <1 ms    <1 ms    <1 ms  192.168.31.22
-      4     *        *        *     Request timed out.
-      5    75 ms    74 ms    74 ms  10.10.30.4
+  1    <1 ms    <1 ms    <1 ms  10.1.31.3
+  2    <1 ms    <1 ms    <1 ms  192.168.31.4
+  3    <1 ms    <1 ms    <1 ms  192.168.31.22
+  4     *        *        *     Request timed out.
+  5    75 ms    74 ms    74 ms  10.10.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 ### <a name="path-to-the-spoke-vnet"></a>Pad naar de spoke-VNet
 
 Traceroute uitvoer van on-premises locatie 2 naar een virtuele machine in het spoke VNet wordt hier weer gegeven:
 
-    C:\Windows\system32>tracert 10.11.30.4
+```console
+C:\Windows\system32>tracert 10.11.30.4
 
-    Tracing route to 10.11.30.4 over a maximum of 30 hops
-      1    <1 ms    <1 ms     1 ms  10.1.31.3
-      2    <1 ms    <1 ms    <1 ms  192.168.31.0
-      3    <1 ms    <1 ms    <1 ms  192.168.31.18
-      4     *        *        *     Request timed out.
-      5    75 ms    74 ms    74 ms  10.11.30.4
+Tracing route to 10.11.30.4 over a maximum of 30 hops
+  1    <1 ms    <1 ms     1 ms  10.1.31.3
+  2    <1 ms    <1 ms    <1 ms  192.168.31.0
+  3    <1 ms    <1 ms    <1 ms  192.168.31.18
+  4     *        *        *     Request timed out.
+  5    75 ms    74 ms    74 ms  10.11.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 ### <a name="path-to-the-branch-vnet-on-premises-location-1-and-the-remote-vnet"></a>Pad naar het filiaal-VNet, on-premises locatie 1 en het externe VNet
 
@@ -428,29 +471,33 @@ Bij het bespreken van de [controle vlak analyse][Control-Analysis]heeft de on-pr
 
 Traceroute uitvoer van het externe VNet naar een virtuele machine in de hub VNet wordt hier weer gegeven:
 
-    C:\Users\rb>tracert 10.10.30.4
+```console
+C:\Users\rb>tracert 10.10.30.4
 
-    Tracing route to 10.10.30.4 over a maximum of 30 hops
+Tracing route to 10.10.30.4 over a maximum of 30 hops
 
-      1    65 ms    65 ms    65 ms  10.17.30.36
-      2     *        *        *     Request timed out.
-      3    69 ms    68 ms    68 ms  10.10.30.4
+  1    65 ms    65 ms    65 ms  10.17.30.36
+  2     *        *        *     Request timed out.
+  3    69 ms    68 ms    68 ms  10.10.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 ### <a name="path-to-the-spoke-vnet"></a>Pad naar de spoke-VNet
 
 Traceroute uitvoer van het externe VNet naar een virtuele machine in het spoke VNet wordt hier weer gegeven:
 
-    C:\Users\rb>tracert 10.11.30.4
+```console
+C:\Users\rb>tracert 10.11.30.4
 
-    Tracing route to 10.11.30.4 over a maximum of 30 hops
+Tracing route to 10.11.30.4 over a maximum of 30 hops
 
-      1    67 ms    67 ms    67 ms  10.17.30.36
-      2     *        *        *     Request timed out.
-      3    71 ms    69 ms    69 ms  10.11.30.4
+  1    67 ms    67 ms    67 ms  10.17.30.36
+  2     *        *        *     Request timed out.
+  3    71 ms    69 ms    69 ms  10.11.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 ### <a name="path-to-the-branch-vnet-and-on-premises-location-2"></a>Pad naar het filiaal-VNet en on-premises locatie 2
 
@@ -460,17 +507,18 @@ Tijdens het bespreken van de [controle vlak analyse][Control-Analysis]heeft het 
 
 Traceroute uitvoer van het externe VNet naar een virtuele machine in on-premises locatie 1 wordt hier weer gegeven:
 
-    C:\Users\rb>tracert 10.2.30.10
+```console
+C:\Users\rb>tracert 10.2.30.10
 
-    Tracing route to 10.2.30.10 over a maximum of 30 hops
+Tracing route to 10.2.30.10 over a maximum of 30 hops
 
-      1    67 ms    67 ms    67 ms  10.17.30.36
-      2     *        *        *     Request timed out.
-      3     *        *        *     Request timed out.
-      4    69 ms    69 ms    69 ms  10.2.30.10
+  1    67 ms    67 ms    67 ms  10.17.30.36
+  2     *        *        *     Request timed out.
+  3     *        *        *     Request timed out.
+  4    69 ms    69 ms    69 ms  10.2.30.10
 
-    Trace complete.
-
+Trace complete.
+```
 
 ## <a name="expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>ExpressRoute-en site-naar-site-VPN-verbinding
 

@@ -3,12 +3,12 @@ title: 'Zelfstudie: Een aangepaste beleidsdefinitie maken'
 description: In deze zelfstudie maakt u een aangepaste beleidsdefinitie voor Azure Policy om aangepaste bedrijfsregels af te dwingen voor uw Azure-resources.
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: f8702e84923762b2f417eee882a473228d6bafb8
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 5eee969257f5cf640ce82fbda9877974207c87af
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888143"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044614"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Zelfstudie: Een aangepaste beleidsdefinitie maken
 
@@ -53,7 +53,7 @@ Volgens de vereisten van het bedrijf is de Azure-resource die met Azure Policy m
 Er zijn veel manieren om de eigenschappen van een Azure-resource te bepalen. In deze zelfstudie bekijken we elk daarvan:
 
 - Azure Policy-extensie voor VS code
-- Resource Manager-sjablonen
+- Azure Resource Manager-sjablonen (ARM-sjablonen)
   - Bestaande resource exporteren
   - Een resource maken
   - Quickstart sjablonen (GitHub)
@@ -64,9 +64,9 @@ Er zijn veel manieren om de eigenschappen van een Azure-resource te bepalen. In 
 
 De [VS Code-extensie](../how-to/extension-for-vscode.md#search-for-and-view-resources) kan worden gebruikt om te bladeren door resources in uw omgeving en de Resource Manager-eigenschappen te bekijken voor elke resource.
 
-### <a name="resource-manager-templates"></a>Resource Manager-sjablonen
+### <a name="arm-templates"></a>ARM-sjablonen
 
-Er zijn verschillende manieren om te kijken naar een [Resource Manager-sjabloon](../../../azure-resource-manager/templates/template-tutorial-create-encrypted-storage-accounts.md) die de eigenschap bevat die u wilt beheren.
+Er zijn verschillende manieren om te kijken naar een [Resource Manager-sjabloon](../../../azure-resource-manager/templates/template-tutorial-use-template-reference.md) die de eigenschap bevat die u wilt beheren.
 
 #### <a name="existing-resource-in-the-portal"></a>Bestaande resource in de portal
 
@@ -144,12 +144,11 @@ Deze informatie laat het type van de eigenschap zien, en bevestigt ook dat **sup
 
 #### <a name="quickstart-templates-on-github"></a>Quickstart-sjablonen op GitHub
 
-De [Azure-quickstart-sjablonen](https://github.com/Azure/azure-quickstart-templates) op GitHub bevatten honderden Resource Manager-sjablonen voor verschillende resources. Deze sjablonen kunnen een uitstekende manier zijn om de resource-eigenschap te vinden die u zoekt. Sommige eigenschappen lijken op wat u zoekt, maar beheren iets anders.
+De [Azure-quickstart-sjablonen](https://github.com/Azure/azure-quickstart-templates) op GitHub bevatten honderden ARM-sjablonen voor verschillende resources. Deze sjablonen kunnen een uitstekende manier zijn om de resource-eigenschap te vinden die u zoekt. Sommige eigenschappen lijken op wat u zoekt, maar beheren iets anders.
 
 #### <a name="resource-reference-docs"></a>Resourcereferentiedocumenten
 
-Om te controleren of **supportsHttpsTrafficOnly** de juiste eigenschap is, bekijkt u de Resource Manager-sjabloonreferentie voor de [opslagaccountresource](/azure/templates/microsoft.storage/2018-07-01/storageaccounts) op de opslagprovider.
-Het eigenschappenobject heeft een lijst met geldige parameters. Door de koppeling [StorageAccountPropertiesCreateParameters-object](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) te selecteren, wordt een tabel met acceptabele eigenschappen weergegeven. **supportsHttpsTrafficOnly** is aanwezig, en de beschrijving ervan komt overeen met wat we zoeken om aan de vereisten van het bedrijf te voldoen.
+Om te controleren of **supportsHttpsTrafficOnly** de juiste eigenschap is, bekijkt u de ARM-sjabloonreferentie voor de [opslagaccountresource](/azure/templates/microsoft.storage/2018-07-01/storageaccounts) op de opslagprovider. Het eigenschappenobject heeft een lijst met geldige parameters. Door de koppeling [StorageAccountPropertiesCreateParameters-object](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) te selecteren, wordt een tabel met acceptabele eigenschappen weergegeven. **supportsHttpsTrafficOnly** is aanwezig, en de beschrijving ervan komt overeen met wat we zoeken om aan de vereisten van het bedrijf te voldoen.
 
 ### <a name="azure-resource-explorer"></a>Azure Resource Explorer
 
@@ -219,7 +218,7 @@ az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' |
 Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1"
 ```
 
-De resultaten lijken op wat we zien in de Resource Manager-sjablonen en via de Azure Resource Explorer. De resultaten van Azure Resource Graph kunnen ook [alias](../concepts/definition-structure.md#aliases)details bevatten door de _aliassen_matrix te _projecteren_:
+De resultaten lijken op wat we zien in de ARM-sjablonen en via de Azure Resource Explorer. De resultaten van Azure Resource Graph kunnen ook [alias](../concepts/definition-structure.md#aliases)details bevatten door de _aliassen_matrix te _projecteren_:
 
 ```kusto
 Resources

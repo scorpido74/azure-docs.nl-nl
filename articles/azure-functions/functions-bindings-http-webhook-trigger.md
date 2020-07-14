@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: 14da272ce5ce7c078719909345961f6ddf57f37b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 437cbb87694adf89054161a7b0d40f6528b94199
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833788"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224091"
 ---
 # <a name="azure-functions-http-trigger"></a>HTTP-trigger Azure Functions
 
@@ -480,7 +480,7 @@ Zie voor een volledig voor beeld het [voor beeld](#example)van de trigger.
 
 De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `HttpTrigger` kenmerk.
 
-|function.jsbij eigenschap | Kenmerk eigenschap |Description|
+|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
 | **type** | N.v.t.| Vereist: moet worden ingesteld op `httpTrigger` . |
 | **direction** | N.v.t.| Vereist: moet worden ingesteld op `in` . |
@@ -801,7 +801,7 @@ In versie 1. x, webhook-sjablonen bieden extra validatie voor webhook-payloads. 
 
 Als u wilt reageren op GitHub-webhooks, maakt u eerst uw functie met een HTTP-trigger en stelt u de eigenschap **webHookType** in op `github` . Kopieer vervolgens de URL en API-sleutel naar de pagina **webhook toevoegen** van uw github-opslag plaats. 
 
-![](./media/functions-bindings-http-webhook/github-add-webhook.png)
+![Scherm afbeelding die laat zien hoe u een webhook voor uw functie kunt toevoegen.](./media/functions-bindings-http-webhook/github-add-webhook.png)
 
 ### <a name="slack-webhooks"></a>Toegestane webhooks
 

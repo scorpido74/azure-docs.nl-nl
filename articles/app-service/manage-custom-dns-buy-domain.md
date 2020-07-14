@@ -5,12 +5,12 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
-ms.openlocfilehash: 47daf4ecd034c390a1460610e78d4fffd9277ac7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d0d0d19b9b84649867085a05efa656131e48c5a
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81535703"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220717"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Aangepaste domeinnaam voor Azure App Service kopen
 
@@ -78,11 +78,11 @@ Open de [Azure-portal](https://portal.azure.com/) en meld u aan met uw Azure-acc
 ### <a name="launch-buy-domains"></a>Kopen van domeinen starten
 Klik op het tabblad **app Services** op de naam van uw app, selecteer **instellingen**en selecteer vervolgens **aangepaste domeinen**
    
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
+![Scherm opname van de gemarkeerde aangepaste domeinen.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
 
 Klik op de pagina **aangepaste domeinen** op **domein kopen**.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-1.png)
+![Scherm opname van het gemarkeerde aankoop domein.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-1.png)
 
 > [!NOTE]
 > Als u de sectie **app service domeinen** niet kunt zien, moet u de bestedings limiet voor uw Azure-account verwijderen (Zie [vereisten](#prerequisites)).
@@ -93,7 +93,7 @@ Klik op de pagina **aangepaste domeinen** op **domein kopen**.
 
 Typ op de pagina **app service domein** in het vak **zoeken naar domein** de naam van het domein dat u wilt kopen en typ `Enter` . De voorgestelde beschik bare domeinen worden precies onder het tekstvak weer gegeven. Selecteer een of meer domeinen die u wilt kopen.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-2.png)
+![Scherm opname van het zoekvak zoeken naar domein.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-2.png)
 
 > [!NOTE]
 > De volgende [domeinen op het hoogste niveau](https://wikipedia.org/wiki/Top-level_domain) worden ondersteund door app service domeinen: _com_, _net_, _co.uk_, _org_, _nl_, in _,_ _org.uk_en _in_ _co.in_.
@@ -122,19 +122,19 @@ Klik op **juridische voor waarden** om de voor waarden en kosten te controleren 
 
 Klik op de pagina **app service domein** op **OK**. Terwijl de bewerking wordt uitgevoerd, ziet u de volgende meldingen:
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-validate.png)
+![Scherm afbeelding met het bericht validatie wordt uitgevoerd.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-validate.png)
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-purchase-success.png)
+![Scherm afbeelding met de melding dat de aankoop is geslaagd.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-purchase-success.png)
 
 ### <a name="test-the-hostnames"></a>De hostnamen testen
 
 Als u standaard hostnamen aan uw app hebt toegewezen, ziet u ook een geslaagde melding voor elke geselecteerde hostnaam.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
+![Scherm opname van de geslaagde melding voor elke geselecteerde hostnaam.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
 
 U ziet ook de geselecteerde hostnamen op de pagina **aangepaste domeinen** , in de sectie **aangepaste hostnamen** .
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
+![Scherm opname van de geselecteerde hostnamen in de sectie Aangepaste hostnamen van de pagina aangepaste domeinen.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
 
 > [!NOTE]
 > Een **niet-beveiligd** label voor uw aangepaste domein betekent dat het nog niet is gebonden aan een TLS/SSL-certificaat en dat een HTTPS-aanvraag van een browser naar uw aangepaste domein een fout of waarschuwing krijgt, afhankelijk van de browser. Zie [een aangepaste DNS-naam met een TLS/SSL-binding in azure app service beveiligen](configure-ssl-bindings.md)voor het configureren van TLS-binding.
@@ -154,11 +154,11 @@ U kunt ook hostnamen in het App Service domein toewijzen aan een andere app. De 
 ### <a name="launch-add-hostname"></a>Hostnaam van toevoegen starten
 Selecteer op de pagina **app Services** de naam van uw app waaraan u hostnamen wilt toewijzen, selecteer **instellingen**en selecteer vervolgens **aangepaste domeinen**.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
+![Scherm opname van de gemarkeerde aangepaste domeinen.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
 
 Zorg ervoor dat uw aangeschafte domein wordt weer gegeven in de sectie **app service domeinen** , maar Selecteer deze niet. 
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
+![Scherm opname van uw aangeschafte domein in het gedeelte App Service domeinen.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
 
 > [!NOTE]
 > Alle App Service domeinen in hetzelfde abonnement worden weer gegeven op de pagina **aangepaste domeinen** van de app. Als uw domein zich in het abonnement van de app bevindt, maar u het niet ziet op de pagina **aangepaste domeinen** van de app, kunt u de pagina met **aangepaste domeinen** opnieuw openen of de webpagina vernieuwen. U kunt ook de meldings Bell boven aan het Azure Portal controleren op voortgang of fouten bij het maken.
@@ -180,14 +180,14 @@ Selecteer **Hostnaam toevoegen**.
 
 Wanneer de bewerking is voltooid, ziet u een melding over de successen van de toegewezen hostnaam.  
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
+![Scherm opname van de geslaagde melding voor de toegewezen hostnaam.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
 
 ### <a name="close-add-hostname"></a>Hostnaam toevoegen sluiten
 Wijs op de pagina **hostname toevoegen** een andere hostnaam toe aan uw app, indien gewenst. Wanneer u klaar bent, sluit u de pagina **hostnaam toevoegen** .
 
 U ziet nu de zojuist toegewezen hostnaam (en) op de pagina **aangepaste domeinen** van uw app.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added2.png)
+![Scherm opname van de nieuwe toegewezen hostnamen op de pagina aangepaste domeinen van uw app.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added2.png)
 
 ### <a name="test-the-hostnames"></a>De hostnamen testen
 
@@ -201,15 +201,15 @@ Als u automatische verlenging wilt uitschakelen of als u uw domein hand matig wi
 
 Klik op het tabblad **app Services** op de naam van uw app, selecteer **instellingen**en selecteer vervolgens **aangepaste domeinen**.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
+![Scherm opname van de gemarkeerde aangepaste domeinen.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
 
 Selecteer in de sectie **app service domeinen** het domein dat u wilt configureren.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
+![Scherm opname van uw aangeschafte domein in het gedeelte App Service domeinen.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
 
 Selecteer **domein vernieuwen**vanuit de linkernavigatiebalk van het domein. Als u het automatisch vernieuwen van uw domein wilt stoppen, selecteert u **uit**en **slaat**u vervolgens op.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-autorenew.png)
+![Scherm afbeelding met de optie voor het automatisch vernieuwen van uw domein.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-autorenew.png)
 
 Als u uw domein hand matig wilt verlengen, selecteert u **domein vernieuwen**. Deze knop is echter niet actief tot [90 dagen vóór de verval datum van het domein](#when-domain-expires).
 
@@ -237,7 +237,7 @@ In Azure worden DNS-records voor een App Service domein beheerd met behulp van [
 
 Selecteer in het menu Azure Portal in het linkermenu **alle services**  >  **app service domeinen**.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
+![Scherm afbeelding die laat zien waar u toegang hebt tot App Service domeinen.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
 
 Selecteer het domein dat u wilt beheren. 
 
@@ -245,7 +245,7 @@ Selecteer het domein dat u wilt beheren.
 
 Selecteer **DNS-zone**in het menu links van het domein.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-dns-zone.png)
+![Scherm afbeelding die laat zien waar u de DNS-zone selecteert.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-dns-zone.png)
 
 Met deze actie wordt de pagina [DNS-zone](../dns/dns-zones-records.md) van uw app service domein in azure DNS geopend. Zie [DNS-zones beheren in de Azure Portal](../dns/dns-operations-dnszones-portal.md)voor meer informatie over het bewerken van DNS-records.
 
@@ -257,7 +257,7 @@ Nadat u het App Service-domein hebt aangeschaft, hebt u vijf dagen de aankoop vo
 
 Selecteer in het menu Azure Portal in het linkermenu **alle services**  >  **app service domeinen**.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
+![Scherm afbeelding die laat zien waar u toegang hebt tot App Service domeinen.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
 
 Selecteer het domein dat u wilt annuleren of verwijderen. 
 
@@ -265,13 +265,13 @@ Selecteer het domein dat u wilt annuleren of verwijderen.
 
 Selecteer in het menu links **hostnamen bindingen**. De hostname-bindingen van alle Azure-Services worden hier weer gegeven.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostname-bindings.png)
+![Scherm opname van de pagina hostname bindings.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostname-bindings.png)
 
 U kunt het App Service domein pas verwijderen als alle hostnamen bindingen zijn verwijderd.
 
 Verwijder elke hostnaam binding door te selecteren **...**  >  **Verwijderen**. Nadat alle bindingen zijn verwijderd, selecteert u **Opslaan**.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-delete-hostname-bindings.png)
+![Scherm opname van de locatie waar de hostname-bindingen moeten worden verwijderd.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-delete-hostname-bindings.png)
 
 ### <a name="cancel-or-delete"></a>Annuleren of verwijderen
 
@@ -279,7 +279,7 @@ Selecteer **overzicht**in het menu links van het domein.
 
 Als de annulerings periode op het aangeschafte domein niet is verstreken, selecteert u **aankoop annuleren**. Als dat niet het geval is, ziet u in plaats daarvan de knop **verwijderen** . Als u het domein zonder restitutie wilt verwijderen, selecteert u **verwijderen**.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-cancel.png)
+![Scherm afbeelding die laat zien waar u een aangekocht domein verwijdert of annuleert.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-cancel.png)
 
 Selecteer **Ja**om de bewerking te bevestigen.
 

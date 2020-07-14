@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/18/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 99b61bdd4318bf7c77ae53cc9b77e66ebd6c098a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 879138d882913b8ab43c5689ff72a40e6987c104
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84733395"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223037"
 ---
 # <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>Beveiligings controle gebeurtenissen in Azure Active Directory Domain Services controleren met behulp van Azure Monitor werkmappen
 
@@ -32,8 +32,8 @@ U hebt de volgende resources en bevoegdheden nodig om dit artikel te volt ooien:
     * [Maak zo nodig een Azure Active Directory-tenant][create-azure-ad-tenant] of [koppel een Azure-abonnement aan uw account][associate-azure-ad-tenant].
 * Een door Azure Active Directory Domain Services beheerd domein dat in uw Azure AD-tenant is ingeschakeld en geconfigureerd.
     * Als dat nodig is, voltooit u de zelf studie voor het [maken en configureren van een Azure Active Directory Domain Services beheerd domein][create-azure-ad-ds-instance].
-* Beveiligings controle gebeurtenissen ingeschakeld voor uw Azure Active Directory Domain Services beheerde domein waarmee gegevens worden gestreamd naar een Log Analytics-werk ruimte.
-    * Schakel, indien nodig, [beveiligings controles in voor Azure Active Directory Domain Services][enable-security-audits].
+* Beveiligings controle gebeurtenissen ingeschakeld voor uw beheerde domein waarmee gegevens worden gestreamd naar een Log Analytics-werk ruimte.
+    * Schakel, indien nodig, [beveiligings controles in voor Azure AD DS][enable-security-audits].
 
 ## <a name="azure-monitor-workbooks-overview"></a>Overzicht van Azure Monitor werkmappen
 
@@ -61,11 +61,13 @@ Voer de volgende stappen uit om toegang te krijgen tot de werkmap sjabloon voor 
     ![Selecteer de menu optie werkmappen in de Azure Portal](./media/use-azure-monitor-workbooks/select-workbooks-in-azure-portal.png)
 
 1. Kies het **rapport beveiligings overzicht**.
-1. Selecteer uw Azure-abonnement in de vervolg keuzelijst boven aan de werkmap en klik vervolgens Azure Monitor werk ruimte. Kies een **tijds bereik**, zoals de *laatste 7 dagen*.
+1. Selecteer uw Azure-abonnement in de vervolg keuzelijst boven aan de werkmap en vervolgens een Azure Monitor-werk ruimte.
+
+    Kies een **tijds bereik**, zoals de *laatste 7 dagen*, zoals wordt weer gegeven in de volgende voorbeeld scherm afbeelding:
 
     ![Selecteer de menu optie werkmappen in de Azure Portal](./media/use-azure-monitor-workbooks/select-query-filters.png)
 
-    De opties **tegel weergave** en **grafiek weergave** kunnen ook worden gewijzigd om de gegevens naar wens te analyseren en te visualiseren
+    De **tegel weergave** en **grafiek weergave** opties kunnen ook worden gewijzigd om de gegevens naar wens te analyseren en te visualiseren.
 
 1. Als u wilt inzoomen op een specifiek gebeurtenis type, selecteert u de kaarten voor het **aanmeldings resultaat** zoals *account vergrendeld*, zoals wordt weer gegeven in het volgende voor beeld:
 
@@ -85,7 +87,11 @@ Voer de volgende stappen uit om toegang te krijgen tot de werkmap sjabloon voor 
 1. Selecteer uw beheerde domein, zoals *aaddscontoso.com*
 1. Kies in het menu aan de linkerkant de optie **bewaking > werkmappen**
 1. Kies het **rapport account activiteit**.
-1. Selecteer uw Azure-abonnement in de vervolg keuzelijst boven aan de werkmap en klik vervolgens Azure Monitor werk ruimte. Kies een **tijds bereik**, bijvoorbeeld de *laatste 30 dagen*, en hoe de **tegel weergave** de gegevens moet vertegenwoordigen. U kunt filteren op de **gebruikers naam**van het account, zoals *Felix*, zoals wordt weer gegeven in het volgende voorbeeld rapport:
+1. Selecteer uw Azure-abonnement in de vervolg keuzelijst boven aan de werkmap en vervolgens een Azure Monitor-werk ruimte.
+
+    Kies een **tijds bereik**, bijvoorbeeld de *laatste 30 dagen*, en hoe de **tegel weergave** de gegevens moet vertegenwoordigen.
+
+    U kunt filteren op de **gebruikers naam**van het account, zoals *Felix*, zoals wordt weer gegeven in het volgende voorbeeld rapport:
 
     [![](./media/use-azure-monitor-workbooks/account-activity-report-cropped.png "Account activity report in Azure Monitor Workbooks")](./media/use-azure-monitor-workbooks/account-activity-report.png#lightbox)
 

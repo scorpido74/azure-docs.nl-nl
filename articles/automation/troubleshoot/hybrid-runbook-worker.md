@@ -9,11 +9,12 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 28b6b09c679e37ca4ecd901371e65bffb27ecba4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2149fd68cdf5f2991d6035f245f70515e920045c
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83681004"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187197"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Problemen met Hybrid Runbook Worker oplossen
 
@@ -57,7 +58,7 @@ Raadpleeg het **micro soft-SMA-** gebeurtenis logboek voor een bijbehorende gebe
 
 #### <a name="issue"></a>Probleem
 
-De Hybrid Runbook Worker ontvangt gebeurtenis 15011 om aan te geven dat een query resultaat ongeldig is. De volgende fout wordt weer gegeven wanneer de werk nemer een verbinding met de [signaal server](https://docs.microsoft.com/aspnet/core/signalr/introduction?view=aspnetcore-3.1)probeert te openen.
+De Hybrid Runbook Worker ontvangt gebeurtenis 15011 om aan te geven dat een query resultaat ongeldig is. De volgende fout wordt weer gegeven wanneer de werk nemer een verbinding met de [signaal server](/aspnet/core/signalr/introduction?view=aspnetcore-3.1)probeert te openen.
 
 ```error
 [AccountId={c7d22bd3-47b2-4144-bf88-97940102f6ca}]
@@ -237,7 +238,7 @@ Hybride werk rollen verzenden [runbook-uitvoer en-berichten](../automation-runbo
 
 #### <a name="issue"></a>Probleem
 
-Een script dat wordt uitgevoerd op een Windows-Hybrid Runbook Worker geen verbinding kan maken zoals verwacht voor Office 365 op een Orchestrator sandbox. Het script maakt gebruik van [Connect-MsolService](https://docs.microsoft.com/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) voor de verbinding. 
+Een script dat wordt uitgevoerd op een Windows-Hybrid Runbook Worker geen verbinding kan maken zoals verwacht voor Office 365 op een Orchestrator sandbox. Het script maakt gebruik van [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) voor de verbinding. 
 
 Als u **Orchestrator.Sandbox.exe.config** wijzigt om de proxy en de lijst overs laan in te stellen, wordt de sandbox nog steeds niet goed verbonden. Een **Powershell_ise.exe.config** -bestand met dezelfde proxy en de lijst instellingen overs Laan lijkt te werken zoals verwacht. Service Management Automation-Logboeken (SMA) en Power shell-logboeken bevatten geen informatie over de proxy.
 
@@ -247,9 +248,9 @@ De verbinding met Active Directory Federation Services (AD FS) op de server kan 
 
 #### <a name="resolution"></a>Oplossing
 
-U kunt het probleem voor de Orchestrator sandbox oplossen door uw script te migreren om de Azure Active Directory modules te gebruiken in plaats van de MSOnline-module voor Power shell-cmdlets. Zie [migreren van Orchestrator naar Azure Automation (bèta)](https://docs.microsoft.com/azure/automation/automation-orchestrator-migration)voor meer informatie.
+U kunt het probleem voor de Orchestrator sandbox oplossen door uw script te migreren om de Azure Active Directory modules te gebruiken in plaats van de MSOnline-module voor Power shell-cmdlets. Zie [migreren van Orchestrator naar Azure Automation (bèta)](../automation-orchestrator-migration.md)voor meer informatie.
 
-Als u de MSOnline-module-cmdlets wilt blijven gebruiken, wijzigt u het script om de [opdracht invoke-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7)te gebruiken. Geef waarden op voor `ComputerName` de `Credential` para meters en. 
+Als u de MSOnline-module-cmdlets wilt blijven gebruiken, wijzigt u het script om de [opdracht invoke-Command](/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7)te gebruiken. Geef waarden op voor `ComputerName` de `Credential` para meters en. 
 
 ```powershell
 $Credential = Get-AutomationPSCredential -Name MyProxyAccessibleCredential

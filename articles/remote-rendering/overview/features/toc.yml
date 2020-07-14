@@ -4,6 +4,8 @@
   href: debug-rendering.md
 - name: Hiërarchische status overschrijven
   href: override-hierarchical-state.md
+- name: Faseruimte
+  href: stage-space.md
 - name: Vertraagde fase van het project
   href: late-stage-reprojection.md
 - name: Afbeeldingsbelichting

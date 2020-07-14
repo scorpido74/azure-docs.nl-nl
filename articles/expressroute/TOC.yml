@@ -40,6 +40,8 @@
       items:
         - name: Over circuits en peering
           href: expressroute-circuit-peerings.md
+        - name: Over het upgraden van circuitbandbreedte
+          href: about-upgrade-circuit-bandwidth.md
         - name: Circuits verplaatsen van klassiek naar Resource Manager
           href: expressroute-move.md
     - name: BFD via ExpressRoute

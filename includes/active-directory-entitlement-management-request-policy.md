@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 7fd716be397d9ef6b9d6132cd4470f653f3cea0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae3efec3722570e7e94316c5d874a74c523b1f05
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80655955"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86156663"
 ---
 ## <a name="for-users-in-your-directory"></a>Voor gebruikers in uw Directory
 
@@ -194,7 +194,7 @@ Als u bijvoorbeeld Anne en Bob als eerste fiatteur (s) hebt genoteerd, vermeldt 
 
 1. Stel in het vak **door sturen naar alternatieve goed keurder (en) na hoeveel dagen** het aantal dagen in dat de goed keurders een aanvraag moeten goed keuren of weigeren. Als geen goed keurders de aanvraag hebben goedgekeurd of geweigerd vóór de duur van de aanvraag, is de aanvraag verloopt (time-out) en moet de gebruiker een andere aanvraag indienen voor het toegangs pakket. 
 
-    Aanvragen kunnen alleen worden doorgestuurd naar alternatieve goed keurders op een dag nadat de duur van de aanvraag een halve duur heeft bereikt. In dit voor beeld is de duur van de aanvraag 14 dagen. Daarom bereikt de duur van de aanvraag halfjaarlijks op dag 7. De aanvraag kan dus niet eerder dan dag 8 worden doorgestuurd. Bovendien kunnen aanvragen niet worden doorgestuurd op de laatste dag van de aanvraag duur. In het voor beeld kan de meest recente aanvraag worden doorgestuurd is dag 13.
+    Aanvragen kunnen alleen worden doorgestuurd naar alternatieve goed keurders op dag nadat de duur van de aanvraag halfjaarlijks is bereikt en de beslissing van de hoofd fiatteur (s) een time-out heeft na ten minste vier dagen. Als de time-out van de aanvraag kleiner is dan of gelijk is aan 3, is er onvoldoende tijd om de aanvraag door te sturen naar een alternatieve fiatteur (s). In dit voor beeld is de duur van de aanvraag 14 dagen. Daarom bereikt de duur van de aanvraag halfjaarlijks op dag 7. De aanvraag kan dus niet eerder dan dag 8 worden doorgestuurd. Bovendien kunnen aanvragen niet worden doorgestuurd op de laatste dag van de aanvraag duur. In het voor beeld kan de meest recente aanvraag worden doorgestuurd is dag 13.
 
 ## <a name="enable-requests"></a>Aanvragen inschakelen
 

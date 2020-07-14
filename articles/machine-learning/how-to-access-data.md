@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
-ms.date: 03/24/2020
+ms.date: 07/08/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: cb52935b731a507d2408d174a5aa571fb2bfc973
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6b1d5c66c1dd15fa12638dd451d1ce2fa8fa79f
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609262"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146719"
 ---
 # <a name="connect-to-azure-storage-services"></a>Verbinding maken met Azure Storage-services
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -52,16 +52,16 @@ U hebt het volgende nodig:
 
 Data stores ondersteunen momenteel het opslaan van verbindings gegevens naar de opslag services die in de volgende matrix worden weer gegeven.
 
-| Opslag &nbsp; type | Verificatie &nbsp; type | [Azure &nbsp; machine &nbsp; Learning Studio](https://ml.azure.com/) | [Azure &nbsp; machine &nbsp; Learning &nbsp; python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) |  [Azure &nbsp; machine &nbsp; Learning cli](reference-azure-machine-learning-cli.md) | [&nbsp;Rest API voor Azure machine &nbsp; Learning &nbsp;](https://docs.microsoft.com/rest/api/azureml/)
----|---|---|---|---|---
-[Azure &nbsp; BLOB- &nbsp; opslag](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)| Accountsleutel <br> SAS-token | ✓ | ✓ | ✓ |✓
-[Azure- &nbsp; bestands &nbsp; share](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)| Accountsleutel <br> SAS-token | ✓ | ✓ | ✓ |✓
-[Azure &nbsp; Data Lake &nbsp; Storage gen &nbsp; 1](https://docs.microsoft.com/azure/data-lake-store/)| Service-principal| ✓ | ✓ | ✓ |✓
-[Azure &nbsp; Data Lake &nbsp; Storage gen &nbsp; 2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)| Service-principal| ✓ | ✓ | ✓ |✓
-[Azure &nbsp; SQL &nbsp; Data Base](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview)| SQL-verificatie <br>Service-principal| ✓ | ✓ | ✓ |✓
-[Azure- &nbsp; postgresql](https://docs.microsoft.com/azure/postgresql/overview) | SQL-verificatie| ✓ | ✓ | ✓ |✓
-[Azure &nbsp; Data Base &nbsp; for &nbsp; mysql](https://docs.microsoft.com/azure/mysql/overview) | SQL-verificatie|  | ✓* | ✓* |✓*
-[Databricks- &nbsp; bestands &nbsp; systeem](https://docs.microsoft.com/azure/databricks/data/databricks-file-system)| Geen verificatie | | ✓** | ✓ ** |✓** 
+| Opslag &nbsp; type | Verificatie &nbsp; type | [Azure &nbsp; machine &nbsp; Learning Studio](https://ml.azure.com/) | [Azure &nbsp; machine &nbsp; Learning &nbsp; python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) |  [Azure &nbsp; machine &nbsp; Learning cli](reference-azure-machine-learning-cli.md) | [&nbsp;Rest API voor Azure machine &nbsp; Learning &nbsp;](https://docs.microsoft.com/rest/api/azureml/) | VS-code
+---|---|---|---|---|---|---
+[Azure &nbsp; BLOB- &nbsp; opslag](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)| Accountsleutel <br> SAS-token | ✓ | ✓ | ✓ |✓ |✓
+[Azure- &nbsp; bestands &nbsp; share](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)| Accountsleutel <br> SAS-token | ✓ | ✓ | ✓ |✓|✓
+[Azure &nbsp; Data Lake &nbsp; Storage gen &nbsp; 1](https://docs.microsoft.com/azure/data-lake-store/)| Service-principal| ✓ | ✓ | ✓ |✓|
+[Azure &nbsp; Data Lake &nbsp; Storage gen &nbsp; 2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)| Service-principal| ✓ | ✓ | ✓ |✓|
+[Azure &nbsp; SQL &nbsp; Data Base](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview)| SQL-verificatie <br>Service-principal| ✓ | ✓ | ✓ |✓|
+[Azure- &nbsp; postgresql](https://docs.microsoft.com/azure/postgresql/overview) | SQL-verificatie| ✓ | ✓ | ✓ |✓|
+[Azure &nbsp; Data Base &nbsp; for &nbsp; mysql](https://docs.microsoft.com/azure/mysql/overview) | SQL-verificatie|  | ✓* | ✓* |✓*|
+[Databricks- &nbsp; bestands &nbsp; systeem](https://docs.microsoft.com/azure/databricks/data/databricks-file-system)| Geen verificatie | | ✓** | ✓ ** |✓** |
 
 * MySQL wordt alleen ondersteund voor pijplijn [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py). <br>
 * * Databricks wordt alleen ondersteund voor pijplijn [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py)
@@ -205,6 +205,9 @@ In het volgende voor beeld ziet u hoe het formulier eruitziet wanneer u een **Az
     
 ![Formulier voor een nieuwe gegevens opslag](media/how-to-access-data/new-datastore-form.png)
 
+### <a name="vs-code"></a>VS-code
+
+U kunt gegevens opslag maken en beheren met behulp van de Azure Machine Learning VS code-extensie. Ga naar de [bron beheer handleiding voor het VS code-overzicht](how-to-manage-resources-vscode.md#datastores) voor meer informatie.
 
 <a name="get"></a>
 
@@ -292,10 +295,10 @@ run_config.source_directory_data_store = "workspaceblobstore"
 
 Azure Machine Learning biedt verschillende manieren om uw modellen te gebruiken voor het scoren van punten. Sommige van deze methoden bieden geen toegang tot gegevens opslag. Gebruik de volgende tabel om inzicht te krijgen in de methoden waarmee u toegang hebt tot gegevens opslag in de Score:
 
-| Methode | Toegang tot Data Store | Description |
+| Methode | Toegang tot Data Store | Beschrijving |
 | ----- | :-----: | ----- |
 | [Batchvoorspelling](how-to-use-parallel-run-step.md) | ✔ | Doe asynchroon voorspellingen op grote hoeveelheden gegevens. |
-| [-Webservice](how-to-deploy-and-where.md) | &nbsp; | Implementeer modellen als een webservice. |
+| [Webservice](how-to-deploy-and-where.md) | &nbsp; | Implementeer modellen als een webservice. |
 | [Module Azure IoT Edge](how-to-deploy-and-where.md) | &nbsp; | Implementeer modellen om apparaten te IoT Edge. |
 
 In situaties waarin de SDK geen toegang biedt tot gegevens opslag, kunt u mogelijk aangepaste code maken met behulp van de relevante Azure SDK om toegang te krijgen tot de data. De [Azure Storage SDK voor python](https://github.com/Azure/azure-storage-python) is bijvoorbeeld een client bibliotheek die u kunt gebruiken om toegang te krijgen tot gegevens die zijn opgeslagen in blobs of bestanden.

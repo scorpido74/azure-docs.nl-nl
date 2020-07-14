@@ -4,12 +4,12 @@ description: Hier wordt beschreven hoe u met behulp van Azure Migrate-servereval
 ms.topic: tutorial
 ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 231daff5972e9b2f115df9e6184c43a553f55b83
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 6c395d7e2be151e97808fa9601ff6001801d243b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84771305"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110348"
 ---
 # <a name="assess-vmware-vms-with-server-assessment"></a>VMware-VM’s evalueren met Serverevaluatie
 
@@ -42,25 +42,25 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 Ga als volgt te werk om een nieuw Azure Migrate-project in te stellen:
 
 1. Zoek in de Azure-portal in **Alle services** naar **Azure Migrate**.
-1. Onder **Services** selecteert u **Azure Migrate**.
-1. Selecteer in **Overzicht** onder **Servers ontdekken, evalueren en migreren** de optie **Servers evalueren en migreren**.
+2. Onder **Services** selecteert u **Azure Migrate**.
+3. Selecteer in **Overzicht** onder **Servers ontdekken, evalueren en migreren** de optie **Servers evalueren en migreren**.
 
    ![Knop om servers te evalueren en te migreren](./media/tutorial-assess-vmware/assess-migrate.png)
 
-1. Selecteer in **Aan de slag** de optie **Hulpprogramma's toevoegen**.
-1. Selecteer in **Project migreren** uw Azure-abonnement en maak een resourcegroep als u er nog geen hebt.     
-1. Geef in **Projectdetails** de projectnaam en het geografische gebied op waarin u het project wilt maken. Bekijk ondersteunde geografische regio's voor [openbare](migrate-support-matrix.md#supported-geographies-public-cloud) clouds en [overheidsclouds](migrate-support-matrix.md#supported-geographies-azure-government).
+4. Selecteer in **Aan de slag** de optie **Hulpprogramma's toevoegen**.
+5. Selecteer in **Project migreren** uw Azure-abonnement en maak een resourcegroep als u er nog geen hebt.     
+6. Geef in **Projectdetails** de projectnaam en het geografische gebied op waarin u het project wilt maken. Bekijk ondersteunde geografische regio's voor [openbare](migrate-support-matrix.md#supported-geographies-public-cloud) clouds en [overheidsclouds](migrate-support-matrix.md#supported-geographies-azure-government).
 
    ![Vakken voor projectnaam en regio](./media/tutorial-assess-vmware/migrate-project.png)
 
-1. Selecteer **Next**.
-1. In **Evaluatieprogramma selecteren** selecteert u **Azure Migrate: Serverevaluatie** > **Volgende**.
+7. Selecteer **Next**.
+8. In **Evaluatieprogramma selecteren** selecteert u **Azure Migrate: Serverevaluatie** > **Volgende**.
 
    ![Selectie voor het hulpprogramma voor serverevaluatie](./media/tutorial-assess-vmware/assessment-tool.png)
 
-1. In **Migratieprogramma selecteren** selecteert u **Het toevoegen van een migratieprogramma voorlopig overslaan** > **Volgende**.
-1. Controleer in **Beoordelen en hulpprogramma's toevoegen** de instellingen en selecteer **Hulpprogramma's toevoegen**.
-1. Wacht een paar minuten tot het Azure Migrate-project is geïmplementeerd. U wordt naar de projectpagina geleid. Als u het project niet ziet, kunt u het openen vanuit **Servers** in het Azure Migrate-dashboard.
+9. In **Migratieprogramma selecteren** selecteert u **Het toevoegen van een migratieprogramma voorlopig overslaan** > **Volgende**.
+10. Controleer in **Beoordelen en hulpprogramma's toevoegen** de instellingen en selecteer **Hulpprogramma's toevoegen**.
+11. Wacht een paar minuten tot het Azure Migrate-project is geïmplementeerd. U wordt naar de projectpagina geleid. Als u het project niet ziet, kunt u het openen vanuit **Servers** in het Azure Migrate-dashboard.
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>Het Azure Migrate-apparaat instellen
 
@@ -75,8 +75,8 @@ Nadat u het apparaat hebt gemaakt, controleert u of er verbinding kan worden gem
 ### <a name="download-the-ova-template"></a>De OVA-sjabloon downloaden
 
 1. In **Migratiedoelen** > **Servers** > **Azure Migrate: Serverevaluatie** selecteert u **Detecteren**.
-1. In **Machines ontdekken** > **Zijn de machines gevirtualiseerd?** selecteert u **Ja, met VMWare vSphere-hypervisor**.
-1. Selecteer **Downloaden** om het OVA-sjabloonbestand te downloaden.
+2. In **Machines ontdekken** > **Zijn de machines gevirtualiseerd?** selecteert u **Ja, met VMWare vSphere-hypervisor**.
+3. Selecteer **Downloaden** om het OVA-sjabloonbestand te downloaden.
 
    ![Selecties voor het downloaden van een OVA-bestand](./media/tutorial-assess-vmware/download-ova.png)
 
@@ -114,13 +114,13 @@ Importeer het gedownloade bestand en maak een virtuele machine:
 
    ![Menuopdracht voor het implementeren van een OVF-sjabloon](./media/tutorial-assess-vmware/deploy-ovf.png)
 
-1. Geef in de wizard OVF-sjabloon implementeren > **Bron** de locatie van het OVA-bestand op.
-1. Geef bij **Naam** en **Locatie** een beschrijvende naam op voor de virtuele machine. Selecteer het inventarisobject waarin de VM wordt gehost.
-1. Geef bij **Host/Cluster** de host of het cluster op waarop de VM wordt uitgevoerd.
-1. Geef bij **Opslag** de opslaglocatie voor de VM op.
-1. Geef in **Schijfindeling** het schijftype en de schijfgrootte op.
-1. Geef bij **Netwerktoewijzing** het netwerk op waarmee de VM verbinding maakt. Het netwerk heeft internetconnectiviteit nodig om metagegevens naar Azure Migrate-serverevaluatie te verzenden.
-1. Controleer en bevestig de instellingen en selecteer vervolgens **Voltooien**.
+2. Geef in de wizard OVF-sjabloon implementeren > **Bron** de locatie van het OVA-bestand op.
+3. Geef bij **Naam** en **Locatie** een beschrijvende naam op voor de virtuele machine. Selecteer het inventarisobject waarin de VM wordt gehost.
+4. Geef bij **Host/Cluster** de host of het cluster op waarop de VM wordt uitgevoerd.
+5. Geef bij **Opslag** de opslaglocatie voor de VM op.
+6. Geef in **Schijfindeling** het schijftype en de schijfgrootte op.
+7. Geef bij **Netwerktoewijzing** het netwerk op waarmee de VM verbinding maakt. Het netwerk heeft internetconnectiviteit nodig om metagegevens naar Azure Migrate-serverevaluatie te verzenden.
+8. Controleer en bevestig de instellingen en selecteer vervolgens **Voltooien**.
 
 ## <a name="verify-appliance-access-to-azure"></a>Apparaattoegang tot Azure controleren
 
@@ -134,8 +134,8 @@ Het apparaat voor de eerste keer instellen.
 > Als u het apparaat instelt met behulp van een [PowerShell-script](deploy-appliance-script.md) in plaats van de gedownloade OVA, zijn de eerste twee stappen in deze procedure niet relevant.
 
 1. Klik in de vSphere-clientconsole met de rechtermuisknop op de VM en selecteer **Console openen**.
-1. Geef de taal, de tijdzone en een wachtwoord op voor het apparaat.
-1. Open een browser op een computer die verbinding kan maken met de VM en open de URL van de web-app van het apparaat: **https://*apparaatnaam of IP-adres*: 44368**.
+2. Geef de taal, de tijdzone en een wachtwoord op voor het apparaat.
+3. Open een browser op een computer die verbinding kan maken met de VM en open de URL van de web-app van het apparaat: **https://*apparaatnaam of IP-adres*: 44368**.
 
    U kunt de app ook openen vanaf het bureaublad van het apparaat door de snelkoppeling naar de app te selecteren.
 1. Ga als volgt te werk in de web-app > **Vereisten instellen**:
@@ -153,13 +153,13 @@ Het apparaat voor de eerste keer instellen.
 ### <a name="register-the-appliance-with-azure-migrate"></a>Het apparaat registreren bij Azure Migrate
 
 1. Selecteer **Aanmelden**. Als dit niet wordt weergegeven, controleert u of de pop-upblokkering in de browser is uitgeschakeld.
-1. Meld u op het nieuwe tabblad aan met de gebruikersnaam en het wachtwoord van Azure.
+2. Meld u op het nieuwe tabblad aan met de gebruikersnaam en het wachtwoord van Azure.
    
    Aanmelden met een pincode wordt niet ondersteund.
-1. Nadat u zich hebt aangemeld, gaat u terug naar de web-app.
-1. Selecteer het abonnement waarin het Azure Migrate-project is gemaakt en selecteer vervolgens het project.
-1. Geef een naam op voor het apparaat. De naam moet alfanumeriek zijn met 14 tekens of minder.
-1. Selecteer **Registreren**.
+3. Nadat u zich hebt aangemeld, gaat u terug naar de web-app.
+4. Selecteer het abonnement waarin het Azure Migrate-project is gemaakt en selecteer vervolgens het project.
+5. Geef een naam op voor het apparaat. De naam moet alfanumeriek zijn met 14 tekens of minder.
+6. Selecteer **Registreren**.
 
 
 ## <a name="start-continuous-discovery"></a>Continue detectie starten
@@ -191,39 +191,53 @@ Detectie werkt als volgt:
 Na de detectie kunt u controleren of de VM's worden weergegeven in de Azure-portal:
 
 1. Open het Azure Migrate-dashboard.
-1. Klik op de pagina **Azure Migrate - Servers** > **Azure Migrate: Serverevaluatie** selecteert u het pictogram dat het aantal voor **Gedetecteerde servers** weergeeft.
+2. Klik op de pagina **Azure Migrate - Servers** > **Azure Migrate: Serverevaluatie** selecteert u het pictogram dat het aantal voor **Gedetecteerde servers** weergeeft.
 
 ## <a name="set-up-an-assessment"></a>Een evaluatie instellen
 
 U kunt twee soorten evaluaties maken met behulp van Azure Migrate-serverevaluatie:
 
-**Evaluatie** | **Details** | **Gegevens**
+**Evaluatietype** | **Details**
+--- | --- 
+**Azure VM** | Evaluaties om uw on-premises servers te migreren naar virtuele Azure-machine. <br/><br/> U kunt uw on-premises [VMware-VM's](how-to-set-up-appliance-vmware.md), [Hyper-V-VM's](how-to-set-up-appliance-hyper-v.md) en [fysieke servers](how-to-set-up-appliance-physical.md) evalueren voor migratie naar Azure met dit evaluatietype. [Meer informatie](concepts-assessment-calculation.md)
+**Azure VMware Solution (AVS)** | Evaluaties om uw on-premises servers te migreren naar [Azure VMware Solution (AVS)](../azure-vmware/introduction.md). <br/><br/> U kunt uw on-premises [VMware-VM’s](how-to-set-up-appliance-vmware.md) evalueren voor migratie naar Azure VMware Solution (AVS) met dit evaluatietype. [Meer informatie](concepts-azure-vmware-solution-assessment-calculation.md)
+
+Server Assessment biedt twee opties voor criteria voor het aanpassen van de grootte:
+
+**Criteria voor het aanpassen van de grootte** | **Details** | **Gegevens**
 --- | --- | ---
-**Op basis van prestaties** | Evaluaties op basis van verzamelde prestatiegegevens | **Aanbevolen VM-grootte**: Gebaseerd op verbruiksgegevens voor CPU en geheugen.<br/><br/> **Aanbevolen schijftype (standaard of premium beheerde schijf)** : Op basis van de IOPS en doorvoer van de on-premises schijven.
-**Zoals on-premises** | Evaluaties op basis van on-premises grootte aanpassen | **Aanbevolen VM-grootte**: Op basis van de on-premises VM-grootte.<br/><br> **Aanbevolen schijftype**: Op basis van de instelling voor het opslagtype die u voor de evaluatie selecteert.
+**Op basis van prestaties** | Evaluaties die aanbevelingen doen op basis van verzamelde prestatiegegevens | **Azure-VM-evaluatie**: Aanbeveling voor VM-grootte is gebaseerd op verbruiksgegevens voor CPU en geheugen.<br/><br/> Aanbeveling voor schijftype (standaard HDD/SSD of premium-beheerde schijven) is gebaseerd op de IOPS en doorvoer van de on-premises schijven.<br/><br/> **AVS-evaluatie (Azure VMware Solution)** : Aanbeveling voor AVS-knooppunten is gebaseerd op verbruiksgegevens voor CPU en geheugen.
+**As-is on-premises** | Evaluaties die geen gebruik maken van prestatiegegevens voor aanbevelingen. | **Azure-VM-evaluatie**: Aanbeveling voor VM-grootte is gebaseerd op de on-premises VM-grootte<br/><br> De aanbeveling voor het schijftype is gebaseerd op de instelling die u selecteert bij het opslagtype voor de evaluatie.<br/><br/> **AVS-evaluatie (Azure VMware Solution)** : Aanbeveling voor AVS-knooppunten is gebaseerd op de on-premises VM-grootte.
 
 ## <a name="run-an-assessment"></a>Een evaluatie uitvoeren
 
-Voer als volgt een evaluatie uit:
+Voer als volgt een *Azure VM-evaluatie* uit:
 
 1. Bekijk de [best practices](best-practices-assessment.md) voor het maken van evaluaties.
-1. Op het tabblad **Servers** op de tegel **Azure Migrate: Serverevaluatie** selecteert u **Evalueren**.
+2. Op het tabblad **Servers** op de tegel **Azure Migrate: Serverevaluatie** selecteert u **Evalueren**.
 
    ![Locatie van de knop Evalueren](./media/tutorial-assess-vmware/assess.png)
 
-1. Geef bij **Servers evalueren** een naam op voor de evaluatie.
-1. Selecteer **Alles weergeven** en controleer vervolgens de evaluatie-eigenschappen.
+3. Selecteer bij **Servers evalueren** het evaluatietype 'Azure VM', kies de detectiebron en geef de evaluatienaam op.
+
+    ![Basisprincipes evaluatie](./media/tutorial-assess-vmware/assess-servers-azurevm.png)
+ 
+4. Selecteer **Alles weergeven** en controleer vervolgens de evaluatie-eigenschappen.
 
    ![Evaluatie-eigenschappen](./media/tutorial-assess-vmware/view-all.png)
 
-1. In **Een groep selecteren of maken** selecteert u **Nieuwe maken** en geeft u een groepsnaam op. Een groep verzamelt een of meer VM's voor evaluatie.
-1. Selecteer in **Machines toevoegen aan de groep** de VM's die aan de groep moeten worden toegevoegd.
-1. Selecteer **Evaluatie maken** om de groep te maken en de evaluatie uit te voeren.
+5. Klik op **volgende** om **machines te selecteren om te evalueren**. In **Een groep selecteren of maken** selecteert u **Nieuwe maken** en geeft u een groepsnaam op. Een groep verzamelt een of meer VM's voor evaluatie.
+6. Selecteer in **Machines toevoegen aan de groep** de VM's die aan de groep moeten worden toegevoegd.
+7. Klik op **volgende** en **Controleren en evaluatie maken** om de details van de evaluatie te controleren.
+8. Selecteer **Evaluatie maken** om de groep te maken en de evaluatie uit te voeren.
 
    ![Servers evalueren](./media/tutorial-assess-vmware/assessment-create.png)
 
-1. Nadat de evaluatie is gemaakt, kunt u deze bekijken in **Servers** > **Azure Migrate: Serverevaluatie** > **Evaluaties**.
-1. Selecteer **Evaluatie exporteren** om deze te downloaden als een Excel-bestand.
+8. Nadat de evaluatie is gemaakt, kunt u deze bekijken in **Servers** > **Azure Migrate: Serverevaluatie** > **Evaluaties**.
+9. Selecteer **Evaluatie exporteren** om deze te downloaden als een Excel-bestand.
+
+Als u een **Azure VMware Solution (AVS)-evaluatie** wilt uitvoeren, volgt u de stappen die [hier](how-to-create-azure-vmware-solution-assessment.md) beschreven worden.
+
 
 ## <a name="review-an-assessment"></a>Een evaluatie beoordelen
 
@@ -236,20 +250,20 @@ Een evaluatie beschrijft het volgende:
 U geeft een evaluatie als volgt weer:
 
 1. Selecteer in **Migratiedoelen** > **Servers** de optie **Evaluaties** in **Azure Migrate: Serverevaluatie**.
-1. Selecteer in **Evaluaties** een evaluatie om deze te openen.
+2. Selecteer in **Evaluaties** een evaluatie om deze te openen.
 
    ![Evaluatie-overzicht](./media/tutorial-assess-vmware/assessment-summary.png)
 
 ### <a name="review-azure-readiness"></a>Azure-gereedheid beoordelen
 
 1. Controleer in **Azure-gereedheid** of de VM's gereed zijn voor migratie naar Azure.
-1. Controleer de VM-status:
+2. Controleer de VM-status:
     - **Gereed voor Azure**: Wordt gebruikt wanneer Azure Migrate een VM-grootte en schattingen voor de kosten aanraadt voor VM's in de evaluatie.
     - **Gereed met voorwaarden**: Geeft problemen en voorgesteld herstel weer.
     - **Niet gereed voor Azure**: Geeft problemen en voorgesteld herstel weer.
     - **Gereedheid onbekend**: Wordt gebruikt wanneer Azure Migrate de gereedheid niet kan evalueren vanwege problemen met de beschikbaarheid van gegevens.
 
-1. Selecteer een status voor **Azure-gereedheid**. U kunt details van de VM-gereedheid weergeven. U kunt ook inzoomen op de details van de VM, met inbegrip van reken-, opslag- en netwerkinstellingen.
+3. Selecteer een status voor **Azure-gereedheid**. U kunt details van de VM-gereedheid weergeven. U kunt ook inzoomen op de details van de VM, met inbegrip van reken-, opslag- en netwerkinstellingen.
 
 ### <a name="review-cost-details"></a>Gedetailleerde kosten beoordelen
 

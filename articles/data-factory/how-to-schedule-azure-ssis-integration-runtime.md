@@ -8,20 +8,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 8/2/2019
+ms.date: 07/09/2020
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: 0023bcc4a7c31a0e337683fa3d3080a45445fc49
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4df4f7e1db880a38f647e8e384cbfb29b70954ec
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84117911"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187248"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Azure-SSIS Integration Runtime gepland starten en stoppen
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 In dit artikel wordt beschreven hoe u het starten en stoppen van Azure-SSIS Integration Runtime (IR) kunt plannen met behulp van Azure Data Factory (ADF). Azure-SSIS IR is een ADF-reken resource die is toegewezen voor het uitvoeren van SQL Server Integration Services (SSIS)-pakketten. Er zijn kosten verbonden aan het uitvoeren van Azure-SSIS IR. Daarom wilt u uw IR doorgaans alleen uitvoeren als u SSIS-pakketten moet uitvoeren in Azure en de IR wilt stoppen wanneer u deze niet meer nodig hebt. U kunt de ADF-gebruikers interface (UI)/app of Azure PowerShell gebruiken om [uw IR hand matig te starten of te stoppen](manage-azure-ssis-integration-runtime.md).
 
@@ -162,7 +163,7 @@ Nu uw pijp lijnen werken zoals verwacht, kunt u triggers maken om ze uit te voer
     4. Voer voor **terugkeer patroon**een uitgebracht in voor de trigger. In het volgende voor beeld is het **dagelijks** één keer. 
     5. Selecteer bij **einde** **geen einde** of voer een eind datum en-tijd in na selectie **op datum**. 
     6. Selecteer **geactiveerd** om de trigger onmiddellijk te activeren nadat u de volledige ADF-instellingen hebt gepubliceerd. 
-    7. Selecteer **Volgende**.
+    7. Selecteer **Next**.
 
    ![Trigger-> nieuw/bewerken](./media/how-to-schedule-azure-ssis-integration-runtime/new-trigger-window.png)
     

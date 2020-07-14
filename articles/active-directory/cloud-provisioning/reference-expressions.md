@@ -11,12 +11,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74e1dc68aba4ba294bccca6da278d3e30e51f056
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 722b3fcb2bc533e396a35feb4c755de99c375b10
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360450"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201855"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Expressies schrijven voor kenmerk toewijzingen in Azure Active Directory
 Wanneer u Cloud inrichting configureert, is een van de typen kenmerk toewijzingen die u kunt opgeven een expressie toewijzing. 
@@ -39,7 +39,7 @@ De syntaxis voor expressies voor kenmerk toewijzingen is reminiscent van Visual 
 * Als u voor teken reeks constanten een back slash (\) of aanhalings teken (") in de teken reeks nodig hebt, moet deze worden voorafgegaan door het back slash-symbool (\). Bijvoorbeeld: "bedrijfs naam: \\ " Contoso \\ ""
 
 ## <a name="list-of-functions"></a>Lijst met functies
-| Lijst met functies | Description |
+| Lijst met functies | Beschrijving |
 |-----|----|
 |[Toevoegen](#append)|Neemt een waarde voor de bron teken reeks en voegt het achtervoegsel toe aan het eind van het.|
 |[BitAnd](#bitand)|De functie BitAnd stelt opgegeven bits in op een waarde.|
@@ -61,7 +61,7 @@ De syntaxis voor expressies voor kenmerk toewijzingen is reminiscent van Visual 
 |[IsPresent](#ispresent)|Als de expressie resulteert in een teken reeks die niet null en niet leeg is, retourneert de functie IsPresent de waarde True.|    
 |[IsString](#isstring)|Als de expressie kan worden geëvalueerd als een teken reeks type, wordt de functie IsString geëvalueerd als True.|
 |[Item](#item)|De functie item retourneert één item uit een teken reeks/kenmerk met meerdere waarden.|
-|[Toevoegen](#join) |Samen voegen () is vergelijkbaar met Append (), behalve dat het meerdere **bron** teken reeks waarden kan combi neren in één teken reeks en elke waarde wordt gescheiden door een **scheidings** teken reeks.| 
+|[Join](#join) |Samen voegen () is vergelijkbaar met Append (), behalve dat het meerdere **bron** teken reeks waarden kan combi neren in één teken reeks en elke waarde wordt gescheiden door een **scheidings** teken reeks.| 
 |[Gebleven](#left)|De functie Left retourneert een opgegeven aantal tekens vanaf de linkerkant van een teken reeks.|
 |[Klemstoonstreepje](#mid) |Retourneert een subtekenreeks van de bron waarde. Een subtekenreeks is een teken reeks die slechts een aantal tekens uit de bron teken reeks bevat.|
 |[NormalizeDiacritics](#normalizediacritics)|Vereist één teken reeks argument. Retourneert de teken reeks, maar waarbij alle diakritische tekens worden vervangen door gelijkwaardige tekens die niet van het diakritische teken zijn.|
@@ -87,7 +87,7 @@ De syntaxis voor expressies voor kenmerk toewijzingen is reminiscent van Visual 
 
 **Instellen**<br> 
 
-   | Name | Vereist/herhalend | Type | Notities |
+   | Naam | Vereist/herhalend | Type | Notities |
    | --- | --- | --- | --- |
    | **Bron** |Vereist |Tekenreeks |Doorgaans naam van het kenmerk van het bron object. |
    | **achtervoegsel** |Vereist |Tekenreeks |De teken reeks die u wilt toevoegen aan het einde van de bron waarde. |
@@ -250,7 +250,7 @@ Als het kenmerk AccountName niet aanwezig is, genereert een fout op het object.
 
 **Instellen**<br> 
 
-   | Name | Vereist/herhalend | Type | Notities |
+   | Naam | Vereist/herhalend | Type | Notities |
    | --- | --- | --- | --- |
    | **Bron** |Vereist |Tekenreeks |Doorgaans naam van het kenmerk van het bron object. |
    | **inputFormat** |Vereist |Tekenreeks |Verwachte indeling van de bron waarde. Zie voor ondersteunde indelingen [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) . |
@@ -392,7 +392,7 @@ Als een van de bron waarden een kenmerk met meerdere waarden is, wordt elke waar
 
 **Instellen**<br> 
 
-   | Name | Vereist/herhalend | Type | Notities |
+   | Naam | Vereist/herhalend | Type | Notities |
    | --- | --- | --- | --- |
    | **scheiding** |Vereist |Tekenreeks |Teken reeks die wordt gebruikt om bron waarden te scheiden wanneer ze worden samengevoegd tot één teken reeks. Kan zijn als er geen scheidings teken is vereist. |
    | **source1 ... Bronn** |Vereist, variabele-aantal keren |Tekenreeks |Teken reeks waarden die samen moeten worden samengevoegd. |
@@ -429,7 +429,7 @@ Retourneert `Joh` .
 
 **Instellen**<br> 
 
-   | Name | Vereist/herhalend | Type | Notities |
+   | Naam | Vereist/herhalend | Type | Notities |
    | --- | --- | --- | --- |
    | **Bron** |Vereist |Tekenreeks |Meestal naam van het kenmerk. |
    | **starten** |Vereist |geheel getal |Index in de **bron** teken reeks waarin de subtekenreeks moet worden gestart. Het eerste teken in de teken reeks heeft index 1, tweede teken heeft index 2, enzovoort. |
@@ -443,7 +443,7 @@ Retourneert `Joh` .
 
 **Instellen**<br> 
 
-   | Name | Vereist/herhalend | Type | Notities |
+   | Naam | Vereist/herhalend | Type | Notities |
    | --- | --- | --- | --- |
    | **Bron** |Vereist |Tekenreeks | Meestal een voor naam-of achternaam-kenmerk. |
 
@@ -455,7 +455,7 @@ Retourneert `Joh` .
 
 **Instellen**<br> 
 
-   | Name | Vereist/herhalend | Type | Notities |
+   | Naam | Vereist/herhalend | Type | Notities |
    | --- | --- | --- | --- |
    | **Bron** |Vereist |Booleaanse teken reeks |Verwachte **bron** waarden zijn ' True ' of ' false '. |
 
@@ -497,7 +497,7 @@ Vervangt waarden binnen een teken reeks. Het werkt anders afhankelijk van de opg
 
 **Instellen**<br> 
 
-   | Name | Vereist/herhalend | Type | Notities |
+   | Naam | Vereist/herhalend | Type | Notities |
    | --- | --- | --- | --- |
    | **Bron** |Vereist |Tekenreeks |Doorgaans naam van het kenmerk van het **bron** object. |
    | **oldValue** |Optioneel |Tekenreeks |De waarde die moet worden vervangen in de **bron** of de **sjabloon**. |
@@ -522,7 +522,7 @@ Vervangt waarden binnen een teken reeks. Het werkt anders afhankelijk van de opg
 
 **Instellen**<br> 
 
-   | Name | Vereist/herhalend | Type | Notities |
+   | Naam | Vereist/herhalend | Type | Notities |
    | --- | --- | --- | --- |
    | **uniqueValueRule1 ... uniqueValueRuleN** |Ten minste 2 zijn vereist, geen bovengrens |Tekenreeks | Lijst met regels voor het genereren van unieke waarden om te evalueren. |
 
@@ -535,7 +535,7 @@ Vervangt waarden binnen een teken reeks. Het werkt anders afhankelijk van de opg
 
 **Instellen**<br> 
 
-  | Name | Vereist/herhalend | Type | Notities |
+  | Naam | Vereist/herhalend | Type | Notities |
   |--- | --- | --- | --- |
   | **AppRoleAssignments** |Vereist |Tekenreeks |object **[appRoleAssignments]** . |
 
@@ -547,7 +547,7 @@ Vervangt waarden binnen een teken reeks. Het werkt anders afhankelijk van de opg
 
 **Instellen**<br> 
 
-   | Name | Vereist/herhalend | Type | Notities |
+   | Naam | Vereist/herhalend | Type | Notities |
    | --- | --- | --- | --- |
    | **Bron** |Vereist |Tekenreeks |**bron** waarde die moet worden bijgewerkt. |
    | **vorm** |Vereist |Tekenreeks |Hiermee geeft u het teken op dat wordt gebruikt om de teken reeks te splitsen (bijvoorbeeld: ",") |
@@ -568,7 +568,7 @@ Met de functie StringFromSid wordt een byte matrix met een beveiligings-id omgez
 
 **Instellen**<br> 
 
-   | Name | Vereist/herhalend | Type | Notities |
+   | Naam | Vereist/herhalend | Type | Notities |
    | --- | --- | --- | --- |
    | **Bron** |Vereist |Tekenreeks |**bron** waarde die moet worden bijgewerkt. |
 
@@ -580,7 +580,7 @@ Met de functie StringFromSid wordt een byte matrix met een beveiligings-id omgez
 
 **Instellen**<br> 
 
-   | Name | Vereist/herhalend | Type | Notities |
+   | Naam | Vereist/herhalend | Type | Notities |
    | --- | --- | --- | --- |
    | **Bron** |Vereist |Tekenreeks |Te controleren **bron** waarde. |
    | **Standaard** |Optioneel |Tekenreeks |De standaard waarde die moet worden gebruikt als de bron niet overeenkomt met een sleutel. Kan een lege teken reeks zijn (""). |
@@ -595,7 +595,7 @@ Met de functie StringFromSid wordt een byte matrix met een beveiligings-id omgez
 
 **Instellen**<br> 
 
-   | Name | Vereist/herhalend | Type | Notities |
+   | Naam | Vereist/herhalend | Type | Notities |
    | --- | --- | --- | --- |
    | **Bron** |Vereist |Tekenreeks |Doorgaans naam van het kenmerk van het bron object |
    | **culturele** |Optioneel |Tekenreeks |De notatie voor de cultuur naam op basis van RFC 4646 is *languagecode2-Country/regioncode2*, waarbij *languagecode2* de taal code van twee letters is en *land/regioncode2* de subcultuurcode van twee letters is. Voor beelden zijn ja-JP voor Japans (Japan) en en-US voor Engels (Verenigde Staten). In gevallen waarin een taal code van twee letters niet beschikbaar is, wordt er een code van drie letters gebruikt die is afgeleid van ISO 639-2.|
@@ -609,7 +609,7 @@ Met de functie StringFromSid wordt een byte matrix met een beveiligings-id omgez
 
 **Instellen**<br> 
 
-  | Name | Vereist/herhalend | Type | Notities |
+  | Naam | Vereist/herhalend | Type | Notities |
   | --- | --- | --- | --- |
   | **Bron** |Vereist |Tekenreeks |Doorgaans naam van het kenmerk van het bron object. |
   | **culturele** |Optioneel |Tekenreeks |De notatie voor de cultuur naam op basis van RFC 4646 is *languagecode2-Country/regioncode2*, waarbij *languagecode2* de taal code van twee letters is en *land/regioncode2* de subcultuurcode van twee letters is. Voor beelden zijn ja-JP voor Japans (Japan) en en-US voor Engels (Verenigde Staten). In gevallen waarin een taal code van twee letters niet beschikbaar is, wordt er een code van drie letters gebruikt die is afgeleid van ISO 639-2.|
@@ -769,11 +769,13 @@ Op basis van de voor naam van de gebruiker, de middelste naam en de achternaam, 
 
 **Expressie** <br>
 
+```ad-attr-mapping-expr
     SelectUniqueValue( 
         Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"), 
         Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 1), [PreferredLastName]))), "contoso.com"),
         Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 2), [PreferredLastName]))), "contoso.com")
     )
+```
 
 **Voor beeld van invoer/uitvoer:**
 

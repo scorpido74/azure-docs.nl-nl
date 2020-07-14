@@ -4,24 +4,27 @@ description: Persoonlijke Azure-koppeling gebruiken om netwerken veilig te verbi
 author: mgoedtel
 ms.author: magoedte
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 07/09/2020
 ms.subservice: ''
-ms.openlocfilehash: fa473591355ef9e1ee582dd9c9b820dfa2f93f36
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a7ff659eb6fc204208c84146a2fc33c8278f7154
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85269005"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207272"
 ---
-# <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation"></a>Persoonlijke Azure-koppeling gebruiken om netwerken veilig te verbinden met Azure Automation
+# <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation-preview"></a>Persoonlijke Azure-koppeling gebruiken om netwerken veilig te verbinden met Azure Automation (preview-versie)
 
 Een privé-eindpunt in Azure is een netwerkinterface waarmee u privé en veilig verbinding maakt met een service die door Azure Private Link mogelijk wordt gemaakt. Persoonlijk eind punt gebruikt een privé-IP-adres uit uw VNet, waardoor de Automation-Service in uw VNet effectief wordt. Netwerk verkeer tussen de computers in het VNet en het Automation-account passeert over het VNet en een persoonlijke koppeling in het micro soft backbone-netwerk, waardoor de bloot stelling van het open bare Internet wordt voor komen.
 
-U hebt bijvoorbeeld een VNet waarvoor u uitgaande internet toegang hebt uitgeschakeld. U wilt uw Automation-account echter privé openen en automatiserings functies zoals webhooks, status configuratie en runbook-taken gebruiken voor Hybrid Runbook Workers. Daarnaast wilt u dat gebruikers alleen via het VNET toegang hebben tot het Automation-account. Dit kan worden bereikt door persoonlijke eind punten te implementeren.
+U hebt bijvoorbeeld een VNet waarvoor u uitgaande internet toegang hebt uitgeschakeld. U wilt uw Automation-account echter privé openen en automatiserings functies zoals webhooks, status configuratie en runbook-taken gebruiken voor Hybrid Runbook Workers. Daarnaast wilt u dat gebruikers alleen via het VNET toegang hebben tot het Automation-account.  Als u een persoonlijk eind punt implementeert, worden deze doel stellingen gerealiseerd.
 
-In dit artikel wordt beschreven hoe u een persoonlijk eind punt kunt instellen met uw Automation-account.
+In dit artikel wordt beschreven hoe u een persoonlijk eind punt kunt instellen met uw Automation-account (preview-versie).
 
 ![Conceptueel overzicht van privé koppeling voor Azure Automation](./media/private-link-security/private-endpoints-automation.png)
+
+>[!NOTE]
+> Ondersteuning voor persoonlijke koppelingen met Azure Automation (preview) is alleen beschikbaar in azure commerciële en Azure Amerikaanse overheids Clouds.
 
 ## <a name="advantages"></a>Voordelen
 
@@ -40,15 +43,17 @@ Met een persoonlijke koppeling kunt u het volgende doen:
 
 Zie [belang rijke voor delen van een persoonlijke koppeling](../../private-link/private-link-overview.md#key-benefits)voor meer informatie.
 
-## <a name="how-it-works"></a>Uitleg
+## <a name="how-it-works"></a>Hoe werkt het?
 
 Met Azure Automation persoonlijke koppeling worden een of meer privé-eind punten (en dus ook de virtuele netwerken in) verbonden met de resource van uw Automation-account. Deze eind punten zijn machines die gebruikmaken van webhooks om een runbook te starten, machines die als host fungeren voor de Hybrid Runbook Worker Role en DSC-knoop punten.
 
 Nadat u privé-eind punten voor Automation hebt gemaakt, worden elk van de open bare automatiserings-Url's, waarmee u of een machine rechtstreeks contact kan opnemen, toegewezen aan één persoonlijk eind punt in uw VNet.
 
+Als onderdeel van de preview-versie heeft een Automation-account geen toegang tot Azure-resources die zijn beveiligd met een privé-eind punt. Bijvoorbeeld Azure Key Vault, Azure SQL, Azure Storage account, enzovoort.
+
 ### <a name="webhook-scenario"></a>Webhook-scenario
 
-U kunt runbooks starten door een bericht te plaatsen op de webhook-URL. De URL ziet er bijvoorbeeld als volgt uit:`https://<automationAccountId>.webhooks. <region>.azure-automation.net/webhooks?token=gzGMz4SMpqNo8gidqPxAJ3E%3d`
+U kunt runbooks starten door een bericht te plaatsen op de webhook-URL. De URL ziet er bijvoorbeeld als volgt uit:`https://<automationAccountId>.webhooks.<region>.azure-automation.net/webhooks?token=gzGMz4SMpqNo8gidqPxAJ3E%3d`
 
 ### <a name="state-configuration-agentsvc-scenario"></a>Scenario met status configuratie (agentsvc)
 
@@ -60,11 +65,11 @@ De URL voor openbaar & privé-eind punt zou echter hetzelfde moeten zijn, maar z
 
 ## <a name="planning-based-on-your-network"></a>Planning op basis van uw netwerk
 
-Voordat u uw Automation-account bron instelt, moet u rekening houden met de vereisten voor netwerk isolatie. Evalueer de toegang tot het open bare Internet van uw virtuele netwerken en de toegangs beperkingen voor uw Automation-account (inclusief het instellen van een persoonlijk koppelings bereik voor Azure Monitor Logboeken als deze zijn geïntegreerd met uw Automation-account).
+Voordat u uw Automation-account bron instelt, moet u rekening houden met de vereisten voor netwerk isolatie. Evalueer de toegang tot het open bare Internet van uw virtuele netwerken en de toegangs beperkingen voor uw Automation-account (inclusief het instellen van een persoonlijk koppelings bereik voor Azure Monitor Logboeken als deze zijn geïntegreerd met uw Automation-account). Neem ook een beoordeling van de [DNS-records](./automation-region-dns-records.md) van de Automation-Service als onderdeel van uw plan op om ervoor te zorgen dat de ondersteunde functies zonder problemen werken.
 
 ### <a name="connect-to-a-private-endpoint"></a>Verbinding maken met een persoonlijk eind punt
 
-Maak een persoonlijk eind punt om het netwerk te verbinden. U kunt deze taak uitvoeren in het [Azure Portal-privé koppelings centrum](https://portal.azure.com/#blade/Microsoft_Azure_Network/PrivateLinkCenterBlade/privateendpoints). Zodra uw wijzigingen in publicNetworkAccess en privé-koppeling zijn toegepast, kan het tot 35 minuten duren voordat ze van kracht worden.
+Maak een persoonlijk eind punt om het netwerk te verbinden. U kunt deze maken in het [Azure Portal-privé koppelings centrum](https://portal.azure.com/#blade/Microsoft_Azure_Network/PrivateLinkCenterBlade/privateendpoints). Zodra uw wijzigingen in publicNetworkAccess en privé-koppeling zijn toegepast, kan het tot 35 minuten duren voordat ze van kracht worden.
 
 In deze sectie maakt u een persoonlijk eind punt voor uw Automation-account.
 
@@ -72,7 +77,7 @@ In deze sectie maakt u een persoonlijk eind punt voor uw Automation-account.
 
 2. Selecteer in **Private Link-centrum – Overzicht** bij de optie **Een particuliere verbinding met een service maken** de optie **Start**.
 
-3. Typ of selecteer in **Een virtuele machine maken - Basisprincipes** de volgende gegevens:
+3. Voer in de **basis beginselen voor het maken van een virtuele machine**de volgende informatie in of Selecteer deze:
 
     | Instelling | Waarde |
     | ------- | ----- |
@@ -86,7 +91,7 @@ In deze sectie maakt u een persoonlijk eind punt voor uw Automation-account.
 
 4. Selecteer **Volgende: Resource**.
 
-5. Typ of selecteer in **Een privé-eindpunt maken – Resource** de volgende gegevens:
+5. Voer in **een persoonlijk eind punt maken-resource**de volgende informatie in of Selecteer deze:
 
     | Instelling | Waarde |
     | ------- | ----- |
@@ -94,7 +99,7 @@ In deze sectie maakt u een persoonlijk eind punt voor uw Automation-account.
     | Abonnement| Selecteer uw abonnement. |
     | Resourcetype | Selecteer **micro soft. Automation/automationAccounts**. |
     | Resource |*MyAutomationAccount* selecteren|
-    |Stel subresource in |Selecteer *webhook* of *DSCAndHybridWorker* , afhankelijk van uw scenario.|
+    |Doel-subresource |Selecteer *webhook* of *DSCAndHybridWorker* , afhankelijk van uw scenario.|
     |||
 
 6. Selecteer **Volgende: Configuratie**.
@@ -141,7 +146,7 @@ $account | Set-AzResource -Force -ApiVersion "2020-01-13-preview"
 
 ## <a name="dns-configuration"></a>DNS-configuratie
 
-Wanneer u verbinding maakt met een persoonlijke koppelings bron met behulp van een FQDN als onderdeel van de connection string, is het belang rijk om uw DNS-instellingen correct te configureren om te worden omgezet in het toegewezen privé-IP-adres. Bestaande Azure-Services hebben mogelijk al een DNS-configuratie die kan worden gebruikt om verbinding te maken via een openbaar eind punt. Deze moet worden overschreven om verbinding te maken via uw persoonlijke eind punt.
+Wanneer u verbinding maakt met een persoonlijke koppelings bron met behulp van een Fully Qualified Domain Name (FQDN) als onderdeel van de connection string, is het belang rijk om uw DNS-instellingen correct te configureren om te worden omgezet in het toegewezen privé-IP-adres. Bestaande Azure-Services hebben mogelijk al een DNS-configuratie die kan worden gebruikt om verbinding te maken via een openbaar eind punt. Uw DNS-configuratie moet worden gecontroleerd en bijgewerkt om verbinding te maken via uw persoonlijke eind punt.
 
 De netwerk interface die aan het persoonlijke eind punt is gekoppeld, bevat de volledige set informatie die nodig is voor het configureren van uw DNS, inclusief FQDN-en privé IP-adressen die zijn toegewezen voor een bepaalde persoonlijke koppelings bron.
 

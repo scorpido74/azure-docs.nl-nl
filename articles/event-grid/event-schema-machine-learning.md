@@ -3,12 +3,12 @@ title: Azure Machine Learning als Event Grid bron
 description: Hierin worden de eigenschappen beschreven die worden gegeven voor Machine Learning-werkruimte gebeurtenissen met Azure Event Grid
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 11d8c38ee041ac9278e08166c4c060cdad87655f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: b5a39539a6f39c78251a3cc7788b8e5ee4babbf9
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102494"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86181519"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>Azure Machine Learning als Event Grid bron
 
@@ -20,13 +20,13 @@ In dit artikel vindt u de eigenschappen en het schema voor machine learning werk
 
 Azure Machine Learning worden de volgende gebeurtenis typen meeverzonden:
 
-| Gebeurtenistype | Description |
+| Gebeurtenistype | Beschrijving |
 | ---------- | ----------- |
 | Micro soft. MachineLearningServices. ModelRegistered | Deze gebeurtenis treedt op wanneer een nieuw model of model versie is geregistreerd. |
 | Micro soft. MachineLearningServices. ModelDeployed | Deze gebeurtenis treedt op wanneer model (sen) met succes is geïmplementeerd op een eind punt. |
 | Micro soft. MachineLearningServices. RunCompleted | Deze gebeurtenis treedt op wanneer een uitvoering is voltooid. |
 | Micro soft. MachineLearningServices. DatasetDriftDetected | Deze gebeurtenis treedt op wanneer drift door een DataSet-drijf monitor wordt gedetecteerd. |
-| Micro soft. MachineLearningServices. RunStatusChanged | Deze gebeurtenis treedt op wanneer de status van een uitvoering wordt gewijzigd in failed. |
+| Micro soft. MachineLearningServices. RunStatusChanged | Deze gebeurtenis treedt op wanneer de status van een uitvoering wordt gewijzigd. |
 
 ### <a name="the-contents-of-an-event-response"></a>De inhoud van een gebeurtenis reactie
 
@@ -189,8 +189,8 @@ Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 | Eigenschap | Type | Description |
 | -------- | ---- | ----------- |
 | onderwerp | tekenreeks | Volledige bronpad naar de bron van de gebeurtenis. Dit veld kan niet worden geschreven. Event Grid biedt deze waarde. |
-| Onderwerp | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
-| Type | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
+| onderwerp | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
+| eventType | tekenreeks | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
 | eventTime | tekenreeks | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
 | id | tekenreeks | De unieke id voor de gebeurtenis. |
 | gegevens | object | Gebeurtenis gegevens van Blob-opslag. |

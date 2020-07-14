@@ -9,11 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 53a7e113d64ea4cf7018d51a44f9488342f1470f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb8fa53fa07d666693ae545c193faaf3d6d0a30c
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83715627"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187146"
 ---
 # <a name="troubleshoot-startstop-vms-during-off-hours-issues"></a>Problemen met VM's buiten bedrijfsuren starten/stoppen oplossen
 
@@ -98,7 +99,7 @@ Deze fout kan een van de volgende oorzaken hebben:
 
 Bekijk de volgende lijst voor mogelijke oplossingen:
 
-* Controleer of u een planning voor VM's buiten bedrijfsuren starten/stoppen hebt geconfigureerd. Zie [schema's](../automation-schedules.md)voor meer informatie over het configureren van een schema.
+* Controleer of u een planning voor VM's buiten bedrijfsuren starten/stoppen hebt geconfigureerd. Zie [schema's](../shared-resources/schedules.md)voor meer informatie over het configureren van een schema.
 
 * Controleer de [taak stromen](../automation-runbook-execution.md#job-statuses) om te controleren of er fouten zijn opgetreden. Zoek naar taken uit een van de volgende runbooks:
 

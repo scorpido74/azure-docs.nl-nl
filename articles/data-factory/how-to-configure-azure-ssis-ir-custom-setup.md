@@ -11,16 +11,17 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 06/03/2020
-ms.openlocfilehash: 576861265771977f7e13140dd595f47bf556e585
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: c3f3e7540f837722d4dd730c5635ac30c699ccd3
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84331896"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184338"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>De instellingen voor een Azure-SSIS Integration Runtime aanpassen
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 De aangepaste installatie voor een Azure-SQL Server Integration Services (SSIS) Integration Runtime (IR) in Azure Data Factory (ADF) biedt een interface voor het toevoegen van uw eigen stappen tijdens het inrichten of opnieuw configureren van uw Azure-SSIS IR. 
 
@@ -89,7 +90,7 @@ Voer de volgende stappen uit om uw Azure-SSIS IR in te richten of opnieuw te con
 
    d. Klik onder uw verbonden Azure Storage-account met de rechter muisknop op **BLOB-containers**, selecteer **BLOB-container maken**en geef de nieuwe container een naam.
 
-      ![Een blob-container maken](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image4.png)
+      ![Een blobcontainer maken](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image4.png)
 
    e. Selecteer de nieuwe container en upload uw aangepaste installatie script en de bijbehorende bestanden. Zorg ervoor dat u *Main. cmd* op het hoogste niveau van uw container uploadt, niet in een map. Zorg er ook voor dat de container alleen de benodigde aangepaste installatie bestanden bevat, zodat deze niet langer lang worden gedownload naar uw Azure-SSIS IR. De maximale duur van een aangepaste installatie is momenteel ingesteld op 45 minuten voordat er een time-out optreedt. Dit omvat de tijd voor het downloaden van alle bestanden uit uw container en het installeren ervan op het Azure-SSIS IR. Als er meer tijd nodig is, kunt u een ondersteunings ticket genereren.
 
@@ -99,7 +100,7 @@ Voer de volgende stappen uit om uw Azure-SSIS IR in te richten of opnieuw te con
 
       ![De Shared Access Signature voor de container ophalen](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image6.png)
 
-   bijvoorbeeld Maak de SAS-URI voor uw container met een voldoende lange verloop tijd en met de machtiging lezen/schrijven/lijst. U hebt de SAS-URI nodig om uw aangepaste installatie script en de bijbehorende bestanden te downloaden en uit te voeren wanneer een wille keurig knoop punt van uw Azure-SSIS IR wordt geimageeerd of opnieuw wordt gestart. U hebt schrijf machtigingen nodig voor het uploaden van de installatie Logboeken.
+   g. Maak de SAS-URI voor uw container met een voldoende lange verloop tijd en met de machtiging lezen/schrijven/lijst. U hebt de SAS-URI nodig om uw aangepaste installatie script en de bijbehorende bestanden te downloaden en uit te voeren wanneer een wille keurig knoop punt van uw Azure-SSIS IR wordt geimageeerd of opnieuw wordt gestart. U hebt schrijf machtigingen nodig voor het uploaden van de installatie Logboeken.
 
       > [!IMPORTANT]
       > Zorg ervoor dat de SAS-URI niet verlopen en dat de aangepaste installatie resources altijd beschikbaar zijn tijdens de hele levens cyclus van uw Azure-SSIS IR, van het maken tot verwijderen, met name als u uw Azure-SSIS IR tijdens deze periode regel matig stopt en start.

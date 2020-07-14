@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: contperfq4
 ms.date: 03/31/2020
-ms.openlocfilehash: a3e78ff2936cb3dbbc1bcf432f130fbd17622d14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc41152bb39b0f5022d51dbefe16e3d56107c457
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610061"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223455"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Bekende problemen en probleem oplossing in Azure Machine Learning
 
@@ -181,7 +181,27 @@ Als u bestands share gebruikt voor andere werk belastingen, zoals gegevens overd
 |Bij het controleren van afbeeldingen worden nieuwe gelabelde afbeeldingen niet weer gegeven.     |   Als u alle gelabelde afbeeldingen wilt laden, kiest u de **eerste** knop. Met de **eerste** knop gaat u terug naar de voor kant van de lijst, maar worden alle gelabelde gegevens geladen.      |
 |Druk op ESC-toets terwijl labels voor object detectie een label met een grootte van nul maken in de linkerbovenhoek. Het verzenden van labels met deze status mislukt.     |   Verwijder het label door te klikken op de kruis markering ernaast.  |
 
-### <a name="data-drift-monitors"></a>Data drift-monitors
+### <a name="data-drift-monitors"></a><a name="data-drift"></a>Data drift-monitors
+
+Beperkingen en bekende problemen voor gegevens drift-monitors:
+
+* Het tijds bereik voor het analyseren van historische gegevens is beperkt tot 31 intervallen van de frequentie-instelling van de monitor. 
+* Beperking van 200-functies, tenzij er geen functie lijst is opgegeven (alle gebruikte functies).
+* De reken grootte moet groot genoeg zijn om de gegevens te kunnen verwerken.
+* Zorg ervoor dat uw gegevensset gegevens bevat binnen de begin-en eind datum voor een bepaalde monitor uitvoering.
+* De monitors van de gegevensset werken alleen voor gegevens sets die 50 rijen of meer bevatten.
+* Kolommen, of functies, worden in de gegevensset geclassificeerd als categorische of numeriek op basis van de voor waarden in de volgende tabel. Als de functie niet aan deze voor waarden voldoet, bijvoorbeeld een kolom van het type teken reeks met de unieke waarden van >100, wordt de functie verwijderd uit onze data drift-algoritme, maar is nog steeds profileeerd. 
+
+    | Onderdeel type | Gegevenstype | Voorwaarde | Beperkingen | 
+    | ------------ | --------- | --------- | ----------- |
+    | Categorische gegevens | teken reeks, BOOL, int, float | Het aantal unieke waarden in de functie is kleiner dan 100 en minder dan 5% van het aantal rijen. | NULL wordt beschouwd als een eigen categorie. | 
+    | Cijfer | int, float | De waarden in de functie zijn van een numeriek gegevens type en voldoen niet aan de voor waarde voor een categorische-functie. | De functie is verwijderd als >15% van de waarden null zijn. | 
+
+* Wanneer u [een datadrift-monitor hebt gemaakt](how-to-monitor-datasets.md) maar geen gegevens ziet op de pagina **gegevensset monitors** in azure machine learning Studio, probeert u het volgende.
+
+    1. Controleer of u het juiste datum bereik hebt geselecteerd boven aan de pagina.  
+    1. Op het tabblad **gegevensset monitors** selecteert u de koppeling experiment om de uitvoerings status te controleren.  Deze koppeling bevindt zich helemaal rechts in de tabel.
+    1. Als de uitvoering is voltooid, controleert u de logboeken van het stuur programma om te zien hoeveel metrische gegevens er zijn gegenereerd of of er waarschuwingen zijn.  Zoek het stuur programma-Logboeken op het tabblad **uitvoer en logboeken** nadat u op een experiment hebt geklikt.
 
 * Als de SDK `backfill()` -functie de verwachte uitvoer niet genereert, kan dit worden veroorzaakt door een verificatie probleem.  Wanneer u de compute maakt om deze functie door te geven, moet u niet gebruiken `Run.get_context().experiment.workspace.compute_targets` .  Gebruik in plaats daarvan [ServicePrincipalAuthentication](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py) zoals de volgende om de compute te maken die u doorgeeft aan die `backfill()` functie: 
 

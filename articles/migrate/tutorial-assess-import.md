@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 519520538c16b1bde18f0810344864d37090accf
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 98675b0f986ecb78ff122ed052a01d521aac1f6f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342643"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114207"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>Servers evalueren met geïmporteerde gegevens
 
@@ -48,7 +48,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Uw Azure-account moet gemachtigd zijn om een Azure Migrate-project te maken.
 
-1. Open in de Azure-portal het abonnement en selecteer **Toegangsbeheer (IAM)** .
+1. Open in de Azure-portal het abonnement en selecteer **Toegangsbeheer (IAM)**.
 2. In **Toegang controleren**, zoekt u het relevante account en selecteert u dit om machtigingen weer te geven.
 3. Zorg dat u de machtigingen **Inzender** of **Eigenaar** hebt.
     - Als u net pas een gratis Azure-account hebt gemaakt, bent u de eigenaar van uw abonnement.
@@ -66,7 +66,7 @@ Stel als volgt een nieuw Azure Migrate-project in:
 
 4. Selecteer in **Aan de slag** **Hulpprogramma(‘s) toevoegen**.
 5. Selecteer in **Project migreren** uw Azure-abonnement en maak een resourcegroep als u er nog geen hebt.
-6. Geef in **PROJECTDETAILS** de projectnaam en het geografische gebied op waarin u het project wilt maken. Voor meer informatie:
+6. Geef in **Projectdetails** de projectnaam en het geografische gebied op waarin u het project wilt maken. Voor meer informatie:
 
     - Bekijk de ondersteunde geografische regio's voor [openbare](migrate-support-matrix.md#supported-geographies-public-cloud) clouds en [overheidsclouds](migrate-support-matrix.md#supported-geographies-azure-government).
     - Wanneer u een migratie uitvoert, kunt u elke gewenste doelregio selecteren.
@@ -126,7 +126,7 @@ De volgende tabel bevat een overzicht van de bestandsvelden die moeten worden in
 **Totaal door schijf geschreven doorvoer** | Nee | Gegevens die naar de schijf worden geschreven, in MB per seconde.
 **Netwerk in doorvoer** | Nee | Gegevens ontvangen door de server, in MB per seconde.
 **Netwerk uitgaande doorvoer** | Nee | Gegevens verzonden door de server, in MB per seconde.
-**Type firmware** | Nee | Serverfirmware. Waarden kunnen "BIOS" of "UEFI" zijn.
+** Type firmware** | Nee | Serverfirmware. Waarden kunnen "BIOS" of "UEFI" zijn.
 **MAC-adres**| Nee | MAC-adres van server.
 
 
@@ -179,10 +179,21 @@ U kunt controleren of de servers worden weergegeven in de Azure-portal na de det
 
 U kunt twee soorten evaluaties maken met behulp van Serverevaluatie.
 
-**Evaluatietype** | **Details** | **Gegevens**
+
+**Evaluatietype** | **Details**
+--- | --- 
+**Azure VM** | Evaluaties om uw on-premises servers te migreren naar virtuele Azure-machine. <br/><br/> U kunt uw on-premises [VMware-VM's](how-to-set-up-appliance-vmware.md), [Hyper-V-VM's](how-to-set-up-appliance-hyper-v.md) en [fysieke servers](how-to-set-up-appliance-physical.md) evalueren voor migratie naar Azure met dit evaluatietype. (concepts-assessment-calculation.md)
+**Azure VMware Solution (AVS)** | Evaluaties om uw on-premises servers te migreren naar [Azure VMware Solution (AVS)](../azure-vmware/introduction.md). <br/><br/> U kunt uw on-premises [VMware-VM’s](how-to-set-up-appliance-vmware.md) evalueren voor migratie naar Azure VMware Solution (AVS) met dit evaluatietype. [Meer informatie](concepts-azure-vmware-solution-assessment-calculation.md)
+
+### <a name="sizing-criteria"></a>Criteria voor het aanpassen van de grootte
+
+Server Assessment biedt twee opties voor criteria voor het aanpassen van de grootte:
+
+**Criteria voor het aanpassen van de grootte** | **Details** | **Gegevens**
 --- | --- | ---
-**Op basis van prestaties** | Evaluaties op basis van de opgegeven prestatie gegevenswaarden. | **Aanbevolen VM-grootte**: Op basis van gegevens over CPU en geheugengebruik.<br/><br/> **Aanbevolen schijftype (standaard of premium beheerde schijf)** : Op basis van de invoer/uitvoer per seconde (IOPS) en doorvoer van de on-premises schijven.
-**Zoals on-premises** | Evaluaties op basis van on-premises grootte aanpassen. | **Aanbevolen VM-grootte**: Op basis van de opgegeven servergrootte.<br/><br> **Aanbevolen schijftype**: Op basis van de instelling voor het opslagtype die u voor de evaluatie selecteert.
+**Op basis van prestaties** | Evaluaties die aanbevelingen doen op basis van verzamelde prestatiegegevens | **Azure-VM-evaluatie**: Aanbeveling voor VM-grootte is gebaseerd op verbruiksgegevens voor CPU en geheugen.<br/><br/> Aanbeveling voor schijftype (standaard HDD/SSD of premium-beheerde schijven) is gebaseerd op de IOPS en doorvoer van de on-premises schijven.<br/><br/> **AVS-evaluatie (Azure VMware Solution)**: Aanbeveling voor AVS-knooppunten is gebaseerd op verbruiksgegevens voor CPU en geheugen.
+**As-is on-premises** | Evaluaties die geen gebruik maken van prestatiegegevens voor aanbevelingen. | **Azure-VM-evaluatie**: Aanbeveling voor VM-grootte is gebaseerd op de on-premises VM-grootte<br/><br> De aanbeveling voor het schijftype is gebaseerd op de instelling die u selecteert bij het opslagtype voor de evaluatie.<br/><br/> **AVS-evaluatie (Azure VMware Solution)**: Aanbeveling voor AVS-knooppunten is gebaseerd op de on-premises VM-grootte.
+
 
 Om de evaluatie uit te voeren:
 
@@ -191,24 +202,31 @@ Om de evaluatie uit te voeren:
 
     ![Evalueren](./media/tutorial-assess-physical/assess.png)
 
-3. Geef bij **Servers evalueren** een naam op voor de evaluatie.
+3. Geef bij **Servers evalueren** de naam van de evaluatie op en selecteer het **evaluatie**type *Azure VM* als u Azure VM-evaluaties wilt uitvoeren of *Azure VMware Solution (AVS)* als u SAVS-evaluaties wilt uitvoeren.
+
+    ![Basisprincipes evaluatie](./media/how-to-create-assessment/assess-servers-azurevm.png)
+
 4. Selecteer in **Detectiebron** **Machines die zijn toegevoegd via importeren naar Azure Migrate**.
+
 5. Selecteer **Alles weergeven** om de evaluatie-eigenschappen te controleren.
 
     ![Evaluatie-eigenschappen](./media/tutorial-assess-physical/view-all.png)
 
-6. In **Een groep selecteren of maken** selecteert u **Nieuwe maken** en geeft u een groepsnaam op. Een groep verzamelt een of meer VM's voor evaluatie.
+6. Klik op **volgende** om **machines te selecteren om te evalueren**. In **Een groep selecteren of maken** selecteert u **Nieuwe maken** en geeft u een groepsnaam op. Een groep verzamelt een of meer VM's voor evaluatie.
 7. Selecteer in **Machines toevoegen aan de groep** de servers die aan de groep moeten worden toegevoegd.
-8. Selecteer **Evaluatie maken** om de groep te maken en vervolgens de evaluatie uit te voeren.
+8. Klik op **volgende** en **Controleren en evaluatie maken** om de details van de evaluatie te controleren.
+9. Klik op **Evaluatie maken** om de groep te maken en vervolgens de evaluatie uit te voeren.
 
     ![Een evaluatie maken](./media/tutorial-assess-physical/assessment-create.png)
 
 9. Nadat de evaluatie is gemaakt, kunt u deze bekijken in **Servers** > **Azure Migrate: Serverevaluatie** > **Evaluaties**.
 10. Selecteer **Evaluatie exporteren** om deze te downloaden als een Microsoft Excel-bestand.
 
-## <a name="review-an-assessment"></a>Een evaluatie beoordelen
+Kijk [hier](how-to-create-azure-vmware-solution-assessment.md) voor meer informatie over **Azure VMware Solution (AVS)**. 
 
-Een evaluatie beschrijft het volgende:
+## <a name="review-an-azure-vm-assessment"></a>Een Azure VM-evaluatie controleren
+
+Een Azure VM-evaluatie beschrijft:
 
 - **Azure-gereedheid**: Hiermee wordt aangegeven of servers geschikt zijn voor migratie naar Azure.
 - **Schatting maandelijkse kosten**: Geschatte maandelijkse reken- en opslagkosten voor het uitvoeren van de servers in Azure.

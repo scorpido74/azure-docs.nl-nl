@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: rohink
-ms.openlocfilehash: de637bc30420ce494e553100a9f1126e88027bd2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af19586807bf676f1f449f7402b364a054721eec
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704129"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187588"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>Power shell gebruiken voor het beheren van Traffic Manager
 
@@ -30,7 +30,7 @@ Azure Traffic Manager is geconfigureerd met een verzameling instellingen die een
 
 Elk Traffic Manager profiel wordt vertegenwoordigd door een resource van het type ' TrafficManagerProfiles '. Op REST API niveau is de URI voor elk profiel als volgt:
 
-    https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/trafficManagerProfiles/{profile-name}?api-version={api-version}
+`https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/trafficManagerProfiles/{profile-name}?api-version={api-version}`
 
 ## <a name="setting-up-azure-powershell"></a>Azure PowerShell instellen
 

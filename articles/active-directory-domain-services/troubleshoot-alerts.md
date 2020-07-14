@@ -9,13 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 01/21/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 5d3300151dc5fdfde0b34aa3f76c3ed9494d34fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91a060e8a5fe1bdaf3e6ea08811814297c355108
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734058"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86222969"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>Bekende problemen: gemeen schappelijke waarschuwingen en oplossingen in Azure Active Directory Domain Services
 
@@ -33,7 +34,7 @@ Dit artikel bevat informatie over het oplossen van problemen met algemene waarsc
 
 Deze fout treedt meestal op wanneer een Azure-abonnement wordt verplaatst naar een nieuwe Azure AD-adres lijst en de oude Azure AD-adres lijst die is gekoppeld aan Azure AD DS wordt verwijderd.
 
-Deze fout kan niet worden hersteld. U kunt de waarschuwing oplossen door [uw bestaande Azure AD DS beheerde domein te verwijderen](delete-aadds.md) en opnieuw te maken in de nieuwe map. Als u problemen ondervindt bij het verwijderen van het beheerde domein, [opent u een ondersteunings aanvraag voor Azure][azure-support] voor aanvullende hulp bij probleem oplossing.
+Deze fout kan niet worden hersteld. U kunt de waarschuwing oplossen door [uw bestaande beheerde domein te verwijderen](delete-aadds.md) en opnieuw te maken in de nieuwe map. Als u problemen ondervindt bij het verwijderen van het beheerde domein, [opent u een ondersteunings aanvraag voor Azure][azure-support] voor aanvullende hulp bij probleem oplossing.
 
 ## <a name="aadds101-azure-ad-b2c-is-running-in-this-directory"></a>AADDS101: Azure AD B2C wordt uitgevoerd in deze map
 
@@ -66,7 +67,7 @@ Zorg ervoor dat u bekend bent met de [persoonlijke IP v4-adres ruimten](https://
 In een virtueel netwerk kunnen Vm's aanvragen indienen voor Azure-resources in hetzelfde IP-adres bereik als geconfigureerd voor het subnet. Als u een openbaar IP-adres bereik voor een subnet configureert, kunnen aanvragen die in een virtueel netwerk worden gerouteerd, de beoogde webbronnen niet bereiken. Deze configuratie kan leiden tot onvoorspelbare fouten met Azure AD DS.
 
 > [!NOTE]
-> Als u het IP-adres bereik in het Internet hebt dat is geconfigureerd in het virtuele netwerk, kan deze waarschuwing worden genegeerd. Azure AD Domain Services kan echter niet door voeren naar de [Sla](https://azure.microsoft.com/support/legal/sla/active-directory-ds/v1_0/)] met deze configuratie, omdat deze kan leiden tot onvoorspelbare fouten.
+> Als u het IP-adres bereik in het Internet hebt dat is geconfigureerd in het virtuele netwerk, kan deze waarschuwing worden genegeerd. Azure AD Domain Services kan echter niet door voeren in de [Sla](https://azure.microsoft.com/support/legal/sla/active-directory-ds/v1_0/) met deze configuratie, omdat deze kan leiden tot onvoorspelbare fouten.
 
 U kunt deze waarschuwing oplossen door uw bestaande beheerde domein te verwijderen en opnieuw te maken in een virtueel netwerk met een privé-IP-adres bereik. Dit proces is verstoord omdat het beheerde domein niet beschikbaar is en alle aangepaste resources die u hebt gemaakt, zoals Ou's of service accounts, verloren gaan.
 
@@ -147,7 +148,7 @@ Deze waarschuwing wordt gegenereerd wanneer een van deze vereiste bronnen wordt 
 
 ### <a name="resolution"></a>Oplossing
 
-Het subnet van het virtuele netwerk voor Azure AD DS vereist voldoende IP-adressen voor de automatisch gemaakte resources. Deze IP-adres ruimte bevat de nood zaak om vervangings resources te maken als er een onderhouds gebeurtenis is. Als u het risico van het uitvoeren van beschik bare IP-adressen wilt minimaliseren, kunt u geen aanvullende resources, zoals uw eigen Vm's, implementeren in hetzelfde subnet van het virtuele netwerk als Azure AD DS.
+Het subnet van het virtuele netwerk voor Azure AD DS vereist voldoende IP-adressen voor de automatisch gemaakte resources. Deze IP-adres ruimte bevat de nood zaak om vervangings resources te maken als er een onderhouds gebeurtenis is. Als u het risico van het uitvoeren van beschik bare IP-adressen wilt minimaliseren, kunt u geen aanvullende resources, zoals uw eigen Vm's, implementeren in hetzelfde subnet van het virtuele netwerk als het beheerde domein.
 
 Deze fout kan niet worden hersteld. U kunt de waarschuwing oplossen door [uw bestaande beheerde domein te verwijderen](delete-aadds.md) en opnieuw te maken. Als u problemen ondervindt bij het verwijderen van het beheerde domein, [opent u een ondersteunings aanvraag voor Azure][azure-support] voor aanvullende hulp bij probleem oplossing.
 
@@ -172,14 +173,14 @@ Sommige automatisch gegenereerde service-principals worden gebruikt voor het beh
 
 ### <a name="resolution"></a>Oplossing
 
-Het subnet van het virtuele netwerk voor Azure AD DS vereist voldoende IP-adressen voor de automatisch gemaakte resources. Deze IP-adres ruimte bevat de nood zaak om vervangings resources te maken als er een onderhouds gebeurtenis is. Als u het risico van het uitvoeren van beschik bare IP-adressen wilt minimaliseren, kunt u geen aanvullende resources, zoals uw eigen Vm's, implementeren in hetzelfde subnet van het virtuele netwerk als Azure AD DS.
+Het subnet van het virtuele netwerk voor Azure AD DS vereist voldoende IP-adressen voor de automatisch gemaakte resources. Deze IP-adres ruimte bevat de nood zaak om vervangings resources te maken als er een onderhouds gebeurtenis is. Als u het risico van het uitvoeren van beschik bare IP-adressen wilt minimaliseren, kunt u geen aanvullende resources, zoals uw eigen Vm's, implementeren in hetzelfde subnet van het virtuele netwerk als het beheerde domein.
 
 U kunt deze waarschuwing oplossen door uw bestaande beheerde domein te verwijderen en opnieuw te maken in een virtueel netwerk met een groot genoeg IP-adres bereik. Dit proces is verstoord omdat het beheerde domein niet beschikbaar is en alle aangepaste resources die u hebt gemaakt, zoals Ou's of service accounts, verloren gaan.
 
 1. [Verwijder het beheerde domein](delete-aadds.md) uit uw Directory.
-1. Als u het IP-adres bereik van het virtuele netwerk wilt bijwerken, zoekt en selecteert u *virtueel netwerk* in de Azure Portal. Selecteer het virtuele netwerk voor Azure AD DS met het kleine IP-adres bereik.
+1. Als u het IP-adres bereik van het virtuele netwerk wilt bijwerken, zoekt en selecteert u *virtueel netwerk* in de Azure Portal. Selecteer het virtuele netwerk voor het beheerde domein met het kleine IP-adres bereik.
 1. Selecteer bij **instellingen**de optie *adres ruimte*.
-1. Werk het adres bereik bij door het bestaande adres bereik te kiezen en te bewerken, of een extra adres bereik toe te voegen. Zorg ervoor dat het nieuwe IP-adres bereik groot genoeg is voor het bereik van de Azure AD DS-subnet. Als u klaar bent, **slaat** u de wijzigingen op.
+1. Werk het adres bereik bij door het bestaande adres bereik te kiezen en te bewerken, of een extra adres bereik toe te voegen. Zorg ervoor dat het nieuwe IP-adres bereik groot genoeg is voor het subnet van het beheerde domein. Als u klaar bent, **slaat** u de wijzigingen op.
 1. Selecteer **subnetten** in de linkernavigatiebalk.
 1. Kies het subnet dat u wilt bewerken of maak een extra subnet.
 1. Update of geef een groot voldoende IP-adres bereik op en **Sla** uw wijzigingen op.
@@ -219,7 +220,7 @@ Resource vergrendelingen kunnen worden toegepast op Azure-resources om te voor k
 
 Voer de volgende stappen uit om te controleren op resource vergrendelingen op de onderdelen van Azure AD DS en ze te verwijderen:
 
-1. Controleer de bewerkings Logboeken in de Azure Portal voor elk van de Azure AD DS-netwerk onderdelen in uw resource groep, zoals een virtueel netwerk, een netwerk interface of een openbaar IP-adres. In deze bewerkings logboeken moet worden aangegeven waarom een bewerking mislukt en waar een resource vergrendeling wordt toegepast.
+1. Controleer de bewerkings Logboeken in de Azure Portal voor elk van de netwerk onderdelen van het beheerde domein in uw resource groep, zoals een virtueel netwerk, een netwerk interface of een openbaar IP-adres. In deze bewerkings logboeken moet worden aangegeven waarom een bewerking mislukt en waar een resource vergrendeling wordt toegepast.
 1. Selecteer de resource waar een vergren deling wordt toegepast en selecteer **vervolgens vergrendelde**vergren deling (en).
 
 ## <a name="aadds116-resources-are-unusable"></a>AADDS116: bronnen zijn onbruikbaar
@@ -234,7 +235,7 @@ Beleids regels worden toegepast op Azure-resources en-resource groepen die bepal
 
 Voer de volgende stappen uit om te controleren of er beleid is toegepast op de onderdelen van Azure AD DS en deze bij te werken:
 
-1. Controleer de bewerkings Logboeken in de Azure Portal voor elk van de Azure AD DS-netwerk onderdelen in uw resource groep, zoals een virtueel netwerk, een NIC of een openbaar IP-adres. In deze bewerkings logboeken moet worden aangegeven waarom een bewerking mislukt en waar een beperkend beleid wordt toegepast.
+1. Controleer de bewerkings Logboeken in de Azure Portal voor elk van de netwerk onderdelen van het beheerde domein in uw resource groep, zoals een virtueel netwerk, een NIC of een openbaar IP-adres. In deze bewerkings logboeken moet worden aangegeven waarom een bewerking mislukt en waar een beperkend beleid wordt toegepast.
 1. Selecteer de resource waar een beleid wordt toegepast en selecteer vervolgens onder **beleids regels**het beleid en bewerk dit zodat het minder beperkend is.
 
 ## <a name="aadds500-synchronization-has-not-completed-in-a-while"></a>AADDS500: de synchronisatie is niet in een tijdje voltooid
@@ -247,9 +248,9 @@ Voer de volgende stappen uit om te controleren of er beleid is toegepast op de o
 
 [Controleer de status van Azure AD DS](check-health.md) voor waarschuwingen die duiden op problemen in de configuratie van het beheerde domein. Problemen met de netwerk configuratie kunnen de synchronisatie van Azure AD blok keren. Als u waarschuwingen kunt oplossen die duiden op een configuratie probleem, wacht u twee uur en controleert u of de synchronisatie is voltooid.
 
-De volgende veelvoorkomende oorzaken hebben tot gevolg dat synchronisatie in beheerde domeinen wordt gestopt:
+De volgende veelvoorkomende oorzaken hebben tot gevolg dat synchronisatie in een beheerd domein stopt:
 
-* De vereiste netwerk verbinding is geblokkeerd. Zie [problemen met netwerk beveiligings groepen](alert-nsg.md) en de [netwerk vereisten voor Azure AD Domain Services](network-considerations.md)voor meer informatie over het controleren van het virtuele Azure-netwerk voor problemen en wat er is vereist.
+* De vereiste netwerk verbinding is geblokkeerd. Zie [problemen met netwerk beveiligings groepen](alert-nsg.md) en de [netwerk vereisten voor Azure AD DS](network-considerations.md)oplossen voor meer informatie over het controleren van het virtuele Azure-netwerk voor problemen en wat er is vereist.
 *  Wachtwoord synchronisatie is niet ingesteld of is voltooid bij het implementeren van het beheerde domein. U kunt wachtwoord synchronisatie instellen voor [Cloud gebruikers](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) of [hybride gebruikers van on-premises](tutorial-configure-password-hash-sync.md).
 
 ## <a name="aadds501-a-backup-has-not-been-taken-in-a-while"></a>AADDS501: er is geen back-up gemaakt tijdens een tijdje

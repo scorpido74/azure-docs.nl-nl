@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 3efccc44255067b7e47c468c9a35853def2fce69
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: c2590a2c745969313ae73521dbcd110fbf3b7551
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085851"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221014"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-hive-warehouse-connector-in-azure-hdinsight"></a>Apache Spark en Apache Hive integreren met hive Warehouse connector in azure HDInsight
 
@@ -37,6 +37,9 @@ Enkele van de bewerkingen die worden ondersteund door de Hive Warehouse connecto
 * Een data frame-of Spark-stroom naar een Hive schrijven met behulp van HiveStreaming
 
 ## <a name="hive-warehouse-connector-setup"></a>Setup van Hive Warehouse-connector
+
+> [!IMPORTANT]
+> De HiveServer2 Interactive instance die is geïnstalleerd op Spark 2,4 Enterprise Security Package-clusters wordt niet ondersteund voor gebruik met de Hive Warehouse-connector. In plaats daarvan moet u een afzonderlijk HiveServer2 interactief cluster configureren om uw HiveServer2 Interactive-workloads te hosten. Een component Warehouse-connector configuratie die gebruikmaakt van één Spark 2,4-cluster wordt niet ondersteund.
 
 Hive Warehouse connector heeft afzonderlijke clusters nodig voor Spark-en interactieve query-workloads. Volg deze stappen om deze clusters in te stellen in azure HDInsight.
 
@@ -215,7 +218,7 @@ kinit USERNAME
 
         ![Hive-beleids lijst van de component Warehouse connector zwerver](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
 
-    1. Geef een gewenste beleids naam op. Data base selecteren: **standaard**, Hive-tabel: **demo**, Hive-kolom: **naam**, gebruiker: **rsadmin2**, toegangs typen: **selecteren**, en **gedeeltelijk masker: weer geven laatste 4** van het menu **optie masker selecteren** . Klik op **Add**.
+    1. Geef een gewenste beleids naam op. Data base selecteren: **standaard**, Hive-tabel: **demo**, Hive-kolom: **naam**, gebruiker: **rsadmin2**, toegangs typen: **selecteren**, en **gedeeltelijk masker: weer geven laatste 4** van het menu **optie masker selecteren** . Klik op **Toevoegen**.
                 ![beleid maken](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
 1. Bekijk de inhoud van de tabel opnieuw. Na het Toep assen van het beleid voor zwerver, kunnen we alleen de laatste vier tekens van de kolom zien.
 

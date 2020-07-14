@@ -4,11 +4,12 @@ description: Batch ondersteunt Azure AD voor verificatie vanuit de batch-service
 ms.topic: how-to
 ms.date: 01/28/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: ed2bfb8e0fbaff0b7ad0ded734e33512c82a4040
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: a8601c69c37e973118a7ec9521070864caffb101
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958205"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170306"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Batch-service oplossingen verifiëren met Active Directory
 
@@ -62,7 +63,7 @@ Nadat u uw toepassing hebt geregistreerd, ziet u de toepassings-ID:
 
 ![Uw batch-toepassing registreren bij Azure AD](./media/batch-aad-auth/app-registration-data-plane.png)
 
-Zie [verificatie scenario's voor Azure AD](../active-directory/develop/authentication-scenarios.md)voor meer informatie over het registreren van een toepassing met Azure AD.
+Zie [verificatie scenario's voor Azure AD](../active-directory/develop/authentication-vs-authorization.md)voor meer informatie over het registreren van een toepassing met Azure AD.
 
 ## <a name="get-the-tenant-id-for-your-active-directory"></a>De Tenant-ID voor uw Active Directory ophalen
 
@@ -426,8 +427,8 @@ Gebruik de referenties van de Service-Principal om een **BatchServiceClient** -o
 
 - Voor een python-voor beeld van het maken van een batch-client die is geverifieerd met behulp van een Azure AD-token, zie de [implementatie Azure batch aangepaste installatie kopie met een python](https://github.com/azurebigcompute/recipes/blob/master/Azure%20Batch/CustomImages/CustomImagePython.md) -voorbeeld script.
 
-[aad_about]:../active-directory/fundamentals/active-directory-whatis.md "Wat is Azure Active Directory?"
-[aad_adal]: ../active-directory/active-directory-authentication-libraries.md
-[aad_auth_scenarios]: ../active-directory/active-directory-authentication-scenarios.md "Verificatie Scenario's voor Azure AD"
-[aad_integrate]: ../active-directory/active-directory-integrating-applications.md "Toepassingen integreren met Azure Active Directory"
+[aad_about]: ../active-directory/fundamentals/active-directory-whatis.md "Wat is Azure Active Directory?"
+[aad_adal]: ../active-directory/azuread-dev/active-directory-authentication-libraries.md
+[aad_auth_scenarios]: ../active-directory/develop/authentication-vs-authorization.md "Verificatie Scenario's voor Azure AD"
+[aad_integrate]: ../active-directory/develop/quickstart-register-app.md "Toepassingen integreren met Azure Active Directory"
 [azure_portal]: https://portal.azure.com

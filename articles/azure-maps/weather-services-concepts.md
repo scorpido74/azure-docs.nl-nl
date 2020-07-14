@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 03a16ac065b585c499efa268500e0a8c81c07738
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f38ef2c337564d2b36d3939b3ed03130437e35ea
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80333819"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221762"
 ---
 # <a name="weather-services-in-azure-maps"></a>Weer Services in Azure Maps
 
@@ -55,46 +56,46 @@ Sommige van de weer service Api's retour neren de `iconCode` in het antwoord. De
 
 | Pictogram nummer |Pictogram| Dag | 'S | Tekst |
 |-------------|:----:|-----|-------|------|
-| 1           |![](./media/weather-services-concepts/sunny-i.png)                      | Yes |  Nee    | Zon|
-| 2           |![](./media/weather-services-concepts/mostly-sunny.png)                | Yes |  Nee    | Grotendeels zonnig|
-| 3           |![](./media/weather-services-concepts/partly-sunny.png)                | Yes |  Nee    | Deels zonnig|
-| 4           |![](./media/weather-services-concepts/intermittent-clouds.png)         | Yes |  Nee    | Periodieke Clouds|
-| 5           |![](./media/weather-services-concepts/hazy-sunshine.png)               | Yes |  Nee    | Hazy schijnt |
-| 6           |![](./media/weather-services-concepts/mostly-cloudy.png)               | Yes |  Nee    | Overwegend bewolkt|
-| 7           |![](./media/weather-services-concepts/cloudy-i.png)                     | Ja |  Ja   | Cloud |
-| 8           |![](./media/weather-services-concepts/dreary-overcast.png)             | Ja |  Ja   | Dreary (Overcast)|
-| 11           |![](./media/weather-services-concepts/fog-i.png)                       | Ja |  Ja   | Fogcomputing|
-| 12           |![](./media/weather-services-concepts/showers-i.png)                   | Ja |  Ja   | Douchen|
-| 13           |![](./media/weather-services-concepts/mostly-cloudy-showers.png)       | Yes |  Nee    | Overwegend bewolkt met Showers|
-| 14           |![](./media/weather-services-concepts/partly-sunny-showers.png)        | Yes |  Nee    | Deels zonnig met Showers|
-| 15           |![](./media/weather-services-concepts/tstorms-i.png)                   | Ja |  Ja   | Thunderstorms|
-| 16           |![](./media/weather-services-concepts/mostly-cloudy-tstorms.png)       | Yes |  Nee    | Overwegend bewolkt met thunderstorms|
-| 17           |![](./media/weather-services-concepts/partly-sunny-tstorms.png)        | Yes |  Nee    | Deels zonnig met thunderstorms|
-| 18           |![](./media/weather-services-concepts/rain-i.png)                      | Ja |  Ja   | Vloeiend|
-| 19           |![](./media/weather-services-concepts/flurries-i.png)                  | Ja |  Ja   | Flurries|
-| 20           |![](./media/weather-services-concepts/mostly-cloudy-flurries.png)      | Yes |  Nee    | Overwegend bewolkt met Flurries|
-| 21           |![](./media/weather-services-concepts/partly-sunny-flurries.png)       | Yes |  Nee    | Deels zonnig met Flurries|
-| 22           |![](./media/weather-services-concepts/snow-i.png)                      | Ja |  Ja   | Richting|
-| 23           |![](./media/weather-services-concepts/mostly-cloudy-snow.png)          | Yes |  Nee    | Overwegend bewolkt met sneeuw|
-| 24           |![](./media/weather-services-concepts/ice-i.png)                       | Ja |  Ja   | Ice |
-| 25           |![](./media/weather-services-concepts/sleet-i.png)                     | Ja |  Ja   | Sleet|
-| 26           |![](./media/weather-services-concepts/freezing-rain.png)              | Ja |  Ja   | Vries regen|
-| 29           |![](./media/weather-services-concepts/rain-snow.png)                  | Ja |  Ja   | Regen en sneeuw|
-| 30           |![](./media/weather-services-concepts/hot-i.png)                       | Ja |  Ja   | Warm|
-| 31           |![](./media/weather-services-concepts/cold-i.png)                      | Ja |  Ja   | Koud|
-| 32           |![](./media/weather-services-concepts/windy-i.png)                     | Ja |  Ja   | Wikkeling|
-| 33           |![](./media/weather-services-concepts/clear-night.png)                | Nee  |  Yes   | Veilig|
-| 34           |![](./media/weather-services-concepts/mostly-clear-night.png)          | Nee  |  Yes   | Voornamelijk wissen|
-| 35           |![](./media/weather-services-concepts/partly-cloudy-night.png)         | Nee  |  Yes   | Deels Cloud|
-| 36           |![](./media/weather-services-concepts/intermittent-clouds-Night.png)   | Nee  |  Yes   | Periodieke Clouds|
-| 37           |![](./media/weather-services-concepts/hazymoon-light.png)             | Nee  |  Yes   | Hazy Moonlight|
-| 38           |![](./media/weather-services-concepts/mostly-cloudy-night.png)         | Nee  |  Ja   | Overwegend bewolkt|
-| 39           |![](./media/weather-services-concepts/partly-cloudy-showers-night.png)  | Nee  |  Ja   | Deels Cloudy met Showers|
-| 40           |![](./media/weather-services-concepts/mostly-cloudy-showers-night.png)  | Nee  |  Ja   | Overwegend bewolkt met Showers|
-| 41           |![](./media/weather-services-concepts/partly-cloudy-tstorms-night.png)  | Nee  |  Ja   | Deels Cloudy met thunderstorms|
-| 42           |![](./media/weather-services-concepts/mostly-cloudy-tstorms-night.png)  | Nee  |  Ja   | Overwegend bewolkt met thunderstorms|
-| 43           |![](./media/weather-services-concepts/mostly-cloudy-flurries-night.png) | Nee  |  Ja   | Overwegend bewolkt met Flurries|
-| 44           |![](./media/weather-services-concepts/mostly-cloudy-snow.png)          | Nee  |  Ja   | Overwegend bewolkt met sneeuw|
+| 1           | :::image type="icon" source="./media/weather-services-concepts/sunny-i.png"::: | Ja |  Nee    | Zon|
+| 2           | :::image type="icon" source="./media/weather-services-concepts/mostly-sunny.png"::: | Ja |  Nee    | Grotendeels zonnig|
+| 3           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny.png"::: | Ja |  Nee    | Deels zonnig|
+| 4           | :::image type="icon" source="./media/weather-services-concepts/intermittent-clouds.png"::: | Ja |  Nee    | Periodieke Clouds|
+| 5           | :::image type="icon" source="./media/weather-services-concepts/hazy-sunshine.png"::: | Ja |  Nee    | Hazy schijnt |
+| 6           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy.png"::: | Ja |  Nee    | Overwegend bewolkt|
+| 7           | :::image type="icon" source="./media/weather-services-concepts/cloudy-i.png"::: | Ja |  Ja   | Cloud |
+| 8           | :::image type="icon" source="./media/weather-services-concepts/dreary-overcast.png"::: | Ja |  Ja   | Dreary (Overcast)|
+| 11           | :::image type="icon" source="./media/weather-services-concepts/fog-i.png"::: | Ja |  Ja   | Fogcomputing|
+| 12           | :::image type="icon" source="./media/weather-services-concepts/showers-i.png"::: | Ja |  Ja   | Douchen|
+| 13           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-showers.png"::: | Ja |  Nee    | Overwegend bewolkt met Showers|
+| 14           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-showers.png"::: | Ja |  Nee    | Deels zonnig met Showers|
+| 15           | :::image type="icon" source="./media/weather-services-concepts/tstorms-i.png"::: | Ja |  Ja   | Thunderstorms|
+| 16           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-tstorms.png"::: | Ja |  Nee    | Overwegend bewolkt met thunderstorms|
+| 17           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-tstorms.png"::: | Ja |  Nee    | Deels zonnig met thunderstorms|
+| 18           | :::image type="icon" source="./media/weather-services-concepts/rain-i.png"::: | Ja |  Ja   | Vloeiend|
+| 19           | :::image type="icon" source="./media/weather-services-concepts/flurries-i.png"::: | Ja |  Ja   | Flurries|
+| 20           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-flurries.png"::: | Ja |  Nee    | Overwegend bewolkt met Flurries|
+| 21           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-flurries.png"::: | Ja |  Nee    | Deels zonnig met Flurries|
+| 22           | :::image type="icon" source="./media/weather-services-concepts/snow-i.png"::: | Ja |  Ja   | Richting|
+| 23           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-snow.png"::: | Ja |  Nee    | Overwegend bewolkt met sneeuw|     
+| 24           | :::image type="icon" source="./media/weather-services-concepts/ice-i.png"::: | Ja |  Ja   | Ice |
+| 25           | :::image type="icon" source="./media/weather-services-concepts/sleet-i.png"::: | Ja |  Ja   | Sleet|
+| 26           | :::image type="icon" source="./media/weather-services-concepts/freezing-rain.png"::: | Ja |  Ja   | Vries regen|
+| 29           | :::image type="icon" source="./media/weather-services-concepts/rain-snow.png"::: | Ja |  Ja   | Regen en sneeuw|
+| 30           | :::image type="icon" source="./media/weather-services-concepts/hot-i.png"::: | Ja |  Ja   | Dynamisch|
+| 31           | :::image type="icon" source="./media/weather-services-concepts/cold-i.png"::: | Ja |  Ja   | Koud|
+| 32           | :::image type="icon" source="./media/weather-services-concepts/windy-i.png"::: | Ja |  Ja   | Wikkeling|
+| 33           | :::image type="icon" source="./media/weather-services-concepts/clear-night.png"::: | Nee  |  Ja   | Veilig|
+| 34           | :::image type="icon" source="./media/weather-services-concepts/mostly-clear-night.png"::: | Nee  |  Ja   | Voornamelijk wissen|
+| 35           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-night.png"::: | Nee  |  Ja   | Deels Cloud|
+| 36           | :::image type="icon" source="./media/weather-services-concepts/intermittent-clouds-Night.png"::: | Nee  |  Ja   | Periodieke Clouds|
+| 37           | :::image type="icon" source="./media/weather-services-concepts/hazymoon-light.png"::: | Nee  |  Ja   | Hazy Moonlight|
+| 38           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-night.png"::: | Nee  |  Ja   | Overwegend bewolkt|
+| 39           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-showers-night.png"::: | Nee  |  Ja   | Deels Cloudy met Showers|
+| 40           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-showers-night.png"::: | Nee  |  Ja   | Overwegend bewolkt met Showers|
+| 41           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-tstorms-night.png"::: | Nee  |  Ja   | Deels Cloudy met thunderstorms|
+| 42           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-tstorms-night.png"::: | Nee  |  Ja   | Overwegend bewolkt met thunderstorms|
+| 43           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-flurries-night.png"::: | Nee  |  Ja   | Overwegend bewolkt met Flurries|
+| 44           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-snow.png"::: | Nee  |  Ja   | Overwegend bewolkt met sneeuw|
 
 
 ## <a name="radar-and-satellite-imagery-color-scale"></a>Kleuren schaal radar-en satelliet afbeelding
@@ -107,22 +108,22 @@ De volgende tabel bevat richt lijnen voor het interpreteren van de radar afbeeld
 
 | Hex-kleur code | Kleur voorbeeld | Voor waarde voor weer |
 |----------------|--------------|-------------------|
-| #93c701        | ![](./media/weather-services-concepts/color-93c701.png) | Regen licht |
-| #ffd701        | ![](./media/weather-services-concepts/color-ffd701.png) | Regen-matig |
-| #f05514        | ![](./media/weather-services-concepts/color-f05514.png) | Regen-zwaar |
-| #dc250e        | ![](./media/weather-services-concepts/color-dc250e.png) | Regen-ernstig |
-| #9ec8f2        | ![](./media/weather-services-concepts/color-9ec8f2.png) | Sneeuw licht |
-| #2a8fdb        | ![](./media/weather-services-concepts/color-2a8fdb.png) | Sneeuw-matig |
-| #144bed        | ![](./media/weather-services-concepts/color-144bed.png) | Sneeuw-zwaar |
-| #020096        | ![](./media/weather-services-concepts/color-020096.png) | Sneeuw-ernstig |
-| #e6a5c8        | ![](./media/weather-services-concepts/color-e6a5c8.png) | Ice-licht |
-| #d24fa0        | ![](./media/weather-services-concepts/color-d24fa0.png) | Ice-matig |
-| #b71691        | ![](./media/weather-services-concepts/color-b71691.png) | Ijs-ernstig |
-| #7a1570        | ![](./media/weather-services-concepts/color-7a1570.png) | Ice-zwaar |
-| #c196e6        | ![](./media/weather-services-concepts/color-c196e6.png) | Mix-Light |
-| #ae6ee6        | ![](./media/weather-services-concepts/color-ae6ee6.png) | Mix-matig |
-| #8a32d7        | ![](./media/weather-services-concepts/color-8a32d7.png) | Mix-zwaar |
-| #6500ba        | ![](./media/weather-services-concepts/color-6500ba.png) | Mix-ernstig |
+| #93c701        | ![Kleur voor regen licht.](./media/weather-services-concepts/color-93c701.png) | Regen licht |
+| #ffd701        | ![Kleur voor de regen-matig.](./media/weather-services-concepts/color-ffd701.png) | Regen-matig |
+| #f05514        | ![Kleur voor de regen, dik.](./media/weather-services-concepts/color-f05514.png) | Regen-zwaar |
+| #dc250e        | ![Kleur voor de regen-ernstig.](./media/weather-services-concepts/color-dc250e.png) | Regen-ernstig |
+| #9ec8f2        | ![Kleur voor sneeuw licht.](./media/weather-services-concepts/color-9ec8f2.png) | Sneeuw licht |
+| #2a8fdb        | ![Kleur voor sneeuw-matig.](./media/weather-services-concepts/color-2a8fdb.png) | Sneeuw-matig |
+| #144bed        | ![Kleur voor sneeuw-dik.](./media/weather-services-concepts/color-144bed.png) | Sneeuw-zwaar |
+| #020096        | ![Kleur voor sneeuw-ernstig.](./media/weather-services-concepts/color-020096.png) | Sneeuw-ernstig |
+| #e6a5c8        | ![Kleur voor ijs-licht.](./media/weather-services-concepts/color-e6a5c8.png) | Ice-licht |
+| #d24fa0        | ![Kleur voor Ice-matig.](./media/weather-services-concepts/color-d24fa0.png) | Ice-matig |
+| #b71691        | ![Kleur voor ijs-ernstig.](./media/weather-services-concepts/color-b71691.png) | Ijs-ernstig |
+| #7a1570        | ![Kleur voor Ice-zwaar.](./media/weather-services-concepts/color-7a1570.png) | Ice-zwaar |
+| #c196e6        | ![Kleur voor mix-Light.](./media/weather-services-concepts/color-c196e6.png) | Mix-Light |
+| #ae6ee6        | ![Kleur voor mix-matig.](./media/weather-services-concepts/color-ae6ee6.png) | Mix-matig |
+| #8a32d7        | ![Kleur voor mix-zwaar.](./media/weather-services-concepts/color-8a32d7.png) | Mix-zwaar |
+| #6500ba        | ![Kleur voor mix-ernstig.](./media/weather-services-concepts/color-6500ba.png) | Mix-ernstig |
 
 Gedetailleerd kleuren palet voor radar tegels met hexadecimale kleur codes en dBZ waarden worden hieronder weer gegeven. dBZ vertegenwoordigt een precipitatie intensiteit in het weer radar diagram. 
 
@@ -198,18 +199,18 @@ De volgende tabel bevat richt lijnen voor het interpreteren van de infra rood sa
 
 | Hex-kleur code | Kleur voorbeeld | Cloud temperatuur |
 |----------------|--------------|-------------------|
-| #b5b5b5        | ![](./media/weather-services-concepts/color-b5b5b5.png) | Tempe ratuur-laag | 
-| #d24fa0        | ![](./media/weather-services-concepts/color-d24fa0.png) |  |
-| #8a32d7        | ![](./media/weather-services-concepts/color-8a32d7.png) |  |
-| #144bed        | ![](./media/weather-services-concepts/color-144bed.png) |  |
-| #479702        | ![](./media/weather-services-concepts/color-479702.png) |  |
-| #72b403        | ![](./media/weather-services-concepts/color-72b403.png) |  |
-| #93c701        | ![](./media/weather-services-concepts/color-93c701.png) |  |
-| #ffd701        | ![](./media/weather-services-concepts/color-ffd701.png) |  |
-| #f05514        | ![](./media/weather-services-concepts/color-f05514.png) |  |
-| #dc250e        | ![](./media/weather-services-concepts/color-dc250e.png) |  |
-| #ba0808        | ![](./media/weather-services-concepts/color-ba0808.png) |  |
-| #1f1f1f        | ![](./media/weather-services-concepts/color-1f1f1f.png) | Tempe ratuur-hoog |
+| #b5b5b5        | ![De tegel kleuren voor de #b5b5b5.](./media/weather-services-concepts/color-b5b5b5.png) | Tempe ratuur-laag | 
+| #d24fa0        | ![De tegel kleuren voor de #d24fa0.](./media/weather-services-concepts/color-d24fa0.png) |  |
+| #8a32d7        | ![De tegel kleuren voor de #8a32d7.](./media/weather-services-concepts/color-8a32d7.png) |  |
+| #144bed        | ![De tegel kleuren voor de #144bed.](./media/weather-services-concepts/color-144bed.png) |  |
+| #479702        | ![De tegel kleuren voor de #479702.](./media/weather-services-concepts/color-479702.png) |  |
+| #72b403        | ![De tegel kleuren voor de #72b403.](./media/weather-services-concepts/color-72b403.png) |  |
+| #93c701        | ![De tegel kleuren voor de #93c701.](./media/weather-services-concepts/color-93c701.png) |  |
+| #ffd701        | ![De tegel kleuren voor de #ffd701.](./media/weather-services-concepts/color-ffd701.png) |  |
+| #f05514        | ![De tegel kleuren voor de #f05514.](./media/weather-services-concepts/color-f05514.png) |  |
+| #dc250e        | ![De tegel kleuren voor de #dc250e.](./media/weather-services-concepts/color-dc250e.png) |  |
+| #ba0808        | ![De tegel kleuren voor de #ba0808.](./media/weather-services-concepts/color-ba0808.png) |  |
+| #1f1f1f        | ![De tegel kleuren voor de #1f1f1f.](./media/weather-services-concepts/color-1f1f1f.png) | Tempe ratuur-hoog |
 
 
 Het gedetailleerde kleuren palet voor infra rood satelliet tegels wordt hieronder weer gegeven.
