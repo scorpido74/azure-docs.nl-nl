@@ -8,22 +8,20 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: 14760eaef309ec5695b423b98e59a8ae1ab5cacb
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 35590fd8aefb8b6a90adeef52fabe773663403c2
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84886786"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85510989"
 ---
 # <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>Zelfstudie: Veranderingen in uw vaardighedenset diagnosticeren, herstellen en doorvoeren
 
 In dit artikel gebruikt u Azure Portal voor het openen van foutopsporingssessies om problemen met de verstrekte vaardighedenset te herstellen. Er zijn fouten opgetreden in de vaardighedenset die moeten worden opgelost. In deze zelfstudie loopt u door het foutopsporingsproces waarin u problemen met in- en uitvoer van vaardigheden identificeert en oplost.
 
 > [!Important]
-> Ondersteuning van foutopsporing voor Azure Cognitive Search is beschikbaar [op aanvraag](https://aka.ms/DebugSessions) als preview-versie met beperkte toegang. Preview-functies zijn beschikbaar zonder service level agreement en worden niet aanbevolen voor productieworkloads. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+> Foutopsporingssessies is een preview-functie die beschikbaar is service level agreement en niet aanbevolen wordt voor productieworkloads. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 >
-> Zodra u toegang tot de preview-versie hebt gekregen, kunt u foutopsporingssessies voor uw service openen en gebruiken via Azure Portal.
->   
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 

@@ -5,27 +5,27 @@ author: mhopkins-msft
 ms.service: storage
 ms.subservice: blobs
 ms.topic: tutorial
-ms.date: 06/11/2020
+ms.date: 06/24/2020
 ms.author: mhopkins
 ms.reviewer: dineshm
-ms.openlocfilehash: 37e751d78bddd76847a4859b6f24e37bec5c9acb
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: e8caf6af0b30809857fd59d88fd57e5e43010ae2
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84730489"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85368342"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Zelfstudie: Afbeeldingsgegevens uploaden in de cloud met Azure Storage
 
-Deze zelfstudie is deel één van een serie. In deze zelfstudie leert u hoe u een web-app implementeert die de Azure Blob Storage-clientbibliotheek gebruikt om afbeeldingen te uploaden in een opslagaccount. Wanneer u klaar bent, hebt u een web-app die afbeeldingen vanuit Azure-opslag kan opslaan en weergeven.
+Deze zelfstudie is deel één van een serie. In deze zelfstudie leert u hoe u een web-app implementeert. De web-app gebruikt Azure Blob Storage-clientbibliotheek om afbeeldingen te uploaden in een opslagaccount. Wanneer u klaar bent, hebt u een web-app die afbeeldingen vanuit Azure-opslag kan opslaan en weergeven.
 
 # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
 ![App voor wijzigen van afbeeldingen in .NET](media/storage-upload-process-images/figure2.png)
 
-# <a name="nodejs-v10"></a>[Node.js v10](#tab/nodejsv10)
+# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
 
-![App voor wijzigen van afbeeldingen in Node.js V10](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+![App voor wijzigen van afbeeldingen in JavaScript](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---
 
@@ -46,7 +46,7 @@ U hebt een Azure-abonnement nodig om deze zelfstudie te voltooien. Maak een [gra
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Als u de CLI lokaal installeert en gebruikt, moet u voor deze zelfstudie de Azure CLI versie 2.0.4 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli). 
+Als u de CLI lokaal wilt installeren en gebruiken, voert u Azure CLI versie 2.0.4 of hoger uit. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli). 
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
@@ -97,28 +97,26 @@ De openbare toegang tot de container met de *installatiekopieën* is ingesteld o
 blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
   -n $blobStorageAccount --query "[0].value" --output tsv)
 
-az storage container create -n images --account-name $blobStorageAccount \
+az storage container create --name images \
+  --account-name $blobStorageAccount \
   --account-key $blobStorageAccountKey
 
-az storage container create -n thumbnails --account-name $blobStorageAccount \
+az storage container create --name thumbnails \
+  --account-name $blobStorageAccount \
   --account-key $blobStorageAccountKey --public-access container
-
-echo "Make a note of your Blob storage account key..."
-echo $blobStorageAccountKey
 ```
 
 ```powershell
 $blobStorageAccountKey=$(az storage account keys list -g myResourceGroup `
   -n $blobStorageAccount --query "[0].value" --output tsv)
 
-az storage container create -n images --account-name $blobStorageAccount `
+az storage container create --name images `
+  --account-name $blobStorageAccount `
   --account-key $blobStorageAccountKey
 
-az storage container create -n thumbnails --account-name $blobStorageAccount `
+az storage container create --name thumbnails `
+  --account-name $blobStorageAccount `
   --account-key $blobStorageAccountKey --public-access container
-
-echo "Make a note of your Blob storage account key..."
-echo $blobStorageAccountKey
 ```
 
 Noteer de naam en sleutel van het Blob-opslagaccount. De voorbeeld-app maakt gebruik van deze instellingen om verbinding te maken met het opslagaccount om de afbeeldingen te uploaden. 
@@ -177,20 +175,20 @@ az webapp deployment source config --name $webapp --resource-group myResourceGro
   --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
 ```
 
-# <a name="nodejs-v10"></a>[Node.js v10](#tab/nodejsv10)
+# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
 
-App Service ondersteunt diverse manieren om inhoud in een web-app te implementeren. In deze zelfstudie implementeert u de web-app vanaf een [openbare GitHub-voorbeeldopslagplaats](https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node-v10) (Engelstalig). Configureer GitHub-implementatie naar de webtoepassing met de opdracht [az webapp deployment source config](/cli/azure/webapp/deployment/source).
+App Service ondersteunt diverse manieren om inhoud in een web-app te implementeren. In deze zelfstudie implementeert u de web-app vanaf een [openbare GitHub-voorbeeldopslagplaats](https://github.com/Azure-Samples/azure-sdk-for-js-storage-blob-stream-nodejs) (Engelstalig). Configureer GitHub-implementatie naar de webtoepassing met de opdracht [az webapp deployment source config](/cli/azure/webapp/deployment/source).
 
 ```bash
 az webapp deployment source config --name $webapp --resource-group myResourceGroup \
   --branch master --manual-integration \
-  --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node-v10
+  --repo-url https://github.com/Azure-Samples/azure-sdk-for-js-storage-blob-stream-nodejs
 ```
 
 ```powershell
 az webapp deployment source config --name $webapp --resource-group myResourceGroup `
   --branch master --manual-integration `
-  --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node-v10
+  --repo-url https://github.com/Azure-Samples/azure-sdk-for-js-storage-blob-stream-nodejs
 ```
 
 ---
@@ -217,9 +215,9 @@ az webapp config appsettings set --name $webapp --resource-group myResourceGroup
     AzureStorageConfig__AccountKey=$blobStorageAccountKey
 ```
 
-# <a name="nodejs-v10"></a>[Node.js v10](#tab/nodejsv10)
+# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
 
-De voorbeeldweb-app gebruikt de [Azure Storage-clientbibliotheek](https://github.com/Azure/azure-storage-js) om toegangstokens aan te vragen. Hiermee worden afbeeldingen geüpload. De referenties van het opslagaccount die worden gebruikt door de Storage-SDK, worden ingesteld in de app-instellingen voor de web-app. Voeg app-instellingen toe aan de geïmplementeerde app met de opdracht [az webapp config appsettings set](/cli/azure/webapp/config/appsettings).
+De voorbeeld-web-app gebruikt de [Azure Storage-clientbibliotheek voor JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage) om installatiekopieën te uploaden. Referenties van het opslagaccount worden ingesteld in de app-instellingen voor de web-app. Voeg app-instellingen toe aan de geïmplementeerde app met de opdracht [az webapp config appsettings set](/cli/azure/webapp/config/appsettings).
 
 ```bash
 az webapp config appsettings set --name $webapp --resource-group myResourceGroup \
@@ -243,7 +241,7 @@ U kunt de web-app testen door naar de URL van de gepubliceerde app te gaan. De s
 
 # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
-Selecteer het gebied **Upload photos** als u een bestand wilt opgeven en uploaden, of sleep een bestand naar het gebied. Als de afbeelding is geüpload, verdwijnt deze. De sectie **Gegenereerde miniaturen** blijft leeg totdat we deze verderop in dit onderwerp testen.
+Selecteer het gebied **Upload photos** als u een bestand wilt opgeven en uploaden, of sleep een bestand naar het gebied. Als de afbeelding is geüpload, verdwijnt deze. De sectie **Gegenereerde miniaturen** blijft leeg totdat we deze verderop in deze zelfstudie testen.
 
 ![Foto's uploaden in .NET](media/storage-upload-process-images/figure1.png)
 
@@ -283,16 +281,16 @@ In de vorige taak zijn de volgende klassen en methoden gebruikt:
 | [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) | [StorageSharedKeyCredential(String, String)-constructor](/dotnet/api/azure.storage.storagesharedkeycredential.-ctor) |
 | [BlobClient](/dotnet/api/azure.storage.blobs.blobclient) | [UploadAsync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync) |
 
-# <a name="nodejs-v10"></a>[Node.js v10](#tab/nodejsv10)
+# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
 
-Selecteer **Bestand kiezen** om een bestand te selecteren en klik u vervolgens op **Installatiekopie uploaden**. De sectie **Gegenereerde miniaturen** blijft leeg totdat we deze verderop in dit onderwerp testen. 
+Selecteer **Bestand kiezen** om een bestand te selecteren en klik u vervolgens op **Installatiekopie uploaden**. De sectie **Gegenereerde miniaturen** blijft leeg totdat we deze verderop in deze zelfstudie testen.
 
-![Foto's uploaden in Node.js V10](media/storage-upload-process-images/upload-app-nodejs.png)
+![Foto's uploaden in Node.js](media/storage-upload-process-images/upload-app-nodejs.png)
 
 In de voorbeeldcode is de `post`-route verantwoordelijk voor het uploaden van de afbeelding naar een blobcontainer. De route gebruikt de modules om de upload te verwerken:
 
 - [multer](https://github.com/expressjs/multer) implementeert de uploadstrategie voor de routehandler.
-- [into-stream](https://github.com/sindresorhus/into-stream) converteert de buffer in een stream, zoals is vereist door [createBlockBlobFromStream](https://azure.github.io/azure-sdk-for-node/azure-storage-legacy/latest/BlobService.html).
+- [into-stream](https://github.com/sindresorhus/into-stream) converteert de buffer in een stream, zoals is vereist door [uploadStream](/javascript/api/%40azure/storage-blob/blockblobclient#uploadstream-readable--number--number--blockblobuploadstreamoptions-).
 
 Wanneer het bestand naar de route wordt verzonden, blijft de inhoud van het bestand in het geheugen staan totdat het bestand is geüpload naar de blobcontainer.
 
@@ -300,34 +298,33 @@ Wanneer het bestand naar de route wordt verzonden, blijft de inhoud van het best
 > Het laden van grote bestanden in het geheugen kan een negatief effect hebben op de prestaties van uw web-app. Als u verwacht dat gebruikers grote bestanden posten, kunt u overwegen om bestanden tijdelijk weg te zetten op het bestandssysteem van de webserver en vervolgens uploads naar Blob-opslag te plannen. Zodra de bestanden in Blob-opslag staan, kunt u ze verwijderen van het bestandssysteem van de server.
 
 ```javascript
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
+
 const {
-  Aborter,
-  BlobURL,
-  BlockBlobURL,
-  ContainerURL,
-  ServiceURL,
-  StorageURL,
-  SharedKeyCredential,
-  uploadStreamToBlockBlob
+  BlobServiceClient,
+  StorageSharedKeyCredential,
+  newPipeline
 } = require('@azure/storage-blob');
 
 const express = require('express');
 const router = express.Router();
+const containerName1 = 'thumbnails';
 const multer = require('multer');
 const inMemoryStorage = multer.memoryStorage();
 const uploadStrategy = multer({ storage: inMemoryStorage }).single('image');
 const getStream = require('into-stream');
-const containerName = 'images';
+const containerName2 = 'images';
 const ONE_MEGABYTE = 1024 * 1024;
 const uploadOptions = { bufferSize: 4 * ONE_MEGABYTE, maxBuffers: 20 };
-const ONE_MINUTE = 60 * 1000;
-const aborter = Aborter.timeout(30 * ONE_MINUTE);
 
-const sharedKeyCredential = new SharedKeyCredential(
+const sharedKeyCredential = new StorageSharedKeyCredential(
   process.env.AZURE_STORAGE_ACCOUNT_NAME,
   process.env.AZURE_STORAGE_ACCOUNT_ACCESS_KEY);
-const pipeline = StorageURL.newPipeline(sharedKeyCredential);
-const serviceURL = new ServiceURL(
+const pipeline = newPipeline(sharedKeyCredential);
+
+const blobServiceClient = new BlobServiceClient(
   `https://${process.env.AZURE_STORAGE_ACCOUNT_NAME}.blob.core.windows.net`,
   pipeline
 );
@@ -335,31 +332,62 @@ const serviceURL = new ServiceURL(
 const getBlobName = originalName => {
   // Use a random number to generate a unique file name, 
   // removing "0." from the start of the string.
-  const identifier = Math.random().toString().replace(/0\./, ''); 
+  const identifier = Math.random().toString().replace(/0\./, '');
   return `${identifier}-${originalName}`;
 };
 
-router.post('/', uploadStrategy, async (req, res) => {
+router.get('/', async (req, res, next) => {
 
-    const blobName = getBlobName(req.file.originalname);
-    const stream = getStream(req.file.buffer);
-    const containerURL = ContainerURL.fromServiceURL(serviceURL, containerName);
-    const blobURL = BlobURL.fromContainerURL(containerURL, blobName);
-    const blockBlobURL = BlockBlobURL.fromBlobURL(blobURL);
+  let viewData;
 
-    try {
+  try {
+    const containerClient = blobServiceClient.getContainerClient(containerName1);
+    const listBlobsResponse = await containerClient.listBlobFlatSegment();
 
-      await uploadStreamToBlockBlob(aborter, stream,
-        blockBlobURL, uploadOptions.bufferSize, uploadOptions.maxBuffers);
-
-      res.render('success', { message: 'File uploaded to Azure Blob storage.' });   
-
-    } catch (err) {
-
-      res.render('error', { message: 'Something went wrong.' });
-
+    for await (const blob of listBlobsResponse.segment.blobItems) {
+      console.log(`Blob: ${blob.name}`);
     }
+
+    viewData = {
+      title: 'Home',
+      viewName: 'index',
+      accountName: process.env.AZURE_STORAGE_ACCOUNT_NAME,
+      containerName: containerName1
+    };
+
+    if (listBlobsResponse.segment.blobItems.length) {
+      viewData.thumbnails = listBlobsResponse.segment.blobItems;
+    }
+  } catch (err) {
+    viewData = {
+      title: 'Error',
+      viewName: 'error',
+      message: 'There was an error contacting the blob storage container.',
+      error: err
+    };
+    res.status(500);
+  } finally {
+    res.render(viewData.viewName, viewData);
+  }
 });
+
+router.post('/', uploadStrategy, async (req, res) => {
+  const blobName = getBlobName(req.file.originalname);
+  const stream = getStream(req.file.buffer);
+  const containerClient = blobServiceClient.getContainerClient(containerName2);;
+  const blockBlobClient = containerClient.getBlockBlobClient(blobName);
+
+  try {
+    await blockBlobClient.uploadStream(stream,
+      uploadOptions.bufferSize, uploadOptions.maxBuffers,
+      { blobHTTPHeaders: { blobContentType: "image/jpeg" } });
+    res.render('success', { message: 'File uploaded to Azure Blob storage.' });
+  } catch (err) {
+    res.render('error', { message: err.message });
+  }
+});
+
+module.exports = router;
 ```
 
 ---
@@ -386,15 +414,15 @@ Ga terug naar de app om te controleren of de naar de **thumbnails**-container ge
 
 ![.NET-app voor wijzigen van afbeeldingen, met nieuwe afbeelding weergegeven](media/storage-upload-process-images/figure2.png)
 
-# <a name="nodejs-v10"></a>[Node.js v10](#tab/nodejsv10)
+# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
 
-![Node. js V10-app voor wijzigen van afbeeldingen, met nieuwe afbeelding weergegeven](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+![Node.js-app voor wijzigen van afbeeldingen, met nieuwe afbeelding weergegeven](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---
 
-In deel twee van de serie automatiseert u het maken van miniatuurafbeeldingen zodat u deze afbeelding niet nodig hebt. In de **thumbnails**-container in Azure Portal selecteert u de geüploade afbeelding en vervolgens **Verwijderen** om de afbeelding te verwijderen. 
+In deel twee van de serie automatiseert u het maken van miniatuurafbeeldingen zodat u deze afbeelding niet nodig hebt. In de **thumbnails**-container selecteert u de geüploade afbeelding en vervolgens **Verwijderen** om de afbeelding te verwijderen.
 
-U kunt Content Delivery Network (CDN) naar cache-inhoud inschakelen vanuit het Azure-opslagaccount. Voor informatie over hoe u CDN inschakelt met uw Azure-opslagaccount, gaat u naar [Een Azure-opslagaccount integreren met Azure CDN](../../cdn/cdn-create-a-storage-account-with-cdn.md).
+U kunt Content Delivery Network (CDN) naar cache-inhoud inschakelen vanuit het Azure-opslagaccount. Zie [Een Azure storage-account integreren met Azure CDN](../../cdn/cdn-create-a-storage-account-with-cdn.md) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

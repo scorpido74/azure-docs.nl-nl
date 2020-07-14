@@ -1,5 +1,5 @@
 ---
-title: Een Azure-data factory maken met behulp van REST API
+title: Een data factory in Azure maken met behulp van REST API
 description: Maak een Azure data factory om gegevens te kopiëren van de ene locatie in Azure Blob Storage naar de andere.
 services: data-factory
 documentationcenter: ''
@@ -13,17 +13,17 @@ ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 06/10/2019
 ms.author: jingwang
-ms.openlocfilehash: b50217a3a8aeda03996183bf1dc82a0be1f485ae
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 357026bbe17650464716282608bc316c5d4b055e
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81419099"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85514879"
 ---
-# <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Snelstartgids: een Azure data factory en pijp lijn maken met behulp van de REST API
+# <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Quickstart: Een Azure data factory en pijplijn maken door de REST-API te gebruiken
 
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+> [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
+> * [Versie 1:](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Huidige versie](quickstart-create-data-factory-rest-api.md)
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -32,21 +32,21 @@ Azure Data Factory is een cloudgebaseerde gegevensintegratieservice waarmee u ge
 
 In deze snelstartgids wordt beschreven hoe u REST-API kunt gebruiken om een Azure data factory te maken. Met de pijplijn in deze data factory worden gegevens gekopieerd van de ene locatie naar een andere locatie in een Azure Blob-opslag.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis](https://azure.microsoft.com/free/) account aan voordat u begint.
+Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 * **Azure-abonnement**. Als u geen abonnement hebt, kunt u een [gratis proefaccount](https://azure.microsoft.com/pricing/free-trial/) maken.
-* **Azure Storage-account**. U gebruikt de blob-opslag als gegevensopslag voor **bron** en **sink**. Als u geen Azure Storage-account hebt, raadpleegt u het artikel [een opslag account maken](../storage/common/storage-account-create.md) voor de stappen om er een te maken.
+* **Een Azure Storage-account**. U gebruikt de blob-opslag als gegevensopslag voor **bron** en **sink**. Als u geen Azure-opslagaccount hebt, raadpleegt u het artikel [Een opslagaccount maken](../storage/common/storage-account-create.md) om een account te maken.
 * Maak een **blob-container** in Blob Storage, maak een **invoermap** in de container en upload een aantal bestanden naar de map. U kunt hulpprogramma's zoals [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) gebruiken om verbinding te maken met Azure Blob Storage, een blob-container te maken, een invoerbestand te uploaden en het uitvoerbestand te controleren.
 * Installeer **Azure PowerShell**. Volg de instructies in [How to install and configure Azure PowerShell](/powershell/azure/install-Az-ps) (Azure PowerShell installeren en configureren). Deze snelstartgids maakt gebruik van PowerShell om REST-API-aanroepen aan te roepen.
-* **Maak een toepassing in Azure Active Directory** aan de hand van [deze instructie](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Noteer de volgende waarden die u in latere stappen gebruikt: **toepassings-id**, **clientSecrets**en **Tenant-id**. Wijs de toepassing toe aan de rol '**Inzender**'.
+* **Maak een toepassing in Azure Active Directory** aan de hand van [deze instructie](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal). Noteer de volgende waarden voor gebruik in latere stappen: **toepassings-id**, **clientSecrets** en **tenant-id**. Wijs de toepassing toe aan de rol '**Inzender**'.
 
 ## <a name="set-global-variables"></a>Globale variabelen instellen
 
-1. Start **Power shell**. Houd Azure PowerShell geopend tot het einde van deze snelstartgids. Als u het programma sluit en opnieuw opent, moet u de opdrachten opnieuw uitvoeren.
+1. Start **PowerShell**. Houd Azure PowerShell geopend tot het einde van deze snelstartgids. Als u het programma sluit en opnieuw opent, moet u de opdrachten opnieuw uitvoeren.
 
     Voer de volgende opdracht uit en geef de gebruikersnaam en het wachtwoord op waarmee u zich aanmeldt bij Azure Portal:
 
@@ -117,7 +117,7 @@ Houd rekening met de volgende punten:
     ```
     Data factory name "ADFv2QuickStartDataFactory" is not available.
     ```
-* Voor een lijst met Azure-regio’s waarin Data Factory momenteel beschikbaar is, selecteert u op de volgende pagina de regio’s waarin u geïnteresseerd bent, vouwt u vervolgens **Analytics** uit en gaat u naar **Data Factory**: [Beschikbare producten per regio](https://azure.microsoft.com/global-infrastructure/services/). De gegevensopslagexemplaren (Azure Storage, Azure SQL Database, enzovoort) en berekeningen (HDInsight, enzovoort) die worden gebruikt in Data Factory, kunnen zich in andere regio's bevinden.
+* Voor een lijst met Azure-regio's waarin Data Factory momenteel beschikbaar is, selecteert u op de volgende pagina de regio's waarin u geïnteresseerd bent, vouwt u vervolgens **Analytics** uit en gaat u naar **Data Factory**: [Beschikbare producten per regio](https://azure.microsoft.com/global-infrastructure/services/). De gegevensopslagexemplaren (Azure Storage, Azure SQL Database, enzovoort) en berekeningen (HDInsight, enzovoort) die worden gebruikt in Data Factory, kunnen zich in andere regio's bevinden.
 
 Dit is het voorbeeldantwoord:
 
@@ -192,9 +192,9 @@ Hier volgt een voorbeeld van uitvoer:
 ```
 ## <a name="create-datasets"></a>Gegevenssets maken
 
-U definieert een gegevensset die de gegevens vertegenwoordigt die van een bron naar een sink moeten worden gekopieerd. In dit voor beeld maakt u twee gegevens sets: Input dataset en output DataSet. Ze verwijzen naar de gekoppelde Azure Storage-service die u in de vorige sectie hebt gemaakt. De invoergegevensset vertegenwoordigt de brongegevens in de invoermap. In de definitie van de invoergegevensset geeft u de blob-container (adftutorial) en de map (invoer) op, en het bestand (emp.txt) dat de brongegevens bevat. De uitvoergegevensset vertegenwoordigt de gegevens die worden gekopieerd naar de bestemming. In de definitie van de uitvoergegevensset geeft u de blob-container (adftutorial) en de map (uitvoer) op, en het bestand waarin de brongegevens zijn gekopieerd.
+U definieert een gegevensset die de gegevens vertegenwoordigt die van een bron naar een sink moeten worden gekopieerd. In dit voorbeeld maakt u twee gegevenssets: InputDataSet en OutputDataSet. Ze verwijzen naar de gekoppelde Azure Storage-service die u in de vorige sectie hebt gemaakt. De invoergegevensset vertegenwoordigt de brongegevens in de invoermap. In de definitie van de invoergegevensset geeft u de blob-container (adftutorial) en de map (input) op, en het bestand (emp.txt) dat de brongegevens bevat. De uitvoergegevensset vertegenwoordigt de gegevens die worden gekopieerd naar de bestemming. In de definitie van de uitvoergegevensset geeft u de blob-container (adftutorial) en de map (output) op, en het bestand waarnaar de gegevens worden gekopieerd.
 
-**Input dataset maken**
+**InputDataset maken**
 
 ```powershell
 $request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/datasets/InputDataset?api-version=${apiVersion}"
@@ -248,7 +248,7 @@ Hier volgt een voorbeeld van uitvoer:
     "etag":"07011c57-0000-0100-0000-5d6e14b40000"
 }
 ```
-**Output dataset maken**
+**OutputDataset maken**
 
 ```powershell
 $request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/datasets/OutputDataset?api-version=${apiVersion}"
@@ -385,7 +385,7 @@ Hier volgt een voorbeeld van uitvoer:
 
 In deze stap stelt u de waarden van de parameters **inputPath** en **outputPath** die in de pijplijn worden opgegeven, in op de werkelijke waarden van de bron- en sinkblobpaden, en activeert u het uitvoeren van de pijplijn. De pijplijn-run-id die in de hoofdtekst van het antwoord wordt geretourneerd, wordt later in de bewakings-API gebruikt.
 
-Vervang de waarde van **inputPath** en **outputPath** met het pad naar de bron-en Sink-blob om gegevens van en naar te kopiëren voordat u het bestand opslaat.
+Vervang voordat u het bestand opslaat de waarde van **inputPath** en **outputPath** door het bron- en sinkblobpad waarvan en waarnaar u gegevens kopieert.
 
 
 ```powershell
@@ -493,7 +493,7 @@ Hier volgt een voorbeeld van uitvoer:
     ```
 ## <a name="verify-the-output"></a>De uitvoer controleren
 
-Gebruik Azure Storage Explorer om te controleren of het bestand is gekopieerd naar ' outputPath ' in ' inputPath ' zoals u hebt opgegeven bij het maken van een pijplijn uitvoering.
+Gebruik Azure Storage Explorer om te controleren of het bestand is gekopieerd van 'inputPath' naar 'outputPath', zoals u hebt opgegeven bij het maken van een pijplijnuitvoering.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 De resources die u hebt gemaakt in de Quick Start kunt u op twee manieren opschonen. U kunt de [Azure-resourcegroep](../azure-resource-manager/management/overview.md) verwijderen, met alle resources uit de resourcegroep. Als u de andere resources intact wilt houden, verwijdert u alleen de data factory die u in deze zelfstudie hebt gemaakt.
@@ -510,4 +510,4 @@ Remove-AzDataFactoryV2 -Name "<NameOfYourDataFactory>" -ResourceGroupName "<Name
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Met de pijplijn in dit voorbeeld worden gegevens gekopieerd van de ene naar de andere locatie in Azure Blob Storage. Doorloop de [zelfstudies](tutorial-copy-data-dot-net.md) voor meer informatie over het gebruiken van Data Factory in andere scenario's.
+Met de pijplijn in dit voorbeeld worden gegevens gekopieerd van de ene locatie naar een andere locatie in een Azure Blob-opslag. Doorloop de [zelfstudies](tutorial-copy-data-dot-net.md) voor meer informatie over het gebruiken van Data Factory in andere scenario's.

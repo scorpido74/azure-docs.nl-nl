@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 06/02/2020
+ms.date: 06/19/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 310023893d25a484cf05dac00628c632a4421edb
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: d8f65236fee57b4dc3e2bb012d8cdd222f431ec0
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84719948"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482612"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smartkargo"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met SmartKargo
 
@@ -83,22 +83,18 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 1. In de sectie **Standaard-SAML-configuratie** voert u de waarden in voor de volgende velden:
 
-    a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<CUSTOMER_NAME>.smartkargo.com/`
+    a. In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://<CUSTOMER_NAME>.smartkargo.com/`
 
     b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `https://<CUSTOMER_NAME>.smartkargo.com/`
 
     c. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://<CUSTOMER_NAME>.smartkargo.com/SamlResponse.aspx`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL, antwoord-URL en id. Neem contact op met het [SmartKargo-ondersteuningsteam](https://www.smartkargo.com/company/contact-2/) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL, antwoord-URL en ID. Neem contact op met het [SmartKargo-ondersteuningsteam](https://www.smartkargo.com/company/contact-2/) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-1. Klik in de sectie **SAML-handtekeningcertificaat** op de knop **Bewerken** om het dialoogvenster **SAML-handtekeningcertificaat** te openen.
+1. Ga op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** naar **XML-bestand met federatieve metagegevens** en selecteer **Downloaden** om het certificaat te downloaden. Sla dit vervolgens op de computer op.
 
-    ![SAML-handtekeningcertificaat bewerken](common/edit-certificate.png)
-
-1. Kopieer in de sectie **SAML-handtekeningcertificaat** de **Vingerafdrukwaarde** en sla deze op de computer op.
-
-    ![Waarde van vingerafdruk kopiëren](common/copy-thumbprint.png)
+    ![De link om het certificaat te downloaden](common/metadataxml.png)
 
 1. In de sectie **SmartKargo instellen** kopieert u de juiste URL('s) op basis van uw behoeften.
 
@@ -136,7 +132,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 ## <a name="configure-smartkargo-sso"></a>Eenmalige aanmelding bij SmartKargo configureren
 
-Als u eenmalige aanmelding aan de **SmartKargo**-zijde wilt configureren, moet u de **Vingerafdrukwaarde** en de correcte uit Azure Portal gekopieerde URL's verzenden naar het [ondersteuningsteam voor het SmartKargo-platform](https://www.smartkargo.com/company/contact-2/). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding aan de zijde van **SmartKargo** wilt configureren, moet u het gedownloade **XML-bestand met federatieve metagegevens** en de juiste uit de Azure-portal gekopieerde URL's naar het [SmartKargo-ondersteuningsteam](https://www.smartkargo.com/company/contact-2/) verzenden. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-smartkargo-test-user"></a>Een SmartKargo-testgebruiker maken
 

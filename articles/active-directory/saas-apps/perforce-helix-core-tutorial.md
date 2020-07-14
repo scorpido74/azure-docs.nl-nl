@@ -12,17 +12,17 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 06/15/2020
+ms.date: 06/23/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ea6531d85670301691e4aa88503d7eee4fb16d9
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: 6742b1466ed5055e3906adc96cfe346b7f46be9c
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84905484"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85482629"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-perforce-helix-core--helix-authentication-service"></a>Zelfstudie: Integratie van Azure Active Directory met eenmalige aanmelding (SSO) met Perforce Helix Core- Helix Authentication Service
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-perforce-helix-core---helix-authentication-service"></a>Zelfstudie: Integratie van Azure Active Directory met eenmalige aanmelding (SSO) met Perforce Helix Core- Helix Authentication Service
 
 In deze zelfstudie leert u hoe u Perforce Helix Core- Helix Authentication Service integreert met Azure Active Directory (Azure AD). Wanneer u Perforce Helix Core- Helix Authentication Service integreert met Azure AD, kunt u:
 
@@ -46,7 +46,7 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 * Perforce Helix Core- Helix Authentication Service ondersteunt door **SP** geïnitieerde eenmalige aanmelding
 * Zodra u Perforce Helix Core- Helix Authentication Service hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="adding-perforce-helix-core--helix-authentication-service-from-the-gallery"></a>Perforce Helix Core- Helix Authentication Service toevoegen vanuit de galerie
+## <a name="adding-perforce-helix-core---helix-authentication-service-from-the-gallery"></a>Perforce Helix Core- Helix Authentication Service toevoegen vanuit de galerie
 
 Als u de integratie van de Perforce Helix Core- Helix Authentication Service met Azure AD wilt configureren, moet u Perforce Helix Core- Helix Authentication Service vanaf de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
@@ -57,7 +57,7 @@ Als u de integratie van de Perforce Helix Core- Helix Authentication Service met
 1. Typ **Perforce Helix Core- Helix Authentication Service** in het zoekvak in het gedeelte **Toevoegen uit de galerie**.
 1. Selecteer **Perforce Helix Core- Helix Authentication Service** in het resultatenvenster en voeg de app vervolgens toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-perforce-helix-core--helix-authentication-service"></a>Azure AD eenmalige aanmelding configureren en testen voor Perforce Helix Core- Helix Authentication Service
+## <a name="configure-and-test-azure-ad-single-sign-on-for-perforce-helix-core---helix-authentication-service"></a>Azure AD eenmalige aanmelding configureren en testen voor Perforce Helix Core- Helix Authentication Service
 
 Configureer en test Azure AD SSO met Perforce Helix Core- Helix Authentication Service met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Perforce Helix Core- Helix Authentication Service.
 
@@ -66,8 +66,8 @@ Voltooi de volgende bouwstenen om Azure AD SSO met Perforce Helix Core- Helix Au
 1. **[Eenmalige aanmelding van Azure AD configureren](#configure-azure-ad-sso)** : zodat uw gebruikers deze functie kunnen gebruiken.
     1. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : om eenmalige aanmelding van Azure AD te testen met B.Simon.
     1. **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** zodat B.Simon eenmalige aanmelding van Azure AD kan gebruiken.
-1. **[Perforce Helix Core- Helix Authentication Service SSO configureren](#configure-perforce-helix-core--helix-authentication-service-sso)** : om de instellingen voor eenmalige aanmelding te configureren aan de kant van de toepassing.
-    1. **[Testgebruiker voor Perforce Helix Core- Helix Authentication Service maken](#create-perforce-helix-core--helix-authentication-service-test-user)** : zodat er een tegenhanger van B.Simon is in Perforce Helix Core- Helix Authentication Service die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+1. **[Perforce Helix Core- Helix Authentication Service SSO configureren](#configure-perforce-helix-core---helix-authentication-service-sso)** : om de instellingen voor eenmalige aanmelding te configureren aan de kant van de toepassing.
+    1. **[Testgebruiker voor Perforce Helix Core- Helix Authentication Service maken](#create-perforce-helix-core---helix-authentication-service-test-user)** : zodat er een tegenhanger van B.Simon is in Perforce Helix Core- Helix Authentication Service die is gekoppeld aan de Azure AD-weergave van de gebruiker.
 1. **[Eenmalige aanmelding testen](#test-sso)** : om te controleren of de configuratie werkt.
 
 ## <a name="configure-azure-ad-sso"></a>Eenmalige aanmelding van Azure AD configureren
@@ -125,11 +125,11 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
 1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-## <a name="configure-perforce-helix-core--helix-authentication-service-sso"></a>Perforce Helix Core- Helix Authentication Service SSO configureren
+## <a name="configure-perforce-helix-core---helix-authentication-service-sso"></a>Perforce Helix Core- Helix Authentication Service SSO configureren
 
 Als u eenmalige aanmelding wilt configureren op **Perforce Helix Core- Helix Authentication Service**, moet u de **App Federation Metadata URL** verzenden naar het [ondersteuningsteam van Perforce Helix Core- Helix Authentication Service](mailto:support@perforce.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
-### <a name="create-perforce-helix-core--helix-authentication-service-test-user"></a>Perforce Helix Core- Helix Authentication Service-testgebruiker maken
+### <a name="create-perforce-helix-core---helix-authentication-service-test-user"></a>Perforce Helix Core- Helix Authentication Service-testgebruiker maken
 
 In deze sectie maakt u een gebruiker met de naam Britta Simon in Perforce Helix Core- Helix Authentication Service. Werk met het [ondersteuningsteam van Perforce Helix Core- Helix Authentication Service](mailto:support@perforce.com) om de gebruikers toe te voegen aan het Perforce Helix Core-Helix Authentication Service-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 

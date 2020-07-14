@@ -8,24 +8,24 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/10/2020
-ms.openlocfilehash: 1ff29be9cde4a2bd53f0edbe57f3eab603c1796f
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: f673fd4b49a33c2faf6bc8b489520f2a877b0689
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84739492"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513811"
 ---
 # <a name="tutorial-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>Zelfstudie: Een aangepaste vaardigheid ontwerpen en implementeren met Azure Machine Learning 
 
-In deze zelfstudie gebruikt u de [gegevensset Hotelrecensies](https://www.kaggle.com/datafiniti/hotel-reviews) (gedistribueerd onder de Creative Commons-licentie [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt)) om met behulp van Azure Machine Learning een [aangepaste vaardigheid](https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-interface) te maken voor het extraheren van aspectgebaseerd sentiment uit de recensies. Op die manier kan positief en negatief sentiment in dezelfde recensie correct worden toegewezen aan geïdentificeerde entiteiten zoals personeel, kamer, lobby of zwembad.
+In deze zelfstudie gebruikt u de [gegevensset Hotelrecensies](https://www.kaggle.com/datafiniti/hotel-reviews) (gedistribueerd onder de Creative Commons-licentie [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt)) om met behulp van Azure Machine Learning een [aangepaste vaardigheid](https://docs.microsoft.com/azure/search/cognitive-search-aml-skill) te maken voor het extraheren van aspectgebaseerd sentiment uit de recensies. Op die manier kan positief en negatief sentiment in dezelfde recensie correct worden toegewezen aan geïdentificeerde entiteiten zoals personeel, kamer, lobby of zwembad.
 
-Om het model voor aspectgebaseerd sentiment te trainen, gebruikt u de [opslagplaats met NLP-recepten](https://github.com/microsoft/nlp-recipes/tree/master/examples/sentiment_analysis/absa). Het model wordt vervolgens als een eindpunt geïmplementeerd in een Azure Kubernetes-cluster. Na implementatie wordt het model als een aangepaste vaardigheid aan de verrijkingspijplijn toegevoegd voor gebruik door de Cognitive Search-service.
+Om het model voor aspectgebaseerd sentiment te trainen in Azure Machine Learning, gebruikt u de [opslagplaats met NLP-recepten](https://github.com/microsoft/nlp-recipes/tree/master/examples/sentiment_analysis/absa). Het model wordt vervolgens als een eindpunt geïmplementeerd in een Azure Kubernetes-cluster. Na implementatie wordt het eindpunt als een AML-vaardigheid aan de verrijkingspijplijn toegevoegd voor gebruik door de Cognitive Search-service.
 
 Er worden twee gegevenssets geboden. Als u het model zelf wilt trainen, hebt u het bestand hotel_reviews_1000.csv nodig. Slaat u de trainingsstap liever over? Download dan het bestand hotel_reviews_100.csv.
 
 > [!div class="checklist"]
 > * Een Azure Cognitive Search-exemplaar maken
-> * Een Azure Machine Learning-werkruimte maken
+> * Een Azure Machine Learning-werkruimte maken (de zoekservice en werkruimte dienen in hetzelfde abonnement te zitten)
 > * Een model trainen en implementeren in een Azure Kubernetes-cluster
 > * Een AI-verrijkingspijplijn koppelen aan het geïmplementeerde model
 > * Uitvoer van het geïmplementeerde model als een aangepaste vaardigheid opnemen

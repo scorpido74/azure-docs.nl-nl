@@ -1,5 +1,5 @@
 ---
-title: Azure Storage Table service of Azure Cosmos DB Table-API van PHP gebruiken
+title: De Azure Storage-tabelservice of Azure Cosmos DB Table-API gebruiken in PHP
 description: Sla gestructureerde gegevens op in de cloud met Azure Table Storage of de Azure Cosmos DB Table-API.
 author: sakash279
 ms.author: akshanka
@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: php
 ms.topic: sample
 ms.date: 04/05/2018
-ms.openlocfilehash: a19928516685e7496dc3e892d2598b24b5abae19
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: dcea83b9452b33baef8d563c7776aa9bd258a5f4
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76771060"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85389680"
 ---
 # <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>De Azure Storage-tabelservice of de Azure Cosmos DB Table-API gebruiken in PHP
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -95,7 +95,7 @@ U kunt als volgt toegang krijgen tot de opslagemulator:
 UseDevelopmentStorage = true
 ```
 
-Als u een client voor de Azure Storage-tabelservice of een Azure Cosmos DB-client wilt maken, moet u de klasse **TableRestProxy** gebruiken. U kunt het volgende doen:
+Als u een client voor de Azure Storage-tabelservice of een Azure Cosmos DB-client wilt maken, moet u de klasse **TableRestProxy** gebruiken. U kunt:
 
 * De verbindingsreeks rechtstreeks aan deze klasse doorgeven of
 * De **CloudConfigurationManager (CCM)** gebruiken om meerdere externe bronnen te controleren op de verbindingsreeks:
@@ -140,7 +140,7 @@ catch(ServiceException $e){
 Zie [Het gegevensmodel van de tabelservice][table-data-model] voor meer informatie over beperkingen voor tabelnamen.
 
 ## <a name="add-an-entity-to-a-table"></a>Een entiteit toevoegen aan een tabel
-Als u een entiteit wilt toevoegen aan een tabel, maakt u een nieuw object **Entity** en geeft u dit door aan **TableRestProxy->insertEntity**. Wanneer u een entiteit maakt, moet u een `PartitionKey` en `RowKey` opgeven. Dit zijn de unieke id's voor een entiteit en zijn waarden waarop sneller query's kunnen worden uitgevoerd dan op andere entiteitseigenschappen. Het systeem maakt gebruik van `PartitionKey` om de entiteiten van de tabel automatisch over veel Storage-knooppunten te verdelen. Entiteiten met dezelfde `PartitionKey` worden op hetzelfde knooppunt opgeslagen. (Bewerkingen op meerdere entiteiten die op hetzelfde knoop punt zijn opgeslagen, kunnen beter worden uitgevoerd dan op entiteiten die op verschillende knoop punten zijn opgeslagen.) De `RowKey` is de unieke id van een entiteit binnen een partitie.
+Als u een entiteit wilt toevoegen aan een tabel, maakt u een nieuw object **Entity** en geeft u dit door aan **TableRestProxy->insertEntity**. Wanneer u een entiteit maakt, moet u een `PartitionKey` en `RowKey` opgeven. Dit zijn de unieke id's voor een entiteit en zijn waarden waarop sneller query's kunnen worden uitgevoerd dan op andere entiteitseigenschappen. Het systeem maakt gebruik van `PartitionKey` om de entiteiten van de tabel automatisch over veel Storage-knooppunten te verdelen. Entiteiten met dezelfde `PartitionKey` worden op hetzelfde knooppunt opgeslagen. (Bewerkingen in meerdere entiteiten die zijn opgeslagen op hetzelfde knooppunt kunnen beter worden uitgevoerd dan bewerkingen in entiteiten die zijn opgeslagen op verschillende knooppunten.) De `RowKey` is de unieke id van een entiteit binnen een partitie.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -509,8 +509,8 @@ Nu u bekend bent met de basisprincipes van de Azure-tabelservice en Azure Cosmos
 
 [download]: https://packagist.org/packages/microsoft/azure-storage-table
 [require_once]: https://php.net/require_once
-[table-service-timeouts]: https://docs.microsoft.com/rest/api/storageservices/setting-timeouts-for-table-service-operations
+[table-service-timeouts]: /rest/api/storageservices/setting-timeouts-for-table-service-operations
 
-[table-data-model]: https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model
-[filters]: https://docs.microsoft.com/rest/api/storageservices/Querying-Tables-and-Entities
-[entity-group-transactions]: https://docs.microsoft.com/rest/api/storageservices/Performing-Entity-Group-Transactions
+[table-data-model]: /rest/api/storageservices/Understanding-the-Table-Service-Data-Model
+[filters]: /rest/api/storageservices/Querying-Tables-and-Entities
+[entity-group-transactions]: /rest/api/storageservices/Performing-Entity-Group-Transactions

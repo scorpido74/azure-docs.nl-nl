@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 02/21/2020
+ms.date: 06/24/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 064fcf618914bca31ad9e7e60c76df8f599cd8bf
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 151e7d286dac91ddd0e988027968f2e44a83e35e
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84687188"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362642"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Zelfstudie: Azure Firewall implementeren en configureren met de Azure-portal
 
@@ -26,7 +26,9 @@ Een van de manieren waarop u de toegang tot uitgaande netwerken kunt beheren van
 
 Netwerkverkeer is onderhevig aan de geconfigureerde firewallregels wanneer u het routeert naar de firewall als standaardgateway van het subnet.
 
-Voor deze zelfstudie maakt u één vereenvoudigd VNet met drie subnetten voor eenvoudige implementatie. Voor productie-implementaties wordt een [hub-en-spoke-model](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) aanbevolen. De firewall bevindt zich in een eigen VNet. De werkbelastingservers bevinden zich in gepeerde VNets in dezelfde regio met een of meer subnetten.
+Voor deze zelfstudie maakt u één vereenvoudigd VNet met drie subnetten voor eenvoudige implementatie.
+
+Voor productie-implementaties wordt een [hub en spoke-model](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) aanbevolen, waarbij de firewall zich in een eigen VNet bevindt. De werkbelastingservers bevinden zich in gepeerde VNets in dezelfde regio met een of meer subnetten.
 
 * **AzureFirewallSubnet** – De firewall bevindt zich in dit subnet.
 * **Workload-SN** – De workloadserver bevindt zich in dit subnet. Het netwerkverkeer van dit subnet gaat via de firewall.

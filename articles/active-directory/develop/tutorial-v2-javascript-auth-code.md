@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: e02f6946ff6f520fec63ead7e14e94f33182357f
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 3e6f94c3b44cd3316a25c356dc5e33835f8c9337
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682329"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85553800"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>Zelfstudie: Gebruikers aanmelden en de Microsoft Graph API aanroepen vanuit een JavaScript-app met één pagina met behulp van autorisatiecodestroom
 
@@ -42,10 +42,7 @@ Met de toepassing die u in deze zelfstudie maakt, kunt u een JavaScript-SPA uitv
 
 Deze zelfstudie maakt gebruik van de volgende bibliotheek:
 
-| | |
-|---|---|
-|[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)|Microsoft Authentication Library voor JavaScript v 2.0-browserpakket|
-| | |
+[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser) Microsoft Authentication Library voor JavaScript v 2.0-browserpakket
 
 ## <a name="get-the-completed-code-sample"></a>Het voltooide codevoorbeeld ophalen
 
@@ -336,7 +333,7 @@ Wijzig de waarden in de sectie `msalConfig`, zoals hier wordt beschreven:
   - Voor **nationale** clouds (bijvoorbeeld China) kunt u de juiste waarden vinden in [Nationale clouds](authentication-national-cloud.md).
 - `Enter_the_Tenant_info_here` een van de volgende waarden zijn:
   - Als uw toepassing ondersteuning biedt voor *accounts in deze organisatiemap*, vervang deze waarde dan door de **Tenant-id** of **Tenantnaam**. Bijvoorbeeld `contoso.microsoft.com`.
-  - Als uw toepassing ondersteuning biedt voor *accounts in elke organisatiemap*, vervang deze waarde dan door `organizations`.
+  - Als uw toepassing ondersteuning biedt voor *accounts in elke organisatiemap*, vervangt u waarde door `organizations`.
   - Als uw toepassing *accounts in elke organisatiemap en persoonlijke Microsoft-accounts* ondersteunt, vervang deze waarde dan door `common`.
   - Als u de ondersteuning wilt beperken tot *alleen persoonlijke Microsoft-accounts*, vervang deze waarde dan door `consumers`.
 - `Enter_the_Redirect_Uri_Here` is `http://localhost:3000`.

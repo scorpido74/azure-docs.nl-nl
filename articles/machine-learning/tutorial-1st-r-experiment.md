@@ -10,17 +10,17 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: dea5b3fb6cf20924666668e59e370399664d6b28
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: d95c0fc9baf1e53e6643660726c72660719908ba
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684743"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483377"
 ---
-# <a name="tutorial-use-r-to-create-a-machine-learning-model"></a>Zelfstudie: Een machine learning-model maken met R
+# <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>Zelfstudie: Een machine learning-model maken met R (preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In deze zelfstudie gebruikt u de Azure Machine Learning R SDK voor het maken van een logistiek regressiemodel dat de kans op een dodelijk slachtoffer bij een auto-ongeluk voorspelt. U ziet hoe de cloudresources van Azure Machine Learning samenwerken met R om een schaalbare omgeving te bieden voor het trainen en implementeren van een model.  
+In deze zelfstudie gebruikt u de Azure Machine Learning R SDK (preview) voor het maken van een logistiek regressiemodel dat de kans op een dodelijk slachtoffer bij een auto-ongeluk voorspelt. U ziet hoe de cloudresources van Azure Machine Learning samenwerken met R om een schaalbare omgeving te bieden voor het trainen en implementeren van een model.  
 
 In deze zelfstudie voert u de volgende taken uit:
 > [!div class="checklist"]
@@ -73,7 +73,7 @@ U doorloopt de volgende stappen voor het voorbereiden en uitvoeren van het exper
 
 1. Er wordt een lijst met mappen weergegeven, met de verschillende gebruikers die toegang hebben tot de werkruimte.  Selecteer uw map om de map **vignettes** daar te klonen.
 
-## <a name="a-nameopenopen-rstudio"></a><a name="open">RStudio openen
+## <a name="open-rstudio"></a><a name="open"></a>RStudio openen
 
 Gebruik RStudio in een rekeninstantie of op een Notebook-VM om deze zelfstudie uit te voeren.  
 

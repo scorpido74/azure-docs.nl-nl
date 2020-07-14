@@ -8,14 +8,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 11/04/2019
+ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 41b6fb38798e9aa7264000676d81101db1c83236
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e10e5050912788732128a8b765716c22fe9e576e
+ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656533"
+ms.lasthandoff: 06/29/2020
+ms.locfileid: "85517448"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Zelfstudie: Een machine Learning-model implementeren met de ontwerpfunctie (preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -40,7 +40,7 @@ Voor het implementeren van uw pijplijn moet u de trainingspijplijn eerst convert
 
 1. Selecteer boven het pijplijncanvas **Deductiepijplijn maken** > **Realtime deductiepijplijn**.
 
-    ![Schermopname waarin wordt weergegeven waar de knop pijplijn maken zich bevindt](./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png)
+    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png"alt-text="Schermopname waarin wordt weergegeven waar de knop pijplijn maken zich bevindt":::
 
     Uw pijplijn ziet er nu als volgt uit: 
 
@@ -59,7 +59,7 @@ Voor het implementeren van uw pijplijn moet u de trainingspijplijn eerst convert
 
 1. Selecteer **Verzenden**en gebruik hetzelfde rekendoel en experiment dat u in deel 1 hebt gebruikt.
 
-    Als dit de eerste keer is dat u de pijplijn uitvoert, kan het maximaal 20 minuten duren voor uw pijplijn helemaal is uitgevoerd. De standaard rekeninstellingen hebben een minimale knooppuntgrootte van 0, wat betekent dat de ontwerpfunctie na inactiviteit resources moet toewijzen. Herhaalde pijplijnuitvoeringen kosten minder tijd, omdat de rekenresources al zijn toegewezen. Bovendien gebruikt de ontwerpfunctie in de cache opgeslagen resultaten voor elke module om de efficiëntie verder te verbeteren.
+    Als dit de eerste keer is dat u de pijplijn uitvoert, kan het maximaal 20 minuten duren voor uw pijplijn helemaal is uitgevoerd. De standaardrekeninstellingen hebben een minimale knooppuntgrootte van 0, wat betekent dat de ontwerpfunctie na inactiviteit resources moet toewijzen. Herhaalde pijplijnuitvoeringen kosten minder tijd, omdat de rekenresources al zijn toegewezen. Bovendien gebruikt de ontwerpfunctie in de cache opgeslagen resultaten voor elke module om de efficiëntie verder te verbeteren.
 
 1. Selecteer **Implementeren**.
 
@@ -72,7 +72,7 @@ In het dialoogvenster dat wordt weergegeven kunt u willekeurige Azure Kubernetes
 1. Selecteer **Deductieclusters** >  **+ Nieuw** op het navigatielint.
 
     ![Schermopname waarin wordt weergegeven waar het deelvenster nieuwe deductiecluster zich bevindt](./media/tutorial-designer-automobile-price-deploy/new-inference-cluster.png)
-
+   
 1. Configureer een nieuwe Kubernetes Service in het deelvenster Deductiecluster.
 
 1. Geef *aks-compute* op als **Compute-naam**.
@@ -96,8 +96,8 @@ Wanneer de inrichting van uw AKS-service is voltooid, gaat u terug naar de realt
 1. Selecteer de AKS-cluster die u hebt gemaakt.
 
 1. Selecteer **Implementeren**.
-
-    ![Schermopname waarin het instellen van een nieuw realtime-eindpunt wordt weergegeven](./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png)
+    
+    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png"alt-text="Schermopname waarin het instellen van een nieuw realtime-eindpunt wordt weergegeven":::
 
     Nadat de implementatie is voltooid, wordt een melding boven het canvas weergegeven. Dit kan enkele minuten duren.
 

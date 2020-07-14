@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: da5211206c12f2fe3259fcbbf196a7728c026b26
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 6a1e301b63eee348f59a1b9570c2c3ffcd78ecef
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234108"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362387"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>Zelfstudie: Een tenant maken in Windows Virtual Desktop
 
@@ -78,25 +78,34 @@ Ga als volgt te werk om de toepassingsrol TenantCreator toe te wijzen:
 
 1. Ga naar de [Azure portal](https://portal.azure.com) om de toepassingsrol TenantCreator te beheren. Zoek en selecteer **Bedrijfstoepassingen**. Als u met meerdere Azure Active Directory tenants werkt, kunt u het beste een persoonlijke browsersessie openen en de URL's kopiëren en in de adresbalk plakken.
 
-   ![Schermopname van het zoeken naar bedrijfstoepassingen in de Azure-portal](../media/azure-portal-enterprise-applications.png)
+   > [!div class="mx-imgBorder"]
+   > ![Schermopname van het zoeken naar bedrijfstoepassingen in Azure Portal](../media/azure-portal-enterprise-applications.png)
+
 2. Zoek binnen **Bedrijfstoepassingen** naar **Windows Virtual Desktop**. U ziet de twee toepassingen waarvoor u in de vorige sectie toestemming hebt gegeven. Van deze twee toepassingen selecteert u **Windows Virtual Desktop**.
    
-   ![Een schermopname van de zoek resultaten bij het zoeken naar 'Windows Virtual Desktop' in 'Bedrijfstoepassingen'. De app met de naam 'Windows Virtual Desktop' is gemarkeerd.](../media/tenant-enterprise-app.png)
+   > [!div class="mx-imgBorder"]
+   > ![Een schermopname van de zoek resultaten bij het zoeken naar 'Windows Virtual Desktop' in 'Bedrijfstoepassingen'. De app met de naam 'Windows Virtual Desktop' is gemarkeerd.](../media/tenant-enterprise-app.png)
+
 3. Selecteer **Gebruikers en groepen**. Mogelijk ziet u dat de beheerder die toestemming heeft verleend voor de toepassing al wordt vermeld met de rol **Standaardtoegang** toegewezen. Dit is niet voldoende voor het maken van een Windows Virtual Desktop-tenant. Ga verder met het volgen van deze instructies om de **TenantCreator**-rol aan een gebruiker toe te voegen.
    
-   ![Een schermopname van de gebruikers en groepen die zijn toegewezen voor het beheren van de bedrijfstoepassing 'Windows Virtual Desktop'. Op de schermopname ziet u slechts één toewijzing, die is ingesteld op 'Standaardtoegang'.](../media/tenant-default-access.png)
+   > [!div class="mx-imgBorder"]
+   > ![Een schermopname van de gebruikers en groepen die zijn toegewezen voor het beheren van de bedrijfstoepassing 'Windows Virtual Desktop'. Op de schermopname ziet u slechts één toewijzing, die is ingesteld op 'Standaardtoegang'.](../media/tenant-default-access.png)
+
 4. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** op het tabblad **Toewijzing toevoegen**.
 5. Zoek naar een gebruikersaccount dat uw Windows Virtual Desktop-tenant maakt. Voor het gemak kan dit het globale beheerdersaccount zijn.
    - Als u een Microsoft Identity Provider als contosoadmin@live.com of contosoadmin@outlook.com gebruikt, kunt u zich mogelijk niet aanmelden bij Windows Virtual Desktop. U kunt het beste een domeinspecifiek account gebruiken, zoals admin@contoso.com of admin@contoso.onmicrosoft.com.
 
-   ![Een schermopname van het selecteren van een gebruiker om toe te voegen als 'TenantCreator'.](../media/tenant-assign-user.png)
+   > [!div class="mx-imgBorder"]
+   > ![Een schermopname van het selecteren van een gebruiker om toe te voegen als 'TenantCreator'.](../media/tenant-assign-user.png)
+
    > [!NOTE]
    > U moet een gebruiker (of een groep die een gebruiker bevat) selecteren die afkomstig is uit dit Azure Active Directory-exemplaar. U kunt geen gastgebruiker (B2B) of een service-principal kiezen.
 
 6. Selecteer het gebruikersaccount, kies de knop **Selecteren** en selecteer **Toewijzen**.
 7. Controleer op de pagina **Windows Virtual Desktop - Gebruikers en groepen** of er een nieuw item wordt weergegeven met de rol **TenantCreator** toegewezen aan de gebruiker die de Windows Virtual Desktop-tenant gaat maken.
 
-   ![Een schermopname van de gebruikers en groepen die zijn toegewezen voor het beheren van de bedrijfstoepassing 'Windows Virtual Desktop'. De schermopname bevat nu een tweede vermelding van een gebruiker die is toegewezen aan de rol 'TenantCreator'.](../media/tenant-tenant-creator-added.png)
+   > [!div class="mx-imgBorder"]
+   > ![Een schermopname van de gebruikers en groepen die zijn toegewezen voor het beheren van de bedrijfstoepassing 'Windows Virtual Desktop'. De schermopname bevat nu een tweede vermelding van een gebruiker die is toegewezen aan de rol 'TenantCreator'.](../media/tenant-tenant-creator-added.png)
 
 Voordat u doorgaat met het maken van uw Windows Virtual Desktop-tenant, hebt u twee gegevens nodig:
 
@@ -106,20 +115,26 @@ Voordat u doorgaat met het maken van uw Windows Virtual Desktop-tenant, hebt u t
 Ga als volgt te werk om uw tenant-id van Azure Active Directory (of **Directory-id**) op te zoeken:
 1. Zoek en selecteer in dezelfde sessie van [Azure-portal](https://portal.azure.com) de optie **Azure Active Directory**.
 
-   ![Een schermopname van de zoekresultaten voor 'Azure Active Directory' in de Azure-portal. Het zoekresultaat onder 'Services' wordt gemarkeerd.](../media/tenant-search-azure-active-directory.png)
+   > [!div class="mx-imgBorder"]
+   > ![Een schermopname van de zoekresultaten voor 'Azure Active Directory' in Azure Portal. Het zoekresultaat onder 'Services' wordt gemarkeerd.](../media/tenant-search-azure-active-directory.png)
+
 2. Schuif omlaag totdat u de optie **Eigenschappen** vindt en selecteer deze.
 3. Zoek naar **Directory-id** en selecteer vervolgens het klembordpictogram. Plak deze op een handige locatie, zodat u deze later kunt gebruiken als de waarde voor **AadTenantId**.
 
-   ![Een schermopname van de Azure Active Directory-eigenschappen. De muisaanwijzer wijst het klembordpictogram voor 'Directory-id' aan om te kopiëren en plakken.](../media/tenant-directory-id.png)
+   > [!div class="mx-imgBorder"]
+   > ![Een schermopname van de Azure Active Directory-eigenschappen. De muisaanwijzer wijst het klembordpictogram voor 'Directory-id' aan om te kopiëren en plakken.](../media/tenant-directory-id.png)
 
 Ga als volgt te werk om uw Azure-abonnements-id op te zoeken:
 1. Zoek en selecteer **Abonnementen** in dezelfde sessie van [Azure-portal](https://portal.azure.com).
    
-   ![Een schermopname van de zoekresultaten voor 'Azure Active Directory' in de Azure-portal. Het zoekresultaat onder 'Services' wordt gemarkeerd.](../media/tenant-search-subscription.png)
+   > [!div class="mx-imgBorder"]
+   > ![Een schermopname van de zoekresultaten voor 'Azure Active Directory' in Azure Portal. Het zoekresultaat onder 'Services' wordt gemarkeerd.](../media/tenant-search-subscription.png)
+
 2. Selecteer het Azure-abonnement dat u wilt gebruiken om servicemeldingen voor Windows Virtual Desktop te ontvangen.
 3. Zoek naar **Abonnement-id** en beweeg de muisaanwijzer over de waarde totdat er een klembordpictogram wordt weergegeven. Selecteer het klembordpictogram en plak het op een handige locatie, zodat u het later kunt gebruiken als de waarde voor **AzureSubscriptionId**.
    
-   ![Een schermopname van de eigenschappen van het Azure-abonnement. De muisaanwijzer wijst het klembordpictogram voor 'Abonnement-id' aan om te kopiëren en plakken.](../media/tenant-subscription-id.png)
+   > [!div class="mx-imgBorder"]
+   > ![Een schermopname van de eigenschappen van het Azure-abonnement. De muisaanwijzer wijst het klembordpictogram voor 'Abonnement-id' aan om te kopiëren en plakken.](../media/tenant-subscription-id.png)
 
 ## <a name="create-a-windows-virtual-desktop-tenant"></a>Een Windows Virtual Desktop-tenant maken
 

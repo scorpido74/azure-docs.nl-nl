@@ -11,43 +11,39 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 06/22/2020
-ms.openlocfilehash: 01c6c37d31d41f88b370face372555536724adde
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: eed333b5e6a83b140df515fc02767b8a7c7a63c7
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85256068"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85506636"
 ---
-# <a name="quickstart-create-an-azure-sql-managed-instance-using-an-azure-resource-manager-template"></a>Quickstart: Een Azure SQL Managed Instance maken met behulp van een Azure Resource Manager-sjabloon
+# <a name="quickstart-create-an-azure-sql-managed-instance-using-an-arm-template"></a>Quickstart: Een Azure SQL Managed Instance maken met behulp van een ARM-sjabloon
 
-Deze quickstart is gericht op het implementeren van een Resource Manager-sjabloon voor het maken van een Azure SQL Managed Instance en vNet.
+Deze quickstart is gericht op het implementeren van een ARM-sjabloon (Azure Resource Manager-sjabloon) voor het maken van een Azure SQL Managed Instance en vNet. [Azure SQL Managed Instance](sql-managed-instance-paas-overview.md) is een intelligente, volledig beheerde, schaalbare clouddatabase met bijna 100% functiepariteit met de database-engine van SQL Server.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-Als u nog geen abonnement op Azure hebt, [maak dan een gratis account](https://azure.microsoft.com/free/).
+Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
+
+[![Implementeren in Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-sqlmi-new-vnet%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Vereisten
 
-Geen.
+Als u nog geen abonnement op Azure hebt, [maak dan een gratis account](https://azure.microsoft.com/free/).
 
-## <a name="create-an-azure-sql-managed-instance"></a>Een Azure SQL Managed Instance maken
+## <a name="review-the-template"></a>De sjabloon controleren
 
-[Azure SQL Managed Instance](sql-managed-instance-paas-overview.md) is een intelligente, volledig beheerde, schaalbare clouddatabase met bijna 100% functiepariteit met de database-engine van SQL Server.
+De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-quickstartsjablonen](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/).
 
-### <a name="review-the-template"></a>De sjabloon controleren
-
-De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure Quick Start-sjablonen](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/).
-
-:::code language="json" source="~/quickstart-templates/101-sqlmi-new-vnet/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/101-sqlmi-new-vnet/azuredeploy.json" range="001-249" highlight="113,178,188,226":::
 
 Deze resources worden in de sjabloon gedefinieerd:
 
-- [**Microsoft.Sql/managedinstances**](/azure/templates/microsoft.sql/managedinstances)
-- [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.Network/virtualNetworks)
-- [**Microsoft.Network/routeTables**](/azure/templates/microsoft.Network/routeTables)
 - [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.Network/networkSecurityGroups)
-
-
+- [**Microsoft.Network/routeTables**](/azure/templates/microsoft.Network/routeTables)
+- [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.Network/virtualNetworks)
+- [**Microsoft.Sql/managedinstances**](/azure/templates/microsoft.sql/managedinstances)
 
 Meer voorbeelden van sjablonen vindt u in [Azure-quickstart-sjablonen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sql&pageNumber=1&sort=Popular).
 
@@ -73,7 +69,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 Read-Host -Prompt "Press [ENTER] to continue ..."
 ```
 
-# <a name="the-azure-cli"></a>[De Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 read -p "Enter a project name that is used for generating resource names:" projectName &&
@@ -86,7 +82,7 @@ echo "Press [ENTER] to continue ..." &&
 read
 ```
 
-* * *
+---
 
 ## <a name="review-deployed-resources"></a>Geïmplementeerde resources bekijken
 
@@ -109,7 +105,7 @@ $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 Remove-AzResourceGroup -Name $resourceGroupName
 ```
 
-# <a name="the-azure-cli"></a>[De Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -117,7 +113,7 @@ read resourceGroupName &&
 az group delete --name $resourceGroupName
 ```
 
-* * *
+---
 
 ## <a name="next-steps"></a>Volgende stappen
 

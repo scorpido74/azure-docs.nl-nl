@@ -8,14 +8,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 05/12/2020
+ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 2fab23e9f765d9ab4908cc4be69d8b747c6856b9
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: 7068c1e795e7a607776c48d1b026562a1be6b25d
+ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84790531"
+ms.lasthandoff: 06/29/2020
+ms.locfileid: "85517605"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Zelfstudie: Prijzen voor auto's voorspellen met de ontwerpfunctie (preview-versie)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -107,8 +107,8 @@ U kunt de gegevens visualiseren voor meer informatie over de gegevensset die u g
 1. In het deelvenster Details van de module aan de rechterkant van het canvas selecteert u **Uitvoer en logboeken**.
 
 1. Selecteer het grafiekpictogram om de gegevens te visualiseren.
-
-    ![De gegevens visualiseren](./media/tutorial-designer-automobile-price-train-score/visualize-data.png)
+    
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/visualize-data.png"alt-text="Alternatieve tekst hier.":::
 
 1. Selecteer de verschillende kolommen in het gegevensvenster om informatie over elke kolom weer te geven.
 
@@ -180,8 +180,8 @@ Er ontbreken nog steeds waarden in uw gegevensset nadat u de kolom **normalized-
 1. In het deelvenster Details van de module aan de rechterkant van het canvas selecteert u het vak **Opmerking** en voert u *Rijen met ontbrekende waarden verwijderen* in. 
 
     Uw pijplijn ziet er als volgt uit:
-    
-    ![Kolom selecteren](./media/tutorial-designer-automobile-price-train-score/pipeline-clean.png)
+
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-clean.png"alt-text="Selecteer-kolom":::
 
 ## <a name="train-a-machine-learning-model"></a>Een machine learning-model trainen
 
@@ -229,7 +229,7 @@ Train het model door hiervoor een gegevensset te gebruiken waarin de prijs een v
     > [!IMPORTANT]
     > Controleer of de linkeruitvoerpoort van **Split Data** inderdaad aan **Train Model** wordt gekoppeld. De linkerpoort bevat de trainingsset. De rechterpoort bevat de testset.
 
-    ![Schermopname met de juiste configuratie van de module Train Model. De module Linear Regression wordt gekoppeld aan de linkerpoort van de module Train Model en de module Split Data wordt gekoppeld aan de rechterpoort van Train Model](./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png)
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png"alt-text="Schermopname met de juiste configuratie van de module Train Model. De module Linear Regression wordt gekoppeld aan de linkerpoort van de module Train Model en de module Split Data wordt gekoppeld aan de rechterpoort van Train Model.":::
 
 1. Selecteer de module **Train Model**.
 
@@ -244,7 +244,7 @@ Train het model door hiervoor een gegevensset te gebruiken waarin de prijs een v
 
     Uw pijplijn ziet er als volgt uit:
 
-    ![Schermopname met de juiste configuratie van de pijplijn nadat de module Train Model is toegevoegd.](./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png)
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png"alt-text="Schermopname met de juiste configuratie van de pijplijn nadat de module Train Model is toegevoegd.":::
 
 ### <a name="add-the-score-model-module"></a>De module Score Model toevoegen
 
@@ -264,7 +264,7 @@ Gebruik de module **Evaluate Model** om te evalueren hoe goed uw model heeft ges
 
     De uiteindelijke pijplijn ziet er als volgt uit:
 
-    ![Schermopname met de juiste configuratie van de pijplijn.](./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png)
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png"alt-text="Schermopname met de juiste configuratie van de pijplijn.":::
 
 ## <a name="submit-the-pipeline"></a>De pijplijn indienen
 
@@ -295,7 +295,7 @@ Nadat de uitvoering is voltooid, kunt u de resultaten van de pijplijnuitvoering 
 
     Hier ziet u de voorspelde prijzen en de daadwerkelijke prijzen van de testgegevens.
 
-    ![Schermopname van de uitvoervisualisatie, waarin de kolom Gescoorde label is gemarkeerd](./media/tutorial-designer-automobile-price-train-score/score-result.png)
+    :::image type="content" source="./media/tutorial-designer-automobile-price-train-score/score-result.png"alt-text="Schermopname van de uitvoervisualisatie, waarin de kolom Gescoorde label is gemarkeerd":::
 
 ### <a name="evaluate-models"></a>Modellen evalueren
 

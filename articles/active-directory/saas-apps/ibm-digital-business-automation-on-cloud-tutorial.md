@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f33992c7aa205e503c7de150adad7180ff823881
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: c0a8185d81966932c17fd3b0590b5f8ef2f7b6df
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85099673"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85479790"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ibm-digital-business-automation-on-cloud"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met IBM Digital Business Automation on Cloud
 
@@ -93,7 +93,7 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
     > Als de waarden voor **Id** en **Antwoord-URL** niet automatisch worden ingevuld, kunt u de waarden zelf invullen afhankelijk van uw behoeften.
 
     > [!Note]
-    > Klanten kunnen het metagegevensbestand voor hun Cloud-abonnement opvragen bij het [DBAoC DevOps-team](mailto:supportbpmoncloud@us.ibm.com).
+    > Klanten kunnen het metagegevensbestand voor hun Cloud-abonnement verkrijgen via de [IBM Digital Business Automation in Cloud Client-ondersteuningsteam](mailto:supportbpmoncloud@us.ibm.com).
 
 1. Als u niet het **Metagegevensbestand van de serviceprovider** hebt, voert u in de sectie **Standaard SAML-configuratie** de waarden voor de volgende velden in, als u de toepassing in de met **IDP** geïnitieerde modus wilt configureren:
 

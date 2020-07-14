@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1ded745b5a734fd92a8ace851e3ecfc4a7a487d5
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: e8d68e5f2eeeb7363469535c027f258fbc9d7ed1
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636390"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85480487"
 ---
 # <a name="tutorial-create-windows-vm-images-with-azure-powershell"></a>Zelfstudie: Windows VM-installatiekopieën maken met Azure PowerShell
 
@@ -54,7 +54,7 @@ Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek 
 
 ## <a name="get-the-vm"></a>De VM ophalen
 
-U met behulp van [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) een lijst met VM's weergeven die beschikbaar zijn in een resourcegroep. Wanneer u de naam van de virtuele machine en de resourcegroep weet, kunt u `Get-AzVM` opnieuw gebruiken om het VM-object op te halen en op te slaan in een variabele voor later gebruik. In dit voorbeeld wordt een virtuele machine met de naam *sourceVM* opgehaald uit de resourcegroep myResourceGroup en toegewezen aan de variabele *$vm*. 
+U met behulp van [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) een lijst met VM's weergeven die beschikbaar zijn in een resourcegroep. Wanneer u de naam van de virtuele machine en de resourcegroep weet, kunt u `Get-AzVM` opnieuw gebruiken om het VM-object op te halen en op te slaan in een variabele voor later gebruik. In dit voorbeeld wordt een virtuele machine met de naam *sourceVM* opgehaald uit de resourcegroep myResourceGroup en toegewezen aan de variabele *$sourceVM*. 
 
 ```azurepowershell-interactive
 $sourceVM = Get-AzVM `
@@ -131,7 +131,7 @@ New-AzGalleryImageVersion `
    -ResourceGroupName $resourceGroup.ResourceGroupName `
    -Location $resourceGroup.Location `
    -TargetRegion $targetRegions  `
-   -Source $vm.Id.ToString() `
+   -Source $sourceVM.Id.ToString() `
    -PublishingProfileEndOfLifeDate '2020-12-01'
 ```
 

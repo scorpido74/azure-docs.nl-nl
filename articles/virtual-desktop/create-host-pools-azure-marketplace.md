@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8a20d7cb05f4529d5aa8a115b7d1db6e4d812be0
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: 7c22ad844f0a543cfbf2e007ab2bfc8f0fe22ef7
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85100861"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362931"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Zelfstudie: Een hostpool maken met de Azure-portal
 
@@ -67,20 +67,23 @@ Ga als volgt te werk om te beginnen met het maken van uw nieuwe hostgroep:
    
    De Azure-geografie die is gekoppeld aan de regio's die u hebt geselecteerd, is de locatie waar de metagegevens voor deze hostgroep en de gerelateerde objecten worden opgeslagen. Zorg ervoor dat u de regio's in de geografie kiest waarin u wilt dat de metagegevens van de service worden opgeslagen.
 
-     ![Een schermopname van de Azure Portal met het veld Locatie met de locatie US - oost geselecteerd. Naast het veld ziet u de tekst: "Metagegevens worden opgeslagen in US - oost".](media/portal-location-field.png)
+     > [!div class="mx-imgBorder"]
+     > ![Een schermopname van de Azure Portal met het veld Locatie met de locatie US - oost geselecteerd. Naast het veld ziet u de tekst: "Metagegevens worden opgeslagen in US - oost."](media/portal-location-field.png)
 
 8. Onder Hostgroeptype geeft u aan of uw hostgroep **Persoonlijk** of **Gegroepeerd** wordt.
 
     - Als u **Persoonlijk** kiest, selecteert u vervolgens **Automatisch** of **Direct** in het veld Toewijzingstype.
 
-      ![Een schermopname van het vervolgkeuzemenu bij het veld Toewijzingstype. De gebruiker heeft Automatisch geselecteerd.](media/assignment-type-field.png)
+      > [!div class="mx-imgBorder"]
+      > ![Een schermopname van het vervolgkeuzemenu bij het veld Toewijzingstype. De gebruiker heeft Automatisch geselecteerd.](media/assignment-type-field.png)
 
 9. Als u **Gegroepeerd** kiest, voert u de volgende gegevens in:
 
      - Voor **Maximale sessielimiet** voert u het maximum aantal gebruikers in voor wie u gelijke taakverdeling voor één sessiehost wilt.
      - Kies voor **Algoritme voor taakverdeling** de optie breedte-eerst of diepte-eerst, op basis van uw gebruikspatroon.
 
-       ![Een schermopname van het veld Toewijzingstype met "Gegroepeerd" geselecteerd. De gebruiker beweegt de cursor over Breedte-eerst in het vervolgkeuzemenu voor gelijke taakverdeling.](media/pooled-assignment-type.png)
+       > [!div class="mx-imgBorder"]
+       > ![Een schermopname van het veld Toewijzingstype met "Gegroepeerd" geselecteerd. De gebruiker beweegt de cursor over Breedte-eerst in het vervolgkeuzemenu voor gelijke taakverdeling.](media/pooled-assignment-type.png)
 
 10. Selecteer **Volgende: Details VM**.
 
@@ -117,11 +120,13 @@ Ga als volgt te werk om uw virtuele machine in te stellen binnen het installatie
 
      Als u de gewenste installatiekopie niet ziet, selecteert u **Door alle afbeeldingen en schijven bladeren**, waarmee u een andere afbeelding in uw galerie of een installatiekopie van Microsoft en andere uitgevers kunt selecteren.
 
-     ![Een schermopname van de Marketplace met een lijst met installatiekopieën van Microsoft.](media/marketplace-images.png)
+     > [!div class="mx-imgBorder"]
+     > ![Een schermopname van de Marketplace met een lijst met installatiekopieën van Microsoft.](media/marketplace-images.png)
 
      U kunt ook naar **Mijn objecten** gaan en een aangepaste installatiekopie kiezen die u al hebt geüpload.
 
-     ![Een schermopname van het tabblad Mijn objecten.](media/my-items.png)
+     > [!div class="mx-imgBorder"]
+     > ![Een schermopname van het tabblad Mijn objecten.](media/my-items.png)
 
     - Als u **Opslagblob** kiest, kunt u gebruikmaken van uw eigen installatiekopiebuild via Hyper-V of op een Azure VM. U hoeft alleen de locatie van de installatiekopie in de opslagblob als een URI in te voeren.
 
@@ -136,7 +141,8 @@ Ga als volgt te werk om uw virtuele machine in te stellen binnen het installatie
     >[!NOTE]
     >Voor een betere beveiliging wordt u aangeraden geen openbare binnenkomende poorten te openen.
 
-    ![Een schermopname van de paginabeveiligingsgroep waarop een lijst met beschikbare poorten in een vervolgkeuzemenu wordt weergegeven.](media/available-ports.png)
+    > [!div class="mx-imgBorder"]
+    > ![Een schermopname van de paginabeveiligingsgroep waarop een lijst met beschikbare poorten in een vervolgkeuzemenu wordt weergegeven.](media/available-ports.png)
     
     Als u **Geavanceerd** kiest, selecteert u een bestaande netwerkbeveiligingsgroep die u al hebt geconfigureerd.
 

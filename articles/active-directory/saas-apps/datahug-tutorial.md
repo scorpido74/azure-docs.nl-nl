@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met Datahug | Microsoft Docs'
+title: 'Zelfstudie: Azure Active Directory-integratie met Datahug | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Datahug.
 services: active-directory
 documentationCenter: na
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9271d8b5657769ce70c46b5e428d995ddc642608
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: cf2ef4211cab0dd778295c71a39a32305d074765
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73158441"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367645"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-datahug"></a>Zelf studie: integratie Azure Active Directory met Datahug
+# <a name="tutorial-azure-active-directory-integration-with-datahug"></a>Zelfstudie: Azure Active Directory-integratie met Datahug
 
 In deze zelfstudie leert u hoe u Datahug kunt integreren met Azure Active Directory (Azure AD).
 De integratie van Datahug met Azure AD biedt de volgende voordelen:
@@ -33,7 +33,7 @@ De integratie van Datahug met Azure AD biedt de volgende voordelen:
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -77,12 +77,12 @@ Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure 
 
 Om Azure AD-eenmalige aanmelding bij Datahug te configureren en te testen, moet u de volgende bouwstenen voltooien:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
 2. **[Eenmalige aanmelding bij Datahug configureren](#configure-datahug-single-sign-on)** - de instellingen voor eenmalige aanmelding aan de toepassingszijde configureren.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
 5. **[Testgebruiker voor Dagahug maken](#create-datahug-test-user)** - als u een tegenhanger van Britta Simon in Datahug wilt hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
@@ -102,11 +102,11 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding bij Datahug wil
 
     ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-4. Als u de toepassing in de gestarte modus van **IDP** wilt configureren, voert u de volgende stappen uit in de sectie **basis configuratie van SAML** :
+4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door **IDP** geïnitieerde modus wilt configureren:
 
     ![Domein- en URL-gegevens voor eenmalige aanmelding bij Datahug](common/idp-intiated.png)
 
-    a. Typ in het tekstvak **id** een URL met het volgende patroon:`https://apps.datahug.com/identity/<uniqueID>`
+    a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://apps.datahug.com/identity/<uniqueID>`
 
     b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://apps.datahug.com/identity/<uniqueID>/acs`
 
@@ -114,12 +114,12 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding bij Datahug wil
 
     ![Domein- en URL-gegevens voor eenmalige aanmelding bij Datahug](common/metadata-upload-additional-signon.png)
 
-    Typ een URL in het tekstvak **URL voor aanmelding** :`https://apps.datahug.com/`
+    In het tekstvak **Aanmeldings-URL** typt u een URL: `https://apps.datahug.com/`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke id en antwoord-URL. Neem contact op met het [Datahug -ondersteuningsteam](https://datahug.com/about/contact-us/) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke id en antwoord-URL. Neem contact op met het [Datahug -ondersteuningsteam](https://www.sap.com/corporate/en/company/office-locations.html) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-6. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens ** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
+6. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens**  te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
@@ -131,7 +131,7 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding bij Datahug wil
 
     b. Selecteer **SHA-1** uit het **Algoritme voor ondertekening**.
     
-    c. Klik op **Opslaan**
+    c. Klik op **Opslaan**.
 
     ![Communifire-optie voor ondertekenen](./media/datahug-tutorial/tutorial_datahug_signingoption.png)
 
@@ -147,7 +147,7 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding bij Datahug wil
 
 ### <a name="configure-datahug-single-sign-on"></a>Eenmalige aanmelding bij Datahug configureren
 
-Als u eenmalige aanmelding aan de kant van **Datahug** wilt configureren, moet u het gedownloade **XML-bestand met federatieve metagegevens** en de correcte uit de Azure-portal gekopieerde URL's verzenden naar het [Datahug-ondersteuningsteam](https://datahug.com/about/contact-us/). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding aan de kant van **Datahug** wilt configureren, moet u het gedownloade **XML-bestand met federatieve metagegevens** en de correcte uit de Azure-portal gekopieerde URL's verzenden naar het [Datahug-ondersteuningsteam](https://www.sap.com/corporate/en/company/office-locations.html). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -157,7 +157,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -165,14 +165,14 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer **BrittaSimon**in het veld **naam** in.
+    a. Voer in het veld **Naam** **Britta Simon** in.
   
-    b. Typ **\@brittasimon yourcompanydomain. extension** in het veld **gebruikers naam** .  
+    b. In het veld **Gebruikersnaam** typt u **brittasimon\@yourcompanydomain.extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **maken**.
+    d. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -194,18 +194,18 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoog venster **gebruikers en groepen** de optie **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst Gebruikers en klik op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
+6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
-7. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
+7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
 ### <a name="create-datahug-test-user"></a>Testgebruiker voor Datahug maken
 
 Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Datahug, moeten ze worden ingericht in Datahug.  
 In het geval van Datahug is dat een handmatige taak.
 
-**Voer de volgende stappen uit als u een gebruikersaccount wilt inrichten:**
+**Als u een gebruikersaccount wilt inrichten, voert u de volgende stappen uit:**
 
 1. Meld u als beheerder aan bij de bedrijfssite van Datahug.
 
@@ -235,7 +235,7 @@ Wanneer u in het toegangsvenster op de tegel Datahug klikt, wordt u automatisch 
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -3,26 +3,38 @@ title: Resourceprovider maken
 description: Hierin wordt beschreven hoe u een resourceprovider maakt en hoe u de aangepaste resourcetypen implementeert.
 author: MSEvanhi
 ms.topic: tutorial
-ms.date: 06/19/2020
+ms.date: 06/24/2020
 ms.author: evanhi
-ms.openlocfilehash: ce547c010d3cc814d4e6f6182c19572248228fc3
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 541d140716e52b4fe1db4bc999682914a380a5f0
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85125001"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85368104"
 ---
-# <a name="quickstart-create-custom-provider-and-deploy-custom-resources"></a>Quickstart: Aangepaste provider maken en aangepaste resources implementeren
+# <a name="quickstart-create-a-custom-provider-and-deploy-custom-resources"></a>Quickstart: Een aangepaste provider maken en aangepaste resources implementeren
 
 In deze quickstart maakt u uw eigen resourceprovider en implementeert u aangepaste resourcetypen voor die resourceprovider. Zie het [overzicht van aangepaste Azure-providers (preview)](overview.md) voor meer informatie over aangepaste providers.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U moet `REST`-bewerkingen aanroepen om de stappen in deze quickstart uit te voeren. Er zijn [verschillende manieren om REST-aanvragen te verzenden](/rest/api/azure/).
+- Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+- U moet `REST`-bewerkingen aanroepen om de stappen in deze quickstart uit te voeren. Er zijn [verschillende manieren om REST-aanvragen te verzenden](/rest/api/azure/).
 
-Gebruik [Bash in Azure Cloud Shell](/azure/cloud-shell/quickstart) om Azure CLI-opdrachten uit te voeren. Voor de [custom-providers](/cli/azure/ext/custom-providers/custom-providers/resource-provider)-opdrachten is een uitbreiding vereist. Zie [Extensies gebruiken met Azure CLI](/cli/azure/azure-cli-extensions-overview) voor meer informatie.
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-Gebruik PowerShell 7 of een recentere versie en de Azure PowerShell-modules om PowerShell-opdrachten lokaal uit te voeren. Zie [Azure PowerShell installeren](/powershell/azure/install-az-ps) voor meer informatie. Als u nog geen hulpprogramma voor `REST`-bewerkingen hebt, moet u de [ARMClient](https://github.com/projectkudu/ARMClient) installeren. Dit is een opensource-opdrachtregelprogramma waarmee u de Azure Resource Manager-API kunt aanroepen.
+- Voor de [custom-providers](/cli/azure/ext/custom-providers/custom-providers/resource-provider)-opdrachten is een uitbreiding vereist. Zie [Extensies gebruiken met Azure CLI](/cli/azure/azure-cli-extensions-overview) voor meer informatie.
+- Azure CLI-voorbeelden gebruiken `az rest` voor `REST`-aanvragen. Ga voor meer informatie naar [az rest](/cli/azure/reference-index#az-rest).
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+- PowerShell 7 of een recentere versie en de Azure PowerShell-modules worden gebruikt om de PowerShell-opdrachten lokaal uit te voeren. Zie [Azure PowerShell installeren](/powershell/azure/install-az-ps) voor meer informatie.
+- Als u nog geen hulpprogramma voor `REST`-bewerkingen hebt, moet u de [ARMClient](https://github.com/projectkudu/ARMClient) installeren. Dit is een opensource-opdrachtregelprogramma waarmee u de Azure Resource Manager-API kunt aanroepen.
+- Nadat de **ARMClient** is geïnstalleerd, kunt u gebruiksgegevens weergeven met behulp van een PowerShell-opdrachtprompt door het volgende te typen: `armclient.exe`. Of ga naar de [ARMClient-wiki](https://github.com/projectkudu/ARMClient/wiki).
+
+---
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="deploy-custom-provider"></a>Aangepaste provider implementeren
 
@@ -30,14 +42,16 @@ Implementeer een [voorbeeldsjabloon](https://github.com/Azure/azure-docs-json-sa
 
 Na de implementatie van de sjabloon heeft uw abonnement de volgende resources:
 
-* Functie-app met de bewerkingen voor de resources en acties.
-* Opslagaccount voor het opslaan van gebruikers die zijn gemaakt via de aangepaste provider.
-* Aangepaste provider die de aangepaste resourcetypen en acties definieert. Er wordt gebruikgemaakt van het eindpunt voor de functie-app voor het verzenden van aanvragen.
-* Aangepaste resource van de aangepaste provider.
+- Functie-app met de bewerkingen voor de resources en acties.
+- Opslagaccount voor het opslaan van gebruikers die zijn gemaakt via de aangepaste provider.
+- Aangepaste provider die de aangepaste resourcetypen en acties definieert. Er wordt gebruikgemaakt van het eindpunt voor de functie-app voor het verzenden van aanvragen.
+- Aangepaste resource van de aangepaste provider.
 
-Gebruik Azure CLI of PowerShell als u de aangepaste provider wilt implementeren:
+Gebruik Azure CLI, PowerShell of de Azure-portal als u de aangepaste provider wilt implementeren:
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+
+In dit voorbeeld wordt u gevraagd om een resourcegroep, locatie en naam van de functie-app van de provider in te voeren. De namen worden opgeslagen in variabelen die worden gebruikt in andere opdrachten. Met de opdrachten [az group create](/cli/azure/group#az-group-create) en [az deployment group create](/cli/azure/deployment/group#az-deployment-group-create) implementeert u de resources.
 
 ```azurecli-interactive
 read -p "Enter a resource group name:" rgName &&
@@ -52,6 +66,8 @@ read
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
+In dit voorbeeld wordt u gevraagd om een resourcegroep, locatie en naam van de functie-app van de provider in te voeren. De namen worden opgeslagen in variabelen die worden gebruikt in andere opdrachten. Met de opdrachten [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) en [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) worden de resources geïmplementeerd.
+
 ```powershell
 $rgName = Read-Host -Prompt "Enter a resource group name"
 $location = Read-Host -Prompt "Enter the location (i.e. eastus)"
@@ -64,7 +80,7 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 
 ---
 
-U kunt ook de oplossing van Azure Portal implementeren met de volgende knop:
+U kunt de oplossing ook implementeren vanuit de Azure-portal. Selecteer de knop **Implementeren naar Azure** om de sjabloon in Azure Portal te openen.
 
 [![Implementeren in Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-docs-json-samples%2Fmaster%2Fcustom-providers%2Fcustomprovider.json)
 
@@ -252,7 +268,7 @@ Gebruik de [custom-providers](/cli/azure/ext/custom-providers/custom-providers/r
 
 ### <a name="list-custom-resource-providers"></a>Aangepaste resourceproviders weergeven
 
-Maakt een lijst met alle aangepaste resourceproviders in een abonnement. De standaardlijst bevat aangepaste resourceproviders voor het huidige abonnement, maar u kunt ook de `--subscription`-parameter opgeven. Gebruik de parameter `--resource-group` om een resourcegroep weer te geven.
+Gebruik de opdracht `list` om alle aangepaste resourceproviders in een abonnement weer te geven. De standaardlijst geeft alle aangepaste resourceproviders voor het huidige abonnement weer, maar u kunt ook de parameter `--subscription` opgeven. Gebruik de parameter `--resource-group` om een resourcegroep weer te geven.
 
 ```azurecli-interactive
 az custom-providers resource-provider list --subscription $subID
@@ -289,7 +305,7 @@ az custom-providers resource-provider list --subscription $subID
 
 ### <a name="show-the-properties"></a>De eigenschappen weergeven
 
-Geef de eigenschappen van een aangepaste resourceprovider weer. De uitvoerindeling lijkt op de `list`-uitvoer.
+Gebruik de opdracht `show` om de eigenschappen van de aangepaste resourceprovider weer te geven. De uitvoerindeling lijkt op de `list`-uitvoer.
 
 ```azurecli-interactive
 az custom-providers resource-provider show --resource-group $rgName --name $funcName
