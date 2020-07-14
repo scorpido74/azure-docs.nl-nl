@@ -3,12 +3,12 @@ title: Gesprekken met meerdere schakelingen-QnA Maker
 description: Gebruik prompts en context om de meerdere beurten, ook wel multi-turn genoemd, te beheren voor uw bot van de ene vraag naar de andere. Multi-turn is de mogelijkheid om een back-en-neer-conversatie te hebben waarbij de context van de vorige vraag de volgende vraag en het antwoord beïnvloedt.
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: 8ef244e1b6baf480189bb90ea5ff53138a6f377a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 93bc6201cb627dc27071caf7beded5778b06ccb6
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81261462"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229343"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Opvolgprompts gebruiken om meerdere beurten in een gesprek te maken
 
@@ -52,7 +52,7 @@ Wanneer u deze optie selecteert, haalt QnA Maker de hiërarchie op die in de doc
 
 Structuur voor meerdere scha kelen kan alleen worden afgeleid van Url's, PDF-bestanden of DOCX-bestanden. Voor een voor beeld van een structuur bekijkt u een afbeelding van een [hand matig PDF-bestand van micro soft Surface-gebruiker](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf).
 
-![! [Voor beeld van structuur in een gebruikers handleiding] (.. /media/conversational-context/import-file-with-conversational-structure.png)](../media/conversational-context/import-file-with-conversational-structure.png#lightbox)
+![! [Voor beeld van structuur in een gebruikers handleiding] (.. /Media/conversational-context/import-file-with-conversational-structure.png)](../media/conversational-context/import-file-with-conversational-structure.png#lightbox)
 
 ### <a name="building-your-own-multi-turn-document"></a>Uw eigen document op meerdere zetten bouwen
 
@@ -62,7 +62,7 @@ Als u een document met meerdere scha kelen maakt, houdt u de volgende richt lijn
 
 * Het eerste teken van de kop moet worden gekapitaliseerd.
 
-* Beëindig geen kop met een vraag teken, `?`.
+* Beëindig geen kop met een vraag teken, `?` .
 
 * U kunt het [voorbeeld document](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx) gebruiken als voor beeld voor het maken van uw eigen multi-turn-document.
 
@@ -80,7 +80,7 @@ Wanneer u een hiërarchisch document toevoegt, bepaalt QnA Maker opvolgings aanw
 
 ## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>Maak een kennis database met de prompts in meerdere richtingen met de API maken
 
-U kunt met behulp van de [QnA Maker Create API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)een kennis Case maken met vragen over meerdere schakelingen. De prompts worden toegevoegd in `context` de matrix `prompts` van de eigenschap.
+U kunt met behulp van de [QnA Maker Create API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)een kennis Case maken met vragen over meerdere schakelingen. De prompts worden toegevoegd in de `context` matrix van de eigenschap `prompts` .
 
 ## <a name="show-questions-and-answers-with-context"></a>Vragen en antwoorden met context weer geven
 
@@ -92,7 +92,7 @@ Selecteer **weergave opties**en selecteer vervolgens **context weer geven**. In 
 
 De context voor meerdere scha kelen wordt weer gegeven in de eerste kolom.
 
-![! [De kolom ' context (PREVIEW) '] (.. /media/conversational-context/surface-manual-pdf-follow-up-prompt.png)](../media/conversational-context/surface-manual-pdf-follow-up-prompt.png#lightbox)
+![! [De kolom ' context (PREVIEW) '] (.. /Media/conversational-context/surface-manual-pdf-follow-up-prompt.png)](../media/conversational-context/surface-manual-pdf-follow-up-prompt.png#lightbox)
 
 In de voor gaande afbeelding geeft **#1** vetgedrukte tekst in de kolom op die de huidige vraag aangeeft. De bovenliggende vraag is het bovenste item in de rij. Eventuele vragen hieronder zijn de gekoppelde vraag-en-antwoord paren. Deze items kunnen worden geselecteerd, zodat u direct naar de andere context items kunt gaan.
 
@@ -167,7 +167,7 @@ Wanneer u een nieuw vraag-en-antwoord paar toevoegt aan de Knowledge Base, moet 
 
     De bovenliggende vraag geeft een nieuwe vraag weer als een van de opties.
 
-    ![! [De context kolom, voor beide vragen, geeft aan dat er een follow-up-prompt relatie is] (.. /media/conversational-context/child-prompt-created.png)](../media/conversational-context/child-prompt-created.png#lightbox)
+    ![! [De context kolom, voor beide vragen, geeft aan dat er een follow-up-prompt relatie is] (.. /Media/conversational-context/child-prompt-created.png)](../media/conversational-context/child-prompt-created.png#lightbox)
 
 1. Nadat u de opvolgings prompt hebt toegevoegd, selecteert u **opslaan en trainen** in de bovenste navigatie balk.
 
@@ -260,7 +260,7 @@ In de voor gaande sectie is een antwoord aangevraagd en wordt u gevraagd om **ac
 }
 ```
 
-De `prompts` matrix bevat tekst in de `displayText` eigenschap en de `qnaId` waarde. U kunt deze antwoorden weer geven als de volgende weer gegeven keuzes in de conversatie stroom en vervolgens de `qnaId` geselecteerde terug naar QnA Maker verzenden in de volgende aanvraag.
+De `prompts` matrix bevat tekst in de `displayText` eigenschap en de `qnaId` waarde. U kunt deze antwoorden weer geven als de volgende weer gegeven keuzes in de conversatie stroom en vervolgens de geselecteerde `qnaId` terug naar QnA Maker verzenden in de volgende aanvraag.
 
 <!--
 
@@ -350,7 +350,7 @@ Het _GenerateAnswer_ JSON-antwoord QnA Maker bevat de vervolg prompts in de `con
 
 ## <a name="query-the-knowledge-base-with-the-qna-maker-id"></a>De Knowledge Base doorzoeken met de QnA Maker-ID
 
-Als u een aangepaste toepassing bouwt met behulp van de functie voor meerdere zetten. In het antwoord van de eerste vraag worden eventuele vervolg vragen en de bijbehorende koppeling `qnaId` geretourneerd. Nu u de ID hebt, kunt u deze door geven in de aanvraag tekst van de opvolgings prompt. Als de aanvraag tekst de `qnaId`bevat en het context object (dat de vorige QnA Maker eigenschappen bevat), retourneert GenerateAnswer de exacte vraag op id, in plaats van het classificatie algoritme te gebruiken om het antwoord te vinden op basis van de vraag tekst.
+Als u een aangepaste toepassing bouwt met behulp van de functie voor meerdere zetten. In het antwoord van de eerste vraag worden eventuele vervolg vragen en de bijbehorende koppeling `qnaId` geretourneerd. Nu u de ID hebt, kunt u deze door geven in de aanvraag tekst van de opvolgings prompt. Als de aanvraag tekst de bevat `qnaId` en het context object (dat de vorige QnA Maker eigenschappen bevat), retourneert GenerateAnswer de exacte vraag op id, in plaats van het classificatie algoritme te gebruiken om het antwoord te vinden op basis van de vraag tekst.
 
 
 ## <a name="display-order-is-supported-in-the-update-api"></a>Weergave volgorde wordt ondersteund in de API update
@@ -359,7 +359,7 @@ De [weergave tekst en weergave volgorde](https://docs.microsoft.com/rest/api/cog
 
 ## <a name="add-or-delete-multi-turn-prompts-with-the-update-api"></a>Vragen om meerdere zetten toe te voegen of te verwijderen met de API voor bijwerken
 
-U kunt vragen over meerdere schakelingen toevoegen of verwijderen met de [API QnA Maker update](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update).  De prompts worden toegevoegd in `context` de matrix `promptsToAdd` van de eigenschap `promptsToDelete` en de matrix.
+U kunt vragen over meerdere schakelingen toevoegen of verwijderen met de [API QnA Maker update](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update).  De prompts worden toegevoegd in de `context` matrix van de eigenschap `promptsToAdd` en de `promptsToDelete` matrix.
 
 ## <a name="export-knowledge-base-for-version-control"></a>Knowledge Base exporteren voor versie beheer
 
@@ -367,7 +367,7 @@ QnA Maker ondersteunt versie beheer door gespreks stappen voor meerdere locaties
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over contextuele gesp rekken in dit [dialoog venster](https://aka.ms/qnamakermultiturnsample) vindt u in het voor beeld van een [conceptueel bot-ontwerp voor multi-telegesprekken](https://docs.microsoft.com/azure/bot-service/bot-builder-conversations?view=azure-bot-service-4.0).
+Meer informatie over contextuele gesp rekken in dit [dialoog venster](https://github.com/microsoft/BotBuilder-Samples/blob/master/samples/csharp_dotnetcore/adaptive-dialog/07.qnamaker/QnAMaker.csproj) vindt u in het voor beeld van een [conceptueel bot-ontwerp voor multi-telegesprekken](https://docs.microsoft.com/azure/bot-service/bot-builder-conversations?view=azure-bot-service-4.0).
 
 > [!div class="nextstepaction"]
 > [Een knowledge base migreren](../Tutorials/migrate-knowledge-base.md)

@@ -8,11 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 752529454a5b6293d9cbfdf8378b46947aed5a0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: edf669eb813240505cba8faef41e166785cc5b18
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77564641"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232063"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Integreer Azure Time Series Insights met Externe bewaking
 
@@ -48,7 +49,7 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 
 Implementeer vervolgens Time Series Insights als een extra bron in uw oplossing voor externe controle en verbind deze met de IoT-hub.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. Selecteer **een resource maken**  >  **Internet of Things**  >  **Time Series Insights**.
 
@@ -79,7 +80,7 @@ Maak een nieuwe gebeurtenis bron om verbinding te maken met uw IoT-hub. Zorg erv
 
     ![Gebeurtenis bronnen weer geven](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-sources.png)
 
-1. Klik op **Add**.
+1. Klik op **Toevoegen**.
 
     ![Gebeurtenis bron toevoegen](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-sources-add.png)
 
@@ -243,7 +244,7 @@ Configureer de implementatie omgeving `basic` voor de bijgewerkte micro Services
 
 Configureer de implementatie omgeving `standard` voor de bijgewerkte micro services hierboven
 
-1. Voer op de opdracht regel uit `kubectl proxy` . Zie [toegang tot de Kubernetes-API](https://kubernetes.io/docs/tasks/access-kubernetes-api/http-proxy-access-api/#using-kubectl-to-start-a-proxy-server)voor meer informatie.
+1. Voer op de opdracht regel uit `kubectl proxy` . Zie [toegang tot de Kubernetes-API](https://kubernetes.io/docs/reference/access-authn-authz/)voor meer informatie.
 
 1. Open de Kubernetes-beheer console.
 

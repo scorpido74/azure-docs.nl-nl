@@ -8,13 +8,14 @@ ms.subservice: core
 ms.topic: how-to
 ms.author: larryfr
 author: Blackmist
-ms.date: 05/19/2020
+ms.date: 07/09/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 39c694f4e2afbf5d781a8fde43a7db9c4a255466
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ba48e5beb8ce4b4ae126dd23acbe0dec650f655
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392660"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232148"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Een Azure Resource Manager sjabloon gebruiken om een werk ruimte te maken voor Azure Machine Learning
 
@@ -31,15 +32,12 @@ Zie [een toepassing implementeren met Azure Resource Manager sjabloon](../azure-
 
 * Als u een sjabloon van een CLI wilt gebruiken, moet u [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.2.0) of de [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-## <a name="resource-manager-template"></a>Resource Manager-sjabloon
+## <a name="workspace-resource-manager-template"></a>Werkruimte Resource Manager-sjabloon
 
-De volgende Resource Manager-sjabloon kan worden gebruikt om een Azure Machine Learning-werk ruimte en gekoppelde Azure-resources te maken:
-
-[!code-json[create-azure-machine-learning-service-workspace](~/quickstart-templates/101-machine-learning-create/azuredeploy.json)]
+De Azure Resource Manager sjabloon die in dit document wordt gebruikt, vindt u in de map [201-machine learning-Advanced](https://github.com/Azure/azure-quickstart-templates/blob/master/201-machine-learning-advanced/azuredeploy.json) van de GitHub-opslag plaats voor Azure Quick Start-sjablonen.
 
 Met deze sjabloon worden de volgende Azure-Services gemaakt:
 
-* Azure-resource groep
 * Azure Storage-account
 * Azure Key Vault
 * Azure Application Insights
@@ -48,13 +46,13 @@ Met deze sjabloon worden de volgende Azure-Services gemaakt:
 
 De resource groep is de container waarin de services worden bewaard. De verschillende services zijn vereist voor de Azure Machine Learning-werk ruimte.
 
-De voorbeeld sjabloon heeft twee para meters:
+De voorbeeld sjabloon heeft twee **vereiste** para meters:
 
-* De **locatie** waar de resource groep en services worden gemaakt.
+* De **locatie** waar de resources worden gemaakt.
 
     De sjabloon maakt gebruik van de locatie die u selecteert voor de meeste resources. De uitzonde ring is de Application Insights-service, die niet beschikbaar is op alle locaties die de andere services zijn. Als u een locatie selecteert waar deze niet beschikbaar is, wordt de service gemaakt op de locatie Zuid-Centraal vs.
 
-* De **naam van de werk ruimte**, de beschrijvende naam van de werk ruimte Azure machine learning.
+* De naam van de **werk ruimte**. Dit is de beschrijvende namen van de Azure machine learning-werk ruimte.
 
     > [!NOTE]
     > De naam van de werk ruimte is niet hoofdletter gevoelig.
@@ -74,7 +72,82 @@ Zie de volgende artikelen voor meer informatie over sjablonen:
 * [Een toepassing implementeren met Azure Resource Manager sjablonen](../azure-resource-manager/templates/deploy-powershell.md)
 * [Resource typen van micro soft. MachineLearningServices](https://docs.microsoft.com/azure/templates/microsoft.machinelearningservices/allversions)
 
-### <a name="advanced-template"></a>Geavanceerde sjabloon
+## <a name="deploy-template"></a>Sjabloon implementeren
+
+Als u uw sjabloon wilt implementeren, moet u een resource groep maken.
+
+Zie de sectie [Azure Portal](#use-the-azure-portal) als u de Graphical User Interface wilt gebruiken.
+
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
+
+```azurecli
+az group create --name "examplegroup" --location "eastus"
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+```azurepowershell
+New-AzResourceGroup -Name "examplegroup" -Location "eastus"
+```
+
+---
+
+Zodra de resource groep is gemaakt, implementeert u de sjabloon met de volgende opdracht:
+
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
+
+```azurecli
+az deployment group create \
+    --name "exampledeployment" \
+    --resource-group "examplegroup" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --parameters workspaceName="exampleworkspace" location="eastus"
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name "exampledeployment" `
+  -ResourceGroupName "examplegroup" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+  -workspaceName "exampleworkspace" `
+  -location "eastus"
+```
+
+---
+
+Standaard zijn alle resources die zijn gemaakt als onderdeel van de sjabloon nieuw. U hebt echter ook de mogelijkheid om bestaande resources te gebruiken. Als u aanvullende para meters voor de sjabloon opgeeft, kunt u bestaande resources gebruiken. Als u bijvoorbeeld een bestaand opslag account wilt gebruiken, stelt u de waarde **storageAccountOption** in op **bestaande** en geeft u de naam van uw opslag account op in de para meter **storageAccountName** .
+
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
+
+```azurecli
+az deployment group create \
+    --name "exampledeployment" \
+    --resource-group "examplegroup" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --parameters workspaceName="exampleworkspace" \
+      location="eastus" \
+      storageAccountOption="existing" \
+      storageAccountName="existingstorageaccountname"
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name "exampledeployment" `
+  -ResourceGroupName "examplegroup" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+  -workspaceName "exampleworkspace" `
+  -location "eastus" `
+  -storageAccountOption "existing" `
+  -storageAccountName "existingstorageaccountname"
+```
+
+---
+
+## <a name="deploy-an-encrypted-workspace"></a>Een versleutelde werk ruimte implementeren
 
 In de volgende voorbeeld sjabloon ziet u hoe u een werk ruimte met drie instellingen maakt:
 
@@ -86,6 +159,7 @@ Zie [versleuteling bij rest](concept-enterprise-security.md#encryption-at-rest)v
 
 > [!IMPORTANT]
 > Er zijn enkele specifieke vereisten waaraan uw abonnement moet voldoen voordat u deze sjabloon gebruikt:
+>
 > * De __Azure machine learning__ toepassing moet een __bijdrager__ zijn voor uw Azure-abonnement.
 > * U moet een bestaande Azure Key Vault hebben die een versleutelings sleutel bevat.
 > * U moet een toegangs beleid hebben in de Azure Key Vault waarmee u de toegang tot de __Azure Cosmos DB__ toepassing __krijgt__, __verpakt__en __terugloopt__ .
@@ -93,110 +167,482 @@ Zie [versleuteling bij rest](concept-enterprise-security.md#encryption-at-rest)v
 
 Gebruik de volgende opdrachten __om de Azure machine learning-app als Inzender toe te voegen__:
 
-1. Als u wilt verifiëren bij Azure vanuit de CLI, gebruikt u de volgende opdracht:
+1. Meld u aan bij uw Azure-account en ontvang uw abonnements-ID. Dit abonnement moet gelijk zijn aan de naam die uw Azure Machine Learning-werk ruimte bevat.  
 
-    ```azurecli-interactive
-    az login
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+    ```azurecli
+    az account list --query '[].[name,id]' --output tsv
     ```
-    
-    [!INCLUDE [subscription-login](../../includes/machine-learning-cli-subscription.md)]
+
+    > [!TIP]
+    > Als u een ander abonnement wilt selecteren, gebruikt u de `az account set -s <subscription name or ID>` opdracht en geeft u de naam van het abonnement of de id op om over te scha kelen. Zie [meerdere Azure-abonnementen gebruiken](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)voor meer informatie over het selecteren van abonnementen. 
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+    ```azurepowershell
+    Get-AzSubscription
+    ```
+
+    > [!TIP]
+    > Als u een ander abonnement wilt selecteren, gebruikt u de `Az-SetContext -SubscriptionId <subscription ID>` opdracht en geeft u de naam van het abonnement of de id op om over te scha kelen. Zie [meerdere Azure-abonnementen gebruiken](https://docs.microsoft.com/powershell/azure/manage-subscriptions-azureps?view=azps-4.3.0)voor meer informatie over het selecteren van abonnementen.
+
+    ---
 
 1. Gebruik de volgende opdracht om de object-ID van de Azure Machine Learning-app op te halen. De waarde kan verschillen voor elk van uw Azure-abonnementen:
 
-    ```azurecli-interactive
+    # <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
+
+    ```azurecli
     az ad sp list --display-name "Azure Machine Learning" --query '[].[appDisplayName,objectId]' --output tsv
     ```
 
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+    ```azurepowershell
+    Get-AzADServicePrincipal --DisplayName "Azure Machine Learning" | select-object DisplayName, Id
+    ```
+
+    ---
     Met deze opdracht wordt de object-ID geretourneerd. Dit is een GUID.
 
-1. Als u de object-ID als Inzender wilt toevoegen aan uw abonnement, gebruikt u de volgende opdracht. Vervang door `<object-ID>` de GUID uit de vorige stap. Vervang door `<subscription-ID>` de naam of id van uw Azure-abonnement:
+1. Als u de object-ID als Inzender wilt toevoegen aan uw abonnement, gebruikt u de volgende opdracht. Vervang door `<object-ID>` de object-id van de Service-Principal. Vervang door `<subscription-ID>` de naam of id van uw Azure-abonnement:
 
-    ```azurecli-interactive
+    # <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
+
+    ```azurecli
     az role assignment create --role 'Contributor' --assignee-object-id <object-ID> --subscription <subscription-ID>
     ```
 
-__Als u een sleutel aan uw Azure Key Vault wilt toevoegen__, gebruikt u de informatie in de sectie [een sleutel, geheim of certificaat toevoegen aan de sleutel kluis](../key-vault/general/manage-with-cli2.md#adding-a-key-secret-or-certificate-to-the-key-vault) van het artikel __Manage Key Vault using Azure cli__ .
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+    ```azurepowershell
+    New-AzRoleAssignment --ObjectId <object-ID> --RoleDefinitionName "Contributor" -Scope /subscriptions/<subscription-ID>
+    ```
+
+    ---
+
+1. Gebruik een van de volgende opdrachten om een sleutel te genereren in een bestaande Azure Key Vault. Vervang door `<keyvault-name>` de naam van de sleutel kluis. Vervang door `<key-name>` de naam die u wilt gebruiken voor de sleutel:
+
+    # <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
+
+    ```azurecli
+    az keyvault key create --vault-name <keyvault-name> --name <key-name> --protection software
+    ```
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+    ```azurepowershell
+    Add-AzKeyVaultKey -VaultName <keyvault-name> -Name <key-name> -Destination 'Software'
+    ```
+    --- 
 
 __Gebruik de volgende opdrachten om een toegangs beleid toe te voegen aan de sleutel kluis__:
 
 1. Gebruik de volgende opdracht om de object-ID van de Azure Cosmos DB-app op te halen. De waarde kan verschillen voor elk van uw Azure-abonnementen:
 
-    ```azurecli-interactive
+    # <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
+
+    ```azurecli
     az ad sp list --display-name "Azure Cosmos DB" --query '[].[appDisplayName,objectId]' --output tsv
     ```
-    
-    Met deze opdracht wordt de object-ID geretourneerd. Dit is een GUID.
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+    ```azurepowershell
+    Get-AzADServicePrincipal --DisplayName "Azure Cosmos DB" | select-object DisplayName, Id
+    ```
+    ---
+
+    Met deze opdracht wordt de object-ID geretourneerd. Dit is een GUID. Sla het voor later op
 
 1. Als u het beleid wilt instellen, gebruikt u de volgende opdracht. Vervang door `<keyvault-name>` de naam van de bestaande Azure Key Vault. Vervang door `<object-ID>` de GUID uit de vorige stap:
 
-    ```azurecli-interactive
+    # <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
+
+    ```azurecli
     az keyvault set-policy --name <keyvault-name> --object-id <object-ID> --key-permissions get unwrapKey wrapKey
     ```
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+    
+    ```azurepowershell
+    Set-AzKeyVaultAccessPolicy -VaultName <keyvault-name> -ObjectId <object-ID> -PermissionsToKeys get, unwrapKey, wrapKey
+    ```
+    ---    
 
 __Als u de waarden__ voor de `cmk_keyvault` (ID van de Key Vault) en de `resource_cmk_uri` para meters (Key URI) wilt ophalen die nodig zijn voor deze sjabloon, gebruikt u de volgende stappen:
 
 1. Als u de Key Vault-ID wilt ophalen, gebruikt u de volgende opdracht:
 
-    ```azurecli-interactive
-    az keyvault show --name mykeyvault --resource-group myresourcegroup --query "id"
+    # <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
+
+    ```azurecli
+    az keyvault show --name <keyvault-name> --query 'id' --output tsv
     ```
 
-    Met deze opdracht wordt een waarde geretourneerd die vergelijkbaar is met `/subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault` .
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+    ```azurepowershell
+    Get-AzureRMKeyVault -VaultName '<keyvault-name>'
+    ```
+    ---
+
+    Met deze opdracht wordt een waarde geretourneerd die vergelijkbaar is met `/subscriptions/{subscription-guid}/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<keyvault-name>` .
 
 1. Als u de waarde voor de URI voor de door de klant beheerde sleutel wilt ophalen, gebruikt u de volgende opdracht:
 
-    ```azurecli-interactive
-    az keyvault key show --vault-name mykeyvault --name mykey --query "key.kid"
+    # <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
+
+    ```azurecli
+    az keyvault key show --vault-name <keyvault-name> --name <key-name> --query 'key.kid' --output tsv
     ```
 
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+    ```azurepowershell
+    Get-AzureKeyVaultKey -VaultName '<keyvault-name>' -KeyName '<key-name>'
+    ```
+    ---
+
     Met deze opdracht wordt een waarde geretourneerd die vergelijkbaar is met `https://mykeyvault.vault.azure.net/keys/mykey/{guid}` .
-
-__Voorbeeld sjabloon__
-
-:::code language="json" source="~/quickstart-templates/201-machine-learning-encrypted-workspace/azuredeploy.json":::
 
 > [!IMPORTANT]
 > Als een werk ruimte eenmaal is gemaakt, kunt u de instellingen voor vertrouwelijke gegevens, versleuteling, sleutel kluis-ID of sleutel-id's niet wijzigen. Als u deze waarden wilt wijzigen, moet u een nieuwe werk ruimte maken met behulp van de nieuwe waarden.
 
-## <a name="use-the-azure-portal"></a>Azure Portal gebruiken
+Nadat u de bovenstaande stappen hebt voltooid, implementeert u uw sjabloon zoals gebruikelijk. Stel de volgende para meters in om het gebruik van door de klant beheerde sleutels in te scha kelen:
 
-1. Volg de stappen in [resources implementeren vanuit aangepaste sjabloon](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template). Wanneer u het scherm __sjabloon bewerken__ aankomt, plakt u de sjabloon uit dit document.
-1. Selecteer __Opslaan__ om de sjabloon te gebruiken. Geef de volgende informatie op en ga akkoord met de vermelde voor waarden:
+* **Encryption_status** **ingeschakeld**.
+* **cmk_keyvault** de `cmk_keyvault` waarde die in de vorige stappen is verkregen.
+* **resource_cmk_uri** de `resource_cmk_uri` waarde die in de vorige stappen is verkregen.
+
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
+
+```azurecli
+az deployment group create \
+    --name "exampledeployment" \
+    --resource-group "examplegroup" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --parameters workspaceName="exampleworkspace" \
+      location="eastus" \
+      encryption_status="Enabled" \
+      cmk_keyvault="/subscriptions/{subscription-guid}/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<keyvault-name>" \
+      resource_cmk_uri="https://mykeyvault.vault.azure.net/keys/mykey/{guid}" \
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name "exampledeployment" `
+  -ResourceGroupName "examplegroup" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+  -workspaceName "exampleworkspace" `
+  -location "eastus" `
+  -encryption_status "Enabled" `
+  -cmk_keyvault "/subscriptions/{subscription-guid}/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<keyvault-name>" `
+  -resource_cmk_uri "https://mykeyvault.vault.azure.net/keys/mykey/{guid}"
+```
+---
+
+Wanneer u een door de klant beheerde sleutel gebruikt, maakt Azure Machine Learning een secundaire resource groep die de Cosmos DB instantie bevat. Zie [versleuteling bij rest-Cosmos DB](concept-enterprise-security.md#encryption-at-rest)voor meer informatie.
+
+U kunt voor uw gegevens een extra configuratie opgeven door de para meter **confidential_data** in te stellen op **True**. Dit doet u door de volgende handelingen uit te voeren:
+
+* Hiermee wordt het versleutelen van de lokale werk schijf voor Azure Machine Learning compute-clusters gestart, zodat u geen eerdere clusters in uw abonnement hebt gemaakt. Als u eerder een cluster in het abonnement hebt gemaakt, opent u een ondersteunings ticket om versleuteling te hebben van de Scratch-schijf die is ingeschakeld voor uw reken clusters.
+* Hiermee wordt de lokale Scratch schijf opgeschoond tussen uitvoeringen.
+* Hiermee wordt de referenties voor het opslag account, het container register en het SSH-account veilig door gegeven aan uw reken clusters met behulp van sleutel kluis.
+* IP-filtering inschakelen om ervoor te zorgen dat de onderliggende batch-groepen niet kunnen worden aangeroepen door andere externe services dan AzureMachineLearningService.
+
+  Zie [versleuteling bij rest](concept-enterprise-security.md#encryption-at-rest)voor meer informatie.
+
+## <a name="deploy-workspace-behind-a-virtual-network"></a>Een werk ruimte implementeren achter een virtueel netwerk
+
+Door de `vnetOption` parameter waarde in te stellen op `new` of `existing` , kunt u de resources maken die worden gebruikt door een werk ruimte achter een virtueel netwerk.
+
+> [!IMPORTANT]
+> Alleen de SKU ' Premium ' wordt ondersteund voor container Registry.
+
+> [!IMPORTANT]
+> Application Insights biedt geen ondersteuning voor implementatie achter een virtueel netwerk.
+
+### <a name="only-deploy-workspace-behind-private-endpoint"></a>Alleen werk ruimte implementeren achter een persoonlijk eind punt
+
+Als uw gekoppelde resources zich niet achter een virtueel netwerk bevinden, kunt u de **privateEndpointType** -para meter instellen op `AutoAproval` of `ManualApproval` de werk ruimte implementeren achter een persoonlijk eind punt.
+
+> [!IMPORTANT]
+> De implementatie is alleen geldig in regio's die persoonlijke eind punten ondersteunen.
+
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
+
+```azurecli
+az deployment group create \
+    --name "exampledeployment" \
+    --resource-group "examplegroup" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --parameters workspaceName="exampleworkspace" \
+      location="eastus" \
+      privateEndpointType="AutoApproval"
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name "exampledeployment" `
+  -ResourceGroupName "examplegroup" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+  -workspaceName "exampleworkspace" `
+  -location "eastus" `
+  -privateEndpointType "AutoApproval"
+```
+
+---
+
+### <a name="use-a-new-virtual-network"></a>Een nieuw virtueel netwerk gebruiken
+
+Als u een bron achter een nieuw virtueel netwerk wilt implementeren, stelt u de **vnetOption** in op **Nieuw** samen met de instellingen van het virtuele netwerk voor de betreffende resource. In de onderstaande implementatie ziet u hoe u een werk ruimte implementeert met de opslag account bron achter een nieuw virtueel netwerk.
+
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
+
+```azurecli
+az deployment group create \
+    --name "exampledeployment" \
+    --resource-group "examplegroup" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --parameters workspaceName="exampleworkspace" \
+      location="eastus" \
+      vnetOption="new" \
+      vnetName="examplevnet" \
+      storageAccountBehindVNet="true"
+      privateEndpointType="AutoApproval"
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name "exampledeployment" `
+  -ResourceGroupName "examplegroup" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+  -workspaceName "exampleworkspace" `
+  -location "eastus" `
+  -vnetOption "new" `
+  -vnetName "examplevnet" `
+  -storageAccountBehindVNet "true"
+  -privateEndpointType "AutoApproval"
+```
+
+---
+
+U kunt ook meerdere of alle afhankelijke resources achter een virtueel netwerk implementeren.
+
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
+
+```azurecli
+az deployment group create \
+    --name "exampledeployment" \
+    --resource-group "examplegroup" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --parameters workspaceName="exampleworkspace" \
+      location="eastus" \
+      vnetOption="new" \
+      vnetName="examplevnet" \
+      storageAccountBehindVNet="true" \
+      keyVaultBehindVNet="true" \
+      containerRegistryBehindVNet="true" \
+      containerRegistryOption="new" \
+      containerRegistrySku="Premium"
+      privateEndpointType="AutoApproval"
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name "exampledeployment" `
+  -ResourceGroupName "examplegroup" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+  -workspaceName "exampleworkspace" `
+  -location "eastus" `
+  -vnetOption "new" `
+  -vnetName "examplevnet" `
+  -storageAccountBehindVNet "true"
+  -keyVaultBehindVNet "true" `
+  -containerRegistryBehindVNet "true" `
+  -containerRegistryOption "new" `
+  -containerRegistrySku "Premium"
+  -privateEndpointType "AutoApproval"
+```
+
+---
+
+<!-- Workspaces need a private endpoint when associated resources are behind a virtual network to work properly. To set up a private endpoint for the workspace with a new virtual network:
+
+> [!IMPORTANT]
+> The deployment is only valid in regions which support private endpoints.
+
+# [Azure CLI](#tab/azcli)
+
+```azurecli
+az deployment group create \
+    --name "exampledeployment" \
+    --resource-group "examplegroup" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --parameters workspaceName="exampleworkspace" \
+      location="eastus" \
+      vnetOption="new" \
+      vnetName="examplevnet" \
+      privateEndpointType="AutoApproval"
+```
+
+# [Azure PowerShell](#tab/azpowershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name "exampledeployment" `
+  -ResourceGroupName "examplegroup" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+  -workspaceName "exampleworkspace" `
+  -location "eastus" `
+  -vnetOption "new" `
+  -vnetName "examplevnet" `
+  -privateEndpointType "AutoApproval"
+```
+
+--- -->
+
+### <a name="use-an-existing-virtual-network--resources"></a>Bestaande virtuele netwerk & bronnen gebruiken
+
+Als u een werk ruimte wilt implementeren met bestaande gekoppelde resources, moet u de para meter **vnetOption** instellen op **bestaande** in combi natie met subnet-para meters. U moet echter service-eind punten in het virtuele netwerk maken voor elk van de resources **vóór** de implementatie. Net als bij nieuwe implementaties van virtuele netwerken kunt u een of meer van uw resources achter een virtueel netwerk hebben.
+
+> [!IMPORTANT]
+> Het subnet moet een `Microsoft.Storage` service-eind punt hebben
+
+> [!IMPORTANT]
+> Voor subnetten is het maken van persoonlijke eind punten niet toegestaan. Schakel het persoonlijke eind punt uit om het subnet in te scha kelen.
+
+1. Schakel service-eind punten in voor de resources.
+
+    # <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
+
+    ```azurecli
+    az network vnet subnet update --resource-group "examplegroup" --vnet-name "examplevnet" --name "examplesubnet" --service-endpoints "Microsoft.Storage"
+    az network vnet subnet update --resource-group "examplegroup" --vnet-name "examplevnet" --name "examplesubnet" --service-endpoints "Microsoft.KeyVault"
+    az network vnet subnet update --resource-group "examplegroup" --vnet-name "examplevnet" --name "examplesubnet" --service-endpoints "Microsoft.ContainerRegistry"
+    ```
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+    ```azurepowershell
+    Get-AzVirtualNetwork -ResourceGroupName "examplegroup" -Name "examplevnet" | Set-AzVirtualNetworkSubnetConfig -Name "examplesubnet" -AddressPrefix "<subnet prefix>" -ServiceEndpoint "Microsoft.Storage" | Set-AzVirtualNetwork
+    Get-AzVirtualNetwork -ResourceGroupName "examplegroup" -Name "examplevnet" | Set-AzVirtualNetworkSubnetConfig -Name "examplesubnet" -AddressPrefix "<subnet prefix>" -ServiceEndpoint "Microsoft.KeyVault" | Set-AzVirtualNetwork
+    Get-AzVirtualNetwork -ResourceGroupName "examplegroup" -Name "examplevnet" | Set-AzVirtualNetworkSubnetConfig -Name "examplesubnet" -AddressPrefix "<subnet prefix>" -ServiceEndpoint "Microsoft.ContainerRegistry" | Set-AzVirtualNetwork
+    ```
+
+    ---
+
+1. De werk ruimte implementeren
+
+    # <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
+
+    ```azurecli
+    az deployment group create \
+    --name "exampledeployment" \
+    --resource-group "examplegroup" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --parameters workspaceName="exampleworkspace" \
+      location="eastus" \
+      vnetOption="existing" \
+      vnetName="examplevnet" \
+      vnetResourceGroupName="examplegroup" \
+      storageAccountBehindVNet="true" \
+      keyVaultBehindVNet="true" \
+      containerRegistryBehindVNet="true" \
+      containerRegistryOption="new" \
+      containerRegistrySku="Premium" \
+      subnetName="examplesubnet" \
+      subnetOption="existing"
+      privateEndpointType="AutoApproval"
+    ```
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+    ```azurepowershell
+    New-AzResourceGroupDeployment `
+      -Name "exampledeployment" `
+      -ResourceGroupName "examplegroup" `
+      -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+      -workspaceName "exampleworkspace" `
+      -location "eastus" `
+      -vnetOption "existing" `
+      -vnetName "examplevnet" `
+      -vnetResourceGroupName "examplegroup" `
+      -storageAccountBehindVNet "true"
+      -keyVaultBehindVNet "true" `
+      -containerRegistryBehindVNet "true" `
+      -containerRegistryOption "new" `
+      -containerRegistrySku "Premium" `
+      -subnetName "examplesubnet" `
+      -subnetOption "existing"
+      -privateEndpointType "AutoApproval"
+    ```
+    ---
+
+<!-- Workspaces need a private endpoint when associated resources are behind a virtual network to work properly. To set up a private endpoint for the workspace with an existing virtual network:
+
+> [!IMPORTANT]
+> The deployment is only valid in regions which support private endpoints.
+
+# [Azure CLI](#tab/azcli)
+
+```azurecli
+az deployment group create \
+    --name "exampledeployment" \
+    --resource-group "examplegroup" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --parameters workspaceName="exampleworkspace" \
+      location="eastus" \
+      vnetOption="existing" \
+      vnetName="examplevnet" \
+      vnetResourceGroupName="rg" \
+      privateEndpointType="AutoApproval" \
+      subnetName="subnet" \
+      subnetOption="existing"
+```
+
+# [Azure PowerShell](#tab/azpowershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name "exampledeployment" `
+  -ResourceGroupName "examplegroup" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+  -workspaceName "exampleworkspace" `
+  -location "eastus" `
+  -vnetOption "existing" `
+  -vnetName "examplevnet" `
+  -vnetResourceGroupName "rg"
+  -privateEndpointType "AutoApproval"
+  -subnetName "subnet"
+  -subnetOption "existing"
+```
+
+--- -->
+
+## <a name="use-the-azure-portal"></a>De Azure-portal gebruiken
+
+1. Volg de stappen in [resources implementeren vanuit aangepaste sjabloon](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template). Wanneer u op het scherm __een sjabloon selecteren__ klikt, kiest u in de vervolg keuzelijst de sjabloon **201-machine learning-Advanced** .
+1. Selecteer __sjabloon selecteren__ om de sjabloon te gebruiken. Geef de volgende vereiste informatie en alle andere para meters op, afhankelijk van uw implementatie scenario.
 
    * Abonnement: Selecteer het Azure-abonnement dat u wilt gebruiken voor deze resources.
    * Resource groep: Selecteer of maak een resource groep om de services te bevatten.
+   * Regio: Selecteer de Azure-regio waar de resources worden gemaakt.
    * Werkruimte naam: de naam die moet worden gebruikt voor de Azure Machine Learning werk ruimte die wordt gemaakt. De naam van de werk ruimte moet tussen de 3 en 33 tekens lang zijn. De naam mag alleen alfanumerieke tekens en '-' bevatten.
    * Locatie: Selecteer de locatie waar de resources worden gemaakt.
+1. Selecteer __Controleren + maken__.
+1. Ga in het scherm __bekijken en maken__ naar de vermelde voor waarden en selecteer __maken__.
 
 Zie [resources implementeren vanuit een aangepaste sjabloon](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)voor meer informatie.
-
-## <a name="use-azure-powershell"></a>Azure PowerShell gebruiken
-
-In dit voor beeld wordt ervan uitgegaan dat u de sjabloon hebt opgeslagen in een bestand met `azuredeploy.json` de naam in de huidige map:
-
-```powershell
-New-AzResourceGroup -Name examplegroup -Location "East US"
-new-azresourcegroupdeployment -name exampledeployment `
-  -resourcegroupname examplegroup -location "East US" `
-  -templatefile .\azuredeploy.json -workspaceName "exampleworkspace" -sku "basic"
-```
-
-Zie [resources implementeren met Resource Manager-sjablonen en Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md) en een [privé Resource Manager-sjabloon met SAS-token en Azure PowerShell implementeren](../azure-resource-manager/templates/secure-template-with-sas-token.md)voor meer informatie.
-
-## <a name="use-the-azure-cli"></a>Azure CLI gebruiken
-
-In dit voor beeld wordt ervan uitgegaan dat u de sjabloon hebt opgeslagen in een bestand met `azuredeploy.json` de naam in de huidige map:
-
-```azurecli-interactive
-az group create --name examplegroup --location "East US"
-az group deployment create \
-  --name exampledeployment \
-  --resource-group examplegroup \
-  --template-file azuredeploy.json \
-  --parameters workspaceName=exampleworkspace location=eastus sku=basic
-```
-
-Zie [resources implementeren met Resource Manager-sjablonen en Azure cli](../azure-resource-manager/templates/deploy-cli.md) en een [persoonlijke Resource Manager-sjabloon implementeren met SAS-token en Azure cli](../azure-resource-manager/templates/secure-template-with-sas-token.md)voor meer informatie.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
@@ -216,7 +662,7 @@ Om dit probleem te voor komen, raden we u aan een van de volgende benaderingen t
 
 * Controleer de Key Vault toegangs beleid en gebruik vervolgens dit beleid om de `accessPolicies` eigenschap van de sjabloon in te stellen. Gebruik de volgende Azure CLI-opdracht om het toegangs beleid weer te geven:
 
-    ```azurecli-interactive
+    ```azurecli
     az keyvault show --name mykeyvault --resource-group myresourcegroup --query properties.accessPolicies
     ```
 
@@ -287,7 +733,7 @@ Om dit probleem te voor komen, raden we u aan een van de volgende benaderingen t
 
     Als u de ID van de Key Vault wilt ophalen, kunt u verwijzen naar de uitvoer van de oorspronkelijke sjabloon run of de Azure CLI gebruiken. De volgende opdracht is een voor beeld van het gebruik van de Azure CLI om de Key Vault Resource-ID op te halen:
 
-    ```azurecli-interactive
+    ```azurecli
     az keyvault show --name mykeyvault --resource-group myresourcegroup --query id
     ```
 

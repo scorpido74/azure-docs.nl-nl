@@ -114,7 +114,7 @@ Wanneer u een master-server verwijdert, wordt de replicatie naar alle Lees repli
 az postgres server delete --name myserver --resource-group myresourcegroup
 ```
 
-## <a name="rest-api"></a>REST API
+## <a name="rest-api"></a>REST-API
 U kunt met behulp van de [Azure rest API](/rest/api/azure/)Lees replica's maken en beheren.
 
 ### <a name="prepare-the-master-server"></a>De hoofd server voorbereiden

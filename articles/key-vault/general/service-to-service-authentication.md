@@ -9,12 +9,12 @@ ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: 7ad3af46be26816231a15156d13fbec3275a5559
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 132663ed26eab41747f6fce25bdb2beabe286322
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855084"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232607"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Service-naar-service-verificatie voor het Azure Key Vault met behulp van .NET
 
@@ -226,17 +226,20 @@ Een client certificaat voor Service-Principal-verificatie gebruiken:
 
 ## <a name="connection-string-support"></a>Ondersteuning voor verbindings reeks
 
-`AzureServiceTokenProvider`Maakt standaard gebruik van meerdere methoden om een token op te halen.
+`AzureServiceTokenProvider`De volgende verificatie methoden worden standaard in de aangegeven volg orde geprobeerd om een token op te halen:
 
-Als u het proces wilt beheren, gebruikt u een connection string dat is door gegeven aan de `AzureServiceTokenProvider` constructor of die is opgegeven in de omgevings variabele *AzureServicesAuthConnectionString* .
+- [Een beheerde identiteit voor Azure-resources](../..//active-directory/managed-identities-azure-resources/overview.md)
+- Visual Studio-verificatie
+- [Azure CLI-verificatie](/azure/authenticate-azure-cli?view=azure-cli-latest)
+- [Geïntegreerde Windows-verificatie](/aspnet/web-api/overview/security/integrated-windows-authentication)
 
-De volgende opties worden ondersteund:
+Als u het proces wilt beheren, gebruikt u een connection string dat is door gegeven aan de `AzureServiceTokenProvider` constructor of die is opgegeven in de omgevings variabele *AzureServicesAuthConnectionString* .  De volgende opties worden ondersteund:
 
 | Verbindings reeks optie | Scenario | Opmerkingen|
 |:--------------------------------|:------------------------|:----------------------------|
 | `RunAs=Developer; DeveloperTool=AzureCli` | Lokale ontwikkeling | `AzureServiceTokenProvider`maakt gebruik van AzureCli om token op te halen. |
 | `RunAs=Developer; DeveloperTool=VisualStudio` | Lokale ontwikkeling | `AzureServiceTokenProvider`maakt gebruik van Visual Studio om token op te halen. |
-| `RunAs=CurrentUser` | Lokale ontwikkeling | `AzureServiceTokenProvider`maakt gebruik van Azure AD Integrated-verificatie om token op te halen. |
+| `RunAs=CurrentUser` | Lokale ontwikkeling | Niet ondersteund in .NET core. `AzureServiceTokenProvider`maakt gebruik van Azure AD Integrated-verificatie om token op te halen. |
 | `RunAs=App` | [Beheerde identiteiten voor Azure-resources](../../active-directory/managed-identities-azure-resources/index.yml) | `AzureServiceTokenProvider`maakt gebruik van een beheerde identiteit voor het ophalen van token. |
 | `RunAs=App;AppId={ClientId of user-assigned identity}` | [Door de gebruiker toegewezen identiteit voor Azure-resources](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) | `AzureServiceTokenProvider`maakt gebruik van een door de gebruiker toegewezen identiteit voor het ophalen van token. |
 | `RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier={KeyVaultCertificateSecretIdentifier}` | Verificatie van aangepaste services | `KeyVaultCertificateSecretIdentifier`is de geheime id van het certificaat. |

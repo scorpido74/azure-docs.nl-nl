@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3cc75fb34f0a828eccfed3951e84a1c463d4cfb7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eea4de106fe566b55ae30330d4c9d101f7126bbf
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83828879"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229615"
 ---
 # <a name="use-source-control-integration"></a>Integratie van bronbeheer gebruiken
 
@@ -61,7 +62,7 @@ Gebruik deze procedure voor het configureren van broncode beheer met behulp van 
     |Mappad     | De map die de runbooks bevat die moeten worden gesynchroniseerd, bijvoorbeeld **/Runbooks**. Alleen runbooks in de opgegeven map worden gesynchroniseerd. Recursie wordt niet ondersteund.        |
     |Automatische synchronisatie<sup>1</sup>     | Instelling waarmee automatische synchronisatie wordt in-of uitgeschakeld wanneer een door Voer in de bron beheer opslagplaats wordt gemaakt.        |
     |Runbook publiceren     | Instelling van op als runbooks automatisch worden gepubliceerd na synchronisatie vanuit broncode beheer, en anders uit.           |
-    |Description     | Tekst waarin aanvullende details over het broncode beheer worden opgegeven.        |
+    |Beschrijving     | Tekst waarin aanvullende details over het broncode beheer worden opgegeven.        |
 
     <sup>1</sup> als u automatische synchronisatie wilt inschakelen bij het configureren van de integratie van broncode beheer met Azure opslag plaatsen, moet u een project beheerder zijn.
 
@@ -72,8 +73,7 @@ Gebruik deze procedure voor het configureren van broncode beheer met behulp van 
 
 ### <a name="configure-source-control-in-powershell"></a>Broncode beheer configureren in Power shell
 
-U kunt Power shell ook gebruiken voor het configureren van broncode beheer in Azure Automation. Als u de Power shell-cmdlets voor deze bewerking wilt gebruiken, hebt u een persoonlijk toegangs token (PAT) nodig. Gebruik de cmdlet [New-AzAutomationSourceControl](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationsourcecontrol?view=azps-3.5.0
-) om de bron beheer verbinding te maken. Voor deze cmdlet is een beveiligde teken reeks vereist voor de PAT. Zie [ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-6)voor meer informatie over het maken van een beveiligde teken reeks.
+U kunt Power shell ook gebruiken voor het configureren van broncode beheer in Azure Automation. Als u de Power shell-cmdlets voor deze bewerking wilt gebruiken, hebt u een persoonlijk toegangs token (PAT) nodig. Gebruik de cmdlet [New-AzAutomationSourceControl](/powershell/module/az.automation/new-azautomationsourcecontrol?view=azps-3.5.0) om de bron beheer verbinding te maken. Voor deze cmdlet is een beveiligde teken reeks vereist voor de PAT. Zie [ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-6)voor meer informatie over het maken van een beveiligde teken reeks.
 
 De volgende subsecties illustreren het maken van de broncode beheer verbinding voor GitHub, Azure opslag plaatsen (Git) en Azure opslag plaatsen (TFVC). 
 
@@ -110,7 +110,7 @@ Voor broncode beheer zijn enkele minimale machtigingen vereist voor PATs. De vol
 
 In de volgende tabel worden de minimale machtigingen voor PAT gedefinieerd die zijn vereist voor GitHub. Zie voor meer informatie over het maken van een PAT in GitHub [een persoonlijk toegangs token maken voor de opdracht regel](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).
 
-|Bereik  |Description  |
+|Bereik  |Beschrijving  |
 |---------|---------|
 |**`repo`**     |         |
 |`repo:status`     | Toegangs status voor door voeren         |
@@ -122,7 +122,7 @@ In de volgende tabel worden de minimale machtigingen voor PAT gedefinieerd die z
 
 ##### <a name="minimum-pat-permissions-for-azure-repos"></a>Minimale machtigingen voor PAT voor Azure opslag plaatsen
 
-In de volgende lijst worden de minimale machtigingen voor PAT gedefinieerd die zijn vereist voor Azure opslag plaatsen. Zie [toegang verifiëren met persoonlijke toegangs tokens](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=preview-page)voor meer informatie over het maken van een Pat in azure opslag plaatsen.
+In de volgende lijst worden de minimale machtigingen voor PAT gedefinieerd die zijn vereist voor Azure opslag plaatsen. Zie [toegang verifiëren met persoonlijke toegangs tokens](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=preview-page)voor meer informatie over het maken van een Pat in azure opslag plaatsen.
 
 | Bereik  |  Toegangs type  |
 |---------| ----------|
@@ -195,14 +195,14 @@ De verbinding met een broncode beheer bibliotheek verbreken:
 
 ## <a name="handle-encoding-issues"></a>Coderings problemen verwerken
 
-Als meerdere personen runbooks bewerken in uw opslag plaats voor bron beheer met behulp van verschillende editors, kunnen er coderings problemen optreden. Zie voor meer informatie over deze situatie [Veelvoorkomende oorzaken van het coderen van problemen](https://docs.microsoft.com/powershell/scripting/components/vscode/understanding-file-encoding?view=powershell-7#common-causes-of-encoding-issues).
+Als meerdere personen runbooks bewerken in uw opslag plaats voor bron beheer met behulp van verschillende editors, kunnen er coderings problemen optreden. Zie voor meer informatie over deze situatie [Veelvoorkomende oorzaken van het coderen van problemen](/powershell/scripting/components/vscode/understanding-file-encoding?view=powershell-7#common-causes-of-encoding-issues).
 
 ## <a name="update-the-pat"></a>De PAT bijwerken
 
 Op dit moment kunt u de Azure Portal niet gebruiken om de PAT bij te werken in broncode beheer. Als uw PAT is verlopen of ingetrokken, kunt u op een van de volgende manieren broncode beheer bijwerken met een nieuw toegangs token:
 
-* Gebruik de [rest API](https://docs.microsoft.com/rest/api/automation/sourcecontrol/update).
-* Gebruik de cmdlet [Update-AzAutomationSourceControl](https://docs.microsoft.com//powershell/module/az.automation/update-azautomationsourcecontrol) .
+* Gebruik de [rest API](/rest/api/automation/sourcecontrol/update).
+* Gebruik de cmdlet [Update-AzAutomationSourceControl](/powershell/module/az.automation/update-azautomationsourcecontrol) .
 
 ## <a name="next-steps"></a>Volgende stappen
 

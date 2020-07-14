@@ -3,21 +3,21 @@ title: Connectiviteit van apparaten in azure IoT Central | Microsoft Docs
 description: In dit artikel vindt u belang rijke concepten met betrekking tot de connectiviteit van apparaten in azure IoT Central
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/09/2019
+ms.date: 06/26/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: aa6aa7a8d98ae756a65a2618371c320118875c42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a66613406de66cf9478b90d4ad58c115a30fdf5d
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710436"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224736"
 ---
-# <a name="get-connected-to-azure-iot-central"></a>Maak verbinding met Azure IoT Central
+# <a name="get-connected-to-azure-iot-central"></a>Verbinding maken met Azure IoT Central
 
 *Dit artikel is van toepassing op Opera tors en ontwikkel aars van apparaten.*
 
@@ -72,19 +72,40 @@ Gebruik de verbindings gegevens van het export bestand in uw apparaatcode om uw 
 
 In een productie omgeving, met behulp van X. 509-certificaten is het aanbevolen mechanisme voor verificatie van apparaten voor IoT Central. Zie voor meer informatie [apparaat-verificatie met behulp van X. 509 CA-certificaten](../../iot-hub/iot-hub-x509ca-overview.md).
 
-Voordat u een apparaat verbindt met een X. 509-certificaat, moet u een tussenliggend of basis X. 509-certificaat toevoegen en verifiëren in uw toepassing. Apparaten moeten Leaf X. 509-certificaten gebruiken die zijn gegenereerd op basis van het hoofd-of tussenliggende certificaat.
+Een apparaat met een X. 509-certificaat verbinden met uw toepassing:
 
-### <a name="add-and-verify-a-root-or-intermediate-certificate"></a>Een basis-of tussenliggend certificaat toevoegen en verifiëren
+1. Maak een *registratie groep* die gebruikmaakt van het Attestation-type **certificaten (X. 509)** .
+2. Een tussenliggend of root X. 509-certificaat toevoegen en verifiëren in de registratie groep.
+3. Registreer en Verbind apparaten die gebruikmaken van Leaf X. 509-certificaten die zijn gegenereerd op basis van het hoofd-of het tussenliggende certificaat in de registratie groep.
 
-Ga naar **beheer > apparaat verbinding > het primaire certificaat te beheren** en voeg het X. 509 basis-of tussen certificaat toe dat u gebruikt voor het genereren van de certificaten van het apparaat.
+### <a name="create-an-enrollment-group"></a>Een registratie groep maken
 
-![Verbindingsinstellingen](media/concepts-get-connected/manage-x509-certificate.png)
+Een [registratie groep](../../iot-dps/concepts-service.md#enrollment) is een groep apparaten die hetzelfde Attestation-type delen. De twee ondersteunde Attestation-typen zijn X. 509-certificaten en SAS:
 
-Verifiëren van eigendom van het certificaat zorgt ervoor dat de persoon die het certificaat uploadt, de persoonlijke sleutel van het certificaat heeft. Het certificaat verifiëren:
+- In een X. 509-registratie groep worden op alle apparaten die verbinding maken met IoT Central, Leaf X. 509-certificaten gebruikt die zijn gegenereerd op basis van het hoofd-of tussenliggende certificaat in de registratie groep.
+- In een SAS-registratie groep gebruiken alle apparaten die verbinding maken met IoT Central een SAS-token dat is gegenereerd op basis van het SAS-token in de registratie groep.
 
-  1. Selecteer de knop naast **verificatie code** om een code te genereren.
-  1. Maak een X. 509-verificatie certificaat met de verificatie code die u in de vorige stap hebt gegenereerd. Sla het certificaat op als een CER-bestand.
-  1. Upload het ondertekende verificatie certificaat en selecteer **verifiëren**. Het certificaat is gemarkeerd als **gecontroleerd** wanneer de verificatie is geslaagd.
+De twee standaard registratie groepen in elke IoT Central toepassing zijn SAS-registratie groepen, een voor IoT-apparaten en één voor Azure IoT Edge-apparaten. Als u een X. 509-registratie groep wilt maken, gaat u naar de pagina **apparaat verbinding** en selecteert u **+ registratie groep toevoegen**:
+
+:::image type="content" source="media/concepts-get-connected/add-enrollment-group.png" alt-text="Een scherm opname van een X. 509-registratie groep toevoegen":::
+
+### <a name="add-and-verify-a-root-or-intermediate-x509-certificate"></a>Een basis-of tussenliggend X. 509-certificaat toevoegen en verifiëren
+
+Een basis-of tussenliggend certificaat toevoegen en verifiëren voor uw registratie groep:
+
+1. Ga naar de registratie groep X. 509 die u zojuist hebt gemaakt. U hebt de mogelijkheid om zowel primaire als secundaire X. 509-certificaten toe te voegen. Selecteer **+ primaire beheren**.
+
+1. Upload uw primaire X. 509-certificaat op de **pagina primair certificaat**. Dit is het basis-of tussenliggende certificaat:
+
+    :::image type="content" source="media/concepts-get-connected/upload-primary-certificate.png" alt-text="Scherm afbeelding van primair certificaat":::
+
+1. Gebruik de **verificatie code** om een verificatie code te genereren in het hulp programma dat u gebruikt. Selecteer vervolgens **verifiëren** om het verificatie certificaat te uploaden.
+
+1. Wanneer de verificatie is geslaagd, ziet u de volgende bevestiging:
+
+    :::image type="content" source="media/concepts-get-connected/verified-primary-certificate.png" alt-text="Scherm opname van primair certificaat gecontroleerd":::
+
+Verifiëren van eigendom van het certificaat zorgt ervoor dat de persoon die het certificaat uploadt, de persoonlijke sleutel van het certificaat heeft.
 
 Als u een inbreuk op de beveiliging hebt of als uw primaire certificaat is ingesteld op verlopen, gebruikt u het secundaire certificaat om de downtime te verminderen. U kunt door gaan met het inrichten van apparaten met behulp van het secundaire certificaat wanneer u het primaire certificaat bijwerkt.
 
@@ -92,7 +113,7 @@ Als u een inbreuk op de beveiliging hebt of als uw primaire certificaat is inges
 
 Als u apparaten bulksgewijs wilt verbinden met X. 509-certificaten, moet u eerst de apparaten in uw toepassing registreren met behulp van een CSV-bestand om [de apparaat-id's en apparaatnamen te importeren](howto-manage-devices.md#import-devices). De apparaat-Id's moeten in kleine letters worden gereduceerd.
 
-Genereer X. 509-blad certificaten voor uw apparaten met het geüploade basis certificaat Gebruik de **apparaat-id** als de `CNAME` waarde in de blad certificaten. De apparaatcode heeft de waarde voor **id-bereik** nodig voor uw toepassing, de **apparaat-id**en het bijbehorende certificaat van het apparaat.
+Genereer X. 509-blad certificaten voor uw apparaten met behulp van het basis-of tussenliggende certificaat dat u hebt geüpload naar de registratie groep X. 509. Gebruik de **apparaat-id** als de `CNAME` waarde in de blad certificaten. De apparaatcode heeft de waarde voor **id-bereik** nodig voor uw toepassing, de **apparaat-id**en het bijbehorende certificaat van het apparaat.
 
 #### <a name="sample-device-code"></a>Voorbeeld code van apparaat
 
@@ -122,9 +143,9 @@ De stroom wijkt enigszins af van de vraag of de apparaten SAS-tokens of X. 509-c
 
 ### <a name="connect-devices-that-use-sas-tokens-without-registering"></a>Apparaten koppelen die gebruikmaken van SAS-tokens zonder te registreren
 
-1. Kopieer de primaire sleutel van de IoT Central toepassings groep:
+1. Kopieer de primaire sleutel van de groep uit de registratie groep voor **SAS-IOT-apparaten** :
 
-    ![Primaire SAS-sleutel van toepassings groep](media/concepts-get-connected/group-sas-keys.png)
+    :::image type="content" source="media/concepts-get-connected/group-primary-key.png" alt-text="Primaire sleutel van de registratie groep van SAS-IoT-apparaten groeperen":::
 
 1. Gebruik het hulp programma [DPS-keygen](https://www.npmjs.com/package/dps-keygen) om de SAS-sleutels van het apparaat te genereren. Gebruik de primaire sleutel van de groep uit de vorige stap. De apparaat-Id's moeten kleine letters zijn:
 
@@ -145,7 +166,7 @@ De stroom wijkt enigszins af van de vraag of de apparaten SAS-tokens of X. 509-c
 
 ### <a name="connect-devices-that-use-x509-certificates-without-registering"></a>Apparaten verbinden die X. 509-certificaten gebruiken zonder te registreren
 
-1. [Voeg en verifieer een basis-of tussenliggende X. 509-certificaat](#connect-devices-using-x509-certificates) aan uw IOT Central-toepassing.
+1. [Maak een registratie groep](#create-an-enrollment-group) en [Voeg en controleer vervolgens een basis-of tussenliggend X. 509-certificaat](#add-and-verify-a-root-or-intermediate-x509-certificate) aan uw IOT Central-toepassing.
 
 1. Genereer de blad certificaten voor uw apparaten met behulp van het basis-of tussenliggende certificaat dat u aan uw IoT Central-toepassing hebt toegevoegd. Gebruik kleine-case apparaat-Id's als de `CNAME` in de Blade certificaten.
 

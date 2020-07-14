@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 07/08/2020
 ms.author: jingwang
 ms.reviewer: craigg
-ms.openlocfilehash: d7a872121ca6560b8ede86abc35294ab8c9b0c1b
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: f22b4bec17abe95be2a17d3e0e3c41fab3483fe0
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142020"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224809"
 ---
 # <a name="azure-data-factory-connector-overview"></a>Overzicht van Azure Data Factory-connector
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Azure Data Factory ondersteunen de volgende gegevens archieven en-indelingen via kopiëren, gegevens stroom, opzoeken, meta gegevens ophalen en activiteiten verwijderen. Klik op elk gegevens Archief voor meer informatie over de ondersteunde mogelijkheden en de bijbehorende configuraties.
+Azure Data Factory ondersteunt de volgende gegevens archieven en-indelingen via kopiëren, gegevens stroom, zoeken, meta gegevens ophalen en activiteiten verwijderen. Klik op elk gegevens Archief voor meer informatie over de ondersteunde mogelijkheden en de bijbehorende configuraties.
 
 ## <a name="supported-data-stores"></a>Ondersteunde gegevensarchieven
 
@@ -34,6 +34,7 @@ Azure Data Factory ondersteunt de volgende bestands indelingen. Raadpleeg elk ar
 - [Binaire indeling](format-binary.md)
 - [Common Data Model-indeling](format-common-data-model.md)
 - [Tekstindeling met scheidingstekens](format-delimited-text.md)
+- [Delta-indeling](format-delta.md)
 - [Excel-indeling](format-excel.md)
 - [JSON-indeling](format-json.md)
 - [ORC-indeling](format-orc.md)

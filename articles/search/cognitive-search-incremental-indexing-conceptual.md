@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: d4b36f00bad8c06c2f62794fa03a85120af79965
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3957884a8c559194c436487050f0dbc09acf0441
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85557387"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232505"
 ---
 # <a name="incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Incrementele verrijking en caching in azure Cognitive Search
 
@@ -109,7 +109,7 @@ PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-versi
 
 Het doel van de cache is om onnodige verwerking te voor komen, maar stel dat u een wijziging aanbrengt in een vaardigheid die de Indexeer functie niet detecteert (bijvoorbeeld het wijzigen van iets in externe code, zoals een aangepaste vaardigheid).
 
-In dit geval kunt u de [vaardig heden opnieuw instellen](https://docs.microsoft.com/rest/api/searchservice/reset-skills) gebruiken om het opnieuw verwerken van een bepaalde vaardigheid af te dwingen, inclusief eventuele downstream-vaardig heden die een afhankelijkheid hebben van de uitvoer van die vaardigheid. Deze API accepteert een POST-aanvraag met een lijst met vaardig heden die ongeldig moeten worden gemaakt en moeten worden gemarkeerd voor opnieuw verwerken. Nadat u vaardig heden hebt ingesteld, voert u de Indexeer functie uit om de pijp lijn aan te roepen.
+In dit geval kunt u de [vaardig heden opnieuw instellen](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-skills) gebruiken om het opnieuw verwerken van een bepaalde vaardigheid af te dwingen, inclusief eventuele downstream-vaardig heden die een afhankelijkheid hebben van de uitvoer van die vaardigheid. Deze API accepteert een POST-aanvraag met een lijst met vaardig heden die ongeldig moeten worden gemaakt en moeten worden gemarkeerd voor opnieuw verwerken. Nadat u vaardig heden hebt ingesteld, voert u de Indexeer functie uit om de pijp lijn aan te roepen.
 
 ## <a name="change-detection"></a>Wijzigings detectie
 
@@ -152,13 +152,13 @@ Met incrementele verwerking wordt de definitie van uw vaardig heden geëvalueerd
 
 REST API versie `2020-06-30-Preview` voorziet in incrementele verrijking via extra eigenschappen voor Indexeer functies. Vaardig heden en gegevens bronnen kunnen de algemeen beschik bare versie gebruiken. Zie [caching configureren voor incrementele verrijking](search-howto-incremental-index.md) in aanvulling op de referentie documentatie voor meer informatie over het aanroepen van de api's.
 
-+ [Indexeer functie maken (API-Version = 2020-06 -30-preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-indexer) 
++ [Indexeer functie maken (API-Version = 2020-06 -30-preview)](https://docs.microsoft.com/rest/api/searchservice/create-indexer) 
 
-+ [Indexeer functie bijwerken (API-Version = 2020-06 -30-preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-indexer) 
++ [Indexeer functie bijwerken (API-Version = 2020-06 -30-preview)](https://docs.microsoft.com/rest/api/searchservice/update-indexer) 
 
 + [Update vaardig heden (API-Version = 2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/update-skillset) (nieuwe Uri-para meter voor de aanvraag)
 
-+ [Vaardig heden opnieuw instellen (API-Version = 2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/reset-skills)
++ [Vaardig heden opnieuw instellen (API-Version = 2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-skills)
 
 + Database Indexeer functies (Azure SQL, Cosmos DB). Met sommige Indexeer functies worden gegevens opgehaald via query's. Voor query's waarmee gegevens worden opgehaald, ondersteunt de [gegevens bron update](https://docs.microsoft.com/rest/api/searchservice/update-data-source) een nieuwe para meter voor een aanvraag **ignoreResetRequirement**, die moet worden ingesteld op `true` wanneer de cache niet door de update actie moet worden gevalideerd. 
 

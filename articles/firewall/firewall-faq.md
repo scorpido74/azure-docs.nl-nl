@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 07/10/2020
 ms.author: victorh
-ms.openlocfilehash: 27cdff24672f70407e8f8f89c6c49a8c2de87d0a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 3174576201f0068191c2918b47fbd99eaa1ec182
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078422"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232080"
 ---
 # <a name="azure-firewall-faq"></a>Veelgestelde vragen over Azure Firewall
 
@@ -223,3 +223,7 @@ Een standaard gedrag van een netwerk firewall is om ervoor te zorgen dat TCP-ver
 ## <a name="can-i-deploy-azure-firewall-without-a-public-ip-address"></a>Kan ik Azure Firewall implementeren zonder een openbaar IP-adres?
 
 Nee, momenteel moet u Azure Firewall implementeren met een openbaar IP-adres.
+
+## <a name="where-does-azure-firewall-store-customer-data"></a>Waar worden klant gegevens Azure Firewall opgeslagen?
+
+Azure Firewall verplaatst of opslaat klant gegevens niet uit de regio waarin deze zijn geïmplementeerd.

@@ -15,7 +15,7 @@ ms.locfileid: "86260293"
 # <a name="sfctl-rpm"></a>sfctl rpm
 Query's uitvoeren en opdrachten verzenden naar de service reparatie beheer.
 
-## <a name="commands"></a>Opdracht
+## <a name="commands"></a>Opdrachten
 
 |Opdracht|Beschrijving|
 | --- | --- |
