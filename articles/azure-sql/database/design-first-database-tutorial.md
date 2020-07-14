@@ -141,7 +141,7 @@ Gebruik [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ss
 
    ![verbinding maken met server](./media/design-first-database-tutorial/connect.png)
 
-3. Klik op **Opties** in het dialoogvenster **Verbinding maken met server**. Voer in de sectie **Verbinding maken met database***yourDatabase* in om verbinding te maken met deze database.
+3. Klik op **Opties** in het dialoogvenster **Verbinding maken met server**. Voer in de sectie **Verbinding maken met database** *yourDatabase* in om verbinding te maken met deze database.
 
     ![verbinding maken met database op server](./media/design-first-database-tutorial/options-connect-to-db.png)  
 

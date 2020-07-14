@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5d631143b839e052316490d3b3b89ca10469cb1
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 2f3ea5f1810b5ca80e096b19e1dcf230e21eabcc
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83778839"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85317635"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Zelfstudie: Hybride Azure Active Directory-deelname configureren voor beheerde domeinen
 
@@ -70,9 +70,9 @@ Voor hybride Azure AD-koppeling moeten apparaten toegang tot de volgende Microso
 - `https://device.login.microsoftonline.com`
 - `https://autologon.microsoftazuread-sso.com` (Als u naadloze eenmalige aanmelding gebruikt of wilt gebruiken)
 
-Als uw organisatie toegang tot internet via een uitgaande proxy vereist, raden we u aan [WPAD (Web Proxy Auto-Discovery) te implementeren](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) om Windows 10-computers in staat te stellen apparaten te registreren met Azure AD. Zie [Troubleshooting Automatic Detection](/previous-versions/tn-archive/cc302643(v=technet.10)) (Problemen met automatische detectie oplossen) als u problemen ondervindt met het configureren en beheren van WPAD.
+Als uw organisatie toegang tot internet via een uitgaande proxy vereist, kunt u [WPAD (Web Proxy Auto-Discovery) implementeren](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) gebruiken om Windows 10-computers in staat te stellen apparaten te registreren met Azure AD. Zie [Troubleshooting Automatic Detection](/previous-versions/tn-archive/cc302643(v=technet.10)) (Problemen met automatische detectie oplossen) als u problemen ondervindt met het configureren en beheren van WPAD. In Windows 10-apparaten vóór de 1709-update is WPAD de enige beschikbare optie voor het configureren van een proxy voor gebruik met hybride Azure AD-deelname. 
 
-Als u WPAD niet gebruikt, kunt u proxy-instellingen op uw computer configureren vanaf Windows 10 1709. Zie [WinHTTP Proxy Settings deployed by GPO](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/) (WinHTTP-proxyinstellingen geïmplementeerd door GPO) voor meer informatie.
+Als u WPAD niet gebruikt, kunt u WinHTTP-proxy-instellingen op uw computer configureren vanaf Windows 10 1709. Zie [WinHTTP Proxy Settings deployed by GPO](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/) (WinHTTP-proxyinstellingen geïmplementeerd door GPO) voor meer informatie.
 
 > [!NOTE]
 > Als u proxy-instellingen op uw computer configureert met behulp van WinHTTP-instellingen, kunnen computers die geen verbinding hebben met de geconfigureerde proxy, geen verbinding maken met internet.

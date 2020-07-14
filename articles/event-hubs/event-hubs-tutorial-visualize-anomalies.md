@@ -1,26 +1,20 @@
 ---
-title: Gegevens afwijkingen in realtime-gebeurtenissen in azure Event Hubs-visualiseren
-description: 'Zelf studie: gegevens afwijkingen visualiseren in realtime gebeurtenissen die naar Microsoft Azure worden verzonden Event Hubs'
-services: event-hubs
-author: ShubhaVijayasarathy
-manager: timlt
-ms.author: shvija
+title: Azure Event Hubs - Gegevensanomalieën binnen in realtime verzonden gebeurtenissen visualiseren
+description: 'Zelfstudie: Gegevensanomalieën binnen in realtime naar Microsoft Azure Event Hubs verzonden gebeurtenissen visualiseren'
 ms.topic: tutorial
-ms.service: event-hubs
-ms.custom: seodec18
-ms.date: 01/15/2020
-ms.openlocfilehash: f71d8e9f88dad32818ed25d4a0719a1528656f96
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: 595c0e06750171c844249a77ecef16c84dc8ada5
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77163174"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85315616"
 ---
-# <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Zelfstudie: Gegevensanomalieën binnen in realtime naar Azure Event Hubs verzonden gebeurtenissen visualiseren
+# <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Zelfstudie: gegevensanomalieën binnen in realtime naar Azure Event Hubs verzonden gebeurtenissen visualiseren
 
-Met Azure Event Hubs kunt u Azure Stream Analytics gebruiken om de binnenkomende gegevens te controleren en de anomalieën te vinden, die u vervolgens kunt visualiseren in Power BI. Stel dat u duizenden apparaten hebt die constant realtimegegevens naar een Event Hub versturen, wat neerkomt op miljoenen gebeurtenissen per seconde. Hoe controleert u zoveel gegevens op afwijkingen, of fouten, in de gegevens? Bijvoorbeeld wat als de apparaten creditcard transacties verzenden en u wilt vastleggen waar u meerdere trans acties in meerdere landen of regio's binnen een tijds interval van vijf seconden hebt? Dit kan gebeuren als iemand creditcards steelt en deze dan gebruikt om tegelijkertijd op verschillende plaatsen ter wereld artikelen te kopen. 
+Met Azure Event Hubs kunt u Azure Stream Analytics gebruiken om de binnenkomende gegevens te controleren en de anomalieën te vinden, die u vervolgens kunt visualiseren in Power BI. Stel dat u duizenden apparaten hebt die constant realtimegegevens naar een Event Hub versturen, wat neerkomt op miljoenen gebeurtenissen per seconde. Hoe controleert u zoveel gegevens op afwijkingen, of fouten, in de gegevens? Wat bijvoorbeeld als de apparaten creditcardtransacties verzenden en u wilt registreren waar u meerdere transacties in meerdere landen/regio's hebt in een interval van 5 seconden? Dit kan gebeuren als iemand creditcards steelt en deze dan gebruikt om tegelijkertijd op verschillende plaatsen ter wereld artikelen te kopen. 
 
-In deze zelfstudie simuleert u dit voorbeeld. U voert een toepassing uit die creditcardtransacties maakt en verzendt naar een Event Hub. Vervolgens leest u de gegevens stroom in realtime met Azure Stream Analytics, die de geldige trans acties van de ongeldige trans acties scheidt, en gebruikt u vervolgens Power BI om de trans acties die als ongeldig zijn gelabeld, visueel te identificeren.
+In deze zelfstudie simuleert u dit voorbeeld. U voert een toepassing uit die creditcardtransacties maakt en verzendt naar een Event Hub. Vervolgens leest u de gegevensstroom in realtime met Azure Stream Analytics, dat de geldige transacties van de ongeldige transacties scheidt, en vervolgens gebruikt u Power BI om de transacties die als ongeldig zijn gelabeld, visueel te identificeren.
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
@@ -30,7 +24,7 @@ In deze zelfstudie leert u het volgende:
 > * Een Stream Analytics-taak configureren om die transacties te verwerken
 > * Een Power BI-visualisatie configureren om de resultaten te tonen
 
-U hebt een Azure-abonnement nodig om deze zelfstudie te voltooien. Als u nog geen abonnement hebt, [maakt u een gratis account][] voordat u begint.
+U hebt een Azure-abonnement nodig om deze zelfstudie te voltooien. Als u nog geen abonnement hebt, maakt u een [gratis account][] voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -47,14 +41,14 @@ Voor deze zelfstudie hebt u een Event Hubs-naamruimte en een Event Hub nodig. U 
 
 In de volgende secties wordt beschreven hoe u deze vereiste stappen kunt uitvoeren. Volg de CLI- *of* PowerShell-instructies om de volgende stappen uit te voeren:
 
-1. Maak een [resource groep](../azure-resource-manager/management/overview.md). 
+1. Maak een [resourcegroep](../azure-resource-manager/management/overview.md). 
 
 2. Maak een Event Hubs-naamruimte. 
 
 3. Maak een Event Hub.
 
 > [!NOTE]
-> Er worden in elk script variabelen ingesteld die u later in de zelfstudie nodig hebt. Dit zijn de naam van de resourcegroep ($resourceGroup), de naamruimte van de Event Hub (**$eventHubNamespace**) en de naam van de Event Hub (**$eventHubName **). Hier wordt later in dit artikel naar verwezen met hun dollartekenvoorvoegsel ($), zodat u weet dat ze zijn ingesteld in het script.
+> Er worden in elk script variabelen ingesteld die u later in de zelfstudie nodig hebt. Dit zijn de naam van de resourcegroep ($resourceGroup), de naamruimte van de Event Hub ( **$eventHubNamespace**) en de naam van de Event Hub ( **$eventHubName** ). Hier wordt later in dit artikel naar verwezen met hun dollartekenvoorvoegsel ($), zodat u weet dat ze zijn ingesteld in het script.
 
 <!-- some day they will approve the tab control; 
   When that happens, put CLI and PSH in tabs. -->
@@ -156,17 +150,17 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
 ## <a name="run-app-to-produce-test-event-data"></a>App voor het produceren van testgebeurtenisgegevens uitvoeren
 
-De Event Hubs- [voor beelden op github](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet) bevatten een anomalie detectie-app die test gegevens voor u produceert. Deze app simuleert het gebruik van creditcards door creditcardtransacties naar de Event Hub te schrijven, inclusief het af en toe schrijven van meerdere transacties voor dezelfde creditcard op meerdere locaties, zodat ze als anomalieën worden getagd. Volg deze stappen voor het uitvoeren van deze app: 
+De Event Hubs-[voorbeelden op GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet) bevatten een Anomaliedetectie-app die testgegevens voor u produceert. Deze app simuleert het gebruik van creditcards door creditcardtransacties naar de Event Hub te schrijven, inclusief het af en toe schrijven van meerdere transacties voor dezelfde creditcard op meerdere locaties, zodat ze als anomalieën worden getagd. Volg deze stappen voor het uitvoeren van deze app: 
 
 1. Download de [Azure Event Hubs-voorbeelden](https://github.com/Azure/azure-event-hubs/archive/master.zip) van GitHub en pak het bestand lokaal uit.
-2. Ga naar de map **\azure-Event-hubs-master\samples\DotNet\\ ** . 
-3. Ga naar de map **Azure. Messa ging\\ . EventHubs\AnomalyDetector** en dubbel klik op **AnomalyDetector. SLN** om de oplossing te openen in Visual Studio. 
+2. Ga naar de map **\azure-event-hubs-master\samples\DotNet\\** . 
+3. Schakel over naar de map **Azure.Messaging.EventHubs\AnomalyDetector\\** en dubbelklik op **AnomalyDetector.sln** om de oplossing in Visual Studio te openen. 
 
-    Als u de oude versie van het voor beeld wilt gebruiken dat gebruikmaakt van het oude pakket micro soft. Azure. Event hubs, opent u de oplossing in de map **micro soft. Azure. EventHubs\AnomalyDetector** . 
+    Als u de oude versie van het voorbeeld wilt gebruiken, dat gebruikmaakt van het oude pakket Microsoft.Azure.EventHubs, open dan de oplossing uit de map **Microsoft.Azure.EventHubs\AnomalyDetector**. 
 3. Open Program.cs en vervang **Event Hubs connection string** door de verbindingsreeks die u bij het uitvoeren van het script hebt opgeslagen. 
 4. Vervang **Event Hub name** door de naam van uw Event Hub. Klik op F5 om de toepassing uit te voeren. Deze begint met het verzenden van gebeurtenissen naar uw Event Hub en gaat door totdat er 1000 gebeurtenissen zijn verzonden. Er zijn een paar gevallen waarin u alleen gegevens kunt ophalen als de app actief is. Deze gevallen worden waar nodig aangegeven in de volgende instructies.
 
-## <a name="set-up-azure-stream-analytics"></a>Azure Stream Analytics installeren
+## <a name="set-up-azure-stream-analytics"></a>Azure Stream Analytics instellen
 
 U kunt nu gegevens streamen naar uw Event Hub. Als u die gegevens in een Power BI-visualisatie wilt gebruiken, begint u met het instellen van een Stream Analytics-taak om de gegevens op te halen, die vervolgens worden ingevoerd in de Power BI-visualisatie.
 
@@ -178,15 +172,15 @@ U kunt nu gegevens streamen naar uw Event Hub. Als u die gegevens in een Power B
 
    **Taaknaam**: gebruik **contosoEHjob**. Dit veld is de naam van de taak en moet globaal uniek zijn.
 
-   **Abonnement**: selecteer uw abonnement.
+   **Abonnement**: Selecteer uw abonnement.
 
    **Resourcegroep**: gebruik dezelfde resourcegroep die wordt gebruikt door uw Event Hub (**ContosoResourcesEH**).
 
-   **Locatie**: gebruik dezelfde locatie die u in het instellingsscript hebt gebruikt (**VS - west**).
+   **Locatie**: gebruik dezelfde locatie die u in het installatiescript hebt gebruikt (**VS - west**).
 
    ![Schermopname waarin wordt weergegeven hoe u een nieuwe Azure Stream Analytics-taak maakt.](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-add-job.png)
 
-    Accepteer de standaardwaarden voor de rest van de velden. Klik op **maken**. 
+    Accepteer de standaardwaarden voor de rest van de velden. Klik op **Create**. 
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Een invoer aan de Stream Analytics-taak toevoegen
 
@@ -201,17 +195,17 @@ De invoer voor de Stream Analytics-taak zijn de creditcardtransacties van de Eve
 
 2. Klik in het deelvenster **Invoer** op **Stroominvoer toevoegen** en selecteer Event Hubs. Vul de volgende velden in op het scherm dat wordt weergegeven:
 
-   **Invoeralias**: gebruik **contosoinputs**. Dit veld is de naam van de invoerstroom die wordt gebruikt bij het definiëren van de query voor de gegevens.
+   **Invoeralias**: Gebruik **contosoinputs**. Dit veld is de naam van de invoerstroom die wordt gebruikt bij het definiëren van de query voor de gegevens.
 
-   **Abonnement**: selecteer uw abonnement.
+   **Abonnement**: Selecteer uw abonnement.
 
    **Event Hubs-naamruimte**: selecteer uw Event Hub-naamruimte ($**eventHubNamespace**). 
 
    **Event Hub-naam**: klik op **Bestaande gebruiken** en selecteer uw Event Hub ($**eventHubName**).
 
-   **Event Hubs-beleidsnaam**: selecteer **RootManageSharedAccessKey**.
+   **Naam van het Event Hubs-beleid**: selecteer **RootManageSharedAccessKey**.
 
-   **Event Hubs-consumentengroep**: laat dit veld leeg als u de standaard-consumergroep wilt gebruiken.
+   **Event Hubs-consumentengroep**: laat dit veld leeg als u de standaardconsumentengroep wilt gebruiken.
 
    Accepteer de standaardwaarden voor de rest van de velden.
 
@@ -282,9 +276,9 @@ Deze query wordt gebruikt om de gegevens op te halen die uiteindelijk naar de Po
 
 5. Sluit het deelvenster Query.
 
-### <a name="run-the-stream-analytics-job"></a>Voer de Stream Analytics-taak uit
+### <a name="run-the-stream-analytics-job"></a>De Stream Analytics-taak uitvoeren
 
-Klik in de Stream Analytics-taak op **Start**, vervolgens op **Nu ** en daarna op **Start**. Zodra de taak kan worden gestart, wordt de taakstatus veranderd van **Gestopt** naar **In uitvoering**.
+Klik in de Stream Analytics-taak op **Start**, vervolgens op **Nu**  en daarna op **Start**. Zodra de taak kan worden gestart, wordt de taakstatus veranderd van **Gestopt** naar **In uitvoering**.
 
 ## <a name="set-up-the-power-bi-visualizations"></a>De Power BI-visualisaties instellen
 
@@ -306,7 +300,7 @@ Klik in de Stream Analytics-taak op **Start**, vervolgens op **Nu ** en daarna o
 
    ![Schermopname van het opgeven van de dashboardnaam.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-dashboard-name.png)
 
-7. Klik op de pagina dash board op **tegel toevoegen**, selecteer **aangepaste streaminggegevens** in de sectie **realtime gegevens** en klik vervolgens op **volgende**.
+7. Klik op de dashboardpagina op **Tegel toevoegen**, selecteer **Aangepaste streaminggegevens**  in het gedeelte **REALTIMEGEGEVENS** en klik op **Volgende**.
 
    ![Schermafbeelding van het opgeven van de bron voor een tegel.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-add-card-real-time-data.png)
 
@@ -373,7 +367,7 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 > [!div class="checklist"]
 > * Een Event Hubs-naamruimte maken
 > * Een Event Hub maken
@@ -386,4 +380,4 @@ Ga naar het volgende artikel voor meer informatie over Azure Event Hubs.
 > [!div class="nextstepaction"]
 > [Aan de slag met het verzenden van berichten naar Azure Event Hubs in .NET Standard](get-started-dotnet-standard-send-v2.md)
 
-[maakt u een gratis account]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[gratis account]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio

@@ -3,18 +3,18 @@ title: Beheeropties voor blauwdrukvoorbeeld FedRAMP High
 description: Beheeropties toewijzen aan het blauwdrukvoorbeeld FedRAMP High. Elke beheeroptie wordt toegewezen aan een of meer Azure-beleidsregels die helpt bij de evaluatie.
 ms.date: 05/12/2020
 ms.topic: sample
-ms.openlocfilehash: cf9db71a18654f973306637831ae1bcdf8dbef9e
-ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
+ms.openlocfilehash: f57f753c405e736a4c83dd6f10b6f38184ce74b6
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/29/2020
-ms.locfileid: "85517198"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84168876"
 ---
 # <a name="control-mapping-of-the-fedramp-high-blueprint-sample"></a>Beheeropties toewijzen aan het blauwdrukvoorbeeld FedRAMP High
 
 In het volgende artikel wordt uitgelegd hoe het blauwdrukvoorbeeld FedRAMP High van Azure Blueprints wordt toegewezen aan de beheeropties van FedRAMP Moderate. Zie [de website van FedRAMP](https://www.fedramp.gov/) voor meer informatie over de beheeropties.
 
-De volgende toewijzingen gelden voor de **FedRAMP High**-beheeropties. Gebruik de navigatie aan de rechterkant om rechtstreeks naar een toewijzing van een specifieke beheeroptie te gaan. Veel van de toegewezen beheeropties worden geïmplementeerd met een [Azure Policy](../../../policy/overview.md)-initiatief. Als u het complete initiatief wilt bekijken, opent u **Beleid** in de Azure-portal en selecteert u de pagina **Definities**. Zoek en selecteer vervolgens de **\[Preview\]: FedRAMP High-beheeropties controleren en specifieke VM-extensies implementeren ter ondersteuning van de controlevereisten**.
+De volgende toewijzingen gelden voor de **FedRAMP High**-beheeropties. Gebruik de navigatie aan de rechterkant om rechtstreeks naar een toewijzing van een specifieke beheeroptie te gaan. Veel van de toegewezen beheeropties worden geïmplementeerd met een [Azure Policy](../../../policy/overview.md)-initiatief. Als u het complete initiatief wilt bekijken, opent u **Beleid** in de Azure-portal en selecteert u de pagina **Definities**. Zoek en selecteer vervolgens de **\[Preview\]: FedRAMP High-beheeropties controleren en specifieke VM-extensies implementeren ter ondersteuning van de controlevereisten** .
 
 > [!IMPORTANT]
 > Elke beheeroptie hieronder is gekoppeld aan een of meer [Azure Policy](../../../policy/overview.md)-definities. Met deze beleidsregels kunt u de [compliance beoordelen](../../../policy/how-to/get-compliance-data.md) met de beheeroptie. Er is echter vaak geen één-op-één- of volledige overeenkomst tussen een beheeroptie en een of meer beleidsregels. Als zodanig verwijst de term **Conform** in Azure Policy alleen naar de beleidsregels zelf. Dit garandeert niet dat u volledig conform bent met alle vereisten van een beheeroptie. Daarnaast bevat de compliance standaard beheeropties die op dit moment nog niet worden beschreven door Azure Policy-definities. Daarom is compliance in Azure Policy slechts een gedeeltelijke weergave van uw algemene compliancestatus. De koppelingen tussen de beheeropties en Azure Policy definities voor dit blauwdrukvoorbeeld voor compliance kunnen na verloop van tijd veranderen.

@@ -33,7 +33,7 @@ export COGNITIVE_SERVICE_KEY=your-key
 
 Nadat u de omgevingsvariabele toevoegt, voert u `source ~/.bashrc` uit vanuit het consolevenster om de wijzigingen van kracht te laten worden.
 
-#### <a name="macos"></a>[MacOS](#tab/unix)
+#### <a name="macos"></a>[macOS](#tab/unix)
 
 Bewerk uw .bash_profile en voeg de omgevingsvariabele toe:
 

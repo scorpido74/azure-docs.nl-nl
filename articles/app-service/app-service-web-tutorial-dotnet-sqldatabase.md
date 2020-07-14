@@ -140,7 +140,7 @@ Voordat u een database maakt, hebt u een [logische SQL-server](../azure-sql/data
 1. In het dialoogvenster **SQL Database configureren**:
 
    * Bewaar de door het systeem gegenereerde standaard**Databasenaam**.
-   * Typ in **Verbindingsreeksnaam***MyDbConnection*. Deze naam moet overeenkomen met de verbindingsreeks waarnaar wordt verwezen in *Models/MyDatabaseContext.cs*.
+   * Typ in **Verbindingsreeksnaam** *MyDbConnection*. Deze naam moet overeenkomen met de verbindingsreeks waarnaar wordt verwezen in *Models/MyDatabaseContext.cs*.
    * Selecteer **OK**.
 
     ![Database configureren](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database.png)

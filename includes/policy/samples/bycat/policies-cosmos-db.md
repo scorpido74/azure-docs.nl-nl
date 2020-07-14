@@ -2,19 +2,21 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 06/10/2020
+ms.date: 06/23/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: f264e5d2699f77f6deddf06acdbc9966bec8dbb8
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: db34a49882f16b18205414ec462cd067eb14419e
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84709412"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85313525"
 ---
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
+|[Voor het Azure Cosmos DB-account moeten door de klant beheerde sleutels worden gebruikt voor het versleutelen van data-at-rest](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1f905d99-2ab7-462c-a6b0-f709acca6c8f) |Gebruik door de klant beheerde sleutels om de versleuteling te beheren op de rest van de gegevens die zijn opgeslagen in Azure Cosmos DB als dit een vereiste is voor regelgeving of naleving. Door de klant beheerde sleutels bieden ook dubbele versleuteling door een tweede laag versleuteling toe te voegen boven op de standaard die wordt uitgevoerd met door service beheerde sleutels. Zie [https://aka.ms/cosmosdb-cmk](https://aka.ms/cosmosdb-cmk) |controleren, weigeren, uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cosmos%20DB/Cosmos_CMK_Deny.json) |
+|[Azure Cosmos DB-accounts moeten firewallregels bevatten](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F862e97cf-49fc-4a5c-9de4-40d4e2e7c8eb) |Controleer of weiger resources waarvoor geen IP-regels zijn geconfigureerd en sta alle netwerken standaard toe. Accounts waarvoor ten minste één IP-regel is gedefinieerd waarvoor het filter voor virtuele netwerken is ingeschakeld, worden als compatibel beschouwd. Accounts die openbare toegang uitschakelen, worden ook beschouwd als compatibel. |Controleren, Weigeren, Uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cosmos%20DB/Cosmos_NetworkRulesExist_Audit.json) |
 |[Toegestane locaties voor Azure Cosmos DB](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0473574d-2d43-4217-aefe-941fcdf7e684) |Met dit beleid kunt u de locaties beperken die uw organisatie kan opgeven tijdens het implementeren van Azure Cosmos-resources. Dit beleid wordt gebruikt om uw geografische nalevingsvereisten af te dwingen. |[parameters('policyEffect')] |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cosmos%20DB/Cosmos_Locations_Deny.json) |
 |[Azure Cosmos DB-schrijftoegang tot metagegevens op basis van sleutels moet zijn uitgeschakeld](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4750c32b-89c0-46af-bfcb-2e4541a818d5) |Met dit beleid kunt u ervoor zorgen dat alle Azure Cosmos DB-accounts schrijftoegang tot metagegevens op basis van sleutels uitschakelen. |toevoegen |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cosmos%20DB/Cosmos_DisableMetadata_Append.json) |
-|[Azure Cosmos DB-doorvoer moet zijn beperkt](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b7ef78e-a035-4f23-b9bd-aff122a1b1cf) |Met dit beleid kunt u de maximale doorvoer beperken die uw organisatie kan opgeven bij het maken van Azure Cosmos DB-databases en -containers via de resourceprovider. Hiermee wordt het aanmaken van resources voor automatische schaalaanpassing geblokkeerd. |controleren, weigeren, uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cosmos%20DB/Cosmos_MaxThroughput_Deny.json) |
+|[Azure Cosmos DB-doorvoer moet zijn beperkt](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b7ef78e-a035-4f23-b9bd-aff122a1b1cf) |Met dit beleid kunt u de maximale doorvoer beperken die uw organisatie kan opgeven bij het maken van Azure Cosmos DB-databases en -containers via de resourceprovider. Hiermee wordt het maken van resources voor automatische schaalaanpassing geblokkeerd. |controleren, weigeren, uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cosmos%20DB/Cosmos_MaxThroughput_Deny.json) |
 |[Advanced Threat Protection implementeren voor Cosmos DB-accounts](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb5f04e03-92a3-4b09-9410-2cc5e5047656) |Met dit beleid schakelt u Advanced Threat Protection in voor alle Cosmos DB-accounts. |DeployIfNotExists, uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cosmos%20DB/CosmosDbAdvancedThreatProtection_Deploy.json) |

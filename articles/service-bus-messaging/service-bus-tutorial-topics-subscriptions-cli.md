@@ -1,24 +1,20 @@
 ---
-title: 'Zelf studie: Retail voorraad assortiment bijwerken met behulp van de kanalen voor publiceren/abonneren en de onderwerps filters met Azure CLI'
-description: 'Zelf studie: in deze zelf studie leert u hoe u berichten kunt verzenden en ontvangen van een onderwerp en een abonnement en hoe u filter regels kunt toevoegen en gebruiken met behulp van Azure CLI'
-services: service-bus-messaging
-author: spelluru
-manager: timlt
-ms.author: spelluru
-ms.date: 11/05/2019
+title: 'Zelfstudie: Het voorraadassortiment van een detailhandelsbedrijf bijwerken via het publiceren van/abonneren op kanalen en via onderwerpfilters met Azure CLI'
+description: 'Zelfstudie: In deze zelfstudie leert u hoe u berichten naar een onderwerp en abonnement kunt versturen en ervan kunt ontvangen, en hoe u filterregels kunt gebruiken en toevoegen met behulp van Azure CLI.'
+ms.date: 06/23/2020
 ms.topic: tutorial
-ms.service: service-bus-messaging
-ms.custom: mvc
-ms.openlocfilehash: 0bd0d8eb8abe6f320f73e35b1e3b08e1d8dc1de3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+author: spelluru
+ms.author: spelluru
+ms.openlocfilehash: 5340ec8d3d7a479fb349ce5ed1d32f917668d0d8
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73718925"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341002"
 ---
-# <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>Zelfstudie: Voorraad bijwerken met behulp van CLI en onderwerpen/abonnementen
+# <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>Zelfstudie: voorraad bijwerken met behulp van CLI en onderwerpen/abonnementen
 
-Microsoft Azure Service Bus is een berichtenservice in de cloud met meerdere tenants die informatie tussen toepassingen en services verzendt. Met asynchrone bewerkingen krijgt u flexibele Brokered Messaging, samen met gestructureerde FIFO-messaging (first in, first out) en mogelijkheden voor publiceren/abonneren. In deze zelfstudie leert u hoe u onderwerpen en abonnementen van Service Bus-onderwerpen kunt gebruiken in een scenario met detailhandelvoorraad, waarbij gebruik wordt gemaakt van Azure CLI en Java om kanalen te publiceren/abonneren.
+Microsoft Azure Service Bus is een multitenant-cloudberichtenservice waarmee u gegevens kunt versturen tussen toepassingen en services. Met asynchrone bewerkingen krijgt u flexibele Brokered Messaging, samen met gestructureerde FIFO-messaging (first in, first out) en mogelijkheden voor publiceren/abonneren. In deze zelfstudie leert u hoe u onderwerpen en abonnementen van Service Bus-onderwerpen kunt gebruiken in een scenario met detailhandelvoorraad, waarbij gebruik wordt gemaakt van Azure CLI en Java om kanalen te publiceren/abonneren.
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
@@ -32,7 +28,7 @@ Een voorbeeld van dit scenario is het bijwerken van het voorraadassortiment voor
 
 ![onderwerp](./media/service-bus-tutorial-topics-subscriptions-cli/about-service-bus-topic.png)
 
-Als u geen Azure-abonnement hebt, kunt u een [gratis account][] maken voordat u begint.
+Als u nog geen abonnement op Azure hebt, kunt u een [gratis account][] maken voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -40,7 +36,7 @@ Als u een Service Bus-app wilt ontwikkelen met behulp van Java, moet het volgend
 
 - [Java Development Kit](https://aka.ms/azure-jdks), de nieuwste versie.
 - [Azure-CLI](https://docs.microsoft.com/cli/azure)
-- [Apache Maven](https://maven.apache.org), versie 3,0 of hoger.
+- [Apache Maven](https://maven.apache.org), versie 3.0 of hoger.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -126,7 +122,7 @@ Wanneer de laatste opdracht is uitgevoerd, kopieert en plakt u de verbindingstek
 
 ## <a name="create-filter-rules-on-subscriptions"></a>Filterregels voor abonnementen maken
 
-Nadat de naamruimte en onderwerp/abonnementen zijn ingericht en u over de benodigde referenties beschikt, bent u klaar om filterregels voor de abonnementen te maken, en kunt u vervolgens berichten verzenden en ontvangen. U kunt de code controleren in [deze GitHub-voorbeeldmap](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters).
+Nadat de naamruimte en onderwerp/abonnementen zijn ingericht en u over de benodigde referenties beschikt, bent u klaar om filterregels voor de abonnementen te maken, en kunt u vervolgens berichten verzenden en ontvangen. U kunt de code in [deze GitHub-voorbeeldmap](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters) controleren.
 
 ## <a name="send-and-receive-messages"></a>Berichten verzenden en ontvangen
 
@@ -140,7 +136,7 @@ Nadat de naamruimte en onderwerp/abonnementen zijn ingericht en u over de benodi
 
 2. Navigeer naar de voorbeeldmap `azure-service-bus/samples/Java/quickstarts-and-tutorials/quickstart-java/tutorial-topics-subscriptions-filters-java`. Houd er rekening mee dat in de Bash-shell de opdrachten hoofdlettergevoelig zijn en dat de padscheidingstekens slashes zijn.
 
-3. Geef de volgende opdracht om de toepassing te compileren:
+3. Geef de volgende opdracht om de toepassing te maken:
    
    ```shell
    mvn clean package -DskipTests
@@ -167,7 +163,7 @@ az group delete --resource-group my-resourcegroup
 
 Deze sectie bevat meer informatie over de werking van de voorbeeldcode.
 
-### <a name="get-connection-string-and-queue"></a>Verbindingsreeks en wachtrij ophalen
+### <a name="get-connection-string-and-queue"></a>De verbindingsreeks en de wachtrij ophalen
 
 De code declareert eerst een set van variabelen die de rest van het programma uitvoert:
 
@@ -326,14 +322,14 @@ public CompletableFuture<Void> receiveAllMessageFromSubscription(String subscrip
 ```
 
 > [!NOTE]
-> U kunt Service Bus-resources beheren met [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Met de Service Bus Explorer kunnen gebruikers verbinding maken met een Service Bus naam ruimte en de Messa ging-entiteiten op een eenvoudige manier beheren. Het hulp programma biedt geavanceerde functies zoals de functionaliteit voor importeren/exporteren of de mogelijkheid om onderwerp, wacht rijen, abonnementen, relay-Services, Notification hubs en Events hubs te testen. 
+> U kunt resources van Service Bus beheren met [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Met Service Bus Explorer kunnen gebruikers verbinding maken met een Service Bus-naamruimte en berichtenentiteiten op een eenvoudige manier beheren. Het hulpprogramma biedt geavanceerde functies zoals functionaliteit voor importeren/exporteren of de mogelijkheid van het testen van onderwerpen, wachtrijen, abonnementen, relay-services, Notification Hubs en Event Hubs. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 In deze zelfstudie hebt u resources ingericht met behulp van Azure CLI en vervolgens berichten verzonden en ontvangen van een Service Bus-onderwerp en de daarbij behorende abonnementen. U hebt geleerd hoe u:
 
 > [!div class="checklist"]
-> * Een Service Bus-onderwerp en een of meer abonnementen op dat onderwerp kunt maken met Azure Portal.
+> * Een Service Bus-onderwerp en een of meer abonnementen voor dat onderwerp maken met Azure Portal
 > * Onderwerpfilters toevoegen met .NET-code
 > * Twee berichten met verschillende inhoud maken.
 > * De berichten verzenden en controleren of ze zijn ontvangen in de verwachte abonnementen
@@ -344,7 +340,7 @@ Meer voorbeelden voor het verzenden en ontvangen van berichten vindt u in [de Se
 Ga naar de volgende zelfstudie voor meer informatie over het gebruik van de mogelijkheden voor publiceren/abonneren van Service Bus.
 
 > [!div class="nextstepaction"]
-> [Voorraad bijwerken met PowerShell en onderwerpen/abonnementen](service-bus-tutorial-topics-subscriptions-portal.md)
+> [Voorraad bijwerken met behulp van PowerShell en onderwerpen/abonnementen](service-bus-tutorial-topics-subscriptions-portal.md)
 
 [gratis account]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name

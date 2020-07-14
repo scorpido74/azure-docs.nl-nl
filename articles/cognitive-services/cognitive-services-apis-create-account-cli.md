@@ -102,7 +102,7 @@ Wanneer u een nieuwe resource maakt, moet u weten wat de soort service is die u 
 | Bing Automatische suggesties   | `Bing.Autosuggest.v7` |
 | Bing Custom Search | `Bing.CustomSearch`   |
 | Bing Entity Search | `Bing.EntitySearch`   |
-| Bing Zoeken        | `Bing.Search.v7`      |
+| Bing Search        | `Bing.Search.v7`      |
 | Bing Spellingcontrole   | `Bing.SpellCheck.v7`  |
 
 ### <a name="speech"></a>Spraak

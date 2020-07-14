@@ -61,7 +61,7 @@ Gebruik de volgende stappen voor het maken van een Event Hub en verzenden van ge
    ![Event hub-naamruimte in de Azure-portal maken](media/stream-analytics-manage-job/create-event-hub-namespace.png)
 
 5. Nadat de naamruimte is geïmplementeerd, gaat u naar **Alle resources** en zoekt u *myEventHubNS* in de lijst met Azure-resources. Selecteer *myEventHubsNS* om het te openen.
-6. Selecteer vervolgens **+Event Hub** en voer voor **Naam***MyEventHub* in of een naam naar keuze. Gebruik standaardopties voor de resterende instellingen en selecteer **Maken**. Wacht tot de implementatie is voltooid.
+6. Selecteer vervolgens **+Event Hub** en voer voor **Naam** *MyEventHub* in of een naam naar keuze. Gebruik standaardopties voor de resterende instellingen en selecteer **Maken**. Wacht tot de implementatie is voltooid.
 
    ![Event Hub-configuratie in de Azure-portal](media/stream-analytics-manage-job/create-event-hub-portal.png)
 
