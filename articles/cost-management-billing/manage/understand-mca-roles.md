@@ -6,12 +6,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 1003e26fa670a804328d5e34def7c9d78eced9c0
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 76aa21aea647e5096ba47fb691622ea5146d9901
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84702598"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207203"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>Informatie over beheerdersrollen voor Microsoft-klantovereenkomsten in Azure
 
@@ -141,12 +141,12 @@ In de volgende tabellen ziet u welke rol u nodig hebt om taken uit te voeren in 
 
 ### <a name="manage-invoice-section-permissions-and-properties"></a>Machtigingen en eigenschappen voor factuursecties beheren
 
-|Taken|Eigenaar van factuursectie|Inzender van factuursectie|Lezer van factuursectie|Maker van Azure-abonnement|Eigenaar van factureringsrekening|Inzender van factureringsrekening|Lezer van factureringsrekening | |
-|---|---|---|---|---|---|---|---|---|
-|Alle machtigingen voor factuursectie weergeven|✔|✔|✔|✔|✔|✔|✔| |
-|Anderen machtigingen geven voor het weergeven en beheren van de factuursectie|✔|✘|✘|✘|✘|✘|✘| |
-|Eigenschappen van factuursectie weergeven|✔|✔|✔|✔|✔|✔|✔| |
-|Eigenschappen van factuursectie bijwerken|✔|✔|✘|✘|✘|✘|✘|✘|
+|Taken|Eigenaar van factuursectie|Inzender van factuursectie|Lezer van factuursectie|Maker van Azure-abonnement|Eigenaar van factureringsrekening|Inzender van factureringsrekening|Lezer van factureringsrekening |
+|---|---|---|---|---|---|---|---|
+|Alle machtigingen voor factuursectie weergeven|✔|✔|✔|✔|✔|✔|✔|
+|Anderen machtigingen geven voor het weergeven en beheren van de factuursectie|✔|✘|✘|✘|✘|✘|✘|
+|Eigenschappen van factuursectie weergeven|✔|✔|✔|✔|✔|✔|✔|
+|Eigenschappen van factuursectie bijwerken|✔|✔|✘|✘|✘|✘|✘|
 
 ### <a name="manage-products-for-invoice-section"></a>Producten beheren voor de factuursectie
 
@@ -178,7 +178,7 @@ In de volgende tabel ziet u welke rol u nodig hebt om taken uit te voeren in de 
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-2. Zoek naar **Cost Management en facturering**.
+2. Zoek naar **Kostenbeheer en facturering**.
 
    ![Schermopname van de zoekopdracht in de Azure-portal](./media/understand-mca-roles/billing-search-cost-management-billing.png)
 
@@ -199,12 +199,12 @@ In de volgende tabel ziet u welke rol u nodig hebt om taken uit te voeren in de 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Toegang tot een Microsoft-klantovereenkomst controleren
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-support"></a>Hulp nodig? Contact opnemen met ondersteuning
+## <a name="need-help-contact-support"></a>Hebt u hulp nodig? Contact opnemen met ondersteuning
 Als u hulp nodig hebt, kunt u [contact opnemen met ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel op te lossen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de volgende artikelen voor meer informatie over uw factureringsaccount:
+Raadpleeg de volgende artikelen voor meer informatie over uw factureringsrekening:
 
 - [Aan de slag met uw factureringsrekening voor een Microsoft-klantovereenkomst](../understand/mca-overview.md)
 - [Een Azure-abonnement voor uw factureringsrekening voor een Microsoft-klantovereenkomst maken](create-subscription.md)

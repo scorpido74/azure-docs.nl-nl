@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 03/25/2020
-ms.openlocfilehash: 065fd166fb2ce82a3338322d55ef1ee5886ac56b
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 1d4896a2dd2115e5654baffe394618b30a294d5b
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85210368"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231740"
 ---
 # <a name="azure-machine-learning-vs-machine-learning-studio-classic"></a>Documentatie voor Azure Machine Learning t.o.v. Machine Learning Studio (klassiek)
 
@@ -27,7 +27,7 @@ We raden nieuwe gebruikers Azure Machine Learning aan om te kiezen voor het bree
 
 De volgende tabel bevat een overzicht van enkele van de belangrijkste verschillen tussen Azure Machine Learning en Studio (klassiek):
 
-| | Machine Learning Studio (klassiek) | Azure Machine Learning |
+| Functie | Machine Learning Studio (klassiek) | Azure Machine Learning |
 |---| --- | --- |
 | Interface met slepen en neerzetten | Ondersteund | Ondersteund - [De Azure Machine Learning-ontwerpfunctie (preview)](concept-designer.md) <br/>(Hiervoor is Enterprise Workspace vereist) | 
 | Experiment | Schaalbaar (max. 10 GB aan trainingsgegevens) | Schalen met rekendoel |
