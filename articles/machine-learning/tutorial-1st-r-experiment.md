@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Een machine learning-model maken met R'
+title: 'Zelfstudie: Een machine learning-model maken met R (preview)'
 titleSuffix: Azure Machine Learning
 description: In deze zelfstudie gebruikt u de Azure Machine Learning R SDK voor het maken van een logistiek regressiemodel dat de kans op een dodelijk slachtoffer bij een auto-ongeluk voorspelt.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: d95c0fc9baf1e53e6643660726c72660719908ba
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: cb4afac3b1e73a95fa3fe703fc5bd9d3f621f23a
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85483377"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134681"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>Zelfstudie: Een machine learning-model maken met R (preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

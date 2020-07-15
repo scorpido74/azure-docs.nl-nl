@@ -7,12 +7,12 @@ keywords: wijziging, bijhouden, bijhouden van wijzigingen, inventaris, automatis
 ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 211b34b4424fa5bc9b82dc1cc2a2da574ffc5d96
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 63fe36a51b69648039c3a16be4267fc0c72e8a58
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743691"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185803"
 ---
 # <a name="troubleshoot-changes-on-an-azure-vm"></a>Problemen met wijzigingen aan een virtuele machine van Azure oplossen
 
@@ -35,7 +35,7 @@ In deze zelfstudie leert u het volgende:
 Voor deze zelfstudie hebt u het volgende nodig:
 
 * Een Azure-abonnement. Als u nog geen abonnement hebt, kunt u [uw voordelen als MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) of u aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Een [Automation-account](automation-offering-get-started.md) voor het opslaan van de watcher- en actie-runbooks en de Watcher-taak.
+* Een [Automation-account](./index.yml) voor het opslaan van de watcher- en actie-runbooks en de Watcher-taak.
 * Een [virtuele machine](../virtual-machines/windows/quick-create-portal.md) die u voor de functie wilt inschakelen.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
@@ -54,7 +54,7 @@ Voor deze zelfstudie moet u eerst Wijzigingen bijhouden en Inventaris inschakele
 
     ![Wijziging inschakelen](./media/automation-tutorial-troubleshoot-changes/enableinventory.png)
 
-3. Kies de [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json)-werkruimte. In deze werkruimte worden gegevens verzameld die worden gegenereerd door functies als Wijzigingen bijhouden en Inventaris. De werkruimte biedt één locatie om gegevens uit meerdere bronnen te bekijken en te analyseren.
+3. Kies de [Log Analytics](../azure-monitor/log-query/log-query-overview.md)-werkruimte. In deze werkruimte worden gegevens verzameld die worden gegenereerd door functies als Wijzigingen bijhouden en Inventaris. De werkruimte biedt één locatie om gegevens uit meerdere bronnen te bekijken en te analyseren.
 
     [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -238,4 +238,4 @@ In deze zelfstudie hebt u het volgende geleerd:
 Ga verder naar het overzicht van de functie Wijzigingen bijhouden en Inventaris als u er meer over wilt weten.
 
 > [!div class="nextstepaction"]
-> [Overzicht Wijzigingen bijhouden en Inventaris](automation-change-tracking.md)
+> [Overzicht Wijzigingen bijhouden en Inventaris](./change-tracking.md)

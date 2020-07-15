@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
 ms.custom: has-adal-ref, tracking-python
-ms.openlocfilehash: 1203feaf6b400e91e6ab5381df0af245db0a2973
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 9c587ad9b791d953dce66df2337cf0e7dca52324
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559560"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185361"
 ---
 # <a name="tutorial-create-a-python-runbook"></a>Zelfstudie: Een Python-runbook maken
 
@@ -31,7 +31,7 @@ In deze zelfstudie wordt stap voor stap het maken van een [Python-runbook](../au
 Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
 - Azure-abonnement. Als u nog geen abonnement hebt, kunt u [uw voordelen als MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) of u aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- [Automation-account](../automation-offering-get-started.md) om het runbook te bevatten en te verifiëren voor Azure-resources. Dit account moet machtigingen hebben om de virtuele machine te starten en stoppen.
+- [Automation-account](../index.yml) om het runbook te bevatten en te verifiëren voor Azure-resources. Dit account moet machtigingen hebben om de virtuele machine te starten en stoppen.
 - Een virtuele machine van Azure. U stopt en start deze machine, dus het mag geen productiemachine zijn.
 
 ## <a name="create-a-new-runbook"></a>Een nieuw runbook maken
@@ -161,7 +161,7 @@ Daarvoor moet het script verifiëren met behulp van de referenties van uw Automa
 
 ## <a name="add-code-to-create-python-compute-client-and-start-the-vm"></a>Voeg code toe om de Python Compute-client te maken en de VM te starten
 
-Als u met Azure VM’s wilt werken, maakt u een exemplaar van de [Azure Compute-client voor Python](https://docs.microsoft.com/python/api/azure-mgmt-compute/azure.mgmt.compute.computemanagementclient).
+Als u met Azure VM’s wilt werken, maakt u een exemplaar van de [Azure Compute-client voor Python](/python/api/azure-mgmt-compute/azure.mgmt.compute.computemanagementclient).
 
 Gebruik de compute-client om de VM te starten. Voeg de volgende code toe aan het runbook:
 

@@ -7,12 +7,12 @@ keywords: azure automation, DSC, powershell, statusconfiguratie, updatebeheer, b
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: e02cfdaac602adfe455c26d9e87939586fd9738a
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 30cfadcec1f0c28a463740ddaefa8fc76f04af3f
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835271"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186177"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Een inleiding tot Azure Automation
 
@@ -53,14 +53,14 @@ Azure Automation biedt een aantal gedeelde mogelijkheden, waaronder gedeelde res
 
 Azure Automation bestaat uit een set gedeelde bronnen waarmee u uw omgevingen eenvoudiger op schaal kunt automatiseren en configureren.
 
-* **[Planningen](automation-schedules.md)** : automatiseringsbewerkingen op vooraf gedefinieerde tijdstippen activeren.
-* **[Modules](automation-integration-modules.md)** : Azure en andere systemen beheren. U kunt model importeren in het Automation-account voor cmdlets en DSC-resources van Microsoft, van derden of uit de community, en voor aangepaste gedefinieerde cmdlets en DSC-resources.
+* **[Planningen](./shared-resources/schedules.md)** : automatiseringsbewerkingen op vooraf gedefinieerde tijdstippen activeren.
+* **[Modules](./shared-resources/modules.md)** : Azure en andere systemen beheren. U kunt model importeren in het Automation-account voor cmdlets en DSC-resources van Microsoft, van derden of uit de community, en voor aangepaste gedefinieerde cmdlets en DSC-resources.
 * **[Modulegalerie](automation-runbook-gallery.md)** : ondersteunt systeemeigen integratie met de PowerShell Gallery om runbooks weer te geven en deze te importeren in het Automation-account. Met de galerie kunt u snel aan de slag gaan met het integreren en ontwerpen van uw processen vanuit de PowerShell-galerie en Microsoft Script Center.
 * **[Python 2-pakketten](python-packages.md)** : ondersteuning voor Python 2-runbooks voor uw Automation-account.
-* **[Referenties](automation-credentials.md)** : hiermee kunt u vertrouwelijke informatie veilig opslaan die vervolgens kan worden gebruikt door runbooks en configuraties tijdens runtime.
+* **[Referenties](./shared-resources/credentials.md)** : hiermee kunt u vertrouwelijke informatie veilig opslaan die vervolgens kan worden gebruikt door runbooks en configuraties tijdens runtime.
 * **[Verbindingen](automation-connections.md)** : bewaar naamwaardeparen van algemene informatie voor verbindingen met systemen. De auteur van de module geeft de verbindingen op in runbooks en configuraties voor gebruik tijdens runtime.
-* **[Certificaten](automation-certificates.md)** : definieer informatie die moet worden gebruikt bij de verificatie en het beveiligen van geïmplementeerde resources wanneer deze worden geopend door runbooks of DSC-configuraties tijdens runtime. 
-* **[Variabelen](automation-variables.md)** : bevatten inhoud die kan worden gebruikt in runbooks en configuraties. U kunt variabelewaarden wijzigen zonder een van de runbooks en configuraties die ernaar verwijzen te moeten veranderen.
+* **[Certificaten](./shared-resources/certificates.md)** : definieer informatie die moet worden gebruikt bij de verificatie en het beveiligen van geïmplementeerde resources wanneer deze worden geopend door runbooks of DSC-configuraties tijdens runtime. 
+* **[Variabelen](./shared-resources/variables.md)** : bevatten inhoud die kan worden gebruikt in runbooks en configuraties. U kunt variabelewaarden wijzigen zonder een van de runbooks en configuraties die ernaar verwijzen te moeten veranderen.
 
 ### <a name="role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer
 

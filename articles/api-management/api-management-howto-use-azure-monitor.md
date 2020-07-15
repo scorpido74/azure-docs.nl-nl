@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 989608b9a087599ab73864ae2605fbffcf3221d9
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 7f6c7a651e133122dab86d6ed81572f239718b43
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84982047"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243236"
 ---
 # <a name="monitor-published-apis"></a>Gepubliceerde API's bewaken
 
@@ -43,7 +43,7 @@ In de volgende video kunt u zien hoe u API Management kunt bewaken met Azure Mon
 
 ## <a name="view-metrics-of-your-apis"></a>Metrische gegevens van uw API's weergeven
 
-API Management geeft elke minuut metrische gegevens vrij, waardoor u in vrijwel realtime inzicht hebt in de status van uw API's. Hieronder vindt u de twee meestgebruikte metrische gegevens. Zie [ondersteunde metrische gegevens](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftapimanagementservice) voor een lijst met alle beschikbare metrische gegevens.
+API Management geeft elke minuut metrische gegevens vrij, waardoor u in vrijwel realtime inzicht hebt in de status van uw API's. Hieronder vindt u de twee meestgebruikte metrische gegevens. Zie [ondersteunde metrische gegevens](../azure-monitor/platform/metrics-supported.md#microsoftapimanagementservice) voor een lijst met alle beschikbare metrische gegevens.
 
 * Capaciteit: hiermee kunt u beslissingen nemen over het uitvoeren van een up- of downgrade van uw APIM-services. Dit gegeven komt elke minuut beschikbaar en is een weerspiegeling van de capaciteit van de gateway ten tijde van de export. Het gegevensbereik loopt van 0 tot 100 en wordt berekend op basis van gateway-resources als CPU- en geheugengebruik.
 * Aanvragen: helpt u bij het analyseren van API-verkeer via uw APIM-Services. De meetwaarde wordt iedere minuut verzonden en rapporteert het aantal gateway-aanvragen met dimensies, inclusief responscodes, locatie, hostnaam en fouten. 

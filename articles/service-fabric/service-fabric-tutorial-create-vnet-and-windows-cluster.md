@@ -4,16 +4,16 @@ description: In deze zelfstudie leert u hoe u een Windows Service Fabric-cluster
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: dfcee93ffa5eea0b2aa0b9a93ff53ad7b61ea245
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: a7390858e55a456ec5fb2f851be1a7443be97082
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611659"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245038"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Zelfstudie: Een Service Fabric-cluster met Windows implementeren in een virtueel Azure-netwerk
 
-Deze zelfstudie is deel één van een serie. U leert hoe u een Azure Service Fabric-cluster met Windows in een [virtueel Azure-netwerk](../virtual-network/virtual-networks-overview.md) en een [netwerkbeveiligingsgroep](../virtual-network/virtual-networks-nsg.md) implementeert met behulp van PowerShell en een sjabloon. Wanneer u klaar bent, wordt er in de cloud een cluster uitgevoerd waarin u toepassingen kunt implementeren. Zie [Een beveiligd Linux-cluster maken in Azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md) als u een Linux-cluster wilt maken met behulp van Azure CLI.
+Deze zelfstudie is deel één van een serie. U leert hoe u een Azure Service Fabric-cluster met Windows in een [virtueel Azure-netwerk](../virtual-network/virtual-networks-overview.md) en een [netwerkbeveiligingsgroep](../virtual-network/virtual-network-vnet-plan-design-arm.md) implementeert met behulp van PowerShell en een sjabloon. Wanneer u klaar bent, wordt er in de cloud een cluster uitgevoerd waarin u toepassingen kunt implementeren. Zie [Een beveiligd Linux-cluster maken in Azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md) als u een Linux-cluster wilt maken met behulp van Azure CLI.
 
 In deze zelfstudie wordt een productiescenario beschreven. Zie [Een testcluster maken](./scripts/service-fabric-powershell-create-secure-cluster-cert.md) als u voor testdoeleinden een kleiner cluster wilt maken.
 
@@ -48,7 +48,7 @@ Voor u met deze zelfstudie begint:
 
 * Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan.
 * Installeer de [Service Fabric SDK en PowerShell-module](service-fabric-get-started.md).
-* Installeer [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+* Installeer [Azure PowerShell](/powershell/azure/install-az-ps).
 * Bekijk de belangrijkste concepten van [Azure-clusters](service-fabric-azure-clusters-overview.md).
 * Een implementatie van een productiecluster [plannen en voorbereiden](service-fabric-cluster-azure-deployment-preparation.md).
 
@@ -111,7 +111,7 @@ De volgende regels voor binnenkomend verkeer worden ingeschakeld in de resource 
 Als er andere toepassingspoorten nodig zijn, moet u de resource **Microsoft.Network/loadBalancers** en de resource **Microsoft.Network/networkSecurityGroups** zo wijzigen dat verkeer kan binnenkomen.
 
 ### <a name="windows-defender"></a>Windows Defender
-Het [Windows Defender-antivirusprogramma](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016) is standaard geïnstalleerd en functioneert op Windows Server 2016. De gebruikersinterface is standaard geïnstalleerd op een aantal SKU's, maar is niet vereist. Voor elk knooppunttype dat/elke VM-schaalset die is aangegeven in de sjabloon, wordt de [Antimalware voor Azure-VM-extensie](/azure/virtual-machines/extensions/iaas-antimalware-windows) gebruikt voor het uitsluiten van de Service Fabric-mappen en processen:
+Het [Windows Defender-antivirusprogramma](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016) is standaard geïnstalleerd en functioneert op Windows Server 2016. De gebruikersinterface is standaard geïnstalleerd op een aantal SKU's, maar is niet vereist. Voor elk knooppunttype dat/elke VM-schaalset die is aangegeven in de sjabloon, wordt de [Antimalware voor Azure-VM-extensie](../virtual-machines/extensions/iaas-antimalware-windows.md) gebruikt voor het uitsluiten van de Service Fabric-mappen en processen:
 
 ```json
 {
@@ -145,8 +145,8 @@ Het parameterbestand [azuredeploy.parameters.json][parameters] declareert veel w
 
 **Parameter** | **Voorbeeldwaarde** | **Opmerkingen** 
 |---|---|---|
-|adminUserName|vmadmin| De gebruikersnaam van de beheerder van de cluster-VM's. [Vereisten voor gebruikersnaam voor VM](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-username-requirements-when-creating-a-vm). |
-|adminPassword|Password#1234| Het wachtwoord van de beheerder van de cluster-VM's. [Vereisten voor wachtwoord voor VM](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm).|
+|adminUserName|vmadmin| De gebruikersnaam van de beheerder van de cluster-VM's. [Vereisten voor gebruikersnaam voor VM](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm). |
+|adminPassword|Password#1234| Het wachtwoord van de beheerder van de cluster-VM's. [Vereisten voor wachtwoord voor VM](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).|
 |clusterName|mysfcluster123| De naam van het cluster. Mag alleen letters en cijfers bevatten. De lengte kan minimaal 3 en maximaal 23 tekens zijn.|
 |location|southcentralus| De locatie van het cluster. |
 |certificateThumbprint|| <p>De waarde moet leeg zijn als u een zelfondertekend certificaat maakt of als u een certificaatbestand opgeeft.</p><p>Als u een bestaand certificaat wilt gebruiken dat u eerder hebt geüpload naar een sleutelkluis, vult u de SHA1-waarde van de certificaatvingerafdruk in. Bijvoorbeeld 6190390162C988701DB5676EB81083EA608DCCF3.</p> |
@@ -703,7 +703,7 @@ Get-ServiceFabricClusterHealth
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-De andere artikelen in deze zelfstudiereeks maken gebruik van het cluster dat u hebt gemaakt. Als u niet meteen verdergaat met het volgende artikel, is het wellicht een goed idee om [het cluster te verwijderen](service-fabric-cluster-delete.md). U bespaart dan kosten.
+De andere artikelen in deze zelfstudiereeks maken gebruik van het cluster dat u hebt gemaakt. Als u niet meteen verdergaat met het volgende artikel, is het wellicht een goed idee om [het cluster te verwijderen](./service-fabric-tutorial-delete-cluster.md). U bespaart dan kosten.
 
 ## <a name="next-steps"></a>Volgende stappen
 

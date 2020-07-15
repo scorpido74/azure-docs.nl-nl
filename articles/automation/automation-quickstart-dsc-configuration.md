@@ -7,12 +7,12 @@ keywords: dsc, configuratie, automatiseren
 ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 28e8f921fa7620d1fec7dec1788ed769026624d7
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: e7fec2bee61844ac294e5463bd5bc88ec3fb5e98
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836716"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186075"
 ---
 # <a name="configure-a-vm-with-desired-state-configuration"></a>Een VM configureren met Desired State Configuration
 
@@ -23,7 +23,7 @@ Door Azure Automation State Configuration (DSC) in te schakelen, kunt u de confi
 U hebt het volgende nodig om deze quickstart te voltooien:
 
 * Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [maak dan een gratis account](https://azure.microsoft.com/free/).
-* Een Azure Automation-account. Zie [Azure Uitvoeren-als-account](automation-sec-configure-azure-runas-account.md) voor instructies over het maken van een Azure Automation Uitvoeren-als-account.
+* Een Azure Automation-account. Zie [Azure Uitvoeren-als-account](./manage-runas-account.md) voor instructies over het maken van een Azure Automation Uitvoeren-als-account.
 * Een virtuele Azure Resource Manager-machine (niet klassiek) waarop Red Hat Enterprise Linux, CentOS of Oracle Linux wordt uitgevoerd. Zie [Uw eerste virtuele Linux-machine maken met behulp van Azure Portal](../virtual-machines/linux/quick-create-portal.md) voor instructies voor het maken van een VM.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
@@ -31,7 +31,7 @@ Aanmelden bij Azure op https://portal.azure.com.
 
 ## <a name="enable-a-virtual-machine"></a>Een virtuele machine inschakelen
 
-Er zijn veel verschillende methoden om een machine gereed te maken voor Desired State Configuration. In deze quickstart leest u hoe u de functie voor een virtuele machine inschakelt met behulp van een Automation-account. Meer informatie over verschillende methoden om uw computers in staat te stellen om de State Configuration in te schakelen door [Machines in te stellen voor beheer door Azure Automation State Configuration](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding).
+Er zijn veel verschillende methoden om een machine gereed te maken voor Desired State Configuration. In deze quickstart leest u hoe u de functie voor een virtuele machine inschakelt met behulp van een Automation-account. Meer informatie over verschillende methoden om uw computers in staat te stellen om de State Configuration in te schakelen door [Machines in te stellen voor beheer door Azure Automation State Configuration](./automation-dsc-onboarding.md).
 
 1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Automation-accounts**. Als die niet in het linkerdeelvenster wordt weergegeven, klikt u op **Alle services** en zoekt u in de weergave die u dan ziet.
 1. Selecteer een Automation-account in de lijst.
@@ -39,7 +39,7 @@ Er zijn veel verschillende methoden om een machine gereed te maken voor Desired 
 2. Klik op **Toevoegen** om de selectiepagina van de virtuele machine te openen.
 3. Zoek de virtuele machine waarvoor DSC moet worden ingeschakeld. U kunt het zoekveld en de filteropties gebruiken om een specifieke virtuele machine te vinden.
 4. Klik op de virtuele machine en klik vervolgens op **Verbinden**
-5. Selecteer de juiste DSC-instellingen voor de virtuele machine. Als u al een configuratie hebt voorbereid, kunt u deze opgeven als `Node Configuration Name`. U kunt de [configuratiemodus](https://docs.microsoft.com/powershell/scripting/dsc/managing-nodes/metaConfig) instellen om het configuratiegedrag voor de machine te bepalen.
+5. Selecteer de juiste DSC-instellingen voor de virtuele machine. Als u al een configuratie hebt voorbereid, kunt u deze opgeven als `Node Configuration Name`. U kunt de [configuratiemodus](/powershell/scripting/dsc/managing-nodes/metaConfig) instellen om het configuratiegedrag voor de machine te bepalen.
 6. Klik op **OK**. Terwijl de DSC-extensie op de virtuele machine wordt geïmplementeerd, wordt de status weergegeven als `Connecting`.
 
 ![Een Azure VM instellen voor DSC](./media/automation-quickstart-dsc-configuration/dsc-onboard-azure-vm.png)
@@ -57,7 +57,7 @@ Modules bevatten DSC-resources en vele daarvan kunnen worden gevonden in [PowerS
 
 ## <a name="import-the-configuration"></a>De configuratie importeren
 
-In deze quickstart wordt gebruikgemaakt van een DSC-configuratie waarmee Apache HTTP Server, MySQL en PHP op de computer worden geconfigureerd. Zie [DSC-configuraties](https://docs.microsoft.com/powershell/scripting/dsc/configurations/configurations).
+In deze quickstart wordt gebruikgemaakt van een DSC-configuratie waarmee Apache HTTP Server, MySQL en PHP op de computer worden geconfigureerd. Zie [DSC-configuraties](/powershell/scripting/dsc/configurations/configurations).
 
 Typ het volgende in een teksteditor en sla het bestand lokaal op als **AMPServer.ps1**.
 

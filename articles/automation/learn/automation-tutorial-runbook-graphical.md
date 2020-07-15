@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.openlocfilehash: 3cd5db3736d5eda88e7cad7bda1966efb2b00977
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 53031efa831f788fe0fe58146496b427f4cfb4db
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744741"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185531"
 ---
 # <a name="tutorial-create-a-graphical-runbook"></a>Zelfstudie: Een grafisch runbook maken
 
@@ -30,7 +30,7 @@ In deze zelfstudie leert u het volgende:
 Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
 * Azure-abonnement. Als u nog geen abonnement hebt, kunt u [uw voordelen als MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) of u aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Automation-account](../automation-offering-get-started.md) om het runbook te bevatten en te verifiëren voor Azure-resources. Dit account moet machtigingen hebben om de virtuele machine te starten en stoppen.
+* [Automation-account](../index.yml) om het runbook te bevatten en te verifiëren voor Azure-resources. Dit account moet machtigingen hebben om de virtuele machine te starten en stoppen.
 * Een virtuele machine van Azure. Aangezien u deze machine stopt en start, mag dit geen productie-VM zijn.
 
 ## <a name="step-1---create-runbook"></a>Stap 1: runbook maken
@@ -146,7 +146,7 @@ U hebt het runbook getest en gepubliceerd, maar tot nu toe doet het nog niets nu
 
 ## <a name="step-6---add-authentication"></a>Stap 6 - Verificatie toevoegen
 
-Nu u een variabele hebt die onze abonnements-id kan bevatten, kunt u uw runbook configureren voor verificatie met de Uitvoeren als referenties voor uw abonnement. Dit doet u door de Azure Uitvoeren als-verbinding als een asset toe te voegen. U moet ook de cmdlet [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/Connect-AzAccount?view=azps-3.5.0) en de cmdlet [set-AzContext](https://docs.microsoft.com/powershell/module/az.accounts/Set-AzContext?view=azps-3.5.0) toevoegen aan het canvas.
+Nu u een variabele hebt die onze abonnements-id kan bevatten, kunt u uw runbook configureren voor verificatie met de Uitvoeren als referenties voor uw abonnement. Dit doet u door de Azure Uitvoeren als-verbinding als een asset toe te voegen. U moet ook de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount?view=azps-3.5.0) en de cmdlet [set-AzContext](/powershell/module/az.accounts/Set-AzContext?view=azps-3.5.0) toevoegen aan het canvas.
 
 >[!NOTE]
 >Voor PowerShell-runbooks zijn `Add-AzAccount` en `Add-AzureRMAccount` aliassen voor `Connect-AzAccount`. Houd er rekening mee dat deze aliassen niet beschikbaar zijn voor uw grafische runbooks. Een grafisch runbook kan alleen `Connect-AzAccount`zichzelf gebruiken.
@@ -213,7 +213,7 @@ Nu u een variabele hebt die onze abonnements-id kan bevatten, kunt u uw runbook 
 
 ## <a name="step-7---add-activity-to-start-a-virtual-machine"></a>Stap 7: activiteit toevoegen om een virtuele machine te starten
 
-Nu moet u een `Start-AzVM`-activiteit toevoegen om een virtuele machine te starten. U kunt een willekeurige VM in uw Azure-abonnement kiezen. Voor nu gebruikt u de naam via hardcoding in de cmdlet [start-AzVM](https://docs.microsoft.com/powershell/module/az.compute/start-azvm?view=azps-3.5.0).
+Nu moet u een `Start-AzVM`-activiteit toevoegen om een virtuele machine te starten. U kunt een willekeurige VM in uw Azure-abonnement kiezen. Voor nu gebruikt u de naam via hardcoding in de cmdlet [start-AzVM](/powershell/module/az.compute/start-azvm?view=azps-3.5.0).
 
 1. In het besturingselement Bibliotheek typt u `Start-Az` in het zoekveld.
 
@@ -270,7 +270,7 @@ Met uw runbook wordt momenteel de virtuele machine gestart in de resourcegroep d
 
 ## <a name="step-9---create-a-conditional-link"></a>Stap 9: een voorwaardelijke koppeling maken
 
-U kunt het runbook nu wijzigen zodat alleen wordt geprobeerd de VM te starten als deze nog niet is gestart. Dit doet u door een [Get-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Get-AzVM?view=azps-3.5.0)-cmdlet toe te voegen waarmee de status op instantieniveau van de virtuele machine wordt opgehaald. We voegen vervolgens een PowerShell Workflow-codemodule genaamd `Get Status` toe met een PowerShell-codefragment om te bepalen of de status van de VM actief of gestopt is. Met een voorwaardelijke koppeling van de module `Get Status` wordt `Start-AzVM` alleen uitgevoerd als de huidige uitvoerstatus is gestopt. Aan het einde van deze procedure gebruikt uw runbook de cmdlet `Write-Output` om een bericht uit te voeren om u te laten weten dat de VM is gestart.
+U kunt het runbook nu wijzigen zodat alleen wordt geprobeerd de VM te starten als deze nog niet is gestart. Dit doet u door een [Get-AzVM](/powershell/module/Az.Compute/Get-AzVM?view=azps-3.5.0)-cmdlet toe te voegen waarmee de status op instantieniveau van de virtuele machine wordt opgehaald. We voegen vervolgens een PowerShell Workflow-codemodule genaamd `Get Status` toe met een PowerShell-codefragment om te bepalen of de status van de VM actief of gestopt is. Met een voorwaardelijke koppeling van de module `Get Status` wordt `Start-AzVM` alleen uitgevoerd als de huidige uitvoerstatus is gestopt. Aan het einde van deze procedure gebruikt uw runbook de cmdlet `Write-Output` om een bericht uit te voeren om u te laten weten dat de VM is gestart.
 
 1. Open **MyFirstRunbook-Graphical** in de grafische editor.
 
@@ -354,5 +354,4 @@ U kunt het runbook nu wijzigen zodat alleen wordt geprobeerd de VM te starten al
 * Zie [Grafisch runbook ontwerpen in Azure Automation](../automation-graphical-authoring-intro.md) voor meer informatie over grafisch ontwerpen.
 * Zie [Een PowerShell-runbook maken](automation-tutorial-runbook-textual-powershell.md) om aan de slag te gaan met PowerShell-runbooks.
 * Zie [Een PowerShell Workflow-runbook maken](automation-tutorial-runbook-textual.md) om aan de slag te gaan met PowerShell Workflow-runbooks.
-* Zie [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-) voor een naslagdocumentatie voor een PowerShell-cmdlet.
+* Zie [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation) voor een naslagdocumentatie voor een PowerShell-cmdlet.

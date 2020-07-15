@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 6a88ca1f028efcb3b9614df532b6d2dcc9dcfac8
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 3d4ccc6ecf18eb2eecc3ccc69ed97bf1094b2035
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800901"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206467"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Zelfstudie: Een app van één pagina maken met de Bing Afbeeldingen zoeken-API
 
@@ -118,7 +118,7 @@ Met de handler `onsubmit` wordt standaard `false` geretourneerd, waardoor het fo
 
 De Bing Afbeeldingen zoeken-API biedt verschillende [filterqueryparameters](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#filter-query-parameters) om de zoekresultaten te verfijnen en filteren. Voor het HTML-formulier in deze toepassing worden de volgende parameteropties weergegeven:
 
-|              |                                                                                                                                                                                    |
+| Optie | Beschrijving |
 |--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `where`      | Een vervolgkeuzelijst voor het selecteren van de markt (locatie en taal) die wordt gebruikt voor de zoekopdracht.                                                                                             |
 | `query`      | Het tekstveld voor het invoeren van de zoektermen.                                                                                                                                 |

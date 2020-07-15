@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 6/22/2020
 ms.author: mebeatty
-ms.openlocfilehash: 4d698375488d4dac551f0028883fc4e18a10d8ef
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: d489186dc1c012fe8c181f17e00bcdb999e230dd
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323484"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232131"
 ---
 # <a name="add-security-headers-with-rules-engine"></a>Beveiligingsheaders toevoegen met de engine voor regels
 
 Implementeer beveiligingskopteksten om beveiligingsproblemen in browsers te voorkomen, bijvoorbeeld HTTP Strict-Transport-Security (HSTS), X-XSS-Protection, Content-Security-Policy of X-Frame-Options. Kenmerken op basis van beveiliging kunnen ook worden gedefinieerd met cookies.
 
-In het volgende voorbeeld ziet u hoe u een Content-Security-Policy-koptekst kunt toevoegen aan alle inkomende aanvragen die overeenkomen met het pad dat is opgegeven in de route waaraan de configuratie van uw regelengine is gekoppeld. Hier worden alleen scripts van onze vertrouwde site, **https://apis.contoso.com** , toegestaan om op onze toepassing te worden uitgevoerd.
+In het volgende voorbeeld ziet u hoe u een Content-Security-Policy-koptekst kunt toevoegen aan alle inkomende aanvragen die overeenkomen met het pad dat is opgegeven in de route waaraan de configuratie van uw regelengine is gekoppeld. Hier worden alleen scripts van onze vertrouwde site, **https://apiphany.portal.azure-api.net** , toegestaan om op onze toepassing te worden uitgevoerd.
 
 ## <a name="add-a-content-security-policy-header-in-azure-portal"></a>Een Content-Security-Policy-koptekst toevoegen in de Azure-portal
 
@@ -33,7 +33,7 @@ In het volgende voorbeeld ziet u hoe u een Content-Security-Policy-koptekst kunt
 
 3. Stel de operator in op **Toevoegen** om deze header toe te voegen als antwoord op alle inkomende aanvragen voor deze route.
 
-4. Voeg de naam van de header toe: **Content-Security-Policy** en definieer de waarden die deze header moet accepteren. In dit scenario kiezen we *"script-src 'self' https://apis.contoso.com."*
+4. Voeg de naam van de header toe: **Content-Security-Policy** en definieer de waarden die deze header moet accepteren. In dit scenario kiezen we *"script-src 'self' https://apiphany.portal.azure-api.net."*
 
 5. Wanneer u alle regels hebt toegevoegd die u voor uw configuratie wilt gebruiken, gaat u naar uw route van voorkeur en koppelt u de configuratie van uw regelengine aan uw routeregel. Deze stap is vereist om de regel te laten werken. 
 
