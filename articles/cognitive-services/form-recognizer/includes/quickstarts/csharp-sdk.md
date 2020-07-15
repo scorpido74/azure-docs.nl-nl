@@ -1,6 +1,6 @@
 ---
-title: 'Snelstartgids: client bibliotheek voor formulier herkenning voor .NET'
-description: In deze Snelstartgids gaat u aan de slag met de formulier Recognizer-client bibliotheek voor .NET.
+title: 'Quickstart: Clientbibliotheek van Form Recognizer voor .NET'
+description: In deze quickstart gaat u aan de slag met de clientbibliotheek van Form Recognizer voor .NET.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,24 +9,24 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: pafarley
-ms.openlocfilehash: fc5eb33c511b7312aca4e9a4678acbe65718f3a7
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
-ms.translationtype: MT
+ms.openlocfilehash: c4a8950e5aaa56f739fb3f6f780fbcfef80e2ec6
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85242097"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035769"
 ---
-[Referentie documentatie](https://docs.microsoft.com/dotnet/api/overview/azure/formrecognizer)  |  [Bron code](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/src)  |  van bibliotheek [Pakket (NuGet)](https://www.nuget.org/packages/Azure.AI.FormRecognizer)  |  Voor [beelden](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md)
+[Referentiedocumentatie](https://docs.microsoft.com/dotnet/api/overview/azure/formrecognizer) | [Broncode van bibliotheek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/src) | [Pakket (NuGet)](https://www.nuget.org/packages/Azure.AI.FormRecognizer) | [Voorbeelden](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement: [Maak een gratis versie](https://azure.microsoft.com/free/).
-* Een Azure Storage-blob die een set trainings gegevens bevat. Zie [een trainings gegevensverzameling bouwen voor een aangepast model](../../build-training-data-set.md) voor tips en opties voor het samen stellen van uw trainings gegevensverzameling. Voor deze Quick Start kunt u de bestanden in de map **Train** van de voor [beeld-gegevensset](https://go.microsoft.com/fwlink/?linkid=2090451)gebruiken.
-* De huidige versie van [.net core](https://dotnet.microsoft.com/download/dotnet-core).
+* Azure-abonnement: [Maak een gratis abonnement aan](https://azure.microsoft.com/free/).
+* Een Azure Storage-blob die een set trainingsgegevens bevat. Zie [Een set met trainingsgegevens voor een aangepast model bouwen](../../build-training-data-set.md) voor tips en opties voor het samenstellen van uw set met trainingsgegevens. Voor deze quickstart kunt u de bestanden in de map **Trainen** van de [set met voorbeeldgegevens](https://go.microsoft.com/fwlink/?linkid=2090451) gebruiken.
+* De huidige versie van [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
 
 ## <a name="setting-up"></a>Instellen
 
-### <a name="create-a-form-recognizer-azure-resource"></a>Een Azure-resource voor een formulier herkenning maken
+### <a name="create-a-form-recognizer-azure-resource"></a>Een Azure-resource voor Form Recognizer maken
 
 [!INCLUDE [create resource](../create-resource.md)]
 
@@ -36,13 +36,13 @@ ms.locfileid: "85242097"
 
 ### <a name="create-a-new-c-application"></a>Een nieuwe C#-toepassing maken
 
-In een console venster (zoals cmd, Power shell of bash) gebruikt `dotnet new` u de opdracht om een nieuwe console-app met de naam te maken `formrecognizer-quickstart` . Met deze opdracht maakt u een eenvoudig Hallo wereld-C#-project met één bronbestand: _Program.cs_. 
+Gebruik in een consolevenster (zoals cmd, PowerShell of Bash) de opdracht `dotnet new` om een nieuwe console-app te maken met de naam `formrecognizer-quickstart`. Met deze opdracht maakt u een eenvoudig Hallo wereld-C#-project met één bronbestand: _Program.cs_. 
 
 ```console
 dotnet new console -n formrecognizer-quickstart
 ```
 
-Wijzig uw map in de zojuist gemaakte app-map. Bouw vervolgens de toepassing met:
+Wijzig uw map in de zojuist gemaakte app-map. Maak de toepassing vervolgens met:
 
 ```console
 dotnet build
@@ -58,18 +58,19 @@ Build succeeded.
 ...
 ```
 
-Open het *Program.cs* -bestand in de map van het project in uw voorkeurs editor of IDE. Voeg de volgende `using` instructies toe:
+Open vanuit de projectmap het bestand *Program.cs* in uw favoriete editor of IDE. Voeg de volgende `using`-instructies toe:
 
 ```csharp
 using Azure.AI.FormRecognizer;
 using Azure.AI.FormRecognizer.Models;
+using Azure.AI.FormRecognizer.Training;
 
 using System;
 using System.IO;
 using System.Threading.Tasks;
 ```
 
-Voeg vervolgens de volgende code toe aan de methode **Main** van de toepassing. U definieert deze asynchrone taak later op. 
+Voeg de volgende code toe aan de **Main**-methode. U gaat deze asynchrone taak later definiëren. 
 
 ```csharp
 static void Main(string[] args)
@@ -80,15 +81,15 @@ static void Main(string[] args)
 }
 ```
 
-### <a name="install-the-client-library"></a>De client bibliotheek installeren
+### <a name="install-the-client-library"></a>De clientbibliotheek installeren
 
-Installeer in de toepassingsmap de formulier Recognizer-client bibliotheek voor .NET met de volgende opdracht:
+Installeer in de toepassingsmap de Form Recognizer-clientbibliotheek voor .NET met de volgende opdracht:
 
 ```console
 dotnet add package Azure.AI.FormRecognizer --version 1.0.0-preview.3
 ```
 
-Als u de Visual Studio IDE gebruikt, is de client bibliotheek beschikbaar als een downloadbaar NuGet-pakket.
+Als u de Visual Studio-IDE, gebruikt, is de clientbibliotheek beschikbaar als downloadbaar NuGet-pakket.
 
 
 <!-- Objet model TBD -->
@@ -97,11 +98,11 @@ Als u de Visual Studio IDE gebruikt, is de client bibliotheek beschikbaar als ee
 
 ## <a name="code-examples"></a>Codevoorbeelden
 
-Deze code fragmenten laten zien hoe u de volgende taken kunt uitvoeren met de formulier Recognizer-client bibliotheek voor .NET:
+Deze codefragmenten laten zien hoe u de volgende taken kunt uitvoeren met de clientbibliotheek van Form Recognizer voor .NET:
 
 * [De client verifiëren](#authenticate-the-client)
-* [Formulier inhoud herkennen](#recognize-form-content)
-* [Bevestigingen herkennen](#recognize-receipts)
+* [Formulierinhoud herkennen](#recognize-form-content)
+* [Ontvangstbewijzen herkennen](#recognize-receipts)
 * [Aangepast model trainen](#train-a-custom-model)
 * [Formulieren analyseren met een aangepast model](#analyze-forms-with-a-custom-model)
 * [Uw aangepaste modellen beheren](#manage-your-custom-models)
@@ -109,7 +110,7 @@ Deze code fragmenten laten zien hoe u de volgende taken kunt uitvoeren met de fo
 
 ## <a name="authenticate-the-client"></a>De client verifiëren
 
-Definieer onder de- `Main` methode de taak waarnaar wordt verwezen in `Main` . Hier verifieert u twee client objecten met de abonnements variabelen die u hierboven hebt gedefinieerd. U gebruikt een **AzureKeyCredential** -object, zodat u, indien nodig, de API-sleutel kunt bijwerken zonder nieuwe client objecten te maken.
+Onder de `Main`-methode definieert u de taak waarnaar wordt verwezen in `Main`. Hier gaat u twee clientobjecten verifiëren met behulp van de abonnementsvariabelen die u hierboven hebt gedefinieerd. U gebruikt een **AzureKeyCredential**-object, zodat u indien nodig de API-sleutel kunt bijwerken zonder nieuwe clientobjecten te maken.
 
 ```csharp
 static async Task RunFormRecognizerClient()
@@ -124,17 +125,17 @@ static async Task RunFormRecognizerClient()
     var recognizerClient = new FormRecognizerClient(new Uri(endpoint), credential);
 ```
 
-### <a name="call-client-specific-methods"></a>Client-specifieke methoden aanroepen
+### <a name="call-client-specific-methods"></a>Clientspecifieke methodes aanroepen
 
-In het volgende code blok wordt gebruikgemaakt van de client-objecten voor het aanroepen van methoden voor elk van de belangrijkste taken in de formulier Recognizer SDK. U definieert deze methoden later op.
+In het volgende codeblok worden de clientobjecten gebruikt voor het aanroepen van methodes voor elk van de hoofdtaken in de Form Recognizer-SDK. U gaat deze methodes later definiëren.
 
-U moet ook verwijzingen toevoegen aan de Url's voor uw training en gegevens testen. 
-* Als u de SAS-URL voor uw aangepaste model trainings gegevens wilt ophalen, opent u de Microsoft Azure Storage Explorer, klikt u met de rechter muisknop op uw container en selecteert u **gedeelde toegangs handtekening ophalen**. Zorg ervoor dat de machtigingen **lezen** en **lijst** zijn ingeschakeld en klik op **maken**. Kopieer vervolgens de waarde in de sectie **URL** . Het moet de volgende indeling hebben: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
-* Als u een URL wilt ophalen van een formulier dat u wilt testen, kunt u de bovenstaande stappen gebruiken om de SAS-URL van een afzonderlijk document in Blob Storage op te halen. U kunt ook de URL van een document naar een andere locatie halen.
-* Gebruik de bovenstaande methode om de URL van een kopie van de bevestiging te verkrijgen, of gebruik de URL van de voor beeld-installatie kopie.
+U moet ook verwijzingen naar de URL's toevoegen voor uw trainings- en testgegevens. 
+* Als u de SAS-URL voor de trainingsgegevens van uw aangepaste model wilt ophalen, opent u de Microsoft Azure Storage Explorer, klikt u met de rechtermuisknop op uw container en selecteert u **Handtekening voor gedeelde toegang ophalen**. Controleer of de machtigingen **Lezen** en **Lijst** zijn ingeschakeld en klik op **Maken**. Kopieer vervolgens de waarde in de sectie **URL**. Deze moet de notatie `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` hebben.
+* Als u een URL wilt ophalen van een formulier dat u wilt testen, kunt u de bovenstaande stappen gebruiken om de SAS-URL van een afzonderlijk document in Blob Storage op te halen. U kunt ook de URL gebruiken van een document dat zich elders bevindt.
+* Gebruik bovenstaande methode ook om de URL te verkrijgen van een kopie van een ontvangstbewijs, of gebruik de meegeleverde URL van een voorbeeldkopie.
 
 > [!NOTE]
-> De code fragmenten in deze hand leiding gebruiken externe formulieren die worden gebruikt voor Url's. Als u in plaats daarvan lokale formulier documenten wilt verwerken, raadpleegt u de bijbehorende methoden in de [referentie documentatie](https://docs.microsoft.com/dotnet/api/overview/azure/formrecognizer).
+> De codefragmenten in deze gids gebruiken externe formulieren die worden geopend middels URL's. Als u in plaats daarvan lokale formulierdocumenten wilt verwerken, raadpleegt u de gerelateerde methoden in de [referentiedocumentatie](https://docs.microsoft.com/dotnet/api/overview/azure/formrecognizer).
 
 ```csharp
     string trainingDataUrl = "<SAS-URL-of-your-form-folder-in-blob-storage>";
@@ -160,11 +161,11 @@ U moet ook verwijzingen toevoegen aan de Url's voor uw training en gegevens test
 }
 ```
 
-## <a name="recognize-form-content"></a>Formulier inhoud herkennen
+## <a name="recognize-form-content"></a>Formulierinhoud herkennen
 
-U kunt de formulier Recognizer gebruiken om tabellen, lijnen en woorden in documenten te herkennen, zonder dat u een model hoeft te trainen.
+U kunt Form Recognizer gebruiken om tabellen, regels en woorden in documenten te herkennen, zonder dat u een model hoeft te trainen.
 
-Gebruik de methode **StartRecognizeContentFromUri** om de inhoud van een bestand op een bepaalde URI te herkennen.
+Als u de inhoud van een bestand op een bepaalde URI wilt herkennen, gebruikt u de methode **StartRecognizeContentFromUrl**.
 
 ```csharp
 private static async Task<Guid> GetContent(
@@ -175,7 +176,7 @@ private static async Task<Guid> GetContent(
         .WaitForCompletionAsync();
 ```
 
-De geretourneerde waarde is een verzameling **FormPage** -objecten: één voor elke pagina in het verzonden document. Met de volgende code worden deze objecten door lopen en worden de geëxtraheerde sleutel-waardeparen en tabel gegevens afgedrukt.
+De geretourneerde waarde is een verzameling **FormPage**-objecten: één voor elke pagina in het ingediende document. Met de volgende code worden deze objecten doorlopen en worden de uitgepakte sleutel-/waardeparen en tabelgegevens afgedrukt.
 
 ```csharp
     foreach (FormPage page in formPages.Value)
@@ -198,7 +199,7 @@ De geretourneerde waarde is een verzameling **FormPage** -objecten: één voor e
                 $" {table.ColumnCount} columns.");
             foreach (FormTableCell cell in table.Cells)
             {
-                Console.WriteLine($"    Cell ({cell.RowIndex}, {cell.ColumnIndex})"
+                Console.WriteLine($"    Cell ({cell.RowIndex}, {cell.ColumnIndex})" +
                     $" contains text: '{cell.Text}'.");
             }
         }
@@ -206,11 +207,11 @@ De geretourneerde waarde is een verzameling **FormPage** -objecten: één voor e
 }
 ```
 
-## <a name="recognize-receipts"></a>Bevestigingen herkennen
+## <a name="recognize-receipts"></a>Ontvangstbewijzen herkennen
 
-In deze sectie wordt beschreven hoe u algemene velden van Amerikaanse ontvangsten kunt herkennen en extra heren met behulp van een vooraf getraind ontvangst model.
+In deze sectie wordt beschreven hoe u veelvoorkomende velden in Amerikaanse ontvangstbewijzen kunt herkennen en extraheren met behulp van een vooraf getraind ontvangstbewijsmodel.
 
-Als u ontvangst bewijzen wilt herkennen vanuit een URI, gebruikt u de methode **StartRecognizeReceiptsFromUri** . De geretourneerde waarde is een verzameling **RecognizedReceipt** -objecten: één voor elke pagina in het verzonden document. Met de volgende code wordt een ontvangst bij de opgegeven URI verwerkt en worden de belangrijkste velden en waarden naar de console afgedrukt.
+Om ontvangstbewijzen te herkennen vanuit een URI, gebruikt u de methode **StartRecognizeReceiptsFromUrl**. De geretourneerde waarde is een verzameling **RecognizedReceipt**-objecten: één voor elke pagina in het ingediende document. Met de volgende code wordt een ontvangstbewijs op de opgegeven URI verwerkt en worden de belangrijkste velden en waarden op de console weergegeven.
 
 ```csharp
 private static async Task<Guid> AnalyzeReceipt(
@@ -244,7 +245,7 @@ private static async Task<Guid> AnalyzeReceipt(
     }
 ```
 
-In het volgende code blok wordt de afzonderlijke items herhaald die op de ontvangst zijn gedetecteerd en worden de details ervan naar de console afgedrukt.
+In het volgende codeblok worden de afzonderlijke items die op het ontvangstbewijs zijn gedetecteerd doorlopen en worden de details ervan naar de console afgedrukt.
 
 ```csharp
     FormField itemsField;
@@ -287,7 +288,7 @@ In het volgende code blok wordt de afzonderlijke items herhaald die op de ontvan
     }
 ```
 
-Ten slotte drukt het laatste code blok de totale waarde op de ontvangst af.
+Ten slotte wordt met het laatste codeblok de totale waarde van het ontvangstbewijs afgedrukt.
 
 ```csharp
     FormField totalField;
@@ -305,16 +306,16 @@ Ten slotte drukt het laatste code blok de totale waarde op de ontvangst af.
 
 ## <a name="train-a-custom-model"></a>Aangepast model trainen
 
-In deze sectie ziet u hoe u een model kunt trainen met uw eigen gegevens. Met een getraind model kunnen gestructureerde gegevens worden uitgevoerd die de sleutel/waarde-relaties in het oorspronkelijke formulier document bevatten. Nadat u het model hebt getraind, kunt u het testen en opnieuw trainen en uiteindelijk gebruiken om gegevens te extra heren uit meer formulieren, afhankelijk van uw behoeften.
+In deze sectie ziet u hoe u een model kunt trainen met uw eigen gegevens. Met een getraind model kunnen gestructureerde gegevens worden uitgevoerd waarin ook de sleutel-waarderelaties uit het oorspronkelijke formulierdocument zijn opgenomen. Nadat u het model hebt getraind, kunt u het testen, opnieuw trainen en hiermee uiteindelijk gegevens naar behoefte extraheren uit meer formulieren.
 
 > [!NOTE]
-> U kunt ook modellen trainen met een Graphical User Interface zoals het [hulp programma voor het labelen](../../quickstarts/label-tool.md)van het voor beeld van de formulier herkenning.
+> U kunt ook modellen trainen met een grafische gebruikersinterface, zoals het [voorbeeldhulpprogramma voor labelen van Form Recognizer](../../quickstarts/label-tool.md).
 
 ### <a name="train-a-model-without-labels"></a>Een model trainen zonder labels
 
-Train aangepaste modellen om alle velden en waarden te herkennen die in uw aangepaste formulieren worden gevonden zonder hand matig labels te krijgen voor de trainings documenten.
+Train aangepaste modellen om alle velden en waarden te herkennen die in uw aangepaste formulieren worden gevonden zonder de trainingsdocumenten handmatig te labelen.
 
-Met de volgende methode wordt een model voor een gegeven reeks documenten treinen en wordt de status van het model in de-console afgedrukt. 
+Met de volgende methode wordt een model voor een bepaalde set documenten getraind en wordt de status van het model in de console weergegeven. 
 
 ```csharp
 private static async Task<Guid> TrainModel(
@@ -330,7 +331,7 @@ private static async Task<Guid> TrainModel(
     Console.WriteLine($"    Completed on: {model.CompletedOn}");
 ```
 
-Het geretourneerde **CustomFormModel** -object bevat informatie over de typen die het model kan herkennen en de velden die het kan ophalen van elk formulier type. In het volgende code blok wordt deze informatie in de-console afgedrukt.
+Het geretourneerde **CustomFormModel**-object bevat informatie over de formuliertypen die het model kan herkennen en de velden die het uit elk formuliertype kan uitpakken. In het volgende codeblok wordt deze informatie op de console weergegeven.
 
 ```csharp
     foreach (CustomFormSubmodel submodel in model.Submodels)
@@ -348,7 +349,7 @@ Het geretourneerde **CustomFormModel** -object bevat informatie over de typen di
     }
 ```
 
-Ten slotte retourneert deze methode de unieke ID van het model.
+Ten slotte retourneert deze methode de unieke id van het model.
 
 ```csharp
     return model.ModelId;
@@ -357,7 +358,7 @@ Ten slotte retourneert deze methode de unieke ID van het model.
 
 ### <a name="train-a-model-with-labels"></a>Een model trainen met labels
 
-U kunt ook aangepaste modellen trainen door de trainings documenten hand matig te labelen. Training met labels leidt tot betere prestaties in sommige scenario's. Als u met labels wilt trainen, moet u in uw Blob Storage-container, naast de trainings documenten, speciale label-informatie bestanden (* \<filename\>.pdf.labels.jsaan*) hebben. Het [hulp programma voor het labelen](../../quickstarts/label-tool.md) van het voor beeld van een formulier herkenning biedt een gebruikers interface die u kan helpen bij het maken van deze label bestanden. Zodra u deze hebt, kunt u de **StartTrainingAsync** -methode aanroepen met de para meter *uselabels* ingesteld op `true` .
+U kunt aangepaste modellen ook trainen door de trainingsdocumenten handmatig te labelen. Training met labels leidt in sommige scenario's tot betere prestaties. Als u met labels wilt trainen, moet uw Blob Storage-container naast de trainingsdocumenten ook speciale bestanden met labelinformatie ( *\<filename\>.pdf.labels.json*) bevatten. Het [hulpprogramma voor labelen van Form Recognizer](../../quickstarts/label-tool.md) beschikt over een gebruikersinterface die u kan helpen om deze labelbestanden te maken. Zodra u deze hebt, kunt u de methode **StartTrainingAsync** aanroepen met de parameter *uselabels* ingesteld op `true`.
 
 ```csharp
 private static async Task<Guid> TrainModelWithLabelsAsync(
@@ -373,7 +374,7 @@ private static async Task<Guid> TrainModelWithLabelsAsync(
     Console.WriteLine($"    Completed on: {model.CompletedOn}");
 ```
 
-De geretourneerde **CustomFormModel** geeft aan welke velden het model kan ophalen, samen met de geschatte nauw keurigheid van elk veld. In het volgende code blok wordt deze informatie in de-console afgedrukt.
+Het geretourneerde **CustomFormModel** geeft aan welke velden het model kan extraheren, samen met de geschatte nauwkeurigheid van elk veld. In het volgende codeblok wordt deze informatie op de console weergegeven.
 
 ```csharp
     foreach (CustomFormSubmodel submodel in model.Submodels)
@@ -395,12 +396,12 @@ De geretourneerde **CustomFormModel** geeft aan welke velden het model kan ophal
 
 ## <a name="analyze-forms-with-a-custom-model"></a>Formulieren analyseren met een aangepast model
 
-In deze sectie wordt gedemonstreerd hoe u sleutel/waarde-informatie en andere inhoud uit uw aangepaste formulier typen kunt extra heren met behulp van modellen die u hebt getraind met uw eigen formulieren.
+In deze sectie ziet u hoe u belangrijke/waardevolle informatie en andere inhoud uit uw aangepaste formuliertypen kunt ophalen met behulp van modellen die u hebt getraind met uw eigen formulieren.
 
 > [!IMPORTANT]
-> Als u dit scenario wilt implementeren, moet u al een model hebben getraind, zodat u de ID ervan kunt door geven naar de onderstaande methode. Zie de sectie [een model trainen](#train-a-model-without-labels) .
+> Als u dit scenario wilt implementeren, moet u al een model hebben getraind, zodat u de id ervan kunt doorgeven aan onderstaande methode. Bekijk de sectie [Een model trainen](#train-a-model-without-labels).
 
-U gebruikt de methode **StartRecognizeCustomFormsFromUri** . De geretourneerde waarde is een verzameling **RecognizedForm** -objecten: één voor elke pagina in het verzonden document.
+U gebruikt de methode **StartRecognizeCustomFormsFromUriRecognizeCustomFormsFromUrl**. De geretourneerde waarde is een verzameling **RecognizedForm**-objecten: één voor elke pagina in het ingediende document.
 
 ```csharp
 // Analyze PDF form data
@@ -412,7 +413,7 @@ private static async Task AnalyzePdfForm(
         .WaitForCompletionAsync();
 ```
 
-Met de volgende code worden de resultaten van de analyse naar de console afgedrukt. Alle herkende velden en bijbehorende waarden worden afgedrukt, samen met een betrouwbaarheids Score.
+Met de volgende code worden de resultaten van de analyse op de console weergegeven. Alle herkende velden en bijbehorende waarden worden afgedrukt, samen met een betrouwbaarheidsscore.
 
 ```csharp
     foreach (RecognizedForm form in forms.Value)
@@ -436,7 +437,7 @@ Met de volgende code worden de resultaten van de analyse naar de console afgedru
 
 ## <a name="manage-your-custom-models"></a>Uw aangepaste modellen beheren
 
-In deze sectie wordt beschreven hoe u de aangepaste modellen beheert die zijn opgeslagen in uw account. Met de volgende code worden alle model beheer taken in één methode als voor beeld gebruikt. Kopieer eerst de volgende methode hand tekening:
+In deze sectie wordt beschreven hoe u de aangepaste modellen beheert die zijn opgeslagen in uw account. Als voorbeeld worden met de volgende code alle modelbeheertaken in één methode uitgevoerd. Begin met het kopiëren van de onderstaande methodehandtekening:
 
 ```csharp
 private static async Task ManageModels(
@@ -444,9 +445,9 @@ private static async Task ManageModels(
 {
 ```
 
-### <a name="check-the-number-of-models-in-the-formrecognizer-resource-account"></a>Het aantal modellen in het FormRecognizer-resource account controleren
+### <a name="check-the-number-of-models-in-the-formrecognizer-resource-account"></a>Het aantal modellen in het FormRecognizer-resourceaccount controleren
 
-In het volgende code blok wordt het aantal modellen gecontroleerd dat u hebt opgeslagen in uw formulier Recognizer-account en vergelijkt deze met de limiet voor het account.
+In het volgende codeblok wordt het aantal modellen gecontroleerd dat u in uw Form Recognizer-account hebt opgeslagen en wordt dit aantal vergeleken met de limiet voor het account.
 
 ```csharp
     // Check number of models in the FormRecognizer account, 
@@ -457,9 +458,9 @@ In het volgende code blok wordt het aantal modellen gecontroleerd dat u hebt opg
         $" models.");
 ```
 
-### <a name="list-the-models-currently-stored-in-the-resource-account"></a>De modellen weer geven die momenteel zijn opgeslagen in het resource-account
+### <a name="list-the-models-currently-stored-in-the-resource-account"></a>De modellen weergeven die momenteel zijn opgeslagen in het resource-account
 
-In het volgende code blok worden de huidige modellen in uw account vermeld en worden de details ervan in de-console weer gegeven.
+In het volgende codeblok worden de huidige modellen in uw account vermeld en worden de details ervan in de console weergegeven.
 
 ```csharp
     // List the first ten or fewer models currently stored in the account.
@@ -475,9 +476,9 @@ In het volgende code blok worden de huidige modellen in uw account vermeld en wo
     }
 ```
 
-### <a name="get-a-specific-model-using-the-models-id"></a>Een specifiek model ophalen met de ID van het model
+### <a name="get-a-specific-model-using-the-models-id"></a>Een specifiek model ophalen met de id van het model
 
-De volgende code blok treinen maken een nieuw model (net als in het gedeelte [een model trainen](#train-a-model-without-labels) ) en vervolgens wordt er een tweede verwijzing naar de sectie met de id opgehaald.
+Het volgende codeblok traint een nieuw model (net zoals in de sectie [Een model trainen](#train-a-model-without-labels)) en haalt dan met behulp van zijn id een tweede verwijzing op.
 
 ```csharp
     // Create a new model to store in the account
@@ -505,9 +506,9 @@ De volgende code blok treinen maken een nieuw model (net als in het gedeelte [ee
     }
 ```
 
-### <a name="delete-a-model-from-the-resource-account"></a>Een model uit het resource-account verwijderen
+### <a name="delete-a-model-from-the-resource-account"></a>Een model uit het resourceaccount verwijderen
 
-U kunt ook een model uit uw account verwijderen door te verwijzen naar de ID.
+U kunt een model ook uit uw account verwijderen door naar de id te verwijzen.
 
 ```csharp
     // Delete the model from the account.
@@ -517,7 +518,7 @@ U kunt ook een model uit uw account verwijderen door te verwijzen naar de ID.
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Voer de toepassing uit vanuit de map van uw toepassing met de `dotnet run` opdracht.
+Voer de toepassing op vanuit uw toepassingsmap met de opdracht `dotnet run`.
 
 ```dotnet
 dotnet run
@@ -525,16 +526,16 @@ dotnet run
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resource groep verwijderen. Als u de resource groep verwijdert, worden ook alle bijbehorende resources verwijderd.
+Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resourcegroep verwijderen. Als u de resourcegroep verwijdert, worden ook alle bijbehorende resources verwijderd.
 
 * [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure-CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Wanneer u communiceert met de Cognitive Services Form Recognizer-client bibliotheek met behulp van de .NET SDK, resulteert dit in fouten die door de service worden geretourneerd `RequestFailedException` . Ze bevatten dezelfde HTTP-status code die door een REST API aanvraag zou zijn geretourneerd.
+Wanneer met behulp van de .NET SDK de Cognitive Services Form Recognizer-clientbibliotheek gebruikt, resulteren fouten geretourneerd door de service in een `RequestFailedException`. Ze bevatten dezelfde HTTP-statuscode die een REST API-aanvraag zou retourneren.
 
-Als u bijvoorbeeld een ontvangstbewijs installatie kopie met een ongeldige URI verzendt, wordt een `400` fout geretourneerd, met de melding "onjuiste aanvraag".
+Als u bijvoorbeeld een afbeelding van een ontvangstbewijs verstuurt met een ongeldige URI, dan wordt een `400`-fout geretourneerd met het bericht 'Foute aanvraag'.
 
 ```csharp Snippet:FormRecognizerBadRequest
 try
@@ -548,7 +549,7 @@ catch (RequestFailedException e)
 }
 ```
 
-U ziet dat aanvullende informatie, zoals de client aanvraag-ID van de bewerking, wordt geregistreerd.
+U ziet dat aanvullende informatie, zoals de clientaanvraag-id van de bewerking, wordt geregistreerd.
 
 ```
 Message:
@@ -572,10 +573,10 @@ Headers:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u de formulier Recognizer .NET-client bibliotheek gebruikt om modellen te trainen en formulieren op verschillende manieren te analyseren. Vervolgens leert u tips voor het maken van een betere set met trainings gegevens en het produceren van nauw keurige modellen.
+In deze quickstart hebt u de clientbibliotheek van Form Recognizer voor .NET gebruikt om modellen te trainen en formulieren op verschillende manieren te analyseren. Vervolgens krijgt u tips om een betere set met trainingsgegevens te maken en nauwkeurigere modellen te produceren.
 
 > [!div class="nextstepaction"]
 > [Een set met trainingsgegevens samenstellen](../../build-training-data-set.md)
 
 * [Wat is Form Recognizer?](../../overview.md)
-* De voorbeeld code uit deze hand leiding is te vinden op [github](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md).
+* De voorbeeldcode uit deze gids (en meer) is te vinden op [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md).
