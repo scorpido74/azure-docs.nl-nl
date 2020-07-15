@@ -4,12 +4,12 @@ description: In dit artikel wordt beschreven hoe u fysieke machines naar Azure m
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: MVC
-ms.openlocfilehash: dbb7737d59f48cadc645be990634bb5cb0cda251
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 16145c5d8b2414750b6eff9669fa7cd61eb482f5
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116094"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165393"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Machines als fysieke servers migreren naar Azure
 
@@ -69,9 +69,9 @@ Bereid Azure voor op een migratie met Server Migration.
 
 Wijs de rol van Inzender voor virtuele machines toe aan het Azure-account. Deze biedt machtigingen voor het volgende:
 
-    - Het maken van een VM in de geselecteerde resourcegroep.
-    - Het maken van een VM in het geselecteerde virtuele netwerk.
-    - Schrijf naar een door Azure beheerde schijf. 
+- Het maken van een VM in de geselecteerde resourcegroep.
+- Het maken van een VM in het geselecteerde virtuele netwerk.
+- Schrijf naar een door Azure beheerde schijf. 
 
 ### <a name="create-an-azure-network"></a>Een Azure-netwerk maken
 

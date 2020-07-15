@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/26/2020
-ms.openlocfilehash: ef19c8eb747432a2eea3880b094f77747890c0d9
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 663d6659acf5c1e5abc8be56156af84167c51797
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984008"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146946"
 ---
 # <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Zelfstudie: REST en AI gebruiken voor het genereren van doorzoekbare inhoud van Azure-blobs
 
@@ -451,7 +451,7 @@ We zijn begonnen met blob-inhoud, waarbij het hele document is verpakt in één 
 1. Gebruik **GET** en de volgende URL, waarbij u YOUR-SERVICE-NAME vervangt door de werkelijke naam van uw service, om naar instanties van een term of woordgroep te zoeken. Het `content`-veld en een telling van het aantal overeenkomende documenten worden geretourneerd.
 
    ```http
-   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx?search=*&$count=true&$select=content?api-version=2020-06-30
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$count=true&$select=content&api-version=2020-06-30
    ```
    
    De resultaten van deze query retourneren inhoud van documenten. Dit geeft hetzelfde resultaat als het gebruik van de blob-indexeerfunctie zonder de pijplijn voor cognitief zoeken. Dit veld is doorzoekbaar, maar dit is niet geschikt als u facetten, filters of automatisch aanvullen wilt gebruiken.
@@ -461,7 +461,7 @@ We zijn begonnen met blob-inhoud, waarbij het hele document is verpakt in één 
 1. Voor de tweede query retourneert u enkele van de nieuwe velden die door de pijplijn zijn gemaakt (personen, organisaties, locaties, languageCode). Sleuteltermen worden voor het gemak weggelaten, maar neem ze op als u deze waarden wilt zien.
 
    ```http
-   https://mydemo.search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$count=true&$select=metadata_storage_name,persons,organizations,locations,languageCode&api-version=2020-06-30
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$count=true&$select=metadata_storage_name,persons,organizations,locations,languageCode&api-version=2020-06-30
    ```
    De velden in de $select-instructie bevatten nieuwe informatie, gemaakt op basis van de mogelijkheden tot verwerking van natuurlijke taal van Cognitive Services. Zoals u kunt verwachten, bevatten de resultaten ruis en zitten er variaties in de documenten, maar in veel gevallen leveren de analytische modellen nauwkeurige resultaten op.
 
@@ -483,7 +483,7 @@ We zijn begonnen met blob-inhoud, waarbij het hele document is verpakt in één 
 1. In dit laatste voorbeeld past u een filter toe op de verzameling organisaties, waarbij twee overeenkomsten worden geretourneerd voor filtercriteria op basis van de NASDAQ.
 
    ```http
-   cog-search-demo-idx/docs?search=*&$filter=organizations/any(organizations: organizations eq 'NASDAQ')&$select=metadata_storage_name,organizations&$count=true&api-version=2020-06-30
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$filter=organizations/any(organizations: organizations eq 'NASDAQ')&$select=metadata_storage_name,organizations&$count=true&api-version=2020-06-30
    ```
 
 Deze query's illustreren een aantal manieren waarop u kunt werken met querysyntaxis en filters voor nieuwe velden die met behulp van cognitief zoeken zijn gemaakt. Zie [Voorbeelden in Documenten zoeken (Azure Cognitive Search REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples), [Voorbeelden van query's met eenvoudige syntaxis](search-query-simple-examples.md)en [Voorbeelden van volledige Lucene-query's](search-query-lucene-examples.md)voor meer query voorbeelden.

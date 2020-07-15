@@ -4,12 +4,12 @@ description: In dit artikel wordt beschreven hoe AWS-VM's naar Azure migreert me
 ms.topic: tutorial
 ms.date: 06/16/2020
 ms.custom: MVC
-ms.openlocfilehash: 6eeff73bdcac214eb3836731fcbfd2f9410c6045
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5d697c2146144ca7f4b9a8739b6863ba31845f4e
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102800"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165427"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services-VM's (AWS) ontdekken, beoordelen en migreren naar Azure
 
@@ -77,9 +77,9 @@ Zo bereidt u Azure voor op migratie met Azure Migrate: tool Server Migration van
 
 Wijs de rol van Inzender voor virtuele machines toe aan het Azure-account. Deze biedt machtigingen voor het volgende:
 
-    - Het maken van een VM in de geselecteerde resourcegroep.
-    - Het maken van een VM in het geselecteerde virtuele netwerk.
-    - Schrijf naar een door Azure beheerde schijf. 
+- Het maken van een VM in de geselecteerde resourcegroep.
+- Het maken van een VM in het geselecteerde virtuele netwerk.
+- Schrijf naar een door Azure beheerde schijf. 
 
 ### <a name="create-an-azure-network"></a>Een Azure-netwerk maken
 

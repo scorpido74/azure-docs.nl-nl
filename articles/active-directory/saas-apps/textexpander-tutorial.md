@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/22/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77bd880bbbc1d600ca21e058993102d69b417f41
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: aecb235006752096c6040066cb9b96fcfa709363
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84764091"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86167246"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-textexpander"></a>Zelfstudie: Integratie van eenmalige aanmelding (SSO) van Azure Active Directory met TextExpander
 
@@ -97,11 +97,11 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in de Azu
 
 1. Bovendien verwacht de toepassing TextExpander nog enkele kenmerken die als SAML-antwoord moeten worden doorgestuurd. Deze worden hieronder weergegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze controleren volgens uw vereisten.
     
-    | Naam | |  Bronkenmerk|
-    | ---------------| --------------- | --------- |
-    | e-mail | | user.email |
-    | voornaam | | user.givenname |
-    | achternaam | | user.surname |
+    | Naam | Bronkenmerk|
+    | ---- | --------------- |
+    | e-mail | user.email |
+    | voornaam | user.givenname |
+    | achternaam | user.surname |
 
 1. Ga op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** naar **XML-bestand met federatieve metagegevens** en selecteer **Downloaden** om het certificaat te downloaden. Sla dit vervolgens op de computer op.
 

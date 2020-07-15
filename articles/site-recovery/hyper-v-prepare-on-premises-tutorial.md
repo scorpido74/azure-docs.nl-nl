@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b36e4688ebd6e929a56869a6bb191d98b2f1f432
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 6f24a259d2d71aa6599f6dd417d5e9fc99734e99
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84691098"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135651"
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>On-premises Hyper-V-servers voorbereiden op herstel na noodgeval in Azure
 
@@ -56,12 +56,12 @@ Als Hyper-V-hosts worden beheerd met VMM, moet u de on-premises VMM-server voorb
 
 ### <a name="prepare-vmm-for-network-mapping"></a>VMM voorbereiden op netwerktoewijzing
 
-Als u gebruikmaakt van VMM, wordt [netwerktoewijzing](site-recovery-network-mapping.md) toegewezen tussen on-premises VMM-VM-netwerken en virtuele Azure-netwerken. Toewijzing zorgt ervoor dat Azure-VM's zijn verbonden met het juiste netwerk wanneer ze worden gemaakt na een failover.
+Als u gebruikmaakt van VMM, wordt [netwerktoewijzing](./hyper-v-vmm-network-mapping.md) toegewezen tussen on-premises VMM-VM-netwerken en virtuele Azure-netwerken. Toewijzing zorgt ervoor dat Azure-VM's zijn verbonden met het juiste netwerk wanneer ze worden gemaakt na een failover.
 
 Bereid VMM als volgt voor op netwerktoewijzing:
 
-1. Zorg ervoor dat u beschikt over een logisch [VMM-netwerk](https://docs.microsoft.com/system-center/vmm/network-logical) dat is gekoppeld aan de cloud, waarin de Hyper-V-hosts zich bevinden.
-2. Zorg ervoor dat u beschikt over een [VM-netwerk](https://docs.microsoft.com/system-center/vmm/network-virtual) dat is gekoppeld aan het logische netwerk.
+1. Zorg ervoor dat u beschikt over een logisch [VMM-netwerk](/system-center/vmm/network-logical) dat is gekoppeld aan de cloud, waarin de Hyper-V-hosts zich bevinden.
+2. Zorg ervoor dat u beschikt over een [VM-netwerk](/system-center/vmm/network-virtual) dat is gekoppeld aan het logische netwerk.
 3. Maak in VMM verbinding tussen de VM’s en het VM-netwerk.
 
 ## <a name="verify-internet-access"></a>Internettoegang controleren
@@ -94,5 +94,5 @@ Na een failover kunt u toegang krijgen tot Azure-VM's met hetzelfde IP-adres als
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Herstel naar Azure na een noodgeval voor Hyper-V-VM’s](tutorial-hyper-v-to-azure.md)
-> [Herstel naar Azure na een noodgeval voor Hyper-V-VM;s in VMM-clouds](tutorial-hyper-v-vmm-to-azure.md)
+> [Herstel naar Azure na een noodgeval voor Hyper-V-VM’s](./hyper-v-azure-tutorial.md)
+> [Herstel naar Azure na een noodgeval voor Hyper-V-VM;s in VMM-clouds](./hyper-v-vmm-azure-tutorial.md)

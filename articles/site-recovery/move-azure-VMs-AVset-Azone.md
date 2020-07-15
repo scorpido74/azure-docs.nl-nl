@@ -7,15 +7,15 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 3efa8da87ac15495900dd264a9c37143f5e08181
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 7d92311dfa699247995c7ded3e3930e19a9a537a
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84699716"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135469"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Virtuele Azure-machines verplaatsen naar beschikbaarheidszones
-Beschikbaarheidszones in Azure beschermen uw toepassingen en gegevens tegen storingen in datacentra. Elke beschikbaarheidszone bestaat uit een of meer datacentra die zijn voorzien van een onafhankelijke stroomvoorziening, koeling en netwerk. Om voor tolerantie te zorgen, is er een minimum van drie afzonderlijke zones in alle ingeschakelde regio's. De fysieke scheiding tussen beschikbaarheidszones binnen een Azure-regio beschermt toepassingen en gegevens tegen storingen van het datacentrum. Met beschikbaarheidszones biedt Azure een SLA (Service Level Agreement) van 99,99% voor de uptime van virtuele machines (VM's). Beschikbaarheidszones worden ondersteund in geselecteerde regio's, zoals vermeld in [Regio's die ondersteuning bieden voor beschikbaarheidszones](https://docs.microsoft.com/azure/availability-zones/az-region).
+Beschikbaarheidszones in Azure beschermen uw toepassingen en gegevens tegen storingen in datacentra. Elke beschikbaarheidszone bestaat uit een of meer datacentra die zijn voorzien van een onafhankelijke stroomvoorziening, koeling en netwerk. Om voor tolerantie te zorgen, is er een minimum van drie afzonderlijke zones in alle ingeschakelde regio's. De fysieke scheiding tussen beschikbaarheidszones binnen een Azure-regio beschermt toepassingen en gegevens tegen storingen van het datacentrum. Met beschikbaarheidszones biedt Azure een SLA (Service Level Agreement) van 99,99% voor de uptime van virtuele machines (VM's). Beschikbaarheidszones worden ondersteund in geselecteerde regio's, zoals vermeld in [Regio's die ondersteuning bieden voor beschikbaarheidszones](../availability-zones/az-region.md).
 
 In een scenario waarin u uw virtuele machines als *één exemplaar* in een bepaalde regio hebt vermeld, en u de beschikbaarheid wilt verbeteren door deze te verplaatsen naar een beschikbaarheidszone, kunt u dit doen met behulp van Azure Site Recovery. Deze actie kan verder worden onderverdeeld in:
 
@@ -23,11 +23,11 @@ In een scenario waarin u uw virtuele machines als *één exemplaar* in een bepaa
 - Verplaatsen van VM’s naar beschikbaarheidszones in een doelregio
 
 > [!IMPORTANT]
-> Momenteel biedt Azure Site Recovery ondersteuning voor het verplaatsen van VM's van de ene regio naar een andere. Alleen het verplaatsen over zones binnen een regio in enkele regio's wordt ondersteund. [Meer informatie](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery).
+> Momenteel biedt Azure Site Recovery ondersteuning voor het verplaatsen van VM's van de ene regio naar een andere. Alleen het verplaatsen over zones binnen een regio in enkele regio's wordt ondersteund. [Meer informatie](./azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md).
 
 ## <a name="check-prerequisites"></a>Vereisten controleren
 
-- Controleer of de doelregio [ondersteuning biedt voor beschikbaarheidszones](https://docs.microsoft.com/azure/availability-zones/az-region). Controleer of de gewenste combinatie van [bron- en doelregio wordt ondersteund](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support). Maak een weloverwogen beslissing voor de doelregio.
+- Controleer of de doelregio [ondersteuning biedt voor beschikbaarheidszones](../availability-zones/az-region.md). Controleer of de gewenste combinatie van [bron- en doelregio wordt ondersteund](./azure-to-azure-support-matrix.md#region-support). Maak een weloverwogen beslissing voor de doelregio.
 - Zorg ervoor dat u inzicht hebt in de [architectuur en onderdelen voor dit scenario](azure-to-azure-architecture.md).
 - Controleer de [beperkingen en vereisten voor ondersteuning](azure-to-azure-support-matrix.md).
 - Controleer de accountmachtigingen. Als u pas net uw gratis Azure-account hebt gemaakt, bent u de beheerder van uw abonnement. Als u niet de abonnementsbeheerder bent, neemt u contact op met de beheerder om de machtigingen te krijgen die u nodig hebt. Als u replicatie wilt inschakelen voor een VM en uiteindelijk gegevens wilt kopiëren naar de doelserver met behulp van Azure Site Recovery, moet u het volgende hebben:
@@ -41,7 +41,7 @@ In een scenario waarin u uw virtuele machines als *één exemplaar* in een bepaa
 
 ## <a name="prepare-the-source-vms"></a>De bron-VM’s voorbereiden
 
-1. Uw virtuele machines moeten beheerde schijven gebruiken als u ze wilt verplaatsen naar een beschikbaarheidszone met Site Recovery. U kunt bestaande Windows-VM's die onbeheerde schijven gebruiken, converteren naar beheerde schijven. Volg de stappen van [Een virtuele Windows-machine van niet-beheerde schijven converteren naar beheerde schijven](https://docs.microsoft.com/azure/virtual-machines/windows/convert-unmanaged-to-managed-disks). Zorg ervoor dat de beschikbaarheidsset is geconfigureerd als *Beheerd*.
+1. Uw virtuele machines moeten beheerde schijven gebruiken als u ze wilt verplaatsen naar een beschikbaarheidszone met Site Recovery. U kunt bestaande Windows-VM's die onbeheerde schijven gebruiken, converteren naar beheerde schijven. Volg de stappen van [Een virtuele Windows-machine van niet-beheerde schijven converteren naar beheerde schijven](../virtual-machines/windows/convert-unmanaged-to-managed-disks.md). Zorg ervoor dat de beschikbaarheidsset is geconfigureerd als *Beheerd*.
 2. Controleer of de meest recente basiscertificaten aanwezig zijn op de Azure-VM’s die u wilt verplaatsen. Als de meest recente basiscertificaten niet aanwezig zijn, kan het kopiëren van gegevens naar de doelregio niet worden ingeschakeld vanwege veiligheidsbeperkingen.
 
 3. Voor Windows-VM’s moet u de meest recente Windows-updates op de VM installeren, zodat alle vertrouwde basiscertificaten op de machine aanwezig zijn. In een niet-verbonden omgeving moet u de standaardprocedures van Windows Update en de standaardprocedures voor het bijwerken van de certificaten van uw organisatie volgen.
@@ -66,16 +66,16 @@ In een scenario waarin u uw virtuele machines als *één exemplaar* in een bepaa
 
      Raadpleeg de volgende documenten om de meest gebruikte netwerkresources te maken die relevant zijn voor u, op basis van de bron-VM-configuratie.
 
-    - [Netwerkbeveiligingsgroepen](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
-    - [Load balancers](https://docs.microsoft.com/azure/load-balancer)
+    - [Netwerkbeveiligingsgroepen](../virtual-network/manage-network-security-group.md)
+    - [Load balancers](../load-balancer/index.yml)
     - [Openbare IP](../virtual-network/virtual-network-public-ip-address.md)
     
-   Voor andere netwerkonderdelen raadpleegt u de [netwerkondersteuningsdocumentatie.](https://docs.microsoft.com/azure/?pivot=products&panel=network)
+   Voor andere netwerkonderdelen raadpleegt u de [netwerkondersteuningsdocumentatie.](../index.yml?pivot=products&panel=network)
 
     > [!IMPORTANT]
-    > Zorg ervoor dat u een zone-redundante load balancer in het doel gebruikt. Meer informatie over [Standard Load Balancer en beschikbaarheidszones](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones).
+    > Zorg ervoor dat u een zone-redundante load balancer in het doel gebruikt. Meer informatie over [Standard Load Balancer en beschikbaarheidszones](../load-balancer/load-balancer-standard-availability-zones.md).
 
-4. [Maak handmatig een niet-productienetwerk](https://docs.microsoft.com/azure/virtual-network/quick-create-portal) in de doelregio als u de configuratie wilt testen voordat u het knippen naar de doelregio uitvoert. Deze aanpak wordt aanbevolen omdat deze minimale interferentie met de productieomgeving veroorzaakt.
+4. [Maak handmatig een niet-productienetwerk](../virtual-network/quick-create-portal.md) in de doelregio als u de configuratie wilt testen voordat u het knippen naar de doelregio uitvoert. Deze aanpak wordt aanbevolen omdat deze minimale interferentie met de productieomgeving veroorzaakt.
 
 ## <a name="enable-replication"></a>Replicatie inschakelen
 De onderstaande stappen tonen u hoe u met Azure Site Recovery de replicatie van gegevens naar de doelregio inschakelt voordat u ze uiteindelijk naar beschikbaarheidszones verplaatst.
@@ -85,7 +85,7 @@ De onderstaande stappen tonen u hoe u met Azure Site Recovery de replicatie van 
 
 1. Selecteer in Azure Portal **Virtuele machines** en selecteer de VM die u naar de beschikbaarheidszones wilt verplaatsen.
 2. Selecteer in **Bewerkingen** de optie **Herstel na noodgeval**.
-3. Selecteer in **Noodherstel configureren** > **Doelregio** de doelregio waarnaar u wilt repliceren. Zorg ervoor dat deze regio beschikbaarheidszones [ondersteunt](https://docs.microsoft.com/azure/availability-zones/az-region).
+3. Selecteer in **Noodherstel configureren** > **Doelregio** de doelregio waarnaar u wilt repliceren. Zorg ervoor dat deze regio beschikbaarheidszones [ondersteunt](../availability-zones/az-region.md).
 
     ![Selectie van doelregio](media/azure-vms-to-zones/enable-rep-1.PNG)
 
@@ -149,5 +149,3 @@ In deze zelfstudie hebt u de beschikbaarheid van een Azure-VM verhoogd door deze
 
 > [!div class="nextstepaction"]
 > [Herstel na noodgeval instellen na een migratie](azure-to-azure-quickstart.md)
-
-
