@@ -1,5 +1,5 @@
 ---
-title: Snelstartgids voor Bing Image Search java script-client bibliotheek
+title: Quickstart voor Bing Image Search-clientbibliotheek voor JavaScript
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: aahi
-ms.openlocfilehash: a37439d24a39a16e8bb51a09c9a33abecfa36fc0
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: df24e04373b60172236c462eb4461e59ba9d1415
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78899585"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85805694"
 ---
-Gebruik deze Quick Start om ervoor te zorgen dat uw eerste installatie kopie wordt doorzocht met behulp van de Bing Image Search-client bibliotheek. Dit is een wrapper voor de API en bevat dezelfde functies. Deze eenvoudige JavaScript-toepassing verzendt een zoekquery voor afbeeldingen, parseert het JSON-antwoord en geeft de URL weer van de eerst geretourneerde afbeelding.
+Gebruik deze quickstart om uw eerste image search te maken met behulp van de Bing Image Search-clientbibliotheek, wat een wrapper is voor de API en die dus dezelfde functies bevat. Deze eenvoudige JavaScript-toepassing verzendt een zoekquery voor afbeeldingen, parseert het JSON-antwoord en geeft de URL weer van de eerst geretourneerde afbeelding.
 
 De broncode voor dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/imageSearch.js) met extra foutafhandeling en aantekeningen.
 
@@ -93,9 +93,8 @@ De broncode voor dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azu
 
 ## <a name="see-also"></a>Zie ook
 
-* [Wat is Bing Afbeeldingen zoeken?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)
+* [Wat is Bing Image Search?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)
 * [Online interactieve demo proberen](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)
-* [Gratis Cognitive Services-toegangssleutel ophalen](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)
 * [Node.js-voorbeelden voor de Azure Cognitive Services SDK](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
-* [Documentatie voor Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
+* [Documentatie van Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
 * [Naslag voor Bing Afbeeldingen zoeken-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

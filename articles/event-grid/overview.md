@@ -1,20 +1,14 @@
 ---
 title: Wat is Azure Event Grid?
 description: Gebeurtenisgegevens vanaf een bron naar handlers verzenden met Azure Event Grid. Op gebeurtenissen gebaseerde toepassingen ontwikkelen en integreren met Azure-services.
-services: event-grid
-author: femila
-manager: timlt
-ms.service: event-grid
 ms.topic: overview
-ms.date: 02/20/2020
-ms.author: femila
-ms.custom: seodec18
-ms.openlocfilehash: 38f0218a7dedd243cccfab4b0b5ecfb73d3a626a
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.date: 07/07/2020
+ms.openlocfilehash: 95deeddbd7ae3f5ee07bef0c4ac73559d208c352
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560307"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116128"
 ---
 # <a name="what-is-azure-event-grid"></a>Wat is Azure Event Grid?
 
@@ -103,7 +97,7 @@ Event Grid verbindt gegevensbronnen en gebeurtenis-handlers. Gebruik Event Grid 
 
 ![De automatisering van bewerkingen](./media/overview/Ops_automation.png)
 
-Met Event Grid kunt u sneller automatiseren en gemakkelijker beleid afdwingen. U kunt bijvoorbeeld met Event Grid een melding sturen naar Azure Automation wanneer er een virtuele machine of SQL-database wordt gemaakt. Gebruik de gebeurtenissen om automatisch te controleren of serviceconfiguraties compatibel zijn, metagegevens aan te bieden aan tools voor bewerkingen, virtuele machines te taggen of werkitems te archiveren.
+Met Event Grid kunt u sneller automatiseren en gemakkelijker beleid afdwingen. U kunt bijvoorbeeld met Event Grid een melding sturen naar Azure Automation wanneer er een virtuele machine of database in Azure SQL wordt gemaakt. Gebruik de gebeurtenissen om automatisch te controleren of serviceconfiguraties compatibel zijn, metagegevens aan te bieden aan tools voor bewerkingen, virtuele machines te taggen of werkitems te archiveren.
 
 ### <a name="application-integration"></a>Integratie van toepassingen
 

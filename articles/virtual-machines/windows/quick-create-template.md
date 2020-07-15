@@ -8,28 +8,28 @@ ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: 6ef929a2934d8480ce6d1eca8bb7ba3b70580110
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: d74994609799c155453f0c7cac887f2e033ea90b
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84552000"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087279"
 ---
-# <a name="quickstart-create-a-windows-virtual-machine-using-a-resource-manager-template"></a>Quickstart: Een virtuele Windows-machine maken met een Resource Manager-sjabloon
+# <a name="quickstart-create-a-windows-virtual-machine-using-an-arm-template"></a>Quickstart: Een virtuele Windows-machine maken met een ARM-sjabloon
 
-In deze snelstart wordt beschreven hoe u een Resource Manager-sjabloon gebruikt voor het implementeren van een virtuele Windows-machine (VM) in Azure. 
+In deze quickstart wordt beschreven hoe u een Azure Resource Manager-sjabloon (ARM-sjabloon) gebruikt voor het implementeren van een virtuele Windows-machine (VM) in Azure.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
+
+[![Implementeren in Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-vm-simple-windows%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Vereisten
 
-Geen.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
-## <a name="create-a-windows-virtual-machine"></a>Een virtuele Windows-machine maken
-
-### <a name="review-the-template"></a>De sjabloon controleren
+## <a name="review-the-template"></a>De sjabloon controleren
 
 De sjabloon die in deze snelstart wordt gebruikt, komt uit [Azure Quick Start-sjablonen](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/).
 
@@ -48,7 +48,7 @@ Verschillende resources worden in de sjabloon gedefinieerd:
 
 
 
-### <a name="deploy-the-template"></a>De sjabloon implementeren
+## <a name="deploy-the-template"></a>De sjabloon implementeren
 
 1. Selecteer de volgende afbeelding om u aan te melden bij Azure en een sjabloon te openen. Met de sjabloon worden een sleutelkluis en een geheim gemaakt.
 
@@ -86,7 +86,7 @@ Als u de resourcegroep niet meer nodig hebt, verwijdert u deze. Hierdoor worden 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstart hebt u een eenvoudige virtuele machine geïmplementeerd met een Resource Manager-sjabloon. Voor meer informatie over virtuele machines in Azure, gaat u verder met de zelfstudie voor virtuele Linux-machines.
+In deze quickstart hebt u een eenvoudige virtuele machine geïmplementeerd met behulp van een ARM-sjabloon. Voor meer informatie over virtuele machines in Azure, gaat u verder met de zelfstudie voor virtuele Linux-machines.
 
 
 > [!div class="nextstepaction"]

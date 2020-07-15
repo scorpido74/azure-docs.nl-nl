@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: 061907783d21372f0e926e529730e9e82b7a4ddb
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: 632071c2a9597fc11ab4ffc0971493ef5b52d807
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488763"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083556"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Quickstart: Een Azure Cognitive Search-index maken in de Azure-portal
 > [!div class="op_single_selector"]
@@ -150,7 +150,7 @@ U zou nu een zoekindex moeten hebben die klaar is om query’s uit te voeren met
 
    ![Opdracht Search Explorer](media/search-get-started-portal/search-explorer-cmd.png)
 
-2. Kies in de vervolgkeuzelijst **Index** de *voorbeeldindex met hotels*. Klik op de vervolgkeuzelijst voor de **API-versie** om de REST-API's te zien die beschikbaar zijn. Gebruik voor onderstaande query’s de algemeen beschikbare versie (05-06-2019).
+2. Kies in de vervolgkeuzelijst **Index** de *voorbeeldindex met hotels*. Klik op de vervolgkeuzelijst voor de **API-versie** om de REST-API's te zien die beschikbaar zijn. Gebruik voor onderstaande query's de algemeen beschikbare versie (2020-06-30).
 
    ![Index- en API-opdrachten](media/search-get-started-portal/search-explorer-changeindex.png)
 
@@ -275,4 +275,9 @@ Als u een gratis service gebruikt, moet u er rekening mee houden dat u bent bepe
 Een portalwizard gebruiken om een kant-en-klare web-app te genereren die in een browser wordt uitgevoerd. U kunt deze wizard uitproberen op de kleine index die u zojuist hebt gemaakt, of een van de ingebouwde sets met voorbeeldgegevens gebruiken voor een uitgebreidere zoekervaring.
 
 > [!div class="nextstepaction"]
-> [Een zoek-app maken in portal](search-create-app-portal.md)
+> [Een demo-app maken in de portal](search-create-app-portal.md)
+
+Wilt u uw clouduitgaven optimaliseren en geld besparen?
+
+> [!div class="nextstepaction"]
+> [Analyseer kosten met Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

@@ -4,12 +4,12 @@ description: Meer informatie over de Azure Migrate-service.
 ms.topic: overview
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: d90c40447dc4928a34332685aea728b13c3775b1
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 72f2dfb3e5e05466892d838af4e1c84c855b94a9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84771254"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86122078"
 ---
 # <a name="about-azure-migrate"></a>Over Azure Migrate
 
@@ -20,7 +20,7 @@ Azure Migrate is een gecentraliseerde hub voor het beoordelen en migreren naar o
 - **Geïntegreerd migratieplatform**: Eén portal om uw migratie naar Azure te starten, uit te voeren en te volgen.
 - **Aantal hulpprogramma's**: Een reeks hulpprogramma's voor evaluatie en migratie. Azure Migrate-hulpprogramma’s omvatten Server Assessment en Azure Migrate: Server Migration. Azure Migrate integreert ook met andere Azure-services en -hulpprogramma's, en met aanbiedingen van onafhankelijke softwareleveranciers (ISV’s).
 - **Evaluatie en migratie**: In de Azure Migrate hub kunt u het volgende evalueren en migreren:
-    - **Servers**: Evalueer on-premises servers en migreer deze naar virtuele Azure-machine.
+    - **Servers**: Evalueer on-premises servers en migreer deze naar virtuele Azure-machine of Azure VMware Solution Solution (AVS) (Preview).
     - **Databases**: Evalueer on-premises databases en migreer deze naar Azure SQL Database of SQL Managed Instance.
     - **Webtoepassingen**: Evalueer on-premises webtoepassingen en migreer deze naar Azure App Service met behulp van de Azure App Service Migration Assistant.
     - **Virtuele bureaubladen**: Evalueer uw on-premises VDI (Virtual Desktop Infrastructure) en migreer deze naar Windows Virtual Desktop in Azure.
@@ -34,11 +34,11 @@ De Azure Migrate-hub bevat deze hulpprogramma's:
 --- | --- | ---
 **Azure Migrate: Server Assessment** | Servers evalueren. | Detecteer en evalueer on-premises VMware-VM's, Hyper-V-VM's en fysieke servers in voorbereiding op migratie naar Azure.
 **Azure Migrate: Server Migration** | Servers migreren. | Migreer VMware-VM's, Hyper-V-VM's, fysieke servers, andere gevirtualiseerde machines en VM's ui de openbare cloud naar Azure.
-**Gegevensmigratieassistent** | Evalueer SQL Server-databases voor migratie naar Azure SQL Database, Azure SQL Managed Instance of Azure-VM's waarop SQL Server wordt uitgevoerd. | Data Migration Assistant helpt bij het opsporen van mogelijke problemen die de migratie kunnen tegenhouden. De assistent identificeert niet-ondersteunde functies, nieuwe functies die na de migratie van pas kunnen komen en het juiste traject voor databasemigratie. [Meer informatie](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017).
-**Azure Database Migration Service** | Migreer on-premises databases naar Azure-VM's waarop SQL Server, Azure SQL Database of SQL Managed Instance wordt uitgevoerd. | [Lees meer](https://docs.microsoft.com/azure/dms/dms-overview) over Database Migration Service.
+**Gegevensmigratieassistent** | Evalueer SQL Server-databases voor migratie naar Azure SQL Database, Azure SQL Managed Instance of Azure-VM's waarop SQL Server wordt uitgevoerd. | Data Migration Assistant helpt bij het opsporen van mogelijke problemen die de migratie kunnen tegenhouden. De assistent identificeert niet-ondersteunde functies, nieuwe functies die na de migratie van pas kunnen komen en het juiste traject voor databasemigratie. [Meer informatie](/sql/dma/dma-overview?view=sql-server-2017).
+**Azure Database Migration Service** | Migreer on-premises databases naar Azure-VM's waarop SQL Server, Azure SQL Database of SQL Managed Instance wordt uitgevoerd. | [Lees meer](../dms/dms-overview.md) over Database Migration Service.
 **Movere** | Servers evalueren. | [Lees meer](#movere) over Movere.
 **Web App Migration Assistant** | Hiermee kunt u on-premises web-apps beoordelen en migreren naar Azure. |  Gebruik Azure App Service Migration Assistant om on-premises websites te evalueren voor migratie naar Azure App Service.<br/><br/> Gebruik Migration Assistant om .NET- en PHP-web-apps te migreren naar Azure. [Lees meer](https://appmigration.microsoft.com/) over Azure App Service Migration Assistant.
-**Azure Data Box** | Offline gegevens migreren. | Gebruik Azure Data Box-producten om grote hoeveelheden offline gegevens naar Azure te verplaatsen. [Meer informatie](https://docs.microsoft.com/azure/databox/).
+**Azure Data Box** | Offline gegevens migreren. | Gebruik Azure Data Box-producten om grote hoeveelheden offline gegevens naar Azure te verplaatsen. [Meer informatie](../databox/index.yml).
 
 > [!NOTE]
 > Als u Azure Government gebruikt, kunnen externe geïntegreerde hulpprogramma's en ISV-aanbiedingen geen gegevens verzenden naar Azure Migrate-projecten. U kunt hulpprogramma's onafhankelijk van elkaar gebruiken.
@@ -60,12 +60,12 @@ Azure Migrate kan worden geïntegreerd met verschillende ISV-aanbiedingen.
 
 ## <a name="azure-migrate-server-assessment-tool"></a>Azure Migrate: Server Assessment
 
-Het hulpprogramma Azure Migrate: Server Assessment detecteert en evalueert on-premises VMware-VM's, Hyper-V-VM's en fysieke servers voor migratie naar Azure.
+Het hulpprogramma Azure Migrate: Server Assessment detecteert en evalueert on-premises VMware-VM's, Hyper-V-VM's en fysieke servers voor migratie naar Azure. 
 
 Het hulpprogramma doet het volgende:
 
 - **Azure-gereedheid**: Evalueert of on-premises machines gereed zijn voor migratie naar Azure.
-- **Azure-groottebepaling**: Schat de grootte van Azure-VM's na migratie.
+- **Azure-groottebepaling**: Evalueer on-premises servers en migreer deze naar virtuele Azure-machine of Azure VMware Solution (AVS) (Preview).
 - **Azure-kostenraming**: Schat de kosten voor het uitvoeren van on-premises servers in Azure.
 - **Afhankelijkheidsanalyse**: Identificeert afhankelijkheden tussen servers en optimalisatiestrategieën voor het verplaatsen van gerelateerde servers naar Azure. Leer meer over Server Assessment met [afhankelijkheidsanalyse](concepts-dependency-visualization.md).
 

@@ -9,12 +9,12 @@ ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
 ms.date: 10/13/2019
-ms.openlocfilehash: d274160cc2ed1102dfc8fd11df358b34e40d9923
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 937be72bfec96119474e7effe9ba88a2cf253444
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "84870297"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081840"
 ---
 # <a name="add-data-to-audit-logs-by-using-custom-http-headers"></a>Aangepaste HTTP-headers gebruiken om gegevens toe te voegen aan auditlogboeken
 
@@ -36,7 +36,7 @@ U kunt aangepaste headers gebruiken om verschillende soorten informatie vast te 
 > [!IMPORTANT]
 > Houd er rekening mee dat de informatie die in aangepaste headers wordt verzonden, 30 dagen lang in een intern Microsoft-logboekregistratiesysteem blijft bewaard nadat die informatie beschikbaar is gekomen in de Azure-logboekregistratie. Het is raadzaam alle gegevens te versleutelen voordat u deze toevoegt aan aangepaste headers. U mag geen PHI-informatie doorgeven via aangepaste headers.
 
-U moet de volgende naamconventie gebruiken voor uw HTTP-headers: X-MS-AZUREFHIR-AUDIT-AUDIT-\<naam>.
+U moet de volgende naamconventie gebruiken voor uw HTTP-headers: X-MS-AZUREFHIR-AUDIT-\<name>.
 
 Deze HTTP-headers zijn opgenomen in een eigenschappenverzameling die aan het logboek wordt toegevoegd. Bijvoorbeeld:
 
@@ -63,7 +63,7 @@ Wanneer u de waarden toevoegt aan het logboek, worden ze gecombineerd met een do
  
 U kunt maximaal 10 unieke headers toevoegen (herhalingen van dezelfde header met verschillende waarden tellen als één header). De totale maximumlengte van de waarde voor een header is 2048 tekens.
 
-Als u de Firely C# client-API-bibliotheek gebruikt, ziet de code er ongeveer zo uit:
+Als u de Firefly C# client-API-bibliotheek gebruikt, ziet de code er ongeveer zo uit:
 
 ```C#
 FhirClient client;

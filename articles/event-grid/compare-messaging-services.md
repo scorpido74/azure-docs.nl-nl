@@ -1,20 +1,14 @@
 ---
 title: Azure-berichtenservices vergelijken
 description: Beschrijft de drie berichtenservices van - Azure Event Grid, Event Hubs en Service Bus. Geeft een aanbeveling over welke service voor verschillende scenario's het meest geschikt is.
-services: event-grid
-author: spelluru
-manager: timlt
-ms.service: event-grid
 ms.topic: overview
-ms.date: 10/22/2019
-ms.author: spelluru
-ms.custom: seodec18
-ms.openlocfilehash: 6122f17637e76f42cc4fbcc87ac9f48da3cdca36
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.date: 07/07/2020
+ms.openlocfilehash: 9c539accbc41f56e4421b9e793c25496987363aa
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76122199"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101372"
 ---
 # <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>Kiezen tussen berichtenservices van Azure - Event Grid, Event Hubs en Service Bus
 
@@ -77,7 +71,7 @@ Het heeft de volgende kenmerken:
 
 ### <a name="service-bus"></a>Service Bus
 
-Service Bus is bedoeld voor traditionele bedrijfstoepassingen. Deze bedrijfstoepassingen hebben transacties, bestellingen, detectie van duplicaten en onmiddellijk consistentie nodig. Met Service Bus kunnen [Cloud-systeem eigen](https://azure.microsoft.com/overview/cloudnative/) toepassingen betrouw bare status overgangs beheer bieden voor bedrijfs processen. Gebruik Azure Service Bus bij de afhandeling van hoogwaardige berichten die niet verloren mogen gaan of gedupliceerd mogen worden. Service Bus vergemakkelijkt ook uitermate beveiligde communicatie tussen hybride cloudoplossingen en kan bestaande on-premises systemen verbinden met cloudoplossingen.
+Service Bus is bedoeld voor traditionele bedrijfstoepassingen. Deze bedrijfstoepassingen hebben transacties, bestellingen, detectie van duplicaten en onmiddellijk consistentie nodig. Met Service Bus kunnen [cloudsysteemeigen](https://azure.microsoft.com/overview/cloudnative/) toepassingen betrouwbaar statusovergangsbeheer bieden voor bedrijfsprocessen. Gebruik Azure Service Bus bij de afhandeling van hoogwaardige berichten die niet verloren mogen gaan of gedupliceerd mogen worden. Service Bus vergemakkelijkt ook uitermate beveiligde communicatie tussen hybride cloudoplossingen en kan bestaande on-premises systemen verbinden met cloudoplossingen.
 
 Service Bus is een Brokered Messaging-systeem. Het slaat berichten op in een 'broker' (bijvoorbeeld een wachtrij) tot de ontvangende partij gereed is om ze te ontvangen.
 
@@ -90,7 +84,7 @@ Het heeft de volgende kenmerken:
 
 ## <a name="use-the-services-together"></a>De services samen gebruiken
 
-In sommige gevallen kunt u de services naast elkaar gebruiken om verschillende rollen te kunnen vervullen. Een e-commerce-site kan bijvoorbeeld Service Bus gebruiken om de volg orde te verwerken, Event Hubs voor het vastleggen van de telemetrie van de site en Event Grid om te reageren op gebeurtenissen zoals een item dat is verzonden.
+In sommige gevallen kunt u de services naast elkaar gebruiken om verschillende rollen te kunnen vervullen. Zo kan een e-commerce-site Service Bus gebruiken om orders te verwerken, Event Hubs om telemetrie van de site vast te leggen en Event Grid om te reageren op gebeurtenissen, bijvoorbeeld een artikel dat is verzonden.
 
 In andere gevallen kunt u ze koppelen om een gebeurtenis- en gegevenspijplijn te vormen. U gebruikt Event Grid om te reageren op gebeurtenissen in de andere services. Zie [Stream big data into a data warehouse](event-grid-event-hubs-integration.md) (Big Data streamen naar een data warehouse) voor een voorbeeld van het gebruik van Event Grid met Event Hubs om gegevens te migreren naar een datawarehouse. In de volgende afbeelding ziet u de werkstroom voor het streamen van de gegevens.
 
@@ -98,7 +92,7 @@ In andere gevallen kunt u ze koppelen om een gebeurtenis- en gegevenspijplijn te
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende artikelen: 
-- [Opties voor asynchrone berichten in azure](/azure/architecture/guide/technology-choices/messaging)
+- [Opties voor asynchrone berichten in Azure](/azure/architecture/guide/technology-choices/messaging)
 - [Gebeurtenissen, gegevenspunten en berichten - De juiste Azure-berichtenservice voor uw gegevens kiezen](https://azure.microsoft.com/blog/events-data-points-and-messages-choosing-the-right-azure-messaging-service-for-your-data/).
 - [Storage Queues and Service Bus Queues - Compared and Contrasted](../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md) (Storage-wachtrijen en Service Bus-wachtrijen: overeenkomsten en verschillen)
 - Zie [Aangepaste gebeurtenissen maken en routeren met behulp van Azure Event Grid](custom-event-quickstart.md) om aan de slag te gaan met Event Grid.

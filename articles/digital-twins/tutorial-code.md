@@ -7,17 +7,14 @@ ms.author: cschorm
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 170901f3410c85ab53a306529053e611b36fa8ec
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: deb69f6ca8f1499f43c12d606434719571a1f400
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298392"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027887"
 ---
 # <a name="coding-with-the-azure-digital-twins-apis"></a>Coderen met de Azure Digital Twins-API's
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Het is gebruikelijk dat ontwikkelaars die met Azure Digital Twins werken, een clienttoepassing schrijven voor interactie met hun exemplaar van de Azure Digital Twins-service. Deze zelfstudie voor ontwikkelaars biedt een inleiding op het programmeren van de Azure Digital Twins-service, met behulp van de [Azure IoT Digital Twins-clientbibliotheek voor .NET (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). U wordt stap voor stap begeleid bij het schrijven van een C# console-client-app, vanaf het begin.
 
@@ -288,6 +285,7 @@ Voeg bovenaan een nieuwe `using`-instructie toe, omdat u de ingebouwde .NET JSON
 
 ```csharp
 using System.Text.Json;
+using Azure.DigitalTwins.Core.Serialization;
 ```
 
 Voeg vervolgens de volgende code toe aan het einde van de `Main` methode om drie digitale tweelingen te maken en initialiseren op basis van dit model.
@@ -318,7 +316,7 @@ U ziet dat er geen fout wordt gegenereerd wanneer de tweelingen de tweede keer w
 
 Vervolgens kunt u **relaties** maken tussen deze gemaakte tweelingen, om ze te verbinden in een **tweelinggrafiek**. [Tweelinggrafieken](concepts-twins-graph.md) worden gebruikt om uw gehele omgeving voor te stellen.
 
-Als u relaties wilt maken, voegt u een `using`-instructie toe voor het basistype relatie in de SDK:
+Als u relaties wilt maken, voegt u een `using`-instructie toe voor het basistype relatie in de SDK: sla dit over als deze al is toegevoegd.
 ```csharp
 using Azure.DigitalTwins.Core.Serialization;
 ```
@@ -566,5 +564,5 @@ Ga verder met de volgende zelfstudie om de dingen te bekijken die u kunt doen me
 > [Zelfstudie: De basisbeginselen verkennen met een voorbeeldclient-app](tutorial-command-line-app.md)
 
 U kunt ook de code uitbreiden die u in deze zelfstudie hebt geschreven door meer beheerbewerkingen te leren in de artikelen met procedures of door te kijken naar de conceptdocumentatie voor meer informatie over de elementen waarmee u in de zelfstudie hebt gewerkt.
-* [Uitleg: Een dubbel model beheren](how-to-manage-model.md)
+* [Uitleg: Aangepaste modellen beheren](how-to-manage-model.md)
 * [Concepten: Aangepaste modellen](concepts-models.md)

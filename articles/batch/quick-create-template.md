@@ -4,18 +4,22 @@ description: Leer snel hoe u een Batch-taak kunt uitvoeren met behulp van Azure 
 ms.topic: quickstart
 ms.date: 05/19/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 5f26aeead41fa1ffcebefdeaabae84490dfdae2b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: d92751d1463a20c8fb0cb83fe678789860957189
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85959820"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086123"
 ---
-# <a name="quickstart-create-a-batch-account-by-using-azure-resource-manager-template"></a>Quickstart: een Batch-account maken met een Azure Resource Manager-sjabloon
+# <a name="quickstart-create-a-batch-account-by-using-arm-template"></a>Quickstart: Een Batch-account maken met een ARM-sjabloon
 
-U hebt een Batch-account nodig om rekenresources (pools met rekenknooppunten) en Batch-taken te maken. Als u een Azure Storage-account koppelt aan uw Batch-account, kunt u toepassingen implementeren en invoer- en uitvoergegevens voor de meeste workloads uit de praktijk opslaan. In deze quickstart wordt beschreven hoe u een Azure Resource Manager-sjabloon gebruikt om een Batch-account te maken, inclusief opslag. Nadat u deze snelstartgids hebt voltooid, begrijpt u de belangrijkste principes van de Batch-service en bent u er klaar voor om Batch op grotere schaal te gebruiken voor meer realistische workloads.
+U hebt een Batch-account nodig om rekenresources (pools met rekenknooppunten) en Batch-taken te maken. Als u een Azure Storage-account koppelt aan uw Batch-account, kunt u toepassingen implementeren en invoer- en uitvoergegevens voor de meeste workloads uit de praktijk opslaan. In deze quickstart wordt beschreven hoe u een Azure Resource Manager-sjabloon (ARM-sjabloon) gebruikt om een Batch-account te maken, inclusief opslag. Nadat u deze snelstartgids hebt voltooid, begrijpt u de belangrijkste principes van de Batch-service en bent u er klaar voor om Batch op grotere schaal te gebruiken voor meer realistische workloads.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
+
+[![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-batchaccount-with-storage%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -23,9 +27,7 @@ U hebt een actief Azure-abonnement nodig.
 
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-a-batch-account-with-storage"></a>Een Batch-account met opslag maken
-
-### <a name="review-the-template"></a>De sjabloon controleren
+## <a name="review-the-template"></a>De sjabloon controleren
 
 De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-quickstart-sjablonen](https://azure.microsoft.com/resources/templates/101-batchaccount-with-storage/).
 
@@ -36,7 +38,7 @@ Er worden twee Azure-resources gedefinieerd in de sjabloon:
 - [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts): Hiermee maakt u een opslagaccount.
 - [Microsoft.Batch/batchAccounts](/azure/templates/microsoft.batch/batchaccounts): Hiermee maakt u een Batch-account.
 
-### <a name="deploy-the-template"></a>De sjabloon implementeren
+## <a name="deploy-the-template"></a>De sjabloon implementeren
 
 1. Selecteer de volgende afbeelding om u aan te melden bij Azure en een sjabloon te openen. De sjabloon maakt een Azure Batch-account en een opslagaccount.
 

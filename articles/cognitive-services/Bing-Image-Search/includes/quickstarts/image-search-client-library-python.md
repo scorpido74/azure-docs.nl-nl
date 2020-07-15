@@ -1,5 +1,5 @@
 ---
-title: Quick start voor python-client bibliotheek Bing Image Search
+title: Quickstart voor Bing Image Search-clientbibliotheek voor Python
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -8,22 +8,22 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: aahi
-ms.openlocfilehash: e3dc3fd30d1eceab4b24b6699dd81a91bca51115
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: fbe44602d4f586e47eada1b6043817e9d26c6793
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78899592"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85805949"
 ---
-Gebruik deze Quick Start om ervoor te zorgen dat uw eerste installatie kopie wordt doorzocht met behulp van de Bing Image Search-client bibliotheek. Dit is een wrapper voor de API en bevat dezelfde functies. Deze eenvoudige Python-toepassing verzendt een zoekquery voor afbeeldingen, parseert het JSON-antwoord en geeft de URL weer van de eerst geretourneerde afbeelding.
+Gebruik deze snelstart om voor de eerste keer afbeeldingen te zoeken met behulp van de Bing Afbeeldingen zoeken-clientbibliotheek, wat een wrapper is voor de API en die dus dezelfde functies bevat. Deze eenvoudige Python-toepassing verzendt een zoekquery voor afbeeldingen, parseert het JSON-antwoord en geeft de URL weer van de eerst geretourneerde afbeelding.
 
-De bron code voor dit voor beeld is beschikbaar [op github](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/image-search-quickstart.py) met aanvullende fout afhandeling en annotaties.
+De broncode voor dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/image-search-quickstart.py) met extra foutafhandeling en aantekeningen.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * [Python 2.7 of 3.4](https://www.python.org/) en hoger.
 
-* De [Azure afbeeldingen zoeken-client bibliotheek](https://pypi.org/project/azure-cognitiveservices-search-imagesearch/) voor python
+* De [Azure Image Search-clientbibliotheek](https://pypi.org/project/azure-cognitiveservices-search-imagesearch/) voor Python
     * Installeren met behulp van `pip install azure-cognitiveservices-search-imagesearch`
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](~/includes/cognitive-services-bing-image-search-signup-requirements.md)]
@@ -81,9 +81,8 @@ else:
 
 ## <a name="see-also"></a>Zie ook
 
-* [Wat is Bing Afbeeldingen zoeken?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [Wat is Bing Image Search?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
 * [Online interactieve demo proberen](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
-* [Gratis Cognitive Services-toegangssleutel ophalen](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)
 * [Python-voorbeelden voor de Azure Cognitive Services-SDK](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)  
-* [Documentatie voor Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
+* [Documentatie van Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
 * [Naslag voor Bing Afbeeldingen zoeken-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

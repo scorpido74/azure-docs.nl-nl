@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.reviewer: trbye, jmartens, larryfr
 ms.author: tracych
 author: tracychms
-ms.date: 04/15/2020
+ms.date: 06/23/2020
 ms.custom: Build2020, tracking-python
-ms.openlocfilehash: b26527321cf7fc5ca7fc4b061f11b86f8830ec29
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: e5665bd5ad2baa35b497c8b4fe19b0cb93bdb2a7
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84552324"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023360"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Batchdeductie uitvoeren op grote hoeveelheden gegevens met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -112,9 +112,6 @@ U kunt deze stap wijzigen om naar uw blob-container te verwijzen door uw eigen w
 from azureml.core import Datastore
 from azureml.core import Workspace
 
-# Load workspace authorization details from config.json
-ws = Workspace.from_config()
-
 mnist_blob = Datastore.register_azure_blob_container(ws, 
                       datastore_name="mnist_datastore", 
                       container_name="sampledata", 
@@ -140,8 +137,6 @@ Zie [Gegevenssets maken en openen (preview)](https://docs.microsoft.com/azure/ma
 
 ```python
 from azureml.core.dataset import Dataset
-
-mnist_ds_name = 'mnist_sample_data'
 
 path_on_datastore = mnist_blob.path('mnist/')
 input_mnist_ds = Dataset.File.from_files(path=path_on_datastore, validate=False)
@@ -210,7 +205,7 @@ Het script *moet* twee functies bevatten:
 - `init()`: Gebruik deze functie voor een kostbare of algemene voorbereiding voor latere deductie. Gebruik het bijvoorbeeld om het model in een algemeen object te laden. Deze functie wordt slecht één keer aangeroepen, aan het begin van het proces.
 -  `run(mini_batch)`: De functie wordt uitgevoerd voor elk exemplaar van `mini_batch`.
     -  `mini_batch`: ParallelRunStep roept de uitvoermethode aan en geeft een lijst of Pandas DataFrame op als argument aan de methode. Elk element in mini_batch is - een bestandspad als een invoer een FileDataset is, of een Pandas DataFrame als de invoer een TabularDataset is.
-    -  `response`: run()-methode moet resulteren in een Pandas DataFrame of een matrix. Voor append_row output_action worden deze geretourneerde elementen toegevoegd aan het algemene uitvoerbestand. Voor summary_only wordt de inhoud van de elementen genegeerd. Voor alle uitvoeracties geeft elk geretourneerde uitvoerelement een geslaagde uitvoering van een invoerelement in de mini-batch aan. Zorg ervoor dat er voldoende gegevens worden opgenomen in het resultaat van de uitvoering om invoer toe te wijzen aan de uitvoerresultaten. Uitvoer wordt naar het uitvoerbestand geschreven en bevindt zich niet altijd in de juiste volgorde. Gebruik een sleutel in de uitvoer om deze toe te wijzen aan de invoer.
+    -  `response`: run()-methode moet resulteren in een Pandas DataFrame of een matrix. Voor append_row output_action worden deze geretourneerde elementen toegevoegd aan het algemene uitvoerbestand. Voor summary_only wordt de inhoud van de elementen genegeerd. Voor alle uitvoeracties geeft elk geretourneerde uitvoerelement een geslaagde uitvoering van een invoerelement in de mini-batch aan. Zorg dat er voldoende gegevens worden opgenomen in het resultaat van de uitvoering om invoer toe te wijzen aan de uitvoerresultaten. Uitvoer wordt naar het uitvoerbestand geschreven en bevindt zich niet altijd in de juiste volgorde. Gebruik een sleutel in de uitvoer om deze toe te wijzen aan de invoer.
 
 ```python
 # Snippets from a sample script.
@@ -218,6 +213,7 @@ Het script *moet* twee functies bevatten:
 # (https://aka.ms/batch-inference-notebooks)
 # for the implementation script.
 
+%%writefile digit_identification.py
 import os
 import numpy as np
 import tensorflow as tf
@@ -266,11 +262,11 @@ file_path = os.path.join(script_dir, "<file_name>")
 
 ## <a name="build-and-run-the-pipeline-containing-parallelrunstep"></a>De pijplijn met ParallelRunStep bouwen en uitvoeren
 
-Nu heeft u alles wat u nodig heeft: de gegevensinvoerwaarden, het model, de uitvoer en uw deductiescript. Laten we de pijplijn voor batchdeductie met ParallelRunStep bouwen.
+Nu hebt u alles wat u nodig hebt: de gegevensinvoerwaarden, het model, de uitvoer en uw deductiescript. Laten we de pijplijn voor batchdeductie met ParallelRunStep bouwen.
 
 ### <a name="prepare-the-environment"></a>De omgeving voorbereiden
 
-Geef eerst de afhankelijkheden voor uw script op. Zo kunt u PIP-pakketten installeren en de omgeving configureren. Neem altijd **azureml-core**- en **azureml-dataprep[pandas, fus]** -pakketten op.
+Geef eerst de afhankelijkheden voor uw script op. Hierdoor kunt u PIP-pakketten installeren en de omgeving configureren. Neem altijd **azureml-core**- en **azureml-dataprep[pandas, fuse]** -pakketten op.
 
 Als u een aangepaste docker-installatiekopie (user_managed_dependencies = True) gebruikt, installeer dan ook conda.
 
@@ -311,12 +307,14 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 
 U kunt `mini_batch_size`, `node_count`, `process_count_per_node`, `logging_level`, `run_invocation_timeout` en `run_max_try` als `PipelineParameter` opgeven, zodat u de parameterwaarden kunt aanpassen wanneer u een pijplijnuitvoering opnieuw verzendt. In dit voorbeeld gebruikt u PipelineParameter voor `mini_batch_size` en `Process_count_per_node`. Wanneer u later een uitvoering opnieuw verzendt, verandert u deze waarden. 
 
+In dit voorbeeld wordt ervan uitgegaan dat u het `digit_identification.py`-script gebruikt dat eerder besproken werd. Als u uw eigen script gebruikt, wijzigt u de parameters `source_directory` en `entry_script`.
+
 ```python
 from azureml.pipeline.core import PipelineParameter
 from azureml.pipeline.steps import ParallelRunConfig
 
 parallel_run_config = ParallelRunConfig(
-    source_directory=scripts_folder,
+    source_directory='.',
     entry_script="digit_identification.py",
     mini_batch_size=PipelineParameter(name="batch_size_param", default_value="5"),
     error_threshold=10,
@@ -384,9 +382,8 @@ pipeline_run.wait_for_completion(show_output=True)
 Aangezien u de invoerwaarden en verschillende configuraties als `PipelineParameter` heeft gemaakt, kunt u de uitvoering van een batchdeductie opnieuw verzenden met een andere gegevensset en de parameters wijzigen zonder dat u daarvoor een geheel nieuwe pijplijn moet maken. U gebruikt hetzelfde gegevensarchief, maar slechts één afbeelding als gegevensinvoer.
 
 ```python
-path_on_datastore = mnist_data.path('mnist/0.png')
+path_on_datastore = mnist_blob.path('mnist/0.png')
 single_image_ds = Dataset.File.from_files(path=path_on_datastore, validate=False)
-single_image_ds._ensure_saved(ws)
 
 pipeline_run_2 = experiment.submit(pipeline, 
                                    pipeline_parameters={"mnist_param": single_image_ds, 

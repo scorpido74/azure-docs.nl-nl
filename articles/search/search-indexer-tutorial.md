@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: cf0c2c75b795fcca347439714e163d4022b79fa4
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: a3a7657aa83a675982adc304de01ba0fcc26d193
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261015"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045447"
 ---
 # <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>Zelfstudie: Azure SQL-gegevens indexeren met de .NET SDK
 
@@ -42,7 +42,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 De broncode voor deze zelfstudie bevindt zich in de map [DotNetHowToIndexer](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToIndexers) in de GitHub-opslagplaats [Azure-Samples/search-dotnet-getting-started](https://github.com/Azure-Samples/search-dotnet-getting-started).
 
-## <a name="1---create-services"></a>1 - Services maken
+## <a name="1---create-services"></a>1- Services maken
 
 In deze zelfstudie maakt gebruik van Azure Cognitive Search voor het indexeren en uitvoeren van query's en Azure SQL Database als een externe gegevensbron. Maak, indien mogelijk, beide services in dezelfde regio en resourcegroep voor nabijheid en beheerbaarheid. In de praktijk kan Azure SQL Database zich in elke regio bevinden.
 
@@ -120,7 +120,7 @@ Voor API-aanroepen is de service-URL en een toegangssleutel vereist. Een zoekser
 
 1. Controleer in de verbindingsreeks of deze een geldig wachtwoord bevat. Terwijl de database en gebruikersnamen worden gekopieerd, moet het wachtwoord handmatig worden ingevoerd.
 
-## <a name="3---create-the-pipeline"></a>3 - De pijplijn maken
+## <a name="3---create-the-pipeline"></a>3: Maak de pijplijn
 
 Voor indexeerfuncties is een gegevensbronobject en een index vereist. Relevante code staat in twee bestanden:
 
@@ -240,7 +240,7 @@ In de eerste experimentele fasen van ontwikkeling, is de meest praktische aanpak
 
 In de voorbeeldcode voor deze zelfstudie wordt gecontroleerd op bestaande objecten. Deze worden verwijderd, zodat u de code opnieuw kunt uitvoeren.
 
-U kunt de portal gebruiken om indexen, indexeerfuncties, gegevensbronnen te verwijderen.
+U kunt de portal gebruiken om indexen, indexeerfuncties en gegevensbronnen te verwijderen.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -253,4 +253,4 @@ U kunt resources vinden en beheren in de portal via de koppeling Alle resources 
 Nu u bekend bent met de basisprincipes van het indexeren van SQL Database, gaan we de configuratie van de indexeerfunctie nader bekijken.
 
 > [!div class="nextstepaction"]
-> [Een Azure SQL Database-indexeerfunctie configureren](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
+> [Een SQL Database-indexeerfunctie configureren](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)

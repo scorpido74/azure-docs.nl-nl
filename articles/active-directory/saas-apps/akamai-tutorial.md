@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb9135873b61abf5a5ebd0d9c4d7f52ae314ee12
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 17d0c91d31f7746c53d62af87670c40e9902554c
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84675051"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026811"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met Akamai
 
@@ -79,7 +79,7 @@ De Akamai EAA-toepassing wordt afzonderlijk ingesteld in de Azure AD-portal. De 
 
 • U kunt afzonderlijke CA-beleidsregels definiëren
 
-• Alle apps worden weergegeven in het 0365-wafelmenu en het deelvenster op myApps.microsoft.com.
+• Alle apps worden weergegeven in het O365-wafelmenu en het deelvenster op myApps.microsoft.com.
 
 **Nadelen**:
 
@@ -102,7 +102,7 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 
 #### <a name="important"></a>Belangrijk
 
-Alle hieronder genoemde instellingen zijn hetzelfde voor **Integratiescenario 1** en **Integratiescenario 2**. Voor **Integratiescenario 2** hebt u afzonderlijke IDP in de Akamai EAA ingesteld en moet de URL-eigenschap worden gewijzigd om naar de URL van de toepassing te verwijzen.
+Alle hieronder genoemde instellingen zijn hetzelfde voor **Integratiescenario 1** en **Integratiescenario 2**. Voor **Integratiescenario 2** moet u afzonderlijke IDP in de Akamai EAA instellen en moet de URL-eigenschap worden gewijzigd om naar de URL van de toepassing te verwijzen.
 
 ![Belangrijk](./media/header-akamai-tutorial/important.png)
 

@@ -7,18 +7,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/31/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: f532976e80c4284addcf09d81d8a32fd5f6f8827
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 995ca20ed264d78e93e04a6f54e4f691ec551e84
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84733939"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024856"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Zelfstudie: Secure LDAP configureren voor een door Azure Active Directory Domain Services beheerd domein
 
-Als u met een door Azure Active Directory Domain Services (Azure AD DS) beheerd domein wilt communiceren, wordt LDAP (Lightweight Directory Access Protocol) gebruikt. Het LDAP-verkeer wordt standaard niet versleuteld, hetgeen een beveiligingsprobleem vormt voor veel omgevingen. U kunt met Azure AD DS het beheerde domein zo configureren dat deze Secure Lightweight Directory Access Protocol (LDAPS) gebruikt. Wanneer u Secure LDAP gebruikt, wordt het verkeer versleuteld. Secure LDAP is ook wel bekend als LDAP via Secure Sockets Layer (SSL)/Transport Layer Security (TLS).
+Als u met een door Azure Active Directory Domain Services (Azure AD DS) beheerd domein wilt communiceren, wordt LDAP (Lightweight Directory Access Protocol) gebruikt. Het LDAP-verkeer wordt standaard niet versleuteld, hetgeen een beveiligingsprobleem vormt voor veel omgevingen.
+
+U kunt met Azure AD DS het beheerde domein zo configureren dat deze Secure Lightweight Directory Access Protocol (LDAPS) gebruikt. Wanneer u Secure LDAP gebruikt, wordt het verkeer versleuteld. Secure LDAP is ook wel bekend als LDAP via Secure Sockets Layer (SSL)/Transport Layer Security (TLS).
 
 Deze zelfstudie laat zien hoe u LDAPS configureert voor een door Azure AD DS beheerd domein.
 
@@ -68,7 +70,11 @@ Het certificaat dat u wilt aanvragen of maken, moet voldoen aan de volgende vere
 * **Sleutelgebruik**: het certificaat moet zijn geconfigureerd voor *digitale handtekeningen* en *sleutelcodering*.
 * **Certificaatdoeleinde**: het certificaat moet geldig zijn voor TLS-serververificatie.
 
-U kunt verschillende hulpprogramma's gebruiken voor het maken van een zelfondertekend certificaat, zoals OpenSSL, Keytool, MakeCert, de [New-SelfSignedCertificate][New-SelfSignedCertificate]-cmdlet, enzovoort. In deze zelfstudie maakt u een zelfondertekend certificaat voor Secure LDAP met de [New-SelfSignedCertificate][New-SelfSignedCertificate]-cmdlet. Open een PowerShell-venster als **beheerder** en voer de volgende opdrachten uit. Vervang de variabele *$dnsName* door de DNS-naam die wordt gebruikt door uw eigen beheerde domein, zoals *aaddscontoso.com*:
+U kunt verschillende hulpprogramma's gebruiken voor het maken van een zelfondertekend certificaat, zoals OpenSSL, Keytool, MakeCert, de [New-SelfSignedCertificate][New-SelfSignedCertificate]-cmdlet, enzovoort.
+
+In deze zelfstudie maakt u een zelfondertekend certificaat voor Secure LDAP met de [New-SelfSignedCertificate][New-SelfSignedCertificate]-cmdlet.
+
+Open een PowerShell-venster als **beheerder** en voer de volgende opdrachten uit. Vervang de variabele *$dnsName* door de DNS-naam die wordt gebruikt door uw eigen beheerde domein, zoals *aaddscontoso.com*:
 
 ```powershell
 # Define your own DNS name used by your managed domain
@@ -108,7 +114,9 @@ Om Secure LDAP te gebruiken, wordt het netwerkverkeer versleuteld met behulp van
     * Deze openbare sleutel wordt gebruikt om het beveiligde LDAP-verkeer te *versleutelen*. De openbare sleutel kan worden gedistribueerd naar clientcomputers.
     * Certificaten zonder de persoonlijke sleutel hebben de bestandsindeling *.cer*.
 
-Deze twee sleutels, de *persoonlijke* en de *openbare* sleutel, zorgen ervoor dat alleen de juiste computers met elkaar kunnen communiceren. Als u een openbare certificeringsinstantie of een certificeringsinstantie voor ondernemingen gebruikt, wordt er aan u een certificaat verleend dat de persoonlijke sleutel bevat en dat kan worden toegepast op een beheerd domein. De openbare sleutel moet al bekend zijn en worden vertrouwd door clientcomputers. In deze zelfstudie hebt u een zelfondertekend certificaat gemaakt met de persoonlijke sleutel, dus u moet de betreffende persoonlijke en openbare onderdelen exporteren.
+Deze twee sleutels, de *persoonlijke* en de *openbare* sleutel, zorgen ervoor dat alleen de juiste computers met elkaar kunnen communiceren. Als u een openbare certificeringsinstantie of een certificeringsinstantie voor ondernemingen gebruikt, wordt er aan u een certificaat verleend dat de persoonlijke sleutel bevat en dat kan worden toegepast op een beheerd domein. De openbare sleutel moet al bekend zijn en worden vertrouwd door clientcomputers.
+
+In deze zelfstudie hebt u een zelfondertekend certificaat gemaakt met de persoonlijke sleutel, dus u moet de betreffende persoonlijke en openbare onderdelen exporteren.
 
 ### <a name="export-a-certificate-for-azure-ad-ds"></a>Een certificaat voor Azure AD DS exporteren
 
@@ -148,7 +156,9 @@ Voordat u het digitale certificaat dat u hebt gemaakt in de vorige stap kunt geb
 
 ### <a name="export-a-certificate-for-client-computers"></a>Een certificaat voor clientcomputers exporteren
 
-Clientcomputers moeten de uitgever van het Secure LDAP-certificaat vertrouwen om met behulp van LDAPS verbinding te kunnen maken met het beheerde domein. De clientcomputers hebben een certificaat nodig om gegevens te versleutelen die door Azure AD DS worden ontsleuteld. Als u een openbare certificeringsinstantie gebruikt, moet de computer deze certificaatverleners automatisch vertrouwen en over een overeenkomstig certificaat beschikken. In deze zelfstudie gebruikt u een zelfondertekend certificaat en hebt u in de vorige stap een certificaat gegenereerd dat de persoonlijke sleutel bevat. We gaan nu het zelfondertekende certificaat exporteren en installeren in het vertrouwde certificaatarchief op de clientcomputer:
+Clientcomputers moeten de uitgever van het Secure LDAP-certificaat vertrouwen om met behulp van LDAPS verbinding te kunnen maken met het beheerde domein. De clientcomputers hebben een certificaat nodig om gegevens te versleutelen die door Azure AD DS worden ontsleuteld. Als u een openbare certificeringsinstantie gebruikt, moet de computer deze certificaatverleners automatisch vertrouwen en over een overeenkomstig certificaat beschikken.
+
+In deze zelfstudie gebruikt u een zelfondertekend certificaat en hebt u in de vorige stap een certificaat gegenereerd dat de persoonlijke sleutel bevat. We gaan nu het zelfondertekende certificaat exporteren en installeren in het vertrouwde certificaatarchief op de clientcomputer:
 
 1. Ga terug naar MMC voor het archief via *Certificaten (lokale computer) > Persoonlijk > Certificaten*. Het zelfondertekende certificaat dat u in een vorige stap hebt gemaakt, bijvoorbeeld *aaddscontoso.com*, wordt weergegeven. Selecteer met de rechtermuisknop op dit certificaat en kies vervolgens **Alle taken > Exporteren...**
 1. Selecteer **Volgende** in de **wizard Certificaat exporteren**.
@@ -186,7 +196,10 @@ Nu er een digitaal certificaat is gemaakt en geëxporteerd dat de persoonlijke s
 
 1. Selecteer het mappictogram naast **PFX-bestand met Secure LDAP-certificaat**. Blader naar het pad van het *PFX*-bestand en selecteer vervolgens het certificaat dat u in een vorige stap hebt gemaakt en dat de persoonlijke sleutel bevat.
 
-    Zoals al in de vorige sectie over certificaatvereisten werd vermeld, kunt u geen certificaat van een openbare certificeringsinstantie gebruiken met het standaarddomein *.onmicrosoft.com*. Microsoft is eigenaar van het domein *.onmicrosoft.com*, dus een openbare certificeringsinstantie zal geen certificaat uitgeven. Zorg ervoor dat uw certificaat de juiste indeling heeft. Als dat niet het geval is, genereert het Azure-platform certificaatvalidatiefouten wanneer u Secure LDAP inschakelt.
+    > [!IMPORTANT]
+    > Zoals al in de vorige sectie over certificaatvereisten werd vermeld, kunt u geen certificaat van een openbare certificeringsinstantie gebruiken met het standaarddomein *.onmicrosoft.com*. Microsoft is eigenaar van het domein *.onmicrosoft.com*, dus een openbare certificeringsinstantie zal geen certificaat uitgeven.
+    >
+    > Zorg ervoor dat uw certificaat de juiste indeling heeft. Als dat niet het geval is, genereert het Azure-platform certificaatvalidatiefouten wanneer u Secure LDAP inschakelt.
 
 1. Voer het **wachtwoord voor het ontsleutelen van het PFX-bestand** in dat in een vorige stap is ingesteld toen het certificaat naar een *PFX*-bestand werd geëxporteerd.
 1. Selecteer **Opslaan** om Secure LDAP in te schakelen.
@@ -195,7 +208,9 @@ Nu er een digitaal certificaat is gemaakt en geëxporteerd dat de persoonlijke s
 
 Er wordt een melding weergegeven dat Secure LDAP wordt geconfigureerd voor het beheerde domein. U kunt geen andere instellingen voor het beheerde domein wijzigen totdat deze bewerking is voltooid.
 
-Het duurt enkele minuten om Secure LDAP in te schakelen voor uw beheerde domein. Als het Secure LDAP-certificaat dat u opgeeft niet voldoet aan de vereiste criteria, kunt u Secure LDAP niet inschakelen voor het beheerde domein. Enkele veelvoorkomende redenen hiervoor zijn een onjuiste domeinnaam of het feit dat het certificaat binnenkort verloopt of al is verlopen. U kunt het certificaat opnieuw maken met geldige parameters en vervolgens Secure LDAP inschakelen met dit bijgewerkte certificaat.
+Het duurt enkele minuten om Secure LDAP in te schakelen voor uw beheerde domein. Als het Secure LDAP-certificaat dat u opgeeft niet voldoet aan de vereiste criteria, kunt u Secure LDAP niet inschakelen voor het beheerde domein.
+
+Enkele veelvoorkomende redenen hiervoor zijn een onjuiste domeinnaam of het feit dat het certificaat binnenkort verloopt of al is verlopen. U kunt het certificaat opnieuw maken met geldige parameters en vervolgens Secure LDAP inschakelen met dit bijgewerkte certificaat.
 
 ## <a name="lock-down-secure-ldap-access-over-the-internet"></a>Secure LDAP-toegang via internet beperken
 
@@ -230,7 +245,7 @@ Wanneer Secure LDAP-toegang via internet is ingeschakeld, werkt u de DNS-zone bi
 
 ![Het externe IP-adres voor Secure LDAP voor uw beheerde domein weergeven in Azure Portal](./media/tutorial-configure-ldaps/ldaps-external-ip-address.png)
 
-Configureer uw externe DNS-provider voor het maken van een hostrecord, bijvoorbeeld *ldaps*, om naar dit externe IP-adres om te zetten. Als u eerst lokaal op uw computer wilt testen, kunt u een vermelding in het bestand met Windows-hosts maken. Als u het bestand met hosts op uw lokale computer wilt bewerken, opent u *Kladblok* als beheerder en opent u het bestand *C:\Windows\System32\drivers\etc*
+Configureer uw externe DNS-provider voor het maken van een hostrecord, bijvoorbeeld *ldaps*, om naar dit externe IP-adres om te zetten. Als u eerst lokaal op uw computer wilt testen, kunt u een vermelding in het bestand met Windows-hosts maken. Als u het bestand met hosts op uw lokale computer wilt bewerken, opent u *Kladblok* als beheerder en opent u het bestand *C:\Windows\System32\drivers\etc\hosts*
 
 In het volgende voorbeeld van een DNS-vermelding, bij uw externe DNS-provider of in het lokale bestand met hosts, wordt het verkeer voor *ldaps.aaddscontoso.com* omgezet naar het externe IP-adres *168.62.205.103*:
 
@@ -269,7 +284,7 @@ Als u rechtstreeks een query wilt uitvoeren op een specifieke container, kunt u 
 Als u een DNS-vermelding hebt toegevoegd aan het bestand met lokale hosts van uw computer om de connectiviteit voor deze zelfstudie te testen, verwijdert u deze vermelding en voegt u een formeel record toe aan uw DNS-zone. Voer de volgende stappen uit om de vermelding uit het bestand met lokale hosts te verwijderen:
 
 1. Open *Kladblok* als beheerder op uw lokale computer
-1. Blader naar het bestand *C:\Windows\System32\drivers\etc* en open dit
+1. Blader naar het bestand *C:\Windows\System32\drivers\etc\hosts* en open dit
 1. Verwijder de regel voor de record die u hebt toegevoegd, bijvoorbeeld `168.62.205.103    ldaps.aaddscontoso.com`
 
 ## <a name="next-steps"></a>Volgende stappen

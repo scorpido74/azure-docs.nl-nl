@@ -5,20 +5,20 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: ed533f571ada4cacf053157b397cca07cd65e6f8
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 62669457f73ba78186614433fb6d10cc4dc01089
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300569"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565511"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>Quickstart: Een model weergeven met Unity
 
 In deze quickstart leest u hoe u een Unity-voorbeeld uitvoert, waarmee een ingebouwd model extern wordt gegenereerd met behulp van de ARR-service (Azure Remote Rendering).
 
-We laten hier de ARR API zelf of het instellen van een nieuw Unity-project verder buiten beschouwing. Deze onderwerpen worden behandeld in [Zelfstudie: Een geheel nieuw Unity-project opstarten](../tutorials/unity/project-setup.md).
+We laten hier de ARR API zelf of het instellen van een nieuw Unity-project verder buiten beschouwing. Deze onderwerpen worden behandeld in [Zelfstudie: Extern gegenereerde modellen bekijken](../tutorials/unity/view-remote-models/view-remote-models.md).
 
-In deze quickstart leert u het volgende:
+In deze snelstart leert u het volgende:
 > [!div class="checklist"]
 >
 >* De lokale ontwikkelomgeving instellen
@@ -36,7 +36,7 @@ De volgende software moet zijn geïnstalleerd:
 * [Visual Studio Tools voor Mixed Reality](https://docs.microsoft.com/windows/mixed-reality/install-the-tools). Met name de volgende *workload*-installaties zijn verplicht:
   * **Desktopontwikkeling met C++**
   * **Universal Windows Platform (UWP)-ontwikkeling**
-* Git ([download](https://git-scm.com/downloads))
+* Git [(downloaden)](https://git-scm.com/downloads)
 * Unity 2019.3.1 [(download)](https://unity3d.com/get-unity/download)
   * Installeer de volgende modules in Unity:
     * **UWP**: ondersteuning voor UWP-builds (Universeel Windows-platform)

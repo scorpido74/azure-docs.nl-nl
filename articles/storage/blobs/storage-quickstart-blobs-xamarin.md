@@ -1,61 +1,61 @@
 ---
-title: 'Snelstartgids: Azure Blob-opslag bibliotheek V12-Xamarin'
-description: In deze Quick Start leert u hoe u de Azure Blob Storage-client bibliotheek versie 12 met Xamarin kunt gebruiken om een container en een BLOB in Blob-opslag (object) te maken. Vervolgens leert u hoe u de BLOB kunt downloaden naar uw mobiele apparaat en hoe u alle blobs in een container kunt weer geven.
+title: 'Quickstart: Azure Blob-opslagbibliotheek v12 - Xamarin'
+description: In deze quickstart leert u hoe u de Azure Blob Storage-clientbibliotheek versie 12 met Xamarin kunt gebruiken om een container te maken en een blob-in-blob-opslag (object). Hierna leert u hoe u de blob naar uw mobiele apparaat downloadt en hoe u alle blobs in een container kunt weergeven.
 author: codemillmatt
 ms.author: masoucou
 ms.date: 05/08/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: e0845e7cdc2ce6dc57ed5a18d263f117f0c2005c
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: c66766b39ae104cf4a031c3fd73c173e81d47fb8
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83006242"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563494"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>Snelstartgids: Azure Blob Storage-client bibliotheek V12 met Xamarin
+# <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>Quickstart: Azure Blob Storage-clientbibliotheek v12 met Xamarin
 
-Ga aan de slag met de Azure Blob Storage-client bibliotheek V12 met Xamarin. Azure Blob Storage is Microsoft's oplossing voor opslag van objecten in de cloud. Volg de stappen om het pakket te installeren en voorbeeld code voor basis taken uit te proberen. Blob Storage is geoptimaliseerd voor het opslaan van grote hoeveelheden ongestructureerde gegevens.
+Aan de slag met de Azure Blob Storage-clientbibliotheek v12 met Xamarin. Azure Blob Storage is Microsoft's oplossing voor opslag van objecten in de cloud. Volg de stappen om het pakket te installeren en voorbeeldcode voor basistaken uit te proberen. Blob Storage is geoptimaliseerd voor het opslaan van grote hoeveelheden ongestructureerde gegevens.
 
-Gebruik de Azure Blob Storage-client bibliotheek V12 met Xamarin om het volgende te doen:
+Gebruik de Azure Blob Storage-clientbibliotheek v12 met Xamarin voor het volgende:
 
 * Een container maken
-* Een BLOB uploaden naar Azure Storage
-* Alle blobs in een container weer geven
-* De BLOB downloaden naar uw apparaat
+* Een blob uploaden naar Azure Storage
+* Alle blobs in een container weergeven
+* De blob downloaden op uw apparaat
 * Een container verwijderen
 
-[API reference documentation](/dotnet/api/azure.storage.blobs) | Voor[beeld](https://github.com/Azure-Samples/storage-blobs-xamarin-quickstart) van de API-referentie[bibliotheek broncode](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs) | [pakket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs) | 
+[API-referentiedocumentatie](/dotnet/api/azure.storage.blobs) | [Broncode van bibliotheek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs) | [Pakket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs) | [Sample](https://github.com/Azure-Samples/storage-blobs-xamarin-quickstart)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
-* Azure Storage-account: [een opslag account maken](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* Visual Studio met [Mobile Development voor .net-workloads](https://docs.microsoft.com/xamarin/get-started/installation/?pivots=windows) geïnstalleerd of [Visual Studio voor Mac](https://docs.microsoft.com/visualstudio/mac/installation?view=vsmac-2019)
+* Azure-abonnement: [u kunt een gratis abonnement nemen](https://azure.microsoft.com/free/)
+* Azure Storage-account: [maak een opslagaccount](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Visual Studio waarop [Mobile Development voor .NET-workloads](https://docs.microsoft.com/xamarin/get-started/installation/?pivots=windows) geïnstalleerd us of [Visual Studio voor Mac](https://docs.microsoft.com/visualstudio/mac/installation?view=vsmac-2019)
 
 ## <a name="setting-up"></a>Instellen
     
-In deze sectie wordt uitgelegd hoe u een project voorbereidt dat werkt met de Azure Blob Storage-client bibliotheek V12 met Xamarin.
+In dit gedeelte wordt uitgelegd hoe u een project voorbereidt voor gebruik met de Azure Blob Storage-clientbibliotheek v12 met Xamarin.
     
 ### <a name="create-the-project"></a>Het project maken
 
-1. Open Visual Studio en maak een lege formulieren-app.
-1. Geef deze de naam: BlobQuickstartV12
+1. Open Visual Studio en maak een Blank Forms App.
+1. Noem deze: BlobQuickstartV12
 
 ### <a name="install-the-package"></a>Het pakket installeren
 
-1. Klik met de rechter muisknop op uw oplossing in het deel venster Solution Explorer en selecteer **NuGet-pakketten beheren voor oplossing**.
-1. Zoek naar **Azure. storage. blobs** en installeer de meest recente stabiele versie in alle projecten in uw oplossing.
+1. Klik in het deelvenster Solution Explorer met de rechtermuisknop op uw oplossing en kies **NuGet-pakketten beheren voor oplossing**.
+1. Zoek **Azure.Storage.Blobs** en installeer de meest recente stabiele versie in alle projecten in uw oplossing.
 
-### <a name="set-up-the-app-framework"></a>Het app-Framework instellen
+### <a name="set-up-the-app-framework"></a>Het app-framework instellen
 
-Vanuit de **BlobQuickstartV12** -map:
+Vanuit de map **BlobQuickstartV12** map:
 
-1. Open het bestand *MainPage. xaml* in uw editor
-1. Verwijder alles tussen de `<ContentPage></ContentPage>` elementen en vervang door de onderstaande:
+1. Open het bestand *MainPage.xaml* in uw editor
+1. Verwijder alles dat tussen de `<ContentPage></ContentPage>`-elementen staat en vervang dit door het onderstaande:
 
 ```xaml
 <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
@@ -72,13 +72,13 @@ Vanuit de **BlobQuickstartV12** -map:
 
 [!INCLUDE [storage-quickstart-credentials-xamarin-include](../../../includes/storage-quickstart-credentials-xamarin-include.md)]
 
-## <a name="object-model"></a>Object model
+## <a name="object-model"></a>Objectmodel
 
-Azure Blob-opslag is geoptimaliseerd voor het opslaan van enorme hoeveel heden ongestructureerde gegevens. Ongestructureerde gegevens zijn gegevens die niet voldoen aan een bepaald gegevensmodel of bepaalde definitie, zoals tekst of binaire gegevens. Er zijn drie typen resources voor blobopslag:
+Azure Blob Storage is geoptimaliseerd voor het opslaan van grote hoeveelheden ongestructureerde gegevens. Ongestructureerde gegevens zijn gegevens die niet voldoen aan een bepaald gegevensmodel of bepaalde definitie, zoals tekst of binaire gegevens. Er zijn drie typen resources voor blobopslag:
 
-* Het opslag account
+* Het opslagaccount
 * Een container in het opslagaccount
-* Een BLOB in de container
+* Een blob in de container
 
 Het volgende diagram geeft de relatie tussen deze resources weer.
 
@@ -86,29 +86,29 @@ Het volgende diagram geeft de relatie tussen deze resources weer.
 
 Gebruik de volgende .NET-klassen om te communiceren met deze resources:
 
-* [BlobServiceClient](/dotnet/api/azure.storage.blobs.blobserviceclient): met `BlobServiceClient` de klasse kunt u Azure storage resources en BLOB-containers bewerken.
-* [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient): met `BlobContainerClient` de klasse kunt u Azure Storage containers en de bijbehorende blobs bewerken.
-* [BlobClient](/dotnet/api/azure.storage.blobs.blobclient): met `BlobClient` de klasse kunt u Azure Storage blobs bewerken.
-* [BlobDownloadInfo](/dotnet/api/azure.storage.blobs.models.blobdownloadinfo): de `BlobDownloadInfo` klasse vertegenwoordigt de eigenschappen en inhoud die worden geretourneerd door het downloaden van een blob.
+* [BlobServiceClient](/dotnet/api/azure.storage.blobs.blobserviceclient): Met de klasse `BlobServiceClient` kunt u Azure Storage-resources en blob-containers bewerken.
+* [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient): Met de klasse `BlobContainerClient` kunt u Azure Storage-containers en de bijbehorende blobs bewerken.
+* [BlobClient](/dotnet/api/azure.storage.blobs.blobclient): Met de klasse `BlobClient` kunt u Azure Storage-blobs bewerken.
+* [BlobDownloadInfo](/dotnet/api/azure.storage.blobs.models.blobdownloadinfo): De klasse `BlobDownloadInfo` vertegenwoordigt de eigenschappen en inhoud die worden geretourneerd door het downloaden van een blob.
 
 ## <a name="code-examples"></a>Codevoorbeelden
 
-In deze voorbeeld code fragmenten ziet u hoe u de volgende taken kunt uitvoeren met de Azure Blob Storage-client bibliotheek voor .NET in een Xamarin. Forms-app:
+Deze voorbeeldcodefragmenten laten zien hoe u de volgende taken kunt uitvoeren met de Azure Blob Storage-clientbibliotheek voor .NET in een Xamarin.Forms-app:
 
 * [Variabelen op klasseniveau maken](#create-class-level-variables)
 * [Een container maken](#create-a-container)
 * [Blobs uploaden naar een container](#upload-blobs-to-a-container)
-* [De blobs in een container in een lijst weergeven](#list-the-blobs-in-a-container)
+* [De blobs in een container weergeven](#list-the-blobs-in-a-container)
 * [Blobs downloaden](#download-blobs)
-* [Een container verwijderen](#delete-a-container)
+* [Container verwijderen](#delete-a-container)
 
 ### <a name="create-class-level-variables"></a>Variabelen op klasseniveau maken
 
-De onderstaande code declareert verschillende klassen niveau variabelen. Ze moesten communiceren met Azure Blob Storage in de rest van dit voor beeld.
+De onderstaande code declareert verschillende variabelen op klasseniveau. Ze moesten communiceren met Azure Blob Storage voor de rest van dit voorbeeld.
 
-Deze zijn naast de connection string voor het opslag account dat is ingesteld in de sectie [uw opslag Connection String configureren](#configure-your-storage-connection-string) .
+Deze komen bij de verbindingsreeks voor het opslagaccount die is ingesteld in de sectie [De opslagverbindingsreeks configureren](#configure-your-storage-connection-string).
 
-Voeg deze code toe als variabelen op klasseniveau in het *MainPage.xaml.cs* -bestand:
+Voeg deze code toe als variabelen op klasseniveau in het bestand *MainPage.xaml.cs*:
 
 ```csharp
 string storageConnectionString = "{set in the Configure your storage connection string section}";
@@ -121,14 +121,14 @@ BlobClient blobClient;
 
 ### <a name="create-a-container"></a>Een container maken
 
-Kies een naam voor de nieuwe container. De onderstaande code voegt een GUID-waarde toe aan de container naam om ervoor te zorgen dat deze uniek is.
+Verzin een naam voor de nieuwe container. Met de onderstaande code wordt een GUID-waarde aan de containernaam toegevoegd om te verzekeren dat deze uniek is.
 
 > [!IMPORTANT]
 > Containernamen moeten uit kleine letters bestaan. Zie [Containers, blobs en metagegevens een naam geven en hiernaar verwijderen](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) voor meer informatie over de naamgeving van containers en blobs.
 
-Maak een instantie van de klasse [BlobServiceClient](/dotnet/api/azure.storage.blobs.blobserviceclient) . Vervolgens roept u de [CreateBlobContainerAsync](/dotnet/api/azure.storage.blobs.blobserviceclient.createblobcontainerasync) -methode aan om de container in uw opslag account te maken.
+Een instantie van de klasse [BlobServiceClient](/dotnet/api/azure.storage.blobs.blobserviceclient) maken. Roep vervolgens de methode [CreateBlobContainerAsync](/dotnet/api/azure.storage.blobs.blobserviceclient.createblobcontainerasync) aan om de container in uw opslagaccount te maken.
 
-Voeg deze code toe aan het *MainPage.xaml.cs* -bestand:
+Voeg deze code toe aan het bestand *MainPage.xaml.cs*:
 
 ```csharp
 protected async override void OnAppearing()
@@ -148,12 +148,12 @@ protected async override void OnAppearing()
 
 ### <a name="upload-blobs-to-a-container"></a>Blobs uploaden naar een container
 
-Het volgende code fragment:
+Het volgende codefragment:
 
-1. Maakt een `MemoryStream` tekst.
-1. Hiermee wordt de tekst naar een BLOB geüpload door de functie [UploadAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.uploadblobasync?view=azure-dotnet#Azure_Storage_Blobs_BlobContainerClient_UploadBlobAsync_System_String_System_IO_Stream_System_Threading_CancellationToken_) van de klasse [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient) aan te roepen, waarbij deze zowel de bestands naam is die de variabele `MemoryStream` class niveau en de tekst heeft gedefinieerd. Met deze methode wordt de blob gemaakt als deze nog niet bestaat, of overschreven als dat wel het geval is.
+1. Maakt een `MemoryStream` met tekst.
+1. Uploadt de tekst naar een Blob door de functie [UploadAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.uploadblobasync?view=azure-dotnet#Azure_Storage_Blobs_BlobContainerClient_UploadBlobAsync_System_String_System_IO_Stream_System_Threading_CancellationToken_) van de klasse [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient) aan te roepen, en deze zowel in de bestandsnaam als de `MemoryStream` met tekst door te geven. Met deze methode wordt de blob gemaakt als deze nog niet bestaat, of overschreven als dat wel het geval is.
 
-Voeg deze code toe aan het *MainPage.xaml.cs* -bestand:
+Voeg deze code toe aan het bestand *MainPage.xaml.cs*:
 
 ```csharp
 async void Upload_Clicked(object sender, EventArgs e)
@@ -171,9 +171,9 @@ async void Upload_Clicked(object sender, EventArgs e)
 
 ### <a name="list-the-blobs-in-a-container"></a>De blobs in een container in een lijst weergeven
 
-Vermeld de blobs in de container door de methode [GetBlobsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsasync) aan te roepen. In dit geval is er slechts één BLOB aan de container toegevoegd, zodat de vermelding in de lijst alleen die ene BLOB retourneert.
+Hiermee worden de blobs in de container weergegeven door de methode [GetBlobsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsasync) aan te roepen. In dit geval is slechts één blob aan de container toegevoegd, zodat met de weergavebewerking alleen die ene blob wordt geretourneerd.
 
-Voeg deze code toe aan het *MainPage.xaml.cs* -bestand:
+Voeg deze code toe aan het bestand *MainPage.xaml.cs*:
 
 ```csharp
 async void List_Clicked(object sender, EventArgs e)
@@ -190,9 +190,9 @@ async void List_Clicked(object sender, EventArgs e)
 
 ### <a name="download-blobs"></a>Blobs downloaden
 
-Down load de eerder gemaakte BLOB door de methode [DownloadAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadasync) aan te roepen. Met de voorbeeld code wordt `Stream` de representatie van de BLOB eerst gekopieerd `MemoryStream` naar a en vervolgens `StreamReader` in een zodat de tekst kan worden weer gegeven.
+Download de eerder gemaakte blob door de methode [DownloadAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadasync) aan te roepen. De voorbeeldcode kopieert de `Stream`-weergave van de blob eerst naar een `MemoryStream` en vervolgens naar een `StreamReader` zodat de tekst kan worden weergegeven.
 
-Voeg deze code toe aan het *MainPage.xaml.cs* -bestand:
+Voeg deze code toe aan het bestand *MainPage.xaml.cs*:
 
 ```csharp
 async void Download_Clicked(object sender, EventArgs e)
@@ -217,11 +217,11 @@ async void Download_Clicked(object sender, EventArgs e)
 
 ### <a name="delete-a-container"></a>Een container verwijderen
 
-Met de volgende code wordt de resources opgeschoond die de app heeft gemaakt door de volledige container te verwijderen met behulp van [DeleteAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteasync).
+Met de volgende code worden de resources opgeruimd die door de app zijn gemaakt door de hele container te verwijderen met behulp van [DeleteAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteasync).
 
-De app vraagt eerst om bevestiging voordat de BLOB en de container worden verwijderd. Dit is een goede kans om te controleren of de resources correct zijn gemaakt voordat ze worden verwijderd.
+De app vraagt eerst om bevestiging voordat de blob en de container worden verwijderd. Dit is een goede gelegenheid om te controleren dat de resources correct zijn gemaakt, voordat ze worden verwijderd.
 
-Voeg deze code toe aan het *MainPage.xaml.cs* -bestand:
+Voeg deze code toe aan het bestand *MainPage.xaml.cs*:
 
 ```csharp
 async void Delete_Clicked(object sender, EventArgs e)
@@ -242,11 +242,11 @@ async void Delete_Clicked(object sender, EventArgs e)
 
 ## <a name="run-the-code"></a>De code uitvoeren
 
-Wanneer de app wordt gestart, wordt eerst de container gemaakt zoals deze wordt weer gegeven. Vervolgens klikt u op de knoppen om de blobs te uploaden, weer te geven, te downloaden en de container te verwijderen.
+Wanneer de app wordt opgestart, maakt deze eerst de container zoals deze wordt weergegeven. Vervolgens klikt u op de knoppen om de blobs te uploaden, weer te geven en te downloaden en de container te verwijderen.
 
-Druk op F5 om de app uit te voeren op Windows. Als u de app op Mac wilt uitvoeren, drukt u op CMD + Enter.
+Druk op F5 om de app uit te voeren in Windows. Druk op Cmd + Enter om de app uit te voeren op Mac.
 
-De app schrijft na elke bewerking naar het scherm. De uitvoer van de app is vergelijkbaar met het voor beeld hieronder:
+De app schrijft na elke bewerking naar het scherm. De uitvoer van de app lijkt op die in het onderstaande voorbeeld:
 
 ```output
 Container Created
@@ -257,18 +257,18 @@ Hello World!
 Container Deleted
 ```
 
-Controleer voordat u begint met het opschonen of de uitvoer van de inhoud van de BLOB op het scherm overeenkomt met de geüploade waarde.
+Voordat u begint met het opschonen, controleert u of de uitvoer van de inhoud van de blob op het scherm overeenkomt met de geüploade waarde.
 
-Nadat u de waarden hebt geverifieerd, bevestigt u de vraag om de container te verwijderen en voltooit u de demo.
+Nadat u de waarden hebt gecontroleerd, bevestigt u de vraag om de container te verwijderen en voltooit u de demo.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u geleerd hoe u blobs kunt uploaden, downloaden en vermelden met behulp van de Azure Blob Storage-client bibliotheek V12 met Xamarin.
+In deze quickstart heeft u geleerd om blobs te uploaden, downloaden en weer te geven met behulp van de Azure Blob Storage-clientbibliotheek v12 met Xamarin.
 
-Als u voor beeld-apps voor Blob-opslag wilt zien, gaat u door naar:
+Als u voorbeeld-apps voor Blob-opslag wilt zien, ga dan naar:
 
 > [!div class="nextstepaction"]
-> [Azure Blob Storage SDK V12 Xamarin-voor beeld](https://github.com/Azure-Samples/storage-blobs-xamarin-quickstart)
+> [Voorbeeld Azure Blob SDK v12 Xamarin](https://github.com/Azure-Samples/storage-blobs-xamarin-quickstart)
 
-* Voor zelf studies, voor beelden, snel starten en andere documentatie gaat u naar [Azure voor mobiele ontwikkel aars](/azure/mobile-apps).
-* Zie aan de slag [met Xamarin](/xamarin/get-started/)voor meer informatie over Xamarin.
+* Ga naar [Azure voor mobiele ontwikkelaars](/azure/mobile-apps) voor zelfstudies, voorbeelden, quickstarts en andere documentatie.
+* Bekijk [Aan de slag met Xamarin](/xamarin/get-started/)voor meer informatie over Xamarin.
