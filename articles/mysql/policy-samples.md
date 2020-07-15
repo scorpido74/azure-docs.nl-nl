@@ -1,24 +1,24 @@
 ---
 title: Ingebouwde beleidsdefinities voor Azure Database for MySQL
 description: Een overzicht van de ingebouwde Azure Policy-beleidsdefinities voor Azure Database for MySQL. Deze ingebouwde beleidsdefinities bieden algemene benaderingen voor het beheren van uw Azure-resources.
-ms.date: 06/23/2020
+ms.date: 07/10/2020
 ms.topic: sample
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 22d01007ac4e8e221393991555e3b91c1f9d8782
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: ab7a99a2d276fda20db0ad661bb06a53cf104b95
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85322834"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276670"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-database-for-mysql"></a>Ingebouwde Azure Policy-definities voor Azure Database for MySQL
 
 Deze pagina is een index van ingebouwde [Azure Policy](../governance/policy/overview.md)-beleidsdefinities voor Azure Database for MySQL. Zie [Ingebouwde Azure Policy-definities](../governance/policy/samples/built-in-policies.md) voor aanvullende ingebouwde modules voor Azure Policy voor andere services.
 
-De naam van elke ingebouwde beleidsdefinitie linkt naar de beleidsdefinitie in de Azure-portal. Gebruik de koppeling in de kolom **Versie** om de bron te bekijken op de [Azure Policy GitHub-opslagplaats](https://github.com/Azure/azure-policy).
+De naam van elke ingebouwde beleidsdefinitie linkt naar de beleidsdefinitie in de Azure-portal. Gebruik de koppeling in de kolom **Versie** om de bron te bekijken in de [Azure Policy GitHub-opslagplaats](https://github.com/Azure/azure-policy).
 
 ## <a name="azure-database-for-mysql"></a>Azure Database for MySQL
 

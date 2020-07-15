@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 06/23/2020
+ms.date: 07/10/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: f16f9b3fe6cd17b9fb6eb1cb2bd3ef1f42824701
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: a1df804681f0066fda025a60e0baddedc51f7a78
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85312771"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276840"
 ---
 |Naam |Beschrijving |Beleidsregels |Versie |
 |---|---|---|---|
@@ -37,4 +37,3 @@ ms.locfileid: "85312771"
 |[Windows-VM's controleren waarop de opgegeven toepassingen zijn geïnstalleerd](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_NotInstalledApp.json) |Met dit initiatief worden de beleidsvereisten geïmplementeerd en worden virtuele Windows-machines gecontroleerd waarop de opgegeven toepassingen zijn geïnstalleerd. Ga naar [https://aka.ms/gcpol](https://aka.ms/gcpol) voor meer informatie over beleidsregels voor gastconfiguratie |2 |1.0.0 |
 |[Windows-VM's controleren waarvoor opnieuw opstarten in behandeling is](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_WindowsPendingReboot.json) |Met dit initiatief worden de beleidsvereisten geïmplementeerd en worden Windows-VM's gecontroleerd waarvoor opnieuw opstarten in behandeling is. Ga naar [https://aka.ms/gcpol](https://aka.ms/gcpol) voor meer informatie over beleidsregels voor gastconfiguratie |2 |1.0.0 |
 |[Windows-webservers controleren waarvoor geen veilige communicatieprotocollen worden gebruikt](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_TLS.json) |Met dit initiatief worden de beleidsvereisten geïmplementeerd en worden Windows-webservers gecontroleerd waarvoor geen veilige communicatieprotocollen (TLS 1.1 of TLS 1.2) worden gebruikt. Ga naar [https://aka.ms/gcpol](https://aka.ms/gcpol) voor meer informatie over beleidsregels voor gastconfiguratie |2 |1.0.0 |
-|[Vereisten implementeren om beleidsregels voor gastconfiguraties op virtuele machines in te schakelen](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_Prerequisites.json) |Dit initiatief voegt een door het systeem toegewezen beheerde identiteit toe en implementeert de voor het platform geschikte gastconfiguratie-extensie voor virtuele machines die in aanmerking komen voor bewaking door beleidsregels voor gastconfiguratie. Dit is een vereiste voor elk beleid voor gastenconfiguratie en moet worden toegewezen aan het bereik voor beleidtoewijzing voordat een beleid voor gastenconfiguratie wordt gebruikt. Ga naar [https://aka.ms/gcpol](https://aka.ms/gcpol) voor meer informatie over gastenconfiguratie. |4 |1.0.0-preview |

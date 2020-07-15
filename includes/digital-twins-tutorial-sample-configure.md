@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: 3a7c9f61af0124c656f98b64ba9295bc659c572a
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 6edc6facc884fc6469b75b63216d6e5036321ea8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262334"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86277828"
 ---
 ## <a name="configure-the-sample-project"></a>Het voorbeeldproject configureren
 
@@ -36,7 +36,7 @@ Sla het bestand op en sluit het.
 
 Configureer vervolgens het bestand *serviceConfig.json* dat moet worden gekopieerd naar de uitvoermap wanneer u de *SampleClientApp* compileert. Selecteer met de rechtermuisknop het bestand *serviceConfig.json* en kies *Eigenschappen*. In het controlevenster *Eigenschappen* wijzigt u de waarde van de eigenschap *Naar uitvoermap kopiëren* in *Kopiëren indien nieuwer*.
 
-:::image type="content" source="../articles/digital-twins/media/include-tutorial/copy-config.png" alt-text="Fragment van een Visual Studio-venster waarin het deelvenster Solution Explorer wordt weergegeven en serviceConfig.json is gemarkeerd, en het deelvenster Eigenschappen waarin de eigenschap Naar uitvoermap kopiëren is ingesteld op Kopiëren indien nieuwer" border="false":::
+:::image type="content" source="../articles/digital-twins/media/includes/copy-config.png" alt-text="Fragment van een Visual Studio-venster waarin het deelvenster Solution Explorer wordt weergegeven en serviceConfig.json is gemarkeerd, en het deelvenster Eigenschappen waarin de eigenschap Naar uitvoermap kopiëren is ingesteld op Kopiëren indien nieuwer" border="false":::
 
 Houd het project _**AdtE2ESample**_ geopend in Visual Studio om dit in de rest van de zelfstudie te gebruiken.
 

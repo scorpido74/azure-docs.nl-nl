@@ -1,21 +1,21 @@
 ---
 title: Ingebouwde beleidsdefinities voor Azure Event Grid
 description: Overzicht van de ingebouwde Azure Policy-beleidsdefinities voor Azure Event Grid. Deze ingebouwde beleidsdefinities bieden algemene benaderingen voor het beheren van uw Azure-resources.
-ms.date: 07/07/2020
+ms.date: 07/10/2020
 ms.topic: sample
 ms.custom: subject-policy-samples
-ms.openlocfilehash: eaa38c2974617f50adeadc821a210fef35c7d967
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3ffa81a8a29ade0a0324dc44545c9be4f05304c0
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116026"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276398"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-event-grid"></a>Ingebouwde Azure Policy-definities voor Azure Event Grid
 
 Deze pagina is een index van ingebouwde [Azure Policy](../governance/policy/overview.md)-beleidsdefinities voor Azure Event Grid. Zie [Ingebouwde Azure Policy-definities](../governance/policy/samples/built-in-policies.md) voor aanvullende ingebouwde modules voor Azure Policy voor andere services.
 
-De naam van elke ingebouwde beleidsdefinitie linkt naar de beleidsdefinitie in de Azure-portal. Gebruik de koppeling in de kolom **Versie** om de bron te bekijken op de [Azure Policy GitHub-opslagplaats](https://github.com/Azure/azure-policy).
+De naam van elke ingebouwde beleidsdefinitie linkt naar de beleidsdefinitie in de Azure-portal. Gebruik de koppeling in de kolom **Versie** om de bron te bekijken in de [Azure Policy GitHub-opslagplaats](https://github.com/Azure/azure-policy).
 
 ## <a name="azure-event-grid"></a>Azure Event Grid
 
