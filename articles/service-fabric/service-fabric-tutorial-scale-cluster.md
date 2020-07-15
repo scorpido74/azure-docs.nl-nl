@@ -4,12 +4,12 @@ description: In deze zelfstudie leert u hoe u een Service Fabric-cluster in Azur
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: ed212083a29836e1da593ec42c31bbf86b907546
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 05fd29f874d59601942216f907010b94bb7c4058
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611642"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257101"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Zelfstudie: Een Service Fabric-cluster schalen in Azure
 
@@ -38,7 +38,7 @@ In deze zelfstudiereeks leert u het volgende:
 Voor u met deze zelfstudie begint:
 
 * Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* Installeer [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) of [Azure CLI](/cli/azure/install-azure-cli).
+* Installeer [Azure PowerShell](/powershell/azure/install-az-ps) of [Azure CLI](/cli/azure/install-azure-cli).
 * Een beveiligd [Windows-cluster](service-fabric-tutorial-create-vnet-and-windows-cluster.md) maken in Azure
 
 ## <a name="important-considerations-and-guidelines"></a>Belangrijke overwegingen en richtlijnen
@@ -64,7 +64,7 @@ Lees [de richtlijnen voor clustercapaciteit](service-fabric-cluster-capacity.md)
 
 ## <a name="export-the-template-for-the-resource-group"></a>De sjabloon voor de resourcegroep exporteren
 
-Nadat u een beveiligd [Windows-cluster](service-fabric-tutorial-create-vnet-and-windows-cluster.md) hebt gemaakt en uw resourcegroep hebt ingesteld, exporteert u de Resource Manager-sjabloon voor de resourcegroep. Door de sjabloon te exporteren, kunt toekomstige implementaties van het cluster en de bijbehorende resources automatiseren omdat de sjabloon de volledige infrastructuur bevat.  Lees [Azure Resource Manager-resourcegroepen beheren met behulp van Azure Portal](/azure/azure-resource-manager/manage-resource-groups-portal) voor meer informatie over het exporteren van sjablonen.
+Nadat u een beveiligd [Windows-cluster](service-fabric-tutorial-create-vnet-and-windows-cluster.md) hebt gemaakt en uw resourcegroep hebt ingesteld, exporteert u de Resource Manager-sjabloon voor de resourcegroep. Door de sjabloon te exporteren, kunt toekomstige implementaties van het cluster en de bijbehorende resources automatiseren omdat de sjabloon de volledige infrastructuur bevat.  Lees [Azure Resource Manager-resourcegroepen beheren met behulp van Azure Portal](../azure-resource-manager/management/manage-resource-groups-portal.md) voor meer informatie over het exporteren van sjablonen.
 
 1. Ga in [Azure Portal](https://portal.azure.com) naar de resourcegroep met het cluster (**sfclustertutorialgroup**, als u deze zelfstudie volgt). 
 

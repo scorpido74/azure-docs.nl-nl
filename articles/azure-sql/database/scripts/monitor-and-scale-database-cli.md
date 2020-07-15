@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: e6fc57a1e0d8988666dd4fe1391e157a2a15f682
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: bd2f8005300aeb77a88be2609246f2d760154e36
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196821"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231995"
 ---
 # <a name="use-the-azure-cli-to-monitor-and-scale-a-single-database-in-azure-sql-database"></a>De Azure CLI gebruiken om een individuele database in Azure SQL Database te bewaken en te schalen
 
@@ -47,7 +47,7 @@ az account set -s $subscription # ...or use 'az login'
 
 ### <a name="clean-up-deployment"></a>Opschonen van implementatie
 
-Gebruik de volgende opdracht om de resourcegroep en alle resources die er aan zijn gekoppeld te verwijderen.
+Gebruik de volgende opdracht om de resourcegroep en alle resources die eraan zijn gekoppeld te verwijderen.
 
 ```azurecli-interactive
 az group delete --name $resource
@@ -57,7 +57,7 @@ az group delete --name $resource
 
 In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is een koppeling naar opdracht-specifieke documentatie.
 
-| | |
+| Script | Beschrijving |
 |---|---|
 | [az sql server](/cli/azure/sql/server) | Serveropdrachten. |
 | [az sql db show-usage](/cli/azure/sql#az-sql-show-usage) | Toont de gebruikte grootte voor een database. |

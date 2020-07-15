@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 29e1bb33b98b1fbc8fcfcd541d0014ca1bc75d8d
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: f2eead8dfd1f4d88d28de1f70134dcfcad8471d3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84114140"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259766"
 ---
 # <a name="tutorial-set-up-service-alerts"></a>Zelfstudie: Servicewaarschuwingen instellen
 
@@ -61,4 +61,4 @@ Om servicewaarschuwingen te configureren:
 In deze zelfstudie hebt u geleerd hoe u Azure Service Health instelt en gebruikt om serviceproblemen en statusadviezen voor Windows Virtual Desktop te monitoren. Voor meer informatie over hoe u zich aanmeldt bij Windows Virtual Desktop, gaat u verder met de instructies voor verbinding maken met Windows Virtual Desktop.
 
 > [!div class="nextstepaction"]
-> [Verbinding maken met de Remote Desktop-client op Windows 7 en Windows 10](../connect-windows-7-and-10.md)
+> [Verbinding maken met de Remote Desktop-client op Windows 7 en Windows 10](connect-windows-7-10-2019.md)

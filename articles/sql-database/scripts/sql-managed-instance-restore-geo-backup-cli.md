@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 07/03/2019
-ms.openlocfilehash: c6ae8d79ee40729f47a906561d6c8ae586765f5d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 5468cfc733b037f6287e8536c8c85994f0840161
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84019840"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231250"
 ---
 # <a name="use-cli-to-restore-a-managed-instance-database-to-another-geo-region"></a>Gebruik CLI om een beheerd-exemplaardatabase te herstellen naar een ander geografisch gebied
 
@@ -56,7 +56,7 @@ az sql midb restore -g $resource --mi $instance -n $managedDatabase --dest-name 
 
 In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
 
-| | |
+| Script | Beschrijving |
 |---|---|
 | [az sql midb](/cli/azure/sql/midb) | Opdrachten voor beheerd-exemplaardatabase. |
 

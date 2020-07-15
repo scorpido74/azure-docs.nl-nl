@@ -13,12 +13,12 @@ ms.topic: overview
 ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 8d7fa8b8119ddf1769b36bcb55831047d6242470
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 85fa79cdfc7036be5b0ab20e49986a1d075152c5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84690197"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254653"
 ---
 # <a name="about-api-management"></a>Meer informatie over API Management
 
@@ -102,7 +102,7 @@ Zie voor meer informatie [Ontwikkelaars maken of uitnodigen][How to create or in
 ## <a name="policies"></a><a name="policies"> </a> Beleidsregels
 Beleidsregels zijn een krachtige mogelijkheid van API Management waarmee het gedrag van de API via configuratie in Azure Portal kan worden gewijzigd. Beleidsregels zijn een verzameling instructies die sequentieel worden uitgevoerd op de aanvraag of het antwoord van een API. Populaire instructies omvatten indelingsconversie van XML in JSON en beperking van de aanroepfrequentie om het aantal inkomende aanroepen van een ontwikkelaar te beperken. Er zijn nog vele andere beleidsregels beschikbaar.
 
-Beleidsexpressies kunnen worden gebruikt als kenmerkwaarden of tekstwaarden in API Management-beleidsregels, tenzij het beleid iets anders aangeeft. Sommige beleidsregels, zoals de beleidsregels [Stroom controleren](/azure/api-management/api-management-advanced-policies#choose) en [Variabele instellen](/azure/api-management/api-management-advanced-policies#set-variable), zijn gebaseerd op beleidsexpressies. Zie [Geavanceerde beleidsregels](/azure/api-management/api-management-advanced-policies#AdvancedPolicies) en [Beleidsexpressies](/azure/api-management/api-management-policy-expressions) voor meer informatie.
+Beleidsexpressies kunnen worden gebruikt als kenmerkwaarden of tekstwaarden in API Management-beleidsregels, tenzij het beleid iets anders aangeeft. Sommige beleidsregels, zoals de beleidsregels [Stroom controleren](./api-management-advanced-policies.md#choose) en [Variabele instellen](./api-management-advanced-policies.md#set-variable), zijn gebaseerd op beleidsexpressies. Zie [Geavanceerde beleidsregels](./api-management-advanced-policies.md#AdvancedPolicies) en [Beleidsexpressies](./api-management-policy-expressions.md) voor meer informatie.
 
 
 Zie [Naslaginformatie over beleid][Policy reference] voor een volledige lijst met API Management-beleidsregels. Zie [API Management-beleidsregels][API Management policies]voor meer informatie over het gebruiken en configureren van beleidsregels. Zie [Geavanceerde productinstellingen maken en configureren][How create and configure advanced product settings] voor een zelfstudie over het maken van een product met beleidsregels voor frequentielimiet en quotum.
@@ -135,17 +135,13 @@ Voltooi de volgende Quick Start en ga aan de slag met Azure API Management:
 [Policies]: #policies
 [Developer portal]: #developer-portal
 
-[How to create APIs]: api-management-howto-create-apis.md
-[How to add operations to an API]: api-management-howto-add-operations.md
+[How to create APIs]: ./import-and-publish.md
+[How to add operations to an API]: ./mock-api-responses.md
 [How to create and publish a product]: api-management-howto-add-products.md
 [How to create and use groups]: api-management-howto-create-groups.md
 [How to associate groups with developers]: api-management-howto-create-groups.md#associate-group-developer
 [How create and configure advanced product settings]: transform-api.md
 [How to create or invite developers]: api-management-howto-create-or-invite-developers.md
-[Policy reference]: api-management-policy-reference.md
+[Policy reference]: ./api-management-policies.md
 [API Management policies]: api-management-howto-policies.md
 [Create an API Management service instance]: get-started-create-service-instance.md
-
-
-
-

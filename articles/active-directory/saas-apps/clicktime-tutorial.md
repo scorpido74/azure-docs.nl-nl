@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27803187e06ee523ff7e6b773bd302eed7422111
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: b0db29309c2f691a1c7811258fee59582643a6e6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85608862"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256080"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>Zelfstudie: Azure Active Directory-integratie met ClickTime
 
@@ -110,10 +110,10 @@ Om eenmalige aanmelding van Azure Active Directory met ClickTime te configureren
 
     b. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon:
     
-        ```https
-        https://app.clicktime.com/Login/
-        https://app.clicktime.com/App/Login/Consume.aspx
-        ```
+    ```http
+    https://app.clicktime.com/Login/
+    https://app.clicktime.com/App/Login/Consume.aspx
+    ```
 
 4. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Base64)** te downloaden uit de opgegeven opties overeenkomstig uw behoeften, en slaat u dit op uw computer op.
 

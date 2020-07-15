@@ -4,12 +4,12 @@ description: In deze zelfstudie vindt u informatie over het maken van een toepas
 ms.topic: tutorial
 ms.date: 07/10/2019
 ms.custom: mvc
-ms.openlocfilehash: f7bad66d15cc2f9fb1885e440f95e76e12ea458a
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: dc869dce536449a901826db3b0d964bf17abbbec
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85214023"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257125"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Zelfstudie: Een toepassing met een ASP.NET Core web-API front-end service en een stateful back-endservice maken en implementeren
 
@@ -41,7 +41,7 @@ Voor u met deze zelfstudie begint:
 
 ## <a name="create-an-aspnet-web-api-service-as-a-reliable-service"></a>Een ASP.NET web-API-service als een betrouwbare service maken
 
-Maak eerst de webfront-end van de stemtoepassing met behulp van ASP.NET Core. ASP.NET Core is een lichtgewicht, platformoverschrijdend webontwikkelingsframework dat u kunt gebruiken voor het maken van moderne webgebruikersinterface en web-API's. Voor een completer inzicht in hoe u ASP.NET Core integreert met Service Fabric, raden we u sterk aan het artikel [ASP.NET Core in Service Fabric Reliable Services](service-fabric-reliable-services-communication-aspnetcore.md) te lezen. Op dit moment kunt u deze zelfstudie volgen om snel aan de slag te gaan. Zie de [Documentatie bij ASP.NET Core](https://docs.microsoft.com/aspnet/core/) voor meer informatie over ASP.NET Core.
+Maak eerst de webfront-end van de stemtoepassing met behulp van ASP.NET Core. ASP.NET Core is een lichtgewicht, platformoverschrijdend webontwikkelingsframework dat u kunt gebruiken voor het maken van moderne webgebruikersinterface en web-API's. Voor een completer inzicht in hoe u ASP.NET Core integreert met Service Fabric, raden we u sterk aan het artikel [ASP.NET Core in Service Fabric Reliable Services](service-fabric-reliable-services-communication-aspnetcore.md) te lezen. Op dit moment kunt u deze zelfstudie volgen om snel aan de slag te gaan. Zie de [Documentatie bij ASP.NET Core](/aspnet/core/) voor meer informatie over ASP.NET Core.
 
 1. Start Visual Studio als **beheerder**.
 

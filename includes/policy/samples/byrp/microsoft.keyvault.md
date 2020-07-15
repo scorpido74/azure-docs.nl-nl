@@ -2,21 +2,21 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 06/23/2020
+ms.date: 07/10/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: eaf734a7e5094f83b75625ec98607c212fec2b31
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: ed743f1a1f3caa1f6f799c02cf6f06a4ae6510f5
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85317842"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86273971"
 ---
 |Naam<br /><sub>(Azure-portal)</sub> |Beschrijving |Gevolg(en) |Versie<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Diagnostische instellingen voor Key Vault toepassen op Event Hub](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fed7c8c13-51e7-49d1-8a43-8490431a0da2) |Hiermee worden de diagnostische instellingen voor Key Vault geïmplementeerd en naar een regionale Event Hub gestreamd wanneer een Key Vault waarvoor deze diagnostische instellingen ontbreken, wordt gemaakt of bijgewerkt. |deployIfNotExists |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_DiagnosticLog_Deploy.json) |
 |[Diagnostische instellingen implementeren voor Key Vault naar Log Analytics-werkruimte](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbef3f64c-5290-43b7-85b0-9b254eef4c47) |Hiermee worden de diagnostische instellingen voor Key Vault geïmplementeerd en naar een regionale Log Analytics-werkruimte gestreamd wanneer een Key Vault waarvoor deze diagnostische instellingen ontbreken, wordt gemaakt of bijgewerkt. |DeployIfNotExists, uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/KeyVault_DeployDiagnosticLog_Deploy_LogAnalytics.json) |
-|[Diagnostische logboeken in Key Vault moeten zijn ingeschakeld](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcf820ca0-f99e-4f3e-84fb-66e913812d21) |Inschakeling van diagnostische logboeken controleren. Hiermee kunt u een activiteitenspoor opnieuw maken om te gebruiken voor onderzoeksdoeleinden wanneer een beveiligingsincident optreedt of wanneer uw netwerk is aangetast |AuditIfNotExists, uitgeschakeld |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_AuditDiagnosticLog_Audit.json) |
+|[Diagnostische logboeken in Key Vault moeten zijn ingeschakeld](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcf820ca0-f99e-4f3e-84fb-66e913812d21) |Inschakeling van diagnostische logboeken controleren. Hiermee kunt u een activiteitenspoor opnieuw maken om te gebruiken voor onderzoeksdoeleinden wanneer een beveiligingsincident optreedt of wanneer uw netwerk is aangetast |AuditIfNotExists, uitgeschakeld |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_AuditDiagnosticLog_Audit.json) |
 |[Key Vault-objecten moeten kunnen worden hersteld](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b60c0b2-2dc2-4e1c-b5c9-abbed971de53) |Met dit beleid wordt gecontroleerd of de sleutelkluisobjecten niet kunnen worden hersteld. De functie voor Voorlopig verwijderen helpt bij het effectief vasthouden van de resources voor een bepaalde bewaarperiode (90 dagen), zelfs na het VERWIJDEREN van een bewerking, terwijl het erop lijkt dat het object is verwijderd. Als Beveiliging opschonen is ingeschakeld, kan een kluis of een object in de verwijderde status pas worden verwijderd als de bewaarperiode van 90 dagen is verstreken. Deze kluizen en objecten kunnen nog steeds worden hersteld, waardoor klanten er zeker van zijn dat het bewaarbeleid wordt gevolgd. |Controle, uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_Recoverable_Audit.json) |
 |[Key Vault moet gebruikmaken van een virtuele-netwerkservice-eindpunt](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fea4d6841-2173-4317-9747-ff522a45120f) |Met dit beleid worden alle exemplaren van Key Vault gecontroleerd die niet zijn geconfigureerd voor het gebruik van een virtuele-netwerkservice-eindpunt. |Controle, uitgeschakeld |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_KeyVault_Audit.json) |
 |[Toegestane certificaatsleuteltypen beheren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1151cede-290b-4ba0-8b38-0ad145ac888f) |Met dit beleid worden de toegestane sleuteltypen beheerd voor certificaten. |controleren, weigeren, uitgeschakeld |[1.0.1-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_AllowedKeyTypes.json) |

@@ -10,18 +10,18 @@ ms.subservice: bing-entity-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: a376c5d223121774b6c707b3bdc8edce42649e42
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 53731540c4a2861c77c02b1a4b25b60fd0e23872
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800054"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184137"
 ---
 # <a name="tutorial-single-page-web-app"></a>Zelfstudie: Web-app van één pagina
 
 Met de Bing Entiteiten zoeken-API kunt u op internet zoeken naar informatie over *entiteiten* en *plaatsen*. U kunt in een query een van beide soorten resultaten opvragen of beide. Hieronder vindt u de definities van plaatsen en entiteiten.
 
-|||
+| Resultaat | Beschrijving |
 |-|-|
 |Entiteiten|Bekende personen, plaatsen en dingen die u op naam zoekt|
 |Plaatsen|Restaurants, hotels en andere lokale bedrijven die u op naam zoekt *of* op type (Italiaanse restaurants)|
@@ -141,7 +141,7 @@ De HTML-tag `<body>` bevat een kenmerk `onload` dat `getSearchSubscriptionKey()`
 
 Het HTML-formulier bevat de volgende besturingselementen:
 
-| | |
+| Beheer | Beschrijving |
 |-|-|
 |`where`|Een vervolgkeuzelijst voor het selecteren van de markt (locatie en taal) die wordt gebruikt voor de zoekopdracht.|
 |`query`|Het tekstveld voor het invoeren van de zoektermen.|
@@ -411,7 +411,7 @@ Als laatste verwijst `sidebar` naar aanvullende zoekresultaten. Deze kunnen word
 
 Elk item in een verzameling `rankingResponse` verwijst naar de werkelijke zoekresultaatitems op twee verschillende, maar gelijkwaardige, manieren.
 
-| | |
+| Item | Beschrijving |
 |-|-|
 |`id`|De `id` ziet eruit als een URL, maar mag niet worden gebruikt voor koppelingen. Het type `id` van een positieresultaat komt overeen met de `id` van een zoekresultaatitem zoeken in een antwoordverzameling, *of* een complete antwoordverzameling (zoals `Entities`).
 |`answerType`<br>`resultIndex`|Het `answerType` verwijst naar de antwoordverzameling op het hoogste niveau die het resultaat bevat (bijvoorbeeld `Entities`). De `resultIndex` verwijst naar de index van het resultaat in die verzameling. Als `resultIndex` wordt weggelaten, verwijst het positieresultaat naar de volledige verzameling.
@@ -452,7 +452,7 @@ searchItemRenderers = {
 
 Een rendererfunctie kan de volgende parameters accepteren:
 
-| | |
+| Parameter | Beschrijving |
 |-|-|
 |`item`|Het JavaScript-object met de eigenschappen van het item, zoals de bijbehorende URL en beschrijving.|
 |`index`|De index van het resultaatitem binnen de bijbehorende verzameling.|
@@ -544,7 +544,7 @@ U kunt eenvoudig een CORS-proxy installeren zodat de zelfstudie-app toegang krij
 npm install -g cors-proxy-server
 ```
 
-Wijzig vervolgens het Bing Web Search-eindpunt in het HTML-bestand in:\
+Wijzig vervolgens het Bing Web Search-eindpunt in het HTML-bestand in :\
 `http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search`
 
 Start ten slotte de CORS-proxy met de volgende opdracht:

@@ -4,12 +4,12 @@ ms.author: miparker
 ms.date: 06/02/2020
 ms.service: notification-hubs
 ms.topic: include
-ms.openlocfilehash: 72e4318bea7245e440db4c7d95bf7f1f38bbe268
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 5e75c5d5510f596eb7911cae0310e60b6bef67bf
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85095292"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146477"
 ---
 ### <a name="send-a-test-notification"></a>Een testmelding verzenden
 
@@ -26,9 +26,6 @@ ms.locfileid: "85095292"
    | Sleutel                            | Waarde                          |
    | ------------------------------ | ------------------------------ |
    | apikey                         | <your_api_key>                 |
-
-   > [!NOTE]
-   > Dit kunt u vinden in **config.local_secrets.cs** vanuit het **PushDemo**-project.
 
 1. Kies de optie **onbewerkt** voor de **Hoofdtekst**, kies **JSON** in de lijst met indelingsopties en voeg vervolgens enkele tijdelijke aanduidingen voor **JSON**-content toe:
 

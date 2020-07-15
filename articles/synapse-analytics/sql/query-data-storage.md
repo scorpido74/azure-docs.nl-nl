@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: e9a90ab7100ae9757f59c80bb8f4738772482f56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4f78928c26b595caafd6709a200297d62ce1c361
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85833652"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259675"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Query-opslagbestanden die SQL on-demand-resources (preview) gebruiken binnen Synapse SQL
 
@@ -46,7 +46,7 @@ FORMAT = 'PARQUET' gebruiken om een query uit te voeren op Parquet-gegevens
 
 ```syntaxsql
 SELECT * FROM
-OPENROWSET( BULK N'https://myaccount.blob.core.windows.net/mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
+OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net//mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
 WITH (C1 int, C2 varchar(20), C3 as varchar(max)) as rows
 ```
 
@@ -58,7 +58,7 @@ Gebruik FORMAT = 'CSV' om een query uit te voeren op Parquet-brongegevens. U kun
 
 ```sql
 SELECT * FROM
-OPENROWSET( BULK N'https://myaccount.blob.core.windows.net/mycontainer/mysubfolder/data.csv', FORMAT = 'CSV', PARSER_VERSION='2.0') 
+OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/mycontainer/mysubfolder/data.csv', FORMAT = 'CSV', PARSER_VERSION='2.0') 
 WITH (C1 int, C2 varchar(20), C3 as varchar(max)) as rows
 ```
 
@@ -81,7 +81,7 @@ Om aan te geven welke kolommen u wilt lezen, kunt u een optionele WITH-clausule 
 
 ```sql
 SELECT * FROM
-OPENROWSET( BULK N'https://myaccount.blob.core.windows.net/mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
+OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
 WITH (
       C1 int, 
       C2 varchar(20),
@@ -101,7 +101,7 @@ Door de WITH-clausule weg te laten in de `OPENROWSET`-opdracht, kunt u de servic
 
 ```sql
 SELECT * FROM
-OPENROWSET( BULK N'https://myaccount.blob.core.windows.net/mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
+OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
 ```
 
 Zorg ervoor dat [de juiste gededuceerde datatypes](best-practices-sql-on-demand.md#check-inferred-data-types) worden gebruikt voor de beste prestatie. 
@@ -118,7 +118,7 @@ De volgende regels zijn van toepassing:
 
 ```sql
 SELECT * FROM
-OPENROWSET( BULK N'https://myaccount.blob.core.windows.net/myroot/*/mysubfolder/*.parquet', FORMAT = 'PARQUET' ) as rows
+OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/myroot/*/mysubfolder/*.parquet', FORMAT = 'PARQUET' ) as rows
 ```
 
 Raadpleeg [Query uitvoeren op mappen en meerdere bestanden](query-folders-multiple-csv-files.md) voor gebruiksvoorbeelden.

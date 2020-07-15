@@ -3,16 +3,16 @@ title: Een .NET-app in een container implementeren in Azure Service Fabric
 description: Informatie over hoe u een bestaande .NET-toepassing in een container plaatst met behulp van Visual Studio en lokaal fouten opspoort in containers in Service Fabric. De in een container geplaatste toepassing wordt naar een Azure-containerregister gepusht en geïmplementeerd in een Service Fabric-cluster. Wanneer de toepassing is geïmplementeerd in Azure, gebruikt deze Azure SQL DB voor het persistent maken van gegevens.
 ms.topic: tutorial
 ms.date: 07/08/2019
-ms.openlocfilehash: aa99897da99ff1a1443e548e98ae415b6a8d49f5
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 4970cf6492da38ad76a51df88eeb73538c850c67
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234224"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258877"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Zelfstudie: Een .NET-toepassing in een Windows-container implementeren in Azure Service Fabric
 
-Deze zelfstudie laat u zien hoe u een bestaande ASP.NET-toepassing in een container plaatst en verpakt als een Service Fabric-toepassing.  Voer de containers lokaal uit in het Service Fabric-ontwikkelingscluster en implementeer de toepassing vervolgens in Azure.  De toepassing maakt gegevens persistent in [Azure SQL Database](/azure/sql-database/sql-database-technical-overview).
+Deze zelfstudie laat u zien hoe u een bestaande ASP.NET-toepassing in een container plaatst en verpakt als een Service Fabric-toepassing.  Voer de containers lokaal uit in het Service Fabric-ontwikkelingscluster en implementeer de toepassing vervolgens in Azure.  De toepassing maakt gegevens persistent in [Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md).
 
 In deze zelfstudie leert u het volgende:
 
@@ -55,7 +55,7 @@ In deze zelfstudie leert u het volgende:
 
 Wanneer de toepassing Fabrikam Fiber CallCenter in productie wordt uitgevoerd, moeten de gegevens persistent worden gemaakt in een database. Er is momenteel geen manier om behoud van gegevens in een container te waarborgen, daarom kunt u productiegegevens niet opslaan in SQL Server in een container.
 
-Wij raden [Azure SQL Database](/azure/sql-database/sql-database-get-started-powershell) aan. Als u een beheerde SQL Server-database in Azure wilt instellen en uitvoeren, voert u het volgende script uit.  Wijzig de scriptvariabelen indien nodig. *client-IP* is het IP-adres van uw ontwikkelcomputer. Noteer de naam van de server die door het script wordt weergegeven.
+Wij raden [Azure SQL Database](../azure-sql/database/powershell-script-content-guide.md) aan. Als u een beheerde SQL Server-database in Azure wilt instellen en uitvoeren, voert u het volgende script uit.  Wijzig de scriptvariabelen indien nodig. *client-IP* is het IP-adres van uw ontwikkelcomputer. Noteer de naam van de server die door het script wordt weergegeven.
 
 ```powershell
 $subscriptionID="<subscription ID>"
@@ -126,7 +126,7 @@ Druk op **F5** om de toepassing in een container uit te voeren en er fouten in o
 
 ## <a name="create-a-container-registry"></a>Een containerregister maken
 
-Nu de toepassing lokaal wordt uitgevoerd, begint u met de voorbereidingen voor implementatie in Azure.  Containerinstallatiekopieën moeten worden opgeslagen in een containerregister.  Maak een [Azure Container Registry](/azure/container-registry/container-registry-intro) met behulp van het volgende script. De registernaam van de container is zichtbaar voor andere Azure-abonnementen en moet daarom uniek zijn.
+Nu de toepassing lokaal wordt uitgevoerd, begint u met de voorbereidingen voor implementatie in Azure.  Containerinstallatiekopieën moeten worden opgeslagen in een containerregister.  Maak een [Azure Container Registry](../container-registry/container-registry-intro.md) met behulp van het volgende script. De registernaam van de container is zichtbaar voor andere Azure-abonnementen en moet daarom uniek zijn.
 Voordat u de toepassing in Azure implementeert, pusht u de containerinstallatiekopie naar dit register.  Wanneer de toepassing in het cluster in Azure is geïmplementeerd, wordt de installatiekopie van de container opgehaald uit dit register.
 
 ```powershell
@@ -179,7 +179,7 @@ Als u het cluster maakt, gaat u als volgt te werk:
 
 ## <a name="allow-your-application-running-in-azure-to-access-sql-database"></a>Toestaan dat uw toepassing die in Azure wordt uitgevoerd toegang heeft tot SQL Database
 
-Eerder hebt u een SQL-firewallregel gemaakt om toegang te verlenen aan uw toepassing die lokaal wordt uitgevoerd.  Nu moet u voor de toepassing die in Azure wordt uitgevoerd toegang inschakelen voor de SQL-database.  Maak een [service-eindpunt voor virtueel netwerk](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) voor het Service Fabric-cluster en maak vervolgens een regel om dat eindpunt toegang tot de SQL-database toe te staan. Geef de variabele van de clusterbrongroep op die u hebt genoteerd toen u het cluster maakte.
+Eerder hebt u een SQL-firewallregel gemaakt om toegang te verlenen aan uw toepassing die lokaal wordt uitgevoerd.  Nu moet u voor de toepassing die in Azure wordt uitgevoerd toegang inschakelen voor de SQL-database.  Maak een [service-eindpunt voor virtueel netwerk](../azure-sql/database/vnet-service-endpoint-rule-overview.md) voor het Service Fabric-cluster en maak vervolgens een regel om dat eindpunt toegang tot de SQL-database toe te staan. Geef de variabele van de clusterbrongroep op die u hebt genoteerd toen u het cluster maakte.
 
 ```powershell
 # Create a virtual network service endpoint
