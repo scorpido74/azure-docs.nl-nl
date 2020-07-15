@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b655fa2f12eac894e97c61cc931983aa58fff7a9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 6c2ae9e7654fa468d499ca6ef8543b98b1e372ca
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74007926"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85481388"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>Wat zijn Azure Active Directory-rapporten?
 
@@ -37,7 +37,7 @@ De rapportagearchitectuur is afhankelijk van twee belangrijke zaken:
 - [Beveiligingsrapporten](#security-reports)
 - [Activiteitsrapporten](#activity-reports)
 
-![Rapporten](./media/overview-reports/01.png)
+![Rapportage](./media/overview-reports/01.png)
 
 
 ## <a name="security-reports"></a>Beveiligingsrapporten
@@ -54,9 +54,9 @@ Alle edities van Azure AD bieden rapporten over gebruikers voor wie wordt aangeg
 
 - In de edities **Azure Active Directory Free en Basic** hebt u toegang tot een lijst die gebruikers bevat voor wie wordt aangegeven dat ze risico lopen, evenals riskante aanmeldingen. 
 
-- De **Azure Active Directory Premium 1** editie breidt dit model uit door ook een aantal van de onderliggende risico detecties te onderzoeken die zijn gedetecteerd voor elk rapport. 
+- De editie **Azure Active Directory Premium 1** bevat een uitgebreider model waarmee u ook bepaalde onderliggende risicodetecties kunt onderzoeken die voor elk rapport zijn gedetecteerd. 
 
-- De versie van **Azure Active Directory Premium 2** biedt u de meest gedetailleerde informatie over de onderliggende risico detecties. Daarnaast kunt u hiermee beveiligings beleid configureren dat automatisch reageert op geconfigureerde risico niveaus.
+- De editie **Azure Active Directory Premium 2** biedt u de meest gedetailleerde informatie over de onderliggende risicodetecties. Deze editie stelt u ook in staat beveiligingsbeleidsregels te configureren die automatisch op de geconfigureerde risiconiveaus reageren.
 
 
 ## <a name="activity-reports"></a>Activiteitsrapporten
@@ -81,7 +81,7 @@ De [audittrailrapporten](concept-audit-logs.md) bieden records van systeemactivi
 
 #### <a name="what-azure-ad-license-do-you-need-to-access-the-audit-logs-report"></a>Welke Azure AD-licentie heb ik nodig voor toegang tot audittrailrapporten?  
 
-Het audittrailrapport is beschikbaar voor functies waarvoor u licenties hebt. Als u een licentie voor een specifieke functie hebt, hebt u ook toegang tot de audittrailgegevens hiervan. Zie [Functies en mogelijkheden van Azure Active Directory](https://www.microsoft.com/cloud-platform/azure-active-directory-features) voor meer informatie.   
+Het audittrailrapport is beschikbaar voor functies waarvoor u licenties hebt. Als u een licentie voor een specifieke functie hebt, hebt u ook toegang tot de audittrailgegevens hiervan. U kunt een gedetailleerde functievergelijking van [verschillende typen licenties](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#what-are-the-azure-ad-licenses) bekijken op de pagina [Prijzen voor Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/). Zie [Functies en mogelijkheden van Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#which-features-work-in-azure-ad) voor meer informatie.
 
 ### <a name="sign-ins-report"></a>Aanmeldingenrapport
 
@@ -101,6 +101,6 @@ De rapportage van Azure AD biedt u naast de gebruikersinterface ook [toegang op 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Rapport Riskante aanmeldingen](concept-risky-sign-ins.md)
+- [Rapport voor riskante aanmeldingen](concept-risky-sign-ins.md)
 - [Rapport voor audittrails](concept-audit-logs.md)
 - [Rapport voor aanmeldlogboeken](concept-sign-ins.md)

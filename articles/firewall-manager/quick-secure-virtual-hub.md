@@ -1,27 +1,27 @@
 ---
-title: 'Quickstart: virtuele hub beveiligen met Azure Firewall Manager Preview - Resource Manager-sjabloon'
-description: Meer informatie over het beveiligen van uw virtuele hub met Azure Firewall Manager Preview.
+title: 'Quickstart: Virtuele hub beveiligen met Azure Firewall Manager - Resource Manager-sjabloon'
+description: Meer informatie over het beveiligen van uw virtuele hub met Azure Firewall Manager.
 services: firewall-manager
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 05/19/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 9c51fdb5142159e390ac4fcf59a04aa3dd747469
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 6641cc29025d39ddff33e706dd9b1b0da517b884
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167193"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563695"
 ---
 # <a name="quickstart-secure-your-virtual-hub-using-azure-firewall-manager---resource-manager-template"></a>Quickstart: uw virtuele hub beveiligen met Azure Firewall Manager - Resource Manager-sjabloon
 
-In deze quickstart gebruikt u een Resource Manager-sjabloon om uw virtuele hub te beveiligen met Azure Firewall Manager Preview. De geïmplementeerde firewall heeft een toepassingsregel waarmee verbindingen met `www.microsoft.com` worden toegestaan. Twee virtuele Windows Server 2019-machines worden geïmplementeerd om de firewall te testen. Eén jumpserver wordt gebruikt om verbinding te maken met de workloadserver. Vanaf de workloadserver kunt u alleen verbinding maken met `www.microsoft.com`.
+In deze quickstart gebruikt u een Resource Manager-sjabloon om uw virtuele hub te beveiligen met Azure Firewall Manager. De geïmplementeerde firewall heeft een toepassingsregel waarmee verbindingen met `www.microsoft.com` worden toegestaan. Twee virtuele Windows Server 2019-machines worden geïmplementeerd om de firewall te testen. Eén jumpserver wordt gebruikt om verbinding te maken met de workloadserver. Vanaf de workloadserver kunt u alleen verbinding maken met `www.microsoft.com`.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Zie [What is Azure Firewall Manager Preview?](overview.md) (Wat is Azure Firewall Manager Preview?) voor meer informatie over Azure Firewall Manager Preview.
+Zie [What is Azure Firewall Manager?](overview.md) (Wat is Azure Firewall Manager?) voor meer informatie over Azure Firewall Manager.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -29,7 +29,7 @@ Zie [What is Azure Firewall Manager Preview?](overview.md) (Wat is Azure Firewal
 
 ## <a name="create-a-secured-virtual-hub"></a>Een beveiligde virtuele hub maken
 
-Met deze sjabloon maakt u een beveiligde virtuele hub met Azure Firewall Manager Preview, plus de benodigde resources om het scenario te ondersteunen.
+Met deze sjabloon maakt u een beveiligde virtuele hub met Azure Firewall Manager, plus de benodigde resources om het scenario te ondersteunen.
 
 ### <a name="review-the-template"></a>De sjabloon controleren
 
@@ -53,15 +53,15 @@ Er worden meerdere Azure-resources gedefinieerd in de sjabloon:
 
 ### <a name="deploy-the-template"></a>De sjabloon implementeren
 
-De Resource Manager-sjabloon implementeren in Azure:
+Resource Manager-sjabloon implementeren in Azure:
 
 1. Selecteer **Implementeren in Azure** om u aan te melden bij Azure en de sjabloon te openen. Met de sjabloon maakt u een Azure-firewall, een virtuele WAN en virtuele hub, de netwerkinfrastructuur en twee virtuele machines.
 
    [![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffwm-docs-qs%2Fazuredeploy.json)
 
 2. Typ of selecteer in de portal op de pagina **Beveiligde virtuele hubs** de volgende waarden:
-   - Abonnement: selecteer uit bestaande abonnementen 
-   - Resourcegroep:  selecteer uit bestaande resourcegroepen of selecteer **Nieuwe maken** en selecteer vervolgens **OK**.
+   - Abonnement: Selecteer uit bestaande abonnementen 
+   - Resourcegroep:  Selecteer uit bestaande resourcegroepen of selecteer **Nieuwe maken** en selecteer vervolgens **OK**.
    - Locatie: selecteer een locatie
    - Gebruikersnaam voor beheerder: voer de gebruikersnaam voor het beheerdersaccount in 
    - Wachtwoord voor beheerder: voer het wachtwoord of de sleutel voor de beheerder in
@@ -101,4 +101,4 @@ Remove-AzResourceGroup -Name "<your resource group name>"
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over vertrouwde beveiligingspartners](trusted-security-partners.md)
+> [Meer informatie over beveiligingspartnerproviders](trusted-security-partners.md)

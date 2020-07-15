@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: f437205ae76feb36596b05ee0e320aaed0a37184
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: e9ed36971e157e67ede6573b9fdf9ff1fc6e05a0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83846662"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044274"
 ---
 # <a name="what-is-azure-security-center"></a>Wat is Azure Security Center?
 
@@ -47,7 +47,7 @@ Met Security Center kunt u zich tegen deze bedreigingen beveiligen. Het biedt na
 
 ## <a name="architecture"></a>Architectuur
 
-Omdat Security Center standaard deel uitmaakt van Azure, worden PaaS-services in Azure, zoals Service Fabric, SQL-databases en opslagaccounts, gecontroleerd en beveiligd door Security Center zonder dat er een implementatie aan te pas komt.
+Omdat Security Center standaard deel uitmaakt van Azure, worden PaaS-services in Azure, zoals Service Fabric, SQL Database, SQL Managed Instance en opslagaccounts, gecontroleerd en beveiligd door Security Center zonder dat er een implementatie aan te pas komt.
 
 Security Center beveiligt bovendien andere servers dan Azure-servers en virtuele machines in de cloud of on-premises, voor zowel Windows- als Linux-servers, door hierop de Logboekanalyse-agent te installeren. Azure-VM's worden automatisch ingericht in Security Center.
 
@@ -111,7 +111,7 @@ De beveiliging tegen bedreigingen van Security Center bevat een complete analyse
 
 Security Center omvat automatische, systeemeigen integratie met Microsoft Defender Advanced Threat Protection. Dit betekent dat uw Windows- en Linux-computers zonder enige configuratie volledig zijn geïntegreerd met de aanbevelingen en evaluaties van Security Center.
 
-Bovendien kunt u met Security Center het beleid voor toepassingsbeheer automatiseren in serveromgevingen. Met de adaptieve toepassingsregelaars in Security Center kunt u end-to-end apps in een whitelist opnemen voor al uw Windows-servers. U hoeft geen regels te maken en op schendingen te controleren. Dit wordt allemaal automatisch voor u gedaan.
+Bovendien kunt u met Security Center het beleid voor toepassingsbeheer automatiseren in serveromgevingen. Met de adaptieve toepassingsregelaars in Security Center kunt u end-to-end apps in een goedkeuringslijst opnemen voor al uw Windows-servers. U hoeft geen regels te maken en op schendingen te controleren. Dit wordt allemaal automatisch voor u gedaan.
 
 ### <a name="protect-paas"></a>PaaS beveiligen
 

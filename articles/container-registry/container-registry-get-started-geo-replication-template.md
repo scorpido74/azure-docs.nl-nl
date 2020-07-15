@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: geo-gerepliceerd register maken - Resource Manager-sjabloon'
+title: 'Quickstart: geo-gerepliceerd register maken - Azure Resource Manager-sjabloon'
 description: Meer informatie over het maken van een geo-gerepliceerd Azure Container Registry met behulp van een Azure Resource Manager-sjabloon.
 services: azure-resource-manager
 author: dlepow
@@ -8,30 +8,30 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: danlep
 ms.date: 05/26/2020
-ms.openlocfilehash: c94cd3b4b455691e85e7525007fcdf7a056a2b28
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 3ed160780e15cc36648f7e2ad77e726901ee86c3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558086"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119851"
 ---
-# <a name="quickstart-create-a-geo-replicated-container-registry-by-using-a-resource-manager-template"></a>Quickstart: Meer informatie over het maken van een geo-gerepliceerd Azure Container Registry met behulp van een Azure Resource Manager-sjabloon
+# <a name="quickstart-create-a-geo-replicated-container-registry-by-using-an-arm-template"></a>Quickstart: Meer informatie over het maken van een geo-gerepliceerd Azure Container Registry met behulp van een ARM-sjabloon
 
-Deze quickstart laat zien hoe u een Azure Container Registry-exemplaar maakt met behulp van een Azure Resource Manager-sjabloon. Met de sjabloon wordt een [geo-gerepliceerd](container-registry-geo-replication.md) register ingesteld, waarmee registerinhoud automatisch wordt gesynchroniseerd in meerdere Azure-regio's. Geo-replicatie biedt mogelijkheden voor netwerktoegang tot installatiekopieën van regionale implementaties, met een centrale beheerervaring. Het is een functie van de [Premium](container-registry-skus.md)-registerservicelaag. 
+Deze quickstart laat zien hoe u een Azure Container Registry-exemplaar maakt met behulp van een Azure Resource Manager-sjabloon (ARM-sjabloon). Met de sjabloon wordt een [geo-gerepliceerd](container-registry-geo-replication.md) register ingesteld, waarmee registerinhoud automatisch wordt gesynchroniseerd in meerdere Azure-regio's. Geo-replicatie biedt mogelijkheden voor netwerktoegang tot installatiekopieën van regionale implementaties, met een centrale beheerervaring. Het is een functie van de [Premium](container-registry-skus.md)-registerservicelaag.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
+
+[![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-container-registry-geo-replication%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Vereisten
 
-Geen.
+Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
-## <a name="create-a-geo-replicated-registry"></a>Een geo-gerepliceerd register maken
+## <a name="review-the-template"></a>De sjabloon controleren
 
-### <a name="review-the-template"></a>De sjabloon controleren
-
-De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure Quick Start-sjablonen](https://azure.microsoft.com/resources/templates/101-container-registry-geo-replication/). Met de sjabloon wordt een register en een extra regionale replica ingesteld.
+De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-quickstartsjablonen](https://azure.microsoft.com/resources/templates/101-container-registry-geo-replication/). Met de sjabloon wordt een register en een extra regionale replica ingesteld.
 
 :::code language="json" source="~/quickstart-templates/101-container-registry-geo-replication/azuredeploy.json" range="1-81" highlight="45-74" :::
 
@@ -42,7 +42,7 @@ De volgende resources zijn gedefinieerd in de sjabloon:
 
 Meer voorbeelden van Azure Container Registry-exemplaren vindt u in de [galerie met quickstart-sjablonen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Containerregistry&pageNumber=1&sort=Popular).
 
-### <a name="deploy-the-template"></a>De sjabloon implementeren
+## <a name="deploy-the-template"></a>De sjabloon implementeren
 
  1. Selecteer de volgende afbeelding om u aan te melden bij Azure en een sjabloon te openen.
 
@@ -86,7 +86,7 @@ Wanneer u deze niet meer nodig hebt, verwijdert u de resourcegroep, het register
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart hebt u een Azure Container Registry gemaakt met behulp van een Resource Manager-sjabloon. Daarnaast hebt u een registerreplica op een andere locatie geconfigureerd. Ga verder met de zelfstudies voor Azure Container Registry om meer te leren over ACR.
+In deze quickstart hebt u een Azure Container Registry gemaakt met behulp van een ARM-sjabloon. Daarnaast hebt u een registerreplica op een andere locatie geconfigureerd. Ga verder met de zelfstudies voor Azure Container Registry om meer te leren over ACR.
 
 > [!div class="nextstepaction"]
 > [Azure Container Registry-zelfstudies](container-registry-tutorial-prepare-registry.md)
@@ -94,4 +94,4 @@ In deze quickstart hebt u een Azure Container Registry gemaakt met behulp van ee
 Zie voor een stapsgewijze zelfstudie die u door het proces van het maken van een sjabloon leidt:
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Uw eerste Azure Resource Manager-sjabloon maken en implementeren](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+> [Zelfstudie: Uw eerste ARM-sjabloon maken en implementeren](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

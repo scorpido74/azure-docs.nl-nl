@@ -4,12 +4,12 @@ description: Ontdek hoe u een Azure Resource Manager-sjabloon kunt implementeren
 ms.date: 05/20/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 01f04d18ae54c3c512010dd005e9d820b914e536
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 3112c3940f9d2668f4825de3c2e57a63af009d92
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714063"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118899"
 ---
 # <a name="tutorial-deploy-a-local-azure-resource-manager-template"></a>Zelfstudie: een lokaal Azure Resource Manager-sjabloon implementeren
 
@@ -29,11 +29,11 @@ U heeft Azure PowerShell of Azure CLI nodig om het sjabloon te implementeren. Zi
 - [Azure CLI installeren in Windows](/cli/azure/install-azure-cli-windows)
 - [Azure CLI installeren in Linux](/cli/azure/install-azure-cli-linux)
 
-Nadat u Azure PowerShell of Azure CLI heeft geïnstalleerd moet u zich voor de eerste keer aanmelden. Bekijk [Aanmelden - PowerShell](/powershell/azure/install-az-ps#sign-in) of [Aanmelden - Azure CLI](/cli/azure/get-started-with-azure-cli#sign-in) voor ondersteuning.
+Nadat u Azure PowerShell of Azure CLI hebt geïnstalleerd moet u zich voor de eerste keer aanmelden. Bekijk [Aanmelden - PowerShell](/powershell/azure/install-az-ps#sign-in) of [Aanmelden - Azure CLI](/cli/azure/get-started-with-azure-cli#sign-in) voor ondersteuning.
 
 ### <a name="editor-optional"></a>Editor (optioneel)
 
-Sjablonen zijn JSON-bestanden. Om sjablonen te controleren/bewerken heeft u een goede JSON-editor nodig. We raden Visual Studio Code met de extensie Resource Manager Tools aan. Bekijk [Visual Studio Code-extensie gebruiken om Azure Resource Manager-sjablonen te maken](use-vs-code-to-create-template.md) om deze hulpprogramma's te installeren.
+Sjablonen zijn JSON-bestanden. Om sjablonen te controleren/bewerken heeft u een goede JSON-editor nodig. We raden Visual Studio Code met de extensie Resource Manager Tools aan. Als u deze hulpprogramma's wilt installeren, raadpleegt u [Quickstart: Azure Resource Manager-sjablonen maken met Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
 
 ## <a name="review-template"></a>Sjabloon controleren
 

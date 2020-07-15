@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 05/14/2020
+ms.date: 06/29/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 8bdba64445212c564a3d4762bc8497be15f7d9a0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: bae8fa97d075784bba1d2f75cc06cfa3f801c052
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657007"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027202"
 ---
 # <a name="about-azure-virtual-wan"></a>Over Azure Virtual WAN
 
@@ -64,7 +64,7 @@ Als u een end-to-end virtuele WAN wilt configureren, maakt u de volgende resourc
 
 **Aanvullende Virtual WAN-resources**
 
-  * **Site:** Deze resource wordt alleen gebruikt voor site-naar-site-verbindingen. De siteresource is **vpnsite**. Deze staat voor uw on-premises VPN-apparaat en de bijbehorende instellingen. Wanneer u met een Virtual WAN-partner werkt, beschikt u over een geïntegreerde oplossing die deze gegevens automatisch naar Azure exporteert.
+* **Site:** Deze resource wordt alleen gebruikt voor site-naar-site-verbindingen. De siteresource is **vpnsite**. Deze staat voor uw on-premises VPN-apparaat en de bijbehorende instellingen. Wanneer u met een Virtual WAN-partner werkt, beschikt u over een geïntegreerde oplossing die deze gegevens automatisch naar Azure exporteert.
 
 ## <a name="types-of-connectivity"></a><a name="connectivity"></a>Typen connectiviteit
 
@@ -72,21 +72,9 @@ Met Virtual WAN zijn de volgende typen connectiviteit mogelijk: Site-naar-site-V
 
 ### <a name="site-to-site-vpn-connections"></a><a name="s2s"></a>Site-naar-site-VPN-verbindingen
 
-![Virtual WAN-diagram](./media/virtual-wan-about/virtualwan.png)
+U kunt verbinding maken met uw resources in Azure via een site-to-site-IPsec/IKE (IKEv2)-verbinding. Raadpleeg [Een site-naar-site-verbinding maken met Virtual WAN](virtual-wan-site-to-site-portal.md) voor meer informatie. 
 
-Wanneer u een site-naar-site-verbinding voor een virtuele WAN maakt, kunt u werken met een beschikbare partner. Als u geen partner wilt gebruiken, kunt u de verbinding handmatig configureren. Raadpleeg [Een site-naar-site-verbinding maken met Virtual WAN](virtual-wan-site-to-site-portal.md) voor meer informatie.
-
-#### <a name="virtual-wan-partner-workflow"></a><a name="s2spartner"></a>Partnerworkflow van Virtual WAN-partner
-
-Wanneer u met een Virtual WAN-partner werkt, is dit de workflow:
-
-1. De controller (VPN/SD-WAN) voor filiaalapparaten wordt geverifieerd voor het exporteren van locatiegegevens naar Azure met behulp van een [Azure-service-principal](../active-directory/develop/howto-create-service-principal-portal.md).
-2. De controller (VPN/SD-WAN) voor filiaalapparaten ontvangt de Azure-verbindingsconfiguratie en werkt het lokale apparaat bij. Op deze manier wordt het downloaden van de configuratie, het bewerken en het bijwerken van het on-premises VPN-apparaat geautomatiseerd.
-3. Wanneer het apparaat eenmaal de juiste Azure-configuratie heeft, wordt een verbinding tussen de locaties (twee actieve tunnels) en Azure WAN tot stand gebracht. Azure ondersteunt zowel IKEv1 als IKEv2. BGP is optioneel.
-
-#### <a name="partners-for-site-to-site-virtual-wan-connections"></a><a name="partners"></a>Partners voor virtuele WAN-verbindingen tussen locaties
-
-Raadpleeg het artikel [Virtuele WAN-partners en locaties](virtual-wan-locations-partners.md) voor een lijst met de beschikbare partners en locaties.
+Voor dit type verbinding is een VPN-apparaat of een Virtual WAN-partnerapparaat vereist. Virtual WAN-partners bieden automatisering voor connectiviteit, wat de mogelijkheid is om de apparaatgegevens te exporteren naar Azure, de Azure-configuratie te downloaden en verbinding te maken met Azure Virtual WAN. Raadpleeg het artikel [Virtuele WAN-partners en locaties](virtual-wan-locations-partners.md) voor een lijst met de beschikbare partners en locaties. Als uw VPN/SD-WAN-apparaat niet in de genoemde koppeling wordt vermeld, kunt u de stapsgewijze instructies in [Een site-naar-site-verbinding maken met Azure Virtual WAN](virtual-wan-site-to-site-portal.md) gebruiken om de verbinding in te stellen.
 
 ### <a name="user-vpn-point-to-site-connections"></a><a name="uservpn"></a>Gebruikers-VPN-verbindingen (punt-naar-site)
 
@@ -95,9 +83,50 @@ U kunt verbinding maken met uw resources in Azure via een IPsec/IKE (IKEv2)- of 
 ### <a name="expressroute-connections"></a><a name="er"></a>ExpressRoute-verbindingen
 Met ExpressRoute kunt u uw on-premises netwerk uitbreiden naar Azure via een privéverbinding. Raadpleeg [Een ExpressRoute-verbinding maken met Virtual WAN](virtual-wan-expressroute-portal.md) als u de verbinding tot stand wilt brengen.
 
+### <a name="hub-to-vnet-connections"></a><a name="hub"></a>Hub-naar-VNet-verbindingen
+
+U kunt een virtueel Azure-netwerk verbinden met een virtuele hub. Zie [uw VNet verbinden met een hub](virtual-wan-site-to-site-portal.md#vnet)voor meer informatie.
+
+### <a name="transit-connectivity"></a><a name="transit"></a>Transitconnectiviteit
+
+#### <a name="transit-connectivity-between-vnets"></a><a name="transit-vnet"></a>Transitconnectiviteit tussen VNets
+
+Virtual WAN maakt transitconnectiviteit tussen VNets mogelijk. VNets maken verbinding met een virtuele hub via een virtueel-netwerkverbinding. Transitconnectiviteit tussen de VNets in **Standard Virtual WAN** wordt mogelijk gemaakt door de aanwezigheid van een router in elke virtuele hub. Deze router wordt geïnstantieerd wanneer de virtuele hub voor het eerst wordt gemaakt.
+
+De router kan vier routeringsstatussen hebben: Ingericht, Inrichten, Mislukt of Geen. De **Routeringsstatus** is in de Azure-portal te vinden door naar de pagina Virtuele Hub te navigeren.
+
+* De status **Geen** geeft aan dat de virtuele hub de router niet heeft ingericht. Dit kan gebeuren als het Virtual WAN van het type *Basic* is, of als de virtuele hub is geïmplementeerd voordat de service beschikbaar werd gemaakt.
+* De status **Mislukt** status geeft aan dat er een fout is opgetreden tijdens het instantiëren. Als u de router wilt instantiëren of opnieuw wilt instellen, kunt u de optie **Router opnieuw instellen** vinden door naar de overzichtspagina van de virtuele hub in de Azure Portal te navigeren.
+
+Elke virtuele-hub-router ondersteunt een geaggregeerde doorvoer van maximaal 50 Gbps. Connectiviteit tussen de virtueel-netwerkverbindingen gaat uit van een totaal van 2000 VM-werkbelastingen voor alle VNets in een virtueel WAN.
+
+#### <a name="transit-connectivity-between-vpn-and-expressroute"></a><a name="transit-er"></a>Transitconnectiviteit tussen VPN en ExpressRoute
+
+Virtual WAN maakt transitconnectiviteit tussen VPN en ExpressRoute mogelijk. Dit betekent dat sites met een VPN-verbinding of externe gebruikers kunnen communiceren met sites die verbonden zijn met ExpressRoute. Er is ook een impliciete veronderstelling dat de vlag **Vertakking-naar-vertakking** is ingeschakeld. Deze vlag is te vinden in de Azure Virtual WAN-instellingen in de Azure-portal. Alle routebeheer wordt verzorgd door de virtuele-hub-router, die ook transitconnectiviteit tussen virtuele netwerken mogelijk maakt.
+
+### <a name="custom-routing"></a><a name="routing"></a>Aangepaste routering
+
+Virtual WAN biedt geavanceerde routeringsverbeteringen. De mogelijkheid om aangepaste routetabellen in te stellen, virtuele netwerkroutering te optimaliseren met routekoppeling en -doorgifte, routeringstabellen te groeperen met labels en talloze netwerk- of routeringsscenario's voor gedeelde services te vereenvoudigen.
+
+### <a name="global-vnet-peering"></a><a name="global"></a>Global VNet Peering
+
+Global VNet Peering biedt een mechanisme voor het verbinden van twee VNets in verschillende regio's. In Virtual WAN worden VNets met virtuele hubs verbonden door virtueel-netwerkverbindingen. De gebruiker hoeft globale VNet-peering niet expliciet in te stellen. Voor VNets die verbonden zijn met virtuele hubs in dezelfde regio worden VNet-peeringkosten in rekening gebracht. Voor VNets die verbonden zijn met virtuele hubs in een andere regio worden globale VNet-peeringkosten in rekening gebracht.
+
+### <a name="expressroute-traffic-encryption"></a><a name="encryption"></a>ExpressRoute-verkeersversleuteling
+
+Azure Virtual WAN biedt de mogelijkheid uw ExpressRoute-verkeer te versleutelen. De techniek biedt een versleutelde transit tussen de on-premises netwerken en virtuele Azure-netwerken via ExpressRoute, zonder via het openbare Internet te gaan of openbare IP-adressen te gebruiken. Zie voor meer informatie [IPsec over ExpressRoute voor Virtual WAN](vpn-over-expressroute.md).
+
 ## <a name="locations"></a><a name="locations"></a>Locaties
 
 Zie het artikel [Virtual WAN-partners en -locaties](virtual-wan-locations-partners.md) voor informatie over de locatie.
+
+## <a name="route-tables-in-basic-and-standard-virtual-wans"></a><a name="route"></a>Routeringstabellen in Basic en Standard virtuele WAN's
+
+Routeringstabellen hebben nu functies voor koppeling en doorgifte. Een vooraf bestaande routeringstabel is een routeringstabel die deze functies niet heeft. Als u al bestaande routes in Hub Routing hebt en u de nieuwe mogelijkheden wilt gebruiken, moet u rekening houden met het volgende:
+
+* **Standard Virtual WAN-klanten met vooraf bestaande routes in virtuele hub**: Als u nieuwe mogelijkheden voor de routetabellen wilt gebruiken, moet u wachten tot de week van 3 augustus wanneer de implementatie van Azure afgerond is. Als u bestaande routes hebt in de sectie Routering voor de hub in Azure Portal, verwijder die dan eerst en probeer vervolgens nieuwe routetabellen te maken (beschikbaar in de sectie Routeringstabellen voor de hub in Azure Portal).
+
+* **Basic Virtual WAN-klanten met vooraf bestaande routes in virtuele hub**: Als u de nieuwe mogelijkheden voor de routetabellen wilt gebruiken, moet u wachten tot de week van 3 augustus wanneer de implementatie van Azure afgerond is. Als u bestaande routes hebt in de sectie Routering voor de hub in Azure Portal, verwijder die dan eerst en **upgrade** uw virtuele WAN Basic naar Standard. Zie [Een virtueel WAN upgraden van Basic naar Standard](upgrade-virtual-wan.md).
 
 ## <a name="faq"></a><a name="faq"></a>Veelgestelde vragen
 

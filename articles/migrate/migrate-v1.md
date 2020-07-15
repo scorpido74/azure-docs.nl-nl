@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7b02560d1e7b7c34a4d87dbdc468a85362aca4f7
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.openlocfilehash: 7c4a148d68de8c57ed9237c05ba11eaf6c5e81e3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82993810"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103956"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Werken met de vorige versie van Azure Migrate
 
@@ -21,24 +21,24 @@ Dit artikel bevat informatie over het werken met de vorige versie van Azure Migr
 
 Er zijn twee versies van de Azure Migrate-service:
 
-- **Huidige versie**: gebruik deze versie om Azure migrate projecten te maken, on-premises machines te detecteren en beoordelingen en migraties te organiseren. Meer [informatie](whats-new.md) over wat er nieuw is in deze versie.
-- **Vorige versie**: als u de vorige versie van Azure migrate gebruikt (alleen de evaluatie van on-premises virtuele VMware-machines wordt ondersteund), moet u nu de huidige versie gebruiken. Als u nog steeds Azure Migrate projecten moet gebruiken die in de vorige versie zijn gemaakt, kunt u dit op de volgende manieren doen:
-    - U kunt geen migratie projecten meer maken.
-    - U wordt aangeraden geen nieuwe detecties uit te voeren.
-    - U kunt nog steeds toegang krijgen tot bestaande projecten.
-    - U kunt nog steeds beoordelingen uitvoeren.
+- **Huidige versie**: Gebruik deze versie om Azure Migrate-projecten te maken, on-premises machines te detecteren, en evaluaties en migraties te organiseren. [Lees meer](whats-new.md) over wat er nieuw is in deze versie.
+- **Vorige versie**: Als u de vorige versie van Azure Migrate gebruikt (alleen evaluatie van on-premises VMware-VM's werd ondersteund), kunt u nu beter de huidige versie gaan gebruiken. Als u nog Azure Migrate-projecten moet gebruiken die in de vorige versie zijn gemaakt, kunt u hier lezen wat u wel en niet kunt doen:
+    - U kunt geen migratieprojecten meer maken.
+    - We raden u aan om ook geen nieuwe detecties meer uit te voeren.
+    - U houdt toegang tot bestaande projecten.
+    - U kunt nog steeds evaluaties uitvoeren.
     
 
 ## <a name="upgrade-between-versions"></a>Upgrade tussen versies
 
-U kunt geen upgrade uitvoeren van projecten of onderdelen in de vorige versie naar de nieuwe versie. U moet [een nieuw Azure migrate-project maken](how-to-add-tool-first-time.md)en er hulpprogram ma's voor de evaluatie en migratie aan toevoegen.
+U kunt projecten of onderdelen in de vorige versie niet upgraden naar de nieuwe versie. U moet [een nieuw Azure Migrate-project maken](how-to-add-tool-first-time.md) en daar hulpprogramma's voor evaluatie en migratie aan toevoegen.
 
-## <a name="find-projects-from-previous-version"></a>Projecten van de vorige versie zoeken
+## <a name="find-projects-from-previous-version"></a>Projecten uit de vorige versie zoeken
 
-Ga als volgt te weten over de vorige versies van projecten:
+Ga als volgt te werk om projecten uit de vorige versie te zoeken:
 
-1. In de Azure Portal > **alle services**, zoekt en selecteert u **Azure migrate**. 
-2. Op het dash board van Azure Migrate ziet u een melding en een koppeling voor toegang tot oude Azure Migrate projecten.
+1. Ga in de Azure-portal naar **Alle services**, zoek naar **Azure Migrate** en selecteer het. 
+2. Op het dashboard van Azure Migrate bevindt zich een melding met een koppeling voor toegang tot oude Azure Migrate-projecten.
 3. Klik op de koppeling om v1-projecten te openen.
 
 
@@ -46,8 +46,8 @@ Ga als volgt te weten over de vorige versies van projecten:
 
 Nadat virtuele machines in de portal zijn gedetecteerd, kunt u ze groeperen en een evaluatie maken.
 
-- U kunt onmiddellijk een on-premises evaluatie maken zodra er Vm's zijn gedetecteerd in de portal.
-- Voor evaluaties op basis van prestaties raden we u aan minstens een dag te wachten voordat u een evaluatie op basis van prestaties maakt, zodat u kunt beschikken over betrouw bare aanbevelingen voor de grootte.
+- U kunt onmiddellijk 'als on-premises'-evaluaties maken zodra er VM's in de portal zijn gedetecteerd.
+- Voor prestatie-evaluaties raden we aan ten minste een dag te wachten met het maken van een prestatie-evaluatie, om betrouwbare aanbevelingen voor de grootte te krijgen.
 
 Maak als volgt een evaluatie:
 
@@ -56,106 +56,106 @@ Maak als volgt een evaluatie:
 3. Maak de groep en geef een groepsnaam op.
 4. Selecteer de machines die u aan de groep wilt toevoegen.
 5. Klik op **Evaluatie maken** om de groep en de evaluatie te maken.
-6. Nadat de evaluatie is gemaakt, kunt u deze bekijken in het **overzichts** > **Dashboard**.
+6. Nadat de evaluatie is gemaakt, kunt u deze bekijken in **Overzicht** > **Dashboard**.
 7. Klik op **Evaluatie exporteren** om deze te downloaden als een Excel-bestand.
 
 Als u een bestaande evaluatie wilt bijwerken met de meest recente prestatiegegevens, kunt u de opdracht **Opnieuw berekenen** voor de evaluatie gebruiken om deze bij te werken.
 
-## <a name="review-an-assessment"></a>Een evaluatie controleren 
+## <a name="review-an-assessment"></a>Een evaluatie beoordelen 
 
 Een evaluatie heeft drie fasen:
 
-- Een evaluatie begint met een geschiktheids analyse om erachter te komen of computers compatibel zijn in Azure.
+- Een evaluatie begint met een geschiktheidsanalyse om erachter te komen of machines compatibel zijn in Azure.
 - Schattingen van de grootte.
-- Schatting van maandelijkse kosten.
+- Schatting van de maandelijkse kosten.
 
-Een machine wordt alleen verplaatst naar een latere fase als deze de voor gaande wordt door gegeven. Als een computer bijvoorbeeld de geschiktheids controle niet kan uitvoeren, wordt deze gemarkeerd als niet geschikt voor Azure en wordt de grootte en de kosten voor de berekening niet in rekening gebracht.
+Een machine gaat alleen door naar een latere fase als deze door de voorgaande fase is gekomen. Als een machine bijvoorbeeld niet door de geschiktheidscontrole komt, wordt deze gemarkeerd als niet geschikt voor Azure en worden de grootte en de kosten niet bepaald.
 
 
-### <a name="review-azure-readiness"></a>Azure-gereedheid controleren
+### <a name="review-azure-readiness"></a>Azure-gereedheid beoordelen
 
 De weergave van de Azure-gereedheid in de evaluatie toont de gereedheidsstatus van alle VM's.
 
-**Gereedheid** | **Overheids** | **Details**
+**Gereedheid** | **Status** | **Details**
 --- | --- | ---
-Gereed voor Azure | Geen compatibiliteits problemen. De machine kan worden gemigreerd naar Azure en wordt opgestart in azure met volledige ondersteuning voor Azure. | Voor virtuele machines die gereed zijn, wordt door Azure Migrate een VM-grootte in Azure aanbevolen.
-Voorwaardelijk gereed voor Azure | De computer kan worden opgestart in azure, maar heeft mogelijk geen volledige ondersteuning voor Azure. Bijvoorbeeld een machine met een oudere versie van Windows Server die niet wordt ondersteund in Azure. | In Azure Migrate worden de gereedheids problemen beschreven en worden er herstels tappen geboden.
-Niet gereed voor Azure |  De virtuele machine wordt niet opgestart in Azure. Als een virtuele machine bijvoorbeeld een schijf heeft die groter is dan 4 TB, kan deze niet worden gehost op Azure. | In Azure Migrate worden de gereedheids problemen beschreven en worden er herstels tappen geboden.
-Gereedheid onbekend | Azure Migrate kunt de gereedheid van Azure niet identificeren, meestal omdat er geen gegevens beschikbaar zijn.
+Gereed voor Azure | Geen compatibiliteitsproblemen. De machine kan in de huidige toestand naar Azure worden gemigreerd, en kan in Azure worden opgestart met volledige Azure-ondersteuning. | Voor virtuele machines die gereed zijn, wordt door Azure Migrate een VM-grootte in Azure aanbevolen.
+Voorwaardelijk gereed voor Azure | De machine kan worden opgestart in Azure, maar heeft mogelijk geen volledige ondersteuning voor Azure. Bijvoorbeeld een machine met een oudere versie van Windows Server die niet wordt ondersteund in Azure. | In Azure Migrate worden de gereedheidsproblemen beschreven en worden herstelstappen voorgesteld.
+Niet gereed voor Azure |  De VM kan niet worden opgestart in Azure. Als een VM bijvoorbeeld een schijf van meer dan 4 TB heeft, kan deze niet worden gehost op Azure. | In Azure Migrate worden de gereedheidsproblemen beschreven en worden herstelstappen voorgesteld.
+Gereedheid onbekend | Azure Migrate kan de gereedheid voor Azure niet vaststellen, meestal omdat er geen gegevens beschikbaar zijn.
 
 
-#### <a name="azure-vm-properties"></a>Eigenschappen van Azure VM
-Gereedheid houdt rekening met een aantal VM-eigenschappen om te bepalen of de virtuele machine kan worden uitgevoerd in Azure.
+#### <a name="azure-vm-properties"></a>Azure VM-eigenschappen
+Gereedheid houdt rekening met een aantal VM-eigenschappen om te bepalen of de VM kan worden uitgevoerd in Azure.
 
 
 **Eigenschap** | **Details** | **Gereedheid**
 --- | --- | ---
-**Opstart type** | BIOS ondersteund. UEFI wordt niet ondersteund. | Voorwaardelijk gereed als het opstart type UEFI is.
-**Kernen** | Kern <van machines = het maximum aantal kern geheugens (128) dat wordt ondersteund voor een virtuele machine van Azure.<br/><br/> Als er een prestatie geschiedenis beschikbaar is, wordt Azure Migrate beschouwd als de gebruikte kernen.<br/>Als er een comfort factor is opgegeven in de evaluatie-instellingen, wordt het aantal gebruikte kern geheugens vermenigvuldigd met de comfort factor.<br/><br/> Als er geen prestatie geschiedenis is, gebruikt Azure Migrate de toegewezen kernen zonder de comfort factor toe te passen. | Gereed als deze kleiner dan of gelijk aan de limieten zijn.
-**Geheugen** | De grootte van het computer geheugen <= de maximale hoeveelheid geheugen (3892 GB op Azure&nbsp;M-serie Standard_M128m<sup>2</sup>) voor een virtuele machine van Azure. [Meer informatie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Als de prestatie geschiedenis beschikbaar is, Azure Migrate beschouwt het gebruikte geheugen.<br/><br/>Als er een comfort factor is opgegeven, wordt het gebruikte geheugen vermenigvuldigd met de comfort factor.<br/><br/> Als er geen geschiedenis is, wordt het toegewezen geheugen gebruikt, zonder dat u de comfort factor hoeft toe te passen.<br/><br/> | Gereed indien binnen de limieten.
-**Opslag schijf** | De toegewezen grootte van een schijf moet 4 TB (4096 GB) of minder zijn.<br/><br/> Het aantal schijven dat is gekoppeld aan de computer, moet 65 of minder zijn, inclusief de besturingssysteem schijf. | Gereed indien binnen de limieten.
-**Netwerken** | Aan een machine moet 32 of minder Nic's zijn gekoppeld. | Gereed indien binnen de limieten.
+**Opstarttype** | BIOS ondersteund. UEFI niet ondersteund. | Voorwaardelijk gereed als het opstarttype UEFI is.
+**Kernen** | Kernen van machine <= het maximum aantal kernen (128) dat wordt ondersteund voor een Azure-VM.<br/><br/> Als de prestatiegeschiedenis beschikbaar is, houdt Azure Migrate rekening met de gebruikte kernen.<br/>Als er een comfortfactor is opgegeven in de evaluatie-instellingen, wordt het aantal gebruikte kernen vermenigvuldigd met de comfortfactor.<br/><br/> Als er geen prestatiegeschiedenis is, gebruikt Azure Migrate de toegewezen kernen, zonder de comfortfactor toe te passen. | Gereed indien kleiner dan of gelijk aan de limieten.
+**Geheugen** | De grootte van het geheugen van de machine <= het maximale geheugen (3892 GB op Azure M series Standard_M128m&nbsp;<sup>2</sup>) voor een Azure-VM. [Meer informatie](../virtual-machines/windows/sizes.md).<br/><br/> Als de prestatiegeschiedenis beschikbaar is, houdt Azure Migrate rekening met het gebruikte geheugen.<br/><br/>Als er een comfortfactor is opgegeven, wordt het gebruikte geheugen vermenigvuldigd met de comfortfactor.<br/><br/> Als er geen geschiedenis is, wordt het toegewezen geheugen gebruikt, zonder dat de comfortfactor wordt toegepast.<br/><br/> | Gereed indien binnen de limieten.
+**Opslagschijf** | De toegewezen grootte van een schijf moet 4 TB (4096 GB) of minder zijn.<br/><br/> Het aantal schijven dat is gekoppeld aan de machine moet 65 of minder zijn, inclusief de besturingssysteemschijf. | Gereed indien binnen de limieten.
+**Netwerken** | Aan een machine moet 32 of minder NIC's zijn gekoppeld. | Gereed indien binnen de limieten.
 
 #### <a name="guest-operating-system"></a>Gastbesturingssysteem
 
-Naast de VM-eigenschappen controleert Azure Migrate ook op het gast besturingssysteem van de on-premises VM om te bepalen of de virtuele machine kan worden uitgevoerd in Azure.
+Behalve naar de VM-eigenschappen kijkt Azure Migrate ook naar het gastbesturingssysteem van de on-premises VM om te bepalen of de VM kan worden uitgevoerd in Azure.
 
-- Azure Migrate beschouwt het besturings systeem dat is opgegeven in vCenter Server.
-- Omdat de detectie door Azure Migrate is gebaseerd op het apparaat, is er geen manier om te controleren of het besturings systeem dat in de virtuele machine wordt uitgevoerd, hetzelfde is als de versie die is opgegeven in vCenter Server.
+- Azure Migrate kijkt naar het besturingssysteem dat is opgegeven in vCenter Server.
+- Omdat de detectie door Azure Migrate is gebaseerd op het apparaat, is er geen manier om te controleren of het besturingssysteem dat in de VM wordt uitgevoerd, hetzelfde is als wat is opgegeven in vCenter Server.
 
 De volgende logica wordt gebruikt.
 
 **Besturingssysteem** | **Details** | **Gereedheid**
 --- | --- | ---
-Windows Server 2016 en alle SPs | Azure biedt volledige ondersteuning. | Gereed voor Azure
-Windows Server 2012 R2 en alle SPs | Azure biedt volledige ondersteuning. | Gereed voor Azure
-Windows Server 2012 en alle SPs | Azure biedt volledige ondersteuning. | Gereed voor Azure
-Windows Server 2008 R2 en alle SPs | Azure biedt volledige ondersteuning.| Gereed voor Azure
-Windows Server 2008 (32-bits en 64 bits) | Azure biedt volledige ondersteuning. | Gereed voor Azure
-Windows Server 2003, 2003 R2 | Out-of-support en er is een [aangepaste ondersteunings overeenkomst (CSA)](https://aka.ms/WSosstatement) vereist voor ondersteuning in Azure. | Voor bereid voor Azure kunt u het besturings systeem upgraden voordat u naar Azure migreert.
-Windows 2000, 98, 95, NT, 3,1, MS-DOS | Out-of-support. De computer kan worden opgestart in azure, maar er is geen ondersteuning voor het besturings systeem van Azure. | Voor bereid voor Azure is het raadzaam om het besturings systeem bij te werken voordat u naar Azure migreert.
-Windows-client 7, 8 en 10 | Azure biedt alleen ondersteuning voor een [abonnement op Visual Studio.](https://docs.microsoft.com/azure/virtual-machines/windows/client-images) | Voorwaardelijk gereed voor Azure
-Windows 10 Pro Desktop | Azure biedt ondersteuning voor [multi tenant-hosting rechten.](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment) | Voorwaardelijk gereed voor Azure
-Windows Vista, XP Professional | Out-of-support. De computer kan worden opgestart in azure, maar er is geen ondersteuning voor het besturings systeem van Azure. | Voor bereid voor Azure is het raadzaam om het besturings systeem bij te werken voordat u naar Azure migreert.
-Linux | Azure bevestigt deze [Linux-besturings systemen](../virtual-machines/linux/endorsed-distros.md). Andere Linux-besturings systemen kunnen worden opgestart in azure, maar het is raadzaam om het besturings systeem te upgraden naar een officiële versie voordat u naar Azure migreert. | Gereed voor Azure als de versie wordt goedgekeurd.<br/><br/>Voorwaardelijk gereed als de versie niet wordt goedgekeurd.
-Andere besturings systemen<br/><br/> Bijvoorbeeld Oracle Solaris, Apple Mac OS etc., FreeBSD, enzovoort. | Deze besturings systemen worden niet door Azure goedgekeurd. De computer kan worden opgestart in azure, maar er is geen ondersteuning voor het besturings systeem van Azure. | Voor bereid voor Azure is het raadzaam een ondersteund besturings systeem te installeren voordat u naar Azure migreert.  
-Besturings systeem opgegeven als een **andere** in vCenter Server | Azure Migrate kan het besturings systeem in dit geval niet identificeren. | Onbekende gereedheid. Zorg ervoor dat het besturings systeem dat wordt uitgevoerd in de virtuele machine wordt ondersteund in Azure.
-32-bits besturings systemen | De computer kan worden opgestart in azure, maar Azure biedt mogelijk geen volledige ondersteuning. | Voor bereid voor Azure kunt u overwegen om het besturings systeem van de machine te upgraden van 32-bits besturings systeem naar 64-bits besturings systeem voordat u naar Azure migreert.
+Windows Server 2016 en alle SP's | Azure biedt volledige ondersteuning. | Gereed voor Azure
+Windows Server 2012 R2 en alle SP's | Azure biedt volledige ondersteuning. | Gereed voor Azure
+Windows Server 2012 en alle SP's | Azure biedt volledige ondersteuning. | Gereed voor Azure
+Windows Server 2008 R2 en alle SP's | Azure biedt volledige ondersteuning.| Gereed voor Azure
+Windows Server 2008 (32-bits en 64-bits) | Azure biedt volledige ondersteuning. | Gereed voor Azure
+Windows Server 2003, 2003 R2 | Niet meer ondersteund, en vereist een [aangepaste ondersteuningsovereenkomst (CSA)](https://aka.ms/WSosstatement) voor ondersteuning in Azure. | Voorwaardelijk gereed voor Azure. Overweeg het besturingssysteem te upgraden voordat u naar Azure migreert.
+Windows 2000, 98, 95, NT, 3,1, MS-DOS | Niet meer ondersteund. De machine kan mogelijk worden opgestart in Azure, maar Azure biedt geen ondersteuning voor het besturingssysteem. | Voorwaardelijk gereed voor Azure. Wij raden aan het besturingssysteem te upgraden voordat u naar Azure migreert.
+Windows-client 7, 8 en 10 | Azure biedt alleen ondersteuning met een [Visual Studio-abonnement.](../virtual-machines/windows/client-images.md) | Voorwaardelijk gereed voor Azure
+Windows 10 Pro Desktop | Azure biedt ondersteuning met [multitenant-hostingrechten.](../virtual-machines/windows/windows-desktop-multitenant-hosting-deployment.md) | Voorwaardelijk gereed voor Azure
+Windows Vista, XP Professional | Niet meer ondersteund. De machine kan mogelijk worden opgestart in Azure, maar Azure biedt geen ondersteuning voor het besturingssysteem. | Voorwaardelijk gereed voor Azure. Wij raden aan het besturingssysteem te upgraden voordat u naar Azure migreert.
+Linux | Azure keurt deze [Linux-besturingssystemen](../virtual-machines/linux/endorsed-distros.md) goed. Andere Linux-besturingssystemen kunnen mogelijk worden opgestart in Azure, maar wij raden aan het besturingssysteem te upgraden naar een goedgekeurde versie voordat u naar Azure migreert. | Gereed voor Azure als de versie goedgekeurd is.<br/><br/>Voorwaardelijk gereed als de versie niet goedgekeurd is.
+Andere besturingssystemen<br/><br/> Bijvoorbeeld Oracle Solaris, Apple Mac OS enzovoort, FreeBSD, enzovoort. | Deze besturingssystemen worden niet door Azure goedgekeurd. De machine kan mogelijk worden opgestart in Azure, maar Azure biedt geen ondersteuning voor het besturingssysteem. | Voorwaardelijk gereed voor Azure. Wij raden aan een ondersteund besturingssysteem te installeren voordat u naar Azure migreert.  
+Besturingssysteem dat is opgegeven als **Anders** in vCenter Server | In dit geval kan Azure Migrate het besturingssysteem niet identificeren. | Gereedheid onbekend. Zorg ervoor dat het besturingssysteem dat wordt uitgevoerd in de VM wordt ondersteund in Azure.
+32-bits besturingssystemen | De computer kan mogelijk worden opgestart in Azure, maar Azure biedt mogelijk geen volledige ondersteuning. | Voorwaardelijk gereed voor Azure. Overweeg het besturingssysteem van de machine te upgraden van een 32-bits naar een 64-bits besturingssysteem voordat u naar Azure migreert.
 
 
-### <a name="review-sizing"></a>Grootte controleren
+### <a name="review-sizing"></a>Grootte bepalen
 
- De aanbeveling van Azure Migrate formaat is afhankelijk van het criterium voor de grootte die is opgegeven in de eigenschappen van de beoordeling.
+ De grootte die Azure Migrate aanbeveelt, is afhankelijk van het criterium voor het instellen van de grootte dat is opgegeven in de evaluatie-eigenschappen.
 
-- Als de grootte van het prestatie niveau is gebaseerd op prestaties, wordt de prestatie geschiedenis van de virtuele machines (CPU en geheugen) en schijven (IOPS en door Voer) in acht neemt.
-- Als het criterium voor het wijzigen van de grootte ' as on-premises ' is, is de aanbeveling van de omvang in azure gebaseerd op de grootte van de virtuele machine on-premises. De schijf grootte is gebaseerd op het opslag type dat is opgegeven in de eigenschappen van de beoordeling (standaard is Premium-schijven). Azure Migrate houdt geen rekening met de prestatie gegevens voor de virtuele machine en schijven.
+- Als de grootte wordt bepaald op basis van de prestaties, wordt de aanbeveling gedaan op basis van de prestatiegeschiedenis (CPU en geheugen) en schijven (IOPS en doorvoer) van de VM.
+- Als het criterium voor het bepalen van de grootte 'als on-premises' is, wordt de aanbevolen grootte in Azure gebaseerd op de grootte van de on-premises VM. De schijfgrootte wordt gebaseerd op het opslagtype dat is opgegeven in de evaluatie-eigenschappen (standaard is Premium-schijven). Azure Migrate houdt geen rekening met de prestatiegegevens voor de VM en schijven.
 
-### <a name="review-cost-estimates"></a>Beoordeling geraamde kosten
+### <a name="review-cost-estimates"></a>Geschatte kosten
 
-Met kosten ramingen worden de totale reken-en opslag kosten voor het uitvoeren van de virtuele machines in azure weer gegeven, samen met de details van elke machine.
+Kostenschattingen tonen de totale compute- en opslagkosten voor het uitvoeren van de VM's in Azure, evenals de details per machine.
 
-- Kosten ramingen worden berekend op basis van de aanbevolen grootte voor een VM-machine, de schijven en de evaluatie-eigenschappen.
+- De geschatte kosten worden berekend op basis van de aanbevolen grootte voor een VM-machine, de schijven ervan, en de evaluatie-eigenschappen.
 - Geschatte maandelijkse kosten voor computing en opslag worden samengevoegd voor alle virtuele machines in de groep.
-- De schatting van de kosten is voor het uitvoeren van de on-premises VM als Azure Infrastructure as a Service (IaaS) Vm's. Azure Migrate beschouwt geen PaaS (platform as a Service) of SaaS-kosten (software als een service).
+- De kostenschatting geldt voor het uitvoeren van de on-premises VM als IaaS-VM's (Infrastructure as a Service). Azure Migrate houdt geen rekening met PaaS- of SaaS-kosten (Platform as a service of Software as a service).
 
-### <a name="review-confidence-rating-performance-based-assessment"></a>Beoordeling van betrouw baarheid beoordelen (op basis van prestaties)
+### <a name="review-confidence-rating-performance-based-assessment"></a>Betrouwbaarheidsclassificatie (beoordeling op basis van prestaties)
 
-Elke evaluatie op basis van prestaties is gekoppeld aan een betrouwbaarheids classificatie.
+Elke evaluatie op basis van prestaties is gekoppeld aan een betrouwbaarheidsclassificatie.
 
-- Een betrouwbaarheids classificatie varieert van één ster tot vijf sterren (één ster is de laagste en vijf sterren de hoogste).
-- De vertrouwens classificatie wordt toegewezen aan een evaluatie op basis van de beschik baarheid van gegevens punten die nodig zijn om de evaluatie te berekenen.
+- Een betrouwbaarheidsclassificatie varieert van één ster tot vijf sterren (één ster is de laagste en vijf sterren de hoogste).
+- De betrouwbaarheidsclassificatie wordt aan een evaluatie toegewezen op basis van de beschikbaarheid van de gegevenspunten die nodig zijn om de evaluatie te berekenen.
 - De betrouwbaarheidsclassificatie van een evaluatie helpt u om de betrouwbaarheid in te schatten van de aanbevelingen voor de grootte die Azure Migrate geeft.
-- De vertrouwens classificatie is niet beschikbaar voor ' as-is ' on-premises Beoordelingen.
+- Er is geen betrouwbaarheidsclassificatie beschikbaar voor 'as-is' on-premises evaluaties.
 
-Azure Migrate heeft het volgende nodig voor het aanpassen van de prestaties:
-- Gebruiks gegevens voor CPU.
-- Geheugen gegevens van de virtuele machine.
-- Voor elke schijf die aan de VM is gekoppeld, zijn de schijf-IOPS en doorvoer gegevens nodig.
-- Voor elke netwerk adapter die aan een virtuele machine is gekoppeld, moet Azure Migrate de netwerk invoer/-uitvoer hebben.
-- Als een van de bovenstaande voor keuren niet beschikbaar is, zijn de aanbevelingen voor de grootte mogelijk niet betrouwbaar.
+Azure Migrate heeft de volgende informatie nodig voor groottebepaling op basis van prestaties:
+- Gebruiksgegevens voor CPU.
+- VM-geheugengegevens.
+- Voor elke schijf die aan de VM is gekoppeld, zijn de IOPS en de doorvoergegevens van de schijf vereist.
+- Voor elke aan een VM gekoppelde netwerkadapter heeft Azure Migrate de netwerk-invoer/uitvoer nodig.
+- Als een van de bovenstaande gegevens niet beschikbaar is, zijn de aanbevelingen voor de grootte minder betrouwbaar (en is de betrouwbaarheidsclassificatie dus lager).
 
 
-Afhankelijk van het percentage beschik bare gegevens punten, worden de mogelijke vertrouwens classificaties in de tabel samenvatten.
+Afhankelijk van het beschikbare percentage gegevenspunten, worden de mogelijke betrouwbaarheidsclassificaties in de tabel samengevat.
 
 **Beschikbaarheid van gegevenspunten** | **Betrouwbaarheidsclassificatie**
 --- | ---
@@ -166,148 +166,148 @@ Afhankelijk van het percentage beschik bare gegevens punten, worden de mogelijke
 81%-100% | 5 sterren
 
 
-#### <a name="assessment-issues-affecting-confidence-ratings"></a>Beoordelings problemen die invloed hebben op vertrouwens classificaties
+#### <a name="assessment-issues-affecting-confidence-ratings"></a>Evaluatieproblemen die de betrouwbaarheidsclassificatie beïnvloeden
 
-Een evaluatie heeft mogelijk niet alle gegevens punten beschikbaar vanwege een aantal redenen:
+Mogelijk zijn niet alle gegevenspunten beschikbaar voor een evaluatie, vanwege een aantal redenen:
 
-- U hebt uw omgeving niet voor de duur van de evaluatie. Als u bijvoorbeeld de beoordeling met de prestatie duur hebt ingesteld op één dag, moet u wachten tot minstens een dag nadat u de detectie hebt gestart, of alle gegevens punten die moeten worden verzameld.
-- Sommige Vm's zijn afgesloten tijdens de periode waarvoor de evaluatie is berekend. Als een virtuele machine voor een deel van de duur is uitgeschakeld, kan Azure Migrate geen prestatie gegevens voor die periode verzamelen.
-- Tijdens de evaluatie berekenings periode zijn enkele Vm's gemaakt. Als u bijvoorbeeld een evaluatie maakt met behulp van de prestatie geschiedenis van de afgelopen maand, maar een aantal Vm's in de omgeving per week geleden maakt, is de prestatie geschiedenis van de nieuwe Vm's niet voor de hele duur.
-
-> [!NOTE]
-> Als de betrouwbaarheids classificatie van een evaluatie onder vijf sterren is, wacht u ten minste een dag voor het apparaat om de omgeving in te dienen, en berekent u de evaluatie vervolgens opnieuw. Als u geen hoge grootte op basis van prestaties hebt, is het mogelijk niet betrouwbaar. Als u niet opnieuw wilt berekenen, kunt u het beste overschakelen naar een on-premises grootte door de evaluatie-eigenschappen te wijzigen.
-
-
-
-## <a name="create-groups-using-dependency-visualization"></a>Groepen maken met behulp van afhankelijkheids visualisatie
-
-Naast het hand matig maken van groepen kunt u groepen maken met behulp van afhankelijkheids visualisatie.
-- Normaal gesp roken gebruikt u deze methode als u groepen met een grotere mate van vertrouwen wilt beoordelen door afhankelijkheden van machines te controleren voordat u een evaluatie uitvoert.
-- Met behulp van afhankelijkheids visualisatie kunt u uw migratie naar Azure effectief plannen. Zo kunt u ervoor zorgen dat er niets achter komt en dat onverwachte storingen optreden wanneer u naar Azure migreert.
-- U kunt alle afhankelijke systemen detecteren die samen moeten worden gemigreerd en aangeven of een actief systeem nog steeds gebruikers is of een kandidaat is voor buiten gebruik stellen in plaats van migratie.
-- Azure Migrate maakt gebruik van de Servicetoewijzing oplossing in Azure Monitor om de visualisatie van afhankelijkheden in te scha kelen.
+- U hebt uw omgeving niet voor de duur van de evaluatie geprofileerd. Als u de evaluatie bijvoorbeeld maakt met de duur van de prestaties ingesteld op één dag, moet u na het starten van de detectie minimaal een dag wachten, totdat alle gegevenspunten zijn verzameld.
+- Er zijn enkele VM's uitgeschakeld in de periode waarover de evaluatie werd berekend. Als er VM's een gedeelte van de tijd uitgeschakeld zijn geweest, kan Azure Migrate voor die periode geen prestatiegegevens verzamelen.
+- Er zijn VM's gemaakt in de berekeningsperiode van de evaluatie. Als u bijvoorbeeld een evaluatie maakt op basis van de prestatiegeschiedenis van de afgelopen maand, maar u hebt een week geleden een aantal VM's gemaakt in de omgeving, geldt de prestatiegeschiedenis van de nieuwe VM's niet voor de gehele duur.
 
 > [!NOTE]
-> Visualisatie van afhankelijkheid is niet beschikbaar in Azure Government.
-
-Als u afhankelijkheids visualisatie wilt instellen, koppelt u een Log Analytics-werk ruimte aan een Azure Migrate-project, installeert u agents op computers waarvoor u afhankelijkheden wilt visualiseren en maakt u vervolgens groepen met afhankelijkheids informatie. 
+> Als de betrouwbaarheidsclassificatie van een evaluatie lager is dan vijf sterren, wacht dan minimaal een dag tot het apparaat de omgeving heeft geprofileerd en bereken de evaluatie dan opnieuw. Als u dit niet doet, is de groottebepaling op basis van prestaties mogelijk niet betrouwbaar. Als u niet opnieuw wilt berekenen, raden wij aan over te schakelen op groottebepaling 'als on-premises', door de evaluatie-eigenschappen te wijzigen.
 
 
 
-### <a name="associate-a-log-analytics-workspace"></a>Een Log Analytics werkruimte koppelen
+## <a name="create-groups-using-dependency-visualization"></a>Groepen maken met behulp van afhankelijkheidsvisualisatie
 
-Als u afhankelijkheids visualisatie wilt gebruiken, koppelt u een Log Analytics-werk ruimte aan een migratie project. U kunt alleen een werk ruimte maken of koppelen in hetzelfde abonnement waar het migratie project wordt gemaakt.
-
-1. Als u een Log Analytics werk ruimte aan een project wilt koppelen, klikt u in **overzicht**> **Essentials**op **configuratie vereist**.
-2. U kunt een nieuwe werk ruimte maken of een bestaande toevoegen:
-  - Geef een naam op om een nieuwe werk ruimte te maken. De werk ruimte wordt gemaakt in een regio in dezelfde [Azure-geografie](https://azure.microsoft.com/global-infrastructure/geographies/) als het migratie project.
-  - Wanneer u een bestaande werk ruimte koppelt, kunt u kiezen uit alle beschik bare werk ruimten in hetzelfde abonnement als het migratie project. Er worden alleen werk ruimten weer gegeven die zijn gemaakt in een [ondersteunde servicetoewijzing regio](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites). Als u een werk ruimte wilt koppelen, moet u ervoor zorgen dat u toegang hebt tot de werk ruimte.
+Naast het handmatig maken van groepen, kunt u groepen maken met behulp van afhankelijkheidsvisualisatie.
+- Normaal gesproken gebruikt u deze methode als u groepen met een grotere mate van vertrouwen wilt beoordelen door afhankelijkheden van machines kruiselings te controleren voordat u een evaluatie uitvoert.
+- Afhankelijkheidsvisualisatie helpt u uw migratie naar Azure effectief te plannen. Het helpt u ervoor te zorgen dat er niets achterblijft, en dat er geen onverwachte uitval optreedt wanneer u naar Azure migreert.
+- U kunt alle onderling afhankelijke systemen detecteren die samen moeten worden gemigreerd, en bepalen of een actief systeem nog wel gebruikers bedient of dat het een kandidaat is voor buitengebruikstelling in plaats van migratie.
+- Azure Migrate maakt gebruik van de Servicetoewijzing-oplossing in Azure Monitor om afhankelijkheidsvisualisatie mogelijk te maken.
 
 > [!NOTE]
-> U kunt de werk ruimte die is gekoppeld aan een migratie project niet wijzigen.
+> Afhankelijkheidsvisualisatie is niet beschikbaar in Azure Government.
+
+Als u afhankelijkheidsvisualisatie wilt instellen, koppelt u een Log Analytics-werkruimte aan een Azure Migrate-project, installeert u agents op machines waarvoor u afhankelijkheden wilt visualiseren en maakt u vervolgens groepen met behulp van afhankelijkheidsinformatie. 
+
+
+
+### <a name="associate-a-log-analytics-workspace"></a>Een Log Analytics-werkruimte koppelen
+
+Als u afhankelijkheidsvisualisatie wilt gebruiken, koppelt u een Log Analytics-werkruimte aan een migratieproject. U kunt alleen een werkruimte maken of koppelen in hetzelfde abonnement als waar het migratieproject wordt gemaakt.
+
+1. Als u een Log Analytics-werkruimte aan een project wilt koppelen, klikt u in **Overzicht**> **Essentials**op **Vereist configuratie**.
+2. U kunt een nieuwe werkruimte maken of een bestaande koppelen:
+  - Geef een naam op om een nieuwe werkruimte te maken. De werkruimte wordt gemaakt in een regio in dezelfde [Azure-geografie](https://azure.microsoft.com/global-infrastructure/geographies/) als het migratieproject.
+  - Wanneer u een bestaande werkruimte koppelt, kunt u kiezen uit alle beschikbare werkruimten in hetzelfde abonnement als het migratieproject. Er worden alleen werkruimten weergegeven die zijn gemaakt in een [door Servicetoewijzing ondersteunde regio](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites). Als u een werkruimte wilt koppelen, moet u ervoor zorgen dat u 'Lezer'-toegang hebt tot de werkruimte.
+
+> [!NOTE]
+> U kunt de werkruimte die aan een migratieproject is gekoppeld, niet wijzigen.
 
 ### <a name="download-and-install-vm-agents"></a>VM-agents downloaden en installeren
 
-Nadat u een werk ruimte hebt geconfigureerd, downloadt en installeert u agents op elke on-premises computer die u wilt evalueren. Als u bovendien computers hebt zonder Internet verbinding, moet u de [log Analytics-gateway](../azure-monitor/platform/gateway.md) hierop downloaden en installeren.
+Nadat u een werkruimte hebt geconfigureerd, downloadt en installeert u agents op elke on-premises machine die u wilt evalueren. Als u machines zonder internetverbinding hebt, moet u bovendien [Log Analytics-gateway](../azure-monitor/platform/gateway.md) downloaden en installeren op deze machines.
 
-1. Klik in **overzicht**op **Manage** > **machines**beheren en selecteer de gewenste computer.
-2. Klik in de kolom **afhankelijkheden** op **agents installeren**.
-3. Down load en installeer micro soft Monitoring Agent (MMA) en de afhankelijkheids agent op elke virtuele machine die u wilt beoordelen op de pagina **afhankelijkheden** .
+1. Klik in **Overzicht**op **Beheer** > **Machines**, en selecteer de gewenste machine.
+2. Klik in de kolom **Afhankelijkheden** op **Agents installeren**.
+3. Download en installeer op de pagina **Afhankelijkheden** de MMA (Microsoft Monitoring Agent) en de afhankelijkheidsagent op elke VM die u wilt evalueren.
 4. Kopieer de werkruimte-id en -sleutel. U hebt deze nodig wanneer u de MMA installeert op de on-premises machine.
 
 > [!NOTE]
-> Als u de installatie van agents wilt automatiseren, kunt u een implementatie hulpprogramma, zoals Configuration Manager of een partner programma, zoals [Intigua](https://www.intigua.com/intigua-for-azure-migration), gebruiken dat een oplossing voor agent implementatie biedt voor Azure Migrate.
+> Als u de installatie van agents wilt automatiseren, kunt u een implementatiehulpprogramma zoals Configuration Manager of een partnerprogramma zoals [Intigua](https://www.intigua.com/intigua-for-azure-migration) gebruiken, dat een oplossing voor het implementeren van agents biedt voor Azure Migrate.
 
 
 #### <a name="install-the-mma-agent-on-a-windows-machine"></a>De MMA-agent op een Windows-computer installeren
 
-De agent installeren op een Windows-computer:
+Installeer de agent als volgt op een Windows-computer:
 
 1. Dubbelklik op de gedownloade agent.
-2. Klik op de pagina **Welkom** op **Volgende**. Klik op de pagina **licentie voorwaarden** op **Ik ga akkoord** om de licentie te accepteren.
-3. Bewaar of wijzig in **doelmap**de standaardinstallatiemap > **volgende**.
-4. In **installatie opties voor agent**selecteert u **Azure log Analytics** > **volgende**.
-5. Klik op **toevoegen** om een nieuwe log Analytics-werk ruimte toe te voegen. Plak de werk ruimte-ID en-sleutel die u hebt gekopieerd uit de portal. Klik op **Volgende**.
+2. Klik op de pagina **Welkom** op **Volgende**. Klik op de pagina **Licentievoorwaarden** op **Akkoord** om de licentie te accepteren.
+3. Behoud of wijzig in **Doelmap** de standaardinstallatiemap > **Volgende**.
+4. Selecteer in **Installatieopties voor agent** de optie **Azure Log Analytics** > **Volgende**.
+5. Klik op **Toevoegen** om een nieuwe Log Analytics-werkruimte toe te voegen. Plak de werkruimte-id en -sleutel die u in de portal hebt gekopieerd. Klik op **Volgende**.
 
-U kunt de agent installeren vanaf de opdracht regel of met behulp van een geautomatiseerde methode zoals Configuration Manager. Meer [informatie](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration) over het gebruik van deze methoden om de MMA-agent te installeren.
+U kunt de agent installeren vanaf de opdrachtregel of met behulp van een geautomatiseerde methode zoals Configuration Manager. [Meer informatie](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration) over het gebruiken van deze methoden om de MMA-agent te installeren.
 
 #### <a name="install-the-mma-agent-on-a-linux-machine"></a>De MMA-agent op een Linux-computer installeren
 
-De agent installeren op een Linux-computer:
+Installeer de agent als volgt op een Linux-computer:
 
-1. De juiste bundel (x86 of x64) overdragen aan uw Linux-computer met SCP/SFTP.
-2. Installeer de bundel met behulp van het argument--install.
+1. Breng de juiste bundel (x86 of x64) met behulp van scp/ftp over naar uw Linux-computer.
+2. Installeer de bundel met behulp van het argument --install.
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
-Meer [informatie](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems) over de lijst met ondersteunde Linux-besturings systemen door MMA.
+[Meer informatie](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) over de lijst met door MMA ondersteunde Linux-besturingssystemen.
 
 ### <a name="install-the-mma-agent-on-a-machine-monitored-by-operations-manager"></a>De MMA-agent installeren op een computer die wordt bewaakt door Operations Manager
 
-Voor computers die worden bewaakt met System Center Operations Manager 2012 R2 of hoger is het niet nodig om de MMA-agent te installeren. Servicetoewijzing integreert met de Operations Manager MMA om de benodigde afhankelijkheids gegevens te verzamelen. [Meer informatie](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites). De afhankelijkheids agent moet worden geïnstalleerd.
+Voor computers die worden bewaakt met System Center Operations Manager 2012 R2 of hoger is het niet nodig om de MMA-agent te installeren. Servicetoewijzing wordt geïntegreerd met de Operations Manager MMA om de benodigde afhankelijkheidsgegevens te verzamelen. [Meer informatie](../azure-monitor/insights/service-map-scom.md#prerequisites). De afhankelijkheidsagent moet wel worden geïnstalleerd.
 
 ### <a name="install-the-dependency-agent"></a>De afhankelijkheidsagent installeren
 
-1. Als u de afhankelijkheids agent op een Windows-computer wilt installeren, dubbelklikt u op het installatie bestand en volgt u de wizard.
-2. Als u de afhankelijkheids agent op een Linux-computer wilt installeren, installeert u als root met de volgende opdracht:
+1. Als u de afhankelijkheidsagent op een Windows-computer wilt installeren, dubbelklikt u op het installatiebestand en volgt u de wizard.
+2. Als u de afhankelijkheidsagent op een Linux-computer wilt installeren, installeert u als root met de volgende opdracht:
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-- Meer informatie over de [ondersteuning van de afhankelijkheids agent](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) voor de Windows-en Linux-besturings systemen.
-- Meer [informatie](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples) over hoe u scripts kunt gebruiken om de afhankelijkheids agent te installeren.
+- Meer informatie over de [ondersteuning voor de afhankelijkheidsagent](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) voor de Windows- en Linux-besturingssystemen.
+- [Meer informatie](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples) over hoe u scripts kunt gebruiken om de afhankelijkheidsagent te installeren.
 
 >[!NOTE]
-> Het Azure Monitor voor VM's artikel waarnaar wordt verwezen om een overzicht te geven van de systeem vereisten en-methoden voor het implementeren van de afhankelijkheids agent, zijn ook van toepassing op de Servicetoewijzing oplossing.
+> Het artikel Azure Monitor voor VM's waarnaar wordt verwezen om een overzicht te geven van de systeemvereisten, en de methoden voor het implementeren van de afhankelijkheidsagent, zijn ook van toepassing op de Servicetoewijzing-oplossing.
 
-### <a name="create-a-group-with-dependency-mapping"></a>Een groep met afhankelijkheids toewijzing maken
+### <a name="create-a-group-with-dependency-mapping"></a>Een groep met afhankelijkheidstoewijzing maken
 
-1. Nadat u de agents hebt geïnstalleerd, gaat u naar de portal en klikt u op**machines** **beheren** > .
-2. Zoek naar de computer waarop u de agents hebt geïnstalleerd.
-3. De kolom **afhankelijkheden** voor de machine moet nu als **weergave afhankelijkheden**worden weer gegeven. Klik op de kolom om de afhankelijkheden van de machine weer te geven.
-4. De afhankelijkheids toewijzing voor de machine bevat de volgende details:
-    - Inkomende (clients) en uitgaande (servers) TCP-verbindingen van de computer
-        - De afhankelijke computers waarop geen MMA en een afhankelijkheids agent is geïnstalleerd, worden gegroepeerd op poort nummers.
-        - De afhankelijke computers waarop de MMA en de afhankelijkheids agent zijn geïnstalleerd, worden weer gegeven als afzonderlijke vakken.
-    - Processen die worden uitgevoerd op de computer, kunt u elke computer vak uitvouwen om de processen weer te geven
-    - Computer eigenschappen, met inbegrip van de FQDN, het besturings systeem, het MAC-adres worden weer gegeven. U kunt op elke machine klikken om details weer te geven.
+1. Nadat u de agents hebt geïnstalleerd, gaat u naar de portal en klikt u op **Beheren** > **Machines**.
+2. Zoek naar de machine waarop u de agents hebt geïnstalleerd.
+3. De kolom **Afhankelijkheden** voor de machine zou nu moeten worden weergegeven als **Afhankelijkheden weergeven**. Klik op de kolom om de afhankelijkheden van de machine weer te geven.
+4. De afhankelijkheidstoewijzing voor de machine bevat de volgende details:
+    - Inkomende (clients) en uitgaande (servers) TCP-verbindingen van/naar de machine
+        - De afhankelijke machines waarop geen MMA en afhankelijkheidsagent is geïnstalleerd, worden gegroepeerd op poortnummer.
+        - De afhankelijke machines waarop de MMA en afhankelijkheidsagent wel is geïnstalleerd, worden weergegeven als aparte vakken.
+    - Processen die worden uitgevoerd op de machine; u kunt elk machinevak uitvouwen om de processen weer te geven
+    - Machine-eigenschappen, inclusief de FQDN, besturingssysteem, MAC-adres worden weergegeven. U kunt op elk machinevak klikken om details weer te geven.
 
-4. U kunt afhankelijkheden voor verschillende tijds duren weer geven door te klikken op de tijds duur in het label tijds bereik. Het bereik is standaard een uur. U kunt het tijds bereik wijzigen of begin-en eind datums en duur opgeven.
+4. U kunt afhankelijkheden voor verschillende tijdsduren weergeven door te klikken op de tijdsduur in het tijdsbereiklabel. Het bereik is standaard een uur. U kunt het tijdsbereik wijzigen of begin- en einddatums en duur opgeven.
 
    > [!NOTE]
-   >    Een tijds bereik van Maxi maal een uur wordt ondersteund. Gebruik Azure Monitor Logboeken om de [afhankelijkheids gegevens](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) over een langere periode te vragen.
+   >    Er wordt een tijdsbereik van maximaal een uur ondersteund. Gebruik Azure Monitor-logboeken voor het [opvragen van afhankelijkheidsgegevens](./how-to-create-group-machine-dependencies.md) over een langere periode.
 
-5. Nadat u de afhankelijke machines die u wilt groeperen, hebt geïdentificeerd, gebruikt u CTRL + klikken om meerdere computers op de kaart te selecteren en klikt u op **machines groeperen**.
-6. Geef een groeps naam op. Controleer of de afhankelijke computers worden gedetecteerd door Azure Migrate.
+5. Nadat u de afhankelijke machines die u wilt groeperen, hebt geïdentificeerd, gebruikt u Ctrl+klikken om meerdere computers in de toewijzing te selecteren en klikt u op **Machines groeperen**.
+6. Geef een groepsnaam op. Controleer of de afhankelijke machines worden gedetecteerd door Azure Migrate.
 
     > [!NOTE]
-    > Als een afhankelijke computer niet wordt gedetecteerd door Azure Migrate, kunt u deze niet toevoegen aan de groep. Als u dergelijke machines aan de groep wilt toevoegen, moet u het detectie proces opnieuw uitvoeren met het juiste bereik in vCenter Server en ervoor zorgen dat de computer wordt gedetecteerd door Azure Migrate.  
+    > Als een afhankelijke machine niet wordt gedetecteerd door Azure Migrate, kunt u deze niet toevoegen aan de groep. Als u dergelijke machines aan de groep wilt toevoegen, moet u het detectieproces opnieuw uitvoeren met het juiste bereik in vCenter Server en ervoor zorgen dat de computer wordt gedetecteerd door Azure Migrate.  
 
-7. Als u een evaluatie voor deze groep wilt maken, schakelt u het selectie vakje in om een nieuwe evaluatie voor de groep te maken.
+7. Als u een evaluatie voor deze groep wilt maken, schakelt u het selectievakje in om een nieuwe evaluatie voor de groep te maken.
 8. Klik op **OK** om de groep op te slaan.
 
-Zodra de groep is gemaakt, wordt aanbevolen agents op alle machines van de groep te installeren en de groep te verfijnen door de afhankelijkheid van de hele groep te visualiseren.
+Nadat de groep is gemaakt, wordt aanbevolen agents op alle machines van de groep te installeren en de groep te verfijnen door de afhankelijkheid van de hele groep te visualiseren.
 
-## <a name="query-dependency-data-from-azure-monitor-logs"></a>Afhankelijkheids gegevens uit Azure Monitor logboeken opvragen
+## <a name="query-dependency-data-from-azure-monitor-logs"></a>Afhankelijkheidsgegevens uit Azure Monitor-logboeken opvragen
 
-Afhankelijkheids gegevens die door Servicetoewijzing zijn vastgelegd, zijn beschikbaar voor het uitvoeren van query's in de werk ruimte Log Analytics die aan uw Azure Migrate-project is gekoppeld. Meer [informatie](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records) over de servicetoewijzing gegevens tabellen om in azure monitor-logboeken te zoeken. 
+Afhankelijkheidsgegevens die door Servicetoewijzing zijn vastgelegd, zijn beschikbaar om te worden opgevraagd in de Log Analytics-werkruimte die is gekoppeld aan uw Azure Migrate-project. [Lees meer](../azure-monitor/insights/service-map.md#log-analytics-records) over de Servicetoewijzing-gegevenstabellen die u kunt opvragen in Azure Monitor-logboeken. 
 
 De Kusto-query's uitvoeren:
 
-1. Nadat u de agents hebt geïnstalleerd, gaat u naar de portal en klikt u op **overzicht**.
-2. Ga in **overzicht**naar het gedeelte **essentiële** elementen van het project en klik op de werkruimte naam die wordt vermeld naast de **OMS-werk ruimte**.
-3. Klik op de pagina log Analytics werk ruimte op **algemene** > **Logboeken**.
-4. Schrijf uw query om afhankelijkheids gegevens te verzamelen met behulp van Azure Monitor Logboeken. Zoek voorbeeld query's in de volgende sectie.
-5. Voer de query uit door te klikken op uitvoeren. 
+1. Nadat u de agents hebt geïnstalleerd, gaat u naar de portal en klikt u op **Overzicht**.
+2. Ga in **Overzicht**naar de sectie **Essentials** van het project en klik op de werkruimtenaam naast **OMS-werkruimte**.
+3. Klik op de werkruimtepagina van Log Analytics op **Algemeen** > **Logboeken**.
+4. Schrijf uw query om afhankelijkheidsgegevens te verzamelen met behulp van Azure Monitor-logboeken. In de volgende sectie vindt u enkele voorbeeldquery's.
+5. Voer de query uit door op Uitvoeren te klikken. 
 
-Meer [informatie](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) over het schrijven van Kusto-query's. 
+[Meer informatie](../azure-monitor/log-query/get-started-portal.md) over het schrijven van Kusto-query's. 
 
-### <a name="sample-azure-monitor-logs-queries"></a>Voorbeeld Azure Monitor logboeken query's
+### <a name="sample-azure-monitor-logs-queries"></a>Voorbeeldquery's voor Azure Monitor-logboeken
 
-Hieronder vindt u voorbeeld query's die u kunt gebruiken om afhankelijkheids gegevens te extra heren. U kunt de query's aanpassen om uw voorkeurs gegevens punten uit te pakken. [Hier](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records)vindt u een volledige lijst met de velden in afhankelijkheids gegevens records. Zoek [hier](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches)meer voor beelden van query's.
+Hieronder vindt u voorbeeldquery's die u kunt gebruiken om afhankelijkheidsgegevens te extraheren. U kunt de query's aanpassen om de gewenste gegevenspunten te extraheren. [Hier](../azure-monitor/insights/service-map.md#log-analytics-records) is een volledige lijst met velden in afhankelijkheidsgegevensrecords beschikbaar. [Hier](../azure-monitor/insights/service-map.md#sample-log-searches) kunt u meer voorbeeldquery's vinden.
 
-#### <a name="summarize-inbound-connections-on-a-set-of-machines"></a>Binnenkomende verbindingen op een set machines samenvatten
+#### <a name="summarize-inbound-connections-on-a-set-of-machines"></a>Inkomende verbindingen op een set machines samenvatten
 
-De records in de tabel voor metrische verbindings gegevens, VMConnection, vertegenwoordigen geen afzonderlijke fysieke netwerk verbindingen. Meerdere fysieke netwerk verbindingen worden gegroepeerd in een logische verbinding. Meer [informatie](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#connections) over hoe fysieke netwerk verbindings gegevens worden geaggregeerd in één logische record in VMConnection. 
+De records in de tabel voor metrische gegevens over verbindingen, VMConnection, vertegenwoordigen geen afzonderlijke fysieke netwerkverbindingen. Er worden meerdere fysieke netwerkverbindingen gegroepeerd in een logische verbinding. [Meer informatie](../azure-monitor/insights/service-map.md#connections) over hoe fysieke netwerkverbindingsgegevens worden geaggregeerd in één logische record in VMConnection. 
 
 ```
 // the machines of interest
@@ -323,7 +323,7 @@ VMConnection
 | summarize sum(LinksEstablished) by Computer, Direction, SourceIp, DestinationIp, DestinationPort
 ```
 
-#### <a name="summarize-volume-of-data-sent-and-received-on-inbound-connections-between-a-set-of-machines"></a>Een samen vatting van de hoeveelheid gegevens die wordt verzonden en ontvangen op binnenkomende verbindingen tussen een set machines
+#### <a name="summarize-volume-of-data-sent-and-received-on-inbound-connections-between-a-set-of-machines"></a>Verzonden en ontvangen gegevensvolume op inkomende verbindingen tussen een set machines samenvatten
 
 ```
 // the machines of interest
@@ -341,4 +341,4 @@ VMConnection
 
 
 ## <a name="next-steps"></a>Volgende stappen
-[Meer informatie over](migrate-services-overview.md) de nieuwste versie van Azure Migrate.
+[Lees meer over](migrate-services-overview.md) de nieuwste versie van Azure Migrate.

@@ -5,21 +5,21 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 11/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 76b2b465354df5b06ecd93986aec71530d175fe6
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
-ms.translationtype: MT
+ms.openlocfilehash: 0644dad9e8e6f2999acfa24ea1088207f6d5e692
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85562896"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86028058"
 ---
 ## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>Formulieren analyseren voor sleutel-waardeparen en tabellen
 
-Vervolgens gebruikt u uw pas getrainde model voor het analyseren van een document en het extra heren van sleutel-waardeparen en tabellen. Roep de **[analyse formulier](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)** -API aan door de volgende code uit te voeren in een nieuw python-script. Voordat u het script uitvoert, moet u de volgende wijzigingen aanbrengen:
+U gaat nu uw pas getrainde model gebruiken voor het analyseren van een document en het extraheren van de sleutel-waardeparen en tabellen ervan. Roep de API **[Formulier analyseren](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)** aan door de volgende code uit te voeren in een nieuw Python-script. Voordat u het script uitvoert, moet u de volgende wijzigingen aanbrengen:
 
-1. Vervang door `<file path>` het bestandspad van uw formulier (bijvoorbeeld C:\temp\file.pdf). Dit kan ook de URL zijn van een extern bestand. Voor deze Quick Start kunt u de bestanden in de map **test** van de [set met voorbeeld gegevens](https://go.microsoft.com/fwlink/?linkid=2090451)gebruiken.
-1. Vervang door `<model_id>` de model-id die u in de vorige sectie hebt ontvangen.
-1. Vervang door `<endpoint>` het eind punt dat u hebt verkregen met de abonnements sleutel voor uw formulier herkenning. U vindt deze op het tabblad **overzicht** van resource Recognizer.
-1. Vervang door `<file type>` het bestands type. Ondersteunde typen: `application/pdf` , `image/jpeg` , `image/png` , `image/tiff` .
+1. Vervang `<file path>` door het bestandspad van uw formulier (bijvoorbeeld C:\temp\file.pdf). Dit kan ook de URL zijn van een extern bestand. Voor deze quickstart kunt u de bestanden in de map **Test** van de [set met voorbeeldgegevens](https://go.microsoft.com/fwlink/?linkid=2090451) gebruiken.
+1. Vervang `<model_id>` door de model-id in de vorige stap.
+1. Vervang `<endpoint>` door het eindpunt dat u hebt verkregen met uw Form Recognizer-abonnementssleutel. U vindt deze op het tabblad **Overzicht** van uw Form Recognizer-resource.
+1. Vervang `<file type>` door het bestandstype. Ondersteunde typen zijn: `application/pdf`, `image/jpeg`, `image/png`, `image/tiff`.
 1. Vervang `<subscription key>` door uw abonnementssleutel.
 
     ```python
@@ -58,15 +58,15 @@ Vervolgens gebruikt u uw pas getrainde model voor het analyseren van een documen
         quit() 
     ```
 
-1. Sla de code op in een bestand met de extensie. py. Bijvoorbeeld *Form-Recognizer-analyze.py*.
+1. Sla de code op in een bestand met de extensie .py. Bijvoorbeeld *form-recognizer-analyze.py*.
 1. Open een opdrachtpromptvenster.
 1. Typ bij de prompt de opdracht `python` om het voorbeeld uit te voeren. Bijvoorbeeld `python form-recognizer-analyze.py`.
 
-Wanneer u de **analyse formulier** -API aanroept, ontvangt u een `201 (Success)` antwoord met een **bewerkings locatie-** header. De waarde van deze header is een ID die u gebruikt om de resultaten van de analyse bewerking bij te houden. Het bovenstaande script drukt de waarde van deze header af naar de-console.
+Wanneer u de API **Formulier analyseren** aanroept, ontvangt u een `201 (Success)`-antwoord met een **Bewerking-Locatie**-header. De waarde van deze header is een id die u gebruikt om de resultaten van de analysebewerking bij te houden. Het bovenstaande script drukt de waarde van deze header af naar de console.
 
-## <a name="get-the-analyze-results"></a>De resultaten analyseren
+## <a name="get-the-analyze-results"></a>De analyseresultaten ophalen
 
-Voeg de volgende code toe onder aan het python-script. Dit maakt gebruik van de ID-waarde van de vorige aanroep in een nieuwe API-aanroep om de analyse resultaten op te halen. De bewerking **formulier analyseren** is asynchroon, dus de API wordt met regel matige tussen pozen door dit script aangeroepen totdat de resultaten beschikbaar zijn. We raden een interval van één seconde of meer aan.
+Voeg onderaan uw Python-script de volgende code toe. Deze gebruikt de ID-waarde van de vorige aanroep in een nieuwe API-aanroep om de analyseresultaten op te halen. De bewerking **Formulier analyseren** is asynchroon. Dat betekent dat dit script de API regelmatig aanroept totdat de resultaten beschikbaar zijn. We raden een interval van minimaal één seconde aan.
 
 ```python 
 n_tries = 15

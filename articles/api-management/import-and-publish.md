@@ -1,6 +1,6 @@
 ---
-title: Uw eerste API importeren en publiceren in azure API Management
-description: Meer informatie over het importeren van een OpenAPI-specificatie-API in azure API Management en het testen van uw API in de Azure Portal.
+title: Uw eerste API importeren en publiceren in Azure API Management
+description: Meer informatie over het importeren van een API met OpenAPI-specificatie in Azure API Management en het testen van uw API in de Azure-portal.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -13,18 +13,18 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 0b5fbb49e2f60f101f16988538af86c2caf550eb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 16c14774b1b032132040ea3fdcf810a4f9de8f18
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82202844"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077351"
 ---
 # <a name="import-and-publish-your-first-api"></a>Uw eerste API importeren en publiceren
 
-In deze zelf studie ziet u hoe u een back-end-API van OpenAPI-specificatie in JSON-indeling importeert in azure API Management. Micro soft biedt de back-end-API en host [https://conferenceapi.azurewebsites.net?format=json](https://conferenceapi.azurewebsites.net?format=json)deze in azure op.
+In deze zelfstudie ziet u hoe u een back-end-API met OpenAPI-specificatie in JSON-indeling kunt importeren in Azure API Management. Microsoft biedt de back-end-API en host deze op Azure op [https://conferenceapi.azurewebsites.net?format=json](https://conferenceapi.azurewebsites.net?format=json).
 
-Nadat u de back-end-API hebt geïmporteerd in API Management, wordt uw API Management-API een gevel voor de back-end-API. U kunt de gevel aanpassen aan uw behoeften in API Management zonder de back-end-API te raken. Zie [Transform and protect your API](transform-api.md) (Uw API transformeren en beveiligen) voor meer informatie.
+Zodra u de back-end-API hebt geïmporteerd in API Management, wordt uw API Management API een facade voor de back-end-API. In API Management kunt u de facade naar wens aanpassen zonder de back-end-API te wijzigen. Zie [Transform and protect your API](transform-api.md) (Uw API transformeren en beveiligen) voor meer informatie.
 
 In deze zelfstudie leert u het volgende:
 
@@ -36,49 +36,49 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Inzicht krijgen in de [terminologie van Azure API Management](api-management-terminology.md).
+- Kennis van de [terminologie van Azure API Management](api-management-terminology.md).
 - [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="import-and-publish-a-backend-api"></a><a name="create-api"> </a>Een API importeren en publiceren
+## <a name="import-and-publish-a-backend-api"></a><a name="create-api"> </a>Een back-end-API importeren en publiceren
 
-In deze sectie wordt beschreven hoe u een back-end-API voor OpenAPI-specificatie importeert en publiceert.
+In deze sectie ziet u hoe u een back-end-API met OpenAPI-specificatie kunt importeren en publiceren.
 
-1. Selecteer in de linkernavigatiebalk van uw API Management-exemplaar **api's** in het gedeelte **API Management** .
-1. Selecteer de tegel **OpenAPI** en selecteer vervolgens **volledig** in het pop-upvenster.
-1. Gebruik in het scherm **maken van OpenAPI-specificatie** de waarden uit de volgende tabel om uw API te maken.
+1. Selecteer **API's** in het gedeelte **API Management** in de linkernavigatie van uw API Management-exemplaar.
+1. Selecteer de tegel **OpenAPI** en selecteer vervolgens **Volledig** in het pop-upvenster.
+1. Gebruik de waarden in de volgende tabel om uw API te maken op het scherm **Maken op basis van de OpenAPI-specificatie**.
 
-   Een rode ster naast een veld op het formulier geeft aan dat het veld vereist is. U kunt de API-waarden tijdens het maken of later instellen door naar het tabblad **instellingen** te gaan.
+   Een rode ster naast een veld op het formulier geeft aan dat het veld verplicht is. U kunt API-waarden instellen tijdens het maken of later door naar het tabblad **Instellingen** te gaan.
 
    ![Een API maken](./media/api-management-import-and-publish/create-api.png)
 
    |Instelling|Waarde|Beschrijving|
    |-------|-----|-----------|
-   |**OpenAPI-specificatie**|*https:\//conferenceapi.azurewebsites.net? format = json*|De service die de API implementeert. API Management stuurt aanvragen door naar dit adres.|
-   |**Weergavenaam**|Nadat u de voor gaande service-URL hebt opgegeven, API Management dit veld invullen op basis van de JSON.|De naam die wordt weer gegeven in de ontwikkelaars Portal.|
-   |**Naam**|Nadat u de voor gaande service-URL hebt opgegeven, API Management dit veld invullen op basis van de JSON.|Een unieke naam voor de API.|
-   |**Beschrijving**|Nadat u de voor gaande service-URL hebt opgegeven, API Management dit veld invullen op basis van de JSON.|Een optionele beschrijving van de API.|
-   |**URL-schema**|**HTTPS**|Welke protocollen kunnen worden gebruikt om toegang te krijgen tot de API.|
-   |**API-URL-achtervoegsel**|*conference*|Het achtervoegsel dat is toegevoegd aan de basis-URL voor de API Management-service. API Management onderscheidt Api's met hun achtervoegsel, dus het achtervoegsel moet uniek zijn voor elke API voor een bepaalde uitgever.|
-   |**Tags**| |Tags voor het organiseren van Api's voor zoeken, groeperen en filteren.|
-   |**Producten**|**Onbeperkt**|Koppeling van een of meer Api's. Elk API Management-exemplaar wordt geleverd met twee voorbeeld producten: **starter** en **onbeperkt**. U publiceert een API door de API te koppelen aan een product, **onbeperkt** in dit voor beeld.<br/>U kunt meerdere Api's in een product toevoegen en deze aanbieden aan ontwikkel aars via de ontwikkelaars Portal. Als u deze API wilt toevoegen aan een ander product, typt of selecteert u de product naam. Herhaal deze stap om de API toe te voegen aan meerdere producten. U kunt later ook Api's aan producten toevoegen op de pagina **instellingen** .<br/>Ontwikkelaars moeten zich eerst abonneren op een product om toegang tot de API te krijgen. Wanneer ze zich abonneren, krijgen ze een abonnements sleutel die geschikt is voor elke API in dat product. <br/>Als u de API Management instantie hebt gemaakt, bent u al een beheerder en bent u geabonneerd op elk product in het exemplaar.|
-   |**Gateways**|**Beheerd**|API-gateway (s) die de API beschikbaar maken. Dit veld is alleen beschikbaar in de **ontwikkel aars** -en **Premium** -laag Services.<br/>**Beheerde** gateway geeft aan dat de gateway is ingebouwd in de API Management-service en wordt gehost door micro soft in Azure. Andere gateways zijn [zelf-hostende gateways](self-hosted-gateway-overview.md) en zijn alleen beschikbaar in de service lagen Premium en Developer. U kunt deze implementeren in on-premises of in andere Clouds.<br/>Als er geen gateways zijn geselecteerd, is de API niet beschikbaar en zijn uw API-aanvragen niet geslaagd.|
-   |**Versie van deze API?**|Selecteren of selectie opheffen|Zie [meerdere versies van uw API publiceren](api-management-get-started-publish-versions.md)voor meer informatie over versie beheer.|
+   |**OpenAPI-specificatie**|*https:\//conferenceapi.azurewebsites.net?format=json*|De service waarmee de API wordt geïmplementeerd. API Management stuurt aanvragen door naar dit adres.|
+   |**Weergavenaam**|Nadat u de voorgaande service-URL hebt opgegeven, vult API Management dit veld in op basis van de JSON.|De naam wordt weergegeven in de ontwikkelaarsportal.|
+   |**Naam**|Nadat u de voorgaande service-URL hebt opgegeven, vult API Management dit veld in op basis van de JSON.|Een unieke naam voor de API.|
+   |**Beschrijving**|Nadat u de voorgaande service-URL hebt opgegeven, vult API Management dit veld in op basis van de JSON.|Een optionele beschrijving van de API.|
+   |**URL-schema**|**HTTPS**|De protocollen die kunnen worden gebruikt om toegang te krijgen tot de API.|
+   |**API-URL-achtervoegsel**|*conference*|Het achtervoegsel dat is toegevoegd aan de basis-URL voor de API Management-service. In API Management worden API's herkend aan hun achtervoegsel. Daarom moet het achtervoegsel uniek zijn voor elke API voor een bepaalde uitgever.|
+   |**Tags**| |Tags voor het organiseren van API's om de API's te zoeken, te groeperen of te filteren.|
+   |**Producten**|**Onbeperkt**|Koppeling van een of meer API's. Elk API Management-exemplaar wordt geleverd met twee voorbeeldproducten: **Starter** en **Onbeperkt**. U publiceert een API door de API te koppelen aan een product, in dit voorbeeld **Onbeperkt**.<br/>U kunt meerdere API's opnemen in een product en deze beschikbaar stellen voor ontwikkelaars via de ontwikkelaarsportal. Als u deze API aan een ander product wilt toevoegen, typt of selecteert u de productnaam. Herhaal deze stap om de API aan meerdere producten toe te voegen. U kunt API's ook later toevoegen aan producten op de pagina **Instellingen**.<br/>Ontwikkelaars moeten zich eerst abonneren op een product om toegang tot de API te krijgen. Wanneer ontwikkelaars zich abonneren, ontvangen ze een abonnementssleutel die toegang biedt tot elke API in het betreffende product. <br/>Als u het exemplaar van API Management hebt gemaakt, bent u al een beheerder en bent u standaard geabonneerd op elk product in het exemplaar.|
+   |**Gateways**|**Beheerd**|API-gateway(s) die de API beschikbaar stellen. Dit veld is alleen beschikbaar in services in de categorie **Developer** en **Premium**.<br/>**Beheerde** gateway geeft aan dat de gateway is ingebouwd in de API Management-service en wordt gehost door Microsoft in Azure. Andere gateways zijn [zelfhostende gateways](self-hosted-gateway-overview.md) en zijn alleen beschikbaar in de servicecategorieën Premium en Developer. U kunt deze on-premises of in andere clouds implementeren.<br/>Als er geen gateways zijn geselecteerd, is de API niet beschikbaar en worden uw API-aanvragen niet uitgevoerd.|
+   |**Versie van deze API?**|Selecteren of selectie opheffen|Zie [Meerdere versies van uw API publiceren](api-management-get-started-publish-versions.md) voor meer informatie over versiebeheer.|
 
    > [!NOTE]
-   > Als u de API wilt publiceren naar API-gebruikers, moet u deze koppelen aan een product.
+   > Als u de API wilt publiceren naar API-consumenten, moet u deze koppelen aan een product.
 
 2. Selecteer **Maken**.
 
-Zie de [lijst met bekende problemen en beperkingen](api-management-api-import-restrictions.md)als u problemen hebt met het importeren van een API-definitie.
+Zie de [lijst met bekende problemen en beperkingen](api-management-api-import-restrictions.md) als u problemen hebt met het importeren van een API-definitie.
 
-## <a name="test-the-new-api-in-the-azure-portal"></a>De nieuwe API in het Azure Portal testen
+## <a name="test-the-new-api-in-the-azure-portal"></a>De nieuwe API testen in de Azure-portal
 
-U kunt API-bewerkingen rechtstreeks aanroepen vanuit de Azure Portal. Dit biedt een handige manier om de bewerkingen te bekijken en te testen.
+U kunt API-bewerkingen rechtstreeks vanuit de Azure-portal aanroepen. Dit is een handige manier om de bewerkingen te bekijken en te testen.
 
-1. Selecteer in de linkernavigatiebalk van uw API Management-exemplaar **api's** in het gedeelte **API Management** en selecteer vervolgens **demo conferentie-API**.
-1. Selecteer het tabblad **testen** en selecteer vervolgens **GetSpeakers**. De pagina bevat **query parameters** en **kopteksten**, indien van toepassing. De **OCP-APIM-Subscription-Key** wordt automatisch ingevuld voor de abonnements sleutel die is gekoppeld aan deze API.
+1. Selecteer **API's** in het gedeelte **API Management** in de linkernavigatie van uw API Management-exemplaar en selecteer vervolgens **Demo Conference API**.
+1. Selecteer het tabblad **Test** en selecteer vervolgens **GetSpeakers**. De pagina bevat **queryparameters** en **kopteksten**, indien van toepassing. De **OCP-APIM-Subscription-Key** wordt automatisch ingevuld voor de abonnementssleutel die is gekoppeld aan deze API.
 1. Selecteer **Verzenden**.
 
    ![API-kaart testen](./media/api-management-import-and-publish/01-import-first-api-01.png)
@@ -93,7 +93,12 @@ In deze zelfstudie heeft u het volgende geleerd:
 > * Uw eerste API importeren
 > * De API testen in Azure Portal
 
-Ga naar de volgende zelf studie voor meer informatie over het maken en publiceren van een product:
+Ga verder met de volgende zelfstudie voor informatie over het maken en publiceren van een product:
 
 > [!div class="nextstepaction"]
 > [Een product maken en publiceren](api-management-howto-add-products.md)
+
+Wilt u uw clouduitgaven optimaliseren en geld besparen?
+
+> [!div class="nextstepaction"]
+> [Analyseer kosten met Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

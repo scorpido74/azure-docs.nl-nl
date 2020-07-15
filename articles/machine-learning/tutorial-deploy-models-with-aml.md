@@ -1,7 +1,7 @@
 ---
-title: 'Zelf studie voor installatie kopie classificatie: modellen implementeren'
+title: 'Zelfstudie over de classificatie van afbeeldingen: Modellen implementeren'
 titleSuffix: Azure Machine Learning
-description: In deze zelf studie, een tweede van een reeks van twee delen, wordt uitgelegd hoe u Azure Machine Learning kunt gebruiken om een installatie kopie classificatie model te implementeren met scikit-Learn in een python Jupyter-notebook.
+description: In deze zelfstudie, de tweede uit een tweedelige serie, leert u hoe u Azure Machine Learning kunt gebruiken om een afbeeldingsclassificatiemodel met scikit-learn in een Python Jupyter-notebook te implementeren.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,19 +10,19 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5d064b0953d8d6e9089dcfa765ff29bb97088f34
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
-ms.translationtype: MT
+ms.openlocfilehash: 680b6ec17b65cd9452dd3bd5c0c470e395688cb8
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801107"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86025672"
 ---
-# <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Zelf studie: een classificatie model voor een installatie kopie implementeren in Azure Container Instances
+# <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Zelfstudie: Een afbeeldingsclassificatiemodel implementeren in Azure Container Instances
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Deze zelfstudie is **deel twee van een tweedelige reeks**. In de [vorige zelfstudie](tutorial-train-models-with-aml.md) hebt u Machine Learning-modellen getraind en vervolgens een model geregistreerd in uw werkruimte in de cloud.  U bent nu klaar om het model te implementeren als een webservice. Een webservice is een installatiekopie, in dit geval een Docker-installatiekopie. De service omvat de scoringlogica en het model zelf. 
 
-In dit gedeelte van de zelf studie gebruikt u Azure Machine Learning voor de volgende taken:
+In dit gedeelte van de zelfstudie gebruikt u Azure Machine Learning voor de volgende taken:
 
 > [!div class="checklist"]
 > * Uw testomgeving instellen
@@ -33,21 +33,21 @@ In dit gedeelte van de zelf studie gebruikt u Azure Machine Learning voor de vol
 Container Instances is een uitstekende oplossing voor het testen en inzicht krijgen in de werkstroom. Voor schaalbare productie-implementaties is het misschien beter om Azure Kubernetes Service te gebruiken. Zie [Modellen implementeren met de Azure Machine Learning-service](how-to-deploy-and-where.md) voor meer informatie.
 
 >[!NOTE]
-> De code in dit artikel is getest met Azure Machine Learning SDK-versie 1.0.83.
+> Code in dit artikel is getest met versie 1.0.83 van de Azure Machine Learning SDK.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u het notitie blok wilt uitvoeren, voltooit u eerst de model training in [zelf studie (deel 1): een classificatie model voor een installatie kopie trainen](tutorial-train-models-with-aml.md).   Open vervolgens het notebook *IMG-classificatie-part2-Deploy. ipynb* in uw gekloonde *zelf studies/image-classificatie-mnist-data-* map.
+Als u het notebook wilt uitvoeren, moet u eerst het trainen van het model voltooien in [Zelfstudie (deel 1): Een model voor de classificatie van afbeeldingen trainen](tutorial-train-models-with-aml.md).   Open in uw gekloonde map *tutorials/image-classification-mnist-data* de notebook *mg-classification-part2-deploy.ipynb*.
 
-Deze zelf studie is ook beschikbaar op [github](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) als u deze wilt gebruiken in uw eigen [lokale omgeving](how-to-configure-environment.md#local).  Zorg ervoor dat u en `matplotlib` `scikit-learn` in uw omgeving hebt geïnstalleerd. 
+Deze zelfstudie is ook beschikbaar op [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) als u deze wilt uitvoeren in uw eigen [lokale omgeving](how-to-configure-environment.md#local).  Zorg ervoor dat u `matplotlib` en `scikit-learn` in uw omgeving hebt geïnstalleerd. 
 
 > [!Important]
-> De rest van dit artikel bevat dezelfde inhoud als u ziet in het notitie blok.  
+> De rest van dit artikel bevat dezelfde inhoud als die u ziet in de notebook.  
 >
-> Schakel nu over naar het Jupyter-notebook als u wilt lezen tijdens het uitvoeren van de code.
-> Als u één code-cel in een notitie blok wilt uitvoeren, klikt u op de cel code en drukt u op **SHIFT + ENTER**. U kunt ook het hele notitie blok uitvoeren door **alles uitvoeren** op de bovenste werk balk te kiezen.
+> Schakel nu over naar de Jupyter-notebook als u wilt meelezen tijdens het uitvoeren van de code.
+> Als u één codecel in een notebook wilt uitvoeren, klikt u op de codecel en drukt u op **Shift + Enter**. U kunt ook de hele notebook uitvoeren door **Alle uitvoeren** te kiezen op de bovenste werkbalk.
 
-## <a name="set-up-the-environment"></a><a name="start"></a>De omgeving instellen
+## <a name="set-up-the-environment"></a><a name="start"></a>Stel de omgeving in
 
 Begin met het instellen van een testomgeving.
 
@@ -124,14 +124,14 @@ aciconfig = AciWebservice.deploy_configuration(cpu_cores=1,
 ```
 
 ### <a name="deploy-in-aci"></a>Implementeren in ACI
-Geschatte tijd om te volt ooien: **ongeveer 2-5 minuten**
+Geschatte duur: **ongeveer 2 tot 5 minuten**
 
 Configureer en implementeer de installatiekopie. De volgende code doorloopt de volgende stappen:
 
-1. Maak een omgevings object met afhankelijkheden die nodig zijn voor het`tutorial-env`model met behulp van de omgeving () die is opgeslagen tijdens de training.
-1. Maak een benodigde configuratie voor het afnemen van een aanvraag om het model als een webservice te implementeren met behulp van:
+1. Maak een omgevingsobject met afhankelijkheden die nodig zijn voor het model met behulp van de omgeving (`tutorial-env`) die is opgeslagen tijdens de training.
+1. Maak de deductieconfiguratie die nodig is voor het implementeren van het model als een webservice met behulp van:
    * Het scoring-bestand (`score.py`)
-   * het omgevings object dat u in de vorige stap hebt gemaakt
+   * het omgevingsobject dat u in de vorige stap hebt gemaakt
 1. Implementeer het model in de ACI-container.
 1. Haal het HTTP-eindpunt van de webservice op.
 
@@ -170,8 +170,8 @@ print(service.scoring_uri)
 ## <a name="test-the-model"></a>Het model testen
 
 
-### <a name="download-test-data"></a>Test gegevens downloaden
-De test gegevens downloaden naar de Directory **./data/**
+### <a name="download-test-data"></a>Testgegevens downloaden
+De testgegevens naar de map **./data/** downloaden
 
 
 ```python
@@ -188,7 +188,7 @@ mnist_file_dataset.download(data_folder, overwrite=True)
 
 ### <a name="load-test-data"></a>Testgegevens laden
 
-Laad de test gegevens vanuit de map **./data/** die is gemaakt tijdens de training zelf studie.
+Laad de testgegevens uit de map **. /data/** , die u hebt gemaakt tijdens de zelfstudie over het trainen van modellen.
 
 
 ```python
@@ -235,20 +235,21 @@ print('Overall accuracy:', np.average(y_hat == y_test))
 
 In de uitvoer wordt de verwarringsmatrix weergegeven:
 
-    [[ 960    0    1    2    1    5    6    3    1    1]
-     [   0 1112    3    1    0    1    5    1   12    0]
-     [   9    8  920   20   10    4   10   11   37    3]
-     [   4    0   17  921    2   21    4   12   20    9]
-     [   1    2    5    3  915    0   10    2    6   38]
-     [  10    2    0   41   10  770   17    7   28    7]
-     [   9    3    7    2    6   20  907    1    3    0]
-     [   2    7   22    5    8    1    1  950    5   27]
-     [  10   15    5   21   15   27    7   11  851   12]
-     [   7    8    2   13   32   13    0   24   12  898]]
-    Overall accuracy: 0.9204
-   
+```output
+[[ 960    0    1    2    1    5    6    3    1    1]
+ [   0 1112    3    1    0    1    5    1   12    0]
+ [   9    8  920   20   10    4   10   11   37    3]
+ [   4    0   17  921    2   21    4   12   20    9]
+ [   1    2    5    3  915    0   10    2    6   38]
+ [  10    2    0   41   10  770   17    7   28    7]
+ [   9    3    7    2    6   20  907    1    3    0]
+ [   2    7   22    5    8    1    1  950    5   27]
+ [  10   15    5   21   15   27    7   11  851   12]
+ [   7    8    2   13   32   13    0   24   12  898]]
+Overall accuracy: 0.9204
+```
 
-Gebruik `matplotlib` om de verwarringsmatrix weer te geven in een grafiek. In deze grafiek staat de X-as voor de daadwerkelijke waarden en de Y-as voor de voorspelde waarden. De kleur van elke cel staat voor de foutfrequentie. Hoe lichter de kleur, hoe hoger de foutfrequentie. De 5 is vaak verkeerd ingedeeld als een 3. U ziet een helder raster op (5, 3).
+Gebruik `matplotlib` om de verwarringsmatrix weer te geven in een grafiek. In deze grafiek staat de X-as voor de daadwerkelijke waarden en de Y-as voor de voorspelde waarden. De kleur van elke cel staat voor de foutfrequentie. Hoe lichter de kleur, hoe hoger de foutfrequentie. De 5 is vaak verkeerd ingedeeld als een 3. Daarom ziet u een lichtgekleurd raster bij (5,3).
 
 ```python
 # normalize the diagonal cells so that they don't overpower the rest of the cells when visualized
@@ -274,9 +275,9 @@ plt.show()
 ![Grafiek met een verwarringsmatrix](./media/tutorial-deploy-models-with-aml/confusion.png)
 
 
-## <a name="show-predictions"></a>Voor spellingen weer geven
+## <a name="show-predictions"></a>Voorspellingen weergeven
 
-Test het geïmplementeerde model met een wille keurig voor beeld van 30 afbeeldingen van de test gegevens.  
+Test het geïmplementeerde model met een steekproef van 30 afbeeldingen uit de testgegevens.  
 
 
 1. Druk de geretourneerde voorspellingen af en geef die weer samen met de invoerafbeeldingen. De verkeerd geclassificeerde voorbeelden worden aangegeven met een rood lettertype en inversie (wit op zwart). 
@@ -355,7 +356,7 @@ service.delete()
 
 ## <a name="next-steps"></a>Volgende stappen
 
-+ Meer informatie over de [implementatie opties voor Azure machine learning](how-to-deploy-and-where.md).
++ Meer informatie over alle [implementatieopties voor Azure Machine Learning](how-to-deploy-and-where.md).
 + Meer informatie over het [maken van clients voor de webservice](how-to-consume-web-service.md).
 +  Doe asynchroon [voorspellingen op grote hoeveelheden gegevens](how-to-use-parallel-run-step.md).
 + Bewaak uw Azure Machine Learning-modellen met [Application Insights](how-to-enable-app-insights.md).

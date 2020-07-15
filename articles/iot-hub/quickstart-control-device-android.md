@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 ms.date: 06/21/2019
 ms.author: wesmc
-ms.openlocfilehash: b9afd1c4ca5e4c652a03bc2ef652b8e43ea12787
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 3e5afae9421d13d986ad6c891c8e889f590f04a2
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83727196"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044716"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>Quickstart: Een apparaat beheren dat is verbonden met een IoT-hub (Android)
 
@@ -43,7 +43,7 @@ In deze snelstart gebruikt u een directe methode om een gesimuleerd apparaat te 
 
 ### <a name="add-azure-iot-extension"></a>Azure IoT CLI-extensie toevoegen
 
-Voer de volgende opdracht uit om de Microsoft Azure IoT-extensie voor Azure CLI aan uw CLI Shell-instantie toe te voegen. Met de IoT-extensie worden IoT Hub-, IoT Edge- en IoT DPS-specifieke (Device Provisioning Service) opdrachten toegevoegd aan Azure CLI.
+Voer de volgende opdracht uit om de Microsoft Azure IoT-extensie voor Azure CLI aan uw Cloud Shell-instantie toe te voegen. Met de IoT-extensie worden IoT Hub-, IoT Edge- en IoT DPS-specifieke (Device Provisioning Service) opdrachten toegevoegd aan Azure CLI.
 
 ```azurecli-interactive
 az extension add --name azure-iot
@@ -113,9 +113,7 @@ Beide voorbeelden voor deze snelstart zijn onderdeel van de opslagplaats azure-i
 
 De Device SDK-voorbeeldtoepassing kan worden uitgevoerd op een fysiek Android-apparaat of op een Android-emulator. De voorbeeldtoepassing maakt verbinding met een apparaatspecifiek eindpunt op uw IoT-hub, verstuurt gesimuleerde telemetrie en luistert naar aanroepen van directe methoden vanuit de hub. In deze snelstartgids geeft de aanroep van de directe methode vanuit de hub het apparaat opdracht om het interval voor het verzenden van telemetrie te wijzigen. Het gesimuleerde apparaat stuurt een bevestiging terug naar de hub nadat de directe methode is uitgevoerd.
 
-1. Open het GitHub-voorbeeldproject voor Android in Android Studio. Het project bevindt zich in de volgende map met uw gekloonde of gedownloade kopie van de opslagplaats [azure-iot-sample-java](https://github.com/Azure-Samples/azure-iot-samples-java).
-
-        \azure-iot-samples-java\iot-hub\Samples\device\AndroidSample
+1. Open het GitHub-voorbeeldproject voor Android in Android Studio. Het project bevindt zich in de volgende map met uw gekloonde of gedownloade kopie van de opslagplaats [azure-iot-sample-java](https://github.com/Azure-Samples/azure-iot-samples-java): *\azure-iot-samples-java\iot-hub\Samples\device\AndroidSample*.
 
 2. Open in Android Studio *gradle.properties* voor het voorbeeldproject en vervang de tijdelijke plaatsaanduiding **Device_Connection_String** door de apparaatverbindingsreeks die u eerder hebt genoteerd.
 
@@ -165,9 +163,7 @@ Voer deze app uit op een afzonderlijk fysiek Android-apparaat of een Android-emu
 
 Een IoT Hub-back-endservicetoepassing wordt gewoonlijk uitgevoerd in de cloud, waar u eenvoudiger de risico's kunt beperken die gepaard gaan met de gevoelige verbindingsreeks waarmee alle apparaten in een IoT-hub worden beheerd. In dit voorbeeld wordt deze servicetoepassing alleen ter demonstratie uitgevoerd als een Android-app. De andere taalversies van deze snelstart bieden voorbeelden die beter zijn afgestemd op een back-endservicetoepassing.
 
-1. Open het GitHub-serviceproject voor Android in Android Studio. Het project bevindt zich in de volgende map met uw gekloonde of gedownloade kopie van de opslagplaats [azure-iot-sample-java](https://github.com/Azure-Samples/azure-iot-samples-java).
-
-        \azure-iot-samples-java\iot-hub\Samples\service\AndroidSample
+1. Open het GitHub-serviceproject voor Android in Android Studio. Het project bevindt zich in de volgende map met uw gekloonde of gedownloade kopie van de opslagplaats [azure-iot-sample-java](https://github.com/Azure-Samples/azure-iot-samples-java): *\azure-iot-samples-java\iot-hub\Samples\service\AndroidSample*.
 
 2. Open in Android Studio *gradle.properties* voor het voorbeeldproject. Werk de waarden voor de eigenschappen **ConnectionString** en **DeviceId** bij met de serviceverbindingsreeks die u eerder hebt genoteerd en de Android-apparaat-id die u hebt geregistreerd.
 

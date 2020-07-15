@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7295bb2e87373a80c6b105ab7284a43e6f0804da
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 280fea29b79db58d0974aaba961db9c7a7df3dad
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020769"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045787"
 ---
 # <a name="sql-authentication"></a>SQL-verificatie
 
@@ -45,7 +45,7 @@ De accounts van de **serverbeheerder** en de **Azure AD-beheerder** hebben de vo
 - Dit zijn de enige accounts die automatisch verbinding kunnen maken met elke SQL-database op de server. (Andere accounts die verbinding willen maken met een gebruikersdatabase, moeten eigenaar van de database zijn of een gebruikersaccount in de database hebben.)
 - Deze accounts worden in gebruikersdatabases beschouwd als de `dbo`-gebruiker en beschikken over alle machtigingen. (De eigenaar van een gebruikersdatabase wordt in de database ook als `dbo`-gebruiker beschouwd.)
 - Deze accounts moeten in de `master`-database niet als `dbo`-gebruiker worden beschouwd en hebben beperkte machtigingen in de hoofddatabase.
-- Deze accounts zijn **geen** lid van de vaste standaardserverrol `sysadmin` van SQL Server, die niet beschikbaar is in de SQL-database.  
+- Deze accounts zijn **geen** lid van de vaste standaardserverrol `sysadmin` van SQL Server, die niet beschikbaar is in SQL Database.  
 - Deze accounts kunnen databases, aanmeldingen en gebruikers in de hoofddatabase, en IP-firewallregels op serverniveau maken, wijzigen en verwijderen.
 - Deze accounts kunnen leden aan de rollen `dbmanager` en `loginmanager` toevoegen en verwijderen.
 - Deze accounts kunnen de `sys.sql_logins`-systeemtabel weergeven.

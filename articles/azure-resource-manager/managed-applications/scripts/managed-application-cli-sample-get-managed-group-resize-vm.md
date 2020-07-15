@@ -1,17 +1,17 @@
 ---
-title: Beheerde resource groep ophalen & grootte van Vm's wijzigen-Azure CLI
-description: Biedt een Azure CLI-voorbeeld script voor het ophalen van een beheerde resource groep in een door Azure beheerde toepassing. De grootte van de virtuele machines wordt door het script aangepast.
+title: Beheerde resourcegroep ophalen en grootte van VM's wijzigen - Azure CLI
+description: Biedt een Azure CLI-voorbeeldscript voor het ophalen van een beheerde resourcegroep in een door Azure beheerde toepassing. Met het script wordt de grootte van VM's aangepast.
 author: tfitzmac
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 10/25/2017
 ms.author: tomfitz
-ms.openlocfilehash: 878a8d660495c932cc8fa44bb1ed06e79576729b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: f119fe4b4547bda8249a3620baf938dd8b83c235
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75650056"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056035"
 ---
 # <a name="get-resources-in-a-managed-resource-group-and-resize-vms-with-azure-cli"></a>Resources in een beheerde resourcegroep opvragen en de grootte van virtuele machines wijzigen met Azure CLI
 
@@ -33,12 +33,12 @@ In dit script worden de volgende opdrachten gebruikt om de beheerde toepassing t
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [az managedapp list](https://docs.microsoft.com/cli/azure/managedapp#az-managedapp-list) | Hiermee vraagt u een lijst met de beheerde toepassingen op. Geef querywaarden op om gerichte resultaten te krijgen. |
-| [az resource list](https://docs.microsoft.com/cli/azure/resource#az-resource-list) | Hiermee vraagt u een lijst met resources op. Geef een resourcegroep op en querywaarden om gerichte resultaten te krijgen. |
-| [az vm resize](https://docs.microsoft.com/cli/azure/vm#az-vm-resize) | Hiermee werkt u de grootte van een virtuele machine bij. |
+| [az managedapp list](/cli/azure/managedapp#az-managedapp-list) | Hiermee vraagt u een lijst met de beheerde toepassingen op. Geef querywaarden op om gerichte resultaten te krijgen. |
+| [az resource list](/cli/azure/resource#az-resource-list) | Hiermee vraagt u een lijst met resources op. Geef een resourcegroep op en querywaarden om gerichte resultaten te krijgen. |
+| [az vm resize](/cli/azure/vm#az-vm-resize) | Hiermee werkt u de grootte van een virtuele machine bij. |
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [Overzicht van door Azure beheerde toepassingen](../overview.md) voor algemene informatie over beheerde toepassingen.
-* Zie de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
+* Raadpleeg de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.

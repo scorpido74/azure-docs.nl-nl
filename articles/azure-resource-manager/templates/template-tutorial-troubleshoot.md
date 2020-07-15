@@ -1,20 +1,20 @@
 ---
 title: Problemen met implementaties oplossen
-description: Meer informatie over het bewaken en oplossen van Azure Resource Manager sjabloon implementaties. Hiermee worden activiteiten logboeken en implementatie geschiedenis weer gegeven.
+description: Leer implementaties van Azure Resource Manager-sjablonen bewaken en problemen ermee oplossen. Hiermee worden activiteitenlogboeken en implementatiegeschiedenis weergegeven.
 author: mumian
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 737e8a247a232278db73de716647fc5bb890fe39
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 68ddb5c07ffac2aad4e2dafd16301fa29f391797
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82184993"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119341"
 ---
-# <a name="tutorial-troubleshoot-arm-template-deployments"></a>Zelf studie: problemen met ARM-sjabloon implementaties oplossen
+# <a name="tutorial-troubleshoot-arm-template-deployments"></a>Zelfstudie: Problemen met ARM-sjabloonimplementatie oplossen
 
-Meer informatie over het oplossen van problemen met de implementatie van Azure Resource Manager (ARM)-Sjablonen. In deze zelfstudie stelt u twee fouten in een sjabloon in en leert u hoe u de activiteitenlogboeken en de implementatiegeschiedenis kunt gebruiken om de problemen op te lossen.
+Leer problemen met de implementatie van ARM-sjablonen (ARM = Azure Resource Manager) oplossen. In deze zelfstudie stelt u twee fouten in een sjabloon in en leert u hoe u de activiteitenlogboeken en de implementatiegeschiedenis kunt gebruiken om de problemen op te lossen.
 
 Er zijn twee typen fouten die gerelateerd zijn aan de implementatie van sjablonen:
 
@@ -31,19 +31,19 @@ Deze zelfstudie bestaat uit de volgende taken:
 > - Implementatiefouten oplossen
 > - Resources opschonen
 
-Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 
-- Visual Studio Code met de extensie Resource Manager Tools. Zie [Visual Studio code gebruiken om arm-sjablonen te maken](use-vs-code-to-create-template.md).
+- Visual Studio Code met de extensie Resource Manager Tools. Zie [Quickstart: Azure Resource Manager-sjablonen maken met Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
 
 ## <a name="create-a-problematic-template"></a>Een sjabloon met problemen maken
 
-Open een sjabloon met de naam [een standaard opslag account maken](https://azure.microsoft.com/resources/templates/101-storage-account-create/) vanuit [Azure Quick](https://azure.microsoft.com/resources/templates/)start-sjablonen en stel twee sjabloon problemen in.
+Open een sjabloon met de naam [Een standaardopslagaccount maken](https://azure.microsoft.com/resources/templates/101-storage-account-create/) vanuit [Azure-quickstartsjablonen](https://azure.microsoft.com/resources/templates/) en stel twee sjabloonproblemen in.
 
-1. Selecteer **bestand**>**openen**in Visual Studio code.
+1. Selecteer in Visual Studio Code **Bestand**>**Bestand openen**.
 2. Plak de volgende URL in **Bestandsnaam**:
 
     ```url
@@ -60,7 +60,7 @@ Open een sjabloon met de naam [een standaard opslag account maken](https://azure
     - **apiVersion1** is een ongeldige elementnaam. Dit is een validatiefout.
     - De API-versie moet '2018-07-01' zijn.  Dit is een implementatiefout.
 
-5. Selecteer **bestand**>**Opslaan als** om het bestand op te slaan als **azuredeploy. json** op de lokale computer.
+5. Selecteer **Bestand**>**Opslaan als** om het bestand op uw lokale computer op te slaan als **azuredeploy.json**.
 
 ## <a name="troubleshoot-the-validation-error"></a>De validatiefout oplossen
 
@@ -108,7 +108,7 @@ De implementatiefout kunt u vinden in de Microsoft Azure-portal met behulp van d
 U kunt de fout ook in de activiteitenlogboeken vinden:
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-2. Selecteer**activiteiten logboek** **bewaken** > .
+2. Selecteer **Controleren** > **Activiteitenlogboek**.
 3. Gebruik de filters om het logboek te vinden.
 
     ![Zelfstudie over het oplossen van problemen met Resource Manager](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-activity-log.png)
@@ -121,11 +121,11 @@ Zie [Veelvoorkomende fouten in Azure-implementaties met Azure Resource Manager o
 
 Schoon de geïmplementeerd Azure-resources, wanneer u deze niet meer nodig hebt, op door de resourcegroep te verwijderen.
 
-1. Selecteer in de Azure Portal **resource groep** in het menu links.
+1. Selecteer **Resourcegroep** in het linkermenu van Azure Portal.
 2. Voer de naam van de resourcegroep in het veld **Filter by name** in.
 3. Selecteer de naam van de resourcegroep.  U ziet in totaal zes resources in de resourcegroep.
-4. Selecteer **resource groep verwijderen** in het bovenste menu.
+4. Selecteer **Resourcegroep verwijderen** in het bovenste menu.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u geleerd hoe u problemen met ARM-sjabloon implementatie kunt oplossen.  Zie [Veelvoorkomende fouten in Azure-implementaties met Azure Resource Manager oplossen](common-deployment-errors.md) voor meer informatie.
+In deze zelfstudie hebt u geleerd hoe u fouten met implementaties van ARM-sjablonen kunt oplossen.  Zie [Veelvoorkomende fouten in Azure-implementaties met Azure Resource Manager oplossen](common-deployment-errors.md) voor meer informatie.

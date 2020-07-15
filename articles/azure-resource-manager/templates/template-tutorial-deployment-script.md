@@ -1,6 +1,6 @@
 ---
-title: Sjabloon implementatie scripts gebruiken | Microsoft Docs
-description: Meer informatie over het gebruik van implementatie scripts in Azure Resource Manager-sjablonen.
+title: Sjabloonimplementatiescripts gebruiken | Microsoft Docs
+description: Meer informatie over het gebruik van implementatiescripts in Azure Resource Manager-sjablonen.
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -13,19 +13,19 @@ ms.devlang: na
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 2b4b94c05b39dddcef83644638a105d5b6c75118
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 81574f25e2132a7079fa0242284fb67b0132a8af
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82184976"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119324"
 ---
-# <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>Zelf studie: implementatie scripts gebruiken om een zelfondertekend certificaat te maken (preview)
+# <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>Zelfstudie: Implementatiescripts gebruiken om een zelfondertekend certificaat te maken (preview)
 
-Meer informatie over het gebruik van implementatie scripts in sjablonen voor Azure resource Manage (ARM). Implementatie scripts kunnen worden gebruikt voor het uitvoeren van aangepaste stappen die niet kunnen worden uitgevoerd door ARM-sjablonen. U kunt bijvoorbeeld een zelfondertekend certificaat maken.  In deze zelf studie maakt u een sjabloon voor het implementeren van een Azure-sleutel kluis en gebruikt `Microsoft.Resources/deploymentScripts` u vervolgens een resource in dezelfde sjabloon om een certificaat te maken en vervolgens het certificaat toe te voegen aan de sleutel kluis. Zie [implementatie scripts gebruiken in arm-sjablonen](./deployment-script-template.md)voor meer informatie over het implementatie script.
+Meer informatie over het gebruik van implementatiescripts in ARM-sjablonen (Azure Resource Manager). Implementatiescripts kunnen worden gebruikt voor het uitvoeren van aangepaste stappen die niet kunnen worden uitgevoerd door ARM-sjablonen. Zo kunt u bijvoorbeeld een zelfondertekend certificaat maken.  In deze zelfstudie maakt u een sjabloon voor het implementeren van een Azure-sleutelkluis en gebruikt u vervolgens een `Microsoft.Resources/deploymentScripts`-resource in dezelfde sjabloon om een certificaat te maken en het certificaat toe te voegen aan de sleutelkluis. Zie [Implementatiescripts gebruiken in ARM-sjablonen](./deployment-script-template.md) voor meer informatie over implementatiescripts.
 
 > [!IMPORTANT]
-> Er worden twee implementatie script resources, een opslag account en een container exemplaar, gemaakt in dezelfde resource groep voor het uitvoeren van scripts en het oplossen van problemen. Deze resources worden doorgaans verwijderd door de script service wanneer de uitvoering van het script wordt uitgevoerd in een Terminal status. Er worden kosten in rekening gebracht voor de resources totdat de resources zijn verwijderd. Zie [implementatie script bronnen opschonen](./deployment-script-template.md#clean-up-deployment-script-resources)voor meer informatie.
+> Er worden in dezelfde resourcegroep twee resources van het implementatiescript gemaakt, een opslagaccount en een containerinstantie, voor het uitvoeren van scripts en probleemoplossing. Deze resources worden doorgaans door de scriptservice verwijderd in een eindfase van de uitvoering van het script. U wordt gefactureerd voor de resources totdat de resources zijn verwijderd. Zie [Resources van implementatiescripts opschonen](./deployment-script-template.md#clean-up-deployment-script-resources) voor meer informatie.
 
 Deze zelfstudie bestaat uit de volgende taken:
 
@@ -33,22 +33,22 @@ Deze zelfstudie bestaat uit de volgende taken:
 > * Een snelstartsjabloon openen
 > * De sjabloon bewerken
 > * De sjabloon implementeren
-> * Fouten opsporen in het script
+> * Fouten in een mislukt script opsporen
 > * Resources opschonen
 
 ## <a name="prerequisites"></a>Vereisten
 
 Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 
-* ** [Visual Studio code](https://code.visualstudio.com/) met de extensie Resource Manager-hulpprogram ma's**. Zie [Visual Studio code gebruiken om arm-sjablonen te maken](./use-vs-code-to-create-template.md).
+* **[Visual Studio Code](https://code.visualstudio.com/) met de Resource Manager Tools-extensie**. Zie [Quickstart: Azure Resource Manager-sjablonen maken met Visual Studio Code](./quickstart-create-templates-use-visual-studio-code.md).
 
-* **Een door de gebruiker toegewezen beheerde identiteit met de rol van Inzender op abonnements niveau**. Deze identiteit wordt gebruikt om implementatie scripts uit te voeren. Zie door de [gebruiker toegewezen beheerde identiteit](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#user-assigned-managed-identity)als u er een wilt maken. U hebt de identiteits-ID nodig wanneer u de sjabloon implementeert. De indeling van de identiteit is:
+* **Een door de gebruiker toegewezen beheerde identiteit met de rol van de inzender op abonnementsniveau maken**. Deze identiteit wordt gebruikt om implementatiescripts uit te voeren. Zie [Een door een gebruiker toegewezen beheerde identiteit maken](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#user-assigned-managed-identity) als u wilt weten hoe u er een maakt. U hebt de identiteits-id nodig wanneer u de sjabloon implementeert. De indeling van de identiteit is als volgt:
 
   ```json
   /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<IdentityID>
   ```
 
-  Gebruik het volgende CLI-script om de ID op te halen door de naam van de resource groep en de naam van de identiteit op te geven.
+  Gebruik het volgende CLI-script om de id op te halen door de naam van de resourcegroep en de naam van de identiteit op te geven.
 
   ```azurecli-interactive
   echo "Enter the Resource Group name:" &&
@@ -58,11 +58,11 @@ Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 
 ## <a name="open-a-quickstart-template"></a>Een snelstartsjabloon openen
 
-In plaats van een sjabloon helemaal opnieuw te maken, opent u een sjabloon in [Azure-snelstartsjablonen](https://azure.microsoft.com/resources/templates/). Quick Start-sjablonen van Azure is een opslag plaats voor ARM-sjablonen.
+In plaats van een sjabloon helemaal opnieuw te maken, opent u een sjabloon in [Azure-snelstartsjablonen](https://azure.microsoft.com/resources/templates/). Snelstartsjablonen voor Azure is een opslagplaats voor ARM-sjablonen.
 
-De sjabloon die in deze Quick Start wordt gebruikt, wordt [een Azure Key Vault en een geheim](https://azure.microsoft.com/resources/templates/101-key-vault-create/)genoemd. Met de sjabloon maakt u een sleutel kluis en voegt u vervolgens een geheim toe aan de sleutel kluis.
+De sjabloon die in deze quickstart wordt gebruikt, wordt [Een Azure Key Vault en een geheim maken](https://azure.microsoft.com/resources/templates/101-key-vault-create/) genoemd. Met de sjabloon worden een sleutelkluis gemaakt en wordt een sluitelkluisgeheim aan de sleutelkluis toegevoegd.
 
-1. Selecteer **bestand**>**openen**in Visual Studio code.
+1. Selecteer in Visual Studio Code **Bestand**>**Bestand openen**.
 2. Plak de volgende URL in **Bestandsnaam**:
 
     ```url
@@ -70,7 +70,7 @@ De sjabloon die in deze Quick Start wordt gebruikt, wordt [een Azure Key Vault e
     ```
 
 3. Selecteer **Openen** om het bestand te openen.
-4. Selecteer **bestand**>**Opslaan als** om het bestand op te slaan als **azuredeploy. json** op de lokale computer.
+4. Selecteer **Bestand**>**Opslaan als** om het bestand op uw lokale computer op te slaan als **azuredeploy.json**.
 
 ## <a name="edit-the-template"></a>De sjabloon bewerken
 
@@ -78,22 +78,22 @@ Breng de volgende wijzigingen aan in de sjabloon:
 
 ### <a name="clean-up-the-template-optional"></a>De sjabloon opschonen (optioneel)
 
-De oorspronkelijke sjabloon voegt een geheim toe aan de sleutel kluis.  Verwijder de volgende resource om de zelf studie te vereenvoudigen:
+De oorspronkelijke sjabloon voegt een geheim toe aan de sleutelkluis.  Verwijder de volgende resource om de zelfstudie te vereenvoudigen:
 
-* **Micro soft. de sleutel kluis/kluizen/geheimen**
+* **Microsoft.KeyVault/vaults/secrets**
 
-Verwijder de volgende twee parameter definities:
+Verwijder de volgende twee parameterdefinities:
 
 * **secretName**
 * **secretValue**
 
-Als u ervoor kiest om deze definities niet te verwijderen, moet u de parameter waarden opgeven tijdens de implementatie.
+Als u ervoor kiest om deze definities niet te verwijderen, moet u de parameterwaarden opgeven tijdens de implementatie.
 
-### <a name="configure-the-key-vault-access-policies"></a>Het toegangs beleid voor de sleutel kluis configureren
+### <a name="configure-the-key-vault-access-policies"></a>Het toegangsbeleid voor de sleutelkluis configureren
 
-Het implementatie script voegt een certificaat toe aan de sleutel kluis. Configureer het toegangs beleid voor de sleutel kluis om toestemming te geven voor de beheerde identiteit:
+Het implementatiescript voegt een certificaat toe aan de sleutelkluis. Configureer het toegangsbeleid voor de sleutelkluis om de beheerde identiteit toestemming te geven:
 
-1. Voeg een para meter toe om de beheerde identiteits-ID op te halen:
+1. Voeg een parameter toe om de id van de beheerde identiteits op te halen:
 
     ```json
     "identityId": {
@@ -105,9 +105,9 @@ Het implementatie script voegt een certificaat toe aan de sleutel kluis. Configu
     ```
 
     > [!NOTE]
-    > De Resource Manager-sjabloon extensie van Visual Studio code kan nog geen implementatie scripts Format teren. Gebruik [SHIFT] + [ALT] + F niet om de deploymentScripts-resources op te maken, zoals in het volgende voor naam.
+    > De uitbreiding van de Resource Manager-sjabloon van Visual Studio Code kan nog geen implementatiescripts opmaken. Gebruik [Shift]+[Alt]+F niet om de deploymentScripts-resources op te maken, zoals hieronder.
 
-1. Voeg een para meter toe voor het configureren van het toegangs beleid voor de sleutel kluis zodat de beheerde identiteit certificaten kan toevoegen aan de sleutel kluis.
+1. Voeg een parameter toe voor het configureren van het toegangsbeleid voor de sleutelkluis, zodat de beheerde identiteit certificaten kan toevoegen aan de sleutelkluis.
 
     ```json
     "certificatesPermissions": {
@@ -124,7 +124,7 @@ Het implementatie script voegt een certificaat toe aan de sleutel kluis. Configu
     }
     ```
 
-1. Werk het bestaande sleutel kluis toegangs beleid bij naar:
+1. Werk het bestaande toegangsbeleid van de sleutelkluis bij naar:
 
     ```json
     "accessPolicies": [
@@ -149,11 +149,11 @@ Het implementatie script voegt een certificaat toe aan de sleutel kluis. Configu
     ],
     ```
 
-    Er zijn twee beleids regels gedefinieerd: één voor de aangemelde gebruiker en de andere voor de beheerde identiteit.  De aangemelde gebruiker heeft alleen de machtiging *lijst* nodig om de implementatie te verifiëren.  Om de zelf studie te vereenvoudigen, wordt hetzelfde certificaat toegewezen aan zowel de beheerde identiteit als de aangemelde gebruikers.
+    Er zijn twee beleidsregels gedefinieerd: één voor de aangemelde gebruiker en de andere voor de beheerde identiteit.  De aangemelde gebruiker heeft alleen de machtiging *lijst* nodig om de implementatie te verifiëren.  Om de zelfstudie te vereenvoudigen, wordt hetzelfde certificaat toegewezen aan zowel de beheerde identiteit als de aangemelde gebruikers.
 
-### <a name="add-the-deployment-script"></a>Het implementatie script toevoegen
+### <a name="add-the-deployment-script"></a>Het implementatiescript toevoegen
 
-1. Voeg drie para meters toe die worden gebruikt door het implementatie script.
+1. Voeg drie parameters toe die door het implementatiescript worden gebruikt.
 
     ```json
     "certificateName": {
@@ -173,7 +173,7 @@ Het implementatie script voegt een certificaat toe aan de sleutel kluis. Configu
 1. Een deploymentScripts-resource toevoegen:
 
     > [!NOTE]
-    > Omdat de inline-implementatie scripts tussen dubbele aanhalings tekens staan, moeten de teken reeksen in de implementatie scripts in plaats daarvan tussen enkele aanhalings tekens worden geplaatst. Het escape-teken voor Power shell is **&#92;**.
+    > Omdat de inline implementatiescripts tussen dubbele aanhalingstekens staan, moeten de tekenreeksen in de implementatiescripts tussen enkele aanhalingstekens worden geplaatst. Het escape-teken voor PowerShell is **&#92;** .
 
     ```json
     {
@@ -253,46 +253,46 @@ Het implementatie script voegt een certificaat toe aan de sleutel kluis. Configu
     }
     ```
 
-    De `deploymentScripts` resource is afhankelijk van de sleutel kluis resource en de functie toewijzings resource.  Deze heeft de volgende eigenschappen:
+    De `deploymentScripts`-resource is afhankelijk van de resource van de sleutelkluis en de resource van de roltoewijzing.  Deze heeft de volgende eigenschappen:
 
-    * **identiteit**: implementatie script maakt gebruik van een door de gebruiker toegewezen beheerde identiteit voor het uitvoeren van de scripts.
-    * **soort**: Geef het type script op. Op dit moment wordt alleen het Power shell-script ondersteund.
-    * **updatetag**: Bepaal of het implementatie script moet worden uitgevoerd, zelfs als de script bron niet is gewijzigd. Dit kan een huidige tijds tempel of een GUID zijn. Zie [script meer dan één keer uitvoeren](./deployment-script-template.md#run-script-more-than-once)voor meer informatie.
-    * **azPowerShellVersion**: Hiermee geeft u de versie van de Azure PowerShell module op die moet worden gebruikt. Het implementatie script ondersteunt momenteel versie 2.7.0, 2.8.0 en 3.0.0.
-    * **time-out**: Geef de maximale toegestane uitvoerings tijd voor het script op dat is opgegeven in de [ISO 8601-indeling](https://en.wikipedia.org/wiki/ISO_8601). De standaard waarde is **P1D**.
-    * **argumenten**: Geef de parameter waarden op. De waarden worden gescheiden door spaties.
-    * **scriptContent**: Geef de script inhoud op. Als u een extern script wilt uitvoeren, gebruikt u **primaryScriptURI** in plaats daarvan. Zie [extern script gebruiken](./deployment-script-template.md#use-external-scripts)voor meer informatie.
-        Het declareren van **$DeploymentScriptOutputs** is alleen vereist bij het testen van het script op een lokale computer. Als u de variabele declareert, kan het script worden uitgevoerd op een lokale computer en in een deploymentScript-bron zonder dat er wijzigingen hoeven te worden aangebracht. De waarde die is toegewezen aan $DeploymentScriptOutputs is beschikbaar als uitvoer in de implementaties. Zie [werken met uitvoer van Power shell-implementatie scripts](./deployment-script-template.md#work-with-outputs-from-powershell-script) of [werken met uitvoer van CLI-implementatie scripts](./deployment-script-template.md#work-with-outputs-from-cli-script)voor meer informatie.
-    * **cleanupPreference**: Geef de voor keur op wanneer u de resources van het implementatie script wilt verwijderen.  De standaard waarde is **altijd**, wat betekent dat de implementatie script bronnen worden verwijderd ondanks de status van de Terminal (geslaagd, mislukt, geannuleerd). In deze zelf studie wordt **OnSuccess** gebruikt zodat u de resultaten van de uitvoering van het script kunt bekijken.
-    * **retentionInterval**: Geef het interval op waarvoor de service de script bronnen behoudt nadat het een Terminal status heeft bereikt. Resources worden verwijderd wanneer deze duur verloopt. De duur is gebaseerd op het ISO 8601-patroon. In deze zelf studie wordt P1D gebruikt. Dit betekent een dag.  Deze eigenschap wordt gebruikt wanneer **cleanupPreference** is ingesteld op **OnExpiration**. Deze eigenschap is momenteel niet ingeschakeld.
+    * **identity**: Het implementatiescript maakt gebruik van een door de gebruiker toegewezen beheerde identiteit voor het uitvoeren van de scripts.
+    * **kind**: Geef het type script op. Op dit moment wordt alleen het PowerShell-script ondersteund.
+    * **forceUpdateTag**: Bepaal of het implementatiescript moet worden uitgevoerd, zelfs als de scriptbron niet is gewijzigd. Dit kan een actueel tijdstempel of een GUID zijn. Zie [Script meerdere keren uitvoeren](./deployment-script-template.md#run-script-more-than-once) voor meer informatie.
+    * **azPowerShellVersion**: Hiermee geeft u de versie van de Azure PowerShell-module op die moet worden gebruikt. Op dit moment ondersteunt het implementatiescript versie 2.7.0, 2.8.0 en 3.0.0.
+    * **timeout**: Geef de maximale toegestane uitvoeringstijd voor het script op, opgegeven in de [ISO 8601-indeling](https://en.wikipedia.org/wiki/ISO_8601). Standaardwaarde is **P1D**.
+    * **arguments**: Geef de parameterwaarden op. De waarden worden gescheiden door een spatie.
+    * **scriptContent**: Geef de scriptinhoud op. Als u een extern script wilt uitvoeren, gebruikt u in plaats daarvan **primaryScriptURI**. Zie [Extern script gebruiken](./deployment-script-template.md#use-external-scripts) voor meer informatie.
+        U hoeft **$DeploymentScriptOutputs** alleen te declareren als u het script test op een lokale computer. Door de variabele te declareren, kan het script op een lokale computer en in een deploymentScript-resource worden uitgevoerd zonder wijzigingen te moeten aanbrengen. De waarde die is toegewezen aan $DeploymentScriptOutputs is beschikbaar als uitvoer in de implementaties. Zie [Werken met uitvoer van PowerShell-implementatiescripts](./deployment-script-template.md#work-with-outputs-from-powershell-script) of [Werken met uitvoer van CLI-implementatiescripts](./deployment-script-template.md#work-with-outputs-from-cli-script) voor meer informatie.
+    * **cleanupPreference**: Geef de voorkeur op wanneer u de resources van het implementatiescript wilt verwijderen.  De standaardwaarde is **Altijd**, wat betekent dat de resources van het implementatiescript worden verwijderd ondanks de eindstatus (geslaagd, mislukt, geannuleerd). In deze zelfstudie wordt **OnSuccess** gebruikt zodat u de gelegenheid hebt om de resultaten van de uitvoering van het script te bekijken.
+    * **retentionInterval**: Geef het interval op gedurende welke de service de scriptresources behoudt nadat deze de eindstatus heeft bereikt. Resources worden verwijderd wanneer deze tijd is verstreken. De duur is gebaseerd op het ISO 8601-patroon. In deze zelfstudie wordt P1D gebruikt. Dit betekent een dag.  Deze eigenschap wordt gebruikt wanneer **cleanupPreference** is ingesteld op **OnExpiration**. Deze eigenschap is momenteel niet ingeschakeld.
 
-    Het implementatie script neemt drie para meters: sleutel kluis naam, certificaat naam en onderwerpnaam.  Er wordt een certificaat gemaakt en vervolgens het certificaat toegevoegd aan de sleutel kluis.
+    Het implementatiescript gebruikt drie parameters: naam van sleutelkluis, certificaatnaam en onderwerpnaam.  Hiermee wordt een certificaat gemaakt en wordt het certificaat toegevoegd aan de sleutelkluis.
 
-    **$DeploymentScriptOutputs** wordt gebruikt om de uitvoer waarde op te slaan.  Zie [werken met uitvoer van Power shell-implementatie scripts](./deployment-script-template.md#work-with-outputs-from-powershell-script) of [werken met uitvoer van CLI-implementatie scripts](./deployment-script-template.md#work-with-outputs-from-cli-script)voor meer informatie.
+    **$DeploymentScriptOutputs** wordt gebruikt om de uitvoerwaarde op te slaan.  Voor meer informatie raadpleegt u [Werken met uitvoer van PowerShell-implementatiescripts](./deployment-script-template.md#work-with-outputs-from-powershell-script) of [Werken met uitvoer van CLI-implementatiescripts](./deployment-script-template.md#work-with-outputs-from-cli-script).
 
-    De voltooide sjabloon kunt u [hier](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault.json)vinden.
+    De voltooide sjabloon kan [hier](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault.json) worden gevonden.
 
-1. Als u het proces voor fout opsporing wilt zien, plaatst u een fout in de code door de volgende regel toe te voegen aan het implementatie script:
+1. Als u het foutopsporingsproces wilt zien, plaatst u een fout in de code door de volgende regel aan het implementatiescript toe te voegen:
 
     ```powershell
     Write-Output1 $keyVaultName
     ```
 
-    De juiste opdracht is **Write-output** in plaats van **Write-Output1**.
+    De juiste opdracht is **Write-Output** in plaats van **Write-Output1**.
 
-1. Selecteer **bestand**>**Opslaan** om het bestand op te slaan.
+1. Selecteer **Bestand**>**Opslaan** om het bestand op te slaan.
 
 ## <a name="deploy-the-template"></a>De sjabloon implementeren
 
-1. Meld u aan bij de [Azure Cloud shell](https://shell.azure.com)
+1. Meld u aan bij [Azure Cloud Shell](https://shell.azure.com)
 
-1. Kies uw voorkeurs omgeving door **Power shell** of **bash** (voor CLI) in de linkerbovenhoek te selecteren.  U moet de shell opnieuw starten wanneer u overschakelt.
+1. Kies uw favoriete omgeving door in de linkerbovenhoek **PowerShell** of **Bash** (voor CLI) te selecteren.  U moet de shell opnieuw starten wanneer u overschakelt.
 
-    ![Azure Portal Cloud Shell bestand uploaden](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
+    ![Bestand uploaden in Cloud Shell in de Azure-portal](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. Selecteer **Upload/download files** en selecteer **Uploaden**. Zie de vorige schermafbeelding.  Selecteer het bestand dat u in de vorige sectie hebt opgeslagen. Nadat het bestand is geüpload, kunt u de opdracht **ls** gebruiken en de **Cat** -opdracht om te controleren of het bestand is geüpload.
+1. Selecteer **Upload/download files** en selecteer **Uploaden**. Zie de vorige schermafbeelding.  Selecteer het bestand dat u in de vorige sectie hebt opgeslagen. Na het uploaden van het bestand kunt u de **ls**-opdracht en de **cat**-opdracht uitvoeren om te controleren of het bestand is geüpload.
 
-1. Voer het volgende Power shell-script uit om de sjabloon te implementeren.
+1. Gebruik het volgende PowerShell-script om de sjabloon te implementeren.
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource names"
@@ -311,48 +311,48 @@ Het implementatie script voegt een certificaat toe aan de sleutel kluis. Configu
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-    De implementatie script service moet aanvullende implementatie script resources maken voor het uitvoeren van een script. Het volt ooien van de voor bereiding en het opschonen kan tot één minuut duren, naast de daad werkelijke uitvoerings tijd van het script.
+    De implementatiescriptservice moet aanvullende resources van het implementatiescript maken om een script uit te voeren. De voorbereiding en het opschoningsproces kan tot één minuut duren, naast de daadwerkelijke uitvoeringstijd van het script.
 
-    De implementatie is mislukt vanwege de ongeldige opdracht, de **Write-Output1** wordt in het script gebruikt. Er wordt een fout bericht weer gegeven met de melding:
+    De implementatie is mislukt vanwege de ongeldige opdracht, **Write-Output1** die in het script is gebruikt. Er wordt een foutbericht weergegeven met de melding:
 
     ```error
     The term 'Write-Output1' is not recognized as the name of a cmdlet, function, script file, or operable
     program.\nCheck the spelling of the name, or if a path was included, verify that the path is correct and try again.\n
     ```
 
-    Het uitvoerings resultaat van het implementatie script wordt opgeslagen in de implementatie script resources voor het oplossen van het probleem.
+    Het resultaat van de uitvoering van het implementatiescript wordt voor probleemoplossingsdoeleinden opgeslagen in de resources van het implementatiescript.
 
-## <a name="debug-the-failed-script"></a>Fouten opsporen in het script
+## <a name="debug-the-failed-script"></a>Fouten in een mislukt script opsporen
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Open de resource groep. Het is de naam van het project waaraan **RG** is toegevoegd. Er worden twee extra resources weer geven in de resource groep. Deze resources worden bronnen voor het *implementatie script*genoemd.
+1. Open de resourcegroep. Het is de projectnaam waaraan **rg** is toegevoegd. U ziet twee extra resources in de resourcegroep. Deze resources worden *resources van het implementatiescript* genoemd.
 
-    ![Resource Manager-sjabloon implementatie script resources](./media/template-tutorial-deployment-script/resource-manager-template-deployment-script-resources.png)
+    ![Resources van het implementatiescript van Resource Manager-sjabloon](./media/template-tutorial-deployment-script/resource-manager-template-deployment-script-resources.png)
 
-    Beide bestanden hebben het achtervoegsel **azscripts** . Een is een opslag account en de andere is een container exemplaar.
+    Beide bestanden hebben het achtervoegsel **azscripts**. Een is een opslagaccount en het andere is een containerinstantie.
 
-    Selecteer **verborgen typen tonen** om de deploymentScripts-resource weer te geven.
+    Selecteer **Verborgen typen weergeven** om de deploymentScripts-resource weer te geven.
 
-1. Selecteer het opslag account met het achtervoegsel **azscripts** .
-1. Selecteer de tegel **Bestands shares** . Er wordt een map **azscripts** weer geven.  De map bevat de uitvoer bestanden van het implementatie script.
-1. Selecteer **azscripts**. U ziet twee mappen **azscriptinput** en **azscriptoutput**.  De map invoer bevat een script bestand voor het systeem-Power shell en de script bestanden voor de gebruikers implementatie. De uitvoermap bevat een **executionresult. json** en het script uitvoer bestand. U ziet het fout bericht in **executionresult. json**. Het uitvoer bestand is niet beschikbaar omdat de uitvoering is mislukt.
+1. Selecteer het opslagaccount met het achtervoegsel **azscripts**.
+1. Selecteer de tegel **Bestandsshares**. De map **azscripts** wordt weergegeven.  De map bevat de uitvoeringsbestanden van het implementatiescript.
+1. Selecteer **azscripts**. U ziet twee mappen: **azscriptinput** en **azscriptoutput**.  De input-map bevat een scriptbestand voor het PowerShell-systeem en de scriptbestanden voor de gebruikersimplementatie. De output-map bevat een **executionresult.json** en het uitvoerbestand van het script. U kunt het foutbericht bekijken in **executionresult.json**. Er is geen uitvoerbestand omdat de uitvoering is mislukt.
 
-Verwijder de regel **Write-Output1** en implementeer de sjabloon opnieuw.
+Verwijder de **Write-Output1**-regel en implementeer de sjabloon opnieuw.
 
-Wanneer de tweede implementatie met succes wordt uitgevoerd, worden de resources van het implementatie script verwijderd door de script service, omdat de eigenschap **cleanupPreference** is ingesteld op **OnSuccess**.
+Wanneer de tweede implementatie met succes wordt uitgevoerd, worden de resources van het implementatiescript verwijderd door de scriptservice, omdat de eigenschap **cleanupPreference** is ingesteld op **OnSuccess**.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 Schoon de geïmplementeerd Azure-resources, wanneer u deze niet meer nodig hebt, op door de resourcegroep te verwijderen.
 
-1. Selecteer in de Azure Portal **resource groep** in het menu links.
+1. Selecteer **Resourcegroep** in het linkermenu van Azure Portal.
 2. Voer de naam van de resourcegroep in het veld **Filter by name** in.
 3. Selecteer de naam van de resourcegroep.  U ziet in totaal zes resources in de resourcegroep.
-4. Selecteer **resource groep verwijderen** in het bovenste menu.
+4. Selecteer **Resourcegroep verwijderen** in het bovenste menu.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u geleerd hoe u het implementatie script in ARM-sjablonen kunt gebruiken. Informatie over het implementeren van Azure-resources op basis van voorwaarden vindt u in:
+In deze zelfstudie hebt u geleerd hoe u een implementatiescript in ARM-sjablonen gebruikt. Informatie over het implementeren van Azure-resources op basis van voorwaarden vindt u in:
 
 > [!div class="nextstepaction"]
-> [Gebruiksvoorwaarden](./template-tutorial-use-conditions.md)
+> [Voorwaarden gebruiken](./template-tutorial-use-conditions.md)

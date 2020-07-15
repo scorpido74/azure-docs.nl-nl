@@ -1,17 +1,17 @@
 ---
-title: Definitie van beheerde toepassing maken-Azure CLI
-description: Voorziet in een Azure CLI-voorbeeld script voor het maken van een definitie van een beheerde toepassing in het abonnement.
+title: Een definitie van een beheerde toepassing maken - Azure CLI
+description: Biedt een Azure CLI-scriptvoorbeeld waarmee een beheerde toepassingsdefinitie in het abonnement wordt gemaakt.
 author: tfitzmac
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 10/25/2017
 ms.author: tomfitz
-ms.openlocfilehash: f4d5a0036ba44f7e0054db7ce820b91b0de629b8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 63182eb382e96f47c1c90dc5d212e064d0945ba7
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75650189"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056045"
 ---
 # <a name="create-a-managed-application-definition-with-azure-cli"></a>Een definitie van een beheerde toepassing maken met Azure CLI
 
@@ -33,10 +33,10 @@ In dit script wordt de volgende opdracht gebruikt om de definitie van de beheerd
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [az managedapp definition create](https://docs.microsoft.com/cli/azure/managedapp/definition#az-managedapp-definition-create) | Hiermee maakt u de definitie van een beheerde toepassing. Geef het pakket op dat de vereiste bestanden bevat. |
+| [az managedapp definition create](/cli/azure/managedapp/definition#az-managedapp-definition-create) | Hiermee maakt u de definitie van een beheerde toepassing. Geef het pakket op dat de vereiste bestanden bevat. |
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [Overzicht van door Azure beheerde toepassingen](../overview.md) voor algemene informatie over beheerde toepassingen.
-* Zie de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
+* Raadpleeg de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.

@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 2333ace1b1e9116acf85964fb180f44e0f66e6e7
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 28c56b7ece51e39d72c4ddff39d681eeb57d2252
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84733487"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024720"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-managed-domain"></a>Zelfstudie: Maak en configureer een door Azure Active Directory Domain Services beheerd domein
 
@@ -87,16 +87,19 @@ De volgende DNS-naambeperkingen zijn ook van toepassing:
 Vul de velden in het venster *Basisinstellingen* van het Azure-portal in om een beheerd domein te maken:
 
 1. Voer een **DNS-domeinnaam** in voor uw beheerde domein, waarbij u rekening houdt met de vorige punten.
-1. Kies de Azure-**locatie** waarin het beheerde domein moet worden gemaakt. Als u een regio kiest die Beschikbaarheidszones ondersteunt, worden de Azure AD DS-resources gedistribueerd over zones voor aanvullende redundantie.
+1. Kies de Azure-**locatie** waarin het beheerde domein moet worden gemaakt. Als u een regio kiest die Azure-beschikbaarheidszones ondersteunt, worden de Azure AD DS-resources gedistribueerd over zones voor aanvullende redundantie.
 
-    Beschikbaarheidszones zijn unieke, fysieke locaties binnen een Azure-regio. Elke zone bestaat uit een of meer datacenters die zijn voorzien van een onafhankelijke stroomvoorziening, koeling en netwerken. Tolerantie wordt gegarandeerd door aanwezigheid van minimaal drie afzonderlijke zones in alle actieve regio's.
-
-    U hoeft niets te configureren voor Azure AD DS om te worden gedistribueerd over zones. De distributie van resources over zones wordt automatisch afgehandeld op het Azure-platform. Zie [Wat zijn beschikbaarheidszones in Azure?][availability-zones] voor meer informatie en om de beschikbaarheid van regio's te zien.
+    > [!TIP]
+    > Beschikbaarheidszones zijn unieke, fysieke locaties binnen een Azure-regio. Elke zone bestaat uit een of meer datacenters die zijn voorzien van een onafhankelijke stroomvoorziening, koeling en netwerken. Tolerantie wordt gegarandeerd door aanwezigheid van minimaal drie afzonderlijke zones in alle actieve regio's.
+    >
+    > U hoeft niets te configureren voor Azure AD DS om te worden gedistribueerd over zones. De distributie van resources over zones wordt automatisch afgehandeld op het Azure-platform. Zie [Wat zijn beschikbaarheidszones in Azure?][availability-zones] voor meer informatie en om de beschikbaarheid van regio's te zien.
 
 1. De **SKU** bepaalt de prestaties, back-upfrequentie en het maximum aantal forestvertrouwensrelaties dat u kunt maken. U kunt de SKU wijzigen zodra het beheerde domein is gemaakt wanneer uw zakelijke behoeften of vereisten veranderen. Zie [Azure AD DS SKU-concepten][concepts-sku] voor meer informatie.
 
     Voor deze zelfstudie selecteert u de *Standaard*-SKU.
-1. Een *forest* is een logische constructie die door Active Directory Domain Services wordt gebruikt om een of meer domeinen te groeperen. Een beheerd domein wordt standaard gemaakt als een *Gebruikersforest*. Met dit type forest worden alle objecten van Azure AD gesynchroniseerd, waaronder alle gebruikersaccounts die zijn gemaakt in een on-premises AD DS-omgeving. Met een *resourceforest* worden alleen gebruikers en groepen gesynchroniseerd die rechtstreeks in Azure AD zijn gemaakt. Resourceforests zijn momenteel beschikbaar als preview-versie. Raadpleeg [Overzicht van Azure AD DS-resourceforests][resource-forests] voor meer informatie over *resourceforests*, waaronder redenen om deze te gebruiken en hoe u forestvertrouwensrelaties maakt met on-premises AD DS-domeinen.
+1. Een *forest* is een logische constructie die door Active Directory Domain Services wordt gebruikt om een of meer domeinen te groeperen. Een beheerd domein wordt standaard gemaakt als een *Gebruikersforest*. Met dit type forest worden alle objecten van Azure AD gesynchroniseerd, waaronder alle gebruikersaccounts die zijn gemaakt in een on-premises AD DS-omgeving.
+
+    Met een *resourceforest* worden alleen gebruikers en groepen gesynchroniseerd die rechtstreeks in Azure AD zijn gemaakt. Resourceforests zijn momenteel beschikbaar als preview-versie. Raadpleeg [Overzicht van Azure AD DS-resourceforests][resource-forests] voor meer informatie over *resourceforests*, waaronder redenen om deze te gebruiken en hoe u forestvertrouwensrelaties maakt met on-premises AD DS-domeinen.
 
     Voor deze zelfstudie kiest u voor het maken van een *gebruikersforest*.
 
@@ -112,7 +115,7 @@ Selecteer **Beoordelen en maken** om deze opties voor standaardinstellingen te a
 
 ## <a name="deploy-the-managed-domain"></a>Het beheerde domein implementeren
 
-Ga naar de pagina **Samenvatting** van de wizard om de configuratie-instellingen voor het beheerde domein te controleren. U kunt teruggaan naar elke stap van de wizard om wijzigingen door te voeren. Als u een beheerd domein opnieuw en consistent wilt implementeren in een andere Azure AD-tenant met behulp van deze configuratieopties, dan kunt u ook **Een sjabloon downloaden voor automatisering**.
+Ga naar de pagina **Samenvatting** van de wizard om de configuratie-instellingen voor uw beheerde domein te controleren. U kunt teruggaan naar elke stap van de wizard om wijzigingen door te voeren. Als u een beheerd domein opnieuw en consistent wilt implementeren in een andere Azure AD-tenant met behulp van deze configuratieopties, dan kunt u ook **Een sjabloon downloaden voor automatisering**.
 
 1. Voor het maken van het beheerde domein selecteert u **Maken**. Er wordt een opmerking weergegeven dat bepaalde configuratieopties, zoals de DNS-naam of een virtueel netwerk, niet kunnen worden gewijzigd zodra het beheerde Azure AD DS-domein is gemaakt. Selecteer **OK** om door te gaan.
 1. Het inrichtingsproces van uw beheerde domein duurt ongeveer een uur. Er wordt een melding weergegeven in het portal met de voortgang van uw Azure AD DS-implementatie. Selecteer de melding om gedetailleerde voortgangsinformatie voor de implementatie weer te geven.
@@ -128,11 +131,12 @@ Ga naar de pagina **Samenvatting** van de wizard om de configuratie-instellingen
 
     ![Status van Domain Services zodra het domein is ingericht](./media/tutorial-create-instance/successfully-provisioned.png)
 
-Het beheerde domein is gekoppeld aan uw Azure AD-tenant. Tijdens het inrichtingsproces worden in Azure AD DS twee Enterprise-toepassingen met de naam *Domain Controller Services* en *AzureActiveDirectoryDomainControllerServices* gemaakt in de Azure AD-tenant. Deze Enterprise-toepassingen zijn nodig voor het onderhoud van uw beheerde domein. Verwijder deze toepassingen niet.
+> [!IMPORTANT]
+> Het beheerde domein is gekoppeld aan uw Azure AD-tenant. Tijdens het inrichtingsproces worden in Azure AD DS twee Enterprise-toepassingen met de naam *Domain Controller Services* en *AzureActiveDirectoryDomainControllerServices* gemaakt in de Azure AD-tenant. Deze Enterprise-toepassingen zijn nodig voor het onderhoud van uw beheerde domein. Verwijder deze toepassingen niet.
 
 ## <a name="update-dns-settings-for-the-azure-virtual-network"></a>DNS-instellingen bijwerken voor het virtuele Azure-netwerk
 
-Nu Azure AD DS is geïmplementeerd, gaat u het virtuele netwerk configureren zodat andere verbonden virtuele machines en toepassingen van het beheerde domein gebruik kunnen maken. Om deze connectiviteit te leveren moet u de DNS-serverinstellingen voor uw virtuele netwerk bijwerken zodat wordt verwezen naar de twee IP-adressen waar Azure AD DS is geïmplementeerd.
+Nu Azure AD DS is geïmplementeerd, gaat u het virtuele netwerk configureren zodat andere verbonden virtuele machines en toepassingen van het beheerde domein gebruik kunnen maken. Om deze connectiviteit te leveren moet u de DNS-serverinstellingen voor uw virtuele netwerk bijwerken zodat wordt verwezen naar de twee IP-adressen waar het beheerde domein is geïmplementeerd.
 
 1. Op het tabblad **Overzicht** voor uw beheerde domein wordt een aantal **Vereiste configuratiestappen** weergegeven. De eerste configuratiestap is het bijwerken van de DNS-serverinstellingen voor het virtuele netwerk. Zodra de DNS-instellingen goed zijn geconfigureerd, wordt deze stap niet meer weergegeven.
 
@@ -150,9 +154,17 @@ Nu Azure AD DS is geïmplementeerd, gaat u het virtuele netwerk configureren zod
 Voor de verificatie van gebruikers in het beheerde domein heeft Azure AD DS wachtwoordhashes nodig in een indeling die geschikt is voor NTLM- (NT LAN Manager) en Kerberos-verificatie. Totdat u Azure AD DS voor uw tenant inschakelt, maakt of bewaart Azure AD geen wachtwoordhashes in de vereiste indeling voor NTLM- of Kerberos-verificatie. Om veiligheidsredenen slaat Azure AD ook geen wachtwoorden op in niet-gecodeerde vorm. Azure AD kan deze wachtwoordhashes voor NTLM of Kerberos niet automatisch genereren op basis van bestaande referenties van gebruikers.
 
 > [!NOTE]
-> Zodra de configuratie is geslaagd, worden de bruikbare wachtwoordhashes opgeslagen in het beheerde domein. Als u het beheerde domein verwijdert, worden alle wachtwoordhashes die op dat punt zijn opgeslagen ook verwijderd. Gesynchroniseerde referentiegegevens in Azure AD kunnen niet opnieuw worden gebruikt als u later een beheerd domein maakt; u moet de synchronisatie van wachtwoordhashes opnieuw configureren om de wachtwoordhashes opnieuw op te slaan. Eerder aan het domein toegevoegde virtuele machines of gebruikers kunnen niet direct een verificatie uitvoeren; Azure AD moet eerst de wachtwoordhashes in het nieuwe beheerd domein genereren en opslaan. Zie [Synchronisatieproces voor wachtwoordhashes voor Azure AD DS en Azure AD Connect][password-hash-sync-process] voor meer informatie.
+> Zodra de configuratie is geslaagd, worden de bruikbare wachtwoordhashes opgeslagen in het beheerde domein. Als u het beheerde domein verwijdert, worden alle wachtwoordhashes die op dat punt zijn opgeslagen ook verwijderd.
+>
+> Gesynchroniseerde referentiegegevens in Azure AD kunnen niet opnieuw worden gebruikt als u later een beheerd domein maakt; u moet de synchronisatie van wachtwoordhashes opnieuw configureren om de wachtwoordhashes opnieuw op te slaan. Eerder aan het domein toegevoegde virtuele machines of gebruikers kunnen niet direct een verificatie uitvoeren; Azure AD moet eerst de wachtwoordhashes in het nieuwe beheerd domein genereren en opslaan.
+>
+> Zie [Synchronisatieproces voor wachtwoordhashes voor Azure AD DS en Azure AD Connect][password-hash-sync-process] voor meer informatie.
 
-De stappen om deze wachtwoordhashes te genereren en op te slaan zijn voor cloudgebruikersaccounts die in Azure AD zijn gemaakt anders dan de stappen voor gebruikersaccounts die zijn gesynchroniseerd vanuit uw on-premises directory met behulp van Azure AD Connect. Een cloudgebruikersaccount is een account dat is gemaakt in uw Azure AD-directory via de Azure portal of Azure AD PowerShell-cmdlets. Deze gebruikersaccounts zijn niet gesynchroniseerd vanuit een on-premises map. In deze zelfstudie gaat u aan de slag met een basisaccount voor cloudgebruikers. Zie [Wachtwoordhashes synchroniseren voor gebruikersaccounts die vanaf uw on-premises AD bij uw beheerde domein zijn gesynchroniseerd][on-prem-sync] voor meer informatie over de aanvullende stappen die vereist zijn om Azure AD Connect te gebruiken.
+De stappen om deze wachtwoordhashes te genereren en op te slaan zijn voor cloudgebruikersaccounts die in Azure AD zijn gemaakt anders dan de stappen voor gebruikersaccounts die zijn gesynchroniseerd vanuit uw on-premises directory met behulp van Azure AD Connect.
+
+Een cloudgebruikersaccount is een account dat is gemaakt in uw Azure AD-directory via de Azure portal of Azure AD PowerShell-cmdlets. Deze gebruikersaccounts zijn niet gesynchroniseerd vanuit een on-premises map.
+
+> In deze zelfstudie gaat u aan de slag met een basisaccount voor cloudgebruikers. Zie [Wachtwoordhashes synchroniseren voor gebruikersaccounts die vanaf uw on-premises AD bij uw beheerde domein zijn gesynchroniseerd][on-prem-sync] voor meer informatie over de aanvullende stappen die vereist zijn om Azure AD Connect te gebruiken.
 
 > [!TIP]
 > Als de Azure AD-tenant een combinatie van cloudgebruikers en gebruikers van on-premises AD heeft, moet u beide sets met stappen uitvoeren.
@@ -197,7 +209,7 @@ Voordat virtuele machines aan een domein toevoegt en toepassingen implementeert 
 [create-dedicated-subnet]: ../virtual-network/virtual-network-manage-subnet.md#add-a-subnet
 [scoped-sync]: scoped-synchronization.md
 [on-prem-sync]: tutorial-configure-password-hash-sync.md
-[configure-sspr]: ../active-directory/authentication/quickstart-sspr.md
+[configure-sspr]: ../active-directory/authentication/tutorial-enable-sspr.md
 [password-hash-sync-process]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md#password-hash-sync-process-for-azure-ad-domain-services
 [tutorial-create-instance-advanced]: tutorial-create-instance-advanced.md
 [skus]: overview.md

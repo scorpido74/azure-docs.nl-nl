@@ -3,16 +3,16 @@ title: Taken automatiseren voor bedrijfsintegratie
 description: Leer meer over het automatiseren van werkstromen waarmee apps, gegevens, services en systemen worden geïntegreerd met minimale code voor bedrijfsintegratie, met behulp van Azure Logic Apps.
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: overview
 ms.custom: mvc
 ms.date: 03/11/2020
-ms.openlocfilehash: 789ddf39e4493d11d63a07f2341ab36ac161f32d
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 08b3863ac9a03cda2659cf4934b781eeb9330e17
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84659610"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563811"
 ---
 # <a name="overview---what-is-azure-logic-apps"></a>Overzicht - Wat is Azure Logic Apps?
 
@@ -32,7 +32,7 @@ U kunt kiezen uit een steeds groter wordende verzameling met [honderden kant-en-
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Introducing-Azure-Logic-Apps/player]
 
-## <a name="how-does-logic-apps-work"></a>Hoe werkt Logic Apps? 
+## <a name="how-do-logic-apps-work"></a>Hoe werken logische apps? 
 
 Iedere werkstroom van logische apps begint met een trigger, die wordt geactiveerd wanneer een bepaalde gebeurtenis wordt uitgevoerd of wanneer nieuwe beschikbare gegevens aan bepaalde criteria voldoen. Veel triggers die worden geleverd via de connectors in Logic Apps, bevatten mogelijkheden voor eenvoudige planning, zodat u kunt instellen met welke regelmaat uw workloads moeten worden uitgevoerd. Voor complexere planning of geavanceerde terugkeerpatronen kunt u een terugkeerpatroontrigger gebruiken als eerste stap in elke werkstroom. Meer informatie over [werkstromen op basis van planning](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
 
@@ -42,7 +42,7 @@ Telkens wanneer de trigger wordt geactiveerd, maakt de Logic Apps-engine een exe
 
 U kunt uw logische apps visueel compileren met Ontwerper van logische apps, een functie die beschikbaar is op Azure Portal via uw browser en in Visual Studio. Voor meer aangepaste logische apps kunt u definities voor logische apps maken of bewerken in JavaScript Object Notation (JSON) door in de editor 'codeweergave' te werken. U kunt voor bepaalde taken ook Azure PowerShell-opdrachten en Azure Resource Manager-sjablonen gebruiken. Logische apps worden geïmplementeerd en uitgevoerd in de cloud op Azure. Bekijk deze video voor een meer uitvoerige inleiding: [Use Azure Enterprise Integration Services to run cloud apps at scale](https://channel9.msdn.com/Events/Connect/2017/T119/)
 
-## <a name="why-use-logic-apps"></a>Waarom Logic Apps?
+## <a name="why-use-logic-apps"></a>Waarom logische apps gebruiken?
 
 Nu bedrijven steeds meer opschuiven naar digitalisering, kunnen logische apps helpen om oudere en moderne en geavanceerde systemen gemakkelijk en snel met elkaar te verbinden met behulp van vooraf gedefinieerde API's als door Microsoft beheerde connectors. Op die manier kunt u zich richten op de bedrijfslogica en functionaliteit van uw apps. U hoeft zich geen zorgen te maken over het compileren, hosten, schalen, beheren, onderhouden en controleren van uw apps. Logic Apps werkt dat allemaal voor u af. Bovendien betaalt u alleen voor wat u gebruikt op basis van een [prijsmodel](../logic-apps/logic-apps-pricing.md).
 

@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: tekst-en indelings informatie extra heren met behulp van python-formulier herkenner'
+title: 'Quickstart: Tekst- en indelingsgegevens extraheren met behulp van Python - Form Recognizer'
 titleSuffix: Azure Cognitive Services
-description: In deze Quick Start gebruikt u de indeling REST API voor formulier herkenning met python om tekst-en tabel gegevens uit uw formulieren te lezen.
+description: In deze quickstart gebruikt u de Form Recognizer Layout REST API met Python om tekst- en tabelgegevens in uw formulieren te lezen.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -10,40 +10,40 @@ ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: tracking-python
-ms.openlocfilehash: c84e36f668a9b5cd7fdb61103300d971fdf6c0fa
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
-ms.translationtype: MT
+ms.openlocfilehash: 62cbaec3e4eaffb9ff3b29e97516ed7e039b38ff
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563077"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86028114"
 ---
-# <a name="quickstart-extract-text-and-layout-information-using-the-form-recognizer-rest-api-with-python"></a>Snelstartgids: tekst-en indelings informatie extra heren met behulp van de formulier Recognizer REST API met python
+# <a name="quickstart-extract-text-and-layout-information-using-the-form-recognizer-rest-api-with-python"></a>Quickstart: Tekst- en indelingsgegevens extraheren met behulp van de Form Recognizer REST API en Python
 
-In deze Quick Start gebruikt u de Azure Form Recognizer REST API met python om tekst indelings informatie en tabel gegevens op te halen uit formulier documenten.
+In deze quickstart gebruikt u de Azure Form Recognizer REST API met Python om tekstindelingsgegevens en tabelgegevens op te halen uit formulierdocumenten.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het volt ooien van deze Snelstartgids hebt u het volgende nodig:
-- [Python](https://www.python.org/downloads/) geïnstalleerd (als u het voor beeld lokaal wilt uitvoeren).
-- Een formulier document. U kunt een installatie kopie downloaden uit de [set met voorbeeld gegevens](https://go.microsoft.com/fwlink/?linkid=2090451) voor deze Quick Start.
+U hebt het volgende nodig om deze quickstart te voltooien:
+- [Python](https://www.python.org/downloads/) moet zijn geïnstalleerd (als u het voorbeeld lokaal wilt uitvoeren).
+- Een formulierdocument. U kunt een afbeelding downloaden uit de [set met voorbeeldgegevens](https://go.microsoft.com/fwlink/?linkid=2090451) voor deze quickstart.
 
 > [!NOTE]
-> In deze Snelstartgids wordt een lokaal opgeslagen document gebruikt. Zie de [referentie documentatie](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)voor meer informatie over het gebruik van externe bestanden die worden geopend via URL.
+> In deze quickstart wordt een lokaal opgeslagen document gebruikt. Zie de [referentiedocumentatie](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeLayoutAsync) voor meer informatie over het gebruik van externe bestanden die worden geopend via URL.
 
 
-## <a name="create-a-form-recognizer-resource"></a>Een resource voor een formulier herkenning maken
+## <a name="create-a-form-recognizer-resource"></a>Een Form Recognizer-resource maken
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
 ## <a name="analyze-the-form-layout"></a>De indeling van het formulier analyseren
 
-Om te beginnen met het analyseren van de lay-out roept u de **[indelings](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)** -API analyseren op met het python-script hieronder. Voordat u het script uitvoert, moet u de volgende wijzigingen aanbrengen:
+Als u de indeling wilt analyseren, roept u de **[Analyze Layout](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeLayoutAsync)** API op met behulp van het Python-script hieronder. Voordat u het script uitvoert, moet u de volgende wijzigingen aanbrengen:
 
-1. Vervang door `<Endpoint>` het eind punt dat u hebt verkregen met het formulier Recognizer-abonnement.
-1. Vervang door `<path to your form>` het pad naar het lokale formulier document.
-1. Vervang door `<subscription key>` de abonnements sleutel die u uit de vorige stap hebt gekopieerd.
+1. Vervang `<Endpoint>` door het eindpunt dat u hebt verkregen met uw Form Recognizer-abonnement.
+1. Vervang `<path to your form>` door het pad naar het lokale formulierdocument.
+1. Vervang `<subscription key>` door de abonnementssleutel die u uit de vorige stap hebt gekopieerd.
 
     ```python
     ########### Python Form Recognizer Async Layout #############
@@ -78,19 +78,19 @@ Om te beginnen met het analyseren van de lay-out roept u de **[indelings](https:
         quit()
     ```
 
-1. Sla de code op in een bestand met de extensie. py. Bijvoorbeeld *Form-Recognizer-layout.py*.
+1. Sla de code op in een bestand met de extensie .py. Bijvoorbeeld *form-recognizer-layout.py*.
 1. Open een opdrachtpromptvenster.
 1. Typ bij de prompt de opdracht `python` om het voorbeeld uit te voeren. Bijvoorbeeld `python form-recognizer-layout.py`.
 
-U ontvangt een `202 (Success)` antwoord met een **bewerkings locatie** header, die door het script wordt afgedrukt naar de-console. Deze header bevat een bewerkings-ID die u kunt gebruiken om de status van de asynchrone bewerking op te vragen en de resultaten op te halen. In de volgende voorbeeld waarde is de teken reeks na `operations/` de bewerkings-id.
+U ontvangt een `202 (Success)`-antwoord met een **Operation-Location**-header, die het script naar de console afdrukt. Deze header bevat een bewerkings-id die u kunt gebruiken om query's uit te voeren op de status van de asynchrone bewerking en de resultaten op te halen. In de volgende voorbeeldwaarde is de tekenreeks na `operations/` de bewerkings-id.
 
 ```console
 https://cognitiveservice/formrecognizer/v2.0/layout/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 
-## <a name="get-the-layout-results"></a>De resultaten van de indeling ophalen
+## <a name="get-the-layout-results"></a>De indelingsresultaten ophalen
 
-Nadat u de **indelings** -API analyseren hebt aangeroepen, roept u de API voor het analyseren van de **[indeling ophalen](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeLayoutResult)** aan om de status van de bewerking en de geëxtraheerde gegevens op te halen. Voeg de volgende code toe onder aan het python-script. Deze code maakt gebruik van de bewerkings-ID-waarde in een nieuwe API-aanroep. Met dit script wordt de API met regel matige tussen pozen aangeroepen totdat de resultaten beschikbaar zijn. We raden een interval van één seconde of meer aan.
+Nadat u de **Analyze Layout** API hebt aangeroepen, roept u de **[Get Analyze Layout Result](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/GetAnalyzeLayoutResult)** API aan om de status van de bewerking en de geëxtraheerde gegevens op te halen. Voeg onderaan uw Python-script de volgende code toe. Deze code maakt gebruik van de bewerkings-id-waarde in een nieuwe API-aanroep. Met dit script wordt de API met regelmatige tussenpozen aangeroepen totdat de resultaten beschikbaar zijn. We raden een interval van minimaal één seconde aan.
 
 ```python
 n_tries = 10
@@ -120,16 +120,16 @@ while n_try < n_tries:
 ```
 
 1. Sla het script op.
-1. Gebruik opnieuw de `python` opdracht om het voor beeld uit te voeren. Bijvoorbeeld `python form-recognizer-layout.py`.
+1. Gebruik opnieuw de `python`-opdracht om de sample uit te voeren. Bijvoorbeeld `python form-recognizer-layout.py`.
 
 ### <a name="examine-the-response"></a>Het antwoord bekijken
 
-Met het script worden antwoorden op de console afgedrukt totdat de **analyse-lay** -outbewerking is voltooid. Vervolgens worden de geëxtraheerde gegevens in JSON-indeling afgedrukt. Het `"readResults"` knoop punt bevat elke tekst regel met de betreffende plaatsing van de selectie vakjes op de pagina. `"pageResults"`In het veld wordt elk stuk tekst in tabellen weer gegeven, elk met de rij-kolom coördinaat.
+Met het script worden antwoorden naar de console afgedrukt totdat de **Analyze Layout**-bewerking is voltooid. Vervolgens worden de geëxtraheerde gegevens in JSON-indeling afgedrukt. Het knooppunt `"readResults"` bevat elke tekstregel met het bijbehorende begrenzingsvak op de pagina. In het veld `"pageResults"` wordt elk stuk tekst in tabellen weergegeven, elk stuk met een eigen rij-kolomcoördinaat.
 
-Bekijk de volgende factuur afbeelding en de bijbehorende JSON-uitvoer. De uitvoer is kort voor eenvoud.
+Bekijk de volgende factuurafbeelding en de bijbehorende JSON-uitvoer. De uitvoer is voor het gemak ingekort.
 
 > [!div class="mx-imgBorder"]
-> ![Contoso-factuur document met een tabel](../media/contoso-invoice.png)
+> ![Contoso-factuurdocument met een tabel](../media/contoso-invoice.png)
 
 ```json
 { 
@@ -280,7 +280,7 @@ Bekijk de volgende factuur afbeelding en de bijbehorende JSON-uitvoer. De uitvoe
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u de formulier Recognizer REST API met python gebruikt om de tekst indeling van een factuur uit te pakken. Raadpleeg vervolgens de referentie documentatie om de API voor het formulier Recognizer te verkennen.
+In deze quickstart hebt u de Form Recognizer REST API met Python gebruikt om de tekstindeling van een factuur te extraheren. Raadpleeg hierna de referentiedocumentatie om de Form Recognizer API verder te verkennen.
 
 > [!div class="nextstepaction"]
-> [Documentatie over REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)
+> [REST API-referentiedocumentatie](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeLayoutAsync)

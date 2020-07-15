@@ -8,35 +8,37 @@ ms.service: analysis-services
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 6f0d5f084c5cd48abf399e351c627d64951ce719
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 4dd7906ed32faa630ba074cb29e7987a64205cb5
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697444"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86042098"
 ---
-# <a name="quickstart-create-a-server---azure-resource-manager-template"></a>Quickstart: Een server maken met een Azure Resource Manager-sjabloon
+# <a name="quickstart-create-a-server---arm-template"></a>Quickstart: Een server maken - ARM-sjabloon
 
-In deze quickstart wordt beschreven hoe u een Analysis Services-serverresource in uw Azure-abonnement maakt met behulp van een Resource Manager-sjabloon.
+In deze quickstart wordt beschreven hoe u een Analysis Services-serverresource in uw Azure-abonnement maakt met behulp van een Azure Resource Manager-sjabloon (ARM-sjabloon).
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
+
+[![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-analysis-services-create%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Vereisten
 
 * **Azure-abonnement**: Ga naar [gratis proefversie van Azure](https://azure.microsoft.com/offers/ms-azr-0044p/) om een account te maken.
 * **Azure Active Directory**: Uw abonnement moet zijn gekoppeld aan een Azure Active Directory-tenant. En u moet zijn aangemeld bij Azure met een account in deze Azure Active Directory. Raadpleeg voor meer informatie [Verificatie en gebruikersmachtigingen](analysis-services-manage-users.md).
 
-## <a name="create-a-server"></a>Een server maken
+## <a name="review-the-template"></a>De sjabloon controleren
 
-### <a name="review-the-template"></a>De sjabloon controleren
-
-De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure Quick Start-sjablonen](https://azure.microsoft.com/resources/templates/101-analysis-services-create/).
+De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-quickstartsjablonen](https://azure.microsoft.com/resources/templates/101-analysis-services-create/).
 
 :::code language="json" source="~/quickstart-templates/101-analysis-services-create/azuredeploy.json" range="1-79" highlight="63-78":::
 
-Er wordt één [Microsoft.AnalysisServices/servers](https://docs.microsoft.com/azure/templates/microsoft.analysisservices/2017-08-01/servers)-resource met een firewallregel gedefinieerd in de sjabloon. 
+Er wordt één [Microsoft.AnalysisServices/servers](/azure/templates/microsoft.analysisservices/servers)-resource met een firewallregel gedefinieerd in de sjabloon.
 
-### <a name="deploy-the-template"></a>De sjabloon implementeren
+## <a name="deploy-the-template"></a>De sjabloon implementeren
 
 1. Selecteer de volgende Implementeren naar Azure-link om u aan te melden bij Azure en een sjabloon te openen. De sjabloon wordt gebruikt om een Analysis Services-serverresource te maken en de vereiste en optionele eigenschappen op te geven.
 
@@ -60,7 +62,7 @@ Er wordt één [Microsoft.AnalysisServices/servers](https://docs.microsoft.com/a
 
 3. Selecteer **Aankoop**. Nadat de server is geïmplementeerd, ontvangt u een melding:
 
-   ![Resource Manager-sjabloon, portalmelding implementeren](./media/analysis-services-create-template/notification.png)
+   ![ARM-sjabloon, portalmelding implementeren](./media/analysis-services-create-template/notification.png)
 
 ## <a name="validate-the-deployment"></a>De implementatie valideren
 
@@ -101,7 +103,8 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart hebt u een Azure Resource Manager-sjabloon gebruikt om een nieuwe resourcegroep en een Azure Analysis Services-serverresource te maken. Nadat u een serverresource hebt gemaakt met behulp van de sjabloon, kunt u het volgende bekijken:
+In deze quickstart hebt u een ARM-sjabloon gebruikt om een nieuwe resourcegroep en een Azure Analysis Services-serverresource te maken. Nadat u een serverresource hebt gemaakt met behulp van de sjabloon, kunt u het volgende bekijken:
+
 - [Snelstart: Een server maken - PowerShell](analysis-services-create-powershell.md)
 - [Een voorbeeldmodel toevoegen via de portal](analysis-services-create-sample-model.md)
 - [Serverbeheerder en gebruikersrollen configureren](tutorials/analysis-services-tutorial-roles.md)

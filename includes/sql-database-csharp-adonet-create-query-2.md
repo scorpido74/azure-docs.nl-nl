@@ -4,16 +4,16 @@ ms.service: sql-database
 ms.topic: include
 ms.date: 12/10/2018
 ms.author: genemi
-ms.openlocfilehash: e30651cb0ed7d74082163a92acbc428c21018255
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 7943ea13d93fa68b76d333bda5438fb5738f5cd1
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67176113"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050269"
 ---
 ## <a name="c-program-example"></a>Voorbeeld van C#-programma
 
-In de volgende secties van dit artikel wordt een C#-programma gepresenteerd dat gebruikmaakt van ADO.NET voor het verzenden van Transact-SQL-instructies (T-SQL) naar de SQL Database. Met het C#-programma worden de volgende acties aangetoond:
+In de volgende secties van dit artikel wordt een C#-programma gepresenteerd dat gebruikmaakt van ADO.NET voor het verzenden van Transact-SQL-instructies (T-SQL) naar SQL Database. Met het C#-programma worden de volgende acties aangetoond:
 
 - [Verbinding maken met SQL Database met behulp van ADO.NET](#cs_1_connect)
 - [Methoden voor het retourneren van T-SQL-instructies](#cs_2_return)
@@ -26,7 +26,7 @@ In de volgende secties van dit artikel wordt een C#-programma gepresenteerd dat 
 
 Voor de `CREATE TABLE`-instructies is het trefwoord **VERWIJZINGEN** nodig voor het maken van een FK-relatie (*refererende sleutel*) tussen twee tabellen. Als u *tempdb* gebruikt, geeft u commentaar bij het trefwoord `--REFERENCES` met behulp van twee streepjes aan het begin.
 
-Op de ERD wordt de relatie tussen de twee tabellen weergegeven. De waarden in de *onderliggende* kolom **tabEmployee. DepartmentCode** zijn beperkt tot waarden uit de *bovenliggende* kolom **tabDepartment. DepartmentCode** .
+Op de ERD wordt de relatie tussen de twee tabellen weergegeven. De waarden in de *onderliggende* kolom **tabEmployee.DepartmentCode** zijn beperkt tot de waarden in de *bovenliggende* kolom **tabDepartment.Department**.
 
 ![ERD met refererende sleutel](./media/sql-database-csharp-adonet-create-query-2/erd-dept-empl-fky-2.png)
 
@@ -37,7 +37,7 @@ Op de ERD wordt de relatie tussen de twee tabellen weergegeven. De waarden in de
 
 Het C#-programma is logischerwijs één .cs-bestand en fysiek onderverdeeld in verschillende codeblokken, waardoor elk blok gemakkelijker te begrijpen is. Ga als volgt te werk om dit programma te compileren en uit te voeren:
 
-1. Maak een C#-project in Visual Studio. Het projecttype moet *Console* zijn. U vindt dit onder **Sjablonen** > **Visual C#** > **Windows Desktop** > **Console App (.NET Framework)**.
+1. Maak een C#-project in Visual Studio. Het projecttype moet *Console* zijn. U vindt dit onder **Sjablonen** > **Visual C#**  > **Windows Desktop** > **Console App (.NET Framework)** .
 
 1. In het bestand *Program.cs* vervangt u de beginregels van de code aan de hand van de volgende stappen:
 

@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 12/05/2018
+ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 568f284a22f170c2a6a0d60d9e2cfed0645937ba
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 3e40eecce3ff0ea5b252fd135ae553fa20e0a77b
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261372"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85386348"
 ---
 # <a name="what-is-password-hash-synchronization-with-azure-ad"></a>Wat is synchronisatie van wachtwoord-hashes met Azure AD?
 Wachtwoord-hashsynchronisatie is een van de aanmeldingsmethoden voor hybride identiteit. Azure AD Connect synchroniseert een hash, van de hash, van het wachtwoord van een gebruiker vanuit een on-premises Active Directory-exemplaar naar een Azure AD-exemplaar in de cloud.
@@ -29,6 +29,12 @@ Wachtwoord-hashsynchronisatie helpt u om het aantal wachtwoorden te verminderen.
 
 * De productiviteit van uw gebruikers verhogen.
 * De kosten van uw helpdesk verlagen.  
+
+Wachtwoord-hashsynchronisatie maakt ook [detectie van uitgelekte referenties](../identity-protection/concept-identity-protection-risks.md#user-risk) voor uw hybride account mogelijk. Microsoft werkt samen met wetshandhavers en onderzoekers die het 'dark web' bestuderen om openbaar beschikbare gebruikersnaam/wachtwoord-paren te vinden. Als een van deze paren overeenkomt met een van onze gebruikers, wordt het betreffende account verplaatst naar 'hoog risico'. 
+
+>[!NOTE]
+> Alleen nieuwe gelekte referenties die worden gevonden nadat u PHS inschakelt, worden verwerkt voor uw tenant. Er wordt geen verificatie uitgevoerd van eerder gevonden referentieparen.
+
 
 Als u besluit [federatie met Active Directory Federation Services (AD FS)](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Configuring-AD-FS-for-user-sign-in-with-Azure-AD-Connect) te gebruiken, kunt u optioneel als back-up wachtwoordhashsynchronisatie instellen als aanmeldingsmethode.
 

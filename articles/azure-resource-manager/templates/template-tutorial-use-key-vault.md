@@ -6,20 +6,20 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 7fd84fc2e98578772c806f358cb8d6c400e0d994
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 73a50c282eee023bff525bc737bd2170938de1dc
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82185010"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119273"
 ---
-# <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>Zelf studie: Azure Key Vault integreren in de implementatie van uw ARM-sjabloon
+# <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>Zelfstudie: Azure Key Vault integreren in ARM-sjabloonimplementatie
 
-Meer informatie over het ophalen van geheimen van een Azure-sleutel kluis en het door geven van geheimen als para meters bij het implementeren van een Azure Resource Manager ARM-sjabloon. De parameter waarde wordt nooit weer gegeven, omdat u alleen naar de sleutel kluis-ID verwijst. U kunt verwijzen naar het sleutel kluis geheim met behulp van een statische ID of een dynamische ID. In deze zelf studie wordt een statische ID gebruikt. Met de statische ID-benadering verwijst u naar de sleutel kluis in het sjabloon parameter bestand, niet op het sjabloon bestand. Zie [Azure Key Vault gebruiken om de waarde van een beveiligde para meter door te geven tijdens de implementatie](./key-vault-parameter.md)voor meer informatie over beide benaderingen.
+Ontdek hoe u geheime waarden uit Azure Key Vault ophaalt en deze als parameters doorgeeft tijdens de implementatie van een Azure Resource Manager-sjabloon. De parameterwaarde wordt nooit weergegeven, omdat u alleen naar de sleutelkluis-ID verwijst. U kunt een statische of dynamische ID gebruiken om naar de geheime waarden in de sleutelkluis te verwijzen. In deze zelfstudie wordt een statische ID gebruikt. Met de statische ID verwijst u naar de sleutelkluis in het parameterbestand van de sjabloon, niet het sjabloonbestand. Zie [Azure Key Vault gebruiken om veilige parameterwaarden door te geven tijdens de implementatie](./key-vault-parameter.md) voor meer informatie over beide methoden.
 
-U maakt een virtuele machine (VM) in de zelf studie voor de [implementatie volgorde van resources instellen](./template-tutorial-create-templates-with-dependent-resources.md) . U moet de gebruikers naam en het wacht woord voor de VM-beheerder opgeven. In plaats van het wacht woord op te geven, kunt u het wacht woord vooraf opslaan in een Azure-sleutel kluis en vervolgens de sjabloon aanpassen om het wacht woord van de sleutel kluis tijdens de implementatie op te halen.
+In de zelfstudie[Implementatievolgorde van resources instellen](./template-tutorial-create-templates-with-dependent-resources.md) maakt u een virtuele machine. U moet de gebruikersnaam en het wachtwoord voor de VM-beheerder opgeven. In plaats van het wachtwoord op te geven, kunt u het wachtwoord vooraf opslaan in een Azure-sleutelkluis en vervolgens de sjabloon aanpassen om het wachtwoord van de sleutelkluis tijdens de implementatie op te halen.
 
-![Diagram waarin de integratie van een resource manager-sjabloon met een sleutel kluis wordt weer gegeven](./media/template-tutorial-use-key-vault/resource-manager-template-key-vault-diagram.png)
+![Diagram waarin de integratie van een resource manager-sjabloon met een sleutelkluis wordt weergegeven](./media/template-tutorial-use-key-vault/resource-manager-template-key-vault-diagram.png)
 
 Deze zelfstudie bestaat uit de volgende taken:
 
@@ -31,31 +31,31 @@ Deze zelfstudie bestaat uit de volgende taken:
 > * De implementatie valideren
 > * Resources opschonen
 
-Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 
-* Visual Studio Code met de extensie Resource Manager Tools. Zie [Visual Studio code gebruiken om arm-sjablonen te maken](use-vs-code-to-create-template.md).
-* Gebruik een gegenereerd wacht woord voor het beheerders account van de virtuele machine om de beveiliging te verbeteren. Hier volgt een voor beeld voor het genereren van een wacht woord:
+* Visual Studio Code met de extensie Resource Manager Tools. Zie [Quickstart: Azure Resource Manager-sjablonen maken met Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
+* Gebruik een gegenereerd wachtwoord voor het beheerdersaccount van de virtuele machine om de beveiliging te verbeteren. Hier volgt een voorbeeld voor het genereren van een wachtwoord:
 
     ```console
     openssl rand -base64 32
     ```
-    Controleer of het gegenereerde wacht woord voldoet aan de vereisten voor het VM-wacht woord. Elke Azure-service heeft eigen wachtwoordvereisten. Zie [Wat zijn de wachtwoord vereisten wanneer u een VM maakt?](../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)voor de vereisten voor het VM-wacht woord.
+    Controleer of het gegenereerde wachtwoord voldoet aan de wachtwoordvereisten voor virtuele machines. Elke Azure-service heeft eigen wachtwoordvereisten. Zie [Wat zijn de wachtwoordvereisten bij het maken van een virtuele machine?](../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm) voor meer informatie over wachtwoordvereisten voor virtuele machines.
 
 ## <a name="prepare-a-key-vault"></a>Een sleutelkluis voorbereiden
 
-In deze sectie maakt u een sleutel kluis en voegt u er een geheim aan toe, zodat u het geheim kunt ophalen wanneer u de sjabloon implementeert. Er zijn veel manieren om een sleutel kluis te maken. In deze zelf studie gebruikt u Azure PowerShell voor het implementeren van een [arm-sjabloon](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorials-use-key-vault/CreateKeyVault.json). Deze sjabloon heeft twee dingen:
+In deze sectie maakt u een sleutelkluis en voegt u er een geheime waarde aan toe, zodat u de geheime waarde kunt ophalen wanneer u de sjabloon implementeert. Er zijn verschillende manieren om een sleutelkluis te maken. In deze zelfstudie gebruikt u Azure PowerShell om een [ARM-sjabloon](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorials-use-key-vault/CreateKeyVault.json) te implementeren. Deze sjabloon doet het volgende:
 
-* Hiermee maakt u een sleutel kluis `enabledForTemplateDeployment` waarvoor de eigenschap is ingeschakeld. Deze eigenschap moet *waar* zijn om het implementatie proces van de sjabloon toegang te geven tot de geheimen die in de sleutel kluis zijn gedefinieerd.
-* Hiermee voegt u een geheim toe aan de sleutel kluis. In het geheim wordt het wacht woord van de VM-beheerder opgeslagen.
+* Hiermee maakt u een sleutelkluis waarvoor de eigenschap `enabledForTemplateDeployment` is ingeschakeld. Deze eigenschap moet de waarde *true* hebben, anders kan tijdens het sjabloonimplementatieproces geen toegang worden verkregen tot de geheime waarden in de sleutelkluis.
+* Hiermee voegt u een geheim toe aan de sleutelkluis. In het geheim wordt het wachtwoord van de VM-beheerder opgeslagen.
 
 > [!NOTE]
-> Als u de gebruiker die de virtuele-machine sjabloon implementeert en u niet de eigenaar van of een bijdrager aan de sleutel kluis bent, moet de eigenaar of een Inzender u toegang verlenen tot de machtiging *micro soft. sleutel kluis/kluizen/implementeren/actie* voor de sleutel kluis. Zie [Azure Key Vault gebruiken om een beveiligde parameter waarde door te geven tijdens de implementatie](./key-vault-parameter.md)voor meer informatie.
+> Als de gebruiker die de virtuele-machinesjabloon gaat implementeren niet de eigenaar of inzender is van de sleutelkluis, moet de eigenaar of inzender u toegang verlenen tot de machtiging *Microsoft.KeyVault/vaults/deploy/action* voor de sleutelkluis. Zie [Azure Key Vault gebruiken om veilige parameterwaarden door te geven tijdens de implementatie](./key-vault-parameter.md) voor meer informatie.
 
-Als u het volgende Azure PowerShell script wilt uitvoeren, selecteert u **proberen het** te openen Azure Cloud shell. Als u het script wilt plakken, klikt u met de rechter muisknop op het deel venster shell en selecteert u vervolgens **Plakken**.
+Als u het volgende Azure PowerShell-script wilt uitvoeren, selecteert u **Proberen** om Azure Cloud Shell te openen. Plak het script door met de rechtermuisknop op het shell-venster te klikken en **Plakken** te selecteren.
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -75,53 +75,53 @@ Write-Host "Press [ENTER] to continue ..."
 ```
 
 > [!IMPORTANT]
-> * De naam van de resource groep is de naam van het project, maar met **RG** eraan toegevoegd. Als u de [resources die u in deze zelf studie hebt gemaakt eenvoudiger wilt opschonen](#clean-up-resources), moet u dezelfde project naam en resource groepsnaam gebruiken wanneer u [de volgende sjabloon implementeert](#deploy-the-template).
-> * De standaard naam voor het geheim is **vmAdminPassword**. Het is hardcoded in de sjabloon.
-> * Als u de sjabloon wilt inschakelen om het geheim op te halen, moet u een toegangs beleid met de naam **toegang tot Azure Resource Manager inschakelen voor de implementatie** van de sjabloon voor de sleutel kluis. Dit beleid is ingeschakeld in de sjabloon. Zie [sleutel kluizen en geheimen implementeren](./key-vault-parameter.md#deploy-key-vaults-and-secrets)voor meer informatie over het toegangs beleid.
+> * De naam van de resourcegroep is de naam van het project, maar met **rg** eraan toegevoegd. Als u de resources die u in deze zelfstudie hebt gemaakt, eenvoudig wilt [opschonen](#clean-up-resources), gebruikt u dezelfde projectnaam en resourcegroepsnaam wanneer u [de volgende sjabloon implementeert](#deploy-the-template).
+> * De standaardnaam voor de geheime waarde is **vmAdminPassword**. Deze is vastgelegd in de sjabloon.
+> * Als u de sjabloon de geheime waarde op wilt laten halen, moet u voor de sleutelkluis een toegangsbeleid met de naam **Toegang tot Azure Resource Manager inschakelen voor sjabloonimplementatie** inschakelen. Dit beleid wordt ingeschakeld in de sjabloon. Zie [Sleutelkluizen en geheime waarden implementeren](./key-vault-parameter.md#deploy-key-vaults-and-secrets)voor meer informatie over het toegangsbeleid.
 
-De sjabloon heeft één uitvoer waarde, met de naam *keyVaultId*. U gebruikt deze ID en de geheime naam om de geheime waarde later in de zelf studie op te halen. De indeling van de resource-ID is:
+De sjabloon heeft één uitvoerwaarde genaamd *keyVaultId*. U gebruikt deze ID en de geheime naam later in deze zelfstudie om de geheime waarde op te halen. De indeling van de resource-ID is:
 
 ```json
 /subscriptions/<SubscriptionID>/resourceGroups/mykeyvaultdeploymentrg/providers/Microsoft.KeyVault/vaults/<KeyVaultName>
 ```
 
-Wanneer u de ID kopieert en plakt, kan deze in meerdere regels worden onderverdeeld. De regels samen voegen en de extra spaties bijsnijden.
+Wanneer u de ID kopieert en plakt, kan deze over meerdere regels worden verdeeld. Voeg de regels samen en verwijder extra spaties.
 
-Als u de implementatie wilt valideren, voert u de volgende Power shell-opdracht uit in hetzelfde deel venster van de shell om het geheim in Lees bare tekst op te halen. De opdracht werkt alleen in dezelfde shell-sessie, omdat deze gebruikmaakt van de variabele *$keyVaultName*, die in het voor gaande Power shell-script is gedefinieerd.
+Als u de implementatie wilt valideren, voert u de volgende Power shell-opdracht uit in hetzelfde shell-deelvenster om de geheime waarde als leesbare tekst op te halen. De opdracht werkt alleen in dezelfde shell-sessie, omdat deze de variabele *$keyVaultName* gebruikt, die in het vorige PowerShell-script is gedefinieerd.
 
 ```azurepowershell
 (Get-AzKeyVaultSecret -vaultName $keyVaultName  -name "vmAdminPassword").SecretValueText
 ```
 
-Nu hebt u een sleutel kluis en een geheim voor bereid. In de volgende secties ziet u hoe u een bestaande sjabloon kunt aanpassen om het geheim op te halen tijdens de implementatie.
+Nu heeft u de voorbereidende stappen voor de sleutelkluis en geheime waarde uitgevoerd. In de volgende secties ziet u hoe u een bestaande sjabloon kunt aanpassen om de geheime waarde op te halen tijdens de implementatie.
 
 ## <a name="open-a-quickstart-template"></a>Een snelstartsjabloon openen
 
-Quick Start-sjablonen van Azure is een opslag plaats voor ARM-sjablonen. In plaats van een sjabloon helemaal vanaf de basis te maken, kunt u een voorbeeldsjabloon zoeken en aanpassen. De sjabloon die in deze zelf studie wordt gebruikt, wordt [een eenvoudige Windows-VM implementeren](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)genoemd.
+Snelstartsjablonen voor Azure is een opslagplaats voor ARM-sjablonen. In plaats van een sjabloon helemaal vanaf de basis te maken, kunt u een voorbeeldsjabloon zoeken en aanpassen. De sjabloon die in deze zelfstudie wordt gebruikt, heet [Een eenvoudige Windows-VM implementeren](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/).
 
-1. Selecteer **bestand** > **openen**in Visual Studio code.
+1. Selecteer in Visual Studio Code **File** > **Open File**.
 
-1. Plak de volgende URL in het vak **File name**: 
+1. Plak de volgende URL in het vak **Bestandsnaam**:
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
 
-1. Selecteer **Openen** om het bestand te openen. Het scenario is hetzelfde als de versie die wordt gebruikt in de [zelf studie: Maak arm-sjablonen met afhankelijke resources](./template-tutorial-create-templates-with-dependent-resources.md).
-   De sjabloon definieert zes resources:
+1. Selecteer **Openen** om het bestand te openen. Het scenario is hetzelfde als de versie die wordt gebruikt in [Zelfstudie: ARM-sjablonen met afhankelijke resources maken](./template-tutorial-create-templates-with-dependent-resources.md).
+   In de sjabloon zijn zes resources gedefinieerd:
 
-   * [**Micro soft. Storage/Storage accounts**](/azure/templates/Microsoft.Storage/storageAccounts).
-   * [**Micro soft. Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses).
-   * [**Micro soft. Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups).
-   * [**Micro soft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks).
-   * [**Micro soft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces).
-   * [**Micro soft. Compute/informatie**](/azure/templates/microsoft.compute/virtualmachines).
+   * [**Microsoft.Storage/storageAccounts**](/azure/templates/Microsoft.Storage/storageAccounts).
+   * [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses).
+   * [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups).
+   * [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks).
+   * [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces).
+   * [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines).
 
-   Het is handig om een eenvoudige uitleg van de sjabloon te hebben voordat u deze aanpast.
+   Het is handig om enige basiskennis te hebben van de sjabloon voordat u deze gaat aanpassen.
 
-1. Selecteer **bestand** > **Opslaan als**en sla een kopie van het bestand op uw lokale computer op met de naam *azuredeploy. json*.
+1. Selecteer **Bestand** > **Opslaan als** en sla het bestand vervolgens op uw lokale computer op als *azuredeploy.json*.
 
-1. Herhaal stap 1-3 om de volgende URL te openen en sla het bestand op als *azuredeploy. para meters. json*.
+1. Herhaal stap 1-3 om de volgende URL te openen en sla het bestand dan op als *azuredeploy.parameters.json*.
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.parameters.json
@@ -129,10 +129,10 @@ Quick Start-sjablonen van Azure is een opslag plaats voor ARM-sjablonen. In plaa
 
 ## <a name="edit-the-parameters-file"></a>Het parameterbestand bewerken
 
-Als u de statische ID-methode gebruikt, hoeft u geen wijzigingen aan te brengen in het sjabloon bestand. Het ophalen van de geheime waarde wordt uitgevoerd door het parameter bestand voor de sjabloon te configureren.
+Als u een statische ID gebruikt, hoeft u geen wijzigingen aan te brengen in het sjabloonbestand. De geheime waarde kan worden opgehaald door het parameterbestand voor de sjabloon te configureren.
 
-1. Open *azuredeploy. para meters. json* in Visual Studio code als deze nog niet is geopend.
-1. Werk de `adminPassword` para meter bij naar:
+1. Open in Visual Studio Code *azuredeploy.para meters.json* als deze nog niet is geopend.
+1. Werk de parameter `adminPassword` bij naar:
 
     ```json
     "adminPassword": {
@@ -146,30 +146,30 @@ Als u de statische ID-methode gebruikt, hoeft u geen wijzigingen aan te brengen 
     ```
 
     > [!IMPORTANT]
-    > Vervang de waarde voor **id** door de resource-id van de sleutel kluis die u hebt gemaakt in de vorige procedure. De geheimenaam is hardcoded als **vmAdminPassword**.  Zie [een sleutel kluis voorbereiden](#prepare-a-key-vault).
+    > Vervang de waarde voor **ID** door de resource-ID van de sleutelkluis die u in de vorige stappen heeft gemaakt. De geheime naam wordt vastgelegd als **vmAdminPassword**.  Zie [Een sleutelkluis voorbereiden](#prepare-a-key-vault).
 
-    ![Sleutel kluis en Resource Manager-sjabloon voor de implementatie van de virtuele machine integreren bestand](./media/template-tutorial-use-key-vault/resource-manager-tutorial-create-vm-parameters-file.png)
+    ![Key Vault en Resource Manager-sjabloon integreren - virtuele-machine-implementatie - parameterbestand](./media/template-tutorial-use-key-vault/resource-manager-tutorial-create-vm-parameters-file.png)
 
 1. Werk de volgende waarden bij:
 
-    * **adminUsername**: de naam van het Administrator-account van de virtuele machine.
-    * **dnsLabelPrefix**: Geef de dnsLabelPrefix-waarde een naam.
+    * **adminUsername**: De naam van het beheerdersaccount van de virtuele machine.
+    * **dnsLabelPrefix**: Geef een naam op voor de waarde dnsLabelPrefix.
 
-    Voor voor beelden van namen, zie de vorige afbeelding.
+    Zie de vorige afbeelding voor voorbeelden van namen.
 
 1. Sla de wijzigingen op.
 
 ## <a name="deploy-the-template"></a>De sjabloon implementeren
 
-1. Meld u aan bij de [Azure Cloud shell](https://shell.azure.com)
+1. Meld u aan bij [Azure Cloud Shell](https://shell.azure.com)
 
-1. Kies uw voorkeurs omgeving door **Power shell** of **bash** (voor CLI) in de linkerbovenhoek te selecteren.  U moet de shell opnieuw starten wanneer u overschakelt.
+1. Kies uw favoriete omgeving door in de linkerbovenhoek **PowerShell** of **Bash** (voor CLI) te selecteren.  U moet de shell opnieuw starten wanneer u overschakelt.
 
-    ![Azure Portal Cloud Shell bestand uploaden](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
+    ![Bestand uploaden in Cloud Shell in de Azure-portal](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. Selecteer **Upload/download files** en selecteer **Uploaden**. Upload zowel *azuredeploy. json* als *azuredeploy. para meters. json* naar Cloud shell. Nadat het bestand is geüpload, kunt u de opdracht **ls** gebruiken en de **Cat** -opdracht om te controleren of het bestand is geüpload.
+1. Selecteer **Upload/download files** en selecteer **Uploaden**. Upload *azuredeploy.json* en *azuredeploy.para meters.json* naar Cloud Shell. Na het uploaden van het bestand kunt u de **ls**-opdracht en de **cat**-opdracht uitvoeren om te controleren of het bestand is geüpload.
 
-1. Voer het volgende Power shell-script uit om de sjabloon te implementeren.
+1. Gebruik het volgende PowerShell-script om de sjabloon te implementeren.
 
     ```azurepowershell
     $projectName = Read-Host -Prompt "Enter the same project name that is used for creating the key vault"
@@ -184,21 +184,21 @@ Als u de statische ID-methode gebruikt, hoeft u geen wijzigingen aan te brengen 
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-    Wanneer u de sjabloon implementeert, gebruikt u dezelfde resource groep die u in de sleutel kluis hebt gebruikt. Deze aanpak maakt het gemakkelijker om de resources op te schonen, omdat u slechts één resource groep moet verwijderen in plaats van twee.
+    Wanneer u de sjabloon implementeert, gebruikt u dezelfde resourcegroep als die van de sleutelkluis. Deze methode maakt het gemakkelijker om de resources op te schonen, omdat u slechts één resourcegroep hoeft te verwijderen in plaats van twee.
 
 ## <a name="validate-the-deployment"></a>De implementatie valideren
 
-Nadat u de virtuele machine hebt geïmplementeerd, moet u de aanmeldings referenties testen met behulp van het wacht woord dat is opgeslagen in de sleutel kluis.
+Wanneer u de virtuele machine heeft geïmplementeerd, test u de aanmeldingsreferenties met het wachtwoord dat is opgeslagen in de sleutelkluis.
 
 1. Open de [Azure Portal](https://portal.azure.com).
 
-1. Selecteer **resource groepen** > **\<*YourResourceGroupName*YourResourceGroupName>** > **simpleWinVM**.
-1. Selecteer bovenaan **verbinding maken** .
-1. Selecteer **RDP-bestand downloaden**en volg de instructies om u aan te melden bij de virtuele machine met behulp van het wacht woord dat is opgeslagen in de sleutel kluis.
+1. Selecteer **Resourcegroepen** >  **\<*YourResourceGroupName*>**  > **simpleWinVM**.
+1. Selecteer bovenaan **Verbinding maken**.
+1. Selecteer **RDP-bestand downloaden** en volg de instructies voor het aanmelden bij de virtuele machine met behulp van het wachtwoord dat is opgeslagen in de sleutelkluis.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u uw Azure-resources niet meer nodig hebt, moet u de resources die u hebt geïmplementeerd, opschonen door de resource groep te verwijderen.
+Als u uw Azure-resources niet meer nodig heeft, schoon dan de resources op die u heeft geïmplementeerd door de resourcegroep te verwijderen.
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name that is used for creating the key vault"
@@ -211,7 +211,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u een geheim van uw Azure-sleutel kluis opgehaald. Vervolgens hebt u het geheim gebruikt in de implementatie van uw sjabloon. Voor meer informatie over het gebruik van extensies van virtuele machines voor de uitvoering van post-implementatietaken raadpleegt u:
+In deze zelfstudie heeft u een geheime waarde uit uw Azure-sleutelkluis opgehaald. Vervolgens gebruikte u de geheime waarde in uw sjabloonimplementatie. Voor meer informatie over het gebruik van extensies van virtuele machines voor de uitvoering van post-implementatietaken raadpleegt u:
 
 > [!div class="nextstepaction"]
-> [Extensies voor virtuele machines implementeren](./template-tutorial-deploy-vm-extensions.md)
+> [Extensies van virtuele machines implementeren](./template-tutorial-deploy-vm-extensions.md)

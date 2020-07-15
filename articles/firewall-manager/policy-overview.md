@@ -1,66 +1,65 @@
 ---
-title: Overzicht van Azure Firewall Manager-voorbeeld beleid
-description: Meer informatie over Azure Firewall Manager-beleid
+title: Overzicht van Azure Firewall Manager-beleid
+description: Meer informatie over Azure Firewall Manager-beleidsregels
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 02/18/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 1308f4ba3335f2fd2633f6e39a679cd6477a4b5c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 88b7dc60b865325ef7dcd9e79015fdee10b4f9a2
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77445019"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563707"
 ---
-# <a name="azure-firewall-manager-preview-policy-overview"></a>Overzicht van Azure Firewall Manager-voorbeeld beleid
+# <a name="azure-firewall-manager-policy-overview"></a>Overzicht van Azure Firewall Manager-beleid
 
-[!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
-
-Firewall-beleid is een Azure-resource die is opgenomen in de regel verzamelingen NAT, netwerk en toepassing, evenals instellingen voor bedreigings informatie. Het is een wereld wijde resource die kan worden gebruikt voor meerdere Azure Firewall instanties in beveiligde virtuele hubs en hub virtuele netwerken. Beleids regels werken in verschillende regio's en abonnementen.
+Firewall-beleid is een Azure-resource die NAT-, netwerk-, en toepassingsregelverzamelingen bevat, alsook instellingen voor Bedreigingsinformatie. Het is een globale resource die kan worden gebruikt in verschillende Azure Firewall-exemplaren in Beveiligde virtuele hubs en virtuele netwerken voor hubs. Beleidsregels werken in verschillende regio’s en abonnementen.
 
 ![Azure Firewall Manager-beleid](media/policy-overview/policy-overview.png)
 
 ## <a name="policy-creation-and-association"></a>Beleid maken en koppelen
 
-Een beleid kan op meerdere manieren worden gemaakt en beheerd, met inbegrip van de Azure Portal, REST API, sjablonen, Azure PowerShell en CLI.
+Beleid kan op verschillende manieren worden gemaakt en beheerd, waaronder de Azure-portal, REST API, sjablonen, Azure PowerShell en CLI.
 
-U kunt ook bestaande regels van Azure Firewall migreren met behulp van de portal of Azure PowerShell om beleid te maken. Zie [Azure firewall configuraties migreren naar Azure firewall-beleid (preview)](migrate-to-policy.md)voor meer informatie. 
+U kunt ook bestaande regels van Azure Firewall migreren met behulp van de portal of Azure PowerShell om beleid te maken. Zie [Azure Firewall-configuraties migreren naar Azure Firewall-beleid](migrate-to-policy.md) voor meer informatie. 
 
-Beleids regels kunnen worden gekoppeld aan een of meer virtuele hubs of VNets. De firewall kan zich in elk abonnement bevinden dat is gekoppeld aan uw account en in elke regio.
+Beleid kan worden gekoppeld aan een of meer virtuele hubs of VNET’s. De firewall kan zich in elk abonnement bevinden dat is gekoppeld aan uw account, en in elke regio.
 
-## <a name="hierarchical-policies"></a>Hiërarchische beleids regels
+## <a name="hierarchical-policies"></a>Hiërarchische beleidsregels
 
-Nieuwe beleids regels kunnen volledig worden gemaakt of worden overgenomen van bestaande beleids regels. Met overname kan DevOps lokaal firewall beleid maken op basis van de organisatie.
+Beleid kan helemaal nieuw worden gemaakt of worden overgenomen van bestaand beleid. Overname stelt DevOps in staat om lokaal firewallbeleid te maken boven op het basisbeleid dat verplicht is in de organisatie.
 
-Beleids regels die zijn gemaakt met niet-leeg bovenliggend beleid, nemen alle regel verzamelingen van het bovenliggende beleid over. Netwerk regel verzamelingen die zijn overgenomen van een bovenliggend beleid, worden altijd in prioriteit gegeven boven netwerk regel verzamelingen die zijn gedefinieerd als onderdeel van een nieuw beleid. Dezelfde logica is ook van toepassing op toepassings regel verzamelingen. Netwerk regel verzamelingen worden echter altijd vóór de verzameling van toepassings regels verwerkt, ongeacht de overname.
+Beleid dat is gemaakt met niet-leeg bovenliggend beleid, nemen alle regelverzamelingen van het bovenliggende beleid over. Netwerkregelverzamelingen die zijn overgenomen van bovenliggend beleid, krijgen altijd prioriteit boven netwerkregelverzamelingen die zijn gedefinieerd als onderdeel van nieuw beleid. Dezelfde logica is ook van toepassing op toepassingsregelverzamelingen. Netwerkregelverzamelingen worden echter altijd verwerkt vóór toepassingsregelverzamelingen, ongeacht overname.
 
-De modus voor bedreigings informatie wordt ook overgenomen van het bovenliggende beleid. U kunt de modus voor bedreigings informatie instellen op een andere waarde om dit gedrag te negeren, maar u kunt het niet uitschakelen. Het is alleen mogelijk om te overschrijven met een striktere waarde. Als uw bovenliggende beleid bijvoorbeeld is ingesteld op **waarschuwing**, kunt u dit lokale beleid configureren om te **waarschuwen en weigeren**.
+De modus voor Bedreigingsinformatie wordt ook overgenomen van het bovenliggende beleid. U kunt de modus voor Bedreigingsinformatie instellen op een andere waarde om dit gedrag te negeren, maar u kunt de modus niet uitschakelen. U kunt de instelling alleen maar overschrijven met een striktere waarde. Als het bovenliggende beleid bijvoorbeeld is ingesteld op **Alleen waarschuwen**, kunt u dit lokale beleid configureren naar **Waarschuwen en weigeren**.
 
-De NAT-regel verzamelingen worden niet overgenomen omdat deze specifiek zijn voor een bepaalde firewall.
+Net zoals de modus voor Bedreigingsinformatie wordt ook de acceptatielijst van Bedreigingsinformatie overgenomen van het bovenliggende beleid. Via het onderliggende beleid kunnen extra IP-adressen worden toegevoegd aan de acceptatielijst.
 
-Met overname worden alle wijzigingen in het bovenliggende beleid automatisch toegepast op het bijbehorende onderliggende firewall beleid.
+NAT-regelverzamelingen worden niet overgenomen omdat ze specifiek zijn voor een bepaalde firewall.
 
-## <a name="traditional-rules-and-policies"></a>Traditionele regels en beleids regels
+Met overname worden alle wijzigingen in het bovenliggende beleid automatisch toegepast op het bijbehorende onderliggende firewallbeleid.
 
-Azure Firewall ondersteunt zowel traditionele regels als beleids regels. De volgende tabel vergelijkt beleids regels en regels:
+## <a name="traditional-rules-and-policies"></a>Traditionele regels en beleidsregels
+
+Azure Firewall biedt ondersteuning voor zowel traditionele regels als beleidsregels. In de volgende tabel worden beleidsregels en regels vergeleken:
 
 
 |         |Beleid  |Regels  |
 |---------|---------|---------|
-|Contains     |NAT-, netwerk-, toepassings regels en instellingen voor bedreigings informatie|NAT-, netwerk-en toepassings regels |
-|Komt     |Virtuele hubs en virtuele netwerken|Alleen virtuele netwerken|
-|Portalervaring     |Centraal beheer met firewall Manager|Zelfstandige firewall-ervaring|
-|Ondersteuning voor meerdere firewalls     |Firewall beleid is een afzonderlijke bron die kan worden gebruikt in firewalls|Hand matig regels exporteren en importeren, of beheer oplossingen van derden gebruiken |
-|Prijzen     |Gefactureerd op basis van de Firewall koppeling. Zie [prijzen](#pricing).|Gratis|
-|Ondersteunde implementatie mechanismen     |Portal, REST API, sjablonen, Azure PowerShell en CLI|Portal, REST API, sjablonen, Power shell en CLI. |
-|Release status     |Open bare preview|Algemene Beschik baarheid|
+|Contains     |NAT-, netwerk-, en toepassingsregels, aangepaste DNS- en DNS-proxyinstellingen, IP-groepen, en instellingen voor Bedreigingsinformatie (inclusief acceptatielijst)|NAT-, netwerk-, en toepassingsregels, aangepaste DNS- en DNS-proxyinstellingen, IP-groepen, en instellingen voor Bedreigingsinformatie (inclusief acceptatielijst)|
+|Beschermt     |Virtuele hubs en virtuele netwerken|Alleen virtuele netwerken|
+|Portalervaring     |Centraal beheer met behulp van Firewall Manager|Zelfstandige firewallervaring|
+|Ondersteuning voor meerdere firewalls     |Firewall-beleid is een afzonderlijke resource die kan worden gebruikt in verschillende firewalls|Handmatig regels exporteren en importeren, of beheeroplossingen van derden gebruiken |
+|Prijzen     |Gefactureerd op basis van firewallkoppeling. Zie [Prijzen](#pricing).|Gratis|
+|Ondersteunde implementatiemechanismen     |Portal, REST API, sjablonen, Azure PowerShell en CLI|Portal, REST API, sjablonen, PowerShell en CLI. |
 
 ## <a name="pricing"></a>Prijzen
 
-Het beleid wordt in rekening gebracht op basis van Firewall koppelingen. Een beleid met nul of één firewall koppeling is gratis. Een beleid met meerdere firewall koppelingen wordt gefactureerd tegen een vast bedrag. Zie [prijzen van Azure firewall Manager](https://azure.microsoft.com/pricing/details/firewall-manager/)voor meer informatie.
+Beleid wordt gefactureerd op basis van firewallkoppelingen. Beleid met nul of één firewallkoppeling is gratis. Beleid met meerdere firewallkoppelingen wordt gefactureerd tegen een vast bedrag. Zie [Prijzen voor Azure Firewall Manager](https://azure.microsoft.com/pricing/details/firewall-manager/) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voor informatie over het implementeren van een Azure Firewall, raadpleegt u [zelf studie: uw Cloud netwerk beveiligen met Azure firewall Manager Preview met behulp van de Azure Portal](secure-cloud-network.md).
+Als u wilt leren hoe u een Azure-firewall implementeert, raadpleegt u [Zelfstudie: uw cloudnetwerk beveiligen met Azure Firewall Manager met behulp van de Azure-portal](secure-cloud-network.md).

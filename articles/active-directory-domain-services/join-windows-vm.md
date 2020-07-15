@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: ac7af2f4500f6702dcacad546b0985e41159dc6e
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 8123608cbf2c1a4cbe0dc51d81d42b288bf2a91d
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734670"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024924"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Zelfstudie: Een virtuele Windows-machine toevoegen aan een door Azure Active Directory Domain Services beheerd domein
 
@@ -35,8 +35,8 @@ Voor het voltooien van deze zelfstudie hebt u de volgende resources nodig:
 
 * Een actief Azure-abonnement.
     * Als u nog geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Een Azure Active Directory-tenant die aan uw abonnement is gekoppeld die is gesynchroniseerd met een on-premises map of een map in de cloud.
-    * [Maak, indien nodig, een Azure Active Directory-tenant][create-azure-ad-tenant] of [koppel een Azure-abonnement aan uw account][associate-azure-ad-tenant].
+* Een Azure Active Directory-tenant die aan uw abonnement is gekoppeld, gesynchroniseerd met een on-premises map of een cloudmap.
+    * [Maak zo nodig een Azure Active Directory-tenant][create-azure-ad-tenant] of [koppel een Azure-abonnement aan uw account][associate-azure-ad-tenant].
 * Een door Azure Active Directory Domain Services beheerd domein dat in uw Azure AD-tenant is ingeschakeld en geconfigureerd.
     * [Maak en configureer, indien nodig, een door Azure Active Directory Domain Services beheerd domein][create-azure-ad-ds-instance].
 * Een gebruikersaccount dat deel uitmaakt van het beheerde domein.
@@ -96,7 +96,7 @@ Als u al een virtuele machine hebt die u lid wilt maken van een domein, slaat u 
 
 1. Selecteer in het menu aan de linkerkant van het venster Virtueel netwerk **Adresruimte**. Het virtuele netwerk is gemaakt met één adresruimte van *10.0.2.0/24*, dat wordt gebruikt door het standaardsubnet. Andere subnetten, zoals voor *workloads* of Azure Bastion bestaan mogelijk al.
 
-    Voeg een extra IP-adresbereik toe aan het virtuele netwerk. De grootte van dit adresbereik en het daadwerkelijke te gebruiken IP-adresbereik is afhankelijk van andere netwerkresources die al zijn geïmplementeerd. Het IP-adresbereik mag geen overlap vertonen met bestaande adresbereiken in uw Azure- omgeving of on-premises omgeving. Zorg ervoor dat u het IP-adresbereik voldoende groot hebt gemaakt voor het aantal VM's dat u in het subnet verwacht te implementeren.
+    Voeg een extra IP-adresbereik toe aan het virtuele netwerk. De grootte van dit adresbereik en het daadwerkelijke te gebruiken IP-adresbereik is afhankelijk van andere netwerkresources die al zijn geïmplementeerd. Het IP-adresbereik mag geen overlap vertonen met de bestaande adresbereiken in uw Azure-omgeving of on-premises omgeving. Zorg ervoor dat u het IP-adresbereik voldoende groot hebt gemaakt voor het aantal VM's dat u in het subnet verwacht te implementeren.
 
     In het volgende voorbeeld wordt een extra IP-adresbereik van *10.0.5.0/24* toegevoegd. Selecteer **Opslaan** wanneer u klaar bent.
 
@@ -110,7 +110,7 @@ Als u al een virtuele machine hebt die u lid wilt maken van een domein, slaat u 
 
 1. Het duurt een paar seconden voordat het subnet is gemaakt. Zodra het is gemaakt, selecteert u de *X* om het subnetvenster te sluiten.
 1. Ga terug naar het deelvenster **Netwerken** om een virtuele machine te maken, kies het subnet dat u hebt gemaakt in de vervolgkeuzelijst, zoals *Beheer*. Zorg er nogmaals voor dat u het juiste subnet kiest en uw virtuele machine niet in hetzelfde subnet implementeert als uw beheerde domein.
-1. Selecteer bij **Openbare IP** *Geen* in de vervolgkeuzelijst, aangezien u Azure Bastion gebruikt om verbinding te maken met het beheer en er geen openbaar IP-adres hoeft te worden toegewezen.
+1. Selecteer *Geen* in de vervolgkeuzelijst bij **Openbaar IP**. Wanneer u in deze zelfstudie Azure Bastion gebruikt om verbinding te maken met het beheer, hoeft er geen openbaar IP-adres te zijn toegewezen aan de VM.
 1. Houd voor de overige opties de standaardwaarden aan en selecteer daarna **Beheer**.
 1. Stel **Diagnostische gegevens over opstarten** in op *Uit*. Houd voor de overige opties de standaardwaarden aan, en selecteer daarna **Controleren en maken**.
 1. Controleer de instellingen van de VM en selecteer vervolgens **Maken**.
@@ -121,7 +121,7 @@ Het duurt een paar minuten om de virtuele machine te maken. In Azure Portal word
 
 ## <a name="connect-to-the-windows-server-vm"></a>Verbinding maken met de Windows Server-VM
 
-Gebruik een Azure Bastion-host om veilig verbinding te maken met uw VM's. Met Azure Bastion wordt een beheerde host geïmplementeerd in uw virtuele netwerk, waarmee wordt voorzien in webgebaseerde RDP- of SSH-verbindingen met VM's. Er zijn geen openbare IP-adressen vereist voor de VM's en u hoeft geen regels voor netwerkbeveiligingsgroepen te openen voor extern verkeer. U maakt verbinding met virtuele machines met behulp van Azure Portal vanuit uw webbrowser.
+Gebruik een Azure Bastion-host om veilig verbinding te maken met uw VM's. Met Azure Bastion wordt een beheerde host geïmplementeerd in uw virtuele netwerk, waarmee wordt voorzien in webgebaseerde RDP- of SSH-verbindingen met VM's. Er zijn geen openbare IP-adressen vereist voor de VM's en u hoeft geen regels voor netwerkbeveiligingsgroepen te openen voor extern verkeer. U maakt verbinding met virtuele machines met behulp van Azure Portal vanuit uw webbrowser. [Maak een Azure Bastion-host][azure-bastion] als dat nodig is.
 
 Als u een Bastion-host wilt gebruiken om verbinding te maken met uw virtuele machine, voert u de volgende stappen uit:
 
@@ -152,7 +152,9 @@ Nu de virtuele machine is gemaakt en een webgebaseerde RDP-verbinding tot stand 
 
     ![Het beheerde domein opgeven om lid te worden](./media/join-windows-vm/join-domain.png)
 
-1. Voer de domeinreferenties in om lid te worden van het domein. Gebruik de referenties voor een gebruiker die deel uitmaakt van het beheerde domein. Het account moet deel uitmaken van het beheerde domein of de Azure AD-tenant; accounts uit externe mappen die zijn gekoppeld aan uw Azure AD-tenant kunnen niet juist worden geverifieerd tijdens het domeindeelnameproces. U kunt de accountreferenties op een van de volgende manieren opgeven:
+1. Voer de domeinreferenties in om lid te worden van het domein. Geef referenties op voor een gebruiker die deel uitmaakt van het beheerde domein. Het account moet deel uitmaken van het beheerde domein of de Azure AD-tenant; accounts uit externe mappen die zijn gekoppeld aan uw Azure AD-tenant kunnen niet juist worden geverifieerd tijdens het domeindeelnameproces.
+
+    U kunt de accountreferenties op een van de volgende manieren opgeven:
 
     * **UPN-indeling** (aanbevolen): Voer het achtervoegsel van de user principal name (UPN) in voor het gebruikersaccount, zoals deze is geconfigureerd in Azure AD. Het UPN-achtervoegsel van de gebruiker *contosoadmin* is bijvoorbeeld `contosoadmin@aaddscontoso.onmicrosoft.com`. Er zijn enkele veelvoorkomende situaties waarbij de UPN-indeling veilig kan worden gebruikt om u aan te melden bij het domein in plaats van de *SAMAccountName*-indeling:
         * Als het UPN-voorvoegsel van een gebruiker lang is, zoals *deehasareallylongname*, kan de *SAMAccountName* automatisch worden gegenereerd.
@@ -174,13 +176,13 @@ Nu de virtuele machine is gemaakt en een webgebaseerde RDP-verbinding tot stand 
 >
 > Als u een virtuele machine aan een domein wilt toevoegen zonder ermee verbinding te maken en de verbinding handmatig te configureren, kunt u de cmdlet [Set-AzVmAdDomainExtension][set-azvmaddomainextension] van Azure PowerShell gebruiken.
 
-Zodra de Windows Server-VM opnieuw is opgestart, worden alle beleidsregels die in het beheerde domein worden toegepast naar de virtuele machine gepusht. U kunt zich nu ook aanmelden bij de virtuele Windows Server-machine met behulp van de juiste domeinreferenties.
+Zodra de Windows Server-VM opnieuw is opgestart, worden alle beleidsregels die in het beheerde domein worden toegepast naar de VM gepusht. U kunt zich nu ook aanmelden bij de virtuele Windows Server-machine met behulp van de juiste domeinreferenties.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 In de volgende zelfstudie gebruikt u deze Windows Server-VM om de beheerprogramma's te installeren waarmee u het beheerde domein kunt beheren. Als u niet wilt doorgaan in deze reeks zelfstudies, raadpleegt u de volgende stappen om [de VM te verwijderen](#delete-the-vm). Ga anders [verder met de volgende zelfstudie](#next-steps).
 
-### <a name="un-join-the-vm-from-the-managed-domain"></a>De toevoeging van de VM aan het beheerde domein ongedaan maken
+### <a name="unjoin-the-vm-from-the-managed-domain"></a>De VM loskoppelen van het beheerde domein
 
 Als u de virtuele machine uit het beheerde domein wilt verwijderen, volgt u weer de stappen om de virtuele machine [toe te voegen aan een domein](#join-the-vm-to-the-managed-domain). In plaats van deze aan het beheerde domein toe te voegen, kiest u ervoor om deze aan een werkgroep toe te voegen, zoals de standaard *WORKGROUP*. Nadat de VM opnieuw is opgestart, wordt het computerobject verwijderd uit het beheerde domein.
 

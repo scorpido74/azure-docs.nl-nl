@@ -8,28 +8,28 @@ ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: 7fc7e4d5d402bfb21a30798f64e31cbbef8ccdd0
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 479e580ee8821f0a6de054c631714c5386927e4f
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84677947"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083913"
 ---
-# <a name="quickstart-create-an-ubuntu-linux-virtual-machine-using-a-resource-manager-template"></a>Quickstart: Een virtuele Ubuntu Linux-machine maken met een Resource Manager-sjabloon
+# <a name="quickstart-create-an-ubuntu-linux-virtual-machine-using-an-arm-template"></a>Quickstart: Een virtuele Ubuntu Linux-machine maken met een ARM-sjabloon
 
-In deze snelstart wordt beschreven hoe u een Resource Manager-sjabloon gebruikt voor het implementeren van een virtuele Ubuntu Linux-machine (VM) in Azure. 
+In deze quickstart wordt beschreven hoe u een Azure Resource Manager-sjabloon (ARM-sjabloon) gebruikt voor het implementeren van een virtuele Ubuntu Linux-machine (VM) in Azure.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
+
+[![Implementeren in Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-vm-simple-linux%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Vereisten
 
-Geen.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
-## <a name="create-an-ubuntu-linux-virtual-machine"></a>Een virtuele Ubuntu Linux-machine maken
-
-### <a name="review-the-template"></a>De sjabloon controleren
+## <a name="review-the-template"></a>De sjabloon controleren
 
 De sjabloon die in deze snelstart wordt gebruikt, komt uit [Azure Quick Start-sjablonen](https://azure.microsoft.com/resources/templates/101-vm-simple-linux/).
 
@@ -46,7 +46,7 @@ Verschillende resources worden in de sjabloon gedefinieerd:
 - [**Microsoft.Network/publicIPAddresses**](/azure/templates/Microsoft.Network/publicIPAddresses): een openbaar IP-adres maken.
 - [**Microsoft.Compute/virtualMachines**](/azure/templates/Microsoft.Compute/virtualMachines) : een virtuele machine maken.
 
-### <a name="deploy-the-template"></a>De sjabloon implementeren
+## <a name="deploy-the-template"></a>De sjabloon implementeren
 
 1. Selecteer de volgende afbeelding om u aan te melden bij Azure en een sjabloon te openen. Met de sjabloon worden een sleutelkluis en een geheim gemaakt.
 
@@ -90,7 +90,7 @@ Als u de resourcegroep niet meer nodig hebt, verwijdert u deze. Hierdoor worden 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstart hebt u een eenvoudige virtuele machine geïmplementeerd met een Resource Manager-sjabloon. Voor meer informatie over virtuele machines in Azure, gaat u verder met de zelfstudie voor virtuele Linux-machines.
+In deze quickstart hebt u een eenvoudige virtuele machine geïmplementeerd met behulp van een ARM-sjabloon. Voor meer informatie over virtuele machines in Azure, gaat u verder met de zelfstudie voor virtuele Linux-machines.
 
 
 > [!div class="nextstepaction"]

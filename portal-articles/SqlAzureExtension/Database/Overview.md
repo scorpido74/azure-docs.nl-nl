@@ -1,6 +1,6 @@
 ---
-title: Overzicht van SQL-databases | Microsoft Docs
-description: Overzicht van Help-inhoud voor SQL-databases in Azure Portal
+title: Overzicht van SQL Database | Microsoft Docs
+description: Overzicht van Help-inhoud voor SQL Databases in de Azure-portal
 services: sql-database
 author: sewatson
 manager: lwelicki
@@ -8,12 +8,12 @@ ms.service: sql-database
 ms.topic: article
 ms.date: 04/09/2019
 ms.author: ninarn
-ms.openlocfilehash: 99f19971eafaa1ddad1f96b187e18b79810560a2
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 6d4f0c50f57661576f97ddd3772d78b9fa293153
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "61244456"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040517"
 ---
 # <a name="sql-database-documentation"></a>Documentatie voor SQL Database
 
@@ -23,13 +23,13 @@ Azure SQL Database is een relationele database als een service (DBaaS) voor alge
 
 Met Azure SQL Database kunt u eenvoudig basisbeheertaken uitvoeren met de Azure-portal, Azure CLI en Azure PowerShell. Leer aan de hand van de volgende beknopte voorbeelden hoe u algemene beheertaken uitvoert:
 
-- [Azure Portal](/azure/sql-database/sql-database-single-database-get-started)
+- [Azure-portal](/azure/sql-database/sql-database-single-database-get-started)
 - [Azure PowerShell](/azure/sql-database/sql-database-get-started-powershell)
-- [Azure CLI](/azure/sql-database/sql-database-get-started-cli)
+- [Azure-CLI](/azure/sql-database/sql-database-get-started-cli)
 
 ## <a name="step-by-step-tutorials"></a>Zelfstudies met stapsgewijze instructies
 
-Meer informatie over het maken, beheren en migreren van databases met SQL DB.
+Meer informatie over het maken, beheren en migreren van databases met SQL Database.
 
 - Ga met behulp van onze quickstart aan de slag met een [individuele database](/azure/sql-database/sql-database-single-database-quickstart-guide)
 - Het schema voor een nieuwe individuele database maken en ontwerpen met behulp van [SSMS](/azure/sql-database/sql-database-design-first-database) of [.NET](/azure/sql-database/sql-database-design-first-database-csharp)
@@ -46,7 +46,7 @@ Meer informatie over het maken, beheren en migreren van databases met SQL DB.
 
 Zoek scripts om algemene taken te beheren.
 
-- [Azure CLI](/azure/sql-database/sql-database-cli-samples)
+- [Azure-CLI](/azure/sql-database/sql-database-cli-samples)
 - [Azure PowerShell](/azure/sql-database/sql-database-powershell-samples)
 
 ## <a name="more"></a>Meer

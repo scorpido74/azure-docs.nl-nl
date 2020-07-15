@@ -1,123 +1,123 @@
 ---
 title: Een model converteren
-description: Quick Start waarin de conversie stappen voor een aangepast model worden weer gegeven.
+description: Quickstart die de stappen laat zien om een aangepast model te converteren.
 author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: 7ba8d201c29b5e3835fec52d8c479a388ca07f71
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: d457e911dec481e2b1a8bdae1ca05f80452bb883
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81313000"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85557185"
 ---
-# <a name="quickstart-convert-a-model-for-rendering"></a>Snelstartgids: een model voor rendering converteren
+# <a name="quickstart-convert-a-model-for-rendering"></a>Quickstart: Een model converteren voor rendering
 
-In [Quick Start: een model samen stellen met Unit](render-model.md), u hebt geleerd hoe u het voor beeld-voorbeeld project gebruikt om een ingebouwd model weer te geven. In deze hand leiding wordt uitgelegd hoe u uw eigen modellen kunt converteren.
+In [Quickstart: een model weergeven met Unity](render-model.md) hebt u geleerd hoe u het voorbeeldproject van Unity kunt gebruiken om een ingebouwd model te weer te geven. Deze gids leert u om uw eigen modellen te converteren.
 
 U leert het volgende:
 
 > [!div class="checklist"]
 >
-> * Een Azure Blob-opslag account instellen voor invoer en uitvoer
-> * Een 3D-model uploaden en converteren voor gebruik met de externe rendering van Azure
-> * Het geconverteerde 3D-model in een toepassing voor rendering toevoegen
+> * Een Azure Blob Storage-account instellen voor invoer en uitvoer
+> * Een 3D-model uploaden en converteren om het te gebruiken met Azure Remote Rendering
+> * Het omgezette 3D-model toevoegen aan een toepassing voor rendering
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Volledige [Snelstartgids: een model renderen met Unity](render-model.md)
+* [Quickstart: Een model weergeven met Unity](render-model.md)
 * Azure PowerShell installeren [(documentatie)](https://docs.microsoft.com/powershell/azure/)
-  * Open een Power shell met beheerders rechten
-  * Uitvoeringsrun`Install-Module -Name Az -AllowClobber`
+  * Open een PowerShell met beheerdersrechten
+  * Voer dit uit: `Install-Module -Name Az -AllowClobber`
 
 ## <a name="overview"></a>Overzicht
 
-De renderer op de server kan niet rechtstreeks werken met broncode model indelingen, zoals FBX of GLTF. In plaats daarvan moet het model een eigen binaire indeling hebben.
-De conversie service verbruikt modellen van Azure Blob-opslag en schrijft geconverteerde modellen terug naar een Azure Blob Storage-container.
+De renderer op de server kan niet rechtstreeks werken met indelingen voor bronmodellen zoals FBX of GLTF. In plaats daarvan moet het model een eigen binaire indeling hebben.
+De conversieservice neemt modellen van de Azure Blob-opslag en schrijft geconverteerde modellen terug naar een opgegeven Azure Blob-opslagcontainer.
 
 U hebt de volgende zaken nodig:
 
 * Een Azure-abonnement
-* Een ' StorageV2-account in uw abonnement
-* Een BLOB storage-container voor uw invoer model
-* Een BLOB storage-container voor uw uitvoer gegevens
-* Een model dat u wilt converteren, zie voor [beelden van modellen](../samples/sample-model.md)
-  * Bekijk de lijst met [ondersteunde bron indelingen](../how-tos/conversion/model-conversion.md#supported-source-formats)
-  * Als u het voorbeeld script wilt gebruiken, moet u ervoor zorgen dat u een uitvoermap voorbereidt die het model en alle externe afhankelijkheden bevat (zoals externe bitmappatronen of geometrie)
+* Een 'StorageV2'-account in uw abonnement
+* Een Blob Storage-container maken voor uw invoermodel
+* Een Blob Storage-container voor uw uitvoergegevens
+* Een model dat u kunt omzetten, zie [voorbeeldmodellen](../samples/sample-model.md)
+  * Overzicht van [ondersteunde bronindelingen](../how-tos/conversion/model-conversion.md#supported-source-formats) weergeven
+  * Als u het voorbeeldscript voor omzetting wilt gebruiken, zorg er dan voor dat u een invoermap voorbereidt die het model en alle externe afhankelijkheden (zoals externe patronen of geometrie) bevat
 
-## <a name="azure-setup"></a>Installatie van Azure
+## <a name="azure-setup"></a>Azure-configuratie
 
-Als u nog geen account hebt, gaat u naar, [https://azure.microsoft.com/get-started/](https://azure.microsoft.com/get-started/)klikt u op de optie gratis account en volgt u de instructies.
+Als u nog geen account hebt, ga dan naar [https://azure.microsoft.com/get-started/](https://azure.microsoft.com/get-started/), klik op de optie voor een gratis account en volg de instructies.
 
-Als u een Azure-account hebt, gaat [https://ms.portal.azure.com/#home](https://ms.portal.azure.com/#home)u naar.
+Zodra u een Azure-account hebt, gaat u naar [https://ms.portal.azure.com/#home](https://ms.portal.azure.com/#home).
 
-### <a name="storage-account-creation"></a>Opslag account maken
+### <a name="storage-account-creation"></a>Maken van een opslagaccount
 
-Als u Blob Storage wilt maken, hebt u eerst een opslag account nodig.
-Als u er een wilt maken, klikt u op de knop een resource maken:
+Als u blob-opslag wilt maken, hebt u eerst een opslagaccount nodig.
+Klik daarvoor op de knop 'Een resource maken':
 
-![Azure-resource toevoegen](media/azure-add-a-resource.png)
+![Azure: resource toevoegen](media/azure-add-a-resource.png)
 
-Kies in het nieuwe scherm **opslag** aan de linkerkant en klik vervolgens op **opslag account-blob, bestand, tabel, wachtrij** in de volgende kolom:
+Kies in het volgende scherm **Opslag** aan de linkerkant en vervolgens **Opslagaccount - blob, bestand, tabel, wachtrij** in de volgende kolom:
 
-![Azure-opslag toevoegen](media/azure-add-storage.png)
+![Azure - opslag toevoegen](media/azure-add-storage.png)
 
-Als u op deze knop klikt, wordt het volgende scherm weer gegeven met de opslag eigenschappen die moeten worden ingevuld:
+Als u op deze knop klikt, wordt het volgende scherm weergegeven waar u de opslageigenschappen kunt invullen:
 
-![Installatie van Azure](media/azure-setup1.png)
+![Azure-configuratie](media/azure-setup1.png)
 
-Vul het formulier op de volgende manier in:
+Vul het formulier als volgt in:
 
-* Maak een nieuwe resource groep via de koppeling onder de vervolg keuzelijst en geef deze **ARR_Tutorial**
-* Voer hier een unieke naam in voor de naam van het **opslag account**. **Deze naam moet globaal uniek zijn**, anders wordt er een prompt weer gegeven waarin wordt gemeld dat de naam gereed is. In het bereik van deze Snelstartgids noemen we het **arrtutorialstorage**. Daarom moet u deze vervangen door uw naam voor elke vind plaats in deze Snelstartgids.
-* Selecteer een **locatie** dicht bij u in de buurt. In het ideale geval gebruikt u dezelfde locatie als voor het instellen van de rendering in de Andere Snelstartgids.
-* **Prestaties** ingesteld op Standard
-* **Account type** ingesteld op ' StorageV2 (algemeen gebruik v2) '
-* **Replicatie** is ingesteld op geografisch redundante opslag met lees toegang (RA-GRS)
-* De **toegangs laag** is ingesteld op ' hot '
+* Maak een nieuwe resourcegroep via de koppeling onder de vervolgkeuzelijst en geef deze de naam **ARR_Tutorial**
+* Geef bij **Naam opslagaccount** een unieke naam in. **Deze naam moet wereldwijd uniek zijn**, anders wordt er een bericht weergegeven dat de naam al in gebruik is. In deze quickstart kiezen we de naam **arrtutorialstorage**. U moet deze overal waar hij gebruikt wordt in deze quickstart vervangen door uw eigen naam.
+* Selecteer een **locatie** dicht bij u in de buurt. Het is best om dezelfde locatie te kiezen die u heeft gebruikt om de rendering in de andere quickstart in te stellen.
+* **Prestatie** ingesteld op 'Standaard'
+* **Soort account** ingesteld op 'StorageV2 (algemeen gebruik v2)'
+* **Replicatie** ingesteld op 'Geografisch redundante opslag met leestoegang (RA-GRS)'
+* **Toegangslaag** ingesteld op 'Dynamisch'
 
-Geen van de eigenschappen in andere tabbladen moet worden gewijzigd, dus u kunt door gaan met **' controleren en maken '** en de stappen volgen om de installatie te volt ooien.
+De eigenschappen in andere tabbladen moeten niet gewijzigd worden. U kunt dus doorgaan met **'Beoordelen en maken'** en de stappen volgen om de installatie te voltooien.
 
-Op de website wordt u nu geïnformeerd over de voortgang van uw implementatie en rapporten "uw implementatie is voltooid". Klik op de knop **' go to resource '** voor de volgende stappen:
+De website geeft u nu informatie over de voortgang van uw implementatie, om uiteindelijk 'Uw implementatie is voltooid' weer te geven. Klik op de knop **'Naar resource gaan'** om de volgende stappen uit te voeren:
 
-![Azure Storage is gemaakt](./media/storage-creation-complete.png)
+![Azure Storage is aangemaakt](./media/storage-creation-complete.png)
 
-### <a name="blob-storage-creation"></a>Blob-opslag maken
+### <a name="blob-storage-creation"></a>Aanmaken Blob Storage
 
-Nu hebben we twee BLOB-containers nodig, één voor invoer en één voor uitvoer.
+Vervolgens hebben we twee blobcontainers nodig: één voor invoer en één voor uitvoer.
 
-Klik op de knop **' go to resource '** hierboven op een pagina met een deel venster aan de linkerkant die een lijst menu bevat. Klik in de lijst onder de categorie **' BLOB service '** op de knop **' containers '** :
+Gebruik de bovenstaande knop **'Naar resource gaan'** om naar de pagina te gaan met aan de linkerzijde een deelvenster waarin zich een lijstmenu bevindt. Klik in de lijst onder de **'Blob-service'** op de knop **'Containers'** :
 
-![Azure-containers toevoegen](./media/azure-add-containers.png)
+![Azure: Containers toevoegen](./media/azure-add-containers.png)
 
-Druk op de knop **+ container** om de container voor de **invoer** -Blob-opslag te maken.
-Gebruik de volgende instellingen wanneer u deze maakt:
+Druk op de knop **'+ Container'** om de **invoer** blob-opslagcontainer te maken.
+Gebruik de volgende instellingen bij het maken:
   
-* Name = arrinput
-* Openbaar toegangs niveau = privé
+* Naam = arrinput
+* Openbaar toegangsniveau = Privé
 
-Nadat de container is gemaakt, klikt u nogmaals op **+ container** en herhaalt u deze instellingen voor de **uitvoer** container:
+Nadat de container is gemaakt, klikt u nogmaals op **+ Container** en herhaalt u deze instellingen voor de **uitvoer**container:
 
-* Name = arroutput
-* Openbaar toegangs niveau = privé
+* Naam = arroutput
+* Openbaar toegangsniveau = Privé
 
-U hebt nu twee Blob Storage-containers:
+U hebt nu twee blob-opslagcontainers:
 
-![Blob Storage instellen](./media/blob-setup.png)
+![Instelling Blob Storage](./media/blob-setup.png)
 
 ## <a name="run-the-conversion"></a>De conversie uitvoeren
 
-We bieden een hulp script voor het maken van de service voor de conversie van activa. Deze bevindt zich in de map *scripts* en heet **conversie. ps1**.
+We bieden een hulpscript aan om de conversieservice voor assets gemakkelijker aan te roepen. Deze bevindt zich in de map *Scripts* en heet **Conversion.ps1**.
 
-Met name dit script
+Dit script
 
-1. Hiermee worden alle bestanden in een bepaalde map geüpload van de lokale schijf naar de invoer opslag container
-1. roept de [activa conversie rest API](../how-tos/conversion/conversion-rest-api.md) op die de gegevens ophaalt uit de invoer opslag container en start een conversie, waardoor een conversie-id wordt geretourneerd
-1. de API van de conversie status controleren met de opgehaalde conversie-id totdat het conversie proces wordt beëindigd met slagen of mislukken
-1. Hiermee wordt een koppeling naar het geconverteerde element in de uitvoer opslag opgehaald
+1. uploadt alle bestanden in een bepaalde map van een lokale schijf naar de opslagcontainer voor invoer
+1. roept de [REST API voor conversie van assets](../how-tos/conversion/conversion-rest-api.md) aan, die vervolgens de gegevens ophaalt vanuit de opslagcontainer voor invoer en een conversie begint die een conversie-id retourneert
+1. bevraagt de conversiestatus van de API met de verkregen conversie-id tot het conversieproces voltooid of mislukt is
+1. haalt een koppeling naar de geconverteerde asset in de uitvoeropslag op
 
-Het script leest de configuratie van het bestand *Scripts\arrconfig.json*. Open dat JSON-bestand in een tekst editor.
+Het script leest de configuratie uit het bestand *Scripts\arrconfig.json*. Open dit JSON-bestand in een teksteditor.
 
 ```json
 {
@@ -144,58 +144,60 @@ Het script leest de configuratie van het bestand *Scripts\arrconfig.json*. Open 
 }
 ```
 
-De configuratie binnen de **accountSettings** -groep (account-ID en-sleutel) moet worden ingevuld op basis van de referenties in de [Snelstartgids een model samen stellen met unitruimte](render-model.md).
+De configuratie binnen de groep **accountSettings** (account-id en -sleutel) moet overeenkomen met de referenties in de [quickstart 'Een model weergeven met Unity'](render-model.md).
 
-Zorg ervoor dat u in de **assetConversionSettings** -groep **resourceGroup**, **blobInputContainerName**en **blobOutputContainerName** , zoals hierboven weer gegeven, wijzigt.
-Houd er rekening mee dat de waarde **arrtutorialstorage** moet worden vervangen door de unieke naam die u hebt gekozen tijdens het maken van het opslag account.
+Zorg ervoor dat u in de groep **assetConversionSettings** **resourceGroup**, **blobInputContainerName** en **blobOutputContainerName** aanpast zoals hierboven te zien is.
+Merk op dat u de waarde **arrtutorialstorage** moet vervangen door de unieke naam die u hebt gekozen bij het aanmaken van het opslagaccount.
 
-Wijzig **localAssetDirectoryPath** zodat deze verwijst naar de map op de schijf die het model bevat dat u wilt converteren. Wees voorzichtig met het weglaten van backslashes\\("") in het pad met behulp van\\\\dubbele backslashes ("").
+Wijzig **localAssetDirectoryPath** zodat deze verwijst naar de map op uw schijf waarin het model zit dat u wilt converteren. Zorg ervoor dat u backslashes ('\\') tussen escape-tekens plaatst in het pad met dubbele backslashes ('\\\\').
 
-Alle gegevens van het pad dat is opgegeven in **localAssetDirectoryPath** , worden geüpload naar de **blobInputContainerName** -BLOB-container onder een subpad dat is opgegeven door **inputFolderPath**. In de voorbeeld configuratie boven de inhoud van de map "D:\\tmp\\-robot" wordt dus geüpload naar de BLOB-container "arrinput" van het opslag account "arrtutorialstorage" onder het pad "robotConversion". Bestaande bestanden worden overschreven.
+Alle gegevens van het pad dat is opgegeven in **localAssetDirectoryPath** worden geüpload naar de blobcontainer **blobInputContainerName** onder een subpad opgegeven door **inputFolderPath**. In de bovenstaande voorbeeldconfiguratie wordt de inhoud van de map 'D:\\tmp\\robot' geüpload naar de blobcontainer 'arrinput' van het opslagaccount 'arrtutorialstorage' onder het pad 'robotConversion'. Bestaande bestanden worden overschreven.
 
-Wijzig **inputAssetPath** in het pad van het model dat moet worden geconverteerd-het pad is relatief ten opzichte van localAssetDirectoryPath. Gebruik "/" in plaats van\\"" als padscheidingsteken. Gebruik ' robot. fbx ' voor een bestand ' robot. fbx ' dat zich direct\\in\\' D: tmp-robot ' bevindt.
+Verander **inputAssetPath** naar het pad van het model dat omgezet moet worden - het pad is afhankelijk van localAssetDirectoryPath. Gebruik '/' in plaats van '\\' als scheidingsteken. Voor een bestand 'robot.fbx', dat zich in 'D:\\tmp\\robot' bevindt, gebruikt u 'robot.fbx'.
 
-Zodra het model is geconverteerd, wordt het teruggeschreven naar de opslag container die is opgegeven door **blobOutputContainerName**. U kunt een subpad opgeven door de optionele **outputFolderPath**op te geven. In het bovenstaande voor beeld wordt het resulterende robot. arrAsset gekopieerd naar de uitvoer BLOB-container onder geconverteerd/robot.
+Zodra het model is omgezet, wordt het teruggeschreven naar de opslagcontainer die is opgegeven door **bloboutputContainerName**. U kunt een subpad opgeven met het optionele **outputFolderPath**. In het bovenstaande voorbeeld wordt het resulterende 'robot.arrAsset' gekopieerd naar de blobcontainer voor uitvoer onder 'converted/robot'.
 
-De configuratie-instelling **outputAssetFileName** bepaalt de naam van het geconverteerde activum. de para meter is optioneel en de uitvoer bestandsnaam wordt afgeleid van de naam van het invoer bestand. 
+De configuratie-instelling **outputAssetFileName** bepaalt de naam van de omgezette asset. De parameter is optioneel en indien hij niet gebruikt wordt, zal de bestandsnaam voor de uitvoer worden afgeleid van de bestandsnaam voor invoer.
 
-Open een Power shell, Controleer of u de *Azure PowerShell* hebt geïnstalleerd zoals vermeld in de [vereisten](#prerequisites). Meld u vervolgens aan bij uw abonnement met de volgende opdracht en volg de instructies op het scherm:
+Open een PowerShell en controleer of u de *Azure PowerShell* hebt geïnstalleerd zoals vermeld in de [vereisten](#prerequisites). Meld u vervolgens aan bij uw abonnement met de volgende opdracht en volg de instructies op het scherm:
 
 ```PowerShell
 Connect-AzAccount
 ```
 
 > [!NOTE]
-> Als uw organisatie meer dan één abonnement heeft, moet u mogelijk de argumenten SubscriptionId en Tenant opgeven. Meer informatie vindt u in de [documentatie van Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount).
+> Als uw organisatie meerdere abonnementen heeft, moet u mogelijk de argumenten SubscriptionId en Tenant opgeven. Meer informatie vindt u in de [documentatie bij Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount).
 
-Ga naar de `azure-remote-rendering\Scripts` map en voer het conversie script uit:
+Schakel naar de `azure-remote-rendering\Scripts`-directory en voer het conversiescript uit:
 
 ```PowerShell
 .\Conversion.ps1 -UseContainerSas
 ```
 
-Dit ziet er ongeveer als volgt uit ![: Conversion. ps1](./media/successful-conversion.png)
+Deze lijst ziet er ongeveer zo uit: ![Conversion.ps1](./media/successful-conversion.png)
 
-Het conversie script genereert een *SAS-URI (Shared Access Signature)* voor het geconverteerde model. U kunt deze URI nu als de naam van het **model** kopiëren naar de voor beeld-app van Quick Start (Zie [Quick Start: een model met eenheid weer geven](render-model.md)).
+## <a name="insert-new-model-into-quickstart-sample-app"></a>Nieuw model in Quickstart-voorbeeldapp invoegen
+
+Het conversiescript genereert een *SAS*-URI (Shared Access Signature) voor het omgezette model. U kunt deze URI nu als **Modelnaam** kopiëren naar de quickstart-voorbeeldapp (zie [Quickstart: Een model weergeven met Unity](render-model.md)).
 
 ![Model vervangen in Unity](./media/replace-model-in-unity.png)
 
- Het voor beeld moet nu het aangepaste model laden en weer geven.
+ Het voorbeeld zou nu moeten laden en uw aangepast model moeten weergeven!
 
-## <a name="optional-re-creating-a-sas-uri"></a>Optioneel: opnieuw maken van een SAS-URI
+## <a name="optional-re-creating-a-sas-uri"></a>Optioneel: Een SAS-URI opnieuw maken
 
-De SAS-URI die door het conversie script wordt gemaakt, is slechts 24 uur geldig. Nadat u het model echter hebt verlopen, hoeft u het niet opnieuw te converteren. In plaats daarvan kunt u in de portal een nieuwe SAS maken, zoals wordt beschreven in de volgende stappen:
+De SAS-URI die door het conversiescript is gemaakt, is slechts voor 24 uur geldig. Wanneer het model is verlopen, moet u het echter niet opnieuw converteren. In plaats daarvan kunt u in het portal een nieuwe SAS maken, zoals wordt beschreven in de volgende stappen:
 
-1. Ga naar [Azure Portal](https://www.portal.azure.com)
-1. Klik op uw **opslag account** resource: ![toegang tot hand tekening](./media/portal-storage-accounts.png)
-1. Klik in het volgende scherm op **opslag Verkenner** in het linkerdeel venster en zoek uw uitvoer model (*. arrAsset* -bestand) in de *arroutput* Blob Storage-container. Klik met de rechter muisknop op het bestand en selecteer **Shared Access Signature ophalen** in het context ![menu: toegang tot hand tekening](./media/portal-storage-explorer.png)
-1. Er wordt een nieuw scherm geopend waarin u een verval datum kunt selecteren. Druk op **maken**en kopieer de URI die in het volgende dialoog venster wordt weer gegeven. Deze nieuwe URI vervangt de tijdelijke URI die het script heeft gemaakt.
+1. Ga naar de [Azure-portal](https://www.portal.azure.com)
+1. Klik op de resource van uw **Opslagaccount**: ![Signature Access](./media/portal-storage-accounts.png)
+1. Klik in het volgende scherm op **Storage Explorer** in het deelvenster links en zoek uw uitvoermodel ( *.arrAsset*-bestand) in de Blob Storage-container *arroutput*. Klik met de rechtermuisknop op het bestand en selecteer **Shared Access Signature ophalen** in het contextmenu: ![Signature Access](./media/portal-storage-explorer.png)
+1. Er wordt een nieuw scherm geopend waarin u een verloopdatum kunt selecteren. Druk op **Maken** en kopieer de URI die in het volgende dialoogvenster wordt weergegeven. Deze nieuwe URI vervangt de tijdelijke URI die het script heeft gemaakt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u de basis principes kent, kunt u de zelf studies bekijken om meer inzicht te krijgen.
+Nu u de basisprincipes kent, kunt u onze zelfstudies ontdekken om meer uitgebreide kennis op te doen.
 
-Als u meer wilt weten over model conversie, raadpleegt u [de model conversie rest API](../how-tos/conversion/conversion-rest-api.md).
+Als u meer wilt weten over modelconversie, bekijk dan [de REST API voor modelconversie](../how-tos/conversion/conversion-rest-api.md).
 
 > [!div class="nextstepaction"]
-> [Zelf studie: een geheel nieuw eenheids project instellen](../tutorials/unity/project-setup.md)
+> [Zelfstudie: Extern gegenereerde modellen bekijken](../tutorials/unity/view-remote-models/view-remote-models.md)

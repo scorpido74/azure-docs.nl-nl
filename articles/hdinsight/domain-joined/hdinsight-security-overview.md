@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 65df89aff0232d7bf9809cdffc4262d1a640a5a1
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 1869671b465b7175cf3160c41debc66cbd0818ad
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84771118"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367101"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Overzicht van bedrijfsbeveiliging in Azure HDInsight
 
@@ -81,6 +81,7 @@ De volgende tabel bevat koppelingen naar resources voor elk type beveiligingsopl
 |  | [Service-eindpunten voor virtueel netwerk van Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) configureren voor Cosmos DB en [Azure SQL-database](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) | Klant |
 |  | Ervoor zorgen dat [TLS-versleuteling](../../storage/common/storage-security-tls.md) is ingeschakeld voor gegevens die onderweg zijn. | Klant |
 |  | [Door de klant beheerde sleutels](../../storage/common/storage-encryption-keys-portal.md) configureren voor Azure Storage-versleuteling | Klant |
+|  | Toegang tot uw gegevens beheren via Azure-ondersteuning met behulp van [Klanten-lockbox](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview) | Klant |
 | Beveiliging van toepassingen en middleware | Integratie uitvoeren met AAD-DS en [verificatie configureren](apache-domain-joined-configure-using-azure-adds.md) | Klant |
 |  | Beleid voor [Apache Ranger-autorisatie](apache-domain-joined-run-hive.md) configureren | Klant |
 |  | [Azure Monitor-logboeken](../hdinsight-hadoop-oms-log-analytics-tutorial.md) gebruiken | Klant |

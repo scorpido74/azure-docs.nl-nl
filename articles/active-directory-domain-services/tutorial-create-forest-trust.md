@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/31/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 37f1f129122a64dc27227bee8a267702c7f9d903
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 40dd7f1b177fd1319b145036c8263ba2c6e30137
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84733667"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024669"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>Zelfstudie: Een uitgaande forestvertrouwensrelatie in één richting maken naar een on-premises domein in Azure Active Directory Domain Services (preview)
 
@@ -45,7 +45,9 @@ Om deze zelfstudie te voltooien, hebt u de volgende resources en machtigingen no
     * [Maak en configureer zo nodig een met Azure Active Directory Domain Services beheerd domein][create-azure-ad-ds-instance-advanced].
     
     > [!IMPORTANT]
-    > Zorg ervoor dat u een beheerd domein maakt met behulp van een *resourceforest*. Met de standaardoptie gebruikt u een *gebruikersforest*. Vertrouwensrelaties naar on-premises AD DS-omgevingen kunnen alleen worden gemaakt met resourceforests. U moet ook minstens een *Enterprise* SKU gebruiken voor het beheerde domein. Indien nodig, kunt u [de SKU voor een beheerd domein wijzigen][howto-change-sku].
+    > Zorg ervoor dat u een beheerd domein maakt met behulp van een *resourceforest*. Met de standaardoptie gebruikt u een *gebruikersforest*. Vertrouwensrelaties naar on-premises AD DS-omgevingen kunnen alleen worden gemaakt met resourceforests.
+    >
+    > U moet ook minstens een *Enterprise* SKU gebruiken voor het beheerde domein. Indien nodig, kunt u [de SKU voor een beheerd domein wijzigen][howto-change-sku].
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
@@ -72,7 +74,7 @@ Voordat u een forestvertrouwensrelatie configureert in Azure AD DS, moet u contr
 Als u het beheerde domein correct wilt omzetten vanuit de on-premises omgeving, moet u mogelijk doorstuurservers toevoegen aan de bestaande DNS-server. Als u de on-premises omgeving niet hebt geconfigureerd voor communicatie met het beheerde domein, voltooit u de volgende stappen vanuit een beheerwerkstation voor het on-premises AD DS-domein:
 
 1. Selecteer **Start | Systeembeheer | DNS**
-1. Selecteer met de rechtermuisknop de DNS-server, bijvoorbeeld *myAD01*. Selecteer vervolgens **Eigenschappen**
+1. Selecteer met de rechtermuisknop de DNS-server, bijvoorbeeld *myAD01*, en selecteer **Eigenschappen**
 1. Kies **Doorstuurservers** en vervolgens **Bewerken** om extra doorstuurservers toe te voegen.
 1. Voeg de IP-adressen van het beheerde domein toe, bijvoorbeeld *10.0.2.4* en *10.0.2.5*.
 
@@ -83,9 +85,9 @@ Het on-premises AD DS-domein heeft een binnenkomende forestvertrouwensrelatie vo
 Als u een binnenkomende vertrouwensrelatie in het on-premises AD DS-domein wilt configureren, voltooit u de volgende stappen vanuit een beheerwerkstation voor het on-premises AD DS-domein:
 
 1. Selecteer **Start | Systeembeheer | Active Directory: domeinen en vertrouwensrelaties**
-1. Selecteer met de rechtermuisknop het domein, bijvoorbeeld *onprem.contoso.com*. Selecteer vervolgens **Eigenschappen**
+1. Selecteer met de rechtermuisknop het domein, bijvoorbeeld *onprem.contoso.com*, en selecteer **Eigenschappen**
 1. Kies het tabblad **Vertrouwensrelaties** en vervolgens **Nieuwe vertrouwensrelatie**
-1. Voer een naam in bij Azure AD DS-domeinnaam, bijvoorbeeld *aaddscontoso.com*. Selecteer vervolgens **Volgende**
+1. Voer een naam in bij Azure AD DS-domeinnaam, bijvoorbeeld *aaddscontoso.com*, en selecteer **Volgende**
 1. Selecteer de optie om een **Forestvertrouwensrelatie** te maken. Maak vervolgens een vertrouwensrelatie van het type **In één richting: binnenkomend**.
 1. Kies ervoor om de vertrouwensrelatie te maken voor **Alleen dit domein**. In de volgende stap maakt u de vertrouwensrelatie in de Azure-portal voor het beheerde domein.
 1. Kies voor het gebruik van **Forestdekkende verificatie**. Voer vervolgens een wachtwoord voor de vertrouwensrelatie in en bevestig dit. Dit wachtwoord wordt ook ingevoerd in de Azure-portal in de volgende sectie.
@@ -124,7 +126,7 @@ Met de volgende algemene scenario's kunt u valideren of met de forestvertrouwens
 
 ### <a name="on-premises-user-authentication-from-the-azure-ad-ds-resource-forest"></a>On-premises gebruikersverificatie vanuit de Azure AD DS-resourceforest
 
-U moet een virtuele Windows Server-machine koppelen aan het Azure AD DS-resourcedomein. Gebruik deze virtuele machine om te testen of uw on-premises gebruiker kan worden geverifieerd op de virtuele machine.
+U moet een virtuele Windows Server-machine koppelen aan het beheerde domein. Gebruik deze virtuele machine om te testen of uw on-premises gebruiker kan worden geverifieerd op de virtuele machine. Als dat nodig is, [een Windows-VM maken en deze koppelen aan het beheerde domein][join-windows-vm].
 
 1. Maak verbinding met de Windows Server-VM die is gekoppeld aan de Azure AD DS-resourceforest, met behulp van [Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview) en uw Azure AD DS-beheerdersreferenties.
 1. Open een opdrachtprompt en gebruik de opdracht `whoami` om de DN-naam van de momenteel geverifieerde gebruiker weer te geven:
@@ -167,7 +169,7 @@ Met behulp van de Windows Server-VM die is gekoppeld aan de Azure AD-forest kunt
 1. Typ *Domeingebruikers* in het vak **Geef de objectnamen op**. Selecteer **Namen controleren**, geef referenties op voor de on-premises Active Directory en selecteer vervolgens **OK**.
 
     > [!NOTE]
-    > U moet referenties opgeven, omdat de vertrouwensrelatie slechts één manier is. Dit betekent dat gebruikers van de Azure AD DS geen toegang hebben tot resources en niet kunnen zoeken naar gebruikers of groepen in het vertrouwde (on-premises) domein.
+    > U moet referenties opgeven, omdat de vertrouwensrelatie slechts één manier is. Dit betekent dat gebruikers van het beheerde Azure AD DS-domein geen toegang hebben tot resources en niet kunnen zoeken naar gebruikers of groepen in het vertrouwde (on-premises) domein.
 
 1. De groep **Domeingebruikers** uit uw on-premises Active Directory moet lid zijn van de groep **FileServerAccess**. Selecteer **OK** om de groep op te slaan, en sluit het venster.
 
@@ -216,3 +218,4 @@ Zie [Wat zijn resourceforests?][concepts-forest] en [Werking van forestvertrouwe
 [howto-change-sku]: change-sku.md
 [vpn-gateway]: ../vpn-gateway/vpn-gateway-about-vpngateways.md
 [expressroute]: ../expressroute/expressroute-introduction.md
+[join-windows-vm]: join-windows-vm.md

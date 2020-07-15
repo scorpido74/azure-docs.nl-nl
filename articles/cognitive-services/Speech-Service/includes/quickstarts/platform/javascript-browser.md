@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: Speech SDK voor Java script (browser) platform Setup-Speech Service'
+title: 'Quickstart: Speech SDK voor JavaScript (browser) platform instellen: Speech-service'
 titleSuffix: Azure Cognitive Services
-description: Gebruik deze hand leiding om uw platform in te stellen voor het gebruik van Java script (browser) met de Speech Service SDK.
+description: Gebruik deze handleiding om uw platform in te stellen voor het gebruik van JavaScript (browser) met de Speech-service SDK.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/11/2019
 ms.author: erhopf
-ms.openlocfilehash: fa8bf79c047911ca283bf60261bba0cbdd6816a7
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.openlocfilehash: 53cabaec21daafb910b958bb4b573dd033ca6283
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82980124"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035827"
 ---
-In deze hand leiding wordt uitgelegd hoe u de [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) voor Java script installeert voor gebruik met een webpagina.
+In deze handleiding wordt uitgelegd hoe u de [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) voor JavaScript installeert voor gebruik met een webpagina.
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
@@ -27,11 +27,12 @@ Maak een nieuwe, lege map. Als u de voorbeeldtoepassing op een webserver wilt ho
 
 ## <a name="unpack-the-speech-sdk-for-javascript-into-that-folder"></a>De Speech SDK voor JavaScript in die map uitpakken
 
-Download de Speech SDK als een [ZIP-pakket](https://aka.ms/csspeech/jsbrowserpackage) en pak dit uit in de zojuist gemaakte map. Dit resulteert in vier uitgepakte bestanden:
-* `microsoft.cognitiveservices.speech.sdk.bundle.js`Een door menselijke Lees bare versie van de Speech-SDK.
-* `microsoft.cognitiveservices.speech.sdk.bundle.js.map`Een kaart bestand dat wordt gebruikt voor fout opsporing SDK-code.
-* `microsoft.cognitiveservices.speech.sdk.bundle.d.ts`Object definities voor gebruik met type script
-* `microsoft.cognitiveservices.speech.sdk.bundle-min.js`Een minified-versie van de Speech-SDK.
+Download de Speech SDK als een [ZIP-pakket](https://aka.ms/csspeech/jsbrowserpackage) en pak dit uit in de zojuist gemaakte map. Er worden vijf bestanden uitgepakt:
+* `microsoft.cognitiveservices.speech.sdk.bundle.js` Een door mensen leesbare versie van de Speech SDK.
+* `microsoft.cognitiveservices.speech.sdk.bundle.js.map` Een toewijzingsbestand voor het opsporen van fouten in SDK-code.
+* `microsoft.cognitiveservices.speech.sdk.bundle.d.ts` Objectdefinities voor gebruik met TypeScript
+* `microsoft.cognitiveservices.speech.sdk.bundle-min.js` Een geminimaliseerde versie van de Speech SDK.
+* `speech-processor.js` Code voor het verbeteren van de prestaties in sommige browsers.
 
 ## <a name="create-an-indexhtml-page"></a>Een index.html-pagina maken
 

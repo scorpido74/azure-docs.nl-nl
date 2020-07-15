@@ -1,35 +1,35 @@
 ---
-title: 'Snelstart: geo-gerepliceerd register maken - Resource Manager-sjabloon'
+title: 'Quickstart: een containerinstantie maken - Azure Resource Manager-sjabloon'
 description: In deze snelstart gebruikt u een Azure Resource Manager-sjabloon om snel een container-web-app te implementeren die op een geïsoleerde Azure-containerinstantie wordt uitgevoerd.
 services: azure-resource-manager
 ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/30/2020
-ms.openlocfilehash: 17f71d1c383c72fab748a9bdb789158095616f2d
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 64f86611e8a60cd3d1463cd2845c034551277bb2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779873"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118457"
 ---
-# <a name="quickstart-deploy-a-container-instance-in-azure-using-a-resource-manager-template"></a>Quickstart: Een containerinstantie in Azure implementeren met behulp van een Resource Manager-sjabloon
+# <a name="quickstart-deploy-a-container-instance-in-azure-using-an-arm-template"></a>Quickstart: Een containerinstantie in Azure implementeren met behulp van een ARM-sjabloon
 
-Gebruik Azure Container Instances om snel en eenvoudig serverloze Docker-containers uit te voeren in Azure. Een toepassing implementeren in een containerinstantie op aanvraag, wanneer u geen volledig indelingsplatform voor containers nodig hebt zoals Azure Kubernetes Service. In deze snelstart gebruikt u een Azure Resource Manager-sjabloon om een geïsoleerde Docker-container te implementeren en de webtoepassing ervan beschikbaar te maken met een openbaar IP-adres.
+Gebruik Azure Container Instances om snel en eenvoudig serverloze Docker-containers uit te voeren in Azure. Een toepassing implementeren in een containerinstantie op aanvraag, wanneer u geen volledig indelingsplatform voor containers nodig hebt zoals Azure Kubernetes Service. In deze snelstart gebruikt u een Azure Resource Manager-sjabloon (ARM-sjabloon) om een geïsoleerde Docker-container te implementeren en de webtoepassing ervan beschikbaar te maken met een openbaar IP-adres.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
+
+[![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-aci-linuxcontainer-public-ip%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Vereisten
 
-Geen.
+Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
-## <a name="create-a-container-instance"></a>Een containerinstantie maken
+## <a name="review-the-template"></a>De sjabloon controleren
 
-### <a name="review-the-template"></a>De sjabloon controleren
-
-De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure Quick Start-sjablonen](https://azure.microsoft.com/resources/templates/101-aci-linuxcontainer-public-ip/).
+De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-quickstartsjablonen](https://azure.microsoft.com/resources/templates/101-aci-linuxcontainer-public-ip/).
 
 :::code language="json" source="~/quickstart-templates/101-aci-linuxcontainer-public-ip/azuredeploy.json" range="1-107" highlight="61-100":::
 
@@ -39,7 +39,7 @@ De volgende resource is gedefinieerd in de sjabloon:
 
 Meer voorbeelden van Azure Container Instances vindt u in de [galerie met snelstartsjablonen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Containerinstance&pageNumber=1&sort=Popular).
 
-### <a name="deploy-the-template"></a>De sjabloon implementeren
+## <a name="deploy-the-template"></a>De sjabloon implementeren
 
  1. Selecteer de volgende afbeelding om u aan te melden bij Azure en een sjabloon te openen. De sjabloon maakt een register en een replica op een andere locatie.
 
@@ -101,4 +101,4 @@ In deze snelstart hebt u een Azure-containerinstantie gemaakt van een openbare M
 Zie voor een stapsgewijze zelfstudie die u door het proces van het maken van een sjabloon leidt:
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: uw eerste Azure Resource Manager-sjabloon maken en implementeren](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+> [Zelfstudie: Uw eerste ARM-sjabloon maken en implementeren](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

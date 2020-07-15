@@ -1,5 +1,5 @@
 ---
-title: Snelstartgids voor Bing Aangepaste zoekopdrachten Java-client bibliotheek
+title: Quickstart Java-clientbibliotheek Bing Custom Search
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -8,44 +8,44 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/27/2020
 ms.author: aahi
-ms.openlocfilehash: 32e02d3a7c1af6d15e7f381807d80f19b94da38f
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: db7a32ac06e41a72314d3d73208c0d7e1b652649
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80587174"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85806074"
 ---
-Ga aan de slag met de Bing Aangepaste zoekopdrachten-client bibliotheek voor Java. Volg deze stappen om het pakket te installeren en de voorbeeld code voor basis taken uit te proberen. Met de Bing Custom Search-API kunt u op maat gemaakte, advertenties gratis zoek functies maken voor onderwerpen die u vindt. De broncode voor dit voorbeeld is te vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingCustomSearch)
+Aan de slag met de clientbibliotheek van Bing Custom Search voor Java. Volg deze stappen om het pakket te installeren en de voorbeeldcode voor basistaken uit te proberen. Met de API van Bing Custom Search kunt u op maat gemaakte zoekervaringen zonder advertenties maken voor onderwerpen die u interesseren. De broncode voor dit voorbeeld is te vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingCustomSearch)
 
-Gebruik de Bing Aangepaste zoekopdrachten-client bibliotheek voor Java om het volgende te doen:
+Gebruik de Bing Custom Search-clientbibliotheek voor Java om het volgende te doen:
 
-* Zoek resultaten zoeken op Internet vanuit uw Bing Aangepaste zoekopdrachten-exemplaar. 
+* Zoekresultaten zoeken op internet vanuit uw exemplaar van Bing Custom Search.
 
-[Reference documentation](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-java-stable) | Maven-voor[beelden](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples) ([Source code](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingCustomSearch) | [artefact)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customsearch/) | voor referentie documentatie
+[Referentiedocumentatie](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-java-stable) | [Broncode bibliotheek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingCustomSearch) | [Artefact (Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customsearch/) | [Voorbeelden](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement: [Maak een gratis versie](https://azure.microsoft.com/free/).
+* Azure-abonnement: [u kunt een gratis abonnement nemen](https://azure.microsoft.com/free/cognitive-services/).
 * De huidige versie van de [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html).
-* Het [hulp programma Gradle build](https://gradle.org/install/)of een andere afhankelijkheids Manager.
-* Een Bing Custom Search-exemplaar. Zie [Quick Start: uw eerste Bing aangepaste zoekopdrachten-exemplaar maken](../../quick-start.md) voor meer informatie.
+* Het [hulpprogramma Gradle](https://gradle.org/install/) of een andere afhankelijkheidsbeheerder.
+* Een Bing Custom Search-exemplaar. Zie [Quickstart: Uw eerste Bing Custom Search-exemplaar maken](../../quick-start.md) voor meer informatie.
 
 [!INCLUDE [cognitive-services-bing-custom-search-prerequisites](~/includes/cognitive-services-bing-custom-search-signup-requirements.md)]
 
-Wanneer u een sleutel van uw proef abonnement of resource hebt ontvangen, [maakt u een omgevings variabele](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de `AZURE_BING_CUSTOM_SEARCH_API_KEY`sleutel met de naam.
+Nadat u een sleutel van uw resource hebt opgehaald, [maakt u een omgevingsvariabele](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel met de naam `AZURE_BING_CUSTOM_SEARCH_API_KEY`.
 
 ### <a name="create-a-new-gradle-project"></a>Een nieuw Gradle-project maken
 
 > [!TIP]
-> Als u geen gebruik maakt van Gradle, kunt u de details van de client bibliotheek vinden voor andere afhankelijkheids managers in de [centrale opslag plaats van Maven](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-textanalytics/).
+> Als u Gradle niet gebruikt, vindt u de clientbibliotheekinformatie voor andere afhankelijkheidsbeheerders in de [Maven Central Repository](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-textanalytics/).
 
-Maak in een console venster (zoals cmd, Power shell of bash) een nieuwe map voor uw app en navigeer ernaar. 
+Maak in een consolevenster (zoals cmd, PowerShell of Bash) een nieuwe map voor de app, en navigeer naar deze map.
 
 ```console
 mkdir myapp && cd myapp
 ```
 
-Voer de `gradle init` opdracht uit vanuit de werkmap. Met deze opdracht maakt u essentiële build-bestanden voor Gradle, met inbegrip van een *Build. Gradle. KTS* -bestand dat tijdens runtime wordt gebruikt om uw toepassing te configureren.
+Voer de opdracht `gradle init` uit vanuit uw werkmap. Met deze opdracht maakt u essentiële buildbestanden voor Gradle, inclusief een *build.gradle.kts*-bestand, dat tijdens runtime wordt gebruikt om uw toepassing te configureren.
 
 ```console
 gradle init --type basic
@@ -53,9 +53,9 @@ gradle init --type basic
 
 Wanneer u wordt gevraagd om een **DSL** te kiezen, selecteert u **Kotlin**.
 
-## <a name="install-the-client-library"></a>De client bibliotheek installeren 
+## <a name="install-the-client-library"></a>De clientbibliotheek installeren
 
-Zoek *Build. gradle. KTS* en open het met uw favoriete IDE-of tekst editor. Kopieer vervolgens in deze build-configuratie. Zorg ervoor dat u de client bibliotheek bijvoegt onder `dependencies`:
+Zoek *build.gradle.kts* op en open het met uw favoriete IDE of teksteditor. Kopieer het vervolgens in deze buildconfiguratie. Zorg ervoor dat u de clientbibliotheek opgeeft onder `dependencies`:
 
 ```kotlin
 plugins {
@@ -74,64 +74,64 @@ dependencies {
 }
 ```
 
-Maak een map voor uw voor beeld-app. Voer de volgende opdracht uit in de werkmap:
+Maak een map voor de voorbeeld-app. Voer de volgende opdracht uit vanuit uw werkmap:
 
 ```console
 mkdir src/main/java
 ```
 
-Ga naar de nieuwe map en maak een bestand met de naam *BingCustomSearchSample. java*. Open het en voeg de volgende `import` -instructies toe:
+Ga naar de nieuwe map en maak een bestand met de naam *BingCustomSearchSample.java*. Open het en voeg de volgende `import`-instructies toe:
 
 
 [!code-java[import statements](~/cognitive-services-java-sdk-samples/Search/BingCustomSearch/src/main/java/BingCustomSearchSample.java?name=imports)]
 
-Een klasse met de naam maken`BingCustomSearchSample`
+Maak een klasse met de naam `BingCustomSearchSample`
 
 ```java
 public class BingCustomSearchSample {
 }
 ```
 
-Maak in de-klasse een `main` methode en een variabele voor de sleutel van uw resource. Als u de omgevings variabele hebt gemaakt nadat u de toepassing hebt gestart, sluit u de editor, IDE of shell waarmee deze wordt uitgevoerd om toegang te krijgen tot de variabele. U gaat de methoden later definiëren.
+Maak in de klasse een `main`-methode en een variabele voor de sleutel van uw resource. Als u de omgevingsvariabele hebt gemaakt nadat u de toepassing hebt gestart, moet u de editor, IDE of shell waarmee deze wordt uitgevoerd, sluiten en opnieuw openen om toegang te krijgen tot de variabele. U definieert later de methoden.
 
 [!code-java[main method](~/cognitive-services-java-sdk-samples/Search/BingCustomSearch/src/main/java/BingCustomSearchSample.java?name=main)]
 
-## <a name="object-model"></a>Object model
+## <a name="object-model"></a>Objectmodel
 
-De Bing Aangepaste zoekopdrachten-client is een [BingCustomSearchAPI](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchapi?view=azure-java-stable) -object dat is gemaakt op basis van de methode [Authenticate ()](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchmanager.authenticate) van het [BingCustomSearchManager](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchmanager?view=azure-java-stable) -object. U kunt een zoek opdracht verzenden met behulp van de methode [BingCustomInstances. Search ()](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustominstances.search?view=azure-java-stable#com_microsoft_azure_cognitiveservices_search_customsearch_BingCustomInstances_search__) van de client.
+De Bing Custom Search-client is een [BingCustomSearchAPI](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchapi?view=azure-java-stable)-object dat is gemaakt op basis van de [authenticate()](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchmanager?view=azure-java-stable)-methode van het [BingCustomSearchManager](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchmanager.authenticate)-object. U kunt een zoekopdracht verzenden met behulp van de [BingCustomInstances.search()](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustominstances.search?view=azure-java-stable#com_microsoft_azure_cognitiveservices_search_customsearch_BingCustomInstances_search__)-methode van de client.
 
-De API-reactie is een [SearchResponse](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.models.searchresponse?view=azure-java-stable) -object dat informatie bevat over de zoek opdracht en de zoek resultaten.
+Het API-antwoord is een [SearchResponse](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.models.searchresponse?view=azure-java-stable)-object dat informatie bevat over de zoekopdracht en de zoekresultaten.
 
 ## <a name="code-examples"></a>Codevoorbeelden
 
-Deze code fragmenten laten zien hoe u de volgende taken kunt uitvoeren met de Bing Aangepaste zoekopdrachten-client bibliotheek voor Java:
+Deze codefragmenten laten zien hoe u de volgende taken kunt uitvoeren met de Bing Custom Search-clientbibliotheek voor Java:
 
 * [De client verifiëren](#authenticate-the-client)
-* [Zoek resultaten ophalen uit uw aangepaste zoek exemplaar](#get-search-results-from-your-custom-search-instance)
+* [Zoekresultaten ophalen van uw aangepaste zoekopdrachtexemplaar](#get-search-results-from-your-custom-search-instance)
 
 ## <a name="authenticate-the-client"></a>De client verifiëren
 
-De methode Main moet een [BingCustomSearchManager](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchapi?view=azure-java-stable) -object bevatten dat uw sleutel gebruikt en aanroepen `authenticate()`.
+De hoofdmethode moet een [BingCustomSearchManager](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustomsearchapi?view=azure-java-stable)-object bevatten dat uw sleutel gebruikt en de `authenticate()` ervan aanroept.
 
 ```java
 BingCustomSearchAPI client = BingCustomSearchManager.authenticate(subscriptionKey);
 ```
 
-## <a name="get-search-results-from-your-custom-search-instance"></a>Zoek resultaten ophalen uit uw aangepaste zoek exemplaar
+## <a name="get-search-results-from-your-custom-search-instance"></a>Zoekresultaten ophalen van uw aangepaste zoekopdrachtexemplaar
 
-Gebruik de functie [BingCustomInstances. Search ()](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustominstances.search?view=azure-java-stable#com_microsoft_azure_cognitiveservices_search_customsearch_BingCustomInstances_search__) van de client om een zoek opdracht naar uw aangepaste exemplaar te verzenden. Stel de `withCustomConfig` aangepaste configuratie-ID in op de standaard instelling `1`. Nadat u een reactie van de API hebt opgehaald, controleert u of er Zoek resultaten zijn gevonden. Als dit het geval is, haalt u het eerste Zoek resultaat op `webPages().value().get()` door de functie van de reactie aan te roepen en de naam van het resultaat en de URL af te drukken. 
+Gebruik de functie [BingCustomInstances.search()](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.customsearch.bingcustominstances.search?view=azure-java-stable#com_microsoft_azure_cognitiveservices_search_customsearch_BingCustomInstances_search__) van de client om een zoekopdracht naar uw aangepaste exemplaar te verzenden. Stel de `withCustomConfig` in op uw aangepaste configuratie-ID, of op de standaardwaarde `1`. Nadat u een antwoord van de API hebt opgehaald, controleert u of er zoekresultaten zijn gevonden. Als dit het geval is, kunt u het eerste zoekresultaat ophalen door de functie `webPages().value().get()` van het antwoord aan te roepen en de naam van het resultaat en de URL af te drukken.
 
 [!code-java[call the custom search API](~/cognitive-services-java-sdk-samples/Search/BingCustomSearch/src/main/java/BingCustomSearchSample.java?name=runSample)]
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Bouw de app met de volgende opdracht uit de hoofd directory van uw project:
+Bouw de app met de volgende opdracht uit de hoofdmap van uw project:
 
 ```console
 gradle build
 ```
 
-Voer de toepassing uit met `run` het doel:
+Voer de toepassing uit met het doel `run`:
 
 ```console
 gradle run
@@ -139,7 +139,7 @@ gradle run
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resource groep verwijderen. Als u de resource groep verwijdert, worden ook alle bijbehorende resources verwijderd.
+Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resourcegroep verwijderen. Als u de resourcegroep verwijdert, worden ook alle bijbehorende resources verwijderd.
 
 * [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure-CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)

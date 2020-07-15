@@ -1,6 +1,6 @@
 ---
-title: 'Snelstartgids: client bibliotheek voor formulier herkenning voor Java script'
-description: In deze Snelstartgids gaat u aan de slag met de formulier Recognizer-client bibliotheek voor Java script.
+title: 'Quickstart: Clientbibliotheek van Form Recognizer voor JavaScript'
+description: In deze quickstart gaat u aan de slag met de clientbibliotheek van Form Recognizer voor JavaScript.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,24 +9,24 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 05/08/2020
 ms.author: pafarley
-ms.openlocfilehash: fa3f57a0a3e71eb44de50a6e7a5eaaebe48fced0
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
-ms.translationtype: MT
+ms.openlocfilehash: f5bf8a0420614b69f4022891e76b5d959f5782f3
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85242204"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035521"
 ---
-[Referentie documentatie](https://docs.microsoft.com/javascript/api/overview/azure/formrecognizer)  |  [Bron code](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/formrecognizer/ai-form-recognizer/)  |  van bibliotheek [Pakket (NPM)](https://www.npmjs.com/package/@azure/ai-form-recognizer)  |  Voor [beelden](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples)
+[Referentiedocumentatie](https://docs.microsoft.com/javascript/api/overview/azure/formrecognizer) | [Bibliotheekbroncode](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/formrecognizer/ai-form-recognizer/) | [Pakket (npm)](https://www.npmjs.com/package/@azure/ai-form-recognizer) | [Voorbeelden](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
-* Een Azure Storage-blob die een set trainings gegevens bevat. Zie [een trainings gegevensverzameling bouwen voor een aangepast model](../../build-training-data-set.md) voor tips en opties voor het samen stellen van uw trainings gegevensverzameling. Voor deze Quick Start kunt u de bestanden in de map **Train** van de voor [beeld-gegevensset](https://go.microsoft.com/fwlink/?linkid=2090451)gebruiken.
+* Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/)
+* Een Azure Storage-blob die een set trainingsgegevens bevat. Zie [Een set met trainingsgegevens voor een aangepast model bouwen](../../build-training-data-set.md) voor tips en opties voor het samenstellen van uw set met trainingsgegevens. Voor deze quickstart kunt u de bestanden in de map **Trainen** van de [set met voorbeeldgegevens](https://go.microsoft.com/fwlink/?linkid=2090451) gebruiken.
 * De huidige versie van [Node.js](https://nodejs.org/)
 
 ## <a name="setting-up"></a>Instellen
 
-### <a name="create-a-form-recognizer-azure-resource"></a>Een Azure-resource voor een formulier herkenning maken
+### <a name="create-a-form-recognizer-azure-resource"></a>Een Azure-resource voor Form Recognizer maken
 
 [!INCLUDE [create resource](../create-resource.md)]
 
@@ -36,41 +36,41 @@ ms.locfileid: "85242204"
 
 ### <a name="create-a-new-nodejs-application"></a>Een nieuwe Node.js-toepassing maken
 
-Maak in een console venster (zoals cmd, Power shell of bash) een nieuwe map voor uw app en navigeer ernaar. 
+Maak in een consolevenster (zoals cmd, PowerShell of Bash) een nieuwe map voor de app, en navigeer naar deze map. 
 
 ```console
 mkdir myapp && cd myapp
 ```
 
-Voer de `npm init` opdracht uit om een knooppunt toepassing met een `package.json` bestand te maken. 
+Voer de opdracht `npm init` uit om een knooppunttoepassing te maken met een `package.json`-bestand. 
 
 ```console
 npm init
 ```
 
-Maak een bestand met de naam `index.js` , open het en importeer de volgende bibliotheken:
+Maak een bestand met de naam `index.js` en importeer de volgende bibliotheken:
 
 ```javascript
 const { FormRecognizerClient, AzureKeyCredential } = require("@azure/ai-form-recognizer");
 const fs = require("fs");
 ```
 
-Laad ook het omgevings variabelebestand.
+Laad ook de omgevingsvariabele file.
 
 ```javascript
 // Load the .env file if it exists
 require("dotenv").config();
 ```
 
-### <a name="install-the-client-library"></a>De client bibliotheek installeren
+### <a name="install-the-client-library"></a>De clientbibliotheek installeren
 
-Installeer de `ai-form-recognizer` en `dotenv` NPM-pakketten:
+Installeer als volgt de NPM-pakketten `ai-form-recognizer` en `dotenv`:
 
 ```console
 npm install @azure/ai-form-recognizer dotenv
 ```
 
-Het bestand van uw app `package.json` wordt bijgewerkt met de afhankelijkheden.
+Het `package.json`-bestand van uw app wordt bijgewerkt met de afhankelijkheden.
 
 
 <!-- 
@@ -79,18 +79,18 @@ Het bestand van uw app `package.json` wordt bijgewerkt met de afhankelijkheden.
 
 ## <a name="code-examples"></a>Codevoorbeelden
 
-Deze code fragmenten laten zien hoe u de volgende taken kunt uitvoeren met de formulier Recognizer-client bibliotheek voor Java script:
+Deze codefragmenten laten zien hoe u de volgende taken kunt uitvoeren met de clientbibliotheek van Form Recognizer voor JavaScript:
 
 * [De client verifiëren](#authenticate-the-client)
-* [Formulier inhoud herkennen](#recognize-form-content)
-* [Bevestigingen herkennen](#recognize-receipts)
+* [Formulierinhoud herkennen](#recognize-form-content)
+* [Ontvangstbewijzen herkennen](#recognize-receipts)
 * [Aangepast model trainen](#train-a-custom-model)
 * [Formulieren analyseren met een aangepast model](#analyze-forms-with-a-custom-model)
 * [Uw aangepaste modellen beheren](#manage-your-custom-models)
 
 ## <a name="authenticate-the-client"></a>De client verifiëren
 
-Maak in de `main` functie variabelen voor het Azure-eind punt en de sleutel van uw resource. Als u de omgevings variabele hebt gemaakt nadat u de toepassing hebt gestart, moet u de editor, IDE of shell sluiten en opnieuw openen om toegang te krijgen tot de variabele.
+Maak in de functie `main` variabelen voor het Azure-eindpunt en de Azure-sleutel van uw resource. Als u de omgevingsvariabele hebt gemaakt nadat u de toepassing hebt gestart, moet u de editor, IDE of shell sluiten en opnieuw openen om toegang te krijgen tot de variabele.
 
 ```javascript
 // You will need to set these environment variables or edit the following values
@@ -98,7 +98,7 @@ const endpoint = process.env["FORM_RECOGNIZER_ENDPOINT"] || "<cognitive services
 const apiKey = process.env["FORM_RECOGNIZER_KEY"] || "<api key>";
 ```
 
-Verifieer vervolgens een client object met de abonnements variabelen die u hebt gedefinieerd. U gebruikt een **AzureKeyCredential** -object, zodat u, indien nodig, de API-sleutel kunt bijwerken zonder nieuwe client objecten te maken. U maakt ook een trainings-client object.
+Verifieer vervolgens een clientobject met de abonnementsvariabelen die u hebt gedefinieerd. U gebruikt een **AzureKeyCredential**-object, zodat u indien nodig de API-sleutel kunt bijwerken zonder nieuwe clientobjecten te maken. U maakt ook een clientobject voor training.
 
 ```javascript
 const trainingClient = new FormTrainingClient(endpoint, new AzureKeyCredential(apiKey));
@@ -106,17 +106,17 @@ const trainingClient = new FormTrainingClient(endpoint, new AzureKeyCredential(a
 const client = new FormRecognizerClient(endpoint, new AzureKeyCredential(apiKey));
 ```
 
-### <a name="call-client-specific-functions"></a>Client-specifieke functies aanroepen
+### <a name="call-client-specific-functions"></a>Clientspecifieke functies aanroepen
 
-In het volgende code blok in `main` worden de client-objecten gebruikt voor het aanroepen van functies voor elk van de belangrijkste taken in de formulier Recognizer SDK. U definieert deze functies later op.
+In het volgende codeblok in `main` worden de clientobjecten gebruikt voor het aanroepen van functies voor elk van de hoofdtaken in de Form Recognizer-SDK. U gaat deze functies later definiëren.
 
-U moet ook verwijzingen toevoegen aan de Url's voor uw training en gegevens testen.
-* Als u de SAS-URL voor uw aangepaste model trainings gegevens wilt ophalen, opent u de Microsoft Azure Storage Explorer, klikt u met de rechter muisknop op uw container en selecteert u **gedeelde toegangs handtekening ophalen**. Zorg ervoor dat de machtigingen **lezen** en **lijst** zijn ingeschakeld en klik op **maken**. Kopieer vervolgens de waarde in de sectie **URL** . Het moet de volgende indeling hebben: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
-* Als u een URL wilt ophalen van een formulier dat u wilt testen, kunt u de bovenstaande stappen gebruiken om de SAS-URL van een afzonderlijk document in Blob Storage op te halen. U kunt ook de URL van een document naar een andere locatie halen.
-* Gebruik de bovenstaande methode om de URL van een kopie van de bevestiging te verkrijgen, of gebruik de URL van de voor beeld-installatie kopie.
+U moet ook verwijzingen naar de URL's toevoegen voor uw trainings- en testgegevens.
+* Als u de SAS-URL voor de trainingsgegevens van uw aangepaste model wilt ophalen, opent u de Microsoft Azure Storage Explorer, klikt u met de rechtermuisknop op uw container en selecteert u **Handtekening voor gedeelde toegang** ophalen. Controleer of de machtigingen **Lezen** en **Lijst** zijn ingeschakeld en klik op **Maken**. Kopieer vervolgens de waarde in de sectie **URL**. Deze moet de notatie `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` hebben.
+* Als u een URL wilt ophalen van een formulier dat u wilt testen, kunt u de bovenstaande stappen gebruiken om de SAS-URL van een afzonderlijk document in Blob Storage op te halen. U kunt ook de URL gebruiken van een document dat zich elders bevindt.
+* Gebruik bovenstaande methode ook om de URL te verkrijgen van een kopie van een ontvangstbewijs, of gebruik de meegeleverde URL van een voorbeeldkopie.
 
 > [!NOTE]
-> De code fragmenten in deze hand leiding gebruiken externe formulieren die worden gebruikt voor Url's. Als u in plaats daarvan lokale formulier documenten wilt verwerken, raadpleegt u de bijbehorende methoden in de [referentie documentatie](https://docs.microsoft.com/javascript/api/overview/azure/formrecognizer).
+> De codefragmenten in deze gids gebruiken externe formulieren die worden geopend middels URL's. Als u in plaats daarvan lokale formulierdocumenten wilt verwerken, raadpleegt u de gerelateerde methoden in de [referentiedocumentatie](https://docs.microsoft.com/javascript/api/overview/azure/formrecognizer).
 
 
 ```javascript
@@ -133,9 +133,9 @@ await AnalyzePdfForm(recognizerClient, modelId, formUrl);
 await ManageModels(trainingClient, trainingDataUrl);
 ```
 
-## <a name="recognize-form-content"></a>Formulier inhoud herkennen
+## <a name="recognize-form-content"></a>Formulierinhoud herkennen
 
-U kunt de formulier Recognizer gebruiken om tabellen, lijnen en woorden in documenten te herkennen, zonder dat u een model hoeft te trainen. Gebruik de methode **beginRecognizeContentFromUrl** om de inhoud van een bestand op een bepaalde URI te herkennen.
+U kunt Form Recognizer gebruiken om tabellen, regels en woorden in documenten te herkennen, zonder dat u een model hoeft te trainen. Als u de inhoud van een bestand op een bepaalde URI wilt herkennen, gebruikt u de methode **beginRecognizeContentFromUrl**.
 
 ```javascript
 async function GetContent( recognizerClient, invoiceUri)
@@ -145,7 +145,7 @@ async function GetContent( recognizerClient, invoiceUri)
     const response = poller.getResult();
 ```
 
-De geretourneerde waarde is een verzameling **FormPage** -objecten: één voor elke pagina in het verzonden document. Met de volgende code worden deze objecten door lopen en worden de geëxtraheerde sleutel-waardeparen en tabel gegevens afgedrukt.
+De geretourneerde waarde is een verzameling **FormPage**-objecten: één voor elke pagina in het ingediende document. Met de volgende code worden deze objecten doorlopen en worden de uitgepakte sleutel-/waardeparen en tabelgegevens afgedrukt.
 
 ```javascript
     for (const page of response.pages) {
@@ -163,11 +163,11 @@ De geretourneerde waarde is een verzameling **FormPage** -objecten: één voor e
 }
 ```
 
-## <a name="recognize-receipts"></a>Bevestigingen herkennen
+## <a name="recognize-receipts"></a>Ontvangstbewijzen herkennen
 
-In deze sectie wordt beschreven hoe u algemene velden van Amerikaanse ontvangsten kunt herkennen en extra heren met behulp van een vooraf getraind ontvangst model.
+In deze sectie wordt beschreven hoe u algemene velden in Amerikaanse ontvangstbewijzen kunt herkennen en uitpakken met behulp van een vooraf getraind ontvangstmodel.
 
-Als u ontvangst bewijzen wilt herkennen vanuit een URI, gebruikt u de methode **beginRecognizeReceiptsFromUrl** . De geretourneerde waarde is een verzameling **RecognizedReceipt** -objecten: één voor elke pagina in het verzonden document. Met de volgende code wordt een ontvangst bij de opgegeven URI verwerkt en worden de belangrijkste velden en waarden naar de console afgedrukt.
+Om ontvangstbewijzen te herkennen vanuit een URI, gebruikt u de methode **beginRecognizeReceiptsFromUrl**. De geretourneerde waarde is een verzameling **RecognizedReceipt**-objecten: één voor elke pagina in het ingediende document. Met de volgende code wordt een ontvangstbewijs op de opgegeven URI verwerkt en worden de belangrijkste velden en waarden op de console weergegeven.
 
 ```javascript
 async function AnalyzeReceipt( client, receiptUri)
@@ -184,7 +184,7 @@ async function AnalyzeReceipt( client, receiptUri)
 
     const receipt = receipts[0];
     console.log("First receipt:");
-    // For supported fields recognized by the service, please refer to https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeReceiptResult.
+    // For supported fields recognized by the service, please refer to https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/GetAnalyzeReceiptResult.
     const receiptTypeField = receipt.recognizedForm.fields["ReceiptType"];
     if (receiptTypeField.valueType === "string") {
         console.log(`  Receipt Type: '${receiptTypeField.value || "<missing>"}', with confidence of ${receiptTypeField.confidence}`);
@@ -199,7 +199,7 @@ async function AnalyzeReceipt( client, receiptUri)
     }
 ```
 
-In het volgende code blok wordt de afzonderlijke items herhaald die op de ontvangst zijn gedetecteerd en worden de details ervan naar de console afgedrukt.
+In het volgende codeblok worden de afzonderlijke items die op het ontvangstbewijs zijn gedetecteerd doorlopen en worden de details ervan naar de console afgedrukt.
 
 ```javascript
     const itemsField = receipt.recognizedForm.fields["Items"];
@@ -219,16 +219,16 @@ In het volgende code blok wordt de afzonderlijke items herhaald die op de ontvan
 
 ## <a name="train-a-custom-model"></a>Aangepast model trainen
 
-In deze sectie ziet u hoe u een model kunt trainen met uw eigen gegevens. Met een getraind model kunnen gestructureerde gegevens worden uitgevoerd die de sleutel/waarde-relaties in het oorspronkelijke formulier document bevatten. Nadat u het model hebt getraind, kunt u het testen en opnieuw trainen en uiteindelijk gebruiken om gegevens te extra heren uit meer formulieren, afhankelijk van uw behoeften.
+In deze sectie ziet u hoe u een model kunt trainen met uw eigen gegevens. Met een getraind model kunnen gestructureerde gegevens worden uitgevoerd waarin ook de sleutel-/waarderelaties uit het oorspronkelijke formulierdocument zijn opgenomen. Wanneer u het model hebt getraind, kunt u het testen en opnieuw trainen, en tot slot gebruiken om op betrouwbare wijze gegevens uit meer formulieren uit te pakken, al naargelang nodig is.
 
 > [!NOTE]
-> U kunt ook modellen trainen met een Graphical User Interface zoals het [hulp programma voor het labelen](../../quickstarts/label-tool.md)van het voor beeld van de formulier herkenning.
+> U kunt ook modellen trainen met een grafische gebruikersinterface, zoals het [voorbeeldhulpprogramma voor labelen van Form Recognizer](../../quickstarts/label-tool.md).
 
 ### <a name="train-a-model-without-labels"></a>Een model trainen zonder labels
 
-Train aangepaste modellen om alle velden en waarden te herkennen die in uw aangepaste formulieren worden gevonden zonder hand matig labels te krijgen voor de trainings documenten.
+Train aangepaste modellen om alle velden en waarden te herkennen die in uw aangepaste formulieren worden gevonden zonder de trainingsdocumenten handmatig te labelen.
 
-Met de volgende functie wordt een model voor een bepaalde set documenten treinen en wordt de status van het model in de console afgedrukt. 
+Met de volgende functie wordt een model voor een bepaalde set documenten getraind en wordt de status van het model in de console weergegeven. 
 
 ```javascript
 async function TrainModel(trainingClient, trainingDataUrl)
@@ -251,7 +251,7 @@ async function TrainModel(trainingClient, trainingDataUrl)
     console.log(`Last modified: ${response.completedOn}`);
 ```
 
-Het geretourneerde **CustomFormModel** -object bevat informatie over de typen die het model kan herkennen en de velden die het kan ophalen van elk formulier type. In het volgende code blok wordt deze informatie in de-console afgedrukt.
+Het geretourneerde **CustomFormModel**-object bevat informatie over de formuliertypen die het model kan herkennen en de velden die het uit elk formuliertype kan uitpakken. In het volgende codeblok wordt deze informatie op de console weergegeven.
 
 ```javascript
     if (response.submodels) {
@@ -266,7 +266,7 @@ Het geretourneerde **CustomFormModel** -object bevat informatie over de typen di
     }
 ```
 
-Ten slotte retourneert deze methode de unieke ID van het model.
+Ten slotte retourneert deze methode de unieke id van het model.
 
 ```csharp
     return response.modelId;
@@ -275,7 +275,7 @@ Ten slotte retourneert deze methode de unieke ID van het model.
 
 ### <a name="train-a-model-with-labels"></a>Een model trainen met labels
 
-U kunt ook aangepaste modellen trainen door de trainings documenten hand matig te labelen. Training met labels leidt tot betere prestaties in sommige scenario's. Als u met labels wilt trainen, moet u in uw Blob Storage-container, naast de trainings documenten, speciale label-informatie bestanden (* \<filename\>.pdf.labels.jsaan*) hebben. Het [hulp programma voor het labelen](../../quickstarts/label-tool.md) van het voor beeld van een formulier herkenning biedt een gebruikers interface die u kan helpen bij het maken van deze label bestanden. Zodra u deze hebt, kunt u de **beginTraining** -methode aanroepen met de para meter *uselabels* ingesteld op `true` .
+U kunt aangepaste modellen ook trainen door de trainingsdocumenten handmatig te labelen. Training met labels leidt in sommige scenario's tot betere prestaties. Als u met labels wilt trainen, moet uw Blob Storage-container naast de trainingsdocumenten ook speciale labelinformatiebestanden ( *\<filename\>.pdf.labels.json*) bevatten. Het [hulpprogramma voor labelen van Form Recognizer](../../quickstarts/label-tool.md) beschikt over een gebruikersinterface die u kan helpen bij het maken van deze labelbestanden. Zodra u deze hebt, kunt u de methode **beginTraining** aanroepen met de parameter *uselabels* ingesteld op `true`.
 
 ```javascript
 async function TrainModelWithLabelsAsync(
@@ -293,12 +293,12 @@ async function TrainModelWithLabelsAsync(
 
 ## <a name="analyze-forms-with-a-custom-model"></a>Formulieren analyseren met een aangepast model
 
-In deze sectie wordt gedemonstreerd hoe u sleutel/waarde-informatie en andere inhoud uit uw aangepaste formulier typen kunt extra heren met behulp van modellen die u hebt getraind met uw eigen formulieren.
+In deze sectie ziet u hoe u sleutel-/waarde-informatie en andere inhoud uit uw aangepaste formuliertypen kunt uitpakken met behulp van modellen die u hebt getraind met uw eigen formulieren.
 
 > [!IMPORTANT]
-> Als u dit scenario wilt implementeren, moet u al een model hebben getraind, zodat u de ID ervan kunt door geven naar de onderstaande methode. Zie de sectie [een model trainen](#train-a-model-without-labels) .
+> Als u dit scenario wilt implementeren, moet u al een model hebben getraind, zodat u de id ervan kunt doorgeven aan onderstaande methode. Zie de sectie [Een model trainen](#train-a-model-without-labels).
 
-U gebruikt de methode **beginRecognizeCustomFormsFromUrl** . De geretourneerde waarde is een verzameling **RecognizedForm** -objecten: één voor elke pagina in het verzonden document.
+U gebruikt de methode **beginRecognizeCustomFormsFromUrl**. De geretourneerde waarde is een verzameling **RecognizedForm**-objecten: één voor elke pagina in het ingediende document.
 
 ```javascript
 // Analyze PDF form document at an accessible URL
@@ -313,7 +313,7 @@ async function AnalyzePdfForm(client, modelId, formUrl)
     const response = poller.getResult();
 ```
 
-Met de volgende code worden de resultaten van de analyse naar de console afgedrukt. Alle herkende velden en bijbehorende waarden worden afgedrukt, samen met een betrouwbaarheids Score.
+Met de volgende code worden de resultaten van de analyse op de console weergegeven. Alle herkende velden en bijbehorende waarden worden afgedrukt, samen met een betrouwbaarheidsscore.
 
 ```javascript
     console.log("Fields:");
@@ -329,16 +329,16 @@ Met de volgende code worden de resultaten van de analyse naar de console afgedru
 
 ## <a name="manage-your-custom-models"></a>Uw aangepaste modellen beheren
 
-In deze sectie wordt beschreven hoe u de aangepaste modellen beheert die zijn opgeslagen in uw account. Met de volgende code worden alle model beheer taken in één functie als voor beeld gebruikt. Begin met het kopiëren van de onderstaande functie handtekening:
+In deze sectie wordt beschreven hoe u de aangepaste modellen beheert die zijn opgeslagen in uw account. Als voorbeeld worden met de volgende code alle modelbeheertaken in één functie uitgevoerd. Begin met het kopiëren van de onderstaande functiehandtekening:
 
 ```javascript
 async function ManageModels(trainingClient, trainingFileUrl)
 {
 ```
 
-### <a name="check-the-number-of-models-in-the-formrecognizer-resource-account"></a>Het aantal modellen in het FormRecognizer-resource account controleren
+### <a name="check-the-number-of-models-in-the-formrecognizer-resource-account"></a>Het aantal modellen in het FormRecognizer-resourceaccount controleren
 
-In het volgende code blok wordt het aantal modellen gecontroleerd dat u hebt opgeslagen in uw formulier Recognizer-account en vergelijkt deze met de limiet voor het account.
+In het volgende codeblok wordt het aantal modellen gecontroleerd dat u in uw Form Recognizer-account hebt opgeslagen en wordt dit aantal vergeleken met de limiet voor het account.
 
 ```csharp
     // First, we see how many custom models we have, and what our limit is
@@ -348,9 +348,9 @@ In het volgende code blok wordt het aantal modellen gecontroleerd dat u hebt opg
     );
 ```
 
-### <a name="list-the-models-currently-stored-in-the-resource-account"></a>De modellen weer geven die momenteel zijn opgeslagen in het resource-account
+### <a name="list-the-models-currently-stored-in-the-resource-account"></a>De modellen weergeven die momenteel zijn opgeslagen in het resource-account
 
-In het volgende code blok worden de huidige modellen in uw account vermeld en worden de details ervan in de-console weer gegeven. Er wordt ook een verwijzing naar het eerste model opgeslagen.
+In het volgende codeblok worden de huidige modellen in uw account vermeld en worden de details ervan in de console weergegeven. Er wordt ook een verwijzing naar het eerste model opgeslagen.
 
 ```javascript
     // Next, we get a paged async iterator of all of our custom models
@@ -372,9 +372,9 @@ In het volgende code blok worden de huidige modellen in uw account vermeld en wo
     }
 ```
 
-### <a name="get-a-specific-model-using-the-models-id"></a>Een specifiek model ophalen met de ID van het model
+### <a name="get-a-specific-model-using-the-models-id"></a>Een specifiek model ophalen met de id van het model
 
-Het volgende code blok maakt gebruik van de model-ID die is opgeslagen in de vorige sectie en gebruikt deze om details over het model op te halen.
+Het volgende codeblok maakt gebruik van de model-id die is opgeslagen in de vorige sectie en gebruikt deze om details over het model op te halen.
 
 ```csharp
     // Now we'll get the first custom model in the paged list
@@ -388,9 +388,9 @@ Het volgende code blok maakt gebruik van de model-ID die is opgeslagen in de vor
     console.log("]");
 ```
 
-### <a name="delete-a-model-from-the-resource-account"></a>Een model uit het resource-account verwijderen
+### <a name="delete-a-model-from-the-resource-account"></a>Een model uit het resourceaccount verwijderen
 
-U kunt ook een model uit uw account verwijderen door te verwijzen naar de ID. Met deze code wordt het model dat in de vorige sectie wordt gebruikt, verwijderd.
+U kunt een model ook uit uw account verwijderen door naar de id te verwijzen. Met deze code wordt het model verwijderd dat in de vorige sectie is gebruikt.
 
 ```javascript
     await client.deleteModel(firstModel.modelId);
@@ -407,7 +407,7 @@ U kunt ook een model uit uw account verwijderen door te verwijzen naar de ID. Me
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Voer de toepassing uit met de `node` opdracht in uw Quick Start-bestand.
+Voer de toepassing uit met de opdracht `node` in uw quickstart-bestand.
 
 ```console
 node index.js
@@ -415,7 +415,7 @@ node index.js
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resource groep verwijderen. Als u de resource groep verwijdert, worden ook alle bijbehorende resources verwijderd.
+Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resourcegroep verwijderen. Als u de resourcegroep verwijdert, worden ook alle bijbehorende resources verwijderd.
 
 * [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure-CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
@@ -423,21 +423,21 @@ Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de
 ## <a name="troubleshooting"></a>Problemen oplossen
 
 ### <a name="enable-logs"></a>Logboeken inschakelen
-U kunt de volgende omgevings variabele instellen om logboeken voor fout opsporing weer te geven wanneer u deze bibliotheek gebruikt.
+U kunt de volgende omgevingsvariabele instellen om logboeken voor foutopsporing weer te geven wanneer u deze bibliotheek gebruikt.
 
 ```
 export DEBUG=azure*
 ```
 
-Zie het [ @azure/logger pakket docs](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/core/logger)voor meer gedetailleerde instructies voor het inschakelen van Logboeken.
+Raadpleeg de [@azure/logger pakket-documenten](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/core/logger) voor gedetailleerdere instructies over het inschakelen van logboeken.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u de python-client bibliotheek voor de formulier herkenning gebruikt om modellen te trainen en formulieren op verschillende manieren te analyseren. Vervolgens leert u tips voor het maken van een betere set met trainings gegevens en het produceren van nauw keurige modellen.
+In deze quickstart hebt u de clientbibliotheek van Form Recognizer voor Python gebruikt om modellen te trainen en formulieren op verschillende manieren te analyseren. Vervolgens leert u tips voor het maken van een betere set met trainingsgegevens en het produceren van nauwkeurigere modellen.
 
 > [!div class="nextstepaction"]
 > [Een set met trainingsgegevens samenstellen](../../build-training-data-set.md)
 
 * [Wat is Form Recognizer?](../../overview.md)
-* De voorbeeld code uit deze hand leiding is te vinden op [github](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples).
+* De voorbeeldcode uit deze gids (en meer) is te vinden op [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples).

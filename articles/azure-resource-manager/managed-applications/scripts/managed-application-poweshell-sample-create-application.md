@@ -1,17 +1,17 @@
 ---
-title: Voor beeld van Azure PowerShell-script-een beheerde toepassing implementeren
-description: Biedt Azure PowerShell voorbeeld script voor het implementeren van een definitie van een beheerde toepassing op het abonnement.
+title: 'Voorbeeld van Azure PowerShell-script: een beheerde toepassing implementeren'
+description: Geeft een voorbeeld van een Azure PowerShell-script voor het implementeren van een definitie van een beheerde toepassing op het abonnement.
 author: tfitzmac
 ms.devlang: powershell
 ms.topic: sample
 ms.date: 10/27/2017
 ms.author: tomfitz
-ms.openlocfilehash: e076128a5be453028635b1657bf3f90980863148
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: a2687e9c943df8454ff42a17f44866dcdb7f4730
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75650168"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055882"
 ---
 # <a name="deploy-a-managed-application-for-a-service-catalog-with-powershell"></a>Een beheerde toepassing implementeren voor een servicecatalogus met Azure PowerShell
 
@@ -33,10 +33,10 @@ In dit script wordt de volgende opdracht gebruikt om de beheerde toepassing te i
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [New-AzManagedApplication](https://docs.microsoft.com/powershell/module/az.resources/new-azmanagedapplication) | Hiermee maakt u een beheerde toepassing. Geef de definitie-id en de parameters op voor de sjabloon. |
+| [New-AzManagedApplication](/powershell/module/az.resources/new-azmanagedapplication) | Hiermee maakt u een beheerde toepassing. Geef de definitie-id en de parameters op voor de sjabloon. |
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [Overzicht van door Azure beheerde toepassingen](../overview.md) voor algemene informatie over beheerde toepassingen.
-* Zie [Documentatie over Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps) voor meer informatie over PowerShell.
+* Zie [Documentatie over Azure PowerShell](/powershell/azure/get-started-azureps) voor meer informatie over PowerShell.

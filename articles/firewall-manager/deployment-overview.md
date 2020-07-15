@@ -1,73 +1,71 @@
 ---
-title: Overzicht van de implementatie van Azure Firewall Manager preview
-description: Meer informatie over de implementatie stappen op hoog niveau die vereist zijn voor de preview-versie van Azure Firewall Manager
+title: Overzicht van de implementatie van Azure Firewall Manager
+description: Meer informatie over de implementatiestappen op hoog niveau die vereist zijn voor Azure Firewall Manager
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 02/18/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: c3a94cea838609f65511a21ee2f64e8782a6adea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 90f817ac3bbd475d8a84df44bc284f09fcd19ce3
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77443122"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565800"
 ---
-# <a name="azure-firewall-manager-preview-deployment-overview"></a>Overzicht van de implementatie van Azure Firewall Manager preview
+# <a name="azure-firewall-manager-deployment-overview"></a>Overzicht van de implementatie van Azure Firewall Manager
 
-[!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
-
-Er is meer dan één manier om Azure Firewall Manager-preview te implementeren, maar het volgende algemene proces wordt aanbevolen.
+U kunt Azure Firewall Manager om meerdere manieren implementeren, maar het volgende algemene proces verdient aanbeveling.
 
 ## <a name="general-deployment-process"></a>Algemeen implementatieproces
 
-### <a name="hub-virtual-networks"></a>Virtuele hub-netwerken
+### <a name="hub-virtual-networks"></a>Virtuele netwerken van hub
 
-1.  Een firewall beleid maken
+1.  Een firewallbeleid maken
 
     - Een nieuw beleid maken
-<br>*of*<br>
-    - Een basis beleid afleiden en een lokaal beleid aanpassen
-<br>*of*<br>
-    - Regels importeren uit een bestaande Azure Firewall. Zorg ervoor dat u de NAT-regels verwijdert uit beleid dat moet worden toegepast op meerdere firewalls
-1. Uw hub-en spoke-architectuur maken
-   - Een hub maken Virtual Network met behulp van Azure Firewall Manager-en peer Spaak virtuele netwerken met behulp van peering op virtueel netwerk
-<br>*of*<br>
-    - Maak een virtueel netwerk en voeg virtuele netwerk verbindingen en peer-spoke-netwerken toe met behulp van peering op virtueel netwerk
+<br>*or*<br>
+    - Een basisbeleid afleiden en een lokaal beleid aanpassen
+<br>*or*<br>
+    - Regels importeren vanuit een bestaande Azure-firewall. Verwijder de NAT-regels uit beleidsregels die moeten worden toegepast op meerdere firewalls
+1. Een hub en spoke-architectuur maken
+   - Maak een virtueel hubnetwerk met behulp van Azure Firewall Manager en verbindt er twee virtuele spoke-netwerken aan met behulp van peering van virtuele netwerken
+<br>*or*<br>
+    - Maak een virtueel netwerk en voeg er virtuele netwerkverbindingen aan toe; verbindt er virtuele spoke-netwerken aan met behulp van peering van virtuele netwerken
 
-3. Selecteer beveiligings providers en koppel het firewall beleid. Momenteel is alleen Azure Firewall een ondersteunde provider.
+3. Selecteer beveiligingsproviders en koppel een firewallbeleid. Momenteel is alleen Azure Firewall een ondersteunde provider.
 
-   - Dit doet u tijdens het maken van een hub Virtual Network
-<br>*of*<br>
-    - Een bestaand virtueel netwerk converteren naar een hub Virtual Network. Het is ook mogelijk om meerdere virtuele netwerken te converteren.
+   - Dit wordt gedaan tijdens het maken van een virtueel hubnetwerk
+<br>*or*<br>
+    - Converteer een bestaand virtueel netwerk naar een virtueel hubnetwerk. Het is ook mogelijk om meerdere virtuele netwerken te converteren.
 
-4. Configureer de gebruiker om routes te definiëren om verkeer naar uw hub Virtual Network Firewall te routeren.
+4. Configureer door gebruiker gedefinieerde routes om verkeer naar de firewall van uw virtuele hubnetwerk om te leiden.
 
 
 ### <a name="secured-virtual-hubs"></a>Beveiligde virtuele hubs
 
-1. Uw hub-en spoke-architectuur maken
+1. Een hub en spoke-architectuur maken
 
-   - Maak een beveiligde virtuele hub met behulp van Azure Firewall Manager en voeg virtuele netwerk verbindingen toe.<br>*of*<br>
-   - Maak een virtuele WAN-hub en voeg virtuele netwerk verbindingen toe.
-2. Beveiligings providers selecteren
+   - Maak een beveiligde virtuele hub met behulp van Azure Firewall Manager en voeg virtuele netwerkverbindingen toe.<br>*or*<br>
+   - Maak een virtuele WAN-hub en voeg virtuele netwerkverbindingen toe.
+2. Beveiligingsproviders selecteren
 
-   - Klaar tijdens het maken van een beveiligde virtuele hub.<br>*of*<br>
-   - Een bestaande virtuele WAN-hub converteren naar een beveiligde virtuele hub.
-3. Een firewall beleid maken en dit koppelen aan uw hub
+   - Uitgevoerd tijdens het maken van een beveiligde virtuele hub.<br>*or*<br>
+   - Converteer een bestaande virtuele WAN-hub naar een beveiligde virtuele hub.
+3. Firewallbeleid maken en dit koppelen aan uw hub
 
    - Alleen van toepassing als Azure Firewall wordt gebruikt.
-   - SECaaS-beleids regels (Security as a Service) van derden worden geconfigureerd via de beheer ervaring voor partners.
-4. Router instellingen configureren om verkeer door te sturen naar uw beveiligde hub
+   - SECaaS-beleidsregels (Security as a Service) van derden worden geconfigureerd via de beheerervaring van partners.
+4. Routerinstellingen configureren om verkeer om te leiden naar uw beveiligde hub
 
-   - Stuur eenvoudig verkeer naar uw beveiligde hub voor filteren en logboek registratie zonder door de gebruiker gedefinieerde routes (UDR) op spoke Virtual Networks met behulp van de instellings pagina route-instellingen voor beveiligde virtuele hub.
+   - Leid met behulp van de pagina voor het instellen van routes voor beveiligde virtuele hubs verkeer eenvoudig om naar uw beveiligde hub om het te filteren en in een logboek vast te leggen zonder UDR's (door de gebruiker gedefinieerde routes) in virtuele spoke-netwerken.
 
 > [!NOTE]
-> - U kunt niet meer dan één hub per virtuele WAN per regio hebben. Maar u kunt meerdere virtuele Wan's in de regio toevoegen om dit te doen.
-> - U kunt geen overlappende IP-ruimten voor hubs in een vWAN hebben.
-> - Uw hub VNet-verbindingen moeten zich in dezelfde regio bevinden als de hub.
+> - U mag niet meer dan één hub per virtuele WAN per regio hebben. Maar u kunt wel meerdere virtuele WAN's in de regio toevoegen om dit voor elkaar te krijgen.
+> - U mag geen overlappende IP-ruimten voor hubs in een vWAN hebben.
+> - De VNet-verbindingen voor uw hub moeten zich in dezelfde regio bevinden als de hub.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Zelf studie: uw Cloud netwerk beveiligen met Azure Firewall Manager Preview met behulp van de Azure Portal](secure-cloud-network.md)
+- [Zelfstudie: uw cloudnetwerk beveiligen met Azure Firewall Manager via de Azure-portal](secure-cloud-network.md)

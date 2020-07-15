@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: de client bibliotheek voor de insluitende lezer gebruiken'
+title: 'Quickstart: Gebruik de clientbibliotheek voor de Insluitende lezer'
 titleSuffix: Azure Cognitive Services
-description: De insluitende Reader-API biedt client bibliotheken waarmee u eenvoudig zoek functies in uw toepassingen kunt integreren. Gebruik deze Snelstartgids om Zoek opdrachten te verzenden en de resultaten terug te halen.
+description: De API voor de Insluitende lezer biedt clientbibliotheken aan waarmee u eenvoudig zoekmogelijkheden in uw toepassingen kunt integreren. Gebruik deze quickstart om zoekaanvragen te sturen en resultaten terug te krijgen.
 services: cognitive-services
 author: pasta
 manager: nitinme
@@ -11,14 +11,14 @@ ms.subservice: immersive-reader
 ms.topic: quickstart
 ms.date: 05/20/2020
 ms.author: pasta
-ms.openlocfilehash: 4d722b827daff8abf58446fa76c67b57c3d53e1b
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.openlocfilehash: da90c60319aff7fea239c107bb8677950ca57125
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84268726"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86038184"
 ---
-# <a name="quickstart-use-the-immersive-reader-client-library"></a>Snelstartgids: de client bibliotheek voor de insluitende lezer gebruiken
+# <a name="quickstart-use-the-immersive-reader-client-library"></a>Quickstart: Gebruik de clientbibliotheek voor de Insluitende lezer
 
 ::: zone pivot="programming-language-csharp"
 
@@ -32,8 +32,20 @@ ms.locfileid: "84268726"
 
 ::: zone-end
 
+::: zone pivot="programming-language-java-android"
+
+[!INCLUDE [Android Java quickstart](../includes/quickstarts/immersive-reader-client-library-java-android.md)]
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+[!INCLUDE [Android Kotlin quickstart](../includes/quickstarts/immersive-reader-client-library-kotlin.md)]
+
+::: zone-end
+
 ::: zone pivot="programming-language-swift"
 
-[!INCLUDE [Swift quickstart](../includes/quickstarts/immersive-reader-client-library-swift.md)]
+[!INCLUDE [iOS Swift quickstart](../includes/quickstarts/immersive-reader-client-library-swift.md)]
 
 ::: zone-end

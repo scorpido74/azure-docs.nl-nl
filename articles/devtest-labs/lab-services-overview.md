@@ -1,26 +1,16 @@
 ---
-title: Informatie over Azure Lab Services | Microsoft Docs
-description: Lees hoe u met Lab Services gemakkelijk labs kunt maken, beheren en beveiligen met virtuele machines die kunnen worden gebruikt door ontwikkelaars, testers, docenten, studenten en anderen.
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: Azure Lab-Services versus Azure DevTest Labs
+description: Vergelijk Azure DevTest Labs en Azure Lab Services.
 ms.topic: overview
-ms.date: 02/03/2020
-ms.author: spelluru
-ms.openlocfilehash: a1e42a415e99bfaec1c48204efdaacd178005705
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: b1cd476faf6c457033ffeace03cd2e37b51e8578
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899368"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85480079"
 ---
-# <a name="an-introduction-to-azure-lab-services"></a>Een inleiding tot Azure Lab Services
+# <a name="compare-azure-devtest-labs-and-azure-lab-services"></a>Azure DevTest Labs en Azure Lab Services vergelijken
 Azure bevat twee services waarmee u labomgevingen in de cloud kunt instellen. 
 
 - **Azure DevTest Labs**: met deze service kunt u snel een omgeving inrichten voor uw team (zoals een ontwikkelomgeving of testomgeving in de cloud). De eigenaar van een lab maakt een lab, richt virtuele machines met Windows of Linux in, installeert de benodigde software en hulpprogramma's en maakt deze beschikbaar voor gebruikers van het lab. Labgebruikers maken verbinding met virtuele machines (VM's) in het lab en gebruiken deze voor hun dagelijkse werk, kortlopende projecten. Zodra gebruikers aan de slag gaan met resources in het lab, kan een beheerder van het lab kosten en gebruik voor meerdere labs analyseren en overkoepelend beleid instellen om de kosten van uw organisatie of het team te optimaliseren.

@@ -1,6 +1,6 @@
 ---
 title: Omgevingsvariabelen
-description: omgevings variabelen instellen
+description: omgevingsvariabelen instellen
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,23 +9,23 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 8bcce81808530c124b73b3527609a08f869b99c4
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.openlocfilehash: 28362a81461b63440ad752071f11b3603a979995
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83997607"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86100312"
 ---
-Met uw sleutel en eind punt van de resource die u hebt gemaakt, maakt u twee omgevings variabelen voor verificatie:
+Maak met uw sleutel en eindpunt van de resource die u hebt gemaakt, twee omgevingsvariabelen voor verificatie:
 
-* `FORM_RECOGNIZER_KEY`-De bron sleutel voor het verifiëren van uw aanvragen.
-* `FORM_RECOGNIZER_ENDPOINT`-Het resource-eind punt voor het verzenden van API-aanvragen. Dit ziet er als volgt uit: 
-  * `https://<your-custom-subdomain>.api.cognitive.microsoft.com` 
+* `FORM_RECOGNIZER_KEY`: de resourcesleutel voor het verifiëren van uw aanvragen.
+* `FORM_RECOGNIZER_ENDPOINT`: het resource-eindpunt voor het verzenden van API-aanvragen. Dit ziet er als volgt uit: 
+  * `https://<your-custom-subdomain>.cognitiveservices.azure.com`
 
 >[!NOTE]
-> De eind punten voor niet-proef resources die zijn gemaakt na 1 juli 2019, gebruiken de aangepaste indeling voor subdomeinen die hieronder wordt weer gegeven. Zie [aangepaste subdomein namen voor Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains)voor meer informatie en een volledige lijst met regionale eind punten. 
+> De eindpunten voor niet-proefversie-resources die zijn gemaakt na 1 juli 2019, gebruiken de aangepaste indeling voor subdomeinen die hieronder wordt weergegeven. Zie [Aangepaste subdomeinnamen voor Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains) voor meer informatie en een volledige lijst met regionale eindpunten. 
 
-Gebruik de volgende instructies om omgevings variabelen in te stellen op uw besturings systeem.
+Gebruik de volgende instructies om omgevingsvariabelen in te stellen op uw besturingssysteem.
 
 #### <a name="windows"></a>[Windows](#tab/windows)
 
@@ -34,7 +34,7 @@ setx FORM_RECOGNIZER_KEY <replace-with-your-form-recognizer-key>
 setx FORM_RECOGNIZER_ENDPOINT <replace-with-your-form-recognizer-endpoint>
 ```
 
-Nadat u de omgevings variabelen hebt toegevoegd, sluit u het console venster en opent u het opnieuw.
+Nadat u de omgevingsvariabelen hebt toegevoegd, sluit u het consolevenster en opent u het opnieuw.
 
 #### <a name="linux"></a>[Linux](#tab/linux)
 
@@ -45,14 +45,14 @@ export FORM_RECOGNIZER_ENDPOINT=<replace-with-your-product-name-endpoint>
 
 Nadat u de omgevingsvariabele toevoegt, voert u `source ~/.bashrc` uit vanuit het consolevenster om de wijzigingen van kracht te laten worden.
 
-#### <a name="macos"></a>[macOS](#tab/unix)
+#### <a name="macos"></a>[MacOS](#tab/unix)
 
-Bewerk uw `.bash_profile` en voeg de omgevings variabele toe:
+Bewerk uw `.bash_profile` en voeg de omgevingsvariabele toe:
 
 ```bash
 export FORM_RECOGNIZER_KEY=<replace-with-your-product-name-key>
 export FORM_RECOGNIZER_ENDPOINT=<replace-with-your-product-name-endpoint>
 ```
 
-Nadat u de omgevings variabelen hebt toegevoegd, voert u `source .bash_profile` uit vanuit het console venster om de wijzigingen van kracht te laten worden.
+Nadat u de omgevingsvariabelen hebt toegevoegd, voert u `source .bash_profile` uit vanuit het consolevenster om de wijzigingen van kracht te laten worden.
 ***

@@ -3,16 +3,16 @@ title: Aan de slag met de Azure Enterprise-portal
 description: In dit artikel wordt uitgelegd hoe klanten van de Azure Enterprise Agreement (Azure EA) de Azure Enterprise-portal kunnen gebruiken.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/29/2020
+ms.date: 07/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 6b31f3cd8ca6baa2d20d0281de51ed83424eca17
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 2d4fbf90afa93f3dbde12a3bc5ce02f9a60b6c5d
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85560356"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044954"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Aan de slag met de Azure Enterprise-portal
 
@@ -372,7 +372,7 @@ Als uw Enterprise Agreement geen ondersteuningsabonnement heeft en u een bestaan
 
 ## <a name="view-usage-summary-and-download-reports"></a>Gebruiksoverzicht weergeven en rapporten downloaden
 
-Ondernemingsbeheerders kunnen een overzicht van hun gebruiksgegevens, gebruikte financiële toezegging en de kosten voor aanvullend gebruik bekijken in de Azure Enterprise-portal. De kosten worden weergegeven op overzichtsniveau voor alle accounts en abonnementen.
+Ondernemingsbeheerders kunnen een overzicht van hun gebruiksgegevens, gebruikte Azure-vooruitbetaling en de kosten voor aanvullend gebruik bekijken in de Azure Enterprise-portal. De kosten worden weergegeven op overzichtsniveau voor alle accounts en abonnementen.
 
 Als u het gedetailleerde gebruik voor specifieke accounts wilt bekijken, downloadt u het gebruiksgegevensrapport:
 
@@ -390,7 +390,7 @@ U kunt als volgt rapporten en grafieken met het gebruiksoverzicht weergeven:
 
 1. Meld u aan bij de Azure Enterprise-portal.
 
-1. Selecteer een toezeggingstermijn.
+1. Selecteer een vooruitbetalingsperiode.
 
    Als u de periode voor **Gebruiksoverzicht** wilt wijzigen, schakelt u rechtsboven van **M** (Maandelijks) naar **A** (Aangepast). Geef vervolgens de aangepaste begin- en einddatums op.
 
@@ -455,7 +455,7 @@ Inactieve inschrijvingen worden niet weergegeven in de Azure Enterprise-portal. 
 - **Account**: Een organisatie-eenheid in de Azure Enterprise-portal. Accounts worden gebruikt om abonnementen te beheren en rapporten te maken.
 - **Accounteigenaar**: De persoon die abonnementen en servicebeheerders in Azure beheert. Ze kunnen gebruiksgegevens van dit account en de bijbehorende abonnementen bekijken.
 - **Aanpassingsabonnement**: Een abonnement voor één jaar of een uniform abonnement onder de aangepaste inschrijving.
-- **Toezegging**: Toezegging van een jaarlijks bedrag voor Azure-services, tegen een gereduceerd toezeggingstarief voor het gebruik ten opzichte van deze vooruitbetaling.
+- **Vooruitbetaling**: Vooruitbetaling van een jaarlijks bedrag voor Azure-services, tegen een gereduceerd vooruitbetalingstarief voor het gebruik ten opzichte van deze vooruitbetaling.
 - **Afdelingsbeheerder**: De persoon die afdelingen beheert, nieuwe accounts en accounteigenaren maakt, gebruiksgegevens voor de beheerde afdelingen bekijkt en kosten kan bekijken indien deze machtiging is verleend.
 - **Inschrijvingsnummer**: Een unieke id die door Microsoft wordt verleend om de specifieke inschrijving te identificeren die aan een Enterprise Agreement is gekoppeld.
 - **Zakelijke beheerder**: De persoon die afdelingen, afdelingseigenaren, accounts en accounteigenaren in Azure beheert. Ze beschikken over de mogelijkheid om zakelijk beheerders te beheren en gebruiksgegevens, gefactureerde hoeveelheden en niet-gefactureerde kosten te bekijken voor alle accounts en abonnementen die aan de Enterprise-inschrijving zijn gekoppeld.
@@ -478,7 +478,7 @@ Inactieve inschrijvingen worden niet weergegeven in de Azure Enterprise-portal. 
 
    Voordat de einddatum van de Enterprise Agreement is bereikt voor de Azure EA-inschrijving, moet de inschrijvingsbeheerder een van de volgende acties ondernemen:
 
-  - De inschrijving vernieuwen door een extra financiële toezegging toe te voegen.
+  - De inschrijving vernieuwen door een extra Azure-vooruitbetaling toe te voegen.
   - Alles overdragen naar een nieuwe inschrijving.
   - Migreren naar het Microsoft Online Subscription Program (MOSP).
   - Het uitschakelen van alle services die aan de inschrijving zijn gekoppeld, bevestigen.

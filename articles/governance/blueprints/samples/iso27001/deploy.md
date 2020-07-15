@@ -1,123 +1,123 @@
 ---
-title: ISO 27001 blauw druk-voor beeld implementeren
-description: Implementeer stappen voor het voor beeld van het zelfstandige ISO 27001-blauw druk, inclusief blauw drukken-artefact parameter Details.
+title: ISO 27001-blauwdrukvoorbeeld implementeren
+description: Implementeer stappen voor het zelfstandige ISO 27001-blauwdrukvoorbeeld, inclusief de parametergegevens voor blauwdrukartefacten.
 ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: f5920541d49c454bd6648318c04ed607eada1dfb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 9eaf559f0c1e6c99d3a2469d63eddea1c1ae9867
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75922507"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044648"
 ---
-# <a name="deploy-the-iso-27001-blueprint-sample"></a>Het ISO 27001-blauw druk-voor beeld implementeren
+# <a name="deploy-the-iso-27001-blueprint-sample"></a>Het ISO 27001-blauwdrukvoorbeeld implementeren
 
-De volgende stappen moeten worden uitgevoerd voor het implementeren van het Azure blauw drukken ISO 27001 blauw druk-voor beeld:
+Als u het ISO 27001-blauwdrukvoorbeeld van Azure Blueprints wilt implementeren, moet u de volgende stappen uitvoeren:
 
 > [!div class="checklist"]
-> - Een nieuwe blauw druk maken op basis van het voor beeld
-> - Uw kopie van het voor beeld markeren als **gepubliceerd**
-> - Uw kopie van de blauw druk toewijzen aan een bestaand abonnement
+> - Een nieuwe blauwdruk maken op basis van het voorbeeld
+> - Uw kopie van het voorbeeld markeren als **Gepubliceerd**
+> - Uw kopie van de blauwdruk toewijzen aan een bestaand abonnement
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free) aan voordat u begint.
 
-## <a name="create-blueprint-from-sample"></a>Blauw druk maken op basis van voor beeld
+## <a name="create-blueprint-from-sample"></a>Een blauwdruk maken op basis van een voorbeeld
 
-Implementeer eerst het voor beeld van de blauw druk door een nieuwe blauw druk in uw omgeving te maken met behulp van het voor beeld als een starter.
-
-1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
-
-1. Op de pagina **aan** de slag aan de linkerkant selecteert u de knop **maken** onder _een blauw druk maken_.
-
-1. Zoek het voor beeld van **ISO 27001** -blauw druk onder _andere voor beelden_ en selecteer **dit voor beeld gebruiken**.
-
-1. Voer de _basis beginselen_ van het voor beeld van de blauw druk in:
-
-   - **Blauw druk-naam**: Geef een naam op voor uw exemplaar van het ISO 27001-blauw druk-voor beeld.
-   - **Locatie van definitie**: gebruik het weglatings teken en selecteer de beheer groep om uw kopie van het voor beeld op te slaan.
-
-1. Selecteer het tabblad _artefacten_ boven aan de pagina of **volgende: artefacten** aan de onderkant van de pagina.
-
-1. Bekijk de lijst met artefacten die deel uitmaken van het voor beeld van de blauw druk. Veel van de artefacten hebben para meters die later worden gedefinieerd. Selecteer **concept opslaan** wanneer u klaar bent met het bekijken van het voor beeld van de blauw druk.
-
-## <a name="publish-the-sample-copy"></a>De voorbeeld kopie publiceren
-
-Uw kopie van het voor beeld van de blauw druk is nu in uw omgeving gemaakt. Deze wordt gemaakt in de **concept** modus en moet worden **gepubliceerd** voordat deze kan worden toegewezen en geïmplementeerd. De kopie van het voor beeld van de blauw druk kan worden aangepast aan uw omgeving en behoeften, maar deze wijziging kan worden verplaatst van de ISO 27001-standaard.
+Implementeer eerst het blauwdrukvoorbeeld door een nieuwe blauwdruk in uw omgeving te maken op basis van het voorbeeld.
 
 1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
 
-1. Selecteer de pagina met **definities van blauw** drukken aan de linkerkant. Gebruik de filters om uw kopie van het voor beeld van de blauw druk te vinden en selecteer deze.
+1. Op de pagina **Aan de slag** aan de linkerkant selecteert u de knop **Maken** onder _Een blauwdruk maken_.
 
-1. Selecteer **blauw druk** aan de bovenkant van de pagina publiceren. Geef op de pagina Nieuw aan de rechter kant een **versie** op voor uw kopie van het voor beeld van de blauw druk. Deze eigenschap is handig als u later een wijziging aanbrengt. Geef **wijzigings notities** op zoals ' eerste versie gepubliceerd vanuit het ISO 27001-blauw druk-voor beeld. ' Selecteer vervolgens **publiceren** onder aan de pagina.
+1. Zoek het blauwdrukvoorbeeld **ISO 27001** onder _Andere voorbeelden_ en selecteer **Dit voorbeeld gebruiken**.
 
-## <a name="assign-the-sample-copy"></a>De voorbeeld kopie toewijzen
+1. Voer de _Basisinstellingen_ van het blauwdrukvoorbeeld in:
 
-Zodra de kopie van het voor beeld van de blauw druk is **gepubliceerd**, kan deze worden toegewezen aan een abonnement in de beheer groep waarop het is opgeslagen. In deze stap worden para meters opgegeven om elke implementatie van de kopie van het voor beeld van de blauw druk te maken.
+   - **Naam van blauwdruk**: Geef een naam op voor uw kopie van het ISO 27001-blauwdrukvoorbeeld.
+   - **Definitielocatie**: Gebruik het weglatingsteken en selecteer de beheergroep waarin u uw kopie van het voorbeeld wilt opslaan.
+
+1. Selecteer het tabblad _Artefacten_ boven aan de pagina of kies **Volgende: Artefacten** onder aan de pagina.
+
+1. Controleer de lijst met artefacten die samen het blauwdrukvoorbeeld vormen. Veel van de artefacten bevatten parameters die we later zullen definiëren. Selecteer **Concept opslaan** wanneer u klaar bent met het controleren van het blauwdrukvoorbeeld.
+
+## <a name="publish-the-sample-copy"></a>De voorbeeldkopie publiceren
+
+Uw kopie van het blauwdrukvoorbeeld is nu gemaakt in uw omgeving. De kopie is gemaakt in de **Concept**-modus en moet worden **Gepubliceerd** voordat deze kan worden toegewezen en geïmplementeerd. De kopie van het blauwdrukvoorbeeld kan worden aangepast aan uw omgeving en behoeften, maar door die aanpassing is het mogelijk dat de kopie niet meer is voldoet aan de ISO 27001-standaard.
 
 1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
 
-1. Selecteer de pagina met **definities van blauw** drukken aan de linkerkant. Gebruik de filters om uw kopie van het voor beeld van de blauw druk te vinden en selecteer deze.
+1. Selecteer de pagina **Blauwdrukdefinities** aan de linkerkant. Gebruik de filters om uw kopie van het blauwdrukvoorbeeld te zoeken en selecteer vervolgens uw kopie.
 
-1. Selecteer de optie **blauw** drukken boven aan de pagina met de definitie van de blauw druk.
+1. Selecteer **Blauwdruk publiceren** boven aan de pagina. Op de nieuwe pagina aan de rechterkant geeft u een **Versie** voor uw kopie van het blauwdrukvoorbeeld op. Deze eigenschap is handig als u later een aanpassing wilt maken. Geef **Notities over wijzigingen** op, zoals 'Eerste gepubliceerde versie op basis van het ISO 27001-blauwdrukvoorbeeld'. Selecteer vervolgens **Publiceren** onder aan de pagina.
 
-1. Geef de parameter waarden voor de toewijzing van de blauw druk op:
+## <a name="assign-the-sample-copy"></a>De voorbeeldkopie toewijzen
+
+Zodra de kopie van het blauwdrukvoorbeeld is **Gepubliceerd**, kan het worden toegewezen aan een abonnement binnen de beheergroep waarin de kopie is opgeslagen. Dit is de stap waarin parameters worden opgegeven om elke implementatie van de kopie van het blauwdrukvoorbeeld uniek te maken.
+
+1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
+
+1. Selecteer de pagina **Blauwdrukdefinities** aan de linkerkant. Gebruik de filters om uw kopie van het blauwdrukvoorbeeld te zoeken en selecteer vervolgens uw kopie.
+
+1. Selecteer **Blauwdruk toewijzen** boven aan de pagina Blauwdrukdefinitie.
+
+1. Geef de parameterwaarden op voor de blauwdruktoewijzing:
 
    - Basisbeginselen
 
-     - **Abonnementen**: Selecteer een of meer abonnementen in de beheer groep waarop u uw kopie van het voor beeld van de blauw druk hebt opgeslagen. Als u meer dan één abonnement selecteert, wordt er een toewijzing gemaakt met behulp van de opgegeven para meters.
-     - **Toewijzings naam**: de naam wordt vooraf ingevuld op basis van de naam van de blauw druk.
-       Wijzig indien nodig of sluit af.
-     - **Locatie**: Selecteer een regio voor de beheerde identiteit die u wilt maken in. Azure Blueprint gebruikt deze beheerde identiteit om alle artefacten in de toegewezen blauwdruk te implementeren. Zie [beheerde identiteiten voor Azure-resources](../../../../active-directory/managed-identities-azure-resources/overview.md)voor meer informatie.
-     - **Definitie van blauw druk-versie**: Kies een **gepubliceerde** versie van uw kopie van het voor beeld van de blauw druk.
+     - **Abonnementen**: Selecteer een of meer van de abonnementen in de beheergroep waarin u uw kopie van het blauwdrukvoorbeeld hebt opgeslagen. Als u meer dan één abonnement selecteert, wordt een toewijzing gemaakt voor elk abonnement waarvoor de ingevoerde parameters worden gebruikt.
+     - **Naam van toewijzing**: De naam wordt vooraf voor u ingevuld op basis van de naam van de blauwdruk.
+       Wijzig de naam als dat nodig is of gebruik de opgegeven naam.
+     - **Locatie**: Selecteer een regio waarin u de beheerde identiteit wilt maken. Azure Blueprint gebruikt deze beheerde identiteit om alle artefacten in de toegewezen blauwdruk te implementeren. Zie [Beheerde identiteiten voor Azure-resources](../../../../active-directory/managed-identities-azure-resources/overview.md) voor meer informatie.
+     - **Blauwdrukdefinitieversie**: Kies een **gepubliceerde** versie van uw kopie van het blauwdrukvoorbeeld.
 
-   - Toewijzing vergren delen
+   - Toewijzing vergrendelen
 
-     Selecteer de instelling voor het vergren delen van blauw drukken voor uw omgeving. Zie voor meer informatie [Vergrendeling van blauwdrukresources](../../concepts/resource-locking.md).
+     Selecteer de instelling voor het vergrendelen van de blauwdruk voor uw omgeving. Zie voor meer informatie [Vergrendeling van blauwdrukresources](../../concepts/resource-locking.md).
 
    - Beheerde identiteit
 
-     Zorg ervoor dat de standaard optie voor beheerde identiteit door het _systeem wordt toegewezen_ .
+     Laat de optie voor de standaard door het _systeem toegewezen_ beheerde identiteit staan.
 
    - Blauwdrukparameters
 
-     De para meters die in deze sectie zijn gedefinieerd, worden door veel van de artefacten in de definitie van de blauw druk gebruikt om consistentie te bieden.
+     De parameters die in deze sectie worden gedefinieerd, worden door veel van de artefacten in de definitie van de blauwdruk gebruikt om consistentie te bieden.
 
-     - **Toegestane locatie voor resources en resource groepen**: waarde die de toegestane locaties voor resource groepen en bronnen aangeeft.
+     - **Toegestane locatie voor resources en resourcegroepen**: Waarde die de toegestane locaties voor resourcegroepen en resources aangeeft.
 
-   - Artefact parameters
+   - Artefactparameters
 
-     De in deze sectie gedefinieerde para meters zijn van toepassing op het artefact waaronder het is gedefinieerd. Deze para meters zijn [dynamische para meters](../../concepts/parameters.md#dynamic-parameters) , omdat ze zijn gedefinieerd tijdens de toewijzing van de blauw druk. Zie [artefact parameters Table](#artifact-parameters-table)voor een volledige lijst of artefact parameters en de bijbehorende beschrijvingen.
+     De parameters die in deze sectie worden gedefinieerd, zijn van toepassing op het artefact waaronder de parameter is gedefinieerd. Deze parameters zijn [dynamische parameters](../../concepts/parameters.md#dynamic-parameters), aangezien ze zijn gedefinieerd tijdens de toewijzing van de blauwdruk. Zie de [tabel met artefactparameters](#artifact-parameters-table) voor een volledige lijst met artefactparameters en hun beschrijvingen.
 
-1. Zodra alle para meters zijn ingevoerd, selecteert u aan de onderkant van de pagina **toewijzen** . De blauw druk toewijzing wordt gemaakt en de implementatie van artefacten begint. De implementatie duurt ongeveer een uur. Als u de status van de implementatie wilt controleren, opent u de blauw druk-toewijzing.
+1. Zodra alle parameters zijn ingevoerd, selecteert u **Toewijzen** onder aan de pagina. De blauwdruktoewijzing wordt gemaakt en de implementatie van het artefact begint. De implementatie duurt circa één uur. Open de blauwdruktoewijzing om de status van de implementatie te controleren.
 
 > [!WARNING]
-> De Azure-blauw drukken-service en de ingebouwde blauw druk-voor beelden zijn **gratis**. Azure-resources zijn [prijs per product](https://azure.microsoft.com/pricing/). Gebruik de [prijs calculator](https://azure.microsoft.com/pricing/calculator/) om een schatting te maken van de kosten van het uitvoeren van resources die worden geïmplementeerd door deze blauw druk-voor beeld.
+> De Azure Blueprints-service en de ingebouwde blauwdrukvoorbeelden zijn **gratis**. Azure-resources zijn [geprijsd per product](https://azure.microsoft.com/pricing/). Gebruik de [prijscalculator](https://azure.microsoft.com/pricing/calculator/) om de kosten te schatten voor het uitvoeren van resources die door dit blauwdrukvoorbeeld zijn geïmplementeerd.
 
-## <a name="artifact-parameters-table"></a>Tabel artefact parameters
+## <a name="artifact-parameters-table"></a>Tabel met artefactparameters
 
-De volgende tabel geeft een lijst van de para meters van de blauw druk-artefact:
+In de volgende tabel ziet u een lijst met de blauwdrukartefactparameters:
 
-|Artefact naam|Type artefact|Parameternaam|Beschrijving|
+|Naam van het artefact|Type artefact|Parameternaam|Beschrijving|
 |-|-|-|-|
-|\[Preview\]: log Analytics-agent voor Linux-VM Scale sets implementeren (VMSS)|Beleidstoewijzing|Log Analytics-werk ruimte voor Linux VM Scale Sets (VMSS)|Als deze werk ruimte zich buiten het bereik van de toewijzing bevindt, moet u de machtigingen voor Log Analytics Inzender (of vergelijkbaar) hand matig toekennen aan de principal-ID van de beleids toewijzing.|
-|\[Preview\]: log Analytics-agent voor Linux-VM Scale sets implementeren (VMSS)|Beleidstoewijzing|Optioneel: lijst met VM-installatie kopieën met ondersteund Linux-besturings systeem om toe te voegen aan het bereik|Een lege matrix kan worden gebruikt om geen optionele para meters aan te duiden:\[\]|
-|\[Preview\]: log Analytics-agent voor Linux-vm's implementeren|Beleidstoewijzing|Log Analytics-werk ruimte voor Linux Vm's|Als deze werk ruimte zich buiten het bereik van de toewijzing bevindt, moet u de machtigingen voor Log Analytics Inzender (of vergelijkbaar) hand matig toekennen aan de principal-ID van de beleids toewijzing.|
-|\[Preview\]: log Analytics-agent voor Linux-vm's implementeren|Beleidstoewijzing|Optioneel: lijst met VM-installatie kopieën met ondersteund Linux-besturings systeem om toe te voegen aan het bereik|Een lege matrix kan worden gebruikt om geen optionele para meters aan te duiden:\[\]|
-|\[Voor\]beeld: log Analytics agent voor Windows VM Scale sets implementeren (VMSS)|Beleidstoewijzing|Log Analytics werk ruimte voor Windows VM Scale Sets (VMSS)|Als deze werk ruimte zich buiten het bereik van de toewijzing bevindt, moet u de machtigingen voor Log Analytics Inzender (of vergelijkbaar) hand matig toekennen aan de principal-ID van de beleids toewijzing.|
-|\[Voor\]beeld: log Analytics agent voor Windows VM Scale sets implementeren (VMSS)|Beleidstoewijzing|Optioneel: lijst met VM-installatie kopieën die een ondersteund Windows-besturings systeem hebben om toe te voegen aan het bereik|Een lege matrix kan worden gebruikt om geen optionele para meters aan te duiden:\[\]|
-|\[Preview\]: log Analytics-agent voor Windows-vm's implementeren|Beleidstoewijzing|Log Analytics-werk ruimte voor Windows-Vm's|Als deze werk ruimte zich buiten het bereik van de toewijzing bevindt, moet u de machtigingen voor Log Analytics Inzender (of vergelijkbaar) hand matig toekennen aan de principal-ID van de beleids toewijzing.|
-|\[Preview\]: log Analytics-agent voor Windows-vm's implementeren|Beleidstoewijzing|Optioneel: lijst met VM-installatie kopieën die een ondersteund Windows-besturings systeem hebben om toe te voegen aan het bereik|Een lege matrix kan worden gebruikt om geen optionele para meters aan te duiden:\[\]|
-|Toegestane opslagaccount-SKU's|Beleidstoewijzing|Lijst met toegestane opslag-Sku's|De lijst met Sku's die kunnen worden opgegeven voor opslag accounts.|
-|Toegestane Sku's voor virtuele machines|Beleidstoewijzing|Lijst met toegestane Sku's voor virtuele machines|De lijst met Sku's die voor virtuele machines kunnen worden opgegeven.|
-|Blauw druk-initiatief voor ISO 27001|Beleidstoewijzing|Lijst met resource typen waarvoor Diagnostische logboeken moeten zijn ingeschakeld|Lijst met resource typen om te controleren of de instelling voor diagnostische logboek registratie niet is ingeschakeld. Acceptabele waarden zijn te vinden in [Azure monitor Diagnostische logboeken schema's](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type).|
+|\[Preview\]: Log Analytics-agent voor Linux-VM-schaalsets (VMSS) implementeren|Beleidstoewijzing|Log Analytics-werkruimte voor Linux-VM-schaalsets (VMSS)|Als deze werkruimte buiten het bereik van de toewijzing valt, moet u aan de principal-id van de beleidstoewijzing handmatig de rechten voor Inzender voor Log Analytics (of vergelijkbaar) toekennen.|
+|\[Preview\]: Log Analytics-agent voor Linux-VM-schaalsets (VMSS) implementeren|Beleidstoewijzing|Optioneel: Lijst met VM-installatiekopieën met ondersteuning van het Linux-besturingssysteem die aan het bereik kunnen worden toegevoegd|Een lege matrix kan worden gebruikt om aan te geven dat er geen optionele parameters zijn: \[\]|
+|\[Preview\]: Log Analytics-agent voor virtuele Linux-machines implementeren|Beleidstoewijzing|Log Analytics-werkruimte voor virtuele Linux-machines|Als deze werkruimte buiten het bereik van de toewijzing valt, moet u aan de principal-id van de beleidstoewijzing handmatig de rechten voor Inzender voor Log Analytics (of vergelijkbaar) toekennen.|
+|\[Preview\]: Log Analytics-agent voor virtuele Linux-machines implementeren|Beleidstoewijzing|Optioneel: Lijst met VM-installatiekopieën met ondersteuning van het Linux-besturingssysteem die aan het bereik kunnen worden toegevoegd|Een lege matrix kan worden gebruikt om aan te geven dat er geen optionele parameters zijn: \[\]|
+|\[Preview\]: Log Analytics-agent voor Windows-VM-schaalsets (VMSS) implementeren|Beleidstoewijzing|Log Analytics-werkruimte voor Windows-VM-schaalsets (VMSS)|Als deze werkruimte buiten het bereik van de toewijzing valt, moet u aan de principal-id van de beleidstoewijzing handmatig de rechten voor Inzender voor Log Analytics (of vergelijkbaar) toekennen.|
+|\[Preview\]: Log Analytics-agent voor Windows-VM-schaalsets (VMSS) implementeren|Beleidstoewijzing|Optioneel: Lijst met VM-installatiekopieën met ondersteuning van het Windows-besturingssysteem die aan het bereik kunnen worden toegevoegd|Een lege matrix kan worden gebruikt om aan te geven dat er geen optionele parameters zijn: \[\]|
+|\[Preview\]: Log Analytics-agent voor Windows-VM's implementeren|Beleidstoewijzing|Log Analytics-werkruimte voor Windows-VM's|Als deze werkruimte buiten het bereik van de toewijzing valt, moet u aan de principal-id van de beleidstoewijzing handmatig de rechten voor Inzender voor Log Analytics (of vergelijkbaar) toekennen.|
+|\[Preview\]: Log Analytics-agent voor Windows-VM's implementeren|Beleidstoewijzing|Optioneel: Lijst met VM-installatiekopieën met ondersteuning van het Windows-besturingssysteem die aan het bereik kunnen worden toegevoegd|Een lege matrix kan worden gebruikt om aan te geven dat er geen optionele parameters zijn: \[\]|
+|Toegestane opslagaccount-SKU's|Beleidstoewijzing|Lijst met toegestane opslag-SKU's|De lijst met SKU's die mogen worden opgegeven voor opslagaccounts.|
+|Toegestane SKU's van virtuele machines|Beleidstoewijzing|Lijst met toegestane SKU's van virtuele machines|De lijst met SKU's die mogen worden opgegeven voor virtuele machines.|
+|Blauwdrukinitiatief voor ISO 27001|Beleidstoewijzing|Lijst met resourcetypen waarvoor diagnostische logboeken moeten zijn ingeschakeld|Lijst met resourcetypen die moeten worden gecontroleerd als de instelling voor diagnostische logboeken niet is ingeschakeld. Acceptabele waarden vindt u in de [schema's van diagnostische logboeken van Azure Monitor](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas).|
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u de stappen voor het implementeren van het voor beeld van ISO 27001-blauw druk hebt gecontroleerd, gaat u naar de volgende artikelen voor meer informatie over de architectuur en de beheer toewijzing:
+Nu u de stappen voor het implementeren van het ISO 27001-blauwdrukvoorbeeld hebt doorgenomen, raadpleegt u de volgende artikelen voor informatie over de architectuur en de toewijzing van besturingselementen:
 
 > [!div class="nextstepaction"]
-> [ISO 27001 blauw druk-overzicht](./index.md)
-> [ISO 27001 blauw druk-beheer toewijzing](./control-mapping.md)
+> [ISO 27001-blauwdruk: overzicht](./index.md)
+> [ISO 27001-blauwdruk - Indeling van besturingselementen](./control-mapping.md)
 
 Aanvullende artikelen over blauwdrukken en het gebruik hiervan:
 

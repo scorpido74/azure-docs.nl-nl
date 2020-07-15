@@ -7,20 +7,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: f0b6e66a0d3a78a62fe105a175a7a519d0b37ccd
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: afeac24a5d3c21fce120512813d68c49a505c6c1
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84733412"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024601"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Zelfstudie: Een beheer-VM maken om een door Azure AD Domain Services beheerd domein te configureren en te beheren
 
 Azure AD DS (Azure Active Directory Domain Services) biedt beheerde domeinservices, zoals lid worden van een domein, groepsbeleid, LDAP en Kerberos/NTLM-verificatie, die volledig compatibel zijn met Windows Server Active Directory. U beheert dit beheerde domein met behulp van dezelfde Remote Server Administration Tools (RSAT), net als bij een on-premises domein van Active Directory Domain Services. Omdat Azure AD DS een beheerde service is, zijn er enkele beheertaken die u niet kunt uitvoeren, zoals het gebruik van Remote Desktop Protocol (RDP) om verbinding te maken met de domeincontrollers.
 
-In deze zelfstudie leert u hoe u een Windows Server-VM maakt in Azure en de vereiste hulpprogramma's installeert voor het beheren van een door Azure AD DS beheerd domein.
+In deze zelfstudie leert u hoe u een Windows Server-VM configureert in Azure en de vereiste hulpprogramma's installeert voor het beheren van een door Azure AD DS beheerd domein.
 
 In deze zelfstudie leert u het volgende:
 
@@ -75,7 +75,7 @@ Het beheerde domein is vergrendeld, dus u hebt geen bevoegdheden om bepaalde beh
 
 ## <a name="sign-in-to-the-windows-server-vm"></a>Meld u aan bij de Windows Server-VM
 
-In de vorige zelfstudie is een Windows Server-VM gemaakt en aan het beheerde domein toegevoegd. We gebruiken die VM om de beheerprogramma's te installeren. Volg, indien nodig, [de stappen in de zelfstudie om een Windows Server-VM te maken en aan een beheerd domein toe te voegen][create-join-windows-vm].
+In de vorige zelfstudie is een Windows Server-VM gemaakt en aan het beheerde domein toegevoegd. Gebruik die VM om de beheerprogramma's te installeren. Volg, indien nodig, [de stappen in de zelfstudie om een Windows Server-VM te maken en aan een beheerd domein toe te voegen][create-join-windows-vm].
 
 > [!NOTE]
 > In deze zelfstudie gebruikt u een Windows Server-VM in Azure die is toegevoegd aan het beheerde domein. U kunt ook een Windows-client, zoals Windows 10, gebruiken die aan het beheerde domein is toegevoegd.
@@ -97,7 +97,7 @@ Laat, indien nodig, uw webbrowser pop-ups openen voor de weer te geven Bastion-v
 
 ## <a name="install-active-directory-administrative-tools"></a>Active Directory-beheerprogramma's installeren
 
-Beheerde domeinen worden beheerd met dezelfde beheerprogramma's als on-premises AD DS-omgevingen, zoals het Active Directory-beheercentrum (ADAC) of AD PowerShell. Deze hulpprogramma's kunnen worden geïnstalleerd als onderdeel van de functie Beheerhulpprogramma's voor externe servers (Remote Server Administration Tools, RSAT) op Windows Server- en clientcomputers. Leden van de *AAD DC-beheerdersgroep* kunnen vervolgens met behulp van deze AD-beheerprogramma's beheerde domeinen op afstand beheren vanaf een computer die is toegevoegd aan het beheerde domein.
+U gebruikt dezelfde beheerprogramma's in een beheerd domein als in on-premises AD DS-omgevingen, zoals het Active Directory-beheercentrum (ADAC) of AD PowerShell. Deze hulpprogramma's kunnen worden geïnstalleerd als onderdeel van de functie Beheerhulpprogramma's voor externe servers (Remote Server Administration Tools, RSAT) op Windows Server- en clientcomputers. Leden van de *AAD DC-beheerdersgroep* kunnen vervolgens met behulp van deze AD-beheerprogramma's beheerde domeinen op afstand beheren vanaf een computer die is toegevoegd aan het beheerde domein.
 
 Voer de volgende stappen uit om de Active Directory-beheerprogramma's te installeren op een VM die aan het domein is toegevoegd:
 
@@ -125,7 +125,7 @@ Nu de beheerprogramma's zijn geïnstalleerd, gaan we kijken hoe u deze kunt gebr
     ![Lijst met beheerprogramma's die op de server zijn geïnstalleerd](./media/tutorial-create-management-vm/list-admin-tools.png)
 
 1. Selecteer **Active Directory-beheercentrum**.
-1. Als u het beheerde domein wilt verkennen, kiest u de domeinnaam in het linkerdeelvenster, bijvoorbeeld *aaddscontoso.com*. Twee containers met de naam *AADDC Computers* en *AADDC Users* bevinden zich bovenaan de lijst.
+1. Als u het beheerde domein wilt verkennen, kiest u de domeinnaam in het linkerdeelvenster, bijvoorbeeld *aaddscontoso*. Twee containers met de naam *AADDC Computers* en *AADDC Users* bevinden zich bovenaan de lijst.
 
     ![Een lijst maken van het onderdeel beschikbare containers van het beheerde domein](./media/tutorial-create-management-vm/active-directory-administrative-center.png)
 
@@ -135,7 +135,7 @@ Nu de beheerprogramma's zijn geïnstalleerd, gaan we kijken hoe u deze kunt gebr
 
     ![Bekijk de lijst met Azure AD DS-domeingebruikers in het Active Directory-beheercentrum](./media/tutorial-create-management-vm/list-azure-ad-users.png)
 
-1. Selecteer de container **AADDC Computers** om de computers te zien die lid zijn van het beheerde domein. Er wordt een vermelding voor de huidige virtuele machine weergegeven, bijvoorbeeld *myVM*. Computeraccounts voor alle computers die lid zijn van het beheerde domein worden opgeslagen in deze container *AADDC Computers*.
+1. Selecteer de container **AADDC Computers** om de computers te zien die lid zijn van het beheerde domein. Er wordt een vermelding voor de huidige virtuele machine weergegeven, bijvoorbeeld *myVM*. Computeraccounts voor alle apparaten die lid zijn van het beheerde domein worden opgeslagen in deze container *AADDC Computers*.
 
 Algemene acties van het Active Directory-beheercentrum, zoals het opnieuw instellen van het wachtwoord voor een gebruikersaccount of het beheren van groepslidmaatschap, zijn beschikbaar. Deze acties werken alleen voor gebruikers en groepen die rechtstreeks in het beheerde domein zijn gemaakt. Identiteitsgegevens worden alleen *van* Azure AD naar Azure AD DS gesynchroniseerd. Terugschrijven van Azure AD DS naar Azure AD vindt niet plaats. U kunt geen wachtwoorden of lidmaatschap van beheerde groepen wijzigen voor gebruikers die zijn gesynchroniseerd vanuit Azure AD en deze wijzigingen gesynchroniseerd terugkrijgen.
 
@@ -150,7 +150,7 @@ In deze zelfstudie heeft u het volgende geleerd:
 > * De Active Directory-beheerprogramma's installeren op een Windows Server-VM
 > * Algemene taken uitvoeren met behulp van het Active Directory-beheercentrum
 
-Schakel het veilige Lightweight Directory Access Protocol (LDAPS) in om veilig te communiceren met uw beheerde domein.
+Schakel het veilige Lightweight Directory Access Protocol (LDAPS) in om veilig met uw beheerde domein te communiceren vanuit andere toepassingen.
 
 > [!div class="nextstepaction"]
 > [Veilig LDAP configureren voor uw beheerde domein](tutorial-configure-ldaps.md)
