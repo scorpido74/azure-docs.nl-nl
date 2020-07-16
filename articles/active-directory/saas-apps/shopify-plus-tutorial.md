@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/18/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18dc2e4393175751f5ac52d53e0c331c82fce7e8
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f3740415652407c834ec258730f89e46398a9f79
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078116"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170476"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-shopify-plus"></a>Zelfstudie: Integratie van eenmalige aanmelding (SSO) van Azure Active Directory met Shopify Plus
 
@@ -99,9 +99,9 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 1. Bovendien verwacht de toepassing Shopify Plus nog enkele kenmerken die als SAML-antwoord moeten worden doorgestuurd. Deze worden hieronder weergegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze herzien volgens uw vereisten.
 
-    | Naam |  |  Bronkenmerk|
-    | ---------------| --------------- | --------- |
-    | e-mail | | user.mail |
+    | Naam | Bronkenmerk|
+    | ---- | --------------- |
+    | e-mail | user.mail |
 
 1. Wijzig de notatie van de **Naam-id** in **Permanent**. Selecteer de optie **Unieke gebruikers-id (Naam-id)** en selecteer vervolgens de notatie **Naam-id**. Selecteer **Permanent** voor deze optie. Sla uw wijzigingen op.
 1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u in de sectie **SAML-handtekeningcertificaat** op de knop Kopiëren om de **URL voor federatieve metagegevens van de app** te kopiëren. Sla deze URL op de computer op.

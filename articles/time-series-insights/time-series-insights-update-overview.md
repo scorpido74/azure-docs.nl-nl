@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 04/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: 20ab78aa67fa5d59dac774559b3c43561cf75fbc
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 5e8ea56de84f3d6b92bc23c0e3ab139d03bd68a9
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040704"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232250"
 ---
 # <a name="what-is-azure-time-series-insights-preview"></a>Wat is Azure Time Series Insights preview?
 
@@ -76,7 +76,7 @@ Azure Time Series Insights biedt een schaalbaar prijsmodel voor betalen per gebr
  
 Met de introductie van deze belangrijke, industriële IoT-functionaliteiten biedt Time Series Insights tevens de volgende belangrijke voordelen.  
 
-| | |
+| Mogelijkheid | Voordeel |
 | ---| ---|
 | Opslag met meerdere lagen voor tijdreeksgegevens op IoT-schaal | Met een pijplijn voor de verwerking van gedeelde gegevens voor het opnemen van gegevens kunt u gegevens opnemen in zowel warme als koude archieven. Gebruik warme opslag voor interactieve query's en koude opslag voor het opslaan van grote hoeveelheden gegevens. Zie [query's](./concepts-query-overview.md) als u wilt profiteren van hoogwaardige, op assets gebaseerde query's. |
 | Time Series-model voor het contextualiseren van onbewerkte telemetriegegevens en het afleiden van inzichten op basis van assets | U kunt het tijdreeksmodel gebruiken om instanties, hiërarchieën, typen en variabelen voor uw tijdreeksgegevens te maken. Zie [Time Series-model](./concepts-model-overview.md) voor meer informatie over het Time Series-model.  |

@@ -9,14 +9,14 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/15/2020
 ms.author: pafarley
-ms.openlocfilehash: e5debf66b91ebd73bb4a4972a907ef7a283f0044
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 3300bd53be36e34ff32267605352d6f80923724e
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965905"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86277818"
 ---
-[Referentiedocumentatie](https://docs.microsoft.com/python/api/overview/azure/formrecognizer) | [Broncode bibliotheek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/azure/ai/formrecognizer) | [Package (PyPi)](https://pypi.org/project/azure-ai-formrecognizer/) | [Voorbeelden](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)
+[Referentiedocumentatie](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer) | [Broncode bibliotheek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/azure/ai/formrecognizer) | [Package (PyPi)](https://pypi.org/project/azure-ai-formrecognizer/) | [Voorbeelden](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -90,7 +90,7 @@ form_training_client = FormTrainingClient(endpoint, AzureKeyCredential(key))
 ## <a name="define-variables"></a>Variabelen definiëren
 
 > [!NOTE]
-> De codefragmenten in deze gids gebruiken externe formulieren die worden geopend middels URL's. Als u in plaats daarvan lokale formulierdocumenten wilt verwerken, raadpleegt u de gerelateerde methoden in de [referentiedocumentatie](https://docs.microsoft.com/python/api/overview/azure/formrecognizer) en [voorbeelden](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples).
+> De codefragmenten in deze gids gebruiken externe formulieren die worden geopend middels URL's. Als u in plaats daarvan lokale formulierdocumenten wilt verwerken, raadpleegt u de gerelateerde methoden in de [referentiedocumentatie](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer) en [voorbeelden](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples).
 
 U moet ook verwijzingen naar de URL's toevoegen voor uw trainings- en testgegevens.
 * Als u de SAS-URL voor de trainingsgegevens van uw aangepaste model wilt ophalen, opent u de Microsoft Azure Storage Explorer, klikt u met de rechtermuisknop op uw container en selecteert u **Handtekening voor gedeelde toegang ophalen**. Controleer of de machtigingen **Lezen** en **Lijst** zijn ingeschakeld en klik op **Maken**. Kopieer vervolgens de waarde in de sectie **URL**. Deze moet de notatie `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` hebben.
@@ -219,7 +219,7 @@ Ten slotte wordt met het laatste codeblok de rest van de belangrijkste gegevens 
 
 ## <a name="train-a-custom-model"></a>Aangepast model trainen
 
-In deze sectie ziet u hoe u een model kunt trainen met uw eigen gegevens. Met een getraind model kunnen gestructureerde gegevens worden uitgevoerd waarin ook de sleutel-waarderelaties uit het oorspronkelijke formulierdocument zijn opgenomen. Nadat u het model hebt getraind, kunt u het testen, opnieuw trainen en hiermee uiteindelijk op betrouwbare wijze naar behoefte gegevens extraheren uit meer formulieren.
+In deze sectie ziet u hoe u een model kunt trainen met uw eigen gegevens. Met een getraind model kunnen gestructureerde gegevens worden uitgevoerd waarin ook de sleutel-waarderelaties uit het oorspronkelijke formulierdocument zijn opgenomen. Nadat u het model hebt getraind, kunt u het testen, opnieuw trainen en hiermee uiteindelijk gegevens naar behoefte extraheren uit meer formulieren.
 
 > [!NOTE]
 > U kunt ook modellen trainen met een grafische gebruikersinterface, zoals het [voorbeeldhulpprogramma voor labelen van Form Recognizer](../../quickstarts/label-tool.md).
@@ -259,7 +259,7 @@ for submodel in model.submodels:
 U kunt aangepaste modellen ook trainen door de trainingsdocumenten handmatig te labelen. Training met labels leidt in sommige scenario's tot betere prestaties. 
 
 > [!IMPORTANT]
-> Als u met labels wilt trainen, moet uw Blob Storage-container naast de trainingsdocumenten ook speciale labelinformatiebestanden ( *\<filename\>.pdf.labels.json*) bevatten. Het [hulpprogramma voor labelen van Form Recognizer](../../quickstarts/label-tool.md) beschikt over een gebruikersinterface die u kan helpen bij het maken van deze labelbestanden. Zodra u deze hebt, kunt u de functie **begin_training** aanroepen met de parameter *use_training_labels* ingesteld op `true`.
+> Als u met labels wilt trainen, moet uw Blob Storage-container naast de trainingsdocumenten ook speciale bestanden met labelinformatie ( *\<filename\>.pdf.labels.json*) bevatten. Het [hulpprogramma voor labelen van Form Recognizer](../../quickstarts/label-tool.md) beschikt over een gebruikersinterface die u kan helpen bij het maken van deze labelbestanden. Zodra u deze hebt, kunt u de functie **begin_training** aanroepen met de parameter *use_training_labels* ingesteld op `true`.
 
 ```python
 poller = form_training_client.begin_training(trainingDataUrl, use_training_labels=True)
@@ -288,7 +288,7 @@ for submodel in model.submodels:
 
 ## <a name="analyze-forms-with-a-custom-model"></a>Formulieren analyseren met een aangepast model
 
-In deze sectie ziet u hoe u sleutel-waarde-informatie en andere inhoud uit uw aangepaste formuliertypen kunt extraheren met behulp van modellen die u hebt getraind met uw eigen formulieren.
+In deze sectie ziet u hoe u belangrijke/waardevolle informatie en andere inhoud uit uw aangepaste formuliertypen kunt ophalen met behulp van modellen die u hebt getraind met uw eigen formulieren.
 
 > [!IMPORTANT]
 > Als u dit scenario wilt implementeren, moet u al een model hebben getraind, zodat u de id ervan kunt doorgeven aan onderstaande methode. Zie de sectie [Een model trainen](#train-a-model-without-labels).
