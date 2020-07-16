@@ -1,6 +1,6 @@
 ---
-title: 'Snelstartgids: client bibliotheek voor formulier herkenning voor python'
-description: In deze Snelstartgids gaat u aan de slag met de formulier Recognizer-client bibliotheek voor python.
+title: 'Quickstart: Clientbibliotheek van Form Recognizer voor Python'
+description: In deze quickstart gaat u aan de slag met de clientbibliotheek van Form Recognizer voor Python.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,24 +9,24 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 811daf9b1bf5bf26419385517a67cd22cb8346e6
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
-ms.translationtype: MT
+ms.openlocfilehash: e5debf66b91ebd73bb4a4972a907ef7a283f0044
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85570207"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965905"
 ---
-[Referentie documentatie](https://docs.microsoft.com/python/api/overview/azure/formrecognizer)  |  [Bron code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/azure/ai/formrecognizer)  |  van bibliotheek [Pakket (PyPi)](https://pypi.org/project/azure-ai-formrecognizer/)  |  Voor [beelden](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)
+[Referentiedocumentatie](https://docs.microsoft.com/python/api/overview/azure/formrecognizer) | [Broncode bibliotheek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/azure/ai/formrecognizer) | [Package (PyPi)](https://pypi.org/project/azure-ai-formrecognizer/) | [Voorbeelden](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
-* Een Azure Storage-blob die een set trainings gegevens bevat. Zie [een trainings gegevensverzameling bouwen voor een aangepast model](../../build-training-data-set.md) voor tips en opties voor het samen stellen van uw trainings gegevensverzameling. Voor deze Quick Start kunt u de bestanden in de map **Train** van de voor [beeld-gegevensset](https://go.microsoft.com/fwlink/?linkid=2090451)gebruiken.
-* [Python 2,7 of 3,5 of hoger](https://www.python.org/)
+* Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/)
+* Een Azure Storage-blob die een set trainingsgegevens bevat. Zie [Een set met trainingsgegevens voor een aangepast model bouwen](../../build-training-data-set.md) voor tips en opties voor het samenstellen van uw set met trainingsgegevens. Voor deze quickstart kunt u de bestanden in de map **Trainen** van de [set met voorbeeldgegevens](https://go.microsoft.com/fwlink/?linkid=2090451) gebruiken.
+* [Python 2.7, of 3.5 of hoger](https://www.python.org/)
 
 ## <a name="setting-up"></a>Instellen
 
-### <a name="create-a-form-recognizer-azure-resource"></a>Een Azure-resource voor een formulier herkenning maken
+### <a name="create-a-form-recognizer-azure-resource"></a>Een Azure-resource voor Form Recognizer maken
 
 [!INCLUDE [create resource](../create-resource.md)]
 
@@ -35,9 +35,9 @@ ms.locfileid: "85570207"
 [!INCLUDE [environment-variables](../environment-variables.md)]
 
 
-### <a name="create-a-new-python-application"></a>Een nieuwe python-toepassing maken
+### <a name="create-a-new-python-application"></a>Een nieuwe Python-toepassing maken
 
-Maak een nieuwe python-toepassing in uw voorkeurs editor of IDE. Importeer vervolgens de volgende bibliotheken.
+Maak een nieuwe Python-toepassing in uw favoriete editor of IDE. Importeer vervolgens de volgende bibliotheken.
 
 ```python
 import os
@@ -46,16 +46,16 @@ from azure.core.credentials import AzureKeyCredential
 from azure.core.exceptions import ResourceNotFoundError
 ```
 
-Maak variabelen voor het Azure-eind punt en de sleutel van uw resource. Als u de omgevings variabele hebt gemaakt nadat u de toepassing hebt gestart, moet u de editor, IDE of shell sluiten en opnieuw openen om toegang te krijgen tot de variabele.
+Maak variabelen voor het Azure-eindpunt en de Azure-sleutel voor uw resource. Als u de omgevingsvariabele hebt gemaakt nadat u de toepassing hebt gestart, moet u de editor, IDE of shell sluiten en opnieuw openen om toegang te krijgen tot de variabele.
 
 ```python
 endpoint = os.environ["FORM_RECOGNIZER_ENDPOINT"]
 key = os.environ["FORM_RECOGNIZER_KEY"]
 ```
 
-### <a name="install-the-client-library"></a>De client bibliotheek installeren
+### <a name="install-the-client-library"></a>De clientbibliotheek installeren
 
-Na de installatie van python kunt u de client bibliotheek installeren met:
+Na de installatie van Python kunt u de clientbibliotheek installeren met:
 
 ```console
 pip install azure-ai-formrecognizer
@@ -67,11 +67,11 @@ tbd object model
 
 ## <a name="code-examples"></a>Codevoorbeelden
 
-Deze code fragmenten laten zien hoe u de volgende taken kunt uitvoeren met de formulier Recognizer-client bibliotheek voor python:
+Deze codefragmenten laten zien hoe u de volgende taken kunt uitvoeren met de clientbibliotheek van Form Recognizer voor Python:
 
 * [De client verifiëren](#authenticate-the-client)
-* [Formulier inhoud herkennen](#recognize-form-content)
-* [Bevestigingen herkennen](#recognize-receipts)
+* [Formulierinhoud herkennen](#recognize-form-content)
+* [Ontvangstbewijzen herkennen](#recognize-receipts)
 * [Aangepast model trainen](#train-a-custom-model)
 * [Formulieren analyseren met een aangepast model](#analyze-forms-with-a-custom-model)
 * [Uw aangepaste modellen beheren](#manage-your-custom-models)
@@ -79,23 +79,23 @@ Deze code fragmenten laten zien hoe u de volgende taken kunt uitvoeren met de fo
 
 ## <a name="authenticate-the-client"></a>De client verifiëren
 
-Hier verifieert u twee client objecten met de abonnements variabelen die u hierboven hebt gedefinieerd. U gebruikt een **AzureKeyCredential** -object, zodat u, indien nodig, de API-sleutel kunt bijwerken zonder nieuwe client objecten te maken.
+Hier gaat u twee clientobjecten verifiëren met behulp van de abonnementsvariabelen die u hierboven hebt gedefinieerd. U gebruikt een **AzureKeyCredential**-object, zodat u indien nodig de API-sleutel kunt bijwerken zonder nieuwe clientobjecten te maken.
 
 ```python
-form_recognizer_client = FormRecognizerClient(endpoint=self.endpoint, credential=AzureKeyCredential(self.key))
+form_recognizer_client = FormRecognizerClient(endpoint=endpoint, credential=AzureKeyCredential(key))
 
-form_training_client = FormTrainingClient(self.endpoint, AzureKeyCredential(self.key))
+form_training_client = FormTrainingClient(endpoint, AzureKeyCredential(key))
 ```
 
 ## <a name="define-variables"></a>Variabelen definiëren
 
 > [!NOTE]
-> De code fragmenten in deze hand leiding gebruiken externe formulieren die worden gebruikt voor Url's. Als u in plaats daarvan lokale formulier documenten wilt verwerken, raadpleegt u de bijbehorende methoden in de [referentie documentatie](https://docs.microsoft.com/python/api/overview/azure/formrecognizer) en voor [beelden](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples).
+> De codefragmenten in deze gids gebruiken externe formulieren die worden geopend middels URL's. Als u in plaats daarvan lokale formulierdocumenten wilt verwerken, raadpleegt u de gerelateerde methoden in de [referentiedocumentatie](https://docs.microsoft.com/python/api/overview/azure/formrecognizer) en [voorbeelden](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples).
 
-U moet ook verwijzingen toevoegen aan de Url's voor uw training en gegevens testen.
-* Als u de SAS-URL voor uw aangepaste model trainings gegevens wilt ophalen, opent u de Microsoft Azure Storage Explorer, klikt u met de rechter muisknop op uw container en selecteert u **gedeelde toegangs handtekening ophalen**. Zorg ervoor dat de machtigingen **lezen** en **lijst** zijn ingeschakeld en klik op **maken**. Kopieer vervolgens de waarde in de sectie **URL** . Het moet de volgende indeling hebben: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
-* Als u een URL wilt ophalen van een formulier dat u wilt testen, kunt u de bovenstaande stappen gebruiken om de SAS-URL van een afzonderlijk document in Blob Storage op te halen. U kunt ook de URL van een document naar een andere locatie halen.
-* Gebruik de bovenstaande methode om de URL van een kopie van de bevestiging te verkrijgen, of gebruik de URL van de voor beeld-installatie kopie.
+U moet ook verwijzingen naar de URL's toevoegen voor uw trainings- en testgegevens.
+* Als u de SAS-URL voor de trainingsgegevens van uw aangepaste model wilt ophalen, opent u de Microsoft Azure Storage Explorer, klikt u met de rechtermuisknop op uw container en selecteert u **Handtekening voor gedeelde toegang ophalen**. Controleer of de machtigingen **Lezen** en **Lijst** zijn ingeschakeld en klik op **Maken**. Kopieer vervolgens de waarde in de sectie **URL**. Deze moet de notatie `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` hebben.
+* Als u een URL wilt ophalen van een formulier dat u wilt testen, kunt u de bovenstaande stappen gebruiken om de SAS-URL van een afzonderlijk document in Blob Storage op te halen. U kunt ook de URL gebruiken van een document dat zich elders bevindt.
+* Gebruik bovenstaande methode ook om de URL van de afbeelding van een ontvangstbewijs op te halen, of gebruik de meegeleverde URL van een voorbeeldafbeelding.
 
 ```python
 trainingDataUrl = "<SAS-URL-of-your-form-folder-in-blob-storage>"
@@ -103,18 +103,18 @@ formUrl = "<SAS-URL-of-a-form-in-blob-storage>"
 receiptUrl = "https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/tests/sample_forms/receipt/contoso-receipt.png"
 ```
 
-## <a name="recognize-form-content"></a>Formulier inhoud herkennen
+## <a name="recognize-form-content"></a>Formulierinhoud herkennen
 
-U kunt de formulier Recognizer gebruiken om tabellen, lijnen en woorden in documenten te herkennen, zonder dat u een model hoeft te trainen.
+U kunt Form Recognizer gebruiken om tabellen, regels en woorden in documenten te herkennen, zonder dat u een model hoeft te trainen.
 
-Gebruik de methode **begin_recognize_content** om de inhoud van een bestand op een bepaalde URL te herkennen.
+Als u de inhoud van een bestand op een bepaalde URL wilt herkennen, gebruikt u de methode **begin_recognize_content**.
 
 ```Python
 poller = form_recognizer_client.begin_recognize_content_from_url(formUrl)
 contents = poller.result()
 ```
 
-De geretourneerde waarde is een verzameling **FormPage** -objecten: één voor elke pagina in het verzonden document. Met de volgende code worden deze objecten door lopen en worden de geëxtraheerde sleutel-waardeparen en tabel gegevens afgedrukt.
+De geretourneerde waarde is een verzameling **FormPage**-objecten: één voor elke pagina in het ingediende document. Met de volgende code worden deze objecten doorlopen en worden de uitgepakte sleutel-waardeparen en tabelgegevens afgedrukt.
 
 ```python
 for idx, content in enumerate(contents):
@@ -143,7 +143,7 @@ for idx, content in enumerate(contents):
     print("----------------------------------------")
 ```
 
-De bovenstaande code maakt gebruik van een hulp functie `format_bounding_box` om de coördinaten van een selectie kader te vereenvoudigen. Afzonderlijk definiëren:
+In de bovenstaande code wordt de helperfunctie `format_bounding_box` gebruikt om de coördinaten van een selectiekader te vereenvoudigen. Definieer deze afzonderlijk:
 
 ```python
 def format_bounding_box(bounding_box):
@@ -152,16 +152,16 @@ def format_bounding_box(bounding_box):
     return ", ".join(["[{}, {}]".format(p.x, p.y) for p in bounding_box])
 ```
 
-## <a name="recognize-receipts"></a>Bevestigingen herkennen
+## <a name="recognize-receipts"></a>Ontvangstbewijzen herkennen
 
-In deze sectie wordt beschreven hoe u algemene velden van Amerikaanse ontvangsten kunt herkennen en extra heren met behulp van een vooraf getraind ontvangst model. Gebruik de methode **begin_recognize_receipts_from_url** om ontvangst bewijzen te herkennen vanuit een URL. 
+In deze sectie wordt beschreven hoe u veelvoorkomende velden in Amerikaanse ontvangstbewijzen kunt herkennen en extraheren met behulp van een vooraf getraind ontvangstbewijsmodel. Om ontvangstbewijzen te herkennen vanuit een URL, gebruikt u de methode **begin_recognize_receipts_from_url**. 
 
 ```python
 poller = form_recognizer_client.begin_recognize_receipts_from_url(receiptUrl)
 receipts = poller.result()
 ```
 
-De geretourneerde waarde is een verzameling **RecognizedReceipt** -objecten: één voor elke pagina in het verzonden document. Met het volgende code blok worden basis gegevens over de ontvangst naar de console afgedrukt.
+De geretourneerde waarde is een verzameling **RecognizedReceipt**-objecten: één voor elke pagina in het ingediende document. Met het volgende codeblok worden basisgegevens over het ontvangstbewijs naar de console afgedrukt.
 
 ```python
 for idx, receipt in enumerate(receipts):
@@ -177,7 +177,7 @@ for idx, receipt in enumerate(receipts):
         print("Transaction Date: {} has confidence: {}".format(transaction_date.value, transaction_date.confidence))
 ```
 
-In het volgende code blok wordt de afzonderlijke items herhaald die op de ontvangst zijn gedetecteerd en worden de details ervan naar de console afgedrukt.
+In het volgende codeblok worden de afzonderlijke items die op het ontvangstbewijs zijn gedetecteerd doorlopen en worden de details ervan naar de console afgedrukt.
 
 
 ```python
@@ -198,7 +198,7 @@ In het volgende code blok wordt de afzonderlijke items herhaald die op de ontvan
             print("......Total Item Price: {} has confidence: {}".format(item_total_price.value, item_total_price.confidence))
 ```
 
-Ten slotte drukt het laatste code blok de rest van de grote ontvangst gegevens af.
+Ten slotte wordt met het laatste codeblok de rest van de belangrijkste gegevens op het ontvangstbewijs afgedrukt.
 
 ```python
     subtotal = receipt.fields.get("Subtotal")
@@ -219,23 +219,23 @@ Ten slotte drukt het laatste code blok de rest van de grote ontvangst gegevens a
 
 ## <a name="train-a-custom-model"></a>Aangepast model trainen
 
-In deze sectie ziet u hoe u een model kunt trainen met uw eigen gegevens. Met een getraind model kunnen gestructureerde gegevens worden uitgevoerd die de sleutel/waarde-relaties in het oorspronkelijke formulier document bevatten. Nadat u het model hebt getraind, kunt u het testen en opnieuw trainen en uiteindelijk gebruiken om gegevens te extra heren uit meer formulieren, afhankelijk van uw behoeften.
+In deze sectie ziet u hoe u een model kunt trainen met uw eigen gegevens. Met een getraind model kunnen gestructureerde gegevens worden uitgevoerd waarin ook de sleutel-waarderelaties uit het oorspronkelijke formulierdocument zijn opgenomen. Nadat u het model hebt getraind, kunt u het testen, opnieuw trainen en hiermee uiteindelijk op betrouwbare wijze naar behoefte gegevens extraheren uit meer formulieren.
 
 > [!NOTE]
-> U kunt ook modellen trainen met een Graphical User Interface zoals het [hulp programma voor het labelen](../../quickstarts/label-tool.md)van het voor beeld van de formulier herkenning.
+> U kunt ook modellen trainen met een grafische gebruikersinterface, zoals het [voorbeeldhulpprogramma voor labelen van Form Recognizer](../../quickstarts/label-tool.md).
 
 ### <a name="train-a-model-without-labels"></a>Een model trainen zonder labels
 
-Train aangepaste modellen om alle velden en waarden te herkennen die in uw aangepaste formulieren worden gevonden zonder hand matig labels te krijgen voor de trainings documenten.
+Train aangepaste modellen om alle velden en waarden te herkennen die in uw aangepaste formulieren worden gevonden zonder de trainingsdocumenten handmatig te labelen.
 
-De volgende code gebruikt de training-client met de functie **begin_training** om een model op een bepaalde set documenten te trainen.
+De volgende code gebruikt de training-client met de **begin_training**-functie om een model op een bepaalde set documenten te trainen.
 
 ```python
-poller = form_training_client.begin_training(self.trainingDataUrl, use_training_labels=False)
+poller = form_training_client.begin_training(trainingDataUrl, use_training_labels=False)
 model = poller.result()
 ```
 
-Het geretourneerde **CustomFormSubmodel** -object bevat informatie over de typen die het model kan herkennen en de velden die het kan ophalen van elk formulier type. In het volgende code blok wordt deze informatie in de-console afgedrukt.
+Het geretourneerde **CustomFormSubmodel**-object bevat informatie over de formuliertypen die het model kan herkennen en de velden die het uit elk formuliertype kan uitpakken. In het volgende codeblok wordt deze informatie op de console weergegeven.
 
 ```python
 # Custom model information
@@ -256,17 +256,17 @@ for submodel in model.submodels:
 
 ### <a name="train-a-model-with-labels"></a>Een model trainen met labels
 
-U kunt ook aangepaste modellen trainen door de trainings documenten hand matig te labelen. Training met labels leidt tot betere prestaties in sommige scenario's. 
+U kunt aangepaste modellen ook trainen door de trainingsdocumenten handmatig te labelen. Training met labels leidt in sommige scenario's tot betere prestaties. 
 
 > [!IMPORTANT]
-> Als u met labels wilt trainen, moet u in uw Blob Storage-container, naast de trainings documenten, speciale label-informatie bestanden (* \<filename\>.pdf.labels.jsaan*) hebben. Het [hulp programma voor het labelen](../../quickstarts/label-tool.md) van het voor beeld van een formulier herkenning biedt een gebruikers interface die u kan helpen bij het maken van deze label bestanden. Zodra u deze hebt, kunt u de **begin_training** -functie aanroepen met de para meter *use_training_labels* ingesteld op `true` .
+> Als u met labels wilt trainen, moet uw Blob Storage-container naast de trainingsdocumenten ook speciale labelinformatiebestanden ( *\<filename\>.pdf.labels.json*) bevatten. Het [hulpprogramma voor labelen van Form Recognizer](../../quickstarts/label-tool.md) beschikt over een gebruikersinterface die u kan helpen bij het maken van deze labelbestanden. Zodra u deze hebt, kunt u de functie **begin_training** aanroepen met de parameter *use_training_labels* ingesteld op `true`.
 
 ```python
-poller = form_training_client.begin_training(self.trainingDataUrl, use_training_labels=True)
+poller = form_training_client.begin_training(trainingDataUrl, use_training_labels=True)
 model = poller.result()
 ```
 
-De geretourneerde **CustomFormSubmodel** geeft aan welke velden het model kan ophalen, samen met de geschatte nauw keurigheid van elk veld. In het volgende code blok wordt deze informatie in de-console afgedrukt.
+Het geretourneerde **CustomFormSubmodel** geeft aan welke velden het model kan extraheren, samen met de geschatte nauwkeurigheid van elk veld. In het volgende codeblok wordt deze informatie op de console weergegeven.
 
 ```python
 # Custom model information
@@ -288,12 +288,12 @@ for submodel in model.submodels:
 
 ## <a name="analyze-forms-with-a-custom-model"></a>Formulieren analyseren met een aangepast model
 
-In deze sectie wordt gedemonstreerd hoe u sleutel/waarde-informatie en andere inhoud uit uw aangepaste formulier typen kunt extra heren met behulp van modellen die u hebt getraind met uw eigen formulieren.
+In deze sectie ziet u hoe u sleutel-waarde-informatie en andere inhoud uit uw aangepaste formuliertypen kunt extraheren met behulp van modellen die u hebt getraind met uw eigen formulieren.
 
 > [!IMPORTANT]
-> Als u dit scenario wilt implementeren, moet u al een model hebben getraind, zodat u de ID ervan kunt door geven naar de onderstaande methode. Zie de sectie [een model trainen](#train-a-model-without-labels) .
+> Als u dit scenario wilt implementeren, moet u al een model hebben getraind, zodat u de id ervan kunt doorgeven aan onderstaande methode. Zie de sectie [Een model trainen](#train-a-model-without-labels).
 
-U gebruikt de **begin_recognize_custom_forms_from_url** methode. De geretourneerde waarde is een verzameling **RecognizedForm** -objecten: één voor elke pagina in het verzonden document.
+U gebruikt de methode **begin_recognize_custom_forms_from_url**. De geretourneerde waarde is een verzameling **RecognizedForm**-objecten: één voor elke pagina in het ingediende document.
 
 ```python
 # Make sure your form's type is included in the list of form types the custom model can recognize
@@ -302,7 +302,7 @@ poller = form_recognizer_client.begin_recognize_custom_forms_from_url(
 forms = poller.result()
 ```
 
-Met de volgende code worden de resultaten van de analyse naar de console afgedrukt. Alle herkende velden en bijbehorende waarden worden afgedrukt, samen met een betrouwbaarheids Score.
+Met de volgende code worden de resultaten van de analyse op de console weergegeven. Alle herkende velden en bijbehorende waarden worden afgedrukt, samen met een betrouwbaarheidsscore.
 
 ```python
 for idx, form in enumerate(forms):
@@ -330,9 +330,9 @@ for idx, form in enumerate(forms):
 
 In deze sectie wordt beschreven hoe u de aangepaste modellen beheert die zijn opgeslagen in uw account. 
 
-### <a name="check-the-number-of-models-in-the-formrecognizer-resource-account"></a>Het aantal modellen in het FormRecognizer-resource account controleren
+### <a name="check-the-number-of-models-in-the-formrecognizer-resource-account"></a>Het aantal modellen in het FormRecognizer-resourceaccount controleren
 
-In het volgende code blok wordt het aantal modellen gecontroleerd dat u hebt opgeslagen in uw formulier Recognizer-account en vergelijkt deze met de limiet voor het account.
+In het volgende codeblok wordt het aantal modellen gecontroleerd dat u in uw Form Recognizer-account hebt opgeslagen en wordt dit aantal vergeleken met de limiet voor het account.
 
 ```python
 # First, we see how many custom models we have, and what our limit is
@@ -342,9 +342,9 @@ print("Our account has {} custom models, and we can have at most {} custom model
 ))
 ```
 
-### <a name="list-the-models-currently-stored-in-the-resource-account"></a>De modellen weer geven die momenteel zijn opgeslagen in het resource-account
+### <a name="list-the-models-currently-stored-in-the-resource-account"></a>De modellen weergeven die momenteel zijn opgeslagen in het resource-account
 
-In het volgende code blok worden de huidige modellen in uw account vermeld en worden de details ervan in de-console weer gegeven. Er wordt ook een verwijzing naar het eerste model opgeslagen.
+In het volgende codeblok worden de huidige modellen in uw account vermeld en worden de details ervan in de console weergegeven. Er wordt ook een verwijzing naar het eerste model opgeslagen.
 
 ```python
 # Next, we get a paged list of all of our custom models
@@ -359,9 +359,9 @@ for model in custom_models:
     print(model.model_id)
 ```
 
-### <a name="get-a-specific-model-using-the-models-id"></a>Een specifiek model ophalen met de ID van het model
+### <a name="get-a-specific-model-using-the-models-id"></a>Een specifiek model ophalen met de id van het model
 
-Het volgende code blok maakt gebruik van de model-ID die is opgeslagen in de vorige sectie en gebruikt deze om details over het model op te halen.
+Het volgende codeblok maakt gebruik van de model-id die is opgeslagen in de vorige sectie en gebruikt deze om details over het model op te halen.
 
 ```python
 # Now we'll get the first custom model in the paged list
@@ -372,9 +372,9 @@ print("Created on: {}".format(custom_model.requested_on))
 print("Last modified: {}".format(custom_model.completed_on))
 ```
 
-### <a name="delete-a-model-from-the-resource-account"></a>Een model uit het resource-account verwijderen
+### <a name="delete-a-model-from-the-resource-account"></a>Een model uit het resourceaccount verwijderen
 
-U kunt ook een model uit uw account verwijderen door te verwijzen naar de ID. Met deze code wordt het model dat in de vorige sectie wordt gebruikt, verwijderd.
+U kunt een model ook uit uw account verwijderen door naar de id te verwijzen. Met deze code wordt het model verwijderd dat in de vorige sectie is gebruikt.
 
 ```python
 form_training_client.delete_model(model_id=custom_model.model_id)
@@ -389,7 +389,7 @@ except ResourceNotFoundError:
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Voer de toepassing uit met de `python` opdracht in uw Quick Start-bestand.
+Voer de toepassing uit met de opdracht `python` in uw quickstart-bestand.
 
 ```console
 python quickstart-file.py
@@ -397,7 +397,7 @@ python quickstart-file.py
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resource groep verwijderen. Als u de resource groep verwijdert, worden ook alle bijbehorende resources verwijderd.
+Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resourcegroep verwijderen. Als u de resourcegroep verwijdert, worden ook alle bijbehorende resources verwijderd.
 
 * [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure-CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
@@ -406,13 +406,13 @@ Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de
 
 ### <a name="general"></a>Algemeen
 
-De client bibliotheek van de formulier herkenning leidt tot uitzonde ringen die zijn gedefinieerd in [Azure core](https://aka.ms/azsdk-python-azure-core).
+De Form Recognizer-clientbibliotheek genereert uitzonderingen die zijn gedefinieerd in [Azure Core](https://aka.ms/azsdk-python-azure-core).
 
 ## <a name="logging"></a>Logboekregistratie
 
-Deze bibliotheek maakt gebruik van de [standaard logboek registratie bibliotheek](https://docs.python.org/3/library/logging.html) voor logboek registratie. Basis informatie over HTTP-sessies (Url's, kopteksten, enzovoort) wordt vastgelegd op het INFO niveau.
+Deze bibliotheek maakt gebruik van de [standaardbibliotheek voor logboekregistratie](https://docs.python.org/3/library/logging.html) voor logboekregistratie. Basisinformatie over HTTP-sessies (URL's, headers, enzovoort) wordt vastgelegd op INFO-niveau.
 
-Gedetailleerde logboek registratie van fout opsporing, met inbegrip van aanvraag/antwoord-instanties en unredacted headers, kan worden ingeschakeld op een client met het `logging_enable` trefwoord argument:
+Gedetailleerde logboekregistratie op DEBUG-niveau met aanvraag/antwoord-body's en niet-geredigeerde headers, kan worden ingeschakeld op een client met het sleutelwoordargument `logging_enable`:
 
 ```python
 import sys
@@ -435,7 +435,7 @@ credential = AzureKeyCredential("<api_key>")
 form_recognizer_client = FormRecognizerClient(endpoint, credential, logging_enable=True)
 ```
 
-Zo `logging_enable` kunt u ook gedetailleerde logboek registratie inschakelen voor één bewerking, zelfs wanneer deze niet is ingeschakeld voor de client:
+Op dezelfde manier kan `logging_enable` logboekregistratie voor één bewerking inschakelen, zelfs wanneer dit niet is ingeschakeld voor de client:
 
 ```python
 poller = form_recognizer_client.begin_recognize_receipts(receipt, logging_enable=True)
@@ -443,10 +443,10 @@ poller = form_recognizer_client.begin_recognize_receipts(receipt, logging_enable
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u de python-client bibliotheek voor de formulier herkenning gebruikt om modellen te trainen en formulieren op verschillende manieren te analyseren. Vervolgens leert u tips voor het maken van een betere set met trainings gegevens en het produceren van nauw keurige modellen.
+In deze quickstart hebt u de clientbibliotheek van Form Recognizer voor Python gebruikt om modellen te trainen en formulieren op verschillende manieren te analyseren. Vervolgens leert u tips voor het maken van een betere set met trainingsgegevens en het produceren van nauwkeurigere modellen.
 
 > [!div class="nextstepaction"]
 > [Een set met trainingsgegevens samenstellen](../../build-training-data-set.md)
 
 * [Wat is Form Recognizer?](../../overview.md)
-* De voorbeeld code uit deze hand leiding is te vinden op [github](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples).
+* De voorbeeldcode uit deze gids (en meer) is te vinden op [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples).

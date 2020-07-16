@@ -1,23 +1,23 @@
 ---
-title: 'Snelstart: Ruby gebruiken om de Text Analytics-API aan te roepen'
+title: 'Quickstart: Ruby gebruiken om de Text Analytics-API aan te roepen'
 titleSuffix: Azure Cognitive Services
-description: Deze Quick Start laat zien hoe u informatie en code voorbeelden kunt ophalen om snel aan de slag te gaan met behulp van de Text Analytics-API in azure Cognitive Services.
+description: In deze quickstart leert u informatie en codevoorbeelden op te halen om snel aan de slag te gaan met behulp van de Text Analytics-API in Microsoft Cognitive Services in Azure.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 07/06/2020
 ms.author: aahi
-ms.openlocfilehash: 0cda6005a014e0f269e468daf389c1abea9d4bcd
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
-ms.translationtype: MT
+ms.openlocfilehash: 92a80dc69afbda76d57a09e01efc9b91ecb286ba
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611171"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027912"
 ---
-# <a name="quickstart-using-ruby-to-call-the-text-analytics-cognitive-service"></a>Snelstart: Ruby gebruiken om de Text Analytics Cognitive Service aan te roepen
+# <a name="quickstart-using-ruby-to-call-the-text-analytics-cognitive-service"></a>Quickstart: Ruby gebruiken om de Text Analytics Cognitive Service aan te roepen
 <a name="HOLTop"></a>
 
 In dit artikel ziet u hoe u de  [Text Analytics-API's](//go.microsoft.com/fwlink/?LinkID=759711)  met Ruby kunt gebruiken om [taal te detecteren](#Detect), [sentiment te analyseren](#SentimentAnalysis), [sleuteltermen op te halen](#KeyPhraseExtraction) en [gekoppelde entiteiten te identificeren](#Entities).
@@ -36,7 +36,7 @@ Met de Language Detection-API wordt de taal van een tekstdocument gedetecteerd m
 
 1. Maak een nieuw Ruby-project in uw favoriete IDE.
 1. Voeg de onderstaande code toe.
-1. Kopieer de Text Analytics sleutel en het eind punt naar de code. 
+1. Kopieer uw Text Analytics-sleutel en het eindpunt naar de code. 
 1. Voer het programma uit.
 
 ```ruby
@@ -120,7 +120,7 @@ Met de Sentiment Analysis-API wordt een set tekstrecords gedetecteerd met behulp
 
 1. Maak een nieuw Ruby-project in uw favoriete IDE.
 1. Voeg de onderstaande code toe.
-1. Kopieer de Text Analytics sleutel en het eind punt naar de code. 
+1. Kopieer uw Text Analytics-sleutel en het eindpunt naar de code. 
 1. Voer het programma uit.
 
 ```ruby
@@ -223,7 +223,7 @@ Met de Key Phrase Extraction-API worden sleuteltermen opgehaald uit een tekstdoc
 
 1. Maak een nieuw Ruby-project in uw favoriete IDE.
 1. Voeg de onderstaande code toe.
-1. Kopieer de Text Analytics sleutel en het eind punt naar de code.
+1. Kopieer uw Text Analytics-sleutel en het eindpunt naar de code.
 1. Voer het programma uit.
 
 
@@ -312,7 +312,7 @@ De Entities-API extraheert entiteiten uit een tekstdocument met behulp van de [m
 
 1. Maak een nieuw Ruby-project in uw favoriete IDE.
 1. Voeg de onderstaande code toe.
-1. Kopieer de Text Analytics sleutel en het eind punt naar de code.
+1. Kopieer uw Text Analytics-sleutel en het eindpunt naar de code.
 1. Voer het programma uit.
 
 ```ruby

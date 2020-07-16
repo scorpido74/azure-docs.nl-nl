@@ -1,64 +1,52 @@
 ---
-title: 'Snelstartgids: een virtuele Linux-machine maken in de Azure Portal'
-description: In deze Quick Start leert u hoe u de Azure Portal kunt gebruiken om een virtuele Linux-machine te maken.
+title: 'Snelstart: Een virtuele Linux-machine maken op de Azure-portal'
+description: In deze snelstartgids leert u hoe u de Azure-portal gebruikt om een virtuele Linux-machine te maken.
 author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: quickstart
 ms.workload: infrastructure
-ms.date: 11/05/2019
+ms.date: 06/25/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6bf9a89a4806db53797191336578ef9148886181
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 5189a9dc8cd83877b4797fd828e9c9f6da8d1b93
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81759237"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85392835"
 ---
-# <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Snelstart: Een virtuele Linux-machine maken op de Azure Portal
+# <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Quickstart: Een virtuele Linux-machine maken in Azure-portal
 
-Virtuele Azure-machines (VM's)kunnen worden gemaakt via Azure Portal. De Azure Portal is een gebruikers interface op basis van een browser voor het maken van Azure-resources. In deze Quick start ziet u hoe u de Azure Portal gebruikt voor het implementeren van een virtuele Linux-machine (VM) met Ubuntu 18,04 LTS. Wanner u uw virtuele machine in actie wilt zien, voert u ook SSH voor de virtuele machine uit en installeert u de NGINX-webserver.
+Virtuele Azure-machines (VM's) kunnen gemaakt worden via Azure Portal. De Azure-portal is een gebruikersinterface op basis van een browser voor het maken van Azure-resources. In deze snelstart wordt beschreven hoe u de Azure-portal gebruikt voor het implementeren van een virtuele Linux-machine (VM) waarop Ubuntu 18.04 LTS wordt uitgevoerd. Wanner u uw virtuele machine in actie wilt zien, voert u ook SSH voor de virtuele machine uit en installeert u de NGINX-webserver.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
-## <a name="create-ssh-key-pair"></a>Een SSH-sleutelpaar maken
-
-U hebt een SSH-sleutelpaar nodig om deze snelstart te volgen. Als u al een SSH-sleutelpaar hebt, kunt u deze stap overslaan.
-
-Open een bash-shell en gebruik [ssh-keygen](https://www.ssh.com/ssh/keygen/) om een SSH-sleutelpaar te maken. Als u geen een bash-shell op uw lokale computer hebt, kunt u de [Azure Cloud Shell](https://shell.azure.com/bash) gebruiken.
-
-
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Selecteer in het menu boven aan de pagina het `>_` pictogram om Cloud shell te openen.
-1. Zorg ervoor dat de Cloud shell **bash** in de linkerbovenhoek aangeeft. Als het Power shell is, gebruikt u de vervolg keuzelijst om **bash** te selecteren en selecteert u **bevestigen** dat u wilt overschakelen naar de bash-shell.
-1. Typ `ssh-keygen -t rsa -b 2048` om de SSH-sleutel te maken. 
-1. U wordt gevraagd een bestand op te geven waarin het sleutel paar moet worden opgeslagen. Druk op **Enter** om op te slaan op de standaard locatie, die wordt weer gegeven tussen vier Kante haken. 
-1. U wordt gevraagd om een wachtwoordzin in te voeren. U kunt een wachtwoordzin voor uw SSH-sleutel typen of op **Enter** drukken om zonder een wachtwoordzin door te gaan.
-1. Met `ssh-keygen` de opdracht worden open bare en persoonlijke sleutels gegenereerd met de `id_rsa` standaard naam `~/.ssh directory`van in de. Met de opdracht wordt het volledige pad naar de openbare sleutel geretourneerd. Gebruik het pad naar de open bare sleutel om de inhoud ervan `cat` weer te `cat ~/.ssh/id_rsa.pub`geven door te typen.
-1. Kopieer de uitvoer van deze opdracht en sla deze ergens op om deze later in dit artikel te gebruiken. Dit is uw open bare sleutel en u hebt deze nodig bij het configureren van uw beheerders account om u aan te melden bij uw VM.
-
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com) als u dat nog niet hebt gedaan.
+Meld u aan bij de [Azure-portal](https://portal.azure.com) als u dat nog niet hebt gedaan.
 
 ## <a name="create-virtual-machine"></a>Virtuele machine maken
 
-1. Typ **virtuele machines** in de zoek opdracht.
-1. Selecteer onder **Services**de optie **virtuele machines**.
-1. Selecteer op de pagina **virtuele machines** de optie **toevoegen**. De pagina **een virtuele machine maken** wordt geopend.
-1. Zorg ervoor dat op het tabblad **Basics** onder **Projectgegevens** het juiste abonnement is geselecteerd, en kies **Nieuwe maken** om een nieuwe resourcegroep te maken. Typ *myResourceGroup* voor de naam. *. 
+1. Typ **virtuele machines** in de zoekopdracht.
+1. Selecteer **virtuele machines** onder **Services**.
+1. Selecteer **Toevoegen** op de pagina **virtuele machines**. De pagina **Een virtuele machine maken** wordt geopend.
+1. Zorg ervoor dat op het tabblad **Basics** onder **Projectgegevens** het juiste abonnement is geselecteerd, en kies **Nieuwe maken** om een nieuwe resourcegroep te maken. Typ *myResourceGroup* als de naam.*. 
 
     ![Een nieuwe resourcegroep maken voor uw VM](./media/quick-create-portal/project-details.png)
 
-1. Typ *myVM* voor de naam van de **virtuele machine**onder Details van het **exemplaar**, kies *VS-oost* voor uw **regio**en kies *Ubuntu 18,04 LTS* voor uw **installatie kopie**. Houd voor de rest de standaardinstellingen aan.
+1. Typ onder **Exemplaardetails***myVM* als **Naam van de virtuele machine** en kies *VS - oost* als de **Regio** en kies *Ubuntu 18.04 LTS* voor uw **Installatiekopie**. Houd voor de rest de standaardinstellingen aan.
 
     ![Sectie Exemplaardetails](./media/quick-create-portal/instance-details.png)
 
-1. Onder **Administrator-account**selecteert u **open bare SSH-sleutel**, typt u uw gebruikers naam en plakt u deze in uw open bare sleutel. Verwijder eventuele voorloop- en volgspaties van uw openbare sleutel.
+1. Selecteer **Openbare SSH-sleutel** onder **Beheerdersaccount**.
+
+1. Typ in **Gebruikersnaam** *azureuser*.
+
+1. Voor **Openbare SSH-sleutel bron**, laat u de standaardwaarde van **Nieuwe sleutelpaar genereren** en typt u vervolgens *myKey* voor de **Naam van sleutelpaar**.
 
     ![Administrator-account](./media/quick-create-portal/administrator-account.png)
 
-1. Onder **Binnenkomende poort regels** > **open bare binnenkomende poorten**kiest u **geselecteerde poorten toestaan** en selecteert u **SSH (22)** en **http (80)** in de vervolg keuzelijst. 
+1. Onder **Regels voor binnenkomende poort** > **Openbare binnenkomende poorten**, kiest u **​​Geselecteerde poorten toestaan** en selecteert u vervolgens **SSH (22)** en  **HTTP (80)** in de vervolgkeuzelijst. 
 
     ![Open poorten voor RDP en HTTP](./media/quick-create-portal/inbound-port-rules.png)
 
@@ -66,24 +54,29 @@ Meld u aan bij de [Azure Portal](https://portal.azure.com) als u dat nog niet he
 
 1. Op de pagina **Een virtuele machine maken** ziet u de details van de virtuele machine die u gaat maken. Wanneer u klaar bent, selecteert u **Maken**.
 
-Het duurt een paar minuten voor uw virtuele machine is geïmplementeerd. Wanneer de implementatie is voltooid, gaat u verder naar de volgende sectie.
+1. Wanneer het venster **Nieuw sleutelpaar genereren** wordt geopend, selecteert u **Persoonlijke sleutel downloaden en resource maken**. Het sleutelbestand wordt gedownload als **myKey.pem**. Zorg ervoor dat u weet waar het bestand `.pem` is gedownload. U hebt het pad in de volgende stap nodig.
 
-    
+1. Nadat de implementatie klaar is, selecteert u **Ga naar resource**.
+
+1. Selecteer op de pagina voor de nieuwe virtuele machine het openbare IP-adres en kopieer het naar het klembord.
+
+
+    ![Kopieer het openbare IP-adres](./media/quick-create-portal/ip-address.png)
+
 ## <a name="connect-to-virtual-machine"></a>Verbinding maken met de virtuele machine
 
 Maak een SSH-verbinding met de VM.
 
-1. Selecteer de knop **Verbinden** op de overzichtspagina van uw VM. 
+1. Als u zich op een Mac-of Linux-computer bevindt, opent u een Bash-opdracht. Als u zich op een Windows-computer bevindt, opent u een PowerShell-opdracht. 
 
-    ![Portal 9](./media/quick-create-portal/portal-quick-start-9.png)
+1. Open bij de opdracht een SSH-verbinding met uw virtuele machine. Vervang het IP-adres door het van uw virtuele machine en vervang het pad naar de `.pem` door het pad naar de locatie waar het sleutelbestand is gedownload.
 
-2. Laat op de pagina **Verbinding maken met virtuele machine** de standaardopties staan om verbinding te maken met een IP-adres via poort 22. In **Aanmelden met lokaal VM-account** wordt een verbindingsopdracht weergegeven. Selecteer de knop om de opdracht te kopiëren. Het volgende voorbeeld laat zien hoe de SSH-verbindingsopdracht eruitziet:
+```console
+ssh -i .\Downloads\myKey1.pem azureuser@10.111.12.123
+```
 
-    ```bash
-    ssh azureuser@10.111.12.123
-    ```
-
-3. Met dezelfde bash-shell die u hebt gebruikt om uw SSH-sleutel paar te maken (u kunt de Cloud Shell `>_` opnieuw openen door opnieuw `https://shell.azure.com/bash`te selecteren of naar te gaan), plak de opdracht SSH-verbinding in de shell om een SSH-sessie te maken.
+> [!TIP]
+> De SSH-sleutel die u hebt gemaakt, kan de volgende keer dat u een virtuele machine in Azure maakt, worden gebruikt. Selecteer de **Een sleutel die is opgeslagen in Azure gebruiken** voor **SSH-bron met openbare sleutel** de volgende keer dat u een VM maakt. U hebt de persoonlijke sleutel al op uw computer geïnstalleerd, dus u hoeft niets te downloaden.
 
 ## <a name="install-web-server"></a>Webserver installeren
 
@@ -99,7 +92,7 @@ Wanneer u klaar bent, typt u `exit` om de SSH-sessie te verlaten.
 
 ## <a name="view-the-web-server-in-action"></a>De webserver in actie zien
 
-Gebruik een webbrowser naar keuze om de standaard NGINX-welkomstpagina weer te geven. Typ het open bare IP-adres van de virtuele machine als Internet adres. Het openbare IP-adres kan worden gevonden op de overzichtspagina van de virtuele machine of als onderdeel van de SSH-verbindingsreeks die u eerder hebt gebruikt.
+Gebruik een webbrowser naar keuze om de standaard NGINX-welkomstpagina weer te geven. Voer het openbare IP-adres van uw VM in als het webadres. Het openbare IP-adres kan worden gevonden op de overzichtspagina van de virtuele machine of als onderdeel van de SSH-verbindingsreeks die u eerder hebt gebruikt.
 
 ![Standaardsite van NGINX](./media/quick-create-portal/nginx.png)
 

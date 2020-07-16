@@ -3,16 +3,16 @@ title: Gereserveerde exemplaren Azure EA-VM
 description: In dit artikel wordt samengevat hoe u met Azure-reserveringen voor gereserveerde VM-instanties geld kunt besparen met uw Enterprise Enrollment.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/11/2020
+ms.date: 07/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: a06f416ed1d4df33cc6777eba878eee2b4f6b047
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: b78abeaac3066839636918923636f4b7bdf9ee35
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84735418"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044852"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Gereserveerde exemplaren Azure EA-VM
 
@@ -83,9 +83,9 @@ Als u geen gebruik hebt gemaakt van het voordeel van Azure Hybrid om de gereserv
 
 ### <a name="reserved-instance-billing"></a>Facturering van gereserveerde instanties
 
-Voor zakelijke klanten wordt financiële toezegging gebruikt om gereserveerde VM-instanties van Azure aan te schaffen. Als uw inschrijving genoeg financiële toezegging heeft om de aankoop van de gereserveerde instantie te dekken, wordt het bedrag afgeschreven van uw financiële toezegging en ontvangt u geen factuur voor de aankoop.
+Voor zakelijke klanten wordt Azure-vooruitbetaling gebruikt om gereserveerde VM-instanties van Azure aan te schaffen. Als uw inschrijving genoeg saldo voor Azure-vooruitbetaling heeft om de aankoop van de gereserveerde instantie te dekken, wordt het bedrag afgeschreven van uw saldo voor Azure-vooruitbetaling en ontvangt u geen factuur voor de aankoop.
 
-Wanneer Azure EA-klanten alle financiële toezeggingen hebben gebruikt, kunnen er nog steeds gereserveerde instanties worden gekocht. Deze aankopen worden in rekening gebracht op de volgende factuur voor overschrijding. Overschrijding van gereserveerde instanties, indien van toepassing, vormen onderdeel van uw reguliere overschrijdingsfactuur.
+Wanneer Azure EA-klanten alle Azure-vooruitbetaling hebben gebruikt, kunnen er nog steeds gereserveerde instanties worden gekocht. Deze aankopen worden in rekening gebracht op de volgende overschrijdingsfactuur. Overschrijding van gereserveerde instanties, indien van toepassing, vormen onderdeel van uw reguliere overschrijdingsfactuur.
 
 ### <a name="reserved-instance-expiration"></a>Verloop van gereserveerde instanties
 

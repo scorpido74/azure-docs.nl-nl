@@ -3,16 +3,16 @@ title: Beheer van Azure EA Portal
 description: In dit artikel worden de algemene taken beschreven die een beheerder in Azure EA Portal uitvoert.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: eefd4a9ddf2150728578a4e058686a3204e34930
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 6169a18148b251540d66bce6e34374a16f697015
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84456552"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044886"
 ---
 # <a name="azure-ea-portal-administration"></a>Beheer van Azure EA Portal
 
@@ -33,7 +33,7 @@ Ondernemingsbeheerders kunnen bestaande accounts aan afdelingen onder de inschri
 
 ## <a name="department-spending-quotas"></a>Bestedingsquota van afdeling
 
-EA-klanten kunnen bestedingsquota instellen of wijzigen voor elke afdeling onder een inschrijving. De hoogte van het bestedingsquotum wordt voor de huidige toezeggingstermijn ingesteld. Aan het einde van de huidige toezeggingstermijn wordt het bestaande bestedingsquotum naar de volgende toezeggingstermijn uitgebreid, tenzij de waarden worden bijgewerkt.
+EA-klanten kunnen bestedingsquota instellen of wijzigen voor elke afdeling onder een inschrijving. De hoogte van het bestedingsquotum wordt voor de huidige vooruitbetalingstermijn ingesteld. Aan het einde van de huidige vooruitbetalingstermijn wordt het bestaande bestedingsquotum naar de volgende vooruitbetalingstermijn uitgebreid, tenzij de waarden worden bijgewerkt.
 
 De afdelingsbeheerder kan het bestedingsquotum zien, maar de hoogte ervan kan uitsluitend door de ondernemingsbeheerder worden bijgewerkt. De ondernemingsbeheerder en de afdelingsbeheerder krijgen meldingen wanneer 50%, 75%, 90% en 100% van een quotum is bereikt.
 
@@ -48,9 +48,9 @@ De afdelingsbeheerder kan het bestedingsquotum zien, maar de hoogte ervan kan ui
     - Op dit punt kunt u ook de Afdelingsnaam en de Kostenplaats bewerken.
  1. Selecteer **Opslaan**.
 
-Het bestedingsquotum voor de afdeling is nu zichtbaar in de weergave Afdelingslijst op het tabblad Afdeling. Aan het einde van de huidige toezegging blijven de bestedingsquota voor de volgende toezeggingstermijn door Azure EA Portal gehandhaafd.
+Het bestedingsquotum voor de afdeling is nu zichtbaar in de weergave Afdelingslijst op het tabblad Afdeling. Aan het einde van de huidige vooruitbetaling blijven de bestedingsquota voor de volgende vooruitbetalingstermijn door Azure EA Portal gehandhaafd.
 
-De hoogte van het bestedingsquotum is onafhankelijk van de huidige financiële toezegging, en de hoogte van het quotum en meldingen zijn alleen van toepassing op gebruik van interne producten. Het bestedingsquotum voor de afdeling is alleen bedoeld ter informatie en kan niet worden gebruikt om bestedingslimieten af te dwingen.
+De hoogte van het bestedingsquotum is onafhankelijk van de huidige Azure-vooruitbetaling, en de hoogte van het quotum en meldingen zijn alleen van toepassing op gebruik van interne producten. Het bestedingsquotum voor de afdeling is alleen bedoeld ter informatie en kan niet worden gebruikt om bestedingslimieten af te dwingen.
 
 ### <a name="department-administrator-to-view-the-quota"></a>De afdelingsbeheerder kan het quotum als volgt bekijken:
 
@@ -174,7 +174,7 @@ In dit document worden veelgestelde vragen beantwoord met betrekking tot het eig
 
 ### <a name="how-many-azure-account-owners-can-you-have-per-subscription"></a>Hoeveel Azure-accounteigenaren mogen er per abonnement worden gebruikt?
 
-Er is per abonnement maar één accounteigenaar toegestaan.  U kunt aanvullende rollen toevoegen met de opties Op rollen gebaseerde toegang of (Toegangsbeheer (IAM)) op het tabblad Abonnement in de linkerbovenhoek van de pagina op [portal.azure.com]](https://portal.azure.com).
+Er is per abonnement maar één accounteigenaar toegestaan.  U kunt aanvullende rollen toevoegen met de opties Op rollen gebaseerde toegang of (Toegangsbeheer (IAM)) op het tabblad Abonnement in de linkerbovenhoek van de pagina op de [Azure-portal](https://portal.azure.com).
 
 ### <a name="can-an-azure-account-owner-be-listed-under-more-than-one-department"></a>Kan een Azure-accounteigenaar worden vermeld onder meer dan één afdeling?
 

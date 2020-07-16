@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
-ms.openlocfilehash: ca70262a7980df9d427fbd7e58e08b41c37d7133
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 177aa42991612d8ce2e899576599aafc43015c58
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195580"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082774"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Zelfstudie: een cache-aside-leaderboard maken in ASP.NET
 
@@ -680,8 +680,8 @@ In deze sectie richt u een nieuwe database in SQL Database in die de app gaat ge
 
     | Tijdelijke aanduiding | Voorgestelde waarde |
     | --- | --- |
-    | *{uw_gebruikersnaam}* | Gebruik de **aanmeldgegevens van de serverbeheerder** voor de databaseserver die u net hebt gemaakt. |
-    | *{uw_wachtwoord}* | Gebruik het wachtwoord voor de databaseserver die u net hebt gemaakt. |
+    | *{uw_gebruikersnaam}* | Gebruik de **aanmeldgegevens van de serverbeheerder** voor de server die u zojuist hebt gemaakt. |
+    | *{uw_wachtwoord}* | Gebruik het wachtwoord voor de server die u zojuist hebt gemaakt. |
 
     Door de gebruikersnaam en het wachtwoord toe te voegen als een toepassingsinstelling, worden uw gebruikersnaam en wachtwoord niet opgenomen in de code. Met deze methode beschermt u deze referenties.
 

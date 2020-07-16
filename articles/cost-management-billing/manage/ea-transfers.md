@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.author: banders
-ms.openlocfilehash: a0846a07fd8107a87483753c8dbff1301fda4a0c
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: ff10d9ec9b92b85d057e556a21c144b9e8f155cf
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299907"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043271"
 ---
 # <a name="azure-enterprise-transfers"></a>Azure Enterprise-overdrachten
 
@@ -49,7 +49,7 @@ Andere punten waarmee u rekening moet houden voordat u een account overdraagt:
 
 Een inschrijvingsoverdracht wordt overwogen wanneer:
 
-- De toezeggingstermijn van een huidige inschrijving tot een einde is gekomen.
+- De vooruitbetalingstermijn van een huidige inschrijving tot een einde is gekomen.
 - Een inschrijving de status verlopen/uitgebreid heeft en er wordt onderhandeld over een nieuwe overeenkomst.
 - U meerdere inschrijvingen hebt en alle accounts en facturering wilt samenvoegen onder één inschrijving.
 
@@ -60,7 +60,7 @@ Wanneer u de overdracht van een volledige Enterprise-inschrijving naar een insch
 - Alle services, abonnementen, accounts en afdelingen van Azure, en de volledige inschrijvingsstructuur, inclusief alle EA-afdelingsbeheerders, worden overgedragen naar een nieuwe doelinschrijving.
 - De inschrijvingsstatus wordt ingesteld op _Overgedragen_. De overgedragen inschrijving is alleen beschikbaar voor rapportage van het historische gebruik.
 - U kunt geen rollen of abonnementen toevoegen aan een overgedragen inschrijving. De status Overgedragen voorkomt aanvullend gebruik van de inschrijving.
-- Het saldo van de resterende financiële toezegging in de overeenkomst gaat verloren, met inbegrip van toekomstige voorwaarden.
+- Het resterende saldo van de Azure-vooruitbetaling in de overeenkomst gaat verloren, met inbegrip van toekomstige termijnen.
 -    Als de inschrijving van waaruit u de overdracht uitvoert over RI-aankopen beschikt, blijven de kosten voor de aanschaf van RI in de broninschrijving. Alle RI-voordelen worden echter overgedragen zodat u deze in de nieuwe inschrijving kunt gebruiken.
 -    De eenmalige aanschafkosten via de marketplace en eventuele vaste maandelijkse kosten die al bij de oude inschrijving in rekening zijn gebracht, worden niet naar de nieuwe inschrijving overgedragen. Marketplace-kosten op basis van gebruik worden wel overgedragen.
 
@@ -68,7 +68,7 @@ Wanneer u de overdracht van een volledige Enterprise-inschrijving naar een insch
 
 De werkelijke overdrachtsdatum kan zijn op of na de startdatum van de doelinschrijving.
 
-Het gebruik van de broninschrijving wordt verrekend met de financiële toezegging of in rekening gebracht als overschrijding. Gebruik dat plaatsvindt na de werkelijke overdrachtsdatum, wordt overgedragen naar de nieuwe inschrijving en dienovereenkomstig in rekening gebracht.
+Het gebruik van de broninschrijving wordt verrekend met de Azure-vooruitbetaling of in rekening gebracht als overschrijding. Gebruik dat plaatsvindt na de werkelijke overdrachtsdatum, wordt overgedragen naar de nieuwe inschrijving en dienovereenkomstig in rekening gebracht.
 
 ### <a name="prerequisites"></a>Vereisten
 
@@ -84,9 +84,9 @@ Andere punten waarmee u rekening moet houden voordat u een inschrijving overdraa
 - Als een inschrijvingsoverdracht niet aan uw vereisten voldoet, kunt u een accountoverdracht overwegen.
 - De status van de broninschrijving wordt bijgewerkt naar overgedragen, en is alleen beschikbaar voor rapportagedoeleinden over historisch gebruik.
 
-### <a name="monetary-commitment"></a>Financiële toezegging
+### <a name="azure-prepayment"></a>Azure-vooruitbetaling
 
-De financiële toezegging is niet overdraagbaar tussen inschrijvingen. De financiële toezeggingssaldi zijn contractueel gebonden aan de inschrijving waar ze zijn besteld. De financiële toezegging is niet overdraagbaar als onderdeel van het overdrachtsproces voor het account of de inschrijving.
+De Azure-vooruitbetaling is niet overdraagbaar tussen inschrijvingen. De Azure-vooruitbetalingssaldi zijn contractueel gebonden aan de inschrijving waar ze zijn besteld. De Azure-vooruitbetaling is niet overdraagbaar als onderdeel van het overdrachtsproces voor het account of de inschrijving.
 
 ### <a name="no-services-affected-for-account-and-enrollment-transfers"></a>Er worden geen services beïnvloed voor de overdracht van accounts en inschrijvingen
 

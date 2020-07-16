@@ -3,21 +3,21 @@ author: IEvangelist
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
-ms.author: dapine
-ms.openlocfilehash: 1a1207b056a0cd86d1855d990a8857ef8d9752e4
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.author: trbye
+ms.openlocfilehash: a110ff1db9b75287eb1b75d80003796354aba35b
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82979557"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035544"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u aan de slag gaat:
 
 > [!div class="checklist"]
-> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Een Azure-spraak resource maken<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-> * [Stel uw ontwikkel omgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md)
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Een resource voor de Azure-spraakservice maken<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> * [Uw ontwikkelomgeving instellen en een leeg project maken](../../../../quickstarts/setup-platform.md)
 > * Zorg ervoor dat u toegang tot een microfoon hebt voor het vastleggen van audio
 
 ## <a name="create-a-new-website-folder"></a>Een nieuwe websitemap maken
@@ -42,7 +42,7 @@ Maak een nieuw bestand in de map met de naam `index.html` en open dit bestand me
 Als u de webpagina wilt hosten op een webserver, kunt u desgewenst een tokenbron opgeven voor uw voorbeeldtoepassing.
 Op die manier verlaat uw abonnementssleutel nooit uw server en is het gebruikers toegestaan gebruik te maken van spraakmogelijkheden zonder zelf een autorisatiecode in te hoeven voeren.
 
-Maak een nieuw bestand met de naam `token.php`. In dit voorbeeld gaan we er van uit dat uw webserver de PHP-scripttaal ondersteunt. Voer de volgende code in:
+Maak een nieuw bestand met de naam `token.php`. In dit voorbeeld gaan we ervan uit dat uw webserver de PHP-scripttaal ondersteunt als cURL is ingeschakeld. Voer de volgende code in:
 
 ```php
 <?php
@@ -72,7 +72,7 @@ Om de app te starten, dubbelklikt u op het bestand index.html of opent u index.h
 
 > [!NOTE]
 > Deze methode werkt niet in de Safari-browser.
-> Op Safari moet de voorbeeld webpagina worden gehost op een webserver. Met Safari kunnen websites die zijn geladen uit een lokaal bestand niet worden gebruikt voor het gebruik van de microfoon.
+> In Safari moet de voorbeeldwebpagina worden gehost op een webserver. Met Safari kunnen websites die zijn geladen vanuit een lokaal bestand niet worden gebruikt voor het gebruik van de microfoon.
 
 ## <a name="build-and-run-the-sample-via-a-web-server"></a>De voorbeeldtoepassing bouwen en uitvoeren via een webserver
 

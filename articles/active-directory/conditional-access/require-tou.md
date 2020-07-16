@@ -1,6 +1,6 @@
 ---
-title: Voor de voorwaardelijke toegang zijn de gebruiks voorwaarden-Azure Active Directory vereist
-description: In deze Quick Start leert u hoe u kunt vereisen dat uw gebruiks voorwaarden worden geaccepteerd voordat toegang tot geselecteerde Cloud-apps wordt verleend door Azure Active Directory voorwaardelijke toegang.
+title: Gebruiksvoorwaarden vereisen voor voorwaardelijke toegang - Azure Active Directory
+description: In deze quickstart leert u hoe u kunt vereisen dat gebruikers eerst uw gebruiksvoorwaarden accepteren voordat ze toegang tot geselecteerde cloud-apps krijgen via voorwaardelijke toegang van Azure Active Directory.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,21 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3dd1b4cf554e773f49a15ac5cedcbcc5b3e710b9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 34cc8154660db8afcd5859d45ccfd622bc7ca88f
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74380104"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039820"
 ---
-# <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>Quick Start: vereisen dat gebruiks voorwaarden worden geaccepteerd voor toegang tot Cloud-apps
+# <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>Quickstart: Vereisen dat gebruiksvoorwaarden worden geaccepteerd voor toegang tot cloud-apps
 
-Voordat u bepaalde Cloud-apps in uw omgeving kunt openen, kunt u toestemming geven voor gebruikers in de vorm van het accepteren van uw gebruiksrecht overeenkomst. Azure Active Directory (Azure AD) voorwaardelijke toegang biedt u het volgende:
+Voordat u gebruikers bepaalde cloud-apps in uw omgeving laat openen, kunt u eerst toestemming van ze vragen door ze uw gebruiksvoorwaarden te laten accepteren. Voorwaardelijke toegang van Azure Active Directory (Azure AD) biedt het volgende:
 
-- Een eenvoudige methode voor het configureren van gebruiks voorwaarden
-- De optie voor het accepteren van uw gebruiks voorwaarden via een beleid voor voorwaardelijke toegang  
+- Een eenvoudige methode voor het configureren van gebruiksvoorwaarden
+- De mogelijkheid om het accepteren van uw gebruiksvoorwaarden te vereisen via een beleid voor voorwaardelijke toegang  
 
-In deze Quick start ziet u hoe u een [beleid voor voorwaardelijke toegang voor Azure AD](../active-directory-conditional-access-azure-portal.md) configureert waarvoor een gebruiks voorwaarden moeten worden geaccepteerd voor een geselecteerde Cloud-app in uw omgeving.
+In deze quickstart ontdekt u hoe u een [beleid voor voorwaardelijke toegang voor Azure AD](../active-directory-conditional-access-azure-portal.md) kunt configureren waarbij gebruiksvoorwaarden moeten worden geaccepteerd voor een geselecteerde cloud-app in uw omgeving.
 
 ![Beleid maken](./media/require-tou/5555.png)
 
@@ -33,181 +33,180 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het volt ooien van het scenario in deze Quick Start hebt u het volgende nodig:
+Voor het voltooien van het scenario in deze quickstart hebt u het volgende nodig:
 
-- **Toegang tot een Azure AD Premium Edition** : voorwaardelijke toegang voor Azure AD is een Azure AD Premium mogelijkheid.
-- **Een test account met de naam Isabella Simonsen** : als u niet weet hoe u een test account moet maken, raadpleegt u [Cloud gebruikers toevoegen](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
+- **Toegang tot een Azure AD Premium-versie**: voorwaardelijke toegang van Azure AD is een Azure AD Premium-functie.
+- **Een testaccount onder de naam Isabella Simonsen**: als u niet weet hoe u een testaccount moet maken, raadpleegt u [Cloudgebruikers toevoegen](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
 
 ## <a name="test-your-sign-in"></a>Uw aanmelding testen
 
-Het doel van deze stap is om een indruk te krijgen van de aanmeldings ervaring zonder beleid voor voorwaardelijke toegang.
+Het doel van deze stap is om een indruk te krijgen van de aanmeldingservaring zonder een beleid voor voorwaardelijke toegang.
 
 **Uw aanmelding testen:**
 
-1. Meld u aan bij uw [Azure Portal](https://portal.azure.com/) als Isabella Simonsen.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/) als Isabella Simonsen.
 1. Meld u af.
 
-## <a name="create-your-terms-of-use"></a>Uw gebruiks voorwaarden maken
+## <a name="create-your-terms-of-use"></a>Uw gebruiksvoorwaarden maken
 
-In deze sectie vindt u de stappen voor het maken van een voor beeld van gebruiks voorwaarden. Wanneer u een gebruiks voorwaarden maakt, selecteert u een waarde voor **afdwingen met beleids sjablonen voor voorwaardelijke toegang**. Als u **aangepast beleid** selecteert, wordt het dialoog venster geopend om een nieuw beleid voor voorwaardelijke toegang te maken zodra uw gebruiks voorwaarden zijn gemaakt.
+In deze sectie vindt u de stappen om een voorbeeld van uw gebruiksvoorwaarden te maken. Tijdens het maken van de gebruiksvoorwaarden selecteert u een waarde voor **Afdwingen met sjablonen voor beleid voor voorwaardelijke toegang**. Als u **Aangepast beleid** selecteert, wordt zodra uw gebruiksvoorwaarden zijn gemaakt het dialoogvenster om een nieuw beleid voor voorwaardelijke toegang te maken geopend.
 
-**U kunt als volgt uw gebruiks voorwaarden maken:**
+**U kunt als volgt uw gebruiksvoorwaarden maken:**
 
-1. Maak een nieuw document in micro soft Word.
-1. Typ **mijn gebruiks voorwaarden**en sla het document op uw computer op als **mytou. PDF**.
-1. Meld u aan bij uw [Azure Portal](https://portal.azure.com) als globale beheerder, beveiligings beheerder of een beheerder voor voorwaardelijke toegang.
-1. Klik in het Azure Portal op de linkernavigatiebalk op **Azure Active Directory**.
+1. Maak een nieuw document in Microsoft Word.
+1. Typ **My terms of use** (Mijn gebruiksvoorwaarden) en sla het document op uw computer op als **mytou.pdf**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) als globale beheerder, beveiligingsbeheerder of beheerder voor voorwaardelijke toegang.
+1. Klik in de Azure-portal in de linkernavigatiebalk op **Azure Active Directory**.
 
    ![Azure Active Directory](./media/require-tou/02.png)
 
-1. Klik op de pagina **Azure Active Directory** in de sectie **beveiliging** op **voorwaardelijke toegang**.
+1. Klik op de pagina **Azure Active Directory** in de sectie **Beveiliging** op de optie **Voorwaardelijke toegang**.
 
    ![Voorwaardelijke toegang](./media/require-tou/03.png)
 
-1. Klik in de sectie **beheren** op **Gebruiksvoorwaarden**.
+1. Klik in de sectie **Beheren** op **Gebruiksvoorwaarden**.
 
    ![Gebruiksvoorwaarden](./media/require-tou/04.png)
 
-1. Klik in het menu aan de bovenkant op **nieuwe voor waarden**.
+1. Klik in het menu bovenaan op **Nieuwe voorwaarden**.
 
    ![Gebruiksvoorwaarden](./media/require-tou/05.png)
 
-1. Op de pagina **nieuwe gebruiks voorwaarden** :
+1. Op de pagina **Nieuwe gebruiksvoorwaarden**:
 
    ![Gebruiksvoorwaarden](./media/require-tou/112.png)
 
-   1. Typ **mijn gebruiks voorwaarden**in het tekstvak **naam** .
-   1. In het tekstvak **weergave naam** typt u **mijn gebruiks voorwaarden**.
-   1. Upload uw voor waarden van het PDF-bestand voor gebruik.
-   1. Als **taal**, selecteer **Engels**.
-   1. Selecteer **aan**als **gebruikers de gebruiks voorwaarden moeten uitbreiden**.
-   1. Als **afdwingen met beleids sjablonen voor voorwaardelijke toegang**, selecteert u **aangepast beleid**.
-   1. Klik op **maken**.
+   1. Voer in het tekstvak **Naam** **My TOU** in.
+   1. Typ **My TOU** in het vak **Weergavenaam**.
+   1. Upload het PDF-bestand met uw gebruiksvoorwaarden.
+   1. Selecteer **Engels** als **Taal**.
+   1. Selecteer **Aan** bij de optie **Gebruikers verplichten de gebruiksvoorwaarden uit te vouwen**.
+   1. Selecteer bij **Afdwingen met sjablonen voor beleid voor voorwaardelijke toegang** de optie **Aangepast beleid**.
+   1. Klik op **Create**.
 
-## <a name="create-your-conditional-access-policy"></a>Het beleid voor voorwaardelijke toegang maken
+## <a name="create-your-conditional-access-policy"></a>Uw beleid voor voorwaardelijke toegang maken
 
-In deze sectie wordt beschreven hoe u het vereiste beleid voor voorwaardelijke toegang maakt. In het scenario in deze Snelstartgids wordt het volgende gebruikt:
+In deze sectie wordt beschreven hoe u het vereiste beleid voor voorwaardelijke toegang maakt. In het scenario in deze quickstart wordt het volgende gebruikt:
 
-- De Azure Portal als tijdelijke aanduiding voor een Cloud-app waarvoor uw gebruiks voorwaarden moeten worden geaccepteerd. 
-- Uw voorbeeld gebruiker om het beleid voor voorwaardelijke toegang te testen.  
+- De Azure-portal als tijdelijke aanduiding voor een cloud-app waarvoor uw gebruiksvoorwaarden moeten worden geaccepteerd. 
+- Uw voorbeeldgebruiker om het beleid voor voorwaardelijke toegang te testen.  
 
 Stel in uw beleid het volgende in:
 
 | Instelling | Waarde |
 | --- | --- |
 | Gebruikers en groepen | Isabella Simonsen |
-| Cloud-apps | Microsoft Azure beheer |
-| Toegang verlenen | Mijn gebruiks voorwaarden |
+| Cloud-apps | Microsoft Azure-beheer |
+| Toegang verlenen | My TOU |
 
 ![Beleid maken](./media/require-tou/1234.png)
 
-**Het beleid voor voorwaardelijke toegang configureren:**
+**Uw beleid voor voorwaardelijke toegang configureren:**
 
-1. Op de pagina **Nieuw** , in het tekstvak **naam** , typt u gebruiks **voorwaarden vereisen voor Isabella**.
+1. Typ op de pagina **Nieuw** in het tekstvak **Naam** **Require TOU for Isabella** (Gebruiksvoorwaarden vereisen voor Isabella).
 
    ![Naam](./media/require-tou/71.png)
 
-1. Klik in de sectie **toewijzing** op **gebruikers en groepen**.
+1. Klik in de sectie **Toewijzing** op **Gebruikers en groepen**.
 
    ![Gebruikers en groepen](./media/require-tou/06.png)
 
-1. Op de pagina **gebruikers en groepen** :
+1. Op de pagina **Gebruikers en groepen**:
 
    ![Gebruikers en groepen](./media/require-tou/24.png)
 
-   1. Klik op **gebruikers en groepen selecteren**en selecteer vervolgens **gebruikers en groepen**.
-   1. Klik op **selecteren**.
-   1. Selecteer op de pagina **selecteren** de optie **Isabella Simonsen**en klik vervolgens op **selecteren**.
-   1. Klik op de pagina **gebruikers en groepen** op **gereed**.
+   1. Klik op **Gebruikers en groepen selecteren** en selecteer vervolgens **Gebruikers en groepen**.
+   1. Klik op **Selecteren**.
+   1. Selecteer op de pagina **Selecteren** de optie **Isabella Simonsen** en klik vervolgens op **Selecteren**.
+   1. Klik op de pagina **Gebruikers en groepen** op **Gereed**.
 1. Klik op **Cloud-apps**.
 
    ![Cloud-apps](./media/require-tou/08.png)
 
-1. Op de pagina **Cloud-apps** :
+1. Op de pagina **Cloud-apps**:
 
    ![Cloud-apps selecteren](./media/require-tou/26.png)
 
-   1. Klik op **apps selecteren**.
-   1. Klik op **selecteren**.
-   1. Selecteer op de pagina **selecteren** de optie **Microsoft Azure beheer**en klik vervolgens op **selecteren**.
-   1. Klik op de pagina **Cloud-apps** op **gereed**.
-1. Klik in de sectie **toegangs beheer** op **verlenen**.
+   1. Klik op **Apps selecteren**.
+   1. Klik op **Selecteren**.
+   1. Selecteer op de pagina **Selecteren** de optie **Microsoft Azure Management** en klik vervolgen op **Selecteren**.
+   1. Klik op de pagina **Cloud-apps** op **Gereed**.
+1. Klik in de sectie**Besturingselementen voor toegang** op **Toekennen**.
 
    ![Besturingselementen voor toegang](./media/require-tou/10.png)
 
-1. Op de pagina **Grant** :
+1. Op de pagina **Toekennen**:
 
    ![Verlenen](./media/require-tou/111.png)
 
-   1. Selecteer **toegang verlenen**.
-   1. Selecteer **mijn gebruiks voorwaarden**.
-   1. Klik op **selecteren**.
-1. Klik in de sectie **beleid inschakelen** op **aan**.
+   1. Selecteer **Toegang verlenen**.
+   1. Selecteer **My TOU** (Mijn gebruiksvoorwaarden).
+   1. Klik op **Selecteren**.
+1. Klik in de sectie **Beleid inschakelen** op **Aan**.
 
    ![Beleid inschakelen](./media/require-tou/18.png)
 
-1. Klik op **maken**.
+1. Klik op **Create**.
 
 ## <a name="evaluate-a-simulated-sign-in"></a>Een gesimuleerde aanmelding evalueren
 
-Nu u het beleid voor voorwaardelijke toegang hebt geconfigureerd, wilt u waarschijnlijk weten of het werkt zoals verwacht. Als eerste stap gebruikt u de functie voor voorwaardelijke toegang wat als-beleid voor het simuleren van een aanmelding van uw test gebruiker. De simulatie schat de impact van deze aanmelding op uw beleid in en genereert een simulatierapport.  
+Nu u uw beleid voor voorwaardelijke toegang hebt geconfigureerd, wilt u vast weten of het werkt zoals u wilt. Als eerste stap kunt u het What If-beleidshulpmiddel voor voorwaardelijke toegang gebruiken om een aanmelding van uw testgebruiker te simuleren. De simulatie schat de impact van deze aanmelding op uw beleid in en genereert een simulatierapport.  
 
-Stel het hulp programma voor het evalueren van **What if** -beleid in door het volgende in te stellen:
+Als u het **What If**-hulpprogramma voor het evalueren van beleid wilt initialiseren, stelt u het volgende in:
 
 - **Isabella Simonsen** als gebruiker
-- **Microsoft Azure beheer** als Cloud-app
+- **Microsoft Azure Management** als cloud-app
 
-Als u op **What if** klikt, wordt er een simulatie rapport gemaakt waarin wordt getoond:
+Klik op **What If** om een simulatierapport te maken waarin het volgende wordt weergegeven:
 
-- Gebruiks **voorwaarden voor Isabella vereisen** onder **beleids regels die van toepassing zijn**
-- **Mijn gebruiks voorwaarden** voor **granting Controls**.
+- **Require TOU for Isabella** (Gebruiksvoorwaarden vereisen voor Isabella). onder **Beleidsregels die worden toegepast**
+- **My TOU** (Mijn gebruiksvoorwaarden) als **Besturingselementen toekennen**.
 
-![Wat als beleids programma](./media/require-tou/79.png)
+![What If-beleidshulpmiddel](./media/require-tou/79.png)
 
-**Het beleid voor voorwaardelijke toegang evalueren:**
+**Uw beleid voor voorwaardelijke toegang evalueren:**
 
-1. Klik op de pagina [voorwaardelijke toegang-beleids regels](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) in het menu aan de bovenkant op **What if**.  
+1. Klik op de pagina beleid [Voorwaardelijke toegang – Beleid](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) in het menu aan de bovenaan op **What If**.  
 
    ![What If](./media/require-tou/14.png)
 
-1. Klik op **gebruikers**, selecteer **Isabella Simonsen**en klik vervolgens op **selecteren**.
+1. Klik op **Gebruikers**, selecteer **Isabella Simonsen** en klik vervolgens op **Selecteren**.
 
    ![Gebruiker](./media/require-tou/15.png)
 
-1. Een Cloud-app selecteren:
+1. Een cloud-app selecteren:
 
    ![Cloud-apps](./media/require-tou/16.png)
 
    1. Klik op **Cloud-apps**.
-   1. Klik op de **pagina Cloud-apps**op **apps selecteren**.
-   1. Klik op **selecteren**.
-   1. Selecteer op de pagina **selecteren** de optie **Microsoft Azure beheer**en klik vervolgens op **selecteren**.
-   1. Klik op de pagina Cloud-apps op **gereed**.
-1. Klik op **What if**.
+   1. Klik op de **pagina Cloud-apps** op **Apps selecteren**.
+   1. Klik op **Selecteren**.
+   1. Selecteer op de pagina **Selecteren** de optie **Microsoft Azure Management** en klik vervolgen op **Selecteren**.
+   1. Klik op de pagina Cloud-apps op **Gereed**.
+1. Klik op **What If**.
 
-## <a name="test-your-conditional-access-policy"></a>Het beleid voor voorwaardelijke toegang testen
+## <a name="test-your-conditional-access-policy"></a>Uw beleid voor voorwaardelijke toegang testen
 
-In de vorige sectie hebt u geleerd hoe u een gesimuleerde aanmelding kunt evalueren. Naast een simulatie moet u ook het beleid voor voorwaardelijke toegang testen om er zeker van te zijn dat het werkt zoals verwacht.
+In de vorige sectie hebt u geleerd hoe u een gesimuleerde aanmelding kunt evalueren. Naast deze simulatie kunt u het beste ook het beleid voor voorwaardelijke toegang testen om er zeker van te zijn dat het werkt zoals verwacht.
 
-Als u uw beleid wilt testen, probeert u zich aan te melden bij uw [Azure Portal](https://portal.azure.com) met behulp van uw **Isabella Simonsen** -test account. Er verschijnt een dialoog venster waarin u moet akkoord gaan met de gebruiks voorwaarden.
+Als u uw beleid wilt testen, meldt u zich aan bij de [Azure-portal](https://portal.azure.com) met uw **Isabella Simonsen**-testaccount. Er zou een dialoogvenster moeten worden weergegeven waarin u wordt gevraagd de gebruiksvoorwaarden te accepteren.
 
 ![Gebruiksvoorwaarden](./media/require-tou/57.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u deze niet meer nodig hebt, verwijdert u de test gebruiker en het beleid voor voorwaardelijke toegang:
+Verwijder de testgebruiker en het beleid voor voorwaardelijke toegang, wanneer deze niet langer nodig zijn:
 
-- Zie [gebruikers uit Azure ad verwijderen](../fundamentals/add-users-azure-active-directory.md#delete-a-user)als u niet weet hoe u een Azure AD-gebruiker verwijdert.
-- Als u uw beleid wilt verwijderen, selecteert u uw beleid en klikt u vervolgens op **verwijderen** op de werk balk snelle toegang.
+- Zie [Gebruikers verwijderen uit Azure AD](../fundamentals/add-users-azure-active-directory.md#delete-a-user) als u niet weet hoe u een Azure AD-gebruiker verwijdert.
+- Als u uw beleid wilt verwijderen, selecteert u het beleid en klikt u op **Verwijderen** op de werkbalk voor snelle toegang.
 
-    ![Meervoudige verificatie](./media/require-tou/33.png)
+    ![Multi-Factor Authentication](./media/require-tou/33.png)
 
-- Als u de gebruiks voorwaarden wilt verwijderen, selecteert u deze en klikt u vervolgens op **voor waarden verwijderen** in de werk balk bovenaan.
+- Als u de gebruiksvoorwaarden wilt verwijderen, selecteert u deze en klikt u vervolgens in de werkbalk bovenaan op **Gebruiksvoorwaarden verwijderen**.
 
-    ![Meervoudige verificatie](./media/require-tou/29.png)
+    ![Multi-Factor Authentication](./media/require-tou/29.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [MFA vereisen voor specifieke apps](app-based-mfa.md)
-> [toegang blok keren als er een sessie risico wordt gedetecteerd](app-sign-in-risk.md)
+> [Meervoudige verificatie vereisen voor specifieke apps](app-based-mfa.md)

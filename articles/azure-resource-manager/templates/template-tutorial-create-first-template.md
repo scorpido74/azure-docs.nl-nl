@@ -5,12 +5,12 @@ author: mumian
 ms.date: 06/10/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e2419e8ee9f8648ae8f929638ac2c85ea8b67a0f
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 1e286a3b59279ed9658a373210f1425ece05eff4
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84676145"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102094"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>Zelfstudie: Uw eerste ARM-sjabloon maken en implementeren
 
@@ -28,7 +28,7 @@ Laten we er allereerst voor zorgen dat u de nodige hulpprogramma's hebt om sjabl
 
 ### <a name="editor"></a>Editor
 
-Sjablonen zijn JSON-bestanden. Om sjablonen te maken hebt u een goede JSON-editor nodig. We raden Visual Studio Code met de extensie Resource Manager Tools aan. Bekijk [Visual Studio Code-extensie gebruiken om ARM-sjablonen te maken](use-vs-code-to-create-template.md) om deze hulpprogramma's te installeren.
+Sjablonen zijn JSON-bestanden. Om sjablonen te maken hebt u een goede JSON-editor nodig. We raden Visual Studio Code met de extensie Resource Manager Tools aan. Als u deze hulpprogramma's wilt installeren, raadpleegt u [quickstart: Azure Resource Manager-sjablonen maken met Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
 
 ### <a name="command-line-deployment"></a>Implementatie via opdrachtregels
 

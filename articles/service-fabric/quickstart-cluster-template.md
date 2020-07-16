@@ -7,26 +7,28 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: edoyle
 ms.date: 04/24/2020
-ms.openlocfilehash: 2db3dffbbf0f6d98fe6da7a0cec5400f7f2c03da
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 1cb6dc56a5d4fa975f68c1dea08920a7c7db3904
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83722453"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119494"
 ---
-# <a name="quickstart-create-a-service-fabric-cluster-using-resource-manager-template"></a>Quickstart: Een Service Fabric-cluster maken met behulp van Resource Manager-sjabloon
+# <a name="quickstart-create-a-service-fabric-cluster-using-arm-template"></a>Quickstart: Een Service Fabric-cluster maken met behulp van ARM-sjabloon
 
-Azure Service Fabric is een platform voor gedistribueerde systemen waarmee u gemakkelijk schaalbare en betrouwbare microservices en containers verpakt, implementeert en beheert. Een *Service Fabric-cluster* is een met het netwerk verbonden reeks virtuele machines waarop uw microservices worden geïmplementeerd en beheerd.
+Azure Service Fabric is een platform voor gedistribueerde systemen waarmee u gemakkelijk schaalbare en betrouwbare microservices en containers verpakt, implementeert en beheert. Een *Service Fabric-cluster* is een met het netwerk verbonden reeks virtuele machines waarop uw microservices worden geïmplementeerd en beheerd. In dit artikel wordt beschreven hoe u een Service Fabric-testcluster in Azure implementeert met behulp van een Azure Resource Manager-sjabloon (ARM-sjabloon).
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-In dit artikel wordt beschreven hoe u een Service Fabric-testcluster in Azure implementeert met behulp van Resource Manager. Dit Windows-cluster met vijf knooppunten wordt beveiligd met een zelfondertekend certificaat en is daarom alleen bedoeld voor instructies (in plaats van productieworkloads).
+Dit Windows-cluster met vijf knooppunten wordt beveiligd met een zelfondertekend certificaat en is daarom alleen bedoeld voor instructies (in plaats van productieworkloads). We gebruiken Azure PowerShell om het sjabloon te implementeren. Naast Azure PowerShell kunt u ook de Azure-portal, Azure CLI en REST API gebruiken. Zie [Sjablonen implementeren](../azure-resource-manager/templates/deploy-portal.md) voor meer informatie over andere implementatiemethoden.
 
-We gebruiken Azure PowerShell om het sjabloon te implementeren. Naast Azure PowerShell kunt u ook de Azure-portal, Azure CLI en REST API gebruiken. Zie [Sjablonen implementeren](../azure-resource-manager/templates/deploy-portal.md) voor meer informatie over andere implementatiemethoden.
+Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
 
-Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+[![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fservice-fabric-secure-cluster-5-node-1-nodetype%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Vereisten
+
+Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ### <a name="install-service-fabric-sdk-and-powershell-modules"></a>Installeer Service Fabric SDK en PowerShell-modules
 
@@ -87,11 +89,9 @@ $certUrlValue = "<Certificate URL>"
 $certThumbprint = "<Certificate Thumbprint>"
 ```
 
-## <a name="create-a-service-fabric-cluster"></a>Een Service Fabric-cluster maken
+## <a name="review-the-template"></a>De sjabloon controleren
 
-### <a name="review-the-template"></a>De sjabloon controleren
-
-De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure Quick Start-sjablonen](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/). De sjabloon voor dit artikel is te lang om hier weer te geven. Als u de sjabloon wilt weergeven, raadpleegt u het bestand [azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.json).
+De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-quickstartsjablonen](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/). De sjabloon voor dit artikel is te lang om hier weer te geven. Als u de sjabloon wilt weergeven, raadpleegt u het bestand [azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.json).
 
 Er zijn meerdere Azure-resources gedefinieerd in de sjabloon:
 
@@ -144,7 +144,7 @@ Bijvoorbeeld:
 
 ## <a name="deploy-the-template"></a>De sjabloon implementeren
 
-Sla de paden van uw Resource Manager-sjabloon en parameterbestanden op in variabelen en implementeer vervolgens de sjabloon.
+Sla de paden van uw ARM-sjabloon en parameterbestanden op in variabelen en implementeer vervolgens de sjabloon.
 
 ```powershell
 $templateFilePath = "<full path to azuredeploy.json>"

@@ -11,12 +11,12 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: vanto, carlrab
 ms.date: 02/11/2019
-ms.openlocfilehash: 8b340bdbd4bea4fcd865d6c27d688e5dbed86bb8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 6a449c078b18b5bc9e005a873c51d92ad29417f6
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84052340"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084984"
 ---
 # <a name="quickstart-create-a-server-level-firewall-rule-using-the-azure-portal"></a>Quickstart: Een firewallregel op serverniveau maken met behulp van de Azure Portal
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -33,12 +33,12 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 ## <a name="create-a-server-level-ip-firewall-rule"></a>Een IP-firewallregel op serverniveau maken
 
- SQL Database maakt een firewall op serverniveau voor individuele en pooldatabases. De firewall voorkomt dat clienttoepassingen verbinding maken met de server of met een individuele database of database in een pool, tenzij u een IP-firewallregel maakt om de firewall te openen. Voor een verbinding vanaf een IP-adres buiten Azure maakt u een firewallregel voor een specifiek IP-adres of bereik van adressen dat toegang mag hebben. Meer informatie over IP-firewallregels op server- en databaseniveau vindt u in [IP-firewallregels op server- en databaseniveau](firewall-configure.md).
+ SQL Database maakt een firewall op serverniveau voor individuele en pooldatabases. De firewall voorkomt dat clienttoepassingen verbinding maken met de server of met een database, tenzij u een IP-firewallregel maakt om de firewall te openen. Voor een verbinding vanaf een IP-adres buiten Azure maakt u een firewallregel voor een specifiek IP-adres of bereik van adressen dat toegang mag hebben. Meer informatie over IP-firewallregels op server- en databaseniveau vindt u in [IP-firewallregels op server- en databaseniveau](firewall-configure.md).
 
 > [!NOTE]
 > Azure SQL Database communiceert via poort 1433. Als u verbinding probeert te maken vanuit een bedrijfsnetwerk, is uitgaand verkeer via poort 1433 mogelijk niet toegestaan vanwege de firewall van het netwerk. In dat geval kunt u alleen verbinding maken met uw server als uw IT-afdeling poort 1433 openstelt.
 > [!IMPORTANT]
-> De firewallregel 0.0.0.0 zorgt ervoor dat alle Azure-services voldoen worden aan de firewallregel op serverniveau en proberen om via de server verbinding te maken met een individuele database of pooldatabase.
+> De firewallregel 0.0.0.0 zorgt ervoor dat alle Azure-services voldoen worden aan de firewallregel op serverniveau en proberen om via de server verbinding te maken met een database.
 
 Volg deze stappen om een IP-firewallregel op serverniveau te maken voor het IP-adres van de client en om connectiviteit via de Azure SQL Database-firewall alleen voor uw IP-adres toe te staan.
 

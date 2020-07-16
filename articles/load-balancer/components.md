@@ -11,16 +11,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: b696cdf2d54c42d3967041c5d10b1bd9bb5a3065
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: a055216634775254867421854aa0b456fa90c709
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84448679"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85551071"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer-componenten
 
-Azure Load Balancer bestaat uit enkele belangrijke componenten. Deze kunnen worden geconfigureerd in uw abonnement via Azure Portal, Azure CLI, Azure PowerShell of sjablonen.
+Azure Load Balancer bevat enkele belangrijke componenten. Deze onderdelen kunnen worden geconfigureerd in uw abonnement via:
+
+* Azure Portal
+* Azure CLI
+* Azure PowerShell
+* Resource Manager-sjablonen
 
 ## <a name="frontend-ip-configuration"></a>Front-end-IP-configuratie<a name = "frontend-ip-configurations"></a>
 
@@ -51,7 +56,7 @@ Wanneer u nadenkt over het ontwerp van uw back-end-pool, kunt u het beste ontwer
 
 ## <a name="health-probes"></a>Statuscontroles
 
-Een statuscontrole wordt gebruikt om de status van de instanties in de back-end-pool te bepalen. Wanneer u een load balancer maakt, moet u een statuscontrole configureren die door uw load balancer kan worden gebruikt om te bepalen of een instantie in orde is, zodat er verkeer naartoe kan worden gestuurd.
+Een statuscontrole wordt gebruikt om de status van de instanties in de back-end-pool te bepalen. Configureer tijdens het maken van uw load balancer een statuscontrole voor de load balancer die u wilt gebruiken.  Deze status test bepaalt of een exemplaar in orde is en verkeer kan ontvangen.
 
 U kunt de drempelwaarde onjuiste status voor de statuscontroles definiëren. Wanneer een controle niet reageert, stopt de load balancer met het verzenden van nieuwe verbindingen naar de instanties met een onjuiste status. Een controlefout heeft geen invloed op bestaande verbindingen. De verbinding wordt vervolgd totdat de toepassing:
 
@@ -67,32 +72,55 @@ Basic Load Balancer biedt geen ondersteuning voor HTTPS-controles. Basic Load Ba
 
 Een taakverdelingsregel wordt gebruikt om te bepalen hoe inkomend verkeer wordt gedistribueerd naar **alle** instanties binnen de back-end-pool. Een taakverdelingsregel wijst een gegeven front-end-IP-configuratie en -poort toe aan meerdere back-end-IP-adressen en -poorten.
 
-Als u bijvoorbeeld verkeer op poort 80 (of een andere poort) van uw front-end-IP wilt routeren naar poort 80 van alle back-end-instanties, gebruikt u hiervoor een taakverdelingsregel.
+Gebruik bijvoorbeeld een taakverdelingsregel voor poort 80 om verkeer door te sturen van uw frontend-IP-adres naar poort 80 van uw back-end-exemplaren.
 
-### <a name="high-availability-ports"></a>Poorten met hoge beschikbaarheid
+<p align="center">
+  <img src="./media/load-balancer-components/lbrules.svg" width="512" title="Taakverdelingsregels">
+</p>
 
-Een Load Balancer-regel die is geconfigureerd met protocol - all en poort - 0 . Hierdoor kunt u één regel gebruiken voor het laden van alle TCP-en UDP-stromen die binnenkomen op alle poorten van een interne Standard Load Balancer. Er wordt per stroom een beslissing voor taakverdeling gemaakt. Deze actie is gebaseerd op de volgende vijf-tupleverbinding: 
+*Afbeelding: Taakverdelingsregels*
+
+## <a name="high-availability-ports"></a>Poorten met hoge beschikbaarheid
+
+Een Load Balancer-regel die is geconfigureerd met **'protocol - all en poort - 0'** . 
+
+Met deze regel kunt u één regel gebruiken voor het laden van alle TCP-en UDP-stromen die binnenkomen op alle poorten van een interne Standard Load Balancer. 
+
+Er wordt per stroom een beslissing voor taakverdeling gemaakt. Deze actie is gebaseerd op de volgende vijf-tupleverbinding: 
+
 1. IP-adres van bron
 2. bronpoort
 3. IP-adres van doel
 4. doelpoort
 5. protocol
 
-De taakverdelingsregels voor de HA-poorten helpen u bij kritieke scenario's, zoals hoge beschikbaarheid en schaal aanpassen voor NVA's (Network Virtual Appliance) in virtuele netwerken. De functie kan ook helpen wanneer over een groot aantal poorten taakverdeling moet worden uitgevoerd.
+De taakverdelingsregels voor de HA-poorten helpen u bij kritieke scenario's, zoals hoge beschikbaarheid en schaal aanpassen voor NVA's (Network Virtual Appliance) in virtuele netwerken. De functie kan helpen wanneer over een groot aantal poorten taakverdeling moet worden uitgevoerd.
+
+<p align="center">
+  <img src="./media/load-balancer-components/harules.svg" width="512" title="HA-poortregels">
+</p>
+
+*Afbeelding: HA-poortregels*
 
 Meer informatie over [HA-poorten](load-balancer-ha-ports-overview.md).
 
 ## <a name="inbound-nat-rules"></a>Inkomende NAT-regels
 
-Via een inkomende NAT-regel wordt binnenkomend verkeer naar een combinatie van een geselecteerd front-end-IP-adres en geselecteerde poort doorgestuurd naar een **specifieke** virtuele machine of instantie in de back-end-pool. Port forwarding wordt gedaan door de dezelfde hash-distributie als taakverdeling.
+Via een inkomende NAT-regel wordt binnenkomend verkeer naar een combinatie van een frontend-IP-adres en geselecteerde poort doorgestuurd. Het verkeer wordt verzonden naar een **specifieke** virtuele machine of exemplaar in de back-end-pool. Port forwarding wordt gedaan door de dezelfde hash-distributie als taakverdeling.
 
 Als u bijvoorbeeld wilt dat Remote Desktop Protocol (RDP) of SSH-sessies (Secure Shell) VM-instanties in een back-end-pool scheidt. Meerdere interne eindpunten kunnen worden toegewezen aan de verschillende poorten op hetzelfde front-end-IP-adres. De front-end-IP-adressen kunnen worden gebruikt voor het extern beheren van uw VM's zonder een extra jump box.
 
-Inkomende NAT-regels in de context van Virtual Machine Scale Sets (VMSS) zijn binnenkomende NAT-groepen. Meer informatie over [Load Balancer-onderdelen en VMSS](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#azure-virtual-machine-scale-sets-with-azure-load-balancer).
+<p align="center">
+  <img src="./media/load-balancer-components/inboundnatrules.svg" width="512" title="Inkomende NAT-regels">
+</p>
+
+*Afbeelding: Inkomende NAT-regels*
+
+Inkomende NAT-regels in de context van Virtual Machine Scale Sets zijn binnenkomende NAT-groepen. Meer informatie over [Load Balancer-onderdelen en virtuele-machineschaalset](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#azure-virtual-machine-scale-sets-with-azure-load-balancer).
 
 ## <a name="outbound-rules"></a>Regels voor uitgaand verkeer
 
-Met een regel voor uitgaand verkeer wordt de uitgaande netwerkadresomzetting (NAT) geconfigureerd voor alle virtuele machines of instanties die worden geïdentificeerd door de back-end-pool. Hierdoor kunnen instanties in de back-end communiceren (uitgaand) met internet of andere eindpunten.
+Met een regel voor uitgaand verkeer wordt de uitgaande netwerkadresomzetting (NAT) geconfigureerd voor alle virtuele machines of instanties die worden geïdentificeerd door de back-end-pool. Met deze regel kunnen instanties in de back-end communiceren (uitgaand) met internet of andere eindpunten.
 
 Meer informatie over [uitgaande verbindingen en regels](load-balancer-outbound-connections.md).
 

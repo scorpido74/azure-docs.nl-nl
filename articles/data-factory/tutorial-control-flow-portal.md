@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: edb6846d199470818e07a208feb778aca3021d9e
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: e12f0cd44143621d34096a6c1161a22a89d21d9b
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253661"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077645"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>Activiteiten in een Azure Data Factory-pijplijn vertakken en koppelen met behulp van de Azure-portal
 
@@ -139,7 +139,8 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 
    De naam van de Azure-gegevensfactory moet **wereldwijd uniek** zijn. Als u het volgende foutbericht krijgt, wijzigt u de naam van de gegevensfactory (bijvoorbeeld uwnaamADFTutorialDataFactory) en probeert u het opnieuw. Zie het artikel [Data factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
 
-       `Data factory name “ADFTutorialDataFactory” is not available`
+   *Data factory-naam 'ADFTutorialDataFactory' is niet beschikbaar.*
+
 3. Selecteer het Azure-**abonnement** waarin u de gegevensfactory wilt maken.
 4. Voer een van de volgende stappen uit voor de **Resourcegroep**:
 
@@ -202,10 +203,11 @@ In deze stap maakt u een pijplijn met één kopieeractiviteit en twee webactivit
    ![Nieuwe gekoppelde Azure Storage-service](./media/tutorial-control-flow-portal/new-azure-storage-linked-service.png)
 12. Voer `@pipeline().parameters.sourceBlobContainer` in als de map en `emp.txt` als de bestandsnaam. U gebruikt de pijplijnparameter sourceBlobContainer om het bestandspad voor de gegevensset in te stellen.
 
-   ![Instellingen voor de brongegevensset](./media/tutorial-control-flow-portal/source-dataset-settings.png)
-13. Ga naar het tabblad **Pijplijn** (of) klik op de pijplijn in de structuurweergave. Controleer of **SourceBlobDataset** is geselecteerd als **Brongegevensset**.
+    ![Instellingen voor de brongegevensset](./media/tutorial-control-flow-portal/source-dataset-settings.png)
 
-    ![Brongegevensset](./media/tutorial-control-flow-portal/pipeline-source-dataset-selected.png)
+13. Ga naar het tabblad **Pijplijn** (of) klik op de pijplijn in de structuurweergave. Controleer of **SourceBlobDataset** is geselecteerd als **Brongegevensset**.
+      
+   ![Brongegevensset](./media/tutorial-control-flow-portal/pipeline-source-dataset-selected.png)
 
 13. Ga in het venster Eigenschappen naar het tabblad **Sink** en klik op **+ Nieuw** voor **Sink-gegevensset**. In deze stap maakt u een sink-gegevensset voor de kopieeractiviteit. Dit doet u op dezelfde manier als waarop u de brongegevensset hebt gemaakt.
 

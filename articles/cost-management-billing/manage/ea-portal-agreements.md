@@ -3,16 +3,16 @@ title: Azure EA-overeenkomsten en -aanpassingen
 description: In dit wordt uitleg gegeven over hoe de Azure EA-overeenkomsten en -aanpassingen van invloed zijn op uw gebruik van Azure EA Portal.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 4904390ce0642d0331e82610e8aef4b735b56f1f
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 50f7a1bab17b9a98b7ca282387def52b24d448c4
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298139"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044903"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA-overeenkomsten en -aanpassingen
 
@@ -20,7 +20,7 @@ In het artikel wordt beschreven hoe Azure EA-overeenkomsten en -aanpassingen van
 
 ## <a name="enrollment-provisioning-status"></a>De inrichtingsstatus voor inschrijving
 
-De begindatum van een nieuwe financiële toezegging wordt gedefinieerd op basis van de datum waarop het regionale Operations Center de toezegging verwerkt. Omdat orders voor financiële toezegging via Azure EA Portal worden verwerkt in de tijdzone UTC, kan er enige vertraging optreden als uw inkooporder voor financiële toezegging in een andere regio is verwerkt. De begindatum van de dekking op de aankooporder bij https://www.explore.ms staat gelijk aan de begindatum van de financiële toezegging. De begindatum van de dekking is dezelfde datum als de datum waarop de financiële toezegging wordt weergegeven in Azure EA Portal.
+De begindatum van een nieuwe Azure-vooruitbetaling wordt gedefinieerd op basis van de datum waarop het regionale Operations Center de vooruitbetaling verwerkt. Omdat orders voor Azure-vooruitbetaling via Azure EA Portal worden verwerkt in de tijdzone UTC, kan er enige vertraging optreden als uw inkooporder voor Azure-vooruitbetaling in een andere regio is verwerkt. De begindatum van de dekking op de inkooporder bij https://www.explore.ms staat gelijk aan de begindatum van de Azure-vooruitbetaling. De begindatum van de dekking is dezelfde datum als de datum waarop de Azure-vooruitbetaling wordt weergegeven in Azure EA Portal.
 
 ## <a name="support-for-enterprise-customers"></a>Ondersteuning voor Enterprise-klanten
 
@@ -36,7 +36,7 @@ Een inschrijving heeft één van de volgende statuswaarden. Elke waarde bepaalt 
 
 **Onbeperkte verlengde termijn**: de status voor een onbeperkte verlengde termijn wordt toegekend nadat de einddatum van de Enterprise Agreement is bereikt. Voordat de einddatum van de Enterprise Agreement is bereikt voor de EA-inschrijving, moet de inschrijvingsbeheerder een beslissing nemen:
 
-- De inschrijving vernieuwen door een extra financiële toezegging toe te voegen
+- De inschrijving vernieuwen door een extra Azure-vooruitbetaling toe te voegen
 - De bestaande inschrijving overzetten naar een nieuwe inschrijving
 - Migreren naar het Microsoft Online Subscription Program (MOSP)
 - Het uitschakelen van alle services die aan de inschrijving zijn gekoppeld, bevestigen
@@ -51,7 +51,7 @@ Vanaf 1 augustus 2019 worden de nieuwe uitschrijvingsformulieren niet geacceptee
 
 In Azure EA Portal kunt u door prijsverhogingen van partners beter over kosten rapporteren voor klanten. Azure EA Portal toont het gebruik en de prijzen die door partners voor hun klanten zijn geconfigureerd.
 
-Met de prijsverhoging kunnen beheerders van partners een prijsverhogingspercentage toevoegen aan hun indirecte Enterprise Agreements. Het prijsverhogingspercentage is van toepassing op alle servicegegevens van Microsoft in Azure EA Portal, zoals metertarieven, financiële toezeggingen en orders. Zodra de prijsverhoging wordt gepubliceerd door de partner, worden voor de klant de Azure-kosten weergegeven in Azure EA Portal. Voorbeelden: gebruiksoverzicht, prijslijsten en gedownloade gebruiksrapporten.
+Met de prijsverhoging kunnen beheerders van partners een prijsverhogingspercentage toevoegen aan hun indirecte Enterprise Agreements. Het prijsverhogingspercentage is van toepassing op alle servicegegevens van Microsoft in Azure EA Portal, zoals metertarieven, Azure-vooruitbetaling en orders. Zodra de prijsverhoging wordt gepubliceerd door de partner, worden voor de klant de Azure-kosten weergegeven in Azure EA Portal. Voorbeelden: gebruiksoverzicht, prijslijsten en gedownloade gebruiksrapporten.
 
 Vanaf september 2019 kunnen partners te allen tijde tijdens een termijn een prijsverhoging toepassen. Ze hoeven niet te wachten tot de volgende termijn om een prijsverhoging toe te passen.
 
@@ -61,7 +61,7 @@ Microsoft heeft voor geen enkel doeleinde toegang tot de opgegeven prijsverhogin
 
 De LSP geeft één percentagegetal op in EA Portal.  Alle commerciële gegevens op de portal worden verhoogd met het percentage dat is opgegeven door de LSP. Voorbeeld:
 
-- Een klant ondertekent een EA met een financiële toezegging van 100.000 USD.
+- Klant ondertekent een EA met een Azure-vooruitbetaling van USD 100.000.
 - Het metertarief voor service A is 10 USD/uur.
 - De LSP stelt in EA Portal het verhogingspercentage in op 10%.
 - Het volgende voorbeeld laat zien hoe de commerciële gegevens voor de klant worden weergegeven:
@@ -72,10 +72,10 @@ De LSP geeft één percentagegetal op in EA Portal.  Alle commerciële gegevens
 
 ### <a name="when-to-use-a-markup"></a>Wanneer gebruikt u een prijsverhoging?
 
-Gebruik de functie als u hetzelfde prijsverhogingspercentage instelt voor ALLE commerciële transacties in de EA. Dat wil zeggen, als de prijsverhoging van toepassing is op de gegevens voor de financiële toezegging, de metertarieven, de ordergegevens, enzovoort.
+Gebruik de functie als u hetzelfde prijsverhogingspercentage instelt voor ALLE commerciële transacties in de EA. Dat wil zeggen, als de prijsverhoging van toepassing is op de gegevens voor de Azure-vooruitbetaling, de metertarieven, de ordergegevens, enzovoort.
 
 Gebruik de prijsverhogingsfunctie niet als:
-- U verschillende tarieven gebruikt voor de financiële toezegging en de metertarieven.
+- U verschillende tarieven gebruikt voor de Azure-vooruitbetaling en de metertarieven.
 - U verschillende tarieven gebruikt voor verschillende meters.
 
 Als u verschillende tarieven voor verschillende meters gebruikt, is het raadzaam een aangepaste oplossing te ontwikkelen op basis van de API-sleutel, die door de klant kan worden verstrekt, om verbruiksgegevens op te halen en rapporten te verstrekken.
@@ -97,11 +97,11 @@ Controleer de commerciële gegevens (gegevens over het financiële saldo, de pri
 
 **Tweede stap: controleren en valideren**
 
-Controleer de prijsverhoging in het _Gebruiksoverzicht_ voor de toezeggingsperiode in de klantweergave. De Microsoft-prijs wordt nog steeds weergegeven in de partnerweergave. De weergaven kunnen worden in- of uitgeschakeld met de schakeloptie voor de partnerprijsverhoging 'personen' in de rechterbovenhoek.
+Controleer de prijsverhoging in het _Gebruiksoverzicht_ voor de vooruitbetalingsperiode in de klantweergave. De Microsoft-prijs wordt nog steeds weergegeven in de partnerweergave. De weergaven kunnen worden in- of uitgeschakeld met de schakeloptie voor de partnerprijsverhoging 'personen' in de rechterbovenhoek.
 
 1. Controleer de prijzen in het prijzenoverzicht.
 1. U kunt wijzigingen aanbrengen voordat u publiceert door **Bewerken** te selecteren op het tabblad _Gebruiksoverzicht bekijken > Klantweergave_.  
-  Zowel de serviceprijzen als de toezeggingssaldi worden met dezelfde percentages verhoogd. Als u verschillende percentages gebruikt voor het financiële saldo en de metertarieven of verschillende percentages gebruikt voor verschillende services, kunt u deze functie niet gebruiken.
+  Zowel de serviceprijzen als de vooruitbetalingssaldi worden met dezelfde percentages verhoogd. Als u verschillende percentages gebruikt voor het financiële saldo en de metertarieven of verschillende percentages gebruikt voor verschillende services, kunt u deze functie niet gebruiken.
 
 **Derde stap: publiceren**
 
@@ -121,7 +121,7 @@ Zodra de partnerprijsverhoging is gepubliceerd, heeft de indirecte klant toegang
 Partners kunnen de prijsverhogingsfunctie (in Azure EA) gebruiken nadat een wijziging van de kanaalpartner is verwerkt. U hoeft niet te wachten tot de huidige termijn is verstreken.
 
 
-## <a name="resource-commitment-and-requesting-quota-increases"></a>Resourcetoezegging en het aanvragen van een hoger quotum
+## <a name="resource-prepayment-and-requesting-quota-increases"></a>Resourcevooruitbetaling en het aanvragen van een hoger quotum
 
 **De volgende standaardquota's worden automatisch per abonnement afgedwongen:**
 
@@ -135,11 +135,11 @@ Partners kunnen de prijsverhogingsfunctie (in Azure EA) gebruiken nadat een wijz
 | Toegangsbeheer | 50 naamruimten per account. 100 miljoen toegangsbeheertransacties per maand |   |
 | Service Bus | 50 naamruimten per account. 40 servicebusverbindingen | Klanten die servicebusverbindingen kopen via verbindingspakketten, beschikken over quota met een aantal dat halverwege ligt tussen het verbindingspakket dat ze hebben gekocht en het verbindingspakket met het opeenvolgende hogere aantal verbindingen. Klanten die een pakket met 500 verbindingen kiezen, beschikken over een quotum van 750 verbindingen. |
 
-## <a name="resource-commitment"></a>Resourcetoezegging
+## <a name="resource-prepayment"></a>Resourcevooruitbetaling
 
-Microsoft biedt u services ten minste tot aan het niveau van het aangenomen gebruik behorend bij de maandelijkse toezegging die u hebt gekocht (de servicetoezegging), maar alle andere verhogingen in de gebruiksniveaus van serviceresources (bijvoorbeeld verhoging van het aantal actieve rekeninstanties of verhoging van de hoeveelheid gebruikte opslag) zijn afhankelijk van de beschikbaarheid van deze serviceresources.
+Microsoft biedt u services ten minste tot aan het niveau van het aangenomen gebruik behorend bij de maandelijkse vooruitbetaling die u hebt gekocht (de servicevooruitbetaling), maar alle andere verhogingen in de gebruiksniveaus van serviceresources (bijvoorbeeld verhoging van het aantal actieve rekeninstanties of verhoging van de hoeveelheid gebruikte opslag) zijn afhankelijk van de beschikbaarheid van deze serviceresources.
 
-De hierboven beschreven quota zijn geen servicetoezeggingen. Om het aantal gelijktijdige kleine rekeninstanties (of een equivalent daarvan) te bepalen dat Microsoft biedt als onderdeel van een servicetoezegging, wordt dit bepaald door het aantal toegezegde kleine rekeninstantie-uren dat voor een maand is gekocht te delen door het aantal uren in de kortste maand van het jaar (dus februari: 672 uur).
+De hierboven beschreven quota zijn geen servicevooruitbetalingen. Om het aantal gelijktijdige kleine rekeninstanties (of een equivalent daarvan) te bepalen dat Microsoft biedt als onderdeel van een servicevooruitbetaling, wordt dit bepaald door het aantal toegezegde kleine rekeninstantie-uren dat voor een maand is gekocht te delen door het aantal uren in de kortste maand van het jaar (dus februari: 672 uur).
 
 ## <a name="requesting-a-quota-increase"></a>Een verhoging van het quotum aanvragen
 

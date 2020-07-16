@@ -1,47 +1,42 @@
 ---
 title: Gebeurtenissen verzenden of ontvangen van Azure Event Hubs met behulp van Java (verouderd)
-description: Dit artikel bevat een overzicht van het maken van een Java-toepassing die gebeurtenissen naar/van Azure Event Hubs verzendt/ontvangt met behulp van het oude Azure-Event hubs-pakket.
-services: event-hubs
-author: spelluru
-ms.service: event-hubs
-ms.workload: core
+description: Dit artikel bevat een overzicht van het maken van een Java-toepassing waarmee gebeurtenissen worden verzonden naar/ontvangen van Azure Event Hubs met behulp van het oude pakket azure-eventhubs.
 ms.topic: quickstart
-ms.date: 02/11/2020
-ms.author: spelluru
-ms.openlocfilehash: 379739533e15e60bc47bfc883a67037d4a58d0e0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: 8c44cfa2a3130e714ac95989248aee634996df2a
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81417627"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85320314"
 ---
-# <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-eventhubs"></a>Java gebruiken om gebeurtenissen te verzenden naar of ontvangen van Azure Event Hubs (Azure-Event hubs)
+# <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-eventhubs"></a>Java gebruiken om gebeurtenissen te verzenden of gebeurtenissen te ontvangen uit Azure Event Hubs (azure-eventhubs)
 
-In deze Quick start ziet u hoe u gebeurtenissen kunt verzenden naar en ontvangen van een Event Hub met behulp van het **Azure-Event hubs Java-** pakket.
+In deze quickstart leert u hoe u gebeurtenissen kunt verzenden naar en ontvangen van een Event Hub met behulp van het Java-pakket **azure-eventhubs**.
 
 > [!WARNING]
-> Deze Snelstartgids maakt gebruik van de oude **Azure-Event hubs** -en **Azure-Event hubs-EPH-** pakketten. Zie [gebeurtenissen verzenden en ontvangen met Azure-Messa ging-Event hubs](get-started-java-send-v2.md)voor een Snelstartgids waarbij gebruik wordt gemaakt van het meest recente **Azure Messa ging-Event hubs** -pakket. Raadpleeg de [hand leiding voor het migreren van Azure-Event hubs naar Azure-Messa ging-Event hubs](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md)als u uw toepassing wilt verplaatsen van het oude pakket naar een nieuwe. 
+> In deze quickstart wordt gebruikgemaakt van de oude pakketten **azure-eventhubs** en **azure-eventhubs-eph**. Zie [Send and receive events using azure-messaging-eventhubs](get-started-java-send-v2.md) (Gebeurtenissen verzenden en ontvangen met azure-messaging-eventhubs) voor een quickstart met de nieuwste **azure-messaging-eventhubs**. Als u uw toepassing van het oude naar een nieuw pakket wilt verplaatsen, raadpleegt u de [Guide to migrate from azure-eventhubs to azure-messaging-eventhubs](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md) (Handleiding voor het migreren van azure-eventhubs naar azure-messaging-eventhubs). 
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u niet bekend bent met Azure Event Hubs, raadpleegt u [Event hubs Overview](event-hubs-about.md) voordat u deze Snelstartgids. 
+Als u nog geen ervaring hebt met Azure Event Hubs, raadpleegt u het [Event Hubs-overzicht](event-hubs-about.md) voordat u deze quickstart uitvoert. 
 
 Voor het voltooien van deze snelstart moet aan de volgende vereisten worden voldaan:
 
-- **Microsoft Azure abonnement**. Als u Azure-Services, met inbegrip van Azure Event Hubs, wilt gebruiken, hebt u een abonnement nodig.  Als u geen bestaand Azure-account hebt, kunt u zich aanmelden voor een [gratis proef versie](https://azure.microsoft.com/free/) of de voor delen van uw MSDN-abonnee gebruiken wanneer u [een account maakt](https://azure.microsoft.com).
-- Een Java-ontwikkel omgeving. Deze Snelstartgids maakt gebruik van [eclips](https://www.eclipse.org/).
-- **Een event hubs naam ruimte en een event hub maken**. De eerste stap is het gebruik van de [Azure Portal](https://portal.azure.com) om een naam ruimte van het type Event hubs te maken en de beheer referenties te verkrijgen die uw toepassing nodig heeft om met de Event hub te communiceren. Volg de procedure in [dit artikel](event-hubs-create.md) om een naamruimte en een Event Hub te maken. Vervolgens haalt u de waarde van de toegangs sleutel voor de Event Hub door de volgende instructies uit het artikel: [get Connection String](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). U gebruikt de toegangs sleutel in de code die u verderop in deze Quick Start schrijft. De naam van de standaard sleutel is: **RootManageSharedAccessKey**.
+- **Microsoft Azure-abonnement**. Als u Azure-services wilt gebruiken, met inbegrip van Azure Event Hubs, hebt u een abonnement nodig.  Als u nog geen Azure-account hebt, kunt u zich aanmelden voor een [gratis proefversie](https://azure.microsoft.com/free/) of uw voordelen als MSDN-abonnee gebruiken wanneer u [een account maakt](https://azure.microsoft.com).
+- Een Java-ontwikkelomgeving. In deze quickstart wordt gebruikgemaakt van [Eclipse](https://www.eclipse.org/).
+- **Een Event Hubs-naamruimte en een Event Hub maken**. In de eerste stap gebruikt u [Azure Portal](https://portal.azure.com) om een naamruimte van het type Event Hubs te maken en de beheerreferenties te verkrijgen die de toepassing nodig heeft om met de Event Hub te communiceren. Volg de procedure in [dit artikel](event-hubs-create.md) om een naamruimte en een Event Hub te maken. Haal vervolgens de waarde van de toegangssleutel voor de Event Hub op door de instructies in het artikel te volgen: [Verbindingstekenreeks ophalen](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). U gebruikt de toegangssleutel in de code die u verderop in deze quickstart schrijft. De standaardsleutelnaam is: **RootManageSharedAccessKey**.
 
 ## <a name="send-events"></a>Gebeurtenissen verzenden 
-In deze sectie wordt beschreven hoe u een Java-toepassing maakt voor het verzenden van gebeurtenissen een Event Hub. 
+In deze sectie wordt beschreven hoe u een Java-toepassing maakt voor het verzenden van gebeurtenissen naar een Event Hub. 
 
 > [!NOTE]
-> U kunt deze snelstart als voorbeeld downloaden van de [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SimpleSend), de tekenreeksen `EventHubConnectionString` en `EventHubName` vervangen door uw event hub-waarden en deze uitvoeren. U kunt ook de stappen in deze Snelstartgids volgen om uw eigen te maken.
+> U kunt deze snelstart als voorbeeld downloaden van de [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SimpleSend), de tekenreeksen `EventHubConnectionString` en `EventHubName` vervangen door uw event hub-waarden en deze uitvoeren. U kunt ook de stappen in deze quickstart volgen om uw eigen oplossing te maken.
 
 ### <a name="add-reference-to-azure-event-hubs-library"></a>Verwijzing naar Azure Event Hubs-bibliotheek toevoegen
 
-De Java-client bibliotheek voor Event Hubs is beschikbaar voor gebruik in Maven-projecten vanuit de [centrale maven-opslag plaats](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22). U kunt naar deze bibliotheek verwijzen met behulp van de volgende afhankelijkheids declaratie in uw Maven-project bestand:
+De Java-clientbibliotheek voor Event Hubs is beschikbaar voor gebruik in Maven-projecten in de [centrale opslagplaats voor Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22). U kunt naar deze bibliotheek verwijzen met behulp van de volgende afhankelijkheidsdeclaratie in uw Maven-projectbestand:
 
 ```xml
 <dependency>
@@ -51,13 +46,13 @@ De Java-client bibliotheek voor Event Hubs is beschikbaar voor gebruik in Maven-
 </dependency>
 ```
 
-Voor verschillende soorten bouw omgevingen kunt u expliciet de meest recente vrijgegeven JAR-bestanden ophalen uit de [centrale maven-opslag plaats](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22).  
+Voor verschillende soorten build-omgevingen kunt u uitdrukkelijk de meest recente vrijgegeven JAR-bestanden verkrijgen bij de [centrale opslagplaats van Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22).  
 
-Voor een eenvoudige Uitgever van gebeurtenissen importeert u het pakket *com. micro soft. Azure. Event hubs* voor de Event hubs client klassen en het pakket *com. micro soft. Azure. servicebus* voor hulp klassen zoals algemene uitzonde ringen die worden gedeeld met de Azure service bus Messa ging-client. 
+Importeer als u een eenvoudige gebeurtenisuitgever wilt het pakket *com.microsoft.azure.eventhubs* voor de Event Hubs-clientklassen en het pakket *com.microsoft.azure.servicebus* voor utils-klassen zoals algemene uitzonderingen die worden gedeeld met de Azure Service Bus-berichtenclient. 
 
 ### <a name="write-code-to-send-messages-to-the-event-hub"></a>Code schrijven om berichten te verzenden naar de event hub
 
-Maak voor het volgende voorbeeld eerst een nieuw Maven-project voor een console/shell-toepassing in uw favoriete Java-ontwikkelomgeving. Voeg een klasse toe `SimpleSend`met de naam en voeg de volgende code toe aan de klasse:
+Maak voor het volgende voorbeeld eerst een nieuw Maven-project voor een console/shell-toepassing in uw favoriete Java-ontwikkelomgeving. Voeg een klasse genaamd `SimpleSend` toe en voeg de volgende code aan de klasse toe:
 
 ```java
 import com.google.gson.Gson;
@@ -84,9 +79,9 @@ public class SimpleSend {
  }
 ```
 
-### <a name="construct-connection-string"></a>connection string maken
+### <a name="construct-connection-string"></a>De verbindingsreeks samenstellen
 
-Gebruik de ConnectionStringBuilder-klasse om een connection string-waarde op te geven die moet worden door gegeven aan het exemplaar van de Event Hubs-client. Vervang de tijdelijke aanduidingen door de waarden die u hebt verkregen tijdens het maken van de naam ruimte en Event Hub:
+Gebruik de ConnectionStringBuilder-klasse om een verbindingsreekswaarde op te geven die moet worden doorgegeven aan het exemplaar van de Event Hubs-client. Vervang de tijdelijke aanduidingen door de waarden die u hebt verkregen tijdens het maken van de naamruimte en Event Hub:
 
 ```java
         final ConnectionStringBuilder connStr = new ConnectionStringBuilder()
@@ -98,7 +93,7 @@ Gebruik de ConnectionStringBuilder-klasse om een connection string-waarde op te 
 
 ### <a name="write-code-to-send-events"></a>Code schrijven voor het verzenden van gebeurtenissen
 
-Maak een enkelvouds gebeurtenis door een teken reeks te transformeren naar de UTF-8 byte-code ring. Maak vervolgens een nieuw exemplaar van de Event Hubs-client vanuit de connection string en verzend het bericht:   
+Maak een enkele gebeurtenis door een tekenreeks te transformeren naar de UTF-8 byte-codering. Maak vervolgens een nieuw exemplaar van de Event Hubs-client vanuit de verbindingsreeks en verzend het bericht:   
 
 ```java 
         final Gson gson = new GsonBuilder().create();
@@ -138,17 +133,17 @@ Maak een enkelvouds gebeurtenis door een teken reeks te transformeren naar de UT
 
 ``` 
 
-Het programma te bouwen en uit te voeren en ervoor te zorgen dat er geen fouten zijn.
+Compileer het programma en voer het uit, en controleer of er geen fouten zijn.
 
 Gefeliciteerd! U hebt nu berichten verzonden naar een Event Hub.
 
-### <a name="appendix-how-messages-are-routed-to-eventhub-partitions"></a>Bijlage: hoe berichten worden doorgestuurd naar EventHub-partities
+### <a name="appendix-how-messages-are-routed-to-eventhub-partitions"></a>Bijlage: Hoe berichten worden doorgestuurd naar Event Hub-partities
 
-Voordat berichten door de gebruikers worden opgehaald, moeten ze eerst worden gepubliceerd op de partities van de uitgevers. Wanneer berichten synchroon naar Event Hub worden gepubliceerd met behulp van de methode sendSync () in het object com. Microsoft. Azure. Event hubs. EventHubClient, kan het bericht naar een specifieke partitie worden verzonden of worden gedistribueerd naar alle beschik bare partities in een Round-Robin, afhankelijk van het feit of de partitie sleutel is opgegeven of niet.
+Voordat berichten door consumenten worden opgehaald, moeten ze eerst worden gepubliceerd op de partities van de uitgevers. Wanneer berichten synchroon naar Event Hub worden gepubliceerd met behulp van de methode sendSync() in het objectcom.microsoft.azure.eventhubs.EventHubClient, kan het bericht naar een specifieke partitie worden verzonden of worden gedistribueerd naar alle beschikbare partities op een round-robin-wijze, afhankelijk van het feit of de partitiesleutel wel of niet is opgegeven.
 
-Wanneer een teken reeks voor de partitie sleutel is opgegeven, wordt de sleutel gehasht om te bepalen aan welke partitie de gebeurtenis moet worden verzonden.
+Wanneer een tekenreeks die staat voor de partitiesleutel wordt opgegeven, wordt de sleutel gehasht om te bepalen aan welke partitie de gebeurtenis moet worden verzonden.
 
-Wanneer de partitie sleutel niet is ingesteld, worden de berichten met een Round-Robin naar alle beschik bare partities afgerond
+Wanneer de partitiesleutel niet is ingesteld, worden de berichten op een round-robin-wijze naar alle beschikbare partities verzonden
 
 ```java
 // Serialize the event into bytes
@@ -170,30 +165,30 @@ eventHubClient.closeSync();
 ```
 
 ## <a name="receive-events"></a>Gebeurtenissen ontvangen
-De code in deze zelf studie is gebaseerd op de [EventProcessorSample-code op github](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/EventProcessorSample), die u kunt bekijken om de volledige werk toepassing weer te geven.
+De code in deze zelfstudie is gebaseerd op de [EventProcessorSample-code op GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/EventProcessorSample), die u kunt bekijken om de volledig werkende toepassing weer te geven.
 
 ### <a name="receive-messages-with-eventprocessorhost-in-java"></a>Berichten ontvangen met EventProcessorHost in Java
 
-**EventProcessorHost** is een Java-klasse die het ontvangen van gebeurtenissen van Event hubs vereenvoudigt door permanente controle punten en parallelle ontvangst van deze event hubs te beheren. Met EventProcessorHost kunt u gebeurtenissen splitsen over meerdere ontvangers, zelfs als deze worden gehost in verschillende knooppunten. In dit voorbeeld wordt het gebruik van EventProcessorHost gedemonstreerd voor één ontvanger.
+**EventProcessorHost** is een Java-klasse die het ontvangen van gebeurtenissen van Event Hubs vereenvoudigt door permanente controlepunten en parallelle ontvangst van deze Event Hubs te beheren. Met EventProcessorHost kunt u gebeurtenissen splitsen over meerdere ontvangers, zelfs als deze worden gehost in verschillende knooppunten. In dit voorbeeld wordt het gebruik van EventProcessorHost gedemonstreerd voor één ontvanger.
 
 ### <a name="create-a-storage-account"></a>Create a storage account
 
-Als u EventProcessorHost wilt gebruiken, moet u beschikken over een [Azure Storage account] [Azure Storage account]:
+U hebt een [Azure Storage-account][Azure Storage-account] nodig om EventProcessorHost te gebruiken:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en selecteer **een resource maken** aan de linkerkant van het scherm.
-2. Selecteer **opslag**en selecteer vervolgens **opslag account**. Typ in het venster **opslag account maken** een naam voor het opslag account. Voltooi de rest van de velden, selecteer de gewenste regio en selecteer vervolgens **maken**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) en selecteer **Een resource maken** aan de linkerkant van het scherm.
+2. Selecteer **Opslag** en selecteer vervolgens **Opslagaccount**. Typ in het venster **Opslagaccount maken** een naam voor het opslagaccount. Vul de rest van de velden in, selecteer de gewenste regio en selecteer vervolgens **Maken**.
    
-    ![Een opslag account maken in Azure Portal](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-azure-storage-account.png)
+    ![Een opslagaccount maken in de Azure-portal](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-azure-storage-account.png)
 
-3. Selecteer het zojuist gemaakte opslag account en selecteer vervolgens **toegangs sleutels**:
+3. Selecteer het zojuist gemaakte opslagaccount en selecteer vervolgens **Toegangssleutels**:
    
-    ![Uw toegangs sleutels in Azure Portal ophalen](./media/event-hubs-dotnet-framework-getstarted-receive-eph/select-azure-storage-access-keys.png)
+    ![Uw toegangssleutels ophalen in de Azure-portal](./media/event-hubs-dotnet-framework-getstarted-receive-eph/select-azure-storage-access-keys.png)
 
-    Kopieer de Key1-waarde naar een tijdelijke locatie. U gaat deze verderop in de zelfstudie gebruiken.
+    Kopieer de key1-waarde naar een tijdelijke locatie. U gaat deze verderop in de zelfstudie gebruiken.
 
 ### <a name="create-a-java-project-using-the-eventprocessor-host"></a>Maak een Java-project met behulp van EventProcessorHost
 
-De Java-client bibliotheek voor Event Hubs is beschikbaar voor gebruik in Maven-projecten van de [centrale opslag plaats voor maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22)en er kan naar worden verwezen met de volgende afhankelijkheids declaratie in uw Maven-project bestand: 
+De Java-clientbibliotheek voor Event Hubs is beschikbaar voor gebruik in Maven-projecten uit de [centrale opslagplaats voor Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22), en hiernaar kan worden verwezen met de volgende afhankelijkheidsverklaring binnen het Maven-projectbestand: 
 
 ```xml
 <dependency>
@@ -208,9 +203,9 @@ De Java-client bibliotheek voor Event Hubs is beschikbaar voor gebruik in Maven-
 </dependency>
 ```
 
-Voor verschillende soorten bouw omgevingen kunt u expliciet de meest recente vrijgegeven JAR-bestanden ophalen uit de [centrale maven-opslag plaats](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22).
+Voor verschillende soorten build-omgevingen kunt u uitdrukkelijk de meest recente vrijgegeven JAR-bestanden verkrijgen bij de [centrale opslagplaats van Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22).
 
-1. Maak voor het volgende voorbeeld eerst een nieuw Maven-project voor een console/shell-toepassing in uw favoriete Java-ontwikkelomgeving. De klasse wordt aangeroepen `ErrorNotificationHandler`.     
+1. Maak voor het volgende voorbeeld eerst een nieuw Maven-project voor een console/shell-toepassing in uw favoriete Java-ontwikkelomgeving. De klasse heet `ErrorNotificationHandler`.     
    
     ```java
     import java.util.function.Consumer;
@@ -225,7 +220,7 @@ Voor verschillende soorten bouw omgevingen kunt u expliciet de meest recente vri
         }
     }
     ```
-2. Gebruik de volgende code om een nieuwe klasse te maken met de naam `EventProcessorSample`. Vervang de tijdelijke aanduidingen door de waarden die u hebt gebruikt bij het maken van de Event Hub en het opslag account:
+2. Gebruik de volgende code om een nieuwe klasse te maken met de naam `EventProcessorSample`. Vervang de tijdelijke aanduidingen door de waarden die u hebt gebruikt toen u het Event Hub-account en opslagaccount maakte:
    
    ```java
    package com.microsoft.azure.eventhubs.samples.eventprocessorsample;
@@ -316,7 +311,7 @@ Voor verschillende soorten bouw omgevingen kunt u expliciet de meest recente vri
        }
    }
    ```
-3. Maak een klasse met de `EventProcessor`naam met de volgende code:
+3. Maak nog een klasse genaamd `EventProcessor`. Doe dit met de volgende code:
    
     ```java
     public static class EventProcessor implements IEventProcessor
@@ -381,15 +376,15 @@ Voor verschillende soorten bouw omgevingen kunt u expliciet de meest recente vri
     }
     ```
 
-In deze zelfstudie wordt één exemplaar van EventProcessorHost gebruikt. Om de door voer te verg Roten, raden we u aan om meerdere exemplaren van EventProcessorHost uit te voeren, bij voor keur op afzonderlijke machines.  Het biedt ook redundantie. In die gevallen werken de verschillende exemplaren automatisch samen om de ontvangen gebeurtenissen gelijkmatig te verdelen. Als u wilt dat meerdere ontvangers *alle* gebeurtenissen verwerken, gebruik dan het concept **ConsumerGroup**. Wanneer er gebeurtenissen van verschillende computers worden ontvangen, kan het nuttig zijn om namen voor EventProcessorHost-exemplaren op te geven op basis van de computers waarop (of rollen waarin) ze zijn geïmplementeerd.
+In deze zelfstudie wordt één exemplaar van EventProcessorHost gebruikt. Voor een betere doorvoer raden we u aan om meerdere exemplaren van EventProcessorHost uit te voeren, bij voorkeur op verschillende machines.  Dit biedt ook redundantie. In die gevallen werken de verschillende exemplaren automatisch samen om de ontvangen gebeurtenissen gelijkmatig te verdelen. Als u wilt dat meerdere ontvangers *alle* gebeurtenissen verwerken, gebruik dan het concept **ConsumerGroup**. Wanneer er gebeurtenissen van verschillende computers worden ontvangen, kan het nuttig zijn om namen voor EventProcessorHost-exemplaren op te geven op basis van de computers waarop (of rollen waarin) ze zijn geïmplementeerd.
 
 ### <a name="publishing-messages-to-eventhub"></a>Berichten publiceren naar EventHub
 
-Voordat berichten door de gebruikers worden opgehaald, moeten ze eerst worden gepubliceerd op de partities van de uitgevers. Het is belang rijk dat wanneer berichten synchroon worden Event Hub gepubliceerd met de methode sendSync () in het object com. micro soft. Azure. Event hubs. EventHubClient, het bericht kan worden verzonden naar een specifieke partitie of kan worden gedistribueerd naar alle beschik bare partities in een Round-Robin, afhankelijk van het feit of de partitie sleutel is opgegeven of niet.
+Voordat berichten door consumenten worden opgehaald, moeten ze eerst worden gepubliceerd op de partities van de uitgevers. Wanneer berichten synchroon naar Event Hub worden gepubliceerd met behulp van de methode sendSync() in het objectcom.microsoft.azure.eventhubs.EventHubClient, kan het bericht naar een specifieke partitie worden verzonden of worden gedistribueerd naar alle beschikbare partities op een round-robin-wijze, afhankelijk van het feit of de partitiesleutel wel of niet is opgegeven.
 
-Wanneer een teken reeks voor de partitie sleutel is opgegeven, wordt de sleutel gehasht om te bepalen aan welke partitie de gebeurtenis moet worden verzonden.
+Wanneer een tekenreeks die staat voor de partitiesleutel wordt opgegeven, wordt de sleutel gehasht om te bepalen aan welke partitie de gebeurtenis moet worden verzonden.
 
-Wanneer de partitie sleutel niet is ingesteld, worden de berichten naar alle beschik bare partities afgerond
+Wanneer de partitiesleutel niet is ingesteld, worden de berichten op een round-robin-wijze naar alle beschikbare partities verzonden
 
 ```java
 // Serialize the event into bytes
@@ -407,21 +402,21 @@ eventHubClient.sendSync(sendEvent, partitionKey);
 
 ```
 
-### <a name="implementing-a-custom-checkpointmanager-for-eventprocessorhost-eph"></a>Een aangepaste CheckpointManager implementeren voor EventProcessorHost (EPH)
+### <a name="implementing-a-custom-checkpointmanager-for-eventprocessorhost-eph"></a>Een aangepaste CheckpointManager voor EventProcessorHost (EPH) implementeren
 
-De API biedt een mechanisme voor het implementeren van uw aangepaste controlepunt beheer voor scenario's waarbij de standaard implementatie niet compatibel is met uw use-case.
+De API biedt een mechanisme voor het implementeren van uw aangepaste controlepuntbeheer voor scenario's waarbij de standaard implementatie niet compatibel is met uw situatie.
 
-Het standaard controlepunt beheer maakt gebruik van Blob Storage, maar als u de controlepunt beheerder die door EPH wordt gebruikt, overschrijft met uw eigen implementatie, kunt u een wille keurige Store gebruiken waarvoor u de implementatie van het controle punt beheer wilt terugzetten.
+Het standaard controlepuntbeheer maakt gebruik van blob-opslag, maar als u het controlepuntbeheer die door EPH wordt gebruikt overschrijft met uw eigen implementatie, kunt u een willekeurige opslagplaats gebruiken als back-up voor de implementatie van het controlepuntbeheer.
 
-Een klasse maken die de interface com. micro soft. Azure. eventprocessorhost. ICheckpointManager implementeert
+Een klasse maken die de interface com.microsoft.azure.eventprocessorhost.ICheckpointManager implementeert
 
-Gebruik uw aangepaste implementatie van controlepunt beheer (com. micro soft. Azure. eventprocessorhost. ICheckpointManager)
+Uw aangepaste implementatie van controlepuntbeheer gebruiken (com.microsoft.azure.eventprocessorhost.ICheckpointManager)
 
-Binnen uw implementatie kunt u het standaard mechanisme voor controle punten overschrijven en onze eigen controle punten implementeren op basis van uw eigen gegevens archief (zoals SQL Server, CosmosDB en Azure cache voor redis). Het is raadzaam dat de Store die wordt gebruikt om een back-up te maken van de Check Point Manager-implementatie toegankelijk is voor alle EPH-instanties die gebeurtenissen verwerken voor de Consumer groep.
+Binnen uw implementatie kunt u het standaard mechanisme voor controlepunten overschrijven en uw eigen controlepunten implementeren op basis van uw eigen gegevensarchief (zoals SQL Server, CosmosDB en Azure Cache voor Redis). Het is raadzaam dat de opslagplaats die wordt gebruikt voor back-up van de implementatie van controlepuntbeheer toegankelijk is voor alle EPH-instanties die gebeurtenissen verwerken voor de consumentengroep.
 
-U kunt alle gegevens opslag gebruiken die beschikbaar is in uw omgeving.
+U kunt elke gegevensopslag gebruiken die beschikbaar is in uw omgeving.
 
-De klasse com. micro soft. Azure. eventprocessorhost. EventProcessorHost biedt u twee constructors waarmee u het controlepunt beheer voor uw EventProcessorHost kunt onderdrukken.
+De klasse com.microsoft.azure.eventprocessorhost.EventProcessorHost biedt twee constructors waarmee u het controlepuntbeheer voor uw EventProcessorHost kunt overschrijven.
 
 
 ## <a name="next-steps"></a>Volgende stappen

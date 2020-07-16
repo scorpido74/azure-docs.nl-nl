@@ -5,12 +5,12 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e17bad915fd913f6e3894ed386e914e65aa46c01
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 6a56602ad5217af07d9e35872a26ddb478146d0e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85250329"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101882"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>Zelfstudie: SQL BACPAC-bestanden met ARM-sjablonen importeren
 
@@ -34,7 +34,7 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 
 Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 
-* Visual Studio Code met de extensie Resource Manager Tools. Raadpleeg [Visual Studio Code gebruiken om ARM-sjablonen te maken](./use-vs-code-to-create-template.md).
+* Visual Studio Code met de extensie Resource Manager Tools. Zie [Quickstart: Azure Resource Manager-sjablonen maken met Visual Studio Code](./quickstart-create-templates-use-visual-studio-code.md).
 * Gebruik een gegenereerd wachtwoord voor het serverbeheerdersaccount om de beveiliging te verbeteren. Hierna volgt een voorbeeld dat u kunt gebruiken om een wachtwoord te genereren:
 
     ```console
@@ -112,8 +112,8 @@ De sjabloon die in deze zelfstudie wordt gebruikt, wordt opgeslagen in [GitHub](
 
     Er worden twee resources gedefinieerd in de sjabloon:
 
-   * `Microsoft.Sql/servers`. Zie de [sjabloonverwijzing](https://docs.microsoft.com/azure/templates/microsoft.sql/servers).
-   * `Microsoft.SQL.servers/databases`. Zie de [sjabloonverwijzing](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases).
+   * `Microsoft.Sql/servers`. Zie de [sjabloonverwijzing](/azure/templates/microsoft.sql/servers).
+   * `Microsoft.SQL.servers/databases`. Zie de [sjabloonverwijzing](/azure/templates/microsoft.sql/servers/databases).
 
         Het is handig om enige basiskennis te hebben van de sjabloon voordat u deze gaat aanpassen.
 1. Selecteer **Bestand** > **Opslaan als** om het bestand op uw lokale computer op te slaan als *azuredeploy.json*.
@@ -194,7 +194,7 @@ De sjabloon die in deze zelfstudie wordt gebruikt, wordt opgeslagen in [GitHub](
 
         ![Sjabloon met SQL Database-extensie](./media/template-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac.png)
 
-        Zie de [verwijzing voor SQL Database-extensies](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases/extensions) voor meer informatie over de resourcedefinitie. Hier volgen enkele belangrijke elementen:
+        Zie de [verwijzing voor SQL Database-extensies](/azure/templates/microsoft.sql/servers/databases/extensions) voor meer informatie over de resourcedefinitie. Hier volgen enkele belangrijke elementen:
 
         * **dependsOn**: de extensieresource moet worden gemaakt nadat de database is gemaakt.
         * **storageKeyType**: Geef het type van de te gebruiken opslagsleutel op. De waarde kan `StorageAccessKey` of `SharedAccessKey` zijn. Gebruik in deze zelfstudie `StorageAccessKey`.

@@ -1,55 +1,45 @@
 ---
-title: Azure Service Bus-onderwerpen en-abonnementen gebruiken met Java
-description: In deze Snelstartgids schrijft u Java-code voor het verzenden van berichten naar een Azure Service Bus onderwerp en ontvangt u vervolgens berichten van abonnementen op dit onderwerp.
-services: service-bus-messaging
-documentationcenter: java
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: 63d6c8bd-8a22-4292-befc-545ffb52e8eb
-ms.service: service-bus-messaging
-ms.workload: tbd
-ms.tgt_pltfrm: na
+title: Azure Service Bus-onderwerpen en -abonnementen met Java gebruiken
+description: In deze quickstart schrijft u Java-code voor het verzenden van berichten naar een Azure Service Bus-onderwerp en ontvangt u vervolgens berichten van abonnementen op dit onderwerp.
 ms.devlang: Java
 ms.topic: quickstart
-ms.date: 01/24/2020
-ms.author: aschhab
+ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: e025adfd3d8a29bc07cf14803f572dcba1097fd6
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.openlocfilehash: fb8e5196077e60c20d9354459cafe85302ad0e45
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791065"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341428"
 ---
-# <a name="quickstart-use-service-bus-topics-and-subscriptions-with-java"></a>Snelstartgids: Service Bus-onderwerpen en-abonnementen gebruiken met Java
+# <a name="quickstart-use-service-bus-topics-and-subscriptions-with-java"></a>Quickstart: Service Bus-onderwerpen en -abonnementen met Java gebruiken
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-In deze Snelstartgids schrijft u Java-code voor het verzenden van berichten naar een Azure Service Bus onderwerp en ontvangt u vervolgens berichten van abonnementen op dit onderwerp. 
+In deze quickstart schrijft u Java-code voor het verzenden van berichten naar een Azure Service Bus-onderwerp en ontvangt u vervolgens berichten van abonnementen op dit onderwerp. 
 
 ## <a name="prerequisites"></a>Vereisten
 
-1. Een Azure-abonnement. U hebt een Azure-account nodig om deze zelfstudie te voltooien. U kunt uw [voor delen voor Visual Studio of MSDN Subscriber](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) activeren of u aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-2. Volg de stappen in de [Snelstartgids: gebruik de Azure Portal om een service bus onderwerp en abonnementen aan het onderwerp te maken](service-bus-quickstart-topics-subscriptions-portal.md) om de volgende taken uit te voeren:
-    1. Maak een Service Bus **naam ruimte**.
-    2. Haal de **Connection String**op.
-    3. Maak een **onderwerp** in de naam ruimte.
-    4. Maak **drie abonnementen** op het onderwerp in de naam ruimte.
+1. Een Azure-abonnement. U hebt een Azure-account nodig om deze zelfstudie te voltooien. U kunt uw [voordelen als Visual Studio- of MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) of u aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+2. Volg de stappen in de [Quickstart: De Azure-portal gebruiken om een Service Bus-onderwerp en abonnementen te maken voor het onderwerp ](service-bus-quickstart-topics-subscriptions-portal.md)om de volgende taken uit te voeren:
+    1. Maak een Service Bus-**naamruimte**.
+    2. Haal de **verbindingsreeks** op.
+    3. Maak een **onderwerp** in de naamruimte.
+    4. Maak **drie abonnementen** naar het onderwerp in de naamruimte.
 3. [Azure SDK voor Java][Azure SDK for Java].
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Uw toepassing configureren voor het gebruik van Service Bus
-Zorg ervoor dat u de [Azure SDK voor Java][Azure SDK for Java] hebt geïnstalleerd voordat u dit voor beeld bouwt. Als u een eclips gebruikt, kunt u de [Azure-Toolkit voor eclipse][Azure Toolkit for Eclipse] installeren die de Azure SDK voor Java bevat. U kunt vervolgens de **Microsoft Azure bibliotheken voor Java** toevoegen aan uw project:
+Zorg ervoor dat u de [Azure-SDK voor Java][Azure SDK for Java] hebt geïnstalleerd voordat u dit voorbeeld compileert. Als u Eclipse gebruikt, kunt u de [Azure-toolkit voor Eclipse][Azure Toolkit for Eclipse] installeren die de Azure-SDK voor Java bevat. U kunt vervolgens de **Microsoft Azure-bibliotheken voor Java** toevoegen aan uw project:
 
-![Microsoft Azure bibliotheken voor Java toevoegen aan uw eclips-project](media/service-bus-java-how-to-use-topics-subscriptions/eclipse-azure-libraries-java.png)
+![Microsoft Azure-bibliotheken voor Java toevoegen aan uw Eclipse-project](media/service-bus-java-how-to-use-topics-subscriptions/eclipse-azure-libraries-java.png)
 
-U moet ook de volgende potten toevoegen aan het Java-build-pad:
+U moet ook de volgende JAR’s toevoegen aan het Java Build-pad:
 
-- gson-2.6.2. jar
-- Commons-CLI-1.4. jar
-- Proton-j-0.21.0. jar
+- gson-2.6.2.jar
+- commons-cli-1.4.jar
+- proton-j-0.21.0.jar
 
-Voeg een klasse toe met een **hoofd** methode en voeg vervolgens de volgende `import` instructies toe boven aan het Java-bestand:
+Voeg een klasse toe met een **Hoofd**-methode en voeg de volgende `import`-instructies toe boven aan het Java-bestand:
 
 ```java
 import com.google.gson.reflect.TypeToken;
@@ -66,11 +56,11 @@ import org.apache.commons.cli.DefaultParser;
 ```
 
 ## <a name="send-messages-to-a-topic"></a>Berichten verzenden naar een onderwerp
-Werk de methode **Main** bij om een **TopicClient** -object te maken en roep een hulp methode aan waarmee asynchroon voorbeeld berichten naar het onderwerp service bus worden verzonden.
+Werk de **Hoofd**-methode bij om een **TopicClient**-object te maken en roep een hulpmethode op waarmee asynchroon voorbeeldberichten worden verzonden naar het Service Bus-onderwerp.
 
 > [!NOTE] 
-> - Vervang `<NameOfServiceBusNamespace>` door de naam van de Service Bus-naamruimte. 
-> - Vervang `<AccessKey>` door de toegangs sleutel voor uw naam ruimte.
+> - Vervang `<NameOfServiceBusNamespace>` door de naam van je Service Bus-naamruimte. 
+> - Vervang `<AccessKey>` door de toegangssleutel voor uw naamruimte.
 
 ```java
 public class MyServiceBusTopicClient {
@@ -123,10 +113,10 @@ public class MyServiceBusTopicClient {
 }
 ```
 
-Service Bus-onderwerpen ondersteunen een maximale grootte van 256 kB in de [Standard-laag](service-bus-premium-messaging.md) en 1 MB in de [Premium-laag](service-bus-premium-messaging.md). De koptekst, die de standaard- en aangepaste toepassingseigenschappen bevat, kan maximaal 64 kB groot zijn. Er is geen limiet voor het aantal berichten in een onderwerp, maar er geldt een limiet voor de totale grootte van de berichten in een onderwerp. De grootte van het onderwerp wordt gedefinieerd tijdens het maken, met een bovengrens van 5 GB.
+Service Bus-onderwerpen ondersteunen een maximale grootte van 256 kB in de [Standard-laag](service-bus-premium-messaging.md) en 1 MB in de [Premium-laag](service-bus-premium-messaging.md). De koptekst, die de standaard- en aangepaste toepassingseigenschappen bevat, kan maximaal 64 kB groot zijn. Er is geen limiet voor het aantal berichten in een onderwerp, maar er is een limiet voor de totale grootte van de berichten in een onderwerp. De grootte van het onderwerp wordt gedefinieerd tijdens het maken, met een bovengrens van 5 GB.
 
 ## <a name="how-to-receive-messages-from-a-subscription"></a>Berichten van een abonnement ontvangen
-Werk de methode **Main** bij om drie **SubscriptionClient** -objecten te maken voor drie abonnementen en roep een hulp methode aan waarmee asynchroon berichten worden ontvangen uit het service bus onderwerp. In de voorbeeld code wordt ervan uitgegaan dat u een onderwerp met de naam **BasicTopic** en drie abonnementen hebt gemaakt met de naam **Subscription1**, **Subscription2**en **Subscription3**. Als u verschillende namen hebt gebruikt, werkt u de code bij voordat u deze test. 
+Werk de **Hoofd**-methode bij om drie **SubscriptionClient**-objecten te maken voor drie abonnementen en roep een hulpmethode op waarmee asynchroon berichten worden ontvangen van het Service Bus-onderwerp. In de voorbeeld codewordt ervan uitgegaan dat u een onderwerp met de naam **BasicTopic** en drie abonnementen hebt gemaakt met de naam **Subscription1**, **Subscription2**en **Subscription3**. Als u verschillende namen hebt gebruikt, werkt u de code bij voordat u deze test. 
 
 ```java
 public class MyServiceBusTopicClient {
@@ -190,7 +180,7 @@ public class MyServiceBusTopicClient {
 ```
 
 ## <a name="run-the-program"></a>Het programma uitvoeren
-Voer het programma uit om de uitvoer te zien zoals in de volgende uitvoer:
+Voer het programma uit om te controleren of the uitvoer lijkt op de volgende uitvoer:
 
 ```java
 Message sending: Id = 0
@@ -456,10 +446,10 @@ Message sending: Id = 9
 ```
 
 > [!NOTE]
-> U kunt Service Bus-resources beheren met [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Met de Service Bus Explorer kunnen gebruikers verbinding maken met een Service Bus naam ruimte en de Messa ging-entiteiten op een eenvoudige manier beheren. Het hulp programma biedt geavanceerde functies zoals de functionaliteit voor importeren/exporteren of de mogelijkheid om onderwerp, wacht rijen, abonnementen, relay-Services, Notification hubs en Events hubs te testen. 
+> U kunt resources van Service Bus beheren met [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Met Service Bus Explorer kunnen gebruikers verbinding maken met een Service Bus-naamruimte en berichtenentiteiten op een eenvoudige manier beheren. Het hulpprogramma biedt geavanceerde functies zoals functionaliteit voor importeren/exporteren of de mogelijkheid van het testen van onderwerpen, wachtrijen, abonnementen, relay-services, Notification Hubs en Event Hubs. 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [service bus-wacht rijen,-onderwerpen en-abonnementen][Service Bus queues, topics, and subscriptions]voor meer informatie.
+Zie [Service Bus-wachtrijen, onderwerpen en abonnementen][Service Bus queues, topics, and subscriptions] voor meer informatie.
 
 [Azure SDK for Java]: https://docs.microsoft.com/java/api/overview/azure/
 [Azure Toolkit for Eclipse]: https://docs.microsoft.com/azure/developer/java/toolkit-for-eclipse/installation

@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.author: banders
-ms.openlocfilehash: 5ad92fe9f243cf9884f29536cf6ebb66202338d5
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: d205f3ccc0adef7e2390274bb7f4511c6f994027
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299958"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86038001"
 ---
 # <a name="azure-ea-pricing"></a>Azure EA-prijzen
 
@@ -24,7 +24,7 @@ Deze sectie biedt informatie over hoe het gebruik wordt berekend. Ook worden ant
 
 ### <a name="price-protection"></a>Prijsbescherming
 
-Als klant of kanaalpartner ontvangt u gegarandeerd prijzen die gelijk zijn aan of lager zijn dan de prijzen die worden weergegeven op uw CPS (Customer Price Sheet) , of de actuele prijs op de ingangsdatum van uw Azure-aankoop. Deze prijs wordt de basislijnprijs genoemd. Voor services die na uw Azure-aankoop worden geïntroduceerd, wordt de prijs met het kortingsniveau bij u in rekening gebracht die gold toen de service voor het eerst werd geïntroduceerd. Deze prijsbescherming geldt voor de duur van uw toezeggingsperiode, die één of drie jaar bedraagt, afhankelijk van uw Enterprise Agreement.
+Als klant of kanaalpartner ontvangt u gegarandeerd prijzen die gelijk zijn aan of lager zijn dan de prijzen die worden weergegeven op uw CPS (Customer Price Sheet) , of de actuele prijs op de ingangsdatum van uw Azure-aankoop. Deze prijs wordt de basislijnprijs genoemd. Voor services die na uw Azure-aankoop worden geïntroduceerd, wordt de prijs met het kortingsniveau bij u in rekening gebracht die gold toen de service voor het eerst werd geïntroduceerd. Deze prijsbescherming geldt voor de duur van uw vooruitbetalingsperiode, die één of drie jaar bedraagt, afhankelijk van uw Enterprise Agreement.
 
 ### <a name="price-changes"></a>Prijswijzigingen
 

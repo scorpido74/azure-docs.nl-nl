@@ -1,6 +1,6 @@
 ---
 title: 'Quickstart: Aan de slag met Azure Sentinel'
-description: 'Quickstart voor Azure Sentinel: Aan de slag met Azure Sentinel'
+description: Gebruik deze quickstart om te leren u hoe u Azure Sentinel kunt gebruiken om snel te zien wat er in uw omgeving gebeurt. 
 services: sentinel
 author: yelevin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 4bd01b737c4a80ff286458c122f3b0ab9573a40b
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 60e3529e68183488016e40211730412da8e3e0bb
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798678"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85564618"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>Quickstart: Aan de slag met Azure Sentinel
 

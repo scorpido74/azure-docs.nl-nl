@@ -1,50 +1,42 @@
 ---
-title: 'Snelstartgids: Service Bus-onderwerpen gebruiken (Ruby)'
-description: 'Snelstartgids: informatie over het gebruik van Service Bus-onderwerpen en-abonnementen in Azure. Code voorbeelden zijn geschreven voor ruby-toepassingen.'
+title: 'Quickstart: Service Bus-onderwerpen gebruiken (Ruby)'
+description: 'Quickstart: Informatie over het gebruik van Service Bus-onderwerpen en -abonnementen in Azure. Codevoorbeelden zijn geschreven voor Ruby-toepassingen.'
 services: service-bus-messaging
 documentationcenter: ruby
-author: axisc
-manager: timlt
-editor: ''
-ms.assetid: 3ef2295e-7c5f-4c54-a13b-a69c8045d4b6
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: quickstart
-ms.date: 11/05/2019
-ms.author: aschhab
-ms.openlocfilehash: b5401eae844ed2113a9fbc07c8b3ad8601709d43
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: ef4bb8ba724a8ae1f708ab80a770a521f7879685
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73718930"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85336740"
 ---
-# <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-ruby"></a>Snelstartgids: Service Bus-onderwerpen en-abonnementen gebruiken met ruby
+# <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-ruby"></a>Quickstart: Service Bus-onderwerpen en -abonnementen gebruiken met Ruby
  
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-In dit artikel wordt beschreven hoe u Service Bus-onderwerpen en-abonnementen van Ruby-toepassingen gebruikt. De volgende scenario's zijn van toepassing:
+In dit artikel wordt beschreven hoe u Service Bus-onderwerpen en -abonnementen gebruikt met Ruby-toepassingen. De behandelde scenario's zijn:
 
 - Onderwerpen en abonnementen maken 
-- Abonnements filters maken 
+- Abonnementsfilters maken 
 - Berichten verzenden naar een onderwerp 
-- Berichten ontvangen van een abonnement
+- Berichten van een abonnement ontvangen
 - Onderwerpen en abonnementen verwijderen
 
 
 ## <a name="prerequisites"></a>Vereisten
-1. Een Azure-abonnement. U hebt een Azure-account nodig om deze zelfstudie te voltooien. U kunt uw [voor delen voor Visual Studio of MSDN Subscriber](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) activeren of u aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-2. Volg de stappen in de [Snelstartgids: gebruik de Azure Portal om een service bus onderwerp en abonnementen aan het onderwerp te maken](service-bus-quickstart-topics-subscriptions-portal.md) om een service bus **naam ruimte** te maken en de **Connection String**op te halen. 
+1. Een Azure-abonnement. U hebt een Azure-account nodig om deze zelfstudie te voltooien. U kunt uw [voordelen als Visual Studio- of MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) of u aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+2. Volg de stappen in de [Quickstart: De Azure-portal gebruiken om een Service Bus-onderwerp en abonnementen te maken voor het onderwerp](service-bus-quickstart-topics-subscriptions-portal.md) om een Service Bus-**naamruimte** te maken en de **verbindingsreeks** op te halen. 
 
     > [!NOTE]
-    > U maakt een **onderwerp** en een **abonnement** op het onderwerp met behulp van **ruby** in deze Quick Start. 
+    > In deze quickstart maakt u een **onderwerp** en een **abonnement** voor het onderwerp door **Ruby** te gebruiken. 
 
 [!INCLUDE [service-bus-ruby-setup](../../includes/service-bus-ruby-setup.md)]
 
 ## <a name="create-a-topic"></a>Een onderwerp maken
-Met het object **Azure:: ServiceBusService** kunt u werken met onderwerpen. Met de volgende code wordt een **Azure:: ServiceBusService** -object gemaakt. Als u een onderwerp wilt maken, `create_topic()` gebruikt u de-methode. In het volgende voor beeld wordt een onderwerp gemaakt of worden eventuele fouten afgedrukt.
+Met het **Azure::ServiceBusService**-object kunt u werken met onderwerpen. Met de volgende code wordt een **Azure::ServiceBusService**-object gemaakt. Als u een onderwerp wilt maken, gebruikt u de methode `create_topic()`. In het volgende voorbeeld wordt een onderwerp gemaakt of worden eventuele fouten afgedrukt.
 
 ```ruby
 azure_service_bus_service = Azure::ServiceBus::ServiceBusService.new(sb_host, { signer: signer})
@@ -55,7 +47,7 @@ rescue
 end
 ```
 
-U kunt ook een **Azure:: ServiceBus:: Topic** -object door geven aan de hand van extra opties, waarmee u standaard instellingen voor het onderwerp, zoals de bericht tijd, de TTL (time to Live) of de maximale wachtrij grootte. In het volgende voor beeld ziet u het instellen van de maximale wachtrij grootte op 5 GB en de TTL-waarde op 1 minuut:
+U kunt ook een **Azure::ServiceBus::Topic**-object doorgeven met extra opties. Hiermee kunt u de standaardinstellingen voor het onderwerp overschrijven, zoals de TTL-waarde voor een bericht of de maximale wachtrijgrootte. In het volgende voorbeeld ziet u hoe u de maximale wachtrijgrootte instelt op 5 GB en de TTL-waarde op 1 minuut:
 
 ```ruby
 topic = Azure::ServiceBus::Topic.new("test-topic")
@@ -66,29 +58,29 @@ topic = azure_service_bus_service.create_topic(topic)
 ```
 
 ## <a name="create-subscriptions"></a>Abonnementen maken
-Er worden ook abonnementen van het onderwerp gemaakt met het object **Azure:: ServiceBusService** . Abonnementen krijgen een naam en kunnen een optioneel filter hebben waarmee de set berichten wordt beperkt die aan de virtuele wachtrij van het abonnement wordt geleverd.
+Er worden ook onderwerpabonnementen gemaakt met het object **Azure::ServiceBusService**. Abonnementen hebben een naam en kunnen een optioneel filter hebben waarmee de verzameling berichten wordt beperkt die worden bezorgd in de virtuele wachtrij van het abonnement.
 
-Standaard zijn abonnementen permanent. Ze blijven bestaan totdat ze worden verwijderd, of het onderwerp waaraan ze zijn gekoppeld. Als uw toepassing logica bevat om een abonnement te maken, moet u eerst controleren of het abonnement al bestaat met behulp van de getSubscription-methode.
+Standaard zijn abonnementen permanent. Ze blijven bestaan totdat ze worden verwijderd, of totdat het onderwerp waaraan ze zijn gekoppeld wordt verwijderd. Als uw toepassing logica bevat om een abonnement te maken, moet deze eerst de getSubscription-methode gebruiken om te controleren of het abonnement al bestaat.
 
 U kunt de abonnementen automatisch laten verwijderen door de [eigenschap AutoDeleteOnIdle](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle)in te stellen.
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Een abonnement maken met het standaardfilter (MatchAll)
-Als er geen filter is opgegeven bij het maken van een nieuw abonnement, wordt het **MatchAll** -filter (standaard) gebruikt. Wanneer het filter **MatchAll** wordt gebruikt, worden alle berichten die naar het onderwerp worden gepubliceerd, in de virtuele wachtrij van het abonnement geplaatst. In het volgende voor beeld wordt een abonnement met de naam ' alle berichten ' gemaakt en wordt het standaard **MatchAll** -filter gebruikt.
+Het **MatchAll**-filter (standaard) wordt gebruikt als er bij het maken van een nieuw abonnement geen filter is opgegeven. Bij gebruik van het **MatchAll**-filter worden alle berichten die naar het onderwerp worden gepubliceerd, in de virtuele wachtrij van het abonnement geplaatst. Met het volgende voorbeeld maakt u een abonnement met de naam 'all-messages' en wordt het standaardfilter **MatchAll** gebruikt.
 
 ```ruby
 subscription = azure_service_bus_service.create_subscription("test-topic", "all-messages")
 ```
 
 ### <a name="create-subscriptions-with-filters"></a>Abonnementen met filters maken
-U kunt ook filters definiëren om aan te geven welke berichten naar een onderwerp moeten worden weer gegeven binnen een specifiek abonnement.
+U kunt ook filters definiëren waarmee u kunt opgeven welke berichten die naar een onderwerp worden verzonden, moeten worden weergegeven in een bepaald abonnement.
 
-Het meest flexibele type filter dat wordt ondersteund door abonnementen is **Azure:: ServiceBus:: SqlFilter**, dat een SUBSET van SQL92 implementeert. SQL-filters worden uitgevoerd voor de eigenschappen van de berichten die worden gepubliceerd naar het onderwerp. Raadpleeg de [SqlFilter](service-bus-messaging-sql-filter.md) -syntaxis voor meer informatie over de expressies die kunnen worden gebruikt met een SQL-filter.
+Het meest flexibele type filter dat wordt ondersteund door abonnementen is **Azure::ServiceBus::SqlFilter**, waarmee een subset van SQL92 wordt geïmplementeerd. SQL-filters worden uitgevoerd voor de eigenschappen van de berichten die worden gepubliceerd naar het onderwerp. Zie de [SqlFilter](service-bus-messaging-sql-filter.md)-syntaxis voor meer informatie over de expressies die kunnen worden gebruikt met een SQL-filter.
 
-U kunt filters toevoegen aan een abonnement met behulp `create_rule()` van de methode van het object **Azure:: ServiceBusService** . Met deze methode kunt u nieuwe filters toevoegen aan een bestaand abonnement.
+Filters kunnen worden toegevoegd aan een abonnement met behulp van de methode `create_rule()` van het object **Azure::ServiceBusService**. Met deze methode kunt u nieuwe filters toevoegen aan een bestaand abonnement.
 
-Aangezien het standaard filter automatisch wordt toegepast op alle nieuwe abonnementen, moet u eerst het standaard filter verwijderen, of de **MatchAll** overschrijft andere filters die u kunt opgeven. U kunt de standaard regel verwijderen met behulp `delete_rule()` van de-methode in het object **Azure:: ServiceBusService** .
+Omdat het standaardfilter automatisch wordt toegepast op alle nieuwe abonnementen, moet u eerst het standaardfilter verwijderen. Anders overschrijft **MatchAll** alle andere filters die u eventueel opgeeft. U kunt de standaardregel verwijderen met de methode `delete_rule()` van het object **ServiceBusService**.
 
-In het volgende voor beeld wordt een abonnement met de naam ' hoge berichten ' gemaakt met een **Azure:: ServiceBus:: SqlFilter** die alleen berichten selecteert `message_number` die een aangepaste eigenschap hebben die groter is dan 3:
+In het volgende voorbeeld wordt een abonnement genaamd 'high-messages' gemaakt met een **Azure::ServiceBus::SqlFilter** dat alleen berichten selecteert die een aangepaste `message_number`-eigenschap groter dan 3 hebben:
 
 ```ruby
 subscription = azure_service_bus_service.create_subscription("test-topic", "high-messages")
@@ -102,7 +94,7 @@ rule.filter = Azure::ServiceBus::SqlFilter.new({
 rule = azure_service_bus_service.create_rule(rule)
 ```
 
-In het volgende voor beeld wordt een abonnement gemaakt `low-messages` met de naam met een **Azure:: ServiceBus:: SqlFilter** die alleen berichten selecteert `message_number` die een eigenschap hebben die kleiner is dan of gelijk is aan 3:
+Op dezelfde manier wordt in het volgende voorbeeld een abonnement met de naam `low-messages` gemaakt met een **Azure::ServiceBus::SqlFilter** waarmee alleen berichten worden geselecteerd die een `message_number`-eigenschap kleiner dan of gelijk aan 3 hebben:
 
 ```ruby
 subscription = azure_service_bus_service.create_subscription("test-topic", "low-messages")
@@ -116,12 +108,12 @@ rule.filter = Azure::ServiceBus::SqlFilter.new({
 rule = azure_service_bus_service.create_rule(rule)
 ```
 
-Wanneer een bericht nu wordt verzonden naar `test-topic`, wordt het altijd bezorgd bij ontvangers die zijn geabonneerd op het `all-messages` onderwerp-abonnement en worden ze selectief geleverd aan ontvangers die zijn geabonneerd `high-messages` op `low-messages` het onderwerp en abonnementen (afhankelijk van de inhoud van het bericht).
+Wanneer er nu een bericht naar `test-topic` wordt verzonden, wordt het altijd bezorgd bij ontvangers die zijn geabonneerd op het `all-messages`-onderwerpabonnement, en selectief bezorgd bij ontvangers die zijn geabonneerd op de onderwerpabonnementen `high-messages` en `low-messages` (afhankelijk van de inhoud van het bericht).
 
 ## <a name="send-messages-to-a-topic"></a>Berichten verzenden naar een onderwerp
-Als u een bericht wilt verzenden naar een Service Bus onderwerp, moet uw toepassing `send_topic_message()` gebruikmaken van de methode in het object **Azure:: ServiceBusService** . Berichten die worden verzonden naar Service Bus onderwerpen zijn exemplaren van de objecten **Azure:: ServiceBus:: BrokeredMessage** . **Azure:: ServiceBus:: BrokeredMessage** -objecten hebben een aantal standaard eigenschappen (zoals `label` en `time_to_live`), een woorden lijst die wordt gebruikt voor het opslaan van aangepaste toepassingsspecifieke eigenschappen en een hoofd tekst van teken reeks gegevens. Een toepassing kan de hoofd tekst van het bericht instellen door een teken reeks waarde door `send_topic_message()` te geven aan de methode en alle vereiste standaard eigenschappen worden gevuld met standaard waarden.
+Om een bericht naar een Service Bus-onderwerp te verzenden, moet uw toepassing de methode `send_topic_message()` van het object **Azure::ServiceBusService** aanroepen. Berichten die worden verzonden naar Service Bus-onderwerpen zijn exemplaren van de **Azure::ServiceBus::BrokeredMessage**-objecten. **Azure::ServiceBus::BrokeredMessage**-objecten hebben een aantal standaardeigenschappen (zoals `label` en `time_to_live`), een woordenlijst die wordt gebruikt om aangepaste, toepassingsspecifieke eigenschappen te bewaren en een hoofdtekst met tekenreeksgegevens. Een toepassing kan de hoofdtekst van het bericht instellen door een tekenreekswaarde door te geven aan de methode `send_topic_message()`, en alle vereiste standaardeigenschappen worden gevuld met standaardwaarden.
 
-In het volgende voor beeld ziet u hoe u vijf test berichten `test-topic`verzendt naar. De `message_number` waarde van de aangepaste eigenschap van elk bericht varieert afhankelijk van de herhaling van de lus (Hiermee wordt bepaald welk abonnement wordt ontvangen):
+In het volgende voorbeeld ziet u hoe u vijf testberichten naar `test-topic` verzendt. De aangepaste eigenschapswaarde `message_number` van elk bericht varieert afhankelijk van de herhaling van de lus (deze bepaalt welk abonnement het bericht ontvangt):
 
 ```ruby
 5.times do |i|
@@ -133,14 +125,14 @@ end
 
 Service Bus-onderwerpen ondersteunen een maximale grootte van 256 kB in de [Standard-laag](service-bus-premium-messaging.md) en 1 MB in de [Premium-laag](service-bus-premium-messaging.md). De koptekst, die de standaard- en aangepaste toepassingseigenschappen bevat, kan maximaal 64 kB groot zijn. Er is geen limiet voor het aantal berichten in een onderwerp, maar er is een limiet voor de totale grootte van de berichten in een onderwerp. De grootte van het onderwerp wordt gedefinieerd tijdens het maken, met een bovengrens van 5 GB.
 
-## <a name="receive-messages-from-a-subscription"></a>Berichten ontvangen van een abonnement
-Er worden berichten ontvangen van een abonnement met `receive_subscription_message()` behulp van de methode in het object **Azure:: ServiceBusService** . Standaard worden berichten gelezen (pieken) en vergrendeld zonder dat ze worden verwijderd uit het abonnement. U kunt het bericht lezen en verwijderen uit het abonnement door de `peek_lock` optie in te stellen op **Onwaar**.
+## <a name="receive-messages-from-a-subscription"></a>Berichten van een abonnement ontvangen
+Berichten worden van een abonnement ontvangen met behulp van de methode `receive_subscription_message()` van het object **Azure::ServiceBusService**. Standaard worden berichten gelezen (pieken) en vergrendeld zonder dat ze uit het abonnement worden verwijderd. U kunt het bericht lezen en verwijderen vanuit het abonnement door de `peek_lock`-optie in te stellen op **false**.
 
-De standaard instelling is het lezen en verwijderen van een bewerking met twee fasen, waardoor het mogelijk is om toepassingen te ondersteunen die geen ontbrekende berichten kunnen verdragen. Als Service Bus een aanvraag ontvangt, wordt het volgende te verbruiken bericht gevonden, wordt het bericht vergrendeld om te voorkomen dat andere consumenten het ontvangen en wordt het bericht vervolgens naar de toepassing geretourneerd. Nadat de toepassing klaar is met de verwerking van het bericht (of op betrouw bare wijze is opgeslagen voor toekomstige verwerking), wordt de tweede fase van `delete_subscription_message()` het ontvangst proces voltooid door methode aan te roepen en wordt het bericht verwijderd als een para meter. Met `delete_subscription_message()` de-methode wordt het bericht gemarkeerd als verbruikt en wordt het verwijderd uit het abonnement.
+Bij het standaardgedrag is het lezen en verwijderen een bewerking met twee fasen, waardoor er toepassingen kunnen worden ondersteund die geen ontbrekende berichten kunnen tolereren. Als Service Bus een aanvraag ontvangt, wordt het volgende te verbruiken bericht gevonden, wordt het bericht vergrendeld om te voorkomen dat andere consumenten het ontvangen en wordt het bericht vervolgens naar de toepassing geretourneerd. Nadat de toepassing het bericht heeft verwerkt (of het veilig heeft opgeslagen voor toekomstige verwerking), wordt de tweede fase van het ontvangstproces voltooid door de methode `delete_subscription_message()` aan te roepen en het te verwijderen bericht door te geven als een parameter. Met de methode `delete_subscription_message()` wordt het bericht gemarkeerd als verwerkt en wordt het uit het abonnement verwijderd.
 
-Als de `:peek_lock` para meter is ingesteld op **Onwaar**, het lezen en verwijderen van het bericht wordt het eenvoudigste model en werkt het beste voor scenario's waarin een toepassing niet de verwerking van een bericht kan verdragen wanneer zich een fout voordoet. Overweeg een scenario waarin de consumer de ontvangst aanvraag uitgeeft en vervolgens vastloopt voordat deze wordt verwerkt. Omdat Service Bus het bericht heeft gemarkeerd als verbruikt, wordt het bericht dat voor het vastlopen is verbruikt, gemist wanneer de toepassing opnieuw wordt gestart en er opnieuw wordt verbruikt.
+Als de parameter `:peek_lock` is ingesteld op **false**, wordt het lezen van het bericht en het verwijderen het eenvoudigste model. Dit werkt het beste voor scenario's waarin een toepassing het niet verwerken van een bericht bij een fout kan tolereren. Neem bijvoorbeeld een scenario waarin de consument de ontvangstaanvraag uitgeeft en het systeem vervolgens vastloopt voordat de aanvraag wordt verwerkt. Omdat Service Bus het bericht als verbruikt heeft gemarkeerd, ontbreekt het bericht dat voor het vastlopen is verbruikt wanneer de toepassing opnieuw wordt gestart en het verbruik van berichten opnieuw begint.
 
-In het volgende voor beeld ziet u hoe berichten kunnen worden ontvangen en `receive_subscription_message()`verwerkt met. In het voor beeld wordt eerst een bericht van het `low-messages` abonnement ontvangen en `:peek_lock` eruit verwijderd met behulp van ingesteld op **Onwaar**. `high-messages` vervolgens ontvangt het bericht een ander `delete_subscription_message()`bericht van de en wordt het vervolgens verwijderd met behulp van:
+Het volgende voorbeeld laat zien hoe berichten kunnen worden ontvangen en verwerkt met behulp van `receive_subscription_message()`. In het voorbeeld wordt eerst een bericht ontvangen en verwijderd vanuit het abonnement `low-messages` met `:peek_lock` ingesteld op **false** en wordt er vervolgens nog een bericht van `high-messages` ontvangen en verwijderd met `delete_subscription_message()`:
 
 ```ruby
 message = azure_service_bus_service.receive_subscription_message(
@@ -151,33 +143,33 @@ azure_service_bus_service.delete_subscription_message(message)
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Het vastlopen van de toepassing en onleesbare berichten afhandelen
-Service Bus biedt functionaliteit om netjes te herstellen bij fouten in uw toepassing of problemen bij het verwerken van een bericht. Als een ontvangende toepassing het bericht om de een of andere reden niet kan verwerken, kan dit de `unlock_subscription_message()` methode aanroepen in het object **Azure:: ServiceBusService** . Het zorgt ervoor dat Service Bus het bericht in het abonnement ontgrendelt en het beschikbaar maakt om opnieuw te worden ontvangen, ofwel door dezelfde verbruiks toepassing of door een andere consumerende toepassing.
+Service Bus biedt functionaliteit om netjes te herstellen bij fouten in uw toepassing of problemen bij het verwerken van een bericht. Als een ontvangende toepassing het bericht om de een of andere reden niet kan verwerken, kan deze de `unlock_subscription_message()`-methode aanroepen voor het **Azure::ServiceBusService**-object. Dit zorgt ervoor dat Service Bus het bericht in het abonnement ontgrendelt en het beschikbaar maakt om opnieuw te worden ontvangen, ofwel door dezelfde consumerende toepassing of door een andere consumerende toepassing.
 
-Er is ook een time-out gekoppeld aan een bericht dat in het abonnement is vergrendeld. als de toepassing het bericht niet kan verwerken voordat de time-out van de vergren deling verloopt (bijvoorbeeld als de toepassing vastloopt), wordt Service Bus het bericht automatisch ontgrendeld en kan het opnieuw worden ontvangen.
+Daarnaast is er een time-out gekoppeld aan een bericht dat in het abonnement is vergrendeld. Als de toepassing het bericht niet kan verwerken voordat de time-out van de vergrendeling verloopt (bijvoorbeeld als de toepassing vastloopt), ontgrendelt Service Bus het bericht automatisch en wordt het beschikbaar gemaakt om opnieuw te worden ontvangen.
 
-In het geval dat de toepassing vastloopt na het verwerken van het bericht `delete_subscription_message()` , maar voordat de methode wordt aangeroepen, wordt het bericht opnieuw aan de toepassing bezorgd wanneer het opnieuw wordt gestart. Dit wordt vaak *ten minste eenmaal per verwerking*genoemd; dat wil zeggen dat elk bericht ten minste één keer wordt verwerkt, maar in bepaalde situaties kan hetzelfde bericht opnieuw worden bezorgd. Als in het scenario dubbele verwerking niet wordt getolereerd, dan moeten toepassingsontwikkelaars extra logica toevoegen aan de toepassing om dubbele berichtbezorging af te handelen. Deze logica wordt vaak bereikt met behulp van de `message_id` eigenschap van het bericht, die constant blijft tijdens de bezorgings pogingen.
+Als de toepassing vastloopt na het verwerken van het bericht, maar voordat de methode `delete_subscription_message()` wordt aangeroepen, wordt het bericht opnieuw bij de toepassing bezorgd wanneer deze opnieuw wordt gestart. Dit wordt vaak *ten minste eenmaal verwerken* genoemd; dat wil zeggen dat elk bericht ten minste één keer wordt verwerkt maar dat hetzelfde bericht in sommige situaties opnieuw kan worden bezorgd. Als in het scenario dubbele verwerking niet wordt getolereerd, dan moeten toepassingsontwikkelaars extra logica toevoegen aan de toepassing om dubbele berichtbezorging af te handelen. Deze logica wordt vaak bereikt met de `message_id`-eigenschap van het bericht, dat gelijk blijft bij meerdere bezorgingspogingen.
 
 ## <a name="delete-topics-and-subscriptions"></a>Onderwerpen en abonnementen verwijderen
-Onderwerpen en abonnementen zijn permanent, tenzij de [eigenschap AutoDeleteOnIdle](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle) is ingesteld. Ze kunnen worden verwijderd via de [Azure Portal][Azure portal] of via een programma. In het volgende voor beeld ziet u hoe u het onderwerp `test-topic`met de naam verwijdert.
+Onderwerpen en abonnementen zijn permanent, tenzij de [eigenschap AutoDeleteOnIdle](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle) is ingesteld. Ze kunnen programmatisch of via de [Azure-portal][Azure portal] worden verwijderd. In het volgende voorbeeld ziet u hoe u het onderwerp met de naam `test-topic` kunt verwijderen.
 
 ```ruby
 azure_service_bus_service.delete_topic("test-topic")
 ```
 
-Als een onderwerp wordt verwijderd, worden ook alle abonnementen verwijderd die zijn geregistreerd bij het onderwerp. Abonnementen kunnen ook afzonderlijk worden verwijderd. De volgende code laat zien hoe u het abonnement kunt verwijderen `high-messages` met de `test-topic` naam uit het onderwerp:
+Als een onderwerp wordt verwijderd, worden ook alle abonnementen verwijderd die zijn geregistreerd bij het onderwerp. Abonnementen kunnen ook afzonderlijk worden verwijderd. De volgende code laat zien hoe u het abonnement met de naam `high-messages` uit het onderwerp `test-topic` kunt verwijderen:
 
 ```ruby
 azure_service_bus_service.delete_subscription("test-topic", "high-messages")
 ```
 
 > [!NOTE]
-> U kunt Service Bus-resources beheren met [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Met de Service Bus Explorer kunnen gebruikers verbinding maken met een Service Bus naam ruimte en de Messa ging-entiteiten op een eenvoudige manier beheren. Het hulp programma biedt geavanceerde functies zoals de functionaliteit voor importeren/exporteren of de mogelijkheid om onderwerp, wacht rijen, abonnementen, relay-Services, Notification hubs en Events hubs te testen. 
+> U kunt resources van Service Bus beheren met [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Met Service Bus Explorer kunnen gebruikers verbinding maken met een Service Bus-naamruimte en berichtenentiteiten op een eenvoudige manier beheren. Het hulpprogramma biedt geavanceerde functies zoals functionaliteit voor importeren/exporteren of de mogelijkheid van het testen van onderwerpen, wachtrijen, abonnementen, relay-services, Notification Hubs en Event Hubs. 
 
 ## <a name="next-steps"></a>Volgende stappen
-Nu u de basis principes van Service Bus onderwerpen hebt geleerd, volgt u deze koppelingen voor meer informatie.
+Nu u de basisprincipes van Service Bus-onderwerpen hebt geleerd, kunt u deze koppelingen volgen voor meer informatie.
 
-* Zie [wacht rijen, onderwerpen en abonnementen](service-bus-queues-topics-subscriptions.md).
+* Zie [Wachtrijen, onderwerpen en abonnementen](service-bus-queues-topics-subscriptions.md).
 * API-naslaginformatie voor [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter).
-* Ga naar de [Azure SDK voor ruby](https://github.com/Azure/azure-sdk-for-ruby) -opslag plaats op github.
+* Ga naar de opslagplaats [Azure-SDK voor Ruby](https://github.com/Azure/azure-sdk-for-ruby) op GitHub.
 
 [Azure portal]: https://portal.azure.com

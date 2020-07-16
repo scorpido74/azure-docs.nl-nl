@@ -4,12 +4,12 @@ description: Meer informatie over nieuwe en recente updates in de Azure Migrate-
 ms.topic: overview
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: be617590ce0c96c3ec8ea705732534c8395ac0ce
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 58c77dccd1e43ed497cd56b2831eb2ab914d8d5d
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85052328"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85556934"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Nieuwe functies in Azure Migrate
 
@@ -17,6 +17,7 @@ ms.locfileid: "85052328"
 
 ## <a name="update-june-2020"></a>Update (juni 2020)
 
+- Evaluaties voor het migreren van on-premises VMware VM's naar [Azure VMware Solution (AVS)](https://go.microsoft.com/fwlink/?linkid=2132637) wordt nu ondersteund. [Meer informatie](how-to-create-azure-vmware-solution-assessment.md)
 - Ondersteuning voor meerdere referenties op een apparaat voor detectie van fysieke servers.
 - Ondersteuning voor het toestaan van Azure-aanmelding vanaf een apparaat voor tenants, waarbij een tenantbeperking is geconfigureerd.
 - Nieuwe Azure Migrate-apparaatversies, zoals hieronder vermeld.

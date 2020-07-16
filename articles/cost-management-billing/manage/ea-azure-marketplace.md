@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.author: banders
-ms.openlocfilehash: 4721d8dbe5973baf2ac82124ff516a89398227cb
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: acb818cf2a892a3a71f2f59b0a44041767b846d0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298190"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044920"
 ---
 # <a name="azure-marketplace"></a>Azure Marketplace
 
@@ -20,7 +20,7 @@ In dit artikel wordt uitgelegd hoe EA-klanten en -partners de Marketplace-kosten
 
 ## <a name="azure-marketplace-for-ea-customers"></a>Azure Marketplace voor EA-klanten
 
-Voor directe klanten zijn Azure Marketplace-kosten zichtbaar in de Azure Enterprise-portal. Azure Marketplace-aankopen en -verbruik worden buiten de financiële toezegging gefactureerd, en worden per kwartaal of per maand gefactureerd.
+Voor directe klanten zijn Azure Marketplace-kosten zichtbaar in de Azure Enterprise-portal. Azure Marketplace-aankopen en -verbruik worden buiten de Azure-vooruitbetaling gefactureerd, en worden per kwartaal of per maand gefactureerd.
 
 Indirecte klanten kunnen hun Azure Marketplace-abonnementen vinden op de pagina **Abonnementen beheren** van de Azure Enterprise-portal, maar de prijzen zijn verborgen. Klanten kunnen contact opnemen met hun LSP (Licensing Solutions Provider) voor informatie over de Azure Marketplace-kosten.
 
@@ -28,7 +28,7 @@ Nieuwe maandelijks of jaarlijks terugkerende Azure Marketplace-aankopen worden v
 
 Bestaande, maandelijkse terugkerende kosten worden op de eerste dag van elke kalendermaand verlengd. Jaarlijkse kosten worden verlengd op de aankoopdatum.
 
-Sommige services van externe resellers die beschikbaar zijn op Azure Marketplace, gebruiken nu het saldo van uw financiële toezegging van Enterprise Overeenkomst (EA). Eerder werden deze services buiten de financiële toezegging van EA gehouden en werden ze afzonderlijk gefactureerd. Financiële toezegging van EA voor deze services in Azure Marketplace vereenvoudigt het aankoopproces voor klanten en de betalingsafhandeling. Raadpleeg de [update van 6 maart 2018, op de Azure-website](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/) voor een volledige lijst met services die nu uw financiële toezegging gebruiken.
+Sommige services van externe resellers die beschikbaar zijn op Azure Marketplace, gebruiken nu het saldo van uw Azure-vooruitbetaling voor Enterprise-overeenkomsten (EA). Eerder werden deze services buiten de Azure-vooruitbetaling voor EA gehouden en werden ze afzonderlijk gefactureerd. De Azure-vooruitbetaling voor EA voor deze services in Azure Marketplace vereenvoudigt het aankoopproces voor klanten en de betalingsafhandeling. Raadpleeg de [update van 6 maart 2018, op de Azure-website](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/) voor een volledige lijst met services die nu uw Azure-vooruitbetaling gebruiken.
 
 ### <a name="partners"></a>Partners
 
@@ -75,41 +75,41 @@ Als u een Enterprise Agreement hebt, betaalt u voor Azure RemoteApp op basis van
 
 ## <a name="azure-marketplace-faq"></a>Veelgestelde vragen over Azure Marketplace
 
-In deze sectie wordt uitgelegd hoe uw financiële toezegging van Azure mogelijk van toepassing is op sommige services van externe resellers in Azure Marketplace.
+In deze sectie wordt uitgelegd hoe uw Azure-vooruitbetaling mogelijk van toepassing is op sommige services van externe resellers in Azure Marketplace.
 
-### <a name="what-changed-with-azure-marketplace-services-and-ea-monetary-commitment"></a>Wat is er gewijzigd in de Azure Marketplace-services en de financiële toezegging van EA?
+### <a name="what-changed-with-azure-marketplace-services-and-azure-ea-prepayment"></a>Wat is er veranderd in Azure Marketplace Services en de Azure-vooruitbetaling voor EA?
 
-Vanaf 1 maart 2018 gebruiken sommige services van externe resellers de financiële toezegging van EA. Met uitzondering van Azure-VM-RI’s (gereserveerde instanties) werden deze services voorheen in rekening gebracht buiten de financiële toezegging van EA, en afzonderlijk gefactureerd.
+Vanaf 1 maart 2018 gebruiken sommige services van externe resellers de Azure-vooruitbetaling voor EA. Met uitzondering van Azure-VM-RI’s (gereserveerde instanties) werden deze services voorheen buiten de Azure-vooruitbetaling in rekening gebracht en afzonderlijk gefactureerd.
 
-We hebben het gebruik van financiële toezeggingen uitgebreid naar de gepubliceerde Azure Marketplace-services van derden die het vaakst worden aangeschaft. Financiële toezegging van EA voor deze services in Azure Marketplace vereenvoudigt uw aankoopproces en betalingsafhandeling.
+We hebben het gebruik van Azure-vooruitbetaling uitgebreid naar de gepubliceerde Azure Marketplace-services van derden die het vaakst worden aangeschaft. Azure-vooruitbetaling voor EA voor deze services in Azure Marketplace vereenvoudigt uw aankoopproces en betalingsafhandeling.
 
 ### <a name="why-did-we-make-this-change"></a>Waarom is deze wijziging aangebracht?
 
-Klanten zoeken voortdurend naar extra manieren om de vooraf betaalde financiële toezegging te kunnen gebruiken. Deze wijziging werd vaak aangevraagd door klanten en is van invloed op een groot deel van de Azure Marketplace-klanten.
+Klanten zoeken voortdurend naar extra manieren om de vooraf betaalde Azure-vooruitbetaling te kunnen gebruiken. Deze wijziging werd vaak aangevraagd door klanten en is van invloed op een groot deel van de Azure Marketplace-klanten.
 
 ### <a name="how-do-you-benefit"></a>Wat zijn de voordelen voor u?
 
-Facturering is eenvoudiger, en u kunt uw financiële toezegging van EA beter besteden. Omdat deze services zijn opgenomen in uw vooraf betaalde financiële toezegging van EA, wordt deze waardevoller.
+Facturering is eenvoudiger, en u kunt uw Azure-vooruitbetaling voor EA beter besteden. Omdat deze services zijn opgenomen in uw vooraf betaalde Azure-vooruitbetaling, wordt uw Azure-vooruitbetaling voor EA waardevoller.
 
-### <a name="what-azure-marketplace-services-use-ea-monetary-commitment-and-how-do-i-know"></a>Welke Azure Marketplace-services gebruiken een financiële toezegging van EA, en hoe kom ik dit te weten?
+### <a name="what-azure-marketplace-services-use-azure-ea-prepayment-and-how-do-i-know"></a>Welke Azure Marketplace-Services maken gebruik van Azure-vooruitbetaling voor EA en hoe weet ik dat?
 
-Wanneer u een service koopt die uw financiële toezegging gebruikt, geeft Azure Marketplace een disclaimer weer. Bepaalde services die zijn gepubliceerd via Red Hat, SUSE, Autodesk en Oracle worden ondersteund. Momenteel worden services met vergelijkbare namen die zijn gepubliceerd door andere partijen, niet afgetrokken van uw financiële toezegging. Aan het einde van deze pagina met veelgestelde vragen vindt u een volledige lijst.
+Wanneer u een service koopt die Azure-vooruitbetaling gebruikt, geeft Azure Marketplace een disclaimer weer. Bepaalde services die zijn gepubliceerd via Red Hat, SUSE, Autodesk en Oracle worden ondersteund. Momenteel worden services met vergelijkbare namen die zijn gepubliceerd door andere partijen, niet afgetrokken van uw Azure-vooruitbetaling. Aan het einde van deze pagina met veelgestelde vragen vindt u een volledige lijst.
 
-### <a name="what-if-my-ea-monetary-commitment-runs-out"></a>Wat gebeurt er als mijn financiële toezegging van EA helemaal is verbruikt?
+### <a name="what-if-my-azure-ea-prepayment-runs-out"></a>Wat gebeurt er als mijn Azure-vooruitbetaling voor EA bijna op is?
 
-Als u uw hele financiële toezegging hebt verbruikt en u nu in overschrijding bevindt, worden de kosten voor deze services in de volgende overschrijdingsfactuur weergegeven, samen met andere verbruiksservices. Vóór de wijziging van 1 maart 2018 werden deze kosten gefactureerd met andere Azure Marketplace-services.
+Als u uw hele Azure-vooruitbetaling hebt verbruikt en u nu in overschrijding bevindt, worden de kosten voor deze services in de volgende overschrijdingsfactuur weergegeven, samen met andere verbruiksservices. Vóór de wijziging van 1 maart 2018 werden deze kosten gefactureerd met andere Azure Marketplace-services.
 
-### <a name="why-dont-all-azure-marketplaces-consume-ea-monetary-commitment"></a>Waarom gebruiken niet alle Azure Marketplace-services de financiële toezegging van EA?
+### <a name="why-dont-all-azure-marketplaces-consume-azure-ea-prepayment"></a>Waarom maken niet alle Azure Marketplaces gebruik van Azure-vooruitbetaling voor EA?
 
-We proberen altijd de beste klantervaring te leveren met betrekking tot de financiële toezegging van EA. Deze wijziging is van belang voor een groot aantal klanten en een aanzienlijk deel van de totale uitgaven in Azure Marketplace. In de toekomst worden mogelijk andere services toegevoegd.
+We proberen altijd de beste klantervaring te leveren met betrekking tot de Azure-vooruitbetaling voor EA. Deze wijziging is van belang voor een groot aantal klanten en een aanzienlijk deel van de totale uitgaven in Azure Marketplace. In de toekomst worden mogelijk andere services toegevoegd.
 
 ### <a name="how-does-this-impact-indirect-enrollment-and-partners"></a>Hoe heeft dit invloed op indirecte inschrijvingen en partners?
 
-Het heeft geen invloed op onze klanten voor indirecte inschrijving of partners. Deze services zijn onderhevig aan dezelfde partnermogelijkheden als andere verbruiksservices. De enige wijziging is dat de kosten worden weergegeven op een andere factuur, en dat de betaling van de kosten buiten de financiële toezegging van EA van de klant valt.
+Het heeft geen invloed op onze klanten voor indirecte inschrijving of partners. Deze services zijn onderhevig aan dezelfde partnermogelijkheden als andere verbruiksservices. De enige wijziging is dat de kosten worden weergegeven op een andere factuur, en dat de betaling van de kosten buiten de Azure-vooruitbetaling voor EA van de klant valt.
 
-### <a name="is-there-a-list-of-azure-marketplace-services-that-consume-ea-monetary-commitment"></a>Is er een lijst met Azure Marketplace-services die gebruikmaken van de financiële toezegging van EA?
+### <a name="is-there-a-list-of-azure-marketplace-services-that-consume-azure-ea-prepayment"></a>Is er een lijst met Azure Marketplace-services die gebruikmaken van Azure-vooruitbetaling voor EA?
 
-Voor specifieke Azure Marketplace-aanbiedingen kunnen tegoeden voor financiële toezeggingen worden gebruikt. Raadpleeg [Services van derden die gebruikmaken van de financiële toezegging](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment) voor een volledige lijst met producten die zijn opgenomen in dit programma.
+Voor specifieke Azure Marketplace-aanbiedingen kan Azure-vooruitbetaling worden gebruikt. Raadpleeg [Services van derden die gebruikmaken van Azure-vooruitbetaling](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment) voor een volledige lijst met producten die zijn opgenomen in dit programma.
 
 
 ## <a name="next-steps"></a>Volgende stappen

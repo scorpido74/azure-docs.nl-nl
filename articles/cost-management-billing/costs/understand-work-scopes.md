@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 2f61345cd55fc9541f9e1b707389d0b9d06685b0
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: ae6205db4e120f0496fa47be6788887b155361b0
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873434"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077155"
 ---
 # <a name="understand-and-work-with-scopes"></a>Bereiken begrijpen en gebruiken
 
@@ -67,7 +67,7 @@ Cost Management ondersteunt de volgende ingebouwde rollen voor elk bereik:
 
 Cost Management Inzender is de aanbevolen rol met minimale bevoegdheden. Deze rol verleent toegang tot het maken en beheren van budgetten en exports om de kosten effectiever te kunnen controleren en hierover rapport uit te brengen. Cost Management Inzenders kunnen ook extra rollen vereisen om end-to-end scenario's voor kostenbeheer te ondersteunen. Neem de volgende scenario's:
 
-- **Rapportage over resourcegebruik** – Met Azure Cost Management worden kosten weergegeven in de Azure-portal, en ook het gebruik wordt opgenomen (omdat dit betrekking heeft op de kosten) in de API en download voor totale gebruik en kosten, maar misschien wilt u ook een gedetailleerdere weergave van de metrische gebruiksgegevens zien in Azure Monitor om meer inzicht te krijgen. Overweeg [Lezer voor bewaking](../../role-based-access-control/built-in-roles.md#monitoring-reader) toe te kennen aan elk bereik waar u ook moet rapporteren over gedetailleerde metrische gebruiksgegevens.
+- **Rapportage over resourcegebruik**: Azure Cost Management toont kosten in de Azure-portal, inclusief gebruikskosten voor volledig gebruik. In dit rapport worden API- en downloadkosten weergegeven, maar u kunt ook inzoomen op gedetailleerdere metrische gebruiksgegevens in Azure Monitor om meer inzicht te krijgen. Overweeg [Lezer voor bewaking](../../role-based-access-control/built-in-roles.md#monitoring-reader) toe te kennen aan elk bereik waar u ook moet rapporteren over gedetailleerde metrische gebruiksgegevens.
 - **Actie ondernemen wanneer budgetten worden overschreden** – Cost Management Inzenders hebben ook toegang nodig tot het maken en/of beheren van actiegroepen om automatisch te reageren op overschrijdingen. Overweeg [Bewakingsbijdrage](../../role-based-access-control/built-in-roles.md#monitoring-contributor) toe te kennen aan een resourcegroep die de actiegroep bevat, die moet worden gebruikt wanneer de budgetdrempels worden overschreden. Voor het automatiseren van specifieke acties zijn aanvullende rollen vereist voor de specifieke services die worden gebruikt, zoals automatisering en Azure Functions.
 - **Kosten plannen voor gegevensexport** – Cost Management Inzenders moeten ook toegang hebben tot het beheren van opslagaccounts om een export te plannen om gegevens naar een opslagaccount te kopiëren. Overweeg [Inzender voor Storage-account](../../role-based-access-control/built-in-roles.md#storage-account-contributor) toe te kennen aan een resourcegroep die het opslagaccount bevat waarin kostengegevens worden geëxporteerd.
 - **Het weergeven van aanbevelingen voor het besparen van kosten** – Cost Management Lezers en Cost Management Inzenders hebben standaard toegang tot het *bekijken* van kostenaanbevelingen. Toegang tot de kostenaanbevelingen vereist echter toegang tot afzonderlijke resources. Overweeg om een [servicespecifieke rol toe te kennen](../../role-based-access-control/built-in-roles.md#all) als u op een op kosten gebaseerde aanbeveling wilt handelen.

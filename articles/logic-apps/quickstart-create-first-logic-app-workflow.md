@@ -3,16 +3,16 @@ title: Uw eerste geautomatiseerde werkstroom maken
 description: 'Quickstart: Uw eerste geautomatiseerde werkstroom bouwen met behulp van Azure Logic Apps voor systeemintegratie en EAI-oplossingen (Enterprise Application Integration)'
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: 555230499ebda106cbca616b779ae632d65349ab
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 0b3559a27fe9fae6c34b07c648a289d205560bd8
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84807859"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321584"
 ---
 # <a name="quickstart-create-your-first-workflow-by-using-azure-logic-apps---azure-portal"></a>Quickstart: Uw eerste werkstroom maken met Azure Logic Apps - Azure Portal
 
@@ -74,13 +74,13 @@ Vervolgens voegt u een [trigger](../logic-apps/logic-apps-overview.md#logic-app-
 
    ![De trigger 'Wanneer een feeditem wordt gepubliceerd' selecteren](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-new-feed-item.png)
 
-1. Geef deze informatie voor de trigger op zoals hier wordt weergegeven en beschreven:
+1. Geef de informatie voor de trigger op zoals beschreven in de tabel:
 
    ![Trigger instellen met RSS-feed, frequentie en interval](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-settings.png)
 
    | Eigenschap | Waarde | Beschrijving |
    |----------|-------|-------------|
-   | **De URL voor de RSS-feed** | `http://feeds.reuters.com/reuters/topNews` | De koppeling voor de RSS-feed die u wilt bijhouden |
+   | **De URL voor de RSS-feed** | <*RSS-feed-URL*> | De koppeling voor de RSS-feed die u wilt bijhouden. In dit voorbeeld wordt `http://feeds.reuters.com/reuters/topNews` gebruikt. |
    | **Interval** | 1 | Het aantal intervallen dat tussen controles moet worden gewacht |
    | **Frequentie** | Minuut | De tijdseenheid voor elk interval tussen controles  |
    ||||

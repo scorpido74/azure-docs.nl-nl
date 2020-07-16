@@ -3,27 +3,27 @@ author: IEvangelist
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
-ms.author: dapine
-ms.openlocfilehash: 199111d88d1d5d0dfd3b52f62ad60297e9771c20
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: MT
+ms.author: trbye
+ms.openlocfilehash: 66422657aefa5bca2e7f20852a19faca63db5a15
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83806446"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85838882"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u aan de slag gaat:
 
 > [!div class="checklist"]
-> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Een Azure-spraak resource maken<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-> * [Stel uw ontwikkel omgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md)
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Een resource voor de Azure-spraakservice maken<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> * [Uw ontwikkelomgeving instellen en een leeg project maken](../../../../quickstarts/setup-platform.md)
 
-## <a name="start-with-some-boilerplate-code"></a>Begin met een van de standaard code
+## <a name="start-with-some-boilerplate-code"></a>Beginnen met standaardcode
 
-Laten we een code toevoegen die als een skelet voor het project werkt. Maak een index. js-bestand en voeg deze code toe.
+We gaan wat code toevoegen die als basis voor het project gaat dienen. Maak een index.js-bestand en voeg deze code toe.
 
-Vul uw waarden in voor `subscriptionKey` , `servcieRegion` , en `filename` .
+Zorg ervoor dat u de waarden voor `subscriptionKey`, `servcieRegion` en `filename` invult.
 
 ```JavaScript
 (function() {
@@ -47,7 +47,7 @@ Vul uw waarden in voor `subscriptionKey` , `servcieRegion` , en `filename` .
 ```
 ## <a name="load-the-file-into-an-pushaudioinputstream"></a>Laad het bestand in een PushAudioInputStream
 
-Voor NodeJS de Speech SDK geen systeem eigen ondersteuning biedt voor bestands toegang, dus wordt het bestand geladen en in een opgeslagen `PushAudioInputStream` . Dit werkt goed voor kleinere bestanden, maar voor een groter gebruik van een `PullAudioInputStream` is meer geheugen efficiënt.
+Voor NodeJS biedt de Speech-SDK geen systeemeigen ondersteuning voor het openen van bestanden, dus laden we het bestand en plaatsen we het in `PushAudioInputStream`. Dit werkt goed voor kleinere bestanden, maar voor een groter bestand zou het efficiënter zijn om een `PullAudioInputStream` als geheugen te gebruiken.
 
 ```JavaScript
 // create the push stream we need for the speech sdk.
@@ -61,12 +61,12 @@ Voor NodeJS de Speech SDK geen systeem eigen ondersteuning biedt voor bestands t
   });
 ```
 
-## <a name="create-a-speech-configuration"></a>Een spraak configuratie maken
+## <a name="create-a-speech-configuration"></a>Een spraakconfiguratie maken
 
-Voordat u een object kunt initialiseren `SpeechRecognizer` , moet u een configuratie maken die gebruikmaakt van de abonnements sleutel en de regio van het abonnement. Voeg deze code toe volgende.
+Voordat u een `SpeechRecognizer`-object kunt initialiseren, moet u een configuratie maken die gebruikmaakt van de abonnementssleutel en de regio van het abonnement. Voeg daarna deze code toe.
 
 > [!NOTE]
-> De spraak-SDK wordt standaard herkend door en-US voor de taal. Zie de [bron taal voor spraak opgeven](../../../../how-to-specify-source-language.md) voor de tekst voor informatie over het kiezen van de bron taal.
+> De Speech-SDK probeert taal standaard te herkennen in en-US. Zie [De brontaal voor spraak-naar-tekst opgeven](../../../../how-to-specify-source-language.md) voor informatie over het kiezen van de brontaal.
 
  ```JavaScript
    // now create the audio-config pointing to our stream and
@@ -77,9 +77,9 @@ Voordat u een object kunt initialiseren `SpeechRecognizer` , moet u een configur
   speechConfig.speechRecognitionLanguage = "en-US";
   
 ```
-## <a name="create-an-audio-configuration"></a>Een audio configuratie maken
+## <a name="create-an-audio-configuration"></a>Een audioconfiguratie maken
 
-Nu moet u een `AudioConfig` object maken dat verwijst naar uw `PushAudioInputStream` . Voeg deze code toe aan de rechter kant onder uw spraak configuratie.
+Nu moet u een `AudioConfig`-object maken dat verwijst naar het `PushAudioInputStream`. Voeg deze code toe onder uw Speech-configuratie.
 
 ```JavaScript
     var audioConfig = sdk.AudioConfig.fromStreamInput(pushStream);
@@ -87,18 +87,18 @@ Nu moet u een `AudioConfig` object maken dat verwijst naar uw `PushAudioInputStr
 
 ## <a name="initialize-a-speechrecognizer"></a>Een SpeechRecognizer initialiseren
 
-Nu gaan we het object maken `SpeechRecognizer` met behulp van de- `SpeechConfig` en- `AudioConfig` objecten die u eerder hebt gemaakt.
+Nu gaan we het `SpeechRecognizer`-object maken met behulp van de `SpeechConfig`- en `AudioConfig`-objecten die u eerder hebt gemaakt.
 
 ```JavaScript
   // create the speech recognizer.
   var recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
   
 ```
-## <a name="recognize-a-phrase-and-display-results"></a>Een woord groep herkennen en resultaten weer geven
+## <a name="recognize-a-phrase-and-display-results"></a>Een woordgroep herkennen en resultaten weergeven
 
-Vanuit het `SpeechRecognizer` object roept u de- `recognizeOnceAsync()` methode aan. Met deze methode kan de speech-service weten dat u één woord groep verstuurt voor herkenning en dat zodra de woord groep is geïdentificeerd om te stoppen met het herkennen van spraak.
+Vanuit het `SpeechRecognizer`-object roept u de `recognizeOnceAsync()`-methode aan. Met deze methode laat u de Speech-service weten dat u één woordgroep verstuurt voor herkenning en dat er kan worden gestopt met het herkennen van spraak zodra de woordgroep is geïdentificeerd.
 
-We schrijven ook de geretourneerde tekst, of eventuele fouten, naar de console en sluiten de herkenner.
+We schrijven ook de geretourneerde tekst, of eventuele fouten, naar de console en sluiten tot slot de herkenner.
 ```JavaScript
  // we are done with the setup
   console.log("Now recognizing from: " + filename);
@@ -118,7 +118,7 @@ We schrijven ook de geretourneerde tekst, of eventuele fouten, naar de console e
       recognizer = undefined;
     });
 ```
-## <a name="check-your-code"></a>Controleer uw code
+## <a name="check-your-code"></a>Uw code controleren
 ```JavaScript
 (function() {
   "use strict";

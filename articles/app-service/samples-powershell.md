@@ -4,14 +4,14 @@ description: Gebruik Azure PowerShell-voorbeelden voor een aantal algemene App S
 tags: azure-service-management
 ms.assetid: b48d1137-8c04-46e0-b430-101e07d7e470
 ms.topic: sample
-ms.date: 03/08/2017
+ms.date: 07/07/2020
 ms.custom: mvc
-ms.openlocfilehash: 6300b9fe10d7b12d71f87adec85d3a86658a8c97
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 51693ad4d233ea180607bc7358a0847e23688099
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254477"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057905"
 ---
 # <a name="powershell-samples-for-azure-app-service"></a>PowerShell-voorbeelden voor Azure App Service
 
@@ -25,6 +25,7 @@ De volgende tabel bevat koppelingen naar PowerShell-scripts die zijn gemaakt met
 | [Een app maken en code implementeren via FTP](./scripts/powershell-deploy-ftp.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Hiermee maakt u een App Service-app en uploadt u bestanden uit een lokale map met behulp van FTP. |
 | [Een app maken en code implementeren vanuit een lokale Git-opslagplaats](./scripts/powershell-deploy-local-git.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Hiermee maakt u een App Service-app en configureert u het pushen van code vanuit een lokale Git-opslagplaats. |
 | [Een app maken en code implementeren in een faseringsomgeving](./scripts/powershell-deploy-staging-environment.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Hiermee maakt u een App Service-app met een implementatiesite voor het faseren van codewijzigingen. |
+|  [Een app maken en uw app beschikbaar maken met een privé-eindpunt](./scripts/powershell-deploy-private-endpoint.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Hiermee maakt u een App Service-app met een privé-eindpunt. |
 |**App configureren**||
 | [Een aangepast domein toewijzen aan een app](./scripts/powershell-configure-custom-domain.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Hiermee maakt u een App Service-app en wijst u er een aangepaste domeinnaam aan toe. |
 | [Een aangepast TLS/SSL-certificaat verbinden met een app](./scripts/powershell-configure-ssl-certificate.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Hiermee maakt u een App Service-app en verbindt u het TLS/SSL-certificaat van een aangepaste domeinnaam met de app. |

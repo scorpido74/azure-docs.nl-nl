@@ -1,17 +1,17 @@
 ---
-title: Voor beeld van Azure CLI-script-een beheerde toepassing implementeren
-description: Biedt een Azure CLI-voorbeeld script dat een door Azure beheerde toepassings definitie implementeert voor het abonnement.
+title: Voorbeeld van Azure CLI-script - Een beheerde toepassing implementeren
+description: Geeft een voorbeeld van een Azure CLI-script voor het implementeren van een beheerde Azure-toepassing op het abonnement.
 author: tfitzmac
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 10/25/2017
 ms.author: tomfitz
-ms.openlocfilehash: 346ea59209bc2f74970e708c947f5caa158a0338
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 0c2fc3dc4e76f295dff94ebda71d54bad425b621
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75650063"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056120"
 ---
 # <a name="deploy-a-managed-application-for-service-catalog-with-azure-cli"></a>Een beheerde toepassing implementeren voor de servicecatalogus met Azure CLI
 
@@ -33,10 +33,10 @@ In dit script wordt de volgende opdracht gebruikt om de beheerde toepassing te i
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [az managedapp create](https://docs.microsoft.com/cli/azure/managedapp#az-managedapp-create) | Hiermee maakt u een beheerde toepassing. Geef de definitie-id en de parameters op voor de sjabloon. |
+| [az managedapp create](/cli/azure/managedapp#az-managedapp-create) | Hiermee maakt u een beheerde toepassing. Geef de definitie-id en de parameters op voor de sjabloon. |
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [Overzicht van door Azure beheerde toepassingen](../overview.md) voor algemene informatie over beheerde toepassingen.
-* Zie de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
+* Raadpleeg de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.

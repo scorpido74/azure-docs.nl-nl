@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/18/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebbb73b6fc4e2a934c7c4235cfcdc39b8fa81b60
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 18dc2e4393175751f5ac52d53e0c331c82fce7e8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85127054"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078116"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-shopify-plus"></a>Zelfstudie: Integratie van eenmalige aanmelding (SSO) van Azure Active Directory met Shopify Plus
 
@@ -103,7 +103,8 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
     | ---------------| --------------- | --------- |
     | e-mail | | user.mail |
 
-1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u in de sectie **SAML-handtekeningcertificaat** op de kopieerknop om de **URL voor federatieve metagegevens van de app** te kopiëren en slaat u deze op uw computer op.
+1. Wijzig de notatie van de **Naam-id** in **Permanent**. Selecteer de optie **Unieke gebruikers-id (Naam-id)** en selecteer vervolgens de notatie **Naam-id**. Selecteer **Permanent** voor deze optie. Sla uw wijzigingen op.
+1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u in de sectie **SAML-handtekeningcertificaat** op de knop Kopiëren om de **URL voor federatieve metagegevens van de app** te kopiëren. Sla deze URL op de computer op.
 
     ![De link om het certificaat te downloaden](common/copy-metadataurl.png)
 
@@ -139,11 +140,31 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 ## <a name="configure-shopify-plus-sso"></a>Eenmalige aanmelding configureren voor Shopify Plus
 
-Als u eenmalige aanmelding aan de zijde van **Shopify Plus** wilt configureren, moet u de **App-URL voor federatieve metagegevens** verzenden naar het [ondersteuningsteam van Shopify Plus](mailto:plus-user-management@shopify.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Zie [Shopify-documentatie over het instellen van SAML-integraties](https://help.shopify.com/en/manual/shopify-plus/saml) voor een overzicht van de volledige stappen.
+
+Als u eenmalige aanmelding wilt configureren voor de zijde **Shopify plus**, kopieert u de **Metagegevens-URL van de app-federatie** van Azure Active Directory. Meld u vervolgens aan bij de [organisatiebeheerder](https://shopify.plus) en ga naar **Gebruikers** > **Beveiliging**. Selecteer **Configuratie instellen** en plak vervolgens uw metagegevens-URL voor de app-federatie in de sectie **Metagegevens-URL van de identiteitsprovider**. Selecteer **Toevoegen** om deze stap te voltooien.
 
 ### <a name="create-shopify-plus-test-user"></a>Een Shopify Plus-testgebruiker maken
 
-In deze sectie maakt u een gebruiker met de naam B.Simon in Shopify Plus. Werk samen met [het ondersteuningsteam van Shopify Plus](mailto:plus-user-management@shopify.com) om de gebruikers toe te voegen via het Shopify Plus-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker met de naam B.Simon in Shopify Plus. Ga terug naar de sectie **Gebruikers** en voeg een gebruiker toe door het e-mailadres en de machtigingen van de gebruiker in te voeren. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+
+### <a name="enforce-saml-authentication"></a>SAML-verificatie afdwingen
+
+> [!NOTE]
+> Het is raadzaam om de integratie te testen door afzonderlijke gebruikers te gebruiken voordat u dit breed toepast.
+
+Afzonderlijke gebruikers:
+1. Ga naar de pagina van een afzonderlijke gebruiker in Shopify Plus met een e-maildomein dat wordt beheerd door Azure AD en dat is geverifieerd in Shopify Plus.
+1. Selecteer in de sectie SAML-verificatie **Bewerken**, selecteer **Vereist** en selecteer vervolgens **Opslaan**.
+1. Test of deze gebruiker zich kan aanmelden via de door idP geïnitieerde en door SP geïnitieerde stromen.
+
+Voor alle gebruikers onder een e-maildomein:
+1. Ga terug naar de pagina **Beveiliging**.
+1. Selecteer **Vereist** voor de instelling van uw SAML-verificatie. Hiermee wordt SAML afgedwongen voor alle gebruikers met dat e-maildomein op Shopify Plus.
+1. Selecteer **Opslaan**.
+
+> [!IMPORTANT]
+> Het inschakelen van SAML voor alle gebruikers onder een e-maildomein is van invloed op alle gebruikers die deze toepassing gebruiken. Gebruikers kunnen zich niet aanmelden met behulp van hun reguliere aanmeldingspagina. Ze hebben alleen toegang tot de app via Azure Active Directory. Shopify biedt geen aanmeldings-URL als back-up waarmee gebruikers zich kunnen aanmelden met hun normale gebruikersnaam en wachtwoord. U kunt contact opnemen met Shopify-ondersteuning om SAML uit te schakelen indien nodig.
 
 ## <a name="test-sso"></a>Eenmalige aanmelding testen 
 
@@ -153,9 +174,9 @@ Wanneer u in het toegangsvenster op de tegel Shopify Plus klikt, wordt u als het
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

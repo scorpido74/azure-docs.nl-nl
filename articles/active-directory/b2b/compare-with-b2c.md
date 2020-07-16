@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9006a70ae941abb700412a7c596627939c994028
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 1c45aae35c7c1cf2fbde436303a2ac000dfdd5ec
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587507"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339611"
 ---
 # <a name="compare-solutions-for-external-identities-in-azure-active-directory"></a>Oplossingen voor externe identiteiten vergelijken in Azure Active Directory
 
@@ -36,11 +36,11 @@ De onderstaande tabel bevat een gedetailleerde vergelijking van de verschillende
 
 | Toepassingen voor meerdere tenants  | Samenwerking van externe gebruikers (B2B) | Apps voor consumenten of klanten (B2C)  |
 | ---- | --- | --- |
-| Primair scenario: Software-as-a-Service voor ondernemingen (SaaS) | Primair scenario: Samenwerking met Microsoft-toepassingen (Office 365, Teams,...) of uw eigen samenwerkingssoftware.  | Primair scenario: Transactionele toepassingen die gebruikmaken van aangepaste ontwikkelde toepassingen.   |
+| Primair scenario: Software-as-a-Service voor ondernemingen (SaaS) | Primair scenario: Samenwerking met Microsoft-toepassingen (Microsoft 365, Teams,...) of uw eigen samenwerkingssoftware.  | Primair scenario: Transactionele toepassingen die gebruikmaken van aangepaste ontwikkelde toepassingen.   |
 | Bedoeld voor: Organisaties die een groot aantal zakelijke klanten van software willen voorzien.    | Bedoeld voor: Organisaties die gebruikers van een partnerorganisatie willen kunnen verifiëren, ongeacht de id-provider.    | Bedoeld voor: Klanten van uw mobiele apps en web-apps uitnodigen, zoals personen, institutionele of organisatie-klanten in een Azure AD-map, gescheiden van de map van uw eigen organisatie. |
 | Ondersteunde identiteiten: Werknemers met Azure AD-accounts. | Ondersteunde identiteiten: werknemers met werk- of schoolaccounts, partners met werk- of schoolaccounts of een e-mailadres. Binnenkort wordt directe federatie ondersteund.      | Ondersteunde identiteiten: consumentgebruikers met lokale toepassingen onder accounts (een e-adres of gebruikersnaam) of een ondersteund sociale id met directe federatie.       |
 | Externe gebruikers worden beheerd in hun eigen map, geïsoleerd van de map waarin de toepassing is geregistreerd.    | Externe gebruikers worden beheerd in dezelfde map als werknemers, maar met een speciale aantekening. Ze kunnen op dezelfde manier als werknemers worden beheerd, kunnen worden toegevoegd aan dezelfde groepen, enzovoort.    | Externe gebruikers worden beheerd in de toepassingsmap. Ze worden afzonderlijk beheerd vanaf de werknemers- en partnermap van de organisatie (indien van toepassing).  |
-| Eenmalige aanmelding: SSO voor alle Azure AD verbonden apps wordt ondersteund.          | Eenmalige aanmelding: SSO voor alle Azure AD verbonden apps wordt ondersteund. U kunt bijvoorbeeld toegang bieden voor Office 365 of on-premises apps en andere SaaS-apps, zoals Salesforce of Workday.    | Eenmalige aanmelding: SSO voor apps van klanten in de Azure AD B2C-tenants wordt ondersteund. SSO bij Office 365 of andere SaaS-apps van Microsoft wordt niet ondersteund.    |
+| Eenmalige aanmelding: SSO voor alle Azure AD verbonden apps wordt ondersteund.          | Eenmalige aanmelding: SSO voor alle Azure AD verbonden apps wordt ondersteund. U kunt bijvoorbeeld toegang bieden voor Microsoft 365 of on-premises apps en andere SaaS-apps, zoals Salesforce of Workday.    | Eenmalige aanmelding: SSO voor apps van klanten in de Azure AD B2C-tenants wordt ondersteund. SSO bij Microsoft 365 of andere SaaS-apps van Microsoft wordt niet ondersteund.    |
 | Levenscyclus van de klant: Beheerd door de thuisorganisatie van de gebruiker.      | Levenscyclus van de partner: beheerd door de host/uitnodigende organisatie.    | Levenscyclus van de klant: self-service of beheerd door de toepassing.      |
 | Beveiligingsbeleid en naleving: Beheerd door de host/uitnodigende organisatie (bijvoorbeeld met [Beleid voor voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/b2b/conditional-access)).           | Beveiligingsbeleid en naleving: Beheerd door de host/uitnodigende organisatie (bijvoorbeeld met [Beleid voor voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/b2b/conditional-access)). | Beveiligingsbeleid en naleving: beheerd door de toepassing.        |
 | Branding: Merk van host/uitnodigende organisatie wordt gebruikt.   | Branding: Merk van host/uitnodigende organisatie wordt gebruikt.    | Branding: beheerd door de toepassing. Doorgaans het merkproduct, terwijl de organisatie vervaagt in de achtergrond.   |

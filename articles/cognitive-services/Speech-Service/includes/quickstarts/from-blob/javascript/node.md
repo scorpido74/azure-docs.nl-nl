@@ -3,32 +3,32 @@ author: IEvangelist
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/12/2020
-ms.author: dapine
-ms.openlocfilehash: 19aa7b839b1c673451f51524a9461aba8222c0d2
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.author: trbye
+ms.openlocfilehash: bc5c5bf6a6baf32a74413272334fe6070b0a7a5f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82980371"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85838902"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u aan de slag gaat, moet u het volgende doen:
 
 > [!div class="checklist"]
-> * [Stel uw ontwikkel omgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md?tabs=vs&pivots=programmming-language-javascript)
-> * [Een Azure-spraak resource maken](../../../../get-started.md)
-> * [Een bron bestand uploaden naar een Azure-Blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
+> * [Uw ontwikkelomgeving instellen en een leeg project maken](../../../../quickstarts/setup-platform.md?tabs=vs&pivots=programmming-language-javascript)
+> * [Een resource voor de Azure-spraakservice maken](../../../../get-started.md)
+> * [Een bronbestand uploaden naar een Azure-blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 
 ## <a name="create-a-new-js-file"></a>Een nieuw JS-bestand maken
 
-De eerste stap is om ervoor te zorgen dat uw project is geopend in uw favoriete editor.
+De eerste stap is het openen van uw project in uw favoriete editor.
 
-Noem het bestand index. js.
+Noem het bestand index.js.
 
-## <a name="start-with-some-boilerplate-code"></a>Begin met een van de standaard code
+## <a name="start-with-some-boilerplate-code"></a>Beginnen met standaardcode
 
-Laten we een code toevoegen die als een skelet voor het project werkt.
+We gaan wat code toevoegen die als basis voor het project gaat dienen.
 
 ```JavaScript
 const https = require("https");
@@ -55,7 +55,7 @@ SpeechToTextBasePath = "/api/speechtotext/v2.0/";
 
 ## <a name="json-wrappers"></a>JSON-wrappers
 
-Als de aanvragen van het REST API in JSON-indeling worden uitgevoerd en retour neren ook resultaten in JSON.
+De aanvragen van de REST API worden in JSON-indeling uitgevoerd en de resultaten worden ook in JSON geretourneerd.
 Om ervoor te zorgen dat de aanvragen en antwoorden gemakkelijker te begrijpen zijn, declareren we een aantal klassen die moeten worden gebruikt voor het serialiseren/deserialiseren van de JSON.
 
 
@@ -88,7 +88,7 @@ class TranscriptionDefinition {
 ```
 
 ## <a name="create-an-initial-transcription-request"></a>Maak een eerste transcriptie-aanvraag.
-Vervolgens genereren we de transcriptie-aanvraag.
+Genereeer vervolgens de transcriptie-aanvraag.
 
 ```JavaScript
 const ts = {
@@ -120,9 +120,9 @@ const startOptions = {
 ```
 
 ## <a name="send-the-transcription-request"></a>Verzend de transcriptie-aanvraag.
-Nu gaan we de aanvraag verzenden naar de speech-service en de eerste respons code controleren. Deze antwoord code geeft eenvoudigweg aan of de service de aanvraag heeft ontvangen. De service retourneert een URL in de antwoord headers die de locatie is waar de transcriptie-status wordt opgeslagen.
+Nu gaan we de aanvraag naar de Speech-service verzenden en de eerste responscode controleren. Deze responscode geeft simpelweg aan of de service de aanvraag heeft ontvangen. De service retourneert in de antwoordheaders een URL met de locatie waar de transcriptiestatus wordt opgeslagen.
 
-Vervolgens wordt een methode aangeroepen `CheckTranscriptionStatus` om de status te controleren en uiteindelijk de resultaten af te drukken. We zullen `CheckTranscriptionStatus` volgende implementeren.
+Vervolgens roept u een `CheckTranscriptionStatus`-methode op om de status te controleren en uiteindelijk de resultaten af te drukken. Vervolgens implementeren we `CheckTranscriptionStatus`.
 
 ```JavaScript
 const request = https.request(startOptions, (response) => {
@@ -148,13 +148,13 @@ request.end();
 ```
 
 ## <a name="check-the-requests-status"></a>De status van aanvragen controleren
-Omdat de transcriptie asynchroon wordt verwerkt, moeten we elke regel vaak de status van de service controleren. We controleren elke vijf seconden.
+Omdat de transcriptie asynchroon wordt verwerkt, moeten we regelmatig de status van de service controleren. We controleren deze elke vijf seconden.
 
-We kunnen de status controleren door de inhoud op te halen bij de URL die we hebben ontvangen toen de aanvraag werd verzonden. Wanneer de inhoud weer wordt opgehaald, deserialiseren we deze in een van onze helperklasse om gemakkelijker te kunnen communiceren met.
+We kunnen de status controleren door de inhoud op te halen via de URL die we hebben ontvangen toen de aanvraag werd verzonden. Wanneer de inhoud is opgehaald, deserialiseren we deze in een van onze helperklassen om gemakkelijker te kunnen communiceren.
 
-Dit is de polling code met status weergave voor alles, behalve een geslaagde voltooiing, we doen dat nu. 
+Dit is de polling-code met statusweergave voor alles, behalve een geslaagde voltooiing, dat gaan we nu doen. 
 
-`CheckTranscriptionStatus`neemt de status-URL van de transcriptie-aanvraag en pollt deze elke vijf seconden totdat het is geslaagd of en fout. Vervolgens wordt `PrintResults` de weer gave aangeroepen om de resultaten van de transcriptie af te drukken. We zullen `PrintResults` volgende implementeren.
+`CheckTranscriptionStatus` neemt de status-URL van de transcriptie-aanvraag en pollt deze elke vijf seconden totdat deze is geslaagd of mislukt. Vervolgens roept het `PrintResults` aan om de resultaten van de transcriptie af te drukken. Nu gaan we `PrintResults` implementeren.
 ```csharp
 function CheckTranscriptionStatus(statusUrl) {
     transcription = null;
@@ -210,9 +210,9 @@ function CheckTranscriptionStatus(statusUrl) {
 }
 ```
 
-## <a name="display-the-transcription-results"></a>De transcriptie-resultaten weer geven
-Zodra de service de transcriptie heeft voltooid, worden de resultaten opgeslagen in een andere URL die we vanaf het status antwoord kunnen ontvangen. Hier maken we een aanvraag om deze resultaten te downloaden naar een tijdelijk bestand voordat ze worden gelezen en gedeserialiseerd.
-Zodra de resultaten zijn geladen, kunnen ze worden afgedrukt op de-console. 
+## <a name="display-the-transcription-results"></a>De transcriptieresultaten weergeven
+Zodra de service de transcriptie heeft voltooid, worden de resultaten opgeslagen in een andere URL die we via het statusantwoord ontvangen. Vervolgens maken we een aanvraag om de resultaten te downloaden naar een tijdelijk bestand voordat ze worden gelezen en gedeserialiseerd.
+Zodra de resultaten zijn geladen, kunnen ze worden afgedrukt naar de console. 
 
 ```JavaScript
 function PrintResults(resultUrl)
@@ -242,8 +242,8 @@ function PrintResults(resultUrl)
 }
 ```
 
-## <a name="check-your-code"></a>Controleer uw code
-Op dit moment moet uw code er als volgt uitzien:
+## <a name="check-your-code"></a>Uw code controleren
+Op dit punt moet uw code er als volgt uitzien:
 
 ```JavaScript
 const https = require("https");
@@ -421,9 +421,9 @@ request.end();
 
 ## <a name="run-your-app"></a>Uw app uitvoeren
 
-Nu bent u klaar om uw app te bouwen en de spraak herkenning te testen met behulp van de speech-service.
+U bent nu klaar om uw app te bouwen en de spraakherkenning te testen met behulp van de Speech-service.
 
-**Start uw app** -Voer knooppunt index. js uit.
+**Start uw app**- Voer knooppunt index.js uit.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,6 +1,6 @@
 ---
 title: 'Quickstart: Onboarden in Azure Sentinel'
-description: Leer hoe u gegevens kunt verzamelen in Azure Sentinel door dit quickstart-document te volgen.
+description: In deze quickstart ontdekt u hoe u Azure Sentinel kunt onboarden door eerst Sentinel in te schakelen en vervolgens gegevensbronnen te verbinden.
 services: sentinel
 author: yelevin
 ms.author: yelevin
@@ -9,18 +9,18 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: a581288259a521f8f2f93ff3fbc16f4926486643
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: d895ff3a16f8e21f73845c03d8bec83ded9bcd43
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84771169"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85564541"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Quickstart: Azure Sentinel onboarden
 
 In deze Quick Start leert u hoe u Azure Sentinel kunt onboarden. 
 
-Om Azure Sentinel te onboarden, moet u eerst Azure Sentinel inschakelen en vervolgens uw gegevensbronnen verbinden. Azure Sentinel wordt geleverd met een aantal connectors voor Microsoft-oplossingen, die direct beschikbaar zijn en realtime integratie bieden, inclusief Microsoft Threat Protection-oplossingen, Microsoft 365-bronnen, waaronder Office 365, Azure AD, Azure ATP, Microsoft Cloud App Security en meer. Daarnaast zijn er ingebouwde connectors voor het bredere beveiligingsecosysteem voor niet-Microsoft-oplossingen. U kunt ook Common Event Format, Syslog of REST-API gebruiken om uw gegevensbronnen met Azure Sentinel te verbinden.  
+Om Azure Sentinel te onboarden, moet u eerst Azure Sentinel inschakelen en vervolgens uw gegevensbronnen verbinden. Azure Sentinel wordt geleverd met een aantal connectors voor Microsoft-oplossingen, die direct beschikbaar zijn en realtime integratie bieden, inclusief Microsoft Threat Protection-oplossingen, Microsoft 365-bronnen, waaronder Office 365, Azure AD, Azure ATP, Microsoft Cloud App Security en meer. Daarnaast zijn er ingebouwde connectors voor het bredere beveiligingsecosysteem voor niet-Microsoft-oplossingen. U kunt ook Common Event Format (CEF), Syslog of REST-API gebruiken om uw gegevensbronnen met Azure Sentinel te verbinden.  
 
 Nadat u verbinding hebt gemaakt met uw gegevensbronnen, kiest u uit een galerie van deskundig gemaakte werkboeken die op basis van uw gegevens inzichten aan het licht brengen. Deze werkmappen kunnen gemakkelijk worden aangepast aan uw behoeften.
 

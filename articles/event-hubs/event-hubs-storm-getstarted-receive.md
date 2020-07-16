@@ -1,54 +1,42 @@
 ---
-title: 'Quick Start: gebeurtenissen ontvangen met Apache Storm-Azure Event Hubs'
-description: 'Snelstartgids: in dit artikel vindt u informatie over het ontvangen van gebeurtenissen van Azure Event Hubs met behulp van Apache Storm.'
-services: event-hubs
-documentationcenter: ''
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: event-hubs
-ms.workload: na
-ms.tgt_pltfrm: java
-ms.devlang: multiple
+title: 'Quickstart: Gebeurtenissen ontvangen met behulp van Apache Storm - Azure Event Hubs'
+description: 'Quickstart: In dit artikel vindt u informatie over hoe u gebeurtenissen ontvangt van Azure Event Hubs met behulp van Apache Storm.'
 ms.topic: quickstart
-ms.custom: seodec18
-ms.date: 11/05/2019
-ms.author: shvija
-ms.openlocfilehash: 90293da07d3a7ef1c32e5f82d35198d4ffa536b1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: 05973a9a930cd7b42a5a00554c48832065c794ec
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73717607"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85315356"
 ---
-# <a name="quickstart-receive-events-from-event-hubs-using-apache-storm"></a>Quick Start: gebeurtenissen ontvangen van Event Hubs met behulp van Apache Storm
+# <a name="quickstart-receive-events-from-event-hubs-using-apache-storm"></a>Quickstart: Gebeurtenissen ontvangen van Event Hubs met behulp van Apache Storm
 
-[Apache Storm](https://storm.incubator.apache.org) is een gedistribueerd real-time berekenings systeem dat betrouw bare verwerking van niet-gebonden gegevens stromen vereenvoudigt. In deze sectie wordt beschreven hoe u een Azure Event Hubs Storm Spout gebruikt voor het ontvangen van gebeurtenissen van Event Hubs. Met Apache Storm kunt u gebeurtenissen splitsen over meerdere processen die worden gehost in verschillende knoop punten. De Event Hubs-integratie met Storm vereenvoudigt het verbruik van gebeurtenissen door de voortgang van de Zookeeper-installatie van Storm te verbeteren, zodat u permanente controle punten en parallelle ontvangst van Event Hubs kunt beheren.
+[Apache Storm](https://storm.incubator.apache.org) is een gedistribueerd realtime berekeningssysteem dat betrouwbare verwerking van niet-gebonden gegevensstromen vereenvoudigt. In deze sectie wordt beschreven hoe u een Azure Event Hubs Storm-spout gebruikt voor het ontvangen van gebeurtenissen van Event Hubs. Met Apache Storm kunt u gebeurtenissen splitsen over meerdere processen die worden gehost in verschillende knooppunten. De Event Hubs-integratie met Storm vereenvoudigt het verbruik van gebeurtenissen door de voortgang met behulp van de Zookeeper-installatie van Storm transparant te controleren, zodat u permanente controlepunten en parallelle ontvangsten van Event Hubs kunt beheren.
 
-Zie [Event hubs Overview (overzicht][Event Hubs overview]van Event hubs) voor meer informatie over het ontvangen van patronen.
+Zie [Overzicht van Event Hubs][Event Hubs overview] voor meer informatie over Event Hubs-ontvangstpatronen.
 
 ## <a name="prerequisites"></a>Vereisten
-Voordat u met Quick Start begint, moet u **een event hubs naam ruimte en een event hub maken**. Gebruik de [Azure Portal](https://portal.azure.com) om een naam ruimte van het type Event hubs te maken en de beheer referenties te verkrijgen die uw toepassing nodig heeft om met de Event hub te communiceren. Volg de procedure in [dit artikel](event-hubs-create.md) om een naamruimte en een Event Hub te maken. 
+Voordat u met de quickstart begint, **maakt u een Event Hubs-naamruimte en een Event Hub**. Gebruik de [Azure-portal](https://portal.azure.com) om een naamruimte van het type Event Hubs te maken en de beheerreferenties te verkrijgen die de toepassing nodig heeft om met de Event Hub te communiceren. Volg de procedure in [dit artikel](event-hubs-create.md) om een naamruimte en een Event Hub te maken. 
 
 ## <a name="create-project-and-add-code"></a>Project maken en code toevoegen
 
-In deze zelf studie wordt gebruikgemaakt van een [HDInsight Storm][HDInsight Storm] -installatie, die wordt geleverd met de Event hubs Spout al beschikbaar.
+In deze zelfstudie wordt gebruikgemaakt van een [HDInsight Storm][HDInsight Storm]-installatie, die wordt geleverd bij de Event Hubs-spout die al beschikbaar is.
 
-1. Volg de procedure [Hdinsight Storm-](../hdinsight/storm/apache-storm-overview.md) aan de slag om een nieuw HDInsight-cluster te maken en maak er verbinding mee via Extern bureaublad.
-2. Kopieer het `%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar` bestand naar uw lokale ontwikkel omgeving. Dit bevat de gebeurtenissen-Storm-Spout.
-3. Gebruik de volgende opdracht om het pakket te installeren in het lokale archief maven. Hierdoor kunt u deze in een latere stap als referentie toevoegen aan het Storm-project.
+1. Volg de procedure [HDInsight Storm - Aan de slag](../hdinsight/storm/apache-storm-overview.md) om een nieuw HDInsight-cluster te maken en maak er verbinding mee via Extern bureaublad.
+2. Kopieer het `%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar`-bestand naar uw lokale ontwikkelomgeving. Dit bevat de gebeurtenissen-storm-spout.
+3. Gebruik de volgende opdracht om het pakket te installeren in het lokale Maven-archief. Zo kunt u dit in een latere stap toevoegen als een referentie in het Storm-project.
 
     ```shell
     mvn install:install-file -Dfile=target\eventhubs-storm-spout-0.9-jar-with-dependencies.jar -DgroupId=com.microsoft.eventhubs -DartifactId=eventhubs-storm-spout -Dversion=0.9 -Dpackaging=jar
     ```
-4. Maak in eclips een nieuw Maven-project (Klik op **bestand**, vervolgens op **Nieuw**en vervolgens op **project**).
+4. Maak in Eclipse een nieuw Maven-project (klik op **Bestand**, **Nieuw** en **Project**).
    
-    ![Bestand-> nieuw-> project][12]
-5. Selecteer **standaard locatie van werk ruimte gebruiken**en klik vervolgens op **volgende**
-6. Selecteer de archetype **maven-archetype-Quick** start en klik vervolgens op **Next (volgende** ).
-7. Voer een **GroupId** en **ArtifactId**in en klik vervolgens op **volt ooien**
-8. Voeg in **pom. XML**de volgende afhankelijkheden toe aan `<dependency>` het knoop punt.
+    ![Bestand -> Nieuw -> Project][12]
+5. Selecteer **Standaardlocatie van werkruimte gebruiken** en klik vervolgens op **Volgende**
+6. Selecteer het archetype **maven-archetype-quickstart** en klik op **Volgende**
+7. Voeg een **GroupId** en **ArtifactId** in en klik op **Voltooien**
+8. Voeg in **pom.xml**de volgende afhankelijkheden toe aan het `<dependency>`-knooppunt.
 
     ```xml  
     <dependency>
@@ -80,7 +68,7 @@ In deze zelf studie wordt gebruikgemaakt van een [HDInsight Storm][HDInsight Sto
     </dependency>
     ```
 
-9. Maak in de map **src** een bestand met de naam **config. Properties** en kopieer de volgende inhoud, waarbij u `receive rule key` de `event hub name` waarden en vervangt:
+9. Maak in de map **src** een bestand met de naam **Config.properties** en kopieer de volgende inhoud, die de waarden `receive rule key` en `event hub name` vervangt:
 
     ```java
     eventhubspout.username = ReceiveRule
@@ -95,8 +83,8 @@ In deze zelf studie wordt gebruikgemaakt van een [HDInsight Storm][HDInsight Sto
     eventhubspout.checkpoint.interval = 10
     eventhub.receiver.credits = 10
     ```
-    De waarde voor **eventhub. receive. credits** is afhankelijk van het aantal gebeurtenissen dat in een batch wordt vastgelegd voordat ze aan de Storm pijp lijn worden vrijgegeven. In dit voor beeld wordt deze waarde ingesteld op 10. In productie moet deze doorgaans worden ingesteld op hogere waarden. bijvoorbeeld 1024.
-10. Maak een nieuwe klasse met de naam **LoggerBolt** met de volgende code:
+    De waarde voor **eventhub.receiver.credits** bepaalt hoeveel gebeurtenissen worden verzameld voordat ze worden vrijgegeven in de Storm-pijplijn. In dit voorbeeld wordt deze waarde ingesteld op 10, om het eenvoudig te houden. In productie moet deze waarde doorgaans hoger worden ingesteld, zoals 1024.
+10. Maak een nieuwe klasse met de naam **LoggerBolt** met behulp van de volgende code:
     
     ```java
     import java.util.Map;
@@ -135,7 +123,7 @@ In deze zelf studie wordt gebruikgemaakt van een [HDInsight Storm][HDInsight Sto
     }
     ```
     
-    Deze storm Schicht registreert de inhoud van de ontvangen gebeurtenissen. Dit kan eenvoudig worden uitgebreid om Tuples op te slaan in een opslag service. In het [voor beeld HDInsight Storm met Event hub] wordt dezelfde benadering gebruikt om gegevens op te slaan in Azure Storage en Power bi.
+    Deze Storm-bolt legt de inhoud van de ontvangen gebeurtenissen vast. Dit kan eenvoudig worden uitgebreid om tuples op te slaan in een opslagservice. Het [HDInsight Storm met Event Hub-voorbeeld] gebruikt dezelfde benadering om gegevens op te slaan in Azure Storage en Power BI.
 11. Maak een klasse met de naam **LogTopology** met de volgende code:
     
     ```java
@@ -240,19 +228,19 @@ In deze zelf studie wordt gebruikgemaakt van een [HDInsight Storm][HDInsight Sto
     }
     ```
 
-    Met deze klasse wordt een nieuw Event Hubs Spout gemaakt, waarbij de eigenschappen in het configuratie bestand worden gebruikt om het object te instantiëren. Het is belang rijk te weten dat in dit voor beeld zoveel spouts-taken worden gemaakt als het aantal partities in de Event Hub, om de maximale parallellisme te gebruiken die door die Event Hub is toegestaan.
+    Met deze klasse wordt een nieuwe Event Hubs-spout gemaakt, waarbij de eigenschappen in het configuratiebestand worden gebruikt om het object te instantiëren. Het is belangrijk te weten dat in dit voorbeeld zoveel spouts-taken worden gemaakt als het aantal partities in de Event Hub, om het maximale parallellisme te gebruiken dat door die Event Hub is toegestaan.
 
 ## <a name="next-steps"></a>Volgende stappen
 U kunt meer informatie over Event Hubs vinden via de volgende koppelingen:
 
-* [Overzicht van Event Hubs][Event Hubs overview]
+* [Event Hubs-overzicht][Event Hubs overview]
 * [Een Event Hub maken](event-hubs-create.md)
 * [Veelgestelde vragen over Event Hubs](event-hubs-faq.md)
 
 <!-- Links -->
 [Event Hubs overview]: event-hubs-what-is-event-hubs.md
 [HDInsight Storm]: ../hdinsight/storm/apache-storm-overview.md
-[HDInsight Storm met voor beeld van Event hub]: https://github.com/Azure-Samples/hdinsight-java-storm-eventhub
+[HDInsight Storm met Event hub-voorbeeld]: https://github.com/Azure-Samples/hdinsight-java-storm-eventhub
 
 <!-- Images -->
 

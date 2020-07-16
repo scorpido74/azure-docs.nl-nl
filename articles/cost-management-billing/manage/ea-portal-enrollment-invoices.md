@@ -3,16 +3,16 @@ title: Facturen voor Azure Enterprise-inschrijvingen
 description: In dit artikel wordt uitgelegd hoe u uw Azure Enterprise-factuur kunt beheren en erop kunt reageren.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 5c26af74a392e3e6d3bb5557960b81604de7cdf3
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 5276780d06671b8358f615b1fcb6447c8e1310f9
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84807798"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044869"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Facturen voor Azure Enterprise-inschrijvingen
 
@@ -46,14 +46,14 @@ In de Azure Enterprise-portal wordt automatisch een standaardnummer voor een ink
 
 ## <a name="azure-enterprise-billing-frequency"></a>Factureringsfrequentie van Azure Enterprise
 
-Microsoft factureert jaarlijks, op de ingangsdatum van de inschrijving, voor alle toegezegde aankopen van de Microsoft Azure-services. Voor alle gebruik dat de toezeggingsbedragen overschrijdt, brengt Microsoft achteraf kosten in rekening.
+Microsoft factureert jaarlijks, op de ingangsdatum van de inschrijving, voor alle vooruitbetaalde aankopen van de Microsoft Azure-services. Voor alle gebruik dat de vooruitbetaalde bedragen overschrijdt, brengt Microsoft achteraf kosten in rekening.
 
-- Toezeggingskosten worden opgegeven op basis van een maandbedrag en worden vooraf per jaar in rekening gebracht.
+- Vooruitbetalingskosten worden opgegeven op basis van een maandbedrag en worden vooraf per jaar in rekening gebracht.
 - Overschrijdingskosten worden elke maand berekend en achteraf aan het einde van de factureringsperiode in rekening gebracht.
 
 ### <a name="billing-intervals"></a>Factureringsintervallen
 
-Uw factureringsinterval is afhankelijk van hoe u toezeggingen aanschaft. Uw jaarlijkse toezegging valt samen met een van deze twee datums:
+Uw factureringsinterval is afhankelijk van hoe u vooruitbetaalde aankopen wilt doen. Uw jaarlijkse vooruitbetaling valt samen met een van deze twee datums:
 
 - De jubileumdatum van de inschrijving
 - De ingangsdatum van het Amendement-abonnement van één jaar.
@@ -62,12 +62,12 @@ De datum waarop u de overschrijdingsfactuur ontvangt, is afhankelijk van de star
 
 - **Directe inschrijvingen met een startdatum vóór 1 mei 2018**:
   - Als u gebruikmaakt van een directe EA (Enterprise Agreement), hebt u een jaarlijkse factureringsperiode voor Azure-services, met uitzondering van Azure Marketplace-services. De factureringsperiode is gebaseerd op de jubileumdatum: de datum waarop de overeenkomst van kracht werd.
-  - Als u de drempelwaarde van uw financiële toezegging voor EA met 150% overschrijdt, wordt de factureringsperiode automatisch geconverteerd naar per kwartaal, gebaseerd op de jubileumdatum. U ontvangt ook een overschrijdingsfactuur voor de Azure-service.
-  - Als u de drempelwaarde van uw financiële toezegging niet met 150% overschrijdt, behoudt de inschrijving een jaarlijkse factureringsperiode. De overschrijdingsfactuur ontvangt u aan het einde van het toezeggingsjaar.
+  - Als u de drempelwaarde van uw Azure-vooruitbetaling voor EA met 150% overschrijdt, wordt de factureringsperiode automatisch geconverteerd naar per kwartaal, gebaseerd op de jubileumdatum. U ontvangt ook een overschrijdingsfactuur voor de Azure-service.
+  - Als u de drempelwaarde van uw Azure-vooruitbetaling niet met 150% overschrijdt, behoudt de inschrijving een jaarlijkse factureringsperiode. De overschrijdingsfactuur ontvangt u aan het einde van het vooruitbetaalde jaar.
 
 - **Directe inschrijvingen met een startdatum na 1 mei 2018**:
   - Uw Azure-verbruik en de kosten worden afzonderlijk in rekening gebracht tijdens een maandelijkse factureringsperiode.
-  - Kosten die niet onder uw financiële toezegging vallen, vallen onder de overschrijdingsbetaling.  
+  - Kosten die niet onder uw Azure-vooruitbetaling vallen, vallen onder de overschrijdingsbetaling.  
 
 - **Indirecte inschrijvingen die zijn gestart vóór 1 mei 2018**:
 
@@ -77,21 +77,21 @@ De datum waarop u de overschrijdingsfactuur ontvangt, is afhankelijk van de star
 
   U hebt een maandelijkse factureringsperiode.  
 
-### <a name="increase-your-monetary-commitment"></a>Uw financiële toezegging verhogen
+### <a name="increase-your-azure-prepayment"></a>Uw Azure-vooruitbetaling verhogen
 
-U kunt uw toezegging op elk gewenst moment verhogen. De resterende maanden in de toezeggingsperiode van dat jaar worden bij u in rekening gebracht. Als u zich bijvoorbeeld aanmeldt voor een abonnement van één jaar en vervolgens de toezegging vergroot in zes maanden, wordt u gefactureerd voor de resterende zes maanden van deze termijn. Uw toezeggingshoeveelheden worden vervolgens bijgewerkt voor de laatste zes maanden van de toezeggingstermijn. Deze nieuwe hoeveelheden worden gebruikt om eventuele overschrijdingskosten te bepalen.
+U kunt uw vooruitbetaling op elk gewenst moment verhogen. De resterende maanden in de vooruitbetalingsperiode van dat jaar worden bij u in rekening gebracht. Als u zich bijvoorbeeld aanmeldt voor een abonnement van één jaar en vervolgens de vooruitbetaling verhoogt in zes maanden, wordt u gefactureerd voor de resterende zes maanden van deze termijn. Uw vooruitbetaalde hoeveelheden worden vervolgens bijgewerkt voor de laatste zes maanden van de vooruitbetaalde termijn. Deze nieuwe hoeveelheden worden gebruikt om eventuele overschrijdingskosten te bepalen.
 
 ### <a name="overage"></a>Overschrijding
 
-Voor overschrijding wordt u gefactureerd voor het gebruik of de reserveringen die gedurende de factureringsperiode de toezegging hebben overschreden. Als u wilt zien hoe de overschrijdingsaantallen voor afzonderlijke items zijn berekend, raadpleegt u het rapport met het gebruiksoverzicht of neemt u contact op met uw kanaalpartner.
+Voor overschrijding wordt u gefactureerd voor het gebruik of de reserveringen die gedurende de factureringsperiode de vooruitbetaling hebben overschreden. Als u wilt zien hoe de overschrijdingsaantallen voor afzonderlijke items zijn berekend, raadpleegt u het rapport met het gebruiksoverzicht of neemt u contact op met uw kanaalpartner.
 
 Voor elk item op de factuur ziet u het volgende:
 
 - **Berekend bedrag**: de totale kosten
-- **Toezeggingsgebruik**: het toezeggingsbedrag dat wordt gebruikt om de kosten te dekken
-- **Nettobedrag**: de kosten die de toezegging overschrijden
+- **Vooruitbetaald gebruik**: het vooruitbetaalde bedrag dat wordt gebruikt om de kosten te dekken
+- **Nettobedrag**: de kosten die de vooruitbetaling overschrijden
 
-Toepasselijke belastingen worden alleen berekend over het nettobedrag dat de toezegging overschrijdt.
+Toepasselijke belastingen worden alleen berekend over het nettobedrag dat de vooruitbetaling overschrijdt.
 
 Facturering van overschrijding is geautomatiseerd. De timing van meldingen en facturen is afhankelijk van de einddatum van uw factuurperiode.
 
@@ -130,18 +130,18 @@ Tegoeden bekijken:
 1. Selecteer in [de Azure Enterprise-portal](https://ea.azure.com) de sectie **Rapporten**.
 1. Selecteer **Gebruiksoverzicht**.
 1. Wijzig **M** in **C** in de rechterbovenhoek.
-1. Vouw het aanpassingsveld in de Azure-tabel voor servicetoezegging uit.
+1. Vouw het aanpassingsveld in de vooruitbetalingstabel voor Azure-services uit.
 1. U ziet tegoeden die zijn toegepast op uw inschrijving, en een korte uitleg. Bijvoorbeeld: Tegoed van Service Level Agreement.
 
-## <a name="pay-your-overage-with-your-monetary-commitment"></a>Uw overschrijding betalen met uw financiële toezegging
+## <a name="pay-your-overage-with-your-azure-prepayment"></a>Betaal uw overschrijding met uw Azure-vooruitbetaling
 
-Als u uw financiële toezegging wilt toepassen op overschrijdingen, moet u aan een van de volgende criteria voldoen:
+Als u uw Azure-vooruitbetaling wilt toepassen op overschrijdingen, moet u aan een van de volgende criteria voldoen:
 
 - U hebt overschrijdingskosten die nog niet zijn betaald, en die binnen één jaar na de einddatum van de gefactureerde service vallen.
-- Uw beschikbare bedrag van de financiële toezegging dekt de volledige gefactureerde kosten, inclusief alle eerdere niet-betaalde Azure-facturen.
+- Uw beschikbare bedrag van de Azure-vooruitbetaling dekt de volledige gefactureerde kosten, inclusief alle eerdere niet-betaalde Azure-facturen.
 - De te voltooien factureringstermijn moet volledig zijn afgesloten. De facturering wordt volledig afgesloten na de vijfde dag van elke maand.
 - De factureringsperiode die u wilt verrekenen, moet volledig zijn afgesloten.
-- Uw ACD-korting (Azure Commitment Discount) is gebaseerd op de werkelijke nieuwe toezegging min eventuele fondsen die zijn gepland voor het vorige verbruik. Deze vereiste geldt alleen voor gemaakte overschrijdingskosten. Het is alleen geldig voor services die financiële toezegging verbruiken, en is dus niet van toepassing op Azure Marketplace-kosten. Azure Marketplace-kosten worden afzonderlijk in rekening gebracht.
+- Uw APD-korting (Azure Prepayment Discount) is gebaseerd op de werkelijke nieuwe vooruitbetaling min eventuele fondsen die zijn gepland voor het vorige verbruik. Deze vereiste geldt alleen voor gemaakte overschrijdingskosten. Het is alleen geldig voor services die Azure-vooruitbetaling verbruiken, en is dus niet van toepassing op Azure Marketplace-kosten. Azure Marketplace-kosten worden afzonderlijk in rekening gebracht.
 
 Als u een overschrijdingsverrekening wil voltooien, kunnen u of het accountteam een ondersteuningsaanvraag openen. Een per e-mail verzonden goedkeuring van de ondernemingsbeheerder of factuurcontact is vereist.
 
@@ -178,13 +178,13 @@ Ter referentie bevat de volgende tabel de Excel-formules die u kunt gebruiken om
 
 ### <a name="conversion-between-usage-detail-report-and-the-usage-summary-page"></a>Conversie tussen het gebruiksgegevensrapport en de pagina gebruiksoverzicht
 
-In het gebruiksgegevensrapport voor downloaden kunt u het gebruik van onbewerkte resources bekijken tot maximaal zes decimalen. De gebruiksgegevens die zichtbaar zijn in de Azure Enterprise-portal, worden echter afgerond op vier decimalen voor toezeggingseenheden, en afgekapt tot nul decimalen voor overschrijdingseenheden. Onbewerkte gebruiksgegevens worden eerst afgerond op vier cijfers, vóór de conversie naar eenheden die worden gebruikt in de Azure Enterprise-portal. Vervolgens worden de geconverteerde ondernemingseenheden opnieuw afgerond op vier cijfers. U kunt de werkelijke verbruikte uren vóór de conversie alleen zien in het gebruiksrapport voor downloaden, en niet in de Azure Enterprise-portal.
+In het gebruiksgegevensrapport voor downloaden kunt u het gebruik van onbewerkte resources bekijken tot maximaal zes decimalen. De gebruiksgegevens die zichtbaar zijn in de Azure Enterprise-portal, worden echter afgerond op vier decimalen voor vooruitbetalingseenheden, en afgekapt tot nul decimalen voor overschrijdingseenheden. Onbewerkte gebruiksgegevens worden eerst afgerond op vier cijfers, vóór de conversie naar eenheden die worden gebruikt in de Azure Enterprise-portal. Vervolgens worden de geconverteerde ondernemingseenheden opnieuw afgerond op vier cijfers. U kunt de werkelijke verbruikte uren vóór de conversie alleen zien in het gebruiksrapport voor downloaden, en niet in de Azure Enterprise-portal.
 
 Bijvoorbeeld: Stel, er zijn 694,533404 werkelijke SQL Server-uren gerapporteerd in het gebruiksgegevensrapport. Deze eenheden worden geconverteerd naar 6,94533404 van 100 rekenuren, en vervolgens afgerond op 6,9453 en weergegeven in de Azure Enterprise-portal.
 
-- De weergegeven eenheden worden vermenigvuldigd met de prijs voor de toezeggingseenheid, en het resultaat wordt afgekapt tot twee decimalen. Voor Japanse yen (JPY) en Koreaanse won (KRW) wordt het berekende bedrag afgerond op nul decimalen.
+- De weergegeven eenheden worden vermenigvuldigd met de prijs voor de vooruitbetalingseenheid, en het resultaat wordt afgekapt tot twee decimalen. Voor Japanse yen (JPY) en Koreaanse won (KRW) wordt het berekende bedrag afgerond op nul decimalen.
 - Voor overschrijding worden factureerbare eenheden afgekapt tot zes cijfers en vervolgens vermenigvuldigd met de eenheidsprijs van overschrijding, om het berekende bedrag voor de factuur te bepalen.
-- Voor het factureren van een provider voor beheerde service (MSP), wordt al het gebruik dat is gekoppeld aan een afdeling die is gemarkeerd als MSP, afgekapt tot nul decimalen na de conversie naar de EA-eenheid van de meting. Als gevolg hiervan is de som van dit gebruik mogelijk lager dan de som van alle gebruik dat is vastgelegd in de Azure Enterprise-portal. Dit is afhankelijk van het feit of de MSP binnen het saldo voor hun financiële toezegging valt, of deel uitmaakt van de overschrijding.
+- Voor het factureren van een provider voor beheerde service (MSP), wordt al het gebruik dat is gekoppeld aan een afdeling die is gemarkeerd als MSP, afgekapt tot nul decimalen na de conversie naar de EA-eenheid van de meting. Als gevolg hiervan is de som van dit gebruik mogelijk lager dan de som van alle gebruik dat is vastgelegd in de Azure Enterprise-portal. Dit is afhankelijk van het feit of de MSP binnen het saldo voor hun Azure-vooruitbetaling valt, of deel uitmaakt van de overschrijding.
 
 ### <a name="graduated-pricing"></a>Gestaffelde prijs
 
@@ -226,13 +226,13 @@ Voor de services waarbij zones en regio's van invloed zijn op de prijsstelling b
 
 Er worden geen kosten in rekening gebracht voor uitgaande gegevens tussen services die zijn gehuisvest binnen hetzelfde datacentrum. Bijvoorbeeld, Microsoft 365 en Azure.
 
-### <a name="monetary-commitment-and-unbilled-usage"></a>Financiële toezegging en niet-gefactureerd gebruik
+### <a name="azure-prepayment-and-unbilled-usage"></a>Azure-vooruitbetaling en niet-gefactureerd gebruik
 
-Financiële toezegging van Azure is een bedrag dat vooraf wordt betaald voor Azure-services. De financiële toezegging wordt verbruikt als er services worden gebruikt. Eigen Azure-services worden gefactureerd op basis van de financiële toezegging. Sommige kosten worden echter afzonderlijk gefactureerd, en Azure Marketplace-services verbruiken geen financiële toezeggingen.
+Azure-vooruitbetaling is een bedrag dat vooraf wordt betaald voor Azure-services. De Azure-vooruitbetaling wordt verbruikt als er services worden gebruikt. Eigen Azure-services worden gefactureerd op basis van de Azure-vooruitbetaling. Sommige kosten worden echter afzonderlijk gefactureerd, en Azure Marketplace-services verbruiken geen Azure-vooruitbetaling.
 
 ### <a name="charges-billed-separately"></a>Afzonderlijk gefactureerde kosten
 
-Voor sommige producten en services die worden meegeleverd met externe bronnen, wordt de financiële toezegging van Azure niet gebruikt. Deze items worden in plaats hiervan afzonderlijk gefactureerd als onderdeel van de overschrijdingsfactuur van de standaardfactureringsperiode.
+Voor sommige producten en services die worden meegeleverd met externe bronnen, wordt de Azure-vooruitbetaling niet gebruikt. Deze items worden in plaats hiervan afzonderlijk gefactureerd als onderdeel van de overschrijdingsfactuur van de standaardfactureringsperiode.
 
 We hebben alle Azure- en Azure Marketplace-kosten gecombineerd in één factuur die overeenkomt met de factuurperiode van de inschrijving. De gecombineerde factuur is niet van toepassing op klanten in Australië, Japan of Singapore.
 
@@ -265,7 +265,7 @@ De facturen worden opgemaakt in de maand die volgt op de beëindiging van de fac
 
    | Titel | Beschrijving | Bestandsnaam |
    | --- | --- | --- |
-   | [Beschrijvende servicenamen](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) | Hierin worden alle actieve services vermeld en omvat ook: <br>  <ul><li>servicecategorie</li>   <li>beschrijvende servicenamen</li>   <li>toezeggingsnaam en onderdeelnummer</li> <li>verbruiksnaam en onderdeelnummer</li>   <li>meeteenheid</li>   <li>conversiefactoren tussen gerapporteerd gebruik en weergegeven gebruik van de Enterprise-portal</li></ul> | Friendly\_Service\_Names.xlsx |
+   | [Beschrijvende servicenamen](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) | Hierin worden alle actieve services vermeld en omvat ook: <br>  <ul><li>servicecategorie</li>   <li>beschrijvende servicenamen</li>   <li>Vooruitbetalingsnaam en onderdeelnummer</li> <li>verbruiksnaam en onderdeelnummer</li>   <li>meeteenheid</li>   <li>conversiefactoren tussen gerapporteerd gebruik en weergegeven gebruik van de Enterprise-portal</li></ul> | Friendly\_Service\_Names.xlsx |
    | [Service Download Fields](https://azurepricing.blob.core.windows.net/supplemental/Service_Download_Fields.xlsx) | Dit werk blad bevat een lijst met alle mogelijke combinaties van de velden die aan de service zijn gerelateerd in het rapport voor het downloaden van het gebruik. | Service\_Download\_Fields.xlsx |
 
 - Zie [Meer informatie over uw Azure Enterprise-factuur](../understand/review-enterprise-agreement-bill.md) voor informatie over uw factuur en kosten.

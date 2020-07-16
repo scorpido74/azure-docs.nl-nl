@@ -1,5 +1,5 @@
 ---
-title: Snelstartgids voor Bing Image Search java-client bibliotheek
+title: Quickstart voor Bing Image Search-clientbibliotheek voor Java
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -8,22 +8,22 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: aahi
-ms.openlocfilehash: 4656d8116ddd2e618adad97aeea576e88bc8785f
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: aeb326bbc14dd2c44a0d3ab250bb611a6b8f6b0f
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78899578"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85805667"
 ---
-Gebruik deze Quick Start om ervoor te zorgen dat uw eerste installatie kopie wordt doorzocht met behulp van de Bing Image Search-client bibliotheek. Dit is een wrapper voor de API en bevat dezelfde functies. Deze eenvoudige Java-toepassing verzendt een zoekquery voor afbeeldingen, parseert het JSON-antwoord en geeft de URL weer van de eerst geretourneerde afbeelding.
+Gebruik deze quickstart om uw eerste image search te maken met behulp van de Bing Image Search-clientbibliotheek, wat een wrapper is voor de API en die dus dezelfde functies bevat. Deze eenvoudige Java-toepassing verzendt een zoekquery voor afbeeldingen, parseert het JSON-antwoord en geeft de URL weer van de eerst geretourneerde afbeelding.
 
-De bron code voor dit voor beeld is beschikbaar [op github](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingImageSearch/Quickstart) met aanvullende fout afhandeling en annotaties.
+De broncode voor dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingImageSearch/Quickstart) met extra foutafhandeling en aantekeningen.
 
 ## <a name="prerequisites"></a>Vereisten
 
 De nieuwste versie van de [Java Development Kit (JDK)](https://aka.ms/azure-jdks)
 
-Installeer de Bing Image Search-client bibliotheek afhankelijkheden met behulp van Maven, Gradle of een ander afhankelijk beheer systeem. Het Maven-POM-bestand vereist de volgende declaratie:
+Installeer de afhankelijkheden van de Bing Image Search-clientbibliotheek met behulp van Maven, Gradle of een ander systeem voor afhankelijkheidsbeheer. Het Maven-POM-bestand vereist de volgende declaratie:
 
 ```xml
  <dependencies>
@@ -95,9 +95,8 @@ else {
 
 ## <a name="see-also"></a>Zie ook
 
-* [Wat is Bing Afbeeldingen zoeken?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [Wat is Bing Image Search?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
 * [Online interactieve demo proberen](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
-* [Gratis Cognitive Services-toegangssleutel ophalen](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)
 * [Java-voorbeelden voor de Azure Cognitive Services-SDK](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
-* [Documentatie voor Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
+* [Documentatie van Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
 * [Naslag voor Bing Afbeeldingen zoeken-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

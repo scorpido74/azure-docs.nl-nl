@@ -1,25 +1,20 @@
 ---
-title: 'Quick Start: gegevensstreamen met Azure Event Hubs met behulp van het Kafka-Protocol'
-description: "Snelstartgids: in dit artikel vindt u informatie over het streamen naar Azure Event Hubs met het Kafka-protocol en Api's."
-services: event-hubs
-author: ShubhaVijayasarathy
-ms.author: shvija
-ms.service: event-hubs
+title: 'Quickstart: Streamen van gegevens met Azure Event Hubs met het Kafka-Protocol'
+description: "Quickstart: Dit artikel bevat informatie over het streamen naar Azure Event Hubs met behulp van het Kafka-protocol en API's."
 ms.topic: quickstart
-ms.custom: seodec18
-ms.date: 02/12/2020
-ms.openlocfilehash: 67ee882acab22d977f08124591289e9cfc7cded1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: 4a63aeec7b282ba9b707a1521c51fd944ca24411
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81261819"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85314419"
 ---
-# <a name="quickstart-data-streaming-with-event-hubs-using-the-kafka-protocol"></a>Quick Start: gegevensstreaming met Event Hubs met behulp van het Kafka-Protocol
-In deze Quick start ziet u hoe u kunt streamen naar Event Hubs zonder dat u uw protocol-clients of uw eigen clusters hoeft te wijzigen. U leert hoe u uw producenten en consumenten kunt gebruiken om te praten met Event Hubs met alleen een configuratie wijziging in uw toepassingen. Azure Event Hubs ondersteunt [Apache Kafka versie 1.0.](https://kafka.apache.org/10/documentation.html)
+# <a name="quickstart-data-streaming-with-event-hubs-using-the-kafka-protocol"></a>Quickstart: Streamen naar Event Hubs met behulp van API's en het Kafka-protocol
+Deze snelstart laat zien hoe u kunt streamen naar Event Hubs zonder uw protocolclients te wijzigen of uw eigen clusters uit te voeren. U leert hoe u uw producenten kunt gebruiken en consumenten met Event Hubs, kunnen praten met slechts een configuratiewijziging in uw toepassingen. Azure Event Hubs ondersteunt [Apache Kafka versie 1.0.](https://kafka.apache.org/10/documentation.html)
 
 > [!NOTE]
-> Dit voor beeld is beschikbaar op [github](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/java)
+> Dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/java)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -27,16 +22,16 @@ Zorg ervoor dat u aan de volgende vereisten voldoet om deze snelstart uit te voe
 
 * Lees het artikel [Event Hubs voor Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md) door.
 * Een Azure-abonnement. Als u nog geen account hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) voordat u begint.
-* [Java Development Kit (JDK) 1.7 +](https://aka.ms/azure-jdks).
-* [Down load](https://maven.apache.org/download.cgi) en [Installeer](https://maven.apache.org/install.html) een binaire maven-archief.
+* [Java Development Kit (JDK) 1.7+](https://aka.ms/azure-jdks).
+* [Download](https://maven.apache.org/download.cgi) en [installeer](https://maven.apache.org/install.html) een binair Maven-archief.
 * [Git](https://www.git-scm.com/)
 
 
 ## <a name="create-an-event-hubs-namespace"></a>Een Event Hubs-naamruimte maken
-Wanneer u een **standaardlaag Event hubs** naam ruimte maakt, wordt het Kafka-eind punt voor de naam ruimte automatisch ingeschakeld. U kunt gebeurtenissen streamen vanuit uw toepassingen die gebruikmaken van het Kafka-protocol in de standaardlaag Event Hubs. Volg de stapsgewijze instructies in het **artikel** [een event hub maken met behulp van Azure Portal](event-hubs-create.md) om een standaardlaag Event hubs naam ruimte te maken. 
+Wanneer u een Event Hubs-naamruimte van het type **Standaard** maakt, wordt het Kafka-eindpunt voor de naamruimte automatisch ingeschakeld. U kunt gebeurtenissen vanaf uw toepassingen, waarbij gebruikgemaakt wordt van het Kafka-protocol, naar Event Hubs van het type Standaard streamen. Volg de stapsgewijze instructies in [Een Event Hub maken met behulp van de Azure-portal](event-hubs-create.md) om een Event Hubs-naamruimte van het type **Standaard** te maken. 
 
 > [!NOTE]
-> Event Hubs voor Kafka is alleen beschikbaar in de lagen **Standard** en **dedicated** . De laag **basis** biedt geen ondersteuning voor Kafka op Event hubs.
+> Voor Kafka zijn alleen Event Hubs van het type **Standaard** en **Toegewezen** beschikbaar. Het type **Basis** biedt geen ondersteuning voor Kafka op Event Hubs.
 
 ## <a name="send-and-receive-messages-with-kafka-in-event-hubs"></a>Berichten verzenden en ontvangen met Kafka in Event Hubs
 
@@ -54,7 +49,7 @@ Wanneer u een **standaardlaag Event hubs** naam ruimte maakt, wordt het Kafka-ei
     sasl.mechanism=PLAIN
     sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
     ```
-    **OAuth**
+    **OAuth:**
 
     ```xml
     bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
@@ -64,8 +59,8 @@ Wanneer u een **standaardlaag Event hubs** naam ruimte maakt, wordt het Kafka-ei
     sasl.login.callback.handler.class=CustomAuthenticateCallbackHandler;
     ```    
 
-    U kunt [hier](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/appsecret/producer/src/main/java)de bron code voor de voor beeld-handler klasse CustomAuthenticateCallbackHandler in github vinden.
-4. Voer de code van de producent en stream uit in Event Hubs:
+    U vindt de broncode voor de voorbeeld-handlerklasse CustomAuthenticateCallbackHandler in GitHub [hier](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/appsecret/producer/src/main/java).
+4. Voer de producentcode uit en stream gebeurtenissen naar Event Hubs:
    
     ```shell
     mvn clean package
@@ -85,7 +80,7 @@ Wanneer u een **standaardlaag Event hubs** naam ruimte maakt, wordt het Kafka-ei
     sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
     ```
 
-    **OAuth**
+    **OAuth:**
 
     ```xml
     bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
@@ -95,10 +90,10 @@ Wanneer u een **standaardlaag Event hubs** naam ruimte maakt, wordt het Kafka-ei
     sasl.login.callback.handler.class=CustomAuthenticateCallbackHandler;
     ``` 
 
-    U kunt [hier](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/appsecret/consumer/src/main/java)de bron code voor de voor beeld-handler klasse CustomAuthenticateCallbackHandler in github vinden.
+    U vindt de broncode voor de voorbeeld-handlerklasse CustomAuthenticateCallbackHandler in GitHub [hier](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/appsecret/consumer/src/main/java).
 
-    U vindt [hier](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth)alle OAuth-voor beelden voor Event hubs voor Kafka.
-7. Voer de code en proces gebeurtenissen van de consument uit Event Hub met behulp van uw Kafka-clients:
+    U vindt alle OAuth-voorbeelden voor Event Hubs voor Kafka [hier](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth).
+7. Voer de consumentcode en verwerk gebeurtenissen vanuit Event Hubs met behulp van uw Kafka-clients:
 
     ```java
     mvn clean package
@@ -108,4 +103,4 @@ Wanneer u een **standaardlaag Event hubs** naam ruimte maakt, wordt het Kafka-ei
 Als uw Event Hubs Kafka-cluster gebeurtenissen heeft, moet u deze nu ontvangen van de consument.
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel hebt u geleerd hoe u kunt streamen naar Event Hubs zonder uw protocol-clients te wijzigen of uw eigen clusters uit te voeren. Zie [Apache Kafka ontwikkelaars handleiding voor Azure Event hubs](apache-kafka-developer-guide.md)voor meer informatie. 
+In dit artikel hebt u geleerd u hoe u kunt streamen naar Event Hubs zonder uw protocolclients te wijzigen of uw eigen clusters uit te voeren. Zie [Ontwikkelaarshandleiding van Apache Kafka voor Azure Event Hubs](apache-kafka-developer-guide.md) voor meer informatie. 
