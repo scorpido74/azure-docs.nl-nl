@@ -1,113 +1,113 @@
 ---
-title: Azure Deployment Manager Health Check gebruiken
-description: Gebruik status controle om Azure-resources veilig te implementeren met Azure Deployment Manager.
+title: Statuscontrole in Azure Deployment Manager gebruiken
+description: Gebruik statuscontrole om Azure-resources veilig te implementeren met Azure Deployment Manager.
 author: mumian
 ms.date: 10/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 765c73a3ab8d5fa8939abe597d0141b24b59ac52
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 3c7b74d31bc3c4e2276cd52c8e6450630dc99bcd
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76152474"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058024"
 ---
-# <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Zelf studie: status controle gebruiken in azure Deployment Manager (open bare preview)
+# <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Zelfstudie: Statuscontrole gebruiken in Azure Deployment Manager (openbare preview)
 
-Meer informatie over het integreren van de status controle in [Azure Deployment Manager](./deployment-manager-overview.md). Deze zelf studie is gebaseerd op de zelf studie [Azure Deployment Manager gebruiken met Resource Manager-sjablonen](./deployment-manager-tutorial.md) . U moet deze zelf studie volt ooien voordat u verdergaat met dit.
+Meer informatie over het integreren van statuscontrole in [Azure Deployment Manager](./deployment-manager-overview.md). Deze zelfstudie is gebaseerd op de zelfstudie [Azure Deployment Manager gebruiken met Resource Manager-sjablonen](./deployment-manager-tutorial.md). U moet die zelfstudie voltooien voordat u verdergaat met deze.
 
-In de implementatie sjabloon die wordt gebruikt voor het [gebruik van Azure Deployment Manager met Resource Manager-sjablonen](./deployment-manager-tutorial.md), hebt u een wachtende stap gebruikt. In deze zelf studie vervangt u de stap wachten met een status controle.
+In de implementatiesjabloon die wordt gebruikt in [Azure Deployment Manager gebruiken met Resource Manager-sjablonen](./deployment-manager-tutorial.md), hebt u een wachtstap gebruikt. In deze zelfstudie vervangt u de wachtstap door een statuscontrolestap.
 
 > [!IMPORTANT]
-> Als uw abonnement is gemarkeerd voor de Canarische om nieuwe functies van Azure te testen, kunt u Azure Deployment Manager alleen gebruiken om te implementeren in de Canarische regio's. 
+> Als uw abonnement is gemarkeerd voor Canary om nieuwe functies van Azure te testen, kunt u Azure Deployment Manager alleen gebruiken om te implementeren in de Canary-regio's. 
 
 Deze zelfstudie bestaat uit de volgende taken:
 
 > [!div class="checklist"]
-> * Een Health Check-service Simulator maken
-> * De implementatie sjabloon herzien
+> * Een servicesimulator voor statuscontrole maken
+> * De implementatiesjabloon herzien
 > * De topologie implementeren
-> * Implementatie van de implementatie met een slechte status
-> * De implementaties implementeren
-> * Implementeer de implementatie met de status in orde
-> * De implementaties implementeren
+> * De implementatie implementeren met slechte status
+> * De implementatie verifiëren
+> * De implementatie implementeren met de status in orde
+> * De implementatie verifiëren
 > * Resources opschonen
 
 Aanvullende bronnen:
 
-* De [Naslag informatie voor Azure Deployment Manager rest API](https://docs.microsoft.com/rest/api/deploymentmanager/).
-* [Een Azure Deployment Manager](https://github.com/Azure-Samples/adm-quickstart)-voor beeld.
+* De [Azure Deployment Manager REST API-naslaginformatie](/rest/api/deploymentmanager/).
+* [Een Azure Deployment Manager-voorbeeld](https://github.com/Azure-Samples/adm-quickstart).
 
-Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 
-* [Gebruik Azure Deployment Manager volt ooien met Resource Manager-sjablonen](./deployment-manager-tutorial.md).
+* Voltooi [Azure Deployment Manager gebruiken met Resource Manager-sjablonen](./deployment-manager-tutorial.md).
 
 ## <a name="install-the-artifacts"></a>De artefacten installeren
 
-Down load [de sjablonen en de artefacten](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMTutorial.zip) en pak deze lokaal uit als u dat nog niet hebt gedaan. En voer vervolgens het Power shell-script uit om [de artefacten voor te bereiden](./deployment-manager-tutorial.md#prepare-the-artifacts). Met het script maakt u een resource groep, maakt u een opslag container, maakt u een BLOB-container, uploadt u de gedownloade bestanden en maakt u vervolgens een SAS-token.
+Download [de sjablonen en de artefacten](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMTutorial.zip) en pak deze lokaal uit als u dit nog niet hebt gedaan. En voer vervolgens het PowerShell-script uit dat is te vinden op [De artefacten voorbereiden](./deployment-manager-tutorial.md#prepare-the-artifacts). Het script maakt een resourcegroep, maakt een opslagcontainer, maakt een blob-container, uploadt de gedownloade bestanden en maakt vervolgens een SAS-token.
 
 Maak een kopie van de URL met SAS-token. Deze URL is nodig voor om een veld in te vullen in de twee parameterbestanden, het parameterbestand voor de topologie en parameterbestand voor de implementatie.
 
-Open CreateADMServiceTopology. para meters. json en werk de waarden van **projectName** en **artifactSourceSASLocation**bij.
+Open CreateADMServiceTopology.Parameters.json en werk de waarden van **projectName** en **artifactSourceSASLocation** bij.
 
-Open CreateADMRollout. para meters. json en werk de waarden van **projectName** en **artifactSourceSASLocation**bij.
+Open CreateADMRollout.Parameters.json en werk de waarden van **projectName** en **artifactSourceSASLocation** bij.
 
-## <a name="create-a-health-check-service-simulator"></a>Een Health Check-service Simulator maken
+## <a name="create-a-health-check-service-simulator"></a>Een servicesimulator voor statuscontrole maken
 
-In productie gebruikt u meestal een of meer bewakings providers. Micro soft werkt samen met een aantal van de belangrijkste service status bewakings bedrijven om u een eenvoudige Kopieer-en plak oplossing te bieden voor de integratie van status controles met uw implementaties, om de status integratie zo eenvoudig mogelijk te maken. Zie [providers voor status controle](./deployment-manager-health-check.md#health-monitoring-providers)voor een lijst van deze bedrijven. Voor het doel van deze zelf studie maakt u een [Azure-functie](/azure/azure-functions/) voor het simuleren van een status bewakings service. Deze functie neemt een status code en retourneert dezelfde code. Uw Azure Deployment Manager-sjabloon gebruikt de status code om te bepalen hoe u kunt door gaan met de implementatie.
+In productie gebruikt u meestal een of meer bewakingsproviders. Microsoft werkt samen met een aantal van de belangrijkste bedrijven op het gebied van servicestatusbewaking om u een eenvoudige kopieer- en plakoplossing te bieden voor de integratie van statuscontroles met uw implementaties, om statusintegratie zo eenvoudig mogelijk te maken. Zie [Providers van statuscontroles](./deployment-manager-health-check.md#health-monitoring-providers) voor een lijst van deze bedrijven. Voor het doel van deze zelfstudie maakt u een [Azure-functie](../../azure-functions/index.yml) om een statuscontroleservice te simuleren. Deze functie neemt een statuscode en retourneert dezelfde code. Uw Azure Deployment Manager-sjabloon gebruikt de statuscode om te bepalen hoe verder moet worden gegaan met de implementatie.
 
-De volgende twee bestanden worden gebruikt voor het implementeren van de Azure-functie. U hoeft deze bestanden niet te downloaden om de zelf studie door te lopen.
+De volgende twee bestanden worden gebruikt om de Azure-functie te implementeren. U hoeft deze bestanden niet te downloaden om de zelfstudie door te lopen.
 
-* Een resource manager-sjabloon bevindt zich op [https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json). U implementeert deze sjabloon om een Azure-functie te maken.
-* Een zip-bestand van de bron code van de [https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMHCFunction0417.zip](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMHCFunction0417.zip)Azure-functie,. Deze zip wordt aangeroepen door de Resource Manager-sjabloon.
+* Een Resource Manager-sjabloon die zich bevindt op [https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json). U implementeert deze sjabloon om een Azure-functie te maken.
+* Een zip-bestand van de broncode van de Azure-functie, [https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMHCFunction0417.zip](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMHCFunction0417.zip). Deze zip wordt aangeroepen door de Resource Manager-sjabloon.
 
-Als u de Azure-functie wilt implementeren, selecteert u **proberen** om de Azure Cloud shell te openen en plakt u het volgende script in het shell-venster.  Als u de code wilt plakken, klikt u met de rechter muisknop op het shell venster en selecteert u vervolgens **Plakken**.
+Als u de Azure-functie wilt implementeren, selecteert u **Probeer het** om de Azure Cloud-shell te openen en plakt u het volgende script in het shell-venster.  Als u de code wilt plakken, klikt u met de rechtermuisknop op het shell-venster en selecteert u **Plakken**.
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json" -projectName $projectName
 ```
 
-Controleren en testen van de Azure-functie:
+De Azure-functie controleren en testen:
 
 1. Open de [Azure Portal](https://portal.azure.com).
-1. Open de resource groep.  De standaard naam is de naam van het project waaraan **RG** is toegevoegd.
-1. Selecteer app service in de resource groep.  De standaard naam van de app service is de project naam met **webapp** toegevoegd.
-1. Vouw **functies**uit en selecteer vervolgens **HttpTrigger1**.
+1. Open de resourcegroep.  De standaardnaam is de naam van het project met **rg** eraan toegevoegd.
+1. Selecteer de appservice in de resourcegroep.  De standaardnaam van de app-service is de naam van het project met **webapp** eraan toegevoegd.
+1. Vouw **Functies** uit en selecteer vervolgens **HttpTrigger1**.
 
-    ![Azure-functie Azure Deployment Manager Health check](./media/deployment-manager-tutorial-health-check/azure-deployment-manager-hc-function.png)
+    ![Azure-functie Statuscontrole in Azure Deployment Manager gebruiken](./media/deployment-manager-tutorial-health-check/azure-deployment-manager-hc-function.png)
 
-1. Selecteer ** &lt;/> functie-URL ophalen**.
-1. Selecteer **kopiëren** om de URL naar het klem bord te kopiëren.  De URL is vergelijkbaar met:
+1. Selecteer **&lt;/> Functie-URL ophalen**.
+1. Selecteer **Kopiëren** om de URL naar het klembord te kopiëren.  De URL is vergelijkbaar met:
 
     ```url
     https://myhc0417webapp.azurewebsites.net/api/healthStatus/{healthStatus}?code=hc4Y1wY4AqsskAkVw6WLAN1A4E6aB0h3MbQ3YJRF3XtXgHvooaG0aw==
     ```
 
-    Vervang `{healthStatus}` in de URL door de status code. In deze zelf studie gebruikt u een **slechte status** om het scenario met een slechte status te testen. u kunt het scenario in **orde of** **waarschuwing** gebruiken om het probleem in orde te testen. Maak twee Url's, een met de status slecht en de andere met de status in orde. Voor voor beelden:
+    Vervang `{healthStatus}` in de URL door een statuscode. In deze zelfstudie gebruikt u **beschadigd** om het scenario met een beschadigde status te testen, en gebruikt u **in orde** of **waarschuwing** om het goede scenario te testen. Maak twee URL's, een met de status beschadigd en de andere met de status in orde. Voorbeelden:
 
     ```url
     https://myhc0417webapp.azurewebsites.net/api/healthStatus/unhealthy?code=hc4Y1wY4AqsskAkVw6WLAN1A4E6aB0h3MbQ3YJRF3XtXgHvooaG0aw==
     https://myhc0417webapp.azurewebsites.net/api/healthStatus/healthy?code=hc4Y1wY4AqsskAkVw6WLAN1A4E6aB0h3MbQ3YJRF3XtXgHvooaG0aw==
     ```
 
-    U hebt beide Url's nodig om deze zelf studie te volt ooien.
+    U hebt beide URL's nodig om deze zelfstudie te voltooien.
 
-1. Als u de status controle Simulator wilt testen, opent u de Url's die u in de laatste stap hebt gemaakt.  De resultaten voor de slechte status moeten gelijk zijn aan:
+1. Als u de statuscontrolesimulator wilt testen, opent u de URL's die u in de laatste stap hebt gemaakt.  De resultaten voor de beschadigde status moeten gelijk zijn aan:
 
     ```
     Status: unhealthy
     ```
 
-## <a name="revise-the-rollout-template"></a>De implementatie sjabloon herzien
+## <a name="revise-the-rollout-template"></a>De implementatiesjabloon herzien
 
-Het doel van deze sectie is om te laten zien hoe u een status controle stap in de implementatie sjabloon opneemt.
+Het doel van deze sectie is om u te laten zien hoe u een statuscontrolestap in de implementatiesjabloon opneemt.
 
-1. Open **CreateADMRollout. json** die u hebt gemaakt in [Azure Deployment Manager gebruiken met Resource Manager-sjablonen](./deployment-manager-tutorial.md). Dit JSON-bestand maakt deel uit van de down load.  Zie [vereisten](#prerequisites).
-1. Voeg twee extra para meters toe:
+1. Open **CreateADMRollout.json** die u hebt gemaakt in [Azure Deployment Manager gebruiken met Resource Manager-sjablonen](./deployment-manager-tutorial.md). Dit JSON-bestand maakt deel uit van de download.  Zie [Vereisten](#prerequisites).
+1. Voeg nog twee parameters toe:
 
     ```json
     "healthCheckUrl": {
@@ -124,7 +124,7 @@ Het doel van deze sectie is om te laten zien hoe u een status controle stap in d
     }
     ```
 
-1. De resource definitie voor een gewachte stap vervangen door een resource definitie voor de status controle:
+1. Vervang de resource definitie voor de wachtstap door een resourcedefinitie voor de statuscontrole:
 
     ```json
     {
@@ -173,9 +173,9 @@ Het doel van deze sectie is om te laten zien hoe u een status controle stap in d
     },
     ```
 
-    Op basis van de definitie wordt de implementatie voortgezet als de status *in orde* of *waarschuwing*is.
+    Op basis van de definitie wordt de implementatie voortgezet als de status *in orde* of *waarschuwing* is.
 
-1. Werk de **dependsON** van de implementatie definitie zo bij dat deze de zojuist gedefinieerde status controle bevat:
+1. Werk de **dependsON** van de implementatiedefinitie bij om de zojuist gedefinieerde statuscontrolestap op te nemen:
 
     ```json
     "dependsOn": [
@@ -184,7 +184,7 @@ Het doel van deze sectie is om te laten zien hoe u een status controle stap in d
     ],
     ```
 
-1. Werk **stepGroups** bij met de status controle stap. De **healthCheckStep** wordt aangeroepen in **postDeploymentSteps** van **stepGroup2**. **stepGroup3** en **stepGroup4** worden alleen geïmplementeerd als de status *in orde is of* een *waarschuwing*is.
+1. Werk **stepGroups** om de statuscontrolestap te omvatten. De **healthCheckStep** wordt aangeroepen in **postDeploymentSteps** van **stepGroup2**. **stepGroup3** en **stepGroup4** worden alleen geïmplementeerd als de status *in orde* of *waarschuwing* is.
 
     ```json
     "stepGroups": [
@@ -222,15 +222,15 @@ Het doel van deze sectie is om te laten zien hoe u een status controle stap in d
     ]
     ```
 
-    Als u de sectie **stepGroup3** vergelijkt voordat en nadat deze is gereviseerd, is deze sectie nu afhankelijk van **stepGroup2**.  Dit is nodig wanneer **stepGroup3** en de volgende stap groepen afhankelijk zijn van de resultaten van de status controle.
+    Als u de sectie **stepGroup3** vergelijkt voor en nadat deze is gereviseerd, is deze sectie nu afhankelijk van **stepGroup2**.  Dit is nodig wanneer **stepGroup3** en de volgende stapgroepen afhankelijk zijn van de resultaten van de statuscontrole.
 
-    In de volgende scherm afbeelding ziet u de gebieden die zijn gewijzigd en hoe de stap status controle wordt gebruikt:
+    In de volgende schermopname ziet u de gebieden die zijn gewijzigd en hoe de stapstatuscontrole wordt gebruikt:
 
-    ![Sjabloon Azure Deployment Manager Health check](./media/deployment-manager-tutorial-health-check/azure-deployment-manager-hc-rollout-template.png)
+    ![Statuscontrolesjabloon in Azure Deployment Manager](./media/deployment-manager-tutorial-health-check/azure-deployment-manager-hc-rollout-template.png)
 
 ## <a name="deploy-the-topology"></a>De topologie implementeren
 
-Voer het volgende Power shell-script uit om de topologie te implementeren. U hebt dezelfde **CreateADMServiceTopology. json** en **CreateADMServiceTopology. para meters. json** nodig die u hebt gebruikt voor het [gebruik van Azure Deployment Manager met Resource Manager-sjablonen](./deployment-manager-tutorial.md).
+Gebruik het volgende PowerShell-script om de topologie te implementeren. U hebt dezelfde **CreateADMServiceTopology.json** en **CreateADMServiceTopology.Parameters.json** nodig die u ook hebt gebruikt in [Azure Deployment Manager met Resource Manager-sjablonen gebruiken](./deployment-manager-tutorial.md).
 
 ```azurepowershell
 # Create the service topology
@@ -246,9 +246,9 @@ Controleer of de servicetopologie en de onderstreepte resources zijn gemaakt met
 
 **Verborgen typen weergeven** moet worden geselecteerd om de resources weer te geven.
 
-## <a name="deploy-the-rollout-with-the-unhealthy-status"></a>Implementatie van de implementatie met de status beschadigd
+## <a name="deploy-the-rollout-with-the-unhealthy-status"></a>De implementatie implementeren met de beschadigde status
 
-Gebruik de status van de slechte URL die u hebt gemaakt in [een Health Check-service Simulator maken](#create-a-health-check-service-simulator). U hebt de gereviseerde **CreateADMServiceTopology. json** en dezelfde **CreateADMServiceTopology. para meters. json** nodig die u hebt gebruikt voor het [gebruik van Azure Deployment Manager met Resource Manager-sjablonen](./deployment-manager-tutorial.md).
+Gebruik de URL van de beschadigde status die u hebt gemaakt in [Een Health Check service Simulator maken](#create-a-health-check-service-simulator). U hebt de gereviseerde **CreateADMServiceTopology.json** en dezelfde **CreateADMServiceTopology.Parameters.json** nodig die u ook hebt gebruikt in [Azure Deployment Manager met Resource Manager-sjablonen gebruiken](./deployment-manager-tutorial.md).
 
 ```azurepowershell-interactive
 $healthCheckUrl = Read-Host -Prompt "Enter the health check Azure function URL"
@@ -265,9 +265,9 @@ New-AzResourceGroupDeployment `
 ```
 
 > [!NOTE]
-> `New-AzResourceGroupDeployment`is een asynchrone aanroep. Het bericht alleen geslaagd betekent dat de implementatie is gestart. Als u de implementatie wilt controleren `Get-AZDeploymentManagerRollout`, gebruikt u.  Zie de volgende procedure.
+> `New-AzResourceGroupDeployment` is een asynchrone aanroep. Het succesbericht betekent alleen dat de implementatie is gestart. Gebruik `Get-AZDeploymentManagerRollout` om de implementatie te controleren.  Zie de volgende procedure.
 
-U kunt de voortgang van de implementatie controleren met behulp van het volgende Power shell-script:
+Controleer de voortgang van de implementatie met behulp van het volgende PowerShell-script:
 
 ```azurepowershell
 $projectName = Read-Host -Prompt "Enter the same project name used earlier in this tutorial"
@@ -281,7 +281,7 @@ Get-AzDeploymentManagerRollout `
     -Verbose
 ```
 
-In de volgende voorbeeld uitvoer ziet u dat de implementatie is mislukt vanwege een slechte status:
+In de volgende voorbeelduitvoer ziet u dat de implementatie is mislukt vanwege de beschadigde status:
 
 ```output
 Service: myhc0417ServiceWUSrg
@@ -340,11 +340,11 @@ Id                      : /subscriptions/<Subscription ID>/resourcegroups/myhc04
 Tags                    :
 ```
 
-Nadat de implementatie is voltooid, ziet u een extra resource groep die is gemaakt voor de VS West.
+Nadat de implementatie is voltooid, ziet u één extra resourcegroep die is gemaakt voor US - west.
 
-## <a name="deploy-the-rollout-with-the-healthy-status"></a>Implementatie van de implementatie met de status in orde
+## <a name="deploy-the-rollout-with-the-healthy-status"></a>De implementatie implementeren met de status in orde
 
-Herhaal deze sectie voor het opnieuw implementeren van de implementatie met de URL voor de goede status.  Nadat de implementatie is voltooid, ziet u nog één resource groep die is gemaakt voor VS-Oost.
+Herhaal deze sectie om de implementatie opnieuw te implementeren met de URL voor de status in orde.  Nadat de implementatie is voltooid, ziet u dat er nog een resourcegroep is gemaakt voor US - oost.
 
 ## <a name="verify-the-deployment"></a>De implementatie controleren
 
@@ -356,17 +356,17 @@ Herhaal deze sectie voor het opnieuw implementeren van de implementatie met de U
 
 Schoon de geïmplementeerd Azure-resources, wanneer u deze niet meer nodig hebt, op door de resourcegroep te verwijderen.
 
-1. Selecteer in de Azure Portal **resource groep** in het menu links.
+1. Selecteer **Resourcegroep** in het linkermenu van Azure Portal.
 2. Gebruik het veld **Filteren op naam** om u te beperken tot de resourcegroepen die u in deze zelfstudie hebt gemaakt. Er zijn er 3-4:
 
-    * projectName>RG: bevat de Deployment Manager resources. ** &lt;**
-    * projectName>ServiceWUSrg: bevat de resources die zijn gedefinieerd door ServiceWUS. ** &lt;**
-    * projectName>ServiceEUSrg: bevat de resources die zijn gedefinieerd door ServiceEUS. ** &lt;**
+    * **&lt;projectName>rg**: bevat de Deployment Manager-resources.
+    * **&lt;projectName>ServiceWUSrg**: bevat de resources die zijn gedefinieerd door ServiceWUS.
+    * **&lt;projectName>ServiceEUSrg**: bevat de resources die zijn gedefinieerd door ServiceEUS.
     * De resourcegroep voor de door de gebruiker gedefinieerde beheerde identiteit.
 3. Selecteer de naam van de resourcegroep.
-4. Selecteer **resource groep verwijderen** in het bovenste menu.
+4. Selecteer **Resourcegroep verwijderen** in het bovenste menu.
 5. Herhaal de laatste twee stappen als u andere resourcegroepen wilt verwijderen die zijn gemaakt in deze zelfstudie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u geleerd hoe u de status controle functie van Azure Deployment Manager gebruikt. Zie [de documentatie bij Azure Resource Manager](/azure/azure-resource-manager/) voor meer informatie.
+In deze zelfstudie hebt u geleerd hoe u de statuscontrolefunctie van Azure Deployment Manager gebruikt. Zie [de documentatie bij Azure Resource Manager](../index.yml) voor meer informatie.

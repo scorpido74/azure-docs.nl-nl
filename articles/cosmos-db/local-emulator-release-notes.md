@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: milismsft
 ms.author: adrianmi
 ms.date: 06/20/2019
-ms.openlocfilehash: ab31daafe496f1aaad2bbc8075b2514d9e57e997
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 12e1c79e610526dec11467cc08c753bf90daa095
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84687171"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083454"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos-emulator - opmerkingen bij de release en downloadgegevens
 
@@ -26,7 +26,11 @@ Dit artikel bevat de opmerkingen bij de release voor Azure Cosmos-emulator met e
 
 ## <a name="release-notes"></a>Releaseopmerkingen
 
-### <a name="2111"></a>2.11.1
+### <a name="2112-07072020"></a>2.11.2 (07-07-2020)
+
+- Met deze release wordt gewijzigd hoe ETL-traceringen die zijn vereist bij het oplossen van problemen met de Cosmos-emulator, worden verzameld. WPR-hulpprogramma's (Windows Performance Runtime) zijn nu de standaardhulpprogramma's voor het vastleggen van traceringen op basis van ETL en de oude vastleggingsmethode op basis van Logman is afgeschaft. Deze wijziging is gedeeltelijk vereist omdat de nieuwste beveiligingsupdates van Windows een onverwachte invloed hebben op de werking van Logman wanneer het programma wordt uitgevoerd via de Cosmos-emulator.
+
+### <a name="2111-06102020"></a>2.11.1 (10-06-2020)
 
 - Deze versie corrigeert een aantal bugs die zijn gerelateerd aan de emulator Data Explorer. In bepaalde gevallen bij het gebruik van de emulator Data Explorer via een webbrowser, kan het voorkomen dat deze geen verbinding kan maken met het Cosmos-emulatoreindpunt en alle gerelateerde acties, zoals het maken van een database of een container, veroorzaken dan een fout. Het tweede probleem dat is opgelost heeft betrekking op het maken van een item vanuit een JSON-bestand met behulp van de uploadactie van Data Explorer.
 

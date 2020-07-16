@@ -8,23 +8,23 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 1e408f27d4c9b2686bd9f56ca754f5553a446440
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b247a72b5d7db9892c6a2a763b7b71dc5f972d95
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014907"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045294"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>Zelfstudie: Gegevens extraheren, transformeren en laden met behulp van Azure HDInsight
 
-In deze zelfstudie voert u een ETL-bewerking uit: gegevens extraheren, transformeren en laden. U neemt een CSV-bestand met onbewerkte gegevens, importeert deze in een Azure HDInsight-cluster, transformeert deze met Apache Hive en laadt de gegevens in een Azure SQL-database met Apache Sqoop.
+In deze zelfstudie voert u een ETL-bewerking uit: gegevens extraheren, transformeren en laden. U neemt een CSV-bestand met onbewerkte gegevens, importeert dit in een Azure HDInsight-cluster, transformeert het met Apache Hive en laadt de gegevens in Azure SQL Database met Apache Sqoop.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 > * Gegevens extraheren en uploaden naar een HDInsight-cluster.
 > * De gegevens transformeren met behulp van Apache Hive.
-> * De gegevens laden in een Azure SQL-database met behulp van Sqoop.
+> * De gegevens laden in Azure SQL Database met behulp van Sqoop.
 
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
@@ -38,7 +38,7 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 
     Zie [Quickstart: Aan de slag met Apache Hadoop en Apache Hive in Azure HDInsight met behulp van de Azure-portal](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal).
 
-* **Azure SQL Database**: U gebruikt een Azure SQL-database als doelgegevensopslag. Als u geen SQL-database hebt, raadpleegt u [Een Azure SQL-database maken in Azure Portal](../../sql-database/sql-database-get-started.md).
+* **Azure SQL Database**: U gebruikt Azure SQL Database als een doelgegevensarchief. Als u geen database in SQL Database hebt, raadpleegt u het artikel [Een database in Azure SQL Database maken in Azure Portal](../../sql-database/sql-database-get-started.md).
 
 * **Azure CLI**: Als u de Azure CLI nog niet hebt geïnstalleerd, raadpleegt u [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
@@ -224,7 +224,7 @@ Als onderdeel van de Apache Hive-taak, importeert u de gegevens uit het CSV-best
 
 ## <a name="create-a-sql-database-table"></a>Een SQL-databasetabel maken
 
-Voor deze bewerking hebt u de servernaam van uw SQL-database nodig. Voer deze stappen uit om de servernaam te achterhalen.
+Voor deze bewerking hebt u de servernaam van SQL Database nodig. Voer deze stappen uit om de servernaam te achterhalen.
 
 1. Ga naar de [Azure Portal](https://portal.azure.com).
 
@@ -300,7 +300,7 @@ Voor deze bewerking hebt u de servernaam van uw SQL-database nodig. Voer deze st
 
 ## <a name="export-and-load-the-data"></a>De gegevens exporteren en laden
 
-In de vorige secties hebt u de getransformeerde gegevens op de locatie `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` gekopieerd. In deze sectie gebruikt u Sqoop om de gegevens in `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` te exporteren naar de tabel die u hebt gemaakt in Azure SQL-database.
+In de vorige secties hebt u de getransformeerde gegevens op de locatie `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` gekopieerd. In deze sectie gebruikt u Sqoop om de gegevens in `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` te exporteren naar de tabel die u hebt gemaakt in Azure SQL Database.
 
 1. Gebruik de volgende opdracht om te controleren of Sqoop de SQL-database kan zien:
 

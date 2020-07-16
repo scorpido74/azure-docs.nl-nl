@@ -1,6 +1,6 @@
 ---
-title: Zelf studie voor het filteren en analyseren van gegevens voor geavanceerde implementatie met Compute voor Azure Stack Edge | Microsoft Docs
-description: Meer informatie over het configureren van een compute-functie op Azure Stack Edge en het gebruik ervan om gegevens te transformeren voor een geavanceerde implementatie stroom voordat ze naar Azure worden verzonden.
+title: Zelfstudie voor het filteren en analyseren van gegevens voor geavanceerde implementatie met rekenproces voor Azure Stack Edge | Microsoft Docs
+description: Leer hoe u een rekenprocesrol configureert in Azure Stack Edge en deze gebruikt om gegevens te transformeren voor een geavanceerde implementatiestroom voordat ze naar Azure worden verzonden.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,32 +9,32 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge for advanced deployment flow so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: eb7bb7933303aaf16f320e219ad3673bf1efde72
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
-ms.translationtype: MT
+ms.openlocfilehash: 59983530d93885f28dfb1625ca6d58fe572609b8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82570767"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080383"
 ---
-# <a name="tutorial-transform-data-with-azure-stack-edge-for-advanced-deployment-flow"></a>Zelf studie: gegevens transformeren met Azure Stack Edge voor een geavanceerde implementatie stroom
+# <a name="tutorial-transform-data-with-azure-stack-edge-for-advanced-deployment-flow"></a>Zelfstudie: Gegevens transformeren met Azure Stack Edge voor een geavanceerde implementatiestroom
 
-In deze zelf studie wordt beschreven hoe u een compute-functie kunt configureren voor een geavanceerde implementatie stroom op uw Azure Stack edge-apparaat. Nadat u de compute-functie hebt geconfigureerd, kan Azure Stack Edge gegevens transformeren voordat ze naar Azure worden verzonden.
+In deze zelfstudie wordt beschreven hoe u een rekenprocesrol voor een geavanceerde implementatiestroom configureert op uw Azure Stack Edge-apparaat. Wanneer u de rekenrol hebt geconfigureerd, kan Azure Stack Edge gegevens transformeren voordat deze naar Azure worden verzonden.
 
-Compute kan worden geconfigureerd voor eenvoudige of geavanceerde implementatie stroom op het apparaat.
+Compute kan worden geconfigureerd voor een eenvoudige of geavanceerde implementatiestroom op uw apparaat.
 
-|                  | Eenvoudige implementatie                                | Geavanceerde implementatie                   |
+| Criteria | Eenvoudige implementatie                                | Geavanceerde implementatie                   |
 |------------------|--------------------------------------------------|---------------------------------------|
 | Bedoeld voor     | IT-beheerders                                | Ontwikkelaars                            |
-| Type             | Azure Stack Edge-service gebruiken voor het implementeren van modules      | IoT Hub-service gebruiken voor het implementeren van modules |
-| Geïmplementeerde modules | Enkel                                           | Gekoppelde of meerdere modules           |
+| Type             | Azure Stack Edge-service gebruiken voor implementatie van modules      | IoT Hub-service gebruiken voor implementatie van modules |
+| Modules geïmplementeerd | Enkelvoudig                                           | Gekoppelde of meerdere modules           |
 
 
-Deze procedure kan ongeveer 20 tot 30 minuten duren.
+Deze procedure neemt ongeveer 20 tot 30 minuten in beslag.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Reken kracht configureren
+> * Rekenproces configureren
 > * Shares toevoegen
 > * Een trigger toevoegen
 > * Een rekenprocesmodule toevoegen
@@ -43,53 +43,53 @@ In deze zelfstudie leert u het volgende:
  
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u een compute-functie op uw Azure Stack edge-apparaat instelt, moet u het volgende doen:
+Zorg dat aan deze voorwaarde wordt voldaan voordat u een rekenprocesrol configureert op uw Azure Stack Edge-apparaat:
 
-- U hebt uw Azure Stack edge-apparaat geactiveerd zoals beschreven in [verbinding maken, instellen en Azure stack Edge activeren](azure-stack-edge-deploy-connect-setup-activate.md).
+- U hebt het Azure Stack Edge-apparaat geactiveerd zoals beschreven in [Azure Stack Edge aansluiten, instellen en activeren](azure-stack-edge-deploy-connect-setup-activate.md).
 
 
-## <a name="configure-compute"></a>Reken kracht configureren
+## <a name="configure-compute"></a>Rekenproces configureren
 
-Als u de reken kracht wilt configureren voor uw Azure Stack rand, maakt u een IoT Hub resource.
+Als u de rekenproces wilt configureren voor uw Azure Stack Edge, maakt u een IoT Hub-resource.
 
-1. Ga in de Azure Portal van uw Azure Stack Edge-resource naar **overzicht**. Selecteer aan de **slag**in het rechterdeel venster op de tegel **Compute** .
+1. Ga in Azure Portal van uw Azure Stack Edge-resource naar **Overzicht**. Selecteer in het rechterdeelvenster op de tegel **Compute** **Aan de slag**.
 
-    ![Aan de slag met Compute](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-1.png)
+    ![Aan de slag met rekenproces](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-1.png)
 
-2. Selecteer op de tegel **Edge Compute** configureren de optie **reken kracht configureren**.
+2. Selecteer op de tegel **Het Edge-rekenproces configureren** **Rekenproces configureren**.
 
-    ![Aan de slag met Compute](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-2.png)
+    ![Aan de slag met rekenproces](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-2.png)
 
-3. Voer de volgende gegevens in op de Blade **Edge Compute configureren** :
+3. Voer op de blade **Het Edge-rekenproces configureren** het volgende in:
 
    
     |Veld  |Waarde  |
     |---------|---------|
-    |IoT Hub     | Kies een **nieuwe** of **bestaande**. <br> Standaard wordt er een standaard-laag (S1) gebruikt voor het maken van een IoT-resource. Als u een IoT-resource in een gratis laag wilt gebruiken, maakt u er een en selecteert u vervolgens de bestaande resource. <br> In elk geval gebruikt de IoT Hub resource hetzelfde abonnement en dezelfde resource groep die wordt gebruikt door de resource Azure Stack Edge.     |
-    |Naam     |Voer een naam in voor de IoT Hub resource.         |
+    |IoT Hub     | Kies uit **Nieuwe** of **Bestaande**. <br> Standaard wordt er een standaard-laag (S1) gebruikt voor het maken van een IoT-resource. Als u een IoT-resource in een gratis laag wilt gebruiken, maakt u er een en selecteert u vervolgens de bestaande resource. <br> In elk geval gebruikt de IoT Hub-resource hetzelfde abonnement en dezelfde resourcegroep die wordt gebruikt door de resource Azure Stack Edge.     |
+    |Naam     |Voer een naam in voor uw IoT Hub-resource.         |
 
-    ![Aan de slag met Compute](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-3.png)
+    ![Aan de slag met rekenproces](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-3.png)
 
-4. Selecteer **Maken**. Het maken van de IoT Hub resource duurt enkele minuten. Nadat de IoT Hub resource is gemaakt, wordt de tegel updates van **Edge Compute configureren** weer gegeven voor de compute-configuratie. Als u wilt bevestigen dat de rol Edge Compute is geconfigureerd, selecteert u **configuratie weer geven** op de tegel **Compute configureren** .
+4. Selecteer **Maken**. Het maken van de IoT Hub-resource duurt enkele minuten. Nadat de IoT Hub-resource is gemaakt, wordt de tegel **Edge-rekenproces configureren** bijgewerkt zodat de configuratie van het rekenproces wordt weergegeven. Als u wilt bevestigen dat de Edge-rekenprocesrol is geconfigureerd, selecteert u **Configuratie weergeven** op de tegel **Rekenproces configureren**.
     
-    ![Aan de slag met Compute](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-4.png)
+    ![Aan de slag met rekenproces](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-4.png)
 
-    Wanneer de Edge-rekenprocesrol wordt geconfigureerd op het Edge-apparaat, worden er twee apparaten aangemaakt: een IoT-apparaat en een IoT Edge-apparaat. Beide apparaten kunnen worden weergegeven in de IoT Hub-resource. Er wordt ook een IoT Edge-runtime op dit IoT Edge apparaat uitgevoerd.
+    Wanneer de Edge-rekenprocesrol wordt geconfigureerd op het Edge-apparaat, worden er twee apparaten aangemaakt: een IoT-apparaat en een IoT Edge-apparaat. Beide apparaten kunnen worden weergegeven in de IoT Hub-resource. Er wordt ook een IoT Edge-runtime op dit IoT Edge-apparaat uitgevoerd.
 
     Op dit moment is alleen het Linux-platform beschikbaar voor uw IoT Edge-apparaat.
 
 
 ## <a name="add-shares"></a>Shares toevoegen
 
-Voor de geavanceerde implementatie in deze zelf studie hebt u twee shares nodig: één rand share en een andere lokale share.
+Voor de geavanceerde implementatie in deze zelfstudie hebt u twee shares nodig: een Edge-share en een andere lokale Edge-share.
 
-1. Voeg een rand share op het apparaat toe door de volgende stappen uit te voeren:
+1. U kunt met de volgende stappen een Edge-share toevoegen aan het apparaat:
 
-    1. Ga in uw Azure Stack Edge-resource naar **Edge compute >** aan de slag.
-    2. Selecteer **toevoegen**op de tegel **share (s) toevoegen** .
-    3. Geef op de Blade **share toevoegen** de share naam op en selecteer het share type.
-    4. Als u de Edge-share wilt koppelen, schakelt u het selectie vakje in voor **het gebruik van de share met Edge Compute**.
-    5. Selecteer het **opslag account**, de **opslag service**, een bestaande gebruiker en selecteer vervolgens **maken**.
+    1. Ga in uw Azure Stack Edge-resource naar **Edge-rekenproces > Aan de slag**.
+    2. Selecteer **Toevoegen** op de tegel **Share(s) toevoegen**.
+    3. Geef op de blade **Share toevoegen** een naam op voor de share en selecteer het sharetype.
+    4. Als u de Edge-share wilt koppelen, schakelt u het selectievakje voor **De share met Edge-rekenproces** gebruiken.
+    5. Selecteer de **Storage-account**, **Storage-service**, een bestaande gebruiker en selecteer **Maken**.
 
         ![Een Edge-share toevoegen](./media/azure-stack-edge-deploy-configure-compute-advanced/add-edge-share-1.png)
 
@@ -99,23 +99,23 @@ Voor de geavanceerde implementatie in deze zelf studie hebt u twee shares nodig:
 
     For more information about the rsync command, go to [Rsync documentation](https://www.computerhope.com/unix/rsync.htm).-->
 
-    Nadat de Edge-share is gemaakt, ontvangt u een melding over een geslaagde aanmaak. De lijst met shares wordt bijgewerkt op basis van de nieuwe share.
+    Nadat de Edge-share is gemaakt, ontvangt u de melding dat het maken is voltooid. De lijst met shares wordt bijgewerkt op basis van de nieuwe share.
 
-2. Voeg een Edge-lokale share op het edge-apparaat toe door alle stappen in de vorige stap te herhalen en het selectie vakje voor **configureren als Edge-lokale share**in te scha kelen. De gegevens op de lokale share blijven op het apparaat.
+2. Voeg een lokale Edge-share op het Edge-apparaat toe door alle stappen in de voorgaande stap te herhalen en het selectievakje in te schakelen voor **Configureren als lokale Edge-share**. De gegevens op de lokale share blijven op het apparaat.
 
-    ![Een lokale share toevoegen aan de rand](./media/azure-stack-edge-deploy-configure-compute-advanced/add-edge-share-2.png)
+    ![Een lokale Edge-share toevoegen](./media/azure-stack-edge-deploy-configure-compute-advanced/add-edge-share-2.png)
 
-3. Op de Blade **shares** ziet u de bijgewerkte lijst met shares.
+3. In het deelvenster **Shares** ziet u de bijgewerkte lijst met shares.
 
     ![Bijgewerkte lijst met shares](./media/azure-stack-edge-deploy-configure-compute-advanced/add-edge-share-3.png)
 
-4. Als u de eigenschappen van de zojuist gemaakte lokale share wilt weer geven, selecteert u de share in de lijst. Kopieer de waarde voor de share uit het vak **Lokaal koppelpunt voor Edge-rekenprocesmodules**.
+4. Als u de eigenschappen van de zojuist gemaakte lokale share wilt bekijken, selecteert u de share in de lijst. Kopieer de waarde voor de share uit het vak **Lokaal koppelpunt voor Edge-rekenprocesmodules**.
 
     U gebruik dit lokale koppelpunt bij het implementeren van de module.
 
     ![Het vak Lokaal koppelpunt voor Edge-rekenprocesmodules](./media/azure-stack-edge-deploy-configure-compute-advanced/add-edge-share-4.png)
  
-5. Als u de eigenschappen wilt weer geven van de Edge-share die u hebt gemaakt, selecteert u de share in de lijst. Kopieer de waarde voor de share uit het vak **Lokaal koppelpunt voor Edge-rekenprocesmodules**.
+5. Als u de eigenschappen wilt weergeven van de Edge-share die u hebt gemaakt, selecteert u de share in de lijst. Kopieer de waarde voor de share uit het vak **Lokaal koppelpunt voor Edge-rekenprocesmodules**.
 
     U gebruik dit lokale koppelpunt bij het implementeren van de module.
 
@@ -124,25 +124,25 @@ Voor de geavanceerde implementatie in deze zelf studie hebt u twee shares nodig:
 
 ## <a name="add-a-trigger"></a>Een trigger toevoegen
 
-1. Ga naar **Edge compute > triggers**. Selecteer **+ trigger toevoegen**.
+1. Ga naar **Edge-rekenproces > Triggers**. Selecteer **+ Trigger toevoegen**.
 
     ![Trigger toevoegen](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-1.png)
 
-2. Voer de volgende waarden in op de Blade **trigger toevoegen** .
+2. Voer in het deelvenster **Trigger toevoegen** de volgende waarden in.
 
     |Veld  |Waarde  |
     |---------|---------|
-    |Naam van trigger     | Een unieke naam voor de trigger.         |
-    |Type trigger     | Selecteer **Bestands** trigger. Een bestands trigger wordt geactiveerd wanneer een bestands gebeurtenis plaatsvindt, zoals een bestand wordt geschreven naar de invoer share. Een geplande trigger voor de andere kant, wordt geactiveerd op basis van een schema dat door u is gedefinieerd. Voor dit voor beeld hebben we een bestands trigger nodig.    |
-    |Invoer share     | Selecteer een invoer share. De rand van de lokale share is in dit geval de invoer share. De module die hier wordt gebruikt, verplaatst bestanden van de lokale Edge-share naar een Edge-share waarnaar ze in de cloud worden geüpload.        |
+    |Triggernaam     | Een unieke naam voor uw trigger.         |
+    |Triggertype     | Selecteer de trigger **Bestand**. Er wordt een bestandstrigger geactiveerd wanneer zich een bestandsevenement voordoet zoals een bestand dat in de inputshare wordt geschreven. Een geplande trigger wordt echter geactiveerd op basis van een schema dat u instelt. Voor dit voorbeeld hebben we een bestandstrigger nodig.    |
+    |Invoershare     | Selecteer een invoershare. De lokale Edge-share is in dit geval de invoershare. De module die hier wordt gebruikt, verplaatst bestanden van de lokale Edge-share naar een Edge-share waar ze in de cloud worden geüpload.        |
 
     ![Trigger toevoegen](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-2.png)
 
-3. U wordt gewaarschuwd nadat de trigger is gemaakt. De lijst met triggers wordt bijgewerkt om de zojuist gemaakte trigger weer te geven. Selecteer de trigger die u zojuist hebt gemaakt.
+3. U wordt gewaarschuwd nadat de trigger is gemaakt. De lijst met triggers wordt bijgewerkt zodat de zojuist gemaakte trigger wordt weergegeven. Selecteer de trigger die u zojuist hebt gemaakt.
 
     ![Trigger toevoegen](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-3.png)
 
-4. Kopieer de voorbeeld route en sla deze op. U gaat deze voorbeeld route wijzigen en later in de IoT Hub gebruiken.
+4. Kopieer de voorbeeldroute en sla deze op. U gaat deze voorbeeldroute wijzigen en later in de IoT Hub gebruiken.
 
     `"sampleroute": "FROM /* WHERE topic = 'mydbesmbedgelocalshare1' INTO BrokeredEndpoint(\"/modules/modulename/inputs/input1\")"`
 
@@ -150,13 +150,13 @@ Voor de geavanceerde implementatie in deze zelf studie hebt u twee shares nodig:
 
 ## <a name="add-a-module"></a>Een module toevoegen
 
-Er zijn geen aangepaste modules op dit edge-apparaat. U kunt een aangepaste of vooraf gemaakte module toevoegen. Als u wilt weten hoe u een aangepaste module maakt, gaat u naar [een C#-module ontwikkelen voor uw Azure stack edge-apparaat](azure-stack-edge-create-iot-edge-module.md).
+Er zijn geen aangepaste modules aanwezig op dit Edge-apparaat. U kunt een aangepaste of vooraf gemaakte module toevoegen. Ga naar [Een C#-module ontwikkelen voor uw Azure Stack Edge-apparaat](azure-stack-edge-create-iot-edge-module.md) voor meer informatie over het maken van een aangepaste module.
 
-In deze sectie voegt u een aangepaste module toe aan het IoT Edge apparaat dat u hebt gemaakt in [een C#-module ontwikkelen voor uw Azure stack Edge](azure-stack-edge-create-iot-edge-module.md). Deze aangepaste module neemt bestanden van een lokale share op het apparaat aan de rand en verplaatst deze naar een Edge-share (Cloud) op het apparaat. De cloudshare pusht de bestanden vervolgens naar het Azure-opslagaccount dat is gekoppeld aan de cloudshare.
+In dit gedeelte voegt u een aangepaste module toe aan het IoT Edge-apparaat dat u hebt gemaakt in [Een C#-module ontwikkelen voor uw Azure Stack Edge](azure-stack-edge-create-iot-edge-module.md). Deze aangepaste module neemt bestanden van een lokale Edge-share op het Edge-apparaat en deze verplaatst naar een Edge-(cloud)share op het apparaat. De cloudshare pusht de bestanden vervolgens naar het Azure-opslagaccount dat is gekoppeld aan de cloudshare.
 
-1. Ga naar **Edge compute > aan de slag**. Selecteer op de tegel **modules toevoegen** het scenario type als **Geavanceerd**. Selecteer **Ga naar IOT hub**.
+1. Ga naar **Edge-rekenproces > Aan de slag**. Selecteer op de tegel **Modules toevoegen** het scenariotype als **Geavanceerd**. Selecteer **Ga naar IoT Hub**.
 
-    ![Geavanceerde implementatie selecteren](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-1.png)
+    ![Selecteer Geavanceerde implementatie](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-1.png)
 
 <!--2. In the **Configure and add module** blade, input the following values:  
 
@@ -164,18 +164,18 @@ In deze sectie voegt u een aangepaste module toe aan het IoT Edge apparaat dat u
     |Output share     | Select an output share. The Edge share is the output share in this case.        |
 -->
 
-2. Ga in uw IoT Hub-resource naar **IOT edge apparaat** en selecteer vervolgens uw IOT edge apparaat.
+2. Ga in uw IoT Hub-resource naar **IoT Edge-apparaat** en selecteer uw IoT Edge-apparaat.
 
-    ![Ga naar IoT Edge apparaat in IoT Hub](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-2.png)
+    ![Ga naar IoT Edge-apparaat in IoT Hub](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-2.png)
 
-3. Selecteer **modules instellen**op de details van het **apparaat**.
+3. Selecteer onder **Apparaatdetails** de optie **Modules instellen**.
 
     ![De koppeling Modules instellen](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-3.png)
 
 4. Doe het volgende in **Modules toevoegen**:
 
     1. Geef in de Containerregisterinstellingen waarden op voor Naam, Adres, Gebruikersnaam en Wachtwoord voor de aangepaste module.
-    De naam, het adres en de vermelde referenties worden gebruikt om modules met een overeenkomende URL op te halen. Als u deze module wilt implementeren, selecteert u **IoT Edge-module** onder **Implementatiemodules**. Deze IoT Edge module is een docker-container die u kunt implementeren op het IoT Edge apparaat dat is gekoppeld aan uw Azure Stack edge-apparaat.
+    De naam, het adres en de vermelde referenties worden gebruikt om modules met een overeenkomende URL op te halen. Als u deze module wilt implementeren, selecteert u **IoT Edge-module** onder **Implementatiemodules**. Deze IoT Edge-module is een dockercontainer die u kunt implementeren op het IoT Edge-apparaat dat is gekoppeld aan uw Azure Stack Edge-apparaat.
 
         ![De pagina Modules instellen](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-4.png) 
  
@@ -183,14 +183,14 @@ In deze sectie voegt u een aangepaste module toe aan het IoT Edge apparaat dat u
      
         |Veld  |Waarde  |
         |---------|---------|
-        |Naam     | Een unieke naam voor de module. Deze module is een docker-container die u kunt implementeren op het IoT Edge apparaat dat aan uw Azure Stack Edge is gekoppeld.        |
-        |Afbeeldings-URI     | De afbeeldings-URI voor de bijbehorende container installatie kopie voor de module.        |
-        |Referenties vereist     | Als u dit selectie vakje inschakelt, worden gebruikers naam en wacht woord gebruikt om modules op te halen met een overeenkomende URL.        |
+        |Naam     | Een unieke naam voor de module. Deze module is een dockercontainer die u kunt implementeren op het IoT Edge-apparaat dat is gekoppeld aan uw Azure Stack Edge.        |
+        |URI installatiekopie     | De URI installatiekopie voor de bijbehorende containerinstallatiekopie voor de module.        |
+        |Referenties vereist     | Als u dit selectievakje inschakelt, worden gebruikersnaam en wachtwoord gebruikt om modules op te halen met een overeenkomende URL.        |
     
-        Voer in het vak **Opties voor container maken** de lokale koppel punten in voor de Edge-modules die u hebt gekopieerd in de voor gaande stappen voor de Edge-share en Edge-lokale share.
+        Voer in het vak **Opties container maken** de lokale koppelpunten in voor de Edge-modules die u in de voorgaande stappen hebt gekopieerd voor de Edge-share en lokale Edge-share.
 
         > [!IMPORTANT]
-        > De hier gebruikte paden worden gekoppeld in uw container, zodat ze moeten overeenkomen met wat de functionaliteit in uw container verwacht. Als u [een aangepaste module maakt](azure-stack-edge-create-iot-edge-module.md#update-the-module-with-custom-code), worden de gekopieerde paden verwacht door de code die in die module is opgegeven. Wijzig deze paden niet.
+        > De hier gebruikte paden worden gekoppeld in uw container en moeten daarom overeenkomen met wat de functionaliteit in uw container verwacht. Als u [Een aangepaste module maken](azure-stack-edge-create-iot-edge-module.md#update-the-module-with-custom-code) volgt, verwacht de in die module opgegeven code de gekopieerde paden. Wijzig deze paden niet.
     
         In het vak **Opties Container maken** plakt u het volgende voorbeeld:
     
@@ -207,7 +207,7 @@ In deze sectie voegt u een aangepaste module toe aan het IoT Edge apparaat dat u
         }
         ```
 
-        Geef alle omgevings variabelen op die worden gebruikt voor uw module. Omgevings variabelen bieden optionele informatie die u helpt bij het definiëren van de omgeving waarin uw module wordt uitgevoerd.
+        Geef eventuele omgevingsvariabelen op die u voor uw module hebt gebruikt. Omgevingsvariabelen leveren optionele informatie die helpt bij het definiëren van de omgeving waarin uw module wordt uitgevoerd.
 
         ![Het vak Opties Container maken](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-5.png) 
  
@@ -215,11 +215,11 @@ In deze sectie voegt u een aangepaste module toe aan het IoT Edge apparaat dat u
 
         ![Aangepaste module toevoegen](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-6.png)
  
-5.    Onder **routes opgeven**, routes instellen tussen modules.  
-    
-    ![De routes opgeven](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-7.png)
+5. Onder **Routes opgeven** kunt u routes tussen modules instellen.  
+   
+   ![De routes opgeven](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-7.png)
 
-    U kunt de *route* vervangen door de volgende route teken reeks die u eerder hebt gekopieerd. In dit voorbeeld geeft u de naam op van de lokale share die gegevens naar de cloudshare pusht. Vervang de `modulename` door de naam van de module. Selecteer **Next**.
+    U kunt de *route* vervangen door de routetekenreeks die u eerder hebt gekopieerd. In dit voorbeeld geeft u de naam op van de lokale share die gegevens naar de cloudshare pusht. Vervang de `modulename` door de naam van het bestand. Selecteer **Next**.
         
     ```
     "route": "FROM /* WHERE topic = 'mydbesmbedgelocalshare1' INTO BrokeredEndpoint(\"/modules/filemove/inputs/input1\")"
@@ -227,33 +227,33 @@ In deze sectie voegt u een aangepaste module toe aan het IoT Edge apparaat dat u
 
     ![Het gedeelte Routes opgeven](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-8.png)
 
-6.    Controleer alle instellingen onder **Implementatie controleren**. Klik vervolgens op **Verzenden** om de module te verzenden voor implementatie.
+6. Controleer alle instellingen onder **Implementatie controleren**. Klik vervolgens op **Verzenden** om de module te verzenden voor implementatie.
 
-    ![De pagina Modules instellen](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-9.png)
+   ![De pagina Modules instellen](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-9.png)
  
-    Met deze actie wordt de implementatie van de module gestart. Nadat de implementatie is voltooid, wordt de **runtime status** van de module **uitgevoerd**.
+    Met deze actie wordt de implementatie van de module gestart. Nadat de implementatie is voltooid, wordt de **runtime-status** van module  **uitgevoerd**.
 
     ![Aangepaste module toevoegen](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-10.png)
 
-## <a name="verify-data-transform-transfer"></a>Gegevens transformatie, overdracht controleren
+## <a name="verify-data-transform-transfer"></a>Gegevenstransformatie controleren, gegevens overdragen
 
 De laatste stap is controleren of de module is verbonden en wordt uitgevoerd zoals verwacht. De runtimestatus van de module moet 'Wordt uitgevoerd' zijn voor uw IoT Edge-apparaat in de IoT Hub-resource.
 
-Voer de volgende stappen uit om de gegevens transformatie te controleren en over te dragen naar Azure.
+Voer de volgende stappen uit om de gegevenstransformatie te controleren en over te dragen naar Azure.
  
-1.    Maak in Verkenner verbinding met zowel de rand lokale als de Edge-shares die u eerder hebt gemaakt.
+1. Maak via Verkenner verbinding met zowel de lokale Edge-share als de Edge-shares die u eerder hebt gemaakt.
 
-    ![Gegevenstransformatie controleren](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-2.png)
+   ![Gegevenstransformatie controleren](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-2.png)
  
-1.    Voeg gegevens toe aan de lokale share.
+1. Voeg gegevens toe aan de lokale share.
 
-    ![Gegevenstransformatie controleren](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-3.png)
+   ![Gegevenstransformatie controleren](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-3.png)
  
     De gegevens worden verplaatst naar de cloudshare.
 
     ![Gegevenstransformatie controleren](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-4.png)  
 
-    De gegevens worden vervolgens vanuit de cloudshare naar het opslagaccount gepusht. Als u de gegevens wilt bekijken, gaat u naar uw opslag account en selecteert u **Storage Explorer**. U kunt de geüploade gegevens weer geven in uw opslag account.
+    De gegevens worden vervolgens vanuit de cloudshare naar het opslagaccount gepusht. Als u de gegevens wilt bekijken, gaat u naar uw opslagaccount en selecteert u **Storage Explorer**. U kunt de geüploade gegevens in uw opslagaccount weergeven.
 
     ![Gegevenstransformatie controleren](./media/azure-stack-edge-deploy-configure-compute-advanced/verify-data-5.png)
  
@@ -264,13 +264,13 @@ U hebt het validatieproces voltooid.
 In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
-> * Reken kracht configureren
+> * Rekenproces configureren
 > * Shares toevoegen
 > * Een trigger toevoegen
 > * Een rekenprocesmodule toevoegen
 > * Gegevenstransformatie controleren en gegevens overdragen
 
-Zie voor meer informatie over het beheren van uw Azure Stack edge-apparaat:
+Als u wilt weten hoe u uw Azure Stack Edge-apparaat beheert, gaat u naar:
 
 > [!div class="nextstepaction"]
-> [Lokale web-UI gebruiken voor het beheren van een Azure Stack rand](azure-stack-edge-manage-access-power-connectivity-mode.md)
+> [De lokale webgebruikersinterface gebruiken voor het beheren van een Azure Stack Edge](azure-stack-edge-manage-access-power-connectivity-mode.md)

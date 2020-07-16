@@ -1,7 +1,7 @@
 ---
-title: 'Quick Start: een model trainen en formulier gegevens extra heren met behulp van de REST API met python-formulier Recognizer'
+title: 'Quickstart: Een model trainen en formuliergegevens extraheren met behulp van de REST API met Python - Form Recognizer'
 titleSuffix: Azure Cognitive Services
-description: In deze Quick Start gebruikt u de formulier Recognizer REST API met python voor het trainen van een model en het extra heren van gegevens uit formulieren.
+description: In deze quickstart gebruikt u de Form Recognizer REST API met Python om een model te trainen en gegevens te extraheren uit formulieren.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -10,46 +10,46 @@ ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: tracking-python
-ms.openlocfilehash: a3d3754959b3a95e5028fc4386c368bfe36f92c8
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
-ms.translationtype: MT
+ms.openlocfilehash: 64f5eefa465c3f7fc9e7c0040ca64797a806bc6e
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85562902"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86028045"
 ---
-# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Quick Start: een model voor een formulier herkenning trainen en formulier gegevens extra heren met behulp van de REST API met python
+# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Quickstart: Een Form Recognizer-model trainen en formuliergegevens extraheren met behulp van de REST API met Python
 
-In deze Quick Start gebruikt u de Azure Form Recognizer REST API met python voor Train-en Score formulieren om sleutel-waardeparen en tabellen te extra heren.
+In deze Quick Start gebruikt u de REST API van Azure Form Recognizer met Python om formulieren te trainen en scoren voor het extraheren van sleutel-waardeparen en tabellen.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het volt ooien van deze Snelstartgids hebt u het volgende nodig:
-- [Python](https://www.python.org/downloads/) geïnstalleerd (als u het voor beeld lokaal wilt uitvoeren).
-- Een set van ten minste vijf vormen van hetzelfde type. U gebruikt deze gegevens om het model te trainen. Uw formulieren kunnen uit verschillende bestands typen bestaan, maar moeten van hetzelfde type zijn als het document. U kunt een voor [beeld](https://go.microsoft.com/fwlink/?linkid=2090451) van een gegevensset voor deze Quick Start gebruiken. Upload de trainings bestanden naar de hoofdmap van een BLOB storage-container in een Azure Storage-account.
+Voor het voltooien van deze quickstart hebt u het volgende nodig:
+- [Python](https://www.python.org/downloads/) moet zijn geïnstalleerd (als u het voorbeeld lokaal wilt uitvoeren).
+- Een set van minimaal vijf formulieren van hetzelfde type. U gebruikt deze gegevens om het model te trainen. Uw formulieren kunnen uit verschillende bestandstypen bestaan, maar moeten van hetzelfde type zijn als het document. U kunt voor deze quickstart een [set voorbeeldgegevens](https://go.microsoft.com/fwlink/?linkid=2090451) gebruiken. Upload de trainingsbestanden naar de hoofdmap van een Blob Storage-container in een Azure Storage-account.
 
 > [!NOTE]
-> In deze Quick Start worden externe documenten gebruikt die worden geopend via URL. Als u in plaats daarvan lokale bestanden wilt gebruiken, raadpleegt u de [naslag documentatie](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync).
+> In deze quickstart worden externe documenten gebruikt die worden geopend via URL. Als u in plaats daarvan lokale bestanden wilt gebruiken, raadpleegt u de [referentiedocumentatie](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync).
 
 
-## <a name="create-a-form-recognizer-resource"></a>Een resource voor een formulier herkenning maken
+## <a name="create-a-form-recognizer-resource"></a>Een Form Recognizer-resource maken
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
-## <a name="train-a-form-recognizer-model"></a>Model van een formulier herkenning trainen
+## <a name="train-a-form-recognizer-model"></a>Een Form Recognizer-model trainen
 
-Eerst hebt u een set trainings gegevens nodig in een Azure Storage BLOB-container. U moet mini maal vijf ingevulde formulieren (PDF-documenten en/of afbeeldingen) van hetzelfde type/dezelfde structuur als uw belangrijkste invoer gegevens hebben. U kunt ook één leeg formulier met twee ingevulde formulieren gebruiken. De bestands naam van het lege formulier moet het woord ' empty ' bevatten. Zie [een trainings gegevensset voor een aangepast model bouwen](../build-training-data-set.md) voor tips en opties voor het samen stellen van uw trainings gegevens.
+Eerst hebt u een set trainingsgegevens in een Azure Storage-blobcontainer nodig. U moet minimaal vijf ingevulde formulieren (PDF-documenten en/of afbeeldingen) van hetzelfde type/dezelfde structuur als uw belangrijkste invoergegevens hebben. U kunt ook één leeg formulier met twee ingevulde formulieren gebruiken. De bestandsnaam van het lege formulier moet het woord empty bevatten. Zie [Een set met trainingsgegevens voor een aangepast model bouwen](../build-training-data-set.md) voor tips en opties voor het samenstellen van uw trainingsgegevens.
 
 > [!NOTE]
-> U kunt de functie met gelabelde gegevens hand matig een aantal of al uw trainings gegevens vooraf labelen. Dit is een complexere proces, maar resulteert in een beter getraind model. Zie de sectie [met labels trainen](../overview.md#train-with-labels) in het overzicht voor meer informatie.
+> U kunt via de functie met gelabelde gegevens handmatig enkele of al uw trainingsgegevens vooraf labelen. Dit is een complexer proces, maar resulteert in een beter getraind model. Zie de sectie [Trainen met labels](../overview.md#train-with-labels) van het overzicht voor meer informatie.
 
-Als u een formulier Recognizer-model wilt trainen met de documenten in uw Azure Blob-container, roept u de API voor het **[trainen van aangepaste modellen](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** aan door de volgende python-code uit te voeren. Voordat u de code uitvoert, moet u de volgende wijzigingen aanbrengen:
+Als u een Form Recognizer-model wilt trainen met de documenten in uw Azure Blob-container, roept u de API **[Aangepast model trainen](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)** aan door de volgende Python-code uit te voeren. Voordat u de code uitvoert, moet u de volgende wijzigingen aanbrengen:
 
-1. Vervang door `<SAS URL>` de URL voor Shared Access Signature (SAS) van de Azure Blob Storage-container. Als u de SAS-URL wilt ophalen, opent u de Microsoft Azure Storage Explorer, klikt u met de rechter muisknop op uw container en selecteert u **gedeelde toegangs handtekening ophalen**. Zorg ervoor dat de machtigingen **lezen** en **lijst** zijn ingeschakeld en klik op **maken**. Kopieer vervolgens de waarde in de sectie **URL** . Het moet de volgende indeling hebben: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
-1. Vervang door `<subscription key>` de abonnements sleutel die u uit de vorige stap hebt gekopieerd.
-1. Vervang door `<endpoint>` de URL van het eind punt voor de resource voor uw formulier herkenning.
-1. Vervang door `<Blob folder name>` het pad naar de map in Blob Storage waar uw formulieren zich bevinden. Als uw formulieren zich in de hoofdmap van de container bevinden, laat u deze teken reeks leeg.
+1. Vervang `<SAS URL>` door de URL van de SAS (Shared Access Signature) van de Azure Blob Storage-container. Als u de SAS-URL wilt ophalen, opent u de Microsoft Azure Storage Explorer, klikt u met de rechtermuisknop op uw container en selecteert u **Handtekening voor gedeelde toegang ophalen**. Controleer of de machtigingen **Lezen** en **Lijst** zijn ingeschakeld en klik op **Maken**. Kopieer vervolgens de waarde in de sectie **URL**. Deze moet de notatie `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` hebben.
+1. Vervang `<subscription key>` door de abonnementssleutel die u uit de vorige stap hebt gekopieerd.
+1. Vervang `<endpoint>` door de URL van Form Recognizer-de resource.
+1. Vervang `<Blob folder name>` door het pad naar de map in de blobopslag waar uw formulieren zich bevinden. Als uw formulieren zich in de hoofdmap van de container bevinden, laat u deze tekenreeks leeg.
 
     ```python
     ########### Python Form Recognizer Labeled Async Train #############
@@ -91,13 +91,13 @@ Als u een formulier Recognizer-model wilt trainen met de documenten in uw Azure 
         print("POST model failed:\n%s" % str(e))
         quit() 
     ```
-1. Sla de code op in een bestand met de extensie. py. Bijvoorbeeld *Form-Recognizer-Train.py*.
+1. Sla de code op in een bestand met de extensie .py. Bijvoorbeeld *form-recognizer-train.py*.
 1. Open een opdrachtpromptvenster.
 1. Typ bij de prompt de opdracht `python` om het voorbeeld uit te voeren. Bijvoorbeeld `python form-recognizer-train.py`.
 
-## <a name="get-training-results"></a>Trainings resultaten ophalen
+## <a name="get-training-results"></a>Trainingsresultaten ophalen
 
-Nadat u de trein bewerking hebt gestart, gebruikt u de geretourneerde ID om de status van de bewerking op te halen. Voeg de volgende code toe onder aan het python-script. Dit maakt gebruik van de ID-waarde van de trainings oproep in een nieuwe API-oproep. De trainings bewerking is asynchroon, waardoor dit script de API regel matig aanroept totdat de trainings status is voltooid. We raden een interval van één seconde of meer aan.
+Nadat u de trainbewerking hebt gestart, gebruikt u de geretourneerde id om de status van de bewerking te verkrijgen. Voeg onderaan uw Python-script de volgende code toe. Voor deze code wordt de id-waarde gebruikt van de trainingsoproep in een nieuwe API-oproep. De trainingsbewerking is asynchroon. Dat betekent dat dit script de API regelmatig aanroept totdat de training de status Voltooid heeft. Een interval van één seconde of meer wordt aanbevolen.
 
 ```python 
 n_tries = 15
@@ -129,7 +129,7 @@ while n_try < n_tries:
 print("Train operation did not complete within the allocated time.")
 ```
 
-Wanneer het trainings proces is voltooid, ontvangt u een `201 (Success)` antwoord met JSON-inhoud zoals het volgende:
+Wanneer het trainingsproces is voltooid, ontvangt u een `201 (Success)`-antwoord met JSON-inhoud zoals hieronder wordt weergegeven:
 
 ```json
 { 
@@ -197,11 +197,11 @@ Wanneer het trainings proces is voltooid, ontvangt u een `201 (Success)` antwoor
 }
 ```
 
-Kopieer de `"modelId"` waarde voor gebruik in de volgende stappen.
+Kopieer de waarde `"modelId"` voor gebruik in de volgende stappen.
 
 [!INCLUDE [analyze forms](../includes/python-custom-analyze.md)]
 
-Wanneer het proces is voltooid, ontvangt u een `200 (Success)` reactie met JSON-inhoud in de volgende indeling. Het antwoord is verkort voor eenvoud. De belangrijkste koppelingen en tabellen voor sleutel/waarde-paars bevinden zich in het `"pageResults"` knoop punt. Als u ook tekst extractie hebt opgegeven via de para meter *includeTextDetails* URL, `"readResults"` worden in het knoop punt de inhoud en posities van alle tekst in het document weer gegeven.
+Wanneer het proces is voltooid, ontvangt u een `200 (Success)`-antwoord met JSON-inhoud in de volgende indeling. Het antwoord is voor het gemak ingekort. De hoofdkoppelingen en tabellen voor sleutel/waardeparen bevinden zich in het knooppunt `"pageResults"`. Als u ook extractie voor tekst zonder opmaak hebt opgegeven via de URL-parameter *includeTextDetails*, worden in het knooppunt `"readResults"` de inhoud en posities van alle tekst in het document weergegeven.
 
 ```bash
 {
@@ -458,7 +458,7 @@ Wanneer het proces is voltooid, ontvangt u een `200 (Success)` reactie met JSON-
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u de formulier Recognizer REST API met python gebruikt om een model te trainen en uit te voeren in een voorbeeld scenario. Raadpleeg vervolgens de referentie documentatie om de API voor het formulier Recognizer te verkennen.
+In deze quickstart hebt u de REST API van Form Recognizer met Python gebruikt om een model te trainen en dit in een voorbeeldscenario uit te voeren. Raadpleeg hierna de referentiedocumentatie om de Form Recognizer API verder te verkennen.
 
 > [!div class="nextstepaction"]
-> [Documentatie over REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)
+> [REST API-referentiedocumentatie](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)

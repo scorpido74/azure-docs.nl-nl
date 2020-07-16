@@ -1,24 +1,22 @@
 ---
-title: Wat is Azure Firewall-beheer (preview)?
+title: Wat is Azure Firewall Manager?
 description: Meer informatie over Azure Firewall Manager-functies
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 06/11/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: bef948def487e2b60764641e6cf38a3e122e2f87
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: 8b457198655af50427545a0e93e2cfe6903131c8
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84792151"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563738"
 ---
-# <a name="what-is-azure-firewall-manager-preview"></a>Wat is Azure Firewall-beheer (preview)?
+# <a name="what-is-azure-firewall-manager"></a>Wat is Azure Firewall Manager?
 
-[!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
-
-Azure Firewall Manager Preview is een service voor beveiligingsbeheer die het centrale beveiligingsbeleid en routebeheer biedt voor op cloud gebaseerde beveiligingsperimeters. 
+Azure Firewall Manager is een service voor beveiligingsbeheer die centraal beveiligingsbeleid en routebeheer biedt voor op cloud gebaseerde beveiligingsperimeters. 
 
 Firewall Manager biedt beveiligingsbeheer voor twee soorten netwerkarchitectuur:
 
@@ -33,9 +31,9 @@ Zie [Wat zijn de opties voor de Azure Firewall Manager-architectuur?](vhubs-and-
 
 ![firewall-manager](media/overview/trusted-security-partners.png)
 
-## <a name="azure-firewall-manager-preview-features"></a>Functies van Azure Firewall-beheer (preview)
+## <a name="azure-firewall-manager-features"></a>Functies van Azure Firewall Manager
 
-De preview van Azure Firewall Manager biedt de volgende functies:
+Azure Firewall Manager biedt de volgende functies:
 
 ### <a name="central-azure-firewall-deployment-and-configuration"></a>Centrale implementatie en configuratie van Azure Firewall
 
@@ -43,7 +41,7 @@ U kunt meerdere Azure Firewall-instanties die over verschillende Azure-regio's e
 
 ### <a name="hierarchical-policies-global-and-local"></a>Hiërarchische beleidsregels (globaal en lokaal)
 
-U kunt Azure Firewall Manager (preview) gebruiken om Azure Firewall-beleidsregels centraal te beheren via meerdere beveiligde virtuele hubs. Uw centrale IT-teams kunnen globale firewallbeleidsregels opstellen om organisatiebreed firewallbeleid af te dwingen voor alle teams. Met lokaal opgestelde firewallbeleidsregels kan een DevOps-selfservicemodel worden gebruikt voor betere flexibiliteit.
+U kunt Azure Firewall Manager gebruiken om Azure Firewall-beleidsregels centraal te beheren via meerdere beveiligde virtuele hubs. Uw centrale IT-teams kunnen globale firewallbeleidsregels opstellen om organisatiebreed firewallbeleid af te dwingen voor alle teams. Met lokaal opgestelde firewallbeleidsregels kan een DevOps-selfservicemodel worden gebruikt voor betere flexibiliteit.
 
 ### <a name="integrated-with-third-party-security-as-a-service-for-advanced-security"></a>Geïntegreerd met externe Security as a Service voor geavanceerde beveiliging
 
@@ -60,7 +58,7 @@ Deze functie is alleen beschikbaar voor implementaties van beveiligde virtuele h
 
    Maak gebruik van uw Azure-connectiviteit en globale distributie om eenvoudig externe filters toe te voegen voor scenario's met verkeer van aftakkingen naar internet.
 
-Zie [Wat zijn vertrouwde Azure Firewall Manager-beveiligingspartners (preview)?](trusted-security-partners.md) voor meer informatie over vertrouwde beveiligingsproviders.
+Zie [Wat zijn Azure Firewall Manager-beveiligingspartnerproviders?](trusted-security-partners.md) voor meer informatie over beveiligingspartnerproviders
 
 ### <a name="centralized-route-management"></a>Gecentraliseerd routebeheer
 
@@ -76,20 +74,17 @@ Azure Firewall-beleidsregels kunnen voor meerdere regio's worden gebruikt. U kun
 
 ## <a name="known-issues"></a>Bekende problemen
 
-De preview van Azure Firewall Manager heeft de volgende bekende problemen:
+Azure Firewall Manager heeft de volgende bekende problemen:
 
 |Probleem  |Beschrijving  |Oplossing  |
 |---------|---------|---------|
-|Beperkingen voor filteren met externe providers.|V2I-verkeer filteren met externe providers wordt niet ondersteund voor Azure Firewall B2V en V2V.|Wordt onderzocht|
 |Het opsplitsen van verkeer wordt momenteel niet ondersteund.|Het opsplitsen van verkeer met Office 365 en Azure Public PaaS wordt momenteel niet ondersteund. Als u een externe provider voor V2I of B2I selecteert, wordt daardoor ook al het Azure Public PaaS- en Office 365-verkeer via de partnerservice verzonden.|Het opsplitsen van verkeer bij de hub wordt momenteel onderzocht.
 |Eén beveiligde virtuele hub per regio.|U mag niet meer dan één beveiligde virtuele hub per regio hebben.|Maak meerdere virtuele WAN's in een regio.|
 |Basisbeleidsregels moeten zich in dezelfde regio als het lokale beleid bevinden.|Maak al uw lokale beleidsregels in dezelfde regio als het basisbeleid. U kunt nog steeds een beleid toepassen dat in een regio is gemaakt op een beveiligde hub vanuit een andere regio.|Wordt onderzocht|
 |Onderlinge communicatie tussen hubs werkt niet met beveiligde virtuele hub|Communicatie tussen een beveiligde virtuele hub en een andere beveiligde virtuele hub wordt nog niet ondersteund.|Wordt onderzocht|
 |Alle beveiligde virtuele hubs die dezelfde virtuele WAN delen, moeten zich in dezelfde resourcegroep bevinden.|Dit gedrag wordt vandaag afgestemd met andere virtuele WAN-hubs.|Maak meerdere virtuele WAN's om ervoor te zorgen dat beveiligde virtuele hubs kunnen worden gemaakt in andere resourcegroepen.|
-|IP-groepen worden niet ondersteund in het firewallbeleid.|IP-groepen zijn beschikbaar als openbare preview en worden momenteel alleen ondersteund met traditionele firewallregels.|Er wordt gewerkt aan een oplossing.
-|CSP-abonnementen (Cloud Solution Provider) worden niet ondersteund.|Momenteel worden [CSP-abonnementen](https://azure.microsoft.com/offers/ms-azr-0145p/) niet ondersteund.|Wordt onderzocht
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Raadpleeg [het overzicht voor de implementatie van Azure Firewall Manager (preview)](deployment-overview.md)
+- [Overzicht van de implementatie van Azure Firewall Manager](deployment-overview.md) controleren
 - Meer informatie over [beveiligde virtuele hubs](secured-virtual-hub.md).

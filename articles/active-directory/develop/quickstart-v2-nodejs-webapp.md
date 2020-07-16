@@ -1,6 +1,6 @@
 ---
-title: OIDC-aanmelding toevoegen aan een node. js-web-app-micro soft Identity platform | Azure
-description: Meer informatie over het implementeren van verificatie in een node. js-webtoepassing met behulp van OpenID Connect Connect.
+title: OIDC-aanmelding toevoegen aan een Node.js-webtoepassing - Microsoft-identiteitplatform | Azure
+description: Meer informatie over de implementatie van verificatie in een Node.js-webtoepassing met behulp van OpenID Connect.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,64 +11,64 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 1ff92b8a9477800477ebb2d79145ddaa78831f30
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 5522d35faf1888c862e0c42328f08067e7b9be26
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81536060"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85339903"
 ---
-# <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Snelstartgids: aanmelden toevoegen met OpenID connect verbinding maken met een node. js-web-app
+# <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Quickstart: Aanmelden met OpenID Connect bij een Node.js-webtoepassing toevoegen
 
-In deze Quick Start leert u hoe u OpenID Connect Connect-verificatie kunt instellen in een webtoepassing die is gebouwd met behulp van node. js met Express. Het voor beeld is ontworpen om te worden uitgevoerd op elk platform.
+In deze quickstart leert u hoe u OpenID Connect-verificatie kunt instellen in een webtoepassing die is gebouwd met behulp van Node.js met Express. Het voorbeeld is ontworpen om te worden uitgevoerd op elk platform.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
+Als u dit voorbeeld wilt uitvoeren, hebt u het volgende nodig:
 
-* Node. js installeren vanuithttp://nodejs.org/
+* Node.js geïnstalleerd vanuit http://nodejs.org/
 
-* Een [Microsoft-account](https://www.outlook.com) -of [Office 365-ontwikkelaars programma](/office/developer-program/office-365-developer-program)
+* Een [Microsoft-account](https://www.outlook.com) of [Microsoft 365 Developer Program](/office/developer-program/office-365-developer-program)
 
 ## <a name="register-your-application"></a>Uw toepassing registreren
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
-1. Als uw account in meer dan één Azure AD-Tenant aanwezig is:
-    - Selecteer uw profiel in het menu in de rechter bovenhoek van de pagina en **Schakel vervolgens over naar de map**.
-    - Wijzig uw sessie in de Azure AD-Tenant waar u de toepassing wilt maken.
+1. Meld u bij de [Azure-portal](https://portal.azure.com/) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Als uw account in meerdere Azure AD-tenants aanwezig is:
+    - Selecteer uw profiel in het menu in de rechterbovenhoek van de pagina en klik op **Schakelen tussen directory's**.
+    - Wijzig uw sessie in de Azure AD-tenant waar u de toepassing wilt maken.
 
-1. Navigeer naar [Azure Active Directory > app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) om uw app te registreren.
+1. Ga naar [Azure Active Directory > App-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) om uw app te registreren.
 
-1. Selecteer **nieuwe registratie.**
+1. Selecteer **Nieuwe registratie.**
 
-1. Wanneer de pagina **een toepassing registreren** wordt weer gegeven, voert u de registratie gegevens van uw app in:
-    - Voer in de sectie **naam** een duidelijke naam in die wordt weer gegeven voor gebruikers van de app. Bijvoorbeeld: MyWebApp
-    - Selecteer in de sectie **ondersteunde account typen** de optie **accounts in een organisatorische map en persoonlijke micro soft-accounts (bijvoorbeeld Skype, Xbox, Outlook.com)**.
+1. Wanneer de pagina **Een toepassing registreren** wordt geopend, voert u de registratiegegevens van uw toepassing in:
+    - Voer in de sectie **Naam** een beschrijvende naam in. Deze wordt aan gebruikers van de app getoond. Bijvoorbeeld: MyWebApp
+    - Selecteer in de sectie **Ondersteunde accounttypen** de optie **Accounts in alle organisatiemappen en persoonlijke Microsoft-accounts (bijvoorbeeld Skype, Xbox, Outlook.com)** .
 
-    Als er meer dan een omleidings-Uri's zijn, moet u deze van het tabblad **verificatie** later toevoegen nadat de app is gemaakt.
+    Als er meerdere omleidings-URI's zijn, moet u deze later, nadat de app is gemaakt, toevoegen via het tabblad **Verificatie**.
 
-1. Selecteer **registreren** om de app te maken.
+1. Selecteer **Registreren** om de app te maken.
 
-1. Zoek op de **overzichts** pagina van de app naar de waarde van de **toepassings-id** en noteer deze voor later. U hebt deze waarde nodig om de toepassing later in dit project te configureren.
+1. Zoek de waarde **Toepassings-ID (client)** op de app-pagina **Overzicht** voor later. U hebt deze waarde nodig om de toepassing later in dit project te configureren.
 
 1. Selecteer in de lijst met pagina’s voor de app de optie **Verificatie**.
-    - Selecteer in de sectie **omleidings-uri's** de optie **Web** in de keuze lijst met invoervak en voer de volgende omleidings-URI in:`http://localhost:3000/auth/openid/return`
+    - Selecteer in de sectie **Omleidings-URI's** de optie **Web** in de keuzelijst en voer de volgende omleidings-URI in: `http://localhost:3000/auth/openid/return`
     - Bij **Geavanceerde instellingen** stelt u de **afmeldings-URL** in op `http://localhost:3000`.
-    - Controleer in de sectie **Geavanceerde instellingen > impliciete toekenning** de **id-tokens** als voor dit voor beeld moet de [impliciete toekennings stroom](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-implicit-grant-flow) zijn ingeschakeld om de gebruiker aan te melden.
+    - Schakel in de sectie **Geavanceerde instellingen > Impliciete toekenning** de optie **ID-tokens** in, aangezien voor dit voorbeeld vereist is dat de [Impliciete toekenningsstroom](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-implicit-grant-flow) is ingeschakeld om aanmelding van de gebruiker mogelijk te maken.
 
 1. Selecteer **Opslaan**.
 
-1. Kies op de pagina **certificaten & geheimen** in de sectie **client geheimen** de optie **Nieuw client geheim**.
-    - Voer een beschrijving in voor de sleutel van het app-geheim.
-    - Selecteer een sleutel duur van ofwel **in één jaar, in twee jaar** of **nooit verloopt**.
-    - Wanneer u op de knop **toevoegen** klikt, wordt de waarde van de sleutel weer gegeven. Kopieer de sleutel waarde en sla deze op een veilige locatie op.
+1. Selecteer op de pagina **Certificaten en geheimen** in de sectie **Clientgeheimen** de optie **Nieuw clientgeheim**.
+    - Voer een beschrijving in (bijvoorbeeld app-geheim).
+    - Selecteer een sleutelduur van**1 jaar, 2 jaar** of **Verloopt nooit**.
+    - Wanneer u op de knop **Toevoegen** klikt, wordt de sleutelwaarde weergegeven. Kopieer de sleutelwaarde en sla hem op een veilige plek op.
 
-    U hebt deze sleutel later nodig om de toepassing te configureren. Deze sleutel waarde wordt niet opnieuw weer gegeven en kan niet worden opgehaald op een andere manier, dus noteer deze zo snel als deze wordt weer gegeven in de Azure Portal.
+    U hebt deze sleutel later nodig om de toepassing te configureren. Deze sleutelwaarde wordt niet opnieuw weergegeven en kan niet op een andere manier worden opgehaald. Noteer de waarde daarom zodra deze wordt weergegeven in Azure Portal.
 
-## <a name="download-the-sample-application-and-modules"></a>De voorbeeld toepassing en modules downloaden
+## <a name="download-the-sample-application-and-modules"></a>Download de voorbeeldtoepassing en -modules
 
-Vervolgens kloont u de voor beeld-opslag plaats en installeert u de NPM-modules.
+Kloon vervolgens de voorbeeldopslagplaats en installeer de NPM-modules.
 
-Vanuit de shell of vanaf de opdrachtregel:
+Vanuit uw shell of opdrachtregel:
 
 `$ git clone git@github.com:AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs.git`
 
@@ -82,35 +82,35 @@ Voer de volgende opdracht uit in de hoofdmap van het project:
 
 ## <a name="configure-the-application"></a>De toepassing configureren
 
-Geef de para meters in `exports.creds` het bestand config. js op als een instructie.
+Geef de parameters volgens de instructies op in `exports.creds` in config.js.
 
-* Werk `<tenant_name>` bij `exports.identityMetadata` met de naam van de Azure AD-Tenant \*van de indeling. onmicrosoft.com.
+* Werk `<tenant_name>` in `exports.identityMetadata` bij met de naam van de Azure AD-tenant in de indeling \*.onmicrosoft.com.
 * Werk `exports.clientID` bij met de toepassings-id die wordt vermeld in de app-registratie.
-* Update `exports.clientSecret` met het toepassings geheim dat is vermeld in de app-registratie.
-* Update `exports.redirectUrl` met de omleidings-URI die wordt aangegeven vanuit de app-registratie.
+* Werk `exports.clientSecret` bij met het toepassingsgeheim dat is vermeld in de app-registratie.
+* Werk `exports.redirectUrl` bij met de omleidings-URI die wordt vermeld in de app-registratie.
 
-**Optionele configuratie voor productie-apps:**
+**Optionele configuratie voor productietoepassingen:**
 
-* Update `exports.destroySessionUrl` in config. js als u een ander `post_logout_redirect_uri`wilt gebruiken.
+* Werk `exports.destroySessionUrl` bij in config.js als u een andere `post_logout_redirect_uri` wilt gebruiken.
 
-* Stel `exports.useMongoDBSessionStore` in config. js in op True als u [mongoDB](https://www.mongodb.com) of andere [compatibele sessie archieven](https://github.com/expressjs/session#compatible-session-stores)wilt gebruiken.
-De standaard sessie opslag in dit voor beeld `express-session`is. De standaard sessie opslag is niet geschikt voor productie.
+* Stel `exports.useMongoDBSessionStore` in config.js in op Waar als u [mongoDB](https://www.mongodb.com) of een andere met [ compatibele sessiearchieven wilt gebruiken](https://github.com/expressjs/session#compatible-session-stores).
+Het standaard sessiearchief in dit voorbeeld is `express-session`. Het standaard sessiearchief is niet geschikt voor productie.
 
-* Update `exports.databaseUri`, als u mongoDB-sessie archief en een andere data base-URI wilt gebruiken.
+* Werk `exports.databaseUri` bij als u het mongoDB-sessiearchief en een andere database-URI wilt gebruiken.
 
-* Update `exports.mongoDBSessionMaxAge`. Hier kunt u opgeven hoe lang u een sessie in mongoDB wilt blijven gebruiken. De eenheid is seconde (n).
+* Werk `exports.mongoDBSessionMaxAge` bij. Hier kunt u opgeven hoe lang u een sessie in mongoDB wilt houden. De eenheid is seconde(n).
 
 ## <a name="build-and-run-the-application"></a>De toepassing bouwen en uitvoeren.
 
-Start de mongoDB-service. Als u mongoDB-sessie archief in deze app gebruikt, moet u [mongoDB installeren](http://www.mongodb.org/) en de service eerst starten. Als u de standaard sessie opslag gebruikt, kunt u deze stap overs Laan.
+Start de mongoDB-service. Als u het mongoDB-sessiearchief in deze app gebruikt, moet u [mongoDB installeren](http://www.mongodb.org/) en eerst de service starten. Als u het standaard sessiearchief gebruikt, kunt u deze stap overslaan.
 
-Voer de app uit met behulp van de volgende opdracht vanaf de opdracht regel.
+Voer de app uit met de volgende opdracht vanaf uw opdrachtregel.
 
 ```
 $ node app.js
 ```
 
-**Is de server uitvoer moeilijk te begrijpen?:** Dit voor `bunyan` beeld wordt gebruikt voor logboek registratie. De-console is niet veel handig voor u, tenzij u ook Bunyan installeert en de server uitvoert zoals hierboven, maar pipet via de binaire Bunyan:
+**Is de serveruitvoer moeilijk te begrijpen?:** We gebruiken `bunyan` om dit voorbeeld aan het logboek toe te voegen. De console zal niet veel zin hebben, tenzij u ook bunyan installeert en de server zoals hierboven uitvoert, maar deze door de bunyan binaire pijplijn uitvoert:
 
 ```
 $ npm install -g bunyan
@@ -118,13 +118,13 @@ $ npm install -g bunyan
 $ node app.js | bunyan
 ```
 
-### <a name="youre-done"></a>U bent klaar.
+### <a name="youre-done"></a>U bent klaar!
 
-U hebt een server waarop wordt uitgevoerd `http://localhost:3000`.
+U hebt een server die wordt uitgevoerd op `http://localhost:3000`.
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over het scenario van de web-app dat het micro soft Identity-platform ondersteunt:
+Meer informatie over het web-appscenario dat het Microsoft Identity-platform ondersteunt:
 > [!div class="nextstepaction"]
-> [Scenario voor web-app die in gebruikers wordt ondertekend](scenario-web-app-sign-user-overview.md)
+> [Web-app waarmee het gebruikersscenario wordt aangemeld](scenario-web-app-sign-user-overview.md)

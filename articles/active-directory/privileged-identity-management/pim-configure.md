@@ -1,5 +1,5 @@
 ---
-title: Wat is Privileged Identity Management? -Azure AD | Microsoft Docs
+title: Wat is Privileged Identity Management? - Azure AD | Microsoft Docs
 description: Biedt een overzicht van Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
@@ -10,28 +10,28 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
 ms.topic: overview
-ms.date: 04/21/2020
+ms.date: 07/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfb0cc61b61328df86c27498a1007f2372fb9548
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: c85f273a0b245d54b966a43d7a69abe761a2dcaf
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81867449"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023908"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Wat is Azure AD Privileged Identity Management?
 
-Azure Active Directory (Azure AD) Privileged Identity Management (PIM) is een service waarmee u toegang tot belangrijke resources in uw organisatie kunt beheren, controleren en bewaken. Deze resources omvatten resources in azure AD, Azure en andere online services van micro soft, zoals Office 365 of Microsoft Intune.
+Azure Active Directory (Azure AD) Privileged Identity Management (PIM) is een service waarmee u toegang tot belangrijke resources in uw organisatie kunt beheren, controleren en bewaken. Deze resources omvatten resources in Azure AD, Azure en andere Microsoft-onlineservices zoals Office 365 of Microsoft Intune.
 
-## <a name="reasons-to-use"></a>Redenen om te gebruiken
+## <a name="reasons-to-use"></a>Redenen voor gebruik
 
 Organisaties willen het aantal mensen dat toegang heeft tot beveiligde gegevens of resources beperken, om zo de kans te verkleinen dat een kwaadwillende gebruiker toegang verkrijgt of een geautoriseerde gebruiker per ongeluk een gevoelige resource wijzigt. Gebruikers moeten echter wel bevoorrechte bewerkingen kunnen uitvoeren in Azure AD, Azure, Office 365 of SaaS-apps. Organisaties kunnen gebruikers daarom bevoorrechte JIT-toegang (Just-In-Time) geven tot Azure-resources en Azure Active Directory. Het is belangrijk dat er toezicht is op wat gebruikers met hun beheerdersbevoegdheden doen.
 
 ## <a name="what-does-it-do"></a>Wat doet het?
 
-Privileged Identity Management biedt op tijd gebaseerde activeringen op basis van een rol om de Risico's van buitensporige, onnodige of ongebruikte toegangs machtigingen te beperken voor bronnen die u bevalt. Hier volgen enkele van de belangrijkste functies van Privileged Identity Management:
+Privileged Identity Management biedt op tijd en goedkeuring gebaseerde rolactiveringen om de risico's van buitensporige, onnodige of verkeerd gebruikte toegangsmachtigingen te beperken voor resources die u belangrijk vindt. Hier volgen enkele van de belangrijkste functies van Privileged Identity Management:
 
 - Bevoorrechte **JIT**-toegang (Just-In-Time) bieden aan Azure Active Directory- en Azure-resources
 - **Tijdsgebonden** toegang bieden aan resources met behulp van begin- en einddatums
@@ -44,33 +44,33 @@ Privileged Identity Management biedt op tijd gebaseerde activeringen op basis va
 
 ## <a name="what-can-i-do-with-it"></a>Wat kan ik ermee doen?
 
-Zodra u Privileged Identity Management hebt ingesteld, ziet u opties voor **taken**, **beheer**en **activiteiten** in het navigatie menu aan de linkerkant. Als beheerder kiest u tussen het beheren van **Azure Active Directory-rollen** en **Azure-resource**rollen. Als u het type te beheren rollen kiest, ziet u een soortgelijke set met opties voor dat roltype.
+Zodra u Privileged Identity Management hebt ingesteld, ziet u de opties **Taken**, **Beheren** en **Activiteit** in het navigatiemenu links. Als beheerder kiest u tussen het beheren van **Azure Active Directory-rollen** en **Azure-resource**rollen. Als u het type te beheren rollen kiest, ziet u een soortgelijke set met opties voor dat roltype.
 
-![Scherm opname van Privileged Identity Management in het Azure Portal](./media/pim-configure/pim-quickstart.png)
+![Schermopname van Privileged Identity Management in Azure Portal](./media/pim-configure/pim-quickstart.png)
 
-## <a name="who-can-do-what"></a>Wie kan er wat doen?
+## <a name="who-can-do-what"></a>Wie kan wat doen?
 
-Voor Azure AD-rollen in Privileged Identity Management kan alleen een gebruiker met de rol beheerder van geprivilegieerde rol of globale beheerder toewijzingen voor andere beheerders beheren. U kunt [andere beheerders toegang verlenen voor het beheren van privileged Identity Management](pim-how-to-give-access-to-pim.md). Globale beheerders, beveiligings beheerders, globale lezers en beveiligings lezers kunnen ook toewijzingen weer geven voor Azure AD-rollen in Privileged Identity Management.
+Voor Azure AD-rollen in Privileged Identity Management kunnen alleen gebruikers die een beheerder voor bevoorrechte rollen of globale beheerder zijn, toewijzingen voor andere beheerders beheren. U kunt [andere beheerders toegang verlenen voor het beheren van Privileged Identity Management](pim-how-to-give-access-to-pim.md). Globale beheerders, beveiligingsbeheerders, globale lezers en beveiligingslezers kunnen ook toewijzingen aan Azure AD-rollen in Privileged Identity Management weergeven.
 
-Voor Azure-resource rollen in Privileged Identity Management kan alleen een abonnements beheerder, een resource-eigenaar of een resource gebruiker Access-beheerder toewijzingen voor andere beheerders beheren. Gebruikers die geprivilegieerde rol beheerders, beveiligings beheerders of beveiligings lezers zijn, hebben standaard geen toegang voor het weer geven van toewijzingen aan Azure-resource rollen in Privileged Identity Management.
+Voor rollen voor Azure-resources in Privileged Identity Management geldt dat alleen een abonnementsbeheerder, een resource-eigenaar of een beheerder voor gebruikerstoegang tot resources toewijzingen voor andere beheerders kan beheren. Gebruikers die beheerder voor bevoorrechte rollen, beveiligingsbeheerder of beveiligingslezer zijn, kunnen niet standaard toewijzingen aan rollen voor Azure-resources in Privileged Identity Management weergeven.
 
 ## <a name="scenarios"></a>Scenario's
 
 Privileged Identity Management ondersteunt de volgende scenario's:
 
-### <a name="privileged-role-administrator-permissions"></a>Beheerders machtigingen voor geprivilegieerde rollen
+### <a name="privileged-role-administrator-permissions"></a>Machtigingen van beheerders voor bevoorrechte rollen
 
 - Goedkeuring voor specifieke rollen inschakelen
-- Gebruikers of groepen voor goed keurder opgeven om aanvragen goed te keuren
+- Gebruikers of groepen toewijzen als fiatteur om aanvragen goed te keuren
 - De geschiedenis van aanvragen en goedkeuringen bekijken voor alle bevoorrechte rollen
 
-### <a name="approver-permissions"></a>Machtigingen voor goed keurder
+### <a name="approver-permissions"></a>Machtigingen van fiatteurs
 
 - Goedkeuringen in behandeling (aanvragen) bekijken
-- Aanvragen voor uitbrei ding van rol goed keuren of afwijzen (enkel en bulksgewijs)
-- Geef een reden voor mijn goed keuring of weigering
+- Aanvragen voor rolverhoging goedkeuren of afwijzen (afzonderlijk en bulksgewijs)
+- De reden voor de goedkeuring of afwijzing opgeven
 
-### <a name="eligible-role-user-permissions"></a>Gebruikers machtigingen in aanmerking komende rollen
+### <a name="eligible-role-user-permissions"></a>Gebruikersmachtigingen van in aanmerking komende rollen
 
 - Activering van een rol waarvoor goedkeuring nodig is, aanvragen
 - De status van uw aanvraag voor activeren bekijken
@@ -78,7 +78,7 @@ Privileged Identity Management ondersteunt de volgende scenario's:
 
 ## <a name="terminology"></a>Terminologie
 
-Raadpleeg de volgende voor waarden als u meer wilt weten over Privileged Identity Management en de bijbehorende documentatie.
+Bekijk de volgende terminologie voor een beter begrip van Privileged Identity Management en de bijbehorende documentatie.
 
 | Term of concept | Roltoewijzingscategorie | Beschrijving |
 | --- | --- | --- |
@@ -98,10 +98,10 @@ Raadpleeg de volgende voor waarden als u meer wilt weten over Privileged Identit
 
 [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
-Zie [licentie vereisten voor het gebruik van privileged Identity Management](subscription-requirements.md)voor meer informatie over licenties voor gebruikers.
+Zie [Licentievereisten voor het gebruik van Privileged Identity Management](subscription-requirements.md) voor informatie over licenties voor gebruikers.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Licentie vereisten voor het gebruik van Privileged Identity Management](subscription-requirements.md)
+- [Licentievereisten voor het gebruik van Privileged Identity Management](subscription-requirements.md)
 - [Bevoegde toegang beveiligen voor hybride implementaties en cloudimplementaties in Azure AD](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 - [Privileged Identity Management implementeren](pim-deployment-plan.md)
