@@ -75,7 +75,7 @@ admin-password | Door het systeem gegenereerd | Het wachtwoord van het beheerder
 
 Zodra uw server is gemaakt, zijn de volgende instellingen beschikbaar:
 
-- De firewallregel 'devbox' wordt gemaakt. De Azure CLI probeert het IP-adres te detecteren van de machine van waaruit de `az mysql up`-opdracht wordt uitgevoerd en plaatst dat IP-adres op de witte lijst.
+- De firewallregel 'devbox' wordt gemaakt. De Azure CLI probeert het IP-adres te detecteren van de machine van waaruit de `az mysql up`-opdracht wordt uitgevoerd en plaatst dat IP-adres op de acceptatielijst.
 - Toegang tot Azure-services toestaan is ingesteld op AAN. Met deze instelling wordt de firewall van de server geconfigureerd om verbindingen van alle Azure-resources te accepteren, inclusief resources die niet onderdeel zijn van uw abonnement.
 - De parameter voor `wait_timeout` is ingesteld op 8 uur
 - De lege database 'sampledb' wordt gemaakt
