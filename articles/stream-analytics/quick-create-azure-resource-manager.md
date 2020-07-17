@@ -10,18 +10,22 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, subject-armqs
 ms.date: 05/28/2020
-ms.openlocfilehash: 127a8550b7f4ca89b8b3a8e61880b295a806e5d0
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: b7217df7fe7ccedf2419480b1114fa1ef6c8e24a
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84449359"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043543"
 ---
-# <a name="quickstart-create-an-azure-stream-analytics-job-by-using-the-azure-resource-manager-template"></a>Quickstart: Een Azure Stream Analytics-taak maken op basis van de Azure Resource Manager-sjabloon
+# <a name="quickstart-create-an-azure-stream-analytics-job-by-using-an-arm-template"></a>Quickstart: Een Azure Stream Analytics-taak maken via een ARM-sjabloon
 
-In deze quickstart gebruikt u een Azure Resource Manager-sjabloon om een Azure Stream Analytics-taak te maken. Nadat de taak is gemaakt, valideert u de implementatie.
+In deze quickstart gebruikt u een ARM-sjabloon (Azure Resource Manager-sjabloon) om een Azure Stream Analytics-taak te maken. Nadat de taak is gemaakt, valideert u de implementatie.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
+
+[![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-streamanalytics-create%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -29,19 +33,17 @@ U hebt het volgende nodig om dit artikel te voltooien:
 
 * Een Azure-abonnement: u kunt [een gratis abonnement maken](https://azure.microsoft.com/free/).
 
-## <a name="create-an-azure-stream-analytics-job"></a>Een Azure Stream Analytics-taak maken
+## <a name="review-the-template"></a>De sjabloon controleren
 
-### <a name="review-the-template"></a>De sjabloon controleren
-
-De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure Quick Start-sjablonen](https://azure.microsoft.com/resources/templates/101-streamanalytics-create/).
+De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-quickstartsjablonen](https://azure.microsoft.com/resources/templates/101-streamanalytics-create/).
 
 :::code language="json" source="~/quickstart-templates/101-streamanalytics-create/azuredeploy.json" range="1-66" highlight="41-60":::
 
 De Azure-resource die in de sjabloon is gedefinieerd, is [Microsoft.StreamAnalytics/StreamingJobs](/azure/templates/microsoft.streamanalytics/streamingjobs): een Azure Stream Analytics-taak maken.
 
-### <a name="deploy-the-template"></a>De sjabloon implementeren
+## <a name="deploy-the-template"></a>De sjabloon implementeren
 
-In deze sectie gaat u een Azure Stream Analytics-taak maken met behulp van de Azure Resource Manager-sjabloon.
+In deze sectie gaat u een Azure Stream Analytics-taak maken met behulp van de ARM-sjabloon.
 
 1. Selecteer de volgende afbeelding om u aan te melden bij Azure en een sjabloon te openen. Met de sjabloon wordt een Azure Stream Analytics-taak gemaakt.
 
@@ -108,7 +110,7 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart hebt u een Azure Stream Analytics-taak gemaakt met behulp van een Azure Resource Manager-sjabloon en de implementatie gevalideerd. Ga naar het volgende artikel voor meer informatie over hoe u een Azure Resource Manager-sjabloon voor een bestaande taak exporteert met behulp van Visual Studio-code.
+In deze quickstart hebt u een Azure Stream Analytics-taak gemaakt met behulp van een ARM-sjabloon en de implementatie gevalideerd. Ga naar het volgende artikel voor meer informatie over hoe u een ARM-sjabloon voor een bestaande taak exporteert met behulp van Visual Studio-code.
 
 > [!div class="nextstepaction"]
-> [Een Azure Resource Manager-sjabloon voor een Azure Stream Analytics-taak exporteren](resource-manager-export.md)
+> [Een ARM-sjabloon voor een Azure Stream Analytics-taak exporteren](resource-manager-export.md)

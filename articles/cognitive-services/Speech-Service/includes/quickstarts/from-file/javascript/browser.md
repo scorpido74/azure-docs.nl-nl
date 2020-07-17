@@ -3,25 +3,25 @@ author: IEvangelist
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
-ms.author: dapine
-ms.openlocfilehash: b5bdbb76a822f8b6d5134da819828b3dee518165
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: MT
+ms.author: trbye
+ms.openlocfilehash: 7e2960adce028450fd3ccdb9eb11190629bf7bb8
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83806555"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035643"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u aan de slag gaat:
 
 > [!div class="checklist"]
-> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Een Azure-spraak resource maken<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-> * [Stel uw ontwikkel omgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md)
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Een resource voor de Azure Speech-service maken<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> * [Uw ontwikkelomgeving instellen en een leeg project maken](../../../../quickstarts/setup-platform.md)
 
-## <a name="start-with-some-boilerplate-code"></a>Begin met een van de standaard code
+## <a name="start-with-some-boilerplate-code"></a>Beginnen met standaardcode
 
-Laten we een code toevoegen die als een skelet voor het project werkt.
+We gaan wat code toevoegen die als basis voor het project gaat dienen.
 
 ```html
     <!DOCTYPE html>
@@ -36,7 +36,7 @@ Laten we een code toevoegen die als een skelet voor het project werkt.
 ```
 ## <a name="add-ui-elements"></a>UI-elementen toevoegen
 
-Nu gaan we enkele eenvoudige gebruikers interface toevoegen voor invoer vakken, verwijzen naar de Java script van de Speech SDK en een autorisatie Token ophalen, indien beschikbaar.
+Nu gaan we enkele eenvoudige gebruikersinterface-elementen toevoegen (invoervakken), verwijzen naar de JavaScript van de Speech-SDK en een autorisatietoken ophalen, indien beschikbaar.
 
 ```html  
   <div id="content" style="display:none">
@@ -139,12 +139,12 @@ Nu gaan we enkele eenvoudige gebruikers interface toevoegen voor invoer vakken, 
   </script>
 ```
  
-## <a name="create-a-speech-configuration"></a>Een spraak configuratie maken
+## <a name="create-a-speech-configuration"></a>Een Speech-configuratie maken
 
-Voordat u een object kunt initialiseren `SpeechRecognizer` , moet u een configuratie maken die gebruikmaakt van de abonnements sleutel en de regio van het abonnement. Voeg deze code in de `startRecognizeOnceAsyncButton.addEventListener()` methode in.
+Voordat u een `SpeechRecognizer`-object kunt initialiseren, moet u een configuratie maken die gebruikmaakt van de abonnementssleutel en de regio van het abonnement. Voeg deze code toe in de methode `startRecognizeOnceAsyncButton.addEventListener()`.
 
 > [!NOTE]
-> De spraak-SDK wordt standaard herkend door en-US voor de taal. Zie de [bron taal voor spraak opgeven](../../../../how-to-specify-source-language.md) voor de tekst voor informatie over het kiezen van de bron taal.
+> De Speech-SDK probeert taal standaard te herkennen in en-US. Zie [De brontaal voor spraak-naar-tekst opgeven](../../../../how-to-specify-source-language.md) voor informatie over het kiezen van de brontaal.
 
 
 ```JavaScript
@@ -163,25 +163,25 @@ Voordat u een object kunt initialiseren `SpeechRecognizer` , moet u een configur
         speechConfig.speechRecognitionLanguage = "en-US";
 ```
 
-## <a name="create-an-audio-configuration"></a>Een audio configuratie maken
+## <a name="create-an-audio-configuration"></a>Een audioconfiguratie maken
 
-Nu moet u een `AudioConfig` object maken dat verwijst naar uw audio bestand. Voeg deze code toe in de `startRecognizeOnceAsyncButton.addEventListener()` -methode, rechts onder uw spraak configuratie.
+Nu moet u een `AudioConfig`-object maken dat verwijst naar het audiobestand. Voeg deze code toe in de methode `startRecognizeOnceAsyncButton.addEventListener()`, recht onder uw Speech-configuratie.
 
 ```JavaScript
-        var audioConfig  = SpeechSDK.AudioConfig.fromFile(audioFile);
+        var audioConfig  = SpeechSDK.AudioConfig.fromWavFileInput(audioFile);
 ```
 
 ## <a name="initialize-a-speechrecognizer"></a>Een SpeechRecognizer initialiseren
 
-Nu gaan we het object maken `SpeechRecognizer` met behulp van de- `SpeechConfig` en- `AudioConfig` objecten die u eerder hebt gemaakt. Voeg deze code in de `startRecognizeOnceAsyncButton.addEventListener()` methode in.
+Nu gaan we het `SpeechRecognizer`-object maken met behulp van de `SpeechConfig`- en `AudioConfig`-objecten die u eerder hebt gemaakt. Voeg deze code toe in de methode `startRecognizeOnceAsyncButton.addEventListener()`.
 
 ```JavaScript
         recognizer = new SpeechSDK.SpeechRecognizer(speechConfig, audioConfig);
 ```
 
-## <a name="recognize-a-phrase"></a>Een woord groep herkennen
+## <a name="recognize-a-phrase"></a>Een woordgroep herkennen
 
-Vanuit het `SpeechRecognizer` object roept u de- `recognizeOnceAsync()` methode aan. Met deze methode kan de speech-service weten dat u één woord groep verstuurt voor herkenning en dat zodra de woord groep is geïdentificeerd om te stoppen met het herkennen van spraak.
+Vanuit het `SpeechRecognizer`-object roept u de methode `recognizeOnceAsync()` aan. Met deze methode laat u de Speech-service weten dat u één woordgroep verstuurt voor herkenning en dat er kan worden gestopt met het herkennen van spraak zodra de woordgroep is geïdentificeerd.
 
 ```JavaScript
 recognizer.recognizeOnceAsync(
@@ -203,7 +203,7 @@ recognizer.recognizeOnceAsync(
           });
 ```
 
-## <a name="check-your-code"></a>Controleer uw code
+## <a name="check-your-code"></a>Uw code controleren
 
  [!code-html [SampleCode](~/samples-cognitive-services-speech-sdk/quickstart/javascript/browser/index-from-file.html)]
 
@@ -212,7 +212,7 @@ recognizer.recognizeOnceAsync(
 Als u de webpagina wilt hosten op een webserver, kunt u desgewenst een tokenbron opgeven voor uw voorbeeldtoepassing.
 Op die manier verlaat uw abonnementssleutel nooit uw server en is het gebruikers toegestaan gebruik te maken van spraakmogelijkheden zonder zelf een autorisatiecode in te hoeven voeren.
 
-Maak een nieuw bestand met de naam `token.php`. In dit voorbeeld gaan we er van uit dat uw webserver de PHP-scripttaal ondersteunt. Voer de volgende code in:
+Maak een nieuw bestand met de naam `token.php`. In dit voorbeeld gaan we ervan uit dat uw webserver de PHP-scripttaal ondersteunt als cURL is ingeschakeld. Voer de volgende code in:
 
 ```php
 <?php
@@ -242,7 +242,7 @@ Om de app te starten, dubbelklikt u op het bestand index.html of opent u index.h
 
 > [!NOTE]
 > Deze methode werkt niet in de Safari-browser.
-> Op Safari moet de voorbeeld webpagina worden gehost op een webserver. Met Safari kunnen websites die zijn geladen uit een lokaal bestand niet worden gebruikt voor het gebruik van de microfoon.
+> In Safari moet de voorbeeldwebpagina worden gehost op een webserver. Met Safari is het gebruik van de microfoon niet mogelijk voor websites die zijn geladen vanuit een lokaal bestand.
 
 ## <a name="build-and-run-the-sample-via-a-web-server"></a>De voorbeeldtoepassing bouwen en uitvoeren via een webserver
 

@@ -7,19 +7,21 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 06/23/2020
-ms.openlocfilehash: 7075753049e6ba6f4804d23aa31796cbd5bc9141
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.date: 06/30/2020
+ms.openlocfilehash: 9d081dea8e4a59a7b872bde8626cbb8674eebd7e
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85263225"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85554324"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Wat is Azure Cognitive Search?
 
-Azure Cognitive Search ([voorheen 'Azure Search'](whats-new.md#new-service-name)) is een SaaS-cloudoplossing (Search-as-a-Service) die ontwikkelaars API’s en hulpprogramma’s biedt waarmee ze een uitgebreide zoekervaring binnen privé- en heterogene inhoud kunnen toevoegen aan web-, mobiele en bedrijfstoepassingen. Uw code of een hulpprogramma initieert gegevensopname (indexering) om een index te maken en te laden. Als u wilt, kunt u ook cognitieve vaardigheden toevoegen om AI toe te passen tijdens de indexering. Zo kunt u nieuwe informatie en structuren toevoegen die handig zijn voor zoekacties en andere scenario's.
+Azure Cognitive Search ([voorheen 'Azure Search'](whats-new.md#new-service-name)) is een SaaS-cloudoplossing (Search-as-a-Service) die ontwikkelaars API’s en hulpprogramma’s biedt waarmee ze een uitgebreide zoekervaring binnen privé- en heterogene inhoud kunnen toevoegen aan web-, mobiele en bedrijfstoepassingen. 
 
-Aan de andere kant van uw service vraagt uw toepassingscode query's aan en verwerkt de antwoorden. De zoekervaring wordt gedefinieerd in uw client met functionaliteit van Azure Cognitive Search, waarbij query's worden uitgevoerd via een persistente index die u maakt, waarvan u eigenaar bent en die u opslaat in uw service.
+In een aangepaste oplossing bevindt een zoekservice zich tussen twee primaire workloads: inhoudsopname en query's. Uw code of een hulpprogramma definieert een schema en activeert gegevensopname (indexering) om een index in Azure Cognitive Search te laden. Als u wilt, kunt u ook cognitieve vaardigheden toevoegen om AI toe te passen tijdens de indexering. Zo kunt u nieuwe informatie en structuren maken die handig zijn voor zoekacties en kennisanalyse.
+
+Als een index eenmaal bestaat, verzendt uw toepassingscode query's naar een zoekservice en verwerkt de code de antwoorden. De zoekervaring wordt gedefinieerd in uw client met functionaliteit van Azure Cognitive Search, waarbij query's worden uitgevoerd via een persistente index die u maakt, waarvan u eigenaar bent en die u opslaat in uw service.
 
 ![Architectuur van Azure Cognitive Search](media/search-what-is-azure-search/azure-search-diagram.svg "Architectuur van Azure Cognitive Search")
 
@@ -31,7 +33,7 @@ Azure Cognitive Search is geschikt voor de volgende toepassingsscenario's:
 
 + Consolidatie van heterogene inhoudstypen in een privé-, enkelvoudige en doorzoekbare index. Query's worden altijd uitgevoerd via een index die u maakt en laadt met documenten en de index bevindt zich altijd in de cloud op uw Azure Cognitive Search-service. U kunt een index vullen met streams van JSON-documenten vanaf elke bron of platform. U kunt ook voor inhoud vanuit Azure een *indexeerfunctie* gebruiken om gegevens op te halen in een index. Indexdefinitie en beheer/eigendom zijn de belangrijkste redenen om Azure Cognitive Search te gebruiken.
 
-+ Onbewerkte inhoud is veel niet-gedifferentieerde tekst, afbeeldingsbestanden of toepassingsbestanden, zoals Office-inhoudstypen in een Azure-gegevensbron, zoals Azure-blobopslag of Cosmos DB. U kunt cognitieve vaardigheden toepassen tijdens de indexering om structuur toe te voegen of betekenis te halen uit afbeeldings- en toepassingsbestanden.
++ Onbewerkte inhoud is veel niet-gedifferentieerde tekst, afbeeldingsbestanden of toepassingsbestanden, zoals Office-inhoudstypen in een Azure-gegevensbron, zoals Azure-blobopslag of Cosmos DB. U kunt cognitieve vaardigheden toepassen tijdens de indexering om structuur toe te voegen of doorzoekbare tekst te halen uit afbeeldings- en toepassingsbestanden.
 
 + Eenvoudige implementatie van zoekfuncties. Azure Cognitive Search API's vereenvoudigen het bouwen van query's, facetnavigatie, filters (inclusief georuimtelijke zoekacties), toewijzing van synoniemen, automatisch aanvullende query's en afstemming van relevantie. Met ingebouwde functies kunt u aan de verwachtingen van eindgebruikers voldoen en een zoekervaring bieden die vergelijkbaar is met commerciële webzoekprogramma's.
 
@@ -53,8 +55,8 @@ Azure Cognitive Search is geschikt voor de volgende toepassingsscenario's:
 
 | AI&nbsp;-verrijking&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       | Functies |
 |-------------------|----------|
-|AI-verwerking tijdens indexeren | [**AI-verrijking**](cognitive-search-concept-intro.md) voor analyse van afbeeldingen en tekst kan worden toegepast op een pijplijn voor indexeren om tekstinformatie te extraheren uit onbewerkte inhoud. Enkele voorbeelden van [ingebouwde vaardigheden](cognitive-search-predefined-skills.md) zijn: optische tekenherkenning (waardoor gescande JPEG-bestanden doorzoekbaar worden), herkenning van entiteiten (waarmee een organisatie, naam of locatie kan worden geïdentificeerd), en herkenning van sleuteltermen. U kunt ook [aangepaste vaardigheden coderen](cognitive-search-create-custom-skill-example.md) om ze te koppelen aan een pijplijn. |
-| Verrijkte inhoud opslaan voor analyse en verwerking in niet-zoekgerelateerde scenario's | [**Kennisarchief (preview)** ](knowledge-store-concept-intro.md) is een uitbreiding van op AI gebaseerde indexering. Met Azure-opslag als een back-end kunt u verrijkingen opslaan die zijn gemaakt tijdens het indexeren. Deze artefacten kunnen worden gebruikt om u betere vaardighedensets te maken of vorm en structuur te vinden in ongevormde of onduidelijke gegevens. U kunt projecties maken van deze structuren die zijn gericht op specifieke werkbelastingen of gebruikers. U kunt ook de geëxtraheerde gegevens direct analyseren of laden in andere apps.<br/><br/> |
+|AI-verwerking tijdens indexeren | [**AI-verrijking**](cognitive-search-concept-intro.md) voor analyse van afbeeldingen en tekst kan worden toegepast op een pijplijn voor indexeren om tekstinformatie te extraheren uit onbewerkte inhoud. Enkele voorbeelden van [ingebouwde vaardigheden](cognitive-search-predefined-skills.md) zijn: optische tekenherkenning (waardoor gescande JPEG-bestanden doorzoekbaar worden), herkenning van entiteiten (waarmee een organisatie, naam of locatie kan worden geïdentificeerd), en herkenning van sleuteltermen. U kunt ook [aangepaste vaardigheden coderen](cognitive-search-create-custom-skill-example.md) om ze te koppelen aan een pijplijn. U kunt ook [door Azure Machine Learning opgestelde vaardigheden](https://docs.microsoft.com/azure/search/cognitive-search-tutorial-aml-custom-skill) integreren. |
+| Verrijkte inhoud opslaan voor analyse en verwerking in niet-zoekgerelateerde scenario's | [**Kennisarchief**](knowledge-store-concept-intro.md) is een uitbreiding van op AI gebaseerde indexering. Met Azure Storage als back-end kunt u verrijkingen opslaan die zijn gemaakt tijdens het indexeren. Deze artefacten kunnen worden gebruikt om u betere vaardighedensets te maken of vorm en structuur te vinden in ongevormde of onduidelijke gegevens. U kunt projecties maken van deze structuren die zijn gericht op specifieke werkbelastingen of gebruikers. U kunt ook de geëxtraheerde gegevens direct analyseren of laden in andere apps.<br/><br/> |
 | In cache opgeslagen inhoud | [**Incrementele verrijking (preview)** ](cognitive-search-incremental-indexing-conceptual.md) beperkt de verwerking tot alleen die documenten die zijn gewijzigd door een specifieke bewerking van de pijplijn en gebruikt in cache opgeslagen inhoud voor de onderdelen van de pijplijn die niet worden gewijzigd. |
 
 | Gegevens&nbsp; importeren/indexeren | Functies |
@@ -129,7 +131,7 @@ Hoewel veel taken in de portal kunnen worden uitgevoerd, is Azure Cognitive Sear
 
 |Platform |Beschrijving |
 |-----|------------|
-|[REST](/rest/api/searchservice/) | HTTP-opdrachten die worden ondersteund door een willekeurig programmeerplatform en een willekeurige programmeertaal, waaronder Xamarin, Java en JavaScript|
+|[REST](/rest/api/searchservice/) | HTTP-opdrachten die worden ondersteund door een willekeurig programmeerplatform en een willekeurige programmeertaal, waaronder Java, Python en JavaScript|
 |[.NET SDK](search-howto-dotnet-sdk.md) | .NET-wrapper voor de REST API biedt efficiënte codering in C# en andere beheerde codetalen die zijn bedoeld voor .NET Framework |
 
 ## <a name="free-trial"></a>Gratis proefversie

@@ -7,13 +7,13 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/07/2020
-ms.openlocfilehash: 83b723c815825a255727e9a48d415fedd405c942
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.date: 06/24/2020
+ms.openlocfilehash: f802ec10410d0a412e29d9ad51bb409a5d099f31
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488219"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85562535"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Quickstart: Een Azure Cognitive Search-service maken in de portal
 
@@ -24,6 +24,14 @@ Dit artikel bevat meer informatie over hoe u een resource in de [Azure-portal](h
 [![GIF-animatie](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
 Hebt u liever PowerShell? Gebruik de [servicesjabloon](https://azure.microsoft.com/resources/templates/101-azure-search-create/) van Azure Resource Manager. Zie [Azure Cognitive Search beheren met PowerShell](search-manage-powershell.md) voor hulp om aan de slag te gaan.
+
+## <a name="before-you-start"></a>Voordat u begint
+
+De volgende service-eigenschappen staan gedurende de levensduur van de service vast. Als u ze wilt wijzigen, is er een nieuwe service vereist. Wanneer u een service maakt, moet u nadenken over hoe u deze gaat gebruiken:
+
+* naam (bekijk [deze suggesties](#name-the-service) voor servicenamen)
+* laag (Gratis, Basic, Standard [is van invloed op facturering](search-sku-tier.md); de laag zorgt voor een opwaartse limiet op de capaciteit)
+* regio (kies een locatie met gerelateerde services. Voor de integratie met Cognitive Services of Azure Machine Learning is het niet meer nodig om services in dezelfde regio te gebruiken)
 
 ## <a name="subscribe-free-or-paid"></a>Abonneren (gratis of betaald)
 

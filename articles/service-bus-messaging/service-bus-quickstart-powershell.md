@@ -1,24 +1,20 @@
 ---
 title: Azure PowerShell gebruiken om een Service Bus-wachtrij te maken
 description: In deze quickstart leert u hoe u Azure PowerShell gebruikt om een Service Bus-wachtrij te maken. Vervolgens gebruikt u een voorbeeldtoepassing om berichten te verzenden naar en te ontvangen van de wachtrij.
-services: service-bus-messaging
 author: spelluru
-manager: timlt
-ms.service: service-bus-messaging
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.custom: mvc
-ms.date: 12/20/2019
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 890e8d3a7592a6794fd19ac28b6ca613ac7201c6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: f1fecfd7ba9f35d06b680d43248bf82aeb54a27b
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75426938"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85337237"
 ---
-# <a name="quickstart-use-azure-powershell-to-create-a-service-bus-queue"></a>Snelstartgids: Azure PowerShell gebruiken om een Service Bus wachtrij te maken
-In deze quickstart wordt beschreven hoe u berichten naar een Service Bus-wachtrij verzendt en van de wachtrij ontvangt. U gebruikt daarbij PowerShell om een berichtennaamruimte te maken en binnen deze naamruimte een wachtrij te maken. Ook wordt beschreven hoe u de autorisatiereferenties binnen die naamruimte kunt verkrijgen. De procedure laat vervolgens zien hoe u berichten naar deze wachtrij kunt verzenden en hoe u ze ervan kunt ontvangen met behulp van de [.NET Standard-bibliotheek](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus).
+# <a name="quickstart-use-azure-powershell-to-create-a-service-bus-queue"></a>Quickstart: Azure PowerShell gebruiken om een Service Bus-wachtrij te maken
+In deze quickstart wordt beschreven hoe u berichten naar een Service Bus-wachtrij verzendt en van de wachtrij ontvangt. U gebruikt daarbij PowerShell om een berichtennaamruimte te maken en binnen deze naamruimte een wachtrij te maken. Ook wordt beschreven hoe u de autorisatiereferenties binnen die naamruimte kunt verkrijgen. De procedure laat vervolgens zien hoe u berichten naar deze wachtrij verzendt en van de wachtrij ontvangt met behulp van de [.NET Standard-bibliotheek](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -30,10 +26,10 @@ In deze quickstart wordt beschreven hoe u berichten naar een Service Bus-wachtri
 Het volgende moet zijn geïnstalleerd om deze zelfstudie te voltooien:
 
 - Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account][] aan voordat u begint. 
-- [Visual Studio 2017 update 3 (versie 15.3, 26730.01)](https://www.visualstudio.com/vs) of later. U gebruikt Visual Studio om een voor beeld te maken waarmee berichten worden verzonden naar en ontvangen van een wachtrij. Het voor beeld is het testen van de wachtrij die u in de portal hebt gemaakt. 
+- [Visual Studio 2017 update 3 (versie 15.3, 26730.01)](https://www.visualstudio.com/vs) of hoger. U gebruikt Visual Studio om een voorbeeld te maken waarmee berichten worden verzonden naar en ontvangen van een wachtrij. Het voorbeeld is bedoeld voor het testen van de wachtrij die u hebt gemaakt in de portal. 
 - [NET Core SDK](https://www.microsoft.com/net/download/windows), versie 2.0 of later.
 
-Voor deze snelstart moet u de nieuwste versie van Azure PowerShell uitvoeren. Als u Azure PowerShell wilt installeren of upgraden, raadpleegt u [Azure PowerShell installeren en configureren][]. Als u bekend bent met Azure Cloud Shell, kunt u deze gebruiken zonder dat u Azure PowerShell op uw computer hoeft te installeren. Zie [overzicht van Azure Cloud shell](../cloud-shell/overview.md) voor meer informatie over Azure Cloud shell.
+Voor deze snelstart moet u de nieuwste versie van Azure PowerShell uitvoeren. Als u Azure PowerShell wilt installeren of upgraden, raadpleegt u [Azure PowerShell installeren en configureren][]. Als u bekend bent met Azure Cloud Shell kunt u deze gebruiken zonder dat u Azure PowerShell op uw computer hoeft te installeren. Zie [Overzicht van Azure Cloud Shell](../cloud-shell/overview.md) voor meer informatie over Azure Cloud Shell
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -74,11 +70,11 @@ New-AzServiceBusQueue -ResourceGroupName my-resourcegroup -NamespaceName namespa
 Get-AzServiceBusKey -ResourceGroupName my-resourcegroup -Namespace namespace-name -Name RootManageSharedAccessKey
 ```
 
-Wanneer de cmdlet `Get-AzServiceBusKey` is uitgevoerd, kopieert en plakt u de verbindingstekenreeks en de naam van de wachtrij die u hebt geselecteerd, naar een tijdelijke locatie, zoals Kladblok. U hebt deze nodig in de volgende stap.
+Wanneer de cmdlet `Get-AzServiceBusKey` is uitgevoerd, kopieert en plakt u de verbindingstekenreeks en de naam van de wachtrij die u hebt geselecteerd, naar een tijdelijke locatie, zoals Kladblok. U hebt deze gegevens nodig in de volgende stap.
 
 ## <a name="send-and-receive-messages"></a>Berichten verzenden en ontvangen
 
-Wanneer de naamruimte en wachtrij zijn gemaakt en u over de benodigde referenties beschikt, kunt u berichten gaan verzenden en ontvangen. U kunt de code controleren in [deze GitHub-voorbeeldmap](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveQuickStart).
+Wanneer de naamruimte en wachtrij zijn gemaakt en u over de benodigde referenties beschikt, kunt u berichten gaan verzenden en ontvangen. U kunt de code in [deze GitHub-voorbeeldmap](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveQuickStart) bestuderen.
 
 Ga als volgt te werk om de code uit te voeren:
 
@@ -128,7 +124,7 @@ Deze sectie bevat meer informatie over de werking van de voorbeeldcode.
 
 ### <a name="get-connection-string-and-queue"></a>Verbindingsreeks en wachtrij ophalen
 
-De connection string-en wachtrij naam worden door gegeven `Main()` aan de methode als opdracht regel argumenten. `Main()` declareert twee tekenreeksvariabelen die deze waarden kunnen omvatten:
+De verbindingsreeks en de naam van de wachtrij worden als opdrachtregelargumenten doorgegeven aan de methode `Main()`. `Main()` declareert twee tekenreeksvariabelen die deze waarden kunnen omvatten:
 
 ```csharp
 static void Main(string[] args)
@@ -165,7 +161,7 @@ De methode `Main()` start vervolgens de asynchrone berichtenlus `MainAsync()`.
 
 ### <a name="message-loop"></a>Berichtenlus
 
-Met de methode MainAsync () wordt een wachtrij-client gemaakt met de opdracht regel argumenten, wordt een ondersteunings bericht-handler aangeroepen met de naam `RegisterOnMessageHandlerAndReceiveMessages()`en wordt de set berichten verzonden:
+De methode MainAsync() maakt een wachtrijclient met de opdrachtregelargumenten, roept een ontvangende berichtenhandler met de naam `RegisterOnMessageHandlerAndReceiveMessages()` aan en verzendt de berichtenreeks:
 
 ```csharp
 static async Task MainAsync(string ServiceBusConnectionString, string QueueName)
@@ -256,11 +252,11 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
 ```
 
 > [!NOTE]
-> U kunt Service Bus-resources beheren met [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Met de Service Bus Explorer kunnen gebruikers verbinding maken met een Service Bus naam ruimte en de Messa ging-entiteiten op een eenvoudige manier beheren. Het hulp programma biedt geavanceerde functies zoals de functionaliteit voor importeren/exporteren of de mogelijkheid om onderwerp, wacht rijen, abonnementen, relay-Services, Notification hubs en Events hubs te testen. 
+> U kunt resources van Service Bus beheren met [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Met Service Bus Explorer kunnen gebruikers verbinding maken met een Service Bus-naamruimte en berichtenentiteiten op een eenvoudige manier beheren. Het hulpprogramma biedt geavanceerde functies zoals functionaliteit voor importeren/exporteren of de mogelijkheid van het testen van onderwerpen, wachtrijen, abonnementen, relay-services, Notification Hubs en Event Hubs. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u een Service Bus-naamruimte en andere resources gemaakt die zijn vereist voor het verzenden en ontvangen van berichten in een wachtrij. Voor meer informatie over het schrijven van code voor het verzenden en ontvangen van berichten gaat u verder met de zelf studies in het gedeelte **berichten verzenden en ontvangen** . 
+In dit artikel hebt u een Service Bus-naamruimte en andere resources gemaakt die zijn vereist voor het verzenden en ontvangen van berichten in een wachtrij. Ga naar de zelfstudies in de sectie **Berichten verzenden en ontvangen** voor meer informatie over het schrijven van code voor het verzenden en ontvangen van berichten. 
 
 > [!div class="nextstepaction"]
 > [Berichten verzenden en ontvangen](service-bus-dotnet-get-started-with-queues.md)

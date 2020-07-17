@@ -3,17 +3,17 @@ author: IEvangelist
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
-ms.author: dapine
-ms.openlocfilehash: 904144b044a0a0223d4807372407b5ce0b9f127b
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
-ms.translationtype: MT
+ms.author: trbye
+ms.openlocfilehash: 4889d9b0f142206bf26a69f275cb60598fba577f
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85570149"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035764"
 ---
-## <a name="start-with-some-boilerplate-code"></a>Begin met een van de standaard code
+## <a name="start-with-some-boilerplate-code"></a>Beginnen met standaardcode
 
-Laten we een code toevoegen die als een skelet voor het project werkt.
+We gaan wat code toevoegen die als basis voor het project gaat dienen.
 
 ```html
     <!DOCTYPE html>
@@ -28,7 +28,7 @@ Laten we een code toevoegen die als een skelet voor het project werkt.
 ```
 ## <a name="add-ui-elements"></a>UI-elementen toevoegen
 
-Nu gaan we enkele eenvoudige gebruikers interface toevoegen voor invoer vakken, verwijzen naar de Java script van de Speech SDK en een autorisatie Token ophalen, indien beschikbaar.
+Nu gaan we enkele eenvoudige gebruikersinterface-elementen toevoegen (invoervakken), verwijzen naar de JavaScript van de Speech-SDK en een autorisatietoken ophalen, indien beschikbaar.
 
 ```html  
 <body style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:13px;">
@@ -132,12 +132,12 @@ Nu gaan we enkele eenvoudige gebruikers interface toevoegen voor invoer vakken, 
   </script>
 ```
  
-## <a name="create-a-speech-configuration"></a>Een spraak configuratie maken
+## <a name="create-a-speech-configuration"></a>Een Speech-configuratie maken
 
-Voordat u een object kunt initialiseren `SpeechRecognizer` , moet u een configuratie maken die gebruikmaakt van de abonnements sleutel en de regio van het abonnement. Voeg deze code in de `startRecognizeOnceAsyncButton.addEventListener()` methode in.
+Voordat u een `SpeechRecognizer`-object kunt initialiseren, moet u een configuratie maken die gebruikmaakt van de abonnementssleutel en de regio van het abonnement. Voeg deze code toe in de methode `startRecognizeOnceAsyncButton.addEventListener()`.
 
 > [!NOTE]
-> De spraak-SDK wordt standaard herkend door en-US voor de taal. Zie de [bron taal voor spraak opgeven](../../../../how-to-specify-source-language.md) voor de tekst voor informatie over het kiezen van de bron taal.
+> De Speech-SDK probeert taal standaard te herkennen in en-US. Zie [De brontaal voor spraak-naar-tekst opgeven](../../../../how-to-specify-source-language.md) voor informatie over het kiezen van de brontaal.
 
 
 ```JavaScript
@@ -157,9 +157,9 @@ Voordat u een object kunt initialiseren `SpeechRecognizer` , moet u een configur
         speechConfig.speechRecognitionLanguage = "en-US";
 ```
 
-## <a name="create-an-audio-configuration"></a>Een audio configuratie maken
+## <a name="create-an-audio-configuration"></a>Een audioconfiguratie maken
 
-Nu moet u een `AudioConfig` object maken dat verwijst naar het invoer apparaat. Voeg deze code toe in de `startIntentRecognizeAsyncButton.addEventListener()` -methode, rechts onder uw spraak configuratie.
+Nu moet u een `AudioConfig`-object maken dat verwijst naar het invoerapparaat. Voeg deze code toe in de methode `startIntentRecognizeAsyncButton.addEventListener()`, recht onder uw Speech-configuratie.
 
 ```JavaScript
         var audioConfig = SpeechSDK.AudioConfig.fromDefaultMicrophoneInput();
@@ -167,17 +167,17 @@ Nu moet u een `AudioConfig` object maken dat verwijst naar het invoer apparaat. 
 
 ## <a name="initialize-a-intentrecognizer"></a>Een IntentRecognizer initialiseren
 
-Nu gaan we het object maken `IntentRecognizer` met behulp van de- `SpeechConfig` en- `AudioConfig` objecten die u eerder hebt gemaakt. Voeg deze code in de `startIntentRecognizeAsyncButton.addEventListener()` methode in.
+Nu gaan we het `IntentRecognizer`-object maken met behulp van de `SpeechConfig`- en `AudioConfig`-objecten die u eerder hebt gemaakt. Voeg deze code toe in de methode `startIntentRecognizeAsyncButton.addEventListener()`.
 
 ```JavaScript
         recognizer = new SpeechSDK.IntentRecognizer(speechConfig, audioConfig);
 ```
 
-## <a name="add-a-languageunderstandingmodel-and-intents"></a>Een LanguageUnderstandingModel en intenties toevoegen
+## <a name="add-a-languageunderstandingmodel-and-intents"></a>Een LanguageUnderstandingModel en Intents toevoegen
 
-U moet een `LanguageUnderstandingModel` met de intentie herkenning koppelen en de intenties toevoegen die u wilt herkennen. We gaan de intenties gebruiken van het vooraf ontwikkelde domein voor Start Automation.
+U moet een `LanguageUnderstandingModel` koppelen aan de intentieherkenning en de intenties toevoegen die u wilt laten herkennen. We gaan de intenties van het vooraf ontwikkelde domein voor woningautomatisering gebruiken.
 
-Voeg deze code toe onder uw `IntentRecognizer` . Zorg ervoor dat u vervangt door `"YourLanguageUnderstandingAppId"` de id van uw Luis-app. 
+Voeg deze code toe onder uw `IntentRecognizer`. Zorg ervoor dat u `"YourLanguageUnderstandingAppId"` vervangt door de id van uw LUIS-app. 
 
 ```JavaScript
         if (appId.value !== "" && appId.value !== "YOUR_LANGUAGE_UNDERSTANDING_APP_ID") {
@@ -188,9 +188,9 @@ Voeg deze code toe onder uw `IntentRecognizer` . Zorg ervoor dat u vervangt door
 ```
 ## <a name="recognize-an-intent"></a>Een intentie herkennen
 
-Vanuit het `IntentRecognizer` object roept u de- `recognizeOnceAsync()` methode aan. Met deze methode kan de speech-service weten dat u één woord groep verstuurt voor herkenning en dat zodra de woord groep is geïdentificeerd om te stoppen met het herkennen van spraak.
+Vanuit het `IntentRecognizer`-object roept u de methode `recognizeOnceAsync()` aan. Met deze methode laat u de Speech-service weten dat u één woordgroep verstuurt voor herkenning en dat er kan worden gestopt met het herkennen van spraak zodra de woordgroep is geïdentificeerd.
 
-Voeg deze code toe onder de toevoeging van het model:
+Voeg deze code toe onder de modeltoevoeging:
 
 ```JavaScript
         recognizer.recognizeOnceAsync(
@@ -236,7 +236,7 @@ Voeg deze code toe onder de toevoeging van het model:
           });
 ```
 
-## <a name="check-your-code"></a>Controleer uw code
+## <a name="check-your-code"></a>Uw code controleren
 
  [!code-html [SampleCode](~/samples-cognitive-services-speech-sdk/quickstart/javascript/browser/index-intent-recognition.html)]
 
@@ -245,7 +245,7 @@ Voeg deze code toe onder de toevoeging van het model:
 Als u de webpagina wilt hosten op een webserver, kunt u desgewenst een tokenbron opgeven voor uw voorbeeldtoepassing.
 Op die manier verlaat uw abonnementssleutel nooit uw server en is het gebruikers toegestaan gebruik te maken van spraakmogelijkheden zonder zelf een autorisatiecode in te hoeven voeren.
 
-Maak een nieuw bestand met de naam `token.php`. In dit voorbeeld gaan we er van uit dat uw webserver de PHP-scripttaal ondersteunt. Voer de volgende code in:
+Maak een nieuw bestand met de naam `token.php`. In dit voorbeeld gaan we ervan uit dat uw webserver de PHP-scripttaal ondersteunt als cURL is ingeschakeld. Voer de volgende code in:
 
 ```php
 <?php
@@ -271,15 +271,15 @@ echo curl_exec($ch);
 
 ## <a name="build-and-run-the-sample-locally"></a>Het voorbeeld bouwen en lokaal uitvoeren
 
-Om de app te starten, dubbelklikt u op het bestand index.html of opent u index.html met uw favoriete webbrowser. Er wordt een eenvoudige gebruikers interface weer gegeven waarin u uw LUIS-sleutel, [Luis-regio](../../../../regions.md)en Luis-toepassings-id kunt invoeren. Zodra deze velden zijn ingevoerd, kunt u op de juiste knop klikken om een herkenning te activeren met behulp van de microfoon.
+Om de app te starten, dubbelklikt u op het bestand index.html of opent u index.html met uw favoriete webbrowser. Er wordt een eenvoudige gebruikersinterface weergegeven waarin u uw LUIS-sleutel, [LUIS-regio](../../../../regions.md) en LUIS-toepassings-id kunt invoeren. Zodra deze velden zijn ingevuld, kunt u op de juiste knop klikken om spraakherkenning te activeren met behulp van de microfoon.
 
 > [!NOTE]
 > Deze methode werkt niet in de Safari-browser.
-> Op Safari moet de voorbeeld webpagina worden gehost op een webserver. Met Safari kunnen websites die zijn geladen uit een lokaal bestand niet worden gebruikt voor het gebruik van de microfoon.
+> In Safari moet de voorbeeldwebpagina worden gehost op een webserver. Met Safari is het gebruik van de microfoon niet mogelijk voor websites die zijn geladen vanuit een lokaal bestand.
 
 ## <a name="build-and-run-the-sample-via-a-web-server"></a>De voorbeeldtoepassing bouwen en uitvoeren via een webserver
 
-Als u uw app wilt starten, opent u uw favoriete webbrowser en wijst u deze naar de open bare URL waar u de map als host voor hebt, voert u de [Luis-regio](../../../../regions.md) in, geeft u ook uw Luis-toepassings-id op en start u een herkenning met behulp van de microfoon. Als deze is geconfigureerd, wordt er een token opgehaald uit uw token bron en worden gesp roken opdrachten herkend.
+Om uw app te starten opent u uw favoriete webbrowser en laat u deze wijzen naar de openbare URL waarop u de map host, geeft u uw [LUIS-regio](../../../../regions.md) en de LUIS-toepassings-id op en activeert u spraakherkenning met behulp van de microfoon. Indien dit is geconfigureerd, wordt er een token uit uw tokenbron opgehaald en wordt gestart met het herkennen van gesproken opdrachten.
 
 ## <a name="next-steps"></a>Volgende stappen
 

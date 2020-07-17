@@ -3,27 +3,27 @@ author: IEvangelist
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
-ms.author: dapine
-ms.openlocfilehash: 244bd6c270b5845039c1a5cc4d1322cb928a5aa3
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: MT
+ms.author: trbye
+ms.openlocfilehash: 19c054b72f7aa2ed6108d076a48856919a01462d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83806234"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85838939"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u aan de slag gaat:
 
 > [!div class="checklist"]
-> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Een Azure-spraak resource maken<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-> * [Stel uw ontwikkel omgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md)
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Een resource voor de Azure Speech-service maken<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> * [Uw ontwikkelomgeving instellen en een leeg project maken](../../../../quickstarts/setup-platform.md)
 
-## <a name="start-with-some-boilerplate-code"></a>Begin met een van de standaard code
+## <a name="start-with-some-boilerplate-code"></a>Beginnen met standaardcode
 
-Laten we een code toevoegen die als een skelet voor het project werkt. Maak een index. js-bestand en voeg deze code toe.
+We gaan wat code toevoegen die als basis voor het project gaat dienen. Maak een index.js-bestand en voeg deze code toe.
 
-Vul uw waarden in voor `subscriptionKey` , `servcieRegion` , en `filename` .
+Zorg ervoor dat u de waarden voor `subscriptionKey`, `servcieRegion` en `filename` invult.
 
 ```JavaScript
 (function() {
@@ -45,9 +45,9 @@ Vul uw waarden in voor `subscriptionKey` , `servcieRegion` , en `filename` .
 }());
   
 ```
-## <a name="load-the-file-into-an-pullaudiooutputstream"></a>Laad het bestand in een PullAudioOutputStream
+## <a name="load-the-file-into-an-pullaudiooutputstream"></a>Het bestand in een PullAudioOutputStream laden
 
-Voor NodeJS de Speech SDK geen systeem eigen ondersteuning biedt voor bestands toegang, dus we openen het bestand en schrijven ernaar met een `PullAudioOutputStream` .
+Voor NodeJS biedt de Speech-SDK geen systeemeigen ondersteuning voor het openen van bestanden, dus openen we het bestand en schrijven we ernaar met een `PullAudioOutputStream`.
 
 
 ```JavaScript
@@ -62,12 +62,12 @@ Voor NodeJS de Speech SDK geen systeem eigen ondersteuning biedt voor bestands t
   });
 ```
 
-## <a name="create-a-speech-configuration"></a>Een spraak configuratie maken
+## <a name="create-a-speech-configuration"></a>Een Speech-configuratie maken
 
-Voordat u een object kunt initialiseren `SpeechSynthesizer` , moet u een configuratie maken die gebruikmaakt van de abonnements sleutel en de regio van het abonnement. Voeg deze code toe volgende.
+Voordat u een `SpeechSynthesizer`-object kunt initialiseren, moet u een configuratie maken die gebruikmaakt van de abonnementssleutel en de regio van het abonnement. Voeg daarna deze code toe.
 
 > [!NOTE]
-> De spraak-SDK wordt standaard herkend door en-US voor de taal. Zie de [bron taal voor spraak opgeven](../../../../how-to-specify-source-language.md) voor de tekst voor informatie over het kiezen van de bron taal.
+> De Speech-SDK probeert taal standaard te herkennen in en-US. Zie [De brontaal voor spraak-naar-tekst opgeven](../../../../how-to-specify-source-language.md) voor informatie over het kiezen van de brontaal.
 
  ```JavaScript
    // now create the audio-config pointing to our stream and
@@ -78,9 +78,9 @@ Voordat u een object kunt initialiseren `SpeechSynthesizer` , moet u een configu
   speechConfig.speechRecognitionLanguage = "en-US";
   
 ```
-## <a name="create-an-audio-configuration"></a>Een audio configuratie maken
+## <a name="create-an-audio-configuration"></a>Een audioconfiguratie maken
 
-Nu moet u een `AudioConfig` object maken dat verwijst naar uw `PullAudioOutputStream` . Voeg deze code toe aan de rechter kant onder uw spraak configuratie.
+Nu moet u een `AudioConfig`-object maken dat verwijst naar uw `PullAudioOutputStream`. Voeg deze code toe onder uw Speech-configuratie.
 
 ```JavaScript
     var audioConfig = sdk.AudioConfig.fromStreamInput(pullStream);
@@ -88,18 +88,18 @@ Nu moet u een `AudioConfig` object maken dat verwijst naar uw `PullAudioOutputSt
 
 ## <a name="initialize-a-speechsynthesizer"></a>Een SpeechSynthesizer initialiseren
 
-Nu gaan we het object maken `SpeechSynthesizer` met behulp van de- `SpeechConfig` en- `AudioConfig` objecten die u eerder hebt gemaakt.
+Nu gaan we het `SpeechSynthesizer`-object maken met behulp van de `SpeechConfig`- en `AudioConfig`-objecten die u eerder hebt gemaakt.
 
 ```JavaScript
   // create the speech synthesizer.
   var synthesizer = new sdk.SpeechSynthesizer(speechConfig, audioConfig);
   
 ```
-## <a name="recognize-a-phrase-and-display-results"></a>Een woord groep herkennen en resultaten weer geven
+## <a name="recognize-a-phrase-and-display-results"></a>Een woordgroep herkennen en resultaten weergeven
 
-Vanuit het `SpeechSynthesizer` object roept u de- `speakTextAsync()` methode aan. Met deze methode kan de speech-service weten dat u tekst voor synthese verzendt.
+Vanuit het `SpeechSynthesizer`-object roept u de methode `speakTextAsync()` aan. Met deze methode laat u de Speech-service weten dat u tekst gaat opsturen voor synthese.
 
-We schrijven ook het geretourneerde resultaat, of eventuele fouten, naar de console en sluiten de synthesizer.
+We schrijven ook het geretourneerde resultaat, of eventuele fouten, naar de console en sluiten tot slot de synthesizer.
 ```JavaScript
  // we are done with the setup
   var text = "Hello World"
@@ -122,7 +122,7 @@ We schrijven ook het geretourneerde resultaat, of eventuele fouten, naar de cons
     },
     filename);
 ```
-## <a name="check-your-code"></a>Controleer uw code
+## <a name="check-your-code"></a>Uw code controleren
 ```JavaScript
 (function() {
   "use strict";

@@ -3,21 +3,21 @@ author: IEvangelist
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
-ms.author: dapine
-ms.openlocfilehash: 61c5370bc8dd77babaaa79c814c0d7a9c8049d73
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.author: trbye
+ms.openlocfilehash: ad3e005f65b1660bd843bf2819f41eddbed44e9c
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82978818"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035666"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u aan de slag gaat:
 
 > [!div class="checklist"]
-> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Een Azure-spraak resource maken<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-> * [Stel uw ontwikkel omgeving in en maak een leeg project](../../../../quickstarts/setup-platform.md)
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Een resource voor de Azure Speech-service maken<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> * [Uw ontwikkelomgeving instellen en een leeg project maken](../../../../quickstarts/setup-platform.md)
 
 ## <a name="create-a-new-website-folder"></a>Een nieuwe websitemap maken
 
@@ -41,7 +41,7 @@ Maak een nieuw bestand in de map met de naam `index.html` en open dit bestand me
 Als u de webpagina wilt hosten op een webserver, kunt u desgewenst een tokenbron opgeven voor uw voorbeeldtoepassing.
 Op die manier verlaat uw abonnementssleutel nooit uw server en is het gebruikers toegestaan gebruik te maken van spraakmogelijkheden zonder zelf een autorisatiecode in te hoeven voeren.
 
-Maak een nieuw bestand met de naam `token.php`. In dit voorbeeld gaan we er van uit dat uw webserver de PHP-scripttaal ondersteunt. Voer de volgende code in:
+Maak een nieuw bestand met de naam `token.php`. In dit voorbeeld gaan we ervan uit dat uw webserver de PHP-scripttaal ondersteunt als cURL is ingeschakeld. Voer de volgende code in:
 
 ```php
 <?php
@@ -67,11 +67,11 @@ echo curl_exec($ch);
 
 ## <a name="build-and-run-the-sample-locally"></a>Het voorbeeld bouwen en lokaal uitvoeren
 
-Om de app te starten, dubbelklikt u op het bestand index.html of opent u index.html met uw favoriete webbrowser. Er wordt een eenvoudige gebruikers interface weer gegeven waarmee u de sleutel en de [regio](../../../../regions.md) van uw abonnement en de synthese van de invoer tekst kunt invoeren.
+Om de app te starten, dubbelklikt u op het bestand index.html of opent u index.html met uw favoriete webbrowser. Er wordt een eenvoudige grafische gebruikersinterface weergegeven waarin u uw abonnementssleutel en [regio](../../../../regions.md) kunt invoeren en waarin ingevoerde spraak wordt omgezet in tekst.
 
 ## <a name="build-and-run-the-sample-via-a-web-server"></a>De voorbeeldtoepassing bouwen en uitvoeren via een webserver
 
-Als u uw app wilt starten, opent u uw favoriete webbrowser en wijst u deze naar de open bare URL waarop u de map host, voert u uw [regio](../../../../regions.md)in en de synthese van de invoer tekst. Indien dit is geconfigureerd, wordt er een token uit uw tokenbron opgehaald.
+Als u uw app wilt starten, opent u uw favoriete webbrowser en laat u deze wijzen naar de openbare URL waarop u de map host, geeft u uw [regio](../../../../regions.md) op en activeert u teksttranscriptie van de ingevoerde spraak. Indien dit is geconfigureerd, wordt er een token uit uw tokenbron opgehaald.
 
 ## <a name="next-steps"></a>Volgende stappen
 
