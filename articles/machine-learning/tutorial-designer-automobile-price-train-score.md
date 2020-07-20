@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Autoprijzen voorspellen met de ontwerpfunctie'
+title: 'Zelfstudie: Autoprijzen voorspellen met de ontwerpfunctie (preview)'
 titleSuffix: Azure Machine Learning
 description: Ontdek hoe u een machine learning-model traint, een score geeft en implementeert aan de hand van een slepen-en-neerzetteninterface. Deze zelfstudie is deel 1 van een tweedelige serie over het voorspellen van autoprijzen aan de hand van lineaire regressie.
 author: peterclu
@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 7068c1e795e7a607776c48d1b026562a1be6b25d
-ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
+ms.openlocfilehash: 2922b5d3aa6cee0f1222c041a0e9728936754c21
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/29/2020
-ms.locfileid: "85517605"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200032"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Zelfstudie: Prijzen voor auto's voorspellen met de ontwerpfunctie (preview-versie)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]

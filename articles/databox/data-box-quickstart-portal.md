@@ -9,18 +9,18 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 04343f684539307957cd635822ba1ba5a1ce24c9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: dd429dadcbe67f0ac91da19d6606626b39f34ef5
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76313770"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201095"
 ---
-# <a name="get-started-with-azure-data-box"></a>Aan de slag met de Azure Data Box 
+# <a name="get-started-with-azure-data-box-to-import-data-into-azure"></a>Aan de slag met Azure Data Box om gegevens te importeren in Azure
 
 ::: zone target="docs"
 
-In deze quickstart wordt beschreven hoe u de Azure Data Box implementeert met behulp van de Azure-portal. De stappen omvatten het aansluiten van de kabels, het configureren en het kopiëren van gegevens naar de Data Box, zodat deze kunnen worden geüpload naar Azure. De quickstart wordt uitgevoerd in de Azure-portal en op de lokale webgebruikersinterface van het apparaat.
+In deze quickstart wordt beschreven hoe u de Azure Data Box implementeert met behulp van de Azure-portal voor een belangrijke bestelling. De stappen omvatten het aansluiten van de kabels, het configureren en het kopiëren van gegevens naar de Data Box, zodat deze kunnen worden geüpload naar Azure. De stappen van de quickstart worden uitgevoerd in de Azure-portal en op de lokale webgebruikersinterface van het apparaat.
 
 Ga voor gedetailleerde stapsgewijze instructies voor implementatie en tracering naar [Zelfstudie: Azure Data Box bestellen](data-box-deploy-ordered.md)
 
@@ -28,7 +28,7 @@ Ga voor gedetailleerde stapsgewijze instructies voor implementatie en tracering 
 
 ::: zone target="chromeless"
 
-In deze handleiding wordt beschreven hoe u de Azure Data Box implementeert met behulp van de Azure-portal. De stappen omvatten het controleren van de vereisten, bekabelen en verbinding maken met het apparaat, en het kopiëren van gegevens naar het apparaat, zodat deze naar Azure worden geüpload.
+In deze handleiding wordt beschreven hoe u de Azure Data Box implementeert voor importeren met behulp van de Azure-portal. De stappen omvatten het controleren van de vereisten, bekabelen en verbinding maken met het apparaat, en het kopiëren van gegevens naar het apparaat, zodat deze naar Azure worden geüpload.
 
 ::: zone-end
 

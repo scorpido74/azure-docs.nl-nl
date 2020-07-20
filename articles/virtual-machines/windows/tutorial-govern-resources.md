@@ -1,5 +1,5 @@
 ---
-title: Zelf studie-virtuele machines beheren met Power shell
+title: Zelfstudie - Virtuele machines beheren met PowerShell
 description: In deze zelfstudie leert u hoe u Azure PowerShell gebruikt voor het beheren van virtuele Azure-machines door RBAC, beleid, vergrendelingen en tags toe te passen
 author: tfitzmac
 ms.service: virtual-machines-windows
@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 12/05/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: b4ce4cd53f9dda3d0f96e892128d543e59c83b26
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: fce613da352e55bae64db2912af23a07f4bf954f
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100359"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200674"
 ---
-# <a name="tutorial-learn-about-windows-virtual-machine-management-with-azure-powershell"></a>Zelf studie: meer informatie over het beheer van virtuele Windows-machines met Azure PowerShell
+# <a name="tutorial-learn-about-windows-virtual-machine-management-with-azure-powershell"></a>Zelfstudie: Meer informatie over het beheren van virtuele Windows-machines met Azure PowerShell
 
 [!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
@@ -23,7 +23,7 @@ ms.locfileid: "82100359"
 
 Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. 
 
-Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U kunt Cloud Shell ook starten op een afzonderlijk browser tabblad door naar te [https://shell.azure.com/powershell](https://shell.azure.com/powershell)gaan. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
+Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U kunt Cloud Shell ook openen in een afzonderlijk browsertabblad door naar [https://shell.azure.com/powershell](https://shell.azure.com/powershell) te gaan. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
 
 ## <a name="understand-scope"></a>Bereik
 
@@ -63,7 +63,7 @@ New-AzRoleAssignment -ObjectId $adgroup.id `
   -RoleDefinitionName "Virtual Machine Contributor"
 ```
 
-Als er een fout bericht wordt weer **gegeven \<met de melding dat de Principal-GUID> niet in de directory bestaat, is**de nieuwe groep niet door gegeven in de Azure Active Directory. Probeer de opdracht opnieuw uit te voeren.
+Als een fout optreedt waarin staat dat **Principal\<guid> niet bestaat in de directory**, is de nieuwe groep niet in heel Azure Active Directory doorgegeven. Probeer de opdracht opnieuw uit te voeren.
 
 Normaal gesproken herhaalt u het proces voor *Inzender voor netwerken* en *Inzender voor opslagaccounts* om ervoor te zorgen dat gebruikers worden toegewezen om de geïmplementeerde resources te beheren. In dit artikel kunt u deze stappen overslaan.
 
@@ -163,7 +163,7 @@ U ziet een fout met de melding dat de verwijderbewerking niet kan worden voltooi
 
 ## <a name="tag-resources"></a>Resources taggen
 
-U past [Tags](../../azure-resource-manager/management/tag-resources.md) toe op uw Azure-resources om ze logisch te organiseren op basis van categorieën. Elke tag bestaat uit een naam en een waarde. U kunt de naam Omgeving en de waarde Productie bijvoorbeeld toepassen op alle resources in de productie.
+U past [tags](../../azure-resource-manager/management/tag-resources.md) toe op uw Azure-resources om deze logisch te ordenen in categorieën. Elke tag bestaat uit een naam en een waarde. U kunt de naam Omgeving en de waarde Productie bijvoorbeeld toepassen op alle resources in de productie.
 
 [!INCLUDE [Resource Manager governance tags Powershell](../../../includes/resource-manager-governance-tags-powershell.md)]
 
@@ -218,6 +218,10 @@ U kunt de opdracht [Remove-AzResourceGroup](https://docs.microsoft.com/powershel
 Remove-AzResourceGroup -Name myResourceGroup
 ```
 
+## <a name="manage-costs"></a>Kosten beheren
+
+[!INCLUDE [cost-management-horizontal](../../../includes/cost-management-horizontal.md)]
+
 ## <a name="next-steps"></a>Volgende stappen
 
 In deze zelfstudie hebt u een aangepaste installatiekopie voor een virtuele machine gemaakt. U hebt geleerd hoe u:
@@ -228,7 +232,7 @@ In deze zelfstudie hebt u een aangepaste installatiekopie voor een virtuele mach
 > * Kritieke resources beveiligt met vergrendelingen
 > * Resources tagt voor facturering en beheer
 
-Ga naar de volgende zelf studie voor meer informatie over het identificeren van wijzigingen en het beheren van pakket updates op een virtuele Linux-machine.
+Ga verder met de volgende zelfstudie om te leren hoe u wijzigingen identificeert en pakketupdates op een virtuele Linux-machine beheert.
 
 > [!div class="nextstepaction"]
 > [Virtuele machines beheren](tutorial-config-management.md)

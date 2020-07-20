@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 06/29/2020
+ms.date: 07/09/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 13949bef7b26058c577a3ab85b4fb2e736bba8f5
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 219551f2bba229fb627092548fe5c5f5ff8798b9
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563006"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220595"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Zelfstudie: Een site-naar-site-verbinding maken met Azure Virtual WAN
 
@@ -87,17 +87,7 @@ In deze stap verbindt u uw VPN-site met de hub.
 
 ## <a name="connect-the-vnet-to-the-hub"></a><a name="vnet"></a>VNet verbinden met de hub
 
-In deze stap brengt u verbinding tussen uw hub en een VNet tot stand. Herhaal deze stappen voor elk VNet dat u wilt verbinden.
-
-1. Klik op de pagina voor uw virtuele WAN op **Virtuele netwerkverbinding**.
-2. Klik op de pagina Virtuele netwerkverbinding op **+Verbinding toevoegen**.
-3. Vul de volgende velden in op de pagina **Verbinding toevoegen**:
-
-    * **Verbindingsnaam** - voer een naam in voor uw verbinding.
-    * **Hubs** - selecteer de hub die u wilt koppelen aan deze verbinding.
-    * **Abonnement** - controleer of het abonnement klopt.
-    * **Virtueel netwerk** - selecteer het virtuele netwerk dat met deze hub wilt verbinden. Het virtuele netwerk mag geen bestaande virtuele netwerkgateway hebben.
-4. Klik op **OK** om de virtuele netwerkverbinding te maken.
+[!INCLUDE [Connect](../../includes/virtual-wan-connect-vnet-hub-include.md)]
 
 ## <a name="download-vpn-configuration"></a><a name="device"></a>VPN-configuratie downloaden
 
@@ -262,7 +252,7 @@ Op de pagina **VPN-gateway bewerken** ziet u de volgende instellingen:
 * Openbaar IP-adres van VPN-gateway (toegewezen door Azure)
 * Privé-IP-adres van VPN-gateway (toegewezen door Azure)
 * Standaard BGP-IP-adres van VPN-gateway (toegewezen door Azure)
-* Configuratie-optie voor aangepast BGP-IP-adres: Dit veld is voorbehouden voor APIPA (Automatic Private IP Addressing). Azure ondersteunt BGP-IP in het bereik 169.254.21.* en 169.254.22.*
+* Configuratie-optie voor aangepast BGP-IP-adres: Dit veld is voorbehouden voor APIPA (Automatic Private IP Addressing). Azure ondersteunt BGP-IP in het bereik 169.254.21.* en 169.254.22.*. Azure accepteert BGP-verbindingen in deze bereiken maar zal verbinding maken met het standaard BGP-IP-adres.
 
    :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-2.png" alt-text="Configuratie weergeven" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-2-expand.png":::
 

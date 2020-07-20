@@ -1,21 +1,21 @@
 ---
-title: Team ontwikkeling met Java en Visual Studio code
+title: Teamontwikkeling met behulp van Java en Visual Studio Code
 services: azure-dev-spaces
 author: stepro
 ms.author: stephpr
 ms.date: 08/01/2018
 ms.topic: tutorial
-description: In deze zelf studie leert u hoe u Azure dev Spaces en Visual Studio code kunt gebruiken om team ontwikkeling te doen op een Java-toepassing in de Azure Kubernetes-service
-keywords: 'Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S '
+description: In deze zelfstudie ziet u hoe u Azure Dev Spaces en Visual Studio Code gebruikt voor teamontwikkeling in een Java-toepassing in Azure Kubernetes Service
+keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, servicemesh, servicemeshroutering, kubectl, k8s '
 manager: gwallace
-ms.openlocfilehash: 352671b2fe31095b0ffcaffb49195071a456a892
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 8bfcf16d3fcf685f946eb38b0b47fce4f2feba5b
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78245009"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220232"
 ---
-# <a name="team-development-using-java-and-visual-studio-code-with-azure-dev-spaces"></a>Team ontwikkeling met behulp van Java en Visual Studio code met Azure dev Spaces
+# <a name="team-development-using-java-and-visual-studio-code-with-azure-dev-spaces"></a>Teamontwikkeling met behulp van Java en Visual Studio Code met Azure Dev Spaces
 
 In deze zelfstudie leert u hoe een team van ontwikkelaars tegelijkertijd in hetzelfde Kubernetes-cluster kan samenwerken met behulp van Dev Spaces.
 
@@ -34,7 +34,7 @@ Momenteel is uw voorbeeldcode niet erg complex. Maar in de pratijk krijgt u bij 
 * Sommige ontwikkelaars maken gebruik van het simuleren of nabootsen van veel van hun serviceafhankelijkheden. Deze aanpak kan helpen, maar dergelijke nabootsingen zijn al gauw van invloed op de ontwikkelingskosten. Bovendien kan deze aanpak ertoe leiden dat uw ontwikkelomgeving er compleet anders uitziet dan de productieomgeving, waardoor er subtiele foutjes kunnen binnensluipen.
 * Een direct gevolg is dat het testen van integratie op welke manier dan ook moeilijk wordt. De integratie kan alleen realistisch worden getest na een doorvoering, wat betekent dat problemen pas later in de ontwikkelcyclus zichtbaar worden.
 
-    ![](media/common/microservices-challenges.png)
+    ![Diagram dat de uitdagingen weergeeft waarmee u te maken hebt wanneer u microservices ontwikkelt.](media/common/microservices-challenges.png)
 
 ### <a name="work-in-a-shared-dev-space"></a>In een gedeelde ontwikkelruimte werken
 Met Azure Dev Spaces kunt u een *gedeelde* ontwikkelruimte instellen in Azure. Elke ontwikkelaar kan zich richten op het eigen deel van de toepassing, en kan *vooraf doorgevoerde code* iteratief doorvoeren in een ontwikkelruimte die alle andere services en cloudresources al bevat waarvan de scenario’s afhankelijk zijn. Afhankelijkheden zijn altijd up-to-date en ontwikkelaars werken op een manier die de productie weerspiegelt.
@@ -43,7 +43,7 @@ Met Azure Dev Spaces kunt u een *gedeelde* ontwikkelruimte instellen in Azure. E
 Terwijl u code ontwikkelt voor uw service en voordat u klaar bent om deze uit te geven, is de codestatus meestal niet in orde. U bent de code nog steeds iteratief aan het vormen en testen, en aan het experimenten met oplossingen. Azure Dev Spaces biedt het concept van een **ruimte**, waardoor u geïsoleerd kunt werken, zonder dat u de code van teamleden per ongeluk breekt.
 
 ## <a name="use-dev-spaces-for-team-development"></a>Dev Spaces gebruiken voor teamontwikkeling
-Laten we deze ideeën zien met een concreet voor beeld met behulp van onze *webfrontend* -> *mywebapi* -voorbeeld toepassing. We gebruiken een scenario waarin een ontwikkelaar, Scott, een wijziging moet aanbrengen in de *mywebapi*-service, en in die service *alleen*. De *webfrontend* hoeft niet te worden gewijzigd als onderdeel van de door Scott uitgevoerde update.
+We demonstreren deze ideeën aan de hand van een concreet voorbeeld met behulp van onze *webfrontend* -> *mywebapi*-voorbeeldtoepassing. We gebruiken een scenario waarin een ontwikkelaar, Scott, een wijziging moet aanbrengen in de *mywebapi*-service, en in die service *alleen*. De *webfrontend* hoeft niet te worden gewijzigd als onderdeel van de door Scott uitgevoerde update.
 
 _Zonder_ Dev Spaces zou Scott maar over een paar manieren beschikken om de update te ontwikkelen en te testen, en geen van alle is daarvoor ideaal:
 * ALLE onderdelen lokaal uitvoeren. Hiervoor moet een krachtigere ontwikkelmachine met Docker worden geïnstalleerd, en wellicht ook MiniKube.
@@ -54,9 +54,9 @@ _Zonder_ Dev Spaces zou Scott maar over een paar manieren beschikken om de updat
 ### <a name="set-up-your-baseline"></a>De basislijn instellen
 We moeten eerst een basislijn voor onze services implementeren. Deze implementatie vertegenwoordigt de laatst bekende goed werkende situatie. Daardoor kunt u eenvoudig het gedrag van uw lokale code vergelijken met de ingecheckte versie. Vervolgens maakt u een onderliggende ruimte op basis van deze basislijn zodat we onze wijzigingen van *mywebapi* kunnen testen binnen de context van de grotere toepassing.
 
-1. De [voorbeeld toepassing voor ontwikkel ruimten](https://github.com/Azure/dev-spaces)klonen:`git clone https://github.com/Azure/dev-spaces && cd dev-spaces`
-1. De *azds_updates*van de externe vertakking uitchecken:`git checkout -b azds_updates origin/azds_updates`
-1. Selecteer de _dev_-ruimte: `azds space select --name dev`. Als u wordt gevraagd om een bovenliggende ontwikkel ruimte te _ \<selecteren\>_, selecteert u geen.
+1. De [Dev Spaces-voorbeeldtoepassing](https://github.com/Azure/dev-spaces) klonen: `git clone https://github.com/Azure/dev-spaces && cd dev-spaces`
+1. De externe branch *azds_updates* uitchecken: `git checkout -b azds_updates origin/azds_updates`
+1. Selecteer de _dev_-ruimte: `azds space select --name dev`. Wanneer u wordt gevraagd een bovenliggende dev-ruimte te selecteren, selecteert u _\<none\>_ .
 1. Navigeer naar de _mywebapi_-map en voer deze opdracht uit: `azds up -d`
 1. Navigeer naar de _webfrontend_-map en voer deze opdracht uit: `azds up -d`
 1. Voer `azds list-uris` uit om het openbare eindpunt voor de _webfrontend_ weer te geven
@@ -94,14 +94,14 @@ Selecteer _dev_ als de **bovenliggende ontwikkelruimte** als u daarom wordt gevr
 
 Ervan uitgaande dat deze inleiding nog steeds hypothetisch is, hebben we voor de nieuwe ruimte de naam _scott_ gebruikt, zodat collega's kunnen nagaan wie daarin aan het werk is. U kunt er elke naam aan geven, met de nodige flexibiliteit wat betreft de betekenis ervan, zoals _sprint4_ of _demo_. Hoe het ook zij, _dev_ fungeert als basislijn voor alle ontwikkelaars die aan een onderdeel van deze toepassing werken:
 
-![](media/common/ci-cd-space-setup.png)
+![Een diagram dat een eenvoudige CICD-ruimte-indeling weergeeft.](media/common/ci-cd-space-setup.png)
 
 Voer de opdracht `azds space list` uit om een lijst te krijgen van alle ruimten in de ontwikkelomgeving. In de kolom _Geselecteerd_ wordt aangegeven welke ruimte u momenteel hebt geselecteerd (true/false). In uw geval werd de ruimte met de naam _cott_ automatisch geselecteerd toen die werd gemaakt. U kunt op elk moment een andere ruimte selecteren met de opdracht `azds space select`.
 
 Laten we eens kijken hoe dat in zijn werk gaat.
 
 ### <a name="make-a-code-change"></a>Een code wijzigen
-Ga naar het venster VS code `mywebapi` en maak een code in `String index()` `src/main/java/com/ms/sample/mywebapi/Application.java`de-methode, bijvoorbeeld:
+Ga naar het venster van VS Code voor `mywebapi` en bewerk de code op basis van de `String index()`-methode in `src/main/java/com/ms/sample/mywebapi/Application.java`, bijvoorbeeld:
 
 ```java
 @RequestMapping(value = "/", produces = "text/plain")
@@ -112,7 +112,7 @@ public String index() {
 
 ### <a name="run-the-service"></a>De service uitvoeren
 
-Als u de service wilt uitvoeren, drukt u op `azds up` F5 (of typt u in het Terminal venster) om de service uit te voeren. De service wordt automatisch uitgevoerd in uw zojuist geselecteerde _dev/scott_-ruimte. Controleer of uw service wordt uitgevoerd in een eigen ruimte door het `azds list-up`volgende uit te voeren:
+Druk op F5 (of typ `azds up` in het Terminal-venster) om de service uit te voeren. De service wordt automatisch uitgevoerd in uw zojuist geselecteerde _dev/scott_-ruimte. Controleer of uw service in een eigen ruimte wordt uitgevoerd door de opdracht `azds list-up` uit te voeren:
 
 ```cmd
 $ azds list-up
@@ -122,9 +122,9 @@ mywebapi                  scott     Service  3m ago   Running
 webfrontend               dev       Service  26m ago  Running
 ```
 
-U ziet dat er nu een instantie van *mywebapi* wordt uitgevoerd in de _dev/Scott-_ ruimte. De versie die wordt uitgevoerd in _dev_ , wordt nog steeds uitgevoerd, maar wordt niet weer gegeven.
+U ziet dat er nu een exemplaar van *mywebapi* wordt uitgevoerd in de ruimte _dev/scott_. De versie in _dev_ wordt nog steeds uitgevoerd, maar wordt niet vermeld.
 
-De Url's voor de huidige ruimte weer geven door `azds list-uris`uit te voeren.
+Vermeld de URL’s voor de huidige ruimte door `azds list-uris` uit te voeren.
 
 ```cmd
 $ azds list-uris
@@ -135,9 +135,9 @@ http://localhost:53831 => mywebapi.scott:80                                Tunne
 http://scott.s.dev.webfrontend.6364744826e042319629.ce.azds.io/  Available
 ```
 
-U ziet dat de URL voor het open bare toegangs punt voor Webfront-front-front- *End* wordt voorafgegaan door *Scott. s*. Deze URL is uniek voor de _dev/scott_-ruimte. Dit URL-voor voegsel vertelt de ingangs controller om aanvragen te routeren naar de _dev/Scott-_ versie van een service. Wanneer een aanvraag met deze URL wordt verwerkt door dev-ruimten, probeert de ingangs controller de aanvraag eerst te routeren naar de *webfrontend* -service in de _dev/Scott-_ ruimte. Als dat mislukt, wordt de aanvraag doorgestuurd naar de *webfrontend* -service in de _ontwikkel_ ruimte als terugval. Er is ook een localhost-URL voor toegang tot de service via localhost via de Kubernetes-functionaliteit voor het *door sturen van poorten* . Zie [hoe Azure dev Spaces werkt en is geconfigureerd](how-dev-spaces-works.md)voor meer informatie over url's en route ring in azure dev Spaces.
+U ziet dat de URL van het openbare toegangspunt voor *webfrontend* wordt voorafgegaan door *scott.s*. Deze URL is uniek voor de _dev/scott_-ruimte. Dit URL-voorvoegsel vertelt de controller van inkomend verkeer verzoeken te routeren naar de _dev/scott_-versie van een service. Wanneer een verzoek met deze URL wordt afgehandeld door Dev Spaces, probeert de controller van inkomend verkeer het verzoek eerst te routeren naar de *webfrontend*-service in de _dev/scott_-ruimte. Als dat niet lukt, wordt het verzoek gerouteerd naar de *webfrontend*-service in de _dev_-ruimte als terugvaloptie. Merk ook op dat er een localhost-URL is voor toegang tot de service via localhost met behulp van de Kubernetes-functie *port-forward*. Zie [Hoe Azure Dev Spaces werkt en is geconfigureerd](how-dev-spaces-works.md) voor meer informatie over URL’s en routering in Azure Dev Spaces.
 
-![Ruimte routering](media/common/Space-Routing.png)
+![Ruimteroutering](media/common/Space-Routing.png)
 
 Deze ingebouwde functie van Azure Dev Spaces stelt u in staat om code te testen in een gedeelde ruimte, zonder dat elke ontwikkelaar telkens de volledige groep services opnieuw moet maken in hun eigen ruimte. Voor deze routering moeten doorgifteheaders worden doorgestuurd in uw app-code, zoals uitgelegd in de vorige stap van deze handleiding.
 
@@ -158,7 +158,7 @@ U hebt de introductiehandleiding voltooid! U hebt geleerd hoe u:
 > * Uw code op een productieve manier ontwikkelen en testen in een teamomgeving.
 > * Zorg voor een basislijn van de functionaliteit van Dev-spaties van om eenvoudig geïsoleerde wijzigingen te testen in de context van een grotere microservicetoepassing
 
-Nu u Azure dev Spaces hebt bekeken, [deelt u uw ontwikkel ruimte met een teamlid](how-to/share-dev-spaces.md) en begint u samen te werken.
+Nu u Azure Dev Spaces hebt verkend, kunt u [uw dev-ruimte delen met teamleden](how-to/share-dev-spaces.md) en gaan samenwerken.
 
 ## <a name="clean-up"></a>Opruimen
 Als u een exemplaar van Azure Dev Spaces in een cluster volledig wilt verwijderen, waaronder alle ontwikkelruimtes en de actieve services die erin worden uitgevoerd, gebruikt u de opdracht `az aks remove-dev-spaces`. Houd er rekening mee dat deze actie niet kan worden teruggedraaid. U kunt later opnieuw ondersteuning voor Azure Dev Spaces toevoegen aan het cluster, maar u moet dan helemaal opnieuw beginnen. Uw oude services en ruimtes worden niet hersteld.
