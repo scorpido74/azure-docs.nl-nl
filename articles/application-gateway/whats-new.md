@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: overview
 ms.date: 06/10/2020
 ms.author: victorh
-ms.openlocfilehash: dd6ec2057ede076511b567c013fc1b6fa12d8281
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: ebb3e6ba777646d39e3732215aa6c8fdd12ca40a
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669729"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186687"
 ---
 # <a name="whats-new-in-azure-application-gateway"></a>Wat zijn de nieuwe functies in Azure Application Gateway?
 
@@ -27,6 +27,7 @@ Azure Application Gateway wordt voortdurend bijgewerkt. Om u op de hoogte te hou
 
 |Functie  |Beschrijving  |Datum toegevoegd  |
 |---------|---------|---------|
+| Aangepaste poort voor statuscontrole | Application Gateway v2 SKU biedt nu de mogelijkheid om een aangepaste poort op te geven bij de configuratie van de statuscontrole. Zie [Overzicht statuscontrole](application-gateway-probe-overview.md) voor meer informatie | Juli 2020
 | AGIC (Application Gateway Ingress Controller) als AKS-invoegtoepassing (preview) |Application Gateway Ingress Controller kan nu met één regel worden geïmplementeerd als een systeemeigen AKS-invoegtoepassing via Azure CLI. Omdat AGIC een AKS-invoegtoepassing is, kan het een volledig beheerde service worden, terwijl het nog steeds wordt uitgevoerd in het AKS-cluster van de klant. Zie [Verschillen tussen AGIC-invoegtoepassingen](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on) voor meer informatie. |Juni 2020 |
 | UDR (door de gebruiker gedefinieerde routes) in v2 (preview) |Door de gebruiker gedefinieerde routes worden nu ondersteund in sommige scenario's in Application Gateway v2 SKU's. Zie [Overzicht van Application Gateway-configuratie](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet) voor meer informatie. |Maart 2020 |
 |Wijzigingen in affiniteit op basis van cookies |Wanneer affiniteit op basis van cookies is ingeschakeld, wordt via Application Gateway een andere identieke cookie geplaatst met de naam *ApplicationGatewayAffinityCORS*, naast de bestaande cookie ApplicationGatewayAffinity. Aan *ApplicationGatewayAffinityCORS* zijn nog twee kenmerken toegevoegd (*SameSite=None; Secure*) zodat tijdelijke sessies behouden blijven, zelfs voor oorsprongoverschrijdende aanvragen. Zie [Affiniteit op basis van Application Gateway-cookie](configuration-overview.md#cookie-based-affinity) voor meer informatie. |Februari 2020 |

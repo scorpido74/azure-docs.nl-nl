@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: allensu
-ms.openlocfilehash: 598df2f0a1e9badebbb1bf8e7ec0f93ff98d55ce
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 08f7554ed9648df8b225fe9f205ee13b0f693c44
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85341779"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170561"
 ---
 # <a name="what-is-azure-load-balancer"></a>Wat is Azure Load Balancer?
 
@@ -67,7 +67,7 @@ De belangrijkste scenario's die u kunt uitvoeren met Standard Load Balancer zijn
 ### <a name="secure-by-default"></a><a name="securebydefault"></a>Standaardbeveiliging
 
 Standard Load Balancer is gebouwd op basis van het beveiligingsmodel voor vertrouwensrelaties van het netwerk. Standard Load Balancer zorgt standaard voor beveiliging en maakt deel uit van uw virtuele netwerk. Het virtuele netwerk is een privé- en geïsoleerd netwerk.  Dit betekent dat Standard Load Balancers en standaard openbare IP-adressen zijn gesloten voor inkomende stromen, tenzij ze worden geopend door netwerkbeveiligingsgroepen. Netwerkbeveiligingsgroepen worden gebruikt om toegestaan verkeer expliciet toe te staan.  Als u geen netwerkbeveiligingsgroep op een subnet of NIC van uw virtuele-machineresource hebt, mag het verkeer deze bron niet bereiken. Zie [Netwerkbeveiligingsgroepen](../virtual-network/security-overview.md) voor meer informatie over netwerkbeveiligingsgroepen en hoe u deze toepast voor uw scenario.
-Basis Load Balancer is standaard open voor internet.
+Basis Load Balancer is standaard open voor internet. Daarnaast slaat Load Balancer geen klantgegevens op.
 
 ## <a name="pricing-and-sla"></a>Prijzen en SLA
 

@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/30/2020
 ms.author: victorh
-ms.openlocfilehash: 9b9b7926caa717c1a02988ac7a927bd9bd39d52a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: cec7ff020ce7e5894d4909263b5ab1aa2275caac
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683700"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260633"
 ---
-# <a name="quickstart-deploy-azure-firewall-with-availability-zones---resource-manager-template"></a>Quickstart: Azure Firewall met beschikbaarheidszones implementeren - Resource Manager-sjabloon
+# <a name="quickstart-deploy-azure-firewall-with-availability-zones---arm-template"></a>Quickstart: Azure Firewall met beschikbaarheidszones implementeren - ARM-sjabloon
 
-In deze quickstart gebruikt u een Resource Manager-sjabloon om een Azure-firewall in drie beschikbaarheidszones. 
+In deze quickstart gebruikt u een Azure Resource Manager-sjabloon (ARM-sjabloon) om een Azure-firewall in drie beschikbaarheidszones.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -29,17 +29,19 @@ Een door de gebruiker gedefinieerde route leidt het netwerkverkeer vanuit het su
 
 Raadpleeg voor meer informatie over Azure Firewall [Azure Firewall implementeren en configureren met Azure Portal](tutorial-firewall-deploy-portal.md).
 
+Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
+
+[![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurefirewall-with-zones-sandbox%2Fazuredeploy.json)
+
 ## <a name="prerequisites"></a>Vereisten
 
 - Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 
-## <a name="create-an-azure-firewall-with-availability-zones"></a>Een Azure Firewall maken met beschikbaarheidszones
+## <a name="review-the-template"></a>De sjabloon controleren
 
 Met deze sjabloon maakt u een Azure-firewall met beschikbaarheidszones, samen met de benodigde resources die ondersteuning bieden voor de Azure-firewall.
 
-### <a name="review-the-template"></a>De sjabloon controleren
-
-De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure Quick Start-sjablonen](https://azure.microsoft.com/resources/templates/101-azurefirewall-with-zones-sandbox).
+De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-quickstartsjablonen](https://azure.microsoft.com/resources/templates/101-azurefirewall-with-zones-sandbox).
 
 :::code language="json" source="~/quickstart-templates/101-azurefirewall-with-zones-sandbox/azuredeploy.json" range="001-444" highlight="369-442":::
 
@@ -54,19 +56,19 @@ Er worden meerdere Azure-resources gedefinieerd in de sjabloon:
 - [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
 - [**Microsoft.Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
 
-### <a name="deploy-the-template"></a>De sjabloon implementeren
+## <a name="deploy-the-template"></a>De sjabloon implementeren
 
-De Resource Manager-sjabloon implementeren in Azure:
+Het ARM-sjabloon implementeren in Azure:
 
-1. Selecteer **Implementeren in Azure** om u aan te melden bij Azure en de sjabloon te openen. Met de sjabloon maakt u een Azure-firewall, de netwerkinfrastructuur en twee virtuele machines.
+1. Selecteer **Implementeren in Azure** om u aan te melden bij Azure, en open de sjabloon. Met de sjabloon maakt u een Azure-firewall, de netwerkinfrastructuur en twee virtuele machines.
 
    [![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurefirewall-with-zones-sandbox%2Fazuredeploy.json)
 
 2. Typ of selecteer de volgende waarden in de portal, op de pagina **Een sandbox-instelling maken met Azure-firewall met zones**:
    - **Resourcegroep**: Selecteer **Nieuwe maken**, geef een naam op voor de resourcegroep en selecteer **OK**. 
-   - **Naam van virtueel netwerk**: Typ een naam voor het nieuwe VNet. 
+   - **Naam van virtueel netwerk**: Typ een naam voor het nieuwe VNet.
    - **Gebruikersnaam van beheerder**: Voer een gebruikersnaam voor het beheerdersaccount in.
-   - **Wachtwoord voor beheerder**: Voer het wachtwoord voor de beheerder in. 
+   - **Wachtwoord voor beheerder**: Voer het wachtwoord voor de beheerder in.
 
 3. Lees de voorwaarden en schakel vervolgens het selectievakje **Ik ga akkoord met de bovenstaande voorwaarden** in en selecteer **Aankoop**. De implementatie kan 10 minuten of langer duren.
 
@@ -78,7 +80,7 @@ Raadpleeg [Microsoft.Network/azureFirewalls](/azure/templates/microsoft.network/
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u ze niet meer nodig hebt, kunt u de resourcegroep, de firewall en alle gerelateerde resources verwijderen door de PowerShell-opdracht `Remove-AzResourceGroup` uit te voeren. Wanneer u een resourcegroep met de naam *myResourceGroup* wilt verwijderen, voert u het volgende uit: 
+Wanneer u ze niet meer nodig hebt, kunt u de resourcegroep, de firewall en alle gerelateerde resources verwijderen door de PowerShell-opdracht `Remove-AzResourceGroup` uit te voeren. Wanneer u een resourcegroep met de naam *myResourceGroup* wilt verwijderen, voert u het volgende uit:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name MyResourceGroup

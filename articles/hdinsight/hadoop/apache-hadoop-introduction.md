@@ -1,6 +1,6 @@
 ---
-title: Wat zijn Apache Hadoop en MapReduce-Azure HDInsight
-description: Een inleiding tot HDInsight en de Apache Hadoop technologie stack en-onderdelen.
+title: Wat zijn Apache Hadoop en MapReduce - Azure HDInsight
+description: Een inleiding tot HDInsight en de technologiestack en onderdelen van Apache Hadoop.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,51 +8,51 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.date: 02/27/2020
-ms.openlocfilehash: 7e8dd69b7c58e090c30ea1aa59feddab610dd3c5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 2dc9d5d154c8128e0744e8dd9f08dec6e52381a4
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78244877"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205299"
 ---
-# <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>Wat is Apache Hadoop in azure HDInsight?
+# <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>Wat is Apache Hadoop in Azure HDInsight?
 
-[Apache Hadoop](https://hadoop.apache.org/) was het originele open-source framework voor gedistribueerde verwerking en analyse van sets met big data in clusters. Het Hadoop-ecosysteem bevat gerelateerde software en hulpprogram ma's, waaronder Apache Hive, Apache HBase, Spark, Kafka en vele andere.
+[Apache Hadoop](https://hadoop.apache.org/) was het originele open-source framework voor gedistribueerde verwerking en analyse van sets met big data in clusters. Het Hadoop-ecosysteem omvat verwante software en hulpprogramma's, waaronder Apache Hive, Apache HBase, Spark en Kafka.
 
-Azure HDInsight is een volledig beheerde, open-source analyse service in de Cloud voor ondernemingen. Met het cluster type Apache Hadoop in azure HDInsight kunt u HDFS, het resource beheer voor GARENs en een eenvoudig MapReduce-programmeer model gebruiken om batch gegevens parallel te verwerken en te analyseren.
+Azure HDInsight is een volledig beheerde, zeer uitgebreide opensource-analyseservice in de cloud voor bedrijven. Met het Apache Hadoop-clustertype in Azure HDInsight kunt u HDFS, YARN voor resourcebeheer en een eenvoudig MapReduce-programmeermodel gebruiken om batchgegevens parallel te verwerken en te analyseren.
 
-Raadpleeg [Components and versions available with HDInsight](../hdinsight-component-versioning.md) (Onderdelen en versies die beschikbaar zijn in HDInsight) om na te gaan welke onderdelen van de Hadoop-technologiestack in HDInsight beschikbaar zijn. Zie de [pagina met Azure-functies voor HDInsight](https://azure.microsoft.com/services/hdinsight/) voor meer informatie over Hadoop in HDInsight.
+Raadpleeg [Onderdelen en versies die beschikbaar zijn in HDInsight](../hdinsight-component-versioning.md) om na te gaan welke onderdelen van de Hadoop-technologiestack in HDInsight beschikbaar zijn. Zie de [pagina met Azure-functies voor HDInsight](https://azure.microsoft.com/services/hdinsight/) voor meer informatie over Hadoop in HDInsight.
 
 ## <a name="what-is-mapreduce"></a>Wat is MapReduce
 
-Apache Hadoop MapReduce is een software raamwerk voor het schrijven van taken waarmee enorme hoeveel heden gegevens worden verwerkt. Invoer gegevens worden in onafhankelijke segmenten gesplitst. Elk segment wordt parallel verwerkt over de knoop punten in uw cluster. Een MapReduce-taak bestaat uit twee functies:
+Apache Hadoop MapReduce is een software-framework om taken te schrijven waarmee enorme hoeveelheden gegevens worden verwerkt. Invoergegevens worden in losstaande segmenten opgedeeld. Elk segment wordt parallel verwerkt via de knooppunten in uw cluster. Een MapReduce-taak bestaat uit twee functies:
 
-* **Mapper**: gebruikt invoer gegevens, analyseert deze (meestal met filter-en sorteer bewerkingen) en verzendt Tuples (sleutel-waardeparen)
+* **Mapper**: Gebruikt invoergegevens, analyseert deze (meestal met filter- en sorteerbewerkingen) en verstuurt tuples (sleutel-waardeparen)
 
-* **Versmaller**: door de Mapper gegenereerde Tuples worden gebruikt en een samenvattings bewerking wordt uitgevoerd waarmee een kleiner, gecombineerd resultaat van de toewijzings gegevens wordt gemaakt
+* **Reducer**: Gebruikt Tuples verzonden door de Mapper en voert een samenvattingsbewerking uit die een kleiner, gecombineerd resultaat maakt van de Mapper-gegevens
 
-In het volgende diagram ziet u een voor beeld van een basis aantal woorden MapReduce-taak:
+In het volgende diagram ziet u een voorbeeld een eenvoudige MapReduce-taak die woorden telt:
 
- ![HDI. WordCountDiagram](./media/apache-hadoop-introduction/hdi-word-count-diagram.gif)
+ ![HDI.WordCountDiagram](./media/apache-hadoop-introduction/hdi-word-count-diagram.gif)
 
-De uitvoer van deze taak is het aantal keer dat elk woord is opgetreden in de tekst.
+De uitvoer van deze taak is het aantal keer dat elk woord voorkomt in de tekst.
 
-* De Mapper neemt elke regel uit de invoer tekst als invoer en splitst deze in woorden. Telkens wanneer een woord in het woord wordt uitgevoerd, wordt een sleutel/waarde-paar verzonden, gevolgd door een 1. De uitvoer wordt gesorteerd voordat deze naar de reductie functie wordt verzonden.
-* De verkorter telt het aantal afzonderlijke woorden voor elk woord en verzendt één sleutel/waarde-paar dat het woord bevat, gevolgd door de som van de bijbehorende exemplaren.
+* De mapper neemt elke regel van de invoertekst als invoer en splitst die op in woorden. Het verzendt een sleutel/waarde-paar telkens wanneer een woord voorkomt en het woord wordt gevolgd door een 1. De uitvoer wordt gesorteerd voor deze naar de reducer wordt verzonden.
+* De reducer somt deze individuele aantallen voor elk woord op en verzendt één sleutel/waarde-paar dat het woord en het aantal keer dat het voorkomt bevat.
 
-MapReduce kan in verschillende talen worden geïmplementeerd. Java is de meest voorkomende implementatie en wordt gebruikt voor demonstratie doeleinden in dit document.
+MapReduce kan in verschillende talen worden geïmplementeerd. Java is de meest voorkomende implementatie en wordt in dit document gebruikt ter demonstratie.
 
-## <a name="development-languages"></a>Ontwikkelings talen
+## <a name="development-languages"></a>Ontwikkelingstalen
 
-Talen of frameworks die zijn gebaseerd op Java en de Java Virtual Machine kunnen rechtstreeks als een MapReduce-taak worden uitgevoerd. Het voor beeld dat in dit document wordt gebruikt, is een Java MapReduce-toepassing. Niet-Java-talen, zoals C#, python of zelfstandige uitvoer bare bestanden, moeten **Hadoop streaming**gebruiken.
+Talen of frameworks die gebaseerd zijn op Java en de Java Virtual Machine kunnen rechtstreeks als een MapReduce-taak worden uitgevoerd. Het voorbeeld dat in dit document gebruikt wordt, is een Java MapReduce-toepassing. Niet-Java-talen, zoals C#, Python of zelfstandige uitvoerbare bestanden, moeten **Hadoop-streaming** gebruiken.
 
-Hadoop streaming communiceert met de Mapper en de verkorter dan STDIN en STDOUT. De Mapper en reducer lezen gegevens een regel tegelijk van STDIN en schrijven de uitvoer naar STDOUT. Elke regel die wordt gelezen of verzonden door de Mapper en de verkleinder moet de indeling hebben van een sleutel/waarde-paar, gescheiden door een tabteken:
+Hadoop-streaming communiceert met de Mapper en de reducer via STDIN en STDOUT. De mapper en reducer lezen één regel gegevens per keer vanaf STDIN, en schrijven de uitvoer naar STDOUT. Elke regel de gelezen of geschreven wordt door de mapper en reducer moet de indeling van een sleutel/waarde-paar hebben, gescheiden door een tabteken:
 
-    [key]/t[value]
+`[key]/t[value]`
 
-Zie [Hadoop streaming](https://hadoop.apache.org/docs/current/hadoop-streaming/HadoopStreaming.html)voor meer informatie.
+Zie [Hadoop-streaming](https://hadoop.apache.org/docs/current/hadoop-streaming/HadoopStreaming.html) voor meer informatie.
 
-Raadpleeg het volgende document voor voor beelden van het gebruik van Hadoop streaming met HDInsight:
+Raadpleeg het volgende document voor voorbeelden van het gebruik van Hadoop-streaming met HDInsight:
 
 * [C# MapReduce-taken ontwikkelen](apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
 

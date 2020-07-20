@@ -9,16 +9,16 @@ ms.topic: quickstart
 ms.date: 05/28/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 986e061c03634fe33af985c9d11569848500862c
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 963f728db55f587f7ae72aec702a099882cf401a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170491"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249356"
 ---
-# <a name="quickstart-direct-web-traffic-with-azure-application-gateway---resource-manager-template"></a>Quickstart: Webverkeer omleiden met Azure Application Gateway - Resource Manager-sjabloon
+# <a name="quickstart-direct-web-traffic-with-azure-application-gateway---arm-template"></a>Quickstart: Webverkeer omleiden met Azure Application Gateway - ARM-sjabloon
 
-In deze quickstart gebruikt u een Resource Manager-sjabloon om een Azure-toepassingsgateway te maken. Vervolgens test u de toepassingsgateway om er zeker van te zijn dat deze juist werkt.
+In deze quickstart gebruikt u een ARM-sjabloon (Azure Resource Manager-sjabloon) om een Azure Application Gateway te maken. Vervolgens test u de toepassingsgateway om er zeker van te zijn dat deze juist werkt.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -26,17 +26,19 @@ U kunt deze quickstart ook voltooien met via de [Azure-portal](quick-create-port
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
+Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
+
+[![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-qs%2Fazuredeploy.json)
+
 ## <a name="prerequisites"></a>Vereisten
 
 - Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 
-## <a name="create-an-application-gateway"></a>Een toepassingsgateway maken
+## <a name="review-the-template"></a>De sjabloon controleren
 
 Met deze sjabloon wordt een eenvoudige configuratie gemaakt met een openbaar front-end-IP-adres, een basislistener om een enkele site op de toepassingsgateway te hosten, een eenvoudige regel voor het doorsturen van aanvragen, en twee virtuele machines in de back-endpool.
 
-### <a name="review-the-template"></a>De sjabloon controleren
-
-De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-quickstart-sjablonen](https://github.com/Azure/azure-quickstart-templates/blob/master/ag-docs-qs/azuredeploy.json)
+De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-quickstartsjablonen](https://azure.microsoft.com/resources/templates/ag-docs-qs/)
 
 :::code language="json" source="~/quickstart-templates/ag-docs-qs/azuredeploy.json" range="001-343" highlight="197-297":::
 
@@ -50,10 +52,9 @@ Er worden meerdere Azure-resources gedefinieerd in de sjabloon:
 - [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) : twee voor de virtuele machines
 - [**Microsoft.Compute/virtualMachine/extensions**](/azure/templates/microsoft.compute/virtualmachines/extensions) : om IIS en de webpagina’s te configureren
 
+## <a name="deploy-the-template"></a>De sjabloon implementeren
 
-### <a name="deploy-the-template"></a>De sjabloon implementeren
-
-Resource Manager-sjabloon implementeren in Azure:
+Het ARM-sjabloon implementeren in Azure:
 
 1. Selecteer **Implementeren in Azure** om u aan te melden bij Azure, en open de sjabloon. Met de sjabloon maakt u een toepassingsgateway, de netwerkinfrastructuur, en twee virtuele machines in de back-endpool waarop IIS wordt uitgevoerd.
 

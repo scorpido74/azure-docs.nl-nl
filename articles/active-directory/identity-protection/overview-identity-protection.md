@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27adab85f684143db29e248739492b68af869404
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 59f83c7896ca371809d9103489b140ae73d5a42d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647351"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256647"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Wat is Azure Active Directory Identity Protection?
 
@@ -94,7 +94,7 @@ Beheerders met voorwaardelijke toegang kunnen ook beleidsregels maken met aanmel
 
 [!INCLUDE [Active Directory P2 license](../../../includes/active-directory-p2-license.md)]
 
-| Mogelijkheid | Details | Azure AD Premium P2 | Azure AD Premium P1 | Azure AD Basic/Free |
+| Mogelijkheid | Details | Azure AD Premium P2 | Azure AD Premium P1 | Azure AD Free- / Office 365-apps |
 | --- | --- | --- | --- | --- |
 | Risicobeleid | Beleid voor gebruikersrisico's (via Identity Protection) | Ja | Nee | Nee |
 | Risicobeleid | Beleid voor aanmeldingsrisico's (via Identity Protection of voorwaardelijke toegang) | Ja | Nee | Nee |

@@ -7,25 +7,29 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 09/17/2019
+ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: a3e27cf427de3a33f71d6f4a0af9b1590abeb573
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 9f559587e1abca7642edfc6278018d760b55e774
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84707681"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206231"
 ---
 # <a name="what-is-azure-data-box"></a>Wat is Azure Data Box?
 
-Met de cloudoplossing Microsoft Azure Data Box kunt u terabytes aan on-premises gegevens op een snelle, goedkope en betrouwbare manier naar Azure verzenden. De veilige gegevensoverdracht wordt versneld door u een systeemeigen Data Box-opslagapparaat toe te sturen. Elk opslagapparaat heeft een maximaal bruikbare opslagcapaciteit van 80 TB en wordt via een regionale koerier naar uw datacenter vervoerd. Dit apparaat heeft een stevige behuizing om uw gegevens tijdens het verzenden te beschermen.
+Met de cloudoplossing Microsoft Azure Data Box kunt u terabytes aan on-premises gegevens op een snelle, goedkope en betrouwbare manier naar en vanuit Azure verzenden. De veilige gegevensoverdracht wordt versneld door u een systeemeigen Data Box-opslagapparaat toe te sturen. Elk opslagapparaat heeft een maximaal bruikbare opslagcapaciteit van 80 TB en wordt via een regionale koerier naar uw datacenter vervoerd. Dit apparaat heeft een stevige behuizing om uw gegevens tijdens het verzenden te beschermen.
 
-U kunt het Data Box-apparaat bestellen via de Azure Portal. Nadat het apparaat is ontvangen, kunt u het snel instellen via de lokale webinterface. Kopieer de gegevens van uw servers naar het apparaat en stuur het terug naar Azure. In het Azure-datacenter worden uw gegevens automatisch geüpload van de schijven naar Azure. Het volledige proces wordt gevolgd door de Data Box-service in de Azure-portal.
+U kunt het Data Box-apparaat bestellen via de Azure Portal om gegevens van Azure te importen of exporteren. Nadat het apparaat is ontvangen, kunt u het snel instellen via de lokale webinterface. Afhankelijk van of u gegevens wilt importeren of exporteren, kopieert u de gegevens van uw servers naar het apparaat of vice versa en verzendt u het apparaat terug naar Azure. Als u gegevens importeert naar Azure, worden uw gegevens in het Azure-datacenter automatisch geüpload van de schijven naar Azure. Het volledige proces wordt gevolgd door de Data Box-service in de Azure-portal.
+
+[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 
 ## <a name="use-cases"></a>Gebruiksvoorbeelden
 
-Data Box is ideaal voor het overbrengen van gegevens met een totale omvang van 40 TB in scenario’s met geen tot beperkte netwerkbandbreedte. De gegevensverplaatsing kan eenmalig of periodiek zijn, of eerst een grote gegevensoverdracht, gevolgd door meerdere periodieke overdrachten. Hier volgen de verschillende scenario’s waarin Data Box kan worden gebruikt voor gegevensoverdracht.
+Data Box is ideaal voor het overbrengen van gegevens met een totale omvang van 40 TB in scenario’s met geen tot beperkte netwerkbandbreedte. De gegevensverplaatsing kan eenmalig of periodiek zijn, of eerst een grote gegevensoverdracht, gevolgd door meerdere periodieke overdrachten. 
+
+Hier volgen de verschillende scenario’s waarin Data Box kan worden gebruikt om gegevens te importeren in Azure.
 
  - **Eenmalige migratie**: wanneer grote aantallen on-premises gegevens worden verplaatst naar Azure. 
      - Verplaatsen van een mediabibliotheek van offline tapes naar Azure, voor het maken van een online mediabibliotheek.
@@ -35,20 +39,29 @@ Data Box is ideaal voor het overbrengen van gegevens met een totale omvang van 4
  - **Initiële bulkoverdracht**: wanneer eerst een grote overdracht plaatsvindt met Data Box (seed), gevolgd door incrementele overdrachten via het netwerk. 
      - Bijvoorbeeld: voor de eerste grote back-up van historische gegevens naar Azure wordt gebruikgemaakt van een back-upoplossing van Commvault of Data Box. Zodra dat is voltooid, worden gegevens incrementeel via het netwerk overgebracht naar Azure-opslag.
 
-- **Periodieke uploads**: wanneer er periodiek grote aantallen gegevens worden gegenereerd en verplaatst moeten worden naar Azure. Bijvoorbeeld in de energie-exploitatie, waar er video's worden gegenereerd op olieplatforms en windmolenparken.      
+- **Periodieke uploads**: wanneer er periodiek grote aantallen gegevens worden gegenereerd en verplaatst moeten worden naar Azure. Bijvoorbeeld in de energie-exploitatie, waar er video's worden gegenereerd op olieplatforms en windmolenparken. 
+
+Hier volgen de verschillende scenario’s waarin Data Box kan worden gebruikt om gegevens te exporteren vanuit Azure.
+
+- **Herstel na noodgeval** - wanneer een kopie van de gegevens van Azure wordt hersteld naar een on-premises netwerk. Dit gebeurt doorgaans bij een herstel na een noodgeval waarbij een grote hoeveelheid Azure-gegevens wordt geëxporteerd naar Data Box. Microsoft stuurt deze Data Box vervolgens door en de gegevens worden in korte tijd op uw locatie hersteld. 
+
+- **Beveiligingsvereisten** - wanneer u gegevens moet kunnen exporteren uit Azure omwille van overheids- of beveiligingsvereisten. Azure Storage is bijvoorbeeld beschikbaar in de US Secret- en Top Secret-clouds, en u kunt Data Box gebruiken om gegevens uit Azure te exporteren. 
+
+- **Terug naar on-premises of een andere cloudserviceprovider migreren**: als u alle gegevens terug naar on-premises of naar een andere cloudserviceprovider wilt overzetten, exporteer dan gegevens via Data Box om de workloads te migreren.
+
 
 ## <a name="benefits"></a>Voordelen
 
 Data Box is ontworpen om grote aantallen gegevens naar Azure te verplaatsen met weinig tot geen impact op het netwerk. Deze oplossing biedt de volgende voordelen:
 
-- **Snelheid** : Data Box maakt gebruik van netwerkinterfaces van 1 Gbps of 10 Gbps om maximaal 80 TB aan gegevens in Azure te verplaatsen.
+- **Snelheid** : Data Box maakt gebruik van netwerkinterfaces van 1 Gbps of 10 Gbps om maximaal 80 TB aan gegevens in en uit Azure te verplaatsen.
 
 - **Beveiligd**: Data Box heeft ingebouwde beveiliging voor het apparaat, de gegevens en de service.
   - Het apparaat heeft een robuuste behuizing die is beveiligd met fraudebestendige schroeven en verzegelde stickers. 
   - De gegevens op het apparaat zijn altijd beveiligd met AES 256-bitsversleuteling.
   - Het apparaat kan alleen worden ontgrendeld met een wachtwoord dat via Azure Portal wordt doorgegeven.
   - De service wordt beschermd door beveiligingsfuncties van Azure.
-  - Nadat uw gegevens zijn geüpload naar Azure, worden alle schijven in het apparaat gewist overeenkomstig NIST 800-88r1-standaarden.
+  - Nadat uw gegevens zijn geüpload naar Azure voor een importorder, worden alle schijven in het apparaat gewist overeenkomstig NIST 800-88r1-standaarden. Voor een exportorder worden de schijven gewist zodra het apparaat het Azure-datacenter bereikt.
     
     Ga naar [Azure Data Box-beveiliging en -gegevensbescherming](data-box-security.md) voor meer informatie.
 
@@ -65,6 +78,7 @@ Het Data Box-apparaat biedt de volgende functies in deze versie.
 | Opslagcapaciteit                                        | 100 TB-apparaat bevat bruikbare capaciteit van 80 TB na RAID 5-bescherming|
 | Nominaal vermogen                                            | De voedingseenheid is geraamd op 700 W. <br> Normaal gesproken verbruikt de eenheid 375 W.|
 | Netwerkinterfaces                                      | 2 X 1 GbE interface - MGMT, DATA 3. <br> MGMT - Eén beheerinterface, niet configureerbaar door gebruikers, gebruikt voor eerste installatie <br> DATA3 - Voor gegevens, kan door gebruiker worden geconfigureerd en is standaard dynamisch <br> MGMT en DATA 3 kunnen ook werken als 10 GbE <br> 2 x 10 GbE-interface - DATA 1, DATA 2 <br> Beide zijn voor gegevens en kunnen dynamisch (standaard) of statisch worden geconfigureerd |
+| Gegevensoverdracht                                      | Zowel importeren als exporteren worden ondersteund.  |
 | Media voor gegevensoverdracht                                     | RJ45, SFP+ copper 10 GbE Ethernet  |
 | Beveiliging                                                | Robuust apparaat met fraudebestendige, aangepaste schroeven <br> Verzegeling aan de onderkant van het apparaat|
 | Overdrachtssnelheid                                      | Maximaal 80 TB in een dag via 10 GbE-netwerkaansluiting        |
@@ -93,7 +107,7 @@ De Data Box bevat de volgende componenten:
 
 ## <a name="the-workflow"></a>De werkstroom
 
-Een typische stroom bestaat uit de volgende stappen:
+Een typische importstroom bestaat uit de volgende stappen:
 
 1. **Bestellen**: plaats een bestelling in Azure Portal en geef de verzendingsgegevens en het Azure-doelopslagaccount voor uw gegevens op. Wanneer het apparaat beschikbaar is, bereidt Azure het voor en verstuurt Azure het met volgnummer.
 
@@ -107,13 +121,32 @@ Een typische stroom bestaat uit de volgende stappen:
 
 Tijdens dit proces wordt u via e-mail op de hoogte gesteld van alle statuswijzigingen. Ga naar [Data Box in Azure Portal implementeren](data-box-deploy-ordered.md) voor meer informatie over de gedetailleerde werkstroom.
 
+
+Een typische exportstroom bestaat uit de volgende stappen:
+
+1. **Bestellen**: plaats een exportorder in de Azure-portal en geef de verzendingsgegevens en het Azure-bronopslagaccount voor uw gegevens op. Als het apparaat beschikbaar is, bereidt Azure een apparaat voor. De gegevens worden gekopieerd van uw Azure Storage-account naar de Data Box. Zodra de gegevens gekopieerd zijn, wordt het apparaat door Microsoft geleverd met een tracerings-id.
+
+2. **Ontvangen**: Nadat het apparaat wordt geleverd, sluit u de opgegeven netwerk- en voedingskabels aan. Zet het apparaat aan en sluit het aan. Configureer de netwerkinstellingen voor het apparaat en koppel bestandsshares op de hostcomputer waar u gegevens naar wilt kopiëren.
+
+3. **Gegevens kopiëren** - Kopieer gegevens van Data Box-shares naar de on-premises gegevensservers.
+
+4. **Retourneren**: Bereid het apparaat voor, zet het uit en stuur het terug naar het Azure-datacenter.
+
+5. **Verwijdering van gegevens** - De schijven in het apparaat worden veilig gewist overeenkomstig de richtlijnen van het National Institute of Standards and Technology.
+
+Tijdens het exportproces wordt u via e-mail op de hoogte gesteld van alle statuswijzigingen. Ga naar [Data Box in Azure Portal implementeren](data-box-deploy-export-ordered.md) voor meer informatie over de gedetailleerde werkstroom.
+
 ## <a name="region-availability"></a>Beschikbaarheid in regio’s
 
 Data Box kan bestanden overgedragen op basis van de regio waarin de service is geïmplementeerd, het land/de regio waarnaar het apparaat wordt verzonden en het Azure-opslagaccount waarnaar de gegevens worden overgebracht. 
 
-- **Beschikbaarheid van service**: zie [Azure-producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all) voor meer informatie over regionale beschikbaarheid. Data Box kan ook in de Azure Government-cloud worden geïmplementeerd. Zie [Wat is Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) voor meer informatie.
+### <a name="for-import"></a>Voor importeren
 
-- **Doelopslagaccounts**: De opslagaccounts waarin de gegevens worden opgeslagen, zijn beschikbaar in alle Azure-regio’s waar de service beschikbaar is.  
+- **Beschikbaarheid van services** - Wanneer u Data Box gebruikt voor import- of exportorders, zie dan [Azure-producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all) voor meer informatie over regionale beschikbaarheid. De exportfunctie in Data Box is momenteel beschikbaar als preview-versie. 
+
+    Voor importorders kan Data Box ook in de Azure Government-cloud worden geïmplementeerd. Zie [Wat is Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) voor meer informatie. 
+
+- **Doelopslagaccounts**: De opslagaccounts waarin de gegevens worden opgeslagen, zijn beschikbaar in alle Azure-regio’s waar de service beschikbaar is.
 
 
 ## <a name="next-steps"></a>Volgende stappen

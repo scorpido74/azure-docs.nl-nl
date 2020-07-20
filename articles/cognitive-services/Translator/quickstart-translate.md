@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: tekst vertalen-Translator'
+title: 'Quickstart: Tekst vertalen - Translator'
 titleSuffix: Azure Cognitive Services
-description: In deze Quick Start leert u hoe u tekst kunt vertalen met behulp van het conversie programma.
+description: In deze quickstart leert u tekst te vertalen met de Translator.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -12,18 +12,18 @@ ms.date: 05/26/2020
 ms.author: erhopf
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: e4ee37c00778d239c8481392ce9231b2dda7c6e3
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.openlocfilehash: 363da0f528444ab45784beb43d3590b50c0cb71f
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84606523"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144312"
 ---
-# <a name="quickstart-use-the-translator-to-translate-text"></a>Snelstartgids: de vertaler gebruiken om tekst te vertalen
+# <a name="quickstart-use-the-translator-to-translate-text"></a>Quickstart: De Translator gebruiken om tekst te vertalen
 
-In deze Quick Start leert u hoe u een tekst teken reeks kunt vertalen van Engels naar Duits, Italiaans, Japans en Thais met behulp van het Vertaal REST API.
+In deze quickstart leert u hoe u een teksttekenreeks van het Engels naar het Duits, Italiaans, Japans en Thais vertaalt met de Translator Text-REST API.
 
-Voor deze Snelstartgids is een [Azure Cognitive Services-account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) vereist met een Translator-resource. Als u geen account hebt, kunt u de [gratis proefversie](https://azure.microsoft.com/try/cognitive-services/) gebruiken om een abonnementssleutel op te halen.
+Voor deze snelstart is een [Azure Cognitive Services-account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) met een Translator-resource vereist. 
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# quickstart](includes/translate-csharp.md)]

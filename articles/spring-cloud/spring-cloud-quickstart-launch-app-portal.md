@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 02/15/2020
 ms.author: brendm
-ms.openlocfilehash: e4ea76a888ba51b3560139e9efc3df512c4fbadf
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 118e1e49393a797a065f1e9968a83a6d4464868e
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120939"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171037"
 ---
 # <a name="quickstart-launch-an-existing-azure-spring-cloud-application-using-the-azure-portal"></a>Quickstart: Een bestaande Azure Spring Cloud-toepassing starten met behulp van Azure Portal
 
@@ -43,14 +43,6 @@ Dit zijn de vereisten voor het voltooien van deze snelstart:
 3. [Maven 3.0 of hoger installeren](https://maven.apache.org/download.cgi)
 4. [Azure CLI-versie 2.0.67 of hoger installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 5. [Aanmelden voor een Azure-abonnement](https://azure.microsoft.com/free/)
-
-## <a name="install-the-azure-cli-extension"></a>De Azure CLI-extensie installeren
-
-Voer de volgende opdracht uit om de Azure Spring Cloud-extensie voor de Azure CLI te installeren
-
-```azurecli
-az extension add --name spring-cloud
-```
 
 ## <a name="provision-a-service-instance-on-the-azure-portal"></a>Een service-exemplaar inrichten in Azure Portal
 
@@ -112,7 +104,7 @@ Het duurt ongeveer vijf minuten om de service te implementeren.  Wanneer de app 
 
 ## <a name="build-and-deploy-microservice-applications"></a>Microservicetoepassingen bouwen en implementeren
 
-1. Open een [Azure Cloud Shell](https://shell.azure.com) en kloon de opslagplaats van de voorbeeld-app naar uw lokale computer.  Hier maken we eerst een tijdelijke map met de naam `source-code` voordat we de app klonen.
+1. Open een [Azure Cloud Shell](https://shell.azure.com) of uw lokale shell waarop Azure CLI is geïnstalleerd. Hier maken we eerst een tijdelijke map met de naam `source-code` voordat we de voorbeeldapp klonen.
 
     ```console
     mkdir source-code
@@ -127,18 +119,20 @@ Het duurt ongeveer vijf minuten om de service te implementeren.  Wanneer de app 
     mvn clean package -DskipTests
     ```
 
-3. Wijs namen toe aan uw resourcegroep en uw service. Vergeet niet de onderstaande tijdelijke aanduidingen te vervangen door de naam van de resourcegroep en de servicenaam die u eerder in deze zelfstudie hebt ingericht.
+3. Voer de volgende opdracht uit om de Azure Spring Cloud-extensie voor de Azure CLI te installeren
+
+    ```azurecli
+    az extension add --name spring-cloud
+    ```
+
+4. Wijs namen toe aan uw resourcegroep en uw service. Vergeet niet de onderstaande tijdelijke aanduidingen te vervangen door de naam van de resourcegroep en de servicenaam die u eerder in deze zelfstudie hebt ingericht.
 
     ```azurecli
     az configure --defaults group=<resource group name>
     az configure --defaults spring-cloud=<service instance name>
     ```
 
-4. Maak de toepassing `gateway` en implementeer het JAR-bestand.  Voor de volgende stappen is de Spring Cloud-extensie vereist. Als u deze niet hebt geïnstalleerd met vereisten, voert u de volgende opdracht uit:
-
-    ```azurecli
-    az extension add --name spring-cloud
-    ```
+5. Maak de toepassing `gateway` en implementeer het JAR-bestand.
 
     Maak de app met behulp van de Spring Cloud-extensie:
 
@@ -147,7 +141,7 @@ Het duurt ongeveer vijf minuten om de service te implementeren.  Wanneer de app 
     az spring-cloud app deploy -n gateway --jar-path ./gateway/target/gateway.jar
     ```
 
-5. Volg hetzelfde patroon en maak de toepassingen`account-service` en `auth-service`, en implementeer de JAR-bestanden.
+6. Volg hetzelfde patroon en maak de toepassingen`account-service` en `auth-service`, en implementeer de JAR-bestanden.
 
     ```azurecli
     az spring-cloud app create -n account-service
@@ -156,7 +150,7 @@ Het duurt ongeveer vijf minuten om de service te implementeren.  Wanneer de app 
     az spring-cloud app deploy -n auth-service --jar-path ./auth-service/target/auth-service.jar
     ```
 
-6. Het duurt enkele minuten om de implementatie van de toepassingen te voltooien. Als u wilt bevestigen dat ze zijn geïmplementeerd, gaat u naar het deelvenster **Apps** in Azure Portal. U ziet een regel voor elk van de drie toepassingen.
+7. Het duurt enkele minuten om de implementatie van de toepassingen te voltooien. Als u wilt bevestigen dat ze zijn geïmplementeerd, gaat u naar het deelvenster **Apps** in Azure Portal. U ziet een regel voor elk van de drie toepassingen.
 
 > [!div class="nextstepaction"]
 > [Er is een fout opgetreden](https://www.research.net/r/javae2e?tutorial=asc-portal-quickstart&step=deploy)

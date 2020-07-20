@@ -5,17 +5,96 @@ ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
-ms.date: 04/06/2020
-ms.openlocfilehash: 561767b6857f4b52b3ee1eb17fedd51ad409ee29
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.date: 07/08/2020
+ms.openlocfilehash: 4d061e7a105fc73f7f44c8336df82ff363ee6ded
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84462971"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203755"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Wat is er nieuw de documentatie van Azure Monitor?
 
 In dit artikel vindt u een lijst met Azure Monitor-artikelen die nieuw of aanzienlijk bijgewerkt zijn. Elke eerste week van de maand wordt de lijst bijgewerkt met artikelupdates van de vorige maand.
+
+## <a name="june-2020"></a>Juni 2020
+
+### <a name="general"></a>Algemeen
+- [Azure Monitor implementeren ](platform/deploy-scale.md) - nieuw artikel.
+- [Door de klant beheerde sleutel in Azure Monitor](platform/customer-managed-keys.md) - bijgewerkte eigenschap billingtype. PowerShell-opdrachten toegevoegd.
+
+### <a name="agents"></a>Agents
+- [Overzicht van Log Analytics-agent](platform/log-analytics-agent.md) - Python 2-vereisten toegevoegd.
+
+### <a name="alerts"></a>Waarschuwingen
+- [Waarschuwingsregels of actieregels bijwerken wanneer de doelresource wordt verplaatst naar een andere Azure-regio](platform/alerts-resource-move.md) - Nieuw artikel.
+- [Problemen met metrische waarschuwingen in Azure oplossen](platform/alerts-troubleshoot-metric.md) - Nieuw artikel.
+- [Problemen met logboekwaarschuwingen in Azure Monitor oplossen](platform/alerts-troubleshoot-metric.md) - Nieuw artikel.
+  
+### <a name="application-insights"></a>Application Insights
+- [Azure Application Insights voor JavaScript-webapps](app/javascript.md) - Update van de sectie JavaScript SDK. Fragment om fouten bij het laden te rapporteren bijgewerkt.
+- [BYOS configureren (Bring Your Own Storage) voor Profiler en Snapshot Debugger](app/profiler-bring-your-own-storage.md) - Nieuw artikel.
+- [Inkomende verzoeken traceren in Azure Application Insights met OpenCensus Python](app/opencensus-python-request.md) - Bijgewerkte logboekregistratie en configuratie voor OpenCensus.
+- [Een live ASP.NET-web-app bewaken met Azure-Application Insights](app/monitor-performance-live-website-now.md) - Bijgewerkte afschaffingsdatum voor Status Monitor v1.
+- [Node.js-services bewaken met Azure Application Insights](app/nodejs.md) - Meerdere updates, waaronder migratie van eerdere versies en SDK-configuratie
+- [Python-toepassingen bewaken met Azure Monitor (preview)](app/opencensus-python.md) - Sectie toegevoegd over de configuratie van Azure Monitor Exporters.
+- [Uw apps bewaken zonder codewijzigingen - Automatische instrumentatie voor Azure Monitor Application Insights](app/codeless-overview.md) - Nieuw artikel.
+- [Problemen oplossen met het laden van de SDK voor Javascript-webtoepassingen](app/javascript-sdk-load-failure.md) - Nieuw artikel.
+
+### <a name="containers"></a>Containers
+- [De bewaking van uw hybride Kubernetes-cluster stopzetten](insights/container-insights-optout-hybrid.md) - Sectie toegevoegd voor Kubernetes met ingeschakelde Arc.
+- [Kubernetes-cluster met ingeschakelde Azure Arc configureren met Azure Monitor voor containers](insights/container-insights-enable-arc-enabled-clusters.md): nieuw artikel.
+- [Azure Red Hat OpenShift v4.x configureren met Azure Monitor voor containers](insights/container-insights-azure-redhat4-setup.md) - Vereisten bijgewerkt.
+- [Azure Monitor voor containers Live Data (preview) instellen](insights/container-insights-livedata-setup.md) -Opmerking dat functie niet beschikbaar is in Azure US Government verwijderd.
+
+### <a name="insights"></a>Inzichten
+- [Veelgestelde vragen - Netwerkprestatiemeter-oplossing in Azure](insights/network-performance-monitor-faq.md) - Veelgestelde vragen toegevoegd voor ExpressRoute Monitor.
+
+### <a name="logs"></a>Logboeken
+- [Azure Log Analytics-werkruimte verwijderen en herstellen](platform/delete-workspace.md): PowerShell-opdracht toegevoegd. Probleemoplossing bijgewerkt.
+- [Log Analytics-werkruimten beheren in Azure Monitor](platform/manage-access.md) - Voorbeeld toegevoegd voor niet-toegelaten tabellen in RBAC-sectie.
+- [Het gebruik en de kosten voor Azure Monitor-logboeken beheren](platform/manage-cost-storage.md) - Aanvullende details over de berekening van de gegevensgrootte. Configuratie van waarschuwingen voor gegevensvolumes bijgewerkt. Details over de beveiligingsgegevens die door Azure Sentinel worden verzameld. Toelichting bij gegevenslimiet.
+- [Azure Monitor-logboeken gebruiken met Azure Logic Apps en Power Automate](platform/logicapp-flow-connector.md) - Connectorlimieten toegevoegd.
+
+### <a name="metrics"></a>Metrische gegevens
+- [Door Azure Monitor ondersteunde metrische gegevens per resourcetype](platform/metrics-supported.md) - Metrische gegevens van SQL Server bijgewerkt.
+
+
+### <a name="platform-logs"></a>Platformlogboeken
+
+- [Voorbeeldsjablonen van Resource Manager voor diagnostische instellingen](samples/resource-manager-diagnostic-settings.md) - Oplossing voor diagnostische instelling voor activiteitenlogboek.
+- [Azure-activiteitenlogboek verzenden naar Log Analytics-werkruimte met behulp van een Azure-portal](learn/quick-collect-activity-log-portal.md) - Nieuw artikel.
+- [Azure-activiteitenlogboek verzenden naar Log Analytics-werkruimte met behulp van Azure Resource Manager-sjabloon](learn/quick-collect-activity-log-arm.md) - Nieuw artikel.
+
+#### <a name="new-and-updated-articles-from-restructure-and-consolidation-of-platform-log-content"></a>Nieuwe en bijgewerkte artikelen over de herstructurering en consolidatie van de logboekinhoud van het platform
+- [Azure-resourcelogboeken archiveren naar opslagaccount](platform/resource-logs-collect-storage.md)
+- [Azure-gebeurtenisschema in het activiteitenlogboek](platform/activity-log-schema.md)
+- [Azure-activiteitenlogboek](platform/activity-log.md)
+- [CLI-voorbeelden van Azure Monitor](samples/cli-samples.md)
+- [Azure Monitor PowerShell-voorbeelden](samples/powershell-samples.md)
+- [Azure Monitoring REST API-overzicht](platform/rest-api-walkthrough.md)
+- [Ondersteunde services en schema's voor Azure-resourcelogboeken](platform/diagnostic-logs-schema.md)
+- [Azure-resourcelogboeken](platform/resource-logs.md)
+- [Azure-activiteitenlogboek in Azure Monitor verzamelen en analyseren](platform/activity-log-collect.md)
+- [Azure-resourcelogboeken verzamelen in Log Analytics-werkruimte](platform/resource-logs-collect-workspace.md)
+- [Diagnostische instellingen maken om logboeken en metrische gegevens van het platform te verzenden naar verschillende bestemmingen](platform/diagnostic-settings.md)
+- [Azure-activiteitenlogboek exporteren](platform/activity-log-export.md)
+- [Overzicht van Azure-platformlogboeken](platform/platform-logs-overview.md)
+- [Azure-platformlogboeken naar een event hub streamen](platform/resource-logs-stream-event-hubs.md)
+- [Azure Activity-logboekgebeurtenissen weergeven in Azure Monitor](platform/activity-log-view.md)
+
+### <a name="virtual-machines"></a>Virtuele machines
+- [Azure Monitor inschakelen voor VM's in het Azure-portal](insights/vminsights-enable-single-vm.md) - Bijgewerkt met Azure Arc.
+- [Overzicht Azure Monitor voor VM's inschakelen](insights/vminsights-enable-overview.md) - Bijgewerkt met Azure Arc.
+- [ Wat is Azure Monitor voor VM's?](insights/vminsights-overview.md) - Bijgewerkt met Azure-Arc.
+
+
+### <a name="visualizations"></a>Visualisaties
+- [Gegevensbronnen voor Azure Monitor-werkmappen](platform/workbooks-data-sources.md) - Waarschuwingen en de sectie Aangepaste eindpunten toegevoegd.
+- [Problemen oplossen met op werkmappen gebaseerde inzichten in Azure Monitor](insights/troubleshoot-workbooks.md) - Nieuw artikel.
+- [Visualisaties in uw Log Analytics-dashboard bijwerken](log-query/dashboard-upgrade.md) - Nieuw artikel.
+
+
 
 ## <a name="may-2020"></a>Mei 2020
 

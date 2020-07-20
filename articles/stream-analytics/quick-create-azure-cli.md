@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/01/2020
-ms.openlocfilehash: 8406c556ecaa0cea968fc1976d709b4f3c51c78b
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 1613486880885a3b7838b1bf806c17f88e3be06d
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85852466"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231259"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-using-the-azure-cli"></a>Quickstart: een Azure Stream Analytics-taak maken via de Azure CLI
 
@@ -49,7 +49,7 @@ In deze quickstart gebruikt u de Azure CLI om een Stream Analytics-taak te defin
     az extension add --name stream-analytics
     ```
 
-   Installeer de [extensie voor Azure IoT](/cli/azure/ext/azure-iot/azure-iot) door de volgende opdracht uit te voeren:
+   Installeer de [extensie voor Azure IoT](/cli/azure/ext/azure-iot) door de volgende opdracht uit te voeren:
 
     ```azurecli
     az extension add --name azure-iot

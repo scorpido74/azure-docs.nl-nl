@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 06/29/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: bae8fa97d075784bba1d2f75cc06cfa3f801c052
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 909f120275c58b04d8674f0610c40e13b96804b6
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027202"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143907"
 ---
 # <a name="about-azure-virtual-wan"></a>Over Azure Virtual WAN
 
@@ -58,7 +58,7 @@ Als u een end-to-end virtuele WAN wilt configureren, maakt u de volgende resourc
 
 * **Hub-verbinding met het virtuele netwerk:** de resource van de hubverbinding met het virtuele netwerk wordt gebruikt om de hub naadloos met het virtuele netwerk te verbinden.
 
-* **(Preview) Hub-naar-hub-verbinding**: hubs zijn allemaal met elkaar verbonden in een virtuele WAN. Dit betekent dat een vertakking, gebruiker of VNet die is verbonden met een lokale hub kan communiceren met een andere vertakking of VNet met behulp van de full mesh-architectuur van de verbonden hubs. U kunt VNets ook verbinden binnen een hub die verkeer via de virtuele hub leidt, evenals VNets op de hub, met behulp van het hub-naar-hub-framework.
+* **Hub-naar-hub-verbinding:** Hubs zijn allemaal met elkaar verbonden in een virtuele WAN. Dit betekent dat een vertakking, gebruiker of VNet die is verbonden met een lokale hub kan communiceren met een andere vertakking of VNet met behulp van de full mesh-architectuur van de verbonden hubs. U kunt VNets ook verbinden binnen een hub die verkeer via de virtuele hub leidt, evenals VNets op de hub, met behulp van het hub-naar-hub-framework.
 
 * **Tabel met de hubroute:**  u kunt een virtuele hubroute maken en de route toepassen op de routetabel van de virtuele hub. U kunt meerdere routes toepassen op de routetabel van de virtuele hub.
 

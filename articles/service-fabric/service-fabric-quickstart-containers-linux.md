@@ -1,18 +1,18 @@
 ---
-title: Een Linux-container-app maken op Service Fabric in azure
+title: Een Linux-containertoepassing voor Azure Service Fabric maken in Azure
 description: In deze snelstartgids maakt u een Docker-installatiekopie met uw toepassing, pusht u de installatiekopie naar een containerregister en implementeert u de container vervolgens naar een Service Fabric-cluster.
 ms.topic: quickstart
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: eb0a83d0110002cc32998af4083d06cf6e86e16a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: d765168ea2eddaf42715536b5da67f15bb8a8cee
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75372683"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258547"
 ---
-# <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>Snelstartgids: Linux-containers implementeren op Service Fabric
+# <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>Quickstart: Linux-containers implementeren op Service Fabric
 
 Azure Service Fabric is een platform voor gedistribueerde systemen waarmee u schaalbare en betrouwbare microservices en containers implementeert en beheert.
 
@@ -26,11 +26,11 @@ Dit zijn de vereisten voor het voltooien van deze snelstart:
 
 1. Als u nog geen abonnement op Azure hebt, [maakt u een gratis Azure-account](https://azure.microsoft.com/free/) voordat u begint.
 
-2. De [Azure cli](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) installeren
+2. Installeer de [Azure CLI](/cli/azure/install-azure-cli-apt?view=azure-cli-latest)
 
 3. Installeer de [Service Fabric-SDK en -CLI](service-fabric-get-started-linux.md#installation-methods)
 
-4. [Git](https://git-scm.com/) installeren
+4. Installeer [Git](https://git-scm.com/)
 
 
 ## <a name="get-the-application-package"></a>Het toepassingspakket ophalen
@@ -108,7 +108,7 @@ Mozilla Firefox is de standaardbrowser in Ubuntu 16.04. U kunt het certificaat i
     ./install.sh
     ```
 
-3. Open een webbrowser en ga naar het Service Fabric Explorer-eindpunt voor uw cluster. Het eind punt heeft de volgende indeling **:\<https://My-Azure-service-Fabric-cluster-URL>:19080/Explorer**; bijvoorbeeld `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer`. </br>
+3. Open een webbrowser en ga naar het Service Fabric Explorer-eindpunt voor uw cluster. Het eind puntheeft de volgende indeling: **https://\<my-azure-service-fabric-cluster-url>: 19080/Explorer**; bijvoorbeeld `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer`. </br>
 
 4. Als u het **toepassings**knooppunt uitvouwt, ziet u nu een vermelding voor het type stemtoepassing en het exemplaar dat u hebt gemaakt.
 
@@ -169,7 +169,7 @@ Gebruik het uninstall-script (uninstall.sh) dat is opgegeven in de sjabloon om h
 
 De eenvoudigste manier om het cluster en alle resources te verwijderen, is om de resourcegroep te verwijderen.
 
-Meld u aan bij Azure en selecteer het abonnement-ID waarmee u het cluster wilt verwijderen. U kunt uw abonnements-id vinden door u aan te melden bij de Azure-portal. Verwijder de resourcegroep en alle clusterresources met behulp van de opdracht [az group delete](/cli/azure/group?view=azure-cli-latest).
+Meld u aan bij Azure en selecteer de abonnements-id waarmee u het cluster wilt verwijderen. U kunt uw abonnements-id vinden door u aan te melden bij de Azure-portal. Verwijder de resourcegroep en alle clusterresources met behulp van de opdracht [az group delete](/cli/azure/group?view=azure-cli-latest).
 
 ```azurecli
 az login
@@ -179,9 +179,9 @@ az group delete --name $ResourceGroupName
 ```
 
 Als u klaar bent met het cluster, kunt u het certificaat verwijderen uit het certificaatarchief. Bijvoorbeeld:
-- Op Windows: gebruik de [MMC-module Certificaten](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in). Selecteer **Mijn gebruikersaccount** wanneer u de module toevoegt. Navigeer naar `Certificates - Current User\Personal\Certificates` en verwijder het certificaat.
-- Op Mac: gebruik de app Sleutelhanger.
-- Op Ubuntu: volg de stappen die u hebt gebruikt om certificaten weer te geven en verwijder het certificaat.
+- In Windows: Gebruik de [MMC-module Certificaten](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in). Selecteer **Mijn gebruikersaccount** wanneer u de module toevoegt. Navigeer naar `Certificates - Current User\Personal\Certificates` en verwijder het certificaat.
+- Op de Mac: Gebruik de app Sleutelhanger.
+- Op Ubuntu: Volg de stappen die u hebt gebruikt om certificaten weer te geven en verwijder het certificaat.
 
 ## <a name="next-steps"></a>Volgende stappen
 

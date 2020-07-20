@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: e36f98a20d1fc6392aef1aebf5fc86e18085cc10
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: db6b2d95bf8f38495296885d14260b9900af1d51
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85204895"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247044"
 ---
 # <a name="synchronize-apache-spark-for-azure-synapse-external-table-definitions-in-sql-on-demand-preview"></a>Apache Spark synchroniseren voor externe Azure Synapse-tabeldefinities in SQL on-demand (preview)
 
@@ -34,7 +34,10 @@ Voer voor externe Spark-tabelquery’s een query uit die is gericht op een exter
 SELECT * FROM [db].dbo.[spark_table]
 ```
 
-## <a name="spark-data-types-to-sql-data-types-mapping"></a>Spark-gegevenstypen toewijzen aan SQL-gegevenstypen
+> [!NOTE]
+> Externe tabelkolom van Spark toevoegen, verwijderen of wijzigen wordt niet weergegeven in externe tabel in SQL on-demand.
+
+## <a name="apache-spark-data-types-to-sql-data-types-mapping"></a>Apache Spark-gegevenstypen toewijzen aan SQL-gegevenstypen
 
 | Spark-gegevenstype | SQL-gegevenstype               |
 | --------------- | --------------------------- |

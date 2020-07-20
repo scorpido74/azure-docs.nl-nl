@@ -1,36 +1,36 @@
 ---
-title: 'Quick Start: een Java-container installatie kopie bouwen en pushen naar Azure Container Registry met behulp van Maven en giek'
-description: Bouw een in een container geplaatste java-app en push deze naar Azure Container Registry met behulp van de Maven giek-invoeg toepassing.
+title: Quickstart - installatiekopieën van Java-containers ontwerpen en pushen naar Azure Container Registry met Maven en Jib
+description: Ontwerp een in een container geplaatste Java-app en push deze naar Azure Container Registry met behulp van de Maven Jib-invoegtoepassing.
 author: KarlErickson
 ms.author: karler
 ms.topic: quickstart
 ms.date: 02/26/2020
-ms.openlocfilehash: 561c45bd13648f5f17273b478f320e9fd3d71331
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.openlocfilehash: 87a4741ea8a64445c10c73bb1204aef1a2fcfaaf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857588"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248795"
 ---
-# <a name="quickstart-build-and-push-java-container-images-to-azure-container-registry"></a>Snelstartgids: Java-container installatie kopieën bouwen en pushen naar Azure Container Registry
+# <a name="quickstart-build-and-push-java-container-images-to-azure-container-registry"></a>Quickstart: Containerinstallatiekopieën naar Azure Container Registry ontwerpen en pushen
 
-In deze Quick start ziet u hoe u een in een container geplaatste java-app maakt en deze naar Azure Container Registry pusht met behulp van de invoeg toepassing maven giek. Het gebruik van Maven en giek is een voor beeld van het gebruik van het hulp programma voor ontwikkel aars om te communiceren met een Azure container Registry.
+In deze quickstart leert u om een in een container geplaatste Java-app te ontwerpen en deze naar Azure Container Registry te pushen met behulp van de Maven Jib-invoegtoepassing. Het gebruik van Maven en Jib is een voorbeeld van het gebruik van hulpprogramma's voor ontwikkelaars om te werken met een Azure Container Registry.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure-abonnement; als u nog geen Azure-abonnement hebt, kunt u uw [voordelen als MSDN-abonnee](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) activeren of u aanmelden voor een [gratis Azure-account](https://azure.microsoft.com/pricing/free-trial).
 * De [Azure-opdrachtregelinterface (CLI)](/cli/azure/overview).
-* Een ondersteunde JDK (Java Development Kit). Zie <https://aka.ms/azure-jdks> voor meer informatie over de JDK's die beschikbaar zijn voor gebruik bij het ontwikkelen op Azure.
-* [Maven](http://maven.apache.org) Build Tool van Apache (versie 3 of hoger).
+* Een ondersteunde JDK (Java Development Kit). Zie <https://aka.ms/azure-jdks> voor meer informatie over de JDK's die kunnen worden gebruikt bij het ontwikkelen in Azure.
+* Het build-hulpprogramma [Maven](http://maven.apache.org) van Apache (versie 3 of hoger).
 * Een [Git](https://git-scm.com)-client.
 * Een [Docker](https://www.docker.com)-client.
-* Het [hulp programma ACR docker-referentie](https://github.com/Azure/acr-docker-credential-helper).
+* De [ACR Docker-referentiehelper](https://github.com/Azure/acr-docker-credential-helper).
 
 ## <a name="create-the-spring-boot-on-docker-getting-started-web-app"></a>De web-app Aan de slag met Spring Boot in Docker maken
 
 De volgende stappen helpen u bij het bouwen van een Spring Boot-web-app en bij het lokaal testen van de web-app.
 
-1. Gebruik vanaf de opdracht prompt de volgende opdracht om het voor beeld [van de eerste keer opstarten op docker](https://github.com/spring-guides/gs-spring-boot-docker) -voorbeeld project te klonen.
+1. Gebruik in de opdrachtprompt de volgende opdracht om het voorbeeldproject [Aan de slag met Spring Boot in Docker](https://github.com/spring-guides/gs-spring-boot-docker) te klonen.
 
    ```bash
    git clone https://github.com/spring-guides/gs-spring-boot-docker.git
@@ -54,11 +54,11 @@ De volgende stappen helpen u bij het bouwen van een Spring Boot-web-app en bij h
    curl http://localhost:8080
    ```
 
-Het volgende bericht wordt weer gegeven: **Hello docker World**
+Het volgende bericht wordt weergegeven: **Hello Docker World**
 
 ## <a name="create-an-azure-container-registry-using-the-azure-cli"></a>Een Azure Container Registry maken met Azure CLI
 
-Vervolgens maakt u een Azure-resource groep en uw ACR aan de hand van de volgende stappen:
+Vervolgens maakt u een Azure-resourcegroep en uw ACR aan de hand van de volgende stappen:
 
 1. Meld u aan bij uw Azure-account met behulp van de volgende opdracht:
 
@@ -66,13 +66,13 @@ Vervolgens maakt u een Azure-resource groep en uw ACR aan de hand van de volgend
    az login
    ```
 
-1. Geef het Azure-abonnement op dat moet worden gebruikt:
+1. Geef het te gebruiken Azure-abonnement op:
 
    ```azurecli
    az account set -s <subscription ID>
    ```
 
-1. Maak een resourcegroep voor de Azure-resources die in deze zelfstudie worden gebruikt. Vervang in de volgende opdracht de tijdelijke aanduidingen door de naam van uw eigen resource en een locatie, zoals `eastus`.
+1. Maak een resourcegroep voor de Azure-resources die in deze zelfstudie worden gebruikt. Vervang in de volgende opdracht de tijdelijke aanduidingen door de naam van uw eigen resource en een locatie zoals `eastus`.
 
    ```azurecli
    az group create \
@@ -80,7 +80,7 @@ Vervolgens maakt u een Azure-resource groep en uw ACR aan de hand van de volgend
        --location=<location>
    ```
 
-1. Maak een persoonlijk Azure-container register in de resource groep met behulp van de volgende opdracht. Zorg ervoor dat u de tijdelijke aanduidingen vervangt door de werkelijke waarden. In de zelfstudie wordt in latere stappen de voorbeeld-app als een Docker-installatiekopie naar dit register gepusht.
+1. Maak een privé-Azure-containerregister in de resourcegroep met behulp van de volgende opdracht. Zorg dat u de plaatsaanduidingen vervangt door echt waarden. In de zelfstudie wordt in latere stappen de voorbeeld-app als een Docker-installatiekopie naar dit register gepusht.
 
    ```azurecli
    az acr create \
@@ -92,23 +92,23 @@ Vervolgens maakt u een Azure-resource groep en uw ACR aan de hand van de volgend
 
 ## <a name="push-your-app-to-the-container-registry-via-jib"></a>Uw app via Jib naar het containerregister pushen
 
-Ten slotte werkt u de project configuratie bij en gebruikt u de opdracht prompt om uw installatie kopie te bouwen en te implementeren.
+Ten slotte werkt u de projectconfiguratie bij en gebruikt u de opdrachtprompt om uw installatiekopie te ontwerpen en te implementeren.
 
 > [!NOTE]
-> Als u zich wilt aanmelden bij het Azure container Registry dat u zojuist hebt gemaakt, moet u de docker-daemon uitvoeren. Als u docker op uw computer wilt installeren, vindt u [hier de officiële docker-documentatie](https://docs.docker.com/install/).
+> Als u zich wilt aanmelden bij het Azure-containerregister dat u zojuist hebt gemaakt, dan moet u de Docker-daemon uitvoeren. [Hier is de officiële Docker-documentatie](https://docs.docker.com/install/) om Docker op uw computer te installeren.
 
-1. Meld u met de volgende opdracht aan bij uw Azure Container Registry vanuit de Azure CLI. Zorg ervoor dat u de tijdelijke aanduiding vervangt door uw eigen register naam.
+1. Meld u aan bij uw Azure Container Registry vanaf de Azure CLI met behulp van de volgende opdracht. Vervang de tijdelijke aanduiding door de naam van uw eigen register.
 
    ```azurecli
    az configure --defaults acr=<your registry name>
    az acr login
    ```
 
-   Met `az configure` de opdracht wordt de standaard naam van het REGI `az acr` ster ingesteld voor gebruik met-opdrachten.
+   Met de `az configure`-opdracht wordt de standaardnaam van het register ingesteld voor gebruik met `az acr`-opdrachten.
 
 1. Navigeer naar de voltooide projectmap voor uw SpringBoot-app (bijvoorbeeld *C:\SpringBoot\gs-spring-boot-docker\complete* of */users/robert/SpringBoot/gs-spring-boot-docker/complete*) en open het bestand *pom.xml* met een teksteditor.
 
-1. Werk de `<properties>` verzameling in het bestand *pom. XML* bij met de volgende XML-code. Vervang de tijdelijke aanduiding door de naam van uw REGI ster `<jib-maven-plugin.version>` en voeg een `2.2.0`eigenschap met de waarde of een nieuwere versie van de [maven-invoeg toepassing](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin)toe.
+1. Werk de verzameling `<properties>` in het bestand *pom.xml* bij met de volgende XML. Vervang de tijdelijke aanduiding door de naam van uw register en voeg een `<jib-maven-plugin.version>`-eigenschap met de waarde `2.2.0` of een nieuwere versie van de [jib-maven-invoegtoepassing](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin) toe.
 
    ```xml
    <properties>
@@ -118,7 +118,7 @@ Ten slotte werkt u de project configuratie bij en gebruikt u de opdracht prompt 
    </properties>
    ```
 
-1. Werk de `<plugins>` verzameling in het bestand *pom. XML* zo bij dat `<plugin>` het element de bevat en vermeld `jib-maven-plugin`, zoals in het volgende voor beeld wordt weer gegeven. Houd er rekening mee dat we een basis installatie kopie gebruiken uit de micro soft Container Registry `mcr.microsoft.com/java/jdk:8-zulu-alpine`(MCR):. Deze bevat een officieel ondersteund jdk voor Azure. Voor andere MCR-basis installatie kopieën met officieel ondersteunde JDKs raadpleegt u [Java SE jdk](https://hub.docker.com/_/microsoft-java-jdk), [Java SE jre](https://hub.docker.com/_/microsoft-java-jre), [Java SE HEADLESS jre](https://hub.docker.com/_/microsoft-java-jre-headless)en [Java SE jdk en Maven](https://hub.docker.com/_/microsoft-java-maven).
+1. Werk de verzameling `<plugins>` in het bestand *pom.xml* bij zodat het element `<plugin>` een vermelding bevat voor de `jib-maven-plugin`, zoals weergegeven in het volgende voorbeeld. U ziet dat we een basisinstallatiekopie uit het MCR (Microsoft-containerregister) gebruiken: `mcr.microsoft.com/java/jdk:8-zulu-alpine`. Deze bevat een officieel ondersteunde JDK voor Azure. Zie [Java SE JDK](https://hub.docker.com/_/microsoft-java-jdk), [Java SE JRE](https://hub.docker.com/_/microsoft-java-jre), [Java SE Headless JRE](https://hub.docker.com/_/microsoft-java-jre-headless) en [Java SE JDK en Maven](https://hub.docker.com/_/microsoft-java-maven) voor andere MCR-basisinstallatiekopieën met officieel ondersteunde JDK’s.
 
    ```xml
    <plugin>
@@ -144,11 +144,11 @@ Ten slotte werkt u de project configuratie bij en gebruikt u de opdracht prompt 
 
 > [!NOTE]
 >
-> Uit veiligheids overwegingen geldt de referentie die wordt `az acr login` gemaakt door slechts één uur geldig. Als u een niet- *geautoriseerde 401* -fout ontvangt, `az acr login -n <your registry name>` kunt u de opdracht opnieuw uitvoeren om opnieuw te verifiëren.
+> Uit veiligheidsoverwegingen is de referentie die is gemaakt door `az acr login` slechts één uur geldig. Als u een foutmelding *401 Niet geautoriseerd* krijgt, dan kunt u de opdracht `az acr login -n <your registry name>` uitvoeren om zich opnieuw te verifiëren.
 
-## <a name="verify-your-container-image"></a>De container installatie kopie controleren
+## <a name="verify-your-container-image"></a>De containerinstallatiekopie verifiëren
 
-Gefeliciteerd! U beschikt nu over de door Azure ondersteunde JDK voor de Java-app die is gepusht naar uw ACR. U kunt de installatie kopie nu testen door deze te implementeren op Azure App Service, of deze naar een lokale locatie te halen met de opdracht (vervangen van de tijdelijke aanduiding):
+Gefeliciteerd! U heeft u uw door een in een container geplaatste Java App-build in een door Azure ondersteunde JDK die gepusht is naar uw ACR. U kunt de installatiekopie nu testen door deze te implementeren in Azure App Service, of deze naar een lokale locatie te halen met de opdracht (tijdelijke aanduiding vervangen):
 
 ```bash
 docker pull <your registry name>.azurecr.io/gs-spring-boot-docker
@@ -156,11 +156,11 @@ docker pull <your registry name>.azurecr.io/gs-spring-boot-docker
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor andere versies van de officiële door micro soft ondersteunde Java base-installatie kopieën:
+Zie voor andere versies van de officiële door Microsoft ondersteunde Java-basisinstallatiekopieën:
 
 * [Java SE JDK](https://hub.docker.com/_/microsoft-java-jdk)
-* [Java-SE JRE](https://hub.docker.com/_/microsoft-java-jre)
-* [Java-SE headless JRE](https://hub.docker.com/_/microsoft-java-jre-headless)
+* [Java SE JRE](https://hub.docker.com/_/microsoft-java-jre)
+* [Java SE Headless JRE](https://hub.docker.com/_/microsoft-java-jre-headless)
 * [Java SE JDK en Maven](https://hub.docker.com/_/microsoft-java-maven)
 
 Voor meer informatie over Spring en Azure gaat u door naar het documentatiecentrum van Spring op Azure.
@@ -172,9 +172,9 @@ Voor meer informatie over Spring en Azure gaat u door naar het documentatiecentr
 
 Zie de volgende bronnen voor meer informatie:
 
-* [Azure voor Java-Ontwikkel aars](/azure/java)
+* [Azure for Java Developers](/azure/java) (Azure voor Java-ontwikkelaars)
 * [Werken met Azure DevOps en Java](/azure/devops/java)
 * [Aan de slag met Spring Boot in Docker](https://spring.io/guides/gs/spring-boot-docker)
 * [Spring Initializr](https://start.spring.io)
 * [Een Spring Boot-toepassing implementeren in Azure App Service](/azure/developer/java/spring-framework/deploy-spring-boot-java-app-from-container-registry-using-maven-plugin)
-* [Een aangepaste Docker-installatiekopie gebruiken voor Azure-web-apps in Linux](/azure/app-service-web/app-service-linux-using-custom-docker-image)
+* [Een aangepaste Docker-installatiekopie gebruiken voor Azure-web-apps in Linux](../app-service/containers/tutorial-custom-docker-image.md)

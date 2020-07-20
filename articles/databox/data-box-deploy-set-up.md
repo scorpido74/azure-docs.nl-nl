@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 07/10/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 850144e4835b43e219fa059bbc1c92bb3ef412f4
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: c74b5ba5101dae9165898aeb4f265d449988ecab
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200503"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205237"
 ---
 ::: zone target="docs"
 
@@ -42,20 +42,22 @@ In deze zelfstudie leert u het volgende:
 
 Zorg voordat u begint voor het volgende:
 
-1. U hebt de [zelfstudie: Azure Data Box bestellen](data-box-deploy-ordered.md) voltooid.
-2. U hebt uw Data Box ontvangen en de bestelstatus in de portal is bijgewerkt naar **Geleverd**. 
+1. U hebt de bestelling voor Azure Data Box geplaatst.
+    - Bekijk de [Zelfstudie voor een importorder: Azure Data Box bestellen](data-box-deploy-ordered.md) voltooid.
+    - Bekijk de [Zelfstudie voor een exportorder: Azure Data Box bestellen](data-box-deploy-export-ordered.md)
+1. U hebt uw Data Box ontvangen en de bestelstatus in de portal is bijgewerkt naar **Geleverd**. 
     - Er zit een verzendlabel in het doorzichtige hoesje op het apparaat, onder het stroometiket. Bewaar dit label zorgvuldig aangezien u het nodig hebt voor retourverzending.
     - In sommige regio's in Europa wordt het apparaat in een doos geleverd. Zorg bij het uitpakken van het apparaat dat u de doos bewaart voor retourzending.
-3. U hebt de [Data Box-veiligheidsrichtlijnen](data-box-safety.md) bekeken.
-4. U hebt één geaard netsnoer ontvangen voor gebruik met uw opslagapparaat van 100 TB.
-5. U hebt een hostcomputer waarop de gegevens staan die u naar de Data Box wilt kopiëren. Op uw hostcomputer moet
+1. U hebt de [Data Box-veiligheidsrichtlijnen](data-box-safety.md) bekeken.
+1. U hebt één geaard netsnoer ontvangen voor gebruik met uw opslagapparaat van 100 TB.
+1. U hebt een hostcomputer die wordt gebruikt om gegevens te kopiëren naar (importorder) of gegevens te kopiëren vanuit (exportorder) uw Data Box. Op uw hostcomputer moet
     - Een [ondersteund besturingssysteem](data-box-system-requirements.md) worden uitgevoerd.
     - Een verbinding bestaan met een netwerk met hoge snelheid. Het wordt aangeraden dat u beschikt over minstens één 10-GbE-verbinding. Als er geen 10-GbE-verbinding beschikbaar is, kan een 1-GbE-gegevensverbinding worden gebruikt. Dit heeft echter wel invloed op de kopieersnelheid. 
-6. U moet de beschikking hebben over een plat oppervlak waarop u de Data Box kunt plaatsen. Als u het apparaat op een plank van een standaardrek wilt plaatsen, moet het datacenterrek beschikken over een 7U-sleuf. U kunt het apparaat plat of rechtop in het rek plaatsen.
-7. U hebt de volgende kabels aangeschaft om de Data Box aan te sluiten op de hostcomputer.
+1. U moet de beschikking hebben over een plat oppervlak waarop u de Data Box kunt plaatsen. Als u het apparaat op een plank van een standaardrek wilt plaatsen, moet het datacenterrek beschikken over een 7U-sleuf. U kunt het apparaat plat of rechtop in het rek plaatsen.
+1. U hebt de volgende kabels aangeschaft om de Data Box aan te sluiten op de hostcomputer.
     - Een of meer koperen 10-GbE-kabels van het type SFP+ Twinax of glasvezelkabels van het type SFP+ (te gebruiken met de netwerkinterfaces DATA 1 en DATA 2). Data Box heeft de Mellanox ConnectX®-3 Pro EN Dual Port 10GBASE-T Adapters met PCI Express 3.0 netwerkinterface. Kabels die compatibel zijn met deze interface moeten dus werken. Voor interne testdoeleinden is bijvoorbeeld een CISCO SFP-H10GB-CU3M 10GBASE-CU TWINAX SFP +3M-kabel gebruikt. Zie de [lijst met ondersteunde kabels en switches van Mellanox](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf) voor meer informatie.
     - Eén RJ-45-netwerkkabel van het type CAT 6 (gebruiken met de MGMT-netwerkinterface)
-    - Eén RJ-45 CAT 6A- OF één RJ-45 CAT 6-netwerkkabel (gebruiken met DATA 3-netwerkinterface die is geconfigureerd als respectievelijk 10 Gbps of 1 Gbps)
+    - Eén RJ-45-netwerkkabel van het type CAT 6A OF CAT 6 (gebruiken met DATA 3-netwerkinterface die is geconfigureerd als respectievelijk 10 Gbps of 1 Gbps)
 
 ## <a name="cable-your-device"></a>Uw apparaat bekabelen
 
@@ -91,7 +93,7 @@ Nadat u het apparaat hebt ontvangen, moet u het apparaat aansluiten en er verbin
     - (Meegeleverd) geaard netsnoer met een vermogen van 10 A of hoger met een IEC60320 C-13-connector aan één eind om het apparaat te koppelen.
     - Eén RJ-45-netwerkkabel van het type CAT 6 (gebruiken met de MGMT-netwerkinterface)
     - Twee koperen 10 GbE-kabels van het type SFP+ Twinax (gebruiken met 10 Gbps DATA 1-, DATA 2-netwerkinterfaces)
-    - Eén RJ-45 CAT 6A- OF één RJ-45 CAT 6-netwerkkabel (gebruiken met DATA 3-netwerkinterface die is geconfigureerd als respectievelijk 10 Gbps of 1 Gbps)
+    - Eén RJ-45-netwerkkabel van het type CAT 6A OF CAT 6 (gebruiken met DATA 3-netwerkinterface die is geconfigureerd als respectievelijk 10 Gbps of 1 Gbps)
 
 3. Haal het apparaat uit de doos en plaats het op een plat oppervlak. 
     
@@ -120,7 +122,7 @@ Voer de volgende stappen uit om uw apparaat in te stellen met behulp van de loka
    ![Verbinding maken met de lokale webgebruikersinterface](media/data-box-deploy-set-up/data-box-connect-local-web-ui.png) 
 
 4. U ziet een pagina **Aanmelden** voor de lokale webgebruikersinterface. Zorg ervoor dat het serienummer van het apparaat overeenkomt in zowel de gebruikersinterface van de portal als de lokale webgebruikersinterface. Het apparaat is op dit moment vergrendeld.
-5. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+5. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 6. Download de referenties van het apparaat vanuit de portal. Ga naar **Algemeen > Apparaatdetails**. Kopieer het **Apparaatwachtwoord**. Het wachtwoord van het apparaat is aan een specifieke volgorde gekoppeld in de portal. 
 
     ![Apparaatreferenties ophalen](media/data-box-deploy-set-up/data-box-device-credentials.png)
@@ -135,7 +137,7 @@ Voer de volgende stappen uit om uw apparaat in te stellen met behulp van de loka
 
 Zodra de gegevensnetwerkinterfaces zijn geconfigureerd, kunt u ook het IP-adres van de DATA 1- tot DATA 3-interfaces gebruiken voor toegang tot de lokale webgebruikersinterface (via `https://<IP address of a data network interface>`). 
 
-Zodra de installatie van het apparaat is voltooid, kunt u verbinding maken met de apparaatshares en de gegevens van uw computer naar het apparaat kopiëren. 
+Zodra de installatie van het apparaat is voltooid, kunt u verbinding maken met de apparaatshares en de gegevens kopiëren. 
 
 ::: zone-end
 
@@ -161,10 +163,15 @@ In deze zelfstudie bent u meer te weten gekomen over verschillende onderwerpen m
 > * De Data Box bekabelen
 > * De Data Box aansluiten
 
-Ga naar de volgende zelfstudie om te lezen hoe u gegevens kopieert naar uw Data Box.
+Ga naar de volgende zelfstudie om te lezen hoe u gegevens kopieert.
 
 > [!div class="nextstepaction"]
-> [Uw gegevens naar Azure Data Box kopiëren](./data-box-deploy-copy-data.md)
+> [Uw gegevens naar Azure Data Box kopiëren voor importorder](./data-box-deploy-copy-data.md)
+
+of
+
+> [!div class="nextstepaction"]
+> [Uw gegevens kopiëren van Azure Data Box voor exportorder](./data-box-deploy-export-copy-data.md)
 
 ::: zone-end
 

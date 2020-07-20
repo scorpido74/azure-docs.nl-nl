@@ -1,5 +1,5 @@
 ---
-title: Quickstart - een Apache Spark-pool maken (preview) met behulp van de Azure-portal
+title: 'Quickstart: Een Apache Spark-pool maken (preview) met behulp van de Azure-portal'
 description: Een nieuwe Apache Spark-pool maken met behulp van de Azure-portal door de stappen in deze handleiding uit te voeren.
 services: synapse-analytics
 author: julieMSFT
@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 2b199848e6c84370bd9d8711eed25dbf6c3f4dfa
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 959ad0413c83389aef6a7607c1239043e242b75b
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194925"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274353"
 ---
 # <a name="quickstart-create-a-new-apache-spark-pool-preview-using-the-azure-portal"></a>Quickstart: Een nieuwe Apache Spark-pool maken (preview) met behulp van de Azure-portal
 

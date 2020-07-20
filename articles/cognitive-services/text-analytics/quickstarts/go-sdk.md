@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: Text Analytics-client bibliotheek voor Go | Microsoft Docs'
+title: 'Quickstart: Text Analytics-clientbibliotheek voor Go | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
-description: In deze Quick Start wordt taal gedetecteerd met behulp van de go Text Analytics-client bibliotheek van Azure Cognitive Services.
+description: In deze quickstart gebruikt u de Go Text Analytics-clientbibliotheek van Azure Cognitive Services om taalt e detecteren.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,51 +10,54 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: aahi
-ms.openlocfilehash: f9b5fb1837fdafe818fdb27221f8575d93ec304d
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: MT
+ms.openlocfilehash: ff1b35ec036996dfa452d92632c8fc6ede22d82f
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701623"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203246"
 ---
-# <a name="quickstart-use-the-text-analytics-client-library-for-go"></a>Snelstartgids: de Text Analytics-client bibliotheek voor Go gebruiken
+# <a name="quickstart-use-the-text-analytics-client-library-for-go"></a>Quickstart: De Text Analytics-clientbibliotheek voor Go gebruiken
 
-[Referentie documentatie](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics)  |  [Bron code](https://github.com/Azure/azure-sdk-for-go/blob/090dc0ee4d8d2d60e2a9525774d967a4111a2b0c/services/cognitiveservices/v2.1/textanalytics/client.go)  |  van bibliotheek [Pakket (github)](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics)  |  Voor [beelden](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
+- [Referentiedocumentatie](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics)
+- [Broncode van bibliotheek](https://github.com/Azure/azure-sdk-for-go/blob/090dc0ee4d8d2d60e2a9525774d967a4111a2b0c/services/cognitiveservices/v2.1/textanalytics/client.go)
+- [Pakket (GitHub)](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics)
+- [Voorbeelden](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
 
 > [!NOTE]
-> Deze Quick start is alleen van toepassing op Text Analytics versie 2,1. Op dit moment is een v3-client bibliotheek voor Go niet beschikbaar.
+> Deze quickstart is alleen van toepassing op Text Analytics versie 2.1. Op dit moment is een v3-clientbibliotheek voor Go niet beschikbaar.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
-* De nieuwste versie van [Go](https://golang.org/dl/)
-* Wanneer u uw Azure-abonnement hebt, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" maakt u een Text Analytics resource Maak "  target="_blank"> een Text Analytics resource <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. 
-    * U hebt de sleutel en het eind punt nodig van de resource die u maakt om de toepassing te verbinden met de Text Analytics-API. U gaat later in de Quick Start.
-    * U kunt de gratis prijs categorie gebruiken om de service te proberen en later te upgraden naar een betaalde laag voor productie.
+* Een Azure-abonnement - [Een gratis abonnement maken](https://azure.microsoft.com/free/)
+* Nieuwste versie van [Go](https://golang.org/dl/)
+* Zodra u een Azure-abonnement hebt, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Een Text Analytics-resource maken"  target="_blank">maakt u een Text Analytics-resource <span class="docon docon-navigate-external x-hidden-focus"></span></a> in de Azure-portal om uw sleutel en eindpunt op te halen. 
+    * U hebt de sleutel en het eindpunt nodig van de resource die u maakt, om de toepassing te verbinden met de Text Analytics-API. U doet dit later in de quickstart.
+    * U kunt de gratis prijscategorie gebruiken om de service uit te proberen, en later upgraden naar een betaalde laag voor productie.
 
 ## <a name="setting-up"></a>Instellen
 
-### <a name="create-a-new-go-project"></a>Een nieuw go-project maken
+### <a name="create-a-new-go-project"></a>Een nieuw Go-project maken
 
-Maak in een console venster (cmd, Power shell, Terminal, bash) een nieuwe werk ruimte voor uw Go-project en navigeer ernaar. Uw werk ruimte bevat drie mappen: 
+Maak in een consolevenster (cmd, PowerShell, Terminal, Bash) een nieuwe werkruimte voor uw Go-project en navigeer er naartoe. Uw werkruimte bevat drie mappen: 
 
-* **src** -deze map bevat bron code en pakketten. Alle pakketten die met de `go get` opdracht zijn geïnstalleerd, worden hier opgeslagen.
-* **pakket** -deze map bevat de gecompileerde go package-objecten. Deze bestanden hebben allemaal een `.a` extensie.
-* **bin** : deze map bevat de binaire uitvoer bare bestanden die worden gemaakt wanneer u uitvoert `go install` .
+* **src** - Deze map bevat broncode en pakketten. Alle pakketten geïnstalleerd met de `go get`-opdracht bevinden zich hier.
+* **pkg** - Deze map bevat de gecompileerde Go-pakketobjecten. Deze bestanden hebben allemaal een `.a`-extensie.
+* **bin** - Deze map bevat de binaire uitvoerbare bestanden die worden gemaakt wanneer u `go install` uitvoert.
 
 > [!TIP]
-> Meer informatie over de structuur van een [Go-werk ruimte](https://golang.org/doc/code.html#Workspaces). Deze hand leiding bevat informatie over het instellen van `$GOPATH` en `$GOROOT` .
+> Meer informatie over de structuur van een [Go-werkruimte](https://golang.org/doc/code.html#Workspaces). Deze handleiding bevat informatie om `$GOPATH` en `$GOROOT` in te stellen.
 
-Maak een werk ruimte `my-app` met de naam en de vereiste submappen voor `src` , en `pkg` `bin` :
+Maak een werkruimte met de naam `my-app` en de vereiste submappen voor `src`, `pkg` en `bin`:
 
 ```console
 $ mkdir -p my-app/{src, bin, pkg}  
 $ cd my-app
 ```
 
-### <a name="install-the-text-analytics-client-library-for-go"></a>De Text Analytics-client bibliotheek voor Go installeren
+### <a name="install-the-text-analytics-client-library-for-go"></a>De Text Analytics-clientbibliotheek voor Go installeren
 
-De client bibliotheek voor Go installeren: 
+De clientbibliotheek installeren voor Go: 
 
 ```console
 $ go get -u <https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics>
@@ -68,43 +71,43 @@ $ dep ensure -add <https://github.com/Azure/azure-sdk-for-go/tree/master/service
 
 ### <a name="create-your-go-application"></a>Uw Go-toepassing maken
 
-Maak vervolgens een bestand met de naam `src/quickstart.go` :
+Maak vervolgens een bestand met de naam `src/quickstart.go`
 
 ```bash
 $ cd src
 $ touch quickstart.go
 ```
 
-Open `quickstart.go` in uw favoriete IDE-of tekst editor. Voeg vervolgens de naam van het pakket toe en importeer de volgende bibliotheken:
+Open `quickstart.go` in uw favoriete IDE of teksteditor. Voeg vervolgens de pakketnaam toe en importeer de volgende bibliotheken:
 
 [!code-go[Import statements](~/azure-sdk-for-go-samples/cognitiveservices/textanalytics.go?name=imports)]
 
-## <a name="object-model"></a>Object model 
+## <a name="object-model"></a>Objectmodel 
 
-De Text Analytics-client is een [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#New) -object dat met behulp van uw sleutel wordt geverifieerd bij Azure. De-client biedt verschillende methoden voor het analyseren van tekst, als één teken reeks of een batch. 
+De Text Analytics-client is een [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#New)-object dat met behulp van uw sleutel wordt geverifieerd bij Azure. De client biedt verschillende methoden voor het analyseren van tekst, zoals één tekenreeks of een batch. 
 
-Tekst wordt naar de API verzonden als een lijst met `documents` `dictionary` objecten die een combi natie van `id` , en kenmerken bevatten, afhankelijk van `text` `language` de gebruikte methode. Het `text` kenmerk slaat de tekst op die moet worden geanalyseerd in de oorsprong `language` , en `id` kan een wille keurige waarde zijn. 
+Tekst wordt naar de API verzonden als een lijst met `documents`. Dit zijn `dictionary`-objecten die een combinatie van de kenmerken `id`, `text` en `language` bevatten, afhankelijk van de gebruikte methode. Met het kenmerk `text` wordt de tekst die moet worden geanalyseerd, opgeslagen in de oorsprong `language`, en `id` kan elke waarde hebben. 
 
-Het antwoord object is een lijst met de analyse-informatie voor elk document. 
+Het antwoordobject is een lijst met de analyse-informatie voor elk document. 
 
 ## <a name="code-examples"></a>Codevoorbeelden
 
-Deze code fragmenten laten zien hoe u het volgende kunt doen met de Text Analytics-client bibliotheek voor Go:
+Deze codefragmenten laten zien hoe u de volgende taken kunt uitvoeren met de Text Analytics-clientbibliotheek voor Go:
 
 * [De client verifiëren](#authenticate-the-client)
 * [Sentimentanalyse](#sentiment-analysis)
 * [Taaldetectie](#language-detection)
-* [Entiteit herkenning](#entity-recognition)
-* [Extractie van sleutel woorden](#key-phrase-extraction)
+* [Herkenning van entiteiten](#entity-recognition)
+* [Sleuteltermextractie](#key-phrase-extraction)
 
 ## <a name="authenticate-the-client"></a>De client verifiëren
 
 
-Maak in een nieuwe functie variabelen voor het Azure-eind punt en de abonnements sleutel van uw resource.
+Maak in een nieuwe functie variabelen voor het Azure-eindpunt en de abonnementssleutel voor uw resource.
 
 [!INCLUDE [text-analytics-find-resource-information](../includes/find-azure-resource-info.md)]
 
-Maak een nieuw [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#New) -object. Geef uw sleutel door aan de auto [rest. De functie NewCognitiveServicesAuthorizer ()](https://godoc.org/github.com/Azure/go-autorest/autorest#NewCognitiveServicesAuthorizer) , die vervolgens wordt door gegeven aan de eigenschap van de client `authorizer` .
+Maak een nieuw [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#New)-object. Geef uw sleutel door aan de functie [autorest.NewCognitiveServicesAuthorizer()](https://godoc.org/github.com/Azure/go-autorest/autorest#NewCognitiveServicesAuthorizer), die vervolgens wordt doorgegeven aan de `authorizer`-eigenschap van de client.
 
 ```go
 func GetTextAnalyticsClient() textanalytics.BaseClient {
@@ -120,13 +123,13 @@ func GetTextAnalyticsClient() textanalytics.BaseClient {
 
 ## <a name="sentiment-analysis"></a>Sentimentanalyse
 
-Maak een nieuwe functie `SentimentAnalysis()` met de naam en maak een client met behulp van de `GetTextAnalyticsClient()` methode die u eerder hebt gemaakt. Maak een lijst met [MultiLanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput) -objecten die de documenten bevatten die u wilt analyseren. Elk object bevat een `id` , `Language` en een- `text` kenmerk. Het `text` kenmerk slaat de tekst op die moet worden geanalyseerd, `language` is de taal van het document en de `id` kan een wille keurige waarde zijn. 
+Maak een nieuwe functie met de naam `SentimentAnalysis()` en maak een client met behulp van de `GetTextAnalyticsClient()`-methode die u eerder hebt gemaakt. Maak een lijst met [MultiLanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput)-objecten die de documenten bevat die u wilt analyseren. Elk object bevat een `id`, `Language` en een `text`-kenmerk. Het kenmerk `text` slaat de tekst op die moet worden geanalyseerd, `language` is de taal van het document, en `id` kan elke waarde hebben. 
 
-Aanroepen van de [sentiment ()-](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.Sentiment) functie van de client en het resultaat ophalen. Herhaal vervolgens de resultaten en druk de document-ID en sentiment Score af. Een score dichter bij 0 geeft aan dat er een negatieve sentiment is, terwijl een score dichter bij 1 wijst op een positieve sentiment.
+Roep de [Sentiment()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.Sentiment)-functie van de client aan en haal het resultaat op. Herhaal vervolgens de lijst met resultaten en geef voor elk document de id en gevoelsscore weer. Een score dichter bij 0 wijst op een negatief gevoel, terwijl een score dichter bij 1 op een positief gevoel wijst.
 
 [!code-go[Sentiment analysis sample](~/azure-sdk-for-go-samples/cognitiveservices/textanalytics.go?name=sentimentAnalysis)]
 
-Bel `SentimentAnalysis()` in uw project.
+Roep `SentimentAnalysis()` aan in uw project.
 
 ### <a name="output"></a>Uitvoer
 
@@ -139,13 +142,13 @@ Document ID: 4 , Sentiment Score: 1.00
 
 ## <a name="language-detection"></a>Taaldetectie
 
-Maak een nieuwe functie `LanguageDetection()` met de naam en maak een client met behulp van de `GetTextAnalyticsClient()` methode die u eerder hebt gemaakt. Maak een lijst met [LanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#LanguageInput) -objecten die de documenten bevatten die u wilt analyseren. Elk object bevat een `id` en een- `text` kenmerk. Het `text` kenmerk slaat de tekst die moet worden geanalyseerd en de `id` kan een wille keurige waarde zijn. 
+Maak een nieuwe functie met de naam `LanguageDetection()` en maak een client met behulp van de `GetTextAnalyticsClient()`-methode die u eerder hebt gemaakt. Maak een lijst met [LanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#LanguageInput)-objecten die de documenten bevat die u wilt analyseren. Elk object bevat een `id` en een kenmerk `text`. Met het kenmerk `text` wordt de tekst opgeslagen die moet worden geanalyseerd. De `id` kan elke waarde zijn. 
 
-Aanroepen van [DetectLanguage ()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.DetectLanguage) van de client en het resultaat ophalen. Herhaal vervolgens de resultaten en druk de document-ID en de gedetecteerde taal af.
+Roep de [DetectLanguage()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.DetectLanguage) van de client aan en haal het resultaat op. Blader vervolgens door de resultaten en druk voor elk document de id en gedetecteerde taal af.
 
 [!code-go[Language detection sample](~/azure-sdk-for-go-samples/cognitiveservices/textanalytics.go?name=languageDetection)]
 
-Bel `LanguageDetection()` in uw project.
+Roep `LanguageDetection()` aan in uw project.
 
 ### <a name="output"></a>Uitvoer
 
@@ -157,13 +160,13 @@ Document ID: 2 , Language: Chinese_Simplified
 
 ## <a name="entity-recognition"></a>Herkenning van entiteiten
 
-Maak een nieuwe functie `ExtractEntities()` met de naam en maak een client met behulp van de `GetTextAnalyticsClient()` methode die u eerder hebt gemaakt. Maak een lijst met [MultiLanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput) -objecten die de documenten bevatten die u wilt analyseren. Elk object bevat een `id` -, `language` -en- `text` kenmerk. Het `text` kenmerk slaat de tekst op die moet worden geanalyseerd, `language` is de taal van het document en de `id` kan een wille keurige waarde zijn. 
+Maak een nieuwe functie met de naam `ExtractEntities()` en maak een client met behulp van de `GetTextAnalyticsClient()`-methode die u eerder hebt gemaakt. Maak een lijst met [MultiLanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput)-objecten die de documenten bevat die u wilt analyseren. Elk object bevat een `id`, `language` en een kenmerk `text`. Het kenmerk `text` slaat de tekst op die moet worden geanalyseerd, `language` is de taal van het document, en `id` kan elke waarde hebben. 
 
-Roep de entiteiten van de client aan [()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.Entities) en ontvang het resultaat. Herhaal vervolgens de resultaten en druk de Score van elk document en geëxtraheerde entiteiten af.
+Roep de [Entities()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.Entities) van de client aan en haal het resultaat op. Herhaal vervolgens de resultaten en geef voor elk document de id en de opgehaalde entiteitsscore.
 
 [!code-go[entity recognition sample](~/azure-sdk-for-go-samples/cognitiveservices/textanalytics.go?name=entityRecognition)]
 
-Bel `ExtractEntities()` in uw project.
+Roep `ExtractEntities()` aan in uw project.
 
 ### <a name="output"></a>Uitvoer
 
@@ -197,13 +200,13 @@ Document ID: 2
 
 ## <a name="key-phrase-extraction"></a>Sleuteltermextractie
 
-Maak een nieuwe functie `ExtractKeyPhrases()` met de naam en maak een client met behulp van de `GetTextAnalyticsClient()` methode die u eerder hebt gemaakt. Maak een lijst met [MultiLanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput) -objecten die de documenten bevatten die u wilt analyseren. Elk object bevat een `id` -, `language` -en- `text` kenmerk. Het `text` kenmerk slaat de tekst op die moet worden geanalyseerd, `language` is de taal van het document en de `id` kan een wille keurige waarde zijn.
+Maak een nieuwe functie met de naam `ExtractKeyPhrases()` en maak een client met behulp van de `GetTextAnalyticsClient()`-methode die u eerder hebt gemaakt. Maak een lijst met [MultiLanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput)-objecten die de documenten bevat die u wilt analyseren. Elk object bevat een `id`, `language` en een kenmerk `text`. Het kenmerk `text` slaat de tekst op die moet worden geanalyseerd, `language` is de taal van het document, en `id` kan elke waarde hebben.
 
-Roep de woordgroepen van de client [()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.KeyPhrases) aan en ontvang het resultaat. Herhaal vervolgens de resultaten en druk de document-ID en de geëxtraheerde sleutel zinnen af.
+Roep de [KeyPhrases()](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#BaseClient.KeyPhrases) van de client aan en haal het resultaat op. Blader vervolgens door de resultaten en druk voor elk document de id en opgehaalde sleuteltermen af.
 
 [!code-go[key phrase extraction sample](~/azure-sdk-for-go-samples/cognitiveservices/textanalytics.go?name=keyPhrases)]
 
-Bel `ExtractKeyPhrases()` in uw project.
+Roep `ExtractKeyPhrases()` aan in uw project.
 
 ### <a name="output"></a>Uitvoer
 

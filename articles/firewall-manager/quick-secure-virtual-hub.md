@@ -8,32 +8,34 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 6641cc29025d39ddff33e706dd9b1b0da517b884
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 1917bed7727b97de27e560a0f2d8032a8ae08996
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563695"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242012"
 ---
-# <a name="quickstart-secure-your-virtual-hub-using-azure-firewall-manager---resource-manager-template"></a>Quickstart: uw virtuele hub beveiligen met Azure Firewall Manager - Resource Manager-sjabloon
+# <a name="quickstart-secure-your-virtual-hub-using-azure-firewall-manager---arm-template"></a>Quickstart: Uw virtuele hub beveiligen met Azure Firewall Manager - ARM-sjabloon
 
-In deze quickstart gebruikt u een Resource Manager-sjabloon om uw virtuele hub te beveiligen met Azure Firewall Manager. De geïmplementeerde firewall heeft een toepassingsregel waarmee verbindingen met `www.microsoft.com` worden toegestaan. Twee virtuele Windows Server 2019-machines worden geïmplementeerd om de firewall te testen. Eén jumpserver wordt gebruikt om verbinding te maken met de workloadserver. Vanaf de workloadserver kunt u alleen verbinding maken met `www.microsoft.com`.
+In deze quickstart gebruikt u een Azure Resource Manager-sjabloon (ARM-sjabloon) om uw virtuele hub te beveiligen met Azure Firewall Manager. De geïmplementeerde firewall heeft een toepassingsregel waarmee verbindingen met `www.microsoft.com` worden toegestaan. Twee virtuele Windows Server 2019-machines worden geïmplementeerd om de firewall te testen. Eén jumpserver wordt gebruikt om verbinding te maken met de workloadserver. Vanaf de workloadserver kunt u alleen verbinding maken met `www.microsoft.com`.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 Zie [What is Azure Firewall Manager?](overview.md) (Wat is Azure Firewall Manager?) voor meer informatie over Azure Firewall Manager.
 
+Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
+
+[![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffwm-docs-qs%2Fazuredeploy.json)
+
 ## <a name="prerequisites"></a>Vereisten
 
 - Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 
-## <a name="create-a-secured-virtual-hub"></a>Een beveiligde virtuele hub maken
+## <a name="review-the-template"></a>De sjabloon controleren
 
 Met deze sjabloon maakt u een beveiligde virtuele hub met Azure Firewall Manager, plus de benodigde resources om het scenario te ondersteunen.
 
-### <a name="review-the-template"></a>De sjabloon controleren
-
-De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure Quick Start-sjablonen](https://azure.microsoft.com/resources/templates/fwm-docs-qs/).
+De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-quickstartsjablonen](https://azure.microsoft.com/resources/templates/fwm-docs-qs/).
 
 :::code language="json" source="~/quickstart-templates/fwm-docs-qs/azuredeploy.json" range="001-477" highlight="47-76":::
 
@@ -51,11 +53,11 @@ Er worden meerdere Azure-resources gedefinieerd in de sjabloon:
 - [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
 - [**Microsoft.Network/routeTables**](/azure/templates/microsoft.network/routeTables)
 
-### <a name="deploy-the-template"></a>De sjabloon implementeren
+## <a name="deploy-the-template"></a>De sjabloon implementeren
 
-Resource Manager-sjabloon implementeren in Azure:
+Het ARM-sjabloon implementeren in Azure:
 
-1. Selecteer **Implementeren in Azure** om u aan te melden bij Azure en de sjabloon te openen. Met de sjabloon maakt u een Azure-firewall, een virtuele WAN en virtuele hub, de netwerkinfrastructuur en twee virtuele machines.
+1. Selecteer **Implementeren in Azure** om u aan te melden bij Azure, en open de sjabloon. Met de sjabloon maakt u een Azure-firewall, een virtuele WAN en virtuele hub, de netwerkinfrastructuur en twee virtuele machines.
 
    [![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffwm-docs-qs%2Fazuredeploy.json)
 
@@ -86,7 +88,7 @@ Test nu de firewallregels om te controleren of deze werkt zoals verwacht.
 
 Nu u hebt geverifieerd dat de firewallregels werken:
 
-* Kunt u bladeren naar de enige toegestane FQDN, maar niet naar andere.
+- Kunt u bladeren naar de enige toegestane FQDN, maar niet naar andere.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 4b53c4d1a26d8e4b8d784087dcb9b9feba9c7ded
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 2b6c61c5c144923ece80fddf8a1412d68f35ad52
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84191757"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242867"
 ---
 # <a name="what-is-azure-maps"></a>Wat is Azure Maps?
 
@@ -165,6 +165,14 @@ Azure Maps is gebouwd voor mobiliteit en kan u helpen platformoverschrijdende to
 
 Azure Maps biedt ook een handig [kaartbesturingselement van JavaScript](https://docs.microsoft.com/javascript/api/azure-maps-control) met een eenvoudig programmeermodel. De ontwikkeling is snel en eenvoudig voor zowel web- als mobiele toepassingen.
 
+## <a name="power-bi-visual"></a>Power BI-visual
+
+De Azure Maps-visual voor Power BI biedt een uitgebreide set gegevensvisualisaties voor ruimtelijke gegevens over een kaart. Naar schatting 80% van de bedrijfsgegevens heeft een geografische context. De Azure Maps-visual biedt een oplossing zonder code om inzicht te krijgen in de manier waarop deze geografische context is gekoppeld aan en invloed heeft op uw bedrijfsgegevens.
+
+![Power BI Desktop met de Azure Maps-visual waarop bedrijfsgegevens worden weergegeven](media/power-bi-visual/azure-maps-visual-hero.png)
+
+Zie de 'Aan de slag gaan‘-documentatie voor de [Azure Maps Power BI-visual](power-bi-visual-getting-started.md) voor meer informatie.
+
 ## <a name="usage"></a>Gebruik
 
 Voor toegang tot de services van Azure Maps gaat u naar de [Azure-portal](https://portal.azure.com) en maakt u een Azure Maps-account.
@@ -175,7 +183,7 @@ Opmerking - Azure Maps deelt door klanten verstrekte adressen/locatie-query's ("
 
 ## <a name="supported-regions"></a>Ondersteunde regio’s
 
-De Azure Maps-API’s zijn momenteel wereldwijd beschikbaar, met uitzondering van de volgende landen/regio's:
+De Azure Maps-API’s zijn momenteel beschikbaar in alle landen en regio's, behalve de volgende:
 
 * China
 * Zuid-Korea

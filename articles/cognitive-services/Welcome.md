@@ -1,7 +1,7 @@
 ---
 title: Wat zijn Azure Cognitive Services?
 titleSuffix: Azure Cognitive Services
-description: Azure Cognitive Services zijn Api's, Sdk's en services die u met Microsoft Azure kunt gebruiken om intelligente toepassingen te bouwen.
+description: Azure Cognitive Services zijn API's, SDK's en services die u met Microsoft Azure kunt gebruiken om intelligente toepassingen te bouwen.
 services: cognitive-services
 author: nitinme
 manager: nitinme
@@ -10,115 +10,113 @@ ms.subservice: ''
 ms.topic: overview
 ms.date: 12/19/2019
 ms.author: nitinme
-ms.openlocfilehash: 2906734a37fbb5516596d456386929c11c8dc1e4
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: MT
+ms.openlocfilehash: 6272d050e6a71032f32c72be696d8c3918fc3d61
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588289"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223751"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Wat zijn Azure Cognitive Services?
 
-Azure Cognitive Services zijn Api's, Sdk's en services die beschikbaar zijn om ontwikkel aars te helpen bij het bouwen van intelligente toepassingen zonder directe AI-of Data Science-vaardig heden of kennis. Met Azure Cognitive Services kunnen ontwikkel aars eenvoudig cognitieve functies toevoegen aan hun toepassingen. Het doel van Azure Cognitive Services is om ontwikkel aars te helpen bij het maken van toepassingen die kunnen zien, horen, spreken, begrijpen en zelfs te beginnen om redenen. De catalogus met services binnen Azure Cognitive Services kan worden gecategoriseerd in vijf hoofd pijlers: visie, spraak, taal, Webzoekopdrachten en beslissing.
+Azure Cognitive Services bestaat uit API's, SDK's en services waarmee ontwikkelaars intelligente toepassingen kunnen bouwen zonder directe vaardigheden of kennis op het gebied van AI of gegevenswetenschap. Met Azure Cognitive Services kunnen ontwikkelaars eenvoudig cognitieve functies toevoegen aan hun toepassingen. Het doel van Azure Cognitive Services is ontwikkelaars te helpen met het maken van toepassingen die kunnen zien, horen, spreken, begrijpen en zelfs beginnen te redeneren. De services binnen Azure Cognitive Services kunnen worden onderverdeeld in vijf hoofdcategorieën: visie, spraak, taal, webzoekopdrachten en besluitvorming.
 
-## <a name="vision-apis"></a>Vision-Api's
+Wilt u zien wat er nieuw is en de bijgewerkte documentatie voor Cognitive Services raadplegen? Bekijk [Wat is er nieuw in Cognitive Services-documenten?](whats-new-docs.md)
 
-|Servicenaam|Beschrijving van de service|
-|:-----------|:------------------|
-|[Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/ "Computer Vision")|De Computer Vision-service biedt u toegang tot geavanceerde algoritmen voor het verwerken van afbeeldingen en het retour neren van gegevens.|
-|[Custom Vision Service](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/home "Custom Vision Service")|Met de Custom Vision Service kunt u aangepaste classificaties voor een installatie kopie maken.|
-|[Face](https://docs.microsoft.com/azure/cognitive-services/face/ "Face")| De face-service biedt toegang tot geavanceerde gezichts algoritmen, waardoor detectie en herkenning van gezichts kenmerken mogelijk zijn.|
-|[Formulier herkenning](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/ "Form Recognizer") (preview-versie)|Met de formulier herkenning worden sleutel-waardeparen en tabel gegevens uit formulier documenten geïdentificeerd en opgehaald. vervolgens worden gestructureerde gegevens uitgevoerd, inclusief de relaties in het oorspronkelijke bestand.|
-|[Inkt herkenning](https://docs.microsoft.com/azure/cognitive-services/ink-recognizer/ "Ink Recognizer") (preview-versie)|Met de functie voor inkt herkenning kunt u gegevens van digitale inkt, vormen en handgeschreven inhoud herkennen en analyseren, en een document structuur met alle herkende entiteiten uitvoeren.|
-|[Video Indexer](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview "Video Indexer")|Met Video Indexer kunt u inzichten uit uw video halen.|
-
-## <a name="speech-apis"></a>Spraak-Api's
+## <a name="vision-apis"></a>Vision-API's
 
 |Servicenaam|Beschrijving van de service|
 |:-----------|:------------------|
-|[Speech-Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/ "Speech Service")|Speech service voegt functies met spraak functionaliteit toe aan toepassingen.|
-|[Sprekerherkenning-API](https://docs.microsoft.com/azure/cognitive-services/speaker-recognition/home "Sprekerherkenning-API") (preview-versie)|De Sprekerherkenning-API biedt algoritmen voor het identificeren en verifiëren van de speaker.|
-|[Bing speech](https://docs.microsoft.com/azure/cognitive-services/speech/home "Bing Speech") (buiten gebruik stellen)|De Bing Speech-API biedt u een eenvoudige manier om spraak functies in uw toepassingen te maken.|
-|[Translator speech](https://docs.microsoft.com/azure/cognitive-services/translator-speech/ "Translator Speech") (buiten gebruik stellen)|Translator Speech is een service voor machine vertalingen.|
+|[Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/ "Computer Vision")|De Computer Vision-service geeft u toegang tot geavanceerde algoritmen voor het verwerken van afbeeldingen en het retourneren van informatie.|
+|[Custom Vision Service](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/home "Custom Vision Service")|Met de Custom Vision Service kunt u aangepaste classificeerders voor afbeeldingen bouwen.|
+|[Face](https://docs.microsoft.com/azure/cognitive-services/face/ "Face")| De Face-service biedt toegang tot geavanceerde gezichtsalgoritmen, waardoor detectie en herkenning van gezichtskenmerken mogelijk worden.|
+|[Form Recognizer](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/ "Form Recognizer") (preview)|Form Recognizer identificeert en extraheert sleutel-waardeparen en tabelgegevens uit formulierdocumenten. Vervolgens voert het gestructureerde gegevens uit, inclusief de relaties in het oorspronkelijke bestand.|
+|[Ink Recognizer](https://docs.microsoft.com/azure/cognitive-services/ink-recognizer/ "Ink Recognizer") (preview)|Met Ink Recognize kunt u gegevens over digitale pennenstreken, vormen en handgeschreven inhoud herkennen en analyseren en een documentstructuur met alle herkende entiteiten uitvoeren.|
+|[Video Indexer](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview "Video Indexer")|Extraheer inzichten uit uw video met Video Indexer.|
+
+## <a name="speech-apis"></a>Speech-API's
+
+|Servicenaam|Beschrijving van de service|
+|:-----------|:------------------|
+|[Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/ "Speech Service")|Speech-service voegt spraakfuncties toe aan toepassingen.|
+|[Sprekerherkenning-API](https://docs.microsoft.com/azure/cognitive-services/speaker-recognition/home "Sprekerherkenning-API") (preview)|De Sprekerherkenning-API biedt algoritmen voor identificatie en controle van de spreker.|
+|[Bing Speech](https://docs.microsoft.com/azure/cognitive-services/speech/home "Bing Speech") (wordt buiten gebruik gesteld)|De Bing Speech-API biedt u een eenvoudige manier om spraakfuncties aan uw toepassingen toe te voegen.|
+|[Translator Speech](https://docs.microsoft.com/azure/cognitive-services/translator-speech/ "Translator Speech") (wordt buiten gebruik gesteld)|Translator Speech is een service voor machinevertaling.|
 
 > [!NOTE]
-> Zoekt u [Azure Cognitive Search](https://docs.microsoft.com/azure/search/)? Hoewel het Cognitive Services voor bepaalde taken gebruikt, is het een andere zoek technologie die ondersteuning biedt voor andere scenario's.
+> Op zoek naar [Azure Cognitive Search](https://docs.microsoft.com/azure/search/)? Hoewel het Cognitive Services gebruikt voor bepaalde taken, is het een verschillende zoektechnologie die ander scenario's ondersteunt.
 
 
-## <a name="language-apis"></a>Taal-Api's
-
-|Servicenaam|Beschrijving van de service|
-|:-----------|:------------------|
-|[Language Understanding LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/ "Taalbegrip")|Met de Language Understanding-service (LUIS) kan uw toepassing begrijpen wat een persoon in hun eigen woorden wil.|
-|[QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/index "QnA Maker")|Met QnA Maker kunt u een vraag-en-antwoord service maken op basis van uw semi-gestructureerde inhoud.|
-|[Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/ "Tekstanalyse")|Text Analytics voorziet in natuurlijke taal verwerking via onbewerkte tekst voor sentiment analyse, extractie van sleutel zinnen en taal detectie.|
-|[Translator](https://docs.microsoft.com/azure/cognitive-services/translator/ "Translator")|Translator biedt tekst vertaling op basis van een computer bijna in realtime.|
-
-
-## <a name="search-apis"></a>Api's zoeken
+## <a name="language-apis"></a>Taal-API's
 
 |Servicenaam|Beschrijving van de service|
 |:-----------|:------------------|
-|[Bing News Search](https://docs.microsoft.com/azure/cognitive-services/bing-news-search/ "Zoeken in Bing Nieuws")|Bing News Search retourneert een lijst met nieuws artikelen die relevant zijn voor de query van de gebruiker.|
-|[Bing Video Search](https://docs.microsoft.com/azure/cognitive-services/Bing-Video-Search/ "Bing Video's zoeken")|Bing Video Search retourneert een lijst met Video's waarvan is vastgesteld dat deze relevant zijn voor de query van de gebruiker.|
-|[Bing Web Search](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/ "Bing Web Search")|Bing Web Search retourneert een lijst met zoek resultaten die relevant zijn voor de query van de gebruiker.|
-|[Bing Automatische suggesties](https://docs.microsoft.com/azure/cognitive-services/Bing-Autosuggest "Bing Automatische suggesties")|Met Bing Automatische suggesties kunt u een term voor een gedeeltelijke Zoek query naar Bing verzenden en een lijst met voorgestelde query's terughalen.|
-|[Bing Custom Search](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search "Bing Custom Search")|Met Bing Aangepaste zoekopdrachten kunt u op maat gemaakte zoek functies maken voor onderwerpen die u bevalt.|
-|[Bing Entity Search](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/ "Bing Entity Search")|Bing Entity Search retourneert informatie over entiteiten die worden bepaald door Bing, zijn relevant voor de query van een gebruiker.|
-|[Bing Image Search](https://docs.microsoft.com/azure/cognitive-services/bing-image-search "Bing Image Search")|Bing Image Search retourneert een weer gave van afbeeldingen die relevant zijn voor de query van de gebruiker.|
-|[Bing Visual Search](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search "Bing Visual Search")|Bing Visual Search biedt inzichten over een afbeelding, zoals visueel vergelijk bare afbeeldingen, Shop ping-bronnen voor producten gevonden in de installatie kopie en gerelateerde zoek opdrachten.|
-|[Bing Zoeken naar lokale bedrijven](https://docs.microsoft.com/azure/cognitive-services/bing-local-business-search/ "Bing Zoeken naar lokale bedrijven")| Met Bing Local Business Search-API kunnen uw toepassingen contact-en locatie gegevens vinden over lokale bedrijven op basis van zoek query's.|
-|[Bing Spellingcontrole](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/ "Bing Spellingcontrole")|Met Bing Spellingcontrole kunt u contextuele grammatica en spelling controle uitvoeren.|
+|[Language Understanding (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/ "Taal begrijpen")|Met de service LUIS kunt u uw toepassing in staat stellen te begrijpen wat een persoon in zijn eigen woorden wil zeggen.|
+|[QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/index "QnA Maker")|Met QnA Maker kunt u een vraag-en-antwoordservice maken op basis van uw semi-gestructureerde inhoud.|
+|[Tekstanalyse](https://docs.microsoft.com/azure/cognitive-services/text-analytics/ "Tekstanalyse")|Text Analytics biedt natuurlijke taalverwerking via onbewerkte tekst voor sentimentanalyse, sleuteltermextractie en taaldetectie.|
+|[Translator](https://docs.microsoft.com/azure/cognitive-services/translator/ "Vertaler")|Translator biedt bijna realtime machinevertaling van teksten.|
 
-## <a name="decision-apis"></a>Beslissings-Api's
+
+## <a name="search-apis"></a>Search-API's
 
 |Servicenaam|Beschrijving van de service|
 |:-----------|:------------------|
-|[Anomalie detectie](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/ "Anomaly Detector") (preview-versie)|Met anomalie detectie kunt u afwijkingen in uw time series-gegevens controleren en detecteren.|
-|[Content Moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview "Content Moderator")|Content Moderator biedt bewaking voor mogelijke beledigende, ongewenste en Risk ante inhoud.|
-|[Personalizer](https://docs.microsoft.com/azure/cognitive-services/personalizer/ "Personalizer")|Met personaler kunt u de beste ervaring kiezen die aan uw gebruikers wordt weer gegeven. u leert vanuit hun realtime gedrag.|
+|[Bing Nieuws zoeken](https://docs.microsoft.com/azure/cognitive-services/bing-news-search/ "Zoeken in Bing Nieuws")|Bing News Search retourneert een lijst met nieuwsartikelen die relevant zijn voor de query van de gebruiker.|
+|[Bing Video's zoeken](https://docs.microsoft.com/azure/cognitive-services/Bing-Video-Search/ "Bing Video's zoeken")|Bing Video Search retourneert een lijst met video's die relevant zijn voor de query van de gebruiker.|
+|[Bing Webzoekopdrachten](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/ "Bing Webzoekopdrachten")|Bing Web Search retourneert een lijst met zoekresultaten die relevant zijn voor de query van de gebruiker.|
+|[Bing Automatische suggesties](https://docs.microsoft.com/azure/cognitive-services/Bing-Autosuggest "Bing Automatische suggesties")|Met Bing Automatische suggesties kunt u een gedeeltelijke query-zoekterm naar Bing verzenden en een lijst ontvangen met voorgestelde query’s.|
+|[Bing Aangepaste zoekopdrachten](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search "Bing Aangepaste zoekopdrachten")|Met Bing Aangepaste zoekopdrachten kunt u op maat gemaakte zoekervaringen maken voor onderwerpen die u interesseren.|
+|[Bing Entiteiten zoeken](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/ "Bing Entiteiten zoeken")|Bing Entiteiten zoeken retourneert informatie over entiteiten die volgens Bing relevant zijn voor een query van een gebruiker.|
+|[Bing Afbeeldingen zoeken](https://docs.microsoft.com/azure/cognitive-services/bing-image-search "Bing Afbeeldingen zoeken")|Bing Image Search retourneert een weergave van afbeeldingen die relevant zijn voor de query van de gebruiker.|
+|[Bing Visuele zoekopdrachten](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search "Bing Visuele zoekopdrachten")|Bing Visual Search retourneert inzichten over een afbeelding zoals visueel vergelijkbare afbeeldingen, bronnen voor winkelen voor producten die zijn gevonden in de afbeelding en gerelateerde zoekopdrachten.|
+|[Bing Zoeken naar lokale bedrijven](https://docs.microsoft.com/azure/cognitive-services/bing-local-business-search/ "Bing Zoeken naar lokale bedrijven")| Bing-API voor zoeken naar lokale bedrijven stelt uw toepassingen in staat om contact- en locatiegegevens van lokale bedrijven te vinden op basis van zoekquery's.|
+|[Bing Spellingcontrole](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/ "Bing Spellingcontrole")|Met Bing Spellingcontrole kunt u contextuele grammatica- en spellingcontrole uitvoeren.|
 
-## <a name="use-free-trials"></a>Gratis proef versies gebruiken
+## <a name="decision-apis"></a>Beslissings-API's
 
-Als [u zich aanmeldt voor gratis proef versies](https://azure.microsoft.com/try/cognitive-services/ "Hulp bij aanmelden") , neemt alleen een e-mail bericht en enkele eenvoudige stappen. U hebt een micro soft-account nodig als u er nog geen hebt. U ontvangt een uniek paar sleutels voor elke aangevraagde API. De tweede is slechts een reserve. Deel de geheime sleutels niet met iedereen. Experimenten hebben zowel een frequentie limiet, trans acties per seconde of minuut en een maandelijks gebruiks kapje. Een trans actie is gewoon een API-aanroep. U kunt een upgrade uitvoeren naar betaalde lagen om de beperkingen te ontgrendelen.
+|Servicenaam|Beschrijving van de service|
+|:-----------|:------------------|
+|[Anomaliedetectie](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/ "Anomaly Detector") (preview)|Met anomaliedetectie kunt u afwijkingen in uw tijdreeksgegevens controleren en detecteren.|
+|[Content Moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview "Content Moderator")|Content Moderator controleert mogelijk aanstootgevende, ongewenste en riskant inhoud.|
+|[Personalizer](https://docs.microsoft.com/azure/cognitive-services/personalizer/ "Personalizer")|Met Personalizer kunt u de beste ervaring kunt kiezen om aan uw gebruikers te laten zien, waarbij u leert van hun real-time gedrag.|
 
 ## <a name="subscription-management"></a>Abonnementsbeheer
 
-Zodra u bent aangemeld met uw micro soft-account, kunt u toegang krijgen tot [Mijn abonnementen](https://www.microsoft.com/cognitive-services/subscriptions "Mijn abonnementen") om de producten weer te geven die u gebruikt, het resterende quotum en de mogelijkheid om extra producten aan uw abonnement toe te voegen.
+Zodra u zich hebt aangemeld met uw Microsoft-account, hebt u toegang tot [Mijn abonnementen](https://www.microsoft.com/cognitive-services/subscriptions "Mijn abonnementen") om de producten die u gebruikt, het resterende quotum en de mogelijkheid om extra producten aan uw abonnement toe te voegen weer te geven.
 
-## <a name="upgrade-to-unlock-limits"></a>Upgrade uitvoeren naar limieten voor ontgrendelen
+## <a name="upgrade-to-unlock-limits"></a>Upgraden om limieten te ontgrendelen
 
-Alle Api's hebben een gratis proef abonnement, die gebruiks-en doorvoer limieten heeft.  U kunt deze limieten verhogen door een betaalde aanbieding te gebruiken en de juiste prijs categorie optie te selecteren bij het implementeren van de service in de Azure Portal. Meer [informatie over de aanbiedingen en prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/ "aanbiedingen en prijzen"). U moet een Azure abonnee-account instellen met een credit card en een telefoon nummer. Als u een speciale vereiste hebt of gewoon wilt praten met verkopen, klikt u op de knop ' contact opnemen ' bovenaan de pagina met prijzen.
+Alle API's hebben een gratis versie, waarvoor gebruiks- en doorvoerlimieten bestaan.  U kunt deze limieten verhogen door een betaalde aanbieding te gebruiken en de juiste prijscategorie te selecteren wanneer u de service implementeert in het Azure-portal. [Meer informatie over de aanbiedingen en prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/ "aanbiedingen en prijzen"). U moet een Azure-account configureren met een creditcard en een telefoonnummer. Als u een speciaal verzoek hebt of gewoon wilt praten met een verkoper, klik dan op de knop 'Contact opnemen' bovenaan de pagina met prijzen.
 
 ## <a name="regional-availability"></a>Regionale beschikbaarheid
 
-De Api's in Cognitive Services worden gehost op een groeiende netwerk van door micro soft beheerde data centers. U kunt de regionale Beschik baarheid voor elke API vinden in de [Azure-regio lijst](https://azure.microsoft.com/regions).
+De API's in Cognitive Services worden gehost op een groeiende netwerk van door Microsoft beheerde datacenters. U kunt de regionale beschikbaarheid voor elke API vinden in de [Lijst met Azure-regio's](https://azure.microsoft.com/regions).
 
-Bent u op zoek naar een regio die nog niet wordt ondersteund? Laat het ons weten door een functie aanvraag in ons [UserVoice-forum](https://cognitive.uservoice.com/)te archiveren.
+Bent u op zoek naar een regio die nog niet wordt ondersteund? Laat het ons weten door een functieverzoek in te dienen op ons [UserVoice-forum](https://cognitive.uservoice.com/).
 
-## <a name="supported-cultural-languages"></a>Ondersteunde cultuur talen
+## <a name="supported-cultural-languages"></a>Ondersteunde culturele talen
 
- Cognitive Services ondersteunt een breed scala aan culturele talen op service niveau. In de [lijst ondersteunde talen](language-support.md)vindt u de beschik baarheid van de taal voor elke API.
+ Cognitive Services biedt ondersteuning voor een groot aantal culturele talen op het service niveau. U kunt de beschikbare talen voor elke API terugvinden in de [lijst met ondersteunde talen](language-support.md).
 
-## <a name="securing-resources"></a>Bronnen beveiligen
+## <a name="securing-resources"></a>Resources beveiligen
 
-Azure Cognitive Services biedt een gelaagd beveiligings model, inclusief [verificatie](authentication.md) via Azure Active Directory referenties, een geldige resource sleutel en [Azure Virtual Networks](cognitive-services-virtual-networks.md).
+Azure Cognitive Services biedt een gelaagd beveiligingsmodel, inclusief [verificatie](authentication.md) met Azure Active Directory-referenties, een geldige resourcesleutel en [Azure Virtual Networks](cognitive-services-virtual-networks.md).
 
 ## <a name="container-support"></a>Ondersteuning voor containers
 
- Cognitive Services biedt containers voor implementatie in de Azure-Cloud of on-premises. Meer informatie over [Cognitive Services-containers](cognitive-services-container-support.md).
+ Cognitive Services biedt containers voor implementatie in de Azure-cloud of on-premises. Ontdek meer over [Cognitive Services-containers](cognitive-services-container-support.md).
 
-## <a name="certifications-and-compliance"></a>Certificeringen en naleving
+## <a name="certifications-and-compliance"></a>Certificering en compliance
 
-Cognitive Services zijn certificeringen, zoals CSA ster certificering, FedRAMP matig en HIPAA BAA.
+Cognitive Services kreeg certificeringen toegekend, zoals CSA STAR Certification, FedRAMP Moderate en HIPAA BAA.
 
-U kunt certificeringen [downloaden](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) voor uw eigen controles en beveiligings Beoordelingen.
+U kunt certificeringen [downloaden](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) voor uw eigen audits en beveiligingscontroles.
 
-Ga naar het [vertrouwens centrum](https://servicetrust.microsoft.com/)voor meer informatie over privacy en gegevens beheer.
+Ga naar het [Vertrouwenscentrum](https://servicetrust.microsoft.com/) voor informatie over privacy en gegevensbeheer.
 
 ## <a name="support"></a>Ondersteuning
 
-Cognitive Services bieden verschillende [ondersteunings opties](cognitive-services-support-options.md).
+Cognitive Services bieden verschillende [ondersteuningsopties](cognitive-services-support-options.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

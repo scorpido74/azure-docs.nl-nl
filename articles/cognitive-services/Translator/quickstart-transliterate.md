@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: tekst script converteren-Translator'
+title: 'Quickstart: Tekstscript converteren - Translator'
 titleSuffix: Azure Cognitive Services
-description: In deze Quick Start leert u hoe u tekst transkeert (converteert) van het ene script naar het andere met behulp van het conversie programma. In dit voorbeeld wordt Japans omgezet voor gebruik van het Latijnse alfabet.
+description: In deze quickstart leert u hoe u tekst van het ene script translitereert (converteert) naar een ander met behulp van de Translator. In dit voorbeeld is sprake van transliteratie van Japans voor gebruik van het Latijnse alfabet.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -12,18 +12,18 @@ ms.date: 05/26/2020
 ms.author: erhopf
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 47580e45f030cd49d30a5a8cc3d9e1a2160357fc
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.openlocfilehash: 31d316635211d56207b2d612997938c2baaff02f
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84606510"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144226"
 ---
-# <a name="quickstart-use-the-translator-to-transliterate-text"></a>Snelstartgids: de vertaler gebruiken om tekst te transtranscriberen
+# <a name="quickstart-use-the-translator-to-transliterate-text"></a>Quickstart: De Translator gebruiken voor transliteratie van tekst
 
-In deze Quick Start leert u hoe u tekst transkeert (converteert) van het ene script naar het andere met behulp van het Vertaal REST API. In het gegeven voorbeeld wordt Japans omgezet voor gebruik van het Latijnse alfabet.
+In deze quickstart leert u hoe u tekst van het ene script translitereert (converteert) naar een ander met behulp van de Translator REST API. In het gegeven voorbeeld is sprake van transliteratie van Japans voor gebruik van het Latijnse alfabet.
 
-Voor deze Snelstartgids is een [Azure Cognitive Services-account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) vereist met een Translator-resource. Als u geen account hebt, kunt u de [gratis proefversie](https://azure.microsoft.com/try/cognitive-services/) gebruiken om een abonnementssleutel op te halen.
+Voor deze snelstart is een [Azure Cognitive Services-account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) met een Translator-resource vereist.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# quickstart](includes/transliterate-csharp.md)]

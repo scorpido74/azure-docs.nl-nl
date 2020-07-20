@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: overview
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: a9dab2ca844feb1c24dfffc48b4f29cd1a311314
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 7967b58819523173fd66d45eeabeaddc8605a21d
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76153188"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229462"
 ---
 # <a name="what-is-avere-vfxt-for-azure"></a>Wat is Avere vFXT for Azure?
 
@@ -19,13 +19,13 @@ Avere vFXT for Azure is een oplossing voor bestandssysteemcaching voor gegevensi
 
 Avere vFXT ondersteunt de volgende veelvoorkomende computerscenario's:
 
-* De hybride Cloud architectuur-avere vFXT voor Azure kan worden gebruikt met een hardware-opslag systeem, die het voor deel van Cloud Computing biedt zonder bestanden te hoeven verplaatsen.
+* Hybride-cloudarchitectuur: Avere vFXT for Azure kan worden gebruikt met hardwareopslagsystemen, wat het voordeel biedt van cloudcomputing zonder dat u bestanden hoeft te verplaatsen.
 
-* Met Cloud bursting-avere vFXT voor Azure kunt u uw gegevens naar de Cloud verplaatsen voor één project, of de volledige werk stroom permanent optillen en verschuiven.
+* Krachtige cloudtoepassingen: met Avere vFXT for Azure kunt u uw gegevens voor één project naar de cloud verplaatsen of kiezen voor 'lift-and-shift', waarmee u de hele werkstroom definitief naar de cloud verplaatst.
 
 ![diagram met details van het Avere vFXT-systeem in een Azure-abonnement dat is verbonden met Blob-opslag en een on-premises datacenter](media/avere-vfxt-hybrid.png)
 
-AVERE vFXT voor Azure is het meest geschikt voor de volgende situaties:
+Avere vFXT for Azure is het geschiktst voor deze situaties:
 
 * Leesintensieve bewerkingen voor HPC-workloads
 * Toepassingen die gebruikmaken van het NFS-protocol
@@ -44,9 +44,9 @@ In media en entertainment kan het Avere vFXT-cluster de gegevenstoegang voor tij
 
 ### <a name="life-sciences"></a>Biowetenschappen
 
-Met avere vFXT kunnen onderzoekers secundaire analyse werk stromen uitvoeren in azure Compute en toegang krijgen tot genoom gegevens, ongeacht hun locatie.
+Met Avere vFXT stelt onderzoekers in staat om secundaire analysewerkstromen in Azure Compute uit te voeren en genetische gegevens te openen, ongeacht de locatie ervan.
 
-In farmaceutische onderzoek kunnen avere-vFXT-clusters de geneesmiddelen detectie versnellen door onderzoekers te helpen bij het voors pellen van drugs-doel interacties en onderzoek gegevens te analyseren.
+Bij farmaceutisch onderzoek kunnen Avere vFXT-clusters het vinden van nieuwe geneesmiddelen versnellen doordat onderzoekers interacties tussen geneesmiddel en doel kunnen voorspellen en onderzoeksgegevens analyseren.
 
 ### <a name="financial-services-analytics"></a>Analyse voor financiële dienstverlening
 
@@ -64,19 +64,19 @@ In het Avere vFXT-cluster worden bestanden in de cache opgeslagen terwijl ze wor
 * Compatibel met Azure Blob
 * Gebruikt het NFSv3- of SMB2-protocol
 
-AVERE vFXT voor Azure maakt gebruik van de volgende Azure-resources:
+De Avere vFXT voor Azure gebruikt de volgende Azure-resources:
 
-|Azure-onderdeel|   |
+|Azure-onderdeel| Resource |
 |----------|-----------|
 |Virtuele machines|3 of meer E32s_v3|
 |Premium SSD-opslag|200 GB ruimte in het besturingssysteem plus 1 tot 4 TB ruimte in de cache per knooppunt |
 |Opslagaccount (optioneel) |v2|
-|Back-end van gegevens (optioneel) | Eén lege LRS Blob-container |
+|Back-endopslag van gegevens (optioneel) | Eén lege LRS Blob-container |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Lees deze artikelen om uw eigen avere vFXT voor Azure-implementatie te plannen en te maken.
+Lees deze artikelen om uw eigen implementatia van Avere vFXT voor Azure te plannen en te maken.
 
 * [Uw systeem plannen](avere-vfxt-deploy-plan.md)
-* [Implementatieoverzicht](avere-vfxt-deploy-overview.md)
+* [Implementatie-overzicht](avere-vfxt-deploy-overview.md)
 * [vFXT maken](avere-vfxt-deploy.md)

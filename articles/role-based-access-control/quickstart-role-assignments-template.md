@@ -10,34 +10,34 @@ ms.custom: subject-armqs
 ms.workload: identity
 ms.date: 05/21/2020
 ms.author: rolyon
-ms.openlocfilehash: da25f4bc585da26b9765fd36d65a8b5e0689f725
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 9320a68684a25949e8a0b4e2c7d72a6267401add
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300661"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252348"
 ---
-# <a name="quickstart-add-an-azure-role-assignment-using-an-azure-resource-manager-template"></a>Quickstart: Een Azure-roltoewijzing toevoegen met behulp van een Azure Resource Manager-sjabloon
+# <a name="quickstart-add-an-azure-role-assignment-using-an-arm-template"></a>Quickstart: Een Azure-roltoewijzing toevoegen met behulp van een ARM-sjabloon
 
-Met [op rollen gebaseerd toegangsbeheer van Azure (Azure RBAC)](overview.md) kunt u de toegang tot Azure-resources beheren. In deze quickstart maakt u een resourcegroep en verleent u een gebruiker toegang tot het maken en beheren van virtuele machines in de resourcegroep. In deze quickstart wordt een Resource Manager-sjabloon gebruikt om toegang te verlenen.
+Met [op rollen gebaseerd toegangsbeheer van Azure (Azure RBAC)](overview.md) kunt u de toegang tot Azure-resources beheren. In deze quickstart maakt u een resourcegroep en verleent u een gebruiker toegang tot het maken en beheren van virtuele machines in de resourcegroep. In deze quickstart wordt gebruikgemaakt van een Azure Resource Manager-sjabloon (ARM-sjabloon) om de toegang te verlenen.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
+
+[![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-rbac-builtinrole-resourcegroup%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Vereisten
 
 Als u roltoewijzingen wilt toevoegen, hebt u het volgende nodig:
 
-* Machtigingen voor `Microsoft.Authorization/roleAssignments/write` en `Microsoft.Authorization/roleAssignments/delete`, zoals [Beheerder van gebruikerstoegang](built-in-roles.md#user-access-administrator) of [Eigenaar](built-in-roles.md#owner)
+- Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+- Machtigingen voor `Microsoft.Authorization/roleAssignments/write` en `Microsoft.Authorization/roleAssignments/delete`, zoals [Beheerder van gebruikerstoegang](built-in-roles.md#user-access-administrator) of [Eigenaar](built-in-roles.md#owner)
+- Om een roltoewijzing toe te voegen, moet u drie elementen opgeven: beveiligingsprincipal, roldefinitie en bereik. Voor deze quickstart bent u of is een andere gebruiker de beveiligingsprincipal in uw map, is de roldefinitie [Inzender voor virtuele machines](built-in-roles.md#virtual-machine-contributor) en is het bereik de opgegeven resourcegroep.
 
-## <a name="create-a-role-assignment"></a>Een roltoewijzing maken
+## <a name="review-the-template"></a>De sjabloon controleren
 
-Om een roltoewijzing toe te voegen, moet u drie elementen opgeven: beveiligingsprincipal, roldefinitie en bereik. Voor deze quickstart bent u of is een andere gebruiker de beveiligingsprincipal in uw map, is de roldefinitie [Inzender voor virtuele machines](built-in-roles.md#virtual-machine-contributor) en is het bereik de opgegeven resourcegroep.
-
-### <a name="review-the-template"></a>De sjabloon controleren
-
-De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure Quick Start-sjablonen](https://azure.microsoft.com/resources/templates/101-rbac-builtinrole-resourcegroup/). De sjabloon heeft drie parameters en een resourcessectie. De resourcessectie bevat de drie elementen van een roltoewijzing: beveiligingsprincipal, roldefinitie en bereik. 
+De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure Quick Start-sjablonen](https://azure.microsoft.com/resources/templates/101-rbac-builtinrole-resourcegroup/). De sjabloon heeft drie parameters en een resourcessectie. De resourcessectie bevat de drie elementen van een roltoewijzing: beveiligingsprincipal, roldefinitie en bereik.
 
 :::code language="json" source="~/quickstart-templates/101-rbac-builtinrole-resourcegroup/azuredeploy.json" highlight="30-32":::
 
@@ -45,7 +45,7 @@ De resource die is gedefinieerd in de sjabloon:
 
 - [Microsoft.Authorization/roleAssignments](/azure/templates/Microsoft.Authorization/roleAssignments)
 
-### <a name="deploy-the-template"></a>De sjabloon implementeren
+## <a name="deploy-the-template"></a>De sjabloon implementeren
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 

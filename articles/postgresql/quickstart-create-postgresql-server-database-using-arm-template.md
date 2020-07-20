@@ -7,18 +7,22 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/14/2020
-ms.openlocfilehash: 28671484460407efac8798505f630c13ec0b4918
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 5bdcbe620e88700c5607162cd2471f6b2c3e7532
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84325079"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132838"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---single-server"></a>Quickstart: Een ARM-sjabloon gebruiken om een Azure Database for PostgreSQL te maken - enkele server
 
-Azure Database for PostgreSQL is een beheerde service waarmee u PostgreSQL-databases met hoge beschikbaarheid in de cloud kunt uitvoeren, beheren en schalen. In deze snelstart gebruikt u een ARM-sjabloon om een Azure Database for PostgreSQL - enkele server te maken in de Azure-portal, PowerShell of Azure CLI.
+Azure Database for PostgreSQL is een beheerde service waarmee u PostgreSQL-databases met hoge beschikbaarheid in de cloud kunt uitvoeren, beheren en schalen. In deze quickstart gebruikt u een Azure Resource Manager-sjabloon (ARM-sjabloon) om een Azure Database for PostgreSQL - enkele server te maken in Azure Portal, PowerShell of Azure CLI.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
+
+[![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-postgresql-with-vnet%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -38,11 +42,9 @@ Een Azure-account met een actief abonnement. [Maak er gratis een](https://azure.
 
 ---
 
-## <a name="create-an-azure-database-for-postgresql-server"></a>Een Azure-database voor PostgreSQL-server maken
+## <a name="review-the-template"></a>De sjabloon controleren
 
 U maakt een Azure Database for PostgreSQL-server met een geconfigureerde set reken- en opslagresources. Zie [Prijscategorieën in Azure Database for PostgreSQL - enkele server](concepts-pricing-tiers.md) voor meer informatie. De server wordt gemaakt binnen een [Azure-resourcegroep](../azure-resource-manager/management/overview.md).
-
-### <a name="review-the-template"></a>De sjabloon controleren
 
 De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-quickstartsjablonen](https://azure.microsoft.com/resources/templates/101-managed-postgresql-with-vnet/).
 
@@ -58,7 +60,7 @@ In de sjabloon zijn vijf Azure-resources gedefinieerd:
 
 Meer Azure Database for PostgreSQL-sjabloonvoorbeelden vindt u in [Azure-quickstartsjablonen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbforpostgresql&pageNumber=1&sort=Popular).
 
-### <a name="deploy-the-template"></a>De sjabloon implementeren
+## <a name="deploy-the-template"></a>De sjabloon implementeren
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -179,7 +181,7 @@ Als de resourcegroep niet meer nodig is, verwijdert u deze. Hierdoor worden ook 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Zoek en selecteer [Resourcegroepen](https://portal.azure.com) in de **Azure-portal**.
+1. Zoek en selecteer [Resourcegroepen](https://portal.azure.com) in **Azure Portal**.
 
 2. Kies in de lijst met resourcegroepen de naam van uw resourcegroep.
 
@@ -210,4 +212,4 @@ read -p "Press [ENTER] to continue: "
 Zie voor een stapsgewijze zelfstudie die u door het proces van het maken van een sjabloon leidt:
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Uw eerste Azure Resource Manager-sjabloon maken en implementeren](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+> [Zelfstudie: Uw eerste ARM-sjabloon maken en implementeren](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

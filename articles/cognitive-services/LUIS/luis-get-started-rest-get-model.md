@@ -1,50 +1,50 @@
 ---
-title: "Snelstartgids: model ophalen met REST-Api's-LUIS"
+title: "Quickstart: Model ophalen met REST API's - LUIS"
 titleSuffix: Azure Cognitive Services
-description: In deze REST API Quick Start gebruikt u krul om uitingen toe te voegen en een model te trainen.
+description: In deze quickstart voor REST API gebruikt u cURL om uitingen toe te voegen en een model te trainen.
 services: cognitive-services
-author: roy-har
+author: nitinme
 manager: diberry
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 06/19/2020
-ms.author: v-royha
-ms.openlocfilehash: 00bc71f76b15455dd8e4f8242c5379e9e97a53f2
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
-ms.translationtype: MT
+ms.author: nitinme
+ms.openlocfilehash: e5cf3160e6592a48e3a81480480ad8f01cc6af3a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85119580"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206250"
 ---
-# <a name="quickstart-use-curl-and-rest-to-change-model"></a>Snelstartgids: gebruik krul en REST om het model te wijzigen
+# <a name="quickstart-use-curl-and-rest-to-change-model"></a>Quickstart: cURL en REST gebruiken om een model te veranderen
 
-In deze Quick start ziet u hoe u bijvoorbeeld uitingen toevoegt aan een pizza-app en de app traint. Voorbeeldutterances zijn teksten uit gesprekken met gebruikers die worden toegewezen aan een intentie. Door voorbeeldutterances op te geven voor intenties leert u LUIS welke soorten door de gebruiker geleverde tekst bij welke intentie horen.
+Deze quickstart laat u zien hoe u voorbeelduitingen kunt toevoegen aan een Pizza-app en de app kunt trainen. Voorbeeldutterances zijn teksten uit gesprekken met gebruikers die worden toegewezen aan een intentie. Door voorbeeldutterances op te geven voor intenties leert u LUIS welke soorten door de gebruiker geleverde tekst bij welke intentie horen.
 
-Als u deze Quick Start volgt, worden er drie REST-aanroepen in volg orde uitgevoerd.
+Door deze quickstart te volgen, voert u drie opeenvolgende REST-aanroepen uit.
 
-- Eerst uploadt u een batch van voor beeld uitingen die wordt gebruikt om het pizza-app-model te trainen, met behulp van de functie [rest batch-labels toevoegen](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c09) .
-- Vervolgens start u een trainings sessie voor de pizza-app met behulp van de aanroep van de [rest Train-toepassings versie](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c45) .
-- Ten slotte krijgt u de status van de trainings sessie voor de pizza-app, met behulp van de functie voor het maken van de [trainings status](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c46) van de rest-versie.
+- Eerst uploadt u een batch van voorbeelduitingen die wordt gebruikt om het model van de Pizza-app te trainen met de aanroep [REST Batch labels toevoegen](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c09).
+- Vervolgens start u een trainingssessie voor de Pizza-app met behulp van de aanroep [REST Toepassingsversie trainen](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c45).
+- Ten slotte haalt u de status van de trainingssessie op voor de Pizza-app, met behulp van de aanroep [REST Status versietraining ophalen](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c46).
 
-[Referentie documentatie](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c45)
+[Referentiedocumentatie](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c45)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een gratis [Luis](https://www.luis.ai) -account.
-* Een tekst editor, zoals [Visual Studio code](https://code.visualstudio.com/).
-* Het opdracht regel programma krul. Het krul programma is al geïnstalleerd op macOS, de meeste Linux-distributies en Windows 10 build 1803 en hoger.
+* Een gratis [LUIS](https://www.luis.ai)-account.
+* Een teksteditor zoals [Visual Studio Code](https://code.visualstudio.com/).
+* Het opdrachtregelprogramma cURL. Het programma cURL is al geïnstalleerd op macOS, de meeste Linux-distributies en Windows 10 build 1803 en hoger.
 
-    Als u een krul moet installeren, kunt u via de pagina voor het [krul](https://curl.haxx.se/download.html)een krul downloaden.
+    Als u een cURL moet installeren, kunt u dit downloaden op de [Downloadpagina voor cURL](https://curl.haxx.se/download.html).
 
 ## <a name="create-pizza-app"></a>Pizza-app maken
 
 [!INCLUDE [Create pizza app](includes/get-started-get-model-create-pizza-app.md)]
 
-## <a name="create-a-json-file-to-train-the-pizza-app"></a>Een JSON-bestand maken om de pizza-app te trainen
+## <a name="create-a-json-file-to-train-the-pizza-app"></a>Een JSON-bestand maken om de Pizza-app te trainen
 
-Als u een JSON-bestand met drie voorbeeld uitingen wilt maken, slaat u de volgende JSON-gegevens op in een bestand met de naam `ExampleUtterances.JSON` :
+Om een JSON-bestand met drie voorbeelduitingen wilt maken, slaat u de volgende JSON-gegevens op in een bestand met de naam `ExampleUtterances.JSON`:
 
 ```JSON
 [
@@ -124,15 +124,15 @@ Als u een JSON-bestand met drie voorbeeld uitingen wilt maken, slaat u de volgen
 ]`
 ```
 
-De JSON van het voor beeld uitingen volgt een specifieke indeling.
+De JSON met voorbeelduitingen volgt een specifieke indeling.
 
 Het veld `text` bevat de tekst van de voorbeeldutterance. Het veld `intentName` moet overeenkomen met de naam van een bestaande intentie in de LUIS-app. Het veld `entityLabels` is vereist. Als u niet alle entiteiten een label wilt geven, geeft u een lege matrix op.
 
-Als de entityLabels-matrix niet leeg is, moeten `startCharIndex` en `endCharIndex` de entiteit markeren waarnaar wordt verwezen in het veld `entityName`. De index is gebaseerd op nul. Als u het label in een ruimte in de tekst begint of beëindigt, mislukt de API-aanroep om de uitingen toe te voegen.
+Als de entityLabels-matrix niet leeg is, moeten `startCharIndex` en `endCharIndex` de entiteit markeren waarnaar wordt verwezen in het veld `entityName`. De index is gebaseerd op nul. Als u het label begint of beëindigt met een spatie in de tekst, mislukt de API-aanroep om de uitingen toe te voegen.
 
 ## <a name="add-example-utterances"></a>Voorbeelden van utterances toevoegen
 
-1. Als u de batch met voor beeld-uitingen wilt uploaden, kopieert u deze opdracht naar uw tekst editor:
+1. Om de batch met voorbeelduitingen te uploaden, kopieert u deze opdracht in uw teksteditor:
 
     #### <a name="windows"></a>[Windows](#tab/windows)
 
@@ -166,28 +166,28 @@ Als de entityLabels-matrix niet leeg is, moeten `startCharIndex` en `endCharInde
 
     ***
 
-1. Vervang de waarden die beginnen met `***YOUR-` met uw eigen waarden.
+1. Vervang de waarden die beginnen met `***YOUR-` door uw eigen waarden.
 
-    |Informatie|Functie|
+    |Informatie|Doel|
     |--|--|
-    |`***YOUR-AUTHORING-ENDPOINT***`| Het eind punt van de ontwerp-URL. Bijvoorbeeld https://REPLACE-WITH-YOUR-RESOURCE-NAME.api.cognitive.microsoft.com/. U stelt de naam van de resource in wanneer u de resource hebt gemaakt.|
-    |`***YOUR-APP-ID***`| De ID van uw LUIS-app. |
-    |`***YOUR-APP-VERSION***`| De versie van uw LUIS-app. Voor de pizza-app is het versie nummer "0,1" zonder de aanhalings tekens.|
-    |`***YOUR-AUTHORING-KEY***`|De bewerkings sleutel voor uw 32-teken.|
+    |`***YOUR-AUTHORING-ENDPOINT***`| Het eindpunt van uw ontwerp-URL. Bijvoorbeeld https://REPLACE-WITH-YOUR-RESOURCE-NAME.api.cognitive.microsoft.com/. U heeft uw resourcenaam ingesteld toen u de resource aanmaakte.|
+    |`***YOUR-APP-ID***`| De id van uw LUIS-app. |
+    |`***YOUR-APP-VERSION***`| De versie van uw LUIS-app. Voor de Pizza-app is het versienummer '0.1' zonder aanhalingstekens.|
+    |`***YOUR-AUTHORING-KEY***`|Uw ontwerpsleutel van 32 tekens.|
 
-    Toegewezen sleutels en resources zijn zichtbaar in de LUIS-Portal in de sectie beheren op de pagina **Azure-resources** . De App-ID is beschikbaar in hetzelfde gedeelte beheren op de pagina **Toepassings instellingen** .
+    Toegewezen sleutels en resources zijn zichtbaar in het LUIS-portaal in de sectie Beheren op de pagina **Azure-resources**. De App-ID is beschikbaar in hetzelfde gedeelte Beheren op de pagina **Toepassingsinstellingen**.
 
-1. Start een opdracht prompt (Windows) of Terminal (macOS en Linux) en wijzig de mappen in dezelfde map waarin u het bestand hebt opgeslagen `ExampleUtterances.JSON` .
+1. Start een Opdrachtprompt (Windows) of Terminal (macOS en Linux) en verander de mappen naar dezelfde map waarin u het `ExampleUtterances.JSON`-bestand hebt opgeslagen.
 
-1. Kopieer de krul opdracht van de editor en plak deze in een opdracht prompt (Windows) of Terminal (macOS en Linux). Druk op ENTER om de opdracht uit te voeren.
+1. Kopieer de cURL-opdracht uit de editor en plak deze in een Opdrachtprompt (Windows) of Terminal (macOS en Linux). Druk op Enter om de opdracht uit te voeren.
 
-    U ziet het volgende antwoord:
+    U ziet de volgende antwoorden:
 
     ```json
     [{"value":{"ExampleId":1255129706,"UtteranceText":"order a pizza"},"hasError":false},{"value":{"ExampleId":1255129707,"UtteranceText":"order a large pepperoni pizza"},"hasError":false},{"value":{"ExampleId":1255129708,"UtteranceText":"i want two large pepperoni pizzas on thin crust"},"hasError":false}]
     ```
 
-    Dit is de uitvoer die is opgemaakt voor de Lees baarheid:
+    Dit is de uitvoer, opgemaakt voor leesbaarheid:
 
     ```json
     [
@@ -215,9 +215,9 @@ Als de entityLabels-matrix niet leeg is, moeten `startCharIndex` en `endCharInde
     ]
     ```
 
-## <a name="train-the-pizza-app-model"></a>Het pizza-app-model trainen
+## <a name="train-the-pizza-app-model"></a>Het model voor de Pizza-app trainen
 
-1. Als u een trainings sessie voor de pizza-app wilt starten, kopieert u deze opdracht naar uw tekst editor:
+1. Als u een trainingssessie voor de pizza-app wilt starten, kopieert u deze opdracht naar uw teksteditor:
 
     #### <a name="windows"></a>[Windows](#tab/windows)
 
@@ -251,17 +251,17 @@ Als de entityLabels-matrix niet leeg is, moeten `startCharIndex` en `endCharInde
 
     ***
 
-1. Vervang de waarden die beginnen met `***YOUR-` met uw eigen waarden, zoals u dat eerder hebt gedaan.
+1. Vervang, zoals u zonet deed, de waarden die beginnen met `***YOUR-` door uw eigen waarden.
 
-1. Kopieer de krul opdracht van de editor en plak deze in een opdracht prompt (Windows) of Terminal (macOS en Linux). Druk op ENTER om de opdracht uit te voeren.
+1. Kopieer de cURL-opdracht uit de editor en plak deze in een Opdrachtprompt (Windows) of Terminal (macOS en Linux). Druk op Enter om de opdracht uit te voeren.
 
-    U ziet het volgende antwoord:
+    U ziet de volgende antwoorden:
 
     ```json
     {"statusId":2,"status":"UpToDate"}
     ```
 
-    Dit is de uitvoer die is opgemaakt voor de Lees baarheid:
+    Dit is de uitvoer, opgemaakt voor leesbaarheid:
 
     ```json
     {
@@ -270,9 +270,9 @@ Als de entityLabels-matrix niet leeg is, moeten `startCharIndex` en `endCharInde
     }
     ```
 
-## <a name="get-the-status-of-training"></a>De status van training ophalen
+## <a name="get-the-status-of-training"></a>De status van een training ophalen
 
-1. Kopieer de volgende opdracht in de tekst editor om de trainings status voor de trainings sessie te verkrijgen:
+1. Als u de trainingsstatus voor de trainingssessie wilt ophalen, kopieert u deze opdracht naar uw teksteditor:
 
     #### <a name="windows"></a>[Windows](#tab/windows)
 
@@ -303,17 +303,17 @@ Als de entityLabels-matrix niet leeg is, moeten `startCharIndex` en `endCharInde
 
     ***
 
-1. Vervang de waarden die beginnen met `***YOUR-` met uw eigen waarden, zoals u dat eerder hebt gedaan.
+1. Vervang, zoals u zonet deed, de waarden die beginnen met `***YOUR-` door uw eigen waarden.
 
-1. Kopieer de krul opdracht van de editor en plak deze in een opdracht prompt (Windows) of Terminal (macOS en Linux). Druk op ENTER om de opdracht uit te voeren.
+1. Kopieer de cURL-opdracht uit de editor en plak deze in een Opdrachtprompt (Windows) of Terminal (macOS en Linux). Druk op Enter om de opdracht uit te voeren.
 
-    U ziet het volgende antwoord:
+    U ziet de volgende antwoorden:
 
     ```json
     [{"modelId":"8eb7ad8f-5db5-4c28-819b-ca3905fffd80","details":{"statusId":2,"status":"UpToDate","exampleCount":171}},{"modelId":"6f53bc92-ae54-44ce-bc4e-010d1f8cfda0","details":{"statusId":2,"status":"UpToDate","exampleCount":171}},{"modelId":"6cb17888-ad6e-464c-82c0-d37fd1f2c4f8","details":{"statusId":2,"status":"UpToDate","exampleCount":171}},{"modelId":"a16fc4fd-1949-4e77-9de3-30369f16c3a5","details":{"statusId":2,"status":"UpToDate","exampleCount":171}},{"modelId":"6bacdb75-1889-4f93-8971-8c8995ff8960","details":{"statusId":2,"status":"UpToDate","exampleCount":171}},{"modelId":"be963f4c-4898-48d7-9eba-3c6af0867b9d","details":{"statusId":2,"status":"UpToDate","exampleCount":171}}]
     ```
 
-    Dit is de uitvoer die is opgemaakt voor de Lees baarheid:
+    Dit is de uitvoer, opgemaakt voor leesbaarheid:
 
     ```json
     [
@@ -370,7 +370,7 @@ Als de entityLabels-matrix niet leeg is, moeten `startCharIndex` en `endCharInde
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u klaar bent met deze Quick Start, verwijdert u het `ExampleUtterances.JSON` bestand uit het bestands systeem.
+Wanneer u klaar bent met deze quickstart, verwijdert u het `ExampleUtterances.JSON`-bestand uit het bestandssysteem.
 
 ## <a name="next-steps"></a>Volgende stappen
 

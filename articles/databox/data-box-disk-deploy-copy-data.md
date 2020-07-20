@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 93a7181a3b720a3b313bb75855b2564c4cd33bc1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ff57a67d5e6d617d6d51c924161f586f90f92c3c
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79214323"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231536"
 ---
 ::: zone target="docs"
 
@@ -111,7 +111,7 @@ Voer de volgende stappen uit om verbinding te maken en gegevens van uw computer 
     |/NFL                | Hiermee geeft u op dat bestandsnamen niet moeten worden vastgelegd.        |
     |/NDL                | Hiermee geeft u op dat mapnamen niet moeten worden vastgelegd.        |
     |/FFT                | Hiermee wordt uitgegaan van FAT-bestandstijden (precisie van twee seconden).        |
-    |/Logboek:\<logboekbestand>     | Hiermee schrijft u de statusuitvoer naar het logboekbestand (en overschrijft u het bestaande logboekbestand).         |
+    |/Log:\<Log File>     | Hiermee schrijft u de statusuitvoer naar het logboekbestand (en overschrijft u het bestaande logboekbestand).         |
 
     Er kunnen gelijktijdig meerdere schijven worden gebruikt terwijl er op elke schijf meerdere taken worden uitgevoerd.
 
@@ -273,7 +273,7 @@ Nadat het kopiëren van gegevens voltooid is, kunt u doorgaan met het valideren 
 
 Als u niet de Split Copy tool gebruikt hebt om gegevens te kopiëren, moet u uw gegevens valideren. Voer de volgende stappen uit om de gegevens te controleren.
 
-1. Voer `DataBoxDiskValidation.cmd` uit in de map *DataBoxDiskImport* van het station om de controlesom te controleren.
+1. Voer `DataBoxDiskValidation.cmd` uit in de map *DataBoxDiskImport* van het station om de controlesom te controleren. Dit is enkel beschikbaar voor een Windows-omgeving. Linux-gebruikers moeten controleren of de brongegevens die naar de schijf worden gekopieerd, voldoen aan de [vereisten](https://docs.microsoft.com/azure/databox/data-box-disk-limits).
     
     ![Uitvoer van validatieprogramma van Data Box Disk](media/data-box-disk-deploy-copy-data/data-box-disk-validation-tool-output.png)
 

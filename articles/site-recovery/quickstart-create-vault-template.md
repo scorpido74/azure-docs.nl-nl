@@ -1,35 +1,33 @@
 ---
 title: Quickstart voor het maken van een Azure Recovery Services-kluis met behulp van een Azure Resource Manager-sjabloon.
-description: In deze quickstart leert u hoe u met een sjabloon van Azure Resource Manager een Azure Recovery Services-kluis maakt.
+description: In deze quickstart leert u hoe u met een sjabloon van Azure Resource Manager (ARM-sjabloon) een Azure Recovery Services-kluis maakt.
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/29/2020
-author: davidsmatlak
-ms.author: v-dasmat
-ms.openlocfilehash: cf85939a1dbaf8d3e8a90a3acf10bda9faac83bc
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 9112841f6f07808d80fa2b8b61e612d57d0ec20e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84217282"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248822"
 ---
-# <a name="quickstart-create-a-recovery-services-vault-using-a-resource-manager-template"></a>Quickstart: Een Recovery Services-kluis maken met behulp van een Resource Manager-sjabloon
+# <a name="quickstart-create-a-recovery-services-vault-using-an-arm-template"></a>Quickstart: Een Recovery Services-kluis maken met behulp van een ARM-sjabloon
 
-In deze quickstart wordt beschreven hoe u een Recovery Services-kluis instelt met behulp van een Azure Resource Manager-sjabloon. De service [Azure Site Recovery](site-recovery-overview.md) draagt bij aan uw strategie voor zakelijke continuïteit en noodherstel (BCDR) zodat uw zakelijke apps online blijven tijdens geplande en ongeplande uitval. Site Recovery beheert noodherstel van on-premises machines en virtuele Azure-machines (VM's), met inbegrip van replicatie, failover en herstel.
+In deze quickstart wordt beschreven hoe u een Recovery Services-kluis instelt met behulp van een Azure Resource Manager-sjabloon (ARM-sjabloon). De service [Azure Site Recovery](site-recovery-overview.md) draagt bij aan uw strategie voor zakelijke continuïteit en noodherstel (BCDR) zodat uw zakelijke apps online blijven tijdens geplande en ongeplande uitval. Site Recovery beheert noodherstel van on-premises machines en virtuele Azure-machines (VM's), met inbegrip van replicatie, failover en herstel.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Als u nog geen actief abonnement op Azure hebt, kunt u een [gratis account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
+
+[![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-recovery-services-vault-create%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Vereisten
 
-Geen.
+Als u nog geen actief abonnement op Azure hebt, kunt u een [gratis account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
-## <a name="create-a-recovery-services-vault"></a>Een Recovery Services-kluis maken
+## <a name="review-the-template"></a>De sjabloon controleren
 
-### <a name="review-the-template"></a>De sjabloon controleren
-
-De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure Quick Start-sjablonen](https://azure.microsoft.com/resources/templates/101-recovery-services-vault-create/).
+De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-quickstart-sjablonen](https://azure.microsoft.com/resources/templates/101-recovery-services-vault-create/).
 
 :::code language="json" source="~/quickstart-templates/101-recovery-services-vault-create/azuredeploy.json" range="1-66" highlight="41-65":::
 
@@ -42,7 +40,7 @@ De sjabloon bevat optionele parameters voor de back-upconfiguratie van de kluis.
 
 Zie [Azure Quickstart-sjablonen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Recoveryservices&pageNumber=1&sort=Popular)voor meer Azure Recovery Services-sjablonen.
 
-### <a name="deploy-the-template"></a>De sjabloon implementeren
+## <a name="deploy-the-template"></a>De sjabloon implementeren
 
 Als u de sjabloon wilt implementeren, zijn de **Abonnement**, **Resourcegroep** en **Kluisnaam** vereist.
 

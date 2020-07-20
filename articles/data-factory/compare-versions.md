@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: ea625fbe28dad08ec2c3e2a64bada96460a04225
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 6c43906468ee0124187dc5ce6d6f1405e3b96b2e
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81415574"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231230"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Azure Data Factory vergelijken met Data Factory-versie 1
 
@@ -31,7 +31,7 @@ In de volgende tabel worden de functies van Data Factory vergeleken met de funct
 | Gegevenssets | Een benoemde weergave van gegevens met een verwijzing naar de gegevens die u als in- en uitvoer wilt gebruiken in uw activiteiten. Met gegevenssets worden gegevens binnen andere gegevensarchieven geïdentificeerd, waaronder tabellen, bestanden, mappen en documenten. Een Azure Blob-gegevensset benoemt bijvoorbeeld de blobcontainer en -map in de Azure Blob-opslag van waaruit de activiteit de gegevens moet lezen.<br/><br/>**Beschikbaarheid** definieert het segmenteringsmodel voor het verwerkingsvenster voor de gegevensset (bijvoorbeeld elk uur, dagelijks, enzovoort). | De gegevenssets in de huidige versie zijn hetzelfde. U hoeft echter geen **beschikbaarheidsschema's** voor gegevenssets te definiëren. U kunt een triggerbron definiëren waarmee pijplijnen kunnen worden gepland op basis van een klokplannermodel. Zie [Triggers](concepts-pipeline-execution-triggers.md#trigger-execution) en [Gegevenssets](concepts-datasets-linked-services.md) voor meer informatie. | 
 | Gekoppelde services | Gekoppelde services zijn te vergelijken met verbindingsreeksen, die de verbindingsinformatie bevatten die Data Factory nodig heeft om verbinding te maken met externe bronnen. | Gekoppelde services zijn hetzelfde als in Data Factory V1, maar met een nieuwe eigenschap **connectVia** voor het gebruik van de Integration Runtime-rekenomgeving van de huidige versie van Data Factory. Zie [Integration Runtime in Azure Data Factory](concepts-integration-runtime.md) en [Eigenschappen van de gekoppelde service voor Azure Blob-opslag](connector-azure-blob-storage.md#linked-service-properties) voor meer informatie. |
 | Pijplijnen | Een gegevensfactory kan één of meer pijplijnen hebben. Een pijplijn is een logische groep activiteiten die samen een taak uitvoeren. U gebruikt startTime, endTime en isPaused voor het plannen en uitvoeren van pijplijnen. | Pijplijnen zijn groepen met activiteiten die op gegevens moeten worden uitgevoerd. Het plannen van activiteiten in de pijplijn is echter gescheiden in nieuwe triggerbronnen. In de huidige versie van Data Factory fungeren pijplijnen als werkstroomeenheden die u afzonderlijk plant met behulp van triggers. <br/><br/>In de huidige versie van Data Factory hebben pijplijnen geen tijdvensters voor uitvoerbewerkingen. De concepten startTime, endTime en isPaused van Data Factory V1 zijn niet meer aanwezig in de huidige versie van Data Factory. Zie [Pijplijnuitvoering en triggers](concepts-pipeline-execution-triggers.md) en [Pijplijnen en activiteiten](concepts-pipelines-activities.md) voor meer informatie. |
-| Activiteiten | Activiteiten definiëren welke acties binnen een pijplijn moeten worden uitgevoerd op uw gegevens. Activiteiten als het verplaatsen van gegevens (kopieeractiviteit) en het transformeren van gegevens (zoals Hive, Pig en MapReduce) worden ondersteund. | In de huidige versie van Data Factory zijn activiteiten nog steeds acties in een pijp lijn gedefinieerd. De huidige versie van Data Factory introduceert nieuwe [controle stroom activiteiten](concepts-pipelines-activities.md#control-flow-activities). U gebruikt deze activiteiten in een controlestroom (lussen en vertakkingen). Gegevensverplaatsing en gegevenstransformatie worden, net zoals in V1, ook ondersteund in de huidige versie. In de huidige versie kunt u transformatieactiviteiten definiëren zonder gegevenssets te gebruiken. |
+| Activiteiten | Activiteiten definiëren welke acties binnen een pijplijn moeten worden uitgevoerd op uw gegevens. Activiteiten als het verplaatsen van gegevens (kopieeractiviteit) en het transformeren van gegevens (zoals Hive, Pig en MapReduce) worden ondersteund. | In de huidige versie van Data Factory zijn activiteiten nog steeds gedefinieerde acties binnen een pijplijn. De huidige versie van Data Factory introduceert nieuwe [controlestroomactiviteiten](concepts-pipelines-activities.md#control-flow-activities). U gebruikt deze activiteiten in een controlestroom (lussen en vertakkingen). Gegevensverplaatsing en gegevenstransformatie worden, net zoals in V1, ook ondersteund in de huidige versie. In de huidige versie kunt u transformatieactiviteiten definiëren zonder gegevenssets te gebruiken. |
 | Hybride verplaatsing van gegevens en verzenden van activiteiten | [Gegevensbeheergateway](v1/data-factory-data-management-gateway.md), nu bekend als Integration Runtime, bood ondersteuning voor het verplaatsen van gegevens tussen on-premises en de cloud.| Gegevensbeheergateway wordt nu zelf-hostende Integration Runtime genoemd. Het biedt dezelfde mogelijkheden als in V1. <br/><br/> Azure-SSIS Integration Runtime in de huidige versie ondersteunt ook het implementeren en uitvoeren van SSIS-pakketten (SQL Server Integration Services) in de cloud. Zie voor meer informatie [Integration Runtime in Azure Data Factory](concepts-integration-runtime.md).|
 | Parameters | N.v.t. | Parameters zijn sleutel-waardeparen van alleen-lezen-configuratie-instellingen die in pijplijnen worden gedefinieerd. U kunt argumenten voor de parameters doorgeven als u de pijplijn handmatig uitvoert. Als u een scheduler-trigger gebruikt, kan de trigger ook waarden voor de parameters doorgeven. Activiteiten binnen de pijplijn gebruiken de parameterwaarden.  |
 | Expressies | In Data Factory V1 kunt u functies en systeemvariabelen gebruiken in gegevensselectiequery's en activiteits-/gegevensseteigenschappen. | In de huidige versie van Data Factory kunt u overal in een JSON-tekenreekswaarde gebruikmaken van expressies. Zie [Expressies en functies in de huidige versie van Data Factory](control-flow-expression-language-functions.md) voor meer informatie.|
@@ -69,7 +69,7 @@ Pijplijnen kunnen op aanvraag (op basis van een gebeurtenis, ofwel blob-bericht)
 De [activiteit Execute Pipeline](control-flow-execute-pipeline-activity.md) stelt een Data Factory-pijplijn in staat om een andere pijplijn aan te roepen.
 
 ### <a name="delta-flows"></a>Deltastromen
-Een belangrijke use case in ETL-patronen zijn 'deltaladingen', waarin alleen gegevens worden geladen die zijn gewijzigd sinds de laatste iteratie van een pijplijn. Nieuwe mogelijkheden in de huidige versie, zoals de [activiteit lookup](control-flow-lookup-activity.md), flexibele planning en controlestroom maken deze use case op een natuurlijke manier mogelijk. Zie [Zelfstudie: stapsgewijs kopiëren](tutorial-incremental-copy-powershell.md) voor een zelfstudie met stapsgewijze instructies.
+Een belangrijke use case in ETL-patronen zijn 'deltaladingen', waarin alleen gegevens worden geladen die zijn gewijzigd sinds de laatste iteratie van een pijplijn. Nieuwe mogelijkheden in de huidige versie, zoals de [activiteit lookup](control-flow-lookup-activity.md), flexibele planning en controlestroom maken deze use case op een natuurlijke manier mogelijk. Voor een zelfstudie met stapsgewijze instructies, zie [Zelfstudie: stapsgewijs kopiëren](tutorial-incremental-copy-powershell.md).
 
 ### <a name="other-control-flow-activities"></a>Andere controlestroomactiviteiten
 Hier volgen nog enkele controlestroomactiviteiten die worden ondersteund in de huidige versie van Data Factory. 
@@ -77,10 +77,10 @@ Hier volgen nog enkele controlestroomactiviteiten die worden ondersteund in de h
 Controleactiviteit | Beschrijving
 ---------------- | -----------
 [Activiteit ForEach](control-flow-for-each-activity.md) | Deze activiteit definieert een herhalende controlestroom in de pijplijn. Deze activiteit wordt gebruikt om een verzameling te herhalen en voert opgegeven activiteiten uit in een lus. De lusimplementatie van deze activiteit is vergelijkbaar met Foreach-lusstructuur in computertalen.
-[Webactiviteit](control-flow-web-activity.md) | Deze roept een aangepast REST-eindpunt aan vanaf een Data Factory-pijplijn. U kunt gegevenssets en gekoppelde services doorgeven die moten worden verbruikt door en die toegankelijk zijn voor de activiteit. 
-[Opzoek activiteit](control-flow-lookup-activity.md) | Deze activiteit leest of zoekt de waarde op van een record op tabelnaamwaarde in een externe bron. Er kan naar deze uitvoer worden verwezen door volgende activiteiten. 
-[Activiteit meta gegevens ophalen](control-flow-get-metadata-activity.md) | Haalt de metagegevens op van de gegevens in Azure Data Factory. 
-[Wachtende activiteit](control-flow-wait-activity.md) | Onderbreekt de pijplijn voor een opgegeven periode.
+[Activiteit Web](control-flow-web-activity.md) | Deze roept een aangepast REST-eindpunt aan vanaf een Data Factory-pijplijn. U kunt gegevenssets en gekoppelde services doorgeven die moten worden verbruikt door en die toegankelijk zijn voor de activiteit. 
+[Activiteit Lookup](control-flow-lookup-activity.md) | Deze activiteit leest of zoekt de waarde op van een record op tabelnaamwaarde in een externe bron. Er kan naar deze uitvoer worden verwezen door volgende activiteiten. 
+[Activiteit Metagegevens ophalen](control-flow-get-metadata-activity.md) | Haalt de metagegevens op van de gegevens in Azure Data Factory. 
+[Activiteit Wait](control-flow-wait-activity.md) | Onderbreekt de pijplijn voor een opgegeven periode.
 
 ## <a name="deploy-ssis-packages-to-azure"></a>SSIS-pakketten implementeren in Azure 
 U gebruikt Azure-SSIS om de SSIS-werkbelastingen naar de cloud te verplaatsen, een gegevensfactory te maken met de huidige versie en een Azure-SSIS Integration Runtime in te richten.
@@ -120,7 +120,7 @@ Zie [Verschil tussen aangepaste activiteiten in Data Factory en versie 1](transf
 
 - **.NET SDK**: de .NET SDK is bijgewerkt in de huidige versie.
 
-- **PowerShell**: de PowerShell-cmdlets zijn bijgewerkt in de huidige versie. De cmdlets voor de huidige versie hebben **DataFactoryV2** in de naam, bijvoorbeeld: Get-AzDataFactoryV2. 
+- **PowerShell**: de PowerShell-cmdlets zijn bijgewerkt in de huidige versie. In de huidige versie is **DataFactoryV2** opgenomen in de namen van de cmdlets, bijvoorbeeld: Get-AzDataFactoryV2. 
 
 - **Python SDK**: deze SDK is nieuw in de huidige versie.
 
@@ -130,14 +130,14 @@ De SDK's die zijn bijgewerkt in de huidige versie, zijn niet compatibel met eerd
 
 ## <a name="authoring-experience"></a>Ontwerpen
 
-| &nbsp; | V2 | V1 |
+| | Versie 2 | Versie 1 |
 | ------ | -- | -- | 
-| Azure Portal | [Ja](quickstart-create-data-factory-portal.md) | Nee |
-| Azure PowerShell | [Ja](quickstart-create-data-factory-powershell.md) | [Ja](data-factory-build-your-first-pipeline-using-powershell.md) |
-| .NET SDK | [Ja](quickstart-create-data-factory-dot-net.md) | [Ja](data-factory-build-your-first-pipeline-using-vs.md) |
-| REST-API | [Ja](quickstart-create-data-factory-rest-api.md) | [Ja](data-factory-build-your-first-pipeline-using-rest-api.md) |
-| Python-SDK | [Ja](quickstart-create-data-factory-python.md) | Nee |
-| Resource Manager-sjabloon | [Ja](quickstart-create-data-factory-resource-manager-template.md) | [Ja](data-factory-build-your-first-pipeline-using-arm.md) | 
+| **Azure-portal** | [Ja](quickstart-create-data-factory-portal.md) | Nee |
+| **Azure PowerShell** | [Ja](quickstart-create-data-factory-powershell.md) | [Ja](data-factory-build-your-first-pipeline-using-powershell.md) |
+| **.NET SDK** | [Ja](quickstart-create-data-factory-dot-net.md) | [Ja](data-factory-build-your-first-pipeline-using-vs.md) |
+| **REST API** | [Ja](quickstart-create-data-factory-rest-api.md) | [Ja](data-factory-build-your-first-pipeline-using-rest-api.md) |
+| **Python SDK** | [Ja](quickstart-create-data-factory-python.md) | Nee |
+| **Resource Manager-sjabloon** | [Ja](quickstart-create-data-factory-resource-manager-template.md) | [Ja](data-factory-build-your-first-pipeline-using-arm.md) | 
 
 ## <a name="roles-and-permissions"></a>Rollen en machtigingen
 
@@ -148,4 +148,4 @@ In de huidige versie kunt u ook gegevensfactory’s controleren met behulp van [
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over het maken van een data factory door stap-voor-stap instructies te volgen in de volgende Snelstartgids: [Power shell](quickstart-create-data-factory-powershell.md), [.net](quickstart-create-data-factory-dot-net.md), [python](quickstart-create-data-factory-python.md) [rest API](quickstart-create-data-factory-rest-api.md). 
+In de volgende quickstarts vindt u informatie over het maken van een data factory door het volgen van stapsgewijze instructies: [PowerShell](quickstart-create-data-factory-powershell.md), [.NET](quickstart-create-data-factory-dot-net.md), [Python](quickstart-create-data-factory-python.md), [REST API](quickstart-create-data-factory-rest-api.md). 

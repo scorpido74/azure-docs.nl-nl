@@ -4,30 +4,32 @@ description: In deze quickstart gebruikt u een Azure Resource Manager-sjabloon (
 ms.date: 07/06/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: 3cdcff4898a8644008193943a243be4a2ef9e8c4
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: a05be04064df81373f856ea0e8ca59664078695f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85969803"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252365"
 ---
-# <a name="quickstart-create-a-shared-query-by-using-an-azure-resource-manager-template"></a>Quickstart: Een gedeelde query maken met behulp van een Azure Resource Manager-sjabloon
+# <a name="quickstart-create-a-shared-query-by-using-an-arm-template"></a>Quickstart: Een gedeelde query maken met behulp van een ARM-sjabloon
 
 Resource Graph-query's kunnen worden opgeslagen als een _persoonlijke query_ of als een _gedeelde query_. Een persoonlijke query wordt opgeslagen in het profiel van de portal van de persoon en is niet zichtbaar voor anderen. Een gedeelde query is een Resource Manager-object dat met anderen kan worden gedeeld via machtigingen en toegang op basis van rollen. Een gedeelde query biedt een algemene en consistente uitvoering van resourcedetectie. In deze quickstart wordt gebruikgemaakt van een Azure Resource Manager-sjabloon (ARM-sjabloon) om een gedeelde query te maken.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
+Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
+
+:::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="De ARM-sjabloon implementeren om een gedeelde query te maken in Azure" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fresourcegraph-sharedquery-countos%2Fazuredeploy.json":::
+
 ## <a name="prerequisites"></a>Vereisten
 
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
-## <a name="create-a-shared-query"></a>Een gedeelde query maken
+## <a name="review-the-template"></a>De sjabloon controleren
 
 In deze quickstart maakt u een gedeelde query met de naam _Aantal VM's per besturingssysteem_. Als u deze query wilt proberen in SDK of in de portal met Resource Graph Explorer, raadpleegt u [Voorbeelden: aantal VM's per besturingssysteemtype](./samples/starter.md#count-os).
 
-### <a name="review-the-template"></a>De sjabloon controleren
-
-De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure Quick Start-sjablonen](https://azure.microsoft.com/resources/templates/resourcegraph-sharedquery-countos/).
+De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-quickstartsjablonen](https://azure.microsoft.com/resources/templates/resourcegraph-sharedquery-countos/).
 
 :::code language="json" source="~/quickstart-templates/resourcegraph-sharedquery-countos/azuredeploy.json" highlight="28-37":::
 
@@ -35,7 +37,7 @@ De resource die is gedefinieerd in de sjabloon:
 
 - [Microsoft.ResourceGraph/queries](/azure/templates/microsoft.resourcegraph/queries)
 
-### <a name="deploy-the-template"></a>De sjabloon implementeren
+## <a name="deploy-the-template"></a>De sjabloon implementeren
 
 > [!NOTE]
 > Azure Resource Graph-service is gratis. Zie [Overzicht van Azure Resource Graph](./overview.md) voor meer informatie.

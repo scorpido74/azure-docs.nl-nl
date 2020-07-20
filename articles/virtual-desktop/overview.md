@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 05/07/2020
+ms.date: 07/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 289cc463732ee6b612b67f6c408d9d7260016137
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 473e3d52b1757faebd60c14966b425e9390a2685
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85125801"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248608"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Wat is Windows Virtual Desktop? 
 
@@ -87,47 +87,7 @@ De virtuele Azure-machines die u maakt voor Windows Virtual Desktop moeten:
 >[!NOTE]
 >Als u een Azure-abonnement nodig heeft, dan kunt u [zich registreren voor een gratis proefversie van een maand](https://azure.microsoft.com/free/). Als u de gratis proefversie van Azure gebruikt, moet u Azure AD Domain Services gebruiken om uw Windows Server Active Directory gesynchroniseerd te houden met Azure Active Directory.
 
-De virtuele Azure-machine die u maakt voor Windows Virtual Desktop moet toegang hebben tot de volgende URL's:
-
-|Adres|Uitgaande TCP-poort|Doel|Servicetag|
-|---|---|---|---|
-|*.wvd.microsoft.com|443|Serviceverkeer|WindowsVirtualDesktop|
-|mrsglobalsteus2prod.blob.core.windows.net|443|Updates van Agent- en SXS-stack|AzureCloud|
-|*.core.windows.net|443|Agent-verkeer|AzureCloud|
-|*.servicebus.windows.net|443|Agent-verkeer|AzureCloud|
-|prod.warmpath.msftcloudes.com|443|Agent-verkeer|AzureCloud|
-|catalogartifact.azureedge.net|443|Azure Marketplace|AzureCloud|
-|kms.core.windows.net|1688|Windows-activering|Internet|
-|wvdportalstorageblob.blob.core.windows.net|443|Ondersteuning Azure-portal|AzureCloud|
-
->[!IMPORTANT]
->Windows Virtual Desktop biedt nu ondersteuning voor de FQDN-tag. Zie [Azure Firewall gebruiken om Windows Virtual Desktop-implementaties te beveiligen](../firewall/protect-windows-virtual-desktop.md) voor meer informatie.
->
->We raden u aan om FQDN-tags of servicetags te gebruiken in de plaats van URL's om serviceproblemen te vermijden. De vermelde URL's en tags komen enkel overeen met Windows Virtual Desktop-sites en -resources. Ze bevatten geen URL's voor andere services zoals Azure Active Directory.
-
-In de volgende tabel vindt u optionele URL's waar uw virtuele Azure-machines toegang tot kunnen hebben.
-
-|Adres|Uitgaande TCP-poort|Doel|Servicetag|
-|---|---|---|---|
-|*.microsoftonline.com|443|Verificatie voor Microsoft Online Services|Geen|
-|*.events.data.microsoft.com|443|Telemetrieservice|Geen|
-|www.msftconnecttest.com|443|Detecteert of het besturingssysteem een verbinding heeft met het internet|Geen|
-|*.prod.do.dsp.mp.microsoft.com|443|Windows Update|Geen|
-|login.windows.net|443|Aanmelden bij Microsoft Online Services, Microsoft 365|Geen|
-|*.sfx.ms|443|Updates voor OneDrive-clientsoftware|Geen|
-|*.digicert.com|443|Controle van certificaatintrekking|Geen|
-
-
->[!NOTE]
->Windows Virtual Desktop heeft momenteel geen lijst van toegestane IP-adresbereiken voor netwerkverkeer. Momenteel kunnen enkel specifieke URL's worden opgenomen in de whitelist.
->
->Zie [URL's en IP-adresbereiken voor Office 365](/office365/enterprise/urls-and-ip-address-ranges)voor een lijst met Office-gerelateerde URL's, inclusief vereiste Azure Active Directory-gerelateerde URL's.
->
->U moet het jokerteken (*) gebruiken voor URL's met serviceverkeer. Als u liever geen * gebruikt voor agent-gerelateerd verkeer, dan kunt u als volgt URL's zonder jokers vinden:
->
->1. Registreer uw virtuele machines bij de Windows Virtual Desktop-hostgroep.
->2. Open **Logboeken** en ga naar **Windows-logboeken** > **Toepassing** > **WVD-Agent** en zoek naar gebeurtenis-id 3702.
->3. Neem de URL's onder gebeurtenis-id 3702 op in uw whitelist. De URL's onder gebeurtenis-id 3702 zijn regiospecifiek. U moet voor elke regio waarin u uw virtuele machines wilt implementeren de relevante URL's opnemen in de whitelist.
+Zie onze [Lijst met veilige URL's](safe-url-list.md) voor een lijst van URL's die u dient te deblokkeren opdat uw Windows Virtual Desktop-implementatie naar behoren kan werken.
 
 Windows Virtual Desktop bestaat uit de Windows-desktops en -apps die u levert aan gebruikers en de beheersoplossing, die door Microsoft als een service wordt gehost in Azure. Desktops en apps kunnen worden geïmplementeerd op virtuele machines in elke Azure-regio. De beheersoplossing en gegevens voor deze VM's bevinden zich dan in de Verenigde Staten. Dit kan als gevolg hebben dat er gegevens worden overgedragen naar de Verenigde Staten.
 
@@ -141,7 +101,7 @@ Zorg ervoor dat uw netwerk aan de volgende vereisten voldoet voor optimale prest
 
 De volgende Extern bureaublad-clients bieden ondersteuning voor Windows Virtual Desktop:
 
-* [Windows Desktop](connect-windows-7-and-10.md)
+* [Windows Desktop](connect-windows-7-10.md)
 * [Web](connect-web.md)
 * [MacOS](connect-macos.md)
 * [iOS](connect-ios.md)
@@ -153,20 +113,7 @@ De volgende Extern bureaublad-clients bieden ondersteuning voor Windows Virtual 
 > [!IMPORTANT]
 > Windows Virtual Desktop biedt momenteel geen ondersteuning voor de Extern bureaublad-client uit de Windows Store. Ondersteuning voor deze client wordt in een toekomstige versie toegevoegd.
 
-De Extern bureaublad-clients moeten toegang hebben tot de volgende URL's:
-
-|Adres|Uitgaande TCP-poort|Doel|Client(s)|
-|---|---|---|---|
-|*.wvd.microsoft.com|443|Serviceverkeer|Alle|
-|*.servicebus.windows.net|443|Probleemoplossingsgegevens|Alle|
-|go.microsoft.com|443|Microsoft FWLinks|Alle|
-|aka.ms|443|Microsoft URL-verkorter|Alle|
-|docs.microsoft.com|443|Documentatie|Alle|
-|privacy.microsoft.com|443|Privacyverklaring|Alle|
-|query.prod.cms.rt.microsoft.com|443|Clientupdates|Windows-pc|
-
->[!IMPORTANT]
->Het openen van deze URL's is essentieel voor een betrouwbare clientervaring. Toegang blokkeren tot deze URL's wordt niet ondersteund en heeft gevolgen voor de functionaliteit van de service. Deze URL's komen enkel overeen met de clientsites en -resources, en bevatten geen URL's voor andere services zoals Azure Active Directory.
+Zie de [Lijst met veilige URL's](safe-url-list.md) voor meer informatie over URL's die u moet deblokkeren om de Externe clients te gebruiken.
 
 ## <a name="supported-virtual-machine-os-images"></a>Ondersteunde installatiekopieën van besturingssystemen voor virtuele machines
 

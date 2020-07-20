@@ -7,17 +7,14 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 1d86749a4e6071213ba5e229765bb6391affb199
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 05a3fc7524b16033c48170b6cf0fa4e004c9eb9b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84737118"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258009"
 ---
 # <a name="what-is-azure-digital-twins"></a>Wat is Azure Digital Twins?
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 **Azure Digital Twins** is een IoT-platform dat het maken van uitgebreide digitale modellen van hele omgevingen mogelijk maakt. Deze omgevingen kunnen gebouwen, fabrieken, boerderijen, energienetwerken, spoorwegen, stadiums en meer zijn, zelfs steden. Deze digitale modellen kunnen worden gebruikt om inzichten te verkrijgen die betere producten, geoptimaliseerde bewerkingen, lagere kosten en baanbrekende klantervaringen opleveren.
 
@@ -46,6 +43,12 @@ DTDL wordt gebruikt voor gegevensmodellen in andere Azure IoT-services, waaronde
 ### <a name="live-execution-environment"></a>Live uitvoeringsomgeving
 
 Digitale modellen in Azure Digital Twins zijn live, actuele weergaven van de echte wereld. Met de relaties in uw aangepaste DTDL-modellen verbindt u apparaatdubbels met een **live grafiek** die uw omgeving weergeeft.
+
+U kunt een visualisatie van uw Azure Digital Twins-grafiek bekijken met behulp van een voorbeeldtoepassing, [**Azure Digital Twins-verkenner**](https://github.com/Azure-Samples/digital-twins-explorer).
+
+Hier ziet u hoe de voorbeeldvisualisatie eruitziet:
+
+:::image type="content" source="media/includes/azure-digital-twins-explorer.png" alt-text="Schermopname van de voorbeeldtoepassing Azure Digital Twins-verkenner, waarop een grafiek van knooppunten die voor digital twins staan wordt weergegeven" lightbox="media/includes/azure-digital-twins-explorer.png":::
 
 Azure Digital Twins voorziet in een uitgebreid **gebeurtenissysteem** om de grafiek actueel te houden met gegevensverwerking en bedrijfslogica. U kunt verbinding maken met externe rekenresources, zoals [Azure Functions](../azure-functions/functions-overview.md), om deze gegevensverwerking flexibel en aangepast uit te voeren.
 

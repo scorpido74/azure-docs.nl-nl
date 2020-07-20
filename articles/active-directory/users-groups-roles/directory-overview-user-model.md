@@ -1,12 +1,12 @@
 ---
-title: Overzicht van gebruikers, groepen, licenties en functies-Azure AD | Microsoft Docs
+title: Gebruikers, groepen, licentieverlening en rollen in Azure Active Directory
 description: De relatie tussen gebruikers en toegewezen licenties, beheerdersrollen, groepslidmaatschap in Azure Active Directory
 keywords: ''
 author: curtand
 manager: daveba
 ms.author: curtand
 ms.reviewer: vincesm
-ms.date: 11/08/2019
+ms.date: 06/16/2020
 ms.topic: overview
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -14,14 +14,14 @@ ms.workload: identity
 services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8052bb44df6d29e17304763051fa2099009b9701
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
-ms.translationtype: MT
+ms.openlocfilehash: 89c96da30411705bf33b1c63f79a9beef11962a1
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583013"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223819"
 ---
-# <a name="users-groups-licensing-and-roles-for-large-organizations"></a>Gebruikers, groepen, licentieverlening en rollen voor grote organisaties
+# <a name="what-is-enterprise-user-management"></a>Wat is Enterprise-gebruikersbeheer?
 
 In dit artikel maakt de Azure AD-beheerder kennis met de relatie tussen de belangrijkste taken voor [identiteitsbeheer](/azure/active-directory/fundamentals/identity-fundamentals?context=azure/active-directory/users-groups-roles/context/ugr-context) voor gebruikers, wat betreft hun groepen, licenties, geïmplementeerde bedrijfsapps en beheerdersrollen. Naarmate uw organisatie groeit, kunt u Azure AD-groepen en beheerdersrollen gebruik voor het volgende:
 
@@ -31,7 +31,7 @@ In dit artikel maakt de Azure AD-beheerder kennis met de relatie tussen de belan
 
 ## <a name="assign-users-to-groups"></a>Gebruikers toewijzen aan groepen
 
-U kunt groepen in Azure AD gebruiken om licenties toe te wijzen aan grote aantallen gebruikers, of om gebruikerstoegang toe te wijzen aan geïmplementeerde bedrijfsapps. U kunt groepen gebruiken om alle beheerders rollen toe te wijzen, met uitzonde ring van globale beheerder in azure AD, of u kunt toegang verlenen tot externe bronnen, zoals SaaS-toepassingen of share point-sites.
+U kunt groepen in Azure AD gebruiken om licenties toe te wijzen aan grote aantallen gebruikers, of om gebruikerstoegang toe te wijzen aan geïmplementeerde bedrijfsapps. U kunt groepen gebruiken om alle beheerdersrollen, behalve Globale beheerder, toe te wijzen in Azure AD, of u kunt toegang verlenen tot externe resources, zoals SaaS-toepassingen of SharePoint-sites.
 
 Voor meer flexibiliteit en om de hoeveelheid werk voor het beheer van groepslidmaatschappen te verminderen, kunt u [dynamische groepen](groups-create-rule.md) in Azure AD gebruiken om groepslidmaatschappen automatisch uit te breiden of te beperken. U hebt een Azure AD Premium P1-licentie nodig voor elke unieke gebruiker die lid is van een of meer dynamische groepen.
 
@@ -52,7 +52,7 @@ Veel grote organisaties willen opties om hun gebruikers voldoende bevoegdheden t
 
  Rolnaam | Overzicht van bevoegdheden
  --------- | -------------------
- **Toepassingsbeheerder** | Kan bedrijfstoepassingen en toepassingsregistraties toevoegen en beheren en de proxyinstellingen van een toepassing configureren. Toepassings beheerders kunnen beleids regels voor voorwaardelijke toegang en apparaten weer geven, maar niet beheren.
+ **Toepassingsbeheerder** | Kan bedrijfstoepassingen en toepassingsregistraties toevoegen en beheren en de proxyinstellingen van een toepassing configureren. Toepassingsbeheerders kunnen beleid voor voorwaardelijke toegang en apparaten weergeven, maar kunnen ze niet beheren.
  **Beheerder van de cloudtoepassing** | Kan bedrijfstoepassingen en bedrijfsapp-registraties toevoegen en beheren. Deze rol heeft alle bevoegdheden van de toepassingsbeheerder behalve dat een gebruiker met deze rol geen instellingen van de toepassingsproxy kan beheren.
 **Toepassingsontwikkelaar** | Kan toepassingsregistraties toevoegen en beheren maar kan geen bedrijfstoepassingen beheren of de proxyinstellingen van een toepassing configureren.
 
@@ -60,7 +60,7 @@ Er worden meer nieuwe Azure AD-beheerdersrollen toegevoegd. Controleer de Azure 
 
 ## <a name="assign-app-access"></a>App-toegang toewijzen
 
-U kunt Azure AD gebruiken om groeps toegang toe te wijzen aan de [bedrijfs-apps die in uw Azure AD-organisatie zijn geïmplementeerd](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups?context=azure/active-directory/users-groups-roles/context/ugr-context). Als u dynamische groepen combineert met groepstoewijzing voor apps, kunt u de gebruikerstoegang tot apps automatiseren wanneer uw organisatie groeit. U hebt een Azure Active Directory Premium P1- of Premium P2-licentie nodig om toegang tot bedrijfsapps toe te wijzen.
+U kunt Azure AD gebruiken voor het toewijzen van groepstoegang tot de [bedrijfsapps die zijn geïmplementeerd in uw Azure AD-organisatie](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups?context=azure/active-directory/users-groups-roles/context/ugr-context). Als u dynamische groepen combineert met groepstoewijzing voor apps, kunt u de gebruikerstoegang tot apps automatiseren wanneer uw organisatie groeit. U hebt een Azure Active Directory Premium P1- of Premium P2-licentie nodig om toegang tot bedrijfsapps toe te wijzen.
 
 Azure AD geeft u nauwkeurigere controle over de gegevens die tussen de app en de groepen stromen waartoe u toegang verleent. Open in [Bedrijfstoepassingen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps) een app en selecteer **Inrichten** om het volgende te doen:
 

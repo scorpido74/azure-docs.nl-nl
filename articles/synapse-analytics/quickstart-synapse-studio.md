@@ -1,5 +1,5 @@
 ---
-title: Synapse Studio (preview) gebruiken
+title: 'Quickstart: Synapse Studio gebruiken'
 description: In deze quickstart ziet u en leert u hoe u eenvoudig een query kunt uitvoeren op verschillende bestandstypen met Synapse Studio (preview).
 services: synapse-analytics
 author: jovanpop-msft
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 182c6a20af51508c357079b9542b2bda695fdae4
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 271fd77e519ce9d78e2fa4e4837004a77cf73522
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658573"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276053"
 ---
 # <a name="quickstart-use-synapse-studio-preview"></a>Quickstart: Synapse Studio (preview) gebruiken
 

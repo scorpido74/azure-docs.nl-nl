@@ -4,29 +4,29 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/30/2020
 ms.author: gelecaro
-ms.openlocfilehash: 6d7d1d261bce671396d539cb7ecb1ecc3d950662
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.openlocfilehash: a1bc980f8334ca815a1805f33f3572cded4ba0ef
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82980120"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86156601"
 ---
-In deze hand leiding wordt uitgelegd hoe u de [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) voor Linux installeert
+In deze gids ontdekt u hoe u de [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) kunt installeren voor Linux
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
 ## <a name="system-requirements"></a>Systeemvereisten
 
-Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8)
+Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9, RHEL 8, CentOS 8)
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het volt ooien van deze Snelstartgids hebt u het volgende nodig:
+U hebt het volgende nodig om deze quickstart te voltooien:
 
 * gcc
-* Go (1,13 of hoger)
+* [Go binary (1,13 of hoger)](https://golang.org/dl/)
 
-* Voor ondersteunde Linux-platformen moeten bepaalde bibliotheken zijn geïnstalleerd ( `libssl` voor de ondersteuning van Secure Sockets Layer en `libasound2` voor geluids ondersteuning). Raadpleeg de onderstaande distributie voor de opdrachten die nodig zijn om de juiste versies van deze bibliotheken te installeren.
+* Voor ondersteunde Linux-platformen moeten bepaalde bibliotheken zijn geïnstalleerd (`libssl` voor de ondersteuning van Secure Sockets Layer en `libasound2` voor de ondersteuning van geluid). Zoek uw distributie hieronder voor de opdracht waarmee u de correcte versies van deze bibliotheken kunt installeren.
 
    * Op Ubuntu:
 
@@ -51,21 +51,21 @@ Voor het volt ooien van deze Snelstartgids hebt u het volgende nodig:
      ```
 
 > [!NOTE]
-> Volg in RHEL/CentOS 8 de instructies voor het [configureren van openssl voor Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
+> Volg op RHEL/CentOS 8 de instructies op [OpenSSL configureren voor Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
 
 [!INCLUDE [linux-install-sdk](linux-install-sdk.md)]
 
 
 ## <a name="configure-go-environment"></a>Go-omgeving configureren
 
-1. Omdat de bindingen afhankelijk `cgo` zijn van, moet u de omgevings variabelen instellen, zodat de SDK kan worden gevonden:
+1. Aangezien de bindingen afhankelijk zijn van `cgo`, moet u de omgevingsvariabelen instellen zodat Go de SDK kan vinden:
 
    ```sh
    export CGO_CFLAGS="-I$SPEECHSDK_ROOT/include/c_api"
    export CGO_LDFLAGS="-L$SPEECHSDK_ROOT/lib -lMicrosoft.CognitiveServices.Speech.core"
    ```
 
-1. Om toepassingen uit te voeren, inclusief de SDK, moeten we ook het besturings systeem vertellen waar de bibliotheken zich bevinden:
+1. Om toepassingen, waaronder de SDK, uit te voeren moeten we ook het besturingssysteem vertellen waar de bibliotheken zich bevinden:
 
    ```sh
    export LD_LIBRARY_PATH="$SPEECHSDK_ROOT/lib/<arch>:$LD_LIBRARY_PATH"

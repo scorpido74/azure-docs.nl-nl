@@ -7,18 +7,22 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/19/2020
-ms.openlocfilehash: 9f38ba439a5f2facbc1c80493b802b5205a54691
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 72ace8a94d16b79f756c83393db2b39a1c0df714
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84323584"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134851"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql-server"></a>Quickstart: Een ARM-sjabloon gebruiken om een Azure Database for MySQL te maken
 
-Azure Database for MySQL is een beheerde service waarmee u MySQL-databases met hoge beschikbaarheid in de cloud kunt uitvoeren, beheren en schalen. In deze quickstart gebruikt u een ARM-sjabloon om een Azure Database for MySQL-server te maken met virtuele netwerkintegratie. U kunt de server maken met behulp van de Azure-portal, Azure CLI of Azure PowerShell.
+Azure Database for MySQL is een beheerde service waarmee u MySQL-databases met hoge beschikbaarheid in de cloud kunt uitvoeren, beheren en schalen. In deze quickstart gebruikt u een Azure Resource Manager-sjabloon (ARM-sjabloon) om een Azure Database for MySQL-server te maken met virtuele netwerkintegratie. U kunt de server maken met behulp van de Azure-portal, Azure CLI of Azure PowerShell.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
+
+[![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-mysql-with-vnet%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -38,11 +42,9 @@ Een Azure-account met een actief abonnement. [Maak er gratis een](https://azure.
 
 ---
 
-## <a name="create-an-azure-database-for-mysql-server"></a>Een Azure-database voor MySQL-server maken
+## <a name="review-the-template"></a>De sjabloon controleren
 
 U maakt een Azure Database voor MySQL-server met een gedefinieerde set reken- en opslagresources. Zie [Prijscategorieën in Azure Database for MySQL](concepts-pricing-tiers.md) voor meer informatie. De server wordt gemaakt binnen een [Azure-resourcegroep](../azure-resource-manager/management/overview.md).
-
-### <a name="review-the-template"></a>De sjabloon controleren
 
 De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-quickstartsjablonen](https://azure.microsoft.com/resources/templates/101-managed-mysql-with-vnet/).
 
@@ -185,7 +187,7 @@ Als de resourcegroep niet meer nodig is, verwijdert u deze. Hierdoor worden ook 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Zoek en selecteer [Resourcegroepen](https://portal.azure.com) in de **Azure-portal**.
+1. Zoek en selecteer [Resourcegroepen](https://portal.azure.com) in **Azure Portal**.
 
 2. Kies in de lijst met resourcegroepen de naam van uw resourcegroep.
 
@@ -214,7 +216,7 @@ echo "Press [ENTER] to continue ..."
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor een stapsgewijze zelfstudie die u door het proces van het maken van een sjabloon leidt:
+Zie voor een stapsgewijze zelfstudie die u door het proces van het maken van een ARM-sjabloon leidt:
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Uw eerste Azure Resource Manager-sjabloon maken en implementeren](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+> [Zelfstudie: Uw eerste ARM-sjabloon maken en implementeren](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

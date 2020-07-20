@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: lengtes van de zinnen ophalen-Translator'
+title: 'Quickstart: Zinslengtes ophalen - Translator'
 titleSuffix: Azure Cognitive Services
-description: In deze Quick Start leert u hoe u de lengte van de zin kunt bepalen met behulp van het conversie programma.
+description: In deze quickstart leert u hoe u zinlengtes bepaalt met behulp van de Translator.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -12,18 +12,18 @@ ms.date: 05/26/2020
 ms.author: erhopf
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: bac8ab3da806927c588d3dc9cd06b83feb904a67
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.openlocfilehash: 017cb7dbc3e81584905530d819de680e79e2282b
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84606544"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147149"
 ---
-# <a name="quickstart-use-the-translator-to-determine-sentence-length"></a>Quick Start: de vertaler gebruiken om de lengte van de zin te bepalen
+# <a name="quickstart-use-the-translator-to-determine-sentence-length"></a>Quickstart: De Translator gebruiken om de zinslengte te bepalen
 
-In deze Quick Start leert u hoe u de lengte van zinnen kunt bepalen met behulp van het conversie programma.
+In deze quickstart leert u hoe u zinlengtes bepaalt met behulp van de Translator.
 
-Voor deze Snelstartgids is een [Azure Cognitive Services-account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) vereist met een Translator-resource. Als u geen account hebt, kunt u de [gratis proefversie](https://azure.microsoft.com/try/cognitive-services/) gebruiken om een abonnementssleutel op te halen.
+Voor deze snelstart is een [Azure Cognitive Services-account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) met een Translator-resource vereist. 
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# quickstart](includes/sentences-csharp.md)]

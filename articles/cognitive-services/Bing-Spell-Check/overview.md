@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: overview
 ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: 5586704e098fc568c714e779c2eed44aa3d1df9c
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: 205d7991551ca48c3ea2e61baef53f5d06bdcbd2
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75382996"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200498"
 ---
 # <a name="what-is-the-bing-spell-check-api"></a>Wat is de Bing Spellingcontrole-API?
 
@@ -23,8 +23,7 @@ Met de Bing Spellingcontrole-API kunt u contextuele grammatica- en spellingcontr
 
 ## <a name="features"></a>Functies
 
-
-|  |  |
+| Functie | Beschrijving |
 |---------|---------|
 |Meerdere modi van spellingcontroles     | Met meerdere modi van spellingcontroles kunt u correcties op het gebied van grammatica en/of spelling uitvoeren. |
 |Herkenning van slang en informeel taalgebruik     | Herkenning van veelgebruikte uitdrukkingen en informele termen die in tekst worden gebruikt.         |
@@ -35,7 +34,7 @@ Met de Bing Spellingcontrole-API kunt u contextuele grammatica- en spellingcontr
 
 De Bing Spellingcontrole-API kan eenvoudig worden aangeroepen vanuit elke programmeertaal waarmee HTTP-aanvragen kunnen worden gedaan en JSON-antwoorden kunnen worden geparseerd. De service is toegankelijk via de REST-API of de Bing Spellingcontrole-SDK's. 
 
-1. Maak een [Cognitive Services-API-account](../cognitive-services-apis-create-account.md) met toegang tot de Bing zoeken-API's. Als u geen Azure-abonnement hebt, kunt u een gratis account maken. 
+1. Maak een [Account voor Cognitive Services-API](../cognitive-services-apis-create-account.md) met toegang tot de Bing Zoeken-API's. Als u geen Azure-abonnement hebt, kunt u een gratis account maken. 
 2. Verzend een aanvraag naar de Bing Webzoekopdrachten-API.
 3. Het JSON-antwoord parseren
 
@@ -43,6 +42,6 @@ De Bing Spellingcontrole-API kan eenvoudig worden aangeroepen vanuit elke progra
 
 Probeer eerst de [interactieve demo](https://azure.microsoft.com/services/cognitive-services/spell-check/) van de Bing Spellingcontrole-API om te zien hoe u snel een grote verscheidenheid aan teksten kunt controleren.
 
-Wanneer u klaar bent om de API aan te roepen, maakt u een [account voor Cognitive Services-API](../../cognitive-services/cognitive-services-apis-create-account.md). Als u geen Azure-abonnement hebt, kunt u gratis [een account maken](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) .
+Wanneer u klaar bent om de API aan te roepen, maakt u een [account voor Cognitive Services-API](../../cognitive-services/cognitive-services-apis-create-account.md). Als u geen Azure-abonnement hebt, kunt u gratis [een account maken](https://azure.microsoft.com/free/cognitive-services/).
 
-U kunt ook de pagina van de [Bing Search API-hub](../bing-web-search/search-the-web.md) bezoeken om de andere beschik bare api's te verkennen.
+U kunt ook de [hubpagina voor Bing Search API](../bing-web-search/search-the-web.md) bezoeken om de andere beschikbare API's te verkennen.

@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 0631bc0e3e83564b2d77d4f67b418780d933215e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: d7eaff980b50cc463efc09e49febd4a947a7543c
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212901"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142848"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Azure Web Application Firewall voor Azure Application Gateway
 
@@ -24,7 +24,7 @@ WAF voor Application Gateway is gebaseerd op [Core Rule Set (CRS)](https://owasp
 Alle WAF-functies die hieronder worden vermeld, bevinden zich in een WAF-beleid. U kunt meerdere beleidsregels opstellen en deze kunnen worden gekoppeld aan een toepassingsgateway, aan individuele listeners of aan routeringsregels op een toepassingsgateway die op een pad zijn gebaseerd. Op deze manier kunt u indien nodig afzonderlijke beleidsregels hanteren voor elke site achter uw toepassingsgateway. Zie [Een WAF-beleid maken](create-waf-policy-ag.md)voor meer informatie over WAF-beleidsregels.
 
    > [!NOTE]
-   > WAF-beleidsregels per site en per URI zijn beschikbaar als openbare preview. Dit betekent dat deze functie onderhevig is aan de aanvullende gebruiksvoorwaarden van Microsoft. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+   > WAF-beleidsregels per URI zijn beschikbaar als openbare preview. Dit betekent dat deze functie onderhevig is aan de aanvullende gebruiksvoorwaarden van Microsoft. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 ![WAF-diagram van Application Gateway](../media/ag-overview/waf1.png)
 

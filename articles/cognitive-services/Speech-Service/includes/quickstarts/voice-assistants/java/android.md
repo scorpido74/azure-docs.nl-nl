@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: een aangepaste spraak assistent maken, java (Android)-spraak service'
+title: 'Quickstart: Een Custom Voice-assistent maken, Java (Android) - Speech-service'
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het maken van een aangepaste Voice Assistant in Java op Android met behulp van de spraak-SDK.
+description: Leer een Custom Voice-assistent maken in Java op Android met behulp van Speech-SDK.
 services: cognitive-services
 author: trrwilson
 manager: nitinme
@@ -10,25 +10,25 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: travisw
-ms.openlocfilehash: 8a1dd07fd567f41c2b406aabccd0421b5a6983af
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: fbfc6bf9c50257c2683522913503bf9b29450d94
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80671766"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226417"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u aan de slag gaat, moet u het volgende doen:
 
 > [!div class="checklist"]
-> * [Een Azure-spraak resource maken](~/articles/cognitive-services/speech-service/get-started.md)
-> * [Stel uw ontwikkel omgeving in en maak een leeg project](~/articles/cognitive-services/speech-service/quickstarts/setup-platform.md?tabs=android&pivots=programming-language-java)
-> * Een bot maken die is verbonden met het [directe-lijn spraak kanaal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
-> * Zorg ervoor dat u toegang tot een microfoon hebt voor het vastleggen van audio
+> * [Een resource voor de Azure-spraakservice maken](~/articles/cognitive-services/speech-service/get-started.md)
+> * [Uw ontwikkelomgeving instellen en een leeg project maken](~/articles/cognitive-services/speech-service/quickstarts/setup-platform.md?tabs=android&pivots=programming-language-java)
+> * Een bot maken die verbonden is met het [Direct Line Speech-kanaal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+> * Ervoor zorgen dat u toegang tot een microfoon hebt voor het vastleggen van audio
 
   > [!NOTE]
-  > Raadpleeg [de lijst met ondersteunde regio's voor spraak assistenten](~/articles/cognitive-services/speech-service/regions.md#voice-assistants) om ervoor te zorgen dat uw resources in een van deze regio's worden geïmplementeerd.
+  > Raadpleeg [de lijst met ondersteunde regio's voor spraakassistenten](~/articles/cognitive-services/speech-service/regions.md#voice-assistants) en zorg ervoor dat uw resources in een van deze regio's worden geïmplementeerd.
 
 ## <a name="create-and-configure-a-project"></a>Een project maken en configureren
 
@@ -36,9 +36,9 @@ Voordat u aan de slag gaat, moet u het volgende doen:
 
 ## <a name="create-user-interface"></a>Gebruikersinterface maken
 
-In deze sectie maken we een Basic-gebruikers interface (UI) voor de toepassing. Laten we beginnen met het openen van de hoofd `activity_main.xml`activiteit:. De basis sjabloon bevat een titel balk met de naam van de toepassing en een `TextView` met het bericht ' Hello World! '.
+In deze sectie gaan we een eenvoudige gebruikersinterface (UI) maken voor de toepassing. Laten we beginnen met de hoofdactiviteit te openen: `activity_main.xml`. Het basissjabloon bevat een titelbalk met de naam van de toepassing en een `TextView` met de boodschap 'Hallo wereld!'.
 
-Vervang vervolgens de inhoud van de `activity_main.xml` door de volgende code:
+Vervang daarna de inhoud van bestand `activity_main.xml` door de volgende code:
 
    ```xml
    <?xml version="1.0" encoding="utf-8"?>
@@ -87,19 +87,19 @@ Vervang vervolgens de inhoud van de `activity_main.xml` door de volgende code:
    </LinearLayout>
    ```
 
-Deze XML definieert een eenvoudige gebruikers interface voor interactie met uw bot.
+Deze XML zorgt voor een eenvoudige gebruikersinterface om te communiceren met uw bot.
 
-- Het `button` element initieert een interactie en roept de `onBotButtonClicked` methode aan wanneer erop wordt geklikt.
-- Het `recoText` element geeft de resultaten van de spraak-naar-tekst weer wanneer u met uw bot praat.
-- Het `activityText` element geeft de JSON-Payload voor de nieuwste bot-Framework activiteit van uw bot.
+- Het `button`-element initieert een interactie en roept de `onBotButtonClicked`-methode aan wanneer erop wordt geklikt.
+- Het `recoText`-element geeft de spraak-naar-tekst-resultaten weer terwijl u met uw bot praat.
+- Het `activityText`-element geeft de JSON-nettolading voor de meest recente Bot Framework-activiteit van uw bot weer.
 
 De tekst en de grafische weergave van uw gebruikersinterface moeten er nu ongeveer als volgt uitzien:
 
-![](~/articles/cognitive-services/speech-service/media/sdk/qs-java-android-assistant-designer-ui.png)
+![Schermopname van hoe uw gebruikersinterface voor 'Praten met uw bot' eruit zou moeten zien.](~/articles/cognitive-services/speech-service/media/sdk/qs-java-android-assistant-designer-ui.png)
 
 ## <a name="add-sample-code"></a>Voorbeeldcode toevoegen
 
-1. Open `MainActivity.java`en vervang de inhoud door de volgende code:
+1. Open `MainActivity.java` en vervang de inhoud door de volgende code:
 
    ```java
     package samples.speech.cognitiveservices.microsoft.com;
@@ -241,31 +241,31 @@ De tekst en de grafische weergave van uw gebruikersinterface moeten er nu ongeve
     }
    ```
 
-   * De `onCreate` methode bevat code die microfoon-en Internet machtigingen aanvraagt.
+   * De methode `onCreate` omvat code die toestemming vraagt voor gebruik van de microfoon en internet.
 
-   * De methode `onBotButtonClicked` is, zoals eerder gezegd, de methode voor het afhandelen van het klikken op de knop. Een knop indrukt een enkele interactie (' turn ') wordt geactiveerd met uw bot.
+   * De methode `onBotButtonClicked` is, zoals eerder gezegd, de methode voor het afhandelen van het klikken op de knop. met een druk op de knop wordt een enkele interactie ('beurt') met uw bot geactiveerd.
 
-   * De `registerEventListeners` -methode demonstreert de gebeurtenissen die worden `DialogServiceConnector` gebruikt door de en basis verwerking van binnenkomende activiteiten.
+   * De `registerEventListeners`-methode toont de gebeurtenissen die gebruikt worden door de `DialogServiceConnector` en de basisverwerking van inkomende activiteiten.
 
-1. Vervang in hetzelfde bestand de configuratie teken reeksen zodat deze overeenkomen met uw resources:
+1. Vervang in hetzelfde bestand de configuratietekenreeksen zodat deze overeenkomen met uw resources:
 
     * Vervang `YourSpeechSubscriptionKey` door uw abonnementssleutel.
 
-    * Vervangen `YourServiceRegion` door de [regio](~/articles/cognitive-services/speech-service/regions.md) die aan uw abonnement is gekoppeld alleen een subset van spraak service regio's wordt momenteel ondersteund met direct line speech. Zie [regio's](~/articles/cognitive-services/speech-service/regions.md#voice-assistants)voor meer informatie.
+    * Vervang `YourServiceRegion` door de [regio](~/articles/cognitive-services/speech-service/regions.md) van uw abonnement. Momenteel bieden slechts enkele regio's van Speech-service ondersteuning voor Direct Line Speech. Zie [regio's](~/articles/cognitive-services/speech-service/regions.md#voice-assistants) voor meer informatie.
 
 ## <a name="build-and-run-the-app"></a>De app bouwen en uitvoeren
 
 1. Sluit uw Android-apparaat aan op de ontwikkelmachine. Zorg ervoor dat u de [ontwikkelmodus en USB-foutopsporing](https://developer.android.com/studio/debug/dev-options) hebt ingeschakeld op het apparaat.
 
-1. Als u de toepassing wilt bouwen, drukt u op CTRL + F9 of kiest u **Build** > **maken Project** in de menu balk.
+1. Druk op Ctrl + F9 om de toepassing te compileren, of kies **Build** > **Make Project** in de menubalk.
 
-1. Als u de toepassing wilt starten, drukt u op SHIFT + F10 of kiest u**Run-app** **uitvoeren** > .
+1. Als u de toepassing wilt starten, drukt u op Shift + F10 of kiest u **Run** > **Run 'app'** .
 
 1. Kies uw Android-apparaat in het venster Select Deployment Target dat wordt weergegeven.
 
    ![Schermafbeelding van het venster Select Deployment Target](~/articles/cognitive-services/speech-service/media/sdk/qs-java-android-12-deploy.png)
 
-Zodra de toepassing en de bijbehorende activiteiten zijn gestart, klikt u op de knop om te beginnen met het praten met uw bot. Getranscribeerde tekst wordt weer gegeven terwijl u praat en de laatste activiteit die u hebt ontvangen van uw bot wordt weer gegeven wanneer deze wordt ontvangen. Als uw bot is geconfigureerd om gesp roken reacties te geven, wordt de spraak-naar-tekst automatisch afgespeeld.
+Zodra de toepassing en de bijbehorende activiteiten zijn opgestart, klikt u op de knop om met uw bot te beginnen praten. Terwijl u spreekt wordt getranscribeerde tekst weergegeven. De meest recente activiteit die u van uw bot heeft ontvangen, verschijnt wanneer die beschikbaar is. Als uw bot is geconfigureerd voor gesproken reacties, dan speelt de spraak-naar-tekst automatisch.
 
 ![Schermafbeelding van de Android-toepassing](~/articles/cognitive-services/speech-service/media/sdk/qs-java-android-assistant-completed-turn.png)
 

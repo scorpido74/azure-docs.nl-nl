@@ -1,6 +1,6 @@
 ---
 title: 'Quickstart: Een Azure-firewall en IP-groepen maken - Resource Manager-sjabloon'
-description: Ontdek hoe u met een Resource Manager-sjabloon een Azure-firewall en IP-groepen maakt.
+description: Ontdek hoe u met een Azure Resource Manager-sjabloon (AMR-sjabloon) een Azure-firewall en IP-groepen maakt.
 services: firewall
 author: vhorne
 ms.service: firewall
@@ -8,30 +8,32 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/06/2020
 ms.author: victorh
-ms.openlocfilehash: 403aaafebcae680f337aeff551b81a80a9549252
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 5ac1248ddcdf8c0eef68b7c32e322398fa01a6f2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680556"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260579"
 ---
-# <a name="quickstart-create-an-azure-firewall-and-ip-groups---resource-manager-template"></a>Quickstart: Een Azure-firewall en IP-groepen maken - Resource Manager-sjabloon
+# <a name="quickstart-create-an-azure-firewall-and-ip-groups---arm-template"></a>Quickstart: Een Azure-firewall en IP-groepen maken - ARM-sjabloon
 
-In deze quickstart gebruikt u een Resource Manager-sjabloon om een Azure-firewall te implementeren met IP-voorbeeldgroepen die worden gebruikt in een netwerkregel en toepassingsregel. Een IP-groep is een resource op het hoogste niveau waarmee u IP-adressen, bereiken en subnetten kunt definiëren en groeperen in één object. Dit is handig voor het beheren van IP-adressen in Azure Firewall-regels. U kunt de IP-adressen handmatig invoeren of ze importeren uit een bestand.
+In deze quickstart gebruikt u een Azure Resource Manager-sjabloon (ARM-sjabloon) om een Azure-firewall te implementeren met IP-voorbeeldgroepen die worden gebruikt in een netwerkregel en toepassingsregel. Een IP-groep is een resource op het hoogste niveau waarmee u IP-adressen, bereiken en subnetten kunt definiëren en groeperen in één object. Dit is handig voor het beheren van IP-adressen in Azure Firewall-regels. U kunt de IP-adressen handmatig invoeren of ze importeren uit een bestand.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
+
+[![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurefirewall-create-with-ipgroups-and-linux-jumpbox%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Vereisten
 
 - Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 
-## <a name="create-an-azure-firewall-and-ip-groups"></a>Een Azure-firewall en IP-groepen maken
+## <a name="review-the-template"></a>De sjabloon controleren
 
 Met deze sjabloon maakt u een Azure-firewall en IP-groepen, samen met de benodigde resources die ondersteuning bieden voor de Azure-firewall.
 
-### <a name="review-the-template"></a>De sjabloon controleren
-
-De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure Quick Start-sjablonen](https://azure.microsoft.com/resources/templates/101-azurefirewall-create-with-ipgroups-and-linux-jumpbox).
+De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-quickstartsjablonen](https://azure.microsoft.com/resources/templates/101-azurefirewall-create-with-ipgroups-and-linux-jumpbox).
 
 :::code language="json" source="~/quickstart-templates/101-azurefirewall-create-with-ipgroups-and-linux-jumpbox/azuredeploy.json" range="001-512" highlight="118-141":::
 
@@ -47,11 +49,11 @@ Er worden meerdere Azure-resources gedefinieerd in de sjabloon:
 - [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
 - [**Microsoft.Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
 
-### <a name="deploy-the-template"></a>De sjabloon implementeren
+## <a name="deploy-the-template"></a>De sjabloon implementeren
 
-De Resource Manager-sjabloon implementeren in Azure:
+Het ARM-sjabloon implementeren in Azure:
 
-1. Selecteer **Implementeren in Azure** om u aan te melden bij Azure en de sjabloon te openen. Met de sjabloon maakt u een Azure-firewall, de netwerkinfrastructuur en twee virtuele machines.
+1. Selecteer **Implementeren in Azure** om u aan te melden bij Azure, en open de sjabloon. Met de sjabloon maakt u een Azure-firewall, de netwerkinfrastructuur en twee virtuele machines.
 
    [![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurefirewall-create-with-ipgroups-and-linux-jumpbox%2Fazuredeploy.json)
 
@@ -76,7 +78,7 @@ Bekijk in de Azure-portal de geïmplementeerde resources, met name de firewallre
 
 :::image type="content" source="media/quick-create-ipgroup-template/network-rule.png" alt-text="Netwerkregels.":::
 
-Raadpleeg [sjabloonverwijzing Microsoft.Network/azureFirewalls](https://docs.microsoft.com/azure/templates/Microsoft.Network/2019-11-01/azureFirewalls) voor meer informatie over de syntaxis en eigenschappen van JSON voor een firewall in een sjabloon.
+Raadpleeg [sjabloonverwijzing Microsoft.Network/azureFirewalls](/azure/templates/Microsoft.Network/2019-11-01/azureFirewalls) voor meer informatie over de syntaxis en eigenschappen van JSON voor een firewall in een sjabloon.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

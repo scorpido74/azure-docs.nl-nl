@@ -6,15 +6,15 @@ author: kevinvngo
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql-dw
-ms.date: 05/06/2020
+ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: f5f6c6970ad8bb697ceb118b6725b37e93ca80b5
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: f9aa0214712704c1a80f73ae3fd05929f7245eb3
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85213054"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274136"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>Gegevens veilig laden met Synapse SQL
 
@@ -23,10 +23,10 @@ In dit artikel vindt u voorbeelden over de veilige verificatiemechanismen voor d
 
 De volgende matrix beschrijft de ondersteunde verificatiemethoden voor elk bestandstype en opslagaccount. Dit geldt voor de bronopslaglocatie en de locatie van het foutbestand.
 
-|                      |                CSV                |              Parquet              |                ORC                |
-| :------------------: | :-------------------------------: | :-------------------------------: | :-------------------------------: |
-|  Azure Blob Storage  | SAS/MSI/SERVICE PRINCIPAL/KEY/AAD |              SAS/KEY              |              SAS/KEY              |
-| Azure Data Lake Gen2 | SAS/MSI/SERVICE PRINCIPAL/KEY/AAD | SAS/MSI/SERVICE PRINCIPAL/KEY/AAD | SAS/MSI/SERVICE PRINCIPAL/KEY/AAD |
+|                          |                CSV                |              Parquet              |                ORC                |
+| :----------------------: | :-------------------------------: | :-------------------------------: | :-------------------------------: |
+|  **Azure Blob Storage**  | SAS/MSI/SERVICE PRINCIPAL/KEY/AAD |              SAS/KEY              |              SAS/KEY              |
+| **Azure Data Lake Gen2** | SAS/MSI/SERVICE PRINCIPAL/KEY/AAD | SAS/MSI/SERVICE PRINCIPAL/KEY/AAD | SAS/MSI/SERVICE PRINCIPAL/KEY/AAD |
 
 ## <a name="a-storage-account-key-with-lf-as-the-row-terminator-unix-style-new-line"></a>A. Opslagaccountsleutel met LF als het rij-eindpunt (nieuwe regel voor UNIX-stijl)
 
@@ -93,6 +93,11 @@ Beheerde identiteitsverificatie is vereist wanneer uw opslagaccount is gekoppeld
    > [!NOTE]
    > Alleen leden met de bevoegdheid Eigenaar kunnen deze stap uitvoeren. Raadpleeg deze [gids](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) voor verschillende ingebouwde rollen voor Azure-resources.
    
+    > [!IMPORTANT]
+    > Geef de RBAC-rol van Eigenaar van **opslag** **blobgegevens**, Inzender of Lezer op. Deze rollen verschillen van de ingebouwde Azure-rollen Eigenaar, Inzender en Lezer. 
+
+    ![RBAC-machtiging verlenen om te laden](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
+
 4. U kunt nu de instructie COPY uitvoeren om een "Beheerde identiteit" op te geven:
 
     ```sql
@@ -104,14 +109,15 @@ Beheerde identiteitsverificatie is vereist wanneer uw opslagaccount is gekoppeld
     )
     ```
 
-> [!IMPORTANT]
->
-> - Geef de RBAC-rol van Eigenaar van **opslag** **blobgegevens**, Inzender of Lezer op. Deze rollen verschillen van de ingebouwde Azure-rollen Eigenaar, Inzender en Lezer. 
-
 ## <a name="d-azure-active-directory-authentication-aad"></a>D. Azure Active Directory-verificatie (AAD)
 #### <a name="steps"></a>Stappen
 
 1. Navigeer onder uw opslagaccount naar **Access Control (IAM)** en selecteer **Roltoewijzing toevoegen**. Wijs de RBAC-rol van **Eigenaar van opslagblobgegevens, Inzender of Lezer** aan uw AAD-gebruiker toe. 
+
+    > [!IMPORTANT]
+    > Geef de RBAC-rol van Eigenaar van **opslag** **blobgegevens**, Inzender of Lezer op. Deze rollen verschillen van de ingebouwde Azure-rollen Eigenaar, Inzender en Lezer.
+
+    ![RBAC-machtiging verlenen om te laden](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 
 2. Configureer Azure AD-verificatie door middel van de volgende [documentatie](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#create-an-azure-ad-administrator-for-azure-sql-server). 
 
@@ -125,9 +131,6 @@ Beheerde identiteitsverificatie is vereist wanneer uw opslagaccount is gekoppeld
     )
     ```
 
-> [!IMPORTANT]
->
-> - Geef de RBAC-rol van Eigenaar van **opslag** **blobgegevens**, Inzender of Lezer op. Deze rollen verschillen van de ingebouwde Azure-rollen Eigenaar, Inzender en Lezer. 
 
 ## <a name="e-service-principal-authentication"></a>E. Verificatie van service-principal
 #### <a name="steps"></a>Stappen
