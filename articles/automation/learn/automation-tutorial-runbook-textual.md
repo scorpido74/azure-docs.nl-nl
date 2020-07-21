@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.openlocfilehash: 80c84693f466ea30c4a65a8960472a55e98d1efe
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: dd9aee01edf45f89feb6a6010c8d958511bc3904
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714454"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185395"
 ---
 # <a name="tutorial-create-a-powershell-workflow-runbook"></a>Zelfstudie: Een PowerShell Workflow-runbook maken
 
@@ -27,7 +27,7 @@ In deze zelfstudie wordt stap voor stap het maken van een [PowerShell Workflow-r
 Voor deze zelfstudie hebt u het volgende nodig:
 
 * Azure-abonnement. Als u nog geen abonnement hebt, kunt u [uw voordelen als MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) of u aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Automation-account](../automation-offering-get-started.md) om het runbook te bevatten en te verifiëren voor Azure-resources. Dit account moet machtigingen hebben om de virtuele machine te starten en stoppen.
+* [Automation-account](../index.yml) om het runbook te bevatten en te verifiëren voor Azure-resources. Dit account moet machtigingen hebben om de virtuele machine te starten en stoppen.
 * Een virtuele machine van Azure. Aangezien u deze machine stopt en start, mag dit geen productie-VM zijn.
 
 ## <a name="step-1---create-new-runbook"></a>Stap 1: nieuw runbook maken
@@ -81,7 +81,7 @@ Voordat u het runbook publiceert om het beschikbaar te maken in productie, moet 
 
 3. Merk op dat een [runbooktaak](../automation-runbook-execution.md) wordt gemaakt en de status ervan in het venster wordt weergegeven.
 
-   In eerste instantie is de taakstatus 'In de wachtrij geplaatst'. Hiermee wordt aangegeven dat de taak wacht op tot er een runbook worker in de cloud beschikbaar is. De status verandert naar Wordt gestart wanneer de taak wordt geclaimd door een worker. Ten slotte verandert de status naar Wordt uitgevoerd wanneer de runbook effectief wordt uitgevoerd.
+   In eerste instantie is de taakstatus 'In de wachtrij geplaatst'. Hiermee wordt aangegeven dat de taak wacht op tot er een runbook worker in de cloud beschikbaar is. De status verandert naar 'Wordt gestart' wanneer de taak wordt geclaimd door een worker. Ten slotte verandert de status naar 'Wordt uitgevoerd' wanneer de runbook daadwerkelijk wordt uitgevoerd.
 
 4. Wanneer de runbooktaak is voltooid, wordt de uitvoer weergegeven in het testvenster. In dit geval ziet u `Hello World`.
 
@@ -131,7 +131,7 @@ De runbook die u hebt gemaakt, bevindt zich nog steeds in de modus Concept. U mo
 
 ## <a name="step-5---add-authentication-to-manage-azure-resources"></a>Stap 5: verificatie toevoegen voor het beheren van Azure-resources
 
-U hebt het runbook getest en gepubliceerd, maar tot nu toe doet het nog niets nuttigs. U wilt dat er Azure-resources mee worden beheerd. Dat gaat niet zonder verificatie met de referenties voor het abonnement. Verificatie maakt gebruik van de cmdlet [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.7.0).
+U hebt het runbook getest en gepubliceerd, maar tot nu toe doet het nog niets nuttigs. U wilt dat er Azure-resources mee worden beheerd. Dat gaat niet zonder verificatie met de referenties voor het abonnement. Verificatie maakt gebruik van de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.7.0).
 
 >[!NOTE]
 >Voor PowerShell-runbooks zijn `Add-AzAccount` en `Add-AzureRMAccount` aliassen voor `Connect-AzAccount`. U kunt deze cmdlets gebruiken of u kunt [uw modules bijwerken](../automation-update-azure-modules.md) naar de nieuwste versie in uw Automation-account. Zelfs wanneer u juist een nieuw Automation-account heeft aangemaakt, moet u mogelijk uw modules bijwerken.
@@ -165,8 +165,7 @@ U hebt het runbook getest en gepubliceerd, maar tot nu toe doet het nog niets nu
 
 Nu uw runbook verifieert voor het Azure-abonnement, kunt u resources beheren. Laten we een opdracht voor het starten van een virtuele machine toevoegen. U kunt elke VM in uw Azure-abonnement selecteren. Voorlopig hardcodeert u de naam hiervan in het runbook. Als u resources beheert voor verschillende abonnementen, moet u de parameter `AzContext` gebruiken met de cmdlet [Get-AzContext](/powershell/module/az.accounts/get-azcontext).
 
-1. Geef de naam en de resourcegroepnaam van de op te starten VM op door een aanroep naar de cmdlet [Start-AzVN](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0
-) in te voeren. 
+1. Geef de naam en de resourcegroepnaam van de op te starten VM op door een aanroep naar de cmdlet [Start-AzVN](/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) in te voeren. 
 
    ```powershell-interactive
    workflow MyFirstRunbook-Workflow
@@ -227,9 +226,9 @@ Uw runbook start nu de VM die u heeft vastgelegd in het runbook. Het is handiger
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [PowerShell-documentatie](https://docs.microsoft.com/powershell/scripting/overview)
-* [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)
-* [Een grafisch runbook maken](automation-tutorial-runbook-graphical.md)
-* [Een PowerShell-runbook maken](automation-tutorial-runbook-textual-powershell.md)
-* [Azure Automation-runbooktypen](../automation-runbook-types.md)
-* [Systeemeigen PowerShell-scriptondersteuning in Azure Automation](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)
+* Raadpleeg de [PowerShell Docs](/powershell/scripting/overview) voor meer informatie over PowerShell, inclusief taalreferentie- en leermodules.
+* Zie [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation) voor een naslagdocumentatie voor een PowerShell-cmdlet.
+* Zie [Een grafisch runbook maken](automation-tutorial-runbook-graphical.md) om aan de slag te gaan met grafische runbooks.
+* Zie [Een PowerShell-runbook maken](automation-tutorial-runbook-textual-powershell.md) om aan de slag te gaan met PowerShell-runbooks.
+* Zie [Azure Automation-runbooktypen](../automation-runbook-types.md) voor meer informatie over runbooktypen en hun voordelen en beperkingen.
+* Zie [Systeemeigen PowerShell-scriptondersteuning in Azure Automation](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/) voor meer informatie over de functies voor PowerShelll-scriptondersteuning.

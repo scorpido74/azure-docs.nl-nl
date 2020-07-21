@@ -1,19 +1,19 @@
 ---
-title: 'Zelf studie: een app implementeren in azure Service Fabric mesh'
+title: 'Zelfstudie: Een app implementeren in Azure Service Fabric Mesh'
 description: In deze zelfstudie leert u hoe u een toepassing kunt implementeren in Service Fabric Mesh met behulp van een sjabloon.
 author: dkkapur
 ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 1ff1407400843fdb0f0ff997e2e0a3c1b7e67c7d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: f7cb3f75dcaaeb6e0304784941dfcfc81ae6d68f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75494938"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248387"
 ---
-# <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Zelfstudie: Een toepassing implementeren in Service Fabric Mesh met behulp van een sjabloon
+# <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Zelfstudie: Een toepassing in Service Fabric Mesh implementeren met behulp van een sjabloon
 
 Deze zelfstudie is deel één van een serie. U leert hou een Azure Service Fabric Mesh-toepassing kunt implementeren met behulp van een sjabloon.  De toepassing bestaat uit een ASP.NET-web-front-endservice en een ASP.NET Core Web API-back-endservice. Deze zijn te vinden in Docker Hub.  U haalt de twee containerinstallatiekopieën uit Docker Hub en pusht ze vervolgens naar uw eigen persoonlijke register. Vervolgens maakt u een Azure RM-sjabloon voor de toepassing en implementeert u de toepassing vanuit uw containerregister naar Service Fabric Mesh. Als u klaar bent, hebt u een eenvoudige takenlijsttoepassing die in Service Fabric Mesh wordt uitgevoerd.
 
@@ -30,7 +30,7 @@ In deze zelfstudiereeks leert u het volgende:
 > * Een toepassing in Service Fabric Mesh implementeren met behulp van een sjabloon
 > * [Services schalen in een toepassing die wordt uitgevoerd in Service Fabric Mesh](service-fabric-mesh-tutorial-template-scale-services.md)
 > * [Een toepassing upgraden die wordt uitgevoerd in Service Fabric Mesh](service-fabric-mesh-tutorial-template-upgrade-app.md)
-> * [Een toepassing verwijderen](service-fabric-mesh-tutorial-template-remove-app.md)
+> * [Een app verwijderen](service-fabric-mesh-tutorial-template-remove-app.md)
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
@@ -171,7 +171,7 @@ De voorgaande uitvoer bevestigt de aanwezigheid van `azure-mesh-todo-service:1.0
 ## <a name="retrieve-credentials-for-the-registry"></a>Referenties voor het register ophalen
 
 > [!IMPORTANT]
-> Het is niet aan te bevelen om de gebruiker met beheerdersrechten in te schakelen voor een ACR-instantie voor productiescenario’s. Dit gebeurt hier gemakshalve. Gebruik voor productiescenario’s een [service-principal](https://docs.microsoft.com/azure/container-registry/container-registry-auth-service-principal) voor zowel gebruikers- als systeemverificatie.
+> Het is niet aan te bevelen om de gebruiker met beheerdersrechten in te schakelen voor een ACR-instantie voor productiescenario’s. Dit gebeurt hier gemakshalve. Gebruik voor productiescenario’s een [service-principal](../container-registry/container-registry-auth-service-principal.md) voor zowel gebruikers- als systeemverificatie.
 
 Als u een containerinstantie wilt implementeren vanuit het register dat met behulp van een sjabloon werd gemaakt, moet u de referenties voor het register opgeven tijdens de implementatie. Schakel eerst de gebruiker met beheerdersrechten voor uw register in met behulp van de volgende opdracht:
 
@@ -191,7 +191,7 @@ Gebruik de geretourneerde naam-, gebruikersnaam- en wachtwoordwaarden voor de AC
 
 ## <a name="download-and-explore-the-template-and-parameters-files"></a>De sjabloon- en parameterbestanden downloaden en verkennen
 
-Een Service Fabric Mesh-toepassing is een Azure-resource die u met behulp van Azure Resource Manager-sjablonen (RM) kunt implementeren en beheren. Raadpleeg [Overzicht van Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview) en [De structuur en syntaxis van RM-sjablonen begrijpen](/azure/azure-resource-manager/resource-group-authoring-templates) als u de concepten van implementatie en beheer van uw Azure-oplossingen niet kent.
+Een Service Fabric Mesh-toepassing is een Azure-resource die u met behulp van Azure Resource Manager-sjablonen (RM) kunt implementeren en beheren. Raadpleeg [Overzicht van Azure Resource Manager](../azure-resource-manager/management/overview.md) en [De structuur en syntaxis van RM-sjablonen begrijpen](../azure-resource-manager/templates/template-syntax.md) als u de concepten van implementatie en beheer van uw Azure-oplossingen niet kent.
 
 In deze zelfstudie wordt de takenlijst als voorbeeld gebruikt.  Download de bestanden [mesh_rp.windows.json deployment template](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json) en [mesh_rp.windows.parameter.json parameters](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json) zodat u geen nieuwe sjabloon- en parameterbestanden hoeft te bouwen.
 

@@ -1,115 +1,116 @@
 ---
-title: 'Zelf studie: Azure lente-cloud resources bewaken met behulp van waarschuwingen en actie groepen | Microsoft Docs'
-description: Meer informatie over het gebruik van Lente-Cloud waarschuwingen.
+title: 'Zelfstudie: Azure Spring Cloud-resources bewaken met behulp van waarschuwingen en actiegroepen | Microsoft Docs'
+description: Meer informatie over het gebruik van Spring Cloud-waarschuwingen.
 author: MikeDodaro
 ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
-ms.openlocfilehash: cf7e075244a83190b83e629ef300a4903b114a6d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 0d3fcbbb317ef70687c83ff21e2ab817d89051a6
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77920073"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142451"
 ---
-# <a name="tutorial-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Zelf studie: lente-cloud resources bewaken met behulp van waarschuwingen en actie groepen
+# <a name="tutorial-how-to-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Zelfstudie: Spring Cloud-resources bewaken met behulp van waarschuwingen en actiegroepen
 
-Azure lente-Cloud waarschuwingen bieden ondersteuning voor het bewaken van resources op basis van voor waarden zoals de beschik bare opslag, de frequentie van aanvragen of het gegevens gebruik. Er wordt een melding verzonden wanneer tarieven of voor waarden voldoen aan de gedefinieerde specificaties.
+Azure Spring Cloud-waarschuwingen bieden ondersteuning voor het bewaken van resources op basis van voorwaarden als beschikbare opslag, frequentie van aanvragen of gegevensgebruik. Er wordt een melding verzonden wanneer de frequenties of voorwaarden aan de gedefinieerde specificaties voldoen.
 
-Er zijn twee stappen voor het instellen van een waarschuwings pijplijn: 
-1. Stel een actie groep in met de acties die moeten worden uitgevoerd wanneer een waarschuwing wordt geactiveerd, zoals e-mail, SMS, Runbook of webhook. Actie groepen kunnen opnieuw worden gebruikt tussen verschillende waarschuwingen.
-2. Waarschuwings regels instellen. De regels binden metrische patronen met de actie groepen op basis van de doel resource, metrische gegevens, condities, tijd aggregatie, enzovoort.
+Er zijn twee stappen voor het instellen van een waarschuwingspijplijn: 
+1. Stel een actiegroep in met de acties die moeten worden uitgevoerd wanneer een waarschuwing wordt geactiveerd, zoals een e-mail, sms, runbook of webhook. Actiegroepen kunnen opnieuw worden gebruikt voor verschillende waarschuwingen.
+2. Stel waarschuwingsregels in. De regels verbinden metrische patronen met de actiegroepen op basis van doelresource, metrische gegevens, voorwaarde, tijdaggregatie, enzovoort.
 
 ## <a name="prerequisites"></a>Vereisten
-Naast de vereisten voor Azure lente, is deze zelf studie afhankelijk van de volgende resources.
 
-* Een geïmplementeerd Azure veer Cloud-instantie.  Volg onze [Snelstartgids](spring-cloud-quickstart-launch-app-cli.md) om aan de slag te gaan.
+De procedures in deze zelfstudie werken met een geïmplementeerd Azure Spring Cloud-exemplaar en moeten voldoen aan de vereisten voor Azure Spring.  Volg een [snelstart](spring-cloud-quickstart-launch-app-cli.md) om aan de slag te gaan.
 
-* Een Azure-resource die moet worden bewaakt. In dit voor beeld wordt een lente-Cloud instantie bewaakt.
- 
-De volgende procedures worden beide **actie groepen** en **waarschuwingen** geïnitialiseerd, te beginnen met de optie **waarschuwingen** in het navigatie deel venster links van een lente-Cloud exemplaar. (De procedure kan ook worden gestart op de **overzichts** pagina van de monitor van de Azure Portal.) 
+Met de volgende procedures worden**Actiegroep** en **Waarschuwing** gestart vanaf de optie **Waarschuwingen** in het linkernavigatievenster van een Spring Cloud-exemplaar. (De procedure kan ook worden gestart op de pagina **Monitor - Overzicht** in de Azure-portal.) 
 
-Navigeren van een resource groep naar het lente-Cloud exemplaar. Selecteer **waarschuwingen** in het linkerdeel venster en selecteer vervolgens **acties beheren**:
+Navigeer van een resourcegroep naar uw Spring Cloud-exemplaar. Selecteer **Waarschuwingen** in het linkerdeelvenster en selecteer vervolgens **Acties beheren**:
 
-![Pagina met de resource groep van de scherm opname Portal](media/alerts-action-groups/action-1-a.png)
+![Schermopname van de pagina met de resourcegroep in de portal](media/alerts-action-groups/action-1-a.png)
 
-## <a name="set-up-action-group"></a>Actie groep instellen
+## <a name="set-up-action-group"></a>Actiegroep instellen
 
-Selecteer **+ actie groep toevoegen**om te beginnen met de procedure voor het initialiseren van een nieuwe **actie groep**.
+Als u de procedure wilt starten voor het initialiseren van een nieuwe **Actiegroep**, selecteert u **+ Actiegroep toevoegen**.
 
-![Scherm opname Portal actie groep toevoegen](media/alerts-action-groups/action-1.png)
+![Schermopname met Actiegroep toevoegen in de portal](media/alerts-action-groups/action-1.png)
 
-Op de pagina **actie groep toevoegen** :
+Op de pagina **Actiegroep toevoegen** doet u het volgende:
 
- 1. Geef een naam en **korte naam**op voor de **actie groep** .
+ 1. Geef een **naam van de actiegroep** en **korte naam** op.
 
- 1. Geef het **abonnement** en de **resource groep**op.
+ 1. Geef uw **abonnement** en **resourcegroep** op.
 
- 1. **Actie naam**opgeven.
+ 1. Geef de **actienaam** op.
 
- 1. Selecteer een **actie type**.  Hiermee opent u een ander deel venster aan de rechter kant om de actie te definiëren die tijdens de activering wordt uitgevoerd.
+ 1. Selecteer **Actietype**.  Hiermee opent u een ander deelvenster aan de rechterkant om de actie te definiëren die tijdens de activering wordt uitgevoerd.
 
- 1. Definieer de actie met behulp van de opties in het rechterdeel venster.  In dit geval wordt e-mail melding gebruikt.
+ 1. Definieer de actie met behulp van de opties in het rechterdeelvenster.  Hiervoor wordt gebruikgemaakt van een melding per e-mail.
 
- 1. Klik op **OK** in het rechterdeel venster.
+ 1. Klik op **OK** in het rechterdeelvenster.
 
- 1. Klik op **OK** in het dialoog venster **actie groep toevoegen** . 
+ 1. Klik op **OK** in het dialoogvenster **Actiegroep toevoegen**. 
 
-  ![Actie voor het definiëren van de scherm opname Portal](media/alerts-action-groups/action-2.png)
+  ![Schermopname van het definiëren van een actie in de portal](media/alerts-action-groups/action-2.png)
 
 ## <a name="set-up-alert"></a>Waarschuwing instellen 
 
-In de vorige stappen is een **actie groep** gemaakt die gebruikmaakt van e-mail. U kunt ook telefoon meldingen, webhooks, Azure functions, enzovoort gebruiken.  
+In de vorige stappen is een **Actiegroep** gemaakt die gebruikmaakt van e-mail. U kunt ook telefoon meldingen via telefoon, webhooks, Azure-functies, enzovoort gebruiken.  
 
-Als u een **waarschuwing**wilt configureren, gaat u terug naar de pagina **waarschuwingen** en klikt u op **waarschuwings regels beheren**.
+Als u een **waarschuwing** wilt configureren, gaat u terug naar de pagina **Waarschuwingen** en klikt u op **Waarschuwingsregels beheren**.
 
-  ![Scherm opname Portal-waarschuwing definiëren](media/alerts-action-groups/alerts-2.png)
+  ![Schermopname van het definiëren van een waarschuwing in de portal](media/alerts-action-groups/alerts-2.png)
 
 1. Selecteer de **resource** voor de waarschuwing.
 
-1. Klik op **+ nieuwe waarschuwings regel**.
+1. Klik op **+ Nieuwe waarschuwingsregel**.
 
-   ![Nieuwe waarschuwings regel voor de scherm opname Portal](media/alerts-action-groups/alerts-3.png)
+   ![Schermopname van nieuwe waarschuwingsregel in de portal](media/alerts-action-groups/alerts-3.png)
 
-1. Geef op de pagina **regel maken** de **resource**op.
+1. Geef op de pagina **Regel maken** de **RESOURCE** op.
 
-1. De instelling **voor waarde** biedt veel opties voor het bewaken van uw **lente-Cloud** resources.  Klik op **toevoegen** om het deel venster **signalerings logica configureren** te openen.
+1. De instelling **VOORWAARDE** biedt veel opties voor het bewaken van uw **Spring Cloud**-resources.  Klik op **Toevoegen** om het deelvenster **Signaallogica configureren** te openen.
 
-1. Selecteer een voor waarde. In dit voor beeld wordt het **CPU-gebruiks percentage**van het systeem gebruikt.
+1. Selecteer een voorwaarde. In dit voorbeeld wordt gebruikgemaakt van **Systeem-CPU-gebruik in procenten**.
 
-   ![Nieuwe waarschuwings regel voor de scherm opname Portal](media/alerts-action-groups/alerts-3-1.png)
+   ![Schermopname van nieuwe waarschuwingsregel in de portal](media/alerts-action-groups/alerts-3-1.png)
 
-1. Schuif omlaag in het deel venster **signaal logica configureren** om de **drempel waarde** in te stellen die moet worden bewaakt.
+1. Schuif omlaag in het deelvenster **Signaallogica configureren** om de te bewaken **Drempelwaarde** in te stellen.
 
-   ![Nieuwe waarschuwings regel voor de scherm opname Portal](media/alerts-action-groups/alerts-3-2.png)
+   ![Schermopname van nieuwe waarschuwingsregel in de portal](media/alerts-action-groups/alerts-3-2.png)
 
 1. Klik op **Gereed**.
 
-Zie Opties voor metrische gegevens van de [gebruikers Portal](spring-cloud-concept-metrics.md#user-metrics-options)voor meer informatie over de beschik bare voor waarden om te controleren.
+Zie [Opties voor metrische gegevens in gebruikersportal ](spring-cloud-concept-metrics.md#user-metrics-options)voor meer informatie over de beschikbare voorwaarden voor bewaking.
 
- Klik onder **acties**op **actie groep selecteren**. Selecteer in het deel venster **acties** de eerder gedefinieerde **actie groep**.
+ Klik onder **ACTIES** op **Actiegroep selecteren**. Selecteer in het deelvenster **ACTIES** de eerder gedefinieerde **Actiegroep**.
 
-   ![Nieuwe waarschuwings regel voor de scherm opname Portal](media/alerts-action-groups/alerts-3-3.png) 
+   ![Schermopname van nieuwe waarschuwingsregel in de portal](media/alerts-action-groups/alerts-3-3.png) 
 
-1. Schuif omlaag en geef onder **WAARSCHUWINGS Details**de naam van de waarschuwings regel op.
+1. Schuif omlaag en geef onder **WAARSCHUWINGSDETAILS** een naam op voor de waarschuwingsregel.
 
-1. Stel de **Ernst**in.
+1. Stel **Ernst** in.
 
-1. Klik op **waarschuwings regel maken**.
+1. Klik op **Waarschuwingsregel maken**.
 
-   ![Nieuwe waarschuwings regel voor de scherm opname Portal](media/alerts-action-groups/alerts-3-4.png)
+   ![Schermopname van nieuwe waarschuwingsregel in de portal](media/alerts-action-groups/alerts-3-4.png)
 
-Controleer of de nieuwe waarschuwings regel is ingeschakeld.
+Controleer of de nieuwe waarschuwingsregel is ingeschakeld.
 
-   ![Nieuwe waarschuwings regel voor de scherm opname Portal](media/alerts-action-groups/alerts-4.png)
+   ![Schermopname van nieuwe waarschuwingsregel in de portal](media/alerts-action-groups/alerts-4.png)
 
-Een regel kan ook worden gemaakt met behulp van de pagina **metrische gegevens** :
+Een regel kan ook worden gemaakt op de pagina **Metrische gegevens**:
 
-   ![Nieuwe waarschuwings regel voor de scherm opname Portal](media/alerts-action-groups/alerts-5.png)
+   ![Schermopname van nieuwe waarschuwingsregel in de portal](media/alerts-action-groups/alerts-5.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Opties voor metrische gegevens van gebruikers Portal](spring-cloud-concept-metrics.md#user-metrics-options)
-* [Actie groepen maken en beheren in de Azure Portal](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
-* [Gedrag van SMS-waarschuwingen in actie groepen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-sms-behavior)
-* [Zelf studie: gedistribueerde tracering met Azure lente-Cloud gebruiken](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-distributed-tracing)
+
+In deze zelfstudie hebt u geleerd hoe u waarschuwingen en actiegroepen instelt voor een Azure Spring Cloud-toepassing. Voor meer informatie over actiegroepen raadpleegt u:
+
+> [!div class="nextstepaction"]
+> [Actiegroepen maken en beheren in de Azure-portal](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
+
+> [!div class="nextstepaction"]
+> [Gedrag van waarschuwingen via sms in actiegroepen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-sms-behavior)

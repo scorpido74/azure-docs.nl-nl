@@ -1,17 +1,17 @@
 ---
-title: Fouten opsporen in een Azure Service Fabric mesh-web-app die lokaal wordt uitgevoerd
+title: Fouten opsporen in een Azure Service Fabric Mesh-web-app die lokaal wordt uitgevoerd
 description: In deze zelfstudie gaat u fouten opsporen in een Azure Service Fabric Mesh-webtoepassing die op uw lokale cluster wordt uitgevoerd.
 author: dkkapur
 ms.topic: tutorial
 ms.date: 10/31/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: c36d45919ae8a17026fc91f8e9040f3bb11d3eb0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 586641d721d0c29bcd6d7b42fc8ca9141df96c66
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75494956"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261316"
 ---
 # <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>Zelfstudie: Fouten opsporen in een Service Fabric Mesh-toepassing die in uw lokale ontwikkelcluster wordt uitgevoerd
 
@@ -43,7 +43,7 @@ Voor u met deze zelfstudie begint:
 
 ## <a name="download-the-to-do-sample-application"></a>De voorbeeldtoepassing voor taken downloaden
 
-Als u in [deel één van deze zelfstudiereeks](service-fabric-mesh-tutorial-create-dotnetcore.md) niet de voorbeeldtoepassing hebt gemaakt, kunt u deze downloaden. Voer in een opdrachtvenster de volgende opdracht uit om de opslagplaats van de voorbeeld-app te klonen op uw lokale computer.
+Als u in [deel één van deze zelfstudiereeks](service-fabric-mesh-tutorial-create-dotnetcore.md) niet de voorbeeldtoepassing hebt gemaakt, kunt u deze downloaden. Voer in een opdrachtvenster de volgende opdracht uit om de voorbeeld-app-opslagplaats te klonen op de lokale computer.
 
 ```
 git clone https://github.com/azure-samples/service-fabric-mesh
@@ -71,13 +71,13 @@ Maak de uitvoering van uw foutopsporing (F5) veel sneller door de instructies in
 
 Er is momenteel een probleem waardoor `using (HttpResponseMessage response = client.GetAsync("").GetAwaiter().GetResult())` niet kan worden aangeroepen omdat er geen verbinding met de service kan worden gemaakt. Dit kan zich voordoen wanneer het IP-adres van de host verandert. De oplossing:
 
-1. Verwijder de app uit het lokale cluster (in Visual **Studio** > maakt u een**schone oplossing**).
+1. Verwijder de app uit het lokale cluster (in Visual Studio, **Build** > **Oplossing opschonen**).
 2. Selecteer uit de Local Cluster Manager van Service Fabric, **Lokaal cluster stoppen** en vervolgens **Lokaal cluster starten**.
 3. Implementeer de app opnieuw (in Visual Studio **F5**).
 
 Als u de fout **No Service Fabric local cluster is running** ziet, controleert u of de LCM (Service Fabric Local Custer Manager) wordt uitgevoerd en klikt u met de rechtermuisknop op het LCM-pictogram op de taakbalk. Klik vervolgens op **Lokaal cluster starten**. Als het cluster gestart, gaat u terug naar Visual Studio en drukt u op **F5**.
 
-Als u een **404**-fout krijgt als de app wordt gestart, betekent dit waarschijnlijk dat de omgevingsvariabelen in **service.yaml** onjuist zijn. Controleer of `ApiHostPort` en `ToDoServiceName` volgens de instructies in [Omgevingsvariabelen maken](https://docs.microsoft.com/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore#create-environment-variables) zijn ingesteld.
+Als u een **404**-fout krijgt als de app wordt gestart, betekent dit waarschijnlijk dat de omgevingsvariabelen in **service.yaml** onjuist zijn. Controleer of `ApiHostPort` en `ToDoServiceName` volgens de instructies in [Omgevingsvariabelen maken](./service-fabric-mesh-tutorial-create-dotnetcore.md#create-environment-variables) zijn ingesteld.
 
 Als u opbouwfouten krijgt in **service.yaml**, controleert u of er spaties in plaats van tabs zijn gebruikt om de regels in te laten springen. Ook moet u de app op dit moment met Engelse landinstellingen maken.
 

@@ -1,7 +1,7 @@
 ---
-title: 'Zelf studie: een kolf-app bouwen om tekst-Translator te vertalen, te synthesizeren en te analyseren'
+title: 'Zelfstudie: Een Flask-app bouwen om tekst te vertalen, synthetiseren en analyseren - Translator'
 titleSuffix: Azure Cognitive Services
-description: In deze zelf studie bouwt u een op een kolf gebaseerde web-app om tekst te vertalen, sentiment te analyseren en vertaalde tekst in spraak te verenigen.
+description: In deze zelfstudie bouwt u een op Flask gebaseerde web-app om tekst te vertalen, sentiment te analyseren en vertaalde tekst in spraak te synthetiseren.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,96 +11,96 @@ ms.topic: tutorial
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.custom: tracking-python
-ms.openlocfilehash: 6621967584ee79dd514b6d9d4a9d0e2d240e7905
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.openlocfilehash: b70ac801765461401a7bfa1d2f251fb41176dccb
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608108"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232760"
 ---
-# <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Zelf studie: een kolf-app bouwen met Azure Cognitive Services
+# <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Zelfstudie: Een Flask-app bouwen met Azure Cognitive Services
 
-In deze zelf studie bouwt u een kolf-web-app die gebruikmaakt van Azure Cognitive Services voor het vertalen van tekst, het analyseren van sentiment en het samen stellen van vertaalde tekst in spraak. Onze nadruk ligt op de python-code en kolven die onze toepassing inschakelen, maar we helpen u echter met de HTML en Java script die de app samen haalt. Als u problemen ondervindt, laat het ons weten met de feedback knop hieronder.
+In deze zelfstudie bouwt u een op Flask-web-app die gebruikmaakt van Azure Cognitive Services om tekst te vertalen, sentiment te analyseren en vertaalde tekst in spraak te synthetiseren. De nadruk ligt op de Python-code en Flask-routes die de toepassing mogelijk maken. U krijgt hulp met de HTML en JavaScript waarmee de app wordt opgebouwd. Als u problemen ondervindt, laat het ons weten met de feedback-knop hieronder.
 
-Deze zelf studie bevat de volgende onderwerpen:
+Deze zelfstudie bevat de volgende onderwerpen:
 
 > [!div class="checklist"]
-> * Sleutels voor Azure-abonnementen ophalen
-> * Uw ontwikkel omgeving instellen en afhankelijkheden installeren
-> * Een kolf-app maken
-> * De vertaler gebruiken om tekst te vertalen
-> * Gebruik Text Analytics om positieve/negatieve sentiment van invoer tekst en vertalingen te analyseren
-> * Spraak Services gebruiken om vertaalde tekst te converteren naar gesynthesizerde spraak
-> * Uw erlenmeyer-app lokaal uitvoeren
+> * Azure-abonnementssleutels ophalen
+> * Ontwikkelomgeving instellen en afhankelijkheden installeren
+> * Flask-app maken
+> * Translator gebruiken om tekst te vertalen
+> * Text Analytics gebruiken om positief/negatief sentiment van invoertekst en vertalingen te analyseren
+> * Speech Services gebruiken om vertaalde tekst te converteren naar gesynthetiseerde spraak
+> * Uw Flask-app lokaal uitvoeren
 
 > [!TIP]
-> Als u wilt overs Laan en alle code in één keer wilt zien, kunt u het volledige voor beeld samen met de instructies voor builds beschikbaar op [github](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Flask-App-Tutorial).
+> Als u meteen met de code wilt beginnen, kunt u het volledige voorbeeld, inclusief de instructies voor het bouwen, vinden op [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Flask-App-Tutorial).
 
-## <a name="what-is-flask"></a>Wat is fles?
+## <a name="what-is-flask"></a>Wat is Flask?
 
-De kolf is een microframework voor het maken van webtoepassingen. Dit houdt in dat de kolf voorziet in hulpprogram ma's, Bibliotheken en technologieën waarmee u een webtoepassing kunt bouwen. Deze webtoepassing kan sommige webpagina's, een blog, een wiki of als een webgebaseerde agenda toepassing of een commerciële website zijn.
+Flask is een microframework voor het maken van webtoepassingen. Dit houdt in dat Flask hulpprogramma's, bibliotheken en technologieën bevat waarmee u een webtoepassing kunt bouwen. Deze webtoepassing kan bestaan uit enkele webpagina's, een blog of een wiki, of dienstdoen als een onafhankelijke, webgebaseerde agendatoepassing of een commerciële website.
 
-Voor degenen die zich willen uitbrengen na deze zelf studie, zijn er een paar handige koppelingen:
+Voor degenen die zich na deze zelfstudie in de stof willen verdiepen, volgen hier een paar nuttige koppelingen:
 
-* [Documentatie over de kolf](http://flask.pocoo.org/)
-* [Kolf voor Dummies: de hand leiding van een beginner](https://codeburst.io/flask-for-dummies-a-beginners-guide-to-flask-part-uno-53aec6afc5b1)
+* [Flask documentation](http://flask.pocoo.org/) (Documentatie over Flask)
+* [Flask for Dummies - A Beginner's Guide to Flask](https://codeburst.io/flask-for-dummies-a-beginners-guide-to-flask-part-uno-53aec6afc5b1) (Flask voor Dummies: een beginnershandleiding)
 
 ## <a name="prerequisites"></a>Vereisten
 
-Laten we de software en abonnements sleutels bekijken die u nodig hebt voor deze zelf studie.
+Laten we de software en abonnementssleutels bekijken die u voor deze zelfstudie nodig hebt.
 
 * [Python 3.5.2 of hoger](https://www.python.org/downloads/)
-* [Git-hulpprogram ma's](https://git-scm.com/downloads)
-* Een IDE-of tekst editor, zoals [Visual Studio code](https://code.visualstudio.com/) of [Atom](https://atom.io/)  
+* [Git-hulpprogramma's](https://git-scm.com/downloads)
+* Een IDE of teksteditor, zoals [Visual Studio Code](https://code.visualstudio.com/) of [Atom](https://atom.io/)  
 * [Chrome](https://www.google.com/chrome/browser/) of [Firefox](https://www.mozilla.org/firefox)
-* Een **Translator** -abonnements sleutel (u hoeft niet een regio te selecteren.)
-* Een **Text Analytics** -abonnements sleutel in de regio **VS-West** .
-* Een abonnements sleutel voor **spraak Services** in de regio **VS-West** .
+* Een **Translator**-abonnementssleutel (u hoeft geen regio te selecteren.)
+* Een **Text Analytics**-abonnementssleutel in de regio **US - west**.
+* Een **Speech Services**-abonnementssleutel in de regio **US - west**.
 
-## <a name="create-an-account-and-subscribe-to-resources"></a>Een account maken en een abonnement nemen op resources
+## <a name="create-an-account-and-subscribe-to-resources"></a>Een account maken en op resources abonneren
 
-Zoals eerder vermeld, hebt u drie abonnements sleutels nodig voor deze zelf studie. Dit betekent dat u in uw Azure-account een resource moet maken voor:
+Zoals eerder vermeld, hebt u voor deze zelfstudie drie abonnementssleutels nodig. Dit betekent dat u binnen uw Azure-account een resource moet maken voor:
 * Translator
 * Text Analytics
-* Spraakservices
+* Speech Services
 
-Gebruik [in de Azure Portal een Cognitive Services account maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) voor stapsgewijze instructies voor het maken van resources.
+Gebruik [Een Cognitive Services-account maken in de Azure-portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) voor stapsgewijze instructies om resources te maken.
 
 > [!IMPORTANT]
-> Voor deze zelf studie maakt u uw resources in de regio vs-West. Als u een andere regio gebruikt, moet u de basis-URL in elk van uw python-bestanden aanpassen.
+> Voor deze zelfstudie maakt u uw resources in de regio US - west. Als u een andere regio gebruikt, moet u de basis-URL in elk van uw Python-bestanden aanpassen.
 
 ## <a name="set-up-your-dev-environment"></a>Uw ontwikkelaarsomgeving instellen
 
-Voordat u uw erlenmeyer-web-app bouwt, moet u een werkmap voor het project maken en enkele Python-pakketten installeren.
+Voordat u uw Flask-web-app bouwt, moet u een werkmap voor het project maken en enkele Python-pakketten installeren.
 
-### <a name="create-a-working-directory"></a>Een werkmap maken
+### <a name="create-a-working-directory"></a>Werkmap maken
 
-1. Open de opdracht regel (Windows) of de Terminal (macOS/Linux). Maak vervolgens een werkmap en onderliggende mappen voor uw project:  
+1. Open de opdrachtregel (Windows) of Terminal (macOS/Linux). Maak vervolgens een werkmap en submappen voor uw project:  
 
    ```
    mkdir -p flask-cog-services/static/scripts && mkdir flask-cog-services/templates
    ```
-2. Ga naar de werkmap van uw project:  
+2. Ga naar de werkmap van het project:  
 
    ```
    cd flask-cog-services
    ```
 
-### <a name="create-and-activate-your-virtual-environment-with-virtualenv"></a>Uw virtuele omgeving maken en activeren met`virtualenv`
+### <a name="create-and-activate-your-virtual-environment-with-virtualenv"></a>Een virtuele omgeving maken en activeren met `virtualenv`
 
-Laten we een virtuele omgeving maken voor onze fles-app met behulp van `virtualenv` . Als u een virtuele omgeving gebruikt, zorgt u ervoor dat u beschikt over een schone omgeving waarmee u kunt werken.
+We gaan met behulp van `virtualenv` een virtuele omgeving maken voor de Flask-app. Als u een virtuele omgeving gebruikt, beschikt u over een schone omgeving waarin u kunt werken.
 
 1. Voer in uw werkmap de volgende opdracht uit om een virtuele omgeving te maken: **macOS/Linux:**
    ```
    virtualenv venv --python=python3
    ```
-   We hebben expliciet aangegeven dat de virtuele omgeving python 3 moet gebruiken. Dit zorgt ervoor dat gebruikers met meerdere python-installaties de juiste versie gebruiken.
+   Er is expliciet aangegeven dat in de virtuele omgeving Python 3 moet worden gebruikt. Dit zorgt ervoor dat gebruikers met meerdere Python-installaties de juiste versie gebruiken.
 
-   **Windows CMD/Windows bash:**
+   **Windows CMD/Windows Bash:**
    ```
    virtualenv venv
    ```
-   We noemen uw virtuele omgeving venv om alles eenvoudig te kunnen blijven gebruiken.
+   De virtuele omgeving krijgt de naam venv.
 
 2. De opdrachten voor het activeren van uw virtuele omgeving variëren, afhankelijk van uw platform/shell:   
 
@@ -111,41 +111,41 @@ Laten we een virtuele omgeving maken voor onze fles-app met behulp van `virtuale
    | | Opdrachtregel | `venv\Scripts\activate.bat` |
    | | PowerShell | `venv\Scripts\Activate.ps1` |
 
-   Nadat u deze opdracht hebt uitgevoerd, moet u de opdracht regel of terminal sessie hebben voor `venv` .
+   Nadat u deze opdracht hebt uitgevoerd, moet de opdrachtregel of de Terminal-sessie het voorvoegsel `venv` krijgen.
 
-3. U kunt de sessie op elk gewenst moment deactiveren door deze te typen op de opdracht regel of terminal: `deactivate` .
+3. U kunt de sessie op elk gewenst moment deactiveren door `deactivate`in de opdrachtregel of Terminal te typen.
 
 > [!NOTE]
-> Python bevat uitgebreide documentatie voor het maken en beheren van virtuele omgevingen, Zie [virtualenv](https://virtualenv.pypa.io/en/latest/).
+> Python bevat uitgebreide documentatie voor het maken en beheren van virtuele omgevingen: zie [virtualenv](https://virtualenv.pypa.io/en/latest/).
 
-### <a name="install-requests"></a>Installatie aanvragen
+### <a name="install-requests"></a>Requests installeren
 
-Aanvragen is een populaire module die wordt gebruikt voor het verzenden van HTTP 1,1-aanvragen. U hoeft geen query teken reeksen hand matig toe te voegen aan uw Url's of u kunt uw POST-gegevens coderen.
+Requests is een populaire module die wordt gebruikt voor het verzenden van HTTP 1.1-aanvragen. U hoeft niet handmatig querytekenreeksen aan uw URL's toe te voegen of uw POST-gegevens formeel te coderen.
 
-1. Als u aanvragen wilt installeren, voert u de volgende handelingen uit:
+1. Voor het installeren van Requests, voert u het volgende uit:
 
    ```
    pip install requests
    ```
 
 > [!NOTE]
-> Als u meer wilt weten over aanvragen, raadpleegt u [aanvragen: http voor mensen](https://2.python-requests.org/en/master/).
+> Als u meer informatie wilt over Requests, raadpleegt u [Requests: HTTP for Humans](https://2.python-requests.org/en/master/) (Requests: HTTP voor de mens).
 
-### <a name="install-and-configure-flask"></a>Fles installeren en configureren
+### <a name="install-and-configure-flask"></a>Flask installeren en configureren
 
-Daarna moet de kolf worden geïnstalleerd. De kolf verwerkt de route ring voor onze web-app en stelt ons in staat om server-naar-server-aanroepen te maken die de abonnements sleutels van de eind gebruiker verbergen.
+Vervolgens moet Flask worden geïnstalleerd. Flask verwerkt de routering voor de web-app en maakt server-naar-server-aanroepen mogelijk die de abonnementssleutels voor de eindgebruiker verbergen.
 
-1. Voer de volgende handelingen uit om de kolf te installeren:
+1. Voor het installeren van Flask, voert u het volgende uit:
    ```
    pip install Flask
    ```
-   Laten we controleren of de kolf is geïnstalleerd. Uitvoeren:
+   We controleren of Flask is geïnstalleerd. Uitvoeren:
    ```
    flask --version
    ```
-   De versie moet worden afgedrukt op Terminal. Niets anders betekent er iets fout gegaan.
+   De versie moet in Terminal worden weergegeven. Iets anders betekent dat er iets fout is gegaan.
 
-2. Als u de kolf-app wilt uitvoeren, kunt u de kolf opdracht of de schakel optie-m van python met fles gebruiken. Voordat u dit kunt doen, moet u de Terminal waarmee u de app wilt laten werken door de `FLASK_APP` omgevings variabele te exporteren:
+2. Als u de Flask-app wilt uitvoeren, kunt u de opdracht flask gebruiken of in Python switch-instructie -m voor Flask gebruiken. Voordat u dit kunt doen, moet u Terminal laten weten welke app moet worden gebruikt door omgevingsvariabele `FLASK_APP` te exporteren:
 
    **macOS/Linux**:
    ```
@@ -157,13 +157,13 @@ Daarna moet de kolf worden geïnstalleerd. De kolf verwerkt de route ring voor o
    set FLASK_APP=app.py
    ```
 
-## <a name="create-your-flask-app"></a>Uw erlenmeyer-app maken
+## <a name="create-your-flask-app"></a>De Flask-app maken
 
-In deze sectie gaat u een Barebones-kolf-app maken die een HTML-bestand retourneert wanneer gebruikers de hoofdmap van uw app aanraken. U hoeft niet te veel tijd te best Eden aan het uit elkaar halen van de code, maar u kunt het later opnieuw proberen.
+In deze sectie gaat u een uitgeklede versie van de Flask-app maken die een HTML-bestand retourneert wanneer een gebruiker de hoofdmap van uw app selecteren. Besteed niet te veel tijd aan het ontrafelen van de code. Later wordt dit bestand bijgewerkt.
 
-### <a name="what-is-a-flask-route"></a>Wat is een kolf route?
+### <a name="what-is-a-flask-route"></a>Wat is een Flask-route?
 
-We nemen even de tijd om te praten over '[routes](http://flask.pocoo.org/docs/1.0/api/#flask.Flask.route)'. Route ring wordt gebruikt om een URL aan een specifieke functie te koppelen. Fles maakt gebruik van Routeer voor het registreren van functies voor specifieke url's. Wanneer een gebruiker bijvoorbeeld naar de hoofdmap ( `/` ) van de web-app navigeert, `index.html` wordt deze weer gegeven.  
+We nemen even de tijd om het over [routes](http://flask.pocoo.org/docs/1.0/api/#flask.Flask.route) te hebben. Routering wordt gebruikt om een URL aan een specifieke functie te koppelen. Flask maakt gebruik van route-decorators voor het registreren van functies voor specifieke URL's. Wanneer een gebruiker bijvoorbeeld naar de hoofdmap (`/`) van de web-app navigeert, wordt `index.html` weergegeven.  
 
 ```python
 @app.route('/')
@@ -171,7 +171,7 @@ def index():
     return render_template('index.html')
 ```
 
-Laten we een voor beeld bekijken om deze start te hameren.
+Laten we naar een ander voorbeeld kijken om dit duidelijk te maken.
 
 ```python
 @app.route('/about')
@@ -179,13 +179,13 @@ def about():
     return render_template('about.html')
 ```
 
-Deze code zorgt ervoor dat wanneer een gebruiker navigeert naar `http://your-web-app.com/about` het `about.html` bestand wordt gerenderd.
+Deze code zorgt ervoor dat wanneer een gebruiker naar `http://your-web-app.com/about` navigeert, het bestand `about.html` wordt weergegeven.
 
-Hoewel deze voor beelden laten zien hoe HTML-pagina's voor een gebruiker worden weer gegeven, kunnen routes ook worden gebruikt voor het aanroepen van Api's wanneer een knop wordt ingedrukt of een wille keurig aantal acties uitvoeren zonder dat u van de start pagina hoeft te navigeren. U ziet dit in actie wanneer u routes maakt voor vertaal-, sentiment-en spraak-synthese.
+Terwijl deze voorbeelden laten zien hoe HTML-pagina's voor een gebruiker moeten worden weergegeven, kunnen routes ook worden gebruikt voor het aanroepen van API's wanneer een knop wordt ingedrukt, of om een willekeurig aantal acties uit te voeren zonder dat u de startpagina hoeft te verlaten. U ziet de werking hiervan wanneer u routes voor vertaling, sentiment en spraaksynthese maakt.
 
 ### <a name="get-started"></a>Aan de slag
 
-1. Open het project in uw IDE en maak een bestand `app.py` met de naam in de hoofdmap van uw werkmap. Kopieer vervolgens deze code naar `app.py` en sla deze op:
+1. Open het project in de IDE en maak een bestand met de naam `app.py` in de hoofdmap van uw werkmap. Vervolgens kopieert u deze code in `app.py` en slaat u deze op:
 
    ```python
    from flask import Flask, render_template, url_for, jsonify, request
@@ -198,9 +198,9 @@ Hoewel deze voor beelden laten zien hoe HTML-pagina's voor een gebruiker worden 
        return render_template('index.html')
    ```
 
-   Met dit code blok wordt aangegeven dat de app wordt weer gegeven `index.html` Wanneer een gebruiker naar de hoofdmap van uw web-app () navigeert `/` .
+   Met dit codeblok wordt aangegeven dat `index.html` moet worden weergegeven wanneer een gebruiker naar de hoofdmap van de web-app (`/`) navigeert.
 
-2. Vervolgens gaan we de front-end maken voor onze web-app. Maak een bestand `index.html` met de naam in de `templates` map. Kopieer deze code vervolgens in `templates/index.html` .
+2. Vervolgens maken we de front-end voor de web-app. Maak een bestand met de naam `index.html` in de map `templates`. Kopieer deze code vervolgens in `templates/index.html`.
 
    ```html
    <!doctype html>
@@ -234,29 +234,29 @@ Hoewel deze voor beelden laten zien hoe HTML-pagina's voor een gebruiker worden 
    </html>
    ```
 
-3. We gaan de kolf-app testen. Voer de volgende handelingen uit vanaf de terminal:
+3. We gaan de Flask-app testen. Voer de volgende code uit in Terminal:
 
    ```
    flask run
    ```
 
-4. Open een browser en navigeer naar de beschik bare URL. U ziet nu de app met één pagina. Druk op **CTRL + C** om de app af te breken.
+4. Open een browser en navigeer naar de opgegeven URL. U moet nu de app met één pagina zien. Druk op **Ctrl+C** om de app af te sluiten.
 
 ## <a name="translate-text"></a>Tekst vertalen
 
-Nu u een idee hebt van de werking van een eenvoudige fles-app, kunt u het volgende doen:
+Nu u een idee hebt van de werking van een eenvoudige Flask-app, gaan we het volgende doen:
 
-* Een aantal python schrijven om het conversie programma aan te roepen en een antwoord te retour neren
-* Een kolf route maken om uw Python-code aan te roepen
-* De HTML bijwerken met een gebied voor tekst invoer en-omzetting, een taal kiezer en de knop vertalen
-* Schrijf java script waarmee gebruikers vanuit de HTML kunnen communiceren met uw erlenmeyer-app
+* Enkele Python-instructies schrijven om Translator aan te roepen en een respons te retourneren
+* Een Flask-route maken om de Python-code aan te roepen
+* De HTML bijwerken met een gebied voor tekstinvoer en -vertaling, een taalselector en een vertaalknop
+* JavaScript-code schrijven waarmee gebruikers met behulp van HTML met de Flask-app kunnen communiceren
 
-### <a name="call-the-translator"></a>De vertaler aanroepen
+### <a name="call-the-translator"></a>Translator aanroepen
 
-Het eerste wat u moet doen, is een functie schrijven om de vertaler aan te roepen. Deze functie heeft twee argumenten: `text_input` en `language_output` . Deze functie wordt aangeroepen wanneer een gebruiker op de knop vertalen in uw app drukt. Het tekst gebied in de HTML wordt verzonden als de en `text_input` de taal selectie waarde in de HTML-code wordt verzonden als `language_output` .
+Het eerste wat u moet doen, is een functie schrijven om Translator aan te roepen. De functie gebruikt twee argumenten: `text_input` en `language_output`. De functie wordt aangeroepen wanneer een gebruiker op de vertaalknop in de app drukt. Het tekstgebied in de HTML wordt als `text_input` verzonden en de waarde voor taalselectie in de HTML wordt als `language_output` verzonden.
 
-1. Laten we beginnen met het maken van een bestand met `translate.py` de naam in de hoofdmap van uw werkmap.
-2. Voeg vervolgens deze code toe aan `translate.py` . Deze functie heeft twee argumenten: `text_input` en `language_output` .
+1. We beginnen door een bestand met de naam `translate.py` te maken in de hoofdmap van de werkmap.
+2. Voeg vervolgens deze code toe aan `translate.py`. Deze functie gebruikt twee argumenten: `text_input` en `language_output`.
    ```python
    import os, requests, uuid, json
 
@@ -289,26 +289,26 @@ Het eerste wat u moet doen, is een functie schrijven om de vertaler aan te roepe
        response = requests.post(constructed_url, headers=headers, json=body)
        return response.json()
    ```
-3. Voeg de sleutel van uw Translator-abonnement toe en sla deze op.
+3. Voeg de abonnementssleutel van Translator toe en sla deze op.
 
-### <a name="add-a-route-to-apppy"></a>Een route toevoegen aan`app.py`
+### <a name="add-a-route-to-apppy"></a>Een route aan `app.py` toevoegen
 
-Vervolgens moet u een route maken in uw erlenmeyer-app die aanroept `translate.py` . Deze route wordt aangeroepen telkens wanneer een gebruiker op de knop vertalen in uw app drukt.
+Vervolgens moet u een route maken in de Flask-app maken waarmee `translate.py` wordt aangeroepen. Telkens wanneer een gebruiker op de vertaalknop in de app drukt, wordt deze route aangeroepen.
 
-Voor deze app gaat uw route `POST` aanvragen accepteren. Dit komt doordat de functie verwacht dat de tekst wordt vertaald en een uitvoer taal voor de vertaling.
+Voor deze app gaat uw route `POST`-aanvragen accepteren. Dat komt omdat de functie de te vertalen tekst en een uitvoertaal voor de vertaling verwacht.
 
-Kolven bieden hulp functies waarmee u elke aanvraag kunt parseren en beheren. In de door gegeven code worden `get_json()` de gegevens van de `POST` aanvraag als JSON geretourneerd. Vervolgens gebruikt `data['text']` en `data['to']` worden de waarden voor de tekst-en uitvoer taal door gegeven aan de `get_translation()` functie die beschikbaar is vanuit `translate.py` . De laatste stap is het retour neren van het antwoord als JSON, omdat u deze gegevens moet weer geven in uw web-app.
+Flask bevat helperfuncties waarmee elke aanvraag kan worden geparseerd en beheerd. In de opgegeven code retourneert `get_json()` de gegevens van de `POST`-aanvraag als JSON. Met `data['text']` en `data['to']` worden vervolgens de waarden voor tekst en uitvoertaal doorgegeven aan de functie `get_translation()`, die beschikbaar is via `translate.py`. De laatste stap bestaat uit het retourneren van de response als JSON, omdat u deze gegevens in de web-app moet weergeven.
 
-In de volgende secties herhaalt u dit proces tijdens het maken van routes voor sentiment analyse en spraak synthese.
+In de volgende secties herhaalt u dit proces tijdens het maken van routes voor sentimentanalyse en spraaksynthese.
 
-1. Open `app.py` en zoek de instructie import boven aan `app.py` en voeg de volgende regel toe:
+1. Open `app.py`, zoek de import-instructie boven aan `app.py` en voeg de volgende regel toe:
 
    ```python
    import translate
    ```
-   Onze kolf-app kan nu gebruikmaken van de methode die beschikbaar is via `translate.py` .
+   De Flask-app kan nu gebruikmaken van de methode die beschikbaar is via `translate.py`.
 
-2. Kopieer deze code naar het einde van `app.py` en sla het op:
+2. Kopieer deze code aan het einde van `app.py` en sla op:
 
    ```python
    @app.route('/translate-text', methods=['POST'])
@@ -322,24 +322,24 @@ In de volgende secties herhaalt u dit proces tijdens het maken van routes voor s
 
 ### <a name="update-indexhtml"></a>`index.html` bijwerken
 
-Nu u een functie hebt om tekst te vertalen en een route in uw erlenmeyer-app om deze aan te roepen, is de volgende stap het maken van de HTML-code voor uw app. De onderstaande HTML bevat enkele dingen:
+Nu u een functie hebt om tekst te vertalen en een route in uw Flask-app om deze aan te roepen, gaat u in de volgende stap de HTML-code voor de app schrijven. De onderstaande HTML biedt het volgende:
 
-* Voorziet in een tekst gebied waar gebruikers tekst kunnen invoeren die moet worden vertaald.
-* Bevat een taal kiezer.
-* Bevat HTML-elementen om de gedetecteerde taal en betrouwbaarheids scores weer te geven die tijdens de vertaling worden geretourneerd.
-* Biedt een alleen-lezen tekst gebied waarin de Vertaal uitvoer wordt weer gegeven.
-* Bevat tijdelijke aanduidingen voor sentiment analyse en spraak synthese code die u later in de zelf studie gaat toevoegen aan dit bestand.
+* Een tekstgebied waar gebruikers tekst kunnen invoeren die moet worden vertaald.
+* Een taalselector.
+* HTML-elementen om de gedetecteerde taal en betrouwbaarheidsscores weer te geven die tijdens de vertaling worden geretourneerd.
+* Een alleen-lezentekstgebied waarin de uitvoer van de vertaling wordt weergegeven.
+* Tijdelijke aanduidingen voor code voor sentimentanalyse en spraaksynthese die u later in de zelfstudie aan dit bestand gaat toevoegen.
 
-Laten we het bijwerken `index.html` .
+We gaan `index.html` bijwerken.
 
-1. Open `index.html` en zoek deze code opmerkingen:
+1. Open `index.html` en zoek de volgende opmerkingen bij de code:
    ```html
    <!-- HTML provided in the following sections goes here. -->
 
    <!-- End -->
    ```
 
-2. De code opmerkingen vervangen door dit HTML-blok:
+2. Vervang de opmerkingen door dit HTML-blok:
    ```html
    <div class="row">
      <div class="col">
@@ -409,18 +409,18 @@ Laten we het bijwerken `index.html` .
    </div>
    ```
 
-De volgende stap is het schrijven van een Java script. Dit is de brug tussen uw HTML-en fles route.
+De volgende stap bestaat uit het schrijven van wat code in JavaScript. Dit is de brug tussen de HTML en de Flask-route.
 
-### <a name="create-mainjs"></a>Creëren`main.js`  
+### <a name="create-mainjs"></a>`main.js` maken  
 
-Het `main.js` bestand is de brug tussen uw HTML-en fles route. In uw app wordt een combi natie van jQuery, Ajax en XMLHttpRequest gebruikt voor het weer geven van inhoud en het indienen van `POST` aanvragen voor uw erlenmeyer routes.
+Het `main.js`-bestand is de brug tussen de HTML en de Flask-route. De app gebruikt een combinatie van jQuery, Ajax en XMLHttpRequest voor het weergeven van inhoud en het maken van `POST`-aanvragen bij de Flask-routes.
 
-In de onderstaande code wordt inhoud van de HTML gebruikt om een aanvraag voor uw maat kolf te maken. Met name de inhoud van het tekst gebied en de taal kiezer worden toegewezen aan variabelen en vervolgens door gegeven aan de aanvraag aan `translate-text` .
+In de onderstaande code wordt inhoud van de HTML gebruikt om een aanvraag voor de Flask-route te maken. In het bijzonder worden de inhoud van het tekstgebied en de taalselector aan variabelen toegewezen en vervolgens doorgegeven aan de aanvraag voor `translate-text`.
 
-De code herhaalt vervolgens de reactie en werkt de HTML bij met de vertaling, de gedetecteerde taal en de betrouwbaarheids Score.
+De code doorloopt vervolgens de respons en werkt de HTML bij met de vertaling, de gedetecteerde taal en de betrouwbaarheidsscore.
 
-1. Maak vanuit uw IDE een bestand `main.js` met de naam in de `static/scripts` map.
-2. Kopieer deze code naar `static/scripts/main.js` :
+1. Maak vanuit de IDE een bestand met de naam `main.js` in de map `static/scripts`.
+2. Kopieer deze code in `static/scripts/main.js`:
    ```javascript
    //Initiate jQuery on load.
    $(function() {
@@ -460,36 +460,36 @@ De code herhaalt vervolgens de reactie en werkt de HTML bij met de vertaling, de
 
 ### <a name="test-translation"></a>Vertaling testen
 
-Laten we de vertaling testen in de app.
+We gaan de vertaling in de app testen.
 
 ```
 flask run
 ```
 
-Navigeer naar het gegeven server adres. Typ tekst in het invoer gebied, selecteer een taal en klik op vertalen. U moet een vertaling ontvangen. Als het niet werkt, controleert u of u uw abonnements sleutel hebt toegevoegd.
+Ga naar het opgegeven serveradres. Typ tekst in het invoergebied, selecteer een taal en druk op 'vertalen'. U moet nu een vertaling te zien krijgen. Als het niet werkt, controleert u of u de abonnementssleutel hebt toegevoegd.
 
 > [!TIP]
-> Als de wijzigingen die u hebt aangebracht, niet worden weer gegeven of als de app niet op de verwachte manier werkt, probeert u de cache te wissen of een persoonlijk/incognito-venster te openen.
+> Als de wijzigingen die u hebt aangebracht, niet worden weergegeven, of als de app niet werkt zoals verwacht, wist u de cache of opent u een privé-/incognitovenster.
 
-Druk op **CTRL + c** om de app te beëindigen en vervolgens de kop naar de volgende sectie.
+Druk op **Ctrl+C** om de app af te sluiten. Ga vervolgens naar de volgende sectie.
 
 ## <a name="analyze-sentiment"></a>Stemming analyseren
 
-De [Text Analytics-API](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) kan worden gebruikt voor het uitvoeren van sentiment-analyse, het uitpakken van sleutel zinnen uit tekst of het detecteren van de bron taal. In deze app gaan we sentiment-analyse gebruiken om te bepalen of de gegeven tekst positief, neutraal of negatief is. De API retourneert een numerieke score tussen 0 en 1. Scores dicht bij 1 geven een positieve sentiment aan en scores dicht bij 0 geven een negatieve sentiment aan.
+De [Text Analytics-API](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) kan worden gebruikt voor het uitvoeren van sentiment-analyse, het uitpakken van sleutelzinnen uit tekst of het detecteren van de brontaal. In deze app gaan we sentimentanalyse gebruiken om te bepalen of de opgegeven tekst positief, neutraal of negatief is. De API retourneert een numerieke score tussen 0 en 1. Scores in de buurt van 1 wijzen op een positief gevoel, terwijl scores in de buurt van 0 op een negatief gevoel wijzen.
 
-In deze sectie gaat u een aantal dingen doen:
+In deze sectie gaat u de volgende dingen doen:
 
-* Een aantal python schrijven om de Text Analytics-API aan te roepen om de sentiment-analyse uit te voeren en een antwoord te retour neren
-* Een kolf route maken om uw Python-code aan te roepen
-* De HTML bijwerken met een gebied voor sentiment-scores en een knop voor het uitvoeren van analyses
-* Schrijf java script waarmee gebruikers vanuit de HTML kunnen communiceren met uw erlenmeyer-app
+* Python-code schrijven om de Text Analytics-API aan te roepen om de sentimentanalyse uit te voeren en een response te retourneren
+* Een Flask-route maken om de Python-code aan te roepen
+* De HTML bijwerken met een gebied voor sentimentscores en een knop voor het uitvoeren van analyses
+* JavaScript-code schrijven waarmee gebruikers met behulp van HTML met de Flask-app kunnen communiceren
 
 ### <a name="call-the-text-analytics-api"></a>De Tekstanalyse-API aanroepen
 
-We gaan een functie schrijven om de Text Analytics-API aan te roepen. Deze functie kan vier argumenten hebben: `input_text` , `input_language` , en `output_text` `output_language` . Deze functie wordt aangeroepen wanneer een gebruiker op de knop sentiment-analyse uitvoeren in uw app drukt. Gegevens die door de gebruiker worden verschaft vanuit het tekst gebied en de taal kiezer, evenals de gedetecteerde taal en de Vertaal uitvoer worden bij elke aanvraag meegeleverd. Het antwoord object bevat sentiment-scores voor de bron en vertaling. In de volgende secties gaat u een Java script schrijven om het antwoord te parseren en te gebruiken in uw app. We richten ons nu op het aanroepen van de Text Analytics-API.
+We gaan een functie schrijven waarmee de Text Analytics-API wordt aangeroepen. De functie gebruikt vier argumenten: `input_text`, `input_language`, `output_text` en `output_language`. De functie wordt aangeroepen wanneer een gebruiker op de knop voor sentimentanalyse in de app drukt. Gegevens die door de gebruiker vanuit het tekstgebied en de taalselector worden verstrekt, evenals de gedetecteerde taal en de vertaaluitvoer, worden bij elke aanvraag meegeleverd. Het responseobject bevat sentimentscores voor de bron en de vertaling. In de volgende secties gaat u code in JavaScript schrijven om de response te parseren en in de app te gebruiken. We richten ons nu voorlopig op het aanroepen van de Text Analytics-API.
 
-1. We gaan een bestand maken dat wordt genoemd `sentiment.py` in de hoofdmap van uw werkmap.
-2. Voeg vervolgens deze code toe aan `sentiment.py` .
+1. We maken een bestand met de naam `sentiment.py` in de hoofdmap van de werkmap.
+2. Voeg vervolgens deze code toe aan `sentiment.py`.
    ```python
    import os, requests, uuid, json
 
@@ -531,20 +531,20 @@ We gaan een functie schrijven om de Text Analytics-API aan te roepen. Deze funct
        response = requests.post(constructed_url, headers=headers, json=body)
        return response.json()
    ```
-3. Voeg uw Text Analytics-abonnements sleutel toe en sla deze op.
+3. Voeg de abonnementssleutel voor Text Analytics toe en sla deze op.
 
-### <a name="add-a-route-to-apppy"></a>Een route toevoegen aan`app.py`
+### <a name="add-a-route-to-apppy"></a>Een route aan `app.py` toevoegen
 
-Laten we een route maken in uw erlenmeyer-app die aanroept `sentiment.py` . Deze route wordt aangeroepen telkens wanneer een gebruiker op de knop voor het uitvoeren van sentiment-analyse in uw app drukt. Net als de route voor vertaling accepteert deze route `POST` aanvragen omdat de functie argumenten verwacht.
+We gaan een route maken in de Flask-app maken waarmee `sentiment.py` wordt aangeroepen. Telkens wanneer een gebruiker op de knop voor sentimentanalyse in de app drukt, wordt deze route aangeroepen. Net als de route voor de vertaling accepteert deze route `POST`-aanvragen, omdat de functie argumenten verwacht.
 
-1. Open `app.py` en zoek de instructie import boven aan `app.py` en werk deze bij:
+1. Open `app.py` en zoek de import-instructie boven aan `app.py` en werk deze bij:
 
    ```python
    import translate, sentiment
    ```
-   Onze kolf-app kan nu gebruikmaken van de methode die beschikbaar is via `sentiment.py` .
+   De Flask-app kan nu gebruikmaken van de methode die beschikbaar is via `sentiment.py`.
 
-2. Kopieer deze code naar het einde van `app.py` en sla het op:
+2. Kopieer deze code aan het einde van `app.py` en sla op:
    ```python
    @app.route('/sentiment-analysis', methods=['POST'])
    def sentiment_analysis():
@@ -559,20 +559,20 @@ Laten we een route maken in uw erlenmeyer-app die aanroept `sentiment.py` . Deze
 
 ### <a name="update-indexhtml"></a>`index.html` bijwerken
 
-Nu u een functie hebt voor het uitvoeren van sentiment analyse en een route in uw erlenmeyer-app om deze aan te roepen, is de volgende stap het schrijven van de HTML-code voor uw app. De onderstaande HTML bevat enkele dingen:
+Nu u een functie hebt om sentimentanalyse uit te voeren en een route in uw Flask-app om deze aan te roepen, gaat u in de volgende stap de HTML-code voor de app schrijven. De onderstaande HTML biedt het volgende:
 
-* Hiermee wordt een knop aan uw app toegevoegd voor het uitvoeren van sentiment-analyse
-* Voegt een-element toe dat uitleg geeft over de sentiment-Score
-* Hiermee wordt een element toegevoegd om de sentiment-scores weer te geven
+* Toevoegen van een knop aan uw app voor het uitvoeren van sentiment-analyse
+* Toevoegen van een element dat uitleg geeft over de sentimentscores
+* Toevoegen van een element om de sentimentscores weer te geven
 
-1. Open `index.html` en zoek deze code opmerkingen:
+1. Open `index.html` en zoek de volgende opmerkingen bij de code:
    ```html
    <!-- Start sentiment code-->
 
    <!-- End sentiment code -->
    ```
 
-2. De code opmerkingen vervangen door dit HTML-blok:
+2. Vervang de opmerkingen door dit HTML-blok:
    ```html
    <button type="submit" class="btn btn-primary mb-2" id="sentiment-analysis">Run sentiment analysis</button></br>
    <div id="sentiment" style="display: none">
@@ -584,13 +584,13 @@ Nu u een functie hebt voor het uitvoeren van sentiment analyse en een route in u
 
 ### <a name="update-mainjs"></a>`main.js` bijwerken
 
-In de onderstaande code wordt inhoud van de HTML gebruikt om een aanvraag voor uw maat kolf te maken. Met name de inhoud van het tekst gebied en de taal kiezer worden toegewezen aan variabelen en vervolgens door gegeven in de aanvraag aan de `sentiment-analysis` route.
+In de onderstaande code wordt inhoud van de HTML gebruikt om een aanvraag voor de Flask-route te maken. In het bijzonder worden de inhoud van het tekstgebied en de taalselector aan variabelen toegewezen en vervolgens doorgegeven aan de aanvraag voor de `sentiment-analysis`-route.
 
-De code herhaalt vervolgens de reactie en werkt de HTML bij met de sentiment-scores.
+De code doorloopt vervolgens de response en werkt de HTML bij met de sentimentscores.
 
-1. Maak vanuit uw IDE een bestand `main.js` met de naam in de `static` map.
+1. Maak vanuit de IDE een bestand met de naam `main.js` in de map `static`.
 
-2. Kopieer deze code naar `static/scripts/main.js` :
+2. Kopieer deze code in `static/scripts/main.js`:
    ```javascript
    //Run sentinment analysis on input and translation.
    $("#sentiment-analysis").on("click", function(e) {
@@ -642,39 +642,39 @@ De code herhaalt vervolgens de reactie en werkt de HTML bij met de sentiment-sco
    // In the next section, you'll add code for speech synthesis here.
    ```
 
-### <a name="test-sentiment-analysis"></a>Sentiment analyse testen
+### <a name="test-sentiment-analysis"></a>Sentimentanalyse testen
 
-We gaan sentiment analyse testen in de app.
+We gaan sentimentanalyse in de app testen.
 
 ```
 flask run
 ```
 
-Navigeer naar het gegeven server adres. Typ tekst in het invoer gebied, selecteer een taal en klik op vertalen. U moet een vertaling ontvangen. Klik vervolgens op de knop sentiment-analyse uitvoeren. U ziet nu twee scores. Als het niet werkt, controleert u of u uw abonnements sleutel hebt toegevoegd.
+Ga naar het opgegeven serveradres. Typ tekst in het invoergebied, selecteer een taal en druk op 'vertalen'. U moet nu een vertaling te zien krijgen. Klik vervolgens op de knop voor het uitvoeren van sentimentanalyse. U moet twee scores te zien krijgen. Als het niet werkt, controleert u of u de abonnementssleutel hebt toegevoegd.
 
 > [!TIP]
-> Als de wijzigingen die u hebt aangebracht, niet worden weer gegeven of als de app niet op de verwachte manier werkt, probeert u de cache te wissen of een persoonlijk/incognito-venster te openen.
+> Als de wijzigingen die u hebt aangebracht, niet worden weergegeven, of als de app niet werkt zoals verwacht, wist u de cache of opent u een privé-/incognitovenster.
 
-Druk op **CTRL + c** om de app te beëindigen en vervolgens de kop naar de volgende sectie.
+Druk op **Ctrl+C** om de app af te sluiten. Ga vervolgens naar de volgende sectie.
 
 ## <a name="convert-text-to-speech"></a>Tekst naar spraak converteren
 
-Met de [tekst-naar-spraak-API](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech) kan uw app tekst converteren naar natuurlijke menselijke-achtige gesynthesizerde spraak. De service biedt ondersteuning voor standaard-, Neural-en aangepaste stemmen. De voor beeld-app gebruikt een aantal van de beschik bare stemmen voor een volledige lijst. Zie [ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech).
+Met de [Tekst-naar-spraak-API](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech) kan uw app tekst converteren naar natuurlijke, mensachtige, gesynthetiseerde spraak. De service biedt ondersteuning voor standaard-, neurale en aangepaste stemmen. In de voorbeeld-app wordt een aantal beschikbare stemmen gebruikt. Zie [Ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech) voor een volledige lijst.
 
-In deze sectie gaat u een aantal dingen doen:
+In deze sectie gaat u de volgende dingen doen:
 
-* Schrijf enkele python om tekst naar spraak te converteren met de tekst-naar-spraak-API
-* Een kolf route maken om uw Python-code aan te roepen
-* De HTML bijwerken met een knop om tekst naar spraak te converteren en een element voor het afspelen van audio
-* Schrijf java script waarmee gebruikers kunnen communiceren met uw erlenmeyer-app
+* Python-code schrijven om tekst naar spraak te converteren met de Tekst-naar-spraak-API
+* Een Flask-route maken om de Python-code aan te roepen
+* De HTML bijwerken met een knop om tekst naar spraak te converteren, en een element bijwerken voor het afspelen van audio
+* JavaScript-code schrijven waarmee gebruikers met de Flask-app kunnen communiceren
 
-### <a name="call-the-text-to-speech-api"></a>De API voor tekst naar spraak aanroepen
+### <a name="call-the-text-to-speech-api"></a>De Tekst-naar-spraak-API aanroepen
 
-We gaan een functie schrijven om tekst naar spraak te converteren. Deze functie heeft twee argumenten: `input_text` en `voice_font` . Deze functie wordt aangeroepen wanneer een gebruiker op de knop tekst-naar-spraak omzetten in uw app drukt. `input_text`is de Vertaal uitvoer die wordt geretourneerd door de aanroep voor het vertalen van tekst, `voice_font` is de waarde van de letter type-selector voor spraak in de HTML.
+We gaan een functie schrijven om tekst naar spraak te converteren. De functie gebruikt twee argumenten: `input_text` en `voice_font`. De functie wordt aangeroepen wanneer een gebruiker op de knop voor het converteren van tekst naar spraak in de app drukt. `input_text` is de vertaaluitvoer die wordt geretourneerd door de aanroep om tekst te vertalen; `voice_font` is de waarde van de spraakstijlselector in de HTML.
 
-1. We gaan een bestand maken dat wordt genoemd `synthesize.py` in de hoofdmap van uw werkmap.
+1. We maken een bestand met de naam `synthesize.py` in de hoofdmap van de werkmap.
 
-2. Voeg vervolgens deze code toe aan `synthesize.py` .
+2. Voeg vervolgens deze code toe aan `synthesize.py`.
    ```Python
    import os, requests, time
    from xml.etree import ElementTree
@@ -725,20 +725,20 @@ We gaan een functie schrijven om tekst naar spraak te converteren. Deze functie 
            # in the same directory where this sample is run.
            return response.content
    ```
-3. Voeg uw abonnement sleutel voor spraak Services toe en sla het bestand op.
+3. Voeg de abonnementssleutel voor Speech Services toe en sla deze op.
 
-### <a name="add-a-route-to-apppy"></a>Een route toevoegen aan`app.py`
+### <a name="add-a-route-to-apppy"></a>Een route aan `app.py` toevoegen
 
-Laten we een route maken in uw erlenmeyer-app die aanroept `synthesize.py` . Deze route wordt aangeroepen telkens wanneer een gebruiker op de knop tekst-naar-spraak omzetten in uw app drukt. Net als de routes voor de vertaal-en sentiment-analyse gaat deze route `POST` aanvragen accepteren omdat de functie twee argumenten verwacht: de tekst die moet worden gesynthesizerd en het letter type voor afspelen.
+We gaan een route in de Flask-app maken waarmee `synthesize.py` wordt aangeroepen. Telkens wanneer een gebruiker op de knop voor het converteren van tekst naar spraak in de app drukt, wordt deze route aangeroepen. Net als de routes voor de analyse van vertalingen en sentiment accepteert deze route `POST`-aanvragen, aangezien de functie twee argumenten verwacht: de tekst die moet worden gesynthetiseerd en spraakstijl voor het afspelen.
 
-1. Open `app.py` en zoek de instructie import boven aan `app.py` en werk deze bij:
+1. Open `app.py` en zoek de import-instructie boven aan `app.py` en werk deze bij:
 
    ```python
    import translate, sentiment, synthesize
    ```
-   Onze kolf-app kan nu gebruikmaken van de methode die beschikbaar is via `synthesize.py` .
+   De Flask-app kan nu gebruikmaken van de methode die beschikbaar is via `synthesize.py`.
 
-2. Kopieer deze code naar het einde van `app.py` en sla het op:
+2. Kopieer deze code aan het einde van `app.py` en sla op:
 
    ```Python
    @app.route('/text-to-speech', methods=['POST'])
@@ -754,20 +754,20 @@ Laten we een route maken in uw erlenmeyer-app die aanroept `synthesize.py` . Dez
 
 ### <a name="update-indexhtml"></a>`index.html` bijwerken
 
-Nu u een functie hebt om tekst naar spraak te converteren en een route in uw erlenmeyer-app om deze aan te roepen, is de volgende stap het schrijven van de HTML-code voor uw app. De onderstaande HTML bevat enkele dingen:
+Nu u een functie hebt om tekst naar spraak te converteren en een route in uw Flask-app om deze aan te roepen, gaat u in de volgende stap de HTML-code voor de app schrijven. De onderstaande HTML biedt het volgende:
 
-* Biedt een vervolg keuzelijst voor spraak selectie
-* Hiermee wordt een knop toegevoegd voor het converteren van tekst naar spraak
-* Hiermee wordt een audio-element toegevoegd, dat wordt gebruikt voor het afspelen van de gesynthesizerde spraak
+* Een vervolgkeuzelijst voor de selectie van spraak
+* Een knop voor het converteren van tekst naar spraak
+* Een audio-element dat wordt gebruikt voor het afspelen van de gesynthetiseerde spraak
 
-1. Open `index.html` en zoek deze code opmerkingen:
+1. Open `index.html` en zoek de volgende opmerkingen bij de code:
    ```html
    <!-- Start voice font selection code -->
 
    <!-- End voice font selection code -->
    ```
 
-2. De code opmerkingen vervangen door dit HTML-blok:
+2. Vervang de opmerkingen door dit HTML-blok:
    ```html
    <div class="form-group">
      <label for="select-voice"><strong>Select voice font:</strong></label>
@@ -778,7 +778,7 @@ Nu u een functie hebt om tekst naar spraak te converteren en een route in uw erl
        <option value="(zh-CN, Kangkang, Apollo)">Chinese (Mainland) | Male | Kangkang, Apollo</option>
        <option value="(zh-HK, Tracy, Apollo)">Chinese (Hong Kong)| Female | Tracy, Apollo</option>
        <option value="(zh-HK, Danny, Apollo)">Chinese (Hong Kong) | Male | Danny, Apollo</option>
-       <option value="(zh-TW, Yating, Apollo)">Chinese (Taiwan)| Female | Yaiting, Apollo</option>
+       <option value="(zh-TW, Yating, Apollo)">Chinese (Taiwan)| Female | Yating, Apollo</option>
        <option value="(zh-TW, Zhiwei, Apollo)">Chinese (Taiwan) | Male | Zhiwei, Apollo</option>
        <option value="(hr-HR, Matej)">Croatian | Male | Matej</option>
        <option value="(en-US, AriaRUS)">English (US) | Female | AriaRUS</option>
@@ -798,7 +798,7 @@ Nu u een functie hebt om tekst naar spraak te converteren en een route in uw erl
        <option value="(it-IT, Cosimo, Apollo)">Italian | Male | Cosimo, Apollo</option>
        <option value="(ja-JP, Ichiro, Apollo)">Japanese | Male | Ichiro</option>
        <option value="(ja-JP, HarukaRUS)">Japanese | Female | HarukaRUS</option>
-       <option value="(ko-KR, HeamiRUS)">Korean | Female | Haemi</option>
+       <option value="(ko-KR, HeamiRUS)">Korean | Female | Heami</option>
        <option value="(pt-BR, HeloisaRUS)">Portuguese (Brazil) | Female | HeloisaRUS</option>
        <option value="(pt-BR, Daniel, Apollo)">Portuguese (Brazil) | Male | Daniel, Apollo</option>
        <option value="(pt-PT, HeliaRUS)">Portuguese (Portugal) | Female | HeliaRUS</option>
@@ -815,14 +815,14 @@ Nu u een functie hebt om tekst naar spraak te converteren en een route in uw erl
    </div>
    ```
 
-3. Zoek vervolgens naar de volgende code opmerkingen:
+3. Zoek de volgende opmerkingen bij de code:
    ```html
    <!-- Add Speech Synthesis button and audio element -->
 
    <!-- End Speech Synthesis button -->
    ```
 
-4. De code opmerkingen vervangen door dit HTML-blok:
+4. Vervang de opmerkingen door dit HTML-blok:
 
 ```html
 <button type="submit" class="btn btn-primary mb-2" id="text-to-speech">Convert text-to-speech</button>
@@ -833,16 +833,16 @@ Nu u een functie hebt om tekst naar spraak te converteren en een route in uw erl
 </div>
 ```
 
-5. Zorg ervoor dat u uw werk opslaat.
+5. Sla uw werk op.
 
 ### <a name="update-mainjs"></a>`main.js` bijwerken
 
-In de onderstaande code wordt inhoud van de HTML gebruikt om een aanvraag voor uw maat kolf te maken. Met name de vertaling en het spraak lettertype worden toegewezen aan variabelen en vervolgens door gegeven in de aanvraag aan de `text-to-speech` route.
+In de onderstaande code wordt inhoud van de HTML gebruikt om een aanvraag voor de Flask-route te maken. In het bijzonder worden de vertaling en de spraakstijl aan variabelen toegewezen en vervolgens doorgegeven aan de aanvraag voor de `text-to-speech`-route.
 
-De code herhaalt vervolgens de reactie en werkt de HTML bij met de sentiment-scores.
+De code doorloopt vervolgens de response en werkt de HTML bij met de sentimentscores.
 
-1. Maak vanuit uw IDE een bestand `main.js` met de naam in de `static` map.
-2. Kopieer deze code naar `static/scripts/main.js` :
+1. Maak vanuit de IDE een bestand met de naam `main.js` in de map `static`.
+2. Kopieer deze code in `static/scripts/main.js`:
    ```javascript
    // Convert text-to-speech
    $("#text-to-speech").on("click", function(e) {
@@ -874,7 +874,7 @@ De code herhaalt vervolgens de reactie en werkt de HTML bij met de sentiment-sco
    });
    // Code for automatic language selection goes here.
    ```
-3. U bent bijna klaar. Het laatste wat u gaat doen, is een code toevoegen aan `main.js` om automatisch een gesp roken letter type te selecteren op basis van de taal die voor de vertaling is geselecteerd. Voeg dit code blok toe aan `main.js` :
+3. U bent bijna klaar. Ten slotte gaat u code toevoegen aan `main.js` om automatisch een spraakstijl te selecteren op basis van de taal die voor de vertaling is geselecteerd. Voeg dit codeblok toe aan `main.js`:
    ```javascript
    // Automatic voice font selection based on translation output.
    $('select[id="select-language"]').change(function(e) {
@@ -943,25 +943,25 @@ De code herhaalt vervolgens de reactie en werkt de HTML bij met de sentiment-sco
 
 ### <a name="test-your-app"></a>Uw app testen
 
-Laten we de spraak-synthese testen in de app.
+We gaan de spraaksynthese testen in de app.
 
 ```
 flask run
 ```
 
-Navigeer naar het gegeven server adres. Typ tekst in het invoer gebied, selecteer een taal en klik op vertalen. U moet een vertaling ontvangen. Selecteer vervolgens een stem en klik vervolgens op de knop tekst-naar-spraak omzetten. de vertaling moet worden afgespeeld als een gesynthesizerde spraak. Als het niet werkt, controleert u of u uw abonnements sleutel hebt toegevoegd.
+Ga naar het opgegeven serveradres. Typ tekst in het invoergebied, selecteer een taal en druk op 'vertalen'. U moet nu een vertaling te zien krijgen. Selecteer vervolgens een stem en klik op de knop voor het converteren van tekst naar spraak. De vertaling moet worden afgespeeld als een gesynthetiseerde spraak. Als het niet werkt, controleert u of u de abonnementssleutel hebt toegevoegd.
 
 > [!TIP]
-> Als de wijzigingen die u hebt aangebracht, niet worden weer gegeven of als de app niet op de verwachte manier werkt, probeert u de cache te wissen of een persoonlijk/incognito-venster te openen.
+> Als de wijzigingen die u hebt aangebracht, niet worden weergegeven, of als de app niet werkt zoals verwacht, wist u de cache of opent u een privé-/incognitovenster.
 
-Dat is alles. u hebt een werkende app waarmee vertalingen worden uitgevoerd, sentiment en gesynthesizerde spraak worden geanalyseerd. Druk op **CTRL + c** om de app af te breken. Zorg ervoor dat u de andere [Azure-Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/)bekijkt.
+Dat is alles. U hebt een werkende app waarmee vertalingen worden gemaakt, sentiment geanalyseerd en spraak gesynthetiseerd. Druk op **Ctrl+C** om de app af te sluiten. Bekijk ook andere [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/).
 
 ## <a name="get-the-source-code"></a>De broncode ophalen
 
-De bron code voor dit project is beschikbaar op [github](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Flask-App-Tutorial).
+De broncode voor dit project is beschikbaar op [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Flask-App-Tutorial).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Naslag informatie voor Translator](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)
+* [Naslaginformatie over Translator](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)
 * [Naslaginformatie over de Text Analytics-API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)
-* [Naslag informatie over de tekst-naar-spraak-API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech)
+* [Naslaginformatie voor de Text to Speech-API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech)

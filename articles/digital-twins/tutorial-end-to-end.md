@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: faad1f812fc5c2cde6847a5208ee4b385f28ab3e
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 9c07db575827254de833fc0b2390be823ebc4e57
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391924"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206549"
 ---
 # <a name="build-out-an-end-to-end-solution"></a>Een end-to-end-oplossing bouwen
 
@@ -205,8 +205,9 @@ Hiermee wordt de pagina *Gebeurtenisabonnement maken* weergegeven.
 
 :::image type="content" source="media/tutorial-end-to-end/event-subscription-2.png" alt-text="Azure-portal: gebeurtenisabonnement maken":::
 
-Vul de velden als volgt in:
+Vul de velden als volgt in (velden die standaard worden ingevuld, worden niet vermeld):
 * *GEBEURTENISABONNEMENTDETAILS* > **Naam**: Geef een naam op voor uw gebeurtenisabonnement.
+* *DETAILS VAN HET ONDERWERP* > **Naam van systeemonderwerp**: Geef een naam op voor het systeemonderwerp. 
 * *GEBEURTENISTYPEN* > **Filteren op gebeurtenistypen**: Selecteer *Apparaattelemetrie* uit de menuopties.
 * *DETAILS VAN EINDPUNT* > **Type eindpunt**: Selecteer *Azure-functie* in de menuopties.
 * *DETAILS VAN EINDPUNT* > **Eindpunt**: Klik op de koppeling *Selecteer een eindpunt*. Hierdoor wordt het venster *Azure-functie selecteren* geopend: :::image type="content" source="media/tutorial-end-to-end/event-subscription-3.png" alt-text="Azure-portal-gebeurtenisabonnement: Azure-functie selecteren" border="false":::
@@ -361,11 +362,9 @@ Ga in de [Azure-portal](https://portal.azure.com/)naar uw gebeurtenisrasteronder
 
 :::image type="content" source="media/tutorial-end-to-end/event-subscription-1b.png" alt-text="Azure Portal: Event Grid-abonnement":::
 
-De stappen voor het maken van dit gebeurtenisabonnement lijken op degene voor het abonneren van de eerste Azure-functie op IoT Hub eerder in deze zelfstudie. Het verschil is dat u deze keer niet *Apparaattelemetrie* hoeft op te geven als het gebeurtenistype waarnaar moet worden geluisterd, en dat u verbinding maakt met een andere Azure-functie.
+De stappen voor het maken van dit gebeurtenisabonnement lijken op degene voor het abonneren van de eerste Azure-functie op IoT Hub eerder in deze zelfstudie. Deze keer hoeft u niet *Apparaattelemetrie* op te geven als het gebeurtenistype waarnaar moet worden geluisterd, en dat u verbinding maakt met een andere Azure-functie.
 
-Hier volgen de abonnementstappen weer:
-
-Vul de velden op de pagina *Gebeurtenisabonnement maken* als volgt in:
+Vul de velden op de pagina *Gebeurtenisabonnement maken* als volgt in (velden die automatisch worden ingevuld, worden niet vermeld):
 * *GEBEURTENISABONNEMENTDETAILS* > **Naam**: Geef een naam op voor uw gebeurtenisabonnement.
 * *DETAILS VAN EINDPUNT* > **Type eindpunt**: Selecteer *Azure-functie* in de menuopties.
 * *DETAILS VAN EINDPUNT* > **Eindpunt**: Klik op de koppeling *Selecteer een eindpunt*. Hierdoor wordt het venster *Azure-functie selecteren* geopend:

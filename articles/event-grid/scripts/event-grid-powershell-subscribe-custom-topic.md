@@ -1,22 +1,15 @@
 ---
 title: Voorbeeld van Azure PowerShell-script - abonneren op aangepast onderwerp | Microsoft Docs
-description: In dit artikel vindt u een voor beeld van een Azure PowerShell script dat laat zien hoe u zich abonneert op Event Grid gebeurtenissen voor een aangepast onderwerp.
-services: event-grid
-documentationcenter: na
-author: spelluru
-ms.service: event-grid
+description: Dit artikel bevat een voorbeeld van een Azure PowerShell-script dat laat zien hoe u zich kunt abonneren op gebeurtenissen voor Event Grid voor een aangepast ontwerp.
 ms.devlang: powershell
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/23/2020
-ms.author: spelluru
-ms.openlocfilehash: 1c3b158a2608d63fae6eea38c7263d0614519a5e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.date: 07/08/2020
+ms.openlocfilehash: 89917554da3d5b338ae17332ea8847d6313ca534
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76721520"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171173"
 ---
 # <a name="subscribe-to-events-for-a-custom-topic-with-powershell"></a>Abonneren op gebeurtenissen voor een aangepaste onderwerp met PowerShell
 

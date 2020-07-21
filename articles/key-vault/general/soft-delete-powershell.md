@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 452dd99ae58858b661892e3f962fce8086d4503c
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: 022e6eb517987207755d31fdb1820e35197d8dc6
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85444655"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202117"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>De Key Vault-functie voor voorlopig verwijderen gebruiken met PowerShell
 
@@ -267,7 +267,7 @@ Als u verwijderde sleutelkluisobjecten weergeeft, kunt u ook zien wanneer ze zij
 
 Als beveiliging tegen opschonen is ingeschakeld, kan een kluis of een object met de status verwijderd pas worden opgeschoond als de bewaartermijn van 90 dagen is verstreken. Een dergelijke kluis of dergelijk object kan nog steeds worden hersteld. Deze functie biedt een extra zekerheid dat een kluis of een object nooit permanent kan worden verwijderd totdat de bewaartermijn is verstreken. De standaard bewaartermijn is 90 dagen, maar tijdens het maken van de sleutelkluis is het mogelijk om het interval voor het bewaarbeleid in te stellen op een waarde van 7 tot 90 dagen. Het bewaarbeleid voor de beveiliging tegen opschonen gebruikt hetzelfde interval. Zodra het is ingesteld, kan het interval voor het bewaarbeleid niet worden gewijzigd.
 
-U kunt de beveiliging tegen opschonen alleen inschakelen als de functie voor voorlopig verwijderen ook is ingeschakeld. Beveiliging tegen opschonen uitschakelen wordt momenteel niet ondersteund. 
+U kunt de beveiliging tegen opschonen alleen inschakelen als de functie voor voorlopig verwijderen ook is ingeschakeld. Beveiliging tegen opschonen uitschakelen wordt niet ondersteund. 
 
 Gebruik de cmdlet [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault?view=azps-1.5.0) tijdens het maken van een kluis om zowel voorlopig verwijderen als beveiliging tegen opschonen in te schakelen:
 

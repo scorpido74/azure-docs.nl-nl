@@ -1,23 +1,23 @@
 ---
-title: Een app installeren op een zelfstandig cluster
-description: In deze zelf studie leert u hoe u een toepassing installeert in uw zelfstandige Service Fabric cluster.
+title: Een app in een zelfstandig cluster installeren
+description: In deze zelfstudie leert u hoe u een toepassing kunt installeren in uw zelfstandige Service Fabric-cluster.
 author: dkkapur
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 124fc6035c1d0ad504a34b7db227f0f4675f24f7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 8dd47d27f928cb33e5a2bbc3ba9a6ab2bc044852
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75613955"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245378"
 ---
-# <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>Zelfstudie: een toepassing implementeren in een zelfstandig Service Fabric-cluster
+# <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>Zelfstudie: Een toepassing implementeren in een zelfstandig Service Fabric-cluster
 
-Zelfstandige Service Fabric-clusters bieden u de mogelijkheid om uw eigen omgeving te kiezen en een cluster te maken als onderdeel van de benadering "Elk besturingssysteem, elke cloud" die we in Service Fabric hanteren. In deze zelfstudie reeks maakt u een zelfstandig cluster dat wordt gehost op AWS en implementeert u er een toepassing in.
+Zelfstandige Service Fabric-clusters bieden u de mogelijkheid om uw eigen omgeving te kiezen en een cluster te maken als onderdeel van de benadering "Elk besturingssysteem, elke cloud" die we in Service Fabric hanteren. In deze serie zelfstudies maakt u een op AWS gehost zelfstandig cluster en implementeert u er een toepassing in.
 
-Deze zelfstudie is deel drie van een serie.  Service Fabric zelfstandige clusters bieden u de mogelijkheid om uw eigen omgeving te kiezen en een cluster te maken als onderdeel van onze ' elk besturings systeem, elke Cloud benadering ' met Service Fabric. Deze zelfstudie laat zien hoe u de AWS-infrastructuur kunt maken die nodig is om dit zelfstandige cluster te hosten.
+Deze zelfstudie is deel drie van een serie.  Zelfstandige Service Fabric-clusters bieden u de mogelijkheid om uw eigen omgeving te kiezen en een cluster te maken als onderdeel van de benadering "Elk besturingssysteem, elke cloud" die we in Service Fabric hanteren. Deze zelfstudie laat zien hoe u de AWS-infrastructuur kunt maken die nodig is om dit zelfstandige cluster te hosten.
 
 In deel drie van de serie leert u het volgende:
 
@@ -29,12 +29,12 @@ In deel drie van de serie leert u het volgende:
 
 Voor u met deze zelfstudie begint:
 
-* [Installeer Visual Studio 2019](https://www.visualstudio.com/) en installeer de werk belasting van **Azure Development** en **ASP.net en Web Development** .
+* [Installeer Visual Studio 2019](https://www.visualstudio.com/) en installeer de workloads **Azure-ontwikkeling** en **ASP.NET-ontwikkeling en webontwikkeling**.
 * [Installeer de Service Fabric-SDK](service-fabric-get-started.md).
 
 ## <a name="download-the-voting-sample-application"></a>De voorbeeldtoepassing om te stemmen downloaden
 
-Voer in een opdrachtvenster de volgende opdracht uit om de opslagplaats van de voorbeeld-app te klonen op uw lokale computer.
+Voer in een opdrachtvenster de volgende opdracht uit om de voorbeeld-app-opslagplaats te klonen op de lokale computer.
 
 ```
 git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
@@ -46,13 +46,13 @@ Wanneer de toepassing is gedownload, kunt u deze rechtstreeks vanuit Visual Stud
 
 1. Open Visual Studio
 
-2. **Bestand** > **openen** selecteren
+2. Selecteer **Bestand** > **Openen**
 
 3. Navigeer naar de map waarin u de git-opslagplaats hebt gekloond en selecteer Voting.sln
 
-4. Klik met de rechter muisknop `Voting` op het toepassings project in de Solution Explorer en kies **publiceren**
+4. Klik met de rechtermuisknop op het toepassingsproject `Voting` in Solution Explorer en kies **Publiceren**
 
-5. Selecteer de vervolgkeuzelijst voor het **verbindingseindpunt** en voer de openbare DNS-naam van een van de knooppunten in uw cluster in.  Bijvoorbeeld `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000`. Houd er rekening mee dat een Fully Qualified Domain Name (FQDN) in azure niet automatisch wordt gegeven, maar gemakkelijk kan [worden ingesteld in de VM-overzichts pagina.](https://docs.microsoft.com/azure/virtual-machines/linux/portal-create-fqdn)
+5. Selecteer de vervolgkeuzelijst voor het **verbindingseindpunt** en voer de openbare DNS-naam van een van de knooppunten in uw cluster in.  Bijvoorbeeld `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000`. Houd er rekening mee dat een FQDN (Fully Qualified Domain Name) niet automatisch wordt toegewezen in Azure. U kunt deze echter eenvoudig [instellen op de overzichtspagina van de virtuele machine.](../virtual-machines/linux/portal-create-fqdn.md)
 
 6. Open uw voorkeursbrowser en typ het clusteradres in (het eindpunt van de verbinding, deze app wordt geïmplementeerd op poort 8080 - bijvoorbeeld ec2-34-215-183-77.us-west-2.compute.amazonaws.com:8080).
 

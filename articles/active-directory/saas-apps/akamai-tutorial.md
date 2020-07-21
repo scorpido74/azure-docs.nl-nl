@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17d0c91d31f7746c53d62af87670c40e9902554c
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 9ea2c20a7720cc80b36ff88595aa6ca5c57f6b9a
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026811"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232369"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met Akamai
 
@@ -61,13 +61,13 @@ Akamai EAA is geconfigureerd als één toepassing in Azure AD. De beheerder kan 
 
 **Voordelen**:
 
-• U hoeft slechts één keer IDP te configureren
+* U hoeft slechts één keer IDP te configureren
 
 **Nadelen**:
 
-• Gebruikers krijgen twee toepassingsportals
+* Gebruikers krijgen twee toepassingsportals
 
-• Eén gemeenschappelijke CA-beleidsdekking voor alle toepassingen.
+* Eén gemeenschappelijke CA-beleidsdekking voor alle toepassingen.
 
 ![Integratiescenario 1](./media/header-akamai-tutorial/scenario1.png)
 
@@ -77,13 +77,14 @@ De Akamai EAA-toepassing wordt afzonderlijk ingesteld in de Azure AD-portal. De 
 
 **Voordelen**:
 
-• U kunt afzonderlijke CA-beleidsregels definiëren
+* U kunt afzonderlijke CA-beleidsregels definiëren
 
-• Alle apps worden weergegeven in het O365-wafelmenu en het deelvenster op myApps.microsoft.com.
+* Alle apps worden weergegeven in het 0365-wafelmenu en het deelvenster op myApps.microsoft.com.
+
 
 **Nadelen**:
 
-• U moet meerdere IDP configureren.
+* U moet meerdere IDP configureren.
 
 ![Integratiescenario 2](./media/header-akamai-tutorial/scenario2.png)
 
@@ -450,7 +451,7 @@ Klik op Save and go to Deployment
 
 ### <a name="kerberos-authentication"></a>Kerberos-verificatie
 
-In het onderstaande voorbeeld publiceren we een interne webserver [http://frp-app1.superdemo.live](http://frp-app1.superdemo.live/) en schakelen we eenmalige aanmelding met KCD in
+In het onderstaande voorbeeld publiceren we een interne webserver <code>http://frp-app1.superdemo.live</code> en schakelen we eenmalige aanmelding met KCD in
 
 #### <a name="general-tab"></a>Tabblad General
 

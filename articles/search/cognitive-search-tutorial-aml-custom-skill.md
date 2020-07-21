@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/10/2020
-ms.openlocfilehash: f673fd4b49a33c2faf6bc8b489520f2a877b0689
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 69618604c38d82567260e45d651df523055c5f7b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85513811"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245327"
 ---
 # <a name="tutorial-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>Zelfstudie: Een aangepaste vaardigheid ontwerpen en implementeren met Azure Machine Learning 
 
@@ -29,6 +29,9 @@ Er worden twee gegevenssets geboden. Als u het model zelf wilt trainen, hebt u h
 > * Een model trainen en implementeren in een Azure Kubernetes-cluster
 > * Een AI-verrijkingspijplijn koppelen aan het geïmplementeerde model
 > * Uitvoer van het geïmplementeerde model als een aangepaste vaardigheid opnemen
+
+> [!IMPORTANT] 
+> Deze vaardigheid is momenteel in openbare preview. Deze previewfunctie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. Er is momenteel geen .NET SDK-ondersteuning.
 
 ## <a name="prerequisites"></a>Vereisten
 

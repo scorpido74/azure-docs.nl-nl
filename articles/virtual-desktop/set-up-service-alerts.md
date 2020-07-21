@@ -1,6 +1,6 @@
 ---
-title: Service waarschuwingen instellen voor het virtuele bureau blad van Windows-Azure
-description: Azure Service Health instellen om service meldingen te ontvangen voor Windows virtueel bureau blad.
+title: Servicewaarschuwingen instellen voor Windows Virtual Desktop - Azure
+description: Hoe stel ik Azure Service Health in om servicemeldingen voor Windows Virtual Desktop te ontvangen?
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,54 +8,54 @@ ms.topic: tutorial
 ms.date: 06/11/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ad25ab219cdb83227d39f86109d18b2c8402c38f
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
-ms.translationtype: MT
+ms.openlocfilehash: 035fc4840b08a0a9807c228cb5f63c191efc524a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612347"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256880"
 ---
-# <a name="tutorial-set-up-service-alerts"></a>Zelf studie: Service waarschuwingen instellen
+# <a name="tutorial-set-up-service-alerts"></a>Zelfstudie: Servicewaarschuwingen instellen
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de lente 2020-update met Azure Resource Manager virtueel-bureaublad objecten van Windows. Raadpleeg [dit artikel](./virtual-desktop-fall-2019/set-up-service-alerts-2019.md)als u de versie van het Windows-bureau blad van Virtual Desktop 2019 zonder Azure Resource Manager objecten gebruikt.
+>Deze inhoud is van toepassing op de update uit het voorjaar van 2020 met Azure Resource Manager Windows Virtual Desktop-objecten. Zie [dit artikel](./virtual-desktop-fall-2019/set-up-service-alerts-2019.md) als u de release van Windows Virtual Desktop uit het najaar van 2019 zonder Azure Resource Manager-objecten gebruikt.
 >
-> De Windows Virtual Desktop lente 2020-update is momenteel beschikbaar als open bare preview. Deze preview-versie is beschikbaar zonder service level agreement. het wordt niet aangeraden deze te gebruiken voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. 
-> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> De update van Windows Virtual Desktop uit het voorjaar van 2020 is momenteel beschikbaar als openbare preview. Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. 
+> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
-U kunt Azure Service Health gebruiken om service problemen en status adviezen te bewaken voor virtuele Windows-Bureau bladen. Azure Service Health kunt u op de hoogte stellen van verschillende soorten waarschuwingen (bijvoorbeeld e-mail of SMS), inzicht krijgen in het effect van een probleem en u blijft bijwerken terwijl het probleem wordt opgelost. Azure Service Health kunt u ook helpen uitval tijd te verhelpen en voor bereidingen te treffen voor gepland onderhoud en wijzigingen die van invloed kunnen zijn op de beschik baarheid van uw resources.
+U kunt Azure Service Health gebruiken om serviceproblemen en statusadviezen voor Windows Virtual Desktop te monitoren. Via Azure Service Health kunt u verschillende soorten meldingen ontvangen (bijvoorbeeld e-mail of sms), inzicht krijgen in de impact van een probleem en op de hoogte worden gehouden tijdens het oplossen van een probleem. Ook kan Azure Service Health u helpen bij het verminderen van downtime en bij de voorbereiding op gepland onderhoud en wijzigingen die de beschikbaarheid van uw bronnen kunnen beïnvloeden.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Service waarschuwingen maken en configureren.
+> * servicewaarschuwingen maken en configureren.
 
-Zie de [Azure Health-documentatie](https://docs.microsoft.com/azure/service-health/)voor meer informatie over Azure service health.
+Bekijk de [documentatie over Azure Health](https://docs.microsoft.com/azure/service-health/) voor meer informatie over Azure Service Health.
 
-## <a name="create-service-alerts"></a>Service waarschuwingen maken
+## <a name="create-service-alerts"></a>Servicewaarschuwingen maken
 
-In deze sectie wordt beschreven hoe u Azure Service Health configureert en hoe u meldingen instelt, die u op de Azure Portal kunt openen. U kunt verschillende typen waarschuwingen instellen en deze plannen om u tijdig op de hoogte te stellen.
+In deze sectie wordt uitgelegd hoe u Azure Service Health configureert en hoe u meldingen instelt die u kunt openen op de Microsoft Azure-portal. U kunt verschillende soorten waarschuwingen instellen en deze zo plannen dat ze u tijdig op de hoogte brengen.
 
-### <a name="recommended-service-alerts"></a>Aanbevolen Service waarschuwingen
+### <a name="recommended-service-alerts"></a>Aanbevolen servicewaarschuwingen
 
-U wordt aangeraden Service waarschuwingen te maken voor de volgende status gebeurtenis typen:
+We raden u aan servicewaarschuwingen te maken voor de volgende statusgebeurtenistypes:
 
-- **Service probleem:** Ontvang meldingen over belang rijke problemen die van invloed zijn op de connectiviteit van uw gebruikers met de service of met de mogelijkheid om uw Windows Virtual Desktop-Tenant te beheren.
-- **Status advies:** Ontvang meldingen die uw aandacht vereisen. Hier volgen enkele voor beelden van dit type melding:
+- **Serviceprobleem:** ontvang meldingen over belangrijke problemen die van invloed zijn op de connectiviteit van uw gebruikers met de service of met de mogelijkheid om uw Windows Virtual Desktop-tenant te beheren.
+- **Statusadvies:** ontvang meldingen die uw aandacht vereisen. Hier volgen enkele voorbeelden van dit type melding:
     - Virtual Machines (Vm's) niet veilig geconfigureerd als open poort 3389
-    - Afschaffing van functionaliteit
+    - Afkeuring van functionaliteit
 
-### <a name="configure-service-alerts"></a>Service waarschuwingen configureren
+### <a name="configure-service-alerts"></a>Servicewaarschuwingen configureren
 
-Service waarschuwingen configureren:
+Om servicewaarschuwingen te configureren:
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
-2. Selecteer **service health.**
-3. Volg de instructies in [waarschuwingen voor het maken van activiteiten logboeken voor service meldingen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log-service-notifications?toc=%2Fazure%2Fservice-health%2Ftoc.json#alert-and-new-action-group-using-azure-portal) om uw waarschuwingen en meldingen in te stellen.
+2. Selecteer **Service Health.**
+3. Volg de instructies in [Waarschuwingen voor activiteitenlogboeken maken met servicemeldingen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log-service-notifications?toc=%2Fazure%2Fservice-health%2Ftoc.json#alert-and-new-action-group-using-azure-portal) om uw waarschuwingen en meldingen in te stellen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u geleerd hoe u Azure Service Health kunt instellen en gebruiken om service problemen en status adviezen voor virtuele Windows-Bureau bladen te bewaken. Voor meer informatie over hoe u zich aanmeldt bij Windows Virtual Desktop, gaat u naar de How-procedures voor verbinding maken met Windows Virtual Desktop.
+In deze zelfstudie hebt u geleerd hoe u Azure Service Health instelt en gebruikt om serviceproblemen en statusadviezen voor Windows Virtual Desktop te monitoren. Voor meer informatie over hoe u zich aanmeldt bij Windows Virtual Desktop, gaat u verder met de instructies voor verbinding maken met Windows Virtual Desktop.
 
 > [!div class="nextstepaction"]
-> [Verbinding maken met de Extern bureaublad-client op Windows 7 en Windows 10](./connect-windows-7-and-10.md)
+> [Verbinding maken met de Remote Desktop-client op Windows 7 en Windows 10](./connect-windows-7-10.md)

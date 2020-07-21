@@ -1,19 +1,19 @@
 ---
 title: 'Zelfstudie: Een toepassing schalen in Azure Spring Cloud | Microsoft Docs'
-description: In deze zelf studie leert u hoe u een toepassing kunt schalen met Azure Spring Cloud in de Azure-portal
+description: Leer hoe u een toepassing kunt schalen met Azure Spring Cloud in de Azure-portal
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.author: brendm
 author: bmitchell287
 ms.date: 10/06/2019
-ms.openlocfilehash: 93cefd0c71e2d51187e68c6f5f02777d158e95a4
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: ca889e48510ec20b4823c6ec5e4e0149d5aaaa62
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84792061"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86141873"
 ---
-# <a name="scale-an-application-in-azure-spring-cloud"></a>Een toepassing schalen in Azure Spring Cloud
+# <a name="tutorial-scale-an-application-in-azure-spring-cloud"></a>Zelfstudie: Een toepassing schalen in Azure Spring Cloud
 
 In deze zelfstudie wordt gedemonstreerd hoe u een microservicetoepassing kunt schalen met behulp van het Azure Spring Cloud-dashboard in de Azure-portal.
 
@@ -23,10 +23,10 @@ Nadat u klaar bent, weet u hoe u snel handmatige wijzigingen kunt aanbrengen in 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor deze zelfstudie hebt u het volgende nodig:
+Als u deze procedures wilt volgen, hebt u het volgende nodig:
 
 * Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint. 
-* Een geïmplementeerd Azure Spring Cloud-service-exemplaar.  Volg onze [quickstart voor het implementeren van een app via Azure CLI](spring-cloud-quickstart-launch-app-cli.md) om aan de slag te gaan.
+* Een geïmplementeerd Azure Spring Cloud-service-exemplaar.  Volg de [quickstart voor het implementeren van een app via Azure CLI](spring-cloud-quickstart-launch-app-cli.md) om aan de slag te gaan.
 * Er is al minstens één toepassing gemaakt in uw service-exemplaar.
 
 ## <a name="navigate-to-the-scale-page-in-the-azure-portal"></a>Ga naar de pagina Schalen in de Azure-portal
@@ -64,7 +64,7 @@ Als u zich in de Basic-laag bevindt en bent beperkt door een of meer van deze [L
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u geleerd hoe u uw Azure Spring Cloud-toepassingen handmatig kunt schalen. Ga door naar de volgende zelfstudie voor informatie over het bewaken van uw toepassing.
+In deze zelfstudie hebt u geleerd hoe u een Azure Spring Cloud-toepassingen handmatig kunt schalen. Ga door naar de volgende zelfstudie voor informatie over het bewaken van een toepassing door meldingen in te stellen.
 
 > [!div class="nextstepaction"]
-> [Meer informatie over het bewaken van een toepassing](spring-cloud-tutorial-distributed-tracing.md)
+> [Meer informatie over het instellen van meldingen](spring-cloud-tutorial-alerts-action-groups.md)

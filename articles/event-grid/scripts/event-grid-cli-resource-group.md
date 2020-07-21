@@ -1,22 +1,15 @@
 ---
 title: Voorbeeld van Azure CLI-script - abonneren op resourcegroep | Microsoft Docs
-description: Dit artikel bevat een voor beeld van een Azure CLI-script dat laat zien hoe u zich abonneert op Azure Event Grid gebeurtenissen voor een resource groep.
-services: event-grid
-documentationcenter: na
-author: spelluru
-ms.service: event-grid
+description: Dit artikel bevat een voorbeeld van een Azure CLI-script dat laat zien hoe u zich kunt abonneren op gebeurtenissen voor Azure Event Grid voor een resourcegroep.
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/23/2020
-ms.author: spelluru
-ms.openlocfilehash: ff5f317bafd5c59ea4bba8bb6a23b60881cd218f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.date: 07/08/2020
+ms.openlocfilehash: 33f377fc4101aaba34629d94b7bcb2bc9a53f0c3
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76720791"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171275"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-with-azure-cli"></a>Abonneren op gebeurtenissen voor een resourcegroep met Azure CLI
 
@@ -48,4 +41,4 @@ In dit script wordt de volgende opdracht gebruikt om het abonnement op de gebeur
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [Query Event Grid subscriptions](../query-event-subscriptions.md) (Query's uitvoeren op Event Grid-abonnementen) voor informatie over het uitvoeren van query's op abonnementen.
-* Zie de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
+* Raadpleeg de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.

@@ -1,22 +1,15 @@
 ---
 title: Voorbeeld van Azure CLI-script - Aangepast onderwerp maken | Microsoft Docs
-description: Dit artikel bevat een voor beeld van een Azure CLI-script dat laat zien hoe u een Azure Event Grid aangepast onderwerp maakt.
-services: event-grid
-documentationcenter: na
-author: spelluru
-ms.service: event-grid
+description: Dit artikel bevat een voorbeeld van een Azure CLI-script dat laat zien hoe u een Azure Event Grid kunt maken voor een aangepast onderwerp.
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/23/2020
-ms.author: spelluru
-ms.openlocfilehash: 2c6e027d234104d5e45c632dd73e79d8f069deb5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.date: 07/08/2020
+ms.openlocfilehash: 951008a2bf3919f69429ca15382334a9618b912f
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76720840"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171309"
 ---
 # <a name="create-event-grid-custom-topic-with-azure-cli"></a>Aangepast Event Grid-onderwerp maken met Azure CLI
 
@@ -42,4 +35,4 @@ In dit script wordt de volgende opdracht gebruikt om het aangepaste onderwerp te
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [Query Event Grid subscriptions](../query-event-subscriptions.md) (Query's uitvoeren op Event Grid-abonnementen) voor informatie over het uitvoeren van query's op abonnementen.
-* Zie de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
+* Raadpleeg de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.

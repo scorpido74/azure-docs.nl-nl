@@ -6,14 +6,14 @@ ms.topic: tutorial
 ms.date: 09/18/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: d2bb37252bc93c982dbc090a0c3f20aef842325f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 3f0dca5aa9e430fa21d09509121a7ad26feda446
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75351851"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261322"
 ---
-# <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>Zelfstudie: een Service Fabric Mesh-toepassing implementeren
+# <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>Zelfstudie: Een Service Fabric Mesh-toepassing implementeren
 
 Deze zelfstudie is deel drie van een reeks en laat u zien hoe u een Azure Service Fabric Mesh-webtoepassing rechtstreeks vanuit Visual Studio implementeert.
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u het volgende:
 In deze zelfstudiereeks leert u het volgende:
 > [!div class="checklist"]
 > * [Een Service Fabric Mesh-app maken in Visual Studio](service-fabric-mesh-tutorial-create-dotnetcore.md)
-> * [Fouten opsporen in een Service Fabric Mesh-app die wordt uitgevoerd in de lokale ontwikkelcluster](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
+> * [Fouten opsporen in een Service Fabric Mesh-app die wordt uitgevoerd in uw lokale ontwikkelcluster](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
 > * Een Service Fabric Mesh-app implementeren
 > * [Een Service Fabric Mesh-app bijwerken](service-fabric-mesh-tutorial-upgrade.md)
 > * [Service Fabric Mesh-bronnen opschonen](service-fabric-mesh-tutorial-cleanup-resources.md)
@@ -43,7 +43,7 @@ Voor u met deze zelfstudie begint:
 
 ## <a name="download-the-to-do-sample-application"></a>De voorbeeldtoepassing voor taken downloaden
 
-Als u in [deel twee van deze zelfstudiereeks](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md) niet de voorbeeldtoepassing voor taken hebt gemaakt, kunt u deze downloaden. Voer in een opdrachtvenster de volgende opdracht uit om de opslagplaats van de voorbeeld-app te klonen op uw lokale computer.
+Als u in [deel twee van deze zelfstudiereeks](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md) niet de voorbeeldtoepassing voor taken hebt gemaakt, kunt u deze downloaden. Voer in een opdrachtvenster de volgende opdracht uit om de voorbeeld-app-opslagplaats te klonen op de lokale computer.
 
 ```
 git clone https://github.com/azure-samples/service-fabric-mesh
@@ -53,7 +53,7 @@ U vindt de toepassing in de map `src\todolistapp`.
 
 ## <a name="publish-to-azure"></a>Publiceren naar Azure
 
-Als u uw Service Fabric Mesh-project in Azure wilt publiceren, klikt u met de rechtermuisknop op **todolistapp** in Visual Studio en selecteert u **Publiceren...**.
+Als u uw Service Fabric Mesh-project in Azure wilt publiceren, klikt u met de rechtermuisknop op **todolistapp** in Visual Studio en selecteert u **Publiceren...** .
 
 Vervolgens ziet u het dialoogvenster **Service Fabric-toepassing publiceren**.
 
@@ -61,11 +61,11 @@ Vervolgens ziet u het dialoogvenster **Service Fabric-toepassing publiceren**.
 
 Selecteer uw Azure-account en -abonnement. Kies een **Locatie**. In dit artikel wordt gebruikgemaakt van **VS - oost**.
 
-Selecteer onder **Resourcegroep****\<Nieuwe resourcegroep maken...>**. Er verschijnt een dialoogvenster waarin u uw nieuwe resourcegroep maakt. In dit artikel wordt de locatie **VS - oost** gebruikt en krijgt de groep de naam **sfmeshTutorial1RG** (kies een unieke groepsnaam als meerdere mensen in uw organisatie gebruikmaken van hetzelfde abonnement).  Druk op **Maken** om de resourcegroep te maken en ga terug naar het publicatiedialoogvenster.
+Selecteer onder **Resourcegroep** de optie **\<Create New Resource Group...>** . Er verschijnt een dialoogvenster waarin u uw nieuwe resourcegroep maakt. In dit artikel wordt de locatie **VS - oost** gebruikt en krijgt de groep de naam **sfmeshTutorial1RG** (kies een unieke groepsnaam als meerdere mensen in uw organisatie gebruikmaken van hetzelfde abonnement).  Druk op **Maken** om de resourcegroep te maken en ga terug naar het publicatiedialoogvenster.
 
 ![Dialoogvenster in Visual Studio over nieuwe resourcegroep in Service Fabric Mesh](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-resource-group-dialog.png)
 
-In het dialoogvenster **Service Fabric-toepassing publiceren** selecteert u onder **Azure Container Registry****\<Nieuw containerregister maken...>**. In het dialoogvenster **Containerregister maken** gebruikt u een unieke naam voor de **Containerregisternaam**. Geef een **Locatie** op (in deze tutorial wordt gebruikgemaakt van **VS - oost**). Selecteer in de vervolgkeuzelijst de **Resourcegroep** die u eerder hebt gemaakt, bijvoorbeeld **sfmeshTutorial1RG**. Stel de **SKU** in op **Basic** en druk op **Maken** om het persoonlijke Azure-containerregister te maken en terug te gaan naar het dialoogvenster Publiceren.
+In het dialoogvenster **Service Fabric-toepassing publiceren** selecteert u onder **Azure Container Registry** **\<Create New Container Registry...>** . In het dialoogvenster **Containerregister maken** gebruikt u een unieke naam voor de **Containerregisternaam**. Geef een **Locatie** op (in deze tutorial wordt gebruikgemaakt van **VS - oost**). Selecteer in de vervolgkeuzelijst de **Resourcegroep** die u eerder hebt gemaakt, bijvoorbeeld **sfmeshTutorial1RG**. Stel de **SKU** in op **Basic** en druk op **Maken** om het persoonlijke Azure-containerregister te maken en terug te gaan naar het dialoogvenster Publiceren.
 
 ![Dialoogvenster in Visual Studio over nieuw containerregister in Service Fabric Mesh](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-container-registry-dialog.png)
 
@@ -139,4 +139,4 @@ Ga door naar de volgende zelfstudie:
 > [!div class="nextstepaction"]
 > [Een Service Fabric Mesh-app bijwerken](service-fabric-mesh-tutorial-upgrade.md)
 
-[azure-cli-install]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest
+[azure-cli-install]: /cli/azure/install-azure-cli?view=azure-cli-latest

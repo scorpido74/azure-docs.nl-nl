@@ -1,180 +1,178 @@
 ---
-title: Zelf studie-container groep activeren met Azure function
-description: Een door HTTP geactiveerde Power shell-functie zonder server maken voor het automatiseren van het maken van Azure container instances
+title: 'Zelfstudie: Containergroep activeren met Azure Function'
+description: Maak een met HTTP geactiveerde serverloze PowerShell-functie om het maken van Azure Container Instances te automatiseren
 ms.topic: tutorial
-ms.date: 09/20/2019
+ms.date: 06/10/2020
 ms.custom: ''
-ms.openlocfilehash: 9dbb22a2449e4c41bff802ab827da4489fc7ffeb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 298cf1452e514ede540e23d4e64f6dd1059cceab
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78331022"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259737"
 ---
-# <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>Zelf studie: een Azure-functie activeren die door HTTP wordt geactiveerd om een container groep te maken
+# <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>Zelfstudie: Een met HTTP geactiveerde Azure-functie gebruiken om een containergroep te maken
 
-[Azure functions](../azure-functions/functions-overview.md) is een serverloze compute-service die scripts of code kan uitvoeren als reactie op diverse gebeurtenissen, zoals een HTTP-aanvraag, een timer of een bericht in een Azure Storage wachtrij.
+[Azure Functions](../azure-functions/functions-overview.md) is een serverloze rekenservice waarmee scripts of code kan worden uitgevoerd als reactie op verschillende gebeurtenissen, zoals een HTTP-aanvraag, een timer, of een bericht in een Azure Storage-wachtrij.
 
-In deze zelf studie maakt u een Azure-functie die een HTTP-aanvraag afneemt en de implementatie van een [container groep](container-instances-container-groups.md)activeert. In dit voor beeld ziet u de basis principes van het gebruik van Azure Functions om automatisch resources te maken in Azure Container Instances. Wijzig of breid het voor beeld uit voor complexere scenario's of andere gebeurtenis triggers. 
+In deze zelfstudie maakt u een Azure-functie die reageert op een HTTP-aanvraag en de implementatie van een [containergroep](container-instances-container-groups.md) activeert. In dit voorbeeld ziet u de basisprincipes van het gebruik van Azure Functions om automatisch resources te maken in Azure Container Instances. Wijzig het voorbeeld, of breid het uit, voor complexere scenario's of andere gebeurtenistriggers. 
 
-Procedures voor:
+In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
-> * Gebruik Visual Studio code met de [Azure functions extensie](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) om een eenvoudige, door http geactiveerde Power shell-functie te maken.
-> * Schakel een identiteit in de functie-app in en geef deze machtigingen om Azure-resources te maken.
-> * Wijzig en publiceer de Power shell-functie om de implementatie van een container groep met één container te automatiseren.
-> * Controleer de door HTTP geactiveerde implementatie van de container.
-
-> [!IMPORTANT]
-> Power shell voor Azure Functions is momenteel beschikbaar als preview-versie. Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden][terms-of-use]. Sommige aspecten van deze functionaliteit kunnen wijzigen voordat deze functionaliteit algemeen beschikbaar wordt.
+> * Visual Studio Code gebruiken met de [Azure Functions-extensie](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions), om een eenvoudige, met HTTP geactiveerde PowerShell-functie te maken.
+> * Een identiteit in de functie-app inschakelen, en deze machtigingen verlenen om Azure-resources te maken.
+> * De PowerShell-functie wijzigen en opnieuw publiceren om de implementatie van een containergroep met één container te automatiseren.
+> * De met HTTP geactiveerde implementatie van de container controleren.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Zie [uw eerste functie in azure maken](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-powershell#configure-your-environment) voor vereisten voor het installeren en gebruiken van Visual Studio code met de Azure functions van uw besturings systeem.
+Zie [Uw eerste functie maken in Azure met behulp van Visual Studio Code](../azure-functions/functions-create-first-function-vs-code.md?pivots=programming-language-powershell#configure-your-environment) voor vereisten voor het installeren en gebruiken van Visual Studio Code met de Azure Functions-extensie in uw besturingssysteem.
 
-Voor sommige stappen in dit artikel wordt gebruikgemaakt van de Azure CLI. U kunt de Azure Cloud Shell of een lokale installatie van de Azure CLI gebruiken om deze stappen uit te voeren. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][azure-cli-install].
+Aanvullende stappen in dit artikel gebruiken Azure PowerShell. Als u PowerShell wilt installeren of upgraden, raadpleegt u [Azure PowerShell installeren][azure-powershell-install] en [Aanmelden bij Azure](/powershell/azure/get-started-azureps#sign-in-to-azure).
 
-## <a name="create-a-basic-powershell-function"></a>Een eenvoudige Power shell-functie maken
+## <a name="create-a-basic-powershell-function"></a>Een eenvoudige PowerShell-functie maken
 
-Volg de stappen in [uw eerste Power shell-functie maken in azure](../azure-functions/functions-create-first-function-powershell.md) om een Power shell-functie te maken met de http-trigger sjabloon. Gebruik de standaard naam van de Azure-functie **http trigger**. Zoals in de Snelstartgids wordt weer gegeven, test u de functie lokaal en publiceert u het project naar een functie-app in Azure. Dit voor beeld is een eenvoudige, door HTTP geactiveerde functie waarmee een teken reeks wordt geretourneerd. In latere stappen in dit artikel wijzigt u de functie voor het maken van een container groep.
+Volg de stappen in [Uw eerste PowerShell-functie maken in Azure](../azure-functions/functions-create-first-function-vs-code.md?pivots=programming-language-powershell) om een PowerShell-functie te maken met behulp van de HTTP-triggersjabloon. Gebruik de standaardnaam voor de Azure-functie: **HttpTrigger**. Zoals wordt getoond in de quickstart, moet u de functie testen, en het project publiceren in een functie-app in Azure. Dit voorbeeld is een eenvoudige, met HTTP geactiveerde functie waarmee een teksttekenreeks wordt geretourneerd. In latere stappen in dit artikel wijzigt u de functie voor het maken van een containergroep.
 
-In dit artikel wordt ervan uitgegaan dat u het project publiceert met behulp van de naam *myfunctionapp*, in een Azure-resource groep, die automatisch wordt benoemd op basis van de naam van de functie-app (ook *myfunctionapp*). Vervang in latere stappen uw unieke naam van de functie-app en de naam van de resource groep.
+In dit artikel wordt ervan uitgegaan dat u het project publiceert met de naam *myfunctionapp*, in een Azure-resourcegroep die automatisch een naam krijgt op basis van de naam van de functie-app (ook *myfunctionapp*). Vervang deze namen in latere stappen door een unieke naam voor uw functie-app en resourcegroep.
 
-## <a name="enable-an-azure-managed-identity-in-the-function-app"></a>Een door Azure beheerde identiteit inschakelen in de functie-app
+## <a name="enable-an-azure-managed-identity-in-the-function-app"></a>Een in Azure beheerde identiteit inschakelen in de functie-app
 
-Schakel nu een door het systeem toegewezen [beheerde identiteit](../app-service/overview-managed-identity.md?toc=/azure/azure-functions/toc.json#add-a-system-assigned-identity) in de functie-app in. De Power shell-host waarop de app wordt uitgevoerd, kan automatisch worden geverifieerd met deze identiteit, waardoor functies kunnen worden uitgevoerd op Azure-Services waaraan de identiteit toegang heeft verleend. In deze zelf studie verleent u de beheerde identiteits machtigingen om resources te maken in de resource groep van de functie-app. 
+Met de volgende opdrachten wordt een via het systeem toegewezen [beheerde identiteit](../app-service/overview-managed-identity.md?toc=/azure/azure-functions/toc.json#add-a-system-assigned-identity) ingeschakeld in de functie-app. De PowerShell-host waarop de app wordt uitgevoerd, kan automatisch verifiëren bij Azure met behulp van deze identiteit, waardoor functies acties kunnen ondernemen in Azure-services waartoe de identiteit toegang heeft. In deze zelfstudie verleent u de beheerde identiteit machtigingen om resources te maken in de resourcegroep van de functie-app. 
 
-Gebruik eerst de opdracht [AZ Group show][az-group-show] om de id van de resource groep van de functie-app op te halen en op te slaan in een omgevings variabele. In dit voor beeld wordt ervan uitgegaan dat u de opdracht uitvoert in een bash-shell.
+[Een identiteit toevoegen](../app-service/overview-managed-identity.md?tabs=dotnet#using-azure-powershell-1) aan de functie-app:
 
-```azurecli
-rgID=$(az group show --name myfunctionapp --query id --output tsv)
+```powershell
+Update-AzFunctionApp -Name myfunctionapp `
+    -ResourceGroupName myfunctionapp `
+    -IdentityType SystemAssigned
 ```
 
-Voer [AZ functionapp id app Assign][az-functionapp-identity-app-assign] toe om een lokale identiteit toe te wijzen aan de functie-app en een Inzender rol toe te wijzen aan de resource groep. Met deze rol kan de identiteit extra resources maken, zoals container groepen in de resource groep.
+Wijs de rol Inzender toe aan de identiteit op het niveau van de resourcegroep:
 
-```azurecli
-az functionapp identity assign \
-  --name myfunctionapp \
-  --resource-group myfunctionapp \
-  --role contributor --scope $rgID
+```powershell
+$SP=(Get-AzADServicePrincipal -DisplayName myfunctionapp).Id
+$RG=(Get-AzResourceGroup -Name myfunctionapp).ResourceId
+New-AzRoleAssignment -ObjectId $SP -RoleDefinitionName "Contributor" -Scope $RG
 ```
 
-## <a name="modify-httptrigger-function"></a>De functie http trigger wijzigen
+## <a name="modify-httptrigger-function"></a>HttpTrigger-functie wijzigen
 
-Wijzig de Power shell-code voor de functie **http trigger** om een container groep te maken. Zoek het `run.ps1` volgende code blok in het bestand voor de functie. Met deze code wordt een naam waarde weer gegeven, als er een is door gegeven als een query reeks in de functie-URL:
+Wijzig de PowerShell-code voor de **HttpTrigger**-functie om een containergroep te maken. Ga in bestand `run.ps1` voor de functie naar het volgende codeblok. Met deze code wordt een naamwaarde weergegeven, indien een waarde is doorgegeven als een querytekenreeks in de functie-URL:
 
 ```powershell
 [...]
 if ($name) {
-    $status = [HttpStatusCode]::OK
-    $body = "Hello $name"
+    $body = "Hello, $name. This HTTP triggered function executed successfully."
 }
 [...]
 ```
 
-Vervang deze code door het volgende voorbeeld blok. Als er een naam waarde wordt door gegeven in de query reeks, wordt deze naam gebruikt om een container groep te benoemen en te maken met behulp van de cmdlet [New-AzContainerGroup][new-azcontainergroup] . Zorg ervoor dat u de naam van de resource groep *myfunctionapp* vervangt door de naam van de resource groep voor uw functie-app:
+Vervang deze code door het volgende voorbeeldblok. Als hier een naamwaarde is doorgegeven in de querytekenreeks, wordt deze gebruikt om een containergroep te maken en een naam te geven met behulp van de cmdlet [New-AzContainerGroup][new-azcontainergroup]. Zorg ervoor dat u de naam van de resourcegroep *myfunctionapp* vervangt door de naam van de resourcegroep voor uw functie-app:
 
 ```powershell
 [...]
 if ($name) {
-    $status = [HttpStatusCode]::OK
     New-AzContainerGroup -ResourceGroupName myfunctionapp -Name $name `
         -Image alpine -OsType Linux `
         -Command "echo 'Hello from an Azure container instance triggered by an Azure function'" `
         -RestartPolicy Never
-    $body = "Started container group $name"
-}
+    if ($?) {
+        $body = "This HTTP triggered function executed successfully. Started container group $name"
+    }
+    else  {
+        $body = "There was a problem starting the container group."
+    }
 [...]
 ```
 
-In dit voor beeld wordt een container groep gemaakt die bestaat uit één container instantie `alpine` waarop de installatie kopie wordt uitgevoerd. De container voert één `echo` opdracht uit en eindigt vervolgens. In een echt wereld voorbeeld kunt u een of meer container groepen maken voor het uitvoeren van een batch-taak.
+In dit voorbeeld wordt een containergroep gemaakt die bestaat uit één containerinstantie waarop de installatiekopie van `alpine` wordt uitgevoerd. Op de container wordt één opdracht `echo` uitgevoerd, waarna deze wordt beëindigd. In een praktijkvoorbeeld kunt u het maken van een of meer containergroepen activeren om een batchtaak uit te voeren.
  
-## <a name="test-function-app-locally"></a>De functie-app lokaal testen
+## <a name="test-function-app-locally"></a>Functie-app lokaal testen
 
-Zorg ervoor dat de functie lokaal wordt uitgevoerd voordat u het functie-app-project opnieuw publiceert naar Azure. Zoals weer gegeven in de [Power shell-Quick](../azure-functions/functions-create-first-function-powershell.md)start, voegt u een lokaal onderbrekings `Wait-Debugger` punt in het Power shell-script en een aanroep hierboven in. Zie [debug Power shell Azure functions Local](../azure-functions/functions-debug-powershell-local.md)voor hulp bij fout opsporing.
-
+Zorg ervoor dat de functie lokaal wordt uitgevoerd voordat u het functie-app-project opnieuw publiceert in Azure. Wanneer de functie lokaal wordt uitgevoerd, maakt deze geen Azure-resources. U kunt de functiestroom echter testen met en zonder het doorgeven van een naamwaarde in een querytekenreeks. Zie [Lokaal fouten opsporen in PowerShell Azure Functions](../azure-functions/functions-debug-powershell-local.md) om fouten met de functie op te sporen.
 
 ## <a name="republish-azure-function-app"></a>Azure-functie-app opnieuw publiceren
 
-Nadat u hebt gecontroleerd of de functie correct wordt uitgevoerd op uw lokale computer, is het tijd om het project opnieuw te publiceren naar de bestaande functie-app in Azure.
+Nadat u hebt gecontroleerd of de functie lokaal wordt uitgevoerd, publiceert u het project opnieuw in de bestaande functie-app in Azure.
 
-> [!NOTE]
-> Vergeet niet om alle aanroepen `Wait-Debugger` naar te verwijderen voordat u uw functies naar Azure publiceert.
-
-1. Open in Visual Studio code het opdracht palet. Zoeken en selecteren `Azure Functions: Deploy to function app...`.
-1. Selecteer de huidige werkmap die moet worden gezip en geïmplementeerd.
+1. Open het Opdrachtpalet in Visual Studio Code. Zoek en selecteer `Azure Functions: Deploy to Function App...`.
+1. Selecteer de huidige werkmap die moet worden gezipt en geïmplementeerd.
 1. Selecteer het abonnement en vervolgens de naam van de bestaande functie-app (*myfunctionapp*). Bevestig dat u de vorige implementatie wilt overschrijven.
 
-Nadat de functie-app is gemaakt en het implementatiepakket is toegepast, wordt er een melding weergegeven. Selecteer **uitvoer weer geven** in deze melding om de resultaten voor het maken en implementeren weer te geven, inclusief de Azure-resources die u hebt bijgewerkt.
+Nadat de functie-app is gemaakt en het implementatiepakket is toegepast, wordt er een melding weergegeven. Selecteer in deze melding de optie **Uitvoer weergeven** om de resultaten van het maken en implementeren te bekijken, inclusief de Azure-resources die u hebt bijgewerkt.
 
-## <a name="run-the-function-in-azure"></a>De functie uitvoeren in azure
+## <a name="run-the-function-in-azure"></a>De functie in Azure uitvoeren
 
-Wanneer de implementatie is voltooid, kunt u de functie-URL ophalen. Gebruik bijvoorbeeld het gedeelte **functies van Azure:** in Visual Studio code om de URL van de **http trigger** -functie te kopiëren of de functie-URL in de [Azure Portal](../azure-functions/functions-create-first-azure-function.md#test-the-function)op te halen.
+Wanneer de implementatie is voltooid, kunt u de functie-URL ophalen. Gebruik als voorbeeld het gebied **Azure: Functions** in Visual Studio Code om de **HttpTrigger**-functie-URL te kopiëren, of haal de functie-URL op in de [Azure-portal](../azure-functions/functions-create-first-azure-function.md#test-the-function).
 
-De functie-URL bevat een unieke code en heeft de volgende vorm:
+De functie-URL heeft de volgende vorm:
 
 ```
-https://myfunctionapp.azurewebsites.net/api/HttpTrigger?code=bmF/GljyfFWISqO0GngDPCtCQF4meRcBiHEoaQGeRv/Srx6dRcrk2M==
+https://myfunctionapp.azurewebsites.net/api/HttpTrigger
 ```
 
-### <a name="run-function-without-passing-a-name"></a>De functie run zonder een naam door geven
+### <a name="run-function-without-passing-a-name"></a>Functie uitvoeren zonder een naam door te geven
 
-Als eerste test voert u de `curl` opdracht uit en geeft u de functie-URL door zonder `name` een query reeks toe te voegen. Zorg ervoor dat u de unieke code van uw functie opneemt.
+Als eerste test voert u de opdracht `curl` uit en geeft u de functie-URL door zonder een queryreeks `name` toe te voegen. 
 
 ```bash
-curl --verbose "https://myfunctionapp.azurewebsites.net/api/HttpTrigger?code=bmF/GljyfFWISqO0GngDPCtCQF4meRcBiHEoaQGeRv/Srx6dRcrk2M=="
+curl --verbose "https://myfunctionapp.azurewebsites.net/api/HttpTrigger"
 ```
 
-De functie retourneert de status code 400 en de `Please pass a name on the query string or in the request body`volgende tekst:
+De functie retourneert de statuscode 200 en de tekst `This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response`:
 
 ```
 [...]
-> GET /api/HttpTrigger?code=bmF/GljyfFWISqO0GngDPCtCQF4meRcBiHEoaQGeRv/Srx6dRcrk2M== HTTP/2
+> GET /api/HttpTrigger? HTTP/1.1
 > Host: myfunctionapp.azurewebsites.net
-> User-Agent: curl/7.54.0
+> User-Agent: curl/7.64.1
 > Accept: */*
 > 
 * Connection state changed (MAX_CONCURRENT_STREAMS updated)!
-< HTTP/2 400 
-< content-length: 62
-< content-type: text/plain; charset=utf-8
-< date: Mon, 05 Aug 2019 22:08:15 GMT
+< HTTP/1.1 200 OK
+< Content-Length: 135
+< Content-Type: text/plain; charset=utf-8
+< Request-Context: appId=cid-v1:d0bd0123-f713-4579-8990-bb368a229c38
+< Date: Wed, 10 Jun 2020 17:50:27 GMT
 < 
 * Connection #0 to host myfunctionapp.azurewebsites.net left intact
-Please pass a name on the query string or in the request body.
+This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.* Closing connection 0
 ```
 
-### <a name="run-function-and-pass-the-name-of-a-container-group"></a>De functie run en de naam van een container groep door geven
+### <a name="run-function-and-pass-the-name-of-a-container-group"></a>Functie uitvoeren en de naam van een containergroep doorgeven
 
-Voer nu de `curl` opdracht uit door de naam van een container groep (*mycontainergroup*) toe te voegen als `&name=mycontainergroup`een query reeks:
+Voer nu de opdracht `curl` uit en voeg de naam van een containergroep (*mycontainergroup*) toe als een querytekenreeks `?name=mycontainergroup`:
 
 ```bash
-curl --verbose "https://myfunctionapp.azurewebsites.net/api/HttpTrigger?code=bmF/GljyfFWISqO0GngDPCtCQF4meRcBiHEoaQGeRv/Srx6dRcrk2M==&name=mycontainergroup"
+curl --verbose "https://myfunctionapp.azurewebsites.net/api/HttpTrigger?name=mycontainergroup"
 ```
 
-De functie retourneert status code 200 en activeert het maken van de container groep:
+De functie retourneert statuscode 200 en activeert het maken van de containergroep:
 
 ```
 [...]
-> GET /api/HttpTrigger?ode=bmF/GljyfFWISqO0GngDPCtCQF4meRcBiHEoaQGeRv/Srx6dRcrk2M==&name=mycontainergroup HTTP/2
+> GET /api/HttpTrigger1?name=mycontainergroup HTTP/1.1
 > Host: myfunctionapp.azurewebsites.net
-> User-Agent: curl/7.54.0
+> User-Agent: curl/7.64.1
 > Accept: */*
 > 
-* Connection state changed (MAX_CONCURRENT_STREAMS updated)!
-< HTTP/2 200 
-< content-length: 28
-< content-type: text/plain; charset=utf-8
-< date: Mon, 05 Aug 2019 22:15:30 GMT
+< HTTP/1.1 200 OK
+< Content-Length: 92
+< Content-Type: text/plain; charset=utf-8
+< Request-Context: appId=cid-v1:d0bd0123-f713-4579-8990-bb368a229c38
+< Date: Wed, 10 Jun 2020 17:54:31 GMT
 < 
 * Connection #0 to host myfunctionapp.azurewebsites.net left intact
-Started container group mycontainergroup
+This HTTP triggered function executed successfully. Started container group mycontainergroup* Closing connection 0
 ```
 
-Controleer of de container is uitgevoerd met de opdracht [AZ container logs][az-container-logs] :
+Controleer of de container is uitgevoerd met de opdracht [Get-AzContainerInstanceLog][get-azcontainerinstancelog]:
 
 ```azurecli
-az container logs --resource-group myfunctionapp --name mycontainergroup
+Get-AzContainerInstanceLog -ResourceGroupName myfunctionapp `
+  -ContainerGroupName mycontainergroup 
 ```
 
 Voorbeelduitvoer:
@@ -185,7 +183,7 @@ Hello from an Azure container instance triggered by an Azure function
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u de resources die u in deze zelf studie hebt gemaakt, niet meer nodig hebt, kunt u de opdracht [AZ Group delete][az-group-delete] uitvoeren om de resource groep en alle resources die deze bevat, te verwijderen. Met deze opdracht verwijdert u het containerregister dat u hebt gemaakt, evenals de actieve container en alle gerelateerde resources.
+Als u de resources die u in deze zelfstudie hebt gemaakt, niet meer nodig hebt, kunt u de opdracht [az group delete][az-group-delete] uitvoeren om de resourcegroep en alle resources hierin te verwijderen. Met deze opdracht verwijdert u de functie-app die u hebt gemaakt, evenals de actieve container en alle gerelateerde resources.
 
 ```azurecli-interactive
 az group delete --name myfunctionapp
@@ -193,17 +191,17 @@ az group delete --name myfunctionapp
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u een Azure-functie gemaakt die een HTTP-aanvraag afneemt en de implementatie van een container groep activeert. U hebt geleerd hoe u:
+In deze zelfstudie hebt u een Azure-functie gemaakt die reageert op een HTTP-aanvraag en de implementatie van een containergroep activeert. U hebt geleerd hoe u:
 
 > [!div class="checklist"]
-> * Gebruik Visual Studio code met de Azure Functions extensie om een eenvoudige, door HTTP geactiveerde Power shell-functie te maken.
-> * Schakel een identiteit in de functie-app in en geef deze machtigingen om Azure-resources te maken.
-> * Wijzig de Power shell-functie code voor het automatiseren van de implementatie van een container groep met één container.
-> * Controleer de door HTTP geactiveerde implementatie van de container.
+> * Visual Studio Code gebruikt met de Azure Functions-extensie, om een eenvoudige, met HTTP geactiveerde PowerShell-functie te maken.
+> * Een identiteit in de functie-app inschakelen, en deze machtigingen verlenen om Azure-resources te maken.
+> * De PowerShell-functie wijzigt om de implementatie van een containergroep met één container te automatiseren.
+> * De met HTTP geactiveerde implementatie van de container controleren.
 
-Voor een gedetailleerd voor beeld voor het starten en bewaken van een taak met containers raadpleegt u het blog bericht [met de gebeurtenis gestuurde serverloze containers met Power shell Azure functions en Azure container instances](https://dev.to/azure/event-driven-serverless-containers-with-powershell-azure-functions-and-azure-container-instances-e9b) en het bijbehorende [code voorbeeld](https://github.com/anthonychu/functions-powershell-run-aci).
+Lees de blogpost [Gebeurtenisgestuurde serverloze containers met PowerShell Azure Functions en Azure Container Instances](https://dev.to/azure/event-driven-serverless-containers-with-powershell-azure-functions-and-azure-container-instances-e9b) en het bijbehorende [codevoorbeeld](https://github.com/anthonychu/functions-powershell-run-aci) voor een gedetailleerd voorbeeld van het starten en bewaken van een containertaak.
 
-Raadpleeg de [Azure functions-documentatie](/azure/azure-functions/) voor gedetailleerde richt lijnen voor het maken van Azure functions en het publiceren van een functions-project. 
+Raadpleeg de [Azure Functions-documentatie](../azure-functions/index.yml) voor gedetailleerde instructies voor het maken van Azure-functies en het publiceren van een functieproject. 
 
 <!-- IMAGES -->
 
@@ -212,10 +210,6 @@ Raadpleeg de [Azure functions-documentatie](/azure/azure-functions/) voor gedeta
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 
 <!-- LINKS - internal -->
-
-[azure-cli-install]: /cli/azure/install-azure-cli
-[az-group-show]: /cli/azure/group#az-group-show
-[az-group-delete]: /cli/azure/group#az-group-delete
-[az-functionapp-identity-app-assign]: /cli/azure/functionapp/identity#az-functionapp-identity-assign
+[azure-powershell-install]: /powershell/azure/install-az-ps
 [new-azcontainergroup]: /powershell/module/az.containerinstance/new-azcontainergroup
-[az-container-logs]: /cli/azure/container#az-container-logs
+[get-azcontainerinstancelog]: /powershell/module/az.containerinstance/get-azcontainerinstancelog

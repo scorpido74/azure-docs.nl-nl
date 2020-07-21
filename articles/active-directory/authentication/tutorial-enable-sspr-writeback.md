@@ -11,12 +11,12 @@ author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 353bc49ad6a64ff00a8a3ab8594fd76e02ca7913
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: a25fe090c88d2540bdf63cd6479d25b879090a38
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85551738"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202555"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>Zelfstudie: Terugschrijven van self-service voor wachtwoordherstel in Azure Active Directory inschakelen voor on-premises omgeving
 
@@ -43,7 +43,7 @@ Om deze zelfstudie te voltooien, hebt u de volgende resources en machtigingen no
     * Voltooi indien nodig [de vorige zelfstudie om Azure Active Directory SSPR in te schakelen](tutorial-enable-sspr.md).
 * Een bestaande on-premises AD DS-omgeving die is geconfigureerd met een actuele versie van Azure AD Connect.
     * Configureer indien nodig Azure AD Connect met de instellingen [Express](../hybrid/how-to-connect-install-express.md) of [Aangepast](../hybrid/how-to-connect-install-custom.md).
-    * Om wachtwoord terugschrijven te kunnen gebruiken, moeten uw domeincontrollers Windows Server 2008 R2 of hoger zijn.
+    * Om wachtwoord terugschrijven te kunnen gebruiken, moeten uw domeincontrollers Windows Server 2012 R2 of hoger zijn.
 
 ## <a name="configure-account-permissions-for-azure-ad-connect"></a>Accountmachtigingen configureren voor Azure AD Connect
 
