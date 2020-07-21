@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
-ms.openlocfilehash: 20d710f717a9dff26f46ac7a201a9b694f3fbe84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0041a835c02263f23c5cdc6f839756edfb070c1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74684136"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526874"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>Problemen met een virtuele Linux-machine oplossen wanneer er geen toegang is tot de Azure-seriële console en de schijf indeling gebruikmaakt van LVM (Logical Volume Manager)
 
@@ -28,7 +29,7 @@ Deze hand leiding voor probleem oplossing is van nut voor scenario's waarbij een
 
 Maak een moment opname van de betrokken VM. 
 
-De moment opname wordt vervolgens gekoppeld aan een virtuele machine voor **herstel** . Volg de instructies in [dit onderwerp](https://docs.microsoft.com/azure/virtual-machines/linux/snapshot-copy-managed-disk#use-azure-portal) voor informatie over het maken van een **moment opname**.
+De moment opname wordt vervolgens gekoppeld aan een virtuele machine voor **herstel** . Volg de instructies in [dit onderwerp](../linux/snapshot-copy-managed-disk.md#use-azure-portal) voor informatie over het maken van een **moment opname**.
 
 ## <a name="create-a-rescue-vm"></a>Een herstel-VM maken
 Meestal wordt een herstel-VM van dezelfde versie van het besturings systeem aanbevolen. Dezelfde **regio** en **resource groep** van de betrokken VM gebruiken
@@ -208,7 +209,7 @@ Verwijder, indien nodig, de **kernel**
 
 
 ### <a name="example-3---enable-serial-console"></a>Voor beeld 3: seriële console inschakelen
-Als toegang tot de seriële Azure-console niet mogelijk is, controleert u de GRUB-configuratie parameters voor uw virtuele Linux-machine en corrigeert u deze. Gedetailleerde informatie vindt u [in dit document](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-proactive-configuration)
+Als toegang tot de seriële Azure-console niet mogelijk is, controleert u de GRUB-configuratie parameters voor uw virtuele Linux-machine en corrigeert u deze. Gedetailleerde informatie vindt u [in dit document](./serial-console-grub-proactive-configuration.md)
 
 ### <a name="example-4---kernel-loading-with-problematic-lvm-swap-volume"></a>Voor beeld 4: kernel laden met problematisch LVM swap-volume
 
@@ -273,4 +274,4 @@ Meer informatie over
 
  [Azure-seriële console]( https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)
 
-[Modus voor één gebruiker](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode)
+[Modus voor één gebruiker](./serial-console-grub-single-user-mode.md)

@@ -9,11 +9,12 @@ ms.subservice: availability
 ms.date: 02/28/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 9e2b15eceff9bca4cee960fa462eb5148e3716dd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 45c316c1d1dd56f6d920423a725b2488df1a5032
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83197042"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527418"
 ---
 # <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Automatische exemplaarreparaties voor virtuele-machineschaalsets van Azure
 
@@ -140,7 +141,7 @@ New-AzVmssConfig `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-In het volgende voor beeld wordt het beleid voor automatisch herstellen ingeschakeld tijdens het maken van een nieuwe schaalset met *[AZ vmss Create](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az-vmss-create)*. Maak eerst een resource groep en maak vervolgens een nieuwe schaalset met de respijt periode voor automatisch herstel beleid ingesteld op 30 minuten.
+In het volgende voor beeld wordt het beleid voor automatisch herstellen ingeschakeld tijdens het maken van een nieuwe schaalset met *[AZ vmss Create](/cli/azure/vmss?view=azure-cli-latest#az-vmss-create)*. Maak eerst een resource groep en maak vervolgens een nieuwe schaalset met de respijt periode voor automatisch herstel beleid ingesteld op 30 minuten.
 
 ```azurecli-interactive
 az group create --name <myResourceGroup> --location <VMSSLocation>
@@ -208,7 +209,7 @@ Update-AzVmss `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-Hier volgt een voor beeld van het bijwerken van het beleid voor automatische exemplaar reparaties van een bestaande schaalset met *[AZ vmss update](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az-vmss-update)*.
+Hier volgt een voor beeld van het bijwerken van het beleid voor automatische exemplaar reparaties van een bestaande schaalset met *[AZ vmss update](/cli/azure/vmss?view=azure-cli-latest#az-vmss-update)*.
 
 ```azurecli-interactive
 az vmss update \  
@@ -222,7 +223,7 @@ az vmss update \
 
 ### <a name="rest-api"></a>REST-API 
 
-Gebruik de [weer gave exemplaar ophalen](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/getinstanceview) met API-versie 2019-12-01 of hoger voor de schaalset van de virtuele machine om de *service State* voor automatische reparaties te bekijken onder de eigenschap *orchestrationServices*. 
+Gebruik de [weer gave exemplaar ophalen](/rest/api/compute/virtualmachinescalesets/getinstanceview) met API-versie 2019-12-01 of hoger voor de schaalset van de virtuele machine om de *service State* voor automatische reparaties te bekijken onder de eigenschap *orchestrationServices*. 
 
 ```http
 GET '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/instanceView?api-version=2019-12-01'
@@ -258,7 +259,7 @@ Gebruik de *setOrchestrationServiceState* -API met API-versie 2019-12-01 of hoge
 
 ### <a name="azure-cli"></a>Azure CLI 
 
-Gebruik de cmdlet [Get-instance-View](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az-vmss-get-instance-view) om de *service State* voor automatische exemplaar reparaties weer te geven. 
+Gebruik de cmdlet [Get-instance-View](/cli/azure/vmss?view=azure-cli-latest#az-vmss-get-instance-view) om de *service State* voor automatische exemplaar reparaties weer te geven. 
 
 ```azurecli-interactive
 az vmss get-instance-view \
@@ -266,7 +267,7 @@ az vmss get-instance-view \
     --resource-group MyResourceGroup
 ```
 
-Gebruik de cmdlet [set-Orchestration-service-State](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az-vmss-set-orchestration-service-state) om de *service State* bij te werken voor automatische herstel van instanties. Als de schaalset wordt gekozen voor de functie voor automatisch herstellen, kunt u deze cmdlet gebruiken om automatisch herstellen voor schaal sets te onderbreken of hervatten. 
+Gebruik de cmdlet [set-Orchestration-service-State](/cli/azure/vmss?view=azure-cli-latest#az-vmss-set-orchestration-service-state) om de *service State* bij te werken voor automatische herstel van instanties. Als de schaalset wordt gekozen voor de functie voor automatisch herstellen, kunt u deze cmdlet gebruiken om automatisch herstellen voor schaal sets te onderbreken of hervatten. 
 
 ```azurecli-interactive
 az vmss set-orchestration-service-state \
@@ -277,7 +278,7 @@ az vmss set-orchestration-service-state \
 ```
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Gebruik de cmdlet [Get-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss?view=azps-3.7.0) met para meter *InstanceView* om de *service State* voor automatische exemplaar reparaties weer te geven.
+Gebruik de cmdlet [Get-AzVmss](/powershell/module/az.compute/get-azvmss?view=azps-3.7.0) met para meter *InstanceView* om de *service State* voor automatische exemplaar reparaties weer te geven.
 
 ```azurepowershell-interactive
 Get-AzVmss `

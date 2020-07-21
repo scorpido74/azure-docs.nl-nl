@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/19/2019
 ms.author: tibasham
-ms.openlocfilehash: f7e2b70b111cd195f688e236bf8f05b077acb000
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5ab1262def78da4971ea6e5535f3ac915a38ec8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678763"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526755"
 ---
 # <a name="azure-windows-vm-shutdown-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Het afsluiten van Azure Windows VM is vastgelopen op het opnieuw starten, afsluiten of stoppen van services
 
@@ -24,7 +25,7 @@ In dit artikel worden de stappen beschreven voor het oplossen van de problemen m
 
 ## <a name="symptoms"></a>Symptomen
 
-Wanneer u [Diagnostische gegevens over opstarten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) gebruikt om de scherm opname van de virtuele machine weer te geven, ziet u mogelijk dat de scherm opname het bericht ' opnieuw opstarten ', ' afsluiten ' of ' Services stoppen ' weergeeft.
+Wanneer u [Diagnostische gegevens over opstarten](./boot-diagnostics.md) gebruikt om de scherm opname van de virtuele machine weer te geven, ziet u mogelijk dat de scherm opname het bericht ' opnieuw opstarten ', ' afsluiten ' of ' Services stoppen ' weergeeft.
 
 ![Schermen van services opnieuw starten, afsluiten en stoppen](./media/boot-error-troubleshooting-windows/restart-shut-down-stop-service.png)
  
@@ -40,7 +41,7 @@ Windows gebruikt het afsluit proces om systeem onderhouds bewerkingen uit te voe
 
 2. Ontkoppel de schijf met de benodigde bestanden van de werkende VM en koppel de schijf aan de beschadigde virtuele machine. De schijf van het **hulp programma**wordt aangeroepen.
 
-Gebruik de [seriële console](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows) om de volgende stappen uit te voeren:
+Gebruik de [seriële console](./serial-console-windows.md) om de volgende stappen uit te voeren:
 
 1. Open een beheer-Power shell en controleer de service die niet meer reageert bij het stoppen.
 
@@ -80,13 +81,13 @@ Als het probleem niet wordt opgelost nadat u hebt gewacht tot de wijzigingen zij
 
 **De besturingssysteem schijf koppelen aan een herstel-VM**
 
-1. Maak een moment opname van de besturingssysteem schijf van de betrokken VM als back-up. Zie [snap shot a disk](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk)(Engelstalig) voor meer informatie.
+1. Maak een moment opname van de besturingssysteem schijf van de betrokken VM als back-up. Zie [snap shot a disk](../windows/snapshot-copy-managed-disk.md)(Engelstalig) voor meer informatie.
 
-2. [Koppel de besturingssysteem schijf aan een herstel-VM](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal).
+2. [Koppel de besturingssysteem schijf aan een herstel-VM](./troubleshoot-recovery-disks-portal-windows.md).
 
 3. Extern bureau blad naar de herstel-VM.
 
-4. Als de besturingssysteem schijf is versleuteld, moet u de versleuteling uitschakelen voordat u verdergaat met de volgende stap. Zie [de versleutelde besturingssysteem schijf ontsleutelen in de virtuele machine die niet kan worden opgestart](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-bitlocker-boot-error#solution)voor meer informatie.
+4. Als de besturingssysteem schijf is versleuteld, moet u de versleuteling uitschakelen voordat u verdergaat met de volgende stap. Zie [de versleutelde besturingssysteem schijf ontsleutelen in de virtuele machine die niet kan worden opgestart](./troubleshoot-bitlocker-boot-error.md#solution)voor meer informatie.
 
 **Dump bestand zoeken en een ondersteunings ticket verzenden**
 
@@ -141,7 +142,7 @@ Voer het volgende script uit om dump logboek en seriële console in te scha kele
    reg unload HKLM\BROKENSYSTEM
    ```
 
-5. [Ontkoppel de besturingssysteem schijf en koppel de besturingssysteem schijf opnieuw aan de betreffende VM](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal).
+5. [Ontkoppel de besturingssysteem schijf en koppel de besturingssysteem schijf opnieuw aan de betreffende VM](./troubleshoot-recovery-disks-portal-windows.md).
 
 6. Start de VM en open de seriële console.
 

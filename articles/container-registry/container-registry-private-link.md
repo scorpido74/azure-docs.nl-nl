@@ -2,24 +2,28 @@
 title: Persoonlijke koppeling instellen
 description: Stel een persoonlijk eind punt in op een container register en Schakel toegang in via een persoonlijke koppeling in een lokaal virtueel netwerk. Toegang voor persoonlijke koppelingen is een functie van de laag Premium-Service.
 ms.topic: article
-ms.date: 05/19/2020
-ms.openlocfilehash: f25f7b94a3008b829340cdaaed247d7ab1203c19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 06/26/2020
+ms.openlocfilehash: 713b19e4a60e5dcad6cfd92d65f97af2e921c0e9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84509335"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523839"
 ---
-# <a name="configure-azure-private-link-for-an-azure-container-registry"></a>Een persoonlijke Azure-koppeling configureren voor een Azure container Registry 
+# <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>Persoonlijke verbinding maken met een Azure container Registry met behulp van een persoonlijke Azure-koppeling
 
-Beperk de toegang tot een REGI ster door privé IP-adressen van virtuele netwerken toe te wijzen aan de register eindpunten met behulp van de [persoonlijke koppeling van Azure](../private-link/private-link-overview.md) Netwerk verkeer tussen de clients in het virtuele netwerk en het REGI ster gaat over het virtuele netwerk en een persoonlijke koppeling in het micro soft backbone-netwerk, waardoor de bloot stelling van het open bare Internet wordt voor komen.
 
-U kunt [DNS-instellingen configureren](../private-link/private-endpoint-overview.md#dns-configuration) voor uw persoonlijke eind punt, zodat de instellingen kunnen worden omgezet in het toegewezen privé IP-adres van het REGI ster. Met DNS-configuratie kunnen clients en services in het netwerk het REGI ster blijven gebruiken op het Fully Qualified Domain Name van het REGI ster, zoals *myregistry.azurecr.io*.
+Beperk de toegang tot een REGI ster door particuliere IP-adressen voor het virtuele netwerk toe te wijzen aan de register eindpunten en met behulp van een [persoonlijke Azure-koppeling](../private-link/private-link-overview.md) Netwerk verkeer tussen de clients in het virtuele netwerk en de persoonlijke eind punten van het REGI ster passeren het virtuele netwerk en een privé-koppeling in het micro soft-backbone-netwerk, waardoor de bloot stelling van het open bare Internet wordt voor komen. Met persoonlijke koppeling kunt u ook persoonlijke toegang via het REGI ster inschakelen vanuit on-premises via [Azure ExpressRoute](../expressroute/expressroute-introduction.MD) private peering of een [VPN-gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md).
+
+U kunt [DNS-instellingen configureren](../private-link/private-endpoint-overview.md#dns-configuration) voor de privé-eind punten van het REGI ster, zodat de instellingen kunnen worden omgezet in het toegewezen privé IP-adres van het REGI ster. Met DNS-configuratie kunnen clients en services in het netwerk het REGI ster blijven gebruiken op het Fully Qualified Domain Name van het REGI ster, zoals *myregistry.azurecr.io*. 
 
 Deze functie is beschikbaar in de service tier van het **Premium** -container register. Zie [Azure container Registry-lagen](container-registry-skus.md)voor meer informatie over de service lagen en limieten voor het REGI ster.
+
 
 ## <a name="things-to-know"></a>Dingen die u moet weten
 
 * Het scannen van afbeeldingen met behulp van Azure Security Center is momenteel niet beschikbaar in een REGI ster dat is geconfigureerd met een persoonlijk eind punt.
+* Momenteel kunnen Maxi maal tien privé-eind punten worden ingesteld voor een REGI ster.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -213,7 +217,7 @@ Stel een persoonlijke koppeling in wanneer u een REGI ster maakt of Voeg een per
     | ------- | ----- |
     | Abonnement | Selecteer uw abonnement. |
     | Resourcegroep | Voer de naam van een bestaande groep in of maak een nieuwe.|
-    | Name | Voer een unieke naam in. |
+    | Naam | Voer een unieke naam in. |
     | Subbron |**REGI ster** selecteren|
     | **Netwerken** | |
     | Virtueel netwerk| Selecteer het virtuele netwerk waarin uw virtuele machine is geïmplementeerd, zoals *myDockerVMVNET*. |
@@ -239,7 +243,7 @@ Stel een persoonlijke koppeling in wanneer u een REGI ster maakt of Voeg een per
     | Abonnement | Selecteer uw abonnement. |
     | Resourcegroep | Voer de naam van een bestaande groep in of maak een nieuwe.|
     | **Exemplaardetails** |  |
-    | Name | Voer een naam in. |
+    | Naam | Voer een naam in. |
     |Regio|Selecteer een regio.|
     |||
 5. Selecteer **Volgende: Resource**.

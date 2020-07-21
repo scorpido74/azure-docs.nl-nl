@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 154160f9a3fbd485ee6383bf3d5ff1c291520a75
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 276be92ea4c03b9ebeb3e13df69ce1b10328dcaf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71088524"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526466"
 ---
 # <a name="remote-desktop-license-server-isnt-available-when-you-connect-to-an-azure-vm"></a>Extern bureaublad licentie server is niet beschikbaar wanneer u verbinding maakt met een Azure VM
 
@@ -122,7 +122,7 @@ U kunt dit probleem oplossen door [een back-up te maken van de besturingssysteem
        telnet <FQDN / IP License Server> 135
        ```
 
-3. Als er geen Extern bureaublad licentie server in de omgeving is en u er een wilt maken, kunt u [een extern bureaublad Licensing-functie service installeren](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731765(v=ws.11)). [Configureer vervolgens de RDS-licentie verlening](https://techcommunity.microsoft.com/t5/Ask-The-Performance-Team/RD-Licensing-Configuration-on-Windows-Server-2012/ba-p/375383).
+3. Als er geen Extern bureaublad licentie server in de omgeving is en u er een wilt maken, kunt u [een extern bureaublad Licensing-functie service installeren](/previous-versions/windows/it-pro/windows-server-2008-r2-and-2008/cc731765(v=ws.11)). [Configureer vervolgens de RDS-licentie verlening](https://techcommunity.microsoft.com/t5/Ask-The-Performance-Team/RD-Licensing-Configuration-on-Windows-Server-2012/ba-p/375383).
 
 4. Als een Extern bureaublad licentie server is geconfigureerd en in orde is, moet u ervoor zorgen dat de Extern bureaublad licentie server wordt geactiveerd met Cal's.
 

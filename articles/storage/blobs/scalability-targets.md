@@ -1,21 +1,22 @@
 ---
-title: Schaalbaarheids-en prestatie doelen voor Blob Storage
+title: Schaalbaarheids- en prestatiedoelen voor Blob-opslag
 titleSuffix: Azure Storage
 description: Meer informatie over de schaalbaarheids-en prestatie doelen voor Blob-opslag.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 07/14/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 3d0dd4683c990e2bd5b2f6f1990f1b379f76fc75
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 753469ca2792be23bbe0ef21083d7ff01b362613
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75748825"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528715"
 ---
-# <a name="scalability-and-performance-targets-for-blob-storage"></a>Schaalbaarheids-en prestatie doelen voor Blob Storage
+# <a name="scalability-and-performance-targets-for-blob-storage"></a>Schaalbaarheids- en prestatiedoelen voor Blob-opslag
 
 [!INCLUDE [storage-scalability-intro-include](../../../includes/storage-scalability-intro-include.md)]
 

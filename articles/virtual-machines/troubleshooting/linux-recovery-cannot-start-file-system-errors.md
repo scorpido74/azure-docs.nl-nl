@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: 455cb1e0067217be6edcf665e8c07e8fcd684ab5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e26d4070bc9fabeb3467e7bdc805faad4e6646c3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76842398"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526500"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>Problemen met het starten van een Linux-VM oplossen vanwege bestandssysteem fouten
 
@@ -74,7 +75,7 @@ Linux heeft verschillende bestandssysteem controles beschikbaar. De meest voorko
 
 ## <a name="resolution"></a>Oplossing
 
-Om dit probleem op te lossen, start u de virtuele machine op in de nood herstel modus met behulp van de [seriële console](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux) en gebruikt u het hulp programma om het bestands systeem te herstellen. Als de seriële console niet is ingeschakeld op uw virtuele machine of niet werkt, raadpleegt u de sectie [de virtuele machine offline herstellen](#repair-the-vm-offline) in dit artikel.
+Om dit probleem op te lossen, start u de virtuele machine op in de nood herstel modus met behulp van de [seriële console](./serial-console-linux.md) en gebruikt u het hulp programma om het bestands systeem te herstellen. Als de seriële console niet is ingeschakeld op uw virtuele machine of niet werkt, raadpleegt u de sectie [de virtuele machine offline herstellen](#repair-the-vm-offline) in dit artikel.
 
 ## <a name="use-the-serial-console"></a>Via de seriële console
 
@@ -82,8 +83,8 @@ Om dit probleem op te lossen, start u de virtuele machine op in de nood herstel 
 
    > [!Note]
    > Zie voor meer informatie over het gebruik van seriële console voor Linux:
-   > * [Seriële console gebruiken voor toegang tot de GRUB en de modus voor één gebruiker](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console-grub-single-user-mode)
-   > * [Seriële console gebruiken voor SysRq-en NMI-aanroepen](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-nmi-sysrq)
+   > * [Seriële console gebruiken voor toegang tot de GRUB en de modus voor één gebruiker](../linux/serial-console-grub-single-user-mode.md)
+   > * [Seriële console gebruiken voor SysRq-en NMI-aanroepen](./serial-console-nmi-sysrq.md)
 
 2. Selecteer de knop aan/uit en selecteer vervolgens VM opnieuw opstarten. (Als de seriële console niet is ingeschakeld of niet is verbonden, ziet u de knop niet.)
 
@@ -133,7 +134,7 @@ Om dit probleem op te lossen, start u de virtuele machine op in de nood herstel 
 
 ## <a name="repair-the-vm-offline"></a>De virtuele machine offline herstellen
 
-1. Koppel de systeem schijf van de virtuele machine als een gegevens schijf aan een herstel-VM (wille keurige werkende Linux-machine). U kunt hiervoor [cli-opdrachten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux) gebruiken of u kunt de herstel-VM instellen met behulp van de opdrachten voor het herstellen van de [virtuele machine](repair-linux-vm-using-azure-virtual-machine-repair-commands.md).
+1. Koppel de systeem schijf van de virtuele machine als een gegevens schijf aan een herstel-VM (wille keurige werkende Linux-machine). U kunt hiervoor [cli-opdrachten](./troubleshoot-recovery-disks-linux.md) gebruiken of u kunt de herstel-VM instellen met behulp van de opdrachten voor het herstellen van de [virtuele machine](repair-linux-vm-using-azure-virtual-machine-repair-commands.md).
 
 2. Zoek het label station van de systeem schijf die u hebt gekoppeld. In dit geval gaan we ervan uit dat het label van de systeem schijf die u hebt gekoppeld,/dev/sdc1. is Vervang deze door de juiste waarde voor uw virtuele machine.
 
@@ -177,6 +178,5 @@ Om dit probleem op te lossen, start u de virtuele machine op in de nood herstel 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Problemen met een virtuele Linux-machine oplossen door de besturingssysteem schijf te koppelen aan een herstel-VM met de Azure CLI 2,0](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-troubleshoot-recovery-disks)
-* [Een gegevens schijf koppelen aan een virtuele Linux-machine met behulp van de portal](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal)
-
+* [Problemen met een virtuele Linux-machine oplossen door de besturingssysteem schijf te koppelen aan een herstel-VM met de Azure CLI 2,0](./troubleshoot-recovery-disks-linux.md)
+* [Een gegevens schijf koppelen aan een virtuele Linux-machine met behulp van de portal](../linux/attach-disk-portal.md)

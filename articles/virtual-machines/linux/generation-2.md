@@ -7,11 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 3336869a5f91613849cdccb67f9d804205148608
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e84d4d147490cd3b9d136f25a3707f5a74999f3f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83652526"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527333"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Ondersteuning voor virtuele machines van generatie 2 op Azure
 
@@ -19,28 +20,28 @@ Ondersteuning voor virtuele machines van generatie 2 (Vm's) is nu beschikbaar in
 
 Vm's van generatie 2 ondersteunen belang rijke functies die niet worden ondersteund in virtuele machines van de eerste generatie. Tot deze functies behoren meer geheugen, Intel-software Guard Extensions (Intel SGX) en gevirtualiseerde permanent geheugen (vPMEM). Virtuele machines van generatie 2 kunnen on-premises worden uitgevoerd, hebben enkele functies die nog niet worden ondersteund in Azure. Zie de sectie [functies en mogelijkheden](#features-and-capabilities) voor meer informatie.
 
-Vm's van generatie 2 gebruiken de nieuwe op UEFI gebaseerde opstart architectuur in plaats van de op BIOS gebaseerde architectuur die wordt gebruikt door virtuele machines van de eerste generatie. Vergeleken met virtuele machines van de eerste generatie, hebben virtuele machines van de tweede generatie mogelijk betere opstart-en installatie tijden. Zie voor een overzicht van de virtuele machines van de 2e generatie en enkele verschillen tussen de generatie 1 en generatie 2, [moet ik een generatie 1 of 2 maken in Hyper-V?](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
+Vm's van generatie 2 gebruiken de nieuwe op UEFI gebaseerde opstart architectuur in plaats van de op BIOS gebaseerde architectuur die wordt gebruikt door virtuele machines van de eerste generatie. Vergeleken met virtuele machines van de eerste generatie, hebben virtuele machines van de tweede generatie mogelijk betere opstart-en installatie tijden. Zie voor een overzicht van de virtuele machines van de 2e generatie en enkele verschillen tussen de generatie 1 en generatie 2, [moet ik een generatie 1 of 2 maken in Hyper-V?](/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
 
 ## <a name="generation-2-vm-sizes"></a>VM-grootten van generatie 2
 
 Virtuele machines van de eerste generatie worden ondersteund door alle VM-grootten in azure (met uitzonde ring van Vm's uit de Mv2-serie). Azure biedt nu ondersteuning voor generatie 2 voor de volgende geselecteerde VM-serie:
 
-* [B-serie](https://docs.microsoft.com/azure/virtual-machines/linux/b-series-burstable)
+* [B-serie](../sizes-b-series-burstable.md)
 * [DCsv2-serie](../dcv2-series.md)
 * [DSv2-serie](../dv2-dsv2-series.md) en [Dsv3-serie](../dv3-dsv3-series.md)
 * [Esv3-serie](../ev3-esv3-series.md)
 * [Fsv2-serie](../fsv2-series.md)
-* [GS-serie](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-previous-gen#gs-series)
+* [GS-serie](../sizes-previous-gen.md#gs-series)
 * [HB-serie](../hb-series.md)
 * [HC-serie](../hc-series.md)
-* [Ls-Series](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-previous-gen#ls-series) en [Lsv2-serie](../lsv2-series.md)
+* [Ls-Series](../sizes-previous-gen.md#ls-series) en [Lsv2-serie](../lsv2-series.md)
 * [M-serie](../m-series.md)
 * [Mv2-serie](../mv2-series.md)<sup>1</sup>
 * [NCv2-serie](../ncv2-series.md) en [NCv3-serie](../ncv3-series.md)
 * [ND-serie](../nd-series.md)
 * [NVv3-serie](../nvv3-series.md)
 
-<sup>1</sup> Mv2-serie biedt geen ondersteuning voor generatie 1 VM-installatie kopieën en biedt alleen ondersteuning voor een subset van installatie kopieën van de 2e generatie. Raadpleeg de [documentatie van de Mv2-serie](https://docs.microsoft.com/azure/virtual-machines/mv2-series) voor meer informatie.
+<sup>1</sup> Mv2-serie biedt geen ondersteuning voor generatie 1 VM-installatie kopieën en biedt alleen ondersteuning voor een subset van installatie kopieën van de 2e generatie. Raadpleeg de [documentatie van de Mv2-serie](../mv2-series.md) voor meer informatie.
 
 ## <a name="generation-2-vm-images-in-azure-marketplace"></a>VM-installatie kopieën van generatie 2 in azure Marketplace
 
@@ -103,7 +104,7 @@ Hieronder vindt u de stappen voor het maken van een Gen2-VM (Generation 2) in Az
 1. Selecteer **Een resource maken**.
 1. Klik op **alles weer geven** in azure Marketplace aan de linkerkant.
 1. Selecteer een installatie kopie die Gen2 ondersteunt.
-1. Klik op **Create**.
+1. Klik op **Maken**.
 1. Selecteer op het tabblad **Geavanceerd** onder de sectie **VM-generatie** de optie **generatie 2** .
 1. Ga naar het tabblad **basis** informatie en klik onder **Details van exemplaar**op **grootte** en open de Blade **VM-grootte selecteren** .
 1. Selecteer een [ondersteunde virtuele machine van de tweede generatie](#generation-2-vm-sizes).
@@ -203,4 +204,4 @@ U kunt ook virtuele machines van de tweede generatie maken met behulp van schaal
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [virtuele machines van de 2e generatie in Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
+* Meer informatie over [virtuele machines van de 2e generatie in Hyper-V](/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).

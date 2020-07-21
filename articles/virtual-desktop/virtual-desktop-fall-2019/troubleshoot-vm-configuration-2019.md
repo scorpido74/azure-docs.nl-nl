@@ -1,5 +1,5 @@
 ---
-title: Problemen met Windows Virtual Desktop Session Host oplossen-Azure
+title: Problemen met Windows Virtual Desktop Session Host oplossen 2019-Azure
 description: Problemen oplossen bij het configureren van virtuele machines voor virtuele bureau blad-sessies van Windows.
 services: virtual-desktop
 author: Heidilohr
@@ -8,14 +8,14 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0dd03508a745a231f10cfc6d09953067618043e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2f4a288ab83ca9f20434c55a180c2d9b30be5d4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362506"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527656"
 ---
-# <a name="session-host-virtual-machine-configuration"></a>Configuratie van sessiehost-VM's
+# <a name="troubleshoot-session-host-virtual-machine-configuration"></a>Problemen met de virtuele-machine configuratie voor de sessie host oplossen
 
 >[!IMPORTANT]
 >Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../troubleshoot-vm-configuration.md) als u Azure Resource Manager Windows Virtual Desktop-objecten wilt beheren die zijn geïntroduceerd in de update Lente 2020.

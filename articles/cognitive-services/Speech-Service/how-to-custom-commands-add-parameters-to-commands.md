@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: d2a14a501ebcf0913804ce39019a3fa4018ca141
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 9363f400754a38d4cc6efd29ac48d7a0476de66f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362370"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524298"
 ---
 # <a name="add-parameters-to-commands"></a>Parameters toevoegen aan opdrachten
 
@@ -50,20 +50,23 @@ Bewerk de bestaande **TurnOn** -opdracht om meerdere apparaten in te scha kelen 
    1. Nu gaan we de eigenschappen van de para meters configureren. Ga naar [verwijzingen](./custom-commands-references.md)voor uitleg van alle configuratie-eigenschappen van een opdracht. Configureer de overige eigenschappen van de para meter als volgt:
       
 
-       | Configuratie      | Voorgestelde waarde     | Beschrijving                                                      |
+       | Configuration      | Voorgestelde waarde     | Beschrijving                                                      |
        | ------------------ | ----------------| ---------------------------------------------------------------------|
        | Naam               | `OnOff`           | Een beschrijvende naam voor de para meter                                                                           |
        | Is wereld wijd          | uitgeschakeld       | Selectie vakje dat aangeeft of een waarde voor deze para meter globaal wordt toegepast op alle opdrachten in de toepassing|
        | Vereist           | wel         | Selectie vakje dat aangeeft of een waarde voor deze para meter vereist is voordat de opdracht wordt voltooid |
        | Antwoord voor vereiste para meter      |Eenvoudige editor >`On or Off?`      | Een prompt om te vragen naar de waarde van deze para meter als deze niet bekend is |
        | Type               | Tekenreeks          | Het type para meter, zoals getal, teken reeks, datum/tijd of geografie   |
-       | Configuratie      | Vooraf gedefinieerde invoer waarden accepteren van interne catalogus | Voor teken reeksen beperkt de invoer tot een reeks mogelijke waarden |
+       | Configuration      | Vooraf gedefinieerde invoer waarden accepteren van interne catalogus | Voor teken reeksen beperkt de invoer tot een reeks mogelijke waarden |
        | Vooraf gedefinieerde invoer waarden     | `on`, `off`           | Set mogelijke waarden en hun aliassen         |
        
         
    1. Voor het toevoegen van vooraf gedefinieerde invoer waarden selecteert u **een vooraf gedefinieerde invoer toevoegen** en in het venster **Nieuw item** typt u **naam** zoals opgegeven in de bovenstaande tabel. In dit geval gebruiken we geen aliassen, zodat u deze leeg kunt laten. 
+
     > [!div class="mx-imgBorder"]
-        > ![Para meter maken](media/custom-commands/create-on-off-parameter.png)
+
+    > ![Para meter maken](media/custom-commands/create-on-off-parameter.png)
+
    1. Selecteer **Opslaan** om alle configuraties van de para meter op te slaan.
  
  ### <a name="add-subjectdevice-parameter"></a>De para meter SubjectDevice toevoegen 
@@ -78,7 +81,7 @@ Bewerk de bestaande **TurnOn** -opdracht om meerdere apparaten in te scha kelen 
        | Vereist           | wel               |
        | Antwoord voor vereiste para meter     | Eenvoudige editor >`Which device do you want to control?`    | 
        | Type               | Tekenreeks                |          |
-       | Configuratie      | Vooraf gedefinieerde invoer waarden accepteren van interne catalogus | 
+       | Configuration      | Vooraf gedefinieerde invoer waarden accepteren van interne catalogus | 
        | Vooraf gedefinieerde invoer waarden | `tv`, `fan`               |
        | Aliassen ( `tv` )      | `television`, `telly`     |
 
@@ -123,7 +126,7 @@ Wijzig de bestaande **ConfirmationResponse**van de voltooiings regel.
     ```
 1. Selecteer **Opslaan**.
 
-### <a name="try-it-out"></a>Uitproberen
+### <a name="try-it-out"></a>Probeer het eens
 1. Selecteer een **trein** pictogram boven in het rechterdeel venster.
 
 1. Wanneer de training is voltooid, selecteert u **testen**. Er wordt een **test-app** -venster weer gegeven.
@@ -144,7 +147,7 @@ Wijzig de **SetTemperature** -opdracht om deze in te scha kelen, zodat de Tempe 
 
 Nieuwe parameter **temperatuur** toevoegen met de volgende configuratie
 
-| Configuratie      | Voorgestelde waarde     |
+| Configuration      | Voorgestelde waarde     |
 | ------------------ | ----------------|
 | Naam               | `Temperature`           |
 | Vereist           | wel         |
@@ -163,12 +166,12 @@ change the temperature
 
 Bewerk de bestaande voltooiings regels volgens de volgende configuratie.
 
-| Configuratie      | Voorgestelde waarde     |
+| Configuration      | Voorgestelde waarde     |
 | ------------------ | ----------------|
 | Voorwaarden         | Vereiste para meter > temperatuur           |
 | Acties           | > spraak antwoord verzenden`Ok, setting temperature to {Temperature} degrees` |
 
-### <a name="try-it-out"></a>Uitproberen
+### <a name="try-it-out"></a>Probeer het eens
 
 **Train** en **test** de wijzigingen met enkele interacties.
 
@@ -210,7 +213,7 @@ Bewerk de bestaande voltooiings regels volgens de volgende configuratie.
    | Acties    | Spraak antwoord verzenden-`Ok, alarm set for {DateTime}`  |
 
 
-### <a name="try-it-out"></a>Uitproberen
+### <a name="try-it-out"></a>Probeer het eens
 
 **Train** en **test** de wijzigingen.
 - Invoer: alarm instellen voor morgen om 12:00 uur

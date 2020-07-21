@@ -10,15 +10,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 1cf6c7417aa86d47e59e08786e7807e32c175a25
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08d32e4b7806ec53f48389b127ab34371271cf07
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759575"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527231"
 ---
 # <a name="configure-prerequisites"></a>Vereisten configureren
 
-Voordat u de Marketplace-aanbieding gebruikt voor het implementeren van een zelfbeheerde open Shift container platform 3,11-cluster in azure, moeten enkele vereiste onderdelen worden geconfigureerd.  Raadpleeg het artikel openstaande [vereisten](https://docs.microsoft.com/azure/virtual-machines/linux/openshift-container-platform-3x-prerequisites) voor instructies voor het maken van een SSH-sleutel (zonder een wachtwoordzin), Azure-sleutel kluis, sleutel kluis geheim en een service-principal.
+Voordat u de Marketplace-aanbieding gebruikt voor het implementeren van een zelfbeheerde open Shift container platform 3,11-cluster in azure, moeten enkele vereiste onderdelen worden geconfigureerd.  Raadpleeg het artikel openstaande [vereisten](./openshift-container-platform-3x-prerequisites.md) voor instructies voor het maken van een SSH-sleutel (zonder een wachtwoordzin), Azure-sleutel kluis, sleutel kluis geheim en een service-principal.
 
  
 ## <a name="deploy-using-the-marketplace-offer"></a>Implementeren met behulp van de Marketplace-aanbieding

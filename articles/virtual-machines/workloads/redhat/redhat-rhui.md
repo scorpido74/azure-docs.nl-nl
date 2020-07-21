@@ -11,11 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 19503fa2257f42cf896dbfb831d4165e329134b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 685d337f9e6448f44d34a980ed884026d8a0a168
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85250346"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525412"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat update-infra structuur voor Red Hat Enterprise Linux Vm's op aanvraag in azure
  Met de [Red Hat Update infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) kunnen cloud providers, zoals Azure, gehoste inhoud van een opslag plaats met Red Hat worden gespiegeld, aangepaste opslag plaatsen met Azure-specifieke inhoud maken en deze beschikbaar maken voor virtuele machines van eind gebruikers.
@@ -85,7 +86,7 @@ EUS-opslag plaatsen (Extended update support) zijn beschikbaar voor klanten die 
 Op het moment van deze schrijf bewerking is de EUS-ondersteuning voor RHEL <= 7,4 beëindigd. Zie de sectie ' Red Hat Enterprise Linux uitgebreid onderhoud ' in de [documentatie van Red Hat](https://access.redhat.com/support/policy/updates/errata/#Long_Support) voor meer informatie.
 * RHEL 7,4 EUS-ondersteuning eindigt op 31 augustus 2019
 * RHEL 7,5 EUS support eindigt op 30 april 2020
-* RHEL 7,6 EUS-ondersteuning eindigt op 31 oktober 2020
+* RHEL 7,6 EUS-ondersteuning eindigt op 31 mei 2021
 * RHEL 7,7 EUS-ondersteuning eindigt op 30 augustus 2021
 
 ### <a name="switch-a-rhel-vm-to-eus-version-lock-to-a-specific-minor-version"></a>Een RHEL-VM overschakelen naar EUS (versie-vergren delen naar een specifieke secundaire versie)
@@ -167,7 +168,7 @@ Als u een netwerk configuratie gebruikt om de toegang van RHEL PAYG Vm's verder 
 >De nieuwe installatie kopieën van Azure US Government, vanaf januari 2020, maken gebruik van een openbaar IP-adres dat is vermeld onder Azure Global-header hierboven.
 
 >[!NOTE]
->Houd er ook rekening mee dat Azure Duitsland is afgeschaft ten gunste van open bare Duitse regio's. Aanbeveling voor Azure Duitsland-klanten is om aan de slag te gaan met de open bare [RHUI.](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/redhat-rhui#manual-update-procedure-to-use-the-azure-rhui-servers)
+>Houd er ook rekening mee dat Azure Duitsland is afgeschaft ten gunste van open bare Duitse regio's. Aanbeveling voor Azure Duitsland-klanten is om aan de slag te gaan met de open bare [RHUI.](#manual-update-procedure-to-use-the-azure-rhui-servers)
 
 ## <a name="azure-rhui-infrastructure"></a>Azure RHUI-infra structuur
 

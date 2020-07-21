@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
-ms.openlocfilehash: 19b2fcaed2c80d4ca52ada9f9f0898479e73bcf2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13e4c7a981124aba22dcb324d60e075d1d552bf8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79266986"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526796"
 ---
 # <a name="how-to-use-perfinsights"></a>PerfInsights gebruiken
 
@@ -43,7 +44,7 @@ In dit scenario worden basis gegevens verzameld, zoals opslag en hardwareconfigu
 
 - Opslag gegevens
 
-- Configuratie van virtuele Azure-machine (verzameld met [azure instance metadata service](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service))
+- Configuratie van virtuele Azure-machine (verzameld met [azure instance metadata service](../windows/instance-metadata-service.md))
 
 - Lijst met actieve processen, schijf, geheugen en CPU-gebruik
 
@@ -82,7 +83,7 @@ Informatie over de virtuele Linux-machine, het besturings systeem, het blok kere
   - Netwerk routerings tabel
   - Poorten en status geopend
 
-- Storage
+- Opslag
   - Lijst met apparaten blok keren
   - Lijst met partities
   - Koppelings punten lijst
@@ -108,7 +109,7 @@ Informatie over de virtuele Linux-machine, het besturings systeem, het blok kere
   - /etc/waagent.config
   - Uitvoer van journalctl voor de afgelopen vijf dagen
 
-- [Meta gegevens van Azure virtual machine-instantie](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
+- [Meta gegevens van Azure virtual machine-instantie](../windows/instance-metadata-service.md)
 
 >[!Note]
 >[ `*` ] PCI-informatie is nog niet verzameld in Debian-en SLES-distributies

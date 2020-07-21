@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 8c5e384e85861cdced3ed6dbe60733128b499407
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 6a2208fac98d3cd8e4ddcea887d9b8cf30fb6482
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039004"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524502"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>LUIS docker-containers installeren en uitvoeren
 
@@ -32,7 +32,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Als u de LUIS-container wilt uitvoeren, moet u rekening houden met de volgende vereisten:
 
-|Vereist|Functie|
+|Vereist|Doel|
 |--|--|
 |Docker-engine| De docker-engine moet zijn geïnstalleerd op een [hostcomputer](#the-host-computer). Docker biedt pakketten waarmee de Docker-omgeving op [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) en [Linux](https://docs.docker.com/engine/installation/#supported-platforms) kan worden geconfigureerd. Zie het [Docker-overzicht](https://docs.docker.com/engine/docker-overview/) voor een inleiding tot de basisprincipes van Docker en containers.<br><br> Docker moet worden geconfigureerd zodat de containers verbinding kunnen maken met en facturerings gegevens kunnen verzenden naar Azure. <br><br> **In Windows**moet docker ook worden geconfigureerd voor de ondersteuning van Linux-containers.<br><br>|
 |Vertrouwd met docker | U moet een basis kennis hebben van docker-concepten, zoals registers, opslag plaatsen, containers en container installatie kopieën, en kennis van basis `docker` opdrachten.|
@@ -53,7 +53,7 @@ Api's voor verpakte apps ontwerpen:
 
 ### <a name="container-requirements-and-recommendations"></a>Container vereisten en aanbevelingen
 
-Deze container ondersteunt minimale en aanbevolen waarden voor de instellingen:
+In de onderstaande tabel worden de minimum-en aanbevolen waarden voor de container host weer gegeven. Uw vereisten kunnen variëren afhankelijk van het verkeers volume.
 
 |Container| Minimum | Aanbevolen | TPS<br>(Mini maal, Maxi maal)|
 |-----------|---------|-------------|--|
@@ -108,7 +108,7 @@ De map invoer koppeling kan de modellen **productie**, **fase ring**en **versie*
 |Pakket type|Query eind punt-API|Beschik baarheid van query's|Bestands naam indeling pakket|
 |--|--|--|--|
 |Versie|GET, POST|Alleen container|`{APP_ID}_v{APP_VERSION}.gz`|
-|Faseren|GET, POST|Azure en container|`{APP_ID}_STAGING.gz`|
+|Staging|GET, POST|Azure en container|`{APP_ID}_STAGING.gz`|
 |Productie|GET, POST|Azure en container|`{APP_ID}_PRODUCTION.gz`|
 
 > [!IMPORTANT]
@@ -237,11 +237,11 @@ Er zijn meer [voor beelden](luis-container-configuration.md#example-docker-run-c
 
 Zowel v2-als [v3](luis-migration-api-v3.md) -versies van de API zijn beschikbaar in de container.
 
-## <a name="query-the-containers-prediction-endpoint"></a>Query uitvoeren op het prediction-eind punt van de container
+## <a name="query-the-containers-prediction-endpoint"></a>Een query uitvoeren op het voorspellingseindpunt van de container
 
-De container bevat op REST gebaseerde query Voorspellings eindpunt-Api's. Eind punten voor gepubliceerde (staging-of productie)-apps hebben een _andere_ route dan eind punten voor apps met versie nummer.
+De container bevat op REST gebaseerde eindpunt-API's voor queryvoorspelling. Eind punten voor gepubliceerde (staging-of productie)-apps hebben een _andere_ route dan eind punten voor apps met versie nummer.
 
-Gebruik de host, `http://localhost:5000` voor container-api's.
+Gebruik de host, `http://localhost:5000`, voor container-API's.
 
 # <a name="v3-prediction-endpoint"></a>[V3-Voorspellings eindpunt](#tab/v3)
 
@@ -252,12 +252,12 @@ Gebruik de host, `http://localhost:5000` voor container-api's.
 
 De query parameters configureren hoe en wat wordt geretourneerd in de query-antwoord:
 
-|Query parameter|Type|Functie|
+|Query parameter|Type|Doel|
 |--|--|--|
 |`query`|tekenreeks|De utterance van de gebruiker.|
-|`verbose`|booleaans|Een Booleaanse waarde die aangeeft of alle meta gegevens voor de voorspelde modellen moeten worden geretourneerd. De standaardinstelling is onwaar.|
-|`log`|booleaans|Registreert query's die later kunnen worden gebruikt voor [actief leren](luis-how-to-review-endpoint-utterances.md). De standaardinstelling is onwaar.|
-|`show-all-intents`|booleaans|Een Booleaanse waarde waarmee wordt aangegeven of alleen de intenties of de bovenste Score intentie moeten worden geretourneerd. De standaardinstelling is onwaar.|
+|`verbose`|boolean|Een Booleaanse waarde die aangeeft of alle meta gegevens voor de voorspelde modellen moeten worden geretourneerd. De standaardinstelling is onwaar.|
+|`log`|boolean|Registreert query's die later kunnen worden gebruikt voor [actief leren](luis-how-to-review-endpoint-utterances.md). De standaardinstelling is onwaar.|
+|`show-all-intents`|boolean|Een Booleaanse waarde waarmee wordt aangegeven of alleen de intenties of de bovenste Score intentie moeten worden geretourneerd. De standaardinstelling is onwaar.|
 
 # <a name="v2-prediction-endpoint"></a>[V2-Voorspellings eindpunt](#tab/v2)
 
@@ -268,13 +268,13 @@ De query parameters configureren hoe en wat wordt geretourneerd in de query-antw
 
 De query parameters configureren hoe en wat wordt geretourneerd in de query-antwoord:
 
-|Query parameter|Type|Functie|
+|Query parameter|Type|Doel|
 |--|--|--|
 |`q`|tekenreeks|De utterance van de gebruiker.|
 |`timezoneOffset`|getal|Met de time zone offset kunt u [de tijd zone wijzigen](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) die wordt gebruikt door de vooraf samengestelde entiteit datetimeV2.|
-|`verbose`|booleaans|Retourneert alle intenten en hun scores als deze zijn ingesteld op waar. De standaard waarde is False, waarmee alleen de hoogste intentie wordt geretourneerd.|
-|`staging`|booleaans|Retourneert een query van de resultaten van de faserings omgeving indien ingesteld op waar. |
-|`log`|booleaans|Registreert query's die later kunnen worden gebruikt voor [actief leren](luis-how-to-review-endpoint-utterances.md). De standaardwaarde is true.|
+|`verbose`|boolean|Retourneert alle intenten en hun scores als deze zijn ingesteld op waar. De standaard waarde is False, waarmee alleen de hoogste intentie wordt geretourneerd.|
+|`staging`|boolean|Retourneert een query van de resultaten van de faserings omgeving indien ingesteld op waar. |
+|`log`|boolean|Registreert query's die later kunnen worden gebruikt voor [actief leren](luis-how-to-review-endpoint-utterances.md). De standaardwaarde is true.|
 
 ***
 

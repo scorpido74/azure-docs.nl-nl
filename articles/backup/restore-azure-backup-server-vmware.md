@@ -3,15 +3,16 @@ title: VMware-Vm's herstellen met Azure Backup Server
 description: Gebruik Azure Backup Server (MABS) om VMware-Vm's te herstellen die worden uitgevoerd op een VMware vCenter/ESXi-server.
 ms.topic: conceptual
 ms.date: 08/18/2019
-ms.openlocfilehash: ab2fb4f8f79fa5a664f5cb0ba1bb537c1df658c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d11b9259a44c32891f5fefa6f175681838927586
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77212363"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524519"
 ---
 # <a name="restore-vmware-virtual-machines"></a>Virtuele VMware-machines herstellen
 
-In dit artikel wordt uitgelegd hoe u Microsoft Azure Backup Server (MABS) gebruikt om de herstel punten voor VMware-VM'S te herstellen. Zie [beveiligde gegevens herstellen](https://docs.microsoft.com/azure/backup/backup-azure-alternate-dpm-server)voor een overzicht van het gebruik van MABS om gegevens te herstellen. In de MABS-beheer console kunt u op twee manieren herstel bare gegevens vinden: zoeken of bladeren. Wanneer u gegevens herstelt, is het mogelijk dat u de gegevens of een virtuele machine niet op dezelfde locatie wilt herstellen. Daarom ondersteunt MABS drie herstel opties voor VMware VM-back-ups:
+In dit artikel wordt uitgelegd hoe u Microsoft Azure Backup Server (MABS) gebruikt om de herstel punten voor VMware-VM'S te herstellen. Zie [beveiligde gegevens herstellen](./backup-azure-alternate-dpm-server.md)voor een overzicht van het gebruik van MABS om gegevens te herstellen. In de MABS-beheer console kunt u op twee manieren herstel bare gegevens vinden: zoeken of bladeren. Wanneer u gegevens herstelt, is het mogelijk dat u de gegevens of een virtuele machine niet op dezelfde locatie wilt herstellen. Daarom ondersteunt MABS drie herstel opties voor VMware VM-back-ups:
 
 * **Herstel van de oorspronkelijke locatie (herstellen)** : gebruik herstellen om een beveiligde VM naar de oorspronkelijke locatie te herstellen. U kunt een virtuele machine alleen op de oorspronkelijke locatie herstellen als er geen schijven zijn toegevoegd of verwijderd, omdat de back-up is uitgevoerd. Als er schijven zijn toegevoegd of verwijderd, moet u alternatieve locatie herstel gebruiken.
 

@@ -4,14 +4,14 @@ description: Meer informatie over het verplaatsen van App Service resources van 
 ms.topic: how-to
 ms.date: 02/27/2020
 ms.custom: subject-moving-resources
-ms.openlocfilehash: c19c18e8d9980b75acd9790dba712fbb6b2a4b1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 87a2da31802a8b6858e875c23ef1dbd2d6d006bc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945474"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524851"
 ---
-# <a name="move-an-app-service-app-to-another-region"></a>Een App Service-app naar een andere regio verplaatsen
+# <a name="move-an-app-service-resource-to-another-region"></a>Een App Service Resource verplaatsen naar een andere regio
 
 In dit artikel wordt beschreven hoe u App Service-resources verplaatst naar een andere Azure-regio. U kunt uw resources om een aantal redenen verplaatsen naar een andere regio. Om bijvoorbeeld te profiteren van een nieuwe Azure-regio, voor het implementeren van functies of services die alleen beschikbaar zijn in specifieke regio's, om te voldoen aan de interne beleids-en beheer vereisten, of als reactie op vereisten voor capaciteits planning.
 

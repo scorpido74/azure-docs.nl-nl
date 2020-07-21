@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3262841efb9109b1de24fe501ea0a7bea0dd612d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e661485e58c7e00c4eee41d808f727153a7761c9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77025126"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525038"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Back-ups maken van werkbelasting Vm's op CloudSimple Privécloud met Veeam B&R
 
@@ -135,7 +136,7 @@ Maak firewall regels tussen het subnet van het beheer en het back-upnetwerk om n
 
 De volgende tabel bevat een lijst met poorten.
 
-| Pictogram | Description | Pictogram | Description |
+| Pictogram | Beschrijving | Pictogram | Beschrijving |
 | ------------ | ------------- | ------------ | ------------- |
 | Back-upserver  | vCenter  | HTTPS/TCP  | 443 |
 | Back-upserver <br> *Vereist voor de implementatie van Veeam backup &-replicatie onderdelen* | Back-upproxy  | TCP/UDP  | 135, 137 tot 139 en 445 |
@@ -194,7 +195,7 @@ Verbind uw virtuele netwerk met de Privécloud door de instructies in [Azure Vir
 ### <a name="configure-azure-blob-storage-for-long-term-data-retention"></a>Azure Blob-opslag configureren voor het bewaren van lange termijn gegevens
 
 1. Maak een opslag account voor algemeen gebruik (GPv2) van het standaard type en een BLOB-container zoals beschreven in de micro soft video [aan de slag met Azure Storage](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage).
-2. Maak een Azure storage-container, zoals beschreven in de verwijzing [Create container](https://docs.microsoft.com/rest/api/storageservices/create-container) .
+2. Maak een Azure storage-container, zoals beschreven in de verwijzing [Create container](/rest/api/storageservices/create-container) .
 2. Down load het `azcopy` opdracht regel programma voor Linux van micro soft. U kunt de volgende opdrachten gebruiken in de bash-shell in CentOS 7,5.
 
     ```
@@ -205,7 +206,7 @@ Verbind uw virtuele netwerk met de Privécloud door de instructies in [Azure Vir
     sudo yum -y install icu
     ```
 
-3. Gebruik de `azcopy` opdracht voor het kopiëren van back-upbestanden naar en van de BLOB-container.  Zie [gegevens overdragen met AzCopy in Linux](../storage/common/storage-use-azcopy-linux.md) voor gedetailleerde opdrachten.
+3. Gebruik de `azcopy` opdracht voor het kopiëren van back-upbestanden naar en van de BLOB-container.  Zie [gegevens overdragen met AzCopy in Linux](../storage/common/storage-use-azcopy-v10.md) voor gedetailleerde opdrachten.
 
 ### <a name="vcenter-console-of-private-cloud-install-veeam-br"></a>vCenter-console van Privécloud: Installeer Veeam B&R
 
@@ -259,7 +260,7 @@ Maak een firewall regel met om de Veeam-back-upserver toe te staan een uitgaande
 
 Als u de bevoegdheden wilt deescaleren, raadpleegt u [bevoegdheden deescaleren](escalate-private-cloud-privileges.md#de-escalate-privileges).
 
-## <a name="references"></a>Referenties
+## <a name="references"></a>Naslaginformatie
 
 ### <a name="cloudsimple-references"></a>CloudSimple-verwijzingen
 
@@ -290,8 +291,8 @@ Als u de bevoegdheden wilt deescaleren, raadpleegt u [bevoegdheden deescaleren](
 * [Een virtuele Linux-machine maken in de Azure Portal](../virtual-machines/linux/quick-create-portal.md)
 * [Een beheerde gegevens schijf koppelen aan een virtuele Windows-machine in de Azure Portal](../virtual-machines/windows/attach-managed-disk-portal.md)
 * [Aan de slag met Azure Storage-video](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage)
-* [Container maken](https://docs.microsoft.com/rest/api/storageservices/create-container)
-* [Gegevens overdragen met AzCopy voor Linux](../storage/common/storage-use-azcopy-linux.md)
+* [Container maken](/rest/api/storageservices/create-container)
+* [Gegevens overdragen met AzCopy voor Linux](../storage/common/storage-use-azcopy-v10.md)
 
 ### <a name="vmware-references"></a>VMware-verwijzingen
 

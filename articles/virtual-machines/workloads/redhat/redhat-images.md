@@ -1,5 +1,5 @@
 ---
-title: Installatie kopieën Red Hat Enterprise Linux in azure | Microsoft Docs
+title: Overzicht van Red Hat Enterprise Linuxe installatie kopieën in azure
 description: Meer informatie over Red Hat Enterprise Linux installatie kopieën in Microsoft Azure.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: f06c4304be67fbc2f3116375dae33b10228723a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de7ead8acd059d957673b2f063dd3d330cf473f5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80239876"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525497"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Overzicht van Red Hat Enterprise Linux installatie kopieën
 
@@ -26,7 +26,7 @@ In dit artikel worden beschik bare installatie kopieën van Red Hat Enterprise L
 Zie [Red Hat Enterprise Linux levens cyclus](https://access.redhat.com/support/policy/updates/errata)voor meer informatie over Red Hat-ondersteunings beleid voor alle versies van RHEL. Zie [Azure prijs calculator](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)voor prijzen voor meer informatie.
 
 >[!IMPORTANT]
-> RHEL-installatie kopieën die momenteel beschikbaar zijn in azure Marketplace ondersteunen de licentie modellen van uw eigen abonnement (BYOS) of betalen naar gebruik. De [Azure Hybrid use Benefit](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) en dynamische scha KELEN tussen BYOS en betalen naar gebruik-licenties worden niet ondersteund. Als u de licentie modus wilt wijzigen, moet u de virtuele machine opnieuw implementeren vanuit de bijbehorende installatie kopie.
+> RHEL-installatie kopieën die momenteel beschikbaar zijn in azure Marketplace ondersteunen de licentie modellen van uw eigen abonnement (BYOS) of betalen naar gebruik. De [Azure Hybrid use Benefit](../../windows/hybrid-use-benefit-licensing.md) en dynamische scha KELEN tussen BYOS en betalen naar gebruik-licenties worden niet ondersteund. Als u de licentie modus wilt wijzigen, moet u de virtuele machine opnieuw implementeren vanuit de bijbehorende installatie kopie.
 
 >[!NOTE]
 > Voor een probleem met betrekking tot RHEL-installatie kopieën in azure Marketplace kunt u een ondersteunings ticket indienen bij micro soft.
@@ -64,8 +64,8 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:8-LVM:lat
 ```
 
 >[!NOTE]
-> In het algemeen is het vergelijken van versies om het meest recent te bepalen, de regels van de [methode CompareTo](https://msdn.microsoft.com/library/a5ts8tb6.aspx).
-Deze vergelijking van de afbeeldings versie wordt uitgevoerd door de waarden te vergelijken als een [versie](https://docs.microsoft.com/dotnet/api/system.version.-ctor?view=netframework-4.8) object, niet als een teken reeks.
+> In het algemeen is het vergelijken van versies om het meest recent te bepalen, de regels van de [methode CompareTo](/dotnet/api/system.version.compareto?view=netcore-3.1#system_version_compareto_system_version_).
+Deze vergelijking van de afbeeldings versie wordt uitgevoerd door de waarden te vergelijken als een [versie](/dotnet/api/system.version.-ctor?view=netframework-4.8) object, niet als een teken reeks.
 
 ## <a name="rhel-6-image-types"></a>RHEL 6-afbeeldings typen
 
@@ -105,7 +105,7 @@ Details voor RHEL 8-afbeeldings typen vindt u hieronder.
 |Publisher | Aanbieding | SKU-waarde | Versie | Details
 |----------|-------|------------|---------|--------
 |RedHat | RHEL | 8 | Samengevoegde waarden van de RHEL secundaire versie en de publicatie datum (bijvoorbeeld 8.0.20191023) | Deze installatie kopieën zijn RHEL 8 gepartitioneerde installatie kopieën die zijn verbonden met standaard Red Hat-opslag plaatsen.
-|RedHat | RHEL | 8-Gen2 | Samengevoegde waarden van de RHEL secundaire versie en de publicatie datum (bijvoorbeeld 8.0.20191024) | Deze installatie kopieën zijn Hyper-V-generatie 2 RHEL 8 gepartitioneerde installatie kopieën die zijn verbonden met Standard Red Hat-opslag plaatsen. Zie [ondersteuning voor virtuele machines van de tweede generatie op Azure](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2)voor meer informatie over virtuele machines van de tweede generatie in Azure.
+|RedHat | RHEL | 8-Gen2 | Samengevoegde waarden van de RHEL secundaire versie en de publicatie datum (bijvoorbeeld 8.0.20191024) | Deze installatie kopieën zijn Hyper-V-generatie 2 RHEL 8 gepartitioneerde installatie kopieën die zijn verbonden met Standard Red Hat-opslag plaatsen. Zie [ondersteuning voor virtuele machines van de tweede generatie op Azure](../../linux/generation-2.md)voor meer informatie over virtuele machines van de tweede generatie in Azure.
 
 ## <a name="rhel-longer-support-add-ons"></a>RHEL meer ondersteuning voor invoeg toepassingen
 

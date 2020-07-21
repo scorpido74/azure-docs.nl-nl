@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 91d3dd2eee6f771df23b72eae7a33122c42f1690
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd2e5a4d057e1074c6cce0f374846bc9e0a64950
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81869337"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525089"
 ---
 # <a name="access-the-vmware-solution-by-cloudsimple-portal-from-the-azure-portal"></a>Open de VMware-oplossing via CloudSimple portal van de Azure Portal
 
@@ -20,9 +21,9 @@ Eenmalige aanmelding wordt ondersteund voor toegang tot de CloudSimple-Portal. N
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Gebruikers met rollen van de ingebouwde **eigenaar** en **Inzender** hebben toegang tot de CloudSimple-Portal.  De functies moeten worden geconfigureerd voor de resource groep waar de CloudSimple-service wordt geïmplementeerd.  De functies kunnen ook worden geconfigureerd op het CloudSimple-Service object.  Zie het artikel [roltoewijzingen weer geven](https://docs.microsoft.com/azure/role-based-access-control/check-access) voor meer informatie over het controleren van uw rol. Alleen gebruikers met ingebouwde rollen **eigenaar** en **Inzender** hebben toegang tot de CloudSimple-Portal.  De rollen moeten worden geconfigureerd in het abonnement.  Zie het artikel [roltoewijzingen weer geven](https://docs.microsoft.com/azure/role-based-access-control/check-access) voor meer informatie over het controleren van uw rol.
+Gebruikers met rollen van de ingebouwde **eigenaar** en **Inzender** hebben toegang tot de CloudSimple-Portal.  De functies moeten worden geconfigureerd voor de resource groep waar de CloudSimple-service wordt geïmplementeerd.  De functies kunnen ook worden geconfigureerd op het CloudSimple-Service object.  Zie het artikel [roltoewijzingen weer geven](../role-based-access-control/check-access.md) voor meer informatie over het controleren van uw rol. Alleen gebruikers met ingebouwde rollen **eigenaar** en **Inzender** hebben toegang tot de CloudSimple-Portal.  De rollen moeten worden geconfigureerd in het abonnement.  Zie het artikel [roltoewijzingen weer geven](../role-based-access-control/check-access.md) voor meer informatie over het controleren van uw rol.
 
-Als u aangepaste rollen gebruikt, moet de rol een van de volgende bewerkingen onder bevatten ```Actions``` .  Zie [aangepaste rollen voor Azure-resources](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)voor meer informatie over aangepaste rollen.  Als een van de bewerkingen deel van uitmaakt ```NotActions``` , heeft de gebruiker geen toegang tot de CloudSimple-Portal.
+Als u aangepaste rollen gebruikt, moet de rol een van de volgende bewerkingen onder bevatten ```Actions``` .  Zie [aangepaste rollen voor Azure-resources](../role-based-access-control/custom-roles.md)voor meer informatie over aangepaste rollen.  Als een van de bewerkingen deel van uitmaakt ```NotActions``` , heeft de gebruiker geen toegang tot de CloudSimple-Portal.
 
 ```
 Microsoft.VMwareCloudSimple/*
@@ -37,7 +38,7 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 
 ## <a name="access-the-cloudsimple-portal"></a>Toegang tot de CloudSimple-portal
 
-1. Selecteer **alle services**.
+1. Selecteer **Alle services**.
 
 2. Zoek naar **CloudSimple Services**.
 
@@ -70,5 +71,5 @@ Als uw machtigingen geen toegang tot de CloudSimple-Portal toestaan, neemt u con
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het [maken van een privécloud](https://docs.microsoft.com/azure/vmware-cloudsimple/create-private-cloud/)
+* Meer informatie over het [maken van een privécloud](./create-private-cloud.md)
 * Meer informatie over het [configureren van een privécloud](quickstart-create-private-cloud.md)

@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 13496a18f4c99b69a5b8095caf5b74a04d1bba88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b0aff8298ac2335e5216252eb2cbd5a393cc37d5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81869305"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524993"
 ---
 # <a name="manage-private-cloud-resources-and-activity"></a>Persoonlijke cloud resources en-activiteiten beheren
 
@@ -36,13 +37,13 @@ Selecteer een Privécloud voor meer informatie en acties.
 
 ## <a name="private-cloud-summary"></a>Samen vatting van privécloud
 
-Een uitgebreid overzicht van de geselecteerde Privécloud weer geven.  Overzichts pagina bevat de DNS-servers die zijn geïmplementeerd in de Privécloud.  U kunt DNS-door sturen van lokale DNS-servers naar uw particuliere cloud-DNS-servers instellen.  Voor meer informatie over DNS-door sturen raadpleegt [u DNS configureren voor naam omzetting voor Private Cloud vCenter vanuit on-premises](https://docs.microsoft.com/azure/vmware-cloudsimple/on-premises-dns-setup/).
+Een uitgebreid overzicht van de geselecteerde Privécloud weer geven.  Overzichts pagina bevat de DNS-servers die zijn geïmplementeerd in de Privécloud.  U kunt DNS-door sturen van lokale DNS-servers naar uw particuliere cloud-DNS-servers instellen.  Voor meer informatie over DNS-door sturen raadpleegt [u DNS configureren voor naam omzetting voor Private Cloud vCenter vanuit on-premises](./on-premises-dns-setup.md).
 
 ![Samen vatting van privécloud](media/private-cloud-summary.png)
 
 ### <a name="available-actions"></a>Beschikbare acties
 
-* [Start de vSphere-client](https://docs.microsoft.com/azure/vmware-cloudsimple/vcenter-access). Toegang tot de vCenter voor deze Privécloud.
+* [Start de vSphere-client](./vcenter-access.md). Toegang tot de vCenter voor deze Privécloud.
 * [Inkoop knooppunten](create-nodes.md). Voeg knoop punten toe aan deze Privécloud.
 * [Uitvouwen](expand-private-cloud.md). Voeg knoop punten toe aan deze Privécloud.
 * **Vernieuwen**. De gegevens op deze pagina bijwerken.
@@ -57,10 +58,10 @@ Bekijk de lijst met gedefinieerde VLAN'S/subnetten voor de geselecteerde Privéc
 
 ### <a name="available-actions"></a>Beschikbare acties
 
-* [Vlan's/subnetten toevoegen](https://docs.microsoft.com/azure/vmware-cloudsimple/create-vlan-subnet/). Voeg een VLAN/subset toe aan deze Privécloud.
+* [Vlan's/subnetten toevoegen](./create-vlan-subnet.md). Voeg een VLAN/subset toe aan deze Privécloud.
 
 Een VLAN/subnet selecteren voor de volgende acties
-* Een [firewall tabel toevoegen](https://docs.microsoft.com/azure/vmware-cloudsimple/firewall/). Een firewall tabel koppelen aan deze Privécloud.
+* Een [firewall tabel toevoegen](./firewall.md). Een firewall tabel koppelen aan deze Privécloud.
 * **Bewerken**
 * **Verwijderen** (alleen door de gebruiker gedefinieerde Vlan's/subnetten)
 

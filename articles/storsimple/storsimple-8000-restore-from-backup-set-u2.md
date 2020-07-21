@@ -4,29 +4,24 @@ description: Hierin wordt uitgelegd hoe u de StorSimple Apparaatbeheer service B
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
-editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: how-to
-ms.tgt_pltfrm: NA
-ms.workload: TBD
-ms.date: 05/23/2017
+ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 0f0be9609dfd00e8e5dc9919b20fc42ec91ce9eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8783d5ce5596cdb4678c09b79c09797ef62cc9c9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514554"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527826"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>Een StorSimple-volume herstellen op basis van een back-upset
 
 ## <a name="overview"></a>Overzicht
 
 In deze zelf studie wordt de herstel bewerking beschreven die wordt uitgevoerd op een StorSimple 8000 serie apparaat met behulp van een bestaande back-upset. Gebruik de Blade **back-upcatalogus** om een volume terug te zetten van een lokale of een back-up van de Cloud. Op de Blade **back-upcatalogus** worden alle back-upsets weer gegeven die worden gemaakt wanneer hand matig of automatisch maken van back-ups worden uitgevoerd. Met de herstel bewerking van een back-upset wordt het volume onmiddellijk beschikbaar wanneer gegevens op de achtergrond worden gedownload.
-
-Een alternatieve methode om te beginnen met terugzetten is door naar **apparaten > [uw apparaat] > volumes**te gaan. Selecteer op de Blade **volumes** een volume, klik met de rechter muisknop om het context menu aan te roepen en selecteer vervolgens **herstellen**.
 
 ## <a name="before-you-restore"></a>Voordat u herstelt
 

@@ -13,15 +13,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: 176b0634fe2c7ee2f47162e439c4ea16bde77a8a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53fd2332224d903c5a4b33563470cf3569f82b13
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75772615"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526653"
 ---
 # <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>Problemen met prestaties van virtuele Azure-machines in Linux of Windows oplossen
 
-In dit artikel worden algemene problemen met de prestaties van virtuele machines (VM) beschreven door te controleren en knel punten te observeren en mogelijke problemen op te lossen. Naast de bewaking kunt u ook Perfinsights gebruiken, waarmee u een rapport kunt maken met aanbevolen procedures en de belangrijkste knel punten rondom i/o/CPU/memory. Perfinsights is beschikbaar voor zowel [Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) -als [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) -vm's in Azure.
+In dit artikel worden algemene problemen met de prestaties van virtuele machines (VM) beschreven door te controleren en knel punten te observeren en mogelijke problemen op te lossen. Naast de bewaking kunt u ook Perfinsights gebruiken, waarmee u een rapport kunt maken met aanbevolen procedures en de belangrijkste knel punten rondom i/o/CPU/memory. Perfinsights is beschikbaar voor zowel [Windows](./how-to-use-perfinsights.md) -als [Linux](./how-to-use-perfinsights-linux.md) -vm's in Azure.
 
 In dit artikel wordt beschreven hoe u bewaking gebruikt om prestatie knelpunten te diagnosticeren.
 
@@ -29,7 +30,7 @@ In dit artikel wordt beschreven hoe u bewaking gebruikt om prestatie knelpunten 
 
 ### <a name="azure-iaas-virtual-machine-monitoring"></a>Azure IAAS-bewaking van virtuele machines
 
-Als u de gast-VM wilt controleren, gebruikt u de Azure VM-bewaking. Hiermee wordt u gewaarschuwd voor bepaalde resource voorwaarden op hoog niveau. Zie [overzicht van Azure-resource logboeken](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs)om te controleren of u de diagnostische gegevens van de virtuele machine hebt ingeschakeld. Als u het volgende ziet, hebt u waarschijnlijk niet de diagnostische gegevens ingeschakeld:
+Als u de gast-VM wilt controleren, gebruikt u de Azure VM-bewaking. Hiermee wordt u gewaarschuwd voor bepaalde resource voorwaarden op hoog niveau. Zie [overzicht van Azure-resource logboeken](../../azure-monitor/learn/tutorial-resource-logs.md)om te controleren of u de diagnostische gegevens van de virtuele machine hebt ingeschakeld. Als u het volgende ziet, hebt u waarschijnlijk niet de diagnostische gegevens ingeschakeld:
 
 ![Bewaking is niet ingeschakeld](media/troubleshoot-performance-virtual-machine-linux-windows/1-virtual-machines-monitoring-not-enabled.png)
  
@@ -100,7 +101,7 @@ Controleer uw gegevens om te bepalen of u knel punten in de resource hebt. Als u
 
 ### <a name="cpu-observe-trends"></a>Trends in de CPU
 
-Houd bij het bekijken van prestatie problemen rekening met de trends en begrijp of ze van invloed zijn op u. In de volgende secties gebruiken we de bewakings grafieken van de portal om trends weer te geven. Ze kunnen ook handig zijn voor het cross-refereren van het bron gedrag van verschillen in dezelfde periode. Als u de grafieken wilt aanpassen, klikt u op [Azure monitor gegevens platform](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform).
+Houd bij het bekijken van prestatie problemen rekening met de trends en begrijp of ze van invloed zijn op u. In de volgende secties gebruiken we de bewakings grafieken van de portal om trends weer te geven. Ze kunnen ook handig zijn voor het cross-refereren van het bron gedrag van verschillen in dezelfde periode. Als u de grafieken wilt aanpassen, klikt u op [Azure monitor gegevens platform](../../azure-monitor/platform/data-platform.md).
 
 Spiking – spiking kan zijn gerelateerd aan een geplande taak/bekende gebeurtenis. Als u de taak kunt identificeren, bepaalt u of de taak wordt uitgevoerd op het vereiste prestatie niveau. Als de prestaties acceptabel zijn, is het wellicht niet nodig om resources te verg Roten.
 
@@ -119,7 +120,7 @@ Als uw toepassing of proces niet wordt uitgevoerd op het juiste prestatie niveau
 
 Als u de virtuele machine hebt verhoogd en de CPU nog 95% wordt uitgevoerd, bepaalt u of deze instelling betere prestaties of een hogere doorvoer snelheid voor toepassingen biedt dan een acceptabel niveau. Als dat niet het geval is, kunt u de afzonderlijke application\process. oplossen
 
-U kunt Perfinsights voor [Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) of [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) gebruiken om te analyseren welk proces het CPU-verbruik benadert. 
+U kunt Perfinsights voor [Windows](./how-to-use-perfinsights.md) of [Linux](./how-to-use-perfinsights-linux.md) gebruiken om te analyseren welk proces het CPU-verbruik benadert. 
 
 ## <a name="check-for-memory-bottleneck"></a>Controleren op geheugen knelpunt
 
@@ -150,13 +151,13 @@ Voer een van de volgende taken uit om het hoge geheugen gebruik op te lossen:
 
 Als u na een upgrade naar een grotere virtuele machine hebt ontdekt, weet u zeker dat u nog steeds constante stabiele toename hebt tot 100%, de toepassing/het proces identificeren en problemen oplossen.
 
-U kunt Perfinsights voor [Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) of [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) gebruiken om te analyseren welk proces het geheugen verbruikt. 
+U kunt Perfinsights voor [Windows](./how-to-use-perfinsights.md) of [Linux](./how-to-use-perfinsights-linux.md) gebruiken om te analyseren welk proces het geheugen verbruikt. 
 
 ## <a name="check-for-disk-bottleneck"></a>Controleren op schijf knelpunt
 
 Als u het opslag subsysteem voor de virtuele machine wilt controleren, controleert u de diagnostische gegevens op het niveau van de Azure-VM met behulp van de items in de diagnostische gegevens van de VM en de diagnostische gegevens over het opslag account.
 
-Voor binnen een VM-specifieke probleem oplossing kunt u Perfinsights voor [Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) of [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux)gebruiken. Dit kan helpen bij het analyseren van het proces waarmee de io wordt bestuurd. 
+Voor binnen een VM-specifieke probleem oplossing kunt u Perfinsights voor [Windows](./how-to-use-perfinsights.md) of [Linux](./how-to-use-perfinsights-linux.md)gebruiken. Dit kan helpen bij het analyseren van het proces waarmee de io wordt bestuurd. 
 
 Houd er rekening mee dat er geen items zijn voor zone redundante en Premium Storage accounts. Verhoog een ondersteunings aanvraag voor problemen die betrekking hebben op deze prestatie meter items.
 
@@ -207,9 +208,9 @@ Als u wilt weten of u de limiet voor IOPS hebt bereikt, gaat u naar de diagnosti
 
 Met nieuwe schijf aanbiedingen onder standaard opslag kunnen de limieten voor IOPS en door Voer verschillen, maar de cumulatieve limiet van het standaard opslag account is 20000 IOPS (Premium Storage heeft verschillende limieten op het niveau van de account of schijf). Meer informatie over de verschillende standaard aanbiedingen voor opslag schijven en per schijf limiet:
 
-* [Schaalbaarheids-en prestatie doelen voor VM-schijven in Windows](https://docs.microsoft.com/azure/virtual-machines/windows/disk-scalability-targets).
+* [Schaalbaarheids-en prestatie doelen voor VM-schijven in Windows](../windows/disk-scalability-targets.md).
 
-#### <a name="references"></a>Referenties
+#### <a name="references"></a>Naslaginformatie
 
 * [Schaalbaarheids-en prestatie doelen voor Premium-pagina-Blob Storage-accounts](../../storage/blobs/scalability-targets-premium-page-blobs.md)
 
@@ -223,19 +224,19 @@ Controleer de doorvoer limieten van de Vhd's die zijn gekoppeld aan de virtuele 
 
 Nieuwe schijf aanbiedingen onder standaard opslag hebben verschillende IOPS-en doorvoer limieten (IOPS worden niet per VHD weer gegeven). Bekijk de gegevens om te zien of u de limieten hebt bereikt van gecombineerde door Voer van de VHD (s) op VM-niveau met behulp van de lees-en schrijf bewerking van de virtuele machine. vervolgens optimaliseert u de configuratie van de VM-opslag om eerdere VHD-limieten te schalen. Meer informatie over de verschillende standaard aanbiedingen voor opslag schijven en per schijf limiet:
 
-* [Schaalbaarheids-en prestatie doelen voor VM-schijven in Windows](https://docs.microsoft.com/azure/virtual-machines/windows/disk-scalability-targets).
+* [Schaalbaarheids-en prestatie doelen voor VM-schijven in Windows](../windows/disk-scalability-targets.md).
 
 ### <a name="high-disk-utilizationlatency-remediation"></a>Hoog schijf gebruik/herstel van de latentie
 
 De latentie van de client verlagen en de i/o-bewerkingen van de VM optimaliseren
 
-* [IO voor Windows optimaliseren in azure](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-performance-best-practices/)
+* [IO voor Windows optimaliseren in azure](../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md?toc=/azure/virtual-machines/windows/toc.json)
 
-* [IO voor Linux optimaliseren in azure](https://blogs.msdn.microsoft.com/igorpag/2014/10/23/azure-storage-secrets-and-linux-io-optimizations/)
+* [IO voor Linux optimaliseren in azure](/archive/blogs/igorpag/azure-storage-secrets-and-linux-io-optimizations)
 
 #### <a name="reduce-throttling"></a>Beperking beperken
 
-Als u de hoogste limieten van opslag accounts aanwijst, worden de Vhd's opnieuw gebalanceerd tussen opslag accounts. Raadpleeg [Azure Storage schaal baarheid en prestatie doelen](https://azure.microsoft.com/documentation/articles/storage-scalability-targets/).
+Als u de hoogste limieten van opslag accounts aanwijst, worden de Vhd's opnieuw gebalanceerd tussen opslag accounts. Raadpleeg [Azure Storage schaal baarheid en prestatie doelen](../../storage/common/scalability-targets-standard-account.md).
 
 ### <a name="increase-throughput-and-reduce-latency"></a>De door Voer verhogen en de latentie verminderen
 
@@ -243,9 +244,9 @@ Als u een latentie gevoelige toepassing hebt en hoge door Voer hebt vereist, moe
 
 In deze artikelen worden de specifieke scenario's besproken:
 
-* [Migreren naar Azure Premium Storage](https://azure.microsoft.com/documentation/articles/storage-migration-to-premium-storage/)
+* [Migreren naar Azure Premium Storage](../windows/migrate-to-managed-disks.md)
 
-* [Azure Premium Storage met SQL Server gebruiken](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-use-premium-storage/)
+* [Azure Premium Storage met SQL Server gebruiken](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-server-premium-storage)
 
 ## <a name="next-steps"></a>Volgende stappen
 

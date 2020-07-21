@@ -8,12 +8,12 @@ ms.date: 05/28/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 84da8993bd1b0a61ef885d03f7c2bc80b92d47cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f432c544d8632a548c397b63ffa8066f63424f67
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510814"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528380"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>Zacht verwijderen inschakelen op Azure-bestands shares
 
@@ -23,7 +23,7 @@ In de volgende secties ziet u hoe u met voorlopig verwijderen voor Azure-bestand
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 1. Navigeer naar uw opslag account en selecteer **voorlopig verwijderen** onder **Bestands service**.
 1. Selecteer **ingeschakeld** voor het **voorlopig verwijderen van de bestands share**.
 1. Selecteer de **Bewaar periode voor bestands shares in dagen** en voer een nummer van uw keuze in.
@@ -33,7 +33,7 @@ In de volgende secties ziet u hoe u met voorlopig verwijderen voor Azure-bestand
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Als u zacht verwijderen wilt inschakelen, moet u de service-eigenschappen van een bestands client bijwerken. In het volgende voor beeld wordt zacht verwijderen ingeschakeld voor alle bestands shares in een opslag account:
+Tijdelijke Verwijder-cmdlets zijn beschikbaar in de versie 2.1.1-Preview van de module AZ. storage. Als u zacht verwijderen wilt inschakelen, moet u de service-eigenschappen van een bestands client bijwerken. In het volgende voor beeld wordt zacht verwijderen ingeschakeld voor alle bestands shares in een opslag account:
 
 ```azurepowershell-interactive
 $rgName = "yourResourceGroupName"
@@ -70,7 +70,7 @@ Een voorlopig verwijderde bestands share herstellen:
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Als u een voorlopig verwijderde bestands share wilt herstellen, gebruikt u de volgende opdracht:
+Tijdelijke Verwijder-cmdlets zijn beschikbaar in de versie 2.1.1-Preview van de module AZ. storage. Als u een voorlopig verwijderde bestands share wilt herstellen, gebruikt u de volgende opdracht:
 
 ```azurepowershell-interactive
 Restore-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $accountName -DeletedShareVersion 01D5E2783BDCDA97
@@ -91,7 +91,7 @@ Als u wilt stoppen met het gebruik van zacht verwijderen of als u een bestands s
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-U kunt de volgende opdracht gebruiken om de optie voor het voorlopig verwijderen van uw opslag account uit te scha kelen:
+Tijdelijke Verwijder-cmdlets zijn beschikbaar in de versie 2.1.1-Preview van de module AZ. storage. U kunt de volgende opdracht gebruiken om de optie voor het voorlopig verwijderen van uw opslag account uit te scha kelen:
 
 ```azurepowershell-interactive
 Update-AzStorageFileServiceProperty -ResourceGroupName $rgName -StorageAccountName $accountName -EnableShareDeleteRetentionPolicy $false

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
-ms.openlocfilehash: 085647c392bb6cec51fba8b6e42cb8f03707223c
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 1c2050969e95b521554bba100b688add3a987a80
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134584"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526738"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>Windows-activering mislukt in scenario met geforceerde tunneling
 
@@ -53,9 +53,9 @@ Voer de volgende stappen uit om de aangepaste route toe te voegen:
  
 
 > [!NOTE] 
-> Activering maakt gebruik van open bare IP-adressen en wordt beïnvloed door een standaard-SKU Load Balancer configuratie. Lees zorgvuldig de [uitgaande verbindingen in azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) om meer te weten te komen over de vereisten.
+> Activering maakt gebruik van open bare IP-adressen en wordt beïnvloed door een standaard-SKU Load Balancer configuratie. Lees zorgvuldig de [uitgaande verbindingen in azure](../../load-balancer/load-balancer-outbound-connections.md) om meer te weten te komen over de vereisten.
 
-1. Open Azure PowerShell en [Meld u vervolgens aan bij uw Azure-abonnement](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+1. Open Azure PowerShell en [Meld u vervolgens aan bij uw Azure-abonnement](/powershell/azure/authenticate-azureps).
 2. Voer de volgende opdrachten uit:
 
     ```powershell
@@ -77,7 +77,7 @@ Voer de volgende stappen uit om de aangepaste route toe te voegen:
 
     Set-AzVirtualNetwork -VirtualNetwork $vnet
     ```
-3. Ga naar de virtuele machine met activerings problemen. Gebruik [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) om te testen of de KMS-server kan worden bereikt:
+3. Ga naar de virtuele machine met activerings problemen. Gebruik [PsPing](/sysinternals/downloads/psping) om te testen of de KMS-server kan worden bereikt:
 
     ```console
     psping kms.core.windows.net:1688
@@ -89,7 +89,7 @@ Voer de volgende stappen uit om de aangepaste route toe te voegen:
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
-1. Open Azure PowerShell en [Meld u vervolgens aan bij uw Azure-abonnement](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+1. Open Azure PowerShell en [Meld u vervolgens aan bij uw Azure-abonnement](/powershell/azure/authenticate-azureps).
 2. Voer de volgende opdrachten uit:
 
     ```powershell
@@ -107,7 +107,7 @@ Voer de volgende stappen uit om de aangepaste route toe te voegen:
     -RouteTableName "VNet-DM-KmsRouteTable"
     ```
 
-3. Ga naar de virtuele machine met activerings problemen. Gebruik [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) om te testen of de KMS-server kan worden bereikt:
+3. Ga naar de virtuele machine met activerings problemen. Gebruik [PsPing](/sysinternals/downloads/psping) om te testen of de KMS-server kan worden bereikt:
 
     ```console
     psping kms.core.windows.net:1688
@@ -117,7 +117,5 @@ Voer de volgende stappen uit om de aangepaste route toe te voegen:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Installatiecodes voor KMS-client](https://docs.microsoft.com/windows-server/get-started/kmsclientkeys
-)
-- [Activerings methoden bekijken en selecteren](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj134256(v=ws.11)
-)
+- [Installatiecodes voor KMS-client](/windows-server/get-started/kmsclientkeys)
+- [Activerings methoden bekijken en selecteren](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj134256(v=ws.11))

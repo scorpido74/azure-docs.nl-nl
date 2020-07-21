@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 896e69bad9cd75b57ef2bf93048c332ef4d974c0
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 7abff8c33ea276b8b8aaeffd010d5f5e09440d9b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207712"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526636"
 ---
-# <a name="how-to-use-perfinsights"></a>PerfInsights gebruiken
+# <a name="how-to-use-perfinsights-in-azure"></a>PerfInsights gebruiken in azure
 
 [PerfInsights](https://aka.ms/perfinsightsdownload) is een hulp programma voor zelf ondersteuning waarmee de diagnostische gegevens worden verzameld en geanalyseerd, en biedt een rapport voor het oplossen van prestatie problemen met virtuele Windows-machines in Azure. PerfInsights kan worden uitgevoerd op virtuele machines als zelfstandig hulp programma, rechtstreeks vanuit de portal door gebruik te maken van [prestatie diagnostiek voor Azure virtual machines](performance-diagnostics.md)of door de [VM-extensie Azure performance Diagnostics](performance-diagnostics-vm-extension.md)te installeren.
 
@@ -65,7 +65,7 @@ In dit scenario wordt de [Diskspd](https://github.com/Microsoft/diskspd) Bench M
 
 ### <a name="performance-analysis"></a>Analyse van prestaties
 
-In dit scenario wordt een [prestatie meter item](https://msdn.microsoft.com/library/windows/desktop/aa373083(v=vs.85).aspx) tracering uitgevoerd op basis van de prestatie meter items die zijn opgegeven in de RuleEngineConfig.jsvoor het bestand. Als de virtuele machine wordt geïdentificeerd als een server waarop SQL Server wordt uitgevoerd, wordt een prestatie meter item tracering uitgevoerd. Dit doet u door gebruik te maken van de prestatie meter items die worden gevonden in de RuleEngineConfig.jsin het bestand. Dit scenario omvat ook gegevens over prestatie diagnostiek.
+In dit scenario wordt een [prestatie meter item](/windows/win32/perfctrs/performance-counters-portal) tracering uitgevoerd op basis van de prestatie meter items die zijn opgegeven in de RuleEngineConfig.jsvoor het bestand. Als de virtuele machine wordt geïdentificeerd als een server waarop SQL Server wordt uitgevoerd, wordt een prestatie meter item tracering uitgevoerd. Dit doet u door gebruik te maken van de prestatie meter items die worden gevonden in de RuleEngineConfig.jsin het bestand. Dit scenario omvat ook gegevens over prestatie diagnostiek.
 
 ### <a name="azure-files-analysis"></a>Azure Files analyse
 
@@ -300,7 +300,7 @@ Diskspd is een test programma voor het laden van opslag en prestaties van micro 
 
 ### <a name="xperf"></a>Xperf
 
-Xperf is een opdracht regel programma voor het vastleggen van traceringen vanuit de Windows Performance Toolkit. Zie [Windows Performance Toolkit – Xperf](https://blogs.msdn.microsoft.com/ntdebugging/2008/04/03/windows-performance-toolkit-xperf/)voor meer informatie.
+Xperf is een opdracht regel programma voor het vastleggen van traceringen vanuit de Windows Performance Toolkit. Zie [Windows Performance Toolkit – Xperf](/archive/blogs/ntdebugging/windows-performance-toolkit-xperf)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -313,4 +313,3 @@ Op de volgende scherm afbeelding wordt een bericht weer gegeven dat vergelijkbaa
 Volg de instructies in het bericht voor toegang tot de werk ruimte bestands overdracht. Voor extra beveiliging moet u uw wacht woord wijzigen bij het eerste gebruik.
 
 Nadat u zich hebt aangemeld, vindt u een dialoog venster voor het uploaden van de **PerformanceDiagnostics \_ jjjj-mm-dd \_hh-mm-ss-fff.zip** bestand dat door PerfInsights is verzameld.
-

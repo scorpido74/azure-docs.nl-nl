@@ -9,11 +9,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
-ms.openlocfilehash: 26b190515819378309c2b0705efdbc349ecccbe2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 244bea1aaf5457601ced9bac05c8dae43e5b9199
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759502"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527129"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>Algemene vereisten voor het implementeren van open Shift container platform 3,11 in azure
 
@@ -83,7 +84,7 @@ ssh-keygen -f ~/.ssh/openshift_rsa -t rsa -N ''
 > [!NOTE]
 > Uw SSH-sleutel paar kan geen wacht woord/wachtwoordzin hebben.
 
-Zie [SSH-sleutels maken in Windows](/azure/virtual-machines/linux/ssh-from-windows)voor meer informatie over SSH-sleutels in Windows. Zorg ervoor dat u de persoonlijke sleutel in de OpenSSH-indeling exporteert.
+Zie [SSH-sleutels maken in Windows](./ssh-from-windows.md)voor meer informatie over SSH-sleutels in Windows. Zorg ervoor dat u de persoonlijke sleutel in de OpenSSH-indeling exporteert.
 
 ## <a name="store-the-ssh-private-key-in-azure-key-vault"></a>Sla de persoonlijke SSH-sleutel op in Azure Key Vault
 De openshift-implementatie maakt gebruik van de SSH-sleutel die u hebt gemaakt om de toegang tot het open Shift-model te beveiligen. Als u de implementatie wilt inschakelen om de SSH-sleutel veilig op te halen, slaat u de sleutel op in Key Vault met behulp van de volgende opdracht:
@@ -133,7 +134,7 @@ Noteer de eigenschap appId en het wacht woord die worden geretourneerd door de o
  > [!WARNING] 
  > Zorg ervoor dat u het beveiligde wacht woord noteert omdat het niet mogelijk is om dit wacht woord opnieuw op te halen.
 
-Zie [een Azure-service-principal maken met Azure cli](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)voor meer informatie over service-principals.
+Zie [een Azure-service-principal maken met Azure cli](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)voor meer informatie over service-principals.
 
 ## <a name="prerequisites-applicable-only-to-resource-manager-template"></a>Vereisten die alleen van toepassing zijn op de Resource Manager-sjabloon
 

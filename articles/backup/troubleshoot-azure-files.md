@@ -3,12 +3,12 @@ title: Problemen met back-ups van Azure-bestands share oplossen
 description: Dit artikel gaat over het oplossen van problemen die optreden bij het beveiligen van uw Azure-bestandsshares.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: d09c89433be17e16ad768e2d28305819146e6b5e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 7b007a9ef893bb772929584eb3137c7a5200d756
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079884"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524485"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Problemen oplossen bij het maken van back-ups van Azure-bestands shares
 
@@ -57,6 +57,9 @@ Open in de Azure Portal uw **kluis**  >  **back-upinfrastructuur**  >  **opslag 
 >Een Recovery Services-kluis kan alleen worden verwijderd na het ongedaan maken van de registratie van alle opslag accounts die zijn geregistreerd bij de kluis.
 
 ## <a name="common-backup-or-restore-errors"></a>Veelvoorkomende back-up-of herstel fouten
+
+>[!NOTE]
+>Raadpleeg [dit document](./backup-rbac-rs-vault.md#minimum-role-requirements-for-the-azure-file-share-backup) om te controleren of u voldoende machtigingen hebt voor het uitvoeren van back-up-en herstel bewerkingen.
 
 ### <a name="filesharenotfound--operation-failed-as-the-file-share-is-not-found"></a>FileShareNotFound: de bewerking is mislukt omdat de bestands share niet is gevonden
 
@@ -313,7 +316,7 @@ Fout code: UserErrorBackupAFSInDeleteState
 
 Fout bericht: de back-up is mislukt omdat de gekoppelde Azure-bestands share permanent is verwijderd
 
-Controleer of de back-up van de bestands share permanent is verwijderd. Zo ja, stop de back-up voor de bestands share om herhaalde back-upfouten te voor komen. Zie [stoppen met beveiliging voor Azure-bestands share voor](https://docs.microsoft.com/azure/backup/manage-afs-backup#stop-protection-on-a-file-share) meer informatie over het stoppen van de beveiliging
+Controleer of de back-up van de bestands share permanent is verwijderd. Zo ja, stop de back-up voor de bestands share om herhaalde back-upfouten te voor komen. Zie [stoppen met beveiliging voor Azure-bestands share voor](./manage-afs-backup.md#stop-protection-on-a-file-share) meer informatie over het stoppen van de beveiliging
 
 ## <a name="next-steps"></a>Volgende stappen
 

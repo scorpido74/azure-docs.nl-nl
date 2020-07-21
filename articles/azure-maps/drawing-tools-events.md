@@ -1,5 +1,5 @@
 ---
-title: Een werk balk tekenen toevoegen aan een kaart | Microsoft Azure kaarten
+title: Gebeurtenissen voor het tekenen van gereedschappen | Microsoft Azure kaarten
 description: In dit artikel leert u hoe u een werk balk tekenen aan een kaart kunt toevoegen met behulp van Microsoft Azure Maps Web SDK
 author: rbrundritt
 ms.author: richbrun
@@ -8,17 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: d8509af7829910bdda8bba3d63553e83626fe784
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b5cbd5311c6070f59f8a5953d8b99789ab758c9c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80804670"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524604"
 ---
 # <a name="drawing-tool-events"></a>Gebeurtenissen voor het tekenen van gereedschappen
 
 Wanneer u teken hulpprogramma's op een kaart gebruikt, is het handig om te reageren op bepaalde gebeurtenissen wanneer de gebruiker op de kaart tekent. Deze tabel geeft een lijst van alle gebeurtenissen die door de klasse worden ondersteund `DrawingManager` .
 
-| Gebeurtenis | Description |
+| Gebeurtenis | Beschrijving |
 |-------|-------------|
 | `drawingchanged` | Deze gebeurtenis wordt gestart wanneer een coördinaat in een vorm is toegevoegd of gewijzigd. | 
 | `drawingchanging` | Deze gebeurtenis wordt gestart wanneer een voor beeld-coördinaat voor een vorm wordt weer gegeven. Deze gebeurtenis wordt bijvoorbeeld meerdere keren geactiveerd wanneer een coördinaat wordt gesleept. | 

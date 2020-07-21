@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 05/07/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 187098f557cb691e023abb282a265b11e975c544
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cbf2fe491e1fe0b553eab04ca7190da0413a3ba6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84629264"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526007"
 ---
 # <a name="vm-is-unresponsive-when-applying-group-policy-local-users-and-groups-policy"></a>De VM reageert niet bij het Toep assen van groepsbeleid beleid voor lokale gebruikers en groepen
 
@@ -26,7 +27,7 @@ Dit artikel bevat stappen voor het oplossen van problemen waarbij het laad scher
 
 ## <a name="symptoms"></a>Symptomen
 
-Wanneer u [Diagnostische gegevens over opstarten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) gebruikt om een scherm opname van de virtuele machine weer te geven, wordt het scherm vastgeladen met het bericht: ' toep assen Groepsbeleid lokale gebruikers en groeps beleid '.
+Wanneer u [Diagnostische gegevens over opstarten](./boot-diagnostics.md) gebruikt om een scherm opname van de virtuele machine weer te geven, wordt het scherm vastgeladen met het bericht: ' toep assen Groepsbeleid lokale gebruikers en groeps beleid '.
 
 :::image type="content" source="media//unresponsive-vm-apply-group-policy/applying-group-policy-1.png" alt-text="Scherm opname van het Toep assen van groepsbeleid voor het laden van lokale gebruikers en groepen (Windows Server 2012 R2).":::
 
@@ -57,7 +58,7 @@ Dit is het problematische beleid:
 
 ### <a name="step-1-create-and-access-a-repair-vm"></a>Stap 1: een herstel-VM maken en openen
 
-1. Gebruik [stap 1-3 van de VM-reparatie opdrachten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) om een herstel-VM voor te bereiden.
+1. Gebruik [stap 1-3 van de VM-reparatie opdrachten](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) om een herstel-VM voor te bereiden.
 2. Gebruik Verbinding met extern bureaublad om verbinding te maken met de herstel-VM.
 
 ### <a name="step-2-disable-the-policy"></a>Stap 2: het beleid uitschakelen
@@ -139,7 +140,7 @@ Voer dit script uit om geheugen dump verzameling en de seriële console in te sc
 
 ### <a name="step-4-rebuild-the-vm"></a>Stap 4: de virtuele machine opnieuw bouwen
 
-Gebruik [stap 5 van de opdrachten voor het herstellen van de virtuele machine](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) om de virtuele machine opnieuw samen te stellen.
+Gebruik [stap 5 van de opdrachten voor het herstellen van de virtuele machine](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) om de virtuele machine opnieuw samen te stellen.
 
 Als het probleem is opgelost, wordt het beleid nu lokaal uitgeschakeld. Gebruik voor een permanente oplossing niet het CleanupProfiles-beleid op Vm's. Gebruik een andere methode om profiel opruimingen uit te voeren.
 
@@ -149,4 +150,4 @@ Dit beleid niet gebruiken:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u problemen ondervindt bij het Toep assen van Windows Update, raadpleegt u de [virtuele machine reageert niet met de fout ' C01A001D ' bij het Toep assen van Windows Update](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/unresponsive-vm-apply-windows-update).
+Als u problemen ondervindt bij het Toep assen van Windows Update, raadpleegt u de [virtuele machine reageert niet met de fout ' C01A001D ' bij het Toep assen van Windows Update](./unresponsive-vm-apply-windows-update.md).

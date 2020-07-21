@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e10d1d5aa5b45c0ea0e31df4d5d847f8541838b9
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 60053f24aa4231f1100d0b00cb6cf70b851b1939
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86218367"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526028"
 ---
 ## <a name="application-performance-indicators"></a>Prestatie-indica toren voor toepassingen
 
@@ -63,7 +63,7 @@ Meet vervolgens de maximale prestatie vereisten van uw toepassing gedurende de l
 
 ## <a name="application-performance-requirements-checklist"></a>Controle lijst voor toepassings prestaties
 
-| **Prestatie vereisten** | **50 percentiel** | **90 percentiel** | **99 percentiel** |
+| **Prestatievereisten** | **50 percentiel** | **90 percentiel** | **99 percentiel** |
 | --- | --- | --- | --- |
 | Met maximaal Trans acties per seconde | | | |
 | % Lees bewerkingen | | | |
@@ -138,7 +138,7 @@ Zie [Linux VM-grootten](../articles/virtual-machines/linux/sizes.md) of [Windows
 Een i/o-aanvraag is een eenheid voor invoer/uitvoer die door uw toepassing wordt uitgevoerd. Het identificeren van de aard van de i/o-aanvragen, wille keurige of sequentiële, lees-of schrijf bewerkingen, kleine of grote, helpt u bij het bepalen van de prestatie vereisten van uw toepassing. Het is belang rijk om inzicht te krijgen in de aard van IO-aanvragen om de juiste beslissingen te nemen bij het ontwerpen van de infra structuur van uw toepassing. IOs moet gelijkmatig worden gedistribueerd om de beste prestaties mogelijk te maken.
 
 I/o-grootte is een van de belang rijke factoren. De i/o-grootte is de grootte van de invoer-en uitvoer bewerkings aanvraag die wordt gegenereerd door uw toepassing. De i/o-grootte heeft een grote invloed op de prestaties, met name op de IOPS en band breedte die de toepassing kan krijgen. In de volgende formule ziet u de relatie tussen IOPS, i/o-grootte en band breedte/door voer.  
-    ![](media/premium-storage-performance/image1.png)
+    ![Een diagram van de vergelijking van de I-P S maal de I/O-grootte is gelijk aan de door voer.](media/premium-storage-performance/image1.png)
 
 Sommige toepassingen bieden u de mogelijkheid om hun IO-grootte te wijzigen, terwijl sommige toepassingen dat niet doen. SQL Server bepaalt bijvoorbeeld de optimale IO-grootte zelf, en biedt gebruikers geen knoppen om deze te wijzigen. Anderzijds biedt Oracle een para meter met de naam [DB- \_ blok \_ grootte](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815) , waarmee u de I/O-aanvraag grootte van de Data Base kunt configureren.
 
@@ -371,13 +371,13 @@ Als u bijvoorbeeld in SQL Server de MAXDOP-waarde voor een query op ' 4 ' inform
 
 *Optimale wachtrij diepte*  
 Een zeer hoge wachtrij diepte waarde heeft ook de nadelen. Als de waarde voor de wachtrij diepte te hoog is, probeert de toepassing zeer hoge IOPS te bezorgen. Tenzij de toepassing permanente schijven met voldoende ingerichte IOPS heeft, kan dit een negatieve invloed hebben op de latentie van de toepassing. In de volgende formule ziet u de relatie tussen IOPS, latentie en wachtrij diepte.  
-    ![](media/premium-storage-performance/image6.png)
+    ![Een diagram van de vergelijking van de I O S-tijden van de k-waarde is gelijk aan de wachtrij diepte.](media/premium-storage-performance/image6.png)
 
 U moet de wachtrij diepte niet configureren voor een hoge waarde, maar voor een optimale waarde, waardoor voldoende IOPS voor de toepassing kan worden geleverd zonder dat dit gevolgen heeft voor de latentie. Als de latentie van de toepassing bijvoorbeeld 1 milliseconde moet zijn, is de wachtrij diepte vereist voor het maken van 5.000 IOPS, wachtrij diepte = 5000 x 0,001 = 5.
 
 *Wachtrij diepte voor striped volume*  
 Voor een striped volume moet u een hoge wachtrij diepte hebben, zodat elke schijf afzonderlijk een piek wachtrij heeft. Denk bijvoorbeeld aan een toepassing die een wachtrij diepte van 2 duwt en er vier schijven in de Stripe zijn. De twee i/o-aanvragen gaan naar twee schijven en de resterende twee schijven worden niet-actief. Configureer daarom de wachtrij diepte zodanig dat alle schijven bezet kunnen zijn. Onderstaande formule laat zien hoe u de wachtrij diepte van striped volumes kunt bepalen.  
-    ![](media/premium-storage-performance/image7.png)
+    ![Een diagram met de vergelijking Q D per schijf aantal kolommen per volume is gelijk aan Q D van het striped volume.](media/premium-storage-performance/image7.png)
 
 ## <a name="throttling"></a>Beperking
 

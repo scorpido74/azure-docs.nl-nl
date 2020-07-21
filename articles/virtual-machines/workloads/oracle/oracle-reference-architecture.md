@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2019
 ms.author: rogardle
 ms.custom: ''
-ms.openlocfilehash: 9125d8d2177b9bc40bb280f414cdfb2797ccf8fe
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: dd5e3cf8ce9e52768c28598a819a28ad1ec4413c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221609"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525514"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Referentie architecturen voor Oracle Database Enterprise Edition op Azure
 
@@ -37,13 +37,13 @@ Het bereiken van hoge Beschik baarheid in de Cloud is een belang rijk onderdeel 
 
 Naast de Cloud-systeem eigen hulpprogram ma's en aanbiedingen biedt Oracle oplossingen voor hoge Beschik baarheid, zoals [Oracle Data Guard](https://docs.oracle.com/en/database/oracle/oracle-database/18/sbydb/introduction-to-oracle-data-guard-concepts.html#GUID-5E73667D-4A56-445E-911F-1E99092DD8D7), [Data Guard met FSFO](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/index.html), [sharding](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/admin/sharding-overview.html)en [Golden Gate](https://www.oracle.com/middleware/technologies/goldengate.html) die op Azure kunnen worden ingesteld. Deze hand leiding bevat referentie architecturen voor elk van deze oplossingen.
 
-Ten slotte is het belang rijk dat u bij het migreren of maken van toepassingen voor de Cloud de code van uw toepassing verfijnt om Cloud-eigen patronen toe te voegen, zoals het [patroon voor opnieuw proberen](https://docs.microsoft.com/azure/architecture/patterns/retry) en de [circuit onderbreker](https://docs.microsoft.com/azure/architecture/patterns/circuit-breaker). Aanvullende patronen die zijn gedefinieerd in de [hand leiding voor het ontwerpen van Clouds](https://docs.microsoft.com/azure/architecture/patterns/) , kunnen u helpen bij het verbeteren van de toepassing.
+Ten slotte is het belang rijk dat u bij het migreren of maken van toepassingen voor de Cloud de code van uw toepassing verfijnt om Cloud-eigen patronen toe te voegen, zoals het [patroon voor opnieuw proberen](/azure/architecture/patterns/retry) en de [circuit onderbreker](/azure/architecture/patterns/circuit-breaker). Aanvullende patronen die zijn gedefinieerd in de [hand leiding voor het ontwerpen van Clouds](/azure/architecture/patterns/) , kunnen u helpen bij het verbeteren van de toepassing.
 
 ### <a name="oracle-rac-in-the-cloud"></a>Oracle RAC in de Cloud
 
 Oracle Real Application Cluster (RAC) is een oplossing van Oracle waarmee klanten hoge door Voer kunnen bereiken door veel instanties die toegang hebben tot één database opslag (gedeeld patroon van alle architectuur). Hoewel Oracle RAC ook on-premises kan worden gebruikt voor hoge Beschik baarheid, kan Oracle RAC alleen worden gebruikt voor hoge Beschik baarheid in de Cloud omdat het alleen bescherming biedt tegen storingen op exemplaar niveau en niet tegen storingen op het niveau van het rek of het Data Center. Daarom raadt Oracle aan Oracle Data Guard te gebruiken met uw data base (of één exemplaar of RAC) voor hoge Beschik baarheid. Klanten hebben doorgaans een hoge SLA nodig voor het uitvoeren van hun essentiële toepassingen. Oracle RAC is momenteel niet gecertificeerd of wordt niet ondersteund door Oracle in Azure. Azure biedt echter functies als Azure biedt Beschikbaarheidszones en geplande onderhouds Vensters om te helpen beschermen tegen storingen op exemplaar niveau. Klanten kunnen daarnaast gebruikmaken van technologieën als Oracle Data Guard, Oracle Golden Gate en Oracle sharding voor hoge prestaties en meer flexibiliteit door hun data bases te beschermen tegen rack niveau en op datacenter niveau en geo-politieke fouten.
 
-Bij het uitvoeren van Oracle-data bases in meerdere [beschikbaarheids zones](https://docs.microsoft.com/azure/availability-zones/az-overview) in combi natie met Oracle Data Guard of Golden Gate, kunnen klanten een sla voor de uptime van 99,99% ophalen. In azure-regio's waar beschikbaarheids zones nog niet aanwezig zijn, kunnen klanten [beschikbaarheids sets](https://docs.microsoft.com/azure/virtual-machines/linux/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) gebruiken en een sla voor de uptime van 99,95% verzorgen.
+Bij het uitvoeren van Oracle-data bases in meerdere [beschikbaarheids zones](../../../availability-zones/az-overview.md) in combi natie met Oracle Data Guard of Golden Gate, kunnen klanten een sla voor de uptime van 99,99% ophalen. In azure-regio's waar beschikbaarheids zones nog niet aanwezig zijn, kunnen klanten [beschikbaarheids sets](../../linux/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) gebruiken en een sla voor de uptime van 99,95% verzorgen.
 
 >Opmerking: u kunt een doel voor de uptime hebben die veel hoger is dan de SLA voor de uptime van micro soft.
 
@@ -51,7 +51,7 @@ Bij het uitvoeren van Oracle-data bases in meerdere [beschikbaarheids zones](htt
 
 Wanneer u uw essentiële toepassingen in de Cloud host, is het belang rijk om te ontwerpen voor hoge Beschik baarheid en herstel na nood gevallen.
 
-Voor Oracle Database Enterprise Edition is Oracle Data Guard een handige functie voor herstel na nood gevallen. U kunt een standby-data base-exemplaar instellen in een [gekoppelde Azure-regio](/azure/best-practices-availability-paired-regions) en failover voor gegevens beveiliging instellen voor herstel na nood gevallen. Als er geen gegevens verloren gaan, is het raadzaam om een Oracle Data Guard Far Sync-exemplaar te implementeren naast actieve Data Guard. 
+Voor Oracle Database Enterprise Edition is Oracle Data Guard een handige functie voor herstel na nood gevallen. U kunt een standby-data base-exemplaar instellen in een [gekoppelde Azure-regio](../../../best-practices-availability-paired-regions.md) en failover voor gegevens beveiliging instellen voor herstel na nood gevallen. Als er geen gegevens verloren gaan, is het raadzaam om een Oracle Data Guard Far Sync-exemplaar te implementeren naast actieve Data Guard. 
 
 U kunt overwegen om het Data Guard Far Sync-exemplaar in te stellen in een andere beschikbaarheids zone dan uw primaire Oracle-Data Base als uw toepassing de latentie toestaat (grondige tests zijn vereist). Gebruik een **maximale beschikbaarheids** modus voor het instellen van het synchrone Trans Port van uw opnieuw uitgevoerde bestanden naar de meest linkse Sync-instantie. Deze bestanden worden vervolgens asynchroon overgedragen naar de standby-data base. 
 
@@ -59,7 +59,7 @@ Als uw toepassing het prestatie verlies niet toestaat bij het instellen van een 
 
 Wanneer u Oracle Standard Edition-data bases gebruikt, zijn er ISV-oplossingen, zoals DBVisit standby, waarmee u hoge Beschik baarheid en herstel na nood gevallen kunt instellen.
 
-## <a name="reference-architectures"></a>Referentiearchitecturen
+## <a name="reference-architectures"></a>Referentie-archtecturen
 
 ### <a name="oracle-data-guard"></a>Oracle Data Guard
 
@@ -79,7 +79,7 @@ Het volgende diagram is een aanbevolen architectuur voor het gebruik van Oracle 
 
 ![Oracle Database beschikbaarheids zones gebruiken met Data Guard Broker-FSFO](./media/oracle-reference-architecture/oracledb_dg_fsfo_az.png)
 
-In het voor gaande diagram opent het client systeem een aangepaste toepassing met Oracle-back-end via het web. De web-front-end is geconfigureerd in een load balancer. Met de web-frontend wordt een aanroep uitgevoerd naar de juiste toepassings server om het werk af te handelen. De toepassings server voert een query uit op de primaire Oracle-data base. De Oracle-data base is geconfigureerd met een [virtuele machine](../../../virtual-machines/windows/sizes-memory.md) met hyperthreaded geoptimaliseerd voor geheugen met [beperkte kern vcpu's](../../../virtual-machines/windows/constrained-vcpu.md) om de licentie kosten op te slaan en de prestaties te maximaliseren. Er worden meerdere Premium-of Ultra schijven (Managed Disks) gebruikt voor prestaties en hoge Beschik baarheid.
+In het voor gaande diagram opent het client systeem een aangepaste toepassing met Oracle-back-end via het web. De web-front-end is geconfigureerd in een load balancer. Met de web-frontend wordt een aanroep uitgevoerd naar de juiste toepassings server om het werk af te handelen. De toepassings server voert een query uit op de primaire Oracle-data base. De Oracle-data base is geconfigureerd met een [virtuele machine](../../sizes-memory.md) met hyperthreaded geoptimaliseerd voor geheugen met [beperkte kern vcpu's](../../../virtual-machines/windows/constrained-vcpu.md) om de licentie kosten op te slaan en de prestaties te maximaliseren. Er worden meerdere Premium-of Ultra schijven (Managed Disks) gebruikt voor prestaties en hoge Beschik baarheid.
 
 De Oracle-data bases worden in meerdere beschikbaarheids zones geplaatst voor hoge Beschik baarheid. Elke zone bestaat uit een of meer data centers die zijn uitgerust met onafhankelijke voeding, koeling en netwerken. Ten minste drie afzonderlijke zones worden in alle ingeschakelde regio's ingesteld om tolerantie te garanderen. De fysieke schei ding van beschikbaarheids zones binnen een regio beveiligt de gegevens van fouten in data centers. Daarnaast zijn twee FSFO-waarnemers in twee beschikbaarheids zones ingesteld voor het initiëren en failoveren van de Data Base naar de secundaire als er een storing optreedt. 
 
@@ -113,7 +113,7 @@ Het volgende diagram is een architectuur die gebruikmaakt van Oracle Data Guard 
 
 Golden Gate maakt het mogelijk om gegevens op transactie niveau uit te wisselen en te bewerken via meerdere heterogene platformen in de hele onderneming. Er worden doorgevoerde trans acties met trans actie-integriteit en minimale overhead op uw bestaande infra structuur verplaatst. Dankzij de modulaire architectuur hebt u de flexibiliteit om geselecteerde gegevens records, transactionele wijzigingen en wijzigingen in DDL (Data Definition Language) uit verschillende topologieën op te halen en te repliceren.
 
-Met Oracle Golden Gate kunt u uw data base configureren voor maximale Beschik baarheid door bidirectionele replicatie te bieden. Hiermee kunt u een configuratie met **meerdere masters** of **actief-actief**instellen. Het volgende diagram is een aanbevolen architectuur voor Oracle Golden Gate Active-Active-Setup op Azure. In de volgende architectuur is de Oracle-data base geconfigureerd met behulp van een [virtuele machine](../../../virtual-machines/windows/sizes-memory.md) met hyperthreaded geoptimaliseerd voor geheugen met [beperkte kern vcpu's](../../../virtual-machines/windows/constrained-vcpu.md) om de licentie kosten op te slaan en de prestaties te maximaliseren. Er worden meerdere Premium-of Ultra schijven (Managed disks) gebruikt voor prestaties en beschik baarheid.
+Met Oracle Golden Gate kunt u uw data base configureren voor maximale Beschik baarheid door bidirectionele replicatie te bieden. Hiermee kunt u een configuratie met **meerdere masters** of **actief-actief**instellen. Het volgende diagram is een aanbevolen architectuur voor Oracle Golden Gate Active-Active-Setup op Azure. In de volgende architectuur is de Oracle-data base geconfigureerd met behulp van een [virtuele machine](../../sizes-memory.md) met hyperthreaded geoptimaliseerd voor geheugen met [beperkte kern vcpu's](../../../virtual-machines/windows/constrained-vcpu.md) om de licentie kosten op te slaan en de prestaties te maximaliseren. Er worden meerdere Premium-of Ultra schijven (Managed disks) gebruikt voor prestaties en beschik baarheid.
 
 ![Oracle Database beschikbaarheids zones gebruiken met Data Guard Broker-FSFO](./media/oracle-reference-architecture/oracledb_gg_az.png)
 
@@ -215,7 +215,7 @@ Het patchen van het besturings systeem van de virtuele machine kan worden geauto
 
 ## <a name="architecture-and-design-considerations"></a>Architectuur-en ontwerp overwegingen
 
-- Overweeg het gebruik van hyperthreaded [geheugen geoptimaliseerde virtuele machine](../../../virtual-machines/windows/sizes-memory.md) met [beperkte kern vcpu's](../../../virtual-machines/windows/constrained-vcpu.md) voor uw Oracle database-VM om de licentie kosten op te slaan en de prestaties te maximaliseren. Gebruik meerdere Premium-of Ultra-schijven (Managed disks) voor prestaties en beschik baarheid.
+- Overweeg het gebruik van hyperthreaded [geheugen geoptimaliseerde virtuele machine](../../sizes-memory.md) met [beperkte kern vcpu's](../../../virtual-machines/windows/constrained-vcpu.md) voor uw Oracle database-VM om de licentie kosten op te slaan en de prestaties te maximaliseren. Gebruik meerdere Premium-of Ultra-schijven (Managed disks) voor prestaties en beschik baarheid.
 - Wanneer u beheerde schijven gebruikt, kan de naam van de schijf/apparaat worden gewijzigd bij het opnieuw opstarten. Het is raadzaam om de UUID van het apparaat te gebruiken in plaats van de naam om ervoor te zorgen dat uw koppelingen behouden blijven tijdens het opnieuw opstarten. Meer informatie vindt u [hier](../../../virtual-machines/linux/configure-raid.md#add-the-new-file-system-to-etcfstab).
 - Gebruik beschikbaarheids zones voor maximale Beschik baarheid in-regio.
 - Overweeg het gebruik van ultra schijven (indien beschikbaar) of Premium-schijven voor uw Oracle-data base.

@@ -7,13 +7,14 @@ ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 6c621219bc424b7e0df6de286a066fd5b94af4a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a836f4ce40f4d2e0871f99122d25bb6c6f346d05
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514972"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527877"
 ---
-# <a name="transfer-data-with-azcopy-and-file-storage"></a>Gegevens overdragen met AzCopy en File Storage 
+# <a name="transfer-data-with-azcopy-and-file-storage"></a>Gegevens overdragen met AzCopy en bestandopslag 
 
 AzCopy is een opdrachtregelprogramma dat u kunt gebruiken om blobs of bestanden vanuit of naar een opslagaccount te kopiëren. Dit artikel bevat voorbeeld opdrachten die samen werken met Azure Files.
 
@@ -22,7 +23,7 @@ Voordat u begint, raadpleegt u het artikel aan de [slag met AzCopy](storage-use-
 > [!TIP]
 > In de voor beelden in dit artikel worden Path-argumenten met enkele aanhalings tekens (' '). Gebruik enkele aanhalings tekens in alle opdracht shells, met uitzonde ring van de Windows-opdracht shell (cmd.exe). Als u een Windows-opdracht shell (cmd.exe) gebruikt, plaatst u path-argumenten met dubbele aanhalings tekens ("") in plaats van enkele aanhalings tekens (' ').
 
-## <a name="create-file-shares"></a>Bestands shares maken
+## <a name="create-file-shares"></a>Bestandsshares maken
 
 U kunt de [azcopy](storage-ref-azcopy-make.md) maken om een bestands share te maken. In het voor beeld in deze sectie wordt een bestands share met de naam gemaakt `myfileshare` .
 
@@ -48,7 +49,7 @@ Deze sectie bevat de volgende voor beelden:
 > [!TIP]
 > U kunt de upload bewerking aanpassen met behulp van optionele vlaggen. Hier volgen enkele voor beelden.
 >
-> |Scenario|Markering|
+> |Scenario|Vlag|
 > |---|---|
 > |Kopieer toegangs beheer lijsten (Acl's) samen met de bestanden.|**--behoud-SMB-machtigingen** = \[ waar \| Onwaar\]|
 > |Informatie over SMB-eigenschappen samen met de bestanden kopiëren.|**--behoud-SMB-info** = \[ waar \| Onwaar\]|
@@ -117,7 +118,7 @@ U kunt ook bestanden uitsluiten met behulp van de `--exclude-path` optie. Zie vo
 
 #### <a name="use-wildcard-characters"></a>Joker tekens gebruiken
 
-Gebruik de [azcopy](storage-ref-azcopy-copy.md) -opdracht copy met de `--include-pattern` optie. Geef gedeeltelijke namen op die de joker tekens bevatten. Scheid namen met behulp van een semicolin ( `;` ).
+Gebruik de [azcopy](storage-ref-azcopy-copy.md) -opdracht copy met de `--include-pattern` optie. Geef gedeeltelijke namen op die de joker tekens bevatten. Scheid namen met een punt komma ( `;` ).
 
 |    |     |
 |--------|-----------|
@@ -143,7 +144,7 @@ Deze sectie bevat de volgende voor beelden:
 > [!TIP]
 > U kunt uw download bewerking aanpassen door optionele vlaggen te gebruiken. Hier volgen enkele voor beelden.
 >
-> |Scenario|Markering|
+> |Scenario|Vlag|
 > |---|---|
 > |Kopieer toegangs beheer lijsten (Acl's) samen met de bestanden.|**--behoud-SMB-machtigingen** = \[ waar \| Onwaar\]|
 > |Informatie over SMB-eigenschappen samen met de bestanden kopiëren.|**--behoud-SMB-info** = \[ waar \| Onwaar\]|
@@ -188,7 +189,7 @@ U kunt volledige bestands namen opgeven of gedeeltelijke namen gebruiken met Jok
 
 #### <a name="specify-multiple-complete-file-names"></a>Meerdere volledige bestands namen opgeven
 
-Gebruik de [azcopy](storage-ref-azcopy-copy.md) -opdracht copy met de `--include-path` optie. Scheid afzonderlijke bestands namen met behulp van een semicolin ( `;` ).
+Gebruik de [azcopy](storage-ref-azcopy-copy.md) -opdracht copy met de `--include-path` optie. Scheid afzonderlijke bestands namen met een punt komma ( `;` ).
 
 |    |     |
 |--------|-----------|
@@ -201,7 +202,7 @@ U kunt ook bestanden uitsluiten met behulp van de `--exclude-path` optie. Zie vo
 
 #### <a name="use-wildcard-characters"></a>Joker tekens gebruiken
 
-Gebruik de [azcopy](storage-ref-azcopy-copy.md) -opdracht copy met de `--include-pattern` optie. Geef gedeeltelijke namen op die de joker tekens bevatten. Scheid namen met behulp van een semicolin ( `;` ).
+Gebruik de [azcopy](storage-ref-azcopy-copy.md) -opdracht copy met de `--include-pattern` optie. Geef gedeeltelijke namen op die de joker tekens bevatten. Scheid namen met een punt komma ( `;` ).
 
 |    |     |
 |--------|-----------|
@@ -229,7 +230,7 @@ Deze sectie bevat de volgende voor beelden:
 > [!TIP]
 > U kunt uw Kopieer bewerking aanpassen met behulp van optionele vlaggen. Hier volgen enkele voor beelden.
 >
-> |Scenario|Markering|
+> |Scenario|Vlag|
 > |---|---|
 > |Kopieer toegangs beheer lijsten (Acl's) samen met de bestanden.|**--behoud-SMB-machtigingen** = \[ waar \| Onwaar\]|
 > |Informatie over SMB-eigenschappen samen met de bestanden kopiëren.|**--behoud-SMB-info** = \[ waar \| Onwaar\]|
@@ -280,7 +281,7 @@ Als u de `--delete-destination` vlag instelt op `true` AzCopy, worden bestanden 
 > [!TIP]
 > U kunt de synchronisatie bewerking aanpassen met behulp van optionele vlaggen. Hier volgen enkele voor beelden.
 >
-> |Scenario|Markering|
+> |Scenario|Vlag|
 > |---|---|
 > |Opgeven hoe strikt MD5-hashes moeten worden gevalideerd bij het downloaden.|**--Check-MD5** = \[ Niet-gecontroleerd \| aanmelden \| FailIfDifferent \| FailIfDifferentOrMissing\]|
 > |Bestanden uitsluiten op basis van een patroon.|**--exclude-pad**|
@@ -323,8 +324,8 @@ Meer voor beelden vindt u in een van deze artikelen:
 
 - [Aan de slag met AzCopy](storage-use-azcopy-v10.md)
 
-- [Gegevens overdragen met AzCopy en Blob Storage](storage-use-azcopy-blobs.md)
+- [Gegevens overdragen met AzCopy en blob-opslag](storage-use-azcopy-blobs.md)
 
-- [Gegevens overdragen met AzCopy en Amazon S3-buckets](storage-use-azcopy-s3.md)
+- [Gegevens overdragen met AzCopy en Amazon S3-opslag](storage-use-azcopy-s3.md)
 
-- [AzCopy configureren, optimaliseren en problemen oplossen](storage-use-azcopy-configure.md)
+- [Configureren, optimaliseren en problemen oplossen in AzCopy](storage-use-azcopy-configure.md)

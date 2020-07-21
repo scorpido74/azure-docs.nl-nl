@@ -8,19 +8,20 @@ ms.date: 05/28/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 6ee38dd6f9a2e254c57d6f79c09eee7bccfcd0aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11940a43438b72eb8a2e9391d56806744c4c27fc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84204681"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527809"
 ---
 # <a name="prevent-accidental-deletion-of-azure-file-shares"></a>Onopzettelijke verwijdering van Azure-bestands shares voor komen
 
-Azure Storage biedt nu zacht verwijderen voor bestands shares (preview). Met zacht verwijderen kunt u uw gegevens herstellen wanneer deze per ongeluk worden verwijderd door een toepassing of een ander opslag account.
+Azure Storage biedt nu zacht verwijderen voor bestands shares (preview). Met zacht verwijderen kunt u de bestands share herstellen wanneer deze per ongeluk door een toepassing of een ander opslag account wordt verwijderd.
 
 ## <a name="how-soft-delete-preview-works"></a>Hoe zacht verwijderen (preview) werkt
 
-Als zacht verwijderen voor Azure-bestands shares is ingeschakeld en een bestands share wordt verwijderd, wordt deze overgezet naar een voorlopig verwijderde status in plaats van dat ze permanent worden gewist. U kunt de hoeveelheid tijd waarvoor tijdelijke verwijderde gegevens worden hersteld, configureren voordat deze permanent wordt verwijderd.
+Als zacht verwijderen voor Azure-bestands shares is ingeschakeld en een bestands share wordt verwijderd, wordt deze overgezet naar een voorlopig verwijderde status in plaats van dat ze permanent worden gewist. U kunt de hoeveelheid tijd waarvoor tijdelijke verwijderde gegevens kunnen worden hersteld, configureren voordat deze definitief wordt verwijderd en de share tijdens deze Bewaar periode op elk gewenst moment verwijderen. Nadat de verwijdering is ongedaan gemaakt, wordt de share en alle inhoud, met inbegrip van moment opnamen, hersteld naar de status waarin deze zich bevond vóór de verwijdering. Zacht verwijderen werkt alleen op een bestands share niveau: afzonderlijke bestanden die worden verwijderd, worden nog steeds permanent gewist.
 
 Zacht verwijderen kan worden ingeschakeld op nieuwe of bestaande bestands shares. Voorlopig verwijderen is ook achterwaarts compatibel, zodat u geen wijzigingen hoeft aan te brengen in uw toepassingen om te kunnen profiteren van de beveiliging van de tijdelijke verwijdering. 
 

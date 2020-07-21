@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 08/28/2019
 ms.author: tiag
-ms.openlocfilehash: c24a840716841d04537ac5b77bcaf26fca4b78cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7774ea5138e6d77547e386531e573457cd6d2862
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77561946"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525939"
 ---
 # <a name="linux-vm-boots-to-grub-rescue"></a>Virtuele Linux-machine wordt opgestart naar grub-herstel
 
@@ -33,8 +34,8 @@ Volg de onderstaande stappen, afhankelijk van de fout die u ontvangt:
 
 * Als u het fout bericht **Onbekend bestands**systeem krijgt, kan deze fout optreden als gevolg van een beschadigd bestandssysteem op de opstart partitie of een onjuiste kernel-configuratie.
 
-   * Voor problemen met het bestands systeem volgt u de stappen in het artikel [Linux Recovery: kan geen SSH-naar-virtuele Linux-machine uitvoeren vanwege bestandssysteem fouten (fsck, inodes)](https://blogs.msdn.microsoft.com/linuxonazure/2016/09/13/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck-inodes/).
-   * Voor kernel-problemen voert u de stappen in het artikel [Linux Recovery uit: hand matig problemen](https://blogs.msdn.microsoft.com/linuxonazure/2016/10/09/linux-recovery-manually-fixing-non-boot-issues-related-to-kernel-problems/)met de kernel oplossen of Linux- [herstel: problemen oplossen die betrekking hebben op kernel-problemen met behulp van chroot](https://blogs.msdn.microsoft.com/linuxonazure/2016/10/09/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot/).
+   * Voor problemen met het bestands systeem volgt u de stappen in het artikel [Linux Recovery: kan geen SSH-naar-virtuele Linux-machine uitvoeren vanwege bestandssysteem fouten (fsck, inodes)](/archive/blogs/linuxonazure/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck-inodes).
+   * Voor kernel-problemen voert u de stappen in het artikel [Linux Recovery uit: hand matig problemen](/archive/blogs/linuxonazure/linux-recovery-manually-fixing-non-boot-issues-related-to-kernel-problems)met de kernel oplossen of Linux- [herstel: problemen oplossen die betrekking hebben op kernel-problemen met behulp van chroot](/archive/blogs/linuxonazure/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot).
    
 ### <a name="error---file-not-found"></a>Fout: bestand niet gevonden
 
@@ -50,7 +51,7 @@ Volg de onderstaande stappen, afhankelijk van de fout die u ontvangt:
 
 ### <a name="error---no-such-partition"></a>Fout-er is geen partitie
 
-* Als u het fout bericht **geen dergelijke partitie**krijgt, raadpleegt u scenario met de [fout melding ' geen dergelijke partitie ' tijdens het starten van de virtuele machine na een poging om het station van het besturings systeem uit te breiden](https://blogs.technet.microsoft.com/shwetanayak/2017/03/12/case-scenario-no-such-partition-error-while-trying-to-start-the-vm-after-attempting-to-extend-the-os-drive/).
+* Als u het fout bericht **geen dergelijke partitie**krijgt, raadpleegt u scenario met de [fout melding ' geen dergelijke partitie ' tijdens het starten van de virtuele machine na een poging om het station van het besturings systeem uit te breiden](/archive/blogs/shwetanayak/case-scenario-no-such-partition-error-while-trying-to-start-the-vm-after-attempting-to-extend-the-os-drive).
 
 ### <a name="error---grubcfg-file-not-found"></a>Fout-grub. cfg-bestand niet gevonden
 
@@ -68,4 +69,3 @@ Volg de onderstaande stappen, afhankelijk van de fout die u ontvangt:
 
 * [Overzicht van de agent voor virtuele Azure-machines](../extensions/agent-windows.md)
 * [Extensies en functies van virtuele machines voor Windows](../extensions/features-windows.md)
-

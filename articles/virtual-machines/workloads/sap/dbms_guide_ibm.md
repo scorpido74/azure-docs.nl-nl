@@ -12,11 +12,12 @@ ms.workload: infrastructure
 ms.date: 04/10/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fb9d46adf63f9cd0f4b19e4eace0a2f4a7129226
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 110e8d3be88fb2e1bd958f40d5defa23f8c679f3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84022604"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525395"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>DBMS-implementatie voor SAP-werkbelasting in virtuele Azure-machines voor IBM Db2
 
@@ -25,7 +26,7 @@ Algemene informatie over het uitvoeren van SAP Business Suite op IBM Db2 voor LU
 
 Zie SAP Note [2233094]voor meer informatie over SAP op DB2 voor LUW op Azure. 
 
-De diverse artikelen over SAP-workloads op Azure zijn uitgebracht.  Het is raadzaam om te beginnen bij de [SAP-werk belasting op Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) . Ga aan de slag en kies vervolgens het interesse gebied
+De diverse artikelen over SAP-workloads op Azure zijn uitgebracht.  Het is raadzaam om te beginnen bij de [SAP-werk belasting op Azure](./get-started.md) . Ga aan de slag en kies vervolgens het interesse gebied
 
 De volgende SAP-opmerkingen zijn gerelateerd aan SAP on Azure met betrekking tot het gebied dat in dit document wordt besproken:
 
@@ -43,7 +44,7 @@ De volgende SAP-opmerkingen zijn gerelateerd aan SAP on Azure met betrekking tot
 | [2002167] |Red Hat Enterprise Linux 7. x: installatie en upgrade |
 | [1597355] |Aanbeveling voor wissel geheugen voor Linux |
 
-Als PR-Lees dit document moet u de document [overwegingen voor Azure virtual machines DBMS-implementatie van de SAP-werk belasting](dbms_guide_general.md) en andere hand leidingen in de [SAP-werk belasting op de Azure-documentatie](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)lezen. 
+Als PR-Lees dit document moet u de document [overwegingen voor Azure virtual machines DBMS-implementatie van de SAP-werk belasting](dbms_guide_general.md) en andere hand leidingen in de [SAP-werk belasting op de Azure-documentatie](./get-started.md)lezen. 
 
 
 ## <a name="ibm-db2-for-linux-unix-and-windows-version-support"></a>Ondersteuning voor IBM Db2 voor Linux-, UNIX-en Windows-versies
@@ -72,7 +73,7 @@ U kunt ook Windows-opslag groepen (alleen beschikbaar in Windows Server 2012 en 
 
 Voor de schijven met de Db2-opslag paden voor uw sapdata-en saptmp-directory's moet u een sector grootte van fysieke schijven opgeven van 512 KB. Wanneer u Windows-opslag groepen gebruikt, moet u de opslag groepen hand matig maken via de opdracht regel interface met behulp van de para meter `-LogicalSectorSizeDefault` . Voor meer informatie raadpleegt u <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
 
-Voor virtuele machines uit de M-serie van Azure kan de latentie die in de transactie Logboeken wordt geschreven, worden verminderd met factoren, vergeleken met de prestaties van Azure Premium Storage, wanneer u Azure Write Accelerator gebruikt. Daarom moet u Azure Write Accelerator implementeren voor de VHD (s) die het volume vormen voor de Db2-transactie Logboeken. Details kunnen worden gelezen in het document [Write Accelerator](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator).
+Voor virtuele machines uit de M-serie van Azure kan de latentie die in de transactie Logboeken wordt geschreven, worden verminderd met factoren, vergeleken met de prestaties van Azure Premium Storage, wanneer u Azure Write Accelerator gebruikt. Daarom moet u Azure Write Accelerator implementeren voor de VHD (s) die het volume vormen voor de Db2-transactie Logboeken. Details kunnen worden gelezen in het document [Write Accelerator](../../windows/how-to-enable-write-accelerator.md).
 
 ### <a name="backuprestore"></a>Back-up en herstellen
 De functionaliteit voor maken en herstellen van IBM Db2 voor LUW wordt ondersteund op dezelfde manier als bij de standaard Windows Server-besturings systemen en Hyper-V.
@@ -113,7 +114,7 @@ Voor de schijven met de Db2-opslag paden voor uw sapdata-en saptmp-directory's m
 <!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
 
 
-### <a name="other"></a>Anders
+### <a name="other"></a>Overige
 Alle andere algemene gebieden, zoals Azure-beschikbaarheids sets of SAP-bewaking, zijn van toepassing zoals beschreven in de document [overwegingen voor Azure virtual machines DBMS-implementatie voor SAP-werk belasting](dbms_guide_general.md) voor implementaties van vm's met de IBM-data base.
 
 [767598]:https://launchpad.support.sap.com/#/notes/767598

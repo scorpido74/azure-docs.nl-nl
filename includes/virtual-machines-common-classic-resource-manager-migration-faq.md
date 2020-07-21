@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: fa97935c10b2a5df70c9babf031a889a9c1e9f34
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d05386f1dfbab28d5fe42d02b8e9be0f257afafd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83837880"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527202"
 ---
 ## <a name="what-is-the-time-required-for-migration"></a>Wat is de tijd die nodig is voor de migratie?
 
@@ -29,7 +29,7 @@ Klanten die actief of gestopt zijn, maar toegewezen IaaS Vm's (klassiek) in hun 
 
 ## <a name="why-am-i-getting-an-error-stating-newclassicvmcreationnotallowedforsubscription"></a>Waarom krijg ik een fout melding met de mede deling "NewClassicVMCreationNotAllowedForSubscription"?
 
-Als onderdeel van het pensioen proces zijn IaaS VM (klassiek) niet langer beschikbaar voor nieuwe klanten. We hebben u geïdentificeerd als nieuwe klanten en daarom is uw bewerking niet geautoriseerd. Het is raadzaam om [Azure virtual machines te gebruiken met behulp van arm](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell). Als u geen gebruik kunt maken van Azure Vm's met ARM, neemt u contact op met de ondersteuning voor White List van het abonnement.
+Als onderdeel van het pensioen proces zijn IaaS VM (klassiek) niet langer beschikbaar voor nieuwe klanten. We hebben u geïdentificeerd als nieuwe klanten en daarom is uw bewerking niet geautoriseerd. Het is raadzaam om [Azure virtual machines te gebruiken met behulp van arm](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell). Als u geen gebruik kunt maken van Azure Vm's met ARM, neemt u contact op met de ondersteuning om uw abonnement toe te voegen aan de acceptatie lijst.
 
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>Is dit migratieplan van invloed op mijn bestaande services en toepassingen die worden uitgevoerd op virtuele Azure-machines? 
 

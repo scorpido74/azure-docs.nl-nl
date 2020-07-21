@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogardle
-ms.openlocfilehash: 5a491bf85546c982db126ef4d6260a46ca8bf88b
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 7f6b9ddfd5b25ea8482e0bbf5622fa16bc450662
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224448"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525598"
 ---
 # <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>Back-ups maken en herstellen van een Oracle Database 12c-Data Base op een virtuele Azure Linux-machine
 
 U kunt Azure CLI gebruiken om Azure-resources te maken en te beheren via een opdracht prompt of scripts te gebruiken. In dit artikel gebruiken we Azure CLI-scripts om een Oracle Database 12c-data base te implementeren vanuit een galerie met installatie kopieën van Azure Marketplace.
 
-Voordat u begint, moet u ervoor zorgen dat Azure CLI is geïnstalleerd. Raadpleeg de [installatie handleiding voor Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli)voor meer informatie.
+Voordat u begint, moet u ervoor zorgen dat Azure CLI is geïnstalleerd. Raadpleeg de [installatie handleiding voor Azure cli](/cli/azure/install-azure-cli)voor meer informatie.
 
 ## <a name="prepare-the-environment"></a>De omgeving voorbereiden
 
@@ -33,7 +33,7 @@ Voordat u begint, moet u ervoor zorgen dat Azure CLI is geïnstalleerd. Raadplee
 
 *   Als u het back-up-en herstel proces wilt uitvoeren, moet u eerst een virtuele Linux-machine maken met een geïnstalleerd exemplaar van Oracle Database 12c. De Marketplace-installatie kopie die u gebruikt om de virtuele machine te maken heet *Oracle: Oracle-data base-ee: 12.1.0.2: Latest*.
 
-    Zie de [Snelstartgids Oracle Create Data Base](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-database-quick-create)(Engelstalig) voor meer informatie over het maken van een Oracle-data base.
+    Zie de [Snelstartgids Oracle Create Data Base](./oracle-database-quick-create.md)(Engelstalig) voor meer informatie over het maken van een Oracle-data base.
 
 
 ### <a name="step-2-connect-to-the-vm"></a>Stap 2: verbinding maken met de virtuele machine
@@ -508,7 +508,7 @@ Nadat de virtuele machine is hersteld, stelt u het open bare IP-adres in.
 
     ![Lijst met open bare IP-adressen](./media/oracle-backup-recovery/create_ip_00.png)
 
-2.  Klik op de Blade **open bare IP-adressen** op **toevoegen**. Selecteer op de Blade **openbaar IP-adres maken** bij **naam**de open bare IP-naam. Voor **Resourcegroep** selecteert u **Bestaande gebruiken**. Klik vervolgens op **Maken**.
+2.  Klik op de Blade **open bare IP-adressen** op **toevoegen**. Selecteer op de Blade **openbaar IP-adres maken** bij **naam**de open bare IP-naam. Voor **Resourcegroep** selecteert u **Bestaande gebruiken**. Klik vervolgens op **maken**.
 
     ![IP-adres maken](./media/oracle-backup-recovery/create_ip_01.png)
 
@@ -572,6 +572,3 @@ az group delete --name myResourceGroup
 [Zelf studie: Maxi maal beschik bare Vm's maken](../../linux/create-cli-complete.md)
 
 [Azure CLI-voor beelden van VM-implementatie verkennen](../../linux/cli-samples.md)
-
-
-

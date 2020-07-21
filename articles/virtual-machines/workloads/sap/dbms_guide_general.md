@@ -15,11 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 581efde3128294a326bdfd08e622a8dcabe5784d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 44a41f43aa31c15b71d7b35ebd29bf935c7df966
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84232655"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525463"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Overwegingen voor de implementatie van Azure Virtual Machines DBMS voor SAP-workloads
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -65,7 +66,7 @@ In het hele document worden deze voor waarden gebruikt:
 * **SAP-systeem**: de combi natie van een DBMS-laag en een toepassingslaag van, bijvoorbeeld een SAP ERP-ontwikkelings systeem, een SAP Business Warehouse-test systeem of een SAP CRM-productie systeem. In azure-implementaties wordt het delen van deze twee lagen tussen on-premises en Azure niet ondersteund. Als gevolg hiervan is een SAP-systeem on-premises geïmplementeerd of geïmplementeerd in Azure. U kunt de verschillende systemen van een SAP-landschap in azure of on-premises implementeren. U kunt bijvoorbeeld het ontwikkel-en test systeem van SAP CRM implementeren in azure, maar het productie systeem van SAP CRM on-premises implementeren.
 * **Cross-premises**: hierin wordt een scenario beschreven waarin vm's worden geïmplementeerd naar een Azure-abonnement met een site-naar-site-, multi site-of Azure ExpressRoute-verbinding tussen de on-premises data centers en Azure. In algemene documentatie over Azure worden dit soort implementaties ook beschreven als scenario's voor cross-premises. 
 
-    De reden hiervoor is om on-premises domeinen, on-premises Active Directory en on-premises DNS uit te breiden naar Azure. De on-premises liggende lands worden uitgebreid naar de Azure-assets van het abonnement. Met deze uitbrei ding kunnen de Vm's deel uitmaken van het on-premises domein. Domein gebruikers van het on-premises domein hebben toegang tot de servers en kunnen services uitvoeren op deze Vm's, zoals DBMS-Services. Communicatie en naam omzetting tussen Vm's die zijn geïmplementeerd op locatie en Vm's die in azure zijn geïmplementeerd, zijn mogelijk. Dit scenario is het meest voorkomende scenario dat wordt gebruikt voor het implementeren van SAP-assets op Azure. Zie [planning en ontwerp voor VPN-gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design)voor meer informatie.
+    De reden hiervoor is om on-premises domeinen, on-premises Active Directory en on-premises DNS uit te breiden naar Azure. De on-premises liggende lands worden uitgebreid naar de Azure-assets van het abonnement. Met deze uitbrei ding kunnen de Vm's deel uitmaken van het on-premises domein. Domein gebruikers van het on-premises domein hebben toegang tot de servers en kunnen services uitvoeren op deze Vm's, zoals DBMS-Services. Communicatie en naam omzetting tussen Vm's die zijn geïmplementeerd op locatie en Vm's die in azure zijn geïmplementeerd, zijn mogelijk. Dit scenario is het meest voorkomende scenario dat wordt gebruikt voor het implementeren van SAP-assets op Azure. Zie [planning en ontwerp voor VPN-gateway](../../../vpn-gateway/vpn-gateway-about-vpngateways.md)voor meer informatie.
 
 > [!NOTE]
 > Cross-premises implementaties van SAP-systemen zijn waar Azure virtual machines die SAP-systemen uitvoeren, lid zijn van een on-premises domein en worden ondersteund voor SAP-productie systemen. Cross-premises configuraties worden ondersteund voor het implementeren van onderdelen of het volt ooien van SAP-landschappen in Azure. Zelfs voor het uitvoeren van het volledige SAP-landschap in azure moeten deze Vm's deel uitmaken van een on-premises domein en Active Directory/LDAP. 
@@ -77,7 +78,7 @@ In het hele document worden deze voor waarden gebruikt:
 In sommige micro soft-documentatie worden cross-premises scenario's enigszins anders beschreven, met name voor configuraties met hoge Beschik baarheid in DBMS. In het geval van SAP-gerelateerde documenten, wordt het cross-premises scenario omlaag gekook voor site-naar-site-of particuliere [ExpressRoute](https://azure.microsoft.com/services/expressroute/) -connectiviteit en een SAP-landschap dat is gedistribueerd tussen on-premises en Azure.
 
 ## <a name="resources"></a>Resources
-Er zijn andere artikelen beschikbaar op SAP-werk belasting op Azure. Begin met [SAP-workload op Azure: Ga](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) aan de slag en kies vervolgens uw interesse gebied.
+Er zijn andere artikelen beschikbaar op SAP-werk belasting op Azure. Begin met [SAP-workload op Azure: Ga](./get-started.md) aan de slag en kies vervolgens uw interesse gebied.
 
 De volgende SAP-opmerkingen zijn gerelateerd aan SAP on Azure ten aanzien van het gebied dat in dit document wordt besproken.
 
@@ -102,7 +103,7 @@ De volgende SAP-opmerkingen zijn gerelateerd aan SAP on Azure ten aanzien van he
 
 Zie de [SAP Community-wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes)voor meer informatie over alle SAP-notities voor Linux.
 
-U hebt een praktische kennis van Microsoft Azure architectuur nodig en hoe Microsoft Azure virtuele machines worden geïmplementeerd en beheerd. Zie de [Azure-documentatie](https://docs.microsoft.com/azure/)voor meer informatie.
+U hebt een praktische kennis van Microsoft Azure architectuur nodig en hoe Microsoft Azure virtuele machines worden geïmplementeerd en beheerd. Zie de [Azure-documentatie](../../../index.yml)voor meer informatie.
 
 In het algemeen zijn de installatie en configuratie van Windows, Linux en DBMS in wezen hetzelfde als elke virtuele machine of bare metal-machine die u on-premises installeert. Er zijn een aantal architectuur-en systeem beheer implementatie beslissingen die afwijken wanneer u Azure IaaS gebruikt. In dit document worden de specifieke architectuur-en systeem beheer verschillen beschreven die moeten worden voor bereid wanneer u Azure IaaS gebruikt.
 
@@ -157,8 +158,8 @@ Als uw IOPS-vereiste al is opgegeven, wordt het aantal IOPS dat nodig is voor de
 >
 > Alleen MDADM en Logical Volume Manager (LVM) worden ondersteund voor het bouwen van een software-RAID op Linux. Zie voor meer informatie:
 >
-> - [Software-RAID op Linux configureren](https://docs.microsoft.com/azure/virtual-machines/linux/configure-raid) met behulp van MDADM
-> - [LVM configureren op een virtuele Linux-machine in azure](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm) met behulp van LVM
+> - [Software-RAID op Linux configureren](../../linux/configure-raid.md) met behulp van MDADM
+> - [LVM configureren op een virtuele Linux-machine in azure](../../linux/configure-lvm.md) met behulp van LVM
 >
 >
 
@@ -169,9 +170,9 @@ Als uw IOPS-vereiste al is opgegeven, wordt het aantal IOPS dat nodig is voor de
 >
 
 ### <a name="managed-or-nonmanaged-disks"></a>Beheerd of niet-beheerde schijven
-Een Azure Storage-account is een administratieve constructie en ook een onderwerp van beperkingen. De beperkingen verschillen tussen standaard opslag accounts en Premium Storage-accounts. Zie [Azure Storage schaal baarheid en prestatie doelen](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets)voor meer informatie over de mogelijkheden en beperkingen.
+Een Azure Storage-account is een administratieve constructie en ook een onderwerp van beperkingen. De beperkingen verschillen tussen standaard opslag accounts en Premium Storage-accounts. Zie [Azure Storage schaal baarheid en prestatie doelen](../../../storage/common/scalability-targets-standard-account.md)voor meer informatie over de mogelijkheden en beperkingen.
 
-Voor standaard opslag moet u er rekening mee houden dat de IOPS per opslag account beperkt is. Bekijk de rij met de **totale aanvraag snelheid** in het artikel [Azure Storage schaal baarheid en prestatie doelen](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets). Er is ook een aanvankelijke limiet voor het aantal opslag accounts per Azure-abonnement. Verdeel Vhd's voor het grotere SAP-landschap in verschillende opslag accounts om te voor komen dat deze opslag accounts worden beperkt. Dit is omslachtig als u op een paar honderd virtuele machines met meer dan duizend Vhd's spreekt.
+Voor standaard opslag moet u er rekening mee houden dat de IOPS per opslag account beperkt is. Bekijk de rij met de **totale aanvraag snelheid** in het artikel [Azure Storage schaal baarheid en prestatie doelen](../../../storage/common/scalability-targets-standard-account.md). Er is ook een aanvankelijke limiet voor het aantal opslag accounts per Azure-abonnement. Verdeel Vhd's voor het grotere SAP-landschap in verschillende opslag accounts om te voor komen dat deze opslag accounts worden beperkt. Dit is omslachtig als u op een paar honderd virtuele machines met meer dan duizend Vhd's spreekt.
 
 Het gebruik van standaard opslag voor DBMS-implementaties in combi natie met een SAP-werk belasting wordt niet aanbevolen, verwijzingen en aanbevelingen voor standaard opslag zijn beperkt tot dit korte [artikel](https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx)
 
@@ -187,8 +188,8 @@ Micro soft heeft [Azure-Managed disks](https://azure.microsoft.com/services/mana
 
 Als u wilt converteren van onbeheerd naar beheerde schijven, raadpleegt u:
 
-- [Een virtuele Windows-machine van niet-beheerde schijven converteren naar beheerde schijven](https://docs.microsoft.com/azure/virtual-machines/windows/convert-unmanaged-to-managed-disks).
-- [Een virtuele Linux-machine van niet-beheerde schijven converteren naar beheerde schijven](https://docs.microsoft.com/azure/virtual-machines/linux/convert-unmanaged-to-managed-disks).
+- [Een virtuele Windows-machine van niet-beheerde schijven converteren naar beheerde schijven](../../windows/convert-unmanaged-to-managed-disks.md).
+- [Een virtuele Linux-machine van niet-beheerde schijven converteren naar beheerde schijven](../../linux/convert-unmanaged-to-managed-disks.md).
 
 
 ### <a name="caching-for-vms-and-data-disks"></a><a name="c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f"></a>Caching voor Vm's en gegevens schijven
@@ -220,13 +221,13 @@ Voor Premium Storage bestaan de volgende cache opties:
 
 Voor Premium Storage wordt u aangeraden de **Lees cache voor gegevens bestanden** van de SAP-data base te gebruiken en **geen cache te kiezen voor de schijven van logboek bestanden**.
 
-Voor implementaties met een M-serie raden we u aan Azure Write Accelerator te gebruiken voor uw DBMS-implementatie. Zie [Write Accelerator inschakelen](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)voor meer informatie, beperkingen en implementatie van Azure write Accelerator.
+Voor implementaties met een M-serie raden we u aan Azure Write Accelerator te gebruiken voor uw DBMS-implementatie. Zie [Write Accelerator inschakelen](../../windows/how-to-enable-write-accelerator.md)voor meer informatie, beperkingen en implementatie van Azure write Accelerator.
 
 
 ### <a name="azure-nonpersistent-disks"></a>Niet-permanente Azure-schijven
 Azure Vm's bieden niet-permanente schijven nadat een virtuele machine is geïmplementeerd. Als een VM opnieuw wordt opgestart, wordt alle inhoud op die stations gewist. Het is een gegeven dat gegevens bestanden en logboek bestanden en het opnieuw uitvoeren van data bases, onder geen enkele omstandigheden, zich op deze niet-persistente stations bevinden. Er zijn mogelijk uitzonde ringen voor sommige data bases, waarbij deze niet-permanente schijven geschikt zijn voor TempDB en tijdelijke tablespaces. Vermijd het gebruik van schijven voor virtuele machines van de A-serie, omdat deze niet-persistente schijven beperkt zijn bij de door Voer met die VM-serie. 
 
-Zie [inzicht in het tijdelijke station op Windows-vm's in azure](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)voor meer informatie.
+Zie [inzicht in het tijdelijke station op Windows-vm's in azure](/archive/blogs/mast/understanding-the-temporary-drive-on-windows-azure-virtual-machines)voor meer informatie.
 
 ---
 > ![Windows][Logo_Windows] Windows
@@ -246,7 +247,7 @@ Zie [inzicht in het tijdelijke station op Windows-vm's in azure](https://blogs.m
 ### <a name="microsoft-azure-storage-resiliency"></a><a name="10b041ef-c177-498a-93ed-44b3441ab152"></a>Microsoft Azure Storage tolerantie
 Microsoft Azure Storage slaat de basis-VHD, met besturings systeem en gekoppelde schijven of blobs, op ten minste drie afzonderlijke opslag knooppunten. Dit type opslag wordt lokaal redundante opslag (LRS) genoemd. LRS is de standaard waarde voor alle typen opslag in Azure.
 
-Er zijn andere redundantie methoden. Zie [Azure storage-replicatie](https://docs.microsoft.com/azure/storage/common/storage-redundancy?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)voor meer informatie.
+Er zijn andere redundantie methoden. Zie [Azure storage-replicatie](../../../storage/common/storage-redundancy.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)voor meer informatie.
 
 > [!NOTE]
 >Premium Storage is het aanbevolen type opslag voor DBMS-Vm's en schijven die de data base opslaan en bestanden vastleggen en opnieuw uitvoeren. De enige beschik bare redundantie methode voor Premium Storage is LRS. Als gevolg hiervan moet u database methoden configureren om database gegevens replicatie in te scha kelen in een andere Azure-regio of beschikbaarheids zone. Database methoden bevatten SQL Server always on, Oracle Data Guard en HANA System Replication.
@@ -258,7 +259,7 @@ Er zijn andere redundantie methoden. Zie [Azure storage-replicatie](https://docs
 
 
 ## <a name="vm-node-resiliency"></a>Tolerantie van VM-knoop punt
-Azure biedt een aantal verschillende Sla's voor Vm's. Zie de meest recente release van [Sla voor virtual machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)voor meer informatie. Omdat de DBMS-laag meestal kritiek is voor Beschik baarheid in een SAP-systeem, moet u inzicht hebben in beschikbaarheids sets, beschikbaarheids zones en onderhouds gebeurtenissen. Zie [de beschik baarheid van virtuele Windows-machines beheren in azure](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability) en [de beschik baarheid van virtuele Linux-machines beheren in azure](https://docs.microsoft.com/azure/virtual-machines/linux/manage-availability)voor meer informatie over deze concepten.
+Azure biedt een aantal verschillende Sla's voor Vm's. Zie de meest recente release van [Sla voor virtual machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)voor meer informatie. Omdat de DBMS-laag meestal kritiek is voor Beschik baarheid in een SAP-systeem, moet u inzicht hebben in beschikbaarheids sets, beschikbaarheids zones en onderhouds gebeurtenissen. Zie [de beschik baarheid van virtuele Windows-machines beheren in azure](../../windows/manage-availability.md) en [de beschik baarheid van virtuele Linux-machines beheren in azure](../../linux/manage-availability.md)voor meer informatie over deze concepten.
 
 De minimale aanbeveling voor productie DBMS-scenario's met een SAP-werk belasting is:
 
@@ -268,43 +269,43 @@ De minimale aanbeveling voor productie DBMS-scenario's met een SAP-werk belastin
 
 U kunt ook een derde VM in een andere Azure-regio implementeren en dezelfde database methoden gebruiken om een asynchrone replica in een andere Azure-regio op te geven.
 
-Zie [deze zelf studie](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)voor meer informatie over het instellen van Azure-beschikbaarheids sets.
+Zie [deze zelf studie](../../windows/tutorial-availability-sets.md)voor meer informatie over het instellen van Azure-beschikbaarheids sets.
 
 
 
 ## <a name="azure-network-considerations"></a>Aandachtspunten voor Azure-netwerken
-Gebruik bij grootschalige SAP-implementaties de blauw druk van [Azure Virtual Data Center](https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter). Gebruik dit voor de configuratie van uw virtuele netwerk en machtigingen en roltoewijzingen voor verschillende onderdelen van uw organisatie.
+Gebruik bij grootschalige SAP-implementaties de blauw druk van [Azure Virtual Data Center](/azure/architecture/vdc/networking-virtual-datacenter). Gebruik dit voor de configuratie van uw virtuele netwerk en machtigingen en roltoewijzingen voor verschillende onderdelen van uw organisatie.
 
 Deze aanbevolen procedures zijn het resultaat van honderden implementaties van klanten:
 
 - De virtuele netwerken waarmee de SAP-toepassing wordt geïmplementeerd, hebben geen toegang tot internet.
 - De data base-Vm's worden uitgevoerd in hetzelfde virtuele netwerk als de toepassingslaag.
 - De virtuele machines in het virtuele netwerk hebben een statische toewijzing van het privé-IP-adres. Zie [IP-adres typen en toewijzings methoden in azure](../../../virtual-network/public-ip-addresses.md)voor meer informatie.
-- Routerings beperkingen van en naar de DBMS-Vm's zijn *niet* ingesteld met firewalls die zijn geïnstalleerd op de lokale DBMS-vm's. In plaats daarvan wordt verkeers routering gedefinieerd met [netwerk beveiligings groepen (nsg's)](https://docs.microsoft.com/azure/virtual-network/security-overview).
+- Routerings beperkingen van en naar de DBMS-Vm's zijn *niet* ingesteld met firewalls die zijn geïnstalleerd op de lokale DBMS-vm's. In plaats daarvan wordt verkeers routering gedefinieerd met [netwerk beveiligings groepen (nsg's)](../../../virtual-network/security-overview.md).
 - Wijs verschillende Nic's toe aan de virtuele machine om verkeer te scheiden en te isoleren naar de DBMS-VM. Elke NIC krijgt een ander IP-adres en elke NIC wordt toegewezen aan een ander subnet van het virtuele netwerk. Elk subnet heeft verschillende NSG-regels. De isolatie of schei ding van netwerk verkeer is een meting voor route ring. Het wordt niet gebruikt voor het instellen van quota's voor netwerk doorvoer.
 
 > [!NOTE]
-> Het toewijzen van vaste IP-adressen via Azure betekent dat ze worden toegewezen aan afzonderlijke virtuele Nic's. Wijs geen statische IP-adressen binnen het gast besturingssysteem toe aan een virtuele NIC. Sommige Azure-Services, zoals Azure Backup, zijn afhankelijk van het feit dat ten minste de primaire virtuele NIC is ingesteld op DHCP en niet op statische IP-adressen. Zie [problemen met back-ups van virtuele Azure-machines oplossen](https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot#networking)voor meer informatie. Als u meerdere statische IP-adressen wilt toewijzen aan een virtuele machine, wijst u meerdere virtuele Nic's toe aan een virtuele machine.
+> Het toewijzen van vaste IP-adressen via Azure betekent dat ze worden toegewezen aan afzonderlijke virtuele Nic's. Wijs geen statische IP-adressen binnen het gast besturingssysteem toe aan een virtuele NIC. Sommige Azure-Services, zoals Azure Backup, zijn afhankelijk van het feit dat ten minste de primaire virtuele NIC is ingesteld op DHCP en niet op statische IP-adressen. Zie [problemen met back-ups van virtuele Azure-machines oplossen](../../../backup/backup-azure-vms-troubleshoot.md#networking)voor meer informatie. Als u meerdere statische IP-adressen wilt toewijzen aan een virtuele machine, wijst u meerdere virtuele Nic's toe aan een virtuele machine.
 >
 
 
 > [!IMPORTANT]
-> Het configureren van [virtuele netwerk apparaten](https://azure.microsoft.com/solutions/network-appliances/) in het communicatie traject tussen de SAP-toepassing en de DBMS-laag van een SAP NetWeaver-, hybris-of S/4HANA SAP-systeem wordt niet ondersteund. Deze beperking is voor functionaliteits-en prestatie redenen. Het communicatie-pad tussen de SAP-toepassingslaag en de DBMS-laag moet direct een. De beperking bevat geen [toepassings beveiligings groep (ASG) en NSG regels](https://docs.microsoft.com/azure/virtual-network/security-overview) als de regels ASG en NSG een direct communicatie traject toestaan. 
+> Het configureren van [virtuele netwerk apparaten](https://azure.microsoft.com/solutions/network-appliances/) in het communicatie traject tussen de SAP-toepassing en de DBMS-laag van een SAP NetWeaver-, hybris-of S/4HANA SAP-systeem wordt niet ondersteund. Deze beperking is voor functionaliteits-en prestatie redenen. Het communicatie-pad tussen de SAP-toepassingslaag en de DBMS-laag moet direct een. De beperking bevat geen [toepassings beveiligings groep (ASG) en NSG regels](../../../virtual-network/security-overview.md) als de regels ASG en NSG een direct communicatie traject toestaan. 
 >
 > Andere scenario's waarin virtuele netwerk apparaten niet worden ondersteund, zijn in:
 >
-> * Communicatie paden tussen Azure-Vm's die Linux pacemaker-cluster knooppunten en SBD-apparaten vertegenwoordigen, zoals wordt beschreven in [hoge Beschik baarheid voor SAP NetWeaver op Azure-vm's op SuSE Linux Enterprise Server voor SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse).
-> * Communicatie paden tussen Azure Vm's en Windows Server Scale-out bestandsserver (SOFS) die zijn ingesteld zoals beschreven in [cluster a SAP ASCS/SCS instance op een Windows-failovercluster met behulp van een bestands share in azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share). 
+> * Communicatie paden tussen Azure-Vm's die Linux pacemaker-cluster knooppunten en SBD-apparaten vertegenwoordigen, zoals wordt beschreven in [hoge Beschik baarheid voor SAP NetWeaver op Azure-vm's op SuSE Linux Enterprise Server voor SAP-toepassingen](./high-availability-guide-suse.md).
+> * Communicatie paden tussen Azure Vm's en Windows Server Scale-out bestandsserver (SOFS) die zijn ingesteld zoals beschreven in [cluster a SAP ASCS/SCS instance op een Windows-failovercluster met behulp van een bestands share in azure](./sap-high-availability-guide-wsfc-file-share.md). 
 >
 > Virtuele netwerk apparaten in communicatie paden kunnen eenvoudig de netwerk latentie tussen twee communicatie partners verdubbelen. Ze kunnen de door Voer ook beperken in kritieke paden tussen de SAP-toepassingslaag en de DBMS-laag. In sommige klant scenario's kunnen virtuele netwerk apparaten ervoor zorgen dat pacemaker Linux-clusters mislukken. Dit zijn gevallen waarin communicatie tussen de Linux pacemaker-cluster knooppunten via een virtueel netwerk apparaat communiceert met hun SBD-apparaat.
 >
 
 > [!IMPORTANT]
-> Een ander ontwerp dat *niet* wordt ondersteund, is de schei ding van de SAP-toepassingslaag en de DBMS-laag in verschillende virtuele [netwerken van Azure die niet met elkaar](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) zijn gekoppeld. U wordt aangeraden de SAP-toepassingsobjectlaag en de DBMS-laag te scheiden met behulp van subnetten in een virtueel Azure-netwerk in plaats van met behulp van verschillende virtuele netwerken van Azure. 
+> Een ander ontwerp dat *niet* wordt ondersteund, is de schei ding van de SAP-toepassingslaag en de DBMS-laag in verschillende virtuele [netwerken van Azure die niet met elkaar](../../../virtual-network/virtual-network-peering-overview.md) zijn gekoppeld. U wordt aangeraden de SAP-toepassingsobjectlaag en de DBMS-laag te scheiden met behulp van subnetten in een virtueel Azure-netwerk in plaats van met behulp van verschillende virtuele netwerken van Azure. 
 >
-> Als u besluit de aanbeveling niet te volgen en in plaats daarvan de twee lagen te scheiden in verschillende virtuele netwerken, moeten de twee virtuele netwerken [gelijkwaardig](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)zijn. 
+> Als u besluit de aanbeveling niet te volgen en in plaats daarvan de twee lagen te scheiden in verschillende virtuele netwerken, moeten de twee virtuele netwerken [gelijkwaardig](../../../virtual-network/virtual-network-peering-overview.md)zijn. 
 >
-> Houd er rekening mee dat het netwerk verkeer tussen twee [gepeerde](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) virtuele netwerken van Azure onderhevig is aan kosten voor overdracht. Een zeer groot gegevens volume dat uit veel terabytes bestaat, wordt uitgewisseld tussen de SAP-toepassingslaag en de DBMS-laag. U kunt aanzienlijke kosten optellen als de SAP-toepassingsobjectlaag en de DBMS-laag worden gescheiden tussen twee peered virtuele netwerken van Azure.
+> Houd er rekening mee dat het netwerk verkeer tussen twee [gepeerde](../../../virtual-network/virtual-network-peering-overview.md) virtuele netwerken van Azure onderhevig is aan kosten voor overdracht. Een zeer groot gegevens volume dat uit veel terabytes bestaat, wordt uitgewisseld tussen de SAP-toepassingslaag en de DBMS-laag. U kunt aanzienlijke kosten optellen als de SAP-toepassingsobjectlaag en de DBMS-laag worden gescheiden tussen twee peered virtuele netwerken van Azure.
 
 Gebruik twee virtuele machines voor de implementatie van uw productie-DBMS in een Azure-beschikbaarheidsset. Gebruik ook afzonderlijke route ring voor de SAP-toepassingslaag en het beheer-en bewerkings verkeer naar de twee virtuele DBMS-Vm's. Zie de volgende afbeelding:
 
@@ -316,7 +317,7 @@ Het gebruik van privé-IP-adressen die worden gebruikt in functies als SQL Serve
 
 Als er een failover van het database knooppunt is, hoeft de SAP-toepassing niet opnieuw te worden geconfigureerd. In plaats daarvan worden de meest voorkomende SAP-toepassings architecturen opnieuw verbonden met het persoonlijke virtuele IP-adres. Ondertussen reageert de load balancer op de failover van het knoop punt door het verkeer door te sturen naar het virtuele particuliere IP-adres naar het tweede knoop punt.
 
-Azure biedt twee verschillende [Load Balancer sku's](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview): een basis-SKU en een standaard-SKU. Tenzij u wilt implementeren in azure-beschikbaarheids zones, is de Basic load balancer SKU prima.
+Azure biedt twee verschillende [Load Balancer sku's](../../../load-balancer/load-balancer-overview.md): een basis-SKU en een standaard-SKU. Tenzij u wilt implementeren in azure-beschikbaarheids zones, is de Basic load balancer SKU prima.
 
 Is het verkeer tussen de DBMS-Vm's en de SAP-toepassingslaag altijd via de load balancer steeds gerouteerd? Het antwoord is afhankelijk van de configuratie van de load balancer. 
 
@@ -326,7 +327,7 @@ De load balancer biedt een optie van DirectServerReturn. Als deze optie is gecon
 
 We raden u aan om DirectServerReturn te configureren in combi natie met load balancers die tussen de SAP-toepassingslaag en de DBMS-laag worden geplaatst. Deze configuratie vermindert de netwerk latentie tussen de twee lagen.
 
-Zie [een ILB-listener configureren voor AlwaysOn-beschikbaarheids groepen in azure](https://docs.microsoft.com/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener)voor een voor beeld van het instellen van deze configuratie met SQL Server always on.
+Zie [een ILB-listener configureren voor AlwaysOn-beschikbaarheids groepen in azure](/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener)voor een voor beeld van het instellen van deze configuratie met SQL Server always on.
 
 Als u gepubliceerde GitHub JSON-sjablonen gebruikt als referentie voor uw SAP-infrastructuur implementaties in azure, kunt u deze [sjabloon bestuderen voor een SAP-systeem met drie lagen](https://github.com/Azure/azure-quickstart-templates/tree/4099ad9bee183ed39b88c62cd33f517ae4e25669/sap-3-tier-marketplace-image-converged-md). In deze sjabloon ziet u ook de juiste instellingen voor de load balancer.
 
@@ -340,11 +341,11 @@ Om de netwerk latentie tussen virtuele Azure-machines verder te verminderen, rad
 ---
 > ![Windows][Logo_Windows] Windows
 >
-> Zie [een virtuele Windows-machine maken met versneld netwerken](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell)voor meer informatie over het implementeren van vm's met versneld netwerken voor Windows.
+> Zie [een virtuele Windows-machine maken met versneld netwerken](../../../virtual-network/create-vm-accelerated-networking-powershell.md)voor meer informatie over het implementeren van vm's met versneld netwerken voor Windows.
 >
 > ![Linux][Logo_Linux] Linux
 >
-> Zie [een virtuele Linux-machine maken met versneld netwerken](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)voor meer informatie over Linux-distributie.
+> Zie [een virtuele Linux-machine maken met versneld netwerken](../../../virtual-network/create-vm-accelerated-networking-cli.md)voor meer informatie over Linux-distributie.
 >
 >
 
@@ -372,4 +373,3 @@ Zie voor meer informatie over een bepaald DBMS:
 - [Bedieningsgids voor SAP HANA op Azure](hana-vm-operations.md)
 - [SAP HANA hoge Beschik baarheid voor virtuele machines van Azure](sap-hana-availability-overview.md)
 - [Back-upgids voor SAP HANA op virtuele machines van Azure](sap-hana-backup-guide.md)
-

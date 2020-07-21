@@ -3,12 +3,12 @@ title: Limieten en grenzen-QnA Maker
 description: QnA Maker heeft meta limieten voor delen van de Knowledge Base en de service. Het is belang rijk dat u uw Knowledge Base binnen deze grenzen houdt om te testen en te publiceren.
 ms.topic: reference
 ms.date: 02/14/2020
-ms.openlocfilehash: 6a600bcb25bc524cda38d1e35a777d23d47b15c9
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: cce95574c8ffc245818b61e9843c5f7984de972f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855555"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524434"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Limieten en grenzen voor de Knowledge Base QnA Maker
 
@@ -18,7 +18,7 @@ QnA Maker grenzen die hieronder worden aangegeven, zijn een combi natie van de [
 
 Het maximum aantal kennis grondslagen is gebaseerd op [limieten voor Azure-Cognitive Search lagen](../../search/search-limits-quotas-capacity.md).
 
-|**Azure Cognitive Search-laag** | **Gratis** | **Standaard** |**S1** | **S2**| **S3** |**S3 HD**|
+|**Azure Cognitive Search-laag** | **Gratis** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
 |Maxi maal aantal gepubliceerde kennis grondslagen toegestaan|2|14|49|199|199|2.999|
 
@@ -61,7 +61,7 @@ Meta gegevens worden weer gegeven als een op tekst gebaseerde sleutel: waardepaa
 
 Het maximum aantal meta gegevens velden per Knowledge Base is gebaseerd op de **[limieten van uw Azure Cognitive Search-laag](../../search/search-limits-quotas-capacity.md)**.
 
-|**Azure Cognitive Search-laag** | **Gratis** | **Standaard** |**S1** | **S2**| **S3** |**S3 HD**|
+|**Azure Cognitive Search-laag** | **Gratis** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
 |Maximum aantal meta gegevens velden per QnA Maker service (in alle Kb's)|1000|100 *|1000|1000|1000|1000|
 
@@ -79,7 +79,8 @@ De lengte en de acceptabele tekens voor de naam en waarde van de meta gegevens w
 Algemene limieten voor de inhoud van de Knowledge Base:
 * Lengte van antwoord tekst: 25.000
 * Lengte van de vraag tekst: 1.000
-* Lengte van meta gegevens sleutel/waarde: 100
+* Lengte van de tekst van de meta gegevens sleutel: 100
+* Lengte van tekst van meta gegevens waarde: 500
 * Ondersteunde tekens voor de naam van de meta gegevens: alfabetten, cijfers en`_`
 * Ondersteunde tekens voor de meta gegevens waarde: alle behalve `:` en`|`
 * Lengte van bestands naam: 200

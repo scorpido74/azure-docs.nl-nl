@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: becbf7f89266fb0f56aaa053eb7cba9291da6896
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 038084ba9ae43e14bc2eb42bf258912be27d062c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514091"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527860"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-change-your-storsimple-passwords"></a>De StorSimple Apparaatbeheer-service gebruiken om uw StorSimple-wacht woorden te wijzigen
 
@@ -36,25 +36,25 @@ Het wacht woord dat voor het eerst is ingesteld via de Windows Power shell-inter
 
 2. Selecteer in de lijst in tabel vorm van apparaten de optie en klik op het apparaat waarvan u het wacht woord wilt wijzigen.
 
-    ![](./media/storsimple-8000-change-passwords/changepwd1.png)
+    ![Scherm opname van de StorSimple-Apparaatbeheer service. Onder beheer is apparaten geselecteerd. In de lijst met apparaten is één apparaat geselecteerd.](./media/storsimple-8000-change-passwords/changepwd1.png)
 
 3. Ga op de Blade **instellingen** naar **Apparaatinstellingen > beveiliging**.
 
-    ![](./media/storsimple-8000-change-passwords/changepwd2.png)
+    ![Scherm opname van de Blade instellingen van de Apparaatbeheer service. Onder Apparaatinstellingen selecteert u de instelling beveiliging.](./media/storsimple-8000-change-passwords/changepwd2.png)
 
 4. Klik in de Blade **beveiligings instellingen** op **wacht woord** om het beheerders wachtwoord van het apparaat te wijzigen.
 
-    ![](./media/storsimple-8000-change-passwords/changepwd3.png)
+    ![Scherm opname met de Blade beveiligings instellingen. De knop wacht woord is gemarkeerd.](./media/storsimple-8000-change-passwords/changepwd3.png)
 
 5. Geef op de Blade **wacht woord** een beheerders wachtwoord op dat uit 8 tot 15 tekens bestaat. Het wacht woord moet een combi natie zijn van drie of meer hoofd letters, kleine letters, cijfers en speciale tekens.
 
 6. Bevestig het wachtwoord.
 
-    ![](./media/storsimple-8000-change-passwords/changepwd4.png)
+    ![Scherm afbeelding met de Blade wacht woord. Onder wacht woord voor Apparaatbeheer worden de vakken Nieuw wacht woord en wacht woord bevestigen ingevuld.](./media/storsimple-8000-change-passwords/changepwd4.png)
 
 7. Klik op **Opslaan** en klik op **Ja**om de bevestiging te bevestigen.
 
-    ![](./media/storsimple-8000-change-passwords/changepwd6.png)
+    ![Scherm afbeelding met de Blade wacht woord. De knop Opslaan is gemarkeerd.](./media/storsimple-8000-change-passwords/changepwd6.png)
 
 Het beheerders wachtwoord voor het apparaat moet nu worden bijgewerkt. U kunt dit gewijzigde wacht woord gebruiken om toegang te krijgen tot de Windows Power shell-interface.
 
@@ -70,25 +70,25 @@ U kunt het wacht woord voor StorSimple Snapshot Manager instellen of wijzigen vi
 
 2. Selecteer in de lijst in tabel vorm van apparaten de optie en klik op het apparaat waarvan u de StorSimple Snapshot Manager het wacht woord dat u wilt instellen of wijzigen.
 
-     ![](./media/storsimple-8000-change-passwords/changepwd1.png)
+     ![Scherm opname van de StorSimple-Apparaatbeheer service. Onder beheer is apparaten geselecteerd. In de lijst met apparaten is één apparaat geselecteerd.](./media/storsimple-8000-change-passwords/changepwd1.png)
 
 3. Ga op de Blade **instellingen** naar **Apparaatinstellingen > beveiliging**.
 
-     ![](./media/storsimple-8000-change-passwords/changepwd2.png)
+     ![Scherm opname van de Blade instellingen van de Apparaatbeheer service. Onder Apparaatinstellingen selecteert u de instelling beveiliging.](./media/storsimple-8000-change-passwords/changepwd2.png)
 
 4. Klik op de Blade **beveiligings instellingen** op **wacht woord** om het wacht woord voor de StorSimple Snapshot Manager in te stellen of te wijzigen.
 
-     ![](./media/storsimple-8000-change-passwords/changepwd3.png) 
+     ![Scherm opname met de Blade beveiligings instellingen. De knop wacht woord is gemarkeerd.](./media/storsimple-8000-change-passwords/changepwd3.png) 
 
 5. Voer een wacht woord van 14 of 15 tekens in op de Blade **wacht** woord. Zorg ervoor dat het wacht woord een combi natie van drie of meer hoofd letters, kleine letters, cijfers en speciale tekens bevat.
 
 6. Bevestig het wachtwoord.
 
-     ![](./media/storsimple-8000-change-passwords/changepwd5.png)
+     ![Scherm afbeelding met de Blade wacht woord. Onder Snapshot Manager wacht woord worden de vakken Nieuw wacht woord en wacht woord bevestigen ingevuld.](./media/storsimple-8000-change-passwords/changepwd5.png)
 
 7. Klik op **Opslaan** en klik op **Ja**om de bevestiging te bevestigen.
 
-     ![](./media/storsimple-8000-change-passwords/changepwd6.png)
+     ![Scherm afbeelding met de Blade wacht woord. De knop Opslaan is gemarkeerd.](./media/storsimple-8000-change-passwords/changepwd6.png)
 
 Het Snapshot Manager wacht woord voor StorSimple moet nu worden bijgewerkt.
 

@@ -13,11 +13,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a6532558107463311c4225b9855bc4cd3f19eed9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85acd8e26ca10730638332047a37d281358d205f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75965609"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526550"
 ---
 # <a name="troubleshoot-deployment-issues-with-restarting-or-resizing-an-existing-windows-vm-in-azure"></a>Probleemoplossing voor implementatieproblemen bij het opnieuw opstarten van een bestaande virtuele Windows-machine in Azure of bij het wijzigen van het formaat van die VM
 Wanneer u probeert een gestopt Azure virtual machine (VM) te starten of de grootte van een bestaande Azure-VM te wijzigen, treedt er een toewijzings fout op. Deze fout treedt op wanneer het cluster of de regio geen resources beschikbaar heeft of de aangevraagde VM-grootte niet kan ondersteunen.
@@ -29,7 +30,7 @@ Om te beginnen met het oplossen van problemen, verzamelt u de activiteiten Logbo
 
 [Implementatiebewerkingen bekijken](../../azure-resource-manager/templates/deployment-history.md)
 
-[Activiteiten logboeken weer geven om Azure-resources te beheren](../../resource-group-audit.md)
+[Activiteiten logboeken weer geven om Azure-resources te beheren](../../azure-resource-manager/management/view-activity-logs.md)
 
 ## <a name="issue-error-when-starting-a-stopped-vm"></a>Probleem: Er is een fout opgetreden bij het opstarten van een gestopte VM
 U probeert een gestopt VM te starten, maar een toewijzings fout op te halen.
@@ -61,5 +62,4 @@ De aanvraag voor het wijzigen van de grootte van de virtuele machine moet worden
   3. Selecteer de virtuele machine waarvan het formaat is gewijzigd en klik op **Start**en start vervolgens elk van de gestopte vm's.
 
 ## <a name="next-steps"></a>Volgende stappen
-Als u problemen ondervindt bij het maken van een nieuwe Windows-VM in azure, raadpleegt u [implementatie problemen oplossen met het maken van een nieuwe virtuele Windows-machine in azure](../windows/troubleshoot-deployment-new-vm.md).
-
+Als u problemen ondervindt bij het maken van een nieuwe Windows-VM in azure, raadpleegt u [implementatie problemen oplossen met het maken van een nieuwe virtuele Windows-machine in azure](./troubleshoot-deployment-new-vm-windows.md).

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 5d2fb62870e2c41af635627f5d692f08c67f8394
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2457952051f575306de46e3e8145cc26678a1ef8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80373347"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526535"
 ---
 # <a name="windows-vm-cannot-boot-due-to-windows-boot-manager"></a>Windows-VM kan niet worden opgestart vanwege Windows-opstart beheer
 
@@ -29,7 +29,7 @@ Dit artikel bevat stappen om problemen op te lossen waarbij Windows Boot Manager
 
 De virtuele machine wacht op een prompt van de gebruiker en wordt niet opgestart, tenzij hand matig wordt geïnstrueerd.
 
-Wanneer u [Diagnostische gegevens over opstarten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) gebruikt om de scherm opname van de virtuele machine weer te geven, ziet u dat in de scherm opname de Windows Boot Manager wordt weer gegeven met het bericht *Kies een besturings systeem dat moet worden gestart of druk op TAB om een hulp programma te selecteren:*.
+Wanneer u [Diagnostische gegevens over opstarten](./boot-diagnostics.md) gebruikt om de scherm opname van de virtuele machine weer te geven, ziet u dat in de scherm opname de Windows Boot Manager wordt weer gegeven met het bericht *Kies een besturings systeem dat moet worden gestart of druk op TAB om een hulp programma te selecteren:*.
 
 Afbeelding 1
  
@@ -53,7 +53,7 @@ Overzicht van het proces:
 
 Als u toegang hebt tot de seriële console, zijn er twee manieren om sneller opstart tijd te verkrijgen. Verlaag de *displaybootmenu* wacht tijd of verwijder de markering helemaal.
 
-1. Volg de instructies om toegang te krijgen tot de [Azure Serial console voor Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows) om toegang te krijgen tot de op tekst gebaseerde console.
+1. Volg de instructies om toegang te krijgen tot de [Azure Serial console voor Windows](./serial-console-windows.md) om toegang te krijgen tot de op tekst gebaseerde console.
 
    > [!NOTE]
    > Als u geen toegang hebt tot de seriële console, gaat u verder met [het maken en openen van een herstel-VM](#create-and-access-a-repair-vm).
@@ -77,7 +77,7 @@ Als u toegang hebt tot de seriële console, zijn er twee manieren om sneller ops
 
 ### <a name="create-and-access-a-repair-vm"></a>Een herstel-VM maken en openen
 
-1. Gebruik [stap 1-3 van de VM-reparatie opdrachten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) om een herstel-VM voor te bereiden.
+1. Gebruik [stap 1-3 van de VM-reparatie opdrachten](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) om een herstel-VM voor te bereiden.
 2. Gebruik Verbinding met extern bureaublad verbinding maken met de herstel-VM.
 
 ### <a name="configure-for-faster-boot-time-on-a-repair-vm"></a>Configureren voor een snellere opstart tijd op een herstel-VM
@@ -154,4 +154,4 @@ Voer het volgende script uit om geheugen dump verzameling en seriële console in
 
 ### <a name="rebuild-the-original-vm"></a>De oorspronkelijke VM opnieuw samen stellen
 
-Gebruik [stap 5 van de opdrachten voor het herstellen van de virtuele machine](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) om de virtuele machine opnieuw samen te stellen.
+Gebruik [stap 5 van de opdrachten voor het herstellen van de virtuele machine](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) om de virtuele machine opnieuw samen te stellen.

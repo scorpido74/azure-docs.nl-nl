@@ -7,11 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: 0c57e370cf2f43fc5636cc6c70d2a9bdce4a1923
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: df02378e638e9883d802318eba86dbfb066cd6cb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84141735"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527285"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Snelle stappen: maken en gebruiken van een openbaar persoonlijk sleutel paar met SSH voor Linux-Vm's in azure
 
@@ -28,7 +29,7 @@ Zie [SSH-sleutels gebruiken met Windows op Azure](ssh-from-windows.md)voor meer 
 
 ## <a name="create-an-ssh-key-pair"></a>Een SSH-sleutelpaar maken
 
-Gebruik de `ssh-keygen` opdracht om open bare en persoonlijke SSH-sleutel bestanden te genereren. Deze bestanden worden standaard gemaakt in de map ~/.ssh. U kunt een andere locatie opgeven en een optioneel wacht woord (*wachtwoordzin*) voor toegang tot het bestand met de persoonlijke sleutel. Als er op de opgegeven locatie een SSH-sleutel paar met dezelfde naam bestaat, worden deze bestanden overschreven.
+Gebruik de opdracht `ssh-keygen` om openbare en privé-SSH-sleutelbestanden te genereren. Deze bestanden worden standaard gemaakt in de map ~/.ssh. U kunt een andere locatie opgeven en een optioneel wacht woord (*wachtwoordzin*) voor toegang tot het bestand met de persoonlijke sleutel. Als er op de opgegeven locatie een SSH-sleutelpaar met dezelfde naam bestaat, worden deze bestanden overschreven.
 
 Met de volgende opdracht wordt een SSH-sleutel paar gemaakt met behulp van RSA-versleuteling en een bitlengte van 4096:
 
@@ -95,4 +96,4 @@ Als de virtuele machine gebruikmaakt van het just-in-time-toegangs beleid, moet 
 
 * Zie voor meer informatie over het werken met SSH-sleutel paren de [gedetailleerde stappen voor het maken en beheren van SSH-sleutel paren](create-ssh-keys-detailed.md).
 
-* Zie [problemen met ssh-verbindingen met een virtuele machine van Azure Linux oplossen](troubleshoot-ssh-connection.md)als u problemen ondervindt met ssh-verbindingen met virtuele Azure-machines.
+* Zie [problemen met ssh-verbindingen met een virtuele machine van Azure Linux oplossen](../troubleshooting/troubleshoot-ssh-connection.md)als u problemen ondervindt met ssh-verbindingen met virtuele Azure-machines.

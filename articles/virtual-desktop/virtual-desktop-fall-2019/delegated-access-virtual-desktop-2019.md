@@ -1,5 +1,5 @@
 ---
-title: Gedelegeerde toegang in het virtuele bureau blad van Windows-Azure
+title: 'Gedelegeerde toegang in virtueel bureau blad van Windows: 2019-Azure'
 description: Beheer mogelijkheden delegeren voor een implementatie van Windows virtueel bureau blad, met inbegrip van voor beelden.
 services: virtual-desktop
 author: Heidilohr
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 899e42e3b592ce1bc92d7d47578e10355b1c6de7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91be20de49f549f3530e6c817906f1abf8f106b6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82614432"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527554"
 ---
-# <a name="delegated-access-in-windows-virtual-desktop"></a>Gedelegeerde toegang in Windows Virtual Desktop
+# <a name="delegated-access-in-windows-virtual-desktop-fall-2019"></a>Gedelegeerde toegang in Windows virtueel bureau blad tot 2019
 
 >[!IMPORTANT]
 >Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../delegated-access-virtual-desktop.md) als u Azure Resource Manager Windows Virtual Desktop-objecten wilt beheren die zijn geïntroduceerd in de update Lente 2020.
@@ -24,7 +24,7 @@ Het virtuele bureau blad van Windows beschikt over een gedelegeerd toegangs mode
 
 Het Windows-bureau blad gedelegeerde toegang ondersteunt de volgende waarden voor elk element van de roltoewijzing:
 
-* Beveiligings-principal
+* Beveiligingsprincipal
     * Gebruikers
     * Service-principals
 * Roldefinitie ophalen

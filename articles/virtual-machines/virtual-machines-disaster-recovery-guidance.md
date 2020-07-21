@@ -6,11 +6,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 05/31/2017
 ms.author: cynthn
-ms.openlocfilehash: f2dc43e1f07d449bf2f8ed39ce4523c99b551dae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6481bfe265786ca8b79f96bbcac7fe4d58076911
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77115623"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525820"
 ---
 # <a name="what-if-an-azure-service-disruption-impacts-azure-vms"></a>Wat gebeurt er als de onderbreking van een Azure-service gevolgen heeft voor Azure Vm's
 Bij micro soft werken we hard om ervoor te zorgen dat onze services altijd beschikbaar zijn wanneer u ze nodig hebt. Forceren meer dan ons besturings element is soms van invloed op de manier waarop ongeplande service onderbrekingen ontstaan.
@@ -34,7 +35,7 @@ Dit is de beste optie als u geen Azure Site Recovery, geografisch redundante ops
 
 
 > [!NOTE]
-> Houd er rekening mee dat u geen controle hebt over dit proces. dit gebeurt alleen voor onderbrekingen van de hele regio. Daarom moet u ook vertrouwen op andere toepassingsspecifieke back-upstrategieen om het hoogste niveau van Beschik baarheid te krijgen. Zie de sectie over [gegevens strategieën voor herstel na nood gevallen](https://docs.microsoft.com/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan)voor meer informatie.
+> Houd er rekening mee dat u geen controle hebt over dit proces. dit gebeurt alleen voor onderbrekingen van de hele regio. Daarom moet u ook vertrouwen op andere toepassingsspecifieke back-upstrategieen om het hoogste niveau van Beschik baarheid te krijgen. Zie de sectie over [gegevens strategieën voor herstel na nood gevallen](/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan)voor meer informatie.
 >
 >
 
@@ -44,7 +45,7 @@ Dit is de beste optie als u geen Azure Site Recovery, geografisch redundante ops
 
 - Zie [herstel na nood gevallen en hoge Beschik baarheid voor Azure-toepassingen](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)voor meer informatie over het implementeren van een strategie voor herstel na nood gevallen en hoge Beschik baarheid.
 
-- Zie [technische richt lijnen voor Azure](/azure/data-lake-store/data-lake-store-disaster-recovery-guidance)voor meer informatie over het ontwikkelen van een gedetailleerd technisch inzicht in de mogelijkheden van een Cloud platform.
+- Zie [technische richt lijnen voor Azure](../data-lake-store/data-lake-store-disaster-recovery-guidance.md)voor meer informatie over het ontwikkelen van een gedetailleerd technisch inzicht in de mogelijkheden van een Cloud platform.
 
 
 - Neem contact op met de [klant ondersteuning](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)als de instructies niet duidelijk zijn of als u wilt dat micro soft de bewerkingen namens u uitvoert.

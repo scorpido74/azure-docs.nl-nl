@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/30/2020
 ms.author: radeltch
-ms.openlocfilehash: a7e44046de3eccab83e8315e6adea150a146e660
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 267d600270e834cf4f1f077452fda7459fac3029
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964189"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525446"
 ---
 # <a name="azure-monitor-for-sap-solutions-providers-preview"></a>Azure monitor voor SAP-oplossingen providers (preview-versie)
 
@@ -82,4 +82,4 @@ Als u Microsoft SQL Server provider wilt configureren, moeten de SAP-systeem-ID,
 ## <a name="next-steps"></a>Volgende stappen
 
 - Maak uw eerste Azure Monitor voor SAP-oplossingen resource.
-- Hebt u vragen over Azure Monitor voor SAP-oplossingen? Raadpleeg de sectie [Veelgestelde vragen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/azure-monitor-faq)
+- Hebt u vragen over Azure Monitor voor SAP-oplossingen? Raadpleeg de sectie [Veelgestelde vragen](./azure-monitor-faq.md)

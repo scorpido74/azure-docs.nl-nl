@@ -9,11 +9,12 @@ ms.subservice: spot
 ms.date: 03/25/2020
 ms.reviewer: jagaveer
 ms.custom: jagaveer
-ms.openlocfilehash: 756e0d62927b67d26ae75af90c64facfe9c92d31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 70d7eb000ed2d50bc22bb005621ee7515e5a2a61
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84310560"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527452"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>Azure spot-Vm's voor schaal sets voor virtuele machines 
 
@@ -29,7 +30,7 @@ Prijzen voor spot instanties zijn variabel, op basis van de regio en de SKU. Zie
 
 Met variabele prijzen kunt u een maximum prijs instellen, in Amerikaanse dollars (USD), met Maxi maal vijf decimalen. De waarde `0.98765` is bijvoorbeeld een maximum prijs van $0,98765 USD per uur. Als u de maximale prijs instelt op `-1` , wordt het exemplaar niet op basis van de prijs verwijderd. De prijs voor de instantie is de huidige prijs voor de steun waarde of de prijs voor een standaard exemplaar, die ooit kleiner is, zolang er capaciteit en quota beschikbaar zijn.
 
-## <a name="eviction-policy"></a>Verwijderings beleid
+## <a name="eviction-policy"></a>Verwijderingsbeleid
 
 Bij het maken van een spot schaal sets kunt u het verwijderings beleid zo instellen dat de *toewijzing wordt opheffen* (standaard) of *verwijderen*. 
 
@@ -44,7 +45,7 @@ Gebruikers kunnen zich aanmelden om in-VM-meldingen te ontvangen via [Azure Sche
 
 Als u virtuele-machine bewerkingen wilt implementeren op schaal sets, kunt u de vlag nieuwe *prioriteit* instellen op *Spot*. Alle virtuele machines in uw schaalset worden ingesteld op spot. Gebruik een van de volgende methoden voor het maken van een schaalset met behulp van spot-Vm's:
 - [Azure-portal](#portal)
-- [Azure-CLI](#azure-cli)
+- [Azure CLI](#azure-cli)
 - [Azure PowerShell](#powershell)
 - [Azure Resource Manager-sjablonen](#resource-manager-templates)
 
@@ -114,12 +115,12 @@ Als u het exemplaar wilt verwijderen nadat het is verwijderd, wijzigt `evictionP
 
 **V:** Hoe wordt het quotum voor steun beheerd?
 
-**A:** Spot instanties en standaard instanties hebben afzonderlijke quota groepen. Het steun quotum wordt gedeeld tussen Vm's en scale-set-exemplaren. Zie [Azure-abonnement- en servicelimieten, quota en beperkingen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) voor meer informatie.
+**A:** Spot instanties en standaard instanties hebben afzonderlijke quota groepen. Het steun quotum wordt gedeeld tussen Vm's en scale-set-exemplaren. Zie [Azure-abonnement- en servicelimieten, quota en beperkingen](../azure-resource-manager/management/azure-subscription-service-limits.md) voor meer informatie.
 
 
 **V:** Kan ik een extra quotum voor plaats vragen?
 
-**A:** Ja, u kunt de aanvraag indienen om uw quotum voor de begeleide Vm's te verhogen via het [standaard quotum aanvraag proces](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests).
+**A:** Ja, u kunt de aanvraag indienen om uw quotum voor de begeleide Vm's te verhogen via het [standaard quotum aanvraag proces](../azure-portal/supportability/per-vm-quota-requests.md).
 
 
 **V:** Kan ik bestaande schaal sets converteren naar een steun schaalset?
@@ -155,17 +156,17 @@ Als u het exemplaar wilt verwijderen nadat het is verwijderd, wijzigt `evictionP
 
 | Azure-kanalen               | Beschik baarheid van Azure spot Vm's       |
 |------------------------------|-----------------------------------|
-| Enterprise Agreement         | Yes                               |
-| Betalen naar gebruik                | Yes                               |
-| Cloud serviceprovider (CSP) | [Neem contact op met uw partner](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
+| Enterprise Agreement         | Ja                               |
+| Betalen naar gebruik                | Ja                               |
+| Cloud serviceprovider (CSP) | [Neem contact op met uw partner](/partner-center/azure-plan-get-started) |
 | Voordelen                     | Niet beschikbaar                     |
-| Gesponsorde                    | Yes                               |
+| Gesponsorde                    | Ja                               |
 | Gratis proefversie                   | Niet beschikbaar                     |
 
 
 **V:** Waar kan ik vragen plaatsen?
 
-**A:** U kunt uw vraag met `azure-spot` op [Q&A](https://docs.microsoft.com/answers/topics/azure-spot.html)plaatsen en labelen. 
+**A:** U kunt uw vraag met `azure-spot` op [Q&A](/answers/topics/azure-spot.html)plaatsen en labelen. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 8/20/2019
 ms.author: alsin
-ms.openlocfilehash: 61ae0ef92fe522a2a038a6076a5e0c0a10ee47b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cad12a55332a6c7898f9709776c58d7dba8dd81a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80060693"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526432"
 ---
 # <a name="common-errors-within-the-azure-serial-console"></a>Veelvoorkomende fouten in de Azure seriële console
 Er zijn een aantal bekende fouten in de Azure Serial console. Dit is een lijst met deze fouten en de stappen voor het oplossen ervan.
@@ -40,7 +40,7 @@ Kan de resource groep voor het opslag account voor diagnostische gegevens over o
 Het inrichten voor deze VM is nog niet voltooid. Controleer of de virtuele machine volledig is geïmplementeerd en voer de verbinding met de seriële console opnieuw uit. | Uw VM of schaalset voor virtuele machines kan nog steeds worden ingericht. Wacht enige tijd en probeer het opnieuw.
 De WebSocket is gesloten of kan niet worden geopend. | Mogelijk moet u toegang tot de firewall toevoegen aan `*.console.azure.com` . Een meer gedetailleerde maar meer benadering is het toestaan van firewall toegang tot de [IP-bereiken van het Microsoft Azure Data Center](https://www.microsoft.com/download/details.aspx?id=41653), die regel matig worden gewijzigd.
 Seriële console werkt niet met een opslag account met behulp van Azure Data Lake Storage Gen2 met hiërarchische naam ruimten. | Dit is een bekend probleem met hiërarchische naam ruimten. Als u wilt beperken, moet u ervoor zorgen dat het opslag account voor diagnostische gegevens over opstarten van de virtuele machine niet is gemaakt met behulp van Azure Data Lake Storage Gen2. Deze optie kan alleen worden ingesteld bij het maken van een opslag account. Mogelijk moet u een afzonderlijk opslag account voor diagnostische gegevens over opstarten maken zonder dat Azure Data Lake Storage Gen2 ingeschakeld om dit probleem te verhelpen.
-Er is een fout opgetreden in de verbinding met de seriële console naar de virtuele machine: ' verboden ' (SubscriptionNotEnabled)-abonnements naam niet gedefinieerd, id \<subscription id> heeft niet-ingeschakelde status niet gedefinieerd | Dit probleem kan optreden als het abonnement dat een gebruiker heeft gemaakt voor de Cloud Shell-opslag account is uitgeschakeld. Start Cloud Shell en [Voer de stappen uit die nodig zijn](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage#unmount-clouddrive-1) om een back-upopslag account voor Cloud shell in het huidige abonnement opnieuw in te richten.
+Er is een fout opgetreden in de verbinding met de seriële console naar de virtuele machine: ' verboden ' (SubscriptionNotEnabled)-abonnements naam niet gedefinieerd, id \<subscription id> heeft niet-ingeschakelde status niet gedefinieerd | Dit probleem kan optreden als het abonnement dat een gebruiker heeft gemaakt voor de Cloud Shell-opslag account is uitgeschakeld. Start Cloud Shell en [Voer de stappen uit die nodig zijn](../../cloud-shell/persisting-shell-storage.md#unmount-clouddrive-1) om een back-upopslag account voor Cloud shell in het huidige abonnement opnieuw in te richten.
 
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over de [Azure Serial console voor Linux vm's](./serial-console-linux.md)

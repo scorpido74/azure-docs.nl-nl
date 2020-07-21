@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: b8d47b69b4aba14c86fb09176b662aee7d5482d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f386cbf09bb2b62e0c54826affc50a050c095fa6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335518"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524587"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Aangepaste gegevens op een raster kaart weer geven
 
@@ -29,7 +29,7 @@ Als u aangepaste markerings punten, labels en geometrie-overlays wilt weer geven
 
 ### <a name="create-an-azure-maps-account"></a>Een Azure Maps-account maken
 
-Als u de procedures in dit artikel wilt uitvoeren, moet u eerst een Azure Maps account maken en de sleutel van uw Maps-account ophalen. Volg de instructies in [een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps) voor het maken van een abonnement op een Azure Maps-account en volg de stappen in de [primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account) om de primaire sleutel voor uw account op te halen. Zie [Verificatie beheren in Azure Maps](./how-to-manage-authentication.md) voor meer informatie over verificatie in Azure Maps.
+Als u de procedures in dit artikel wilt uitvoeren, moet u eerst een Azure Maps account maken en de sleutel van uw Maps-account ophalen. Volg de instructies in [een account maken](quick-demo-map-app.md#create-an-azure-maps-account) voor het maken van een abonnement op een Azure Maps-account en volg de stappen in de [primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account) om de primaire sleutel voor uw account op te halen. Zie [Verificatie beheren in Azure Maps](./how-to-manage-authentication.md) voor meer informatie over verificatie in Azure Maps.
 
 
 ## <a name="render-pushpins-with-labels-and-a-custom-image"></a>Markerings punten met labels en een aangepaste installatie kopie weer geven
@@ -136,7 +136,7 @@ U kunt ook het pad en de locatie gegevens van de pincode verkrijgen met behulp v
     }
     ```
 
-4. Selecteer **verzenden** en controleer de antwoord header. Bij een geslaagde aanvraag bevat de locatie header de status-URI om de huidige status van de upload aanvraag te controleren. De status-URI heeft de volgende indeling.  
+4. Selecteer **verzenden** en controleer de antwoord header. Bij een succesvol verzoek bevat de koptekst Locatie de status-URI om de huidige status van het uploadverzoek te controleren. De status-URI heeft de volgende indeling.  
 
    ```HTTP
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
@@ -148,7 +148,7 @@ U kunt ook het pad en de locatie gegevens van de pincode verkrijgen met behulp v
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
    ```
 
-6. Open een nieuw tabblad in de Postman-app om de udId op te halen. Selecteer HTTP-methode ophalen op het tabblad opbouw functie. Maak een GET-aanvraag op de status-URI. Als het uploaden van uw gegevens is geslaagd, ontvangt u een udId in de antwoord tekst. Kopieer het udId.
+6. Open een nieuw tabblad in de Postman-app om de udId op te halen. Selecteer HTTP-methode ophalen op het tabblad opbouw functie. Maak een GET-aanvraag op de status-URI. Als je gegevens zijn geüpload, ontvang je een udId in de antwoordtekst. Kopieer het udId.
 
    ```JSON
    {

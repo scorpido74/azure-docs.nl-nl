@@ -1,5 +1,5 @@
 ---
-title: Bestaande hostgroep uitbreiden met nieuwe sessie hosts-Azure
+title: Bestaande hostgroep uitbreiden met nieuwe sessie hosts vallen 2019-Azure
 description: Een bestaande hostgroep uitbreiden met nieuwe sessie-hosts in virtueel bureau blad van Windows.
 services: virtual-desktop
 author: Heidilohr
@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 956934bd536d8eb5e692ed193cad1424929db24b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 291dc32453001dd1e188bacae8be372bb3645ece
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260757"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527537"
 ---
-# <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Een bestaande hostgroep uitbreiden met nieuwe sessie-hosts
+# <a name="expand-an-existing-host-pool-with-new-session-hosts-fall-2019"></a>Een bestaande hostgroep uitbreiden met nieuwe sessie-hosts (najaar 2019)
 
 >[!IMPORTANT]
 >Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../expand-existing-host-pool.md) als u Azure Resource Manager Windows Virtual Desktop-objecten wilt beheren die zijn geïntroduceerd in de update Lente 2020.
@@ -49,7 +49,7 @@ Als u al een hostgroep en host-Vm's hebt gemaakt met behulp van de [Azure Market
 
 U kunt als volgt de Azure Resource Manager-sjabloon opnieuw implementeren om een hostgroep uit te breiden:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Zoek in de zoek balk aan de bovenkant van de Azure Portal naar **resource groepen** en selecteer het item onder **Services**.
 3. Zoek en selecteer de resource groep die u hebt gemaakt tijdens het maken van de hostgroep.
 4. Selecteer **implementaties**in het deel venster aan de linkerkant van de browser.
@@ -76,7 +76,7 @@ U kunt als volgt de Azure Resource Manager-sjabloon opnieuw implementeren om een
 
 Volg de instructies in [een hostgroep maken met behulp van de Azure Marketplace](create-host-pools-azure-marketplace-2019.md) totdat u [de Azure Marketplace-aanbieding hebt uitgevoerd om een nieuwe hostgroep in te richten](create-host-pools-azure-marketplace-2019.md#run-the-azure-marketplace-offering-to-provision-a-new-host-pool). Wanneer u dat punt krijgt, moet u de volgende informatie invoeren voor elk tabblad:
 
-### <a name="basics"></a>Basisinstellingen
+### <a name="basics"></a>Basisbeginselen
 
 Alle waarden in deze sectie moeten overeenkomen met wat u hebt opgegeven tijdens de eerste keer dat u de hostgroep en de Vm's voor de host maakt, met uitzonde ring van *standaard bureaublad gebruikers*:
 

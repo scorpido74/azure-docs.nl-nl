@@ -7,11 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
-ms.openlocfilehash: 6651ae21694022be86d8db08737c609aed3df569
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2667ff571070b2e62dcfa4af6e202f1851aa3e80
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81870260"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525769"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Een virtuele Windows-machine met meerdere Nic's maken en beheren
 Aan virtuele machines (Vm's) in azure kunnen meerdere Nic's (virtuele netwerk interface kaarten) zijn gekoppeld. Een veelvoorkomend scenario is om verschillende subnetten te hebben voor de connectiviteit van front-end-en back-end. U kunt meerdere Nic's aan een virtuele machine koppelen aan meerdere subnetten, maar deze subnetten moeten zich allemaal in hetzelfde virtuele netwerk (vNet) bevinden. In dit artikel vindt u informatie over het maken van een VM waaraan meerdere Nic's zijn gekoppeld. U leert ook hoe u Nic's kunt toevoegen aan of verwijderen uit een bestaande virtuele machine. Verschillende [VM-grootten](sizes.md) ondersteunen een variërend aantal nic's, dus grootte van uw virtuele machine dienovereenkomstig.
@@ -32,7 +33,7 @@ New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 ### <a name="create-virtual-network-and-subnets"></a>Virtueel netwerk en subnetten maken
 Een veelvoorkomend scenario is dat een virtueel netwerk twee of meer subnetten heeft. Eén subnet is mogelijk voor front-end verkeer, de andere voor back-end-verkeer. Als u verbinding wilt maken met beide subnetten, gebruikt u vervolgens meerdere Nic's op uw VM.
 
-1. Definieer twee subnetten van het virtuele netwerk met [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig). In het volgende voor beeld worden de subnetten gedefinieerd voor *mySubnetFrontEnd* en *mySubnetBackEnd*:
+1. Definieer twee subnetten van het virtuele netwerk met [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig). In het volgende voor beeld worden de subnetten gedefinieerd voor *mySubnetFrontEnd* en *mySubnetBackEnd*:
 
     ```powershell
     $mySubnetFrontEnd = New-AzVirtualNetworkSubnetConfig -Name "mySubnetFrontEnd" `
@@ -41,7 +42,7 @@ Een veelvoorkomend scenario is dat een virtueel netwerk twee of meer subnetten h
         -AddressPrefix "192.168.2.0/24"
     ```
 
-2. Maak uw virtuele netwerk en subnetten met [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork). In het volgende voor beeld wordt een virtueel netwerk gemaakt met de naam *myVnet*:
+2. Maak uw virtuele netwerk en subnetten met [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). In het volgende voor beeld wordt een virtueel netwerk gemaakt met de naam *myVnet*:
 
     ```powershell
     $myVnet = New-AzVirtualNetwork -ResourceGroupName "myResourceGroup" `
@@ -53,7 +54,7 @@ Een veelvoorkomend scenario is dat een virtueel netwerk twee of meer subnetten h
 
 
 ### <a name="create-multiple-nics"></a>Meerdere Nic's maken
-Maak twee Nic's met [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface). Sluit één NIC aan op het front-end-subnet en één NIC aan het back-end-subnet. In het volgende voor beeld worden Nic's gemaakt met de naam *myNic1* en *myNic2*:
+Maak twee Nic's met [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface). Sluit één NIC aan op het front-end-subnet en één NIC aan het back-end-subnet. In het volgende voor beeld worden Nic's gemaakt met de naam *myNic1* en *myNic2*:
 
 ```powershell
 $frontEnd = $myVnet.Subnets|?{$_.Name -eq 'mySubnetFrontEnd'}
@@ -80,13 +81,13 @@ Begin nu met het maken van de VM-configuratie. Voor elke VM-grootte geldt een li
     $cred = Get-Credential
     ```
 
-2. Definieer uw virtuele machine met [New-AzVMConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azvmconfig). In het volgende voor beeld wordt een virtuele machine met de naam *myVM* gedefinieerd en wordt een VM-grootte gebruikt die meer dan twee nic's ondersteunt (*Standard_DS3_v2*):
+2. Definieer uw virtuele machine met [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig). In het volgende voor beeld wordt een virtuele machine met de naam *myVM* gedefinieerd en wordt een VM-grootte gebruikt die meer dan twee nic's ondersteunt (*Standard_DS3_v2*):
 
     ```powershell
     $vmConfig = New-AzVMConfig -VMName "myVM" -VMSize "Standard_DS3_v2"
     ```
 
-3. Maak de rest van uw VM-configuratie met [set-AzVMOperatingSystem](https://docs.microsoft.com/powershell/module/az.compute/set-azvmoperatingsystem) en [set-AzVMSourceImage](https://docs.microsoft.com/powershell/module/az.compute/set-azvmsourceimage). In het volgende voor beeld wordt een virtuele machine met Windows Server 2016 gemaakt:
+3. Maak de rest van uw VM-configuratie met [set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem) en [set-AzVMSourceImage](/powershell/module/az.compute/set-azvmsourceimage). In het volgende voor beeld wordt een virtuele machine met Windows Server 2016 gemaakt:
 
     ```powershell
     $vmConfig = Set-AzVMOperatingSystem -VM $vmConfig `
@@ -102,14 +103,14 @@ Begin nu met het maken van de VM-configuratie. Voor elke VM-grootte geldt een li
         -Version "latest"
    ```
 
-4. Koppel de twee Nic's die u eerder hebt gemaakt met [add-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface):
+4. Koppel de twee Nic's die u eerder hebt gemaakt met [add-AzVMNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface):
 
     ```powershell
     $vmConfig = Add-AzVMNetworkInterface -VM $vmConfig -Id $myNic1.Id -Primary
     $vmConfig = Add-AzVMNetworkInterface -VM $vmConfig -Id $myNic2.Id
     ```
 
-5. Maak uw virtuele machine met [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm):
+5. Maak uw virtuele machine met [New-AzVM](/powershell/module/az.compute/new-azvm):
 
     ```powershell
     New-AzVM -VM $vmConfig -ResourceGroupName "myResourceGroup" -Location "EastUs"
@@ -120,19 +121,19 @@ Begin nu met het maken van de VM-configuratie. Voor elke VM-grootte geldt een li
 ## <a name="add-a-nic-to-an-existing-vm"></a>Een NIC toevoegen aan een bestaande virtuele machine
 U kunt een virtuele NIC toevoegen aan een bestaande virtuele machine door de toewijzing van de VM ongedaan te maken, de virtuele NIC toe te voegen en vervolgens de VM te starten. Verschillende [VM-grootten](sizes.md) ondersteunen een variërend aantal nic's, dus grootte van uw virtuele machine dienovereenkomstig. Indien nodig kunt u [de grootte van een virtuele machine wijzigen](resize-vm.md).
 
-1. Hef de toewijzing van de virtuele machine op met [AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm). In het volgende voor beeld wordt de toewijzing van de virtuele machine met de naam *myVM* in *myResourceGroup*ongedaan gemaakt:
+1. Hef de toewijzing van de virtuele machine op met [AzVM](/powershell/module/az.compute/stop-azvm). In het volgende voor beeld wordt de toewijzing van de virtuele machine met de naam *myVM* in *myResourceGroup*ongedaan gemaakt:
 
     ```powershell
     Stop-AzVM -Name "myVM" -ResourceGroupName "myResourceGroup"
     ```
 
-2. De bestaande configuratie van de virtuele machine ophalen met [Get-AzVm](https://docs.microsoft.com/powershell/module/az.compute/get-azvm). In het volgende voor beeld wordt informatie opgehaald voor de virtuele machine met de naam *myVM* in *myResourceGroup*:
+2. De bestaande configuratie van de virtuele machine ophalen met [Get-AzVm](/powershell/module/az.compute/get-azvm). In het volgende voor beeld wordt informatie opgehaald voor de virtuele machine met de naam *myVM* in *myResourceGroup*:
 
     ```powershell
     $vm = Get-AzVm -Name "myVM" -ResourceGroupName "myResourceGroup"
     ```
 
-3. In het volgende voor beeld wordt een virtuele NIC gemaakt met [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) met de naam *myNic3* die is gekoppeld aan *mySubnetBackEnd*. De virtuele NIC wordt vervolgens gekoppeld aan de VM met de naam *myVM* in *myResourceGroup* met [add-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface):
+3. In het volgende voor beeld wordt een virtuele NIC gemaakt met [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) met de naam *myNic3* die is gekoppeld aan *mySubnetBackEnd*. De virtuele NIC wordt vervolgens gekoppeld aan de VM met de naam *myVM* in *myResourceGroup* met [add-AzVMNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface):
 
     ```powershell
     # Get info for the back end subnet
@@ -165,7 +166,7 @@ U kunt een virtuele NIC toevoegen aan een bestaande virtuele machine door de toe
     Update-AzVM -VM $vm -ResourceGroupName "myResourceGroup"
     ```
 
-4. Start de VM met [Start-AzVm](https://docs.microsoft.com/powershell/module/az.compute/start-azvm):
+4. Start de VM met [Start-AzVm](/powershell/module/az.compute/start-azvm):
 
     ```powershell
     Start-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
@@ -176,19 +177,19 @@ U kunt een virtuele NIC toevoegen aan een bestaande virtuele machine door de toe
 ## <a name="remove-a-nic-from-an-existing-vm"></a>Een NIC verwijderen van een bestaande virtuele machine
 Als u een virtuele NIC van een bestaande VM wilt verwijderen, moet u de toewijzing van de VM ongedaan maken, de virtuele NIC verwijderen en vervolgens de VM starten.
 
-1. Hef de toewijzing van de virtuele machine op met [AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm). In het volgende voor beeld wordt de toewijzing van de virtuele machine met de naam *myVM* in *myResourceGroup*ongedaan gemaakt:
+1. Hef de toewijzing van de virtuele machine op met [AzVM](/powershell/module/az.compute/stop-azvm). In het volgende voor beeld wordt de toewijzing van de virtuele machine met de naam *myVM* in *myResourceGroup*ongedaan gemaakt:
 
     ```powershell
     Stop-AzVM -Name "myVM" -ResourceGroupName "myResourceGroup"
     ```
 
-2. De bestaande configuratie van de virtuele machine ophalen met [Get-AzVm](https://docs.microsoft.com/powershell/module/az.compute/get-azvm). In het volgende voor beeld wordt informatie opgehaald voor de virtuele machine met de naam *myVM* in *myResourceGroup*:
+2. De bestaande configuratie van de virtuele machine ophalen met [Get-AzVm](/powershell/module/az.compute/get-azvm). In het volgende voor beeld wordt informatie opgehaald voor de virtuele machine met de naam *myVM* in *myResourceGroup*:
 
     ```powershell
     $vm = Get-AzVm -Name "myVM" -ResourceGroupName "myResourceGroup"
     ```
 
-3. Informatie over de NIC verwijderen met [Get-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkinterface). In het volgende voor beeld wordt informatie over *myNic3*opgehaald:
+3. Informatie over de NIC verwijderen met [Get-AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface). In het volgende voor beeld wordt informatie over *myNic3*opgehaald:
 
     ```powershell
     # List existing NICs on the VM if you need to determine NIC name
@@ -197,14 +198,14 @@ Als u een virtuele NIC van een bestaande VM wilt verwijderen, moet u de toewijzi
     $nicId = (Get-AzNetworkInterface -ResourceGroupName "myResourceGroup" -Name "myNic3").Id   
     ```
 
-4. Verwijder de NIC met [Remove-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmnetworkinterface) en werk de virtuele machine bij met [Update-AzVm](https://docs.microsoft.com/powershell/module/az.compute/update-azvm). In het volgende voor beeld wordt *myNic3* verwijderd zoals verkregen `$nicId` in de vorige stap:
+4. Verwijder de NIC met [Remove-AzVMNetworkInterface](/powershell/module/az.compute/remove-azvmnetworkinterface) en werk de virtuele machine bij met [Update-AzVm](/powershell/module/az.compute/update-azvm). In het volgende voor beeld wordt *myNic3* verwijderd zoals verkregen `$nicId` in de vorige stap:
 
     ```powershell
     Remove-AzVMNetworkInterface -VM $vm -NetworkInterfaceIDs $nicId | `
         Update-AzVm -ResourceGroupName "myResourceGroup"
     ```   
 
-5. Start de VM met [Start-AzVm](https://docs.microsoft.com/powershell/module/az.compute/start-azvm):
+5. Start de VM met [Start-AzVm](/powershell/module/az.compute/start-azvm):
 
     ```powershell
     Start-AzVM -Name "myVM" -ResourceGroupName "myResourceGroup"
@@ -220,7 +221,7 @@ Azure Resource Manager sjablonen bieden een manier om meerdere exemplaren van ee
 }
 ```
 
-Zie [meerdere exemplaren maken met behulp van *kopiëren*](../../resource-group-create-multiple.md)voor meer informatie. 
+Zie [meerdere exemplaren maken met behulp van *kopiëren*](../../azure-resource-manager/templates/copy-resources.md)voor meer informatie. 
 
 U kunt ook gebruiken `copyIndex()` om een nummer toe te voegen aan een resource naam. Vervolgens kunt u *myNic1*, *MyNic2* , enzovoort maken. De volgende code toont een voor beeld van het toevoegen van de index waarde:
 
@@ -288,5 +289,3 @@ Azure wijst een standaard gateway toe aan de eerste (primaire) netwerk interface
 
 ## <a name="next-steps"></a>Volgende stappen
 Controleer de [grootte van Windows-vm's](sizes.md) wanneer u een VM met meerdere nic's wilt maken. Let op het maximum aantal Nic's dat elke VM-grootte ondersteunt. 
-
-

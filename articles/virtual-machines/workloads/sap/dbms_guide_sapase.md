@@ -15,15 +15,16 @@ ms.workload: infrastructure
 ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 25d911869c95baba6ac9db3b893292e702e9c0e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26179dd2491a8b8cbc2ef3eb0ad66fa61722d413
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81273202"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525259"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>DBMS-implementatie voor SAP-werkbelasting in virtuele Azure-machines voor SAP ASE
 
-In dit document worden verschillende gebieden besproken waarmee u rekening moet houden wanneer u SAP ASE implementeert in azure IaaS. Als een voor waarde voor dit document, moet u de document [overwegingen voor azure virtual machines DBMS-implementatie van de SAP-werk belasting](dbms_guide_general.md) en andere hand leidingen in de [SAP-werk belasting op de Azure-documentatie](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)lezen. Dit document behandelt de SAP-ASE die worden uitgevoerd op Linux en op Windows-besturings systemen. De mini maal ondersteunde release op Azure is SAP ASE 16.0.02 (release 16 ondersteunings pakket 2). Het is raadzaam om de nieuwste versie van SAP en het meest recente patch niveau te implementeren.  Mini maal SAP ASE 16.0.03.07 (versie 16 Support Pack 3 patch niveau 7) wordt aanbevolen.  U kunt de meest recente versie van SAP vinden in de [beoogde ASE 16,0-release planning en informatie over de CR-lijst](https://wiki.scn.sap.com/wiki/display/SYBASE/Targeted+ASE+16.0+Release+Schedule+and+CR+list+Information).
+In dit document worden verschillende gebieden besproken waarmee u rekening moet houden wanneer u SAP ASE implementeert in azure IaaS. Als een voor waarde voor dit document, moet u de document [overwegingen voor azure virtual machines DBMS-implementatie van de SAP-werk belasting](dbms_guide_general.md) en andere hand leidingen in de [SAP-werk belasting op de Azure-documentatie](./get-started.md)lezen. Dit document behandelt de SAP-ASE die worden uitgevoerd op Linux en op Windows-besturings systemen. De mini maal ondersteunde release op Azure is SAP ASE 16.0.02 (release 16 ondersteunings pakket 2). Het is raadzaam om de nieuwste versie van SAP en het meest recente patch niveau te implementeren.  Mini maal SAP ASE 16.0.03.07 (versie 16 Support Pack 3 patch niveau 7) wordt aanbevolen.  U kunt de meest recente versie van SAP vinden in de [beoogde ASE 16,0-release planning en informatie over de CR-lijst](https://wiki.scn.sap.com/wiki/display/SYBASE/Targeted+ASE+16.0+Release+Schedule+and+CR+list+Information).
 
 Meer informatie over de versie ondersteuning voor SAP-toepassingen of de locatie van de installatie media vindt u naast de SAP-product beschikbaarheids matrix op de volgende locaties:
 
@@ -58,7 +59,7 @@ De pagina grootte is doorgaans 2048 KB. Zie het artikel [enorme pagina's op Linu
 
 ## <a name="recommendations-on-vm-and-disk-structure-for-sap-ase-deployments"></a>Aanbevelingen voor de VM-en schijf structuur voor SAP ASE-implementaties
 
-SAP-ASE voor SAP NetWeaver-toepassingen worden ondersteund in een VM-type dat wordt vermeld in de [SAP-ondersteunings opmerking #1928533](https://launchpad.support.sap.com/#/notes/1928533) typische VM-typen die worden gebruikt voor de middel grote, SAP ASE-database servers in de Data Base zijn  Grote multi-terabyte-data bases kunnen gebruikmaken van VM-typen uit de M-serie. De SAP ASE-transactie logboek schrijf prestaties kunnen worden verbeterd door de Write Accelerator uit de M-serie in te scha kelen. Write Accelerator moet zorgvuldig worden getest met SAP ASE, omdat SAP ASE logboek schrijf bewerkingen uitvoert.  Bekijk de [SAP-ondersteunings opmerking #2816580](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator) en overweeg een prestatie test uit te voeren.  
+SAP-ASE voor SAP NetWeaver-toepassingen worden ondersteund in een VM-type dat wordt vermeld in de [SAP-ondersteunings opmerking #1928533](https://launchpad.support.sap.com/#/notes/1928533) typische VM-typen die worden gebruikt voor de middel grote, SAP ASE-database servers in de Data Base zijn  Grote multi-terabyte-data bases kunnen gebruikmaken van VM-typen uit de M-serie. De SAP ASE-transactie logboek schrijf prestaties kunnen worden verbeterd door de Write Accelerator uit de M-serie in te scha kelen. Write Accelerator moet zorgvuldig worden getest met SAP ASE, omdat SAP ASE logboek schrijf bewerkingen uitvoert.  Bekijk de [SAP-ondersteunings opmerking #2816580](../../windows/how-to-enable-write-accelerator.md) en overweeg een prestatie test uit te voeren.  
 Write Accelerator is alleen bedoeld voor de transactie logboek schijf. De cache op schijf niveau moet worden ingesteld op geen. Het is niet versteld als Azure Write Accelerator vergelijk bare verbeteringen niet met andere DBMS weergeeft. Op basis van de manier waarop SAP ASE naar het transactie logboek schrijft, kan het zijn dat er weinig voor geen versnelling door Azure Write Accelerator is.
 Afzonderlijke schijven worden aanbevolen voor gegevens apparaten en logboek apparaten.  De systeem databases sybsecurity en `saptools` vereisen geen toegewezen schijven en kunnen worden geplaatst op de schijven met de SAP-database gegevens en-logboek apparaten 
 
@@ -70,7 +71,7 @@ SAP ASE schrijft gegevens opeenvolgend naar schijf opslag apparaten, tenzij ande
 U kunt het beste een automatische database uitbreiding configureren, zoals wordt beschreven in het artikel een [Automatische database ruimte uitbreiding configureren in SAP Adaptive Server Enter prise](https://blogs.sap.com/2014/07/09/configuring-automatic-database-space-expansion-in-sap-adaptive-server-enterprise/) en [SAP-ondersteunings Opmerking #1815695](https://launchpad.support.sap.com/#/notes/1815695). 
 
 ### <a name="sample-sap-ase-on-azure-virtual-machine-disk-and-file-system-configurations"></a>Voor beeld van SAP-ASE op virtuele machines van Azure, schijf-en bestandssysteem configuraties 
-In de onderstaande sjablonen ziet u voor beelden van configuraties voor Linux en Windows. Voordat u de configuratie van de virtuele machine en schijf bevestigt, moet u ervoor zorgen dat de netwerk-en opslag bandbreedte quota van de afzonderlijke virtuele machine voldoende zijn om te voldoen aan de zakelijke vereisten. Houd er ook rekening mee dat verschillende Azure VM-typen verschillende maximum aantallen schijven hebben die kunnen worden gekoppeld aan de virtuele machine. Een E4s_v3 VM heeft bijvoorbeeld een limiet van 48 MB/sec. opslag-i/o-door voer. Als de door Voer van de back-upactiviteit van de data base meer dan 48 MB per seconde vereist, is een groter VM-type met meer opslag bandbreedte door Voer niet te voor komen. Bij het configureren van Azure Storage moet u er ook voor zorgen dat met name met [Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance) de door Voer en IOPS per GB aan capaciteit worden gewijzigd. Meer informatie over dit onderwerp vindt u in het artikel [welke schijf typen beschikbaar zijn in azure?](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types). De quota's voor specifieke Azure VM-typen worden beschreven in het artikel [geheugen geoptimaliseerde grootte van virtuele machines](https://docs.microsoft.com/azure/virtual-machines/sizes-memory) en de artikelen die eraan zijn gekoppeld. 
+In de onderstaande sjablonen ziet u voor beelden van configuraties voor Linux en Windows. Voordat u de configuratie van de virtuele machine en schijf bevestigt, moet u ervoor zorgen dat de netwerk-en opslag bandbreedte quota van de afzonderlijke virtuele machine voldoende zijn om te voldoen aan de zakelijke vereisten. Houd er ook rekening mee dat verschillende Azure VM-typen verschillende maximum aantallen schijven hebben die kunnen worden gekoppeld aan de virtuele machine. Een E4s_v3 VM heeft bijvoorbeeld een limiet van 48 MB/sec. opslag-i/o-door voer. Als de door Voer van de back-upactiviteit van de data base meer dan 48 MB per seconde vereist, is een groter VM-type met meer opslag bandbreedte door Voer niet te voor komen. Bij het configureren van Azure Storage moet u er ook voor zorgen dat met name met [Azure Premium Storage](../../windows/premium-storage-performance.md) de door Voer en IOPS per GB aan capaciteit worden gewijzigd. Meer informatie over dit onderwerp vindt u in het artikel [welke schijf typen beschikbaar zijn in azure?](../../windows/disks-types.md). De quota's voor specifieke Azure VM-typen worden beschreven in het artikel [geheugen geoptimaliseerde grootte van virtuele machines](../../sizes-memory.md) en de artikelen die eraan zijn gekoppeld. 
 
 > [!NOTE]
 >  Als een DBMS-systeem van on-premises naar Azure wordt verplaatst, is het raadzaam om bewaking uit te voeren op de virtuele machine en de CPU, het geheugen, de IOPS en de opslag doorvoer te beoordelen. Vergelijk de piek waarden die worden waargenomen met de VM-quota limieten die zijn gedocumenteerd in de hierboven genoemde artikelen
@@ -79,7 +80,7 @@ De onderstaande voor beelden zijn bedoeld ter illustratie en kunnen worden gewij
 
 Een voor beeld van een configuratie voor een Small SAP ASE DB-server met een database grootte van 50 GB – 250 GB, zoals SAP Solution Manager, kan er als volgt uitzien
 
-| Configuratie | Windows | Linux | Opmerkingen |
+| Configuration | Windows | Linux | Opmerkingen |
 | --- | --- | --- | --- |
 | VM-type | E4s_v3 (4 vCPU/32 GB RAM-geheugen) | E4s_v3 (4 vCPU/32 GB RAM-geheugen) | --- |
 | Versneld netwerken | Inschakelen | Inschakelen | ---|
@@ -100,7 +101,7 @@ Een voor beeld van een configuratie voor een Small SAP ASE DB-server met een dat
 
 Een voor beeld van een configuratie voor een middel grote SAP ASE DB-server met een database grootte van 250 GB tot 750 GB, zoals een kleiner SAP Business Suite-systeem, kan er als volgt uitzien:
 
-| Configuratie | Windows | Linux | Opmerkingen |
+| Configuration | Windows | Linux | Opmerkingen |
 | --- | --- | --- | --- |
 | VM-type | E16s_v3 (16 vCPU/128 GB RAM-geheugen) | E16s_v3 (16 vCPU/128 GB RAM-geheugen) | --- |
 | Versneld netwerken | Inschakelen | Inschakelen | ---|
@@ -120,7 +121,7 @@ Een voor beeld van een configuratie voor een middel grote SAP ASE DB-server met 
 
 Een voor beeld van een configuratie voor een Small SAP ASE DB-server met een database grootte van 750 GB tot 2000 GB, zoals een groter SAP Business Suite-systeem, kan er als volgt uitzien:
 
-| Configuratie | Windows | Linux | Opmerkingen |
+| Configuration | Windows | Linux | Opmerkingen |
 | --- | --- | --- | --- |
 | VM-type | E64s_v3 (64 vCPU/432 GB RAM) | E64s_v3 (64 vCPU/432 GB RAM) | --- |
 | Versneld netwerken | Inschakelen | Inschakelen | ---|
@@ -141,7 +142,7 @@ Een voor beeld van een configuratie voor een Small SAP ASE DB-server met een dat
 
 Een voor beeld van een configuratie voor een Small SAP ASE DB-server met een database grootte van 2 TB +, zoals een groter, wereld wijd gebruikt SAP Business Suite-systeem, kan er als volgt uitzien:
 
-| Configuratie | Windows | Linux | Opmerkingen |
+| Configuration | Windows | Linux | Opmerkingen |
 | --- | --- | --- | --- |
 | VM-type | M-serie (1,0 tot 4,0 TB RAM)  | M-serie (1,0 tot 4,0 TB RAM) | --- |
 | Versneld netwerken | Inschakelen | Inschakelen | ---|
@@ -212,7 +213,7 @@ SAP software Provisioning Manager (SWPM) biedt een optie voor het versleutelen v
 - Overweeg het gebruik van UltraDisk voor x-grote systemen 
 - `saptune`SAP-ASE uitvoeren op Linux-besturings systeem 
 - De data base beveiligen met DB-versleuteling: Hiermee worden sleutels in Azure Key Vault hand matig opgeslagen 
-- De [SAP on Azure controle lijst](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist) volt ooien 
+- De [SAP on Azure controle lijst](./sap-deployment-checklist.md) volt ooien 
 - Logboek back-up en volledige back-up configureren 
 - Test HA/DR, back-up maken en herstellen en voer stress & volume test uit 
 - Bevestigen dat de automatische data base-extensie werkt 
@@ -309,5 +310,4 @@ Een maandelijkse nieuws brief wordt gepubliceerd via [SAP-ondersteunings notitie
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Raadpleeg het artikel [SAP-workloads op Azure: controle lijst voor planning en implementatie](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist)
-
+Raadpleeg het artikel [SAP-workloads op Azure: controle lijst voor planning en implementatie](./sap-deployment-checklist.md)

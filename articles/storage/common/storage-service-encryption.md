@@ -4,17 +4,17 @@ description: Azure Storage beveiligt uw gegevens door deze automatisch te versle
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 06/17/2020
+ms.date: 07/16/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 8b4236e40e8dfbe6ce67bca007be0b6737a6e0c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6244b3ab72f7fa8ea375ff67a08e8d1d241df4a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945576"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527894"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Azure Storage-versleuteling voor inactieve gegevens
 
@@ -32,6 +32,8 @@ Elke blok-blob, een toevoeg-BLOB of een pagina-blob die na 20 oktober 2017 is ge
 
 Zie [crypto GRAFIE API: Next Generation](https://docs.microsoft.com/windows/desktop/seccng/cng-portal)(Engelstalig) voor meer informatie over de onderliggende cryptografische modules Azure Storage versleuteling.
 
+Voor informatie over versleuteling en sleutel beheer voor Azure Managed disks, Zie [Server versleuteling van Azure Managed disks](../../virtual-machines/windows/disk-encryption.md) voor Windows-vm's of [versleuteling aan de server zijde van Azure Managed disks](../../virtual-machines/linux/disk-encryption.md) voor Linux-vm's.
+
 ## <a name="about-encryption-key-management"></a>Over het beheer van versleutelings sleutels
 
 Gegevens in een nieuw opslag account worden versleuteld met door micro soft beheerde sleutels. U kunt gebruikmaken van door micro soft beheerde sleutels voor het versleutelen van uw gegevens, maar u kunt ook versleuteling beheren met uw eigen sleutels. Als u ervoor kiest om versleuteling te beheren met uw eigen sleutels, hebt u twee opties:
@@ -41,18 +43,56 @@ Gegevens in een nieuw opslag account worden versleuteld met door micro soft behe
 
 De volgende tabel vergelijkt de opties voor sleutel beheer voor Azure Storage versleuteling.
 
-|                                        |    Door micro soft beheerde sleutels                             |    Door klant beheerde sleutels                                                                                                                        |    Door de klant verschafte sleutels                                                          |
-|----------------------------------------|-------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
-|    Bewerkingen voor versleuteling/ontsleuteling    |    Azure                                              |    Azure                                                                                                                                        |    Azure                                                                         |
-|    Azure Storage services ondersteund    |    Alles                                                |    Blob-opslag, Azure Files<sup>1, 2</sup>                                                                                                               |    Blob Storage                                                                  |
-|    Sleutel opslag                         |    Micro soft-sleutel archief    |    Azure Key Vault                                                                                                                              |    Eigen sleutel archief van de klant                                                                 |
-|    Verantwoordelijkheid voor sleutel rotatie         |    Microsoft                                          |    Klant                                                                                                                                     |    Klant                                                                      |
-|    Sleutel besturings element                          |    Microsoft                                     |    Klant                                                                                                                    |    Klant                                                                 |
+| Para meter voor sleutel beheer | Door micro soft beheerde sleutels | Door klant beheerde sleutels | Door de klant verschafte sleutels |
+|--|--|--|--|
+| Bewerkingen voor versleuteling/ontsleuteling | Azure | Azure | Azure |
+| Azure Storage services ondersteund | Alles | Blob-opslag, Azure Files<sup>1, 2</sup> | Blob Storage |
+| Sleutel opslag | Micro soft-sleutel archief | Azure Key Vault | Eigen sleutel archief van de klant |
+| Verantwoordelijkheid voor sleutel rotatie | Microsoft-peering | Klant | Klant |
+| Sleutel besturings element | Microsoft-peering | Klant | Klant |
 
 <sup>1</sup> Zie [een account maken dat door de klant beheerde sleutels voor wacht rijen ondersteunt](account-encryption-key-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)voor meer informatie over het maken van een account dat gebruikmaakt van door de klant beheerde sleutels met behulp van een wachtrij opslag.<br />
 <sup>2</sup> Zie voor meer informatie over het maken van een account dat gebruikmaakt van door de klant beheerde sleutels met table-opslag [een account maken dat door de klant beheerde sleutels voor tabellen ondersteunt](account-encryption-key-create.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json).
 
-Voor informatie over versleuteling en sleutel beheer voor Azure Managed disks, Zie [Server versleuteling van Azure Managed disks](../../virtual-machines/windows/disk-encryption.md) voor Windows-vm's of [versleuteling aan de server zijde van Azure Managed disks](../../virtual-machines/linux/disk-encryption.md) voor Linux-vm's.
+## <a name="encryption-scopes-for-blob-storage-preview"></a>Versleutelings bereik voor Blob-opslag (preview-versie)
+
+Een opslag account wordt standaard versleuteld met een sleutel die is afgestemd op het opslag account. U kunt ervoor kiezen om door micro soft beheerde sleutels of door de klant beheerde sleutels te gebruiken die zijn opgeslagen in Azure Key Vault om de toegang tot de sleutel die uw gegevens versleutelen, te beveiligen en te beheren.
+
+Met versleutelings scopes kunt u optioneel versleuteling beheren op het niveau van de container of een afzonderlijke blob. U kunt versleutelings scopes gebruiken om beveiligde grenzen te maken tussen gegevens die zich in hetzelfde opslag account bevinden, maar deel uitmaakt van verschillende klanten.
+
+U kunt een of meer versleutelings zoekbereiken maken voor een opslag account met behulp van de resource provider Azure Storage. Wanneer u een versleutelings bereik maakt, geeft u op of het bereik is beveiligd met een door micro soft beheerde sleutel of met een door de klant beheerde sleutel die is opgeslagen in Azure Key Vault. Verschillende versleutelings bereiken voor hetzelfde opslag account kunnen gebruikmaken van door micro soft beheerde of door de klant beheerde sleutels.
+
+Nadat u een versleutelings bereik hebt gemaakt, kunt u het versleutelings bereik opgeven voor een aanvraag voor het maken van een container of BLOB. Zie [encrypties maken en beheren (preview)](../blobs/encryption-scope-manage.md)voor meer informatie over het maken van een versleutelings bereik.
+
+> [!NOTE]
+> Versleutelings bereiken worden tijdens de preview-periode niet ondersteund met geo-redundante opslag met lees toegang (RA-GRS).
+
+> [!IMPORTANT]
+> De preview-versie van het versleutelings bereik is alleen bedoeld voor niet-productie gebruik. Service Level Agreements (Sla's) op het niveau van de productie zijn momenteel niet beschikbaar.
+>
+> Om onverwachte kosten te voor komen, moet u alle versleutelings scopes uitschakelen die u momenteel niet nodig hebt.
+
+### <a name="create-a-container-or-blob-with-an-encryption-scope"></a>Een container of Blob maken met een versleutelings bereik
+
+Blobs die zijn gemaakt onder een versleutelings bereik, worden versleuteld met de sleutel die voor dat bereik is opgegeven. U kunt een versleutelings bereik opgeven voor een afzonderlijke BLOB wanneer u de BLOB maakt, of u kunt een standaard versleutelings bereik opgeven wanneer u een container maakt. Wanneer een standaard versleutelings bereik is opgegeven op het niveau van een container, worden alle blobs in die container versleuteld met de sleutel die is gekoppeld aan het standaard bereik.
+
+Wanneer u een BLOB maakt in een container met een standaard versleutelings bereik, kunt u een versleutelings bereik opgeven dat het standaard versleutelings bereik overschrijft als de container zo is geconfigureerd dat onderdrukkingen van het standaard versleutelings bereik worden toegestaan. Als u onderdrukkingen van het standaard versleutelings bereik wilt voor komen, configureert u de container voor het weigeren van onderdrukkingen voor een afzonderlijke blob.
+
+Lees bewerkingen op een blob die deel uitmaakt van een versleutelings bereik, worden op transparante wijze uitgevoerd, zolang het versleutelings bereik niet is uitgeschakeld.
+
+### <a name="disable-an-encryption-scope"></a>Een versleutelings bereik uitschakelen
+
+Wanneer u een versleutelings bereik uitschakelt, mislukken alle volgende Lees-of schrijf bewerkingen die zijn gemaakt met het versleutelings bereik met de HTTP-fout code 403 (verboden). Als u het versleutelings bereik opnieuw inschakelt, zullen lees-en schrijf bewerkingen weer normaal gesp roken gewoon door gaan.
+
+Wanneer een versleutelings bereik is uitgeschakeld, wordt dit niet meer in rekening gebracht. Schakel eventuele versleutelings scopes uit die niet nodig zijn om onnodige kosten te voor komen.
+
+Als uw versleutelings bereik is beveiligd met door de klant beheerde sleutels voor Azure Key Vault, kunt u ook de bijbehorende sleutel in de sleutel kluis verwijderen om het versleutelings bereik uit te scha kelen. Houd er rekening mee dat door de klant beheerde sleutels in Azure Key Vault worden beveiligd door zacht verwijderen en de beveiliging op te schonen, en dat een verwijderde sleutel onderhevig is aan het gedrag dat is gedefinieerd door die eigenschappen. Zie een van de volgende onderwerpen in de Azure Key Vault-documentatie voor meer informatie:
+
+- [Voorlopig verwijderen gebruiken met PowerShell](../../key-vault/general/soft-delete-powershell.md)
+- [Voorlopig verwijderen gebruiken met CLI](../../key-vault/general/soft-delete-cli.md)
+
+> [!NOTE]
+> Het is niet mogelijk om een versleutelings bereik te verwijderen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

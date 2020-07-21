@@ -8,11 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 8d2adca661882ea11d04ebe55afe25f7f9c2ef4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 754baa66d79d169f830332f3c39660f1d71f608a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84219954"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527911"
 ---
 # <a name="azcopy-login"></a>azcopy login
 
@@ -39,8 +40,8 @@ azcopy login [flags]
 
 - [Aan de slag met AzCopy](storage-use-azcopy-v10.md)
 - [Gegevens overdragen met AzCopy en Blob Storage](storage-use-azcopy-blobs.md)
-- [Gegevens overdragen met AzCopy en File Storage](storage-use-azcopy-files.md)
-- [AzCopy configureren, optimaliseren en problemen oplossen](storage-use-azcopy-configure.md)
+- [Gegevens overdragen met AzCopy en bestandopslag](storage-use-azcopy-files.md)
+- [Configureren, optimaliseren en problemen oplossen in AzCopy](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>Voorbeelden
 
@@ -83,7 +84,7 @@ azcopy login --identity --identity-resource-id "/subscriptions/<subscriptionId>/
 Meld u aan als service-principal met behulp van een client geheim. Stel de omgevings variabele AZCOPY_SPA_CLIENT_SECRET in op het client geheim voor de geheim verificatie van de Service-Principal.
 
 ```azcopy
-azcopy login --service-principal
+azcopy login --service-principal --application-id "YOUR_APP_ID" --tenant-id "YOUR_TENANT_ID"
 ```
 
 Meld u aan als service-principal met behulp van een certificaat en wacht woord. Stel de omgevings variabele AZCOPY_SPA_CERT_PASSWORD in op het wacht woord van het certificaat voor autorisatie van de Service-Principal op basis van certificaten.
@@ -98,7 +99,7 @@ Zorg ervoor dat/path/to/my/CERT wordt behandeld als een pad naar een PEM-of PKCS
 
 ## <a name="options"></a>Opties
 
-|Optie|Description|
+|Optie|Beschrijving|
 |--|--|
 |--Aad-eind punt|Het Azure Active Directory-eind punt dat moet worden gebruikt. De standaard waarde ( `https://login.microsoftonline.com` ) is correct voor de open bare Azure-Cloud. Stel deze para meter in wanneer u een verificatie uitvoert in een nationale Cloud. Zie [Azure AD-verificatie-eind punten](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
 Deze vlag is niet nodig voor Managed Service Identity.|
@@ -114,7 +115,7 @@ Deze vlag is niet nodig voor Managed Service Identity.|
 
 ## <a name="options-inherited-from-parent-commands"></a>Opties overgenomen van bovenliggende opdrachten
 
-|Optie|Description|
+|Optie|Beschrijving|
 |---|---|
 |--Cap-Mbps uint32|De overdrachts frequentie in megabits per seconde. Even door Voer kan enigszins afwijken van het kapje. Als deze optie is ingesteld op nul of wordt wegge laten, wordt de door Voer niet afgetopt.|
 |--type teken reeks voor uitvoer|De indeling van de uitvoer van de opdracht. De opties zijn onder andere: Text, JSON. De standaard waarde is "text".|
