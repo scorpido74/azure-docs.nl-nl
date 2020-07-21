@@ -6,15 +6,15 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 05/18/2020
+ms.date: 07/14/2020
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 077dc0e8048da39253729d56f1e812cccc69500c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: cf09dd1521994f01e5f43b981d4bff540f3b1f40
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242913"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506448"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Verbinding maken tussen hybride computers en Azure via de Azure Portal
 
@@ -151,6 +151,9 @@ bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
 Nadat u de agent hebt geïnstalleerd, configureert u deze om te communiceren met de Azure Arc-service door de volgende opdracht uit te voeren:
 
 `azcmagent connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID"`
+
+>[!NOTE]
+>U moet toegangs machtigingen voor het *hoofd* hebben op Linux-machines om **azcmagent**uit te voeren.
 
 ## <a name="verify-the-connection-with-azure-arc"></a>De verbinding met Azure Arc controleren
 

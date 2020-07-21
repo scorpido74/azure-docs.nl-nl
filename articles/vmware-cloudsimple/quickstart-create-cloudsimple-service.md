@@ -9,11 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d7c137a75c0a021aa8bca3aec23da6c4d1ada300
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14df0f131aaef8a4c24e2d1eb242a9b440e7c7b0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81868020"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507587"
 ---
 # <a name="quickstart---create-azure-vmware-solution-by-cloudsimple-service"></a>Quick Start: een Azure VMware-oplossing maken op basis van de CloudSimple-service
 
@@ -37,7 +38,7 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 
 ## <a name="create-the-service"></a>De service maken
 
-1. Selecteer **alle services**.
+1. Selecteer **Alle services**.
 2. Zoek naar de **CloudSimple-service**.
 
     ![CloudSimple-service zoeken](media/create-cloudsimple-service-search.png)
@@ -62,7 +63,7 @@ De service wordt gemaakt en toegevoegd aan de lijst met Services.
 
 Als u betalen naar gebruik-capaciteit wilt instellen voor een CloudSimple Privécloud, moet u eerst knoop punten inrichten in de Azure Portal.
 
-1. Selecteer **alle services**.
+1. Selecteer **Alle services**.
 2. Zoek naar **CloudSimple-knoop punten**.
 
     ![CloudSimple-knoop punten zoeken](media/create-cloudsimple-node-search.png)
@@ -86,4 +87,4 @@ Als u betalen naar gebruik-capaciteit wilt instellen voor een CloudSimple Privé
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Een Privécloud maken en omgeving configureren](quickstart-create-private-cloud.md)
-* Meer informatie over de [CloudSimple-service](https://docs.microsoft.com/azure/vmware-cloudsimple/cloudsimple-service)
+* Meer informatie over de [CloudSimple-service](./cloudsimple-service.md)

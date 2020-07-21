@@ -12,13 +12,14 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 5e8102cbf89d601c027e3b969c1c431da8807018
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4dfc6da8dcf33f49ceb203b32e81033fd81fa329
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77201358"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507485"
 ---
-# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>IPv6-eind punten configureren in het voor beeld van een virtueel netwerk script (preview-versie)
+# <a name="configure-ipv6-endpoints-in-virtual-network-with-azure-powershell-script-sample-preview"></a>IPv6-eind punten in een virtueel netwerk configureren met Azure PowerShell script voorbeeld (preview-versie)
 
 In dit artikel wordt beschreven hoe u een dual stack (IPv4 + IPv6)-toepassing implementeert in azure, met een virtueel netwerk van twee stacks met een dual stack-subnet, een load balancer met dubbele (IPv4 + IPv6) front-end configuraties, Vm's met Nic's met een dubbele IP-configuratie, dubbele netwerk beveiligings groeps regels en dubbele open bare Ip's.
 

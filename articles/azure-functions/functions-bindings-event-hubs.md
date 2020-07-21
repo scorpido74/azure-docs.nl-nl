@@ -6,17 +6,18 @@ ms.assetid: daf81798-7acc-419a-bc32-b5a41c6db56b
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: 543b566300ce56bc2d765087f9a9e269c5b0cc99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41495f6f10f7337c065a06d0d9b71142475bb5c4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77586169"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506312"
 ---
 # <a name="azure-event-hubs-trigger-and-bindings-for-azure-functions"></a>Azure Event Hubs trigger en bindingen voor Azure Functions
 
-In dit artikel wordt uitgelegd hoe u kunt werken met [Azure Event hubs](../event-hubs/event-hubs-what-is-event-hubs.md) -bindingen voor Azure functions. Azure Functions ondersteunt trigger-en uitvoer bindingen voor Event Hubs.
+In dit artikel wordt uitgelegd hoe u kunt werken met [Azure Event hubs](../event-hubs/event-hubs-about.md) -bindingen voor Azure functions. Azure Functions ondersteunt trigger-en uitvoer bindingen voor Event Hubs.
 
-| Bewerking | Type |
+| Actie | Type |
 |--------|------|
 | Reageren op gebeurtenissen die naar een Event Hub gebeurtenis stroom worden verzonden. | [Trigger](./functions-bindings-event-hubs-trigger.md) |
 | Gebeurtenissen naar een gebeurtenis stroom schrijven | [Uitvoer binding](./functions-bindings-event-hubs-output.md) |

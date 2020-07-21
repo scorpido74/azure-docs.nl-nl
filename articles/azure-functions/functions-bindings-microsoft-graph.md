@@ -5,11 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: ef746186717f3eb6bb93263c7f86c26606f65ea9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 290765b17cf34417176930dc9116309bdfd754c8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84322512"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506533"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Microsoft Graph bindingen voor Azure Functions
 
@@ -58,7 +59,7 @@ Als u Visual Studio gebruikt, kunt u de uitbrei dingen ophalen door [de NuGet-pa
 
 ### <a name="configuring-authentication--authorization"></a>Verificatie/autorisatie configureren
 
-Voor de bindingen die in dit artikel worden beschreven, moet een identiteit worden gebruikt. Hiermee kan de Microsoft Graph machtigingen en controle interacties afdwingen. De identiteit kan een gebruiker zijn die toegang heeft tot uw toepassing of de toepassing zelf. Als u deze identiteit wilt configureren, stelt u [app service verificatie/autorisatie](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) in met Azure Active Directory. U moet ook alle resource machtigingen aanvragen die uw functies vereisen.
+Voor de bindingen die in dit artikel worden beschreven, moet een identiteit worden gebruikt. Hiermee kan de Microsoft Graph machtigingen en controle interacties afdwingen. De identiteit kan een gebruiker zijn die toegang heeft tot uw toepassing of de toepassing zelf. Als u deze identiteit wilt configureren, stelt u [app service verificatie/autorisatie](../app-service/overview-authentication-authorization.md) in met Azure Active Directory. U moet ook alle resource machtigingen aanvragen die uw functies vereisen.
 
 > [!Note] 
 > De uitbrei ding Microsoft Graph biedt alleen ondersteuning voor Azure AD-verificatie. Gebruikers moeten zich aanmelden met een werk-of school account.
@@ -204,7 +205,7 @@ Gebruik in [C# class libraries](functions-dotnet-class-library.md)het kenmerk [t
 
 De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `Token` kenmerk.
 
-|function.jsbij eigenschap | Kenmerk eigenschap |Description|
+|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
 |**naam**| N.v.t. |Vereist: de naam van de variabele die wordt gebruikt in de functie code voor het verificatie token. Zie [een verificatie token-invoer binding van code gebruiken](#token-input-code).|
 |**type**| N.v.t. |Vereist: moet worden ingesteld op `token` .|
@@ -339,7 +340,7 @@ Gebruik in [C# class libraries](functions-dotnet-class-library.md)het kenmerk [E
 
 De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `Excel` kenmerk.
 
-|function.jsbij eigenschap | Kenmerk eigenschap |Description|
+|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
 |**naam**| N.v.t. |Vereist: de naam van de variabele die wordt gebruikt in de functie code voor de Excel-tabel. Zie [een Excel-tabel-invoer binding gebruiken vanuit code](#excel-input-code).|
 |**type**| N.v.t. |Vereist: moet worden ingesteld op `excel` .|
@@ -501,7 +502,7 @@ Gebruik in [C# class libraries](functions-dotnet-class-library.md)het kenmerk [E
 
 De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `Excel` kenmerk.
 
-|function.jsbij eigenschap | Kenmerk eigenschap |Description|
+|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
 |**naam**| N.v.t. |Vereist: de naam van de variabele die wordt gebruikt in de functie code voor het verificatie token. Zie [een Excel-tabel uitvoer binding van code gebruiken](#excel-output-code).|
 |**type**| N.v.t. |Vereist: moet worden ingesteld op `excel` .|
@@ -647,7 +648,7 @@ Gebruik in [C# class libraries](functions-dotnet-class-library.md)het kenmerk [O
 
 De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `OneDrive` kenmerk.
 
-|function.jsbij eigenschap | Kenmerk eigenschap |Description|
+|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
 |**naam**| N.v.t. |Vereist: de naam van de variabele die wordt gebruikt in de functie code voor het bestand. Zie [een OneDrive File-invoer binding gebruiken vanuit code](#onedrive-input-code).|
 |**type**| N.v.t. |Vereist: moet worden ingesteld op `onedrive` .|
@@ -668,7 +669,7 @@ Voor deze binding zijn de volgende Azure AD-machtigingen vereist:
 
 Met de binding worden de volgende typen in .NET-functies weer gegeven:
 - byte []
-- Streamen
+- Stroom
 - tekenreeks
 - Micro soft. Graph. DriveItem
 
@@ -795,7 +796,7 @@ Gebruik in [C# class libraries](functions-dotnet-class-library.md)het kenmerk [O
 
 De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `OneDrive` kenmerk.
 
-|function.jsbij eigenschap | Kenmerk eigenschap |Description|
+|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
 |**naam**| N.v.t. |Vereist: de naam van de variabele die wordt gebruikt in de functie code voor het bestand. Zie [een OneDrive file-uitvoer binding gebruiken vanuit code](#onedrive-output-code).|
 |**type**| N.v.t. |Vereist: moet worden ingesteld op `onedrive` .|
@@ -816,7 +817,7 @@ Voor deze binding zijn de volgende Azure AD-machtigingen vereist:
 
 Met de binding worden de volgende typen in .NET-functies weer gegeven:
 - byte []
-- Streamen
+- Stroom
 - tekenreeks
 - Micro soft. Graph. DriveItem
 
@@ -946,7 +947,7 @@ Gebruik in [C# class libraries](functions-dotnet-class-library.md)het kenmerk [O
 
 De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `Outlook` kenmerk.
 
-|function.jsbij eigenschap | Kenmerk eigenschap |Description|
+|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
 |**naam**| N.v.t. |Vereist: de naam van de variabele die wordt gebruikt in de functie code voor het e-mail bericht. Zie [een Outlook-bericht uitvoer binding van code gebruiken](#outlook-output-code).|
 |**type**| N.v.t. |Vereist: moet worden ingesteld op `outlook` .|
@@ -982,7 +983,7 @@ Met webhooks kunt u reageren op gebeurtenissen in de Microsoft Graph. Voor het o
 - Met een [invoer binding van het Microsoft Graph webhook-abonnement](#webhook-input) kunt u bestaande abonnementen weer geven en eventueel vernieuwen.
 - Met een Microsoft Graph-koppeling van een [webhook-abonnement](#webhook-output) kunt u webhook-abonnementen maken of verwijderen.
 
-Voor de bindingen zelf zijn geen Azure AD-machtigingen vereist, maar u moet machtigingen aanvragen die relevant zijn voor het bron type waarop u wilt reageren. Zie [abonnements machtigingen](https://docs.microsoft.com/graph/api/subscription-post-subscriptions?view=graph-rest-1.0)voor een lijst met de machtigingen die nodig zijn voor elk bron type.
+Voor de bindingen zelf zijn geen Azure AD-machtigingen vereist, maar u moet machtigingen aanvragen die relevant zijn voor het bron type waarop u wilt reageren. Zie [abonnements machtigingen](/graph/api/subscription-post-subscriptions?view=graph-rest-1.0)voor een lijst met de machtigingen die nodig zijn voor elk bron type.
 
 Zie [werken met webhooks in Microsoft Graph]voor meer informatie over webhooks.
 
@@ -1089,7 +1090,7 @@ Gebruik in [C# class libraries](functions-dotnet-class-library.md)het kenmerk [G
 
 De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `GraphWebhookTrigger` kenmerk.
 
-|function.jsbij eigenschap | Kenmerk eigenschap |Description|
+|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
 |**naam**| N.v.t. |Vereist: de naam van de variabele die wordt gebruikt in de functie code voor het e-mail bericht. Zie [een Outlook-bericht uitvoer binding van code gebruiken](#outlook-output-code).|
 |**type**| N.v.t. |Vereist: moet worden ingesteld op `graphWebhook` .|
@@ -1241,7 +1242,7 @@ Gebruik in [C# class libraries](functions-dotnet-class-library.md)het kenmerk [G
 
 De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `GraphWebhookSubscription` kenmerk.
 
-|function.jsbij eigenschap | Kenmerk eigenschap |Description|
+|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
 |**naam**| N.v.t. |Vereist: de naam van de variabele die wordt gebruikt in de functie code voor het e-mail bericht. Zie [een Outlook-bericht uitvoer binding van code gebruiken](#outlook-output-code).|
 |**type**| N.v.t. |Vereist: moet worden ingesteld op `graphWebhookSubscription` .|
@@ -1382,7 +1383,7 @@ Gebruik in [C# class libraries](functions-dotnet-class-library.md)het kenmerk [G
 
 De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `GraphWebhookSubscription` kenmerk.
 
-|function.jsbij eigenschap | Kenmerk eigenschap |Description|
+|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
 |**naam**| N.v.t. |Vereist: de naam van de variabele die wordt gebruikt in de functie code voor het e-mail bericht. Zie [een Outlook-bericht uitvoer binding van code gebruiken](#outlook-output-code).|
 |**type**| N.v.t. |Vereist: moet worden ingesteld op `graphWebhookSubscription` .|

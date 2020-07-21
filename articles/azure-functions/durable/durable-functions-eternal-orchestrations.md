@@ -3,14 +3,14 @@ title: Eeuwige-integratie in Durable Functions-Azure
 description: Meer informatie over het implementeren van eeuwige-integratie met behulp van de Durable Functions-extensie voor Azure Functions.
 author: cgillum
 ms.topic: conceptual
-ms.date: 11/02/2019
+ms.date: 07/14/2020
 ms.author: azfuncdf
-ms.openlocfilehash: d55e08fecbd1338284607ac59fe354c6fa8cb1ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34c70f4305ebb2c45757d982ab558aea6450003f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80478815"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506363"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Eeuwige-integraties in Durable Functions (Azure Functions)
 
@@ -22,7 +22,7 @@ Zoals uitgelegd in het onderwerp [Orchestration-geschiedenis](durable-functions-
 
 ## <a name="resetting-and-restarting"></a>Opnieuw instellen en opnieuw starten
 
-In plaats van een oneindige lus te gebruiken, wordt de status van Orchestrator-functies opnieuw ingesteld door de `ContinueAsNew` (.net) of `continueAsNew` (Java script)-methode van de [Orchestration-trigger binding](durable-functions-bindings.md#orchestration-trigger)aan te roepen. Deze methode heeft één JSON-Serializable-para meter, die de nieuwe invoer wordt voor de volgende Orchestrator-functie generatie.
+In plaats van een oneindige lus te gebruiken, wordt de status van Orchestrator-functies opnieuw ingesteld door de `ContinueAsNew` (.net), `continueAsNew` (Java script) of `continue_as_new` de methode (python) van de [Orchestration-trigger binding](durable-functions-bindings.md#orchestration-trigger)aan te roepen. Deze methode heeft één JSON-Serializable-para meter, die de nieuwe invoer wordt voor de volgende Orchestrator-functie generatie.
 
 Wanneer `ContinueAsNew` wordt aangeroepen, in het exemplaar een bericht naar zichzelf voordat het wordt afgesloten. Het bericht start het exemplaar opnieuw met de nieuwe invoer waarde. Dezelfde exemplaar-ID wordt bewaard, maar de geschiedenis van de Orchestrator-functie wordt in feite afgekapt.
 
@@ -70,13 +70,32 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+from datetime import datetime, timedelta
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    yield context.call_activity("DoCleanup")
+
+    # sleep for one hour between cleanups
+    next_cleanup = context.current_utc_datetime + timedelta(hours = 1)
+    yield context.create_timer(next_cleanup)
+
+    context.continue_as_new(None)
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
 ---
 
 Het verschil tussen dit voor beeld en een door een timer geactiveerde functie is dat hier niet op basis van een schema wordt geactiveerd. Zo kan een CRON-schema waarmee een functie elk uur wordt uitgevoerd, worden uitgevoerd op 1:00, 2:00, 3:00 enz. Dit kan mogelijk worden uitgevoerd in overlappende problemen. Als het opschonen echter 30 minuten duurt, wordt het gepland op 1:00, 2:30, 4:00 enzovoort. er is geen kans op overlap ping.
 
 ## <a name="starting-an-eternal-orchestration"></a>Een eeuwige-indeling starten
 
-Gebruik de `StartNewAsync` (.net) of de `startNew` (Java script)-methode om een eeuwige-indeling te starten, net als bij andere Orchestration-functies.  
+Gebruik de `StartNewAsync` (.net), de ( `startNew` Java script)- `start_new` methode (python) om een eeuwige-indeling te starten, net als bij andere Orchestration-functies.  
 
 > [!NOTE]
 > Als u er zeker van wilt zijn dat er een singleton eeuwige-indeling wordt uitgevoerd, is het belang rijk dat u hetzelfde exemplaar behoudt `id` bij het starten van de indeling. Zie [instance Management](durable-functions-instance-management.md)(Engelstalig) voor meer informatie.
@@ -115,6 +134,19 @@ module.exports = async function (context, req) {
     return client.createCheckStatusResponse(context.bindingData.req, instanceId);
 };
 ```
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+    instance_id = 'StaticId'
+
+    await client.start_new('Periodic_Cleanup_Loop', instance_id, None)
+
+    logging.info(f"Started orchestration with ID = '{instance_id}'.")
+    return client.create_check_status_response(req, instance_id)
+
+```
 
 ---
 
@@ -122,7 +154,7 @@ module.exports = async function (context, req) {
 
 Als een Orchestrator-functie uiteindelijk moet worden voltooid, hoeft u *niet* te bellen `ContinueAsNew` en kunt u de functie niet afsluiten.
 
-Als een Orchestrator-functie zich in een oneindige lus bevindt en moet worden gestopt, gebruikt u de `TerminateAsync` methode (.net) of `terminate` (Java script) van de [Orchestration-client binding](durable-functions-bindings.md#orchestration-client) om deze te stoppen. Zie [instance Management](durable-functions-instance-management.md)(Engelstalig) voor meer informatie.
+Als een Orchestrator-functie zich in een oneindige lus bevindt en moet worden gestopt, gebruikt u de `TerminateAsync` methode (.net), `terminate` (Java script) of `terminate` (python) van de [Orchestration-client binding](durable-functions-bindings.md#orchestration-client) om deze te stoppen. Zie [instance Management](durable-functions-instance-management.md)(Engelstalig) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

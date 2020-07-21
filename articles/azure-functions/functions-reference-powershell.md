@@ -4,11 +4,12 @@ description: Meer informatie over het ontwikkelen van functies met behulp van Po
 author: eamonoreilly
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.openlocfilehash: 41f977e7e7c23c2f49fd656461b7a3920802997e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b8c84583bd80a7c3cbadde1caba231eed801c1f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84697269"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506125"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Ontwikkelaarshandleiding voor Azure Functions PowerShell
 
@@ -18,7 +19,7 @@ Een Power shell Azure-functie (functie) wordt weer gegeven als een Power shell-s
 
 Net als andere soorten functies voeren Power shell-script functies in para meters die overeenkomen met de namen van alle invoer bindingen die in het bestand zijn gedefinieerd `function.json` . Er `TriggerMetadata` wordt ook een para meter door gegeven met aanvullende informatie over de trigger die de functie heeft gestart.
 
-In dit artikel wordt ervan uitgegaan dat u de [Azure functions Naslag informatie voor ontwikkel aars](functions-reference.md)al hebt gelezen. U moet ook de Quick Start [van functions voor Power shell](functions-create-first-function-powershell.md) hebben voltooid om uw eerste Power shell-functie te maken.
+In dit artikel wordt ervan uitgegaan dat u de [Azure functions Naslag informatie voor ontwikkel aars](functions-reference.md)al hebt gelezen. U moet ook de Quick Start [van functions voor Power shell](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell) hebben voltooid om uw eerste Power shell-functie te maken.
 
 ## <a name="folder-structure"></a>Mapstructuur
 
@@ -124,7 +125,7 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 De volgende para meters zijn geldig voor het aanroepen van `Push-OutputBinding` :
 
-| Naam | Type | Positie | Description |
+| Naam | Type | Positie | Beschrijving |
 | ---- | ---- |  -------- | ----------- |
 | **`-Name`** | Tekenreeks | 1 | De naam van de uitvoer binding die u wilt instellen. |
 | **`-Value`** | Object | 2 | De waarde van de uitvoer binding die u wilt instellen, die wordt geaccepteerd vanuit de pipeline-ByValue. |

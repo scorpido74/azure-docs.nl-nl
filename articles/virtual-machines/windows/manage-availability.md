@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 354cd8d291f8ad5c842d33b5ac63b0deb58b7d41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3c37d42cc6cda644063b098cb53f05079455339
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81870044"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508522"
 ---
 # <a name="manage-the-availability-of-windows-virtual-machines-in-azure"></a>Beschikbaarheid van virtuele Windows-machines beheren in Azure 
 
@@ -25,5 +26,5 @@ Zie [virtuele machines met taak verdeling](tutorial-load-balancer.md?toc=%2fazur
 
 Referentie architecturen weer geven voor het uitvoeren van toepassingen met N-tier op SQL Server in IaaS
 
-* [Windows N-tier-toepassing op Azure met SQL Server](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
-* [Een N-tier-toepassing uitvoeren in meerdere Azure-regio's voor hoge Beschik baarheid](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)
+* [Windows N-tier-toepassing op Azure met SQL Server](/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
+* [Een N-tier-toepassing uitvoeren in meerdere Azure-regio's voor hoge Beschik baarheid](/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)

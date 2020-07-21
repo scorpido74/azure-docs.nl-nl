@@ -8,11 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 11/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: d9374f83110176e6705e2c6cca6c7794738a8c6e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78d4ffda62b98ca57a8204e6037f8ccd8c470924
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83848835"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508539"
 ---
 # <a name="azure-disk-encryption-for-windows-virtual-machines-faq"></a>Veelgestelde vragen over Azure Disk Encryption voor virtuele Windows-machines
 
@@ -133,11 +134,11 @@ Azure Backup biedt een mechanisme voor het maken van back-ups en het herstellen 
 
 ## <a name="where-can-i-go-to-ask-questions-or-provide-feedback"></a>Waar kan ik vragen stellen of feedback geven?
 
-U kunt vragen stellen of feedback geven op de [pagina micro soft Q&een vraag voor Azure Disk Encryption](https://docs.microsoft.com/answers/topics/azure-disk-encryption.html).
+U kunt vragen stellen of feedback geven op de [pagina micro soft Q&een vraag voor Azure Disk Encryption](/answers/topics/azure-disk-encryption.html).
 
 ## <a name="next-steps"></a>Volgende stappen
 In dit document hebt u meer geleerd over de meest voorkomende vragen met betrekking tot Azure Disk Encryption. Raadpleeg de volgende artikelen voor meer informatie over deze service:
 
 - [Overzicht van Azure Disk Encryption](disk-encryption-overview.md)
-- [Schijf versleuteling Toep assen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-apply-disk-encryption)
-- [Azure-gegevens versleuteling in rust](../../security/fundamentals/encryption-atrest.md)
+- [Schijf versleuteling Toep assen in Azure Security Center](../../security-center/security-center-virtual-machine-protection.md)
+- [Versleuteling van inactieve gegevens in Azure](../../security/fundamentals/encryption-atrest.md)

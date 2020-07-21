@@ -9,18 +9,18 @@ ms.subservice: autoscale
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: c003d66f59f932d818740bdd378280049bbeb7d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 37245711008442acd0379a35b393ac88c3775482
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85373876"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505533"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Geavanceerde configuratie voor automatisch schalen met Resource Manager-sjablonen voor VM Scale Sets
 U kunt in Virtual Machine Scale Sets schalen en uitschalen op basis van de drempel waarden voor prestatie waarden, een terugkerend schema of een bepaalde datum. U kunt ook e-mail en webhook-meldingen configureren voor schaal acties. In dit scenario ziet u een voor beeld van het configureren van al deze objecten met behulp van een resource manager-sjabloon op een VM-Schaalset.
 
 > [!NOTE]
-> Hoewel in dit overzicht de stappen voor VM Scale Sets worden uitgelegd, is dezelfde informatie van toepassing op het automatisch schalen van [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [app service-Web apps](https://azure.microsoft.com/services/app-service/web/)en [API Management Services](https://docs.microsoft.com/azure/api-management/api-management-key-concepts) voor een eenvoudige instelling voor schaal in/uit voor een VM-schaalset op basis van een eenvoudige prestatie metriek, zoals CPU, raadpleegt u de [Linux](../../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-cli.md) -en [Windows](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) -documenten
+> Hoewel in dit overzicht de stappen voor VM Scale Sets worden uitgelegd, is dezelfde informatie van toepassing op het automatisch schalen van [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [app service-Web apps](https://azure.microsoft.com/services/app-service/web/)en [API Management Services](../../api-management/api-management-key-concepts.md) voor een eenvoudige instelling voor schaal in/uit voor een VM-schaalset op basis van een eenvoudige prestatie metriek, zoals CPU, raadpleegt u de [Linux](../../virtual-machine-scale-sets/tutorial-autoscale-cli.md) -en [Windows](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) -documenten
 >
 >
 
@@ -36,7 +36,7 @@ In dit scenario gebruiken we [Azure resource Explorer](https://resources.azure.c
 
 3. U kunt nu meer profielen en regels toevoegen op basis van de planning of specifieke vereisten. We maken een instelling voor automatisch schalen met drie profielen. Zie [Aanbevolen procedures voor automatisch schalen](autoscale-best-practices.md)voor meer informatie over profielen en regels in automatisch schalen.  
 
-    | Profielen & regels | Description |
+    | Profielen & regels | Beschrijving |
     |--- | --- |
     | **Profiel** |**Op basis van prestaties/metriek** |
     | Regel |Service Bus aantal wachtrij berichten > x |
@@ -195,7 +195,7 @@ In dit scenario gebruiken we [Azure resource Explorer](https://resources.azure.c
             }
           }
     ```
-    Voor ondersteunde velden en hun waarden raadpleegt u de [documentatie voor automatisch schalen rest API](https://msdn.microsoft.com/library/azure/dn931928.aspx). De instelling voor automatisch schalen bevat nu de drie eerder beschreven profielen.
+    Voor ondersteunde velden en hun waarden raadpleegt u de [documentatie voor automatisch schalen rest API](/rest/api/monitor/autoscalesettings). De instelling voor automatisch schalen bevat nu de drie eerder beschreven profielen.
 
 7. Bekijk ten slotte de sectie **melding over** automatisch schalen. Met meldingen voor automatisch schalen kunt u drie dingen doen wanneer een uitschalen of in actie wordt geactiveerd.
    - De beheerder en mede beheerders van uw abonnement op de hoogte stellen
@@ -243,9 +243,9 @@ Gebruik deze koppelingen voor meer informatie over automatisch schalen.
 
 [Aanbevolen procedures voor het automatisch schalen van Azure](autoscale-best-practices.md)
 
-[Automatisch schalen beheren met Power shell](../../azure-monitor/platform/powershell-quickstart-samples.md#create-and-manage-autoscale-settings)
+[Automatisch schalen beheren met Power shell](../samples/powershell-samples.md#create-and-manage-autoscale-settings)
 
-[Automatisch schalen beheren met CLI](cli-samples.md#autoscale)
+[Automatisch schalen beheren met CLI](../samples/cli-samples.md#autoscale)
 
 [Webhook & e-mail meldingen configureren voor automatisch schalen](autoscale-webhook-email.md)
 

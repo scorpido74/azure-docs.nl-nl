@@ -6,12 +6,12 @@ ms.author: sread
 ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: db9d6bab2f383102434512aa63d7566cff1f579b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7fb72b9a7d0d655f99d1e5cf194f7c6f26976a37
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80411072"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508046"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Micro Focus CICS BankDemo instellen voor micro focus Enter prise Developer 4,0 op Azure
 
@@ -268,12 +268,12 @@ Het laatste wat u moet doen, is het configureren van een 3270-sessie met behulp 
 ![Mainframe weer geven welkomst scherm ](media/14-demo.png)
  ![ -weer gave-Rumba-subsysteem demonstratie scherm](media/15-demo.png)
 
-Gefeliciteerd U voert nu een CICS-toepassing uit in azure met micro focus Enter prise server.
+Gefeliciteerd! U voert nu een CICS-toepassing uit in azure met micro focus Enter prise server.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Enter prise server uitvoeren in docker-containers in azure](run-enterprise-server-container.md)
-- [Mainframe-migratie-Portal](https://blogs.msdn.microsoft.com/azurecat/2018/11/16/mainframe-migration-to-azure-portal/)
-- [Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
-- [Problemen oplossen](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
+- [Mainframe-migratie-Portal](/archive/blogs/azurecat/mainframe-migration-to-azure-portal)
+- [Virtual Machines](../../../linux/overview.md)
+- [Problemen oplossen](../../../troubleshooting/index.yml)
 - [Ontrafelen mainframe naar Azure-migratie](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/)

@@ -13,11 +13,12 @@ ms.workload: infrastructure
 ms.date: 11/26/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 019f462d4264d19bcc4806d91223029a95f9d819
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4946524768d0cff483feb4045a2cc5fba169a7a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77617168"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507944"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>Ondersteunde scenario's voor HANA grote instanties
 In dit artikel worden de ondersteunde scenario's en de details van de architectuur voor HANA-grote instanties (HLI) beschreven.
@@ -49,7 +50,7 @@ Het afgeleide architectuur ontwerp is uitsluitend gebaseerd op een infrastructuu
 In dit artikel worden de details van de twee onderdelen in elke ondersteunde architectuur beschreven:
 
 - Ethernet
-- Storage
+- Opslag
 
 ### <a name="ethernet"></a>Ethernet
 
@@ -95,7 +96,7 @@ Voor de implementatie van HANA-systeem replicatie of HANA-uitschalen is een Blad
 - Ethernet "D" mag alleen worden gebruikt voor toegang tot STONITH-apparaten voor pacemaker. Deze interface is vereist bij het configureren van HANA-systeem replicatie en het maken van een automatische failover van het besturings systeem met behulp van een op SBD gebaseerd apparaat.
 
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Opslag
 Opslag is vooraf geconfigureerd op basis van de aangevraagde topologie. De grootte van het volume en de koppel punten variëren, afhankelijk van het aantal servers, het aantal Sku's en de geconfigureerde topologie. Raadpleeg de vereiste scenario's (verderop in dit artikel) voor meer informatie. Als u meer opslag ruimte nodig hebt, kunt u deze kopen in stappen van 1 TB.
 
 >[!NOTE]
@@ -143,7 +144,7 @@ De volgende netwerk interfaces zijn vooraf geconfigureerd:
 | C | TYPE II | VLAN\<tenantNo+1> | team0. Tenant + 1 | Knoop punt-naar-opslag |
 | D | TYPE II | VLAN\<tenantNo+3> | team0. Tenant + 3 | Geconfigureerd maar niet in gebruik |
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Opslag
 De volgende koppel punten zijn vooraf geconfigureerd:
 
 | Koppel punt | Toepassing | 
@@ -178,7 +179,7 @@ De volgende netwerk interfaces zijn vooraf geconfigureerd:
 | C | TYPE II | VLAN\<tenantNo+1> | team0. Tenant + 1 | Knoop punt-naar-opslag |
 | D | TYPE II | VLAN\<tenantNo+3> | team0. Tenant + 3 | Geconfigureerd maar niet in gebruik |
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Opslag
 De volgende koppel punten zijn vooraf geconfigureerd:
 
 | Koppel punt | Toepassing | 
@@ -194,7 +195,7 @@ De volgende koppel punten zijn vooraf geconfigureerd:
 
 ### <a name="key-considerations"></a>Belangrijkste overwegingen
 - /usr/sap/SID is een symbolische koppeling naar/hana/shared/SID.
-- Distributie van de volume grootte is gebaseerd op de grootte van de data base in het geheugen. Zie [overzicht en architectuur](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)voor meer informatie over de grootte van de data base in het geheugen die wordt ondersteund in een multi-sid-omgeving.
+- Distributie van de volume grootte is gebaseerd op de grootte van de data base in het geheugen. Zie [overzicht en architectuur](./hana-overview-architecture.md)voor meer informatie over de grootte van de data base in het geheugen die wordt ondersteund in een multi-sid-omgeving.
 
 ## <a name="single-node-with-dr-using-storage-replication"></a>Eén knoop punt met behulp van opslag replicatie met DR
  
@@ -218,7 +219,7 @@ De volgende netwerk interfaces zijn vooraf geconfigureerd:
 | C | TYPE II | VLAN\<tenantNo+1> | team0. Tenant + 1 | Knoop punt-naar-opslag |
 | D | TYPE II | VLAN\<tenantNo+3> | team0. Tenant + 3 | Geconfigureerd maar niet in gebruik |
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Opslag
 De volgende koppel punten zijn vooraf geconfigureerd:
 
 | Koppel punt | Toepassing | 
@@ -231,9 +232,9 @@ De volgende koppel punten zijn vooraf geconfigureerd:
 
 ### <a name="key-considerations"></a>Belangrijkste overwegingen
 - /usr/sap/SID is een symbolische koppeling naar/hana/shared/SID.
-- Voor MCOS: distributie van de volume grootte is gebaseerd op de grootte van de data base in het geheugen. Zie [overzicht en architectuur](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)voor meer informatie over de grootte van de data base in het geheugen die wordt ondersteund in een multi-sid-omgeving.
+- Voor MCOS: distributie van de volume grootte is gebaseerd op de grootte van de data base in het geheugen. Zie [overzicht en architectuur](./hana-overview-architecture.md)voor meer informatie over de grootte van de data base in het geheugen die wordt ondersteund in een multi-sid-omgeving.
 - Op de DR-site: de volumes en koppel punten worden geconfigureerd (gemarkeerd als vereist voor HANA-installatie) voor de installatie van het exemplaar van de productie HANA-instantie in de DR/HLI-eenheid. 
-- Op de DR-site: de gegevens, logboek back-ups en gedeelde volumes (gemarkeerd als ' opslag replicatie ') worden gerepliceerd via de moment opname van de productie site. Deze volumes worden alleen tijdens de failover gekoppeld. Zie voor meer informatie [nood herstel procedure failover](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery).
+- Op de DR-site: de gegevens, logboek back-ups en gedeelde volumes (gemarkeerd als ' opslag replicatie ') worden gerepliceerd via de moment opname van de productie site. Deze volumes worden alleen tijdens de failover gekoppeld. Zie voor meer informatie [nood herstel procedure failover](./hana-overview-high-availability-disaster-recovery.md).
 - Het opstart volume voor de *SKU type I-klasse* wordt gerepliceerd naar het Dr-knoop punt.
 
 
@@ -259,7 +260,7 @@ De volgende netwerk interfaces zijn vooraf geconfigureerd:
 | C | TYPE II | VLAN\<tenantNo+1> | team0. Tenant + 1 | Knoop punt-naar-opslag |
 | D | TYPE II | VLAN\<tenantNo+3> | team0. Tenant + 3 | Geconfigureerd maar niet in gebruik |
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Opslag
 De volgende koppel punten zijn vooraf geconfigureerd:
 
 | Koppel punt | Toepassing | 
@@ -280,9 +281,9 @@ De volgende koppel punten zijn vooraf geconfigureerd:
 
 ### <a name="key-considerations"></a>Belangrijkste overwegingen
 - /usr/sap/SID is een symbolische koppeling naar/hana/shared/SID.
-- Voor MCOS: distributie van de volume grootte is gebaseerd op de grootte van de data base in het geheugen. Zie [overzicht en architectuur](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)voor meer informatie over de grootte van de data base in het geheugen die wordt ondersteund in een multi-sid-omgeving.
+- Voor MCOS: distributie van de volume grootte is gebaseerd op de grootte van de data base in het geheugen. Zie [overzicht en architectuur](./hana-overview-architecture.md)voor meer informatie over de grootte van de data base in het geheugen die wordt ondersteund in een multi-sid-omgeving.
 - Op de DR-site: de volumes en koppel punten worden geconfigureerd (gemarkeerd als vereist voor HANA-installatie) voor de installatie van het exemplaar van de productie HANA-instantie in de DR/HLI-eenheid. 
-- Op de DR-site: de gegevens, logboek back-ups en gedeelde volumes (gemarkeerd als ' opslag replicatie ') worden gerepliceerd via de moment opname van de productie site. Deze volumes worden alleen tijdens de failover gekoppeld. Zie voor meer informatie [nood herstel procedure failover](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery). 
+- Op de DR-site: de gegevens, logboek back-ups en gedeelde volumes (gemarkeerd als ' opslag replicatie ') worden gerepliceerd via de moment opname van de productie site. Deze volumes worden alleen tijdens de failover gekoppeld. Zie voor meer informatie [nood herstel procedure failover](./hana-overview-high-availability-disaster-recovery.md). 
 - Op de DR-site: de gegevens, logboek back-ups, logboeken en gedeelde volumes voor QA (gemarkeerd als ' installatie van QA-instantie ') zijn geconfigureerd voor de installatie van het QA-exemplaar.
 - Het opstart volume voor de *SKU type I-klasse* wordt gerepliceerd naar het Dr-knoop punt.
 
@@ -314,7 +315,7 @@ De volgende netwerk interfaces zijn vooraf geconfigureerd:
 | C | TYPE II | VLAN\<tenantNo+1> | team0. Tenant + 1 | Knoop punt-naar-opslag |
 | D | TYPE II | VLAN\<tenantNo+3> | team0. Tenant + 3 | Gebruikt voor STONITH |
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Opslag
 De volgende koppel punten zijn vooraf geconfigureerd:
 
 | Koppel punt | Toepassing | 
@@ -332,7 +333,7 @@ De volgende koppel punten zijn vooraf geconfigureerd:
 
 ### <a name="key-considerations"></a>Belangrijkste overwegingen
 - /usr/sap/SID is een symbolische koppeling naar/hana/shared/SID.
-- Voor MCOS: distributie van de volume grootte is gebaseerd op de grootte van de data base in het geheugen. Zie [overzicht en architectuur](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)voor meer informatie over de grootte van de data base in het geheugen die wordt ondersteund in een multi-sid-omgeving.
+- Voor MCOS: distributie van de volume grootte is gebaseerd op de grootte van de data base in het geheugen. Zie [overzicht en architectuur](./hana-overview-architecture.md)voor meer informatie over de grootte van de data base in het geheugen die wordt ondersteund in een multi-sid-omgeving.
 - STONITH: er is een SBD geconfigureerd voor de STONITH-installatie. Het gebruik van STONITH is echter optioneel.
 
 
@@ -360,7 +361,7 @@ De volgende netwerk interfaces zijn vooraf geconfigureerd:
 | C | TYPE II | VLAN\<tenantNo+1> | team0. Tenant + 1 | Knoop punt-naar-opslag |
 | D | TYPE II | VLAN\<tenantNo+3> | team0. Tenant + 3 | Gebruikt voor STONITH |
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Opslag
 De volgende koppel punten zijn vooraf geconfigureerd:
 
 | Koppel punt | Toepassing | 
@@ -386,11 +387,11 @@ De volgende koppel punten zijn vooraf geconfigureerd:
 
 ### <a name="key-considerations"></a>Belangrijkste overwegingen
 - /usr/sap/SID is een symbolische koppeling naar/hana/shared/SID.
-- Voor MCOS: distributie van de volume grootte is gebaseerd op de grootte van de data base in het geheugen. Zie [overzicht en architectuur](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)voor meer informatie over de grootte van de data base in het geheugen die wordt ondersteund in een multi-sid-omgeving.
+- Voor MCOS: distributie van de volume grootte is gebaseerd op de grootte van de data base in het geheugen. Zie [overzicht en architectuur](./hana-overview-architecture.md)voor meer informatie over de grootte van de data base in het geheugen die wordt ondersteund in een multi-sid-omgeving.
 - STONITH: er is een SBD geconfigureerd voor de STONITH-installatie. Het gebruik van STONITH is echter optioneel.
 - Op de DR-site: *Er zijn twee sets opslag volumes vereist* voor de replicatie van het primaire en het secundaire knoop punt.
 - Op de DR-site: de volumes en koppel punten worden geconfigureerd (gemarkeerd als vereist voor HANA-installatie) voor de installatie van het exemplaar van de productie HANA-instantie in de DR/HLI-eenheid. 
-- Op de DR-site: de gegevens, logboek back-ups en gedeelde volumes (gemarkeerd als ' opslag replicatie ') worden gerepliceerd via de moment opname van de productie site. Deze volumes worden alleen tijdens de failover gekoppeld. Zie voor meer informatie [nood herstel procedure failover](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery). 
+- Op de DR-site: de gegevens, logboek back-ups en gedeelde volumes (gemarkeerd als ' opslag replicatie ') worden gerepliceerd via de moment opname van de productie site. Deze volumes worden alleen tijdens de failover gekoppeld. Zie voor meer informatie [nood herstel procedure failover](./hana-overview-high-availability-disaster-recovery.md). 
 - Op de DR-site: de gegevens, logboek back-ups, logboeken en gedeelde volumes voor QA (gemarkeerd als ' installatie van QA-instantie ') zijn geconfigureerd voor de installatie van het QA-exemplaar.
 - Het opstart volume voor de *SKU type I-klasse* wordt gerepliceerd naar het Dr-knoop punt.
 
@@ -419,7 +420,7 @@ De volgende netwerk interfaces zijn vooraf geconfigureerd:
 | C | TYPE II | VLAN\<tenantNo+1> | team0. Tenant + 1 | Knoop punt-naar-opslag |
 | D | TYPE II | VLAN\<tenantNo+3> | team0. Tenant + 3 | Geconfigureerd maar niet in gebruik |
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Opslag
 De volgende koppel punten zijn vooraf geconfigureerd:
 
 | Koppel punt | Toepassing | 
@@ -460,7 +461,7 @@ De volgende netwerk interfaces zijn vooraf geconfigureerd:
 | C | TYPE II | VLAN\<tenantNo+1> | team0. Tenant + 1 | Knoop punt-naar-opslag |
 | D | TYPE II | VLAN\<tenantNo+3> | team0. Tenant + 3 | Geconfigureerd maar niet in gebruik |
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Opslag
 De volgende koppel punten zijn vooraf geconfigureerd:
 
 | Koppel punt | Toepassing | 
@@ -496,7 +497,7 @@ De volgende netwerk interfaces zijn vooraf geconfigureerd:
 | C | TYPE II | VLAN\<tenantNo+1> | team0. Tenant + 1 | Knoop punt-naar-opslag |
 | D | TYPE II | VLAN\<tenantNo+3> | team0. Tenant + 3 | Geconfigureerd maar niet in gebruik |
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Opslag
 De volgende koppel punten zijn vooraf geconfigureerd:
 
 | Koppel punt | Toepassing | 
@@ -535,7 +536,7 @@ De volgende netwerk interfaces zijn vooraf geconfigureerd:
 | C | TYPE II | VLAN\<tenantNo+1> | team0. Tenant + 1 | Knoop punt-naar-opslag |
 | D | TYPE II | VLAN\<tenantNo+3> | team0. Tenant + 3 | Geconfigureerd maar niet in gebruik |
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Opslag
 De volgende koppel punten zijn vooraf geconfigureerd:
 
 | Koppel punt | Toepassing | 
@@ -554,7 +555,7 @@ De volgende koppel punten zijn vooraf geconfigureerd:
 ### <a name="key-considerations"></a>Belangrijkste overwegingen
 - /usr/sap/SID is een symbolische koppeling naar/hana/shared/SID.
 -  Op de DR-site: de volumes en koppel punten worden geconfigureerd (gemarkeerd als vereist voor HANA-installatie) voor de installatie van het exemplaar van de productie HANA-instantie in de DR/HLI-eenheid. 
-- Op de DR-site: de gegevens, logboek back-ups en gedeelde volumes (gemarkeerd als ' opslag replicatie ') worden gerepliceerd via de moment opname van de productie site. Deze volumes worden alleen tijdens de failover gekoppeld. Zie voor meer informatie [nood herstel procedure failover](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery). 
+- Op de DR-site: de gegevens, logboek back-ups en gedeelde volumes (gemarkeerd als ' opslag replicatie ') worden gerepliceerd via de moment opname van de productie site. Deze volumes worden alleen tijdens de failover gekoppeld. Zie voor meer informatie [nood herstel procedure failover](./hana-overview-high-availability-disaster-recovery.md). 
 - Het opstart volume voor de *SKU type I-klasse* wordt gerepliceerd naar het Dr-knoop punt.
 
 
@@ -580,7 +581,7 @@ De volgende netwerk interfaces zijn vooraf geconfigureerd:
 | C | TYPE II | VLAN\<tenantNo+1> | team0. Tenant + 1 | Knoop punt-naar-opslag |
 | D | TYPE II | VLAN\<tenantNo+3> | team0. Tenant + 3 | Geconfigureerd maar niet in gebruik |
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Opslag
 De volgende koppel punten zijn vooraf geconfigureerd op de HLI-eenheden (primair en DR):
 
 | Koppel punt | Toepassing | 
@@ -593,9 +594,9 @@ De volgende koppel punten zijn vooraf geconfigureerd op de HLI-eenheden (primair
 
 ### <a name="key-considerations"></a>Belangrijkste overwegingen
 - /usr/sap/SID is een symbolische koppeling naar/hana/shared/SID.
-- Voor MCOS: distributie van de volume grootte is gebaseerd op de grootte van de data base in het geheugen. Zie [overzicht en architectuur](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)voor meer informatie over de grootte van de data base in het geheugen die wordt ondersteund in een multi-sid-omgeving.
+- Voor MCOS: distributie van de volume grootte is gebaseerd op de grootte van de data base in het geheugen. Zie [overzicht en architectuur](./hana-overview-architecture.md)voor meer informatie over de grootte van de data base in het geheugen die wordt ondersteund in een multi-sid-omgeving.
 - Het primaire knoop punt wordt met behulp van HANA-systeem replicatie gesynchroniseerd met het DR-knoop punt. 
-- [Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) wordt gebruikt om de ExpressRoute-circuits samen te koppelen om een particulier netwerk tussen uw regionale netwerken te maken.
+- [Global Reach](../../../expressroute/expressroute-global-reach.md) wordt gebruikt om de ExpressRoute-circuits samen te koppelen om een particulier netwerk tussen uw regionale netwerken te maken.
 
 
 
@@ -621,7 +622,7 @@ De volgende netwerk interfaces zijn vooraf geconfigureerd:
 | C | TYPE II | VLAN\<tenantNo+1> | team0. Tenant + 1 | Knoop punt-naar-opslag |
 | D | TYPE II | VLAN\<tenantNo+3> | team0. Tenant + 3 | Geconfigureerd maar niet in gebruik |
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Opslag
 De volgende koppel punten zijn vooraf geconfigureerd:
 
 | Koppel punt | Toepassing | 
@@ -643,11 +644,11 @@ De volgende koppel punten zijn vooraf geconfigureerd:
 
 ### <a name="key-considerations"></a>Belangrijkste overwegingen
 - /usr/sap/SID is een symbolische koppeling naar/hana/shared/SID.
-- Voor MCOS: distributie van de volume grootte is gebaseerd op de grootte van de data base in het geheugen. Zie [overzicht en architectuur](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)voor meer informatie over de grootte van de data base in het geheugen die wordt ondersteund in een multi-sid-omgeving.
+- Voor MCOS: distributie van de volume grootte is gebaseerd op de grootte van de data base in het geheugen. Zie [overzicht en architectuur](./hana-overview-architecture.md)voor meer informatie over de grootte van de data base in het geheugen die wordt ondersteund in een multi-sid-omgeving.
 - Op de DR-site: de volumes en koppel punten worden geconfigureerd (gemarkeerd als ' productie-exemplaar op DR-site ') voor de installatie van het exemplaar van HANA-instanties in de DR/HLI-eenheid. 
 - Op de DR-site: de gegevens, logboek back-ups, logboeken en gedeelde volumes voor QA (gemarkeerd als ' installatie van QA-instantie ') zijn geconfigureerd voor de installatie van het QA-exemplaar.
 - Het primaire knoop punt wordt met behulp van HANA-systeem replicatie gesynchroniseerd met het DR-knoop punt. 
-- [Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) wordt gebruikt om de ExpressRoute-circuits samen te koppelen om een particulier netwerk tussen uw regionale netwerken te maken.
+- [Global Reach](../../../expressroute/expressroute-global-reach.md) wordt gebruikt om de ExpressRoute-circuits samen te koppelen om een particulier netwerk tussen uw regionale netwerken te maken.
 
 ## <a name="high-availability-and-disaster-recovery-with-hsr"></a>Hoge Beschik baarheid en herstel na nood gevallen met HSR 
  
@@ -671,7 +672,7 @@ De volgende netwerk interfaces zijn vooraf geconfigureerd:
 | C | TYPE II | VLAN\<tenantNo+1> | team0. Tenant + 1 | Knoop punt-naar-opslag |
 | D | TYPE II | VLAN\<tenantNo+3> | team0. Tenant + 3 | Geconfigureerd maar niet in gebruik |
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Opslag
 De volgende koppel punten zijn vooraf geconfigureerd:
 
 | Koppel punt | Toepassing | 
@@ -692,7 +693,7 @@ De volgende koppel punten zijn vooraf geconfigureerd:
 - /usr/sap/SID is een symbolische koppeling naar/hana/shared/SID.
 - Op de DR-site: de volumes en koppel punten worden geconfigureerd (gemarkeerd als ' productie-DR-instantie ') voor de installatie van het exemplaar van de productie HANA-instantie in de DR/HLI-eenheid. 
 - Het primaire site knooppunt wordt gesynchroniseerd met het DR-knoop punt met behulp van HANA-systeem replicatie. 
-- [Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) wordt gebruikt om de ExpressRoute-circuits samen te koppelen om een particulier netwerk tussen uw regionale netwerken te maken.
+- [Global Reach](../../../expressroute/expressroute-global-reach.md) wordt gebruikt om de ExpressRoute-circuits samen te koppelen om een particulier netwerk tussen uw regionale netwerken te maken.
 
 ## <a name="high-availability-and-disaster-recovery-with-hsr-cost-optimized"></a>Hoge Beschik baarheid en herstel na nood gevallen met HSR (kosten geoptimaliseerd)
  
@@ -716,7 +717,7 @@ De volgende netwerk interfaces zijn vooraf geconfigureerd:
 | C | TYPE II | VLAN\<tenantNo+1> | team0. Tenant + 1 | Knoop punt-naar-opslag |
 | D | TYPE II | VLAN\<tenantNo+3> | team0. Tenant + 3 | Geconfigureerd maar niet in gebruik |
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Opslag
 De volgende koppel punten zijn vooraf geconfigureerd:
 
 | Koppel punt | Toepassing | 
@@ -741,7 +742,7 @@ De volgende koppel punten zijn vooraf geconfigureerd:
 - Op de DR-site: de volumes en koppel punten worden geconfigureerd (gemarkeerd als ' productie-DR-instantie ') voor de installatie van het exemplaar van de productie HANA-instantie in de DR/HLI-eenheid. 
 - Op de DR-site: de gegevens, logboek back-ups, logboeken en gedeelde volumes voor QA (gemarkeerd als ' installatie van QA-instantie ') zijn geconfigureerd voor de installatie van het QA-exemplaar.
 - Het primaire site knooppunt wordt gesynchroniseerd met het DR-knoop punt met behulp van HANA-systeem replicatie. 
-- [Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) wordt gebruikt om de ExpressRoute-circuits samen te koppelen om een particulier netwerk tussen uw regionale netwerken te maken.
+- [Global Reach](../../../expressroute/expressroute-global-reach.md) wordt gebruikt om de ExpressRoute-circuits samen te koppelen om een particulier netwerk tussen uw regionale netwerken te maken.
 
 ## <a name="scale-out-with-dr-using-hsr"></a>Uitschalen met DR met behulp van HSR
  
@@ -767,7 +768,7 @@ De volgende netwerk interfaces zijn vooraf geconfigureerd:
 | C | TYPE II | VLAN\<tenantNo+1> | team0. Tenant + 1 | Knoop punt-naar-opslag |
 | D | TYPE II | VLAN\<tenantNo+3> | team0. Tenant + 3 | Geconfigureerd maar niet in gebruik |
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Opslag
 De volgende koppel punten zijn vooraf geconfigureerd:
 
 | Koppel punt | Toepassing | 
@@ -788,9 +789,9 @@ De volgende koppel punten zijn vooraf geconfigureerd:
 - /usr/sap/SID is een symbolische koppeling naar/hana/shared/SID.
 - Op de DR-site: de volumes en koppel punten zijn geconfigureerd voor de installatie van het productie HANA-exemplaar op de DR/HLI-eenheid. 
 - Het primaire site knooppunt wordt gesynchroniseerd met het DR-knoop punt met behulp van HANA-systeem replicatie. 
-- [Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) wordt gebruikt om de ExpressRoute-circuits samen te koppelen om een particulier netwerk tussen uw regionale netwerken te maken.
+- [Global Reach](../../../expressroute/expressroute-global-reach.md) wordt gebruikt om de ExpressRoute-circuits samen te koppelen om een particulier netwerk tussen uw regionale netwerken te maken.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Infra structuur en connectiviteit](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-infrastructure-connectivity) voor Hana grote instanties
-- [Hoge Beschik baarheid en herstel na nood](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery) geval voor Hana grote instanties
+- [Infra structuur en connectiviteit](./hana-overview-infrastructure-connectivity.md) voor Hana grote instanties
+- [Hoge Beschik baarheid en herstel na nood](./hana-overview-high-availability-disaster-recovery.md) geval voor Hana grote instanties

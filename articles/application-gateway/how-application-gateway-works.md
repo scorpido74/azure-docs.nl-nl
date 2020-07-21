@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2019
 ms.author: absha
-ms.openlocfilehash: 7622ac319929548dd50a3af763b1b65ea8a36d2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d33ec829e490ae45d38d33f5784126a71ae2d0aa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85250227"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506550"
 ---
 # <a name="how-an-application-gateway-works"></a>Hoe een toepassings gateway werkt
 
@@ -62,7 +62,7 @@ Een toepassings Gateway voegt vier extra headers toe aan alle aanvragen voordat 
 
 De geldige waarden voor x-doorgestuurde-proto zijn HTTP of HTTPS. X-doorgestuurd: poort Hiermee geeft u de poort op waarop de aanvraag de toepassings gateway heeft bereikt. X-oorspronkelijke host-header bevat de oorspronkelijke hostheader waarmee de aanvraag is aangekomen. Deze header is handig in de integratie van Azure-websites, waarbij de inkomende host-header wordt gewijzigd voordat het verkeer naar de back-end wordt doorgestuurd. Als sessie affiniteit als een optie is ingeschakeld, wordt er een door gateway beheerde affiniteits cookie toegevoegd.
 
-U kunt de toepassings gateway configureren om headers te wijzigen met behulp van [HTTP-headers herschrijven](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers) of door het pad naar de URI te wijzigen met behulp van een instelling voor het overschrijven van een pad. Tenzij geconfigureerd om dit te doen, worden alle binnenkomende aanvragen echter doorgestuurd naar de back-end.
+U kunt de toepassings gateway configureren voor het wijzigen van de aanvraag-en antwoord headers en de URL door gebruik te maken van [HTTP-headers en URL herschrijven](rewrite-http-headers-url.md) of het pad naar de URI te wijzigen met behulp van een pad-onderdrukkings instelling. Tenzij geconfigureerd om dit te doen, worden alle binnenkomende aanvragen echter doorgestuurd naar de back-end.
 
 ## <a name="next-steps"></a>Volgende stappen
 

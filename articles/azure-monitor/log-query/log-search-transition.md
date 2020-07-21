@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2019
-ms.openlocfilehash: 6cc7fc94162ed101d06fbbbc4722867be46987b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f34389785c0f4a43bfcab3e50f2dcd132b2cb629
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77670131"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505802"
 ---
 # <a name="transition-from-log-analytics-log-search-to-azure-monitor-logs"></a>Overgang van Log Analytics logboek zoeken naar Azure Monitor-logboeken
 De zoek opdracht in het logboek in Log Analytics is onlangs vervangen door een nieuwe ervaring voor het analyseren van Azure Monitor Logboeken. De pagina zoeken in Logboeken is momenteel nog steeds toegankelijk via de menu opdracht **Logboeken (klassiek)** op de pagina **log Analytics werk ruimten** in de Azure Portal, maar wordt wel 15 februari 2019. In dit artikel worden de verschillen beschreven tussen de twee ervaringen waarmee u kunt overstappen van zoeken in Logboeken. 
@@ -45,7 +46,7 @@ Selecteer **Opslaan**om de huidige query in azure monitor-logboeken op te slaan.
 ## <a name="saved-queries"></a>Opgeslagen query's
 In zoeken in Logboeken zijn uw opgeslagen query's beschikbaar via de actie balk item **opgeslagen Zoek opdrachten**. In Azure Monitor-Logboeken opent u opgeslagen query's vanuit [query Explorer](../log-query/get-started-portal.md#save-queries).
 
-![Query Verkenner](media/log-search-transition/query-explorer.png)
+![Queryverkenner](media/log-search-transition/query-explorer.png)
 
 ## <a name="drill-down-on-summarized-rows"></a>Inzoomen op samenvattings rijen
 In zoeken in Logboeken kunt u klikken op een rij in een samenvatte query om een andere query te starten waarin gedetailleerde records in die rij worden weer gegeven.
@@ -57,7 +58,7 @@ In Azure Monitor logboeken moet u de query wijzigen om deze records te retour ne
 ![DrillDown van Azure Monitor-logboeken](media/log-search-transition/drilldown-logs.png)
 
 ## <a name="take-action"></a>Actie ondernemen
-In zoeken in Logboeken kunt u [een runbook starten](take-action.md) vanuit een Zoek resultaat door **actie ondernemen**te selecteren.
+In zoeken in Logboeken kunt u [een runbook starten](../platform/action-groups.md) vanuit een Zoek resultaat door **actie ondernemen**te selecteren.
 
 ![Actie ondernemen](media/log-search-transition/take-action-log-search.png)
 

@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5355e43ca6ac075e76a76ceb51be135cf4b62b0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e040f42db195760cf40f6dbdf651826b544b65a4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77564020"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507570"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>VCenter-identiteits bronnen instellen voor het gebruik van Active Directory
 
@@ -79,7 +80,7 @@ Als u een nieuw Active Directory-forest en-domein wilt instellen, hebt u het vol
 * Een of meer virtuele machines met micro soft Windows Server om te gebruiken als domein controllers voor het nieuwe Active Directory-forest en-domein.
 * Een of meer virtuele machines waarop de DNS-service wordt uitgevoerd voor naam omzetting.
 
-Zie [een nieuwe Windows Server 2012 Active Directory-forest installeren](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-forest--level-200-) voor gedetailleerde stappen.
+Zie [een nieuwe Windows Server 2012 Active Directory-forest installeren](/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-forest--level-200-) voor gedetailleerde stappen.
 
 > [!TIP]
 > Voor een hoge Beschik baarheid van services raden we u aan om meerdere domein controllers en DNS-servers in te stellen.
@@ -93,7 +94,7 @@ Als u een nieuw Active Directory domein wilt instellen in een bestaand Active Di
 * Site-naar-site-VPN-verbinding met de locatie van uw Active Directory-forest.
 * DNS-server om de naam van uw bestaande Active Directory-forest op te lossen.
 
-Zie [een nieuwe Windows Server 2012-Active Directory onderliggende of structuur domein installeren](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-child-or-tree-domain--level-200-) voor gedetailleerde stappen.
+Zie [een nieuwe Windows Server 2012-Active Directory onderliggende of structuur domein installeren](/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-child-or-tree-domain--level-200-) voor gedetailleerde stappen.
 
 Nadat u het Active Directory domein hebt ingesteld, kunt u [een id-bron toevoegen aan vCenter](#add-an-identity-source-on-vcenter) voor uw nieuwe Active Directory.
 

@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/12/2018
 ms.author: genli
-ms.openlocfilehash: 1ab2861f73d66987230c9e3398227c8e80665e96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c56ee4b9e541aa4b374acbb59cf64da34046a06c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84769605"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509066"
 ---
 # <a name="troubleshoot-azure-virtual-machines-boot-errors"></a>Opstart fouten van Azure Virtual Machines oplossen
 
@@ -35,5 +36,5 @@ In dit artikel vindt u de veelvoorkomende opstart fouten die kunnen optreden wan
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Diagnostische gegevens over opstarten](boot-diagnostics.md)
-- [VM-seriële console](../windows/serial-console.md)
-- [Problemen met een Windows-VM oplossen door de besturingssysteem schijf te koppelen aan een herstel-VM](../windows/troubleshoot-recovery-disks.md)
+- [VM-seriële console](./serial-console-windows.md)
+- [Problemen met een Windows-VM oplossen door de besturingssysteem schijf te koppelen aan een herstel-VM](./troubleshoot-recovery-disks-windows.md)

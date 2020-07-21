@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 5e756258bb92d7def195959d909068e87e765c0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d66c690c3a0ba638a92150c9aa1dbb0dc2a41268
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82562063"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506158"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Werken met Azure Functions-proxy's
 
@@ -30,7 +30,7 @@ In deze sectie wordt beschreven hoe u een proxy maakt in de functions-Portal.
 3. Geef een naam op voor uw proxy.
 4. Configureer het eind punt dat wordt weer gegeven in deze functie-app door de **route sjabloon** en **http-methoden**op te geven. Deze para meters gedragen zich op basis van de regels voor [http-triggers].
 5. Stel de **back-end-URL** in op een ander eind punt. Dit eind punt kan een functie zijn in een andere functie-app of een andere API. De waarde hoeft niet statisch te zijn en kan verwijzen naar [Toepassings instellingen] en- [para meters van de oorspronkelijke client aanvraag].
-6. Klik op **Create**.
+6. Klik op **Maken**.
 
 Uw proxy bestaat nu als een nieuw eind punt in uw functie-app. Vanuit een client perspectief is het gelijk aan een http trigger in Azure Functions. U kunt de nieuwe proxy proberen door de proxy-URL te kopiëren en deze te testen met uw favoriete HTTP-client.
 
@@ -89,7 +89,7 @@ Antwoord parameters kunnen worden gebruikt als onderdeel van het wijzigen van de
 
 ### <a name="reference-application-settings"></a><a name="use-appsettings"></a>Referentie toepassings instellingen
 
-U kunt ook verwijzen naar [Toepassings instellingen die zijn gedefinieerd voor de functie-app](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings) door de naam van de instelling te omgeven door procent tekens (%).
+U kunt ook verwijzen naar [Toepassings instellingen die zijn gedefinieerd voor de functie-app](./functions-how-to-use-azure-function-app-settings.md) door de naam van de instelling te omgeven door procent tekens (%).
 
 Bijvoorbeeld: een back-end-URL van *https://%ORDER_PROCESSING_HOST%/api/orders* zou% ORDER_PROCESSING_HOST% vervangen door de waarde van de instelling ORDER_PROCESSING_HOST.
 
@@ -110,7 +110,7 @@ Schakel traceringen samen uit door toe `"debug":false` te voegen aan een bepaald
 
 ## <a name="advanced-configuration"></a>Geavanceerde configuratie
 
-De proxy's die u configureert, worden opgeslagen in een *proxies.js* in het bestand, dat zich in de hoofdmap van een functie-app-map bevindt. U kunt dit bestand hand matig bewerken en implementeren als onderdeel van uw app wanneer u een van de [implementatie methoden](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment) gebruikt die door functies worden ondersteund. 
+De proxy's die u configureert, worden opgeslagen in een *proxies.js* in het bestand, dat zich in de hoofdmap van een functie-app-map bevindt. U kunt dit bestand hand matig bewerken en implementeren als onderdeel van uw app wanneer u een van de [implementatie methoden](./functions-continuous-deployment.md) gebruikt die door functies worden ondersteund. 
 
 > [!TIP] 
 > Als u een van de implementatie methoden niet hebt ingesteld, kunt u ook werken met de *proxies.js* in het bestand in de portal. Ga naar uw functie-app, selecteer **platform functies**en selecteer vervolgens **app service-editor**. Op die manier kunt u de volledige bestands structuur van de functie-app bekijken en vervolgens wijzigingen aanbrengen.
@@ -244,7 +244,7 @@ Een voorbeeld configuratie kan er als volgt uitzien:
 > In dit voor beeld wordt de hoofd tekst van de reactie direct ingesteld, zodat er geen `backendUri` eigenschap nodig is. In het voor beeld ziet u hoe u Azure Functions-proxy's kunt gebruiken om Api's te model leren.
 
 [Azure-portal]: https://portal.azure.com
-[HTTP-triggers]: https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook
+[HTTP-triggers]: ./functions-bindings-http-webhook.md
 [Modify the back-end request]: #modify-backend-request
 [Modify the response]: #modify-response
 [Een requestOverrides-object definiëren]: #requestOverrides

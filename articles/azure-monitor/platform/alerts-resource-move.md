@@ -7,20 +7,20 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/26/2020
 ms.subservice: alerts
-ms.openlocfilehash: 8e917d279d8de3dbe6de540a4ea1ef8cec1b6ffc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ea5c8552d35db67a1d2caf20c0143c74cdd642e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830057"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505479"
 ---
 # <a name="how-to-update-alert-rules-or-action-rules-when-their-target-resource-moves-to-a-different-azure-region"></a>Waarschuwings regels of actie regels bijwerken wanneer de doel resource wordt verplaatst naar een andere Azure-regio
 
-In dit artikel wordt beschreven waarom de bestaande [waarschuwings regels](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview) en [actie regels](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-action-rules) kunnen worden beïnvloed wanneer u andere Azure-resources tussen regio's verplaatst en hoe u deze problemen kunt identificeren en oplossen. Raadpleeg de documentatie over het verplaatsen van de hoofd [resource](https://docs.microsoft.com/azure/azure-resource-manager/management/move-region) voor meer informatie over de resource verplaatsing tussen regio's nuttig en een controle lijst voor het ontwerpen van een Verplaats proces.
+In dit artikel wordt beschreven waarom de bestaande [waarschuwings regels](./alerts-overview.md) en [actie regels](./alerts-action-rules.md) kunnen worden beïnvloed wanneer u andere Azure-resources tussen regio's verplaatst en hoe u deze problemen kunt identificeren en oplossen. Raadpleeg de documentatie over het verplaatsen van de hoofd [resource](../../azure-resource-manager/management/move-region.md) voor meer informatie over de resource verplaatsing tussen regio's nuttig en een controle lijst voor het ontwerpen van een Verplaats proces.
 
 ## <a name="why-the-problem-exists"></a>Waarom het probleem zich voordoet
 
-Waarschuwings regels en actie regels verwijzen naar andere Azure-resources. Voor beelden hiervan zijn [Azure-vm's](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate), [azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-move-resources-across-regions)en [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-move). Wanneer u de resources verplaatst waarnaar wordt verwezen door de regels, werken de regels waarschijnlijk niet goed, omdat ze de bronnen waarnaar ze verwijzen, niet kunnen vinden.
+Waarschuwings regels en actie regels verwijzen naar andere Azure-resources. Voor beelden hiervan zijn [Azure-vm's](../../site-recovery/azure-to-azure-tutorial-migrate.md), [azure SQL](../../azure-sql/database/move-resources-across-regions.md)en [Azure Storage](../../storage/common/storage-account-move.md). Wanneer u de resources verplaatst waarnaar wordt verwezen door de regels, werken de regels waarschijnlijk niet goed, omdat ze de bronnen waarnaar ze verwijzen, niet kunnen vinden.
 
 Er zijn twee belang rijke redenen waarom uw regels na het verplaatsen van de doel resources mogelijk niet meer werken:
 
@@ -94,20 +94,20 @@ Als **slechts een deel** van de resources in het bereik is verplaatst, moet u de
 
 ### <a name="change-scope-of-a-rule-using-rest-api"></a>Het bereik van een regel wijzigen met behulp van REST API
 
-1. De bestaande regel ophalen ([metrische waarschuwingen](https://docs.microsoft.com/rest/api/monitor/metricalerts/get), [waarschuwingen voor activiteiten logboeken](https://docs.microsoft.com/rest/api/monitor/activitylogalerts/get))
-2. Het bereik wijzigen ([waarschuwingen voor activiteiten logboeken](https://docs.microsoft.com/rest/api/monitor/activitylogalerts/update))
-3. De regel opnieuw implementeren ([metrische waarschuwingen](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate), [waarschuwingen voor activiteiten logboeken](https://docs.microsoft.com/rest/api/monitor/activitylogalerts/createorupdate))
+1. De bestaande regel ophalen ([metrische waarschuwingen](/rest/api/monitor/metricalerts/get), [waarschuwingen voor activiteiten logboeken](/rest/api/monitor/activitylogalerts/get))
+2. Het bereik wijzigen ([waarschuwingen voor activiteiten logboeken](/rest/api/monitor/activitylogalerts/update))
+3. De regel opnieuw implementeren ([metrische waarschuwingen](/rest/api/monitor/metricalerts/createorupdate), [waarschuwingen voor activiteiten logboeken](/rest/api/monitor/activitylogalerts/createorupdate))
 
 ### <a name="change-scope-of-a-rule-using-powershell"></a>Het bereik van een regel wijzigen met behulp van Power shell
 
-1. De bestaande regel ophalen ([metrische waarschuwingen](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetricalertrulev2), [waarschuwingen voor activiteiten logboeken](https://docs.microsoft.com/powershell/module/az.monitor/get-azactivitylogalert), [actie regels](https://docs.microsoft.com/powershell/module/az.alertsmanagement/Get-AzActionRule)).
+1. De bestaande regel ophalen ([metrische waarschuwingen](/powershell/module/az.monitor/get-azmetricalertrulev2), [waarschuwingen voor activiteiten logboeken](/powershell/module/az.monitor/get-azactivitylogalert), [actie regels](/powershell/module/az.alertsmanagement/get-azactionrule)).
 2. Wijzig het bereik. Als dat nodig is, kunt u splitsen in twee regels (die relevant zijn voor bepaalde gevallen van metrische waarschuwingen, zoals hierboven vermeld).
-3. Implementeer de regel opnieuw ([metrische waarschuwingen](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2), [waarschuwingen voor activiteiten logboeken](https://docs.microsoft.com/powershell/module/az.monitor/enable-azactivitylogalert), [actie regels](https://docs.microsoft.com/powershell/module/az.alertsmanagement/set-azactionrule)).
+3. Implementeer de regel opnieuw ([metrische waarschuwingen](/powershell/module/az.monitor/add-azmetricalertrulev2), [waarschuwingen voor activiteiten logboeken](/powershell/module/az.monitor/enable-azactivitylogalert), [actie regels](/powershell/module/az.alertsmanagement/set-azactionrule)).
 
 ### <a name="change-the-scope-of-a-rule-using-azure-cli"></a>Het bereik van een regel wijzigen met behulp van Azure CLI
 
-1.  De bestaande regel ophalen ([metrische waarschuwingen](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest#az-monitor-metrics-alert-show), [waarschuwingen voor activiteiten logboeken](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list)).
-2.  Het regel bereik direct bijwerken ([metrische waarschuwingen](https://docs.microsoft.com/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-update), [waarschuwingen voor activiteiten logboeken](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert/scope))
+1.  De bestaande regel ophalen ([metrische waarschuwingen](/cli/azure/monitor/metrics/alert?view=azure-cli-latest#az-monitor-metrics-alert-show), [waarschuwingen voor activiteiten logboeken](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list)).
+2.  Het regel bereik direct bijwerken ([metrische waarschuwingen](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-update), [waarschuwingen voor activiteiten logboeken](/cli/azure/monitor/activity-log/alert/scope))
 3.  Als dat nodig is, kunt u splitsen in twee regels (die relevant zijn voor bepaalde gevallen van metrische waarschuwingen, zoals hierboven vermeld).
 
 ## <a name="next-steps"></a>Volgende stappen

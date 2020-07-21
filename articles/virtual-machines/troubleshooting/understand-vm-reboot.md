@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: e94ffb3d34082745c3d7ca86cfda2b93c0ed08da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08fb794839adf9e8a986f53da00b4855e5535af5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77919410"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508862"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Meer informatie over het opnieuw opstarten van het systeem voor Azure VM
 
@@ -33,7 +34,7 @@ Zie [de beschik baarheid van virtuele machines beheren](../windows/manage-availa
 
 ## <a name="resource-health-information"></a>Resource Health informatie
 
-Azure Resource Health is een service die de status van afzonderlijke Azure-resources weergeeft en praktische richt lijnen biedt voor het oplossen van problemen. In een cloud omgeving waar het niet mogelijk is om rechtstreeks toegang te krijgen tot servers of infrastructuur elementen, is het doel van Resource Health om de tijd te verminderen die u besteedt aan het oplossen van problemen. Met name het doel is om de tijd te verkorten die nodig is om te bepalen of de hoofdmap van het probleem zich in de toepassing bevindt of in een gebeurtenis binnen het Azure-platform. Zie [resource Health begrijpen en gebruiken](../../resource-health/resource-health-overview.md)voor meer informatie.
+Azure Resource Health is een service die de status van afzonderlijke Azure-resources weergeeft en praktische richt lijnen biedt voor het oplossen van problemen. In een cloud omgeving waar het niet mogelijk is om rechtstreeks toegang te krijgen tot servers of infrastructuur elementen, is het doel van Resource Health om de tijd te verminderen die u besteedt aan het oplossen van problemen. Met name het doel is om de tijd te verkorten die nodig is om te bepalen of de hoofdmap van het probleem zich in de toepassing bevindt of in een gebeurtenis binnen het Azure-platform. Zie [resource Health begrijpen en gebruiken](../../service-health/resource-health-overview.md)voor meer informatie.
 
 ## <a name="actions-and-events-that-can-cause-the-vm-to-reboot"></a>Acties en gebeurtenissen die ertoe kunnen leiden dat de VM opnieuw wordt opgestart
 
@@ -45,8 +46,8 @@ Voor sommige updates is het echter nood zakelijk dat de computer opnieuw wordt o
 
 Zie de artikelen die hier worden vermeld als u wilt weten wat het geplande onderhoud van Azure is en hoe dit kan van invloed zijn op de beschik baarheid van uw virtuele Linux-machines. Deze artikelen bieden achtergrondinformatie over het proces van gepland onderhoud in Azure, en over hoe u gepland onderhoud kunt inplannen om de impact ervan nog verder te beperken.
 
-- [Gepland onderhoud voor VM's in Azure](../windows/planned-maintenance.md)
-- [Gepland onderhoud inplannen voor Azure-VM's](../windows/classic/planned-maintenance-schedule.md)
+- [Gepland onderhoud voor VM's in Azure](../maintenance-and-updates.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json)
+- [Gepland onderhoud inplannen voor Azure-VM's](../maintenance-and-updates.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json)
 
 ### <a name="memory-preserving-updates"></a>Updates met geheugenbehoud
 
@@ -71,7 +72,7 @@ Andere scenario's die doorgaans ertoe leiden dat de virtuele machine opnieuw wor
 
 ### <a name="azure-security-center-and-windows-update"></a>Azure Security Center en Windows Update
 
-Azure Security Center bewaakt dagelijks Windows-en Linux-Vm's voor ontbrekende updates van het besturings systeem. Security Center haalt een lijst met beschik bare beveiligings-en essentiële updates op van Windows Update of Windows Server Update Services (WSUS), afhankelijk van welke service is geconfigureerd op een Windows-VM. Security Center controleert ook op de nieuwste updates voor Linux-systemen. Als op uw virtuele machine een systeem update ontbreekt, wordt Security Center aanbevolen om systeem updates toe te passen. De toepassing van deze systeem updates wordt beheerd via de Security Center in de Azure Portal. Nadat u een aantal updates hebt toegepast, is het mogelijk dat het opnieuw opstarten van de VM vereist is. Zie [systeem updates Toep assen in azure Security Center](../../security-center/security-center-apply-system-updates.md)voor meer informatie.
+Azure Security Center bewaakt dagelijks Windows-en Linux-Vm's voor ontbrekende updates van het besturings systeem. Security Center haalt een lijst met beschik bare beveiligings-en essentiële updates op van Windows Update of Windows Server Update Services (WSUS), afhankelijk van welke service is geconfigureerd op een Windows-VM. Security Center controleert ook op de nieuwste updates voor Linux-systemen. Als op uw virtuele machine een systeem update ontbreekt, wordt Security Center aanbevolen om systeem updates toe te passen. De toepassing van deze systeem updates wordt beheerd via de Security Center in de Azure Portal. Nadat u een aantal updates hebt toegepast, is het mogelijk dat het opnieuw opstarten van de VM vereist is. Zie [systeem updates Toep assen in azure Security Center](../../security-center/security-center-virtual-machine-protection.md)voor meer informatie.
 
 Net als bij on-premises servers pusht Azure geen updates van Windows Update naar Windows-Vm's, omdat deze machines zijn bedoeld om te worden beheerd door hun gebruikers. U wordt echter aangemoedigd om de instelling automatische Windows Update ingeschakeld te laten. Automatische installatie van updates van Windows Update kan er ook voor zorgen dat de computer opnieuw wordt opgestart nadat de updates zijn toegepast. Zie [Windows Update Veelgestelde vragen](https://support.microsoft.com/help/12373/windows-update-faq)voor meer informatie.
 
@@ -114,7 +115,7 @@ De duur van de afsluiting kan korter zijn dan vijf minuten, maar kan aanzienlijk
 
 **Overschrijden IO-limieten**
 
-Vm's kunnen tijdelijk worden afgesloten wanneer I/O-aanvragen consistent worden beperkt omdat het volume van I/O-bewerkingen per seconde (IOPS) de I/O-limieten voor de schijf overschrijdt. (Standaard schijf opslag is beperkt tot 500 IOPS.) U kunt dit probleem oplossen door schijf striping te gebruiken of de opslag ruimte in de gast-VM te configureren, afhankelijk van de werk belasting. Zie [virtuele machines van Azure configureren voor optimale opslag prestaties](https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx)voor meer informatie.
+Vm's kunnen tijdelijk worden afgesloten wanneer I/O-aanvragen consistent worden beperkt omdat het volume van I/O-bewerkingen per seconde (IOPS) de I/O-limieten voor de schijf overschrijdt. (Standaard schijf opslag is beperkt tot 500 IOPS.) U kunt dit probleem oplossen door schijf striping te gebruiken of de opslag ruimte in de gast-VM te configureren, afhankelijk van de werk belasting. 
 
 ### <a name="other-incidents"></a>Andere incidenten
 

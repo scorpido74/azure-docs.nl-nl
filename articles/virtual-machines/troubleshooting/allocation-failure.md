@@ -12,11 +12,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 04/13/2018
 ms.author: daberry
-ms.openlocfilehash: fdbf07fa51adf8151e80d230734ebe53d36b5390
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3766c31add02799c62bca7e9063e723e0a5b498e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83124785"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509355"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>Toewijzingsproblemen bij het maken, opnieuw starten of het wijzigen van het formaat van VM’s in Azure oplossen
 
@@ -78,7 +79,7 @@ Als u beschikbaarheids zones gebruikt, probeert u een andere zone in de regio di
 
 Als uw toewijzings aanvraag groot is (meer dan 500 kern geheugens), raadpleegt u de richt lijnen in de volgende secties om de aanvraag op te splitsen in kleinere implementaties.
 
-Probeer [de virtuele machine](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/redeploy-to-new-node-windows)opnieuw te implementeren. Door de VM opnieuw te implementeren, wordt de virtuele machine toegewezen aan een nieuw cluster binnen de regio.
+Probeer [de virtuele machine](./redeploy-to-new-node-windows.md)opnieuw te implementeren. Door de VM opnieuw te implementeren, wordt de virtuele machine toegewezen aan een nieuw cluster binnen de regio.
 
 ## <a name="allocation-failures-for-older-vm-sizes-av1-dv1-dsv1-d15v2-ds15v2-etc"></a>Toewijzingsfouten voor oudere VM-formaten (Av1, Dv1, DSv1, D15v2, DS15v2 enz.)
 
@@ -93,7 +94,7 @@ Terwijl we Azure-infra structuur uitbreiden, implementeren we nieuwere hardware 
 
 ## <a name="allocation-failures-for-large-deployments-more-than-500-cores"></a>Toewijzingsfouten voor grote implementaties (meer dan 500 kernen)
 
-Verminder het aantal exemplaren van de gevraagde VM-grootte en voer de implementatie bewerking opnieuw uit. Daarnaast kunt u voor grotere implementaties de [virtuele-machine schaal sets van Azure](https://docs.microsoft.com/azure/virtual-machine-scale-sets/)evalueren. Het aantal VM-exemplaren kan automatisch worden verg root of verkleind als reactie op de vraag of een gedefinieerd schema, en u hebt een grotere kans op het toewijzen van de toewijzing omdat de implementaties kunnen worden verdeeld over meerdere clusters. 
+Verminder het aantal exemplaren van de gevraagde VM-grootte en voer de implementatie bewerking opnieuw uit. Daarnaast kunt u voor grotere implementaties de [virtuele-machine schaal sets van Azure](../../virtual-machine-scale-sets/index.yml)evalueren. Het aantal VM-exemplaren kan automatisch worden verg root of verkleind als reactie op de vraag of een gedefinieerd schema, en u hebt een grotere kans op het toewijzen van de toewijzing omdat de implementaties kunnen worden verdeeld over meerdere clusters. 
 
 ## <a name="background-information"></a>Achtergrond informatie
 ### <a name="how-allocation-works"></a>Hoe toewijzing werkt
@@ -104,5 +105,3 @@ De servers in Azure-datacenters worden in clusters gepartitioneerd. Normaal gesp
 Wanneer een toewijzings aanvraag wordt vastgemaakt aan een cluster, is er een hogere kans op het vinden van vrije bronnen omdat de beschik bare resource groep kleiner is. Als uw toewijzings aanvraag is vastgemaakt aan een cluster maar het type van de aangevraagde resource niet wordt ondersteund door dat cluster, mislukt de aanvraag ook als het cluster vrije bronnen heeft. In het volgende diagram 3 ziet u het geval waarin een vastgemaakte toewijzing mislukt, omdat het enige kandidaat-cluster geen vrije resources heeft. Diagram 4 illustreert het geval dat een vastgemaakte toewijzing mislukt omdat het enige kandidaat-cluster de aangevraagde VM-grootte niet ondersteunt, zelfs als het cluster vrije bronnen heeft.
 
 ![Fout bij vastgemaakte toewijzing](./media/virtual-machines-common-allocation-failure/Allocation2.png)
-
-

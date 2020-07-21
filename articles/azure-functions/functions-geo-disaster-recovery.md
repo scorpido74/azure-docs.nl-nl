@@ -4,11 +4,12 @@ description: Hoe u geografische regio's gebruikt voor redundantie en failover in
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 08/29/2019
-ms.openlocfilehash: 481a716bd6ced5c304da41c70fdcfc687b76661d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 446a76b823ce3592a83d0c2f898041951361b47e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79080225"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506278"
 ---
 # <a name="azure-functions-geo-disaster-recovery"></a>Azure Functions geo-nood herstel
 
@@ -21,7 +22,7 @@ Azure Functions uitgevoerd in een specifieke regio.  Voor een hogere Beschik baa
 * Actief/actief. Beide regio's zijn actief en ontvangen gebeurtenissen (gedupliceerd of geroteerd). Actief/actief wordt aanbevolen voor HTTPS-functies in combi natie met Azure front deur.
 * Actief/passief. Een regio is actief en ontvangt gebeurtenissen, terwijl een secundaire activiteit niet actief is.  Als failover is vereist, wordt de secundaire regio geactiveerd en wordt de verwerking verouderd.  Dit wordt aanbevolen voor niet-HTTP-functies, zoals Service Bus en Event Hubs.
 
-Lees hoe u [apps in meerdere regio's kunt uitvoeren](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region) voor meer informatie over implementaties met meerdere regio's.
+Lees hoe u [apps in meerdere regio's kunt uitvoeren](/azure/architecture/reference-architectures/app-service-web-app/multi-region) voor meer informatie over implementaties met meerdere regio's.
 
 ## <a name="activeactive-for-https-functions"></a>Actief/actief voor HTTPS-functies
 

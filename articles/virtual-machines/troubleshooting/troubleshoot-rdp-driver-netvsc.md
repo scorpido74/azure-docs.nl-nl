@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/19/2018
 ms.author: genli
-ms.openlocfilehash: 4c10a2dcd55c1605cfafe6c67cfefd9d8a3c5f9d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0f5a414f00ffa50114f090fc19f37b8a85428547
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71057992"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508998"
 ---
 # <a name="cannot-connect-remotely-to-a-windows-10-or-windows-server-2016-vm-in-azure-because-of-netvscsys"></a>Kan niet extern verbinding maken met een virtuele machine met Windows 10 of Windows Server 2016 in azure vanwege netvsc.sys
 
@@ -65,11 +65,11 @@ Maak verbinding met [de seriële console, open een Power shell-exemplaar](serial
    dism /ONLINE /add-package /packagepath:<Utility Disk Letter>:\<KB .msu or .cab>
    ```
 
-5. Start de VM opnieuw.
+5. Start de VM opnieuw op.
 
 ### <a name="repair-the-vm-offline"></a>De virtuele machine offline herstellen
 
-1. [Koppel de systeem schijf aan een herstel-VM](../windows/troubleshoot-recovery-disks-portal.md).
+1. [Koppel de systeem schijf aan een herstel-VM](./troubleshoot-recovery-disks-portal-windows.md).
 
 2. Start een Extern bureaublad verbinding met de virtuele machine voor herstel.
 
@@ -114,7 +114,7 @@ Maak verbinding met [de seriële console, open een Power shell-exemplaar](serial
     reg unload HKLM\BROKENSYSTEM
     ```
 
-16. [Ontkoppel de systeem schijf en maak de VM opnieuw](../windows/troubleshoot-recovery-disks-portal.md).
+16. [Ontkoppel de systeem schijf en maak de VM opnieuw](./troubleshoot-recovery-disks-portal-windows.md).
 
 ## <a name="need-help-contact-support"></a>Hebt u hulp nodig? Contact opnemen met ondersteuning
 

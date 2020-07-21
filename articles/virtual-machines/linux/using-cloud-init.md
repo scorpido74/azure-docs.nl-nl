@@ -8,19 +8,19 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 06/15/2020
 ms.author: danis
-ms.openlocfilehash: bebf4967d96177038aba64be59d43f49458b82be
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: e303b713adf2925af8bc012a5b858c6f5740fccf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920190"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510069"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Cloud-init-ondersteuning voor virtuele machines in azure
 In dit artikel wordt de ondersteuning beschreven die bestaat voor [Cloud-init](https://cloudinit.readthedocs.io) voor het configureren van een virtuele machine (VM) of schaal sets voor virtuele machines bij het inrichten van de tijd in Azure. Deze Cloud-init-configuraties worden uitgevoerd bij de eerste keer opstarten zodra de resources zijn ingericht door Azure.  
 
 Inrichting van de VM is het proces waarbij Azure de parameter waarden voor de VM doorloopt, zoals hostnaam, gebruikers naam, wacht woord, enzovoort, en deze beschikbaar maken voor de virtuele machine wanneer deze wordt opgestart. Een ' inrichtings agent ' gebruikt deze waarden, configureert de virtuele machine en meldt zich terug wanneer deze is voltooid. 
 
-Azure ondersteunt twee inrichtings agenten [Cloud-init](https://cloudinit.readthedocs.io)en de [Azure Linux-agent (Wala)](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux).
+Azure ondersteunt twee inrichtings agenten [Cloud-init](https://cloudinit.readthedocs.io)en de [Azure Linux-agent (Wala)](../extensions/agent-linux.md).
 
 ## <a name="cloud-init-overview"></a>overzicht van Cloud-init
 [Cloud-init](https://cloudinit.readthedocs.io) is een veelgebruikte benadering voor het aanpassen van een virtuele Linux-machine wanneer deze voor de eerste keer wordt opgestart. U kunt cloud-init gebruiken voor het installeren van pakketten en schrijven van bestanden, of om gebruikers en beveiliging te configureren. Omdat Cloud-init wordt aangeroepen tijdens het eerste opstart proces, zijn er geen extra stappen of vereiste agents om uw configuratie toe te passen.  `#cloud-config`Zie de [Cloud-init-documentatie site](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)voor meer informatie over het correct format teren van uw bestanden of andere invoer.  `#cloud-config`bestanden zijn tekst bestanden die worden gecodeerd in base64.
@@ -106,7 +106,7 @@ Deze SLES-installatie kopieën zijn bijgewerkt met het inrichten van Cloud-init,
 Momenteel biedt Azure Stack ondersteuning voor het inrichten van installatie kopieën die zijn ingeschakeld voor Cloud-init.
 
 ## <a name="what-is-the-difference-between-cloud-init-and-the-linux-agent-wala"></a>Wat is het verschil tussen Cloud-init en de Linux-agent (WALA)?
-WALA is een Azure-platformspecifieke agent die wordt gebruikt voor het inrichten en configureren van Vm's en het afhandelen van [Azure-extensies](https://docs.microsoft.com/azure/virtual-machines/extensions/features-linux). 
+WALA is een Azure-platformspecifieke agent die wordt gebruikt voor het inrichten en configureren van Vm's en het afhandelen van [Azure-extensies](../extensions/features-linux.md). 
 
 We verbeteren de taak van het configureren van Vm's voor het gebruik van Cloud-init in plaats van de Linux-agent om te zorgen dat bestaande Cloud-init-klanten hun huidige Cloud-init-scripts kunnen gebruiken, of nieuwe klanten om te profiteren van de geavanceerde configuratie functionaliteit voor Cloud-init. Als u beschikt over bestaande investeringen in Cloud-init-scripts voor het configureren van Linux-systemen, zijn er **geen aanvullende instellingen vereist** om Cloud-init in te scha kelen. 
 

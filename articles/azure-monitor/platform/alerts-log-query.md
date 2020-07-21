@@ -6,11 +6,12 @@ ms.author: yossiy
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.subservice: alerts
-ms.openlocfilehash: fdf492b8f103e725046b9b1cbbd079c4d249664a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be2d49a824066b8926ae455978facb34c0b44310
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77667785"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505462"
 ---
 # <a name="log-alert-queries-in-azure-monitor"></a>Waarschuwings query's vastleggen in Azure Monitor
 [Waarschuwings regels op basis van Azure monitor logboeken](alerts-unified-log.md) worden regel matig uitgevoerd, zodat u zeker weet dat ze zijn geschreven om de overhead en latentie te minimaliseren. Dit artikel bevat aanbevelingen voor het schrijven van efficiënte query's voor logboek waarschuwingen en een proces voor het converteren van bestaande query's. 
@@ -49,7 +50,7 @@ workspace('Contoso-workspace1').Perf
 ```
 
 >[!NOTE]
->Er wordt een [query voor meerdere resources](../log-query/cross-workspace-query.md) in logboek waarschuwingen ondersteund in de nieuwe [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Azure Monitor maakt standaard gebruik van de [verouderde log Analytics waarschuwings-API](api-alerts.md) voor het maken van nieuwe logboek waarschuwings regels van Azure Portal, tenzij u overschakelt van [VERouderde API voor logboek waarschuwingen](alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api). Na de switch wordt de nieuwe API de standaard instelling voor nieuwe waarschuwings regels in Azure Portal en kunt u regels voor het maken van query logboek waarschuwingen voor meerdere resources. U kunt waarschuwings regels voor het query logboek voor [meerdere resources](../log-query/cross-workspace-query.md) maken zonder de switch te maken met behulp van de [arm-sjabloon voor de scheduledQueryRules-API](alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) , maar deze waarschuwings regel kan wel worden beheerd met [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) en niet vanuit Azure Portal.
+>Er wordt een [query voor meerdere resources](../log-query/cross-workspace-query.md) in logboek waarschuwingen ondersteund in de nieuwe [scheduledQueryRules-API](/rest/api/monitor/scheduledqueryrules). Azure Monitor maakt standaard gebruik van de [verouderde log Analytics waarschuwings-API](api-alerts.md) voor het maken van nieuwe logboek waarschuwings regels van Azure Portal, tenzij u overschakelt van [VERouderde API voor logboek waarschuwingen](alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api). Na de switch wordt de nieuwe API de standaard instelling voor nieuwe waarschuwings regels in Azure Portal en kunt u regels voor het maken van query logboek waarschuwingen voor meerdere resources. U kunt waarschuwings regels voor het query logboek voor [meerdere resources](../log-query/cross-workspace-query.md) maken zonder de switch te maken met behulp van de [arm-sjabloon voor de scheduledQueryRules-API](alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) , maar deze waarschuwings regel kan wel worden beheerd met [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) en niet vanuit Azure Portal.
 
 ## <a name="examples"></a>Voorbeelden
 De volgende voor beelden zijn logboek query's die `search` gebruikmaken `union` van en en stappen bieden die u kunt gebruiken om deze query's te wijzigen voor gebruik met waarschuwings regels.
@@ -216,4 +217,3 @@ on Hour
 ## <a name="next-steps"></a>Volgende stappen
 - Meer informatie over [logboek waarschuwingen](alerts-log.md) in azure monitor.
 - Meer informatie over [logboek query's](../log-query/log-query-overview.md).
-

@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.author: mlearned
-ms.openlocfilehash: f957ee5293d2804298d4723ed3a763fabac9dc93
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b3ad8fdce873b31c8ea6b1c8176ed41587b4b298
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244528"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507094"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Beveiligingsconcepten voor toepassingen en clusters in Azure Kubernetes Service (AKS)
 
@@ -54,9 +54,9 @@ Kubernetes-omgevingen, in AKS of elders, zijn momenteel niet volledig veilig voo
 
 ### <a name="compute-isolation"></a>Reken isolatie
 
- Bepaalde werk belastingen kunnen een hoge mate van isolatie van andere werk belastingen van de klant vereisen vanwege nalevings-of regelgevings vereisten. Voor deze werk belastingen biedt Azure [geïsoleerde virtuele machines](../virtual-machines/linux/isolation.md), die kunnen worden gebruikt als agent knooppunten in een AKS-cluster. Deze geïsoleerde virtuele machines zijn geïsoleerd voor een specifiek hardwaretype en zijn specifiek voor één klant. 
+ Bepaalde werk belastingen kunnen een hoge mate van isolatie van andere werk belastingen van de klant vereisen vanwege nalevings-of regelgevings vereisten. Voor deze werk belastingen biedt Azure [geïsoleerde virtuele machines](../virtual-machines/isolation.md), die kunnen worden gebruikt als agent knooppunten in een AKS-cluster. Deze geïsoleerde virtuele machines zijn geïsoleerd voor een specifiek hardwaretype en zijn specifiek voor één klant. 
 
- Als u deze geïsoleerde virtuele machines wilt gebruiken met een AKS-cluster, selecteert u een van de geïsoleerde virtuele machines die [hier](../virtual-machines/linux/isolation.md) worden weer gegeven als de **knooppunt grootte** bij het maken van een AKS-cluster of het toevoegen van een knooppunt groep.
+ Als u deze geïsoleerde virtuele machines wilt gebruiken met een AKS-cluster, selecteert u een van de geïsoleerde virtuele machines die [hier](../virtual-machines/isolation.md) worden weer gegeven als de **knooppunt grootte** bij het maken van een AKS-cluster of het toevoegen van een knooppunt groep.
 
 
 ## <a name="cluster-upgrades"></a>Cluster upgrades
@@ -81,6 +81,8 @@ Voor connectiviteit en beveiliging met on-premises netwerken kunt u uw AKS-clust
 ### <a name="azure-network-security-groups"></a>Netwerkbeveiligingsgroepen in Azure
 
 Azure gebruikt regels voor netwerk beveiligings groepen om de stroom van verkeer in virtuele netwerken te filteren. Met deze regels worden de bron-en doel-IP-adresbereiken, poorten en protocollen gedefinieerd die toegang tot bronnen toestaan of weigeren. Standaard regels worden gemaakt om TLS-verkeer toe te staan voor de Kubernetes-API-server. Bij het maken van services met load balancers, poort toewijzingen of ingangs routes, wijzigt AKS automatisch de netwerk beveiligings groep voor verkeer dat op de juiste wijze stroomt.
+
+Als u uw eigen subnet voor uw AKS-cluster opgeeft en u de stroom van verkeer wilt wijzigen, moet u de netwerk beveiligings groep op subnetniveau die wordt beheerd door AKS, niet wijzigen. U kunt extra netwerk beveiligings groepen op subnetniveau maken om de verkeers stroom te wijzigen, zolang deze geen invloed hebben op het verkeer dat nodig is voor het beheren van het cluster, zoals load balancer toegang, communicatie met het besturings vlak en de [uitgang][aks-limit-egress-traffic].
 
 ### <a name="kubernetes-network-policy"></a>Kubernetes-netwerk beleid
 
@@ -123,6 +125,7 @@ Raadpleeg de volgende artikelen voor meer informatie over de belangrijkste Kuber
 [aks-concepts-scale]: concepts-scale.md
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-network]: concepts-network.md
+[aks-limit-egress-traffic]: limit-egress-traffic.md
 [cluster-isolation]: operator-best-practices-cluster-isolation.md
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [developer-best-practices-pod-security]:developer-best-practices-pod-security.md

@@ -3,18 +3,18 @@ title: Azure Advisor waarschuwingen maken voor nieuwe aanbevelingen met behulp v
 description: Azure Advisor waarschuwingen voor nieuwe aanbeveling maken
 ms.topic: article
 ms.date: 09/09/2019
-ms.openlocfilehash: 351d1faf0cb049babe1091aaac465ff975ab47cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b3984b82cd5265f4940cd88597ccb29d51e1118
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85568502"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507213"
 ---
 # <a name="create-azure-advisor-alerts-on-new-recommendations-using-the-azure-portal"></a>Maak Azure Advisor waarschuwingen met betrekking tot nieuwe aanbevelingen met behulp van de Azure Portal 
 
 In dit artikel wordt beschreven hoe u een waarschuwing instelt voor nieuwe aanbevelingen van Azure Advisor met behulp van de Azure Portal. 
 
-Wanneer Azure Advisor een nieuwe aanbeveling voor een van uw resources detecteert, wordt een gebeurtenis opgeslagen in het [activiteiten logboek van Azure](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview). U kunt waarschuwingen instellen voor deze gebeurtenissen van Azure Advisor met behulp van een aanbevelings gerichte waarschuwing voor het maken van waarschuwingen. U kunt een abonnement en optioneel een resource groep selecteren om de resources op te geven waarvoor u waarschuwingen wilt ontvangen. 
+Wanneer Azure Advisor een nieuwe aanbeveling voor een van uw resources detecteert, wordt een gebeurtenis opgeslagen in het [activiteiten logboek van Azure](../azure-monitor/platform/platform-logs-overview.md). U kunt waarschuwingen instellen voor deze gebeurtenissen van Azure Advisor met behulp van een aanbevelings gerichte waarschuwing voor het maken van waarschuwingen. U kunt een abonnement en optioneel een resource groep selecteren om de resources op te geven waarvoor u waarschuwingen wilt ontvangen. 
 
 U kunt ook de typen aanbevelingen vaststellen met behulp van de volgende eigenschappen:
 
@@ -57,7 +57,7 @@ Raadpleeg [Actiegroepen maken en beheren](../azure-monitor/platform/action-group
 
     ![Actie groep voor Advisor-waarschuwingen](./media/advisor-alerts/create6.png)
 
-7. Selecteer in de sectie **actie groepen** de optie **bestaande toevoegen** om een actie groep te gebruiken die u al hebt gemaakt of selecteer **nieuwe maken** om een nieuwe [actie groep](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)in te stellen. 
+7. Selecteer in de sectie **actie groepen** de optie **bestaande toevoegen** om een actie groep te gebruiken die u al hebt gemaakt of selecteer **nieuwe maken** om een nieuwe [actie groep](../azure-monitor/platform/action-groups.md)in te stellen. 
 
     ![Advisor-waarschuwing bestaande toevoegen](./media/advisor-alerts/create7.png)
 

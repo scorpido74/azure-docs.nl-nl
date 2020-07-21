@@ -12,11 +12,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
-ms.openlocfilehash: bb32350597059209e5baf01d53b0c59fdc2344f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e1cfe7216c1b37812c482cfacbd5d1c3f155418f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78255222"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507825"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Back-upgids voor SAP HANA op Azure Virtual Machines
 
@@ -24,11 +25,11 @@ ms.locfileid: "78255222"
 
 In de back-upgids voor SAP HANA die op virtuele machines van Azure worden uitgevoerd, worden alleen specifieke onderwerpen van Azure beschreven. Raadpleeg de SAP HANA-documentatie voor algemene SAP HANA back-up van gerelateerde items. U verwacht dat u bekend bent met principe database back-upstrategieen, de redenen en motivaties een geluid en een geldige back-up te maken van de vereisten die uw bedrijf heeft voor de back-upprocedure, Bewaar periode van back-ups en herstel procedure.
 
-SAP HANA wordt officieel ondersteund op verschillende typen virtuele Azure-machines, zoals Azure M-series. Voor een volledige lijst met SAP HANA gecertificeerde Azure-Vm's en HANA-eenheden voor grote instanties, raadpleegt u [gecertificeerde IaaS-platforms zoeken](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). Microsoft Azure biedt een aantal eenheden waarin SAP HANA niet-gevirtualiseerd op fysieke servers wordt uitgevoerd. Deze service wordt [Hana grote instanties](hana-overview-architecture.md)genoemd. Deze hand leiding heeft geen betrekking op back-upprocesën en hulpprogram ma's voor HANA grote instanties. Maar is beperkt tot Azure virtual machines. Lees voor meer informatie over back-up-en herstel processen met HANA grote instanties het artikel [HLI back-up en herstellen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-backup-restore).
+SAP HANA wordt officieel ondersteund op verschillende typen virtuele Azure-machines, zoals Azure M-series. Voor een volledige lijst met SAP HANA gecertificeerde Azure-Vm's en HANA-eenheden voor grote instanties, raadpleegt u [gecertificeerde IaaS-platforms zoeken](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). Microsoft Azure biedt een aantal eenheden waarin SAP HANA niet-gevirtualiseerd op fysieke servers wordt uitgevoerd. Deze service wordt [Hana grote instanties](hana-overview-architecture.md)genoemd. Deze hand leiding heeft geen betrekking op back-upprocesën en hulpprogram ma's voor HANA grote instanties. Maar is beperkt tot Azure virtual machines. Lees voor meer informatie over back-up-en herstel processen met HANA grote instanties het artikel [HLI back-up en herstellen](./hana-backup-restore.md).
 
 De focus van dit artikel is op drie back-upmogelijkheden voor SAP HANA op virtuele machines van Azure:
 
-- HANA-back-up via [Azure backup services](https://docs.microsoft.com/azure/backup/backup-overview) 
+- HANA-back-up via [Azure backup services](../../../backup/backup-overview.md) 
 - HANA-back-up naar het bestands systeem in een virtuele machine van Azure Linux (Zie [SAP HANA Azure Backup op bestands niveau](sap-hana-backup-file-level.md))
 - HANA-back-up op basis van moment opnamen van opslag met behulp van de Azure Storage BLOB snap shot-functie hand matig of Azure Backup Service
 
@@ -36,18 +37,18 @@ De focus van dit artikel is op drie back-upmogelijkheden voor SAP HANA op virtue
 SAP HANA biedt een back-upapi waarmee back-uptools van derden rechtstreeks kunnen worden geïntegreerd met SAP HANA. Producten als Azure Backup-Service of [CommVault](https://azure.microsoft.com/resources/protecting-sap-hana-in-azure/) gebruiken deze eigen interface om SAP Hana-data base of logboek back-ups opnieuw te activeren. 
 
 
-Informatie over hoe u kunt vinden welke SAP-software wordt ondersteund op Azure, vindt u in het artikel [wat SAP-software ondersteunt voor Azure-implementaties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure).
+Informatie over hoe u kunt vinden welke SAP-software wordt ondersteund op Azure, vindt u in het artikel [wat SAP-software ondersteunt voor Azure-implementaties](./sap-supported-product-on-azure.md).
 
 ## <a name="azure-backup-service"></a>Azure Backup-Service
 
 Het eerste scenario dat wordt weer gegeven, is een scenario waarbij Azure Backup service de SAP HANA `backint` -interface gebruikt voor het uitvoeren van een streaming-back-up met vanuit een SAP Hana-data base. Of u gebruikt een meer algemene mogelijkheid van Azure Backup service om een toepassings consistente schijf momentopname te maken en die ene naar de Azure Backup-service te laten overzetten.
 
-Azure Backup integreert en is gecertificeerd als back-upoplossing voor SAP HANA met behulp van de eigen SAP HANA-interface met de naam [backint](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5). Lees voor meer informatie over de oplossing, de mogelijkheden en de Azure-regio's waar deze beschikbaar is, het artikel [support matrix voor het maken van back-ups van SAP Hana-data bases op Azure-vm's](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support). Lees het artikel [over SAP Hana-database back-up in azure vm's](https://docs.microsoft.com/azure/backup/sap-hana-db-about)voor meer informatie en principes over Azure backup service voor Hana. 
+Azure Backup integreert en is gecertificeerd als back-upoplossing voor SAP HANA met behulp van de eigen SAP HANA-interface met de naam [backint](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5). Lees voor meer informatie over de oplossing, de mogelijkheden en de Azure-regio's waar deze beschikbaar is, het artikel [support matrix voor het maken van back-ups van SAP Hana-data bases op Azure-vm's](../../../backup/sap-hana-backup-support-matrix.md#scenario-support). Lees het artikel [over SAP Hana-database back-up in azure vm's](../../../backup/sap-hana-db-about.md)voor meer informatie en principes over Azure backup service voor Hana. 
 
-De tweede mogelijkheid voor het gebruik van Azure Backup service is het maken van een toepassings consistente back-up met behulp van schijf momentopnamen van Azure Premium Storage. Andere HANA-gecertificeerde Azure-opslag, zoals [Azure Ultra Disk](https://docs.microsoft.com/azure/virtual-machines/linux/disks-enable-ultra-ssd) en [Azure NetApp files](https://azure.microsoft.com/services/netapp/) , bieden geen ondersteuning voor dit soort moment opnamen via Azure backup-service. Lees deze artikelen:
+De tweede mogelijkheid voor het gebruik van Azure Backup service is het maken van een toepassings consistente back-up met behulp van schijf momentopnamen van Azure Premium Storage. Andere HANA-gecertificeerde Azure-opslag, zoals [Azure Ultra Disk](../../linux/disks-enable-ultra-ssd.md) en [Azure NetApp files](https://azure.microsoft.com/services/netapp/) , bieden geen ondersteuning voor dit soort moment opnamen via Azure backup-service. Lees deze artikelen:
 
-- [De infrastructuur voor back-ups van virtuele Azure-machines plannen](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction)
-- [Toepassings consistente back-up van virtuele Azure Linux-machines](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent) 
+- [De infrastructuur voor back-ups van virtuele Azure-machines plannen](../../../backup/backup-azure-vms-introduction.md)
+- [Toepassingsconsistente back-up van Azure Linux-VM’s](../../../backup/backup-azure-linux-app-consistent.md) 
 
 deze reeks activiteit komt voor:
 
@@ -103,7 +104,7 @@ Informatie over de consistentie controle van de tabel vindt u ook op de SAP-webs
 
 SAP heeft&#39;t de voor keur geven aan HANA-back-ups versus een moment opname van de opslag. De lijst bevat de voor-en nadelen, waardoor er een kan worden bepaald welke gegevens moeten worden gebruikt, afhankelijk van de situatie en de beschik bare opslag technologie (Zie [uw strategie voor back-up en herstel plannen](https://help.sap.com/saphelp_hanaplatform/helpdata/en/ef/085cd5949c40b788bba8fd3c65743e/content.htm)).
 
-Zorg er in azure voor dat de functie voor moment opnamen van Azure Blob&#39;t bestandssysteem consistentie biedt op meerdere schijven (Zie [voor het gebruik van BLOB-moment opnamen met Power shell](https://blogs.msdn.microsoft.com/cie/2016/05/17/using-blob-snapshots-with-powershell/)). 
+Zorg er in azure voor dat de functie voor moment opnamen van Azure Blob&#39;t bestandssysteem consistentie biedt op meerdere schijven (Zie [voor het gebruik van BLOB-moment opnamen met Power shell](/archive/blogs/cie/using-blob-snapshots-with-powershell)). 
 
 Daarnaast moet één inzicht hebben in de facturerings implicaties bij het werken met Blob-moment opnamen, zoals beschreven in dit artikel: inzicht in de [manier waarop moment opnamen toenemen](/rest/api/storageservices/understanding-how-snapshots-accrue-charges), het hebben&#39;t als duidelijk te maken met behulp van virtuele Azure-schijven.
 

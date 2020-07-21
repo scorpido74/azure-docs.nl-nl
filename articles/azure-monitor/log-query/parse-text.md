@@ -6,14 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/04/2018
-ms.openlocfilehash: d7a37d51c411488231205fd036f9a287f5206ce5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c76cf939959d198d2c28181295a695a65ae46af9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77672443"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505700"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>Tekst gegevens parseren in Azure Monitor logboeken
-Sommige logboek gegevens die worden verzameld door Azure Monitor, bevatten meerdere stukjes informatie in één eigenschap. Het parseren van deze gegevens in meerdere eigenschappen maakt het gemakkelijker om in query's te gebruiken. Een veelvoorkomend voor beeld is een [aangepast logboek](../../log-analytics/log-analytics-data-sources-custom-logs.md) dat een volledige logboek vermelding met meerdere waarden in één eigenschap verzamelt. Door afzonderlijke eigenschappen voor de verschillende waarden te maken, kunt u zoeken en samen voegen.
+Sommige logboek gegevens die worden verzameld door Azure Monitor, bevatten meerdere stukjes informatie in één eigenschap. Het parseren van deze gegevens in meerdere eigenschappen maakt het gemakkelijker om in query's te gebruiken. Een veelvoorkomend voor beeld is een [aangepast logboek](../platform/data-sources-custom-logs.md) dat een volledige logboek vermelding met meerdere waarden in één eigenschap verzamelt. Door afzonderlijke eigenschappen voor de verschillende waarden te maken, kunt u zoeken en samen voegen.
 
 In dit artikel worden verschillende opties beschreven voor het parseren van logboek gegevens in Azure Monitor wanneer de gegevens worden opgenomen en wanneer deze worden opgehaald in een query, waarbij de relatieve voor delen voor elk van elkaar worden vergeleken.
 
@@ -22,7 +23,7 @@ In dit artikel worden verschillende opties beschreven voor het parseren van logb
 U kunt gegevens parseren op opname tijd wanneer de gegevens worden verzameld of op query tijdstip bij het analyseren van de gegevens met een query. Elke strategie heeft unieke voor delen, zoals hieronder wordt beschreven.
 
 ### <a name="parse-data-at-collection-time"></a>Gegevens parseren tijdens verzamelings tijd
-Wanneer u gegevens parseert tijdens de verzamelings tijd, configureert u [aangepaste velden](../../log-analytics/log-analytics-custom-fields.md) die nieuwe eigenschappen in de tabel maken. Query's hoeven geen enige logica voor het parseren van gegevens op te vragen en deze eigenschappen eenvoudigweg als elk ander veld in de tabel te gebruiken.
+Wanneer u gegevens parseert tijdens de verzamelings tijd, configureert u [aangepaste velden](../platform/custom-fields.md) die nieuwe eigenschappen in de tabel maken. Query's hoeven geen enige logica voor het parseren van gegevens op te vragen en deze eigenschappen eenvoudigweg als elk ander veld in de tabel te gebruiken.
 
 Voor delen van deze methode zijn onder andere het volgende:
 

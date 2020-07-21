@@ -7,11 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: e65b2c94b5042f857a6ea5fc61136c572b780764
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7d9912686be8ba6076278f148067575a40f32f8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678508"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510035"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>Geplande onderhouds meldingen verwerken
 
@@ -24,7 +25,7 @@ Van tijd tot tijd voert Azure updates uit om de betrouwbaarheid, prestaties en v
 
 Gepland onderhoud waarvoor opnieuw opstarten is vereist, wordt gepland in golven. Elke golf heeft een ander bereik (regio's).
 
-- Een golf begint met een melding aan klanten. Standaard wordt er een melding verzonden naar de service beheerder en mede beheerders. U kunt meer ontvangers en bericht opties toevoegen, zoals e-mail, SMS en webhooks, met behulp van [waarschuwingen voor activiteiten logboeken](../service-health/alerts-activity-log-service-notifications.md).  
+- Een golf begint met een melding aan klanten. Standaard wordt er een melding verzonden naar de service beheerder en mede beheerders. U kunt meer ontvangers en bericht opties toevoegen, zoals e-mail, SMS en webhooks, met behulp van [waarschuwingen voor activiteiten logboeken](../service-health/alerts-activity-log-service-notifications-portal.md).  
 - Zodra een melding wordt weer gegeven, wordt er een *self-service venster* beschikbaar gemaakt. Tijdens dit venster kunt u een query uitvoeren op de virtuele machines die worden beïnvloed en onderhoud starten op basis van uw eigen plannings behoeften. Het venster voor selfservice Services is doorgaans ongeveer 35 dagen.
 - Na het self-service venster begint een *gepland onderhouds venster* . Op een bepaald moment tijdens dit venster plant Azure en past het vereiste onderhoud toe op uw virtuele machine. 
 
@@ -75,7 +76,7 @@ Het is aan te raden selfservice onderhoud in de volgende gevallen te gebruiken:
 
 **A:** Virtuele machines die zijn geïmplementeerd in een beschikbaarheidsset of virtuele-machine schaal sets hebben het begrip update domeinen (UD). Bij het uitvoeren van onderhoud voldoet Azure aan de UD-beperking en worden virtuele machines van verschillende UD niet opnieuw opgestart (binnen dezelfde beschikbaarheidsset).  Azure wacht nog ten minste 30 minuten voordat de volgende groep virtuele machines wordt verplaatst. 
 
-Zie [Beschik baarheid voor virtuele machines in azure](./linux/availability.md)voor meer informatie over maximale Beschik baarheid.
+Zie [Beschik baarheid voor virtuele machines in azure](availability.md)voor meer informatie over maximale Beschik baarheid.
 
 **V: Hoe kan ik ontvang een melding over gepland onderhoud?**
 
@@ -121,4 +122,3 @@ Zie [Beschik baarheid voor virtuele machines in azure](./linux/availability.md)v
 ## <a name="next-steps"></a>Volgende stappen
 
 U kunt gepland onderhoud verwerken met behulp van de [Azure cli](maintenance-notifications-cli.md), [Azure PowerShell](maintenance-notifications-powershell.md) of [Portal](maintenance-notifications-portal.md).
-

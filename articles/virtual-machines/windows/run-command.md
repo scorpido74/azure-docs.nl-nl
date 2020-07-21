@@ -8,11 +8,12 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: c6fbe66d8fbbb92c7fb668cc565da8446d97ab0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76ff9ff9479351eb3ec2a0e973fe3c44562adf55
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83653614"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508420"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>Power shell-scripts uitvoeren in uw Windows-VM met behulp van de opdracht uitvoeren
 
@@ -22,7 +23,7 @@ De functie voor het uitvoeren van opdrachten maakt gebruik van de virtuele machi
 
 ## <a name="benefits"></a>Voordelen
 
-U kunt op verschillende manieren toegang krijgen tot uw virtuele machines. Met de opdracht uitvoeren kunt u op afstand scripts uitvoeren op uw virtuele machines met behulp van de VM-agent. U gebruikt de opdracht uitvoeren via de Azure Portal, [rest API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)of [Power shell](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) voor Windows-vm's.
+U kunt op verschillende manieren toegang krijgen tot uw virtuele machines. Met de opdracht uitvoeren kunt u op afstand scripts uitvoeren op uw virtuele machines met behulp van de VM-agent. U gebruikt de opdracht uitvoeren via de Azure Portal, [rest API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)of [Power shell](/powershell/module/az.compute/invoke-azvmruncommand) voor Windows-vm's.
 
 Deze mogelijkheid is handig in alle scenario's waarin u een script wilt uitvoeren binnen een virtuele machine. Het is een van de enige manieren om problemen op te lossen en een virtuele machine te herstellen waarvoor geen RDP-of SSH-poort is geopend vanwege een onjuiste netwerk-of administratieve gebruikers configuratie.
 
@@ -93,7 +94,7 @@ Nadat u de opdracht hebt gekozen, selecteert u **uitvoeren** om het script uit t
 
 ## <a name="powershell"></a>PowerShell
 
-In het volgende voor beeld wordt de cmdlet [invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) gebruikt om een Power shell-script uit te voeren op een virtuele machine van Azure. De cmdlet verwacht dat het script waarnaar wordt verwezen in de `-ScriptPath` para meter, lokaal is waar de cmdlet wordt uitgevoerd.
+In het volgende voor beeld wordt de cmdlet [invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand) gebruikt om een Power shell-script uit te voeren op een virtuele machine van Azure. De cmdlet verwacht dat het script waarnaar wordt verwezen in de `-ScriptPath` para meter, lokaal is waar de cmdlet wordt uitgevoerd.
 
 ```azurepowershell-interactive
 Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' -CommandId 'RunPowerShellScript' -ScriptPath '<pathToScript>' -Parameter @{"arg1" = "var1";"arg2" = "var2"}

@@ -5,11 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: cshoe
-ms.openlocfilehash: fe5efd2bf4c235688aad90ae37b54268d290540c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93a12d40e876293eb587ffba865a1d3b1f5f4983
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676128"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506023"
 ---
 # <a name="azure-functions-reliable-event-processing"></a>Azure Functions betrouw bare gebeurtenis verwerking
 
@@ -69,7 +70,7 @@ Door bibliotheken voor fout afhandeling te maken met uw functies kunt u het basi
 > [!NOTE]
 > [Polly](https://github.com/App-vNext/Polly) is een voor beeld van een bibliotheek met tolerantie en tijdelijke afhandeling voor C#-toepassingen.
 
-Wanneer u aan de slag gaat met vooraf gewerkte C#-klassen Bibliotheken, kunt u met [uitzonderings filters](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-catch) code uitvoeren wanneer er een onverwerkte uitzonde ring optreedt.
+Wanneer u aan de slag gaat met vooraf gewerkte C#-klassen Bibliotheken, kunt u met [uitzonderings filters](/dotnet/csharp/language-reference/keywords/try-catch) code uitvoeren wanneer er een onverwerkte uitzonde ring optreedt.
 
 Voor beelden die laten zien hoe u uitzonderings filters kunt gebruiken, zijn beschikbaar in de [Azure WEBJOBS SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) -opslag plaats.
 

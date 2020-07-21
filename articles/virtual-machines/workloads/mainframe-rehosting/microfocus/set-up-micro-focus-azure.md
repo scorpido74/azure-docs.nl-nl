@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: 7647283444ba41a5d629ba8a26fc711a699cd78d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc61d842550f82dc8b408ed5cd421af65d0e2be6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85561143"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507893"
 ---
 # <a name="install-micro-focus-enterprise-server-50-and-enterprise-developer-50-on-azure"></a>Micro Focus Enter prise Server 5,0 en Enter prise Developer 5,0 op Azure installeren
 
@@ -42,7 +42,7 @@ Bekijk de volgende vereisten voordat u aan de slag gaat:
     > [!Note]
     > Er zijn enkele opties voor het beheren van de toegang tot uw Vm's:
     > -   Een best practice is het instellen van [Azure Bastion](https://azure.microsoft.com/services/azure-bastion/).
-    > -   Een [VPN-tunnel (virtueel particulier netwerk) voor site-naar-site](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-tutorial-vpnconnection-powershell) .
+    > -   Een [VPN-tunnel (virtueel particulier netwerk) voor site-naar-site](../../../../vpn-gateway/vpn-gateway-tutorial-vpnconnection-powershell.md) .
     > -   Een JumpBox-VM.
 
 ## <a name="install-enterprise-server"></a>Enterprise-server installeren
@@ -125,8 +125,8 @@ Als Enter prise Developer wordt geladen, is uw implementatie van een micro focus
 
 **Volgende stappen**
 
--   [De BankDemo-toepassing instellen](https://docs.microsoft.com/azure/virtual-machines/workloads/mainframe-rehosting/microfocus/demo)
+-   [De BankDemo-toepassing instellen](./demo.md)
 
--   [Enter prise server uitvoeren in docker-containers](https://docs.microsoft.com/azure/virtual-machines/workloads/mainframe-rehosting/microfocus/run-enterprise-server-container)
+-   [Enter prise server uitvoeren in docker-containers](./run-enterprise-server-container.md)
 
--   [Migratie van mainframetoepassingen](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/application-strategies)
+-   [Migratie van mainframetoepassingen](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/application-strategies)

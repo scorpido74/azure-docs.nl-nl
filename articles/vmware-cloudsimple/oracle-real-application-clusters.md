@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f657e18d7185d6b3c63ac8f1424da9d36d4189e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2cc2f954f4255c00b7c3549ab5d33d71b240fb70
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82793037"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507665"
 ---
 # <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>Optimaliseer uw CloudSimple-Privécloud voor het installeren van Oracle RAC
 
@@ -43,16 +44,16 @@ Virtuele Oracle RAC-machines hebben meerdere schijven die worden gebruikt voor e
 
 In het volgende voor beeld worden de schijven gebruikt die in de onderstaande tabel zijn gedefinieerd.
 
-| Schijf                                      | Functie                                       | Gedeelde schijf |
+| Schijf                                      | Doel                                       | Gedeelde schijf |
 |-------------------------------------------|-----------------------------------------------|-------------|
-| OS                                        | Besturingssysteemschijf                         | No          |
-| YRASTER                                      | Installatie locatie voor Oracle grid software     | No          |
-| ENDDATABASE                                  | Installatie locatie voor Oracle data base-software | No          |
-| ORAHOME                                   | Basis locatie voor binaire bestanden van Oracle-data base    | No          |
-| BESTAND1, BESTAND2, DATA3, DATA4                | Schijf waarop Oracle-database bestanden worden opgeslagen   | Yes         |
-| REDO1, REDO2, REDO3, REDO4, REDO5, REDO6  | Logboek schijven opnieuw uitvoeren                                | Yes         |
-| OCR1, OCR2, OCR3, OCR4, OCR5              | Stem schijven                                  | Yes         |
-| FRA1, FRA2                                | Schijven voor snel herstel gebied                      | Yes         |
+| OS                                        | Besturingssysteemschijf                         | Nee          |
+| YRASTER                                      | Installatie locatie voor Oracle grid software     | Nee          |
+| ENDDATABASE                                  | Installatie locatie voor Oracle data base-software | Nee          |
+| ORAHOME                                   | Basis locatie voor binaire bestanden van Oracle-data base    | Nee          |
+| BESTAND1, BESTAND2, DATA3, DATA4                | Schijf waarop Oracle-database bestanden worden opgeslagen   | Ja         |
+| REDO1, REDO2, REDO3, REDO4, REDO5, REDO6  | Logboek schijven opnieuw uitvoeren                                | Ja         |
+| OCR1, OCR2, OCR3, OCR4, OCR5              | Stem schijven                                  | Ja         |
+| FRA1, FRA2                                | Schijven voor snel herstel gebied                      | Ja         |
 
 ![Schijf configuratie van de virtuele Oracle-machine](media/oracle-vmdk.png)
 
@@ -168,7 +169,7 @@ Ga als volgt te werk om een vSphere-cluster te implementeren in uw Privécloud:
 
 met vSAN-beleid worden de fouten gedefinieerd die moeten worden toegestaan en schijf striping voor de gegevens die op de VM-schijven zijn opgeslagen.  Het gemaakte opslag beleid moet worden toegepast op de VM-schijven tijdens het maken van de VM.
 
-1. [Meld u aan bij de vSphere-client](https://docs.microsoft.com/azure/vmware-cloudsimple/vcenter-access) van uw privécloud.
+1. [Meld u aan bij de vSphere-client](./vcenter-access.md) van uw privécloud.
 2. Selecteer in het bovenste menu **beleids regels en profielen**.
 3. Selecteer in het menu links **VM-opslag beleid** en selecteer vervolgens **een VM-opslag beleid maken**.
 4. Voer een duidelijke naam in voor het beleid en klik op **volgende**.
@@ -258,7 +259,7 @@ Regels voor affiniteit tussen de virtuele machine en de host zorgen ervoor dat d
 13. Selecteer de hostgroep die u hebt gemaakt.
 14. Klik op **OK** om de regel te maken.
 
-## <a name="references"></a>Referenties
+## <a name="references"></a>Naslaginformatie
 
 * [Over vSAN-beleid](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.virtualsan.doc/GUID-08911FD3-2462-4C1C-AE81-0D4DBC8F7990.html)
 * [VMware multi-Writer-kenmerk voor gedeelde Vmdk's](https://docs.vmware.com/en/VMware-Cloud-on-AWS/solutions/VMware-Cloud-on-AWS.df6735f8b729fee463802083d46fdc75/GUID-A7642A82B3D6C5F7806DB40A3F2766D9.html)

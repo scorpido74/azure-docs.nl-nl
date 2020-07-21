@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b73b8418b202563ca7c4a73181b1b1b404db6ee2
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: e56c76583f601c2e13ab4a35c1fef2996d2e3e67
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170391"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506227"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>De implementatie van resources voor uw functie-app in Azure Functions automatiseren
 
@@ -39,7 +39,7 @@ Een Azure Functions-implementatie bestaat meestal uit de volgende bronnen:
 > Hoewel dit niet vereist is, wordt het ten zeerste aanbevolen om Application Insights voor uw app te configureren.
 
 <a name="storage"></a>
-### <a name="storage-account"></a>Opslagaccount
+### <a name="storage-account"></a>Storage-account
 
 Een Azure-opslag account is vereist voor een functie-app. U hebt een algemeen doel account nodig dat blobs, tabellen, wacht rijen en bestanden ondersteunt. Zie [Azure functions vereisten voor opslag accounts](storage-considerations.md#storage-account-requirements)voor meer informatie.
 
@@ -309,7 +309,7 @@ Het Premium-abonnement biedt dezelfde schaal als het verbruiks abonnement, maar 
 
 ### <a name="create-a-premium-plan"></a>Een Premium-abonnement maken
 
-Een Premium-abonnement is een speciaal type resource ' server farm '. U kunt dit opgeven met behulp van ofwel `EP1` `EP2` of `EP3` voor de `Name` waarde van de eigenschap in het `sku` [object beschrijving](https://docs.microsoft.com/azure/templates/microsoft.web/2018-02-01/serverfarms#skudescription-object).
+Een Premium-abonnement is een speciaal type resource ' server farm '. U kunt dit opgeven met behulp van ofwel `EP1` `EP2` of `EP3` voor de `Name` waarde van de eigenschap in het `sku` [object beschrijving](/azure/templates/microsoft.web/2018-02-01/serverfarms#skudescription-object).
 
 ```json
 {
@@ -516,7 +516,7 @@ Linux-apps moeten ook een `linuxFxVersion` eigenschap bevatten onder `siteConfig
 }
 ```
 
-Als u [een aangepaste container installatie kopie implementeert](./functions-create-function-linux-custom-image.md), moet u deze opgeven met `linuxFxVersion` en configuratie toevoegen waarmee de installatie kopie kan worden opgehaald, zoals in [Web App for containers](/azure/app-service/containers). Stel ook `WEBSITES_ENABLE_APP_SERVICE_STORAGE` in op `false` , omdat de inhoud van uw app wordt opgegeven in de container zelf:
+Als u [een aangepaste container installatie kopie implementeert](./functions-create-function-linux-custom-image.md), moet u deze opgeven met `linuxFxVersion` en configuratie toevoegen waarmee de installatie kopie kan worden opgehaald, zoals in [Web App for containers](../app-service/containers/index.yml). Stel ook `WEBSITES_ENABLE_APP_SERVICE_STORAGE` in op `false` , omdat de inhoud van uw app wordt opgegeven in de container zelf:
 
 ```json
 {
@@ -649,7 +649,7 @@ U kunt een van de volgende manieren gebruiken om uw sjabloon te implementeren:
 
 * [PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 * [Azure-CLI](../azure-resource-manager/templates/deploy-cli.md)
-* [Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
+* [Azure-portal](../azure-resource-manager/templates/deploy-portal.md)
 * [REST API](../azure-resource-manager/templates/deploy-rest.md)
 
 ### <a name="deploy-to-azure-button"></a>De knop Implementeren in Azure

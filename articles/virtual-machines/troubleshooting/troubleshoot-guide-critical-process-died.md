@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 9e4c4b9c809a626c71b4a7e9235d917b442be160
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c04f3b27c7214dcf821c7698796bfaea399b947d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80373360"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509100"
 ---
 # <a name="windows-stop-error---0x000000ef-critical-process-died"></a>Windows-Stop fout-#0x000000EF kritiek proces is gestorven
 
@@ -27,13 +27,13 @@ Dit artikel bevat stappen voor het oplossen van problemen waarbij een kritiek pr
 
 ## <a name="symptom"></a>Symptoom
 
-Wanneer u [Diagnostische gegevens over opstarten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) gebruikt om de scherm opname van de virtuele machine weer te geven, ziet u dat in de scherm opname de fout *#0x000000EF* wordt weer gegeven met het *kritieke proces*van het bericht.
+Wanneer u [Diagnostische gegevens over opstarten](./boot-diagnostics.md) gebruikt om de scherm opname van de virtuele machine weer te geven, ziet u dat in de scherm opname de fout *#0x000000EF* wordt weer gegeven met het *kritieke proces*van het bericht.
 
 ![' Er is een probleem opgetreden in de PC en opnieuw moet worden opgestart. Er worden alleen fout gegevens verzameld en vervolgens kunt u de computer opnieuw opstarten. (# #% voltooid) Als u meer wilt weten, kunt u later online zoeken naar deze fout: 0x000000EF "](media/troubleshoot-guide-critical-process-died/1.jpg)
 
 ## <a name="cause"></a>Oorzaak
 
-Dit wordt meestal veroorzaakt door een essentieel systeem proces dat niet kan worden opgestart. Meer informatie over kritieke proces problemen vindt u op "[bug check 0xEF: CRITICAL_PROCESS_DIED](https://docs.microsoft.com/windows-hardware/drivers/debugger/bug-check-0xef--critical-process-died)".
+Dit wordt meestal veroorzaakt door een essentieel systeem proces dat niet kan worden opgestart. Meer informatie over kritieke proces problemen vindt u op "[bug check 0xEF: CRITICAL_PROCESS_DIED](/windows-hardware/drivers/debugger/bug-check-0xef--critical-process-died)".
 
 ## <a name="solution"></a>Oplossing
 
@@ -49,7 +49,7 @@ Dit wordt meestal veroorzaakt door een essentieel systeem proces dat niet kan wo
 
 ### <a name="create-and-access-a-repair-vm"></a>Een herstel-VM maken en openen
 
-1. Gebruik [stap 1-3 van de VM-reparatie opdrachten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) om een herstel-VM voor te bereiden.
+1. Gebruik [stap 1-3 van de VM-reparatie opdrachten](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) om een herstel-VM voor te bereiden.
 2. Gebruik Verbinding met extern bureaublad verbinding maken met de herstel-VM.
 
 ### <a name="fix-any-os-corruption"></a>Eventuele beschadiging van het besturings systeem herstellen
@@ -61,7 +61,7 @@ Dit wordt meestal veroorzaakt door een essentieel systeem proces dat niet kan wo
 
    * Waarbij < opstart schijf station > het opstart volume van de herstel-VM is (meestal C:) en < gebroken schijf station > de stationsletter is voor de gekoppelde schijf van de verbroken virtuele machine. Vervang de symbolen groter dan/kleiner dan en de tekst erin, bijvoorbeeld ' < tekst hier > ', met de juiste letter.
 
-3. Gebruik vervolgens [stap 5 van de VM-reparatie opdrachten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) om de virtuele machine opnieuw samen te stellen en te zien of deze wordt opgestart.
+3. Gebruik vervolgens [stap 5 van de VM-reparatie opdrachten](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) om de virtuele machine opnieuw samen te stellen en te zien of deze wordt opgestart.
 4. Als de virtuele machine nog steeds niet wordt opgestart, gaat u verder met het verzamelen van het geheugen dump bestand.
 
 ### <a name="collect-the-memory-dump-file"></a>Het geheugen dump bestand verzamelen
@@ -70,7 +70,7 @@ Als het probleem zich blijft voordoen nadat u SFC hebt uitgevoerd, is analyse va
 
 ### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>De besturingssysteem schijf koppelen aan een nieuwe herstel-VM
 
-1. Gebruik [stap 1-3 van de VM-reparatie opdrachten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) om een nieuwe herstel-VM voor te bereiden.
+1. Gebruik [stap 1-3 van de VM-reparatie opdrachten](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) om een nieuwe herstel-VM voor te bereiden.
 2. Gebruik Verbinding met extern bureaublad verbinding maken met de herstel-VM.
 
 ### <a name="locate-the-dump-file-and-submit-a-support-ticket"></a>Het dump bestand zoeken en een ondersteunings ticket verzenden
@@ -128,4 +128,4 @@ Als er onvoldoende ruimte beschikbaar is op de besturingssysteem schijf, wijzigt
 
 ### <a name="rebuild-the-original-vm"></a>De oorspronkelijke VM opnieuw samen stellen
 
-Gebruik [stap 5 van de opdrachten voor het herstellen van de virtuele machine](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) om de virtuele machine opnieuw samen te stellen.
+Gebruik [stap 5 van de opdrachten voor het herstellen van de virtuele machine](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) om de virtuele machine opnieuw samen te stellen.

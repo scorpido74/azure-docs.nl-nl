@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/10/2019
 ms.author: mimckitt
-ms.openlocfilehash: 6e6a8fddc61e05bc2e354d77c9e56c55e354a45b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3f4846947b18adb1d3f33f1d46482b5c02ee831e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84309829"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509151"
 ---
 # <a name="proactively-ensuring-you-have-access-to-grub-and-sysrq-could-save-you-lots-of-down-time"></a>Proactief garanderen dat u toegang hebt tot GRUB en SYSRQ u veel tijd bespaart
 
@@ -36,11 +37,11 @@ De redenen om een VM-herstel uit te voeren, zijn veel en kunnen worden toegeschr
    - Vervormde sshd-configuratie bestanden
    - Netwerk configuraties
 
- Veel andere scenario's die [hier](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux#common-scenarios-for-accessing-the-serial-console) worden beschreven
+ Veel andere scenario's die [hier](./serial-console-linux.md#common-scenarios-for-accessing-the-serial-console) worden beschreven
 
 Controleer of u toegang hebt tot GRUB en de Seriële console op uw Vm's die in azure zijn geïmplementeerd. 
 
-Als u geen ervaring hebt met de seriële console, raadpleegt u [deze koppeling](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux/).
+Als u geen ervaring hebt met de seriële console, raadpleegt u [deze koppeling](./serial-console-linux.md).
 
 > [!TIP]
 > Zorg ervoor dat u back-ups van bestanden maakt voordat u wijzigingen aanbrengt
@@ -345,7 +346,7 @@ Het menu GRUB moet op het scherm worden weer gegeven voor de geconfigureerde tim
 ## <a name="suse"></a>SuSE
 
 ## <a name="sles-12-sp1"></a>SLES 12 SP1
-Gebruik de YaST-bootloader volgens de officiële [docs](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode#grub-access-in-suse-sles)
+Gebruik de YaST-bootloader volgens de officiële [docs](./serial-console-grub-single-user-mode.md#grub-access-in-suse-sles)
 
 Of Voeg/Wijzig toe aan/etc/default/grub de volgende para meters:
 
@@ -429,7 +430,7 @@ Start de VM opnieuw met
 U moet mogelijk ook toegang hebben tot de virtuele machine in één gebruiker of in de nood herstel modus. Selecteer de kernel die u wilt opstarten of onderbreken met behulp van de pijl toetsen.
 Voer de gewenste modus in door het sleutel woord **Single** of **1** toe te voegen aan de kernel-opstart regel. Op RHEL-systemen kunt u ook **rd. Unlock**toevoegen.
 
-Zie [dit document](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode#general-single-user-mode-access) voor meer informatie over het openen van de modus voor één gebruiker. 
+Zie [dit document](./serial-console-grub-single-user-mode.md#general-single-user-mode-access) voor meer informatie over het openen van de modus voor één gebruiker. 
 
 
 ![single_user_ubuntu](./media/virtual-machines-serial-console/single-user-ubuntu.png)

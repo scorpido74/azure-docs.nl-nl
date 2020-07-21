@@ -7,20 +7,21 @@ ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 50ad9d57b24fab9ee57c2f9caae8f4c39d2681f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a97fd56f1dc3409666ad86e81a7ac74fee076fa1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77669077"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505683"
 ---
 # <a name="create-an-action-group-with-a-resource-manager-template"></a>Een actie groep maken met een resource manager-sjabloon
-In dit artikel wordt beschreven hoe u een [Azure Resource Manager sjabloon](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) gebruikt om actie groepen te configureren. Met behulp van sjablonen kunt u automatisch actie groepen instellen die opnieuw kunnen worden gebruikt in bepaalde typen waarschuwingen. Deze actie groepen zorgen ervoor dat alle juiste partijen worden gewaarschuwd wanneer een waarschuwing wordt geactiveerd.
+In dit artikel wordt beschreven hoe u een [Azure Resource Manager sjabloon](../../azure-resource-manager/templates/template-syntax.md) gebruikt om actie groepen te configureren. Met behulp van sjablonen kunt u automatisch actie groepen instellen die opnieuw kunnen worden gebruikt in bepaalde typen waarschuwingen. Deze actie groepen zorgen ervoor dat alle juiste partijen worden gewaarschuwd wanneer een waarschuwing wordt geactiveerd.
 
 De basis stappen zijn:
 
 1. Maak een sjabloon als een JSON-bestand waarin wordt beschreven hoe u de actie groep maakt.
 
-2. Implementeer de sjabloon met behulp van [een implementatie methode](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy).
+2. Implementeer de sjabloon met behulp van [een implementatie methode](../../azure-resource-manager/templates/deploy-powershell.md).
 
 Eerst beschrijven we hoe u een resource manager-sjabloon maakt voor een actie groep waar de actie definities in de sjabloon worden vastgelegd. Ten tweede beschrijven we hoe u een sjabloon maakt die de informatie over de configuratie van de webhook als invoer parameters gebruikt wanneer de sjabloon wordt geïmplementeerd.
 
@@ -165,4 +166,3 @@ Als u een actie groep wilt maken op basis van een resource manager-sjabloon, maa
 * Meer informatie over [actie groepen](../../azure-monitor/platform/action-groups.md).
 * Meer informatie over [waarschuwingen](alerts-overview.md).
 * Meer informatie over het toevoegen [van waarschuwingen met behulp van een resource manager-sjabloon](../../azure-monitor/platform/alerts-activity-log.md).
-

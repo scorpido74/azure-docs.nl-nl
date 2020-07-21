@@ -9,13 +9,14 @@ ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: cf8d4cd3c70e28a6c70ab9321a8f55271ead754f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3aa4a7db9982d41cf32c1ddc4de6762bf1fdecf4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807499"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508794"
 ---
-# <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Een beheerde installatiekopie van een gegeneraliseerde VM maken in Azure
+# <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Een beheerde installatiekopie maken van een gegeneraliseerde VM in Azure
 
 Een beheerde installatiekopie kan worden gemaakt op basis van een gegeneraliseerde virtuele machine (VM) die als een beheerde schijf of een onbeheerde schijf is opgeslagen in een opslagaccount. De installatiekopie kan vervolgens worden gebruikt om meerdere VM's te maken. Zie [Managed disks-prijzen](https://azure.microsoft.com/pricing/details/managed-disks/)voor meer informatie over hoe beheerde installatie kopieën worden gefactureerd. 
 
@@ -23,9 +24,9 @@ Eén beheerde installatie kopie ondersteunt Maxi maal 20 gelijktijdige implement
 
 ## <a name="generalize-the-windows-vm-using-sysprep"></a>De Windows VM generaliseren met behulp van Sysprep
 
-Sysprep verwijdert al uw persoonlijke account-en beveiligings gegevens en vervolgens wordt de machine voor bereid voor gebruik als installatie kopie. Zie [overzicht van Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)voor meer informatie over Sysprep.
+Sysprep verwijdert al uw persoonlijke account-en beveiligings gegevens en vervolgens wordt de machine voor bereid voor gebruik als installatie kopie. Zie [overzicht van Sysprep](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)voor meer informatie over Sysprep.
 
-Zorg ervoor dat de server functies die op de computer worden uitgevoerd, worden ondersteund door Sysprep. Zie [Sysprep-ondersteuning voor Server rollen](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles) en [niet-ondersteunde scenario's](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview#unsupported-scenarios)voor meer informatie. Sysprep vereist dat de stations volledig worden ontsleuteld voordat ze kunnen worden uitgevoerd. Als u versleuteling op uw virtuele machine hebt ingeschakeld, schakelt u versleuteling uit voordat u Sysprep uitvoert.
+Zorg ervoor dat de server functies die op de computer worden uitgevoerd, worden ondersteund door Sysprep. Zie [Sysprep-ondersteuning voor Server rollen](/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles) en [niet-ondersteunde scenario's](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview#unsupported-scenarios)voor meer informatie. Sysprep vereist dat de stations volledig worden ontsleuteld voordat ze kunnen worden uitgevoerd. Als u versleuteling op uw virtuele machine hebt ingeschakeld, schakelt u versleuteling uit voordat u Sysprep uitvoert.
 
 > [!IMPORTANT]
 > Nadat u Sysprep op een virtuele machine hebt uitgevoerd, wordt die VM beschouwd als *gegeneraliseerd* en kan niet opnieuw worden gestart. Het generaliseringsproces van een VM is onomkeerbaar. Als u de oorspronkelijke VM goed wilt laten functioneren, moet u een [kopie van de virtuele machine](create-vm-specialized.md#option-3-copy-an-existing-azure-vm) maken en de kopie ervan generaliseren. 
@@ -51,7 +52,7 @@ Voer de volgende stappen uit om uw Windows-VM te generaliseren:
 6. Wanneer Sysprep is voltooid, wordt de VM afgesloten. Start de VM niet opnieuw.
 
 > [!TIP]
-> **Optioneel** Gebruik [DISM](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-optimize-image-command-line-options) om uw installatie kopie te optimaliseren en de eerste opstart tijd van uw VM te verlagen.
+> **Optioneel** Gebruik [DISM](/windows-hardware/manufacture/desktop/dism-optimize-image-command-line-options) om uw installatie kopie te optimaliseren en de eerste opstart tijd van uw VM te verlagen.
 >
 > Als u uw installatie kopie wilt optimaliseren, koppelt u uw VHD door erop te dubbel klikken in Windows Verkenner en voert u vervolgens DISM uit met de `/optimize-image` para meter.
 >
@@ -246,4 +247,3 @@ Als u een beheerde installatie kopie wilt maken op basis van een virtuele machin
     
 ## <a name="next-steps"></a>Volgende stappen
 - [Een virtuele machine maken op basis van een beheerde installatie kopie](create-vm-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).    
-

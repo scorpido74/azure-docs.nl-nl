@@ -17,7 +17,7 @@
       expanded: true
       items:
         - name: Visual Studio Code
-          href: /azure/azure-functions/functions-create-first-function-vs-code
+          href: ./functions-create-first-function-vs-code.md
         - name: Visual Studio
           href: functions-create-your-first-function-visual-studio.md
         - name: Opdrachtregel
@@ -177,11 +177,11 @@
                 - name: Azure Portal
                   href: functions-create-first-azure-function.md
                 - name: Opdrachtregel
-                  href: create-cli.md
+                  href: ./functions-create-first-azure-function-azure-cli.md
                 - name: Visual Studio
-                  href: create-visual-studio.md
+                  href: ./functions-create-your-first-function-visual-studio.md
                 - name: Visual Studio Code
-                  href: create-visual-studio-code.md
+                  href: ./functions-create-first-function-vs-code.md
                 - name: Java met behulp van Gradle
                   href: functions-create-first-java-gradle.md
                 - name: Java met behulp van Eclipse
@@ -195,7 +195,7 @@
                 - name: App Service-abonnement voor Linux
                   href: create-function-app-linux-app-service-plan.md
                 - name: Verbruiksabonnement voor Linux
-                  href: functions-create-first-azure-function-azure-cli-linux.md
+                  href: ./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python
                 - name: Azure for Students Starter
                   href: functions-create-student-starter.md
             - name: Azure Cosmos DB-trigger
@@ -211,13 +211,13 @@
             - name: Azure Cosmos DB - portal
               href: functions-integrate-store-unstructured-data-cosmosdb.md
             - name: Opslag - Python
-              href: add-output-binding-storage-queue-python.md
+              href: ./functions-add-output-binding-storage-queue-cli.md?pivots=programming-language-python
             - name: Opslag - portal
               href: functions-integrate-storage-queue-output-binding.md
             - name: Opslag - Visual Studio Code
-              href: add-output-binding-storage-queue-vs-code.md
+              href: ./functions-add-output-binding-storage-queue-vs-code.md
             - name: Opslag - Visual Studio
-              href: add-output-binding-storage-queue-vs.md
+              href: ./functions-add-output-binding-storage-queue-vs.md
             - name: Opslag - Java
               href: functions-add-output-binding-storage-queue-java.md
         - name: Fouten opsporen en testen
@@ -316,7 +316,7 @@
             - name: Azure Cosmos DB - portal
               href: functions-integrate-store-unstructured-data-cosmosdb.md
             - name: Opslag - Python
-              href: functions-add-output-binding-storage-queue-python.md
+              href: ./functions-add-output-binding-storage-queue-cli.md?pivots=programming-language-python
             - name: Opslag - portal
               href: functions-integrate-storage-queue-output-binding.md
             - name: Opslag - Visual Studio Code
@@ -326,9 +326,9 @@
         - name: Verbinding maken met SQL Database
           href: functions-scenario-database-table-cleanup.md
         - name: Verbinding maken met een virtueel netwerk
-          href: functions-create-vnet-old.md
+          href: ./functions-create-vnet.md
         - name: Een Open API 2.0-definitie maken
-          href: functions-api-definition-getting-started.md
+          href: ./functions-openapi-definition.md
         - name: Exporteren naar PowerApps en Microsoft Flow
           href: app-service-export-api-to-powerapps-and-flow.md
         - name: Een beheerde identiteit gebruiken
@@ -354,9 +354,9 @@
         - name: Azure PowerShell
           href: /powershell/module/az.functions
         - name: Java
-          href: 'https://docs.microsoft.com/java/api/overview/azure/functions/runtime?view=azure-java-stable'
+          href: /java/api/overview/azure/functions/runtime?view=azure-java-stable
         - name: Python
-          href: 'https://docs.microsoft.com/python/api/azure-functions/azure.functions?view=azure-python'
+          href: /python/api/azure-functions/azure.functions?view=azure-python
     - name: Naslaginformatie voor app-instellingen
       href: functions-app-settings.md
     - name: Triggers en bindingen
@@ -504,7 +504,7 @@
     - name: Uw vaardigheden ontwikkelen met Microsoft Learn
       href: /learn/browse/?products=azure-functions
     - name: Uitleg bij architectuur
-      href: 'https://docs.microsoft.com/azure/architecture/serverless-quest/serverless-overview'
+      href: /azure/architecture/serverless-quest/serverless-overview
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
     - name: Prijzen
@@ -518,7 +518,7 @@
     - name: Video's
       href: 'https://www.youtube.com/c/AzureFunctions'
     - name: Microsoft Q&A-vragenpagina
-      href: 'https://docs.microsoft.com/answers/topics/azure-functions.html'
+      href: /answers/topics/azure-functions.html
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-functions'
     - name: Twitter

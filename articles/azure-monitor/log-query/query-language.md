@@ -6,14 +6,14 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2019
-ms.openlocfilehash: 6b81aba553fc775821c80631aa83bbb3e8ac63b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1dda2df64dc116a950498aaf581ec39a86db72bb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80631785"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505734"
 ---
-# <a name="azure-monitor-log-queries"></a>Azure Monitor-logboek query's
+# <a name="azure-monitor-log-queries"></a>Query's over Azure Monitor-logboeken
 
 Azure Monitor-logboeken zijn gebaseerd op Azure Data Explorer en Azure Monitor logboek query's gebruiken een versie van dezelfde Kusto-query taal. De [documentatie voor de Kusto-query taal](/azure/kusto/query) bevat alle Details voor de taal en moet uw primaire resource zijn voor het schrijven van Azure monitor-logboek query's. Deze pagina bevat koppelingen naar andere bronnen voor het leren van query's en over verschillen met de Azure Monitor implementatie van de taal.
 
@@ -27,9 +27,9 @@ Azure Monitor-logboeken zijn gebaseerd op Azure Data Explorer en Azure Monitor l
 ## <a name="concepts"></a>Concepten
 
 - Het [analyseren van logboek gegevens in azure monitor](../../azure-monitor/log-query/log-query-overview.md) biedt een beknopt overzicht van logboek query's en beschrijft hoe Azure monitor logboek gegevens zijn gestructureerd.
-- Het [weer geven en analyseren van logboek gegevens in azure monitor](../../azure-monitor/log-query/portals.md) een uitleg van de portals waar u logboek query's maakt en uitvoert.
+- Het [weer geven en analyseren van logboek gegevens in azure monitor](./log-query-overview.md) een uitleg van de portals waar u logboek query's maakt en uitvoert.
 
-## <a name="reference"></a>Naslaginformatie
+## <a name="reference"></a>Verwijzing
 
 - [Naslag informatie over de query taal](/azure/kusto/query) is de volledige taal verwijzing voor de Kusto-query taal.
 - [Azure monitor taal verschillen in de logboek query](data-explorer-difference.md) beschrijft de verschillen tussen versies van de query taal Kusto.

@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: bbd81730ea822381f1d0f0e15011fb4ed0c29e64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efb26260d0e1f59e78c8328de298c3d4d92c19d3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84735911"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509307"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>Grootte van door GPU geoptimaliseerde virtuele machines
 
@@ -31,11 +31,11 @@ Geoptimaliseerde VM-grootten zijn gespecialiseerde virtuele machines die beschik
 
 Als u gebruik wilt maken van de GPU-mogelijkheden van Vm's in de Azure N-serie, moeten de NVIDIA-of AMD GPU-Stuur Programma's zijn geïnstalleerd.
 
-- Voor virtuele machines die worden ondersteund door NVIDIA-Gpu's, [worden de juiste](/azure/virtual-machines/extensions/hpccompute-gpu-windows) NVIDIA-CUDA of raster Stuur Programma's geïnstalleerd. De uitbrei ding installeren of beheren met de Azure Portal of hulpprogram ma's, zoals Azure PowerShell of Azure Resource Manager sjablonen. Zie de [documentatie over NVIDIA GPU-Stuur Programma's](/azure/virtual-machines/extensions/hpccompute-gpu-windows) voor ondersteunde besturings systemen en implementaties tappen. Zie [extensies en functies van virtuele Azure-machines](/azure/virtual-machines/extensions/overview)voor algemene informatie over VM-extensies.
+- Voor virtuele machines die worden ondersteund door NVIDIA-Gpu's, [worden de juiste](./extensions/hpccompute-gpu-windows.md) NVIDIA-CUDA of raster Stuur Programma's geïnstalleerd. De uitbrei ding installeren of beheren met de Azure Portal of hulpprogram ma's, zoals Azure PowerShell of Azure Resource Manager sjablonen. Zie de [documentatie over NVIDIA GPU-Stuur Programma's](./extensions/hpccompute-gpu-windows.md) voor ondersteunde besturings systemen en implementaties tappen. Zie [extensies en functies van virtuele Azure-machines](./extensions/overview.md)voor algemene informatie over VM-extensies.
 
-   U kunt ook de NVIDIA GPU-Stuur Programma's hand matig installeren. Zie [NVIDIA GPU-Stuur Programma's installeren op vm's uit de n-serie waarop Windows wordt uitgevoerd](/azure/virtual-machines/windows/n-series-driver-setup) of [Installeer NVIDIA GPU-Stuur Programma's op vm's met n-serie waarop Linux wordt uitgevoerd](/azure/virtual-machines/linux/n-series-driver-setup) voor ondersteunde besturings systemen, stuur Programma's, installatie en verificaties tappen.
+   U kunt ook de NVIDIA GPU-Stuur Programma's hand matig installeren. Zie [NVIDIA GPU-Stuur Programma's installeren op vm's uit de n-serie waarop Windows wordt uitgevoerd](./windows/n-series-driver-setup.md) of [Installeer NVIDIA GPU-Stuur Programma's op vm's met n-serie waarop Linux wordt uitgevoerd](./linux/n-series-driver-setup.md) voor ondersteunde besturings systemen, stuur Programma's, installatie en verificaties tappen.
 
-- Zie [AMD GPU-Stuur Programma's installeren op vm's met N-serie met Windows](/azure/virtual-machines/windows/n-series-amd-driver-setup) voor ondersteunde besturings systemen, stuur Programma's, installatie en verificaties tappen voor virtuele machines die worden ondersteund door AMD-gpu's.
+- Zie [AMD GPU-Stuur Programma's installeren op vm's met N-serie met Windows](./windows/n-series-amd-driver-setup.md) voor ondersteunde besturings systemen, stuur Programma's, installatie en verificaties tappen voor virtuele machines die worden ondersteund door AMD-gpu's.
 
 ## <a name="deployment-considerations"></a>Overwegingen bij de implementatie
 
@@ -51,11 +51,11 @@ Als u gebruik wilt maken van de GPU-mogelijkheden van Vm's in de Azure N-serie, 
 
 ## <a name="other-sizes"></a>Andere grootten
 
-- [Algemeen doel](sizes-general.md)
+- [Algemeen gebruik](sizes-general.md)
 - [Geoptimaliseerde rekenkracht](sizes-compute.md)
 - [Krachtig rekenvermogen](sizes-hpc.md)
-- [Geoptimaliseerd geheugen](sizes-memory.md)
-- [Geoptimaliseerde opslag](sizes-storage.md)
+- [Geoptimaliseerd voor geheugen](sizes-memory.md)
+- [Geoptimaliseerd voor opslag](sizes-storage.md)
 - [Vorige generaties](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>Volgende stappen

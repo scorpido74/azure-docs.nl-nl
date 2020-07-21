@@ -13,11 +13,12 @@ ms.workload: infrastructure
 ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4db072cf881c936db6721845e7823082388515b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae4a7dc400b347a963e07a8c696e7581e2dcd703
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83117118"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507842"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>SAP HANA (grote instanties) installeren en configureren in azure
 
@@ -41,11 +42,11 @@ Valideer het volgende voordat u begint met de HANA-installatie:
 
 Nadat u de HANA-eenheid voor grote instanties van micro soft hebt ontvangen, valideert u de volgende instellingen en past u deze zo nodig aan.
 
-De **eerste stap** nadat u de Hana grote instantie hebt ontvangen en toegang en connectiviteit tot de instanties hebt ingesteld, is om Azure portal te controleren of de exemplaren worden weer gegeven met de juiste sku's en het besturings systeem. Lees het [besturings element Azure Hana-grote instanties door Azure Portal](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal) voor de stappen die nodig zijn om de controles uit te voeren.
+De **eerste stap** nadat u de Hana grote instantie hebt ontvangen en toegang en connectiviteit tot de instanties hebt ingesteld, is om Azure portal te controleren of de exemplaren worden weer gegeven met de juiste sku's en het besturings systeem. Lees het [besturings element Azure Hana-grote instanties door Azure Portal](./hana-li-portal.md) voor de stappen die nodig zijn om de controles uit te voeren.
 
 De **tweede stap** nadat u de Hana grote instantie hebt ontvangen en toegang en connectiviteit tot de exemplaren hebt ingesteld, is door het besturings systeem van het exemplaar te registreren bij uw OS-provider. Deze stap omvat het registreren van uw SUSE Linux-besturings systeem in een exemplaar van SUSE SMT dat is geïmplementeerd in een virtuele machine in Azure. 
 
-De HANA-eenheid voor grote instanties kan verbinding maken met dit SMT-exemplaar. (Zie voor meer informatie [hoe u een SMT-server instelt voor SuSE Linux](hana-setup-smt.md)). U moet ook uw Red Hat-besturings systeem registreren bij de Red Hat Subscription Manager waarmee u verbinding moet maken. Zie voor meer informatie de opmerkingen in [Wat is SAP Hana op Azure (grote exemplaren)?](https://docs.microsoft.com/azure/virtual-machines/linux/sap-hana-overview-architecture?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+De HANA-eenheid voor grote instanties kan verbinding maken met dit SMT-exemplaar. (Zie voor meer informatie [hoe u een SMT-server instelt voor SuSE Linux](hana-setup-smt.md)). U moet ook uw Red Hat-besturings systeem registreren bij de Red Hat Subscription Manager waarmee u verbinding moet maken. Zie voor meer informatie de opmerkingen in [Wat is SAP Hana op Azure (grote exemplaren)?](./hana-overview-architecture.md?toc=/azure/virtual-machines/linux/toc.json). 
 
 Deze stap is nodig voor het patchen van het besturings systeem, de verantwoordelijkheid van de klant. Voor SUSE vindt u de documentatie voor het installeren en configureren van SMT op deze pagina over [SMT-installatie](https://www.suse.com/documentation/sles-12/book_smt/data/smt_installation.html).
 
@@ -126,14 +127,14 @@ Als gevolg hiervan moet u een afzonderlijke tijd server instellen die kan worden
 ## <a name="networking"></a>Netwerken
 We gaan ervan uit dat u de aanbevelingen bij het ontwerpen van uw virtuele Azure-netwerken hebt gevolgd en dat deze virtuele netwerken worden verbonden met de HANA grote instanties, zoals beschreven in de volgende documenten:
 
-- [Overzicht en architectuur van SAP HANA (grote instanties) op Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
+- [Overzicht en architectuur van SAP HANA (grote instanties) op Azure](./hana-overview-architecture.md)
 - [Infra structuur en connectiviteit van SAP HANA (grote instanties) op Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-Er zijn enkele details over de netwerken van de afzonderlijke eenheden. Elke HANA grote instantie-eenheid wordt geleverd met twee of drie IP-adressen die zijn toegewezen aan twee of drie NIC-poorten. In HANA scale-out configuraties en het HANA-systeem replicatie scenario worden drie IP-adressen gebruikt. Een van de IP-adressen die zijn toegewezen aan de NIC van de eenheid, bevindt zich buiten de IP-adres groep van de server die wordt beschreven in [SAP Hana (grote exemplaren) overzicht en architectuur op Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).
+Er zijn enkele details over de netwerken van de afzonderlijke eenheden. Elke HANA grote instantie-eenheid wordt geleverd met twee of drie IP-adressen die zijn toegewezen aan twee of drie NIC-poorten. In HANA scale-out configuraties en het HANA-systeem replicatie scenario worden drie IP-adressen gebruikt. Een van de IP-adressen die zijn toegewezen aan de NIC van de eenheid, bevindt zich buiten de IP-adres groep van de server die wordt beschreven in [SAP Hana (grote exemplaren) overzicht en architectuur op Azure](./hana-overview-architecture.md).
 
 Zie voor meer informatie over Ethernet-Details voor uw architectuur de door [HLI ondersteunde scenario's](hana-supported-scenario.md).
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Opslag
 
 De opslag indeling voor SAP HANA op Azure (grote instanties) wordt geconfigureerd door SAP HANA op Azure `service management` via door SAP aanbevolen richt lijnen. Deze richt lijnen zijn gedocumenteerd in het Witboek [SAP Hana Storage-vereisten](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) . 
 
@@ -264,7 +265,3 @@ Raadpleeg de door [HLI ondersteunde scenario's](hana-supported-scenario.md) voor
 
 
  
-
-
-
-

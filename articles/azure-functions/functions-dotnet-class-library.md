@@ -3,12 +3,12 @@ title: Naslaginformatie over Azure Functions C# voor ontwikkelaars
 description: Meer informatie over het ontwikkelen van Azure Functions met C#.
 ms.topic: conceptual
 ms.date: 09/12/2018
-ms.openlocfilehash: 038c1db2d4bb4d8bd80801d36cf5feec1905bbc1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 9ecc2dad8d1d520b44972022d47c312f495d5c38
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254364"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506506"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Naslaginformatie over Azure Functions C# voor ontwikkelaars
 
@@ -202,6 +202,28 @@ Als u de basis Hulpprogramma's installeert met behulp van NPM, is dit niet van i
 [3/1/2018 9:59:53 AM] Starting Host (HostId=contoso2-1518597420, Version=2.0.11353.0, ProcessId=22020, Debug=False, Attempt=0, FunctionsExtensionVersion=)
 ```
 
+## <a name="readytorun"></a>ReadyToRun
+
+U kunt de functie-app compileren als [binaire ReadyToRun](/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images). ReadyToRun is een vorm van een vooraf te compileren compilatie waarmee de opstart prestaties kunnen worden verbeterd om de impact van [koude-start](functions-scale.md#cold-start) bij het uitvoeren van een [verbruiks abonnement](functions-scale.md#consumption-plan)te verminderen.
+
+ReadyToRun is beschikbaar in .NET 3,0 en vereist [versie 3,0 van de Azure functions runtime](functions-versions.md).
+
+Als u uw project wilt compileren als ReadyToRun, werkt u het project bestand bij door de elementen en toe te voegen `<PublishReadyToRun>` `<RuntimeIdentifier>` . Hier volgt de configuratie voor het publiceren naar een Windows 32-bits functie-app.
+
+```xml
+<PropertyGroup>
+  <TargetFramework>netcoreapp3.1</TargetFramework>
+  <AzureFunctionsVersion>v3</AzureFunctionsVersion>
+  <PublishReadyToRun>true</PublishReadyToRun>
+  <RuntimeIdentifier>win-x86</RuntimeIdentifier>
+</PropertyGroup>
+```
+
+> [!IMPORTANT]
+> ReadyToRun biedt momenteel geen ondersteuning voor cross-compilatie. U moet uw app bouwen op hetzelfde platform als het implementatie doel. Let ook op de ' Bitness ' die is geconfigureerd in uw functie-app. Als uw functie-app in azure bijvoorbeeld Windows 64-bits is, moet u uw app met `win-x64` als [runtime-id](/dotnet/core/rid-catalog)compileren in Windows.
+
+U kunt uw app ook bouwen met ReadyToRun vanaf de opdracht regel. Zie de optie in voor meer informatie `-p:PublishReadyToRun=true` [`dotnet publish`](/dotnet/core/tools/dotnet-publish) .
+
 ## <a name="supported-types-for-bindings"></a>Ondersteunde typen voor bindingen
 
 Elke binding heeft zijn eigen ondersteunde typen. een BLOB-trigger kenmerk kan bijvoorbeeld worden toegepast op een teken reeks parameter, een POCO-para meter, een `CloudBlockBlob` para meter of een of meer andere ondersteunde typen. Het [referentie-artikel voor bindingen voor BLOB-bindingen](functions-bindings-storage-blob-trigger.md#usage) bevat een lijst met alle ondersteunde parameter typen. Zie voor meer informatie [Triggers en bindingen](functions-triggers-bindings.md) en de [verwijzings documenten voor bindingen voor elk bindings type](functions-triggers-bindings.md#next-steps).
@@ -238,7 +260,7 @@ public static class ICollectorExample
 
 ## <a name="logging"></a>Logboekregistratie
 
-Als u de uitvoer wilt registreren in de streaming-Logboeken in C#, neemt u een argument van het type [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger)op. U wordt aangeraden deze naam `log` te noemen, zoals in het volgende voor beeld:  
+Als u de uitvoer wilt registreren in de streaming-Logboeken in C#, neemt u een argument van het type [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger)op. U wordt aangeraden deze naam `log` te noemen, zoals in het volgende voor beeld:  
 
 ```csharp
 public static class SimpleExample
@@ -257,7 +279,7 @@ Vermijd het gebruik `Console.Write` van in azure functions. Zie [Logboeken schri
 
 ## <a name="async"></a>Async
 
-Als u een functie [asynchroon](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)wilt maken, gebruikt u het `async` tref woord en retourneert u een `Task` object.
+Als u een functie [asynchroon](/dotnet/csharp/programming-guide/concepts/async/)wilt maken, gebruikt u het `async` tref woord en retourneert u een `Task` object.
 
 ```csharp
 public static class AsyncExample
@@ -330,7 +352,7 @@ public static class EnvironmentVariablesExample
 
 App-instellingen kunnen worden gelezen van omgevings variabelen bij het lokaal ontwikkelen en wanneer ze worden uitgevoerd in Azure. Wanneer u lokaal ontwikkelt, worden de app-instellingen opgehaald uit de `Values` verzameling in de *local.settings.jsvoor* het bestand. In beide omgevingen, lokaal en Azure, wordt `GetEnvironmentVariable("<app setting name>")` de waarde van de app-instelling met de naam opgehaald. Als u bijvoorbeeld lokaal uitvoert, wordt ' mijn site naam ' geretourneerd als uw *local.settings.jsin* het bestand bevat `{ "Values": { "WEBSITE_SITE_NAME": "My Site Name" } }` .
 
-De eigenschap [System.Configuration.ConfigurationManager. AppSettings](https://docs.microsoft.com/dotnet/api/system.configuration.configurationmanager.appsettings) is een alternatieve API voor het ophalen van waarden voor app-instellingen, maar we raden u aan om te gebruiken `GetEnvironmentVariable` zoals hier wordt weer gegeven.
+De eigenschap [System.Configuration.ConfigurationManager. AppSettings](/dotnet/api/system.configuration.configurationmanager.appsettings) is een alternatieve API voor het ophalen van waarden voor app-instellingen, maar we raden u aan om te gebruiken `GetEnvironmentVariable` zoals hier wordt weer gegeven.
 
 ## <a name="binding-at-runtime"></a>Binding tijdens runtime
 

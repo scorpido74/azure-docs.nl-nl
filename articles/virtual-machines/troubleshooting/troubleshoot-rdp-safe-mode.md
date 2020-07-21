@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: f1ffd26a243d15f7ee6e06d6c52406a16327b4a0
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: d424cccc0a50198f3ca8c6c040afb87f44282d47
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086769"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508896"
 ---
 #  <a name="cannot-rdp-to-a-vm-because-the-vm-boots-into-safe-mode"></a>Kan geen RDP-verbinding met een virtuele machine tot stand brengen omdat de VM wordt opgestart in de veilige modus
 
@@ -79,7 +79,7 @@ U kunt dit probleem oplossen door seriële controle te gebruiken om de virtuele 
 
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>De besturingssysteem schijf koppelen aan een herstel-VM
 
-1. [Koppel de besturingssysteem schijf aan een herstel-VM](../windows/troubleshoot-recovery-disks-portal.md).
+1. [Koppel de besturingssysteem schijf aan een herstel-VM](./troubleshoot-recovery-disks-portal-windows.md).
 2. Start een Extern bureaublad verbinding met de virtuele machine voor herstel.
 3. Zorg ervoor dat de schijf is gemarkeerd als **online** in de schijf beheer-console. Noteer de stationsletter die is toegewezen aan de gekoppelde besturingssysteem schijf.
 
@@ -143,4 +143,4 @@ Voer het volgende script uit om dump logboek en seriële console in te scha kele
     bcdedit /store F:\boot\bcd /enum
     ```
 
-5. [Ontkoppel de besturingssysteem schijf en maak de virtuele machine opnieuw](../windows/troubleshoot-recovery-disks-portal.md). Controleer vervolgens of het probleem is opgelost.
+5. [Ontkoppel de besturingssysteem schijf en maak de virtuele machine opnieuw](./troubleshoot-recovery-disks-portal-windows.md). Controleer vervolgens of het probleem is opgelost.

@@ -5,19 +5,19 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 3f16f2ef077a1fc3c82075aaf7b7685f941d0a31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6810ba76379e78d3cde4f3cd341d501be3725257
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82559591"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506329"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Mobile Apps bindingen voor Azure Functions 
 
 > [!NOTE]
 > Azure Mobile Apps-bindingen zijn alleen beschikbaar voor Azure Functions 1. x. Ze worden niet ondersteund in Azure Functions 2. x en hoger.
 
-In dit artikel wordt uitgelegd hoe u kunt werken met [Azure Mobile apps](../app-service-mobile/app-service-mobile-value-prop.md) -bindingen in azure functions. Azure Functions ondersteunt invoer-en uitvoer bindingen voor Mobile Apps.
+In dit artikel wordt uitgelegd hoe u kunt werken met [Azure Mobile apps](/previous-versions/azure/app-service-mobile/app-service-mobile-value-prop) -bindingen in azure functions. Azure Functions ondersteunt invoer-en uitvoer bindingen voor Mobile Apps.
 
 Met de Mobile Apps bindingen kunt u gegevens tabellen in mobiele apps lezen en bijwerken.
 

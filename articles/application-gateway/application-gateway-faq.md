@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 578d674a197936c6222d4520893fdb1afa00161e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8db47cd94f508803964398f19353e79f3d93d92a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84981990"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506567"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Veelgestelde vragen over Application Gateway
 
@@ -166,7 +166,7 @@ Ja. U kunt de verbinding verbreken instellen om leden binnen een back-end-groep 
 
 Ja.
 
-## <a name="configuration"></a>Configuratie
+## <a name="configuration"></a>Configuration
 
 ### <a name="is-application-gateway-always-deployed-in-a-virtual-network"></a>Wordt Application Gateway altijd geïmplementeerd in een virtueel netwerk?
 
@@ -336,6 +336,58 @@ Voor meerdere op een domein gebaseerde (op een host gebaseerde) route ring kunt 
 ### <a name="can-i-use-special-characters-in-my-pfx-file-password"></a>Kan ik speciale tekens in het wacht woord voor het pfx-bestand gebruiken?
 
 Nee, gebruik alleen alfanumerieke tekens in het wacht woord voor het pfx-bestand.
+
+### <a name="my-ev-certificate-is-issued-by-digicert-and-my-intermediate-certificate-has-been-revoked-how-do-i-renew-my-certificate-on-application-gateway"></a>Mijn EV-certificaat wordt uitgegeven door DigiCert en mijn tussenliggende certificaat is ingetrokken. Hoe kan ik mijn certificaat op Application Gateway vernieuwen?
+
+De browser van de certificerings instantie (CA) meldt recent rapporten die zijn uitgegeven door leveranciers van de certificerings instantie die door onze klanten, micro soft en de grotere technologie worden gebruikt en die niet in overeenstemming zijn met de industrie normen voor openbaar vertrouwde certificerings instanties.De rapporten met betrekking tot de niet-compatibele Ca's vindt u hier:  
+
+* [Bug 1649951](https://bugzilla.mozilla.org/show_bug.cgi?id=1649951)
+* [Bug 1650910](https://bugzilla.mozilla.org/show_bug.cgi?id=1650910)
+
+Conform de nalevings vereisten van de branche begon de leveranciers van de certificerings instantie niet-compatibele certificerings instanties aan te roepen en certificaten te verlenen die voldoen aan het beleid.Micro soft werkt nauw samen met deze leveranciers om de potentiële impact op Azure-Services te minimaliseren, **maar uw zelf verleende certificaten of certificaten die worden gebruikt in de scenario's ' uw eigen certificaat gebruiken ' (BYOC) zijn nog steeds kwetsbaar voor onverwacht gebruik**.
+
+Als u wilt controleren of de certificaten die door uw toepassing worden gebruikt, zijn ingetrokken, geeft u de [aankondiging van de DigiCert](https://knowledge.digicert.com/alerts/DigiCert-ICA-Replacement) en de [intrekkings tracering](https://misissued.com/#revoked)voor het certificaat op. Als uw certificaten zijn ingetrokken of worden ingetrokken, moet u nieuwe certificaten aanvragen bij de CA-leverancier die in uw toepassingen wordt gebruikt. Als u wilt voor komen dat de beschik baarheid van uw toepassing wordt onderbroken omdat de certificaten onverwacht zijn ingetrokken, of als u een ingetrokken certificaat wilt bijwerken, raadpleegt u de Azure updates post voor herstel koppelingen van verschillende Azure-Services die ondersteuning bieden voor BYOC:https://azure.microsoft.com/updates/certificateauthorityrevocation/
+
+Zie hieronder voor Application Gateway specifieke informatie.
+
+Als u een certificaat gebruikt dat is uitgegeven door een van de ingetrokken ICAs, kan de beschik baarheid van uw toepassing worden onderbroken en afhankelijk van uw toepassing, kunnen er diverse fout berichten worden weer gegeven, inclusief, maar niet beperkt tot: 
+
+1.  Ongeldig certificaat/ingetrokken certificaat
+2.  Time-out bij verbinding
+3.  HTTP 502
+
+U moet de volgende acties uitvoeren om te voor komen dat uw toepassing wordt onderbroken wegens dit probleem, of om een ingetrokken certificerings instantie opnieuw te verlenen: 
+
+1.  Neem contact op met uw certificaat provider voor het opnieuw uitgeven van uw certificaten
+2.  Nadat het opnieuw is uitgegeven, werkt u uw certificaten op de Azure-toepassing gateway-WAF bij met de volledige [vertrouwens keten](https://docs.microsoft.com/windows/win32/seccrypto/certificate-chains) (Leaf, tussenliggend, basis certificaat). Voer de onderstaande stappen uit om de certificaten bij te werken, op basis van waar u uw certificaat gebruikt, hetzij op de listener of de HTTP-instellingen van de Application Gateway, en Raadpleeg de documentatie koppelingen die worden vermeld voor meer informatie.
+3.  Werk uw back-end-toepassings servers bij om het opnieuw uitgegeven certificaat te gebruiken. Afhankelijk van de back-endserver die u gebruikt, kunnen de stappen voor het bijwerken van het certificaat verschillen. Raadpleeg de documentatie van uw leverancier.
+
+Het certificaat in de listener bijwerken:
+
+1.  Open uw Application Gateway resource in het [Azure Portal](https://portal.azure.com/)
+2.  Open de instellingen van de listener die zijn gekoppeld aan uw certificaat
+3.  Klik op het geselecteerde certificaat vernieuwen of bewerken
+4.  Upload uw nieuwe PFX-certificaat met het wacht woord en klik op opslaan
+5.  Ga naar de website en controleer of de site werkt zoals verwacht. Raadpleeg [hier](https://docs.microsoft.com/azure/application-gateway/renew-certificates)de documentatie voor meer informatie.
+
+Als u naar certificaten van Azure-sleutel kluis in uw Application Gateway-listener verwijst, raden we u aan de volgende stappen voor een snelle wijziging aan te brengen:
+
+1.  Ga in het [Azure Portal](https://portal.azure.com/)naar de instellingen van de Azure-sleutel kluis die is gekoppeld aan de Application Gateway
+2.  Het opnieuw verleende certificaat in uw archief toevoegen/importeren. Raadpleeg hier de documentatie voor meer informatie over hoe u [Dit](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-portal) kunt doen.
+3.  Zodra het certificaat is geïmporteerd, gaat u naar de instellingen van uw Application Gateway-listener en klikt u onder ' Kies een certificaat van Key Vault ' op de vervolg keuzelijst certificaat en kiest u het onlangs toegevoegde certificaat
+4.  Klik op opslaan voor meer informatie over het beëindigen van TLS op Application Gateway met Key Vault certificaten. Raadpleeg [hier](https://docs.microsoft.com/azure/application-gateway/key-vault-certs)de documentatie.
+
+
+Het certificaat in uw HTTP-instellingen bijwerken:
+
+Als u v1 SKU van de Application Gateway/WAF-service gebruikt, moet u het nieuwe certificaat uploaden als uw back-end-verificatie certificaat.
+1.  Open uw Application Gateway resource in het [Azure Portal](https://portal.azure.com/)
+2.  De HTTP-instellingen openen die aan uw certificaat zijn gekoppeld
+3.  Klik op certificaat toevoegen en upload het opnieuw uitgegeven certificaat en klik op opslaan.
+4.  U kunt het oude certificaat later verwijderen door te klikken op de '... ' op de knop opties naast het oude certificaat en selecteer verwijderen en klik op opslaan.
+Raadpleeg [de documentatie voor](https://docs.microsoft.com/azure/application-gateway/end-to-end-ssl-portal#add-authenticationtrusted-root-certificates-of-back-end-servers)meer informatie.
+
+Als u de v2-SKU van de Application Gateway/WAF-service gebruikt, hoeft u het nieuwe certificaat niet te uploaden in de HTTP-instellingen sinds v2 SKU gebruikmaakt van ' vertrouwde basis certificaten ' en hoeft u hier geen actie te ondernemen.
 
 ## <a name="configuration---ingress-controller-for-aks"></a>Configuratie-ingangs controller voor AKS
 

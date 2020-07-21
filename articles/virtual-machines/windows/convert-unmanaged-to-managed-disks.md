@@ -7,11 +7,12 @@ ms.subservice: disks
 ms.topic: how-to
 ms.date: 07/12/2018
 ms.author: rogarana
-ms.openlocfilehash: 6173f2f60f5dd0b2b06c415bbf55ed31bacbe8b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b5d2e82b439454ff33a263af7710fe79f246893
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84658190"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508607"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Een virtuele Windows-machine van niet-beheerde schijven converteren naar beheerde schijven
 
@@ -34,7 +35,7 @@ Als u bestaande virtuele Windows-machines (Vm's) hebt die gebruikmaken van niet-
 ## <a name="convert-single-instance-vms"></a>Vm's met één exemplaar converteren
 In deze sectie wordt beschreven hoe u virtuele Azure-machines met één exemplaar converteert van niet-beheerde schijven naar beheerde schijven. (Als uw Vm's zich in een beschikbaarheidsset bevinden, raadpleegt u de volgende sectie.) 
 
-1. Hef de toewijzing van de virtuele machine op met behulp van de cmdlet [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) . In het volgende voor beeld wordt de toewijzing van de virtuele machine met de naam `myVM` in de resource groep met de naam `myResourceGroup` : 
+1. Hef de toewijzing van de virtuele machine op met behulp van de cmdlet [Stop-AzVM](/powershell/module/az.compute/stop-azvm) . In het volgende voor beeld wordt de toewijzing van de virtuele machine met de naam `myVM` in de resource groep met de naam `myResourceGroup` : 
 
    ```azurepowershell-interactive
    $rgName = "myResourceGroup"
@@ -42,7 +43,7 @@ In deze sectie wordt beschreven hoe u virtuele Azure-machines met één exemplaa
    Stop-AzVM -ResourceGroupName $rgName -Name $vmName -Force
    ```
 
-2. Converteer de virtuele machine naar Managed disks met behulp van de cmdlet [ConvertTo-AzVMManagedDisk](https://docs.microsoft.com/powershell/module/az.compute/convertto-azvmmanageddisk) . Met het volgende proces wordt de vorige VM geconverteerd, met inbegrip van de besturingssysteem schijf en alle gegevens schijven, en wordt de virtuele machine gestart:
+2. Converteer de virtuele machine naar Managed disks met behulp van de cmdlet [ConvertTo-AzVMManagedDisk](/powershell/module/az.compute/convertto-azvmmanageddisk) . Met het volgende proces wordt de vorige VM geconverteerd, met inbegrip van de besturingssysteem schijf en alle gegevens schijven, en wordt de virtuele machine gestart:
 
    ```azurepowershell-interactive
    ConvertTo-AzVMManagedDisk -ResourceGroupName $rgName -VMName $vmName
@@ -54,7 +55,7 @@ In deze sectie wordt beschreven hoe u virtuele Azure-machines met één exemplaa
 
 Als de virtuele machines die u wilt converteren naar Managed disks zich in een beschikbaarheidsset bevinden, moet u eerst de beschikbaarheidsset converteren naar een beheerde beschikbaarheidsset.
 
-1. Converteer de beschikbaarheidsset met behulp van de cmdlet [Update-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/update-azavailabilityset) . In het volgende voor beeld wordt de beschikbaarheidsset bijgewerkt met de naam `myAvailabilitySet` in de resource groep met de naam `myResourceGroup` :
+1. Converteer de beschikbaarheidsset met behulp van de cmdlet [Update-AzAvailabilitySet](/powershell/module/az.compute/update-azavailabilityset) . In het volgende voor beeld wordt de beschikbaarheidsset bijgewerkt met de naam `myAvailabilitySet` in de resource groep met de naam `myResourceGroup` :
 
    ```azurepowershell-interactive
    $rgName = 'myResourceGroup'
@@ -71,7 +72,7 @@ Als de virtuele machines die u wilt converteren naar Managed disks zich in een b
    Update-AzAvailabilitySet -AvailabilitySet $avSet -Sku Aligned
    ```
 
-2. Toewijzing van virtuele machines in de beschikbaarheidsset ongedaan maken en converteren. Met het volgende script wordt elke virtuele machine van elkaar verwijderd met behulp van de cmdlet [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) , wordt deze geconverteerd met behulp van [ConvertTo-AzVMManagedDisk](https://docs.microsoft.com/powershell/module/az.compute/convertto-azvmmanageddisk)en wordt deze automatisch opnieuw gestart, net zo ver het conversie proces:
+2. Toewijzing van virtuele machines in de beschikbaarheidsset ongedaan maken en converteren. Met het volgende script wordt elke virtuele machine van elkaar verwijderd met behulp van de cmdlet [Stop-AzVM](/powershell/module/az.compute/stop-azvm) , wordt deze geconverteerd met behulp van [ConvertTo-AzVMManagedDisk](/powershell/module/az.compute/convertto-azvmmanageddisk)en wordt deze automatisch opnieuw gestart, net zo ver het conversie proces:
 
    ```azurepowershell-interactive
    $avSet = Get-AzAvailabilitySet -ResourceGroupName $rgName -Name $avSetName
@@ -94,7 +95,7 @@ Voordat u converteert, moet u ervoor zorgen dat alle VM-extensies de status ' pr
 
 U kunt ook niet-beheerde schijven converteren naar Managed disks met behulp van de Azure Portal.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer de virtuele machine in de lijst met virtuele machines in de portal.
 3. Selecteer in de Blade voor de virtuele machine **schijven** in het menu.
 4. Selecteer boven aan de Blade **schijven** **migreren naar Managed disks**.
@@ -107,4 +108,3 @@ De virtuele machine wordt gestopt en opnieuw opgestart nadat de migratie is volt
 [Standaard Managed disks converteren naar Premium](convert-disk-storage.md)
 
 Maak een alleen-lezen kopie van een virtuele machine met behulp van [moment opnamen](snapshot-copy-managed-disk.md).
-

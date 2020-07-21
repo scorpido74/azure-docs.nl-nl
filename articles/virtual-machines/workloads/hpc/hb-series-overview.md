@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/16/2019
 ms.author: amverma
-ms.openlocfilehash: 62e4d3dbd7357f8c98df3307c1c8fe52cbed1c5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fed5606da84d8311785752cc8319b7a3c642c1f5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67707762"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508029"
 ---
 # <a name="hb-series-virtual-machines-overview"></a>Overzicht van virtuele machines uit de HB-serie
 
@@ -65,6 +65,6 @@ In het volgende diagram ziet u de schei ding van kernen die zijn gereserveerd vo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over HPC VM-grootten voor [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc) en [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc) in Azure.
+* Meer informatie over HPC VM-grootten voor [Linux](../../sizes-hpc.md) en [Windows](../../sizes-hpc.md) in Azure.
 
-* Meer informatie over [HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) in Azure.
+* Meer informatie over [HPC](/azure/architecture/topics/high-performance-computing/) in Azure.

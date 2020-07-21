@@ -6,12 +6,12 @@ ms.topic: article
 author: rboucher
 ms.author: robb
 ms.date: 07/01/2020
-ms.openlocfilehash: 6fb9f691afc8874b19ca4575408027357f07cc89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2824d46917536957839a5734a8d446da7a44ee9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833533"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505768"
 ---
 # <a name="upgrading-your-log-analytics-dashboard-visualizations"></a>Uw Log Analytics dashboard visualisaties bijwerken
 
@@ -25,7 +25,7 @@ Deze nieuwe visualisatie technologie is een goede manier om een nieuwe en verbet
 
 Azure-Dash boards zijn een manier om de status van uw volledige Azure-surface area te visualiseren. Ze zijn ontworpen om een enkel glas venster te bieden aan de status van Azure erfgoed en kunnen diverse snelkoppelingen naar algemene acties toestaan. 
 
-Zie [Azure-Dash boards](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards) voor meer informatie.
+Zie [Azure-Dash boards](../../azure-portal/azure-portal-dashboards.md) voor meer informatie.
 
 
 ## <a name="upgrading-log-analytics-dashboard-parts"></a>Log Analytics dashboard onderdelen bijwerken
@@ -62,13 +62,13 @@ Nadat de visualisaties zijn bijgewerkt, moet u het dash board opnieuw publiceren
 
 Nadat een eerste aanmeldings periode is afgelopen, zal het Log Analytics team alle Dash boards in het systeem bijwerken. Met het uitlijnen van alle Azure-Dash boards kan het team meer visualisaties maken en verbeteringen op het bord ervaren.
 
-## <a name="considerations"></a>Overwegingen
+## <a name="considerations"></a>Aandachtspunten
 
 Log Analytics visualisaties die zijn vastgemaakt aan een dash board, hebben een specifiek gedrag dat is ontworpen voor een optimale ervaring. Bekijk de volgende aandachtspunten bij het vastmaken van een visualisatie aan een dash board.
 
 ### <a name="query-time-scope---30-day-limit"></a>Query-tijd bereik-Maxi maal 30 dagen
 
-Omdat Dash boards meerdere visualisaties van meerdere query's kunnen bevatten, is het tijds bereik voor één vastgemaakte query beperkt tot 30 dagen. Eén query kan alleen worden uitgevoerd op een tijds panne die kleiner is dan of gelijk is aan 30 dagen. Deze beperking is het garanderen van een redelijke laad tijd van een dash board.
+Omdat dashboards meerdere visualisaties van meerdere query's kunnen bevatten, is het tijdsbereik voor één vastgemaakte query beperkt tot 30 dagen. Eén query kan alleen worden uitgevoerd op een tijds panne die kleiner is dan of gelijk is aan 30 dagen. Deze beperking is het garanderen van een redelijke laad tijd van een dash board.
 
 ### <a name="query-data-values---25-values-and-other-grouping"></a>Query's uitvoeren op gegevens waarden-25 waarden en andere groeperingen
 

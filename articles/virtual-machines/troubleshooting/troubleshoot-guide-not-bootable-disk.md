@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 9f0c6350b89dcfecefcadcc166f7af35abc4b128
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16f6919577955bda5b04db26deb9fe78a467e364
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80300977"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509032"
 ---
 # <a name="boot-error--this-is-not-a-bootable-disk"></a>Opstart fout: dit is geen opstart bare schijf
 
@@ -27,7 +27,7 @@ Dit artikel bevat stappen voor het oplossen van problemen waarbij de schijf niet
 
 ## <a name="symptoms"></a>Symptomen
 
-Wanneer u [Diagnostische gegevens over opstarten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) gebruikt om de scherm opname van de virtuele machine weer te geven, ziet u dat de scherm opname een prompt met het bericht ' Dit is geen opstart bare schijf ' wordt weer gegeven. Plaats een opstart bare diskette en druk op een wille keurige toets om het opnieuw te proberen....
+Wanneer u [Diagnostische gegevens over opstarten](./boot-diagnostics.md) gebruikt om de scherm opname van de virtuele machine weer te geven, ziet u dat de scherm opname een prompt met het bericht ' Dit is geen opstart bare schijf ' wordt weer gegeven. Plaats een opstart bare diskette en druk op een wille keurige toets om het opnieuw te proberen....
 
    Afbeelding 1
 
@@ -52,7 +52,7 @@ Dit fout bericht betekent dat het opstart proces van het besturings systeem kan 
 
 ### <a name="create-and-access-a-repair-vm"></a>Een herstel-VM maken en openen
 
-1. Gebruik stap 1-3 van de [VM-reparatie opdrachten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) om een herstel-VM voor te bereiden.
+1. Gebruik stap 1-3 van de [VM-reparatie opdrachten](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) om een herstel-VM voor te bereiden.
 2. Gebruik Verbinding met extern bureaublad verbinding maken met de herstel-VM.
 
 ### <a name="set-partition-status-to-active"></a>Partitie status instellen op actief
@@ -148,4 +148,4 @@ Voer het volgende script uit om geheugen dump verzameling en seriële console in
 
 ### <a name="rebuild-the-original-vm"></a>De oorspronkelijke VM opnieuw samen stellen
 
-Gebruik [stap 5 van de opdrachten voor het herstellen van de virtuele machine](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) om de virtuele machine opnieuw samen te stellen.
+Gebruik [stap 5 van de opdrachten voor het herstellen van de virtuele machine](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) om de virtuele machine opnieuw samen te stellen.

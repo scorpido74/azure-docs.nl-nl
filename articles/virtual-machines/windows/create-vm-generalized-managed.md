@@ -7,11 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: a028d597c3eb2a1c66df0e40266c2822e5cd7aab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b4083bdc896ce2f78484fe4ab083b234c4c5d12
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83726958"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508573"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>Een VM maken op basis van een beheerde installatiekopie
 
@@ -34,11 +35,11 @@ Eén beheerde installatie kopie ondersteunt Maxi maal 20 gelijktijdige implement
 
 ## <a name="use-powershell"></a>PowerShell gebruiken
 
-U kunt Power shell gebruiken om een virtuele machine te maken op basis van een installatie kopie met behulp van de vereenvoudigde para meter set voor de cmdlet [New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) . De afbeelding moet zich in dezelfde resource groep benemen waar u de VM maakt.
+U kunt Power shell gebruiken om een virtuele machine te maken op basis van een installatie kopie met behulp van de vereenvoudigde para meter set voor de cmdlet [New-AzVm](/powershell/module/az.compute/new-azvm) . De afbeelding moet zich in dezelfde resource groep benemen waar u de VM maakt.
 
  
 
-Voor de vereenvoudigde parameterset voor [New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) is alleen vereist dat u een naam, resource groep en installatie kopie naam opgeeft om een virtuele machine te maken op basis van een installatie kopie. New-AzVm gebruikt de waarde van de para meter **-name** als de naam van alle resources die worden gemaakt, automatisch. In dit voor beeld geven we meer gedetailleerde namen voor elk van de resources op, maar kunnen ze automatisch worden gemaakt met de cmdlet. U kunt ook vooraf resources maken, zoals het virtuele netwerk, en de resource naam door geven aan de cmdlet. New-AzVm maakt gebruik van de bestaande resources als deze kunnen worden gevonden met hun naam.
+Voor de vereenvoudigde parameterset voor [New-AzVm](/powershell/module/az.compute/new-azvm) is alleen vereist dat u een naam, resource groep en installatie kopie naam opgeeft om een virtuele machine te maken op basis van een installatie kopie. New-AzVm gebruikt de waarde van de para meter **-name** als de naam van alle resources die worden gemaakt, automatisch. In dit voor beeld geven we meer gedetailleerde namen voor elk van de resources op, maar kunnen ze automatisch worden gemaakt met de cmdlet. U kunt ook vooraf resources maken, zoals het virtuele netwerk, en de resource naam door geven aan de cmdlet. New-AzVm maakt gebruik van de bestaande resources als deze kunnen worden gevonden met hun naam.
 
 In het volgende voor beeld wordt een VM gemaakt met de naam *myVMFromImage*in de resource groep *myResourceGroup* van de installatie kopie met de naam *myImage*. 
 
@@ -60,4 +61,3 @@ New-AzVm `
 
 ## <a name="next-steps"></a>Volgende stappen
 [Virtuele Windows-machines maken en beheren met de module Azure PowerShell](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-

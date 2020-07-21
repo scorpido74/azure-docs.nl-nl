@@ -4,16 +4,16 @@ description: Gebruik Azure Functions om een taak te plannen die verbinding maakt
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: 974d9da9bb5782672603f1ae8c58742941899a14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29e90838d91de69af43ae9cf8ec0d99b534f66be
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254273"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506074"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Azure Functions gebruiken om verbinding te maken met een Azure SQL Database
 
-Dit artikel laat u zien hoe u Azure Functions kunt gebruiken om een geplande taak te maken die verbinding maakt met een Azure SQL Database of een Azure SQL Managed instance. Met de functie code worden rijen in een tabel in de data base opgeschoond. De nieuwe C#-functie wordt gemaakt op basis van een vooraf gedefinieerde Timer trigger sjabloon in Visual Studio 2019. Als u dit scenario wilt ondersteunen, moet u ook een Data Base connection string instellen als een app-instelling in de functie-app. Voor Azure SQL Managed instance moet u een [openbaar eind punt inschakelen](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) om verbinding te kunnen maken vanaf Azure functions. In dit scenario wordt een bulk bewerking voor de data base gebruikt. 
+Dit artikel laat u zien hoe u Azure Functions kunt gebruiken om een geplande taak te maken die verbinding maakt met een Azure SQL Database of een Azure SQL Managed instance. Met de functie code worden rijen in een tabel in de data base opgeschoond. De nieuwe C#-functie wordt gemaakt op basis van een vooraf gedefinieerde Timer trigger sjabloon in Visual Studio 2019. Als u dit scenario wilt ondersteunen, moet u ook een Data Base connection string instellen als een app-instelling in de functie-app. Voor Azure SQL Managed instance moet u een [openbaar eind punt inschakelen](../azure-sql/managed-instance/public-endpoint-configure.md) om verbinding te kunnen maken vanaf Azure functions. In dit scenario wordt een bulk bewerking voor de data base gebruikt. 
 
 Als dit uw eerste ervaring voor het werken met C#-functies is, moet u de [Azure functions c# Naslag informatie voor ontwikkel aars](functions-dotnet-class-library.md)lezen.
 
@@ -23,13 +23,13 @@ Als dit uw eerste ervaring voor het werken met C#-functies is, moet u de [Azure 
 
 + In dit artikel wordt een Transact-SQL-opdracht beschreven waarmee een bulksgewijze opschoning bewerking wordt uitgevoerd in de tabel **SalesOrderHeader** in de voorbeeld database AdventureWorksLT. Als u de voorbeeld database AdventureWorksLT wilt maken, voert u de stappen in het artikel [een Data Base maken in Azure SQL database met behulp van de Azure Portal](../azure-sql/database/single-database-create-quickstart.md).
 
-+ U moet een [firewall regel op server niveau](../sql-database/sql-database-get-started-portal-firewall.md) toevoegen voor het open bare IP-adres van de computer die u voor deze Quick Start gebruikt. Deze regel is vereist om toegang te krijgen tot het SQL Database exemplaar vanaf uw lokale computer.  
++ U moet een [firewall regel op server niveau](../azure-sql/database/firewall-create-server-level-portal-quickstart.md) toevoegen voor het open bare IP-adres van de computer die u voor deze Quick Start gebruikt. Deze regel is vereist om toegang te krijgen tot het SQL Database exemplaar vanaf uw lokale computer.  
 
 ## <a name="get-connection-information"></a>Verbindingsgegevens ophalen
 
 U moet de connection string ophalen voor de data base die u hebt gemaakt tijdens het [maken van een data base in Azure SQL database met behulp van de Azure Portal](../azure-sql/database/single-database-create-quickstart.md).
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. Selecteer **SQL-data bases** in het menu aan de linkerkant en selecteer uw Data Base op de pagina **SQL-data bases** .
 

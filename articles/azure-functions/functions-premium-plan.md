@@ -5,12 +5,13 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: d59335c5c4ebd2688097539594f11ea349939eff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: 5ab506c57a78c67b33b888f1f50d83fe9813d0af
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85298511"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506193"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions Premium-abonnement
 
@@ -90,7 +91,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 Bij het maken of schalen van uw plan kunt u kiezen uit drie instantie grootten.  Er worden kosten in rekening gebracht voor het totale aantal kernen en het geheugen dat per seconde wordt verbruikt.  Uw app kan automatisch uitschalen naar meerdere exemplaren als dat nodig is.  
 
-|SKU|Kernen|Geheugen|Storage|
+|SKU|Kernen|Geheugen|Opslag|
 |--|--|--|--|
 |EP1|1|3,5 GB|250 GB|
 |EP2|2|7GB|250 GB|
@@ -115,10 +116,10 @@ Bekijk de volledige regionale Beschik baarheid van functies hier: [Azure.com](ht
 |Australië - zuidoost | 100 | 20 |
 |Brazilië - zuid| 60 | 20 |
 |Canada - midden| 100 | 20 |
-|VS - centraal| 100 | 20 |
+|US - centraal| 100 | 20 |
 |Azië - oost| 100 | 20 |
 |VS - oost | 100 | 20 |
-|VS - oost 2| 100 | 20 |
+|US - oost 2| 100 | 20 |
 |Frankrijk - centraal| 100 | 20 |
 |Duitsland - west-centraal| 100 | Niet beschikbaar |
 |Japan - oost| 100 | 20 |
@@ -127,16 +128,16 @@ Bekijk de volledige regionale Beschik baarheid van functies hier: [Azure.com](ht
 |VS - noord-centraal| 100 | 20 |
 |Europa - noord| 100 | 20 |
 |Noorwegen - oost| 20 | 20 |
-|VS - zuid-centraal| 100 | 20 |
+|South Central US| 100 | 20 |
 |India - zuid | 100 | Niet beschikbaar |
 |Azië - zuidoost| 100 | 20 |
 |Verenigd Koninkrijk Zuid| 100 | 20 |
 |Verenigd Koninkrijk West| 100 | 20 |
-|Europa -west| 100 | 20 |
+|Europa - west| 100 | 20 |
 |India - west| 100 | 20 |
 |VS - west-centraal| 20 | 20 |
 |VS - west| 100 | 20 |
-|VS - west 2| 100 | 20 |
+|US - west 2| 100 | 20 |
 
 ## <a name="next-steps"></a>Volgende stappen
 

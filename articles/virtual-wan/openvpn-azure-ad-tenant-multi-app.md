@@ -2,19 +2,19 @@
 title: 'Virtuele WAN: Azure AD-Tenant voor verschillende gebruikers groepen: Azure AD-verificatie'
 description: U kunt P2S VPN gebruiken om verbinding te maken met uw VNet met behulp van Azure AD-verificatie
 services: virtual-wan
-author: anzaman
+author: kumudD
 ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: alzam
-ms.openlocfilehash: a1471226bcc22373904e65f95d0c07c2d5041f55
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ca57ccc40669a607cd0541dc738e3a3eacf3e88
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84749838"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507689"
 ---
-# <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Een Azure Active Directory-tenant maken voor P2S OpenVPN-protocolverbindingen
+# <a name="create-an-azure-active-directory-ad-tenant-for-p2s-openvpn-protocol-connections"></a>Een Azure Active Directory-Tenant (AD) maken voor P2S OpenVPN-protocol verbindingen
 
 Wanneer u verbinding maakt met uw VNet, kunt u verificatie op basis van certificaten of RADIUS-verificatie gebruiken. Wanneer u echter het open VPN-protocol gebruikt, kunt u ook Azure Active Directory-verificatie gebruiken. Als u wilt dat een andere set gebruikers verbinding kan maken met verschillende gateways, kunt u meerdere apps registreren in AD en deze koppelen aan verschillende gateways.
 
@@ -77,7 +77,7 @@ Gebruik het VPN-profiel om uw clients te configureren.
 
 3. Wanneer het bestand gereed is, klikt u op de koppeling om het te downloaden.
 
-4. Gebruik het profiel bestand voor het configureren van de VPN-clients.
+4. Gebruik het profielbestand om de VPN-clients te configureren.
 
 5. Pak het gedownloade zip-bestand uit.
 
@@ -123,11 +123,11 @@ Gebruik deze [koppeling](https://go.microsoft.com/fwlink/?linkid=2117554) om de 
 
 1. Selecteer het beletsel teken (...) naast het client profiel dat u wilt verwijderen. Selecteer vervolgens **verwijderen**.
 
-    ![delete](./media/openvpn-azure-ad-tenant-multi-app/delete/delete1.jpg)
+    ![verwijderen](./media/openvpn-azure-ad-tenant-multi-app/delete/delete1.jpg)
 
 2. Selecteer **verwijderen** om te verwijderen.
 
-    ![delete](./media/openvpn-azure-ad-tenant-multi-app/delete/delete2.jpg)
+    ![verwijderen](./media/openvpn-azure-ad-tenant-multi-app/delete/delete2.jpg)
 
 #### <a name="to-diagnose-connection-issues"></a><a name="diagnose"></a>Verbindings problemen vaststellen
 

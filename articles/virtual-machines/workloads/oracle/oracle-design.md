@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogardle
-ms.openlocfilehash: b553256d3e6a498e36e8b5c98d90c6c14b10df75
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 78eedb9bd4f12644a1bc992d0786a43b8af767a9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224567"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507927"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Een Oracle-data base ontwerpen en implementeren in azure
 
@@ -43,17 +43,17 @@ Een belang rijk verschil is dat in een Azure-implementatie resources, zoals Vm's
 
 De volgende tabel bevat enkele van de verschillen tussen een on-premises implementatie en een Azure-implementatie van een Oracle-data base.
 
-> 
-> |  | **Lokale implementatie** | **Azure-implementatie** |
-> | --- | --- | --- |
-> | **Netwerken** |LAN/WAN  |SDN (door software gedefinieerde netwerken)|
-> | **Beveiligings groep** |Hulpprogram ma's voor IP-en poort beperking |[Netwerk beveiligings groep (NSG)](https://azure.microsoft.com/blog/network-security-groups) |
-> | **Tolerantie** |MBTF (gemiddelde tijd tussen storingen) |MTTR (gemiddelde tijd voor herstel)|
-> | **Gepland onderhoud** |Patches/upgrades|[Beschikbaarheids sets](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) (patches/upgrades die worden beheerd door Azure) |
-> | **Resource** |Toegewezen  |Gedeeld met andere clients|
-> | **Regio's** |Datacenters |[Regioparen](https://docs.microsoft.com/azure/virtual-machines/windows/regions#region-pairs)|
-> | **Opslag** |SAN/fysieke schijven |[Door Azure beheerde opslag](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
-> | **Schalen** |Verticale schaal |Horizontaal schalen|
+
+|  | Lokale implementatie | Azure-implementatie |
+| --- | --- | --- |
+| **Netwerken** |LAN/WAN  |SDN (door software gedefinieerde netwerken)|
+| **Beveiligings groep** |Hulpprogram ma's voor IP-en poort beperking |[Netwerk beveiligings groep (NSG)](https://azure.microsoft.com/blog/network-security-groups) |
+| **Tolerantie** |MBTF (gemiddelde tijd tussen storingen) |MTTR (gemiddelde tijd voor herstel)|
+| **Gepland onderhoud** |Patches/upgrades|[Beschikbaarheids sets](../../windows/infrastructure-example.md) (patches/upgrades die worden beheerd door Azure) |
+| **Resource** |Toegewezen  |Gedeeld met andere clients|
+| **Regio's** |Datacenters |[Regioparen](../../regions.md#region-pairs)|
+| **Storage** |SAN/fysieke schijven |[Door Azure beheerde opslag](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
+| **Schalen** |Verticale schaal |Horizontaal schalen|
 
 
 ### <a name="requirements"></a>Vereisten
@@ -116,11 +116,11 @@ In het volgende diagram ziet u de totale I/O van lezen en schrijven. Er zijn 59 
 
 #### <a name="2-choose-a-vm"></a>2. Kies een virtuele machine
 
-Op basis van de informatie die u hebt verzameld uit het AWR-rapport, is de volgende stap het kiezen van een virtuele machine met een vergelijk bare grootte die voldoet aan uw vereisten. U kunt een lijst met beschik bare virtuele machines vinden in het artikel [geoptimaliseerd voor geheugen](../../linux/sizes-memory.md).
+Op basis van de informatie die u hebt verzameld uit het AWR-rapport, is de volgende stap het kiezen van een virtuele machine met een vergelijk bare grootte die voldoet aan uw vereisten. U kunt een lijst met beschik bare virtuele machines vinden in het artikel [geoptimaliseerd voor geheugen](../../sizes-memory.md).
 
 #### <a name="3-fine-tune-the-vm-sizing-with-a-similar-vm-series-based-on-the-acu"></a>3. Verfijn de VM-grootte met een soort gelijke VM-serie op basis van de ACU
 
-Nadat u de virtuele machine hebt gekozen, moet u rekening best Eden aan de ACU voor de virtuele machine. U kunt een andere VM kiezen op basis van de ACU-waarde die beter aansluit bij uw vereisten. Zie [Azure Compute unit](https://docs.microsoft.com/azure/virtual-machines/windows/acu)voor meer informatie.
+Nadat u de virtuele machine hebt gekozen, moet u rekening best Eden aan de ACU voor de virtuele machine. U kunt een andere VM kiezen op basis van de ACU-waarde die beter aansluit bij uw vereisten. Zie [Azure Compute unit](../../acu.md)voor meer informatie.
 
 ![Scherm afbeelding van de pagina ACU units](./media/oracle-design/acu_units.png)
 
@@ -143,8 +143,8 @@ Op basis van de vereisten voor de netwerk bandbreedte zijn er verschillende gate
 
 - De netwerk latentie is hoger vergeleken met een on-premises implementatie. Het verminderen van netwerk round trips kan de prestaties aanzienlijk verbeteren.
 - Consolidatie van toepassingen die hoge trans acties of ' intensieve-apps hebben op dezelfde virtuele machine om retouren te verminderen.
-- Gebruik Virtual Machines met [versneld netwerken](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) voor betere netwerk prestaties.
-- Voor bepaalde Linux-distributies kunt u [ondersteuning voor knippen/](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm#trimunmap-support)ontkoppelen inschakelen.
+- Gebruik Virtual Machines met [versneld netwerken](../../../virtual-network/create-vm-accelerated-networking-cli.md) voor betere netwerk prestaties.
+- Voor bepaalde Linux-distributies kunt u [ondersteuning voor knippen/](../../linux/configure-lvm.md#trimunmap-support)ontkoppelen inschakelen.
 - Installeer [Oracle Enter prise Manager](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html) op een afzonderlijke virtuele machine.
 - Zeer grote pagina's zijn standaard niet ingeschakeld op Linux. Overweeg om zeer grote pagina's in te scha kelen en in te stellen `use_large_pages = ONLY` op de Oracle DB. Dit kan helpen om de prestaties te verbeteren. Meer informatie vindt u [hier](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390).
 
@@ -187,7 +187,7 @@ Nadat u een duidelijke afbeelding van de I/O-vereisten hebt, kunt u een combi na
 - Gebruik gegevens compressie om I/O (voor gegevens en indexen) te verminderen.
 - Afzonderlijke logboeken, systeem en temps afzonderlijk opnieuw uitvoeren en TS ongedaan maken op afzonderlijke gegevens schijven.
 - Plaats geen toepassings bestanden op de standaard besturingssysteem schijven (/dev/sda). Deze schijven zijn niet geoptimaliseerd voor snelle opstart tijden voor de virtuele machines en ze bieden mogelijk geen goede prestaties voor uw toepassing.
-- Wanneer u virtuele machines uit de M-serie in Premium Storage gebruikt, schakelt u [Write Accelerator](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator) in op de schijf voor opnieuw uitvoeren van Logboeken.
+- Wanneer u virtuele machines uit de M-serie in Premium Storage gebruikt, schakelt u [Write Accelerator](../../linux/how-to-enable-write-accelerator.md) in op de schijf voor opnieuw uitvoeren van Logboeken.
 
 ### <a name="disk-cache-settings"></a>Instellingen voor schijf cache
 
@@ -225,7 +225,7 @@ Nadat u uw Azure-omgeving hebt ingesteld en geconfigureerd, is de volgende stap 
 - *Particulier netwerk* (subnetten): we raden u aan de toepassings service en-Data Base op afzonderlijke subnetten te hebben, zodat u beter beheer kunt instellen met NSG-beleid.
 
 
-## <a name="additional-reading"></a>Aanvullende Lees bewerkingen
+## <a name="additional-reading"></a>Meer artikelen
 
 - [Oracle ASM configureren](configure-oracle-asm.md)
 - [Oracle Data Guard configureren](configure-oracle-dataguard.md)

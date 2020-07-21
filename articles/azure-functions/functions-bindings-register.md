@@ -5,11 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 07/08/2019
 ms.author: cshoe
-ms.openlocfilehash: 1688fe848beb62731391bf4399a0dabec5265320
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2dde784e2f67266b2f6c6ccd7da20f01546bbda7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84697337"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506482"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Azure Functions bindings uitbreidingen registreren
 
@@ -48,7 +49,7 @@ Als u uitbreidings bundels wilt gebruiken, moet u de *host.jsin* het bestand bij
 
 ## <a name="c-class-library-with-visual-studio"></a><a name="vs"></a>C \# Class-bibliotheek met Visual Studio
 
-In **Visual Studio**kunt u pakketten installeren via de Package Manager-console met behulp van de opdracht [installeren-pakket](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) , zoals wordt weer gegeven in het volgende voor beeld:
+In **Visual Studio**kunt u pakketten installeren via de Package Manager-console met behulp van de opdracht [installeren-pakket](/nuget/tools/ps-ref-install-package) , zoals wordt weer gegeven in het volgende voor beeld:
 
 ```powershell
 Install-Package Microsoft.Azure.WebJobs.Extensions.ServiceBus -Version <TARGET_VERSION>
@@ -62,7 +63,7 @@ Als u gebruikt `Install-Package` om te verwijzen naar een binding, hoeft u geen 
 
 ## <a name="c-class-library-with-visual-studio-code"></a><a name="vs-code"></a>C#-klassen bibliotheek met Visual Studio code
 
-In **Visual Studio code**installeert u pakketten voor een C# Class Library-project vanaf de opdracht prompt met behulp van de [DotNet add package](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) opdracht in de .net core SLI. In het volgende voor beeld ziet u hoe u een binding toevoegt:
+In **Visual Studio code**installeert u pakketten voor een C# Class Library-project vanaf de opdracht prompt met behulp van de [DotNet add package](/dotnet/core/tools/dotnet-add-package) opdracht in de .net core SLI. In het volgende voor beeld ziet u hoe u een binding toevoegt:
 
 ```terminal
 dotnet add package Microsoft.Azure.WebJobs.Extensions.<BINDING_TYPE_NAME> --version <TARGET_VERSION>

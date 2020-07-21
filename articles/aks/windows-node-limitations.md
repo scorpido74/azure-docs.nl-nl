@@ -5,12 +5,12 @@ description: Meer informatie over de bekende beperkingen bij het uitvoeren van W
 services: container-service
 ms.topic: article
 ms.date: 05/28/2020
-ms.openlocfilehash: c420eb850313900d3726b93dd97f911a428d3560
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a86d6f0fe942a72a96c504a61d5030624f161cd5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85339877"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507009"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Huidige beperkingen voor Windows Server-knooppunt groepen en toepassings werkbelastingen in azure Kubernetes service (AKS)
 
@@ -44,7 +44,11 @@ De hoofd knooppunten (het besturings vlak) in een AKS-cluster worden gehost door
 
 ## <a name="what-network-plug-ins-are-supported"></a>Welke netwerk-invoeg toepassingen worden ondersteund?
 
-AKS-clusters met Windows-knooppunt Pools moeten het netwerk model van Azure CNI (Geavanceerd) gebruiken. Kubenet (Basic)-netwerken worden niet ondersteund. Zie [Network concepten for Applications in AKS][azure-network-models](Engelstalig) voor meer informatie over de verschillen in netwerk modellen. -Het Azure CNI-netwerk model vereist aanvullende planning en overwegingen voor het beheer van IP-adressen. Zie [Azure cni-netwerken configureren in AKS][configure-azure-cni]voor meer informatie over het plannen en implementeren van Azure cni.
+AKS-clusters met Windows-knooppunt Pools moeten het netwerk model van Azure CNI (Geavanceerd) gebruiken. Kubenet (Basic)-netwerken worden niet ondersteund. Zie [Network concepten for Applications in AKS][azure-network-models](Engelstalig) voor meer informatie over de verschillen in netwerk modellen. Het Azure CNI-netwerk model vereist aanvullende planning en overwegingen voor het beheer van IP-adressen. Zie [Azure cni-netwerken configureren in AKS][configure-azure-cni]voor meer informatie over het plannen en implementeren van Azure cni.
+
+## <a name="is-preserving-the-client-source-ip-supported"></a>Wordt het IP-adres van de client ondersteund?
+
+Op dit moment wordt het [IP-behoud van client bronnen][client-source-ip] niet ondersteund met Windows-knoop punten.
 
 ## <a name="can-i-change-the-max--of-pods-per-node"></a>Kan ik de maximale waarde wijzigen. aantal peulen per knoop punt?
 
@@ -103,6 +107,14 @@ GMSA-ondersteuning (Group managed service accounts) is momenteel niet beschikbaa
 
 Ja, u kunt Azure Monitor echter een open bare preview hebben voor het verzamelen van Logboeken (stdout, stderr) en metrische gegevens van Windows-containers. U kunt ook koppelen aan de live stream van stdout-logboeken vanuit een Windows-container.
 
+## <a name="are-there-any-limitations-on-the-number-of-services-on-a-cluster-with-windows-nodes"></a>Zijn er beperkingen voor het aantal services op een cluster met Windows-knoop punten?
+
+Een cluster met Windows-knoop punten kan ongeveer 500 Services hebben voordat de poort wordt uitgeput.
+
+## <a name="can-i-use-the-kubernetes-web-dashboard-with-windows-containers"></a>Kan ik het Kubernetes-webdashboard met Windows-containers gebruiken?
+
+Ja, u kunt het [Kubernetes-Webdash Board][kubernetes-dashboard] gebruiken om toegang te krijgen tot informatie over Windows-containers, maar op dit moment kunt u *kubectl exec* niet rechtstreeks vanuit het Kubernetes Web dash board uitvoeren in een actieve Windows-container. Zie [verbinding maken met RDP naar Azure Kubernetes service (AKS)-cluster Windows Server-knoop punten voor onderhoud of probleem oplossing][windows-rdp]voor meer informatie over het maken van een verbinding met uw actieve Windows-container.
+
 ## <a name="what-if-i-need-a-feature-which-is-not-supported"></a>Wat moet ik doen als ik een functie heb nodig die niet wordt ondersteund?
 
 We werken hard om alle functies te gebruiken die u nodig hebt voor Windows in AKS, maar als er hiaten optreden, biedt het open source-upstream [-AKS-engine-][aks-engine] project een eenvoudige en volledig aanpas bare manier om Kubernetes in azure uit te voeren, waaronder Windows-ondersteuning. Zorg ervoor dat u het overzicht van de functies van het [AKS-plan][aks-roadmap]bekijkt.
@@ -132,3 +144,6 @@ Om aan de slag te gaan met Windows Server-containers in AKS, [maakt u een knoopp
 [windows-container-compat]: /virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-2019%2Cwindows-10-1909
 [maximum-number-of-pods]: configure-azure-cni.md#maximum-pods-per-node
 [azure-monitor]: ../azure-monitor/insights/container-insights-overview.md#what-does-azure-monitor-for-containers-provide
+[client-source-ip]: concepts-network.md#ingress-controllers
+[kubernetes-dashboard]: kubernetes-dashboard.md
+[windows-rdp]: rdp.md

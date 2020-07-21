@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: daf3e3aaa95734c79e513c16e5d41aeb0bf894dc
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: cf27a842d37e96c82370e9b9b81763c8a5d1f7c9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135259"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509049"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-fstab-errors"></a>Problemen met het starten van Linux VM oplossen vanwege fstab-fouten
 
-U kunt geen verbinding maken met een virtuele machine van Azure Linux met behulp van een SSH-verbinding (Secure Shell). Wanneer u de functie [Diagnostische gegevens over opstarten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) uitvoert op de [Azure Portal](https://portal.azure.com/), worden logboek vermeldingen weer gegeven die lijken op de volgende voor beelden:
+U kunt geen verbinding maken met een virtuele machine van Azure Linux met behulp van een SSH-verbinding (Secure Shell). Wanneer u de functie [Diagnostische gegevens over opstarten](./boot-diagnostics.md) uitvoert op de [Azure Portal](https://portal.azure.com/), worden logboek vermeldingen weer gegeven die lijken op de volgende voor beelden:
 
 ## <a name="examples"></a>Voorbeelden
 
@@ -106,8 +106,8 @@ Om dit probleem op te lossen, start u de virtuele machine in de nood herstel mod
 
 ### <a name="using-single-user-mode"></a>Modus voor één gebruiker gebruiken
 
-1. Maak verbinding met [de seriële console](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux).
-2. Seriële console gebruiken om de [modus voor één](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console-grub-single-user-mode) gebruiker in de modus voor één gebruiker in te voeren
+1. Maak verbinding met [de seriële console](./serial-console-linux.md).
+2. Seriële console gebruiken om de [modus voor één](../linux/serial-console-grub-single-user-mode.md) gebruiker in de modus voor één gebruiker in te voeren
 3. Zodra de VM is opgestart in de modus voor één gebruiker. Gebruik uw favoriete tekst editor om het fstab-bestand te openen. 
 
    ```
@@ -140,7 +140,7 @@ Om dit probleem op te lossen, start u de virtuele machine in de nood herstel mod
 
 ### <a name="using-root-password"></a>Basis wachtwoord gebruiken
 
-1. Maak verbinding met [de seriële console](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux).
+1. Maak verbinding met [de seriële console](./serial-console-linux.md).
 2. Meld u aan bij het systeem met behulp van een lokale gebruiker en een wacht woord.
 
    > [!Note]
@@ -188,7 +188,7 @@ Om dit probleem op te lossen, start u de virtuele machine in de nood herstel mod
 
 ## <a name="repair-the-vm-offline"></a>De virtuele machine offline herstellen
 
-1. Koppel de systeem schijf van de virtuele machine als een gegevens schijf aan een herstel-VM (wille keurige werkende Linux-machine). U kunt hiervoor [cli-opdrachten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux) gebruiken of u kunt de herstel-VM instellen met behulp van de opdrachten voor het herstellen van de [virtuele machine](repair-linux-vm-using-azure-virtual-machine-repair-commands.md).
+1. Koppel de systeem schijf van de virtuele machine als een gegevens schijf aan een herstel-VM (wille keurige werkende Linux-machine). U kunt hiervoor [cli-opdrachten](./troubleshoot-recovery-disks-linux.md) gebruiken of u kunt de herstel-VM instellen met behulp van de opdrachten voor het herstellen van de [virtuele machine](repair-linux-vm-using-azure-virtual-machine-repair-commands.md).
 
 2. Nadat u de systeem schijf als een gegevens schijf op de herstel-VM hebt gekoppeld, maakt u een back-up van het fstab-bestand voordat u wijzigingen aanbrengt en voert u de volgende stappen uit om het fstab-bestand te corrigeren.
 
@@ -217,7 +217,7 @@ Om dit probleem op te lossen, start u de virtuele machine in de nood herstel mod
    > * De velden op elke regel worden gescheiden door tabs of spaties. Lege regels worden genegeerd. Regels met een hekje (#) als het eerste teken zijn opmerkingen. Commentaar regels kunnen in het fstab-bestand blijven, maar ze worden niet verwerkt. We raden u aan om fstab regels te controleren die u niet weet in plaats van de regels te verwijderen.
    > * Als de virtuele machine moet worden hersteld en gestart, moeten de bestandssysteem partities de enige vereiste partities zijn. De virtuele machine kan toepassings fouten ondervinden over extra opmerkingen met een opmerking. De virtuele machine moet echter worden gestart zonder de extra partities. U kunt later opmerkingen toevoegen aan alle opmerkingen regels.
    > * We raden aan dat u gegevens schijven op virtuele Azure-machines koppelt met behulp van de UUID van de bestandssysteem partitie. Voer bijvoorbeeld de volgende opdracht uit:``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"``
-   > * Als u de UUID van het bestands systeem wilt bepalen, voert u de opdracht blkid uit. Voer de man blkid opdracht uit voor meer informatie over de syntaxis. U ziet dat de schijf die u wilt herstellen, nu is gekoppeld op een nieuwe virtuele machine. Hoewel de UUID consistent moeten zijn, verschillen de partitie-Id's van de apparaten (bijvoorbeeld '/dev/sda1 ') op deze VM. De bestandssysteem partities van de oorspronkelijke beschadigde virtuele machine die zich op een niet-systeem-VHD bevinden, zijn niet beschikbaar voor de Recovery-VM [met behulp van CLI-opdrachten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux).
+   > * Als u de UUID van het bestands systeem wilt bepalen, voert u de opdracht blkid uit. Voer de man blkid opdracht uit voor meer informatie over de syntaxis. U ziet dat de schijf die u wilt herstellen, nu is gekoppeld op een nieuwe virtuele machine. Hoewel de UUID consistent moeten zijn, verschillen de partitie-Id's van de apparaten (bijvoorbeeld '/dev/sda1 ') op deze VM. De bestandssysteem partities van de oorspronkelijke beschadigde virtuele machine die zich op een niet-systeem-VHD bevinden, zijn niet beschikbaar voor de Recovery-VM [met behulp van CLI-opdrachten](./troubleshoot-recovery-disks-linux.md).
    > * De niet-werkende optie zorgt ervoor dat de VM wordt gestart, zelfs als het bestands systeem beschadigd is of wanneer het bestands systeem niet aanwezig is bij het opstarten. We raden u aan de optie niet in het fstab-bestand te gebruiken om het opstarten van de computer te laten door gaan nadat er fouten zijn opgetreden in partities die niet vereist zijn voor het starten van de VM.
 
 7. U kunt onjuiste of overbodige regels in het fstab-bestand wijzigen of opmerkingen maken, zodat de virtuele machine correct kan worden gestart.
@@ -240,5 +240,5 @@ Om dit probleem op te lossen, start u de virtuele machine in de nood herstel mod
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Problemen met een virtuele Linux-machine oplossen door de besturingssysteem schijf te koppelen aan een herstel-VM met de Azure CLI 2,0](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-troubleshoot-recovery-disks)
-* [Problemen met een virtuele Linux-machine oplossen door de besturingssysteem schijf te koppelen aan een herstel-VM met behulp van de Azure Portal](https://docs.microsoft.com/azure/virtual-machines/linux/troubleshoot-recovery-disks-portal)
+* [Problemen met een virtuele Linux-machine oplossen door de besturingssysteem schijf te koppelen aan een herstel-VM met de Azure CLI 2,0](./troubleshoot-recovery-disks-linux.md)
+* [Problemen met een virtuele Linux-machine oplossen door de besturingssysteem schijf te koppelen aan een herstel-VM met behulp van de Azure Portal](./troubleshoot-recovery-disks-portal-linux.md)

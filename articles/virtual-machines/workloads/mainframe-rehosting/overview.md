@@ -10,11 +10,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: ccdeefabeedfca4959239696361ccce0bc6c1c78
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1ab9834d4bf25c7c18171ecb271f18b213d15b0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76289795"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507876"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Mainframe herhosten op Azure virtual machines
 
@@ -69,11 +70,11 @@ Aan de slag:
 
 De IBM DB2 pureScale-omgeving biedt een database cluster voor Azure. Het is niet identiek aan de oorspronkelijke omgeving, maar biedt vergelijk bare Beschik baarheid en schaal als IBM DB2 voor z/OS dat wordt uitgevoerd in een parallelle Sysplex-installatie.
 
-Zie [IBM DB2 pureScale in azure](/azure/virtual-machines/linux/ibm-db2-purescale-azure)om aan de slag te gaan.
+Zie [IBM DB2 pureScale in azure](../../linux/ibm-db2-purescale-azure.md)om aan de slag te gaan.
 
-## <a name="considerations"></a>Overwegingen
+## <a name="considerations"></a>Aandachtspunten
 
-Wanneer u mainframe-workloads migreert naar Azure Infrastructure as a Service (IaaS), kunt u kiezen uit verschillende soorten, schaal bare computer bronnen op aanvraag, waaronder Azure-Vm's. Azure biedt een scala aan [Linux](/azure/virtual-machines/linux/overview) -en [Windows](/azure/virtual-machines/windows/overview) -vm's.
+Wanneer u mainframe-workloads migreert naar Azure Infrastructure as a Service (IaaS), kunt u kiezen uit verschillende soorten, schaal bare computer bronnen op aanvraag, waaronder Azure-Vm's. Azure biedt een scala aan [Linux](../../linux/overview.md) -en [Windows](../../windows/overview.md) -vm's.
 
 ### <a name="compute"></a>Compute
 
@@ -85,21 +86,21 @@ Meer informatie over het [verplaatsen van mainframe Compute naar Azure](./concep
 
 Azure biedt op toezegging gebaseerde service overeenkomsten (Sla's). De beschik baarheid van meerdere Nines is de standaard waarde en service overeenkomsten kunnen worden geoptimaliseerd met lokale of geo-gebaseerde replicatie van services. In de volledige [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) wordt de gegarandeerde beschikbaarheid van Azure als geheel uitgelegd.
 
-Met Azure IaaS, zoals een virtuele machine, bieden specifieke systeem functies failover-ondersteuning, bijvoorbeeld voor instanties voor Failoverclustering en beschikbaarheids sets. Wanneer u Azure Platform as a Service-resources (PaaS) gebruikt, wordt de failover automatisch door het platform verwerkt. Voor beelden zijn [Azure SQL database](/azure/sql-database/sql-database-technical-overview) en [Azure Cosmos DB](/azure/cosmos-db/introduction).
+Met Azure IaaS, zoals een virtuele machine, bieden specifieke systeem functies failover-ondersteuning, bijvoorbeeld voor instanties voor Failoverclustering en beschikbaarheids sets. Wanneer u Azure Platform as a Service-resources (PaaS) gebruikt, wordt de failover automatisch door het platform verwerkt. Voor beelden zijn [Azure SQL database](../../../azure-sql/database/sql-database-paas-overview.md) en [Azure Cosmos DB](../../../cosmos-db/introduction.md).
 
 ### <a name="scalability"></a>Schaalbaarheid
 
-Mainframes worden doorgaans geschaald, terwijl Cloud omgevingen uitschalen. Azure biedt een scala aan [Linux](/azure/virtual-machines/linux/sizes) -en [Windows](/azure/virtual-machines/windows/sizes) -grootten die aan uw behoeften voldoen. De Cloud wordt ook omhoog of omlaag geschaald, zodat deze overeenkomt met de exacte specificaties van de gebruiker. Reken kracht, opslag en services kunnen op aanvraag worden [geschaald](/azure/architecture/best-practices/auto-scaling) onder een facturerings model op basis van gebruik.
+Mainframes worden doorgaans geschaald, terwijl Cloud omgevingen uitschalen. Azure biedt een scala aan [Linux](../../linux/sizes.md) -en [Windows](../../windows/sizes.md) -grootten die aan uw behoeften voldoen. De Cloud wordt ook omhoog of omlaag geschaald, zodat deze overeenkomt met de exacte specificaties van de gebruiker. Reken kracht, opslag en services kunnen op aanvraag worden [geschaald](/azure/architecture/best-practices/auto-scaling) onder een facturerings model op basis van gebruik.
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Opslag
 
-In de Cloud hebt u diverse flexibele, schaal bare opslag opties en betaalt u alleen voor wat u nodig hebt. [Azure Storage](/azure/storage/common/storage-introduction) biedt een zeer schaal bare object opslag voor gegevens objecten, een File System-Service voor de Cloud, een betrouw bare berichten opslag en een NoSQL-archief. Voor Vm's, beheerde en onbeheerde schijven bieden permanente, beveiligde schijf opslag.
+In de Cloud hebt u diverse flexibele, schaal bare opslag opties en betaalt u alleen voor wat u nodig hebt. [Azure Storage](../../../storage/common/storage-introduction.md) biedt een zeer schaal bare object opslag voor gegevens objecten, een File System-Service voor de Cloud, een betrouw bare berichten opslag en een NoSQL-archief. Voor Vm's, beheerde en onbeheerde schijven bieden permanente, beveiligde schijf opslag.
 
 Meer informatie over het [verplaatsen van mainframe-opslag naar Azure](./concepts/mainframe-storage-azure.md).
 
-### <a name="backup-and-recovery"></a>Back-ups maken en herstellen
+### <a name="backup-and-recovery"></a>Back-up en herstel
 
-Het onderhoud van uw eigen nood herstel site kan een dure toegevoegde zijn. Azure heeft eenvoudig te implementeren en rendabele opties voor [back-up](/azure/backup/backup-introduction-to-azure-backup), [herstel](/azure/site-recovery/site-recovery-overview)en [Redundantie](/azure/storage/common/storage-redundancy) op lokaal of regionaal niveau, of via Geo-redundantie.
+Het onderhoud van uw eigen nood herstel site kan een dure toegevoegde zijn. Azure heeft eenvoudig te implementeren en rendabele opties voor [back-up](../../../backup/backup-overview.md), [herstel](../../../site-recovery/site-recovery-overview.md)en [Redundantie](../../../storage/common/storage-redundancy.md) op lokaal of regionaal niveau, of via Geo-redundantie.
 
 ## <a name="azure-government-for-mainframe-migrations"></a>Azure Government voor mainframe-migraties
 
@@ -117,7 +118,7 @@ Zie ook:
 
 - [Technische documentatie over mainframe-onderwerpen](mainframe-white-papers.md)
 - [Mainframe migratie](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
-- [Problemen oplossen](/azure/virtual-machines/troubleshooting/)
+- [Problemen oplossen](../../troubleshooting/index.yml)
 - [Ontrafelen mainframe naar Azure-migratie](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
 <!-- INTERNAL LINKS -->

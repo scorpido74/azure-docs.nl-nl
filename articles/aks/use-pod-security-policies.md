@@ -4,22 +4,21 @@ description: Meer informatie over het beheren van pod-toelatingen met behulp van
 services: container-service
 ms.topic: article
 ms.date: 06/30/2020
-ms.openlocfilehash: eb2e7fca3a808a1e2c4f7d1f81b8dc1d64deeee7
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: dd526b7825279d886c60fbb1820222a75abab03e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077623"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507077"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Voor beeld: uw cluster beveiligen met behulp van pod-beveiligings beleid in azure Kubernetes service (AKS)
 
-<!--
 > [!WARNING]
-> **The pod security policy feature on AKS is set for deprecation** in favor of [Azure Policy for AKS](use-pod-security-on-azure-policy.md). The feature described in this document is not moving to general availability and is set for removal in September 2020.
-> It is highly recommended to begin testing with the Azure Policy Add-on which offers unique policies which support scenarios captured by pod security policy.
-
-**This document and feature are set for deprecation.**
--->
+> **De functie die in dit document wordt beschreven, Pod-beveiligings beleid (preview), is ingesteld voor afschaffing en is na 15 oktober 2020 niet langer beschikbaar** [voor Azure Policy voor AKS](use-pod-security-on-azure-policy.md).
+>
+> Nadat pod-beveiligings beleid (preview) is afgeschaft, moet u de functie op alle bestaande clusters uitschakelen met behulp van de afgeschafte functie om toekomstige cluster upgrades uit te voeren en de ondersteuning van Azure te blijven gebruiken.
+>
+> Het wordt sterk aanbevolen om te beginnen met het testen van scenario's met Azure Policy voor AKS, die ingebouwde beleids regels biedt voor het beveiligen van de peulen en ingebouwde initiatieven die zijn toegewezen aan pod-beveiligings beleid. Klik hier voor meer informatie over [het migreren naar Azure Policy van pod-beveiligings beleid (preview-versie)](use-pod-security-on-azure-policy.md#migrate-from-kubernetes-pod-security-policy-to-azure-policy).
 
 Als u de beveiliging van uw AKS-cluster wilt verbeteren, kunt u het aantal peulen dat kan worden gepland, beperken. De meeste resources die u niet toestaat, kunnen niet worden uitgevoerd in het AKS-cluster. U definieert deze toegang met behulp van pod-beveiligings beleid. Dit artikel laat u zien hoe u pod-beveiligings beleid kunt gebruiken om de implementatie van een van de peulen in AKS te beperken.
 
@@ -35,7 +34,7 @@ In dit artikel wordt ervan uitgegaan dat u beschikt over een bestaand AKS-cluste
 
 U moet de Azure CLI-versie 2.0.61 of hoger hebben geïnstalleerd en geconfigureerd. Voer  `az --version` uit om de versie te bekijken. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u  [Azure CLI installeren][install-azure-cli].
 
-### <a name="install-aks-preview-cli-extension"></a>AKS-preview CLI-extensie installeren
+### <a name="install-aks-preview-cli-extension"></a>De CLI-extensie aks-preview installeren
 
 Als u pod-beveiligings beleid wilt gebruiken, hebt u de *AKS-preview cli-* extensie versie 0.4.1 of hoger nodig. Installeer de Azure CLI *-extensie AKS-preview* met behulp van de opdracht [AZ extension add][az-extension-add] en controleer vervolgens of er beschik bare updates zijn met behulp van de opdracht [AZ extension update][az-extension-update] :
 
@@ -48,6 +47,8 @@ az extension update --name aks-preview
 ```
 
 ### <a name="register-pod-security-policy-feature-provider"></a>Pod-functie provider voor beveiligings beleid registreren
+
+**Dit document en deze functie worden op 15 oktober 2020 ingesteld voor afschaffing.**
 
 Als u een AKS-cluster wilt maken of bijwerken om pod-beveiligings beleid te gebruiken, moet u eerst een functie vlag voor uw abonnement inschakelen. Als u de functie vlag *PodSecurityPolicyPreview* wilt registreren, gebruikt u de opdracht [AZ feature REGI ster][az-feature-register] , zoals weer gegeven in het volgende voor beeld:
 
