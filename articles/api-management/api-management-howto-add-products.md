@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: 686d6e2ff01fd4d8283350ab8097e1f73c914af0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: d90b212286b555bf5b858990fd5dcb062348be8d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81260993"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254721"
 ---
 # <a name="create-and-publish-a-product"></a>Een product maken en publiceren  
 
@@ -34,9 +34,9 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-+ Leer de [terminologie van Azure API Management](api-management-terminology.md).
-+ Lees de volgende snelstartgids: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md).
-+ Voltooi tevens de volgende zelfstudie: [Uw eerste API importeren en publiceren](import-and-publish.md).
++ Informatie over de [terminologie van Azure API Management](api-management-terminology.md).
++ Voltooi de volgende snelstartgids: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md).
++ Voltooi ook de volgende zelfstudie: [Uw eerste API importeren en publiceren](import-and-publish.md).
 
 ## <a name="create-and-publish-a-product"></a>Een product maken en publiceren
 
@@ -57,7 +57,7 @@ In deze zelfstudie leert u het volgende:
     | Goedkeuring vereist        | Schakel **Goedkeuring vereisen** in als u wilt dat een beheerder abonnementspogingen voor dit product beoordeelt en accepteert of weigert. Als het selectievakje uitgeschakeld is, worden abonnementspogingen automatisch goedgekeurd.                                                                                                                         |
     | Limiet voor het aantal abonnementen | Als u het aantal gelijktijdige abonnementen wilt beperken, voert u de limiet voor het aantal abonnementen in.                                                                                                                                                                                                                                |
     | Juridische voorwaarden              | U kunt ook de gebruiksvoorwaarden voor het product opnemen, die abonnees moeten accepteren om het product te kunnen gebruiken.                                                                                                                                                                                                             |
-    | API's                     | Producten zijn koppelingen van een of meer API's. U kunt een aantal API's opnemen en deze beschikbaar stellen voor ontwikkelaars via de ontwikkelaarsportal. <br/> U kunt een bestaande API toevoegen tijdens het maken van het product. U kunt later een API toevoegen aan het product, hetzij via de pagina **instellingen** van het product, hetzij tijdens het maken van een API. |
+    | API's                     | Producten zijn koppelingen van een of meer API's. U kunt een aantal API's opnemen en deze beschikbaar stellen voor ontwikkelaars via de ontwikkelaarsportal. <br/> U kunt een bestaande API toevoegen tijdens het maken van het product. U kunt een API later aan het product toevoegen, hetzij vanuit de pagina van de product **Instellingen** of tijdens het maken van een API. |
 
 3. Klik op **Maken** om een nieuw product te maken.
 
@@ -67,7 +67,7 @@ U kunt doorgaan met het configureren van het product nadat het is opgeslagen doo
 
 Op het tabblad **Abonnementen** kunt u de abonnees van het product bekijken of abonnees aan het product toevoegen.
 
-Stel de zicht baarheid van een product voor ontwikkel aars of gasten in op het tabblad **toegangs beheer** .
+Op het tabblad **Toegangsbeheer** kunt u de zichtbaarheid voor ontwikkelaars of gastgebruikers van een product instellen.
 
 ## <a name="add-apis-to-a-product"></a><a name="add-apis"> </a>API's toevoegen aan een product
 
@@ -85,7 +85,7 @@ Ontwikkelaars moeten zich eerst abonneren op een product om toegang tot de API t
 4. Kies een API en klik op **Selecteren**.
 
 > [!TIP]
-> U kunt het abonnement van een gebruiker maken of bijwerken naar een *Product* met aangepaste abonnementssleutels [via een REST API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/subscription/createorupdate) of een PowerShell-opdracht.
+> U kunt het abonnement van een gebruiker maken of bijwerken naar een *Product* met aangepaste abonnementssleutels [via een REST API](/rest/api/apimanagement/2019-12-01/subscription/createorupdate) of een PowerShell-opdracht.
 
 ## <a name="next-steps"></a>Volgende stappen
 

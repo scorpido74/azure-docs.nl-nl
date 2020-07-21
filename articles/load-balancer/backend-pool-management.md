@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: overview
 ms.date: 07/07/2020
 ms.author: allensu
-ms.openlocfilehash: 51b00119a5cb7e49a04f02978613678a5144f8b9
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f1718de6bc9a86f85cadf4531386e663d5a420d3
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113969"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86273758"
 ---
 # <a name="backend-pool-management"></a>Beheer van back-endpools
 De back-endpool is een essentieel onderdeel van de load balancer. Met de back-endpool wordt de groep resources gedefinieerd die het verkeer verwerken voor een bepaalde taakverdelingsregel.
@@ -22,9 +22,9 @@ Er zijn twee manieren om een back-endpool te configureren:
 * NIC (netwerkinterfacekaart)
 * Combinatie van IP-adres en resource-id van VNET (virtueel netwerk)
 
-Configureer uw back-endpool met NIC wanneer u gebruikmaakt van virtuele machines en virtuele-machineschaalsets. Met deze methode bouwt u de meest directe koppeling tussen uw resource en de back-endpool. 
+Configureer uw back-endpool met NIC wanneer u gebruikmaakt van bestaande virtuele machines en virtuele-machineschaalsets. Met deze methode bouwt u de meest directe koppeling tussen uw resource en de back-endpool. 
 
-In scenario's waarin een NIC niet beschikbaar is, zoals containers of Kubernetes-pods, moet u de back-endpool configureren op basis van de combinatie van IP-adres en VNET-id.
+Wanneer u uw back-endpool vooraf wilt toewijzen met een IP-adresbereik waarvoor u later virtuele machines en virtuele-machineschaalsets wilt maken, moet u uw back-endpool configureren met een combinatie van IP-adres en VNET-id.
 
 De configuratiesecties in dit artikel zijn gericht op:
 
@@ -249,7 +249,7 @@ JSON-aanvraagtekst:
 Volg deze [quickstart voor Resource Manager-sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-standard-create/) om een load balancer en virtuele machines te implementeren, en de virtuele machines toe te voegen aan de back-endpool via de netwerkinterface.
 
 ## <a name="configure-backend-pool-by-ip-address-and-virtual-network"></a>De back-endpool configureren op basis van IP-adres en virtueel netwerk
-Gebruik het IP-adres en virtueel netwerk in scenario's met containers of met een vooraf gevulde back-endpool met IP-adressen.
+Gebruik het IP-adres en virtueel netwerk in scenario's met vooraf gevulde back-endpools.
 
 Alle beheer van de back-endpool wordt rechtstreeks uitgevoerd in het back-endpoolobject, zoals gemarkeerd in de onderstaande voorbeelden.
 

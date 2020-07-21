@@ -4,18 +4,18 @@ description: Leer hoe u een aangepaste Windows-container migreert naar Azure App
 ms.topic: tutorial
 ms.date: 10/22/2019
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 8e755c5b9a57eb66fc47364fb2fcdcbe30c2d09e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 8f2f4f707300e3ebe31f059c65492247befe324a
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85205619"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169949"
 ---
 # <a name="migrate-an-aspnet-app-to-azure-app-service-using-a-windows-container-preview"></a>Een ASP.NET-app migreren naar Azure App Service met behulp van een Windows-container (preview)
 
 [Azure App Service](overview.md) biedt vooraf gedefinieerde toepassingsstacks in Windows, zoals ASP.NET of Node.js, die worden uitgevoerd in IIS. Met de vooraf geconfigureerde Windows-omgeving wordt het besturingssysteem vergrendeld voor beheerderstoegang, software-installaties, wijzigingen aan de Global Assembly Cache, enzovoort. (Zie [Functionaliteit van besturingssystemen in Azure App Service](operating-system-functionality.md).) Als u echter een aangepaste Windows-container in App Service gebruikt, kunt u besturingssysteemwijzigingen aanbrengen die uw app nodig heeft, zodat het eenvoudig is om een on-premises app te migreren waarvoor aangepaste besturingssysteem- en softwareconfiguraties nodig zijn. Dit zelfstudie laat zien hoe u een ASP.NET-app naar App Service migreert die aangepaste lettertypen gebruikt die zijn geïnstalleerd in de Windows-lettertypenbibliotheek. U implementeert een aangepaste geconfigureerde Windows-installatiekopie van Visual Studio naar [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) en voert deze vervolgens uit in de App-service.
 
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/app-running.png)
+![Toont de web-app die wordt uitgevoerd in een Windows-container.](media/app-service-web-tutorial-windows-containers-custom-fonts/app-running.png)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -146,7 +146,7 @@ Configureer op het tabblad **Basisprincipes** de instellingen volgens de volgend
 
 Uw tabblad **Basisprincipes** moet er zo uitzien:
 
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/configure-app-basics.png)
+![Toont het tabblad Basics dat wordt gebruikt om de web-app te configureren.](media/app-service-web-tutorial-windows-containers-custom-fonts/configure-app-basics.png)
 
 ### <a name="configure-windows-container"></a>Windows-container configureren
 
@@ -167,7 +167,7 @@ Klik op **Maken** en wacht tot de vereiste resources zijn gemaakt in Azure.
 
 Als de bewerking in Azure is voltooid, wordt er een melding weergegeven.
 
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/portal-create-finished.png)
+![Toont dat de Azure-bewerking is voltooid.](media/app-service-web-tutorial-windows-containers-custom-fonts/portal-create-finished.png)
 
 1. Klik op **Ga naar resource**.
 
@@ -175,11 +175,11 @@ Als de bewerking in Azure is voltooid, wordt er een melding weergegeven.
 
 Er wordt een nieuwe browserpagina geopend met de volgende pagina:
 
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/app-starting.png)
+![Toont de nieuwe browserpagina voor de web-app.](media/app-service-web-tutorial-windows-containers-custom-fonts/app-starting.png)
 
 Wacht een paar minuten en probeer het opnieuw, totdat u de startpagina krijgt met het mooie lettertype dat u verwacht:
 
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/app-running.png)
+![Hiermee wordt de startpagina weergegeven met het lettertype dat u hebt geconfigureerd.](media/app-service-web-tutorial-windows-containers-custom-fonts/app-running.png)
 
 **Gefeliciteerd!** U hebt een ASP.NET toepassing gemigreerd naar Azure App Service in een Windows-container.
 

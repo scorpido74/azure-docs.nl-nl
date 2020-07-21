@@ -17,12 +17,12 @@ ms.date: 03/22/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
-ms.openlocfilehash: 914ccc2ac74048abb2a66b61aa65b771f8141d5e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: a8a939f0d0c3575adec147c1942ddbbef334cb65
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71212053"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220147"
 ---
 # <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>Zelfstudie: Meldingen verzenden naar specifieke gebruikers met behulp van Azure Notification Hubs
 
@@ -33,7 +33,7 @@ ms.locfileid: "71212053"
 In deze zelfstudie wordt uitgelegd hoe u met Azure Notification Hubs pushmeldingen kunt verzenden naar een specifieke app-gebruiker op een specifiek apparaat. Er wordt een ASP.NET WebAPI-back-end gebruikt om clients te verifiëren. Wanneer de back-end de gebruiker van een clienttoepassing verifieert, wordt er automatisch een tag aan de registratie van de melding toegevoegd. De back-end gebruikt deze tag om meldingen te verzenden naar de specifieke gebruiker.
 
 > [!NOTE]
-> De volledige code voor deze zelf studie is te vinden op [github](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers).
+> De volledige code voor deze zelfstudie vindt u op [GitHub](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers).
 
 In deze zelfstudie voert u de volgende stappen uit:
 
@@ -48,25 +48,25 @@ In deze zelfstudie voert u de volgende stappen uit:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Deze zelfstudie bouwt voort op de Notification Hub en het Visual Studio-project die u hebt gemaakt in de zelfstudie [Tutorial: Send notifications to Universal Windows Platform apps by using Azure Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) (Zelfstudie: Meldingen verzenden naar UWP-apps (Universal Windows Platform) met behulp van Azure Notification Hubs). Het is dan ook belangrijk dat u eerst die zelfstudie voltooit voordat u aan de slag gaat met deze zelfstudie.
+Deze zelfstudie bouwt voort op de Notification Hub die en het Visual Studio-project dat u hebt gemaakt in de [Zelfstudie: Meldingen verzenden naar Universeel Windows-platform-apps met behulp van Azure Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md). Het is dan ook belangrijk dat u eerst die zelfstudie voltooit voordat u aan de slag gaat met deze zelfstudie.
 
 > [!NOTE]
 > Als u Mobile Apps in Azure App Service gebruikt als uw back-endservice, raadpleegt u de [Mobile Apps-versie](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md) van deze zelfstudie.
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
-## <a name="update-the-code-for-the-uwp-client"></a>De code voor de UWP-client bijwerken
+## <a name="update-the-code-for-the-uwp-client"></a>De code voor het UWP-client bijwerken
 
-In dit gedeelte werkt u de code bij in het project dat u hebt voltooid voor de zelfstudie [Tutorial: Send notifications to Universal Windows Platform apps by using Azure Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) (Zelfstudie: Meldingen verzenden naar UWP-apps (Universal Windows Platform) met behulp van Azure Notification Hubs). Het project moet al zijn gekoppeld aan de Windows Store. Bovendien moet het project zijn geconfigureerd voor het gebruik van uw Notification Hub. In dit gedeelte voegt u code toe voor het aanroepen van de nieuwe WebAPI-back-end en gebruikt u deze voor het registreren en verzenden van meldingen.
+In deze sectie werkt u de code bij in het project dat u hebt gemaakt voor de [Zelfstudie: Meldingen verzenden naar Universeel Windows-platform-apps met behulp van Azure Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md). Het project moet al zijn gekoppeld aan de Windows Store. Bovendien moet het project zijn geconfigureerd voor het gebruik van uw Notification Hub. In dit gedeelte voegt u code toe voor het aanroepen van de nieuwe WebAPI-back-end en gebruikt u deze voor het registreren en verzenden van meldingen.
 
-1. Open in Visual Studio de oplossing die u hebt gemaakt voor de zelfstudie [Tutorial: Send notifications to Universal Windows Platform apps by using Azure Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) (Zelfstudie: Meldingen verzenden naar UWP-apps (Universal Windows Platform) met behulp van Azure Notification Hubs).
-2. Klik in Solution Explorer met de rechter muisknop op het project Universeel Windows-platform (UWP) en klik vervolgens op **NuGet-pakketten beheren**.
-3. Klik aan de linkerkant op **Bladeren**.
+1. Open in Visual Studio de oplossing die u hebt gemaakt voor de [Zelfstudie: Meldingen verzenden naar Universeel Windows-platform-apps met behulp van Azure Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).
+2. Klik in Solution Explorer met de rechtermuisknop op het project Universal Windows Platform (UWP) en klik vervolgens op **Manage NuGet-pakketten**.
+3. Selecteer aan de linkerkant **Bladeren**.
 4. Typ **Http Client** in **het zoekvak**.
 5. Klik in de lijst met resultaten op **System.Net.Http** en vervolgens op **Installeren**. Voltooi de installatie.
 6. Typ nu **Json.net** in **het zoekvak** van NuGet. Installeer het pakket **Newtonsoft.json** en sluit het venster NuGet Package Manager.
 7. Dubbelklik in Solution Explorer in het project **WindowsApp** op het bestand **MainPage.xaml** om dit te openen in de Visual Studio-editor.
-8. Vervang in `MainPage.xaml` de XML-code de `<Grid>` sectie door de volgende code: deze code voegt een tekstvak voor gebruikers naam en wacht woord toe waarmee de gebruiker wordt geverifieerd. Ook worden er tekstvakken toegevoegd voor de melding en voor de gebruikersnaam-tag die de melding moet ontvangen:
+8. Vervang in de XML-code voor `MainPage.xaml` de sectie `<Grid>` door de volgende code: Met deze code wordt een tekstvak voor de gebruikersnaam en het wachtwoord toegevoegd waarmee de gebruiker wordt geverifieerd. Ook worden er tekstvakken toegevoegd voor de melding en voor de gebruikersnaam-tag die de melding moet ontvangen:
 
     ```xml
     <Grid>
@@ -118,7 +118,7 @@ In dit gedeelte werkt u de code bij in het project dat u hebt voltooid voor de z
         </StackPanel>
     </Grid>
     ```
-9. Open in Solution Explorer het bestand `MainPage.xaml.cs` voor de projecten **(Windows 8.1)** en **(Windows Phone 8.1)**. Voeg de volgende `using`-instructies toe aan het begin van beide bestanden:
+9. Open in Solution Explorer het bestand `MainPage.xaml.cs` voor de projecten **(Windows 8.1)** en **(Windows Phone 8.1)** . Voeg de volgende `using`-instructies toe aan het begin van beide bestanden:
 
     ```csharp
     using System.Net.Http;
@@ -133,7 +133,7 @@ In dit gedeelte werkt u de code bij in het project dat u hebt voltooid voor de z
     ```csharp
     private static string BACKEND_ENDPOINT = "<Enter Your Backend Endpoint>";
     ```
-11. Voeg de volgende code toe aan de klasse MainPage in `MainPage.xaml.cs` voor de projecten **(Windows 8.1)** en **(Windows Phone 8.1)**.
+11. Voeg de volgende code toe aan de klasse MainPage in `MainPage.xaml.cs` voor de projecten **(Windows 8.1)** en **(Windows Phone 8.1)** .
 
     De methode `PushClick` is de handler voor de knop **Send Push**. De methode roept de back-end aan om een melding te triggeren naar alle apparaten met een gebruikersnaam-tag die overeenkomt met de parameter `to_tag`. De melding wordt als JSON-inhoud verzonden in de aanvraagtekst.
 
@@ -224,7 +224,7 @@ In dit gedeelte werkt u de code bij in het project dat u hebt voltooid voor de z
     ```
 13. Klik met de rechtermuisknop op het project **WindowsApp**, klik op **Add** en op **Class**. Geef de klasse de naam `RegisterClient.cs` en klik vervolgens op **OK** om de klasse te genereren.
 
-    Deze klasse verpakt de REST-aanroepen die nodig zijn om contact op te nemen met de app-back-end, om registratie voor pushmeldingen mogelijk te maken. Daarnaast wordt de *registrationIds* die is gemaakt door de meldingshub, lokaal opgeslagen. Zie [Registering from your App Backend](https://msdn.microsoft.com/library/dn743807.aspx) (Registreren vanuit uw app-back-end) voor meer informatie. De klasse maakt gebruik van een verificatietoken dat wordt opgeslagen in de lokale opslag wanneer u op de knop **Login and register** klikt.
+    Deze klasse verpakt de REST-aanroepen die nodig zijn om contact op te nemen met de app-back-end, om registratie voor pushmeldingen mogelijk te maken. Daarnaast wordt de *registrationIds* die is gemaakt door de Notification Hub, lokaal opgeslagen. Zie [Registering from your App Backend](https://msdn.microsoft.com/library/dn743807.aspx) (Registreren vanuit uw app-back-end) voor meer informatie. De klasse maakt gebruik van een verificatietoken dat wordt opgeslagen in de lokale opslag wanneer u op de knop **Login and register** klikt.
 14. Voeg aan het begin van het bestand RegisterClient.cs de volgende `using`-instructies toe:
 
     ```csharp
@@ -331,11 +331,11 @@ In dit gedeelte werkt u de code bij in het project dat u hebt voltooid voor de z
 2. Voer een gebruikersnaam (**Username**) en wachtwoord (**Password**) in zoals weergegeven in het scherm hieronder. Deze moeten verschillen van de gebruikersnaam en het wachtwoord voor Windows Phone.
 3. Klik op **Login and register** en controleer of er een dialoogvenster wordt weergegeven met de mededeling dat u zich hebt aangemeld. Met deze code wordt ook de knop **Send Push** ingeschakeld.
 
-    ![][14]
+    ![Schermopname van de Notification Hubs-toepassing waarin de gebruikersnaam en het wachtwoord zijn ingevuld.][14]
 5. Voer in het veld **Recipient Username Tag** de geregistreerde gebruikersnaam in. Voer tekst in voor de melding en klik op **Send Push**.
 6. Alleen de apparaten die zijn geregistreerd met de overeenkomende gebruikersnaam-tag ontvangen de melding.
 
-    ![][15]
+    ![Schermopname van de Notification Hubs-toepassing met weergave van het bericht dat werd gepushed.][15]
 
 ## <a name="next-steps"></a>Volgende stappen
 

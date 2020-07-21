@@ -1,17 +1,17 @@
 ---
-title: Een Java-app implementeren in een Service Fabric cluster in azure
+title: Een Java-app implementeren in een Service Fabric-cluster in Azure
 description: In deze zelfstudie leert u hoe u een Java Service Fabric-toepassing implementeert in een Azure Service Fabric-cluster.
 author: suhuruli
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: df6719cad79bdb063c2d4d74892206b6e5bbd414
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 672f8916749362e7145799bdefa3bbd628fc9116
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80292043"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244817"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>Zelfstudie: Een Java-toepassing implementeren in een Service Fabric-cluster in Azure
 
@@ -36,8 +36,8 @@ In deze zelfstudiereeks leert u het volgende:
 
 Voor u met deze zelfstudie begint:
 
-* Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan
-* [De Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+* Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* [Azure CLI installeren](/cli/azure/install-azure-cli?view=azure-cli-latest)
 * Installeer Service Fabric-SDK voor [Mac](service-fabric-get-started-mac.md) of [Linux](service-fabric-get-started-linux.md)
 * [Installeer Python 3](https://wiki.python.org/moin/BeginnersGuide/Download)
 
@@ -162,9 +162,9 @@ In de volgende stappen maakt u de benodigde resources die vereist zijn voor het 
     https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender
     ```
 
-    De SAS-URL voor de Event hubs volgt de structuur `https://<namespacename>.servicebus.windows.net/<eventhubsname>?sr=<sastoken>`:. Bijvoorbeeld: `https://testeventhubnamespace.servicebus.windows.net/testeventhub?sr=https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender`
+    Uw SAS URL voor de EventHubs volgt de structuur: `https://<namespacename>.servicebus.windows.net/<eventhubsname>?sr=<sastoken>`. Bijvoorbeeld: `https://testeventhubnamespace.servicebus.windows.net/testeventhub?sr=https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender`
 
-12. Open het bestand *sfdeploy. para meters. json* en vervang de volgende inhoud uit de voor gaande stappen. [SAS-URL-STORAGE-ACCOUNT] hebt u genoteerd in stap 8. [SAS-URL-EVENT-HUBS] hebt u genoteerd in stap 11.
+12. Open het bestand *sfdeploy.parameters.json* en vervang de volgende inhoud uit de voorgaande stappen. [SAS-URL-STORAGE-ACCOUNT] hebt u genoteerd in stap 8. [SAS-URL-EVENT-HUBS] hebt u genoteerd in stap 11.
 
     ```json
     "applicationDiagnosticsStorageAccountName": {
@@ -179,7 +179,7 @@ In de volgende stappen maakt u de benodigde resources die vereist zijn voor het 
     ```
 
 13. Opens **sfdeploy.parameters.json**. Wijzig de volgende parameters en sla het bestand op.
-    - **clustername**. Gebruik alleen kleine letters en cijfers.
+    - **clusterName**. Gebruik alleen kleine letters en cijfers.
     - **adminUserName** (in een waarde anders dan leeg)
     - **adminPassword** (in een waarde anders dan leeg)
 

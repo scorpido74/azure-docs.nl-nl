@@ -1,0 +1,56 @@
+- name: Documentatie voor Azure Education Hub
+  href: ./index.yml
+- name: Overzicht
+  items:
+    - name: Wat is de Education Hub?
+      href: about-education-hub.md
+- name: Snelstartgidsen
+  items:
+    - name: Toegang tot de Education Hub
+      href: access-education-hub.md
+    - name: Aan de slag met de Education Hub
+      href: get-started-education-hub.md
+    - name: Een cursus opzetten en een leslokaal maken
+      href: set-up-course-classroom.md
+- name: Instructiegidsen
+  items:
+    - name: Uw academische beurs beheren
+      href: hub-overview-page.md
+    - name: Een opdracht maken en studiepunten toewijzen
+      href: create-assignment-allocate-credit.md
+- name: Ondersteuning
+  items:
+    - name: Servicedesk
+      href: educator-service-desk.md
+- name: Azure Dev Tools for Teaching
+  items:
+    - name: Overzicht
+      items:
+        - name: Wat is Azure Dev Tools for Teaching?
+          href: azure-dev-tools-teaching/about-program.md
+        - name: Azure for Students
+          href: azure-dev-tools-teaching/azure-students-program.md
+        - name: Azure for Students Starter
+          href: azure-dev-tools-teaching/azure-students-starter-program.md
+    - name: Snelstartgidsen
+      items:
+        - name: Inschrijven of een abonnement verlengen
+          href: azure-dev-tools-teaching/enroll-renew-subscription.md
+        - name: Toegang instellen
+          href: azure-dev-tools-teaching/set-up-access.md
+    - name: Instructiegidsen
+      items:
+        - name: Studenten beheren
+          href: azure-dev-tools-teaching/manage-students.md
+        - name: Software downloaden
+          href: azure-dev-tools-teaching/download-software.md
+    - name: Problemen oplossen
+      items:
+        - name: Aanmeldingsfouten
+          href: azure-dev-tools-teaching/troubleshoot-login.md
+- name: Resources
+  items:
+    - name: Veelgestelde vragen
+      href: azure-dev-tools-teaching/program-faq.md
+    - name: Ondersteuning
+      href: azure-dev-tools-teaching/program-support.md

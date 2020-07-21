@@ -1,113 +1,113 @@
 ---
-title: Clients koppelen aan het FXT Edge-cluster van Microsoft Azure
-description: Hoe NFS-client computers de Azure FXT Edge filer hybride opslag cache kan koppelen
+title: Clients koppelen aan het Azure FXT Edge Filer-cluster van Microsoft
+description: Hoe NFS-clientcomputers aan de Azure FXT Edge Filer hybride opslagcache kunnen koppelen
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: 43223db298e4ad170ea6d0687a342b3aee35500e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: ea963b143cedf36137d9c36bc57d323353da6786
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80130772"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231349"
 ---
-# <a name="tutorial-mount-the-cluster"></a>Zelf studie: het cluster koppelen
+# <a name="tutorial-mount-the-cluster"></a>Zelfstudie: Het cluster koppelen
 
-In deze zelf studie leert u hoe u NFS-clients kunt koppelen aan het Azure FXT Edge-bestands cluster. Clients koppelen de paden van de virtuele naam ruimte die u hebt toegewezen bij het toevoegen van back-end-opslag.
+In deze zelfstudie leert u hoe u NFS-clients kunt koppelen aan het Azure FXT Edge Filer-cluster. Clients koppelen de paden van de virtuele naamruimte die u hebt toegewezen bij het toevoegen van back-end-opslag.
 
-In deze zelf studie leert u het volgende:
+In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Strategieën voor Load Balancing-clients over het bereik van client gerichte IP-adressen
-> * Een koppelingspad maken op basis van een client gericht IP-adres en naam ruimte koppeling
-> * Welke argumenten moeten worden gebruikt in een koppelings opdracht
+> * Strategieën voor taakverdeling-clients over het bereik van client-gerichte IP-adressen
+> * Hoe een koppelingspad maken op basis van een client-gericht IP-adres en naamruimteverbinding
+> * Welke argumenten moeten worden gebruikt in een koppelingsopdracht
 
-Het volt ooien van deze zelf studie duurt ongeveer 45 minuten.
+Het voltooien van deze zelfstudie duurt ongeveer 45 minuten.
 
-## <a name="steps-to-mount-the-cluster"></a>Stappen voor het koppelen van het cluster
+## <a name="steps-to-mount-the-cluster"></a>Stappen om het cluster te koppelen
 
-Volg deze stappen om client computers te verbinden met uw Azure FXT Edge-bestands cluster.
+Volg deze stappen om clientcomputers te verbinden met uw Azure FXT Edge Filer-cluster.
 
-1. Bepaal hoe u het client verkeer wilt verdelen over de cluster knooppunten. Lees [saldo client belasting](#balance-client-load)hieronder voor meer informatie.
+1. Bepaal hoe u het clientverkeer wilt verdelen over de clusterknooppunten. Lees [Clientbelasting verdelen](#balance-client-load)hieronder voor meer informatie.
 1. Identificeer het IP-adres en het pad van de cluster om te koppelen.
-1. Bepaal het op de client gerichte pad voor de koppeling.
-1. Geef de [koppelings opdracht](#use-recommended-mount-command-options)met de juiste argumenten op.
+1. Bepaal het op de client-gerichte pad voor de koppeling.
+1. Verzend de [Koppelingsopdracht](#use-recommended-mount-command-options)met de juiste argumenten.
 
-## <a name="balance-client-load"></a>Taak verdeling van client
+## <a name="balance-client-load"></a>Verdeling van clientbelasting
 
-Als u client aanvragen wilt verdelen over alle knoop punten in het cluster, moet u clients koppelen aan het volledige bereik aan client gerichte IP-adressen. Er zijn verschillende manieren om deze taak te automatiseren.
+Als u clientaanvragen wilt verdelen over alle knooppunten in het cluster, moet u clients koppelen aan het volledige bereik aan client-gerichte IP-adressen. Er zijn verschillende manieren om deze taak te automatiseren.
 
-Voor meer informatie over Round Robin DNS-taak verdeling voor het cluster, Lees [DNS configureren voor het Azure FXT Edge-bestands cluster](fxt-configure-network.md#configure-dns-for-load-balancing). Als u deze methode wilt gebruiken, moet u een DNS-server onderhouden, die niet wordt uitgelegd in deze artikelen.
+Lees [DNS configureren voor de Azure FXT Edge Filer-cluster](fxt-configure-network.md#configure-dns-for-load-balancing)voor meer informatie over round robin DNS-taakverdeling voor het cluster. Als u deze methode wilt gebruiken, moet u een DNS-server onderhouden, die niet wordt uitgelegd in deze artikelen.
 
-Een eenvoudigere methode voor kleine installaties is het gebruik van een script om IP-adressen toe te wijzen binnen het bereik van de client koppelings tijd.
+Een eenvoudigere methode voor kleine installaties is het gebruik van een script om IP-adressen toe te wijzen binnen het bereik van de client koppelingstijd.
 
-Andere methoden voor taak verdeling kunnen geschikt zijn voor grote of gecompliceerde systemen. Neem contact op met uw micro soft-vertegenwoordiger of open een [ondersteunings aanvraag](fxt-support-ticket.md) voor hulp. (Azure Load Balancer wordt momenteel *niet ondersteund* met Azure FXT Edge-bestand.)
+Andere methoden voor taakverdeling kunnen geschikt zijn voor grote of gecompliceerde systemen. Neem contact op met uw Microsoft-vertegenwoordiger of open een [Ondersteuningsaanvraag](fxt-support-ticket.md) voor hulp. (Azure Load Balancer wordt momenteel *niet ondersteund* met de Azure FXT Edge Filer.)
 
-## <a name="create-the-mount-command"></a>De koppeling maken opdracht
+## <a name="create-the-mount-command"></a>De koppelingsopdracht maken
 
-Vanaf uw client wijst de ``mount`` opdracht de virtuele server (vserver) toe aan het Azure FXT Edge-bestands cluster naar een pad op het lokale bestands systeem.
+Vanaf uw client, ``mount``wijst de opdracht de virtuele server (vserver) toe aan het Azure FXT Edge Filer-cluster naar een pad op het lokale bestandssysteem.
 
-De indeling is``mount <FXT cluster path> <local path> {options}``
+De indeling is ``mount <FXT cluster path> <local path> {options}``
 
-Er zijn drie elementen voor de koppelings opdracht:
+Er zijn drie elementen voor de koppelingsopdracht:
 
-* pad naar cluster: een combi natie van het pad voor IP-adres en naam ruimte koppeling dat hieronder wordt beschreven
-* lokaal pad-het pad op de client
-* opdracht Opties voor koppelen: (vermeld in [Aanbevolen opdracht Opties voor koppelen gebruiken](#use-recommended-mount-command-options))
+* Clusterpad – een combinatie van het pad voor IP-adres en naamruimtekoppeling dat hieronder wordt beschreven
+* Lokaal pad – het pad op de client
+* Opties koppelingsopdracht – (weer gegeven in [Aanbevolen opties voor koppelingsopdracht gebruiken](#use-recommended-mount-command-options))
 
-### <a name="create-the-cluster-path"></a>Het pad van het cluster maken
+### <a name="create-the-cluster-path"></a>Het clusterpad maken
 
-Het pad van het cluster is een combi natie van het vserver *IP-adres* plus het pad naar een *naam ruimte koppeling*. De naam ruimte koppeling is een virtueel pad dat u hebt gedefinieerd tijdens [het toevoegen van het opslag systeem](fxt-add-storage.md#create-a-junction).
+Het clusterpad is een combinatie van het *IP-adres* van de vserver plus het pad naar een *naamruimtekoppeling*. De naamruimtekoppeling is een virtueel pad dat u hebt gedefinieerd wanneer u [het opslagsysteem hebt toegevoegd](fxt-add-storage.md#create-a-junction).
 
-Als u bijvoorbeeld hebt gebruikt ``/fxt/files`` als pad voor de naam ruimte, zouden uw clients *iP_address*:/FXT/files te koppelen aan hun lokale koppel punt.
+Als u bijvoorbeeld ``/fxt/files`` hebt gebruikt als het pad naar de naamruimte, zouden uw clients *IP_address*:/fxt/files te koppelen aan hun lokale koppelpunt.
 
-![Dialoog venster nieuwe verbinding toevoegen met/avere/files in het veld naam ruimte-pad](media/fxt-mount/fxt-junction-example.png)
+![Dialoogvenster "Nieuwe koppeling toevoegen" met /avere/files in het veld naamruimtepad](media/fxt-mount/fxt-junction-example.png)
 
-Het IP-adres is een van de client gerichte IP-adressen die zijn gedefinieerd voor de vserver. U kunt het bereik van client gerichte Ip's vinden op twee plaatsen in het configuratie scherm van het cluster:
+Het IP-adres is één van de client-gerichte IP-adressen die zijn gedefinieerd voor de vserver. U kunt het bereik van client-gerichte IP's vinden op twee plaatsen in het cluster Configuratiescherm:
 
-* **VServers** -tabel (tabblad dash board)-
+* **VServers** tabel (tabblad Dashboard) –
 
-  ![Tabblad dash board van het configuratie scherm met het tabblad VServer geselecteerd in de gegevens tabel onder de grafiek, en de sectie IP-adres omcirkeld](media/fxt-mount/fxt-ip-addresses-dashboard.png)
+  ![Tabblad Dashboard van het Configuratiescherm met het tabblad VServer geselecteerd in de gegevenstabel onder de grafiek, en de sectie IP-adres omcirkeld](media/fxt-mount/fxt-ip-addresses-dashboard.png)
 
-* Pagina netwerk instellingen voor **client** -
+* Instellingenpagina **Client-gericht netwerk** –
 
-  ![Instellingen > de pagina VServer > client gerichte netwerk configuratie met een cirkel rond de sectie adres bereik van de tabel voor een bepaalde vserver](media/fxt-mount/fxt-ip-addresses-settings.png)
+  ![Instellingen > VServer > Client-gerichte netwerk configuratiepagina met een cirkel rond de sectie Adresbereik van de tabel voor een bepaalde vserver](media/fxt-mount/fxt-ip-addresses-settings.png)
 
-Combi neer het IP-adres en het pad van de naam ruimte om het pad van het cluster voor de opdracht Mount te maken.
+Combineer het IP-adres en het pad van de naamruimte om het pad van het cluster voor de koppelingsopdracht te maken.
 
-Voor beeld van client koppelings opdracht:``mount 10.0.0.12:/sd-access /mnt/fxt {options}``
+Voor beeld van client koppelingsopdracht: ``mount 10.0.0.12:/sd-access /mnt/fxt {options}``
 
 ### <a name="create-the-local-path"></a>Het lokale pad maken
 
-Het lokale pad voor de koppelings opdracht is voor u. U kunt elke gewenste pad-structuur instellen als onderdeel van de virtuele naam ruimte. Ontwerp een naam ruimte en een lokaal pad dat handig is voor uw client werk stroom.
+Het lokale pad voor de koppelingsopdracht hangt af van u. U kunt elke gewenste padstructuur instellen als onderdeel van de virtuele naamruimte. Ontwerp een naamruimte en een lokaal pad dat handig is voor uw client werkstroom.
 
-Lees het overzicht van de [naam ruimte](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gns_overview.html)van de cluster configuratie handleiding voor meer informatie over de client gerichte naam ruimte.
+Lees voor meer informatie over de client-gerichte naamruimte het [Naamruimte overzicht](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gns_overview.html) van de Hulplijn Clusterconfiguratie.
 
-Naast de paden moet u de [opdracht Opties voor koppelen](#use-recommended-mount-command-options) gebruiken die hieronder worden beschreven bij het koppelen van elke client.
+Naast de paden, neemt u de [opties voor de koppelingsopdracht](#use-recommended-mount-command-options) op die hieronder worden beschreven bij het koppelen van elke client.
 
-### <a name="use-recommended-mount-command-options"></a>Aanbevolen opdracht Opties voor koppelen gebruiken
+### <a name="use-recommended-mount-command-options"></a>Aanbevolen opties voor de koppelingsopdracht gebruiken
 
-Om ervoor te zorgen dat een naadloze client koppelt, geeft u deze instellingen en argumenten door in de opdracht Mount:
+Om ervoor te zorgen dat een naadloze clientkoppeling, geeft u deze instellingen en argument door in uw koppelingsopdracht:
 
 ``mount -o hard,nointr,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
 
-| Vereiste instellingen | |
+| Verplichte instellingen | Beschrijving |
 --- | ---
-``hard`` | Zachte koppelingen naar het Azure FXT Edge-bestands cluster zijn gekoppeld aan toepassings fouten en mogelijke gegevens verlies.
-``proto=netid`` | Met deze optie wordt de juiste verwerking van NFS-netwerk fouten ondersteund.
-``mountproto=netid`` | Deze optie biedt ondersteuning voor de juiste verwerking van netwerk fouten voor koppelings bewerkingen.
-``retry=n`` | Stel ``retry=30`` in om storingen van de tijdelijke koppeling te voor komen. (Een andere waarde wordt aanbevolen in voorgrond koppelingen.)
+``hard`` | Zachte koppelingen naar het Azure FXT Edge Filer-cluster zijn gekoppeld aan toepassingsfouten en mogelijk gegevensverlies.
+``proto=netid`` | Deze optie ondersteunt de juiste verwerking van NFS-netwerkfouten.
+``mountproto=netid`` | Deze optie ondersteunt de juiste verwerking van netwerkfouten voor koppelingsbewerkingen.
+``retry=n`` | Stel ``retry=30`` in om tijdelijke koppelingsfouten te voorkomen. (Een andere waarde wordt aanbevolen in voorgrondkoppelingen.)
 
-| Voorkeurs instellingen  | |
+| Voorkeursinstellingen  | Beschrijving |
 --- | ---
-``nointr``            | Als uw clients oudere OS-kernels gebruiken (vóór april 2008) die deze optie ondersteunen, gebruikt u deze. De optie ' intr ' is de standaard instelling.
+``nointr``            | Als uw clients oudere OS-kernels gebruiken (vóór april 2008) die deze optie ondersteunen, gebruikt u deze. De optie "intr" is de standaardinstelling.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u-clients hebt gekoppeld, kunt u uw werk stroom testen en aan de slag met uw cluster.
+Nadat u clients hebt gekoppeld, kunt u uw werkstroom testen en aan de slag gaan met uw cluster.
 
-Als u gegevens naar een nieuwe Cloud core-bestandsr wilt verplaatsen, kunt u profiteren van de cache structuur door gebruik te maken van parallelle gegevens opname. Sommige strategieën worden beschreven in [gegevens verplaatsen naar een vFXT-cluster](https://docs.microsoft.com/azure/avere-vfxt/avere-vfxt-data-ingest). (Avere vFXT voor Azure is een Cloud product dat gebruikmaakt van cache technologie die zeer vergelijkbaar is met de Azure FXT Edge-bestand.)
+Als u gegevens naar een nieuwe cloud kernfiler wilt verplaatsen, kunt u profiteren van de cache structuur door gebruik te maken van parallelle gegevensopname. Sommige strategieën worden beschreven in [Verplaatsen van gegevens naar een vFXT-cluster](https://docs.microsoft.com/azure/avere-vfxt/avere-vfxt-data-ingest). (Avere vFXT voor Azure is een cloud-product dat gebruikmaakt van technologie voor opslaan in cache die zeer vergelijkbaar is met de Azure FXT Edge Filer.)
 
-Lees de hardware-status van de [Azure FXT Edge-bestandsr controleren](fxt-monitor.md) als u hardwareproblemen moet oplossen.
+Lees [De hardware-status van de Azure FXT Edge Filer bewaken](fxt-monitor.md) als u problemen met hardware moet oplossen.

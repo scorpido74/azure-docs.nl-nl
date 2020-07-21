@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: migreren van Google Maps naar Azure Maps | Microsoft Azure kaarten'
-description: Een zelf studie over het migreren van Google-kaarten naar Microsoft Azure Maps. U wordt begeleid bij het overschakelen naar Azure Maps-Api's en Sdk's.
+title: 'Zelfstudie: Migreren vanuit Google Maps naar Azure Maps | Microsoft Azure Maps'
+description: Een zelfstudie over hoe u vanuit Google Maps migreert naar Microsoft Azure Maps. U wordt begeleid bij het overschakelen naar Azure Maps-API's en SDK's.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 12/17/2019
@@ -9,98 +9,98 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 7b73923b7fc32ae83bfc8405d074835c02031a63
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 2422204a809e0b13f4e337d49b851a0338681853
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77913698"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249203"
 ---
-# <a name="migrate-from-google-maps-to-azure-maps"></a>Migreren van Google-kaarten naar Azure Maps
+# <a name="migrate-from-google-maps-to-azure-maps"></a>Migrate van Google Maps naar Azure Maps
 
-In deze zelf studie vindt u informatie over het migreren van web-, mobiele en server toepassingen van Google Maps naar het Microsoft Azure Maps-platform. Deze zelf studie bevat vergelijkende code voorbeelden, migratie suggesties en aanbevolen procedures voor het migreren naar Azure Maps.
+In deze zelfstudie vindt u informatie over het migreren van web-, mobiele en servertoepassingen van Google Maps naar het Microsoft Azure Maps-platform. Deze zelfstudie bevat vergelijkende codevoorbeelden, suggesties voor migratie en best practices voor migratie naar Azure Maps.
 
-## <a name="azure-maps-platform-overview"></a>Overzicht van Azure Maps platform
+## <a name="azure-maps-platform-overview"></a>Overzicht van het Azure Maps-platform
 
-Azure Maps biedt ontwikkel aars uit alle branches krachtige georuimtelijke mogelijkheden. De mogelijkheden zijn verpakt met regel matige bijgewerkte kaart gegevens om geografische context te bieden voor web-en mobiele toepassingen. Azure Maps heeft een Azure One API-compatibele set REST-Api's. De REST Api's bieden rendering van kaarten, zoek functies, route ring, verkeer, tijd zones, geolocatie, geoomheining, kaart gegevens, weer, mobiliteit en ruimtelijke bewerkingen. Bewerkingen worden gecombineerd met zowel web-als Android-Sdk's om ontwikkel gemak, flexibel en draagbaar te maken op meerdere platforms.
+Azure Maps biedt ontwikkelaars uit alle sectoren krachtige georuimtelijke mogelijkheden. De mogelijkheden zijn verpakt met regelmatige bijgewerkte kaartgegevens om geografische context te bieden voor web- en mobiele toepassingen. Azure Maps heeft een met Azure One API-compatibele set REST API's. De REST API's bieden mogelijkheden voor rendering van kaarten, zoekfuncties, navigatie-instructies, verkeer, tijdzones, geolocatie, geofencing, kaartgegevens, weer, mobiliteit en Spatial Operations. Bewerkingen worden verstrekt met zowel web- als Android-SDK's om ontwikkeling op meerdere platforms eenvoudig, flexibel en draagbaar te maken.
 
-## <a name="high-level-platform-comparison"></a>Vergelijking van platform op hoog niveau
+## <a name="high-level-platform-comparison"></a>Algemene platformvergelijking
 
-De tabel bevat een lijst op hoog niveau van Azure Maps functies die overeenkomen met de functies van Google Maps. In deze lijst worden niet alle Azure Maps functies weer gegeven. Aanvullende Azure Maps functies zijn onder andere: toegankelijkheid, geoomheining, van isochronen, ruimtelijke bewerkingen, direct kaarten tegel toegang, batch Services en vergelijking van gegevens behoeften (dat wil zeggen, afbeeldings dekking).
+De tabel bevat een globale lijst van Azure Maps-functies die overeenkomen met de functies van Google Maps. In deze lijst worden niet alle functies van Azure Maps weergegeven. Aanvullende functies van Azure Maps zijn onder andere: toegankelijkheid, geofencing, isochronen, ruimtelijke bewerkingen, directe toegang tot kaarttegels, batchservices en vergelijking van gegevensdekking (dat wil zeggen fotodekking).
 
-| Google Maps-functie         | Ondersteuning voor Azure Maps                     |
+| Google Maps-functie         | Azure Maps-ondersteuning                     |
 |-----------------------------|:--------------------------------------:|
 | Web SDK                     | ✓                                      |
 | Android SDK                 | ✓                                      |
 | iOS SDK                     | Gepland                                |
-| REST service-Api's           | ✓                                      |
-| Instructies (route ring)        | ✓                                      |
-| Afstands matrix             | ✓                                      |
-| Uitbrei ding                   | Gepland                                |
-| Geocodering (forward/reverse) | ✓                                      |
+| REST Service-API's           | ✓                                      |
+| Aanwijzingen (navigatie)        | ✓                                      |
+| Afstandsmatrix             | ✓                                      |
+| Terrein                   | Gepland                                |
+| Geocodering (vooruit/achteruit) | ✓                                      |
 | Geolocatie                 | N.v.t.                                    |
 | Dichtstbijzijnde wegen               | ✓                                      |
 | Locaties zoeken               | ✓                                      |
-| Plaatst Details              | N.v.t.: het telefoon nummer van de website & beschikbaar |
-| Plaatst Foto's               | N.v.t.                                    |
-| Automatisch aanvullen plaatsen          | ✓                                      |
+| Details over plaatsen              | N.v.t.: website en telefoonnummer beschikbaar |
+| Foto's van plaatsen               | N.v.t.                                    |
+| Locatie automatisch aanvullen          | ✓                                      |
 | Uitlijnen op weg                | ✓                                      |
-| Snelheids limieten                | ✓                                      |
+| Snelheidslimieten                | ✓                                      |
 | Statische kaarten                 | ✓                                      |
-| Statische straat weergave          | N.v.t.                                    |
+| Statische straatweergave          | N.v.t.                                    |
 | Tijdzone                   | ✓                                      |
-| Maps-Inge sloten API           | N.v.t.                                    |
-| Kaart-Url's                    | N.v.t.                                    |
+| In Maps ingesloten API           | N.v.t.                                    |
+| Kaart-URL's                    | N.v.t.                                    |
 
-Google Maps biedt basis verificatie op basis van een sleutel. Azure Maps biedt zowel basis verificatie op basis van sleutels als Azure Active Directory-verificatie. Azure Active Directory-verificatie biedt meer beveiligings functies, vergeleken met de basis verificatie op basis van sleutels.
+Google Maps biedt basisverificatie op basis van een sleutel. Azure Maps biedt zowel basisverificatie op basis van sleutels als Azure Active Directory-verificatie. Azure Active Directory-verificatie biedt meer beveiligingsfuncties, vergeleken met de basisverificatie op basis van sleutels.
 
-## <a name="licensing-considerations"></a>Licentie overwegingen
+## <a name="licensing-considerations"></a>Licentieoverwegingen
 
-Houd rekening met de volgende punten over licenties bij het migreren naar Azure Maps van Google Maps.
+Houd wat licenties betreft rekening met de volgende punten wanneer u van Google Maps overstapt op Azure Maps.
 
-- Azure Maps kosten voor het gebruik van interactieve kaarten, dat is gebaseerd op het aantal geladen kaart tegels. Aan de andere kant worden er kosten in rekening gebracht voor het laden van het kaart besturings element. In de interactieve Azure Maps Sdk's worden kaart tegels automatisch in de cache geplaatst om de ontwikkelings kosten te verlagen. Er wordt één Azure Maps trans actie gegenereerd voor elke 15 kaart tegels die worden geladen. De interactieve Azure Maps Sdk's maakt gebruik van tegels van 512 pixels en er worden gemiddeld een of minder trans acties gegenereerd per pagina weergave.
-- Vaak zijn de kosten effectief om statische kaart installatie kopieën van Google Maps Web Services te vervangen door de Azure Maps Web-SDK. De Azure Maps Web-SDK gebruikt kaart tegels. Tenzij de gebruiker de kaart pannt en inzoomt, genereert de service vaak slechts een fractie van een trans actie per kaart belasting. De Azure Maps Web-SDK bevat opties voor het uitschakelen van pannen en zoomen, indien gewenst. Daarnaast biedt de Azure Maps Web-SDK veel meer visualisatie opties dan de statische map-webservice.
-- Met Azure Maps kunnen gegevens van het platform worden opgeslagen in Azure. Ook kunnen gegevens in de cache worden opgeslagen in een periode van Maxi maal zes maanden, afhankelijk [van de gebruiks voorwaarden](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=46).
+- Azure Maps brengt kosten in rekening voor het gebruik van interactieve kaarten; deze kosten zijn gebaseerd op het aantal geladen kaarttegels. Aan de andere kant brengt Google Maps kosten in rekening voor het laden van het kaartbesturingselement. In de interactieve SDK's van Azure Maps worden kaarttegels automatisch in de cache geplaatst om de ontwikkelingskosten te beperken. Er wordt één Azure Maps-transactie gegenereerd voor elke 15 kaarttegels die worden geladen. De interactieve SDK's van Azure Maps gebruiken tegels van 512 pixels en er wordt gemiddeld een of minder transacties per paginaweergave gegenereerd.
+- Vaak is het kosteneffectiever om statische kaartafbeeldingen van Google Maps-webservices te vervangen door de SDK van de Azure Maps-webservice. De SDK van de Azure Maps-webservice maakt gebruik van kaarttegels. De service genereert vaak slechts een fractie van een transactie per geladen kaart, tenzij de gebruiker de kaart pant en erop in-/uitzoomt. De SDK van de Azure Maps-webservice bevat opties voor het uitschakelen van pannen en zoomen, indien gewenst. Daarnaast biedt de SDK van de Azure Maps-webservice veel meer visualisatieopties dan de statischekaartservice.
+- Met Azure Maps kunnen gegevens van het platform worden opgeslagen in Azure. De gegevens kunnen gedurende een periode van maximaal zes maanden volgens de [gebruiksvoorwaarden](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=46) ook ergens anders in de cache worden opgeslagen.
 
-Hier volgen enkele verwante resources voor Azure Maps:
+Hier volgen enkele verwante informatiebronnen voor Azure Maps:
 
-- [Pagina met Azure Maps prijzen](https://azure.microsoft.com/pricing/details/azure-maps/)
+- [Pagina met Azure Maps-prijzen](https://azure.microsoft.com/pricing/details/azure-maps/)
 - [Azure-prijscalculator](https://azure.microsoft.com/pricing/calculator/?service=azure-maps)
-- [Azure Maps](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=46) gebruiks voorwaarden (opgenomen in de voor waarden voor micro soft Online Services)
-- [Kies de juiste prijs categorie in Azure Maps](https://docs.microsoft.com/azure/azure-maps/choose-pricing-tier)
+- [Azure Maps-gebruiksvoorwaarden](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=46) (opgenomen in de Voorwaarden voor Online Diensten van Microsoft)
+- [De juiste prijscategorie kiezen in Azure Maps](https://docs.microsoft.com/azure/azure-maps/choose-pricing-tier)
 
-## <a name="suggested-migration-plan"></a>Aanbevolen migratie plan
+## <a name="suggested-migration-plan"></a>Voorgesteld migratieplan
 
-Hier volgt een migratie plan op hoog niveau.
+Het volgende is een algemeen migratieplan.
 
-1. Maak inventarisatie van de Google Maps-Sdk's en-services die door uw toepassing worden gebruikt. Controleer of Azure Maps alternatieve Sdk's en services biedt.
-2. Als u er nog geen hebt, maakt u een Azure- [https://azure.com](https://azure.com)abonnement op.
-3. Maak een Azure Maps-account ([documentatie](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys)) en een verificatie sleutel of Azure Active Directory ([documentatie](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)).
-4. Migreer uw toepassings code.
+1. Maak inventarisatie van de Google Maps-SDK's en -services die door uw toepassing worden gebruikt. Controleer of Azure Maps alternatieve SDK's en services biedt.
+2. Maak een Azure-abonnement via [https://azure.com](https://azure.com) indien u nog geen abonnement hebt.
+3. Maak een Azure Maps-account ([documentatie](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys)) en de verificatiesleutel of Azure Active Directory ([documentatie](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)).
+4. Migreer uw toepassingscode.
 5. Test uw gemigreerde toepassing.
 6. Implementeer uw gemigreerde toepassing naar productie.
 
-## <a name="azure-maps-technical-resources"></a>Azure Maps technische bronnen
+## <a name="azure-maps-technical-resources"></a>Technische informatiebronnen voor Azure Maps
 
-Hier volgt een lijst met nuttige technische bronnen voor Azure Maps.
+Hier volgt een lijst met nuttige technische informatiebronnen voor Azure Maps.
 
-- Krijgt[https://azure.com/maps](https://azure.com/maps)
-- Documentatie[https://aka.ms/AzureMapsDocs](https://aka.ms/AzureMapsDocs)
-- Voor beelden van Web SDK-code:[https://aka.ms/AzureMapsSamples](https://aka.ms/AzureMapsSamples)
-- Ontwikkelaars forums:[https://aka.ms/AzureMapsForums](https://aka.ms/AzureMapsForums)
-- Video's[https://aka.ms/AzureMapsVideos](https://aka.ms/AzureMapsVideos)
-- Blogs[https://aka.ms/AzureMapsBlog](https://aka.ms/AzureMapsBlog)
-- Tech-Blog:[https://aka.ms/AzureMapsTechBlog](https://aka.ms/AzureMapsTechBlog)
-- Azure Maps feedback (UserVoice):[https://aka.ms/AzureMapsFeedback](https://aka.ms/AzureMapsFeedback)
-- [Azure Maps Jupyter Notebook] [https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook]
+- Overzicht: [https://azure.com/maps](https://azure.com/maps)
+- Documentatie: [https://aka.ms/AzureMapsDocs](https://aka.ms/AzureMapsDocs)
+- Voorbeelden van Web-SDK-code: [https://aka.ms/AzureMapsSamples](https://aka.ms/AzureMapsSamples)
+- Ontwikkelaarsforums: [https://aka.ms/AzureMapsForums](https://aka.ms/AzureMapsForums)
+- Video's: [https://aka.ms/AzureMapsVideos](https://aka.ms/AzureMapsVideos)
+- Blog: [https://aka.ms/AzureMapsBlog](https://aka.ms/AzureMapsBlog)
+- Tech Blog: [https://aka.ms/AzureMapsTechBlog](https://aka.ms/AzureMapsTechBlog)
+- Azure Maps-feedback (UserVoice): [https://aka.ms/AzureMapsFeedback](https://aka.ms/AzureMapsFeedback)
+- [Azure Maps Jupyter Notebook](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)
 
-## <a name="migration-support"></a>Migratie ondersteuning
+## <a name="migration-support"></a>Ondersteuning voor migratie
 
-Ontwikkel aars kunnen migratie ondersteuning zoeken via de [forums](https://aka.ms/AzureMapsForums) of via een van de vele ondersteunings opties voor Azure:[https://azure.microsoft.com/support/options](https://azure.microsoft.com/support/options)
+Ontwikkelaars kunnen migratieondersteuning zoeken via de [forums](https://aka.ms/AzureMapsForums) of via een van de vele opties voor ondersteuning voor Azure: [https://azure.microsoft.com/support/options](https://azure.microsoft.com/support/options)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het migreren van uw Google Maps-toepassing met de volgende artikelen:
+In de volgende artikelen vindt u meer informatie over het migreren van uw Google Maps-toepassing:
 
 > [!div class="nextstepaction"]
 > [Een web-app migreren](migrate-from-google-maps-web-app.md)

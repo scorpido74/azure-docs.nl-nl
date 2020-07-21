@@ -4,12 +4,12 @@ description: Leer hoe u on-premises machines kunt voorbereiden voor migratie met
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: MVC
-ms.openlocfilehash: e6840b75d58bf19f742f94caad74e10aebe24666
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: aec2e95b65be2e3c69b2d29111fa1cfdbd66674e
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044155"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223615"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>On-premises machines voorbereiden voor migratie naar Azure
 
@@ -122,7 +122,7 @@ Bereid voor andere versies de machines voor zoals samengevat in de tabel.
 --- | --- | ---
 **Hyper-V Linux Integration Services installeren** | Bouw de Linux-initialisatie-installatiekopie opnieuw op zodat deze de benodigde Hyper-V-stuurprogramma's bevat. Door de initialisatie-installatiekopie opnieuw op te bouwen, zorgt u ervoor dat de VM in Azure kan worden opgestart. | In meeste nieuwe versies van Linux-distributies is dit standaard opgenomen.<br/><br/> Als het niet is opgenomen, moet u het handmatig installeren voor alle versies behalve de hierboven genoemde.
 **Azure Serial Console-logboekregistratie inschakelen** | Het inschakelen van consolelogboekregistratie helpt u bij het oplossen van problemen. U hoeft de VM niet opnieuw te starten. De Azure-VM wordt opgestart met behulp van de installatiekopie van de schijf. Het opstarten van de installatiekopie is equivalent aan het opnieuw opstarten van de nieuwe VM.<br/><br/> Volg [deze instructies](../virtual-machines/troubleshooting/serial-console-linux.md) om het in te schakelen.
-**Apparaattoewijzingsbestand bijwerken** | Werk het apparaattoewijzingsbestand bij met de koppelingen van apparaatnaam en volume, zodat u persistente apparaat-id's gebruikt. | Installeer handmatig voor alle versies behalve de hierboven genoemde.
+**Apparaattoewijzingsbestand bijwerken** | Werk het apparaattoewijzingsbestand bij met de koppelingen van apparaatnaam en volume, zodat u persistente apparaat-id's gebruikt. | Installeer handmatig voor alle versies behalve de hierboven genoemde. (Alleen van toepassing in VMware-scenario's op basis van een agent)
 **fstab-items bijwerken** |  Werk items bij om persistente volume-id's te gebruiken.    | Werk handmatig bij voor alle versies behalve de hierboven genoemde.
 **udev-regel verwijderen** | Verwijder alle udev-regels die interfacenamen reserveren op basis van MAC-adres enzovoort. | Verwijder handmatig voor alle versies behalve de hierboven genoemde.
 **Netwerkinterfaces bijwerken** | Werk netwerkinterfaces bij zodat ze IP-adressen ontvangen op basis van DHCP.nst | Werk handmatig bij voor alle versies behalve de hierboven genoemde.

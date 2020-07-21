@@ -1,17 +1,17 @@
 ---
-title: ASP.NET Core Services bewaken en diagnosticeren
-description: In deze zelf studie leert u hoe u controle en diagnostische gegevens instelt voor een Azure Service Fabric ASP.NET Core-toepassing.
+title: ASP.NET Core-services bewaken en er diagnoses op uitvoeren
+description: In deze zelfstudie leert u hoe u bewakings- en diagnostische gegevens instelt voor een ASP.NET Core-toepassing in Azure Service Fabric.
 author: dkkapur
 ms.topic: tutorial
 ms.date: 07/10/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 6ce2e5a71d48942642ee01d8d2cc75a232abf259
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: f06387ea317029f5648ab0884cea80262e8640a2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82159946"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245004"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>Zelfstudie: Bewaking en diagnose van een ASP.NET Core-toepassing in Service Fabric met behulp van Application Insights
 
@@ -36,13 +36,13 @@ In deze zelfstudiereeks leert u het volgende:
 
 Voor u met deze zelfstudie begint:
 
-* Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan
-* [Installeer Visual Studio 2019](https://www.visualstudio.com/) en installeer de werk belasting van **Azure Development** en **ASP.net en Web Development** .
+* Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* [Installeer Visual Studio 2019](https://www.visualstudio.com/) en installeer de workloads **Azure-ontwikkeling** en **ASP.NET-ontwikkeling en webontwikkeling**.
 * [Installeer de Service Fabric-SDK](service-fabric-get-started.md).
 
 ## <a name="download-the-voting-sample-application"></a>De voorbeeldtoepassing om te stemmen downloaden
 
-Als u de stem voorbeeld toepassing in [deel één van deze zelfstudie reeks](service-fabric-tutorial-create-dotnet-app.md)niet hebt gemaakt, kunt u deze downloaden. Voer in een opdrachtvenster of terminal de volgende opdracht uit om de voorbeeld-app-opslagplaats te klonen op de lokale computer.
+Als u in [deel één van deze zelfstudiereeks](service-fabric-tutorial-create-dotnet-app.md) niet de voorbeeldtoepassing om te stemmen hebt gemaakt, kunt u deze downloaden. Voer in een opdrachtvenster of terminal de volgende opdracht uit om de voorbeeld-app-opslagplaats te klonen op de lokale computer.
 
 ```git
 git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
@@ -65,18 +65,18 @@ Nadat u de vereiste gegevens hebt ingevuld, klikt u op **Maken** om de resource 
 
 ## <a name="add-application-insights-to-the-applications-services"></a>Application Insights toevoegen aan de services van de toepassing
 
-Start Visual Studio 2019 met verhoogde bevoegdheden door met de rechter muisknop op het pictogram Visual Studio in het menu Start te klikken en vervolgens **als administrator uitvoeren**te kiezen. Klik op **bestand** > **openen** > **project/oplossing** en navigeer naar de stem toepassing (die u hebt gemaakt in deel één van de zelf studie of git gekloond). Open *stemmen. SLN*. Als u wordt gevraagd de NuGet-pakketten van de toepassing te herstellen, klikt u op **Ja**.
+Start Visual Studio 2019 door met de rechtermuisknop op het pictogram van Visual Studio in het menu Start te klikken en **Als administrator uitvoeren** te kiezen. Klik op **Bestand** > **Openen** > **Project/oplossing** en navigeer naar de toepassing Voting (gemaakt in deel één van de zelfstudie of gekloond van git). Open *Voting.sln*. Als u wordt gevraagd om de NuGet-pakketten van de toepassing te herstellen, klikt u op **Ja**.
 
-Volg deze stappen om Application Insights te configureren voor zowel de VotingWeb-als VotingData-Services:
+Volg deze stappen voor om Application Insights voor zowel VotingWeb- als VotingData-services te configureren:
 
-1. Met de rechter muisknop op de naam van de service en klik op **> verbonden services toevoegen > bewaking met Application Insights**.
+1. Met de rechtermuisknop op de naam van de service en klik op **Toevoegen > Verbonden Services > Bewaking met Application Insights**.
 
     ![AI Configureren](./media/service-fabric-tutorial-monitoring-aspnet/configure-ai.png)
 >[!NOTE]
 >Afhankelijk van het projecttype moet u, wanneer u met de rechtermuisknop op de naam van de service klikt, mogelijk klikken op Toevoegen -> Application Insights Telemetry ...
 
-2. Klik op **aan de slag**.
-3. Meld u aan bij het account dat u hebt gebruikt voor het instellen van uw Azure-abonnement en selecteer het abonnement waarin u de Application Insights resource hebt gemaakt. U vindt de resource onder *Bestaande Application Insights-resource* in de vervolgkeuzelijst 'Resource'. Klik op **Registreren** om Application Insights toe te voegen aan uw service.
+2. Klik op **Aan de slag**.
+3. Meld u aan bij het account waarmee u ook uw Azure-abonnement hebt ingesteld en selecteer het abonnement waarin u de Application Insights-resource hebt gemaakt. U vindt de resource onder *Bestaande Application Insights-resource* in de vervolgkeuzelijst 'Resource'. Klik op **Registreren** om Application Insights toe te voegen aan uw service.
 
     ![AI registreren](./media/service-fabric-tutorial-monitoring-aspnet/register-ai.png)
 
@@ -90,26 +90,26 @@ Volg deze stappen om Application Insights te configureren voor zowel de VotingWe
 
 Application Insights heeft twee Service Fabric-specifieke NuGets die afhankelijk van het scenario kunnen worden gebruikt. Eén wordt met de native services van Service Fabric gebruikt, de ander met de containers en uitvoerbare bestanden van derden. In dit geval gebruikt u de NuGet Microsoft.ApplicationInsights.ServiceFabric.Native om het begrip van de servicecontext dat u erdoor krijgt, goed te benutten. Bekijk [Microsoft Application Insights voor Service Fabric](https://github.com/Microsoft/ApplicationInsights-ServiceFabric/blob/master/README.md) om meer te weten te komen over de Application Insights-SDK en de Service Fabric-specifieke NuGets.
 
-Hier volgen de stappen voor het instellen van het NuGet-pakket:
+Hier volgen de stappen om het NuGet-pakket in te stellen:
 
-1. Klik met de rechter muisknop op **' stemmen '** aan de bovenkant van uw Solution Explorer en klik op **NuGet-pakketten beheren voor oplossing...**.
+1. Klik met de rechtermuisknop op **Oplossing "Voting"** helemaal boven in uw Solution Explorer en klik op **NuGet-pakketten beheren voor Oplossing...** .
 2. Klik op **Bladeren** in het bovenste navigatiemenu van het venster 'NuGet--oplossing' en vink het vakje **Voorlopige versie opnemen** naast de zoekbalk aan.
 >[!NOTE]
 >Wellicht moet u het pakket Microsoft.ServiceFabric.Diagnostics.Internal op vergelijkbare wijze installeren als het pakket niet vooraf is geïnstalleerd, voordat u het Application Insights-pakket installeert.
 
 3. Zoek naar `Microsoft.ApplicationInsights.ServiceFabric.Native` en klik op het juiste NuGet-pakket.
-4. Klik aan de rechter kant op de twee selectie vakjes naast de twee services in de toepassing, **VotingWeb** en **VotingData** , en klik op **installeren**.
+4. Vink rechts de twee vakjes aan naast de twee services in de toepassing, **VotingWeb** en **VotingData**, en klik op **Installeren**.
     ![AI sdk Nuget](./media/service-fabric-tutorial-monitoring-aspnet/ai-sdk-nuget-new.png)
-5. Klik op **OK** in het dialoog venster *voor beeld van wijzigingen* dat wordt weer gegeven en accepteer de acceptatie van de *licentie*. Hiermee wordt de NuGet aan de services toegevoegd.
-6. U moet nu de initialisatiefunctie voor telemetrie in de twee services instellen. Hiervoor opent u *VotingWeb.cs* en *VotingData.cs*. Voor beide volgt u de volgende twee stappen:
-    1. Voeg deze twee *using* -instructies toe boven aan elke * \<servicenaam>. cs*na de bestaande *using* -instructies:
+5. Klik op **OK** in het dialoogvenster *Preview Wijzigingen* dat verschijnt en accepteer de *Licentie-acceptatie*. Hiermee wordt de NuGet aan de services toegevoegd.
+6. U moet nu de initialisatiefunctie voor telemetrie in de twee services instellen. Daarvoor opent u *VotingWeb.cs* en *VotingData.cs*. Voor beide volgt u de volgende twee stappen:
+    1. Voeg deze twee *met behulp van*-instructies toe aan het begin van elk *\<ServiceName>.cs*, na de bestaande *met behulp van*-instructies:
 
     ```csharp
     using Microsoft.ApplicationInsights.Extensibility;
     using Microsoft.ApplicationInsights.ServiceFabric;
     ```
 
-    2. In beide bestanden, in de geneste *return* -instructie *CreateServiceInstanceListeners ()* of *CreateServiceReplicaListeners ()*, onder *ConfigureServices* > *Services*, waarbij de andere Singleton Services zijn gedeclareerd, voegt u het volgende toe:
+    2. In beide bestanden, voeg in de geneste *retourinstructie* van *CreateServiceInstanceListeners()* of *CreateServiceReplicaListeners()* onder *ConfigureServices* > *services*, tussen de twee gedeclareerde singleton-services, het volgende toe:
     ```csharp
     .AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext))
     ```
@@ -150,7 +150,7 @@ Hier volgen de stappen voor het instellen van het NuGet-pakket:
         .Build();
     ```
 
-Controleer of de `UseApplicationInsights()` methode wordt aangeroepen in zowel *VotingWeb.cs* als *VotingData.cs* , zoals hierboven wordt weer gegeven.
+Controleer of de `UseApplicationInsights()`methode in beide bestanden wordt aangeduid als *VotingWeb.cs* en *VotingData.cs*, zoals hierboven weergegeven.
 
 >[!NOTE]
 >Deze voorbeeld-app gebruikt http om de services te laten communiceren. Als u een app ontwikkelt met Service Remoting V2, moet u ook de volgende regels code op dezelfde plaats toevoegen zoals u hierboven hebt gedaan.
@@ -166,9 +166,9 @@ ConfigureServices(services => services
 U bent nu klaar om de toepassing te implementeren. Klik bovenaan op **Start** (of **F5**), waarna Visual Studio de toepassing bouwt en verpakt, uw lokale cluster instelt en de toepassing erin implementeert.
 
 >[!NOTE]
->Mogelijk wordt er een build-fout weer geven als u niet beschikt over een actuele versie van de .NET Core SDK geïnstalleerd.
+>Mogelijk wordt er een opbouwfout weergegeven als u niet beschikt over een actuele versie van de .NET Core SDK geïnstalleerd.
 
-Zodra de toepassing is geïmplementeerd, gaat u naar `localhost:8080`, waar u de toepassing met één pagina van stem voorbeeld kunt zien. Stem op een paar verschillende items naar keuze om voorbeeldgegevens en -telemetrie te maken. Hieronder zijn toetjes gebruikt.
+Nadat de toepassing is geïmplementeerd, gaat u naar `localhost:8080` waar u de toepassing met één pagina "Stemmingsvoorbeeld" zou moeten zien. Stem op een paar verschillende items naar keuze om voorbeeldgegevens en -telemetrie te maken. Hieronder zijn toetjes gebruikt.
 
 ![AI-voorbeeldstemmen](./media/service-fabric-tutorial-monitoring-aspnet/vote-sample.png)
 
@@ -205,7 +205,7 @@ Laten we eens wat aangepaste gebeurtenissen aan *VoteDataController.cs* toevoege
 2. Geef een nieuwe *TelemetryClient* op aan het begin van de klasse, bij het maken van de *IReliableStateManager*: `private TelemetryClient telemetry = new TelemetryClient();`.
 3. In de functie *Put()* voegt u een gebeurtenis toe waarmee wordt bevestigd dat er een stem is toegevoegd. Voeg `telemetry.TrackEvent($"Added a vote for {name}");` toe nadat de transactie is voltooid, recht voor de retour-instructie *OkResult*.
 4. In *Delete()* is er een 'als/anders' gebaseerd op de voorwaarde dat de *votesDictionary* stemmen voor een bepaalde optie bevat.
-    1. Voeg een gebeurtenis toe waarmee de verwijdering van een stem wordt bevestigd in de instructie *als*, na de *await tx.CommitAsync()*: `telemetry.TrackEvent($"Deleted votes for {name}");`
+    1. Voeg een gebeurtenis toe waarmee de verwijdering van een stem wordt bevestigd in de instructie *als*, na de *await tx.CommitAsync()* : `telemetry.TrackEvent($"Deleted votes for {name}");`
     2. Voeg een gebeurtenis toe om te demonstreren dat de verwijdering niet plaatsvond in de instructie *anders*, voor de retourinstructie: `telemetry.TrackEvent($"Unable to delete votes for {name}, voting option not found");`
 
 Hier is een voorbeeld van hoe uw functies *Put()* en *Delete()* eruit kunnen zien voor u de gebeurtenissen toevoegt:
@@ -251,7 +251,7 @@ public async Task<IActionResult> Delete(string name)
 }
 ```
 
-Nadat u deze wijzigingen hebt doorgevoerd, **Start** u de toepassing zodat deze de meest recente versie ervan bouwt en implementeert. Zodra de toepassing is geïmplementeerd, kunt u `localhost:8080`een aantal stem opties toevoegen en verwijderen. Ga vervolgens terug naar uw Application Insights-resource om de traceringen van de laatste uitvoering te bekijken (het kan net als eerst 1-2 minuten duren voordat traceringen zijn te zien in Application Insights). Voor alle stemmen die u hebt toegevoegd en verwijderd, zou u nu een 'Aangepaste gebeurtenis'\* moet zien, samen met alle reactietelemetrie.
+Nadat u deze wijzigingen hebt doorgevoerd, **Start** u de toepassing zodat deze de meest recente versie ervan bouwt en implementeert. Wanneer de toepassing is geïmplementeerd, gaat u naar `localhost:8080` om wat stemopties toe te voegen en te verwijderen. Ga vervolgens terug naar uw Application Insights-resource om de traceringen van de laatste uitvoering te bekijken (het kan net als eerst 1-2 minuten duren voordat traceringen zijn te zien in Application Insights). Voor alle stemmen die u hebt toegevoegd en verwijderd, zou u nu een 'Aangepaste gebeurtenis'\* moet zien, samen met alle reactietelemetrie.
 
 ![aangepaste gebeurtenissen](./media/service-fabric-tutorial-monitoring-aspnet/custom-events.png)
 
@@ -268,4 +268,4 @@ Nu u controle en diagnostische gegevens voor uw ASP.NET-toepassing hebt ingestel
 
 * [Meer informatie over controle en diagnostische gegevens in Service Fabric](service-fabric-diagnostics-overview.md)
 * [Service Fabric event analysis with Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) (Service Fabric-gebeurtenisanalyse met Application Insights)
-* Bekijk [Application Insights-documentatie](https://docs.microsoft.com/azure/application-insights/) om meer te weten te komen over Application Insights
+* Bekijk [Application Insights-documentatie](/azure/application-insights/) om meer te weten te komen over Application Insights

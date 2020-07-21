@@ -6,14 +6,15 @@
       href: devtest-lab-overview.md
     - name: Azure DevTest Labs en Lab Services
       href: lab-services-overview.md
+- name: Snelstartgids
+  items:
+    - name: Een lab maken - ARM-sjabloon
+      displayName: Resource Manager
+      href: create-lab-windows-vm-template.md
 - name: Zelfstudies
   items:
     - name: Een lab instellen
-      items:
-        - name: Azure Portal gebruiken
-          href: tutorial-create-custom-lab.md
-        - name: Resource Manager-sjabloon gebruiken
-          href: create-lab-windows-vm-template.md
+      href: tutorial-create-custom-lab.md
     - name: Toegang tot een lab
       href: tutorial-use-custom-lab.md
 - name: Voorbeelden
@@ -64,6 +65,10 @@
           href: devtest-lab-training-lab.md
         - name: Scenario's voor het gebruik van claimbare VM's
           href: devtest-lab-use-claim-capabilities.md
+    - name: Beveiliging
+      items:
+        - name: Beveiligingsbasislijn
+          href: security-baseline.md
 - name: Instructiegidsen
   items:
     - name: Een lab configureren
@@ -122,18 +127,26 @@
           href: personal-data-delete-export.md
     - name: Virtuele machines gebruiken in een lab
       items:
-        - name: Een VM maken - Azure-portal
-          href: devtest-lab-add-vm.md
-        - name: Een VM maken - Azure PowerShell
-          href: devtest-lab-vm-powershell.md
-        - name: Een VM maken - Azure CLI
-          href: devtest-lab-vmcli.md
-        - name: Een VM maken - Resource Manager-sjabloon
-          href: devtest-lab-use-resource-manager-template.md
-        - name: Een VM maken met behulp van een installatiekopie vanuit een galerie met gedeelde installatiekopieën
-          href: add-vm-use-shared-image.md
-        - name: Verbinding maken met uw VM via een browser
-          href: connect-virtual-machine-through-browser.md
+        - name: Een virtuele machine maken
+          items:
+            - name: Azure Portal
+              href: devtest-lab-add-vm.md
+            - name: Azure PowerShell
+              href: devtest-lab-vm-powershell.md
+            - name: Azure CLI
+              href: devtest-lab-vmcli.md
+            - name: Resource Manager-sjabloon
+              href: devtest-lab-use-resource-manager-template.md
+            - name: Een VM maken met behulp van een installatiekopie vanuit een galerie met gedeelde installatiekopieën
+              href: add-vm-use-shared-image.md
+        - name: Verbinding maken met een VM
+          items:
+            - name: Verbinding maken met een Windows-VM
+              href: connect-windows-virtual-machine.md
+            - name: Verbinding maken met een Linux-VM
+              href: connect-linux-virtual-machine.md
+            - name: Verbinding maken met uw VM via een browser
+              href: connect-virtual-machine-through-browser.md
         - name: Een VM starten of stoppen met PowerShell of CLI
           href: use-command-line-start-stop-virtual-machines.md
         - name: Een VM opnieuw opstarten
@@ -263,6 +276,12 @@
           href: troubleshoot-vm-environment-creation-failures.md
         - name: Problemen oplossen met mislukte artefacten
           href: devtest-lab-troubleshoot-artifact-failure.md
+    - name: Controleren
+      items:
+        - name: Activiteitenlogboeken bekijken
+          href: activity-logs.md
+        - name: Waarschuwingen voor activiteitenlogboeken maken
+          href: create-alerts.md
 - name: Naslaginformatie
   items:
     - name: CLI

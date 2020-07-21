@@ -2,20 +2,20 @@
 title: Tags toevoegen aan afbeeldingen in een labelproject
 title.suffix: Azure Machine Learning
 description: Leer hoe u de hulpprogramma's voor het toevoegen van tags aan gegevens gebruikt in een Azure Machine Learning-labelproject.
-author: lobrien
-ms.author: laobri
+author: sdgilley
+ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 0421e5ad164c440c1b841cae66e7dafc5deadb81
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 90ef75c704459ca726480e6950ba748162c66b8e
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86025128"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147012"
 ---
-# <a name="tag-images-in-a-labeling-project-preview"></a>Tags toevoegen aan afbeeldingen in een labelproject (preview-versie)
+# <a name="tag-images-in-a-labeling-project"></a>Tags toevoegen aan afbeeldingen in een labelproject 
 
 Nadat uw projectbeheerder [een labelproject](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project) in Azure Machine Learning heeft gemaakt, kunt u het hulpprogramma voor het toevoegen van labels (openbare preview-versie) gebruiken om snel gegevens voor een Machine Learning-project voor te bereiden. In dit artikel wordt het volgende beschreven:
 
@@ -64,7 +64,7 @@ In Azure is de knop **Indienen** beschikbaar zodra u alle afbeeldingen op de pag
 
 Nadat u tags voor de beschikbare gegevens hebt ingediend, wordt de pagina vernieuwd met een nieuwe set afbeeldingen uit de werkwachtrij.
 
-### <a name="assisted-machine-learning"></a>Ondersteunde machine learning 
+### <a name="assisted-machine-learning-preview"></a>Begeleide machine learning (preview) 
 
 Mogelijk worden machine learning-algoritmen geactiveerd. Als deze algoritmen in uw project zijn ingeschakeld, ziet u het volgende:
 

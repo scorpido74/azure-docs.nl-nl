@@ -16,6 +16,8 @@
     - name: Een containerinstantie implementeren - ARM-sjabloon
       displayName: Resource Manager
       href: container-instances-quickstart-template.md
+    - name: Een containerinstantie implementeren - Docker-CLI
+      href: container-instances-quickstart-docker-cli.md
 - name: Zelfstudies
   items:
     - name: Een containerinstallatiekopie maken en implementeren
@@ -94,8 +96,10 @@
           href: container-instances-gpu.md
         - name: SSL-eindpunt in sidecar inschakelen
           href: container-instances-container-group-ssl.md
-        - name: Statisch IP-adres beschikbaar maken
+        - name: Statisch IP-adres beschikbaar maken met App Gateway
           href: container-instances-application-gateway.md
+        - name: Azure Firewall gebruiken voor inkomend en uitgaande overdracht
+          href: container-instances-egress-ip-address.md
     - name: Gegevensvolumes koppelen
       items:
         - name: Azure-bestandsshare

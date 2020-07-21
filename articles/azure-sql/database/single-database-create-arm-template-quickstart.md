@@ -11,20 +11,20 @@ author: mumian
 ms.author: jgao
 ms.reviewer: carlrab
 ms.date: 06/24/2020
-ms.openlocfilehash: 2975b98306b7019022799d5ba69b9d7af5797a2b
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: a766d61c49fe23645c232432198eb4aa0eedb98b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85368036"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135643"
 ---
-# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-resource-manager-template"></a>Quickstart: Een individuele database maken in Azure SQL Database met behulp van de Azure Resource Manager-sjabloon
+# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-an-arm-template"></a>Quickstart: Een individuele database maken in Azure SQL Database via een ARM-sjabloon
 
-Het maken van een [individuele database](single-database-overview.md) is de snelste en eenvoudigste implementatieoptie voor het maken van een database in Azure SQL Database. Deze quickstart toont hoe u een individuele database kunt maken met de Azure Resource Manager-sjabloon.
+Het maken van een [individuele database](single-database-overview.md) is de snelste en eenvoudigste implementatieoptie voor het maken van een database in Azure SQL Database. Deze quickstart toont hoe u een individuele database kunt maken met de Azure Resource Manager-sjabloon (ARM-sjabloon).
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-Als uw omgeving voldoet aan de vereisten en u bekend bent met het gebruik van ARM-sjablonen, selecteert u de knop Implementeren naar Azure. De sjabloon wordt in Azure Portal geopend.
+Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
 
 [![Implementeren in Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-sql-database%2Fazuredeploy.json)
 
@@ -36,7 +36,7 @@ Als u nog geen abonnement op Azure hebt, [maak dan een gratis account](https://a
 
 Een individuele database bevat een gedefinieerde set reken-, geheugen-, IO- en opslagresources die gebruikmaakt van één van twee [aankoopmodellen](purchasing-models.md). Wanneer u een individuele database maakt, definieert u ook een [server](logical-servers.md) om die database te beheren en in een [Azure-resourcegroep](../../active-directory-b2c/overview.md) in een opgegeven regio te plaatsen.
 
-De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure Quick Start-sjablonen](https://azure.microsoft.com/resources/templates/101-sql-logical-server/).
+De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-quickstartsjablonen](https://azure.microsoft.com/resources/templates/101-sql-database/).
 
 :::code language="json" source="~/quickstart-templates/101-sql-database/azuredeploy.json" range="1-67" highlight="41-65":::
 
@@ -88,4 +88,4 @@ Remove-AzResourceGroup -Name $resourceGroupName
   - [Verbinding maken en query's uitvoeren met behulp van Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
 - Zie [Azure CLI-voorbeelden](az-cli-script-samples-content-guide.md) voor het maken van een individuele database met behulp van de Azure CLI.
 - Zie [Azure PowerShell-voorbeelden](powershell-script-content-guide.md) voor het maken van een individuele database met behulp van Azure PowerShell.
-- Zie [Uw eerste sjabloon maken](../../azure-resource-manager/templates/template-tutorial-create-first-template.md) voor meer informatie over het maken van Resource Manager-sjablonen.
+- Zie [Uw eerste sjabloon maken](../../azure-resource-manager/templates/template-tutorial-create-first-template.md) voor meer informatie over het maken van ARM-sjablonen.

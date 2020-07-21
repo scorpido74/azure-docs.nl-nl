@@ -179,6 +179,8 @@
           href: azure-nfs-volume.md
         - name: Azure NetApp Files
           href: azure-netapp-files.md
+        - name: Azure Ultra Disks (preview) gebruiken
+          href: use-ultra-disks.md
     - name: Netwerk configureren
       items:
         - name: Een bestaand virtueel netwerk maken of gebruiken
@@ -191,8 +193,6 @@
           href: internal-lb.md
         - name: Een Standard Load Balancer gebruiken
           href: load-balancer-standard.md
-        - name: Een door de gebruiker gedefinieerde route gebruiken voor uitgaand verkeer
-          href: egress-outboundtype.md
         - name: Een statisch IP-adres gebruiken
           href: static-ip.md
         - name: Inkomend verkeer
@@ -215,7 +215,13 @@
                 - name: 'Een statisch, openbaar IP-adres gebruiken'
                   href: ingress-static-ip.md
         - name: Uitgaand verkeer
-          href: egress.md
+          items:
+            - name: Uitgaand clusterverkeer beheren en beperken
+              href: limit-egress-traffic.md
+            - name: Een door de gebruiker gedefinieerde route gebruiken voor uitgaand verkeer
+              href: egress-outboundtype.md
+            - name: Een eenvoudige load balancer en een statisch IP-adres gebruiken
+              href: egress.md
         - name: CoreDNS aanpassen
           href: coredns-custom.md
     - name: Verificatie en beveiliging
@@ -238,13 +244,11 @@
           href: ../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/aks/toc.json
         - name: Clusterreferenties bijwerken
           href: update-credentials.md
-        - name: Uitgaand clusterverkeer beheren en beperken
-          href: limit-egress-traffic.md
         - name: Integratie van Azure Active Directory inschakelen
           items:
-            - name: Door AKS beheerde AAD (preview)
+            - name: Door AKS beheerde AAD
               href: managed-aad.md
-            - name: Azure CLI gebruiken
+            - name: AAD-integratie (verouderd)
               href: azure-ad-integration-cli.md
         - name: Azure RBAC gebruiken voor Kubernetes-autorisatie (preview)
           href: manage-azure-rbac.md
@@ -291,8 +295,6 @@
       items:
         - name: Lokaal proces met Kubernetes gebruiken met Visual Studio Code (preview)
           href: ../dev-spaces/how-to/local-process-kubernetes-vs-code.md
-        - name: Lokaal proces met Kubernetes gebruiken met Visual Studio (preview)
-          href: ../dev-spaces/how-to/local-process-kubernetes-visual-studio.md
         - name: Bestaande toepassingen installeren met Helm
           href: kubernetes-helm.md
         - name: OpenFaaS gebruiken
@@ -383,10 +385,10 @@
       href: 'https://azure.microsoft.com/pricing/details/container-service/'
     - name: Ondersteuningsbeleid
       href: support-policies.md
-    - name: Roadmap
+    - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: Productfeedback geven
-      href: 'https://feedback.azure.com/forums/914020-azure-kubernetes-service-aks'
+    - name: AKS-roadmap
+      href: 'https://github.com/Azure/AKS/projects/1'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-container-service'
     - name: Video's

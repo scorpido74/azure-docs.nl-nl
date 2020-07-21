@@ -1,17 +1,17 @@
 ---
-title: Zelf studie-Azure Service Fabric net-Resources opschonen
+title: Zelfstudie – Azure Service Fabric Mesh-resources opschonen
 description: Leer hoe u Azure Service Fabric Mesh-resources verwijdert, zodat er geen kosten in rekening worden gebracht voor resources die u niet meer gebruikt.
 author: dkkapur
 ms.topic: tutorial
 ms.date: 09/18/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: d5e33099d58c9cb4c110a78f2576d6eac83a7932
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: b8ce3c795bc9ad212331ce1c1f413fe7fd6da909
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75351879"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246743"
 ---
 # <a name="tutorial-remove-azure-resources"></a>Zelfstudie: Azure-resources verwijderen
 
@@ -24,7 +24,7 @@ In deze zelfstudie leert u het volgende:
 In deze zelfstudiereeks leert u het volgende:
 > [!div class="checklist"]
 > * [Een Service Fabric Mesh-app maken in Visual Studio](service-fabric-mesh-tutorial-create-dotnetcore.md)
-> * [Fouten opsporen in een Service Fabric Mesh-app die wordt uitgevoerd in de lokale ontwikkelcluster](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
+> * [Fouten opsporen in een Service Fabric Mesh-app die wordt uitgevoerd in uw lokale ontwikkelcluster](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
 > * [Een Service Fabric Mesh-app implementeren](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
 > * [Een Service Fabric Mesh-app bijwerken](service-fabric-mesh-tutorial-upgrade.md)
 > * Service Fabric Mesh-resources opschonen
@@ -62,4 +62,4 @@ Nu u een Service Fabric Mesh-toepassing hebt geïmplementeerd in Azure, kunt u h
 * Bekijk de [voorbeeld-app Voting](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/votingapp) voor een ander voorbeeld van service-naar-service-communicatie.
 * Zie [Inleiding tot Service Fabric Resource-model](service-fabric-mesh-service-fabric-resources.md) voor meer informatie over het Service Fabric Resource-model.
 * Lees [Wat is Service Fabric Mesh?](service-fabric-mesh-overview.md) voor meer informatie over Service Fabric Mesh.
-* Meer informatie over de [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)
+* Meer informatie over de [Cloud Shell](../cloud-shell/overview.md)

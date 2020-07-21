@@ -11,12 +11,12 @@ ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 835eb66444dd9f4c4da7689196c759621cfef999
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: fd9eff90f144909b9746e85a9c42aae2fdf02ed6
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85360755"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146804"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Een proef uitvoeren met cloudinrichting voor een bestaande gesynchroniseerde AD-forest 
 
@@ -165,18 +165,18 @@ Voer de volgende stappen uit om de inrichting te configureren:
  2. Klik op **Azure Active Directory**
  3. Klik op **Azure AD Connect**
  4. Selecteer **Inrichting beheren (preview)** 
- ![](media/how-to-configure/manage1.png)</br>
+ ![Schermopname met de koppeling Inrichting beheren (preview).](media/how-to-configure/manage1.png)</br>
  5.  Klik op **Nieuwe configuratie**
- ![](media/tutorial-single-forest/configure1.png)</br>
+ ![Schermopname van het scherm Azure AD inrichten (preview) waarin de koppeling Nieuwe configuratie is gemarkeerd.](media/tutorial-single-forest/configure1.png)</br>
  6.  Voer in het configuratiescherm een **E-mailadres voor meldingen** in, zet de selector op **Inschakelen** en klik op **Opslaan**.
- ![](media/tutorial-single-forest/configure2.png)</br>
+ ![Schermopname van het scherm Configureren waarin het e-mailadres voor meldingen is ingevuld en Inschakelen is geselecteerd.](media/tutorial-single-forest/configure2.png)</br>
  7. Selecteer onder **Configureren** de optie **Alle gebruikers** om het bereik van de configuratieregel te wijzigen.
- ![](media/how-to-configure/scope2.png)</br>
+ ![Schermopname van het scherm Configureren waarin Alle gebruikers naast Bereik van gebruikers is gemarkeerd.](media/how-to-configure/scope2.png)</br>
  8. Wijzig rechts het bereik voor de specifieke OE die u zojuist hebt gemaakt: "OU=CPUsers,DC=contoso,DC=com".
- ![](media/tutorial-existing-forest/scope2.png)</br>
+ ![Schermopname van het scherm Bereik van gebruikers waarin het bereik is gewijzigd in de organisatie-eenheid die u hebt gemaakt.](media/tutorial-existing-forest/scope2.png)</br>
  9.  Klik op **Gereed** en **Opslaan**.
  10. Het bereik moet nu worden ingesteld op één organisatie-eenheid. 
- ![](media/tutorial-existing-forest/scope3.png)</br>
+ ![Schermopname van het scherm Configureren waarin 1 organisatie-eenheid is gemarkeerd naast Bereik van gebruikers.](media/tutorial-existing-forest/scope3.png)</br>
  
 
 ## <a name="verify-users-are-provisioned-by-cloud-provisioning"></a>Controleren of gebruikers zijn ingericht met cloudinrichting

@@ -1,16 +1,16 @@
 ---
 title: U bekijkt een model dat extern wordt weergegeven
 description: In de zelfstudie 'Hallo wereld' van Azure Remote Rendering ontdekt u hoe u een Model dat extern gegenereerd is door Azure kunt weergeven
-author: michael-house
-ms.author: v-mihous
+author: florianborn71
+ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: f0b9bf1c7e085efd86f70f8246214d366265036a
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: bd9e9b6754c8626a8d858b9832a8e3547b72352d
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85566480"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231898"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>Zelfstudie: U bekijkt een model dat extern wordt weergegeven
 
@@ -101,7 +101,7 @@ Volg de volgende stappen om ervoor te zorgen dat uw project de nieuwste versie v
 
 1. Stel **Vlaggen wissen** in op *Effen kleur*
 
-1. Stel **Achtergrond** in op *Zwart* (#000000), met volledige (255) alfa (A)
+1. Stel **Achtergrond** in op *Zwart* (#000000), met volledig transparante (0) alfa (A)
 
     ![Kleurenwiel](./media/color-wheel-black.png)
 

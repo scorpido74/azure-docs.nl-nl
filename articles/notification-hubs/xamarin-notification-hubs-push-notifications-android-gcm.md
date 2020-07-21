@@ -17,12 +17,12 @@ ms.date: 08/01/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 08/01/2019
-ms.openlocfilehash: 06be9e7c4ce41ff01494ecef84a800b52db6b82e
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 5f1d12081591b180acca8ee35ecc5a5bf202211e
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84308129"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223938"
 ---
 # <a name="tutorial-send-push-notifications-to-xamarinandroid-apps-using-notification-hubs"></a>Zelfstudie: Pushmeldingen verzenden naar Xamarin.Android-apps met behulp van Notification Hubs
 
@@ -60,7 +60,7 @@ In deze zelfstudie voert u de volgende stappen uit:
 2. Voer de **serversleutel** in die u eerder hebt genoteerd in de Google Firebase Console.
 3. Selecteer **Opslaan** op de werkbalk.
 
-    ![](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
+    ![Schermopname van de meldingshub in Azure Portal met de optie Google G C M F C M gemarkeerd en een contour in rood.](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
 
 De Notification Hub is geconfigureerd om te werken met FCM en u hebt de verbindingsreeksen om uw app te registreren voor het ontvangen van meldingen en voor het verzenden van pushmeldingen.
 

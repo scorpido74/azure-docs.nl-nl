@@ -1,11 +1,11 @@
 ---
-ms.openlocfilehash: 9e50caeac5c52b9f2309448e2bb0b760f533fb6c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: ec78ffd1fbc1f77a7b1e1467df1c2303e7d5daf1
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67175752"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86156691"
 ---
 ## <a name="delete-anchors"></a>Ankers verwijderen
 
-Als u een ruimtelijke ruimte in de Cloud wilt verwijderen `DeleteAnchor()` , gebruikt u de-methode. Het verwijderen van ankers wanneer deze niet meer wordt gebruikt, is een goede gewoonte om in uw ontwikkelings proces en-procedures vroegtijdig op te gaan. Hierdoor blijven de resources opgeruimd. Ook als u gratis Azure spatiale ankers kunt gebruiken, kunnen prijzen in de toekomst worden gewijzigd. Meer informatie over de prijzen tijdens de preview-fase vindt u op onze [pagina met prijzen](https://azure.microsoft.com/pricing/details/spatial-anchors/).
+Als u een ruimtelijk anker in de Cloud wilt verwijderen, gebruikt u de methode `DeleteAnchor()`. Het verwijderen van ankers wanneer deze niet meer wordt gebruikt, is een goede gewoonte om in uw ontwikkelingsproces en -procedures vroegtijdig op te nemen om uw Azure-resources te laten opschonen. 

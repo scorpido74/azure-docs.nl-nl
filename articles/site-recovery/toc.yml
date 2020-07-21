@@ -62,6 +62,8 @@
           href: tutorial-dr-drill-azure.md
         - name: Failover naar Azure
           href: hyper-v-azure-failover-failback-tutorial.md
+        - name: On-premises replicatie met privé-eindpunten inschakelen
+          href: ./hybrid-how-to-enable-replication-private-endpoints.md
     - name: Migreren naar Azure
       items:
         - name: Azure voorbereiden voor on-premises replicatie
@@ -186,6 +188,8 @@
               href: azure-to-azure-how-to-enable-replication-s2d-vms.md
             - name: Replicatie inschakelen voor een toegevoegde schijf
               href: azure-to-azure-enable-replication-added-disk.md
+            - name: Replicatie met privé-eindpunten inschakelen
+              href: ./azure-to-azure-how-to-enable-replication-private-endpoints.md
             - name: Schijven uitsluiten
               href: azure-to-azure-exclude-disks.md
             - name: Azure VM's opnieuw beveiligen na een failover
@@ -242,6 +246,8 @@
               href: vmware-azure-set-up-target.md
             - name: Replicatie-instellingen configureren
               href: vmware-azure-set-up-replication.md
+            - name: On-premises replicatie met privé-eindpunten inschakelen
+              href: ./hybrid-how-to-enable-replication-private-endpoints.md
             - name: De Mobility-service implementeren
               items:
                 - name: Overzicht en installatie van de Mobility-service
@@ -308,6 +314,8 @@
               href: physical-azure-set-up-source.md
             - name: De doelomgeving instellen
               href: vmware-azure-set-up-target.md
+            - name: On-premises replicatie met privé-eindpunten inschakelen
+              href: ./hybrid-how-to-enable-replication-private-endpoints.md
             - name: De Mobility-service implementeren
               items:
                 - name: Over de installatie van de Mobility-service

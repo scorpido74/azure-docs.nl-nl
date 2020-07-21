@@ -23,7 +23,8 @@
       href: quickstart-create-data-factory-python.md
     - name: Een data factory maken - REST
       href: quickstart-create-data-factory-rest-api.md
-    - name: Een data factory maken - Resource Manager-sjabloon
+    - name: Data factory maken - ARM-sjabloon
+      displayName: Resource Manager
       href: quickstart-create-data-factory-resource-manager-template.md
     - name: Beveiliging - Door de klant beheerde sleutelversleuteling inschakelen
       href: enable-customer-managed-key.md
@@ -98,6 +99,8 @@
               href: tutorial-incremental-copy-lastmodified-copy-data-tool.md
             - name: Nieuwe bestanden op laatst gepartitioneerde bestandsnaam
               href: tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md
+        - name: Pijplijn voor kopiëren bouwen met behulp van beheerd VNet en privé-eindpunten
+          href: tutorial-copy-data-portal-private.md
     - name: Gegevens transformeren
       items:
         - name: Gegevens transformeren met toewijzingsgegevensstromen
@@ -126,6 +129,8 @@
                   href: tutorial-transform-data-hive-virtual-network-portal.md
                 - name: Azure PowerShell
                   href: tutorial-transform-data-hive-virtual-network.md
+        - name: Pijplijn voor toewijzen van gegevensstroom bouwen met behulp van beheerd VNet en privé-eindpunten
+          href: tutorial-data-flow-private.md
     - name: Controlestroom
       items:
         - name: Gebruikersinterface (UI)
@@ -162,6 +167,8 @@
       href: concepts-pipeline-execution-triggers.md
     - name: Integratie-runtime
       href: concepts-integration-runtime.md
+    - name: Beheerd virtueel netwerk
+      href: managed-virtual-network-private-endpoint.md
     - name: Beveiliging
       items:
         - name: Beveiligingsbasislijn
@@ -408,6 +415,8 @@
           href: connector-web-table.md
         - name: Xero
           href: connector-xero.md
+        - name: XML-indeling
+          href: format-xml.md
         - name: Zoho
           href: connector-zoho.md
     - name: Gegevens verplaatsen
@@ -469,12 +478,12 @@
           href: transform-data-using-spark.md
         - name: HDInsight-streamingactiviteit
           href: transform-data-using-hadoop-streaming.md
-        - name: Machine Learning-batchuitvoeringsactiviteit
-          href: transform-data-using-machine-learning.md
-        - name: Machine Learning-activiteit resources bijwerken
-          href: update-machine-learning-models.md
         - name: Machine Learning-pijplijnactiviteiten uitvoeren
           href: transform-data-machine-learning-service.md
+        - name: Activiteit Batchuitvoering Machine Learning Studio (klassiek)
+          href: transform-data-using-machine-learning.md
+        - name: Activiteit Resource bijwerken Machine Learning Studio (klassiek)
+          href: update-machine-learning-models.md
         - name: Opgeslagen procedureactiviteit
           href: transform-data-using-stored-procedure.md
         - name: Gekoppelde services berekenen
@@ -681,7 +690,7 @@
               href: how-to-fixed-width.md
             - name: Verwerking van foutrijen
               href: how-to-data-flow-error-rows.md
-            - name: Azure SQL DB naar CosmosDB
+            - name: Azure SQL DB naar Azure Cosmos DB
               href: how-to-sqldb-to-cosmosdb.md
         - name: SSIS-migratie van on-premises
           items:

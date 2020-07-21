@@ -29,6 +29,9 @@
     - name: 'Uw eerste query uitvoeren: Python'
       displayName: 'library, azure-mgmt, cli'
       href: ./first-query-python.md
+    - name: 'Uw eerste query uitvoeren: Ruby'
+      displayName: 'gem, azure-mgmt'
+      href: ./first-query-ruby.md
     - name: 'Uw eerste query uitvoeren: REST'
       displayName: 'armclient, postman'
       href: ./first-query-rest-api.md

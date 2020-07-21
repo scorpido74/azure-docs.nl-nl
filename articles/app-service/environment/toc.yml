@@ -46,6 +46,8 @@
       href: forced-tunnel-support.md
     - name: Firewall-integratie
       href: firewall-integration.md
+    - name: Zoneredundantie
+      href: zone-redundancy.md
 - name: Naslaginformatie
   items:
     - name: Beheeradressen
@@ -76,14 +78,14 @@
           href: app-service-app-service-environment-control-inbound-traffic.md
         - name: Gelaagde beveiliging gebruiken
           href: app-service-app-service-environment-layered-security.md
-- name: Bronnen
+- name: Resources
   items:
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Prijzen
       href: 'https://azure.microsoft.com/pricing/details/app-service/'
     - name: Quotumgegevens
-      href: '../../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits'
+      href: ../../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits
     - name: Service-updates
       href: 'https://azure.microsoft.com/updates/?product=app-service'
     - name: Aanbevolen procedures
