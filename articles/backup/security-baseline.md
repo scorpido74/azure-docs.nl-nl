@@ -7,24 +7,24 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 68453341defd2d359e69e0ecf8a821464fead0d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a7d12a2be7f2e3d3556d6c8c3303b2ddb8b8738
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82744063"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503486"
 ---
 # <a name="azure-security-baseline-for-backup"></a>Azure-beveiligings basislijn voor back-up
 
 De Azure-beveiligings basislijn voor back-up bevat aanbevelingen waarmee u de beveiligings postuur van uw implementatie kunt verbeteren.
 
-De basis lijn voor deze service wordt opgehaald uit de [Azure Security Bench Mark-versie 1,0](https://docs.microsoft.com/azure/security/benchmarks/overview), die aanbevelingen biedt over hoe u uw cloud oplossingen kunt beveiligen in azure met onze richt lijnen voor best practices.
+De basis lijn voor deze service wordt opgehaald uit de [Azure Security Bench Mark-versie 1,0](../security/benchmarks/overview.md), die aanbevelingen biedt over hoe u uw cloud oplossingen kunt beveiligen in azure met onze richt lijnen voor best practices.
 
-Zie [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)voor meer informatie.
+Zie [overzicht van Azure Security-basis lijnen](../security/benchmarks/security-baselines-overview.md)voor meer informatie.
 
 ## <a name="network-security"></a>Netwerkbeveiliging
 
-*Zie [beveiligings beheer: netwerk beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)voor meer informatie.*
+*Zie [beveiligings beheer: netwerk beveiliging](../security/benchmarks/security-control-network-security.md)voor meer informatie.*
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1,1: Beveilig bronnen met behulp van netwerk beveiligings groepen of Azure Firewall op de Virtual Network
 
@@ -54,7 +54,7 @@ Zie [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/azure
 
 **Richt lijnen**: de eind punten die worden gebruikt door Azure backup (inclusief de Microsoft Azure Recovery Services agent) worden allemaal beheerd door micro soft. U bent verantwoordelijk voor alle extra besturings elementen die u wilt implementeren op uw on-premises systemen.
 
-- [Meer informatie over de ondersteuning van netwerken en toegang voor de MARS-agent](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent#networking-and-access-support)
+- [Meer informatie over de ondersteuning van netwerken en toegang voor de MARS-agent](./backup-support-matrix-mars-agent.md#networking-and-access-support)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -72,7 +72,7 @@ Zie [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/azure
 
 **Richt lijnen**: de eind punten die worden gebruikt door Azure backup (inclusief de Microsoft Azure Recovery Services agent) worden allemaal beheerd door micro soft. U bent verantwoordelijk voor alle extra besturings elementen die u wilt implementeren op uw on-premises systemen.
 
-- [Meer informatie over de ondersteuning van netwerken en toegang voor de MARS-agent](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent#networking-and-access-support)
+- [Meer informatie over de ondersteuning van netwerken en toegang voor de MARS-agent](./backup-support-matrix-mars-agent.md#networking-and-access-support)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -90,7 +90,7 @@ Zie [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/azure
 
 **Richt lijnen**: als u de Mars-agent op een virtuele Azure-machine gebruikt, gebruikt u de AzureBackup-servicetag op uw NSG of Azure firewall om uitgaande toegang tot Azure backup toe te staan.
 
-- [Back-up van SQL Server-data bases in azure Vm's](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms)
+- [Back-up van SQL Server-data bases in azure Vm's](./backup-sql-server-database-azure-vms.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -116,9 +116,9 @@ Zie [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/azure
 
 **Richt lijnen**: als u de Mars-agent gebruikt op een virtuele machine van Azure die wordt beveiligd door een NSG of Azure firewall, gebruikt u Azure-activiteiten logboek om de configuratie van de NSG of de firewall te bewaken. U kunt waarschuwingen maken binnen Azure Monitor die worden geactiveerd wanneer er wijzigingen in deze resources plaatsvinden.
 
-- [Activiteiten logboek gebeurtenissen van Azure bekijken en ophalen](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+- [Activiteiten logboek gebeurtenissen van Azure bekijken en ophalen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
-- [Waarschuwingen voor activiteiten logboek maken, weer geven en beheren met behulp van Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [Waarschuwingen voor activiteiten logboek maken, weer geven en beheren met behulp van Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -126,7 +126,7 @@ Zie [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/azure
 
 ## <a name="logging-and-monitoring"></a>Logboekregistratie en bewaking
 
-*Zie voor meer informatie [beveiligings beheer: logboek registratie en controle](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*Zie voor meer informatie [beveiligings beheer: logboek registratie en controle](../security/benchmarks/security-control-logging-monitoring.md).*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2,1: goedgekeurde tijd synchronisatie bronnen gebruiken
 
@@ -142,11 +142,11 @@ Zie [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/azure
 
 Neem ook opname logboeken via Azure Monitor op om beveiligings gegevens te verzamelen die zijn gegenereerd door Azure Backup. In de Azure Monitor gebruikt u Log Analytics werk ruimte (n) om een query uit te voeren en een analyse te verrichten en opslag accounts te gebruiken voor lange termijn/archiverings opslag. U kunt ook gegevens naar Azure Sentinel of een beveiligings incident en gebeurtenis beheer van derden (SIEM) inschakelen en op de trein zetten.
 
-- [Diagnostische instellingen voor Azure-activiteiten logboek inschakelen](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Diagnostische instellingen voor Azure-activiteiten logboek inschakelen](../azure-monitor/platform/activity-log.md)
 
-- [Diagnostische instellingen gebruiken voor Recovery Services kluizen](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events)
+- [Diagnostische instellingen gebruiken voor Recovery Services kluizen](./backup-azure-diagnostic-events.md)
 
-- [Azure-Sentinel onboarden](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Azure-Sentinel onboarden](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -158,9 +158,9 @@ Neem ook opname logboeken via Azure Monitor op om beveiligings gegevens te verza
 
 Daarnaast verzendt Azure Backup diagnostische gebeurtenissen die kunnen worden verzameld en gebruikt voor analyse, waarschuwingen en rapportage. U kunt de diagnostische instellingen voor een Recovery Services kluis configureren via de Azure Portal. U kunt een of meer diagnostische gebeurtenissen verzenden naar een opslag account, Event hub of een Log Analytics-werk ruimte.
 
-- [Diagnostische instellingen voor Azure-activiteiten logboek inschakelen](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Diagnostische instellingen voor Azure-activiteiten logboek inschakelen](../azure-monitor/platform/activity-log.md)
 
-- [Diagnostische instellingen gebruiken voor Recovery Services kluizen](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events)
+- [Diagnostische instellingen gebruiken voor Recovery Services kluizen](./backup-azure-diagnostic-events.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -178,7 +178,7 @@ Daarnaast verzendt Azure Backup diagnostische gebeurtenissen die kunnen worden v
 
 **Richt lijnen**: stel in azure monitor de Bewaar periode voor logboek registratie In voor log Analytics werk ruimten die zijn gekoppeld aan uw Azure Recovery Services-kluizen volgens de nalevings voorschriften van uw organisatie.
 
-- [Para meters voor het bewaren van Logboeken instellen](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Para meters voor het bewaren van Logboeken instellen](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -190,11 +190,11 @@ Daarnaast verzendt Azure Backup diagnostische gebeurtenissen die kunnen worden v
 
 Schakel Diagnostische instellingen voor Azure-activiteiten logboek in en verzend de logboeken naar een Log Analytics-werk ruimte. Voer query's uit in Log Analytics om zoek termen te zoeken, trends te identificeren, patronen te analyseren en veel andere inzichten te bieden op basis van de activiteiten logboek gegevens die mogelijk zijn verzameld voor Recovery Services kluizen.
 
-- [Bewaking Azure Backup werk belastingen](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor)
+- [Bewaking Azure Backup werk belastingen](./backup-azure-monitoring-built-in-monitor.md)
 
-- [Diagnostische instellingen voor Azure-activiteiten logboek inschakelen](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Diagnostische instellingen voor Azure-activiteiten logboek inschakelen](../azure-monitor/platform/activity-log.md)
 
-- [Azure-activiteiten logboeken verzamelen en analyseren in Log Analytics werk ruimte in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-collect)
+- [Azure-activiteiten logboeken verzamelen en analyseren in Log Analytics werk ruimte in Azure Monitor](../azure-monitor/platform/activity-log.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -208,11 +208,11 @@ Waarschuwingen zijn voornamelijk scenario's waarin gebruikers een melding ontvan
 
 U kunt ook een Log Analytics werk ruimte onboarden naar Azure Sentinel, aangezien deze een via-oplossing (Security Orchestration Automated Response) biedt. Hiermee kunnen playbooks (geautomatiseerde oplossingen) worden gemaakt en gebruikt om beveiligings problemen op te lossen. Daarnaast kunt u aangepaste logboek waarschuwingen maken in uw Log Analytics-werk ruimte met behulp van Azure Monitor.
 
-- [Bewaking Azure Backup werk belastingen](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor)
+- [Bewaking Azure Backup werk belastingen](./backup-azure-monitoring-built-in-monitor.md)
 
-- [Azure-Sentinel onboarden](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Azure-Sentinel onboarden](../sentinel/quickstart-onboard.md)
 
-- [Logboek waarschuwingen maken, weer geven en beheren met behulp van Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)
+- [Logboek waarschuwingen maken, weer geven en beheren met behulp van Azure Monitor](../azure-monitor/platform/alerts-log.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -244,7 +244,7 @@ U kunt ook een Log Analytics werk ruimte onboarden naar Azure Sentinel, aangezie
 
 ## <a name="identity-and-access-control"></a>Identiteits- en toegangsbeheer
 
-*Zie [beveiligings beheer: identiteit en Access Control](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)voor meer informatie.*
+*Zie [beveiligings beheer: identiteit en Access Control](../security/benchmarks/security-control-identity-access-control.md)voor meer informatie.*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: een inventaris van beheerders accounts onderhouden
 
@@ -252,9 +252,9 @@ U kunt ook een Log Analytics werk ruimte onboarden naar Azure Sentinel, aangezie
 
 Ondersteunende documentatie:
 
-- [Een directory-rol verkrijgen in azure AD met Power shell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [Een directory-rol verkrijgen in azure AD met Power shell](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-- [Leden van een directory-rol in azure AD ophalen met Power shell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [Leden van een directory-rol in azure AD ophalen met Power shell](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 **Azure Security Center bewaking**: Ja
 
@@ -274,9 +274,9 @@ Ondersteunende documentatie:
 
 Om u te helpen bij het bijhouden van specifieke beheerders accounts, kunt u ook aanbevelingen van Azure Security Center of het ingebouwde Azure-beleid gebruiken, zoals: er moet meer dan één eigenaar worden toegewezen aan uw abonnement afgeschafte accounts met eigenaars machtigingen moeten worden verwijderd uit uw abonnement externe accounts met eigenaars machtigingen moeten worden verwijderd
 
-- [Azure Security Center gebruiken om identiteit en toegang te bewaken (preview)](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+- [Azure Security Center gebruiken om identiteit en toegang te bewaken (preview)](../security-center/security-center-identity-access.md)
 
-- [Azure Policy gebruiken](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy gebruiken](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -286,11 +286,11 @@ Om u te helpen bij het bijhouden van specifieke beheerders accounts, kunt u ook 
 
 **Richt lijnen**: gebruik een Azure-app-registratie (Service-Principal) om een token op te halen dat kan worden gebruikt om te communiceren met uw Recovery Services KLUIZEN via API-aanroepen.
 
-- [Azure REST-Api's aanroepen](https://docs.microsoft.com/rest/api/azure/#how-to-call-azure-rest-apis-with-postman)
+- [Azure REST-Api's aanroepen](/rest/api/azure/#how-to-call-azure-rest-apis-with-postman)
 
-- [Uw client toepassing (Service-Principal) registreren bij Azure AD](https://docs.microsoft.com/rest/api/azure/#register-your-client-application-with-azure-ad)
+- [Uw client toepassing (Service-Principal) registreren bij Azure AD](/rest/api/azure/#register-your-client-application-with-azure-ad)
 
-- [Informatie over Azure Recovery Services-API](https://docs.microsoft.com/rest/api/recoveryservices/)
+- [Informatie over Azure Recovery Services-API](/rest/api/recoveryservices/)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -300,9 +300,9 @@ Om u te helpen bij het bijhouden van specifieke beheerders accounts, kunt u ook 
 
 **Richt lijnen**: wanneer u kritieke bewerkingen uitvoert in azure backup, moet u een beveiligings pincode invoeren die beschikbaar is op de Azure Portal. Als Azure Multi-Factor Authentication wordt ingeschakeld, wordt er een beveiligingslaag toegevoegd. Alleen geautoriseerde gebruikers met geldige Azure-referenties en vanaf een tweede apparaat worden geverifieerd, hebben toegang tot de Azure Portal.
 
-- [Multi-Factor Authentication in Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-security-feature)
+- [Multi-Factor Authentication in Azure Backup](./backup-azure-security-feature.md)
 
-- [Planning van een cloudgebaseerde Azure Multi-Factor Authentication-implementatie](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+- [Planning van een cloudgebaseerde Azure Multi-Factor Authentication-implementatie](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -312,9 +312,9 @@ Om u te helpen bij het bijhouden van specifieke beheerders accounts, kunt u ook 
 
 **Richt lijnen**: gebruik een privileged Access-werk station (Paw) met Azure multi-factor Authentication (MFA) dat is geconfigureerd voor aanmelding bij en de configuratie van uw Azure backup-resources.
 
-- [Privileged Access Workstations](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [Privileged Access Workstations](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-- [Planning van een cloudgebaseerde Azure Multi-Factor Authentication-implementatie](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+- [Planning van een cloudgebaseerde Azure Multi-Factor Authentication-implementatie](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -326,9 +326,9 @@ Om u te helpen bij het bijhouden van specifieke beheerders accounts, kunt u ook 
 
 Daarnaast kunt u met Azure AD-risico detectie waarschuwingen en rapporten bekijken over Risk ante gebruikers gedrag.
 
-- [Privileged Identity Management implementeren (PIM)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+- [Privileged Identity Management implementeren (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [Meer informatie over Azure AD-risico detectie](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+- [Meer informatie over Azure AD-risico detectie](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -338,7 +338,7 @@ Daarnaast kunt u met Azure AD-risico detectie waarschuwingen en rapporten bekijk
 
 **Hulp**: gebruik benoemde locaties voor voorwaardelijke toegang om alleen toegang toe te staan tot de Azure Portal vanuit specifieke logische groepen met IP-adresbereiken of landen/regio's.
 
-- [Benoemde locaties configureren in azure](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+- [Benoemde locaties configureren in azure](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -348,9 +348,9 @@ Daarnaast kunt u met Azure AD-risico detectie waarschuwingen en rapporten bekijk
 
 **Hulp**: gebruik Azure Active Directory (AD) als centrale verificatie-en autorisatie systeem voor uw Azure backup-instanties. Azure AD beveiligt gegevens door gebruik te maken van sterke versleuteling voor gegevens in rust en onderweg. Azure AD bevat ook zouten, hashes en veilige gebruikers referenties.
 
-- [Azure Backup configureren voor het gebruik van Azure AD-aanmelding](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad)
+- [Azure Backup configureren voor het gebruik van Azure AD-aanmelding](../app-service/configure-authentication-provider-aad.md)
 
-- [Een AAD-exemplaar maken en configureren](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+- [Een AAD-exemplaar maken en configureren](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -360,9 +360,9 @@ Daarnaast kunt u met Azure AD-risico detectie waarschuwingen en rapporten bekijk
 
 **Hulp**: Azure Active Directory (AD) bevat logboeken waarmee u verouderde accounts kunt detecteren. Daarnaast kunt u Azure Identity Access revisies gebruiken om groepslid maatschappen en de toegang tot bedrijfs toepassingen en roltoewijzingen op efficiënte wijze te beheren. Gebruikers toegang kan regel matig worden gecontroleerd om ervoor te zorgen dat alleen de juiste gebruikers toegang hebben.
 
-- [Meer informatie over Azure AD-rapportage](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+- [Meer informatie over Azure AD-rapportage](../active-directory/reports-monitoring/index.yml)
 
-- [Beoordelingen over Azure Identity Access gebruiken](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+- [Beoordelingen over Azure Identity Access gebruiken](../active-directory/governance/access-reviews-overview.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -376,9 +376,9 @@ U hebt toegang tot de Azure AD-aanmeldings activiteit, de controle-en risico geb
 
 U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-gebruikers accounts te maken en de audit logboeken en aanmeldings logboeken te verzenden naar een Log Analytics-werk ruimte. U kunt de gewenste logboek waarschuwingen configureren in Log Analytics.
 
-- [Azure-activiteiten logboeken integreren in Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure-activiteiten logboeken integreren in Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-- [Azure-Sentinel aan de trein](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Azure-Sentinel aan de trein](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -388,13 +388,13 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 **Hulp**: gebruik Azure Active Directory (AD) als centrale verificatie-en autorisatie systeem voor uw Recovery Services kluizen. Voor de afwijking van het gedrag van de account aanmelding op het besturings vlak (de Azure Portal), gebruikt u de functies Azure AD Identity Protection en risico detectie om automatische antwoorden te configureren op gedetecteerde verdachte acties met betrekking tot gebruikers identiteiten. U kunt ook gegevens opnemen in azure Sentinel voor verder onderzoek.
 
-- [Azure Backup configureren voor het gebruik van Azure AD-aanmelding](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad)
+- [Azure Backup configureren voor het gebruik van Azure AD-aanmelding](../app-service/configure-authentication-provider-aad.md)
 
-- [Hoe kan ik een Risk ante aanmelding van Azure AD weer geven?](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Hoe kan ik een Risk ante aanmelding van Azure AD weer geven?](../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Risico beleid voor identiteits beveiliging configureren en inschakelen](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+- [Risico beleid voor identiteits beveiliging configureren en inschakelen](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-- [Azure-Sentinel onboarden](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Azure-Sentinel onboarden](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -404,7 +404,7 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 **Hulp**: momenteel niet beschikbaar; Klanten-lockbox wordt nog niet ondersteund voor Azure Backup.
 
-- [Lijst met door Klanten-lockbox ondersteunde services](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+- [Lijst met door Klanten-lockbox ondersteunde services](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -412,13 +412,13 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 ## <a name="data-protection"></a>Gegevensbeveiliging
 
-*Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
+*Zie [beveiligings beheer: gegevens beveiliging](../security/benchmarks/security-control-data-protection.md)voor meer informatie.*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: een inventaris van gevoelige informatie onderhouden
 
 **Hulp**: Tags gebruiken om Azure-resources te helpen bij het bijhouden of verwerken van gevoelige informatie.
 
-- [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -432,13 +432,13 @@ Implementeer afzonderlijke abonnementen en/of beheer groepen voor ontwikkelings-
 
 Ondersteunende documentatie:
 
-- [Overzicht van Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview)
+- [Overzicht van Azure Backup](./backup-overview.md)
 
-- [Aanvullende Azure-abonnementen maken](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+- [Aanvullende Azure-abonnementen maken](../cost-management-billing/manage/create-subscription.md)
 
-- [Beheergroepen maken](https://docs.microsoft.com/azure/governance/management-groups/create)
+- [Beheergroepen maken](../governance/management-groups/create.md)
 
-- [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -450,7 +450,7 @@ Ondersteunende documentatie:
 
 Micro soft beheert de onderliggende infra structuur voor Azure Backup en heeft strikte controles geïmplementeerd om verlies of bloot stelling van klant gegevens te voor komen.
 
-- [Informatie over beveiliging van klanten in azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [Informatie over beveiliging van klanten in azure](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -460,7 +460,7 @@ Micro soft beheert de onderliggende infra structuur voor Azure Backup en heeft s
 
 **Hulp**: er wordt een back-upverkeer van servers naar de Recovery Services kluis overgedragen via een beveiligde HTTPS-koppeling en versleuteld met behulp van Advanced Encryption Standard (AES) 256 wanneer deze wordt opgeslagen in de kluis.
 
-- [Meer informatie over versleuteling in de rest van Azure Backup](https://docs.microsoft.com/azure/backup/backup-encryption)
+- [Meer informatie over versleuteling in de rest van Azure Backup](./backup-encryption.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -472,7 +472,7 @@ Micro soft beheert de onderliggende infra structuur voor Azure Backup en heeft s
 
 Micro soft beheert de onderliggende infra structuur voor Azure Backup en heeft strikte controles geïmplementeerd om verlies of bloot stelling van klant gegevens te voor komen.
 
-- [Informatie over beveiliging van klanten in azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [Informatie over beveiliging van klanten in azure](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -484,9 +484,9 @@ Micro soft beheert de onderliggende infra structuur voor Azure Backup en heeft s
 
 Azure Backup biedt drie ingebouwde rollen voor het beheren van de bewerkingen voor back-upbeheer: back-upinzender, back-upoperator en back-uplezer. U kunt ingebouwde rollen van back-ups toewijzen aan diverse acties voor back-upbeheer.
 
-- [RBAC configureren in azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+- [RBAC configureren in azure](../role-based-access-control/role-assignments-portal.md)
 
-- [Op rollen gebaseerd Access Control gebruiken om Azure Backup herstel punten te beheren](https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault)
+- [Op rollen gebaseerd Access Control gebruiken om Azure Backup herstel punten te beheren](./backup-rbac-rs-vault.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -496,7 +496,7 @@ Azure Backup biedt drie ingebouwde rollen voor het beheren van de bewerkingen vo
 
 **Richt lijnen**: niet van toepassing; deze aanbeveling is bedoeld voor reken resources. Micro soft beheert de onderliggende infra structuur voor Azure Backup en heeft strikte controles geïmplementeerd om verlies of bloot stelling van klant gegevens te voor komen.
 
-- [Azure-klant gegevens beveiliging](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [Azure-klant gegevens beveiliging](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -508,7 +508,7 @@ Azure Backup biedt drie ingebouwde rollen voor het beheren van de bewerkingen vo
 
 Wanneer u een back-up maakt van de MARS-agent of een Recovery Services kluis versleutelt met een door de klant beheerde sleutel, hebt u alleen toegang tot de versleutelings sleutel. Microsoft bewaart nooit een kopie en heeft geen toegang tot de sleutel. Als de sleutel verkeerd wordt geplaatst, kan Microsoft de back-upgegevens niet herstellen.
 
-- [Meer informatie over versleuteling in rust voor Azure Backup](https://docs.microsoft.com/azure/backup/backup-encryption)
+- [Meer informatie over versleuteling in rust voor Azure Backup](./backup-encryption.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -518,7 +518,7 @@ Wanneer u een back-up maakt van de MARS-agent of een Recovery Services kluis ver
 
 **Hulp**: gebruik Azure monitor met het Azure-activiteiten logboek om waarschuwingen te maken voor wanneer wijzigingen worden aangebracht in productie Azure Recovery Services kluizen, evenals andere essentiële of gerelateerde bronnen.
 
-- [Waarschuwingen maken voor gebeurtenissen in het Azure-activiteiten logboek](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [Waarschuwingen maken voor gebeurtenissen in het Azure-activiteiten logboek](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -526,7 +526,7 @@ Wanneer u een back-up maakt van de MARS-agent of een Recovery Services kluis ver
 
 ## <a name="vulnerability-management"></a>Beheer van beveiligingsproblemen
 
-*Zie [beveiligings beheer: beveiligingslek beheer](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)voor meer informatie.*
+*Zie [beveiligings beheer: beveiligingslek beheer](../security/benchmarks/security-control-vulnerability-management.md)voor meer informatie.*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: automatische hulpprogram ma's voor het scannen van beveiligings problemen uitvoeren
 
@@ -534,7 +534,7 @@ Wanneer u een back-up maakt van de MARS-agent of een Recovery Services kluis ver
 
 Onderliggend platform gescand en bijgewerkt door micro soft. Bekijk beveiligings controles die beschikbaar zijn voor Azure Backup om beveiligings problemen met betrekking tot de service configuratie te verminderen.
 
-- [Informatie over beveiligings controles die beschikbaar zijn voor Azure Backup](https://docs.microsoft.com/azure/backup/backup-security-controls)
+- [Informatie over beveiligings controles die beschikbaar zijn voor Azure Backup](./backup-security-controls.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -568,7 +568,7 @@ Onderliggend platform gescand en bijgewerkt door micro soft. Bekijk beveiligings
 
 **Hulp**: momenteel niet beschikbaar; beveiligings configuraties voor Azure Backup worden nog niet ondersteund in Azure Security Center.
 
-- [Lijst met door Azure Security Center ondersteunde PaaS-Services](https://docs.microsoft.com/azure/security-center/features-paas)
+- [Lijst met door Azure Security Center ondersteunde PaaS-Services](../security-center/features-paas.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -576,7 +576,7 @@ Onderliggend platform gescand en bijgewerkt door micro soft. Bekijk beveiligings
 
 ## <a name="inventory-and-asset-management"></a>Inventarisatie en Asset Management
 
-*Zie voor meer informatie [beveiligings beheer: inventarisatie en activa beheer](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+*Zie voor meer informatie [beveiligings beheer: inventarisatie en activa beheer](../security/benchmarks/security-control-inventory-asset-management.md).*
 
 ### <a name="61-use-azure-asset-discovery"></a>6,1: Azure Asset Discovery gebruiken
 
@@ -584,11 +584,11 @@ Onderliggend platform gescand en bijgewerkt door micro soft. Bekijk beveiligings
 
 Hoewel klassieke Azure-resources kunnen worden gedetecteerd via resource grafiek, is het raadzaam om Azure Resource Manager resources te maken en te gebruiken.
 
-- [Query's maken met Azure resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [Query's maken met Azure resource Graph](../governance/resource-graph/first-query-portal.md)
 
-- [Uw Azure-abonnementen weer geven](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [Uw Azure-abonnementen weer geven](/powershell/module/az.accounts/get-azsubscription)
 
-- [Meer informatie over Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+- [Meer informatie over Azure RBAC](../role-based-access-control/overview.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -598,7 +598,7 @@ Hoewel klassieke Azure-resources kunnen worden gedetecteerd via resource grafiek
 
 **Richt lijnen**: Tags Toep assen op Azure-resources die meta gegevens geven om ze logisch in een taxonomie te organiseren.
 
-- [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -610,11 +610,11 @@ Hoewel klassieke Azure-resources kunnen worden gedetecteerd via resource grafiek
 
 Gebruik Azure Policy bovendien om beperkingen te leggen voor het type resources dat kan worden gemaakt in klant abonnementen met behulp van de volgende ingebouwde beleids definities: niet toegestaan resource typen toegestane resource typen
 
-- [Aanvullende Azure-abonnementen maken](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+- [Aanvullende Azure-abonnementen maken](../cost-management-billing/manage/create-subscription.md)
 
-- [Beheergroepen maken](https://docs.microsoft.com/azure/governance/management-groups/create)
+- [Beheergroepen maken](../governance/management-groups/create.md)
 
-- [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -634,9 +634,9 @@ Gebruik Azure Policy bovendien om beperkingen te leggen voor het type resources 
 
 Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen hun abonnement (en).  Zorg ervoor dat alle Azure-resources die aanwezig zijn in de omgeving, zijn goedgekeurd.
 
-- [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
-- [Query's maken met Azure Graph](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [Query's maken met Azure Graph](../governance/resource-graph/first-query-portal.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -670,9 +670,9 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen h
 
 **Hulp: gebruik**Azure Policy om beperkingen toe te voegen voor het type resources dat kan worden gemaakt in klant abonnementen met behulp van de volgende ingebouwde beleids definities: niet toegestaan resource typen toegestane resource typen
 
-- [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
-- [Een specifiek resource type weigeren met Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+- [Een specifiek resource type weigeren met Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -690,7 +690,7 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen h
 
 **Hulp**bij het configureren van voorwaardelijke toegang van Azure om gebruikers de mogelijkheid te bieden om te communiceren met Azure Resource Manager door ' blok toegang ' te configureren voor de app Microsoft Azure management.
 
-- [Voorwaardelijke toegang configureren om de toegang tot Azure Resource Manager te blok keren](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+- [Voorwaardelijke toegang configureren om de toegang tot Azure Resource Manager te blok keren](../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -714,15 +714,15 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen h
 
 ## <a name="secure-configuration"></a>Veilige configuratie
 
-*Zie [beveiligings beheer: beveiligde configuratie](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)voor meer informatie.*
+*Zie [beveiligings beheer: beveiligde configuratie](../security/benchmarks/security-control-secure-configuration.md)voor meer informatie.*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: veilige configuraties instellen voor alle Azure-resources
 
 **Hulp**: Definieer en implementeer standaard beveiligings configuraties voor uw Recovery Services kluis met Azure Policy. Gebruik Azure Policy aliassen in de naam ruimte ' micro soft. Recovery Services ' om aangepaste beleids regels te maken om de configuratie van uw Recovery Services kluizen te controleren of af te dwingen.
 
-- [Beschik bare Azure Policy aliassen weer geven](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [Beschik bare Azure Policy aliassen weer geven](/powershell/module/az.resources/get-azpolicyalias)
 
-- [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -740,9 +740,9 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen h
 
 **Hulp**: gebruik Azure Policy [deny] en [implementeren indien niet aanwezig] voor het afdwingen van beveiligde instellingen voor uw Azure-resources.
 
-- [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Policy effecten begrijpen](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+- [Azure Policy effecten begrijpen](../governance/policy/concepts/effects.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -760,9 +760,9 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen h
 
 **Richt lijnen**: als u aangepaste Azure Policy definities gebruikt, kunt u Azure DevOps of Azure opslag plaatsen gebruiken om uw code veilig op te slaan en te beheren.
 
-- [Code opslaan in azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Code opslaan in azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-- [Documentatie voor Azure opslag plaatsen](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+- [Documentatie voor Azure opslag plaatsen](/azure/devops/repos/index?view=azure-devops)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -780,7 +780,7 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen h
 
 **Hulp**: gebruik ingebouwde Azure Policy definities en Azure Policy aliassen in de naam ruimte ' micro soft. Recovery Services ' om aangepaste beleids regels te maken om systeem configuraties te Signa lering, te controleren en af te dwingen. Ontwikkel bovendien een proces en pijp lijn voor het beheren van beleids uitzonderingen.
 
-- [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -798,7 +798,7 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen h
 
 **Hulp**: gebruik ingebouwde Azure Policy definities en Azure Policy aliassen in de naam ruimte ' micro soft. Recovery Services ' om aangepaste beleids regels te maken om systeem configuraties te Signa lering, te controleren en af te dwingen. Gebruik Azure Policy [audit], [deny] en [implementeren indien niet aanwezig] om automatisch configuraties af te dwingen voor uw Azure-resources.
 
-- [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -816,9 +816,9 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen h
 
 **Hulp**bij het instellen van de Mars-agent, slaat u de wachtwoordzin voor versleuteling op in azure Key Vault.
 
-- [Een Key Vault maken](https://docs.microsoft.com/azure/key-vault/quick-create-portal)
+- [Een Key Vault maken](../key-vault/secrets/quick-create-portal.md)
 
-- [Key Vault verificatie bieden met een beheerde identiteit](https://docs.microsoft.com/azure/key-vault/managed-identity)
+- [Key Vault verificatie bieden met een beheerde identiteit](../key-vault/general/managed-identity.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -828,7 +828,7 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen h
 
 **Richt lijnen**: niet van toepassing; Beheerde identiteiten worden niet ondersteund voor Azure Backup.
 
-- [Services die beheerde identiteiten voor Azure-resources ondersteunen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)
+- [Services die beheerde identiteiten voor Azure-resources ondersteunen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -846,7 +846,7 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen h
 
 ## <a name="malware-defense"></a>Beveiliging tegen malware
 
-*Zie [beveiligings beheer: verdediging tegen malware](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)voor meer informatie.*
+*Zie [beveiligings beheer: verdediging tegen malware](../security/benchmarks/security-control-malware-defense.md)voor meer informatie.*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: centraal beheerde anti-malware-software gebruiken
 
@@ -864,9 +864,9 @@ Scan vooraf bestanden die worden geüpload naar niet-reken resources van Azure, 
 
 Gebruik Azure Security Center bedreigings detectie voor gegevens Services om malware te detecteren die is geüpload naar opslag accounts.
 
-- [Micro soft antimalware voor Azure Cloud Services en Virtual Machines begrijpen](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
+- [Micro soft antimalware voor Azure Cloud Services en Virtual Machines begrijpen](../security/fundamentals/antimalware.md)
 
-- [Meer informatie over de detectie van bedreigingen van Azure Security Center voor gegevens Services](https://docs.microsoft.com/azure/security-center/security-center-alerts-data-services)
+- [Meer informatie over de detectie van bedreigingen van Azure Security Center voor gegevens Services](../security-center/threat-protection.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -882,7 +882,7 @@ Gebruik Azure Security Center bedreigings detectie voor gegevens Services om mal
 
 ## <a name="data-recovery"></a>Gegevensherstel
 
-*Zie [beveiligings beheer: gegevens herstel](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)voor meer informatie.*
+*Zie [beveiligings beheer: gegevens herstel](../security/benchmarks/security-control-data-recovery.md)voor meer informatie.*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: controleren op regel matige automatische back-ups
 
@@ -898,11 +898,11 @@ Gebruik Azure Security Center bedreigings detectie voor gegevens Services om mal
 
 Back-ups van door de klant beheerde sleutels binnen Azure Key Vault.
 
-- [Overzicht van Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview)
+- [Overzicht van Azure Backup](./backup-overview.md)
 
-- [Hoe kan ik een back-up maken van sleutel kluis sleutels in azure?](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
+- [Hoe kan ik een back-up maken van sleutel kluis sleutels in azure?](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
-- [Informatie over versleuteling in Azure Backup](https://docs.microsoft.com/azure/backup/backup-encryption#encryption-of-backup-data-using-customer-managed-keys)
+- [Informatie over versleuteling in Azure Backup](./backup-encryption.md#encryption-of-backup-data-using-customer-managed-keys)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -912,7 +912,7 @@ Back-ups van door de klant beheerde sleutels binnen Azure Key Vault.
 
 **Richt lijnen**: het herstellen van back-ups van door de klant beheerde sleutels testen.
 
-- [Sleutel kluis sleutels herstellen in azure](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Sleutel kluis sleutels herstellen in azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -922,7 +922,7 @@ Back-ups van door de klant beheerde sleutels binnen Azure Key Vault.
 
 **Richt lijnen**: voor on-premises back-ups wordt versleuteling op rest verstrekt met behulp van de wachtwoordzin die u opgeeft wanneer u een back-up maakt naar Azure. Voot Azure-VM’s worden gegevens in rust versleuteld met behulp van SSE (Storage Service Encryption). U kunt zacht verwijderen inschakelen in Key Vault om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering.
 
-- [Zacht verwijderen inschakelen in Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Zacht verwijderen inschakelen in Key Vault](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
 
 **Azure Security Center bewaking**: Ja
 
@@ -930,13 +930,13 @@ Back-ups van door de klant beheerde sleutels binnen Azure Key Vault.
 
 ## <a name="incident-response"></a>Reageren op incidenten
 
-*Zie voor meer informatie [beveiligings beheer: reactie op incidenten](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*Zie voor meer informatie [beveiligings beheer: reactie op incidenten](../security/benchmarks/security-control-incident-response.md).*
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: een hand leiding voor reactie op incidenten maken
 
 **Hulp**: een antwoord gids voor incidenten maken voor uw organisatie. Zorg ervoor dat er schriftelijke incidenten abonnementen zijn die alle werk rollen definiëren, evenals fasen van incident handling/management van detectie tot een beoordeling van het incident.
 
-- [Werk stroom automatisering configureren in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
+- [Werk stroom automatisering configureren in Azure Security Center](../security-center/security-center-planning-and-operations-guide.md)
 
 - [Richt lijnen voor het bouwen van uw eigen beveiligings incident antwoord proces](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
@@ -972,7 +972,7 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 **Hulp**: contact gegevens van beveiligings incidenten worden door micro soft gebruikt om contact met u op te nemen als het micro soft Security Response Center (MSRC) detecteert dat de gegevens van de klant zijn geopend door een onrecht matige of niet-gemachtigde partij.  Bekijk incidenten na het feit om te controleren of de problemen zijn opgelost.
 
-- [De Azure Security Center Security-contact persoon instellen](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+- [De Azure Security Center Security-contact persoon instellen](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -982,9 +982,9 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 **Richt lijnen**: uw Azure Security Center waarschuwingen en aanbevelingen exporteren met de functie continue export. Met doorlopend exporteren kunt u waarschuwingen en aanbevelingen hand matig of op een doorlopende manier exporteren. U kunt de Azure Security Center Data Connector gebruiken om de Sentinel van waarschuwingen te streamen.
 
-- [Continue export configureren](https://docs.microsoft.com/azure/security-center/continuous-export)
+- [Continue export configureren](../security-center/continuous-export.md)
 
-- [Waarschuwingen streamen naar Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+- [Waarschuwingen streamen naar Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -994,7 +994,7 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 **Hulp**: gebruik de functie werk stroom automatisering in azure Security Center om automatisch reacties te activeren via ' Logic apps ' in beveiligings waarschuwingen en aanbevelingen.
 
-- [Werk stroom automatisering en Logic Apps configureren](https://docs.microsoft.com/azure/security-center/workflow-automation)
+- [Werk stroom automatisering en Logic Apps configureren](../security-center/workflow-automation.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -1002,7 +1002,7 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Penetratietests en Red Team-oefeningen
 
-*Zie voor meer informatie [Security Control: Indringings tests en Red team-oefeningen](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*Zie voor meer informatie [Security Control: Indringings tests en Red team-oefeningen](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md).*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11,1: voert regel matig indringings tests van uw Azure-resources uit en zorgt voor herstel van alle essentiële beveiligings resultaten binnen 60 dagen
 
@@ -1016,5 +1016,5 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie de [Azure Security-Bench Mark](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- Meer informatie over [Azure-beveiligings basislijnen](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
+- Zie de [Azure Security-Bench Mark](../security/benchmarks/overview.md)
+- Meer informatie over [Azure-beveiligings basislijnen](../security/benchmarks/security-baselines-overview.md)

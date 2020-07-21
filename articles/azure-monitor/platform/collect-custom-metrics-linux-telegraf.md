@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 06c344130156ae5f72f6e65baa519c11adff2bae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 57eb005109b97a423f9218ee6a47ce5bb06c3853
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82186438"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505343"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Aangepaste metrische gegevens verzamelen voor een virtuele Linux-machine met de InfluxData-Telegraf-agent
 
@@ -25,13 +25,13 @@ U kunt met behulp van Azure Monitor aangepaste metrische gegevens verzamelen via
  ![Overzicht van de Telegraaf agent](./media/collect-custom-metrics-linux-telegraf/telegraf-agent-overview.png)
 
 > [!NOTE]  
-> Aangepaste metrische gegevens worden niet ondersteund in alle regio's. [Hier](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#supported-regions) worden ondersteunde regio's vermeld
+> Aangepaste metrische gegevens worden niet ondersteund in alle regio's. [Hier](./metrics-custom-overview.md#supported-regions) worden ondersteunde regio's vermeld
 
 ## <a name="send-custom-metrics"></a>Aangepaste metrische gegevens verzenden 
 
 Voor deze zelf studie implementeren we een virtuele Linux-machine waarop het Ubuntu 16,04 LTS-besturings systeem wordt uitgevoerd. De telegrafie-agent wordt ondersteund voor de meeste Linux-besturings systemen. Zowel de Debian-als de RPM-pakketten zijn beschikbaar in combi natie met niet-verpakkende Linux-bestanden op de [InfluxData-Download Portal](https://portal.influxdata.com/downloads). Zie deze [telegrafi-installatie handleiding](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/) voor aanvullende installatie-instructies en-opties. 
 
-Meld u aan bij [Azure Portal](https://portal.azure.com).
+Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 > [!NOTE]  
 > Als u de klassieke waarschuwings regels wilt migreren en een bestaande virtuele Linux-machine wilt gebruiken, moet u ervoor zorgen dat aan de virtueel-machine een **door**het systeem toegewezen identiteit is ingesteld op on.
@@ -111,7 +111,7 @@ De agent verzamelt nu metrische gegevens uit elk van de opgegeven invoer-invoeg 
 
 ## <a name="plot-your-telegraf-metrics-in-the-azure-portal"></a>Uw telegrafeer metrische gegevens in de Azure Portal afzetten 
 
-1. Open de [Azure Portal](https://portal.azure.com). 
+1. Open [Azure Portal](https://portal.azure.com). 
 
 1. Ga naar het tabblad nieuwe **monitor** . Selecteer vervolgens **metrische gegevens**.  
 
@@ -137,6 +137,3 @@ Wanneer u deze niet meer nodig hebt, kunt u de resource groep, de virtuele machi
 
 ## <a name="next-steps"></a>Volgende stappen
 - Meer informatie over [aangepaste metrische gegevens](metrics-custom-overview.md).
-
-
-

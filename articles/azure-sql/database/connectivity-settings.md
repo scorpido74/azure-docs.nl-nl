@@ -9,12 +9,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 07/06/2020
-ms.openlocfilehash: 04c5d9c8eceb14ab68ca0d96f994bf6a64bbc431
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 5f7e3f763fc7107ba1b4be1dc8b19e55aa88b5a8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045366"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504684"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL-connectiviteitsinstellingen
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -37,7 +37,7 @@ Wanneer de instelling **open bare netwerk toegang weigeren** is ingesteld op **J
 
  ![Scherm opname van connectiviteit met open bare toegang tot het netwerk weigeren][2]
 
-Elke poging om de instelling **toegang tot open bare netwerk weigeren** in te stellen op **Ja** zonder dat er een bestaand persoonlijk eind punt op de logische server wordt uitgevoerd, mislukt met een fout bericht dat lijkt op het volgende:  
+Alle pogingen om de instelling **open bare netwerk toegang weigeren** in te stellen op **Ja** zonder dat er bestaande persoonlijke eind punten op de logische server worden uitgevoerd, mislukken met een fout bericht dat lijkt op:  
 
 ```output
 Error 42102

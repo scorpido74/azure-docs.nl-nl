@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: cda729779c333064c91152e8427ce1a05227396e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 09f34eec84deeaf76d62ae0aff881e53bf5dd13f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201978"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502398"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>Veelgestelde vragen over Linux Virtual Machines
 In dit artikel worden enkele veelgestelde vragen over virtuele Linux-machines die zijn gemaakt in azure, behandeld met het Resource Manager-implementatie model. Voor de Windows-versie van dit onderwerp raadpleegt u [Veelgestelde vragen over Windows virtual machines](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -30,7 +30,7 @@ Azure Storage-accounts kunnen ook opslag bieden voor de schijf met het besturing
 ## <a name="how-can-i-access-my-virtual-machine"></a>Hoe kan ik toegang krijgen tot mijn virtuele machine?
 Stel een externe verbinding in om u aan te melden bij de virtuele machine met behulp van Secure Shell (SSH). Zie de instructies voor het maken van verbinding met [Windows](ssh-from-windows.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) of [van Linux en Mac](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). SSH biedt standaard ondersteuning voor maximaal tien gelijktijdige verbindingen. U kunt dit aantal verhogen door het configuratiebestand te bewerken.
 
-Als u problemen ondervindt, raadpleegt u het [oplossen van problemen met ssh-verbindingen (Secure Shell)](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Als u problemen ondervindt, raadpleegt u het [oplossen van problemen met ssh-verbindingen (Secure Shell)](../troubleshooting/troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json).
 
 ## <a name="can-i-use-the-temporary-disk-devsdb1-to-store-data"></a>Kan ik de tijdelijke schijf (/dev/sdb1) gebruiken om gegevens op te slaan?
 Gebruik niet de tijdelijke schijf (/dev/sdb1) om gegevens op te slaan. Het is alleen voor tijdelijke opslag. Het risico bestaat dat er gegevens verloren gaan die niet kunnen worden hersteld.

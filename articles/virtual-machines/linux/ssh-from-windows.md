@@ -8,12 +8,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 81dfac2a1623253a110833a96fddd1b41bd11b26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4fc411d3833fcd47477e7e0fe11c6da9e2114143
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390224"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502024"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>SSH-sleutels gebruiken met Windows op Azure
 
@@ -26,7 +26,7 @@ In dit artikel worden de manieren beschreven waarop u SSH-sleutels ( *Secure She
 ## <a name="windows-packages-and-ssh-clients"></a>Windows-pakketten en SSH-clients
 U maakt verbinding met virtuele Linux-machines in Azure en beheert deze met behulp van een *SSH-client*. Computers met Linux of macOS hebben meestal een suite SSH-opdrachten voor het genereren en beheren van SSH-sleutels en het maken van SSH-verbindingen. 
 
-Op Windows-computers zijn niet altijd vergelijk bare SSH-opdrachten geïnstalleerd. Recente versies van Windows 10 bieden [openssh-client opdrachten](https://blogs.msdn.microsoft.com/commandline/2018/03/07/windows10v1803/) voor het maken en beheren van SSH-sleutels en het maken van ssh-verbindingen vanaf een opdracht prompt. Recente Windows 10-versies omvatten ook het [Windows-subsysteem voor Linux](https://docs.microsoft.com/windows/wsl/about) voor het uitvoeren en openen van hulpprogram ma's zoals een SSH-client in een bash-shell. 
+Op Windows-computers zijn niet altijd vergelijk bare SSH-opdrachten geïnstalleerd. Recente versies van Windows 10 bieden [openssh-client opdrachten](https://devblogs.microsoft.com/commandline/windows10v1803/) voor het maken en beheren van SSH-sleutels en het maken van ssh-verbindingen vanaf een opdracht prompt. Recente Windows 10-versies omvatten ook het [Windows-subsysteem voor Linux](/windows/wsl/about) voor het uitvoeren en openen van hulpprogram ma's zoals een SSH-client in een bash-shell. 
 
 Andere veelgebruikte Windows SSH-clients die u lokaal kunt installeren, zijn opgenomen in de volgende pakketten:
 
@@ -123,4 +123,4 @@ Als u het [putty-download pakket](https://www.chiark.greenend.org.uk/~sgtatham/p
 
 * U kunt Power shell ook in Azure Cloud Shell gebruiken om SSH-sleutels te genereren en SSH-verbindingen te maken met virtuele Linux-machines. Zie de [Power shell-Snelstartgids](../../cloud-shell/quickstart-powershell.md#ssh).
 
-* Zie [problemen met ssh-verbindingen met een virtuele machine van Azure Linux oplossen](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)als u problemen hebt met het gebruik van SSH om verbinding te maken met uw virtuele Linux-machines.
+* Zie [problemen met ssh-verbindingen met een virtuele machine van Azure Linux oplossen](../troubleshooting/troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json)als u problemen hebt met het gebruik van SSH om verbinding te maken met uw virtuele Linux-machines.

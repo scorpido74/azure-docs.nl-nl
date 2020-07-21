@@ -5,17 +5,17 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 06/03/2020
+ms.date: 07/14/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ce964ac197fbff64bbb7cc36e8c2bf762f93663f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2cf7dbcd97c8f740447607eaf443bc3ea4a6733
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84337344"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500587"
 ---
-In de preview-versie is het inschakelen van gedeelde schijven alleen beschikbaar voor een subset van schijf typen. Op dit moment kunnen alleen Ultra disks en Premium Ssd's gedeelde schijven inschakelen. Op elke beheerde schijf waarvoor gedeelde schijven zijn ingeschakeld, gelden de volgende beperkingen, geordend op schijf type:
+Het inschakelen van gedeelde schijven is alleen beschikbaar voor een subset van schijf typen. Op dit moment kunnen alleen Ultra disks en Premium Ssd's gedeelde schijven inschakelen. Op elke beheerde schijf waarvoor gedeelde schijven zijn ingeschakeld, gelden de volgende beperkingen, geordend op schijf type:
 
 ### <a name="ultra-disks"></a>Ultraschijven
 
@@ -23,17 +23,19 @@ Ultra schijven hebben hun eigen afzonderlijke lijst met beperkingen, niet gerela
 
 Bij het delen van ultra schijven hebben ze de volgende extra beperkingen:
 
-- Momenteel beperkt tot Azure Resource Manager-of SDK-ondersteuning.
+- Momenteel beperkt tot Azure Resource Manager-of SDK-ondersteuning. 
 - Alleen standaard schijven kunnen worden gebruikt in combi natie met sommige versies van Windows Server-failovercluster, voor meer informatie, [Hardware-vereisten en opslag opties voor failover clustering](https://docs.microsoft.com/windows-server/failover-clustering/clustering-requirements).
 
 ### <a name="premium-ssds"></a>Premium-SSD's
 
 - Momenteel alleen ondersteund in de regio West-Centraal vs.
-- Alle virtuele machines die een schijf delen, moeten worden geïmplementeerd in dezelfde [plaatsings groepen](../articles/virtual-machines/windows/proximity-placement-groups.md).
+- Momenteel beperkt tot Azure Resource Manager-of SDK-ondersteuning. 
 - Kan alleen worden ingeschakeld op gegevens schijven, niet op OS-schijven.
+- **Alleen-lezen** host-caching is niet beschikbaar voor Premium-ssd's met `maxShares>1` .
+- Schijf bursting is niet beschikbaar voor Premium-Ssd's met `maxShares>1` .
+- Wanneer u beschikbaarheids sets en virtuele-machine schaal sets gebruikt met gedeelde Azure-schijven, wordt de uitlijning van het [opslag fout domein](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability#use-managed-disks-for-vms-in-an-availability-set) met het fout domein van de virtuele machine niet afgedwongen voor de gedeelde gegevens schijf.
+- Wanneer u [proximity placement groups (PPG)](../articles/virtual-machines/windows/proximity-placement-groups.md)gebruikt, moeten alle virtuele machines die een schijf delen deel uitmaken van dezelfde PPG.
 - Alleen standaard schijven kunnen worden gebruikt in combi natie met sommige versies van Windows Server-failovercluster, voor meer informatie, [Hardware-vereisten en opslag opties voor failover clustering](https://docs.microsoft.com/windows-server/failover-clustering/clustering-requirements).
-- Alleen-lezen host-caching is niet beschikbaar voor Premium-Ssd's met `maxShares>1` .
-- Beschikbaarheids sets en virtuele-machine schaal sets kunnen alleen worden gebruikt met `FaultDomainCount` ingesteld op 1.
 - Azure Backup-en Azure Site Recovery-ondersteuning is nog niet beschikbaar.
 
-Als u geïnteresseerd bent in het proberen van gedeelde schijven, [meldt u zich aan voor de preview-versie](https://aka.ms/AzureSharedDiskPreviewSignUp).
+Als u geïnteresseerd bent in het proberen van gedeelde schijven, [meldt u zich aan voor toegang](https://aka.ms/AzureSharedDiskGASignUp).

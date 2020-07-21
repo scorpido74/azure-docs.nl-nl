@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: c09d8d9fd2ef22aeaf791ae44d877a87033318cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7baabe455128bf420a3c3e11ea83bb5357ed35c8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83655917"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505156"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM-producten/-services verbinden met IT-servicebeheerconnector
 Dit artikel bevat informatie over het configureren van de verbinding tussen uw ITSM-product/-service en de IT Service Management-connector (ITSMC) in Log Analytics om uw werk items centraal te beheren. Zie [overzicht](../../azure-monitor/platform/itsmc-overview.md)voor meer informatie over ITSMC.
@@ -38,7 +39,7 @@ Zorg ervoor dat aan de volgende vereisten wordt voldaan:
 - De Service Manager-webtoepassing (Web-app) wordt geïmplementeerd en geconfigureerd. [Hier](#create-and-deploy-service-manager-web-app-service)vindt u informatie over de web-app.
 - Hybride verbinding is gemaakt en geconfigureerd. Meer informatie: [de hybride verbinding configureren](#configure-the-hybrid-connection).
 - Ondersteunde versies van Service Manager: 2012 R2 of 2016.
-- Gebruikersrol: [Geavanceerde operator](https://technet.microsoft.com/library/ff461054.aspx).
+- Gebruikersrol: [Geavanceerde operator](/previous-versions/system-center/service-manager-2010-sp1/ff461054(v=technet.10)).
 
 ### <a name="connection-procedure"></a>Verbindings procedure
 
@@ -200,7 +201,7 @@ Zorg ervoor dat aan de volgende vereisten wordt voldaan:
 > Klik aan het einde op bijwerken.
 > 2) **We raden u aan een interne procedure in te stellen om ervoor te zorgen dat de verbinding actief blijft:** Volgens de levens duur van het vernieuwings token voor het vernieuwen van het token. Zorg ervoor dat de volgende bewerkingen voorafgaand aan het vernieuwings token een verwachte verloop tijd (paar dagen voordat de levens duur van het vernieuwings token verloopt, wordt aangeraden):
 >
-> 1. [Een hand matig synchronisatie proces voor de configuratie van de ITSM-connector volt ooien](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-resync-servicenow)
+> 1. [Een hand matig synchronisatie proces voor de configuratie van de ITSM-connector volt ooien](./itsmc-resync-servicenow.md)
 > 2. Intrekken naar het oude vernieuwings token, omdat dit niet wordt aangeraden om oude sleutels uit veiligheids overwegingen te hand haven. Zoek in de Blade ServiceNow naar systeem-OAuth dan Selecteer tokens beheren. Kies het oude token in de lijst op basis van de OAuth-naam en de verval datum.
 > ![Definitie van het winter-systeem](media/itsmc-connections/snow-system-oauth.png)
 > 3. Klik op toegang intrekken en vervolgens op intrekken.
@@ -247,6 +248,10 @@ Gebruik de volgende procedure om een ServiceNow-verbinding te maken:
 - U kunt incidenten maken op basis van Log Analytics waarschuwingen of logboek records of vanuit Azure-waarschuwingen in dit ServiceNow-exemplaar.
 
 Meer informatie: [ITSM-werk items maken op basis van Azure-waarschuwingen](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
+
+
+> [!NOTE]
+> In ServiceNow is een frequentie limiet voor aanvragen per uur. Als u de limiet wilt configureren, gebruikt u voor het definiëren van ' binnenkomende REST API-frequentie beperking ' in het ServiceNow-exemplaar.
 
 ### <a name="create-integration-user-role-in-servicenow-app"></a>De gebruikersrol integratie maken in de ServiceNow-app
 

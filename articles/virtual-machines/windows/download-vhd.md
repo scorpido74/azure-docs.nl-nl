@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 01/13/2019
 ms.author: cynthn
-ms.openlocfilehash: e87f2436f69abed4c0d0ee415226f99b52f2e804
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 20236ccf1ec8e1f8d8113f0597d37c20e2788987
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82085362"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500426"
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>Een Windows-VHD downloaden vanuit Azure
 
@@ -22,7 +22,7 @@ In dit artikel leert u hoe u een Windows-VHD-bestand (virtuele harde schijf) kun
 
 ## <a name="optional-generalize-the-vm"></a>Optioneel: de virtuele machine generaliseren
 
-Als u de VHD als een [installatie kopie](tutorial-custom-images.md) wilt gebruiken om andere vm's te maken, moet u [Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation) gebruiken om het besturings systeem te generaliseren. 
+Als u de VHD als een [installatie kopie](tutorial-custom-images.md) wilt gebruiken om andere vm's te maken, moet u [Sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation) gebruiken om het besturings systeem te generaliseren. 
 
 Als u de VHD als een installatie kopie wilt gebruiken om andere Vm's te maken, generaliseert u de virtuele machine.
 
@@ -45,7 +45,7 @@ Een VHD kan niet worden gedownload van Azure als deze is gekoppeld aan een actie
 
 ## <a name="generate-download-url"></a>Download-URL genereren
 
-Als u het VHD-bestand wilt downloaden, moet u een [SAS-URL (Shared Access Signature)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) genereren. Wanneer de URL wordt gegenereerd, wordt een verloop tijd toegewezen aan de URL.
+Als u het VHD-bestand wilt downloaden, moet u een [SAS-URL (Shared Access Signature)](../../storage/common/storage-sas-overview.md?toc=/azure/virtual-machines/windows/toc.json) genereren. Wanneer de URL wordt gegenereerd, wordt een verloop tijd toegewezen aan de URL.
 
 1. Klik op de pagina voor de virtuele machine op **schijven** in het menu links.
 1. Selecteer de schijf met het besturings systeem voor de virtuele machine.
@@ -68,4 +68,3 @@ Als u het VHD-bestand wilt downloaden, moet u een [SAS-URL (Shared Access Signat
 - Meer informatie over het [uploaden van een VHD-bestand naar Azure](upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 - [Beheerde schijven maken op basis van niet-beheerde schijven in een opslag account](attach-disk-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 - [Azure-schijven beheren met Power shell](tutorial-manage-data-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-

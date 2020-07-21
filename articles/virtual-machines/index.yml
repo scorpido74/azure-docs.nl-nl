@@ -11,81 +11,81 @@ metadata:
   author: cynthn
   ms.author: cynthn
   ms.date: 02/14/2020
-  ms.openlocfilehash: 04321e19787c6cfee2315be77a47025636a016dc
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: aa1492a021caa69303834ce4a144d33ca05b15e0
+  ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "77918118"
+  ms.lasthandoff: 07/20/2020
+  ms.locfileid: "86502840"
 highlightedContent:
   items:
   - title: Een virtuele Linux-machine maken met de Azure CLI
     itemType: quickstart
-    url: https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-cli
+    url: ./linux/quick-create-cli.md
   - title: Een virtuele Windows-machine maken met PowerShell
     itemType: quickstart
-    url: https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell
+    url: ./windows/quick-create-powershell.md
   - title: Een virtuele-machineschaalset maken in de portal
     itemType: quickstart
-    url: https://docs.microsoft.com/azure/virtual-machine-scale-sets/quick-create-portal
+    url: ../virtual-machine-scale-sets/quick-create-portal.md
   - title: "Spot-VM's: profiteer van onze ongebruikte capaciteit en bespaar aanzienlijk in de kosten."
     itemType: concept
-    url: https://docs.microsoft.com/azure/virtual-machines/linux/spot-vms
+    url: ./linux/spot-vms.md
   - title: 'Toegewezen hosts: fysieke servers om een of meer virtuele machines te hosten.'
     itemType: concept
-    url: https://docs.microsoft.com/azure/virtual-machines/linux/dedicated-hosts
+    url: ./linux/dedicated-hosts.md
   - title: "Nabijheidsplaatsingsgroepen: krijg VM's zo dichtbij als mogelijk is voor lagere latentie."
     itemType: how-to-guide
-    url: https://docs.microsoft.com/azure/virtual-machines/linux/proximity-placement-groups
+    url: ./linux/proximity-placement-groups.md
 conceptualContent:
   items:
   - title: Virtuele Linux-machines
     links:
-    - url: https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros
+    - url: ./linux/endorsed-distros.md
       itemType: concept
       text: Goedgekeurde distributies
-    - url: https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-disks
+    - url: ./linux/tutorial-manage-disks.md
       itemType: tutorial
       text: Schijven maken en beheren
-    - url: https://docs.microsoft.com/azure/virtual-machines/linux/image-builder
+    - url: ./linux/image-builder.md
       itemType: how-to-guide
       text: Azure Image Builder
-    - url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/linux-index
+    - url: /azure/virtual-machines/troubleshooting/linux-index
       itemType: how-to-guide
       text: Problemen met virtuele Linux-machines oplossen
     footerLink:
-      url: https://docs.microsoft.com/azure/virtual-machines/linux/
+      url: ./linux/index.yml
       text: Meer informatie
   - title: Virtuele Windows-machines
     links:
-    - url: https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell
+    - url: ./windows/quick-create-powershell.md
       itemType: how-to-guide
       text: Een VM maken met PowerShell
-    - url: https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-data-disk
+    - url: ./windows/tutorial-manage-data-disk.md
       itemType: tutorial
       text: Schijven maken en beheren
-    - url: https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
+    - url: ../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md?context=azure/virtual-machines/windows/context/windows-vm-context
       itemType: how-to-guide
       text: Beheerde identiteiten configureren
-    - url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/index
+    - url: /azure/virtual-machines/troubleshooting/index
       itemType: how-to-guide
       text: Problemen met virtuele Windows-machines oplossen
     footerLink:
-      url: https://docs.microsoft.com/azure/virtual-machines/windows/
+      url: ./windows/index.yml
       text: Meer informatie
   - title: Virtuele-machineschaalsets
     links:
-    - url: https://docs.microsoft.com/azure/virtual-machine-scale-sets/quick-create-powershell
+    - url: ../virtual-machine-scale-sets/quick-create-powershell.md
       itemType: how-to-guide
       text: Een schaalset maken met PowerShell
-    - url: https://docs.microsoft.com/azure/virtual-machine-scale-sets/orchestration-modes
+    - url: ../virtual-machine-scale-sets/orchestration-modes.md
       itemType: concept
       text: Indelingsmodi
-    - url: https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot
+    - url: ../virtual-machine-scale-sets/use-spot.md
       itemType: how-to-guide
       text: Spot-exemplaren gebruiken
     footerLink:
-      url: https://docs.microsoft.com/azure/virtual-machine-scale-sets/
+      url: ../virtual-machine-scale-sets/index.yml
       text: Meer informatie
 tools:
   title: Hulpprogramma's
@@ -93,13 +93,13 @@ tools:
   items:
   - title: Azure CLI
     imageSrc: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/cli.svg
-    url: https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest
+    url: /cli/azure/vm?view=azure-cli-latest
   - title: Azure PowerShell
     imageSrc: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/logo_powershell.svg
-    url: https://docs.microsoft.com/powershell/module/az.compute#virtual_machines
+    url: /powershell/module/az.compute#virtual_machines
   - title: REST-API
     imageSrc: https://docs.microsoft.com/azure/media/index/azure_dev-6.svg
-    url: https://docs.microsoft.com/rest/api/compute/virtualmachines
+    url: /rest/api/compute/virtualmachines
 additionalContent:
   sections:
   - title: Meer informatie
@@ -108,7 +108,7 @@ additionalContent:
     - title: Leren
       links:
       - text: Door leermodules bladeren
-        url: https://docs.microsoft.com/learn/browse/?products=azure-virtual-machines
+        url: /learn/browse/?products=azure-virtual-machines
     - title: Galerie met sjablonen
       links:
       - text: Door de galerie met quickstart-sjablonen bladeren
@@ -116,4 +116,4 @@ additionalContent:
     - title: Problemen oplossen
       links:
       - text: Informatie over de probleemoplossing van fouten
-        url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/
+        url: ./troubleshooting/index.yml

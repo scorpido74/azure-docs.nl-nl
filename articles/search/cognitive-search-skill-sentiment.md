@@ -8,11 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 15118c9c3d2d1a528c62b539ab7bdd8f174c19de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49918335dc6855726e7d8de15c01a5f15280af08
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080100"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503214"
 ---
 # <a name="sentiment-cognitive-skill"></a>Sentiment cognitieve vaardigheid
 
@@ -35,20 +36,20 @@ De maximale grootte van een record moet 5000 tekens zijn, zoals gemeten door [`S
 
 Parameters zijn hoofdlettergevoelig.
 
-| Parameternaam |                      |
+| Parameternaam | Beschrijving |
 |----------------|----------------------|
 | `defaultLanguageCode` | Beschrijving De taal code die moet worden toegepast op documenten die geen taal expliciet opgeven. <br/> [Volledige lijst met ondersteunde talen](../cognitive-services/text-analytics/text-analytics-supported-languages.md) weer geven |
 
 ## <a name="skill-inputs"></a>Vaardigheids invoer 
 
-| Invoer naam | Description |
+| Invoer naam | Beschrijving |
 |--------------------|-------------|
 | `text` | De tekst die moet worden geanalyseerd.|
 | `languageCode`    |  Beschrijving Een teken reeks die de taal van de records aangeeft. Als deze para meter niet wordt opgegeven, is de standaard waarde "en". <br/>Bekijk de [volledige lijst met ondersteunde talen](../cognitive-services/text-analytics/text-analytics-supported-languages.md).|
 
 ## <a name="skill-outputs"></a>Vaardigheids uitvoer
 
-| Uitvoer naam | Description |
+| Uitvoer naam | Beschrijving |
 |--------------------|-------------|
 | `score` | Een waarde tussen 0 en 1 die de sentiment van de geanalyseerde tekst aangeeft. Waarden die dicht bij 0 liggen, hebben een negatieve sentiment, dicht bij 0,5 hebben neutrale sentiment en waarden die dicht bij 1 staan, hebben een positieve sentiment.|
 

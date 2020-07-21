@@ -3,13 +3,13 @@ author: yashesvi
 ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 03/27/2020
-ms.openlocfilehash: d41affc55134ad34c325c12ab4a14f4013c58f9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/15/2020
+ms.openlocfilehash: 2fda9c41efd4c6765681d98011d8fb890b09d19f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80371651"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502045"
 ---
 Wanneer u een gereserveerde VM-instantie voor Azure doorvoert, kunt u geld besparen. De reserverings korting wordt automatisch toegepast op het aantal actieve virtuele machines die overeenkomen met het reserverings bereik en de kenmerken. U hoeft geen reserve ring aan een virtuele machine toe te wijzen om de kortingen te krijgen. Voor een gereserveerde instantie aankoop geldt alleen het reken onderdeel van uw VM-gebruik. Voor virtuele Windows-machines wordt de gebruiks meter gesplitst in twee afzonderlijke meters. Er is een compute-meter, die gelijk is aan de Linux meter en een Windows IP-meter. De kosten die u ziet wanneer u de aankoop uitvoert, zijn alleen voor de reken kosten. Kosten zijn niet van toepassing op Windows-software. Zie [software kosten die niet zijn opgenomen in azure reserved VM instances](../articles/cost-management-billing/reservations/reserved-instance-windows-software-costs.md)voor meer informatie over software kosten.
 
@@ -84,7 +84,7 @@ Deze vereisten zijn van toepassing op het kopen van een gereserveerde VM-instant
 - Voor EA-abonnementen moet de optie **gereserveerde instanties toevoegen** zijn ingeschakeld in de [EA-Portal](https://ea.azure.com/). Of, als deze instelling is uitgeschakeld, moet u een EA-beheerder van het abonnement zijn.
 - Voor het programma Cloud Solution Provider (CSP) kunnen alleen de beheerders of verkoop medewerkers reserve ringen kopen.
 
-Een exemplaar kopen:
+Een instantie kopen:
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer **Alle services** > **Reserveringen**.
@@ -101,7 +101,7 @@ Als u een EA-overeenkomst hebt, kunt u de **optie meer toevoegen** gebruiken om 
 |Regio    |De Azure-regio die wordt gedekt door de reserve ring.|    
 |VM-grootte     |De grootte van de VM-exemplaren.|
 |Optimaliseren voor     |De flexibiliteit van VM-instantie grootte is standaard geselecteerd. Klik op **Geavanceerde instellingen** om de waarde voor de flexibiliteit van de instantie grootte te wijzigen om de reserverings korting toe te passen op andere virtuele machines in dezelfde [VM-grootte groep](../articles/virtual-machines/windows/reserved-vm-instance-size-flexibility.md). Met de capaciteitsprioriteit wordt prioriteit toegekend aan de datacentercapaciteit voor uw implementaties. Het biedt extra vertrouwen in uw vermogen om de VM-exemplaren te starten wanneer u ze nodig hebt. Capaciteits prioriteit is alleen beschikbaar wanneer het reserverings bereik één abonnement is. |
-|Termijn        |Eén jaar of drie jaar.|
+|Termijn        |Eén jaar of drie jaar. Er is ook een periode van 5 jaar die alleen beschikbaar is voor HBv2 Vm's.|
 |Aantal    |Het aantal exemplaren dat wordt aangeschaft binnen de reserve ring. De hoeveelheid is het aantal actieve VM-exemplaren waarmee de factuur korting kan worden verkregen. Als u bijvoorbeeld tien Standard_D2 Vm's uitvoert in het VS-Oost, geeft u hoeveelheid op als 10 om het voor deel voor alle actieve Vm's te maximaliseren. |
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2PjmT]

@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: genli
-ms.openlocfilehash: 3fd0a8bf6bacfec5e2be6dfa52ca51e46c7025f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c336fe9a65d7bcc44790a4bfb02bed44f028733
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75443583"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500919"
 ---
 # <a name="windows-reboot-loop-on-an-azure-vm"></a>Windows-lus voor opnieuw opstarten op een virtuele machine van Azure
 In dit artikel wordt de herstart-lus beschreven die kan optreden op een virtuele Windows-machine (VM) in Microsoft Azure.
@@ -49,7 +50,7 @@ Beschadiging van het bestands systeem kan dit tot gevolg hebben. Het is echter m
 
 ## <a name="solution"></a>Oplossing
 
-Om dit probleem op te lossen, maakt u een [back-up van de besturingssysteem schijf](../windows/snapshot-copy-managed-disk.md)en [koppelt u de besturingssysteem schijf aan een virtuele machine voor herstel](../windows/troubleshoot-recovery-disks-portal.md)en volgt u de oplossings opties dienovereenkomstig of probeert u de oplossingen één voor één.
+Om dit probleem op te lossen, maakt u een [back-up van de besturingssysteem schijf](../windows/snapshot-copy-managed-disk.md)en [koppelt u de besturingssysteem schijf aan een virtuele machine voor herstel](./troubleshoot-recovery-disks-portal-windows.md)en volgt u de oplossings opties dienovereenkomstig of probeert u de oplossingen één voor één.
 
 ### <a name="solution-for-cause-1"></a>Oplossing voor oorzaak 1
 
@@ -93,7 +94,7 @@ Om dit probleem op te lossen, maakt u een [back-up van de besturingssysteem schi
 
 16. [Maak een nieuwe virtuele machine op basis van de besturingssysteem schijf](../windows/create-vm-specialized.md).
 
-17. Als het probleem is opgelost, moet u de [RDAgent](https://blogs.msdn.microsoft.com/mast/2014/04/07/install-the-vm-agent-on-an-existing-azure-vm/) (WaAppAgent.exe) mogelijk opnieuw installeren.
+17. Als het probleem is opgelost, moet u de [RDAgent](/archive/blogs/mast/install-the-vm-agent-on-an-existing-azure-vm) (WaAppAgent.exe) mogelijk opnieuw installeren.
 
 ### <a name="solution-for-cause-2"></a>Oplossing voor oorzaak 2
 
@@ -112,5 +113,3 @@ Herstel de virtuele machine naar de laatste bekende juiste configuratie. Volg de
 4. Verwijder de schijf uit de virtuele machine voor probleem oplossing en wacht ongeveer 2 minuten tot Azure deze schijf heeft vrijgegeven.
 
 5. [Maak een nieuwe virtuele machine op basis van de besturingssysteem schijf](../windows/create-vm-specialized.md).
-
-

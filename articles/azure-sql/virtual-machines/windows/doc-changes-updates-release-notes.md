@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/06/2020
-ms.openlocfilehash: 9f41cb11960dbe9487231f14b005376261075a83
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 8474b49e3e6b12a613de19df055cbf6e43fb0aa2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231502"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503780"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Wijzigingen in de documentatie voor SQL Server op Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,12 +29,10 @@ Met Azure kunt u een virtuele machine (VM) implementeren met een installatie kop
 | Wijzigingen | Details |
 | --- | --- |
 | **Logboek naar ultra schijf migreren** | Meer informatie over hoe u [het logboek bestand naar een ultra schijf kunt migreren](storage-migrate-to-ultradisk.md) om hoge prestaties en lage latentie te benutten. | 
-
-
+| **AG maken met Power shell** | Het is nu mogelijk om het maken van een beschikbaarheids groep te vereenvoudigen met behulp van [Power shell](availability-group-az-commandline-configure.md) en de Azure cli. | 
 
 
 ## <a name="june-2020"></a>Juni 2020
-
 
 | Wijzigingen | Details |
 | --- | --- |

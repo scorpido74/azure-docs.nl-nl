@@ -8,21 +8,22 @@ ms.custom: REST
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: routlaw
-ms.openlocfilehash: 07e91f3d9fd32f01db91415bfd90746cd1aef403
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1aa108d7f903ed791c534b2b88550eb8d022ef64
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78944740"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502075"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>Metrische gegevens over het gebruik van virtuele machines ophalen met behulp van de REST API
 
-In dit voor beeld ziet u hoe u het CPU-gebruik voor een [virtuele Linux-machine](https://docs.microsoft.com/azure/virtual-machines/linux/monitor) ophaalt met behulp van de [Azure-rest API](/rest/api/azure/).
+In dit voor beeld ziet u hoe u het CPU-gebruik voor een virtuele Linux-machine ophaalt met behulp van de [Azure-rest API](/rest/api/azure/).
 
 Volledige referentie documentatie en aanvullende voor beelden voor de REST API zijn beschikbaar in de [Azure monitor rest-referentie](/rest/api/monitor). 
 
 ## <a name="build-the-request"></a>De aanvraag maken
 
-Gebruik de volgende GET-aanvraag voor het verzamelen van het [percentage CPU-metriek](/azure/monitoring-and-diagnostics/monitoring-supported-metrics#microsoftcomputevirtualmachines) van een virtuele machine
+Gebruik de volgende GET-aanvraag voor het verzamelen van het [percentage CPU-metriek](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) van een virtuele machine
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmname}/providers/microsoft.insights/metrics?api-version=2018-01-01&metricnames=Percentage%20CPU&timespan=2018-06-05T03:00:00Z/2018-06-07T03:00:00Z
@@ -41,10 +42,10 @@ De volgende headers zijn vereist:
 
 | Naam | Beschrijving |
 | :--- | :---------- |
-| subscriptionId | De abonnements-ID waarmee een Azure-abonnement wordt geïdentificeerd. Als u meerdere abonnementen hebt, raadpleegt u [werken met meerdere abonnementen](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
+| subscriptionId | De abonnements-ID waarmee een Azure-abonnement wordt geïdentificeerd. Als u meerdere abonnementen hebt, raadpleegt u [werken met meerdere abonnementen](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
 | resourceGroupName | De naam van de Azure-resource groep die is gekoppeld aan de resource. U kunt deze waarde ophalen uit de Azure Resource Manager-API, CLI of de portal. |
 | vmname | De naam van de virtuele machine van Azure. |
-| metricnames | Een door komma's gescheiden lijst met geldige [Load Balancer metrische gegevens](/azure/load-balancer/load-balancer-standard-diagnostics). |
+| metricnames | Een door komma's gescheiden lijst met geldige [Load Balancer metrische gegevens](../../load-balancer/load-balancer-standard-diagnostics.md). |
 | api-versie | De API-versie die voor de aanvraag moet worden gebruikt.<br /><br /> In dit document wordt de API-versie beschreven `2018-01-01` die is opgenomen in de bovenstaande URL.  |
 | tijdsbestek | Teken reeks met de volgende indeling `startDateTime_ISO/endDateTime_ISO` die het tijds bereik van de geretourneerde metrische gegevens definieert. Deze optionele para meter is zo ingesteld dat de gegevens van een dag in het voor beeld worden geretourneerd. |
 | &nbsp; | &nbsp; |

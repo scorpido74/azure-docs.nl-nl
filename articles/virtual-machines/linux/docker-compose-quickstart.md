@@ -6,16 +6,17 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 02/14/2019
 ms.author: cynthn
-ms.openlocfilehash: 434a3ef8c9bc1738252d59a5dca5bec16d85e45e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a56ad3fd5999600dfc576f0a0e34ff7221267934
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78970309"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502449"
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>Aan de slag met docker en samen stellen om een toepassing met meerdere containers te definiëren en uit te voeren in azure
 Met [opstellen](https://github.com/docker/compose)kunt u een eenvoudig tekst bestand gebruiken om een toepassing te definiëren die bestaat uit meerdere docker-containers. Vervolgens voert u uw toepassing in met één opdracht die alles doet om uw gedefinieerde omgeving te implementeren. Dit artikel laat bijvoorbeeld zien hoe u snel een WordPress-blog kunt instellen met een back-MariaDB SQL database op een Ubuntu-VM. U kunt ook samen stellen gebruiken om complexere toepassingen in te stellen.
 
-Dit artikel is voor het laatst getest op 2/14/2019 met behulp van de [Azure Cloud shell](https://shell.azure.com/bash) en de [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli) -versie 2.0.58.
+Dit artikel is voor het laatst getest op 2/14/2019 met behulp van de [Azure Cloud shell](https://shell.azure.com/bash) en de [Azure cli](/cli/azure/install-azure-cli) -versie 2.0.58.
 
 ## <a name="create-docker-host-with-azure-cli"></a>Docker-host maken met Azure CLI
 Installeer de nieuwste [Azure cli](/cli/azure/install-az-cli2) en meld u aan bij een Azure-account met de opdracht [AZ login](/cli/azure/reference-index).
@@ -125,4 +126,3 @@ U kunt nu rechtstreeks verbinding maken met WordPress op de VM op poort 80. Open
 * Bekijk de [opdracht regel Naslag informatie](https://docs.docker.com/compose/reference/) en de [Gebruikers handleiding](https://docs.docker.com/compose/) voor meer voor beelden van het maken en implementeren van apps met meerdere containers.
 * Gebruik een Azure Resource Manager sjabloon, uw eigen of een bijdrage van de [Community](https://azure.microsoft.com/documentation/templates/), om een Azure VM te implementeren met docker en een toepassing die is ingesteld met opstellen. De [implementatie van een WordPress-blog met docker](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-wordpress-mysql) -sjabloon maakt bijvoorbeeld gebruik van docker en samen om WordPress snel te implementeren met een MySQL-back-end op een Ubuntu-VM.
 * Probeer docker samen te integreren met een docker Swarm-cluster. Zie [opstellen gebruiken met Swarm](https://docs.docker.com/compose/swarm/) voor scenario's.
-

@@ -11,11 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 65331136b5b137c44577fd09f3914e8869cc2dcb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1567d38f8e582c062aa024b40cf0ede1d8b691f6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84042797"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504324"
 ---
 # <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>Eén Tenant herstellen met een SaaS-toepassing met een Data Base per Tenant
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -28,7 +29,7 @@ In deze zelf studie leert u twee gegevens herstel patronen:
 > * Een Data Base herstellen naar een parallelle data base (naast elkaar).
 > * Een Data Base op locatie herstellen, waarbij de bestaande data base wordt vervangen.
 
-|||
+| Patroon | Beschrijving |
 |:--|:--|
 | Herstellen naar een parallelle data base | Dit patroon kan worden gebruikt voor taken zoals beoordeling, controle en naleving zodat een Tenant hun gegevens vanaf een eerder punt kan inspecteren. De huidige data base van de Tenant blijft online en ongewijzigd. |
 | Herstellen op locatie | Dit patroon wordt doorgaans gebruikt om een Tenant te herstellen naar een eerder tijdstip, nadat een Tenant gegevens per ongeluk heeft verwijderd of beschadigd. De oorspronkelijke Data Base wordt offline gezet en vervangen door de herstelde data base. |

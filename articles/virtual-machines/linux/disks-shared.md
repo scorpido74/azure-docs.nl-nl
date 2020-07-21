@@ -1,19 +1,21 @@
 ---
-title: Een Azure Managed Disk delen op virtuele machines (preview)
+title: Een Azure Managed Disk delen op Vm's
 description: Meer informatie over het delen van Azure Managed disks op meerdere Vm's.
 author: roygara
 ms.service: virtual-machines
 ms.topic: conceptual
-ms.date: 04/09/2020
+ms.date: 07/16/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 3792a98c4ddcab36496f7e83482f2a1382c93d0d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: 3ca8a93357b51ed1817bed63ee624abd9b2daa6c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81008515"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502504"
 ---
-# <a name="azure-shared-disks"></a>Gedeelde Azure-schijven
+# <a name="share-an-azure-managed-disk"></a>Een Azure Managed Disk delen
 
 [!INCLUDE [virtual-machines-disks-shared](../../../includes/virtual-machines-disks-shared.md)]
 

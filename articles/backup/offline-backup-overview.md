@@ -3,11 +3,13 @@ title: Overzicht van offline back-up
 description: Meer informatie over de onderdelen van offline back-ups. Ze omvatten offline back-ups op basis van Azure Data Box en offline back-ups op basis van de Azure import/export-service.
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 84f79efe10f867b37d1e3bb21363be4b12156615
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: c5e0f4e722e2dd15b7277a484af2a101844344e6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84628334"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503622"
 ---
 # <a name="overview-of-offline-backup"></a>Overzicht van offline back-up
 
@@ -43,7 +45,7 @@ Als u offline back-ups wilt gebruiken op basis van Azure Data Box, raadpleegt u 
 
 ## <a name="offline-backup-based-on-the-azure-importexport-service"></a>Offline back-up op basis van de Azure import/export-service
 
-Deze optie wordt ondersteund door Microsoft Azure Backup Server (MABS), System Center Data Protection Manager (DPM) DPM-A en de MARS-agent. Er wordt gebruikgemaakt van de [Azure import/export-service](https://docs.microsoft.com/azure/storage/common/storage-import-export-service). U kunt initiële back-upgegevens naar Azure overdragen met behulp van uw eigen Azure-compatibele schijven en connectors. Voor deze benadering moet u tijdelijke opslag inrichten die bekend staat als de faserings locatie en gebruikmaken van vooraf ontwikkelde hulpprogram ma's voor het format teren en kopiëren van de back-upgegevens op schijven die eigendom zijn van de klant.
+Deze optie wordt ondersteund door Microsoft Azure Backup Server (MABS), System Center Data Protection Manager (DPM) DPM-A en de MARS-agent. Er wordt gebruikgemaakt van de [Azure import/export-service](../storage/common/storage-import-export-service.md). U kunt initiële back-upgegevens naar Azure overdragen met behulp van uw eigen Azure-compatibele schijven en connectors. Voor deze benadering moet u tijdelijke opslag inrichten die bekend staat als de faserings locatie en gebruikmaken van vooraf ontwikkelde hulpprogram ma's voor het format teren en kopiëren van de back-upgegevens op schijven die eigendom zijn van de klant.
 
 Hier ziet u een architectuur waarin de verplaatsing van back-upgegevens met deze optie wordt beschreven.
 
@@ -57,9 +59,9 @@ Hier volgt een samen vatting van de architectuur:
 4. In het Azure-Data Center worden de gegevens op de schijven gekopieerd naar een Azure-opslag account.
 5. Azure Backup kopieert de back-upgegevens van het opslag account naar de Recovery Services kluis. Incrementele back-ups worden gepland.
 
-Als u offline back-ups wilt gebruiken op basis van de Azure import/export-service met de MARS-agent, raadpleegt u [offline back-upwerk stroom in azure backup](https://docs.microsoft.com/azure/backup/backup-azure-backup-import-export).
+Als u offline back-ups wilt gebruiken op basis van de Azure import/export-service met de MARS-agent, raadpleegt u [offline back-upwerk stroom in azure backup](./backup-azure-backup-import-export.md).
 
-Als u hetzelfde wilt gebruiken in combi natie met MABS of DPM-A, raadpleegt u [offline back-upwerk stroom voor dpm en Azure backup server](https://docs.microsoft.com/azure/backup/backup-azure-backup-server-import-export).
+Als u hetzelfde wilt gebruiken in combi natie met MABS of DPM-A, raadpleegt u [offline back-upwerk stroom voor dpm en Azure backup server](./backup-azure-backup-server-import-export.md).
 
 ## <a name="offline-backup-support-summary"></a>Samen vatting van offline back-upondersteuning
 
@@ -68,10 +70,10 @@ In de volgende tabel worden de twee beschik bare opties vergeleken, zodat u de j
 | **Overweging**                                            | **Offline back-up op basis van Azure Data Box**                     | **Offline back-up op basis van de Azure import/export-service**                |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Azure Backup implementatie modellen                              | MARS-agent (preview-versie)                                              | MARS-agent, MABS, DPM-A                                           |
-| Maximum aantal back-upgegevens per server (MARS) of per beveiligings groep (MABS, DPM-A) | [Azure data Box schijf](https://docs.microsoft.com/azure/databox/data-box-disk-overview) -7,2 TB <br> [Azure data Box](https://docs.microsoft.com/azure/databox/data-box-overview) -80 TB       | 80 TB (Maxi maal 10 schijven van 8 TB elk)                          |
-| Beveiliging (gegevens, apparaat en service)                           | [Data](https://docs.microsoft.com/azure/databox/data-box-security#data-box-data-protection) -AES 256-bits versleuteld <br> [Apparaat](https://docs.microsoft.com/azure/databox/data-box-security#data-box-device-protection) -robuuste behuizing, bedrijfs eigen, op referenties gebaseerde interface voor het kopiëren van gegevens <br> [Service](https://docs.microsoft.com/azure/databox/data-box-security#data-box-service-protection) -beveiligd door Azure-beveiligings functies | Door BitLocker versleutelde gegevens                                 |
+| Maximum aantal back-upgegevens per server (MARS) of per beveiligings groep (MABS, DPM-A) | [Azure data Box schijf](../databox/data-box-disk-overview.md) -7,2 TB <br> [Azure data Box](../databox/data-box-overview.md) -80 TB       | 80 TB (Maxi maal 10 schijven van 8 TB elk)                          |
+| Beveiliging (gegevens, apparaat en service)                           | [Data](../databox/data-box-security.md#data-box-data-protection) -AES 256-bits versleuteld <br> [Apparaat](../databox/data-box-security.md#data-box-device-protection) -robuuste behuizing, bedrijfs eigen, op referenties gebaseerde interface voor het kopiëren van gegevens <br> [Service](../databox/data-box-security.md#data-box-service-protection) -beveiligd door Azure-beveiligings functies | Door BitLocker versleutelde gegevens                                 |
 | Tijdelijke opslag locatie inrichten                     | Niet vereist                                                | Meer dan of gelijk aan de geschatte grootte van de back-upgegevens        |
-| Ondersteunde regio’s                                           | [Azure Data Box schijf regio's](https://docs.microsoft.com/azure/databox/data-box-disk-overview#region-availability) <br> [Azure Data Box regio's](https://docs.microsoft.com/azure/databox/data-box-disk-overview#region-availability) | [Azure import/export-service regio's](https://docs.microsoft.com/azure/storage/common/storage-import-export-service#region-availability) |
+| Ondersteunde regio’s                                           | [Azure Data Box schijf regio's](../databox/data-box-disk-overview.md#region-availability) <br> [Azure Data Box regio's](../databox/data-box-disk-overview.md#region-availability) | [Azure import/export-service regio's](../storage/common/storage-import-export-service.md#region-availability) |
 | Verzen ding tussen landen                                     | Niet ondersteund  <br>    Het bron adres en het doel-Azure-Data Center moeten zich in hetzelfde land/dezelfde regio bevinden * | Ondersteund                                                    |
 | Logistiek overdragen (levering, Trans Port, ophalen)           | Volledig door micro soft beheerd                                     | Door de klant beheerd                                            |
 | Prijzen                                                      | [Azure Data Box prijzen](https://azure.microsoft.com/pricing/details/databox/) <br> [Prijzen Azure Data Box schijf](https://azure.microsoft.com/pricing/details/databox/disk/) | [Prijzen voor Azure import/export-service](https://azure.microsoft.com/pricing/details/storage-import-export/) |

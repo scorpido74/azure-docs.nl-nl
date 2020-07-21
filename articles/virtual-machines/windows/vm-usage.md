@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
-ms.openlocfilehash: 62880542e2cc4a93585011837b4cc962c8e79c0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d480b9309c9028d8f55ab50c72a86889f320810b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83773774"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500112"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Meer informatie over het gebruik van virtuele machines in azure
 Door uw Azure-gebruiks gegevens te analyseren, kunnen er krachtige verbruiks inzichten worden verworven: inzichten waarmee betere kosten beheer en toewijzing in uw organisatie mogelijk zijn. In dit document vindt u meer informatie over uw Azure Compute-verbruik. Ga voor meer informatie over het algemene Azure-gebruik naar [inzicht in uw factuur](../../cost-management-billing/understand/review-individual-bill.md).
@@ -70,12 +71,12 @@ De regio naam die is ingevuld in het veld Resource locatie in de gebruiks gegeve
 |    CanadaCentral         |    CA - centraal                            |
 |    CanadaEast            |    CA - oost                               |
 |    CentralIndia          |    IN - centraal                            |
-|    centralus             |    VS - centraal                            |
+|    centralus             |    US - centraal                            |
 |    chinaeast             |    China East                            |
 |    chinanorth            |    China - noord                           |
 |    eastasia              |    Azië - oost                             |
 |    eastus                |    VS - oost                               |
-|    eastus2               |    VS - oost 2                             |
+|    eastus2               |    US - oost 2                             |
 |    GermanyCentral        |    DE - centraal                            |
 |    GermanyNortheast      |    DE - noordoost                          |
 |    japaneast             |    JA - oost                               |
@@ -84,7 +85,7 @@ De regio naam die is ingevuld in het veld Resource locatie in de gebruiks gegeve
 |    KoreaSouth            |    KR - zuid                              |
 |    northcentralus        |    VS - noord-centraal                      |
 |    northeurope           |    Europa - noord                          |
-|    southcentralus        |    VS - zuid-centraal                      |
+|    southcentralus        |    South Central US                      |
 |    southeastasia         |    Azië - zuidoost                        |
 |    SouthIndia            |    IN - zuid                              |
 |    UKNorth               |    VS Noord                              |
@@ -98,7 +99,7 @@ De regio naam die is ingevuld in het veld Resource locatie in de gebruiks gegeve
 |    USGovTexas            |    USGov Texas                           |
 |    usgovvirginia         |    USGov Virginia                        |
 |    US - west-centraal         |    US - west-centraal                       |
-|    westeurope            |    Europa -west                           |
+|    westeurope            |    Europa - west                           |
 |    WestIndia             |    IN - west                               |
 |    westus                |    VS - west                               |
 |    westus2               |    US - west 2                             |
@@ -137,10 +138,9 @@ Virtuele machines met Premium-opslag worden in rekening gebracht tegen hetzelfde
 
 Er zijn drie mogelijke locaties in de Api's die het besturings systeem kunnen retour neren dat op de virtuele machine wordt uitgevoerd:
 
-1) Als u virtuele machines uitvoert die de gast agent bevatten (alle virtuele Linux-machines en de meeste Windows-Vm's), worden de besturingssysteem naam en de versie van het besturings systeem weer gegeven in de weer gave VM-exemplaren. Dit is te allen tijde nauw keurig, maar als gevolg van het feit dat de informatie afkomstig is van de gast agent, is deze niet beschikbaar voor alle Vm's. API- [documentatie.](https://docs.microsoft.com/rest/api/compute/virtualmachines/instanceview#virtualmachineagentinstanceview)
-2) Vm's die zijn geïmplementeerd op basis van een platform installatie kopie bevatten de details van de installatie kopie die kunnen duiden op de versie van het besturings systeem in de uitgever geselecteerde namen voor aanbieding of SKU. Deze uitgever is echter geselecteerd, zodat het besturings systeem niet kan worden gedetecteerd in de naam. API- [documentatie.](https://docs.microsoft.com/rest/api/compute/images/get#operatingsystemtypes)
-3) Elke besturingssysteem schijf heeft een opgegeven waarde van Windows of Linux. Deze waarde wordt overgenomen van de installatie kopie wanneer de besturingssysteem schijf is gemaakt op basis van een installatie kopie. Wanneer een besturingssysteem schijf rechtstreeks naar het platform wordt geüpload, wordt de waarde van het besturings systeem ingesteld wanneer de besturingssysteem schijf wordt gemaakt. Deze waarde is altijd aanwezig, maar het Azure-platform garandeert niet dat het juist is. API- [documentatie.](https://docs.microsoft.com/rest/api/compute/virtualmachineimages/get#operatingsystemtypes)
+1) Als u virtuele machines uitvoert die de gast agent bevatten (alle virtuele Linux-machines en de meeste Windows-Vm's), worden de besturingssysteem naam en de versie van het besturings systeem weer gegeven in de weer gave VM-exemplaren. Dit is te allen tijde nauw keurig, maar als gevolg van het feit dat de informatie afkomstig is van de gast agent, is deze niet beschikbaar voor alle Vm's. API- [documentatie.](/rest/api/compute/virtualmachines/instanceview#virtualmachineagentinstanceview)
+2) Vm's die zijn geïmplementeerd op basis van een platform installatie kopie bevatten de details van de installatie kopie die kunnen duiden op de versie van het besturings systeem in de uitgever geselecteerde namen voor aanbieding of SKU. Deze uitgever is echter geselecteerd, zodat het besturings systeem niet kan worden gedetecteerd in de naam. API- [documentatie.](/rest/api/compute/images/get#operatingsystemtypes)
+3) Elke besturingssysteem schijf heeft een opgegeven waarde van Windows of Linux. Deze waarde wordt overgenomen van de installatie kopie wanneer de besturingssysteem schijf is gemaakt op basis van een installatie kopie. Wanneer een besturingssysteem schijf rechtstreeks naar het platform wordt geüpload, wordt de waarde van het besturings systeem ingesteld wanneer de besturingssysteem schijf wordt gemaakt. Deze waarde is altijd aanwezig, maar het Azure-platform garandeert niet dat het juist is. API- [documentatie.](/rest/api/compute/virtualmachineimages/get#operatingsystemtypes)
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie [inzicht in uw factuur voor Microsoft Azure](../../cost-management-billing/understand/review-individual-bill.md) voor meer informatie over uw gebruiks gegevens.
-

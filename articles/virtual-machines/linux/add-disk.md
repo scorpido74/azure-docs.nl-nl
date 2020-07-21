@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.date: 06/13/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: eb18207c15007820bf93254886ab38a43bc5b48f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1791d33627f04f69d10916c8ff0a154f7d8b967b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84658330"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502823"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Een schijf toevoegen aan een virtuele Linux-machine
 In dit artikel wordt beschreven hoe u een permanente schijf aan uw virtuele machine koppelt, zodat u uw gegevens kunt bewaren, zelfs als uw virtuele machine opnieuw wordt ingericht door onderhoud of het wijzigen van de grootte.
@@ -96,7 +97,7 @@ Last sector, +sectors or +size{K,M,G} (2048-10485759, default 10485759):
 Using default value 10485759
 ```
 
-Druk de partitie tabel af door te typen `p` en vervolgens `w` te gebruiken om de tabel naar schijf te schrijven en af te sluiten. De uitvoer moet er ongeveer uitzien als in het volgende voor beeld:
+Druk de partitie tabel af door te typen `p` en vervolgens `w` te gebruiken om de tabel naar schijf te schrijven en af te sluiten. De uitvoer moet er als in het volgende voorbeeld uitzien:
 
 ```bash
 Command (m for help): p
@@ -197,9 +198,9 @@ UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail 
 > [!NOTE]
 > Later het verwijderen van een gegevens schijf zonder het bewerken van fstab kan ertoe leiden dat de virtuele machine niet kan worden opgestart. De meeste distributies bieden de opties *nobootwait* *en/* of fstab. Met deze opties kan een systeem worden opgestart zelfs als de schijf niet kan worden gekoppeld tijdens het opstarten. Raadpleeg de documentatie van uw distributie voor meer informatie over deze para meters.
 >
-> De *niet-werkende* optie zorgt ervoor dat de VM wordt gestart, zelfs als het bestands systeem beschadigd is of wanneer de schijf niet aanwezig is tijdens het opstarten. Zonder deze optie kunt u zich voordoen als beschreven in [kan niet SSH-naar-Linux-VM wegens FSTAB-fouten](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/)
+> De *niet-werkende* optie zorgt ervoor dat de VM wordt gestart, zelfs als het bestands systeem beschadigd is of wanneer de schijf niet aanwezig is tijdens het opstarten. Zonder deze optie kunt u zich voordoen als beschreven in [kan niet SSH-naar-Linux-VM wegens FSTAB-fouten](/archive/blogs/linuxonazure/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting)
 >
-> De seriële Azure VM-console kan worden gebruikt voor toegang tot de console van uw virtuele machine als het wijzigen van fstab een opstart fout heeft veroorzaakt. Meer informatie vindt u in de [documentatie van de seriële console](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux).
+> De seriële Azure VM-console kan worden gebruikt voor toegang tot de console van uw virtuele machine als het wijzigen van fstab een opstart fout heeft veroorzaakt. Meer informatie vindt u in de [documentatie van de seriële console](../troubleshooting/serial-console-linux.md).
 
 ### <a name="trimunmap-support-for-linux-in-azure"></a>Ondersteuning voor Linux in azure bijsnijden/ontkoppelen
 Sommige Linux-kernels ondersteunen bewerkingen voor het verwijderen/ontkoppelen van ongebruikte blokken op de schijf. Deze functie is vooral nuttig in de standaard opslag om Azure te informeren dat verwijderde pagina's niet meer geldig zijn en kunnen worden verwijderd en geld kunnen besparen als u grote bestanden maakt en deze vervolgens verwijdert.

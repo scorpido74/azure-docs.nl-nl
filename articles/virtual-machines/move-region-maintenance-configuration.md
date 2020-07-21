@@ -7,17 +7,18 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm
 ms.date: 03/04/2020
 ms.author: shants
-ms.openlocfilehash: 86343e10f10b51f65764e16bbc1e485136bca162
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cff7eb4a69005f2e74747b6e58447f100c69b60
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676809"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501599"
 ---
 # <a name="move-a-maintenance-control-configuration-to-another-region"></a>Een onderhouds beheer configuratie verplaatsen naar een andere regio
 
 Volg dit artikel om een onderhouds beheer configuratie te verplaatsen naar een andere Azure-regio. Mogelijk wilt u een configuratie om een aantal redenen verplaatsen. Om bijvoorbeeld te profiteren van een nieuwe regio, voor het implementeren van functies of services die beschikbaar zijn in een bepaalde regio, om te voldoen aan de interne beleids-en beheer vereisten, of als reactie op de capaciteits planning.
 
-Met onderhouds beheer met aangepaste onderhouds configuraties kunt u bepalen hoe platform updates worden toegepast op virtuele machines van [Windows](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-cli?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json) en [Linux](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-cli?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Flinux%2Fbreadcrumb%2Ftoc.json&view=azure-java-stable) , en aan voor Azure toegewezen hosts. Er zijn enkele scenario's voor het verplaatsen van onderhouds beheer over regio's:
+Met onderhouds beheer met aangepaste onderhouds configuraties kunt u bepalen hoe platform updates worden toegepast op virtuele machines van [Windows](./maintenance-control-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json) en [Linux](./maintenance-control-cli.md?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Flinux%2Fbreadcrumb%2Ftoc.json&view=azure-java-stable) , en aan voor Azure toegewezen hosts. Er zijn enkele scenario's voor het verplaatsen van onderhouds beheer over regio's:
 
 - Volg de instructies in dit artikel om de configuratie van het onderhouds beheer te verplaatsen, maar niet de resources die zijn gekoppeld aan de configuratie.
 - Als u de resources wilt verplaatsen die zijn gekoppeld aan een onderhouds configuratie, maar niet de configuratie zelf, volgt u [deze instructies](move-region-maintenance-configuration-resources.md).
@@ -37,7 +38,7 @@ Voordat u begint met het verplaatsen van een onderhouds configuratie:
 
 ## <a name="prepare-and-move"></a>Voorbereiden en verplaatsen 
 
-1. Alle onderhouds configuraties in elk abonnement ophalen. Voer de opdracht CLI [AZ Maintenance Configuration List](https://docs.microsoft.com/cli/azure/ext/maintenance/maintenance/configuration?view=azure-cli-latest#ext-maintenance-az-maintenance-configuration-list) uit om dit te doen, waarbij u $subId vervangt door uw abonnements-id.
+1. Alle onderhouds configuraties in elk abonnement ophalen. Voer de opdracht CLI [AZ Maintenance Configuration List](/cli/azure/ext/maintenance/maintenance/configuration?view=azure-cli-latest#ext-maintenance-az-maintenance-configuration-list) uit om dit te doen, waarbij u $subId vervangt door uw abonnements-id.
 
     ```
     az maintenance configuration list --subscription $subId --query "[*].{Name:name, Location:location, ResGroup:resourceGroup}" --output table

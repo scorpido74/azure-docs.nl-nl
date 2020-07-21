@@ -6,14 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: ce7edf4dd5ae52f3ea604fe4b8d88d1a29de5a69
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c6bd45324313ebc44bd4c59cd6f09e2eaab28d32
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84608363"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505139"
 ---
 # <a name="log-analytics-agent-overview"></a>Overzicht van Log Analytics-agent
-De Azure Log Analytics-agent is ontwikkeld voor uitgebreid beheer over virtuele machines in elke Cloud, on-premises machines en die worden bewaakt door [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/). De Windows-en Linux-agents verzenden verzamelde gegevens van verschillende bronnen naar uw Log Analytics-werk ruimte in Azure Monitor, evenals alle unieke Logboeken of meet waarden zoals gedefinieerd in een bewakings oplossing. De Log Analytics-agent biedt ook ondersteuning voor inzichten en andere services in Azure Monitor zoals [Azure monitor voor VM's](../insights/vminsights-enable-overview.md), [Azure Security Center](/azure/security-center/)en [Azure Automation](../../automation/automation-intro.md).
+De Azure Log Analytics-agent is ontwikkeld voor uitgebreid beheer over virtuele machines in elke Cloud, on-premises machines en die worden bewaakt door [System Center Operations Manager](/system-center/scom/). De Windows-en Linux-agents verzenden verzamelde gegevens van verschillende bronnen naar uw Log Analytics-werk ruimte in Azure Monitor, evenals alle unieke Logboeken of meet waarden zoals gedefinieerd in een bewakings oplossing. De Log Analytics-agent biedt ook ondersteuning voor inzichten en andere services in Azure Monitor zoals [Azure monitor voor VM's](../insights/vminsights-enable-overview.md), [Azure Security Center](../../security-center/index.yml)en [Azure Automation](../../automation/automation-intro.md).
 
 Dit artikel bevat een gedetailleerd overzicht van de agent-, systeem-en netwerk vereisten en de verschillende implementatie methoden.
 
@@ -30,7 +31,7 @@ De belangrijkste verschillen die u moet overwegen:
 
 - Azure Diagnostics extensie kan alleen worden gebruikt met virtuele machines van Azure. De Log Analytics-agent kan worden gebruikt met virtuele machines in azure, andere Clouds en on-premises.
 - Met Azure Diagnostics extensie worden gegevens naar Azure Storage verzonden, worden [Azure monitor metriek](data-platform-metrics.md) (alleen Windows) en Event hubs. De Log Analytics-agent verzamelt gegevens naar [Azure monitor-logboeken](data-platform-logs.md).
-- De Log Analytics-agent is vereist voor [oplossingen](../monitor-reference.md#insights-and-core-solutions), [Azure monitor voor VM's](../insights/vminsights-overview.md)en andere services, zoals [Azure Security Center](/azure/security-center/).
+- De Log Analytics-agent is vereist voor [oplossingen](../monitor-reference.md#insights-and-core-solutions), [Azure monitor voor VM's](../insights/vminsights-overview.md)en andere services, zoals [Azure Security Center](../../security-center/index.yml).
 
 ## <a name="costs"></a>Kosten
 Er zijn geen kosten verbonden aan Log Analytics-agent, maar mogelijk worden er kosten in rekening gebracht voor de gegevens die zijn opgenomen. Controleer het [gebruik en de kosten beheren met Azure monitor logboeken](manage-cost-storage.md) voor gedetailleerde informatie over de prijzen voor gegevens die zijn verzameld in een log Analytics-werk ruimte.
@@ -38,7 +39,7 @@ Er zijn geen kosten verbonden aan Log Analytics-agent, maar mogelijk worden er k
 ## <a name="data-collected"></a>Verzamelde gegevens
 De volgende tabel bevat de typen gegevens die u kunt configureren voor het verzamelen van een Log Analytics werkruimte van alle verbonden agents. Zie [wat wordt bewaakt door Azure monitor?](../monitor-reference.md) voor een lijst met inzichten, oplossingen en andere oplossingen die gebruikmaken van de log Analytics-agent voor het verzamelen van andere soorten gegevens.
 
-| Gegevensbron | Description |
+| Gegevensbron | Beschrijving |
 | --- | --- |
 | [Windows-gebeurtenis logboeken](data-sources-windows-events.md) | Gegevens die worden verzonden naar het Windows-systeem voor gebeurtenis registratie. |
 | [Syslog](data-sources-syslog.md)                     | Informatie die wordt verzonden naar het systeem voor het registreren van Linux-gebeurtenissen. |
@@ -58,7 +59,7 @@ Wanneer u de Log Analytics-agents gebruikt om gegevens te verzamelen, moet u het
 
 * Als u gegevens van Windows-agents wilt verzamelen, kunt u [elke agent configureren om te rapporteren aan een of meer werk ruimten](agent-windows.md), zelfs wanneer deze wordt gerapporteerd aan een System Center Operations Manager-beheer groep. De Windows-agent kan Maxi maal vier werk ruimten rapporteren.
 * De Linux-agent biedt geen ondersteuning voor multi-multihoming en kan slechts aan één werk ruimte rapporteren.
-* De Windows-agent ondersteunt de [FIPS 140-standaard](https://docs.microsoft.com/windows/security/threat-protection/fips-140-validation), terwijl de Linux-agent deze niet ondersteunt.  
+* De Windows-agent ondersteunt de [FIPS 140-standaard](/windows/security/threat-protection/fips-140-validation), terwijl de Linux-agent deze niet ondersteunt.  
 
 Als u System Center Operations Manager 2012 R2 of hoger gebruikt:
 
@@ -124,7 +125,7 @@ Vanaf versies die na augustus 2018 zijn uitgebracht, maken we de volgende wijzig
 Het uitvoer bare bestand python2 moet met de volgende opdracht worden gealiasd als ' python ':
 
 ```
-alternatives --set python /usr/sbin/python2
+alternatives --set python `which python2`
 ```
 
 ### <a name="supported-distros"></a>Ondersteunde distributies
@@ -147,7 +148,7 @@ De volgende versies van het Linux-besturings systeem worden officieel ondersteun
 
 De volgende tabel geeft een overzicht van de pakketten die vereist zijn voor de ondersteunde Linux-distributies waarop de agent wordt geïnstalleerd.
 
-|Vereist pakket |Description |Minimale versie |
+|Vereist pakket |Beschrijving |Minimale versie |
 |-----------------|------------|----------------|
 |Glibc |    GNU C-bibliotheek | 2.5-12 
 |Openssl    | OpenSSL-bibliotheken | 1.0. x of 1.1. x |
@@ -187,12 +188,12 @@ De volgende tabel bevat de proxy-en firewall configuratie-informatie die is vere
 
 |Agentresource|Poorten |Richting |HTTPS-controle overslaan|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Poort 443 |Uitgaand|Yes |  
-|*.oms.opinsights.azure.com |Poort 443 |Uitgaand|Yes |  
-|*.blob.core.windows.net |Poort 443 |Uitgaand|Yes |
-|*.azure-automation.net |Poort 443 |Uitgaand|Yes |
+|*.ods.opinsights.azure.com |Poort 443 |Uitgaand|Ja |  
+|*.oms.opinsights.azure.com |Poort 443 |Uitgaand|Ja |  
+|*.blob.core.windows.net |Poort 443 |Uitgaand|Ja |
+|*.azure-automation.net |Poort 443 |Uitgaand|Ja |
 
-Zie [Azure Government Management](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs)voor informatie over de firewall die vereist is voor Azure Government. 
+Zie [Azure Government Management](../../azure-government/compare-azure-government-global-azure.md#azure-monitor-logs)voor informatie over de firewall die vereist is voor Azure Government. 
 
 Als u van plan bent de Azure Automation Hybrid Runbook Worker te gebruiken om verbinding te maken met de Automation-Service voor het gebruik van runbooks of beheer oplossingen in uw omgeving, moet deze toegang hebben tot het poort nummer en de Url's die worden beschreven in [uw netwerk configureren voor de Hybrid Runbook worker](../../automation/automation-hybrid-runbook-worker.md#network-planning). 
 

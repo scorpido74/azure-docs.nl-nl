@@ -9,11 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: cc2cde7932f783f63ee2783f0589ce4f88f248a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b5822c1af4f3bc5d9519af93054a01c3cdc82001
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77658099"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504988"
 ---
 # <a name="workbook-resource-parameters"></a>Resource parameters voor werkmap
 
@@ -60,7 +61,7 @@ Waarden van resource-kiezers kunnen afkomstig zijn uit de context van de werkmap
 > [!NOTE]
 > Azure resource Graph is nog niet beschikbaar in alle Clouds. Zorg ervoor dat deze wordt ondersteund in uw doel-Cloud als u deze aanpak kiest.
 
-[Documentatie voor Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview)
+[Documentatie voor Azure Resource Graph](../../governance/resource-graph/overview.md)
 
 ## <a name="creating-a-resource-parameter--json-list"></a>Een resource parameter maken (JSON-lijst)
 1. Beginnen met een lege werkmap in de bewerkings modus.

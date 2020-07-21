@@ -9,11 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: d05902f47dff3dd2f8a63ae240c0b8825a5c441f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 443751ee974dae3c426f36cbc262bc1a3af65bd0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77658027"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504934"
 ---
 # <a name="azure-monitor-workbook-visualizations"></a>Visualisaties van Azure Monitor werkmap
 
@@ -50,7 +51,7 @@ Werkmappen ondersteunen grafieken voor logboeken en metrische gegevens bronnen.
 1. Schakel de werkmap over naar de bewerkings modus door te klikken op het item werkbalk opdracht **bewerken** .
 2. Gebruik de koppeling **query toevoegen** om een besturings element voor een logboek query toe te voegen aan de werkmap.
 3. Selecteer het query type als **logboek**, resource type (bijvoorbeeld Application Insights) en de resources om het doel te bereiken.
-4. Gebruik de query-editor om de [KQL](https://docs.microsoft.com/azure/kusto/query/) voor uw analyse in te voeren (bijvoorbeeld trend van aanvragen).
+4. Gebruik de query-editor om de [KQL](/azure/kusto/query/) voor uw analyse in te voeren (bijvoorbeeld trend van aanvragen).
 5. Stel de visualisatie in op een van de volgende elementen: **vlak**, **staaf**, **staaf (categorische)**, **lijn**, **cirkel**, **sprei ding**of **tijd**.
 6. Stel andere para meters in als dat nodig is, zoals een tijds bereik, visualisatie, grootte, kleuren palet en legenda.
 

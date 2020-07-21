@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/09/2018
-ms.openlocfilehash: 96c64f6a0167b678f14bf0199069ecd6b4c8d57a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac2b79046718fe45ad0dad0396b6f7653efbb779
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80055113"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505326"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>Een gegevens pijplijn maken met de Data Collector-API
 
@@ -43,7 +43,7 @@ In dit artikel wordt niet beschreven hoe u gegevens maakt of [uploadt naar een A
 
 Hoewel de gedetailleerde installatie van de Blob-opslag, de logische app of de Azure-functie niet in dit artikel wordt beschreven, zijn gedetailleerde instructies beschikbaar op de pagina's van de specifieke producten.
 
-Om deze pijp lijn te bewaken, gebruiken we Application Insights om onze Azure Function- [gegevens hier](../../azure-functions/functions-monitoring.md)te bewaken en Azure monitor om de details van de Logic-app [hier](../../logic-apps/logic-apps-monitor-your-logic-apps-oms.md)te bewaken. 
+Om deze pijp lijn te bewaken, gebruiken we Application Insights om onze Azure Function- [gegevens hier](../../azure-functions/functions-monitoring.md)te bewaken en Azure monitor om de details van de Logic-app [hier](../../logic-apps/monitor-logic-apps-log-analytics.md)te bewaken. 
 
 ## <a name="setting-up-the-pipeline"></a>De pijp lijn instellen
 Als u de pijp lijn wilt instellen, moet u eerst controleren of u de BLOB-container hebt gemaakt en geconfigureerd. Zorg er ook voor dat de Log Analytics werk ruimte waar u de gegevens naartoe wilt verzenden, is gemaakt.

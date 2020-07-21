@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
-ms.openlocfilehash: e1ddc354e95185b6b2ba8bcb821fcabd5721c442
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: d2d37e20ada2d1128f04d2df822da996338e0e6e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224244"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500868"
 ---
 # <a name="find-and-use-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>VM-installatie kopieën zoeken en gebruiken in azure Marketplace met Azure PowerShell
 
@@ -44,13 +44,13 @@ In deze tabel ziet u een subset van beschik bare Sku's voor de aangegeven uitgev
 
 ## <a name="navigate-the-images"></a>Navigeren door de afbeeldingen
 
-Een manier om een installatie kopie op een locatie te vinden is door de cmdlets [Get-AzVMImagePublisher](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher), [Get-AzVMImageOffer](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimageoffer)en [Get-AzVMImageSku](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagesku) in volg orde uit te voeren:
+Een manier om een installatie kopie op een locatie te vinden is door de cmdlets [Get-AzVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher), [Get-AzVMImageOffer](/powershell/module/az.compute/get-azvmimageoffer)en [Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku) in volg orde uit te voeren:
 
 1. Geef de uitgevers van installatiekopieën weer.
 2. Geef de aanbiedingen voor een bepaalde uitgever weer.
 3. Geef de SKU's voor een bepaalde aanbieding weer.
 
-Voer vervolgens voor een geselecteerde SKU [Get-AzVMImage](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimage) uit om de versies weer te geven die u wilt implementeren.
+Voer vervolgens voor een geselecteerde SKU [Get-AzVMImage](/powershell/module/az.compute/get-azvmimage) uit om de versies weer te geven die u wilt implementeren.
 
 1. De uitgevers vermelden:
 
@@ -168,7 +168,7 @@ $skuName="2019-Datacenter"
 Get-AzVMImage -Location $locName -PublisherName $pubName -Offer $offerName -Sku $skuName | Select Version
 ```
 
-Nu kunt u de geselecteerde Uitgever, aanbieding, SKU en versie combi neren in een URN (waarden gescheiden door:). Geef deze URN door met de `--image` para meter bij het maken van een virtuele machine met de cmdlet [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) . U kunt het versie nummer in de URN eventueel vervangen door de nieuwste versie van de installatie kopie.
+Nu kunt u de geselecteerde Uitgever, aanbieding, SKU en versie combi neren in een URN (waarden gescheiden door:). Geef deze URN door met de `--image` para meter bij het maken van een virtuele machine met de cmdlet [New-AzVM](/powershell/module/az.compute/new-azvm) . U kunt het versie nummer in de URN eventueel vervangen door de nieuwste versie van de installatie kopie.
 
 Als u een virtuele machine implementeert met een resource manager-sjabloon, stelt u de installatie kopie parameters afzonderlijk in de `imageReference` Eigenschappen in. Zie de [sjabloonverwijzing](/azure/templates/microsoft.compute/virtualmachines).
 
@@ -235,7 +235,7 @@ DataDiskImages   : []
 
 ### <a name="accept-the-terms"></a>De gebruiksvoorwaarden accepteren
 
-Als u de licentie voorwaarden wilt weer geven, gebruikt u de cmdlet [Get-AzMarketplaceterms](https://docs.microsoft.com/powershell/module/az.marketplaceordering/get-azmarketplaceterms) en geeft u de para meters van het aankoop plan door. De uitvoer bevat een koppeling naar de voor waarden van de Marketplace-installatie kopie en toont of u de voor waarden eerder hebt geaccepteerd. Zorg ervoor dat u alle kleine letters in de parameter waarden gebruikt.
+Als u de licentie voorwaarden wilt weer geven, gebruikt u de cmdlet [Get-AzMarketplaceterms](/powershell/module/az.marketplaceordering/get-azmarketplaceterms) en geeft u de para meters van het aankoop plan door. De uitvoer bevat een koppeling naar de voor waarden van de Marketplace-installatie kopie en toont of u de voor waarden eerder hebt geaccepteerd. Zorg ervoor dat u alle kleine letters in de parameter waarden gebruikt.
 
 ```powershell
 Get-AzMarketplaceterms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016"
@@ -254,7 +254,7 @@ Accepted          : False
 Signdate          : 1/25/2019 7:43:00 PM
 ```
 
-Gebruik de cmdlet [set-AzMarketplaceterms](https://docs.microsoft.com/powershell/module/az.marketplaceordering/set-azmarketplaceterms) om de voor waarden te accepteren of af te wijzen. U hoeft slechts één keer per abonnement voor de installatie kopie te accepteren. Zorg ervoor dat u alle kleine letters in de parameter waarden gebruikt. 
+Gebruik de cmdlet [set-AzMarketplaceterms](/powershell/module/az.marketplaceordering/set-azmarketplaceterms) om de voor waarden te accepteren of af te wijzen. U hoeft slechts één keer per abonnement voor de installatie kopie te accepteren. Zorg ervoor dat u alle kleine letters in de parameter waarden gebruikt. 
 
 ```powershell
 $agreementTerms=Get-AzMarketplaceterms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016"
@@ -278,7 +278,7 @@ Signdate          : 2/23/2018 7:49:31 PM
 
 ### <a name="deploy-using-purchase-plan-parameters"></a>Implementeren met behulp van Purchase Plan-para meters
 
-Nadat u de voor waarden voor een afbeelding hebt geaccepteerd, kunt u een virtuele machine in dat abonnement implementeren. Zoals weer gegeven in het volgende code fragment, gebruikt u de cmdlet [set-AzVMPlan](https://docs.microsoft.com/powershell/module/az.compute/set-azvmplan) om de Marketplace-plan gegevens voor het VM-object in te stellen. Zie de [voor beelden van Power shell-scripts](powershell-samples.md)voor een volledig script om netwerk instellingen voor de virtuele machine te maken en de implementatie te volt ooien.
+Nadat u de voor waarden voor een afbeelding hebt geaccepteerd, kunt u een virtuele machine in dat abonnement implementeren. Zoals weer gegeven in het volgende code fragment, gebruikt u de cmdlet [set-AzVMPlan](/powershell/module/az.compute/set-azvmplan) om de Marketplace-plan gegevens voor het VM-object in te stellen. Zie de [voor beelden van Power shell-scripts](powershell-samples.md)voor een volledig script om netwerk instellingen voor de virtuele machine te maken en de implementatie te volt ooien.
 
 ```powershell
 ...
@@ -317,5 +317,3 @@ Vervolgens geeft u de VM-configuratie samen met de netwerk configuratie objecten
 `New-AzVM`Zie [een virtuele Windows-machine maken met Power shell](quick-create-powershell.md)om snel een virtuele machine met de cmdlet te maken met behulp van basis informatie over de installatie kopie.
 
 Zie voor meer informatie over het gebruik van Azure Marketplace-installatie kopieën voor het maken van aangepaste installatie kopieën in een galerie met gedeelde afbeeldingen, [informatie over het aankoop plan van Azure Marketplace opgeven bij het maken van installatie kopieën](../marketplace-images.md).
-
-

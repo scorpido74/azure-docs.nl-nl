@@ -3,15 +3,16 @@ title: Over SAP HANA back-up van de data base in azure Vm's
 description: In dit artikel vindt u informatie over het maken van back-ups van SAP HANA-data bases die worden uitgevoerd op virtuele machines van Azure.
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 52c235c95cea73a0c51c62fcb55f7f711d2eff21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 980278b3cdb9c97a5a483354a004a8278a745b3b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79476454"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503503"
 ---
 # <a name="about-sap-hana-database-backup-in-azure-vms"></a>Over SAP HANA back-up van de data base in azure Vm's
 
-SAP HANA data bases zijn bedrijfskritische workloads waarvoor een lage Recovery Point Objective (RPO) en een doel stelling voor snel herstel (RTO) zijn vereist. U kunt nu [back-ups maken van SAP Hana-data bases die worden uitgevoerd op virtuele Azure-machines](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db) met [Azure backup](https://docs.microsoft.com/azure/backup/backup-overview).
+SAP HANA data bases zijn bedrijfskritische workloads waarvoor een lage Recovery Point Objective (RPO) en een doel stelling voor snel herstel (RTO) zijn vereist. U kunt nu [back-ups maken van SAP Hana-data bases die worden uitgevoerd op virtuele Azure-machines](./tutorial-backup-sap-hana-db.md) met [Azure backup](./backup-overview.md).
 
 Azure Backup is [Backint gecertificeerd](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5) door SAP, om systeem eigen back-upondersteuning te bieden door gebruik te maken van de systeem eigen api's van SAP Hana. Deze aanbieding van Azure Backup wordt afgestemd met de mantra van de back-ups van de **infra structuur** van Azure backup, waardoor er geen back-upinfrastructuur hoeft te worden geïmplementeerd en beheerd. U kunt nu zonder problemen back-ups maken en herstellen van SAP HANA-data bases die worden uitgevoerd op virtuele Azure-machines (Vm's uit de[M-serie](../virtual-machines/m-series.md) worden ook nu ondersteund) en gebruikmaken van de mogelijkheden voor bedrijfs beheer die Azure backup bieden.
 
@@ -24,18 +25,18 @@ Het gebruik van Azure Backup voor het maken van back-ups en het herstellen van S
 * **Lange termijn retentie**: voor strenge naleving en controle behoeften. Bewaar uw back-ups voor jaren, op basis van de Bewaar duur, waarna de herstel punten automatisch worden verwijderd door de ingebouwde levenscyclus beheer functie.
 * **Back-upbeheer van Azure**: gebruik de beheer-en bewakings mogelijkheden van Azure backup om de beheer ervaring te verbeteren. Azure CLI wordt ook ondersteund.
 
-Raadpleeg de [ondersteunings matrix van SAP Hana scenario](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support)voor een overzicht van de scenario's voor back-up en herstel die nu worden ondersteund.
+Raadpleeg de [ondersteunings matrix van SAP Hana scenario](./sap-hana-backup-support-matrix.md#scenario-support)voor een overzicht van de scenario's voor back-up en herstel die nu worden ondersteund.
 
 ## <a name="backup-architecture"></a>Back-up maken van architectuur
 
 ![Diagram van back-uparchitectuur](./media/sap-hana-db-about/backup-architecture.png)
 
-* Het back-upproces begint met het [maken van een Recovery Services-kluis](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#create-a-recovery-service-vault) in Azure. Deze kluis wordt gebruikt voor het opslaan van de back-ups en herstel punten die in de loop van de tijd zijn gemaakt.
-* De Azure-VM met SAP HANA server is geregistreerd bij de kluis en de data bases waarvan een back-up moet worden gemaakt, worden [gedetecteerd](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#discover-the-databases). Om de Azure Backup-service in te scha kelen om data bases te detecteren, moet een [preregistratie-script](https://aka.ms/scriptforpermsonhana) worden uitgevoerd op de Hana-server als hoofd gebruiker.
+* Het back-upproces begint met het [maken van een Recovery Services-kluis](./tutorial-backup-sap-hana-db.md#create-a-recovery-service-vault) in Azure. Deze kluis wordt gebruikt voor het opslaan van de back-ups en herstel punten die in de loop van de tijd zijn gemaakt.
+* De Azure-VM met SAP HANA server is geregistreerd bij de kluis en de data bases waarvan een back-up moet worden gemaakt, worden [gedetecteerd](./tutorial-backup-sap-hana-db.md#discover-the-databases). Om de Azure Backup-service in te scha kelen om data bases te detecteren, moet een [preregistratie-script](https://aka.ms/scriptforpermsonhana) worden uitgevoerd op de Hana-server als hoofd gebruiker.
 * Met dit script maakt u een **AZUREWLBACKUPHANAUSER** db-gebruiker en een bijbehorende sleutel met dezelfde naam in **hdbuserstore**. Raadpleeg de sectie [Wat is het script voor voorafgaande registratie](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) ? voor meer informatie over de werking van het script.
 * Azure Backup-service installeert nu de **Azure backup-invoeg toepassing voor Hana** op de geregistreerde SAP Hana-server.
 * De **AZUREWLBACKUPHANAUSER** db-gebruiker die door het script voor voor registratie wordt gemaakt, wordt gebruikt door de **Azure backup-INVOEG toepassing voor Hana** om alle back-up-en herstel bewerkingen uit te voeren. Als u probeert om een back-up te configureren voor SAP HANA Db's zonder dit script uit te voeren, wordt mogelijk de volgende fout weer gegeven: **UserErrorHanaScriptNotRun**.
-* Kies het vereiste back-upbeleid en schakel back-ups in om de [back-up te configureren](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#configure-backup) voor de gedetecteerde data bases.
+* Kies het vereiste back-upbeleid en schakel back-ups in om de [back-up te configureren](./tutorial-backup-sap-hana-db.md#configure-backup) voor de gedetecteerde data bases.
 
 * Nadat de back-up is geconfigureerd, stelt Azure Backup-service de volgende Backint-para meters in op DATABASE niveau op de beveiligde SAP HANA-server:
   * [catalog_backup_using_backint: True]
@@ -73,5 +74,5 @@ Voer de volgende stappen uit om een VM met SAP HANA te herstellen:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het [herstellen van een SAP Hana-data base die wordt uitgevoerd op een virtuele Azure-machine](https://docs.microsoft.com/azure/backup/sap-hana-db-restore)
-* Meer informatie over [het beheren van SAP HANA-databases waarvan een back-up wordt gemaakt met behulp van Azure Backup](https://docs.microsoft.com/azure/backup/sap-hana-db-manage)
+* Meer informatie over het [herstellen van een SAP Hana-data base die wordt uitgevoerd op een virtuele Azure-machine](./sap-hana-db-restore.md)
+* Meer informatie over [het beheren van SAP HANA-databases waarvan een back-up wordt gemaakt met behulp van Azure Backup](./sap-hana-db-manage.md)

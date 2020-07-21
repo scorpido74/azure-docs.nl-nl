@@ -4,11 +4,12 @@ description: Metrische gegevens en klassieke Api's automatisch schalen, ook wel 
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.openlocfilehash: d9b6118bc165a9b0a78ae9c4da895719249b22b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 65ce7a5c876c7a8e96f945d9d4db871c84f86a4e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81114218"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505428"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure Monitor buiten gebruik stellen van de Api's van het klassieke implementatie model voor metrische gegevens en automatisch schalen
 
@@ -28,9 +29,9 @@ Dit artikel is van toepassing op het gebruik van de volgende onderdelen:
 
 - **Klassieke Azure Insights-SDK** : als u de [klassieke Azure Insights-SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/)gebruikt, schakelt u over naar de nieuwe Azure monitor-SDK voor [.net](https://github.com/azure/azure-libraries-for-net#download) of [Java](https://github.com/azure/azure-libraries-for-java#download). Down load het [Azure monitor SDK NuGet-pakket](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/).
 
-- **Klassiek automatisch schalen** : als u de [klassieke instellingen voor automatisch schalen](https://msdn.microsoft.com/library/azure/mt348562.aspx) aanroept vanuit uw aangepaste hulpprogram ma's of met behulp van de [klassieke Azure Insights-SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/), moet u overschakelen naar het [Azure monitor rest API van Resource Manager](https://docs.microsoft.com/rest/api/monitor/autoscalesettings).
+- **Klassiek automatisch schalen** : als u de [klassieke instellingen voor automatisch schalen](/previous-versions/azure/reference/mt348562(v=azure.100)) aanroept vanuit uw aangepaste hulpprogram ma's of met behulp van de [klassieke Azure Insights-SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/), moet u overschakelen naar het [Azure monitor rest API van Resource Manager](/rest/api/monitor/autoscalesettings).
 
-- **Klassieke metrische gegevens** : als u metrische gegevens gebruikt met behulp van de [klassieke rest-api's](https://msdn.microsoft.com/library/azure/dn510374.aspx) of de [klassieke Azure Insights-SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/) van aangepaste hulpprogram ma's, moet u overschakelen naar het Azure monitor van [Resource Manager rest API](https://docs.microsoft.com/rest/api/monitor/autoscalesettings). 
+- **Klassieke metrische gegevens** : als u metrische gegevens gebruikt met behulp van de [klassieke rest-api's](/previous-versions/azure/reference/dn510374(v=azure.100)) of de [klassieke Azure Insights-SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/) van aangepaste hulpprogram ma's, moet u overschakelen naar het Azure monitor van [Resource Manager rest API](/rest/api/monitor/autoscalesettings). 
 
 Als u niet zeker weet of uw code of aangepaste hulp middelen de klassieke Api's aanroepen, bekijkt u het volgende:
 
@@ -42,11 +43,11 @@ Als u niet zeker weet of uw code of aangepaste hulp middelen de klassieke Api's 
 
 - Als u met behulp van aanroepen in de documentatie naar een van de volgende koppelingen verwijst, gebruikt u de oudere klassieke Api's.
 
-  - [Klassen bibliotheek van Windows. Azure. Management. monitoring](https://docs.microsoft.com/previous-versions/azure/dn510414(v=azure.100))
+  - [Klassen bibliotheek van Windows. Azure. Management. monitoring](/previous-versions/azure/dn510414(v=azure.100))
 
-  - [Bewaking (klassiek) .NET](https://docs.microsoft.com/previous-versions/azure/reference/mt348562(v%3dazure.100))
+  - [Bewaking (klassiek) .NET](/previous-versions/azure/reference/mt348562(v%3dazure.100))
 
-  - [IMetricOperations-interface](https://docs.microsoft.com/previous-versions/azure/reference/dn802395(v%3dazure.100))
+  - [IMetricOperations-interface](/previous-versions/azure/reference/dn802395(v%3dazure.100))
 
 ## <a name="why-you-should-switch"></a>Waarom u moet overschakelen
 
@@ -84,7 +85,7 @@ Er is een pensioen melding verzonden naar e-mail adressen voor de volgende accou
 
 Als u vragen hebt, kunt u contact met ons opnemen via MonitorClassicAPIhelp@microsoft.com .  
 
-## <a name="references"></a>Referenties
+## <a name="references"></a>Naslaginformatie
 
-- [Nieuwere REST-Api's voor Azure Monitor](https://docs.microsoft.com/rest/api/monitor/) 
+- [Nieuwere REST-Api's voor Azure Monitor](/rest/api/monitor/) 
 - [Nieuwere Azure Monitor-SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)

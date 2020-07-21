@@ -7,11 +7,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 5541dec748f31818a0e9485fc0c56b7926ccaae7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a9ced48295fa4c396ed6c72fe021ed1e1be484b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81758481"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501888"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>Seriële console gebruiken voor SysRq- en NMI-aanroepen
 
@@ -22,11 +23,11 @@ Zodra de SysRq-reeks is geleverd, bepaalt de kernel configuratie hoe het systeem
 
 De Azure Serial console kan worden gebruikt om een SysRq te verzenden naar een virtuele Azure-machine met behulp van het toetsenbord pictogram in de onderstaande opdracht balk.
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
+![Scherm opname van de Azure seriële console. Het toetsenbord pictogram is gemarkeerd en het bijbehorende menu wordt weer gegeven. Dit menu bevat een opdracht Item Send SysRq.](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
 
 Als u de opdracht ' SysRq verzenden ' kiest, wordt er een dialoog venster geopend, waarmee u algemene SysRq-opties kunt opgeven, of een reeks SysRq-opdrachten die in het dialoog venster zijn ingevoerd.  Op die manier kunnen reeksen SysRq een bewerking op hoog niveau uitvoeren, zoals veilig opnieuw opstarten met behulp van: `REISUB` .
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
+![Scherm afbeelding van het dialoog venster SysRq verzenden naar gast. De optie voor het invoeren van opdrachten is geselecteerd en het opdracht venster bevat REISUB.](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
 
 De opdracht SysRq kan niet worden gebruikt op virtuele machines die zijn gestopt of waarvan de kernel een niet-reagerende status heeft. (bijvoorbeeld een kernel paniek).
 
@@ -95,7 +96,7 @@ Een niet-maskeer bare interrupt (NMI) is ontworpen om een signaal te maken dat s
 
 De seriële console kan worden gebruikt om een NMI te verzenden naar een virtuele Azure-machine met behulp van het toetsenbord pictogram in de onderstaande opdracht balk. Zodra de NMI is geleverd, wordt door de configuratie van de virtuele machine bepaald hoe het systeem reageert.  Linux-besturings systemen kunnen worden geconfigureerd om te crashen en een geheugen dump te maken waarbij het besturings systeem een NMI ontvangt.
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
+![Scherm opname van de seriële console. Het toetsenbord pictogram is gemarkeerd en het bijbehorende menu wordt weer gegeven. Het menu bevat een interrupt-item dat niet kan worden gemaskeerd.](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
 
 Voor Linux-systemen die sysctl ondersteunen voor het configureren van kernel-para meters, kunt u een paniek inschakelen wanneer deze NMI wordt ontvangen met behulp van het volgende:
 1. Deze regel toevoegen aan */etc/sysctl.conf* <br>
@@ -120,7 +121,7 @@ Voor Linux-systemen die sysctl ondersteunen voor het configureren van kernel-par
 - [Vastlopende logboeken verzamelen](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 
 ## <a name="next-steps"></a>Volgende stappen
-* De documentatie pagina voor de hoofd console Linux bevindt zich [hier](serial-console.md).
+* De documentatie pagina voor de hoofd console Linux bevindt zich [hier](../troubleshooting/serial-console-linux.md).
 * Seriële console gebruiken om op te starten in [grub en de modus voor één gebruiker](serial-console-grub-single-user-mode.md) in te voeren
-* De seriële console is ook beschikbaar voor virtuele [Windows](../windows/serial-console.md) -machines
-* Meer informatie over [Diagnostische gegevens over opstarten](boot-diagnostics.md)
+* De seriële console is ook beschikbaar voor virtuele [Windows](../troubleshooting/serial-console-windows.md) -machines
+* Meer informatie over [Diagnostische gegevens over opstarten](../troubleshooting/boot-diagnostics.md)

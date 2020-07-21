@@ -7,15 +7,16 @@ ms.topic: article
 ms.date: 10/17/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: 406eda6902ae451c7fdf79e1bd1215c035a66750
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8532c0da7d9977b12a4d1099e430584de1e17fe0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82792221"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502738"
 ---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>Een kopie van een virtuele Linux-machine maken met behulp van Azure CLI en Managed Disks
 
-In dit artikel wordt beschreven hoe u een kopie maakt van uw virtuele Azure-machine (VM) waarop Linux wordt uitgevoerd met behulp van de Azure CLI. Zie voor meer informatie over het kopiëren, maken, opslaan en delen van VM [-installatie kopieën](shared-images.md)op schaal.
+In dit artikel wordt beschreven hoe u een kopie maakt van uw virtuele Azure-machine (VM) waarop Linux wordt uitgevoerd met behulp van de Azure CLI. Zie voor meer informatie over het kopiëren, maken, opslaan en delen van VM [-installatie kopieën](../shared-images-cli.md)op schaal.
 
 U kunt ook [een virtuele machine uploaden en maken op basis van een VHD](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
@@ -125,4 +126,4 @@ az vm create --resource-group myResourceGroup \
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voor meer informatie over het gebruik van een [Galerie met gedeelde afbeeldingen](shared-images.md) voor het beheren van VM-installatie kopieën.
+Voor meer informatie over het gebruik van een [Galerie met gedeelde afbeeldingen](../shared-images-cli.md) voor het beheren van VM-installatie kopieën.

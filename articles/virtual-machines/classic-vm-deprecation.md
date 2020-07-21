@@ -8,17 +8,18 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: 7488ef45d665d95a28f69b7af887b98dd5a76376
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c3e55d13c0b5fbf5b813f1669587836bf8b5e2d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678372"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503010"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>Migreer uw IaaS-resources naar Azure Resource Manager op 1 maart 2023 
 
 In 2014 heeft micro soft IaaS op Azure Resource Manager gestart en zijn de mogelijkheden van ooit verbeterd. Omdat [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) nu volledige IaaS-mogelijkheden en andere voor uitgangen heeft, is het beheer van IaaS-Vm's via Azure Service Manager op 28 februari 2020 afgeschaft en is deze functionaliteit volledig buiten gebruik gesteld op 1 maart 2023. 
 
-Vandaag 90% van de virtuele machines van IaaS gebruikt Azure Resource Manager. Als u IaaS-resources gebruikt via Azure Service Manager (ASM), start u uw migratie nu en voltooit u deze op 1 maart 2023 om te profiteren van [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/).
+Vandaag 90% van de virtuele machines van IaaS gebruikt Azure Resource Manager. Als u IaaS-resources gebruikt via Azure Service Manager (ASM), start u uw migratie nu en voltooit u deze op 1 maart 2023 om te profiteren van [Azure Resource Manager](../azure-resource-manager/management/index.yml).
 
 Klassieke Vm's volgen het [moderne levenscyclus beleid](https://support.microsoft.com/help/30881/modern-lifecycle-policy) voor het buiten gebruik stellen.
 
@@ -38,10 +39,10 @@ De volgende Azure-Services en-functionaliteit worden **niet** beïnvloed door di
 
 - Begin met het plannen van de migratie naar Azure Resource Manager, vandaag. 
 
-- Meer [informatie](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-overview) over het migreren van uw klassieke [Linux](./linux/migration-classic-resource-manager-plan.md) -en [Windows](./windows/migration-classic-resource-manager-plan.md) -vm's naar Azure Resource Manager.
+- Meer [informatie](./windows/migration-classic-resource-manager-overview.md) over het migreren van uw klassieke [Linux](./linux/migration-classic-resource-manager-plan.md) -en [Windows](./windows/migration-classic-resource-manager-plan.md) -vm's naar Azure Resource Manager.
 
-- Raadpleeg de [Veelgestelde vragen over klassieke migratie naar Azure Resource Manager](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq) voor meer informatie.
+- Raadpleeg de [Veelgestelde vragen over klassieke migratie naar Azure Resource Manager](./windows/migration-classic-resource-manager-faq.md) voor meer informatie.
 
-- [Neem contact op met de ondersteuning](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)voor technische vragen, problemen en abonnementen voor white list.
+- [Neem contact op met de ondersteuning](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)voor technische vragen, problemen en abonnementen toevoegen aan de acceptatie lijst.
 
 - Voor andere vragen die geen deel uitmaken van veelgestelde vragen en feedback, opmerking hieronder.

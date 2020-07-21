@@ -7,11 +7,12 @@ ms.topic: article
 ms.author: brbell
 ms.reviewer: mimckitt
 ms.date: 06/15/2020
-ms.openlocfilehash: 413f53feedc4fee0877694e3f3a3a509c4d38001
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ce816aba6bee36cd20eed6d31b0642dc8931e0b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84783608"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503027"
 ---
 # <a name="azure-vm-sizes-with-no-local-temporary-disk"></a>Azure VM-grootten zonder lokale tijdelijke schijf 
 In dit artikel vindt u antwoorden op veelgestelde vragen over Azure VM-grootten die geen lokale tijdelijke schijf hebben (d.w.z. geen lokale Temp-Desk). Zie voor meer informatie over deze VM-grootten [specificaties voor Dv4-en Dsv4-Series (algemeen workloads)](dv4-dsv4-series.md) of [specificaties voor Ev4-en Esv4-serie (voor geheugen geoptimaliseerde workloads)](ev4-esv4-series.md).
@@ -22,7 +23,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure VM-grootten 
 ## <a name="what-does-no-local-temp-disk-mean"></a>Wat betekent er geen lokale tijdelijke schijf? 
 Normaal gesp roken hebben we VM-grootten (bijvoorbeeld Standard_D2s_v3, Standard_E48_v3) die een kleine lokale schijf (bijvoorbeeld een D: station) bevatten. Nu met deze nieuwe VM-grootten is de kleine lokale schijf niet meer aanwezig; u kunt echter nog steeds Standard-HDD, Premium-SSD of Ultra-SSD bijvoegen.
 
-## <a name="what-if-i-still-want-local-temp-disk"></a>Wat moet ik doen als ik nog steeds een lokale tijdelijke schijf heb?
+## <a name="what-if-i-still-want-a-local-temp-disk"></a>Wat moet ik doen als ik nog steeds een lokale tijdelijke schijf wil?
 Als voor uw werk belasting een lokale tijdelijke schijf vereist is, zijn er ook nieuwe [Ddv4-en Ddsv4](ddv4-ddsv4-series.md) -of [Edv4-en Edsv4](edv4-edsv4-series.md) -VM-grootten beschikbaar. Deze grootten bieden 50% grotere tijdelijke schijf vergeleken met de vorige v3-grootten.
 
 > [!NOTE]

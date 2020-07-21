@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2019
-ms.openlocfilehash: 8ff24d508eb35c4f2a04c7d024254fa6f1875da8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b9624313716081a039b12c73e54b9f7afc2a323
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77659280"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505309"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>Azure Monitor logboek gegevens importeren in Power BI
 
@@ -20,12 +21,12 @@ ms.locfileid: "77659280"
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="overview"></a>Overzicht
-Als u gegevens wilt importeren uit een [log Analytics werk ruimte](manage-access.md) in Azure Monitor naar Power bi, maakt u een gegevensset in Power bi op basis van een [logboek query](../log-query/log-query-overview.md) in azure monitor.  De query wordt uitgevoerd telkens wanneer de gegevensset wordt vernieuwd.  Vervolgens kunt u Power BI rapporten maken die gebruikmaken van gegevens uit de gegevensset.  Als u de gegevensset in Power BI wilt maken, exporteert u uw query van Log Analytics naar de [taal Power query (M)](https://docs.microsoft.com/powerquery-m/power-query-m-language-specification).  Vervolgens gebruikt u dit om een query in Power BI Desktop te maken en deze vervolgens te publiceren naar Power BI als een gegevensset.  De Details voor dit proces worden hieronder beschreven.
+Als u gegevens wilt importeren uit een [log Analytics werk ruimte](manage-access.md) in Azure Monitor naar Power bi, maakt u een gegevensset in Power bi op basis van een [logboek query](../log-query/log-query-overview.md) in azure monitor.  De query wordt uitgevoerd telkens wanneer de gegevensset wordt vernieuwd.  Vervolgens kunt u Power BI rapporten maken die gebruikmaken van gegevens uit de gegevensset.  Als u de gegevensset in Power BI wilt maken, exporteert u uw query van Log Analytics naar de [taal Power query (M)](/powerquery-m/power-query-m-language-specification).  Vervolgens gebruikt u dit om een query in Power BI Desktop te maken en deze vervolgens te publiceren naar Power BI als een gegevensset.  De Details voor dit proces worden hieronder beschreven.
 
 ![Log Analytics Power BI](media/powerbi/overview.png)
 
 ## <a name="export-query"></a>Query exporteren
-Maak eerst een [logboek query](../log-query/log-query-overview.md) die de gegevens retourneert die u wilt vullen met de Power bi gegevensset.  Vervolgens exporteert u die query naar de [Power query-taal (M)](https://docs.microsoft.com/powerquery-m/power-query-m-language-specification) die kan worden gebruikt door Power bi Desktop.
+Maak eerst een [logboek query](../log-query/log-query-overview.md) die de gegevens retourneert die u wilt vullen met de Power bi gegevensset.  Vervolgens exporteert u die query naar de [Power query-taal (M)](/powerquery-m/power-query-m-language-specification) die kan worden gebruikt door Power bi Desktop.
 
 1. [Maak de logboek query in log Analytics](../log-query/get-started-portal.md) om de gegevens voor uw gegevensset uit te pakken.
 2. Selecteer **Export**  >  **Power bi query (M)** exporteren.  Hiermee exporteert u de query naar een tekst bestand met de naam **PowerBIQuery.txt**. 
@@ -52,7 +53,7 @@ Power BI Desktop is een bureaublad toepassing waarmee u gegevens sets en rapport
 ## <a name="publish-to-power-bi"></a>Publiceren naar Power BI
 Wanneer u naar Power BI publiceert, worden er een gegevensset en een rapport gemaakt.  Als u een rapport in Power BI Desktop maakt, wordt dit gepubliceerd met uw gegevens.  Als dat niet het geval is, wordt er een leeg rapport gemaakt.  U kunt het rapport wijzigen in Power BI of een nieuw item maken op basis van de gegevensset.
 
-1. Een rapport maken op basis van uw gegevens.  Gebruik [Power bi desktop documentatie](https://docs.microsoft.com/power-bi/desktop-report-view) als u er niet vertrouwd mee bent.  
+1. Een rapport maken op basis van uw gegevens.  Gebruik [Power bi desktop documentatie](/power-bi/desktop-report-view) als u er niet vertrouwd mee bent.  
 1. Wanneer u klaar bent om deze naar Power BI te verzenden, klikt u op **publiceren**.  
 1. Wanneer u hierom wordt gevraagd, selecteert u een bestemming in uw Power BI-account.  Tenzij u een specifieke bestemming hebt, gebruikt u **mijn werk ruimte**.
 

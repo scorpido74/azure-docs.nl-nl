@@ -3,16 +3,16 @@ title: Privé-eindpunten
 description: Meer informatie over het proces van het maken van privé-eind punten voor Azure Backup en de scenario's waarbij persoonlijke eind punten worden gebruikt om de beveiliging van uw resources te hand haven.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 8ce767073e9acfe271e6e57f9e6d1237910b33e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9c8f142e9781946f572f6f3a744d8bc2736a3de
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85124252"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503758"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Privé-eind punten voor Azure Backup
 
-Met Azure Backup kunt u veilig back-ups van uw gegevens maken en uw Recovery Services kluizen herstellen met behulp van [privé-eind punten](https://docs.microsoft.com/azure/private-link/private-endpoint-overview). Privé-eind punten gebruiken een of meer privé-IP-adressen van uw VNet, waardoor de service effectief in uw VNet wordt gezet.
+Met Azure Backup kunt u veilig back-ups van uw gegevens maken en uw Recovery Services kluizen herstellen met behulp van [privé-eind punten](../private-link/private-endpoint-overview.md). Privé-eind punten gebruiken een of meer privé-IP-adressen van uw VNet, waardoor de service effectief in uw VNet wordt gezet.
 
 In dit artikel vindt u informatie over het proces van het maken van privé-eind punten voor Azure Backup en de scenario's waarbij persoonlijke eind punten worden gebruikt om de beveiliging van uw resources te hand haven.
 
@@ -45,7 +45,7 @@ In deze sectie vindt u informatie over de stappen voor het maken en gebruiken va
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
-Zie [deze sectie](#create-a-recovery-services-vault-using-the-azure-resource-manager-client) voor meer informatie over het maken van een kluis met behulp van de Azure Resource Manager-client. Hiermee maakt u een kluis met de beheerde identiteit al ingeschakeld. Meer informatie over Recovery Services kluizen [vindt u hier](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview).
+Zie [deze sectie](#create-a-recovery-services-vault-using-the-azure-resource-manager-client) voor meer informatie over het maken van een kluis met behulp van de Azure Resource Manager-client. Hiermee maakt u een kluis met de beheerde identiteit al ingeschakeld. Meer informatie over Recovery Services kluizen [vindt u hier](./backup-azure-recovery-services-vault-overview.md).
 
 ## <a name="enable-managed-identity-for-your-vault"></a>Beheerde identiteit voor uw kluis inschakelen
 
@@ -88,7 +88,7 @@ Er zijn twee verplichte DNS-zones die moeten worden gemaakt:
     - `privatelink.blob.core.windows.net`
     - `privatelink.queue.core.windows.net`
 
-    | **Gebied**                           | **Service** | **Details van het abonnement en de resource groep (RG)**                  |
+    | **Zone**                           | **Service** | **Details van het abonnement en de resource groep (RG)**                  |
     | ---------------------------------- | ----------- | ------------------------------------------------------------ |
     | `privatelink.blob.core.windows.net`  | Blob        | **Abonnement**: hetzelfde als het persoonlijke eind punt dat moet worden gemaakt **RG**: ofwel de RG van het VNET of het persoonlijke eind punt |
     | `privatelink.queue.core.windows.net` | Wachtrij       | **RG**: de RG van het VNET of van het persoonlijke eind punt |
@@ -103,7 +103,7 @@ Klanten kunnen ervoor kiezen om hun persoonlijke eind punten te integreren met p
 
 Als u een afzonderlijke privé-DNS-zone wilt maken in azure, kunt u hetzelfde doen met behulp van dezelfde stappen die worden gebruikt voor het maken van verplichte DNS-zones. De naamgevings-en abonnements gegevens worden hieronder gedeeld:
 
-| **Gebied**                                                     | **Service** | **Details van het abonnement en de resource groep**                  |
+| **Zone**                                                     | **Service** | **Details van het abonnement en de resource groep**                  |
 | ------------------------------------------------------------ | ----------- | ------------------------------------------------------------ |
 | `privatelink.<geo>.backup.windowsazure.com`  <br><br>   **Opmerking**: *geografische* hier verwijst naar de regio code. Bijvoorbeeld *wcus* en *ne* voor West-Centraal VS en Europa-Noord respectievelijk. | Backup      | **Abonnement**: hetzelfde als waar het persoonlijke eind punt moet worden gemaakt **RG**: elke rg in het abonnement |
 
@@ -111,9 +111,9 @@ Raadpleeg [deze lijst](https://download.microsoft.com/download/1/2/6/126a410b-0e
 
 Voor URL-naamgevings conventies in nationale regio's:
 
-- [China](https://docs.microsoft.com/azure/china/resources-developer-guide#check-endpoints-in-azure)
-- [Duitsland](https://docs.microsoft.com/azure/germany/germany-developer-guide#endpoint-mapping)
-- [US Gov](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide)
+- [China](/azure/china/resources-developer-guide#check-endpoints-in-azure)
+- [Duitsland](../germany/germany-developer-guide.md#endpoint-mapping)
+- [US Gov](../azure-government/documentation-government-developer-guide.md)
 
 ### <a name="linking-private-dns-zones-with-your-virtual-network"></a>Persoonlijke DNS-zones koppelen aan uw virtuele netwerk
 
@@ -495,7 +495,7 @@ $privateEndpoint = New-AzPrivateEndpoint `
 
 U moet drie particuliere DNS-zones maken en deze koppelen aan uw virtuele netwerk.
 
-| **Gebied**                                                     | **Service** |
+| **Zone**                                                     | **Service** |
 | ------------------------------------------------------------ | ----------- |
 | `privatelink.<geo>.backup.windowsazure.com`      | Backup      |
 | `privatelink.blob.core.windows.net`                            | Blob        |

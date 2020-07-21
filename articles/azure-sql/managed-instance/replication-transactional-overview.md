@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 04/20/2020
-ms.openlocfilehash: 00f456d87bd5791b7d49644cb801dca20431b0b5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ee481067a3904c208061607b7109fcba0f3faaa7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086395"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504064"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance"></a>Transactionele replicatie met Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -43,9 +43,9 @@ De belangrijkste onderdelen in transactionele replicatie zijn de **Uitgever**, *
 
 | Rol | Azure SQL Database | Azure SQL Managed Instance |
 | :----| :------------- | :--------------- |
-| **Publisher** | No | Yes |
-| **Verdeler** | No | Yes|
-| **Pull-abonnee** | No | Yes|
+| **Publisher** | Nee | Ja |
+| **Verdeler** | Nee | Ja|
+| **Pull-abonnee** | Nee | Ja|
 | **Push-abonnee**| Ja | Ja|
 | &nbsp; | &nbsp; | &nbsp; |
 
@@ -72,11 +72,11 @@ Er zijn verschillende [typen replicatie](https://docs.microsoft.com/sql/relation
 
 | Replicatie | Azure SQL Database | Azure SQL Managed Instance |
 | :----| :------------- | :--------------- |
-| [**Standaard transactionele**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Ja (alleen als abonnee) | Yes |
-| [**Snapshot**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Ja (alleen als abonnee) | Yes|
+| [**Standaard transactionele**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Ja (alleen als abonnee) | Ja |
+| [**Momentopname**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Ja (alleen als abonnee) | Ja|
 | [**Samenvoeg replicatie**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Nee | Nee|
 | [**Peer-to-peer**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Nee | Nee|
-| [**Bidirectioneel**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | No | Yes|
+| [**Bidirectioneel**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Nee | Ja|
 | [**Bij te werken abonnementen**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Nee | Nee|
 | &nbsp; | &nbsp; | &nbsp; |
 
@@ -104,11 +104,10 @@ Transactionele replicatie is handig in de volgende scenario's:
 
 ### <a name="compare-data-sync-with-transactional-replication"></a>Gegevens synchronisatie met transactionele replicatie vergelijken
 
-| | Gegevens synchroniseren | Transactionele replicatie |
+| Categorie | Gegevens synchroniseren | Transactionele replicatie |
 |---|---|---|
 | Voordelen | -Actief-actief ondersteuning<br/>-Bi-richting tussen on-premises en Azure SQL Database | -Laagste latentie<br/>-Transactionele consistentie<br/>-Bestaande topologie na migratie opnieuw gebruiken |
 | Nadelen | -5 minuten of meer latentie<br/>-Geen transactionele consistentie<br/>-Hogere gevolgen voor de prestaties | -Kan niet publiceren vanaf Azure SQL Database <br/>-Hoge onderhouds kosten |
-| | | |
 
 ## <a name="common-configurations"></a>Algemene configuraties
 

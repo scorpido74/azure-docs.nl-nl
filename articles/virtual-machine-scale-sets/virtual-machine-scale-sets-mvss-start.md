@@ -9,14 +9,15 @@ ms.subservice: template
 ms.date: 04/26/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: af2f000b9f9a7bf64898c46b3126cf180802b445
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f47e07dcffd977121b4142924a77bdb93de3fc3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83198123"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503044"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>Meer informatie over sjablonen voor virtuele-machine schaal sets
-[Azure Resource Manager-sjablonen](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process) zijn bijzonder handig om groepen gerelateerde resources te implementeren. In deze reeks zelf studies ziet u hoe u een basis sjabloon voor een schaalset maakt en hoe u deze sjabloon wijzigt in verschillende scenario's. Alle voor beelden zijn afkomstig uit deze [github-opslag plaats](https://github.com/gatneil/mvss).
+[Azure Resource Manager-sjablonen](../azure-resource-manager/templates/overview.md#template-deployment-process) zijn bijzonder handig om groepen gerelateerde resources te implementeren. In deze reeks zelf studies ziet u hoe u een basis sjabloon voor een schaalset maakt en hoe u deze sjabloon wijzigt in verschillende scenario's. Alle voor beelden zijn afkomstig uit deze [github-opslag plaats](https://github.com/gatneil/mvss).
 
 Deze sjabloon is zo ontworpen dat deze eenvoudig is. Zie de [github-opslag plaats voor Azure Quick](https://github.com/Azure/azure-quickstart-templates) start-sjablonen en zoek naar mappen die de teken reeks bevatten voor meer gedetailleerde voor beelden van schaal sets sjablonen `vmss` .
 
@@ -114,7 +115,7 @@ In dit geval is er slechts één element in de lijst, het virtuele netwerk van h
 ## <a name="specify-scale-set-properties"></a>Eigenschappen van schaal sets opgeven
 Schaal sets hebben veel eigenschappen voor het aanpassen van de virtuele machines in de schaalset. Zie de [sjabloon verwijzing](/azure/templates/microsoft.compute/virtualmachinescalesets)voor een volledige lijst met deze eigenschappen. Voor deze zelf studie zijn slechts enkele veelgebruikte eigenschappen ingesteld.
 ### <a name="supply-vm-size-and-capacity"></a>Grootte en capaciteit van de VM opgeven
-De schaalset moet weten welke grootte van de virtuele machine moet worden gemaakt ("SKU-naam") en hoeveel virtuele machines er moeten worden gemaakt ("SKU-capaciteit"). Zie de [documentatie over VM-grootten](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes)om te zien welke VM-grootten er beschikbaar zijn.
+De schaalset moet weten welke grootte van de virtuele machine moet worden gemaakt ("SKU-naam") en hoeveel virtuele machines er moeten worden gemaakt ("SKU-capaciteit"). Zie de [documentatie over VM-grootten](../virtual-machines/windows/sizes.md)om te zien welke VM-grootten er beschikbaar zijn.
 
 ```json
        "sku": {

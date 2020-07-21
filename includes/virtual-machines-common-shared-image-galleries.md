@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 07/08/2020
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 2d0030549acdb55ce2be94534ec59bb07b11869d
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: c2dffe576bfb52981b331c02b3f24ec2507ec349
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221630"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501952"
 ---
 Galerie met gedeelde afbeeldingen is een service die u helpt bij het bouwen van structuur en organisatie rond uw installatie kopieën. Galerieën met gedeelde afbeeldingen bieden:
 
@@ -83,7 +83,7 @@ Gespecialiseerde Vm's zijn niet via een proces voor het verwijderen van computer
 
 ## <a name="regional-support"></a>Regionale ondersteuning
 
-Alle open bare regio's kunnen doel regio's zijn, maar om naar Australië-centraal te repliceren en Australië-centraal 2 moet u uw abonnement white list. Als u White List wilt aanvragen, gaat u naar:https://azure.microsoft.com/global-infrastructure/australia/contact/
+Alle open bare regio's kunnen doel regio's zijn, maar om naar Australië-centraal te repliceren en Australië-centraal 2 moet uw abonnement worden toegevoegd aan de acceptatie lijst. Als u wilt aanvragen dat een abonnement wordt toegevoegd aan de lijst met toegestane abonnementen, gaat u naar:https://azure.microsoft.com/global-infrastructure/australia/contact/
 
 ## <a name="limits"></a>Limieten 
 

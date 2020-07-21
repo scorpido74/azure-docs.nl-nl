@@ -7,11 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/22/2020
 ms.author: shants
-ms.openlocfilehash: 3caf8b63cbd86338bbef653e9be9916907578627
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5dcf4ad7acb3becd2ca04407bc8e5b3ac45701f1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84675876"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501701"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Onderhoud voor virtuele machines in Azure
 
@@ -76,7 +77,7 @@ Als u van plan bent te wachten tot de geplande onderhouds fase, zijn er enkele d
 
 #### <a name="paired-regions"></a>Gekoppelde regio's
 
-Elke Azure-regio is gekoppeld aan een andere regio binnen dezelfde geografische omgeving. Samen maken ze een regio paar. Tijdens de geplande onderhouds fase worden in azure alleen de Vm's in één regio van een regio paar bijgewerkt. Tijdens het bijwerken van de virtuele machine in Noord-Centraal VS, werkt Azure de virtuele machine in Zuid-Centraal VS bijvoorbeeld niet bij. Tegelijkertijd met VS - oost kan er echter wel onderhoud plaatsvinden in andere regio's, zoals Europa - noord. Meer informatie over het werken met regio paren kan u helpen uw Vm's beter te verdelen over regio's. Zie [Azure Region-paren](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)voor meer informatie.
+Elke Azure-regio is gekoppeld aan een andere regio binnen dezelfde geografische omgeving. Samen maken ze een regio paar. Tijdens de geplande onderhouds fase worden in azure alleen de Vm's in één regio van een regio paar bijgewerkt. Tijdens het bijwerken van de virtuele machine in Noord-Centraal VS, werkt Azure de virtuele machine in Zuid-Centraal VS bijvoorbeeld niet bij. Tegelijkertijd met VS - oost kan er echter wel onderhoud plaatsvinden in andere regio's, zoals Europa - noord. Meer informatie over het werken met regio paren kan u helpen uw Vm's beter te verdelen over regio's. Zie [Azure Region-paren](../best-practices-availability-paired-regions.md)voor meer informatie.
 
 #### <a name="availability-sets-and-scale-sets"></a>Beschikbaarheids sets en schaal sets
 

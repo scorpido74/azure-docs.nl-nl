@@ -9,11 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: mbullwin
-ms.openlocfilehash: 76ecc3ee17353ebd0bbead1bba959f85d521d0df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2463c2ea4044af0b20a1dee91b30870639dc7ce
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82982136"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504917"
 ---
 # <a name="programmatically-manage-workbooks"></a>Werkmappen programmatisch beheren
 
@@ -77,7 +78,7 @@ Er zijn twee soorten werkmap bronnen die programmatisch kunnen worden beheerd:
     }
     ```
 1. Vul in het `galleries` object de `name` en- `category` sleutels in met uw waarden. Meer informatie over [para meters](#parameters) vindt u in de volgende sectie.
-2. Implementeer deze Azure Resource Manager sjabloon met behulp van de [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template), de [opdracht regel interface](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli), [Power shell](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell), enzovoort.
+2. Implementeer deze Azure Resource Manager sjabloon met behulp van de [Azure Portal](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template), de [opdracht regel interface](../../azure-resource-manager/templates/deploy-cli.md), [Power shell](../../azure-resource-manager/templates/deploy-powershell.md), enzovoort.
 3. Open de Azure Portal en navigeer naar de galerie met werkmappen die u hebt gekozen in de sjabloon Azure Resource Manager. Navigeer in de voorbeeld sjabloon naar de Azure Monitor werkmap galerie:
     1. Open de Azure Portal en ga naar Azure Monitor
     2. Openen `Workbooks` vanuit de inhouds opgave
@@ -200,7 +201,7 @@ In deze sjabloon ziet u hoe u een eenvoudige werkmap implementeert waarin een ' 
 | `serializedData` | Bevat de inhoud of Payload die in de werkmap moet worden gebruikt. De Resource Manager-sjabloon uit de werkmappen-gebruikers interface gebruiken om de waarde op te halen |
 
 ### <a name="workbook-types"></a>Werkmap typen
-Met werkmap typen geeft u op in welke werkmap galerie het nieuwe exemplaar van de werkmap wordt weer gegeven onder. Opties zijn onder andere:
+Met werkmap typen geeft u op in welke werkmap galerie het nieuwe exemplaar van de werkmap wordt weer gegeven onder. Een aantal opties:
 
 | Type | Galerie locatie |
 | :------------- |:-------------|

@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 46716cf5bd810225cbfc3b54d246917c9559f78f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ff76ea3bd39f31880d0140e182ad99f293689e6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85124456"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505360"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Metrische gegevens van het gast besturingssysteem verzenden naar de klassieke Azure Monitor voor metrische gegevens Cloud Services 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Met de Azure Monitor [Diagnostics-extensie](diagnostics-extension-overview.md)kunt u metrische gegevens en logboeken verzamelen van het gast besturingssysteem (gast besturingssysteem) dat wordt uitgevoerd als onderdeel van een virtuele machine, Cloud service of service Fabric cluster. De uitbrei ding kan telemetrie verzenden naar een [groot aantal verschillende locaties.](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)
+Met de Azure Monitor [Diagnostics-extensie](diagnostics-extension-overview.md)kunt u metrische gegevens en logboeken verzamelen van het gast besturingssysteem (gast besturingssysteem) dat wordt uitgevoerd als onderdeel van een virtuele machine, Cloud service of service Fabric cluster. De uitbrei ding kan telemetrie verzenden naar een [groot aantal verschillende locaties.](./data-platform.md?toc=/azure/azure-monitor/toc.json)
 
 In dit artikel wordt het proces beschreven voor het verzenden van gegevens over prestaties van gast besturingssystemen voor klassieke Azure-Cloud Services naar de Azure Monitor metrische opslag. Te beginnen met diagnostische gegevens van versie 1,11, kunt u metrische gegevens rechtstreeks naar de opslag voor metrische gegevens van Azure Monitor schrijven, waar de metrische gegevens van het standaard platform al zijn verzameld. 
 
@@ -30,9 +30,9 @@ Het proces dat wordt beschreven in dit artikel, werkt alleen voor prestatie mete
 
 - U moet een [service beheerder of mede beheerder](../../cost-management-billing/manage/add-change-subscription-administrator.md) zijn voor uw Azure-abonnement. 
 
-- Uw abonnement moet zijn geregistreerd bij [micro soft. Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services). 
+- Uw abonnement moet zijn geregistreerd bij [micro soft. Insights](../../azure-resource-manager/management/resource-providers-and-types.md). 
 
-- U moet [Azure PowerShell](/powershell/azure) of [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview) hebben geïnstalleerd.
+- U moet [Azure PowerShell](/powershell/azure) of [Azure Cloud shell](../../cloud-shell/overview.md) hebben geïnstalleerd.
 
 - Uw Cloud service moet zich in een [regio bevinden die aangepaste metrische gegevens ondersteunt](metrics-custom-overview.md#supported-regions).
 
@@ -46,7 +46,7 @@ Het proces dat wordt beschreven in dit artikel, werkt alleen voor prestatie mete
 
 ## <a name="create-a-service-principal"></a>Een service-principal maken 
 
-Maak een Service-Principal in uw Azure Active Directory-Tenant met behulp van de instructies in de [Portal gebruiken om een Azure Active Directory toepassing en Service-Principal te maken die toegang heeft tot resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal). Let op het volgende tijdens dit proces: 
+Maak een Service-Principal in uw Azure Active Directory-Tenant met behulp van de instructies in de [Portal gebruiken om een Azure Active Directory toepassing en Service-Principal te maken die toegang heeft tot resources](../../active-directory/develop/howto-create-service-principal-portal.md). Let op het volgende tijdens dit proces: 
 
 - U kunt een wille keurige URL voor de aanmeldings-URL plaatsen.  
 - Maak een nieuw client geheim voor deze app.  
@@ -192,4 +192,3 @@ U gebruikt de functies voor het filteren en splitsen van dimensies om het totale
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over [aangepaste metrische gegevens](metrics-custom-overview.md).
-

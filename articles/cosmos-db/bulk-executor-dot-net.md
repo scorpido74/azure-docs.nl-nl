@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 03/23/2020
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 4bcd2349913c1823e80d46565dfa869d9efe955f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ab95223d084436d1bf39ba557ec3b01c0b534d8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260658"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503384"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Gebruik de bulk-uitvoerder .NET-bibliotheek voor het uitvoeren van bulk bewerkingen in Azure Cosmos DB
 
@@ -41,7 +41,7 @@ De bibliotheek voor bulk-uitvoering wordt momenteel alleen ondersteund door de A
 
 We gaan nu naar het werken met code door een .NET-voorbeeld toepassing te downloaden van GitHub. Met deze toepassing worden bulk bewerkingen uitgevoerd op de gegevens die zijn opgeslagen in uw Azure Cosmos-account. Als u de toepassing wilt klonen, opent u een opdracht prompt, navigeert u naar de map waarnaar u deze wilt kopiëren en voert u de volgende opdracht uit:
 
-```
+```bash
 git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started.git
 ```
 
@@ -203,4 +203,4 @@ Houd rekening met de volgende punten voor betere prestaties bij gebruik van de b
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Voor meer informatie over de details van het Nuget-pakket en de release opmerkingen raadpleegt u de informatie over de bulk-invoerder- [SDK](sql-api-sdk-bulk-executor-dot-net.md).
+* Voor meer informatie over de details van het NuGet-pakket en de release opmerkingen raadpleegt u de informatie over de bulk-invoerder- [SDK](sql-api-sdk-bulk-executor-dot-net.md).

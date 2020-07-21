@@ -3,18 +3,18 @@ title: SAP HANA data bases herstellen op virtuele Azure-machines
 description: In dit artikel vindt u informatie over het herstellen van SAP HANA-data bases die worden uitgevoerd op Azure Virtual Machines.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: a3db88ca3c995c3c190da051dbf9df6ae5e29530
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: c62ea68683355fc703a5258e6e5fa0f3795f7e34
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851440"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503588"
 ---
 # <a name="restore-sap-hana-databases-on-azure-vms"></a>SAP HANA data bases herstellen op virtuele Azure-machines
 
 In dit artikel wordt beschreven hoe u SAP HANA-data bases kunt herstellen die worden uitgevoerd op een virtuele Azure-machine (VM), waarvan de Azure Backup-service een back-up heeft gemaakt op een Recovery Services kluis. Herstel bewerkingen kunnen worden gebruikt om kopieën te maken van de gegevens voor dev/test-scenario's of om terug te gaan naar een eerdere status.
 
-Zie back-up maken van [SAP Hana data bases op Azure-vm's](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database)voor meer informatie over het maken van back-ups van SAP Hana-data bases.
+Zie back-up maken van [SAP Hana data bases op Azure-vm's](./backup-azure-sap-hana-database.md)voor meer informatie over het maken van back-ups van SAP Hana-data bases.
 
 ## <a name="restore-to-a-point-in-time-or-to-a-recovery-point"></a>Herstellen naar een bepaald tijdstip of naar een herstel punt
 
@@ -154,7 +154,7 @@ Als u de back-upgegevens wilt herstellen als bestanden in plaats van een Data Ba
 1. Alle back-upbestanden die zijn gekoppeld aan het geselecteerde herstel punt, worden in het doelpad gedumpt.
 1. Op basis van het type herstel punt dat is gekozen (**tijds duur** of **volledig & differentieel**), ziet u een of meer mappen die zijn gemaakt in het doelpad. Een van de mappen `Data_<date and time of restore>` met de naam bevat de volledige en differentiële back-ups en de andere map `Log` met de naam bevat de logboek back-ups.
 1. Verplaats deze teruggezette bestanden naar de SAP HANA-server waar u ze wilt herstellen als een Data Base.
-1. Volg dan deze stappen:
+1. Volg nu deze stappen:
     1. Stel machtigingen in voor de map of map waarin de back-upbestanden worden opgeslagen met behulp van de volgende opdracht:
 
         ```bash

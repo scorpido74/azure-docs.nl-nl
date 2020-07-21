@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 3306647078c46a7c66b3d7b257b213c7a48e690d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 854421452228a54833da4b0f05669c6d5f1c842f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81460423"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501735"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>Een virtuele Linux-machine maken op basis van een aangepaste schijf met de Azure CLI
 
@@ -40,10 +40,10 @@ Als u de volgende stappen wilt uitvoeren, moet u:
 - Een virtuele Linux-machine die is voor bereid voor gebruik in Azure. In het gedeelte [de VM voorbereiden](#prepare-the-vm) van dit artikel wordt beschreven hoe u distributie informatie kunt vinden over het installeren van de Azure Linux-agent (waagent), die nodig is om verbinding te maken met een virtuele machine via SSH.
 - Het VHD-bestand van een bestaande door [Azure goedgekeurde Linux-distributie](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (of Zie [informatie over niet-goedgekeurde distributies](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)) naar een virtuele schijf in de VHD-indeling. Er zijn meerdere hulpprogram ma's voor het maken van een virtuele machine en VHD:
   - Installeer en configureer [qemu](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) of [KVM](https://www.linux-kvm.org/page/RunningKVM), waarbij u gebruik maakt van VHD als uw installatie kopie-indeling. Als dat nodig is, kunt u [een installatie kopie converteren](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) met `qemu-img convert` .
-  - U kunt ook Hyper-V gebruiken [in Windows 10](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install) of [op Windows Server 2012/2012 R2](https://technet.microsoft.com/library/hh846766.aspx).
+  - U kunt ook Hyper-V gebruiken [in Windows 10](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) of [op Windows Server 2012/2012 R2](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11)).
 
 > [!NOTE]
-> De nieuwere VHDX-indeling wordt niet ondersteund in Azure. Wanneer u een virtuele machine maakt, geeft u VHD op als de indeling. Indien nodig kunt u VHDX-schijven converteren naar VHD met [qemu-img Convert](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) of de [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) Power shell-cmdlet. Azure biedt geen ondersteuning voor het uploaden van dynamische Vhd's. Daarom moet u dergelijke schijven converteren naar statische Vhd's voordat u deze uploadt. U kunt hulpprogram ma's zoals [Azure VHD-Hulpprogram ma's gebruiken voor](https://github.com/Microsoft/azure-vhd-utils-for-go) het converteren van dynamische schijven tijdens het proces van het uploaden naar Azure.
+> De nieuwere VHDX-indeling wordt niet ondersteund in Azure. Wanneer u een virtuele machine maakt, geeft u VHD op als de indeling. Indien nodig kunt u VHDX-schijven converteren naar VHD met [qemu-img Convert](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) of de [Convert-VHD](/powershell/module/hyper-v/convert-vhd?view=win10-ps) Power shell-cmdlet. Azure biedt geen ondersteuning voor het uploaden van dynamische Vhd's. Daarom moet u dergelijke schijven converteren naar statische Vhd's voordat u deze uploadt. U kunt hulpprogram ma's zoals [Azure VHD-Hulpprogram ma's gebruiken voor](https://github.com/Microsoft/azure-vhd-utils-for-go) het converteren van dynamische schijven tijdens het proces van het uploaden naar Azure.
 > 
 > 
 
@@ -117,7 +117,7 @@ az disk create \
     --source $snapshotId
 ```
 
-## <a name="create-the-vm"></a>De virtuele machine maken
+## <a name="create-the-vm"></a>De VM maken
 
 Maak een virtuele machine met [AZ VM Create](/cli/azure/vm#az-vm-create) en attach (--attach-OS-disk) de beheerde schijf als de besturingssysteem schijf. In het volgende voor beeld wordt een VM gemaakt met de naam *myNewVM* met behulp van de beheerde schijf die u hebt gemaakt op basis van de GEÜPLOADe VHD
 

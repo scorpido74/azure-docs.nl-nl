@@ -4,11 +4,12 @@ description: Meer informatie over het gebruik van acties voor automatisch schale
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: autoscale
-ms.openlocfilehash: c82b170bb3801bdc701ed84230db57f5691523ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b1f13fd1ce8bedcbe58385d4cee321f1d1405df
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77120688"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505516"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Acties voor automatisch schalen gebruiken voor het verzenden van e-mail berichten en waarschuwingen voor webhooks in Azure Monitor
 Dit artikel laat u zien hoe u triggers kunt instellen, zodat u specifieke Web-Url's aanroept of e-mail berichten verzendt op basis van acties voor automatisch schalen in Azure.  
@@ -28,7 +29,7 @@ U kunt zich aanmelden vanaf de Azure Portal voor Cloud Services en server farms 
 
 ## <a name="virtual-machine-scale-sets"></a>Schaalsets voor virtuele machines
 Als u nieuwere Virtual Machines hebt gemaakt met Resource Manager (virtuele-machine schaal sets), kunt u dit configureren met behulp van REST API, Resource Manager-sjablonen, Power shell en CLI. Er is nog geen portal-interface beschikbaar.
-Wanneer u de REST API-of Resource Manager-sjabloon gebruikt, neemt u het element meldingen op in uw [autoscalesettings](https://docs.microsoft.com/azure/templates/microsoft.insights/2015-04-01/autoscalesettings) met de volgende opties.
+Wanneer u de REST API-of Resource Manager-sjabloon gebruikt, neemt u het element meldingen op in uw [autoscalesettings](/azure/templates/microsoft.insights/2015-04-01/autoscalesettings) met de volgende opties.
 
 ```
 "notifications": [
@@ -55,7 +56,7 @@ Wanneer u de REST API-of Resource Manager-sjabloon gebruikt, neemt u het element
     ]
 ```
 
-| Veld | Ingevuld? | Description |
+| Veld | Ingevuld? | Beschrijving |
 | --- | --- | --- |
 | schijf |ja |de waarde moet ' Scale ' zijn |
 | sendToSubscriptionAdministrator |ja |de waarde moet ' waar ' of ' onwaar ' zijn |
@@ -98,22 +99,21 @@ Wanneer de melding over automatisch schalen wordt gegenereerd, worden de volgend
 ```
 
 
-| Veld | Ingevuld? | Description |
+| Veld | Ingevuld? | Beschrijving |
 | --- | --- | --- |
 | status |ja |De status die aangeeft dat er een actie voor automatisch schalen is gegenereerd |
 | schijf |ja |Voor een verhoging van de instanties wordt het ' uitschalen ' en voor een afname van de instanties de waarde ' schaalt in ' |
 | context |ja |De actie context voor automatisch schalen |
 | tijdstempel |ja |Tijds tempel wanneer de actie voor automatisch schalen is geactiveerd |
-| id |Yes |Resource Manager-ID van de instelling voor automatisch schalen |
-| naam |Yes |De naam van de instelling voor automatisch schalen |
-| nadere |Yes |Uitleg van de actie die de service voor automatisch schalen heeft ondernomen en de wijziging van het aantal instanties |
-| subscriptionId |Yes |Abonnements-ID van de doel resource die wordt geschaald |
-| resourceGroupName |Yes |De naam van de resource groep van de doel resource die wordt geschaald |
-| resourceName |Yes |De naam van de doel resource die wordt geschaald |
-| resourceType |Yes |De drie ondersteunde waarden: ' micro soft. classiccompute/domainnames/sleuven/roles '-Cloud service roles ' micro soft. Compute/virtualmachinescalesets '-Virtual Machine Scale Sets en ' micro soft. web/server farms '-web-app |
-| resourceId |Yes |Resource Manager-ID van de doel resource die wordt geschaald |
-| portalLink |Yes |Azure Portal koppeling naar de overzichts pagina van de doel resource |
-| oldCapacity |Yes |Het huidige (oude) exemplaar aantal wanneer automatisch schalen een schaal actie heeft uitgevoerd |
-| newCapacity |Yes |Het nieuwe aantal exemplaren dat automatisch wordt geschaald naar de resource |
-| properties |No |Optioneel. Set <sleutel, waarde> paren (bijvoorbeeld woorden lijst <teken reeks, teken reeks>). Het veld eigenschappen is optioneel. In een aangepaste werk stroom op basis van een gebruikers interface of logische app kunt u sleutels en waarden invoeren die kunnen worden door gegeven met behulp van de payload. Een alternatieve manier om aangepaste eigenschappen door te geven aan de uitgaande webhook-aanroep is het gebruik van de webhook-URI zelf (als query parameters) |
-
+| id |Ja |Resource Manager-ID van de instelling voor automatisch schalen |
+| naam |Ja |De naam van de instelling voor automatisch schalen |
+| nadere |Ja |Uitleg van de actie die de service voor automatisch schalen heeft ondernomen en de wijziging van het aantal instanties |
+| subscriptionId |Ja |Abonnements-ID van de doel resource die wordt geschaald |
+| resourceGroupName |Ja |De naam van de resource groep van de doel resource die wordt geschaald |
+| resourceName |Ja |De naam van de doel resource die wordt geschaald |
+| resourceType |Ja |De drie ondersteunde waarden: ' micro soft. classiccompute/domainnames/sleuven/roles '-Cloud service roles ' micro soft. Compute/virtualmachinescalesets '-Virtual Machine Scale Sets en ' micro soft. web/server farms '-web-app |
+| resourceId |Ja |Resource Manager-ID van de doel resource die wordt geschaald |
+| portalLink |Ja |Azure Portal koppeling naar de overzichts pagina van de doel resource |
+| oldCapacity |Ja |Het huidige (oude) exemplaar aantal wanneer automatisch schalen een schaal actie heeft uitgevoerd |
+| newCapacity |Ja |Het nieuwe aantal exemplaren dat automatisch wordt geschaald naar de resource |
+| properties |Nee |Optioneel. Set <sleutel, waarde> paren (bijvoorbeeld woorden lijst <teken reeks, teken reeks>). Het veld eigenschappen is optioneel. In een aangepaste werk stroom op basis van een gebruikers interface of logische app kunt u sleutels en waarden invoeren die kunnen worden door gegeven met behulp van de payload. Een alternatieve manier om aangepaste eigenschappen door te geven aan de uitgaande webhook-aanroep is het gebruik van de webhook-URI zelf (als query parameters) |

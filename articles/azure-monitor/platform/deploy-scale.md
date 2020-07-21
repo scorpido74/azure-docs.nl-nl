@@ -4,11 +4,12 @@ description: Implementeer Azure Monitor-functies op schaal met behulp van Azure 
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 4be403f8efc8e328548b6ef38b36be78a8fb96d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fbfc0cafe83f53bd7cab2b93899e9c2cb02d52e3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678695"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505207"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>Azure Monitor op schaal implementeren met behulp van Azure Policy
 Hoewel sommige Azure Monitor functies eenmaal of een beperkt aantal keren worden geconfigureerd, moeten andere worden herhaald voor elke resource die u wilt bewaken. In dit artikel worden methoden beschreven voor het gebruik van Azure Policy om Azure Monitor op schaal te implementeren om ervoor te zorgen dat de bewaking consistent en correct is geconfigureerd voor al uw Azure-resources.
@@ -23,14 +24,14 @@ Met Azure Policy kunt u configuratie vereisten opgeven voor alle resources die w
 
 Azure Policy bestaat uit de objecten in de volgende tabel. Zie [Azure Policy objecten](../../governance/policy/overview.md#azure-policy-objects) voor een gedetailleerde beschrijving van elk.
 
-| Item | Description |
+| Item | Beschrijving |
 |:---|:---|
 | Beleidsdefinitie | Beschrijft de nalevings voorwaarden van de resource en het effect dat moet worden genomen als aan een voor waarde wordt voldaan. Dit kan alle resources van een bepaald type zijn of alleen resources die overeenkomen met bepaalde eigenschappen. Het gevolg kan zijn dat u de resource wilt markeren voor naleving of een gerelateerde resource wilt implementeren. Beleids definities worden geschreven met behulp van JSON zoals beschreven in [Azure Policy definitie structuur](../../governance/policy/concepts/definition-structure.md). Effecten worden beschreven in [inzicht Azure Policy effecten](../../governance/policy/concepts/effects.md).
 | Beleids initiatief | Een groep beleids definities die samen moeten worden toegepast. U kunt bijvoorbeeld een beleids definitie hebben om bron logboeken te verzenden naar een Log Analytics-werk ruimte en een andere om bron logboeken te verzenden naar Event hubs. Maak een initiatief dat beide beleids definities bevat en pas het initiatief toe op resources in plaats van de afzonderlijke beleids definities. Initiatieven worden geschreven met behulp van JSON zoals beschreven in [Azure Policy Initiative-structuur](../../governance/policy/concepts/initiative-definition-structure.md). |
 | Toewijzing | Een beleids definitie of-initiatief wordt pas van kracht nadat het is toegewezen aan een bereik. U kunt bijvoorbeeld een beleid toewijzen aan een resource groep om dit toe te passen op alle resources die zijn gemaakt in die resource, of dit Toep assen op een abonnement om het toe te passen op alle resources in dat abonnement.  Zie [Azure Policy toewijzings structuur](../../governance/policy/concepts/assignment-structure.md)voor meer informatie. |
 
 ## <a name="built-in-policy-definitions-for-azure-monitor"></a>Ingebouwde beleidsdefinities voor Azure Monitor
-Azure Policy bevat verschillende vooraf gedefinieerde definities die betrekking hebben op Azure Monitor. U kunt deze beleids definities toewijzen aan uw bestaande abonnement of ze gebruiken als basis voor het maken van uw eigen aangepaste definities. Zie [Azure Policy ingebouwde beleids definities voor Azure monitor](../policy-samples.md)voor een volledige lijst van de ingebouwde politiek in de categorie **bewaking** .
+Azure Policy bevat verschillende vooraf gedefinieerde definities die betrekking hebben op Azure Monitor. U kunt deze beleids definities toewijzen aan uw bestaande abonnement of ze gebruiken als basis voor het maken van uw eigen aangepaste definities. Zie [Azure Policy ingebouwde beleids definities voor Azure monitor](../samples/policy-samples.md)voor een volledige lijst van de ingebouwde politiek in de categorie **bewaking** .
 
 Als u de ingebouwde beleids definities wilt weer geven die betrekking hebben op bewaking, voert u de volgende handelingen uit:
 
@@ -59,7 +60,7 @@ Voor bron typen die geen ingebouwd beleid hebben, moet u een aangepaste beleids 
 De script [Create-AzDiagPolicy](https://www.powershellgallery.com/packages/Create-AzDiagPolicy) maakt beleids bestanden voor een bepaald bron type dat u kunt installeren met behulp van Power shell of cli. Gebruik de volgende procedure om een aangepaste beleids definitie te maken voor Diagnostische instellingen.
 
 
-1. Zorg ervoor dat [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) is geïnstalleerd.
+1. Zorg ervoor dat [Azure PowerShell](/powershell/azure/install-az-ps) is geïnstalleerd.
 2. Installeer het script met de volgende opdracht:
   
     ```azurepowershell

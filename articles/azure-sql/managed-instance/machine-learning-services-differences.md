@@ -12,12 +12,12 @@ ms.author: garye
 ms.reviewer: carlrab, davidph
 manager: cgronlun
 ms.date: 05/27/2020
-ms.openlocfilehash: da97938736e7a3719da9d280e60e6a636b86e0e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f267b155fe21e5dee1a7c488c999fe194ed38eb1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254745"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504115"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-managed-instance-and-sql-server"></a>De belangrijkste verschillen tussen Machine Learning Services in Azure SQL Managed Instance en SQL Server
 
@@ -43,7 +43,7 @@ Machine Learning Services in SQL Managed instance en SQL Server ondersteunen zow
 
 - De eerste versies van python en R verschillen van Machine Learning Services in SQL Managed instance en SQL Server:
 
-  |                      | Python | R     |
+  | Systeem               | Python | R     |
   |----------------------|--------|-------|
   | SQL Managed Instance | 3.7.1  | 3.5.2 |
   | SQL Server           | 3.5.2  | 3.3.3 |

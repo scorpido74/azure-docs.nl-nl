@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/13/2019
-ms.openlocfilehash: 92b6737f48d8d8704f461c9adac92284b323b05f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 62d16bc9ca6c4238ff7c6304c5e1964c2956c898
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847405"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505292"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Operations Manager verbinden met Azure Monitor
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Als u uw bestaande investering in [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/key-concepts?view=sc-om-1807) wilt behouden en uitgebreide mogelijkheden met Azure monitor wilt gebruiken, kunt u Operations Manager integreren met uw log Analytics-werk ruimte. Zo kunt u gebruikmaken van de mogelijkheden van Logboeken in Azure Monitor terwijl u Operations Manager kunt gebruiken om het volgende te doen:
+Als u uw bestaande investering in [System Center Operations Manager](/system-center/scom/key-concepts?view=sc-om-1807) wilt behouden en uitgebreide mogelijkheden met Azure monitor wilt gebruiken, kunt u Operations Manager integreren met uw log Analytics-werk ruimte. Zo kunt u gebruikmaken van de mogelijkheden van Logboeken in Azure Monitor terwijl u Operations Manager kunt gebruiken om het volgende te doen:
 
 * Statuscontrole van uw IT-services met Operations Manager
 * Onderhoud van de integratie met uw ITSM-beheeroplossingen voor incidenten en problemen
@@ -46,14 +46,14 @@ Controleer de volgende vereisten voordat u begint.
 * Ondersteunde regio's: alleen de volgende Azure-regio's worden ondersteund door System Center Operations Manager om verbinding te maken met een Log Analytics-werk ruimte:
     - VS - west-centraal
     - Australië - zuidoost
-    - Europa -west
+    - Europa - west
     - VS - oost
     - Azië - zuidoost
     - Japan - oost
     - Verenigd Koninkrijk Zuid
-    - India - centraal
+    - Central India
     - Canada - midden
-    - VS - west 2
+    - US - west 2
 
 >[!NOTE]
 >Recente wijzigingen aan Azure-Api's kunnen voor komen dat klanten de integratie tussen hun beheer groep en Azure Monitor voor de eerste keer configureren. Voor klanten die hun beheer groep al hebben geïntegreerd met de service, heeft dit geen invloed op de gebruikers, tenzij u uw bestaande verbinding opnieuw moet configureren.  
@@ -71,16 +71,16 @@ Hieronder vindt u de informatie over de proxy-en firewall configuratie die is ve
 
 |Resource | Poortnummer| HTTPS-controle overslaan|  
 |---------|------|-----------------------|  
-|**Tussen**|||  
-|\*.ods.opinsights.azure.com| 443 |Yes|  
-|\*.oms.opinsights.azure.com| 443|Yes|  
-|\*.blob.core.windows.net| 443|Yes|  
-|\*.azure-automation.net| 443|Yes|  
+|**Agent**|||  
+|\*.ods.opinsights.azure.com| 443 |Ja|  
+|\*.oms.opinsights.azure.com| 443|Ja|  
+|\*.blob.core.windows.net| 443|Ja|  
+|\*.azure-automation.net| 443|Ja|  
 |**Beheerserver**|||  
 |\*.service.opinsights.azure.com| 443||  
-|\*.blob.core.windows.net| 443| Yes|  
-|\*.ods.opinsights.azure.com| 443| Yes|  
-|*.azure-automation.net | 443| Yes|  
+|\*.blob.core.windows.net| 443| Ja|  
+|\*.ods.opinsights.azure.com| 443| Ja|  
+|*.azure-automation.net | 443| Ja|  
 |**Operations Manager-console naar Azure Monitor**|||  
 |service.systemcenteradvisor.com| 443||  
 |\*.service.opinsights.azure.com| 443||  
@@ -154,7 +154,7 @@ Als voor uw proxy server verificatie is vereist, voert u de volgende stappen uit
 1. Open de Operations Manager-console en selecteer de werkruimte **Beheer**.
 1. Selecteer onder **RunAs-configuratie** de optie **Profielen**.
 1. Open het profiel **System Center Advisor RunAs-profielproxy**.
-1. Klik in de wizard Uitvoeren als-profiel op Toevoegen om een Uitvoeren als-account te gebruiken. U kunt een nieuw [Uitvoeren als-account](https://technet.microsoft.com/library/hh321655.aspx) maken of een bestaand account gebruiken. Dit account moet over voldoende rechten beschikken voor het doorgeven van de proxyserver.
+1. Klik in de wizard Uitvoeren als-profiel op Toevoegen om een Uitvoeren als-account te gebruiken. U kunt een nieuw [Uitvoeren als-account](/previous-versions/system-center/system-center-2012-R2/hh321655(v=sc.12)) maken of een bestaand account gebruiken. Dit account moet over voldoende rechten beschikken voor het doorgeven van de proxyserver.
 1. Als u het account voor beheer wilt instellen, kiest u **Een geselecteerde klasse, groep of object**, klikt u op **Selecteren...** en klikt u vervolgens op **Groep...** om het vak **Groep zoeken** te openen.
 1. Zoek en selecteer de **Microsoft System Center Advisor Monitoring Server-groep**. Klik op **OK** na het selecteren van de groep om het vak **Groep zoeken** te sluiten.
 1. Klik op **OK** om het vak **een uitvoeren als-account toevoegen** te sluiten.
@@ -173,7 +173,7 @@ Nadat de configuratie is voltooid, brengt de Operations Manager-beheer groep een
 * **Microsoft.SystemCenter. Advisor. MPUpdate** : Hiermee worden de Management Packs voor de basis Azure monitor bijgewerkt. Deze regel wordt standaard elke 12 uur uitgevoerd.
 * **Microsoft.SystemCenter.Advisor.Core.GetIntelligencePacksRule** - Hiermee worden de management packs van ingeschakelde oplossingen in uw werkruimte bijgewerkt. Deze regel wordt standaard elke vijf (5) minuten uitgevoerd.
 
-U kunt deze twee regels negeren om automatisch downloaden te voor komen door ze uit te scha kelen of de frequentie te wijzigen voor hoe vaak de beheer server synchroniseert met Azure Monitor om te bepalen of er een nieuwe management pack beschikbaar is en moet worden gedownload. Volg de stappen voor het [overschrijven van een regel of controle](https://technet.microsoft.com/library/hh212869.aspx) als u de parameter **Frequency** (Frequentie) wilt bijwerken met een waarde in seconden om het synchronisatieschema te wijzigen. Wijzig de parameter **Enabled** (Ingeschakeld) als u de regels wilt uitschakelen. Configureer de overschrijvingen voor alle objecten van de klasse Operations Manager Management Group.
+U kunt deze twee regels negeren om automatisch downloaden te voor komen door ze uit te scha kelen of de frequentie te wijzigen voor hoe vaak de beheer server synchroniseert met Azure Monitor om te bepalen of er een nieuwe management pack beschikbaar is en moet worden gedownload. Volg de stappen voor het [overschrijven van een regel of controle](/previous-versions/system-center/system-center-2012-R2/hh212869(v=sc.12)) als u de parameter **Frequency** (Frequentie) wilt bijwerken met een waarde in seconden om het synchronisatieschema te wijzigen. Wijzig de parameter **Enabled** (Ingeschakeld) als u de regels wilt uitschakelen. Configureer de overschrijvingen voor alle objecten van de klasse Operations Manager Management Group.
 
 Als u wilt door gaan met het bestaande wijzigings besturings proces voor het beheren van management pack releases in uw productie beheer groep, kunt u de regels uitschakelen en inschakelen tijdens specifieke tijdstippen wanneer updates zijn toegestaan. Als u een ontwikkelings- of QA-beheergroep in uw omgeving hebt en deze met internet verbonden is, kunt u die beheergroep configureren met een Log Analytics-werkruimte ter ondersteuning van dit scenario. Hierdoor kunt u de iteratieve releases van de Azure Monitor Management Packs controleren en evalueren voordat u ze uitbrengt in uw productie beheer groep.
 

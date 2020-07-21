@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 06/06/2020
 ms.author: danis
-ms.openlocfilehash: c70a6049596aa38e9ae6118517fc471becbc1676
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 7a0d4d0a1c36f901ea38c5c73d3aa7a2cf49e02f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134627"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502687"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Een virtuele Ubuntu-machine voor Azure voorbereiden
 
@@ -22,7 +22,7 @@ Ubuntu publiceert nu officiële Azure-Vhd's voor down loads op [https://cloud-im
 * Ubuntu 18.04/Bionic: [Bionic-server-cloudimg-amd64. vmdk](https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.vmdk)
 
 ## <a name="prerequisites"></a>Vereisten
-In dit artikel wordt ervan uitgegaan dat u al een Ubuntu Linux besturings systeem hebt geïnstalleerd op een virtuele harde schijf. Er zijn meerdere hulpprogram ma's voor het maken van VHD-bestanden, zoals Hyper-V. Zie [de Hyper-V-functie installeren en een virtuele machine configureren](https://technet.microsoft.com/library/hh846766.aspx)voor instructies.
+In dit artikel wordt ervan uitgegaan dat u al een Ubuntu Linux besturings systeem hebt geïnstalleerd op een virtuele harde schijf. Er zijn meerdere hulpprogram ma's voor het maken van VHD-bestanden, zoals Hyper-V. Zie [de Hyper-V-functie installeren en een virtuele machine configureren](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11))voor instructies.
 
 **Ubuntu-installatie notities**
 
@@ -176,9 +176,8 @@ In dit artikel wordt ervan uitgegaan dat u al een Ubuntu Linux besturings systee
 
 13. Klik op **actie-> afgesloten** in Hyper-V-beheer.
 
-14. Azure accepteert alleen Vhd's met een vaste grootte. Als de besturingssysteem schijf van de virtuele machine geen VHD met vaste grootte is, gebruikt u de `Convert-VHD` Power shell-cmdlet en geeft u de `-VHDType Fixed` optie op. Bekijk hier de documenten die u hier kunt vinden `Convert-VHD` : [Convert-VHD](https://docs.microsoft.com/powershell/module/hyper-v/convert-vhd?view=win10-ps).
+14. Azure accepteert alleen Vhd's met een vaste grootte. Als de besturingssysteem schijf van de virtuele machine geen VHD met vaste grootte is, gebruikt u de `Convert-VHD` Power shell-cmdlet en geeft u de `-VHDType Fixed` optie op. Bekijk hier de documenten die u hier kunt vinden `Convert-VHD` : [Convert-VHD](/powershell/module/hyper-v/convert-vhd?view=win10-ps).
 
 
 ## <a name="next-steps"></a>Volgende stappen
 U kunt nu uw Ubuntu Linux virtuele harde schijf gebruiken om nieuwe virtuele machines te maken in Azure. Zie [een virtuele Linux-machine maken op basis van een aangepaste schijf](upload-vhd.md#option-1-upload-a-vhd)als dit de eerste keer is dat u het VHD-bestand naar Azure uploadt.
-

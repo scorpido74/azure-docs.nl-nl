@@ -10,11 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: d8309a69c9c38610fa7bea3fee202a60d836980c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8aa2b936f97b037bdc62a01f607945ad270faa13
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78945053"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502330"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>IBM DB2 pureScale op Azure
 
@@ -66,7 +67,7 @@ Deze architectuur voert de toepassings-, opslag-en gegevens lagen uit op virtuel
 
 -   Een DB2 pureScale-cluster. Het type reken resources dat u nodig hebt in azure, is afhankelijk van uw installatie. In het algemeen kunt u twee benaderingen gebruiken:
 
-    -   Gebruik een HPC-netwerk (High-Performance Computing) met meerdere knoop punten waarbij kleine tot middel grote instanties toegang krijgen tot gedeelde opslag. Voor dit HPC-type configuratie bieden de door Azure-geheugen geoptimaliseerde E-Series of door opslag geoptimaliseerde [virtuele machines](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) van de L-serie de benodigde reken kracht.
+    -   Gebruik een HPC-netwerk (High-Performance Computing) met meerdere knoop punten waarbij kleine tot middel grote instanties toegang krijgen tot gedeelde opslag. Voor dit HPC-type configuratie bieden de door Azure-geheugen geoptimaliseerde E-Series of door opslag geoptimaliseerde [virtuele machines](../windows/sizes.md) van de L-serie de benodigde reken kracht.
 
     -   Gebruik minder grote instanties van virtuele machines voor de data-engines. Voor grote instanties zijn de grootste, door het geheugen geoptimaliseerde [M-Series](https://azure.microsoft.com/pricing/details/virtual-machines/series/) virtuele machines ideaal voor zware werk belastingen in het geheugen. U hebt mogelijk een toegewezen exemplaar nodig, afhankelijk van de grootte van de logische partitie (LPAR) die wordt gebruikt om DB2 uit te voeren.
 
@@ -95,11 +96,11 @@ Een groot DB2 pureScale-cluster kan 200 terabytes (TB) of meer extra Premium-ops
 
 IBM beveelt InfiniBand-netwerken aan voor alle leden in een DB2 pureScale-cluster. DB2 pureScale maakt ook gebruik van RDMA (Remote Direct Memory Access), waar beschikbaar, voor de CFs.
 
-Tijdens de installatie maakt u een Azure- [resource groep](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) die alle virtuele machines bevat. Over het algemeen kunt u resources groeperen op basis van hun levens duur en wie ze beheert. Voor de virtuele machines in deze architectuur is [versneld netwerken](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)vereist. Het is een Azure-functie die consistente, uiterst lage netwerk latentie biedt via I/O-virtualisatie met één hoofdmap (SR-IOV) naar een virtuele machine.
+Tijdens de installatie maakt u een Azure- [resource groep](../../azure-resource-manager/management/overview.md) die alle virtuele machines bevat. Over het algemeen kunt u resources groeperen op basis van hun levens duur en wie ze beheert. Voor de virtuele machines in deze architectuur is [versneld netwerken](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)vereist. Het is een Azure-functie die consistente, uiterst lage netwerk latentie biedt via I/O-virtualisatie met één hoofdmap (SR-IOV) naar een virtuele machine.
 
-Elke virtuele machine van Azure wordt geïmplementeerd in een virtueel netwerk dat subnetten heeft: Main, Gluster FS front end (gfsfe), Gluster FS back end (bfsbe), DB2 pureScale (db2be) en DB2 pureScale front end (db2fe). Het installatie script maakt ook de primaire [nic's](https://docs.microsoft.com/azure/virtual-machines/linux/multiple-nics) op de virtuele machines in het hoofd subnet.
+Elke virtuele machine van Azure wordt geïmplementeerd in een virtueel netwerk dat subnetten heeft: Main, Gluster FS front end (gfsfe), Gluster FS back end (bfsbe), DB2 pureScale (db2be) en DB2 pureScale front end (db2fe). Het installatie script maakt ook de primaire [nic's](./multiple-nics.md) op de virtuele machines in het hoofd subnet.
 
-Gebruik [netwerk beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) om netwerk verkeer binnen het virtuele netwerk te beperken en de subnetten te isoleren.
+Gebruik [netwerk beveiligings groepen](../../virtual-network/virtual-network-vnet-plan-design-arm.md) om netwerk verkeer binnen het virtuele netwerk te beperken en de subnetten te isoleren.
 
 In azure moet DB2 pureScale TCP/IP gebruiken als de netwerk verbinding voor opslag.
 

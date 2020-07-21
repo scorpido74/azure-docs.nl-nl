@@ -1,32 +1,32 @@
 ---
-title: Azure monitoring REST API-overzicht
+title: Azure Monitoring REST API-overzicht
 description: Het verifiëren van aanvragen en het gebruik van de Azure Monitor REST API om beschik bare metrische definities en metrische waarden op te halen.
 ms.subservice: metrics
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.custom: has-adal-ref
-ms.openlocfilehash: 602d11b20e50ec5ba56d0d9c1762292c07d0b67b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e25e85f811d1c5d854b471bf0417e75ab1686d72
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945338"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505122"
 ---
-# <a name="azure-monitoring-rest-api-walkthrough"></a>Azure monitoring REST API-overzicht
+# <a name="azure-monitoring-rest-api-walkthrough"></a>Azure Monitoring REST API-overzicht
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-In dit artikel leest u hoe u verificatie kunt uitvoeren, zodat uw code de [Microsoft Azure Monitor rest API verwijzing](https://docs.microsoft.com/rest/api/monitor/)kan gebruiken.
+In dit artikel leest u hoe u verificatie kunt uitvoeren, zodat uw code de [Microsoft Azure Monitor rest API verwijzing](/rest/api/monitor/)kan gebruiken.
 
 Met de Azure Monitor-API kunnen de beschik bare standaard waarden voor metrische gegevens, granulariteit en metrische gegevens programmatisch worden opgehaald. De gegevens kunnen worden opgeslagen in een afzonderlijk gegevens archief, zoals Azure SQL Database, Azure Cosmos DB of Azure Data Lake. Van deze aanvullende analyse kan naar behoefte worden uitgevoerd.
 
-Naast het werken met diverse metrische gegevens punten is het ook mogelijk om waarschuwings regels weer te geven, activiteiten logboeken te bekijken en nog veel meer. Voor een volledige lijst met beschik bare bewerkingen raadpleegt u [rest API Reference Microsoft Azure monitor](https://docs.microsoft.com/rest/api/monitor/).
+Naast het werken met diverse metrische gegevens punten is het ook mogelijk om waarschuwings regels weer te geven, activiteiten logboeken te bekijken en nog veel meer. Voor een volledige lijst met beschik bare bewerkingen raadpleegt u [rest API Reference Microsoft Azure monitor](/rest/api/monitor/).
 
 ## <a name="authenticating-azure-monitor-requests"></a>Azure Monitor aanvragen verifiëren
 
 De eerste stap is het verifiëren van de aanvraag.
 
-Alle taken die worden uitgevoerd op de Azure Monitor-API, gebruiken het Azure Resource Manager-verificatie model. Daarom moeten alle aanvragen worden geverifieerd met Azure Active Directory (Azure AD). Een van de manieren om de client toepassing te verifiëren, is een Azure AD-Service-Principal te maken en het authenticatie (JWT)-token op te halen. In het volgende voorbeeld script ziet u hoe u een Azure AD-Service-Principal maakt via Power shell. Raadpleeg de documentatie over het [gebruik van Azure PowerShell om een service-principal te maken voor toegang tot resources](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps)voor meer gedetailleerde instructies. Het is ook mogelijk om [een service-principal te maken via de Azure Portal](../../active-directory/develop/howto-create-service-principal-portal.md).
+Alle taken die worden uitgevoerd op de Azure Monitor-API, gebruiken het Azure Resource Manager-verificatie model. Daarom moeten alle aanvragen worden geverifieerd met Azure Active Directory (Azure AD). Een van de manieren om de client toepassing te verifiëren, is een Azure AD-Service-Principal te maken en het authenticatie (JWT)-token op te halen. In het volgende voorbeeld script ziet u hoe u een Azure AD-Service-Principal maakt via Power shell. Raadpleeg de documentatie over het [gebruik van Azure PowerShell om een service-principal te maken voor toegang tot resources](/powershell/azure/create-azure-service-principal-azureps)voor meer gedetailleerde instructies. Het is ook mogelijk om [een service-principal te maken via de Azure Portal](../../active-directory/develop/howto-create-service-principal-portal.md).
 
 ```powershell
 $subscriptionId = "{azure-subscription-id}"
@@ -85,13 +85,13 @@ Na de verificatie kunnen query's worden uitgevoerd op basis van de Azure Monitor
 2. De metrische waarden ophalen
 
 > [!NOTE]
-> Raadpleeg voor meer informatie over de verificatie met Azure REST API de [referentie voor azure rest API](https://docs.microsoft.com/rest/api/azure/).
+> Raadpleeg voor meer informatie over de verificatie met Azure REST API de [referentie voor azure rest API](/rest/api/azure/).
 >
 >
 
 ## <a name="retrieve-metric-definitions-multi-dimensional-api"></a>Metrische definities ophalen (multi-dimensionale API)
 
-Gebruik de [Azure monitor metrische definities rest API](https://docs.microsoft.com/rest/api/monitor/metricdefinitions) om toegang te krijgen tot de lijst met metrische gegevens die beschikbaar zijn voor een service.
+Gebruik de [Azure monitor metrische definities rest API](/rest/api/monitor/metricdefinitions) om toegang te krijgen tot de lijst met metrische gegevens die beschikbaar zijn voor een service.
 
 **Methode**: ophalen
 
@@ -228,7 +228,7 @@ De resulterende hoofd tekst van het JSON-antwoord zou er als volgt uitzien: (Hou
 
 ## <a name="retrieve-dimension-values-multi-dimensional-api"></a>Dimensie waarden ophalen (multi-dimensionale API)
 
-Zodra de beschik bare metrische definities bekend zijn, zijn er mogelijk enkele metrische gegevens die dimensies hebben. Voordat u een query uitvoert voor de metriek, wilt u wellicht weten wat het bereik van waarden van een dimensie is. Op basis van deze dimensie waarden kunt u ervoor kiezen om de metrische gegevens te filteren of te segmenteren op basis van dimensie waarden tijdens het uitvoeren van query's op metrische gegevens.  Gebruik de [Azure monitor meet waarden rest API](https://docs.microsoft.com/rest/api/monitor/metrics) om dit te verzorgen.
+Zodra de beschik bare metrische definities bekend zijn, zijn er mogelijk enkele metrische gegevens die dimensies hebben. Voordat u een query uitvoert voor de metriek, wilt u wellicht weten wat het bereik van waarden van een dimensie is. Op basis van deze dimensie waarden kunt u ervoor kiezen om de metrische gegevens te filteren of te segmenteren op basis van dimensie waarden tijdens het uitvoeren van query's op metrische gegevens.  Gebruik de [Azure monitor meet waarden rest API](/rest/api/monitor/metrics) om dit te verzorgen.
 
 Gebruik de naam waarde van de metriek (niet het ' localizedValue ') voor filter aanvragen. Als er geen filters zijn opgegeven, wordt de standaard waarde geretourneerd. Door het gebruik van deze API kan slechts één dimensie een Joker teken filter hebben.
 
@@ -301,7 +301,7 @@ De resulterende hoofd tekst van het JSON-antwoord zou er ongeveer uitzien als in
 
 ## <a name="retrieve-metric-values-multi-dimensional-api"></a>Metrische waarden ophalen (multi-dimensionale API)
 
-Zodra de beschik bare metrische definities en mogelijke dimensie waarden bekend zijn, is het mogelijk om de gerelateerde metrieke waarden op te halen.  Gebruik de [Azure monitor meet waarden rest API](https://docs.microsoft.com/rest/api/monitor/metrics) om dit te verzorgen.
+Zodra de beschik bare metrische definities en mogelijke dimensie waarden bekend zijn, is het mogelijk om de gerelateerde metrieke waarden op te halen.  Gebruik de [Azure monitor meet waarden rest API](/rest/api/monitor/metrics) om dit te verzorgen.
 
 Gebruik de naam waarde van de metriek (niet het ' localizedValue ') voor filter aanvragen. Als er geen dimensie filters zijn opgegeven, wordt de samengevouwen geaggregeerde metrische waarde geretourneerd. Als een metrische query meerdere tijds Erie retourneert, kunt u de query parameters ' top ' en ' OrderBy ' gebruiken om een beperkte geordende lijst met tijds Erie te retour neren.
 
@@ -387,7 +387,7 @@ De resulterende hoofd tekst van het JSON-antwoord zou er ongeveer uitzien als in
 
 ## <a name="retrieve-metric-definitions"></a>Metrische definities ophalen
 
-Gebruik de [Azure monitor metrische definities rest API](https://msdn.microsoft.com/library/mt743621.aspx) om toegang te krijgen tot de lijst met metrische gegevens die beschikbaar zijn voor een service.
+Gebruik de [Azure monitor metrische definities rest API](/rest/api/monitor/metricdefinitions) om toegang te krijgen tot de lijst met metrische gegevens die beschikbaar zijn voor een service.
 
 **Methode**: ophalen
 
@@ -451,7 +451,7 @@ De resulterende hoofd tekst van het JSON-antwoord zou er ongeveer uitzien als in
 }
 ```
 
-Zie de [metrische definities voor een resource in Azure Monitor rest API](https://msdn.microsoft.com/library/azure/mt743621.aspx) documentatie voor meer informatie.
+Zie de [metrische definities voor een resource in Azure Monitor rest API](/rest/api/monitor/metricdefinitions) documentatie voor meer informatie.
 
 ## <a name="retrieve-metric-values"></a>Metrieke waarden ophalen
 
@@ -594,7 +594,7 @@ armclient GET /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups
 
 ## <a name="retrieve-the-resource-id"></a>De resource-ID ophalen
 
-Met behulp van de REST API kunt u de beschik bare metrische definities, granulatie en gerelateerde waarden echt begrijpen. Deze informatie is nuttig bij het gebruik van de [Azure-beheer bibliotheek](https://msdn.microsoft.com/library/azure/mt417623.aspx).
+Met behulp van de REST API kunt u de beschik bare metrische definities, granulatie en gerelateerde waarden echt begrijpen. Deze informatie is nuttig bij het gebruik van de [Azure-beheer bibliotheek](/previous-versions/azure/reference/mt417623(v=azure.100)).
 
 Voor de voor gaande code is de resource-ID die moet worden gebruikt het volledige pad naar de gewenste Azure-resource. Als u bijvoorbeeld een query wilt uitvoeren op een Azure-web-app, is de resource-ID:
 
@@ -705,7 +705,7 @@ Het resultaat moet er ongeveer uitzien als in het volgende voor beeld:
 
 ## <a name="retrieve-activity-log-data"></a>Gegevens van activiteiten logboek ophalen
 
-Naast metrische definities en gerelateerde waarden is het ook mogelijk om de Azure Monitor REST API te gebruiken voor het ophalen van extra interessante inzichten die betrekking hebben op Azure-resources. Zo is het mogelijk om gegevens in een [activiteiten logboek](https://msdn.microsoft.com/library/azure/dn931934.aspx) op te vragen. De volgende voorbeeld aanvragen gebruiken de Azure Monitor REST API om een query uit te kunnen uitvoeren op het activiteiten logboek.
+Naast metrische definities en gerelateerde waarden is het ook mogelijk om de Azure Monitor REST API te gebruiken voor het ophalen van extra interessante inzichten die betrekking hebben op Azure-resources. Zo is het mogelijk om gegevens in een [activiteiten logboek](/rest/api/monitor/activitylogs) op te vragen. De volgende voorbeeld aanvragen gebruiken de Azure Monitor REST API om een query uit te kunnen uitvoeren op het activiteiten logboek.
 
 Activiteiten logboeken ophalen met het filter:
 
@@ -735,5 +735,5 @@ GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5
 
 * Bekijk het [overzicht van bewaking](../../azure-monitor/overview.md).
 * Bekijk de [ondersteunde metrische gegevens met Azure monitor](metrics-supported.md).
-* Raadpleeg de [rest API-naslag informatie over Microsoft Azure controle](https://msdn.microsoft.com/library/azure/dn931943.aspx).
-* Bekijk de [Azure Management Library](https://msdn.microsoft.com/library/azure/mt417623.aspx).
+* Raadpleeg de [rest API-naslag informatie over Microsoft Azure controle](/rest/api/monitor/).
+* Bekijk de [Azure Management Library](/previous-versions/azure/reference/mt417623(v=azure.100)).

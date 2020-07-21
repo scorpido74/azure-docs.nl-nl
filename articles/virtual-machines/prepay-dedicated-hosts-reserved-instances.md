@@ -8,22 +8,23 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: a8531ec2a3284eac64cb900f2d95ec02b9ffdd45
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3c4c4ea25a8f8057a5830ad2207bb674d9cc011
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678083"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501548"
 ---
-# <a name="save-costs-with-a-reserved-instance-of-azure-dedicated-hosts"></a>Bespaar kosten met een gereserveerd exemplaar van voor Azure toegewezen hosts
+# <a name="save-costs-with-azure-dedicated-host-reservations"></a>Bespaar kosten met Azure dedicated host Reservations
 
-Wanneer u een gereserveerd exemplaar van voor Azure toegewezen hosts doorvoert, kunt u geld besparen. De reserverings korting wordt automatisch toegepast op het aantal actieve toegewezen hosts dat overeenkomt met het reserverings bereik en de kenmerken. U hoeft geen reserve ring aan een speciale host toe te wijzen om de kortingen te krijgen. Een gereserveerde instantie koopt alleen het reken onderdeel van uw gebruik en bevat software licentie kosten. Zie het [overzicht van de voor Azure toegewezen hosts voor virtuele machines](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts).
+Wanneer u een gereserveerd exemplaar van voor Azure toegewezen hosts doorvoert, kunt u geld besparen. De reserverings korting wordt automatisch toegepast op het aantal actieve toegewezen hosts dat overeenkomt met het reserverings bereik en de kenmerken. U hoeft geen reserve ring aan een speciale host toe te wijzen om de kortingen te krijgen. Een gereserveerde instantie koopt alleen het reken onderdeel van uw gebruik en bevat software licentie kosten. Zie het [overzicht van de voor Azure toegewezen hosts voor virtuele machines](./windows/dedicated-hosts.md).
 
 ## <a name="determine-the-right-dedicated-host-sku-before-you-buy"></a>Bepaal de juiste specifieke host-SKU voordat u deze aanschaft
 
 
 Voordat u een reserve ring koopt, moet u bepalen welke specifieke host u nodig hebt. Er wordt een SKU gedefinieerd voor een toegewezen host die de VM-reeksen en het type vertegenwoordigt. 
 
-Ga eerst naar de ondersteunde grootten voor [virtuele Windows-machines](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) of [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) om de VM-serie te identificeren.
+Ga eerst naar de ondersteunde grootten voor [virtuele Windows-machines](./windows/sizes.md) of [Linux](./linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) om de VM-serie te identificeren.
 
 Controleer vervolgens of het wordt ondersteund op met Azure toegewezen hosts. De pagina prijs informatie voor [Azure dedicated hosts](https://aka.ms/ADHPricing) bevat de volledige lijst met gereserveerde hosts sku's, hun CPU-gegevens en diverse prijs opties (inclusief gereserveerde instanties).
 
@@ -39,7 +40,7 @@ Er gelden geen reserve ring kortingen voor het volgende:
 
 - **Clouds**   -Reserve ringen zijn niet beschikbaar voor aankopen in Duitsland-of China-regio's.
 
-- **Onvoldoende quotum**   -Een reserve ring die binnen het bereik van één abonnement valt, moet vCPU quota hebben in het abonnement voor het nieuwe gereserveerde exemplaar. Als het doel abonnement bijvoorbeeld een quotum limiet van 10 Vcpu's voor DSv3-Series heeft, kunt u geen gereserveerde gereserveerde hosts die deze serie ondersteunen, kopen. De quotum controle voor reserve ringen omvat de Vm's en toegewezen hosts die al zijn geïmplementeerd in het abonnement. U kunt een [aanvraag voor quotum verhoging maken](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)   om dit probleem op te lossen.
+- **Onvoldoende quotum**   -Een reserve ring die binnen het bereik van één abonnement valt, moet vCPU quota hebben in het abonnement voor het nieuwe gereserveerde exemplaar. Als het doel abonnement bijvoorbeeld een quotum limiet van 10 Vcpu's voor DSv3-Series heeft, kunt u geen gereserveerde gereserveerde hosts die deze serie ondersteunen, kopen. De quotum controle voor reserve ringen omvat de Vm's en toegewezen hosts die al zijn geïmplementeerd in het abonnement. U kunt een [aanvraag voor quotum verhoging maken](../azure-portal/supportability/resource-manager-core-quotas-request.md)   om dit probleem op te lossen.
 
 - **Capaciteits beperkingen**   -In zeldzame gevallen beperkt Azure de aanschaf van nieuwe reserve ringen voor subset van speciale host-Sku's, vanwege een geringe capaciteit in een regio.
 
@@ -47,7 +48,7 @@ Er gelden geen reserve ring kortingen voor het volgende:
 
 U kunt een gereserveerd exemplaar van een voor Azure toegewezen host-exemplaar kopen in de [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D).
 
-Betaal voor de reserve ring [vóór of met maandelijkse betalingen](https://docs.microsoft.com/azure/billing/billing-monthly-payments-reservations). Deze vereisten zijn van toepassing op het kopen van een gereserveerde, toegewezen host-instantie:
+Betaal voor de reserve ring [vóór of met maandelijkse betalingen](../cost-management-billing/reservations/prepare-buy-reservation.md). Deze vereisten zijn van toepassing op het kopen van een gereserveerde, toegewezen host-instantie:
 
 - U moet een rol van eigenaar zijn voor ten minste één EA-abonnement of een abonnement met een betalen naar gebruik-tarief.
 
@@ -55,7 +56,7 @@ Betaal voor de reserve ring [vóór of met maandelijkse betalingen](https://doc
 
 - Voor het programma Cloud Solution Provider (CSP) kunnen alleen de beheerders of verkoop medewerkers reserve ringen kopen.
 
-Een exemplaar kopen:
+Een instantie kopen:
 
 1. Meld u aan bij de  [Azure-portal](https://portal.azure.com/).
 
@@ -86,7 +87,7 @@ Als u een EA-overeenkomst hebt, kunt u de **optie meer toevoegen**gebruiken   
 
 Uw gebruiksgegevens kosten niets voor het deel waarvoor u een reserveringskorting verkrijgt. U kunt zien welke VM-instantie de reserverings korting voor elke reserve ring heeft ontvangen.
 
-Zie het [gebruik van Azure-reserve ringen voor uw Enter prise-inschrijving](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)   Als u een EA-klant bent voor meer informatie over hoe reserverings kortingen worden weer gegeven in gebruiks gegevens. Zie [het gebruik van Azure-reserve ringen voor uw abonnement op basis van betalen per gebruik voor meer informatie](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)over een afzonderlijk abonnement.
+Zie het [gebruik van Azure-reserve ringen voor uw Enter prise-inschrijving](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)   Als u een EA-klant bent voor meer informatie over hoe reserverings kortingen worden weer gegeven in gebruiks gegevens. Zie [het gebruik van Azure-reserve ringen voor uw abonnement op basis van betalen per gebruik voor meer informatie](../cost-management-billing/reservations/understand-reserved-instance-usage.md)over een afzonderlijk abonnement.
 
 ## <a name="change-a-reservation-after-purchase"></a>Een reserve ring wijzigen na aankoop
 
@@ -114,7 +115,7 @@ U kunt echter wel *exchange*   een reserve ring uitwisselen als u wijzigingen 
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Reserveringen annuleren, ruilen of terugbetalen
 
-Annulering, ruiling of terugbetaling van reserveringen is mogelijk met bepaalde beperkingen. Zie [self-service-uitwisseling en terugbetalingen voor Azure Reservations](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund)voor meer informatie.
+Annulering, ruiling of terugbetaling van reserveringen is mogelijk met bepaalde beperkingen. Zie [self-service-uitwisseling en terugbetalingen voor Azure Reservations](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)voor meer informatie.
 
 ## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
 
@@ -122,26 +123,24 @@ Als u vragen hebt of hulp nodig hebt,  [kunt u een ondersteuningsaanvraag maken
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Azure Reservations beheren](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)voor meer informatie over het beheren van een reserve ring.
+Zie [Azure Reservations beheren](../cost-management-billing/reservations/manage-reserved-vm-instance.md)voor meer informatie over het beheren van een reserve ring.
 
 Raadpleeg de volgende artikelen voor meer informatie over Azure-reserveringen:
 
-- [Wat zijn Azure-reserveringen?](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)
+- [Wat zijn Azure-reserveringen?](../cost-management-billing/reservations/save-compute-costs-reservations.md)
 
-- [Azure Dedicated Host gebruiken](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)
+- [Azure Dedicated Host gebruiken](./windows/dedicated-hosts.md)
 
 - [Prijzen van Dedicated Host](https://azure.microsoft.com/pricing/details/virtual-machines/dedicated-host/)
 
-- [Reserveringen beheren in Azure](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
+- [Reserveringen beheren in Azure](../cost-management-billing/reservations/manage-reserved-vm-instance.md)
 
-- [Begrijpen hoe de reserveringskorting wordt toegepast](https://docs.microsoft.com/azure/billing/billing-understand-vm-reservation-charges)
+- [Begrijpen hoe de reserveringskorting wordt toegepast](../cost-management-billing/manage/understand-vm-reservation-charges.md)
 
-- [Inzicht in het gebruik van reserveringen voor uw abonnement met betalen per gebruik](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)
+- [Inzicht in het gebruik van reserveringen voor uw abonnement met betalen per gebruik](../cost-management-billing/reservations/understand-reserved-instance-usage.md)
 
-- [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)
+- [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
 
-- [Kosten van Windows-software zijn niet inbegrepen in reserveringen](https://docs.microsoft.com/azure/billing/billing-reserved-instance-windows-software-costs)
+- [Kosten van Windows-software zijn niet inbegrepen in reserveringen](../cost-management-billing/reservations/reserved-instance-windows-software-costs.md)
 
-- [Azure-reserveringen in het CSP-programma (Cloud Solution Provider) van het Partnercentrum](https://docs.microsoft.com/partner-center/azure-reservations)
-
-
+- [Azure-reserveringen in het CSP-programma (Cloud Solution Provider) van het Partnercentrum](/partner-center/azure-reservations)

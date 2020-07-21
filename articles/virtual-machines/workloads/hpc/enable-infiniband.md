@@ -12,25 +12,26 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 10/17/2019
 ms.author: amverma
-ms.openlocfilehash: 7f7907482da886d9da17ef1e7844b205f3e4b906
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de61403b62f80bea7872d5ab3561567ae2109590
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74196769"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500065"
 ---
 # <a name="enable-infiniband-with-sr-iov"></a>InfiniBand inschakelen met SR-IOV
 
-De Azure NC-, ND-en H-serie Vm's worden allemaal ondersteund door een speciaal InfiniBand-netwerk. Alle RDMA-ingeschakelde grootten kunnen gebruikmaken van het netwerk met behulp van Intel MPI. Sommige VM-reeksen bieden uitgebreide ondersteuning voor alle MPI-implementaties en RDMA-werk woorden via SR-IOV. Virtuele machines die geschikt zijn voor RDMA, zijn [geoptimaliseerd voor GPU](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu) en [HPC-vm's (High-Performance Compute)](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc) .
+De Azure NC-, ND-en H-serie Vm's worden allemaal ondersteund door een speciaal InfiniBand-netwerk. Alle RDMA-ingeschakelde grootten kunnen gebruikmaken van het netwerk met behulp van Intel MPI. Sommige VM-reeksen bieden uitgebreide ondersteuning voor alle MPI-implementaties en RDMA-werk woorden via SR-IOV. Virtuele machines die geschikt zijn voor RDMA, zijn [geoptimaliseerd voor GPU](../../sizes-gpu.md) en [HPC-vm's (High-Performance Compute)](../../sizes-hpc.md) .
 
 ## <a name="choose-your-installation-path"></a>Kies uw installatiepad
 
 Om aan de slag te gaan, is het gebruik van een platform installatie kopie vooraf geconfigureerd voor InfiniBand, waar beschikbaar:
 
-- **HPC IaaS vm's** : om aan de slag te gaan met IaaS VM'S voor HPC, is de eenvoudigste oplossing het gebruik van de [CentOS-HPC 7,6 VM OS-installatie kopie](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557), die al is geconfigureerd met Infiniband. Omdat deze installatie kopie al is geconfigureerd met InfiniBand, hoeft u deze niet hand matig te configureren. Zie voor compatibele Windows-versies [Windows RDMA-compatibele exemplaren](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances).
+- **HPC IaaS vm's** : om aan de slag te gaan met IaaS VM'S voor HPC, is de eenvoudigste oplossing het gebruik van de [CentOS-HPC 7,6 VM OS-installatie kopie](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557), die al is geconfigureerd met Infiniband. Omdat deze installatie kopie al is geconfigureerd met InfiniBand, hoeft u deze niet hand matig te configureren. Zie voor compatibele Windows-versies [Windows RDMA-compatibele exemplaren](../../sizes-hpc.md#rdma-capable-instances).
 
 - **GPU IaaS vm's** : er zijn momenteel geen platform installatie kopieën geconfigureerd voor door GPU geoptimaliseerde vm's, met uitzonde ring van [CentOS-HPC 7,6 VM-installatie kopie van het besturings systeem](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557). Als u een aangepaste installatie kopie met InfiniBand wilt configureren, raadpleegt u [MELLANOX OFED hand matig installeren](#manually-install-mellanox-ofed).
 
-Als u een aangepaste VM-installatie kopie of een door [GPU geoptimaliseerde](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu) virtuele machine gebruikt, moet u deze configureren met InfiniBand door de VM-extensie InfiniBandDriverLinux of InfiniBandDriverWindows toe te voegen aan uw implementatie. Meer informatie over het gebruik van deze VM-extensies met [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#rdma-capable-instances) en [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances).
+Als u een aangepaste VM-installatie kopie of een door [GPU geoptimaliseerde](../../sizes-gpu.md) virtuele machine gebruikt, moet u deze configureren met InfiniBand door de VM-extensie InfiniBandDriverLinux of InfiniBandDriverWindows toe te voegen aan uw implementatie. Meer informatie over het gebruik van deze VM-extensies met [Linux](../../sizes-hpc.md#rdma-capable-instances) en [Windows](../../sizes-hpc.md#rdma-capable-instances).
 
 ## <a name="manually-install-mellanox-ofed"></a>Mellanox OFED hand matig installeren
 
@@ -65,4 +66,4 @@ sudo systemctl restart waagent
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) op Azure.
+Meer informatie over [HPC](/azure/architecture/topics/high-performance-computing/) op Azure.

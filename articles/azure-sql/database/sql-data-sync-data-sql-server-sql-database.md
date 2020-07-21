@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: 80bc254aafa9c221fcaf724331928b7f30360eac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 02207f8b5cf8628c3b2bbb72ab8d38ca9a4a5731
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610843"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504217"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Wat is SQL Data Sync voor Azure?
 
@@ -78,7 +78,7 @@ Gegevens synchronisatie is niet de aanbevolen oplossing voor de volgende scenari
 
 ## <a name="compare-with-transactional-replication"></a>Vergelijken met transactionele replicatie
 
-| | Gegevens synchroniseren | Transactionele replicatie |
+| Gegevens synchroniseren | Transactionele replicatie |
 |---|---|---|
 | Voordelen | -Actief-actief ondersteuning<br/>-Bi-richting tussen on-premises en Azure SQL Database | -Laagste latentie<br/>-Transactionele consistentie<br/>-Bestaande topologie na migratie opnieuw gebruiken <br/>-Ondersteuning voor Azure SQL Managed instance |
 | Nadelen | -5 minuten of meer latentie<br/>-Geen transactionele consistentie<br/>-Hogere gevolgen voor de prestaties | -Kan niet publiceren vanaf Azure SQL Database <br/>-Hoge onderhouds kosten |
@@ -105,7 +105,7 @@ Gegevens synchronisatie is niet de aanbevolen oplossing voor de volgende scenari
 
 ## <a name="consistency-and-performance"></a>Consistentie en prestaties
 
-### <a name="eventual-consistency"></a>Uiteindelijke consistentie
+### <a name="eventual-consistency"></a>Consistentie Uiteindelijk
 
 Omdat de gegevens synchronisatie op basis van een trigger is gebaseerd, is de transactionele consistentie niet gegarandeerd. Micro soft garandeert dat alle wijzigingen uiteindelijk worden doorgevoerd en dat gegevens synchronisatie geen gegevens verlies veroorzaakt.
 
@@ -155,7 +155,7 @@ Met gegevens synchronisatie kunnen alleen-lezen of door het systeem gegenereerde
 
 #### <a name="limitations-on-service-and-database-dimensions"></a>Beperkingen voor service-en database dimensies
 
-| **Dimensies**                                                  | **Ondergrens**              | **Tijdelijke oplossing**              |
+| **Dimensies**                                                  | **Limiet**              | **Tijdelijke oplossing**              |
 |-----------------------------------------------------------------|------------------------|-----------------------------|
 | Het maximum aantal synchronisatie groepen waarvan elke Data Base deel kan uitmaken.       | 5                      |                             |
 | Maximum aantal eind punten in één synchronisatie groep              | 30                     |                             |

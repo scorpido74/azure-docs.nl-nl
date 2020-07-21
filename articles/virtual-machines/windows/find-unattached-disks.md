@@ -7,11 +7,12 @@ ms.topic: how-to
 ms.date: 02/22/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: ea3a4452b87fbb1c8663a66ef29c4e9fb891a6b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d57b4499f3f1b2f22c14cc912e81b709ec4054c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300634"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500324"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>Niet-aangesloten beheerde en niet-beheerde Azure-schijven zoeken en verwijderen
 
@@ -86,4 +87,4 @@ foreach($storageAccount in $storageAccounts){
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [een opslag account verwijderen](../../storage/common/storage-account-create.md#delete-a-storage-account) en [zwevende schijven identificeren met Power shell](https://blogs.technet.microsoft.com/ukplatforms/2018/02/21/azure-cost-optimisation-series-identify-orphaned-disks-using-powershell/) voor meer informatie.
+Zie [een opslag account verwijderen](../../storage/common/storage-account-create.md#delete-a-storage-account) en [zwevende schijven identificeren met Power shell](/archive/blogs/ukplatforms/azure-cost-optimisation-series-identify-orphaned-disks-using-powershell) voor meer informatie.

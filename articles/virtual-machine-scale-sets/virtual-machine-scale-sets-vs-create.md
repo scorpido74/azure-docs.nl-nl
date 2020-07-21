@@ -9,11 +9,12 @@ ms.subservice: visual-studio
 ms.date: 09/09/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 826dc1858984508e54e160675dd10f6dfad88af8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2db281f1b3278e37deca8486971a7f7a83f85ccf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83124360"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503078"
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>Een Schaalset voor virtuele machines maken met Visual Studio
 
@@ -21,7 +22,7 @@ In dit artikel wordt beschreven hoe u een Schaalset voor virtuele machines van A
 
 [Azure virtual machine Scale sets](https://azure.microsoft.com/blog/azure-vm-scale-sets-public-preview/) is een Azure Compute-resource voor het implementeren en beheren van een verzameling vergelijk bare virtuele machines met automatisch schalen en taak verdeling. U kunt Virtual Machine Scale Sets inrichten en implementeren met behulp van [Azure Resource Manager sjablonen](https://github.com/Azure/azure-quickstart-templates). Azure Resource Manager sjablonen kunnen worden geïmplementeerd met behulp van Azure CLI, Power shell, REST en direct vanuit Visual Studio. Visual Studio biedt een aantal voorbeeld sjablonen die u kunt implementeren als onderdeel van een implementatie project van een Azure-resource groep.
 
-Implementaties van Azure-resource groepen vormen een manier om een set verwante Azure-resources te groeperen en te publiceren in één implementatie bewerking. Zie voor meer informatie [Azure-resource groepen maken en implementeren via Visual Studio](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
+Implementaties van Azure-resource groepen vormen een manier om een set verwante Azure-resources te groeperen en te publiceren in één implementatie bewerking. Zie voor meer informatie [Azure-resource groepen maken en implementeren via Visual Studio](../azure-resource-manager/templates/create-visual-studio-deployment-project.md).
 
 ## <a name="prerequisites"></a>Vereisten
 

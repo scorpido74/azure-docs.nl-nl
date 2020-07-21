@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 8f65912d0e2ab322d73315828a98cc48274850fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e0f9bbf4e0d8edd153798b39f880f0adb8be6587
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83696511"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502271"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>Informatie over het opnieuw opstarten van VM's - onderhoud versus downtime
 Er zijn drie scenario's die van invloed kunnen zijn op de virtuele machine in Azure: ongepland onderhoud van hardware, onverwachte downtime en gepland onderhoud.
@@ -34,7 +34,7 @@ Om de gevolgen van downtime vanwege een of meer van deze gebeurtenissen te beper
 * [Beheerde schijven voor VM's in een beschikbaarheidsset gebruiken]
 * [Geplande gebeurtenissen gebruiken om proactief te reageren op gebeurtenissen die invloed hebben op VM'S](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)
 * [Elke toepassingslaag configureren in afzonderlijke beschikbaarheids sets]
-* [Een Load Balancer met beschikbaarheids sets combi neren]
+* [Combineer het gebruik van een load balancer met beschikbaarheidssets]
 * [Beschikbaarheids zones gebruiken om te beschermen tegen fouten op datacenter niveau]
 
 ## <a name="use-availability-zones-to-protect-from-datacenter-level-failures"></a>Beschikbaarheids zones gebruiken om te beschermen tegen fouten op datacenter niveau
@@ -45,7 +45,7 @@ Een beschikbaarheids zone in een Azure-regio is een combi natie van een **fout d
 
 Met beschikbaarheidszones biedt Azure de beste uptime SLA voor VM’s van de branche, van 99,99%. Door uw oplossingen te ontwikkelen voor het gebruik van gerepliceerde Vm's in zones, kunt u uw toepassingen en gegevens beveiligen tegen verlies van een Data Center. Als er een zone wordt aangetast, zijn de gerepliceerde apps en gegevens direct beschikbaar in een andere zone.
 
-![Beschikbaarheidszones](./media/virtual-machines-common-regions-and-availability/three-zones-per-region.png)
+![Beschikbaarheidszones](./media/virtual-machines-common-manage-availability/three-zones-per-region.png)
 
 Meer informatie over het implementeren van een virtuele [Windows](../articles/virtual-machines/windows/create-powershell-availability-zone.md) -of [Linux](../articles/virtual-machines/linux/create-cli-availability-zone.md) -machine in een beschikbaarheids zone.
 
