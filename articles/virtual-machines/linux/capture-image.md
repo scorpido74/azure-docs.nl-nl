@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: 54f82d0ba4b0c5de0b4e373416857d670d4bba53
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26c8a8746fe748585f36e5282ad6e694cdcef1f6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83723303"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494459"
 ---
 # <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>Een beheerde installatie kopie van een virtuele machine of VHD maken
 
@@ -24,7 +25,7 @@ Als u een beheerde installatie kopie wilt maken, moet u persoonlijke account geg
 
 Zie [een virtuele Linux-machine uploaden en maken op basis van een aangepaste schijf kopie](upload-vhd.md)om een kopie te maken van uw bestaande virtuele Linux-machine voor back-up of fout opsporing of om een speciale Linux-VHD te uploaden vanaf een on-premises VM.  
 
-U kunt de **Azure VM Image Builder-service (open bare preview)** gebruiken om uw aangepaste installatie kopie te bouwen, geen hulp middelen meer te leren of door pijp lijnen voor het bouwen van een installatie kopie te maken, simpelweg een configuratie voor de installatie kopieën te bieden en de installatie kopie wordt gemaakt met de opbouw functie voor installatie kopieën. Zie aan de slag [met Azure VM Image Builder](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview)voor meer informatie.
+U kunt de **Azure VM Image Builder-service (open bare preview)** gebruiken om uw aangepaste installatie kopie te bouwen, geen hulp middelen meer te leren of door pijp lijnen voor het bouwen van een installatie kopie te maken, simpelweg een configuratie voor de installatie kopieën te bieden en de installatie kopie wordt gemaakt met de opbouw functie voor installatie kopieën. Zie aan de slag [met Azure VM Image Builder](./image-builder-overview.md)voor meer informatie.
 
 Voordat u een installatie kopie maakt, hebt u de volgende items nodig:
 
@@ -136,4 +137,4 @@ az vm show \
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor meer informatie over het maken, opslaan en delen [van installatie kopieën](shared-images.md)op schaal.
+Zie voor meer informatie over het maken, opslaan en delen [van installatie kopieën](../shared-images-cli.md)op schaal.

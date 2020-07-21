@@ -8,12 +8,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: yagupta
-ms.openlocfilehash: a009f212bd8baaa353d602dc6090aeeccddd4936
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a187b31657ec2a67c306d817a75150d19a5cf9b6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60878393"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497179"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Versleuteling van gegevens in Azure Data Lake Storage Gen1
 
@@ -52,8 +52,8 @@ In beide modi wordt de hoofdversleutelingssleutel beveiligd door opslag in Azure
 
 Hier volgt een korte vergelijking van de mogelijkheden van de twee modi voor het beheren van de MEK's.
 
-|  | Door service beheerde sleutels | Door klant beheerde sleutels |
-| --- | --- | --- |
+| Vraag | Door service beheerde sleutels | Door klant beheerde sleutels |
+| -------- | -------------------- | --------------------- |
 |Hoe worden gegevens opgeslagen?|Altijd versleuteld voordat deze worden opgeslagen.|Altijd versleuteld voordat deze worden opgeslagen.|
 |Waar wordt de hoofdversleutelingssleutel opgeslagen?|Key Vault|Key Vault|
 |Worden versleutelingssleutels opgeslagen buiten Key Vault? |Nee|Nee|
@@ -74,7 +74,7 @@ Het is belangrijk het volgende te onthouden wanneer u de modus voor de hoofdvers
 
 Er zijn drie soorten sleutels die worden gebruikt in het ontwerp van gegevensversleuteling. De volgende tabel geeft een samenvatting:
 
-| Sleutel                   | Afkorting | Gekoppeld aan | Opslaglocatie                             | Type       | Opmerkingen                                                                                                   |
+| Sleutel                   | Afkorting | Gekoppeld aan | Opslaglocatie                             | Type       | Notities                                                                                                   |
 |-----------------------|--------------|-----------------|----------------------------------------------|------------|---------------------------------------------------------------------------------------------------------|
 | Hoofdversleutelingssleutel | MEK          | Een Data Lake Storage Gen1-account | Key Vault                              | Asymmetrisch | Het kan worden beheerd door Data Lake Storage Gen1 of u.                                                              |
 | Gegevensversleutelingssleutel   | DEK          | Een Data Lake Storage Gen1-account | Permanente opslag, beheerd door de Data Lake Storage Gen1-service | Symmetrisch  | De DEK is versleuteld door de MEK. De versleutelde DEK is hetgeen wat wordt opgeslagen op persistente media. |
@@ -115,7 +115,7 @@ Houd er rekening mee dat als u de standaard opties voor versleuteling gebruikt, 
 
 ### <a name="how-to-rotate-the-mek-in-data-lake-storage-gen1"></a>De MEK draaien in Data Lake Storage Gen1
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Blader naar het Key Vault-exemplaar waarin uw sleutels zijn opgeslagen die zijn gekoppeld aan uw Data Lake Storage Gen1-account. Selecteer **Sleutels**.
 
     ![Schermafdruk van Key Vault](./media/data-lake-store-encryption/keyvault.png)

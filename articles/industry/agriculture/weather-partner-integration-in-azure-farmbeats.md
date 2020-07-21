@@ -1,18 +1,18 @@
 ---
-title: Weer partner integratie
+title: Partnerintegratie voor weer
 description: In dit artikel wordt beschreven hoe een weer gegevens provider kan worden geïntegreerd met FarmBeats
 author: sunasing
 ms.topic: article
 ms.date: 07/09/2020
 ms.author: sunasing
-ms.openlocfilehash: d4ceb25b9b81c831ed1b285a875742ebfaa6d24f
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: a2677b5343b2d65a39e7c9f6d5006db599c1ac73
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232641"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496992"
 ---
-# <a name="weather-partner-integration"></a>Weer partner integratie
+# <a name="weather-partner-integration"></a>Partnerintegratie voor weer
 
 Dit artikel bevat informatie over het docker-onderdeel van de Azure FarmBeats- **connector** dat weer gegevens providers kunnen ontwikkelen om te integreren met FarmBeats door gebruik te maken van de api's en om weer gegevens naar FarmBeats te verzenden. Zodra de gegevens beschikbaar zijn in FarmBeats, kan deze worden gebruikt voor gegevens fusie en voor het bouwen van machine learning/kunst matige Intelligence-modellen.
 
@@ -36,10 +36,10 @@ Met behulp van de bovenstaande docker-gegevens registreert de klant een weer par
 
 De FarmBeats-Api's bevatten technische documentatie voor Swagger. Zie [FarmBeats Swagger](https://aka.ms/farmbeatsswagger)voor meer informatie over alle api's en hun bijbehorende aanvragen of antwoorden. 
 
-Als u FarmBeats hebt geïnstalleerd, kunt u toegang krijgen tot uw FarmBeats Swagger op[https://yourfarmbeatswebsitename-api.azurewebsites.net](https://yourfarmbeatswebsitename-api.azurewebsites.net/swagger)
+Als u FarmBeats hebt geïnstalleerd, kunt u toegang krijgen tot uw FarmBeats Swagger op`https://yourfarmbeatswebsitename-api.azurewebsites.net/swagger`
 
 Let op:-API wordt toegevoegd aan de naam van uw FarmBeats-website.
-Het API-eind punt wordt:[https://yourfarmbeatswebsitename-api.azurewebsites.net](https://yourfarmbeatswebsitename-api.azurewebsites.net)
+Het API-eind punt wordt:`https://yourfarmbeatswebsitename-api.azurewebsites.net`
 
 ### <a name="datahub-lib"></a>Datahub lib
 
@@ -134,7 +134,7 @@ Dit onderdeel wordt elke keer aangeroepen wanneer een FarmBeats-gebruiker een ta
 
 ### <a name="details-of-the-objects"></a>Details van de objecten
 
-  **WeatherDataModel** |  |
+  WeatherDataModel | Beschrijving |
   --- | ---
   Naam  | Naam van het weer gegeven gegevens model |
   Beschrijving  | Geef een zinvolle beschrijving van het model op. |
@@ -147,7 +147,7 @@ Dit onderdeel wordt elke keer aangeroepen wanneer een FarmBeats-gebruiker een ta
   weatherMeasures > AggregationType  | Ofwel geen, gemiddeld, maximum, minimum, StandardDeviation, som, totaal
   Diepte van weatherMeasures->  | De diepte van de sensor in centimeters. Bijvoorbeeld de meting van het vocht 10 cm onder het wegdek.
   Beschrijving van weatherMeasures->  | Geef een duidelijke beschrijving van de meting op. |
-  **Taak type** |  |
+  **Taak type** | **Beschrijving** |
   Naam  | de naam van de taak, bijvoorbeeld Get_Daily_Forecast; de taak die door de klant wordt uitgevoerd om weer gegevens op te halen|
   pipelineDetails > para meters > naam  | naam van de para meter |
   pipelineDetails > para meters > type | een van de teken reeksen, int, float, BOOL, matrix |
@@ -156,7 +156,7 @@ Dit onderdeel wordt elke keer aangeroepen wanneer een FarmBeats-gebruiker een ta
   pipelineDetails > para meters > beschrijving | Beschrijving van de para meter |
   Eigenschappen  | Aanvullende eigenschappen van de fabrikant.
   Eigenschappen > **programRunCommand** | opdracht docker run: deze opdracht wordt uitgevoerd wanneer de klant de weers-taak uitvoert. |
-  **WeatherDataLocation** |  |
+  **WeatherDataLocation** | **Beschrijving** |
   weatherDataModelId  | ID van de bijbehorende WeatherDataModel die is gemaakt tijdens de Boots trap|
   location  | vertegenwoordigt de breedte graad, lengte graad en uitbrei ding |
   Naam | Naam van het object |

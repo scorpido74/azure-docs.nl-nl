@@ -12,11 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 1461ba4ae0bea61b3a220c22144a31eade6cdf04
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9bd98d69c9a941e8da08fc7ab798c37b1a22f0bc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708800"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498396"
 ---
 # <a name="deploy-azure-sql-managed-instance-to-an-instance-pool"></a>Azure SQL Managed instance implementeren in een instantie groep
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -29,11 +30,11 @@ In de volgende tabel ziet u de beschik bare bewerkingen met betrekking tot exemp
 
 |Opdracht|Azure Portal|PowerShell|
 |:---|:---|:---|
-|Een exemplaar groep maken|Nee|Yes|
-|Een exemplaar groep bijwerken (beperkt aantal eigenschappen)|Nee |Yes |
-|Het gebruik en de eigenschappen van een exemplaar groep controleren|Nee|Yes |
-|Een exemplaar groep verwijderen|Nee|Yes|
-|Een beheerd exemplaar maken binnen een exemplaar groep|Nee|Yes|
+|Een exemplaar groep maken|Nee|Ja|
+|Een exemplaar groep bijwerken (beperkt aantal eigenschappen)|Nee |Ja |
+|Het gebruik en de eigenschappen van een exemplaar groep controleren|Nee|Ja |
+|Een exemplaar groep verwijderen|Nee|Ja|
+|Een beheerd exemplaar maken binnen een exemplaar groep|Nee|Ja|
 |Resource gebruik voor een beheerd exemplaar bijwerken|Ja |Ja|
 |Gebruik en eigenschappen voor een beheerd exemplaar controleren|Ja|Ja|
 |Een beheerd exemplaar uit de groep verwijderen|Ja|Ja|
@@ -42,7 +43,7 @@ In de volgende tabel ziet u de beschik bare bewerkingen met betrekking tot exemp
 
 Beschik bare [Power shell-opdrachten](https://docs.microsoft.com/powershell/module/az.sql/):
 
-|Cmdlet |Description |
+|Cmdlet |Beschrijving |
 |:---|:---|
 |[New-AzSqlInstancePool](/powershell/module/az.sql/new-azsqlinstancepool/) | Hiermee maakt u een door SQL beheerde exemplaar groep. |
 |[Get-AzSqlInstancePool](/powershell/module/az.sql/get-azsqlinstancepool/) | Retourneert informatie over een exemplaar groep. |
@@ -99,7 +100,7 @@ $instancePool = New-AzSqlInstancePool `
   -Name "mi-pool-name" `
   -SubnetId $subnet.Id `
   -LicenseType "LicenseIncluded" `
-  -VCore 80 `
+  -VCore 8 `
   -Edition "GeneralPurpose" `
   -ComputeGeneration "Gen5" `
   -Location "westeurope"
@@ -115,13 +116,13 @@ Na de geslaagde implementatie van de exemplaar groep is het tijd om een beheerd 
 Als u een beheerd exemplaar wilt maken, voert u de volgende opdracht uit:
 
 ```powershell
-$instanceOne = $instancePool | New-AzSqlInstance -Name "mi-pool-name" -VCore 2 -StorageSizeInGB 256
+$instanceOne = $instancePool | New-AzSqlInstance -Name "mi-one-name" -VCore 2 -StorageSizeInGB 256
 ```
 
 Het implementeren van een exemplaar binnen een groep duurt enkele minuten. Nadat de eerste instantie is gemaakt, kunnen er extra instanties worden gemaakt:
 
 ```powershell
-$instanceTwo = $instancePool | New-AzSqlInstance -Name "mi-pool-name" -VCore 4 -StorageSizeInGB 512
+$instanceTwo = $instancePool | New-AzSqlInstance -Name "mi-two-name" -VCore 4 -StorageSizeInGB 512
 ```
 
 ## <a name="create-a-database"></a>Een database maken 

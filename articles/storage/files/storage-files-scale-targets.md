@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 46c46faf8f7ee52978ae5542ab7ebd72a41b8357
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd04e92804a1d37afd8ee2cefb159c1e686748d4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81536427"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496176"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Schaalbaarheids- en prestatiedoelen in Azure Files
 
@@ -74,7 +74,7 @@ Voor Azure File Sync zijn de prestaties in twee fasen kritiek:
 
 Om u te helpen bij het plannen van uw implementatie voor elk van de fasen, zijn de resultaten die zijn waargenomen tijdens de interne test op een systeem met een configuratie
 
-| Systeemconfiguratie |  |
+| Systeemconfiguratie | Details |
 |-|-|
 | CPU | 64 virtuele kernen met 64 MiB L3-cache |
 | Geheugen | 128 GiB |
@@ -82,7 +82,7 @@ Om u te helpen bij het plannen van uw implementatie voor elk van de fasen, zijn 
 | Netwerk | 1 Gbps-netwerk |
 | Workload | Algemeen Bestands server|
 
-| Eerste eenmalige inrichting  |  |
+| Eerste eenmalige inrichting  | Details |
 |-|-|
 | Aantal objecten | 25.000.000-objecten |
 | Grootte van gegevensset| ~ 4,7 TiB |
@@ -92,7 +92,7 @@ Om u te helpen bij het plannen van uw implementatie voor elk van de fasen, zijn 
 
 * Wanneer een nieuw server eindpunt wordt gemaakt, wordt de bestands inhoud niet gedownload door de Azure File Sync-agent. Eerst wordt de volledige naam ruimte gesynchroniseerd en vervolgens wordt de achtergrond terugroepen geactiveerd om de bestanden te downloaden, in hun geheel of, als Cloud lagen zijn ingeschakeld, naar het beleid voor Cloud lagen dat is ingesteld op het server eindpunt.
 
-| Voortdurende synchronisatie  |   |
+| Voortdurende synchronisatie  | Details  |
 |-|--|
 | Aantal gesynchroniseerde objecten| 125.000-objecten (~ 1% verloop) |
 | Grootte van gegevensset| 50 GiB |
@@ -110,7 +110,7 @@ Als algemene hand leiding voor uw implementatie moet u een aantal zaken in acht 
 - De object doorvoer wordt ongeveer proportioneel geschaald naar rato van het aantal synchronisatie groepen op de server. Het splitsen van gegevens in meerdere synchronisatie groepen op een server levert een betere door Voer, die ook wordt beperkt door de server en het netwerk.
 - De object doorvoer is omgekeerd evenredig met de MiB per tweede door voer. Voor kleinere bestanden krijgt u een hogere door Voer in termen van het aantal verwerkte objecten per seconde, maar lagere MiB per seconde door voer. Voor grotere bestanden krijgt u echter minder objecten die per seconde worden verwerkt, maar een hogere MiB per seconde door voer. De MiB per tweede door Voer wordt beperkt door de Azure Files schaal doelen.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
-- [Implementatie van Azure Files plannen](storage-files-planning.md)
-- [Planning voor een Azure Files Sync-implementatie](storage-sync-files-planning.md)
+- [Een Azure Files-implementatie plannen](storage-files-planning.md)
+- [Een Azure File Sync-implementatie plannen](storage-sync-files-planning.md)

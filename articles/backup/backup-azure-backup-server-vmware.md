@@ -3,12 +3,12 @@ title: Back-ups maken van VMware-Vm's met Azure Backup Server
 description: In dit artikel leert u hoe u Azure Backup Server kunt gebruiken om een back-up te maken van virtuele VMware-machines die op een VMware vCenter/ESXi-server worden uitgevoerd.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: fed088a9c5eea461f93c844dcb0eead74761237e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: c9868012698fcdf5a2352c289de85261b6899dc3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081057"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497910"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Back-ups maken van VMware-Vm's met Azure Backup Server
 
@@ -24,7 +24,7 @@ In dit artikel wordt uitgelegd hoe u:
 
 ## <a name="before-you-start"></a>Voordat u begint
 
-- Controleer of u een versie van vCenter-ESXi gebruikt die wordt ondersteund voor back-up. Raadpleeg [hier](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix)de ondersteunings matrix.
+- Controleer of u een versie van vCenter-ESXi gebruikt die wordt ondersteund voor back-up. Raadpleeg [hier](./backup-mabs-protection-matrix.md)de ondersteunings matrix.
 - Zorg ervoor dat u Azure Backup Server hebt ingesteld. Als u dat nog [niet hebt gedaan, moet u dat doen](backup-azure-microsoft-azure-backup.md) voordat u begint. U moet Azure Backup Server uitvoeren met de nieuwste updates.
 - Controleer of de volgende netwerk poorten zijn geopend:
   - TCP 443 tussen MABS en vCenter
@@ -41,7 +41,7 @@ Azure Backup Server communiceert standaard met VMware-servers via HTTPS. Als u d
 - Het is belang rijk om te begrijpen hoe Azure Backup Server back-ups verwerkt.
   - Als eerste stap Azure Backup Server back-ups maken van gegevens naar de lokale schijf opslag. Azure Backup Server gebruikt een opslag groep, een set schijven en volumes waarop Azure Backup Server schijf herstel punten voor de beveiligde gegevens opslaat. De opslag groep kan direct Attached Storage (DAS), een Fibre Channel-SAN of een iSCSI-opslag apparaat of SAN zijn. Het is belang rijk om ervoor te zorgen dat u voldoende opslag ruimte hebt voor lokale back-ups van uw VMware VM-gegevens.
   - Azure Backup Server vervolgens een back-up van de lokale schijf opslag naar Azure.
-  - [Krijg hulp](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1807#figure-out-how-much-storage-space-you-need) bij het bepalen van de hoeveelheid opslag ruimte die u nodig hebt. De informatie is voor DPM, maar kan ook worden gebruikt voor Azure Backup Server.
+  - [Krijg hulp](/system-center/dpm/create-dpm-protection-groups#figure-out-how-much-storage-space-you-need) bij het bepalen van de hoeveelheid opslag ruimte die u nodig hebt. De informatie is voor DPM, maar kan ook worden gebruikt voor Azure Backup Server.
 
 ### <a name="set-up-the-certificate"></a>Het certificaat instellen
 

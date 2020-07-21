@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: 3fd4bcd13b4d92d2c6e61d10ae9e62996b5dfcf5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8043dfb7fdda972d4ede6798d07355936b23bf93
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945491"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498913"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>Azure Monitor verkennen voor Azure Cosmos DB
 
@@ -38,7 +38,7 @@ Voor deze functie hoeft u niets in te scha kelen of te configureren. deze Azure 
 
 Voer de volgende stappen uit om het gebruik en de prestaties van uw opslag accounts in al uw abonnementen weer te geven.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Zoek naar **monitor** en selecteer **monitor**.
 
@@ -72,13 +72,13 @@ Selecteer **fouten** aan de bovenkant van de pagina en het gedeelte **storingen*
 
 ![Scherm opname van fouten met uitsplitsing op basis van het type HTTP-aanvraag](./media/cosmosdb-insights-overview/failures.png)
 
-| Code      |  Description       | 
+| Code      |  Beschrijving       | 
 |-----------|:--------------------|
 | `200 OK`  | Een van de volgende REST-bewerkingen is geslaagd: </br>-Een resource ophalen. </br> : In een resource plaatsen. </br> -POST op een resource. </br> -POST op een opgeslagen procedure resource om de opgeslagen procedure uit te voeren.|
 | `201 Created` | Er is een POST-bewerking voor het maken van een resource geslaagd. |
 | `404 Not Found` | De bewerking probeert uit te voeren op een resource die niet meer bestaat. De resource is bijvoorbeeld mogelijk al verwijderd. |
 
-Raadpleeg het artikel over de [Azure Cosmos DB HTTP-status code](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb)voor een volledige lijst met status codes.
+Raadpleeg het artikel over de [Azure Cosmos DB HTTP-status code](/rest/api/cosmos-db/http-status-codes-for-cosmosdb)voor een volledige lijst met status codes.
 
 ### <a name="capacity"></a>Capaciteit
 
@@ -98,7 +98,7 @@ In het onderstaande voor beeld ziet u dat `eastus-billingint` voornamelijk Lees 
 
 ## <a name="pin-export-and-expand"></a>Vastmaken, exporteren en uitvouwen
 
-U kunt een van de metrische gedeelten aan een Azure- [dash board](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards) vastmaken door het pictogram punaise rechtsboven in de sectie te selecteren.
+U kunt een van de metrische gedeelten aan een Azure- [dash board](../../azure-portal/azure-portal-dashboards.md) vastmaken door het pictogram punaise rechtsboven in de sectie te selecteren.
 
 ![Voor beeld van de sectie metrische gegevens van de metriek naar dash board](./media/cosmosdb-insights-overview/pin.png)
 
@@ -126,6 +126,6 @@ Raadpleeg het [artikel speciale probleemoplossings problemen](troubleshoot-workb
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Waarschuwingen voor metrische gegevens](../platform/alerts-metric.md) en [service status meldingen](../../service-health/alerts-activity-log-service-notifications.md) configureren om automatische waarschuwingen in te stellen voor hulp bij het detecteren van problemen.
+* [Waarschuwingen voor metrische gegevens](../platform/alerts-metric.md) en [service status meldingen](../../service-health/alerts-activity-log-service-notifications-portal.md) configureren om automatische waarschuwingen in te stellen voor hulp bij het detecteren van problemen.
 
 * Meer informatie over de scenario's werkmappen zijn ontworpen voor ondersteuning, het ontwerpen van nieuwe en het aanpassen van bestaande rapporten en meer door [interactieve rapporten maken met Azure monitor werkmappen](../platform/workbooks-overview.md)te controleren.

@@ -4,11 +4,12 @@ description: In dit artikel vindt u informatie over het maken en beheren van bac
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: 0718ebc3612f53f1c2cc279096dd92de69bb5ef6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2fa35ed5e03ad174407e4c82fb5d4bbe69ee8131
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76963849"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497808"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Back-upbeleid voor Azure Recovery Services maken met behulp van REST API
 
@@ -28,9 +29,9 @@ De `{policyName}` en `{vaultName}` zijn aanwezig in de URI. Meer informatie vind
 
 Als u bijvoorbeeld een beleid voor Azure VM backup wilt maken, volgt u de onderdelen van de hoofd tekst van de aanvraag.
 
-|Name  |Vereist  |Type  |Description  |
+|Naam  |Vereist  |Type  |Beschrijving  |
 |---------|---------|---------|---------|
-|properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource-eigenschappen        |
+|properties     |   Waar      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource-eigenschappen        |
 |tags     |         | Object        |  Resourcetags       |
 
 Raadpleeg het [back-upbeleid rest API document](/rest/api/backup/protectionpolicies/createorupdate)voor een volledige lijst met definities in de hoofd tekst van de aanvraag.
@@ -132,11 +133,11 @@ Het beleid vertelt:
 
 ## <a name="responses"></a>Antwoorden
 
-Het maken/bijwerken van het back-upbeleid is een [asynchrone bewerking](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Dit betekent dat met deze bewerking een andere bewerking wordt gemaakt die afzonderlijk moet worden bijgehouden.
+Het maken/bijwerken van het back-upbeleid is een [asynchrone bewerking](../azure-resource-manager/management/async-operations.md). Dit betekent dat met deze bewerking een andere bewerking wordt gemaakt die afzonderlijk moet worden bijgehouden.
 
 Er worden twee antwoorden geretourneerd: 202 (geaccepteerd) wanneer een andere bewerking wordt gemaakt en vervolgens 200 (OK) wanneer deze bewerking is voltooid.
 
-|Naam  |Type  |Description  |
+|Naam  |Type  |Beschrijving  |
 |---------|---------|---------|
 |200 OK     |    [Beveiligings PolicyResource](/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  OK       |
 |202 geaccepteerd     |         |     Geaccepteerd    |

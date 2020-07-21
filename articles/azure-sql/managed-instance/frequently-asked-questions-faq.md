@@ -1,5 +1,5 @@
 ---
-title: Veelgestelde vragen
+title: Veelgestelde vragen (FAQ's)
 titleSuffix: Azure SQL Managed Instance
 description: Veelgestelde vragen over Azure SQL Managed instance (FAQ)
 services: sql-database
@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: b5fad1e287ffca569546092893c4f1a6501a3b7b
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 6713a1fbbbbca0aa212461cc966b42aaf2daa47e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224414"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498437"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Veelgestelde vragen over Azure SQL Managed instance (FAQ)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -66,11 +66,11 @@ U kunt overwegen om te migreren naar andere Azure-versies die geschikt zijn voor
 **Waar kan ik migreren als ik specifieke hardwarevereisten, zoals grotere RAM, voor een vCore-verhouding of meer Cpu's?**
 U kunt overwegen om te migreren naar [SQL Server op Azure virtual machines](../virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) of [Azure SQL database](../database/sql-database-paas-overview.md) geheugen/CPU geoptimaliseerd.
 
-## <a name="known-issues--bugs"></a>Bekende problemen & bugs
+## <a name="known-issues-and-defects"></a>Bekende problemen en defecten
 
-**Waar vind ik bekende problemen en bugs?**
+**Waar vind ik bekende problemen en defecten?**
 
-Zie [bekende problemen](../database/doc-changes-updates-release-notes.md#known-issues)voor bugs en bekende problemen.
+Zie [bekende problemen](../database/doc-changes-updates-release-notes.md#known-issues)voor product fouten en bekende problemen.
 
 ## <a name="new-features"></a>Nieuwe functies
 
@@ -127,7 +127,7 @@ Als u een andere DNS-zone wilt gebruiken in plaats van de standaard instelling, 
 **Hoe kan ik migreren van Azure SQL Database enkele of elastische pool naar een beheerd exemplaar van SQL?**
 
 Beheerde instantie biedt dezelfde prestatie niveaus per Compute en opslag grootte als andere implementatie opties van Azure SQL Database. Als u gegevens wilt consolideren voor één exemplaar of als u alleen een functie nodig hebt die uitsluitend wordt ondersteund in het beheerde exemplaar, kunt u uw gegevens migreren met behulp van de functionaliteit voor exporteren/importeren (BACPAC). Hier volgen andere manieren om te overwegen om SQL Database migratie naar een door SQL beheerd exemplaar: 
-- [Externe gegevens bron]() gebruiken
+- [Externe gegevens bron](https://techcommunity.microsoft.com/t5/azure-database-support-blog/lesson-learned-129-using-data-source-external-from-azure-sql/ba-p/1443210) gebruiken
 - [SQLPackage](https://techcommunity.microsoft.com/t5/azure-database-support-blog/how-to-migrate-azure-sql-database-to-azure-sql-managed-instance/ba-p/369182) gebruiken
 - [Bcp](https://medium.com/azure-sqldb-managed-instance/migrate-from-azure-sql-managed-instance-using-bcp-674c92efdca7) gebruiken
 
@@ -349,21 +349,6 @@ Klanten wordt aangeraden een aantal beveiligings instellingen en-besturings elem
 - Schakel [SQL auditing](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine)in en integreer deze met waarschuwings mechanismen.
 - Schakel de [detectie van bedreigingen](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection) in vanuit het pakket [Advanced Data Security (ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) .
 
-
-## <a name="cost-saving-use-cases"></a>Gebruiks voorbeelden voor kosten besparing
-
-**Waar vind ik use cases en resulterende kosten besparingen met SQL Managed instance?**
-
-Case-study's voor SQL Managed instance:
-
-- [Komatsu](https://customers.microsoft.com/story/komatsu-australia-manufacturing-azure)
-- [KMD](https://customers.microsoft.com/en-ca/story/kmd-professional-services-azure-sql-database)
-- [PowerDETAILS](https://customers.microsoft.com/story/powerdetails-partner-professional-services-azure-sql-database-managed-instance)
-- [Allscripts](https://customers.microsoft.com/story/allscripts-partner-professional-services-azure)
-
-Als u een beter inzicht wilt krijgen in de voor delen, kosten en risico's die zijn gekoppeld aan het implementeren van Azure SQL Managed instance, is er ook een Forrester-studie: [de totale economische impact van Microsoft Azure SQL database Managed instance](https://azure.microsoft.com/resources/forrester-tei-sql-database-managed-instance).
-
-
 ## <a name="dns"></a>DNS
 
 **Kan ik een aangepaste DNS voor een SQL-beheerd exemplaar configureren?**
@@ -467,6 +452,19 @@ U kunt de kosten voor back-upopslag bewaken via Azure Portal. Zie [kosten bewake
 **Hoe kan ik mijn back-upopslagkosten op het beheerde exemplaar optimaliseren?**
 
 Zie [fijnafstelling van nauw keurigheid van SQL Managed instance](https://techcommunity.microsoft.com/t5/azure-sql-database/fine-tuning-backup-storage-costs-on-managed-instance/ba-p/1390935)voor meer informatie over het optimaliseren van de opslag kosten voor back-ups.
+
+## <a name="cost-saving-use-cases"></a>Gebruiks voorbeelden voor kosten besparing
+
+**Waar vind ik use cases en resulterende kosten besparingen met SQL Managed instance?**
+
+Case-study's voor SQL Managed instance:
+
+- [Komatsu](https://customers.microsoft.com/story/komatsu-australia-manufacturing-azure)
+- [KMD](https://customers.microsoft.com/en-ca/story/kmd-professional-services-azure-sql-database)
+- [PowerDETAILS](https://customers.microsoft.com/story/powerdetails-partner-professional-services-azure-sql-database-managed-instance)
+- [Allscripts](https://customers.microsoft.com/story/allscripts-partner-professional-services-azure)
+
+Als u een beter inzicht wilt krijgen in de voor delen, kosten en risico's die zijn gekoppeld aan het implementeren van Azure SQL Managed instance, is er ook een Forrester-studie: [de totale economische impact van Microsoft Azure SQL database Managed instance](https://azure.microsoft.com/resources/forrester-tei-sql-database-managed-instance).
 
 ## <a name="password-policy"></a>Wachtwoord beleid 
 

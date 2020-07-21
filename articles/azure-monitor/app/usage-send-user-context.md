@@ -6,11 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
-ms.openlocfilehash: ecdcc8a84cdccb05ec514003d63f808583d719c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3a59b6658e6ea0229f65492b20b5f5f2882d12a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83797687"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499236"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Gebruikers context-Id's verzenden om gebruiks ervaringen in Azure-toepassing Insights in te scha kelen
 
@@ -18,10 +19,10 @@ ms.locfileid: "83797687"
 
 Met Application Insights kunt u uw gebruikers bewaken en volgen via een aantal hulpprogram ma's voor product gebruik:
 
-- [Gebruikers, sessies, gebeurtenissen](https://docs.microsoft.com/azure/application-insights/app-insights-usage-segmentation)
-- [Trechters](https://docs.microsoft.com/azure/application-insights/usage-funnels)
-- [Retentie](https://docs.microsoft.com/azure/application-insights/app-insights-usage-retention) Cohorten
-- [Werkmappen](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)
+- [Gebruikers, sessies, gebeurtenissen](./usage-segmentation.md)
+- [Trechters](./usage-funnels.md)
+- [Retentie](./usage-retention.md) Cohorten
+- [Werkmappen](../platform/workbooks-overview.md)
 
 Application Insights moet een ID voor elke gebruiker of sessie hebben om bij te houden wat een gebruiker heeft geduurd. Neem de volgende Id's op in elke aangepaste gebeurtenis of pagina weergave.
 
@@ -41,11 +42,11 @@ Gebruikers-Id's moeten blijven bestaan in gebruikers sessies om bij te houden ho
 
 De ID moet een GUID of een andere teken reeks zijn die complex genoeg is om elke gebruiker uniek te identificeren. Het kan bijvoorbeeld een lang wille keurig getal zijn.
 
-Als de ID persoonlijke informatie over de gebruiker bevat, is het geen geschikte waarde om naar Application Insights te verzenden als een gebruikers-ID. U kunt een dergelijke ID verzenden als een [geverifieerde gebruikers-id](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#authenticated-users), maar niet voldoen aan de vereiste voor de gebruikers-id voor gebruiks scenario's.
+Als de ID persoonlijke informatie over de gebruiker bevat, is het geen geschikte waarde om naar Application Insights te verzenden als een gebruikers-ID. U kunt een dergelijke ID verzenden als een [geverifieerde gebruikers-id](./api-custom-events-metrics.md#authenticated-users), maar niet voldoen aan de vereiste voor de gebruikers-id voor gebruiks scenario's.
 
 ## <a name="aspnet-apps-setting-the-user-context-in-an-itelemetryinitializer"></a>ASP.NET-Apps: de gebruikers context instellen in een ITelemetryInitializer
 
-Maak een initialisatie functie voor telemetrie, zoals [hier](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#addmodify-properties-itelemetryinitializer)wordt beschreven. Geef de sessie-ID door via de aanvraag-telemetrie en stel de Context.User.Id en de Context.Session.Id in.
+Maak een initialisatie functie voor telemetrie, zoals [hier](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)wordt beschreven. Geef de sessie-ID door via de aanvraag-telemetrie en stel de Context.User.Id en de Context.Session.Id in.
 
 In dit voor beeld wordt de gebruikers-ID ingesteld op een id die na de sessie verloopt. Gebruik, indien mogelijk, een gebruikers-ID die in verschillende sessies wordt bewaard.
 
@@ -127,7 +128,7 @@ namespace MvcWebRole.Telemetry
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Begin met het verzenden van [aangepaste gebeurtenissen](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) of [pagina weergaven](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)om gebruiks ervaringen in te scha kelen.
+- Begin met het verzenden van [aangepaste gebeurtenissen](./api-custom-events-metrics.md#trackevent) of [pagina weergaven](./api-custom-events-metrics.md#page-views)om gebruiks ervaringen in te scha kelen.
 - Als u al aangepaste gebeurtenissen of pagina weergaven verzendt, kunt u de gebruiks hulpprogramma's verkennen om te leren hoe gebruikers uw service gebruiken.
     - [Overzicht van gebruik](usage-overview.md)
     - [Gebruikers, sessies en gebeurtenissen](usage-segmentation.md)

@@ -9,11 +9,12 @@ ms.subservice: autoscale
 ms.date: 05/29/2018
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: ea9d243e46aace9030c25222217ac3ad09a31c38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cfbd5af7063a4764820b5ce892a9a2b8a305b1b7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83124938"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494935"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Schaal sets van virtuele machines automatisch schalen in de Azure Portal
 Wanneer u een schaalset maakt, definieert u het aantal VM-exemplaren dat u wilt uitvoeren. Wanneer de vraag van de toepassing verandert, kunt u het aantal VM-exemplaren automatisch vergroten of verkleinen. De mogelijkheid van automatisch schalen stelt u in staat om altijd te voldoen aan de vraag van klanten houden of om gedurende de levenscyclus van uw app te reageren op wijzigingen in de prestaties van de toepassing.
@@ -45,8 +46,8 @@ Als de vraag van uw toepassing toeneemt, neemt de belasting van de VM-exemplaren
     | *Tijd aggregatie*     | Hiermee definieert u hoe de verzamelde meetwaarden moeten worden samengevoegd voor analyse.                                                | Average        |
     | *Metrische naam*          | De prestatiemeetwaarde die u wilt bewaken en waarvoor u acties wilt toepassen op de schaalset.                                                   | Percentage CPU |
     | *Tijdsintervalstatistieken* | Hiermee definieert u hoe de verzamelde metrische gegevens in elke tijd korrel moeten worden geaggregeerd voor analyse.                             | Average        |
-    | *And*             | De operator die wordt gebruikt voor het vergelijken van de meetwaarden met de drempelwaarde.                                                     | Groter dan   |
-    | *Spreek*            | Het percentage dat ervoor zorgt dat de regel voor automatisch schalen een actie activeert.                                                 | 70             |
+    | *Operator*             | De operator die wordt gebruikt voor het vergelijken van de meetwaarden met de drempelwaarde.                                                     | Groter dan   |
+    | *Drempelwaarde*            | Het percentage dat ervoor zorgt dat de regel voor automatisch schalen een actie activeert.                                                 | 70             |
     | *Duur*             | De hoeveelheid tijd waarna de meetwaarde en drempelwaarde met elkaar worden vergeleken.                                   | 10 minuten     |
     | *Bewerking*            | Hiermee wordt gedefinieerd of de schaalset omhoog of omlaag moet worden geschaald wanneer de regel van toepassing is en door welke toename                        | Percentage verhogen met |
     | *Aantal exemplaren*       | Het percentage VM-exemplaren dat moet worden gewijzigd wanneer de regel wordt geactiveerd.                                            | 20             |
@@ -70,7 +71,7 @@ In het weekend of 's avonds kan de vraag voor uw toepassing afnemen. Als deze af
     | Parameter              | Uitleg                                                                                                          | Waarde          |
     |------------------------|----------------------------------------------------------------------------------------------------------------------|----------------|
     | *And*             | De operator die wordt gebruikt voor het vergelijken van de meetwaarden met de drempelwaarde.                                                      | Kleiner dan   |
-    | *Spreek*            | Het percentage dat ervoor zorgt dat de regel voor automatisch schalen een actie activeert.                                                 | 30             |
+    | *Drempelwaarde*            | Het percentage dat ervoor zorgt dat de regel voor automatisch schalen een actie activeert.                                                 | 30             |
     | *Bewerking*            | Hiermee wordt gedefinieerd of de schaalset omhoog of omlaag moet worden geschaald wanneer de regel van toepassing is en door welke toename                         | Percentage verlagen met |
     | *Aantal exemplaren*       | Het percentage VM-exemplaren dat moet worden gewijzigd wanneer de regel wordt geactiveerd.                                             | 20             |
 
@@ -122,6 +123,6 @@ Als u wilt zien hoe uw regels voor automatisch schalen worden toegepast, selecte
 ## <a name="next-steps"></a>Volgende stappen
 In dit artikel hebt u geleerd hoe u regels voor automatisch schalen kunt gebruiken om horizon taal te schalen en het *aantal* VM-exemplaren in uw schaalset te verg Roten of verkleinen. U kunt ook verticaal schalen om de *grootte* van VM-exemplaren te vergroten of verkleinen. Zie voor meer informatie [Vertical autoscale with virtual machine scale sets](virtual-machine-scale-sets-vertical-scale-reprovision.md) (Verticaal automatisch schalen met virtuele-machineschaalsets).
 
-Zie [Manage a virtual machine scale set with Azure PowerShell](virtual-machine-scale-sets-windows-manage.md) (Virtuele-machineschaalset beheren met Azure PowerShell) voor meer informatie over het beheren van uw VM-exemplaren.
+Zie [Manage a virtual machine scale set with Azure PowerShell](./virtual-machine-scale-sets-manage-powershell.md) (Virtuele-machineschaalset beheren met Azure PowerShell) voor meer informatie over het beheren van uw VM-exemplaren.
 
-Als u wilt weten hoe u waarschuwingen kunt genereren wanneer uw regels voor automatisch schalen worden geactiveerd, raadpleegt u [Use autoscale actions to send email and webhook alert notifications in Azure Monitor](../azure-monitor/platform/autoscale-webhook-email.md) (Acties voor automatisch schalen gebruiken om waarschuwingen per e-mail of webhooks te verzenden in Azure Monitor). U kunt ook [controlelogboeken gebruiken om waarschuwingen per e-mail of webhooks te verzenden in Azure Monitor](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md).
+Als u wilt weten hoe u waarschuwingen kunt genereren wanneer uw regels voor automatisch schalen worden geactiveerd, raadpleegt u [Use autoscale actions to send email and webhook alert notifications in Azure Monitor](../azure-monitor/platform/autoscale-webhook-email.md) (Acties voor automatisch schalen gebruiken om waarschuwingen per e-mail of webhooks te verzenden in Azure Monitor). U kunt ook [controlelogboeken gebruiken om waarschuwingen per e-mail of webhooks te verzenden in Azure Monitor](../azure-monitor/platform/alerts-log-webhook.md).

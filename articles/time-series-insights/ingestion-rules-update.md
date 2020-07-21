@@ -1,5 +1,5 @@
 ---
-title: Aanstaande wijzigingen in de opname-en afvlakking regels in Azure Time Series Insights | Microsoft Docs
+title: Aanstaande wijzigingen in de opname-en afvlakking regels in Azure Time Series Insights Gen2 | Microsoft Docs
 description: Wijzigingen in opname regel
 ms.service: time-series-insights
 services: time-series-insights
@@ -10,18 +10,18 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.custom: lyhughes
-ms.openlocfilehash: 067244aa40256e3cc76239343790974bc3c06481
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: f667ca5ad82182fcf40d5c1fbb325f2ea99a7e08
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919032"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495105"
 ---
 # <a name="upcoming-changes-to-the-json-flattening-and-escaping-rules-for-new-environments"></a>Aanstaande wijzigingen in de JSON afvlakking en Escape-regels voor nieuwe omgevingen
 
-Deze wijzigingen worden alleen toegepast op *nieuwe* Azure time series Insights-omgevingen met betalen per gebruik (PAYG). Deze wijzigingen zijn niet van toepassing op de standaard (S) SKU-omgevingen.
+**Deze wijzigingen worden alleen toegepast op *nieuw gemaakte* Azure time series Insights Gen2-omgevingen. Deze wijzigingen zijn niet van toepassing op gen1-omgevingen.**
 
-Uw Azure Time Series Insights omgeving maakt dynamisch uw opslag kolommen volgens een bepaalde set naam conventies. Wanneer een gebeurtenis wordt opgenomen, wordt een set regels toegepast op de JSON-nettolading en eigenschaps namen. Wijzigingen in de manier waarop JSON-gegevens worden afgevlakt en opgeslagen, worden doorgevoerd voor nieuwe Azure Time Series Insights betalen per gebruik-omgevingen in juli 2020. Deze wijziging is van invloed op de volgende gevallen:
+Uw Azure Time Series Insights Gen2-omgeving maakt uw opslag kolommen dynamisch volgens een bepaalde set naam conventies. Wanneer een gebeurtenis wordt opgenomen, wordt een set regels toegepast op de JSON-nettolading en eigenschaps namen. Wijzigingen in de manier waarop JSON-gegevens worden afgevlakt en opgeslagen, worden doorgevoerd voor nieuwe Azure Time Series Insights Gen2-omgevingen in juli 2020. Deze wijziging is van invloed op de volgende gevallen:
 
 * Als uw JSON-nettolading geneste objecten bevat
 *  Als uw JSON-nettolading matrices bevat
@@ -45,15 +45,16 @@ Matrices met objecten worden altijd afgevlakt, waarbij meerdere gebeurtenissen w
 
  #### <a name="if-your-payload-contains-nested-json-or-special-characters-and-you-automate-authoring-time-series-model-variable-expressions"></a>Als uw payload geneste JSON of speciale tekens bevat en u de variabelen expressies voor het maken van de [tijd reeks](.\time-series-insights-update-tsm.md) kunt automatiseren
 
-*  Werk uw client code bij het uitvoeren van [TypesBatchPut](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeseriestypes/executebatch#typesbatchput) uit zodat deze overeenkomt met de nieuwe opname regels. Een voor beeld: een vorige expressie voor een [tijd reeks](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) van `"value": {"tsx": "$event.series_value.Double"}` moet worden bijgewerkt naar een van de volgende opties.
+*  Werk uw client code bij het uitvoeren van [TypesBatchPut](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch#typesbatchput) uit zodat deze overeenkomt met de nieuwe opname regels. Een voor beeld: een vorige expressie voor een [tijd reeks](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) van `"value": {"tsx": "$event.series_value.Double"}` moet worden bijgewerkt naar een van de volgende opties.
     * `"value": {"tsx": "$event.series.value.Double"}`
     * `"value": {"tsx": "$event['series']['value'].Double"}`
 
 
-
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie [over het toevoegen van ondersteuning voor gegevens van het type Long](./time-series-insights-long-data-type.md).
+- Lees [Azure time series Insights Gen2-opslag en](./time-series-insights-update-storage-ingress.md)inkomend verkeer.
 
-- Lees [Azure time series Insights voor beeld-opslag en](./time-series-insights-update-storage-ingress.md)-inkomend verkeer.
+- Meer informatie over hoe u query's kunt uitvoeren op uw gegevens met behulp van [Time Series-query-api's](./concepts-query-overview.md).
+
+- Meer informatie over de [syntaxis van de nieuwe time series-expressie](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax).
 

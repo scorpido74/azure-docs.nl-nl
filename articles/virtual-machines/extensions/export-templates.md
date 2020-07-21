@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: akjosh
-ms.openlocfilehash: 4919ce9ecaa3dc4f621aa5658b44aa53fad0bbf3
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 529024256b8b3f6da7146787d3a37c59a13b5bd3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201027"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494748"
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>Resource groepen exporteren die VM-extensies bevatten
 
@@ -137,7 +137,7 @@ De uiteindelijke extensie resource ziet er ongeveer uit als in het volgende voor
 }
 ```
 
-Als u sjabloon parameters gebruikt om eigenschaps waarden op te geven, moeten deze worden gemaakt. Bij het maken van sjabloon parameters voor beveiligde instellings waarden, moet u ervoor zorgen `SecureString` dat gevoelige waarden worden beveiligd met behulp van het parameter type. Zie [Azure Resource Manager sjablonen ontwerpen](../../resource-group-authoring-templates.md)voor meer informatie over het gebruik van para meters.
+Als u sjabloon parameters gebruikt om eigenschaps waarden op te geven, moeten deze worden gemaakt. Bij het maken van sjabloon parameters voor beveiligde instellings waarden, moet u ervoor zorgen `SecureString` dat gevoelige waarden worden beveiligd met behulp van het parameter type. Zie [Azure Resource Manager sjablonen ontwerpen](../../azure-resource-manager/templates/template-syntax.md)voor meer informatie over het gebruik van para meters.
 
 In het voor beeld van de `IaasDiagnostic` uitbrei ding worden de volgende para meters gemaakt in de sectie para meters van de Resource Manager-sjabloon.
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: sngun
-ms.openlocfilehash: e7e1480d00280fc567a69556f25db8ffab800f70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31c3c02f2b32594e5b20450d0bb519f4cdf82807
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262630"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497757"
 ---
 # <a name="how-to-use-azure-kubernetes-with-azure-cosmos-db-preview"></a>Azure Kubernetes gebruiken met Azure Cosmos DB (preview-versie)
 
@@ -33,7 +33,7 @@ Zie het artikel [overzicht](etcd-api-introduction.md) voor meer informatie over 
 
    De Azure Kubernetes-Engine (**AKS-engine**) genereert Azure Resource Manager sjablonen voor Kubernetes-clusters in Azure. De invoer voor AKS-engine is een cluster definitie bestand waarin het gewenste cluster wordt beschreven, met inbegrip van orchestrator, functies en agents. De structuur van de invoer bestanden is vergelijkbaar met de open bare API voor de Azure Kubernetes-service.
 
-1. De etcd-API in Azure Cosmos DB is momenteel beschikbaar als preview-versie. Meld u aan voor gebruik van de preview-versie op: https://aka.ms/cosmosetcdapi-signup . Nadat u het formulier hebt verzonden, wordt uw abonnement white list om de Azure Cosmos etcd-API te gebruiken. 
+1. De etcd-API in Azure Cosmos DB is momenteel beschikbaar als preview-versie. Meld u aan voor gebruik van de preview-versie op: https://aka.ms/cosmosetcdapi-signup . Nadat u het formulier hebt verzonden, mag uw abonnement de Azure Cosmos etcd-API gebruiken. 
 
 ## <a name="deploy-the-cluster-with-azure-cosmos-db"></a>Het cluster implementeren met Azure Cosmos DB
 
@@ -43,7 +43,7 @@ Zie het artikel [overzicht](etcd-api-introduction.md) voor meer informatie over 
    az login 
    ```
 
-1. Als u meer dan één abonnement hebt, gaat u naar het abonnement dat is white list voor Azure Cosmos DB etcd-API. U kunt overschakelen naar het vereiste abonnement met behulp van de volgende opdracht:
+1. Als u meer dan één abonnement hebt, schakelt u over naar het abonnement dat is toegestaan voor Azure Cosmos DB etcd-API. U kunt overschakelen naar het vereiste abonnement met behulp van de volgende opdracht:
 
    ```azurecli-interactive
    az account set --subscription "<Name of your subscription>"

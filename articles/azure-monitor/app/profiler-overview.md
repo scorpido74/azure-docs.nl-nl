@@ -6,11 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: ce952bd248640d03fcff43284707614577df8469
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d3074d58560df5cb5bd6bdc2c0437a4be828918
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671644"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499389"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Profileer productie toepassingen in azure met Application Insights
 ## <a name="enable-application-insights-profiler-for-your-application"></a>Application Insights Profiler inschakelen voor uw toepassing
@@ -29,7 +30,7 @@ Raadpleeg de [hand leiding](profiler-troubleshooting.md?toc=/azure/azure-monitor
 
 ## <a name="view-profiler-data"></a>Profiler gegevens weer geven
 
-Voor Profiler voor het uploaden van traceringen moet uw toepassing actief aanvragen verwerken. Als u een experiment uitvoert, kunt u aanvragen genereren voor uw web-app met behulp van [Application Insights prestatie testen](https://docs.microsoft.com/vsts/load-test/app-service-web-app-performance-test). Als u Profiler hebt ingeschakeld, kunt u een korte belasting test uitvoeren. Terwijl de belasting test wordt uitgevoerd, selecteert u de knop **profiel nu** in het [deel venster **instellingen van Profiler** ](profiler-settings.md). Wanneer Profiler wordt uitgevoerd, worden de profielen op wille keurige tijdstippen per uur en gedurende een periode van twee minuten. Als uw toepassing een stabiele stroom van aanvragen afhandelt, wordt elk uur traceringen door Profiler geüpload.
+Voor Profiler voor het uploaden van traceringen moet uw toepassing actief aanvragen verwerken. Als u een experiment uitvoert, kunt u aanvragen genereren voor uw web-app met behulp van [Application Insights prestatie testen](/vsts/load-test/app-service-web-app-performance-test). Als u Profiler hebt ingeschakeld, kunt u een korte belasting test uitvoeren. Terwijl de belasting test wordt uitgevoerd, selecteert u de knop **profiel nu** in het [deel venster **instellingen van Profiler** ](profiler-settings.md). Wanneer Profiler wordt uitgevoerd, worden de profielen op wille keurige tijdstippen per uur en gedurende een periode van twee minuten. Als uw toepassing een stabiele stroom van aanvragen afhandelt, wordt elk uur traceringen door Profiler geüpload.
 
 Nadat uw toepassing een aantal verkeer heeft ontvangen en de Profiler tijd heeft gehad om de traceringen te uploaden, moet u traceringen hebben om weer te geven. Dit proces kan 5 tot 10 minuten duren. Als u traceringen wilt weer geven, selecteert u in het deel venster **prestaties** de optie **acties ondernemen**en selecteert u de knop **traceringen Profiler** .
 

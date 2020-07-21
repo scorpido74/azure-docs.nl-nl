@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 67af4eae03b773fad9cf38964152c1fb9d623bd5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 55eb9a0bca3f142c1065f867cebd840cc7958b7e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72025932"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499916"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>IBM zD&T dev/test-omgeving installeren op Azure
 
@@ -56,13 +56,13 @@ In dit artikel wordt beschreven hoe u de Enter prise-editie voor Z Development a
 
 ## <a name="create-the-base-image-and-connect"></a>De basis installatie kopie maken en verbinding maken
 
-1. In Azure Portal [maakt u een virtuele machine](/azure/virtual-machines/linux/quick-create-portal) met de gewenste configuratie van het besturings systeem. In dit artikel wordt ervan uitgegaan dat er een B4ms-VM is (met 4 Vcpu's en 16 GB geheugen) waarop Ubuntu 16,04 wordt uitgevoerd.
+1. In Azure Portal [maakt u een virtuele machine](../../../linux/quick-create-portal.md) met de gewenste configuratie van het besturings systeem. In dit artikel wordt ervan uitgegaan dat er een B4ms-VM is (met 4 Vcpu's en 16 GB geheugen) waarop Ubuntu 16,04 wordt uitgevoerd.
 
 2. Nadat de VM is gemaakt, opent u voor de webserver binnenkomende poorten 22 voor SSH, 21 voor FTP en 9443.
 
 3. Ontvang de SSH-referenties die worden weer gegeven op de Blade **overzicht** van de virtuele machine via de knop **verbinding maken** . Selecteer het tabblad **SSH** en kopieer de SSH-aanmeldings opdracht naar het klem bord.
 
-4. Meld u aan bij een [bash-shell](/azure/cloud-shell/quickstart) vanaf uw lokale PC en plak de opdracht. Deze wordt weer in de vorm **van \<user id\> \@ \<IP Address\> SSH**. Wanneer u om referenties wordt gevraagd, voert u deze in om een verbinding met uw basismap tot stand te brengen.
+4. Meld u aan bij een [bash-shell](../../../../cloud-shell/quickstart.md) vanaf uw lokale PC en plak de opdracht. Deze wordt weer in de vorm **van \<user id\> \@ \<IP Address\> SSH**. Wanneer u om referenties wordt gevraagd, voert u deze in om een verbinding met uw basismap tot stand te brengen.
 
 ## <a name="copy-the-installation-file-to-the-server"></a>Kopieer het installatie bestand naar de server
 

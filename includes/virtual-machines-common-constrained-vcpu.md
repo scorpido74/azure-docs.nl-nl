@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: mimckitt
 ms.custom: include file
-ms.openlocfilehash: 5c898721102177a0d796db3b8b0f194c4ec3efae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed1341a323d947441fa2cb3c239fcdf99c447a97
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84793696"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494480"
 ---
 Voor sommige data base-werk belastingen, zoals SQL Server of Oracle, is veel geheugen, opslag ruimte en I/O-band breedte vereist, maar geen hoge kern telling. Veel database werkbelastingen zijn niet CPU-intensief. Azure biedt bepaalde VM-grootten waar u het aantal virtuele machines in de VM kunt beperken om de kosten van software licenties te verlagen en tegelijkertijd hetzelfde geheugen, dezelfde opslag en I/O-band breedte te behouden.
 
@@ -24,7 +24,7 @@ De huidige VM-grootte Standard_GS5 bijvoorbeeld geleverd met 32 Vcpu's, 448 GB R
 De licentie kosten voor SQL Server of Oracle zijn beperkt tot het nieuwe vCPU-aantal en andere producten moeten worden gefactureerd op basis van het nieuwe vCPU aantal. Dit resulteert in een verhoging van 50% tot 75% van de verhouding van de VM-specificaties naar actief (Factureerbaar) Vcpu's. Met deze nieuwe VM-grootten kunnen klant werkbelastingen gebruikmaken van dezelfde geheugen, opslag en I/O-band breedte, terwijl de kosten voor software licenties worden geoptimaliseerd. Op dit moment blijven de reken kosten, met inbegrip van OS-licenties, hetzelfde als de oorspronkelijke grootte. Zie [Azure VM-grootten voor meer informatie over rendabele data base-workloads](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/).
 
 
-| Name                | vCPU | Specificaties           |
+| Naam                | vCPU | Specificaties           |
 |---------------------|------|-----------------|
 | Standard_M8-2ms     | 2    | Hetzelfde als M8 MS    |
 | Standard_M8-4 MS     | 4    | Hetzelfde als M8 MS    |
@@ -74,3 +74,5 @@ De licentie kosten voor SQL Server of Oracle zijn beperkt tot het nieuwe vCPU-aa
 | Standard_DS13-2_v2  | 2    | Hetzelfde als DS13_v2 |
 | Standard_DS14-8_v2  | 8    | Hetzelfde als DS14_v2 |
 | Standard_DS14-4_v2  | 4    | Hetzelfde als DS14_v2 |
+| Standard_M416-208s_v2 | 208    | Hetzelfde als M416s_v2|
+| Standard_M416-208ms_v2 | 208    | Hetzelfde als M416ms_v2 |

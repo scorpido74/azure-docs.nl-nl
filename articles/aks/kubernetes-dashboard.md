@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: mlearned
-ms.openlocfilehash: 1754e166cd5c5a3d7309bc8c6f6459cdd0852396
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69e60c3e4ac91a5d0ca9a0245dc61f090c625c60
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84762901"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499861"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Toegang tot het Kubernetes Web dash board in azure Kubernetes service (AKS)
 
@@ -28,7 +28,7 @@ Voor meer informatie over het Kubernetes-dash board raadpleegt u [Kubernetes Web
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Voor de stappen die in dit document worden beschreven, wordt ervan uitgegaan dat u een AKS-cluster hebt gemaakt en een `kubectl` verbinding met het cluster tot stand hebt gebracht. Als u een AKS-cluster moet maken, raadpleegt u de [AKS Quick][aks-quickstart]start.
+Voor de stappen die in dit document worden beschreven, wordt ervan uitgegaan dat u een AKS-cluster hebt gemaakt en een `kubectl` verbinding met het cluster tot stand hebt gebracht. Als u een AKS-cluster moet maken, raadpleegt u [Quick Start: een Azure Kubernetes service-cluster implementeren met behulp van de Azure cli][aks-quickstart].
 
 Ook moet de Azure CLI-versie 2.6.0 of hoger zijn geïnstalleerd en geconfigureerd. Voer  `az --version`  uit om de versie te bekijken. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u  [Azure CLI installeren][install-azure-cli].
 

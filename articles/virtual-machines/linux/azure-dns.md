@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: 1e53a6a5c024fe58eae00dcda785ff9622061654
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 41cf83a3d9c756d69df2e2e9777ebd8eb54d4d74
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135322"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494731"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Opties voor DNS-naam omzetting voor virtuele Linux-machines in azure
 Azure biedt standaard DNS-naam omzetting voor alle virtuele machines die zich in één virtueel netwerk bevinden. U kunt uw eigen DNS-oplossing voor naam omzetting implementeren door uw eigen DNS-services te configureren op de virtuele machines die door Azure worden gehost. De volgende scenario's kunnen u helpen bij het kiezen van het abonnement dat geschikt is voor uw situatie.
@@ -121,7 +121,7 @@ Door sturen via DNS zorgt er ook voor dat de DNS-omzetting mogelijk is tussen vi
 
 Wanneer u naam omzetting gebruikt die door Azure wordt geboden, wordt het interne DNS-achtervoegsel aan elke virtuele machine verstrekt met behulp van DHCP. Wanneer u uw eigen naam omzettings oplossing gebruikt, wordt dit achtervoegsel niet verstrekt aan virtuele machines, omdat het achtervoegsel van invloed is op andere DNS-architecturen. Als u wilt verwijzen naar machines op FQDN of als u het achtervoegsel op uw virtuele machines wilt configureren, kunt u Power shell of de API gebruiken om het achtervoegsel te bepalen:
 
-* Voor virtuele netwerken die worden beheerd door Azure Resource Manager, is het achtervoegsel beschikbaar via de resource van de [netwerk interface kaart](https://msdn.microsoft.com/library/azure/mt163668.aspx) . U kunt ook de `azure network public-ip show <resource group> <pip name>` opdracht uitvoeren om de details van uw open bare IP-adres, inclusief de FQDN van de NIC, weer te geven.
+* Voor virtuele netwerken die worden beheerd door Azure Resource Manager, is het achtervoegsel beschikbaar via de resource van de [netwerk interface kaart](/rest/api/virtualnetwork/networkinterfaces) . U kunt ook de `azure network public-ip show <resource group> <pip name>` opdracht uitvoeren om de details van uw open bare IP-adres, inclusief de FQDN van de NIC, weer te geven.
 
 Als het door sturen van query's naar Azure niet aan uw behoeften voldoet, moet u uw eigen DNS-oplossing opgeven.  Uw DNS-oplossing moet:
 
@@ -131,6 +131,6 @@ Als het door sturen van query's naar Azure niet aan uw behoeften voldoet, moet u
 * Worden beveiligd tegen toegang vanaf internet om bedreigingen van externe agents te beperken.
 
 > [!NOTE]
-> Voor de beste prestaties moet u, wanneer u virtuele machines gebruikt in Azure DNS servers, IPv6 uitschakelen en een [openbaar IP-adres op exemplaar niveau](../../virtual-network/virtual-networks-instance-level-public-ip.md) toewijzen aan elke virtuele machine van de DNS-server.  
+> Voor de beste prestaties moet u, wanneer u virtuele machines gebruikt in Azure DNS servers, IPv6 uitschakelen en een [openbaar IP-adres op exemplaar niveau](/previous-versions/azure/virtual-network/virtual-networks-instance-level-public-ip) toewijzen aan elke virtuele machine van de DNS-server.  
 >
 >

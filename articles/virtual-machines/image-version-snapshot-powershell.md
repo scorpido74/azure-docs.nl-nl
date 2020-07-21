@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/30/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: d55bcf921d5bddb1612f9cfb884b339f837c7aa2
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 315c635ba0864dc1565fd7ba5ccc450223d87ac9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86225097"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494714"
 ---
 # <a name="create-an-image-from-a-vhd-or-snapshot-in-a-shared-image-gallery-using-powershell"></a>Een installatie kopie maken van een VHD of moment opname in een galerie met gedeelde afbeeldingen met behulp van Power shell
 
@@ -90,9 +90,9 @@ Definities van installatiekopieën maken een logische groepering voor installati
 
 Wanneer u de definitie van de installatie kopie maakt, moet u ervoor zorgen dat alle juiste gegevens worden verstrekt. In dit voor beeld gaan we ervan uit dat de moment opname of VHD afkomstig is van een virtuele machine die in gebruik is en niet is gegeneraliseerd. Als de VHD of moment opname is gemaakt van een gegeneraliseerd besturings systeem (na het uitvoeren van Sysprep voor Windows of [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` of `-deprovision+user` voor Linux), wijzigt u vervolgens de `-OsState` to `generalized` . 
 
-Zie [Installatiekopiedefinities](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions) voor meer informatie over de waarden die u kunt specificeren voor een installatiekopiedefinitie.
+Zie [Installatiekopiedefinities](./windows/shared-image-galleries.md#image-definitions) voor meer informatie over de waarden die u kunt specificeren voor een installatiekopiedefinitie.
 
-Maak de definitie van de installatiekopie met behulp van [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion). In dit voor beeld heeft de definitie van de installatie kopie de naam *myImageDefinition*en is voor een gespecialiseerd Windows-besturings systeem. Als u een definitie voor installatie kopieën wilt maken met behulp van een Linux-besturings systeem, gebruikt u `-OsType Linux` . 
+Maak de definitie van de installatiekopie met behulp van [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion). In dit voor beeld heeft de definitie van de installatie kopie de naam *myImageDefinition*en is voor een gespecialiseerd Windows-besturings systeem. Als u een definitie voor installatie kopieën wilt maken met behulp van een Linux-besturings systeem, gebruikt u `-OsType Linux` . 
 
 ```azurepowershell-interactive
 $imageDefinition = New-AzGalleryImageDefinition `
@@ -107,14 +107,14 @@ $imageDefinition = New-AzGalleryImageDefinition `
    -Sku 'mySKU'
 ```
 
-### <a name="purchase-plan-information"></a>Informatie over het aankoop plan
+### <a name="purchase-plan-information"></a>Aankoopplaninformatie
 
 In sommige gevallen moet u de informatie van het aankoop plan door geven bij het maken van een virtuele machine op basis van een installatie kopie die is gebaseerd op een installatie kopie van Azure Marketplace. In deze gevallen raden we u aan om de informatie over het aankoop plan op te nemen in de definitie van de installatie kopie. In dit geval raadpleegt [u informatie over het aankoop plan van Azure Marketplace opgeven bij het maken van installatie kopieën](marketplace-images.md).
 
 
 ## <a name="create-an-image-version"></a>De versie van een installatiekopie maken
 
-Maak een installatie kopie versie van de moment opname met behulp van [New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion). 
+Maak een installatie kopie versie van de moment opname met behulp van [New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion). 
 
 Toegestane tekens voor een installatiekopieversie zijn cijfers en punten. Cijfers moeten binnen het bereik van een 32-bits geheel getal zijn. Indeling: *MajorVersion*.*MinorVersion*.*Patch*.
 
@@ -148,7 +148,7 @@ $job.State
 > [!NOTE]
 > U moet wachten tot de versie van de installatie kopie volledig is gebouwd en gerepliceerd voordat u dezelfde moment opname kunt gebruiken om een andere afbeeldings versie te maken. 
 >
-> U kunt ook uw installatie kopie versie opslaan in [zone redundante opslag](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) door toe te voegen `-StorageAccountType Standard_ZRS` Wanneer u de installatie kopie versie maakt.
+> U kunt ook uw installatie kopie versie opslaan in [zone redundante opslag](../storage/common/storage-redundancy.md) door toe te voegen `-StorageAccountType Standard_ZRS` Wanneer u de installatie kopie versie maakt.
 >
 
 ## <a name="delete-the-source"></a>De bron verwijderen

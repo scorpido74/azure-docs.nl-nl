@@ -1,31 +1,30 @@
 ---
-title: Time Series-model-Azure Time Series Insights | Microsoft Docs
-description: Meer informatie over time series-model in Azure Time Series Insights preview.
+title: Time Series-model-Azure Time Series Insights Gen2 | Microsoft Docs
+description: Meer informatie over time series model in Azure Time Series Insights Gen2.
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/18/2020
+ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: c5a22987b1d67f9e9f8384e5376343af2f91b5e0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 98951dc29b7c8504cbf1654a810ebba933fef3a1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86049848"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495377"
 ---
-# <a name="time-series-model-in-azure-time-series-insights-preview"></a>Time Series-model in Azure Time Series Insights preview
+# <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Time Series-model in Azure Time Series Insights Gen2
 
-In dit artikel wordt beschreven hoe u een tijdreeks model, de mogelijkheden en het maken en bijwerken van uw eigen modellen in de Azure Time Series Insights voorbeeld omgeving kunt beginnen.
+In dit artikel worden de tijdreeks modellen, de mogelijkheden en het maken en bijwerken van uw eigen modellen in de Azure Time Series Insights Gen2 omgeving beschreven.
 
 > [!TIP]
 >
 > * Ga naar de [Contoso wikkeling-Farm demo](https://insights.timeseries.azure.com/preview/samples) omgeving voor een live time series model-voor beeld.
-> * Meer informatie over de [Azure time series Insights preview Explorer](time-series-insights-update-explorer.md) om te leren hoe u kunt navigeren in de gebruikers interface van uw tijd reeks model.
-> * Meer informatie [over het werken met een time series-model](time-series-insights-update-how-to-tsm.md) met behulp van de time series Insights Web Explorer.
+> * Meer informatie [over het werken met een time series-model](time-series-insights-update-how-to-tsm.md) met behulp van de Azure time series Insights Gen2 Explorer.
 
 ## <a name="summary"></a>Samenvatting
 
@@ -58,7 +57,7 @@ Deze beperkingen onthulden het belang van slimme gegevens aggregatie en visualis
 
 ### <a name="key-capabilities"></a>Belangrijkste mogelijkheden
 
-Met het doel om eenvoudig en moeiteloos tijd Series contextualization te beheren, maakt time series model de volgende mogelijkheden in Time Series Insights preview. U kunt het volgende doen:
+Met het doel om eenvoudig en moeiteloos tijd Series contextualization te beheren, maakt time series model de volgende mogelijkheden in Azure Time Series Insights Gen2. U kunt het volgende doen:
 
 * Berekenings-of formules ontwerpen en beheren met scalaire functies, aggregatie bewerkingen, enzovoort.
 * Definieer de relaties tussen bovenliggende en onderliggende items om navigatie, zoek acties en verwijzingen in te scha kelen.
@@ -72,11 +71,11 @@ Time Series model heeft drie kern onderdelen:
 * [Time Series-model hiërarchieën](#time-series-model-hierarchies)
 * [Typen Time Series-modellen](#time-series-model-types)
 
-Deze onderdelen worden gecombineerd om een time series-model op te geven en om uw Azure Time Series Insights gegevens te organiseren.
+Deze onderdelen worden gecombineerd om een time series-model op te geven en om uw gegevens te organiseren.
 
 [![Overzichts grafiek voor tijdreeks model](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-Een time series-model kan worden gemaakt en beheerd via de [Time Series Insights preview](time-series-insights-update-how-to-tsm.md) -interface. Instellingen voor tijdreeks modellen kunnen worden beheerd via de [API voor model instellingen](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api).
+Een time series-model kan worden gemaakt en beheerd via de [Azure time series Insights Gen2 Explorer](time-series-insights-update-how-to-tsm.md). Instellingen voor tijdreeks modellen kunnen worden beheerd via de [API voor model instellingen](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api).
 
 ## <a name="time-series-model-instances"></a>Exemplaren van de time series-model
 
@@ -88,7 +87,7 @@ Instanties bevatten beschrijvende informatie die betrekking heeft op *instantie-
 
 *Exemplaar velden* zijn een verzameling beschrijvende gegevens die waarden voor hiërarchie niveaus kunnen bevatten, evenals de fabrikant, operator, enzovoort.
 
-Nadat een gebeurtenis bron is geconfigureerd voor de Time Series Insights omgeving, worden exemplaren automatisch gedetecteerd en gemaakt in een time series-model. De exemplaren kunnen via de Time Series Insights Explorer worden gemaakt of bijgewerkt door gebruik te maken van Time Series-model query's.
+Nadat een gebeurtenis bron is geconfigureerd voor de Azure Time Series Insights Gen2-omgeving, worden exemplaren automatisch gedetecteerd en gemaakt in een time series-model. De exemplaren kunnen worden gemaakt of bijgewerkt via de Azure Time Series Insights Gen2 Explorer door gebruik te maken van Time Series-model query's.
 
 De [demo](https://insights.timeseries.azure.com/preview/samples) van de contoso-Farm bevat enkele voor beelden van Live instances.
 
@@ -130,15 +129,15 @@ Exemplaren hebben de volgende JSON-weer gave:
 ```
 
 > [!TIP]
-> Lees voor de API voor Time Series Insights-api's en het maken, lezen, bijwerken en verwijderen (ruwe) ondersteuning, het [gegevens query](concepts-query-overview.md#time-series-model-query-tsm-q-apis) -artikel en de [API-documentatie](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api)van het exemplaar.
+> Lees het artikel over het [uitvoeren van gegevens query's](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) en de [API-documentatie](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api)van het exemplaar van API voor instance-api's maken, lezen, bijwerken en verwijderen (ruw).
 
 ## <a name="time-series-model-hierarchies"></a>Time Series-model hiërarchieën
 
 Met *hiërarchieën* voor time series-modellen worden instanties geordend door eigenschapnamen en hun relaties op te geven.
 
-U kunt meerdere hiërarchieën configureren in een bepaalde Time Series Insights omgeving. Een exemplaar van een time series-model kan worden toegewezen aan een enkele of meerdere hiërarchieën (veel-op-veel-relatie).
+U kunt meerdere hiërarchieën configureren in een bepaalde Azure Time Series Insights Gen2-omgeving. Een exemplaar van een time series-model kan worden toegewezen aan een enkele of meerdere hiërarchieën (veel-op-veel-relatie).
 
-De [Contoso wikkeling-Farm demo](https://insights.timeseries.azure.com/preview/samples) client interface geeft een standaard exemplaar en een type hiërarchie weer.
+In de demo van de [Contoso-Wind Farm](https://insights.timeseries.azure.com/preview/samples) wordt een standaard exemplaar en een type hiërarchie weer gegeven.
 
 [![Voor beeld van hiërarchie van Time Series-model](media/v2-update-tsm/time-series-model-hierarchies.png)](media/v2-update-tsm/time-series-model-hierarchies.png#lightbox)
 
@@ -187,9 +186,9 @@ In het vorige voor beeld van JSON:
 * `ManufactureDate`Hiermee definieert u een hiërarchie met bovenliggend `year` en onderliggend item `month` . Elk `ManufactureDate` kan meerdere hebben `years` , die op zijn beurt meerdere kunnen bevatten `months` .
 
 > [!TIP]
-> Lees voor Time Series Insights instance API en ruwe ondersteuning het artikel [gegevens query's](concepts-query-overview.md#time-series-model-query-tsm-q-apis) en de documentatie van de [hiërarchie-API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api).
+> Lees voor de hiërarchie-API maken, lezen, bijwerken en verwijderen (ruwe) ondersteuning het artikel [gegevens query's](concepts-query-overview.md#time-series-model-query-tsm-q-apis) en de documentatie van de [hiërarchie-API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api).
 
-### <a name="hierarchy-example"></a>Hiërarchie-voor beeld
+### <a name="hierarchy-example"></a>Voorbeeld van een hiërarchie
 
 Bekijk een voor beeld waarin **H1** hiërarchie H1 `building` , `floor` en `room` als onderdeel van de **instanceFieldNames** -definitie:
 
@@ -217,13 +216,13 @@ Op basis van de instantie velden die worden gebruikt in de vorige definitie en e
 | ID4 | ' buil ding ' = ' 1000 ', ' Floor ' = ' 10 '  |
 | ID5 | Geen: ' buil ding ', ' Floor ' of ' room ' is ingesteld. |
 
-Time Series **id1** en **ID4** worden weer gegeven als onderdeel van de hiërarchie **H1** in de [Azure time series Insights Explorer](time-series-insights-update-explorer.md) , omdat ze volledig gedefinieerde en correct bestelde *bouw*-, *vloer*-en *room* -para meters hebben gedefinieerd.
+Time Series **id1** en **ID4** worden weer gegeven als onderdeel van de hiërarchie **H1** in de [Azure time series Insights Gen2 Explorer](time-series-insights-update-explorer.md) , omdat ze volledig gedefinieerde en correct bestelde *bouw*-, *vloer*-en *room* -para meters hebben gedefinieerd.
 
 De andere zijn ingedeeld onder niet- *bovenliggende instanties* , omdat ze niet voldoen aan de opgegeven gegevens hiërarchie.
 
 ## <a name="time-series-model-types"></a>Typen Time Series-modellen
 
-Met de *typen* tijd reeks modellen kunt u variabelen of formules voor het uitvoeren van berekeningen definiëren. Typen zijn gekoppeld aan een specifiek Time Series Insights exemplaar.
+Met de *typen* tijd reeks modellen kunt u variabelen of formules voor het uitvoeren van berekeningen definiëren. Typen zijn gekoppeld aan een specifiek exemplaar.
 
 Een type kan een of meer variabelen hebben. Een exemplaar van een time series-model kan bijvoorbeeld van het type *temperatuur sensor*zijn, dat bestaat uit de *gemiddelde Tempe ratuur*, *minimale Tempe ratuur*en de *maximale Tempe ratuur*.
 
@@ -232,7 +231,7 @@ In de demo van de [Contoso wikkeling-Farm](https://insights.timeseries.azure.com
 [![Voor beeld van type time series-model](media/v2-update-tsm/time-series-model-types.png)](media/v2-update-tsm/time-series-model-types.png#lightbox)
 
 > [!TIP]
-> Lees voor Time Series Insights instance API en ruwe ondersteuning het artikel [gegevens query's](concepts-query-overview.md#time-series-model-query-tsm-q-apis) en de rest- [documentatie van het type API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api).
+> Lees voor de typen API maken, lezen, bijwerken en verwijderen (ruwe) ondersteuning, het [gegevens query](concepts-query-overview.md#time-series-model-query-tsm-q-apis) -artikel en de [type API rest-documentatie](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api).
 
 ### <a name="type-properties"></a>Type-eigenschappen
 
@@ -266,7 +265,7 @@ Typen voldoen aan het volgende JSON-voor beeld:
         "Interpolated Speed": {
           "kind": "numeric",
           "value": {
-              "tsx": "$event.[speed].Double"
+              "tsx": "$event['Speed-Sensor'].Double"
           },
           "filter": null,
           "interpolation": {
@@ -276,7 +275,7 @@ Typen voldoen aan het volgende JSON-voor beeld:
               }
           },
           "aggregation": {
-              "tsx": "left($value)"
+              "tsx": "right($value)"
           }
         }
       }
@@ -284,114 +283,12 @@ Typen voldoen aan het volgende JSON-voor beeld:
   ]
 }
 ```
-
-### <a name="variables"></a>Variabelen
-
-Time Series Insights typen kunnen veel variabelen hebben waarmee formule-en reken regels voor gebeurtenissen worden opgegeven.
-
-Elke variabele kan een van de volgende drie *typen*zijn: *numeric*, *categorische*en *aggregatie*.
-
-* **Numerieke** soorten werken met doorlopende waarden.
-* **Categorische** -soorten werken met een gedefinieerde set discrete waarden.
-* **Aggregatie** waarden combi neren meerdere variabelen van één soort (ofwel alle numerieke of alle categorische).
-
-In de volgende tabel ziet u welke eigenschappen relevant zijn voor elk type variabele.
-
-[![Tabel met variabele Time Series-modellen](media/v2-update-tsm/time-series-model-variable-table.png)](media/v2-update-tsm/time-series-model-variable-table.png#lightbox)
-
-#### <a name="numeric-variables"></a>Numerieke variabelen
-
-| Eigenschap variable | Description |
-| --- | ---|
-| Variabele filter | Filters zijn optionele voorwaardelijke componenten voor het beperken van het aantal rijen dat wordt overwogen voor berekening. |
-| Waarde van variabele | Telemetrie-waarden die worden gebruikt voor berekeningen die afkomstig zijn van het apparaat of Sens oren of worden getransformeerd met behulp van Time Series-expressies. De variabelen van een numeriek type moeten van het type *Double*zijn.|
-| Variabele interpolatie | Interpolatie Hiermee geeft u op hoe een signaal opnieuw moet worden samengesteld met behulp van bestaande gegevens. Opties voor *stap* -en *lineaire* interpolatie zijn beschikbaar voor numerieke variabelen. |
-| Variabele aggregatie | Ondersteunings berekeningen met de Opera tors *Gem*, *min*, *Max*, *som*, *aantal*, *eerste*, *laatste* en tijd gewogen (*Gem*, *min*, *Max*, *Sum*, *Left*). |
-
-Variabelen voldoen aan het volgende JSON-voor beeld:
-
-```JSON
-"Interpolated Speed": {
-  "kind": "numeric",
-  "value": {
-    "tsx": "$event.[speed].Double"
-  },
-  "filter": null,
-  "interpolation": {
-    "kind": "step",
-    "boundary": {
-      "span": "P1D"
-    }
-  },
-  "aggregation": {
-    "tsx": "left($value)"
-  }
-}
-```
-
-#### <a name="categorical-variables"></a>Categorische variabelen
-
-| Eigenschap variable | Description |
-| --- | ---|
-| Variabele filter | Filters zijn optionele voorwaardelijke componenten voor het beperken van het aantal rijen dat wordt overwogen voor berekening. |
-| Waarde van variabele | Telemetrie-waarden die worden gebruikt voor de berekening die afkomstig zijn van het apparaat of de Sens oren. Categorische-variabelen moeten een *Long-waarde* of een *teken reeks*zijn. |
-| Variabele interpolatie | Interpolatie Hiermee geeft u op hoe een signaal opnieuw moet worden samengesteld met behulp van bestaande gegevens. De optie interpolatie van de *stap* is beschikbaar voor Categorische-variabelen. |
-| Variabelen Categorieën | Categorieën maken een toewijzing tussen de waarden die afkomstig zijn van het apparaat of Sens oren aan een label. |
-| Variabele standaard categorie | De standaard categorie is voor alle waarden die niet worden toegewezen in de eigenschap ' categories '. |
-
-Variabelen voldoen aan het volgende JSON-voor beeld:
-
-```JSON
-"Status": {
-  "kind": "categorical",
-  "value": {
-     "tsx": "toLong($event.[Status].Double)"
-},
-  "interpolation": {
-    "kind": "step",
-    "boundary": {
-      "span" : "PT1M"
-    }
-  },
-  "categories": [
-    {
-      "values": [0, 1, 2],
-      "label": "Good"
-    },
-    {
-      "values": [3],
-      "label": "Bad"
-    }
-  ],
-  "defaultCategory": {
-    "label": "Not Applicable"
-  }
-}
-```
-
-#### <a name="aggregate-variables"></a>Aggregatie variabelen
-
-| Eigenschap variable | Description |
-| --- | ---|
-| Variabele filter | Filters zijn optionele voorwaardelijke componenten voor het beperken van het aantal rijen dat wordt overwogen voor berekening. |
-| Variabele aggregatie | Ondersteunings berekening door *Gem*, *min*, *Max*, *Sum*, *aantal*, *First*, *last*. |
-
-Variabelen voldoen aan het volgende JSON-voor beeld:
-
-```JSON
-"Aggregate Speed": {
-  "kind": "aggregate",
-  "filter": null,
-  "aggregation": {
-    "tsx": "avg($event.Speed.Double)"
-  }
-}
-```
-
-Variabelen worden opgeslagen in de type definitie van een time series-model en kunnen worden aangelegd via [query-api's](concepts-query-overview.md) om de opgeslagen definitie te overschrijven.
+De tijdreeks model typen kunnen veel variabelen hebben die formule-en verwerkings regels op gebeurtenissen opgeven. Meer informatie over [het definiëren van tijd reeks model variabelen](./concepts-variables.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [gegevens query's](concepts-query-overview.md)
+- Lees de referentie documentatie voor [Time Series model](https://docs.microsoft.com/rest/api/time-series-insights/preview-model) voor meer informatie over het bewerken van het model via api's.
 
-* Lees de referentie documentatie voor [Time Series model](https://docs.microsoft.com/rest/api/time-series-insights/preview-model) .
+- Verken de formules en berekeningen die u kunt maken met [Time Series model-variabelen](./concepts-variables.md)
+
+- Meer informatie over het [opvragen van gegevens](concepts-query-overview.md) in azure time series Insights Gen2

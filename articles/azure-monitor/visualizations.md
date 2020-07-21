@@ -6,13 +6,14 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 2da0cd2ede33abe8ebbe3616192349112fb24bae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0176454b38dfa88480e63fedfae175a63192eaee
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83797501"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498590"
 ---
-# <a name="visualizing-data-from-azure-monitor"></a>Gegevens visualiseren van Azure Monitor
+# <a name="visualizing-data-from-azure-monitor"></a>Gegevens van Azure Monitor visualiseren
 Dit artikel bevat een overzicht van de beschik bare methoden voor het visualiseren van logboek-en metrische gegevens die zijn opgeslagen in Azure Monitor.
 
 Visualisaties zoals grafieken en grafieken kunnen u helpen bij het analyseren van uw bewakings gegevens om in te zoomen op problemen en patronen te identificeren. Afhankelijk van het hulp programma dat u gebruikt, hebt u mogelijk ook de mogelijkheid om visualisaties te delen met andere gebruikers binnen en buiten uw organisatie.
@@ -39,6 +40,8 @@ Visualisaties zoals grafieken en grafieken kunnen u helpen bij het analyseren va
 [Azure-Dash boards](../azure-portal/azure-portal-dashboards.md) zijn de primaire Dashboard technologie voor Azure. Ze zijn vooral handig voor het leveren van een enkel glas venster over uw Azure-infra structuur en-services, zodat u snel belang rijke problemen kunt identificeren.
 
 ![Dashboard](media/visualizations/dashboard.png)
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4AslH]
 
 ### <a name="advantages"></a>Voordelen
 - Diep gaande integratie in Azure. Visualisaties kunnen worden vastgemaakt aan dash boards van meerdere Azure-pagina's, waaronder Metrics Explorer, Log Analytics en Application Insights.

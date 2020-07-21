@@ -3,12 +3,12 @@ title: Gebruik en prestaties bewaken voor Windows-bureaublad-apps
 description: Analyseer het gebruik en de prestaties van uw Windows-bureaublad-app met Application Insights.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 1b8909c47594ebd752035ca88b23d4b836345f88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ddb602536e1b8bbc987c4ba366e2007163c814ec
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84718781"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499185"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>Gebruik en prestaties bewaken in Klassieke Windows-bureaublad-apps
 
@@ -73,9 +73,9 @@ using Microsoft.ApplicationInsights;
 
 Standaard verzamelt deze SDK de computer naam van het systeem dat telemetrie verzendt en opslaat.
 
-De computer naam wordt gebruikt door de [prijs categorie Application Insights verouderde onderneming (per knoop punt)](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier) voor interne facturerings doeleinden. Als u een initialisatie functie voor telemetrie gebruikt om te overschrijven `telemetry.Context.Cloud.RoleInstance` , wordt er standaard een afzonderlijke eigenschap `ai.internal.nodeName` verzonden, waarin de waarde van de computer naam nog steeds wordt opgenomen. Deze waarde wordt niet opgeslagen met uw Application Insights telemetrie, maar wordt intern gebruikt bij opname om achterwaartse compatibiliteit met het op verouderde op knoop punt gebaseerde facturerings model mogelijk te maken.
+De computer naam wordt gebruikt door de [prijs categorie Application Insights verouderde onderneming (per knoop punt)](./pricing.md#legacy-enterprise-per-node-pricing-tier) voor interne facturerings doeleinden. Als u een initialisatie functie voor telemetrie gebruikt om te overschrijven `telemetry.Context.Cloud.RoleInstance` , wordt er standaard een afzonderlijke eigenschap `ai.internal.nodeName` verzonden, waarin de waarde van de computer naam nog steeds wordt opgenomen. Deze waarde wordt niet opgeslagen met uw Application Insights telemetrie, maar wordt intern gebruikt bij opname om achterwaartse compatibiliteit met het op verouderde op knoop punt gebaseerde facturerings model mogelijk te maken.
 
-Als u zich in de [prijs categorie verouderde onderneming (per knoop punt)](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier) bevindt en simpelweg de opslag van de computer naam moet overschrijven, gebruikt u de initialisatie functie voor telemetrie:
+Als u zich in de [prijs categorie verouderde onderneming (per knoop punt)](./pricing.md#legacy-enterprise-per-node-pricing-tier) bevindt en simpelweg de opslag van de computer naam moet overschrijven, gebruikt u de initialisatie functie voor telemetrie:
 
 **Schrijf aangepaste TelemetryInitializer zoals hieronder.**
 
@@ -116,7 +116,7 @@ Exemplaar de initialisatie functie in de `Program.cs` `Main()` onderstaande meth
 
 ## <a name="override-transmission-of-computer-name"></a>Verzen ding van computer naam overschrijven
 
-Als u zich niet in de [prijs categorie verouderde onderneming (per knoop punt)](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier) bevindt en wilt voor komen dat een telemetrie met de computer naam wordt verzonden, moet u een telemetrie-processor gebruiken.
+Als u zich niet in de [prijs categorie verouderde onderneming (per knoop punt)](./pricing.md#legacy-enterprise-per-node-pricing-tier) bevindt en wilt voor komen dat een telemetrie met de computer naam wordt verzonden, moet u een telemetrie-processor gebruiken.
 
 ### <a name="telemetry-processor"></a>Telemetrie-processor
 
@@ -172,11 +172,10 @@ namespace WindowsFormsApp2
 ```
 
 > [!NOTE]
-> Hoewel u technisch gebruik kunt maken van een telemetrie-processor zoals hierboven wordt beschreven, zelfs als u zich in de [prijs categorie verouderde onderneming (per knoop punt)](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier)bevindt, leidt dit ertoe dat het mogelijk is om te voor komen dat knoop punten goed kunnen worden onderscheiden voor prijzen per knoop punt.
+> Hoewel u technisch gebruik kunt maken van een telemetrie-processor zoals hierboven wordt beschreven, zelfs als u zich in de [prijs categorie verouderde onderneming (per knoop punt)](./pricing.md#legacy-enterprise-per-node-pricing-tier)bevindt, leidt dit ertoe dat het mogelijk is om te voor komen dat knoop punten goed kunnen worden onderscheiden voor prijzen per knoop punt.
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Een dashboard maken](../../azure-monitor/app/overview-dashboard.md)
 * [Diagnostische gegevens doorzoeken](../../azure-monitor/app/diagnostic-search.md)
 * [Metrische gegevens verkennen](../../azure-monitor/platform/metrics-charts.md)
-* [Analytics-query's schrijven](../../azure-monitor/app/analytics.md)
-
+* [Analytics-query's schrijven](../log-query/log-query-overview.md)

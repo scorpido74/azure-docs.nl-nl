@@ -6,15 +6,16 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: tracking-python
-ms.openlocfilehash: d12db3ab046d115b60b67a9c22bf4e885cd0ef02
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e99ea1d5a90455a4c470346fbbe5d1095c426e81
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782565"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499457"
 ---
 # <a name="track-dependencies-with-opencensus-python"></a>Afhankelijkheden bijhouden met opentellingen python
 
-Een afhankelijkheid is een extern onderdeel dat wordt aangeroepen door uw toepassing. Afhankelijkheids gegevens worden verzameld met opentellingen python en de verschillende integraties. De gegevens worden vervolgens naar Application Insights onder Azure Monitor als `dependencies` telemetrie verzonden.
+Een afhankelijkheid is een extern onderdeel dat wordt aangeroepen via uw toepassing. Afhankelijkheids gegevens worden verzameld met opentellingen python en de verschillende integraties. De gegevens worden vervolgens naar Application Insights onder Azure Monitor als `dependencies` telemetrie verzonden.
 
 Eerst moet u uw python-toepassing instrumenteren met de nieuwste [Opentellingen PYTHON SDK](../../azure-monitor/app/opencensus-python.md).
 
@@ -85,7 +86,7 @@ conn.close()
 Volg uw uitgaande Django-aanvragen met de opentellings `django` integratie.
 
 > [!NOTE]
-> De enige uitgaande Django-aanvragen die worden bijgehouden, worden aanroepen naar een Data Base. Zie [inkomende aanvragen](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-request#tracking-django-applications)voor aanvragen voor de Django-toepassing.
+> De enige uitgaande Django-aanvragen die worden bijgehouden, worden aanroepen naar een Data Base. Zie [inkomende aanvragen](./opencensus-python-request.md#tracking-django-applications)voor aanvragen voor de Django-toepassing.
 
 Down load en Installeer `opencensus-ext-django` vanaf [PyPI](https://pypi.org/project/opencensus-ext-django/) en voeg de volgende regel toe aan de `MIDDLEWARE` sectie in het Django- `settings.py` bestand.
 

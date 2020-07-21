@@ -1,5 +1,5 @@
 ---
-title: Prestaties van Column store-index verbeteren
+title: Prestaties van Column store-index verbeteren (voor beeld van werk ruimten)
 description: Verminder de geheugen vereisten of verg root het beschik bare geheugen om het aantal rijen te maximaliseren dat een column store-index in elk Rijg roep wordt gecomprimeerd.
 services: synapse-analytics
 author: kevinvngo
@@ -11,14 +11,14 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: f1f3667c088c5f7300317ea02ca19a72e4e62905
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c885bce5ca17d5919ec134d179f6009e91a969cc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81431031"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495479"
 ---
-# <a name="maximizing-rowgroup-quality-for-columnstore"></a>Maximale Rijg roep-kwaliteit voor column Store
+# <a name="maximizing-rowgroup-quality-for-columnstore-index-performance"></a>Maximale Rijg roep-kwaliteit voor column store-index prestaties
 
 De kwaliteit van de Rijg roep wordt bepaald door het aantal rijen in een Rijg roep. Het verg Roten van het beschik bare geheugen kan het aantal rijen dat een column store-index in elke Rijg roep wordt gecomprimeerd, maximaliseren.  Gebruik deze methoden voor het verbeteren van de compressie frequentie en de query prestaties voor column Store-indexen.
 

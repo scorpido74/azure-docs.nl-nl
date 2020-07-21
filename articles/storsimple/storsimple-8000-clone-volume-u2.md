@@ -4,22 +4,18 @@ description: Hierin worden de verschillende typen klonen en het gebruik beschrev
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
-editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: how-to
-ms.tgt_pltfrm: NA
-ms.workload: TBD
-ms.date: 12/05/2017
+ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 1ddc7d9e359fbb43680ae093c4e6cd2b9fb1ab2d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 86a3e2ab15e83f5393315f75f37ad8b41d3489b2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514988"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496142"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>StorSimple Device Manager-service in Azure-portal gebruiken om een volume te klonen
 
@@ -51,7 +47,7 @@ Houd rekening met de volgende informatie bij het klonen van een volume.
 
 U kunt een kloon maken op hetzelfde apparaat, op een ander apparaat of zelfs op een Cloud apparaat door een lokale of een Cloud momentopname te gebruiken.
 
-In de volgende procedure wordt beschreven hoe u een kloon maakt vanuit de back-catalogus.  Een alternatieve methode om kloon te initiëren is door naar **volumes**te gaan, een volume te selecteren en vervolgens met de rechter muisknop te klikken om het context menu te openen en **klonen**te selecteren.
+In de volgende procedure wordt beschreven hoe u een kloon maakt vanuit de back-catalogus.  
 
 Voer de volgende stappen uit om een kloon van uw volume te maken uit de back-upcatalogus.
 

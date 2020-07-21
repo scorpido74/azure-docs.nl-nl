@@ -7,11 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: f4e5bbdc50d99eca774dc5b96657ac8bfdebca17
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c739c6483832c08a91f2a5318853bf48e5d41854
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85414144"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496958"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Wat is een persoonlijk Azure-eind punt?
 
@@ -68,10 +69,10 @@ Een persoonlijke koppelings bron is het doel doel van een gegeven persoonlijk ei
 |**Azure Kubernetes Service - Kubernetes API** | Micro soft. container service/managedClusters    | managedCluster |
 |**Azure Search** | Micro soft. Search/searchService| searchService|  
 |**Azure Container Registry** | Micro soft. ContainerRegistry/registers    | registry |
-|**Azure App Configuration** | Micro soft. Appconfiguration/configurationStores    | configurationStore |
-|**Azure Backup** | Micro soft. Recovery Services/kluizen    | kluis |
-|**Azure Event Hub** | Micro soft. EventHub/naam ruimten    | naamruimte |
-|**Azure Service Bus** | Micro soft. ServiceBus/naam ruimten | naamruimte |
+|**Azure App Configuration** | Micro soft. Appconfiguration/configurationStores    | configurationStores |
+|**Azure Backup** | Microsoft.RecoveryServices/vaults    | kluis |
+|**Azure Event Hub** | Microsoft.EventHub/namespaces    | naamruimte |
+|**Azure Service Bus** | Microsoft.ServiceBus/namespaces | naamruimte |
 |**Azure Relay** | Micro soft. relay/naam ruimten | naamruimte |
 |**Azure Event Grid** | Micro soft. EventGrid/topics    | onderwerp |
 |**Azure Event Grid** | Micro soft. EventGrid/domeinen    | domein |

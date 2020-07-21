@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: e97f607c17f746c3cb16a17b7f579a58d4914608
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 443112628edddf9c60cd6469f046b1a9e066dc82
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85553143"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496414"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-cognitive-search"></a>Beveiligings filters voor het verkleinen van de resultaten in azure Cognitive Search
 
@@ -34,26 +34,29 @@ In dit artikel wordt beschreven hoe u beveiligings filtering kunt uitvoeren met 
 
 ## <a name="prerequisites"></a>Vereisten
 
-In dit artikel wordt ervan uitgegaan dat u een [Azure-abonnement](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F), [Azure Cognitive Search-service](https://docs.microsoft.com/azure/search/search-create-service-portal)en [Azure Cognitive search index](https://docs.microsoft.com/azure/search/search-create-index-portal)hebt.  
+In dit artikel wordt ervan uitgegaan dat u een [Azure-abonnement](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F), een[Azure Cognitive Search-service](search-create-service-portal.md)en een [index](search-what-is-an-index.md)hebt.  
 
 ## <a name="create-security-field"></a>Beveiligings veld maken
 
 Uw documenten moeten een veld bevatten waarin wordt aangegeven welke groepen toegang hebben. Deze informatie wordt het filter criterium waarmee documenten worden geselecteerd of afgewezen in de resultatenset die wordt geretourneerd naar de verlener.
 We gaan ervan uit dat we een index van beveiligde bestanden hebben en dat elk bestand toegankelijk is voor een andere set gebruikers.
+
 1. Voeg een veld toe `group_ids` (u kunt hier een wille keurige naam kiezen) als een `Collection(Edm.String)` . Zorg ervoor dat het veld een `filterable` kenmerk heeft ingesteld `true` zodat de zoek resultaten worden gefilterd op basis van de toegang die de gebruiker heeft. Als u bijvoorbeeld het `group_ids` veld instelt op `["group_id1, group_id2"]` voor het document met `file_name` ' secured_file_b ', hebben alleen gebruikers die deel uitmaken van groeps-id's ' group_id1 ' of ' group_id2 ' Lees toegang tot het bestand.
+   
    Zorg ervoor dat het kenmerk van het veld `retrievable` is ingesteld op `false` zodat het niet wordt geretourneerd als onderdeel van de zoek opdracht.
+
 2. U kunt `file_id` ook `file_name` velden toevoegen voor dit voor beeld.  
 
-```JSON
-{
-    "name": "securedfiles",  
-    "fields": [
-        {"name": "file_id", "type": "Edm.String", "key": true, "searchable": false, "sortable": false, "facetable": false},
-        {"name": "file_name", "type": "Edm.String"},
-        {"name": "group_ids", "type": "Collection(Edm.String)", "filterable": true, "retrievable": false}
-    ]
-}
-```
+    ```JSON
+    {
+        "name": "securedfiles",  
+        "fields": [
+            {"name": "file_id", "type": "Edm.String", "key": true, "searchable": false, "sortable": false, "facetable": false},
+            {"name": "file_name", "type": "Edm.String"},
+            {"name": "group_ids", "type": "Collection(Edm.String)", "filterable": true, "retrievable": false}
+        ]
+    }
+    ```
 
 ## <a name="pushing-data-into-your-index-using-the-rest-api"></a>Gegevens naar uw index pushen met behulp van de REST API
   

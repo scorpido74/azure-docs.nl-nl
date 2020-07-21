@@ -1,5 +1,5 @@
 ---
-title: Gedeelde VM-installatie kopieën gebruiken om een schaalset in azure te maken
+title: Gedeelde VM-installatie kopieën gebruiken om een schaalset te maken in Azure PowerShell
 description: Meer informatie over het gebruik van de Azure PowerShell voor het maken van gedeelde VM-installatie kopieën die u kunt gebruiken voor het implementeren van schaal sets voor virtuele machines in Azure.
 author: cynthn
 ms.service: virtual-machine-scale-sets
@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: d0912958aaa897e4f8bc18aa88e0c41078d375a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 55ca80296bfdfde162ca5a4df348fd80328dd184
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82792782"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494918"
 ---
 # <a name="create-and-use-shared-images-for-virtual-machine-scale-sets-with-the-azure-powershell"></a>Gedeelde installatie kopieën voor virtuele-machine schaal sets maken en gebruiken met de Azure PowerShell
 

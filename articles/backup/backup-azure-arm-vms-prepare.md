@@ -3,11 +3,12 @@ title: Back-ups maken van virtuele Azure-machines in een Recovery Services kluis
 description: Hierin wordt beschreven hoe u back-ups maakt van virtuele Azure-machines in een Recovery Services kluis met behulp van de Azure Backup
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: cba042efb08f121d4cd9fa5693edd69c827f1465
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88e7be7e2238637f1e6d5ac84abebdca0b9e1674
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83727009"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497927"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Back-ups maken van virtuele Azure-machines in een Recovery Services kluis
 
@@ -40,7 +41,7 @@ Daarnaast zijn er een aantal dingen die u in bepaalde omstandigheden mogelijk mo
 
  Een kluis slaat back-ups en herstel punten op die gedurende een periode zijn gemaakt en slaat back-upbeleid op dat is gekoppeld aan back-upcomputers. Maak als volgt een kluis:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Typ **Recovery Services**in zoeken. Klik onder **Services**op **Recovery Services kluizen**.
 
      ![Recovery Services kluizen zoeken](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png)
@@ -53,7 +54,7 @@ Daarnaast zijn er een aantal dingen die u in bepaalde omstandigheden mogelijk mo
     * De naam moet uniek zijn voor het Azure-abonnement.
     * Dit kan twee tot 50 tekens bevatten.
     * De naam moet beginnen met een letter en mag alleen letters, cijfers en afbreek streepjes bevatten.
-5. Selecteer het Azure-abonnement, de resource groep en de geografische regio waarin de kluis moet worden gemaakt. Klik vervolgens op **maken**.
+5. Selecteer het Azure-abonnement, de resource groep en de geografische regio waarin de kluis moet worden gemaakt. Klik vervolgens op **Maken**.
     * Het kan even duren voordat de kluis is gemaakt.
     * Bewaak de status meldingen in de rechter bovenhoek van de portal.
 
@@ -66,10 +67,10 @@ Nadat de kluis is gemaakt, wordt deze weer gegeven in de lijst Recovery Services
 
 ### <a name="modify-storage-replication"></a>Opslag replicatie wijzigen
 
-Standaard gebruiken kluizen de [geo-redundante opslag (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
+Standaard gebruiken kluizen de [geo-redundante opslag (GRS)](../storage/common/storage-redundancy.md).
 
 * Als de kluis uw primaire back-upmechanisme is, raden we u aan GRS te gebruiken.
-* U kunt [lokaal redundante opslag (LRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) gebruiken voor een goedkopere optie.
+* U kunt [lokaal redundante opslag (LRS)](../storage/common/storage-redundancy.md?toc=/azure/storage/blobs/toc.json) gebruiken voor een goedkopere optie.
 
 Wijzig het type opslag replicatie als volgt:
 
@@ -168,7 +169,7 @@ De **overdracht van gegevens naar de kluis** fase kan meerdere dagen duren, afha
 
 De taak status kan variëren, afhankelijk van de volgende scenario's:
 
-**Snapshot** | **Gegevens overdragen aan de kluis** | **Taak status**
+**Momentopname** | **Gegevens overdragen aan de kluis** | **Taak status**
 --- | --- | ---
 Voltooid | Actief | Actief
 Voltooid | Overgeslagen | Voltooid
@@ -188,7 +189,7 @@ Azure Backup maakt back-ups van virtuele Azure-machines door een uitbrei ding te
 **VM** | **Details**
 --- | ---
 **Windows** | 1. [down load en installeer](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) het MSI-bestand van de agent.<br/><br/> 2. Installeer met beheerders machtigingen op de computer.<br/><br/> 3. Controleer de installatie. Klik in *C:\WindowsAzure\Packages* op de virtuele machine met de rechter muisknop op **WaAppAgent.exe**  >  **Eigenschappen**. Op het tabblad **Details** moet de **product versie** 2.6.1198.718 of hoger zijn.<br/><br/> Als u de agent bijwerkt, moet u ervoor zorgen dat er geen back-upbewerkingen worden uitgevoerd en [installeert u de agent opnieuw](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
-**Linux** | Installeer met behulp van een RPM-of een DEB-pakket vanuit de pakket opslagplaats van uw distributie. Dit is de aanbevolen methode voor het installeren en upgraden van de Azure Linux-agent. Alle [gewaarmerkte distributie providers](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) integreren het Azure Linux-agent pakket in hun installatie kopieën en opslag plaatsen. De agent is beschikbaar op [github](https://github.com/Azure/WALinuxAgent), maar we raden niet aan om te installeren.<br/><br/> Als u de agent bijwerkt, zorg er dan voor dat er geen back-upbewerkingen worden uitgevoerd en werk de binaire bestanden bij.
+**Linux** | Installeer met behulp van een RPM-of een DEB-pakket vanuit de pakket opslagplaats van uw distributie. Dit is de aanbevolen methode voor het installeren en upgraden van de Azure Linux-agent. Alle [gewaarmerkte distributie providers](../virtual-machines/linux/endorsed-distros.md) integreren het Azure Linux-agent pakket in hun installatie kopieën en opslag plaatsen. De agent is beschikbaar op [github](https://github.com/Azure/WALinuxAgent), maar we raden niet aan om te installeren.<br/><br/> Als u de agent bijwerkt, zorg er dan voor dat er geen back-upbewerkingen worden uitgevoerd en werk de binaire bestanden bij.
 
 >[!NOTE]
 > **Azure Backup ondersteunt nu selectieve back-up en herstel met behulp van de back-upoplossing van Azure virtual machine.**

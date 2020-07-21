@@ -3,24 +3,25 @@ title: Azure Monitor inschakelen voor containers | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u Azure Monitor voor containers inschakelt en configureert, zodat u kunt zien hoe uw container presteert en welke problemen met betrekking tot de prestaties zijn geïdentificeerd.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: d85dd4f1eb89ddba96ec012acb7fb7550800ce7f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5131d7b8a357075345b5165398d5fa9fc06b5ad8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85800627"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499032"
 ---
 # <a name="enable-azure-monitor-for-containers"></a>Azure Monitor inschakelen voor containers
 
 Dit artikel bevat een overzicht van de opties die beschikbaar zijn voor het instellen van Azure Monitor voor containers voor het bewaken van de prestaties van werk belastingen die in Kubernetes-omgevingen worden geïmplementeerd en die worden gehost op:
 
-- [Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/)  
+- [Azure Kubernetes Service (AKS)](../../aks/index.yml)  
 - [Azure Red Hat open Shift](../../openshift/intro-openshift.md) versie 3. x en 4. x  
 - [Red Hat open Shift](https://docs.openshift.com/container-platform/4.3/welcome/index.html) versie 4. x  
 - Een [Kubernetes-cluster met Arc-functionaliteit](../../azure-arc/kubernetes/overview.md)
 
 U kunt ook de prestaties bewaken van werk belastingen die zijn geïmplementeerd op zelf beheerde Kubernetes-clusters die worden gehost op:
 - Azure, met behulp van de [AKS-engine](https://github.com/Azure/aks-engine)
-- [Azure stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910) of on-premises, met behulp van de AKS-engine.
+- [Azure stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910) of on-premises, met behulp van de AKS-engine.
 
 U kunt Azure Monitor voor containers inschakelen voor een nieuwe implementatie of voor een of meer bestaande implementaties van Kubernetes door gebruik te maken van een van de volgende ondersteunde methoden:
 
@@ -62,7 +63,7 @@ Voordat u begint, moet u ervoor zorgen dat u aan de volgende vereisten voldoet:
 
 Azure Monitor voor containers officiële ondersteunt de volgende configuraties:
 
-- Omgevingen: Azure Red Hat open Shift, Kubernetes on-premises en de AKS-engine op Azure en Azure Stack. Zie [de AKS-engine op Azure stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)voor meer informatie.
+- Omgevingen: Azure Red Hat open Shift, Kubernetes on-premises en de AKS-engine op Azure en Azure Stack. Zie [de AKS-engine op Azure stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)voor meer informatie.
 - De versies van Kubernetes en het ondersteunings beleid zijn hetzelfde als die welke worden [ondersteund in de Azure Kubernetes-service (AKS)](../../aks/supported-kubernetes-versions.md). 
 
 ## <a name="network-firewall-requirements"></a>Netwerk firewall vereisten
@@ -79,7 +80,7 @@ De volgende tabel geeft een lijst van de proxy-en firewall configuratie-informat
 
 De volgende tabel geeft een overzicht van de proxy-en firewall configuratie-informatie voor Azure China 21Vianet:
 
-|Agentresource|Poort |Description | 
+|Agentresource|Poort |Beschrijving | 
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.cn` | 443 | Gegevensopname |
 | `*.oms.opinsights.azure.cn` | 443 | OMS-onboarding |
@@ -87,7 +88,7 @@ De volgende tabel geeft een overzicht van de proxy-en firewall configuratie-info
 
 De volgende tabel geeft een overzicht van de proxy-en firewall configuratie-informatie voor de Amerikaanse overheid van Azure:
 
-|Agentresource|Poort |Description | 
+|Agentresource|Poort |Beschrijving | 
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.us` | 443 | Gegevensopname |
 | `*.oms.opinsights.azure.us` | 443 | OMS-onboarding |
@@ -116,7 +117,7 @@ Als u Azure Monitor voor containers wilt inschakelen, gebruikt u een van de meth
 | Nieuw Kubernetes-cluster | [Een AKS-cluster maken met behulp van de Azure CLI](../../aks/kubernetes-walkthrough.md#create-aks-cluster)| U kunt bewaking inschakelen voor een nieuw AKS-cluster dat u maakt met behulp van de Azure CLI. |
 | | [Een AKS-cluster maken met behulp van terraform](container-insights-enable-new-cluster.md#enable-using-terraform)| U kunt bewaking inschakelen voor een nieuw AKS-cluster dat u maakt met behulp van de open source-terraform. |
 | | [Een open Shift-cluster maken met behulp van een Azure Resource Manager sjabloon](container-insights-azure-redhat-setup.md#enable-for-a-new-cluster-using-an-azure-resource-manager-template) | U kunt de bewaking inschakelen voor een nieuw open Shift-cluster dat u maakt met behulp van een vooraf geconfigureerde Azure Resource Manager sjabloon. |
-| | [Een open Shift-cluster maken met behulp van de Azure CLI](https://docs.microsoft.com/cli/azure/openshift?view=azure-cli-latest#az-openshift-create) | U kunt bewaking inschakelen wanneer u een nieuw open Shift-cluster implementeert met behulp van de Azure CLI. |
+| | [Een open Shift-cluster maken met behulp van de Azure CLI](/cli/azure/openshift?view=azure-cli-latest#az-openshift-create) | U kunt bewaking inschakelen wanneer u een nieuw open Shift-cluster implementeert met behulp van de Azure CLI. |
 | Bestaand Kubernetes-cluster | [Bewaking van een AKS-cluster inschakelen met behulp van de Azure CLI](container-insights-enable-existing-clusters.md#enable-using-azure-cli) | U kunt bewaking inschakelen voor een AKS-cluster dat al is geïmplementeerd met behulp van de Azure CLI. |
 | |[Inschakelen voor AKS-cluster met behulp van terraform](container-insights-enable-existing-clusters.md#enable-using-terraform) | U kunt bewaking inschakelen voor een AKS-cluster dat al is geïmplementeerd met behulp van de open source-terraform. |
 | | [Inschakelen voor AKS-cluster van Azure Monitor](container-insights-enable-existing-clusters.md#enable-from-azure-monitor-in-the-portal)| U kunt bewaking inschakelen voor een of meer AKS-clusters die al zijn geïmplementeerd op de pagina met meerdere clusters in Azure Monitor. |

@@ -9,18 +9,18 @@ ms.workload: infrastructure
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 133de199c240cbc4ea7246a29e65347d53c50545
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 2a17825d062496e6600966dc7c90b14749507e4d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045753"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494510"
 ---
 # <a name="disable-or-remove-the-linux-agent-from-vms-and-images"></a>De Linux-agent uit Vm's en installatie kopieën uitschakelen of verwijderen
 
 Voordat u de Linux-agent verwijdert, moet u weten welke VM niet kan worden uitgevoerd nadat de Linux-agent is verwijderd.
 
-Azure virtual machine (VM)- [uitbrei dingen](https://docs.microsoft.com/azure/virtual-machines/extensions/overview) zijn kleine toepassingen die configuratie en automatiserings taken na de implementatie bieden op Azure-vm's, uitbrei dingen worden geïnstalleerd en beheerd door het Azure-besturings vlak. Het is de taak van de [Azure Linux-agent](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) om de platform extensie opdrachten te verwerken en te zorgen voor de juiste status van de uitbrei ding in de virtuele machine.
+Azure virtual machine (VM)- [uitbrei dingen](../extensions/overview.md) zijn kleine toepassingen die configuratie en automatiserings taken na de implementatie bieden op Azure-vm's, uitbrei dingen worden geïnstalleerd en beheerd door het Azure-besturings vlak. Het is de taak van de [Azure Linux-agent](../extensions/agent-linux.md) om de platform extensie opdrachten te verwerken en te zorgen voor de juiste status van de uitbrei ding in de virtuele machine.
 
 Het Azure-platform fungeert als host voor veel uitbrei dingen die variëren van VM-configuratie, bewaking, beveiliging en hulpprogram ma's. Er is een grote keuze aan uitbrei dingen van de eerste en derden, voor beelden van belang rijke scenario's waarin extensies worden gebruikt voor:
 * Ondersteuning voor Azure-Services van de eerste partij, zoals Azure Backup, bewaking, schijf versleuteling, beveiliging, site replicatie en andere.
@@ -31,7 +31,7 @@ Het Azure-platform fungeert als host voor veel uitbrei dingen die variëren van 
 
 ## <a name="disabling-extension-processing"></a>Uitbrei ding verwerken uitschakelen
 
-Er zijn verschillende manieren om de verwerking van extensies uit te scha kelen, afhankelijk van uw behoeften, maar voordat u doorgaat, **moet** u alle extensies verwijderen die zijn geïmplementeerd op de VM, bijvoorbeeld AZ CLI, u kunt een [lijst](https://docs.microsoft.com/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-list) maken en [verwijderen](https://docs.microsoft.com/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-delete):
+Er zijn verschillende manieren om de verwerking van extensies uit te scha kelen, afhankelijk van uw behoeften, maar voordat u doorgaat, **moet** u alle extensies verwijderen die zijn geïmplementeerd op de VM, bijvoorbeeld AZ CLI, u kunt een [lijst](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-list) maken en [verwijderen](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-delete):
 
 ```bash
 az vm extension delete -g MyResourceGroup --vm-name MyVm -n extension_name
@@ -155,7 +155,7 @@ Wanneer u de virtuele machine maakt op basis van de installatie kopie zonder Lin
 > 
 > Als u dit niet doet, probeert het platform de extensie configuratie en time-out na 40min te verzenden.
 
-Als u de VM wilt implementeren met uitbrei dingen die zijn uitgeschakeld, kunt u de Azure CLI gebruiken met [--Enable-agent](https://docs.microsoft.com/cli/azure/vm#az-vm-create).
+Als u de VM wilt implementeren met uitbrei dingen die zijn uitgeschakeld, kunt u de Azure CLI gebruiken met [--Enable-agent](/cli/azure/vm#az-vm-create).
 
 ```bash
 az vm create \

@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 9660e87f3ee4e1c1c6a270f14928fdd111664e66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51111d92e85c6ddbdfac85c333293c2af8b31fbe
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79480875"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498958"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Netwerkprestatiemeter oplossing in azure
 
@@ -31,22 +32,22 @@ Netwerkprestatiemeter biedt drie brede mogelijkheden:
 
 * [ExpressRoute monitor](network-performance-monitor-expressroute.md): end-to-end connectiviteit en prestaties tussen uw filialen en Azure, via Azure ExpressRoute, bewaken.  
 
-Meer informatie over de verschillende mogelijkheden die door [Netwerkprestatiemeter](https://docs.microsoft.com/azure/networking/network-monitoring-overview) worden ondersteund, is online beschikbaar.
+Meer informatie over de verschillende mogelijkheden die door [Netwerkprestatiemeter](../../networking/network-monitoring-overview.md) worden ondersteund, is online beschikbaar.
  
 ## <a name="supported-regions"></a>Ondersteunde regio's
 NPM kan de connectiviteit tussen netwerken en toepassingen in elk deel van de wereld bewaken, van een werk ruimte die wordt gehost in een van de volgende regio's:
 * Europa - noord
-* Europa -west
+* Europa - west
 * Frankrijk - centraal
 * Canada - midden
 * VS - west
 * VS - west-centraal
 * VS - noord-centraal
-* VS - zuid-centraal
-* VS - centraal
+* South Central US
+* Central US
 * VS - oost
-* VS - oost 2
-* VS - west 2
+* US - oost 2
+* US - west 2
 * Japan-Oost
 * Azië - zuidoost
 * Zuid-Oost-Australië
@@ -55,12 +56,12 @@ NPM kan de connectiviteit tussen netwerken en toepassingen in elk deel van de we
 * Zuid-Brittannië
 * Azië - oost
 * Korea - centraal
-* India - centraal
+* Central India
 * Virginia van de Amerikaanse overheid
 * China-oost 2
 
 
-De lijst met ondersteunde regio's voor de monitor ExpressRoute is beschikbaar in de [documentatie](https://docs.microsoft.com/azure/expressroute/how-to-npm?utm_swu=8117).
+De lijst met ondersteunde regio's voor de monitor ExpressRoute is beschikbaar in de [documentatie](../../expressroute/how-to-npm.md?utm_swu=8117).
 
 
 ## <a name="set-up-and-configure"></a>Instellen en configureren
@@ -255,9 +256,9 @@ Alle gegevens die grafisch worden weer gegeven via de Netwerkprestatiemeter dash
 
 ## <a name="alerts"></a>Waarschuwingen
 
-Netwerkprestatiemeter maakt gebruik van de waarschuwings mogelijkheden van [Azure monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts).
+Netwerkprestatiemeter maakt gebruik van de waarschuwings mogelijkheden van [Azure monitor](../platform/alerts-overview.md).
 
-Dit betekent dat alle meldingen worden beheerd met behulp van [actie groepen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups).  
+Dit betekent dat alle meldingen worden beheerd met behulp van [actie groepen](../platform/action-groups.md).  
 
 Als u een NPM-gebruiker een waarschuwing maakt via Log Analytics: 
 1. U ziet een koppeling waarmee u wordt omgeleid naar Azure Portal. Klik hierop om toegang te krijgen tot de portal.
@@ -268,7 +269,7 @@ Als u een NPM-gebruiker een waarschuwing maakt via Log Analytics:
 Als u een NPM-gebruiker een waarschuwing maakt via Azure Portal:  
 1. U kunt ervoor kiezen om uw e-mail adres rechtstreeks in te voeren of u kunt ervoor kiezen om waarschuwingen te maken via actie groepen.
 2. Als u ervoor kiest om uw e-mail adres direct in te voeren, wordt een actie groep met de naam **NPM e-mail ActionGroup** gemaakt en wordt de e-mail-id toegevoegd aan die actie groep.
-3. Als u actie groepen wilt gebruiken, moet u een eerder gemaakte actie groep selecteren. Hier vindt u informatie over het maken van een actie groep [.](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#create-an-action-group-by-using-the-azure-portal) 
+3. Als u actie groepen wilt gebruiken, moet u een eerder gemaakte actie groep selecteren. Hier vindt u informatie over het maken van een actie groep [.](../platform/action-groups.md#create-an-action-group-by-using-the-azure-portal) 
 4. Zodra de waarschuwing is gemaakt, kunt u de koppeling waarschuwingen beheren gebruiken om uw waarschuwingen te beheren. 
 
 Telkens wanneer u een waarschuwing maakt, maakt NPM een query op basis van een logboek waarschuwing in Azure Monitor. Deze query wordt standaard elke vijf minuten geactiveerd. Azure monitor brengt geen kosten in rekening voor de eerste 250-logboek waarschuwings regels die zijn gemaakt en alle waarschuwings regels boven de limiet van het 250-logboek waarschuwings regels worden gefactureerd [op basis van de prijzen voor waarschuwingen op Azure monitor pagina met prijzen](https://azure.microsoft.com/pricing/details/monitor/).

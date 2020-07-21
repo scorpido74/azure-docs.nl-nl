@@ -14,17 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: mimckitt
-ms.openlocfilehash: 476241ad3d4077f2da0c513e3c989218701232ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 37a2724e28269d5f8b10d6ae7073aacc8272255b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81255750"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494765"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>VM-extensie van Network Watcher Agent voor Linux installeren
 
 ## <a name="overview"></a>Overzicht
 
-[Azure Network Watcher](/azure/network-watcher/) is een bewakings-, diagnose-en analyse service voor netwerk prestaties waarmee u Azure-netwerken kunt bewaken. De extensie van de Network Watcher agent virtuele machine (VM) is een vereiste voor een aantal van de Network Watcher functies op Azure-Vm's, zoals het vastleggen van netwerk verkeer op aanvraag en andere geavanceerde functies.
+[Azure Network Watcher](../../network-watcher/index.yml) is een bewakings-, diagnose-en analyse service voor netwerk prestaties waarmee u Azure-netwerken kunt bewaken. De extensie van de Network Watcher agent virtuele machine (VM) is een vereiste voor een aantal van de Network Watcher functies op Azure-Vm's, zoals het vastleggen van netwerk verkeer op aanvraag en andere geavanceerde functies.
 
 In dit artikel vindt u meer informatie over de ondersteunde platforms en implementatie opties voor de Network Watcher agent VM-extensie voor Linux. Installatie van de agent verstoort niet of vereist een herstart van de virtuele machine. U kunt de uitbrei ding implementeren op virtuele machines die u implementeert. Als de virtuele machine wordt geïmplementeerd door een Azure-service, raadpleegt u de documentatie voor de service om te bepalen of de installatie van uitbrei dingen in de virtuele machine is toegestaan.
 
@@ -48,7 +49,7 @@ De uitbrei ding voor de Network Watcher-agent kan worden geconfigureerd voor de 
 
 ### <a name="internet-connectivity"></a>Internetconnectiviteit
 
-Voor sommige functies van de Network Watcher-agent moet een virtuele machine zijn verbonden met internet. Zonder de mogelijkheid om uitgaande verbindingen tot stand te brengen, kunnen sommige van de functies van de Network Watcher-agent defect zijn of niet meer beschikbaar zijn. Zie de[Network Watcher-documentatie](/azure/network-watcher/)voor meer informatie over Network Watcher functionaliteit waarvoor de agent is vereist.
+Voor sommige functies van de Network Watcher-agent moet een virtuele machine zijn verbonden met internet. Zonder de mogelijkheid om uitgaande verbindingen tot stand te brengen, kunnen sommige van de functies van de Network Watcher-agent defect zijn of niet meer beschikbaar zijn. Zie de[Network Watcher-documentatie](../../network-watcher/index.yml)voor meer informatie over Network Watcher functionaliteit waarvoor de agent is vereist.
 
 ## <a name="extension-schema"></a>Extensieschema
 
@@ -74,7 +75,7 @@ De volgende JSON toont het schema voor de uitbrei ding van de Network Watcher ag
 
 ### <a name="property-values"></a>Eigenschaps waarden
 
-| Name | Waarde/voor beeld |
+| Naam | Waarde/voor beeld |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | publisher | Micro soft. Azure. NetworkWatcher |
@@ -118,4 +119,4 @@ az vm extension show --name NetworkWatcherAgentLinux --resource-group myResource
 
 ### <a name="support"></a>Ondersteuning
 
-Als u op elk moment meer hulp nodig hebt, raadpleegt u de [documentatie van Network Watcher](/azure/network-watcher/)of neemt u contact op met de Azure-experts op [MSDN Azure en stack overflow forums](https://azure.microsoft.com/support/forums/). U kunt ook een ondersteunings incident voor Azure opslaan. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen**. Zie de [Microsoft Azure Veelgestelde vragen over ondersteuning](https://azure.microsoft.com/support/faq/)voor meer informatie over het gebruik van Azure-ondersteuning.
+Als u op elk moment meer hulp nodig hebt, raadpleegt u de [documentatie van Network Watcher](../../network-watcher/index.yml)of neemt u contact op met de Azure-experts op [MSDN Azure en stack overflow forums](https://azure.microsoft.com/support/forums/). U kunt ook een ondersteunings incident voor Azure opslaan. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen**. Zie de [Microsoft Azure Veelgestelde vragen over ondersteuning](https://azure.microsoft.com/support/faq/)voor meer informatie over het gebruik van Azure-ondersteuning.

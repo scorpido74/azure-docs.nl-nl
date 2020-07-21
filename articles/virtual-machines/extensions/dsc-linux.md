@@ -13,18 +13,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: 2f04b5ecb2019a77bbb38e97c3869cc0a9447955
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a33d74c01771c2b60ac8667a1494ebe80271a8ac
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698509"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494782"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>DSC-extensie voor Linux (micro soft. OSTCExtensions. DSCForLinux)
 
 Desired state Configuration (DSC) is een beheer platform dat u kunt gebruiken voor het beheren van uw IT-en ontwikkelings infrastructuur met configuratie als code.
 
 > [!NOTE]
-> De DSC-extensie voor Linux en de [Azure monitor extensie voor virtuele machines voor Linux](/azure/virtual-machines/extensions/oms-linux) bieden momenteel een conflict en worden niet ondersteund in een side-by-side-configuratie. Gebruik niet de twee oplossingen tegelijk op dezelfde VM.
+> De DSC-extensie voor Linux en de [Azure monitor extensie voor virtuele machines voor Linux](./oms-linux.md) bieden momenteel een conflict en worden niet ondersteund in een side-by-side-configuratie. Gebruik niet de twee oplossingen tegelijk op dezelfde VM.
 
 De DSCForLinux-extensie wordt gepubliceerd en ondersteund door micro soft. Met de uitbrei ding wordt de OMI-en DSC-agent geïnstalleerd op virtuele machines van Azure. De DSC-extensie kan ook de volgende acties uitvoeren:
 
@@ -41,7 +42,7 @@ De DSCForLinux-extensie wordt gepubliceerd en ondersteund door micro soft. Met d
 
 ### <a name="operating-system"></a>Besturingssysteem
 
-De DSC Linux-extensie ondersteunt alle [Linux-distributies die zijn goedgekeurd op Azure](/azure/virtual-machines/linux/endorsed-distros) , met uitzonde ring van:
+De DSC Linux-extensie ondersteunt alle [Linux-distributies die zijn goedgekeurd op Azure](../linux/endorsed-distros.md) , met uitzonde ring van:
 
 | Distributie | Versie |
 |---|---|

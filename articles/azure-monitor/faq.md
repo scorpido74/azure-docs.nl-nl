@@ -7,11 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: 4e4abdd5d5a9e3cddf00cf47d7388a57d0d4d6fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5366166a31ee45c74c34b8af0e01da251bd7f7f0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807703"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499219"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Veelgestelde vragen over Azure Monitor
 
@@ -29,7 +30,7 @@ In september 2018, micro soft gecombineerd Azure Monitor, Log Analytics en Appli
 Functies van Azure Monitor die automatisch worden ingeschakeld, zoals het verzamelen van metrische gegevens en activiteiten logboeken, zijn gratis. Er zijn kosten verbonden aan andere functies, zoals logboek query's en waarschuwingen. Zie de [pagina met prijzen voor Azure monitor](https://azure.microsoft.com/pricing/details/monitor/) voor gedetailleerde prijs informatie.
 
 ### <a name="how-do-i-enable-azure-monitor"></a>Azure Monitor Hoe kan ik inschakelen?
-Azure Monitor is ingeschakeld wanneer u een nieuw Azure-abonnement maakt, het [activiteiten logboek](platform/activity-logs-overview.md) en de [metrische gegevens](platform/data-platform-metrics.md) van het platform worden automatisch verzameld. Maak [Diagnostische instellingen](platform/diagnostic-settings.md) voor het verzamelen van meer gedetailleerde informatie over de werking van uw Azure-resources en voeg [bewakings oplossingen](insights/solutions.md) en [inzichten](insights/insights-overview.md) toe om extra analyses te bieden op verzamelde gegevens voor bepaalde services. 
+Azure Monitor is ingeschakeld wanneer u een nieuw Azure-abonnement maakt, het [activiteiten logboek](./platform/platform-logs-overview.md) en de [metrische gegevens](platform/data-platform-metrics.md) van het platform worden automatisch verzameld. Maak [Diagnostische instellingen](platform/diagnostic-settings.md) voor het verzamelen van meer gedetailleerde informatie over de werking van uw Azure-resources en voeg [bewakings oplossingen](insights/solutions.md) en [inzichten](insights/insights-overview.md) toe om extra analyses te bieden op verzamelde gegevens voor bepaalde services. 
 
 ### <a name="how-do-i-access-azure-monitor"></a>Hoe kan ik toegang tot Azure Monitor?
 Toegang tot alle Azure Monitor-functies en-gegevens via het menu **monitor** in de Azure Portal. De sectie **bewaking** van het menu voor verschillende Azure-Services biedt toegang tot dezelfde hulpprogram ma's als gegevens die zijn gefilterd op een bepaalde resource. Azure Monitor gegevens zijn ook toegankelijk voor diverse scenario's met behulp van CLI, Power shell en een REST API.
@@ -314,7 +315,7 @@ We zoeken het IP-adres (IPv4 of IPv6) van de webclient met behulp van [GeoLite2]
 
 * Browser-telemetrie: we verzamelen het IP-adres van de afzender.
 * Server-telemetrie: de Application Insights-module verzamelt het client-IP-adres. Als is ingesteld, wordt deze niet verzameld `X-Forwarded-For` .
-* Raadpleeg dit [artikel](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection)voor meer informatie over hoe IP-adres en geolocatie gegevens worden verzameld in Application Insights.
+* Raadpleeg dit [artikel](./app/ip-collection.md)voor meer informatie over hoe IP-adres en geolocatie gegevens worden verzameld in Application Insights.
 
 
 U kunt de configureren `ClientIpHeaderTelemetryInitializer` om het IP-adres van een andere header te halen. In sommige systemen wordt het bijvoorbeeld verplaatst met een proxy, load balancer of CDN naar `X-Originating-IP` . [Meer informatie](https://apmtips.com/posts/2016-07-05-client-ip-address/).
@@ -327,7 +328,7 @@ Bekijk de [gegevens retentie en privacy][data].
 
 ### <a name="what-happens-to-application-insights-telemetry-when-a-server-or-device-loses-connection-with-azure"></a>Wat gebeurt er met de telemetrie van Application Insight wanneer een server of apparaat geen verbinding meer met Azure heeft?
 
-Al onze Sdk's, inclusief de Web-SDK, bevatten ' reliable Trans Port ' of ' Robust Trans Port '. Wanneer de server of het apparaat verbinding met Azure verliest, wordt telemetrie [lokaal opgeslagen op het bestands systeem](https://docs.microsoft.com/azure/azure-monitor/app/data-retention-privacy#does-the-sdk-create-temporary-local-storage) (Server-sdk's) of in HTML5-sessie opslag (Web-SDK). De SDK zal regel matig proberen deze telemetrie te verzenden totdat de opname service de ' verouderde ' (48-uur voor de logboeken, 30 minuten voor metrische gegevens) beschouwt. Verlopen telemetrie wordt verwijderd. In sommige gevallen, bijvoorbeeld wanneer lokale opslag vol is, wordt er geen nieuwe poging gedaan.
+Al onze Sdk's, inclusief de Web-SDK, bevatten ' reliable Trans Port ' of ' Robust Trans Port '. Wanneer de server of het apparaat verbinding met Azure verliest, wordt telemetrie [lokaal opgeslagen op het bestands systeem](./app/data-retention-privacy.md#does-the-sdk-create-temporary-local-storage) (Server-sdk's) of in HTML5-sessie opslag (Web-SDK). De SDK zal regel matig proberen deze telemetrie te verzenden totdat de opname service de ' verouderde ' (48-uur voor de logboeken, 30 minuten voor metrische gegevens) beschouwt. Verlopen telemetrie wordt verwijderd. In sommige gevallen, bijvoorbeeld wanneer lokale opslag vol is, wordt er geen nieuwe poging gedaan.
 
 
 ### <a name="could-personal-data-be-sent-in-the-telemetry"></a>Kunnen persoons gegevens in de telemetrie worden verzonden?
@@ -409,7 +410,7 @@ U kunt geen metrisch Explorer-rapport instellen of continue export instellen.
 
 #### <a name="querying-the-telemetry"></a>Query's uitvoeren op de telemetrie
 
-Gebruik de [rest API](https://dev.applicationinsights.io/) om [Analytics](app/analytics.md) -query's uit te voeren.
+Gebruik de [rest API](https://dev.applicationinsights.io/) om [Analytics](./log-query/log-query-overview.md) -query's uit te voeren.
 
 ### <a name="how-can-i-set-an-alert-on-an-event"></a>Hoe kan ik een waarschuwing instellen voor een gebeurtenis?
 
@@ -476,7 +477,7 @@ Uw gateway moet verkeer routeren naar het basis adres van het eind punt. Vervang
 #### <a name="proxy-passthrough"></a>Passthrough van proxy
 
 Passthrough van de proxy kan worden bereikt door een computer niveau of proxy op toepassings niveau te configureren.
-Zie voor meer informatie het artikel van DOTNET op [DefaultProxy](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings).
+Zie voor meer informatie het artikel van DOTNET op [DefaultProxy](/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings).
  
  Voor beeld Web.config:
  ```xml
@@ -734,7 +735,7 @@ Onder dit voor waarde wordt u gevraagd de optie **nu proberen** te kiezen wannee
 ## <a name="next-steps"></a>Volgende stappen
 Als uw vraag hier niet wordt beantwoord, kunt u de volgende forums raadplegen voor aanvullende vragen en antwoorden.
 
-- [Log Analytics](https://docs.microsoft.com/answers/topics/azure-monitor.html)
-- [Application Insights](https://docs.microsoft.com/answers/topics/azure-monitor.html)
+- [Log Analytics](/answers/topics/azure-monitor.html)
+- [Application Insights](/answers/topics/azure-monitor.html)
 
 Voor algemene feedback over Azure Monitor gaat u naar het [Feedback forum](https://feedback.azure.com/forums/34192--general-feedback).

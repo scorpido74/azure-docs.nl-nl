@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 07/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 6512edd26b59dac11f046e82940db4877728943c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 99784e43130b70554c05ff79a10993f2b6eebbde
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243589"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499610"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management-beleid voor meerdere domeinen
 In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids regels. Zie [beleid in API Management](https://go.microsoft.com/fwlink/?LinkID=398186)voor meer informatie over het toevoegen en configureren van beleid.
@@ -67,6 +67,8 @@ Dit beleid kan worden gebruikt in de volgende beleids [secties](./api-management
 Met het `cors` beleid wordt ondersteuning geboden voor het gebruik van een CORS (cross-Origin Resource Sharing) aan een bewerking of een API voor het toestaan van interdomein-aanroepen vanuit clients die zijn gebaseerd op de browser.
 
 Met CORS kunnen een browser en een server communiceren en bepalen of specifieke cross-Origin-aanvragen (XMLHttpRequests-aanroepen van Java script op een webpagina naar andere domeinen) al dan niet mogen worden uitgevoerd. Dit biedt meer flexibiliteit dan alleen het toestaan van niet-oorspronkelijke aanvragen, maar is veiliger dan het toestaan van alle cross-Origin-aanvragen.
+
+U moet het CORS-beleid Toep assen om de interactieve console in de ontwikkelaars Portal in te scha kelen. Raadpleeg de documentatie voor de [ontwikkelaars Portal](./api-management-howto-developer-portal.md#cors) voor meer informatie.
 
 ### <a name="policy-statement"></a>Beleids verklaring
 

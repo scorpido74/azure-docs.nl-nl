@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: f4f5c5d9a77353f36119b77601b88f9dab01ccc0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7eb77b9ffae49c7d8d3e5612b685e5725829898f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243610"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499780"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Ontwikkelaars accounts met OAuth 2,0 in azure API Management autoriseren
 
@@ -50,7 +50,7 @@ In deze hand leiding wordt beschreven hoe u uw API Management service-exemplaar 
     > [!NOTE]
     > Deze velden worden gebruikt voor het identificeren van de OAuth 2,0-autorisatie server binnen het huidige API Management service-exemplaar en hun waarden zijn niet afkomstig van de OAuth 2,0-server.
 
-3. Voer de **URL voor de registratie pagina**van de client in. Op deze pagina kunnen gebruikers hun accounts maken en beheren. Dit is afhankelijk van de gebruikte OAuth 2,0-provider. De **URL voor de registratie pagina** van de client verwijst naar de pagina die gebruikers kunnen gebruiken om hun eigen accounts te maken en te configureren voor OAuth 2,0-providers die het gebruikers beheer van accounts ondersteunen. Sommige organisaties configureren of gebruiken deze functionaliteit, zelfs niet als de OAuth 2,0-provider dit ondersteunt. Als uw OAuth 2,0-provider geen gebruikers beheer van accounts heeft geconfigureerd, voert u hier een URL voor de tijdelijke aanduiding in, zoals de URL van uw bedrijf of een URL, zoals `https://placeholder.contoso.com` .
+3. Voer de **URL voor de registratie pagina**van de client in. Op deze pagina kunnen gebruikers hun accounts maken en beheren. Dit is afhankelijk van de gebruikte OAuth 2,0-provider. De **URL voor de registratie pagina** van de client verwijst naar de pagina die gebruikers kunnen gebruiken om hun eigen accounts te maken en te configureren voor OAuth 2,0-providers die gebruikers beheer van accounts ondersteunen, bijvoorbeeld `https://contoso.com/login` . Sommige organisaties configureren of gebruiken deze functionaliteit, zelfs niet als de OAuth 2,0-provider dit ondersteunt. Als uw OAuth 2,0-provider geen gebruikers beheer van accounts heeft geconfigureerd, voert u hier een URL voor de tijdelijke aanduiding in, zoals de URL van uw bedrijf of een URL, zoals `https://placeholder.contoso.com` .
 
     ![OAuth 2,0-nieuwe server](./media/api-management-howto-oauth2/oauth-02.png)
 
@@ -75,6 +75,11 @@ In deze hand leiding wordt beschreven hoe u uw API Management service-exemplaar 
     De standaard instelling voor **client verificatie methoden** is **Basic**en de **methode voor het verzenden van toegangs tokens** is **autorisatie-header**. Deze waarden worden geconfigureerd in deze sectie van het formulier, samen met het **standaard bereik**.
 
 6. De sectie **client referenties** bevat de **client-id** en het **client geheim**die tijdens het maken en configureren van uw OAuth 2,0-server worden verkregen. Zodra de **client-id** en het **client geheim** zijn opgegeven, wordt de **redirect_uri** voor de **autorisatie code** gegenereerd. Deze URI wordt gebruikt voor het configureren van de antwoord-URL in uw OAuth 2,0-server configuratie.
+
+    In de nieuwe ontwikkelaars Portal is het URI-achtervoegsel de vorm:
+
+    - `/signin-oauth/code/callback/{authServerName}`voor de overdracht van autorisatie code toewijzen
+    - `/signin-oauth/implicit/callback`voor impliciete toekennings stroom
 
     ![OAuth 2,0-nieuwe server](./media/api-management-howto-oauth2/oauth-04.png)
 

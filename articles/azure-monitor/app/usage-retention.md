@@ -6,11 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 05/03/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: 654dba968ba4efec1c30c94082726da04059adc0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25d1cccdbd56db397fc444d1488c773515ad6553
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83797733"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499304"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Analyse van gebruikers retentie voor webtoepassingen met Application Insights
 
@@ -57,12 +58,10 @@ Meer [informatie over het schrijven van aangepaste gebeurtenissen](../../azure-m
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- Begin met het verzenden van [aangepaste gebeurtenissen](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) of [pagina weergaven](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)om gebruiks ervaringen in te scha kelen.
+- Begin met het verzenden van [aangepaste gebeurtenissen](./api-custom-events-metrics.md#trackevent) of [pagina weergaven](./api-custom-events-metrics.md#page-views)om gebruiks ervaringen in te scha kelen.
 - Als u al aangepaste gebeurtenissen of pagina weergaven verzendt, kunt u de gebruiks hulpprogramma's verkennen om te leren hoe gebruikers uw service gebruiken.
     - [Gebruikers, sessies, gebeurtenissen](usage-segmentation.md)
     - [Trechters](usage-funnels.md)
     - [Gebruikersstromen](usage-flows.md)
     - [Werkmappen](../../azure-monitor/platform/workbooks-overview.md)
     - [Gebruikers context toevoegen](usage-send-user-context.md)
-
-

@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 113ab07af8ada16c0779da510c5f5b1f1f5a290b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 707b432a4cb3918aa2dfbe460fc3cdcd53761bf1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80398240"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497077"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Sensor gegevens ophalen van sensor partners
 
@@ -66,7 +66,13 @@ Volg de onderstaande stappen om de bovenstaande gegevens te genereren:
     cd  
     ```
 
-6. Voer de volgende opdracht uit. Hiermee wordt een script gedownload naar uw basismap.
+6. Voer de volgende opdracht uit. Hiermee wordt een geverifieerde account verbonden voor Azure AD-aanvragen
+
+    ```azurepowershell-interactive 
+    Connect-AzureAD
+    ```
+    
+7. Voer de volgende opdracht uit. Hiermee wordt een script gedownload naar uw basismap.
 
     ```azurepowershell-interactive 
 
@@ -74,7 +80,7 @@ Volg de onderstaande stappen om de bovenstaande gegevens te genereren:
 
     ```
 
-7. Voer het volgende script uit. Het script vraagt om de Tenant-id, die kan worden verkregen van **Azure Active Directory**  >  **overzichts** pagina.
+8. Voer het volgende script uit. Het script vraagt om de Tenant-id, die kan worden verkregen van **Azure Active Directory**  >  **overzichts** pagina.
 
     ```azurepowershell-interactive 
 
@@ -82,7 +88,7 @@ Volg de onderstaande stappen om de bovenstaande gegevens te genereren:
 
     ```
 
-8. Volg de instructies op het scherm voor het vastleggen van de waarden voor het **API-eind punt**, **Tenant-ID**, **client-id**, **client geheim**en **EventHub-verbindings reeks**.
+9. Volg de instructies op het scherm voor het vastleggen van de waarden voor het **API-eind punt**, **Tenant-ID**, **client-id**, **client geheim**en **EventHub-verbindings reeks**.
 
 ### <a name="integrate-device-data-by-using-the-generated-credentials"></a>Apparaatgegevens integreren met behulp van de gegenereerde referenties
 
@@ -120,7 +126,7 @@ Volg deze stappen:
   Op de pagina **apparaten** wordt het type apparaat, het model, de status, de farm waarin het is geplaatst en de datum waarop de meta gegevens voor het laatst zijn bijgewerkt weer gegeven. De kolom Farm is standaard ingesteld op *Null*. U kunt ervoor kiezen om een apparaat toe te wijzen aan een farm. Zie [apparaten toewijzen](#assign-devices)voor meer informatie.
 2. Selecteer het apparaat om de apparaateigenschappen, telemetrie en onderliggende apparaten weer te geven die zijn verbonden met het apparaat.
 
-    ![Pagina apparaten](./media/get-sensor-data-from-sensor-partner/view-devices-1.png)
+    ![De pagina Apparaten](./media/get-sensor-data-from-sensor-partner/view-devices-1.png)
 
 ### <a name="view-sensors"></a>Sens oren weer geven
 

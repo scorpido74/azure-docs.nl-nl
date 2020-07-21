@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
-ms.openlocfilehash: dd3279db67fb45aee43cf1b0ef1bebf49433eef4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5cecf24f4ba086feba5ab87b5752fd665c540dff
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77663229"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498675"
 ---
 # <a name="targeting-monitoring-solutions-in-azure-monitor-preview"></a>Doelen voor bewakings oplossingen in Azure Monitor (preview-versie)
 Wanneer u een bewakings oplossing aan uw abonnement toevoegt, wordt deze automatisch standaard geïmplementeerd voor alle Windows-en Linux-agents die zijn verbonden met uw Log Analytics-werk ruimte.  U kunt uw kosten beheren en de hoeveelheid gegevens die voor een oplossing wordt verzameld beperken door deze te beperken tot een bepaalde set agents.  In dit artikel wordt beschreven hoe u **doel items van oplossingen** kunt gebruiken. Dit is een functie waarmee u een bereik kunt Toep assen op uw oplossingen.
@@ -58,7 +59,7 @@ Pas een scope configuratie toe met behulp van het volgende proces.
 Hieronder vindt u de criteria voor agents en oplossingen die niet kunnen worden gebruikt voor het doel van oplossingen.
 
 - Doel stellingen van oplossingen zijn alleen van toepassing op oplossingen die worden geïmplementeerd op agents.
-- Doel stellingen van oplossingen zijn alleen van toepassing op door micro soft verzorgde oplossing.  Het is niet van toepassing op oplossingen [die zijn gemaakt door uzelf of partners](solutions-creating.md).
+- Doel stellingen van oplossingen zijn alleen van toepassing op door micro soft verzorgde oplossing.  Het is niet van toepassing op oplossingen [die zijn gemaakt door uzelf of partners](./solutions.md).
 - U kunt alleen agents uitfilteren die rechtstreeks verbinding maken met Azure Monitor.  Oplossingen worden automatisch geïmplementeerd op agents die deel uitmaken van een verbonden Operations Manager-beheer groep, ongeacht of ze zijn opgenomen in een scope configuratie.
 
 ### <a name="exceptions"></a>Uitzonderingen

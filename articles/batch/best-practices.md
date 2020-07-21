@@ -1,14 +1,14 @@
 ---
 title: Aanbevolen procedures
 description: Leer de aanbevolen procedures en handige tips voor het ontwikkelen van uw Azure Batch-oplossing.
-ms.date: 06/22/2020
+ms.date: 07/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7a66fb383195a7de347b5e6ce83ad89fa3706e96
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 32610f54cc41bd5d7feb965b9a82903acc23c33c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954146"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497774"
 ---
 # <a name="azure-batch-best-practices"></a>Aanbevolen procedures Azure Batch
 
@@ -146,6 +146,10 @@ Directory-koppelingen, ook wel vaste koppelingen naar mappen genoemd, zijn moeil
 ### <a name="collect-the-batch-agent-logs"></a>De batch Agent-logboeken verzamelen
 
 Als u een probleem ondervindt met betrekking tot het gedrag van een knoop punt of taken die worden uitgevoerd op een knoop punt, verzamelt u de logboeken van de batch agent voordat u de desbetreffende knoop punten ongedaan maakt. U kunt de batch Agent-logboeken verzamelen met de API voor het uploaden van batch-service Logboeken. Deze logboeken kunnen worden verstrekt als onderdeel van een ondersteunings ticket voor micro soft en helpt u bij het oplossen van problemen en oplossingen.
+
+### <a name="manage-os-upgrades"></a>Upgrades van besturings systemen beheren
+
+Bij batch-accounts voor gebruikers abonnementen kan automatische besturingssysteem upgrades de taak voortgang onderbreken, met name als de taken langlopend zijn. Het [maken van idempotent-taken](#build-durable-tasks) kan helpen bij het verminderen van fouten die zijn veroorzaakt door deze onderbrekingen. U wordt ook aangeraden [upgrades van installatie kopieën van besturings systemen te plannen voor tijden waarop de taken niet naar verwachting worden uitgevoerd](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md#manually-trigger-os-image-upgrades).
 
 ## <a name="isolation-security"></a>Isolatie beveiliging
 

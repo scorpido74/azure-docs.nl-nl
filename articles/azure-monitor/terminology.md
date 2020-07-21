@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 0c5e1096b0780d2f9e50389f772e63344935012b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 819ef7e61045c0ed4205eeaf0094fec706b0b9da
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84691813"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498607"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Azure Monitor naamgevings-en terminologie wijzigingen
 Er zijn belang rijke wijzigingen aangebracht in Azure Monitor recent, waarbij verschillende services worden geconsolideerd om de controle van Azure-klanten te vereenvoudigen. In dit artikel worden de recente naam en terminologie wijzigingen in Azure Monitor documentatie beschreven.
@@ -58,4 +59,4 @@ Er zijn [nieuwe prijzen geïntroduceerd voor deze services](https://azure.micros
 ## <a name="next-steps"></a>Volgende stappen
 
 - Lees een [overzicht van Azure monitor](overview.md) waarin de verschillende onderdelen en functies worden beschreven.
-- Meer informatie over de [overgang van de OMS-Portal](../log-analytics/log-analytics-oms-portal-transition.md).
+- Meer informatie over de [overgang van de OMS-Portal](./platform/oms-portal-transition.md).

@@ -12,11 +12,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/31/2019
-ms.openlocfilehash: 1d8261d05f59c7f40ba6b1e2d59d2b15ad56de95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3163d414e940d843489a34f319996b1b8ed6f4a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84424540"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497378"
 ---
 # <a name="execute-ssis-packages-in-azure-from-ssdt"></a>SSIS-pakketten uitvoeren in azure vanuit SSDT
 
@@ -81,6 +82,30 @@ Door uw Azure-projecten te koppelen aan SSIS in ADF, kunt u uw pakketten uploade
    ![Azure Storage selecteren](media/how-to-invoke-ssis-package-ssdt/ssis-in-adf-connection-wizard3.png)
 
 4. Klik op de knop **verbinding maken** om de verbinding te volt ooien.  Uw geselecteerde Azure-SSIS IR en Azure Storage account worden weer gegeven onder het knoop punt **gekoppelde Azure-resources** in Solution Explorer paneel van SSDT.  We vernieuwen ook de status van uw Azure-SSIS IR, terwijl u deze kunt beheren door met de rechter muisknop op het knoop punt te klikken om een menu te openen en vervolgens het **Start\Stop\Manage** menu-item te selecteren dat u naar de ADF-Portal/-app gaat.
+
+## <a name="assess-ssis-projectpackages-for-executions-in-azure"></a>SSIS-project\packages evalueren voor uitvoeringen in azure
+### <a name="assess-ssis-project-or-package"></a>SSIS-project of-pakket beoordelen
+Voordat u uw pakketten uitvoert in azure, kunt u uw pakket beoordelen om te evalueren of er sprake is van een mogelijke migratie blok kering of informatie die u moet kennen. 
+-  U kunt alle pakketten evalueren onder project of één pakket.
+
+   ![Project ](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assess-project.png)
+    ![ beoordelings pakket beoordelen](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assess-package.png)
+
+-  U kunt een evaluatie rapport ophalen om elk evaluatie probleem te controleren en elk probleem heeft een gedetailleerde beschrijving en aanbeveling. U kunt ook een evaluatie rapport exporteren als CSV-bestand. 
+
+   ![Project resultaat beoordelen](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assess-project-result.png)
+
+### <a name="suppress-assessment-rule"></a>Beoordelings regel onderdrukken
+Als u zeker weet dat een bepaalde evaluatie regel niet voor uw pakket is toegepast, kunt u ervoor kiezen deze te onderdrukken. 
+-  U kunt direct klikken op de koppeling **beoordelings regel onderdrukken** in evaluatie rapport configureren.
+
+   ![Instellingen voor onderdrukking van evaluatie regels](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assessment-rule-suppression-settings.png)
+
+-  U kunt ook configureren via **Azure-instellingen**.
+
+   ![Instellingen waarvoor Azure is ingeschakeld](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-azure-enabled-setting.png)
+
+   ![Instellingen voor het onderdrukken van evaluatie regels via Azure-instellingen](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assessment-rule-suppression-settings-via-azure-enabled-settings.png)
 
 ## <a name="execute-ssis-packages-in-azure"></a>SSIS-pakketten uitvoeren in azure
 ### <a name="azure-enabled-setting"></a>Instelling met Azure ingeschakeld
@@ -159,6 +184,9 @@ Als u wilt scha kelen tussen pakket uitvoerings omgevingen met Azure-projecten, 
 6. Voer dit pakket uit in Azure. U kunt de omgeving eenvoudig overschakelen naar het lokale gebied door de huidige configuratie van Visual Studio te activeren.
 
    ![De configuratie van Visual Studio wijzigen](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-example-switch-configurations.png)
+
+## <a name="current-limitations"></a>Huidige beperkingen
+-  Deze SSDT-functie biedt momenteel geen ondersteuning voor nationale Clouds.
 
 ## <a name="next-steps"></a>Volgende stappen
 Zodra u tevreden bent met het uitvoeren van uw pakketten in azure van SSDT, kunt u deze implementeren en uitvoeren als run SSIS-pakket activiteiten in ADF-pijp lijnen. Zie [SSIS-pakketten uitvoeren als uitvoeren SSIS-pakket activiteiten in ADF-pijp lijnen](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).

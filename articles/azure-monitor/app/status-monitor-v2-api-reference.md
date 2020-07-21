@@ -5,11 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 02762c4b3af735eb0b4c19aaf450b2b3a416a2be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 32fd0da0095c34c4ef199eb703881e048473f0a4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81733672"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499355"
 ---
 # <a name="azure-monitor-application-insights-agent-api-reference"></a>API-naslag informatie over Azure Monitor Application Insights agent
 
@@ -118,7 +119,7 @@ U kunt één installatie script maken voor verschillende computers door in te st
 - **MachineFilter** is een vereiste C#-regex van de naam van de computer of virtuele machine.
     - '. * ' komt overeen met alles
     - ComputerName komt alleen overeen met computers met de exacte naam opgegeven.
-- **AppFilter** is een vereiste C#-regex van de naam van de IIS-site. U kunt een lijst met sites op uw server ophalen door de opdracht [Get-iissite](https://docs.microsoft.com/powershell/module/iisadministration/get-iissite)uit te voeren.
+- **AppFilter** is een vereiste C#-regex van de naam van de IIS-site. U kunt een lijst met sites op uw server ophalen door de opdracht [Get-iissite](/powershell/module/iisadministration/get-iissite)uit te voeren.
     - '. * ' komt overeen met alles
     - ' Site naam ' komt alleen overeen met de IIS-site met de exacte naam die is opgegeven.
 - **InstrumentationKey** is vereist om de bewaking van apps die overeenkomen met de voor gaande twee filters in te scha kelen.
@@ -134,7 +135,7 @@ De instrumentatie-engine voegt overhead toe en is standaard uitgeschakeld.
 **Beschrijving.** Gebruik deze schakel optie om de licentie en privacyverklaring in headless installaties te accepteren.
 
 #### <a name="-ignoresharedconfig"></a>-IgnoreSharedConfig
-Wanneer u een cluster van webservers hebt, kunt u gebruikmaken van een [gedeelde configuratie](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211).
+Wanneer u een cluster van webservers hebt, kunt u gebruikmaken van een [gedeelde configuratie](/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211).
 De HTTP module kan niet worden ingevoegd in deze gedeelde configuratie.
 Dit script werkt niet met het bericht dat er extra installatie stappen zijn vereist.
 Gebruik deze schakel optie om deze controle te negeren en door te gaan met de installatie van vereisten. Zie [bekende conflict-with-IIS-Shared-Configuration](status-monitor-v2-troubleshoot.md#conflict-with-iis-shared-configuration) (Engelstalig) voor meer informatie
@@ -446,8 +447,8 @@ Ook worden er externe hulpprogram ma's gedownload om te bepalen of de benodigde 
 
 Als dit proces om welke reden dan ook mislukt, kunt u deze opdrachten hand matig uitvoeren:
 - iisreset.exe/status
-- [handle64.exe](https://docs.microsoft.com/sysinternals/downloads/handle) -p W3wp | findstr/I "InstrumentationEngine AI. ApplicationInsights
-- [listdlls64.exe](https://docs.microsoft.com/sysinternals/downloads/listdlls) W3wp | findstr/I "InstrumentationEngine AI ApplicationInsights"
+- [handle64.exe](/sysinternals/downloads/handle) -p W3wp | findstr/I "InstrumentationEngine AI. ApplicationInsights
+- [listdlls64.exe](/sysinternals/downloads/listdlls) W3wp | findstr/I "InstrumentationEngine AI ApplicationInsights"
 
 
 #### <a name="-force"></a>-Force
@@ -551,7 +552,7 @@ C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applica
 
 ## <a name="start-applicationinsightsmonitoringtrace"></a>Start-ApplicationInsightsMonitoringTrace
 
-Verzamelt [etw-gebeurtenissen](https://docs.microsoft.com/windows/desktop/etw/event-tracing-portal) vanuit de runtime van code koppelen. Deze cmdlet is een alternatief voor het uitvoeren van [PerfView](https://github.com/microsoft/perfview).
+Verzamelt [etw-gebeurtenissen](/windows/desktop/etw/event-tracing-portal) vanuit de runtime van code koppelen. Deze cmdlet is een alternatief voor het uitvoeren van [PerfView](https://github.com/microsoft/perfview).
 
 Verzamelde gebeurtenissen worden in realtime afgedrukt op de console en opgeslagen in een ETL-bestand. Het ETL-bestand van de uitvoer kan worden geopend door [PerfView](https://github.com/microsoft/perfview) voor verder onderzoek.
 
@@ -636,9 +637,9 @@ Timeout Reached. Stopping...
 ## <a name="next-steps"></a>Volgende stappen
 
   Uw telemetrie weergeven:
- - [Bekijk metrische gegevens](../../azure-monitor/app/metrics-explorer.md) om de prestaties en het gebruik te bewaken.
+ - [Bekijk metrische gegevens](../platform/metrics-charts.md) om de prestaties en het gebruik te bewaken.
 - [Zoek gebeurtenissen en logboeken](../../azure-monitor/app/diagnostic-search.md) om problemen op te sporen.
-- Gebruik [analyses](../../azure-monitor/app/analytics.md) voor meer geavanceerde query's.
+- Gebruik [analyses](../log-query/log-query-overview.md) voor meer geavanceerde query's.
 - [Dash boards maken](../../azure-monitor/app/overview-dashboard.md).
  
  Meer telemetrie toevoegen:
@@ -648,9 +649,3 @@ Timeout Reached. Stopping...
  
  Meer doen met Application Insights agent:
  - Gebruik onze hand leiding om Application Insights-agent op te [lossen](status-monitor-v2-troubleshoot.md) .
-
-
-
-
-
-

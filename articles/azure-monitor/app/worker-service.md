@@ -3,11 +3,12 @@ title: Application Insights voor Worker-service-apps (niet-HTTP-apps)
 description: Niet-HTTP-apps van .NET core/. NET bewaken met Azure Monitor Application Insights.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 1f9b35022e63c4c3fe671237149602f8db465466
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ae146c6c010f067973c9fbae4c90bd1116d7c21
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83117874"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499202"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Application Insights voor Worker-service toepassingen (niet-HTTP-toepassingen)
 
@@ -17,11 +18,11 @@ De nieuwe SDK voert geen telemetrie-verzameling op zichzelf uit. In plaats daarv
 
 ## <a name="supported-scenarios"></a>Ondersteunde scenario's
 
-De [Application INSIGHTS SDK for Worker-service](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) is het meest geschikt voor niet-HTTP-toepassingen, ongeacht waar of hoe ze worden uitgevoerd. Als uw toepassing wordt uitgevoerd en netwerk verbinding heeft met Azure, kan telemetrie worden verzameld. Application Insights bewaking wordt ondersteund overal wat .NET core ondersteunt. Dit pakket kan worden gebruikt in de zojuist geïntroduceerde [.net core 3,0-werk service](https://devblogs.microsoft.com/aspnet/dotnet-core-workers-in-azure-container-instances), [achtergrond taken in ASP.net Core 2.1/2.2](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2), console-apps (.net core/.NET Framework), enzovoort.
+De [Application INSIGHTS SDK for Worker-service](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) is het meest geschikt voor niet-HTTP-toepassingen, ongeacht waar of hoe ze worden uitgevoerd. Als uw toepassing wordt uitgevoerd en netwerk verbinding heeft met Azure, kan telemetrie worden verzameld. Application Insights bewaking wordt ondersteund overal wat .NET core ondersteunt. Dit pakket kan worden gebruikt in de zojuist geïntroduceerde [.net core 3,0-werk service](https://devblogs.microsoft.com/aspnet/dotnet-core-workers-in-azure-container-instances), [achtergrond taken in ASP.net Core 2.1/2.2](/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2), console-apps (.net core/.NET Framework), enzovoort.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Een geldige Application Insights instrumentatie sleutel. Deze sleutel is vereist voor het verzenden van telemetrie naar Application Insights. Als u een nieuwe Application Insights resource moet maken om een instrumentatie sleutel op te halen, raadpleegt u [een Application Insights resource maken](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource).
+Een geldige Application Insights instrumentatie sleutel. Deze sleutel is vereist voor het verzenden van telemetrie naar Application Insights. Als u een nieuwe Application Insights resource moet maken om een instrumentatie sleutel op te halen, raadpleegt u [een Application Insights resource maken](./create-new-resource.md).
 
 ## <a name="using-application-insights-sdk-for-worker-services"></a>Application Insights SDK voor Worker-Services gebruiken
 
@@ -132,7 +133,7 @@ Geeft doorgaans `APPINSIGHTS_INSTRUMENTATIONKEY` de instrumentatie sleutel voor 
 
 ## <a name="aspnet-core-background-tasks-with-hosted-services"></a>Achtergrond taken ASP.NET Core met gehoste services
 
-In [Dit](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2&tabs=visual-studio) document wordt beschreven hoe u achtergrond taken maakt in ASP.net Core 2.1/2.2-toepassing.
+In [Dit](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio&view=aspnetcore-2.2) document wordt beschreven hoe u achtergrond taken maakt in ASP.net Core 2.1/2.2-toepassing.
 
 [Hier](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService) wordt een volledig voor beeld gedeeld
 
@@ -219,7 +220,7 @@ Hier volgt de code voor de `TimedHostedService` locatie waar de logica van de ac
 
 ## <a name="net-corenet-framework-console-application"></a>.NET core/. NET Framework-console toepassing
 
-Zoals vermeld in het begin van dit artikel, kan het nieuwe pakket worden gebruikt voor het inschakelen van Application Insights Telemetry van zelfs een gewone console toepassing. Deze pakket doelen [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard) en kunnen daarom worden gebruikt voor console-apps in .net Core 2,0 of hoger, en .NET Framework 4.7.2 of hoger.
+Zoals vermeld in het begin van dit artikel, kan het nieuwe pakket worden gebruikt voor het inschakelen van Application Insights Telemetry van zelfs een gewone console toepassing. Deze pakket doelen [`NetStandard2.0`](/dotnet/standard/net-standard) en kunnen daarom worden gebruikt voor console-apps in .net Core 2,0 of hoger, en .NET Framework 4.7.2 of hoger.
 
 [Hier](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/ConsoleAppWithApplicationInsights) wordt een volledig voor beeld gedeeld
 
@@ -293,13 +294,13 @@ Deze console toepassing gebruikt ook dezelfde standaard `TelemetryConfiguration`
 
 Voer de toepassing uit. Met de voorbeeld werk rollen van het bovenstaande voor beeld wordt een HTTP-oproep elke seconde verzonden naar bing.com, en worden er ook enkele logboeken met ILogger. Deze regels worden genest binnen de `StartOperation` aanroep van `TelemetryClient` , die wordt gebruikt voor het maken van een bewerking (in dit voor beeld de `RequestTelemetry` naam ' Operation '). Application Insights verzamelt deze ILogger-Logboeken (standaard) en afhankelijkheden, en ze worden gekoppeld aan de `RequestTelemetry` relatie met de bovenliggende en onderliggende. De correlatie werkt ook met cross proces/netwerk grens. Als de aanroep bijvoorbeeld is gedaan aan een ander bewaakt onderdeel, wordt deze ook aan dit bovenliggende item gecorreleerd.
 
-Deze aangepaste bewerking van `RequestTelemetry` kan worden beschouwd als het equivalent van een inkomende webaanvraag in een typische webtoepassing. Hoewel het niet nodig is om een bewerking te gebruiken, past deze het beste bij het [Application Insights correlatie gegevens model](https://docs.microsoft.com/azure/azure-monitor/app/correlation) `RequestTelemetry` . deze fungeert als de bovenliggende bewerking en elke telemetrie die in de werk nemers wordt gegenereerd, wordt beschouwd als logisch deel uitmaakt van dezelfde bewerking. Deze aanpak zorgt er ook voor dat alle telemetrie die is gegenereerd (automatisch en hand matig), hetzelfde is `operation_id` . Als steek proeven is gebaseerd op `operation_id` , wordt de telemetrie van een enkele herhaling door de sampling algoritme behouden of verbroken.
+Deze aangepaste bewerking van `RequestTelemetry` kan worden beschouwd als het equivalent van een inkomende webaanvraag in een typische webtoepassing. Hoewel het niet nodig is om een bewerking te gebruiken, past deze het beste bij het [Application Insights correlatie gegevens model](./correlation.md) `RequestTelemetry` . deze fungeert als de bovenliggende bewerking en elke telemetrie die in de werk nemers wordt gegenereerd, wordt beschouwd als logisch deel uitmaakt van dezelfde bewerking. Deze aanpak zorgt er ook voor dat alle telemetrie die is gegenereerd (automatisch en hand matig), hetzelfde is `operation_id` . Als steek proeven is gebaseerd op `operation_id` , wordt de telemetrie van een enkele herhaling door de sampling algoritme behouden of verbroken.
 
 Hieronder ziet u de volledige telemetrie die automatisch is verzameld door Application Insights.
 
 ### <a name="live-metrics"></a>Live Metrics
 
-[Live Metrics](https://docs.microsoft.com/azure/application-insights/app-insights-live-stream) kunnen worden gebruikt om snel te controleren of Application Insights bewaking op de juiste wijze is geconfigureerd. Het kan enkele minuten duren voordat telemetrie in de portal en de analyse wordt weer gegeven. met Live metrische gegevens wordt het CPU-gebruik van het actieve proces in bijna realtime weer gegeven. Het kan ook andere telemetrie weer geven, zoals aanvragen, afhankelijkheden, traceringen, enzovoort.
+[Live Metrics](./live-stream.md) kunnen worden gebruikt om snel te controleren of Application Insights bewaking op de juiste wijze is geconfigureerd. Het kan enkele minuten duren voordat telemetrie in de portal en de analyse wordt weer gegeven. met Live metrische gegevens wordt het CPU-gebruik van het actieve proces in bijna realtime weer gegeven. Het kan ook andere telemetrie weer geven, zoals aanvragen, afhankelijkheden, traceringen, enzovoort.
 
 ### <a name="ilogger-logs"></a>ILogger-logboeken
 
@@ -321,7 +322,7 @@ Hoewel de SDK automatisch telemetrie verzamelt zoals hierboven is uitgelegd, moe
 
 De standaard `TelemetryConfiguration` die door de worker-SDK wordt gebruikt, is vergelijkbaar met de automatische configuratie die wordt gebruikt in een ASP.net of ASP.net core toepassing, verminderd met de TelemetryInitializers die worden gebruikt om de telemetrie te verrijken `HttpContext` .
 
-U kunt de Application Insights SDK for Worker-service aanpassen om de standaard configuratie te wijzigen. Gebruikers van de Application Insights ASP.NET Core SDK kunnen vertrouwd zijn met het wijzigen van de configuratie met behulp van ASP.NET Core ingebouwde [afhankelijkheids injectie](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection). De WorkerService SDK is ook gebaseerd op soort gelijke principes. Maak bijna alle configuratie wijzigingen in de `ConfigureServices()` sectie door de juiste methoden aan `IServiceCollection` te roepen, zoals hieronder wordt beschreven.
+U kunt de Application Insights SDK for Worker-service aanpassen om de standaard configuratie te wijzigen. Gebruikers van de Application Insights ASP.NET Core SDK kunnen vertrouwd zijn met het wijzigen van de configuratie met behulp van ASP.NET Core ingebouwde [afhankelijkheids injectie](/aspnet/core/fundamentals/dependency-injection). De WorkerService SDK is ook gebaseerd op soort gelijke principes. Maak bijna alle configuratie wijzigingen in de `ConfigureServices()` sectie door de juiste methoden aan `IServiceCollection` te roepen, zoals hieronder wordt beschreven.
 
 > [!NOTE]
 > Wanneer u deze SDK gebruikt, wordt de configuratie gewijzigd door wijzigen `TelemetryConfiguration.Active` niet ondersteund en worden wijzigingen niet weer gegeven.
@@ -361,11 +362,11 @@ Zie de [Configureer bare instellingen in `ApplicationInsightsServiceOptions` ](h
 
 ### <a name="sampling"></a>Steekproeven
 
-De Application Insights SDK voor Worker-service ondersteunt zowel vaste als adaptieve steek proeven. Adaptieve steek proeven zijn standaard ingeschakeld. Het configureren van sampling voor Worker-service gebeurt op dezelfde manier als voor [ASP.net core toepassingen](https://docs.microsoft.com/azure/azure-monitor/app/sampling#configuring-adaptive-sampling-for-aspnet-core-applications).
+De Application Insights SDK voor Worker-service ondersteunt zowel vaste als adaptieve steek proeven. Adaptieve steek proeven zijn standaard ingeschakeld. Het configureren van sampling voor Worker-service gebeurt op dezelfde manier als voor [ASP.net core toepassingen](./sampling.md#configuring-adaptive-sampling-for-aspnet-core-applications).
 
 ### <a name="adding-telemetryinitializers"></a>TelemetryInitializers toevoegen
 
-Gebruik de [initialisatie functies voor telemetrie](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#addmodify-properties-itelemetryinitializer) wanneer u eigenschappen wilt definiëren die worden verzonden met alle telemetrie.
+Gebruik de [initialisatie functies voor telemetrie](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer) wanneer u eigenschappen wilt definiëren die worden verzonden met alle telemetrie.
 
 Nieuwe toevoegen `TelemetryInitializer` aan de `DependencyInjection` container en SDK voegt deze automatisch toe aan de `TelemetryConfiguration` .
 
@@ -403,7 +404,7 @@ De initialisatie functies voor telemetrie zijn standaard aanwezig. Als u alle of
 
 ### <a name="adding-telemetry-processors"></a>Telemetrie-processors toevoegen
 
-U kunt aangepaste telemetrie-processors toevoegen aan met `TelemetryConfiguration` behulp van de uitbreidings methode `AddApplicationInsightsTelemetryProcessor` op `IServiceCollection` . U kunt telemetrie-processors gebruiken in [Geavanceerde filter scenario's](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#itelemetryprocessor-and-itelemetryinitializer) voor meer directe controle over wat er is opgenomen of uitgesloten van de telemetrie die u naar de Application Insights-service stuurt. Gebruik het volgende voor beeld.
+U kunt aangepaste telemetrie-processors toevoegen aan met `TelemetryConfiguration` behulp van de uitbreidings methode `AddApplicationInsightsTelemetryProcessor` op `IServiceCollection` . U kunt telemetrie-processors gebruiken in [Geavanceerde filter scenario's](./api-filtering-sampling.md#itelemetryprocessor-and-itelemetryinitializer) voor meer directe controle over wat er is opgenomen of uitgesloten van de telemetrie die u naar de Application Insights-service stuurt. Gebruik het volgende voor beeld.
 
 ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -502,7 +503,7 @@ Visual Studio IDE-onboarding wordt momenteel alleen ondersteund voor ASP.NET/ASP
 
 ### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-status-monitor"></a>Kan ik Application Insights bewaking inschakelen met behulp van hulpprogram ma's zoals Status Monitor?
 
-Nee. [Status monitor](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now) en [status monitor v2](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview) ondersteunen momenteel alleen ASP.net 4. x.
+Nee. [Status monitor](./monitor-performance-live-website-now.md) en [status monitor v2](./status-monitor-v2-overview.md) ondersteunen momenteel alleen ASP.net 4. x.
 
 ### <a name="if-i-run-my-application-in-linux-are-all-features-supported"></a>Als ik mijn toepassing in Linux uitvoer, worden alle functies ondersteund?
 
@@ -531,9 +532,9 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 [.Net core-console toepassing](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/ConsoleAppWithApplicationInsights) Gebruik dit voor beeld als u een console toepassing gebruikt die is geschreven in .NET core (2,0 of hoger) of .NET Framework (4.7.2 of hoger)
 
-[ASP .net core-achtergrond taken met HostedServices](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService) Gebruik dit voor beeld als u zich in Asp.Net Core 2.1/2.2 bevindt en u [hier](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2) achtergrond taken als per officiële richt lijn maakt
+[ASP .net core-achtergrond taken met HostedServices](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService) Gebruik dit voor beeld als u zich in Asp.Net Core 2.1/2.2 bevindt en u [hier](/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2) achtergrond taken als per officiële richt lijn maakt
 
-[.Net Core 3,0-werk service](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights) Gebruik dit voor beeld als u een .NET Core 3,0 Worker-service toepassing hebt als per [officiële richt lijn](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-3.0&tabs=visual-studio#worker-service-template)
+[.Net Core 3,0-werk service](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights) Gebruik dit voor beeld als u een .NET Core 3,0 Worker-service toepassing hebt als per [officiële richt lijn](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio&view=aspnetcore-3.0#worker-service-template)
 
 ## <a name="open-source-sdk"></a>Open-Source-SDK
 
@@ -544,4 +545,4 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 * [Gebruik de API](../../azure-monitor/app/api-custom-events-metrics.md) om uw eigen gebeurtenissen en metrische gegevens te verzenden voor een gedetailleerde weer gave van de prestaties en het gebruik van uw app.
 * [Houd extra afhankelijkheden bij die niet automatisch worden bijgehouden](../../azure-monitor/app/auto-collect-dependencies.md).
 * [Telemetrie van het automatisch verzamelen van gegevens verrijken of filteren](../../azure-monitor/app/api-filtering-sampling.md).
-* [Afhankelijkheids injectie in ASP.net core](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection).
+* [Afhankelijkheids injectie in ASP.net core](/aspnet/core/fundamentals/dependency-injection).

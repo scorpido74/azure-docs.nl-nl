@@ -3,17 +3,18 @@ title: Abnormale toename in het uitzonderings volume-Azure-toepassing Insights
 description: Bewaak toepassings uitzonderingen met Slimme detectie in Azure-toepassing inzichten voor ongebruikelijke patronen in het uitzonderings volume.
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: a08fae4774a8afb9959f55ea3196cd1a45c33439
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 00b7a28a51f91c969b41d2ab85b611f6dde51396
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671763"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499423"
 ---
 # <a name="abnormal-rise-in-exception-volume-preview"></a>Uitzonderings volume met een abnormale toename (preview-versie)
 
 Application Insights analyseert automatisch de uitzonde ringen die in uw toepassing worden gegenereerd en kunnen u waarschuwen over ongebruikelijke patronen in de telemetrie van de uitzonde ring.
 
-Voor deze functie is geen speciale configuratie vereist, anders dan het [configureren van uitzonderings rapportage](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-exceptions#set-up-exception-reporting) voor uw app. Het is actief wanneer uw app voldoende uitzonderings-telemetrie genereert.
+Voor deze functie is geen speciale configuratie vereist, anders dan het [configureren van uitzonderings rapportage](./asp-net-exceptions.md#set-up-exception-reporting) voor uw app. Het is actief wanneer uw app voldoende uitzonderings-telemetrie genereert.
 
 ## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Wanneer kan ik dit type Smart Detection-melding krijgen?
 Dit type melding kan worden weer geven als uw app een abnormale toename van het aantal uitzonde ringen van een specifiek type gedurende een dag vertoont, vergeleken met een basis lijn die in de afgelopen zeven dagen is berekend.

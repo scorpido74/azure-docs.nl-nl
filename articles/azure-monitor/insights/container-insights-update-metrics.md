@@ -2,12 +2,13 @@
 title: Azure Monitor voor containers bijwerken voor metrische gegevens | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u Azure Monitor voor containers bijwerkt om de functie voor aangepaste metrische gegevens in te scha kelen die ondersteuning biedt voor het verkennen en waarschuwen van geaggregeerde metrische gegevens.
 ms.topic: conceptual
-ms.date: 06/01/2020
-ms.openlocfilehash: d299fc5e6b0c41188fac1fa19bb66387263c12e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/17/2020
+ms.openlocfilehash: 78a6612e522accce8c934885a090e66a51850c97
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84298258"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498981"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Azure Monitor voor containers bijwerken om metrische gegevens in te schakelen
 
@@ -21,21 +22,23 @@ De volgende metrische gegevens zijn ingeschakeld als onderdeel van deze functie:
 
 | Metrische naam ruimte | Gegevens | Beschrijving |
 |------------------|--------|-------------|
-| inzichten. container/knoop punten | cpuUsageMillicores, cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount | Dit zijn metrische gegevens van *knoop punten* en *host* als een dimensie, en ze bevatten ook de<br> de naam van het knoop punt als waarde voor de *host* -dimensie. |
-| inzichten. container/peul | podCount | Dit zijn *pod* metrische gegevens en bevatten de volgende dimensies: dimensie-controller naam, naam ruimte van Kubernetes, name, Phase. |
+| Inzichten. container/knoop punten | cpuUsageMillicores, cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount, diskUsedPercentage, | De metrische gegevens van *knoop punten* zijn *host* als een dimensie. Ze omvatten ook de<br> de naam van het knoop punt als waarde voor de *host* -dimensie. |
+| Inzichten. container/peul | podCount, completedJobsCount, restartingContainerCount, oomKilledContainerCount, podReadyPercentage | Als *pod* -metrische gegevens bevatten ze de volgende dimensies: afmetingen-controller, Kubernetes naam ruimte, naam, fase. |
+| Inzichten. container/containers | cpuExceededPercentage, memoryRssExceededPercentage, memoryWorkingSetExceededPercentage | |
 
-Het bijwerken van het cluster ter ondersteuning van deze nieuwe mogelijkheden kan worden uitgevoerd vanuit de Azure Portal, Azure PowerShell of met Azure CLI. Met Azure PowerShell en CLI kunt u dit per cluster of voor alle clusters in uw abonnement inschakelen. Nieuwe implementaties van AKS bevatten automatisch deze configuratie wijziging en mogelijkheden.
+Ter ondersteuning van deze nieuwe mogelijkheden wordt een nieuwe container met Agent versie **micro soft/OMS: ciprod02212019**, opgenomen in de release. Nieuwe implementaties van AKS bevatten automatisch deze configuratie wijziging en mogelijkheden. Het bijwerken van uw cluster ter ondersteuning van deze functie kan worden uitgevoerd vanuit de Azure Portal, Azure PowerShell of met Azure CLI. Met Azure PowerShell en CLI. U kunt dit per cluster of voor alle clusters in uw abonnement inschakelen.
 
 In beide gevallen wordt de rol **bewakings metrieken** voor de uitgever toegewezen aan de service-principal van het cluster of de door de gebruiker toegewezen MSI voor de invoeg toepassing voor bewaking, zodat de gegevens die door de agent worden verzameld, kunnen worden gepubliceerd naar de cluster bron. Bewaking van metrische gegevens van de uitgever heeft alleen toestemming voor het pushen van metrische gegevens naar de resource, het kan geen status wijzigen, de resource bijwerken of gegevens lezen. Zie voor meer informatie over de rol [bewaking metrische gegevens van uitgever](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher).
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u begint, controleert u het volgende:
+Controleer het volgende voordat u het cluster bijwerkt:
 
 * Aangepaste metrische gegevens zijn alleen beschikbaar in een subset van Azure-regio's. [Hier](../platform/metrics-custom-overview.md#supported-regions)wordt een lijst met ondersteunde regio's beschreven.
-* U bent lid van de rol **[eigenaar](../../role-based-access-control/built-in-roles.md#owner)** op de AKS-cluster bron om het verzamelen van aangepaste prestatie gegevens voor knoop punten en pod in te scha kelen. 
 
-Als u ervoor kiest om de Azure CLI te gebruiken, moet u de CLI eerst lokaal installeren en gebruiken. U moet de Azure CLI-versie 2.0.59 of hoger uitvoeren. Voer uit om uw versie te identificeren `az --version` . Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+* U bent lid van de rol **[eigenaar](../../role-based-access-control/built-in-roles.md#owner)** op de AKS-cluster bron om het verzamelen van aangepaste prestatie gegevens voor knoop punten en pod in te scha kelen.
+
+Als u ervoor kiest om de Azure CLI te gebruiken, moet u de CLI eerst lokaal installeren en gebruiken. U moet de Azure CLI-versie 2.0.59 of hoger uitvoeren. Voer uit om uw versie te identificeren `az --version` . Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](/cli/azure/install-azure-cli).
 
 ## <a name="upgrade-a-cluster-from-the-azure-portal"></a>Een cluster upgraden van de Azure Portal
 
@@ -121,4 +124,4 @@ Voer de volgende stappen uit om een specifiek cluster bij te werken met Azure Po
 
 ## <a name="verify-update"></a>Update controleren
 
-Nadat u de update hebt gestart met een van de methoden die eerder zijn beschreven, kunt u Azure Monitor Metrics Explorer gebruiken en controleren of de **metrische naam ruimte** die **inzichten** bevat wordt weer gegeven. Als dit het geval is, geeft dit aan dat u kunt door gaan met het instellen van [metrische waarschuwingen](../platform/alerts-metric.md) of het vastmaken van uw grafieken aan [Dash boards](../../azure-portal/azure-portal-dashboards.md).  
+Nadat u de update hebt gestart met een van de methoden die eerder zijn beschreven, kunt u Azure Monitor Metrics Explorer gebruiken en controleren of de **metrische naam ruimte** die **inzichten** bevat wordt weer gegeven. Als dat het geval is, kunt u door gaan met het instellen van [metrische waarschuwingen](../platform/alerts-metric.md) of het vastmaken van uw grafieken aan [Dash boards](../../azure-portal/azure-portal-dashboards.md).  

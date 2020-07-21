@@ -6,11 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 3fbeb1120e97a884135cd4622a49ef97fd43e58e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eba250f3ca6a7af8480d24a99e6c3e8278009b82
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671661"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499440"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>Live Azure-Cloud Services profiel met Application Insights
 
@@ -22,7 +23,7 @@ U kunt ook Application Insights Profiler op deze services implementeren:
 Application Insights Profiler is geïnstalleerd met de Azure Diagnostics extensie. U hoeft alleen Azure Diagnostics te configureren om Profiler te installeren en profielen naar uw Application Insights-bron te verzenden.
 
 ## <a name="enable-profiler-for-azure-cloud-services"></a>Profiler inschakelen voor Azure Cloud Services
-1. Controleer of u [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) of nieuwer gebruikt. Als u OS Family 4 gebruikt, moet u .NET Framework 4.6.1 of nieuwer installeren met een [opstart taak](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-install-dotnet). BESTURINGSSYSTEEM familie 5 bevat standaard een compatibele versie van .NET Framework. 
+1. Controleer of u [.NET Framework 4.6.1](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) of nieuwer gebruikt. Als u OS Family 4 gebruikt, moet u .NET Framework 4.6.1 of nieuwer installeren met een [opstart taak](../../cloud-services/cloud-services-dotnet-install-dotnet.md). BESTURINGSSYSTEEM familie 5 bevat standaard een compatibele versie van .NET Framework. 
 
 1. [Application INSIGHTS SDK toevoegen aan Azure Cloud Services](../../azure-monitor/app/cloudservices.md?toc=/azure/azure-monitor/toc.json).
 
@@ -36,11 +37,11 @@ Application Insights Profiler is geïnstalleerd met de Azure Diagnostics extensi
 
 1. Configureer de Azure Diagnostics-extensie om Profiler in te scha kelen:
 
-    a. Zoek het bestand [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) *Diagnostics. wadcfgx* voor uw toepassingsrol, zoals hier wordt weer gegeven:  
+    a. Zoek het bestand [Azure Diagnostics](../platform/diagnostics-extension-overview.md) *Diagnostics. wadcfgx* voor uw toepassingsrol, zoals hier wordt weer gegeven:  
 
       ![Locatie van het configuratie bestand voor diagnostische gegevens](./media/profiler-cloudservice/cloudservice-solutionexplorer.png)  
 
-      Als u het bestand niet kunt vinden, raadpleegt u [Diagnostische gegevens instellen voor Azure Cloud Services en virtual machines](https://docs.microsoft.com/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines).
+      Als u het bestand niet kunt vinden, raadpleegt u [Diagnostische gegevens instellen voor Azure Cloud Services en virtual machines](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines).
 
     b. Voeg de volgende `SinksConfig` sectie toe als onderliggend element van `WadCfg` :  
 

@@ -12,12 +12,12 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: a7a8af505394b5bf860778b9872434cdacf54210
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54aac9fda42a867ab66d631279efbca4f812b01a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887014"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497609"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Gegevens kopiëren van en naar Dynamics 365 (Common Data Service) of Dynamics CRM door gebruik te maken van Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -29,7 +29,7 @@ In dit artikel wordt beschreven hoe u een Kopieer activiteit in Azure Data Facto
 Deze connector wordt ondersteund voor de volgende activiteiten:
 
 - [Kopieer activiteit](copy-activity-overview.md) met [ondersteunde bron-en Sink-matrix](copy-activity-overview.md)
-- [Opzoek activiteit](control-flow-lookup-activity.md)
+- [Activiteit Lookup](control-flow-lookup-activity.md)
 
 U kunt gegevens uit Dynamics 365 (Common Data Service) of Dynamics CRM kopiëren naar een ondersteunde Sink-gegevens opslag. U kunt ook gegevens uit een ondersteund brongegevens archief kopiëren naar Dynamics 365 (Common Data Service) of Dynamics CRM. Zie de tabel [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die door een Kopieer activiteit worden ondersteund als bronnen en Sinks.
 
@@ -79,10 +79,10 @@ De volgende eigenschappen worden ondersteund voor de Dynamics gekoppelde service
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet worden ingesteld op "Dynamics", "DynamicsCrm" of "CommonDataServiceForApps". | Yes |
-| deploymentType | Het implementatie type van het Dynamics-exemplaar. De waarde moet ' online ' zijn voor Dynamics online. | Yes |
-| serviceUri | De service-URL van uw Dynamics-exemplaar. Een voorbeeld is https://adfdynamics.crm.dynamics.com. | Yes |
-| authenticationType | Het verificatie type om verbinding te maken met een Dynamics-Server. Geldige waarden zijn ' AADServicePrincipal ' en ' Office365 '. | Yes |
+| type | De eigenschap type moet worden ingesteld op "Dynamics", "DynamicsCrm" of "CommonDataServiceForApps". | Ja |
+| deploymentType | Het implementatie type van het Dynamics-exemplaar. De waarde moet ' online ' zijn voor Dynamics online. | Ja |
+| serviceUri | De service-URL van uw Dynamics-exemplaar. Een voorbeeld is https://www.crmdynamics.com. | Ja |
+| authenticationType | Het verificatie type om verbinding te maken met een Dynamics-Server. Geldige waarden zijn ' AADServicePrincipal ' en ' Office365 '. | Ja |
 | servicePrincipalId | De client-ID van de Azure AD-toepassing. | Ja wanneer verificatie ' AADServicePrincipal ' is |
 | servicePrincipalCredentialType | Het referentie type dat moet worden gebruikt voor Service-Principal-verificatie. Geldige waarden zijn ' ServicePrincipalKey ' en ' ServicePrincipalCert '. | Ja wanneer verificatie ' AADServicePrincipal ' is |
 | servicePrincipalCredential | De Service-Principal-referentie. <br/><br/>Wanneer u ' ServicePrincipalKey ' als referentie type gebruikt, `servicePrincipalCredential` kan dit een teken reeks zijn die tijdens de implementatie van de gekoppelde service Azure Data Factory versleuteld. Het kan ook een verwijzing naar een geheim in Azure Key Vault zijn. <br/><br/>Wanneer u ' ServicePrincipalCert ' als referentie gebruikt, `servicePrincipalCredential` moet u een verwijzing naar een certificaat in azure Key Vault hebben. | Ja wanneer verificatie ' AADServicePrincipal ' is |
@@ -102,7 +102,7 @@ De volgende eigenschappen worden ondersteund voor de Dynamics gekoppelde service
         "type": "Dynamics",  
         "typeProperties": {  
             "deploymentType": "Online",  
-            "serviceUri": "https://adfdynamics.crm.dynamics.com",  
+            "serviceUri": "https://www.crmdynamics.com",  
             "authenticationType": "AADServicePrincipal",  
             "servicePrincipalId": "<service principal id>",  
             "servicePrincipalCredentialType": "ServicePrincipalKey",  
@@ -124,7 +124,7 @@ De volgende eigenschappen worden ondersteund voor de Dynamics gekoppelde service
         "type": "Dynamics", 
         "typeProperties": { 
             "deploymentType": "Online", 
-            "serviceUri": "https://adfdynamics.crm.dynamics.com", 
+            "serviceUri": "https://www.crmdynamics.com", 
             "authenticationType": "AADServicePrincipal", 
             "servicePrincipalId": "<service principal id>", 
             "servicePrincipalCredentialType": "ServicePrincipalCert", 
@@ -154,7 +154,7 @@ De volgende eigenschappen worden ondersteund voor de Dynamics gekoppelde service
         "type": "Dynamics",
         "typeProperties": {
             "deploymentType": "Online",
-            "serviceUri": "https://adfdynamics.crm.dynamics.com",
+            "serviceUri": "https://www.crmdynamics.com",
             "authenticationType": "Office365",
             "username": "test@contoso.onmicrosoft.com",
             "password": {
@@ -222,7 +222,7 @@ Als u gegevens wilt kopiëren van en naar Dynamics, worden de volgende eigenscha
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de gegevensset moet worden ingesteld op "DynamicsEntity", "DynamicsCrmEntity" of "CommonDataServiceForAppsEntity". |Yes |
+| type | De eigenschap type van de gegevensset moet worden ingesteld op "DynamicsEntity", "DynamicsCrmEntity" of "CommonDataServiceForAppsEntity". |Ja |
 | entityName | De logische naam van de entiteit die moet worden opgehaald. | Nee voor bron als de activiteit bron is opgegeven als ' query ' en ja voor Sink |
 
 #### <a name="example"></a>Voorbeeld
@@ -254,7 +254,7 @@ Als u gegevens wilt kopiëren uit Dynamics, ondersteunt het gedeelte **bron** va
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op "DynamicsSource", "DynamicsCrmSource" of "CommonDataServiceForAppsSource". | Yes |
+| type | De eigenschap type van de bron van de Kopieer activiteit moet worden ingesteld op "DynamicsSource", "DynamicsCrmSource" of "CommonDataServiceForAppsSource". | Ja |
 | query | FetchXML is een eigen query taal die wordt gebruikt in Dynamics online en on-premises. Zie het volgende voorbeeld Zie [Query's bouwen met FetchXML](https://msdn.microsoft.com/library/gg328332.aspx)voor meer informatie. | Nee if `entityName` in de gegevensset is opgegeven |
 
 >[!NOTE]
@@ -323,7 +323,7 @@ Als u gegevens wilt kopiëren naar Dynamics, ondersteunt het gedeelte **sink** v
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de Sink voor kopieer activiteiten moet worden ingesteld op ' DynamicsSink ', ' DynamicsCrmSink ' of ' CommonDataServiceForAppsSink '. | Ja. |
-| writeBehavior | Het schrijf gedrag van de bewerking. De waarde moet ' Upsert ' zijn. | Yes |
+| writeBehavior | Het schrijf gedrag van de bewerking. De waarde moet ' Upsert ' zijn. | Ja |
 | alternateKeyName | De alternatieve sleutel naam die op uw entiteit is gedefinieerd om een upsert uit te voeren. | Nee. |
 | writeBatchSize | Het aantal rijen van gegevens dat in elke batch naar Dynamics is geschreven. | Nee. De standaardwaarde is 10. |
 | ignoreNullValues | Hiermee wordt aangegeven of Null-waarden moeten worden genegeerd voor andere invoer gegevens dan de sleutel velden tijdens een schrijf bewerking.<br/><br/>Geldige waarden zijn **True** en **False**:<ul><li>**Waar**: laat de gegevens in het doel object ongewijzigd wanneer u een upsert of update-bewerking doet. Voeg een gedefinieerde standaard waarde in wanneer u een INSERT-bewerking wilt uitvoeren.</li><li>**Onwaar**: werk de gegevens in het doel object bij naar een null-waarde wanneer u een upsert of update-bewerking uitgevoerd. Voeg een null-waarde toe wanneer u een INSERT-bewerking uitgevoerd.</li></ul> | Nee. De standaard waarde is **False**. |
@@ -378,7 +378,7 @@ Configureer het bijbehorende Data Factory gegevens type in een gegevensset struc
 | Dynamics-gegevens type | Data Factory tussentijds gegevens type | Ondersteund als bron | Ondersteund als Sink |
 |:--- |:--- |:--- |:--- |
 | AttributeTypeCode. BigInt | Omvang | ✓ | ✓ |
-| AttributeTypeCode. Boolean | Boolean-waarde | ✓ | ✓ |
+| AttributeTypeCode. Boolean | Booleaans | ✓ | ✓ |
 | AttributeType. klant | GUID | ✓ | ✓ (Zie de [richt lijnen](#writing-data-to-a-lookup-field)) |
 | AttributeType. DateTime | Datum/tijd | ✓ | ✓ |
 | AttributeType. decimaal | Decimal | ✓ | ✓ |
@@ -386,7 +386,7 @@ Configureer het bijbehorende Data Factory gegevens type in een gegevensset struc
 | AttributeType. EntityName | Tekenreeks | ✓ | ✓ |
 | AttributeType. integer | Int32 | ✓ | ✓ |
 | AttributeType. lookup | GUID | ✓ | ✓ (Zie de [richt lijnen](#writing-data-to-a-lookup-field)) |
-| AttributeType. ManagedProperty | Boolean-waarde | ✓ | |
+| AttributeType. ManagedProperty | Booleaans | ✓ | |
 | AttributeType. Memo | Tekenreeks | ✓ | ✓ |
 | AttributeType. geld | Decimal | ✓ | ✓ |
 | AttributeType. owner | GUID | ✓ | ✓ (Zie de [richt lijnen](#writing-data-to-a-lookup-field)) |

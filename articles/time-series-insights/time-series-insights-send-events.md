@@ -5,19 +5,20 @@ ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: dd7a74ff775e6e07d1c32ed198ff028765fce45d
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 589dd411e3d340eb8a0bf84b21a306cabd4bb362
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037287"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495071"
 ---
-# <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>Gebeurtenissen verzenden naar een Time Series Insights omgeving met behulp van een Event Hub
+# <a name="send-events-to-a-azure-time-series-insights-gen1-environment-by-using-an-event-hub"></a>Gebeurtenissen verzenden naar een Azure Time Series Insights gen1-omgeving met behulp van een Event Hub
 
 In dit artikel wordt uitgelegd hoe u een Event Hub in azure Event Hubs maakt en configureert. Ook wordt beschreven hoe u een voorbeeld toepassing uitvoert om gebeurtenissen te pushen naar Azure Time Series Insights van Event Hubs. Als u een bestaande Event Hub hebt met gebeurtenissen in JSON-indeling, kunt u deze zelf studie overs Laan en uw omgeving bekijken in [Azure time series Insights](./time-series-insights-update-create-environment.md).
 
@@ -37,10 +38,10 @@ In dit artikel wordt uitgelegd hoe u een Event Hub in azure Event Hubs maakt en 
 
     [![Een Consumer groep maken](media/send-events/add-event-hub-consumer-group.png)](media/send-events/add-event-hub-consumer-group.png#lightbox)
 
-1. Zorg ervoor dat u een Consumer groep maakt die uitsluitend wordt gebruikt door de bron van de Time Series Insights gebeurtenis.
+1. Zorg ervoor dat u een Consumer groep maakt die uitsluitend wordt gebruikt door de bron van de Azure Time Series Insights gebeurtenis.
 
     > [!IMPORTANT]
-    > Zorg ervoor dat deze Consumer groep niet wordt gebruikt door een andere service, zoals een Azure Stream Analytics-taak of een andere Time Series Insights omgeving. Als de Consumer groep wordt gebruikt door de andere services, worden Lees bewerkingen negatief beïnvloed voor deze omgeving en voor andere services. Als u **$default** als de Consumer groep gebruikt, kunnen andere lezers uw consumenten groep mogelijk hergebruiken.
+    > Zorg ervoor dat deze Consumer groep niet wordt gebruikt door een andere service, zoals een Azure Stream Analytics-taak of een andere Azure Time Series Insights omgeving. Als de Consumer groep wordt gebruikt door de andere services, worden Lees bewerkingen negatief beïnvloed voor deze omgeving en voor andere services. Als u **$default** als de Consumer groep gebruikt, kunnen andere lezers uw consumenten groep mogelijk hergebruiken.
 
 1. Selecteer in het menu onder **instellingen**de optie **beleid voor gedeelde toegang**en selecteer vervolgens **toevoegen**.
 
@@ -52,11 +53,11 @@ In dit artikel wordt uitgelegd hoe u een Event Hub in azure Event Hubs maakt en 
 
 1. Schakel onder **claim**het selectie vakje **verzenden** in.
 
-## <a name="add-a-time-series-insights-instance"></a>Een Time Series Insights-exemplaar toevoegen
+## <a name="add-an-azure-time-series-insights-instance"></a>Een Azure Time Series Insights-exemplaar toevoegen
 
-De Time Series Insights Update gebruikt exemplaren om contextuele gegevens toe te voegen aan inkomende telemetriegegevens. De gegevens worden tijdens de query tijd gekoppeld met behulp van een **tijd reeks-id**. De **Time Series-id** voor het voorbeeld project Windmills dat later in dit artikel wordt gebruikt is `id` . Lees voor meer informatie over time series Insight-instanties en **tijd reeks-ID-** [modellen](./concepts-model-overview.md).
+In Azure Time Series Insights gen 2 kunt u contextuele gegevens toevoegen aan inkomende telemetrie met behulp van het time series model (TSM). In TSM worden uw tags of signalen gerefereerd als *instanties* en kunt u contextuele gegevens opslaan in *exemplaar velden.* De gegevens worden tijdens de query tijd gekoppeld met behulp van een **tijd reeks-id**. De **Time Series-id** voor het voorbeeld project Windmills dat later in dit artikel wordt gebruikt is `id` . Lees het overzicht van [Time Series model](./concepts-model-overview.md) voor meer informatie over het opslaan van gegevens in de exemplaar velden.
 
-### <a name="create-a-time-series-insights-event-source"></a>Een Time Series Insights gebeurtenis bron maken
+### <a name="create-a-azure-time-series-insights-event-source"></a>Een Azure Time Series Insights gebeurtenis bron maken
 
 1. Als u nog geen gebeurtenis bron hebt gemaakt, voert u de stappen uit om [een gebeurtenis bron te maken](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub).
 
@@ -80,7 +81,7 @@ De Time Series Insights Update gebruikt exemplaren om contextuele gegevens toe t
 1. Selecteer **klikken om te starten**. 
 
     > [!TIP]
-    > De Windmill Simulator maakt ook JSON die u kunt gebruiken als een Payload met de [Time Series INSIGHTS ga query-api's](https://docs.microsoft.com/rest/api/time-series-insights/ga-query).
+    > De Windmill Simulator maakt ook JSON die u kunt gebruiken als een Payload met de [Azure time series INSIGHTS ga query-api's](https://docs.microsoft.com/rest/api/time-series-insights/ga-query).
 
     > [!NOTE]
     > De Simulator blijft gegevens verzenden totdat het tabblad browser is gesloten.
@@ -197,11 +198,11 @@ De Time Series Insights Update gebruikt exemplaren om contextuele gegevens toe t
 
     |location|manufacturer.name|manufacturer.location|events.id|events.timestamp|events.data.type|events.data.units|events.data.value|
     |---|---|---|---|---|---|---|---|
-    |WestUs|manufacturer1|EastUs|device1|2016-01-08T01:08:00Z|pressure|psi|108.09|
+    |WestUs|manufacturer1|EastUs|device1|2016-01-08T01:08:00Z|druk|psi|108.09|
     |WestUs|manufacturer1|EastUs|device2|2016-01-08T01:17:00Z|vibration|abs G|217.09|
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Bekijk uw omgeving](https://insights.timeseries.azure.com) in de time series Insights Explorer.
+- [Bekijk uw omgeving](https://insights.timeseries.azure.com) in de Azure time series Insights Explorer.
 
 - Meer informatie over [IOT Hub-apparaten](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)

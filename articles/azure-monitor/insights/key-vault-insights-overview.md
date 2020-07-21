@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/13/2019
-ms.openlocfilehash: 97bea90e67b9449a8f5fd7b333b9ac149abef2f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b52a1ee67c22fb3bded49a80d35305bdf612f10
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945457"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498947"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault-preview"></a>Bewaken van uw sleutel kluis service met Azure Monitor voor Key Vault (preview-versie)
 Azure Monitor voor Key Vault (preview) biedt uitgebreide bewaking van uw sleutel kluizen door een uniforme weer gave te bieden van uw Key Vault-aanvragen, prestaties, fouten en latentie.
@@ -24,7 +24,7 @@ Voordat u naar de ervaring gaat, moet u weten hoe de informatie wordt gepresente
 -   **Zoom analyse** van een bepaalde sleutel kluis uit om gedetailleerde analyse uit te voeren.
 -    **Aanpasbaar** waar u kunt wijzigen welke metrische gegevens u wilt zien, wijzigen of instellen van drempel waarden die met uw limieten worden uitgelijnd en uw eigen werkmap opslaan. Grafieken in de werkmap kunnen worden vastgemaakt aan Azure-Dash boards.
 
-Azure Monitor voor Key Vault worden logboeken en metrische gegevens gecombineerd om een algemene bewakings oplossing te bieden. Alle gebruikers hebben toegang tot de metrische gegevens voor bewaking, maar het opnemen van op Logboeken gebaseerde visualisaties vereist mogelijk dat gebruikers [logboek registratie van hun Azure Key Vault inschakelen](https://docs.microsoft.com/azure/key-vault/key-vault-logging).
+Azure Monitor voor Key Vault worden logboeken en metrische gegevens gecombineerd om een algemene bewakings oplossing te bieden. Alle gebruikers hebben toegang tot de metrische gegevens voor bewaking, maar het opnemen van op Logboeken gebaseerde visualisaties vereist mogelijk dat gebruikers [logboek registratie van hun Azure Key Vault inschakelen](../../key-vault/general/logging.md).
 
 ## <a name="configuring-your-key-vaults-for-monitoring"></a>Uw sleutel kluizen voor bewaking configureren
 
@@ -39,7 +39,7 @@ Azure Monitor voor Key Vault worden logboeken en metrische gegevens gecombineerd
 
 3. Zodra de diagnostische instellingen zijn opgeslagen, kunt u alle op Logboeken gebaseerde grafieken en visualisaties onder de Key Vault Insights weer geven. Het kan enkele minuten tot uur duren voordat de logboeken zijn gevuld.
 
-4. Lees de [volledige hand leiding](https://docs.microsoft.com/azure/key-vault/key-vault-logging)voor meer informatie over het inschakelen van Diagnostische logboeken voor uw Key Vault-service.
+4. Lees de [volledige hand leiding](../../key-vault/general/logging.md)voor meer informatie over het inschakelen van Diagnostische logboeken voor uw Key Vault-service.
 
 ## <a name="view-from-azure-monitor"></a>Weer geven van Azure Monitor
 
@@ -75,7 +75,7 @@ Er zijn voorwaardelijke kleurcoderings-of Heatmaps voor kolommen in de werkmap d
 
 In de werkmap worden successen (2xx-status codes) weer gegeven, authenticatie fouten (401/403-status codes), beperking (429-status codes) en andere fouten (4xx-status codes).
 
-Als u beter wilt begrijpen wat elk van de status codes vertegenwoordigen, raden we u aan de documentatie over [Azure Key Vault status-en respons codes](https://docs.microsoft.com/azure/key-vault/authentication-requests-and-responses)te lezen.
+Als u beter wilt begrijpen wat elk van de status codes vertegenwoordigen, raden we u aan de documentatie over [Azure Key Vault status-en respons codes](../../key-vault/general/authentication-requests-and-responses.md)te lezen.
 
 ## <a name="operations--latency-workbook"></a>Werkmap voor bewerkingen & latentie
 
@@ -120,7 +120,7 @@ Met de operations-werkmap kunnen gebruikers dieper worden uitgebreid naar de vol
 Gebruikers kunnen ook weer gaven bereiken op basis van specifieke transactie typen in de bovenste tabel, waarmee de lagere tabel dynamisch wordt bijgewerkt, waar gebruikers de volledige bewerkings details kunnen bekijken in een pop-upcontext venster.
 
 >[!NOTE]
-> Houd er rekening mee dat gebruikers de diagnostische instellingen moeten hebben ingeschakeld om deze werkmap weer te geven. Meer informatie over het inschakelen van de diagnostische instelling vindt u meer informatie over [Azure Key Vault logboek registratie](https://docs.microsoft.com/azure/key-vault/general/logging).
+> Houd er rekening mee dat gebruikers de diagnostische instellingen moeten hebben ingeschakeld om deze werkmap weer te geven. Meer informatie over het inschakelen van de diagnostische instelling vindt u meer informatie over [Azure Key Vault logboek registratie](../../key-vault/general/logging.md).
 
 ## <a name="pin-and-export"></a>Vastmaken en exporteren
 
@@ -164,7 +164,7 @@ Deze sectie helpt u bij het diagnosticeren en oplossen van problemen met enkele 
 
 ### <a name="resolving-performance-issues-or-failures"></a>Prestatie problemen of fouten oplossen
 
-Raadpleeg de [documentatie van Azure Key Vault](https://docs.microsoft.com/azure/key-vault/)als u wilt helpen bij het oplossen van problemen met de sleutel kluis die u identificeert met Azure Monitor voor Key Vault (preview).
+Raadpleeg de [documentatie van Azure Key Vault](../../key-vault/index.yml)als u wilt helpen bij het oplossen van problemen met de sleutel kluis die u identificeert met Azure Monitor voor Key Vault (preview).
 
 ### <a name="why-can-i-only-see-200-key-vaults"></a>Waarom kan ik alleen 200 sleutel kluizen zien
 
@@ -208,4 +208,4 @@ U kunt de bestaande werkmap bewerken met behulp van de bewerkings modus en vervo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de scenario's werkmappen zijn ontworpen voor ondersteuning, het ontwerpen van nieuwe en het aanpassen van bestaande rapporten en meer door [interactieve rapporten maken met Azure monitor werkmappen](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)te controleren.
+Meer informatie over de scenario's werkmappen zijn ontworpen voor ondersteuning, het ontwerpen van nieuwe en het aanpassen van bestaande rapporten en meer door [interactieve rapporten maken met Azure monitor werkmappen](../platform/workbooks-overview.md)te controleren.

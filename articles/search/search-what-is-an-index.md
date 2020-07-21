@@ -1,58 +1,82 @@
 ---
-title: Een index definitie en concepten maken
+title: Een zoekindex maken
 titleSuffix: Azure Cognitive Search
-description: Inleiding tot index termen en concepten in azure Cognitive Search, inclusief onderdeel onderdelen en fysieke structuur.
+description: Hierin worden de concepten en hulpprogram ma's voor indexering in azure Cognitive Search beschreven, met inbegrip van schema definities en de fysieke gegevens structuur.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: d2b8b2fecbf85e6590294f1fbd7ff2a4453b9e87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/15/2020
+ms.openlocfilehash: 9e8d1c012ae07fc458a324315e2635f04c3dbd78
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79282781"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496485"
 ---
-# <a name="create-a-basic-index-in-azure-cognitive-search"></a>Een Basic-index maken in azure Cognitive Search
+# <a name="create-a-basic-search-index-in-azure-cognitive-search"></a>Een eenvoudige zoek index maken in azure Cognitive Search
 
-In azure Cognitive Search is een *index* een permanente opslag van *documenten* en andere constructies die worden gebruikt voor gefilterde en zoek opdrachten in de volledige tekst van een Azure Cognitive Search-service. Een document is conceptueel gezien een enkele eenheid van Doorzoek bare gegevens in uw index. Een e-commercedetailhandel heeft bijvoorbeeld een document voor elk item dat wordt verkocht, een nieuwsbureau heeft een document voor elk artikel, enzovoort. Deze begrippen aan betrouwbaardere database-equivalenten toewijzen: een *index* lijkt conceptueel gezien op een *tabel* en *documenten* lijken ruwweg op *rijen* in een tabel.
+In azure Cognitive Search slaat een *zoek index* Zoek bare inhoud op die wordt gebruikt voor volledige tekst en gefilterde query's. Een index wordt gedefinieerd door een schema en opgeslagen in de service, met het importeren van gegevens na een tweede stap. 
 
-Wanneer u een index toevoegt of uploadt, worden in azure Cognitive Search fysieke structuren gemaakt op basis van het schema dat u opgeeft. Als een veld in uw index bijvoorbeeld als doorzoekbaar is gemarkeerd, wordt een omgekeerde index voor dat veld gemaakt. Wanneer u later documenten toevoegt of uploadt of zoek query's naar Azure Cognitive Search verzendt, verzendt u aanvragen naar een specifieke index in uw zoek service. Het laden van velden met document waarden wordt *indexering* of gegevens opname genoemd.
+Indexen bevatten *documenten*. Een document is conceptueel gezien een enkele eenheid van Doorzoek bare gegevens in uw index. Een detail handelaar kan voor elk product een document hebben, een nieuws organisatie heeft mogelijk een document voor elk artikel, enzovoort. Deze concepten toewijzen aan meer vertrouwde database equivalenten: een *zoek index* is gelijk aan een *tabel*en *documenten* zijn ongeveer gelijk aan *rijen* in een tabel.
 
-U kunt een index maken in de portal, [rest API](search-create-index-rest-api.md)of [.NET SDK](search-create-index-dotnet.md).
+De fysieke structuur van een index wordt bepaald door het schema, met velden die zijn gemarkeerd als doorzoekbaar, wat resulteert in een omgekeerde index die voor dat veld is gemaakt. 
+
+U kunt een index maken met de volgende hulpprogram ma's en Api's:
+
+* Gebruik de wizard **index toevoegen** of **gegevens importeren** in de Azure Portal
+* De [Create Index gebruiken (rest API)](https://docs.microsoft.com/rest/api/searchservice/create-index)
+* De [.NET-SDK](search-create-index-dotnet.md) gebruiken
+
+Het is eenvoudiger om te leren werken met een portal-hulp programma. De portal dwingt vereisten en schema regels af voor specifieke gegevens typen, zoals het niet toestaan van zoek mogelijkheden in volledige tekst in numerieke velden. Zodra u een stapsgewijze index hebt, kunt u overstappen op code door de JSON-definitie op te halen van de service met [Get index (rest API)](https://docs.microsoft.com/rest/api/searchservice/get-index) en deze toe te voegen aan uw oplossing.
 
 ## <a name="recommended-workflow"></a>Aanbevolen werk stroom
 
-Het bereiken van het juiste index ontwerp wordt doorgaans bereikt via meerdere iteraties. Met een combi natie van hulpprogram ma's en Api's kunt u uw ontwerp snel volt ooien.
+Het aankomen van een laatste index ontwerp is een iteratief proces. Het is gebruikelijk om te beginnen met de portal om de eerste index te maken en vervolgens te scha kelen naar code om de index onder broncode beheer te plaatsen.
 
-1. Bepaal of u een [Indexeer functie](search-indexer-overview.md#supported-data-sources)kunt gebruiken. Als uw externe gegevens een van de ondersteunde gegevens bronnen zijn, kunt u een index maken en laden met behulp van de wizard [**gegevens importeren**](search-import-data-portal.md) .
+1. Bepaal of u [**import gegevens**](search-import-data-portal.md)kunt gebruiken. De wizard voert alles-in-één indexering op basis van Indexeer functie uit als de bron gegevens afkomstig zijn uit een [ondersteund gegevens bron type in azure](search-indexer-overview.md#supported-data-sources).
 
-2. Als u geen **import gegevens**kunt gebruiken, kunt u nog steeds [een initiële index maken in de portal](search-create-index-portal.md), velden en gegevens typen toevoegen en kenmerken toewijzen met behulp van de besturings elementen op de pagina **index toevoegen** . In de portal ziet u welke kenmerken beschikbaar zijn voor verschillende gegevens typen. Als u niet bekend bent met het ontwerp van de index, is dit nuttig.
+1. Als u geen **import gegevens**kunt gebruiken, begint u met **index toevoegen** om het schema te definiëren.
 
-   ![Index pagina met kenmerken op gegevens type toevoegen](media/search-create-index-portal/field-attributes.png "Index pagina met kenmerken op gegevens type toevoegen")
-  
-   Wanneer u op **maken**klikt, worden alle fysieke structuren die uw index ondersteunen, in uw zoek service gemaakt.
+   ![Opdracht index toevoegen](media/search-what-is-an-index/add-index.png "Opdracht index toevoegen")
 
-3. Down load het index schema met [Get index rest API](https://docs.microsoft.com/rest/api/searchservice/get-index) en een hulp programma voor het testen van webtoepassingen zoals in het [bericht](search-get-started-postman.md). U hebt nu een JSON-weer gave van de index die u in de portal hebt gemaakt. 
+1. Geef een naam en sleutel op waarmee elk zoek document in de index uniek wordt geïdentificeerd. De sleutel is verplicht en moet van het type EDM. String zijn. Bij het importeren moet u een uniek veld in de bron gegevens aan dit veld toewijzen. 
 
-   U schakelt op dit punt over op code gebaseerde aanpak. De portal is niet geschikt voor herhaling omdat u geen index kunt bewerken die al is gemaakt. U kunt postman gebruiken en REST voor de resterende taken.
+   De portal geeft u een `id` veld voor de sleutel. Als u de standaard instelling wilt overschrijven `id` , maakt u een nieuw veld (bijvoorbeeld een nieuwe veld definitie genaamd `HotelId` ) en selecteert u dit in de **sleutel**.
 
-4. [Laad uw index met gegevens](search-what-is-data-import.md). Azure Cognitive Search accepteert JSON-documenten. Als u gegevens wilt laden via een programma, kunt u postman gebruiken met JSON-documenten in de aanvraag lading. Als uw gegevens niet eenvoudig kunnen worden uitgedrukt als JSON, is deze stap het meest arbeids intensief.
+   ![De vereiste eigenschappen invullen](media/search-what-is-an-index//field-attributes.png "De vereiste eigenschappen invullen")
 
-5. Zoek uw index op, Bekijk de resultaten en herhaal verder naar het index schema totdat u begint met de resultaten die u verwacht. U kunt [**Search Explorer**](search-explorer.md) of postman gebruiken om de index op te vragen.
+1. Voeg meer velden toe. In de portal ziet u welke [veld kenmerken](#index-attributes) beschikbaar zijn voor verschillende gegevens typen. Als u niet bekend bent met het ontwerp van de index, is dit nuttig.
 
-6. Ga door met het gebruik van code om het ontwerp te herhalen.  
+   Als inkomende gegevens hiërarchisch zijn, wijst u het gegevens type [complex type](search-howto-complex-data-types.md) toe om de geneste structuren aan te duiden. De ingebouwde voor beeld-gegevensset, hotels, illustreert complexe typen met behulp van een adres (bevat meerdere subvelden) die een een-op-een-relatie hebben met elk Hotel, en een verzameling van ruimten die complexe verzamelingen bevatten, waarbij meerdere kamers aan elk hotel zijn gekoppeld. 
 
-Omdat er fysieke structuren in de service zijn gemaakt, worden de [indexen verwijderd en opnieuw gemaakt](search-howto-reindex.md) wanneer u belang rijke wijzigingen doorvoert in een bestaande veld definitie. Dit betekent dat u tijdens de ontwikkeling regel matig opnieuw bouwt. U kunt ook met een subset van uw gegevens werken om het opnieuw opbouwen sneller te laten verlopen. 
+1. Wijs [analyse](#analyzers) functies toe aan teken reeks velden voordat de index wordt gemaakt. Doe hetzelfde voor [suggesties](#suggesters) als u automatisch aanvullen wilt inschakelen voor specifieke velden.
 
-Code, in plaats van een portal-benadering, wordt aanbevolen voor iteratief ontwerp. Als u vertrouwt op de portal voor de index definitie, moet u de index definitie invullen voor elke opnieuw samen stellen. Als alternatief kunt u hulpprogram ma's zoals [postman en de rest API](search-get-started-postman.md) nuttig vinden bij het testen van het haalbaarheids test wanneer ontwikkel projecten nog steeds in vroege fasen zijn. U kunt incrementele wijzigingen aanbrengen in een index definitie in een aanvraag tekst en vervolgens de aanvraag verzenden naar uw service om een index opnieuw te maken met behulp van een bijgewerkt schema.
+1. Klik op **maken** om de fysieke structuren in uw zoek service te maken.
 
-## <a name="components-of-an-index"></a>Onderdelen van een index
+1. Nadat een index is gemaakt, gebruikt u aanvullende opdrachten om definities te controleren of meer elementen toe te voegen.
 
-Schematisch, een Azure Cognitive Search index bestaat uit de volgende elementen. 
+   ![Index pagina met kenmerken op gegevens type toevoegen](media/search-what-is-an-index//field-definitions.png "Index pagina met kenmerken op gegevens type toevoegen")
 
-De [*verzameling velden*](#fields-collection) is doorgaans het grootste deel van een index, waarbij elk veld een naam heeft, wordt getypt en is voorzien van een toegestaan gedrag dat bepaalt hoe het wordt gebruikt. Andere elementen omvatten [suggesties](#suggesters), [Score profielen](#scoring-profiles), [analyse](#analyzers) functies met onderdeel onderdelen ter ondersteuning van aanpassings-, [CORS](#cors) -en [versleutelings sleutel](#encryption-key) opties.
+1. Down load het index schema met [Get index (rest API)](https://docs.microsoft.com/rest/api/searchservice/get-index) en een hulp programma voor het testen van webtoepassingen zoals in het [bericht](search-get-started-postman.md). U hebt nu een JSON-weer gave van de index die u kunt aanpassen voor code.
+
+1. [Laad uw index met gegevens](search-what-is-data-import.md). Azure Cognitive Search accepteert JSON-documenten. Als u gegevens wilt laden via een programma, kunt u postman gebruiken met JSON-documenten in de aanvraag lading. Als uw gegevens niet eenvoudig kunnen worden uitgedrukt als JSON, is deze stap het meest arbeids intensief. 
+
+    Als een index met gegevens is geladen, moeten de meeste bewerkingen in bestaande velden de index verwijderen en opnieuw samen stellen.
+
+1. Zoek uw index op, Bekijk de resultaten en herhaal verder naar het index schema totdat u begint met de resultaten die u verwacht. U kunt [**Search Explorer**](search-explorer.md) of postman gebruiken om de index op te vragen.
+
+Plan tijdens de ontwikkeling regel matig opnieuw samen stellen. Omdat fysieke structuren in de service zijn gemaakt, is het [verwijderen en opnieuw maken van indexen](search-howto-reindex.md) nood zakelijk voor de meeste wijzigingen in een bestaande veld definitie. U kunt ook met een subset van uw gegevens werken om het opnieuw opbouwen sneller te laten verlopen. 
+
+> [!Tip]
+> Code in plaats van een portal-benadering wordt aanbevolen voor het samen werken aan index ontwerp en het importeren van gegevens. Als alternatief kunt u hulpprogram ma's zoals [postman en de rest API](search-get-started-postman.md) nuttig vinden bij het testen van het haalbaarheids test wanneer ontwikkel projecten nog steeds in vroege fasen zijn. U kunt incrementele wijzigingen aanbrengen in een index definitie in een aanvraag tekst en vervolgens de aanvraag verzenden naar uw service om een index opnieuw te maken met behulp van een bijgewerkt schema.
+
+## <a name="index-schema"></a>Index schema
+
+Een index moet een naam hebben en een aangewezen sleutel veld (van EDM. String) in de verzameling velden. De [*verzameling velden*](#fields-collection) is doorgaans het grootste deel van een index, waarbij elk veld een naam heeft, wordt getypt en is voorzien van een toegestaan gedrag dat bepaalt hoe het wordt gebruikt. 
+
+Andere elementen omvatten [suggesties](#suggesters), [Score profielen](#scoringprofiles), [analyse](#analyzers) functies die worden gebruikt voor het verwerken van teken reeksen in tokens volgens linguïstische regels of andere kenmerken die worden ondersteund door de Analyzer en de instellingen voor [externe script verwerking (CORS) voor cross-Origin](#corsoptions) .
 
 ```json
 {
@@ -141,70 +165,56 @@ De [*verzameling velden*](#fields-collection) is doorgaans het grootste deel van
 
 ## <a name="fields-collection-and-field-attributes"></a>Velden verzameling en veld kenmerken
 
-Bij het definiëren van het schema moet u de naam, het type en de kenmerken van elk veld in de index opgeven. Het veldtype classificeert de gegevens die in dat veld worden opgeslagen. Kenmerken worden ingesteld op afzonderlijke velden om op te geven hoe het veld wordt gebruikt. De volgende tabellen bevatten de typen en kenmerken die u kunt opgeven.
+Velden hebben een naam, een type dat de opgeslagen gegevens classificeert en kenmerken die bepalen hoe het veld wordt gebruikt.
 
 ### <a name="data-types"></a>Gegevenstypen
+
 | Type | Description |
-| --- | --- |
-| *Edm.String* |Tekst die eventueel kan worden getokend voor Zoek opdrachten in volledige tekst (woord afbreking, stam bestand, enzovoort). |
-| *Collection(EDM.String)* |Een lijst met tekenreeksen die van tokens kan worden voorzien om te zoeken in de volledige tekst. Er is geen theoretische bovengrens voor het aantal items in een verzameling, maar de bovengrens van 16 MB voor de nettolading geldt voor alle verzamelingen. |
-| *Edm.Boolean* |Bevat de waarden waar/niet waar. |
-| *Edm.Int32* |32-bits waarden van een heel getal. |
-| *Edm.Int64* |64-bits waarden van een heel getal. |
-| *Edm.Double* |Numerieke gegevens met dubbele precisie. |
-| *Edm.DateTimeOffset* |Datum en tijd waarden die worden weer gegeven in de OData v4-indeling (bijvoorbeeld `yyyy-MM-ddTHH:mm:ss.fffZ` of `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm` ). |
-| *Edm.GeographyPoint* |Een punt voor een geografische locatie op de wereld. |
+|------|-------------|
+| Edm.String |Tekst die eventueel kan worden getokend voor Zoek opdrachten in volledige tekst (woord afbreking, stam bestand, enzovoort). |
+| Collection(EDM.String) |Een lijst met tekenreeksen die van tokens kan worden voorzien om te zoeken in de volledige tekst. Er is geen theoretische bovengrens voor het aantal items in een verzameling, maar de bovengrens van 16 MB voor de nettolading geldt voor alle verzamelingen. |
+| Edm.Boolean |Bevat de waarden waar/niet waar. |
+| Edm.Int32 |32-bits waarden van een heel getal. |
+| Edm.Int64 |64-bits waarden van een heel getal. |
+| Edm.Double |Numerieke gegevens met dubbele precisie. |
+| Edm.DateTimeOffset |Datum en tijd waarden die worden weer gegeven in de OData v4-indeling (bijvoorbeeld `yyyy-MM-ddTHH:mm:ss.fffZ` of `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm` ). |
+| Edm.GeographyPoint |Een punt voor een geografische locatie op de wereld. |
 
-Hier vindt u meer gedetailleerde informatie over de [ondersteunde gegevens typen](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types)van Azure Cognitive Search.
+Zie [ondersteunde gegevens typen](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types)voor meer informatie.
 
-### <a name="index-attributes"></a>Indexkenmerken
+<a name="index-attributes"></a>
 
-Er moet precies één veld in de index zijn opgegeven als een **sleutel** veld dat elk document uniek identificeert.
+### <a name="attributes"></a>Kenmerken
 
-Andere kenmerken bepalen hoe een veld in een toepassing wordt gebruikt. Het kenmerk **searchable** wordt bijvoorbeeld toegewezen aan elk veld dat moet worden opgenomen in een zoek opdracht in volledige tekst. 
+Veldkenmerken bepalen hoe een veld wordt gebruikt, bijvoorbeeld of het wordt gebruikt voor zoeken in volledige tekst, facetnavigatie, sorteerbewerkingen, enzovoort. 
 
-De Api's die u gebruikt om een index te maken, hebben verschillende standaard gedragingen. Voor de [rest-api's](https://docs.microsoft.com/rest/api/searchservice/Create-Index)zijn de meeste kenmerken standaard ingeschakeld (bijvoorbeeld **Doorzoek** bare en **opgehaalde** waarden zijn waar voor teken reeks velden). u hoeft ze vaak alleen in te stellen als u ze wilt uitschakelen. Voor de .NET SDK is het tegenovergestelde waar. Op elke eigenschap die u niet expliciet instelt, is de standaard instelling om het bijbehorende Zoek gedrag uit te scha kelen, tenzij u dit specifiek inschakelt.
+Teken reeks velden worden vaak aangeduid als doorzoekbaar en kunnen worden opgehaald. Velden die worden gebruikt om de zoek resultaten te beperken, zijn "sorteerbaar", "filterable" en "facetable".
 
-| Kenmerk | Beschrijving |
-| --- | --- |
-| `key` |Een tekenreeks met de unieke id van elk document. Deze reeks wordt gebruikt om op te zoeken. Elke index moet een sleutel hebben. Slechts één veld kan de sleutel zijn en het type moet zijn ingesteld op Edm.String. |
-| `retrievable` |Hiermee geeft u op of een veld in een zoekresultaat kan worden geretourneerd. |
-| `filterable` |Hiermee kan het veld in een filterquery's worden gebruikt. |
-| `Sortable` |Hiermee kan een query de zoekresultaten sorteren op basis van dit veld. |
-| `facetable` |Hiermee kunt u een veld gebruiken in een [meervoudige navigatie](search-faceted-navigation.md)structuur om op de gebruiker te filteren. Doorgaans werken velden met terugkerende waarden die u kunt gebruiken om meerdere documenten te groeperen (bijvoorbeeld meerdere documenten die in een bepaalde merk- of servicecategorie vallen) het beste als facetten. |
-| `searchable` |Hiermee kunt u in dit veld in de volledige tekst zoeken. |
+|Kenmerk|Beschrijving|  
+|---------------|-----------------|  
+|doorzoekbaar |Zoeken in volledige tekst mogelijk, onderworpen aan lexicale analyse, zoals het afbreken van woorden tijdens het indexeren. Als u een doorzoekbaar veld instelt op een waarde als 'zonnige dag', wordt de waarde intern gesplitst in de afzonderlijke tokens 'zonnige' en 'dag'. Zie [Hoe zoeken in de volledige tekst werkt](search-lucene-query-architecture.md) voor meer informatie.|  
+|filterbaar |Hier wordt naar verwezen in $filter-query's. Bij filterbare velden van het type `Edm.String` of `Collection(Edm.String)` worden woorden niet afgebroken, dus vergelijkingen gelden alleen voor exacte overeenkomsten. Als u zo'n veld bijvoorbeeld instelt op 'zonnige dag', worden er met `$filter=f eq 'sunny'` geen overeenkomsten gevonden, maar met `$filter=f eq 'sunny day'` wel. |  
+|sorteerbaar |Het systeem sorteert de resultaten standaard op score, maar u kunt het sorteren configureren op basis van velden in de documenten. Velden van het type `Collection(Edm.String)` kunnen niet ' sorteerbaar ' zijn. |  
+|facetten |Wordt doorgaans gebruikt bij een weergave van zoekresultaten met een treffertelling per categorie (bijvoorbeeld hotels in een specifieke stad). Deze optie kan niet worden gebruikt bij velden van het type `Edm.GeographyPoint`. Velden van `Edm.String` het type dat kan worden gefilterd, ' sorteerbaar ' of ' facetable ' kunnen Maxi maal 32 kilo bytes lang zijn. Zie [Index maken (REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index) voor meer informatie.|  
+|prestatie |Unieke id voor documenten binnen de index. Er moet precies één veld worden uitgekozen als sleutelveld. Dit veld moet van het type `Edm.String` zijn.|  
+|ophalen mogelijk |Hiermee bepaalt u of het veld in een zoekresultaat kan worden geretourneerd. Dit is handig als u een veld (zoals *winstmarge*) wilt gebruiken als filter-, sorteer- of scoremechanisme, maar niet wilt dat het veld zichtbaar is voor de eindgebruiker. Dit kenmerk moet `true` zijn voor `key`-velden.|  
 
-## <a name="index-size"></a>Index grootte
+Hoewel u op elk gewenst moment nieuwe velden kunt toevoegen, worden bestaande velddefinities voor de hele levensduur van de index vergrendeld. Daarom gebruiken ontwikkelaars de portal doorgaans om eenvoudige indexen te maken, om ideeën uit te testen of om een instelling op te zoeken met behulp van de portalpagina's. Een frequente iteratie van een index-ontwerp is efficiënter als u een op code gebaseerde benadering hanteert, zodat u uw index eenvoudig kunt herbouwen.
 
-De grootte van een index wordt bepaald door de grootte van de documenten die u uploadt, plus de index configuratie, zoals of u Voorst Ellen opneemt en hoe u kenmerken instelt voor afzonderlijke velden. In de volgende scherm afbeelding ziet u de index opslag patronen die voortkomen uit verschillende combi Naties van kenmerken.
+> [!NOTE]
+> De Api's die u gebruikt om een index te maken, hebben verschillende standaard gedragingen. Voor de [rest-api's](https://docs.microsoft.com/rest/api/searchservice/Create-Index)zijn de meeste kenmerken standaard ingeschakeld (bijvoorbeeld ' Doorzoek bare ' en ' ophaalbaar ' zijn waar voor teken reeks velden). u hoeft ze vaak alleen in te stellen als u ze wilt uitschakelen. Voor de .NET SDK is het tegenovergestelde waar. Op elke eigenschap die u niet expliciet instelt, is de standaard instelling om het bijbehorende Zoek gedrag uit te scha kelen, tenzij u dit specifiek inschakelt.
 
-De index is gebaseerd op de [ingebouwde voorbeeld](search-get-started-portal.md) gegevens bron van onroerend goed, die u in de portal kunt indexeren en doorzoeken. Hoewel de index schema's niet worden weer gegeven, kunt u de kenmerken afleiden op basis van de naam van de index. *Realestate-Doorzoek bare* index heeft bijvoorbeeld het kenmerk dat kan worden **doorzocht** en niets anders, het ophalen van *realestate-* index heeft het kenmerk **retrievable** selected en niets anders, enzovoort.
+## `analyzers`
 
-![Index grootte op basis van kenmerk selectie](./media/search-what-is-an-index/realestate-index-size.png "Index grootte op basis van kenmerk selectie")
+Het element analyse functies stelt de naam in van de taal analyse die moet worden gebruikt voor het veld. Zie [analyse functies toevoegen aan een Azure Cognitive search-index](search-analyzers.md)voor meer informatie over het aanbod dat voor u beschikbaar is. Analyseerers kunnen alleen worden gebruikt met Doorzoek bare velden. Zodra de analyse functie is toegewezen aan een veld, kan deze niet meer worden gewijzigd, tenzij u de index opnieuw opbouwt.
 
-Hoewel deze index varianten kunst matig zijn, kunnen we ernaar verwijzen naar een uitgebreidere vergelijking van de manier waarop kenmerken van opslag worden beïnvloed. Kan de indexerings grootte die kan worden **opgehaald** , worden ingesteld? Nee. Voegt velden toe aan een **suggestie** voor het verg Roten van index grootte? Ja.
+## `suggesters`
 
-Indexen die ondersteuning bieden voor filteren en sorteren, zijn proportioneel groter dan het ondersteunen van de volledige zoek opdracht voor tekst. Filter-en sorteer bewerkingen scannen op exacte overeenkomsten, waardoor de aanwezigheid van intacte documenten vereist is. In tegens telling tot Doorzoek bare velden die ondersteuning bieden voor volledige tekst en fuzzy Search, worden omgekeerde indexen gebruikt. deze worden gevuld met tokens met een sleutel die minder ruimte in beslag neemt dan hele documenten. 
-
-> [!Note]
-> Opslag architectuur wordt beschouwd als een implementatie details van Azure Cognitive Search en kan zonder kennisgeving worden gewijzigd. Er is geen garantie dat het huidige gedrag in de toekomst blijft behouden.
-
-## <a name="suggesters"></a>Suggesties
 Een suggestie is een sectie van het schema waarmee wordt gedefinieerd welke velden in een index worden gebruikt voor het ondersteunen van automatisch aanvullen of het type-ahead query's in Zoek opdrachten. Normaal gesp roken worden gedeeltelijke Zoek reeksen naar de [suggesties (rest API)](https://docs.microsoft.com/rest/api/searchservice/suggestions) verzonden terwijl de gebruiker een zoek opdracht typt. de API retourneert een aantal voorgestelde documenten of zinsdelen. 
 
 Velden die zijn toegevoegd aan een suggestie, worden gebruikt voor het bouwen van type-ahead zoek termen. Alle zoek termen worden tijdens het indexeren gemaakt en afzonderlijk opgeslagen. Zie Voorst [Ellen toevoegen](index-add-suggesters.md)voor meer informatie over het maken van een boom structuur.
 
-## <a name="scoring-profiles"></a>Scoreprofielen
-
-Een [Score profiel](index-add-scoring-profiles.md) is een sectie van het schema waarmee aangepaste Score gedragingen worden gedefinieerd waarmee u kunt beïnvloeden welke items hoger worden weer gegeven in de zoek resultaten. Score profielen bestaan uit veld gewichten en-functies. Als u deze wilt gebruiken, geeft u een profiel op naam op voor de query teken reeks.
-
-Een standaard Score profiel werkt achter de schermen om een zoek score te berekenen voor elk item in een resultatenset. U kunt het interne, niet-genaamde Score profiel gebruiken. U kunt ook **defaultScoringProfile** instellen om een aangepast profiel te gebruiken als de standaard instelling, wanneer er geen aangepast profiel is opgegeven in de query reeks.
-
-## <a name="analyzers"></a>Analyses
-
-Het element analyse functies stelt de naam in van de taal analyse die moet worden gebruikt voor het veld. Zie [analyse functies toevoegen aan een Azure Cognitive search-index](search-analyzers.md)voor meer informatie over het aanbod dat voor u beschikbaar is. Analyseerers kunnen alleen worden gebruikt met Doorzoek bare velden. Zodra de analyse functie is toegewezen aan een veld, kan deze niet meer worden gewijzigd, tenzij u de index opnieuw opbouwt.
-
-## <a name="cors"></a>CORS
+## `corsOptions`
 
 Java script aan de client zijde kan standaard geen Api's aanroepen omdat de browser alle cross-Origin-aanvragen voor komt. Als u cross-Origin query's naar uw index wilt toestaan, schakelt u CORS (cross-Origin Resource Sharing) in door het kenmerk **corsOptions** in te stellen. Uit veiligheids overwegingen wordt alleen voor de query-Api's CORS ondersteund. 
 
@@ -216,13 +226,36 @@ De volgende opties kunnen worden ingesteld voor CORS:
 
 + **maxAgeInSeconds** (optioneel): browsers gebruiken deze waarde om de duur (in seconden) te bepalen voor het cachen van CORS-Preflight-reacties. Dit moet een niet-negatief geheel getal zijn. Hoe groter deze waarde is, hoe beter de prestaties, maar hoe langer het duurt om de wijzigingen van het CORS-beleid van kracht te laten worden. Als deze niet is ingesteld, wordt een standaard duur van 5 minuten gebruikt.
 
-## <a name="encryption-key"></a>Versleutelings sleutel
+## `scoringProfiles`
 
-Hoewel alle Azure Cognitive Search-indexen standaard worden versleuteld met door micro soft beheerde sleutels, kunnen indexen worden geconfigureerd om te worden versleuteld met door de **klant beheerde sleutels** in Key Vault. Zie [versleutelings sleutels beheren in Azure Cognitive Search](search-security-manage-encryption-keys.md)voor meer informatie.
+Een [Score profiel](index-add-scoring-profiles.md) is een sectie van het schema waarmee aangepaste Score gedragingen worden gedefinieerd waarmee u kunt beïnvloeden welke items hoger worden weer gegeven in de zoek resultaten. Score profielen bestaan uit veld gewichten en-functies. Als u deze wilt gebruiken, geeft u een profiel op naam op voor de query teken reeks.
+
+Een standaard Score profiel werkt achter de schermen om een zoek score te berekenen voor elk item in een resultatenset. U kunt het interne, niet-genaamde Score profiel gebruiken. U kunt ook **defaultScoringProfile** instellen om een aangepast profiel te gebruiken als de standaard instelling, wanneer er geen aangepast profiel is opgegeven in de query reeks.
+
+<a name="index-size"></a>
+
+## <a name="attributes-and-index-size-storage-implications"></a>Kenmerken en index grootte (opslag implicaties)
+
+De grootte van een index wordt bepaald door de grootte van de documenten die u uploadt, plus de index configuratie, zoals of u Voorst Ellen opneemt en hoe u kenmerken instelt voor afzonderlijke velden. 
+
+In de volgende scherm afbeelding ziet u de index opslag patronen die voortkomen uit verschillende combi Naties van kenmerken. De index is gebaseerd op de voor **beeld-index**van onroerend goed, die u eenvoudig kunt maken met behulp van de wizard gegevens importeren. Hoewel de index schema's niet worden weer gegeven, kunt u de kenmerken afleiden op basis van de naam van de index. *Realestate-Doorzoek bare* index kan bijvoorbeeld het kenmerk doorzoekbaar hebben geselecteerd en niets anders, de index die *realestate* kan worden opgehaald, is geselecteerd en niets anders, enzovoort.
+
+![Index grootte op basis van kenmerk selectie](./media/search-what-is-an-index/realestate-index-size.png "Index grootte op basis van kenmerk selectie")
+
+Hoewel deze index varianten kunst matig zijn, kunnen we ernaar verwijzen naar een uitgebreidere vergelijking van de manier waarop kenmerken van opslag worden beïnvloed. Verhoogt u de index grootte met de instelling ' ophaalbaar '? Nee. Voegt velden toe aan een **suggestie** voor het verg Roten van index grootte? Ja.
+
+Indexen die ondersteuning bieden voor filteren en sorteren, zijn proportioneel groter dan indexen die alleen zoeken in volledige tekst ondersteunen. Dit komt doordat filter-en sorteer bewerkingen zoeken naar exacte overeenkomsten, waarbij Verbatim-tekst teken reeksen moeten worden uitgevoerd. In tegens telling tot Doorzoek bare velden die volledige-tekst query's ondersteunen, wordt gebruikgemaakt van omgekeerde indexen, die worden gevuld met tokens die minder ruimte in beslag nemen dan voor hele documenten. 
+
+> [!Note]
+> Opslag architectuur wordt beschouwd als een implementatie details van Azure Cognitive Search en kan zonder kennisgeving worden gewijzigd. Er is geen garantie dat het huidige gedrag in de toekomst blijft behouden.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Met een goed idee van index samenstelling kunt u door gaan in de portal om uw eerste index te maken.
+Met een goed idee van index samenstelling kunt u door gaan in de portal om uw eerste index te maken. U kunt het beste beginnen met de wizard **gegevens importeren** , de gehoste gegevens bronnen *realestate-US-sample* of *hotels-voor beeld* kiezen.
 
 > [!div class="nextstepaction"]
-> [Een index toevoegen (Portal)](search-create-index-portal.md)
+> [Wizard gegevens importeren (Portal)](search-get-started-portal.md)
+
+Voor beide gegevens sets kan de wizard een index schema afleiden, de gegevens importeren en een Doorzoek bare index uitvoeren waarmee u een query kunt uitvoeren met behulp van Search Explorer. Deze gegevens bronnen vindt u op de pagina **verbinding maken met uw gegevens** van de wizard **gegevens importeren** .
+
+   ![Een voor beeld-index maken](media/search-what-is-an-index//import-wizard-sample-data.png "Een voor beeld-index maken")

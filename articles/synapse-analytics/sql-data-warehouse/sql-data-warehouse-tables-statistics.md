@@ -1,5 +1,5 @@
 ---
-title: Maken, statistieken bijwerken
+title: Statistieken voor tabellen maken en bijwerken met behulp van Azure Synapse SQL
 description: Aanbevelingen en voor beelden voor het maken en bijwerken van statistieken voor query optimalisatie voor tabellen in Synapse SQL-pool.
 services: synapse-analytics
 author: XiaoyuMSFT
@@ -11,12 +11,12 @@ ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 257b1e26127186fce07e402e58f98660005a97fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 15ba0d4b77461d77a2d0b89ecc9e411a105d49d2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85800763"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495632"
 ---
 # <a name="table-statistics-in-synapse-sql-pool"></a>Tabel statistieken in Synapse SQL-pool
 
@@ -476,7 +476,7 @@ Er zijn verschillende systeem weergaven en-functies die u kunt gebruiken om info
 
 Deze systeem weergaven bieden informatie over statistieken:
 
-| Catalogus weergave | Description |
+| Catalogus weergave | Beschrijving |
 |:--- |:--- |
 | [sys. Columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Eén rij voor elke kolom. |
 | [sys. Objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Eén rij voor elk object in de data base. |
@@ -490,7 +490,7 @@ Deze systeem weergaven bieden informatie over statistieken:
 
 Deze systeem functies zijn handig voor het werken met statistieken:
 
-| Systeem functie | Description |
+| Systeem functie | Beschrijving |
 |:--- |:--- |
 | [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Datum waarop het statistieken object voor het laatst is bijgewerkt. |
 | [DBCC-SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Overzichts niveau en gedetailleerde informatie over de distributie van waarden, zoals begrepen door het statistiek object. |
@@ -539,7 +539,7 @@ AND     st.[user_created] = 1
 
 DBCC SHOW_STATISTICS () toont de gegevens binnen een statistiek object. Deze gegevens zijn afkomstig uit drie delen:
 
-- Koptekst
+- Header
 - Dichtheids vector
 - Histogram
 

@@ -1,17 +1,17 @@
 ---
-title: Een Azure HPC-cache-exemplaar maken
-description: Een Azure HPC-cache-exemplaar maken
+title: De geaggregeerde naam ruimte in de Azure HPC-cache gebruiken
+description: De virtuele naam ruimte voor uw Azure HPC-cache plannen
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/30/2019
-ms.author: rohogue
-ms.openlocfilehash: be09d8b903d63b9fb2b57f8b9b7486b02a60085c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.author: v-erkel
+ms.openlocfilehash: c16d2f9e9c94603361d9a096f33d559105f2d28d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045804"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497026"
 ---
 # <a name="plan-the-aggregated-namespace"></a>De geaggregeerde naamruimte plannen
 
@@ -30,7 +30,7 @@ Denk bijvoorbeeld aan een systeem waarbij een Azure HPC-cache-exemplaar wordt ge
 De sjabloon gegevens worden opgeslagen in een Data Center en de informatie die nodig is voor deze taak wordt opgeslagen in de volgende submappen:
 
 * */goldline/templates/acme2017/sku798*
-* */goldline/templates/acme2017/sku980* 
+* */goldline/templates/acme2017/sku980*
 
 In het Data Center-opslag systeem zijn de volgende export bewerkingen beschikbaar:
 
@@ -52,10 +52,10 @@ Een NFS-opslag doel kan meerdere paden voor virtuele naam ruimten hebben, zolang
 
 Omdat de NFS-bron paden submappen van dezelfde export zijn, moet u meerdere naam ruimte paden van hetzelfde opslag doel definiëren.
 
-| Hostnaam van opslag doel  | Pad naar NFS-export      | Pad naar submap | Pad naar naam ruimte    |
-|--------------------------|----------------------|-------------------|-------------------|
-| *IP-adres of hostnaam* | /goldline/templates  | acme2017/sku798   | /templates/sku798 |
-| *IP-adres of hostnaam* | /goldline/templates  | acme2017/sku980   | /templates/sku980 |
+| Hostnaam van opslag doel  | Pad naar NFS-export     | Pad naar submap | Pad naar naam ruimte    |
+|--------------------------|---------------------|-------------------|-------------------|
+| *IP-adres of hostnaam* | /goldline/templates | acme2017/sku798   | /templates/sku798 |
+| *IP-adres of hostnaam* | /goldline/templates | acme2017/sku980   | /templates/sku980 |
 
 Een client toepassing kan de cache koppelen en eenvoudig toegang krijgen tot de geaggregeerde bestands paden van de naam ruimte ``/source`` , ``/templates/sku798`` en ``/templates/sku980`` .
 

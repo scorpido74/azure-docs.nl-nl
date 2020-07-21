@@ -4,12 +4,12 @@ description: Meer informatie over hoe de MARS-agent de back-upscenario's onderst
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 64f43f42fc23b1ca9591b6a49c3acce6c52c09d6
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 417fc385750ccab5c2f11f8160d9bbc85a013cde
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134982"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497944"
 ---
 # <a name="about-the-microsoft-azure-recovery-services-mars-agent"></a>Informatie over de Microsoft Azure Recovery Services-agent (MARS)
 
@@ -40,10 +40,10 @@ De MARS-agent ondersteunt de volgende herstel scenario's:
 ## <a name="backup-process"></a>Back-upproces
 
 1. Maak vanuit het Azure Portal een [Recovery Services kluis](install-mars-agent.md#create-a-recovery-services-vault)en kies bestanden, mappen en de systeem status van de **Back-updoelen**.
-2. [Down load de Recovery Services kluis referenties en het installatie programma van de agent](https://docs.microsoft.com/azure/backup/install-mars-agent#download-the-mars-agent) naar een on-premises machine.
+2. [Down load de Recovery Services kluis referenties en het installatie programma van de agent](./install-mars-agent.md#download-the-mars-agent) naar een on-premises machine.
 
-3. [Installeer de agent](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent) en gebruik de gedownloade kluis referenties om de machine te registreren bij de Recovery Services kluis.
-4. Configureer vanuit de agent console op de client [de back-up](https://docs.microsoft.com/azure/backup/backup-windows-with-mars-agent#create-a-backup-policy) om op te geven waarvan u een back-up wilt maken, wanneer u back-ups maakt (het schema), hoe lang de back-ups in azure moeten worden bewaard (het Bewaar beleid) en te beginnen met het beveiligen.
+3. [Installeer de agent](./install-mars-agent.md#install-and-register-the-agent) en gebruik de gedownloade kluis referenties om de machine te registreren bij de Recovery Services kluis.
+4. Configureer vanuit de agent console op de client [de back-up](./backup-windows-with-mars-agent.md#create-a-backup-policy) om op te geven waarvan u een back-up wilt maken, wanneer u back-ups maakt (het schema), hoe lang de back-ups in azure moeten worden bewaard (het Bewaar beleid) en te beginnen met het beveiligen.
 
 ![Diagram van Azure Backup Agent](./media/backup-try-azure-backup-in-10-mins/backup-process.png)
 
@@ -57,12 +57,12 @@ De MARS-agent ondersteunt de volgende herstel scenario's:
 
 ### <a name="additional-scenarios"></a>Overige scenario's
 
-- **Back-ups maken van specifieke bestanden en mappen in azure virtual machines**: de primaire methode voor het maken van back-ups van virtuele Azure-machines (vm's) is het gebruik van een Azure backup-extensie op de VM. De uitbrei ding maakt een back-up van de volledige VM. Als u een back-up wilt maken van specifieke bestanden en mappen in een VM, kunt u de MARS-agent installeren in de virtuele machines van Azure. Zie [architectuur: ingebouwde Azure VM-back-up](https://docs.microsoft.com/azure/backup/backup-architecture#architecture-built-in-azure-vm-backup)voor meer informatie.
+- **Back-ups maken van specifieke bestanden en mappen in azure virtual machines**: de primaire methode voor het maken van back-ups van virtuele Azure-machines (vm's) is het gebruik van een Azure backup-extensie op de VM. De uitbrei ding maakt een back-up van de volledige VM. Als u een back-up wilt maken van specifieke bestanden en mappen in een VM, kunt u de MARS-agent installeren in de virtuele machines van Azure. Zie [architectuur: ingebouwde Azure VM-back-up](./backup-architecture.md#architecture-built-in-azure-vm-backup)voor meer informatie.
 
 - **Offline seeding**: eerste volledige back-ups van gegevens naar Azure worden doorgaans grote hoeveel heden gegevens overgebracht en vereisen meer netwerk bandbreedte. Bij de volgende back-ups wordt alleen de Delta, of incrementele hoeveelheid gegevens overgedragen. Azure Backup comprimeert de eerste back-ups. Dankzij het proces van *offline seeding*kan Azure backup schijven gebruiken om de gecomprimeerde initiële back-upgegevens offline te uploaden naar Azure. Zie [Azure backup offline back-up maken met Azure data Box](offline-backup-azure-data-box.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Ondersteuningsmatrix voor MARS-agent](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent)
+[Ondersteuningsmatrix voor MARS-agent](./backup-support-matrix-mars-agent.md)
 
-[Veelgestelde vragen over MARS-agent](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq)
+[Veelgestelde vragen over MARS-agent](./backup-azure-file-folder-backup-faq.md)

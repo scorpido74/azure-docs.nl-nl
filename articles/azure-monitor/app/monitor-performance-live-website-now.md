@@ -3,17 +3,17 @@ title: Een live ASP.NET-web-app bewaken met Azure Application Insights | Microso
 description: Bewaak de prestaties van een website zonder de website opnieuw te implementeren. Werkt met ASP.NET-Web-apps die on-premises of in Vm's worden gehost.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: f4ce01ea8fc7b6bf1f294071f04e2bebce3e1d27
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 93b150b831a01989093fd916d17e31aee27beb3a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166379"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499525"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Web-apps tijdens runtime instrumenteren met Application Insights zonder code koppelen
 
 > [!IMPORTANT]
-> Status Monitor wordt niet meer aanbevolen voor gebruik en **vanaf 1 juni 2021** wordt deze versie van status monitor niet ondersteund. Het is vervangen door de Azure Monitor Application Insights agent (voorheen Status Monitor v2 genoemd). Zie onze documentatie voor [on-premises server implementaties](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview) of [Azure virtual machine en implementaties van virtuele-machine schaal sets](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps).
+> Status Monitor wordt niet meer aanbevolen voor gebruik en **vanaf 1 juni 2021** wordt deze versie van status monitor niet ondersteund. Het is vervangen door de Azure Monitor Application Insights agent (voorheen Status Monitor v2 genoemd). Zie onze documentatie voor [on-premises server implementaties](./status-monitor-v2-overview.md) of [Azure virtual machine en implementaties van virtuele-machine schaal sets](./azure-vm-vmss-apps.md).
 
 U kunt een live web-app instrumenteren met Azure Application Insights, zonder dat u de code hoeft te wijzigen of opnieuw hoeft te implementeren. U hebt een [Microsoft Azure](https://azure.com)-abonnement nodig.
 
@@ -84,7 +84,7 @@ Als u opnieuw wilt publiceren zonder Application Insights toe te voegen aan de c
 4. Voer alle wijzigingen die u hebt doorgevoerd in het .config-bestand opnieuw door.
 
 
-## <a name="troubleshooting"></a><a name="troubleshoot"></a>Problemen oplossen
+## <a name="troubleshooting"></a><a name="troubleshoot"></a>Meer
 
 ### <a name="confirm-a-valid-installation"></a>Een geldige installatie bevestigen 
 
@@ -97,7 +97,7 @@ Dit zijn enkele stappen die u kunt uitvoeren om te controleren of de installatie
   union * | summarize count() by cloud_RoleName, cloud_RoleInstance
   ```
 
-- Als u wilt bevestigen dat Application Insights is gekoppeld, kunt u de Sysinternals- [ingang](https://docs.microsoft.com/sysinternals/downloads/handle) uitvoeren in een opdracht venster om te bevestigen dat applicationinsights.dll is geladen door IIS.
+- Als u wilt bevestigen dat Application Insights is gekoppeld, kunt u de Sysinternals- [ingang](/sysinternals/downloads/handle) uitvoeren in een opdracht venster om te bevestigen dat applicationinsights.dll is geladen door IIS.
 
   ```console
   handle.exe /p w3wp.exe
@@ -145,7 +145,7 @@ Dit probleem wordt [hier](https://github.com/Microsoft/ApplicationInsights-Home/
 * Als u uitgebreide logboeken wilt uitvoeren, wijzigt u het configuratie bestand: `C:\Program Files\Microsoft Application Insights\Status Monitor\Microsoft.Diagnostics.Agent.StatusMonitor.exe.config` en voegt `<add key="TraceLevel" value="All" />` u toe aan de `appsettings` .
 Start de status monitor vervolgens opnieuw.
 
-* Als Status Monitor is een .NET-toepassing, kunt u ook [.net-tracering inschakelen door de juiste diagnostische gegevens toe te voegen aan het configuratie bestand](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/trace-debug/system-diagnostics-element). In sommige scenario's kan het bijvoorbeeld nuttig zijn om te zien wat er gebeurt op netwerk niveau door [netwerk tracering te configureren](https://docs.microsoft.com/dotnet/framework/network-programming/how-to-configure-network-tracing)
+* Als Status Monitor is een .NET-toepassing, kunt u ook [.net-tracering inschakelen door de juiste diagnostische gegevens toe te voegen aan het configuratie bestand](/dotnet/framework/configure-apps/file-schema/trace-debug/system-diagnostics-element). In sommige scenario's kan het bijvoorbeeld nuttig zijn om te zien wat er gebeurt op netwerk niveau door [netwerk tracering te configureren](/dotnet/framework/network-programming/how-to-configure-network-tracing)
 
 ### <a name="insufficient-permissions"></a>Onvoldoende machtigingen
   
@@ -311,7 +311,7 @@ Voor toepassingen die bij het compileren al zijn geïnstrumenteerd:
 
 ## <a name="download-status-monitor"></a><a name="download"></a>Status Monitor downloaden
 
-- De nieuwe [Power shell-module](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview) gebruiken
+- De nieuwe [Power shell-module](./status-monitor-v2-overview.md) gebruiken
 - Het [status monitor-installatie programma](https://go.microsoft.com/fwlink/?LinkId=506648) downloaden en uitvoeren
 - Of voer het [installatie programma voor het webplatform](https://www.microsoft.com/web/downloads/platform.aspx) uit en zoek het naar Application Insights status monitor.
 
@@ -321,7 +321,7 @@ Uw telemetrie weergeven:
 
 * [Verken de metrische gegevens](../../azure-monitor/platform/metrics-charts.md) om de prestaties en het gebruik te bewaken
 * [Doorzoek gebeurtenissen en logboeken][diagnostic] om problemen te analyseren
-* [Gebruik analyses](../../azure-monitor/app/analytics.md) voor meer geavanceerde query's
+* [Gebruik analyses](../log-query/log-query-overview.md) voor meer geavanceerde query's
 
 Meer telemetrie toevoegen:
 
@@ -336,6 +336,6 @@ Meer telemetrie toevoegen:
 [client]: ../../azure-monitor/app/javascript.md
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [greenbrown]: ../../azure-monitor/app/asp-net.md
-[qna]: ../../azure-monitor/app/troubleshoot-faq.md
+[qna]: ../faq.md
 [roles]: ../../azure-monitor/app/resources-roles-access-control.md
 [usage]: ../../azure-monitor/app/javascript.md

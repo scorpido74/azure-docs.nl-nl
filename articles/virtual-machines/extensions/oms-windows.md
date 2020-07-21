@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: akjosh
-ms.openlocfilehash: aa8f5fa9901055957c5c94923ebd74c3d57ce41a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 302a0361c19d247b6da4abd516d3a5df8dfd10c7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481779"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494663"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>De virtuele-machine-extensie Log Analytics voor Windows
 
@@ -34,7 +34,7 @@ Raadpleeg het [overzichts artikel log Analytics agent](../../azure-monitor/platf
 ### <a name="agent-and-vm-extension-version"></a>Versie van agent en VM-extensie
 De volgende tabel bevat een overzicht van de versie van de Windows Log Analytics VM-extensie en Log Analytics agent bundel voor elke release. 
 
-| Log Analytics bundel versie van Windows-agent | Windows VM-extensie versie Log Analytics | Release datum | Releaseopmerkingen |
+| Log Analytics bundel versie van Windows-agent | Windows VM-extensie versie Log Analytics | Release datum | Opmerkingen bij de release |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
 | 10.20.18038 | 1.0.18038 | April 2020   | <ul><li>Hiermee schakelt u connectiviteit via een persoonlijke koppeling met behulp van Azure Monitor Beveiligingsbereiken</li><li>Voegt opname beperking toe om een onverwachte, onbedoelde instroom te voor komen bij opname naar een werk ruimte</li><li>Voegt ondersteuning toe voor aanvullende Azure Government Clouds en regio's</li><li>Hiermee wordt een bug opgelost waarbij HealthService.exe vastgelopen</li></ul> |
 | 10.20.18029 | 1.0.18029 | Maart 2020   | <ul><li>Hiermee wordt ondersteuning voor het ondertekenen van SHA-2-code toegevoegd</li><li>Verbetert de installatie en het beheer van de VM-extensie</li><li>Hiermee wordt een fout in azure Arc voor servers-integratie opgelost</li><li>Voegt een ingebouwd hulp programma voor probleem oplossing toe voor klant ondersteuning</li><li>Voegt ondersteuning toe voor aanvullende Azure Government regio's</li> |
@@ -86,7 +86,7 @@ De volgende JSON toont het schema voor de uitbrei ding van de Log Analytics agen
 ```
 ### <a name="property-values"></a>Eigenschaps waarden
 
-| Name | Waarde/voor beeld |
+| Naam | Waarde/voor beeld |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | publisher | Micro soft. EnterpriseCloud. monitoring |
@@ -98,7 +98,7 @@ De volgende JSON toont het schema voor de uitbrei ding van de Log Analytics agen
 \*De workspaceId wordt de consumerId in de Log Analytics-API genoemd.
 
 > [!NOTE]
-> Zie Azure [Connect Windows computers to Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows)voor extra eigenschappen.
+> Zie Azure [Connect Windows computers to Azure monitor](../../azure-monitor/platform/agent-windows.md)voor extra eigenschappen.
 
 ## <a name="template-deployment"></a>Sjabloonimplementatie
 

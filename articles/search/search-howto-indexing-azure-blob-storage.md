@@ -8,14 +8,14 @@ ms.author: magottei
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 07/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 3ed3ff94b764c0fcb5521ef8106b32923b203a01
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 29e123666b35e4659e68a1a925047267f8519940
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260638"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496448"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>Documenten in Azure Blob Storage indexeren met Azure Cognitive Search
 
@@ -31,7 +31,7 @@ De BLOB-indexer kan tekst uit de volgende document indelingen ophalen:
 ## <a name="setting-up-blob-indexing"></a>BLOB-indexering instellen
 U kunt een Azure Blob Storage Indexeer functie instellen met behulp van:
 
-* [Azure Portal](https://ms.portal.azure.com)
+* [Azure-portal](https://ms.portal.azure.com)
 * Azure Cognitive Search [rest API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
 * Azure Cognitive Search [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)
 
@@ -342,7 +342,7 @@ Als u het verwijderen van documenten wilt ondersteunen, gebruikt u de methode ' 
 
 Er zijn twee manieren om de methode voor zacht verwijderen te implementeren. Beide worden hieronder beschreven.
 
-### <a name="native-blob-soft-delete-preview"></a>Zacht verwijderen van systeem eigen BLOB (preview-versie)
+### <a name="native-blob-soft-delete-preview"></a>Voorlopig verwijderen van systeemeigen blob (preview)
 
 > [!IMPORTANT]
 > Ondersteuning voor het voorlopig verwijderen van een blob is in preview. Deze previewfunctie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. De [rest API versie 2020-06-30-preview](https://docs.microsoft.com/azure/search/search-api-preview) biedt deze functie. Er is momenteel geen portal-of .NET SDK-ondersteuning.

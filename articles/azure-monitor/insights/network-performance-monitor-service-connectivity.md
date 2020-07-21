@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: 93f3820b7cf1db85b9ff4cd514fe22efc75a90d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ba93db3e692a34de42849b469978cea4459c6fc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84690011"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498862"
 ---
 # <a name="service-connectivity-monitor"></a>Bewaking van serviceverbinding
 
@@ -28,7 +29,7 @@ U kunt de volgende functies uitvoeren met Service Connectivity monitor:
 ![Bewaking van serviceverbinding](media/network-performance-monitor-service-endpoint/service-endpoint-intro.png)
 
 
-## <a name="configuration"></a>Configuratie 
+## <a name="configuration"></a>Configuration 
 Als u de configuratie voor Netwerkprestatiemeter wilt openen, opent u de [Netwerkprestatiemeter oplossing](network-performance-monitor.md) en selecteert **u configureren**.
 
 ![Netwerkprestatiemeter configureren](media/network-performance-monitor-service-endpoint/npm-configure-button.png)
@@ -56,7 +57,7 @@ Begin met het maken van uw tests om de netwerk verbinding met de service-eind pu
 
     * Selecteer **Web** voor het controleren van de verbinding met een service die reageert op http/S-aanvragen, zoals outlook.office365.com of Bing.com.<br>
     * Selecteer **netwerk** om de verbinding met een service te bewaken die op TCP-aanvragen reageert, maar niet reageert op http/S-aanvragen, zoals een SQL-Server, FTP-server of SSH-poort. 
-    * Bijvoorbeeld: als u een webtest wilt maken naar een Blob Storage-account, selecteert u **Web** en voert u doel in als *yourstorageaccount*. blob.core.Windows.net. Op dezelfde manier kunt u tests maken voor andere tabel opslag, wachtrij opslag en Azure Files met behulp van [deze koppeling.](https://docs.microsoft.com/azure/storage/common/storage-account-overview#storage-account-endpoints)
+    * Bijvoorbeeld: als u een webtest wilt maken naar een Blob Storage-account, selecteert u **Web** en voert u doel in als *yourstorageaccount*. blob.core.Windows.net. Op dezelfde manier kunt u tests maken voor andere tabel opslag, wachtrij opslag en Azure Files met behulp van [deze koppeling.](../../storage/common/storage-account-overview.md#storage-account-endpoints)
 4. Als u geen netwerk metingen wilt uitvoeren, zoals netwerk latentie, pakket verlies en topologie detectie, schakelt u het selectie vakje **netwerk metingen uitvoeren** uit. Zorg ervoor dat deze optie is geselecteerd om Maxi maal voor deel te halen uit de mogelijkheid. 
 5. In **doel**voert u de URL/FQDN/IP-adres in waarmee u de netwerk verbinding wilt bewaken.
 6. In **poort nummer**voert u het poort nummer van de doel service in. 

@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6b6f98f3c7f540e00743ae27b532b24d2310453e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 9d9cc377ead0c297e8334d34255bd2c7c7cd39fc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205712"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499406"
 ---
 # <a name="configure-application-insights-profiler"></a>Application Insights Profiler configureren
 
@@ -41,7 +41,7 @@ Recente profilerings sessies | Geeft informatie weer over eerdere profilerings s
 ## <a name="profile-now"></a>Profiel nu
 Met deze optie kunt u een profilerings sessie op aanvraag starten. Wanneer u op deze koppeling klikt, worden alle Profiler-agents die gegevens naar deze Application Insights-exemplaar verzenden, een profiel gaan vastleggen. Na 5 tot 10 minuten wordt de profiel sessie weer gegeven in de onderstaande lijst.
 
-Een gebruiker kan een Profiler-sessie alleen hand matig activeren als deze ten minste ' schrijf toegang ' vereist voor de rol van het onderdeel Application Insights. In de meeste gevallen krijgt u deze toegang automatisch en is er geen extra werk nodig. Als u problemen ondervindt, zou de rol van het abonnements bereik moeten worden toegevoegd de rol ' Application Insights onderdeel Inzender '. [Zie meer over Role Access Control met Azure-bewaking](https://docs.microsoft.com/azure/azure-monitor/app/resources-roles-access-control).
+Een gebruiker kan een Profiler-sessie alleen hand matig activeren als deze ten minste ' schrijf toegang ' vereist voor de rol van het onderdeel Application Insights. In de meeste gevallen krijgt u deze toegang automatisch en is er geen extra werk nodig. Als u problemen ondervindt, zou de rol van het abonnements bereik moeten worden toegevoegd de rol ' Application Insights onderdeel Inzender '. [Zie meer over Role Access Control met Azure-bewaking](./resources-roles-access-control.md).
 
 ## <a name="trigger-settings"></a>Trigger instellingen
 ![Flyout trigger instellingen][trigger-settings-flyout]
@@ -63,7 +63,7 @@ Deze sectie van de pagina bevat informatie over recente profilerings sessies. Ee
 Geactiveerd door | Hoe de sessie is gestart, hetzij door een trigger, profiel nu of standaard steekproef. 
 App-naam | De naam van de toepassing die is profileeerd.
 Machine-exemplaar | Naam van de computer waarop de Profiler-agent is uitgevoerd.
-Tijdstempel | Tijdstip waarop het profiel is vastgelegd.
+Timestamp | Tijdstip waarop het profiel is vastgelegd.
 Traceren | Het aantal traceringen dat aan afzonderlijke aanvragen is gekoppeld.
 CPU-percentage | Percentage van de CPU dat werd gebruikt tijdens het uitvoeren van de Profiler.
 Geheugenmetabase | Percentage van het geheugen dat werd gebruikt tijdens het uitvoeren van de Profiler.

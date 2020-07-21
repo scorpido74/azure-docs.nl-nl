@@ -1,5 +1,5 @@
 ---
-title: Een gekoppelde service inrichten en beveiligen in azure Synapse Analytics
+title: Een gekoppelde service beveiligen
 description: Meer informatie over het inrichten en beveiligen van een gekoppelde service met beheerde Vnet
 services: synapse-analytics
 author: acomet
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 435c3fd6b1e6444fa3a31c68b4d74c2553d2e634
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c7cf8ec7297b3c0ef855936becc3c06a5120a38
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81430550"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496074"
 ---
 # <a name="securing-a-linked-service-with-private-links"></a>Een gekoppelde service beveiligen met persoonlijke koppelingen 
 
@@ -56,7 +56,7 @@ In het geval kunt u niet klikken op de Hyper link bij het testen van de bovensta
 1. Selecteer het persoonlijke eind punt dat u hierboven hebt gemaakt. U kunt een Hyper link zien waarmee u het persoonlijke eind punt kunt goed keuren op het niveau van het opslag account. *U kunt ook rechtstreeks naar het Azure Portal Storage-account gaan en naar de Blade **persoonlijke eindpunt verbindingen** gaan.*
 1. Tik het persoonlijke eind punt dat u hebt gemaakt in de studio en selecteer **goed keuren**.
 1. Een beschrijving toevoegen en op **Ja** klikken
-1. Ga terug naar Synapse Studio in het gedeelte **beheerde virtuele netwerken** van het tabblad **beheren**.
+1. Ga terug naar Synapse Studio in het gedeelte **beheerde virtuele netwerken** van het tabblad **beheren** .
 1. Het duurt ongeveer 1 minuut voordat de goed keuring voor uw persoonlijke eind punt wordt weer gegeven.
 
 ## <a name="check-the-connection-works"></a>Controleer of de verbinding werkt
