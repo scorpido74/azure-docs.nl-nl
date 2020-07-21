@@ -11,13 +11,14 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: juliako
-ms.openlocfilehash: d9e42e809443a2dd6cdeb989f692b96d63269f79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63b05662e16dbcfd999788aa39c6c37eb12cf2c7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78673579"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530402"
 ---
-# <a name="azure-media-player-overview"></a>Overzicht van Azure Media Player
+# <a name="playback-with-azure-media-player"></a>Afspelen met Azure Media Player
 
 Azure Media Player is een webvideo speler die is ontworpen om media-inhoud af te spelen van Microsoft Azure Media Services op een groot aantal verschillende browsers en apparaten. Azure Media Player maakt gebruik van industrie standaarden, zoals HTML5, media source Extensions (MSE) en versleutelde Media-extensies (EME) om een geavanceerde adaptieve streaming-ervaring te bieden. Wanneer deze standaarden niet beschikbaar zijn op een apparaat of in een browser, Azure Media Player gebruikt Flash en Silverlight als terugval technologie. Ontwikkel aars hebben altijd toegang tot Api's via een geïntegreerde Java script-interface, ongeacht de afspeel technologie die wordt gebruikt. Dit maakt het mogelijk dat inhoud die wordt aangeboden door Azure Media Services over een breed scala aan apparaten en browsers zonder extra inspanning kan worden gespeeld.
 

@@ -143,6 +143,8 @@
           href: cluster-security-certificates.md
         - name: Certificaatbeheer in Service Fabric
           href: cluster-security-certificate-management.md
+        - name: Beveiligingsbasislijn voor Azure Security Benchmark
+          href: security-baseline.md
     - name: Terminologie
       href: service-fabric-technical-overview.md
     - name: Toepassingen bouwen

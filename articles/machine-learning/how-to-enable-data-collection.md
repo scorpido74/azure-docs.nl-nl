@@ -1,31 +1,34 @@
 ---
 title: Gegevens verzamelen in uw productie modellen
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het verzamelen van Azure Machine Learning invoer model gegevens in Azure Blob-opslag.
+description: Meer informatie over het verzamelen van gegevens uit een geïmplementeerd Azure Machine Learning model
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.reviewer: laobri
+ms.reviewer: sgilley
 ms.author: copeters
 author: lostmygithubaccount
-ms.date: 11/12/2019
+ms.date: 07/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: 75402c71316f7cc7d068c12a240f3123569a00ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7e3aeba14373861d831056678576c52f6b2184f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84432992"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536314"
 ---
-# <a name="collect-data-for-models-in-production"></a>Gegevens verzamelen voor modellen in productie
+# <a name="collect-data-from-models-in-production"></a>Gegevens verzamelen van modellen in productie
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In dit artikel wordt uitgelegd hoe u invoer model gegevens van Azure Machine Learning kunt verzamelen. Ook wordt uitgelegd hoe u de invoer gegevens implementeert in een AKS-cluster (Azure Kubernetes service) en de uitvoer gegevens opslaat in Azure Blob-opslag.
+In dit artikel wordt uitgelegd hoe u gegevens kunt verzamelen van een Azure Machine Learning model dat is geïmplementeerd op een AKS-cluster (Azure Kubernetes service). De verzamelde gegevens worden vervolgens opgeslagen in Azure Blob-opslag.
 
 Zodra de verzameling is ingeschakeld, kunt u met de gegevens die u verzamelt, het volgende doen:
 
-* [Bewaak gegevens drift](how-to-monitor-data-drift.md) als productie gegevens uw model binnenkomen.
+* [Bewaak gegevens drift](how-to-monitor-datasets.md) over de productie gegevens die u verzamelt.
+
+* Analyseer verzamelde gegevens met behulp van [Power bi](#powerbi) of [Azure Databricks](#databricks)
 
 * Neem betere beslissingen over wanneer u uw model opnieuw traint of optimaliseert.
 
@@ -58,13 +61,13 @@ Het pad naar de uitvoer gegevens in de BLOB volgt de volgende syntaxis:
 
 - Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://aka.ms/AMLFree) aan voordat u begint.
 
-- Er moet een AzureMachine Learning-werk ruimte, een lokale map met uw scripts en de Azure Machine Learning SDK voor python zijn geïnstalleerd. Zie [How to configure a Development Environment (een ontwikkel omgeving configureren](how-to-configure-environment.md)) voor meer informatie over het installeren van deze.
+- Er moet een Azure Machine Learning-werk ruimte, een lokale map met uw scripts en de Azure Machine Learning SDK voor python zijn geïnstalleerd. Zie [How to configure a Development Environment (een ontwikkel omgeving configureren](how-to-configure-environment.md)) voor meer informatie over het installeren van deze.
 
 - U hebt een getraind machine learning-model nodig om te worden geïmplementeerd op AKS. Als u geen model hebt, raadpleegt u de zelf studie over het [classificatie Model Train image](tutorial-train-models-with-aml.md) .
 
 - U hebt een AKS-cluster nodig. Voor informatie over hoe u een maakt en implementeert, raadpleegt [u hoe u implementeert en waar](how-to-deploy-and-where.md).
 
-- [Stel uw omgeving](how-to-configure-environment.md) in en installeer de [Azure machine learning monitoring-SDK](https://aka.ms/aml-monitoring-sdk).
+- [Stel uw omgeving](how-to-configure-environment.md) in en installeer de [Azure machine learning monitoring-SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 
 ## <a name="enable-data-collection"></a>Gegevensverzameling inschakelen
 
@@ -74,7 +77,7 @@ Als u gegevens verzameling wilt inschakelen, moet u het volgende doen:
 
 1. Open het Score bestand.
 
-1. Voeg de [volgende code](https://aka.ms/aml-monitoring-sdk) toe boven aan het bestand:
+1. Voeg de volgende code toe boven aan het bestand:
 
    ```python 
    from azureml.monitoring import ModelDataCollector
@@ -115,41 +118,10 @@ Als u gegevens verzameling wilt inschakelen, moet u het volgende doen:
 
 1. Zie [implementeren en waar](how-to-deploy-and-where.md)als u een nieuwe installatie kopie wilt maken en het machine learning model wilt implementeren.
 
-Als u al een service hebt met de afhankelijkheden die zijn geïnstalleerd in uw omgevings bestand en Score bestand, schakelt u het verzamelen van gegevens in door de volgende stappen uit te voeren:
-
-1. Ga naar [Azure Machine Learning](https://ml.azure.com).
-
-1. Open uw werk ruimte.
-
-1. Selecteer **implementaties**  >  **selecteren service**  >  **bewerken**.
-
-   ![De service bewerken](././media/how-to-enable-data-collection/EditService.PNG)
-
-1. Selecteer in **Geavanceerde instellingen**de optie **Application Insights diagnose en gegevens verzameling inschakelen**.
-
-1. Selecteer **bijwerken** om de wijzigingen toe te passen.
 
 ## <a name="disable-data-collection"></a>Gegevens verzamelen uitschakelen
 
-U kunt het verzamelen van gegevens op elk gewenst moment stoppen. Gebruik python-code of Azure Machine Learning om het verzamelen van gegevens uit te scha kelen.
-
-### <a name="option-1---disable-data-collection-in-azure-machine-learning"></a>Optie 1: het verzamelen van gegevens in Azure Machine Learning uitschakelen
-
-1. Meld u aan bij [Azure Machine Learning](https://ml.azure.com).
-
-1. Open uw werk ruimte.
-
-1. Selecteer **implementaties**  >  **selecteren service**  >  **bewerken**.
-
-   [![Selecteer de optie bewerken](././media/how-to-enable-data-collection/EditService.PNG)](./././media/how-to-enable-data-collection/EditService.PNG#lightbox)
-
-1. Schakel in **Geavanceerde instellingen** **Application Insights diagnose en gegevens verzameling inschakelen**uit.
-
-1. Selecteer **bijwerken** om de wijziging toe te passen.
-
-U kunt deze instellingen ook openen in uw werk ruimte in [Azure machine learning](https://ml.azure.com).
-
-### <a name="option-2---use-python-to-disable-data-collection"></a>Optie 2: gebruik python om het verzamelen van gegevens uit te scha kelen
+U kunt het verzamelen van gegevens op elk gewenst moment stoppen. Gebruik python-code om het verzamelen van gegevens uit te scha kelen.
 
   ```python 
   ## replace <service_name> with the name of the web service
@@ -162,7 +134,7 @@ U kunt een hulp programma kiezen van uw voor keur voor het analyseren van de geg
 
 ### <a name="quickly-access-your-blob-data"></a>Snel toegang krijgen tot uw BLOB-gegevens
 
-1. Meld u aan bij [Azure Machine Learning](https://ml.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Open uw werk ruimte.
 
@@ -177,7 +149,7 @@ U kunt een hulp programma kiezen van uw voor keur voor het analyseren van de geg
    # example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
    ```
 
-### <a name="analyze-model-data-using-power-bi"></a>Model gegevens analyseren met behulp van Power BI
+### <a name="analyze-model-data-using-power-bi"></a><a id="powerbi"></a>Model gegevens analyseren met behulp van Power BI
 
 1. Down load en open [Power bi Desktop](https://www.powerbi.com).
 
@@ -213,7 +185,7 @@ U kunt een hulp programma kiezen van uw voor keur voor het analyseren van de geg
 
 1. Begin met het bouwen van uw aangepaste rapporten in uw model gegevens.
 
-### <a name="analyze-model-data-using-azure-databricks"></a>Model gegevens analyseren met behulp van Azure Databricks
+### <a name="analyze-model-data-using-azure-databricks"></a><a id="databricks"></a>Model gegevens analyseren met behulp van Azure Databricks
 
 1. Maak een [Azure Databricks-werk ruimte](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal).
 
@@ -237,3 +209,7 @@ U kunt een hulp programma kiezen van uw voor keur voor het analyseren van de geg
     [![Databricks-installatie](./media/how-to-enable-data-collection/dbsetup.png)](././media/how-to-enable-data-collection/dbsetup.png#lightbox)
 
 1. Volg de stappen in de sjabloon om uw gegevens weer te geven en te analyseren.
+
+## <a name="next-steps"></a>Volgende stappen
+
+[Gegevens drift detecteren](how-to-monitor-datasets.md) op gegevens die u hebt verzameld.

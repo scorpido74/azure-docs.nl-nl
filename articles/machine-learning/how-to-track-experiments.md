@@ -3,20 +3,21 @@ title: Log ML experimenten & metrische gegevens
 titleSuffix: Azure Machine Learning
 description: Bewaak uw Azure ML experimenten en bewaak metrische uitvoerings gegevens om het proces voor het maken van het model te verbeteren. Voeg logboek registratie toe aan uw trainings script en Bekijk de geregistreerde resultaten van een uitvoering.  Gebruik run. log, run. start_logging of ScriptRunConfig.
 services: machine-learning
-author: sdgilley
-ms.author: sgilley
-ms.reviewer: sgilley
+author: likebupt
+ms.author: keli19
+ms.reviewer: peterlu
 ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: how-to
-ms.date: 03/12/2020
+ms.date: 07/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: 426c79c19b599127e2235f61e8c917062ede3b79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8a4f58423206a812dd94cc14d32aa52114c147d1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84675199"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536336"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Uitvoeringen en metrische gegevens van Azure ML-experimenten bewaken
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -39,7 +40,7 @@ De volgende metrische gegevens kunnen worden toegevoegd aan een run tijdens het 
 |Lijsten|Functieassembly<br>`run.log_list(name, value, description='')`<br><br>Voorbeeld:<br>run. log_list ("keurigheden", [0,6, 0,7, 0,87]) | Een lijst met waarden vastleggen voor de uitvoering met de opgegeven naam.|
 |Rij|Functieassembly<br>`run.log_row(name, description=None, **kwargs)`<br>Voorbeeld:<br>run. log_row ("Y over X", X = 1, Y = 0,4) | Met *log_row* maakt u een metriek met meerdere kolommen zoals beschreven in kwargs. Elke benoemde para meter genereert een kolom met de opgegeven waarde.  *log_row* kan eenmaal worden aangeroepen om een wille keurige tupel of meerdere keren in een lus te registreren om een volledige tabel te genereren.|
 |Tabel|Functieassembly<br>`run.log_table(name, value, description='')`<br><br>Voorbeeld:<br>run. log_table ("Y over X", {"X": [1, 2, 3], "Y": [0,6, 0,7, 0,89]}) | Een Dictionary-object in een logboek vastleggen voor de uitvoering met de opgegeven naam. |
-|Installatiekopieën|Functieassembly<br>`run.log_image(name, path=None, plot=None)`<br><br>Voorbeeld:<br>`run.log_image("ROC", plot=plt)` | Een installatie kopie vastleggen in het rapport uitvoeren. Gebruik log_image om een te registreren. PNG-afbeeldings bestand of een matplotlib-grafiek naar de uitvoering.  Deze installatie kopieën worden weer gegeven en vergeleken in de run-record.|
+|Afbeeldingen|Functieassembly<br>`run.log_image(name, path=None, plot=None)`<br><br>Voorbeeld:<br>`run.log_image("ROC", plot=plt)` | Een installatie kopie vastleggen in het rapport uitvoeren. Gebruik log_image om een te registreren. PNG-afbeeldings bestand of een matplotlib-grafiek naar de uitvoering.  Deze installatie kopieën worden weer gegeven en vergeleken in de run-record.|
 |Een uitvoering labelen|Functieassembly<br>`run.tag(key, value=None)`<br><br>Voorbeeld:<br>run. tag ("geselecteerd", "ja") | Label de run met een teken reeks sleutel en een optionele teken reeks waarde.|
 |Bestand of map uploaden|Functieassembly<br>`run.upload_file(name, path_or_stream)`<br> <br> Voorbeeld:<br>run. upload_file (' best_model. PKL ', './model.PKL ') | Upload een bestand naar het run-record. Voert automatisch een capture-bestand uit in de opgegeven uitvoermap, die standaard wordt ingesteld op './outputs ' voor de meeste typen uitvoering.  Gebruik upload_file alleen als er extra bestanden moeten worden geüpload of als er geen uitvoermap is opgegeven. We raden `outputs` aan de naam toe te voegen, zodat deze wordt geüpload naar de uitvoer Directory. U kunt alle bestanden weer geven die zijn gekoppeld aan deze run-record door te noemen`run.get_file_names()`|
 
@@ -107,7 +108,7 @@ In dit voor beeld wordt het sklearn-model van de bovenstaande basis uitgebreid. 
 
 Gebruik de __script module python uitvoeren__ om logboek registratie logica toe te voegen aan uw ontwerp experimenten. U kunt elke wille keurige waarde in een logboek vastleggen met behulp van deze werk stroom, maar dit is vooral handig voor het vastleggen van metrische gegevens uit de module __Evaluate model__ om de model prestaties in verschillende uitvoeringen te volgen
 
-1. Verbind een script module voor het __uitvoeren van python__ met de uitvoer van de module __Evaluate model__ .
+1. Verbind een script module voor het __uitvoeren van python__ met de uitvoer van de module __Evaluate model__ . Met __Evalueer model__ kunnen evaluatie resultaten van twee modellen worden uitgevoerd. In het volgende voor beeld ziet u hoe u de metrische gegevens van twee uitvoer poorten in het bovenliggende uitvoerings niveau registreert. 
 
     ![Python-script module voor het uitvoeren van verbinding maken om de model module te evalueren](./media/how-to-track-experiments/designer-logging-pipeline.png)
 
@@ -115,23 +116,29 @@ Gebruik de __script module python uitvoeren__ om logboek registratie logica toe 
 
     ```python
     # dataframe1 contains the values from Evaluate Model
-    def azureml_main(dataframe1 = None, dataframe2 = None):
+    def azureml_main(dataframe1=None, dataframe2=None):
         print(f'Input pandas.DataFrame #1: {dataframe1}')
-
+    
         from azureml.core import Run
-
+    
         run = Run.get_context()
-
-        # Log the mean absolute error to the current run to see the metric in the module detail pane.
-        run.log(name='Mean_Absolute_Error', value=dataframe1['Mean_Absolute_Error'])
-
+    
         # Log the mean absolute error to the parent run to see the metric in the run details page.
         # Note: 'run.parent.log()' should not be called multiple times because of performance issues.
         # If repeated calls are necessary, cache 'run.parent' as a local variable and call 'log()' on that variable.
-        run.parent.log(name='Mean_Absolute_Error', value=dataframe1['Mean_Absolute_Error'])
+
+        # Log left output port result of Evaluate Model. This also works when evaluate only 1 model.
+        run.parent.log(name='Mean_Absolute_Error (left port)', value=dataframe1['Mean_Absolute_Error'][0])
+
+        # Log right output port result of Evaluate Model.
+        run.parent.log(name='Mean_Absolute_Error (right port)', value=dataframe1['Mean_Absolute_Error'][1])
     
         return dataframe1,
     ```
+
+1. Nadat de pijplijn uitvoering is voltooid, kunt u de *Mean_Absolute_Error* op de pagina experiment bekijken.
+
+    ![Python-script module voor het uitvoeren van verbinding maken om de model module te evalueren](./media/how-to-track-experiments/experiment-page-metrics-across-runs.png)
 
 ## <a name="manage-a-run"></a>Een uitvoering beheren
 

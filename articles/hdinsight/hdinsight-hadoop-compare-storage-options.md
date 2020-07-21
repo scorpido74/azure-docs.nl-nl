@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: ed93ba937a843618f36bac6e88b15ff77355ca75
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce1c6bdfb38e37c18a18cf970d2dd08683967da3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82610697"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536745"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Opslag opties vergelijken voor gebruik met Azure HDInsight-clusters
 
@@ -32,9 +32,9 @@ De volgende tabel bevat een overzicht van de Azure Storage services die worden o
 | Opslag service | Accounttype | Type naam ruimte | Ondersteunde services | Ondersteunde prestatie lagen | Ondersteunde toegangs lagen | HDInsight-versie | Cluster type |
 |---|---|---|---|---|---|---|---|
 |Azure Data Lake Storage Gen2| Voor algemeen gebruik v2 | Hiërarchisch (bestands systeem) | Blob | Standard | Hot, cool, Archive | 3.6 + | Alle behalve Spark 2,1 en 2,2|
-|Azure Storage| Voor algemeen gebruik v2 | Object | Blob | Standard | Hot, cool, Archive | 3.6 + | Alle |
-|Azure Storage| Algemeen v1 | Object | Blob | Standard | N.v.t. | Alle | Alle |
-|Azure Storage| Blob Storage * * | Object | Blok-BLOB | Standard | Hot, cool, Archive | Alle | Alle |
+|Azure Storage| Voor algemeen gebruik v2 | Object | Blob | Standard | Hot, cool, Archive | 3.6 + | Alles |
+|Azure Storage| Algemeen v1 | Object | Blob | Standard | N.v.t. | Alles | Alles |
+|Azure Storage| Blob Storage * * | Object | Blok-BLOB | Standard | Hot, cool, Archive | Alles | Alles |
 |Azure Data Lake Storage Gen1| N.v.t. | Hiërarchisch (bestands systeem) | N.v.t. | N.v.t. | N.v.t. | alleen 3,6 | Alle behalve HBase |
 
 * * Voor HDInsight-clusters kunnen alleen secundaire opslag accounts van het type BlobStorage en page BLOB worden ondersteund.
@@ -63,6 +63,12 @@ U kunt clusters maken met behulp van combi Naties van services voor primaire en 
 > [!NOTE]
 > Data Lake Storage Gen2 primaire opslag wordt niet ondersteund voor Spark 2,1-of 2,2-clusters.
 
+## <a name="data-replication"></a>Gegevensreplicatie
+
+Er worden door Azure HDInsight geen klant gegevens opgeslagen. De primaire opslag ruimte voor een cluster zijn gekoppelde opslag accounts. U kunt uw cluster koppelen aan een bestaand opslag account of een nieuw opslag account maken tijdens het maken van het cluster. Als er een nieuw account wordt gemaakt, wordt dit gemaakt als een lokaal redundante opslag account (LRS) en voldoen aan de in-Region gegevens locatie vereisten, waaronder die in het [vertrouwens centrum](https://azuredatacentermap.azurewebsites.net).
+
+U kunt valideren dat HDInsight correct is geconfigureerd voor het opslaan van gegevens in één regio door ervoor te zorgen dat het opslag account dat is gekoppeld aan uw HDInsight LRS of een andere opslag optie vermeld in het [vertrouwens centrum](https://azuredatacentermap.azurewebsites.net).
+ 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Azure Storage-overzicht](./overview-azure-storage.md)

@@ -4,36 +4,34 @@ description: API voor het ophalen van een overzicht van aanbiedingen onder een P
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 04/08/2020
-ms.openlocfilehash: ab5f09d0d81d8a6aa526576faea0b11a6536381a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 22d22feb3931f466647c2c4d94bdf924568f2dc5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113476"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86535889"
 ---
-<a name="retrieve-offers"></a>Aanbiedingen ophalen
-===============
+# <a name="retrieve-offers"></a>Aanbiedingen ophalen
 
 > [!NOTE]
-> De Cloud Partner-portal-Api's zijn geïntegreerd met partner centrum en blijven werken nadat uw aanbiedingen zijn gemigreerd naar het partner centrum. De integratie introduceert kleine wijzigingen. Bekijk de wijzigingen die worden vermeld in [Cloud Partner-Portal API-referentie](./cloud-partner-portal-api-overview.md) om ervoor te zorgen dat uw code blijft werken na de migratie naar het partner centrum.
+> De Cloud Partner-portal-Api's zijn geïntegreerd in en blijven werken in het partner centrum. De overgang introduceert kleine wijzigingen. Controleer de wijzigingen die worden vermeld in [Cloud Partner-Portal API-referentie](./cloud-partner-portal-api-overview.md) om ervoor te zorgen dat uw code blijft werken na het overstappen naar het partner centrum. CCP-Api's mogen alleen worden gebruikt voor bestaande producten die al zijn geïntegreerd vóór de overgang naar het partner centrum. nieuwe producten moeten de indienings-Api's van partner Center gebruiken.
 
 Hiermee wordt een overzicht van aanbiedingen onder een Publisher-naam ruimte opgehaald.
 
  `GET https://cloudpartner.azure.com/api/publishers/<publisherId>/offers?api-version=2017-10-31`
 
-<a name="uri-parameters"></a>URI-para meters
---------------
+## <a name="uri-parameters"></a>URI-para meters
 
-| **Naam**         |  **Beschrijving**                         |  **Gegevenstype** |
+| **Naam**         |  **Beschrijving**                         |  **Gegevens type** |
 | -------------    |  ------------------------------------    |  -----------   |
 |  publisherId     | Uitgevers-id, bijvoorbeeld`contoso` |   Tekenreeks    |
 |  api-versie     | Nieuwste versie van API                    |    Datum        |
 |  |  |
 
-
-<a name="header"></a>Koptekst
-------
+## <a name="header"></a>Header
 
 |  **Naam**        |         **Waarde**       |
 |  --------------- |       ----------------  |
@@ -41,11 +39,9 @@ Hiermee wordt een overzicht van aanbiedingen onder een Publisher-naam ruimte opg
 |  Autorisatie   | `Bearer YOUR_TOKEN`     |
 |  |  |
 
+## <a name="body-example"></a>Voor beeld van tekst
 
-<a name="body-example"></a>Voor beeld van tekst
-------------
-
-### <a name="response"></a>Antwoord
+### <a name="response"></a>Reactie
 
 ``` json
   200 OK 
@@ -77,7 +73,6 @@ Hiermee wordt een overzicht van aanbiedingen onder een Publisher-naam ruimte opg
 |  changedTime    | UTC-tijd waarop de aanbieding voor het laatst is gewijzigd                                                                              |
 |  |  |
 
-
 ### <a name="response-status-codes"></a>Antwoord status codes
 
 | **Code**  |  **Beschrijving**                                                                                                   |
@@ -88,7 +83,6 @@ Hiermee wordt een overzicht van aanbiedingen onder een Publisher-naam ruimte opg
 |  404      | `Not found`-De opgegeven entiteit bestaat niet.                                                                 |
 |  |  |
 
-
 ### <a name="offer-status"></a>Status van aanbieding
 
 |  **Naam**                    | **Beschrijving**                                  |
@@ -96,7 +90,7 @@ Hiermee wordt een overzicht van aanbiedingen onder een Publisher-naam ruimte opg
 |  NeverPublished              | De aanbieding is nooit gepubliceerd.                  |
 |  NotStarted                  | De aanbieding is nieuw, maar is niet gestart.                 |
 |  WaitingForPublisherReview   | Aanbieding wacht op goed keuring van de uitgever.         |
-|  In uitvoering                     | Verzen ding van aanbieding wordt verwerkt.             |
+|  Wordt uitgevoerd                     | Verzen ding van aanbieding wordt verwerkt.             |
 |  Geslaagd                   | Het verzenden van aanbiedingen is voltooid.       |
 |  Geannuleerd                    | Het verzenden van het aanbod is geannuleerd.                   |
 |  Mislukt                      | Kan de aanbieding niet verzenden.                         |

@@ -8,13 +8,13 @@ ms.author: heidist
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 3e1efb1f93910f311ad5df898152d71158003244
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.date: 07/11/2020
+ms.openlocfilehash: cdf71f939d6e5e1ada0ba141dce3bcba9d7d9b01
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146838"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529791"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>JSON-blobs indexeren met behulp van een BLOB-Indexeer functie in azure Cognitive Search
 
@@ -453,7 +453,7 @@ U kunt ook verwijzen naar afzonderlijke matrix elementen met behulp van een inde
 >
 >
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 + [Indexeerfuncties in Azure Cognitive Search](search-indexer-overview.md)
 + [Azure Blob Storage indexeren met Azure Cognitive Search](search-howto-index-json-blobs.md)

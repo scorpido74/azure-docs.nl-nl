@@ -6,15 +6,16 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: e9ba5a516293eb72a715dc9d0df7db4d5a4ea3c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5baa4d4d968adb25b5520ca91149970f5c5578e9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76907979"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536263"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-b2b-messages-in-azure-logic-apps"></a>Azure Monitor-logboeken instellen en diagnostische gegevens verzamelen voor B2B-berichten in Azure Logic Apps
 
-Nadat u B2B-communicatie tussen handels partners in uw integratie account hebt ingesteld, kunnen deze partners berichten uitwisselen met behulp van protocollen zoals AS2, X12 en EDIFACT. Als u wilt controleren of deze communicatie werkt zoals verwacht, kunt u [Azure monitor logboeken](../azure-monitor/platform/data-platform-logs.md) instellen voor uw integratie account. [Azure monitor](../azure-monitor/overview.md) helpt u bij het bewaken van uw Cloud-en on-premises omgevingen, zodat u hun Beschik baarheid en prestaties gemakkelijker kunt onderhouden. Met Azure Monitor-Logboeken kunt u gegevens over runtime gegevens en-gebeurtenissen vastleggen en opslaan, zoals trigger gebeurtenissen, uitvoer gebeurtenissen en actie gebeurtenissen in een [log Analytics-werk ruimte](../azure-monitor/platform/resource-logs-collect-workspace.md). Voor berichten verzamelt ook logboek registratie informatie zoals:
+Nadat u B2B-communicatie tussen handels partners in uw integratie account hebt ingesteld, kunnen deze partners berichten uitwisselen met behulp van protocollen zoals AS2, X12 en EDIFACT. Als u wilt controleren of deze communicatie werkt zoals verwacht, kunt u [Azure monitor logboeken](../azure-monitor/platform/data-platform-logs.md) instellen voor uw integratie account. [Azure monitor](../azure-monitor/overview.md) helpt u bij het bewaken van uw Cloud-en on-premises omgevingen, zodat u hun Beschik baarheid en prestaties gemakkelijker kunt onderhouden. Met Azure Monitor-Logboeken kunt u gegevens over runtime gegevens en-gebeurtenissen vastleggen en opslaan, zoals trigger gebeurtenissen, uitvoer gebeurtenissen en actie gebeurtenissen in een [log Analytics-werk ruimte](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace). Voor berichten verzamelt ook logboek registratie informatie zoals:
 
 * Aantal berichten en status
 * Status van bevestigingen
@@ -162,7 +163,7 @@ Wanneer de logische app wordt uitgevoerd, kunt u de status en gegevens over die 
 
    * To search results with prebuilt queries, select **Favorites**.
 
-   * Learn [how to build queries by adding filters](../logic-apps/create-monitoring-tracking-queries.md). Or learn more about [how to find data with log searches in Azure Monitor logs](../log-analytics/log-analytics-log-searches.md).
+   * Learn [how to build queries by adding filters](../logic-apps/create-monitoring-tracking-queries.md). Or learn more about [how to find data with log searches in Azure Monitor logs](../azure-monitor/log-query/log-query-overview.md).
 
    * To change query in the search box, update the query with the columns and values that you want to use as filters.
 -->
@@ -189,7 +190,7 @@ Hier volgen de beschrijvingen van de eigenschappen voor elk AS2-bericht.
 | **Richting** | De richting van het AS2-bericht |
 | **Tracerings-ID** | De ID die overeenkomt met alle triggers en acties in een logische app |
 | **Bericht-id** | De AS2 bericht-ID van de AS2-bericht koppen |
-| **Tijdstempel** | Het tijdstip waarop de AS2-actie het bericht heeft verwerkt |
+| **Timestamp** | Het tijdstip waarop de AS2-actie het bericht heeft verwerkt |
 |||
 
 <!--
@@ -224,7 +225,7 @@ Hier volgen de beschrijvingen van de eigenschappen voor elk X12-bericht.
 | **Msg-type** | Het EDI X12-bericht type |
 | **ICN** | Het uitwisselings controle nummer voor het X12-bericht |
 | **TSCN** | Het controle nummer voor de Transactieset voor het X12-bericht |
-| **Tijdstempel** | Het tijdstip waarop de X12-actie het bericht heeft verwerkt |
+| **Timestamp** | Het tijdstip waarop de X12-actie het bericht heeft verwerkt |
 |||
 
 <!--
@@ -259,7 +260,7 @@ Hier volgen de beschrijvingen van de eigenschappen voor elk EDIFACT-bericht.
 | **Msg-type** | Het EDIFACT-bericht type |
 | **ICN** | Het uitwisselings controle nummer voor het EDIFACT-bericht |
 | **TSCN** | Het controle nummer voor de Transactieset voor het EDIFACT-bericht |
-| **Tijdstempel** | Het tijdstip waarop de EDIFACT-actie het bericht heeft verwerkt |
+| **Timestamp** | Het tijdstip waarop de EDIFACT-actie het bericht heeft verwerkt |
 |||
 
 <!--

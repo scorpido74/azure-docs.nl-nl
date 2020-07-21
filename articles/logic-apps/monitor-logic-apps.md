@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: c2a609266a77293a0e3a5cb9c973a6eb3f7f72a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69d018db26a42c331ff41d242eae54d6fcc43990
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82731999"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536247"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>De uitvoerings status controleren, de trigger geschiedenis controleren en waarschuwingen instellen voor Azure Logic Apps
 
@@ -48,7 +48,7 @@ Telkens wanneer de trigger wordt geactiveerd voor een item of gebeurtenis, maakt
 
    | Status | Beschrijving |
    |--------|-------------|
-   | **Geannuleerd** | De werk stroom is uitgevoerd, maar er is een annulerings aanvraag ontvangen |
+   | **Gevraagd** | De werk stroom is uitgevoerd, maar er is een annulerings aanvraag ontvangen |
    | **Mislukt** | Ten minste één actie is mislukt en er zijn geen latere acties in de werk stroom ingesteld voor het afhandelen van de fout |
    | **Wordt uitgevoerd** | De werk stroom wordt momenteel uitgevoerd. <p>Deze status kan ook worden weer gegeven voor vertraagde werk stromen of vanwege het huidige prijs plan. Zie de [pagina met prijzen voor de actie limieten](https://azure.microsoft.com/pricing/details/logic-apps/)voor meer informatie. Als u [Diagnostische logboek registratie](../logic-apps/monitor-logic-apps.md)instelt, kunt u informatie ophalen over eventuele vertragings gebeurtenissen die plaatsvinden. |
    | **Geslaagd** | Alle acties zijn voltooid. <p>**Opmerking**: als er fouten zijn opgetreden in een specifieke actie, wordt die fout door een latere actie in de werk stroom verwerkt. |
@@ -71,7 +71,7 @@ Telkens wanneer de trigger wordt geactiveerd voor een item of gebeurtenis, maakt
 
    ![Bekijk de details van elke stap in de uitvoering](./media/monitor-logic-apps/review-logic-app-run-details.png)
 
-   U kunt bijvoorbeeld de eigenschap **correlatie-id** van het run ophalen, die u mogelijk nodig hebt wanneer u de [REST API gebruikt voor Logic apps](https://docs.microsoft.com/rest/api/logic).
+   U kunt bijvoorbeeld de eigenschap **correlatie-id** van het run ophalen, die u mogelijk nodig hebt wanneer u de [REST API gebruikt voor Logic apps](/rest/api/logic).
 
 1. Selecteer een van de volgende opties voor meer informatie over een specifieke stap:
 
@@ -138,7 +138,7 @@ De uitvoering van elke logische app begint met een trigger. De trigger geschiede
 
 ## <a name="set-up-monitoring-alerts"></a>Bewakings waarschuwingen instellen
 
-Als u waarschuwingen wilt ontvangen op basis van specifieke metrische gegevens of drempel waarden voor de logische app hebt overschreden, stelt u [waarschuwingen in azure monitor in](../azure-monitor/platform/alerts-overview.md). Meer informatie over [metrische gegevens in azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md). Voer de volgende stappen uit als u waarschuwingen wilt instellen zonder [Azure monitor](../log-analytics/log-analytics-overview.md)te gebruiken.
+Als u waarschuwingen wilt ontvangen op basis van specifieke metrische gegevens of drempel waarden voor de logische app hebt overschreden, stelt u [waarschuwingen in azure monitor in](../azure-monitor/platform/alerts-overview.md). Meer informatie over [metrische gegevens in azure](../azure-monitor/platform/data-platform.md). Voer de volgende stappen uit als u waarschuwingen wilt instellen zonder [Azure monitor](../azure-monitor/log-query/log-query-overview.md)te gebruiken.
 
 1. Selecteer in het menu van de logische app, onder **bewaking**, de **optie waarschuwing**  >  **nieuwe waarschuwings regel**.
 

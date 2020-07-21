@@ -8,12 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: edf669eb813240505cba8faef41e166785cc5b18
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: b0ab1e2e43210ecd7a61b7dffcb12d2c7c5c1c46
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232063"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536603"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Integreer Azure Time Series Insights met Externe bewaking
 
@@ -68,7 +68,7 @@ Implementeer vervolgens Time Series Insights als een extra bron in uw oplossing 
 
     ![Time Series Insights maken](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights-create.png)
 
-1. Klik op **Create**. Het kan even duren voordat de omgeving is gemaakt.
+1. Klik op **Maken**. Het kan even duren voordat de omgeving is gemaakt.
 
 ## <a name="create-event-source"></a>Gebeurtenisbron maken
 
@@ -80,7 +80,7 @@ Maak een nieuwe gebeurtenis bron om verbinding te maken met uw IoT-hub. Zorg erv
 
     ![Gebeurtenis bronnen weer geven](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-sources.png)
 
-1. Klik op **Toevoegen**.
+1. Klik op **Add**.
 
     ![Gebeurtenis bron toevoegen](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-sources-add.png)
 
@@ -95,13 +95,13 @@ Maak een nieuwe gebeurtenis bron om verbinding te maken met uw IoT-hub. Zorg erv
     | IOT-hub-naam | **contosorma57a6**. Gebruik de naam van uw IoT-hub vanuit uw oplossing voor externe controle. |
     | Naam van het IoT-hub-beleid | **iothubowner** Zorg ervoor dat het gebruikte beleid een eigenaars beleid is. |
     | Beleids sleutel voor IOT hub | Dit veld wordt automatisch ingevuld. |
-    | IoT-hub-consumentengroep | **timeseriesinsights** |
+    | Klanten groep voor IOT hub | **timeseriesinsights** |
     | Serialisatie-indeling voor gebeurtenissen | **JSON**     | 
     | Naam van de timestamp-eigenschap | Leeg laten |
 
     ![Gebeurtenis bron maken](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-source-create.png)
 
-1. Klik op **Create**.
+1. Klik op **Maken**.
 
 ## <a name="configure-the-data-access-policy"></a>Het beleid voor gegevens toegang configureren
 
@@ -244,7 +244,7 @@ Configureer de implementatie omgeving `basic` voor de bijgewerkte micro Services
 
 Configureer de implementatie omgeving `standard` voor de bijgewerkte micro services hierboven
 
-1. Voer op de opdracht regel uit `kubectl proxy` . Zie [toegang tot de Kubernetes-API](https://kubernetes.io/docs/reference/access-authn-authz/)voor meer informatie.
+1. Voer op de opdracht regel uit `kubectl proxy` . Zie [toegang tot de Kubernetes-API](https://kubernetes.io/docs/reference/access-authn-authz/#using-kubectl-to-start-a-proxy-server)voor meer informatie.
 
 1. Open de Kubernetes-beheer console.
 

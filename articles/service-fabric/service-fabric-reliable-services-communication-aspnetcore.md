@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: vturecek
-ms.openlocfilehash: c8866714ca1736b3ba785b560cb5a7aea451fdf1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 73ba08406e224d6c2a0d5dcaba7e7896dcb4d740
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253334"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529298"
 ---
 # <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>ASP.NET Core in azure Service Fabric Reliable Services
 
@@ -470,8 +470,8 @@ Kestrel is de voorgestelde webserver voor front-end-services die externe, Intern
  
 Wanneer een stateless service wordt blootgesteld aan Internet, moet een bekende en stabiele eind punt worden gebruikt dat bereikbaar is via een load balancer. U geeft deze URL naar de gebruikers van uw toepassing. We raden u aan de volgende configuratie uit te voeren:
 
-|  |  | **Opmerkingen** |
-| --- | --- | --- |
+| Type | Aanbeveling | Notities |
+| ---- | -------------- | ----- |
 | Webserver | Kestrel | Kestrel is de voorkeurs webserver, omdat deze wordt ondersteund in Windows en Linux. |
 | Poort configuratie | statisch | Een bekende statische poort moet worden geconfigureerd in de `Endpoints` configuratie van ServiceManifest.xml, zoals 80 voor http of 443 voor HTTPS. |
 | ServiceFabricIntegrationOptions | Geen | Gebruik de `ServiceFabricIntegrationOptions.None` optie bij het configureren van service Fabric Integration-middleware, zodat de service niet probeert binnenkomende aanvragen voor een unieke id te valideren. Externe gebruikers van uw toepassing weten niet de unieke identiteits gegevens die door de middleware worden gebruikt. |
@@ -495,8 +495,8 @@ Als meerdere extern belichte Services dezelfde set knoop punten delen, kunt u HT
 ### <a name="internal-only-stateless-aspnet-core-service"></a>Alleen stateless ASP.NET Core Service met alleen interne status
 Stateless services die alleen binnen het cluster worden aangeroepen, moeten unieke Url's en dynamisch toegewezen poorten gebruiken om de samen werking tussen meerdere services te garanderen. We raden u aan de volgende configuratie uit te voeren:
 
-|  |  | **Opmerkingen** |
-| --- | --- | --- |
+| Type | Aanbeveling | Notities |
+| ---- | -------------- | ----- |
 | Webserver | Kestrel | Hoewel u HTTP.sys kunt gebruiken voor interne stateless Services, is Kestrel de beste server waarmee meerdere service-exemplaren een host kunnen delen.  |
 | Poort configuratie | dynamisch toegewezen | Meerdere replica's van een stateful service kunnen een hostproces of host-besturings systeem delen, waardoor er unieke poorten nodig zijn. |
 | ServiceFabricIntegrationOptions | UseUniqueServiceUrl | Met dynamische poort toewijzing voor komt u met deze instelling dat eerder beschreven identiteits problemen worden opgelost. |
@@ -505,8 +505,8 @@ Stateless services die alleen binnen het cluster worden aangeroepen, moeten unie
 ### <a name="internal-only-stateful-aspnet-core-service"></a>Alleen stateful ASP.NET Core-Service
 Stateful services die alleen binnen het cluster worden aangeroepen, moeten dynamisch toegewezen poorten gebruiken om de samen werking tussen meerdere services te garanderen. We raden u aan de volgende configuratie uit te voeren:
 
-|  |  | **Opmerkingen** |
-| --- | --- | --- |
+| Type | Aanbeveling | Notities |
+| ---- | -------------- | ----- |
 | Webserver | Kestrel | De `HttpSysCommunicationListener` is niet bedoeld voor gebruik door stateful services waarin replica's een hostproces delen. |
 | Poort configuratie | dynamisch toegewezen | Meerdere replica's van een stateful service kunnen een hostproces of host-besturings systeem delen, waardoor er unieke poorten nodig zijn. |
 | ServiceFabricIntegrationOptions | UseUniqueServiceUrl | Met dynamische poort toewijzing voor komt u met deze instelling dat eerder beschreven identiteits problemen worden opgelost. |

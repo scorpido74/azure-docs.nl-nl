@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: 4767f7bb5ba02c838c0e21721e55a6564a14acd1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ca17ffdc2a54b25bbfd855834a366ed381a54678
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "69016658"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530385"
 ---
 # <a name="comparison-of-azure-on-demand-media-encoders"></a>Vergelijking van media encoders op aanvraag van Azure  
 
@@ -34,7 +34,7 @@ De volgende tabel vergelijkt de functionaliteit van Media Encoder Standard (MES)
 |---|---|---|
 |Voorwaardelijke logica Toep assen tijdens het coderen<br/>(als de invoer bijvoorbeeld HD is, codeer dan 5,1 audio)|Nee|Ja|
 |Ondertiteling|Nee|[Ja](media-services-premium-workflow-encoder-formats.md#closed_captioning)|
-|[Loudness correctie voor Dolby® Professional](https://www.dolby.com/us/en/technologies/dolby-professional-loudness-solutions.pdf)<br/> met dialoog Intelligence™|Nee|Ja|
+|[&reg;LOUDNESS correctie Dolby Professional](https://professional.dolby.com/product/broadcast/vm600/)<br/> met dialoog informatie&trade;|Nee|Ja|
 |Interliniëring, inverse telecine|Basic|Broadcast kwaliteit|
 |Zwarte randen detecteren en verwijderen <br/>(pillarboxes, letterboxes)|Nee|Ja|
 |Miniatuur genereren|[Ja](media-services-dotnet-generate-thumbnail-with-mes.md)|[Ja](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4)|
@@ -44,7 +44,7 @@ De volgende tabel vergelijkt de functionaliteit van Media Encoder Standard (MES)
 |Meerdere audio taal sporen|Beperkt|[Ja](media-services-media-encoder-premium-workflow-multiplefilesinput.md#example-2--multiple-audio-language-encoding)|
 
 ## <a name="billing-meter-used-by-each-encoder"></a><a id="billing"></a>Facturerings meter die wordt gebruikt door elk coderings programma
-| Naam van media processor | Toepasselijke prijzen | Opmerkingen |
+| Naam van media processor | Toepasselijke prijzen | Notities |
 | --- | --- | --- |
 | **Media Encoder Standard** |RING |De kosten voor het coderen van taken worden berekend op basis van de totale duur, in minuten, van alle media bestanden die worden geproduceerd als uitvoer, tegen de snelheid die u [hier][1]opgeeft, onder de kolom encoder. |
 | **Media Encoder Premium Workflow** |PREMIUM ENCODER |De kosten voor het coderen van taken worden berekend op basis van de totale duur, in minuten, van alle media bestanden die worden geproduceerd als uitvoer, tegen de snelheid die u [hier][1]opgeeft, onder de kolom Premium encoder. |
@@ -52,7 +52,7 @@ De volgende tabel vergelijkt de functionaliteit van Media Encoder Standard (MES)
 ## <a name="input-containerfile-formats"></a>Invoer van container/bestands indelingen
 | Invoercontainer/bestandsindelingen | Media Encoder Standard | Media Encoder Premium Workflow |
 | --- | --- | --- |
-| F4V van Adobe® Flash® |Ja |Ja |
+| Adobe &reg; Flash &reg; F4V |Ja |Ja |
 | MXF/SMPTE 377M |Ja |Ja |
 | GXF |Ja |Ja |
 | MPEG-2-transport stromen |Ja |Ja |
@@ -73,7 +73,7 @@ De volgende tabel vergelijkt de functionaliteit van Media Encoder Standard (MES)
 | Avid DNxHD (in MXF) |Ja |Ja |
 | DVCPro/DVCProHD (in MXF) |Ja |Ja |
 | JPEG2000 |Ja |Ja |
-| MPEG-2 (Maxi maal 422 profiel en hoog niveau; inclusief varianten zoals XDCAM, XDCAM HD, XDCAM IMX, CableLabs® en D10) |Maximaal 422-profiel |Ja |
+| MPEG-2 (Maxi maal 422 profiel en hoog niveau; inclusief varianten zoals XDCAM, XDCAM HD, XDCAM IMX, CableLabs &reg; en D10) |Maximaal 422-profiel |Ja |
 | MPEG-1 |Ja |Ja |
 | Windows Media Video/VC-1 |Ja |Ja |
 | Canopus HQ/HQX |Nee |Nee |
@@ -91,9 +91,9 @@ De volgende tabel vergelijkt de functionaliteit van Media Encoder Standard (MES)
 | Codecs audio-invoer | Media Encoder Standard | Media Encoder Premium Workflow |
 | --- | --- | --- |
 | AES (SMPTE 331M en 302M, AES3-2003) |Nee |Ja |
-| Dolby® E |Nee |Ja |
-| Dolby® Digital (AC3) |Nee |Ja |
-| Dolby® Digital Plus (E-AC3) |Nee |Ja |
+| Dolby &reg; E |Nee |Ja |
+| Dolby &reg; Digital (AC3) |Nee |Ja |
+| Dolby &reg; Digital Plus (E-AC3) |Nee |Ja |
 | AAC (AAC-LC, AAC-HE en AAC-HEv2; tot. 5.1) |Ja |Ja |
 | MPEG Layer 2 |Ja |Ja |
 | MP3 (MPEG-1 Audio Layer 3) |Ja |Ja |
@@ -106,7 +106,7 @@ De volgende tabel vergelijkt de functionaliteit van Media Encoder Standard (MES)
 ## <a name="output-containerfile-formats"></a>Uitvoer container/bestands indelingen
 | Uitvoer container/bestands indelingen | Media Encoder Standard | Media Encoder Premium Workflow |
 | --- | --- | --- |
-| F4V van Adobe® Flash® |Nee |Ja |
+| Adobe &reg; Flash &reg; F4V |Nee |Ja |
 | MXF (OP1a, XDCAM en AS02) |Nee |Ja |
 | DPP (inclusief AS11) |Nee |Ja |
 | GXF |Nee |Ja |
@@ -122,7 +122,7 @@ De volgende tabel vergelijkt de functionaliteit van Media Encoder Standard (MES)
 | AVC (H. 264; 8-bits; tot hoog profiel, niveau 5,2; 4 KB Ultra HD; AVC-Intra) |Alleen 8-bits 4:2:0 |Ja |
 | HEVC (H. 265; 8-bits en 10-bits;)  |Nee |Ja |
 | Avid DNxHD (in MXF) |Nee |Ja |
-| MPEG-2 (Maxi maal 422 profiel en hoog niveau; inclusief varianten zoals XDCAM, XDCAM HD, XDCAM IMX, CableLabs® en D10) |Nee |Ja |
+| MPEG-2 (Maxi maal 422 profiel en hoog niveau; inclusief varianten zoals XDCAM, XDCAM HD, XDCAM IMX, CableLabs &reg; en D10) |Nee |Ja |
 | MPEG-1 |Nee |Ja |
 | Windows Media Video/VC-1 |Nee |Ja |
 | JPEG-miniatuur maken |Ja |Ja |
@@ -133,15 +133,15 @@ De volgende tabel vergelijkt de functionaliteit van Media Encoder Standard (MES)
 | Audio-codecs voor uitvoer | Media Encoder Standard | Media Encoder Premium Workflow |
 | --- | --- | --- |
 | AES (SMPTE 331M en 302M, AES3-2003) |Nee |Ja |
-| Dolby® Digital (AC3) |Nee |Ja |
-| Dolby® Digital Plus (E-AC3) tot 7,1 |Nee |Ja |
+| Dolby &reg; Digital (AC3) |Nee |Ja |
+| Dolby &reg; Digital Plus (E-AC3) tot 7,1 |Nee |Ja |
 | AAC (AAC-LC, AAC-HE en AAC-HEv2; tot. 5.1) |Ja |Ja |
 | MPEG Layer 2 |Nee |Ja |
 | MP3 (MPEG-1 Audio Layer 3) |Nee |Ja |
 | Windows Media Audio |Nee |Ja |
 
 >[!NOTE]
->Als u codeert naar Dolby® Digital (AC3), kan de uitvoer alleen naar een ISO MP4-bestand worden geschreven.
+>Als u codeert naar Dolby &reg; Digital (AC3), kan de uitvoer alleen naar een ISO MP4-bestand worden geschreven.
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

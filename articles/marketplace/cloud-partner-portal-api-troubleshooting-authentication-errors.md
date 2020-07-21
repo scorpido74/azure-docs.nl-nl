@@ -3,19 +3,21 @@ title: Veelvoorkomende verificatie fouten oplossen | Azure Marketplace
 description: Biedt hulp bij veelvoorkomende verificatie fouten bij het gebruik van de Cloud Partner-portal-Api's.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 04/08/2020
-ms.openlocfilehash: 8c9bd6dbe54f797090c5f7405ad709db954f8fb9
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: reference
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: bfcee6a6d9a8448315d59009ea8a6ef62fa71da0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115465"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86535991"
 ---
 # <a name="troubleshooting-common-authentication-errors"></a>Veelvoorkomende verificatie fouten oplossen
 
 > [!NOTE]
-> De Cloud Partner-portal-Api's zijn geïntegreerd met partner centrum en blijven werken nadat uw aanbiedingen zijn gemigreerd naar het partner centrum. De integratie introduceert kleine wijzigingen. Bekijk de wijzigingen die worden vermeld in [Cloud Partner-Portal API-referentie](./cloud-partner-portal-api-overview.md) om ervoor te zorgen dat uw code blijft werken na de migratie naar het partner centrum.
+> De Cloud Partner-portal-Api's zijn geïntegreerd in en blijven werken in het partner centrum. De overgang introduceert kleine wijzigingen. Controleer de wijzigingen die worden vermeld in [Cloud Partner-Portal API-referentie](./cloud-partner-portal-api-overview.md) om ervoor te zorgen dat uw code blijft werken na het overstappen naar het partner centrum. CCP-Api's mogen alleen worden gebruikt voor bestaande producten die al zijn geïntegreerd vóór de overgang naar het partner centrum. nieuwe producten moeten de indienings-Api's van partner Center gebruiken.
 
 Dit artikel biedt hulp bij veelvoorkomende verificatie fouten bij het gebruik van de Cloud Partner-portal-Api's.
 
@@ -24,7 +26,6 @@ Dit artikel biedt hulp bij veelvoorkomende verificatie fouten bij het gebruik va
 Als u consequent `401 unauthorized` fouten krijgt, controleert u of u een geldig toegangs token hebt.  Als u dit nog niet hebt gedaan, maakt u een Basic Azure Active Directory-toepassing (Azure AD) en een Service-Principal zoals beschreven in [Portal gebruiken om een Azure Active Directory toepassing en Service-Principal te maken die toegang hebben tot resources](../active-directory/develop/howto-create-service-principal-portal.md). Gebruik vervolgens de toepassing of een eenvoudige HTTP POST-aanvraag om uw toegang te controleren.  U neemt de Tenant-ID, toepassings-ID, object-ID en de geheime sleutel op om het toegangs token op te halen, zoals wordt weer gegeven in de volgende afbeelding:
 
 ![Problemen met de 401-fout oplossen](./media/cloud-partner-portal-api-troubleshooting-authentication-errors/troubleshooting-401-error.jpg)
-
 
 ## <a name="forbidden-error"></a>Fout: Niet-toegestaan
 

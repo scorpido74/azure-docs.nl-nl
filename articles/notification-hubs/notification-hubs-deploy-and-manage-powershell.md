@@ -16,11 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: e6334659d41ba201cfdde190ccc9bfa0d58009e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d45b98f291a7524dac2927fc74c5dc52400209f5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82891203"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529978"
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>Notification hubs implementeren en beheren met Power shell
 
@@ -31,7 +32,7 @@ In dit artikel leest u hoe u Azure Notification Hubs maken en beheren met behulp
 - Een Notification Hub maken
 - Referenties instellen
 
-Zie [Service Bus beheren met Power shell](../service-bus-messaging/service-bus-powershell-how-to-provision.md)als u ook een nieuwe service bus-naam ruimte wilt maken voor uw notification hubs.
+Zie [Service Bus beheren met Power shell](../service-bus-messaging/service-bus-manage-with-ps.md)als u ook een nieuwe service bus-naam ruimte wilt maken voor uw notification hubs.
 
 Het beheren van Notification hubs wordt niet rechtstreeks ondersteund door de cmdlets die zijn opgenomen in Azure PowerShell. De beste benadering van Power shell is om te verwijzen naar de Microsoft.Azure.NotificationHubs.dll-assembly. De assembly wordt gedistribueerd met het [Microsoft Azure notification hubs NuGet-pakket](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
@@ -147,9 +148,9 @@ else
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-- [Service Bus met PowerShell beheren](../service-bus-messaging/service-bus-powershell-how-to-provision.md)
-- [Service Bus-wacht rijen,-onderwerpen en-abonnementen maken met een Power shell-script](https://docs.microsoft.com/archive/blogs/paolos/how-to-create-service-bus-queues-topics-and-subscriptions-using-a-powershell-script)
-- [Een Service Bus naam ruimte en een event hub maken met een Power shell-script](https://docs.microsoft.com/archive/blogs/paolos/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script)
+- [Service Bus met PowerShell beheren](../service-bus-messaging/service-bus-manage-with-ps.md)
+- [Service Bus-wacht rijen,-onderwerpen en-abonnementen maken met een Power shell-script](/archive/blogs/paolos/how-to-create-service-bus-queues-topics-and-subscriptions-using-a-powershell-script)
+- [Een Service Bus naam ruimte en een event hub maken met een Power shell-script](/archive/blogs/paolos/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script)
 
 Sommige kant-en-klare scripts zijn ook beschikbaar om te worden gedownload:
 
@@ -157,9 +158,9 @@ Sommige kant-en-klare scripts zijn ook beschikbaar om te worden gedownload:
 
 [Aankoop opties]: https://azure.microsoft.com/pricing/purchase-options/
 [Aanbiedingen voor leden]: https://azure.microsoft.com/pricing/member-offers/
-[Gratis proefversie]: https://azure.microsoft.com/pricing/free-trial/
+[Gratis proef versie]: https://azure.microsoft.com/pricing/free-trial/
 [Azure PowerShell installeren en configureren]: /powershell/azureps-cmdlets-docs
-[.NET-API voor Notification Hubs]: https://docs.microsoft.com/dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
-[Get-AzureSBNamespace]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azuresbnamespace
-[New-AzureSBNamespace]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azuresbnamespace
-[Get-AzureSBAuthorizationRule]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azuresbauthorizationrule
+[.NET-API voor Notification Hubs]: /dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
+[Get-AzureSBNamespace]: /powershell/module/servicemanagement/azure/get-azuresbnamespace
+[New-AzureSBNamespace]: /powershell/module/servicemanagement/azure/new-azuresbnamespace
+[Get-AzureSBAuthorizationRule]: /powershell/module/servicemanagement/azure/get-azuresbauthorizationrule

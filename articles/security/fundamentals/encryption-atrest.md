@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 1e08e758fbba911d3391794f5bab31aaf6a5fc73
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd54c8f7e8a3784672f5364efc6f6b51186f911d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81454676"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529281"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-gegevens versleuteling-at-rest
 
@@ -258,9 +258,8 @@ Versleuteling aan client zijde van Azure SQL Database gegevens wordt ondersteund
 
 #### <a name="encryption-model-and-key-management-table"></a>Versleutelings model en sleutel beheer tabel
 
-|                                  |                    | **Versleutelings model en sleutel beheer** |                    |
+| Product, functie of service | Server-side met door service beheerde sleutel   | Server-zijde met door de klant beheerde sleutel | Client-side met door client beheerde sleutel  |
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
-|                                  | **Server-side met door service beheerde sleutel**     | **Server-zijde met door de klant beheerde sleutel**             | **Client-side met door client beheerde sleutel**      |
 | **AI en Machine Learning**      |                    |                    |                    |
 | Azure Cognitive Search           | Ja                | Ja                | -                  |
 | Azure Cognitive Services         | Ja                | Ja                | -                  |
@@ -268,19 +267,19 @@ Versleuteling aan client zijde van Azure SQL Database gegevens wordt ondersteund
 | Azure Machine Learning Studio    | Ja                | Preview, RSA 2048-bits | -               |
 | Content Moderator                | Ja                | Ja                | -                  |
 | Face                             | Ja                | Ja                | -                  |
-| Taalbegrip           | Ja                | Ja                | -                  |
+| Taal begrijpen           | Ja                | Ja                | -                  |
 | Personalizer                     | Ja                | Ja                | -                  |
 | QnA Maker                        | Ja                | Ja                | -                  |
 | Spraakservices                  | Ja                | Ja                | -                  |
 | Translator Text                  | Ja                | Ja                | -                  |
 | Power BI                         | Ja                | Preview, RSA 2048-bits | -                  |
 | **Analyse**                    |                    |                    |                    |
-| Azure Stream Analytics           | Ja                | N.v.t.\*            | -                  |
+| Azure Stream Analytics           | Ja                | n.v.t.\*            | -                  |
 | Event Hubs                       | Ja                | Ja, alle RSA-lengten. | -                  |
 | Functions                        | Ja                | Ja, alle RSA-lengten. | -                  |
 | Azure Analysis Services          | Ja                | -                  | -                  |
 | Azure Data Catalog               | Ja                | -                  | -                  |
-| Azure HDInsight                  | Ja                | Alle                | -                  |
+| Azure HDInsight                  | Ja                | Alles                | -                  |
 | Azure Monitor Application Insights | Ja                | Ja                | -                  |
 | Azure Monitor Log Analytics      | Ja                | Ja                | -                  |
 | Azure Data Explorer              | Ja                | Ja                | -                  |
@@ -313,7 +312,7 @@ Versleuteling aan client zijde van Azure SQL Database gegevens wordt ondersteund
 | Table Storage                    | Ja                | Ja                | Ja                |
 | Azure Cosmos DB                  | Ja                | Ja                | -                  |
 | Azure Databricks                 | Ja                | Ja                | -                  |
-| Azure Database Migration Service | Ja                | N.v.t.\*              | -                  |
+| Azure Database Migration Service | Ja                | n.v.t.\*              | -                  |
 | **DevOps**                       |                    |                    |                    |
 | Azure DevOps Services            | Ja                | -                  | Ja                |
 | Azure-opslagplaatsen                      | Ja                | -                  | Ja                |
@@ -346,7 +345,7 @@ Versleuteling aan client zijde van Azure SQL Database gegevens wordt ondersteund
 | File Sync                        | Ja                | Ja, RSA 2048-bits  | -                  |
 | Queue Storage                    | Ja                | Ja                | Ja                |
 | Avere vFXT                       | Ja                | -                  | -                  |
-| Azure Cache voor Redis            | Ja                | N.v.t.\*              | -                  |
+| Azure Cache voor Redis            | Ja                | n.v.t.\*              | -                  |
 | Azure NetApp Files               | Ja                | Ja                | -                  |
 | Archive Storage                  | Ja                | Ja, RSA 2048-bits  | -                  |
 | StorSimple                       | Ja                | Ja, RSA 2048-bits  | Ja                |

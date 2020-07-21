@@ -114,7 +114,7 @@
               href: concepts-data-encryption-postgresql.md
             - name: Dubbele infrastructuurversleuteling
               href: concepts-infrastructure-double-encryption.md
-            - name: Beveiligingsbasislijn
+            - name: Beveiligingsbasislijn voor Azure Security Benchmark
               href: security-baseline.md
         - name: Bedrijfscontinuïteit
           items:
@@ -183,6 +183,8 @@
               href: concepts-hyperscale-firewall-rules.md
             - name: SSL configureren
               href: concepts-hyperscale-ssl-connection-security.md
+            - name: Beveiligingsbasislijn voor Azure Security Benchmark
+              href: postgresql-hyperscale-security-baseline.md
         - name: Bedrijfscontinuïteit
           items:
             - name: Back-ups en herstellen

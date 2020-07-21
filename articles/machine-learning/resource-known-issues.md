@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: contperfq4
 ms.date: 03/31/2020
-ms.openlocfilehash: bc41152bb39b0f5022d51dbefe16e3d56107c457
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 56acddda2cf5ae2ef2a94353ec11c3ddf6990e1c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223455"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536110"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Bekende problemen en probleem oplossing in Azure Machine Learning
 
@@ -96,6 +96,22 @@ Soms kan het nuttig zijn als u Diagnostische gegevens kunt opgeven wanneer u om 
     ```bash
     automl_setup
     ```
+    
+* **Fout: ' brand ' bij het uitvoeren van AutoML op een lokale Compute-of Azure Databricks-cluster**
+
+    Als er na 10 juni 2020 een nieuwe omgeving is gemaakt met behulp van SDK 1.7.0 of eerder, kan de training mislukken met deze fout vanwege een update in het py-cpuinfo-pakket. (Omgevingen die zijn gemaakt op of vóór 10 juni 2020, worden niet beïnvloed, evenals experimenten die op externe Compute worden uitgevoerd, omdat er trainings afbeeldingen in de cache worden gebruikt.) U kunt dit probleem omzeilen door een van de volgende twee stappen uit te voeren:
+    
+    * Werk de SDK-versie bij naar 1.8.0 of hoger (dit is ook een downgrade van py-cpuinfo naar 5.0.0):
+    
+      ```bash
+      pip install --upgrade azureml-sdk[automl]
+      ```
+    
+    * Downgrade de geïnstalleerde versie van py-cpuinfo naar 5.0.0:
+    
+      ```bash
+      pip install py-cpuinfo==5.0.0
+      ```
   
 * **Fout bericht: kan PyYAML niet verwijderen**
 
@@ -146,6 +162,12 @@ Soms kan het nuttig zijn als u Diagnostische gegevens kunt opgeven wanneer u om 
 > Het verplaatsen van uw Azure Machine Learning-werk ruimte naar een ander abonnement of het verplaatsen van het abonnement dat eigenaar is naar een nieuwe Tenant, wordt niet ondersteund. Dit kan fouten veroorzaken.
 
 * **Azure Portal**: als u rechtstreeks gaat om uw werk ruimte weer te geven vanaf een koppeling voor delen vanuit de SDK of de portal, kunt u de pagina met het normale **overzicht** niet weer geven met abonnements gegevens in de uitbrei ding. U kunt ook niet overschakelen naar een andere werk ruimte. Als u een andere werk ruimte wilt weer geven, gaat u rechtstreeks naar [Azure machine learning Studio](https://ml.azure.com) en zoekt u naar de naam van de werk ruimte.
+
+* **Ondersteunde browsers in azure machine learning Studio-webportal**: we raden u aan om de meest recente browser te gebruiken die compatibel is met uw besturings systeem. De volgende browsers worden ondersteund:
+  * Micro soft Edge (de nieuwe micro soft Edge, nieuwste versie. Geen micro soft Edge verouderd)
+  * Safari (meest recente versie, alleen Mac)
+  * Chrome (meest recente versie)
+  * Firefox (meest recente versie)
 
 ## <a name="set-up-your-environment"></a>Uw omgeving instellen
 
@@ -217,9 +239,16 @@ Beperkingen en bekende problemen voor gegevens drift-monitors:
 
 ## <a name="azure-machine-learning-designer"></a>Azure Machine Learning Designer
 
-Bekende problemen:
+* **Lange Compute-voorbereidings tijd:**
 
-* **Tijd van lange Compute-voor bereiding**: het kan enkele minuten of zelfs langer duren wanneer u voor het eerst verbinding maakt of een compute-doel maakt. 
+Het kan enkele minuten of zelfs langer duren wanneer u voor het eerst verbinding maakt of een compute-doel maakt. 
+
+Vanuit de model gegevens verzamelaar kan het tot (maar meestal minder dan) 10 minuten duren voordat gegevens in uw Blob Storage-account arriveren. Wacht tien minuten om ervoor te zorgen dat de onderstaande cellen worden uitgevoerd.
+
+```python
+import time
+time.sleep(600)
+```
 
 ## <a name="train-models"></a>Modellen trainen
 

@@ -8,13 +8,14 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: c97dafa80adedd64d45666eb98ef6b1e69850719
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0eac72832d75c0c26addaef283015155c09b3935
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84629392"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529366"
 ---
-# <a name="workflow-automation"></a>Werkstroomautomatisering
+# <a name="workflow-automation"></a>Werk stroom automatisering
 
 Elk beveiligings programma bevat meerdere werk stromen voor reactie op incidenten. Deze processen kunnen het melden van relevante belanghebbenden, het starten van een wijzigings beheer proces en het Toep assen van specifieke herbemiddelings stappen zijn. Beveiligings experts raden u aan zo veel mogelijk stappen van deze procedures te automatiseren. Automation vermindert de overhead. Het kan ook de beveiliging verbeteren door ervoor te zorgen dat de proces stappen snel, consistent en volgens uw vooraf gedefinieerde vereisten worden uitgevoerd.
 
@@ -33,16 +34,13 @@ In dit artikel wordt de functie werk stroom automatisering van Azure Security Ce
     - **Rol van beveiligings beheerder** voor de resource groep (of **eigenaar**)
     - Moet ook schrijf machtigingen hebben voor de doel resource
     - Als u wilt werken met Azure Logic Apps-werk stromen, moet u ook over de volgende Logic Apps-rollen/-machtigingen beschikken:
-
-        * De machtigingen voor de [logische app-operator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) zijn vereist of de toegang tot de logische app wordt gelezen/geactiveerd (deze rol kan geen Logic apps maken of bewerken; alleen bestaande *uitvoeren* )
-
-        * De Inzender machtigingen van de [logische app](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor) zijn vereist voor het maken en wijzigen van logische apps
-
-        * Als u logische app-connectors wilt gebruiken, hebt u mogelijk aanvullende referenties nodig om u aan te melden bij hun respectieve services (bijvoorbeeld uw exemplaren van Outlook/teams/toegestane vertraging)
+        - De machtigingen voor de [logische app-operator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) zijn vereist of de toegang tot de logische app wordt gelezen/geactiveerd (deze rol kan geen Logic apps maken of bewerken; alleen bestaande *uitvoeren* )
+        - De Inzender machtigingen van de [logische app](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor) zijn vereist voor het maken en wijzigen van logische apps
+        - Als u logische app-connectors wilt gebruiken, hebt u mogelijk aanvullende referenties nodig om u aan te melden bij hun respectieve services (bijvoorbeeld uw exemplaren van Outlook/teams/toegestane vertraging)
 - Clouds 
     - ✔ Commerciële Clouds
-    - ✔ US Gov
-    - ✘ China gov, andere gov
+    - ✔ Amerikaanse overheids Cloud
+    - ✘ China Government Cloud, overige gov-Clouds
 
 
 ## <a name="create-a-logic-app-and-define-when-it-should-automatically-run"></a>Een logische app maken en definiëren wanneer deze automatisch moet worden uitgevoerd 

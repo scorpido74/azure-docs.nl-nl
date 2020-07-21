@@ -4,18 +4,20 @@ description: De Go Live API initieert het Live-aanbiedings proces van de aanbied
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 04/08/2020
-ms.openlocfilehash: f356291662851172a3c6917b44891ce901546dfa
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 5c5448a853447a0eacc8d974a5b00d5d1e8f4be2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115703"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86535940"
 ---
 # <a name="go-live"></a>Live gaan
 
 > [!NOTE]
-> De Cloud Partner-portal-Api's zijn geïntegreerd met partner centrum en blijven werken nadat uw aanbiedingen zijn gemigreerd naar het partner centrum. De integratie introduceert kleine wijzigingen. Bekijk de wijzigingen die worden vermeld in [Cloud Partner-Portal API-referentie](./cloud-partner-portal-api-overview.md) om ervoor te zorgen dat uw code blijft werken na de migratie naar het partner centrum.
+> De Cloud Partner-portal-Api's zijn geïntegreerd in en blijven werken in het partner centrum. De overgang introduceert kleine wijzigingen. Controleer de wijzigingen die worden vermeld in [Cloud Partner-Portal API-referentie](./cloud-partner-portal-api-overview.md) om ervoor te zorgen dat uw code blijft werken na het overstappen naar het partner centrum. CCP-Api's mogen alleen worden gebruikt voor bestaande producten die al zijn geïntegreerd vóór de overgang naar het partner centrum. nieuwe producten moeten de indienings-Api's van partner Center gebruiken.
 
 Deze API start het proces voor het pushen van een app naar productie. Deze bewerking wordt meestal langdurig uitgevoerd. Deze aanroep gebruikt de lijst met e-mail meldingen van de bewerking [Publish](./cloud-partner-portal-api-publish-offer.md) API.
 
@@ -24,14 +26,14 @@ Deze API start het proces voor het pushen van een app naar productie. Deze bewer
 ## <a name="uri-parameters"></a>URI-para meters
 --------------
 
-|  **Naam**      |   **Beschrijving**                                                           | **Gegevenstype** |
+|  **Naam**      |   **Beschrijving**                                                           | **Gegevens type** |
 |  --------      |   ---------------                                                           | ------------- |
 | publisherId    | De uitgevers-id van de aanbieding die u wilt ophalen, bijvoorbeeld`contoso`       |  Tekenreeks       |
 | offerId        | Id van de aanbieding die moet worden opgehaald                                   |  Tekenreeks       |
 | api-versie    | Nieuwste versie van de API                                                   |  Datum         |
 |  |  |  |
 
-## <a name="header"></a>Koptekst
+## <a name="header"></a>Header
 ------
 
 |  **Naam**       |     **Waarde**       |
@@ -42,7 +44,7 @@ Deze API start het proces voor het pushen van een app naar productie. Deze bewer
 
 ## <a name="body-example"></a>Voor beeld van tekst
 
-### <a name="response"></a>Antwoord
+### <a name="response"></a>Reactie
 
 #### <a name="migrated-offers"></a>Gemigreerde aanbiedingen
 

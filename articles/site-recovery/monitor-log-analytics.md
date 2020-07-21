@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 0cf0ed943dd2135a3e8d545b76eda35285dae24d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 047b689b10d03cf92e5cc744aa707b3f70fe77bd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300787"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529026"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Site Recovery bewaken met Azure Monitor-logboeken
 
@@ -67,8 +68,8 @@ U kunt de gegevens van het verloop snelheidgegevens en gegevens over de upload s
 7. Nadat de installatie is voltooid, gaat u naar Log Analytics werk ruimte en klikt u op **Geavanceerde instellingen**. Ga naar de pagina **gegevens** en klik op **Windows-prestatie meter items**. 
 8. Klik op **+** om de volgende twee tellers toe te voegen met een steekproef interval van 300 seconden:
 
-        ASRAnalytics(*)\SourceVmChurnRate 
-        ASRAnalytics(*)\SourceVmThrpRate 
+    - ASRAnalytics(*)\SourceVmChurnRate
+    - ASRAnalytics(*)\SourceVmThrpRate
 
 De gegevens voor het verloop en de upload frequentie worden gestart in de werk ruimte.
 

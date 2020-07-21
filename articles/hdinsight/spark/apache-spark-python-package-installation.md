@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, tracking-python
 ms.date: 04/29/2020
-ms.openlocfilehash: 67dfc0b2da753f005c1723ff0cf3370ce288c6de
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 8c13dc43f4b7c66bd804fd9ec016f5e1a467bd8b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086616"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536762"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Een Python-omgeving veilig beheren in Azure HDInsight met scriptactie
 
@@ -33,7 +33,7 @@ De Microsoft Azure HDInsight-service gebruikt een omgeving van open-source techn
 
 Er zijn twee soorten open source-onderdelen die beschikbaar zijn in de HDInsight-service:
 
-|Onderdeel |Description |
+|Onderdeel |Beschrijving |
 |---|---|
 |Ingebouwd|Deze onderdelen zijn vooraf geïnstalleerd op HDInsight-clusters en bieden kern functionaliteit van het cluster. Bijvoorbeeld Apache Hadoop GARENs Resource Manager, de Apache Hive query language (HiveQL) en de mahout-bibliotheek behoren tot deze categorie. Een volledige lijst met cluster onderdelen is beschikbaar in [Wat is er nieuw in de Apache Hadoop cluster versies van HDInsight](../hdinsight-component-versioning.md).|
 |Aangepast|Als gebruiker van het cluster kan in uw workload elk onderdeel dat beschikbaar is in de community, worden geïnstalleerd of gebruikt, of door u gemaakt.|
@@ -47,11 +47,11 @@ Er zijn twee soorten open source-onderdelen die beschikbaar zijn in de HDInsight
 
 HDInsight Spark-cluster wordt gemaakt met Anaconda-installatie. Er zijn twee python-installaties in het cluster, Anaconda python 2,7 en python 3,5. In de volgende tabel ziet u de standaard python-instellingen voor Spark, livy en Jupyter.
 
-| |Python 2,7|Python 3,5|
+|Instelling |Python 2,7|Python 3,5|
 |----|----|----|
 |Pad|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
-|Spark|Standaard ingesteld op 2,7|N.v.t.|
-|Livy|Standaard ingesteld op 2,7|N.v.t.|
+|Spark-versie|Standaard ingesteld op 2,7|N.v.t.|
+|Livy-versie|Standaard ingesteld op 2,7|N.v.t.|
 |Jupyter|PySpark-kernel|PySpark3-kernel|
 
 ## <a name="safely-install-external-python-packages"></a>Externe Python-pakketten veilig installeren

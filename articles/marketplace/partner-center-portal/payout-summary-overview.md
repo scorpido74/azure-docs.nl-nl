@@ -1,18 +1,18 @@
 ---
 title: Overzicht van overzicht van uitbetalingen-Azure Marketplace
 description: In de samen vatting van de betaling ziet u details over het geld dat u hebt behaald met uw aanbieding. U kunt ook zien wanneer u betalingen ontvangt en hoeveel u wordt betaald.
-ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.service: marketplace
+ms.topic: article
 author: mingshen
 ms.author: mingshen
-ms.date: 04/24/2020
-ms.openlocfilehash: 29a8eb72814d865cb02bd632e084cec0cc06a1ff
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/14/2020
+ms.openlocfilehash: 087f7df8f8e3cc5e6e01ff023a88306d5fc4102d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118474"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86535957"
 ---
 # <a name="payout-summary-overview"></a>Betalingsoverzicht
 
@@ -43,19 +43,6 @@ Dit zijn rollen en machtigingen voor toegang tot het uitbetalings rapport:
 | Betalingsoverzicht | Kan weer geven | Geen toegang | Geen toegang | Geen toegang | Kan weer geven | Geen toegang  |
 | | | | | | | |
 
-## <a name="payout-report-differences"></a>Verschillen in uitbetalings rapport
-
-Dit zijn de verschillen in het uitbetalings rapport tussen Cloud Partner-portal (oud) en partner centrum (nieuw):
-
-| Cloud Partner-portal | Partner centrum |
-| --- | --- |
-| **Koppeling**:https://cloudpartner.azure.com/ | **Koppeling**: https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory enhttps://partner.microsoft.com/dashboard/payouts/reports/incentivepayments |
-| **Navigatie**: uitbetalings rapportage die is opgenomen in Insights-uitbetaling | **Navigatie**: uitbetalings rapportage die is opgenomen in het partner centrum-pictogram voor uitbetaling |
-| **Bereik**:<ul><li>Trans actie per regel item is zichtbaar voor de verzameling die wordt uitgevoerd, verzameld en betaald.</li><li>Rapportage: geeft alle regel items weer zodra de aankoop order is gemaakt, inclusief de verzameling die wordt uitgevoerd en de facturering wordt uitgevoerd, en de verzamelings status en regel items die nog niet kunnen worden betaald.</li></ul> | **Bereik**:<ul><li>De regel items worden weer gegeven nadat deze als in aanmerking komende winst worden beschouwd.</li><li>Klanten betalen eerst aan micro soft en vervolgens kunnen Isv's het rapport voor uitbetaling starten.</li><li>De verzameling wordt niet weer gegeven in het uitbetalings rapport en de facturering wordt momenteel uitgevoerd.</li></ul> |
-| **Trans actie niet gereed voor uitbetaling**: facturering wordt uitgevoerd | **Trans actie niet gereed voor uitbetaling**: volgende geschatte betaling: de status van de uitbetaling is in de niet-verwerkte staat. |
-| **Status van uitbetaling**: n.v.t. | **Uitbetalings status**:<ul><li>Niet verwerkt: het verdienen komt in aanmerking voor betaling.</li><li>Binnenkort: het verdienen wordt in de volgende maandelijkse uitbetaling naar de uitgever verzonden.</li><li>Verzonden: de betaling is naar uw bank verzonden.</li></ul> |
-| | |
-
 ## <a name="payment-schedules"></a>Betalings schema's
 
 Raadpleeg de sectie [betalings schema's](./payout-policy-details.md#payment-schedules) van het onderwerp **Details** van uitbetaling voor een bespreking van betalings schema's, waaronder bedrijfs perioden, inzicht in partners en wanneer de klant een credit card of factuur gebruikt.
@@ -64,7 +51,7 @@ Raadpleeg de sectie [betalings schema's](./payout-policy-details.md#payment-sche
 
 Deze optie biedt een down load van elk verdienen regel item dat u op de pagina transactie geschiedenis ziet. Dit omvat het type, de datum, de bijbehorende transactie hoeveelheid, de klant, het product en andere transactionele gegevens met betrekking tot het prikkel programma.
 
-| Kolomnaam | Description |
+| Kolomnaam | Beschrijving |
 | --- | --- |
 | earningId | Unieke id voor elk verdienen |
 | participantId | De primaire identiteit van de partner die onder het programma is aangegaan |

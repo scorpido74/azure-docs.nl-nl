@@ -3,13 +3,14 @@ title: Wat zijn status meldingen van Azure service?
 description: Met service status meldingen kunt u service status berichten weer geven die zijn gepubliceerd door Microsoft Azure.
 ms.topic: conceptual
 ms.date: 4/12/2018
-ms.openlocfilehash: e40538ac98bbc7b79311d4fb0da7568d56a84e18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4f2b4a0779d775ed5be5bfa28831cccc68c33caf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77653965"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529009"
 ---
-# <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Servicestatusmeldingen bekijken met de Azure-portal
+# <a name="use-the-azure-portal-to-view-service-health-notifications"></a>De Azure Portal gebruiken om service status meldingen weer te geven
 
 Service status meldingen worden gepubliceerd door Azure en bevatten informatie over de resources in uw abonnement. Deze meldingen zijn een subklasse van activiteiten logboek gebeurtenissen en kunnen ook worden gevonden in het activiteiten logboek. Service status meldingen kunnen informatie of actief zijn, afhankelijk van de klasse.
 
@@ -23,7 +24,7 @@ Er zijn verschillende klassen van service status meldingen:
 
 Elke service status melding bevat details over het bereik en de invloed op uw resources. Details zijn onder andere:
 
-Naam van eigenschap | Description
+Naam van eigenschap | Beschrijving
 -------- | -----------
 detailhandelkanalen | Een van de volgende waarden: **beheerder** of **bewerking**.
 correlationId | Meestal een GUID in de teken reeks indeling. Gebeurtenissen die tot dezelfde actie behoren, delen meestal dezelfde correlatie.

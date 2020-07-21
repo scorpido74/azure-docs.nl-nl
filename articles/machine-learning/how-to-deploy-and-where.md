@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2020
 ms.custom: seoapril2019, tracking-python
-ms.openlocfilehash: 57e1ecb080d816898b862951846b15a4b5709e38
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: ee116d668b9c351ecf5b130a39e418a3da8fc053
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146553"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536382"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellen implementeren met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -441,9 +441,9 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 
 In dit voor beeld geeft de configuratie de volgende instellingen aan:
 
-* Dat het model python vereist.
-* Het [invoer script](#script), dat wordt gebruikt voor het afhandelen van webaanvragen die worden verzonden naar de geïmplementeerde service.
-* Het Conda-bestand waarin de Python-pakketten worden beschreven die nodig zijn voor de.
+* Dat het model python vereist
+* Het [invoer script](#script), dat wordt gebruikt voor het afhandelen van webaanvragen die worden verzonden naar de geïmplementeerde service
+* Het Conda-bestand met een beschrijving van de Python-pakketten die nodig zijn voor de
 
 Zie [een model implementeren met behulp van een aangepaste docker-installatie kopie](how-to-deploy-custom-docker-image.md)voor informatie over het gebruik van een aangepaste docker-installatie kopie met een afnemende configuratie.
 
@@ -537,7 +537,7 @@ az ml model profile -g <resource-group-name> -w <workspace-name> --inference-con
 
 ## <a name="deploy-to-target"></a>Implementeren naar doel
 
-Implementatie maakt gebruik van de configuratie-implementatie configuratie voor innemen om de modellen te implementeren. Het implementatie proces is vergelijkbaar, ongeacht het berekenings doel. Implementeren naar AKS is iets anders omdat u een verwijzing naar het AKS-cluster moet opgeven.
+Implementatie maakt gebruik van de configuratie-implementatie configuratie voor innemen om de modellen te implementeren. Het implementatie proces is vergelijkbaar, ongeacht het berekenings doel. Implementeren naar Azure Kubernetes service (AKS) is enigszins anders, omdat u een verwijzing naar het AKS-cluster moet opgeven.
 
 ### <a name="choose-a-compute-target"></a>Een reken doel kiezen
 
@@ -629,7 +629,7 @@ Zie [implementeren naar Azure container instances](how-to-deploy-azure-container
 Zie [implementeren naar Azure Kubernetes service](how-to-deploy-azure-kubernetes-service.md).
 
 ### <a name="ab-testing-controlled-rollout"></a>A/B testen (gecontroleerde implementatie)
-Zie [bewaakte implementatie van ml modellen](how-to-deploy-azure-kubernetes-service.md#deploy-models-to-aks-using-controlled-rollout-preview) voor meer informatie.
+Zie voor meer informatie [beheerde implementatie van ml modellen](how-to-deploy-azure-kubernetes-service.md#deploy-models-to-aks-using-controlled-rollout-preview) voor meer informatie.
 
 ## <a name="consume-web-services"></a>Webservices gebruiken
 
@@ -878,7 +878,7 @@ Implementatie zonder code model is momenteel als preview-versie beschikbaar en o
 ### <a name="tensorflow-savedmodel-format"></a>Tensor flow SavedModel-indeling
 Tensor flow-modellen moeten worden geregistreerd in **SavedModel-indeling** om te kunnen werken met implementatie zonder code modellen.
 
-Raadpleeg [deze koppeling](https://www.tensorflow.org/guide/saved_model) voor meer informatie over het maken van een SavedModel.
+Zie [deze koppeling](https://www.tensorflow.org/guide/saved_model) voor meer informatie over het maken van een SavedModel.
 
 ```python
 from azureml.core import Model
@@ -913,6 +913,12 @@ model = Model.register(workspace=ws,
 service_name = 'onnx-mnist-service'
 service = Model.deploy(ws, service_name, [model])
 ```
+
+Zie [een Azure machine learning model gebruiken dat is geïmplementeerd als een webservice](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service)om een model te scoren. Veel ONNX-projecten maken gebruik van protobuf-bestanden om trainings-en validatie gegevens op te slaan, waardoor het moeilijk is om te weten wat de door de service verwachte gegevens indeling is. Als model ontwikkelaar kunt u het beste documenten voor uw ontwikkel aars documenteren:
+
+* Invoer indeling (JSON of binair)
+* De vorm van invoer gegevens en het type (bijvoorbeeld een matrix met zwevende vormen [100100, 3])
+* Domein informatie (bijvoorbeeld voor een afbeelding, de kleur ruimte, de volg orde van onderdelen en of de waarden genormaliseerd zijn)
 
 Als u Pytorch gebruikt, bevat het [exporteren van modellen van Pytorch naar ONNX](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb) de details over conversie en beperkingen. 
 
@@ -1227,7 +1233,7 @@ def run(request):
 * [Een model implementeren met behulp van een aangepaste docker-installatie kopie](how-to-deploy-custom-docker-image.md)
 * [Problemen met implementatie oplossen](how-to-troubleshoot-deployment.md)
 * [TLS gebruiken om een webservice te beveiligen via Azure Machine Learning](how-to-secure-web-service.md)
-* [Een Azure Machine Learning model gebruiken dat is geïmplementeerd als een webservice](how-to-consume-web-service.md)
+* [Een Azure Machine Learning-model gebruiken dat als een webservice is geïmplementeerd](how-to-consume-web-service.md)
 * [Uw Azure Machine Learning modellen bewaken met Application Insights](how-to-enable-app-insights.md)
 * [Gegevens verzamelen voor modellen in productie](how-to-enable-data-collection.md)
 * [Gebeurtenis waarschuwingen en triggers maken voor model implementaties](how-to-use-event-grid.md)

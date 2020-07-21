@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 03/30/2020
-ms.openlocfilehash: ca6e9a66d6c4daa4706813f945850b51505adeca
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 9ee433f226b37c8ffd6ad466cca7cbd844d53524
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133441"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86535974"
 ---
 # <a name="customer-leads-from-your-commercial-marketplace-offer"></a>Leads van klanten van uw aanbieding voor commerciële Marketplace
 
@@ -106,7 +106,7 @@ Het antwoord is afhankelijk van het type aanbieding dat u publiceert. Software a
 
 ### <a name="how-can-i-find-the-test-lead"></a>Hoe kan ik de test lead vinden?
 
-Zoek naar `"MSFT_TEST"` de doel locatie van de lead. Hier volgt een voor beeld van een test lead van micro soft:
+Zoek naar `"MSFT_TEST"` de doel locatie van de lead. Hieronder vindt u een voor beeld van een test lead van micro soft. Houd er rekening mee dat de indeling van de leider van de test afhankelijk is van de doel locatie van de lead.
 
 ```
 {

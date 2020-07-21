@@ -4,18 +4,20 @@ description: API om de huidige status van de aanbieding op te halen.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 04/08/2020
-ms.openlocfilehash: 897c2517c3836e1c3940db02efae0e5d94667a65
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 5652e7b6123a9836c574059e83101a073eea56ea
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114071"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86535872"
 ---
 # <a name="retrieve-offer-status"></a>Aanbiedingsstatus ophalen
 
 > [!NOTE]
-> De Cloud Partner-portal-Api's zijn geïntegreerd met partner centrum en blijven werken nadat uw aanbiedingen zijn gemigreerd naar het partner centrum. De integratie introduceert kleine wijzigingen. Bekijk de wijzigingen die worden vermeld in [Cloud Partner-Portal API-referentie](./cloud-partner-portal-api-overview.md) om ervoor te zorgen dat uw code blijft werken na de migratie naar het partner centrum.
+> De Cloud Partner-portal-Api's zijn geïntegreerd in en blijven werken in het partner centrum. De overgang introduceert kleine wijzigingen. Controleer de wijzigingen die worden vermeld in [Cloud Partner-Portal API-referentie](./cloud-partner-portal-api-overview.md) om ervoor te zorgen dat uw code blijft werken na het overstappen naar het partner centrum. CCP-Api's mogen alleen worden gebruikt voor bestaande producten die al zijn geïntegreerd vóór de overgang naar het partner centrum. nieuwe producten moeten de indienings-Api's van partner Center gebruiken.
 
 Hiermee wordt de huidige status van de aanbieding opgehaald.
 
@@ -23,18 +25,17 @@ Hiermee wordt de huidige status van de aanbieding opgehaald.
 
 ## <a name="uri-parameters"></a>URI-para meters
 
-|  **Naam**       |   **Beschrijving**                            |  **Gegevenstype** |
+|  **Naam**       |   **Beschrijving**                            |  **Gegevens type** |
 |  -------------  |  ------------------------------------------  |  ------------  |
 |  publisherId    | Uitgevers-id, bijvoorbeeld`Contoso`  |     Tekenreeks     |
 |  offerId        | GUID die de aanbieding uniek identificeert      |     Tekenreeks     |
 |  api-versie    | Nieuwste versie van API                        |     Datum       |
 |  |  |
 
+## <a name="header"></a>Header
 
-## <a name="header"></a>Koptekst
 
-
-|  Name           |  Waarde               |
+|  Naam           |  Waarde               |
 |  -------------  | -------------------  |
 |  Content-Type   |  `application/json`  |
 |  Autorisatie  | `Bearer YOUR_TOKEN`  |
@@ -42,8 +43,7 @@ Hiermee wordt de huidige status van de aanbieding opgehaald.
 
 ## <a name="body-example"></a>Voor beeld van tekst
 
-
-### <a name="response"></a>Antwoord
+### <a name="response"></a>Reactie
 
 ``` json
   {
@@ -116,7 +116,6 @@ Hiermee wordt de huidige status van de aanbieding opgehaald.
   }
 ```
 
-
 ### <a name="response-body-properties"></a>Eigenschappen van antwoord tekst
 
 |  **Naam**             |    **Beschrijving**                                                                             |
@@ -152,7 +151,7 @@ Hiermee wordt de huidige status van de aanbieding opgehaald.
 |  NeverPublished              | De aanbieding is nooit gepubliceerd.                          |
 |  NotStarted                  | De aanbieding is nieuw en niet gestart.                            |
 |  WaitingForPublisherReview   | Aanbieding wacht op goed keuring van de uitgever.                 |
-|  In uitvoering                     | Verzen ding van aanbieding wordt verwerkt.                     |
+|  Wordt uitgevoerd                     | Verzen ding van aanbieding wordt verwerkt.                     |
 |  Geslaagd                   | Het verzenden van aanbiedingen is voltooid.               |
 |  Geannuleerd                    | Het verzenden van het aanbod is geannuleerd.                           |
 |  Mislukt                      | Kan de aanbieding niet verzenden.                                 |

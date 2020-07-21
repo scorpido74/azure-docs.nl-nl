@@ -14,12 +14,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 71d55471de6fc8681f19a56cd67bb9ba7390e026
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0f5bc9827919c18e327dc263384f0d4b6a01c5bc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85248799"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530166"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-users-using-azure-notification-hubs"></a>Zelf studie: Push meldingen verzenden naar specifieke gebruikers met behulp van Azure Notification Hubs
 
@@ -41,7 +41,7 @@ In deze zelfstudie voert u de volgende stappen uit:
 ## <a name="prerequisites"></a>Vereisten
 
 In deze zelf studie wordt ervan uitgegaan dat u uw notification hub hebt gemaakt en geconfigureerd, zoals wordt beschreven in [Push meldingen verzenden naar IOS-apps met behulp van Azure notification hubs](ios-sdk-get-started.md). Deze zelf studie is ook de vereiste voor de zelf studie voor [beveiligd pushen (Ios)](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md) .
-Als u Mobile Apps wilt gebruiken als uw back-end-service, raadpleegt u de [Mobile apps aan de slag met push](../app-service-mobile/app-service-mobile-ios-get-started-push.md).
+Als u Mobile Apps wilt gebruiken als uw back-end-service, raadpleegt u de [Mobile apps aan de slag met push](/previous-versions/azure/app-service-mobile/app-service-mobile-ios-get-started-push).
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 

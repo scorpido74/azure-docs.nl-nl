@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 9da629929ca88f406dc503710477104be94c47e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8ae4b984d0ce66dec2a32b3431301ed97fe2c3fd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71212203"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530131"
 ---
 # <a name="azure-notification-hubs-rich-push"></a>Azure Notification Hubs Rich push
 
@@ -31,7 +31,7 @@ Als u gebruikers wilt voorzien van een directe inhoud, kan een toepassing niet a
 
 Deze zelf studie is compatibel met iOS 7 & 8.
 
-  ![][IOS1]
+  ![Drie scherm afbeeldingen: een app-scherm met de knop push verzenden, een start scherm op een apparaat en een Windows-logo met een knop terug.][IOS1]
 
 Op hoog niveau:
 
@@ -49,7 +49,7 @@ Op hoog niveau:
 3. Klik op **alle bestanden weer geven** in de Solution Explorer en klik met de rechter muisknop op de map die u **in project wilt invoegen**.
 4. Als de afbeelding is geselecteerd, wijzigt u de opbouw actie in venster Eigenschappen in de **Inge sloten resource**.
 
-    ![][IOS2]
+    ![Scherm opname van Solution Explorer. Het afbeeldings bestand is geselecteerd en in het deel venster met eigenschappen is de Inge sloten resource vermeld als de actie maken.][IOS2]
 5. Voeg in `Notifications.cs` de volgende using-instructie toe:
 
     ```csharp
@@ -137,7 +137,7 @@ Op hoog niveau:
     }
     ```
 8. Nu gaan we deze app opnieuw implementeren op een Azure-website om deze toegankelijk te maken vanaf alle apparaten. Klik met de rechtermuisknop op het project **AppBackend** en selecteer **Publiceren**.
-9. Selecteer de Azure-website als uw publicatie doel. Meld u aan met uw Azure-account en selecteer een bestaande of nieuwe website en noteer de eigenschap **doel-URL** op het tabblad **verbinding** . Verderop in deze zelf studie wordt naar deze URL verwezen als *back-end-eind punt* . Klik op **Publish**.
+9. Selecteer de Azure-website als uw publicatie doel. Meld u aan met uw Azure-account en selecteer een bestaande of nieuwe website en noteer de eigenschap **doel-URL** op het tabblad **verbinding** . Verderop in deze zelf studie wordt naar deze URL verwezen als *back-end-eind punt* . Klik op **Publiceren**.
 
 ## <a name="modify-the-ios-project"></a>Het iOS-project wijzigen
 
@@ -146,12 +146,12 @@ Nu u de back-end van uw app hebt gewijzigd om alleen de *id* van een melding te 
 1. Open uw iOS-project en Schakel externe meldingen in door naar uw hoofd doel van de app in de sectie **doelen** te gaan.
 2. Klik op **mogelijkheden**, Schakel **achtergrond modi**in en schakel het selectie vakje **externe meldingen** in.
 
-    ![][IOS3]
+    ![Scherm afbeelding van het iOS-project waarin het scherm mogelijkheden wordt weer gegeven. De achtergrond modi zijn ingeschakeld en het selectie vakje externe meldingen is ingeschakeld.][IOS3]
 3. Open `Main.storyboard` , en zorg ervoor dat u een weergave controller (Home view-controller in deze zelf studie genoemd) hebt, van de gebruiker zelf studie [waarschuwen](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) .
 4. Voeg een **Navigatie controller** toe aan het Story Board en houd Control ingedrukt en sleep naar de besturing van de start weergave om de **hoofd weergave** van de navigatie te maken. Zorg ervoor dat de controller van de **eerste weer gave** in kenmerken controle alleen is geselecteerd voor de navigatie controller.
 5. Een **weergave controller** toevoegen aan het Story Board en een **afbeeldings weergave**toevoegen. Dit is de pagina die gebruikers te zien krijgen wanneer ze kiezen om meer te weten te komen door te klikken op de melding. Het Story Board moet er als volgt uitzien:
 
-    ![][IOS4]
+    ![Scherm afbeelding van een Story Board. Er zijn drie app-schermen zichtbaar: een navigatie weergave, een start weergave en een afbeeldings weergave.][IOS4]
 6. Klik op de **besturing van de start weergave** in het Story Board en zorg ervoor dat deze **HomeViewController** als **aangepaste klasse** en **Story Board-id** onder de identiteits controle heeft.
 7. Doe hetzelfde voor de afbeeldings weergave controller als **imageViewController**.
 8. Maak vervolgens een nieuwe weergave controller klasse met de naam **imageViewController** om de gebruikers interface die u zojuist hebt gemaakt, te verwerken.

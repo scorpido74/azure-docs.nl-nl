@@ -14,12 +14,12 @@ ms.date: 03/18/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 06/19/2019
-ms.openlocfilehash: aaaaedbd6d2262f632bd47aa6eefb4cc83ab1abd
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: a605a11b1effd5d272dc8123f7e9c5c44262a3e8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223955"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530199"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>Aan de slag met Azure Notification Hubs die gebruikmaken van Baidu
 
@@ -424,10 +424,10 @@ In deze zelfstudie wordt voor het gemak een console-app gebruikt om te laten zie
 
 Hier zijn verschillende methoden om meldingen te verzenden:
 
-* **REST-interface**: u kunt meldingen op elk back-endplatform ondersteunen met de [REST-interface](https://msdn.microsoft.com/library/windowsazure/dn223264.aspx).
+* **REST-interface**: u kunt meldingen op elk back-endplatform ondersteunen met de [REST-interface](/previous-versions/azure/reference/dn223264(v=azure.100)).
 * **Microsoft Azure Notification Hubs .NET SDK**: in NuGet Package Manager voor Visual Studio voert u [Install-Package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) uit.
 * **Node.js**: [Notification hubs van Node.jsgebruiken ](notification-hubs-nodejs-push-notification-tutorial.md).
-* **Mobile Apps**: zie [Pushmeldingen toevoegen voor mobiele apps](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md) voor een voorbeeld van hoe u meldingen verzendt vanuit een Azure App Service Mobile Apps-backend die is geïntegreerd met Notification Hubs.
+* **Mobile Apps**: zie [Pushmeldingen toevoegen voor mobiele apps](/previous-versions/azure/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push) voor een voorbeeld van hoe u meldingen verzendt vanuit een Azure App Service Mobile Apps-backend die is geïntegreerd met Notification Hubs.
 * **Java/PHP**: zie 'Notification Hubs gebruiken vanuit Java/PHP' voor een voorbeeld van hoe u meldingen verzendt met de REST API's ([Java](notification-hubs-java-push-notification-tutorial.md) | [PHP](notification-hubs-php-push-notification-tutorial.md)).
 
 ## <a name="optional-send-notifications-from-a-net-console-app"></a>(Optioneel) Meldingen verzenden vanuit een .NET-console-app

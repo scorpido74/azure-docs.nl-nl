@@ -9,11 +9,12 @@ ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: 711071e08a52a0075512bc8b3ffe14707238cdfe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a08b59464855b805173fa76d696107f8a7673d39
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77209293"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529560"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>Uw Azure Cognitive Search-service beheren met Power shell
 > [!div class="op_single_selector"]
@@ -251,7 +252,7 @@ Id                : /subscriptions/65a1016d-0f67-45d2-b838-b8f373d6d52e/resource
 
 Bouw een [index](search-what-is-an-index.md), [Zoek een query op een index](search-query-overview.md) met behulp van de portal, rest-API'S of de .NET SDK.
 
-* [Een Azure Cognitive Search-index maken in de Azure Portal](search-create-index-portal.md)
+* [Een Azure Cognitive Search-index maken in de Azure Portal](search-get-started-portal.md)
 * [Een Indexeer functie instellen voor het laden van gegevens uit andere services](search-indexer-overview.md)
 * [Query's uitvoeren op een Azure Cognitive Search-index met behulp van Search Explorer in de Azure Portal](search-explorer.md)
 * [Azure Cognitive Search gebruiken in .NET](search-howto-dotnet-sdk.md)

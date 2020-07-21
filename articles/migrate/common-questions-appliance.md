@@ -3,11 +3,12 @@ title: Veelgestelde vragen over Azure Migrate apparaat
 description: Krijg antwoorden op veelgestelde vragen over het Azure Migrate-apparaat.
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: afdede99fa4485ba7e5494e844d795c2d5d3deee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c3547667ed91331d3cb4d319279c9494eb7a3d2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078985"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530114"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate apparaat: veelgestelde vragen
 
@@ -60,7 +61,7 @@ Het apparaat moet toegang hebben tot Azure-Url's. [Controleer](migrate-appliance
 
 Raadpleeg de volgende artikelen voor informatie over gegevens die het Azure Migrate apparaat verzamelt op Vm's:
 
-- **VMware-VM**: [Controleer](migrate-appliance.md#collected-data---vmware) de verzamelde gegevens. [
+- **VMware-VM**: [Controleer](migrate-appliance.md#collected-data---vmware) de verzamelde gegevens.
 - **Hyper-V VM**: [Controleer](migrate-appliance.md#collected-data---hyper-v) de verzamelde gegevens.
 
 ## <a name="how-is-data-stored"></a>Hoe worden gegevens opgeslagen?

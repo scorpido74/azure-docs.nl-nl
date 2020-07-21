@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 05/13/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 8cfa7a7b251f2aa74230d8883a0335582387aa06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 749a2366438bd1abfef4ca0cf2a195f23529d6a5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85602513"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536297"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Hoe Azure Machine Learning werkt: architectuur en concepten
 
@@ -44,6 +44,10 @@ De werk stroom voor het machine learning model volgt doorgaans deze reeks:
 
 Gebruik deze hulpprogram ma's voor Azure Machine Learning:
 
+> [!IMPORTANT]
+> De hulpprogram ma's die zijn gemarkeerd (preview) zijn momenteel beschikbaar als open bare preview.
+> De preview-versie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+
 +  Communiceer met de service in een python-omgeving met de [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
 + Communiceer met de service in een wille keurige R-omgeving met de [Azure machine learning SDK voor R](https://azure.github.io/azureml-sdk-for-r/reference/index.html) (preview).
 + Automatiseer uw machine learning activiteiten met de [Azure machine learning cli](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli).
@@ -60,16 +64,16 @@ Gebruik deze hulpprogram ma's voor Azure Machine Learning:
     * [Experimenten](#experiments)
         * [Uitvoeren](#runs) 
             * [Configuratie uitvoeren](#run-configurations)
-            * [Snapshot](#snapshots)
+            * [Momentopname](#snapshots)
             * [Git-tracking](#github-tracking-and-integration)
-            * [Userenv](#logging)
+            * [Logboekregistratie](#logging)
     * [Machine learning-pijplijnen](#ml-pipelines)
     * [Modellen](#models)
         * [Omgevingen](#environments)
         * [Trainings script](#training-scripts)
         * [Schattingen](#estimators)
-    * [Eind punten](#endpoints)
-        * [-Webservice](#web-service-endpoint)
+    * [Eindpunten](#endpoints)
+        * [Webservice](#web-service-endpoint)
         * [IoT-modules](#iot-module-endpoints)
     * [Gegevensset & gegevens opslag](#datasets-and-datastores)
     * [Rekendoelen](#compute-targets)

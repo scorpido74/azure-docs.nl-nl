@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 7/29/2019
 ms.author: mayg
-ms.openlocfilehash: b03ac554ed578633b55ffa2fde4838c691d04d59
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: d7ee72b5f6441f2b3b3ea9a7eaa41a3e1b650745
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132202"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528958"
 ---
 # <a name="review-cost-estimations-in-the-vmware-deployment-planner"></a>Kosten ramingen controleren in VMware Deployment Planner 
 
@@ -104,7 +104,7 @@ Handmatig VM's toevoegen:
 * VM-totale opslag grootte (GB) van de bron machine
 * Het aantal DR-oefeningen in een jaar 
 * De duur van elke DR-oefening (dagen) 
-* Het type besturingssysteem
+* Type besturingssysteem
 * De gegevensredundantie 
 * Azure Hybrid Benefit
 
@@ -150,16 +150,16 @@ eastus, eastus2, westus, centralus, northcentralus, southcentralus, northeurope,
 ## <a name="supported-currencies"></a>Ondersteunde valuta's
 Met Azure Site Recovery Deployment Planner kunt u het kostenrapport genereren met een van de volgende valuta's.
 
-|Valuta|Name||Valuta|Name||Valuta|Name|
+|Valuta|Naam|Valuta|Naam|Valuta|Naam|
 |---|---|---|---|---|---|---|---|
-|ARS|Argentijnse peso ($)||AUD|Australische dollar ($)||BRL|Braziliaanse real (R$)|
-|CAD|Canadese dollar ($)||CHF|Zwitserse frank. (chf)||DKK|Deense kroon (kr)|
-|EUR|Euro (€)||GBP|Brits pond (£)||HKD|Hongkongse dollar (HK$)|
-|IDR|Indonesische roepia (Rp)||INR|Indiase roepie (₹)||JPY|Japanse yen (¥)|
-|KRW|Koreaanse won (₩)||MXN|Mexicaanse peso (MX$)||MYR|Maleisische ringgit (RM$)|
-|NOK|Noorse kroon (kr)||NZD|Nieuw-Zeelandse dollar ($)||RUB|Russische roebel (руб)|
-|SAR|Saudische riyal (SR)||SEK|Zweedse kroon (kr)||TWD|Taiwanese dollar (NT$)|
-|TRY|Turkse lira (TL)||USD| Amerikaanse dollar ($)||ZAR|Zuid-Afrikaanse rand (R)|
+|ARS|Argentijnse peso ($)|AUD|Australische dollar ($)|BRL|Braziliaanse real (R$)|
+|CAD|Canadese dollar ($)|CHF|Zwitserse frank. (chf)|DKK|Deense kroon (kr)|
+|EUR|Euro (€)|GBP|Brits pond (£)|HKD|Hongkongse dollar (HK$)|
+|IDR|Indonesische roepia (Rp)|INR|Indiase roepie (₹)|JPY|Japanse yen (¥)|
+|KRW|Koreaanse won (₩)|MXN|Mexicaanse peso (MX$)|MYR|Maleisische ringgit (RM$)|
+|NOK|Noorse kroon (kr)|NZD|Nieuw-Zeelandse dollar ($)|RUB|Russische roebel (руб)|
+|SAR|Saudische riyal (SR)|SEK|Zweedse kroon (kr)|TWD|Taiwanese dollar (NT$)|
+|TRY|Turkse lira (TL)|USD| Amerikaanse dollar ($)|ZAR|Zuid-Afrikaanse rand (R)|
 
 ## <a name="next-steps"></a>Volgende stappen
 Meer informatie over het beveiligen van [VMware-VM's naar Azure met Azure Site Recovery](./vmware-azure-tutorial.md).

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 6911f769b95967aac933dd9762263e7506aef4b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3db9811322d27ab287fa568eeeffcb5f4d57bdf7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77192714"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530165"
 ---
 ## <a name="create-the-webapi-project"></a>Het WebAPI-project maken
 
@@ -30,7 +30,7 @@ Maak de nieuwe ASP.NET WebAPI-back-end door de volgende acties uit te voeren:
 >
 >Start Visual Studio om dit te controleren. Selecteer in het menu **extra** de optie **extensies en updates**. Zoek naar **NuGet Package Manager** in uw versie van Visual Studio en controleer of u de meest recente versie hebt. Als uw versie niet de nieuwste versie is, verwijdert u deze en installeert u NuGet Package Manager.
 
-![][B4]
+![Scherm afbeelding van het dialoog venster extensies en updates met het pakket NuGet pakket beheren voor Visual Studios package gemarkeerd.][B4]
 
 > [!NOTE]
 > Controleer of u de Visual Studio [Azure SDK](https://azure.microsoft.com/downloads/) voor website-implementatie hebt geïnstalleerd.

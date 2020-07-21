@@ -5,14 +5,14 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 0ee44ae12ba0f7f4d91de12ff2fa0730f8831b61
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a7b1c1b3fc3196557b862c488ee01af8b8e1f04f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261161"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529247"
 ---
-# <a name="monitoring-and-diagnostics"></a>Controle en diagnose
+# <a name="monitoring-and-diagnostic-best-practices-for-azure-service-fabric"></a>Aanbevolen procedures voor het bewaken en diagnosticeren voor Azure Service Fabric
 
 [Bewaking en diagnose](./service-fabric-diagnostics-overview.md) zijn essentieel voor het ontwikkelen, testen en implementeren van werk belastingen in elke cloud omgeving. U kunt bijvoorbeeld bijhouden hoe uw toepassingen worden gebruikt, de acties die worden uitgevoerd door het Service Fabric platform, het resource gebruik met prestatie meter items en de algehele status van uw cluster. U kunt deze informatie gebruiken om problemen vast te stellen en te verhelpen en te voor komen dat ze in de toekomst optreden.
 

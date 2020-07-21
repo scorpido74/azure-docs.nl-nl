@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: 1a522193e9e704dce967daeeef70f82a6c0b1378
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 723329022d748ee18a07fcaeaecc2aff0e5f707b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135730"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528975"
 ---
 # <a name="enable-zone-to-zone-disaster-recovery-for-azure-virtual-machines"></a>Zone inschakelen voor herstel na nood geval voor Azure virtual machines
 
@@ -22,6 +22,7 @@ In dit artikel wordt beschreven hoe u virtuele Azure-machines kunt repliceren, f
 >
 >- Site Recovery biedt momenteel geen ondersteuning voor herstel plannen voor zone-naar zone herstel na nood gevallen via de portal. Gebruik Power shell of REST API om herstel plannen te gebruiken voor zones voor herstel na nood gevallen. 
 >- Ondersteuning voor zone-naar-zone herstel na nood gevallen is momenteel beperkt tot twee regio's: Zuidoost-Azië en UK-zuid.  
+>- Site Recovery verplaatst of slaat klant gegevens niet uit de regio waarin deze wordt geïmplementeerd wanneer de klant gebruikmaakt van zone om herstel na nood gevallen van een zone te maken. Klanten kunnen een Recovery Services kluis uit een andere regio selecteren als ze dat doen. De Recovery Services kluis bevat meta gegevens, maar geen werkelijke klant gegevens.
 
 Site Recovery-service draagt bij aan uw strategie voor bedrijfs continuïteit en herstel na nood gevallen door uw zakelijke apps tijdens geplande en ongeplande uitval te laten werken. Het is de aanbevolen optie voor nood herstel om ervoor te zorgen dat uw toepassingen actief blijven als er regionale storingen optreden.
 
@@ -71,7 +72,7 @@ Voordat u de zone implementeert naar zone herstel na nood gevallen voor uw virtu
 |ARM-Vm's    |    Ondersteund    |
 |Azure Disk Encryption v1 (dubbele Pass, met AAD)     |     Ondersteund |
 |Azure Disk Encryption v2 (eenmalige Pass, zonder AAD)    |    Ondersteund    |
-|Niet-beheerde schijven    |    Niet ondersteund    |
+|Onbeheerde schijven    |    Niet ondersteund    |
 |Managed Disks    |    Ondersteund    |
 |Door klant beheerde sleutels    |    Ondersteund    |
 |Nabijheidsplaatsingsgroepen    |    Ondersteund    |
@@ -88,7 +89,7 @@ Meld u aan bij de Azure Portal.
 
 1. Selecteer virtuele machines in het menu Azure Portal of zoek en selecteer virtuele machines op een wille keurige pagina. Selecteer de virtuele machine die u wilt repliceren. Voor een zone-naar-zone-herstel na nood gevallen moet deze virtuele machine zich al in een beschikbaarheids zone bevinden.
 
-2. Selecteer in Bewerkingen de optie Herstel na noodgeval.
+2. In bewerkingen selecteert u herstel na nood gevallen.
 
 3. Zoals hieronder wordt weer gegeven, selecteert u op het tabblad basis beginselen ja voor herstel na nood geval tussen Beschikbaarheidszones?
 

@@ -5,34 +5,30 @@ author: sunasing
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: sunasing
-ms.openlocfilehash: 7666ee1a81c2ed93ee5e246b3ec79f056f9d63ab
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 51a25b66968f43facddb9187a6793b2e39e0fdbd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187775"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536620"
 ---
 # <a name="get-weather-data-from-weather-partners"></a>Weer gegevens ophalen van weer partners
 
-Met Azure FarmBeats kunt u weer gegevens ophalen van uw weer gegevens provider (s) met behulp van een Connector-Framework op basis van docker. Met behulp van dit framework implementeren weer gegevens providers een docker die kan worden geïntegreerd met FarmBeats. Momenteel worden de volgende gegevens providers ondersteund:
+Met Azure FarmBeats kunt u weer gegevens van uw weer gegevens providers halen met behulp van een connector raamwerk op basis van docker. Met behulp van dit framework implementeren weer gegevens providers een docker die kan worden geïntegreerd met FarmBeats. Op dit moment wordt alleen de [DTN](https://www.dtn.com/dtn-content-integration/) weer gegeven-gegevens provider ondersteund.
 
-  ![DTN](./media/get-sensor-data-from-sensor-partner/dtn-logo.png)
-
-  [DTN](https://www.dtn.com/dtn-content-integration/)
-
-De weer gegevens kunnen worden gebruikt voor het genereren van met actie bruikbare inzichten en het bouwen van AI/ML-modellen op FarmBeats.
+De weer gegevens kunnen worden gebruikt voor het genereren van met actie bare inzichten en het bouwen van AI-of ML-modellen in FarmBeats.
 
 ## <a name="before-you-start"></a>Voordat u begint
 
-Zorg ervoor dat u FarmBeats hebt geïnstalleerd om weer gegevens op te halen. De **weers integratie wordt ondersteund in versie 1.2.11 of hoger**. Zie [install FarmBeats](https://aka.ms/farmbeatsinstalldocumentation)om Azure FarmBeats te installeren.
+Zorg ervoor dat u [FarmBeats hebt geïnstalleerd](https://aka.ms/farmbeatsinstalldocumentation)om weer gegevens op te halen. De weers integratie wordt ondersteund in versies 1.2.11 en hoger. 
 
 ## <a name="enable-weather-integration-with-farmbeats"></a>Weers integratie met FarmBeats inschakelen
 
-Volg de onderstaande stappen om te beginnen met het ophalen van weer gegevens op uw FarmBeats data hub:
+Als u wilt beginnen met het ophalen van weer gegevens op uw FarmBeats-Datahub:
 
-1. Ga naar uw FarmBeats data hub Swagger (https://farmbeatswebsite-api.azurewebsites.net/swagger)
+1. Ga naar uw FarmBeats Datahub [Swagger](https://farmbeatswebsite-api.azurewebsites.net/swagger).
 
-2. Ga naar/partner API en maak een POST-aanvraag met de volgende invoer lading:
+2. Ga naar de/partner-API en maak een POST-aanvraag. Gebruik de volgende invoer lading:
 
    ```json
    {  
@@ -61,10 +57,10 @@ Volg de onderstaande stappen om te beginnen met het ophalen van weer gegevens op
    }  
    ```
 
-   Als u bijvoorbeeld weer gegevens wilt ophalen uit DTN, gebruikt u de onderstaande nettolading. U kunt de naam en beschrijving aanpassen volgens uw voor keur.
+   Gebruik bijvoorbeeld de volgende Payload om weer gegevens van DTN op te halen. U kunt de naam en beschrijving wijzigen op basis van uw voor keur.
 
    > [!NOTE]
-   > Voor de onderstaande stap is een API-sleutel vereist. Neem contact op met DTN om hetzelfde te krijgen voor uw DTN-abonnement.
+   > Voor de volgende stap is een API-sleutel vereist. Als u een sleutel voor uw DTN-abonnement wilt ophalen, neemt u contact op met DTN.
 
    ```json
    {
@@ -88,28 +84,28 @@ Volg de onderstaande stappen om te beginnen met het ophalen van weer gegevens op
    ```
 
    > [!NOTE]
-   > Zie voor meer informatie over het partner object [bijlage](get-weather-data-from-weather-partner.md#appendix)
+   > Zie de [bijlage](get-weather-data-from-weather-partner.md#appendix) in dit artikel voor meer informatie over het partner object.
 
    In de voor gaande stap worden de resources ingericht zodat docker kan worden uitgevoerd in de FarmBeats omgeving van de klant.  
 
-   Het duurt ongeveer 10-15 minuten om de bovenstaande bronnen in te richten.
+   Het duurt ongeveer 10 tot 15 minuten om de resources in te richten.
 
-3. Controleer de status van het/partner-object dat u hebt gemaakt in stap 2. Als u dit wilt doen, maakt u een GET-aanvraag op de/partner-API en controleert u op de **status** van het partner object. Zodra FarmBeats de partner met succes heeft ingericht, wordt de status ingesteld op **actief**.
+3. Controleer de status van het/partner-object dat u in de vorige stap hebt gemaakt. Als u de status wilt controleren, maakt u een GET-aanvraag in de/partner-API en controleert u de status van het partner object. Nadat FarmBeats de partner met succes heeft ingericht, wordt de status ingesteld op **actief**.
 
-4. Navigeer naar/JobType-API en maak een GET-aanvraag op dezelfde. Controleer op de weers taken die zijn gemaakt als onderdeel van het proces voor het toevoegen van partners in stap 2. Het veld **pipelineName** in de weers-taken heeft de volgende indeling: ' partner-name_partner-type_job-name '.
+4. Maak een GET-aanvraag in de/JobType-API. Controleer op de weers taken die u eerder hebt gemaakt, in het proces voor het toevoegen van partners. In de weers-taken heeft het veld **pipelineName** de volgende indeling: **partner-name_partner-type_job-naam**.
 
-5. Uw FarmBeats-instantie heeft nu een actieve weer gegevens partner en u kunt taken uitvoeren om weer gegevens voor een bepaalde locatie (breedte graad/lengte graad) en een datum bereik op te vragen. De taak type (s) bevatten details over welke para meters zijn vereist voor het uitvoeren van weer taken.
+      Uw FarmBeats-instantie heeft nu een actieve weer gegevens partner. U kunt taken uitvoeren om weer gegevens voor een bepaalde locatie (breedte graad en lengte graad) en een datum bereik op te vragen. De taak typen bevatten details over welke para meters zijn vereist voor het uitvoeren van weer taken.
 
-   Voor DTN worden bijvoorbeeld de volgende taak type (s) gemaakt:
+      Voor DTN worden bijvoorbeeld de volgende taak typen gemaakt:
    
-   - get_dtn_daily_observations (dagelijkse waarnemingen voor een locatie en een tijds periode ophalen)
-   - get_dtn_daily_forecasts (dagelijkse prognoses voor een locatie en een periode ophalen)
-   - get_dtn_hourly_observations (per uur waarnemingen voor een locatie en een periode ophalen)
-   - get_dtn_hourly_forecasts (uurprognoses voor een locatie en een periode ophalen)
+      - **get_dtn_daily_observations**: dagelijks waarnemingen voor een locatie en tijds periode ophalen.
+      - **get_dtn_daily_forecasts**: dagelijkse prognoses voor een locatie en een tijds periode ophalen.
+      - **get_dtn_hourly_observations**: er worden waarnemingen per uur opgehaald voor een locatie en tijds periode.
+      - **get_dtn_hourly_forecasts**: Ontvang uurprognoses voor een locatie en een periode.
 
-6. Noteer de **id** en de para meters van de taak type (s).
+6. Noteer de ID en de para meters van de taak typen.
 
-7. Ga naar/Jobs API en maak een POST-aanvraag op/Jobs met de volgende invoer lading:
+7. Ga naar de/Jobs-API en maak een POST-aanvraag op/jobs. Gebruik de volgende invoer lading:
 
    ```json
     {
@@ -141,19 +137,17 @@ Volg de onderstaande stappen om te beginnen met het ophalen van weer gegevens op
    }
    ```
 
-8. In de voor gaande stap worden de weer taken uitgevoerd zoals gedefinieerd in de partner-docker en weer gegevens opnemen in FarmBeats. U kunt de status van de taak controleren door een GET-aanvraag op/jobs te maken en te zoeken naar **currentState** in het antwoord. Zodra het proces is voltooid, wordt de currentState ingesteld op **geslaagd**.
+8. In de voor gaande stap worden de weer taken uitgevoerd zoals gedefinieerd in de partner docker en worden er weer gegevens opgenomen in FarmBeats. U kunt de status van de taak controleren door een GET-aanvraag in te stellen op/jobs. Zoek naar **currentState**in het antwoord. Wanneer u klaar bent, wordt **currentState** ingesteld op **geslaagd**.
 
 ## <a name="query-ingested-weather-data"></a>Query's opgenomen weer gegeven gegevens
 
 Nadat de weers taken zijn voltooid, kunt u een query uitvoeren op opgenomen weer gegevens om modellen of met actie bare inzichten te maken met behulp van FarmBeats Datahub REST-Api's.
 
-### <a name="query-using-rest-api"></a>Query's uitvoeren met REST API
+Om weer gegevens op te vragen met behulp van een FarmBeats REST API:
 
-Volg de onderstaande stappen om de weers gegevens op te vragen met behulp van FarmBeats REST API:
+1. In uw FarmBeats Datahub [Swagger](https://yourdatahub.azurewebsites.net/swagger)gaat u naar de/WEATHERDATALOCATION-API en maakt u een GET-aanvraag. Het antwoord bevat/WeatherDataLocation-objecten die zijn gemaakt voor de locatie (breedte graad en lengte graad) die de taak heeft opgegeven. Noteer de **id** en de **weatherDataModelId** van de objecten.
 
-1. Ga in uw FarmBeats data hub Swagger (naar https://yourdatahub.azurewebsites.net/swagger) /WEATHERDATALOCATION API en maak een GET-aanvraag. Het antwoord heeft een of meer/WeatherDataLocation-objecten gemaakt voor de locatie (breedte graad/lengte graad) die is opgegeven als onderdeel van de taak uitvoering. Noteer de **id** en de **weatherDataModelId** van de object (en).
-
-2. Maak een GET/{id} op de/WeatherDataModel-API voor de **weatherDataModelId** zoals vermeld in stap 1. Het ' weer gegeven gegevens model ' bevat alle meta gegevens en Details over de opgenomen weers gegevens. Voor beeld: de **weers meting** in het object **weer gegeven gegevens model** bevat details over welke informatie wordt ondersteund en in welke typen en eenheden. Bijvoorbeeld:
+2. Maak een GET/{id}-aanvraag voor de/WeatherDataModel-API voor de **weatherDataModelId** zoals u dat eerder hebt gedaan. Het weer gegeven gegevens model toont alle meta gegevens en Details over de opgenomen weer gegevens. In het object weer gegeven gegevens model ziet u bijvoorbeeld hoe de weers informatie wordt ondersteund en in welke typen en eenheden. Bijvoorbeeld:
 
    ```json
    {
@@ -168,7 +162,7 @@ Volg de onderstaande stappen om de weers gegevens op te vragen met behulp van Fa
 
    Noteer de reactie van de aanroep GET/{id} voor het weer gegevens model.
 
-3. Navigeer naar **telemetrie** -API en maak een post-aanvraag met de volgende invoer lading:
+3. Ga naar de telemetrie-API en maak een POST-aanvraag. Gebruik de volgende invoer lading:
 
    ```json
    {
@@ -180,7 +174,7 @@ Volg de onderstaande stappen om de weers gegevens op te vragen met behulp van Fa
    }
    ```
 
-4. Het antwoord met weer gegevens dat voor het opgegeven tijds bereik beschikbaar is, ziet er als volgt uit:
+    Het antwoord toont de weer gegevens die beschikbaar zijn voor het opgegeven tijds bereik:
 
    ```json
    {
@@ -209,28 +203,28 @@ Volg de onderstaande stappen om de weers gegevens op te vragen met behulp van Fa
    }
    ```
 
-In het vorige voor beeld bevat het antwoord gegevens voor twee tijds tempels, samen met de naam van de meting (' Tempe ratuur ') en waarden van de gerapporteerde weers gegevens in de twee tijds tempels. U moet verwijzen naar het bijbehorende weer gegevens model (zoals beschreven in stap 2 hierboven) om het type en de eenheid van de gerapporteerde waarden te interpreteren.
+In het vorige voor beeld toont het antwoord gegevens voor twee tijds tempels. Het bevat ook de naam van de meting (Tempe ratuur) en de waarden van de gerapporteerde weer gegevens in de twee tijds tempels. Raadpleeg het bijbehorende weer gegevens model om het type en de eenheid van de gerapporteerde waarden te interpreteren.
 
 ## <a name="troubleshoot-job-failures"></a>Problemen met taak fouten oplossen
 
-U kunt controleren op de taak Logboeken om problemen met de taak op te lossen. Volg de [stappen die hier worden beschreven](troubleshoot-azure-farmbeats.md#weather-data-job-failures) .
+[Controleer de taak logboeken](troubleshoot-azure-farmbeats.md#weather-data-job-failures)om problemen met de taak op te lossen.
 
 
 ## <a name="appendix"></a>Bijlage
 
 |        Partner   |  Details   |
 | ------- | -------             |
-|     DockerDetails-afbeeldings         |          Naam van docker-installatie kopie. Bijvoorbeeld docker.io/mydockerimage (image in hub.docker.com) of myazureacr.azurecr.io/mydockerimage (afbeelding in Azure Container Registry), enzovoort. Als er geen REGI ster wordt gegeven, wordt de standaard hub.docker.com      |
-|          DockerDetails - imageTag             |         De label naam van de docker-installatie kopie. De standaard waarde is "meest recent"     |
-|  DockerDetails-referenties      |  Referenties voor toegang tot de privé-docker. Dit wordt door de partner aan de klant verschaft   |
-|  DockerDetails - azureBatchVMDetails - batchVMSKU     |    Azure Batch VM-SKU. [Hier](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ziet u alle beschik bare virtuele Linux-machines. Geldige waarden zijn: ' klein ', ' ExtraLarge ', ' large ', ' A8 ', ' A9 ', ' medium ', ' A5 ', ' A6 ', ' A7 ', ' STANDARD_D1 ', ' STANDARD_D2 ', ' STANDARD_D3 ', ' STANDARD_D4 ', ' STANDARD_D11 ', ' STANDARD_D12 ', ' STANDARD_D13 ', ' STANDARD_D14 ', ' A10 ', ' A11 ', ' STANDARD_D1_V2 ', ' STANDARD_D2_V2 ', ' STANDARD_D3_V2 ', ' STANDARD_D4_V2 ', ' STANDARD_D11_V2 ', ' STANDARD_D12_V2 ', ' STANDARD_D13_V2 ', ' STANDARD_D14_V2 ', ' STANDARD_G1 ', ' STANDARD_G2 ' , ' STANDARD_G5 ', ' STANDARD_D5_V2 ', ' BASIC_A1 ', ' BASIC_A2 ', ' BASIC_A3 ', ' BASIC_A4 ', ' STANDARD_A1 ', ' STANDARD_A2 ', ' STANDARD_A3 ', ' STANDARD_A4 ', ' STANDARD_A5 ', ' STANDARD_A6 ', ' STANDARD_A7 ', ' STANDARD_A8 ', ' STANDARD_A9 ', ' STANDARD_A10 ', ' STANDARD_A11 ', ' STANDARD_D15_V2 ', ' STANDARD_F1 ', ' STANDARD_F2 ', ' STANDARD_F4 ', ' STANDARD_F8 ', ' STANDARD_F16 ', ' STANDARD_NV6 ', ' STANDARD_NV12 ', ' STANDARD_NV24 ', ' STANDARD_NC6 ', ' STANDARD_NC12 ' , STANDARD_H8, STANDARD_H8m, STANDARD_H16, STANDARD_H16m, STANDARD_H16mr, STANDARD_H16r, STANDARD_A1_V2, STANDARD_A2_V2, STANDARD_A4_V2, STANDARD_A8_V2, STANDARD_A2m_V2, STANDARD_A4m_V2, STANDARD_A8m_V2, STANDARD_M64ms, STANDARD_M128s, STANDARD_D2_V3, is niet de enige die wordt door ', ', ', ', ', ', '. **De standaard waarde is standard_d2_v2**  |
-|    DockerDetails - azureBatchVMDetails - dedicatedComputerNodes   |  Nee. van toegewezen computer knooppunten voor batch-pool. De standaardwaarde is 1. |
-|    DockerDetails - azureBatchVMDetails - nodeAgentSKUID          |    SKU-ID van Azure Batch node-agent. Momenteel wordt alleen batch. node. Ubuntu 18,04-batch-knooppunt agent ondersteund.    |
-| DockerDetails - partnerCredentials | referenties voor het aanroepen van de partner-API in docker. De partner moet deze informatie aan hun klanten geven op basis van het verificatie mechanisme dat wordt ondersteund voor beeld. Gebruikers naam/wacht woord of API-sleutels. |
-| partnerType | "Weer" (andere partner typen in FarmBeats zijn "sensor" en "installatie kopie")  |
-|  naam   |   Gewenste naam van de partner in het FarmBeats-systeem   |
-|  beschrijving |  Beschrijving   |
+|     DockerDetails-afbeeldings         |          Naam van docker-installatie kopie. Bijvoorbeeld docker.io/mydockerimage (image in hub.docker.com) of myazureacr.azurecr.io/mydockerimage (afbeelding in Azure Container Registry), enzovoort. Als er geen REGI ster wordt gegeven, wordt de standaard hub.docker.com.      |
+|          DockerDetails - imageTag             |         De label naam van de docker-installatie kopie. De standaard waarde is "meest recent".     |
+|  DockerDetails-referenties      |  Referenties voor toegang tot de privé-docker. De partner biedt de referenties.   |
+|  DockerDetails - azureBatchVMDetails - batchVMSKU     |    Azure Batch VM-SKU. Zie [alle beschik bare virtuele Linux-machines](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)voor meer informatie. <BR> <BR> Geldige waarden zijn ' Small ', ' ExtraLarge ', ' large ', ' A8 ', ' A9 ', ' medium ', ' A5 ', ' A6 ', ' A7 ', ' STANDARD_D1 ', ' STANDARD_D2 ', ' STANDARD_D3 ', ' STANDARD_D4 ', ' STANDARD_D11 ', ' STANDARD_D12 ', ' STANDARD_D13 ', ' STANDARD_D14 ', ' A10 ', ' A11 ', ' STANDARD_D1_V2 ', ' STANDARD_D2_V2 ', ' STANDARD_D3_V2 ', ' STANDARD_D4_V2 ', ' STANDARD_D11_V2 ', ' STANDARD_D12_V2 ', ' STANDARD_D13_V2 ', ' STANDARD_D14_V2 ', ' STANDARD_G1 ', ' STANDARD_G2 ' , ' STANDARD_G5 ', ' STANDARD_D5_V2 ', ' BASIC_A1 ', ' BASIC_A2 ', ' BASIC_A3 ', ' BASIC_A4 ', ' STANDARD_A1 ', ' STANDARD_A2 ', ' STANDARD_A3 ', ' STANDARD_A4 ', ' STANDARD_A5 ', ' STANDARD_A6 ', ' STANDARD_A7 ', ' STANDARD_A8 ', ' STANDARD_A9 ', ' STANDARD_A10 ', ' STANDARD_A11 ', ' STANDARD_D15_V2 ', ' STANDARD_F1 ', ' STANDARD_F2 ', ' STANDARD_F4 ', ' STANDARD_F8 ', ' STANDARD_F16 ', ' STANDARD_NV6 ', ' STANDARD_NV12 ', ' STANDARD_NV24 ', ' STANDARD_NC6 ', ' STANDARD_NC12 ' , ' STANDARD_H8 ', ' STANDARD_H8m ', ' STANDARD_H16 ', ' STANDARD_H16m ', ' STANDARD_H16mr ', ' STANDARD_H16r ', ' STANDARD_A1_V2 ', ' STANDARD_A2_V2 ', ' STANDARD_A4_V2 ', ' STANDARD_A8_V2 ', ' STANDARD_A2m_V2 ', ' STANDARD_A4m_V2 ', ' STANDARD_A8m_V2 ' en ' STANDARD_M64ms '. *De standaard waarde is STANDARD_D2_V2.*  |
+|    DockerDetails - azureBatchVMDetails - dedicatedComputerNodes   |  Aantal toegewezen computer knooppunten per batch-pool. De standaardwaarde is 1. |
+|    DockerDetails - azureBatchVMDetails - nodeAgentSKUID          |    SKU-ID van Azure Batch node-agent. Op dit moment wordt alleen de batch-knooppunt agent batch. node. Ubuntu 18,04 ondersteund.    |
+| DockerDetails - partnerCredentials | Referenties voor het aanroepen van de partner-API in docker. De partner verstrekt deze informatie op basis van het ondersteunde autorisatie mechanisme; bijvoorbeeld gebruikers naam en wacht woord, of API-sleutels. |
+| partnerType | "Weer". Andere partner typen in FarmBeats zijn "sensor" en "installatie kopie".  |
+|  naam   |   Gewenste naam van de partner in het FarmBeats systeem.   |
+|  description |  Beschrijving   |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt nu sensor gegevens opgevraagd van uw Azure FarmBeats-exemplaar. Nu leert u hoe u [kaarten](generate-maps-in-azure-farmbeats.md#generate-maps) voor uw Farms kunt genereren.
+Nu u een query hebt uitgevoerd op sensor gegevens uit uw Azure FarmBeats-exemplaar, leert u hoe u kaarten voor uw Farms kunt [genereren](generate-maps-in-azure-farmbeats.md#generate-maps) .

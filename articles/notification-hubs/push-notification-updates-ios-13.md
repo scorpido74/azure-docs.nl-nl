@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: notification-hubs
 ms.reviewer: jowargo
 ms.lastreviewed: 10/16/2019
-ms.openlocfilehash: 697e8ba9c9f27e8d5644e3a78950ff006290efe7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34b3ea9f07475affca76c8a3ff71de61abcadde8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74228147"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529706"
 ---
 # <a name="azure-notification-hubs-updates-for-ios-13"></a>Updates voor Azure Notification Hubs voor iOS 13
 
@@ -57,7 +58,7 @@ request.Headers.Add("ServiceBusNotification-Format", "apple");
 request.Headers.Add("apns-push-type", "alert");
 ```
 
-Wanneer Azure Notification Hubs een melding detecteert die niet is `apns-push-type` ingesteld, wordt door de service het push-type van de meldings aanvraag afgezet en wordt de waarde automatisch ingesteld, om u tijdens deze overgang te helpen. Houd er rekening mee dat u Azure Notification Hubs moet configureren voor het gebruik van verificatie op basis van tokens om de vereiste header in te stellen. Zie [op tokens gebaseerde verificatie (http/2) voor APNS](notification-hubs-push-notification-http2-token-authentification.md)voor meer informatie.
+Wanneer Azure Notification Hubs een melding detecteert die niet is `apns-push-type` ingesteld, wordt door de service het push-type van de meldings aanvraag afgezet en wordt de waarde automatisch ingesteld, om u tijdens deze overgang te helpen. Houd er rekening mee dat u Azure Notification Hubs moet configureren voor het gebruik van verificatie op basis van tokens om de vereiste header in te stellen. Zie [op tokens gebaseerde verificatie (http/2) voor APNS](./notification-hubs-push-notification-http2-token-authentication.md)voor meer informatie.
 
 ## <a name="apns-priority"></a>Prioriteit van APNS
 

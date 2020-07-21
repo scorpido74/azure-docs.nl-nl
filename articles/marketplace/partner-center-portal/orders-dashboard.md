@@ -3,14 +3,14 @@ title: Dash board bestellingen van partner centrum in de commerciële Marketplac
 description: Meer informatie over het openen van analytische rapporten over uw Marketplace-aanbod orders in een grafische en download bare indeling.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 12/11/2019
-ms.openlocfilehash: 4f5e18a2cebc309475c4fbcf84d7baaa28c6e61d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: article
+ms.date: 07/01/2020
+ms.openlocfilehash: fe1f64994d344ad9b23895823b846da62d895128
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118355"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536127"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Dashboard Bestellingen in Commerciële marketplace-analyses
 
@@ -29,12 +29,9 @@ In het **dash board orders** van het menu **analyseren** worden de huidige order
 - [Orders op geografie](#orders-by-geography)
 - [Bestellingen per aanbiedingen](#orders-by-offers)
 - [Trend van orders per site versus per seat](#orders-trend-per-site-versus-per-seat)
-- [Orders per Sku's](#orders-by-skus)
+- [Orders per plan](#orders-by-plans)
 - [Trend van orders en stoelen](#orders-and-seats-trend)
 - [Tabel Order Details](#order-details-table)
-
-> [!NOTE]
-> Er zijn verschillen tussen hoe analyse rapporten worden weer gegeven in het Cloud Partner-portal (CPP) en het nieuwe commerciële Marketplace-programma in Partner Center. Een specifieke manier is dat de **verkoop inzichten** in cpp het tabblad **Orders & gebruik** bevat, die gegevens weer geven voor aanbiedingen op basis van gebruik en aanbiedingen die niet op het gebruik zijn. In het partner centrum heeft de pagina **Orders** een afzonderlijk tabblad voor SaaS-aanbiedingen.
 
 ## <a name="order-dashboard-details"></a>Details van bestel dashboard
 
@@ -76,16 +73,16 @@ Met de **opdrachten orders per biedt** ring grafiek worden de orders (inclusief 
 
 De grafiek **per site versus per seat** ring vertegenwoordigt de uitsplitsing van per site SaaS en per seat SaaS-orders die door klanten zijn aangeschaft (dit diagram bevat geannuleerde orders). Het kolom diagram vertegenwoordigt de trend van per site SaaS en per seat SaaS-orders die door klanten zijn aangeschaft (deze grafiek bevat geannuleerde orders).
 
-### <a name="orders-by-skus"></a>Orders per Sku's
+### <a name="orders-by-plans"></a>Orders per plan
 
-De grafiek **Orders per sku's** vertegenwoordigt de trend van orders op het niveau van de SKU (Stock Keeping Unit) voor al uw aanbiedingen (dit omvat geannuleerde orders). De ring grafiek vertegenwoordigt de uitsplitsing van de bovenste vijf SKU-orders en het kolom diagram vertegenwoordigt de trend van de orders voor de vijf Sku's.
+Het diagram **Orders per abonnementen** vertegenwoordigt de trend van orders op het plan niveau voor al uw aanbiedingen (dit omvat geannuleerde orders). De ring grafiek vertegenwoordigt de uitsplitsing van de bovenste vijf plan orders en het kolom diagram vertegenwoordigt de trend van de orders voor de vijf meest voorkomende plannen.
 
 ### <a name="orders-and-seats-trend"></a>Trend van orders en stoelen
 
 In het **trend diagram orders en stoelen** worden de belangrijkste 50 aanbiedingen met het hoogste aantal orders weer gegeven. Deze worden weer gegeven op een Leader Board en worden gesorteerd op het hoogste aantal orders en het order percentage.
 
-- **Orders per sku's**: Selecteer een aanbieding om de uitsplitsing van het aantal orders voor de bovenste vijf sku's in de grafiek weer te geven.
-- **Seats by sku's**: de maandelijkse trend van seats voor de bovenste vijf sku's. Als het aanbod dat u selecteert geen aanbieding per seat is, worden er geen gegevens weer gegeven in dit vlak diagram.
+- **Orders per plan** : Selecteer een aanbieding om de uitsplitsing van het aantal orders voor de vijf beste plannen in de grafiek weer te geven.
+- **Stoelen per plan** : de maandelijkse trend van seats voor de vijf tien plannen. Als het aanbod dat u selecteert geen aanbieding per seat is, worden er geen gegevens weer gegeven in dit vlak diagram.
 
 ### <a name="canceled-orders-by-offers"></a>Geannuleerde orders per aanbiedingen
 

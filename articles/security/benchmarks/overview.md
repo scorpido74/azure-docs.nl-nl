@@ -1,5 +1,5 @@
 ---
-title: Overzicht van Azure Security Bench Mark
+title: Overzicht van de Azure Security-Bench Mark
 description: Overzicht van Security Bench Mark
 author: msmbaldwin
 manager: rkarlin
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f2cdaafddb14d8b69fd708e4c89a578b60e53317
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 453e88ed59df0d6e88b8db32ea1836a4371ab3a5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82606871"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529264"
 ---
 # <a name="overview-of-the-azure-security-benchmark"></a>Overzicht van de Azure Security-Bench Mark
 
@@ -24,9 +24,9 @@ Deze bench Mark richt zich op de Cloud gerichte controle gebieden. Deze besturin
 De volgende besturings elementen worden gebruikt in de beveiligings benchmark van Azure: 
 
 - [Netwerk beveiliging](security-control-network-security.md)
-- [Logboek registratie en controle](security-control-logging-monitoring.md)
+- [Logboekregistratie en controle](security-control-logging-monitoring.md)
 - [Identiteits-en toegangs beheer](security-control-identity-access-control.md)
-- [Gegevensbescherming](security-control-data-protection.md)
+- [Gegevens bescherming](security-control-data-protection.md)
 - [Beveiligings beheer](security-control-vulnerability-management.md)
 - [Inventarisatie en het beheer van middelen](security-control-inventory-asset-management.md)
 - [Veilige configuratie](security-control-secure-configuration.md)

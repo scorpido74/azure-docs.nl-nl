@@ -3,11 +3,12 @@ title: Azure service Health-waarschuwingen verzenden met OpsGenie met behulp van
 description: Krijg persoonlijke meldingen over service status gebeurtenissen aan uw OpsGenie-exemplaar.
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: def12d5e7b1b93b8370cd7be61538fca53531ae1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 112774cb1f9e16b08225471e8dbc1bb79b1bd37d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77654134"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529094"
 ---
 # <a name="send-azure-service-health-alerts-with-opsgenie-using-webhooks"></a>Azure service Health-waarschuwingen verzenden met OpsGenie met behulp van webhooks
 
@@ -36,7 +37,7 @@ Dit artikel laat u zien hoe u Azure service Health-waarschuwingen kunt instellen
 
 ## <a name="create-an-alert-using-opsgenie-in-the-azure-portal"></a>Een waarschuwing maken met behulp van OpsGenie in de Azure Portal
 ### <a name="for-a-new-action-group"></a>Voor een nieuwe actie groep:
-1. Volg de stappen 1 tot en met 8 in een [waarschuwing maken voor een service status melding voor een nieuwe actie groep met behulp van de Azure Portal](../azure-monitor/platform/alerts-activity-log-service-notifications.md).
+1. Volg de stappen 1 tot en met 8 in een [waarschuwing maken voor een service status melding voor een nieuwe actie groep met behulp van de Azure Portal](./alerts-activity-log-service-notifications-portal.md).
 
 1. Definieer in de lijst met **acties**:
 
@@ -84,5 +85,5 @@ Dit artikel laat u zien hoe u Azure service Health-waarschuwingen kunt instellen
 ## <a name="next-steps"></a>Volgende stappen
 - Meer informatie over het [configureren van webhook-meldingen voor bestaande probleem beheersystemen](service-health-alert-webhook-guide.md).
 - Controleer het [webhook-schema](../azure-monitor/platform/activity-log-alerts-webhook.md)van de waarschuwing voor het activiteiten logboek. 
-- Meer informatie over [service status meldingen](../azure-monitor/platform/service-notifications.md).
+- Meer informatie over [service status meldingen](./service-notifications.md).
 - Meer informatie over [actie groepen](../azure-monitor/platform/action-groups.md).

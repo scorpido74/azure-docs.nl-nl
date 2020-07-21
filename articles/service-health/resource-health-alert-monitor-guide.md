@@ -3,11 +3,12 @@ title: Resource Health-waarschuwingen maken met behulp van Azure Portal
 description: Maak een waarschuwing met behulp van Azure Portal die u op de hoogte stelt wanneer uw Azure-resources niet meer beschikbaar zijn.
 ms.topic: conceptual
 ms.date: 6/23/2020
-ms.openlocfilehash: 2ba7597283ed254b8c03e8ea58c3c7b1257250ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b44df4f63fa2ae2bde9be431e2df268144a036fa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85218009"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529213"
 ---
 # <a name="configure-resource-health-alerts-using-azure-portal"></a>Resourcestatuswaarschuwingen configureren met de Azure-portal
 
@@ -18,7 +19,7 @@ Azure Resource Health houdt u op de hoogte van de huidige en historische status 
 > [!NOTE]
 > Er zijn momenteel Resource Health waarschuwingen in de preview-versie.
 
-Resource Health-meldingen worden opgeslagen in het [Azure-activiteiten logboek](https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview) , gezien het mogelijk grote hoeveelheid gegevens die in het activiteiten logboek is opgeslagen, is er een afzonderlijke gebruikers interface waarmee u waarschuwingen voor resource status meldingen gemakkelijker kunt weer geven en instellen.
+Resource Health-meldingen worden opgeslagen in het [Azure-activiteiten logboek](../azure-monitor/platform/platform-logs-overview.md) , gezien het mogelijk grote hoeveelheid gegevens die in het activiteiten logboek is opgeslagen, is er een afzonderlijke gebruikers interface waarmee u waarschuwingen voor resource status meldingen gemakkelijker kunt weer geven en instellen.
 U kunt een waarschuwing ontvangen wanneer Azure resource status meldingen verzendt naar uw Azure-abonnement. U kunt de waarschuwing configureren op basis van:
 
 * Het abonnement is betrokken.
@@ -34,9 +35,9 @@ U kunt ook configureren naar wie de waarschuwing moet worden verzonden:
 * Selecteer een bestaande actie groep.
 * Een nieuwe actie groep maken (die kan worden gebruikt voor toekomstige waarschuwingen).
 
-Raadpleeg [Actiegroepen maken en beheren](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) voor meer informatie over actiegroepen.
+Raadpleeg [Actiegroepen maken en beheren](../azure-monitor/platform/action-groups.md) voor meer informatie over actiegroepen.
 
-Zie [Resource Manager-sjablonen](https://docs.microsoft.com/azure/service-health/resource-health-alert-arm-template-guide)voor meer informatie over het configureren van waarschuwingen voor resource status meldingen met behulp van Azure Resource Manager sjablonen.
+Zie [Resource Manager-sjablonen](./resource-health-alert-arm-template-guide.md)voor meer informatie over het configureren van waarschuwingen voor resource status meldingen met behulp van Azure Resource Manager sjablonen.
 Resource Health waarschuwing met behulp van Azure Portal
 
 ## <a name="resource-health-alert-using-azure-portal"></a>Resource Health waarschuwing met behulp van Azure Portal
@@ -58,12 +59,12 @@ Resource Health waarschuwing met behulp van Azure Portal
     1. **Naam van waarschuwings regel**: de naam voor de nieuwe waarschuwings regel.
     2. **Beschrijving**: de beschrijving van de nieuwe waarschuwings regel.
     3. **Waarschuwing opslaan in resource groep**: Selecteer de resource groep waar u deze nieuwe regel wilt opslaan.
-7. Geef onder **actie groep**in de vervolg keuzelijst de actie groep op die u wilt toewijzen aan deze nieuwe waarschuwings regel. Of [Maak een nieuwe actie groep](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) en wijs deze toe aan de nieuwe regel. Als u een nieuwe groep wilt maken, selecteert u + **nieuwe groep**.
+7. Geef onder **actie groep**in de vervolg keuzelijst de actie groep op die u wilt toewijzen aan deze nieuwe waarschuwings regel. Of [Maak een nieuwe actie groep](../azure-monitor/platform/action-groups.md) en wijs deze toe aan de nieuwe regel. Als u een nieuwe groep wilt maken, selecteert u + **nieuwe groep**.
 8. Als u de regels wilt inschakelen nadat u ze hebt gemaakt, selecteert u **Ja** voor de optie **regel inschakelen bij het maken** .
 9. Selecteer **Waarschuwingsregel maken**.
 
 De nieuwe waarschuwings regel voor het activiteiten logboek wordt gemaakt en er wordt een bevestigings bericht weer gegeven in de rechter bovenhoek van het venster.
-U kunt een regel inschakelen, uitschakelen, bewerken of verwijderen. Meer informatie over [het beheren van regels voor het activiteiten logboek](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log#view-and-manage-in-the-azure-portal).
+U kunt een regel inschakelen, uitschakelen, bewerken of verwijderen. Meer informatie over [het beheren van regels voor het activiteiten logboek](../azure-monitor/platform/alerts-activity-log.md#view-and-manage-in-the-azure-portal).
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -74,6 +75,6 @@ Meer informatie over Resource Health:
 
 Service Health-waarschuwingen maken:
 
-* [Waarschuwingen voor Service Health configureren](../azure-monitor/platform/alerts-activity-log-service-notifications.md) 
+* [Waarschuwingen voor Service Health configureren](./alerts-activity-log-service-notifications-portal.md) 
 * [Azure-gebeurtenisschema in het activiteitenlogboek](../azure-monitor/platform/activity-log-schema.md)
-* [Resourcestatuswaarschuwingen configureren met Resource Manager-sjablonen](https://docs.microsoft.com/azure/service-health/resource-health-alert-arm-template-guide)
+* [Resourcestatuswaarschuwingen configureren met Resource Manager-sjablonen](./resource-health-alert-arm-template-guide.md)

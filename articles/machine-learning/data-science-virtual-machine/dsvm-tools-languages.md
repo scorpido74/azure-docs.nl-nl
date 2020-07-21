@@ -11,11 +11,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: c81f2a23474ff98c202cdbe5b455dd3d15535c96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d3ab058d76186f73fa1a985d7e8af38dbd7a6f8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84557475"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536178"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>Talen die worden ondersteund op de Data Science Virtual Machine 
 
@@ -23,7 +24,7 @@ De Data Science Virtual Machine (DSVM) wordt geleverd met verschillende vooraf o
 
 ## <a name="python-windows-server-2016-edition"></a>Python (Windows Server 2016 Edition)
 
-|    |           |
+| Categorie | Waarde |
 | ------------- | ------------- |
 | Ondersteunde taal versies | Python 2,7 en 3,7 |
 | Ondersteunde DSVM-edities      | Windows Server 2016     |
@@ -67,13 +68,14 @@ De Data Science Virtual Machine (DSVM) wordt geleverd met verschillende vooraf o
 
 ## <a name="python-linux-edition"></a>Python (Linux Edition)
 
-|    |           |
+| Categorie | Waarde |
 | ------------- | ------------- |
 | Ondersteunde taal versies | Python 2,7 en 3,5 |
 | Ondersteunde DSVM-edities      | Linux   |
 | Hoe wordt het geconfigureerd/geïnstalleerd op de DSVM?  | Er worden twee wereld wijde `conda` omgevingen gemaakt: <br /> * `root`de omgeving die zich bevindt in `/anaconda/` is Python 2,7. <br/> * `py35`de omgeving die zich bevindt in `/anaconda/envs/py35` is Python 3,5.       |
 | Koppelingen naar voor beelden      | Er zijn voor beelden van Jupyter-notebooks voor python opgenomen.     |
 | Gerelateerde hulpprogram ma's op de DSVM      | PySpark, R, Julia      |
+
 ### <a name="how-to-use-and-run-it"></a>Hoe gebruiken en uitvoeren    
 
 * Uitvoeren in een Terminal:
@@ -105,13 +107,14 @@ De Data Science Virtual Machine (DSVM) wordt geleverd met verschillende vooraf o
 
 ## <a name="r"></a>R
 
-|    |           |
+| Categorie | Waarde |
 | ------------- | ------------- |
 | Ondersteunde taal versies | Micro soft R open 3. x (100% compatibel met KRANen-R)<br /> Microsoft R Server 9. x Developer Edition (een schaalbaar platform dat geschikt is voor bedrijven)|
 | Ondersteunde DSVM-edities      | Linux, Windows     |
 | Hoe wordt het geconfigureerd/geïnstalleerd op de DSVM?  | Windows`C:\Program Files\Microsoft\ML Server\R_SERVER` <br />Spreek`/usr/lib64/microsoft-r/3.3/lib64/R`    |
 | Koppelingen naar voor beelden      | Er zijn voor beelden van Jupyter-notebooks voor R opgenomen.     |
 | Gerelateerde hulpprogram ma's op de DSVM      | Spark, Python, Julia      |
+
 ### <a name="how-to-use-and-run-it"></a>Hoe gebruiken en uitvoeren    
 
 **Windows**:
@@ -153,13 +156,14 @@ De Data Science Virtual Machine (DSVM) wordt geleverd met verschillende vooraf o
 
 ## <a name="julia"></a>Julia
 
-|    |           |
+| Categorie | Waarde |
 | ------------- | ------------- |
 | Ondersteunde taal versies | 0,6 |
 | Ondersteunde DSVM-edities      | Linux, Windows     |
 | Hoe wordt het geconfigureerd/geïnstalleerd op de DSVM?  | Windows: geïnstalleerd op`C:\JuliaPro-VERSION`<br /> Linux: geïnstalleerd op`/opt/JuliaPro-VERSION`    |
 | Koppelingen naar voor beelden      | Voor beelden van Jupyter-notebooks voor Julia zijn opgenomen.     |
 | Gerelateerde hulpprogram ma's op de DSVM      | Python, R      |
+
 ### <a name="how-to-use-and-run-it"></a>Hoe gebruiken en uitvoeren    
 
 **Windows**:

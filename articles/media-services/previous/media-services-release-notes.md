@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: 63b3def9c37f53ebf68642faf3f45cee6602bbe5
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: b25d6c33aa2bd50cbf96fb09f0de03354d24f2da
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057293"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530351"
 ---
 # <a name="azure-media-services-release-notes"></a>Opmerkingen bij de release Azure Media Services
 
@@ -29,8 +29,8 @@ In deze release opmerkingen voor Azure Media Services worden wijzigingen in eerd
 
 We horen graag van onze klanten, zodat we zich kunnen richten op het oplossen van problemen die van invloed zijn op u. Als u een probleem wilt melden of vragen wilt stellen, verzendt u een bericht in het MSDN-forum van [Azure Media Services]. 
 
-## <a name="known-issues"></a><a id="issues"/>Bekende problemen
-### <a name="media-services-general-issues"></a><a id="general_issues"/>Algemene problemen Media Services
+## <a name="known-issues"></a><a name="issues"></a>Bekende problemen
+### <a name="media-services-general-issues"></a><a name="general_issues"></a>Algemene problemen Media Services
 
 | Probleem | Beschrijving |
 | --- | --- |
@@ -43,7 +43,7 @@ We horen graag van onze klanten, zodat we zich kunnen richten op het oplossen va
 | Media Services .NET SDK-objecten kunnen niet worden geserialiseerd en werken daarom niet met Azure cache voor redis. |Als u probeert het SDK AssetCollection-object te serialiseren om het toe te voegen aan Azure-cache voor redis, wordt er een uitzonde ring gegenereerd. |
 |De REST API reageert met een fout bericht met de melding dat het filter niet kan worden geopend door deze versie van REST API wanneer wordt geprobeerd een filter op activa-of account niveau op te halen.|Het filter is gemaakt of gewijzigd met een nieuwere API-versie dan wordt gebruikt om het filter op te halen. Dit kan gebeuren als er twee API-versies worden gebruikt door code of hulpprogram ma's die door de klant worden gebruikt.  De beste oplossing is hier om de code of hulpprogram ma's bij te werken voor het gebruik van de nieuwere of de twee API-versies.|
 
-## <a name="rest-api-version-history"></a><a id="rest_version_history"/>Geschiedenis van REST API-versie
+## <a name="rest-api-version-history"></a><a name="rest_version_history"></a>Geschiedenis van REST API-versie
 Zie de [referentie Azure Media Services rest API]voor informatie over de versie geschiedenis van Media Services rest API.
 
 ## <a name="february-2020"></a>Februari 2020
@@ -60,7 +60,7 @@ Voor de pensioen datums raadpleegt u dit onderwerp over [oudere onderdelen](lega
 
 Zie ook [migreren van Azure media indexer en Azure media indexer 2 naar Azure Media Services video indexer](migrate-indexer-v1-v2.md).
 
-## <a name="august-2019"></a>augustus 2019
+## <a name="august-2019"></a>Augustus 2019
 
 ### <a name="deprecation-of-media-processors"></a>Afschaffing van media processors
 
@@ -159,7 +159,7 @@ Zie [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/str
 
  U kunt Media Services nu gebruiken voor toegang tot gegevens over telemetrie/metrieken voor de services. U kunt de huidige versie van Media Services gebruiken om telemetriegegevens te verzamelen voor Live Channel, streaming-eind punt en archief entiteiten. Zie [Media Services telemetrie](media-services-telemetry-overview.md)voor meer informatie.
 
-## <a name="july-2016-release"></a><a id="july_changes16"/>Release van juli 2016
+## <a name="july-2016-release"></a><a name="july_changes16"></a>Release van juli 2016
 ### <a name="updates-to-the-manifest-file-ism-generated-by-encoding-tasks"></a>Updates voor het manifest bestand (*. ISM) gegenereerd door coderings taken
 Wanneer een coderings taak wordt verzonden naar Media Encoder Standard of Media Encoder Premium, genereert de coderings taak een [streaming-manifest bestand](media-services-deliver-content-overview.md) (*. ISM) in de uitvoer Asset. Met de nieuwste service release is de syntaxis van dit bestand met het streaming-manifest bijgewerkt.
 

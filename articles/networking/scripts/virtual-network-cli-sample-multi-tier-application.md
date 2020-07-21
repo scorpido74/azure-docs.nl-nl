@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
-ms.openlocfilehash: 97e26eaed72bc15ebc46a893d269b05484d8a064
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bcfe82dedcac01c60e93788b78fec779f0da7dbc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80521546"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530249"
 ---
-# <a name="create-a-network-for-multi-tier-applications"></a>Een netwerk maken voor toepassingen met meerdere lagen
+# <a name="use-an-azure-cli-script-sample-to-create-a-network-for-multi-tier-applications"></a>Een voor beeld van een Azure CLI-script gebruiken voor het maken van een netwerk voor toepassingen met meerdere lagen
 
 Dit voorbeeldscript maakt een virtueel netwerk met front-end en back-end-subnetten. Verkeer naar het front-end-subnet wordt beperkt tot HTTP en SSH, terwijl het verkeer naar het back-end-subnet wordt beperkt tot MySQL, poort 3306. Nadat het script is uitgevoerd, hebt u twee virtuele machines, één in elk subnet, waarop u webserver- en MySQL-software kunt implementeren.
 

@@ -1,23 +1,20 @@
 ---
-title: Referenties
-description: ''
+title: Azure FarmBeats-Api's
+description: Meer informatie over Azure FarmBeats Api's, die agrarische bedrijven voorzien van een gestandaardiseerde, doorgestuurde interface met antwoorden op basis van JSON.
 author: sunasing
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
-ms.openlocfilehash: c3a70ed905edfcf1dc60e0a12f50aca19060230f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f15bee7e802b04d04a3c87d7f84fc975b88bf260
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488032"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536569"
 ---
-# <a name="references"></a>Referenties
+# <a name="azure-farmbeats-apis"></a>Azure FarmBeats-Api's
 
-In dit artikel worden de Azure FarmBeats-Api's beschreven.
-
-## <a name="rest-api"></a>REST-API
-
-De Azure FarmBeats-Api's bieden agrarische ondernemingen een gestandaardiseerde, doorgestuurde interface met antwoorden op basis van JSON om u te helpen profiteren van de mogelijkheden van Azure FarmBeats, zoals:
+In dit artikel worden de Azure FarmBeats-Api's beschreven. De Azure FarmBeats-Api's bieden agrarische ondernemingen een gestandaardiseerde, doorgestuurde interface met antwoorden op basis van JSON om u te helpen profiteren van de mogelijkheden van Azure FarmBeats, zoals:
 
 - Api's voor het verkrijgen van sensor-, camera-, Drone-, weers-, satelliet-en geaard-gegevens.
 - Normalisatie en contextualization van gegevens over common data providers.
@@ -32,7 +29,7 @@ De FarmBeats-Api's bevatten technische documentatie voor Swagger. Zie [Swagger](
 
 De volgende tabel bevat een overzicht van alle objecten en resources in FarmBeats Datahub:
 
-| Objecten en bronnen | Description
+| Objecten en bronnen | Beschrijving
 --- | ---|
 Voorzien | De farm komt overeen met een fysieke locatie van belang in het FarmBeats-systeem. Elke farm heeft een farm naam en een unieke Farm-ID. |
 Apparaat  | Het apparaat komt overeen met een fysiek apparaat dat aanwezig is op de farm. Elk apparaat heeft een unieke apparaat-ID. Een apparaat wordt doorgaans ingericht in een farm met een farm-ID.
@@ -62,7 +59,7 @@ Voor het maken van een geverifieerde aanvraag voor de REST-Api's, vereist de cli
 
 Het toegangs token moet in volgende API-aanvragen worden verzonden in de koptekst sectie, zoals:
 
-```
+```http
 headers = {"Authorization": "Bearer " + **access_token**}
 ```
 
@@ -71,7 +68,7 @@ headers = {"Authorization": "Bearer " + **access_token**}
 Hier volgen de meest voorkomende aanvraag headers die u moet opgeven wanneer u een API-aanroep maakt naar Azure FarmBeats Datahub.
 
 
-**Journaalkop** | **Beschrijving en voor beeld**
+**Header** | **Beschrijving en voor beeld**
 --- | ---
 Content-Type  | De aanvraag indeling (content-type: Application/ <format> ). Voor Azure FarmBeats Datahub-Api's is de indeling JSON. Content-type: Application/JSON
 Autorisatie  | Hiermee geeft u het toegangs token op dat vereist is om een API-aanroep te maken. Autorisatie: Bearer <Access-token>
@@ -110,9 +107,9 @@ Als u bijvoorbeeld een query uitvoert op de lijst met apparaten (aanroep ophalen
 
 Azure FarmBeats Datahub Api's retour neren de standaard HTTP-fouten. De meest voorkomende fout codes zijn als volgt:
 
- |Foutcode             | Description |
+ |Foutcode             | Beschrijving |
  |---                    | --- |
- |200                    | Geslaagd |
+ |200                    | Success |
  |201                    | Maken (post) geslaagd |
  |400                    | Ongeldige aanvraag. Er is een fout opgetreden in de aanvraag. |
  |401                    | Gasten. De aanroeper van de API is niet gemachtigd om toegang te krijgen tot de resource. |
@@ -181,6 +178,6 @@ Nadat u de vorige stappen hebt voltooid, kunt u met de app-registratie (client) 
 
 Gebruik het toegangs token om dit in volgende API-aanvragen in de koptekst sectie te verzenden als:
 
-```
+```http
 headers = {"Authorization": "Bearer " + **access_token**, "Content-Type" : "application/json" }
 ```
