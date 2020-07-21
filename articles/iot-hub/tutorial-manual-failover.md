@@ -1,6 +1,6 @@
 ---
 title: Handmatige failover van een Azure IoT Hub | Microsoft Docs
-description: Meer informatie over het uitvoeren van een hand matige failover van uw IoT-hub naar een andere regio en om te controleren of deze werkt. Ga vervolgens terug naar de oorspronkelijke regio en controleer deze opnieuw.
+description: Leer hoe u een handmatige failover van uw IoT-hub naar een andere regio uitvoert en bevestigt dat dit werkt, en hoe u vervolgens terugkeert naar de oorspronkelijke regio en dit opnieuw controleert.
 author: robinsh
 manager: timlt
 ms.service: iot-hub
@@ -11,16 +11,16 @@ ms.author: robinsh
 ms.custom:
 - mvc
 - mqtt
-ms.openlocfilehash: 86b39beb2958194f7c86409c5d78992616234b05
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 26679a7111e11eaf48e948fa6d3622814327433a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81769915"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252569"
 ---
-# <a name="tutorial-perform-manual-failover-for-an-iot-hub"></a>Zelf studie: hand matige failover uitvoeren voor een IoT-hub
+# <a name="tutorial-perform-manual-failover-for-an-iot-hub"></a>Zelfstudie: Handmatige failover uitvoeren voor een IoT-hub
 
-Handmatige failover is een functie van de IoT Hub-service waarmee klanten [failover](https://en.wikipedia.org/wiki/Failover) voor de bewerkingen van hun hub kunnen uitvoeren van een primaire regio naar een overeenkomstige geografisch gekoppelde Azure-regio. Handmatige failover kan worden uitgevoerd in geval van een regionale noodgeval of een langdurige servicestoring. U kunt ook een geplande failover uitvoeren om de prestaties van uw noodherstel te testen. U wordt echter aangeraden een test-IoT-hub te gebruiken in plaats van een IoT-hub die in productie wordt uitgevoerd. De functie voor handmatige failover wordt klanten zonder aanvullende kosten aangeboden.
+Handmatige failover is een functie van de IoT Hub-service waarmee klanten [failover](https://en.wikipedia.org/wiki/Failover) voor de bewerkingen van hun hub kunnen uitvoeren van een primaire regio naar een overeenkomstige geografisch gekoppelde Azure-regio. Handmatige failover kan worden uitgevoerd in geval van een regionale noodgeval of een langdurige servicestoring. U kunt ook een geplande failover uitvoeren om de prestaties van uw noodherstel te testen. U wordt echter aangeraden een test-IoT-hub te gebruiken in plaats van een IoT-hub die in productie wordt uitgevoerd. De functie voor handmatige failover wordt zonder aanvullende kosten aan klanten aangeboden voor IoT-hubs die na 18 mei 2017 zijn gemaakt.
 
 In deze zelfstudie voert u de volgende taken uit:
 
@@ -35,23 +35,23 @@ In deze zelfstudie voert u de volgende taken uit:
 
 * Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
-* Zorg ervoor dat poort 8883 is geopend in uw firewall. Het voor beeld van het apparaat in deze zelf studie maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs-en educatieve netwerk omgevingen. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
+* Zorg ervoor dat de poort 8883 is geopend in de firewall. In het apparaatvoorbeeld in deze zelfstudie wordt het MQTT-protocol gebruikt, dat communiceert via poort 8883. Deze poort is in sommige netwerkomgevingen van bedrijven en onderwijsinstellingen mogelijk geblokkeerd. Zie [Verbinding maken met IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub) voor meer informatie en manieren om dit probleem te omzeilen.
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 
 2. Klik op **+ Een resource maken**, selecteer **Internet of Things** en vervolgens **IoT Hub**.
 
    ![Schermopname van het maken van een IoT-hub](./media/tutorial-manual-failover/create-hub-01.png)
 
-3. Selecteer het tabblad **basis beginselen** . Vul de volgende velden in.
+3. Selecteer het tabblad **Basis**. Vul de volgende velden in.
 
     **Abonnement**: selecteer het gewenste Azure abonnement.
 
     **Resourcegroep**: klik op **Nieuwe maken** en geef **ManlFailRG** op als naam voor de resourcegroep.
 
-    **Regio**: Selecteer een regio dicht bij u in de buurt. In deze zelfstudie wordt `West US 2` gebruikt. Er kan alleen een failover tussen Azure-regio's worden uitgevoerd die geografische gekoppeld zijn. De regio die is gekoppeld aan het VS-West 2 is WestCentralUS.
+    **Regio**: kies een regio bij u in de buurt. In deze zelfstudie wordt `West US 2` gebruikt. Er kan alleen een failover tussen Azure-regio's worden uitgevoerd die geografische gekoppeld zijn. De regio die geografisch met US - west 2 is gekoppeld, is WestCentralUS.
     
    **Naam IoT-hub**: geef een naam op voor de IoT-hub. De naam van de hub moet wereldwijd uniek zijn. 
 
@@ -69,37 +69,37 @@ Er kunnen maximaal twee failovers en twee failbacks per dag voor een IoT-hub wor
 
 1. Klik op **Resourcegroepen** en selecteer resourcegroep **ManlFailRG**. Klik in de lijst met resources op uw hub. 
 
-1. Klik onder **instellingen** in het deel venster IOT hub op **failover**.
+1. Klik onder **Instellingen** op het IoT Hub-deelvenster op **Failover**.
 
    ![Schermafbeelding met het venster IoT Hub-eigenschappen](./media/tutorial-manual-failover/trigger-failover-01.png)
 
-1. In het deel venster hand matige failover ziet u de **huidige locatie** en de locatie van de **failover**. De huidige locatie geeft altijd de locatie aan waar de hub momenteel actief is. De failover-locatie is de standaard [Azure geo-gekoppelde regio](../best-practices-availability-paired-regions.md) die is gekoppeld aan de huidige locatie. U kunt de locatiewaarden niet wijzigen. Voor deze zelf studie is `West US 2` de huidige locatie en de locatie van de `West Central US`failover.
+1. Op het deelvenster Handmatige failover ziet u de **Huidige locatie** en de **Failoverlocatie**. De huidige locatie geeft altijd de locatie aan waarin de hub momenteel actief is. De failoverlocatie is de standaard-Azure locatie die [geografisch is gekoppeld](../best-practices-availability-paired-regions.md) met de huidige locatie. U kunt de locatiewaarden niet wijzigen. Voor deze zelfstudie is `West US 2` de huidige locatie en `West Central US` de failoverlocatie.
 
    ![Schermafbeelding met het deelvenster Handmatige failover](./media/tutorial-manual-failover/trigger-failover-02.png)
 
-1. Klik boven aan het deel venster hand matige failover op **failover starten**. 
+1. Klik bovenaan het deelvenster Handmatige failover op **Failover starten**. 
 
-1. In het bevestigings venster vult u de naam van uw IoT-hub in om te bevestigen dat u de failover wilt door voeren. Klik vervolgens op **failover**om de failover te initiëren.
+1. Vul in het bevestigingsvenster de naam in van uw IoT-hub om te bevestigen dat u hiervoor failover wilt uitvoeren. Klik vervolgens op **Failover** om de failover te starten.
 
    De tijd die nodig is om de handmatige failover uit te voeren is evenredig met het aantal apparaten die voor uw hub zijn geregistreerd. Als u bijvoorbeeld 100.000 apparaten hebt, dan kan het vijftien minuten duren, maar als u vijf miljoen apparaten hebt, dan kan het minstens een uur duren.
 
    ![Schermafbeelding met het deelvenster Handmatige failover](./media/tutorial-manual-failover/trigger-failover-03-confirm.png)
 
-   Terwijl het proces hand matige failover wordt uitgevoerd, wordt er een banner weer gegeven om aan te geven dat er een hand matige failover wordt uitgevoerd. 
+   Terwijl een handmatig failoverproces wordt uitgevoerd, wordt een banner weergegeven met de mededeling dat een handmatige failover in behandeling is. 
 
    ![Schermafbeelding waarin wordt aangegeven dat een handmatige failover wordt uitgevoerd](./media/tutorial-manual-failover/trigger-failover-04-in-progress.png)
 
-   Als u het deel venster IoT Hub sluit en opnieuw opent door erop te klikken in het deel venster Resource groep, ziet u een banner dat aangeeft dat de hub zich in het midden van een hand matige failover bevindt. 
+   Als u het deelvenster IoT Hub sluit en opnieuw opent door op het deelvenster Resourcegroep te klikken, ziet u een banner waarin wordt aangegeven dat er een handmatige failover op de hub wordt uitgevoerd. 
 
-   ![Scherm opname van IoT Hub failover wordt uitgevoerd](./media/tutorial-manual-failover/trigger-failover-05-hub-inactive.png)
+   ![Schermafbeelding waarin wordt aangegeven dat een failover op IoT Hub wordt uitgevoerd](./media/tutorial-manual-failover/trigger-failover-05-hub-inactive.png)
 
-   Nadat het is voltooid, worden de huidige en failover-regio's op de pagina hand matige failover gespiegeld en is de hub weer actief. In dit voor beeld is de huidige locatie nu `WestCentralUS` en de failover-locatie is `West US 2`nu. 
+   Als de handmatige failover is voltooid, worden de huidige regio en de failoverregio op de pagina Handmatige failover omgedraaid en is de hub weer actief. In dit voorbeeld is `WestCentralUS` nu de huidige locatie en `West US 2` de failoverlocatie. 
 
    ![Schermafbeelding waarin wordt aangegeven dat de failover is voltooid](./media/tutorial-manual-failover/trigger-failover-06-finished.png)
 
-   Op de pagina overzicht wordt ook een banner weer gegeven dat aangeeft dat de failover is voltooid en `West Central US`de IOT hub wordt uitgevoerd in.
+   Op de overzichtspagina wordt ook een banner weergegeven die aangeeft dat de failover is voltooid en dat de IoT-hub wordt uitgevoerd in `West Central US`.
 
-   ![Scherm opname met de failover is voltooid op de pagina overzicht](./media/tutorial-manual-failover/trigger-failover-06-finished-overview.png)
+   ![Schermafbeelding van de overzichtspagina waarin wordt aangegeven dat de failover is voltooid](./media/tutorial-manual-failover/trigger-failover-06-finished-overview.png)
 
 
 ## <a name="perform-a-failback"></a>Failback uitvoeren 
@@ -110,15 +110,15 @@ Een failback wordt op dezelfde manier uitgevoerd als een handmatige failover. Di
 
 1. Als u een failback wilt uitvoeren, gaat u terug naar het deelvenster IoT Hub voor uw IoT-hub.
 
-2. Klik onder **instellingen** in het deel venster IOT hub op **failover**. 
+2. Klik onder **Instellingen** op het IoT Hub-deelvenster op **Failover**. 
 
-3. Klik boven aan het deel venster hand matige failover op **failover starten**. 
+3. Klik bovenaan het deelvenster Handmatige failover op **Failover starten**. 
 
-4. In het bevestigings venster vult u de naam van uw IoT-hub in om te bevestigen dat deze het certificaat is dat u wilt failback. Klik op OK om de failback te starten. 
+4. Vul in het bevestigingsvenster de naam in van uw IoT-hub om te bevestigen dat u hiervoor failback wilt uitvoeren. Klik op OK om de failback te starten. 
 
    ![Schermafbeelding met de aanvraag voor handmatige failback](./media/tutorial-manual-failover/trigger-failover-03-confirm.png)
 
-   De banners worden weergegeven zoals uitgelegd in de sectie Failover uitvoeren. Nadat de failback is voltooid, wordt deze weer `West US 2` gegeven als de huidige locatie `West Central US` en als de failover-locatie, zoals oorspronkelijk is ingesteld.
+   De banners worden weergegeven zoals uitgelegd in de sectie Failover uitvoeren. Als de failback is voltooid, wordt hier weer `West US 2` als huidige locatie en `West Central US` als failoverlocatie getoond, zoals oorspronkelijk ingesteld.
 
 ## <a name="clean-up-resources"></a>Resources opschonen 
 

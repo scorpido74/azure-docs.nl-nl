@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met SAP Analytics-Cloud | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en de SAP Analytics-Cloud.
+title: 'Zelfstudie: Azure Active Directory-integratie met SAP Analytics Cloud | Microsoft Docs'
+description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en SAP Analytics Cloud.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,103 +16,99 @@ ms.topic: tutorial
 ms.date: 07/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fd01c86086c7491d22f655fcba5da237286412f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: dbe6aed8ae0403f6ab4a7f9e0ba8b9a2c5d61617
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68347797"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86168555"
 ---
-# <a name="tutorial-integrate-sap-analytics-cloud-with-azure-active-directory"></a>Zelf studie: SAP Analytics-Cloud integreren met Azure Active Directory
+# <a name="tutorial-integrate-sap-analytics-cloud-with-azure-active-directory"></a>Zelfstudie: SAP Analytics Cloud integreren met Azure Active Directory
 
-In deze zelf studie leert u hoe u de SAP Analytics-Cloud integreert met Azure Active Directory (Azure AD). Wanneer u de SAP Analytics-Cloud integreert met Azure AD, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u SAP Analytics Cloud kunt integreren met Azure Active Directory (Azure AD). Wanneer u SAP Analytics Cloud integreert met Azure AD, kunt u:
 
-* Controle in azure AD die toegang heeft tot de SAP Analytics-Cloud.
-* Uw gebruikers in staat stellen om automatisch te worden aangemeld bij een SAP Analytics-Cloud met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure Portal.
+* In Azure AD bepalen wie toegang heeft tot SAP Analytics Cloud.
+* Ervoor zorgen dat gebruikers zich automatisch met hun Azure AD-account kunnen aanmelden bij SAP Analytics Cloud.
+* Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende items nodig om aan de slag te gaan:
+U hebt het volgende nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
-* SAP Analytics Cloud-abonnement voor eenmalige aanmelding (SSO) ingeschakeld.
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/).
+* SAP Analytics Cloud-abonnement met eenmalige aanmelding (SSO) ingeschakeld.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
+In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* De SAP Analytics-Cloud ondersteunt door **SP** GEÏNITIEERDe SSO
+* SAP Analytics Cloud ondersteunt door **SP** geïnitieerde eenmalige aanmelding
 
-## <a name="adding-sap-analytics-cloud-from-the-gallery"></a>Een SAP Analytics-Cloud toevoegen vanuit de galerie
+## <a name="adding-sap-analytics-cloud-from-the-gallery"></a>SAP Analytics Cloud toevoegen vanuit de galerie
 
-Als u de integratie van SAP Analytics-Cloud wilt configureren in azure AD, moet u de SAP Analytics-Cloud vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van SAP Analytics Cloud in Azure AD wilt configureren, moet u SAP Analytics Cloud vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
-1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
-1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. Typ in de sectie **toevoegen vanuit de galerie** **SAP Analytics-Cloud** in het zoekvak.
-1. Selecteer een **SAP Analytics-Cloud** in het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **Nieuwe toepassing** om een nieuwe toepassing toe te voegen.
+1. Typ in de sectie **Toevoegen vanuit de galerie** **SAP Analytics Cloud** in het zoekvak.
+1. Selecteer **SAP Analytics Cloud** in het resultatenvenster en voeg de app vervolgens toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-Azure AD SSO configureren en testen met SAP Analytics-Cloud met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in de SAP Analytics-Cloud.
+Configureer en test eenmalige aanmelding van Azure AD met SAP Analytics Cloud met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in SAP Analytics Cloud.
 
-Als u Azure AD SSO wilt configureren en testen met de SAP Analytics-Cloud, voert u de volgende bouw stenen uit:
+Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met SAP Analytics Cloud te configureren en te testen:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
-2. **[SAP Analytics Cloud-SSO configureren](#configure-sap-analytics-cloud-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-3. **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
-4. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
-5. **[Maak een SAP Analytics-test gebruiker](#create-sap-analytics-cloud-test-user)** voor de Cloud, zodat er een equivalent van B. Simon in de SAP Analytics-Cloud is gekoppeld aan de Azure AD-representatie van de gebruiker.
-6. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
+1. **[Eenmalige aanmelding van Azure AD configureren](#configure-azure-ad-sso)** : zodat uw gebruikers deze functie kunnen gebruiken.
+2. **[Eenmalige aanmelding van SAP Analytics Cloud configureren](#configure-sap-analytics-cloud-sso)** : als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wilt configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : om eenmalige aanmelding van Azure AD te testen met B.Simon.
+4. **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** zodat B.Simon eenmalige aanmelding van Azure AD kan gebruiken.
+5. **[Een testgebruiker voor SAP Analytics Cloud maken](#create-sap-analytics-cloud-test-user)** : als u een tegenhanger van B.Simon in SAP Analytics Cloud wilt hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-sso)** : om te controleren of de configuratie werkt.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
+### <a name="configure-azure-ad-sso"></a>Eenmalige aanmelding van Azure AD configureren
 
-Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
+Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Ga in het [Azure Portal](https://portal.azure.com/)naar de integratie pagina van de **SAP Analytics-Cloud** toepassing, zoek de sectie **beheren** en selecteer **eenmalige aanmelding**.
-1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
+1. Zoek in [Azure Portal](https://portal.azure.com/) op de integratiepagina van de toepassing **SAP Analytics Cloud** de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Voer in de sectie **basis configuratie van SAML** de waarden in voor de volgende velden:
+1. In de sectie **Standaard-SAML-configuratie** voert u de waarden in voor de volgende velden:
 
-    a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: 
+    a. In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon:
 
-    | |
-    |-|-|
-    | `https://<sub-domain>.sapanalytics.cloud/` |
-    | `https://<sub-domain>.sapbusinessobjects.cloud/` |
+    - `https://<sub-domain>.sapanalytics.cloud/`
+    - `https://<sub-domain>.sapbusinessobjects.cloud/`
 
-    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon: 
-    
-    | |
-    |-|-|
-    | `<sub-domain>.sapbusinessobjects.cloud` |
-    | `<sub-domain>.sapanalytics.cloud` |
+    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon:
+
+    - `<sub-domain>.sapbusinessobjects.cloud`
+    - `<sub-domain>.sapanalytics.cloud`
 
     > [!NOTE] 
-    > De waarden in deze URL's zijn alleen ter demonstratie. Werk de waarden bij met de werkelijke aanmeldings-URL en identificatie-URL. Neem contact op met het [ondersteunings team voor de cloud client van SAP Analytics](https://help.sap.com/viewer/product/SAP_BusinessObjects_Cloud/release/)om de AANMELDINGS-URL op te halen. U kunt de id-URL ophalen door de meta gegevens van de SAP Analytics-Cloud te downloaden via de beheer console. Dit wordt verderop in de zelfstudie uitgelegd.
+    > De waarden in deze URL's zijn alleen ter demonstratie. Werk de waarden bij met de werkelijke aanmeldings-URL en identificatie-URL. Neem contact op met het [klantondersteuningsteam van SAP Analytics Cloud](https://help.sap.com/viewer/product/SAP_BusinessObjects_Cloud/release/) om de aanmeldings-URL op te vragen. U kunt de identificatie-URL vaststellen door het bestand met metagegevens van SAP Analytics Cloud te downloaden via de beheerconsole. Dit wordt verderop in de zelfstudie uitgelegd.
 
-4. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , de **federatieve meta gegevens-XML** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
+4. Ga op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** naar **XML-bestand met federatieve metagegevens** en selecteer **Downloaden** om het certificaat te downloaden. Sla dit vervolgens op de computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-6. Op de sectie **SAP Analytics-Cloud instellen** kopieert u de gewenste URL ('s) op basis van uw vereiste.
+6. In de sectie **SAP Analytics Cloud instellen** kopieert u de juiste URL('s) op basis van uw behoeften.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
-### <a name="configure-sap-analytics-cloud-sso"></a>SAP Analytics-Cloud-SSO configureren
+### <a name="configure-sap-analytics-cloud-sso"></a>Eenmalige aanmelding van SAP Analytics Cloud configureren
 
-1. Meld u in een ander webbrowser venster aan bij uw SAP Analytics-Cloud bedrijfs site als beheerder.
+1. Meld u in een ander venster van de browser als beheerder aan bij de bedrijfssite van SAP Analytics Cloud.
 
-2. Selecteer **menu** > **systeem** > **beheer**.
+2. Selecteer **Menu** > **System** > **Administration**.
     
     ![Selecteer achtereenvolgens Menu, System en Administration](./media/sapboc-tutorial/config1.png)
 
@@ -132,7 +128,7 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
     ![Selecteer Upload onder Upload Identity Provider metadata](./media/sapboc-tutorial/config5.png)
 
-7. Selecteer in de lijst **User Attribute** het gebruikerskenmerk (stap 3) dat u wilt gebruiken voor uw implementatie. Dit gebruikerskenmerk wordt toegewezen aan de id-provider. Als u een aangepast kenmerk wilt invoeren op de pagina van de gebruiker, gebruikt u de optie **Custom SAML Mapping**. Selecteer anders **Email** of **USER ID** als het gebruikerskenmerk. In ons voorbeeld hebben we **Email** geselecteerd omdat we de claim voor de gebruikers-id met het kenmerk **userprincipalname** hebben toegewezen in de sectie **Gebruikerskenmerken en claims** in de Azure-portal. Dit biedt een unieke gebruikers-e-mail, die wordt verzonden naar de SAP Analytics-Cloud toepassing in elke geslaagde SAML-reactie.
+7. Selecteer in de lijst **User Attribute** het gebruikerskenmerk (stap 3) dat u wilt gebruiken voor uw implementatie. Dit gebruikerskenmerk wordt toegewezen aan de id-provider. Als u een aangepast kenmerk wilt invoeren op de pagina van de gebruiker, gebruikt u de optie **Custom SAML Mapping**. Selecteer anders **Email** of **USER ID** als het gebruikerskenmerk. In ons voorbeeld hebben we **Email** geselecteerd omdat we de claim voor de gebruikers-id met het kenmerk **userprincipalname** hebben toegewezen in de sectie **Gebruikerskenmerken en claims** in de Azure-portal. Hierdoor krijgen we de beschikking over een uniek e-mailadres voor de gebruiker, dat bij elke geslaagde SAML-reactie wordt verzonden naar SAP Analytics Cloud.
 
     ![Gebruikerskenmerk selecteren](./media/sapboc-tutorial/config6.png)
 
@@ -146,59 +142,59 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
+In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
-1. Selecteer **nieuwe gebruiker** boven aan het scherm.
-1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
    1. Voer in het veld **Naam**`B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
-   1. Klik op **maken**.
+   1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
+   1. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u B. Simon in voor het gebruik van eenmalige aanmelding van Azure door toegang te verlenen tot de SAP Analytics-Cloud.
+In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot SAP Analytics Cloud.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
-1. Selecteer in de lijst toepassingen de optie **SAP Analytics-Cloud**.
-1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
+1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **SAP Analytics Cloud** in de lijst met toepassingen.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
-    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
-1. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
+1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-sap-analytics-cloud-test-user"></a>Een SAP Analytics-Cloud test gebruiker maken
+### <a name="create-sap-analytics-cloud-test-user"></a>Een testgebruiker voor SAP Analytics Cloud maken
 
-Azure AD-gebruikers moeten worden ingericht in de SAP Analytics-Cloud voordat ze zich kunnen aanmelden bij de SAP Analytics-Cloud. In de SAP Analytics-Cloud is inrichting een hand matige taak.
+Azure AD-gebruikers moeten worden ingericht in SAP Analytics Cloud voordat ze zich kunnen aanmelden bij SAP Analytics Cloud. In het geval van SAP Analytics Cloud is inrichten een handmatige taak.
 
 Ga als volgt te werk om een gebruikersaccount in te richten:
 
-1. Meld u als beheerder aan bij uw SAP Analytics-Cloud bedrijfs site.
+1. Meld u als beheerder aan bij de bedrijfssite van SAP Analytics Cloud.
 
-2. Selecteer **menu** > **beveiligings** > **gebruikers**.
+2. Selecteer **Menu** > **Security** > **Users**.
 
     ![Werknemer toevoegen](./media/sapboc-tutorial/user1.png)
 
-3. Voeg op de pagina **Users** gegevens toe van de nieuwe gebruiker en selecteer **+**. 
+3. Voeg op de pagina **Users** gegevens toe van de nieuwe gebruiker en selecteer **+** . 
 
     ![Pagina voor toevoegen van gebruikers](./media/sapboc-tutorial/user4.png)
 
     Voer de volgende stappen uit:
 
-    a. Voer in het vak **gebruikers-id** de gebruikers-id van de gebruiker in, zoals **B**.
+    a. Voer in het vak **USER ID** de gebruikers-id van de gebruiker in, zoals **B**.
 
-    b. Voer in het vak **voor naam** de voor naam van de gebruiker in, zoals **B**.
+    b. Voer in het vak **FIRST NAME** de voornaam van de gebruiker in, zoals **B**.
 
     c. Voer in het vak **LAST NAME** de achternaam van de gebruiker in, zoals **Simon**.
 
-    d. Voer in het vak **weergave naam** de volledige naam van de gebruiker in, zoals **B. Simon**.
+    d. Voer in het vak **DISPLAY NAME** de volledige naam van de gebruiker in, zoals **B.Simon**.
 
     e. Voer in het vak **E-MAIL** het e-mailadres van de gebruiker in, zoals `b.simon@contoso.com`.
 
@@ -208,17 +204,17 @@ Ga als volgt te werk om een gebruikersaccount in te richten:
 
     g. Selecteer het pictogram **Save**.
 
-### <a name="test-sso"></a>SSO testen 
+### <a name="test-sso"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel SAP Analytics Cloud in het toegangs venster klikt, moet u automatisch worden aangemeld bij de SAP Analytics-Cloud waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel SAP Analytics Cloud klikt in het toegangsvenster, wordt u automatisch aangemeld bij de instantie van SAP Analytics Cloud waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

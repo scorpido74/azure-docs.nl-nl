@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 686a488934d20894298f7adc80470424a60b29b3
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a21fbcd04c5916e686f13e375bc1854935d1c4fe
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207636"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500341"
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>Veelgestelde vragen over Windows Virtual Machines
 In dit artikel worden enkele veelgestelde vragen over virtuele Windows-machines die zijn gemaakt in azure, behandeld met het Resource Manager-implementatie model. Voor de Linux-versie van dit onderwerp raadpleegt u [Veelgestelde vragen over Linux virtual machines](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -32,7 +32,7 @@ Azure Storage-accounts kunnen ook opslag bieden voor de schijf met het besturing
 ## <a name="how-can-i-access-my-virtual-machine"></a>Hoe kan ik toegang krijgen tot mijn virtuele machine?
 Een externe verbinding tot stand brengen met behulp van Verbinding met extern bureaublad (RDP) voor een Windows-VM. Zie [verbinding maken en aanmelden bij een virtuele Azure-machine met Windows](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)voor instructies. Er worden Maxi maal twee gelijktijdige verbindingen ondersteund, tenzij de server is geconfigureerd als een Extern bureaublad-services-sessiehost.  
 
-Als u problemen ondervindt met Extern bureaublad, raadpleegt u [extern bureaublad verbindingen met een op Windows gebaseerde Azure Virtual Machine oplossen](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+Als u problemen ondervindt met Extern bureaublad, raadpleegt u [extern bureaublad verbindingen met een op Windows gebaseerde Azure Virtual Machine oplossen](../troubleshooting/troubleshoot-rdp-connection.md?toc=/azure/virtual-machines/windows/toc.json). 
 
 Als u bekend bent met Hyper-V, is het mogelijk dat u op zoek bent naar een hulp programma dat lijkt op VMConnect. Azure biedt geen vergelijkbaar hulp programma omdat console toegang tot een virtuele machine niet wordt ondersteund.
 
