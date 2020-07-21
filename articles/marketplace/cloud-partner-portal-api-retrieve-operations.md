@@ -4,18 +4,20 @@ description: API voor het ophalen van alle bewerkingen op de aanbieding of voor 
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 04/08/2020
-ms.openlocfilehash: c0611cb3cbc24e2b105cdef134e30a7c2fbdd445
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 90ff7c4a85fd9e48ac3aa49ace99f43eb0244603
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113459"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520286"
 ---
 # <a name="retrieve-operations"></a>Bewerkingen ophalen
 
 > [!NOTE]
-> De Cloud Partner-portal-Api's zijn geïntegreerd met partner centrum en blijven werken nadat uw aanbiedingen zijn gemigreerd naar het partner centrum. De integratie introduceert kleine wijzigingen. Bekijk de wijzigingen die worden vermeld in [Cloud Partner-Portal API-referentie](./cloud-partner-portal-api-overview.md) om ervoor te zorgen dat uw code blijft werken na de migratie naar het partner centrum.
+> De Cloud Partner-portal-Api's zijn geïntegreerd in en blijven werken in het partner centrum. De overgang introduceert kleine wijzigingen. Controleer de wijzigingen die worden vermeld in [Cloud Partner-Portal API-referentie](./cloud-partner-portal-api-overview.md) om ervoor te zorgen dat uw code blijft werken na het overstappen naar het partner centrum. CCP-Api's mogen alleen worden gebruikt voor bestaande producten die al zijn geïntegreerd vóór de overgang naar het partner centrum. nieuwe producten moeten de indienings-Api's van partner Center gebruiken.
 
 Hiermee haalt u alle bewerkingen op de aanbieding op of krijgt u een bepaalde bewerking voor de opgegeven operationId. De client kan query parameters gebruiken om te filteren op actieve bewerkingen.
 
@@ -27,10 +29,9 @@ Hiermee haalt u alle bewerkingen op de aanbieding op of krijgt u een bepaalde be
 
 ```
 
-
 ## <a name="uri-parameters"></a>URI-para meters
 
-|  **Naam**          |      **Beschrijving**                                                                                           | **Gegevenstype** |
+|  **Naam**          |      **Beschrijving**                                                                                           | **Gegevens type** |
 |  ----------------  |     --------------------------------------------------------------------------------------------------------   |  -----------  |
 |  publisherId       |  Uitgevers-id, bijvoorbeeld`Contoso`                                                                   |  Tekenreeks       |
 |  offerId           |  Aanbiedings-id                                                                                              |  Tekenreeks       |
@@ -38,8 +39,7 @@ Hiermee haalt u alle bewerkingen op de aanbieding op of krijgt u een bepaalde be
 |  api-versie       | Nieuwste versie van API |    Datum      |
 |  |  |  |
 
-## <a name="header"></a>Koptekst
-
+## <a name="header"></a>Header
 
 |  **Naam**          |  **Waarde**           |
 |  ---------------   | -------------------- |
@@ -47,10 +47,9 @@ Hiermee haalt u alle bewerkingen op de aanbieding op of krijgt u een bepaalde be
 |  Autorisatie     | `Bearer YOUR_TOKEN`  |
 |  |  |
 
-
 ## <a name="body-example"></a>Voor beeld van tekst
 
-### <a name="response"></a>Antwoord
+### <a name="response"></a>Reactie
 
 #### <a name="get-operations"></a>GET-bewerkingen
 

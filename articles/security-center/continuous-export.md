@@ -8,11 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: c30fef5c82f831365a11bcb14559b0914a9eda4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b0fbb7c4f680f9d732a63fff7b0b317c6cf1511
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84299941"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519694"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>Beveiligingswaarschuwingen en aanbevelingen exporteren
 
@@ -28,7 +29,6 @@ Met deze hulpprogram ma's kunt u het volgende doen:
 
 
 
-
 ## <a name="availability"></a>Beschikbaarheid
 
 - Release status: **algemeen beschikbaar**
@@ -36,10 +36,7 @@ Met deze hulpprogram ma's kunt u het volgende doen:
     - **Lezer** op het abonnement dat de export configuratie bevat
     - **Rol van beveiligings beheerder** voor de resource groep (of **eigenaar**)
     - Moet ook schrijf machtigingen hebben voor de doel resource
-- Clouds 
-    - ✔ Commerciële Clouds
-    - ✔ US Gov
-    - ✘ China gov, andere gov
+- Clouds: ✔ commerciële Clouds ✔ US Gov ✘ China gov, andere gov
 
 
 ## <a name="setting-up-a-continuous-export"></a>Een continue export instellen
@@ -142,5 +139,5 @@ Raadpleeg de volgende documentatie voor gerelateerde materialen:
 
 - [Documentatie over Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/)
 - [Documentatie voor Azure Sentinel](https://docs.microsoft.com/azure/sentinel/)
-- [Documentatie over Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/)
+- [Azure Monitor-documentatie](https://docs.microsoft.com/azure/azure-monitor/)
 - [Schema's voor werk stroom automatisering en doorlopend exporteren van gegevens typen](https://aka.ms/ASCAutomationSchemas)

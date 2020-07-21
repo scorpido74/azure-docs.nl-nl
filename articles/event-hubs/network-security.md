@@ -3,12 +3,12 @@ title: Netwerk beveiliging voor Azure Event Hubs
 description: In dit artikel wordt beschreven hoe u toegang kunt configureren vanaf privé-eind punten
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: de4c5c6ddc658aab549ccf6960edbca3285e338d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ddb816e872625da06e370a7e130b4dd444de8de7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85312843"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521850"
 ---
 # <a name="network-security-for-azure-event-hubs"></a>Netwerk beveiliging voor Azure Event Hubs 
 In dit artikel wordt beschreven hoe u de volgende beveiligings functies gebruikt met Azure Event Hubs: 
@@ -24,7 +24,7 @@ Een servicetag vertegenwoordigt een groep IP-adres voorvoegsels van een bepaalde
 
 U kunt service tags gebruiken voor het definiëren van netwerk toegangs beheer voor [netwerk beveiligings groepen](../virtual-network/security-overview.md#security-rules)   of [Azure firewall](../firewall/service-tags.md). Gebruik service tags in plaats van specifieke IP-adressen wanneer u beveiligings regels maakt. Door de naam van de service label (bijvoorbeeld **EventHub**) op te geven in het juiste *bron*-   of *doel*   veld van een regel, kunt u het verkeer voor de bijbehorende service toestaan of weigeren.
 
-| Servicetag | Functie | Kunt u inkomend of uitgaand gebruiken? | Kan regionaal worden? | Kunt gebruiken met Azure Firewall? |
+| Servicetag | Doel | Kunt u inkomend of uitgaand gebruiken? | Kan regionaal worden? | Kunt gebruiken met Azure Firewall? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **EventHub** | Azure Event Hubs. | Uitgaand | Ja | Ja |
 
@@ -32,7 +32,7 @@ U kunt service tags gebruiken voor het definiëren van netwerk toegangs beheer v
 ## <a name="ip-firewall"></a>IP-firewall 
 Event Hubs naam ruimten zijn standaard toegankelijk vanuit Internet zolang de aanvraag een geldige verificatie en autorisatie heeft. Met IP-firewall kunt u dit nog verder beperken tot een aantal IPv4-adressen of IPv4-adresbereiken in CIDR-notatie [(Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
 
-Deze functie is handig in scenario's waarin Azure Event Hubs alleen toegankelijk moet zijn vanaf bepaalde bekende sites. Met firewall regels kunt u regels configureren voor het accepteren van verkeer dat afkomstig is van specifieke IPv4-adressen. Als u bijvoorbeeld Event Hubs met [Azure Express route](/azure/expressroute/expressroute-faqs#supported-services)gebruikt, kunt u een **firewall regel** maken om alleen verkeer toe te staan van uw on-premises IP-adressen van de infra structuur. 
+Deze functie is handig in scenario's waarin Azure Event Hubs alleen toegankelijk moet zijn vanaf bepaalde bekende sites. Met firewall regels kunt u regels configureren voor het accepteren van verkeer dat afkomstig is van specifieke IPv4-adressen. Als u bijvoorbeeld Event Hubs met [Azure Express route](../expressroute/expressroute-faqs.md#supported-services)gebruikt, kunt u een **firewall regel** maken om alleen verkeer toe te staan van uw on-premises IP-adressen van de infra structuur. 
 
 De IP-firewall regels worden toegepast op het niveau van de Event Hubs naam ruimte. Daarom gelden de regels voor alle verbindingen van clients die gebruikmaken van elk ondersteund protocol. Een verbindings poging van een IP-adres dat niet overeenkomt met een toegestane IP-regel op de Event Hubs naam ruimte, wordt geweigerd als niet-geautoriseerd. De IP-regel wordt niet vermeld in het antwoord. IP-filter regels worden in volg orde toegepast en de eerste regel die overeenkomt met het IP-adres, bepaalt de accepteren of afwijzen.
 

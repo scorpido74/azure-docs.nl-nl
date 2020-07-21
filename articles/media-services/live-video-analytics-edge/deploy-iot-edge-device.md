@@ -3,12 +3,12 @@ title: Live video Analytics implementeren op een IoT Edge apparaat-Azure
 description: In dit artikel worden de stappen beschreven die u helpen bij het implementeren van live video Analytics op uw IoT Edge-apparaat. U kunt dit bijvoorbeeld doen als u toegang hebt tot een lokale Linux-machine en/of eerder een Azure Media Services-account hebt gemaakt.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: eaaa793bb5b84ac4ae352f242215b8d3e7d56cf1
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 415d22a47e6563e10a1880429537ab182d1ff7a5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026964"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519895"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Live video Analytics implementeren op een IoT Edge apparaat
 
@@ -24,7 +24,7 @@ In dit artikel worden de stappen beschreven die u helpen bij het implementeren v
 * [De Azure IoT Edge-runtime op op Debian gebaseerde Linux-systemen installeren](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)
 * [Een Azure Media Services-account maken](../latest/create-account-howto.md)
     * Gebruik een van deze regio's: VS-Oost 2, VS-midden, Noord-Centraal VS, Japan-Oost, VS-West 2, VS-West-Centraal, Canada-oost, UK-zuid, Frankrijk-centraal, Frankrijk-zuid, Zwitserland-noord, Zwitserland-west en Japan-West.
-    * Het is raadzaam om GPv2-opslag accounts (General-Purpose v2) te gebruiken.
+    * U wordt aangeraden v2-opslag accounts voor algemeen gebruik (GPv2) te gebruiken
 
 ## <a name="configuring-azure-resources-for-using-live-video-analytics"></a>Azure-resources configureren voor het gebruik van live video Analytics
 
@@ -34,7 +34,7 @@ Zie [aangepaste Azure Resource Manager rol maken](create-custom-azure-resource-m
 
 ### <a name="set-up-a-premium-streaming-endpoint"></a>Een Premium-streaming-eind punt instellen
 
-Als u van plan bent om met live video Analytics video op te nemen in de Cloud en deze vervolgens weer af te spelen, moet u uw media service bijwerken om een [Premium-streaming-eind punt](../latest/streaming-endpoint-concept.md#types)te gebruiken.  
+Als u live video Analytics wilt gebruiken om video continu in de Cloud op te nemen en vervolgens [query-api's](playback-recordings-how-to.md#query-api) te gebruiken voordat u deze weer afspeelt, wordt u aangeraden uw media service bij te werken voor het gebruik van een Premium- [streaming-eind punt](../latest/streaming-endpoint-concept.md#types).  
 
 Dit is een optionele stap. U kunt hiervoor de volgende Azure CLI-opdracht gebruiken:
 
@@ -84,12 +84,12 @@ sudo chown -R edgeuser /var/media
 <!-- (To JuliaKo: this is similar to https://docs.microsoft.com/azure/iot-edge/how-to-deploy-blob)-->
 Met de live video Analytics op IoT Edge worden de eigenschappen van de module dubbel weer gegeven die zijn gedocumenteerd in het [Configuratie schema](module-twin-configuration-schema.md)van de module. 
 
-### <a name="deploy-using-the-azure-portal"></a>Implementeren met de Azure-portal
+### <a name="deploy-using-the-azure-portal"></a>Implementeren met behulp van de Azure-portal
 
 De Azure Portal begeleidt u bij het maken van een implementatie manifest en het pushen van de implementatie naar een IoT Edge-apparaat.
 Uw apparaat selecteren
 
-1. Meld u aan bij de [Azure Portal](https://ms.portal.azure.com/) en navigeer naar uw IOT-hub.
+1. Meld u aan bij de [Azure-portal](https://ms.portal.azure.com/) en ga naar uw IoT Hub.
 1. Selecteer **IOT Edge** in het menu.
 1. Klik op de ID van het doel apparaat in de lijst met apparaten.
 1. Selecteer **modules instellen**.

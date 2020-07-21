@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2020
 ms.author: memildin
-ms.openlocfilehash: dfa3f00e668488574abeb08964909a8972c8913f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 115a01fe0b1edc343ed9efd324c4be3b53251566
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83772944"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519504"
 ---
 # <a name="azure-security-center-data-security"></a>Gegevensbeveiliging in Azure Security Center
 Om klanten te helpen bedreigingen te voor komen, te detecteren en erop te reageren, Azure Security Center gegevens verzamelen en verwerken, met inbegrip van configuratie-informatie, meta gegevens, gebeurtenis logboeken en meer. Microsoft voldoet aan strikte nalevings- en beveiligingsrichtlijnen - van het schrijven van code tot de uitvoering van een service.
@@ -40,7 +41,7 @@ Azure Security Center analyseert gegevens uit de volgende bronnen om inzicht in 
 
 **Gegevensgebruik**: Microsoft gebruikt informatie over patronen en bedreigingen die worden gezien tussen meerdere tenants voor het verbeteren van onze mogelijkheden voor voorkoming en detectie; wij doen dit in overeenstemming met de privacyverplichtingen beschreven in onze [Privacyverklaring](https://www.microsoft.com/privacystatement/OnlineServices/Default.aspx).
 
-## <a name="data-location"></a>Gegevenslocatie
+## <a name="data-location"></a>Locatie van gegevens
 
 **Uw werk ruimte (n)**: er is een werk ruimte opgegeven voor de volgende geografische gebieden en gegevens die zijn verzameld van uw virtuele Azure-machines, met inbegrip van bepaalde typen waarschuwings gegevens, worden opgeslagen in de dichtstbijzijnde werk ruimte.
 
@@ -69,7 +70,7 @@ Voor virtuele machines en servers die in andere omgevingen worden uitgevoerd, bi
 Wanneer u Security Center inschakelt in Azure, wordt gegevensverzameling ingeschakeld voor elk van uw Azure-abonnementen. U kunt gegevensverzameling voor uw abonnementen ook inschakelen in het gedeelte Beveiligingsbeleid van Azure Security Center. Wanneer het verzamelen van gegevens is ingeschakeld, wordt de Log Analytics agent door Azure Security Center ingericht op alle bestaande virtuele machines van Azure en nieuwe die worden gemaakt.
 De Log Analytics-agent scant op verschillende aan beveiliging gerelateerde configuraties en legt deze vast in [Event Tracing for Windows](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) -traceringen (etw). Bovendien worden door het besturingssysteem gebeurtenislogboekgebeurtenissen gegenereerd tijdens het uitvoeren van de machine. Voorbeelden van dergelijke gegevens zijn: besturingssysteemtype en -versie, besturingssysteemlogboeken (Windows-gebeurtenislogboeken), actieve processen, computernaam, IP-adressen, aangemelde gebruiker en tenant-ID. De Log Analytics-agent leest vermeldingen in gebeurtenis logboeken en ETW-traceringen en kopieert deze naar uw werk ruimte (n) voor analyse. De Log Analytics agent schakelt ook proces aanmaak gebeurtenissen en controle van de opdracht regel in.
 
-Als u de gratis variant van Azure Security Center gebruikt, kunt u het verzamelen van gegevens van virtuele machines ook uitschakelen in het beveiligingsbeleid. Het verzamelen van gegevens is vereist voor abonnementen uit de prijscategorie Standard. De verzameling van momentopnamen en artefacten voor de VM-schijf is nog steeds ingeschakeld, zelfs als het verzamelen van gegevens is uitgeschakeld.
+Als u de gratis variant van Azure Security Center gebruikt, kunt u het verzamelen van gegevens van virtuele machines ook uitschakelen in het beveiligingsbeleid. Gegevens verzameling is vereist voor abonnementen op de Standard-laag. De verzameling van momentopnamen en artefacten voor de VM-schijf is nog steeds ingeschakeld, zelfs als het verzamelen van gegevens is uitgeschakeld.
 
 ## <a name="data-consumption"></a>Gegevensverbruik
 

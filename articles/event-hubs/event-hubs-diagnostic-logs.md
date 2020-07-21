@@ -3,11 +3,12 @@ title: Diagnostische logboeken instellen-Azure Event hub | Microsoft Docs
 description: Meer informatie over het instellen van activiteiten logboeken en Diagnostische logboeken voor Event hubs in Azure.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 976d8a7127438164c8b807b6f14d3ae877f44b65
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 65c3fc783506eae19c911eb035ebc51b2db19849
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322461"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521935"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Diagnostische logboeken instellen voor een Azure Event Hub
 
@@ -58,7 +59,7 @@ Alle logboeken worden opgeslagen in de indeling van de JavaScript Object Notatio
 
 De JSON-teken reeksen van het archief logboek bevatten elementen die in de volgende tabel worden weer gegeven:
 
-Naam | Description
+Naam | Beschrijving
 ------- | -------
 TaskName | Beschrijving van de mislukte taak
 ActivityId | Interne ID, gebruikt voor bijhouden
@@ -96,7 +97,7 @@ De volgende code is een voor beeld van een JSON-teken reeks in het archief logbo
 
 De JSON-teken reeksen van het operationele logboek bevatten elementen die in de volgende tabel worden weer gegeven:
 
-Naam | Description
+Naam | Beschrijving
 ------- | -------
 ActivityId | Interne ID, gebruikt voor tracking doeleinden |
 Gebeurtenisnaam | Naam van bewerking |
@@ -195,9 +196,9 @@ De JSON-verbindings gebeurtenis van het Event Hubs virtuele netwerk (VNet) bevat
 | SubscriptionId | Azure-abonnements-ID |
 | NamespaceName | Naam van naamruimte |
 | IPAddress | IP-adres van een client die verbinding maakt met de Event Hubs-service |
-| Bewerking | De actie die door de Event Hubs-service wordt uitgevoerd bij de evaluatie van verbindings aanvragen. Ondersteunde acties zijn **verbinding accepteren** en **verbinding weigeren**. |
+| Actie | De actie die door de Event Hubs-service wordt uitgevoerd bij de evaluatie van verbindings aanvragen. Ondersteunde acties zijn **verbinding accepteren** en **verbinding weigeren**. |
 | Reden | Geeft een reden waarom de actie is uitgevoerd |
-| Count | Aantal exemplaren voor de opgegeven actie |
+| Aantal | Aantal exemplaren voor de opgegeven actie |
 | ResourceId | Azure Resource Manager-resource-id. |
 
 ### <a name="example"></a>Voorbeeld
@@ -232,7 +233,7 @@ Door de klant beheerde Key gebruikers logboek JSON bevat elementen die in de vol
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Inleiding tot Event Hubs](event-hubs-what-is-event-hubs.md)
+- [Inleiding tot Event Hubs](./event-hubs-about.md)
 - [Event Hubs-voor beelden](sdks.md)
 - Aan de slag met Event Hubs
     - [.NET Core](get-started-dotnet-standard-send-v2.md)

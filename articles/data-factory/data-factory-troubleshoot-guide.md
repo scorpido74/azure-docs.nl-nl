@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 8/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: ac6081f02ad532b512ecca335b949eec71c060ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 568739ebdce632ae955da5e1cec12635c86af57c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836155"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522853"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Problemen met Azure Data Factory oplossen
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -123,6 +123,14 @@ Raadpleeg [problemen met Azure Data Factory connectors oplossen](connector-troub
 - **Oorzaak**: fout berichten geven verschillende problemen aan, zoals een onverwachte cluster status of een specifieke activiteit. Vaak wordt er geen fout bericht weer gegeven.
 
 - **Aanbeveling**: n.v.t.
+
+### <a name="error-code-3208"></a>Fout code: 3208
+
+- **Bericht**:`An error occurred while sending the request.`
+
+- **Oorzaak**: de netwerk verbinding met de Databricks-service is onderbroken.
+
+- **Aanbeveling**: als u een zelf-hostende Integration runtime gebruikt, zorg er dan voor dat de netwerk verbinding betrouwbaar is van de knoop punten voor Integration runtime. Als u Azure Integration runtime gebruikt, werkt normaal gesp roken opnieuw.
  
 ## <a name="azure-data-lake-analytics"></a>Azure Data Lake Analytics
 

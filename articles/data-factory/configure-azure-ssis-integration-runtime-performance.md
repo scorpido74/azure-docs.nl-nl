@@ -10,12 +10,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
 manager: anandsub
-ms.openlocfilehash: 6a3b463196142691a59f625429953d1e82502f3d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6aaa02c2e14cfc31a11da260da38705ba064ba79
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255531"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523312"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>De Azure-SSIS Integration Runtime configureren voor hoge prestaties
 
@@ -104,11 +104,15 @@ Als er niet veel pakketten kunnen worden uitgevoerd en u wilt dat pakketten snel
 
 Deze gegevens vertegenwoordigen één pakket uitvoering op één worker-knoop punt. Het pakket laadt 3.000.000 records met de voor-en achternaam kolommen van Azure Blob Storage, genereert een volledige naam kolom en schrijft de records met de volledige naam van meer dan 20 tekens naar Azure Blob Storage.
 
+De y-as is het aantal pakketten dat in één uur wordt uitgevoerd. Houd er rekening mee dat dit slechts een test resultaat is van één pakket met geheugen verbruik. Als u de door Voer van uw pakket wilt weten, kunt u het beste de test zelf uitvoeren.
+
 ![Uitvoerings snelheid van SSIS Integration Runtime-pakket](media/configure-azure-ssis-integration-runtime-performance/ssisir-execution-speedV2.png)
 
 ### <a name="configure-for-overall-throughput"></a>Configureren voor algemene door Voer
 
 Als u veel pakketten wilt uitvoeren, en u de meeste algemene door Voer hebt, gebruikt u de informatie in de volgende tabel om een type virtuele machine te kiezen dat geschikt is voor uw scenario.
+
+De y-as is het aantal pakketten dat in één uur wordt uitgevoerd. Houd er rekening mee dat dit slechts een test resultaat is van één pakket met geheugen verbruik. Als u de door Voer van uw pakket wilt weten, kunt u het beste de test zelf uitvoeren.
 
 ![SSIS Integration Runtime maximale totale door Voer](media/configure-azure-ssis-integration-runtime-performance/ssisir-overall-throughputV2.png)
 

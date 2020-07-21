@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/26/2017
-ms.openlocfilehash: 45b53b0e692a1272ba59719655c8d60c90fd6c96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 01ddef37702cb4dedaefb3e94e488ef478f292c3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83834489"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520797"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Aangepaste Api's maken die u kunt aanroepen vanuit Azure Logic Apps
 
@@ -53,8 +54,8 @@ U kunt ook geregistreerde connectors voor micro soft-certificering benoemen. Dit
 Zie voor meer informatie over aangepaste connectors. 
 
 * [Overzicht van aangepaste connectors](../logic-apps/custom-connector-overview.md)
-* [Aangepaste connectors maken van web-Api's](../logic-apps/custom-connector-build-web-api-app-tutorial.md)
-* [Aangepaste connectors registreren in Azure Logic Apps](../logic-apps/logic-apps-custom-connector-register.md)
+* [Aangepaste connectors maken van web-Api's](/connectors/custom-connectors/create-web-api-connector)
+* [Aangepaste connectors registreren in Azure Logic Apps](/connectors/custom-connectors/)
 
 ## <a name="helpful-tools"></a>Handige hulpprogram ma's
 
@@ -172,8 +173,8 @@ Als u bijvoorbeeld uw service regel matig wilt controleren op nieuwe bestanden, 
 
 | Aanvraag bevat `triggerState` ? | API-antwoord | 
 | -------------------------------- | -------------| 
-| No | Retour neer een HTTP- `202 ACCEPTED` status plus een `location` header met `triggerState` ingesteld op de huidige tijd en het `retry-after` interval tot 15 seconden. | 
-| Yes | Controleer uw service op bestanden die worden toegevoegd na de `DateTime` for `triggerState` . | 
+| Nee | Retour neer een HTTP- `202 ACCEPTED` status plus een `location` header met `triggerState` ingesteld op de huidige tijd en het `retry-after` interval tot 15 seconden. | 
+| Ja | Controleer uw service op bestanden die worden toegevoegd na de `DateTime` for `triggerState` . | 
 ||| 
 
 | Aantal gevonden bestanden | API-antwoord | 
@@ -227,7 +228,7 @@ Als u uw aangepaste Api's beschikbaar wilt maken voor alle gebruikers in Logic A
 
 * Voor specifieke hulp bij aangepaste Api's, neemt u contact op met [customapishelp@microsoft.com](mailto:customapishelp@microsoft.com) .
 
-* Ga voor vragen naar de [pagina micro soft Q&een vraag voor Azure Logic apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
+* Ga voor vragen naar de [pagina micro soft Q&een vraag voor Azure Logic apps](/answers/topics/azure-logic-apps.html).
 
 * Ter verbetering van Logic Apps kunt u stemmen op ideeën of ideeën indienen op de [site voor gebruikersfeedback van Logic Apps](https://aka.ms/logicapps-wish). 
 

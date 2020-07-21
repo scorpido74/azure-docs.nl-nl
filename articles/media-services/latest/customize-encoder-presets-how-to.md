@@ -12,18 +12,18 @@ ms.topic: article
 ms.date: 05/03/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: ebe701032e6416b3e007a28db62f5a8235bb1bb1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2bcd5f0e6229c4130dddb48c1a20de1c711c6fcf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80068035"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519878"
 ---
 # <a name="how-to-encode-with-a-custom-transform---net"></a>Coderen met een aangepaste trans formatie-.NET
 
 Wanneer u code ring met Azure Media Services, kunt u snel aan de slag met een van de aanbevolen standaard instellingen op basis van best practices in de branche, zoals wordt getoond in de zelf studie voor [streaming-bestanden](stream-files-tutorial-with-api.md) . U kunt ook een aangepaste voor instelling maken om uw specifieke scenario-of apparaat vereisten te bereiken.
 
-## <a name="considerations"></a>Overwegingen
+## <a name="considerations"></a>Aandachtspunten
 
 Bij het maken van aangepaste voor instellingen gelden de volgende overwegingen:
 
@@ -52,7 +52,7 @@ Bij het maken van een [transformatie](https://docs.microsoft.com/rest/api/media/
 
 ### <a name="example"></a>Voorbeeld
 
-In het volgende voor beeld wordt een set uitvoer gedefinieerd die we willen genereren wanneer deze trans formatie wordt gebruikt. We voegen eerst een AacAudio-laag toe voor de audio codering en twee H264Video-lagen voor de video codering. In de video lagen worden labels toegewezen zodat ze kunnen worden gebruikt in de naam van het uitvoer bestand. Vervolgens willen we dat de uitvoer ook miniaturen bevat. In het onderstaande voor beeld geven we installatie kopieën op in PNG-indeling, gegenereerd om 50% van de oplossing van de video-invoer en met drie time Stamps-{25%, 50%, 75} van de lengte van de invoer video. Ten slotte geven we de indeling voor de uitvoer bestanden op: één voor video en audio, en een andere voor de miniaturen. Omdat we meerdere H264Layers hebben, moeten we macro's gebruiken waarmee unieke namen per laag worden geproduceerd. We kunnen een `{Label}` or `{Bitrate}` -macro gebruiken, maar in het voor beeld wordt het voormalige weer gegeven.
+In het volgende voor beeld wordt een set uitvoer gedefinieerd die we willen genereren wanneer deze trans formatie wordt gebruikt. We voegen eerst een AacAudio-laag toe voor de audio codering en twee H264Video-lagen voor de video codering. In de video lagen worden labels toegewezen zodat ze kunnen worden gebruikt in de naam van het uitvoer bestand. Vervolgens willen we dat de uitvoer ook miniaturen bevat. In het onderstaande voor beeld geven we afbeeldingen op in PNG-indeling, gegenereerd om 50% van de oplossing van de video-invoer en met drie time Stamps-{25%, 50%, 75%} van de lengte van de invoer video. Ten slotte geven we de indeling voor de uitvoer bestanden op: één voor video en audio, en een andere voor de miniaturen. Omdat we meerdere H264Layers hebben, moeten we macro's gebruiken waarmee unieke namen per laag worden geproduceerd. We kunnen een `{Label}` or `{Bitrate}` -macro gebruiken, maar in het voor beeld wordt het voormalige weer gegeven.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/EncodeCustomTransform/MediaV3ConsoleApp/Program.cs#EnsureTransformExists)]
 

@@ -7,12 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/30/2020
-ms.openlocfilehash: 1f65feee8806b0c8dc85e14cdcd6e2687e040456
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/14/2020
+ms.openlocfilehash: 00080322b4fa474e5095d40afb041134e1a85fe7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84119210"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519730"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Een prijs categorie kiezen voor Azure Cognitive Search
 
@@ -22,14 +23,17 @@ De meeste klanten beginnen met de gratis laag zodat ze de service kunnen evaluer
 
 ## <a name="feature-availability-by-tier"></a>Beschik baarheid van functies per laag
 
-Bijna elke functie is beschikbaar op elke laag, inclusief gratis, maar een functie of werk stroom die veel resources vergt, werkt mogelijk niet goed, tenzij u voldoende capaciteit hebt. [AI-verrijking](cognitive-search-concept-intro.md) heeft bijvoorbeeld langlopende vaardig heden waarvoor een time-out optreedt op een gratis service, tenzij de gegevensset klein is.
-
 In de volgende tabel worden de functie beperkingen voor de laag beschreven.
 
 | Functie | Beperkingen |
 |---------|-------------|
 | [Indexeer functies](search-indexer-overview.md) | Indexeer functies zijn niet beschikbaar op S3 HD. |
-| [Door de klant beheerde versleutelings sleutels](search-security-manage-encryption-keys.md) | Niet beschikbaar in de gratis laag. |
+| [AI-verrijking](search-security-manage-encryption-keys.md) | Wordt uitgevoerd op de gratis laag, maar wordt niet aanbevolen. |
+| [Door de klant beheerde versleutelingssleutels](search-security-manage-encryption-keys.md) | Niet beschikbaar in de gratis laag. |
+| [Toegang tot IP-firewall](service-configure-firewall.md) | Niet beschikbaar in de gratis laag. |
+| [Integratie met persoonlijke Azure-koppeling](service-create-private-endpoint.md) | Niet beschikbaar in de gratis laag. |
+
+De meeste functies zijn beschikbaar op elke laag, inclusief gratis, maar bron-intensieve functies werken mogelijk niet goed, tenzij u voldoende capaciteit hebt. [AI-verrijking](cognitive-search-concept-intro.md) heeft bijvoorbeeld langlopende vaardig heden waarvoor een time-out optreedt op een gratis service, tenzij de gegevensset klein is.
 
 ## <a name="tiers-skus"></a>Lagen (Sku's)
 
@@ -56,10 +60,10 @@ Meer informatie over de verschillende lagen op de [pagina met prijzen](https://a
 
 Een oplossing op basis van Azure Cognitive Search kan op de volgende manieren kosten in rekening worden gebracht:
 
-+ Vaste kosten van de service zelf, met 24x7, op minimale configuratie (één partitie en replica)
-+ Incrementele kosten bij omhoog schalen (replica's of partities toevoegen)
++ Kosten van de service zelf, met 24x7, op minimale configuratie (één partitie en replica)
++ Capaciteit (replica's of partities) toevoegen
 + Bandbreedte kosten (uitgaande gegevens overdracht) 
-+ Cognitieve zoek opdracht (Cognitive Services koppelen voor AI-verrijking of Azure Storage gebruiken voor Knowledge Store)
++ Add-on Services, zoals AI-verrijking (het koppelen van Cognitive Services in vaardig heden die AI-verwerking definiëren, of het gebruik van Azure Storage voor Knowledge Store) of het implementeren van een zoek service in een particulier virtueel netwerk
 
 ### <a name="service-costs"></a>Service kosten
 
@@ -71,7 +75,7 @@ Wanneer u de kosten van een zoek oplossing wilt schatten, houd er dan rekening m
 
 ### <a name="bandwidth-charges"></a>Bandbreedte kosten
 
-Het gebruik van [Azure Cognitive Search Indexeer functies](search-indexer-overview.md) kan van invloed zijn op facturering, afhankelijk van de locatie van uw services. U kunt de kosten voor het uitvallen van gegevens volledig elimineren als u de Azure Cognitive Search-service in dezelfde regio maakt als uw gegevens. Hier vindt u informatie op de [pagina met bandbreedte prijzen](https://azure.microsoft.com/pricing/details/bandwidth/):
+Het gebruik van [Indexeer functies](search-indexer-overview.md) kan van invloed zijn op facturering, afhankelijk van de locatie van uw services. U kunt de kosten voor het uitvallen van gegevens volledig elimineren als u de Azure Cognitive Search-service in dezelfde regio maakt als uw gegevens. Hier vindt u informatie op de [pagina met bandbreedte prijzen](https://azure.microsoft.com/pricing/details/bandwidth/):
 
 + Micro soft brengt geen kosten in rekening voor alle inkomende gegevens van een service op Azure, of voor uitgaande gegevens van Azure Cognitive Search.
 + In oplossingen voor meer dan één service worden er geen kosten in rekening gebracht voor gegevens die de bedrading overschrijden wanneer alle services zich in dezelfde regio bevinden.
@@ -107,7 +111,7 @@ De meeste klanten brengen slechts een deel van de totale capaciteit online, waar
 
 ## <a name="how-to-manage-costs"></a>Kosten beheren
 
-Aan de hand van de volgende suggesties kunt u de kosten ten minste verlagen:
+U kunt de volgende suggesties gebruiken om kosten te verlagen of de kosten effectiever te beheren:
 
 + Maak alle resources in dezelfde regio, of in zo weinig mogelijk regio's, om bandbreedte kosten te minimaliseren of te elimineren.
 
@@ -140,7 +144,7 @@ De capaciteit en de kosten voor het uitvoeren van de service hand matig. De lage
 
 Bedrijfs vereisten bepalen doorgaans het aantal indexen dat u nodig hebt. U hebt bijvoorbeeld een algemene index nodig voor een grote opslag ruimte van documenten. Of u hebt meerdere indexen nodig op basis van de regio-, toepassings-of Business-niche.
 
-Als u de grootte van een index wilt bepalen, moet u er [een maken](search-create-index-portal.md). De grootte is gebaseerd op de geïmporteerde gegevens en de index configuratie, zoals of u suggesties, filteren en sorteren inschakelt. Zie [Create a Basic index ](search-what-is-an-index.md)(Engelstalig) voor meer informatie over de configuratie-impact op grootte.
+Als u de grootte van een index wilt bepalen, moet u er [een maken](search-what-is-an-index.md). De grootte is gebaseerd op de geïmporteerde gegevens en de index configuratie, zoals of u suggesties, filteren en sorteren inschakelt.
 
 Voor zoeken in volledige tekst is de primaire gegevens structuur een [omgekeerde index](https://en.wikipedia.org/wiki/Inverted_index) structuur, die andere kenmerken heeft dan de bron gegevens. Voor een omgekeerde index worden de grootte en complexiteit bepaald door de inhoud, niet noodzakelijkerwijs door de hoeveelheid gegevens die u in de feed invoert. Een grote gegevens bron met hoge redundantie kan resulteren in een kleinere index dan een kleinere gegevensset die zeer variabele inhoud bevat. Het is dus zelden mogelijk de index grootte af te leiden op basis van de grootte van de oorspronkelijke gegevensset.
 
@@ -154,7 +158,7 @@ Een benadering voor het schatten van capaciteit is om te beginnen met de laag gr
 
 + [Maak een gratis service](search-create-service-portal.md).
 + Bereid een kleine, representatieve gegevensset voor.
-+ [Bouw een initiële index in de portal](search-create-index-portal.md) en noteer de grootte ervan. Functies en kenmerken hebben invloed op de opslag. Als u bijvoorbeeld suggesties toevoegt (query's met Search-as-u-type), worden de opslag vereisten verhoogd. Met dezelfde gegevensset kunt u proberen meerdere versies van een index te maken met verschillende kenmerken voor elk veld om te zien hoe opslag vereisten variëren. Zie [' implicaties voor opslag ' in Create a Basic index](search-what-is-an-index.md#index-size)(Engelstalig) voor meer informatie.
++ [Bouw een initiële index in de portal](search-get-started-portal.md) en noteer de grootte ervan. Functies en kenmerken hebben invloed op de opslag. Als u bijvoorbeeld suggesties toevoegt (query's met Search-as-u-type), worden de opslag vereisten verhoogd. Met dezelfde gegevensset kunt u proberen meerdere versies van een index te maken met verschillende kenmerken voor elk veld om te zien hoe opslag vereisten variëren. Zie [' implicaties voor opslag ' in Create a Basic index](search-what-is-an-index.md#index-size)(Engelstalig) voor meer informatie.
 
 Met een ruwe schatting kunt u de hoeveelheid die u wilt budget teren voor twee indexen (ontwikkeling en productie) en vervolgens uw laag vervolgens kiezen.
 
@@ -170,7 +174,7 @@ Toegewezen resources kunnen grotere sampling-en verwerkings tijden bieden voor r
     + Start hoog, op S2 of zelfs S3, als u weet dat u grote hoeveel heden indexen en query's kunt laden.
     + Begin met opslag die is geoptimaliseerd, bij L1 of L2, als u een grote hoeveelheid gegevens wilt indexeren en de belasting van query's relatief laag is, net als bij een interne zakelijke toepassing.
 
-1. [Bouw een initiële index](search-create-index-portal.md) om te bepalen hoe bron gegevens worden omgezet in een index. Dit is de enige manier om de index grootte te schatten.
+1. [Bouw een initiële index](search-what-is-an-index.md) om te bepalen hoe bron gegevens worden omgezet in een index. Dit is de enige manier om de index grootte te schatten.
 
 1. [Bewaak opslag, service limieten, query volume en latentie](search-monitor-usage.md) in de portal. In de portal worden query's per seconde, vertraagde query's en zoek latentie weer gegeven. Al deze waarden kunnen u helpen bij het bepalen of u de juiste laag hebt geselecteerd. 
 

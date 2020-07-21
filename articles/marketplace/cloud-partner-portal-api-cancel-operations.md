@@ -4,20 +4,20 @@ description: De API voor het annuleren van een bewerking die momenteel wordt uit
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-author: anbene
+author: emuench
 ms.author: mingshen
-ms.date: 06/16/2020
-ms.openlocfilehash: e65f0a8ee0a5dfafab681010006fe190cb5bad70
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/14/2020
+ms.openlocfilehash: 462ca525be9cf46c87acdf4025223a98afaf8e3b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102749"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520371"
 ---
 # <a name="cancel-operation"></a>Bewerking annuleren
 
 > [!NOTE]
-> De Cloud Partner-portal-Api's zijn geïntegreerd met partner centrum en blijven werken nadat uw aanbiedingen zijn gemigreerd naar het partner centrum. De integratie introduceert kleine wijzigingen. Bekijk de wijzigingen die worden vermeld in [Cloud Partner-Portal API-referentie](./cloud-partner-portal-api-overview.md) om ervoor te zorgen dat uw code blijft werken na de migratie naar het partner centrum.
+> De Cloud Partner-portal-Api's zijn geïntegreerd in en blijven werken in het partner centrum. De overgang introduceert kleine wijzigingen. Controleer de wijzigingen die worden vermeld in [Cloud Partner-Portal API-referentie](./cloud-partner-portal-api-overview.md) om ervoor te zorgen dat uw code blijft werken na het overstappen naar het partner centrum. CCP-Api's mogen alleen worden gebruikt voor bestaande producten die al zijn geïntegreerd vóór de overgang naar het partner centrum. nieuwe producten moeten de indienings-Api's van partner Center gebruiken.
 
 Deze API annuleert een bewerking die momenteel wordt uitgevoerd op de aanbieding. Gebruik de Get [Operations API](./cloud-partner-portal-api-retrieve-operations.md) om een `operationId` aan te geven aan deze API. Annulering is doorgaans een synchrone bewerking, maar in sommige complexe scenario's is het mogelijk dat er een nieuwe bewerking moet worden uitgevoerd om een bestaand item te annuleren. In dit geval bevat de HTTP-antwoord tekst de locatie van de bewerking die moet worden gebruikt voor het opvragen van de status.
 
@@ -27,14 +27,14 @@ Deze API annuleert een bewerking die momenteel wordt uitgevoerd op de aanbieding
 
 --------------
 
-|  **Naam**    |      **Beschrijving**                                  |    **Gegevenstype**  |
+|  **Naam**    |      **Beschrijving**                                  |    **Gegevens type**  |
 | ------------ |     ----------------                                  |     -----------   |
 | publisherId  |  Uitgevers-id, bijvoorbeeld`contoso`         |   Tekenreeks          |
 | offerId      |  Aanbiedings-id                                     |   Tekenreeks          |
 | api-versie  |  Huidige versie van API                               |    Datum           |
 |  |  |  |
 
-## <a name="header"></a>Koptekst
+## <a name="header"></a>Header
 ------
 
 |  **Naam**              |  **Waarde**         |
@@ -63,7 +63,7 @@ Deze API annuleert een bewerking die momenteel wordt uitgevoerd op de aanbieding
 |  melding-e-mail berichten     | Door komma's gescheiden lijst met e-mail-Id's die moeten worden geïnformeerd over de voortgang van de publicatie bewerking. |
 |  |  |
 
-### <a name="response"></a>Antwoord
+### <a name="response"></a>Reactie
 
 #### <a name="migrated-offers"></a>Gemigreerde aanbiedingen
 

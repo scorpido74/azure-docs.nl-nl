@@ -7,13 +7,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 07/08/2020
-ms.openlocfilehash: 8ad7cfad0a17608af6b59b712d1f0c2b72b49a61
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.date: 07/16/2020
+ms.openlocfilehash: adbe3ceb72d88c2a6441c04d876d92ac2ab85930
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223649"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522768"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>Bron transformatie in gegevens stroom toewijzen 
 
@@ -43,12 +43,12 @@ Toewijzing van gegevens stroom volgt een extractie benadering, Load, Transform (
 
 | Connector | Indeling | Gegevensset/inline |
 | --------- | ------ | -------------- |
-| [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties) <br> [Tekst met scheidings tekens](format-delimited-text.md#mapping-data-flow-properties) <br> [Delta (preview-versie)](format-delta.md) <br> [Excel](format-excel.md#mapping-data-flow-properties) <br> [JSON](format-json.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties) | ✓/- <br> ✓/- <br> -/✓ <br> ✓/✓ <br/> ✓/- <br> ✓/- |
-| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties) <br> [Tekst met scheidings tekens](format-delimited-text.md#mapping-data-flow-properties) <br> [Excel](format-excel.md#mapping-data-flow-properties) <br> [JSON](format-json.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties)  | ✓/- <br> ✓/- <br>✓/✓ <br/> ✓/- <br> ✓/- |
-| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties)  <br> [Common data model (preview-versie)](format-common-data-model.md#source-properties) <br> [Tekst met scheidings tekens](format-delimited-text.md#mapping-data-flow-properties) <br> [Delta (preview-versie)](format-delta.md) <br> [Excel](format-excel.md#mapping-data-flow-properties) <br> [JSON](format-json.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties) | ✓/-<br/> -/✓ <br> ✓/- <br> -/✓ <br> ✓/✓ <br>✓/- <br/> ✓/- |
+| [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties)<br>[Tekst met scheidings tekens](format-delimited-text.md#mapping-data-flow-properties)<br>[Delta (preview-versie)](format-delta.md)<br>[Excel](format-excel.md#mapping-data-flow-properties)<br>[JSON](format-json.md#mapping-data-flow-properties) <br>[Parquet](format-parquet.md#mapping-data-flow-properties)<br>[XML](format-xml.md#mapping-data-flow-properties) | ✓/-<br>✓/-<br>-/✓<br>✓/✓<br/>✓/-<br>✓/-<br>✓/✓ |
+| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties)<br>[Tekst met scheidings tekens](format-delimited-text.md#mapping-data-flow-properties)<br>[Excel](format-excel.md#mapping-data-flow-properties)<br>[JSON](format-json.md#mapping-data-flow-properties)<br>[Parquet](format-parquet.md#mapping-data-flow-properties)<br>[XML](format-xml.md#mapping-data-flow-properties)  | ✓/-<br>✓/-<br>✓/✓<br/>✓/-<br>✓/-<br>✓/✓ |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties)<br>[Common data model (preview-versie)](format-common-data-model.md#source-properties)<br>[Tekst met scheidings tekens](format-delimited-text.md#mapping-data-flow-properties)<br>[Delta (preview-versie)](format-delta.md)<br>[Excel](format-excel.md#mapping-data-flow-properties)<br>[JSON](format-json.md#mapping-data-flow-properties)<br>[Parquet](format-parquet.md#mapping-data-flow-properties)<br>[XML](format-xml.md#mapping-data-flow-properties) | ✓/-<br/>-/✓<br>✓/-<br>-/✓<br>✓/✓<br>✓/-<br/>✓/-<br>✓/✓ |
 | [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/- |
 | [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/- |
-| [Azure-CosmosDB (SQL-API)](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure Cosmos DB (SQL API)](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
 
 De instellingen die specifiek zijn voor deze connectors bevinden zich op het tabblad **bron opties** . voor beelden van informatie en gegevensstroom scripts in deze instellingen vindt u in de documentatie van de connector. 
 
@@ -103,7 +103,7 @@ U kunt de kolom gegevens typen wijzigen in een trans formatie die is afgeleid va
 
 Met de knop **schema importeren** op het tabblad **projectie** kunt u een actief debug-cluster gebruiken om een schema projectie te maken. Bij het importeren van het schema dat in elk bron type beschikbaar is, wordt de projectie die in de gegevensset is gedefinieerd, overschreven. Het object dataset wordt niet gewijzigd.
 
-Dit is handig in gegevens sets zoals Avro en CosmosDB die ondersteuning bieden voor complexe gegevens structuren waarvoor geen schema definities in de gegevensset bestaan. Voor inline gegevens sets is dit de enige manier om te verwijzen naar kolom meta gegevens zonder schema-drift.
+Dit is handig in gegevens sets zoals Avro en Azure Cosmos DB die complexe gegevens structuren ondersteunen, hoeven geen schema definities te bestaan in de gegevensset. Voor inline gegevens sets is dit de enige manier om te verwijzen naar kolom meta gegevens zonder schema-drift.
 
 ## <a name="optimize-the-source-transformation"></a>De bron transformatie optimaliseren
 

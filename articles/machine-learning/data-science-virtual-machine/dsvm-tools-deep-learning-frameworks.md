@@ -11,18 +11,19 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 25ce99d3dced3caf1ec4bcce13b062b28774642d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c56c7a0d6f0400811d085f60fd71fe72b88bf9ee
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84557490"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520558"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>Diep gaande lessen en AI-frameworks voor Azure Data Science VM
 Uitgebreide lessen op het DSVM worden hieronder weer gegeven.
 
 ## <a name="caffe"></a>[Caffe](https://github.com/BVLC/caffe)
 
-|    |           |
+| Categorie | Waarde |
 | ------------- | ------------- |
 | Ondersteunde versies | |
 | Ondersteunde DSVM-edities      | Linux (Ubuntu)     |
@@ -31,7 +32,7 @@ Uitgebreide lessen op het DSVM worden hieronder weer gegeven.
 
 ## <a name="caffe2"></a>[Caffe2](https://github.com/caffe2/caffe2)
 
-|    |           |
+| Categorie | Waarde |
 | ------------- | ------------- |
 | Ondersteunde versies | |
 | Ondersteunde DSVM-edities      | Linux (Ubuntu)     |
@@ -40,7 +41,7 @@ Uitgebreide lessen op het DSVM worden hieronder weer gegeven.
 
 ## <a name="chainer"></a>[Chainer](https://chainer.org/)
 
-|    |           |
+| Categorie | Waarde |
 | ------------- | ------------- |
 | Ondersteunde versies | 5.2 |
 | Ondersteunde DSVM-edities      | Linux (Ubuntu)     |
@@ -49,7 +50,7 @@ Uitgebreide lessen op het DSVM worden hieronder weer gegeven.
 
 ## <a name="cuda-cudnn-nvidia-driver"></a>[CUDA-, cuDNN-, NVIDIA-stuurprogramma](https://developer.nvidia.com/cuda-toolkit)
 
-|    |           |
+| Categorie | Waarde |
 | ------------- | ------------- |
 | Ondersteunde versies | 10.0.130|
 | Ondersteunde DSVM-edities      | Windows en Linux   |
@@ -59,7 +60,7 @@ Uitgebreide lessen op het DSVM worden hieronder weer gegeven.
 
 ## <a name="horovod"></a>[Horovod](https://github.com/uber/horovod)
 
-|    |           |
+| Categorie | Waarde |
 | ------------- | ------------- |
 | Ondersteunde versies | 0.16.1|
 | Ondersteunde DSVM-edities      | Linux (Ubuntu)   |
@@ -68,7 +69,7 @@ Uitgebreide lessen op het DSVM worden hieronder weer gegeven.
 
 ## <a name="keras"></a>[Keras](https://keras.io/)
 
-|    |           |
+| Categorie | Waarde |
 | ------------- | ------------- |
 | Ondersteunde versies | 2.2.4 |
 | Ondersteunde DSVM-edities      | Windows en Linux   |
@@ -77,7 +78,7 @@ Uitgebreide lessen op het DSVM worden hieronder weer gegeven.
 
 ## <a name="microsoft-cognitive-toolkit-cntk"></a>[Microsoft Cognitive Toolkit (CNTK)](https://docs.microsoft.com/cognitive-toolkit/)
 
-|    |           |
+| Categorie | Waarde |
 | ------------- | ------------- |
 | Ondersteunde versies | 2.5.1 |
 | Ondersteunde DSVM-edities      | Windows en Linux   |
@@ -85,7 +86,7 @@ Uitgebreide lessen op het DSVM worden hieronder weer gegeven.
 | Het uitvoeren van het programma      | Terminal: Activeer de juiste omgeving en voer python uit. <br/>Jupyter: Maak verbinding met [Jupyter](provision-vm.md) of [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)en open vervolgens de map CNTK voor voor beelden. |
 
 ## <a name="mxnet"></a>[MXNet](https://mxnet.apache.org/)
-|    |           |
+| Categorie | Waarde |
 | ------------- | ------------- |
 | Ondersteunde versies | 1.3.0 |
 | Ondersteunde DSVM-edities      | Windows en Linux   |
@@ -94,7 +95,7 @@ Uitgebreide lessen op het DSVM worden hieronder weer gegeven.
 
 ## <a name="mxnet-model-server"></a>[MXNet Model Server](https://github.com/awslabs/mxnet-model-server#quick-start)
 
-|    |           |
+| Categorie | Waarde |
 | ------------- | ------------- |
 | Ondersteunde versies | 1.0.1 |
 | Ondersteunde DSVM-edities      | Windows en Linux   |
@@ -103,7 +104,7 @@ Uitgebreide lessen op het DSVM worden hieronder weer gegeven.
 
 ## <a name="nvidia-system-management-interface-nvidia-smi"></a>[NVidia-systeem beheer interface (NVIDIA-SMI)](https://developer.nvidia.com/nvidia-system-management-interface)
 
-|    |           |
+| Categorie | Waarde |
 | ------------- | ------------- |
 | Ondersteunde versies |  |
 | Ondersteunde DSVM-edities      | Windows en Linux   |
@@ -113,7 +114,7 @@ Uitgebreide lessen op het DSVM worden hieronder weer gegeven.
 
 ## <a name="pytorch"></a>[PyTorch](https://pytorch.org/)
 
-|    |           |
+| Categorie | Waarde |
 | ------------- | ------------- |
 | Ondersteunde versies | 1.2.0 (Ubuntu 16,04, Windows 2016), 1.4.0 (Ubuntu 18,04, Windows 2019) |
 | Ondersteunde DSVM-edities      | Linux |
@@ -122,7 +123,7 @@ Uitgebreide lessen op het DSVM worden hieronder weer gegeven.
 
 ## <a name="tensorflow"></a>[TensorFlow](https://www.tensorflow.org/)
 
-|    |           |
+| Categorie | Waarde |
 | ------------- | ------------- |
 | Ondersteunde versies | 1.13 |
 | Ondersteunde DSVM-edities      | Windows, Linux |
@@ -131,7 +132,7 @@ Uitgebreide lessen op het DSVM worden hieronder weer gegeven.
 
 ## <a name="tensorflow-serving"></a>[TensorFlow Serving](https://www.tensorflow.org/serving/)
 
-|    |           |
+| Categorie | Waarde |
 | ------------- | ------------- |
 | Ondersteunde versies | 1.12 |
 | Ondersteunde DSVM-edities      | Linux |
@@ -141,7 +142,7 @@ Uitgebreide lessen op het DSVM worden hieronder weer gegeven.
 
 ## <a name="theano"></a>[Theano](https://github.com/Theano/Theano)
 
-|    |           |
+| Categorie | Waarde |
 | ------------- | ------------- |
 | Ondersteunde versies | 1.0.3 |
 | Ondersteunde DSVM-edities      | Linux |

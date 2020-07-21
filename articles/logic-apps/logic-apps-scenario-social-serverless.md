@@ -8,11 +8,12 @@ ms.author: jehollan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: e300bf9c9aa0acf0bed6426eb73f690f9a38bd74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2fae7d2526e6c95efe83ca8fa742a6d92457b897
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75980424"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520746"
 ---
 # <a name="create-a-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Maak een streaming-dash board voor klanten inzichten met Azure Logic Apps en Azure Functions
 
@@ -21,7 +22,7 @@ Azure biedt [serverloze](https://azure.microsoft.com/solutions/serverless/) hulp
 Voor deze oplossing gebruikt u de volgende belang rijke Azure-onderdelen voor serverloze apps: [Azure functions](https://azure.microsoft.com/services/functions/) en [Azure Logic apps](https://azure.microsoft.com/services/logic-apps/).
 Azure Logic Apps biedt een serverloze werk stroom-engine in de Cloud, zodat u met serverloze onderdelen kunt maken en verbinding met de services en Api's van 200 en de API. Azure Functions biedt serverloze computers in de Cloud. Deze oplossing maakt gebruik van Azure Functions voor het markeren van klant tweets op basis van vooraf gedefinieerde tref woorden.
 
-In dit scenario maakt u een logische app die activeert om feedback van klanten te vinden. Voor sommige connectors kunt u reageren op feedback van klanten, waaronder Outlook.com, Office 365, Survey aap, Twitter en een [HTTP-aanvraag van een webformulier](https://blogs.msdn.microsoft.com/logicapps/2017/01/30/calling-a-logic-app-from-an-html-form/). De werk stroom die u maakt, bewaakt een hashtag op Twitter.
+In dit scenario maakt u een logische app die activeert om feedback van klanten te vinden. Voor sommige connectors kunt u reageren op feedback van klanten, waaronder Outlook.com, Office 365, Survey aap, Twitter en een [HTTP-aanvraag van een webformulier](/archive/blogs/logicapps/calling-a-logic-app-from-an-html-form). De werk stroom die u maakt, bewaakt een hashtag op Twitter.
 
 U kunt [de volledige oplossing in Visual Studio bouwen](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md) en [de oplossing implementeren met Azure Resource Manager sjabloon](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md). [Bekijk deze Channel 9-video](https://aka.ms/logicappsdemo)voor een video-overzicht waarin wordt getoond hoe u deze oplossing maakt. 
 
@@ -66,7 +67,7 @@ U kunt ook een Azure-functie maken, zodat u aangepaste verwerking voor uw gegeve
 
 ## <a name="process-data-with-azure-functions"></a>Gegevens verwerken met Azure Functions
 
-Voordat u een functie maakt, maakt u een functie-app in uw Azure-abonnement. Voor uw logische app is het ook mogelijk om een functie rechtstreeks aan te roepen, de functie moet een binding met een HTTP-trigger hebben, bijvoorbeeld de **http trigger** -sjabloon. Meer informatie [over het maken van uw eerste functie-app en functie in de Azure Portal](../azure-functions/functions-create-first-azure-function-azure-portal.md).
+Voordat u een functie maakt, maakt u een functie-app in uw Azure-abonnement. Voor uw logische app is het ook mogelijk om een functie rechtstreeks aan te roepen, de functie moet een binding met een HTTP-trigger hebben, bijvoorbeeld de **http trigger** -sjabloon. Meer informatie [over het maken van uw eerste functie-app en functie in de Azure Portal](../azure-functions/functions-create-first-azure-function.md).
 
 Voor dit scenario gebruikt u de Tweet-tekst als de aanvraag tekst voor uw Azure-functie. Definieer in uw functie code de logica die bepaalt of de Tweet-tekst een sleutel woord of een woord groep bevat. Zorg ervoor dat de functie zo eenvoudig of complex is als nodig is voor het scenario.
 Aan het einde van de functie retourneert een antwoord op de logische app met enkele gegevens, bijvoorbeeld een eenvoudige Booleaanse waarde, zoals `containsKeyword` of een complex object.

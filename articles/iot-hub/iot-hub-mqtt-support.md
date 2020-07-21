@@ -10,11 +10,12 @@ ms.author: robinsh
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: c3fa56daee5d2dba98fa9fd420524a9b7e4c60ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2f1f059f3abfd04ae78d9a2a19cff2929e84b8a4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83726108"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521119"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Communiceren met uw IoT-hub met behulp van het MQTT-Protocol
 
@@ -75,11 +76,11 @@ Om ervoor te zorgen dat een client/IoT Hub verbinding actief blijft, worden zowe
 
 |Taal  |Standaard interval voor Keep-Alive  |Configureerbaar  |
 |---------|---------|---------|
-|Node.js     |   180 seconden      |     No    |
-|Java     |    230 seconden     |     No    |
+|Node.js     |   180 seconden      |     Nee    |
+|Java     |    230 seconden     |     Nee    |
 |C     | 240 seconden |  [Ja](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md#mqtt-transport)   |
 |C#     | 300 seconden |  [Ja](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/src/Transport/Mqtt/MqttTransportSettings.cs#L89)   |
-|Python (v2)   | 60 seconden |  No   |
+|Python (v2)   | 60 seconden |  Nee   |
 
 De volgende [MQTT-specificatie](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718081), het Keep-Alive ping-interval van IoT Hub is 1,5 keer de client Keep-Alive-waarde. IoT Hub beperkt echter de maximale time-out aan de server zijde tot 29,45 minuten (1767 seconden), omdat alle Azure-Services zijn gebonden aan de Azure load balancer TCP-time-out voor inactiviteit, 29,45 minuten. 
 
@@ -303,7 +304,21 @@ Als u berichten van IoT Hub wilt ontvangen, moet een apparaat zich abonneren met
 
 Het apparaat ontvangt geen berichten van IoT Hub, totdat het is geabonneerd op het apparaat-specifieke eind punt dat wordt vertegenwoordigd door het `devices/{device_id}/messages/devicebound/#` onderwerps filter. Nadat een abonnement is ingesteld, ontvangt het apparaat Cloud-naar-apparaat-berichten die zijn verzonden na het tijdstip van het abonnement. Als het apparaat verbinding maakt met de vlag **CleanSession** ingesteld op **0**, wordt het abonnement gehandhaafd in verschillende sessies. In dit geval wordt de volgende keer dat het apparaat verbinding maakt met **CleanSession 0** alle openstaande berichten ontvangen die worden verzonden terwijl de verbinding is verbroken. Als het apparaat gebruikmaakt van een **CleanSession** -vlag ingesteld op **1** , worden er geen berichten van IOT hub ontvangen totdat deze zich op het eind punt van het apparaat abonneert.
 
-IoT Hub levert berichten met de **onderwerpnaam** `devices/{device_id}/messages/devicebound/` of `devices/{device_id}/messages/devicebound/{property_bag}` wanneer er bericht eigenschappen zijn. `{property_bag}`bevat URL-gecodeerde sleutel/waarde-paren van bericht eigenschappen. Alleen toepassings eigenschappen en door de gebruiker instel bare systeem eigenschappen (zoals **messageId** of **correlationId**) worden opgenomen in de eigenschappen verzameling. De namen van systeem eigenschappen hebben het voor voegsel **$** , toepassings eigenschappen gebruiken de oorspronkelijke eigenschaps naam zonder voor voegsel.
+IoT Hub levert berichten met de **onderwerpnaam** `devices/{device_id}/messages/devicebound/` of `devices/{device_id}/messages/devicebound/{property_bag}` wanneer er bericht eigenschappen zijn. `{property_bag}`bevat URL-gecodeerde sleutel/waarde-paren van bericht eigenschappen. Alleen toepassings eigenschappen en door de gebruiker instel bare systeem eigenschappen (zoals **messageId** of **correlationId**) worden opgenomen in de eigenschappen verzameling. De namen van systeem eigenschappen hebben het voor voegsel **$** , toepassings eigenschappen gebruiken de oorspronkelijke eigenschaps naam zonder voor voegsel. Zie het [verzenden van apparaat-naar-Cloud-berichten](#sending-device-to-cloud-messages)voor meer informatie over de indeling van de eigenschappen verzameling.
+
+In Cloud-naar-apparaat-berichten worden de waarden in de eigenschappen verzameling weer gegeven, zoals in de volgende tabel:
+
+| Eigenschaps waarde | Wijze | Beschrijving |
+|----|----|----|
+| `null` | `key` | Alleen de sleutel wordt weer gegeven in de eigenschappen verzameling |
+| lege teken reeks | `key=` | De sleutel gevolgd door een gelijkteken zonder waarde |
+| niet-null, niet-lege waarde | `key=value` | De sleutel gevolgd door een gelijkteken en de waarde |
+
+In het volgende voor beeld ziet u een eigenschappen verzameling die drie toepassings eigenschappen bevat: **prop1** met de waarde `null` ; **prop2**, een lege teken reeks (""); en **prop3** met de waarde "een teken reeks".
+
+```mqtt
+/?prop1&prop2=&prop3=a%20string
+```
 
 Wanneer een apparaat-app zich abonneert op een onderwerp met **QoS 2**, geeft IOT hub Maxi maal QoS-niveau 1 in het **SUBACK** -pakket. Daarna levert IoT Hub berichten naar het apparaat met behulp van QoS 1.
 
@@ -333,7 +348,7 @@ De mogelijke status codes zijn:
 
 |Status | Beschrijving |
 | ----- | ----------- |
-| 200 | Geslaagd |
+| 200 | Success |
 | 429 | Te veel aanvragen (beperkt), conform [IOT hub beperking](iot-hub-devguide-quotas-throttling.md) |
 | 5 * * | Serverfouten |
 

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 9e020d34b6cfb8117ccff1114cc938c966126b77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/14/2020
+ms.openlocfilehash: 712bf702ba355ec3b2ca6184c33da8489f8a178e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79537275"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519861"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-mysql"></a>Verbinding maken met Azure Kubernetes service en Azure Database for MySQL
 
@@ -41,13 +41,7 @@ De uitvoer is de gegenereerde resource groep die AKS maakt die de netwerk interf
 az network nic list --resource-group nodeResourceGroup -o table
 ```
 
-## <a name="open-service-broker-for-azure"></a>Open Service Broker voor Azure 
-Met [Service Broker open voor Azure](https://github.com/Azure/open-service-broker-azure/blob/master/README.md) (OSBA) kunt u Azure-Services rechtstreeks vanuit Kubernetes of Cloud Foundry inrichten. Het is een [Open service BROKER API](https://www.openservicebrokerapi.org/) -implementatie voor Azure.
-
-Met OSBA kunt u een Azure Database for MySQL-server maken en deze koppelen aan uw AKS-cluster met behulp van Kubernetes ' native taal '. Meer informatie over het gebruik van OSBA en Azure Database for MySQL samen op de [pagina OSBA github](https://github.com/Azure/open-service-broker-azure/blob/master/docs/modules/mysql.md). 
-
-
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Een upgrade maken van een Azure Kubernetes Service-cluster](../aks/kubernetes-walkthrough.md)
+- [Een Azure Kubernetes Service-cluster maken](../aks/kubernetes-walkthrough.md)
 - Meer informatie over het [installeren van WordPress vanuit een helm-diagram met OSBA en Azure database for MySQL](../aks/integrate-azure.md)

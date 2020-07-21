@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: allensu
-ms.openlocfilehash: 2dff916bf005b307f27264ad7a17864fbba50872
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0484bc393ac97dc88fed5858f736f01fc41b507a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367390"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521055"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-by-using-the-azure-portal"></a>Configureer taak verdeling en uitgaande regels in Standard Load Balancer door gebruik te maken van de Azure Portal
 
@@ -81,7 +81,7 @@ Een status test wordt gebruikt om de status van uw app te bewaken. Met de status
     
     | Instelling | Waarde |
     | ------- | ----- |
-    | Name | Voer **myHealthProbe** in. |
+    | Naam | Voer **myHealthProbe** in. |
     | Protocol | Selecteer **HTTP**. |
     | Poort | Voer **80** in.|
     | Interval | Voer **15** in als waarde voor het **Interval** in seconden tussen tests. |
@@ -132,8 +132,8 @@ Met uitgaande regels van Load Balancer wordt de uitgaande SNAT voor virtuele mac
     | ------- | ----- |
     | Naam | Voer **LoadBalancerFrontEndOutbound**in. |
     | IP-versie | Selecteer **IPv4**. |
-    | IP-type | Selecteer **IP-adres**.|
-    | Openbaar IP-adres | Selecteer **Nieuw maken**. Voer in het **myPublicIPOutbound** **een openbaar IP-adres toevoegen**in.  Selecteer **OK**. |
+    | IP-type | Selecteer **IP-adres** of **IP-voor voegsel**.|
+    | Openbaar IP-adres | Selecteer **Nieuw maken**. </br> Voer in het **myPublicIPOutbound** **een openbaar IP-adres toevoegen**in. </br> Als u IP-voor voegsel wilt gebruiken, voert u in **een openbaar IP-voor voegsel toevoegen** **myPublicIPPrefixOutbound**in. Kies een **grootte** voor het voor voegsel van het open bare IP-voor voegsel </br> Selecteer **OK**.  |
 
 4. Selecteer **Toevoegen**.
 
@@ -157,7 +157,7 @@ Met uitgaande regels van Load Balancer wordt de uitgaande SNAT voor virtuele mac
     | ------- | ----- |
     | Naam | Voer **myOutboundRule**in. |
     | Frontend-IP-adres | Selecteer **LoadBalancerFrontEndOutbound**. |
-    | Time-out voor inactiviteit (minuten) | Verplaats de schuif regelaar naar * * 15 minuten.|
+    | Time-out voor inactiviteit (minuten) | Verplaats de schuif regelaar naar **15 minuten**.|
     | TCP opnieuw instellen | Selecteer **Ingeschakeld**.|
     | Back-end-pool | **MyBackendPoolOutbound** selecteren |
     | Poort toewijzing-toewijzing van > poort | Selecteer **hand matig aantal uitgaande poorten kiezen** |

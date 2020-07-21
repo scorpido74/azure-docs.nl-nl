@@ -7,16 +7,20 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 06/28/2019
 ms.author: rambala
-ms.openlocfilehash: 4c3c6ae5fbdd91e6e44438be7fef2a3a91564a34
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da90bbbce485616afdac5997576da99ac4d62c6f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74076686"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521901"
 ---
 # <a name="designing-for-high-availability-with-expressroute"></a>Ontwerpen voor hoge Beschik baarheid met ExpressRoute
 
 ExpressRoute is ontworpen voor hoge Beschik baarheid om de communicatie van particuliere netwerken naar micro soft-resources te verzorgen. Met andere woorden: er is geen Single Point of Failure in het pad ExpressRoute in het micro soft-netwerk. Om de beschik baarheid te maximaliseren, moeten de klant en het service provider segment van uw ExpressRoute-circuit ook worden ontworpen voor hoge Beschik baarheid. In dit artikel kijken we eerst naar de overwegingen voor de netwerk architectuur voor het bouwen van robuuste netwerk connectiviteit met behulp van een ExpressRoute. vervolgens bekijken we de functies voor het afstemmen van de hoge Beschik baarheid van uw ExpressRoute-circuit.
 
+>[!NOTE]
+>De concepten die in dit artikel worden beschreven, zijn ook van toepassing wanneer een ExpressRoute-circuit wordt gemaakt onder een virtueel WAN of daarbuiten.
+>
 
 ## <a name="architecture-considerations"></a>Architectuur overwegingen
 

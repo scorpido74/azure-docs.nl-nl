@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
-ms.openlocfilehash: b48a2ef65aeb6e8de784c7443cf4be527197464a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 9794dd47949dc7dea891893dbcf261808ab335fd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081805"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521374"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>On-premises Apache Hadoop clusters migreren naar de aanbevolen procedures voor het migreren van Azure HDInsight-gegevens
 
@@ -36,9 +36,8 @@ Er zijn twee belang rijke opties voor het migreren van gegevens van on-premises 
 
 De volgende tabel heeft geschatte duur van gegevens overdracht op basis van het gegevens volume en de netwerk bandbreedte. Gebruik een Data box als de gegevens migratie meer dan drie weken naar verwachting duurt.
 
-|Hoeveelheid gegevens|Netwerk bandbreedte||||
-|---|---|---|---|---|
-|| **45 Mbps (T3)**|**100 Mbps**|**1 Gbps**|**10 Gbps**|
+|Hoeveelheid gegevens | Netwerk bandbreedte<br>van<br>**45 Mbps (T3)**|Netwerk bandbreedte<br>van<br>**100 Mbps**|Netwerk bandbreedte<br>van<br>**1 Gbps**|Netwerk bandbreedte<br>van<br>**10 Gbps**|
+|---|:---:|:---:|:---:|:---:|
 |1 TB|2 dagen|1 dag| 2 uur|14 minuten|
 |10 TB|22 dagen|10 dagen|1 dag|2 uur|
 |35 TB|76 dagen|34 dagen|3 dagen|8 uur|
@@ -47,8 +46,7 @@ De volgende tabel heeft geschatte duur van gegevens overdracht op basis van het 
 |200 TB|1 jaar|194 dagen|19 dagen|2 dagen|
 |500 TB|3 jaar|1 jaar|49 dagen|5 dagen|
 |1 PB|6 jaar|3 jaar|97 dagen|10 dagen|
-|2 PB|12 jaar|Vijf jaar
-|194 dagen|19 dagen|
+|2 PB|12 jaar|Vijf jaar|194 dagen|19 dagen|
 
 Hulpprogram ma's systeem eigen naar Azure, zoals Apache Hadoop DistCp, Azure Data Factory en AzureCp, kunnen worden gebruikt voor het overdragen van gegevens via het netwerk. De WANDisco van het hulp programma van derden kunnen ook voor hetzelfde doel einde worden gebruikt. Apache Kafka MirrorMaker en Apache Sqoop kunnen worden gebruikt voor doorlopende gegevens overdracht van on-premises naar Azure-opslag systemen.
 

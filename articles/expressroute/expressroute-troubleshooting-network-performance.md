@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 12/20/2017
 ms.author: jonor
 ms.custom: seodec18
-ms.openlocfilehash: 5390915436d38939b83a1599f8fb564cfbd11bdb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e882035af3ac0a086c58b4886fd6999970712df1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738240"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521663"
 ---
 # <a name="troubleshooting-network-performance"></a>Problemen met netwerk prestaties oplossen
 ## <a name="overview"></a>Overzicht
@@ -146,7 +146,7 @@ Voor het WAN kan het delen van de test resultaten met uw service provider of ISP
 
 Wanneer u het probleem met Azure hebt geïsoleerd, is het tijd om de documentatie van het [Azure-netwerk][Network Docs] te bekijken en vervolgens als u nog steeds [een ondersteunings ticket hebt geopend][Ticket Link].
 
-## <a name="references"></a>Referenties
+## <a name="references"></a>Naslaginformatie
 ### <a name="latencybandwidth-expectations"></a>Verwachtingen voor latentie/band breedte
 >[!TIP]
 > Een geografische latentie (mijl of kilo meter) tussen de eind punten die u wilt testen, is het grootste deel van de latentie. Hoewel er sprake is van een latentie van apparatuur (fysieke en virtuele onderdelen, het aantal hops enz.), is de geografie bewezen als het grootste onderdeel van de totale latentie bij het omgaan met WAN-verbindingen. Het is ook belang rijk om te weten dat de afstand de afstand van de fiber-uitvoering is en niet de lijn afstand van de lineaire of de weg. Deze afstand is hard moeilijk om een nauw keurigheid te bereiken. Als gevolg hiervan gebruiken we doorgaans een lokale reken machine op internet en weet u dat deze methode een nagenoeg onnauwkeurige meting is, maar voldoende is om een algemene verwachting in te stellen.
@@ -177,19 +177,18 @@ Setup testen:
 >
 >
 
-| | | | | | |
-|-|-|-|-|-|-|
-|ExpressRoute<br/>Locatie|Azure<br/>Regio|Bepaald<br/>Afstand (km)|Latentie|1 sessie<br/>Bandbreedte|Maximum<br/>Bandbreedte|
-| Seattle | VS - west 2        |    191 km |   5 MS | 262,0 Mbit per seconde |  3,74 Gbits per seconde |
+| ExpressRoute<br/>Locatie|Azure<br/>Regio | Bepaald<br/>Afstand (km) | Latentie|1 sessie<br/>Bandbreedte | Maximum<br/>Bandbreedte |
+| ------------------------------------------ | --------------------------- |  - | - | - | - |
+| Seattle | US - west 2        |    191 km |   5 MS | 262,0 Mbit per seconde |  3,74 Gbits per seconde |
 | Seattle | VS - west          |  1.094 km |  18 MS |  82,3 Mbit per seconde |  3,70 Gbits per seconde |
-| Seattle | VS - centraal       |  2.357 km |  40 MS |  38,8 Mbit per seconde |  2,55 Gbits per seconde |
-| Seattle | VS - zuid-centraal |  2.877 km |  51 MS |  30,6 Mbit per seconde |  2,49 Gbits per seconde |
+| Seattle | US - centraal       |  2.357 km |  40 MS |  38,8 Mbit per seconde |  2,55 Gbits per seconde |
+| Seattle | South Central US |  2.877 km |  51 MS |  30,6 Mbit per seconde |  2,49 Gbits per seconde |
 | Seattle | VS - noord-centraal |  2.792 km |  55 MS |  27,7 Mbit per seconde |  2,19 Gbits per seconde |
-| Seattle | VS - oost 2        |  3.769 km |  73 MS |  21,3 Mbit per seconde |  1,79 Gbits per seconde |
+| Seattle | US - oost 2        |  3.769 km |  73 MS |  21,3 Mbit per seconde |  1,79 Gbits per seconde |
 | Seattle | VS - oost          |  3.699 km |  74 MS |  21,1 Mbit per seconde |  1,78 Gbits per seconde |
 | Seattle | Japan - oost       |  7.705 km | 106 MS |  14,6 Mbit per seconde |  1,22 Gbits per seconde |
 | Seattle | Verenigd Koninkrijk Zuid         |  7.708 km | 146 MS |  10,6 Mbit per seconde |   896 Mbit per seconde |
-| Seattle | Europa -west      |  7.834 km | 153 MS |  10,2 Mbit per seconde |   761 Mbit per seconde |
+| Seattle | Europa - west      |  7.834 km | 153 MS |  10,2 Mbit per seconde |   761 Mbit per seconde |
 | Seattle | Australië - oost   | 12.484 km | 165 MS |   9,4 Mbit per seconde |   794 Mbit per seconde |
 | Seattle | Azië - zuidoost   | 12.989 km | 170 MS |   9,2 Mbit per seconde |   756 Mbit per seconde |
 | Seattle | Brazilië-zuid *   | 10.930 km | 189 MS |   8,2 Mbit per seconde |   699 Mbit per seconde |

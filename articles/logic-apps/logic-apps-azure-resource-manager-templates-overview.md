@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: 7a99038f41043b899886c7161f9b12c77c807c4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a89eb16c8042efc86bb5cc8bd5fba7c821dc341
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81641818"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520966"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Overzicht: de implementatie voor Azure Logic Apps automatiseren met behulp van Azure Resource Manager sjablonen
 
@@ -38,7 +39,7 @@ Voor voor beelden van Logic app-sjablonen raadpleegt u deze voor beelden:
 * [Volledige sjabloon](#full-example-template) die wordt gebruikt voor de voor beelden van dit onderwerp
 * [Voorbeeld sjabloon voor Quick](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create) start-app in github
 
-Zie [resource typen van micro soft. Logic](https://docs.microsoft.com/azure/templates/microsoft.logic/allversions)voor sjabloon resource gegevens die specifiek zijn voor Logic apps, integratie accounts en integratie-account artefacten.
+Zie [resource typen van micro soft. Logic](/azure/templates/microsoft.logic/allversions)voor sjabloon resource gegevens die specifiek zijn voor Logic apps, integratie accounts en integratie-account artefacten.
 
 <a name="template-structure"></a>
 
@@ -318,16 +319,16 @@ De resource definitie van de logische app begint met het `properties` object, da
 
 Dit zijn de kenmerken die specifiek zijn voor de resource definitie van de logische app:
 
-| Kenmerk | Vereist | Type | Description |
+| Kenmerk | Vereist | Type | Beschrijving |
 |-----------|----------|------|-------------|
-| `state` | Yes | Tekenreeks | De status van uw logische app bij implementatie waarbij `Enabled` uw logische app Live is en `Disabled` betekent dat uw logische app niet actief is. Als u bijvoorbeeld niet klaar bent voor uw logische app om live te gaan, maar een concept versie wilt implementeren, kunt u de optie gebruiken `Disabled` . |
-| `integrationAccount` | No | Object | Als uw logische app een integratie account gebruikt dat artefacten voor Business-to-Business-scenario's (B2B) opslaat, bevat dit object het `id` kenmerk, waarmee de id voor het integratie account wordt opgegeven. |
+| `state` | Ja | Tekenreeks | De status van uw logische app bij implementatie waarbij `Enabled` uw logische app Live is en `Disabled` betekent dat uw logische app niet actief is. Als u bijvoorbeeld niet klaar bent voor uw logische app om live te gaan, maar een concept versie wilt implementeren, kunt u de optie gebruiken `Disabled` . |
+| `integrationAccount` | Nee | Object | Als uw logische app een integratie account gebruikt dat artefacten voor Business-to-Business-scenario's (B2B) opslaat, bevat dit object het `id` kenmerk, waarmee de id voor het integratie account wordt opgegeven. |
 | `definition` | Ja | Object | De onderliggende werk stroom definitie van uw logische app, die hetzelfde is als het object dat wordt weer gegeven in de code weergave, en dat volledig wordt beschreven in het onderwerp [schema verwijzing voor werk stroom definitie taal](../logic-apps/logic-apps-workflow-definition-language.md) . In deze werk stroom definitie `parameters` declareert het object para meters voor de waarden die moeten worden gebruikt in de runtime van de logische app. Zie [werk stroom definitie en-para meters](#workflow-definition-parameters)voor meer informatie. <p><p>Als u de kenmerken in de werk stroom definitie van de logische app wilt weer geven, schakelt u over naar de code weergave in de Azure Portal of Visual Studio of gebruikt u een hulp programma zoals [Azure resource Explorer](https://resources.azure.com). |
-| `parameters` | No | Object | De [waarden van de werk stroom definitie parameter](#workflow-definition-parameters) die moeten worden gebruikt tijdens de runtime van de logische app. De parameter definities voor deze waarden worden weer gegeven in het [Parameter object van uw werk stroom definitie](#workflow-definition-parameters). Als uw logische app [beheerde connectors](../connectors/apis-list.md) gebruikt voor toegang tot andere services en systemen, bevat dit object ook een `$connections` object waarmee de verbindings waarden worden ingesteld die tijdens runtime worden gebruikt. |
-| `accessControl` | No | Object | Voor het opgeven van beveiligings kenmerken voor uw logische app, zoals het beperken van IP-toegang tot het aanvragen van triggers of het uitvoeren van de invoer en uitvoer van de geschiedenis. Zie [veilige toegang tot Logic apps](../logic-apps/logic-apps-securing-a-logic-app.md)voor meer informatie. |
+| `parameters` | Nee | Object | De [waarden van de werk stroom definitie parameter](#workflow-definition-parameters) die moeten worden gebruikt tijdens de runtime van de logische app. De parameter definities voor deze waarden worden weer gegeven in het [Parameter object van uw werk stroom definitie](#workflow-definition-parameters). Als uw logische app [beheerde connectors](../connectors/apis-list.md) gebruikt voor toegang tot andere services en systemen, bevat dit object ook een `$connections` object waarmee de verbindings waarden worden ingesteld die tijdens runtime worden gebruikt. |
+| `accessControl` | Nee | Object | Voor het opgeven van beveiligings kenmerken voor uw logische app, zoals het beperken van IP-toegang tot het aanvragen van triggers of het uitvoeren van de invoer en uitvoer van de geschiedenis. Zie [veilige toegang tot Logic apps](../logic-apps/logic-apps-securing-a-logic-app.md)voor meer informatie. |
 ||||
 
-Zie [resource typen van micro soft. Logic](https://docs.microsoft.com/azure/templates/microsoft.logic/allversions)voor sjabloon resource gegevens die specifiek zijn voor Logic apps, integratie accounts en integratie-account artefacten.
+Zie [resource typen van micro soft. Logic](/azure/templates/microsoft.logic/allversions)voor sjabloon resource gegevens die specifiek zijn voor Logic apps, integratie accounts en integratie-account artefacten.
 
 <a name="workflow-definition-parameters"></a>
 
@@ -909,7 +910,7 @@ Hier volgt een voor beeld waarin de account naam en toegangs sleutel voor een Az
 
 ### <a name="authenticate-connections"></a>Verbindingen verifiëren
 
-Na de implementatie werkt uw logische app end-to-end met geldige para meters. U moet echter nog steeds OAuth-verbindingen autoriseren om geldige toegangs tokens te genereren voor [het verifiëren van uw referenties](../active-directory/develop/authentication-scenarios.md). Zie [OAuth-verbindingen autoriseren](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md#authorize-oauth-connections)voor meer informatie.
+Na de implementatie werkt uw logische app end-to-end met geldige para meters. U moet echter nog steeds OAuth-verbindingen autoriseren om geldige toegangs tokens te genereren voor [het verifiëren van uw referenties](../active-directory/develop/authentication-vs-authorization.md). Zie [OAuth-verbindingen autoriseren](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md#authorize-oauth-connections)voor meer informatie.
 
 Sommige verbindingen bieden ondersteuning voor het gebruik van een [service-principal](../active-directory/develop/app-objects-and-service-principals.md) Azure Active Directory (Azure AD) voor het autoriseren van verbindingen voor een logische app die is [geregistreerd in azure AD](../active-directory/develop/quickstart-register-app.md). In deze Azure Data Lake bron definitie voor verbinding ziet u bijvoorbeeld hoe u kunt verwijzen naar de sjabloon parameters die de gegevens van de Service-Principal verwerken en hoe de sjabloon deze para meters declareert:
 
@@ -1005,7 +1006,7 @@ Het object op het hoogste niveau van de sjabloon `parameters` declareert deze pa
 Zie de volgende onderwerpen voor meer informatie over het werken met Service-principals:
 
 * [Een service-principal maken met behulp van de Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)
-* [Een Azure-service-principal maken met behulp van Azure PowerShell](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps)
+* [Een Azure-service-principal maken met behulp van Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps)
 * [Een service-principal met een certificaat maken met behulp van Azure PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
 <a name="parameter-references"></a>

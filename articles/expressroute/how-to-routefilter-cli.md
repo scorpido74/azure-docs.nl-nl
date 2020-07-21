@@ -2,17 +2,17 @@
 title: 'ExpressRoute: route filters-micro soft-peering: Azure CLI'
 description: In dit artikel wordt beschreven hoe u route filters configureert voor micro soft-peering met behulp van Azure CLI
 services: expressroute
-author: anzaman
+author: kumudD
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/07/2018
-ms.author: anzaman
-ms.openlocfilehash: 269cabae276712a1f5b51c09705b7cd3eee5fb9d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: kumud
+ms.openlocfilehash: 43a3e7672a6bfdf89bce67ec54e4500cd84b6dcf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738342"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521629"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-cli"></a>Route filters voor micro soft-peering configureren: Azure CLI
 

@@ -1,5 +1,5 @@
 ---
-title: 'Regressie van beslissings bos: module verwijzing'
+title: 'Gemiddelde Perceptron van twee klassen: module verwijzing'
 titleSuffix: Azure Machine Learning
 description: Meer informatie over het gebruik van de Perceptron-module met twee klassen in Azure Machine Learning om een machine learning model te maken op basis van het gemiddelde Perceptron-algoritme.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: 53e40726a5745263ee2b3cb4ada8671bf65da963
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: daa0cfdedfe634acd2039cd4ec87606d30f7e76f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82137668"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520575"
 ---
 # <a name="two-class-averaged-perceptron-module"></a>Gemiddelde Perceptron-module met twee klassen
 

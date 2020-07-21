@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 06/30/2020
+ms.date: 07/07/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 35938ca3b9d8f3aedd0892740a3dbfa0fb5b036a
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 2193584996ed9f2c4cf5e858b8855c6878159a84
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186857"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520695"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Netwerk isolatie tijdens de training & afleiding met persoonlijke virtuele netwerken
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -109,6 +109,24 @@ Nadat u uw werk ruimte-en opslag service account aan het virtuele netwerk hebt t
 
 Voor __Azure Blob Storage__wordt de beheerde identiteit van de werk ruimte toegevoegd als een [BLOB-gegevens lezer](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) , zodat deze gegevens uit de Blob-opslag kan lezen.
 
+
+### <a name="azure-machine-learning-designer-default-datastore"></a>Standaard gegevens opslag van Azure Machine Learning Designer
+
+De ontwerp functie gebruikt het opslag account dat aan uw werk ruimte is gekoppeld om standaard uitvoer op te slaan. U kunt het echter opgeven om de uitvoer op te slaan in een gegevens opslag waartoe u toegang hebt. Als uw omgeving gebruikmaakt van virtuele netwerken, kunt u deze besturings elementen gebruiken om ervoor te zorgen dat uw gegevens veilig en toegankelijk blijven.
+
+Een nieuwe standaard opslag voor een pijp lijn instellen:
+
+1. Selecteer in een pijp lijn concept het **tandwiel pictogram instellingen** in de buurt van de titel van de pijp lijn.
+1. Selecteer **standaard gegevens opslag selecteren**.
+1. Geef een nieuwe gegevens opslag op.
+
+U kunt ook de standaard gegevens opslag per module negeren. Dit geeft u de controle over de opslag locatie voor elke afzonderlijke module.
+
+1. Selecteer de module waarvan u de uitvoer wilt opgeven.
+1. Vouw de sectie **uitvoer instellingen** uit.
+1. Selecteer **standaard instellingen voor uitvoer negeren**.
+1. Selecteer **uitvoer instellingen instellen**.
+1. Geef een nieuwe datstore op.
 
 ### <a name="azure-data-lake-storage-gen2-access-control"></a>Toegangs beheer Azure Data Lake Storage Gen2
 
@@ -286,8 +304,8 @@ Als u de standaard regels voor uitgaande verbindingen niet wilt gebruiken en u d
 - Uitgaande Internet verbinding weigeren met behulp van de NSG-regels.
 
 - Beperk het uitgaande verkeer voor een __reken instantie__ of een __berekenings cluster__tot de volgende items:
-   - Azure Storage, door gebruik te maken van de __service tag__ __Storage. regionaam__. Waar `{RegionName}` de naam is van een Azure-regio.
-   - Azure Container Registry, met behulp van de __service-tag__ __AzureContainerRegistry. regionaam__. Waar `{RegionName}` de naam is van een Azure-regio.
+   - Azure Storage, door gebruik te maken van het __service label__ __opslag__.
+   - Azure Container Registry, door gebruik te maken van het __service label__ __AzureContainerRegistry__.
    - Azure Machine Learning, met behulp van het __service label__ __AzureMachineLearning__
    - Azure Resource Manager, met behulp van het __service label__ __AzureResourceManager__
    - Azure Active Directory, met behulp van het __service label__ __AzureActiveDirectory__
@@ -326,11 +344,15 @@ De NSG-regel configuratie in de Azure Portal wordt weer gegeven in de volgende a
 > run = exp.submit(est)
 > ```
 
-### <a name="user-defined-routes-for-forced-tunneling"></a>Door de gebruiker gedefinieerde routes voor geforceerde tunneling
+### <a name="forced-tunneling"></a>Geforceerde tunneling
 
-Als u gebruik wilt maken van geforceerde tunneling met de Machine Learning Compute, voegt u door de [gebruiker gedefinieerde routes (udr's)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) toe aan het subnet dat de reken resource bevat.
+Als u gebruik wilt maken van [geforceerde tunneling](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm) met Azure machine learning compute, moet u communicatie met het open bare Internet toestaan vanaf het subnet dat de reken resource bevat. Deze communicatie wordt gebruikt voor het plannen van taken en het openen van Azure Storage.
 
-* Stel een UDR in voor elk IP-adres dat wordt gebruikt door de Azure Batch-service in de regio waar uw resources bestaan. Deze Udr's inschakelen de batch-service om te communiceren met reken knooppunten voor het plannen van taken. Voeg ook het IP-adres voor de Azure Machine Learning-service toe waarin de resources bestaan, omdat dit vereist is voor toegang tot reken instanties. Gebruik een van de volgende methoden om een lijst met IP-adressen van de batch-service en Azure Machine Learning-service te verkrijgen:
+U kunt dit op twee manieren doen:
+
+* Gebruik een [Virtual Network NAT](../virtual-network/nat-overview.md). Een NAT-gateway biedt een uitgaande Internet verbinding voor een of meer subnetten in het virtuele netwerk. Zie [virtuele netwerken ontwerpen met NAT-gateway bronnen](../virtual-network/nat-gateway-resource.md)voor meer informatie.
+
+* Door de [gebruiker gedefinieerde routes (udr's)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) toevoegen aan het subnet dat de reken resource bevat. Stel een UDR in voor elk IP-adres dat wordt gebruikt door de Azure Batch-service in de regio waar uw resources bestaan. Deze Udr's inschakelen de batch-service om te communiceren met reken knooppunten voor het plannen van taken. Voeg ook het IP-adres voor de Azure Machine Learning-service toe waarin de resources bestaan, omdat dit vereist is voor toegang tot reken instanties. Gebruik een van de volgende methoden om een lijst met IP-adressen van de batch-service en Azure Machine Learning-service te verkrijgen:
 
     * Down load de [Azure IP-bereiken en-service Tags](https://www.microsoft.com/download/details.aspx?id=56519) en zoek het bestand voor `BatchNodeManagement.<region>` en `AzureMachineLearning.<region>` , waar `<region>` is uw Azure-regio.
 
@@ -340,14 +362,15 @@ Als u gebruik wilt maken van geforceerde tunneling met de Machine Learning Compu
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='eastus2']"
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='eastus2']"
         ```
+    
+    Wanneer u de Udr's toevoegt, definieert u de route voor elk gerelateerde IP-adres voorvoegsel voor batch en stelt u het __type volgende hop__ in op __Internet__. In de volgende afbeelding ziet u een voor beeld van deze UDR in de Azure Portal:
 
-* Uitgaand verkeer naar Azure Storage mag niet worden geblokkeerd door uw on-premises netwerk apparaat. In het bijzonder zijn de Url's in het formulier `<account>.table.core.windows.net` , `<account>.queue.core.windows.net` en `<account>.blob.core.windows.net` .
+    ![Voor beeld van een UDR voor een adres voorvoegsel](./media/how-to-enable-virtual-network/user-defined-route.png)
 
-Wanneer u de Udr's toevoegt, definieert u de route voor elk gerelateerde IP-adres voorvoegsel voor batch en stelt u het __type volgende hop__ in op __Internet__. In de volgende afbeelding ziet u een voor beeld van deze UDR in de Azure Portal:
+    Naast de Udr's die u definieert, moet uitgaand verkeer naar Azure Storage worden toegestaan via uw on-premises netwerk apparaat. De Url's voor dit verkeer zijn met name in de volgende formulieren: `<account>.table.core.windows.net` , `<account>.queue.core.windows.net` en `<account>.blob.core.windows.net` . 
 
-![Voor beeld van een UDR voor een adres voorvoegsel](./media/how-to-enable-virtual-network/user-defined-route.png)
+    Zie [een Azure batch groep maken in een virtueel netwerk](../batch/batch-virtual-network.md#user-defined-routes-for-forced-tunneling)voor meer informatie.
 
-Zie [een Azure batch groep maken in een virtueel netwerk](../batch/batch-virtual-network.md#user-defined-routes-for-forced-tunneling)voor meer informatie.
 
 ### <a name="create-a-compute-cluster-in-a-virtual-network"></a>Een berekenings cluster maken in een virtueel netwerk
 
@@ -480,6 +503,40 @@ Standaard wordt een openbaar IP-adres toegewezen aan AKS-implementaties. Wanneer
 
 Een privé-IP-adres wordt ingeschakeld door AKS te configureren voor gebruik van een _interne Load Balancer_. 
 
+#### <a name="network-contributor-role"></a>Rol netwerk bijdrager
+
+> [!IMPORTANT]
+> Als u een AKS-cluster maakt of koppelt met een virtueel netwerk dat u eerder hebt gemaakt, moet u de Service-Principal (SP) of de beheerde identiteit voor uw AKS-cluster de rol _netwerk bijdrage_ verlenen aan de resource groep met het virtuele netwerk. U moet dit doen voordat u probeert de interne load balancer te wijzigen in privé-IP.
+>
+> Gebruik de volgende stappen om de identiteit als netwerkinzender toe te voegen:
+
+1. Gebruik de volgende Azure CLI-opdrachten om de service-principal of de beheerde identiteits-ID voor AKS te vinden. Vervang door `<aks-cluster-name>` de naam van het cluster. Vervang door `<resource-group-name>` de naam van de resource groep die _het AKS-cluster bevat_:
+
+    ```azurecli-interactive
+    az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query servicePrincipalProfile.clientId
+    ``` 
+
+    Als met deze opdracht een waarde wordt geretourneerd van `msi` , gebruikt u de volgende opdracht om de principal-id voor de beheerde identiteit te identificeren:
+
+    ```azurecli-interactive
+    az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query identity.principalId
+    ```
+
+1. Gebruik de volgende opdracht om de ID te vinden van de resource groep die het virtuele netwerk bevat. Vervang door `<resource-group-name>` de naam van de resource groep die _het virtuele netwerk bevat_:
+
+    ```azurecli-interactive
+    az group show -n <resource-group-name> --query id
+    ```
+
+1. Gebruik de volgende opdracht om de service-principal of beheerde identiteit als Inzender voor het netwerk toe te voegen. Vervang door `<SP-or-managed-identity>` de id die wordt geretourneerd voor de service-principal of beheerde identiteit. Vervang door `<resource-group-id>` de id die wordt geretourneerd voor de resource groep die het virtuele netwerk bevat:
+
+    ```azurecli-interactive
+    az role assignment create --assignee <SP-or-managed-identity> --role 'Network Contributor' --scope <resource-group-id>
+    ```
+Zie voor meer informatie over het gebruik van de interne load balancer met AKS [interne Load Balancer gebruiken met de Azure Kubernetes-service](/azure/aks/internal-lb).
+
+#### <a name="enable-private-ip"></a>Privé-IP inschakelen
+
 > [!IMPORTANT]
 > U kunt geen persoonlijk IP-adres inschakelen bij het maken van het Azure Kubernetes-service cluster. Het moet worden ingeschakeld als een update van een bestaand cluster.
 
@@ -570,38 +627,6 @@ aks_target.update(update_config)
 aks_target.wait_for_completion(show_output = True)
 ```
 
-__Rol netwerk bijdrager__
-
-> [!IMPORTANT]
-> Als u een AKS-cluster maakt of koppelt met een virtueel netwerk dat u eerder hebt gemaakt, moet u de Service-Principal (SP) of de beheerde identiteit voor uw AKS-cluster de rol _netwerk bijdrage_ verlenen aan de resource groep met het virtuele netwerk. U moet dit doen voordat u probeert de interne load balancer te wijzigen in privé-IP.
->
-> Gebruik de volgende stappen om de identiteit als netwerkinzender toe te voegen:
-
-1. Gebruik de volgende Azure CLI-opdrachten om de service-principal of de beheerde identiteits-ID voor AKS te vinden. Vervang door `<aks-cluster-name>` de naam van het cluster. Vervang door `<resource-group-name>` de naam van de resource groep die _het AKS-cluster bevat_:
-
-    ```azurecli-interactive
-    az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query servicePrincipalProfile.clientId
-    ``` 
-
-    Als met deze opdracht een waarde wordt geretourneerd van `msi` , gebruikt u de volgende opdracht om de principal-id voor de beheerde identiteit te identificeren:
-
-    ```azurecli-interactive
-    az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query identity.principalId
-    ```
-
-1. Gebruik de volgende opdracht om de ID te vinden van de resource groep die het virtuele netwerk bevat. Vervang door `<resource-group-name>` de naam van de resource groep die _het virtuele netwerk bevat_:
-
-    ```azurecli-interactive
-    az group show -n <resource-group-name> --query id
-    ```
-
-1. Gebruik de volgende opdracht om de service-principal of beheerde identiteit als Inzender voor het netwerk toe te voegen. Vervang door `<SP-or-managed-identity>` de id die wordt geretourneerd voor de service-principal of beheerde identiteit. Vervang door `<resource-group-id>` de id die wordt geretourneerd voor de resource groep die het virtuele netwerk bevat:
-
-    ```azurecli-interactive
-    az role assignment create --assignee <SP-or-managed-identity> --role 'Network Contributor' --scope <resource-group-id>
-    ```
-Zie voor meer informatie over het gebruik van de interne load balancer met AKS [interne Load Balancer gebruiken met de Azure Kubernetes-service](/azure/aks/internal-lb).
-
 ## <a name="use-azure-container-instances-aci"></a>Azure Container Instances (ACI) gebruiken
 
 Azure Container Instances worden dynamisch gemaakt bij het implementeren van een model. Als u wilt dat Azure Machine Learning ACI in het virtuele netwerk maakt, moet u __subnet delegering__ inschakelen voor het subnet dat wordt gebruikt door de implementatie.
@@ -630,6 +655,7 @@ Zie [Azure machine learning-werk ruimte gebruiken achter Azure firewall](how-to-
 > Azure Container Registry (ACR) kan in een virtueel netwerk worden geplaatst, maar u moet aan de volgende vereisten voldoen:
 >
 > * Uw Azure Machine Learning-werk ruimte moet Enter prise Edition zijn. Zie voor meer informatie over het uitvoeren van een [upgrade naar Enter prise Edition](how-to-manage-workspace.md#upgrade).
+> * De regio voor de Azure Machine Learning werkruimte moet een [persoonlijke regio](https://docs.microsoft.com/azure/private-link/private-link-overview#availability)voor een koppeling zijn ingeschakeld. 
 > * Uw Azure Container Registry moet Premium-versie zijn. Zie [wijzigen van sku's](/azure/container-registry/container-registry-skus#changing-skus)voor meer informatie over het uitvoeren van upgrades.
 > * Uw Azure Container Registry moeten zich in hetzelfde virtuele netwerk en subnet bevinden als het opslag account en reken doelen die worden gebruikt voor training of deinterferentie.
 > * Uw Azure Machine Learning-werk ruimte moet een [Azure machine learning Compute-Cluster](how-to-set-up-training-targets.md#amlcompute)bevatten.
@@ -638,7 +664,7 @@ Zie [Azure machine learning-werk ruimte gebruiken achter Azure firewall](how-to-
 
 1. Gebruik een van de volgende methoden om de naam van de Azure Container Registry voor uw werk ruimte te vinden:
 
-    __Azure Portal__
+    __Azure-portal__
 
     Vanuit het gedeelte Overzicht van uw werk ruimte koppelt de __register__ waarde aan de Azure container Registry.
 
@@ -768,7 +794,7 @@ Zie [deploying Azure Databricks in uw Azure Virtual Network](https://docs.azured
 
 Als u een virtuele machine of een Azure HDInsight-cluster in een virtueel netwerk met uw werk ruimte wilt gebruiken, gebruikt u de volgende stappen:
 
-1. Maak een virtuele machine of een HDInsight-cluster met behulp van de Azure Portal of de Azure CLI en plaats het cluster in een virtueel Azure-netwerk. Raadpleeg de volgende artikelen voor meer informatie:
+1. Maak een virtuele machine of een HDInsight-cluster met behulp van de Azure Portal of de Azure CLI en plaats het cluster in een virtueel Azure-netwerk. Raadpleeg voor meer informatie de volgende artikelen:
     * [Virtuele Azure-netwerken voor Linux-Vm's maken en beheren](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
 
     * [HDInsight uitbreiden met behulp van een virtueel Azure-netwerk](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network)

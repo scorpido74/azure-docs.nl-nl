@@ -2,14 +2,14 @@
 title: Resource logboeken verzamelen & analyseren
 description: Meer informatie over het verzenden van resource logboeken en gebeurtenis gegevens van container groepen in Azure Container Instances naar Azure Monitor-logboeken
 ms.topic: article
-ms.date: 07/02/2020
+ms.date: 07/13/2020
 ms.author: danlep
-ms.openlocfilehash: d9f3e844e9d82e540776cdcf821770929d238e3f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: efd71d181059ab395aeec4da364110a42d2cccd3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259602"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524009"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Logboek registratie van container groepen en instanties met Azure Monitor-logboeken
 
@@ -38,11 +38,10 @@ Azure Container Instances heeft toestemming nodig om gegevens te verzenden naar 
 De Log Analytics-werkruimte-id en de primaire sleutel verkrijgt u als volgt:
 
 1. Navigeer in Azure Portal naar uw Log Analytics-werkruimte.
-1. Selecteer **Geavanceerde instellingen** onder **instellingen**
-1. **Verbonden bronnen**selecteren  >  **Windows-servers** (of Linux- **servers**: de id en de sleutels zijn hetzelfde voor beide)
+1. Onder **instellingen**selecteert u **agents beheer**
 1. Noteer het volgende:
-   * **WERK RUIMTE-ID**
-   * **PRIMAIRE SLEUTEL**
+   * **Werkruimte-id**
+   * **Primaire sleutel**
 
 ## <a name="create-container-group"></a>Containergroep maken
 
@@ -102,7 +101,9 @@ Kort nadat u de opdracht hebt opgegeven, zou u een reactie van Azure met impleme
 
 ## <a name="view-logs"></a>Logboeken weergeven
 
-Nadat u de containergroep hebt geïmplementeerd, kan het enkele minuten (wel tien minuten) duren voor de eerste logboekvermeldingen worden weergegeven in Azure Portal. De logboeken van de container groep in de `ContainerInstanceLog_CL` tabel weer geven:
+Nadat u de containergroep hebt geïmplementeerd, kan het enkele minuten (wel tien minuten) duren voor de eerste logboekvermeldingen worden weergegeven in Azure Portal. 
+
+De logboeken van de container groep in de `ContainerInstanceLog_CL` tabel weer geven:
 
 1. Navigeer in Azure Portal naar uw Log Analytics-werkruimte.
 1. Onder **Algemeen**selecteert u **Logboeken**  

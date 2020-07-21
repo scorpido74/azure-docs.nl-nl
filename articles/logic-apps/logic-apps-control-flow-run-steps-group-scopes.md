@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: 08c7fa6abac7ed369347f1f496c70174b06edf02
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 65f9ee8f67ac4efb6ab26fa0912d11d7be7c571d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83831570"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520898"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Acties uitvoeren op basis van de groeps status met behulp van scopes in Azure Logic Apps
 
@@ -70,13 +71,13 @@ U kunt uw logische app op elk gewenst moment opslaan, zodat u uw werk regel mati
 
       ![De actie Bing Kaarten-route ophalen instellen](./media/logic-apps-control-flow-run-steps-group-scopes/get-route.png) 
 
-      Zie [Een route berekenen](https://msdn.microsoft.com/library/ff701717.aspx) voor meer informatie over deze parameters.
+      Zie [Een route berekenen](/bingmaps/rest-services/routes/calculate-a-route) voor meer informatie over deze parameters.
 
       | Instelling | Waarde | Beschrijving |
       | ------- | ----- | ----------- |
       | **Routepunt 1** | <*starten*> | Voer de oorsprong van uw route in. | 
       | **Routepunt 2** | <*endsystemen*> | Voer de bestemming van uw route in. | 
-      | **Vermijden** | Geen | Voer items in om te voor komen op uw route, zoals snelwegen, gestuurde berichten, enzovoort. Zie [een route berekenen](https://msdn.microsoft.com/library/ff701717.aspx)voor mogelijke waarden. | 
+      | **Vermijden** | Geen | Voer items in om te voor komen op uw route, zoals snelwegen, gestuurde berichten, enzovoort. Zie [een route berekenen](/bingmaps/rest-services/routes/calculate-a-route)voor mogelijke waarden. | 
       | **Optimaliseren** | timeWithTraffic | Selecteer een para meter voor het optimaliseren van uw route, zoals de afstand, tijd met de huidige verkeers informatie, enzovoort. In dit voor beeld wordt deze waarde gebruikt: ' timeWithTraffic ' | 
       | **Afstandseenheid** | <*uw voor keur*> | Voer de afstands eenheid in om uw route te berekenen. In dit voor beeld wordt deze waarde gebruikt: ' mijl ' | 
       | **Vervoermiddel** | Auto | Voer de reis wijze in voor uw route. In dit voor beeld wordt deze waarde ' aangedreven ' gebruikt | 
@@ -387,7 +388,7 @@ Als u in de code weergave werkt, kunt u in plaats daarvan een bereik structuur d
 
 ## <a name="get-support"></a>Ondersteuning krijgen
 
-* Ga voor vragen naar de [pagina micro soft Q&een vraag voor Azure Logic apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
+* Ga voor vragen naar de [pagina micro soft Q&een vraag voor Azure Logic apps](/answers/topics/azure-logic-apps.html).
 * Ga naar de [site voor Azure Logic Apps gebruikers feedback](https://aka.ms/logicapps-wish)om functies en suggesties te verzenden of hierop te stemmen.
 
 ## <a name="next-steps"></a>Volgende stappen

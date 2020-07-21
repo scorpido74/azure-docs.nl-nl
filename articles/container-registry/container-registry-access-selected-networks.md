@@ -3,11 +3,12 @@ title: Toegang tot openbare register configureren
 description: Configureer IP-regels voor toegang tot een Azure container Registry vanuit geselecteerde open bare IP-adressen of adresbereiken.
 ms.topic: article
 ms.date: 05/19/2020
-ms.openlocfilehash: dc0514fbe7d3e01914965cee5dc547172d4435a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 967f27c05301ff339765706d0b3088ffcbaed1f2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83702084"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523822"
 ---
 # <a name="configure-public-ip-network-rules"></a>Open bare IP-netwerk regels configureren
 
@@ -100,6 +101,13 @@ az acr update --name myContainerRegistry --public-network-enabled true
 1. Selecteer op het tabblad **open bare toegang** in **open bare netwerk toegang toestaan** **alle netwerken**. Selecteer vervolgens **Opslaan**.
 
 ![Open bare toegang vanuit alle netwerken][acr-access-all-networks]
+
+## <a name="troubleshoot"></a>Problemen oplossen
+
+Als een regel voor een openbaar netwerk is ingesteld of open bare toegang tot het REGI ster is geweigerd, mislukt het aanmelden bij het REGI ster vanuit een niet-toegestaan openbaar netwerk. Client toegang vanaf achter een HTTPS-proxy mislukt ook als er geen toegangs regel voor de proxy is ingesteld. Er wordt een fout bericht weer gegeven dat vergelijkbaar is met `Error response from daemon: login attempt failed with status: 403 Forbidden` of `Looks like you don't have access to registry` .
+
+Deze fouten kunnen ook optreden als u een HTTPS-proxy gebruikt die wordt toegestaan door een netwerk toegangs regel, maar de proxy niet juist is geconfigureerd in de client omgeving. Controleer of de docker-client en de docker-daemon zijn geconfigureerd voor proxy gedrag. Zie [http/https-proxy](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy) in de docker-documentatie voor meer informatie.
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

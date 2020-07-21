@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: anbene
 ms.author: mingshen
 ms.date: 06/17/2020
-ms.openlocfilehash: f97692b604408437bc2ee457bb04ad9b855c7290
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 11deb9b8146924d1a493872219ad85556d13c405
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119290"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520269"
 ---
 # <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>Een IoT Edge module-aanbod maken, configureren en publiceren in azure Marketplace
 
@@ -131,7 +131,7 @@ Hier definieert u de details van het aanbod dat op Marketplace wordt weer gegeve
 > [!NOTE]
 > De details van de aanbieding hoeven niet in het Engels te zijn als de beschrijving van de aanbieding begint met de woord groep ' deze toepassing is alleen beschikbaar in [niet-Engelse taal] '. Het is ook handig om een nuttige koppeling te bieden om inhoud te bieden in een andere taal dan die wordt gebruikt in de details van de aanbieding.
 
-### <a name="name"></a>Name
+### <a name="name"></a>Naam
 
 De naam die u hier opgeeft, wordt weer gegeven als de titel van uw aanbieding. Dit veld is vooraf ingevuld met de tekst die u hebt ingevoerd in het vak **aanbiedings alias** wanneer u de aanbieding hebt gemaakt. U kunt deze naam later wijzigen.
 
@@ -149,7 +149,7 @@ Geef een korte beschrijving van uw aanbieding. Dit kan Maxi maal 100 tekens lang
 
 Geef een gedetailleerdere beschrijving van uw aanbieding. Dit kan Maxi maal 256 tekens lang zijn en wordt gebruikt in Zoek resultaten voor Marketplace.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Beschrijving
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -229,9 +229,9 @@ Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in
 3. Ondersteunings adres (koppeling)
 4. Voorwaarden
 5. Adres van privacybeleid (koppeling)
-6. Name
+6. Naam
 7. Samenvatting
-8. Description
+8. Beschrijving
 9. Handige koppelingen
 10. Scherm afbeeldingen/Video's
 
@@ -286,13 +286,13 @@ Selecteer **concept opslaan** voordat u doorgaat naar de volgende sectie, plan o
 
 ### <a name="plan-overview"></a>Overzicht van plan
 
-Op dit tabblad kunt u verschillende plan opties bieden binnen dezelfde aanbieding in Partner Center. Deze plannen werden voorheen Sku's of Stock Keeping Units genoemd. Plannen kunnen verschillen in wat voor Clouds beschikbaar zijn, zoals globale Clouds, overheids Clouds en de afbeelding waarnaar wordt verwezen door het plan. Als u uw aanbieding in Marketplace wilt aanbieden, moet u ten minste één abonnement instellen.
+Op dit tabblad kunt u verschillende plan opties bieden binnen dezelfde aanbieding in Partner Center. Plannen (voorheen Sku's) kunnen verschillen in wat voor Clouds beschikbaar zijn, zoals globale Clouds, overheids Clouds en de afbeelding waarnaar wordt verwezen door het plan. Als u uw aanbieding in Marketplace wilt aanbieden, moet u ten minste één abonnement instellen.
 
 Nadat u uw plannen hebt gemaakt, wordt op het tabblad Overzicht van het **plan** het volgende weer gegeven:
 
 - Namen van plannen
 - Prijsmodel
-- Beschik baarheid in de Cloud (Global of Government)
+- Azure-regio's (wereld wijd of overheid)
 - Huidige publicatie status
 - Beschik bare acties
 
@@ -329,7 +329,7 @@ Selecteer de optie [Azure Government](../../azure-government/documentation-gover
 
 #### <a name="azure-government-certifications"></a>Azure Government-certificeringen
 
-Deze optie is alleen zichtbaar als **Azure Government** is geselecteerd onder **Beschik baarheid**in de Cloud.
+Deze optie is alleen zichtbaar als **Azure Government** is geselecteerd onder **Azure-regio's**.
 
 Azure Government services verwerken gegevens die onderworpen zijn aan bepaalde wettelijke voor schriften en vereisten. Bijvoorbeeld FedRAMP, NIST 800,171 (DIB), ITAR, IRS 1075, DoD N4 en CJIS. Als u uw certificeringen voor deze Program ma's wilt behalen, kunt u Maxi maal 100 koppelingen opgeven die uw certificeringen beschrijven. Dit kunnen koppelingen zijn naar uw aanbiedingen op het programma, rechtstreeks of op uw eigen website. Deze koppelingen zijn alleen zichtbaar voor Azure Government klanten.
 
@@ -410,7 +410,7 @@ U geeft de volgende informatie op het tabblad **Details van de afbeeldings opsla
 
 #### <a name="call-out-description"></a>Beschrijving van aanroep
 
-1. Beheerder
+1. Gebruiker met beheerdersrechten
 
 <br>**Wacht woord voor de Azure container Registry**: Geef het wacht woord op voor de beheerder van de gebruikers naam die is gekoppeld aan de Azure container Registry en heeft de container installatie kopie. De gebruikers naam en het wacht woord zijn vereist om ervoor te zorgen dat uw bedrijf toegang heeft tot het REGI ster. U kunt het wacht woord ophalen van de Azure portal door naar **container Registry**  >  **toegangs sleutels** of met Azure CLI te gaan met behulp van de [weer geven opdracht.](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show)
 
@@ -465,7 +465,7 @@ Als een module bijvoorbeeld poort binding vereist, definieert u de volgende Crea
 
 "HostConfig": {"PortBindings": {"5012/TCP": [{"HostPort": "5012"}]}
 
-## <a name="review-and-publish"></a>Controleren en publiceren
+## <a name="review-and-publish"></a>Beoordelen en publiceren
 
 Nadat u alle vereiste delen van de aanbieding hebt voltooid, kunt u deze verzenden om te controleren en te publiceren.
 

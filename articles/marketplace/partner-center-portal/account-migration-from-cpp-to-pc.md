@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 09/23/2019
-ms.openlocfilehash: 24ce0ff2fa5e0b023f2a0d6b92e657299518c044
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 723690c29cd6ce77d7615fc613e50740ef2a45c7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120497"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520150"
 ---
 # <a name="how-to-migrate-your-account-from-cloud-partner-portal-to-partner-center"></a>Uw account migreren van Cloud Partner-portal naar het partner centrum
 
@@ -27,7 +27,7 @@ Als u een gebruiker bent met de rol owner in CPP voor een bepaald account, wordt
 
 ### <a name="your-account-has-been-migrated-to-partner-center"></a>Uw account is gemigreerd naar het partner centrum
 
-Voor alle accounts die de migratie van het CPP naar partner Center hebben voltooid, vindt account beheer plaats in het partner centrum. Wijzigingen, zoals het toevoegen of verwijderen van gebruikers, worden teruggesynchroniseerd naar CPP.
+U beheert nu uw account in partner centrum. Wijzigingen, zoals het toevoegen of verwijderen van gebruikers, worden teruggesynchroniseerd naar CPP.
 
 ### <a name="you-have-not-yet-migrated-your-account-to-partner-center"></a>U hebt uw account nog niet gemigreerd naar het partner centrum
 
@@ -45,7 +45,7 @@ Klik op de banner om uw account migratie proces te starten. U wordt verwacht de 
 
 ## <a name="publishers-moving-from-cpp"></a>Uitgevers die overstappen van CPP
 
-Als uw account is gemigreerd vanuit de [Cloud Partner-Portal (cpp)](https://cloudpartner.azure.com), hoeft u geen nieuw partner centrum-account te maken. U moet een aangepaste koppeling hebben ontvangen naar uw nieuwe partner Center-account in een e-mail bericht en in een banner melding nadat u zich hebt aangemeld bij uw bestaande CPP-account.
+Als uw account is gemigreerd vanuit het CPP, hoeft u geen nieuw partner centrum-account te maken. U moet een aangepaste koppeling hebben ontvangen naar uw nieuwe partner Center-account in e-mail en in een banner melding nadat u zich hebt aangemeld bij uw bestaande CPP-account.
 
 Zodra u uw nieuwe partner Center-account hebt ingeschakeld, gaat u naar deze aangepaste koppeling en kunt u teruggaan naar uw account door het [dash board voor commerciële Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) in het partner centrum te bezoeken.
 

@@ -5,19 +5,19 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/29/2020
-ms.openlocfilehash: 05a76a1434b5a63229b335fb3973897896ec733d
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.date: 07/14/2020
+ms.openlocfilehash: d36b4fd433af716ebd97d88d05922d94bd74c309
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955809"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523533"
 ---
-# <a name="pricing-model-in-azure-cosmos-db"></a>Prijsmodel in Azure Cosmos DB 
+# <a name="pricing-model-in-azure-cosmos-db"></a>Prijsmodel in Azure Cosmos DB
 
 Met het prijsmodel van Azure Cosmos DB wordt beheren en plannen van de kosten vereenvoudigd. Met Azure Cosmos DB betaalt u voor de ingerichte doorvoer en voor de opslag die u verbruikt.
 
-* **Ingerichte door Voer**: ingerichte door Voer (ook wel gereserveerde door Voer genoemd) garandeert hoge prestaties op elke schaal. U geeft de door Voer (RU/s) op die u nodig hebt, en Azure Cosmos DB exclusief de benodigde resources om de geconfigureerde door voer te garanderen. U wordt per uur gefactureerd voor de maximale ingerichte door Voer voor een bepaald uur.
+* **Ingerichte door Voer**: [ingerichte door Voer](how-to-choose-offer.md) (ook wel gereserveerde door Voer genoemd) garandeert hoge prestaties op elke schaal. U geeft de door Voer (RU/s) op die u nodig hebt, en Azure Cosmos DB exclusief de benodigde resources om de geconfigureerde door voer te garanderen. U wordt per uur gefactureerd voor de maximale ingerichte door Voer voor een bepaald uur. U kunt de door Voer hand matig inrichten of [automatisch schalen](provision-throughput-autoscale.md)gebruiken.
 
    > [!NOTE]
    > Omdat het ingerichte doorvoer model resources toekent aan uw container of Data Base, worden er kosten in rekening gebracht voor de ingerichte door Voer, zelfs als u geen workloads uitvoert.
@@ -41,9 +41,11 @@ Zoals u in de voor gaande tabel ziet, begint de minimale door Voer in Azure Cosm
 
 ## <a name="try-azure-cosmos-db-for-free"></a>Probeer Azure Cosmos DB gratis uit
 
-Azure Cosmos DB biedt gratis verschillende opties voor ontwikkel aars. Het gaat om deze opties:
+Azure Cosmos DB biedt gratis een groot aantal opties voor ontwikkel aars. Het gaat om deze opties:
 
-* **Gratis Azure-account**: Azure biedt een [gratis laag](https://azure.microsoft.com/free/) met $200 in azure-tegoed voor de eerste 30 dagen en een beperkt aantal gratis services gedurende 12 maanden. Zie [Gratis Azure-account](../cost-management-billing/manage/avoid-charges-free-account.md) voor meer informatie. Azure Cosmos DB maakt deel uit van een gratis Azure-account. Met name voor Azure Cosmos DB biedt deze gratis account 5 GB opslag ruimte en 400 RUs van ingerichte door Voer voor het hele jaar. 
+* **Azure Cosmos DB gratis laag**: Azure Cosmos DB gratis laag kunt u gemakkelijk aan de slag gaan, uw toepassingen ontwikkelen en testen, of zelfs gratis kleine productie werkbelastingen uitvoeren. Wanneer de laag gratis is ingeschakeld voor een account, ontvangt u de eerste 400 RU/s en 5 GB aan opslag ruimte in het account, voor de levens duur van het account. U kunt Maxi maal één gratis laag account per Azure-abonnement hebben en u moet zich aanmelden wanneer u het account maakt. Als u aan de slag wilt gaan, [maakt u een nieuw account in azure Portal met gratis laag ingeschakeld](create-cosmosdb-resources-portal.md) of gebruikt u een [arm-sjabloon](manage-sql-with-resource-manager.md#free-tier).
+
+* **Gratis Azure-account**: Azure biedt een [gratis laag](https://azure.microsoft.com/free/) met $200 in azure-tegoed voor de eerste 30 dagen en een beperkt aantal gratis services gedurende 12 maanden. Zie [Gratis Azure-account](../cost-management-billing/manage/avoid-charges-free-account.md) voor meer informatie. Azure Cosmos DB maakt deel uit van een gratis Azure-account. Met name voor Azure Cosmos DB biedt deze gratis account 5 GB opslag ruimte en 400 RU/s aan ingerichte door Voer voor het hele jaar.
 
 * **Probeer Azure Cosmos DB gratis**: Azure Cosmos DB biedt een tijdrovende ervaring met behulp van de Azure Cosmos DB voor gratis accounts. U kunt een Azure Cosmos DB account maken, data bases en verzamelingen maken en een voorbeeld toepassing uitvoeren met behulp van de Quick starts en zelf studies. U kunt de voorbeeld toepassing uitvoeren zonder u te abonneren op een Azure-account of uw credit card te gebruiken. [Probeer Azure Cosmos DB gratis](https://azure.microsoft.com/try/cosmosdb/) aanbiedingen Azure Cosmos DB gedurende één maand, waarbij u uw account een wille keurig aantal keren kunt verlengen.
 

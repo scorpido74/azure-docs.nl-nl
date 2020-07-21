@@ -7,11 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: cherylmc
-ms.openlocfilehash: 9f5c5cc3a943ad4a8882a91ffdcee89c2ad39743
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 62effa04fd6130c35d3e2e64a401c124fe383200
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79272966"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521918"
 ---
 # <a name="expressroute-nat-requirements"></a>NAT-vereisten voor ExpressRoute
 Als u ExpressRoute wilt gebruiken om verbinding te maken met Microsoft Cloud-services, moet u NAT's instellen en beheren. Sommige connecitiviteitsproviders bieden het instellen en beheren van NAT aan als een beheerde service. Neem contact op met uw connectiviteitsprovider om na te gaan of ze deze service leveren. Als dat niet het geval is, moet u voldoen aan de vereisten die hieronder worden beschreven. 
@@ -21,7 +22,7 @@ Bekijk de pagina [ExpressRoute circuits and routing domains](expressroute-circui
 ## <a name="nat-requirements-for-microsoft-peering"></a>NAT-vereisten voor Microsoft-peering
 Met het pad voor Microsoft-peering kunt u verbinding maken met Microsoft Cloud-services die niet worden ondersteund via het pad voor openbare Azure-peering. De lijst met Services bevat Office 365-Services, zoals Exchange Online, share point online en Skype voor bedrijven. Microsoft verwacht bidirectionele connectiviteit op de Microsoft-peering te gaan ondersteunen. Verkeer dat is bestemd voor Microsoft Cloud-services moet met SNAT worden omgezet naar geldige openbare IPv4-adressen voordat het het Microsoft-netwerk binnenkomt. Verkeer dat is bestemd voor uw netwerk en afkomstig is van Microsoft Cloud-services, moet met SNAT worden omgezet aan de kant van uw internet om [asymmetrische routering](expressroute-asymmetric-routing.md) te voorkomen. In de afbeelding hieronder ziet u hoe de NAT moet worden ingesteld voor micro soft-peering.
 
-![](./media/expressroute-nat/expressroute-nat-microsoft.png) 
+![Diagram op hoog niveau van hoe de NAT moet worden ingesteld voor micro soft-peering.](./media/expressroute-nat/expressroute-nat-microsoft.png) 
 
 ### <a name="traffic-originating-from-your-network-destined-to-microsoft"></a>Verkeer dat afkomstig is van uw netwerk en is bestemd voor Microsoft
 * U moet ervoor zorgen dat verkeer het pad voor Microsoft-peering binnenkomt met een geldig openbaar IPv4-adres. Microsoft moet de eigenaar van de IPv4 NAT-adresgroep kunnen controleren in het regionale Routing Internet Registry (RIR) of een Internet Routing Registry (IRR). Er wordt een controle uitgevoerd op basis van het AS-nummer waaraan het wordt gekoppeld en de IP-adressen die voor de NAT worden gebruikt. Raadpleeg de pagina [ExpressRoute routing requirements](expressroute-routing.md) (Routeringsvereisten voor ExpressRoute) voor meer informatie over routeringsregisters.
@@ -52,7 +53,7 @@ Met het pad voor openbare Azure-peering kunt u verbinding maken met alle service
 
 Verkeer dat is bestemd voor Microsoft Azure via openbare peering moet met SNAT worden omgezet naar geldige openbare IPv4-adressen voordat het het Microsoft-netwerk binnenkomt. In onderstaande afbeelding ziet u een algemeen beeld van hoe de NAT kan worden ingesteld om te voldoen aan bovenstaande vereiste.
 
-![](./media/expressroute-nat/expressroute-nat-azure-public.png) 
+![Diagram op hoog niveau van hoe de NAT kan worden ingesteld om te worden omgezet naar geldige open bare IPv4-adressen voordat ze het micro soft-netwerk binnenkomen.](./media/expressroute-nat/expressroute-nat-azure-public.png) 
 
 ### <a name="nat-ip-pool-and-route-advertisements"></a>NAT IP-adresgroep en route-advertenties
 U moet ervoor zorgen dat verkeer het pad voor openbare Azure-peering binnenkomt met een geldig openbaar IPv4-adres. Microsoft moet het eigenaarschap van de IPv4 NAT-adresgroep kunnen controleren in het regionale Routing Internet Registry (RIR) of een Internet Routing Registry (IRR). Er wordt een controle uitgevoerd op basis van het AS-nummer waaraan het wordt gekoppeld en de IP-adressen die voor de NAT worden gebruikt. Raadpleeg de pagina [ExpressRoute routing requirements](expressroute-routing.md) (Routeringsvereisten voor ExpressRoute) voor meer informatie over routeringsregisters.

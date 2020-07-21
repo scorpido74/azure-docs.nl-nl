@@ -11,46 +11,34 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.author: yexu
-ms.openlocfilehash: a45c8ce820532d11f18758924dc3399818cb9158
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d52d172fa4cc435235079cd88999766df93bfdf0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84610216"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522904"
 ---
 #  <a name="data-consistency-verification-in-copy-activity-preview"></a>Verificatie van de gegevens consistentie in de Kopieer activiteit (preview-versie)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Wanneer u gegevens van de bron naar het doel archief verplaatst, biedt Azure Data Factory Kopieer activiteit een optie waarmee u aanvullende gegevens consistentie verificatie kunt uitvoeren om ervoor te zorgen dat de gegevens niet alleen worden gekopieerd van de bron naar het doel archief, maar ook zijn geverifieerd om consistent te zijn tussen de bron-en doel opslag. Zodra er inconsistente gegevens zijn gevonden tijdens het verplaatsen van gegevens, kunt u de Kopieer activiteit afbreken of door gaan met het kopiëren van de rest door de instelling fout tolerantie in te scha kelen om inconsistente gegevens over te slaan. U kunt de overgeslagen object namen ophalen door de instelling voor sessie logboek in de Kopieer activiteit in te scha kelen. 
+Wanneer u gegevens van de bron naar het doel archief verplaatst, biedt Azure Data Factory Kopieer activiteit een optie waarmee u aanvullende gegevens consistentie verificatie kunt uitvoeren om ervoor te zorgen dat de gegevens niet alleen worden gekopieerd van de bron naar het doel archief, maar ook zijn geverifieerd om consistent te zijn tussen de bron-en doel opslag. Zodra er inconsistente bestanden zijn gevonden tijdens het verplaatsen van gegevens, kunt u de Kopieer activiteit afbreken of door gaan met het kopiëren van de rest door de instelling fout tolerantie in te scha kelen om inconsistente bestanden over te slaan. U kunt de overgeslagen bestands namen ophalen door de instelling voor sessie logboek in de Kopieer activiteit in te scha kelen. 
 
 > [!IMPORTANT]
 > Deze functie is momenteel in preview, met de volgende beperkingen waarmee we actief werken:
->- Verificatie van gegevens consistentie is alleen beschikbaar op binaire bestanden die worden gekopieerd tussen archieven op basis van bestanden met het gedrag ' PreserveHierarchy ' in de Kopieer activiteit. Voor het kopiëren van tabellaire gegevens is de gegevens consistentie verificatie nog niet beschikbaar in de Kopieer activiteit.
 >- Wanneer u de instelling voor het sessie logboek inschakelt in de Kopieer activiteit om de inconsistente bestanden die worden overgeslagen, te registreren, kan de volledigheid van het logboek bestand niet 100% worden gegarandeerd als de Kopieer activiteit is mislukt.
 >- Het sessie logboek bevat alleen inconsistente bestanden, waarbij de gekopieerde bestanden tot nu toe niet worden geregistreerd.
 
-## <a name="supported-data-stores"></a>Ondersteunde gegevensarchieven
+## <a name="supported-data-stores-and-scenarios"></a>Ondersteunde gegevens archieven en-scenario's
 
-### <a name="source-data-stores"></a>Brongegevens archieven
-
--   [Azure Blob Storage](connector-azure-blob-storage.md)
--   [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
--   [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)
--   [Azure File Storage](connector-azure-file-storage.md)
--   [Amazon S3](connector-amazon-simple-storage-service.md)
--   [Bestandssysteem](connector-file-system.md)
--   [HDFS](connector-hdfs.md)
-
-### <a name="destination-data-stores"></a>Doel gegevens archieven
-
--   [Azure Blob Storage](connector-azure-blob-storage.md)
--   [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
--   [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)
--   [Azure File Storage](connector-azure-file-storage.md)
--   [Bestandssysteem](connector-file-system.md)
+-   Verificatie van gegevens consistentie wordt ondersteund door alle connectors behalve FTP, sFTP en HTTP. 
+-   Verificatie van gegevens consistentie wordt niet ondersteund in het faserings kopie scenario.
+-   Bij het kopiëren van binaire bestanden is verificatie van gegevens consistentie alleen beschikbaar wanneer het gedrag PreserveHierarchy is ingesteld in de Kopieer activiteit.
+-   Bij het kopiëren van meerdere binaire bestanden in één Kopieer activiteit met gegevens consistentie verificatie ingeschakeld, hebt u de mogelijkheid om de Kopieer activiteit af te breken of door te gaan met het kopiëren van de rest door de instelling fout tolerantie in te scha kelen om inconsistente bestanden over te slaan. 
+-   Bij het kopiëren van een tabel in één Kopieer activiteit met gegevens consistentie verificatie is ingeschakeld, mislukt de Kopieer activiteit als het aantal rijen dat uit de bron is gelezen, afwijkt van het aantal rijen dat is gekopieerd naar de bestemming plus het aantal incompatibele rijen dat is overgeslagen.
 
 
-## <a name="configuration"></a>Configuratie
+## <a name="configuration"></a>Configuration
 In het volgende voor beeld wordt een JSON-definitie geboden om de verificatie van gegevens consistentie in de Kopieer activiteit in te scha kelen: 
 
 ```json
@@ -84,16 +72,15 @@ In het volgende voor beeld wordt een JSON-definitie geboden om de verificatie va
 
 Eigenschap | Beschrijving | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | -------- 
-validateDataConsistency | Als u waar voor deze eigenschap instelt, wordt door de Kopieer activiteit de bestands grootte, de lastModifiedDate en de MD5-controlesom gecontroleerd voor elk object dat is gekopieerd van bron naar doel archief om ervoor te zorgen dat de gegevens consistentie tussen het bron-en doel archief. Houd er rekening mee dat de Kopieer prestaties worden beïnvloed door deze optie in te scha kelen.  | True<br/>False (standaard) | No
-dataInconsistency | Een van de sleutel-waardeparen in de skipErrorFile-eigenschappen verzameling om te bepalen of u de inconsistente gegevens wilt overs Laan.<br/> -True: u wilt de rest kopiëren door inconsistente gegevens over te slaan.<br/> -False: u wilt de Kopieer activiteit afbreken zodra inconsistente gegevens zijn gevonden.<br/>Houd er rekening mee dat deze eigenschap alleen geldig is wanneer u validateDataConsistency instelt als waar.  | True<br/>False (standaard) | No
-logStorageSettings | Een groep eigenschappen die kan worden opgegeven om het sessie logboek in te scha kelen voor het vastleggen van overgeslagen objecten. | | No
-linkedServiceName | De gekoppelde service van [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) of [Azure data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) voor het opslaan van de sessie logboek bestanden. | De namen van een `AzureBlobStorage` of meer `AzureBlobFS` gekoppelde service, die verwijst naar het exemplaar dat u gebruikt om de logboek bestanden op te slaan. | No
-path | Het pad van de logboek bestanden. | Geef het pad op waarin u de logboek bestanden wilt opslaan. Als u geen pad opgeeft, maakt de service een container voor u. | No
+validateDataConsistency | Als u waar voor deze eigenschap instelt, worden bij het kopiëren van binaire bestanden de bestands grootte, de lastModifiedDate en de MD5-controlesom van de bron naar het doel archief gecontroleerd om de gegevens consistentie tussen het bron-en doel archief te controleren. Bij het kopiëren van tabellaire gegevens wordt het totale aantal rijen gecontroleerd nadat de taak is voltooid om ervoor te zorgen dat het totale aantal van de bron opgehaalde rij gelijk is aan het aantal rijen dat is gekopieerd naar de bestemming plus het aantal incompatibele rijen dat is overgeslagen. Houd er rekening mee dat de Kopieer prestaties worden beïnvloed door deze optie in te scha kelen.  | Waar<br/>False (standaard) | Nee
+dataInconsistency | Een van de sleutel-waardeparen in de skipErrorFile-eigenschappen verzameling om te bepalen of u de inconsistente bestanden wilt overs Laan. <br/> -True: u wilt de rest kopiëren door inconsistente bestanden over te slaan.<br/> -False: u wilt de Kopieer activiteit afbreken nadat het inconsistente bestand is gevonden.<br/>Houd er rekening mee dat deze eigenschap alleen geldig is wanneer u binaire bestanden kopieert en stel validateDataConsistency in op True.  | Waar<br/>False (standaard) | Nee
+logStorageSettings | Een groep eigenschappen die kan worden opgegeven om het sessie logboek in te scha kelen voor het registreren van bestanden die zijn overgeslagen. | | Nee
+linkedServiceName | De gekoppelde service van [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) of [Azure data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) voor het opslaan van de sessie logboek bestanden. | De namen van een `AzureBlobStorage` of meer `AzureBlobFS` gekoppelde service, die verwijst naar het exemplaar dat u gebruikt om de logboek bestanden op te slaan. | Nee
+leertraject | Het pad van de logboek bestanden. | Geef het pad op waarin u de logboek bestanden wilt opslaan. Als u geen pad opgeeft, maakt de service een container voor u. | Nee
 
 >[!NOTE]
->- Gegevens consistentie wordt niet ondersteund in het faserings kopie scenario. 
->- Bij het kopiëren van bestanden van, of naar Azure Blob of Azure Data Lake Storage Gen2, voert ADF de MD5-controlesom verificatie op blok niveau uit met behulp van de [Azure Blob API](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy) en de [Azure data Lake Storage Gen2-API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update#request-headers). Als ContentMD5 op bestanden bestaan in Azure Blob of als gegevens bronnen worden Azure Data Lake Storage Gen2, heeft ADF de MD5-controlesom controle op bestands niveau na het lezen van de bestanden. Na het kopiëren van bestanden naar Azure Blob of Azure Data Lake Storage Gen2 als gegevens doel, schrijft ADF ContentMD5 naar Azure Blob of Azure Data Lake Storage Gen2 die verder kan worden gebruikt door downstream-toepassingen voor de verificatie van gegevens consistentie.
->- ADF heeft bestands grootte verificatie bij het kopiëren van bestanden tussen opslag archieven.
+>- Bij het kopiëren van binaire bestanden vanuit of naar Azure Blob of Azure Data Lake Storage Gen2, heeft ADF de MD5-controlesom verificatie op blok niveau met behulp van de [Azure Blob API](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy) en de [Azure data Lake Storage Gen2-API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update#request-headers). Als ContentMD5 op bestanden bestaan in Azure Blob of als gegevens bronnen worden Azure Data Lake Storage Gen2, heeft ADF de MD5-controlesom controle op bestands niveau na het lezen van de bestanden. Na het kopiëren van bestanden naar Azure Blob of Azure Data Lake Storage Gen2 als gegevens doel, schrijft ADF ContentMD5 naar Azure Blob of Azure Data Lake Storage Gen2 die verder kan worden gebruikt door downstream-toepassingen voor de verificatie van gegevens consistentie.
+>- ADF heeft bestands grootte verificatie bij het kopiëren van binaire bestanden tussen opslag archieven.
 
 ## <a name="monitoring"></a>Bewaking
 
@@ -135,9 +122,9 @@ Als u configureert om het inconsistente bestand te registreren, kunt u het logbo
 
 Het schema van een logboek bestand is als volgt:
 
-Kolom | Description 
+Kolom | Beschrijving 
 -------- | -----------  
-Tijdstempel | De tijds tempel wanneer ADF de inconsistente bestanden overs laat.
+Timestamp | De tijds tempel wanneer ADF de inconsistente bestanden overs laat.
 Niveau | Het logboek niveau van dit item. Het wordt weer gegeven in het waarschuwings niveau voor het item met het overs laan van bestanden.
 OperationName | Operationeel gedrag van de ADF-Kopieer activiteit op elk bestand. Het wordt ' FileSkip ' om het bestand op te geven dat moet worden overgeslagen.
 OperationItem | De naam van het bestand dat moet worden overgeslagen.

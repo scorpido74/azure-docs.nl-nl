@@ -1,14 +1,14 @@
 ---
 title: Nalevings gegevens voor beleid ophalen
 description: Azure Policy evaluaties en effecten bepalen de naleving. Meer informatie over hoe u de compatibiliteits Details van uw Azure-resources kunt ophalen.
-ms.date: 05/20/2020
+ms.date: 07/15/2020
 ms.topic: how-to
-ms.openlocfilehash: 53c946c59862451859616cb87d1101ae8fd5f15b
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 8da1876842e89e806b61bba611db74795a6710d1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045192"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521531"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Compatibiliteits gegevens van Azure-resources ophalen
 
@@ -44,7 +44,19 @@ De evaluaties van toegewezen beleid en initiatieven worden uitgevoerd als gevolg
 
 ### <a name="on-demand-evaluation-scan"></a>Evaluatiescan op aanvraag
 
-Een evaluatie scan voor een abonnement of een resource groep kan worden gestart met Azure PowerShell of een aanroep naar de REST API. Deze scan is een asynchroon proces.
+Een evaluatie scan voor een abonnement of een resource groep kan worden gestart met Azure CLI, Azure PowerShell of een aanroep naar de REST API. Deze scan is een asynchroon proces.
+
+#### <a name="on-demand-evaluation-scan---azure-cli"></a>Evaluatie scan op aanvraag-Azure CLI
+
+De compatibiliteits scan wordt gestart met de opdracht [AZ policy state trigger-scan](/cli/azure/policy/state#az-policy-state-trigger-scan) .
+
+`az policy state trigger-scan`Hiermee wordt standaard een evaluatie gestart voor alle resources in het huidige abonnement. Als u een evaluatie voor een specifieke resource groep wilt starten, gebruikt u de para meter voor de **resource groep** . In het volgende voor beeld wordt een nalevings scan gestart in het huidige abonnement voor de resource groep _MyRG_ :
+
+```azurecli-interactive
+az policy state trigger-scan --resource-group "MyRG"
+```
+
+U kunt ervoor kiezen om niet te wachten tot het asynchrone proces is voltooid voordat u doorgaat met de para meter **no-wait** .
 
 #### <a name="on-demand-evaluation-scan---azure-powershell"></a>Evaluatie scan op aanvraag-Azure PowerShell
 
@@ -53,7 +65,7 @@ De compatibiliteits scan wordt gestart met de cmdlet [Start-AzPolicyComplianceSc
 `Start-AzPolicyComplianceScan`Hiermee wordt standaard een evaluatie gestart voor alle resources in het huidige abonnement. Als u een evaluatie voor een specifieke resource groep wilt starten, gebruikt u de para meter **ResourceGroupName** . In het volgende voor beeld wordt een nalevings scan gestart in het huidige abonnement voor de resource groep _MyRG_ :
 
 ```azurepowershell-interactive
-Start-AzPolicyComplianceScan -ResourceGroupName MyRG
+Start-AzPolicyComplianceScan -ResourceGroupName 'MyRG'
 ```
 
 U kunt ervoor zorgen dat Power shell wacht totdat de asynchrone aanroep is voltooid voordat de resultaten uitvoer wordt opgegeven of dat deze op de achtergrond als een [taak](/powershell/module/microsoft.powershell.core/about/about_jobs)wordt uitgevoerd. Als u een Power shell-taak wilt gebruiken om de compatibiliteits scan op de achtergrond uit te voeren, gebruikt u de para meter **AsJob** en stelt u de waarde in op een object, zoals `$job` in dit voor beeld:
@@ -118,12 +130,12 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 In een toewijzing is een resource **niet-compatibel** als deze niet voldoet aan het beleid of initiatief regels.
 In de volgende tabel ziet u hoe verschillende beleids effecten werken met de evaluatie van de voor waarde voor de resulterende nalevings status:
 
-| Resource status | Effect | Beleids evaluatie | Nalevings status |
+| Resource status | Effect | Beleids evaluatie | Nalevingsstatus |
 | --- | --- | --- | --- |
-| Bestaat | Weigeren, Controleren, Toevoegen\*, DeployIfNotExist\*, AuditIfNotExist\* | True | Niet-compatibel |
-| Bestaat | Weigeren, Controleren, Toevoegen\*, DeployIfNotExist\*, AuditIfNotExist\* | False | Compliant |
-| Nieuw | Controleren, AuditIfNotExist\* | True | Niet-compatibel |
-| Nieuw | Controleren, AuditIfNotExist\* | False | Compliant |
+| Bestaat | Weigeren, Controleren, Toevoegen\*, DeployIfNotExist\*, AuditIfNotExist\* | Waar | Niet-compatibel |
+| Bestaat | Weigeren, Controleren, Toevoegen\*, DeployIfNotExist\*, AuditIfNotExist\* | Niet waar | Compliant |
+| Nieuw | Controleren, AuditIfNotExist\* | Waar | Niet-compatibel |
+| Nieuw | Controleren, AuditIfNotExist\* | Niet waar | Compliant |
 
 \*Voor de acties Toevoegen, DeployIfNotExist en AuditIfNotExist moet de IF-instructie TRUE zijn.
 De acties vereisen ook dat de bestaansvoorwaarde FALSE is om niet-compatibel te zijn. Indien TRUE, activeert de IF-voorwaarde de evaluatie van de bestaansvoorwaarde voor de gerelateerde resources.
@@ -184,8 +196,7 @@ Wanneer een resource als **niet-compatibel**wordt beschouwd, zijn er veel mogeli
 
 ## <a name="command-line"></a>Opdrachtregel
 
-Dezelfde informatie die beschikbaar is in de portal kan worden opgehaald met de REST API (inclusief [ARMClient](https://github.com/projectkudu/ARMClient)), Azure PowerShell en Azure cli (preview).
-Zie de naslag informatie voor [Azure Policy Insights](/rest/api/policy-insights/) voor volledige details over de rest API. De REST API-referentie pagina's hebben een groene ' Try-' knop voor elke bewerking waarmee u deze in de browser kunt uitproberen.
+Dezelfde informatie die beschikbaar is in de portal kan worden opgehaald met de REST API (inclusief [ARMClient](https://github.com/projectkudu/ARMClient)), Azure PowerShell en Azure cli. Zie de naslag informatie voor [Azure Policy Insights](/rest/api/policy-insights/) voor volledige details over de rest API. De REST API-referentie pagina's hebben een groene ' Try-' knop voor elke bewerking waarmee u deze in de browser kunt uitproberen.
 
 Gebruik ARMClient of een soortgelijk hulp programma voor het afhandelen van verificatie voor Azure voor de REST API-voor beelden.
 
@@ -207,7 +218,7 @@ De uitvoer geeft een samen vatting van het abonnement. In de voorbeeld uitvoer h
         "@odata.id": null,
         "@odata.context": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/$metadata#summary/$entity",
         "results": {
-            "queryResultsUri": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false",
+            "queryResultsUri": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=ComplianceState eq 'NonCompliant'",
             "nonCompliantResources": 15,
             "nonCompliantPolicies": 1
         },
@@ -215,7 +226,7 @@ De uitvoer geeft een samen vatting van het abonnement. In de voorbeeld uitvoer h
             "policyAssignmentId": "/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77",
             "policySetDefinitionId": "",
             "results": {
-                "queryResultsUri": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77'",
+                "queryResultsUri": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=ComplianceState eq 'NonCompliant' and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77'",
                 "nonCompliantResources": 15,
                 "nonCompliantPolicies": 1
             },
@@ -224,7 +235,7 @@ De uitvoer geeft een samen vatting van het abonnement. In de voorbeeld uitvoer h
                 "policyDefinitionId": "/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62",
                 "effect": "deny",
                 "results": {
-                    "queryResultsUri": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77' and PolicyDefinitionId eq '/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62'",
+                    "queryResultsUri": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=ComplianceState eq 'NonCompliant' and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77' and PolicyDefinitionId eq '/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62'",
                     "nonCompliantResources": 15
                 }
             }]
@@ -235,10 +246,10 @@ De uitvoer geeft een samen vatting van het abonnement. In de voorbeeld uitvoer h
 
 ### <a name="query-for-resources"></a>Query voor resources
 
-In het bovenstaande voor beeld bevat **Value. policyAssignments. policyDefinitions. results. queryResultsUri** een voor beeld-URI voor alle niet-compatibele resources voor een specifieke beleids definitie. Op de **$filter** waarde is IsCompliant gelijk aan False, PolicyAssignmentId is opgegeven voor de beleids definitie en vervolgens de PolicyDefinitionId zelf. De reden voor het opnemen van de PolicyAssignmentId in het filter is omdat de PolicyDefinitionId kan bestaan in verschillende beleids-of initiatief toewijzingen met verschillende bereiken. Door zowel de PolicyAssignmentId als de PolicyDefinitionId op te geven, kunnen we expliciet worden gebruikt in de resultaten die we zoeken. Voorheen werd voor PolicyStates de laatste **versie**gebruikt, waarbij automatisch een **van** - **en-** tijd venster van de laatste 24 uur wordt ingesteld.
+In het bovenstaande voor beeld bevat **Value. policyAssignments. policyDefinitions. results. queryResultsUri** een voor beeld-URI voor alle niet-compatibele resources voor een specifieke beleids definitie. Op de **$filter** waarde is ComplianceState gelijk aan ' niet-compatibel ', PolicyAssignmentId is opgegeven voor de beleids definitie en vervolgens de PolicyDefinitionId zelf. De reden voor het opnemen van de PolicyAssignmentId in het filter is omdat de PolicyDefinitionId kan bestaan in verschillende beleids-of initiatief toewijzingen met verschillende bereiken. Door zowel de PolicyAssignmentId als de PolicyDefinitionId op te geven, kunnen we expliciet worden gebruikt in de resultaten die we zoeken. Voorheen werd voor PolicyStates de laatste **versie**gebruikt, waarbij automatisch een **van** - **en-** tijd venster van de laatste 24 uur wordt ingesteld.
 
 ```http
-https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77' and PolicyDefinitionId eq '/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62'
+https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=ComplianceState eq 'NonCompliant' and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77' and PolicyDefinitionId eq '/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62'
 ```
 
 Het onderstaande voor beeld antwoord is afgekapt tot één niet-conforme resource voor de boog. Het gedetailleerde antwoord heeft verschillende gegevens over de resource, het beleid of het initiatief en de toewijzing. U ziet dat u ook kunt zien welke toewijzings parameters zijn door gegeven aan de beleids definitie.
@@ -255,7 +266,7 @@ Het onderstaande voor beeld antwoord is afgekapt tot één niet-conforme resourc
         "policyAssignmentId": "/subscriptions/{subscriptionId}/resourceGroups/rg-tags/providers/Microsoft.Authorization/policyAssignments/37ce239ae4304622914f0c77",
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62",
         "effectiveParameters": "",
-        "isCompliant": false,
+        "ComplianceState": "NonCompliant",
         "subscriptionId": "{subscriptionId}",
         "resourceType": "/Microsoft.Compute/virtualMachines",
         "resourceLocation": "westus2",
@@ -303,10 +314,207 @@ De resultaten zien er ongeveer als volgt uit:
 
 Zie voor meer informatie over het uitvoeren van query's op beleids gebeurtenissen het artikel over [Azure Policy Events](/rest/api/policy-insights/policyevents) .
 
+### <a name="azure-cli"></a>Azure CLI
+
+De [Azure cli](/cli/azure/what-is-azure-cli) -opdracht groep voor Azure policy omvat de meeste bewerkingen die beschikbaar zijn in REST of Azure PowerShell. Zie [overzicht van Azure cli-Azure Policy](/cli/azure/policy)voor een volledige lijst met beschik bare opdrachten.
+
+Voor beeld: ophalen van de status samenvatting voor het bovenste toegewezen beleid met het hoogste aantal niet-compatibele resources.
+
+```azurecli-interactive
+az policy state summarize --top 1
+```
+
+Het bovenste gedeelte van het antwoord ziet er als volgt uit:
+
+```json
+{
+    "odatacontext": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/$metadata#summary/$entity",
+    "odataid": null,
+    "policyAssignments": [{
+            "policyAssignmentId": "/subscriptions/{subscriptionId}/providers/microsoft.authorization/policyassignments/e0704696df5e4c3c81c873e8",
+            "policyDefinitions": [{
+                "effect": "audit",
+                "policyDefinitionGroupNames": [
+                    ""
+                ],
+                "policyDefinitionId": "/subscriptions/{subscriptionId}/providers/microsoft.authorization/policydefinitions/2e3197b6-1f5b-4b01-920c-b2f0a7e9b18a",
+                "policyDefinitionReferenceId": "",
+                "results": {
+                    "nonCompliantPolicies": null,
+                    "nonCompliantResources": 398,
+                    "policyDetails": [{
+                        "complianceState": "noncompliant",
+                        "count": 1
+                    }],
+                    "policyGroupDetails": [{
+                        "complianceState": "noncompliant",
+                        "count": 1
+                    }],
+                    "queryResultsUri": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2020-07-14 14:01:22Z&$to=2020-07-15 14:01:22Z and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/providers/microsoft.authorization/policyassignments/e0704696df5e4c3c81c873e8' and PolicyDefinitionId eq '/subscriptions/{subscriptionId}/providers/microsoft.authorization/policydefinitions/2e3197b6-1f5b-4b01-920c-b2f0a7e9b18a'",
+                    "resourceDetails": [{
+                            "complianceState": "noncompliant",
+                            "count": 398
+                        },
+                        {
+                            "complianceState": "compliant",
+                            "count": 4
+                        }
+                    ]
+                }
+            }],
+    ...
+```
+
+Voor beeld: ophalen van de status record voor de meest recent geëvalueerde resource (standaard ingesteld op tijds tempel in aflopende volg orde).
+
+```azurecli-interactive
+az policy state list --top 1
+```
+
+```json
+[
+  {
+    "complianceReasonCode": "",
+    "complianceState": "Compliant",
+    "effectiveParameters": "",
+    "isCompliant": true,
+    "managementGroupIds": "{managementgroupId}",
+    "odatacontext": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
+    "odataid": null,
+    "policyAssignmentId": "/subscriptions/{subscriptionId}/providers/microsoft.authorization/policyassignments/securitycenterbuiltin",
+    "policyAssignmentName": "SecurityCenterBuiltIn",
+    "policyAssignmentOwner": "tbd",
+    "policyAssignmentParameters": "",
+    "policyAssignmentScope": "/subscriptions/{subscriptionId}",
+    "policyAssignmentVersion": "",
+    "policyDefinitionAction": "auditifnotexists",
+    "policyDefinitionCategory": "tbd",
+    "policyDefinitionGroupNames": [
+      ""
+    ],
+    "policyDefinitionId": "/providers/microsoft.authorization/policydefinitions/aa633080-8b72-40c4-a2d7-d00c03e80bed",
+    "policyDefinitionName": "aa633080-8b72-40c4-a2d7-d00c03e80bed",
+    "policyDefinitionReferenceId": "identityenablemfaforownerpermissionsmonitoring",
+    "policyDefinitionVersion": "",
+    "policyEvaluationDetails": null,
+    "policySetDefinitionCategory": "security center",
+    "policySetDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8",
+    "policySetDefinitionName": "1f3afdf9-d0c9-4c3d-847f-89da613e70a8",
+    "policySetDefinitionOwner": "",
+    "policySetDefinitionParameters": "",
+    "policySetDefinitionVersion": "",
+    "resourceGroup": "",
+    "resourceId": "/subscriptions/{subscriptionId}",
+    "resourceLocation": "",
+    "resourceTags": "tbd",
+    "resourceType": "Microsoft.Resources/subscriptions",
+    "subscriptionId": "{subscriptionId}",
+    "timestamp": "2020-07-15T08:37:07.903433+00:00"
+  }
+]
+```
+
+Voor beeld: de Details ophalen voor alle niet-compatibele virtuele netwerk resources.
+
+```azurecli-interactive
+az policy state list --filter "ResourceType eq 'Microsoft.Network/virtualNetworks'"
+```
+
+```json
+[
+  {
+    "complianceReasonCode": "",
+    "complianceState": "NonCompliant",
+    "effectiveParameters": "",
+    "isCompliant": false,
+    "managementGroupIds": "{managementgroupId}",
+    "odatacontext": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
+    "odataid": null,
+    "policyAssignmentId": "/subscriptions/{subscriptionId}/providers/microsoft.authorization/policyassignments/e0704696df5e4c3c81c873e8",
+    "policyAssignmentName": "e0704696df5e4c3c81c873e8",
+    "policyAssignmentOwner": "tbd",
+    "policyAssignmentParameters": "",
+    "policyAssignmentScope": "/subscriptions/{subscriptionId}",
+    "policyAssignmentVersion": "",
+    "policyDefinitionAction": "audit",
+    "policyDefinitionCategory": "tbd",
+    "policyDefinitionGroupNames": [
+      ""
+    ],
+    "policyDefinitionId": "/subscriptions/{subscriptionId}/providers/microsoft.authorization/policydefinitions/2e3197b6-1f5b-4b01-920c-b2f0a7e9b18a",
+    "policyDefinitionName": "2e3197b6-1f5b-4b01-920c-b2f0a7e9b18a",
+    "policyDefinitionReferenceId": "",
+    "policyDefinitionVersion": "",
+    "policyEvaluationDetails": null,
+    "policySetDefinitionCategory": "",
+    "policySetDefinitionId": "",
+    "policySetDefinitionName": "",
+    "policySetDefinitionOwner": "",
+    "policySetDefinitionParameters": "",
+    "policySetDefinitionVersion": "",
+    "resourceGroup": "RG-Tags",
+    "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/RG-Tags/providers/Microsoft.Network/virtualNetworks/RG-Tags-vnet",
+    "resourceLocation": "westus2",
+    "resourceTags": "tbd",
+    "resourceType": "Microsoft.Network/virtualNetworks",
+    "subscriptionId": "{subscriptionId}",
+    "timestamp": "2020-07-15T08:37:07.901911+00:00"
+  }
+]
+```
+
+Voor beeld: het ophalen van gebeurtenissen die betrekking hebben op niet-compatibele virtuele netwerk bronnen die zijn opgetreden na een specifieke datum.
+
+```azurecli-interactive
+az policy state list --filter "ResourceType eq 'Microsoft.Network/virtualNetworks'" --from '2020-07-14T00:00:00Z'
+```
+
+```json
+[
+  {
+    "complianceReasonCode": "",
+    "complianceState": "NonCompliant",
+    "effectiveParameters": "",
+    "isCompliant": false,
+    "managementGroupIds": "{managementgroupId}",
+    "odatacontext": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
+    "odataid": null,
+    "policyAssignmentId": "/subscriptions/{subscriptionId}/providers/microsoft.authorization/policyassignments/e0704696df5e4c3c81c873e8",
+    "policyAssignmentName": "e0704696df5e4c3c81c873e8",
+    "policyAssignmentOwner": "tbd",
+    "policyAssignmentParameters": "",
+    "policyAssignmentScope": "/subscriptions/{subscriptionId}",
+    "policyAssignmentVersion": "",
+    "policyDefinitionAction": "audit",
+    "policyDefinitionCategory": "tbd",
+    "policyDefinitionGroupNames": [
+      ""
+    ],
+    "policyDefinitionId": "/subscriptions/{subscriptionId}/providers/microsoft.authorization/policydefinitions/2e3197b6-1f5b-4b01-920c-b2f0a7e9b18a",
+    "policyDefinitionName": "2e3197b6-1f5b-4b01-920c-b2f0a7e9b18a",
+    "policyDefinitionReferenceId": "",
+    "policyDefinitionVersion": "",
+    "policyEvaluationDetails": null,
+    "policySetDefinitionCategory": "",
+    "policySetDefinitionId": "",
+    "policySetDefinitionName": "",
+    "policySetDefinitionOwner": "",
+    "policySetDefinitionParameters": "",
+    "policySetDefinitionVersion": "",
+    "resourceGroup": "RG-Tags",
+    "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/RG-Tags/providers/Microsoft.Network/virtualNetworks/RG-Tags-vnet",
+    "resourceLocation": "westus2",
+    "resourceTags": "tbd",
+    "resourceType": "Microsoft.Network/virtualNetworks",
+    "subscriptionId": "{subscriptionId}",
+    "timestamp": "2020-07-15T08:37:07.901911+00:00"
+  }
+]
+```
+
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-De module Azure PowerShell voor Azure Policy is beschikbaar op de PowerShell Gallery als [AZ. PolicyInsights](https://www.powershellgallery.com/packages/Az.PolicyInsights).
-Met PowerShellGet kunt u de module installeren met `Install-Module -Name Az.PolicyInsights` (zorg ervoor dat u de nieuwste [Azure PowerShell](/powershell/azure/install-az-ps) hebt geïnstalleerd):
+De module Azure PowerShell voor Azure Policy is beschikbaar op de PowerShell Gallery als [AZ. PolicyInsights](https://www.powershellgallery.com/packages/Az.PolicyInsights). Met PowerShellGet kunt u de module installeren met `Install-Module -Name Az.PolicyInsights` (zorg ervoor dat u de nieuwste [Azure PowerShell](/powershell/azure/install-az-ps) hebt geïnstalleerd):
 
 ```azurepowershell-interactive
 # Install from PowerShell Gallery via PowerShellGet
@@ -351,7 +559,7 @@ ResourceId                 : /subscriptions/{subscriptionId}/resourceGroups/RG-T
 PolicyAssignmentId         : /subscriptions/{subscriptionId}/resourceGroups/RG-Tags/providers/Mi
                              crosoft.Authorization/policyAssignments/37ce239ae4304622914f0c77
 PolicyDefinitionId         : /providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62
-IsCompliant                : False
+ComplianceState            : NonCompliant
 SubscriptionId             : {subscriptionId}
 ResourceType               : /Microsoft.Network/networkInterfaces
 ResourceLocation           : westus2
@@ -377,7 +585,7 @@ ResourceId                 : /subscriptions/{subscriptionId}/resourceGroups/RG-T
 PolicyAssignmentId         : /subscriptions/{subscriptionId}/resourceGroups/RG-Tags/providers/Mi
                              crosoft.Authorization/policyAssignments/37ce239ae4304622914f0c77
 PolicyDefinitionId         : /providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62
-IsCompliant                : False
+ComplianceState            : NonCompliant
 SubscriptionId             : {subscriptionId}
 ResourceType               : /Microsoft.Network/virtualNetworks
 ResourceLocation           : westus2
@@ -403,7 +611,7 @@ ResourceId                 : /subscriptions/{subscriptionId}/resourceGroups/RG-T
 PolicyAssignmentId         : /subscriptions/{subscriptionId}/resourceGroups/RG-Tags/providers/Mi
                              crosoft.Authorization/policyAssignments/37ce239ae4304622914f0c77
 PolicyDefinitionId         : /providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62
-IsCompliant                : False
+ComplianceState            : NonCompliant
 SubscriptionId             : {subscriptionId}
 ResourceType               : /Microsoft.Network/virtualNetworks
 ResourceLocation           : eastus

@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/12/2019
-ms.openlocfilehash: 81f072822226e4a573cf0086cac7e64ca1cfe45f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f6baea73c0c4964bb3937304603a2a92a13d52b2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82628160"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522717"
 ---
 # <a name="move-files-with-azure-data-factory"></a>Bestanden verplaatsen met Azure Data Factory
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-In dit artikel wordt een oplossings sjabloon beschreven die u kunt gebruiken om bestanden van de ene map naar de andere te verplaatsen tussen archieven op basis van bestanden. Een van de veelvoorkomende scenario's voor het gebruik van deze sjabloon: bestanden worden doorlopend verplaatst naar een opslagmap in uw bron archief. Door een schema trigger te maken, kunt u deze bestanden regel matig van de bron naar het doel archief verplaatsen.  Op basis van de manier waarop ADF-pijp lijn ' bestanden verplaatsen ' krijgt, worden de bestanden opgehaald uit de map voor de overloop, worden ze gekopieerd naar een andere map in het doel archief en worden de bestanden vervolgens verwijderd uit de map voor het land van het bron archief.
+De ADF Copy-activiteit heeft ingebouwde ondersteuning voor het scenario ' verplaatsen ' bij het kopiëren van binaire bestanden tussen opslag archieven.  De manier om deze in te scha kelen, is door ' deleteFilesAfterCompletion ' in te stellen als waar in de Kopieer activiteit. Als u dit doet, worden bestanden uit de gegevens bron opslag verwijderd nadat de taak is voltooid. 
+
+In dit artikel wordt een oplossings sjabloon beschreven als een andere benadering van de flexibele controle stroom van ADF en een Kopieer activiteit en het verwijderen van activiteiten om hetzelfde scenario te bereiken. Een van de veelvoorkomende scenario's voor het gebruik van deze sjabloon: bestanden worden doorlopend verplaatst naar een opslagmap in uw bron archief. Door een schema trigger te maken, kunt u deze bestanden regel matig van de bron naar het doel archief verplaatsen.  Op basis van de manier waarop ADF-pijp lijn ' bestanden verplaatsen ' krijgt, worden de bestanden opgehaald uit de map voor de overloop, worden ze gekopieerd naar een andere map in het doel archief en worden de bestanden vervolgens verwijderd uit de map voor het land van het bron archief.
 
 > [!NOTE]
 > Houd er rekening mee dat deze sjabloon is ontworpen om bestanden te verplaatsen in plaats van mappen te verplaatsen.  Als u de map wilt verplaatsen door de gegevensset zodanig te wijzigen dat deze alleen een mappad bevat en vervolgens met behulp van de Kopieer activiteit en activiteit verwijderen om te verwijzen naar dezelfde gegevensset die een map vertegenwoordigt, moet u zeer voorzichtig zijn. Dit komt omdat u ervoor moet zorgen dat er geen nieuwe bestanden in de map arriveren tussen het kopiëren en het verwijderen van de bewerking. Als er nieuwe bestanden binnenkomen in de map op het moment dat u de Kopieer activiteit zojuist hebt voltooid, maar de Delete-activiteit niet is gesterd, is het mogelijk dat de Delete-activiteit dit nieuwe aankomende bestand verwijdert dat nog niet naar de bestemming is gekopieerd. dit doet u door de volledige map te verwijderen.

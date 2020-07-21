@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 8fae863c03ccbc17e9ec6621e73ddf475f759569
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: fb907e0b9c923a77c6956723f6df397fabd84da8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996207"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523975"
 ---
 # <a name="translator-v2-to-v3-migration"></a>Migratie van Translator v2 naar v3
 
@@ -49,8 +49,8 @@ In de volgende lijst met v2-en V3-methoden worden de V3-methoden en Api's geïde
 | `GetLanguagesForTranslate`     | [Talen](reference/v3-0-languages.md)       |
 | `GetLanguagesForSpeak`      | [Micro soft Speech-Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
 | `Speak`     | [Micro soft Speech-Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
-| `Detect`     | [Detecteren](reference/v3-0-detect.md)         |
-| `DetectArray`     | [Detecteren](reference/v3-0-detect.md)         |
+| `Detect`     | [Waarneem](reference/v3-0-detect.md)         |
+| `DetectArray`     | [Waarneem](reference/v3-0-detect.md)         |
 | `AddTranslation`     | De functie wordt niet meer ondersteund       |
 | `AddTranslationArray`    | De functie wordt niet meer ondersteund          |
 | `BreakSentences`      | [BreakSentence](reference/v3-0-break-sentence.md)       |
@@ -116,8 +116,8 @@ Micro soft Translator V3 maakt standaard gebruik van Neural machine vertalingen.
 
 Neural-vertaling met de V3-tekst-API biedt geen ondersteuning voor het gebruik van standaard categorieën (SMT, Speech, Tech, generalnn).
 
-| |Eindpunt|    Naleving van AVG-processor|    Translator hub gebruiken|    Aangepaste Translator gebruiken (preview-versie)|
-|:-----|:-----|:-----|:-----|:-----|
+| Versie | Eindpunt | Naleving van AVG-processor | Translator hub gebruiken | Aangepaste Translator gebruiken (preview-versie) |
+| :------ | :------- | :------------------------ | :----------------- | :------------------------------ |
 |Translator versie 2|    api.microsofttranslator.com|    Nee    |Ja    |Nee|
 |Translator versie 3|    api.cognitive.microsofttranslator.com|    Ja|    Nee|    Ja|
 

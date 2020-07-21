@@ -8,11 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 07/25/2016
-ms.openlocfilehash: e2f65f1c52dc7dfb2e4e4bf66f5c7e82f4b802b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccc7df5bfac327fabf05f210764dbe10658b5015
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74792871"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520712"
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Schema-updates voor Azure Logic Apps van 1 juni 2016
 
@@ -28,7 +29,7 @@ Als u uw Logic apps van het voorbeeld schema van 1 augustus 2015 wilt bijwerken 
 
 ## <a name="scopes"></a>Bereiken
 
-Dit schema bevat scopes waarmee u acties kunt groeperen of acties in elkaar moet nesten. Een voor waarde kan bijvoorbeeld een andere voor waarde bevatten. Lees meer over de syntaxis van het [bereik](../logic-apps/logic-apps-loops-and-scopes.md)of Bekijk dit voor beeld van een basis bereik:
+Dit schema bevat scopes waarmee u acties kunt groeperen of acties in elkaar moet nesten. Een voor waarde kan bijvoorbeeld een andere voor waarde bevatten. Lees meer over de syntaxis van het [bereik](./logic-apps-control-flow-loops.md)of Bekijk dit voor beeld van een basis bereik:
 
 ```json
 {
@@ -54,7 +55,7 @@ Dit schema bevat scopes waarmee u acties kunt groeperen of acties in elkaar moet
 
 ## <a name="conditions-and-loops-changes"></a>Voor waarden en lussen
 
-In vorige schema versies waren voor waarden en lussen para meters die zijn gekoppeld aan één actie. In dit schema wordt deze beperking opgetrokken, dus voor waarden en lussen zijn nu beschikbaar als actie typen. Meer informatie over [lussen en bereiken](../logic-apps/logic-apps-loops-and-scopes.md), [voor waarden](../logic-apps/logic-apps-control-flow-conditional-statement.md)of een overzicht van dit basis voorbeeld waarin een voorwaarde actie wordt weer gegeven:
+In vorige schema versies waren voor waarden en lussen para meters die zijn gekoppeld aan één actie. In dit schema wordt deze beperking opgetrokken, dus voor waarden en lussen zijn nu beschikbaar als actie typen. Meer informatie over [lussen en bereiken](./logic-apps-control-flow-loops.md), [voor waarden](../logic-apps/logic-apps-control-flow-conditional-statement.md)of een overzicht van dit basis voorbeeld waarin een voorwaarde actie wordt weer gegeven:
 
 ```json
 {
@@ -130,7 +131,7 @@ In de definitie van de upgrade maakt het hulp programma het beste resultaat bij 
 
 #### <a name="foreach-loop-with-condition"></a>foreach-lus met voor waarde
 
-In het nieuwe schema kunt u de filter actie gebruiken om het patroon te repliceren dat gebruikmaakt **van een voor elke** lus met één voor waarde per item. De wijziging wordt echter automatisch uitgevoerd wanneer u een upgrade uitvoert. De voor waarde wordt een filter actie die **voor elke** lus wordt weer gegeven, waarbij alleen een matrix van items wordt geretourneerd die overeenkomen met de voor waarde, en die matrix wordt door gegeven aan **elke** actie. Zie [lussen en bereiken](../logic-apps/logic-apps-loops-and-scopes.md)voor een voor beeld.
+In het nieuwe schema kunt u de filter actie gebruiken om het patroon te repliceren dat gebruikmaakt **van een voor elke** lus met één voor waarde per item. De wijziging wordt echter automatisch uitgevoerd wanneer u een upgrade uitvoert. De voor waarde wordt een filter actie die **voor elke** lus wordt weer gegeven, waarbij alleen een matrix van items wordt geretourneerd die overeenkomen met de voor waarde, en die matrix wordt door gegeven aan **elke** actie. Zie [lussen en bereiken](./logic-apps-control-flow-loops.md)voor een voor beeld.
 
 ### <a name="resource-tags"></a>Resourcetags
 

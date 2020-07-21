@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 0f1f9e17646c4432d9c1103b3c579fc6bb0d2f13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a1447e64b606170601e6df6a443f53e3132294d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833161"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522258"
 ---
 # <a name="secure-azure-digital-twins-with-role-based-access-control"></a>Azure Digital Apparaatdubbels beveiligen met op rollen gebaseerd toegangs beheer
 
@@ -58,7 +58,7 @@ U kunt rollen op twee manieren toewijzen:
 * via het deel venster toegangs beheer (IAM) voor Azure Digital Apparaatdubbels in de Azure Portal (Zie [roltoewijzingen toevoegen of verwijderen met behulp van Azure RBAC en de Azure Portal](../role-based-access-control/role-assignments-portal.md))
 * via CLI-opdrachten om een rol toe te voegen of te verwijderen
 
-Voor meer gedetailleerde stappen over hoe u dit doet, kunt u het uitproberen in de [zelf studie over Azure Digital apparaatdubbels: verbinding maken met een end-to-end oplossing](tutorial-end-to-end.md).
+Voor meer gedetailleerde stappen over hoe u dit doet, kunt u het uitproberen in de [zelf studie over Azure Digital apparaatdubbels: *verbinding maken met een end-to-end oplossing*](tutorial-end-to-end.md).
 
 ## <a name="permission-scopes"></a>Machtigingsbereiken
 
@@ -73,6 +73,6 @@ In de volgende lijst worden de niveaus beschreven waarmee u toegang tot Azure Di
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Lees hoe u deze stappen doorloopt met een voor beeld-client toepassing in [instructies: een client toepassing verifiëren](how-to-authenticate-client.md).
+* Lees hoe u deze stappen doorloopt met een voor beeld-client toepassing in [*instructies: een client toepassing verifiëren*](how-to-authenticate-client.md).
 
 * Lees meer over [RBAC voor Azure](../role-based-access-control/overview.md).

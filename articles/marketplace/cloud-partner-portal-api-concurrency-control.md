@@ -3,19 +3,21 @@ title: Gelijktijdigheids beheer-Azure Marketplace
 description: Strategieën voor gelijktijdigheids beheer voor de Cloud Partner-portal Publishing-Api's.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 04/08/2020
-ms.openlocfilehash: b66d266500745d08bef98a42e51cc8a7bab63958
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: reference
+author: emuench
+ms.author: mingshen
+ms.date: 07/14/2020
+ms.openlocfilehash: 1160d5568108e7936099cc5227b9e4cadbaddf36
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102732"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520337"
 ---
 # <a name="concurrency-control"></a>Gelijktijdigheids beheer
 
 > [!NOTE]
-> De Cloud Partner-portal-Api's zijn geïntegreerd met partner centrum en blijven werken nadat uw aanbiedingen zijn gemigreerd naar het partner centrum. De integratie introduceert kleine wijzigingen. Bekijk de wijzigingen die worden vermeld in [Cloud Partner-Portal API-referentie](./cloud-partner-portal-api-overview.md) om ervoor te zorgen dat uw code blijft werken na de migratie naar het partner centrum.
+> De Cloud Partner-portal-Api's zijn geïntegreerd in en blijven werken in het partner centrum. De overgang introduceert kleine wijzigingen. Controleer de wijzigingen die worden vermeld in [Cloud Partner-Portal API-referentie](./cloud-partner-portal-api-overview.md) om ervoor te zorgen dat uw code blijft werken na het overstappen naar het partner centrum. CCP-Api's mogen alleen worden gebruikt voor bestaande producten die al zijn geïntegreerd vóór de overgang naar het partner centrum. nieuwe producten moeten de indienings-Api's van partner Center gebruiken.
 
 Elke aanroep van de Cloud Partner-portal Publishing-Api's moet expliciet bepalen welke gelijktijdigheids beheer strategie u wilt gebruiken. Als de header **if-match** niet kan worden opgegeven, resulteert dit in een HTTP 400-fout reactie. We bieden twee strategieën voor gelijktijdigheids beheer.
 

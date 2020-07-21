@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: lbosq
 ms.reviewer: sngun
-ms.openlocfilehash: 86d88787d024029b11d9718f8dbc834ae7217707
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78cc1fe1a84f1fd596d0c581f034f312cb1a0c3d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260641"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523805"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>De grafiek gebruiken om bulk bewerkingen uit te voeren in Azure Cosmos DB Gremlin API
 
@@ -128,7 +128,7 @@ git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dot
 
 Deze opslagplaats bevat het GraphBulkExecutor-voorbeeld met de volgende bestanden:
 
-Bestand|Description
+Bestand|Beschrijving
 ---|---
 `App.config`|Hier worden de voor de toepassing en database specifieke parameters gespecificeerd. Dit bestand moet eerst worden aangepast om verbinding te kunnen maken met de doeldatabase en de verzamelingen.
 `Program.cs`| Dit bestand bevat de logica achter het maken van de `DocumentClient` verzameling, het afhandelen van de opschoon bewerkingen en het verzenden van de aanvragen voor bulk levering.
@@ -155,6 +155,7 @@ Instelling|Beschrijving
 3. Evalueer de resultaten door een query uit te voeren op de grafendatabase. Als de optie `ShouldCleanupOnFinish` is ingesteld op waar, wordt de database automatisch verwijderd.
 
 ## <a name="next-steps"></a>Volgende stappen
-* Zie voor meer informatie over Nuget-pakket gegevens en release opmerkingen van de .NET-bibliotheek voor bulk-uitvoerder- [SDK](sql-api-sdk-bulk-executor-dot-net.md). 
+
+* Zie voor meer informatie over NuGet-pakket gegevens en release opmerkingen van de .NET-bibliotheek voor bulk-uitvoerder- [SDK](sql-api-sdk-bulk-executor-dot-net.md). 
 * Bekijk de [Tips voor prestaties](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-dot-net#performance-tips) om het gebruik van de bulk-uitvoerder verder te optimaliseren.
 * Lees het artikel [BulkExecutor.Graph](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet) voor meer informatie over de klassen en methoden die in deze naamruimte zijn gedefinieerd.

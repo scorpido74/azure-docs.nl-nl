@@ -6,11 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
-ms.openlocfilehash: 59c8b31dcc8594d2cafb2db7832e290b01026f60
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2bb7fd69073dbc960904e8f7b44459ed85e98cdb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79367581"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523516"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Georuimtelijke en geojson-locatie gegevens in Azure Cosmos DB
 
@@ -20,9 +21,19 @@ Dit artikel is een inleiding tot de georuimtelijke functionaliteit in Azure Cosm
 * Hoe kan ik een query uitvoeren op georuimtelijke gegevens in Azure Cosmos DB in SQL en LINQ?
 * Ruimtelijke indexering in Azure Cosmos DB Hoe kan ik in-of uitschakelen?
 
+## <a name="spatial-data-use-cases"></a>Gebruiks voorbeelden van ruimtelijke gegevens
+
+Georuimtelijke gegevens omvatten vaak proximity-query's, bijvoorbeeld ' zoeken naar alle koffie winkels bij mijn huidige locatie '. Veelvoorkomende use cases zijn:
+
+* Geolocatie analyse, gerichte, specifieke marketing initiatieven.
+* Op locatie gebaseerde persoonlijke instellingen voor meerdere branches, zoals Retail en gezondheids zorg.
+* Logistiek verbetering, voor transport optimalisatie.
+* Risico analyse, met name voor verzekerings-en financiële bedrijven.
+* Situatie bewustzijn, voor waarschuwingen en meldingen.
+
 ## <a name="introduction-to-spatial-data"></a>Inleiding tot ruimtelijke gegevens
 
-Ruimtelijke gegevens beschrijven de positie en vorm van objecten in een ruimte. In de meeste toepassingen komen deze overeen met objecten op de aarde en georuimtelijke gegevens. Ruimtelijke gegevens kunnen worden gebruikt om de locatie van een persoon, een plaats van belang of de grens van een stad of een Lake te vertegenwoordigen. Veelvoorkomende use cases omvatten vaak proximity-query's, bijvoorbeeld ' Zoek alle koffie winkels bij mijn huidige locatie '.
+Ruimtelijke gegevens beschrijven de positie en vorm van objecten in een ruimte. In de meeste toepassingen komen deze overeen met objecten op de aarde en georuimtelijke gegevens. Ruimtelijke gegevens kunnen worden gebruikt om de locatie van een persoon, een plaats van belang of de grens van een stad of een Lake te vertegenwoordigen.
 
 De SQL-API van Azure Cosmos DB ondersteunt twee ruimtelijke gegevens typen: het gegevens type **geometrie** en het gegevens type **geografie** .
 

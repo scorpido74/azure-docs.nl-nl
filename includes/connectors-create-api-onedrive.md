@@ -4,12 +4,12 @@ ms.topic: include
 author: ecfan
 ms.author: estfan
 ms.date: 11/03/2016
-ms.openlocfilehash: 951ab2300aa4ffed2c5f1039ff993cd7f6af543f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b5f72f18ee5bf9c1e4dbaaa87d6705f55b09bc5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74789665"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524201"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -21,15 +21,15 @@ Voordat u uw OneDrive-account kunt gebruiken in een logische app, moet u de logi
 Machtig uw logische app om verbinding te maken met uw OneDrive-account door de volgende stappen uit te voeren:
 
 1. Maak een logische app. Selecteer in de Logic Apps Designer **micro soft Managed Api's weer geven** in de vervolg keuzelijst en voer ' onedrive ' in het zoekvak in. Selecteer een van de Triggers of acties:  
-   ![](./media/connectors-create-api-onedrive/onedrive-1.png)
+   ![Een dialoog venster met de titel ' door micro soft beheerde Api's weer geven ' bevat een zoekvak dat ' onedrive ' bevat. Hieronder ziet u een lijst met vier triggers. De eerste in de lijst is ' OneDrive-wanneer een bestand wordt gemaakt ', dat is geselecteerd.](./media/connectors-create-api-onedrive/onedrive-1.png)
 2. Als u nog geen verbindingen met OneDrive hebt gemaakt, wordt u gevraagd u aan te melden met uw OneDrive-referenties:  
-   ![](./media/connectors-create-api-onedrive/onedrive-2.png)
+   ![Er wordt een dialoog venster met de titel ' OneDrive-wanneer een bestand wordt gemaakt ' met een knop met de naam ' meldt '.](./media/connectors-create-api-onedrive/onedrive-2.png)
 3. Selecteer **Aanmelden**en voer uw gebruikers naam en wacht woord in. Selecteer **Aanmelden**:  
-   ![](./media/connectors-create-api-onedrive/onedrive-3.png)   
+   ![In een dialoog venster met de titel ' Aanmelden ' krijgt u de Microsoft-account. Het heeft twee tekst vakken met het label "E-mail of telefoon" en "wacht woord" heeft ook een selectie vakje met het label "aangemeld blijven" en een knop met het label "aanmelden".](./media/connectors-create-api-onedrive/onedrive-3.png)   
    
     Deze referenties worden gebruikt om uw logische app te autoriseren om verbinding te maken met en om toegang te krijgen tot de gegevens in uw OneDrive-account. 
 4. Selecteer **Ja** om de logische app te autoriseren voor het gebruik van uw OneDrive-account:  
-   ![](./media/connectors-create-api-onedrive/onedrive-4.png)   
+   ![Een dialoog venster met de titel ' laat deze app toegang krijgen tot uw gegevens ' vraagt om toestemming om de volgende vier dingen uit te voeren: 1) ' Meld u automatisch aan ', 2) ' toegang tot uw e-mail adressen ', 3) ' toegang tot uw gegevens altijd ' en 4) ' toegang tot OneDrive-bestanden '. Er is een knop ' ja ' om machtigingen toe te kennen en een knop ' nee ' om deze te weigeren. Er is een koppeling om deze toepassings machtigingen te wijzigen.](./media/connectors-create-api-onedrive/onedrive-4.png)   
 5. U ziet dat de verbinding is gemaakt. Ga nu verder met de andere stappen in uw logische app:  
-   ![](./media/connectors-create-api-onedrive/onedrive-5.png)
+   ![Een dialoog venster met de titel ' wanneer een bestand wordt gemaakt ' heeft een tekstvak met de titel ' map ' met een bijbehorende knop Bladeren.](./media/connectors-create-api-onedrive/onedrive-5.png)
 

@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: d44d5a8eeba749572980f79a90bcf5893a9c1fbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4863ff0005f09ca325125667062455357687fdd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82144344"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521136"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Berichten verzenden, ontvangen en verwerken in Azure Logic Apps
 
@@ -37,7 +37,7 @@ U kunt [zich ook registreren voor een abonnement met betalen per gebruik](https:
 * Een e-mail account met een [e-mail provider die door Azure Logic apps wordt ondersteund](../connectors/apis-list.md)
 
   > [!IMPORTANT]
-  > Als u de Gmail-connector wilt gebruiken, kunnen alleen bedrijfsaccounts van G Suite deze connector zonder beperking in logische apps gebruiken. Als u een Gmail-consumentenaccount hebt, kunt u deze connector alleen gebruiken met specifieke door Google goedgekeurde services, of u kunt [een Google-client-app maken voor verificatie bij uw Gmail-connector](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Zie [Beleid voor gegevensbeveiliging en privacybeleid voor Google-connectors in Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md) voor meer informatie.
+  > Als u de Gmail-connector wilt gebruiken, kunnen alleen bedrijfsaccounts van G Suite deze connector zonder beperking in logische apps gebruiken. Als u een Gmail-consumentenaccount hebt, kunt u deze connector alleen gebruiken met specifieke door Google goedgekeurde services, of u kunt [een Google-client-app maken voor verificatie bij uw Gmail-connector](/connectors/gmail/#authentication-and-bring-your-own-application). Zie [Beleid voor gegevensbeveiliging en privacybeleid voor Google-connectors in Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md) voor meer informatie.
 
 * Basis kennis over [het maken van logische apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
