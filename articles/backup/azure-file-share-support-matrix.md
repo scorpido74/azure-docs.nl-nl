@@ -4,15 +4,16 @@ description: Hierin wordt een overzicht gegeven van de ondersteunings instelling
 ms.topic: conceptual
 ms.date: 5/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: 5670f4702a8e8d199b9762d87793a053cf6e53b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0172ecab682b69f255eedb9270a6208b52dac45
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85806868"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514544"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Ondersteunings matrix voor back-up van Azure-bestands share
 
-U kunt de [Azure backup-service](https://docs.microsoft.com/azure/backup/backup-overview) gebruiken om een back-up te maken van Azure-bestands shares. Dit artikel bevat een overzicht van de ondersteunings instellingen bij het maken van back-ups van Azure-bestands shares met Azure Backup.
+U kunt de [Azure backup-service](./backup-overview.md) gebruiken om een back-up te maken van Azure-bestands shares. Dit artikel bevat een overzicht van de ondersteunings instellingen bij het maken van back-ups van Azure-bestands shares met Azure Backup.
 
 ## <a name="supported-regions"></a>Ondersteunde regio’s
 
@@ -22,7 +23,7 @@ Back-ups van Azure-bestands shares zijn beschikbaar in alle regio's, **met uitzo
 
 ### <a name="supported-regions-for-accidental-delete-protection"></a>Ondersteunde regio's voor onbedoeld verwijderen van beveiliging
 
-West-Centraal VS, Australië-Zuid-Oost, Canada-centraal
+West-Centraal VS, Australië-Zuid-Oost, Canada-centraal, VS-West-Centraal, India-Zuid, Noord-Centraal VS, Japan-Oost, Brazilië-zuid, Zuid-Centraal VS, Australië-oost, VS-Oost, VS-Oost 2
 
 ## <a name="supported-storage-accounts"></a>Ondersteunde opslagaccounts
 

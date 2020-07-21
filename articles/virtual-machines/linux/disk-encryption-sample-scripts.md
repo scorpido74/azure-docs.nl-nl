@@ -8,14 +8,14 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 32d4e709036135a9a88ec36eaafaa176df33fabf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e7b22a8010d7dfbdeeaeae623a55c1aff9c006c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610350"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510494"
 ---
-# <a name="azure-disk-encryption-sample-scripts"></a>Voorbeeldscripts voor Azure Disk Encryption 
+# <a name="azure-disk-encryption-sample-scripts-for-linux-vms"></a>Voorbeeld scripts voor virtuele Linux-machines Azure Disk Encryption
 
 Dit artikel bevat voorbeeld scripts voor het voorbereiden van vooraf versleutelde Vhd's en andere taken.
 
@@ -45,13 +45,13 @@ In de volgende tabel ziet u welke para meters kunnen worden gebruikt in het Powe
 
 |Parameter|Beschrijving|Ingevuld?|
 |------|------|------|
-|$resourceGroupName| De naam van de resource groep waartoe de sleutel kluis behoort.  Er wordt een nieuwe resource groep met deze naam gemaakt als er nog geen bestaat.| True|
-|$keyVaultName|De naam van de kluis waarin de versleutelings sleutels moeten worden geplaatst. Er wordt een nieuwe kluis met deze naam gemaakt als er nog geen bestaat.| True|
-|$location|Locatie van de sleutel kluis. Zorg ervoor dat de sleutel kluis en de virtuele machines die moeten worden gecodeerd, zich op dezelfde locatie bevinden. Haal een locatielijst op met `Get-AzLocation`.|True|
-|$subscriptionId|De id van het Azure-abonnement dat moet worden gebruikt.  U kunt uw abonnements-ID ophalen met `Get-AzSubscription`.|True|
-|$aadAppName|De naam van de Azure AD-toepassing die wordt gebruikt om geheimen te schrijven naar de sleutel kluis. Als er nog geen toepassing met deze naam bestaat, wordt deze aangemaakt. Als deze app al bestaat, geeft u de para meter aadClientSecret door aan het script.|False|
-|$aadClientSecret|Client geheim van de Azure AD-toepassing die eerder is gemaakt.|False|
-|$keyEncryptionKeyName|Naam van optionele coderings sleutel in de sleutel kluis. Er wordt een nieuwe sleutel met deze naam gemaakt als deze nog niet bestaat.|False|
+|$resourceGroupName| De naam van de resource groep waartoe de sleutel kluis behoort.  Er wordt een nieuwe resource groep met deze naam gemaakt als er nog geen bestaat.| Waar|
+|$keyVaultName|De naam van de kluis waarin de versleutelings sleutels moeten worden geplaatst. Er wordt een nieuwe kluis met deze naam gemaakt als er nog geen bestaat.| Waar|
+|$location|Locatie van de sleutel kluis. Zorg ervoor dat de sleutel kluis en de virtuele machines die moeten worden gecodeerd, zich op dezelfde locatie bevinden. Haal een locatielijst op met `Get-AzLocation`.|Waar|
+|$subscriptionId|De id van het Azure-abonnement dat moet worden gebruikt.  U kunt uw abonnements-ID ophalen met `Get-AzSubscription`.|Waar|
+|$aadAppName|De naam van de Azure AD-toepassing die wordt gebruikt om geheimen te schrijven naar de sleutel kluis. Als er nog geen toepassing met deze naam bestaat, wordt deze aangemaakt. Als deze app al bestaat, geeft u de para meter aadClientSecret door aan het script.|Niet waar|
+|$aadClientSecret|Client geheim van de Azure AD-toepassing die eerder is gemaakt.|Niet waar|
+|$keyEncryptionKeyName|Naam van optionele coderings sleutel in de sleutel kluis. Er wordt een nieuwe sleutel met deze naam gemaakt als deze nog niet bestaat.|Niet waar|
 
 
 ### <a name="encrypt-or-decrypt-vms-without-an-azure-ad-app"></a>Vm's versleutelen of ontsleutelen zonder Azure AD-app
@@ -186,7 +186,7 @@ Configureer de versleuteling tijdens de distributie-installatie door de volgende
 
    ![Ubuntu 16,04-installatie: Geef de wachtwoordzin op tijdens het opstarten](./media/disk-encryption/ubuntu-1604-preencrypted-fig5.png)
 
-6. Bereid de virtuele machine voor op het uploaden naar Azure met behulp van [deze instructies](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-ubuntu/). Voer de laatste stap nog niet uit (de inrichting van de virtuele machine wordt ongedaan gemaakt).
+6. Bereid de virtuele machine voor op het uploaden naar Azure met behulp van [deze instructies](./create-upload-ubuntu.md?toc=/azure/virtual-machines/linux/toc.json). Voer de laatste stap nog niet uit (de inrichting van de virtuele machine wordt ongedaan gemaakt).
 
 Configureer versleuteling om met Azure te werken door de volgende stappen uit te voeren:
 
@@ -262,7 +262,7 @@ Voer de volgende stappen uit om versleuteling te configureren tijdens de distrib
 
    ![openSUSE 13,2-installatie: Geef de wachtwoordzin op tijdens het opstarten](./media/disk-encryption/opensuse-encrypt-fig2.png)
 
-3. Bereid de virtuele machine voor op het uploaden naar Azure door de instructies in [een SLES-of openSUSE-virtuele machine voorbereiden voor Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-suse-create-upload-vhd/#prepare-opensuse-131)te volgen. Voer de laatste stap nog niet uit (de inrichting van de virtuele machine wordt ongedaan gemaakt).
+3. Bereid de virtuele machine voor op het uploaden naar Azure door de instructies in [een SLES-of openSUSE-virtuele machine voorbereiden voor Azure](./suse-create-upload-vhd.md?toc=/azure/virtual-machines/linux/toc.json#prepare-opensuse-131)te volgen. Voer de laatste stap nog niet uit (de inrichting van de virtuele machine wordt ongedaan gemaakt).
 
 Als u versleuteling wilt configureren voor gebruik met Azure, voert u de volgende stappen uit:
 1. Bewerk de/etc/Dracut.conf en voeg de volgende regel toe:
@@ -339,7 +339,7 @@ Voer de volgende stappen uit om versleuteling te configureren tijdens de distrib
 
    ![CentOS 7 Setup: wachtwoordzin invoeren op opstart chassis](./media/disk-encryption/centos-encrypt-fig4.png)
 
-5. Bereid de virtuele machine voor op het uploaden naar Azure met behulp van de instructies voor ' CentOS 7.0 + ' in [voor bereiding a op CentOS gebaseerde virtuele machines voor Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-centos/#centos-70). Voer de laatste stap nog niet uit (de inrichting van de virtuele machine wordt ongedaan gemaakt).
+5. Bereid de virtuele machine voor op het uploaden naar Azure met behulp van de instructies voor ' CentOS 7.0 + ' in [voor bereiding a op CentOS gebaseerde virtuele machines voor Azure](./create-upload-centos.md?toc=/azure/virtual-machines/linux/toc.json#centos-70). Voer de laatste stap nog niet uit (de inrichting van de virtuele machine wordt ongedaan gemaakt).
 
 6. U kunt nu de inrichting van de virtuele machine ongedaan maken en uw VHD uploaden naar Azure.
 
@@ -371,7 +371,7 @@ Als u versleuteling wilt configureren voor gebruik met Azure, voert u de volgend
    ```bash
     if [ -z "$DRACUT_SYSTEMD" ]; then
    ```
-   tot
+   in
    ```bash
     if [ 1 ]; then
    ```
@@ -439,7 +439,7 @@ Als u het geheim in uw sleutel kluis wilt instellen, gebruikt u [set-AzKeyVaultS
 Gebruik de `$secretUrl` in de volgende stap voor [het koppelen van de besturingssysteem schijf zonder gebruik te maken van KEK](#without-using-a-kek).
 
 ### <a name="disk-encryption-secret-encrypted-with-a-kek"></a>Het geheim voor schijf versleuteling is versleuteld met een KEK
-Voordat u het geheim uploadt naar de sleutel kluis, kunt u dit eventueel versleutelen met behulp van een sleutel versleutelings sleutel. Gebruik de omloop- [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) om het geheim eerst te versleutelen met behulp van de coderings sleutel sleutel. De uitvoer van deze terugloop bewerking is een met base64 gecodeerde URL-teken reeks, die u vervolgens als geheim kunt uploaden met behulp van de- [`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) cmdlet.
+Voordat u het geheim uploadt naar de sleutel kluis, kunt u dit eventueel versleutelen met behulp van een sleutel versleutelings sleutel. Gebruik de omloop- [API](/rest/api/keyvault/wrapkey) om het geheim eerst te versleutelen met behulp van de coderings sleutel sleutel. De uitvoer van deze terugloop bewerking is een met base64 gecodeerde URL-teken reeks, die u vervolgens als geheim kunt uploaden met behulp van de- [`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) cmdlet.
 
 ```powershell
     # This is the passphrase that was provided for encryption during the distribution installation

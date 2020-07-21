@@ -52,35 +52,41 @@
           href: ../core/howto-create-custom-analytics.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
     - name: Beheer
       items:
-        - name: Toepassingsinstellingen wijzigen
-          href: ../core/howto-administer.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-        - name: Uw toepassing exporteren
-          href: ../core/howto-use-app-templates.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-        - name: Gebruikers en rollen beheren
-          href: ../core/howto-manage-users-roles.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-        - name: Uw factuur beheren
-          href: ../core/howto-view-bill.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-        - name: De gebruikersinterface van de toepassing aanpassen
-          href: ../core/howto-customize-ui.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-        - name: Tegels toevoegen aan uw dashboard
-          href: ../core/howto-add-tiles-to-your-dashboard.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-        - name: Beheren vanuit de Azure-portal
-          href: ../core/howto-manage-iot-central-from-portal.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-        - name: Beheren vanuit Azure CLI
-          href: ../core/howto-manage-iot-central-from-cli.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-        - name: Beheren vanuit Azure PowerShell
-          href: ../core/howto-manage-iot-central-from-powershell.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-        - name: Beheren vanuit CSP-portal
-          href: ../core/howto-create-and-manage-applications-csp.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-    - name: Personalisatie
-      items:
-        - name: Persoonlijke Azure IoT Central-dashboards maken
-          href: ../core/howto-create-personal-dashboards.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-        - name: Uw persoonlijke voorkeuren beheren
-          href: ../core/howto-manage-preferences.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-        - name: Live chat in-/uitschakelen
-          href: ../core/howto-show-hide-chat.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
-- name: Bronnen
+        - name: Uw toepassing beheren
+          items:
+            - name: Toepassingsinstellingen wijzigen
+              href: ../core/howto-administer.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
+            - name: Gebruikers en rollen beheren
+              href: ../core/howto-manage-users-roles.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
+            - name: Uw factuur beheren
+              href: ../core/howto-view-bill.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
+            - name: De gebruikersinterface van de toepassing aanpassen
+              href: ../core/howto-customize-ui.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
+            - name: Uw toepassing exporteren
+              href: ../core/howto-use-app-templates.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
+            - name: De status van de toepassing bewaken
+              href: ../core/howto-monitor-application-health.md
+            - name: Over uw toepassing
+              href: ../core/howto-get-app-info.md
+        - name: Beheren vanuit andere locaties
+          items:
+            - name: Beheren vanuit de Azure-portal
+              href: ../core/howto-manage-iot-central-from-portal.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
+            - name: Beheren vanuit Azure CLI
+              href: ../core/howto-manage-iot-central-from-cli.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
+            - name: Beheren vanuit Azure PowerShell
+              href: ../core/howto-manage-iot-central-from-powershell.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
+            - name: Programmatisch beheren
+              href: ../core/howto-manage-iot-central-programmatically.md
+            - name: Beheren vanuit CSP-portal
+              href: ../core/howto-create-and-manage-applications-csp.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
+        - name: Personalisatie
+          items:
+            - name: Uw persoonlijke voorkeuren beheren
+              href: ../core/howto-manage-preferences.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
+            - name: Live chat in-/uitschakelen
+              href: ../core/howto-show-hide-chat.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
+- name: Resources
   items:
     - name: Opties voor ondersteuning en hulp
       href: /azure/iot-fundamentals/iot-support-help
@@ -105,9 +111,9 @@
     - name: SDK's voor Azure IoT
       items:
         - name: IoT Service-SDK's
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT Device-SDK's
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: Aanvragen van klantgegevens
       href: ../core/iot-central-customer-data-requests.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
     - name: Ondersteunde browsers

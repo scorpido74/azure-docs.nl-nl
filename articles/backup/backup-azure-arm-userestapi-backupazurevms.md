@@ -4,11 +4,12 @@ description: In dit artikel vindt u informatie over het configureren, initiëren
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: d037339d9ff9a891fcc595a3eff75097204a77ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 595291549b4d181967ea168d0dc71bc7e2237a67
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84248682"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514200"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Maak een back-up van een Azure-VM met behulp van Azure Backup via REST API
 
@@ -22,7 +23,7 @@ We gaan ervan uit dat u een VM ' testVM ' wilt beveiligen onder een resource gro
 
 ### <a name="discover-unprotected-azure-vms"></a>Niet-beveiligde Azure-Vm's detecteren
 
-Ten eerste moet de kluis de virtuele machine van Azure kunnen identificeren. Dit wordt geactiveerd met behulp van de [vernieuwings bewerking](https://docs.microsoft.com/rest/api/backup/protectioncontainers/refresh). Het is een asynchrone *post* -bewerking die ervoor zorgt dat de kluis de meest recente lijst met alle niet-beveiligde virtuele machines in het huidige abonnement en ' caches ' van deze wordt weer gegeven. Zodra de virtuele machine in de cache is opgeslagen, hebben de Recovery Services toegang tot de virtuele machine en kunnen deze worden beveiligd.
+Ten eerste moet de kluis de virtuele machine van Azure kunnen identificeren. Dit wordt geactiveerd met behulp van de [vernieuwings bewerking](/rest/api/backup/protectioncontainers/refresh). Het is een asynchrone *post* -bewerking die ervoor zorgt dat de kluis de meest recente lijst met alle niet-beveiligde virtuele machines in het huidige abonnement en ' caches ' van deze wordt weer gegeven. Zodra de virtuele machine in de cache is opgeslagen, hebben de Recovery Services toegang tot de virtuele machine en kunnen deze worden beveiligd.
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01
@@ -36,11 +37,11 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 #### <a name="responses"></a>Antwoorden
 
-De bewerking vernieuwen is een [asynchrone bewerking](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Dit betekent dat met deze bewerking een andere bewerking wordt gemaakt die afzonderlijk moet worden bijgehouden.
+De bewerking vernieuwen is een [asynchrone bewerking](../azure-resource-manager/management/async-operations.md). Dit betekent dat met deze bewerking een andere bewerking wordt gemaakt die afzonderlijk moet worden bijgehouden.
 
 Er worden twee antwoorden geretourneerd: 202 (geaccepteerd) wanneer een andere bewerking wordt gemaakt en vervolgens 200 (OK) wanneer deze bewerking is voltooid.
 
-|Naam  |Type  |Description  |
+|Naam  |Type  |Beschrijving  |
 |---------|---------|---------|
 |204 geen inhoud     |         |  OK zonder geretourneerde inhoud      |
 |202 geaccepteerd     |         |     Geaccepteerd    |
@@ -91,7 +92,7 @@ X-Powered-By: ASP.NET
 
 ### <a name="selecting-the-relevant-azure-vm"></a>De relevante Azure-VM selecteren
 
- U kunt controleren of ' caching ' wordt uitgevoerd door [alle Beveilig bare items](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list) onder het abonnement te vermelden en de gewenste vm in het antwoord te vinden. [Het antwoord van deze bewerking](#example-responses-1) geeft u informatie over de manier waarop Recovery Services een virtuele machine identificeert.  Zodra u vertrouwd bent met het patroon, kunt u deze stap overs Laan en direct door gaan met het inschakelen van de [beveiliging](#enabling-protection-for-the-azure-vm).
+ U kunt controleren of ' caching ' wordt uitgevoerd door [alle Beveilig bare items](/rest/api/backup/backupprotectableitems/list) onder het abonnement te vermelden en de gewenste vm in het antwoord te vinden. [Het antwoord van deze bewerking](#example-responses-1) geeft u informatie over de manier waarop Recovery Services een virtuele machine identificeert.  Zodra u vertrouwd bent met het patroon, kunt u deze stap overs Laan en direct door gaan met het inschakelen van de [beveiliging](#enabling-protection-for-the-azure-vm).
 
 Deze bewerking is een *Get* -bewerking.
 
@@ -103,9 +104,9 @@ De *Get* -URI heeft alle vereiste para meters. Er is geen aanvullende aanvraag t
 
 #### <a name="responses"></a><a name="responses-1"></a>Antwoorden
 
-|Naam  |Type  |Description  |
+|Naam  |Type  |Beschrijving  |
 |---------|---------|---------|
-|200 OK     | [WorkloadProtectableItemResourceList](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       OK |
+|200 OK     | [WorkloadProtectableItemResourceList](/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       OK |
 
 #### <a name="example-responses"></a><a name="example-responses-1"></a>Voorbeeld reacties
 
@@ -161,7 +162,7 @@ In het voor beeld worden de bovenstaande waarden vertaald naar:
 
 ### <a name="enabling-protection-for-the-azure-vm"></a>Beveiliging inschakelen voor de Azure VM
 
-Selecteer het beleid dat u wilt beveiligen nadat de relevante VM in de cache is opgeslagen en geïdentificeerd. Raadpleeg [API voor lijst beleid](https://docs.microsoft.com/rest/api/backup/backuppolicies/list)voor meer informatie over bestaande beleids regels in de kluis. Selecteer vervolgens het [relevante beleid](/rest/api/backup/protectionpolicies/get) door te verwijzen naar de naam van het beleid. Zie [zelf studie beleid maken](backup-azure-arm-userestapi-createorupdatepolicy.md)voor het maken van beleid. ' Defaultpolicy bij ' is geselecteerd in het onderstaande voor beeld.
+Selecteer het beleid dat u wilt beveiligen nadat de relevante VM in de cache is opgeslagen en geïdentificeerd. Raadpleeg [API voor lijst beleid](/rest/api/backup/backuppolicies/list)voor meer informatie over bestaande beleids regels in de kluis. Selecteer vervolgens het [relevante beleid](/rest/api/backup/protectionpolicies/get) door te verwijzen naar de naam van het beleid. Zie [zelf studie beleid maken](backup-azure-arm-userestapi-createorupdatepolicy.md)voor het maken van beleid. ' Defaultpolicy bij ' is geselecteerd in het onderstaande voor beeld.
 
 Het inschakelen van beveiliging is een asynchrone *put* -bewerking die een ' beveiligd item ' maakt.
 
@@ -179,11 +180,11 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 Als u een beveiligd item wilt maken, volgt u de onderdelen van de hoofd tekst van de aanvraag.
 
-|Naam  |Type  |Description  |
+|Naam  |Type  |Beschrijving  |
 |---------|---------|---------|
 |properties     | AzureIaaSVMProtectedItem        |ProtectedItem-resource-eigenschappen         |
 
-Raadpleeg voor de volledige lijst met definities van de hoofd tekst van de aanvraag en andere details het gedeelte [beveiligde items maken rest API document](https://docs.microsoft.com/rest/api/backup/protecteditems/createorupdate#request-body).
+Raadpleeg voor de volledige lijst met definities van de hoofd tekst van de aanvraag en andere details het gedeelte [beveiligde items maken rest API document](/rest/api/backup/protecteditems/createorupdate#request-body).
 
 ##### <a name="example-request-body"></a>Voorbeeld aanvraag tekst
 
@@ -203,13 +204,13 @@ De `{sourceResourceId}` `{virtualMachineId}` hierboven vermelde is van het antwo
 
 #### <a name="responses"></a>Antwoorden
 
-Het maken van een beveiligd item is een [asynchrone bewerking](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Dit betekent dat met deze bewerking een andere bewerking wordt gemaakt die afzonderlijk moet worden bijgehouden.
+Het maken van een beveiligd item is een [asynchrone bewerking](../azure-resource-manager/management/async-operations.md). Dit betekent dat met deze bewerking een andere bewerking wordt gemaakt die afzonderlijk moet worden bijgehouden.
 
 Er worden twee antwoorden geretourneerd: 202 (geaccepteerd) wanneer een andere bewerking wordt gemaakt en vervolgens 200 (OK) wanneer deze bewerking is voltooid.
 
-|Naam  |Type  |Description  |
+|Naam  |Type  |Beschrijving  |
 |---------|---------|---------|
-|200 OK     |    [ProtectedItemResource](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  OK       |
+|200 OK     |    [ProtectedItemResource](/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  OK       |
 |202 geaccepteerd     |         |     Geaccepteerd    |
 
 ##### <a name="example-responses"></a>Voorbeeld reacties
@@ -293,11 +294,11 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 Als u een back-up op aanvraag wilt activeren, volgt u de onderdelen van de hoofd tekst van de aanvraag.
 
-|Naam  |Type  |Description  |
+|Naam  |Type  |Beschrijving  |
 |---------|---------|---------|
-|properties     | [IaaSVMBackupRequest](https://docs.microsoft.com/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |BackupRequestResource-eigenschappen         |
+|properties     | [IaaSVMBackupRequest](/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |BackupRequestResource-eigenschappen         |
 
-Raadpleeg [back-ups activeren voor beveiligde items rest API document](https://docs.microsoft.com/rest/api/backup/backups/trigger#request-body)voor een volledige lijst met definities van de aanvraag tekst en andere details.
+Raadpleeg [back-ups activeren voor beveiligde items rest API document](/rest/api/backup/backups/trigger#request-body)voor een volledige lijst met definities van de aanvraag tekst en andere details.
 
 #### <a name="example-request-body"></a>Voorbeeld aanvraag tekst
 
@@ -314,11 +315,11 @@ De volgende aanvraag hoofdtekst definieert eigenschappen die vereist zijn voor h
 
 ### <a name="responses"></a>Antwoorden
 
-Het activeren van een back-up op aanvraag is een [asynchrone bewerking](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Dit betekent dat met deze bewerking een andere bewerking wordt gemaakt die afzonderlijk moet worden bijgehouden.
+Het activeren van een back-up op aanvraag is een [asynchrone bewerking](../azure-resource-manager/management/async-operations.md). Dit betekent dat met deze bewerking een andere bewerking wordt gemaakt die afzonderlijk moet worden bijgehouden.
 
 Er worden twee antwoorden geretourneerd: 202 (geaccepteerd) wanneer een andere bewerking wordt gemaakt en vervolgens 200 (OK) wanneer deze bewerking is voltooid.
 
-|Naam  |Type  |Description  |
+|Naam  |Type  |Beschrijving  |
 |---------|---------|---------|
 |202 geaccepteerd     |         |     Geaccepteerd    |
 
@@ -418,7 +419,7 @@ Het antwoord heeft dezelfde indeling als vermeld voor het [activeren van een bac
 
 ### <a name="stop-protection-and-delete-data"></a>Beveiliging stoppen en gegevens verwijderen
 
-Als u de beveiliging op een beveiligde virtuele machine wilt verwijderen en ook de back-upgegevens wilt verwijderen, moet u een Verwijder bewerking uitvoeren, zoals [hier](https://docs.microsoft.com/rest/api/backup/protecteditems/delete)wordt beschreven.
+Als u de beveiliging op een beveiligde virtuele machine wilt verwijderen en ook de back-upgegevens wilt verwijderen, moet u een Verwijder bewerking uitvoeren, zoals [hier](/rest/api/backup/protecteditems/delete)wordt beschreven.
 
 Het stoppen van de beveiliging en het verwijderen van gegevens is een *Verwijder* bewerking.
 
@@ -434,11 +435,11 @@ DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-00000
 
 #### <a name="responses"></a><a name="responses-2"></a>Antwoorden
 
-Beveiliging *verwijderen* is een [asynchrone bewerking](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Dit betekent dat met deze bewerking een andere bewerking wordt gemaakt die afzonderlijk moet worden bijgehouden.
+Beveiliging *verwijderen* is een [asynchrone bewerking](../azure-resource-manager/management/async-operations.md). Dit betekent dat met deze bewerking een andere bewerking wordt gemaakt die afzonderlijk moet worden bijgehouden.
 
 Er worden twee antwoorden geretourneerd: 202 (geaccepteerd) wanneer een andere bewerking wordt gemaakt en vervolgens 204 (geen inhoud) wanneer deze bewerking is voltooid.
 
-|Naam  |Type  |Description  |
+|Naam  |Type  |Beschrijving  |
 |---------|---------|---------|
 |204-tekst     |         |  Geen inhoud       |
 |202 geaccepteerd     |         |     Geaccepteerd    |

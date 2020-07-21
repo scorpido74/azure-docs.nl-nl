@@ -4,11 +4,12 @@ description: In dit artikel vindt u informatie over het herstellen van bestanden
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: ded26718f176629f6c53ae90abf3c7e69b4df893
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: a594b9636dcb4e584fd10a17bca6c48c2d1fb960
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027162"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514081"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Bestanden herstellen vanuit back-up van virtuele Azure-machine
 
@@ -328,6 +329,6 @@ Het script geeft alleen-lezen toegang tot een herstel punt en is slechts 12 uur 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Raadpleeg de sectie [probleem oplossing](#troubleshooting) voor problemen bij het herstellen van bestanden
-- Meer informatie over het [herstellen van bestanden via Power shell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#restore-files-from-an-azure-vm-backup)
-- Meer informatie over het [herstellen van bestanden via Azure cli](https://docs.microsoft.com/azure/backup/tutorial-restore-files)
-- Meer informatie over het [beheren van back-ups](https://docs.microsoft.com/azure/backup/backup-azure-manage-vms) nadat de VM is hersteld
+- Meer informatie over het [herstellen van bestanden via Power shell](./backup-azure-vms-automation.md#restore-files-from-an-azure-vm-backup)
+- Meer informatie over het [herstellen van bestanden via Azure cli](./tutorial-restore-files.md)
+- Meer informatie over het [beheren van back-ups](./backup-azure-manage-vms.md) nadat de VM is hersteld

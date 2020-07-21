@@ -6,11 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 98e912894a4d93a057a2f6a2153d0690deaed250
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e2ec4bfe04112d300a63e6326f0391968e385f7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78968900"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510725"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>IBM DB2 pureScale implementeren op Azure
 
@@ -25,7 +26,7 @@ Als u deze architectuur wilt implementeren, downloadt en voert u het script depl
 De opslag plaats bevat ook scripts voor het instellen van een Grafana-dash board. U kunt het dash board gebruiken om query's uit te Prometheus, het open source-bewakings-en waarschuwings systeem dat is opgenomen in DB2.
 
 > [!NOTE]
-> Het deploy.sh-script op de client maakt privé-SSH-sleutels en geeft deze door aan de implementatie sjabloon via HTTPS. Voor een betere beveiliging kunt u het beste [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) gebruiken om geheimen, sleutels en wacht woorden op te slaan.
+> Het deploy.sh-script op de client maakt privé-SSH-sleutels en geeft deze door aan de implementatie sjabloon via HTTPS. Voor een betere beveiliging kunt u het beste [Azure Key Vault](../../key-vault/general/overview.md) gebruiken om geheimen, sleutels en wacht woorden op te slaan.
 
 ## <a name="how-the-deployment-script-works"></a>Hoe het implementatie script werkt
 
@@ -74,9 +75,9 @@ De GitHub-opslag plaats bevat DB2server. RSP, een antwoord bestand (. RSP) waarm
 |---------------------------|----------------------------------------------|-------------------------------------------------------------------------------------------------------|
 | Welkom                   |                                              | Nieuwe installatie                                                                                           |
 | Kies een product          |                                              | DB2-versie 11.1.3.3. Server edities met DB2 pureScale                                              |
-| Configuratie             | Directory                                    | /data1/opt/ibm/db2/V11.1                                                                              |
+| Configuration             | Directory                                    | /data1/opt/ibm/db2/V11.1                                                                              |
 |                           | Het installatie type selecteren                 | Standaard                                                                                               |
-|                           | Ik ga akkoord met de IBM-voor waarden                     | Ingeschakeld                                                                                               |
+|                           | Ik ga akkoord met de IBM-voor waarden                     | Geselecteerd                                                                                               |
 | Eigenaar van exemplaar            | Bestaande gebruiker voor exemplaar, gebruikers naam        | DB2sdin1                                                                                              |
 | Gebruiker met omheining               | Bestaande gebruiker, gebruikers naam                     | DB2sdfe1                                                                                              |
 | Bestands systeem van cluster       | Pad naar gedeelde schijf partitie apparaat            | /dev/dm-2                                                                                             |

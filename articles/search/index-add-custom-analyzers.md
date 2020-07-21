@@ -8,11 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/05/2020
-ms.openlocfilehash: fc460abe65709f90ff22e1ec6f8e47b315db7f67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 402fd8da8e29e8f3fec6747be5d9480ca176fc55
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84555234"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511395"
 ---
 # <a name="add-custom-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Aangepaste analyse functies toevoegen aan teken reeks velden in een Azure Cognitive Search-index
 
@@ -145,7 +146,7 @@ U kunt de **bewerking Test Analyzer** in de [rest API](https://docs.microsoft.co
      "text": "Vis-à-vis means Opposite"
   }
 ```
-**Beantwoord**
+**Response**
 ```
   {
     "tokens": [
@@ -199,17 +200,17 @@ Voor analyse functies kunnen index kenmerken variëren, afhankelijk van het feit
 
 #### <a name="predefined-analyzers"></a>Vooraf gedefinieerde analyse functies
 
-|||  
-|-|-|  
-|Name|Het mag alleen letters, cijfers, spaties, streepjes of onderstrepings tekens bevatten, mag alleen beginnen en eindigen met een alfanumeriek teken en mag niet langer zijn dan 128 tekens.|  
+| Type | Beschrijving |
+| ---- | ----------- |  
+|Naam|Het mag alleen letters, cijfers, spaties, streepjes of onderstrepings tekens bevatten, mag alleen beginnen en eindigen met een alfanumeriek teken en mag niet langer zijn dan 128 tekens.|  
 |Type|Het type analyse van de lijst met ondersteunde analyse functies. Zie de kolom **analyzer_type** in de tabel [geanalyseerde](#AnalyzerTable) tabellen.|  
 |Opties|Moet geldige opties zijn van een vooraf gedefinieerde analyse die wordt weer gegeven in de tabel [geanalyseerde](#AnalyzerTable) tabellen.|  
 
 #### <a name="custom-analyzers"></a>Aangepaste analyse functies
 
-|||  
-|-|-|  
-|Name|Het mag alleen letters, cijfers, spaties, streepjes of onderstrepings tekens bevatten, mag alleen beginnen en eindigen met een alfanumeriek teken en mag niet langer zijn dan 128 tekens.|  
+| Type | Beschrijving |
+| ---- | ----------- |  
+|Naam|Het mag alleen letters, cijfers, spaties, streepjes of onderstrepings tekens bevatten, mag alleen beginnen en eindigen met een alfanumeriek teken en mag niet langer zijn dan 128 tekens.|  
 |Type|Moet ' #Microsoft. Azure. Search. CustomAnalyzer ' zijn.|  
 |CharFilters|Ingesteld op een van de vooraf gedefinieerde teken filters die worden vermeld in de tabel [char filters](#char-filters-reference) of een aangepast teken filter dat is opgegeven in de index definitie.|  
 |Tokenizer|Vereist. Ingesteld op een vooraf gedefinieerde tokenizers die wordt weer gegeven in de tabel [tokenizers](#Tokenizers) hieronder of een aangepaste tokenizer die is opgegeven in de index definitie.|  
@@ -224,9 +225,9 @@ Voor analyse functies kunnen index kenmerken variëren, afhankelijk van het feit
 
  Een char-filter wordt gebruikt om invoer tekst voor te bereiden voordat deze wordt verwerkt door de tokenizer. Ze kunnen bijvoorbeeld bepaalde tekens of symbolen vervangen. U kunt meerdere teken filters hebben in een aangepaste analyse functie. Teken filters worden uitgevoerd in de volg orde waarin ze worden weer gegeven.  
 
-|||  
-|-|-|  
-|Name|Het mag alleen letters, cijfers, spaties, streepjes of onderstrepings tekens bevatten, mag alleen beginnen en eindigen met een alfanumeriek teken en mag niet langer zijn dan 128 tekens.|  
+| Type | Beschrijving |
+| ---- | ----------- | 
+|Naam|Het mag alleen letters, cijfers, spaties, streepjes of onderstrepings tekens bevatten, mag alleen beginnen en eindigen met een alfanumeriek teken en mag niet langer zijn dan 128 tekens.|  
 |Type|Teken filter type uit de lijst met ondersteunde teken filters. Zie **char_filter_type** kolom in de tabel [char filters](#char-filters-reference) hieronder.|  
 |Opties|Moet geldige opties van het type [char filters](#char-filters-reference) zijn.|  
 
@@ -237,9 +238,9 @@ Voor analyse functies kunnen index kenmerken variëren, afhankelijk van het feit
  U kunt precies één tokenizer opgeven per aangepaste analyse functie. Als u meer dan één tokenizer nodig hebt, kunt u meerdere aangepaste analyse functies maken en deze toewijzen aan een veld per veld in uw index schema.  
 Een aangepaste Analyzer kan gebruikmaken van een vooraf gedefinieerde tokenizer met standaard of aangepaste opties.  
 
-|||  
-|-|-|  
-|Name|Het mag alleen letters, cijfers, spaties, streepjes of onderstrepings tekens bevatten, mag alleen beginnen en eindigen met een alfanumeriek teken en mag niet langer zijn dan 128 tekens.|  
+| Type | Beschrijving |
+| ---- | ----------- | 
+|Naam|Het mag alleen letters, cijfers, spaties, streepjes of onderstrepings tekens bevatten, mag alleen beginnen en eindigen met een alfanumeriek teken en mag niet langer zijn dan 128 tekens.|  
 |Type|Tokenizer naam uit de lijst met ondersteunde tokenizers. Zie **tokenizer_type** kolom in de tabel [Tokenizers](#Tokenizers) hieronder.|  
 |Opties|Moet geldige opties van een opgegeven tokenizer-type zijn opgenomen in de onderstaande tabel [Tokenizers](#Tokenizers) .|  
 
@@ -248,9 +249,9 @@ Een aangepaste Analyzer kan gebruikmaken van een vooraf gedefinieerde tokenizer 
  Een token filter wordt gebruikt om de tokens die door een tokenizer zijn gegenereerd, te filteren of te wijzigen. U kunt bijvoorbeeld een kleine filter opgeven waarmee alle tekens worden omgezet in kleine letters.   
 U kunt meerdere token filters hebben in een aangepaste analyse functie. Token filters worden uitgevoerd in de volg orde waarin ze worden weer gegeven.  
 
-|||  
-|-|-|  
-|Name|Het mag alleen letters, cijfers, spaties, streepjes of onderstrepings tekens bevatten, mag alleen beginnen en eindigen met een alfanumeriek teken en mag niet langer zijn dan 128 tekens.|  
+| Type | Beschrijving |
+| ---- | ----------- |  
+|Naam|Het mag alleen letters, cijfers, spaties, streepjes of onderstrepings tekens bevatten, mag alleen beginnen en eindigen met een alfanumeriek teken en mag niet langer zijn dan 128 tekens.|  
 |Type|De naam van het token filter in de lijst met ondersteunde token filters. Zie **token_filter_type** kolom in de tabel [token filters](#TokenFilters) hieronder.|  
 |Opties|Moet [token filters](#TokenFilters) van een opgegeven token filter type zijn.|  
 

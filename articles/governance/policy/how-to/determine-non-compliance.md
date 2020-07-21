@@ -3,12 +3,12 @@ title: Oorzaken van niet-naleving bepalen
 description: Wanneer een resource niet-compatibel is, zijn er veel mogelijke redenen. Meer informatie over de oorzaak van de niet-naleving.
 ms.date: 07/06/2020
 ms.topic: how-to
-ms.openlocfilehash: d548f5b9db141eb6aed5984c43f00543d0228f31
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: ee027ff0f2936dc3eb7153869c52d4e70c83918b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970770"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512024"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Oorzaken van niet-naleving bepalen
 
@@ -133,7 +133,7 @@ Install-Module Az.GuestConfiguration
 U kunt de huidige status van alle gast toewijzingen voor een virtuele machine weer geven met behulp van de volgende opdracht:
 
 ```azurepowershell-interactive
-Get-AzVMGuestPolicyReport -ResourceGroupName <resourcegroupname> -VMName <vmname>
+Get-AzVMGuestPolicyStatus -ResourceGroupName <resourcegroupname> -VMName <vmname>
 ```
 
 ```output
@@ -146,7 +146,7 @@ Audit that an application is not installed inside Windows VMs.            {[Inst
 Als u alleen de _reden_ wilt bekijken waarin wordt beschreven waarom de virtuele machine _niet compatibel_is, retourneert u alleen de onderliggende eigenschap reden.
 
 ```azurepowershell-interactive
-Get-AzVMGuestPolicyReport -ResourceGroupName <resourcegroupname> -VMName <vmname> | % ComplianceReasons | % Reasons | % Reason
+Get-AzVMGuestPolicyStatus -ResourceGroupName <resourcegroupname> -VMName <vmname> | % ComplianceReasons | % Reasons | % Reason
 ```
 
 ```output

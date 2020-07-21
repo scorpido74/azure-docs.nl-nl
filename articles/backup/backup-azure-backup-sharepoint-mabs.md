@@ -3,11 +3,12 @@ title: Een back-up maken van een share point-Farm naar Azure met MABS
 description: Gebruik Azure Backup Server om back-ups te maken van uw share point-gegevens en deze te herstellen. In dit artikel vindt u informatie over het configureren van uw share point-Farm zodat gewenste gegevens kunnen worden opgeslagen in Azure. U kunt beveiligde share point-gegevens herstellen vanaf schijf of Azure.
 ms.topic: conceptual
 ms.date: 04/26/2020
-ms.openlocfilehash: 62fcb434ef00df43ce2950a5df569e346a06903a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40997ad2153cdec867fb36ba3475829e18519592
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84234795"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514234"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>Een back-up maken van een share point-Farm naar Azure met MABS
 
@@ -17,7 +18,7 @@ Het maken van een back-up van share Point naar Azure met MABS is een vergelijkba
 
 ## <a name="sharepoint-supported-versions-and-related-protection-scenarios"></a>Ondersteunde versies van share point en gerelateerde beveiligings scenario's
 
-Zie [de MABS Protection-matrix](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix) voor een lijst met ondersteunde share point-versies en de MABS-versies waarvoor een back-up moet worden gemaakt.
+Zie [de MABS Protection-matrix](./backup-mabs-protection-matrix.md) voor een lijst met ondersteunde share point-versies en de MABS-versies waarvoor een back-up moet worden gemaakt.
 
 ## <a name="before-you-start"></a>Voordat u begint
 
@@ -99,7 +100,7 @@ Als u een back-up wilt maken van de share point-Farm, configureert u beveiliging
 
 1. In **online Bewaar beleid opgeven**kunt u opgeven hoe de herstel punten die zijn gemaakt op basis van de dagelijkse/wekelijkse/maandelijkse/jaarlijkse back-ups, worden bewaard in Azure.
 
-1. In **Kies online replicatie**, geeft u op hoe de eerste volledige replicatie van gegevens wordt uitgevoerd. U kunt repliceren via het netwerk of een offlineback-up uitvoeren (offline-seeding). Voor offlineback-ups wordt gebruikgemaakt van de functie Azure Import. [Meer informatie](https://azure.microsoft.com/documentation/articles/backup-azure-backup-import-export/).
+1. In **Kies online replicatie**, geeft u op hoe de eerste volledige replicatie van gegevens wordt uitgevoerd. U kunt repliceren via het netwerk of een offlineback-up uitvoeren (offline-seeding). Voor offlineback-ups wordt gebruikgemaakt van de functie Azure Import. [Meer informatie](./backup-azure-backup-import-export.md).
 
 1. Controleer uw instellingen op de pagina **samen vatting** . Nadat u op **groep maken**hebt geklikt, vindt de initiële replicatie van de gegevens plaats. Wanneer deze is voltooid, wordt de status van de beveiligings groep weer gegeven op **OK** op de pagina **status** . Back-up vindt plaats in overeenstemming met de beveiligingsgroepsinstellingen.
 

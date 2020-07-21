@@ -7,13 +7,14 @@ ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 0b13040b39ed491ec4fee4d6922d41f086edeeb2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 580c378df5fc3912aa540b5d85adf99bc42605e0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79284913"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511939"
 ---
-# <a name="use-ip-filters"></a>IP-filters gebruiken
+# <a name="use-azure-iot-dps-ip-connection-filters"></a>IP-verbindings filters van Azure IoT DPS gebruiken
 
 Beveiliging is een belang rijk aspect van elke IoT-oplossing. Soms moet u expliciet de IP-adressen opgeven waarvan apparaten verbinding kunnen maken als onderdeel van uw beveiligings configuratie. Met de *IP-filter* functie voor Azure IOT hub Device PROVISIONING service (DPS) kunt u regels configureren voor het afwijzen of accepteren van verkeer van specifieke IPv4-adressen.
 

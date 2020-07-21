@@ -6,11 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 7ee4674f5e7c04709256459c3417a1379a65aedc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5cc7a739b27d96eac01733b4f340d6d6d4dac265
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78969566"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511123"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Een volledige virtuele Linux-machine maken met de Azure CLI
 Als u snel een virtuele machine (VM) in azure wilt maken, kunt u één Azure CLI-opdracht gebruiken die standaard waarden gebruikt voor het maken van vereiste ondersteunende resources. Resources, zoals een virtueel netwerk, een openbaar IP-adres en een netwerk beveiligings groep, worden automatisch gemaakt. Als u meer controle hebt over uw omgeving in productie gebruik, kunt u deze resources van tevoren maken en vervolgens uw Vm's toevoegen. Dit artikel helpt u bij het maken van een virtuele machine en elk van de ondersteunende bronnen één voor één.
@@ -549,13 +550,13 @@ Als u de standaard NGINX-site in actie wilt zien, opent u uw webbrowser en voert
 ![Standaard NGINX-site op uw VM](media/create-cli-complete/nginx.png)
 
 ## <a name="export-as-a-template"></a>Exporteren als een sjabloon
-Wat moet u doen als u nu een extra ontwikkel omgeving met dezelfde para meters of een productie omgeving wilt maken die overeenkomt met deze. Resource Manager maakt gebruik van JSON-sjablonen waarmee alle para meters voor uw omgeving worden gedefinieerd. U bouwt volledige omgevingen door te verwijzen naar deze JSON-sjabloon. U kunt [JSON-sjablonen hand matig maken](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) of een bestaande omgeving exporteren om de JSON-sjabloon voor u te maken. Gebruik [AZ Group export](/cli/azure/group) om de resource groep als volgt te exporteren:
+Wat moet u doen als u nu een extra ontwikkel omgeving met dezelfde para meters of een productie omgeving wilt maken die overeenkomt met deze. Resource Manager maakt gebruik van JSON-sjablonen waarmee alle para meters voor uw omgeving worden gedefinieerd. U bouwt volledige omgevingen door te verwijzen naar deze JSON-sjabloon. U kunt [JSON-sjablonen hand matig maken](../../azure-resource-manager/templates/template-syntax.md?toc=/azure/virtual-machines/linux/toc.json) of een bestaande omgeving exporteren om de JSON-sjabloon voor u te maken. Gebruik [AZ Group export](/cli/azure/group) om de resource groep als volgt te exporteren:
 
 ```azurecli
 az group export --name myResourceGroup > myResourceGroup.json
 ```
 
-Met deze opdracht maakt `myResourceGroup.json` u het bestand in de huidige werkmap. Wanneer u een omgeving maakt op basis van deze sjabloon, wordt u gevraagd om alle resource namen. U kunt deze namen invullen in het sjabloon bestand door de `--include-parameter-default-value` para meter toe te voegen aan de `az group export` opdracht. Bewerk de JSON-sjabloon om de resource namen op te geven of [Maak een parameters.jsvoor het bestand](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) waarin de resource namen worden opgegeven.
+Met deze opdracht maakt `myResourceGroup.json` u het bestand in de huidige werkmap. Wanneer u een omgeving maakt op basis van deze sjabloon, wordt u gevraagd om alle resource namen. U kunt deze namen invullen in het sjabloon bestand door de `--include-parameter-default-value` para meter toe te voegen aan de `az group export` opdracht. Bewerk de JSON-sjabloon om de resource namen op te geven of [Maak een parameters.jsvoor het bestand](../../azure-resource-manager/templates/template-syntax.md?toc=/azure/virtual-machines/linux/toc.json) waarin de resource namen worden opgegeven.
 
 Als u een omgeving wilt maken op basis van uw sjabloon, gebruikt u [AZ Group Deployment maken](/cli/azure/group/deployment) als volgt:
 
@@ -565,7 +566,7 @@ az group deployment create \
     --template-file myResourceGroup.json
 ```
 
-[Meer informatie over hoe u kunt implementeren vanuit sjablonen](../../resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Meer informatie over het stapsgewijs bijwerken van omgevingen, het gebruiken van het parameter bestand en het openen van sjablonen vanaf één opslag locatie.
+[Meer informatie over hoe u kunt implementeren vanuit sjablonen](../../azure-resource-manager/templates/deploy-cli.md?toc=/azure/virtual-machines/linux/toc.json). Meer informatie over het stapsgewijs bijwerken van omgevingen, het gebruiken van het parameter bestand en het openen van sjablonen vanaf één opslag locatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 Nu bent u klaar om te gaan werken met meerdere netwerk onderdelen en Vm's. U kunt deze voorbeeld omgeving gebruiken om uw toepassing samen te stellen met behulp van de kern onderdelen die hier worden geïntroduceerd.

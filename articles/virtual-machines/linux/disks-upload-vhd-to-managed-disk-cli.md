@@ -8,12 +8,12 @@ ms.date: 06/15/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 259b46d21cee4c1106e1d307eeb325a4c430613f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8656f0396aff7f20c867a5fae3d929236a3aa0d5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945627"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510443"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>Een VHD uploaden naar Azure of een beheerde schijf kopiëren naar een andere regio-Azure CLI
 
@@ -34,7 +34,7 @@ Als u uw VHD naar Azure wilt uploaden, moet u een lege beheerde schijf maken die
 
 Dit soort beheerde schijven heeft twee unieke statussen:
 
-- ReadToUpload, wat betekent dat de schijf gereed is om een upload te ontvangen, maar geen [beveiligde toegangs handtekening](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) (SAS) is gegenereerd.
+- ReadToUpload, wat betekent dat de schijf gereed is om een upload te ontvangen, maar geen [beveiligde toegangs handtekening](../../storage/common/storage-sas-overview.md) (SAS) is gegenereerd.
 - ActiveUpload, wat betekent dat de schijf gereed is om een upload te ontvangen en dat de SAS is gegenereerd.
 
 > [!NOTE]
@@ -132,4 +132,3 @@ az disk revoke-access -n $targetDiskName -g $targetRG
 ## <a name="next-steps"></a>Volgende stappen
 
 Nu u een VHD hebt geüpload naar een beheerde schijf, kunt u de schijf als een [gegevens schijf koppelen aan een bestaande virtuele machine](add-disk.md) of [de schijf koppelen aan een virtuele machine als een besturingssysteem schijf](upload-vhd.md#create-the-vm), om een nieuwe virtuele machine te maken. 
-

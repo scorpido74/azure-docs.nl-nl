@@ -3,11 +3,12 @@ title: De tape-infra structuur vervangen
 description: Meer informatie over het Azure Backup van tape-achtige semantiek waarmee u back-ups kunt maken en gegevens kunt herstellen in azure
 ms.topic: conceptual
 ms.date: 04/30/2017
-ms.openlocfilehash: aeda1cefc84d425855c40b793f8334936541e63f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 71bfa86611b3a63fa6a28f60f80608b394cab5a3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77425099"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514183"
 ---
 # <a name="move-your-long-term-storage-from-tape-to-the-azure-cloud"></a>Uw lange termijn opslag verplaatsen van tape naar de Azure-Cloud
 
@@ -69,5 +70,5 @@ Door te klikken op **wijzigen** in het voor gaande scherm, hebben klanten nog me
 
 Voor meer informatie over Azure Backup raadpleegt u:
 
-* [Kennismaking met Azure Backup](backup-introduction-to-azure-backup.md)
-* [Azure Backup proberen](backup-try-azure-backup-in-10-mins.md)
+* [Kennismaking met Azure Backup](./backup-overview.md)
+* [Azure Backup proberen](./backup-windows-with-mars-agent.md)

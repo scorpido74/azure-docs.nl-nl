@@ -4,11 +4,12 @@ description: In dit artikel leert u hoe u de configuratie van de kluis kunt bijw
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: eadcebdaf4db3dbe6c0a62b8631ff7d76fa50fad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f0fee505443b15ba2ea97710efc220ef05df738
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84248223"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513112"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>Recovery Services kluis configuraties van Azure bijwerken met behulp van REST API
 
@@ -24,7 +25,7 @@ Daarom moet u zorgvuldig bepalen of u het voorlopig verwijderen van een bepaalde
 
 ### <a name="fetch-soft-delete-state-using-rest-api"></a>Status van voorlopig verwijderen ophalen met REST API
 
-De voorlopig verwijderings status wordt standaard ingeschakeld voor een nieuw gemaakte Recovery Services kluis. Als u de status van zacht verwijderen voor een kluis wilt ophalen of bijwerken, gebruikt u het [rest API document](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs) met betrekking tot configuratie van de back-upkluis
+De voorlopig verwijderings status wordt standaard ingeschakeld voor een nieuw gemaakte Recovery Services kluis. Als u de status van zacht verwijderen voor een kluis wilt ophalen of bijwerken, gebruikt u het [rest API document](/rest/api/backup/backupresourcevaultconfigs) met betrekking tot configuratie van de back-upkluis
 
 Als u de huidige status van het voorlopig verwijderen van een kluis wilt ophalen, gebruikt u de volgende *Get* -bewerking
 
@@ -42,9 +43,9 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 Het geslaagde antwoord voor de GET-bewerking wordt hieronder weer gegeven:
 
-|Naam  |Type  |Description  |
+|Naam  |Type  |Beschrijving  |
 |---------|---------|---------|
-|200 OK     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
+|200 OK     |   [BackupResourceVaultConfig](/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 
 ##### <a name="example-response"></a>Voorbeeld van een antwoord
 
@@ -80,13 +81,13 @@ PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-0000000
 
 De volgende algemene definities worden gebruikt voor het maken van een aanvraag tekst
 
-Raadpleeg [de rest API-documentatie](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/update#request-body) voor meer informatie.
+Raadpleeg [de rest API-documentatie](/rest/api/backup/backupresourcevaultconfigs/update#request-body) voor meer informatie.
 
-|Name  |Vereist  |Type  |Description  |
+|Naam  |Vereist  |Type  |Beschrijving  |
 |---------|---------|---------|---------|
 |eTag     |         |   Tekenreeks      |  Optionele eTag       |
-|location     |  true       |Tekenreeks         |   Resourcelocatie      |
-|properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Eigenschappen van de kluis       |
+|location     |  true       |Tekenreeks         |   Resource locatie      |
+|properties     |         | [VaultProperties](/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Eigenschappen van de kluis       |
 |tags     |         | Object        |     Resourcetags    |
 
 #### <a name="example-request-body"></a>Voorbeeld aanvraag tekst
@@ -106,9 +107,9 @@ Het volgende voor beeld wordt gebruikt om de status van zacht verwijderen bij te
 
 Het geslaagde antwoord voor de PATCH bewerking wordt hieronder weer gegeven:
 
-|Naam  |Type  |Description  |
+|Naam  |Type  |Beschrijving  |
 |---------|---------|---------|
-|200 OK     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
+|200 OK     |   [BackupResourceVaultConfig](/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 
 ##### <a name="example-response"></a>Voorbeeld van een antwoord
 

@@ -11,15 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/08/2020
+ms.date: 07/13/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3a30ea70c623c8456ae97c8ca9475e4989784edf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d973cf47ed691914b22d62e1a99315c6ea9183d8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82995839"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511599"
 ---
 # <a name="azure-custom-roles"></a>Aangepaste Azure-rollen
 
@@ -114,17 +115,41 @@ Wanneer u een aangepaste rol maakt, wordt deze weer gegeven in de Azure Portal m
 
 In de volgende tabel wordt beschreven wat de eigenschappen van de aangepaste rol betekenen.
 
-| Eigenschap | Vereist | Type | Description |
+| Eigenschap | Vereist | Type | Beschrijving |
 | --- | --- | --- | --- |
 | `Name`</br>`roleName` | Ja | Tekenreeks | De weergave naam van de aangepaste rol. Hoewel een roldefinitie een resource voor een beheer groep of op abonnements niveau is, kan een roldefinitie worden gebruikt in meerdere abonnementen die dezelfde Azure AD-directory delen. Deze weergave naam moet uniek zijn binnen het bereik van de Azure AD-adres lijst. Kan letters, cijfers, spaties en speciale tekens bevatten. Het maximum aantal tekens is 128. |
 | `Id`</br>`name` | Ja | Tekenreeks | De unieke ID van de aangepaste rol. Voor Azure PowerShell en Azure CLI wordt deze ID automatisch gegenereerd wanneer u een nieuwe rol maakt. |
 | `IsCustom`</br>`roleType` | Ja | Tekenreeks | Hiermee wordt aangegeven of dit een aangepaste rol is. Ingesteld op `true` of `CustomRole` voor aangepaste rollen. Ingesteld op `false` of `BuiltInRole` voor ingebouwde rollen. |
 | `Description`</br>`description` | Ja | Tekenreeks | De beschrijving van de aangepaste rol. Kan letters, cijfers, spaties en speciale tekens bevatten. Het maximum aantal tekens is 1024. |
-| `Actions`</br>`actions` | Yes | Teken reeks [] | Een matrix met teken reeksen die de beheer bewerkingen specificeert die de rol kan uitvoeren. Zie [acties](role-definitions.md#actions)voor meer informatie. |
-| `NotActions`</br>`notActions` | No | Teken reeks [] | Een matrix met teken reeksen die de beheer bewerkingen specificeert die zijn uitgesloten van de toegestane `Actions` . Zie voor meer informatie [intact](role-definitions.md#notactions). |
-| `DataActions`</br>`dataActions` | No | Teken reeks [] | Een matrix met teken reeksen waarmee de gegevens bewerkingen worden opgegeven die door de functie kunnen worden uitgevoerd op uw gegevens in dat object. Als u een aangepaste rol maakt met `DataActions` , kan deze rol niet worden toegewezen in het bereik van de beheer groep. Zie [DataActions](role-definitions.md#dataactions)voor meer informatie. |
-| `NotDataActions`</br>`notDataActions` | No | Teken reeks [] | Een matrix met teken reeksen die de gegevens bewerkingen specificeert die worden uitgesloten van de toegestane waarde `DataActions` . Zie [NotDataActions](role-definitions.md#notdataactions)voor meer informatie. |
-| `AssignableScopes`</br>`assignableScopes` | Yes | Teken reeks [] | Een matrix met teken reeksen die de bereiken aangeeft waarvoor de aangepaste rol beschikbaar is voor toewijzing. U kunt slechts één beheer groep definiëren in `AssignableScopes` een aangepaste rol. Een beheer groep toevoegen aan `AssignableScopes` is momenteel beschikbaar als preview-versie. Zie [AssignableScopes](role-definitions.md#assignablescopes)voor meer informatie. |
+| `Actions`</br>`actions` | Ja | Teken reeks [] | Een matrix met teken reeksen die de beheer bewerkingen specificeert die de rol kan uitvoeren. Zie [acties](role-definitions.md#actions)voor meer informatie. |
+| `NotActions`</br>`notActions` | Nee | Teken reeks [] | Een matrix met teken reeksen die de beheer bewerkingen specificeert die zijn uitgesloten van de toegestane `Actions` . Zie voor meer informatie [intact](role-definitions.md#notactions). |
+| `DataActions`</br>`dataActions` | Nee | Teken reeks [] | Een matrix met teken reeksen waarmee de gegevens bewerkingen worden opgegeven die door de functie kunnen worden uitgevoerd op uw gegevens in dat object. Als u een aangepaste rol maakt met `DataActions` , kan deze rol niet worden toegewezen in het bereik van de beheer groep. Zie [DataActions](role-definitions.md#dataactions)voor meer informatie. |
+| `NotDataActions`</br>`notDataActions` | Nee | Teken reeks [] | Een matrix met teken reeksen die de gegevens bewerkingen specificeert die worden uitgesloten van de toegestane waarde `DataActions` . Zie [NotDataActions](role-definitions.md#notdataactions)voor meer informatie. |
+| `AssignableScopes`</br>`assignableScopes` | Ja | Teken reeks [] | Een matrix met teken reeksen die de bereiken aangeeft waarvoor de aangepaste rol beschikbaar is voor toewijzing. U kunt slechts één beheer groep definiëren in `AssignableScopes` een aangepaste rol. Een beheer groep toevoegen aan `AssignableScopes` is momenteel beschikbaar als preview-versie. Zie [AssignableScopes](role-definitions.md#assignablescopes)voor meer informatie. |
+
+## <a name="wildcard-permissions"></a>Machtigingen voor joker tekens
+
+`Actions`, `NotActions` , `DataActions` en `NotDataActions` ondersteunen joker tekens ( `*` ) om machtigingen te definiëren. Een Joker teken ( `*` ) breidt een machtiging uit voor alles die overeenkomt met de actie teken reeks die u opgeeft. Stel bijvoorbeeld dat u alle machtigingen wilt toevoegen met betrekking tot Azure Cost Management en exports. U kunt al deze actie teken reeksen toevoegen:
+
+```
+Microsoft.CostManagement/exports/action
+Microsoft.CostManagement/exports/read
+Microsoft.CostManagement/exports/write
+Microsoft.CostManagement/exports/delete
+Microsoft.CostManagement/exports/run/action
+```
+
+In plaats van al deze teken reeksen toe te voegen, kunt u gewoon een Joker teken reeks toevoegen. De volgende Joker teken reeks is bijvoorbeeld gelijk aan de vorige vijf teken reeksen. Dit omvat ook toekomstige export machtigingen die kunnen worden toegevoegd.
+
+```
+Microsoft.CostManagement/exports/*
+```
+
+U kunt ook meerdere joker tekens in een teken reeks hebben. De volgende teken reeks vertegenwoordigt bijvoorbeeld alle query machtigingen voor Cost Management.
+
+```
+Microsoft.CostManagement/*/query/*
+```
 
 ## <a name="steps-to-create-a-custom-role"></a>Stappen voor het maken van een aangepaste rol
 
@@ -154,7 +179,7 @@ Net als bij ingebouwde rollen `AssignableScopes` geeft de eigenschap de bereiken
 | --- | --- | --- |
 | Een aangepaste rol maken/verwijderen | `Microsoft.Authorization/ roleDefinitions/write` | Gebruikers aan wie deze bewerking is toegewezen voor alle `AssignableScopes` aangepaste rollen, kunnen aangepaste rollen maken (of verwijderen) voor gebruik in deze bereiken. Bijvoorbeeld [eigen aren](built-in-roles.md#owner) en [beheerders van gebruikers toegang](built-in-roles.md#user-access-administrator) van beheer groepen, abonnementen en resource groepen. |
 | Een aangepaste rol bijwerken | `Microsoft.Authorization/ roleDefinitions/write` | Gebruikers aan wie deze bewerking is toegewezen voor alle `AssignableScopes` van de aangepaste rol, kunnen aangepaste rollen in deze bereiken bijwerken. Bijvoorbeeld [eigen aren](built-in-roles.md#owner) en [beheerders van gebruikers toegang](built-in-roles.md#user-access-administrator) van beheer groepen, abonnementen en resource groepen. |
-| Een aangepaste rol weer geven | `Microsoft.Authorization/ roleDefinitions/read` | Gebruikers aan wie deze bewerking in een bereik is verleend, kunnen de aangepaste rollen bekijken die beschikbaar zijn voor toewijzing in dat bereik. Bij alle ingebouwde rollen kunnen aangepaste rollen beschikbaar zijn voor toewijzing. |
+| Een aangepaste rol weer geven | `Microsoft.Authorization/ roleDefinitions/read` | Gebruikers aan wie deze bewerking in een bereik is verleend, kunnen de aangepaste rollen bekijken die beschikbaar zijn voor toewijzing in dat bereik. Bij alle ingebouwde rollen is toegestaan dat aangepaste rollen beschikbaar zijn voor toewijzing. |
 
 ## <a name="custom-role-limits"></a>Limieten voor aangepaste rollen
 

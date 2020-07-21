@@ -3,11 +3,13 @@ title: Service Bus wacht rijen voor onbestelbare berichten | Microsoft Docs
 description: Beschrijft wacht rijen voor onbestelbare berichten in Azure Service Bus. Service Bus-wacht rijen en-onderwerp-abonnementen bieden een secundaire subwachtrij, een zogeheten wachtrij met onbestelbare berichten.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 62db4e71d99d1242cfbb69bdb7979bf9e5dc67ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 7078a7889947c4121713e9374d1487f408fed871
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337580"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511208"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Overzicht van Service Bus wacht rijen voor onbestelbare berichten
 
@@ -56,7 +58,7 @@ Dit gedrag kan niet worden uitgeschakeld, maar u kunt [MaxDeliveryCount](/dotnet
 
 Wanneer de eigenschap [QueueDescription. EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription) of [SubscriptionDescription. EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) is ingesteld op **True** (de standaard waarde is **False**), worden alle verlopen berichten verplaatst naar de DLQ en worden de `TTLExpiredException` reden code opgegeven.
 
-Verlopen berichten worden alleen opgeschoond en verplaatst naar de DLQ wanneer er ten minste één actieve ontvanger wordt opgehaald uit de hoofd wachtrij of het-abonnement. Dit gedrag is inherent aan het ontwerp.
+Verlopen berichten worden alleen opgeschoond en verplaatst naar de DLQ wanneer er ten minste één actieve ontvanger wordt opgehaald uit de hoofd wachtrij of het abonnement, en [uitgestelde berichten](./message-deferral.md) worden ook niet leeg gemaakt en verplaatst naar de wachtrij voor onbestelbare brieven nadat deze zijn verlopen. Dit gedrag is zo ontworpen.
 
 ## <a name="errors-while-processing-subscription-rules"></a>Fouten bij het verwerken van abonnements regels
 

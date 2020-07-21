@@ -8,13 +8,14 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: eeacea9e3305865881747801100dc17770b7df63
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: abd802f19917b048f6d006b8e3097b08efaf22e2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78970499"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510477"
 ---
-# <a name="azure-disk-encryption-troubleshooting-guide"></a>Gids voor het oplossen van problemen Azure Disk Encryption
+# <a name="azure-disk-encryption-for-linux-vms-troubleshooting-guide"></a>Probleemoplossings gids voor Azure Disk Encryption voor Linux Vm's
 
 Deze hand leiding is voor IT-professionals, gegevens beveiligings analisten en Cloud beheerders waarvan de organisaties Azure Disk Encryption gebruiken. In dit artikel vindt u informatie over het oplossen van problemen met schijf versleuteling.
 
@@ -110,5 +111,5 @@ Gebruik [AZ VM Encryption Disable](/cli/azure/vm/encryption)om Azure Disk Encryp
 
 In dit document hebt u meer geleerd over enkele veelvoorkomende problemen in Azure Disk Encryption en hoe u deze problemen oplost. Raadpleeg de volgende artikelen voor meer informatie over deze service en de mogelijkheden ervan:
 
-- [Schijf versleuteling Toep assen in Azure Security Center](../../security-center/security-center-apply-disk-encryption.md)
-- [Azure-gegevens versleuteling in rust](../../security/fundamentals/encryption-atrest.md)
+- [Schijf versleuteling Toep assen in Azure Security Center](../../security-center/security-center-virtual-machine-protection.md)
+- [Versleuteling van inactieve gegevens in Azure](../../security/fundamentals/encryption-atrest.md)

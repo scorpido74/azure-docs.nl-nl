@@ -1,18 +1,18 @@
 ---
-title: Back-ups maken van bestanden en mappen-Veelgestelde vragen
+title: Microsoft Azure Recovery Services-agent (MARS) – Veelgestelde vragen
 description: Behandelt Veelgestelde vragen over het maken van back-ups van bestanden en mappen met Azure Backup.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 0ecff00fdfaf9b0ca494cd1c78d0a5e16b198995
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: fb6290124aa9ee0335083c5a505c005a387c0cd7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056171"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514064"
 ---
-# <a name="common-questions-about-backing-up-files-and-folders"></a>Veelgestelde vragen over het maken van back-ups van bestanden en mappen
+# <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>Veelgestelde vragen-agent voor Microsoft Azure Recovery Services (MARS)
 
-In dit artikel vindt u antwoorden op veelgestelde vragen Abound het maken van back-ups van bestanden en mappen met de Microsoft Azure Recovery Services-agent (MARS) in de [Azure backup](backup-overview.md) -service.
+In dit artikel vindt u antwoorden op veelgestelde vragen over het maken van back-ups van gegevens met de Microsoft Azure Recovery Services-agent (MARS) in de [Azure backup](backup-overview.md) -service.
 
 ## <a name="configure-backups"></a>Back-ups configureren
 
@@ -74,11 +74,11 @@ Wanneer u de naam van een Windows-computer wijzigt, worden alle momenteel geconf
 
 ### <a name="what-is-the-maximum-file-path-length-for-backup"></a>Wat is de maximale lengte voor het bestandspad voor back-up?
 
-De MARS-agent is afhankelijk van NTFS en maakt gebruik van de lengte specificatie filepath, beperkt door de [Windows-API](/windows/desktop/FileIO/naming-a-file#fully-qualified-vs-relative-paths). Als de bestanden die u wilt beveiligen, langer zijn dan de toegestane waarde, maakt u een back-up van de bovenliggende map of van het schijf station.  
+De MARS-agent is afhankelijk van NTFS en maakt gebruik van de lengte specificatie filepath, beperkt door de [Windows-API](/windows/win32/FileIO/naming-a-file#fully-qualified-vs-relative-paths). Als de bestanden die u wilt beveiligen, langer zijn dan de toegestane waarde, maakt u een back-up van de bovenliggende map of van het schijf station.  
 
 ### <a name="what-characters-are-allowed-in-file-paths"></a>Welke tekens zijn toegestaan in bestands paden?
 
-De MARS-agent is afhankelijk van NTFS en ondersteunt [tekens](/windows/desktop/FileIO/naming-a-file#naming-conventions) in bestands namen/paden.
+De MARS-agent is afhankelijk van NTFS en ondersteunt [tekens](/windows/win32/FileIO/naming-a-file#naming-conventions) in bestands namen/paden.
 
 ### <a name="the-warning-azure-backups-have-not-been-configured-for-this-server-appears"></a>De waarschuwing ' Azure-back-ups zijn niet geconfigureerd voor deze server ' wordt weer gegeven
 
@@ -95,7 +95,7 @@ De grootte van de cachemap bepaalt de hoeveelheid gegevens waarvan u een back-up
 
 * De volumes in de cache-map moeten vrije ruimte hebben die gelijk is aan ten minste 5-10% van de totale grootte van de back-upgegevens.
 * Als het volume minder dan 5% beschik bare ruimte heeft, verg root u de volume grootte of verplaatst u de cachemap naar een volume met voldoende ruimte door de volgende [stappen uit te voeren](#how-do-i-change-the-cache-location-for-the-mars-agent).
-* Als u een back-up maakt van de systeem status van Windows, hebt u een extra beschik bare schijf ruimte van 30-35 GB nodig in het volume met de cachemap.
+* Als u een back-up maakt van de Windows-systeem status, hebt u een extra 30-35 GB vrije ruimte nodig op het volume met de cachemap.
 
 ### <a name="how-to-check-if-scratch-folder-is-valid-and-accessible"></a>Controleren of de Scratch-map geldig is en toegankelijk is?
 
@@ -141,7 +141,7 @@ De volgende locaties voor de cachemap worden niet aanbevolen:
 
 ### <a name="are-there-any-attributes-of-the-cache-folder-that-arent-supported"></a>Zijn er kenmerken van de cachemap die niet worden ondersteund?
 
-De volgende kenmerken of combinaties van deze kenmerken worden niet ondersteund voor de cachemap:
+De volgende kenmerken of combi Naties hiervan worden niet ondersteund voor de cachemap:
 
 * Versleuteld
 * Ontdubbeld
@@ -165,17 +165,17 @@ De Azure Backup-Agent vereist een wachtwoordzin (die u hebt ingevoerd tijdens de
 
 | Oorspronkelijke computer <br> *(bron machine waar back-ups zijn gemaakt)* | Wachtzin | Beschik bare opties |
 | --- | --- | --- |
-| Beschikbaar |Verdwenen |Als uw oorspronkelijke computer (waar back-ups zijn gemaakt) beschikbaar is en nog steeds is geregistreerd met dezelfde Recovery Services kluis, kunt u de wachtwoordzin opnieuw genereren door de volgende [stappen uit te voeren](https://docs.microsoft.com/azure/backup/backup-azure-manage-mars#re-generate-passphrase).  |
+| Beschikbaar |Verdwenen |Als uw oorspronkelijke computer (waar back-ups zijn gemaakt) beschikbaar is en nog steeds is geregistreerd met dezelfde Recovery Services kluis, kunt u de wachtwoordzin opnieuw genereren door de volgende [stappen uit te voeren](./backup-azure-manage-mars.md#re-generate-passphrase).  |
 | Verdwenen |Verdwenen |Het is niet mogelijk om de gegevens te herstellen of de gegevens zijn niet beschikbaar |
 
 Houd rekening met de volgende voorwaarden:
 
-* Als u de agent op dezelfde oorspronkelijke machine verwijdert en opnieuw registreert met
+* Als u de agent op dezelfde oorspronkelijke machine verwijdert en opnieuw registreert met thee
   * *Dezelfde wachtwoordzin*; vervolgens kunt u de back-upgegevens herstellen.
-  * Een *andere wachtwoordzin*, dan kunt u de back-upgegevens niet herstellen.
-* Als u de agent op een *andere computer* installeert met
-  * *Dezelfde wachtwoordzin* (gebruikt in de oorspronkelijke machine), dan kunt u uw back-upgegevens herstellen.
-  * *Verschillende wachtwoordzin*, u kunt uw back-upgegevens niet herstellen.
+  * *Andere wachtwoordzin*, dan kunt u de back-upgegevens niet herstellen.
+* Als u de agent op een *andere computer* installeert met de
+  * *Dezelfde wachtwoordzin* (gebruikt in de oorspronkelijke machine), dan kunt u de back-upgegevens herstellen.
+  * *Andere wachtwoordzin*kunt u de back-upgegevens niet herstellen.
 * Als de oorspronkelijke machine is beschadigd (voor komt dat u de wachtwoordzin opnieuw genereert via de MARS-console), maar u kunt de oorspronkelijke Scratch-map die wordt gebruikt door de MARS-agent, herstellen of openen, dan kan het zijn dat u kunt herstellen (als u het wacht woord bent verg eten). Neem contact op met de klant ondersteuning voor meer informatie.
 
 #### <a name="how-do-i-recover-if-i-lost-my-original-machine-where-backups-were-taken"></a>Hoe kan ik herstellen als ik mijn oorspronkelijke machine kwijt ben (waar de back-ups zijn gemaakt)?
@@ -184,7 +184,7 @@ Als u dezelfde wachtwoordzin hebt (die u tijdens de registratie hebt ingesteld) 
 
 | Oorspronkelijke computer | Wachtzin | Beschik bare opties |
 | --- | --- | --- |
-| Verdwenen |Beschikbaar |U kunt de MARS-agent op een andere computer installeren en registreren met dezelfde wachtwoordzin die u hebt ingevoerd tijdens de registratie van de oorspronkelijke computer. Kies **herstel optie**  >  **een andere locatie** om uw herstel uit te voeren. Zie dit [artikel](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine) voor meer informatie.
+| Verdwenen |Beschikbaar |U kunt de MARS-agent op een andere computer installeren en registreren met dezelfde wachtwoordzin die u hebt ingevoerd tijdens de registratie van de oorspronkelijke computer. Kies **herstel optie**  >  **een andere locatie** om uw herstel uit te voeren. Zie dit [artikel](./backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine) voor meer informatie.
 | Verdwenen |Verdwenen |Het is niet mogelijk om de gegevens te herstellen of de gegevens zijn niet beschikbaar |
 
 ### <a name="my-backup-jobs-have-been-failing-or-not-running-for-a-long-time-im-past-the-retention-period-can-i-still-restore"></a>Mijn back-uptaken zijn in een lange periode mislukt of worden niet uitgevoerd. Ik ben de Bewaar periode verstreken. Kan ik nog steeds herstellen?

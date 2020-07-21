@@ -3,12 +3,12 @@ title: AMQP 1,0 in Azure Service Bus en Event Hubs protocol handleiding | Micros
 description: Protocol gids voor expressies en beschrijving van AMQP 1,0 in Azure Service Bus en Event Hubs
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 79132ef7105de8de2261c35258006af3f0a665a5
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 5957e2d36b57be7db1af279736e8859d1a69b66b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186908"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511310"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1,0 in Azure Service Bus en Event Hubs protocol gids
 
@@ -48,7 +48,7 @@ De meest gezaghebbende bron om meer te weten te komen over de manier waarop AMQP
 
 AMQP roept *de Program ma's*voor communicatie Programma's aan; Deze bevatten *knoop punten*, die de communicerende entiteiten binnen deze containers zijn. Een wachtrij kan een dergelijk knoop punt zijn. AMQP maakt multiplexing mogelijk, waardoor een enkele verbinding kan worden gebruikt voor veel communicatie paden tussen knoop punten. een toepassings-client kan bijvoorbeeld gelijktijdig van de ene wachtrij ontvangen en via dezelfde netwerk verbinding naar een andere wachtrij verzenden.
 
-![][1]
+![Diagram waarin sessies en verbindingen tussen containers worden weer gegeven.][1]
 
 De netwerk verbinding is daarom verankerd op de container. Het wordt gestart door de container in de client functie en maakt een uitgaande TCP-socket verbinding met een container in de ontvanger receive die binnenkomende TCP-verbindingen luistert en accepteert. De verbindings-Handshake omvat het onderhandelen over de Protocol versie, het declareren of onderhandelen van het gebruik van beveiliging op transport niveau (TLS/SSL) en een verificatie/autorisatie-Handshake bij het verbindings bereik dat is gebaseerd op SASL.
 
@@ -84,7 +84,7 @@ Een .NET-client zou mislukken met een SocketException (' er is een poging gedaan
 
 AMQP brengt berichten over koppelingen over. Een koppeling is een communicatie traject dat is gemaakt over een sessie die het overdragen van berichten in één richting mogelijk maakt. de onderhandeling over de overdrachts status bevindt zich boven de koppeling en bidirectionele tussen de verbonden partijen.
 
-![][2]
+![Scherm opname met een sessie carryign een koppelings verbinding tussen twee containers.][2]
 
 Koppelingen kunnen worden gemaakt door elke container op elk gewenst moment en via een bestaande sessie, waardoor AMQP afwijkt van een groot aantal andere protocollen, waaronder HTTP en MQTT, waarbij het initiëren van transfers en transfer Path een exclusieve bevoegdheid is van de partij die de socket verbinding maakt.
 
@@ -100,7 +100,7 @@ De client waarmee verbinding moet worden gemaakt, is ook vereist voor het gebrui
 
 Zodra een koppeling tot stand is gebracht, kunnen berichten via die koppeling worden verzonden. In AMQP wordt een overdracht uitgevoerd met een expliciete protocol beweging (de *overdrachts* -Performative) die een bericht verplaatst van afzender naar ontvanger via een koppeling. Een overdracht is voltooid wanneer het ' verrekend ' is, wat inhoudt dat beide partijen een gedeeld memorandum hebben vastgesteld van het resultaat van die overdracht.
 
-![][3]
+![Een diagram van de overdracht van een bericht tussen de afzender en de ontvanger en de bestemming hiervan.][3]
 
 In het meest eenvoudige geval kan de afzender kiezen voor het verzenden van berichten ' vooraf vereffend ', wat betekent dat de client niet geïnteresseerd is in het resultaat en dat de ontvanger geen feedback geeft over het resultaat van de bewerking. Deze modus wordt ondersteund door Service Bus op het niveau van het AMQP-protocol, maar wordt niet weer gegeven in een van de client-Api's.
 
@@ -120,7 +120,7 @@ Om mogelijke dubbele verzen dingen te compenseren, ondersteunt Service Bus dupli
 
 Naast het stroom beheer model op sessie niveau dat eerder is besproken, heeft elke koppeling een eigen stroom beheer model. Met Datatransport besturing op sessie niveau kan de container te allen tijde niet te veel frames tegelijk verwerken, de Datatransport besturing op koppelings niveau zorgt ervoor dat de toepassing wordt belast met het aantal berichten dat via een koppeling moet worden verwerkt en wanneer.
 
-![][4]
+![Scherm opname van een logboek met bron, doel, bron poort, doel poort en protocol naam. In de rij Fiest wordt de doel poort 10401 (0x28 A 1) in zwart beschreven.][4]
 
 Bij een koppeling kunnen de overdrachten alleen plaatsvinden wanneer de afzender voldoende *link-tegoed*heeft. Link tegoed is een teller die door de ontvanger wordt ingesteld met behulp van de *flow* Performative, die is gericht op een koppeling. Wanneer de afzender een koppelings tegoed heeft gekregen, wordt geprobeerd dat tegoed te gebruiken door berichten te leveren. Elke bericht bezorging verlaagt het resterende tegoed van de link met 1. Wanneer het tegoed voor de koppeling wordt gebruikt, worden de leveringen gestopt.
 
@@ -222,10 +222,10 @@ Alle eigenschappen die door de toepassing moeten worden gedefinieerd, moeten wor
 | --- | --- | --- |
 | bericht-id |Een door de toepassing gedefinieerde, vrije-vorm-id voor dit bericht. Wordt gebruikt voor duplicaten detectie. |[MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | user-id |Door de toepassing gedefinieerde gebruikers-id die niet wordt geïnterpreteerd door Service Bus. |Niet toegankelijk via de Service Bus-API. |
-| tot |De door de toepassing gedefinieerde doel-id, die niet wordt geïnterpreteerd door Service Bus. |[Aan](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| Onderwerp |Door de toepassing gedefinieerde doel-id voor bericht, niet geïnterpreteerd door Service Bus. |[Adres](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| in |De door de toepassing gedefinieerde doel-id, die niet wordt geïnterpreteerd door Service Bus. |[Aan](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| Onderwerp |Door de toepassing gedefinieerde doel-id voor bericht, niet geïnterpreteerd door Service Bus. |[Label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | beantwoorden |Een door de toepassing gedefinieerde antwoord-Path-Indicator die niet wordt geïnterpreteerd door Service Bus. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| correlation-id |Door de toepassing gedefinieerde correlatie-id, die niet wordt geïnterpreteerd door Service Bus. |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| correlation-id |Door de toepassing gedefinieerde correlatie-id, die niet wordt geïnterpreteerd door Service Bus. |[Correlatie](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | inhouds type |Door de toepassing gedefinieerde inhouds type-indicator voor de hoofd tekst, niet geïnterpreteerd door Service Bus. |[Invoer](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | content-encoding |De door de toepassing gedefinieerde coderings indicator voor de hoofd tekst, die niet wordt geïnterpreteerd door Service Bus. |Niet toegankelijk via de Service Bus-API. |
 | absoluut-verloop tijd |Declareert op welke absolute direct het bericht verloopt. Genegeerd bij invoer (TTL van header wordt waargenomen), gezaghebbend op uitvoer. |[ExpiresAtUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
@@ -366,7 +366,7 @@ Het aanvraag bericht heeft de volgende toepassings eigenschappen:
 
 De eigenschap *name* identificeert de entiteit waaraan het token moet worden gekoppeld. In Service Bus is het het pad naar de wachtrij, of onderwerp/abonnement. De eigenschap *type* geeft het token type aan:
 
-| Token type | Beschrijving van het token | Type hoofd tekst | Opmerkingen |
+| Token type | Beschrijving van het token | Type hoofd tekst | Notities |
 | --- | --- | --- | --- |
 | AMQP: JWT |JSON Web Token (JWT) |AMQP-waarde (teken reeks) |Nog niet beschikbaar. |
 | AMQP: swt |Eenvoudig webtoken (SWT) |AMQP-waarde (teken reeks) |Alleen ondersteund voor SWT-tokens die zijn uitgegeven door AAD/ACS |

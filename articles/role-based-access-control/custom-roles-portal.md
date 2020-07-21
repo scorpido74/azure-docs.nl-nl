@@ -10,13 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/30/2020
+ms.date: 07/13/2020
 ms.author: rolyon
-ms.openlocfilehash: a7be51cfceee3bb445b085efd780463c8b6f49be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91d2605dddd6107d09e635969f5e5d98c2a02d60
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791194"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511718"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>Aangepaste Azure-rollen maken of bijwerken met behulp van Azure Portal
 
@@ -203,17 +204,7 @@ Volg deze stappen om machtigingen toe te voegen aan of te verwijderen voor uw aa
 
 ### <a name="add-wildcard-permissions"></a>Machtigingen voor joker tekens toevoegen
 
-Afhankelijk van hoe u ervoor hebt gekozen om te beginnen, hebt u mogelijk machtigingen met Joker tekens ( \* ) in de lijst met machtigingen. Een Joker teken ( \* ) breidt een machtiging uit voor alles die overeenkomt met de teken reeks die u opgeeft. Stel bijvoorbeeld dat u alle machtigingen wilt toevoegen met betrekking tot Azure Cost Management en exports. U kunt al deze machtigingen toevoegen:
-
-```
-Microsoft.CostManagement/exports/action
-Microsoft.CostManagement/exports/read
-Microsoft.CostManagement/exports/write
-Microsoft.CostManagement/exports/delete
-Microsoft.CostManagement/exports/run/action
-```
-
-In plaats van al deze machtigingen toe te voegen, kunt u gewoon een machtiging voor joker tekens toevoegen. De volgende Joker teken machtiging is bijvoorbeeld gelijk aan de vorige vijf machtigingen. Dit omvat ook toekomstige export machtigingen die kunnen worden toegevoegd.
+Afhankelijk van hoe u ervoor hebt gekozen om te beginnen, hebt u mogelijk machtigingen met Joker tekens ( `*` ) in de lijst met machtigingen. Een Joker teken ( `*` ) breidt een machtiging uit voor alles die overeenkomt met de actie teken reeks die u opgeeft. De volgende Joker teken reeks voegt bijvoorbeeld alle machtigingen toe die betrekking hebben op Azure Cost Management en exports. Dit omvat ook toekomstige export machtigingen die kunnen worden toegevoegd.
 
 ```
 Microsoft.CostManagement/exports/*
@@ -223,7 +214,7 @@ Als u een nieuwe machtiging voor joker tekens wilt toevoegen, kunt u deze niet t
 
 ### <a name="exclude-permissions"></a>Machtigingen uitsluiten
 
-Als uw rol een machtiging voor joker tekens ( \* ) heeft en u specifieke machtigingen uit die Joker machtiging wilt uitsluiten of verwijderen, kunt u deze uitsluiten. Stel bijvoorbeeld dat u de volgende Joker machtiging hebt:
+Als uw rol een machtiging voor joker tekens ( `*` ) heeft en u specifieke machtigingen uit die Joker machtiging wilt uitsluiten of verwijderen, kunt u deze uitsluiten. Stel bijvoorbeeld dat u de volgende Joker machtiging hebt:
 
 ```
 Microsoft.CostManagement/exports/*
@@ -268,7 +259,7 @@ Op het tabblad **toewijs bare bereiken** geeft u op waar uw aangepaste rol besch
 
 ## <a name="step-6-json"></a>Stap 6: JSON
 
-Op het tabblad **JSON** ziet u de aangepaste rol die is ingedeeld in JSON. Als u wilt, kunt u de JSON rechtstreeks bewerken. Als u een Joker teken ()- \* machtiging wilt toevoegen, moet u dit tabblad gebruiken.
+Op het tabblad **JSON** ziet u de aangepaste rol die is ingedeeld in JSON. Als u wilt, kunt u de JSON rechtstreeks bewerken. Als u een Joker teken ()- `*` machtiging wilt toevoegen, moet u dit tabblad gebruiken.
 
 1. Klik op **bewerken**om de JSON te bewerken.
 
@@ -348,4 +339,4 @@ Volg deze stappen om uw aangepaste rollen weer te geven.
 
 - [Zelf studie: een aangepaste Azure-rol maken met behulp van Azure PowerShell](tutorial-custom-role-powershell.md)
 - [Aangepaste Azure-rollen](custom-roles.md)
-- [Bewerkingen voor de resource provider Azure Resource Manager](resource-provider-operations.md)
+- [Bewerkingen voor Azure Resource Manager-resourceproviders](resource-provider-operations.md)

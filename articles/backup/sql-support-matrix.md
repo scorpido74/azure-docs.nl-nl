@@ -3,11 +3,13 @@ title: Azure Backup-ondersteunings matrix voor SQL Server back-up in virtuele ma
 description: Hierin wordt een overzicht gegeven van de ondersteunings instellingen en beperkingen bij het maken van back-ups van SQL Server in azure Vm's met de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: f9594b9157f84a0536ffd4b62f792fd86fb1c243
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: 4d197f8b3c1ed74ef45c1f7942ead52ccef0c14a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84234249"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513180"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Ondersteunings matrix voor SQL Server back-up in virtuele machines van Azure
 
@@ -26,7 +28,7 @@ U kunt Azure Backup gebruiken om een back-up te maken van SQL Server-data bases 
 ## <a name="feature-consideration-and-limitations"></a>Overwegingen voor functies en beperkingen
 
 * SQL Server back-up kan worden geconfigureerd in de Azure Portal of **Power shell**. CLI wordt niet ondersteund.
-* De oplossing wordt ondersteund op beide soorten [implementaties](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) -Azure Resource Manager vm's en klassieke vm's.
+* De oplossing wordt ondersteund op beide soorten [implementaties](../azure-resource-manager/management/deployment-models.md) -Azure Resource Manager vm's en klassieke vm's.
 * Voor virtuele machines met SQL Server is Internet verbinding vereist voor toegang tot open bare IP-adressen van Azure.
 * SQL Server **-FCI (failover cluster instance)** wordt niet ondersteund.
 * Back-up-en herstel bewerkingen voor spiegel databases en database momentopnamen worden niet ondersteund.
@@ -57,7 +59,7 @@ Afhankelijk van de voor keuren voor back-ups en back-ups (volledig/differentieel
 --- | ---
 Volledig | Primair
 Differentiële | Primair
-Logboek |  Primair
+Log |  Primair
 Alleen-kopiëren is volledig |  Primair
 
 #### <a name="backup-preference-secondary-only"></a>Back-upvoorkeur: alleen secundair
@@ -66,7 +68,7 @@ Alleen-kopiëren is volledig |  Primair
 --- | ---
 Volledig | Primair
 Differentiële | Primair
-Logboek |  Secundair
+Log |  Secundair
 Alleen-kopiëren is volledig |  Secundair
 
 #### <a name="backup-preference-secondary"></a>Back-upvoorkeur: secundair
@@ -75,7 +77,7 @@ Alleen-kopiëren is volledig |  Secundair
 --- | ---
 Volledig | Primair
 Differentiële | Primair
-Logboek |  Secundair
+Log |  Secundair
 Alleen-kopiëren is volledig |  Secundair
 
 #### <a name="no-backup-preference"></a>Geen voorkeurs instelling voor back-up
@@ -84,7 +86,7 @@ Alleen-kopiëren is volledig |  Secundair
 --- | ---
 Volledig | Primair
 Differentiële | Primair
-Logboek |  Secundair
+Log |  Secundair
 Alleen-kopiëren is volledig |  Secundair
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -10,16 +10,16 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: scottwhi
-ms.openlocfilehash: b6bc323f4e8deaf975c292f92d862b1fbe0e2714
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a11bf408f06b5c4e621f0af1f71f23c335dc2069
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60510119"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512636"
 ---
 # <a name="default-insights-tag"></a>Standaard-Insights-tag
 
-De standaard-Insights-tag is het label `displayName` waarbij het veld is ingesteld op een lege teken reeks. In het volgende voor beeld ziet u de mogelijke lijst met standaard inzichten (acties). De lijst met acties die het antwoord bevat, is afhankelijk van de afbeelding. Voor elke actie kan de lijst met eigenschappen per afbeelding verschillen, dus controleer of de eigenschap bestaat voordat u deze gebruikt.
+De standaard-Insights-tag is het label waarbij het `displayName` veld is ingesteld op een lege teken reeks. In het volgende voor beeld ziet u de mogelijke lijst met standaard inzichten (acties). De lijst met acties die het antwoord bevat, is afhankelijk van de afbeelding. Voor elke actie kan de lijst met eigenschappen per afbeelding verschillen, dus controleer of de eigenschap bestaat voordat u deze gebruikt.
 
 ```json
 {
@@ -100,7 +100,7 @@ De standaard-Insights-tag is het label `displayName` waarbij het veld is ingeste
 
 ## <a name="pagesincluding-insight"></a>PagesIncluding inzicht
 
-De PagesIncluding Insight bevat een lijst met webpagina's die deze installatie kopie bevatten. Het is in feite een lijst `Image` met objecten en het `hostPageUrl` veld bevat de URL naar de webpagina die de afbeelding bevat. Zie bijvoorbeeld [PagesIncluding Insight-voor beeld](./bing-insights-usage.md#pagesincluding-insight-example).
+De PagesIncluding Insight bevat een lijst met webpagina's die deze installatie kopie bevatten. Het is in feite een lijst met `Image` objecten en het `hostPageUrl` veld bevat de URL naar de webpagina die de afbeelding bevat. Zie bijvoorbeeld [PagesIncluding Insight-voor beeld](./bing-insights-usage.md#pagesincluding-insight-example).
 
 ```json
       {
@@ -168,7 +168,7 @@ De ShoppingSources Insight bevat een lijst met websites waar de gebruiker het it
 
 ## <a name="moresizes-insight"></a>MoreSizes inzicht
 
-In het MoreSizes Insight wordt het aantal grootten (groter of kleiner) van de installatie kopie aangegeven die Bing heeft gevonden op internet `availableSizesCount` (Zie het veld):
+In het MoreSizes Insight wordt het aantal grootten (groter of kleiner) van de installatie kopie aangegeven die Bing heeft gevonden op internet (Zie het `availableSizesCount` veld):
 
 ```json
       {
@@ -425,4 +425,12 @@ De DocumentLevelSuggestions Insight bevat een lijst met voorgestelde zoek termen
 
 Bekijk [voor beelden van het gebruik van Bing Insights](bing-insights-usage.md) om te zien hoe Bing de visuele inzichten kan weer geven.
 
-Als u snel aan de slag wilt met uw eerste aanvraag, raadpleegt u Quick starts: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node. js](quickstarts/nodejs.md) | [python](quickstarts/python.md).
+Zie deze quickstarts om snel aan de slag te gaan met uw eerste aanvraag:
+
+* [C#](quickstarts/csharp.md)
+
+* [Java](quickstarts/java.md)
+
+* [node.js](quickstarts/nodejs.md)
+
+* [Python](quickstarts/python.md).

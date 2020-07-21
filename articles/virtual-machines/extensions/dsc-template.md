@@ -13,15 +13,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: 4ec81ef69f21fc74864e437a3c6de46550a70c18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc73b5b9f05d24de206b25095ea7eaf93f035298
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82891650"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511157"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Extensie voor desired state Configuration met Azure Resource Manager sjablonen
 
-In dit artikel wordt de Azure Resource Manager sjabloon voor de [extensie-handler voor desired state Configuration (DSC)](dsc-overview.md)beschreven. In veel van de voor beelden wordt **RegistrationURL** (gegeven als een teken reeks) en **RegistrationKey** (meegeleverd als een [PSCredential](/dotnet/api/system.management.automation.pscredential)) gebruikt om de onboarding met Azure Automation te kunnen uitvoeren. Zie voor meer informatie over het verkrijgen van deze waarden [onboarding machines voor beheer door Azure Automation status configuratie-beveiligde registratie](/azure/automation/automation-dsc-onboarding#onboarding-securely-using-registration).
+In dit artikel wordt de Azure Resource Manager sjabloon voor de [extensie-handler voor desired state Configuration (DSC)](dsc-overview.md)beschreven. Veel van de voor beelden gebruiken **RegistrationURL** (gegeven als een teken reeks) en **RegistrationKey** (als een [PSCredential](/dotnet/api/system.management.automation.pscredential) voor onboarding met Azure Automation. Zie voor meer informatie over het verkrijgen van deze waarden [onboarding machines voor beheer door Azure Automation status configuratie-beveiligde registratie](../../automation/automation-dsc-onboarding.md#enable-machines-securely-using-registration).
 
 > [!NOTE]
 > Er kunnen enigszins verschillende schema voorbeelden optreden. De wijziging in het schema is opgetreden in de release van oktober 2016. Zie [Update van een vorige indeling](#update-from-a-previous-format)voor meer informatie.
@@ -176,7 +177,7 @@ Zie het [standaard configuratie script](#default-configuration-script)voor een l
 
 ## <a name="details"></a>Details
 
-| Naam van eigenschap | Type | Description |
+| Naam van eigenschap | Type | Beschrijving |
 | --- | --- | --- |
 | Settings. wmfVersion |tekenreeks |Hiermee geeft u de versie van Windows Management Framework (WMF) op die op uw virtuele machine moet worden geïnstalleerd. Als u deze eigenschap instelt op **laatst** , wordt de meest recente versie van WMF geïnstalleerd. Momenteel zijn de enige mogelijke waarden voor deze eigenschap **4,0**, **5,0**, **5,1**en **meest recent**. Deze mogelijke waarden zijn onderhevig aan updates. De standaard waarde is **meest recent**. |
 | settings.configuratie. URL |tekenreeks |Hiermee geeft u de URL-locatie van waaruit u uw DSC-configuratie. zip-bestand wilt downloaden. Als voor de opgegeven URL een SAS-token voor toegang vereist is, stelt u de **protectedSettings.configeigenschap urationUrlSasToken** in op de waarde van uw SAS-token. Deze eigenschap is vereist als **settings.configuratie. script** of **settings.configuratie. functie** zijn gedefinieerd. Als er geen waarde wordt opgegeven voor deze eigenschappen, roept de extensie het standaard configuratie script aan om de meta gegevens van de locatie Configuration Manager (LCM) in te stellen, en moeten er argumenten worden opgegeven. |
@@ -195,7 +196,7 @@ Zie het [standaard configuratie script](#default-configuration-script)voor een l
 Zie [Local Configuration Manager Basic Settings](/powershell/scripting/dsc/managing-nodes/metaConfig#basic-settings)(Engelstalig) voor meer informatie over de volgende waarden.
 U kunt het standaard configuratie script van de DSC-extensie gebruiken om alleen de ICM-eigenschappen te configureren die in de volgende tabel worden weer gegeven.
 
-| Naam van eigenschap | Type | Description |
+| Naam van eigenschap | Type | Beschrijving |
 | --- | --- | --- |
 | protectedSettings.configurationArguments. RegistrationKey |PSCredential |Eigenschap Required. Hiermee geeft u de sleutel op die wordt gebruikt voor een knoop punt om te registreren bij de Azure Automation-Service als het wacht woord van een Power shell-referentie object. Deze waarde kan automatisch worden gedetecteerd met behulp van de **listkeys ophalen** -methode voor het Automation-account.  Zie het [voor beeld](#example-using-referenced-azure-automation-registration-values). |
 | settings.configurationArguments. RegistrationUrl |tekenreeks |Eigenschap Required. Hiermee geeft u de URL op van het Automation-eind punt waar het knoop punt zich probeert te registreren. Deze waarde kan automatisch worden gedetecteerd met behulp van de **referentie** methode voor het Automation-account. |
@@ -203,9 +204,9 @@ U kunt het standaard configuratie script van de DSC-extensie gebruiken om alleen
 | settings.configurationArguments.ConfigurationMode |tekenreeks |Hiermee geeft u de modus voor LCM op. Geldige opties zijn **ApplyOnly**, **ApplyandMonitor**en **ApplyandAutoCorrect**.  De standaard waarde is **ApplyandMonitor**. |
 | settings.configurationArguments. RefreshFrequencyMins | uint32 | Hiermee geeft u op hoe vaak LCM met het Automation-account probeert te controleren op updates.  De standaard waarde is **30**.  De minimum waarde is **15**. |
 | settings.configurationArguments.ConfigurationModeFrequencyMins | uint32 | Hiermee geeft u op hoe vaak LCM de huidige configuratie valideert. De standaard waarde is **15**. De minimum waarde is **15**. |
-| settings.configurationArguments. RebootNodeIfNeeded | booleaans | Hiermee geeft u op of een knoop punt automatisch opnieuw kan worden opgestart als een DSC-bewerking dit aanvraagt. De standaard waarde is **False**. |
+| settings.configurationArguments. RebootNodeIfNeeded | boolean | Hiermee geeft u op of een knoop punt automatisch opnieuw kan worden opgestart als een DSC-bewerking dit aanvraagt. De standaard waarde is **False**. |
 | settings.configurationArguments. ActionAfterReboot | tekenreeks | Hiermee geeft u op wat er gebeurt na het opnieuw opstarten bij het Toep assen van een configuratie. Geldige opties zijn **ContinueConfiguration** en **de stopconfiguration**. De standaard waarde is **ContinueConfiguration**. |
-| settings.configurationArguments. AllowModuleOverwrite | booleaans | Hiermee geeft u op of de LCM bestaande modules op het knoop punt overschrijft. De standaard waarde is **False**. |
+| settings.configurationArguments. AllowModuleOverwrite | boolean | Hiermee geeft u op of de LCM bestaande modules op het knoop punt overschrijft. De standaard waarde is **False**. |
 
 ## <a name="settings-vs-protectedsettings"></a>instellingen versus protectedSettings
 

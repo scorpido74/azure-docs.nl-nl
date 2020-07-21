@@ -3,12 +3,12 @@ title: Overzicht van de architectuur
 description: Hierin wordt een overzicht gegeven van de architectuur, onderdelen en processen die door de Azure Backup-service worden gebruikt.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: 26f10f96cac412854f4bb0f732a0aec7f595c8ae
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: eab820c2a045c8602bfdbf77b5e2dba4cb2318af
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055253"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514302"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architectuur en onderdelen van Azure Backup
 
@@ -42,17 +42,17 @@ Recovery Services kluizen hebben de volgende kenmerken:
 - Kluizen maken het eenvoudig om uw back-upgegevens te organiseren en zo de beheer overhead te minimaliseren.
 - In elk Azure-abonnement kunt u Maxi maal 500 kluizen maken.
 - U kunt back-upitems bewaken in een kluis, waaronder Azure Vm's en on-premises machines.
-- U kunt de toegang tot de kluis beheren met [op rollen gebaseerd toegangs beheer (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)van Azure.
+- U kunt de toegang tot de kluis beheren met [op rollen gebaseerd toegangs beheer (RBAC)](../role-based-access-control/role-assignments-portal.md)van Azure.
 - U geeft op hoe gegevens in de kluis worden gerepliceerd voor redundantie:
-  - **Lokaal redundante opslag (LRS)**: als u wilt beveiligen tegen fouten in een Data Center, kunt u LRS gebruiken. LRS repliceert gegevens naar een opslag schaal eenheid. [Meer informatie](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs).
-  - **Geografisch redundante opslag (GRS)**: als u wilt beveiligen tegen regionale storingen, kunt u GRS gebruiken. GRS repliceert uw gegevens naar een secundaire regio. [Meer informatie](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
+  - **Lokaal redundante opslag (LRS)**: als u wilt beveiligen tegen fouten in een Data Center, kunt u LRS gebruiken. LRS repliceert gegevens naar een opslag schaal eenheid. [Meer informatie](../storage/common/storage-redundancy.md).
+  - **Geografisch redundante opslag (GRS)**: als u wilt beveiligen tegen regionale storingen, kunt u GRS gebruiken. GRS repliceert uw gegevens naar een secundaire regio. [Meer informatie](../storage/common/storage-redundancy.md).
   - Recovery Services kluizen gebruiken standaard GRS.
 
 ## <a name="backup-agents"></a>Back-upagents
 
 Azure Backup biedt verschillende back-upagenten, afhankelijk van het type computer waarvan een back-up wordt gemaakt:
 
-**Tussen** | **Details**
+**Agent** | **Details**
 --- | ---
 **MARS-agent** | <ul><li>Wordt uitgevoerd op afzonderlijke on-premises Windows Server-machines om een back-up te maken van bestanden, mappen en de systeem status.</li> <li>Wordt uitgevoerd op virtuele machines van Azure om een back-up te maken van bestanden, mappen en de systeem status.</li> <li>Wordt uitgevoerd op DPM-MABS-servers om een back-up te maken van de lokale opslag schijf DPM/MABS naar Azure.</li></ul>
 **VM-extensie van Azure** | Wordt uitgevoerd op virtuele Azure-machines om een back-up te maken naar een kluis.
@@ -95,8 +95,8 @@ De volgende tabel bevat een overzicht van de ondersteunde functies voor de versc
 **Functie** | **Directe back-ups van bestanden en mappen (met behulp van de MARS-agent)** | **Back-up van Azure VM** | **Computers of apps met DPM/MABS**
 --- | --- | --- | ---
 Back-up naar kluis maken | ![Ja][green] | ![Ja][green] | ![Ja][green]
-Back-up naar DPM/MABS-schijf en vervolgens naar Azure | | | ![Yes][green]
-Gegevens comprimeren die voor back-up zijn verzonden | ![Yes][green] | Er wordt geen compressie gebruikt bij de overdracht van gegevens. De opslag is enigszins geflateerd, maar het herstellen gaat sneller.  | ![Yes][green]
+Back-up naar DPM/MABS-schijf en vervolgens naar Azure | | | ![Ja][green]
+Gegevens comprimeren die voor back-up zijn verzonden | ![Ja][green] | Er wordt geen compressie gebruikt bij de overdracht van gegevens. De opslag is enigszins geflateerd, maar het herstellen gaat sneller.  | ![Ja][green]
 Incrementele back-up uitvoeren |![Ja][green] |![Ja][green] |![Ja][green]
 Back-ups maken van ontdubbelde schijven | | | ![Gedeeltelijk][yellow]<br/><br/> Voor DPM-MABS-servers die alleen on-premises worden geïmplementeerd.
 
@@ -120,6 +120,17 @@ Back-ups maken van ontdubbelde schijven | | | ![Gedeeltelijk][yellow]<br/><br/> 
 - Wanneer een kluis wordt gemaakt, wordt er ook een ' Defaultpolicy bij ' gemaakt en kan deze worden gebruikt voor het maken van een back-up van bronnen.
 - Alle wijzigingen die zijn aangebracht in de Bewaar periode van een back-upbeleid, worden met terugwerkende kracht toegepast op alle oudere herstel punten, van de nieuwe.
 
+### <a name="additional-reference"></a>Aanvullende Naslag informatie 
+
+-   Azure VM-machine: beleid [maken](./backup-azure-vms-first-look-arm.md#back-up-from-azure-vm-settings) en [wijzigen](./backup-azure-manage-vms.md#manage-backup-policy-for-a-vm) ? 
+-   SQL Server data base in azure VM machine: beleid [maken](./backup-sql-server-database-azure-vms.md#create-a-backup-policy) en [wijzigen](./manage-monitor-sql-database-backup.md#modify-policy) ? 
+-   Azure-bestands share: beleid [maken](./backup-afs.md#discover-file-shares-and-configure-backup) en [wijzigen](./manage-afs-backup.md#modify-policy) ? 
+-   SAP HANA: het [maken](./backup-azure-sap-hana-database.md#create-a-backup-policy) en [wijzigen](./sap-hana-db-manage.md#change-policy) van beleid? 
+-   MARS: beleid [maken](./backup-windows-with-mars-agent.md#create-a-backup-policy) en [wijzigen](./backup-azure-manage-mars.md#modify-a-backup-policy) ? 
+-   [Zijn er beperkingen voor het plannen van back-ups op basis van het type werk belasting?](./backup-azure-backup-faq.md#are-there-limits-on-backup-scheduling)
+- [Wat gebeurt er met de bestaande herstel punten als ik het Bewaar beleid Wijzig?](./backup-azure-backup-faq.md#what-happens-when-i-change-my-backup-policy)
+
+
 ## <a name="architecture-built-in-azure-vm-backup"></a>Architectuur: ingebouwde Azure VM-back-up
 
 1. Wanneer u back-up voor een virtuele machine van Azure inschakelt, wordt een back-up uitgevoerd volgens het schema dat u opgeeft.
@@ -134,7 +145,7 @@ Back-ups maken van ontdubbelde schijven | | | ![Gedeeltelijk][yellow]<br/><br/> 
     - Alleen gegevens blokken die zijn gewijzigd sinds de laatste back-up zijn gekopieerd.
     - De gegevens zijn niet versleuteld. Azure Backup kunt een back-up maken van virtuele Azure-machines die zijn versleuteld met behulp van Azure Disk Encryption.
     - Momentopname gegevens worden mogelijk niet direct naar de kluis gekopieerd. Het maken van een back-up kan enige tijd duren. De totale back-uptijd voor een virtuele machine is minder dan 24 uur voor dagelijks back-upbeleid.
-1. Nadat de gegevens naar de kluis zijn verzonden, wordt een herstel punt gemaakt. Standaard worden moment opnamen twee dagen bewaard voordat ze worden verwijderd. Met deze functie kunt u de herstel bewerking van deze moment opnamen herstellen. Het vermindert de tijd die nodig is om gegevens terug te zetten en te kopiëren van de kluis. Zie [Azure backup mogelijkheid om direct te herstellen](https://docs.microsoft.com/azure/backup/backup-instant-restore-capability).
+1. Nadat de gegevens naar de kluis zijn verzonden, wordt een herstel punt gemaakt. Standaard worden moment opnamen twee dagen bewaard voordat ze worden verwijderd. Met deze functie kunt u de herstel bewerking van deze moment opnamen herstellen. Het vermindert de tijd die nodig is om gegevens terug te zetten en te kopiëren van de kluis. Zie [Azure backup mogelijkheid om direct te herstellen](./backup-instant-restore-capability.md).
 
 U hoeft geen expliciete Internet connectiviteit toe te staan om een back-up te maken van uw Azure-Vm's.
 

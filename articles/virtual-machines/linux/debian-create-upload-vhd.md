@@ -6,16 +6,16 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: guybo
-ms.openlocfilehash: ebd20b6187fd4f04ac525e0152d805d9d81de3ab
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 4c2edddb8eec4a2f8300077bb00df72d7e2b00de
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134605"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510716"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>Een Debian-VHD voorbereiden voor Azure
 ## <a name="prerequisites"></a>Vereisten
-In deze sectie wordt ervan uitgegaan dat u al een Debian Linux-besturings systeem hebt geïnstalleerd vanuit een ISO-bestand dat is gedownload van de [Debian-website](https://www.debian.org/distrib/) naar een virtuele harde schijf. Er zijn meerdere hulpprogram ma's voor het maken van VHD-bestanden. Hyper-V is maar een voor beeld. Zie [de hyper-v-functie installeren en een virtuele machine configureren](https://technet.microsoft.com/library/hh846766.aspx)voor instructies voor het gebruik van Hyper-v.
+In deze sectie wordt ervan uitgegaan dat u al een Debian Linux-besturings systeem hebt geïnstalleerd vanuit een ISO-bestand dat is gedownload van de [Debian-website](https://www.debian.org/distrib/) naar een virtuele harde schijf. Er zijn meerdere hulpprogram ma's voor het maken van VHD-bestanden. Hyper-V is maar een voor beeld. Zie [de hyper-v-functie installeren en een virtuele machine configureren](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11))voor instructies voor het gebruik van Hyper-v.
 
 ## <a name="installation-notes"></a>Installatie notities
 * Zie ook [algemene Linux-installatie notities](create-upload-generic.md#general-linux-installation-notes) voor meer tips over het voorbereiden van Linux voor Azure.
@@ -116,4 +116,3 @@ Er zijn hulpprogram ma's beschikbaar voor het genereren van Debian-Vhd's voor Az
 
 ## <a name="next-steps"></a>Volgende stappen
 U kunt nu de virtuele harde schijf van Debian gebruiken om nieuwe virtuele machines te maken in Azure. Zie [een virtuele Linux-machine maken op basis van een aangepaste schijf](upload-vhd.md#option-1-upload-a-vhd)als dit de eerste keer is dat u het VHD-bestand naar Azure uploadt.
-

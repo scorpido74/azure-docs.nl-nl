@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 11/25/2019
 ms.author: guybo
-ms.openlocfilehash: 8899249fd284f69fa26bab8cd70aaf6a67fbb83c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f537f9e3315ab9d6e0b7f1c6341e94196f9aaa5b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80066789"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510936"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>Een op CentOS gebaseerde virtuele Azure-machine voorbereiden
 
@@ -23,7 +23,7 @@ Meer informatie over het maken en uploaden van een virtuele harde schijf (VHD) v
 
 ## <a name="prerequisites"></a>Vereisten
 
-In dit artikel wordt ervan uitgegaan dat u al een CentOS-Linux-besturings systeem (of een vergelijkbaar afgeleide derivaten) hebt geïnstalleerd op een virtuele harde schijf. Er zijn meerdere hulpprogram ma's voor het maken van VHD-bestanden, zoals Hyper-V. Zie [de Hyper-V-functie installeren en een virtuele machine configureren](https://technet.microsoft.com/library/hh846766.aspx)voor instructies.
+In dit artikel wordt ervan uitgegaan dat u al een CentOS-Linux-besturings systeem (of een vergelijkbaar afgeleide derivaten) hebt geïnstalleerd op een virtuele harde schijf. Er zijn meerdere hulpprogram ma's voor het maken van VHD-bestanden, zoals Hyper-V. Zie [de Hyper-V-functie installeren en een virtuele machine configureren](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11))voor instructies.
 
 **CentOS-installatie notities**
 

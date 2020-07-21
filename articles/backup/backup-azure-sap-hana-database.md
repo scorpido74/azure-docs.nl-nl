@@ -3,11 +3,12 @@ title: Back-ups maken van een SAP HANA Data Base naar Azure met Azure Backup
 description: In dit artikel vindt u informatie over het maken van een back-up van een SAP HANA Data Base naar Azure virtual machines met de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: c9f9841ac40a39fc51c0e722415c871650bec86d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 273ba40feee01c2dd2bfe68d1660a5c94f254062
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84667315"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513845"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Back-ups maken van SAP HANA-databases in virtuele Azure-machines
 
@@ -24,7 +25,7 @@ In dit artikel leert u het volgende:
 > * Een back-uptaak op aanvraag uitvoeren
 
 >[!NOTE]
->[Aan de slag](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db) met de preview voor back-ups van SAP HANA voor RHEL (7.4, 7.6, 7.7 or 8.1). Neem voor verdere vragen contact met ons op via [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com).
+>[Aan de slag](./tutorial-backup-sap-hana-db.md) met de preview voor back-ups van SAP HANA voor RHEL (7.4, 7.6, 7.7 or 8.1). Neem voor verdere vragen contact met ons op via [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com).
 
 >[!NOTE]
 >**Voorlopig verwijderen voor SQL Server in azure VM en voorlopig verwijderen voor SAP Hana in azure VM-workloads** is nu beschikbaar als preview-versie.<br>
@@ -52,17 +53,17 @@ Meer informatie over het gebruik van deze opties vindt u hieronder:
 
 #### <a name="private-endpoints"></a>Privé-eindpunten
 
-Met persoonlijke eind punten kunt u veilig verbinding maken met servers in een virtueel netwerk naar uw Recovery Services kluis. Het persoonlijke eind punt gebruikt een IP-adres van de VNET-Address ruimte voor uw kluis. Het netwerk verkeer tussen uw resources binnen het virtuele netwerk en de kluis wordt verplaatst naar het virtuele netwerk en een privé-koppeling in het micro soft backbone-netwerk. Dit elimineert de bloot stelling van het open bare Internet. Lees [hier](https://docs.microsoft.com/azure/backup/private-endpoints)meer over privé-eind punten voor Azure backup.
+Met persoonlijke eind punten kunt u veilig verbinding maken met servers in een virtueel netwerk naar uw Recovery Services kluis. Het persoonlijke eind punt gebruikt een IP-adres van de VNET-Address ruimte voor uw kluis. Het netwerk verkeer tussen uw resources binnen het virtuele netwerk en de kluis wordt verplaatst naar het virtuele netwerk en een privé-koppeling in het micro soft backbone-netwerk. Dit elimineert de bloot stelling van het open bare Internet. Lees [hier](./private-endpoints.md)meer over privé-eind punten voor Azure backup.
 
 #### <a name="nsg-tags"></a>NSG-Tags
 
-Als u netwerk beveiligings groepen (NSG) gebruikt, gebruikt u de *AzureBackup* -servicetag om uitgaande toegang tot Azure backup toe te staan. Naast het Azure Backup-label moet u ook connectiviteit voor verificatie en gegevens overdracht toestaan door soort gelijke [NSG regels](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) te maken voor *Azure AD* en *Azure Storage*.  In de volgende stappen wordt het proces beschreven voor het maken van een regel voor de Azure Backup-tag:
+Als u netwerk beveiligings groepen (NSG) gebruikt, gebruikt u de *AzureBackup* -servicetag om uitgaande toegang tot Azure backup toe te staan. Naast het Azure Backup-label moet u ook connectiviteit voor verificatie en gegevens overdracht toestaan door soort gelijke [NSG regels](../virtual-network/security-overview.md#service-tags) te maken voor *Azure AD* en *Azure Storage*.  In de volgende stappen wordt het proces beschreven voor het maken van een regel voor de Azure Backup-tag:
 
 1. In **Alle services** gaat u naar **Netwerkbeveiligingsgroepen** en selecteert u de netwerkbeveiligingsgroep.
 
 1. Selecteer de optie **Uitgaande beveiligingsregels** onder **Instellingen**.
 
-1. Selecteer **Toevoegen**. Voer alle vereiste details in voor het maken van een nieuwe regel, zoals beschreven in de [instellingen voor beveiligingsregels](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings). Zorg ervoor dat de optie **bestemming** is ingesteld op *service label* en **doel service label** is ingesteld op *AzureBackup*.
+1. Selecteer **Toevoegen**. Voer alle vereiste details in voor het maken van een nieuwe regel, zoals beschreven in de [instellingen voor beveiligingsregels](../virtual-network/manage-network-security-group.md#security-rule-settings). Zorg ervoor dat de optie **bestemming** is ingesteld op *service label* en **doel service label** is ingesteld op *AzureBackup*.
 
 1. Klik op **toevoegen** om de zojuist gemaakte uitgaande beveiligings regel op te slaan.
 
@@ -70,7 +71,7 @@ U kunt ook NSG uitgaande beveiligings regels maken voor Azure Storage en Azure A
 
 #### <a name="azure-firewall-tags"></a>Azure Firewall Tags
 
-Als u Azure Firewall gebruikt, maakt u een toepassings regel met behulp van de *AzureBackup* [Azure firewall FQDN-tag](https://docs.microsoft.com/azure/firewall/fqdn-tags). Hiermee wordt alle uitgaande toegang tot Azure Backup.
+Als u Azure Firewall gebruikt, maakt u een toepassings regel met behulp van de *AzureBackup* [Azure firewall FQDN-tag](../firewall/fqdn-tags.md). Hiermee wordt alle uitgaande toegang tot Azure Backup.
 
 #### <a name="allow-access-to-service-ip-ranges"></a>Toegang tot de service-IP-adresbereiken toestaan
 
@@ -84,7 +85,7 @@ U kunt ook de volgende FQDN-namen gebruiken om toegang te verlenen tot de vereis
 | -------------- | ------------------------------------------------------------ |
 | Azure Backup  | `*.backup.windowsazure.com`                             |
 | Azure Storage | `*.blob.core.windows.net` <br><br> `*.queue.core.windows.net` |
-| Azure AD      | Toegang tot FQDN-gebieden onder de secties 56 en 59 toestaan volgens [dit artikel](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online) |
+| Azure AD      | Toegang tot FQDN-gebieden onder de secties 56 en 59 toestaan volgens [dit artikel](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online) |
 
 #### <a name="use-an-http-proxy-server-to-route-traffic"></a>Een HTTP-proxy server gebruiken om verkeer te routeren
 
@@ -172,7 +173,7 @@ Geef als volgt de beleidsinstellingen op:
 
 7. Klik op **OK** om het beleid op te slaan en terug te gaan naar het hoofdmenu **Back-upbeleid**.
 8. Selecteer **Logboekback-up** als u een back-upbeleid voor een transactielogboek wilt toevoegen;
-    * Selecteer in **logboek back-up**de optie **inschakelen**.  Dit kan niet worden uitgeschakeld omdat SAP HANA alle logboekback-ups beheert.
+    * Selecteer in **logboek back-up**de optie **inschakelen**.  Dit kan niet worden uitgeschakeld omdat SAP HANA alle logboek back-ups beheert.
     * Stel de besturings elementen voor de frequentie en de retentie in.
 
     > [!NOTE]
@@ -198,17 +199,19 @@ Back-ups worden uitgevoerd volgens het beleids schema. U kunt als volgt een back
 Ga als volgt te werk als u een lokale back-up wilt maken (met behulp van HANA Studio) van een Data Base waarvan een back-up wordt gemaakt met Azure Backup:
 
 1. Wacht totdat alle volledige of logboek back-ups voor de Data Base zijn voltooid. Controleer de status in SAP HANA Studio/cockpit.
-2. Schakel logboek back-ups uit en stel de back-catalogus in op het bestands systeem voor de relevante data base.
-3. U doet dit door te dubbel klikken op **SystemDB**-  >  **configuratie**  >  **database**  >  **filter (logboek)**.
-4. Stel **enable_auto_log_backup** in op **Nee**.
-5. Stel **log_backup_using_backint** in op **False**.
-6. Maak een volledige back-up op aanvraag van de data base.
-7. Wacht tot de volledige back-up en catalogus back-up zijn voltooid.
-8. De vorige instellingen herstellen voor Azure:
+1. Schakel logboek back-ups uit en stel de back-catalogus in op het bestands systeem voor de relevante data base.
+1. U doet dit door te dubbel klikken op **SystemDB**-  >  **configuratie**  >  **database**  >  **filter (logboek)**.
+1. Stel **enable_auto_log_backup** in op **Nee**.
+1. Stel **log_backup_using_backint** in op **False**.
+1. Stel **catalog_backup_using_backint** in op **False**.
+1. Maak een volledige back-up op aanvraag van de data base.
+1. Wacht tot de volledige back-up en catalogus back-up zijn voltooid.
+1. De vorige instellingen herstellen voor Azure:
     * Stel **enable_auto_log_backup** in op **Ja**.
     * Stel **log_backup_using_backint** in op **waar**.
+    * Stel **catalog_backup_using_backint** in op **waar**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [het herstellen van SAP HANA-databases die worden uitgevoerd op virtuele Azure-machines](https://docs.microsoft.com/azure/backup/sap-hana-db-restore)
-* Meer informatie over het [beheren van SAP Hana databases waarvan een back-up is gemaakt met behulp van Azure backup](https://docs.microsoft.com/azure/backup/sap-hana-db-manage)
+* Meer informatie over [het herstellen van SAP HANA-databases die worden uitgevoerd op virtuele Azure-machines](./sap-hana-db-restore.md)
+* Meer informatie over het [beheren van SAP Hana databases waarvan een back-up is gemaakt met behulp van Azure backup](./sap-hana-db-manage.md)

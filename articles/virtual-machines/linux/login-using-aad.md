@@ -7,12 +7,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: iainfou
-ms.openlocfilehash: 2731693667d2129a72da72455c6bbdd74c277697
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5275a979cbffe7fb6600978487454ac11cd2002
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80366483"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510426"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Voor beeld: Meld u aan bij een virtuele Linux-machine in azure met Azure Active Directory-verificatie
 
@@ -109,7 +109,7 @@ az vm extension set \
     --vm-name myVM
 ```
 
-De *provisioningState* van *geslaagd* wordt weer gegeven zodra de uitbrei ding is geïnstalleerd op de virtuele machine. De VM moet een actieve VM-agent hebben om de uitbrei ding te installeren. Zie overzicht van VM- [agent](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)voor meer informatie.
+De *provisioningState* van *geslaagd* wordt weer gegeven zodra de uitbrei ding is geïnstalleerd op de virtuele machine. De VM moet een actieve VM-agent hebben om de uitbrei ding te installeren. Zie overzicht van VM- [agent](../extensions/agent-windows.md)voor meer informatie.
 
 ## <a name="configure-role-assignments-for-the-vm"></a>Roltoewijzingen voor de virtuele machine configureren
 
@@ -138,7 +138,7 @@ az role assignment create \
 
 Zie Using the [Azure cli](../../role-based-access-control/role-assignments-cli.md), [Azure Portal](../../role-based-access-control/role-assignments-portal.md)of [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)voor meer informatie over het gebruik van RBAC om de toegang tot uw Azure-abonnements resources te beheren.
 
-U kunt Azure AD ook zo configureren dat multi-factor Authentication is vereist voor een specifieke gebruiker om zich aan te melden bij de virtuele Linux-machine. Zie [aan de slag met Azure multi-factor Authentication in de Cloud](../../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md)voor meer informatie.
+U kunt Azure AD ook zo configureren dat multi-factor Authentication is vereist voor een specifieke gebruiker om zich aan te melden bij de virtuele Linux-machine. Zie [aan de slag met Azure multi-factor Authentication in de Cloud](../../active-directory/authentication/howto-mfa-getstarted.md)voor meer informatie.
 
 ## <a name="log-in-to-the-linux-virtual-machine"></a>Meld u aan bij de virtuele Linux-machine
 

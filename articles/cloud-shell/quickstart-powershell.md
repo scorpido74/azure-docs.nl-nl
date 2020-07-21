@@ -9,11 +9,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/18/2018
-ms.openlocfilehash: 72261989b7cee9d2251eb18b36431ec807b0e874
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b50922d129fb4c72db1d6077a49c4d1309d5fe55
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84686015"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512976"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Snelstartgids voor Power shell in Azure Cloud Shell
 
@@ -26,11 +27,11 @@ Dit document bevat informatie over het gebruik van Power shell in Cloud Shell in
 
 1. Klik op **Cloud shell** knop in de bovenste navigatie balk van de Azure Portal
 
-   ![](media/quickstart-powershell/shell-icon.png)
+   ![Scherm afbeelding die laat zien hoe u Azure Cloud Shell start vanuit de Azure Portal.](media/quickstart-powershell/shell-icon.png)
 
 2. Selecteer de Power shell-omgeving in de vervolg keuzelijst en u zich in azure Drive bevindt`(Azure:)`
 
-   ![](media/quickstart-powershell/environment-ps.png)
+   ![Scherm afbeelding die laat zien hoe u de Power shell-omgeving voor de Azure Cloud Shell selecteert.](media/quickstart-powershell/environment-ps.png)
 
 ## <a name="run-powershell-commands"></a>Power shell-opdrachten uitvoeren
 

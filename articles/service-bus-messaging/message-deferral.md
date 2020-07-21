@@ -3,12 +3,13 @@ title: Azure Service Bus-uitstel van berichten
 description: In dit artikel wordt uitgelegd hoe u de bezorging van Azure Service Bus berichten uitstelt. Het bericht blijft aanwezig in de wachtrij of het abonnement, maar wordt nog niet verwerkt.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: f4fe231c56a1bcdea4f15de90cb0e9406f0284a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 7c9ec55de24c97df3530d80deef55ed87be84077
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341226"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511276"
 ---
 # <a name="message-deferral"></a>Berichten uitstellen
 
@@ -19,6 +20,9 @@ Uitstel is een functie die specifiek is gemaakt voor werk stroom verwerkings sce
 Een eenvoudig voor beeld is een verwerkings volgorde voor orders waarbij een betalings melding van een externe betalings provider wordt weer gegeven in een systeem voordat de overeenkomende aankoop order is door gegeven van de winkel naar het fulfillment-systeem. In dat geval kan het fulfillment-systeem de verwerking van de betalings melding uitstellen totdat er een order is waarmee deze kan worden gekoppeld. In de scenario's van rendez, waar berichten van verschillende bronnen een werk stroom sturen, is het mogelijk dat de volg orde voor het uitvoeren van realtime juist is, maar de berichten die de resultaten weer spie gelen, kunnen in de juiste volg orde arriveren.
 
 Uiteindelijk worden hulp middelen voor uitstel bij het opnieuw ordenen van berichten van de aankomst order omgezet in een volg orde waarin ze kunnen worden verwerkt, terwijl deze berichten veilig in het berichten archief worden bewaard waarvoor de verwerking moet worden uitgesteld.
+
+> [!NOTE]
+> Uitgestelde berichten worden niet automatisch verplaatst naar de wachtrij met onbestelbare meldingen [nadat deze zijn verlopen](./service-bus-dead-letter-queues.md#exceeding-timetolive). Dit gedrag is zo ontworpen.
 
 ## <a name="message-deferral-apis"></a>Api's voor uitstel van berichten
 

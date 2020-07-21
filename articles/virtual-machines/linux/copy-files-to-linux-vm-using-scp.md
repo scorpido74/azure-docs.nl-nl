@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.date: 07/12/2017
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 531edf5bb857b570e595fc1a179a887013e094f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f56118750fc980c249c88b796728f4ecb2641a88
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84659767"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510953"
 ---
 # <a name="move-files-to-and-from-a-linux-vm-using-scp"></a>Bestanden verplaatsen van en naar een virtuele Linux-machine met behulp van SCP
 
@@ -68,4 +69,4 @@ De `-r` vlag geeft SCP de opdracht om de bestanden en mappen recursief te kopië
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Beheer van de VMAccess-extensie voor het beheren van gebruikers, SSH en het controleren of herstellen van schijven op virtuele machines met Azure Linux](using-vmaccess-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Beheer van de VMAccess-extensie voor het beheren van gebruikers, SSH en het controleren of herstellen van schijven op virtuele machines met Azure Linux](../extensions/vmaccess.md?toc=/azure/virtual-machines/linux/toc.json)

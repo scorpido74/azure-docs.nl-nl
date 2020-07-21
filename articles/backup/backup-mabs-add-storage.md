@@ -3,11 +3,12 @@ title: Modern Backup Storage gebruiken met Azure Backup Server
 description: Meer informatie over de nieuwe functies in Azure Backup Server. In dit artikel wordt beschreven hoe u de installatie van de back-upserver bijwerkt.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: c6346d7b0275a00271c1787b378a63b8365edf2d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ee55355b0f2cabe97f5d2a838edcbd5cfddf44e6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74172377"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513707"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Opslag toevoegen aan Azure Backup Server
 
@@ -17,7 +18,7 @@ Azure Backup Server v2 en hoger ondersteunt Modern Backup Storage die opslag bes
 > Als u Modern Backup Storage wilt gebruiken, moet u back-upserver v2 of v3 uitvoeren op Windows Server 2016 of v3 op Windows Server 2019.
 > Als u back-upserver v2 uitvoert op een eerdere versie van Windows Server, kan Azure Backup Server niet profiteren van Modern Backup Storage. In plaats daarvan beveiligt de werk belasting zoals bij back-upserver v1. Zie voor meer informatie de matrix van de back-upserver versie [beveiliging](backup-mabs-protection-matrix.md).
 >
-> Om verbeterde back-upprestaties te bieden, raden we u aan om MABS v3 te implementeren met gelaagde opslag op Windows Server 2019. Raadpleeg het DPM-artikel '[MBS met tiered Storage instellen](https://docs.microsoft.com/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage)' voor de stappen voor het configureren van gelaagde opslag.
+> Om verbeterde back-upprestaties te bieden, raden we u aan om MABS v3 te implementeren met gelaagde opslag op Windows Server 2019. Raadpleeg het DPM-artikel '[MBS met tiered Storage instellen](/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage)' voor de stappen voor het configureren van gelaagde opslag.
 
 ## <a name="volumes-in-backup-server"></a>Volumes in back-upserver
 
@@ -102,13 +103,13 @@ Het bijwerken van beveiligingsgroepen voor het gebruik van Modern Backup Storage
 
 1. Selecteer in de Administrator-console de functie **beveiliging** . Klik in de lijst **lid van beveiligings groep** met de rechter muisknop op het lid en selecteer vervolgens **beveiliging van lid stoppen**.
 
-   ![Beveiliging van lid stoppen](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
+   ![Beveiliging van lid stoppen](/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
 
 2. Bekijk in het dialoog venster **verwijderen uit groep** de gebruikte schijf ruimte en de beschik bare vrije ruimte voor de opslag groep. Standaard worden de herstelpunten op de schijf gelaten, zodat ze verlopen volgens het bijbehorende bewaarbeleid. Klik op **OK**.
 
    Als u de gebruikte schijf ruimte onmiddellijk wilt retour neren naar de groep met beschik bare opslag, schakelt u het selectie vakje **replica op schijf verwijderen** in om de back-upgegevens (en herstel punten) te verwijderen die aan dat lid zijn gekoppeld.
 
-   ![Verwijderen uit het dialoog venster groep](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
+   ![Verwijderen uit het dialoog venster groep](/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
 
 3. Maak een beveiligings groep die gebruikmaakt van Modern Backup Storage. Neem de niet-beveiligde gegevens bronnen op.
 
@@ -120,7 +121,7 @@ Schijfopslag toevoegen:
 
 1. Selecteer **beheer**  >  **Disk Storage**  >  **toevoegen**in de Administrator-console.
 
-    ![Dialoog venster Disk Storage toevoegen](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
+    ![Dialoog venster Disk Storage toevoegen](/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
 
 2. Selecteer in het dialoog venster **Disk Storage toevoegen** de optie **schijven toevoegen**.
 

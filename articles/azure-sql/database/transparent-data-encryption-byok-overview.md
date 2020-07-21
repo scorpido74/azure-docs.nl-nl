@@ -12,14 +12,14 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 32347f6d943565eeca7c37a9cdd2cf511e39ddb3
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 507253fcddddf7331ff51c71904c2cdd8e7e5dfd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985306"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514715"
 ---
-# <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL Transparent Data Encryption met door de klant beheerde sleutel
+# <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL Transparent Data Encryption met door de klant beheerde sleutels
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Azure SQL [transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) met door de klant beheerde sleutel maakt het Bring your own Key-scenario (BYOK) mogelijk voor gegevens bescherming in rust en stelt organisaties in staat om schei ding van taken in het beheer van sleutels en gegevens te implementeren. Met door de klant beheerde transparante gegevens versleuteling is de klant verantwoordelijk voor en in een volledig beheer van een belang rijke levenscyclus beheer (het maken van sleutels, uploaden, draaien, verwijderen), machtigingen voor sleutel gebruik en het controleren van bewerkingen op sleutels.
@@ -62,7 +62,7 @@ Om de server in staat te stellen TDE-beveiliging te gebruiken die is opgeslagen 
 
 - **sleutel uitpakken** : voor het opheffen van de beveiliging (ontsleutelen) dek
 
-De sleutel kluis beheerder kan ook [logboek registratie inschakelen voor gebeurtenissen van sleutel kluis controle](../../azure-monitor/insights/azure-key-vault.md), zodat ze later kunnen worden gecontroleerd.
+De sleutel kluis beheerder kan ook [logboek registratie inschakelen voor gebeurtenissen van sleutel kluis controle](../../azure-monitor/insights/key-vault-insights-overview.md), zodat ze later kunnen worden gecontroleerd.
 
 Wanneer de server is geconfigureerd voor het gebruik van een TDE-Protector van Azure, stuurt de server de DEK van elke TDE-Data Base naar de sleutel kluis voor versleuteling. Sleutel kluis retourneert de versleutelde DEK, die vervolgens wordt opgeslagen in de gebruikers database.
 

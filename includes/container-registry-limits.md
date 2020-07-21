@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/18/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 643cf8fd400adf06bf61f070947bd78ba7be50eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3f68ca0fc577e6cf3f896ede0418f11f59756701
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85242077"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512607"
 ---
 | Resource | Basic | Standard | Premium |
 |---|---|---|---|
@@ -28,6 +28,7 @@ ms.locfileid: "85242077"
 | Geo-replicatie | N.v.t. | N.v.t. | [Ondersteund][geo-replication] |
 | Inhoud vertrouwen | N.v.t. | N.v.t. | [Ondersteund][content-trust] |
 | Persoonlijke koppeling met persoonlijke eind punten | N.v.t. | N.v.t. | [Ondersteund][plink] |
+| &bull;Privé-eind punten | N.v.t. | N.v.t. | 10 |
 | Toegang tot de service Endpoint VNet | N.v.t. | N.v.t. | [Preview][vnet] |
 | Door klant beheerde sleutels | N.v.t. | N.v.t. | [Ondersteund][cmk] |
 | Machtigingen voor opslag plaatsen-scoped | N.v.t. | N.v.t. | [Preview][token]|

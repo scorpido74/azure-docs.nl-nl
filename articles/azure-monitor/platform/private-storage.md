@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/20/2020
-ms.openlocfilehash: 05eb92e2fb887b5c64e2c73576fe85a4543ac1b7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: da9ec0fc421f0cb2f2a1e6fa65d8c936cfd5a3c7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184494"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515424"
 ---
 # <a name="customer-owned-storage-accounts-for-log-ingestion-in-azure-monitor"></a>Opslag accounts die eigendom zijn van de klant voor logboek opname in Azure Monitor
 
-Azure Monitor gebruikt opslag accounts in het opname proces van sommige gegevens typen, zoals [aangepaste logboeken](data-sources-custom-logs.md) en bepaalde [Azure-logboeken](azure-storage-iis-table.md). Tijdens het opname proces worden logboeken eerst verzonden naar een opslag account en later opgenomen in Log Analytics of Application Insights. Als u de controle over uw gegevens tijdens opname wilt, kunt u uw eigen opslag accounts gebruiken in plaats van de door de service beheerde opslag. Met uw eigen opslag account hebt u controle over de toegang, inhoud, versleuteling en behoud van de logboeken tijdens opname. We verwijzen naar dit als uw eigen opslag of BYOS. 
+Azure Monitor gebruikt opslag accounts in het opname proces van sommige gegevens typen, zoals [aangepaste logboeken](data-sources-custom-logs.md) en bepaalde [Azure-logboeken](./diagnostics-extension-logs.md). Tijdens het opname proces worden logboeken eerst verzonden naar een opslag account en later opgenomen in Log Analytics of Application Insights. Als u de controle over uw gegevens tijdens opname wilt, kunt u uw eigen opslag accounts gebruiken in plaats van de door de service beheerde opslag. Met uw eigen opslag account hebt u controle over de toegang, inhoud, versleuteling en behoud van de logboeken tijdens opname. We verwijzen naar dit als uw eigen opslag of BYOS. 
 
 Een scenario dat BYOS vereist, is netwerk isolatie via persoonlijke koppelingen. Wanneer u een VNet gebruikt, is netwerk isolatie vaak een vereiste en is toegang tot het open bare Internet beperkt. In dergelijke gevallen is het openen van Azure Monitor-service opslag voor logboek opname volledig geblokkeerd of als een onjuiste procedure beschouwd. In plaats daarvan moeten de logboeken worden opgenomen via een opslag account van de klant in het VNet of eenvoudig toegankelijk zijn.
 
@@ -23,7 +23,7 @@ Een ander scenario is het versleutelen van logboeken met door de klant beheerde 
 
 ## <a name="data-types-supported"></a>Ondersteunde gegevens typen
 
-De volgende gegevens typen van een opslag account worden opgenomen. Zie [gegevens verzamelen van Azure Diagnostics-extensie voor Azure monitor-logboeken](azure-storage-iis-table.md) voor meer informatie over de opname van deze typen.
+De volgende gegevens typen van een opslag account worden opgenomen. Zie [gegevens verzamelen van Azure Diagnostics-extensie voor Azure monitor-logboeken](./diagnostics-extension-logs.md) voor meer informatie over de opname van deze typen.
 
 | Type | Tabel gegevens |
 |:-----|:------------------|
@@ -54,7 +54,7 @@ De enige beschik bare methode voor het maken en verwijderen van koppelingen vind
 ## <a name="command-line-and-rest-api"></a>Opdracht regel en REST API
 
 ### <a name="command-line"></a>Opdrachtregel
-Als u gekoppelde opslag accounts wilt maken en beheren, gebruikt u [AZ monitor log-Analytics Workspace linked-Storage](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace/linked-storage). Met deze opdracht kunt u opslag accounts koppelen en ontkoppelen van een werk ruimte en de gekoppelde opslag accounts weer geven.
+Als u gekoppelde opslag accounts wilt maken en beheren, gebruikt u [AZ monitor log-Analytics Workspace linked-Storage](/cli/azure/monitor/log-analytics/workspace/linked-storage). Met deze opdracht kunt u opslag accounts koppelen en ontkoppelen van een werk ruimte en de gekoppelde opslag accounts weer geven.
 
 ### <a name="request-and-cli-values"></a>Aanvraag-en CLI-waarden
 

@@ -8,29 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 07/14/2020
 ms.author: aahi
-ms.openlocfilehash: acba4d9fab784181fda5728c30831c8c1838b91f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: de81fcb5ee62f9b295c93132b271507c040af46a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80879527"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512760"
 ---
 # <a name="deploy-the-form-recognizer-container-to-azure-container-instances"></a>De formulier Recognizer-container implementeren naar Azure Container Instances
 
+[!INCLUDE [Form Recognizer containers limit](includes/container-limit.md)]
+
 Meer informatie over het implementeren van de Cognitive Services [Form Recognizer](form-recognizer-container-howto.md) -container naar Azure [container instances](https://docs.microsoft.com/azure/container-instances/). Met deze procedure wordt het maken van een Azure Form Recognizer-resource gedemonstreerd. Vervolgens bespreken we het verzamelen van de bijbehorende container installatie kopie. Ten slotte markeren we de mogelijkheid om de indeling van de twee uit een browser uit te oefenen. Door gebruik te maken van containers kan de aandacht van de ontwikkel aars van de infra structuur afnemen in plaats van de ontwikkeling van toepassingen te richten.
 
-> [!IMPORTANT]
-> De Form Recognizer-containers gebruiken momenteel versie 1,0 van de API voor formulier herkenning. U kunt in plaats daarvan de meest recente versie van de API openen met behulp van de beheerde service.
-
 [!INCLUDE [Prerequisites](../containers/includes/container-preview-prerequisites.md)]
-
-## <a name="request-access-to-the-container-registry"></a>Toegang aanvragen tot het container register
-
-U moet eerst het [formulier toegangs aanvraag voor de Cognitive Services Form Recognizer containers](https://aka.ms/FormRecognizerContainerRequestAccess) volt ooien en verzenden om toegang tot de container aan te vragen. Als u dit doet, wordt u ook gemeldd voor Computer Vision. U hoeft zich niet te registreren voor het Computer Vision aanvraag formulier afzonderlijk. 
-
-[!INCLUDE [Request access](../../../includes/cognitive-services-containers-request-access-only.md)]
 
 [!INCLUDE [Create a Cognitive Services Form Recognizer resource](includes/create-resource.md)]
 

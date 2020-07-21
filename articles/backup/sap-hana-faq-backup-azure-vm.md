@@ -3,12 +3,12 @@ title: Veelgestelde vragen over back-ups maken van SAP HANA-databases in virtuel
 description: In dit artikel vindt u antwoorden op veelgestelde vragen over het maken van back-ups van SAP HANA-data bases met behulp van de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 512075a24cf9400415f2367ead16b57f8b31c038
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: dcbf1bf6b39b2afa3fb5aaf2a7f18c5d0e8e4afb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170323"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513503"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Veelgestelde vragen: back-ups maken van SAP HANA-data bases op virtuele Azure-machines
 
@@ -22,11 +22,11 @@ Er wordt slechts één volledige back-up per dag ondersteund. U kunt geen differ
 
 ### <a name="do-successful-backup-jobs-create-alerts"></a>Maken succesvolle back-uptaken waarschuwingen?
 
-Nee. Succesvolle back-uptaken maken geen waarschuwingen. Er worden alleen waarschuwingen verzonden voor mislukte back-uptaken. Gedetailleerd gedrag voor portal waarschuwingen wordt [hier](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor)beschreven. Als u echter geïnteresseerd bent over waarschuwingen, zelfs voor geslaagde taken, kunt u [Azure monitor](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor)gebruiken.
+Nee. Succesvolle back-uptaken maken geen waarschuwingen. Er worden alleen waarschuwingen verzonden voor mislukte back-uptaken. Gedetailleerd gedrag voor portal waarschuwingen wordt [hier](./backup-azure-monitoring-built-in-monitor.md)beschreven. Als u echter geïnteresseerd bent over waarschuwingen, zelfs voor geslaagde taken, kunt u [Azure monitor](./backup-azure-monitoring-use-azuremonitor.md)gebruiken.
 
 ### <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>Kan ik geplande back-uptaken weer geven in het menu back-uptaken?
 
-In het menu back-uptaak worden alleen ad-hoc back-uptaken weer gegeven. Gebruik [Azure monitor](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor)voor geplande taken.
+In het menu back-uptaak worden alleen ad-hoc back-uptaken weer gegeven. Gebruik [Azure monitor](./backup-azure-monitoring-use-azuremonitor.md)voor geplande taken.
 
 ### <a name="are-future-databases-automatically-added-for-backup"></a>Worden toekomstige databases automatisch voor back-ups toegevoegd?
 
@@ -51,7 +51,7 @@ Als u het script voor voorafgaande registratie uitvoert, worden de vereiste mach
 
 ### <a name="will-backups-work-after-migrating-sap-hana-from-sdc-to-mdc"></a>Werkt back-ups nadat SAP HANA van dit SDC naar MDC zijn gemigreerd?
 
-Raadpleeg [deze sectie](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#sdc-to-mdc-upgrade-with-a-change-in-sid) van de hand leiding voor het oplossen van problemen.
+Raadpleeg [deze sectie](./backup-azure-sap-hana-database-troubleshoot.md#sdc-to-mdc-upgrade-with-a-change-in-sid) van de hand leiding voor het oplossen van problemen.
 
 ### <a name="can-azure-hana-backup-be-set-up-against-a-virtual-ip-load-balancer-and-not-a-virtual-machine"></a>Kan Azure HANA-back-ups worden ingesteld voor een virtueel IP-adres (load balancer) en niet op een virtuele machine?
 
@@ -111,7 +111,7 @@ Vervolgens wordt de volledige back-up opnieuw geactiveerd op het knoop punt 1 en
 
 ### <a name="why-cant-i-see-the-hana-system-i-want-my-database-to-be-restored-to"></a>Waarom kan ik het HANA-systeem waarin ik mijn data base wil herstellen niet zien?
 
-Controleer of aan alle vereisten voor het terugzetten naar het doel SAP HANA exemplaar wordt voldaan. Zie voor meer informatie [vereisten: Restore SAP Hana data bases in azure VM](https://docs.microsoft.com/azure/backup/sap-hana-db-restore#prerequisites).
+Controleer of aan alle vereisten voor het terugzetten naar het doel SAP HANA exemplaar wordt voldaan. Zie voor meer informatie [vereisten: Restore SAP Hana data bases in azure VM](./sap-hana-db-restore.md#prerequisites).
 
 ### <a name="why-is-the-overwrite-db-restore-failing-for-my-database"></a>Waarom wordt het terugzetten van de overschrijvings database mislukt voor mijn data base?
 
@@ -127,4 +127,4 @@ Ja, u kunt streaming-back-ups die zijn geactiveerd in een HANA-data base die wor
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het maken van een back-up van [SAP Hana-data bases](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database) die worden uitgevoerd op Azure
+Meer informatie over het maken van een back-up van [SAP Hana-data bases](./backup-azure-sap-hana-database.md) die worden uitgevoerd op Azure

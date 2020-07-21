@@ -4,11 +4,12 @@ description: In dit artikel vindt u informatie over het oplossen van problemen m
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: 28647b72334d592692c5fe1b031735330d1a0509
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e588ce4e3458634be32a7129b40906c98fc02ac0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78969579"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513842"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Problemen met de systeem status back-up oplossen
 
@@ -19,11 +20,11 @@ In dit artikel worden oplossingen beschreven voor problemen die kunnen optreden 
 U wordt aangeraden de onderstaande validatie uit te voeren voordat u begint met het oplossen van problemen met de systeem status back-up:
 
 - [Controleren of de MARS-agent (Microsoft Azure Recovery Services) up-to-date is](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
-- [Zorg ervoor dat er netwerkverbinding is tussen de MARS-agent en Azure](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
+- [Zorg ervoor dat er netwerkverbinding is tussen de MARS-agent en Azure](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
 - Controleer of Microsoft Azure Recovery Services wordt uitgevoerd (in Service-console). Start indien nodig opnieuw op en voer de bewerking opnieuw uit
-- [Zorg ervoor dat er 5-10% ruimte vrij is op de locatie van de scratch-map](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#whats-the-minimum-size-requirement-for-the-cache-folder)
-- [Controleer of er geen ander proces of antivirussoftware conflicten veroorzaakt met Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup)
-- [Geplande back-up mislukt, maar handmatige back-up werkt](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#backups-dont-run-according-to-schedule)
+- [Zorg ervoor dat er 5-10% ruimte vrij is op de locatie van de scratch-map](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
+- [Controleer of er geen ander proces of antivirussoftware conflicten veroorzaakt met Azure Backup](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)
+- [Geplande back-up mislukt, maar handmatige back-up werkt](./backup-azure-mars-troubleshoot.md#backups-dont-run-according-to-schedule)
 - Zorg ervoor dat uw besturingssysteem helemaal is bijgewerkt
 - [Zorg ervoor dat niet-ondersteunde stations en bestanden met niet-ondersteunde kenmerken worden uitgesloten van een back-up](backup-support-matrix-mars-agent.md#supported-drives-or-volumes-for-backup)
 - Zorg ervoor dat de **systeem klok** op het beveiligde systeem is geconfigureerd om tijd zone te corrigeren <br>
@@ -32,7 +33,7 @@ U wordt aangeraden de onderstaande validatie uit te voeren voordat u begint met 
   - Controleer of de agent op de server is verwijderd en of deze uit de portal is gewist <br>
   - Dezelfde wachtwoordzin gebruiken die in eerste instantie is gebruikt voor het registreren van de server <br>
 - Als dit een offline back-up is, controleert u of Azure PowerShell versie 3.7.0 is geïnstalleerd op zowel de bron-als de Kopieer computer voordat u een offline back-upbewerking start
-- [Overweging wanneer back-upagent wordt uitgevoerd op een virtuele machine van Azure](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-backup-agent-running-on-an-azure-virtual-machine)
+- [Overweging wanneer back-upagent wordt uitgevoerd op een virtuele machine van Azure](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-backup-agent-running-on-an-azure-virtual-machine)
 
 ### <a name="limitation"></a>Beperking
 
@@ -91,7 +92,7 @@ Zorg ervoor dat het lokale systeem volledig beheer heeft over de map **systeem v
 
 Zorg ervoor dat de onderstaande services worden uitgevoerd:
 
-**Service naam** | **Opstart type**
+**Servicenaam** | **Opstart type**
 --- | ---
 Externe procedure aanroep (RPC) | Automatisch
 COM+-gebeurtenis systeem (Event System) | Automatisch
@@ -136,7 +137,7 @@ Als de taak mislukt, wordt een WSB-probleem aangegeven dat kan leiden tot storin
 
 | Symptoom | Oplossing
 | -- | --
-| -MARS-agent mislukt met fout bericht: de back-up is mislukt omdat het schaduw kopie volume niet kan worden verg root vanwege onvoldoende schijf ruimte op volumes met systeem bestanden <br/><br/> -Het volgende fout/waarschuwings logboek is aanwezig in de logboeken met betrekking tot systeem gebeurtenissen: ' er is onvoldoende schijf ruimte op het volume C: voor het verg Roten van de schaduw kopie opslag voor schaduw kopieën van C: vanwege deze fout zijn alle schaduw kopieën van volume C: risico dat ze worden verwijderd. | -Maak ruimte vrij in het gemarkeerde volume in het gebeurtenis logboek, zodat er voldoende ruimte is voor het uitbreiden van schaduw kopieën terwijl de back-up wordt uitgevoerd <br/><br/> -Tijdens het configureren van de schaduw kopie ruimte kunnen we de hoeveelheid ruimte beperken die wordt gebruikt voor de schaduw kopie. Raadpleeg dit [artikel](https://docs.microsoft.com/windows-server/administration/windows-commands/vssadmin-resize-shadowstorage) voor meer informatie
+| -MARS-agent mislukt met fout bericht: de back-up is mislukt omdat het schaduw kopie volume niet kan worden verg root vanwege onvoldoende schijf ruimte op volumes met systeem bestanden <br/><br/> -Het volgende fout/waarschuwings logboek is aanwezig in de logboeken met betrekking tot systeem gebeurtenissen: ' er is onvoldoende schijf ruimte op het volume C: voor het verg Roten van de schaduw kopie opslag voor schaduw kopieën van C: vanwege deze fout zijn alle schaduw kopieën van volume C: risico dat ze worden verwijderd. | -Maak ruimte vrij in het gemarkeerde volume in het gebeurtenis logboek, zodat er voldoende ruimte is voor het uitbreiden van schaduw kopieën terwijl de back-up wordt uitgevoerd <br/><br/> -Tijdens het configureren van de schaduw kopie ruimte kunnen we de hoeveelheid ruimte beperken die wordt gebruikt voor de schaduw kopie. Raadpleeg dit [artikel](/windows-server/administration/windows-commands/vssadmin-resize-shadowstorage) voor meer informatie
 
 ### <a name="efi-partition-locked"></a>EFI-partitie is vergrendeld
 

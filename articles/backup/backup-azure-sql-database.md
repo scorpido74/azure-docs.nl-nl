@@ -3,11 +3,12 @@ title: Een back-up van SQL Server-databases maken in Azure
 description: In dit artikel wordt uitgelegd hoe u een back-up maakt van SQL Server naar Azure. In het artikel wordt ook uitgelegd hoe u SQL Server kunt herstellen.
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: e0a555125e50a974ae51a08d7870cdc3ec12fd39
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: df8543d7f083dd2bf9d2421b4808de5b60a51e30
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84021089"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513775"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Over SQL Server-back-ups in virtuele Azure-machines
 
@@ -26,7 +27,7 @@ Deze oplossing maakt gebruik van de SQL Native Api's om back-ups te maken van uw
 
 * Wanneer u de SQL Server virtuele machine hebt opgegeven die u wilt beveiligen en query's wilt uitvoeren voor de data bases erin, Azure Backup service een back-upextensie voor werk belasting op de VM installeren door de extensie `AzureBackupWindowsWorkload` .
 * Deze uitbrei ding bestaat uit een coördinator en een SQL-invoeg toepassing. Hoewel de coördinator verantwoordelijk is voor het activeren van werk stromen voor verschillende bewerkingen, zoals het configureren van back-ups, back-ups maken en herstellen, is de invoeg toepassing verantwoordelijk voor de werkelijke gegevens stroom.
-* Om data bases op deze VM te kunnen detecteren, maakt Azure Backup het account `NT SERVICE\AzureWLBackupPluginSvc` . Dit account wordt gebruikt voor back-up en herstel en vereist SQL sysadmin-machtigingen. Het `NT SERVICE\AzureWLBackupPluginSvc` account is een [virtueel service account](https://docs.microsoft.com/windows/security/identity-protection/access-control/service-accounts#virtual-accounts)en vereist daarom geen wachtwoord beheer. Azure Backup `NT AUTHORITY\SYSTEM` maakt gebruik van het account voor database detectie/-informatie, zodat dit account een open bare aanmelding voor SQL moet zijn. Als u de SQL Server-VM niet hebt gemaakt vanuit de Azure Marketplace, ontvangt u mogelijk het foutbericht **UserErrorSQLNoSysadminMembership**. Volg in dit geval [deze instructies](#set-vm-permissions).
+* Om data bases op deze VM te kunnen detecteren, maakt Azure Backup het account `NT SERVICE\AzureWLBackupPluginSvc` . Dit account wordt gebruikt voor back-up en herstel en vereist SQL sysadmin-machtigingen. Het `NT SERVICE\AzureWLBackupPluginSvc` account is een [virtueel service account](/windows/security/identity-protection/access-control/service-accounts#virtual-accounts)en vereist daarom geen wachtwoord beheer. Azure Backup `NT AUTHORITY\SYSTEM` maakt gebruik van het account voor database detectie/-informatie, zodat dit account een open bare aanmelding voor SQL moet zijn. Als u de SQL Server-VM niet hebt gemaakt vanuit de Azure Marketplace, ontvangt u mogelijk het foutbericht **UserErrorSQLNoSysadminMembership**. Volg in dit geval [deze instructies](#set-vm-permissions).
 * Zodra u de beveiliging configureren voor de geselecteerde data bases hebt geactiveerd, stelt de back-upservice de coördinator in met de back-upschemaën en andere beleids Details, die de uitbrei ding lokaal op de virtuele machine opslaat.
 * Op het geplande tijdstip communiceert de coördinator met de invoeg toepassing en begint deze met het streamen van de back-upgegevens van de SQL Server met VDI.  
 * De invoeg toepassing verzendt de gegevens rechtstreeks naar de Recovery Services-kluis, waardoor er geen staging-locatie nodig is. De gegevens worden versleuteld en opgeslagen door de Azure Backup-service in opslag accounts.

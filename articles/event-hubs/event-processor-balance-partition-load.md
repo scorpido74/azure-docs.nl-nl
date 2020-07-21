@@ -3,12 +3,12 @@ title: De verdeling van partities verdelen over meerdere exemplaren-Azure Event 
 description: Hierin wordt beschreven hoe u de belasting van partities op meerdere exemplaren van uw toepassing kunt verdelen met behulp van een gebeurtenis processor en de Azure Event Hubs SDK.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: d5db1e877c1bfa6fac177e1ff8ed137e0301b709
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff68408be15d8160ea7ecd878a05441d82700f99
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314981"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512313"
 ---
 # <a name="balance-partition-load-across-multiple-instances-of-your-application"></a>De verdeling van partities verdelen over meerdere exemplaren van uw toepassing
 U kunt de toepassing voor het verwerken van gebeurtenissen schalen door meerdere exemplaren van de toepassing uit te voeren en de belasting tussen zichzelf te verdelen. In de oudere versies heeft [EventProcessorHost](event-hubs-event-processor-host.md) u de mogelijkheid om de belasting te verdelen tussen meerdere exemplaren van uw programma en controlepunt gebeurtenissen tijdens ontvangst. In de nieuwere versies (5,0 en hoger), **EventProcessorClient** (.net en Java) of **EventHubConsumerClient** (python en Java script) kunt u hetzelfde doen. Het ontwikkelings model wordt eenvoudiger gemaakt met behulp van gebeurtenissen. U abonneert u op de gebeurtenissen waarin u bent geïnteresseerd door een gebeurtenis-handler te registreren.
@@ -16,7 +16,7 @@ U kunt de toepassing voor het verwerken van gebeurtenissen schalen door meerdere
 In dit artikel wordt een voorbeeld scenario beschreven voor het gebruik van meerdere instanties voor het lezen van gebeurtenissen van een Event Hub. vervolgens krijgt u informatie over de functies van de client voor gebeurtenis verwerking. Hiermee kunt u gebeurtenissen van meerdere partities tegelijk ontvangen en taak verdeling met andere consumenten die gebruikmaken van dezelfde Event Hub en Consumer-groep.
 
 > [!NOTE]
-> De te schalen sleutel voor Event Hubs is het idee van gepartitioneerde gebruikers. In tegens telling tot het patroon van [concurrerende gebruikers](https://msdn.microsoft.com/library/dn568101.aspx) , maakt het gepartitioneerde consument patroon een hoge schaal door de knel punt conflicten te verwijderen en end-to-end-parallellisme te vereenvoudigen.
+> De te schalen sleutel voor Event Hubs is het idee van gepartitioneerde gebruikers. In tegens telling tot het patroon van [concurrerende gebruikers](/previous-versions/msp-n-p/dn568101(v=pandp.10)) , maakt het gepartitioneerde consument patroon een hoge schaal door de knel punt conflicten te verwijderen en end-to-end-parallellisme te vereenvoudigen.
 
 ## <a name="example-scenario"></a>Voorbeeldscenario
 
@@ -66,7 +66,7 @@ Wanneer u een gebeurtenis processor maakt, geeft u de functies op waarmee gebeur
 
 We raden u aan om dingen relatief snel te doen. Dat wil zeggen, zo weinig mogelijk verwerking. Als u naar opslag moet schrijven en een route ring wilt uitvoeren, is het beter om twee consumenten groepen te gebruiken en twee gebeurtenis processors te hebben.
 
-## <a name="checkpointing"></a>Controlepunten plaatsen
+## <a name="checkpointing"></a>Controlepunten maken
 
 *Controle punten* is een proces waarbij een gebeurtenis processor de positie van de laatste uitgevoerde gebeurtenis binnen een partitie markeert of doorvoert. Het markeren van een controle punt wordt doorgaans uitgevoerd binnen de functie waarmee de gebeurtenissen worden verwerkt en plaatsvindt per partitie binnen een Consumer groep. 
 
@@ -75,7 +75,7 @@ Als een gebeurtenis processor de verbinding met een partitie verbreekt, kan een 
 Wanneer het controle punt wordt uitgevoerd om een gebeurtenis te markeren als verwerkt, wordt een vermelding in het opslag punt archief toegevoegd of bijgewerkt met de offset en het Volg nummer van de gebeurtenis. Gebruikers moeten bepalen hoe vaak het controle punt moet worden bijgewerkt. Het bijwerken na elke geslaagde gebeurtenis kan gevolgen hebben voor prestaties en kosten omdat hiermee een schrijf bewerking wordt geactiveerd voor de onderliggende controlepunt opslag. Het is ook mogelijk om een controle punt te maken voor elke gebeurtenis, een bericht in de wachtrij waarin een Service Bus wachtrij een betere optie is dan een Event Hub. Het idee achter Event Hubs is dat u ten minste één keer op grote schaal krijgt. Door uw downstream-systemen idempotent te maken, is het eenvoudig om fouten te herstellen of opnieuw op te starten. Dit leidt ertoe dat dezelfde gebeurtenissen meerdere keren worden ontvangen.
 
 > [!NOTE]
-> Als u Azure Blob Storage gebruikt als controlepunt opslag in een omgeving die ondersteuning biedt voor een andere versie van de Storage BLOB SDK dan die welke meestal beschikbaar zijn op Azure, moet u code gebruiken om de API-versie van de opslag service te wijzigen in de specifieke versie die wordt ondersteund door die omgeving. Als u bijvoorbeeld [Event hubs uitvoert op een Azure stack hub versie 2002](https://docs.microsoft.com/azure-stack/user/event-hubs-overview), is de hoogste beschik bare versie van de opslag service versie 2017-11-09. In dit geval moet u code gebruiken om de API-versie van de Storage-service te richten op 2017-11-09. Zie voor een voor beeld van het richten op een specifieke opslag-API-versie de volgende voor beelden op GitHub: 
+> Als u Azure Blob Storage gebruikt als controlepunt opslag in een omgeving die ondersteuning biedt voor een andere versie van de Storage BLOB SDK dan die welke meestal beschikbaar zijn op Azure, moet u code gebruiken om de API-versie van de opslag service te wijzigen in de specifieke versie die wordt ondersteund door die omgeving. Als u bijvoorbeeld [Event hubs uitvoert op een Azure stack hub versie 2002](/azure-stack/user/event-hubs-overview), is de hoogste beschik bare versie van de opslag service versie 2017-11-09. In dit geval moet u code gebruiken om de API-versie van de Storage-service te richten op 2017-11-09. Zie voor een voor beeld van het richten op een specifieke opslag-API-versie de volgende voor beelden op GitHub: 
 > - [.Net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs). 
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/)
 > - [Java script](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript) of [type script](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript)

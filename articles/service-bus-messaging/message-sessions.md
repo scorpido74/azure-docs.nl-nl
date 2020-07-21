@@ -3,11 +3,12 @@ title: Azure Service Bus-bericht sessies | Microsoft Docs
 description: In dit artikel wordt uitgelegd hoe u met behulp van sessies gezamenlijke en geordende verwerking van gerelateerde berichten kunt maken.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: c1b714df1df7e2c3ba39c63581dc3c40a2ff9d1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05efc550e119186a2925c13d3fcfed11bec17251
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341184"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511293"
 ---
 # <a name="message-sessions"></a>Berichtsessies
 Microsoft Azure Service Bus-sessies maken gezamenlijke en geordende verwerking van niet-gebonden reeksen van gerelateerde berichten mogelijk. Sessies kunnen worden gebruikt in de **eerste in, first out (FIFO)** en **aanvraag/antwoord-** patronen. In dit artikel wordt beschreven hoe u met behulp van sessies deze patronen kunt implementeren wanneer u Service Bus gebruikt. 
@@ -30,7 +31,7 @@ Met de sessie functie in Service Bus kan een specifieke ontvangst bewerking word
 
 Stel in de Portal de vlag in met het volgende selectie vakje:
 
-![][2]
+![Scherm afbeelding van het dialoog venster wachtrij maken met de optie voor het inschakelen van sessies, geselecteerd en in rood beschreven.][2]
 
 > [!NOTE]
 > Wanneer sessies zijn ingeschakeld voor een wachtrij of een abonnement, kunnen de client toepassingen ***geen*** normale berichten meer verzenden/ontvangen. Alle berichten moeten worden verzonden als onderdeel van een sessie (door de sessie-id in te stellen) en ontvangen door de sessie te ontvangen.
@@ -41,7 +42,7 @@ De Api's voor sessies bestaan op de wachtrij-en abonnements-clients. Er is een e
 
 Sessies bieden gelijktijdige demultiplexing van Interleaved-berichten stromen tijdens het behoud en het garanderen van de bestelde levering.
 
-![][1]
+![Een diagram dat laat zien hoe de sessie-functie de bestelde levering behoudt.][1]
 
 Er wordt een [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) -ontvanger gemaakt door de client die een sessie accepteert. De client roept [QueueClient. AcceptMessageSession](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesession#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSession) of [QueueClient. AcceptMessageSessionAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesessionasync#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSessionAsync) op in C#. In het reactieve call back-model registreert het een sessie-handler.
 
@@ -77,8 +78,8 @@ De definitie van het aantal leveringen per bericht in de context van sessies ver
 
 | Scenario | Is het aantal leveringen van het bericht verhoogd |
 |----------|---------------------------------------------|
-| Sessie wordt geaccepteerd, maar de sessie vergrendeling verloopt (vanwege een time-out) | Yes |
-| Sessie wordt geaccepteerd, de berichten in de sessie worden niet voltooid (zelfs als ze zijn vergrendeld) en de sessie wordt gesloten | No |
+| Sessie wordt geaccepteerd, maar de sessie vergrendeling verloopt (vanwege een time-out) | Ja |
+| Sessie wordt geaccepteerd, de berichten in de sessie worden niet voltooid (zelfs als ze zijn vergrendeld) en de sessie wordt gesloten | Nee |
 | Sessie wordt geaccepteerd, berichten worden voltooid en de sessie wordt vervolgens expliciet gesloten | N.v.t. (het is de standaard stroom). Hier worden berichten uit de sessie verwijderd) |
 
 ## <a name="request-response-pattern"></a>Aanvraag-antwoord patroon

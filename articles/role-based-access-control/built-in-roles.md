@@ -7,15 +7,15 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 07/06/2020
-ms.openlocfilehash: 24e964ec37184e38358b5c64eff05a8aa10a431d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 07/16/2020
+ms.openlocfilehash: c0a397ac71c7c466145357093b6c22f78e627d1c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086807"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511582"
 ---
-# <a name="azure-built-in-roles"></a>Ingebouwde rollen van Azure
+# <a name="azure-built-in-roles"></a>Ingebouwde Azure-rollen
 
 [Toegangs beheer op basis van rollen (Azure RBAC) van](overview.md) Azure heeft verschillende ingebouwde rollen van Azure die u kunt toewijzen aan gebruikers, groepen, service-principals en beheerde identiteiten. Roltoewijzingen zijn de manier waarop u de toegang tot Azure-resources beheert. Als de ingebouwde rollen niet voldoen aan de specifieke behoeften van uw organisatie, kunt u uw eigen [aangepaste Azure-rollen](custom-roles.md)maken.
 
@@ -66,9 +66,9 @@ De volgende tabel bevat een korte beschrijving en de unieke ID van elke ingebouw
 > | [Eigenaar van gegevens van opslag-BLOB](#storage-blob-data-owner) | Biedt volledige toegang tot Azure Storage BLOB-containers en-gegevens, met inbegrip van het toewijzen van POSIX-toegangs beheer. Zie [machtigingen voor het aanroepen van BLOB-en wachtrij gegevens](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)voor meer informatie over welke acties vereist zijn voor een bepaalde gegevens bewerking. | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
 > | [Gegevens lezer van BLOB voor opslag](#storage-blob-data-reader) | Azure Storage containers en blobs lezen en weer geven. Zie [machtigingen voor het aanroepen van BLOB-en wachtrij gegevens](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)voor meer informatie over welke acties vereist zijn voor een bepaalde gegevens bewerking. | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
 > | [Delegering van opslag-BLOB](#storage-blob-delegator) | Een sleutel voor gebruikers overdracht ophalen, die vervolgens kan worden gebruikt om een gedeelde toegangs handtekening te maken voor een container of BLOB die is ondertekend met Azure AD-referenties. Zie [een gebruiker delegering Sa's maken](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas)voor meer informatie. | db58b8e5-c6ad-4a2a-8342-4190687cbf4a |
-> | [Inzender voor opslag bestands gegevens SMB delen](#storage-file-data-smb-share-contributor) | Hiermee wordt lees-, schrijf-en verwijder toegang voor bestanden/mappen in azure-bestands shares toegestaan. Deze rol heeft geen ingebouwd equivalent op Windows-bestands servers. | 0c867c2a-1d8c-454a-a3db-ab2ea1bdc8bb |
-> | [Opslag bestands gegevens SMB-share verhoogde Inzender](#storage-file-data-smb-share-elevated-contributor) | Hiermee kunt u Acl's voor lezen, schrijven, verwijderen en wijzigen van bestanden/mappen in azure-bestands shares. Deze rol is gelijk aan een ACL van de bestands share die moet worden gewijzigd op Windows-bestands servers. | a7264617-510b-434b-a828-9731dc254ea7 |
-> | [Reader voor gegevens van SMB-share voor opslag bestand](#storage-file-data-smb-share-reader) | Hiermee staat u lees toegang toe voor bestanden/mappen in azure-bestands shares. Deze rol is gelijk aan een ACL voor bestands shares van lezen op Windows-bestands servers. | aba4ae5f-2193-4029-9191-0cb91df5e314 |
+> | [Inzender voor opslagbestandsgegevens via SMB-share](#storage-file-data-smb-share-contributor) | Hiermee wordt lees-, schrijf-en verwijder toegang voor bestanden/mappen in azure-bestands shares toegestaan. Deze rol heeft geen ingebouwd equivalent op Windows-bestands servers. | 0c867c2a-1d8c-454a-a3db-ab2ea1bdc8bb |
+> | [Inzender met verhoogde bevoegdheden voor opslagbestandsgegevens via SMB-share](#storage-file-data-smb-share-elevated-contributor) | Hiermee kunt u Acl's voor lezen, schrijven, verwijderen en wijzigen van bestanden/mappen in azure-bestands shares. Deze rol is gelijk aan een ACL van de bestands share die moet worden gewijzigd op Windows-bestands servers. | a7264617-510b-434b-a828-9731dc254ea7 |
+> | [Lezer voor opslagbestandgegevens via SMB-share](#storage-file-data-smb-share-reader) | Hiermee staat u lees toegang toe voor bestanden/mappen in azure-bestands shares. Deze rol is gelijk aan een ACL voor bestands shares van lezen op Windows-bestands servers. | aba4ae5f-2193-4029-9191-0cb91df5e314 |
 > | [Inzender voor opslag wachtrij gegevens](#storage-queue-data-contributor) | Lees-, schrijf-en verwijder Azure Storage-wacht rijen en-wachtrij berichten. Zie [machtigingen voor het aanroepen van BLOB-en wachtrij gegevens](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)voor meer informatie over welke acties vereist zijn voor een bepaalde gegevens bewerking. | 974c5e8b-45b9-4653-ba55-5f855dd0fb88 |
 > | [Processor voor gegevens berichten van de opslag wachtrij](#storage-queue-data-message-processor) | Een bericht uit een Azure Storage wachtrij bekijken, ophalen en verwijderen. Zie [machtigingen voor het aanroepen van BLOB-en wachtrij gegevens](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)voor meer informatie over welke acties vereist zijn voor een bepaalde gegevens bewerking. | 8a0f0c08-91a1-4084-bc3d-661d67233fed |
 > | [Afzender gegevens bericht van opslag wachtrij](#storage-queue-data-message-sender) | Berichten toevoegen aan een Azure Storage wachtrij. Zie [machtigingen voor het aanroepen van BLOB-en wachtrij gegevens](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)voor meer informatie over welke acties vereist zijn voor een bepaalde gegevens bewerking. | c6a89b2d-59bc-44d0-9896-0f6e12d7b80a |
@@ -88,6 +88,10 @@ De volgende tabel bevat een korte beschrijving en de unieke ID van elke ingebouw
 > | [Rol van Cluster beheerder voor Azure Kubernetes-service](#azure-kubernetes-service-cluster-admin-role) | Lijst met actie voor cluster beheer referenties. | 0ab0b1a8-8aac-4efd-b8c2-3ee1fb270be8 |
 > | [Gebruikersrol Azure Kubernetes service-cluster](#azure-kubernetes-service-cluster-user-role) | Geef een lijst actie voor de gebruikers referenties van het cluster op. | 4abbcc35-e782-43d8-92c5-2d3f1bd2253f |
 > | [Rol van de Azure Kubernetes service-bijdrager](#azure-kubernetes-service-contributor-role) | Hiermee wordt toegang verleend voor het lezen en schrijven van Azure Kubernetes Service-clusters | ed7f3fbd-7b88-4dd4-9017-9adb7ce333f8 |
+> | [RBAC-beheerder voor Azure Kubernetes service](#azure-kubernetes-service-rbac-admin) | Hiermee kunt u alle resources beheren onder cluster/naam ruimte, behalve voor het bijwerken of verwijderen van resource quota's en naam ruimten. | 3498e952-d568-435e-9b2c-8d77e338d7f7 |
+> | [De Azure Kubernetes service RBAC-cluster beheerder](#azure-kubernetes-service-rbac-cluster-admin) | Hiermee kunt u alle resources in het cluster beheren. | b1ff04bb-8a4e-4dc4-8eb5-8693973ce19b |
+> | [RBAC-lezer van de Azure Kubernetes service](#azure-kubernetes-service-rbac-reader) | Hiermee kunt u alle resources in het cluster of de naam ruimte weer geven, behalve geheimen. | 7f6c6a51-bcf8-42ba-9220-52d62157d7db |
+> | [RBAC-schrijver van Azure Kubernetes service](#azure-kubernetes-service-rbac-writer) | Hiermee kunt u alles in cluster/naam ruimte bijwerken, met uitzonde ring van resource quota's, naam ruimten, Pod-beveiligings beleid, aanvragen voor certificaat ondertekening, (cluster) rollen en (cluster) rollen bindingen. | a7ffa36f-339b-4b5c-8bdf-e2c188b2c0eb |
 > | **Databases** |  |  |
 > | [Rol van Cosmos DB-account lezer](#cosmos-db-account-reader-role) | Kan gegevens van Azure Cosmos DB-account lezen. Zie [DocumentDB account Inzender](#documentdb-account-contributor) voor het beheren van Azure Cosmos DB accounts. | fbdf93bf-df7d-467e-a4d2-9458aa1360c8 |
 > | [Cosmos DB-operator](#cosmos-db-operator) | Hiermee kunt u Azure Cosmos DB accounts beheren, maar geen toegang tot gegevens. Hiermee voor komt u toegang tot account sleutels en verbindings reeksen. | 230815da-be43-4aae-9cb4-875f7bd000aa |
@@ -155,7 +159,7 @@ De volgende tabel bevat een korte beschrijving en de unieke ID van elke ingebouw
 > | [Beveiligingslezer](#security-reader) | Machtigingen voor Security Center weer geven. Kan aanbevelingen, waarschuwingen, een beveiligings beleid en beveiligings status weer geven, maar kan geen wijzigingen aanbrengen. | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
 > | **DevOps** |  |  |
 > | [DevTest Labs-gebruiker](#devtest-labs-user) | Met kunt u verbinding maken met uw virtuele machines in uw Azure DevTest Labs, deze starten, opnieuw opstarten en afsluiten. | 76283e04-6283-4c54-8f91-bcf1374a3c64 |
-> | [Lab-Maker](#lab-creator) | Met kunt u uw beheerde Labs maken, beheren en verwijderen in uw Azure Lab-accounts. | b97fb8bc-a8b2-4522-a38b-dd33c7e65ead |
+> | [Lab-Maker](#lab-creator) | Met kunt u nieuwe Labs maken onder uw Azure Lab-accounts. | b97fb8bc-a8b2-4522-a38b-dd33c7e65ead |
 > | **Monitor** |  |  |
 > | [Inzender voor Application Insights onderdelen](#application-insights-component-contributor) | Kan Application Insights onderdelen beheren | ae349356-3a1b-4a5e-921d-050484c6347e |
 > | [Application Insights Snapshot Debugger](#application-insights-snapshot-debugger) | Geeft gebruikers machtigingen voor het weer geven en downloaden van moment opnamen van fout opsporing die zijn verzameld met de Application Insights Snapshot Debugger. Houd er rekening mee dat deze machtigingen niet zijn opgenomen in de rollen [eigenaar](#owner) of [Inzender](#contributor) . Wanneer gebruikers de Application Insights Snapshot Debugger rol geven, moet u de rol rechtstreeks aan de gebruiker toekennen. De rol wordt niet herkend wanneer deze wordt toegevoegd aan een aangepaste rol. | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
@@ -171,8 +175,8 @@ De volgende tabel bevat een korte beschrijving en de unieke ID van elke ingebouw
 > | [Onboarding van met Azure verbonden computer](#azure-connected-machine-onboarding) | Kan onboarding van met Azure verbonden computers uitvoeren. | b64e21ea-ac4e-4cdf-9dc9-5b892992bee7 |
 > | [Resource beheerder van Azure Connected machine](#azure-connected-machine-resource-administrator) | Kan met Azure verbonden computers lezen, schrijven, verwijderen en onboarden. | cd570a14-e51a-42ad-bac8-bafd67325302 |
 > | [Facturerings lezer](#billing-reader) | Hiermee staat u lees toegang tot facturerings gegevens toe | fa23ad8b-c56e-40d8-ac0c-ce449e1d2c64 |
-> | [Blauw druk bijdrager](#blueprint-contributor) | Kan blauw drukken-definities beheren, maar niet toewijzen. | 41077137-e803-4205-871c-5a86e6a753b4 |
-> | [Blauw druk-operator](#blueprint-operator) | Kan bestaande gepubliceerde blauw drukken toewijzen, maar kan geen nieuwe blauw drukken maken. Houd er rekening mee dat dit alleen werkt als de toewijzing wordt uitgevoerd met een door de gebruiker toegewezen beheerde identiteit. | 437d2ced-4a38-4302-8479-ed2bcb43d090 |
+> | [Blauwdrukinzender](#blueprint-contributor) | Blauwdrukinzenders kunnen blauwdrukdefinities beheren, maar deze niet toewijzen. | 41077137-e803-4205-871c-5a86e6a753b4 |
+> | [Blauwdrukoperator](#blueprint-operator) | Kan bestaande gepubliceerde blauw drukken toewijzen, maar kan geen nieuwe blauw drukken maken. Houd er rekening mee dat dit alleen werkt als de toewijzing wordt uitgevoerd met een door de gebruiker toegewezen beheerde identiteit. | 437d2ced-4a38-4302-8479-ed2bcb43d090 |
 > | [Inzender Cost Management](#cost-management-contributor) | Kan kosten bekijken en kosten configuratie beheren (bijvoorbeeld budgetten, exports) | 434105ed-43f6-45c7-a02f-909b2ba83430 |
 > | [Cost Management lezer](#cost-management-reader) | Kan kosten gegevens en-configuratie weer geven (bijvoorbeeld budgetten, exports) | 72fafb9e-0641-4937-9268-a91bfd8191a3 |
 > | [Beheerder hiërarchie-instellingen](#hierarchy-settings-administrator) | Hiermee kunnen gebruikers hiërarchie-instellingen bewerken en verwijderen | 350f8d15-c687-4448-8ae1-157740a3936d |
@@ -204,9 +208,8 @@ De volgende tabel bevat een korte beschrijving en de unieke ID van elke ingebouw
 Hiermee beheert u alles behalve het verlenen van toegang tot resources. [Meer informatie](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | * | Resources van alle typen maken en beheren |
 > | **NotActions** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Delete | Rollen, beleids toewijzingen, beleids definities en definities van beleids sets verwijderen |
@@ -254,9 +257,8 @@ Hiermee beheert u alles behalve het verlenen van toegang tot resources. [Meer in
 Hiermee kunt u alles beheren, inclusief toegang tot resources. [Meer informatie](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | * | Resources van alle typen maken en beheren |
 > | **NotActions** |  |
 > | *geen* |  |
@@ -294,9 +296,8 @@ Hiermee kunt u alles beheren, inclusief toegang tot resources. [Meer informatie]
 Hiermee kunt u alles weer geven, maar geen wijzigingen aanbrengen. [Meer informatie](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | */read | Lees resources van alle typen, met uitzonde ring van geheimen. |
 > | **NotActions** |  |
 > | *geen* |  |
@@ -334,9 +335,8 @@ Hiermee kunt u alles weer geven, maar geen wijzigingen aanbrengen. [Meer informa
 Hiermee beheert u de gebruikers toegang tot Azure-resources. [Meer informatie](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | */read | Lees resources van alle typen, met uitzonde ring van geheimen. |
 > | [Micro soft. autorisatie](resource-provider-operations.md#microsoftauthorization)/* | Autorisatie beheren |
 > | [Micro soft. ondersteuning](resource-provider-operations.md#microsoftsupport)/* | Een ondersteunings ticket maken en bijwerken |
@@ -381,9 +381,8 @@ Hiermee beheert u de gebruikers toegang tot Azure-resources. [Meer informatie](r
 Hiermee beheert u klassieke virtuele machines, maar kunt u niet de toegang tot ze en niet het virtuele netwerk of opslag account waarmee ze zijn verbonden.
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. ClassicCompute](resource-provider-operations.md#microsoftclassiccompute)/domainNames/* | Klassieke Compute-domein namen maken en beheren |
 > | [Micro soft. ClassicCompute](resource-provider-operations.md#microsoftclassiccompute)/virtualMachines/* | Virtuele machines maken en beheren |
@@ -453,9 +452,8 @@ Hiermee beheert u klassieke virtuele machines, maar kunt u niet de toegang tot z
 Bekijk Virtual Machines in de portal en meld u aan als beheerder [meer informatie](../active-directory/devices/howto-vm-sign-in-azure-ad-windows.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Network](resource-provider-operations.md#microsoftnetwork)/publicIPAddresses/Read | Hiermee wordt een definitie van een openbaar IP-adres opgehaald. |
 > | [Micro soft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/Read | De virtuele-netwerk definitie ophalen |
 > | [Micro soft. Network](resource-provider-operations.md#microsoftnetwork)/loadBalancers/Read | Hiermee wordt een load balancer definitie opgehaald |
@@ -505,9 +503,8 @@ Bekijk Virtual Machines in de portal en meld u aan als beheerder [meer informati
 Met kunt u virtuele machines beheren, maar niet de toegang tot ze en niet het virtuele netwerk of opslag account waarmee ze zijn verbonden. [Meer informatie](../virtual-machines/linux/tutorial-govern-resources.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. Compute](resource-provider-operations.md#microsoftcompute)/availabilitySets/* | Berekenings beschikbaarheids sets maken en beheren |
 > | [Micro soft. Compute](resource-provider-operations.md#microsoftcompute)/locations/* | Reken locaties maken en beheren |
@@ -625,9 +622,8 @@ Met kunt u virtuele machines beheren, maar niet de toegang tot ze en niet het vi
 Bekijk Virtual Machines in de portal en meld u aan als een gewone gebruiker. [Meer informatie](../active-directory/devices/howto-vm-sign-in-azure-ad-windows.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Network](resource-provider-operations.md#microsoftnetwork)/publicIPAddresses/Read | Hiermee wordt een definitie van een openbaar IP-adres opgehaald. |
 > | [Micro soft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/Read | De virtuele-netwerk definitie ophalen |
 > | [Micro soft. Network](resource-provider-operations.md#microsoftnetwork)/loadBalancers/Read | Hiermee wordt een load balancer definitie opgehaald |
@@ -678,9 +674,8 @@ Bekijk Virtual Machines in de portal en meld u aan als een gewone gebruiker. [Me
 Kan CDN-eind punten beheren, maar kan geen toegang verlenen aan andere gebruikers.
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. CDN](resource-provider-operations.md#microsoftcdn)/edgenodes/Read |  |
 > | [Micro soft. CDN](resource-provider-operations.md#microsoftcdn)/operationresults/* |  |
@@ -732,9 +727,8 @@ Kan CDN-eind punten beheren, maar kan geen toegang verlenen aan andere gebruiker
 Kan CDN-eind punten weer geven, maar kan geen wijzigingen aanbrengen.
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. CDN](resource-provider-operations.md#microsoftcdn)/edgenodes/Read |  |
 > | [Micro soft. CDN](resource-provider-operations.md#microsoftcdn)/operationresults/* |  |
@@ -786,9 +780,8 @@ Kan CDN-eind punten weer geven, maar kan geen wijzigingen aanbrengen.
 Kan CDN-profielen en de bijbehorende eind punten beheren, maar kan geen toegang verlenen aan andere gebruikers. [Meer informatie](../cdn/cdn-app-dev-net.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. CDN](resource-provider-operations.md#microsoftcdn)/edgenodes/Read |  |
 > | [Micro soft. CDN](resource-provider-operations.md#microsoftcdn)/operationresults/* |  |
@@ -840,9 +833,8 @@ Kan CDN-profielen en de bijbehorende eind punten beheren, maar kan geen toegang 
 Kan CDN-profielen en de bijbehorende eind punten weer geven, maar kan geen wijzigingen aanbrengen.
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. CDN](resource-provider-operations.md#microsoftcdn)/edgenodes/Read |  |
 > | [Micro soft. CDN](resource-provider-operations.md#microsoftcdn)/operationresults/* |  |
@@ -894,9 +886,8 @@ Kan CDN-profielen en de bijbehorende eind punten weer geven, maar kan geen wijzi
 Hiermee beheert u klassieke netwerken, maar hebt u geen toegang tot de netwerk bestanden. [Meer informatie](../virtual-network/virtual-network-manage-peering.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. ClassicNetwork](resource-provider-operations.md#microsoftclassicnetwork)/* | Klassieke netwerken maken en beheren |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Een klassieke waarschuwing voor metrische gegevens maken en beheren |
@@ -946,9 +937,8 @@ Hiermee beheert u klassieke netwerken, maar hebt u geen toegang tot de netwerk b
 Met kunt u DNS-zones en-record sets beheren in Azure DNS, maar kunt u niet bepalen wie toegang heeft tot de groepen. [Meer informatie](../dns/dns-protect-zones-recordsets.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Een klassieke waarschuwing voor metrische gegevens maken en beheren |
 > | [Micro soft. Network](resource-provider-operations.md#microsoftnetwork)/dnsZones/* | DNS-zones en-records maken en beheren |
@@ -998,9 +988,8 @@ Met kunt u DNS-zones en-record sets beheren in Azure DNS, maar kunt u niet bepal
 Hiermee kunt u netwerken beheren, maar niet de toegang tot de netwerk bestanden.
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Een klassieke waarschuwing voor metrische gegevens maken en beheren |
 > | [Micro soft. Network](resource-provider-operations.md#microsoftnetwork)/* | Netwerken maken en beheren |
@@ -1050,9 +1039,8 @@ Hiermee kunt u netwerken beheren, maar niet de toegang tot de netwerk bestanden.
 Hiermee kunt u privé-DNS-zone bronnen beheren, maar niet de virtuele netwerken waaraan ze zijn gekoppeld. [Meer informatie](../dns/dns-protect-private-zones-recordsets.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Een klassieke waarschuwing voor metrische gegevens maken en beheren |
 > | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Een implementatie maken en beheren |
 > | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Hiermee worden resource groepen opgehaald of weer gegeven. |
@@ -1108,9 +1096,8 @@ Hiermee kunt u privé-DNS-zone bronnen beheren, maar niet de virtuele netwerken 
 Hiermee beheert u Traffic Manager profielen, maar kunt u niet bepalen wie er toegang tot heeft.
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Een klassieke waarschuwing voor metrische gegevens maken en beheren |
 > | [Micro soft. Network](resource-provider-operations.md#microsoftnetwork)/trafficManagerProfiles/* |  |
@@ -1155,7 +1142,7 @@ Hiermee beheert u Traffic Manager profielen, maar kunt u niet bepalen wie er toe
 }
 ```
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Opslag
 
 
 ### <a name="avere-contributor"></a>AVERE-bijdrager
@@ -1163,9 +1150,8 @@ Hiermee beheert u Traffic Manager profielen, maar kunt u niet bepalen wie er toe
 Kan een avere vFXT-cluster maken en beheren. [Meer informatie](../avere-vfxt/avere-vfxt-deploy-plan.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. Compute](resource-provider-operations.md#microsoftcompute)/*/Read |  |
 > | [Micro soft. Compute](resource-provider-operations.md#microsoftcompute)/availabilitySets/* |  |
@@ -1247,9 +1233,8 @@ Kan een avere vFXT-cluster maken en beheren. [Meer informatie](../avere-vfxt/ave
 Wordt gebruikt door het avere vFXT-cluster voor het beheren van het cluster [meer informatie](../avere-vfxt/avere-vfxt-manage-cluster.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/Read | De eigenschappen van een virtuele machine ophalen |
 > | [Micro soft. Network](resource-provider-operations.md#microsoftnetwork)/networkInterfaces/Read | Hiermee haalt u een definitie van een netwerk interface.  |
 > | [Micro soft. Network](resource-provider-operations.md#microsoftnetwork)/networkInterfaces/write | Hiermee maakt u een netwerk interface of werkt u een bestaande netwerk interface bij.  |
@@ -1313,9 +1298,8 @@ Wordt gebruikt door het avere vFXT-cluster voor het beheren van het cluster [mee
 Hiermee kunt u de back-upservice beheren, maar geen kluizen maken [en anderen toegang](../backup/backup-rbac-rs-vault.md) geven
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/Read | De virtuele-netwerk definitie ophalen |
 > | [Micro soft. Recovery Services](resource-provider-operations.md#microsoftrecoveryservices)/locations/* |  |
@@ -1433,9 +1417,8 @@ Hiermee kunt u de back-upservice beheren, maar geen kluizen maken [en anderen to
 Hiermee kunt u back-upservices beheren, behalve het verwijderen van back-ups, het maken van een kluis en het verlenen van toegang aan anderen [meer informatie](../backup/backup-rbac-rs-vault.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/Read | De virtuele-netwerk definitie ophalen |
 > | [Micro soft. Recovery Services](resource-provider-operations.md#microsoftrecoveryservices)/vaults/backupFabrics/operationResults/Read | Hiermee wordt de status van de bewerking geretourneerd |
@@ -1583,9 +1566,8 @@ Hiermee kunt u back-upservices beheren, behalve het verwijderen van back-ups, he
 Kan back-upservices weer geven, maar kan geen wijzigingen [meer](../backup/backup-rbac-rs-vault.md) aanbrengen
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. Recovery Services](resource-provider-operations.md#microsoftrecoveryservices)/locations/allocatedStamp/Read | GetAllocatedStamp is een interne bewerking die wordt gebruikt door de service |
 > | [Micro soft. Recovery Services](resource-provider-operations.md#microsoftrecoveryservices)/vaults/backupFabrics/operationResults/Read | Hiermee wordt de status van de bewerking geretourneerd |
@@ -1697,9 +1679,8 @@ Kan back-upservices weer geven, maar kan geen wijzigingen [meer](../backup/backu
 Hiermee kunt u klassieke opslag accounts beheren, maar niet de toegang tot de account.
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. ClassicStorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/* | Opslagaccounts maken en beheren |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Een klassieke waarschuwing voor metrische gegevens maken en beheren |
@@ -1749,9 +1730,8 @@ Hiermee kunt u klassieke opslag accounts beheren, maar niet de toegang tot de ac
 De sleutel operators voor klassieke opslag accounts mogen sleutels vermelden en opnieuw genereren voor klassieke opslag accounts [meer informatie](../key-vault/secrets/overview-storage-keys.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. ClassicStorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/listkeys/Action | Hier worden de toegangs sleutels voor de opslag accounts weer gegeven. |
 > | [Micro soft. ClassicStorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/regeneratekey/Action | Hiermee worden de bestaande toegangs sleutels voor het opslag account opnieuw gegenereerd. |
 > | **NotActions** |  |
@@ -1791,9 +1771,8 @@ De sleutel operators voor klassieke opslag accounts mogen sleutels vermelden en 
 Hiermee kunt u alles beheren onder Data Box Service, behalve dat anderen toegang verlenen. [Meer informatie](../databox/data-box-logs.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Hiermee worden de beschikbaarheids status waarden opgehaald voor alle resources in het opgegeven bereik |
 > | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Een implementatie maken en beheren |
@@ -1841,9 +1820,8 @@ Hiermee kunt u alles beheren onder Data Box Service, behalve dat anderen toegang
 Met kunt u de Data Box-Service beheren, met uitzonde ring van order gegevens maken of bewerken en anderen toegang verlenen. [Meer informatie](../databox/data-box-logs.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. Databox](resource-provider-operations.md#microsoftdatabox)/*/Read |  |
 > | [Micro soft. Databox](resource-provider-operations.md#microsoftdatabox)/Jobs/listsecrets/Action |  |
@@ -1899,9 +1877,8 @@ Met kunt u de Data Box-Service beheren, met uitzonde ring van order gegevens mak
 Hiermee kunt u uw eigen taken verzenden, bewaken en beheren, maar geen Data Lake Analytics accounts maken of verwijderen. [Meer informatie](../data-lake-analytics/data-lake-analytics-manage-use-portal.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | Micro soft. BigAnalytics/accounts/* |  |
 > | [Micro soft. DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/accounts/* |  |
@@ -1981,9 +1958,8 @@ Hiermee kunt u uw eigen taken verzenden, bewaken en beheren, maar geen Data Lake
 Hiermee kunt u alles weer geven, maar kunt u geen opslag account of opgenomen resource verwijderen of maken. Ook wordt lees-/schrijftoegang tot alle gegevens in een opslag account toegestaan via toegang tot de sleutel van het opslag account.
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/listKeys/Action | Retourneert de toegangs sleutels voor het opgegeven opslag account. |
 > | [Micro soft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/ListAccountSas/Action | Hiermee wordt het SAS-token van het account voor het opgegeven opslag account geretourneerd. |
 > | [Micro soft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/Read | Retourneert de lijst met opslag accounts of haalt de eigenschappen voor het opgegeven opslag account op. |
@@ -2025,9 +2001,8 @@ Hiermee kunt u alles weer geven, maar kunt u geen opslag account of opgenomen re
 Hiermee staat u het beheer van opslag accounts toe. Biedt toegang tot de account sleutel, die kan worden gebruikt om toegang te krijgen tot gegevens via een gedeelde sleutel autorisatie. [Meer informatie](../storage/common/storage-auth-aad.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Een klassieke waarschuwing voor metrische gegevens maken en beheren |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/diagnosticSettings/* | Hiermee wordt de diagnostische instelling voor Analyseserver gemaakt, bijgewerkt of gelezen |
@@ -2081,9 +2056,8 @@ Hiermee staat u het beheer van opslag accounts toe. Biedt toegang tot de account
 Kan de toegangs sleutels voor het opslag account weer geven en opnieuw genereren. [Meer informatie](../storage/common/storage-account-keys-manage.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/listkeys/Action | Retourneert de toegangs sleutels voor het opgegeven opslag account. |
 > | [Micro soft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/regeneratekey/Action | Hiermee worden de toegangs sleutels voor het opgegeven opslag account opnieuw gegenereerd. |
 > | **NotActions** |  |
@@ -2123,9 +2097,8 @@ Kan de toegangs sleutels voor het opslag account weer geven en opnieuw genereren
 Azure Storage containers en blobs lezen, schrijven en verwijderen. Zie [machtigingen voor het aanroepen van BLOB-en wachtrij gegevens](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)voor meer informatie over welke acties vereist zijn voor een bepaalde gegevens bewerking. [Meer informatie](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/Delete | Een container verwijderen. |
 > | [Micro soft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/Read | Een container of een lijst met containers retour neren. |
 > | [Micro soft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/write | Meta gegevens of eigenschappen van een container wijzigen. |
@@ -2177,9 +2150,8 @@ Azure Storage containers en blobs lezen, schrijven en verwijderen. Zie [machtigi
 Biedt volledige toegang tot Azure Storage BLOB-containers en-gegevens, met inbegrip van het toewijzen van POSIX-toegangs beheer. Zie [machtigingen voor het aanroepen van BLOB-en wachtrij gegevens](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)voor meer informatie over welke acties vereist zijn voor een bepaalde gegevens bewerking. [Meer informatie](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/* | Volledige machtigingen voor containers. |
 > | [Micro soft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/generateUserDelegationKey/Action | Retourneert een gebruikers delegerings sleutel voor de Blob service. |
 > | **NotActions** |  |
@@ -2221,9 +2193,8 @@ Biedt volledige toegang tot Azure Storage BLOB-containers en-gegevens, met inbeg
 Azure Storage containers en blobs lezen en weer geven. Zie [machtigingen voor het aanroepen van BLOB-en wachtrij gegevens](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)voor meer informatie over welke acties vereist zijn voor een bepaalde gegevens bewerking. [Meer informatie](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/Read | Een container of een lijst met containers retour neren. |
 > | [Micro soft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/generateUserDelegationKey/Action | Retourneert een gebruikers delegerings sleutel voor de Blob service. |
 > | **NotActions** |  |
@@ -2265,9 +2236,8 @@ Azure Storage containers en blobs lezen en weer geven. Zie [machtigingen voor he
 Een sleutel voor gebruikers overdracht ophalen, die vervolgens kan worden gebruikt om een gedeelde toegangs handtekening te maken voor een container of BLOB die is ondertekend met Azure AD-referenties. Zie [een gebruiker delegering Sa's maken](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas)voor meer informatie. [Meer informatie](https://docs.microsoft.com/rest/api/storageservices/get-user-delegation-key)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/generateUserDelegationKey/Action | Retourneert een gebruikers delegerings sleutel voor de Blob service. |
 > | **NotActions** |  |
 > | *geen* |  |
@@ -2300,14 +2270,13 @@ Een sleutel voor gebruikers overdracht ophalen, die vervolgens kan worden gebrui
 }
 ```
 
-### <a name="storage-file-data-smb-share-contributor"></a>Inzender voor opslag bestands gegevens SMB delen
+### <a name="storage-file-data-smb-share-contributor"></a>Inzender voor opslagbestandsgegevens via SMB-share
 
 Hiermee wordt lees-, schrijf-en verwijder toegang voor bestanden/mappen in azure-bestands shares toegestaan. Deze rol heeft geen ingebouwd equivalent op Windows-bestands servers. [Meer informatie](../storage/files/storage-files-identity-auth-active-directory-enable.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | *geen* |  |
 > | **NotActions** |  |
 > | *geen* |  |
@@ -2344,14 +2313,13 @@ Hiermee wordt lees-, schrijf-en verwijder toegang voor bestanden/mappen in azure
 }
 ```
 
-### <a name="storage-file-data-smb-share-elevated-contributor"></a>Opslag bestands gegevens SMB-share verhoogde Inzender
+### <a name="storage-file-data-smb-share-elevated-contributor"></a>Inzender met verhoogde bevoegdheden voor opslagbestandsgegevens via SMB-share
 
 Hiermee kunt u Acl's voor lezen, schrijven, verwijderen en wijzigen van bestanden/mappen in azure-bestands shares. Deze rol is gelijk aan een ACL van de bestands share die moet worden gewijzigd op Windows-bestands servers. [Meer informatie](../storage/files/storage-files-identity-auth-active-directory-enable.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | *geen* |  |
 > | **NotActions** |  |
 > | *geen* |  |
@@ -2390,14 +2358,13 @@ Hiermee kunt u Acl's voor lezen, schrijven, verwijderen en wijzigen van bestande
 }
 ```
 
-### <a name="storage-file-data-smb-share-reader"></a>Reader voor gegevens van SMB-share voor opslag bestand
+### <a name="storage-file-data-smb-share-reader"></a>Lezer voor opslagbestandgegevens via SMB-share
 
 Hiermee staat u lees toegang toe voor bestanden/mappen in azure-bestands shares. Deze rol is gelijk aan een ACL voor bestands shares van lezen op Windows-bestands servers. [Meer informatie](../storage/files/storage-files-identity-auth-active-directory-enable.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | *geen* |  |
 > | **NotActions** |  |
 > | *geen* |  |
@@ -2435,9 +2402,8 @@ Hiermee staat u lees toegang toe voor bestanden/mappen in azure-bestands shares.
 Lees-, schrijf-en verwijder Azure Storage-wacht rijen en-wachtrij berichten. Zie [machtigingen voor het aanroepen van BLOB-en wachtrij gegevens](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)voor meer informatie over welke acties vereist zijn voor een bepaalde gegevens bewerking. [Meer informatie](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/Delete | Een wachtrij verwijderen. |
 > | [Micro soft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/Read | Een wachtrij of een lijst met wacht rijen retour neren. |
 > | [Micro soft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/write | Meta gegevens of eigenschappen van de wachtrij wijzigen. |
@@ -2485,9 +2451,8 @@ Lees-, schrijf-en verwijder Azure Storage-wacht rijen en-wachtrij berichten. Zie
 Een bericht uit een Azure Storage wachtrij bekijken, ophalen en verwijderen. Zie [machtigingen voor het aanroepen van BLOB-en wachtrij gegevens](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)voor meer informatie over welke acties vereist zijn voor een bepaalde gegevens bewerking. [Meer informatie](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | *geen* |  |
 > | **NotActions** |  |
 > | *geen* |  |
@@ -2527,9 +2492,8 @@ Een bericht uit een Azure Storage wachtrij bekijken, ophalen en verwijderen. Zie
 Berichten toevoegen aan een Azure Storage wachtrij. Zie [machtigingen voor het aanroepen van BLOB-en wachtrij gegevens](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)voor meer informatie over welke acties vereist zijn voor een bepaalde gegevens bewerking. [Meer informatie](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | *geen* |  |
 > | **NotActions** |  |
 > | *geen* |  |
@@ -2567,9 +2531,8 @@ Berichten toevoegen aan een Azure Storage wachtrij. Zie [machtigingen voor het a
 Azure Storage-wacht rijen en-wachtrij berichten lezen en weer geven. Zie [machtigingen voor het aanroepen van BLOB-en wachtrij gegevens](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)voor meer informatie over welke acties vereist zijn voor een bepaalde gegevens bewerking. [Meer informatie](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/Read | Hiermee wordt een wachtrij of een lijst met wacht rijen geretourneerd. |
 > | **NotActions** |  |
 > | *geen* |  |
@@ -2612,9 +2575,8 @@ Azure Storage-wacht rijen en-wachtrij berichten lezen en weer geven. Zie [machti
 Hiermee wordt toegang verleend om gerelateerde gegevens te lezen vanuit een Azure Maps-account.
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | *geen* |  |
 > | **NotActions** |  |
 > | *geen* |  |
@@ -2652,9 +2614,8 @@ Hiermee wordt toegang verleend om gerelateerde gegevens te lezen vanuit een Azur
 Hiermee kunt u zoek services beheren, maar niet de toegang tot ze. [Meer informatie](../search/search-security-rbac.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Een klassieke waarschuwing voor metrische gegevens maken en beheren |
 > | [Micro soft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Hiermee worden de beschikbaarheids status waarden opgehaald voor alle resources in het opgegeven bereik |
@@ -2704,9 +2665,8 @@ Hiermee kunt u zoek services beheren, maar niet de toegang tot ze. [Meer informa
 Hiermee kunt u de Webabonnementen voor websites beheren, maar niet de toegang tot de abonnementen.
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Een klassieke waarschuwing voor metrische gegevens maken en beheren |
 > | [Micro soft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Hiermee worden de beschikbaarheids status waarden opgehaald voor alle resources in het opgegeven bereik |
@@ -2758,9 +2718,8 @@ Hiermee kunt u de Webabonnementen voor websites beheren, maar niet de toegang to
 Hiermee kunt u websites beheren (niet Webabonnementen), maar niet de toegang tot de sites.
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Een klassieke waarschuwing voor metrische gegevens maken en beheren |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/Components/* | Insights-onderdelen maken en beheren |
@@ -2823,9 +2782,8 @@ Hiermee kunt u websites beheren (niet Webabonnementen), maar niet de toegang tot
 [meer informatie over](../container-registry/container-registry-roles.md) ACR verwijderen
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/Artifacts/Delete | Artefact verwijderen in container register. |
 > | **NotActions** |  |
 > | *geen* |  |
@@ -2863,9 +2821,8 @@ Hiermee kunt u websites beheren (niet Webabonnementen), maar niet de toegang tot
 ACR-installatie kopie-ondertekenaar [meer informatie](../container-registry/container-registry-roles.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/Sign/write | Meta gegevens van de vertrouwens relatie push/pull voor een container register. |
 > | **NotActions** |  |
 > | *geen* |  |
@@ -2903,9 +2860,8 @@ ACR-installatie kopie-ondertekenaar [meer informatie](../container-registry/cont
 ACR-pull meer [informatie](../container-registry/container-registry-roles.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/pull/Read | Pull of ophalen van installatie kopieën uit een container register. |
 > | **NotActions** |  |
 > | *geen* |  |
@@ -2943,9 +2899,8 @@ ACR-pull meer [informatie](../container-registry/container-registry-roles.md)
 ACR-push [meer informatie](../container-registry/container-registry-roles.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/pull/Read | Pull of ophalen van installatie kopieën uit een container register. |
 > | [Micro soft. ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/push/write | Push of schrijf installatie kopieën naar een container register. |
 > | **NotActions** |  |
@@ -2985,9 +2940,8 @@ ACR-push [meer informatie](../container-registry/container-registry-roles.md)
 ACR quarantaine gegevens lezer
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/Quarantine/Read | In quarantaine geplaatste installatie kopieën verzamelen of ophalen uit het container register |
 > | **NotActions** |  |
 > | *geen* |  |
@@ -3025,9 +2979,8 @@ ACR quarantaine gegevens lezer
 ACR quarantaine gegevens schrijver
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/Quarantine/Read | In quarantaine geplaatste installatie kopieën verzamelen of ophalen uit het container register |
 > | [Micro soft. ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/Quarantine/write | De quarantaine status van in quarantaine geplaatste installatie kopieën schrijven/wijzigen |
 > | **NotActions** |  |
@@ -3067,9 +3020,8 @@ ACR quarantaine gegevens schrijver
 Lijst met actie voor cluster beheer referenties. [Meer informatie](../aks/control-kubeconfig-access.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterAdminCredential/Action | De clusterAdmin-referentie van een beheerd cluster weer geven |
 > | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/accessProfiles/listCredential/Action | Een beheerd cluster toegangs profiel verkrijgen met een rolnaam met behulp van de lijst referentie |
 > | **NotActions** |  |
@@ -3109,9 +3061,8 @@ Lijst met actie voor cluster beheer referenties. [Meer informatie](../aks/contro
 Geef een lijst actie voor de gebruikers referenties van het cluster op. [Meer informatie](../aks/control-kubeconfig-access.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/Action | De clusterUser-referentie van een beheerd cluster weer geven |
 > | **NotActions** |  |
 > | *geen* |  |
@@ -3149,9 +3100,8 @@ Geef een lijst actie voor de gebruikers referenties van het cluster op. [Meer in
 Hiermee wordt toegang verleend voor het lezen en schrijven van Azure Kubernetes Service-clusters
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Read | Een beheerd cluster ophalen |
 > | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/write | Hiermee maakt u een nieuw beheerd cluster of wordt er een bestaande bijgewerkt |
 > | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Een implementatie maken en beheren |
@@ -3188,6 +3138,254 @@ Hiermee wordt toegang verleend voor het lezen en schrijven van Azure Kubernetes 
 }
 ```
 
+### <a name="azure-kubernetes-service-rbac-admin"></a>RBAC-beheerder voor Azure Kubernetes service
+
+Hiermee kunt u alle resources beheren onder cluster/naam ruimte, behalve voor het bijwerken of verwijderen van resource quota's en naam ruimten. [Meer informatie](../aks/concepts-identity.md)
+
+> [!div class="mx-tableFixed"]
+> | Acties | Beschrijving |
+> | --- | --- |
+> | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
+> | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Een klassieke waarschuwing voor metrische gegevens maken en beheren |
+> | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Deployments/write | Hiermee wordt een implementatie gemaakt of bijgewerkt. |
+> | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/operationresults/Read | De resultaten van de abonnements bewerking ophalen. |
+> | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/Read | Hiermee wordt de lijst met abonnementen opgehaald. |
+> | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Hiermee worden resource groepen opgehaald of weer gegeven. |
+> | [Micro soft. ondersteuning](resource-provider-operations.md#microsoftsupport)/* | Een ondersteunings ticket maken en bijwerken |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/Action | De clusterUser-referentie van een beheerd cluster weer geven |
+> | **NotActions** |  |
+> | *geen* |  |
+> | **DataActions** |  |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/* |  |
+> | **NotDataActions** |  |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/resourcequotas/write | Schrijft resourcequotas |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/resourcequotas/Delete | Hiermee worden resourcequotas verwijderd |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/namespaces/write | Schrijft naam ruimten |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/namespaces/Delete | Verwijdert naam ruimten |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Lets you manage all resources under cluster/namespace, except update or delete resource quotas and namespaces.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/3498e952-d568-435e-9b2c-8d77e338d7f7",
+  "name": "3498e952-d568-435e-9b2c-8d77e338d7f7",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/write",
+        "Microsoft.Resources/subscriptions/operationresults/read",
+        "Microsoft.Resources/subscriptions/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.ContainerService/managedClusters/listClusterUserCredential/action"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.ContainerService/managedClusters/*"
+      ],
+      "notDataActions": [
+        "Microsoft.ContainerService/managedClusters/resourcequotas/write",
+        "Microsoft.ContainerService/managedClusters/resourcequotas/delete",
+        "Microsoft.ContainerService/managedClusters/namespaces/write",
+        "Microsoft.ContainerService/managedClusters/namespaces/delete"
+      ]
+    }
+  ],
+  "roleName": "Azure Kubernetes Service RBAC Admin",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="azure-kubernetes-service-rbac-cluster-admin"></a>De Azure Kubernetes service RBAC-cluster beheerder
+
+Hiermee kunt u alle resources in het cluster beheren. [Meer informatie](../aks/concepts-identity.md)
+
+> [!div class="mx-tableFixed"]
+> | Acties | Beschrijving |
+> | --- | --- |
+> | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
+> | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Een klassieke waarschuwing voor metrische gegevens maken en beheren |
+> | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Deployments/write | Hiermee wordt een implementatie gemaakt of bijgewerkt. |
+> | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/operationresults/Read | De resultaten van de abonnements bewerking ophalen. |
+> | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/Read | Hiermee wordt de lijst met abonnementen opgehaald. |
+> | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Hiermee worden resource groepen opgehaald of weer gegeven. |
+> | [Micro soft. ondersteuning](resource-provider-operations.md#microsoftsupport)/* | Een ondersteunings ticket maken en bijwerken |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/Action | De clusterUser-referentie van een beheerd cluster weer geven |
+> | **NotActions** |  |
+> | *geen* |  |
+> | **DataActions** |  |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/* |  |
+> | **NotDataActions** |  |
+> | *geen* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Lets you manage all resources in the cluster.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/b1ff04bb-8a4e-4dc4-8eb5-8693973ce19b",
+  "name": "b1ff04bb-8a4e-4dc4-8eb5-8693973ce19b",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/write",
+        "Microsoft.Resources/subscriptions/operationresults/read",
+        "Microsoft.Resources/subscriptions/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.ContainerService/managedClusters/listClusterUserCredential/action"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.ContainerService/managedClusters/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Azure Kubernetes Service RBAC Cluster Admin",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="azure-kubernetes-service-rbac-reader"></a>RBAC-lezer van de Azure Kubernetes service
+
+Hiermee kunt u alle resources in het cluster of de naam ruimte weer geven, behalve geheimen. [Meer informatie](../aks/concepts-identity.md)
+
+> [!div class="mx-tableFixed"]
+> | Acties | Beschrijving |
+> | --- | --- |
+> | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
+> | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Een klassieke waarschuwing voor metrische gegevens maken en beheren |
+> | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Deployments/write | Hiermee wordt een implementatie gemaakt of bijgewerkt. |
+> | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/operationresults/Read | De resultaten van de abonnements bewerking ophalen. |
+> | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/Read | Hiermee wordt de lijst met abonnementen opgehaald. |
+> | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Hiermee worden resource groepen opgehaald of weer gegeven. |
+> | [Micro soft. ondersteuning](resource-provider-operations.md#microsoftsupport)/* | Een ondersteunings ticket maken en bijwerken |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/Action | De clusterUser-referentie van een beheerd cluster weer geven |
+> | **NotActions** |  |
+> | *geen* |  |
+> | **DataActions** |  |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/*/Read |  |
+> | **NotDataActions** |  |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/RBAC.Authorization.K8S.io/*/Read |  |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/RBAC.Authorization.K8S.io/*/write |  |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Secrets/* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Lets you view all resources in cluster/namespace, except secrets.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/7f6c6a51-bcf8-42ba-9220-52d62157d7db",
+  "name": "7f6c6a51-bcf8-42ba-9220-52d62157d7db",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/write",
+        "Microsoft.Resources/subscriptions/operationresults/read",
+        "Microsoft.Resources/subscriptions/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.ContainerService/managedClusters/listClusterUserCredential/action"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.ContainerService/managedClusters/*/read"
+      ],
+      "notDataActions": [
+        "Microsoft.ContainerService/managedClusters/rbac.authorization.k8s.io/*/read",
+        "Microsoft.ContainerService/managedClusters/rbac.authorization.k8s.io/*/write",
+        "Microsoft.ContainerService/managedClusters/secrets/*"
+      ]
+    }
+  ],
+  "roleName": "Azure Kubernetes Service RBAC Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="azure-kubernetes-service-rbac-writer"></a>RBAC-schrijver van Azure Kubernetes service
+
+Hiermee kunt u alles in cluster/naam ruimte bijwerken, met uitzonde ring van resource quota's, naam ruimten, Pod-beveiligings beleid, aanvragen voor certificaat ondertekening, (cluster) rollen en (cluster) rollen bindingen. [Meer informatie](../aks/concepts-identity.md)
+
+> [!div class="mx-tableFixed"]
+> | Acties | Beschrijving |
+> | --- | --- |
+> | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
+> | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Een klassieke waarschuwing voor metrische gegevens maken en beheren |
+> | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Deployments/write | Hiermee wordt een implementatie gemaakt of bijgewerkt. |
+> | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/operationresults/Read | De resultaten van de abonnements bewerking ophalen. |
+> | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/Read | Hiermee wordt de lijst met abonnementen opgehaald. |
+> | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Hiermee worden resource groepen opgehaald of weer gegeven. |
+> | [Micro soft. ondersteuning](resource-provider-operations.md#microsoftsupport)/* | Een ondersteunings ticket maken en bijwerken |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/Action | De clusterUser-referentie van een beheerd cluster weer geven |
+> | **NotActions** |  |
+> | *geen* |  |
+> | **DataActions** |  |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/*/Read |  |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/*/write |  |
+> | **NotDataActions** |  |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/RBAC.Authorization.K8S.io/*/Read |  |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/RBAC.Authorization.K8S.io/*/write |  |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/namespaces/write | Schrijft naam ruimten |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/resourcequotas/write | Schrijft resourcequotas |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/certificates.K8S.io/certificatesigningrequests/write | Schrijft certificatesigningrequests |
+> | [Micro soft. container service](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/Policy/podsecuritypolicies/write | Schrijft podsecuritypolicies |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Lets you update everything in cluster/namespace, except resource quotas, namespaces, pod security policies, certificate signing requests, (cluster)roles and (cluster)role bindings.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/a7ffa36f-339b-4b5c-8bdf-e2c188b2c0eb",
+  "name": "a7ffa36f-339b-4b5c-8bdf-e2c188b2c0eb",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/write",
+        "Microsoft.Resources/subscriptions/operationresults/read",
+        "Microsoft.Resources/subscriptions/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.ContainerService/managedClusters/listClusterUserCredential/action"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.ContainerService/managedClusters/*/read",
+        "Microsoft.ContainerService/managedClusters/*/write"
+      ],
+      "notDataActions": [
+        "Microsoft.ContainerService/managedClusters/rbac.authorization.k8s.io/*/read",
+        "Microsoft.ContainerService/managedClusters/rbac.authorization.k8s.io/*/write",
+        "Microsoft.ContainerService/managedClusters/namespaces/write",
+        "Microsoft.ContainerService/managedClusters/resourcequotas/write",
+        "Microsoft.ContainerService/managedClusters/certificates.k8s.io/certificatesigningrequests/write",
+        "Microsoft.ContainerService/managedClusters/policy/podsecuritypolicies/write"
+      ]
+    }
+  ],
+  "roleName": "Azure Kubernetes Service RBAC Writer",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ## <a name="databases"></a>Databases
 
 
@@ -3196,9 +3394,8 @@ Hiermee wordt toegang verleend voor het lezen en schrijven van Azure Kubernetes 
 Kan gegevens van Azure Cosmos DB-account lezen. Zie [DocumentDB account Inzender](#documentdb-account-contributor) voor het beheren van Azure Cosmos DB accounts. [Meer informatie](../cosmos-db/role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/*/Read | Een verzameling lezen |
 > | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/readonlykeys/Action | Hiermee wordt de alleen-lezen sleutels van het database account gelezen. |
@@ -3248,9 +3445,8 @@ Kan gegevens van Azure Cosmos DB-account lezen. Zie [DocumentDB account Inzender
 Hiermee kunt u Azure Cosmos DB accounts beheren, maar geen toegang tot gegevens. Hiermee voor komt u toegang tot account sleutels en verbindings reeksen. [Meer informatie](../cosmos-db/role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Microsoft.DocumentDb](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/* |  |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Een klassieke waarschuwing voor metrische gegevens maken en beheren |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
@@ -3310,9 +3506,8 @@ Hiermee kunt u Azure Cosmos DB accounts beheren, maar geen toegang tot gegevens.
 Kan een terugzet aanvraag indienen voor een Cosmos DB-Data Base of een container voor een account [meer informatie](../cosmos-db/role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/backup/Action | Een aanvraag indienen voor het configureren van de back-up |
 > | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/Restore/Action | Een herstel aanvraag verzenden |
 > | **NotActions** |  |
@@ -3352,9 +3547,8 @@ Kan een terugzet aanvraag indienen voor een Cosmos DB-Data Base of een container
 Kan Azure Cosmos DB accounts beheren. Azure Cosmos DB is voorheen bekend als DocumentDB. [Meer informatie](../cosmos-db/role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Microsoft.DocumentDb](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/* | Azure Cosmos DB accounts maken en beheren |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Een klassieke waarschuwing voor metrische gegevens maken en beheren |
@@ -3406,10 +3600,10 @@ Kan Azure Cosmos DB accounts beheren. Azure Cosmos DB is voorheen bekend als Doc
 Hiermee kunt u redis-caches beheren, maar niet de toegang tot deze bestanden.
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
+> | [Micro soft. cache](resource-provider-operations.md#microsoftcache)/register/Action | Hiermee wordt de resource provider micro soft. cache geregistreerd bij een abonnement |
 > | [Micro soft. cache](resource-provider-operations.md#microsoftcache)/redis/* | Redis-caches maken en beheren |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Een klassieke waarschuwing voor metrische gegevens maken en beheren |
 > | [Micro soft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Hiermee worden de beschikbaarheids status waarden opgehaald voor alle resources in het opgegeven bereik |
@@ -3435,6 +3629,7 @@ Hiermee kunt u redis-caches beheren, maar niet de toegang tot deze bestanden.
     {
       "actions": [
         "Microsoft.Authorization/*/read",
+        "Microsoft.Cache/register/action",
         "Microsoft.Cache/redis/*",
         "Microsoft.Insights/alertRules/*",
         "Microsoft.ResourceHealth/availabilityStatuses/read",
@@ -3458,9 +3653,8 @@ Hiermee kunt u redis-caches beheren, maar niet de toegang tot deze bestanden.
 Hiermee kunt u SQL-data bases beheren, maar niet de toegang tot ze. U kunt ook hun beveiligings beleid of de bovenliggende SQL-servers niet beheren. [Meer informatie](../data-share/concepts-roles-permissions.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Een klassieke waarschuwing voor metrische gegevens maken en beheren |
 > | [Micro soft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Hiermee worden de beschikbaarheids status waarden opgehaald voor alle resources in het opgegeven bereik |
@@ -3566,9 +3760,8 @@ Hiermee kunt u SQL-data bases beheren, maar niet de toegang tot ze. U kunt ook h
 Hiermee beheert u beheerde SQL-instanties en de vereiste netwerk configuratie, maar kunt u geen toegang verlenen aan anderen.
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Hiermee worden de beschikbaarheids status waarden opgehaald voor alle resources in het opgegeven bereik |
 > | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Een implementatie maken en beheren |
 > | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Hiermee worden resource groepen opgehaald of weer gegeven. |
@@ -3634,9 +3827,8 @@ Hiermee beheert u beheerde SQL-instanties en de vereiste netwerk configuratie, m
 Hiermee kunt u het beveiligings beleid van SQL-servers en-data bases beheren, maar niet de toegang tot de services. [Meer informatie](../sql-database/sql-database-advanced-data-security.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Een klassieke waarschuwing voor metrische gegevens maken en beheren |
 > | [Micro soft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/subnets/joinViaServiceEndpoint/Action | Voegt een resource, zoals een opslag account of SQL database, toe aan een subnet. Niet alertable. |
@@ -3758,9 +3950,8 @@ Hiermee kunt u het beveiligings beleid van SQL-servers en-data bases beheren, ma
 Hiermee kunt u SQL-servers en-data bases beheren, maar niet de toegang tot ze en niet het beveiligings beleid. [Meer informatie](../sql-database/sql-database-aad-authentication-configure.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Een klassieke waarschuwing voor metrische gegevens maken en beheren |
 > | [Micro soft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Hiermee worden de beschikbaarheids status waarden opgehaald voor alle resources in het opgegeven bereik |
@@ -3875,9 +4066,8 @@ Hiermee kunt u SQL-servers en-data bases beheren, maar niet de toegang tot ze en
 Hiermee krijgt u volledige toegang tot Azure Event Hubs-resources. [Meer informatie](../event-hubs/authenticate-application.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. EventHub](resource-provider-operations.md#microsofteventhub)/* |  |
 > | **NotActions** |  |
 > | *geen* |  |
@@ -3917,9 +4107,8 @@ Hiermee krijgt u volledige toegang tot Azure Event Hubs-resources. [Meer informa
 Hiermee krijgt u toegang tot Azure Event Hubs-resources. [Meer informatie](../event-hubs/authenticate-application.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. EventHub](resource-provider-operations.md#microsofteventhub)/*/eventhubs/consumergroups/Read |  |
 > | **NotActions** |  |
 > | *geen* |  |
@@ -3959,9 +4148,8 @@ Hiermee krijgt u toegang tot Azure Event Hubs-resources. [Meer informatie](../ev
 Hiermee wordt toegang tot Azure Event Hubs-resources verzonden. [Meer informatie](../event-hubs/authenticate-application.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. EventHub](resource-provider-operations.md#microsofteventhub)/*/eventhubs/Read |  |
 > | **NotActions** |  |
 > | *geen* |  |
@@ -4001,9 +4189,8 @@ Hiermee wordt toegang tot Azure Event Hubs-resources verzonden. [Meer informatie
 Het maken en beheren van gegevens fabrieken, evenals onderliggende resources. [Meer informatie](../data-factory/concepts-roles-permissions.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. DataFactory](resource-provider-operations.md#microsoftdatafactory)/dataFactories/* | Maak en beheer gegevens fabrieken en onderliggende resources hierin. |
 > | [Micro soft. DataFactory](resource-provider-operations.md#microsoftdatafactory)/factories/* | Maak en beheer gegevens fabrieken en onderliggende resources hierin. |
@@ -4057,9 +4244,8 @@ Het maken en beheren van gegevens fabrieken, evenals onderliggende resources. [M
 Kan analyse gegevens opschonen [meer informatie](../azure-monitor/platform/personal-data-mgmt.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/Components/*/Read |  |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/Components/purge/Action | Gegevens uit Application Insights verwijderen |
 > | [Micro soft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/*/Read | Log Analytics-gegevens weer geven |
@@ -4103,9 +4289,8 @@ Kan analyse gegevens opschonen [meer informatie](../azure-monitor/platform/perso
 Hiermee kunt u HDInsight-cluster configuraties lezen en wijzigen. [Meer informatie](../hdinsight/hdinsight-migrate-granular-access-cluster-configurations.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. HDInsight](resource-provider-operations.md#microsofthdinsight)/*/Read |  |
 > | [Micro soft. HDInsight](resource-provider-operations.md#microsofthdinsight)/clusters/getGatewaySettings/Action | Gateway-instellingen voor HDInsight-cluster ophalen |
 > | [Micro soft. HDInsight](resource-provider-operations.md#microsofthdinsight)/clusters/updateGatewaySettings/Action | Gateway-instellingen voor HDInsight-cluster bijwerken |
@@ -4159,9 +4344,8 @@ Hiermee kunt u HDInsight-cluster configuraties lezen en wijzigen. [Meer informat
 Kan benodigde bewerkingen voor domein services lezen, maken, wijzigen en verwijderen die nodig zijn voor HDInsight Enterprise Security Package [meer informatie](../hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Aad](resource-provider-operations.md#microsoftaad)/*/Read |  |
 > | [Micro soft. Aad](resource-provider-operations.md#microsoftaad)/domainServices/*/Read |  |
 > | [Micro soft. Aad](resource-provider-operations.md#microsoftaad)/domainServices/oucontainer/* |  |
@@ -4203,9 +4387,8 @@ Kan benodigde bewerkingen voor domein services lezen, maken, wijzigen en verwijd
 Log Analytics Inzender kan alle bewakings gegevens lezen en controle-instellingen bewerken. Het bewerken van bewakings instellingen omvat het toevoegen van de VM-extensie aan Vm's; lezen van opslag account sleutels om het verzamelen van logboeken van Azure Storage te kunnen configureren. Automation-accounts maken en configureren; oplossingen toevoegen; en het configureren van Azure Diagnostics voor alle Azure-resources. [Meer informatie](../azure-monitor/platform/manage-access.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | */read | Lees resources van alle typen, met uitzonde ring van geheimen. |
 > | [Micro soft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/* |  |
 > | [Micro soft. ClassicCompute](resource-provider-operations.md#microsoftclassiccompute)/virtualMachines/Extensions/* |  |
@@ -4269,9 +4452,8 @@ Log Analytics Inzender kan alle bewakings gegevens lezen en controle-instellinge
 Log Analytics Reader kan alle bewakings gegevens weer geven en doorzoeken en controle-instellingen weer geven, inclusief het weer geven van de configuratie van Azure Diagnostics op alle Azure-resources. [Meer informatie](../azure-monitor/platform/manage-access.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | */read | Lees resources van alle typen, met uitzonde ring van geheimen. |
 > | [Micro soft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Analytics/query/Action | Zoek met een nieuwe engine. |
 > | [Micro soft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Search/Action | Hiermee wordt een zoek query uitgevoerd |
@@ -4320,9 +4502,8 @@ Log Analytics Reader kan alle bewakings gegevens weer geven en doorzoeken en con
 Hiermee krijgt u toegang tot de Block Chain-leden knooppunten [meer informatie](../blockchain/service/configure-aad.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Block Chain](resource-provider-operations.md#microsoftblockchain)/blockchainMembers/transactionNodes/Read | Hiermee wordt een lijst met bestaande Block Chain-leden transactie knooppunten opgehaald of weer gegeven. |
 > | **NotActions** |  |
 > | *geen* |  |
@@ -4365,9 +4546,8 @@ Hiermee krijgt u toegang tot de Block Chain-leden knooppunten [meer informatie](
 Hiermee kunt u sleutels van Cognitive Services maken, lezen, bijwerken, verwijderen en beheren. [Meer informatie](../cognitive-services/cognitive-services-virtual-networks.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/* |  |
 > | [Micro soft. features](resource-provider-operations.md#microsoftfeatures)/features/Read | Hiermee haalt u de functies van een abonnement op. |
@@ -4437,9 +4617,8 @@ Hiermee kunt u sleutels van Cognitive Services maken, lezen, bijwerken, verwijde
 Hiermee kunt u Cognitive Services gegevens lezen.
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | *geen* |  |
 > | **NotActions** |  |
 > | *geen* |  |
@@ -4477,9 +4656,8 @@ Hiermee kunt u Cognitive Services gegevens lezen.
 Hiermee kunt u de sleutels van Cognitive Services lezen en weer geven. [Meer informatie](../cognitive-services/authentication.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/*/Read |  |
 > | [Micro soft. CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/listkeys/Action | Lijst met sleutels |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/Read | Een klassieke waarschuwing voor metrische gegevens lezen |
@@ -4546,9 +4724,8 @@ Hiermee kunt u de sleutels van Cognitive Services lezen en weer geven. [Meer inf
 Biedt gebruikers de mogelijkheid om de mogelijkheden voor het converteren van sessies, rendering en diagnose te beheren voor Azure remote rendering [meer informatie](../remote-rendering/how-tos/authentication.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | *geen* |  |
 > | **NotActions** |  |
 > | *geen* |  |
@@ -4600,9 +4777,8 @@ Biedt gebruikers de mogelijkheid om de mogelijkheden voor het converteren van se
 Biedt gebruikers de mogelijkheid om sessie, rendering en diagnose te beheren voor de externe rendering van Azure. [Meer informatie](../remote-rendering/how-tos/authentication.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | *geen* |  |
 > | **NotActions** |  |
 > | *geen* |  |
@@ -4648,9 +4824,8 @@ Biedt gebruikers de mogelijkheid om sessie, rendering en diagnose te beheren voo
 Hiermee kunt u ruimtelijke ankers in uw account beheren, maar niet verwijderen. [meer informatie](../spatial-anchors/concepts/authentication.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | *geen* |  |
 > | **NotActions** |  |
 > | *geen* |  |
@@ -4698,9 +4873,8 @@ Hiermee kunt u ruimtelijke ankers in uw account beheren, maar niet verwijderen. 
 Hiermee kunt u ruimtelijke ankers in uw account beheren, waaronder het verwijderen van [meer informatie](../spatial-anchors/concepts/authentication.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | *geen* |  |
 > | **NotActions** |  |
 > | *geen* |  |
@@ -4750,9 +4924,8 @@ Hiermee kunt u ruimtelijke ankers in uw account beheren, waaronder het verwijder
 Hiermee kunt u eigenschappen van ruimtelijke ankers in uw account zoeken en lezen. [meer informatie](../spatial-anchors/concepts/authentication.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | *geen* |  |
 > | **NotActions** |  |
 > | *geen* |  |
@@ -4799,9 +4972,8 @@ Hiermee kunt u eigenschappen van ruimtelijke ankers in uw account zoeken en leze
 Kan de service en de Api's beheren [meer informatie](../api-management/api-management-role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/* | API Management-service maken en beheren |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Een klassieke waarschuwing voor metrische gegevens maken en beheren |
@@ -4851,9 +5023,8 @@ Kan de service en de Api's beheren [meer informatie](../api-management/api-manag
 Kan de service beheren, maar niet de Api's [meer informatie](../api-management/api-management-role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/*/Read | API Management service-exemplaren lezen |
 > | [Micro soft. ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/Backup/Action | Backup API Management-service naar de opgegeven container in een door de gebruiker opgegeven opslag account |
 > | [Micro soft. ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/Delete | API Management service-exemplaar verwijderen |
@@ -4921,9 +5092,8 @@ Kan de service beheren, maar niet de Api's [meer informatie](../api-management/a
 Alleen-lezen toegang tot de service en Api's [meer informatie](../api-management/api-management-role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/*/Read | API Management service-exemplaren lezen |
 > | [Micro soft. ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/Read | Meta gegevens voor een API Management service-exemplaar lezen |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
@@ -4977,9 +5147,8 @@ Alleen-lezen toegang tot de service en Api's [meer informatie](../api-management
 Hiermee krijgt u volledige toegang tot de app-configuratie gegevens. [Meer informatie](../azure-app-configuration/concept-enable-rbac.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | *geen* |  |
 > | **NotActions** |  |
 > | *geen* |  |
@@ -5021,9 +5190,8 @@ Hiermee krijgt u volledige toegang tot de app-configuratie gegevens. [Meer infor
 Hiermee staat u lees toegang toe voor app-configuratie gegevens. [Meer informatie](../azure-app-configuration/concept-enable-rbac.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | *geen* |  |
 > | **NotActions** |  |
 > | *geen* |  |
@@ -5061,9 +5229,8 @@ Hiermee staat u lees toegang toe voor app-configuratie gegevens. [Meer informati
 Hiermee krijgt u volledige toegang tot Azure Service Bus-resources. [Meer informatie](../service-bus-messaging/authenticate-application.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. ServiceBus](resource-provider-operations.md#microsoftservicebus)/* |  |
 > | **NotActions** |  |
 > | *geen* |  |
@@ -5103,9 +5270,8 @@ Hiermee krijgt u volledige toegang tot Azure Service Bus-resources. [Meer inform
 Hiermee krijgt u toegang tot Azure Service Bus-resources. [Meer informatie](../service-bus-messaging/authenticate-application.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. ServiceBus](resource-provider-operations.md#microsoftservicebus)/*/queues/Read |  |
 > | [Micro soft. ServiceBus](resource-provider-operations.md#microsoftservicebus)/*/topics/Read |  |
 > | [Micro soft. ServiceBus](resource-provider-operations.md#microsoftservicebus)/*/topics/Subscriptions/Read |  |
@@ -5149,9 +5315,8 @@ Hiermee krijgt u toegang tot Azure Service Bus-resources. [Meer informatie](../s
 Hiermee kunt u toegang tot Azure Service Bus resources verzenden. [Meer informatie](../service-bus-messaging/authenticate-application.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. ServiceBus](resource-provider-operations.md#microsoftservicebus)/*/queues/Read |  |
 > | [Micro soft. ServiceBus](resource-provider-operations.md#microsoftservicebus)/*/topics/Read |  |
 > | [Micro soft. ServiceBus](resource-provider-operations.md#microsoftservicebus)/*/topics/Subscriptions/Read |  |
@@ -5195,9 +5360,8 @@ Hiermee kunt u toegang tot Azure Service Bus resources verzenden. [Meer informat
 Hiermee kunt u Azure Stack registraties beheren.
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. AzureStack](resource-provider-operations.md#microsoftazurestack)/edgeSubscriptions/Read | De eigenschappen van een Azure Stack Edge-abonnement ophalen |
 > | [Micro soft. AzureStack](resource-provider-operations.md#microsoftazurestack)/Registrations/Products/*/Action |  |
 > | [Micro soft. AzureStack](resource-provider-operations.md#microsoftazurestack)/Registrations/Products/Read | Hiermee worden de eigenschappen van een Azure Stack Marketplace-product opgehaald |
@@ -5241,9 +5405,8 @@ Hiermee kunt u Azure Stack registraties beheren.
 Hiermee kunt u bewerkingen voor EventGrid-gebeurtenis abonnementen beheren. [Meer informatie](../event-grid/security-authorization.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/* |  |
 > | [Micro soft. EventGrid](resource-provider-operations.md#microsofteventgrid)/topicTypes/eventSubscriptions/Read | Globale gebeurtenis abonnementen weer geven op onderwerps type |
@@ -5297,9 +5460,8 @@ Hiermee kunt u bewerkingen voor EventGrid-gebeurtenis abonnementen beheren. [Mee
 Hiermee kunt u EventGrid-gebeurtenis abonnementen lezen. [Meer informatie](../event-grid/security-authorization.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/Read | Een eventSubscription lezen |
 > | [Micro soft. EventGrid](resource-provider-operations.md#microsofteventgrid)/topicTypes/eventSubscriptions/Read | Globale gebeurtenis abonnementen weer geven op onderwerps type |
@@ -5347,9 +5509,8 @@ Hiermee kunt u EventGrid-gebeurtenis abonnementen lezen. [Meer informatie](../ev
 De rol maakt gebruiker of Principal volledige toegang tot FHIR-gegevens [meer informatie](../healthcare-apis/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | *geen* |  |
 > | **NotActions** |  |
 > | *geen* |  |
@@ -5387,9 +5548,8 @@ De rol maakt gebruiker of Principal volledige toegang tot FHIR-gegevens [meer in
 De rol staat gebruikers of Principal toe om FHIR gegevens te lezen en exporteren [meer informatie](../healthcare-apis/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | *geen* |  |
 > | **NotActions** |  |
 > | *geen* |  |
@@ -5429,9 +5589,8 @@ De rol staat gebruikers of Principal toe om FHIR gegevens te lezen en exporteren
 De rol staat gebruikers of Principal toe om FHIR gegevens te lezen [meer informatie](../healthcare-apis/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | *geen* |  |
 > | **NotActions** |  |
 > | *geen* |  |
@@ -5469,9 +5628,8 @@ De rol staat gebruikers of Principal toe om FHIR gegevens te lezen [meer informa
 De rol staat gebruikers of Principal toe om FHIR gegevens te lezen en te schrijven. meer [informatie](../healthcare-apis/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | *geen* |  |
 > | **NotActions** |  |
 > | *geen* |  |
@@ -5511,9 +5669,8 @@ De rol staat gebruikers of Principal toe om FHIR gegevens te lezen en te schrijv
 Hiermee kunt u de integratie service omgevingen beheren, maar niet de toegang tot ze. [Meer informatie](../logic-apps/add-artifacts-integration-service-environment-ise.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. ondersteuning](resource-provider-operations.md#microsoftsupport)/* | Een ondersteunings ticket maken en bijwerken |
 > | [Micro soft. Logic](resource-provider-operations.md#microsoftlogic)/integrationServiceEnvironments/* |  |
@@ -5555,9 +5712,8 @@ Hiermee kunt u de integratie service omgevingen beheren, maar niet de toegang to
 Hiermee kunnen ontwikkel aars werk stromen, integratie accounts en API-verbindingen maken en bijwerken in integratie service omgevingen. [Meer informatie](../logic-apps/add-artifacts-integration-service-environment-ise.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. ondersteuning](resource-provider-operations.md#microsoftsupport)/* | Een ondersteunings ticket maken en bijwerken |
 > | [Micro soft. Logic](resource-provider-operations.md#microsoftlogic)/integrationServiceEnvironments/Read | Hiermee wordt de integratie service omgeving gelezen. |
@@ -5601,9 +5757,8 @@ Hiermee kunnen ontwikkel aars werk stromen, integratie accounts en API-verbindin
 Hiermee kunt u intelligente Systems-accounts beheren, maar niet de toegang tot ze.
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Een klassieke waarschuwing voor metrische gegevens maken en beheren |
 > | Micro soft. IntelligentSystems/accounts/* | Intelligente systeem accounts maken en beheren |
@@ -5653,9 +5808,8 @@ Hiermee kunt u intelligente Systems-accounts beheren, maar niet de toegang tot z
 Hiermee kunt u logische apps beheren, maar niet wijzigen. [Meer informatie](../logic-apps/logic-apps-securing-a-logic-app.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. ClassicStorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/listKeys/Action | Hier worden de toegangs sleutels voor de opslag accounts weer gegeven. |
 > | [Micro soft. ClassicStorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/Read | Retour neer het opslag account met het opgegeven account. |
@@ -5733,9 +5887,8 @@ Hiermee kunt u logische apps beheren, maar niet wijzigen. [Meer informatie](../l
 Hiermee kunt u logische apps lezen, inschakelen en uitschakelen, maar niet bewerken of bijwerken. [Meer informatie](../logic-apps/logic-apps-securing-a-logic-app.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/*/Read | Inzichten-waarschuwings regels lezen |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/metricAlerts/*/Read |  |
@@ -5808,9 +5961,8 @@ Hiermee kunt u logische apps lezen, inschakelen en uitschakelen, maar niet bewer
 Aan de gebruiker toegewezen identiteit maken, lezen, bijwerken en verwijderen [meer informatie](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. ManagedIdentity](resource-provider-operations.md#microsoftmanagedidentity)/userAssignedIdentities/Read | Hiermee wordt een bestaande door de gebruiker toegewezen identiteit opgehaald |
 > | [Micro soft. ManagedIdentity](resource-provider-operations.md#microsoftmanagedidentity)/userAssignedIdentities/write | Hiermee wordt een nieuwe door de gebruiker toegewezen identiteit gemaakt of worden de labels bijgewerkt die zijn gekoppeld aan een bestaande door de gebruiker toegewezen identiteit |
 > | [Micro soft. ManagedIdentity](resource-provider-operations.md#microsoftmanagedidentity)/userAssignedIdentities/Delete | Hiermee wordt een bestaande door de gebruiker toegewezen identiteit verwijderd |
@@ -5862,9 +6014,8 @@ Aan de gebruiker toegewezen identiteit maken, lezen, bijwerken en verwijderen [m
 Aan de gebruiker toegewezen identiteit lezen en toewijzen [meer informatie](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. ManagedIdentity](resource-provider-operations.md#microsoftmanagedidentity)/userAssignedIdentities/*/Read |  |
 > | [Micro soft. ManagedIdentity](resource-provider-operations.md#microsoftmanagedidentity)/userAssignedIdentities/*/Assign/Action |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
@@ -5917,9 +6068,8 @@ Aan de gebruiker toegewezen identiteit lezen en toewijzen [meer informatie](../a
 Azure Sentinel contributor [meer informatie](../sentinel/roles.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/* |  |
 > | [Micro soft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Analytics/query/Action | Zoek met een nieuwe engine. |
 > | [Micro soft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/*/Read | Log Analytics-gegevens weer geven |
@@ -5983,9 +6133,8 @@ Azure Sentinel contributor [meer informatie](../sentinel/roles.md)
 Azure Sentinel Reader [meer informatie](../sentinel/roles.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/*/Read |  |
 > | [Micro soft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/dataConnectorsCheckRequirements/Action | Gebruikers autorisatie en licentie controleren |
 > | [Micro soft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Analytics/query/Action | Zoek met een nieuwe engine. |
@@ -6053,9 +6202,8 @@ Azure Sentinel Reader [meer informatie](../sentinel/roles.md)
 Azure Sentinel responder [meer informatie](../sentinel/roles.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/*/Read |  |
 > | [Micro soft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/dataConnectorsCheckRequirements/Action | Gebruikers autorisatie en licentie controleren |
 > | [Micro soft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/cases/* |  |
@@ -6127,9 +6275,8 @@ Azure Sentinel responder [meer informatie](../sentinel/roles.md)
 Hiermee kunt u sleutel kluizen beheren, maar niet de toegang tot de kluis. [Meer informatie](../key-vault/general/secure-your-key-vault.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Een klassieke waarschuwing voor metrische gegevens maken en beheren |
 > | [Micro soft.-sleutel kluis](resource-provider-operations.md#microsoftkeyvault)/* |  |
@@ -6181,9 +6328,8 @@ Hiermee kunt u sleutel kluizen beheren, maar niet de toegang tot de kluis. [Meer
 Machtigingen voor Security Center weer geven en bijwerken. Dezelfde machtigingen als de rol van beveiligings lezer en kunnen ook het beveiligings beleid bijwerken en waarschuwingen en aanbevelingen negeren. [Meer informatie](../security-center/security-center-permissions.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/policyAssignments/* | Beleids toewijzingen maken en beheren |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/policyDefinitions/* | Beleids definities maken en beheren |
@@ -6241,9 +6387,8 @@ Machtigingen voor Security Center weer geven en bijwerken. Dezelfde machtigingen
 Hiermee kunt u evaluaties naar Security Center pushen
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Security](resource-provider-operations.md#microsoftsecurity)/assessments/write | Beveiligings beoordelingen maken of bijwerken voor uw abonnement |
 > | **NotActions** |  |
 > | *geen* |  |
@@ -6281,9 +6426,8 @@ Hiermee kunt u evaluaties naar Security Center pushen
 Dit is een verouderde rol. Gebruik in plaats daarvan beveiligings beheerder.
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. ClassicCompute](resource-provider-operations.md#microsoftclassiccompute)/*/Read | Configuratie-informatie voor klassieke virtuele machines lezen |
 > | [Micro soft. ClassicCompute](resource-provider-operations.md#microsoftclassiccompute)/virtualMachines/*/write | Configuratie voor klassieke virtuele machines schrijven |
@@ -6339,9 +6483,8 @@ Dit is een verouderde rol. Gebruik in plaats daarvan beveiligings beheerder.
 Machtigingen voor Security Center weer geven. Kan aanbevelingen, waarschuwingen, een beveiligings beleid en beveiligings status weer geven, maar kan geen wijzigingen aanbrengen. [Meer informatie](../security-center/security-center-permissions.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Een klassieke waarschuwing voor metrische gegevens maken en beheren |
 > | [Micro soft. operationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/*/Read | Log Analytics-gegevens weer geven |
@@ -6396,9 +6539,8 @@ Machtigingen voor Security Center weer geven. Kan aanbevelingen, waarschuwingen,
 Met kunt u verbinding maken met uw virtuele machines in uw Azure DevTest Labs, deze starten, opnieuw opstarten en afsluiten. [Meer informatie](../devtest-labs/devtest-lab-add-devtest-user.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. Compute](resource-provider-operations.md#microsoftcompute)/availabilitySets/Read | De eigenschappen van een beschikbaarheidsset ophalen |
 > | [Micro soft. Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/*/Read | De eigenschappen van een virtuele machine lezen (VM-grootte, runtime status, VM-extensies, enzovoort) |
@@ -6497,17 +6639,14 @@ Met kunt u verbinding maken met uw virtuele machines in uw Azure DevTest Labs, d
 
 ### <a name="lab-creator"></a>Lab-Maker
 
-Met kunt u uw beheerde Labs maken, beheren en verwijderen in uw Azure Lab-accounts. [Meer informatie](../lab-services/add-lab-creator.md)
+Met kunt u nieuwe Labs maken onder uw Azure Lab-accounts. [Meer informatie](../lab-services/add-lab-creator.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. LabServices](resource-provider-operations.md#microsoftlabservices)/labAccounts/*/Read |  |
 > | [Micro soft. LabServices](resource-provider-operations.md#microsoftlabservices)/labAccounts/createLab/Action | Een lab maken in een Lab-account. |
-> | [Micro soft. LabServices](resource-provider-operations.md#microsoftlabservices)/labAccounts/sizes/getRegionalAvailability/Action |  |
-> | [Micro soft. LabServices](resource-provider-operations.md#microsoftlabservices)/labAccounts/getRegionalAvailability/Action | Informatie over regionale Beschik baarheid ophalen voor elke grootte categorie die is geconfigureerd met een Lab-account |
 > | [Micro soft. LabServices](resource-provider-operations.md#microsoftlabservices)/labAccounts/getPricingAndAvailability/Action | Profiteer van de prijzen en beschik baarheid van combi Naties van groottes, geografi en besturings systemen voor het lab-account. |
 > | [Micro soft. LabServices](resource-provider-operations.md#microsoftlabservices)/labAccounts/getRestrictionsAndUsage/Action | Kern beperkingen en gebruik voor dit abonnement ophalen |
 > | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Hiermee worden resource groepen opgehaald of weer gegeven. |
@@ -6524,7 +6663,7 @@ Met kunt u uw beheerde Labs maken, beheren en verwijderen in uw Azure Lab-accoun
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets you create, manage, delete your managed labs under your Azure Lab Accounts.",
+  "description": "Lets you create new labs under your Azure Lab Accounts.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/b97fb8bc-a8b2-4522-a38b-dd33c7e65ead",
   "name": "b97fb8bc-a8b2-4522-a38b-dd33c7e65ead",
   "permissions": [
@@ -6533,8 +6672,6 @@ Met kunt u uw beheerde Labs maken, beheren en verwijderen in uw Azure Lab-accoun
         "Microsoft.Authorization/*/read",
         "Microsoft.LabServices/labAccounts/*/read",
         "Microsoft.LabServices/labAccounts/createLab/action",
-        "Microsoft.LabServices/labAccounts/sizes/getRegionalAvailability/action",
-        "Microsoft.LabServices/labAccounts/getRegionalAvailability/action",
         "Microsoft.LabServices/labAccounts/getPricingAndAvailability/action",
         "Microsoft.LabServices/labAccounts/getRestrictionsAndUsage/action",
         "Microsoft.Resources/subscriptions/resourceGroups/read",
@@ -6559,9 +6696,8 @@ Met kunt u uw beheerde Labs maken, beheren en verwijderen in uw Azure Lab-accoun
 Kan Application Insights-onderdelen beheren [meer informatie](../azure-monitor/app/resources-roles-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Klassieke waarschuwings regels maken en beheren |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/metricAlerts/* | Nieuwe waarschuwings regels maken en beheren |
@@ -6615,9 +6751,8 @@ Kan Application Insights-onderdelen beheren [meer informatie](../azure-monitor/a
 Geeft gebruikers machtigingen voor het weer geven en downloaden van moment opnamen van fout opsporing die zijn verzameld met de Application Insights Snapshot Debugger. Houd er rekening mee dat deze machtigingen niet zijn opgenomen in de rollen [eigenaar](#owner) of [Inzender](#contributor) . Wanneer gebruikers de Application Insights Snapshot Debugger rol geven, moet u de rol rechtstreeks aan de gebruiker toekennen. De rol wordt niet herkend wanneer deze wordt toegevoegd aan een aangepaste rol. [Meer informatie](../azure-monitor/app/snapshot-debugger.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Een klassieke waarschuwing voor metrische gegevens maken en beheren |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/Components/*/Read |  |
@@ -6665,9 +6800,8 @@ Geeft gebruikers machtigingen voor het weer geven en downloaden van moment opnam
 Kan alle bewakings gegevens lezen en controle-instellingen bewerken. Zie ook aan de [slag met rollen, machtigingen en beveiliging met Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/roles-permissions-security#built-in-monitoring-roles). [Meer informatie](../azure-monitor/platform/roles-permissions-security.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | */read | Lees resources van alle typen, met uitzonde ring van geheimen. |
 > | [Micro soft. AlertsManagement](resource-provider-operations.md#microsoftalertsmanagement)/Alerts/* |  |
 > | [Micro soft. AlertsManagement](resource-provider-operations.md#microsoftalertsmanagement)/alertsSummary/* |  |
@@ -6765,9 +6899,8 @@ Kan alle bewakings gegevens lezen en controle-instellingen bewerken. Zie ook aan
 Hiermee schakelt u de metrische gegevens voor publicatie in op Azure-resources [meer informatie](../azure-monitor/insights/container-insights-update-metrics.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/register/Action | De micro soft Insights-provider registreren |
 > | [Micro soft. ondersteuning](resource-provider-operations.md#microsoftsupport)/* | Een ondersteunings ticket maken en bijwerken |
 > | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Hiermee worden resource groepen opgehaald of weer gegeven. |
@@ -6811,9 +6944,8 @@ Hiermee schakelt u de metrische gegevens voor publicatie in op Azure-resources [
 Kan alle bewakings gegevens (metrieken, logboeken, enzovoort) lezen. Zie ook aan de [slag met rollen, machtigingen en beveiliging met Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/roles-permissions-security#built-in-monitoring-roles). [Meer informatie](../azure-monitor/platform/roles-permissions-security.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | */read | Lees resources van alle typen, met uitzonde ring van geheimen. |
 > | [Micro soft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Search/Action | Hiermee wordt een zoek query uitgevoerd |
 > | [Micro soft. ondersteuning](resource-provider-operations.md#microsoftsupport)/* | Een ondersteunings ticket maken en bijwerken |
@@ -6855,9 +6987,8 @@ Kan alle bewakings gegevens (metrieken, logboeken, enzovoort) lezen. Zie ook aan
 Kan gedeelde werkmappen opslaan. [Meer informatie](../sentinel/tutorial-monitor-your-data.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/Workbooks/write | Een werkmap maken of bijwerken |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/Workbooks/Delete | Een werkmap verwijderen |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/Workbooks/Read | Een werkmap lezen |
@@ -6899,9 +7030,8 @@ Kan gedeelde werkmappen opslaan. [Meer informatie](../sentinel/tutorial-monitor-
 Kan werkmappen lezen. [Meer informatie](../sentinel/tutorial-monitor-your-data.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [micro soft. Insights](resource-provider-operations.md#microsoftinsights)/Workbooks/Read | Een werkmap lezen |
 > | **NotActions** |  |
 > | *geen* |  |
@@ -6942,9 +7072,8 @@ Kan werkmappen lezen. [Meer informatie](../sentinel/tutorial-monitor-your-data.m
 Maak en beheer taken met behulp van Automation-Runbooks. [Meer informatie](../automation/automation-role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/hybridRunbookWorkerGroups/Read | Hybrid Runbook Worker resources lezen |
 > | [Micro soft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/Jobs/Read | Hiermee wordt een Azure Automation-taak opgehaald |
@@ -7006,9 +7135,8 @@ Maak en beheer taken met behulp van Automation-Runbooks. [Meer informatie](../au
 Automatiserings operatoren kunnen taken starten, stoppen, onderbreken en hervatten [meer informatie](../automation/automation-role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/hybridRunbookWorkerGroups/Read | Hybrid Runbook Worker resources lezen |
 > | [Micro soft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/Jobs/Read | Hiermee wordt een Azure Automation-taak opgehaald |
@@ -7086,9 +7214,8 @@ Automatiserings operatoren kunnen taken starten, stoppen, onderbreken en hervatt
 Runbook-eigenschappen lezen: om taken van het Runbook te kunnen maken. [Meer informatie](../automation/automation-role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/runbooks/Read | Hiermee wordt een Azure Automation runbook opgehaald |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Een klassieke waarschuwing voor metrische gegevens maken en beheren |
@@ -7136,9 +7263,8 @@ Runbook-eigenschappen lezen: om taken van het Runbook te kunnen maken. [Meer inf
 Kan onboarding van met Azure verbonden computers uitvoeren. [Meer informatie](../azure-arc/servers/onboard-service-principal.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/Read | Alle Azure-Arc-machines lezen |
 > | [Micro soft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/write | Schrijft een Azure-Arc-machine |
 > | [Micro soft. GuestConfiguration](resource-provider-operations.md#microsoftguestconfiguration)/guestConfigurationAssignments/Read | Toewijzing van gast configuratie ophalen. |
@@ -7180,9 +7306,8 @@ Kan onboarding van met Azure verbonden computers uitvoeren. [Meer informatie](..
 Kan met Azure verbonden computers lezen, schrijven, verwijderen en onboarden.
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/Read | Alle Azure-Arc-machines lezen |
 > | [Micro soft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/write | Schrijft een Azure-Arc-machine |
 > | [Micro soft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/Delete | Hiermee wordt een Azure-Arc-machine verwijderd |
@@ -7230,9 +7355,8 @@ Kan met Azure verbonden computers lezen, schrijven, verwijderen en onboarden.
 Hiermee staat u lees toegang tot facturerings gegevens toe [meer informatie](../cost-management-billing/manage/manage-billing-access.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. billing](resource-provider-operations.md#microsoftbilling)/*/Read | Facturerings gegevens lezen |
 > | [Micro soft. commerce](resource-provider-operations.md#microsoftcommerce)/*/Read |  |
@@ -7277,14 +7401,13 @@ Hiermee staat u lees toegang tot facturerings gegevens toe [meer informatie](../
 }
 ```
 
-### <a name="blueprint-contributor"></a>Blauw druk bijdrager
+### <a name="blueprint-contributor"></a>Blauwdrukinzender
 
-Kan blauw drukken-definities beheren, maar niet toewijzen. [Meer informatie](../governance/blueprints/overview.md)
+Blauwdrukinzenders kunnen blauwdrukdefinities beheren, maar deze niet toewijzen. [Meer informatie](../governance/blueprints/overview.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. blauw druk](resource-provider-operations.md#microsoftblueprint)/Blueprints/* | Maak en beheer blauw drukken-definities of blauw drukken-artefacten. |
 > | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Hiermee worden resource groepen opgehaald of weer gegeven. |
@@ -7325,14 +7448,13 @@ Kan blauw drukken-definities beheren, maar niet toewijzen. [Meer informatie](../
 }
 ```
 
-### <a name="blueprint-operator"></a>Blauw druk-operator
+### <a name="blueprint-operator"></a>Blauwdrukoperator
 
 Kan bestaande gepubliceerde blauw drukken toewijzen, maar kan geen nieuwe blauw drukken maken. Houd er rekening mee dat dit alleen werkt als de toewijzing wordt uitgevoerd met een door de gebruiker toegewezen beheerde identiteit. [Meer informatie](../governance/blueprints/overview.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. blauw druk](resource-provider-operations.md#microsoftblueprint)/blueprintAssignments/* | Maak maken en beheren van blauw druk-toewijzingen. |
 > | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Hiermee worden resource groepen opgehaald of weer gegeven. |
@@ -7378,9 +7500,8 @@ Kan bestaande gepubliceerde blauw drukken toewijzen, maar kan geen nieuwe blauw 
 Kan kosten bekijken en kosten configuratie beheren (bijvoorbeeld budgetten, exports) [meer informatie](../cost-management-billing/costs/understand-work-scopes.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. verbruik](resource-provider-operations.md#microsoftconsumption)/* |  |
 > | [Micro soft. CostManagement](resource-provider-operations.md#microsoftcostmanagement)/* |  |
 > | [Micro soft. Bill](resource-provider-operations.md#microsoftbilling)/billingPeriods/Read |  |
@@ -7434,9 +7555,8 @@ Kan kosten bekijken en kosten configuratie beheren (bijvoorbeeld budgetten, expo
 Kan kosten gegevens en-configuratie weer geven (bijvoorbeeld budgetten, exporten) [meer informatie](../cost-management-billing/costs/understand-work-scopes.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. verbruik](resource-provider-operations.md#microsoftconsumption)/*/Read |  |
 > | [Micro soft. CostManagement](resource-provider-operations.md#microsoftcostmanagement)/*/Read |  |
 > | [Micro soft. Bill](resource-provider-operations.md#microsoftbilling)/billingPeriods/Read |  |
@@ -7490,9 +7610,8 @@ Kan kosten gegevens en-configuratie weer geven (bijvoorbeeld budgetten, exporten
 Hiermee kunnen gebruikers hiërarchie-instellingen bewerken en verwijderen
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/Settings/write | Hiermee worden instellingen voor de beheer groeps hiërarchie gemaakt of bijgewerkt. |
 > | [Micro soft. Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/Settings/Delete | Hiermee verwijdert u de instellingen van de beheer groeps hiërarchie. |
 > | **NotActions** |  |
@@ -7532,9 +7651,8 @@ Hiermee kunnen gebruikers hiërarchie-instellingen bewerken en verwijderen
 Maakt het mogelijk om beheerde toepassings resources te maken.
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | */read | Lees resources van alle typen, met uitzonde ring van geheimen. |
 > | [Micro soft. Solutions](resource-provider-operations.md#microsoftsolutions)/Applications/* |  |
 > | [Micro soft. Solutions](resource-provider-operations.md#microsoftsolutions)/register/Action | Registreren bij oplossingen. |
@@ -7580,9 +7698,8 @@ Maakt het mogelijk om beheerde toepassings resources te maken.
 Hiermee kunt u acties voor beheerde toepassings bronnen lezen en uitvoeren
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | */read | Lees resources van alle typen, met uitzonde ring van geheimen. |
 > | [Micro soft. Solutions](resource-provider-operations.md#microsoftsolutions)/Applications/Read | Hiermee haalt u een lijst met toepassingen op. |
 > | [Micro soft. Solutions](resource-provider-operations.md#microsoftsolutions)/*/Action |  |
@@ -7624,9 +7741,8 @@ Hiermee kunt u acties voor beheerde toepassings bronnen lezen en uitvoeren
 Hiermee kunt u bronnen in een beheerde app lezen en JIT-toegang aanvragen.
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | */read | Lees resources van alle typen, met uitzonde ring van geheimen. |
 > | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Een implementatie maken en beheren |
 > | [Micro soft. Solutions](resource-provider-operations.md#microsoftsolutions)/jitRequests/* |  |
@@ -7668,9 +7784,8 @@ Hiermee kunt u bronnen in een beheerde app lezen en JIT-toegang aanvragen.
 Met de functie voor registratie toewijzing van beheerde services verwijderen kan de Tenant gebruikers beheren de registratie toewijzing verwijderen die aan de Tenant is toegewezen. [Meer informatie](../lighthouse/how-to/remove-delegation.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. ManagedServices](resource-provider-operations.md#microsoftmanagedservices)/registrationAssignments/Read | Hiermee wordt een lijst met beheerde services registratie toewijzingen opgehaald. |
 > | [Micro soft. ManagedServices](resource-provider-operations.md#microsoftmanagedservices)/registrationAssignments/Delete | Hiermee wordt de registratie toewijzing van beheerde services verwijderd. |
 > | [Micro soft. ManagedServices](resource-provider-operations.md#microsoftmanagedservices)/operationStatuses/Read | Hiermee wordt de bewerkings status van de resource gelezen. |
@@ -7712,14 +7827,14 @@ Met de functie voor registratie toewijzing van beheerde services verwijderen kan
 Rol Inzender beheer groep [meer informatie](../governance/management-groups/overview.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/Delete | Beheer groep verwijderen. |
 > | [Micro soft. Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/Read | Beheer groepen voor de geverifieerde gebruiker weer geven. |
 > | [Micro soft. Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/Subscriptions/Delete | Het abonnement van de beheer groep wordt ontkoppeld. |
 > | [Micro soft. Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/Subscriptions/write | Het bestaande abonnement wordt gekoppeld aan de beheer groep. |
 > | [Micro soft. Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/write | Een beheer groep maken of bijwerken. |
+> | [Micro soft. Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/Subscriptions/Read | Een lijst met abonnementen onder de opgegeven beheer groep. |
 > | **NotActions** |  |
 > | *geen* |  |
 > | **DataActions** |  |
@@ -7742,7 +7857,8 @@ Rol Inzender beheer groep [meer informatie](../governance/management-groups/over
         "Microsoft.Management/managementGroups/read",
         "Microsoft.Management/managementGroups/subscriptions/delete",
         "Microsoft.Management/managementGroups/subscriptions/write",
-        "Microsoft.Management/managementGroups/write"
+        "Microsoft.Management/managementGroups/write",
+        "Microsoft.Management/managementGroups/subscriptions/read"
       ],
       "notActions": [],
       "dataActions": [],
@@ -7760,10 +7876,10 @@ Rol Inzender beheer groep [meer informatie](../governance/management-groups/over
 Rol van lezer van beheer groep
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/Read | Beheer groepen voor de geverifieerde gebruiker weer geven. |
+> | [Micro soft. Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/Subscriptions/Read | Een lijst met abonnementen onder de opgegeven beheer groep. |
 > | **NotActions** |  |
 > | *geen* |  |
 > | **DataActions** |  |
@@ -7782,7 +7898,8 @@ Rol van lezer van beheer groep
   "permissions": [
     {
       "actions": [
-        "Microsoft.Management/managementGroups/read"
+        "Microsoft.Management/managementGroups/read",
+        "Microsoft.Management/managementGroups/subscriptions/read"
       ],
       "notActions": [],
       "dataActions": [],
@@ -7800,9 +7917,8 @@ Rol van lezer van beheer groep
 Hiermee kunt u New Relic Application Performance Management accounts en-toepassingen beheren, maar niet de toegang tot ze.
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Een klassieke waarschuwing voor metrische gegevens maken en beheren |
 > | [Micro soft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Hiermee worden de beschikbaarheids status waarden opgehaald voor alle resources in het opgegeven bereik |
@@ -7852,9 +7968,8 @@ Hiermee kunt u New Relic Application Performance Management accounts en-toepassi
 Hiermee wordt lees toegang tot bron beleid en schrijf toegang tot bron onderdeel beleids gebeurtenissen toegestaan. [Meer informatie](../governance/policy/concepts/policy-for-kubernetes.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/policyassignments/Read | Informatie over een beleids toewijzing ophalen. |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/policydefinitions/Read | Informatie over een beleids definitie ophalen. |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/policysetdefinitions/Read | Informatie over een definitie van een beleidsset ophalen. |
@@ -7900,9 +8015,8 @@ Hiermee wordt lees toegang tot bron beleid en schrijf toegang tot bron onderdeel
 Gebruikers met rechten voor het maken/wijzigen van het resource beleid, het maken van een ondersteunings ticket en het lezen van resources/hiërarchie. [Meer informatie](../governance/policy/overview.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | */read | Lees resources van alle typen, met uitzonde ring van geheimen. |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/policyassignments/* | Beleids toewijzingen maken en beheren |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/policydefinitions/* | Beleids definities maken en beheren |
@@ -7950,9 +8064,8 @@ Gebruikers met rechten voor het maken/wijzigen van het resource beleid, het make
 Hiermee kunt u Site Recovery-service beheren, behalve het maken van de kluis en roltoewijzing [meer informatie](../site-recovery/site-recovery-role-based-linked-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Een klassieke waarschuwing voor metrische gegevens maken en beheren |
 > | [Micro soft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/Read | De virtuele-netwerk definitie ophalen |
@@ -8044,9 +8157,8 @@ Hiermee kunt u Site Recovery-service beheren, behalve het maken van de kluis en 
 Met kunt u failover en failback uitvoeren, maar geen andere Site Recovery beheer bewerkingen [meer informatie](../site-recovery/site-recovery-role-based-linked-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Een klassieke waarschuwing voor metrische gegevens maken en beheren |
 > | [Micro soft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/Read | De virtuele-netwerk definitie ophalen |
@@ -8198,9 +8310,8 @@ Met kunt u failover en failback uitvoeren, maar geen andere Site Recovery beheer
 Hiermee kunt u de Site Recovery status weer geven, maar geen andere [beheer bewerkingen uitvoeren](../site-recovery/site-recovery-role-based-linked-access-control.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. Recovery Services](resource-provider-operations.md#microsoftrecoveryservices)/locations/allocatedStamp/Read | GetAllocatedStamp is een interne bewerking die wordt gebruikt door de service |
 > | [Micro soft. Recovery Services](resource-provider-operations.md#microsoftrecoveryservices)/vaults/extendedInformation/Read | Met de bewerking uitgebreide informatie ophalen wordt de uitgebreide informatie opgehaald van een object dat de Azure-resource van het type? kluis vertegenwoordigt? |
@@ -8298,9 +8409,8 @@ Hiermee kunt u de Site Recovery status weer geven, maar geen andere [beheer bewe
 Hiermee kunt u ondersteunings aanvragen maken en beheren voor [meer informatie](../azure-portal/supportability/how-to-create-azure-support-request.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Hiermee worden resource groepen opgehaald of weer gegeven. |
 > | [Micro soft. ondersteuning](resource-provider-operations.md#microsoftsupport)/* | Een ondersteunings ticket maken en bijwerken |
@@ -8342,9 +8452,8 @@ Hiermee kunt u ondersteunings aanvragen maken en beheren voor [meer informatie](
 Hiermee kunt u tags op entiteiten beheren zonder dat u toegang hebt tot de entiteiten zelf. [Meer informatie](../azure-resource-manager/management/tag-resources.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Hiermee worden resource groepen opgehaald of weer gegeven. |
 > | [Micro soft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/resources/Read | Hiermee haalt u de resources voor de resource groep op. |
@@ -8391,7 +8500,7 @@ Hiermee kunt u tags op entiteiten beheren zonder dat u toegang hebt tot de entit
 }
 ```
 
-## <a name="other"></a>Anders
+## <a name="other"></a>Overige
 
 
 ### <a name="biztalk-contributor"></a>BizTalk-bijdrager
@@ -8399,9 +8508,8 @@ Hiermee kunt u tags op entiteiten beheren zonder dat u toegang hebt tot de entit
 Hiermee kunt u BizTalk Services beheren, maar niet de toegang tot de service.
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | Micro soft. BizTalkServices/BizTalk/* | BizTalk Services maken en beheren |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Een klassieke waarschuwing voor metrische gegevens maken en beheren |
@@ -8451,9 +8559,8 @@ Hiermee kunt u BizTalk Services beheren, maar niet de toegang tot de service.
 Hiermee kunnen gebruikers de toepassingen in een toepassings groep gebruiken. [Meer informatie](../virtual-desktop/delegated-access-virtual-desktop.md)
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | *geen* |  |
 > | **NotActions** |  |
 > | *geen* |  |
@@ -8491,9 +8598,8 @@ Hiermee kunnen gebruikers de toepassingen in een toepassings groep gebruiken. [M
 Hiermee kunt u scheduler-taak verzamelingen beheren, maar niet de toegang tot deze taken.
 
 > [!div class="mx-tableFixed"]
-> |  |  |
+> | Acties | Beschrijving |
 > | --- | --- |
-> | **Acties** |  |
 > | [Micro soft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rollen en roltoewijzingen lezen |
 > | [Micro soft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Een klassieke waarschuwing voor metrische gegevens maken en beheren |
 > | [Micro soft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Hiermee worden de beschikbaarheids status waarden opgehaald voor alle resources in het opgegeven bereik |

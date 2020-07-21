@@ -15,11 +15,12 @@ ms.date: 05/08/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 3dc2834af501d3ecc2ff44c2511916447f27cfae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c6f9203385c47da9803fb05358889d00d77d3e5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82996618"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511633"
 ---
 # <a name="understand-azure-role-definitions"></a>Informatie over Azure Role-definities
 
@@ -27,7 +28,7 @@ Als u wilt weten hoe een Azure-rol werkt of als u uw eigen [aangepaste Azure-rol
 
 ## <a name="role-definition"></a>Roldefinitie ophalen
 
-Een *roldefinitie* is een verzameling machtigingen. Dit wordt soms gewoon een *rol* genoemd. Een roldefinitie beschijft de bewerkingen die kunnen worden uitgevoerd, zoals lezen, schrijven en verwijderen. Het kan ook een overzicht geven van de bewerkingen die zijn uitgesloten van toegestane bewerkingen of bewerkingen met betrekking tot onderliggende gegevens.
+Een *roldefinitie* is een verzameling machtigingen. Het wordt soms gewoon een *rol*genoemd. Een roldefinitie beschijft de bewerkingen die kunnen worden uitgevoerd, zoals lezen, schrijven en verwijderen. Het kan ook een overzicht geven van de bewerkingen die zijn uitgesloten van toegestane bewerkingen of bewerkingen met betrekking tot onderliggende gegevens.
 
 Hieronder ziet u een voor beeld van de eigenschappen in een roldefinitie wanneer deze worden weer gegeven met Azure PowerShell:
 
@@ -79,7 +80,7 @@ Bewerkingen worden opgegeven met teken reeksen die de volgende indeling hebben:
 
 Het `{action}` gedeelte van een bewerkings reeks geeft u het type bewerkingen op dat u kunt uitvoeren op een resource type. U ziet bijvoorbeeld de volgende subtekenreeksen in `{action}` :
 
-| Subtekenreeks van actie    | Description         |
+| Subtekenreeks van actie    | Beschrijving         |
 | ------------------- | ------------------- |
 | `*` | Het Joker teken verleent toegang tot alle bewerkingen die overeenkomen met de teken reeks. |
 | `read` | Hiermee schakelt u lees bewerkingen in (GET). |
@@ -89,7 +90,7 @@ Het `{action}` gedeelte van een bewerkings reeks geeft u het type bewerkingen op
 
 ### <a name="role-definition-example"></a>Voor beeld van Role definition
 
-Hier ziet u [de roldefinitie-rol zoals](built-in-roles.md#contributor) deze wordt weer gegeven in azure PowerShell en Azure cli. De jokerbewerking (`*`) onder `Actions` geeft aan dat de principal die aan deze rol is toegewezen alle acties kan uitvoeren, of met andere woorden, alles kan beheren. Dit omvat acties die in de toekomst zijn gedefinieerd, wanneer Azure nieuwe resourcetypen toevoegt. De bewerkingen onder `NotActions` worden afgetrokken van `Actions`. In het geval van de rol van [Lezer](built-in-roles.md#contributor) verwijdert `NotActions` de mogelijkheid van deze rol om de toegang tot resources te beheren en ook toegang tot resources toe te wijzen.
+Hier ziet u [de roldefinitie-rol zoals](built-in-roles.md#contributor) deze wordt weer gegeven in azure PowerShell en Azure cli. De jokerbewerking (`*`) onder `Actions` geeft aan dat de principal die aan deze rol is toegewezen alle acties kan uitvoeren, of met andere woorden, alles kan beheren. Dit omvat acties die in de toekomst zijn gedefinieerd, wanneer Azure nieuwe resourcetypen toevoegt. De bewerkingen onder `NotActions` worden afgetrokken van `Actions`. In het geval van de rol [Inzender](built-in-roles.md#contributor) `NotActions` verwijdert deze rol de mogelijkheid om de toegang tot resources te beheren en ook Azure Blueprint toewijzingen te beheren.
 
 De rol Inzender zoals weer gegeven in Azure PowerShell:
 
@@ -264,7 +265,7 @@ Als u gegevens bewerkingen wilt bekijken en gebruiken, moet u beschikken over de
 | Hulpprogramma  | Versie  |
 |---------|---------|
 | [Azure PowerShell](/powershell/azure/install-az-ps) | 1.1.0 of hoger |
-| [Azure-CLI](/cli/azure/install-azure-cli) | 2.0.30 of hoger |
+| [Azure CLI](/cli/azure/install-azure-cli) | 2.0.30 of hoger |
 | [Azure voor .NET](/dotnet/azure/) | 2.8.0-Preview of hoger |
 | [Azure SDK voor Go](/azure/go/azure-sdk-go-install) | 15.0.0 of hoger |
 | [Azure voor Java](/java/azure/) | 1.9.0 of hoger |
@@ -280,7 +281,7 @@ Als u de gegevens bewerkingen in het REST API wilt bekijken en gebruiken, moet u
 `Actions`Met de machtiging worden de beheer bewerkingen opgegeven die door de functie kunnen worden uitgevoerd. Het is een verzameling bewerkings reeksen waarmee Beveilig bare bewerkingen van Azure-resource providers worden geïdentificeerd. Hier volgen enkele voor beelden van beheer bewerkingen die kunnen worden gebruikt in `Actions` .
 
 > [!div class="mx-tableFixed"]
-> | Bewerkings reeks    | Description         |
+> | Bewerkings reeks    | Beschrijving         |
 > | ------------------- | ------------------- |
 > | `*/read` | Verleent toegang tot Lees bewerkingen voor alle resource typen van alle Azure-resource providers.|
 > | `Microsoft.Compute/*` | Verleent toegang tot alle bewerkingen voor alle resource typen in de micro soft. Compute-resource provider.|
@@ -301,7 +302,7 @@ Als u de gegevens bewerkingen in het REST API wilt bekijken en gebruiken, moet u
 `DataActions`Met de machtiging worden de gegevens bewerkingen opgegeven die door de functie kunnen worden uitgevoerd op uw gegevens in dat object. Als een gebruiker bijvoorbeeld BLOB-gegevens toegang tot een opslag account heeft gelezen, kunnen ze de blobs binnen dat opslag account lezen. Hier volgen enkele voor beelden van gegevens bewerkingen die kunnen worden gebruikt in `DataActions` .
 
 > [!div class="mx-tableFixed"]
-> | Bewerkings reeks    | Description         |
+> | Bewerkings reeks    | Beschrijving         |
 > | ------------------- | ------------------- |
 > | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read` | Retourneert een BLOB of een lijst met blobs. |
 > | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write` | Retourneert het resultaat van het schrijven van een blob. |
@@ -327,7 +328,7 @@ Ingebouwde rollen zijn `AssignableScopes` ingesteld op het hoofd bereik ( `"/"` 
 > |----------|---------|
 > | Eén abonnement | `"/subscriptions/{subscriptionId1}"` |
 > | Twee abonnementen | `"/subscriptions/{subscriptionId1}", "/subscriptions/{subscriptionId2}"` |
-> | Netwerk resource groep | `"/subscriptions/{subscriptionId1}/resourceGroups/Network"` |
+> | Resourcegroep van netwerk | `"/subscriptions/{subscriptionId1}/resourceGroups/Network"` |
 > | Eén beheer groep | `"/providers/Microsoft.Management/managementGroups/{groupId1}"` |
 > | Beheer groep en een abonnement | `"/providers/Microsoft.Management/managementGroups/{groupId1}", /subscriptions/{subscriptionId1}",` |
 > | Alle bereiken (alleen van toepassing op ingebouwde rollen) | `"/"` |
@@ -336,6 +337,6 @@ Ingebouwde rollen zijn `AssignableScopes` ingesteld op het hoofd bereik ( `"/"` 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Ingebouwde rollen van Azure](built-in-roles.md)
+* [Ingebouwde Azure-rollen](built-in-roles.md)
 * [Aangepaste Azure-rollen](custom-roles.md)
-* [Bewerkingen voor de resource provider Azure Resource Manager](resource-provider-operations.md)
+* [Bewerkingen voor Azure Resource Manager-resourceproviders](resource-provider-operations.md)

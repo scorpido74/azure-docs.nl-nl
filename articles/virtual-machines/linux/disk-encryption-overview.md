@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 75e469b30632bb7e7e8f6445db78acda784ac5da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8e4843ad71455f8e478ef74ee71975c1dbf2925
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85601272"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510555"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption voor Linux-Vm's 
 
@@ -26,7 +26,7 @@ Als u [Azure Security Center](../../security-center/index.yml)gebruikt, wordt u 
 > [!WARNING]
 > - Als u eerder Azure Disk Encryption met Azure AD hebt gebruikt om een virtuele machine te versleutelen, moet u deze optie blijven gebruiken om uw virtuele machine te versleutelen. Zie [Azure Disk Encryption met Azure AD (vorige versie)](disk-encryption-overview-aad.md) voor meer informatie. 
 > - Bepaalde aanbevelingen kunnen leiden tot meer gegevens, het netwerk of het gebruik van reken bronnen, wat leidt tot extra licentie-of abonnements kosten. U moet een geldig actief Azure-abonnement hebben om resources te maken in Azure in de ondersteunde regio's.
-> - Virtuele machines van generatie 2 bieden geen ondersteuning voor Azure Disk Encryption. Zie [ondersteuning voor virtuele machines van de tweede generatie op Azure](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2) voor meer informatie.
+> - Virtuele machines van generatie 2 bieden geen ondersteuning voor Azure Disk Encryption. Zie [ondersteuning voor virtuele machines van de tweede generatie op Azure](../windows/generation-2.md) voor meer informatie.
 
 Meer informatie over de basis principes van Azure Disk Encryption voor Linux in slechts enkele minuten kunt u met behulp van [een virtuele Linux-machine maken en versleutelen met Azure cli Quick](disk-encryption-cli-quickstart.md) start of [met behulp van een virtuele Linux-machine maken en versleutelen met Azure PowerShell Snelstartgids](disk-encryption-powershell-quickstart.md).
 
@@ -63,6 +63,7 @@ Linux-server distributies die niet zijn goedgekeurd door Azure, bieden geen onde
 | Canonical | Ubuntu 16.04 | 16,04-DAGELIJKS-LTS | Canoniek: UbuntuServer: 16.04-DAILY-LTS: nieuwste | Besturings systeem en gegevens schijf |
 | Canonical | Ubuntu 14.04.5</br>[met een afgestemde kernel van Azure bijgewerkt tot 4,15 of hoger](disk-encryption-troubleshooting.md) | 14.04.5-LTS | Canoniek: UbuntuServer: 14.04.5-LTS: nieuwste | Besturings systeem en gegevens schijf |
 | Canonical | Ubuntu 14.04.5</br>[met een afgestemde kernel van Azure bijgewerkt tot 4,15 of hoger](disk-encryption-troubleshooting.md) | 14.04.5-DAILY-LTS | Canoniek: UbuntuServer: 14.04.5-DAILY-LTS: nieuwste | Besturings systeem en gegevens schijf |
+| RedHat | RHEL 7,8 | 7,8 | RedHat: RHEL: 7,8: nieuwste | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
 | RedHat | RHEL 7,7 | 7,7 | RedHat: RHEL: 7,7: nieuwste | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
 | RedHat | RHEL 7,7 | 7-LVM | RedHat: RHEL: 7-LVM: nieuwste | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
 | RedHat | RHEL 7,6 | 7,6 | RedHat: RHEL: 7,6: nieuwste | Besturings systeem en gegevens schijf (zie opmerking hieronder) |
@@ -95,7 +96,7 @@ Linux-server distributies die niet zijn goedgekeurd door Azure, bieden geen onde
 
 Azure Disk Encryption vereist dat de DM-cryptografie-en vfat-modules aanwezig zijn op het systeem. Als u vfat uit de standaard installatie kopie verwijdert of uitschakelt, wordt het sleutel volume niet door het systeem gelezen en wordt de benodigde sleutel voor het ontgrendelen van de schijven bij de volgende keer opnieuw opstarten voor komen. De stappen voor het beveiligen van het systeem die de vfat-module van het systeem verwijderen of het uitvouwen van het besturings systeem mountpoints/mappen op gegevens stations zijn niet compatibel met Azure Disk Encryption. 
 
-Voordat u versleuteling inschakelt, moeten de gegevens schijven die moeten worden versleuteld, op de juiste manier worden weer gegeven in/etc/fstab. Gebruik de optie ' geen fout ' bij het maken van vermeldingen en kies een permanente blok apparaatnaam (als apparaatnamen in de indeling '/dev/sdX ' mag niet worden gekoppeld aan dezelfde schijf tijdens het opnieuw opstarten, met name na de versleuteling). Zie [problemen met de naam wijzigingen van Linux VM-apparaten oplossen](troubleshoot-device-names-problems.md)voor meer informatie over dit gedrag.
+Voordat u versleuteling inschakelt, moeten de gegevens schijven die moeten worden versleuteld, op de juiste manier worden weer gegeven in/etc/fstab. Gebruik de optie ' geen fout ' bij het maken van vermeldingen en kies een permanente blok apparaatnaam (als apparaatnamen in de indeling '/dev/sdX ' mag niet worden gekoppeld aan dezelfde schijf tijdens het opnieuw opstarten, met name na de versleuteling). Zie [problemen met de naam wijzigingen van Linux VM-apparaten oplossen](../troubleshooting/troubleshoot-device-names-problems.md)voor meer informatie over dit gedrag.
 
 Controleer of de bestand/etc/fstab-instellingen correct zijn geconfigureerd voor koppelen. Als u deze instellingen wilt configureren, voert u de koppeling-a-opdracht uit of start u de VM opnieuw op. vervolgens wordt de koppeling op die manier geactiveerd. Als dat is voltooid, controleert u de uitvoer van de lsblk-opdracht om te controleren of het station nog steeds is gekoppeld. 
 
@@ -136,7 +137,7 @@ In de volgende tabel worden enkele algemene termen gedefinieerd die worden gebru
 | --- | --- |
 | Azure Key Vault | Key Vault is een cryptografische service voor sleutel beheer die is gebaseerd op FIPS (Federal Information Processing Standards) gevalideerde hardware security modules. Deze standaarden helpen u bij het beveiligen van uw cryptografische sleutels en gevoelige geheimen. Zie voor meer informatie de [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) -documentatie en het [maken en configureren van een sleutel kluis voor Azure Disk Encryption](disk-encryption-key-vault.md). |
 | Azure CLI | [De Azure cli](/cli/azure/install-azure-cli) is geoptimaliseerd voor het beheren en beheren van Azure-resources vanaf de opdracht regel.|
-| DM-cryptografie |[DM-cryptografie](https://gitlab.com/cryptsetup/cryptsetup/wikis/DMCrypt) is het op Linux gebaseerde, transparante schijf versleutelings subsysteem dat wordt gebruikt om schijf versleuteling in te scha kelen op Linux vm's. |
+| DM-Crypt |[DM-cryptografie](https://gitlab.com/cryptsetup/cryptsetup/wikis/DMCrypt) is het op Linux gebaseerde, transparante schijf versleutelings subsysteem dat wordt gebruikt om schijf versleuteling in te scha kelen op Linux vm's. |
 | Sleutel versleutelings sleutel (KEK) | De asymmetrische sleutel (RSA 2048) die u kunt gebruiken om het geheim te beveiligen of in te pakken. U kunt een door HSM (Hardware Security module) beveiligde of met software beschermde sleutel opgeven. Zie voor meer informatie de [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) -documentatie en het [maken en configureren van een sleutel kluis voor Azure Disk Encryption](disk-encryption-key-vault.md). |
 | PowerShell-cmdlets | Zie [Azure PowerShell-cmdlets](/powershell/azure/overview)voor meer informatie. |
 
@@ -145,9 +146,7 @@ In de volgende tabel worden enkele algemene termen gedefinieerd die worden gebru
 
 - [Snelstartgids: een virtuele Linux-machine maken en versleutelen met Azure CLI](disk-encryption-cli-quickstart.md)
 - [Snelstartgids: een virtuele Linux-machine maken en versleutelen met Azure Power shell](disk-encryption-powershell-quickstart.md)
-- [Azure Disk Encryption-scenario's voor Linux-VM's](disk-encryption-linux.md)
+- [Azure Disk Encryption-scenario's voor virtuele Linux-machines](disk-encryption-linux.md)
 - [SysteemAzure Disk Encryption vereisten CLI-script](https://github.com/ejarvi/ade-cli-getting-started)
 - [Azure Disk Encryption van vereisten Power shell-script](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)
 - [Een sleutelkluis voor Azure Disk Encryption maken en configureren](disk-encryption-key-vault.md)
-
-

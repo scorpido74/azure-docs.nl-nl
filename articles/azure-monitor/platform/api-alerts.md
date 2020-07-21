@@ -4,26 +4,26 @@ description: Met de Log Analytics waarschuwing REST API kunt u waarschuwingen ma
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 07/29/2018
-ms.openlocfilehash: 4ab2a1369fc4902afec7d62e44ef8e947864167f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 38f2f671ecf426f6544f6faf934aec7071451b0d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112048"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515747"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Waarschuwings regels in Log Analytics maken en beheren met REST API 
 
 Met de Log Analytics waarschuwing REST API kunt u waarschuwingen in Log Analytics maken en beheren.  In dit artikel vindt u meer informatie over de API en enkele voor beelden voor het uitvoeren van verschillende bewerkingen.
 
 > [!IMPORTANT]
-> Zoals [eerder is aangekondigd](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/), kunnen log Analytics-werk ruimten die zijn gemaakt na *1 juni 2019* , waarschuwings regels beheren met **alleen** Azure ScheduledQueryRules [rest API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/), de [Azure Resource Manager-sjabloon](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-azure-resource-template) en de [Power shell-cmdlet](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-powershell). Klanten kunnen eenvoudig [hun favoriete middelen van waarschuwings regel beheer](../../azure-monitor/platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) voor oudere werk ruimten wisselen om Azure monitor scheduledQueryRules als standaard te gebruiken en veel [nieuwe voor delen](../../azure-monitor/platform/alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api) te verkrijgen, zoals de mogelijkheid om systeem eigen Power shell-cmdlets uit te scha kelen, een verhoogde lookback periode in regels, het maken van regels in een afzonderlijke resource groep of abonnement en nog veel meer.
+> Zoals [eerder is aangekondigd](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/), kunnen log Analytics-werk ruimten die zijn gemaakt na *1 juni 2019* , waarschuwings regels beheren met **alleen** Azure ScheduledQueryRules [rest API](/rest/api/monitor/scheduledqueryrules/), de [Azure Resource Manager-sjabloon](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-azure-resource-template) en de [Power shell-cmdlet](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-powershell). Klanten kunnen eenvoudig [hun favoriete middelen van waarschuwings regel beheer](../../azure-monitor/platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) voor oudere werk ruimten wisselen om Azure monitor scheduledQueryRules als standaard te gebruiken en veel [nieuwe voor delen](../../azure-monitor/platform/alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api) te verkrijgen, zoals de mogelijkheid om systeem eigen Power shell-cmdlets uit te scha kelen, een verhoogde lookback periode in regels, het maken van regels in een afzonderlijke resource groep of abonnement en nog veel meer.
 
 De Log Analytics Zoek REST API bevindt zich in de REST en is toegankelijk via de Azure Resource Manager REST API. In dit document vindt u voor beelden waarin de API wordt geopend vanuit een Power shell-opdracht regel met behulp van [ARMClient](https://github.com/projectkudu/ARMClient), een open-source opdracht regel programma waarmee de Azure Resource Manager-API wordt vereenvoudigd. Het gebruik van ARMClient en Power shell is een van de vele opties om toegang te krijgen tot de Log Analytics Search-API. Met deze hulpprogram ma's kunt u gebruikmaken van de REST-Azure Resource Manager-API om aanroepen naar Log Analytics werk ruimten te maken en zoek opdrachten in deze te voeren. De API voert Zoek resultaten naar u in JSON-indeling uit, zodat u de zoek resultaten op verschillende manieren programmatisch kunt gebruiken.
 
 ## <a name="prerequisites"></a>Vereisten
 Waarschuwingen kunnen momenteel alleen worden gemaakt met een opgeslagen zoek opdracht in Log Analytics.  Raadpleeg de [rest API voor zoeken in Logboeken](../../azure-monitor/log-query/log-query-overview.md) voor meer informatie.
 
-## <a name="schedules"></a>Planningen
+## <a name="schedules"></a>Schema's
 Een opgeslagen zoek opdracht kan een of meer planningen hebben. De planning bepaalt hoe vaak de zoek actie wordt uitgevoerd en het tijds interval waarover de criteria worden geïdentificeerd.
 Schema's hebben de eigenschappen in de volgende tabel.
 
@@ -136,7 +136,7 @@ armclient delete /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupN
 ### <a name="alert-actions"></a>Waarschuwings acties
 Een planning moet één en slechts één waarschuwings actie hebben.  Waarschuwings acties hebben een of meer van de secties in de volgende tabel.  Deze worden hieronder beschreven.
 
-| Sectie | Description | Gebruik |
+| Sectie | Beschrijving | Gebruik |
 |:--- |:--- |:--- |
 | Drempelwaarde |Criteria voor wanneer de actie wordt uitgevoerd.| Vereist voor elke waarschuwing, vóór of na de verlenging van Azure. |
 | Severity |Label dat wordt gebruikt om een waarschuwing te classificeren wanneer deze wordt geactiveerd.| Vereist voor elke waarschuwing, vóór of na de verlenging van Azure. |
@@ -265,7 +265,7 @@ armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName
 #### <a name="action-groups"></a>Actiegroepen
 Alle waarschuwingen in azure, gebruiken actie groep als het standaard mechanisme voor het afhandelen van acties. Met actie groep kunt u uw acties één keer opgeven en vervolgens de actie groep koppelen aan meerdere waarschuwingen-in Azure. Zonder dat dit nodig is om herhaaldelijk dezelfde acties opnieuw te declareren. Actie groepen ondersteunen meerdere acties, zoals e-mail, SMS, spraak oproep, ITSM-verbinding, Automation-Runbook, webhook-URI en meer. 
 
-Voor gebruikers die hun waarschuwingen hebben uitgebreid naar Azure, moeten er nu actie groeps Details worden door gegeven aan de drempel waarde, om een waarschuwing te kunnen maken. E-mail gegevens, webhook-Url's, Details van Runbook-automatisering en andere acties moeten eerst worden gedefinieerd in een actie groep naast het maken van een waarschuwing. een kan [actie groep maken op basis van Azure monitor](../../azure-monitor/platform/action-groups.md) in portal of [actie groeps-API](https://docs.microsoft.com/rest/api/monitor/actiongroups)gebruiken.
+Voor gebruikers die hun waarschuwingen hebben uitgebreid naar Azure, moeten er nu actie groeps Details worden door gegeven aan de drempel waarde, om een waarschuwing te kunnen maken. E-mail gegevens, webhook-Url's, Details van Runbook-automatisering en andere acties moeten eerst worden gedefinieerd in een actie groep naast het maken van een waarschuwing. een kan [actie groep maken op basis van Azure monitor](../../azure-monitor/platform/action-groups.md) in portal of [actie groeps-API](/rest/api/monitor/actiongroups)gebruiken.
 
 Als u de koppeling van een actie groep wilt toevoegen aan een waarschuwing, geeft u de unieke Azure Resource Manager-ID van de actie groep op in de definitie van de waarschuwing. Hieronder vindt u een voor beeld van een afbeelding:
 
@@ -390,4 +390,3 @@ armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Na
 * Gebruik de [rest API om Zoek opdrachten](../../azure-monitor/log-query/log-query-overview.md) in het logboek in log Analytics uit te voeren.
 * Meer informatie over [logboek waarschuwingen in azure monitor](../../azure-monitor/platform/alerts-unified-log.md)
 * [Waarschuwings regels voor logboeken maken, bewerken of beheren in azure monitor](../../azure-monitor/platform/alerts-log.md)
-

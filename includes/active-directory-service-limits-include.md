@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: include file
-ms.openlocfilehash: d906a3dd072770a05b818fd3ca8de359b8427728
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19952b807fcd315ca579454ce082895af929c2e2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80986736"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515855"
 ---
 Hier vindt u de beperkingen voor gebruik en andere servicelimieten voor de Azure Active Directory-service (Azure AD).
 
@@ -27,7 +27,7 @@ Hier vindt u de beperkingen voor gebruik en andere servicelimieten voor de Azure
 |Toepassings manifest |In het toepassings manifest kunnen Maxi maal 1200 vermeldingen worden toegevoegd. |
 | Groepen |<ul><li>Een gebruiker kan Maxi maal 250 groepen in een Azure AD-organisatie maken.</li><li>Een Azure AD-organisatie kan Maxi maal 5000 dynamische groepen hebben.<li>Maximaal 100 gebruikers mogen eigenaar zijn van één groep.</li><li>Een wille keurig aantal Azure AD-resources kan lid zijn van één groep.</li><li>Een gebruiker kan lid zijn van een willekeurig aantal groepen.</li><li>Het aantal leden in een groep dat u met behulp van Azure AD Connect vanaf uw on-premises Active Directory naar Azure Active Directory kunt synchroniseren, is beperkt tot 50.000.</li><li>Geneste groepen in azure AD worden niet ondersteund in alle scenario's</li></ul><br/> Op dit moment zijn de volgende scenario's met geneste groepen.<ul><li> Een groep kan worden toegevoegd als lid van een andere groep en u kunt groeps nesten.</li><li> Claims voor groepslid maatschap (wanneer een app is geconfigureerd voor het ontvangen van claim van groepslid maatschappen in het token, zijn geneste groepen waarvan de aangemelde gebruiker lid is, opgenomen)</li><li>Voorwaardelijke toegang (bij het bereik van een beleid voor voorwaardelijke toegang naar een groep)</li><li>Het beperken van de toegang tot het automatisch opnieuw instellen van wacht woorden</li><li>Beperken welke gebruikers Azure AD-deelname en apparaatregistratie kunnen uitvoeren</li></ul><br/>In de volgende scenario's worden geneste groepen niet ondersteund:<ul><li> De toewijzing van de app-rol (groepen toewijzen aan een app wordt ondersteund, maar groepen die zijn genest binnen de rechtstreeks toegewezen groep hebben geen toegang), zowel voor toegang als voor inrichten</li><li>Op groep gebaseerde licentie verlening (automatisch een licentie toewijzen aan alle leden van een groep)</li><li>Office 365-groepen.</li></ul> |
 | Toepassingsproxy | <ul><li>Maxi maal 500 trans acties per seconde per app-proxy toepassing</li><li>Maxi maal 750 trans acties per seconde voor de Azure AD-organisatie</li></ul><br/>Een trans actie wordt gedefinieerd als één HTTP-aanvraag en een antwoord voor een unieke resource. Wanneer dit is beperkt, ontvangen clients een respons van 429 (te veel aanvragen). |
-| Toegangsvenster |<ul><li>Er is geen limiet voor het aantal toepassingen dat per gebruiker kan worden weergegeven in het toegangsvenster. Dit geldt voor gebruikers met licenties voor Azure AD Premium of de Enterprise Mobility Suite.</li><li>Er worden maximaal 10 app-tegels weergegeven in het toegangsvenster voor iedere gebruiker. Deze limiet is van toepassing op gebruikers aan wie licenties zijn toegewezen voor Azure AD Free licentie plan. Voorbeelden van app-tegels zijn Box, Salesforce en Dropbox. Deze limiet geldt niet voor beheerdersaccounts.</li></ul> |
+| Toegangsvenster |Er is geen limiet voor het aantal toepassingen dat per gebruiker kan worden weer gegeven in het toegangs venster, ongeacht de toegewezen licenties.  |
 | Rapporten | Er kunnen maximaal 1000 rijen worden bekeken of gedownload in elk rapport. Aanvullende gegevens worden afgekapt. |
 | Beheereenheden | Een Azure AD-resource kan lid zijn van niet meer dan 30 administratieve eenheden. |
 | Beheerdersrollen en -machtigingen | <ul><li>Een groep kan niet worden toegevoegd als [eigenaar](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#object-ownership).</li><li>Een groep kan niet worden toegewezen aan een [rol](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles).</li><li>Gebruikers kunnen de Directory gegevens van andere gebruikers niet lezen buiten de Azure AD-organisatie switch om alle gebruikers van niet-beheerders toegang tot alle Directory gegevens uit te scha kelen (niet aanbevolen). Meer informatie over standaard machtigingen [vindt u hier](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#to-restrict-the-default-permissions-for-member-users).</li><li>Het kan Maxi maal 15 minuten duren of u afmelden/aanmelden voordat het lidmaatschap van de beheerdersrol en intrekkingen van kracht worden.</li></ul> |

@@ -3,11 +3,12 @@ title: Azure Backup-rapporten configureren
 description: Rapporten voor Azure Backup configureren en weer geven met behulp van Log Analytics en Azure-werkmappen
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 20dcf7f3f9bbc5626c4a05ef064203b3ae5020cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d1c7d628a61e550aa9dc4a5265ae16c5ed5336a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484982"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513622"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-rapporten configureren
 
@@ -17,7 +18,7 @@ Een veelvoorkomende vereiste voor back-upbeheerders is het verkrijgen van inzich
 - Controle van back-ups en herstel bewerkingen.
 - De belangrijkste trends op verschillende niveaus nauw keurig te identificeren.
 
-Momenteel biedt Azure Backup een rapportage oplossing die gebruikmaakt van [Azure monitor-logboeken](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) en [Azure-werkmappen](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview). Met deze resources krijgt u inzicht in uw back-ups over uw hele back-ups. In dit artikel wordt uitgelegd hoe u Azure Backup-rapporten configureert en weergeeft.
+Momenteel biedt Azure Backup een rapportage oplossing die gebruikmaakt van [Azure monitor-logboeken](../azure-monitor/log-query/get-started-portal.md) en [Azure-werkmappen](../azure-monitor/platform/workbooks-overview.md). Met deze resources krijgt u inzicht in uw back-ups over uw hele back-ups. In dit artikel wordt uitgelegd hoe u Azure Backup-rapporten configureert en weergeeft.
 
 ## <a name="supported-scenarios"></a>Ondersteunde scenario's
 
@@ -25,7 +26,7 @@ Momenteel biedt Azure Backup een rapportage oplossing die gebruikmaakt van [Azur
 - Voor DPM-workloads worden back-uprapporten ondersteund voor de DPM-versie 5.1.363.0 en hoger en de agent versie 2.0.9127.0 en hoger.
 - Voor MABS-werk belastingen worden back-uprapporten ondersteund voor de MABS-versie 13.0.415.0 en hoger en de agent versie 2.0.9170.0 en hoger.
 - Back-uprapporten kunnen worden weer gegeven voor alle back-upitems, kluizen, abonnementen en regio's, zolang hun gegevens worden verzonden naar een Log Analytics werk ruimte waartoe de gebruiker toegang heeft. Als u rapporten voor een set kluizen wilt weer geven, hoeft u alleen lezers toegang te hebben tot de Log Analytics werk ruimte waarnaar de kluizen hun gegevens verzenden. U hebt geen toegang tot de afzonderlijke kluizen.
-- Als u een [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/) -gebruiker bent met gedelegeerde toegang tot de abonnementen van uw klanten, kunt u deze rapporten gebruiken met Azure Lighthouse om rapporten weer te geven over al uw tenants.
+- Als u een [Azure Lighthouse](../lighthouse/index.yml) -gebruiker bent met gedelegeerde toegang tot de abonnementen van uw klanten, kunt u deze rapporten gebruiken met Azure Lighthouse om rapporten weer te geven over al uw tenants.
 - Op dit moment kunnen gegevens worden weer gegeven in back-uprapporten over Maxi maal 100 Log Analytics werk ruimten (tussen tenants).
 - Gegevens voor logboek back-uptaken worden momenteel niet weer gegeven in de rapporten.
 
@@ -37,22 +38,22 @@ Volg deze stappen om de rapporten te gaan gebruiken.
 
 Stel een of meer Log Analytics-werk ruimten in om de gegevens van uw back-uprapport op te slaan. De locatie en het abonnement waar deze Log Analytics werk ruimte kunnen worden gemaakt, zijn onafhankelijk van de locatie en het abonnement waar uw kluizen bestaan.
 
-Zie [een log Analytics-werk ruimte maken in de Azure Portal](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)om een log Analytics-werk ruimte in te stellen.
+Zie [een log Analytics-werk ruimte maken in de Azure Portal](../azure-monitor/learn/quick-create-workspace.md)om een log Analytics-werk ruimte in te stellen.
 
-De gegevens in een Log Analytics-werk ruimte worden standaard 30 dagen bewaard. Als u gegevens voor een langere periode wilt zien, wijzigt u de Bewaar periode van de Log Analytics werk ruimte. Als u de Bewaar periode wilt wijzigen, raadpleegt u [gebruik en kosten beheren met Azure monitor-logboeken](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage).
+De gegevens in een Log Analytics-werk ruimte worden standaard 30 dagen bewaard. Als u gegevens voor een langere periode wilt zien, wijzigt u de Bewaar periode van de Log Analytics werk ruimte. Als u de Bewaar periode wilt wijzigen, raadpleegt u [gebruik en kosten beheren met Azure monitor-logboeken](../azure-monitor/platform/manage-cost-storage.md).
 
 ### <a name="2-configure-diagnostics-settings-for-your-vaults"></a>2. Configureer de diagnostische instellingen voor uw kluizen
 
 Azure Resource Manager resources, zoals Recovery Services kluizen, registreert u informatie over geplande bewerkingen en door de gebruiker geactiveerde bewerkingen als diagnostische gegevens.
 
-Selecteer in de sectie bewaking van uw Recovery Services kluis **Diagnostische instellingen** en geef het doel op voor de diagnostische gegevens van de Recovery Services kluis. Zie [Diagnostische instellingen voor Recovery Services kluizen gebruiken voor](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events)meer informatie over het gebruik van diagnostische gebeurtenissen.
+Selecteer in de sectie bewaking van uw Recovery Services kluis **Diagnostische instellingen** en geef het doel op voor de diagnostische gegevens van de Recovery Services kluis. Zie [Diagnostische instellingen voor Recovery Services kluizen gebruiken voor](./backup-azure-diagnostic-events.md)meer informatie over het gebruik van diagnostische gebeurtenissen.
 
 ![Het deelvenster Diagnostische instellingen](./media/backup-azure-configure-backup-reports/resource-specific-blade.png)
 
-Azure Backup biedt ook een ingebouwde Azure Policy definitie, waarmee de configuratie van diagnostische instellingen voor alle kluizen in een bepaald bereik wordt geautomatiseerd. Zie voor meer informatie over het gebruik van dit beleid de [instellingen voor diagnostische gegevens van de kluis configureren op schaal](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics).
+Azure Backup biedt ook een ingebouwde Azure Policy definitie, waarmee de configuratie van diagnostische instellingen voor alle kluizen in een bepaald bereik wordt geautomatiseerd. Zie voor meer informatie over het gebruik van dit beleid de [instellingen voor diagnostische gegevens van de kluis configureren op schaal](./azure-policy-configure-diagnostics.md).
 
 > [!NOTE]
-> Nadat u de diagnostische gegevens hebt geconfigureerd, kan het tot 24 uur duren voordat de eerste push bewerking is voltooid. Nadat de gegevens in de werk ruimte Log Analytics zijn gestart, worden de gegevens in de rapporten mogelijk niet onmiddellijk weer gegeven omdat de gegevens voor de huidige gedeeltelijke dag niet in de rapporten zijn opgenomen. Zie [conventies die worden gebruikt in back-uprapporten](https://docs.microsoft.com/azure/backup/configure-reports#conventions-used-in-backup-reports)voor meer informatie. We raden u aan om de rapporten twee dagen na het configureren van uw kluizen te bekijken om gegevens naar Log Analytics te verzenden.
+> Nadat u de diagnostische gegevens hebt geconfigureerd, kan het tot 24 uur duren voordat de eerste push bewerking is voltooid. Nadat de gegevens in de werk ruimte Log Analytics zijn gestart, worden de gegevens in de rapporten mogelijk niet onmiddellijk weer gegeven omdat de gegevens voor de huidige gedeeltelijke dag niet in de rapporten zijn opgenomen. Zie [conventies die worden gebruikt in back-uprapporten](#conventions-used-in-backup-reports)voor meer informatie. We raden u aan om de rapporten twee dagen na het configureren van uw kluizen te bekijken om gegevens naar Log Analytics te verzenden.
 
 #### <a name="3-view-reports-in-the-azure-portal"></a>3. rapporten weer geven in de Azure Portal
 
@@ -71,7 +72,7 @@ Het rapport bevat verschillende tabbladen:
 
 - **Samen vatting**: gebruik dit tabblad om een overzicht te krijgen van uw back-ups op hoog niveau. U kunt een kort overzicht krijgen van het totale aantal back-upitems, het totale verbruikte Cloud opslag, het aantal beveiligde instanties en het percentage van de taak geslaagd per type werk belasting. Voor meer informatie over een specifiek type back-upartefact gaat u naar de desbetreffende tabbladen.
 
-   ![Tabblad Samenvatting](./media/backup-azure-configure-backup-reports/summary.png)
+   ![Het tabblad Samenvatting](./media/backup-azure-configure-backup-reports/summary.png)
 
 - **Back-upitems**: gebruik dit tabblad om informatie en trends te bekijken over Cloud opslag die wordt gebruikt op een back-upitemniveau. Als u bijvoorbeeld SQL gebruikt in een back-up van een Azure-VM, ziet u de gebruikte Cloud opslag voor elke SQL database waarvan een back-up wordt gemaakt. U kunt er ook voor kiezen om gegevens te bekijken voor back-upitems van een bepaalde beveiligings status. Als u bijvoorbeeld de tegel **beveiliging gestopt** selecteert boven aan het tabblad, filtert u alle onderliggende objecten zodanig dat alleen gegevens worden weer gegeven voor back-upitems met de status gestopt voor beveiliging.
 
@@ -102,7 +103,7 @@ Selecteer de knop vastmaken aan de bovenkant van elke widget om de widget aan uw
 
 ## <a name="cross-tenant-reports"></a>Rapporten over meerdere tenants
 
-Als u [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/) gebruikt met gedelegeerde toegang tot abonnementen in meerdere Tenant omgevingen, kunt u het standaard abonnements filter gebruiken. Selecteer de filter knop in de rechter bovenhoek van de Azure Portal om alle abonnementen te kiezen waarvoor u gegevens wilt weer geven. Als u dit doet, kunt u Log Analytics werk ruimten in uw tenants selecteren om multi tenant rapporten weer te geven.
+Als u [Azure Lighthouse](../lighthouse/index.yml) gebruikt met gedelegeerde toegang tot abonnementen in meerdere Tenant omgevingen, kunt u het standaard abonnements filter gebruiken. Selecteer de filter knop in de rechter bovenhoek van de Azure Portal om alle abonnementen te kiezen waarvoor u gegevens wilt weer geven. Als u dit doet, kunt u Log Analytics werk ruimten in uw tenants selecteren om multi tenant rapporten weer te geven.
 
 ## <a name="conventions-used-in-backup-reports"></a>Conventies die in back-uprapporten worden gebruikt
 
@@ -130,8 +131,8 @@ De widgets in het back-uprapport worden aangedreven door Kusto-query's, die word
 
 - De eerdere Power BI sjabloon-app voor rapportage, waarvan de bron gegevens afkomstig zijn uit een Azure-opslag account, bevindt zich op een afschaffing-pad. U kunt het beste de diagnostische gegevens van de kluis naar Log Analytics verzenden om rapporten weer te geven.
 
-- Daarnaast bevindt het [v1-schema](https://docs.microsoft.com/azure/backup/backup-azure-diagnostics-mode-data-model#v1-schema-vs-v2-schema) voor het verzenden van diagnostische gegevens naar een opslag account of een La-werk ruimte zich ook op een afschaffing pad. Dit betekent dat als u aangepaste query's of Automatiseringen hebt geschreven op basis van het v1-schema, u wordt geadviseerd om deze query's bij te werken om het momenteel ondersteunde v2-schema te gebruiken.
+- Daarnaast bevindt het [v1-schema](./backup-azure-diagnostics-mode-data-model.md#v1-schema-vs-v2-schema) voor het verzenden van diagnostische gegevens naar een opslag account of een La-werk ruimte zich ook op een afschaffing pad. Dit betekent dat als u aangepaste query's of Automatiseringen hebt geschreven op basis van het v1-schema, u wordt geadviseerd om deze query's bij te werken om het momenteel ondersteunde v2-schema te gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Meer informatie over bewaking en rapportage met Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-monitor-alert-faq)
+[Meer informatie over bewaking en rapportage met Azure Backup](./backup-azure-monitor-alert-faq.md)

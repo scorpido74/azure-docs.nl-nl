@@ -9,12 +9,12 @@ ms.date: 4/21/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e55d3f704c76d2783c3e442a90c829448129a4d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b0952f31bf6e327ff6d9f632f242919139ed6cae
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82134414"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512007"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-the-azure-portal"></a>Implementeer IoT Edge modules op schaal met behulp van de Azure Portal
 
@@ -61,7 +61,7 @@ Er zijn vijf stappen voor het maken van een implementatie. In de volgende sectie
 
 ### <a name="step-2-modules"></a>Stap 2: modules
 
-U kunt Maxi maal 20 modules aan een implementatie toevoegen. Als u een implementatie zonder modules maakt, worden alle huidige modules van de doel apparaten verwijderd.
+U kunt Maxi maal 30 modules aan een implementatie toevoegen. Als u een implementatie zonder modules maakt, worden alle huidige modules van de doel apparaten verwijderd.
 
 In implementaties kunt u de instellingen voor de IoT Edge agent en IoT Edge hub-modules beheren. Selecteer **runtime-instellingen** om de twee runtime modules te configureren. In gelaagde implementaties zijn de runtime modules niet opgenomen en kunnen niet worden geconfigureerd.
 
@@ -209,7 +209,7 @@ Wanneer u een implementatie verwijdert, nemen alle geïmplementeerde apparaten d
 
 1. Gebruik het selectie vakje om de implementatie te selecteren die u wilt verwijderen.
 1. Selecteer **Verwijderen**.
-1. Er wordt een prompt weer gegeven waarin wordt vermeld dat deze implementatie wordt verwijderd en teruggezet naar de vorige status voor alle apparaten.Een implementatie met een lagere prioriteit is van toepassing.Als er geen andere implementatie is gericht, worden er geen modules verwijderd. Als u alle modules van uw apparaat wilt verwijderen, maakt u een implementatie met nul modules en implementeert u deze op dezelfde apparaten.Selecteer **Ja** om door te gaan.
+1. Er wordt een prompt weer gegeven waarin wordt vermeld dat deze implementatie wordt verwijderd en teruggezet naar de vorige status voor alle apparaten.Een implementatie met een lagere prioriteit is van toepassing.Als er geen andere implementatie is gericht, worden er geen modules verwijderd. Als u alle modules van uw apparaat wilt verwijderen, maakt u een implementatie met nul modules en implementeert u deze op dezelfde apparaten.Selecteer **Ja** ter bevestiging.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 58f542238c952088777ed9809b57dae3cdb9cf12
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68e88ec90625f34e5bc8ae1b70c75e3cfe9a53ad
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81457260"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515526"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor gegevens platform
 
@@ -49,7 +49,7 @@ Logboeken in Azure Monitor worden opgeslagen in een Log Analytics werk ruimte di
 > Het is belang rijk om onderscheid te maken tussen Azure Monitor logboeken en bronnen van logboek gegevens in Azure. Gebeurtenissen op abonnements niveau in Azure worden bijvoorbeeld geschreven naar een [activiteiten logboek](platform-logs-overview.md) dat u kunt weer geven in het menu Azure monitor. De meeste resources schrijven operationele informatie naar een [bron logboek](platform-logs-overview.md) dat u kunt door sturen naar verschillende locaties. Azure Monitor-Logboeken is een platform voor gegevens registratie dat activiteiten logboeken en resource logboeken verzamelt samen met andere bewakings gegevens om een diepe analyse te bieden in uw hele set resources.
 
 
- U kunt [logboek query's](../log-query/log-query-overview.md) interactief gebruiken met [Log Analytics](../log-query/portals.md) in de Azure portal of de resultaten toevoegen aan een [Azure-dash board](../learn/tutorial-app-dashboards.md) voor visualisatie in combi natie met andere gegevens. U kunt ook [logboek waarschuwingen](alerts-log.md) maken waarmee een waarschuwing wordt geactiveerd op basis van de resultaten van een plannings query.
+ U kunt [logboek query's](../log-query/log-query-overview.md) interactief gebruiken met [Log Analytics](../log-query/log-query-overview.md) in de Azure portal of de resultaten toevoegen aan een [Azure-dash board](../learn/tutorial-app-dashboards.md) voor visualisatie in combi natie met andere gegevens. U kunt ook [logboek waarschuwingen](alerts-log.md) maken waarmee een waarschuwing wordt geactiveerd op basis van de resultaten van een plannings query.
 
 Lees meer over Azure Monitor-logboeken met inbegrip van de gegevens bronnen in de [Logboeken van Azure monitor](data-platform-logs.md).
 
@@ -81,7 +81,7 @@ Bekijk de [metrische gegevens in azure monitor](data-platform-metrics.md) en [me
 
 
 ## <a name="stream-data-to-external-systems"></a>Gegevens streamen naar externe systemen
-Naast het gebruik van de hulpprogram ma's in azure voor het analyseren van bewakings gegevens, hebt u mogelijk een vereiste om deze door te sturen naar een extern hulp programma, zoals een SIEM-product (Security Information and Event Management). Deze door sturing geschiedt doorgaans rechtstreeks vanuit bewaakte bronnen via [Azure Event hubs](/azure/event-hubs/). Sommige bronnen kunnen worden geconfigureerd om gegevens rechtstreeks naar een Event Hub te verzenden terwijl u een ander proces, zoals een logische app, kunt gebruiken om de vereiste gegevens op te halen. Zie [Azure monitoring-gegevens streamen naar een event hub voor gebruik door een extern hulp programma](stream-monitoring-data-event-hubs.md) voor meer informatie.
+Naast het gebruik van de hulpprogram ma's in azure voor het analyseren van bewakings gegevens, hebt u mogelijk een vereiste om deze door te sturen naar een extern hulp programma, zoals een SIEM-product (Security Information and Event Management). Deze door sturing geschiedt doorgaans rechtstreeks vanuit bewaakte bronnen via [Azure Event hubs](../../event-hubs/index.yml). Sommige bronnen kunnen worden geconfigureerd om gegevens rechtstreeks naar een Event Hub te verzenden terwijl u een ander proces, zoals een logische app, kunt gebruiken om de vereiste gegevens op te halen. Zie [Azure monitoring-gegevens streamen naar een event hub voor gebruik door een extern hulp programma](stream-monitoring-data-event-hubs.md) voor meer informatie.
 
 
 

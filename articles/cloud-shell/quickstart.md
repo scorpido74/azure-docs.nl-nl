@@ -10,11 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: damaerte
-ms.openlocfilehash: 58d795a5aee79e4149864a79a923ce34950b31d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3001e814a5f31725bfc78385d2435bbb0e971d40
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79458066"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513016"
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Quick start voor bash in Azure Cloud Shell
 
@@ -25,7 +26,7 @@ Dit document bevat informatie over het gebruik van bash in Azure Cloud Shell in 
 
 ## <a name="start-cloud-shell"></a>Cloud Shell starten
 1. Start **Cloud shell** vanaf de bovenste navigatie van het Azure Portal. <br>
-![](media/quickstart/shell-icon.png)
+![Scherm afbeelding waarin wordt weer gegeven hoe Azure Cloud Shell in de Azure Portal moet worden gestart.](media/quickstart/shell-icon.png)
 
 2. Selecteer een abonnement om een opslagaccount en een Microsoft Azure Files-share te maken.
 3. Selecteer opslag maken
@@ -35,7 +36,7 @@ Dit document bevat informatie over het gebruik van bash in Azure Cloud Shell in 
 
 ### <a name="select-the-bash-environment"></a>De bash omgeving selecteren
 Controleer of de vervolg keuzelijst omgeving van de linkerkant van het shell venster wordt vermeld `Bash` . <br>
-![](media/quickstart/env-selector.png)
+![Scherm afbeelding die laat zien hoe u de bash-omgeving voor de Azure Cloud Shell selecteert.](media/quickstart/env-selector.png)
 
 ### <a name="set-your-subscription"></a>Uw abonnement instellen
 1. Abonnementen weer geven waartoe u toegang hebt.
@@ -43,10 +44,11 @@ Controleer of de vervolg keuzelijst omgeving van de linkerkant van het shell ven
    az account list
    ```
 
-2. Stel uw voorkeurs abonnement in: <br>
-```azurecli-interactive
-az account set --subscription 'my-subscription-name'
-```
+2. Stel uw voorkeurs abonnement in:
+
+   ```azurecli-interactive
+   az account set --subscription 'my-subscription-name'
+   ```
 
 > [!TIP]
 > Uw abonnement wordt onthouden voor toekomstige sessies met `/home/<user>/.azure/azureProfile.json` .
@@ -72,7 +74,7 @@ Uw gebruikers naam op deze VM is uw gebruikers naam die wordt gebruikt in Cloud 
 ### <a name="ssh-into-your-linux-vm"></a>SSH in uw virtuele Linux-machine
 1. Zoek de naam van uw virtuele machine in de zoek balk Azure Portal.
 2. Klik op verbinding maken om de naam van uw virtuele machine en het open bare IP-adres op te halen. <br>
-   ![](media/quickstart/sshcmd-copy.png)
+   ![Scherm afbeelding die laat zien hoe u verbinding maakt met een Linux V M met S S H.](media/quickstart/sshcmd-copy.png)
 
 3. SSH in uw virtuele machine met de `ssh` cmd.
    ```
@@ -80,7 +82,7 @@ Uw gebruikers naam op deze VM is uw gebruikers naam die wordt gebruikt in Cloud 
    ```
 
 Wanneer u de SSH-verbinding tot stand brengt, wordt de welkomst prompt van Ubuntu weer gegeven. <br>
-![](media/quickstart/ubuntu-welcome.png)
+![Scherm opname van de Ubuntu-initialisatie en welkom prompt na het maken van een S S H-verbinding.](media/quickstart/ubuntu-welcome.png)
 
 ## <a name="cleaning-up"></a>Opschonen 
 1. Sluit uw SSH-sessie af.

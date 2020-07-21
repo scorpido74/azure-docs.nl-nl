@@ -3,17 +3,17 @@ title: Azure Event Hubs integreren met de persoonlijke koppelings service van Az
 description: Meer informatie over het integreren van Azure Event Hubs met de persoonlijke koppelings service van Azure
 ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: aa1eb4df425d83a37fbf4ac69e0e256c464dc5c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bfed3f8e4c19463e10b721006d742726cf916900
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85312835"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512249"
 ---
 # <a name="integrate-azure-event-hubs-with-azure-private-link"></a>Azure-Event Hubs integreren met persoonlijke Azure-koppeling
 Met Azure Private Link service kunt u toegang krijgen tot Azure-Services (bijvoorbeeld Azure Event Hubs, Azure Storage en Azure Cosmos DB) en door Azure gehoste klanten/partner services via een **persoonlijk eind punt** in uw virtuele netwerk.
 
-Een persoonlijk eind punt is een netwerk interface waarmee u privé en veilig kunt verbinden met een service die wordt aangestuurd door een persoonlijke Azure-koppeling. Het privé-eindpunt maakt gebruik van een privé-IP-adres van uw VNet, waardoor de service feitelijk in uw VNet wordt geplaatst. Al het verkeer naar de service kan worden gerouteerd via het privé-eindpunt, zodat er geen gateways, NAT-apparaten, ExpressRoute of VPN-verbindingen of openbare IP-adressen nodig zijn. Verkeer tussen uw virtuele netwerk en de services wordt via het backbonenetwerk van Microsoft geleid, waarmee de risico's van het openbare internet worden vermeden. U kunt verbinding maken met een exemplaar van een Azure-resource, zodat u het hoogste granulariteit krijgt in toegangsbeheer.
+Een persoonlijk eind punt is een netwerk interface waarmee u privé en veilig kunt verbinden met een service die wordt aangestuurd door een persoonlijke Azure-koppeling. Het persoonlijke eind punt maakt gebruik van een privé-IP-adres van uw virtuele netwerk, waardoor de service in het virtuele netwerk effectief wordt. Al het verkeer naar de service kan worden gerouteerd via het privé-eindpunt, zodat er geen gateways, NAT-apparaten, ExpressRoute of VPN-verbindingen of openbare IP-adressen nodig zijn. Verkeer tussen uw virtuele netwerk en de services wordt via het backbonenetwerk van Microsoft geleid, waarmee de risico's van het openbare internet worden vermeden. U kunt verbinding maken met een exemplaar van een Azure-resource, zodat u het hoogste granulariteit krijgt in toegangsbeheer.
 
 Zie [Wat is een Azure Private Link?](../private-link/private-link-overview.md) voor meer informatie.
 
@@ -54,14 +54,17 @@ Uw privé-eindpunt maakt gebruik van een privé IP-adres in uw virtueel netwerk.
 ### <a name="steps"></a>Stappen
 Als u al een Event Hubs naam ruimte hebt, kunt u een koppeling voor een particuliere verbinding maken door de volgende stappen uit te voeren:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 2. Typ in de zoek balk in **Event hubs**.
 3. Selecteer de **naam ruimte** in de lijst waaraan u een persoonlijk eind punt wilt toevoegen.
 4. Selecteer het tabblad **netwerken** onder **instellingen**.
-5. Selecteer het tabblad **verbindingen met privé-eind punten** boven aan de pagina. 
-6. Selecteer de knop **+ privé-eind punt** boven aan de pagina.
 
-    ![Installatiekopie](./media/private-link-service/private-link-service-3.png)
+    > [!NOTE]
+    > U ziet het tabblad **netwerken** alleen voor **standaard** of **toegewezen** naam ruimten. 
+1. Selecteer het tabblad **verbindingen met privé-eind punten** boven aan de pagina. 
+1. Selecteer de knop **+ privé-eind punt** boven aan de pagina.
+
+    :::image type="content" source="./media/private-link-service/private-link-service-3.png" alt-text="Pagina netwerken-tabblad verbindingen met privé-eind punten-koppeling persoonlijke eind punt toevoegen":::
 7. Voer de volgende stappen uit op de pagina **basis beginselen** : 
     1. Selecteer het **Azure-abonnement** waarin u het persoonlijke eind punt wilt maken. 
     2. Selecteer de **resource groep** voor de persoonlijke eindpunt resource.

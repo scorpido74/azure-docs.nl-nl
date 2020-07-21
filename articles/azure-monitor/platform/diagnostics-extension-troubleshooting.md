@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/08/2019
-ms.openlocfilehash: 043369bd6112c4cac36539bbd764393d889439c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de42a70cf2950aca3dbe151407671306c793ed10
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696963"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515492"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Probleemoplossing met Azure Diagnostics
 In dit artikel vindt u informatie over het oplossen van problemen die relevant zijn voor het gebruik van Azure Diagnostics. Zie [Azure Diagnostics Overview](diagnostics-extension-overview.md)voor meer informatie over Azure Diagnostics.
@@ -49,7 +50,7 @@ Hieronder vindt u de paden naar enkele belang rijke logboeken en artefacten. We 
 | **MonAgentHost-logboek bestand** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion> \WAD0107\Configuration\MonAgentHost. <seq_num>. log |
 
 ## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>Metrische gegevens worden niet weer gegeven in de Azure Portal
-Azure Diagnostics geeft metrische gegevens die kunnen worden weer gegeven in de Azure Portal. Als u problemen ondervindt bij het bekijken van de gegevens in de portal, controleert u de \* tabel WADMetrics in het opslag account van Azure Diagnostics om te zien of de bijbehorende metrische records aanwezig zijn en ervoor te zorgen dat de [resource provider](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) micro soft. Insights wordt geregistreerd.
+Azure Diagnostics geeft metrische gegevens die kunnen worden weer gegeven in de Azure Portal. Als u problemen ondervindt bij het bekijken van de gegevens in de portal, controleert u de \* tabel WADMetrics in het opslag account van Azure Diagnostics om te zien of de bijbehorende metrische records aanwezig zijn en ervoor te zorgen dat de [resource provider](../../azure-resource-manager/management/resource-providers-and-types.md) micro soft. Insights wordt geregistreerd.
 
 Hier is de **PartitionKey** van de tabel de resource-id, virtuele machine of virtuele-machine schaalset. **RowKey** is de metrische naam (ook wel de naam van het prestatie meter item genoemd).
 
@@ -211,7 +212,7 @@ Deze code genereert vier tabellen:
 | provider = "PROv1" &lt; DefaultEvents/&gt; |WADDefault + MD5 ("PROv1") |
 | provider = "prov2" &lt; DefaultEvents eventDestination = "dest2"/&gt; |WADdest2 |
 
-## <a name="references"></a>Referenties
+## <a name="references"></a>Naslaginformatie
 
 ### <a name="how-to-check-diagnostics-extension-configuration"></a>De configuratie van de extensie voor diagnostische gegevens controleren
 De eenvoudigste manier om de configuratie van de extensie te controleren, is door naar [Azure resource Explorer](https://resources.azure.com)te gaan en vervolgens naar de virtuele machine of Cloud service te gaan waar de Azure Diagnostics extensie (IaaSDiagnostics/PaaDiagnostics) is.
@@ -296,4 +297,3 @@ In de portal-ervaring in de virtuele machines worden standaard prestatie meter i
 - Hiermee wordt aangegeven of de gegevens in de opslag item namen in het Engels zijn. Als de namen van de items niet in het Engels zijn, kan de grafiek met metrische gegevens niet worden herkend. **Risico beperking**: Wijzig de taal van de computer in het Engels voor systeem accounts. Selecteer hiervoor **configuratie scherm**  >  **regio**  >  **beheer**  >  **instellingen**. Schakel vervolgens het selectie vakje **welkomst scherm en systeem accounts** uit zodat de aangepaste taal niet wordt toegepast op het systeem account.
 
 - Als u Joker tekens ( \* ) in de namen van uw prestatie meter items gebruikt, kan de portal niet correleren met de geconfigureerde en verzamelde teller wanneer de prestatie meter items worden verzonden naar het Azure Storage sink. **Risico beperking**: om ervoor te zorgen dat u Joker tekens kunt gebruiken en de Portal de ( \* ) moet uitbreiden, stuurt u de prestatie meter items naar het Azure monitor sink.
-

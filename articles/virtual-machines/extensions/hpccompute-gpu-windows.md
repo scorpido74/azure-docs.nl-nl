@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: akjosh
-ms.openlocfilehash: a30a6b3daaf1f334c7e61f93aaab6fc717e18063
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8390f3273c7c8b5ca3b97d5da5184ab784b15c4b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676536"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511038"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>Uitbrei ding voor NVIDIA GPU-stuur programma voor Windows
 
@@ -25,7 +26,7 @@ ms.locfileid: "84676536"
 
 Met deze extensie worden NVIDIA GPU-Stuur Programma's geïnstalleerd op Vm's uit de Windows N-serie. Afhankelijk van de VM-familie installeert de uitbrei ding CUDA of GRID-Stuur Programma's. Wanneer u NVIDIA-Stuur Programma's installeert met behulp van deze uitbrei ding, accepteert u de voor waarden van de [gebruiksrecht overeenkomst](https://go.microsoft.com/fwlink/?linkid=874330)van de NVIDIA en gaat u ermee akkoord. Tijdens het installatie proces kan de virtuele machine opnieuw worden opgestart om de installatie van het stuur programma te volt ooien.
 
-Instructies voor de hand matige installatie van de Stuur Programma's en de huidige ondersteunde versies zijn [hier](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-driver-setup)beschikbaar.
+Instructies voor de hand matige installatie van de Stuur Programma's en de huidige ondersteunde versies zijn [hier](../windows/n-series-driver-setup.md)beschikbaar.
 Er is ook een uitbrei ding beschikbaar om NVIDIA GPU-Stuur Programma's te installeren op Vm's uit de [Linux N-serie](hpccompute-gpu-linux.md).
 
 ## <a name="prerequisites"></a>Vereisten
@@ -70,7 +71,7 @@ In de volgende JSON wordt het schema voor de uitbrei ding weer gegeven.
 
 ### <a name="properties"></a>Eigenschappen
 
-| Name | Waarde/voor beeld | Gegevenstype |
+| Naam | Waarde/voor beeld | Gegevenstype |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Micro soft. HpcCompute | tekenreeks |
@@ -84,7 +85,7 @@ In de volgende JSON wordt het schema voor de uitbrei ding weer gegeven.
 
 Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager sjablonen. Sjablonen zijn ideaal bij het implementeren van een of meer virtuele machines waarvoor na de implementatie configuratie een vereiste is.
 
-De JSON-configuratie voor een extensie van een virtuele machine kan worden genest in de resource van de virtuele machine of worden geplaatst op het hoofd niveau of op de hoogste niveaus van een JSON-sjabloon van Resource Manager. De plaatsing van de JSON-configuratie is van invloed op de waarde van de naam en het type van de resource. Zie voor meer informatie [naam en type voor onderliggende resources instellen](../../azure-resource-manager/resource-manager-template-child-resource.md). 
+De JSON-configuratie voor een extensie van een virtuele machine kan worden genest in de resource van de virtuele machine of worden geplaatst op het hoofd niveau of op de hoogste niveaus van een JSON-sjabloon van Resource Manager. De plaatsing van de JSON-configuratie is van invloed op de waarde van de naam en het type van de resource. Zie voor meer informatie [naam en type voor onderliggende resources instellen](../../azure-resource-manager/templates/child-resource-name-type.md). 
 
 In het volgende voor beeld wordt ervan uitgegaan dat de extensie is genest in de resource van de virtuele machine. Bij het nesten van de extensie bron wordt de JSON in het `"resources": []` object van de virtuele machine geplaatst.
 
@@ -175,4 +176,4 @@ Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen 
 ## <a name="next-steps"></a>Volgende stappen
 Zie [virtuele machines en functies voor Windows](features-windows.md)voor meer informatie over uitbrei dingen.
 
-Zie [grootten van virtuele machines](../windows/sizes-gpu.md)die zijn geoptimaliseerd voor GPU voor meer informatie over vm's van de N-serie.
+Zie [grootten van virtuele machines](../sizes-gpu.md)die zijn geoptimaliseerd voor GPU voor meer informatie over vm's van de N-serie.

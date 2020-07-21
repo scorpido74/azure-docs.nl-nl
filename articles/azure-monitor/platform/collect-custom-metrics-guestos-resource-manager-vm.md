@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: bwren
 ms.subservice: metrics
-ms.openlocfilehash: 14079f42fd857495396a0c44fd3bdeaf4371ea5f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 208515b7541948ca6913e6fda092c6a424de85f9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83650540"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515781"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine"></a>De metrische gegevens van het gast besturingssysteem naar het Azure Monitor metrische archief verzenden met behulp van een Azure Resource Manager sjabloon voor een virtuele Windows-machine
 Prestatie gegevens van het gast besturingssysteem van de virtuele machines van Azure worden niet automatisch verzameld, zoals andere [platform metrische gegevens](../insights/monitor-azure-resource.md#monitoring-data). Installeer de Azure Monitor [Diagnostics-extensie](diagnostics-extension-overview.md) voor het verzamelen van metrische gegevens van het gast besturingssysteem in de data base Metrics, zodat deze kan worden gebruikt met alle functies van Azure monitor metrische gegevens, waaronder bijna realtime waarschuwingen, grafieken, route ring en toegang vanaf een rest API. In dit artikel wordt het proces beschreven voor het verzenden van de prestaties van een virtuele Windows-machine naar de metrische data base met behulp van een resource manager-sjabloon. 
@@ -24,9 +25,9 @@ Als u niet bekend bent met Resource Manager-sjablonen, kunt u meer te weten kome
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Uw abonnement moet zijn geregistreerd bij [micro soft. Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services).
+- Uw abonnement moet zijn geregistreerd bij [micro soft. Insights](../../azure-resource-manager/management/resource-providers-and-types.md).
 
-- U moet [Azure PowerShell](/powershell/azure) of [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview) hebben geïnstalleerd.
+- U moet [Azure PowerShell](/powershell/azure) of [Azure Cloud shell](../../cloud-shell/overview.md) hebben geïnstalleerd.
 
 - De VM-resource moet zich in een regio bevinden [die aangepaste metrische gegevens ondersteunt](metrics-custom-overview.md#supported-regions). 
 
@@ -285,4 +286,3 @@ We maken gebruik van Azure PowerShell om de Resource Manager-sjabloon te impleme
 
 ## <a name="next-steps"></a>Volgende stappen
 - Meer informatie over [aangepaste metrische gegevens](metrics-custom-overview.md).
-

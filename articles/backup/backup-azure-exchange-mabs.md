@@ -4,12 +4,12 @@ description: Meer informatie over het maken van een back-up van een Exchange-Ser
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: 1d7d28d813df82a5e1ea0fe424bba2ef5a9a2684
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e3e89d93ab35724a09138d48863badad6a41b71
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80421337"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514115"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Een back-up maken van een Exchange-Server naar Azure met Azure Backup Server
 
@@ -23,8 +23,8 @@ Voordat u doorgaat, moet u ervoor zorgen dat Azure Backup Server is [geïnstalle
 
 Voer de volgende stappen uit om de MABS-beveiligings agent te installeren op de Exchange-Server:
 
-1. Zorg ervoor dat de firewalls correct zijn geconfigureerd. Zie [firewall-uitzonde ringen voor de agent configureren](https://docs.microsoft.com/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019).
-2. Installeer de agent op de Exchange-Server door te klikken op **beheer > agents > geïnstalleerd** in de MABS-beheerders console. Zie [de MABS-beveiligings agent installeren](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) voor gedetailleerde stappen.
+1. Zorg ervoor dat de firewalls correct zijn geconfigureerd. Zie [firewall-uitzonde ringen voor de agent configureren](/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019).
+2. Installeer de agent op de Exchange-Server door te klikken op **beheer > agents > geïnstalleerd** in de MABS-beheerders console. Zie [de MABS-beveiligings agent installeren](/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) voor gedetailleerde stappen.
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Een beveiligings groep maken voor de Exchange-Server
 
@@ -34,7 +34,7 @@ Voer de volgende stappen uit om de MABS-beveiligings agent te installeren op de 
 4. Selecteer de Exchange Server-Data Base die u wilt beveiligen en klik op **volgende**.
 
    > [!NOTE]
-   > Als u Exchange 2013 beveiligt, controleert u de [vereisten voor exchange 2013](https://docs.microsoft.com/system-center/dpm/back-up-exchange?view=sc-dpm-2016).
+   > Als u Exchange 2013 beveiligt, controleert u de [vereisten voor exchange 2013](/system-center/dpm/back-up-exchange).
    >
    >
 

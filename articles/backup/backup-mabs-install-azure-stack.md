@@ -3,11 +3,12 @@ title: Azure Backup Server installeren op Azure Stack
 description: In dit artikel vindt u informatie over het gebruik van Azure Backup Server voor het beveiligen of maken van een back-up van werk belastingen in Azure Stack.
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 7a1f48c0987ed0eaea70d887709e52b9a1f1fe1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 634f560174413dd75bebdee6513160a3700df9a4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83747439"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513894"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Backup Server installeren op Azure Stack
 
@@ -88,9 +89,9 @@ De Azure Backup Server virtuele machine moet lid zijn van een domein. Een domein
 
 ## <a name="using-an-iaas-vm-in-azure-stack"></a>Een IaaS-VM gebruiken in Azure Stack
 
-Wanneer u een server voor Azure Backup Server kiest, start u met een installatie kopie van Windows Server 2012 R2 Data Center of Windows Server 2016 Data Center. In het artikel [maakt u uw eerste virtuele Windows-machine in de Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Hier volgt een zelf studie om aan de slag te gaan met de aanbevolen virtuele machine. De aanbevolen minimum vereisten voor de virtuele machine van de server (VM) moeten zijn: a2 Standard met twee kernen en 3,5 GB RAM-geheugen.
+Wanneer u een server voor Azure Backup Server kiest, start u met een installatie kopie van Windows Server 2012 R2 Data Center of Windows Server 2016 Data Center. In het artikel [maakt u uw eerste virtuele Windows-machine in de Azure Portal](../virtual-machines/windows/quick-create-portal.md?toc=/azure/virtual-machines/windows/toc.json). Hier volgt een zelf studie om aan de slag te gaan met de aanbevolen virtuele machine. De aanbevolen minimum vereisten voor de virtuele machine van de server (VM) moeten zijn: a2 Standard met twee kernen en 3,5 GB RAM-geheugen.
 
-Het beveiligen van werk belastingen met Azure Backup Server heeft veel nuances. De [beveiligings matrix voor MABS](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix) helpt u bij het uitleggen van deze nuances. Lees dit artikel volledig voordat u de computer implementeert.
+Het beveiligen van werk belastingen met Azure Backup Server heeft veel nuances. De [beveiligings matrix voor MABS](./backup-mabs-protection-matrix.md) helpt u bij het uitleggen van deze nuances. Lees dit artikel volledig voordat u de computer implementeert.
 
 > [!NOTE]
 > Azure Backup Server is ontworpen om te worden uitgevoerd op een specifieke virtuele machine met één doel. U kunt Azure Backup Server niet installeren op:
@@ -106,7 +107,7 @@ Voeg Azure Backup Server altijd toe aan een domein. Als u Azure Backup Server na
 
 ### <a name="set-storage-replication"></a>Opslagreplicatie instellen
 
-Met de optie voor opslag replicatie van Recovery Services kluis kunt u kiezen tussen geografisch redundante opslag en lokaal redundante opslag. Recovery Services kluizen gebruiken standaard geografisch redundante opslag. Als deze kluis uw primaire kluis is, houdt u de opslag optie ingesteld op geografisch redundante opslag. Kies lokaal redundante opslag als u een goedkopere optie wilt die minder duurzaam is. Meer informatie over de opties voor [geografisch redundante](../storage/common/storage-redundancy-grs.md) en [lokaal redundante](../storage/common/storage-redundancy-lrs.md) opslag vindt u in het [overzicht van Azure storage-replicatie](../storage/common/storage-redundancy.md).
+Met de optie voor opslag replicatie van Recovery Services kluis kunt u kiezen tussen geografisch redundante opslag en lokaal redundante opslag. Recovery Services kluizen gebruiken standaard geografisch redundante opslag. Als deze kluis uw primaire kluis is, houdt u de opslag optie ingesteld op geografisch redundante opslag. Kies lokaal redundante opslag als u een goedkopere optie wilt die minder duurzaam is. Meer informatie over de opties voor [geografisch redundante](../storage/common/storage-redundancy.md) en [lokaal redundante](../storage/common/storage-redundancy.md) opslag vindt u in het [overzicht van Azure storage-replicatie](../storage/common/storage-redundancy.md).
 
 De instelling voor opslagreplicatie bewerken:
 
@@ -242,7 +243,7 @@ Azure Backup Server deelt code met Data Protection Manager. Verwijzingen naar Da
 
     ![Microsoft Azure Backup PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-settings-11.png)
 
-    De Scratch locatie is vereist voor het maken van een back-up naar Azure. Zorg ervoor dat de grootte van de Scratch locatie gelijk is aan ten minste 5% van de gegevens die zijn gepland om een back-up te maken naar Azure. Voor schijf beveiliging moeten afzonderlijke schijven worden geconfigureerd zodra de installatie is voltooid. Zie voor meer informatie over opslag groepen voorbereiden van [gegevens opslag](https://docs.microsoft.com/system-center/dpm/plan-long-and-short-term-data-storage?view=sc-dpm-2019).
+    De Scratch locatie is vereist voor het maken van een back-up naar Azure. Zorg ervoor dat de grootte van de Scratch locatie gelijk is aan ten minste 5% van de gegevens die zijn gepland om een back-up te maken naar Azure. Voor schijf beveiliging moeten afzonderlijke schijven worden geconfigureerd zodra de installatie is voltooid. Zie voor meer informatie over opslag groepen voorbereiden van [gegevens opslag](/system-center/dpm/plan-long-and-short-term-data-storage?view=sc-dpm-2019).
 
 6. Geef in het scherm **beveiligings instellingen** een sterk wacht woord op voor beperkte lokale gebruikers accounts en klik op **volgende**.
 
@@ -308,7 +309,7 @@ Azure Backup Server deelt code met Data Protection Manager. Verwijzingen naar Da
 
 ## <a name="add-backup-storage"></a>Back-upopslag toevoegen
 
-De eerste back-upkopie wordt opgeslagen op de opslag die is gekoppeld aan de Azure Backup Server machine. Zie voor meer informatie over het toevoegen van schijven [moderne back-upopslag toevoegen](https://docs.microsoft.com/system-center/dpm/add-storage?view=sc-dpm-1801).
+De eerste back-upkopie wordt opgeslagen op de opslag die is gekoppeld aan de Azure Backup Server machine. Zie voor meer informatie over het toevoegen van schijven [moderne back-upopslag toevoegen](/system-center/dpm/add-storage).
 
 > [!NOTE]
 > U moet ook back-upopslag toevoegen als u van plan bent om gegevens naar Azure te verzenden. In de Azure Backup Server architectuur bevat de Recovery Services kluis de *tweede* kopie van de gegevens terwijl de lokale opslag de eerste (en verplichte) back-up bevat.
@@ -358,10 +359,10 @@ U kunt ook verwijzen naar [Azure backup gerelateerde Veelgestelde vragen](backup
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Het artikel [voor het voorbereiden van uw omgeving voor dpm](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1801)bevat informatie over ondersteunde Azure backup server configuraties.
+Het artikel [voor het voorbereiden van uw omgeving voor dpm](/system-center/dpm/prepare-environment-for-dpm)bevat informatie over ondersteunde Azure backup server configuraties.
 
 U kunt de volgende artikelen gebruiken om een beter inzicht te krijgen in de beveiliging van werk belasting met behulp van Microsoft Azure Backup-Server.
 
-- [SQL Server back-up](https://docs.microsoft.com/azure/backup/backup-mabs-sql-azure-stack)
-- [Share Point server-back-up](https://docs.microsoft.com/azure/backup/backup-mabs-sharepoint-azure-stack)
+- [SQL Server back-up](./backup-mabs-sql-azure-stack.md)
+- [Share Point server-back-up](./backup-mabs-sharepoint-azure-stack.md)
 - [Alternatieve server back-up](backup-azure-alternate-dpm-server.md)

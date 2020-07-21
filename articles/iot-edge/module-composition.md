@@ -8,12 +8,12 @@ ms.date: 03/26/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6a4b90d8b6fe67de26c8e652e0dc5b62cc27023f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd2b9bc462a9d4bc11f49a7e3294e52f88a926fb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80545630"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511837"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>Meer informatie over het implementeren van modules en het vaststellen van routes naar IoT Edge
 
@@ -38,7 +38,7 @@ Op hoog niveau is een implementatie manifest een lijst met module apparaatdubbel
 
 In elk implementatie manifest zijn twee modules vereist: `$edgeAgent` , en `$edgeHub` . Deze modules maken deel uit van de IoT Edge runtime waarmee het IoT Edge apparaat en de modules worden beheerd die erop worden uitgevoerd. Zie voor meer informatie over deze modules [inzicht in de runtime van IOT Edge en de bijbehorende architectuur](iot-edge-runtime.md).
 
-Naast de twee runtime modules kunt u Maxi maal 20 modules van uw eigen toevoegen om te worden uitgevoerd op een IoT Edge apparaat.
+Naast de twee runtime modules kunt u Maxi maal 30 modules van uw eigen toevoegen om te worden uitgevoerd op een IoT Edge apparaat.
 
 Een implementatie manifest dat alleen de IoT Edge runtime (edgeAgent en edgeHub) bevat, is geldig.
 

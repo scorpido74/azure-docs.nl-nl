@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 2bf0443465f0cfd98f8bce93e60f9007ac7503be
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 81e138e7149327c7b792df58180419b93417d263
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042068"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510970"
 ---
 # <a name="troubleshooting-vm-provisioning-with-cloud-init"></a>Problemen met VM-inrichting oplossen met Cloud-init
 
@@ -21,17 +21,17 @@ Als u gegeneraliseerde aangepaste installatie kopieën hebt gemaakt met behulp v
 
 Enkele voor beelden van problemen met het inrichten:
 - De VM wordt gedurende 40 minuten vastgemaakt aan het maken en het maken van de VM is gemarkeerd als mislukt
-- CustomData wordt niet verwerkt
+- `CustomData`wordt niet verwerkt
 - De tijdelijke schijf kan niet worden gekoppeld
 - Gebruikers worden niet gemaakt of er zijn problemen met de gebruikers toegang
 - Het netwerk is niet juist ingesteld
 - Bestands-of partitie fouten wisselen
 
-In dit artikel wordt stapsgewijs beschreven hoe u problemen met Cloud-init kunt oplossen. Zie [Cloud-init dieper](https://docs.microsoft.com/azure/virtual-machines/linux/cloud-init-deep-dive)voor meer gedetailleerde informatie.
+In dit artikel wordt stapsgewijs beschreven hoe u problemen met Cloud-init kunt oplossen. Zie [Cloud-init dieper](./cloud-init-deep-dive.md)voor meer gedetailleerde informatie.
 
-## <a name="step-1-test-the-deployment-without-customdata"></a>Stap 1: de implementatie testen zonder customData
+## <a name="step-1-test-the-deployment-without-customdata"></a>Stap 1: de implementatie testen zonder`customData`
 
-Cloud-init kan customData accepteren, die wordt door gegeven wanneer de virtuele machine wordt gemaakt. U moet er eerst voor zorgen dat dit geen problemen met implementaties veroorzaakt. Probeer de virtuele machine in te richten zonder een configuratie door te geven. Als u vindt dat de virtuele machine niet kan worden ingericht, gaat u door met de onderstaande stappen, als u de configuratie die u doorgeeft vindt, gaat u verder met [stap 4](). 
+Cloud-init kan worden geaccepteerd `customData` , die wordt door gegeven wanneer de virtuele machine wordt gemaakt. U moet er eerst voor zorgen dat dit geen problemen met implementaties veroorzaakt. Probeer de virtuele machine in te richten zonder een configuratie door te geven. Als u vindt dat de virtuele machine niet kan worden ingericht, gaat u door met de onderstaande stappen, als u de configuratie die u doorgeeft vindt, gaat u verder met [stap 4](). 
 
 ## <a name="step-2-review-image-requirements"></a>Stap 2: de vereisten voor de installatie kopie controleren
 De belangrijkste oorzaak van het inrichtings probleem van de VM is dat de installatie kopie van het besturings systeem niet voldoet aan de vereisten voor het uitvoeren op Azure. Zorg ervoor dat uw installatie kopieën correct zijn voor bereid voordat u ze in azure inricht. 
@@ -39,15 +39,16 @@ De belangrijkste oorzaak van het inrichtings probleem van de VM is dat de instal
 
 De volgende artikelen illustreren de stappen voor het voorbereiden van verschillende Linux-distributies die worden ondersteund in Azure:
 
-- [CentOS-distributies](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Debian Linux](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Oracle Linux](oracle-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [SLES en OpenSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Overige: niet-goedgekeurde distributies](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [CentOS-distributies](create-upload-centos.md)
+- [Debian Linux](debian-create-upload-vhd.md)
+- [Flatcar Container Linux](flatcar-create-upload-vhd.md)
+- [Oracle Linux](oracle-create-upload-vhd.md)
+- [Red Hat Enterprise Linux](redhat-create-upload-vhd.md)
+- [SLES en OpenSUSE](suse-create-upload-vhd.md)
+- [Ubuntu](create-upload-ubuntu.md)
+- [Overige: niet-goedgekeurde distributies](create-upload-generic.md)
 
-Voor de [ondersteunde Azure-Cloud-init-installatie kopieën](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)beschikken de Linux-distributies al over de vereiste pakketten en configuraties om de installatie kopie op de juiste wijze in Azure in te richten. Als u vindt dat uw virtuele machine niet kan worden gemaakt op basis van uw eigen gestuurde installatie kopie, probeert u een ondersteunde Azure Marketplace-installatie kopie die al is geconfigureerd voor Cloud-init, met uw optionele customData. Als de customData correct werkt met een installatie kopie van Azure Marketplace, is er waarschijnlijk een probleem met uw gecuratore installatie kopie.
+Voor de [ondersteunde Azure-Cloud-init-installatie kopieën](./using-cloud-init.md)beschikken de Linux-distributies al over de vereiste pakketten en configuraties om de installatie kopie op de juiste wijze in Azure in te richten. Als u vindt dat uw virtuele machine niet kan worden gemaakt op basis van uw eigen gecuratore installatie kopie, probeert u een ondersteunde Azure Marketplace-installatie kopie die al is geconfigureerd voor Cloud-init, met uw optionele `customData` . Als het `customData` correct werkt met een installatie kopie van Azure Marketplace, is er waarschijnlijk een probleem met uw gecuratore installatie kopie.
 
 ## <a name="step-3-collect--review-vm-logs"></a>Stap 3: VM-logboeken verzamelen & controleren
 
@@ -55,11 +56,11 @@ Wanneer de virtuele machine niet kan worden ingericht, wordt in azure de status 
 
 Terwijl de virtuele machine actief is, hebt u de logboeken van de virtuele machine nodig om te begrijpen waarom het inrichten is mislukt.  Als u wilt weten waarom het inrichten van de VM is mislukt, stopt u de virtuele machine niet. Zorg ervoor dat de VM wordt uitgevoerd. Als u logboeken wilt verzamelen, moet u de mislukte VM in een actieve status laten staan. Gebruik een van de volgende methoden om de logboeken te verzamelen:
 
-- [Seriële console](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console-grub-single-user-mode)
+- [Seriële console](./serial-console-grub-single-user-mode.md)
 
-- [Schakel diagnostische gegevens over opstarten in](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-monitor#enable-boot-diagnostics) voordat u de virtuele machine maakt en [weer geven](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-monitor#view-boot-diagnostics) tijdens het opstarten.
+- [Schakel diagnostische gegevens over opstarten in](./tutorial-monitor.md#enable-boot-diagnostics) voordat u de virtuele machine maakt en [weer geven](./tutorial-monitor.md#view-boot-diagnostics) tijdens het opstarten.
 
-- [Voer AZ VM Repair uit](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-linux-vm-using-azure-virtual-machine-repair-commands) om de besturingssysteem schijf te koppelen en koppelen, zodat u deze logboeken kunt verzamelen:
+- [Voer AZ VM Repair uit](../troubleshooting/repair-linux-vm-using-azure-virtual-machine-repair-commands.md) om de besturingssysteem schijf te koppelen en koppelen, zodat u deze logboeken kunt verzamelen:
 ```bash
 /var/log/cloud-init*
 /var/log/waagent*
@@ -107,7 +108,7 @@ Als u een fout of waarschuwing hebt gevonden, leest u achterwaarts in het Cloud-
 2019-10-10 04:51:24,010 - util.py[DEBUG]: Running command ['mount', '-o', 'ro,sync', '-t', 'auto', u'/dev/sr0', '/run/cloud-init/tmp/tmpXXXXX'] with allowed return codes [0] (shell=False, capture=True)
 ```
 
-Als u toegang hebt tot de [seriële console](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console-grub-single-user-mode), kunt u proberen om de opdracht uit te voeren die door Cloud-init werd uitgevoerd.
+Als u toegang hebt tot de [seriële console](./serial-console-grub-single-user-mode.md), kunt u proberen om de opdracht uit te voeren die door Cloud-init werd uitgevoerd.
 
 De logboek registratie voor `/var/log/cloud-init.log` kan ook opnieuw worden geconfigureerd binnen/etc/cloud/cloud.cfg.d/05_logging. cfg. Raadpleeg de [Cloud-init-documentatie](https://cloudinit.readthedocs.io/en/latest/topics/logging.html)voor meer informatie over de Cloud-init-logboek registratie. 
 
@@ -132,4 +133,4 @@ Niet elke fout in de Cloud-init resulteert in een fatale inrichtings fout. Als u
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u nog steeds niet kunt isoleren waarom de configuratie van de Cloud-init niet is uitgevoerd, moet u beter kijken wat er gebeurt in elke Cloud-init-fase en wanneer de modules worden uitgevoerd. Zie meer informatie over de [configuratie van Cloud-init](https://docs.microsoft.com/azure/virtual-machines/linux/cloud-init-deep-dive) . 
+Als u nog steeds niet kunt isoleren waarom de configuratie van de Cloud-init niet is uitgevoerd, moet u beter kijken wat er gebeurt in elke Cloud-init-fase en wanneer de modules worden uitgevoerd. Zie meer informatie over de [configuratie van Cloud-init](./cloud-init-deep-dive.md) . 

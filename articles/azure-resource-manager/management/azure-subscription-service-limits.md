@@ -3,16 +3,15 @@ title: Limieten en quota voor Azure-abonnementen
 description: Biedt een lijst met algemene Azure-abonnementen en service limieten, quota's en beperkingen. Dit artikel bevat informatie over het verhogen van de limieten en maximum waarden.
 ms.topic: conceptual
 author: davidsmatlak
-ms.author: v-dasmat
 ms.date: 06/04/2020
-ms.openlocfilehash: 594e34a07cf2c370546e59ebe59df1de88eb2aa4
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ffe0703fbbea75b221dfc6fd16f334dcf58e8ab3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080972"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515853"
 ---
-# <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure-abonnements-en service limieten, quota's en beperkingen
+# <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limieten, quota's en beperkingen voor het Azure-abonnement en de Azure-service
 
 Dit document bevat enkele van de meest voorkomende Microsoft Azure limieten, ook wel quota's genoemd.
 
@@ -377,6 +376,10 @@ Zie [Azure files schaal baarheid en prestatie doelen](../../storage/files/storag
 [!INCLUDE [azure-storage-limits-vm-disks](../../../includes/azure-storage-limits-vm-disks.md)]
 
 Zie [grootten van virtuele machines](../../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)voor meer informatie.
+
+#### <a name="disk-encryption-sets"></a>Schijf versleutelings sets
+
+Er is een limiet van 50 schijf versleutelings sets per regio, per abonnement. Zie de documentatie over versleuteling voor virtuele [Linux](/azure/virtual-machines/linux/disk-encryption#restrictions) -of [Windows](/azure/virtual-machines/windows/disk-encryption#restrictions) -machines voor meer informatie. Neem contact op met de ondersteuning van Azure als u het quotum wilt verhogen.
 
 ### <a name="managed-virtual-machine-disks"></a>Beheerde schijven van virtuele machines
 

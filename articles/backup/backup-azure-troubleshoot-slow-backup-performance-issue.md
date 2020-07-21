@@ -3,12 +3,12 @@ title: Problemen met langzame back-ups van bestanden en mappen oplossen
 description: Biedt richt lijnen voor probleem oplossing waarmee u de oorzaak van Azure Backup prestatie problemen kunt vaststellen
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 07f596f0900fbd92391a383678ade99df30592f1
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 7bdda02b837cc2312b997b23ba7b714ca7ebb41a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135044"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513829"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Problemen met langzame back-ups van bestanden en mappen in Azure Backup
 
@@ -95,7 +95,7 @@ De volgende indica toren kunnen u helpen inzicht te krijgen in het knel punt en 
 * **De gebruikers interface toont de voortgang van de gegevens overdracht**. De gegevens worden nog overgedragen. De netwerk bandbreedte of de omvang van gegevens kan vertragingen veroorzaken.
 * **De gebruikers interface geeft geen voortgang weer voor de gegevens overdracht**. Open de logboeken die zich bevinden in C:\Program Files\Microsoft Azure Recovery Services Agent\Temp en controleer vervolgens het item FileProvider:: EndData in de logboeken. Dit item geeft aan dat de gegevens overdracht is voltooid en dat de catalogus bewerking wordt uitgevoerd. Annuleer de back-uptaken niet. Wacht in plaats daarvan iets langer om de catalogus bewerking te volt ooien. Als het probleem zich blijft voordoen, neemt u contact op met de [ondersteuning van Azure](https://portal.azure.com/#create/Microsoft.Support).
 
-Als u een back-up wilt maken van grote schijven, is het raadzaam om [Azure data Box](https://docs.microsoft.com/azure/backup/offline-backup-azure-data-box) te gebruiken voor de eerste back-up (initiële replicatie).  Als u Data Box niet kunt gebruiken, kunnen eventuele tijdelijke netwerk problemen die zich in uw omgeving voordoen tijdens lange gegevens overdracht via het netwerk, leiden tot back-upfouten.  Als u deze fouten wilt beveiligen, kunt u een paar mappen toevoegen aan de eerste back-up en zo snel mogelijk meer mappen toevoegen totdat de back-up van alle mappen is gemaakt naar Azure.  Volgende incrementele back-ups zullen relatief sneller zijn.
+Als u een back-up wilt maken van grote schijven, is het raadzaam om [Azure data Box](./offline-backup-azure-data-box.md) te gebruiken voor de eerste back-up (initiële replicatie).  Als u Data Box niet kunt gebruiken, kunnen eventuele tijdelijke netwerk problemen die zich in uw omgeving voordoen tijdens lange gegevens overdracht via het netwerk, leiden tot back-upfouten.  Als u deze fouten wilt beveiligen, kunt u een paar mappen toevoegen aan de eerste back-up en zo snel mogelijk meer mappen toevoegen totdat de back-up van alle mappen is gemaakt naar Azure.  Volgende incrementele back-ups zullen relatief sneller zijn.
 
 ## <a name="next-steps"></a>Volgende stappen
 

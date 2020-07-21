@@ -3,11 +3,12 @@ title: Back-up automatisch inschakelen bij het maken van VM's met Azure Policy
 description: Een artikel met informatie over het gebruik van Azure Policy om back-up automatisch in te scha kelen voor alle Vm's die in een bepaald bereik zijn gemaakt
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: 1d423371788f87155328e8f5c9334e47349a68e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b4ce7825b714eed1b025a6a807a62759177b81f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77584265"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514217"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Back-up automatisch inschakelen bij het maken van VM's met Azure Policy
 
@@ -17,7 +18,7 @@ Momenteel biedt Azure Backup een ingebouwd beleid (met behulp van Azure Policy) 
 
 ## <a name="supported-scenarios"></a>Ondersteunde scenario's
 
-* Het ingebouwde beleid wordt momenteel alleen ondersteund voor virtuele Azure-machines. Gebruikers moeten er zeker van zijn dat het Bewaar beleid dat tijdens de toewijzing is opgegeven, een VM-Bewaar beleid is. Raadpleeg [Dit](https://docs.microsoft.com/azure/backup/backup-azure-policy-supported-skus) document voor een overzicht van alle VM-sku's die door dit beleid worden ondersteund.
+* Het ingebouwde beleid wordt momenteel alleen ondersteund voor virtuele Azure-machines. Gebruikers moeten er zeker van zijn dat het Bewaar beleid dat tijdens de toewijzing is opgegeven, een VM-Bewaar beleid is. Raadpleeg [Dit](./backup-azure-policy-supported-skus.md) document voor een overzicht van alle VM-sku's die door dit beleid worden ondersteund.
 
 * Het beleid kan per keer worden toegewezen aan één locatie en abonnement. Als u back-ups wilt maken voor Vm's op verschillende locaties en abonnementen, moet u meerdere exemplaren van de beleids toewijzing maken, één voor elke combi natie van locatie en abonnement.
 
@@ -47,7 +48,7 @@ Volg de onderstaande stappen om het beleid toe te wijzen aan het vereiste bereik
 
 > [!NOTE]
 >
-> Azure Policy kunnen ook worden gebruikt op bestaande Vm's, met behulp van [herstellen](https://docs.microsoft.com/azure/governance/policy/how-to/remediate-resources).
+> Azure Policy kunnen ook worden gebruikt op bestaande Vm's, met behulp van [herstellen](../governance/policy/how-to/remediate-resources.md).
 
 > [!NOTE]
 >
@@ -55,4 +56,4 @@ Volg de onderstaande stappen om het beleid toe te wijzen aan het vereiste bereik
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Meer informatie over Azure Policy](https://docs.microsoft.com/azure/governance/policy/overview)
+[Meer informatie over Azure Policy](../governance/policy/overview.md)

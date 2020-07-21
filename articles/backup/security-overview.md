@@ -3,11 +3,12 @@ title: Overzicht van beveiligings functies
 description: Meer informatie over de beveiligings mogelijkheden in Azure Backup waarmee u uw back-upgegevens kunt beschermen en voldoen aan de beveiligings behoeften van uw bedrijf.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 178518f9f04a789f3cb634797cab650e24864337
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce6d8a43b48be5189f0459c9f82c69354f40689f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83653798"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513198"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Overzicht van beveiligings functies in Azure Backup
 
@@ -15,17 +16,17 @@ Een van de belangrijkste stappen die u kunt nemen om uw gegevens te beschermen, 
 
 ## <a name="management-and-control-of-identity-and-user-access"></a>Beheer en controle van identiteits-en gebruikers toegang
 
-Opslag accounts die worden gebruikt door Recovery Services-kluizen, zijn geïsoleerd en kunnen niet worden geopend door gebruikers voor schadelijke doel einden. De toegang is alleen toegestaan via Azure Backup beheer bewerkingen, zoals herstellen. Met Azure Backup kunt u de beheerde bewerkingen beheren via verfijnde toegang met behulp [van op Azure Role gebaseerde Access Control (RBAC)](https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault). Met RBAC kunt u taken in uw team gescheiden houden en alleen de hoeveelheid toegang verlenen die nodig is voor het uitvoeren van hun taken.
+Opslag accounts die worden gebruikt door Recovery Services-kluizen, zijn geïsoleerd en kunnen niet worden geopend door gebruikers voor schadelijke doel einden. De toegang is alleen toegestaan via Azure Backup beheer bewerkingen, zoals herstellen. Met Azure Backup kunt u de beheerde bewerkingen beheren via verfijnde toegang met behulp [van op Azure Role gebaseerde Access Control (RBAC)](./backup-rbac-rs-vault.md). Met RBAC kunt u taken in uw team gescheiden houden en alleen de hoeveelheid toegang verlenen die nodig is voor het uitvoeren van hun taken.
 
-Azure Backup biedt drie [ingebouwde rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) voor het beheren van bewerkingen voor het beheer van back-ups:
+Azure Backup biedt drie [ingebouwde rollen](../role-based-access-control/built-in-roles.md) voor het beheren van bewerkingen voor het beheer van back-ups:
 
 * Back-upinzender: voor het maken en beheren van back-ups, behalve het verwijderen van Recovery Services kluis en het verlenen van toegang tot anderen
 * Back-upoperator: alles wat een bijdrager is behalve back-ups verwijderen en back-upbeleid beheren
 * Back-uplezer: machtigingen voor het weer geven van alle bewerkingen voor back-upbeheer
 
-Meer informatie over op [rollen gebaseerd toegangs beheer voor het beheren van Azure backup](https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault).
+Meer informatie over op [rollen gebaseerd toegangs beheer voor het beheren van Azure backup](./backup-rbac-rs-vault.md).
 
-Azure Backup heeft verschillende beveiligings mechanismen die zijn ingebouwd in de service om beveiligings problemen te voor komen, te detecteren en op te lossen. Meer informatie over [beveiligings controles voor Azure backup](https://docs.microsoft.com/azure/backup/backup-security-controls).
+Azure Backup heeft verschillende beveiligings mechanismen die zijn ingebouwd in de service om beveiligings problemen te voor komen, te detecteren en op te lossen. Meer informatie over [beveiligings controles voor Azure backup](./backup-security-controls.md).
 
 ## <a name="separation-between-guest-and-azure-storage"></a>Schei ding tussen gast en Azure Storage
 
@@ -37,9 +38,9 @@ Voor het maken van een back-up van virtuele Azure-machines is het verplaatsen va
 
 ## <a name="private-endpoints-for-azure-backup"></a>Privé-eind punten voor Azure backup
 
-U kunt nu [persoonlijke eind punten](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) gebruiken om een back-up te maken van uw gegevens op een veilige manier van servers in een virtueel netwerk naar uw Recovery Services kluis. Het persoonlijke eind punt gebruikt een IP-adres van de VNET-schijf ruimte voor uw kluis. u hoeft uw virtuele netwerken dus niet beschikbaar te maken voor open bare Ip's. Privé-eind punten kunnen worden gebruikt voor het maken van back-ups en het herstellen van uw SQL-en SAP HANA-data bases die worden uitgevoerd in uw Azure-Vm's. Het kan ook worden gebruikt voor uw on-premises servers met behulp van de MARS-agent.
+U kunt nu [persoonlijke eind punten](../private-link/private-endpoint-overview.md) gebruiken om een back-up te maken van uw gegevens op een veilige manier van servers in een virtueel netwerk naar uw Recovery Services kluis. Het persoonlijke eind punt gebruikt een IP-adres van de VNET-schijf ruimte voor uw kluis. u hoeft uw virtuele netwerken dus niet beschikbaar te maken voor open bare Ip's. Privé-eind punten kunnen worden gebruikt voor het maken van back-ups en het herstellen van uw SQL-en SAP HANA-data bases die worden uitgevoerd in uw Azure-Vm's. Het kan ook worden gebruikt voor uw on-premises servers met behulp van de MARS-agent.
 
-Lees [hier](https://docs.microsoft.com/azure/backup/private-endpoints)meer over privé-eind punten voor Azure backup.
+Lees [hier](./private-endpoints.md)meer over privé-eind punten voor Azure backup.
 
 ## <a name="encryption-of-data-in-transit-and-at-rest"></a>Versleuteling van gegevens die onderweg en in rust zijn
 
@@ -47,7 +48,7 @@ Versleuteling beschermt uw gegevens en helpt u om te voldoen aan de beveiligings
 
 * Back-upgegevens worden automatisch versleuteld met door micro soft beheerde sleutels. U kunt ook uw back-ups van beheerde schijf-Vm's in de Recovery Services kluis versleutelen met door de [klant beheerde sleutels](backup-encryption.md#encryption-of-backup-data-using-customer-managed-keys) die zijn opgeslagen in de Azure Key Vault. U hoeft geen expliciete actie te ondernemen om deze versleuteling in te scha kelen. Dit is van toepassing op alle werk belastingen waarvan een back-up wordt gemaakt naar uw Recovery Services kluis.
 
-* Azure Backup ondersteunt back-ups en herstel bewerkingen van Azure-Vm's waarvan het besturings systeem/de gegevens schijven zijn versleuteld met Azure Disk Encryption (ADE). Meer [informatie over versleutelde Azure-vm's en-Azure backup](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption).
+* Azure Backup ondersteunt back-ups en herstel bewerkingen van Azure-Vm's waarvan het besturings systeem/de gegevens schijven zijn versleuteld met Azure Disk Encryption (ADE). Meer [informatie over versleutelde Azure-vm's en-Azure backup](./backup-azure-vms-encryption.md).
 
 ## <a name="protection-of-backup-data-from-unintentional-deletes"></a>Beveiliging van back-upgegevens tegen onbedoelde verwijderingen
 
@@ -55,15 +56,15 @@ Azure Backup biedt beveiligings functies voor het beveiligen van back-upgegevens
 
 ## <a name="monitoring-and-alerts-of-suspicious-activity"></a>Bewaking en waarschuwingen van verdachte activiteiten
 
-Azure Backup biedt [ingebouwde mogelijkheden voor bewaking en waarschuwingen](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor) voor het weer geven en configureren van acties voor gebeurtenissen die betrekking hebben op Azure backup. [Back-uprapporten](https://docs.microsoft.com/azure/backup/configure-reports) fungeren als een eenmalige bestemming voor het bijhouden van het gebruik, het controleren van back-ups en herstel bewerkingen en het identificeren van de belangrijkste trends op verschillende niveaus. Met behulp van de hulpprogram ma's voor controle en rapportage van Azure Backup kunt u een waarschuwing ontvangen voor elke onbevoegde, verdachte of schadelijke activiteit zodra deze zich voordoen.
+Azure Backup biedt [ingebouwde mogelijkheden voor bewaking en waarschuwingen](./backup-azure-monitoring-built-in-monitor.md) voor het weer geven en configureren van acties voor gebeurtenissen die betrekking hebben op Azure backup. [Back-uprapporten](./configure-reports.md) fungeren als een eenmalige bestemming voor het bijhouden van het gebruik, het controleren van back-ups en herstel bewerkingen en het identificeren van de belangrijkste trends op verschillende niveaus. Met behulp van de hulpprogram ma's voor controle en rapportage van Azure Backup kunt u een waarschuwing ontvangen voor elke onbevoegde, verdachte of schadelijke activiteit zodra deze zich voordoen.
 
 ## <a name="security-features-to-help-protect-hybrid-backups"></a>Beveiligings functies voor het beveiligen van hybride back-ups
 
 Azure Backup-Service gebruikt de Microsoft Azure Recovery Services-agent (MARS) om back-ups te maken van bestanden, mappen en het volume of de systeem status van een on-premises computer naar Azure. MARS biedt nu beveiligings functies waarmee hybride back-ups kunnen worden beveiligd. Het gaat om de volgende functies:
 
-* Er wordt een extra beveiligingslaag toegevoegd wanneer een kritieke bewerking wordt uitgevoerd, zoals het wijzigen van een wachtwoordzin. Deze validatie is om ervoor te zorgen dat dergelijke bewerkingen alleen kunnen worden uitgevoerd door gebruikers die geldige Azure-referenties hebben. Meer [informatie over de functies die aanvallen verhinderen](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#prevent-attacks).
+* Er wordt een extra beveiligingslaag toegevoegd wanneer een kritieke bewerking wordt uitgevoerd, zoals het wijzigen van een wachtwoordzin. Deze validatie is om ervoor te zorgen dat dergelijke bewerkingen alleen kunnen worden uitgevoerd door gebruikers die geldige Azure-referenties hebben. Meer [informatie over de functies die aanvallen verhinderen](./backup-azure-security-feature.md#prevent-attacks).
 
-* Verwijderde back-upgegevens worden nog 14 dagen na de verwijdering bewaard. Dit waarborgt de herstel baarheid van de gegevens binnen een bepaalde periode, waardoor er geen gegevens verloren gaan, zelfs als er een aanval plaatsvindt. Daarnaast worden er voor het beveiligen van beschadigde gegevens een groter aantal minimale herstel punten onderhouden. [Meer informatie over het herstellen van verwijderde back-upgegevens](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#recover-deleted-backup-data).
+* Verwijderde back-upgegevens worden nog 14 dagen na de verwijdering bewaard. Dit waarborgt de herstel baarheid van de gegevens binnen een bepaalde periode, waardoor er geen gegevens verloren gaan, zelfs als er een aanval plaatsvindt. Daarnaast worden er voor het beveiligen van beschadigde gegevens een groter aantal minimale herstel punten onderhouden. [Meer informatie over het herstellen van verwijderde back-upgegevens](./backup-azure-security-feature.md#recover-deleted-backup-data).
 
 * Voor gegevens waarvan een back-up is gemaakt met behulp Azure Backup van de MARS-agent (Microsoft Azure Recovery Services) wordt een wachtwoordzin gebruikt om ervoor te zorgen dat gegevens worden versleuteld voordat ze naar Azure Backup worden gedecodeerd en alleen worden ontsleuteld na het downloaden De gegevens van de wachtwoordzin zijn alleen beschikbaar voor de gebruiker die de wachtwoordzin en de geconfigureerde agent heeft gemaakt. Er wordt niets verzonden of gedeeld met de service. Dit zorgt voor een volledige beveiliging van uw gegevens als gegevens die per ongeluk worden weer gegeven (zoals een man-in-the-middle-aanval op het netwerk) zonder de wachtwoordzin en de wachtwoordzin wordt niet verzonden op het netwerk.
 

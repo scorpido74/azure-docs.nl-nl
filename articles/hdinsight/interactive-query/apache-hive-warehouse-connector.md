@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: c2590a2c745969313ae73521dbcd110fbf3b7551
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 24968511d038b2cea41a59187c0a361684c6720e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221014"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511888"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-hive-warehouse-connector-in-azure-hdinsight"></a>Apache Spark en Apache Hive integreren met hive Warehouse connector in azure HDInsight
 
@@ -73,7 +73,7 @@ Hive Warehouse connector heeft afzonderlijke clusters nodig voor Spark-en intera
 
 1. Selecteer **eigenschap toevoegen...** om de volgende configuraties toe te voegen:
 
-    | Configuratie | Waarde |
+    | Configuration | Waarde |
     |----|----|
     |`spark.datasource.hive.warehouse.load.staging.dir`|`wasbs://STORAGE_CONTAINER_NAME@STORAGE_ACCOUNT_NAME.blob.core.windows.net/tmp`. <br> Stel in op een geschikte, met HDFS compatibele tijdelijke directory. Als u twee verschillende clusters hebt, moet de map voor gefaseerde installatie een map zijn in de map met tijdelijke bestanden van het opslag account van het LLAP-cluster, zodat HiveServer2 er toegang toe heeft.  Vervang door de `STORAGE_ACCOUNT_NAME` naam van het opslag account dat wordt gebruikt door het cluster en `STORAGE_CONTAINER_NAME` met de naam van de opslag container. |
     |`spark.sql.hive.hiveserver2.jdbc.url`| De waarde die u eerder hebt verkregen van de **HiveServer2 Interactive JDBC-URL** |
@@ -94,7 +94,7 @@ Naast de configuraties die in de vorige sectie worden genoemd, voegt u de volgen
 
 1. Werk de volgende eigenschap bij.
 
-    | Configuratie | Waarde |
+    | Configuration | Waarde |
     |----|----|
     | `spark.sql.hive.hiveserver2.jdbc.url.principal`    | `hive/<llap-headnode>@<AAD-Domain>` |
     
@@ -123,7 +123,7 @@ Hieronder ziet u enkele voor beelden om verbinding te maken met HWC vanuit Spark
 
 ### <a name="spark-shell"></a>Spark-shell
 
-1. Gebruik de [SSH-opdracht](../hdinsight-hadoop-linux-use-ssh-unix.md) om verbinding te maken met uw Apache Spark cluster. Bewerk de onderstaande opdracht door CLUSTERNAME te vervangen door de naam van uw cluster en voer vervolgens de volgende opdracht in:
+1. Gebruik de [SSH-opdracht](../hdinsight-hadoop-linux-use-ssh-unix.md) om verbinding te maken met uw Apache Spark cluster. Bewerk de onderstaande opdracht door CLUSTERNAME te vervangen door de naam van uw cluster. Voer vervolgens deze opdracht in:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -179,9 +179,9 @@ Nadat u de scala/Java-code samen met de afhankelijkheden in een assembly jar heb
 
 Voor python voegt u ook de volgende configuratie toe. 
 
-    ```python
-    --py-files /usr/hdp/current/hive_warehouse_connector/pyspark_hwc-<VERSION>.zip
-    ```
+```python
+--py-files /usr/hdp/current/hive_warehouse_connector/pyspark_hwc-<VERSION>.zip
+```
     
 ## <a name="run-queries-on-enterprise-security-package-esp-clusters"></a>Query's uitvoeren op Enterprise Security Package (ESP)-clusters
 
@@ -218,7 +218,7 @@ kinit USERNAME
 
         ![Hive-beleids lijst van de component Warehouse connector zwerver](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
 
-    1. Geef een gewenste beleids naam op. Data base selecteren: **standaard**, Hive-tabel: **demo**, Hive-kolom: **naam**, gebruiker: **rsadmin2**, toegangs typen: **selecteren**, en **gedeeltelijk masker: weer geven laatste 4** van het menu **optie masker selecteren** . Klik op **Toevoegen**.
+    1. Geef een gewenste beleids naam op. Data base selecteren: **standaard**, Hive-tabel: **demo**, Hive-kolom: **naam**, gebruiker: **rsadmin2**, toegangs typen: **selecteren**, en **gedeeltelijk masker: weer geven laatste 4** van het menu **optie masker selecteren** . Klik op **Add**.
                 ![beleid maken](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
 1. Bekijk de inhoud van de tabel opnieuw. Na het Toep assen van het beleid voor zwerver, kunnen we alleen de laatste vier tekens van de kolom zien.
 

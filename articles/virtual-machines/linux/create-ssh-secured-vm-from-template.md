@@ -6,11 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: cynthn
-ms.openlocfilehash: 0c77864acd53976b9108a77198f645c419763b21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28c688526bccc411bce6f4118dc55160083deba0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85414450"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510919"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>Een virtuele Linux-machine maken met Azure Resource Manager sjablonen
 
@@ -55,7 +56,7 @@ In het vorige voor beeld hebt u een sjabloon opgegeven die is opgeslagen in GitH
 
 Hier volgen enkele aanvullende bronnen:
 
-- Raadpleeg [Azure Resource Manager-documentatie](/azure/azure-resource-manager/) voor meer informatie over het ontwikkelen van Resource Manager-sjablonen.
+- Raadpleeg [Azure Resource Manager-documentatie](../../azure-resource-manager/index.yml) voor meer informatie over het ontwikkelen van Resource Manager-sjablonen.
 - Zie [Naslag informatie over Azure-sjablonen](/azure/templates/microsoft.compute/allversions)voor een overzicht van de Azure virtual machine-schema's.
 - Zie [Azure Quick](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular)start-sjablonen voor meer voor beelden van virtuele-machine sjablonen.
 

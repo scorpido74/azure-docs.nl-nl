@@ -4,11 +4,12 @@ description: Verwijzing van Azure Monitor inzicht krijgen in de ondersteunde ser
 ms.subservice: logs
 ms.topic: reference
 ms.date: 06/03/2020
-ms.openlocfilehash: 6156b9d311859534160258256ff6315b037f3a14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ceca6b0a230de6d3eeab47e60d90767b33b5ac59
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84418762"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515390"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Ondersteunde categorieën voor Azure-resource logboeken
 
@@ -340,7 +341,7 @@ Als er nog steeds iets ontbreekt, kunt u onder aan dit artikel een GitHub-opmerk
 |PublishFailures|Fout logboeken publiceren|
 
 
-## <a name="microsofteventhubnamespaces"></a>Micro soft. EventHub/naam ruimten
+## <a name="microsofteventhubnamespaces"></a>Microsoft.EventHub/namespaces
 
 |Categorie|Weergave naam categorie|
 |---|---|
@@ -575,7 +576,7 @@ Als er nog steeds iets ontbreekt, kunt u onder aan dit artikel een GitHub-opmerk
 |OperationLogs|Bewerkings logboeken|
 
 
-## <a name="microsoftservicebusnamespaces"></a>Micro soft. ServiceBus/naam ruimten
+## <a name="microsoftservicebusnamespaces"></a>Microsoft.ServiceBus/namespaces
 
 |Categorie|Weergave naam categorie|
 |---|---|
@@ -602,13 +603,13 @@ Als er nog steeds iets ontbreekt, kunt u onder aan dit artikel een GitHub-opmerk
 
 |Categorie|Weergave naam categorie|
 |---|---|
-|Fouten|Fouten|
+|Errors|Errors|
 |QueryStoreRuntimeStatistics|Runtime statistieken voor query Store|
 |QueryStoreWaitStatistics|Wacht statistieken voor query Store|
 |SQLInsights|SQL Insights|
 
 
-## <a name="microsoftsqlserversdatabases"></a>Micro soft. SQL/servers/data bases
+## <a name="microsoftsqlserversdatabases"></a>Microsoft.Sql/servers/databases
 
 |Categorie|Weergave naam categorie|
 |---|---|
@@ -618,7 +619,7 @@ Als er nog steeds iets ontbreekt, kunt u onder aan dit artikel een GitHub-opmerk
 |Impassen|Impassen|
 |DevOpsOperationsAudit|Audit logboeken voor Devops-bewerkingen|
 |DmsWorkers|DMS-werk rollen|
-|Fouten|Fouten|
+|Errors|Errors|
 |ExecRequests|Exec-aanvragen|
 |QueryStoreRuntimeStatistics|Runtime statistieken voor query Store|
 |QueryStoreWaitStatistics|Wacht statistieken voor query Store|
@@ -711,6 +712,6 @@ Als er nog steeds iets ontbreekt, kunt u onder aan dit artikel een GitHub-opmerk
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Meer informatie over bron logboeken](../../azure-monitor/platform/platform-logs-overview.md)
-* [Resource bron logboeken streamen naar **Event hubs**](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
-* [Diagnostische instellingen voor bron logboek wijzigen met behulp van de Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
-* [Logboeken analyseren vanuit Azure Storage met Log Analytics](../../azure-monitor/platform/collect-azure-metrics-logs.md)
+* [Resource bron logboeken streamen naar **Event hubs**](./resource-logs.md#send-to-azure-event-hubs)
+* [Diagnostische instellingen voor bron logboek wijzigen met behulp van de Azure Monitor REST API](/rest/api/monitor/diagnosticsettings)
+* [Logboeken analyseren vanuit Azure Storage met Log Analytics](./resource-logs.md#send-to-log-analytics-workspace)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 72ba4acd694933db503b01611e63867af99a129f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8aa8599cbaab6af00d7b4122b94c9e24870881f3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555965"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511327"
 ---
 # <a name="connect-fortinet-to-azure-sentinel"></a>Fortinet verbinden met Azure-Sentinel
 
@@ -36,12 +36,14 @@ Configureer Fortinet voor het door sturen van syslog-berichten in de CEF-indelin
 
 1. Open de CLI op uw Fortinet-apparaat en voer de volgende opdrachten uit:
 
-        config log syslogd setting
-        set format cef
-        set port 514
-        set server <ip_address_of_Receiver>
-        set status enable
-        end
+    ```console
+    config log syslogd setting
+    set format cef
+    set port 514
+    set server <ip_address_of_Receiver>
+    set status enable
+    end
+    ```
 
     - Vervang het IP **-adres** van de server door het IP-adres van de agent.
     - Stel de **syslog-poort** in op **514** of de poort die is ingesteld op de agent.
