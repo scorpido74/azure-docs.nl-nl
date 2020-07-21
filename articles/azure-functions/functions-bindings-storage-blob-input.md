@@ -6,11 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: 1dbd3765b691d1ba7b958d765a59f6451f380a2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c1ae7f0aff06f269d4e4949eb5a8bed0e3371684
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559079"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540244"
 ---
 # <a name="azure-blob-storage-input-binding-for-azure-functions"></a>Invoer binding voor Azure Blob Storage voor Azure Functions
 
@@ -297,11 +298,11 @@ Kenmerken worden niet ondersteund door python.
 
 ---
 
-## <a name="configuration"></a>Configuratie
+## <a name="configuration"></a>Configuration
 
 De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `Blob` kenmerk.
 
-|function.jsbij eigenschap | Kenmerk eigenschap |Description|
+|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
 |**type** | N.v.t. | Moet worden ingesteld op `blob` . |
 |**direction** | N.v.t. | Moet worden ingesteld op `in` . Uitzonde ringen worden vermeld in de sectie [gebruik](#usage) . |
@@ -328,7 +329,7 @@ Toegang krijgen tot BLOB-gegevens die `context.bindings.<NAME>` `<NAME>` overeen
 
 # <a name="python"></a>[Python](#tab/python)
 
-Toegang tot BLOB-gegevens via de para meter getypeerd als [InputStream](https://docs.microsoft.com/python/api/azure-functions/azure.functions.inputstream?view=azure-python). Raadpleeg het [invoer voorbeeld](#example) voor meer informatie.
+Toegang tot BLOB-gegevens via de para meter getypeerd als [InputStream](/python/api/azure-functions/azure.functions.inputstream?view=azure-python). Raadpleeg het [invoer voorbeeld](#example) voor meer informatie.
 
 # <a name="java"></a>[Java](#tab/java)
 

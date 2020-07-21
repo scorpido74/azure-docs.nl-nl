@@ -5,16 +5,16 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 3ba190f40d3b9451aec6e86ea69b7d0fe6e66aa3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1dc58bc7c758330c0333a5359622c4e54bb95026
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807845"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540346"
 ---
 # <a name="durable-functions-versions-overview"></a>Overzicht van Durable Functions versies
 
-*Durable functions* is een uitbrei ding van [Azure functions](../functions-overview.md) en [Azure WebJobs](../../app-service/web-sites-create-web-jobs.md) waarmee u stateful functies in een serverloze omgeving kunt schrijven. Met de extensie worden status, controlepunten en het opnieuw opstarten voor u beheerd. Als u nog niet bekend bent met Durable Functions, raadpleegt u de documentatie van het [overzicht](durable-functions-overview.md).
+*Durable functions* is een uitbrei ding van [Azure functions](../functions-overview.md) en [Azure WebJobs](../../app-service/webjobs-create.md) waarmee u stateful functies in een serverloze omgeving kunt schrijven. Met de extensie worden status, controlepunten en het opnieuw opstarten voor u beheerd. Als u nog niet bekend bent met Durable Functions, raadpleegt u de documentatie van het [overzicht](durable-functions-overview.md).
 
 ## <a name="new-features-in-2x"></a>Nieuwe functies in 2. x
 
@@ -24,7 +24,7 @@ In deze sectie worden de functies beschreven van Durable Functions die zijn toeg
 
 In Durable Functions 2. x hebben we een nieuw concept voor [entiteits functies](durable-functions-entities.md) geïntroduceerd.
 
-Met entiteits functies worden bewerkingen gedefinieerd voor het lezen en bijwerken van kleine stukjes status, ook wel *duurzame entiteiten*genoemd. Net als Orchestrator functions zijn entiteits functies functies met een speciaal trigger type, *entiteits trigger*. In tegens telling tot Orchestrator-functies hebben entiteits functies geen specifieke code beperkingen. Met entiteits functies wordt ook de status expliciet beheerd in plaats van impliciet de status via de controle stroom te vertegenwoordigen.
+Met entiteitsfuncties worden bewerkingen gedefinieerd voor het lezen en bijwerken van kleine stukjes status, ook wel *duurzame entiteiten* genoemd. Net als Orchestrator functions zijn entiteits functies functies met een speciaal trigger type, *entiteits trigger*. In tegens telling tot Orchestrator-functies hebben entiteits functies geen specifieke code beperkingen. Met entiteits functies wordt ook de status expliciet beheerd in plaats van impliciet de status via de controle stroom te vertegenwoordigen.
 
 Zie het artikel [duurzame entities](durable-functions-entities.md) voor meer informatie.
 

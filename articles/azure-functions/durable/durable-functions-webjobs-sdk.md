@@ -4,12 +4,12 @@ description: Meer informatie over het coderen en configureren van Durable Functi
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ad498bdbc4e6dc9745c6ef45b3dc601ad36c0a62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 826e475eb71563b52d687903aeac4ec936e267f6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82733410"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540295"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Durable Functions uitvoeren als webjobs
 
@@ -31,7 +31,7 @@ In dit artikel wordt ervan uitgegaan dat u bekend bent met de basis principes va
 
 Als u de stappen in dit artikel wilt uitvoeren:
 
-* [Installeer Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/) met de werk belasting van **Azure Development** .
+* [Installeer Visual Studio 2019](/visualstudio/install/) met de werk belasting van **Azure Development** .
 
   Als u Visual Studio al hebt, maar deze werk belasting niet hebt, voegt u de werk belasting toe door **extra**hulp  >  **middelen en functies**te selecteren.
 

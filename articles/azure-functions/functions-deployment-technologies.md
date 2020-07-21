@@ -6,12 +6,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: glenga
-ms.openlocfilehash: ec5e9da2ab80f4728d342303e1eb08c49f765485
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63c52b8b1ee9b9448a1ba6f78873ae6a036e3563
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82735297"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540210"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Implementatie technologieën in Azure Functions
 
@@ -21,7 +21,7 @@ U kunt een aantal verschillende technologieën gebruiken om uw Azure Functions p
 
 Azure Functions ondersteunt lokale ontwikkeling en hosting in Windows en Linux op meerdere platforms. Momenteel zijn er drie hosting plannen beschikbaar:
 
-+ [Meerverbruik](functions-scale.md#consumption-plan)
++ [Verbruik](functions-scale.md#consumption-plan)
 + [Premium](functions-scale.md#premium-plan)
 + [Toegewezen (App Service)](functions-scale.md#app-service-plan)
 
@@ -179,13 +179,13 @@ In de portal-editor kunt u de bestanden in uw functie-app rechtstreeks bewerken 
 
 In de volgende tabel ziet u de besturings systemen en talen die ondersteuning bieden voor het bewerken van portals:
 
-| | Windows-verbruik | Windows Premium | Windows toegewezen | Linux-verbruik | Linux Premium | Speciaal voor Linux |
+| Taal | Windows-verbruik | Windows Premium | Windows toegewezen | Linux-verbruik | Linux Premium | Speciaal voor Linux |
 |-|:-----------------: |:----------------:|:-----------------:|:-----------------:|:-------------:|:---------------:|
 | C# | | | | | |
 | C#-script |✔|✔|✔| |✔<sup>\*</sup> |✔<sup>\*</sup>|
 | F# | | | | | | |
 | Java | | | | | | |
-| JavaScript (Node.js) |✔|✔|✔| |✔<sup>\*</sup>|✔<sup>\*</sup>|
+| JavaScript (node.js) |✔|✔|✔| |✔<sup>\*</sup>|✔<sup>\*</sup>|
 | Python (Preview) | | | | | | |
 | PowerShell (Preview) |✔|✔|✔| | | |
 | Type script (Node.js) | | | | | | |

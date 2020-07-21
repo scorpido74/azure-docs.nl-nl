@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/11/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: 5fc106bfd97e8decd47ac7d43383907dcbbbda9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e1cc3bac56e659b9a020880a26fd3d539f987503
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82792973"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544967"
 ---
 ## <a name="2-assign-access-permissions-to-an-identity"></a>2 toegangs machtigingen toewijzen aan een identiteit
 
@@ -92,7 +92,16 @@ De volgende sets machtigingen worden ondersteund in de hoofdmap van een bestands
 Gebruik de Windows **net use** -opdracht om de Azure-bestands share te koppelen. Vergeet niet om de waarden van de tijdelijke aanduidingen in het volgende voor beeld te vervangen door uw eigen waarden. Zie [een Azure-bestands share gebruiken met Windows](../articles/storage/files/storage-how-to-use-files-windows.md)voor meer informatie over het koppelen van bestands shares. 
 
 ```
-net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> /user:Azure\<storage-account-name> <storage-account-key>
+$connectTestResult = Test-NetConnection -ComputerName <storage-account-name>.file.core.windows.net -Port 445
+if ($connectTestResult.TcpTestSucceeded)
+{
+ net use <desired-drive letter>: \\<storage-account-name>.file.core.windows.net\<fileshare-name>
+} 
+else 
+{
+ Write-Error -Message "Unable to reach the Azure storage account via port 445. Check to make sure your organization or ISP is not blocking port 445, or use Azure P2S VPN, Azure S2S VPN, or Express Route to tunnel SMB traffic over a different port."
+}
+
 ```
 
 Als u problemen ondervindt bij het maken van verbinding met Azure Files, raadpleegt u [het hulp programma voor probleem oplossing dat is gepubliceerd voor Azure files-koppelings fouten in Windows](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5). We bieden ook [richt lijnen](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access) voor het omzeilen van scenario's wanneer poort 445 wordt geblokkeerd. 
@@ -130,5 +139,13 @@ Meld u aan bij de virtuele machine met behulp van de Azure AD-identiteit waaraan
 Gebruik de volgende opdracht om de Azure-bestands share te koppelen. Vergeet niet om de waarden van de tijdelijke aanduidingen te vervangen door uw eigen waarden. Omdat u bent geverifieerd, hoeft u de sleutel voor het opslag account, de lokale AD DS referenties of de referenties van de Azure-AD DS niet op te geven. Eenmalige aanmelding wordt ondersteund voor verificatie met on-premises AD DS of Azure AD DS. Als u problemen ondervindt met het koppelen van AD DS referenties, raadpleegt u [Azure files problemen oplossen in Windows](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems) voor meer informatie.
 
 ```
-net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name>
+$connectTestResult = Test-NetConnection -ComputerName <storage-account-name>.file.core.windows.net -Port 445
+if ($connectTestResult.TcpTestSucceeded)
+{
+ net use <desired-drive letter>: \\<storage-account-name>.file.core.windows.net\<fileshare-name>
+} 
+else 
+{
+ Write-Error -Message "Unable to reach the Azure storage account via port 445. Check to make sure your organization or ISP is not blocking port 445, or use Azure P2S VPN, Azure S2S VPN, or Express Route to tunnel SMB traffic over a different port."
+}
 ```

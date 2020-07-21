@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 45b611144d5a62171061febfd4efa98db69bacb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbca8798af83108ca5e8bdfe5918a25423fd934d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84436195"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544316"
 ---
 Azure Managed disks biedt momenteel vier schijf typen, elk type is gericht op specifieke klant scenario's.
 
@@ -21,8 +21,8 @@ Azure Managed disks biedt momenteel vier schijf typen, elk type is gericht op sp
 
 De volgende tabel bevat een vergelijking van ultra disks, Premium-schijven (Solid-state drives), standaard SSD en standaard harde schijven (HDD) voor beheerde schijven om u te helpen bepalen wat u wilt gebruiken.
 
-|   | Ultraschijven   | Premium - SSD   | Standard - SSD   | Standard HDD   |
-|---------|---------|---------|---------|---------|
+| Detail | Ultraschijven | Premium SSD | Standard SSD | Standard HDD |
+| ------ | ---------- | ----------- | ------------ | ------------ |
 |Schijftype   |SSD   |SSD   |SSD   |HDD   |
 |Scenario   |I/o-intensieve workloads, zoals [SAP Hana](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md), data bases in de bovenste laag (bijvoorbeeld SQL, Oracle) en andere trans acties met een zware werk belasting.   |Productie- en prestatiegevoelige workloads   |Webservers, bedrijfstoepassingen die weinig wordt gebruikt en dev/test   |Back-up, niet-kritiek, incidentele toegang   |
 |Maximale schijfgrootte   |65.536 gibibyte (GiB)    |32.767 GiB    |32.767 GiB   |32.767 GiB   |

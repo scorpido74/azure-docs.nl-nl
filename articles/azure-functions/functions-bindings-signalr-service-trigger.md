@@ -5,12 +5,12 @@ author: chenyl
 ms.topic: reference
 ms.date: 05/11/2020
 ms.author: chenyl
-ms.openlocfilehash: c2ad9b6c4410a62d5652050406e05be4cde5fab0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec2952a3093661f0f6ef32908307a8a82c6367ed
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830703"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540227"
 ---
 # <a name="signalr-service-trigger-binding-for-azure-functions"></a>Binding van de signaal service-trigger voor Azure Functions
 
@@ -43,7 +43,7 @@ public class SignalRTestHub : ServerlessHub
 
 ### <a name="with-traditional-model"></a>Met traditioneel model
 
-Traditioneel model voldoet aan de Conventie van de Azure-functie die is ontwikkeld door C#. Als u er niet bekend mee bent, kunt u leren van [documenten](https://docs.microsoft.com/azure/azure-functions/functions-dotnet-class-library).
+Traditioneel model voldoet aan de Conventie van de Azure-functie die is ontwikkeld door C#. Als u er niet bekend mee bent, kunt u leren van [documenten](./functions-dotnet-class-library.md).
 
 ```cs
 [FunctionName("SignalRTest")]
@@ -162,13 +162,13 @@ def main(invocation) -> None:
 
 ---
 
-## <a name="configuration"></a>Configuratie
+## <a name="configuration"></a>Configuration
 
 ### <a name="signalrtrigger"></a>SignalRTrigger
 
 De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `SignalRTrigger` kenmerk.
 
-|function.jsbij eigenschap | Kenmerk eigenschap |Description|
+|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
 |**type**| N.v.t. | Moet worden ingesteld op `SignalRTrigger` .|
 |**direction**| N.v.t. | Moet worden ingesteld op `in` .|
@@ -187,7 +187,7 @@ Het invoer type van de trigger wordt gedeclareerd als ofwel `InvocationContext` 
 
 InvocationContext bevat alle inhoud in het bericht verzenden van de signalerings service.
 
-|Eigenschap in InvocationContext | Description|
+|Eigenschap in InvocationContext | Beschrijving|
 |------------------------------|------------|
 |Argumenten| Beschikbaar voor *berichten* categorie. Bevat *argumenten* in het [aanroep bericht](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)|
 |Fout| Beschikbaar voor gebeurtenis waarbij de *verbinding is verbroken* . Het kan leeg zijn als de verbinding is gesloten zonder fout of de fout berichten bevat.|
@@ -196,7 +196,7 @@ InvocationContext bevat alle inhoud in het bericht verzenden van de signalerings
 |Gebeurtenis| De gebeurtenis van het bericht.|
 |ConnectionId| De verbindings-ID van de client die het bericht verzendt.|
 |UserId| De gebruikers-id van de client die het bericht verzendt.|
-|Headers| De headers van de aanvraag.|
+|Kopteksten| De headers van de aanvraag.|
 |Query’s uitvoeren| De query van de aanvraag wanneer clients verbinding maken met de service.|
 |Claims| De claims van de client.|
 

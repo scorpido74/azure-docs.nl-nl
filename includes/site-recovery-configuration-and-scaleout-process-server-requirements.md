@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: include
-ms.date: 06/23/2020
+ms.date: 07/08/2020
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: c8c51d671cd98a606c11a39b6cf489aa288d71b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60012f79c3c04a4ff14c4a7f0609b6940d3402c4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85292131"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544244"
 ---
 **Vereisten voor configuratie en proces server**
 
@@ -60,6 +60,9 @@ time.windows.com | Wordt gebruikt om de tijd synchronisatie tussen het systeem e
 | <ul> <li> https:\//management.azure.com </li><li> https:\//secure.aadcdn.microsoftonline-p.com </li><li> https: \/ /login.live.com </li><li> https: \/ /Graph.Windows.net </li><li> https:\//login.windows.net </li><li> *. services.visualstudio.com (optioneel) </li><li> https: \/ /www.live.com </li><li> https: \/ /www.Microsoft.com </li></ul> | OVF Setup moet toegang hebben tot deze aanvullende Url's. Ze worden gebruikt voor toegangs beheer en identiteits beheer door Azure Active Directory.
 https: \/ /dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi  | Om de MySQL-down load te volt ooien. </br> In een paar regio's wordt de down load mogelijk omgeleid naar de CDN-URL. Zorg ervoor dat de CDN-URL ook white list is, indien nodig.
 |
+
+> [!NOTE]
+> Als u [verbinding met persoonlijke koppelingen](../articles/site-recovery/hybrid-how-to-enable-replication-private-endpoints.md) met site Recovery kluis hebt, hebt u geen extra Internet toegang nodig voor de configuratie server. Een uitzonde ring hierop is tijdens het instellen van de CS-computer met behulp van de eicellen-sjabloon, moet u toegang hebben tot de volgende Url's boven en boven de toegang tot de persoonlijke koppeling- https://management.azure.com , https://www.live.com en https://www.microsoft.com . Als u geen toegang tot deze Url's wilt toestaan, moet u de CS instellen met behulp van het uniforme installatie programma.
 
 ## <a name="required-software"></a>Vereiste software
 

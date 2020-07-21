@@ -8,11 +8,12 @@ ms.topic: include
 ms.date: 03/31/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 9764d3964a38408493bafe0e9c8ca059b055ca21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efec7656675b649d365a479c184de06a67d33db0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85242067"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86545124"
 ---
 In dit artikel vindt u antwoorden op enkele veelgestelde vragen over Azure Managed Disks en Azure Premium-SSD-schijven.
 
@@ -94,7 +95,7 @@ Klanten kunnen een moment opname van hun beheerde schijven nemen en vervolgens d
 
 Ja, zowel onbeheerde als beheerde schijven worden ondersteund. We raden u aan Managed disks te gebruiken voor nieuwe workloads en uw huidige workloads te migreren naar Managed disks.
 
-**Kan ik onbeheerde en beheerde schijven op dezelfde virtuele machine gezamenlijk vinden?**
+**Kan ik onbeheerde en beheerde schijven op dezelfde VM plaatsen?**
 
 Nee.
 
@@ -157,15 +158,19 @@ Azure Disk-reserve ringen worden aangeschaft voor een specifieke regio en SKU (z
 **Wat gebeurt er wanneer mijn Azure disks-reserve ring verloopt?**    
 U ontvangt een e-mail melding van 30 dagen vóór de verval datum en opnieuw op het verloop van de gegevens. Zodra de reserve ring verloopt, blijven geïmplementeerde schijven actief en wordt de laatste betalen naar gebruik- [tarieven](https://azure.microsoft.com/pricing/details/managed-disks/)in rekening gebracht.
 
+**Ondersteunen Standard-SSD schijven ' single instance VM SLA '?**
+
+Ja, alle schijf typen ondersteunen de SLA van de VM met één exemplaar.
+
 ### <a name="azure-shared-disks"></a>Gedeelde Azure-schijven
 
 **Wordt de functie gedeelde schijven ondersteund voor onbeheerde schijven of pagina-blobs?**
 
-Nee, dit wordt alleen ondersteund voor Premium SSD Managed disks.
+Nee, dit wordt alleen ondersteund voor Ultra schijven en Premium SSD Managed disks.
 
 **Welke regio's ondersteunen gedeelde schijven?**
 
-Momenteel alleen West-Centraal vs.
+Zie het [conceptuele artikel](../articles/virtual-machines/linux/disks-shared.md)voor regionale informatie.
 
 **Kunnen gedeelde schijven worden gebruikt als een besturingssysteem schijf?**
 
@@ -173,11 +178,11 @@ Nee, gedeelde schijven worden alleen ondersteund voor gegevens schijven.
 
 **Welke schijf grootten ondersteunen gedeelde schijven?**
 
-Alleen Premium-Ssd's die P15 of hoger ondersteunen, bieden ondersteuning voor gedeelde schijven.
+Zie het [conceptuele artikel](../articles/virtual-machines/linux/disks-shared.md)voor een ondersteunde grootte.
 
-**Als ik een bestaande Premium SSD heb, kan ik dan gedeelde schijven inschakelen?**
+**Als ik een bestaande schijf heb, kan ik dan gedeelde schijven inschakelen?**
 
-Alle beheerde schijven die zijn gemaakt met API-versie 2019-07-01 of hoger kunnen gedeelde schijven inschakelen. Als u dit wilt doen, moet u de schijf ontkoppelen van alle virtuele machines waaraan deze is gekoppeld. Bewerk vervolgens de `maxShares` eigenschap op de schijf.
+Alle beheerde schijven die zijn gemaakt met API-versie 2019-07-01 of hoger kunnen gedeelde schijven inschakelen. Als u dit wilt doen, moet u de schijf ontkoppelen van alle virtuele machines waaraan deze is gekoppeld. Bewerk vervolgens de eigenschap **maxShares** op de schijf.
 
 **Hoe kan ik deze uitschakelen als ik een schijf niet meer wil gebruiken in de gedeelde modus?**
 
@@ -193,7 +198,7 @@ Nee.
 
 **Kan ik host caching inschakelen voor een schijf waarvoor gedeelde schijf is ingeschakeld?**
 
-De enige ondersteunde optie voor het opslaan in de host is geen.
+De enige optie voor het opslaan van de host-cache is **geen**.
 
 ## <a name="ultra-disks"></a>Ultraschijven
 
@@ -201,10 +206,10 @@ De enige ondersteunde optie voor het opslaan in de host is geen.
 Als u niet zeker weet wat uw schijf doorvoer moet instellen, raden we u aan om te beginnen met een i/o-grootte van 16 KiB en de prestaties van daar aan te passen terwijl u uw toepassing bewaakt. De formule is: door Voer in MBps = aantal IOPS * 16/1000.
 
 **Ik heb mijn schijf geconfigureerd voor 40000 IOPS, maar ik zie alleen 12800 IOPS, waarom worden de prestaties van de schijf niet weer gegeven?**
-Naast de schijf beperking is er sprake van een IO-beperking die wordt opgelegd op het niveau van de virtuele machine. Zorg ervoor dat de grootte van de virtuele machine die u gebruikt, de niveaus kan ondersteunen die op uw schijven zijn geconfigureerd. Zie [grootten voor virtuele Windows-machines in azure](../articles/virtual-machines/windows/sizes.md)voor meer informatie over de i/o-limieten die door uw virtuele machine worden opgelegd.
+Naast de schijf beperking is er sprake van een IO-beperking die wordt opgelegd op het niveau van de virtuele machine. Zorg ervoor dat de grootte van de virtuele machine die u gebruikt, ondersteuning biedt voor de niveaus die op uw schijven zijn geconfigureerd. Zie [grootten voor virtuele Windows-machines in azure](../articles/virtual-machines/windows/sizes.md)voor meer informatie over de i/o-limieten die door uw virtuele machine worden opgelegd.
 
 **Kan ik cache niveaus gebruiken met een ultra schijf?**
-Nee, Ultra disks bieden geen ondersteuning voor de verschillende cache methoden die op andere schijf typen worden ondersteund. Stel de schijf cache in op geen.
+Nee, Ultra disks bieden geen ondersteuning voor de verschillende cache methoden die op andere schijf typen worden ondersteund. Stel de schijf cache in op **geen**.
 
 **Kan ik een ultra schijf koppelen aan mijn bestaande VM?**
 Misschien moet uw virtuele machine zich in een regio-en beschikbaarheids zone paar bevinden dat ondersteuning biedt voor Ultra schijven. Zie [aan de slag met ultra disks](../articles/virtual-machines/windows/disks-enable-ultra-ssd.md) voor meer informatie.
@@ -262,9 +267,6 @@ Standard-SSD schijven bieden betere latentie, consistentie, Beschik baarheid en 
 **Kan ik standaard Ssd's als niet-beheerde schijven gebruiken?**
 Nee, standaard Ssd's-schijven zijn alleen beschikbaar als Managed Disks.
 
-**Ondersteunen Standard-SSD schijven ' single instance VM SLA '?**
-Nee, standaard Ssd's hebben geen SLA voor de VM van één exemplaar. Gebruik Premium-SSD schijven voor de SLA van de VM met één exemplaar.
-
 ## <a name="migrate-to-managed-disks"></a>Migreren naar Managed Disks
 
 **Is er sprake van de migratie van de Managed Disks prestaties?**
@@ -301,7 +303,7 @@ Nee. Azure Site Recovery Azure naar Azure-beveiliging voor Vm's met Managed Disk
 
 **Kan ik Vm's migreren met onbeheerde schijven die zich bevinden op opslag accounts die al of niet eerder zijn versleuteld naar Managed disks?**
 
-Yes
+Ja
 
 ## <a name="managed-disks-and-storage-service-encryption"></a>Managed Disks en Storage Service Encryption
 
@@ -339,7 +341,7 @@ Ja. Alle beheerde moment opnamen en installatie kopieën worden automatisch vers
 
 **Kan ik Vm's converteren met onbeheerde schijven die zich bevinden op de opslag accounts die eerder zijn versleuteld op beheerde schijven?**
 
-Yes
+Ja
 
 **Wordt een geëxporteerde VHD van een beheerde schijf of een moment opname ook versleuteld?**
 
@@ -412,7 +414,7 @@ U hoeft de bestaande Azure-hulpprogram ma's niet bij te werken om schijven grote
 |Azure-hulpprogramma's      | Ondersteunde versies                                |
 |-----------------|---------------------------------------------------|
 |Azure PowerShell | Versie nummer 4.1.0: juni 2017 release of hoger|
-|Azure CLI v1     | Versie nummer 0.10.13: mogelijk 2017 release of hoger|
+|Azure CLI v1     | Versie nummer 0.10.13: mogelijk 2017 release of hoger|
 |Azure CLI v2     | Versie nummer 2.0.12: juli 2017 release of hoger|
 |AzCopy              | Versie nummer 6.1.0: juni 2017 release of hoger|
 
@@ -450,7 +452,41 @@ De 8 TiB-, 16 TiB-en 32 TiB-schijf-Sku's worden ondersteund in alle regio's onde
 
 **Bieden we ondersteuning voor het inschakelen van host-caching op alle schijf grootten?**
 
-Host caching (ReadOnly en lezen/schrijven) wordt ondersteund op schijf grootten die kleiner zijn dan 4 TiB. Dit betekent dat elke schijf die tot 4095 GiB is ingericht, kan profiteren van de caching van de host. Host caching wordt niet ondersteund voor schijf grootten die groter zijn dan of gelijk zijn aan 4096 GiB. Zo kan een P50 Premium-schijf die is ingericht op 4095 GiB, profiteren van het gebruik van host caching en een P50-schijf die is ingericht op 4096 GiB geen gebruik kunnen maken van de caching van de host. We raden u aan cache gebruik te maken van kleinere schijf grootten, waarbij u de prestaties beter kunt zien met gegevens in de cache van de virtuele machine.
+Host caching (**ReadOnly** en **lezen/schrijven**) wordt ondersteund op schijf grootten die kleiner zijn dan 4 Tib. Dit betekent dat elke schijf die tot 4095 GiB is ingericht, kan profiteren van de caching van de host. Host caching wordt niet ondersteund voor schijf grootten die groter zijn dan of gelijk zijn aan 4096 GiB. Zo kan een P50 Premium-schijf die is ingericht op 4095 GiB, profiteren van het gebruik van host caching en een P50-schijf die is ingericht op 4096 GiB geen gebruik kunnen maken van de caching van de host. We raden u aan cache gebruik te maken van kleinere schijf grootten, waarbij u de prestaties beter kunt zien met gegevens in de cache van de virtuele machine.
+
+## <a name="private-links-for-securely-exporting-and-importing-managed-disks"></a>Persoonlijke koppelingen voor het veilig exporteren en importeren van Managed Disks
+
+**Wat is het voor deel van het gebruik van persoonlijke koppelingen voor het exporteren en importeren van Managed Disks?**
+
+U kunt gebruikmaken van privé koppelingen voor het beperken van het exporteren en importeren naar Managed Disks alleen vanuit uw virtuele Azure-netwerk. 
+
+**Hoe kan ik ervoor zorgen dat een schijf alleen kan worden geëxporteerd of geïmporteerd via persoonlijke koppelingen?**
+
+U moet de `DiskAccessId` eigenschap instellen op een exemplaar van een schijf toegangs object en ook de eigenschap NetworkAccessPolicy instellen op `AllowPrivate` .
+
+**Kan ik meerdere virtuele netwerken koppelen aan hetzelfde object voor schijf toegang?**
+
+Nee. Op dit moment kunt u een schijf toegangs object koppelen aan slechts één virtueel netwerk.
+
+**Kan ik een virtueel netwerk koppelen aan een schijf toegangs object in een ander abonnement?**
+
+Nee. Op dit moment kunt u een schijf toegangs object koppelen aan een virtueel netwerk in hetzelfde abonnement.
+
+**Kan ik een virtueel netwerk koppelen aan een schijf toegangs object in een ander abonnement?**
+
+Nee. Op dit moment kunt u een schijf toegangs object koppelen aan een virtueel netwerk in hetzelfde abonnement.
+
+**Hoeveel exports of importen met hetzelfde schijf toegangs object kunnen op hetzelfde moment plaatsvinden?**
+
+5
+
+**Kan ik een SAS-URI van een schijf/moment opname gebruiken voor het downloaden van de onderliggende VHD van een virtuele machine in hetzelfde subnet als het subnet van het persoonlijke eind punt dat is gekoppeld aan de schijf?**
+
+Ja.
+
+**Kan ik een SAS-URI van een schijf/moment opname gebruiken voor het downloaden van de onderliggende VHD van een virtuele machine die zich niet in hetzelfde subnet bevindt als het subnet van het persoonlijke eind punt dat niet is gekoppeld aan de schijf?**
+
+Nee.
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>Wat gebeurt er als mijn vraag hier niet wordt beantwoord?
 

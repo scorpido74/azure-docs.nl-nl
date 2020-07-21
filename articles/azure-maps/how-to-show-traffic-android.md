@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e5611eeb08ac370e12cf452d57a87e449fbd80da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92e111a6e76dbe285dd8cc7a93ce75f556142565
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335377"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540142"
 ---
 # <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>Verkeers gegevens op de kaart weer geven met behulp van Azure Maps Android SDK
 
@@ -21,9 +21,9 @@ Gegevens over stroom gegevens en incidenten zijn de twee typen verkeers gegevens
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u verkeer op de kaart kunt weer geven, moet u [een Azure-account maken](quick-demo-map-app.md#create-an-account-with-azure-maps)en [een abonnements sleutel verkrijgen](quick-demo-map-app.md#get-the-primary-key-for-your-account). Vervolgens moet u de [Azure Maps ANDROID SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) installeren en een kaart laden.
+Voordat u verkeer op de kaart kunt weer geven, moet u [een Azure-account maken](quick-demo-map-app.md#create-an-azure-maps-account)en [een abonnements sleutel verkrijgen](quick-demo-map-app.md#get-the-primary-key-for-your-account). Vervolgens moet u de [Azure Maps ANDROID SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) installeren en een kaart laden.
 
-## <a name="incidents-traffic-data"></a>Verkeers gegevens van incidenten 
+## <a name="incidents-traffic-data"></a>Verkeers gegevens van incidenten
 
 U moet de volgende bibliotheken importeren om te kunnen aanroepen `setTraffic` en `incidents` :
 
@@ -53,7 +53,7 @@ import static com.microsoft.azure.maps.mapcontrol.options.TrafficOptions.flow;
 
 Gebruik het volgende code fragment om gegevens over de verkeers stroom in te stellen. Net als bij de code in de vorige sectie geven we de retour waarde van de `flow` methode door aan de- `setTraffic` methode. Er zijn vier waarden die kunnen worden door gegeven aan `flow` , en elke waarde wordt geactiveerd `flow` om de desbetreffende waarde te retour neren. De geretourneerde waarde van `flow` wordt vervolgens door gegeven als het argument aan `setTraffic` . Zie de onderstaande tabel voor deze vier waarden:
 
-| | |
+|Stroom waarde | Beschrijving|
 | :-- | :-- |
 | Verkeers stroom. NONE | Verkeers gegevens worden niet weer gegeven op de kaart |
 | Verkeers stroom. RELATIVE | Geeft verkeers gegevens weer die relatief zijn ten opzichte van de vrije stroom snelheid van de weg |

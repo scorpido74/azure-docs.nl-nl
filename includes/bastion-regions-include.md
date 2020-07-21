@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 05/19/2020
+ms.date: 07/16/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b4cdb787fe65c52a77fa4761a65e9108e7927c40
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: a924cb42ce1c5fccde3d49fa8f9c2d402997df52
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83721218"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544067"
 ---
 >[!NOTE]
 >We werken hard om aanvullende regio's toe te voegen. Wanneer een regio wordt toegevoegd, voegen we deze toe aan deze lijst.
@@ -65,3 +65,6 @@ ms.locfileid: "83721218"
 * US Gov - Iowa
 * VS (overheid) - Texas
 * VS (overheid) - Virginia
+
+**Azure China**
+* China-noord 2

@@ -8,17 +8,17 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 3a5485475e3d8030bf85734faec53b0ff0747499
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ee071f2cf6e31d46ccd483935f137f16bcacf337
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81678488"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544799"
 ---
 Als u de cmdlets wilt uitvoeren, kunt u Azure Cloud Shell gebruiken, een gratis interactieve shell. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. Selecteer **kopiëren** om de code te kopiëren en plak deze in Cloud shell. Selecteer vervolgens **Enter** om het uit te voeren. Er zijn enkele manieren om Cloud Shell te starten:
 
 
-|  |   |
+| Methode starten | Schermopname  |
 |-----------------------------------------------|---|
 | Open Cloud Shell in uw browser. | [![https://shell.azure.com/powershell](../media/launchcloudshell.png)](https://shell.azure.com/powershell) |
 | Selecteer de knop **Cloud shell** op de werk balk in de rechter bovenhoek van de Azure Portal. | [![Cloud Shell in de portal](../media/cloud-shell-menu.png)](https://portal.azure.com) |

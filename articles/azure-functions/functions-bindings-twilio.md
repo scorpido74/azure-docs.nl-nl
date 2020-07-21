@@ -6,11 +6,12 @@ ms.topic: reference
 ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1426d6e770cca566c4b77ca4742e2f8a0fbb5465
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8116abda71ae78b05786ede03256eb9e9bb59345
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76715055"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540261"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Twilio-binding voor Azure Functions
 
@@ -240,7 +241,7 @@ def main(req: func.HttpRequest, twilioMessage: func.Out[str]) -> func.HttpRespon
 
 # <a name="java"></a>[Java](#tab/java)
 
-In het volgende voor beeld ziet u hoe u de [TwilioSmsOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) -aantekening gebruikt om een SMS-bericht te verzenden. Waarden voor `to` , `from` en `body` zijn vereist in de kenmerk definitie, zelfs als u ze via een programma overschrijft.
+In het volgende voor beeld ziet u hoe u de [TwilioSmsOutput](/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) -aantekening gebruikt om een SMS-bericht te verzenden. Waarden voor `to` , `from` en `body` zijn vereist in de kenmerk definitie, zelfs als u ze via een programma overschrijft.
 
 ```java
 package com.function;
@@ -318,22 +319,22 @@ Kenmerken worden niet ondersteund door python.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Plaats [TwilioSmsOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) -aantekening op een [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.outputbinding) para meter `T` die een eigen Java-type kan zijn, zoals,, `int` `String` `byte[]` of een Pojo-type.
+Plaats [TwilioSmsOutput](/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) -aantekening op een [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) para meter `T` die een eigen Java-type kan zijn, zoals,, `int` `String` `byte[]` of een Pojo-type.
 
 ---
 
-## <a name="configuration"></a>Configuratie
+## <a name="configuration"></a>Configuration
 
 De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `TwilioSms` kenmerk.
 
-| v1 function.jsop eigenschap | v2-function.jsin eigenschap | Kenmerk eigenschap |Description|
+| v1 function.jsop eigenschap | v2-function.jsin eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|---------|----------------------|
 |**type**|**type**| moet worden ingesteld op `twilioSms` .|
 |**direction**|**direction**| moet worden ingesteld op `out` .|
 |**naam**|**naam**| De naam van de variabele die wordt gebruikt in de functie code voor het SMS-tekst bericht van Twilio. |
 |**accountSid**|**accountSidSetting**| **AccountSidSetting**| Deze waarde moet worden ingesteld op de naam van een app-instelling die uw Twilio-account-sid ( `TwilioAccountSid` ) bevat. Als deze niet is ingesteld, is de standaard naam voor de app-instelling ' AzureWebJobsTwilioAccountSid '. |
 |**authToken**|**authTokenSetting**|**AuthTokenSetting**| Deze waarde moet worden ingesteld op de naam van een app-instelling die uw Twilio-verificatie token ( `TwilioAccountAuthToken` ) bevat. Als deze niet is ingesteld, is de standaard naam voor de app-instelling ' AzureWebJobsTwilioAuthToken '. |
-|**tot**| N.v.t.-opgeven in code | **Aan**| Deze waarde wordt ingesteld op het telefoon nummer waarnaar de SMS-tekst wordt verzonden.|
+|**Aan**| N.v.t.-opgeven in code | **Aan**| Deze waarde wordt ingesteld op het telefoon nummer waarnaar de SMS-tekst wordt verzonden.|
 |**Van**|**Van** | **Van**| Deze waarde wordt ingesteld op het telefoon nummer van waaruit de SMS-tekst wordt verzonden.|
 |**organen**|**organen** | **Hoofdtekst**| Deze waarde kan worden gebruikt om het SMS-tekst bericht vast te maken als u het niet dynamisch hoeft in te stellen in de code voor uw functie. |  
 

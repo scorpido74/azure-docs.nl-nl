@@ -5,11 +5,12 @@ author: apwestgarth
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
-ms.openlocfilehash: 7ad748aa9a5b45af10121648a668344548484cf7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73b9533fa00c783e1cfb85270198f5c00c66afd5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74226723"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540380"
 ---
 # <a name="install-the-azure-functions-runtime-preview-2"></a>De Azure Functions-runtime Preview 2 installeren
 
@@ -70,7 +71,7 @@ U moet de configuratie volt ooien om de Azure Functions-runtime-installatie te v
 
     ![Preview-configuratie programma Azure Functions-runtime][7]
 
-1. Klik op het tabblad **Data Base** , voer de verbindings gegevens voor uw SQL Server-exemplaar in, inclusief het opgeven van een [database hoofd sleutel](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-and-database-encryption-keys-database-engine), en klik op **Toep assen**.  Er is een verbinding met een SQL Server-exemplaar vereist om de Azure Functions-runtime een Data Base te maken voor de ondersteuning van de runtime.
+1. Klik op het tabblad **Data Base** , voer de verbindings gegevens voor uw SQL Server-exemplaar in, inclusief het opgeven van een [database hoofd sleutel](/sql/relational-databases/security/encryption/sql-server-and-database-encryption-keys-database-engine), en klik op **Toep assen**.  Er is een verbinding met een SQL Server-exemplaar vereist om de Azure Functions-runtime een Data Base te maken voor de ondersteuning van de runtime.
 
     ![Voorbeeld database configuratie Azure Functions-runtime][8]
 

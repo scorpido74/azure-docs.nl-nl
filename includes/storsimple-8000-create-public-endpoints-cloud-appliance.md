@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 1cf5bbdad555c50c418851904f36a578522843b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a5a286753e438b7d65f3d33a82669c4f7e79a282
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67176097"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544775"
 ---
 #### <a name="to-create-public-endpoints-on-the-cloud-appliance"></a>Openbare eindpunten op het cloudapparaat maken
 
@@ -18,16 +18,16 @@ ms.locfileid: "67176097"
     
 3. U moet een netwerkbeveiligingsgroepregel (NSG) voor het beheren van de verkeersstroom in en uit uw virtuele machine maken. Voer de volgende stappen uit voor het maken van een NSG-regel.
     1. Selecteer **Netwerkbeveiligingsgroep**.
-        ![](./media/storsimple-8000-create-public-endpoints-cloud-appliance/sca-create-public-endpt1.png)
+        ![Scherm afbeelding van de pagina van de virtuele machine. In de sectie instellingen is de netwerk beveiligings groep gemarkeerd.](./media/storsimple-8000-create-public-endpoints-cloud-appliance/sca-create-public-endpt1.png)
 
     2. Klik op de standaardnetwerkbeveiligingsgroep die wordt weergegeven.
-        ![](./media/storsimple-8000-create-public-endpoints-cloud-appliance/sca-create-public-endpt2.png)
+        ![Scherm afbeelding van de pagina netwerk beveiligings groep. De standaard netwerk beveiligings groep is gemarkeerd.](./media/storsimple-8000-create-public-endpoints-cloud-appliance/sca-create-public-endpt2.png)
 
-    3. Selecteer **Inkomende beveiligingsregels**.
-        ![](./media/storsimple-8000-create-public-endpoints-cloud-appliance/sca-create-public-endpt3.png)
+    3. Selecteer **Inkomende beveiligingsregels zoeken**.
+        ![Scherm afbeelding van een pagina met de eigenschappen van de standaard netwerk beveiligings groep. In het navigatie deel venster worden binnenkomende beveiligings regels gemarkeerd.](./media/storsimple-8000-create-public-endpoints-cloud-appliance/sca-create-public-endpt3.png)
 
     4. Klik op **Toevoegen** om een Inkomende beveiligingsregel te maken.
-        ![](./media/storsimple-8000-create-public-endpoints-cloud-appliance/sca-create-public-endpt4.png)
+        ![Scherm afbeelding van de pagina inkomende beveiligings regels. Het plus teken en het woord toevoegen worden naast elkaar en gemarkeerd.](./media/storsimple-8000-create-public-endpoints-cloud-appliance/sca-create-public-endpt4.png)
 
         Doe het volgende op de blade Inkomende beveiligingsregel toevoegen:
 
@@ -41,17 +41,17 @@ ms.locfileid: "67176097"
 
         5. Klik op **OK** om de regel te maken.
 
-            ![](./media/storsimple-8000-create-public-endpoints-cloud-appliance/sca-create-public-endpt5.png)
+            ![Scherm opname van de Blade binnenkomende beveiligings regel toevoegen. De waarden worden ingevuld zoals beschreven in de procedure en de knop OK is gemarkeerd.](./media/storsimple-8000-create-public-endpoints-cloud-appliance/sca-create-public-endpt5.png)
 
 4. De laatste stap bestaat uit het koppelen van uw netwerkbeveiligingsgroep aan een subnet of een specifieke netwerkinterface. Voer de volgende stappen uit om uw netwerkbeveiligingsgroep te koppelen met een subnet.
     1. Ga naar **Subnetten**.
     2. Klik op **Koppelen**.
-        ![](./media/storsimple-8000-create-public-endpoints-cloud-appliance/sca-create-public-endpt7.png)
+        ![Scherm afbeelding van de pagina subnetten. Het plus teken en het gekoppelde woord worden naast elkaar en gemarkeerd.](./media/storsimple-8000-create-public-endpoints-cloud-appliance/sca-create-public-endpt7.png)
 
     3. Selecteer het virtuele netwerk en selecteer vervolgens het juiste subnet.
     4. Klik op **OK** om de regel te maken.
 
-        ![](./media/storsimple-8000-create-public-endpoints-cloud-appliance/sca-create-public-endpt11.png)
+        ![Scherm afbeelding van de pagina subnet koppelen. Het virtuele netwerk is geselecteerd en de knop OK is gemarkeerd.](./media/storsimple-8000-create-public-endpoints-cloud-appliance/sca-create-public-endpt11.png)
 
 Nadat de regel is gemaakt, kunt u de details van het eindpunt weergeven om het openbare VIP-adres (virtueel IP-adres) te bepalen. Noteer dit adres.
 
