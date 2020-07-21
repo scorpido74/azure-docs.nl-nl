@@ -7,11 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/28/2020
-ms.openlocfilehash: 94525ce901a89935c4ee7800ada44a9dff84b27a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7aacb951d449583c875c71f260957a9d3bc8c663
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82927901"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517141"
 ---
 # <a name="custom-metric-collection-in-net-and-net-core"></a>Aangepaste metrische verzameling in .NET en .NET core
 
@@ -21,7 +22,7 @@ De Azure Monitor Application Insights .NET en .NET core Sdk's hebben twee versch
 
 `TrackMetric()`Hiermee verzendt u een ruwe telemetrie die een metriek aangeeft. Het is niet efficiënt om één telemetrie-item voor elke waarde te verzenden. `TrackMetric()`is ook inefficiënt in termen van prestaties, omdat elke keer `TrackMetric(item)` de volledige SDK-pijp lijn van de telemetrie-initialisatie functies en-processors doorloopt. In tegens telling tot `TrackMetric()` , worden `GetMetric()` lokale vooraf aggregatie voor u verwerkt en wordt vervolgens alleen een statistische samenvattings waarde verzonden met een vast interval van één minuut. Als u dus een aantal aangepaste metrische gegevens wilt bewaken op het tweede of zelfs milliseconde niveau, kunt u dit doen, waarbij alleen de kosten voor opslag en netwerk verkeer van elke minuut worden bewaakt. Dit vermindert ook aanzienlijk het risico van beperking, omdat het totale aantal telemetriegegevens dat voor een geaggregeerde metriek moet worden verzonden, sterk wordt verminderd.
 
-In Application Insights worden aangepaste metrische gegevens verzameld via `TrackMetric()` en `GetMetric()` niet onderhevig aan [steek proeven](https://docs.microsoft.com/azure/azure-monitor/app/sampling). Het bemonsteren van belang rijke metrische gegevens kan leiden tot scenario's waarbij waarschuwingen die u mogelijk hebt gemaakt om deze metrische gegevens onbetrouwbaar te raken. Door nooit uw aangepaste metrische gegevens te bemonsteren, kunt u er in het algemeen zeker van zijn dat wanneer uw waarschuwings drempels worden geschonden, een waarschuwing wordt geactiveerd.  Maar omdat aangepaste metrische gegevens niet worden bemonsterd, zijn er mogelijke problemen.
+In Application Insights worden aangepaste metrische gegevens verzameld via `TrackMetric()` en `GetMetric()` niet onderhevig aan [steek proeven](./sampling.md). Het bemonsteren van belang rijke metrische gegevens kan leiden tot scenario's waarbij waarschuwingen die u mogelijk hebt gemaakt om deze metrische gegevens onbetrouwbaar te raken. Door nooit uw aangepaste metrische gegevens te bemonsteren, kunt u er in het algemeen zeker van zijn dat wanneer uw waarschuwings drempels worden geschonden, een waarschuwing wordt geactiveerd.  Maar omdat aangepaste metrische gegevens niet worden bemonsterd, zijn er mogelijke problemen.
 
 Als u elke seconde trends moet volgen, of als u een even nauw keuriger interval wilt, kan dit resulteren in:
 
@@ -29,16 +30,16 @@ Als u elke seconde trends moet volgen, of als u een even nauw keuriger interval 
 - Verbeterde netwerk verkeer/prestatie overhead. (In sommige scenario's kan dit zowel een monetaire als een toepassings prestatie kosten hebben.)
 - Risico op opname beperking. (De Azure Monitor-service daalt gegevens punten (' Throttles ') wanneer uw app een zeer hoog aantal telemetrie verstuurt in een korte periode.)
 
-Het beperken van een beperking is met name van belang als de steek proef kan leiden tot gemiste waarschuwingen omdat de voor waarde voor het activeren van een waarschuwing lokaal kan optreden en vervolgens op het opname-eind punt wordt neergezet omdat er te veel gegevens worden verzonden. Daarom wordt het gebruik van .NET en .NET Core niet aanbevolen `TrackMetric()` , tenzij u uw eigen lokale aggregatie logica hebt geïmplementeerd. Als u probeert om elke instantie bij te houden die een gebeurtenis binnen een bepaalde periode vindt, is het mogelijk dat deze [`TrackEvent()`](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics#trackevent) beter past. In tegens telling tot aangepaste metrische gegevens worden aangepaste gebeurtenissen onderworpen aan steek proeven. U kunt natuurlijk nog steeds gebruiken `TrackMetric()` zonder uw eigen lokale vooraf-aggregatie te schrijven, maar als u dit wel weet, weet u zeker dat u de Valk uilen kent.
+Het beperken van een beperking is met name van belang als de steek proef kan leiden tot gemiste waarschuwingen omdat de voor waarde voor het activeren van een waarschuwing lokaal kan optreden en vervolgens op het opname-eind punt wordt neergezet omdat er te veel gegevens worden verzonden. Daarom wordt het gebruik van .NET en .NET Core niet aanbevolen `TrackMetric()` , tenzij u uw eigen lokale aggregatie logica hebt geïmplementeerd. Als u probeert om elke instantie bij te houden die een gebeurtenis binnen een bepaalde periode vindt, is het mogelijk dat deze [`TrackEvent()`](./api-custom-events-metrics.md#trackevent) beter past. In tegens telling tot aangepaste metrische gegevens worden aangepaste gebeurtenissen onderworpen aan steek proeven. U kunt natuurlijk nog steeds gebruiken `TrackMetric()` zonder uw eigen lokale vooraf-aggregatie te schrijven, maar als u dit wel weet, weet u zeker dat u de Valk uilen kent.
 
 In samen vatting `GetMetric()` is de aanbevolen benadering, omdat deze vooraf aggregatie is, worden waarden van alle track ()-aanroepen verzameld en wordt één keer per minuut een samen vatting/aggregatie verzonden. Dit kan de kosten en de prestatie overhead aanzienlijk verminderen door minder gegevens punten te verzenden, terwijl alle relevante gegevens worden verzameld.
 
 > [!NOTE]
-> Alleen de .NET-en .NET core Sdk's hebben een GetMetric ()-methode. Als u Java gebruikt, kunt u [metrische gegevens over micrometer](https://docs.microsoft.com/azure/azure-monitor/app/micrometer-java) of gebruiken `TrackMetric()` . Voor python kunt u [Opentellingen. stats](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python#metrics) gebruiken om aangepaste metrische gegevens te verzenden. Voor Java script en Node.js u zou blijven gebruiken `TrackMetric()` , maar houd wel wel de voor behoud die in de vorige sectie werden beschreven.
+> Alleen de .NET-en .NET core Sdk's hebben een GetMetric ()-methode. Als u Java gebruikt, kunt u [metrische gegevens over micrometer](./micrometer-java.md) of gebruiken `TrackMetric()` . Voor python kunt u [Opentellingen. stats](./opencensus-python.md#metrics) gebruiken om aangepaste metrische gegevens te verzenden. Voor Java script en Node.js u zou blijven gebruiken `TrackMetric()` , maar houd wel wel de voor behoud die in de vorige sectie werden beschreven.
 
 ## <a name="getting-started-with-getmetric"></a>Aan de slag met GetMetric
 
-Voor onze voor beelden gaan we een Basic .NET Core 3,1 Worker-service toepassing gebruiken. Als u de test omgeving die bij deze voor beelden is gebruikt, precies wilt repliceren, volgt u stap 1-6 van het [artikel Monitoring Worker service](https://docs.microsoft.com/azure/azure-monitor/app/worker-service#net-core-30-worker-service-application) om Application Insights toe te voegen aan een Basic Worker service-project sjabloon. Deze concepten zijn van toepassing op elke algemene toepassing waarin de SDK kan worden gebruikt, met inbegrip van web apps en console-apps.
+Voor onze voor beelden gaan we een Basic .NET Core 3,1 Worker-service toepassing gebruiken. Als u de test omgeving die bij deze voor beelden is gebruikt, precies wilt repliceren, volgt u stap 1-6 van het [artikel Monitoring Worker service](./worker-service.md#net-core-30-worker-service-application) om Application Insights toe te voegen aan een Basic Worker service-project sjabloon. Deze concepten zijn van toepassing op elke algemene toepassing waarin de SDK kan worden gebruikt, met inbegrip van web apps en console-apps.
 
 ### <a name="sending-metrics"></a>Metrische gegevens verzenden
 
@@ -110,7 +111,7 @@ Als we onze Application Insights-resource in de logboeken-ervaring onderzoeken, 
 > [!NOTE]
 > Hoewel het onbewerkte telemetriegegevens geen expliciete Sum-eigenschap/-veld bevat, hebben we er een voor u gemaakt. In dit geval vertegenwoordigen de `value` and- `valueSum` eigenschap hetzelfde.
 
-U kunt ook toegang krijgen tot uw aangepaste metrische telemetriegegevens in het gedeelte [_metrische gegevens_](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts) van de portal. Als een [op een logboek gebaseerd en aangepaste metrische gegevens](pre-aggregated-metrics-log-metrics.md). (In de onderstaande scherm afbeelding ziet u een voor beeld van op een logboek gebaseerd.) ![Weer gave metrische gegevens Verkenner](./media/get-metric/metrics-explorer.png)
+U kunt ook toegang krijgen tot uw aangepaste metrische telemetriegegevens in het gedeelte [_metrische gegevens_](../platform/metrics-charts.md) van de portal. Als een [op een logboek gebaseerd en aangepaste metrische gegevens](pre-aggregated-metrics-log-metrics.md). (In de onderstaande scherm afbeelding ziet u een voor beeld van op een logboek gebaseerd.) ![Weer gave metrische gegevens Verkenner](./media/get-metric/metrics-explorer.png)
 
 ### <a name="caching-metric-reference-for-high-throughput-usage"></a>Naslag informatie over caching in cache voor gebruik met hoge door Voer
 
@@ -301,8 +302,8 @@ SeverityLevel.Error);
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie ](https://docs.microsoft.com/azure/azure-monitor/app/worker-service)over het bewaken van Worker-service toepassingen.
-* Voor meer informatie over [metrische gegevens op basis van een logboek en vooraf geaggregeerde metrieken](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics).
-* [Metrische Explorer](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)
+* [Meer informatie ](./worker-service.md)over het bewaken van Worker-service toepassingen.
+* Voor meer informatie over [metrische gegevens op basis van een logboek en vooraf geaggregeerde metrieken](./pre-aggregated-metrics-log-metrics.md).
+* [Metrische Explorer](../platform/metrics-getting-started.md)
 * Application Insights voor [ASP.net core-toepassingen](asp-net-core.md) inschakelen
 * Application Insights inschakelen voor ASP.NET- [toepassingen](asp-net.md)

@@ -10,11 +10,12 @@ ms.date: 06/22/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 9502194b2020723801469b511f46d3e806290ba5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 903560f5c0400a906918f0c17eafb2e1e09bdd30
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213989"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518501"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage redundantie
 
@@ -61,8 +62,8 @@ In de volgende tabel ziet u welke typen opslag accounts ZRS ondersteunen in welk
 |    Type opslagaccount    |    Ondersteunde regio’s    |    Ondersteunde services    |
 |----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
 |    Algemeen gebruik v2<sup>1</sup>    | Azië - zuidoost<br /> Australië - oost<br /> Europa - noord<br />  Europa - west<br /> Frankrijk - centraal<br /> Japan - oost<br /> Zuid-Afrika - noord<br /> Verenigd Koninkrijk Zuid<br /> US - centraal<br /> US - oost<br /> US - oost 2<br /> US - west 2    |    Blok-blobs<br /> Pagina-blobs<sup>2</sup><br /> Bestands shares (standaard)<br /> Tabellen<br /> Wachtrijen<br /> |
-|    BlockBlobStorage<sup>1</sup>    | Azië - zuidoost<br /> Europa - west<br /> US - oost    |    Alleen blok-blobs    |
-|    FileStorage    | Azië - zuidoost<br /> Europa - west<br /> US - oost    |    Alleen Azure Files    |
+|    BlockBlobStorage<sup>1</sup>    | Azië - zuidoost<br /> Australië - oost<br /> Europa - west<br /> US - oost    |    Alleen blok-blobs    |
+|    FileStorage    | Azië - zuidoost<br /> Australië - oost<br /> Europa - west<br /> US - oost    |    Alleen Azure Files    |
 
 <sup>1</sup> de Archive-laag wordt momenteel niet ondersteund voor ZRS-accounts.<br />
 <sup>2</sup> opslag accounts die Azure Managed disks voor virtuele machines bevatten, gebruiken altijd LRS. Onbeheerde schijven van Azure moeten ook LRS gebruiken. Het is mogelijk om een opslag account te maken voor Azure unmanaged disks die gebruikmaken van GRS, maar dit wordt niet aanbevolen vanwege mogelijke problemen met de consistentie van de asynchrone geo-replicatie. Geen van de beheerde schijven of niet-Managed disks ondersteunen ZRS of GZRS. Zie [prijzen voor Azure Managed disks](https://azure.microsoft.com/pricing/details/managed-disks/)(Engelstalig) voor meer informatie over Managed disks.
@@ -160,7 +161,7 @@ In de volgende tabel wordt aangegeven of uw gegevens duurzaam zijn en beschikbaa
 | Storings scenario                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                              |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
 | Een knoop punt in een Data Center wordt niet meer beschikbaar                                                                 | Ja                             | Ja                              | Ja                                  | Ja                                 |
-| Een volledig Data Center (zonegebonden of niet-zonegebonden) is niet meer beschikbaar                                           | Nee                              | Ja                              | Ja<sup>1</sup>                                  | Yes                                  |
+| Een volledig Data Center (zonegebonden of niet-zonegebonden) is niet meer beschikbaar                                           | Nee                              | Ja                              | Ja<sup>1</sup>                                  | Ja                                  |
 | Er treedt een storing op de hele regio op in de primaire regio                                                                                     | Nee                              | Nee                               | Ja<sup>1</sup>                                  | Ja<sup>1</sup>                                  |
 | Lees toegang tot de secundaire regio is beschikbaar als de primaire regio niet beschikbaar is | Nee                              | Nee                               | Ja (met RA-GRS)                                   | Ja (met RA-GZRS)                                 |
 

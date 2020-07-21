@@ -5,12 +5,12 @@ author: sumukhs
 ms.topic: conceptual
 ms.date: 10/02/2017
 ms.author: sumukhs
-ms.openlocfilehash: 8765e86ffeae86b9f4e2b693c0dbf92478632dbf
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 640ee925a0a91c4f8424546e7ae734dfbeaed21d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253164"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518959"
 ---
 # <a name="configure-stateful-reliable-services"></a>Stateful reliable Services configureren
 Er zijn twee sets configuratie-instellingen voor betrouw bare Services. Eén set is globaal voor alle betrouw bare Services in het cluster, terwijl de andere set specifiek is voor een bepaalde betrouw bare service.
@@ -29,13 +29,15 @@ De algemene betrouw bare service configuratie is opgegeven in het cluster manife
 
 In het voor beeld hieronder ziet u in azure ARM of een on-premises JSON-sjabloon hoe u het gedeelde transactie logboek kunt wijzigen dat wordt gemaakt om back-ups te maken van betrouw bare verzamelingen voor stateful Services.
 
-    "fabricSettings": [{
-        "name": "KtlLogger",
-        "parameters": [{
-            "name": "SharedLogSizeInMB",
-            "value": "4096"
-        }]
+```json
+"fabricSettings": [{
+    "name": "KtlLogger",
+    "parameters": [{
+        "name": "SharedLogSizeInMB",
+        "value": "4096"
     }]
+}]
+```
 
 ### <a name="sample-local-developer-cluster-manifest-section"></a>Voor beeld van een lokaal ontwikkelaars cluster manifest sectie
 Als u dit wilt wijzigen in uw lokale ontwikkel omgeving, moet u het lokale clustermanifest.xml-bestand bewerken.

@@ -3,15 +3,17 @@ title: Een AKS-cluster (Azure Kubernetes service) bewaken dat is geïmplementeer
 description: Meer informatie over het inschakelen van bewaking van een Azure Kubernetes service-cluster (AKS) met Azure Monitor voor containers die al zijn geïmplementeerd in uw abonnement.
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 2dabbe7a5c0e183363fe05bc4e75da0b6a346e6b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-terraform
+ms.openlocfilehash: 438e9cfeebc561815c5c0cdbc70123fab718fed1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337974"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516648"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>Bewaking van het cluster van Azure Kubernetes service (AKS) inschakelen dat al is geïmplementeerd
 
-In dit artikel wordt beschreven hoe u Azure Monitor instelt voor containers voor het bewaken van beheerde Kubernetes-clusters die worden gehost op de [Azure Kubernetes-service](https://docs.microsoft.com/azure/aks/) die al is geïmplementeerd in uw abonnement.
+In dit artikel wordt beschreven hoe u Azure Monitor instelt voor containers voor het bewaken van beheerde Kubernetes-clusters die worden gehost op de [Azure Kubernetes-service](../../aks/index.yml) die al is geïmplementeerd in uw abonnement.
 
 U kunt de bewaking van een AKS-cluster inschakelen dat al is geïmplementeerd met een van de ondersteunde methoden:
 
@@ -166,7 +168,7 @@ Als u niet bekend bent met het concept van het implementeren van resources met b
 
 * [Resources implementeren met Resource Manager-sjablonen en Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
 
-Als u ervoor kiest om de Azure CLI te gebruiken, moet u de CLI eerst lokaal installeren en gebruiken. U moet de Azure CLI-versie 2.0.59 of hoger uitvoeren. Voer uit om uw versie te identificeren `az --version` . Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Als u ervoor kiest om de Azure CLI te gebruiken, moet u de CLI eerst lokaal installeren en gebruiken. U moet de Azure CLI-versie 2.0.59 of hoger uitvoeren. Voer uit om uw versie te identificeren `az --version` . Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](/cli/azure/install-azure-cli).
 
 ### <a name="create-and-execute-a-template"></a>Een sjabloon maken en uitvoeren
 

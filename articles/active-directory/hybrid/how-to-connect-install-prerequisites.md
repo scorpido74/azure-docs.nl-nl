@@ -16,12 +16,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bd19093034b4427d9e1b637a653a90e0568cddf
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 11d5c1bb133f0aea241fbc55f96ab5f8818e5ed6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223921"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518110"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Vereisten voor Azure AD Connect
 In dit onderwerp worden de vereisten en hardwarevereisten voor Azure AD Connect beschreven.
@@ -34,7 +34,7 @@ Voordat u Azure AD Connect installeert, zijn er enkele dingen die u nodig hebt.
   * Het [Azure Portal](https://portal.azure.com).
   * De [Office-Portal](https://portal.office.com).  
 * [Voeg en controleer het domein](../active-directory-domains-add-azure-portal.md) dat u wilt gebruiken in azure AD. Als u bijvoorbeeld van plan bent om contoso.com te gebruiken voor uw gebruikers, moet u ervoor zorgen dat dit domein is geverifieerd en dat u niet alleen gebruikmaakt van het standaard domein contoso.onmicrosoft.com.
-* Een Azure AD-Tenant maakt standaard 50.000-objecten mogelijk. Wanneer u uw domein verifieert, wordt de limiet verhoogd naar 300 KB-objecten. Als u nog meer objecten in azure AD nodig hebt, moet u een ondersteunings aanvraag openen om de limiet nog verder te verg root. Als u meer dan 500.000-objecten nodig hebt, hebt u een licentie nodig, zoals Office 365, Azure AD Basic, Azure AD Premium of ENTER prise Mobility en Security.
+* Een Azure AD-Tenant maakt standaard 50.000-objecten mogelijk. Wanneer u uw domein verifieert, wordt de limiet verhoogd naar 300 KB-objecten. Als u nog meer objecten in azure AD nodig hebt, moet u een ondersteunings aanvraag openen om de limiet nog verder te verg root. Als u meer dan 500.000-objecten nodig hebt, hebt u een licentie nodig, zoals Office 365, Azure AD Premium of ENTER prise Mobility en Security.
 
 ### <a name="prepare-your-on-premises-data"></a>Uw on-premises gegevens voorbereiden
 * Gebruik [IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) om fouten te identificeren, zoals duplicaten en opmaak problemen in uw Directory voordat u synchroniseert met Azure AD en Office 365.
@@ -56,7 +56,7 @@ Zie [Aanbevolen procedures voor het beveiligen van Active Directory](https://doc
 
 #### <a name="installation-prerequisites"></a>Installatievereisten 
 
-- Azure AD Connect moet worden geïnstalleerd op een domein dat is toegevoegd aan Windows Server 2012 of hoger. Het wordt ten zeerste aangeraden deze server een domein controller te zijn. 
+- Azure AD Connect moet worden geïnstalleerd op een domein dat is toegevoegd aan Windows Server 2012 of hoger. 
 - Azure AD Connect kan niet worden geïnstalleerd op Small Business Server of Windows Server Essentials vóór 2019 (Windows Server Essentials 2019 wordt ondersteund). De server moet Windows Server Standard of hoger gebruiken.  
 - Op de Azure AD Connect-server moet een volledige GUI zijn geïnstalleerd. Het is niet mogelijk om Azure AD Connect te installeren op Windows Server Core. 
 - De Azure AD Connect-server moet Power shell transcriptie niet hebben groepsbeleid ingeschakeld als u Azure AD Connect wizard gebruikt voor het beheren van de ADFS-configuratie. U kunt Power shell transcriptie inschakelen als u Azure AD Connect wizard gebruikt voor het beheren van de synchronisatie configuratie. 
@@ -130,7 +130,7 @@ Micro soft raadt aan uw Azure AD Connect-server te beveiligen om het beveiliging
 Raadpleeg MSDN over het [standaard proxy-element](https://msdn.microsoft.com/library/kd3cf2ex.aspx)voor meer informatie.  
 Zie [verbindings problemen oplossen](tshoot-connect-connectivity.md)voor meer informatie over problemen met de connectiviteit.
 
-### <a name="other"></a>Anders
+### <a name="other"></a>Overige
 * Optioneel: een test gebruikers account om synchronisatie te controleren.
 
 ## <a name="component-prerequisites"></a>Onderdeel vereisten

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: yelevin
-ms.openlocfilehash: d76f8e2d750b8ab2d82e9424f929d8b8353ac25a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 596d0f4870d9331a332dfb81bd7d2d224964a593
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84816457"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519010"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>Azure-Sentinel uitbreiden in werkruimten en tenants
 
@@ -29,7 +29,7 @@ Azure Sentinel is gebaseerd op een Log Analytics-werk ruimte. U ziet dat de eers
 
 U kunt het volledige voor deel van de Azure-Sentinel-ervaring krijgen wanneer u één werk ruimte gebruikt. Er zijn ook enkele omstandigheden waarin u mogelijk meerdere werk ruimten moet hebben. In de volgende tabel worden enkele van deze situaties vermeld en wordt, indien mogelijk, voorgesteld hoe aan de vereiste kan worden voldaan met één werk ruimte:
 
-| Vereiste | Description | Manieren om het aantal werk ruimten te verminderen |
+| Vereiste | Beschrijving | Manieren om het aantal werk ruimten te verminderen |
 |-------------|-------------|--------------------------------|
 | Soevereiniteit en naleving van regelgeving | Een werk ruimte is gekoppeld aan een bepaalde regio. Als gegevens in verschillende [Azure-regio's](https://azure.microsoft.com/global-infrastructure/geographies/) moeten worden bewaard om te voldoen aan de wettelijke vereisten, moet deze worden opgesplitst in afzonderlijke werk ruimten. |  |
 | Eigendom van gegevens | De grenzen van gegevens eigendom, bijvoorbeeld door dochter ondernemingen of gelieerde ondernemingen, worden beter afgebakend met afzonderlijke werk ruimten. |  |
@@ -110,6 +110,12 @@ Werkmappen kunnen query's in meerdere werk ruimten bieden op een van de volgende
 | De werkmap interactief bewerken | Een ervaren gebruiker die een bestaande werkmap wijzigt, kan de query's hierin bewerken en de doel werkruimte selecteren met behulp van de werkruimte kiezer in de editor. | Met deze optie kan een hoofd gebruiker gemakkelijk bestaande werkmappen aanpassen om met meerdere werk ruimten te werken. |
 |
 
+### <a name="cross-workspace-hunting"></a>Jacht in meerdere werk ruimten
+
+Azure Sentinel biedt vooraf geladen query voorbeelden, ontworpen om u op weg te helpen en u vertrouwd te raken met de tabellen en de query taal. Deze ingebouwde jacht-query's worden doorlopend ontwikkeld door micro soft-beveiligings onderzoekers, zowel het toevoegen van nieuwe query's en het verfijnen van bestaande query's, om u een ingangs punt te bieden om te zoeken naar nieuwe detecties en te identificeren van de aanspraken van indringing die mogelijk niet worden gedetecteerd door uw beveiligings Programma's.  
+
+Met de functie voor het zoeken in meerdere werk ruimten kunt u met behulp van de operator Union en de expressie werk ruimte (), zoals hierboven wordt weer gegeven, uw bedreigingen voor het maken van nieuwe jacht-query's en het aanpassen van bestaande werk ruimten.
+
 ## <a name="cross-workspace-management-using-automation"></a>Beheer van meerdere werk ruimten met automatisering
 
 Als u meerdere Azure-Sentinel-werk ruimten wilt configureren en beheren, moet u het gebruik van de Azure Sentinel Management API automatiseren. Zie voor meer informatie over het automatiseren van de implementatie van Azure Sentinel-resources, waaronder waarschuwings regels, jacht-query's, werkmappen en playbooks, [uitbrei ding van Azure Sentinel: api's, integratie en beheer automatisering](https://techcommunity.microsoft.com/t5/azure-sentinel/extending-azure-sentinel-apis-integration-and-management/ba-p/1116885).
@@ -122,8 +128,6 @@ Zie ook [Azure Sentinel implementeren en beheren als code](https://techcommunity
 De volgende functies worden niet ondersteund in werk ruimten:
 
 - Een geplande waarschuwings regel kan niet worden uitgevoerd in verschillende werk ruimten met behulp van een query in meerdere werk ruimten.
-
-- Jacht-query's bieden geen ondersteuning voor query's in meerdere werk ruimten.
 
 ## <a name="managing-workspaces-across-tenants-using-azure-lighthouse"></a>Werk ruimten beheren via tenants met behulp van Azure Lighthouse
 

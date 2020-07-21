@@ -3,16 +3,17 @@ title: Een nieuw Azure Kubernetes service-cluster (AKS) bewaken | Microsoft Docs
 description: Meer informatie over het inschakelen van bewaking voor een nieuw Azure Kubernetes service-cluster (AKS) met Azure Monitor voor containers-abonnement.
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: c731826f2780c45358730f9ce20d6a6151f6f259
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-terraform
+ms.openlocfilehash: 86ace49ea60bf1bd11633b5a883401f678ecaf8d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847206"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516631"
 ---
 # <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>Bewaking van een nieuw Azure Kubernetes service (AKS)-cluster inschakelen
 
-In dit artikel wordt beschreven hoe u Azure Monitor instelt voor containers voor het bewaken van beheerde Kubernetes-clusters die worden gehost op de [Azure Kubernetes-service](https://docs.microsoft.com/azure/aks/) die u wilt implementeren in uw abonnement.
+In dit artikel wordt beschreven hoe u Azure Monitor instelt voor containers voor het bewaken van beheerde Kubernetes-clusters die worden gehost op de [Azure Kubernetes-service](../../aks/index.yml) die u wilt implementeren in uw abonnement.
 
 U kunt de bewaking van een AKS-cluster inschakelen met een van de ondersteunde methoden:
 
@@ -24,7 +25,7 @@ U kunt de bewaking van een AKS-cluster inschakelen met een van de ondersteunde m
 Als u de bewaking van een nieuw AKS-cluster dat is gemaakt met Azure CLI wilt inschakelen, volgt u de stap in het artikel Quick Start in het gedeelte [AKS-cluster maken](../../aks/kubernetes-walkthrough.md#create-aks-cluster).  
 
 >[!NOTE]
->Als u ervoor kiest om de Azure CLI te gebruiken, moet u de CLI eerst lokaal installeren en gebruiken. U moet de Azure CLI-versie 2.0.74 of hoger uitvoeren. Voer uit om uw versie te identificeren `az --version` . Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli). Als u de AKS-preview CLI-extensie versie 0.4.12 of hoger hebt geïnstalleerd, verwijdert u alle wijzigingen die u hebt aangebracht om een preview-uitbrei ding in te scha kelen, omdat AKS preview-functies niet beschikbaar zijn in de Cloud voor Amerikaanse Governmnet van Azure.
+>Als u ervoor kiest om de Azure CLI te gebruiken, moet u de CLI eerst lokaal installeren en gebruiken. U moet de Azure CLI-versie 2.0.74 of hoger uitvoeren. Voer uit om uw versie te identificeren `az --version` . Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](/cli/azure/install-azure-cli). Als u de AKS-preview CLI-extensie versie 0.4.12 of hoger hebt geïnstalleerd, verwijdert u alle wijzigingen die u hebt aangebracht om een preview-uitbrei ding in te scha kelen, omdat AKS preview-functies niet beschikbaar zijn in de Cloud voor Amerikaanse Governmnet van Azure.
 
 ## <a name="enable-using-terraform"></a>Inschakelen met behulp van terraform
 

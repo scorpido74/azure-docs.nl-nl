@@ -47,8 +47,6 @@
       href: controls.md
     - name: Klassieke beleidsmigraties
       href: policy-migration.md
-    - name: Basisbeschermingsbeleid
-      href: concept-baseline-protection.md
 - name: Instructiegidsen
   expanded: true
   items:

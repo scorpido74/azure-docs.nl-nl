@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 07/20/2020
 ms.author: absha
-ms.openlocfilehash: 1e3ef1133628f0470ee92237abf20d3bb0a9e21a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0245a23e46770840295904685c913826950c0642
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254664"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517838"
 ---
 # <a name="application-gateway-configuration-overview"></a>Overzicht van Application Gateway configuratie
 
@@ -146,7 +146,7 @@ Wanneer u een nieuwe listener maakt, kiest u tussen een [ *basis* en een *multi-
 
 - Als u wilt dat al uw aanvragen (voor elk domein) worden geaccepteerd en doorgestuurd naar back-endservers, kiest u basis. Meer informatie [over het maken van een toepassings gateway met een Basic-listener](https://docs.microsoft.com/azure/application-gateway/quick-create-portal).
 
-- Als u aanvragen wilt door sturen naar verschillende back-Pools op basis van de *host* -header of hostnaam, kiest u multi-site listener, waarbij u ook een hostnaam moet opgeven die overeenkomt met de inkomende aanvraag. Dit komt omdat Application Gateway afhankelijk zijn van HTTP 1,1-hostheaders om meer dan één website op hetzelfde open bare IP-adres en dezelfde poort te hosten.
+- Als u aanvragen wilt door sturen naar verschillende back-Pools op basis van de *host* -header of hostnamen, kiest u multi-site listener, waarbij u ook een hostnaam moet opgeven die overeenkomt met de inkomende aanvraag. Dit komt omdat Application Gateway afhankelijk zijn van HTTP 1,1-hostheaders om meer dan één website op hetzelfde open bare IP-adres en dezelfde poort te hosten. Zie [meerdere sites hosten met behulp van Application Gateway](multiple-site-overview.md)voor meer informatie.
 
 #### <a name="order-of-processing-listeners"></a>Volg orde van de verwerkings listeners
 
@@ -279,12 +279,16 @@ Zie voor meer informatie over omleiding:
 - [Verkeer omleiden naar een externe site met behulp van Power shell](redirect-external-site-powershell.md)
 - [Verkeer omleiden naar een externe site door gebruik te maken van de CLI](redirect-external-site-cli.md)
 
-#### <a name="rewrite-the-http-header-setting"></a>De HTTP-header-instelling opnieuw schrijven
+### <a name="rewrite-http-headers-and-url"></a>HTTP-headers en URL opnieuw schrijven
 
-Met deze instelling worden HTTP-aanvragen en-antwoord headers toegevoegd, verwijderd of bijgewerkt, terwijl de aanvraag-en antwoord pakketten tussen de client en de back-end-pool worden verplaatst. Zie voor meer informatie:
+Met behulp van regels voor herschrijven kunt u HTTP (S)-aanvragen en-antwoord headers toevoegen, verwijderen of bijwerken, evenals het URL-pad en de query reeks parameters, omdat de aanvraag-en antwoord pakketten worden verplaatst tussen de client-en back-end-groepen via de toepassings gateway.
 
- - [Overzicht van HTTP-headers opnieuw schrijven](rewrite-http-headers.md)
+De para meters headers en URL kunnen worden ingesteld op statische waarden of op andere headers en Server variabelen. Dit helpt bij belang rijke gebruiks gevallen, zoals het extra heren van client-IP-adressen, het verwijderen van gevoelige informatie over de back-end, het toevoegen van meer beveiliging, enzovoort.
+Zie voor meer informatie:
+
+ - [Overzicht van HTTP-headers opnieuw schrijven](rewrite-http-headers-url.md)
  - [Herschrijven van HTTP-header configureren](rewrite-http-headers-portal.md)
+ - [URL opnieuw schrijven configureren](rewrite-url-portal.md)
 
 ## <a name="http-settings"></a>HTTP-instellingen
 
@@ -357,7 +361,7 @@ Met deze instelling wordt een [aangepaste test](application-gateway-probe-overvi
 > [!NOTE]
 > De aangepaste test controleert de status van de back-end-groep niet, tenzij de bijbehorende HTTP-instelling expliciet is gekoppeld aan een listener.
 
-### <a name="pick-host-name-from-back-end-address"></a><a id="pick"/></a>Kies een hostnaam uit het back-end-adres
+### <a name="pick-host-name-from-back-end-address"></a><a name="pick"></a>Kies een hostnaam uit het back-end-adres
 
 Met deze mogelijkheid wordt de *host* -header in de aanvraag dynamisch ingesteld op de hostnaam van de back-end-pool. Er wordt gebruikgemaakt van een IP-adres of een FQDN-naam.
 

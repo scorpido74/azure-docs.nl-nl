@@ -11,11 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/20/2019
-ms.openlocfilehash: fd8c3c7eaaee6a31acbc4cf513adb3e0e0fa566b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 099094338deba63f678337b7ea13dd9ce9800084
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84341997"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517685"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model---azure-sql-database"></a>Resource limieten voor afzonderlijke data bases met behulp van het DTU-aankoop model-Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -33,7 +34,7 @@ In de volgende tabellen ziet u de beschik bare resources voor één data base in
 
 ### <a name="basic-service-tier"></a>Servicelaag Basic
 
-| **Reken grootte** | **Standaard** |
+| **Reken grootte** | **Basic** |
 | :--- | --: |
 | Maximaal aantal DTU's | 5 |
 | Inbegrepen opslag (GB) | 2 |
@@ -81,13 +82,13 @@ In de volgende tabellen ziet u de beschik bare resources voor één data base in
 
 ### <a name="premium-service-tier"></a>Premium servicelaag
 
-| **Reken grootte** | **P1** | **P2** | **P4** | **P6** | **P11** | **P15** |
+| **Reken grootte** | **B1** | **B2** | **P4** | **P6** | **P11** | **P15** |
 | :--- |---:|---:|---:|---:|---:|---:|
 | Maximaal aantal DTU's | 125 | 250 | 500 | 1000 | 1750 | 4000 |
 | Inbegrepen opslag (GB) | 500 | 500 | 500 | 500 | 4096 * | 4096 * |
 | Maximum aantal opslag opties (GB) | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 4096 * | 4096 * |
 | Maximale OLTP-opslag in het geheugen (GB) | 1 | 2 | 4 | 8 | 14 | 32 |
-| Maxi maal aantal gelijktijdige werk nemers (aanvragen)| 200 | 400 | 800 | 1600 | 2400 | 6400 |
+| Maxi maal aantal gelijktijdige werk nemers (aanvragen)| 200 | 400 | 800 | 1600 | 2800 | 6400 |
 | Maximaal aantal gelijktijdige sessies | 30.000 | 30.000 | 30.000 | 30.000 | 30.000 | 30.000 |
 |||||||
 

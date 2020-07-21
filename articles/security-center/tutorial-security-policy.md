@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: c98ae7c95ac3fc186786612dd3d8d8bd55fa816f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 52488eb43377978d7f936ba0aa452cc872f8d899
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82024877"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519351"
 ---
 # <a name="working-with-security-policies"></a>Werken met beveiligingsbeleid
 
@@ -32,7 +33,7 @@ Azure Security Center worden de beveiligings aanbevelingen gebaseerd op uw gekoz
 
 Security Center biedt de volgende opties voor het werken met beveiligings beleid:
 
-* **Het ingebouwde standaard beleid weer geven en bewerken** : wanneer u Security Center inschakelt, wordt er automatisch een ingebouwd initiatief met de naam ' ASC default ' toegewezen aan alle Security Center geregistreerde abonnementen (lagen gratis of standaard). Als u dit initiatief wilt aanpassen, kunt u afzonderlijk beleids regels in-of uitschakelen. Bekijk de lijst met [ingebouwde beveiligings beleidsregels](security-center-policy-definitions.md) om inzicht te krijgen in de beschik bare opties.
+* **Het ingebouwde standaard beleid weer geven en bewerken** : wanneer u Security Center inschakelt, wordt er automatisch een ingebouwd initiatief met de naam ' ASC default ' toegewezen aan alle Security Center geregistreerde abonnementen (gratis of standaard prijs categorieën). Als u dit initiatief wilt aanpassen, kunt u afzonderlijk beleids regels in-of uitschakelen. Bekijk de lijst met [ingebouwde beveiligings beleidsregels](security-center-policy-definitions.md) om inzicht te krijgen in de beschik bare opties.
 
 * **Uw eigen aangepaste beleids regels toevoegen** : als u de beveiligings initiatieven wilt aanpassen die op uw abonnement zijn toegepast, kunt u dit doen in Security Center. U ontvangt dan aanbevelingen als uw computers niet voldoen aan het beleid dat u maakt. Zie [aangepaste beveiligings beleidsregels gebruiken](custom-security-policies.md)voor instructies voor het maken en toewijzen van aangepaste beleids regels.
 
@@ -85,14 +86,18 @@ Ga als volgt te werk als u uw beveiligingsbeleidsregels wilt weergeven in Securi
 
 U kunt beveiligings beleid via de Azure Policy Portal bewerken via REST API of met behulp van Windows Power shell.
 
-Security Center gebruikt op rollen gebaseerd toegangsbeheer (RBAC), dat ingebouwde rollen biedt die kunnen worden toegewezen aan gebruikers, groepen en services in Azure. Wanneer gebruikers Security Center openen, zien ze alleen informatie die betrekking heeft op de resources waartoe ze toegang hebben. Dit betekent dat gebruikers de rol van *eigenaar*, *bijdrager*of *lezer* aan het abonnement van de resource hebben toegewezen. Naast deze rollen zijn er twee specifieke Security Center rollen:
+Security Center gebruikt op rollen gebaseerd Access Control (RBAC), dat ingebouwde rollen biedt die u kunt toewijzen aan Azure-gebruikers,-groepen en-services. Wanneer gebruikers Security Center openen, zien ze alleen informatie met betrekking tot de resources waartoe ze toegang hebben. Dit betekent dat gebruikers de rol van *eigenaar*, *bijdrager*of *lezer* aan het abonnement van de resource krijgen toegewezen. Er zijn ook twee specifieke Security Center rollen:
 
-- **Beveiligings lezer**: hebben weergave rechten voor Security Center, waaronder aanbevelingen, waarschuwingen, beleid en status, maar ze kunnen geen wijzigingen aanbrengen.
-- **Beveiligings beheerder**: hebben dezelfde weergave rechten als de *beveiligings lezer*, en ze kunnen ook het beveiligings beleid bijwerken en aanbevelingen en waarschuwingen negeren.
+- **Beveiligings lezer**: heeft rechten voor het weer geven van Security Center items, zoals aanbevelingen, waarschuwingen, beleid en status. Kan geen wijzigingen aanbrengen.
+- **Beveiligings beheerder**: heeft dezelfde weergave rechten als de *beveiligings lezer*. Kan het beveiligings beleid ook bijwerken en waarschuwingen negeren.
 
 
-## <a name="disable-security-policies"></a>Beveiligings beleid uitschakelen
-Als het standaard beveiligings beleid een aanbeveling genereert die niet relevant is voor uw omgeving, kunt u deze stoppen door de beleids definitie die de aanbeveling verzendt, uit te scha kelen.
+## <a name="disable-security-policies-and-disable-recommendations"></a>Beveiligings beleid uitschakelen en aanbevelingen uitschakelen
+
+Wanneer uw Security Initiative een aanbeveling activeert die irrelevant is voor uw omgeving, kunt u voor komen dat de aanbeveling weer wordt weer gegeven. Als u een aanbeveling wilt uitschakelen, schakelt u het specifieke beleid uit waarmee de aanbeveling wordt gegenereerd.
+
+De aanbeveling die u wilt uitschakelen, wordt nog steeds weer gegeven als deze is vereist voor een regelgevings norm die u hebt toegepast met de nalevings tools van de Security Center. Zelfs als u een beleid hebt uitgeschakeld in het ingebouwde initiatief, wordt de aanbeveling door een beleid in het regelgevings standaard initiatief nog steeds geactiveerd als dit nodig is voor naleving. U kunt beleids regels niet uitschakelen op basis van regelgevende standaard initiatieven.
+
 Zie [beveiligings aanbevelingen beheren](security-center-recommendations.md)voor meer informatie over aanbevelingen.
 
 1. Selecteer in Security Center in het gedeelte **beleids & naleving** de optie **beveiligings beleid**.
@@ -124,7 +129,7 @@ Zie [beveiligings aanbevelingen beheren](security-center-recommendations.md)voor
 
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel hebt u geleerd over het beveiligings beleid. Raadpleeg de volgende artikelen voor verwante informatie:
+In dit artikel wordt het beveiligings beleid uitgelegd. Raadpleeg de volgende artikelen voor verwante informatie:
 
 * Zie [Quick Start: een beleids toewijzing maken om niet-compatibele resources te identificeren met behulp van de module Azure PowerShell](../governance/policy/assign-policy-powershell.md) voor instructies over het instellen van beleids regels met behulp van Power shell
 

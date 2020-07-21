@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: c864a9cc5dd5658bcb3205ce2cbe4f6142cf45a1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 70ffe0bb98e89babe2f5998ee66666dd5368f7f2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255486"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518042"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Migreren naar Azure Kubernetes service (AKS)
 
@@ -51,7 +51,7 @@ AKS is een beheerde service die unieke mogelijkheden biedt met lagere beheer ove
 
 We raden u aan om AKS-clusters die worden ondersteund door [Virtual Machine Scale sets](../virtual-machine-scale-sets/index.yml) en de [Azure-Standard Load Balancer](./load-balancer-standard.md) te gebruiken om ervoor te zorgen dat u beschikt over functies zoals [meerdere knooppunt groepen](./use-multiple-node-pools.md), [Beschikbaarheidszones](../availability-zones/az-overview.md), [geautoriseerde IP-bereiken](./api-server-authorized-ip-ranges.md), [cluster automatisch schalen](./cluster-autoscaler.md), [Azure Policy voor AKS](../governance/policy/concepts/policy-for-kubernetes.md)en andere nieuwe functies wanneer deze worden uitgebracht.
 
-AKS-clusters die worden ondersteund door [beschikbaarheids sets voor virtuele machines](../virtual-machine-scale-sets/availability.md#availability-sets) , bieden geen ondersteuning voor veel van deze functies.
+AKS-clusters die worden ondersteund door [beschikbaarheids sets voor virtuele machines](../virtual-machines/availability.md#availability-sets) , bieden geen ondersteuning voor veel van deze functies.
 
 In het volgende voor beeld wordt een AKS-cluster gemaakt met één knooppunt groep die wordt ondersteund door een virtuele-machine schaalset. Er wordt gebruikgemaakt van een standaard load balancer. Ook wordt de cluster-automatische schaal functie voor de knooppunt groep voor het cluster ingeschakeld en worden mini maal *1* en Maxi maal *drie* knoop punten ingesteld:
 

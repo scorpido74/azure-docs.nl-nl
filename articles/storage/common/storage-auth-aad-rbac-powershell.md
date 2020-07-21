@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: e95d25e4f26abc48f2a734cf8456739e6ef55b84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a67981e2919854b80479ccc1c27ecf97469eebce
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807698"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518675"
 ---
 # <a name="use-powershell-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>Power shell gebruiken om een RBAC-rol toe te wijzen voor toegang tot Blob-en wachtrij gegevens
 
@@ -107,7 +107,7 @@ New-AzRoleAssignment -SignInName <email> `
     -Scope  "/subscriptions/<subscription>/resourceGroups/sample-resource-group/providers/Microsoft.Storage/storageAccounts/<storage-account>"
 ```
 
-### <a name="resource-group-scope"></a>Bereik van de resource groep
+### <a name="resource-group-scope"></a>Bereik van de resourcegroep
 
 Als u een rollen bereik wilt toewijzen aan de resource groep, geeft u de naam van de resource groep of ID voor de `--resource-group` para meter op. In het volgende voor beeld wordt de rol van **gegevens lezer van de opslag wachtrij** toegewezen aan een gebruiker op het niveau van de resource groep. Vervang de voorbeeld waarden en de waarden van de tijdelijke aanduiding tussen vier Kante haken door uw eigen waarden: 
 

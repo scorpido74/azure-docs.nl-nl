@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2019
 ms.author: memildin
-ms.openlocfilehash: c58f70126c72a84b09f6eadc251949a0f0021657
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f3006bdd0cb90c22123c8db103a12ef3c0bee75a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84628292"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519334"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Bestandsintegriteit bewaken in Azure Security Center
 Meer informatie over het configureren van FIM (File Integrity Monitoring) in Azure Security Center met behulp van deze procedure.
@@ -45,7 +46,7 @@ De bestands integriteits controle van Security Center valideert de integriteit v
 Security Center raadt entiteiten aan om te bewaken, waarmee u eenvoudig FIM kunt inschakelen. U kunt ook uw eigen FIM-beleid of-entiteiten definiëren om te bewaken. In dit scenario ziet u hoe.
 
 > [!NOTE]
-> De FIM-functie (File Integrity Monitoring) werkt voor Windows-en Linux-computers en Vm's en is beschikbaar op de standaard-laag van Security Center. Bekijk de pagina [Prijzen](security-center-pricing.md) voor meer informatie over de tariefopties van Security Center. FIM uploadt gegevens naar de Log Analytics-werk ruimte. De gegevens kosten zijn van toepassing op basis van de hoeveelheid gegevens die u uploadt. Zie [log Analytics prijzen](https://azure.microsoft.com/pricing/details/log-analytics/) voor meer informatie.
+> De FIM-functie (File Integrity Monitoring) werkt voor Windows-en Linux-computers en-Vm's en is beschikbaar op de standaardlaag van Security Center. Bekijk de pagina [Prijzen](security-center-pricing.md) voor meer informatie over de tariefopties van Security Center. FIM uploadt gegevens naar de Log Analytics-werk ruimte. De gegevens kosten zijn van toepassing op basis van de hoeveelheid gegevens die u uploadt. Zie [log Analytics prijzen](https://azure.microsoft.com/pricing/details/log-analytics/) voor meer informatie.
 
 FIM maakt gebruik van de Azure Wijzigingen bijhouden-oplossing om wijzigingen in uw omgeving bij te houden en te identificeren. Als bestands integriteits controle is ingeschakeld, hebt u een **Wijzigingen bijhouden** bron van het type **oplossing**. Zie [Details van gegevensverzameling voor Wijzigingen bijhouden](https://docs.microsoft.com/azure/automation/automation-change-tracking#change-tracking-data-collection-details) voor informatie over de gegevensverzameling door Wijzigingen bijhouden van Azure.
 

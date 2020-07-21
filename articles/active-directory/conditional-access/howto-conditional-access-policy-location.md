@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5350e728ad9c30a6e9258ce9c7615baf020473a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f1eae9cc067f8aa10ad49d70dfe0393f4bed6c5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83995119"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518416"
 ---
 # <a name="conditional-access-block-access-by-location"></a>Voorwaardelijke toegang: toegang blok keren per locatie
 
@@ -42,17 +43,15 @@ Meer informatie over de locatie voorwaarde in voorwaardelijke toegang vindt u in
 1. Geef uw beleid een naam. Het is raadzaam dat organisaties een zinvolle norm maken voor de namen van hun beleid.
 1. Onder **toewijzingen**selecteert u **gebruikers en groepen**
    1. Onder **insluiten**selecteert u **alle gebruikers**.
-   1. Selecteer **Voltooid**.
-1. Onder **Cloud-apps of acties**  >  **Include**, selecteert u **alle Cloud-apps**en selecteert u **gereed**.
+1. Onder **Cloud-apps of acties**  >  **bevat**en selecteert u **alle Cloud-apps**.
 1. Onder **voor waarden**  >  **locatie**.
    1. Stel **configureren** op **Ja** in
-   1. Selecteer **geselecteerde locaties** **toevoegen**
+   1. Onder **insluiting**selecteert u **geselecteerde locaties**
    1. Selecteer de geblokkeerde locatie die u hebt gemaakt voor uw organisatie.
-   1. Klik **op gereed**  >  **Done**  >  **Done**.
-1. Onder **voor waarden**  >  **client-apps (preview)** stelt u **configureren** op **Ja**in en selecteert u **gereed**.
-1. Onder **toegangscontrole**  >  **blok**en selecteer **selecteren**.
+   1. Klik op **Selecteren**.
+1. Onder **toegangs beheer** > selecteert u **toegang blok keren**en selecteert **u selecteren**.
 1. Bevestig de instellingen en stel **beleid inschakelen** in **op aan**.
-1. Selecteer **maken** om uw beleid in te stellen.
+1. Selecteer **maken** om beleid voor voorwaardelijke toegang te maken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

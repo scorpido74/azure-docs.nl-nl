@@ -4,16 +4,17 @@ description: Klassieke waarschuwingen worden afgeschaft. Met waarschuwingen kunt
 ms.topic: conceptual
 ms.date: 05/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: e9c269db870f582c176783a4654b5de251e24412
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d120550d17dcac7410a259e131ad81feb0afdf9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81114491"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515951"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Wat zijn klassieke waarschuwingen in Microsoft Azure?
 
 > [!NOTE]
-> In dit artikel wordt beschreven hoe u oudere klassieke metrische waarschuwingen maakt. Azure Monitor ondersteunt nu [nieuwere bijna realtime waarschuwingen voor metrische gegevens en een nieuwe meldings ervaring](../../azure-monitor/platform/alerts-overview.md). Klassieke waarschuwingen worden [buiten gebruik gesteld](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement), maar zijn nog steeds beperkt in beperkte functionaliteit voor resources die de nieuwe waarschuwingen nog niet ondersteunen. 
+> In dit artikel wordt beschreven hoe u oudere klassieke metrische waarschuwingen maakt. Azure Monitor ondersteunt nu [nieuwere bijna realtime waarschuwingen voor metrische gegevens en een nieuwe meldings ervaring](../../azure-monitor/platform/alerts-overview.md). Klassieke waarschuwingen worden [buiten gebruik gesteld](./monitoring-classic-retirement.md), maar zijn nog steeds beperkt in beperkte functionaliteit voor resources die de nieuwe waarschuwingen nog niet ondersteunen. 
 >
 
 Met waarschuwingen kunt u voor waarden voor gegevens configureren en op de hoogte worden gesteld wanneer de voor waarden overeenkomen met de meest recente bewakings gegevens.
@@ -88,7 +89,7 @@ Informatie over waarschuwings regels ophalen en deze configureren met behulp van
 * [Klassieke metrische waarschuwingen configureren via Azure Portal](alerts-classic-portal.md)
 * [Klassieke waarschuwingen voor metrische gegevens](alerts-classic-portal.md) configureren
 * [Klassieke metrische waarschuwingen configureren opdracht regel interface (CLI)](alerts-classic-portal.md)
-* [Klassieke waarschuwingen voor metrische gegevens Azure Monitor rest API](https://msdn.microsoft.com/library/azure/dn931945.aspx) configureren
+* [Klassieke waarschuwingen voor metrische gegevens Azure Monitor rest API](/rest/api/monitor/alertrules) configureren
 * Meer informatie over [activiteiten logboek](platform-logs-overview.md)
 * [Waarschuwingen voor activiteiten logboek configureren via Azure Portal](activity-log-alerts.md)
 * [Waarschuwingen voor activiteiten logboek configureren via Resource Manager](alerts-activity-log.md)

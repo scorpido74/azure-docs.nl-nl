@@ -4,12 +4,12 @@ description: Ontvang een melding via SMS, webhook, SMS, e-mail en meer wanneer b
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: 1a932aba55ec9bd5d92c60338a3c1fc4bb481c1b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ed73678e0df1e068782c2a094846132be58cfe2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82137702"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516121"
 ---
 # <a name="alerts-on-activity-log"></a>Meldingen over activiteitenlogboek
 
@@ -25,11 +25,11 @@ Normaal gesp roken maakt u waarschuwingen voor activiteiten Logboeken om melding
 * Specifieke bewerkingen worden uitgevoerd op resources in uw Azure-abonnement, wat vaak van toepassing is op bepaalde resource groepen of resources. Stel dat u een melding wilt ontvangen wanneer een virtuele machine in myProductionResourceGroup wordt verwijderd. Het kan ook zijn dat u een melding wilt ontvangen als nieuwe rollen zijn toegewezen aan een gebruiker in uw abonnement.
 * Er treedt een service Health-gebeurtenis op. Service Health-gebeurtenissen zijn onder andere melding van incidenten en onderhouds gebeurtenissen die van toepassing zijn op resources in uw abonnement.
 
-Een eenvoudige analoge waarde voor de voor waarden waarop waarschuwings regels kunnen worden gemaakt in het activiteiten logboek, is om gebeurtenissen te verkennen of filteren via [activiteiten logboek in azure Portal](activity-log-view.md#azure-portal). In Azure Monitor-activiteiten logboek kan één een vereiste gebeurtenis filteren of vinden en vervolgens een waarschuwing maken met behulp van de knop waarschuwing voor het **activiteiten logboek toevoegen** .
+Een eenvoudige analoge waarde voor de voor waarden waarop waarschuwings regels kunnen worden gemaakt in het activiteiten logboek, is om gebeurtenissen te verkennen of filteren via [activiteiten logboek in azure Portal](./activity-log.md#view-the-activity-log). In Azure Monitor-activiteiten logboek kan één een vereiste gebeurtenis filteren of vinden en vervolgens een waarschuwing maken met behulp van de knop waarschuwing voor het **activiteiten logboek toevoegen** .
 
 In beide gevallen controleert een activiteiten logboek waarschuwing alleen op gebeurtenissen in het abonnement waarin de waarschuwing is gemaakt.
 
-U kunt een waarschuwing voor een activiteiten logboek configureren op basis van een eigenschap op het hoogste niveau in het JSON-object voor een activiteiten logboek gebeurtenis. Zie [Categorieën in het activiteiten logboek](activity-log-view.md#categories-in-the-activity-log)voor meer informatie. Zie [waarschuwingen voor activiteiten logboeken ontvangen in service meldingen](alerts-activity-log-service-notifications.md)voor meer informatie over service status gebeurtenissen. 
+U kunt een waarschuwing voor een activiteiten logboek configureren op basis van een eigenschap op het hoogste niveau in het JSON-object voor een activiteiten logboek gebeurtenis. Zie [Categorieën in het activiteiten logboek](./activity-log.md#view-the-activity-log)voor meer informatie. Zie [waarschuwingen voor activiteiten logboeken ontvangen in service meldingen](../../service-health/alerts-activity-log-service-notifications-portal.md)voor meer informatie over service status gebeurtenissen. 
 
 Waarschuwingen voor activiteiten logboeken bevatten enkele algemene opties:
 
@@ -61,4 +61,4 @@ Zie voor meer informatie over actie groepen [actie groepen maken en beheren in d
 - Een [overzicht van waarschuwingen](alerts-overview.md)weer geven.
 - Meer informatie over het [maken en wijzigen van waarschuwingen voor activiteiten logboeken](alerts-activity-log.md).
 - Controleer het [webhook-schema](activity-log-alerts-webhook.md)van de waarschuwing voor het activiteiten logboek.
-- Meer informatie over [service status meldingen](service-notifications.md).
+- Meer informatie over [service status meldingen](../../service-health/service-notifications.md).

@@ -3,11 +3,12 @@ title: Slimme detectie in Azure-toepassing Insights | Microsoft Docs
 description: Application Insights voert een automatische diep gaande analyse van uw app-telemetrie uit en waarschuwt u mogelijke problemen.
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: b7fecf886515780858ecc503a29be3bd76b73c3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad6580a0a62d331a7851c47d71b46d3ea6c81468
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83700839"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516869"
 ---
 # <a name="smart-detection-in-application-insights"></a>Slimme detectie in Application Insights
  Slimme detectie waarschuwt automatisch mogelijke prestatie problemen en fout afwijkingen in uw webtoepassing. Er wordt proactieve analyse uitgevoerd van de telemetrie die uw app naar [Application Insights](../../azure-monitor/app/app-insights-overview.md)verzendt. Als er sprake is van een plotselinge toename van de fout frequentie of abnormale patronen in de prestaties van de client of server, ontvangt u een waarschuwing. Deze functie heeft geen configuratie nodig. Het werkt als uw toepassing voldoende telemetrie verzendt.
@@ -33,7 +34,7 @@ Slimme detectie detecteert en waarschuwt over diverse problemen, zoals:
 
 * [Slimme detectie-fout afwijkingen](../../azure-monitor/app/proactive-failure-diagnostics.md). We gebruiken machine learning om het verwachte aantal mislukte aanvragen voor uw app in te stellen en te correleren met belasting en andere factoren. Als het uitval aantal buiten de verwachte envelop komt, verzenden we een waarschuwing.
 * [Slimme detectie: prestatie afwijkingen](../../azure-monitor/app/proactive-performance-diagnostics.md). U ontvangt meldingen als de reactie tijd van een bewerking of afhankelijkheids duur verloopt ten opzichte van de historische basis lijn of als we een afwijkend patroon identificeren in reactie tijd of pagina laadtijd.   
-* Algemene degradatie en problemen, zoals [tracering afbraak](https://docs.microsoft.com/azure/azure-monitor/app/proactive-trace-severity), [geheugenlek,](https://docs.microsoft.com/azure/azure-monitor/app/proactive-potential-memory-leak) [abnormaal stijgen in uitzonderings volume](https://docs.microsoft.com/azure/azure-monitor/app/proactive-exception-volume) en [beveiligings anti patronen](https://docs.microsoft.com/azure/azure-monitor/app/proactive-application-security-detection-pack).
+* Algemene degradatie en problemen, zoals [tracering afbraak](./proactive-trace-severity.md), [geheugenlek,](./proactive-potential-memory-leak.md) [abnormaal stijgen in uitzonderings volume](./proactive-exception-volume.md) en [beveiligings anti patronen](./proactive-application-security-detection-pack.md).
 
 (De Help-koppelingen in elke melding nemen u naar de relevante artikelen.)
 
@@ -43,7 +44,7 @@ Alle regels voor slimme detectie, met uitzonde ring van regels die als _Preview_
 
 Het configureren van e-mail meldingen voor een specifieke detectie regel kan worden uitgevoerd door de Blade Slimme detectie- **instellingen** te openen en de regel te selecteren, waarmee de Blade **regel bewerken** wordt geopend.
 
-U kunt de configuratie ook wijzigen met Azure Resource Manager sjablonen. [Zie Application Insights Slimme detectie regels beheren met behulp van Azure Resource Manager-sjablonen](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config) voor meer informatie.
+U kunt de configuratie ook wijzigen met Azure Resource Manager sjablonen. [Zie Application Insights Slimme detectie regels beheren met behulp van Azure Resource Manager-sjablonen](./proactive-arm-config.md) voor meer informatie.
 
 ## <a name="video"></a>Video
 
@@ -60,4 +61,3 @@ Slimme detectie is volledig automatisch. Maar misschien wilt u nog meer waarschu
 
 * [Hand matig geconfigureerde metrische waarschuwingen](../../azure-monitor/platform/alerts-log.md)
 * [Webtests voor beschikbaarheid](../../azure-monitor/app/monitor-web-app-availability.md) 
-

@@ -13,12 +13,12 @@ ms.date: 06/29/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.openlocfilehash: 453efd7735c6843ccdaf8dfd86b18d0b2ef8b06d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8ff8ced1723a3cdc969b4a951c31ea1da2d3093
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85604621"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518294"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Toepassings- en service-principal-objecten in Azure Active Directory
 
@@ -47,7 +47,7 @@ Een Service-Principal is de lokale weer gave of het toepassings exemplaar van ee
 
 Wanneer een toepassing toestemming krijgt om toegang te krijgen tot bronnen in een Tenant (na registratie of [toestemming](developer-glossary.md#consent)), wordt er een Service-Principal-object gemaakt. U kunt ook een Service Principal-object maken in een Tenant met behulp van [Azure PowerShell](howto-authenticate-service-principal-powershell.md), Azure CLI, [Microsoft Graph](/graph/api/serviceprincipal-post-serviceprincipals?view=graph-rest-1.0&tabs=http), de [Azure Portal][AZURE-Portal]en andere hulpprogram ma's.  Wanneer u de portal gebruikt, wordt automatisch een service-principal gemaakt wanneer u een toepassing registreert.
 
-De Blade **bedrijfs toepassingen** in de portal wordt gebruikt om de service-principals in een Tenant weer te geven en te beheren. U kunt de machtigingen van een Service-Principal zien, door de gebruiker toestemde machtigingen, welke gebruikers hiervoor toestemming hebben gegeven, aanmeldings gegevens en meer.
+De Blade **bedrijfs toepassingen** in de portal wordt gebruikt om de service-principals in een Tenant weer te geven en te beheren. U kunt de machtigingen van de Service-Principal zien, machtigingen voor de gebruiker die hiervoor zijn gemachtigd, de gebruikers die toestemming hebben gegeven, aanmeldings gegevens en meer.
 
 De [entiteit Microsoft Graph ServicePrincipal][MS-Graph-Sp-Entity] definieert het schema voor de eigenschappen van een Service Principal-object.
 

@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: 11fb2b7785540f24b0a8318428da01a4edd5cb5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7c3613a0ddce217e9d07c3fc2eba55b78c53a1b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83860627"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516512"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>Een Log Analytics-werk ruimte maken met Azure CLI 2,0
 
@@ -31,10 +32,10 @@ Als u nog geen abonnement op Azure hebt, maak dan [een gratis account](https://a
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze snelstart de Azure CLI versie 2.0.30 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze snelstart de Azure CLI versie 2.0.30 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="create-a-workspace"></a>Een werkruimte maken
-Maak een werk ruimte met [AZ Group Deployment Create](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create). In het volgende voor beeld wordt een werk ruimte op de locatie *ooster* gemaakt met behulp van een resource manager-sjabloon van uw lokale machine. De JSON-sjabloon is zo geconfigureerd dat alleen u wordt gevraagd om de naam van de werk ruimte en geeft een standaard waarde op voor de andere para meters die waarschijnlijk worden gebruikt als een standaard configuratie in uw omgeving. Of u kunt de sjabloon opslaan in een Azure-opslag account voor gedeelde toegang in uw organisatie. Zie [resources implementeren met Resource Manager-sjablonen en Azure cli](../../azure-resource-manager/templates/deploy-cli.md) voor meer informatie over het werken met sjablonen.
+Maak een werk ruimte met [AZ Group Deployment Create](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create). In het volgende voor beeld wordt een werk ruimte op de locatie *ooster* gemaakt met behulp van een resource manager-sjabloon van uw lokale machine. De JSON-sjabloon is zo geconfigureerd dat alleen u wordt gevraagd om de naam van de werk ruimte en geeft een standaard waarde op voor de andere para meters die waarschijnlijk worden gebruikt als een standaard configuratie in uw omgeving. Of u kunt de sjabloon opslaan in een Azure-opslag account voor gedeelde toegang in uw organisatie. Zie [resources implementeren met Resource Manager-sjablonen en Azure cli](../../azure-resource-manager/templates/deploy-cli.md) voor meer informatie over het werken met sjablonen.
 
 Zie [regio's log Analytics is beschikbaar in](https://azure.microsoft.com/regions/services/) en zoek naar Azure monitor in het veld **zoeken naar een product** voor meer informatie over regio's die worden ondersteund.
 
@@ -105,7 +106,7 @@ Met de volgende para meters wordt een standaard waarde ingesteld:
     }
     ```
 
-2. Bewerk de sjabloon om te voldoen aan uw vereisten. Raadpleeg de naslag informatie over [micro soft. OperationalInsights/werkruimte sjablonen](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/2015-11-01-preview/workspaces) als u wilt weten welke eigenschappen en waarden worden ondersteund.
+2. Bewerk de sjabloon om te voldoen aan uw vereisten. Raadpleeg de naslag informatie over [micro soft. OperationalInsights/werkruimte sjablonen](/azure/templates/microsoft.operationalinsights/2015-11-01-preview/workspaces) als u wilt weten welke eigenschappen en waarden worden ondersteund.
 3. Sla dit bestand als **deploylaworkspacetemplate.jsop in** een lokale map.   
 4. U kunt deze sjabloon nu implementeren. Gebruik de volgende opdrachten in de map met de sjabloon. Wanneer u wordt gevraagd om de naam van een werk ruimte, geeft u een naam op die wereld wijd uniek is voor alle Azure-abonnementen.
 
@@ -118,17 +119,17 @@ De implementatie kan enkele minuten duren. Wanneer de bewerking is voltooid, zie
 ![Voor beeld van resultaat wanneer de implementatie is voltooid](media/quick-create-workspace-cli/template-output-01.png)
 
 ## <a name="troubleshooting"></a>Problemen oplossen
-Wanneer u een werk ruimte maakt die in de afgelopen 14 dagen is verwijderd en de status voor het [voorlopig verwijderen](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#soft-delete-behavior)heeft, kan de bewerking afwijken, afhankelijk van de configuratie van uw werk ruimte:
+Wanneer u een werk ruimte maakt die in de afgelopen 14 dagen is verwijderd en de status voor het [voorlopig verwijderen](../platform/delete-workspace.md#soft-delete-behavior)heeft, kan de bewerking afwijken, afhankelijk van de configuratie van uw werk ruimte:
 1. Als u dezelfde naam voor de werk ruimte, de resource groep, het abonnement en de regio opgeeft als in de verwijderde werk ruimte, wordt uw werk ruimte hersteld, met inbegrip van de bijbehorende gegevens, configuratie en verbonden agents.
 2. Als u dezelfde naam voor de werk ruimte gebruikt, maar een andere resource groep, abonnement of regio, krijgt u een fout melding *de naam van de werk ruimte is niet uniek*of *conflict*. Volg deze stappen om de werk ruimte eerst te herstellen en permanent verwijderen uit te voeren om de tijdelijke verwijdering te onderdrukken en uw werk ruimte permanent te verwijderen en een nieuwe werk ruimte met dezelfde naam te maken:
-   * Uw werk ruimte [herstellen](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace)
-   * Uw werk ruimte [permanent verwijderen](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete)
+   * Uw werk ruimte [herstellen](../platform/delete-workspace.md#recover-workspace)
+   * Uw werk ruimte [permanent verwijderen](../platform/delete-workspace.md#permanent-workspace-delete)
    * Een nieuwe werk ruimte maken met dezelfde werkruimte naam
 
 ## <a name="next-steps"></a>Volgende stappen
 Nu u een werk ruimte beschikbaar hebt, kunt u een verzameling van de telemetrie-bewaking configureren, Zoek opdrachten in Logboeken uitvoeren om die gegevens te analyseren en een beheer oplossing toevoegen om extra gegevens en analytische inzichten te leveren.  
 
-* Zie [Azure service-logboeken en-metrische gegevens verzamelen voor gebruik in log Analytics](../platform/collect-azure-metrics-logs.md)voor informatie over het inschakelen van het verzamelen van data van Azure-resources met Azure Diagnostics of Azure Storage.  
+* Zie [Azure service-logboeken en-metrische gegevens verzamelen voor gebruik in log Analytics](../platform/resource-logs.md#send-to-log-analytics-workspace)voor informatie over het inschakelen van het verzamelen van data van Azure-resources met Azure Diagnostics of Azure Storage.  
 * Voeg [System Center Operations Manager als gegevens bron](../platform/om-agents.md) toe om gegevens te verzamelen van agents die uw Operations Manager beheer groep rapporteren en op te slaan in uw log Analytics-werk ruimte.  
 * Verbind [Configuration Manager](../platform/collect-sccm.md) om computers te importeren die lid zijn van verzamelingen in de hiërarchie.  
 * Bekijk de beschik bare [bewakings oplossingen](../insights/solutions.md) en hoe u een oplossing kunt toevoegen aan of verwijderen uit uw werk ruimte.

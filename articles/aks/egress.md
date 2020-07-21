@@ -5,20 +5,22 @@ description: Meer informatie over het maken en gebruiken van een statisch openba
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: f66a33f49d856abde97756a2b4b483cfa6050d0a
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: f7ea25c3348b96ec6d8818e8e1db4660b308dabc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205781"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517770"
 ---
-# <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>Een statisch openbaar IP-adres gebruiken voor uitgaand verkeer in azure Kubernetes service (AKS)
+# <a name="use-a-static-public-ip-address-for-egress-traffic-with-a-basic-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Een statisch openbaar IP-adres gebruiken voor uitgaand verkeer met een *basis* -SKU Load Balancer in azure Kubernetes service (AKS)
 
-Het uitgaande IP-adres van een Azure Kubernetes service-cluster (AKS) wordt standaard wille keurig toegewezen. Deze configuratie is niet ideaal wanneer u bijvoorbeeld een IP-adres voor toegang tot externe services moet identificeren. In plaats daarvan moet u mogelijk een statisch IP-adres toewijzen dat kan worden white list voor toegang tot de service.
+Het uitgaande IP-adres van een Azure Kubernetes service-cluster (AKS) wordt standaard wille keurig toegewezen. Deze configuratie is niet ideaal wanneer u bijvoorbeeld een IP-adres voor toegang tot externe services moet identificeren. In plaats daarvan moet u mogelijk een statisch IP-adres toewijzen dat moet worden toegevoegd aan een lijst met toegestane Services voor toegang tot de service.
 
 In dit artikel wordt beschreven hoe u een statisch openbaar IP-adres maakt en gebruikt voor gebruik met uitgaand verkeer in een AKS-cluster.
 
 ## <a name="before-you-begin"></a>Voordat u begint
+
+In dit artikel wordt ervan uitgegaan dat u de Azure Basic-Load Balancer gebruikt.  We raden u aan [Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)te gebruiken en u kunt meer geavanceerde functies gebruiken voor het [beheren van AKS](https://docs.microsoft.com/azure/aks/limit-egress-traffic)uitgaand verkeer.
 
 In dit artikel wordt ervan uitgegaan dat u beschikt over een bestaand AKS-cluster. Als u een AKS-cluster nodig hebt, raadpleegt u de AKS Quick Start [met behulp van de Azure cli][aks-quickstart-cli] of [met behulp van de Azure Portal][aks-quickstart-portal].
 
@@ -105,7 +107,7 @@ Als u wilt controleren of het statische open bare IP-adres wordt gebruikt, kunt 
 Starten en koppelen aan een Basic *Debian* Pod:
 
 ```console
-kubectl run -it --rm aks-ip --image=debian --generator=run-pod/v1
+kubectl run -it --rm aks-ip --image=debian
 ```
 
 Om toegang te krijgen tot een website vanuit de container, gebruikt `apt-get` u om `curl` in de container te installeren.

@@ -4,15 +4,15 @@ description: Meer informatie over het ASE-netwerk verkeer en over het instellen 
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-ms.date: 01/24/2020
+ms.date: 06/29/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 4aec7fa78292f224952dd2ae929d2b8bfd97ab9b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10cb1149880c70d991dd5ab49acceab3283372a7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80477687"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517850"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Netwerkoverwegingen voor een App Service-omgeving #
 
@@ -53,7 +53,7 @@ Wanneer u omhoog of omlaag schaalt, worden nieuwe rollen van de juiste grootte t
 
 Alleen voor de ASE van de ASE moeten de volgende poorten zijn geopend:
 
-| Gebruiken | Van | Handeling |
+| Gebruik | Van | Tot |
 |-----|------|----|
 | Beheer | App Service-beheer adressen | ASE-subnet: 454, 455 |
 |  ASE interne communicatie | ASE-subnet: alle poorten | ASE-subnet: alle poorten
@@ -69,7 +69,7 @@ Voor de communicatie tussen de Azure load balancer en het ASE-subnet moeten de m
 
 De andere poorten waarmee u rekening moet houden, zijn de toepassings poorten:
 
-| Gebruiken | Poorten |
+| Gebruik | Poorten |
 |----------|-------------|
 |  HTTP/HTTPS  | 80, 443 |
 |  FTP-FTPS    | 21, 990, 10001-10020 |
@@ -90,7 +90,7 @@ De ASE communiceert met internet toegankelijke adressen op de volgende poorten:
 | NTP | 123 |
 | CRL, Windows-updates, Linux-afhankelijkheden, Azure-Services | 80/443 |
 | Azure SQL | 1433 | 
-| Controleren | 12000 |
+| Bewaking | 12000 |
 
 De uitgaande afhankelijkheden worden weer gegeven in het document met een beschrijving van het [vergren delen van app service Environment uitgaand verkeer](./firewall-integration.md). Als de ASE geen toegang meer heeft tot de afhankelijkheden, werkt deze niet meer. Wanneer dit lang genoeg duurt, wordt de ASE onderbroken. 
 
@@ -152,21 +152,23 @@ Nsg's kan worden geconfigureerd via de Azure Portal of via Power shell. In deze 
 
 De vereiste vermeldingen in een NSG om een ASE te kunnen gebruiken, zijn verkeer toestaan:
 
-**Inkomend**
-* van het IP-service label AppServiceManagement op poort 454.455
-* van de load balancer op poort 16001
+**Inkomend verkeer**
+* TCP van het IP-service label AppServiceManagement op poort 454.455
+* TCP van de load balancer op poort 16001
 * vanuit het ASE-subnet naar het ASE-subnet op alle poorten
 
 **Uitgaand**
-* naar alle IP-adressen op poort 123
-* voor alle IP-adressen op poort 80, 443
-* naar het IP-service label SQL op poort 1433
-* naar alle IP-adressen op poort 12000
+* UDP naar alle IP-adressen op poort 123
+* TCP naar alle IP-adressen op poort 80, 443
+* TCP naar het IP-service label SQL op poort 1433
+* TCP naar alle IP-adressen op poort 12000
 * naar het ASE-subnet op alle poorten
 
-De DNS-poort hoeft niet te worden toegevoegd als verkeer naar DNS wordt niet beïnvloed door de NSG-regels. Deze poorten bevatten niet de poorten die uw apps nodig hebben voor een succes volle toepassing. De normale poorten voor app-toegang zijn:
+Deze poorten bevatten niet de poorten die uw apps nodig hebben voor een succes volle toepassing. Het is bijvoorbeeld mogelijk dat uw app een MySQL-server moet aanroepen op poort 3306. de DNS-poort, poort 53, hoeft niet te worden toegevoegd als verkeer naar DNS wordt niet beïnvloed door de NSG-regels. Network Time Protocol (NTP) op poort 123 is het tijd synchronisatie protocol dat wordt gebruikt door het besturings systeem. De NTP-eind punten zijn niet specifiek voor App Services, kunnen afwijken van het besturings systeem en bevinden zich niet in een goed gedefinieerde lijst met adressen. Om problemen met tijd synchronisatie te voor komen, moet u UDP-verkeer toestaan voor alle adressen op poort 123. De uitgaande TCP naar poort 12000 verkeer is voor systeem ondersteuning en-analyse. De eind punten zijn dynamisch en bevinden zich niet in een duidelijk gedefinieerde set adressen.
 
-| Gebruiken | Poorten |
+De normale poorten voor app-toegang zijn:
+
+| Gebruik | Poorten |
 |----------|-------------|
 |  HTTP/HTTPS  | 80, 443 |
 |  FTP-FTPS    | 21, 990, 10001-10020 |
@@ -212,7 +214,7 @@ Als u dezelfde routes hand matig wilt maken, voert u de volgende stappen uit:
 
 ## <a name="service-endpoints"></a>Service-eindpunten ##
 
-Met service-eindpunten kunt u de toegang tot multitenant-services beperken tot een reeks virtuele Azure-netwerken en subnetten. In de documentatie [Service-eindpunten voor virtuele netwerken][serviceendpoints] vindt u meer informatie over service-eindpunten. 
+Met service-eindpunten kunt u de toegang tot multitenant-services beperken tot een reeks virtuele Azure-netwerken en subnetten. In de documentatie [Virtual Network Service Endpoints][serviceendpoints] (Service-eindpunten voor virtuele netwerken) vindt u meer informatie over service-eindpunten. 
 
 Wanneer u service-eindpunten voor een bron inschakelt, worden er routes gemaakt die een hogere prioriteit hebben dan alle andere routes. Als u service-eind punten gebruikt voor een Azure-service, met een geforceerde getunnelde ASE, wordt het verkeer naar die services niet geforceerd getunneld. 
 

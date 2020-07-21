@@ -14,14 +14,14 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd0d17732991fd97b2406c9c5f182408f4746d96
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: a8b94d195ea1f31d228505f01c2a77a299e63c0a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223870"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518093"
 ---
-# <a name="administrator-role-permissions-in-azure-active-directory"></a>Machtigingen voor beheerdersrollen in Azure Active Directory
+# <a name="administrator-role-permissions-in-azure-active-directory"></a>Machtigingen voor beheerrol in Azure Active Directory
 
 Met Azure Active Directory (Azure AD) kunt u beperkte beheerders aanwijzen voor het beheren van identiteits taken in functies met minder bevoegdheden. Beheerders kunnen voor dergelijke doel einden worden toegewezen om gebruikers toe te voegen of te wijzigen, beheerders rollen toe te wijzen, gebruikers wachtwoorden opnieuw in te stellen, gebruikers licenties te beheren en domein namen te beheren. De [standaard gebruikers machtigingen](../fundamentals/users-default-permissions.md) kunnen alleen worden gewijzigd in gebruikers instellingen in azure AD.
 
@@ -119,7 +119,7 @@ Gebruikers met deze rol kunnen alle aangepaste beleids regels maken, lezen, bijw
 > [!IMPORTANT]
 > De B2 IEF-beleids beheerder is een zeer gevoelige rol die zeer beperkt moet worden toegewezen aan organisaties in de productie omgeving.Activiteiten door deze gebruikers moeten nauw keurig worden gecontroleerd, met name voor organisaties die in productie zijn.
 
-### <a name="billing-administrator"></a>[Facturerings beheerder](#billing-administrator-permissions)
+### <a name="billing-administrator"></a>[Factureringsbeheerder](#billing-administrator-permissions)
 
 Doet aankopen, beheert abonnementen, beheert ondersteuningstickets en bewaakt de servicestatus.
 
@@ -421,7 +421,7 @@ Windows Defender ATP en EDR | Rollen toewijzen<br>Computer groepen beheren<br>De
 [Slimme vergrendeling](../authentication/howto-password-smart-lockout.md) | Definieer de drempel en duur voor vergren delingen wanneer mislukte aanmeldings gebeurtenissen plaatsvinden.
 [Wachtwoord beveiliging](../authentication/concept-password-ban-bad.md) | Aangepaste lijst met verboden wacht woorden of on-premises wachtwoord beveiliging configureren.
 
-### <a name="security-operator"></a>[Beveiligings operator](#security-operator-permissions)
+### <a name="security-operator"></a>[Beveiligingsoperator](#security-operator-permissions)
 
 Gebruikers met deze rol kunnen waarschuwingen beheren en algemene alleen-lezen toegang hebben voor beveiligings functies, inclusief alle informatie in Microsoft 365 Security Center, Azure Active Directory, identiteits beveiliging, Privileged Identity Management en Office 365 Security & compliance Center. Meer informatie over machtigingen voor Office 365 is beschikbaar op [machtigingen in het Office 365 Security & compliance Center](https://docs.microsoft.com/office365/securitycompliance/permissions-in-the-security-and-compliance-center).
 
@@ -492,7 +492,7 @@ Gebruikers met deze rol kunnen communicatie problemen in micro soft-teams oploss
 
 Gebruikers met deze rol kunnen alle aspecten van de werk belasting van micro soft teams beheren via micro soft teams & het beheer centrum van Skype voor bedrijven en de respectieve Power shell-modules. Dit omvat onder andere alle beheer hulpprogramma's die betrekking hebben op telefonie, berichten, vergaderingen en de teams zelf. Deze rol verleent daarnaast de mogelijkheid om alle Office 365-groepen te maken en beheren, ondersteunings tickets te beheren en de service status te controleren.
 
-### <a name="user-administrator"></a>[Gebruikers beheerder](#user-administrator-permissions)
+### <a name="user-administrator"></a>[Gebruikersbeheerder](#user-administrator-permissions)
 
 Gebruikers met deze rol kunnen gebruikers maken en alle aspecten van gebruikers met enkele beperkingen beheren (Zie de tabel) en het verloop beleid voor wacht woorden kan bijwerken. Daarnaast kunnen gebruikers met deze rol alle groepen maken en beheren. Deze rol omvat ook de mogelijkheid om gebruikers weergaven te maken en beheren, ondersteunings tickets te beheren en de service status te controleren. Gebruikers beheerders hebben geen machtiging om bepaalde gebruikers eigenschappen voor gebruikers te beheren in de meeste beheerders rollen. Gebruiker met deze rol heeft geen machtigingen voor het beheren van MFA. De functies die uitzonde ringen op deze beperking zijn, worden weer gegeven in de volgende tabel.
 
@@ -500,7 +500,7 @@ Gebruikers met deze rol kunnen gebruikers maken en alle aspecten van gebruikers 
 | --- | --- |
 |Algemene machtigingen|<p>Gebruikers en groepen maken</p><p>Gebruikersweergaven maken en beheren</p><p>Office-ondersteunings tickets beheren<p>Verloop beleid voor wacht woorden bijwerken|
 | <p>Voor alle gebruikers, inclusief alle beheerders</p>|<p>Licenties beheren</p><p>Alle gebruikers eigenschappen beheren, met uitzonde ring van Principal-naam van gebruiker</p>
-| Alleen voor gebruikers die niet-beheerders zijn of in een van de volgende beperkte beheerders rollen:<ul><li>Adreslijst lezers<li>Gast uitnodiging<li>Helpdesk beheerder<li>Berichten centrum-lezer<li>Rapport lezer<li>Gebruikers beheerder|<p>Verwijderen en herstellen</p><p>Uitschakelen en inschakelen</p><p>Vernieuwings tokens ongeldig maken</p><p>Alle gebruikers eigenschappen beheren, met inbegrip van Principal-naam van gebruiker</p><p>Wachtwoord opnieuw instellen</p><p>Apparaatinstellingen bijwerken (FIDO)</p>|
+| Alleen voor gebruikers die niet-beheerders zijn of in een van de volgende beperkte beheerders rollen:<ul><li>Adreslijst lezers<li>Gast uitnodiging<li>Helpdesk beheerder<li>Berichten centrum-lezer<li>Rapport lezer<li>Gebruikersbeheerder|<p>Verwijderen en herstellen</p><p>Uitschakelen en inschakelen</p><p>Vernieuwings tokens ongeldig maken</p><p>Alle gebruikers eigenschappen beheren, met inbegrip van Principal-naam van gebruiker</p><p>Wachtwoord opnieuw instellen</p><p>Apparaatinstellingen bijwerken (FIDO)</p>|
 
 > [!IMPORTANT]
 > Gebruikers met deze rol kunnen wacht woorden wijzigen voor personen die mogelijk toegang hebben tot gevoelige of persoonlijke informatie of een kritieke configuratie binnen en buiten Azure Active Directory. Het wijzigen van het wacht woord van een gebruiker kan betekenen dat de identiteit en machtigingen van de gebruiker worden aangenomen. Bijvoorbeeld:
@@ -798,13 +798,10 @@ Kan nalevings configuratie en-rapporten in azure AD en Office 365 lezen en beher
 | --- | --- |
 | micro soft. Azure. serviceHealth/allTasks | Azure Service Health lezen en configureren. |
 | micro soft. Azure. supportTickets/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
-| micro soft. office365. webportal/de beleen baarheid/basis/lezen | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
 | micro soft. office365. complianceManager/cons/allTasks | Alle aspecten van Office 365-nalevings beheer beheren |
-| micro soft. office365. Exchange/alallTasks | Beheer alle aspecten van Exchange Online. |
 | micro soft. office365. serviceHealth/cons/allTasks | Lees en configureer Office 365 Service Health. |
-| micro soft. office365. share point/cons/allTasks | Maak en verwijder alle resources en lees de standaard eigenschappen in micro soft. office365. share point en werk deze bij. |
-| micro soft. office365. skypeForBusiness/cons/allTasks | Beheer alle aspecten van Skype voor bedrijven online. |
 | micro soft. office365. supportTickets/cons/allTasks | Office 365-ondersteunings tickets maken en beheren. |
+| micro soft. office365. webportal/de beleen baarheid/basis/lezen | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
 
 ### <a name="compliance-data-administrator-permissions"></a>Beheerders machtigingen voor nalevings gegevens
 
@@ -817,17 +814,14 @@ Hiermee wordt inhoud voor naleving gemaakt en beheerd.
 
 | **Acties** | **Beschrijving** |
 | --- | --- |
-| micro soft. Aad. cloudAppSecurity/allTasks | Microsoft Cloud App Security lezen en configureren. |
+| micro soft. Directory. cloudAppSecurity/allTasks | Microsoft Cloud App Security lezen en configureren. |
 | micro soft. Azure. informationProtection/allTasks | Beheer alle aspecten van Azure Information Protection. |
 | micro soft. Azure. serviceHealth/allTasks | Azure Service Health lezen en configureren. |
 | micro soft. Azure. supportTickets/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
-| micro soft. office365. webportal/de beleen baarheid/basis/lezen | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
 | micro soft. office365. complianceManager/cons/allTasks | Alle aspecten van Office 365-nalevings beheer beheren |
-| micro soft. office365. Exchange/alallTasks | Beheer alle aspecten van Exchange Online. |
 | micro soft. office365. serviceHealth/cons/allTasks | Lees en configureer Office 365 Service Health. |
-| micro soft. office365. share point/cons/allTasks | Maak en verwijder alle resources en lees de standaard eigenschappen in micro soft. office365. share point en werk deze bij. |
-| micro soft. office365. skypeForBusiness/cons/allTasks | Beheer alle aspecten van Skype voor bedrijven online. |
 | micro soft. office365. supportTickets/cons/allTasks | Office 365-ondersteunings tickets maken en beheren. |
+| micro soft. office365. webportal/de beleen baarheid/basis/lezen | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
 
 ### <a name="conditional-access-administrator-permissions"></a>Beheerders machtigingen voor voorwaardelijke toegang
 
@@ -1846,7 +1840,7 @@ Rollen sjabloon-Id's worden voornamelijk gebruikt door de Microsoft Graph-API of
 Grafiek weergave naam | Weergave naam Azure Portal | directoryRoleTemplateId
 ----------------- | ------------------------- | -------------------------
 Toepassingsbeheerder | Toepassings beheerder | 9B895D92-2CD3-44C7-9D02-A6AC2D5EA5C3
-Toepassingsontwikkelaar | Toepassings ontwikkelaar | CF1C38E5-3621-4004-A7CB-879624DCED7C
+Toepassingsontwikkelaar | Toepassingsontwikkelaar | CF1C38E5-3621-4004-A7CB-879624DCED7C
 Verificatie beheerder | Verificatie beheerder | c4e39bd9-1100-46d3-8c65-fb160da0071f
 Azure DevOps-beheerder | Azure DevOps-beheerder | e3973bdf-4987-49ae-837a-ba8e231c7286
 Azure Information Protection beheerder | Azure Information Protection beheerder | 7495fdc4-34c4-4d15-a289-98788ce399fd
@@ -1937,12 +1931,12 @@ Apparaatbeheer | Afgeschaft | [Documentatie over afgeschafte functies](directory
 Gebruikers van het apparaat | Afgeschaft | [Documentatie over afgeschafte functies](directory-assign-admin-roles.md#deprecated-roles)
 Directory-synchronisatie accounts | Niet weer gegeven omdat deze niet mag worden gebruikt | [Documentatie voor Directory Synchronization accounts](directory-assign-admin-roles.md#directory-synchronization-accounts)
 Schrijvers van mappen | Niet weer gegeven omdat deze niet mag worden gebruikt | [Documentatie over Directory schrijvers](directory-assign-admin-roles.md#directory-writers)
-Gastgebruiker | Niet weer gegeven omdat deze niet kan worden gebruikt  | NA
+Gastgebruiker | Niet weer gegeven omdat deze niet kan worden gebruikt  | N.v.t.
 Lync-service beheerder | Skype voor Bedrijven-beheerder | [Weerspiegelt huidige product huisstijl](directory-assign-admin-roles.md#role-template-ids)
 Ondersteuning voor partner Tier 1 | Niet weer gegeven omdat deze niet mag worden gebruikt | [Documentatie voor partner Tier1-ondersteuning](directory-assign-admin-roles.md#partner-tier1-support)
 Ondersteuning voor partner Tier 2 | Niet weer gegeven omdat deze niet mag worden gebruikt | [Documentatie voor partner Tier2-ondersteuning](directory-assign-admin-roles.md#partner-tier2-support)
-Beperkte gast gebruiker | Niet weer gegeven omdat deze niet kan worden gebruikt | NA
-Gebruiker | Niet weer gegeven omdat deze niet kan worden gebruikt | NA
+Beperkte gast gebruiker | Niet weer gegeven omdat deze niet kan worden gebruikt | N.v.t.
+Gebruiker | Niet weer gegeven omdat deze niet kan worden gebruikt | N.v.t.
 Werkplek apparaat toevoegen | Afgeschaft | [Documentatie over afgeschafte functies](directory-assign-admin-roles.md#deprecated-roles)
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: MSNev
 ms.author: newylie
 ms.date: 06/05/2020
-ms.openlocfilehash: dae6b40e7ec8a2bb6f635a6ffca4886ed09c1364
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: a76ed65ebc1c56232d4fa42c6df20f619fe14ca3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229530"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517056"
 ---
 # <a name="troubleshooting-sdk-load-failure-for-javascript-web-apps"></a>Problemen met SDK-laad fouten voor Java script-web-apps oplossen
 
@@ -63,7 +63,7 @@ Hetzelfde geldt ook voor het gebruik van de SDK via NPM packages. Vanuit het per
 
 U kunt ook proberen om [NPM-pakketten](#use-npm-packages-to-embed-the-application-insight-sdk) te gebruiken om de Application Insights SDK in te sluiten.
 
-Om een onregelmatige fout in de netwerk verbinding te minimaliseren, hebben we de cache-control-headers voor alle CDN-bestanden geïmplementeerd, zodat de huidige versie van de SDK door de browser van de eind gebruiker niet opnieuw hoeft te worden gedownload. in de browser wordt de eerder verkregen kopie opnieuw gebruikt (Zie [hoe caching werkt](https://docs.microsoft.com/azure/cdn/cdn-how-caching-works)). Als de cache controle mislukt of er een nieuwe release is, moet de bijgewerkte versie van de browser van uw eind gebruiker worden gedownload. Het is dus mogelijk dat het achtergrond niveau _' ruis '_ wordt weer gegeven in het scenario voor de controle fout of een tijdelijke piek wanneer een nieuwe release plaatsvindt en algemeen beschikbaar wordt gemaakt (geïmplementeerd in het CDN).
+Om een onregelmatige fout in de netwerk verbinding te minimaliseren, hebben we de cache-control-headers voor alle CDN-bestanden geïmplementeerd, zodat de huidige versie van de SDK door de browser van de eind gebruiker niet opnieuw hoeft te worden gedownload. in de browser wordt de eerder verkregen kopie opnieuw gebruikt (Zie [hoe caching werkt](../../cdn/cdn-how-caching-works.md)). Als de cache controle mislukt of er een nieuwe release is, moet de bijgewerkte versie van de browser van uw eind gebruiker worden gedownload. Het is dus mogelijk dat het achtergrond niveau _' ruis '_ wordt weer gegeven in het scenario voor de controle fout of een tijdelijke piek wanneer een nieuwe release plaatsvindt en algemeen beschikbaar wordt gemaakt (geïmplementeerd in het CDN).
  
 ## <a name="application-insights-cdn-outage"></a>Application Insights CDN-onderbreking
 

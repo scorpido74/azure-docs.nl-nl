@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/22/2020
 ms.author: yelevin
-ms.openlocfilehash: 8da05da1b4aa9966b7743bc38b09d1c4b34c8cc8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6573237cbba8951bdd45c5b32c572b9af772ee5a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555723"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519243"
 ---
 # <a name="connect-windows-security-events"></a>Verbinding maken met Windows-beveiligingsgebeurtenissen 
 
@@ -79,7 +79,7 @@ Uw Windows-beveiligings gebeurtenissen in azure-Sentinel verzamelen:
 
 1. Selecteer welke gebeurtenissenset ([alles, algemeen of mini maal](#event-sets)) u wilt streamen.
 
-1. Klik op **Update**.
+1. Klik op **Bijwerken**.
 
 1. Als u het relevante schema in Log Analytics voor Windows-beveiligings gebeurtenissen wilt gebruiken, typt u `SecurityEvent` in het query venster.
 
@@ -87,7 +87,29 @@ Uw Windows-beveiligings gebeurtenissen in azure-Sentinel verzamelen:
 
 Het kan ongeveer 20 minuten duren totdat uw logboeken in Log Analytics worden weer gegeven. 
 
+### <a name="configure-the-security-events-connector-for-anomalous-rdp-login-detection"></a>De connector voor beveiligings gebeurtenissen configureren voor afwijkende RDP-aanmeldings detectie
 
+> [!IMPORTANT]
+> De detectie van afwijkende RDP-aanmeldingen is momenteel beschikbaar als open bare preview.
+> Deze functie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen.
+> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+
+Azure Sentinel kan machine learning (ML) Toep assen op gegevens van beveiligings gebeurtenissen om de aanmeldings activiteit voor afwijkende Remote Desktop Protocol (RDP) te identificeren. Scenario's zijn onder andere:
+
+- **Ongebruikelijk IP** -het IP-adres is zelden of nooit waargenomen in de afgelopen 30 dagen
+
+- **Ongebruikelijke geografische locatie** : het IP-adres, de plaats, het land en de ASN zijn in de afgelopen 30 dagen zelden of nooit waargenomen
+
+- **Nieuwe gebruiker** : een nieuwe gebruiker meldt zich aan bij een IP-adres en een geografische locatie, waarvan beide of waarvan niet werd verwacht dat ze worden weer gegeven op basis van gegevens van de 30 dagen vóór.
+
+**Configuratie-instructies**
+
+1. U moet RDP-aanmeldings gegevens (gebeurtenis-ID 4624) verzamelen via de Data Connector voor **beveiligings gebeurtenissen** . Zorg ervoor dat u een [gebeurtenissenset](#event-sets) hebt geselecteerd, behalve ' geen ', om naar Azure Sentinel te streamen.
+
+1. Klik in de Azure Sentinel-Portal op **Analytics**en klik vervolgens op het tabblad **regel sjablonen** . Kies de regel **voor afwijkende RDP-aanmeldings detectie (preview)** en verplaats de schuif regelaar **status** naar **ingeschakeld**.
+
+    > [!NOTE]
+    > Omdat voor het machine learning-algoritme 30 dagen aan gegevens nodig is om een basislijn Profiel van gebruikers gedrag te maken, moet u ervoor zorgen dat er 30 dagen aan gegevens over beveiligings gebeurtenissen worden verzameld voordat er incidenten kunnen worden gedetecteerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 In dit document hebt u geleerd hoe u Windows-beveiligings gebeurtenissen verbindt met Azure Sentinel. Zie de volgende artikelen voor meer informatie over Azure Sentinel:

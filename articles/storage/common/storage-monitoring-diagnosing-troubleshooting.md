@@ -9,11 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 1137a51ab7feb5a6d18c7d137d957d8e779d170e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 94d952bcb0693941624199370de092a581d7479b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513378"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518586"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage bewaken, problemen opsporen en oplossen
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -78,7 +79,7 @@ Zie [end-to-end-probleem oplossing met behulp van Azure Storage metrische gegeve
 ## <a name="introduction"></a><a name="introduction"></a>Inleiding
 In deze hand leiding wordt beschreven hoe u functies zoals Azure Opslaganalyse, logboek registratie aan client zijde in de Azure Storage-client bibliotheek en andere hulpprogram ma's van derden kunt gebruiken voor het identificeren, vaststellen en oplossen van Azure Storage gerelateerde problemen.
 
-![][1]
+![Diagram waarin de gegevens stroom tussen client toepassingen en Azure Storage-services wordt weer gegeven.][1]
 
 Deze hand leiding is voornamelijk bedoeld voor ontwikkel aars van onlineservices die gebruikmaken van Azure Storage services en IT-professionals die verantwoordelijk zijn voor het beheer van dergelijke onlineservices. De doel stellingen van deze hand leiding zijn:
 
@@ -117,7 +118,7 @@ U moet uw Azure-toepassingen continu controleren om ervoor te zorgen dat ze in o
 
 In de grafieken in de volgende afbeelding ziet u hoe het gemiddelde voor de metrische gegevens van een uur pieken in de activiteit kan verbergen. De metrische gegevens per uur worden weer gegeven om een constante frequentie van aanvragen weer te geven, terwijl de gegevens over de minuut de schommelingen onthullen die werkelijk plaatsvinden.
 
-![][3]
+![Grafieken die laten zien hoe het gemiddelde voor het berekenen van metrische gegevens voor elk uur de pieken in de activiteit kan verbergen.][3]
 
 In de rest van deze sectie wordt beschreven welke metrische gegevens u moet controleren en waarom.
 
@@ -199,7 +200,7 @@ Gebruikers van uw toepassing kunnen u een melding geven over fouten die zijn ger
 De volgende resources kunnen worden gebruikt voor een overzicht van status- en foutcodes in verband met de opslag:
 
 * [Veelvoorkomende fout codes voor REST API](https://msdn.microsoft.com/library/azure/dd179357.aspx)
-* [Foutcodes voor blob-services](https://msdn.microsoft.com/library/azure/dd179439.aspx)
+* [Fout codes voor BLOB-service](https://msdn.microsoft.com/library/azure/dd179439.aspx)
 * [Fout codes voor Queue-service](https://msdn.microsoft.com/library/azure/dd179446.aspx)
 * [Fout codes voor tabel Services](https://msdn.microsoft.com/library/azure/dd179438.aspx)
 * [Fout codes voor bestands Services](https://msdn.microsoft.com/library/azure/dn690119.aspx)
@@ -347,7 +348,7 @@ Is uw probleem gerelateerd aan de beschik baarheid van een van de opslag Service
 ### <a name="metrics-show-high-averagee2elatency-and-low-averageserverlatency"></a><a name="metrics-show-high-AverageE2ELatency-and-low-AverageServerLatency"></a>Prestatiegegevens geven hoge AverageE2ELatency en lage AverageServerLatency aan
 In de onderstaande afbeelding van het hulp programma [Azure Portal](https://portal.azure.com) bewaking ziet u een voor beeld waarin de **AverageE2ELatency** aanzienlijk hoger is dan de **averageserverlatency aan**.
 
-![][4]
+![Afbeelding van de Azure Portal waarin een voor beeld wordt weer gegeven waarvan de AverageE2ELatency aanzienlijk hoger is dan de Averageserverlatency aan.][4]
 
 De opslag service berekent alleen de metrische **AverageE2ELatency** voor voltooide aanvragen en, in tegens telling tot **averageserverlatency aan**, omvat de tijd die de client nodig heeft om de gegevens te verzenden en bevestiging van de opslag service te ontvangen. Daarom kan een verschil tussen **AverageE2ELatency** en **averageserverlatency aan** worden veroorzaakt doordat de client toepassing langzaam reageert of als gevolg van de omstandigheden in het netwerk.
 
@@ -497,7 +498,7 @@ Als de clienttoepassing een HTTP 404-melding (niet gevonden) van de server ontva
 * [JavaScript-code aan de clientzijde heeft geen toestemming voor toegang tot het object]
 * [Netwerkfout]
 
-#### <a name="the-client-or-another-process-previously-deleted-the-object"></a><a name="client-previously-deleted-the-object"></a>Het object is eerder door de client of een ander proces verwijderd
+#### <a name="the-client-or-another-process-previously-deleted-the-object"></a><a name="client-previously-deleted-the-object"></a>De client of een ander proces heeft het object eerder verwijderd
 In scenario's waarin de client probeert gegevens te lezen, bij te werken of te verwijderen in een opslag service, is het meestal gemakkelijk te identificeren in de logboeken aan de server zijde een eerdere bewerking die het betreffende object uit de opslag service heeft verwijderd. Vaak toont de logboek gegevens aan dat een andere gebruiker of het proces het object heeft verwijderd. In het logboek voor logboek registratie aan de server zijde worden de kolommen bewerking-type en aangevraagde object sleutel weer gegeven wanneer een client een object heeft verwijderd.
 
 In het scenario waarin een-client probeert een object in te voegen, is het mogelijk niet onmiddellijk duidelijk waarom dit resulteert in een HTTP 404 (niet gevonden), gezien het antwoord dat de client een nieuw object heeft gemaakt. Als de client echter een BLOB maakt, moet deze de BLOB-container kunnen vinden als de client een bericht maakt, moet er een wachtrij kunnen worden gevonden en als de client een rij toevoegt, moet deze de tabel kunnen vinden.
@@ -557,12 +558,12 @@ Logboek vermeldingen:
 
 In dit voor beeld ziet u in het logboek dat de client via de **CreateIfNotExists** -methode (aanvraag-id e2d06d78...) aanvragen interleaveert met de aanvragen van de methode **UploadFromStream** (de8b1c3c-...). Deze interleaving gebeurt omdat de client toepassing deze methoden asynchroon aanroept. Wijzig de asynchrone code in de client om ervoor te zorgen dat deze de container maakt voordat u gegevens naar een BLOB in die container uploadt. In het ideale geval maakt u al uw containers vooraf.
 
-#### <a name="a-shared-access-signature-sas-authorization-issue"></a><a name="SAS-authorization-issue"></a>Een probleem met de verificatie van een SAS (Shared Access Signature)
+#### <a name="a-shared-access-signature-sas-authorization-issue"></a><a name="SAS-authorization-issue"></a>Een Shared Access Signature-autorisatie probleem (SAS)
 Als de client toepassing een SAS-sleutel probeert te gebruiken die niet de benodigde machtigingen voor de bewerking bevat, retourneert de opslag service een HTTP 404 (niet gevonden)-bericht naar de client. Op hetzelfde moment ziet u ook een waarde die niet gelijk is aan nul voor **SASAuthorizationError** in de metrische gegevens.
 
 In de volgende tabel ziet u een voor beeld van een logboek bericht aan de server zijde uit het logboek bestand van de opslag logboek registratie:
 
-| Name | Waarde |
+| Naam | Waarde |
 | --- | --- |
 | Begin tijd van aanvraag | 2014-05-30T06:17:48.4473697 Z |
 | Het type bewerking     | GetBlobProperties            |
@@ -578,7 +579,7 @@ In de volgende tabel ziet u een voor beeld van een logboek bericht aan de server
 
 Onderzoek waarom uw client toepassing een bewerking probeert uit te voeren waarvoor deze geen machtigingen heeft gekregen.
 
-#### <a name="client-side-javascript-code-does-not-have-permission-to-access-the-object"></a><a name="JavaScript-code-does-not-have-permission"></a>JavaScript-code aan de clientzijde heeft geen toestemming voor toegang tot het object
+#### <a name="client-side-javascript-code-does-not-have-permission-to-access-the-object"></a><a name="JavaScript-code-does-not-have-permission"></a>Java script-code aan de client zijde heeft geen machtiging voor toegang tot het object
 Als u een Java script-client gebruikt en de opslag service HTTP 404-berichten retourneert, controleert u de volgende Java script-fouten in de browser:
 
 ```
@@ -627,7 +628,7 @@ Als dit probleem regel matig optreedt, moet u onderzoeken waarom de client geen 
 ### <a name="the-client-is-receiving-http-409-conflict-messages"></a><a name="the-client-is-receiving-409-messages"></a>De client ontvangt HTTP 409-meldingen (conflict)
 In de volgende tabel ziet u een uittreksel van het logboek aan de server zijde voor twee client bewerkingen: **DeleteIfExists** gevolgd door **CreateIfNotExists** met dezelfde BLOB-container naam. Elke client bewerking resulteert in twee aanvragen die naar de server worden verzonden, eerst een **GetContainerProperties** -aanvraag om te controleren of de container bestaat, gevolgd door de **Delete container** -of **CreateContainer** -aanvraag.
 
-| Tijdstempel | Bewerking | Resultaat | Containernaam | Clientaanvraag-id |
+| Timestamp | Bewerking | Resultaat | Containernaam | Clientaanvraag-id |
 | --- | --- | --- | --- | --- |
 | 05:10:13.7167225 |GetContainerProperties |200 |mmcont |c9f52c89-... |
 | 05:10:13.8167325 |Delete container |202 |mmcont |c9f52c89-... |
@@ -726,7 +727,7 @@ Nadat u Fiddler hebt gestart, wordt het HTTP-en HTTPS-verkeer op uw lokale machi
 
 U kunt de hoeveelheid verkeer dat Fiddler vastlegt, beperken door filters te gebruiken die u configureert op het tabblad **filters** . De volgende scherm afbeelding toont een filter waarmee alleen verkeer wordt vastgelegd dat naar het **contosoemaildist.table.core.Windows.net** Storage-eind punt wordt verzonden:
 
-![][5]
+![Scherm afbeelding met een filter waarmee alleen verkeer wordt vastgelegd dat naar het contosoemaildist.table.core.windows.net-opslag eindpunt wordt verzonden.][5]
 
 ### <a name="appendix-2-using-wireshark-to-capture-network-traffic"></a><a name="appendix-2"></a>Bijlage 2: wireshark gebruiken om netwerk verkeer vast te leggen
 [Wireshark](https://www.wireshark.org/) is een Network Protocol Analyzer waarmee u gedetailleerde pakket gegevens kunt bekijken voor een breed scala aan netwerk protocollen.
@@ -738,18 +739,18 @@ De volgende procedure laat zien hoe u gedetailleerde pakket gegevens voor verkee
 3. Klik op **vastleg opties**.
 4. Voeg een filter toe aan het tekstvak voor het **opname filter** . **Host contosoemaildist.table.core.Windows.net** configureert bijvoorbeeld wireshark voor het vastleggen van alleen pakketten die zijn verzonden naar of van het eind punt van de tabel service in het **contosoemaildist** -opslag account. Bekijk de [volledige lijst met opname filters](https://wiki.wireshark.org/CaptureFilters).
 
-   ![][6]
+   ![Scherm afbeelding die laat zien hoe u een filter kunt toevoegen aan het tekstvak voor de opname filter.][6]
 5. Klik op **Start**. Wireshark legt nu alle pakketten vast die worden verzonden naar of van het eind punt van de tabel service wanneer u uw client toepassing op uw lokale computer gebruikt.
 6. Wanneer u klaar bent, klikt u in het hoofd menu op **vastleggen** en vervolgens op **stoppen**.
 7. Klik in het hoofd menu op **bestand** en vervolgens op **Opslaan**om de opgenomen gegevens op te slaan in een Wireshark-capture-bestand.
 
 Met WireShark worden eventuele fouten in het venster **packetlist** gemarkeerd. U kunt ook het venster met informatie over de **expert** gebruiken (Klik op **analyseren**en vervolgens op **expert info**) om een samen vatting van fouten en waarschuwingen weer te geven.
 
-![][7]
+![Scherm opname van het venster met Expertgegevens waarin u een samen vatting van fouten en waarschuwingen kunt bekijken.][7]
 
 U kunt er ook voor kiezen om de TCP-gegevens weer te geven wanneer de toepassingslaag de laag ziet door met de rechter muisknop op de TCP-gegevens te klikken en **TCP-stroom volgen**te selecteren. Dit is handig als u uw dump hebt vastgelegd zonder een opname filter. Zie de [volgende TCP-streams](https://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowTCPSection.html)voor meer informatie.
 
-![][8]
+![Scherm afbeelding die laat zien hoe de TCP-gegevens worden weer gegeven wanneer de toepassingslaag de laag ziet.][8]
 
 > [!NOTE]
 > Zie de [Gebruikers handleiding voor wireshark](https://www.wireshark.org/docs/wsug_html_chunked)voor meer informatie over het gebruik van wireshark.
@@ -782,11 +783,11 @@ Naast het gebruik van de **webproxy** tracering van micro soft Message Analyzer 
 
 De volgende scherm afbeelding toont een voor beeld van een **lokale koppelingslaag** Trace met enkele **informatieve** berichten in de kolom **DiagnosisTypes** . Als u op een pictogram in de kolom **DiagnosisTypes** klikt, worden de details van het bericht weer gegeven. In dit voor beeld wordt de server opnieuw verzonden met het bericht #305 omdat er geen bevestiging is ontvangen van de client:
 
-![][9]
+![Scherm afbeelding met een voor beeld van een lokale koppelingslaag Trace met enkele informatieve berichten in de kolom DiagnosisTypes][9]
 
 Wanneer u de traceer sessie in micro soft Message Analyzer maakt, kunt u filters opgeven om de hoeveelheid ruis in de tracering te verminderen. Klik op de pagina **vastleggen/traceren** waar u de tracering definieert op de koppeling **configureren** naast **micro soft-Windows-NDIS-PacketCapture**. De volgende scherm afbeelding toont een configuratie waarmee TCP-verkeer wordt gefilterd voor de IP-adressen van drie opslag Services:
 
-![][10]
+![Scherm afbeelding met een configuratie waarmee TCP-verkeer wordt gefilterd voor de IP-adressen van drie opslag Services.][10]
 
 Zie [micro soft-PEF-NDIS-PacketCapture-provider](https://technet.microsoft.com/library/jj659264.aspx)voor meer informatie over de local link layer trace van micro soft Message Analyzer.
 

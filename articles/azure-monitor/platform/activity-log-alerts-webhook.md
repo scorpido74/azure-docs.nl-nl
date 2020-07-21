@@ -4,11 +4,12 @@ description: Meer informatie over het schema van de JSON dat wordt gepost naar e
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.subservice: alerts
-ms.openlocfilehash: c076b8dcea350f9ddd66977e89ce99b81f377b17
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1db12f352ec79a3112eada68d82279c9e0343a04
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77669043"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516155"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Webhooks voor Azure-activiteiten logboek waarschuwingen
 Als onderdeel van de definitie van een actie groep kunt u webhook-eind punten configureren voor het ontvangen van waarschuwings meldingen voor activiteiten Logboeken. Met webhooks kunt u deze meldingen naar andere systemen sturen voor nabewerkingen of aangepaste acties. In dit artikel ziet u hoe de payload voor het HTTP POST-bericht naar een webhook eruit ziet.
@@ -213,7 +214,7 @@ De JSON-nettolading die deel uitmaakt van de POST-bewerking verschilt op basis v
 }
 ```
 
-Zie [service Health Notifications](../../azure-monitor/platform/service-notifications.md)(Engelstalig) voor specifieke schema Details over waarschuwingen voor het activiteiten logboek voor service status meldingen. Daarnaast leert u hoe u [service Health-webhook-meldingen kunt configureren met uw bestaande oplossingen voor probleem beheer](../../service-health/service-health-alert-webhook-guide.md).
+Zie [service Health Notifications](../../service-health/service-notifications.md)(Engelstalig) voor specifieke schema Details over waarschuwingen voor het activiteiten logboek voor service status meldingen. Daarnaast leert u hoe u [service Health-webhook-meldingen kunt configureren met uw bestaande oplossingen voor probleem beheer](../../service-health/service-health-alert-webhook-guide.md).
 
 ### <a name="resourcehealth"></a>ResourceHealth
 
@@ -253,7 +254,7 @@ Zie [service Health Notifications](../../azure-monitor/platform/service-notifica
 }
 ```
 
-| Elementnaam | Description |
+| Elementnaam | Beschrijving |
 | --- | --- |
 | status |Wordt gebruikt voor metrische waarschuwingen. Altijd ingesteld op geactiveerd voor waarschuwingen voor activiteiten Logboeken. |
 | context |De context van de gebeurtenis. |
@@ -291,4 +292,3 @@ Zie [overzicht van het Azure-activiteiten logboek](../../azure-monitor/platform/
 * [Gebruik een logische app voor het verzenden van een SMS via Twilio vanuit een Azure-waarschuwing](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app). Dit voor beeld is voor metrische waarschuwingen, maar kan worden gewijzigd om te werken met een waarschuwing voor een activiteiten logboek.
 * [Gebruik een logische app voor het verzenden van een bericht met een toegestane vertraging van een Azure-waarschuwing](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app). Dit voor beeld is voor metrische waarschuwingen, maar kan worden gewijzigd om te werken met een waarschuwing voor een activiteiten logboek.
 * [Een logische app gebruiken om een bericht te verzenden naar een Azure-wachtrij vanuit een Azure-waarschuwing](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app). Dit voor beeld is voor metrische waarschuwingen, maar kan worden gewijzigd om te werken met een waarschuwing voor een activiteiten logboek.
-

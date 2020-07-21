@@ -5,11 +5,12 @@ ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: f198e4aac08039eb7aed8468e6adb45b5b0d67b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b3d489477a0ee0cc201d4383b5ed960de515c7d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84464569"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517107"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights voor webpagina’s
 
@@ -103,7 +104,7 @@ Elke configuratie optie wordt hierboven op een nieuwe regel weer gegeven. Als u 
 
 De beschik bare configuratie opties zijn 
 
-| Naam | Type | Description
+| Naam | Type | Beschrijving
 |------|------|----------------
 | src | teken reeks **[vereist]** | De volledige URL van waaruit de SDK moet worden geladen. Deze waarde wordt gebruikt voor het kenmerk src van een dynamisch toegevoegd &lt; script/ &gt; label. U kunt de open bare CDN-locatie of uw eigen privé-hostserver gebruiken.
 | naam | teken reeks *[Optioneel]* | De globale naam voor de geïnitialiseerde SDK, wordt standaard ingesteld op appInsights. Dit is dus ```window.appInsights``` een verwijzing naar het geïnitialiseerde exemplaar. Opmerking: als u een naam waarde opgeeft of een vorige instantie lijkt te zijn toegewezen (via de globale naam appInsightsSDK), wordt deze naam ook gedefinieerd in de globale naam ruimte, omdat ```window.appInsightsSDK=<name value>``` Dit vereist is voor de SDK-initialisatie code om ervoor te zorgen dat deze de juiste skelet-en proxy methoden van het fragment initialiseert en bijwerkt.
@@ -149,10 +150,10 @@ appInsights.addTelemetryInitializer(() => false); // Nothing is sent after this 
 appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ```
 
-## <a name="configuration"></a>Configuratie
+## <a name="configuration"></a>Configuration
 De meeste configuratie velden hebben de naam zo, dat ze standaard kunnen worden ingesteld op ONWAAR. Alle velden zijn optioneel, behalve voor `instrumentationKey` .
 
-| Name | Standaard | Description |
+| Naam | Standaard | Beschrijving |
 |------|---------|-------------|
 | instrumentationKey | null | **Vereist**<br>Instrumentatie sleutel die u hebt verkregen van de Azure Portal. |
 | accountId | null | Een optionele account-ID als uw app gebruikers in accounts groepeert. Geen spaties, komma's, punt komma's, is gelijk aan of verticale balken |
@@ -185,14 +186,14 @@ De meeste configuratie velden hebben de naam zo, dat ze standaard kunnen worden 
 | isBeaconApiDisabled | true | Als deze eigenschap onwaar is, verzendt de SDK alle telemetrie met behulp van de [Beacon-API](https://www.w3.org/TR/beacon) |
 | onunloadDisableBeacon | false | De standaard waarde is False. Wanneer het tabblad wordt gesloten, verzendt de SDK alle resterende telemetrie met behulp van de [Beacon-API](https://www.w3.org/TR/beacon) |
 | sdkExtension | null | Hiermee stelt u de naam van de SDK-extensie. Alleen alfabetische tekens zijn toegestaan. De naam van de extensie wordt toegevoegd als een voor voegsel voor de tag ' ai. internal. sdkVersion ' (bijvoorbeeld ' ext_javascript: 2.0.0 '). De standaard waarde is null. |
-| isBrowserLinkTrackingEnabled | false | De standaardinstelling is onwaar. Indien waar, worden alle aanvragen voor [browser koppelingen](https://docs.microsoft.com/aspnet/core/client-side/using-browserlink) door de SDK bijgehouden. |
+| isBrowserLinkTrackingEnabled | false | De standaardinstelling is onwaar. Indien waar, worden alle aanvragen voor [browser koppelingen](/aspnet/core/client-side/using-browserlink) door de SDK bijgehouden. |
 | appId | null | AppId wordt gebruikt voor de correlatie tussen AJAX-afhankelijkheden die zich voordoen aan de client zijde met de aanvragen aan de server zijde. Als Beacon-API is ingeschakeld, kan deze niet automatisch worden gebruikt, maar deze kan hand matig worden ingesteld in de configuratie. De standaard waarde is null |
 | enableCorsCorrelation | false | Als deze eigenschap waar is, voegt de SDK twee headers (' aanvraag-id ' en ' request-context ') toe aan alle CORS-aanvragen voor het correleren van uitgaande AJAX-afhankelijkheden met bijbehorende aanvragen aan de server zijde. De standaard waarde is False |
 | namePrefix | gedefinieerde | Een optionele waarde die wordt gebruikt als naam achtervoegsel voor localStorage en cookie naam.
 | enableAutoRouteTracking | false | Route wijzigingen automatisch bijhouden in toepassingen met één pagina (SPA). Indien waar, stuurt elke route wijziging een nieuwe pagina weergave naar Application Insights. Hash-route wijzigingen ( `example.com/foo#bar` ) worden ook vastgelegd als nieuwe pagina weergaven.
 | enableRequestHeaderTracking | false | Indien waar, worden AJAX-& aanvraag headers voor ophalen bijgehouden. de standaard waarde is False.
 | enableResponseHeaderTracking | false | Als deze waarde True is, wordt de antwoord headers voor de aanvraag van AJAX & ophalen bijgehouden. de standaard waarde is False.
-| distributedTracingMode | `DistributedTracingModes.AI` | Hiermee stelt u de gedistribueerde traceer modus in. Als AI_AND_W3C modus of de W3C-modus is ingesteld, worden W3C-tracering context headers (traceparent/tracestate) gegenereerd en opgenomen in alle uitgaande aanvragen. AI_AND_W3C is voorzien van back-compatibiliteit met alle verouderde services die zijn Application Insights instrumented. Zie [hier](https://docs.microsoft.com/azure/azure-monitor/app/correlation#enable-w3c-distributed-tracing-support-for-web-apps)voor beeld.
+| distributedTracingMode | `DistributedTracingModes.AI` | Hiermee stelt u de gedistribueerde traceer modus in. Als AI_AND_W3C modus of de W3C-modus is ingesteld, worden W3C-tracering context headers (traceparent/tracestate) gegenereerd en opgenomen in alle uitgaande aanvragen. AI_AND_W3C is voorzien van back-compatibiliteit met alle verouderde services die zijn Application Insights instrumented. Zie [hier](./correlation.md#enable-w3c-distributed-tracing-support-for-web-apps)voor beeld.
 | enableAjaxErrorStatusText | false | De standaard waarde is False. Indien waar, wordt tekst met een reactie fout gegevens in afhankelijkheids gebeurtenis ingevoegd op mislukte AJAX-aanvragen.
 | enableAjaxPerfTracking | false | De standaard waarde is False. Vlag waarmee het opzoeken van het aanvullende browser venster kan worden ingeschakeld. prestatie tijden in de gerapporteerde Ajax (XHR en Fetch) hebben de metrische gegevens gerapporteerd.
 | maxAjaxPerfLookupAttempts | 3 | De standaard waarde is 3. Het maximum aantal keer dat er naar het venster moet worden gekeken. prestatie tijd (indien beschikbaar). Dit is vereist omdat niet alle browsers het venster invullen. prestaties vóór het rapporteren van het einde van de XHR-aanvraag en voor aanvragen voor ophalen wordt deze toegevoegd na het volt ooien.
@@ -210,34 +211,34 @@ Op dit moment bieden we een afzonderlijke [reageer-plugin](#react-extensions), d
 
 ## <a name="configuration-autotrackpagevisittime"></a>Configuratie: autoTrackPageVisitTime
 
-Als u deze instelling inschakelt `autoTrackPageVisitTime: true` , wordt de tijd die een gebruiker aan elke pagina besteed, bijgehouden. Bij elke nieuwe pagina weergave wordt de duur die de gebruiker op de *vorige* pagina heeft besteed, verzonden als een [aangepaste metriek](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview) met de naam `PageVisitTime` . Deze aangepaste metriek kan worden weer gegeven in de [Metrics Explorer](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started) als een ' op logboek gebaseerde metriek '.
+Als u deze instelling inschakelt `autoTrackPageVisitTime: true` , wordt de tijd die een gebruiker aan elke pagina besteed, bijgehouden. Bij elke nieuwe pagina weergave wordt de duur die de gebruiker op de *vorige* pagina heeft besteed, verzonden als een [aangepaste metriek](../platform/metrics-custom-overview.md) met de naam `PageVisitTime` . Deze aangepaste metriek kan worden weer gegeven in de [Metrics Explorer](../platform/metrics-getting-started.md) als een ' op logboek gebaseerde metriek '.
 
 ## <a name="react-extensions"></a>Extensies voor reageren
 
 | Extensies |
 |---------------|
 | [React](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
-| [Systeem eigen](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md)|
+| [React Native](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md)|
 
 ## <a name="explore-browserclient-side-data"></a>Browser/gegevens van client zijde verkennen
 
 De browser/client-side gegevens kunnen worden weer gegeven door te gaan naar **metrieken** en afzonderlijke metrieken toe te voegen:
 
-![](./media/javascript/page-view-load-time.png)
+![Scherm afbeelding van de pagina metrische gegevens in Application Insights grafische weer gaven van de statistieken voor een webtoepassing weer geven.](./media/javascript/page-view-load-time.png)
 
 U kunt uw gegevens ook weer geven via de Java script-SDK via de browser ervaring in de portal.
 
 Selecteer **browser** en kies vervolgens **fouten** of **prestaties**.
 
-![](./media/javascript/browser.png)
+![Scherm opname van de browser pagina in Application Insights laat zien hoe browser fouten of browser prestaties kunnen worden toegevoegd aan de metrische gegevens die u kunt weer geven voor uw webtoepassing.](./media/javascript/browser.png)
 
 ### <a name="performance"></a>Prestaties
 
-![](./media/javascript/performance-operations.png)
+![Scherm afbeelding van de pagina prestaties in Application Insights grafische weer gaven van metrische bewerkingen voor een webtoepassing weer geven.](./media/javascript/performance-operations.png)
 
 ### <a name="dependencies"></a>Afhankelijkheden
 
-![](./media/javascript/performance-dependencies.png)
+![Scherm afbeelding van de pagina prestaties in Application Insights grafische weer gaven van afhankelijkheids gegevens weer geven voor een webtoepassing.](./media/javascript/performance-dependencies.png)
 
 ### <a name="analytics"></a>Analyse
 
@@ -270,7 +271,7 @@ U kunt uw Application Insights-resource koppelen aan uw eigen Azure Blob Storage
 
 1. Selecteer een telemetrie voor uitzonde ringen in de Azure Portal om de ' end-to-end-transactie details weer te geven '
 2. Identificeer welke bron kaarten overeenkomen met deze aanroep stack. De bron toewijzing moet overeenkomen met het bron bestand van een stack frame, maar een achtervoegsel met`.map`
-3. Sleep de bron kaarten en zet deze neer op de aanroep stack in de Azure Portal![](https://i.imgur.com/Efue9nU.gif)
+3. Sleep en zet de bron kaarten neer op de aanroep stack in de Azure Portal ![ een bewegende afbeelding die laat zien hoe u bron toewijzings bestanden vanuit een build-map kunt slepen en neerzetten in het stack venster met opgeroepen procedures in de Azure Portal.](https://i.imgur.com/Efue9nU.gif)
 
 ### <a name="application-insights-web-basic"></a>Application Insights Web Basic
 

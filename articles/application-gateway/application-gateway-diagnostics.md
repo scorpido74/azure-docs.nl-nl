@@ -8,11 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
-ms.openlocfilehash: 6829efa007e9e67866bdc0efbca4d095155c35e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f752604b86634948954dd670d0b7f4edb5b3e2be
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82889708"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517872"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Back-end status-en Diagnostische logboeken voor Application Gateway
 
@@ -155,7 +156,9 @@ Azure genereert standaard het activiteiten logboek. De logboeken blijven 90 dage
 
 ### <a name="access-log"></a>Access-logboek
 
-Het toegangs logboek wordt alleen gegenereerd als u het hebt ingeschakeld op elk Application Gateway-exemplaar, zoals in de voor gaande stappen wordt beschreven. De gegevens worden opgeslagen in het opslag account dat u hebt opgegeven tijdens het inschakelen van de logboek registratie. Elke toegang van Application Gateway wordt geregistreerd in JSON-indeling, zoals wordt weer gegeven in het volgende voor beeld voor v1:
+Het toegangs logboek wordt alleen gegenereerd als u het hebt ingeschakeld op elk Application Gateway-exemplaar, zoals in de voor gaande stappen wordt beschreven. De gegevens worden opgeslagen in het opslag account dat u hebt opgegeven tijdens het inschakelen van de logboek registratie. Elke toegang van Application Gateway wordt geregistreerd in JSON-indeling, zoals hieronder wordt weer gegeven. 
+
+#### <a name="for-application-gateway-standard-and-waf-sku-v1"></a>Voor Application Gateway Standard en WAF SKU (v1)
 
 |Waarde  |Beschrijving  |
 |---------|---------|
@@ -199,7 +202,7 @@ Het toegangs logboek wordt alleen gegenereerd als u het hebt ingeschakeld op elk
     }
 }
 ```
-Voor Application Gateway en WAF v2 bevatten de logboeken nog iets meer informatie:
+#### <a name="for-application-gateway-and-waf-v2-sku"></a>Voor Application Gateway en WAF v2-SKU
 
 |Waarde  |Beschrijving  |
 |---------|---------|
@@ -220,7 +223,10 @@ Voor Application Gateway en WAF v2 bevatten de logboeken nog iets meer informati
 |serverRouted| De back-endserver die Application Gateway naar verzendt.|
 |serverStatus| HTTP-status code van de back-endserver.|
 |serverResponseLatency| Latentie van het antwoord van de back-endserver.|
-|host| Het adres dat wordt vermeld in de host-header van de aanvraag.|
+|host| Het adres dat wordt vermeld in de host-header van de aanvraag. Bij herschreven bevat dit veld de bijgewerkte hostnaam|
+|originalRequestUriWithArgs| Dit veld bevat de oorspronkelijke aanvraag-URL |
+|requestUri| Dit veld bevat de URL na de herschrijf bewerking op Application Gateway |
+|originalHost| Dit veld bevat de oorspronkelijke naam van de aanvraag-host
 ```json
 {
     "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
@@ -261,7 +267,7 @@ Het prestatie logboek wordt alleen gegenereerd als u het hebt ingeschakeld op el
 |healthyHostCount     | Aantal gezonde hosts in de back-end-pool.        |
 |unHealthyHostCount     | Aantal beschadigde hosts in de back-end-pool.        |
 |requestCount     | Aantal geleverde aanvragen.        |
-|periode | De gemiddelde latentie (in milliseconden) van aanvragen van het exemplaar naar de back-end die de aanvragen verzendt. |
+|latentie | De gemiddelde latentie (in milliseconden) van aanvragen van het exemplaar naar de back-end die de aanvragen verzendt. |
 |failedRequestCount| Aantal mislukte aanvragen.|
 |doorvoer| Gemiddelde door Voer sinds het laatste logboek, gemeten in bytes per seconde.|
 
@@ -302,7 +308,7 @@ Het firewall logboek wordt alleen gegenereerd als u het hebt ingeschakeld voor e
 |ruleSetVersion     | Gebruikte versie van regel instellingen. Beschik bare waarden zijn 2.2.9 en 3,0.     |
 |ruleId     | De regel-ID van de trigger gebeurtenis.        |
 |message     | Gebruikers vriendelijk bericht voor de activerings gebeurtenis. Meer informatie vindt u in de sectie Details.        |
-|action     |  De actie die voor de aanvraag is uitgevoerd. Beschik bare waarden worden vergeleken en geblokkeerd.      |
+|actie     |  De actie die voor de aanvraag is uitgevoerd. Beschik bare waarden worden vergeleken en geblokkeerd.      |
 |site     | De site waarvoor het logboek is gegenereerd. Momenteel wordt alleen globaal weer gegeven omdat regels globaal zijn.|
 |nadere     | Details van de trigger gebeurtenis.        |
 |Details. bericht     | Beschrijving van de regel.        |

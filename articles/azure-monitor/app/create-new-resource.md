@@ -3,11 +3,12 @@ title: Een nieuwe Azure-toepassing Insights-resource maken | Microsoft Docs
 description: Stel Application Insights bewaking hand matig in voor een nieuwe Live-toepassing.
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 4d8979469ca83dfd6b81aab10191e8fbf36104ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb47453140c7659ca2f5e6da2e40d9d78405f8e7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83200666"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517090"
 ---
 # <a name="create-an-application-insights-resource"></a>Een Application Insights-resource maken
 
@@ -31,7 +32,7 @@ Meld u aan bij de [Azure Portal](https://portal.azure.com)en maak een Applicatio
    | **Resource modus** | `Classic` of `Workspace-based` | Resources op basis van een werk ruimte zijn momenteel beschikbaar als open bare preview-versie en u kunt uw Application Insights telemetrie verzenden naar een algemene Log Analytics-werk ruimte. Zie het [artikel over resources op basis van werk ruimte](create-workspace-resource.md)voor meer informatie.
 
 > [!NOTE]
-> Hoewel u dezelfde resource naam in verschillende resource groepen kunt gebruiken, kan het nuttig zijn om een wereld wijd unieke naam te gebruiken. Dit kan handig zijn als u van plan bent om [query's voor meerdere resources uit te voeren](https://docs.microsoft.com/azure/azure-monitor/log-query/cross-workspace-query#identifying-an-application) terwijl het de vereiste syntaxis vereenvoudigt.
+> Hoewel u dezelfde resource naam in verschillende resource groepen kunt gebruiken, kan het nuttig zijn om een wereld wijd unieke naam te gebruiken. Dit kan handig zijn als u van plan bent om [query's voor meerdere resources uit te voeren](../log-query/cross-workspace-query.md#identifying-an-application) terwijl het de vereiste syntaxis vereenvoudigt.
 
 Voer de juiste waarden in de vereiste velden in en selecteer vervolgens **controleren + maken**.
 
@@ -92,7 +93,7 @@ SamplingPercentage :
 TenantId           : {subid}
 ```
 
-Raadpleeg de [documentatie van Azure PowerShell](https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsights?view=azps-2.5.0)voor de volledige Power shell-documentatie voor deze cmdlet en voor meer informatie over het ophalen van de instrumentatie sleutel.
+Raadpleeg de [documentatie van Azure PowerShell](/powershell/module/az.applicationinsights/new-azapplicationinsights?view=azps-2.5.0)voor de volledige Power shell-documentatie voor deze cmdlet en voor meer informatie over het ophalen van de instrumentatie sleutel.
 
 ### <a name="azure-cli-preview"></a>Azure CLI (preview-versie)
 
@@ -149,12 +150,12 @@ az monitor app-insights component create --app demoApp --location eastus --kind 
 }
 ```
 
-Raadpleeg de [documentatie van Azure cli](https://docs.microsoft.com/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create)voor de volledige Azure cli-documentatie voor deze opdracht en voor meer informatie over het ophalen van de instrumentatie sleutel.
+Raadpleeg de [documentatie van Azure cli](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create)voor de volledige Azure cli-documentatie voor deze opdracht en voor meer informatie over het ophalen van de instrumentatie sleutel.
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Diagnostische gegevens doorzoeken](../../azure-monitor/app/diagnostic-search.md)
 * [Metrische gegevens verkennen](../../azure-monitor/platform/metrics-charts.md)
-* [Analytics-query's schrijven](../../azure-monitor/app/analytics.md)
+* [Analytics-query's schrijven](../log-query/log-query-overview.md)
 
 <!--Link references-->
 

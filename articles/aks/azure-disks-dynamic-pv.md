@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Meer informatie over het dynamisch maken van een permanent volume met Azure-schijven in azure Kubernetes service (AKS)
 services: container-service
 ms.topic: article
-ms.date: 03/01/2019
-ms.openlocfilehash: 44741452f95995327914978bbfd5b0a49566faa5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/10/2020
+ms.openlocfilehash: 0e7bc057d756215b1aa155f0e227c75c99c8737c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84751360"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518008"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Dynamisch een permanent volume maken en gebruiken met Azure-schijven in azure Kubernetes service (AKS)
 
@@ -31,14 +31,14 @@ Ook moet de Azure CLI-versie 2.0.59 of hoger zijn geïnstalleerd en geconfiguree
 
 Een opslag klasse wordt gebruikt om te definiëren hoe een opslag eenheid dynamisch wordt gemaakt met een permanent volume. Zie [Kubernetes Storage klassen][kubernetes-storage-classes](Engelstalig) voor meer informatie over Kubernetes-opslag klassen.
 
-Elk AKS-cluster bevat twee vooraf gemaakte opslag klassen, die zijn geconfigureerd om te werken met Azure-schijven:
+Elk AKS-cluster bevat vier vooraf gemaakte opslag klassen, waarvan er twee zijn geconfigureerd om te werken met Azure-schijven:
 
-* De *standaard* opslag klasse voorziet in een standaard Azure-schijf.
-    * Standaard opslag wordt ondersteund door Hdd's en levert rendabele opslag, terwijl deze nog steeds wordt uitgevoerd. Standaard schijven zijn ideaal voor een rendabele ontwikkelings-en test werkbelasting.
+* De *standaard* klasse Storage voorziet in een Standard SSD Azure-schijf.
+    * Standaard opslag wordt ondersteund door standaard Ssd's en levert rendabele opslag, terwijl er nog betrouw bare prestaties worden geleverd. 
 * De *beheerde-Premium-* opslag klasse richt zich op een Premium Azure-schijf.
     * Premium-schijven worden ondersteund door hoogwaardige schijven met een lage latentie op basis van SSD. Ideaal voor virtuele machines met een productiewerkbelasting. Als de AKS-knoop punten in uw cluster Premium Storage gebruiken, selecteert u de *beheerde-Premium-* klasse.
     
-Als u een van de standaard-opslag klassen gebruikt, kunt u de volume grootte niet bijwerken nadat de opslag klasse is gemaakt. Als u wilt dat de volume grootte kan worden bijgewerkt nadat een opslag klasse is gemaakt, voegt u de regel toe `allowVolumeExpansion: true` aan een van de standaard-opslag klassen of kunt u een eigen aangepaste opslag klasse maken. U kunt een bestaande opslag klasse bewerken met behulp van de `kubectl edit sc` opdracht. 
+Als u een van de standaard-opslag klassen gebruikt, kunt u de volume grootte niet bijwerken nadat de opslag klasse is gemaakt. Als u wilt dat de volume grootte kan worden bijgewerkt nadat een opslag klasse is gemaakt, voegt u de regel toe `allowVolumeExpansion: true` aan een van de standaard-opslag klassen of kunt u een eigen aangepaste opslag klasse maken. Houd er rekening mee dat het niet wordt ondersteund om de grootte van een PVC te verminderen (om verlies van gegevens te voor komen). U kunt een bestaande opslag klasse bewerken met behulp van de `kubectl edit sc` opdracht. 
 
 Als u bijvoorbeeld een schijf van grootte 4 TiB wilt gebruiken, moet u een opslag klasse maken die definieert, `cachingmode: None` omdat [schijf cache gebruik niet wordt ondersteund voor schijven van 4 TIB en groter](../virtual-machines/windows/premium-storage-performance.md#disk-caching).
 
@@ -151,6 +151,9 @@ Events:
   Normal  SuccessfulMountVolume  1m    kubelet, aks-nodepool1-79590246-0  MountVolume.SetUp succeeded for volume "pvc-faf0f176-8b8d-11e8-923b-deb28c58d242"
 [...]
 ```
+
+## <a name="use-ultra-disks"></a>Ultra schijven gebruiken
+Zie [Ultra schijven gebruiken op Azure Kubernetes service (AKS)](use-ultra-disks.md)voor meer informatie over het gebruik van ultra disk.
 
 ## <a name="back-up-a-persistent-volume"></a>Back-up maken van een permanent volume
 
@@ -284,3 +287,11 @@ Meer informatie over Kubernetes permanente volumes met behulp van Azure-schijven
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
 [storage-class-concepts]: concepts-storage.md#storage-classes
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register
+[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-extension-update]: /cli/azure/extension#az-extension-update
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register

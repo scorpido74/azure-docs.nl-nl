@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: memildin
-ms.openlocfilehash: 48869140ba8cd1a9598562b0057b0005d8fcd9c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd694fd013069c33e4f3af2c81447e014d41b691
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81758023"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519217"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Beveiligingsoplossingen integreren in Azure Security Center
 Dit document helpt u bij het beheren van beveiligingsoplossingen die al zijn gekoppeld aan Azure Security Center en bij het toevoegen van nieuwe oplossingen.
@@ -90,7 +91,7 @@ Selecteer **weer geven** voor meer informatie en opties, zoals:
 Security Center detecteert automatisch beveiligings oplossingen die worden uitgevoerd in azure, maar zijn niet verbonden met Security Center en de oplossingen worden weer gegeven in de sectie **gedetecteerde oplossingen** . Deze oplossingen omvatten Azure-oplossingen, zoals [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)en partner oplossingen.
 
 > [!NOTE]
-> De Standard-laag van Security Center is op abonnementsniveau vereist voor de functie Gedetecteerde oplossingen. Bekijk de [prijzen](security-center-pricing.md) voor meer informatie over de prijs categorieën.
+> De laag standaard van Security Center is vereist op het abonnements niveau voor de functie gedetecteerde oplossingen. Bekijk de [prijzen](security-center-pricing.md) voor meer informatie over de prijs categorieën.
 >
 
 Selecteer **verbinding maken** onder een oplossing om te integreren met Security Center en op de hoogte te worden gesteld van beveiligings waarschuwingen.

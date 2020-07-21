@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/09/2020
-ms.openlocfilehash: 58724656dd407f09687b57d0ab034f3a1f808b76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4882ec9eb8b81ae27a1e8eed2e5b4349fbeac3f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83196292"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516189"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Structuur van Azure Monitor-logboeken
 De mogelijkheid om snel inzicht te krijgen in uw gegevens met behulp van een [logboek query](log-query-overview.md) is een krachtige functie van Azure monitor. Als u efficiënte en nuttige query's wilt maken, moet u een aantal basis concepten begrijpen, zoals waar de gewenste gegevens zich bevinden en hoe deze worden gestructureerd. In dit artikel worden de basis concepten beschreven die u nodig hebt om aan de slag te gaan.
@@ -28,7 +29,7 @@ In de volgende afbeelding ziet u voor beelden van gegevens bronnen die worden ge
 ![Tabellen](media/logs-structure/queries-tables.png)
 
 ## <a name="log-analytics-workspace"></a>Log Analytics-werkruimte
-Alle gegevens die worden verzameld door Azure Monitor logboeken, met uitzonde ring van Application Insights, worden opgeslagen in een [log Analytics-werk ruimte](../platform/manage-access.md). U kunt een of meer werk ruimten maken, afhankelijk van uw specifieke vereisten. [Gegevens bronnen](../platform/data-sources.md) , zoals activiteiten logboeken en bron logboeken van Azure-resources, agents op virtuele machines en gegevens van inzichten en bewakings oplossingen, schrijven gegevens naar een of meer werk ruimten die u configureert als onderdeel van de onboarding. Andere services, zoals [Azure Security Center](/azure/security-center/) en [Azure-Sentinel](/azure/sentinel/) , gebruiken ook een log Analytics werk ruimte voor het opslaan van gegevens, zodat deze kunnen worden geanalyseerd met behulp van logboek query's en bewakings gegevens van andere bronnen.
+Alle gegevens die worden verzameld door Azure Monitor logboeken, met uitzonde ring van Application Insights, worden opgeslagen in een [log Analytics-werk ruimte](../platform/manage-access.md). U kunt een of meer werk ruimten maken, afhankelijk van uw specifieke vereisten. [Gegevens bronnen](../platform/data-sources.md) , zoals activiteiten logboeken en bron logboeken van Azure-resources, agents op virtuele machines en gegevens van inzichten en bewakings oplossingen, schrijven gegevens naar een of meer werk ruimten die u configureert als onderdeel van de onboarding. Andere services, zoals [Azure Security Center](../../security-center/index.yml) en [Azure-Sentinel](../../sentinel/index.yml) , gebruiken ook een log Analytics werk ruimte voor het opslaan van gegevens, zodat deze kunnen worden geanalyseerd met behulp van logboek query's en bewakings gegevens van andere bronnen.
 
 Verschillende soorten gegevens worden opgeslagen in verschillende tabellen in de werk ruimte en elke tabel heeft een unieke set eigenschappen. Een standaardset tabellen wordt toegevoegd aan een werk ruimte wanneer deze wordt gemaakt en er worden nieuwe tabellen toegevoegd voor verschillende gegevens bronnen, oplossingen en services wanneer ze onboarded zijn. U kunt ook aangepaste tabellen maken met behulp van de [Data Collector-API](../platform/data-collector-api.md).
 
@@ -44,7 +45,7 @@ union withsource = table *
 | summarize count() by table
 | sort by table asc
 ```
-Zie de documentatie voor elke gegevens bron voor meer informatie over de tabellen die ze maken. Voor beelden zijn artikelen voor [agent gegevens bronnen](../platform/agent-data-sources.md), [bron logboeken](../platform/diagnostic-logs-schema.md)en [bewakings oplossingen](../insights/solutions-inventory.md).
+Zie de documentatie voor elke gegevens bron voor meer informatie over de tabellen die ze maken. Voor beelden zijn artikelen voor [agent gegevens bronnen](../platform/agent-data-sources.md), [bron logboeken](../platform/resource-logs-schema.md)en [bewakings oplossingen](../monitor-reference.md).
 
 ### <a name="workspace-permissions"></a>Werkruimte machtigingen
 Zie de [implementatie van een Azure monitor-logboeken ontwerpen](../platform/design-logs-deployment.md) om inzicht te krijgen in de strategie en aanbevelingen voor het toegangs beheer om toegang te bieden tot gegevens in een werk ruimte. Naast het verlenen van toegang tot de werk ruimte zelf, kunt u de toegang tot afzonderlijke tabellen beperken met behulp van het [tabel niveau RBAC](../platform/manage-access.md#table-level-rbac).
@@ -78,7 +79,7 @@ U kunt het schema voor elke tabel weer geven op het tabblad **schema** in log An
 ## <a name="standard-properties"></a>Standaardeigenschappen
 Elke tabel in Azure Monitor logboeken heeft een eigen schema, maar er zijn standaard eigenschappen gedeeld door alle tabellen. Zie de [Standaard eigenschappen in azure monitor logboeken](../platform/log-standard-properties.md) voor meer informatie.
 
-| Log Analytics-werkruimte | Application Insights toepassing | Description |
+| Log Analytics-werkruimte | Application Insights toepassing | Beschrijving |
 |:---|:---|:---|
 | TimeGenerated | tijdstempel  | De datum en tijd waarop de record is gemaakt. |
 | Type          | Item type   | Naam van de tabel waaruit het record is opgehaald. |
@@ -87,5 +88,5 @@ Elke tabel in Azure Monitor logboeken heeft een eigen schema, maar er zijn stand
 | _BilledSize   |            | Hiermee geeft u de grootte in bytes aan gegevens die worden gefactureerd. |
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over [het gebruik van log Analytics om Zoek opdrachten in Logboeken te maken en te bewerken](../log-query/portals.md).
+- Meer informatie over [het gebruik van log Analytics om Zoek opdrachten in Logboeken te maken en te bewerken](./log-query-overview.md).
 - Bekijk een [zelf studie over het schrijven van query's](../log-query/get-started-queries.md) met behulp van de nieuwe query taal.

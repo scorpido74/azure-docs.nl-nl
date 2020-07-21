@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 0a559ec7f9138810611841eed4a035f30662bc39
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79a239148647467185e407e1e07fdea658a7be40
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806274"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517894"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Een toepassingsgateway maken waarop meerdere websites worden gehost met Azure CLI
 
@@ -30,7 +30,7 @@ In dit artikel leert u het volgende:
 > * Schaalsets voor virtuele machines maken met de back-endpools
 > * Een CNAME-record in uw domein maken
 
-![Voorbeeld van routeren voor meerdere sites](./media/tutorial-multiple-sites-cli/scenario.png)
+:::image type="content" source="./media/tutorial-multiple-sites-cli/scenario.png" alt-text="Application Gateway voor meerdere locaties":::
 
 U kunt deze procedure desgewenst voltooien met behulp van [Azure PowerShell](tutorial-multiple-sites-powershell.md).
 
@@ -119,9 +119,13 @@ az network application-gateway address-pool create \
   --name fabrikamPool
 ```
 
-### <a name="add-backend-listeners"></a>Back-endlisteners toevoegen
+### <a name="add-listeners"></a>Listeners toevoegen
 
-Voeg de back-endlisteners, die voor het omleiden van verkeer nodig zijn, toe met [az network application-gateway http-listener create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create).
+Voeg listeners toe die nodig zijn om verkeer te routeren met [AZ Network Application-Gateway HTTP-listener Create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create).
+
+>[!NOTE]
+> Met Application Gateway of WAF v2 SKU kunt u ook Maxi maal 5 hostnamen per listener configureren. u kunt joker tekens gebruiken in de hostnaam. Zie [namen van hostnamen in de listener](multiple-site-overview.md#wildcard-host-names-in-listener-preview) voor meer informatie.
+>Als u meerdere hostnamen en Joker tekens wilt gebruiken in een listener met behulp van Azure CLI, moet u `--host-names` in plaats van gebruiken `--host-name` . Met hostnamen kunt u Maxi maal 5 hostnamen noemen als door komma's gescheiden waarden. Bijvoorbeeld: `--host-names "*.contoso.com,*.fabrikam.com"`
 
 ```azurecli-interactive
 az network application-gateway http-listener create \

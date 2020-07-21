@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: bde0db179216426c4279e5b03b416a04176430bb
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 48c05bf7b4cbecb09ef3bb113832974bee4bc6b2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056783"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518772"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Routes in de preview-versie van statische Web Apps van Azure
 
@@ -37,9 +37,9 @@ De volgende tabel bevat de juiste locatie voor het opslaan van uw _routes.jsin_ 
 |Framework/bibliotheek | Locatie  |
 |---------|----------|
 | Angular | _publicatie_   |
-| React   | _Open_  |
-| Svelte  | _Open_   |
-| Vue     | _Open_ |
+| React   | _public_  |
+| Svelte  | _public_   |
+| Vue     | _public_ |
 
 ## <a name="defining-routes"></a>Routes definiëren
 
@@ -47,10 +47,10 @@ Routes worden gedefinieerd in de _routes.jsop_ bestand als een matrix van route 
 
 | Regel eigenschap  | Vereist | Standaardwaarde | Opmerking                                                      |
 | -------------- | -------- | ------------- | ------------------------------------------------------------ |
-| `route`        | Yes      | N.v.t.          | Het route patroon dat is aangevraagd door de aanroeper.<ul><li>[Joker tekens](#wildcards) worden aan het einde van route paden ondersteund. De routerings _beheerder/ \* _ komt bijvoorbeeld overeen met een wille keurige route onder het pad van de _beheerder_ .<li>Het standaard bestand van een route is _index.html_.</ul>|
-| `serve`        | No       | N.v.t.          | Hiermee wordt het bestand of het pad gedefinieerd dat door de aanvraag wordt geretourneerd. Het bestandspad en de naam kunnen afwijken van het aangevraagde pad. Als er `serve` geen waarde is gedefinieerd, wordt het aangevraagde pad gebruikt. Query string-para meters worden niet ondersteund; de `serve` waarden moeten verwijzen naar de werkelijke bestanden.  |
-| `allowedRoles` | No       | toegang     | Een matrix met namen van rollen. <ul><li>Geldige tekens zijn `a-z`, `A-Z`, `0-9` en `_`.<li>De ingebouwde rol `anonymous` is van toepassing op alle niet-geverifieerde gebruikers.<li>De ingebouwde rol `authenticated` is van toepassing op elke aangemelde gebruiker.<li>Gebruikers moeten deel uitmaken van ten minste één rol.<li>Rollen worden _op basis van_ elkaar vergeleken. Als een gebruiker zich in een van de vermelde rollen bevindt, wordt de toegang verleend.<li>Afzonderlijke gebruikers zijn gekoppeld aan rollen door middel van [uitnodigingen](authentication-authorization.md).</ul> |
-| `statusCode`   | No       | 200           | Het antwoord van de [HTTP-status code](https://wikipedia.org/wiki/List_of_HTTP_status_codes) voor de aanvraag. |
+| `route`        | Ja      | N.v.t.          | Het route patroon dat is aangevraagd door de aanroeper.<ul><li>[Joker tekens](#wildcards) worden aan het einde van route paden ondersteund. De routerings _beheerder/ \* _ komt bijvoorbeeld overeen met een wille keurige route onder het pad van de _beheerder_ .<li>Het standaard bestand van een route is _index.html_.</ul>|
+| `serve`        | Nee       | N.v.t.          | Hiermee wordt het bestand of het pad gedefinieerd dat door de aanvraag wordt geretourneerd. Het bestandspad en de naam kunnen afwijken van het aangevraagde pad. Als er `serve` geen waarde is gedefinieerd, wordt het aangevraagde pad gebruikt. Query string-para meters worden niet ondersteund; de `serve` waarden moeten verwijzen naar de werkelijke bestanden.  |
+| `allowedRoles` | Nee       | toegang     | Een matrix met namen van rollen. <ul><li>Geldige tekens zijn `a-z`, `A-Z`, `0-9` en `_`.<li>De ingebouwde rol `anonymous` is van toepassing op alle niet-geverifieerde gebruikers.<li>De ingebouwde rol `authenticated` is van toepassing op elke aangemelde gebruiker.<li>Gebruikers moeten deel uitmaken van ten minste één rol.<li>Rollen worden _op basis van_ elkaar vergeleken. Als een gebruiker zich in een van de vermelde rollen bevindt, wordt de toegang verleend.<li>Afzonderlijke gebruikers zijn gekoppeld aan rollen door middel van [uitnodigingen](authentication-authorization.md).</ul> |
+| `statusCode`   | Nee       | 200           | Het antwoord van de [HTTP-status code](https://wikipedia.org/wiki/List_of_HTTP_status_codes) voor de aanvraag. |
 
 ## <a name="securing-routes-with-roles"></a>Routes beveiligen met rollen
 
@@ -157,7 +157,7 @@ Gebruikers kunnen een aantal verschillende situaties tegen komen die ertoe kunne
 
 De volgende tabel bevat een overzicht van de beschik bare platform fout onderdrukkingen:
 
-| Fout type  | HTTP-statuscode | Description |
+| Fout type  | HTTP-statuscode | Beschrijving |
 |---------|---------|---------|
 | `NotFound` | 404  | Er is geen pagina gevonden op de server. |
 | `Unauthenticated` | 401 | De gebruiker is niet aangemeld met een [verificatie provider](authentication-authorization.md). |
@@ -295,7 +295,7 @@ In de volgende voor beelden wordt beschreven wat er gebeurt wanneer een aanvraag
 | _/unknown-folder_ | Het bestand _/custom-404.html_ wordt geleverd. |
 | Bestanden met de `.custom` extensie | Worden geleverd met het `text/html` MIME-type |
 
-- Alle antwoorden bevatten de `content-security-policy` kopteksten met een waarde van `default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'` .
+Alle antwoorden bevatten de `content-security-policy` kopteksten met een waarde van `default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'` .
 
 <sup>1</sup> route regels voor API-functies bieden alleen ondersteuning voor het [omleiden](#redirects) en [beveiligen van routes met rollen](#securing-routes-with-roles).
 

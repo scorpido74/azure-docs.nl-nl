@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/14/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: d19381094e027bd567ffc503d32f9212ef56a948
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50a0859b58e2db0d3f644db01cfcde8c533b6871
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82583100"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518127"
 ---
 # <a name="supported-account-types"></a>Ondersteunde accounttypen
 
@@ -45,7 +45,6 @@ Sommige account typen kunnen niet worden gebruikt met bepaalde verificatie strom
 - Daemon-toepassingen kunnen alleen worden gebruikt met Azure AD-organisaties. Het is niet verstandig om daemon-toepassingen te gebruiken voor het bewerken van persoonlijke micro soft-accounts. De toestemming van de beheerder wordt nooit verleend.
 - U kunt de geïntegreerde Windows-verificatie stroom alleen gebruiken met werk-of school accounts (in uw organisatie of een organisatie). Geïntegreerde Windows-verificatie werkt met domein accounts en vereist dat de computers lid zijn van een domein of lid zijn van Azure AD. Deze stroom is niet zinvol voor persoonlijke micro soft-accounts.
 - De [referenties van het wacht woord](./v2-oauth-ropc.md) voor de resource-eigenaar (gebruikers naam en wacht woord) kunnen niet worden gebruikt met persoonlijke micro soft-accounts. Persoonlijke micro soft-accounts vereisen dat de gebruiker zich bij elke aanmeldings sessie voor toegang tot persoonlijke bronnen heeft verzonden. Daarom is dit gedrag niet compatibel met niet-interactieve stromen.
-- De code stroom van het apparaat werkt niet met persoonlijke micro soft-accounts.
 
 ## <a name="account-types-in-national-clouds"></a>Account typen in nationale Clouds
 

@@ -4,12 +4,12 @@ description: Verzend gepersonaliseerde meldingen over service Health-gebeurtenis
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 3/27/2018
-ms.openlocfilehash: 2609a267bd151354f83482ab16c4b9345aa88cc4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05b0572c89a29fddc881f9977ee437d1319e6254
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80062858"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518925"
 ---
 # <a name="use-a-webhook-to-configure-health-notifications-for-problem-management-systems"></a>Een webhook gebruiken voor het configureren van status meldingen voor probleem beheersystemen
 
@@ -115,5 +115,5 @@ Volg deze stappen:
 
 ## <a name="next-steps"></a>Volgende stappen
 - Controleer het [webhook-schema](../azure-monitor/platform/activity-log-alerts-webhook.md)van de waarschuwing voor het activiteiten logboek. 
-- Meer informatie over [service status meldingen](../azure-monitor/platform/service-notifications.md).
+- Meer informatie over [service status meldingen](./service-notifications.md).
 - Meer informatie over [actie groepen](../azure-monitor/platform/action-groups.md).

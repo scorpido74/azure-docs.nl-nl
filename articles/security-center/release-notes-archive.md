@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: 36c3515bbdd0f08063ecad2ba26fc7b92a5f0e19
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 19a6764b68a7a06f9777bac94c9f34aaf09aec0b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970685"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519576"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Wilt u archiveren wat er nieuw is in Azure Security Center?
 
@@ -135,7 +135,7 @@ Meer [informatie over de evaluatie van beveiligings problemen voor uw Azure-virt
 
 De ondersteuning van Azure Security Center voor beveiliging tegen bedreigingen en evaluatie van beveiligings problemen voor SQL-Db's op IaaS Vm's is nu beschikbaar als preview-versie.
 
-[Evaluatie van beveiligings problemen](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment) is een eenvoudig te configureren service waarmee u mogelijke beveiligings problemen met een Data Base kunt detecteren, bijhouden en helpen oplossen. Het biedt inzicht in uw beveiligings postuur als onderdeel van een beveiligde Azure-Score en bevat de stappen voor het oplossen van beveiligings problemen en het verbeteren van uw data base-Fortifications.
+[Evaluatie van beveiligingsproblemen](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment) is een eenvoudig te configureren service waarmee u potentiële zwakke plekken in de beveiliging van de database kunt detecteren, volgen en verhelpen. Het biedt inzicht in uw beveiligings postuur als onderdeel van een beveiligde Azure-Score en bevat de stappen voor het oplossen van beveiligings problemen en het verbeteren van uw data base-Fortifications.
 
 [Geavanceerde bedreigingen beveiliging](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview) detecteert afwijkende activiteiten die een ongebruikelijke en potentieel schadelijke pogingen om toegang te krijgen tot uw SQL-Server of deze misbruiken. Het controleert uw data base voortdurend op verdachte activiteiten en biedt actie gerichte beveiligings waarschuwingen voor afwijkende database toegangs patronen. Deze waarschuwingen bieden informatie over verdachte activiteiten en aanbevolen acties voor het onderzoeken en oplossen van de dreiging.
 
@@ -193,7 +193,7 @@ De aanbeveling van Azure Security Center voor het oplossen van beveiligings prob
 Als u uw ingeschakelde beveiligings beleid wilt bekijken, opent u de pagina beveiligings beleid vanuit Security Center.
 
 
-## <a name="august-2019"></a>augustus 2019
+## <a name="august-2019"></a>Augustus 2019
 
 De updates in augustus zijn onder andere:
 

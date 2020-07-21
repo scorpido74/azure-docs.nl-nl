@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/06/2020
+ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: b22c653d25dc23bbcb249344affaf83a07f190af
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 77eb3ddfdbf2525aa031c462a38df5dcb8d31217
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024881"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518755"
 ---
 # <a name="use-the-azure-portal-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>De Azure Portal gebruiken om een RBAC-rol toe te wijzen voor toegang tot Blob-en wachtrij gegevens
 
@@ -57,7 +57,7 @@ Met de procedure die hier wordt weer gegeven, wordt een rol binnen een container
 1. Ga in het [Azure Portal](https://portal.azure.com)naar uw opslag account en geef het **overzicht** voor het account weer.
 1. Onder Services selecteert u **blobs**.
 1. Zoek de container waarvoor u een rol wilt toewijzen en geef de instellingen van de container weer.
-1. Selecteer **toegangs beheer (IAM)** om instellingen voor toegangs beheer voor de container weer te geven. Selecteer het **tabblad roltoewijzingen om de lijst** met roltoewijzingen weer te geven.
+1. Selecteer **toegangs beheer (IAM)** om instellingen voor toegangs beheer voor de container weer te geven. Selectter het tabblad **Roltoewijzingen** om de lijst met roltoewijzingen te zien.
 
     ![Scherm opname van instellingen voor toegangs beheer voor container](media/storage-auth-aad-rbac-portal/portal-access-control-for-storage.png)
 
@@ -83,10 +83,10 @@ Als uw gebruikers toegang moeten hebben tot blobs in de Azure Portal, wijst u he
 
 Volg deze stappen om de rol van **lezer** toe te wijzen, zodat een gebruiker toegang heeft tot de blobs van de Azure Portal. In dit voor beeld is de toewijzing het bereik van het opslag account:
 
-1. Navigeer in het [Azure Portal](https://portal.azure.com)naar uw opslag account.
-1. Selecteer **toegangs beheer (IAM)** om de instellingen voor toegangs beheer voor het opslag account weer te geven. Selecteer het **tabblad roltoewijzingen om de lijst** met roltoewijzingen weer te geven.
+1. Ga in het [Azure-portal](https://portal.azure.com) naar uw opslagaccount.
+1. Selecteer **Toegangsbeheer (IAM)** om de instellingen voor toegangsbeheer voor het opslagaccount weer te geven. Selectter het tabblad **Roltoewijzingen** om de lijst met roltoewijzingen te zien.
 1. Selecteer de rol **lezer** in het venster **roltoewijzing toevoegen** . 
-1. Selecteer in het veld **toegang toewijzen aan** de optie **Azure AD-gebruiker,-groep of-Service-Principal**.
+1. Selecteer **Azure AD-gebruiker, -groep of -service-principal** in het veld **Toegang toewijzen aan**.
 1. Zoek naar de beveiligingsprincipal waaraan u de rol wilt toewijzen.
 1. Sla de roltoewijzing op.
 

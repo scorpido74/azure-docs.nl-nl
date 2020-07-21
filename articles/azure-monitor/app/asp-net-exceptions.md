@@ -3,13 +3,14 @@ title: Fouten en uitzonde ringen diagnosticeren met Azure-toepassing Insights
 description: Uitzonde ringen vastleggen vanuit ASP.NET-Apps, samen met aanvraag-telemetrie.
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 9f24f09e7d2ef0a3e5f3a8f6546a9115118473ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4d298b3b8541590387995898b0b9f067e8130c3d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80892339"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517209"
 ---
-# <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Uitzonderingen in web-apps diagnosticeren met Application Insights
+# <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Uitzonde ringen in uw web-apps diagnosticeren met Application Insights
 Uitzonde ringen in uw Live Web-app worden gerapporteerd door [Application Insights](../../azure-monitor/app/app-insights-overview.md). U kunt mislukte aanvragen correleren met uitzonde ringen en andere gebeurtenissen op de client en de server, zodat u snel de oorzaken kunt vaststellen.
 
 ## <a name="set-up-exception-reporting"></a>Uitzonderings rapportage instellen
@@ -18,7 +19,7 @@ Uitzonde ringen in uw Live Web-app worden gerapporteerd door [Application Insigh
   * Door IIS gehoste apps voor Azure VM en Azure virtual machine-schaal sets: de [extensie voor toepassings bewaking](../../azure-monitor/app/azure-vm-vmss-apps.md) toevoegen
   * Installeer [Application INSIGHTS SDK](../../azure-monitor/app/asp-net.md) in uw app-code of
   * IIS-webservers: Voer [Application Insights-agent](../../azure-monitor/app/monitor-performance-live-website-now.md)uit; of
-  * Java-Web-apps: de [Java-Agent](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) inschakelen
+  * Java-Web-apps: de [Java-Agent](./java-in-process-agent.md) inschakelen
 * Installeer het [Java script-fragment](../../azure-monitor/app/javascript.md) in uw webpagina's om browser uitzonderingen te ondervangen.
 * In sommige toepassings raamwerken of met sommige instellingen moet u extra stappen uitvoeren om meer uitzonde ringen te ondervangen:
   * [Webformulieren](#web-forms)
@@ -27,7 +28,7 @@ Uitzonde ringen in uw Live Web-app worden gerapporteerd door [Application Insigh
   * [Web-API 2. *](#web-api-2x)
   * [WCF](#wcf)
 
-  Dit artikel is specifiek gericht op .NET Framework apps van een voor beeld van code. Sommige van de methoden die werken voor .NET Framework, zijn verouderd in de .NET Core SDK. Raadpleeg de [documentatie van .net core SDK](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) als u een .net core-app hebt.
+  Dit artikel is specifiek gericht op .NET Framework apps van een voor beeld van code. Sommige van de methoden die werken voor .NET Framework, zijn verouderd in de .NET Core SDK. Raadpleeg de [documentatie van .net core SDK](./asp-net-core.md) als u een .net core-app hebt.
 
 ## <a name="diagnosing-exceptions-using-visual-studio"></a>Uitzonde ringen diagnosticeren met Visual Studio
 Open de app-oplossing in Visual Studio om te helpen bij het opsporen van fouten.
@@ -213,7 +214,7 @@ Niet-verwerkte uitzonde ringen die afkomstig zijn van controllers, hebben doorga
 ### <a name="prior-versions-support"></a>Ondersteuning voor eerdere versies
 Raadpleeg de volgende voor beelden om uitzonde ringen bij te houden als u MVC 4 (en eerder) van Application Insights Web SDK 2,5 (en eerder) gebruikt.
 
-Als de [customErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) -configuratie is `Off` , zijn uitzonde ringen beschikbaar voor het verzamelen van de [HTTP-module](https://msdn.microsoft.com/library/ms178468.aspx) . Als dit echter is `RemoteOnly` (standaard) of `On` , wordt de uitzonde ring gewist en niet beschikbaar voor Application Insights om automatisch te verzamelen. U kunt dit oplossen door de [klasse System. Web. MVC. HandleErrorAttribute](https://msdn.microsoft.com/library/system.web.mvc.handleerrorattribute.aspx)te overschrijven en de overschreven klasse toe te passen, zoals wordt weer gegeven voor de verschillende MVC-versies hieronder ([github-bron](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)):
+Als de [customErrors](/previous-versions/dotnet/netframework-4.0/h0hfz6fc(v=vs.100)) -configuratie is `Off` , zijn uitzonde ringen beschikbaar voor het verzamelen van de [HTTP-module](/previous-versions/dotnet/netframework-3.0/ms178468(v=vs.85)) . Als dit echter is `RemoteOnly` (standaard) of `On` , wordt de uitzonde ring gewist en niet beschikbaar voor Application Insights om automatisch te verzamelen. U kunt dit oplossen door de [klasse System. Web. MVC. HandleErrorAttribute](/dotnet/api/system.web.mvc.handleerrorattribute?view=aspnet-mvc-5.2)te overschrijven en de overschreven klasse toe te passen, zoals wordt weer gegeven voor de verschillende MVC-versies hieronder ([github-bron](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)):
 
 ```csharp
     using System;

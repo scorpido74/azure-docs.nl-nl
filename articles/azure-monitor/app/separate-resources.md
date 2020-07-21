@@ -3,12 +3,12 @@ title: 'Hoe kunt u uw Application Insights-implementatie ontwerpen: een VS veel 
 description: Telemetrie omleiden naar verschillende bronnen voor ontwikkelings-, test-en productie tempels.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 53fe54d1e674a9d15cab5a3fac0c85f415e40260
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: ff301887aebf64d26d0fb391a8a16adefc8a3860
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107424"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516716"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>Hoeveel Application Insights resources moeten worden geïmplementeerd
 
@@ -35,7 +35,7 @@ Elke Application Insights resource wordt geleverd met metrische gegevens die bes
 
 ### <a name="other-things-to-keep-in-mind"></a>Andere zaken die u moet onthouden
 
--   Mogelijk moet u aangepaste code toevoegen om ervoor te zorgen dat zinvolle waarden zijn ingesteld in het [Cloud_RoleName](https://docs.microsoft.com/azure/azure-monitor/app/app-map?tabs=net#set-cloud-role-name) kenmerk. Zonder zinvolle waarden die zijn ingesteld voor dit kenmerk, werken *geen* van de Portal-ervaringen.
+-   Mogelijk moet u aangepaste code toevoegen om ervoor te zorgen dat zinvolle waarden zijn ingesteld in het [Cloud_RoleName](./app-map.md?tabs=net#set-cloud-role-name) kenmerk. Zonder zinvolle waarden die zijn ingesteld voor dit kenmerk, werken *geen* van de Portal-ervaringen.
 - Voor Service Fabric toepassingen en klassieke Cloud Services leest de SDK automatisch van de Azure-functie omgeving en worden deze ingesteld. Voor alle andere typen apps moet u dit waarschijnlijk expliciet instellen.
 -   De Live Metrics-ervaring biedt geen ondersteuning voor het splitsen per rolnaam.
 
@@ -76,7 +76,7 @@ var appInsights = window.appInsights || function(config){ ...
 
 ## <a name="create-additional-application-insights-resources"></a>Aanvullende Application Insights-resources maken
 
-Als u een toepassings Insights-resource wilt maken, volgt u de [Hulp lijn](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)voor het maken van resources.
+Als u een toepassings Insights-resource wilt maken, volgt u de [Hulp lijn](./create-new-resource.md)voor het maken van resources.
 
 ### <a name="getting-the-instrumentation-key"></a>De instrumentatie sleutel ophalen
 De instrumentatie sleutel identificeert de resource die u hebt gemaakt.

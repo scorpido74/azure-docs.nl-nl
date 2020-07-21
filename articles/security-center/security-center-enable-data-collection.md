@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: memildin
-ms.openlocfilehash: be212de7a24b416ad4e5dc08998ba1147c6f3753
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: f7aca2820e599c4f3dad364f1ea14eadc634a548
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855941"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519711"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Gegevensverzameling in Azure Security Center
 Security Center verzamelt gegevens van uw virtuele machines van Azure (Vm's), schaal sets voor virtuele machines, IaaS containers en niet-Azure-computers (inclusief on-premises) om te controleren op beveiligings problemen en bedreigingen. Gegevens worden verzameld met behulp van de Log Analytics-agent, die verschillende aan beveiliging gerelateerde configuraties en gebeurtenis logboeken van de computer leest en de gegevens naar uw werk ruimte kopieert voor analyse. Voor beelden van dergelijke gegevens zijn: besturingssysteem type en-versie, logboeken van besturings systemen (Windows-gebeurtenis Logboeken), actieve processen, computer naam, IP-adressen en aangemelde gebruiker.
@@ -78,7 +78,7 @@ Een werk ruimte selecteren die is gemaakt door Security Center:
 1. Security Center wordt automatisch een Security Center oplossing op de werk ruimte ingeschakeld per de prijs categorie die voor het abonnement is ingesteld. 
 
 > [!NOTE]
-> De Log Analytics prijs categorie van werk ruimten die zijn gemaakt door Security Center heeft geen invloed op Security Center facturering. De facturering voor Security Center is altijd gebaseerd op uw Security Center-beveiligingsbeleid en de oplossingen die in een werkruimte zijn geïnstalleerd. Voor de gratis versie schakelt Azure Security Center de oplossing *SecurityCenterFree* in voor de standaardwerkruimte. Voor de standaardversie schakelt Azure Security Center de oplossing *Security* in voor de standaardwerkruimte.
+> De Log Analytics prijs categorie van werk ruimten die zijn gemaakt door Security Center heeft geen invloed op Security Center facturering. De facturering voor Security Center is altijd gebaseerd op uw Security Center-beveiligingsbeleid en de oplossingen die in een werkruimte zijn geïnstalleerd. Voor de gratis versie schakelt Azure Security Center de oplossing *SecurityCenterFree* in voor de standaardwerkruimte. Voor de laag standaard biedt Security Center de *beveiligings* oplossing op de standaardwerk ruimte.
 > Bij het opslaan van gegevens in Log Analytics worden mogelijk extra kosten in rekening gebracht voor gegevens opslag. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/security-center/) voor meer informatie.
 
 Zie voor meer informatie over bestaande log Analytics-accounts [bestaande log Analytics-klanten](./faq-azure-monitor-logs.md).

@@ -3,12 +3,12 @@ title: Problemen met ontbrekende gegevens oplossen - Application Insights voor .
 description: Ziet u geen gegevens in Azure-toepassing Insights? Probeer het hier.
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 3f1c4a741bf092ab89638fdca130a52d96318157
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 351ef145ab65fee8397034912f9a6ce295f1f909
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221031"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517165"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>Problemen met geen gegevens Application Insights voor .NET/.NET core oplossen
 
@@ -42,7 +42,7 @@ ms.locfileid: "86221031"
 *Wanneer ik met de rechter muisknop op een bestaand project in Solution Explorer, zie ik geen Application Insights opties.*
 
 * Niet alle typen .NET-projecten worden ondersteund door de hulpprogram ma's. Web-en WCF-projecten worden ondersteund. Voor andere project typen, zoals bureau blad-of service toepassingen, kunt u nog steeds [een Application INSIGHTS SDK hand matig toevoegen aan uw project](../../azure-monitor/app/windows-desktop.md).
-* Zorg ervoor dat u [Visual Studio 2013 update 3 of hoger](https://docs.microsoft.com/visualstudio/releasenotes/vs2013-update3-rtm-vs)hebt. Dit is vooraf geïnstalleerd met Developer Analytics-hulpprogram ma's, die de Application Insights SDK bieden.
+* Zorg ervoor dat u [Visual Studio 2013 update 3 of hoger](/visualstudio/releasenotes/vs2013-update3-rtm-vs)hebt. Dit is vooraf geïnstalleerd met Developer Analytics-hulpprogram ma's, die de Application Insights SDK bieden.
 * Selecteer **extra**, **uitbrei dingen en updates** en controleer of **Developer Analytics-hulpprogram ma's** zijn geïnstalleerd en ingeschakeld. Als dit het geval is, klikt u op **updates** om te zien of er een update beschikbaar is.
 * Open het dialoog venster New project en kies ASP.NET Web Application. Als u de optie Application Insights ziet, worden de hulpprogram ma's geïnstalleerd. Als dat niet het geval is, kunt u proberen de Hulpprogram Ma's voor ontwikkel aars te verwijderen en vervolgens opnieuw te installeren.
 
@@ -132,7 +132,7 @@ Holpen
   * Klik in Visual Studio Solution Explorer met de rechter muisknop op het project en kies Application Insights, configureren. Stel de app opnieuw in om telemetrie naar de juiste resource te verzenden.
   * Als u de overeenkomende sleutels niet kunt vinden, controleert u of u dezelfde aanmeldings referenties in Visual Studio gebruikt als in voor de portal.
 * Ga in het [Microsoft Azure start-dash board](https://portal.azure.com)naar de service Health kaart. Als er enkele waarschuwings vermeldingen zijn, wacht u totdat ze zijn teruggekeerd naar OK. Sluit vervolgens de Blade Application Insights toepassing en open deze opnieuw.
-* Controleer ook [onze status blog](https://blogs.msdn.microsoft.com/servicemap-status/).
+* Controleer ook [onze status blog](https://techcommunity.microsoft.com/t5/azure-monitor-status/bg-p/AzureMonitorStatusBlog).
 * Hebt u code geschreven voor de SDK aan de [server zijde](../../azure-monitor/app/api-custom-events-metrics.md) die de instrumentatie sleutel in `TelemetryClient` instanties of in kan wijzigen `TelemetryContext` ? Of hebt u een [filter of sampling configuratie](../../azure-monitor/app/api-filtering-sampling.md) geschreven die te veel kan worden gefilterd?
 * Als u ApplicationInsights.config hebt bewerkt, controleert u zorgvuldig de configuratie van [TelemetryInitializers en TelemetryProcessors](../../azure-monitor/app/api-filtering-sampling.md). Een type of para meter met een onjuiste naam kan ertoe leiden dat de SDK geen gegevens verzendt.
 
@@ -154,7 +154,7 @@ Prestatie gegevens (CPU, i/o-snelheid, enzovoort) zijn beschikbaar voor [Java-we
 ## <a name="no-server-data-since-i-published-the-app-to-my-server"></a>Geen (Server) gegevens sinds ik de app heb gepubliceerd op mijn server
 * Controleer of u alle micro soft hebt gekopieerd. ApplicationInsights dll-bestanden naar de server, samen met Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll
 * In uw firewall moet u mogelijk [enkele TCP-poorten openen](../../azure-monitor/app/ip-addresses.md).
-* Als u een proxy moet gebruiken om uw bedrijfs netwerk te verzenden, stelt u [defaultProxy](https://msdn.microsoft.com/library/aa903360.aspx) in Web.config
+* Als u een proxy moet gebruiken om uw bedrijfs netwerk te verzenden, stelt u [defaultProxy](/previous-versions/dotnet/netframework-1.1/aa903360(v=vs.71)) in Web.config
 * Windows Server 2008: Zorg ervoor dat u de volgende updates hebt geïnstalleerd: [KB2468871](https://support.microsoft.com/kb/2468871), [KB2533523](https://support.microsoft.com/kb/2533523), [KB2600217](https://support.microsoft.com/kb/2600217).
 
 ## <a name="i-used-to-see-data-but-it-has-stopped"></a>Ik heb de gegevens weer gegeven, maar deze zijn gestopt
@@ -170,7 +170,7 @@ U kunt deze uitschakelen, maar dit wordt niet aanbevolen. Steek proeven zijn zod
 Op 5 2018 februari hebben we gemeld dat de registratie van het client-IP-adres is verwijderd. Dit heeft geen invloed op de geografische locatie.
 
 > [!NOTE]
-> Als u de eerste 3 octetten van het IP-adres nodig hebt, kunt u een [initialisatie functie voor telemetrie](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#addmodify-properties-itelemetryinitializer) gebruiken om een aangepast kenmerk toe te voegen.
+> Als u de eerste 3 octetten van het IP-adres nodig hebt, kunt u een [initialisatie functie voor telemetrie](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer) gebruiken om een aangepast kenmerk toe te voegen.
 > Dit heeft geen invloed op gegevens die zijn verzameld vóór 5 februari 2018.
 
 ## <a name="wrong-geographical-data-in-user-telemetry"></a>Verkeerde geografische gegevens in de telemetrie van de gebruiker
@@ -206,9 +206,9 @@ Volg deze instructies om logboeken voor het oplossen van problemen vast te legge
 
 ### <a name="net-core"></a>.NET Core
 
-1. Installeer het pakket [micro soft. AspNet. ApplicationInsights. HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) van NuGet. De versie die u installeert, moet overeenkomen met de huidige geïnstalleerde versie van`Microsoft.ApplicationInsights`
+1. Installeer het [Application INSIGHTS SDK NuGet-pakket voor ASP.net core](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) pakket van NuGet. De versie die u installeert, moet overeenkomen met de huidige geïnstalleerde versie van `Microsoft.ApplicationInsights` .
 
-De nieuwste versie van micro soft. ApplicationInsights. AspNetCore is 2.8.2 en verwijst naar micro soft. ApplicationInsights versie 2.11.2. De versie van micro soft. AspNet. ApplicationInsights. HostingStartup die moet worden geïnstalleerd, moet daarom worden 2.11.2
+   De nieuwste versie van micro soft. ApplicationInsights. AspNetCore is 2.14.0 en verwijst naar micro soft. ApplicationInsights versie 2.14.0. De versie van micro soft. ApplicationInsights. AspNetCore die moet worden geïnstalleerd, moet daarom 2.14.0 zijn.
 
 2. Wijzig `ConfigureServices` de methode in uw `Startup.cs` klasse.:
 
@@ -249,7 +249,7 @@ Meer informatie
 
 ## <a name="collect-logs-with-dotnet-trace"></a>Logboeken verzamelen met DotNet-Trace
 
-Een alternatieve methode voor het verzamelen van Logboeken voor het oplossen van problemen die bijzonder handig kunnen zijn voor Linux-omgevingen is[`dotnet-trace`](https://docs.microsoft.com/dotnet/core/diagnostics/dotnet-trace)
+Een alternatieve methode voor het verzamelen van Logboeken voor het oplossen van problemen die bijzonder handig kunnen zijn voor Linux-omgevingen is[`dotnet-trace`](/dotnet/core/diagnostics/dotnet-trace)
 
 ```bash
 dotnet-trace collect --process-id <PID> --providers Microsoft-ApplicationInsights-Core,Microsoft-ApplicationInsights-Data,Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,Microsoft-ApplicationInsights-Extensibility-DependencyCollector,Microsoft-ApplicationInsights-Extensibility-HostingStartup,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,Microsoft-ApplicationInsights-Extensibility-EventCounterCollector,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,Microsoft-ApplicationInsights-Extensibility-Web,Microsoft-ApplicationInsights-Extensibility-WindowsServer,Microsoft-ApplicationInsights-WindowsServer-Core,Microsoft-ApplicationInsights-Extensibility-EventSourceListener,Microsoft-ApplicationInsights-AspNetCore
@@ -260,4 +260,4 @@ dotnet-trace collect --process-id <PID> --providers Microsoft-ApplicationInsight
 Meer informatie over het verwijderen van Application Insights in Visual Studio door de stappen te volgen in het [artikel](../../azure-monitor/app/remove-application-insights.md)over het verwijderen.
 
 ## <a name="still-not-working"></a>Nog steeds niet werken...
-* [Micro soft Q&een vraag pagina voor Application Insights](https://docs.microsoft.com/answers/topics/azure-monitor.html)
+* [Micro soft Q&een vraag pagina voor Application Insights](/answers/topics/azure-monitor.html)

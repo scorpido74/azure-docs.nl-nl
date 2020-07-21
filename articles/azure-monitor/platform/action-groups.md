@@ -1,18 +1,19 @@
 ---
-title: Actie groepen maken en beheren in de Azure Portal
+title: Actiegroepen maken en beheren in Azure Portal
 description: Meer informatie over het maken en beheren van actie groepen in de Azure Portal.
 author: dkamstra
 ms.topic: conceptual
-ms.date: 6/5/2020
+ms.date: 07/15/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: dbc810ad7227d9d47099fe85e89a92c8fa750302
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e88d51e014244892fc3ac9e2cca242dacdfd9997
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465249"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516172"
 ---
-# <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Actie groepen maken en beheren in de Azure Portal
+# <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Actiegroepen maken en beheren in Azure Portal
 Een actie groep is een verzameling voor keuren voor meldingen die zijn gedefinieerd door de eigenaar van een Azure-abonnement. Azure Monitor-en Service Health-waarschuwingen gebruiken actie groepen om gebruikers te laten weten dat een waarschuwing is geactiveerd. Verschillende waarschuwingen kunnen dezelfde actie groep of verschillende actie groepen gebruiken, afhankelijk van de vereisten van de gebruiker. U kunt Maxi maal 2.000 actie groepen in een abonnement configureren.
 
 U configureert een actie om een persoon op de hoogte te stellen per e-mail of SMS, waarna een bevestiging wordt gegeven dat de gebruiker aan de actie groep is toegevoegd.
@@ -69,7 +70,7 @@ Nadat u een actie groep hebt gemaakt, kunt u **actie groepen** weer geven door *
 ## <a name="action-specific-information"></a>Actie-specifieke informatie
 
 > [!NOTE]
-> Zie [limieten voor abonnements Services voor controle](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-monitor-limits) op numerieke limieten voor elk van de onderstaande items.  
+> Zie [limieten voor abonnements Services voor controle](../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-monitor-limits) op numerieke limieten voor elk van de onderstaande items.  
 
 ### <a name="automation-runbook"></a>Automation-runbook
 Raadpleeg de [service limieten](../../azure-resource-manager/management/azure-subscription-service-limits.md) van het Azure-abonnement voor limieten voor nettoladingen van het Runbook.
@@ -106,21 +107,21 @@ Mogelijk hebt u een beperkt aantal ITSM-acties in een actie groep.
 Mogelijk hebt u een beperkt aantal logische app-acties in een actie groep.
 
 ### <a name="secure-webhook"></a>Beveiligde webhook
-Met de actie groepen webhook kunt u gebruikmaken van Azure Active Directory om de verbinding tussen uw actie groep en de beveiligde web-API (webhook-eind punt) te beveiligen. De algemene werk stroom voor het gebruik van deze functionaliteit wordt hieronder beschreven. Zie [overzicht van micro soft Identity platform (v 2.0)](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)voor een overzicht van Azure AD-toepassingen en-service-principals.
+Met de actie groepen webhook kunt u gebruikmaken van Azure Active Directory om de verbinding tussen uw actie groep en de beveiligde web-API (webhook-eind punt) te beveiligen. De algemene werk stroom voor het gebruik van deze functionaliteit wordt hieronder beschreven. Zie [overzicht van micro soft Identity platform (v 2.0)](../../active-directory/develop/v2-overview.md)voor een overzicht van Azure AD-toepassingen en-service-principals.
 
-1. Maak een Azure AD-toepassing voor uw beveiligde web-API. Zie https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview.
-    - Configureer uw beveiligde API om te worden aangeroepen door een daemon-app.
+1. Maak een Azure AD-toepassing voor uw beveiligde web-API. Zie de [beveiligde web-API: app-registratie](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration).
+    - Configureer uw beveiligde API om te worden [aangeroepen door een daemon-app](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration#if-your-web-api-is-called-by-a-daemon-app).
     
-1. Schakel actie groepen in voor het gebruik van uw Azure AD-toepassing.
+2. Schakel actie groepen in voor het gebruik van uw Azure AD-toepassing.
 
     > [!NOTE]
-    > U moet lid zijn van de [rol Azure AD-toepassings beheerder](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles) om dit script uit te voeren.
+    > U moet lid zijn van de [rol Azure AD-toepassings beheerder](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#available-roles) om dit script uit te voeren.
     
     - Wijzig de aanroep van de Connect-AzureAD van het Power shell-script om uw Azure AD-Tenant-ID te gebruiken.
     - Wijzig de variabele van het Power shell-script $myAzureADApplicationObjectId om de object-ID van uw Azure AD-toepassing te gebruiken.
     - Voer het gewijzigde script uit.
     
-1. Configureer de actie groep beveiligde webhooks.
+3. Configureer de actie groep beveiligde webhooks.
     - Kopieer de waarde $myApp. ObjectId uit het script en voer deze in het veld toepassings object-ID in de actie definitie van webhook in.
     
     ![Actie beveiligde webhook](./media/action-groups/action-groups-secure-webhook.png)
@@ -252,4 +253,4 @@ Mogelijk hebt u een beperkt aantal webhook-acties in een actie groep.
 * Meer informatie over [ITSM-connector](../../azure-monitor/platform/itsmc-overview.md).
 * Meer informatie over de [frequentie limiet](../../azure-monitor/platform/alerts-rate-limiting.md) voor waarschuwingen.
 * Bekijk een [overzicht van waarschuwingen voor activiteiten logboeken](../../azure-monitor/platform/alerts-overview.md)en meer informatie over het ontvangen van waarschuwingen.  
-* Meer informatie over het [configureren van waarschuwingen wanneer een service status melding wordt geplaatst](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
+* Meer informatie over het [configureren van waarschuwingen wanneer een service status melding wordt geplaatst](../../service-health/alerts-activity-log-service-notifications-portal.md).

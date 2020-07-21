@@ -11,28 +11,27 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/27/2020
+ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 060db99cf0163876b68eeee2cff8ef2d03e2b5b9
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 95b514999d7c38140bd3dd275b8ba103ee9af20e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187010"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519226"
 ---
 # <a name="feature-coverage-for-machines"></a>Functie dekking voor machines
 
-De onderstaande tabellen bevatten Azure Security Center functies die beschikbaar zijn voor virtuele machines en servers.
+De twee tabbladen hieronder tonen de functies van Azure Security Center die beschikbaar zijn voor virtuele Windows-en Linux-machines en-servers.
 
 ## <a name="supported-features-for-virtual-machines-and-servers"></a>Ondersteunde functies voor virtuele machines en servers<a name="vm-server-features"></a>
 
-### <a name="windows-machines"></a>[Windows-machines](#tab/features-windows)
+### <a name="windows-machines"></a>[**Windows-machines**](#tab/features-windows)
 
-|||||||||
-|----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
 |**Functie**|**Azure Virtual Machines**|**Virtuele Azure-machineschaalsets**|**Niet-Azure-machines**|**Prijzen**
+|----|:----:|:----:|:----:|:----:|
 |[Micro soft Defender ATP-integratie](security-center-wdatp.md)|✔</br>(op ondersteunde versies)|✔</br>(op ondersteunde versies)|✔|Standard|
-|[Gedrags analyse van virtuele machine (en beveiligings waarschuwingen)](threat-protection.md)|✔|✔|✔|Aanbevelingen (gratis) </br></br> Beveiligings waarschuwingen (standaard)|
+|[Gedrags analyse van virtuele machine (en beveiligings waarschuwingen)](threat-protection.md)|✔|✔|✔|Standard|
 |[Beveiligings waarschuwingen met een bestand](alerts-reference.md#alerts-windows)|✔|✔|✔|Standard|
 |[Beveiligings waarschuwingen op basis van het netwerk](threat-protection.md#network-layer)|✔|✔|-|Standard|
 |[Just-in-time-VM-toegang](security-center-just-in-time.md)|✔|-|-|Standard|
@@ -43,21 +42,20 @@ De onderstaande tabellen bevatten Azure Security Center functies die beschikbaar
 |[Adaptieve netwerk beveiliging](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
 |[Dash board naleving van regelgeving & rapporten](security-center-compliance-dashboard.md)|✔|✔|✔|Standard|
 |Aanbevelingen en beveiliging tegen bedreigingen op docker-gehoste IaaS-containers|-|-|-|Standard|
-|Evaluatie van besturingssysteem patches ontbreekt|✔|✔|✔|Gratis|
-|Evaluatie van onjuiste beveiligings configuratie|✔|✔|✔|Gratis|
-|[Endpoint Protection-evaluatie](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Gratis|
+|Evaluatie van besturingssysteem patches ontbreekt|✔|✔|✔|Azure: gratis<br><br>Niet-Azure: Standard|
+|Evaluatie van onjuiste beveiligings configuratie|✔|✔|✔|Azure: gratis<br><br>Niet-Azure: Standard|
+|[Endpoint Protection-evaluatie](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: gratis<br><br>Niet-Azure: Standard|
 |Analyse van schijf versleuteling|✔|✔|-|Gratis|
 |Beoordeling van beveiligings lekken van derden|✔|-|-|Gratis|
 |[Evaluatie van netwerk beveiliging](security-center-network-recommendations.md)|✔|✔|-|Gratis|
 
 
-### <a name="linux-machines"></a>[Linux-machines](#tab/features-linux)
+### <a name="linux-machines"></a>[**Linux-machines**](#tab/features-linux)
 
-|||||||||
-|----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
 |**Functie**|**Azure Virtual Machines**|**Virtuele Azure-machineschaalsets**|**Niet-Azure-machines**|**Prijzen**
+|----|:----:|:----:|:----:|:----:|
 |[Micro soft Defender ATP-integratie](security-center-wdatp.md)|-|-|-|Standard|
-|[Gedrags analyse van virtuele machine (en beveiligings waarschuwingen)](security-center-alerts-iaas.md)|✔</br>(op ondersteunde versies)|✔</br>(op ondersteunde versies)|✔|Aanbevelingen (gratis) </br></br> Beveiligings waarschuwingen (standaard)|
+|[Gedrags analyse van virtuele machine (en beveiligings waarschuwingen)](security-center-alerts-iaas.md)|✔</br>(op ondersteunde versies)|✔</br>(op ondersteunde versies)|✔|Standard|
 |[Beveiligings waarschuwingen met een bestand](alerts-reference.md#alerts-windows)|-|-|-|Standard|
 |[Beveiligings waarschuwingen op basis van het netwerk](threat-protection.md#network-layer)|✔|✔|-|Standard|
 |[Just-in-time-VM-toegang](security-center-just-in-time.md)|✔|-|-|Standard|
@@ -66,11 +64,10 @@ De onderstaande tabellen bevatten Azure Security Center functies die beschikbaar
 |[Adaptieve toepassingsregelaars](security-center-adaptive-application.md)|✔|-|✔|Standard|
 |[Netwerk toewijzing](security-center-network-recommendations.md#network-map)|✔|✔|-|Standard|
 |[Adaptieve netwerk beveiliging](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
-|Adaptieve netwerk besturings elementen|✔|✔|-|Standard|
 |[Dash board naleving van regelgeving & rapporten](security-center-compliance-dashboard.md)|✔|✔|✔|Standard|
 |Aanbevelingen en beveiliging tegen bedreigingen op docker-gehoste IaaS-containers|✔|✔|✔|Standard|
-|Evaluatie van besturingssysteem patches ontbreekt|✔|✔|✔|Gratis|
-|Evaluatie van onjuiste beveiligings configuratie|✔|✔|✔|Gratis|
+|Evaluatie van besturingssysteem patches ontbreekt|✔|✔|✔|Azure: gratis<br><br>Niet-Azure: Standard|
+|Evaluatie van onjuiste beveiligings configuratie|✔|✔|✔|Azure: gratis<br><br>Niet-Azure: Standard|
 |[Endpoint Protection-evaluatie](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Gratis|
 |Analyse van schijf versleuteling|✔|✔|-|Gratis|
 |Beoordeling van beveiligings lekken van derden|✔|-|-|Gratis|

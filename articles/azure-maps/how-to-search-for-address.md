@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: cf0e5267885df1ace51271c53bb2d68ee5002f00
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d8c7ce62f7c592c396fa1ea7a7f5e7dc7df2dc1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335435"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517583"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Zoeken naar een locatie met behulp van Azure Maps-Zoek Services
 
@@ -29,7 +29,7 @@ In dit artikel leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u de stappen in dit artikel wilt uitvoeren, moet u eerst een Azure Maps-account maken en uw abonnements sleutel voor Maps-accounts ophalen. Volg de instructies in [een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps) voor het maken van een abonnement op een Azure Maps-account en volg de stappen in de [primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account) om de primaire sleutel voor uw account op te halen. Zie [Verificatie beheren in Azure Maps](./how-to-manage-authentication.md) voor meer informatie over verificatie in Azure Maps.
+Als u de stappen in dit artikel wilt uitvoeren, moet u eerst een Azure Maps-account maken en uw abonnements sleutel voor Maps-accounts ophalen. Volg de instructies in [een account maken](quick-demo-map-app.md#create-an-azure-maps-account) voor het maken van een abonnement op een Azure Maps-account en volg de stappen in de [primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account) om de primaire sleutel voor uw account op te halen. Zie [Verificatie beheren in Azure Maps](./how-to-manage-authentication.md) voor meer informatie over verificatie in Azure Maps.
 
 In dit artikel wordt gebruikgemaakt van de [app postman](https://www.getpostman.com/apps) om rest-aanroepen te bouwen. U kunt elke gewenste API-ontwikkel omgeving gebruiken.
 

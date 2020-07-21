@@ -3,15 +3,19 @@ title: Een SharePoint-site met Application Insights bewaken
 description: Een nieuwe toepassing bewaken met een nieuwe instrumentatiesleutel
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.openlocfilehash: b9b31a715b19d6c06cbddb91c0bd9279088c4447
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: a545a24b5a9af883200f25cc83486e3c5621bd78
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221048"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516886"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>Een SharePoint-site met Application Insights bewaken
+
 Azure Application Insights bewaakt de beschikbaarheid, de prestaties en het gebruik van uw apps. Hier wordt uitgelegd hoe u dit kunt instellen voor een SharePoint-site.
+
+> [!NOTE]
+> Vanwege beveiligings problemen kunt u het script dat in dit artikel wordt beschreven, niet rechtstreeks toevoegen aan uw webpagina's in de share point moderne UX. Als alternatief kunt u [share point Framework (SPFx)](/sharepoint/dev/spfx/extensions/overview-extensions) gebruiken om een aangepaste extensie te maken die u kunt gebruiken om Application Insights te installeren op uw share point-sites. Zie [How to Create a SPFx extension Solution](https://github.com/microsoft/ApplicationInsights-JS/tree/master/SPO#how-to-create-a-spfx-extension-solution-with-appinsights-installed-from-scratch) [(Engelstalig) (Engelstalig](https://github.com/microsoft/ApplicationInsights-JS/tree/master/SPO/AppInsightsExtensionSolutionSample)) voor meer informatie. 
 
 ## <a name="create-an-application-insights-resource"></a>Een Application Insights-resource maken
 Maak in de [Azure Portal](https://portal.azure.com) een nieuwe Application Insights-resource. Kies ASP.NET als het toepassingstype.
@@ -137,5 +141,3 @@ function onRequestFail(sender, args) {
 * [Application Insights](../../azure-monitor/app/app-insights-overview.md) voor andere typen app.
 
 <!--Link references-->
-
-

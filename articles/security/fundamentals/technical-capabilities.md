@@ -2,24 +2,20 @@
 title: Technische mogelijkheden voor beveiliging in Azure-Microsoft Azure
 description: Inleiding tot beveiligings Services in azure waarmee u uw gegevens, resources en toepassingen in de cloud kunt beveiligen.
 services: security
-documentationcenter: na
-author: UnifyCloud
-manager: barbkess
-editor: TomSh
+author: terrylanfear
 ms.assetid: ''
 ms.service: security
 ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 05/31/2019
-ms.author: TomSh
-ms.openlocfilehash: 61afad1d9994fd703bd8df047d1861baddeae997
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/13/2020
+ms.author: terrylan
+ms.openlocfilehash: 29e6aa96ea1c435e4d734e80824e1cedcfe9a761
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76845340"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519317"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technische mogelijkheden van Azure-beveiliging
 Dit artikel bevat een inleiding tot beveiligings Services in azure waarmee u uw gegevens, resources en toepassingen in de cloud kunt beveiligen en voldoen aan de beveiligings behoeften van uw bedrijf.
@@ -82,7 +78,7 @@ Hier volgen de belangrijkste mogelijkheden van Azure Identity Management:
 
 - Privileged Identity Management
 
-- Identiteitsbeveiliging
+- Identiteitsbescherming
 
 #### <a name="single-sign-on"></a>Eenmalige aanmelding
 
@@ -144,7 +140,7 @@ Met Azure AD Privileged Identity Management kunt u het volgende doen:
 
 - Waarschuwingen ontvangen over toegang tot een bevoorrechte rol
 
-#### <a name="identity-protection"></a>Identiteitsbeveiliging
+#### <a name="identity-protection"></a>Identiteitsbescherming
 
 [Azure AD Identity Protection](../../active-directory/identity-protection/overview.md) is een beveiligings service die een geconsolideerde weer gave biedt voor risico detecties en mogelijke beveiligings problemen die van invloed zijn op de identiteiten van uw organisatie. Identiteits beveiliging maakt gebruik van de bestaande Azure Active Directory afwijkingen detectie mogelijkheden (beschikbaar via de afwijkende activiteiten van Azure AD) en introduceert nieuwe typen risico detectie waarmee afwijkingen in realtime kunnen worden gedetecteerd.
 
@@ -169,77 +165,11 @@ Met op rollen gebaseerd toegangsbeheer kunt u taken scheiden binnen uw team en a
 Een van de sleutels voor gegevens beveiliging in de Cloud is een Accounting voor de mogelijke statussen waarin uw gegevens zich kunnen voordoen en welke besturings elementen beschikbaar zijn voor die status. Voor de best practices voor Azure Data Security en versleuteling gelden de aanbevelingen voor de statussen van de volgende gegevens.
 
 - Inactief: Dit omvat alle opslag objecten, containers en typen van informatie die statisch op fysieke media aanwezig zijn, op de magnetische of optische schijf.
-
 - Transit: wanneer gegevens worden overgebracht tussen onderdelen, locaties of Program ma's, zoals via het netwerk, via een service bus (van on-premises naar de Cloud en vice versa, waaronder hybride verbindingen zoals ExpressRoute), of tijdens een invoer-en uitvoer proces, wordt het gezien als bewegingen.
 
 ### <a name="encryption-at-rest"></a>Versleuteling 'at rest'
 
-Ga als volgt te werk om de versleuteling te versleutelen:
-
-Ondersteuning voor ten minste één van de aanbevolen versleutelings modellen die in de volgende tabel worden beschreven om gegevens te versleutelen.
-
-| Versleutelings modellen |  |  |  |
-| ----------------  | ----------------- | ----------------- | --------------- |
-| Server versleuteling | Server versleuteling | Server versleuteling | Client versleuteling
-| Versleuteling aan de server zijde met door service beheerde sleutels | Versleuteling aan de server zijde met door de klant beheerde sleutels in Azure Key Vault | Versleuteling aan de server zijde met behulp van on-premises door de klant beheerde sleutels |
-| • Azure-resource providers voeren de bewerkingen voor versleuteling en ontsleuteling uit <br> • Micro soft beheert de sleutels <br>• Volledige Cloud functionaliteit | • Azure-resource providers voeren de bewerkingen voor versleuteling en ontsleuteling uit<br>• Klant beheert sleutels via Azure Key Vault<br>• Volledige Cloud functionaliteit | • Azure-resource providers voeren de bewerkingen voor versleuteling en ontsleuteling uit <br>• Klant beheert sleutels on-premises <br> • Volledige Cloud functionaliteit| • Azure-Services kunnen gedecodeerde gegevens niet zien <br>• Klanten hebben sleutels on-premises (of in andere beveiligde winkels) bewaard. Sleutels zijn niet beschikbaar voor Azure-Services <br>• Beperkte Cloud functionaliteit|
-
-### <a name="enabling-encryption-at-rest"></a>Versleuteling inschakelen bij rest
-
-**Alle locaties van uw winkel gegevens identificeren**
-
-Het doel van het versleutelen op rest is het versleutelen van alle gegevens. Dit elimineert de mogelijkheid van ontbrekende belang rijke gegevens of alle persistente locaties. Inventariseer alle gegevens die zijn opgeslagen door uw toepassing.
-
-> [!Note]
-> Niet alleen ' toepassings gegevens ' of ' PII ', maar alle gegevens met betrekking tot de toepassing, inclusief account Meta gegevens (abonnements toewijzingen, contract gegevens, PII).
-
-Denk na over welke winkels u gebruikt om gegevens op te slaan. Bijvoorbeeld:
-
-- Externe opslag (bijvoorbeeld SQL Azure, document database, HDInsights, Data Lake, enzovoort)
-
-- Tijdelijke opslag (een lokale cache die Tenant gegevens bevat)
-
-- Cache in het geheugen (kan in het wissel bestand worden geplaatst.)
-
-### <a name="leverage-the-existing-encryption-at-rest-support-in-azure"></a>Maak gebruik van de bestaande versleuteling op rest-ondersteuning in azure
-
-Maak gebruik van de bestaande versleuteling op rest-ondersteuning voor elke opslag die u gebruikt.
-
-- Azure Storage: Zie [Azure Storage-service versleuteling voor Data-at-rest](../../storage/common/storage-service-encryption.md),
-
-- SQL Azure: Zie [transparent Data Encryption (TDE), SQL always encrypted](https://msdn.microsoft.com/library/mt163865.aspx)
-
-- VM-& lokale schijf opslag ([Azure Disk Encryption](../azure-security-disk-encryption-overview.md))
-
-Gebruik Azure Disk Encryption voor de opslag van VM'S en lokale schijven wanneer deze worden ondersteund:
-
-#### <a name="iaas"></a>IaaS
-
-Services met IaaS-Vm's (Windows of Linux) moeten [Azure Disk Encryption](https://microsoft.sharepoint.com/teams/AzureSecurityCompliance/Security/SitePages/Azure%20Disk%20Encryption.aspx) gebruiken voor het versleutelen van volumes met klant gegevens.
-
-#### <a name="paas-v2"></a>PaaS v2
-
-Services die worden uitgevoerd op PaaS v2 met Service Fabric kunnen gebruikmaken van Azure Disk Encryption voor virtuele-machine schaal sets [VMSS] om hun PaaS v2-Vm's te versleutelen.
-
-#### <a name="paas-v1"></a>PaaS v1
-
-Azure Disk Encryption wordt momenteel niet ondersteund op PaaS v1. Daarom moet u versleuteling op toepassings niveau gebruiken om permanente gegevens in rust te versleutelen.  Dit omvat, maar is niet beperkt tot, toepassings gegevens, tijdelijke bestanden, logboeken en crash dumps.
-
-De meeste services moeten proberen de versleuteling van een opslag Resource provider te gebruiken. Sommige services moeten expliciete versleuteling uitvoeren, bijvoorbeeld alle persistente sleutel materialen (certificaten, basis sleutels) moeten worden opgeslagen in Key Vault.
-
-Als u versleuteling aan de service zijde ondersteunt met door de klant beheerde sleutels, moet de klant de sleutel voor ons ophalen. De ondersteunde en aanbevolen manier om dit te doen door te integreren met Azure Key Vault (Azure). In dit geval kunnen klanten hun sleutels toevoegen en beheren in Azure Key Vault. Een klant kan leren hoe u Azure kunt gebruiken via [Key Vault aan de slag](https://go.microsoft.com/fwlink/?linkid=521402).
-
-Als u wilt integreren met Azure Key Vault, voegt u code toe om een sleutel van Azure aan te vragen wanneer dit nodig is voor ontsleuteling.
-
-- Zie [Azure Key Vault – stapsgewijs per stap](https://blogs.technet.microsoft.com/kv/2015/06/02/azure-key-vault-step-by-step/) voor informatie over het integreren met Azure.
-
-Als u door de klant beheerde sleutels ondersteunt, moet u een UX opgeven voor de klant om op te geven welke Key Vault (of Key Vault-URI) u wilt gebruiken.
-
-Omdat versleuteling bij rest betrekking heeft op de versleuteling van host-, infra structuur-en Tenant gegevens, wordt het verlies van de sleutels als gevolg van systeem storingen of schadelijke activiteiten kan betekenen dat alle versleutelde gegevens verloren zijn gegaan. Het is daarom belang rijk dat uw versleuteling bij rest-oplossing een uitgebreid verhaal systeem voor herstel na nood geval heeft voor problemen met het bestand en schadelijke activiteiten.
-
-Services die versleuteling op rest implementeren, zijn doorgaans altijd gevoelig voor de versleutelings sleutels of gegevens die niet versleuteld blijven op het hoststation (bijvoorbeeld in het wissel bestand van het besturings systeem van de host). Daarom moeten services controleren of het hostvolume voor hun services is versleuteld. Ter vereenvoudiging van dit reken team is de implementatie van host-versleuteling ingeschakeld, waarbij gebruik wordt gemaakt van [BitLocker](https://technet.microsoft.com/library/dn306081.aspx) -NKP en-extensies voor de DCM-service en-agent om het hostvolume te versleutelen.
-
-De meeste services worden geïmplementeerd op de standaard virtuele machines van Azure. Deze services moeten automatisch [host-versleuteling](../azure-security-disk-encryption-overview.md) ophalen wanneer Compute Hiermee wordt ingeschakeld. Voor services die worden uitgevoerd in Compute-beheerde clusters, wordt de host-versleuteling automatisch ingeschakeld als Windows Server 2016 wordt geïmplementeerd.
+Versleuteling in rust wordt uitvoerig besproken in [Azure Data Encryption-at-rest](encryption-atrest.md).
 
 ### <a name="encryption-in-transit"></a>Versleuteling in-transit
 
@@ -512,7 +442,7 @@ Lees meer over beveiliging door enkele van onze diep gaande onderwerpen over bev
 
 - [Versleuteling](https://www.microsoft.com/en-us/trustcenter/security/encryption)
 
-- [Identiteits-en toegangs beheer](https://www.microsoft.com/en-us/trustcenter/security/identity)
+- [Identiteits- en toegangsbeheer](https://www.microsoft.com/en-us/trustcenter/security/identity)
 
 - [Netwerk beveiliging](https://www.microsoft.com/en-us/trustcenter/security/networksecurity)
 

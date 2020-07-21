@@ -9,12 +9,12 @@ ms.date: 06/15/2020
 ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
-ms.openlocfilehash: 2338c523c13b16b4a63ee9de0d966182e26c3286
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 447653cdcaeb1a0bbf891a26e8bc0af5ead87fdb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223292"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518704"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Overzicht van Azure-pagina-blobs
 
@@ -34,9 +34,13 @@ Micro soft-services van derden, zoals Azure Site Recovery, Azure Backup, en veel
 * Livemigratie van toepassingen en gegevens van on-premises naar de Cloud: Kopieer de on-premises gegevens en gebruik REST-Api's om rechtstreeks naar een Azure-pagina-BLOB te schrijven terwijl de on-premises VM actief blijft. Zodra het doel actief is, kunt u snel een failover uitvoeren naar Azure VM met behulp van die gegevens. Op deze manier kunt u uw Vm's en virtuele schijven van on-premises naar de Cloud migreren met minimale downtime omdat de gegevens migratie op de achtergrond wordt uitgevoerd terwijl u de virtuele machine blijft gebruiken en de downtime die nodig is voor de failover kort is (in minuten).
 * Gedeelde toegang [op basis van SAS](../common/storage-sas-overview.md) , waarmee scenario's zoals meerdere lezers en single Writer met ondersteuning voor gelijktijdigheids beheer worden ingeschakeld.
 
+## <a name="pricing"></a>Prijzen
+
+Beide typen opslag die worden aangeboden met pagina-blobs hebben hun eigen prijs model. Premium-pagina-blobs volgen het prijs model Managed disks, terwijl standaard pagina-blobs worden gefactureerd op basis van gebruikte grootte en met elke trans actie. Zie de pagina met prijzen voor [Azure-pagina-blobs](https://azure.microsoft.com/pricing/details/storage/page-blobs/)voor meer informatie.
+
 ## <a name="page-blob-features"></a>Functies voor pagina-blobs
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>REST-API
 
 Raadpleeg het volgende document om aan de slag te gaan met [ontwikkelen met behulp van pagina-blobs](storage-dotnet-how-to-use-blobs.md). Bekijk bijvoorbeeld hoe u met de Storage-client bibliotheek voor .NET toegang hebt tot pagina-blobs. 
 

@@ -9,14 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 214d379525f2ee534415d713aa298ec858a84c92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c1fab15cade2ce23e053bc73028e6420692c3d8a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81868833"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518271"
 ---
 # <a name="protected-web-api-app-registration"></a>Beveiligde web-API: app-registratie
 
@@ -28,15 +29,15 @@ Voor de algemene stappen voor het registreren van een app raadpleegt u [Quick St
 
 Met het micro soft Identity platform-eind punt kunnen v 1.0-tokens en v 2.0-tokens worden uitgegeven. Zie [toegangs tokens](access-tokens.md)voor meer informatie over deze tokens.
 
-De geaccepteerde token versie is afhankelijk van de waarde van de **ondersteunde account typen** die u kiest bij het maken van uw toepassing.
+De token versie die uw API kan accepteren, is afhankelijk van de selectie van uw **ondersteunde account typen** wanneer u de registratie van de Web-API-toepassing maakt in de Azure Portal.
 
-- Als de waarde van **ondersteunde account typen** **accounts in een organisatorische Directory en persoonlijke micro soft-accounts (bijvoorbeeld Skype, Xbox, Outlook.com)** is, is de geaccepteerde token versie v 2.0.
-- Anders is de geaccepteerde token versie v 1.0.
+- Als de waarde van **ondersteunde account typen** **accounts in een organisatorische Directory en persoonlijke micro soft-accounts (bijvoorbeeld Skype, Xbox, Outlook.com)** is, moet de geaccepteerde token versie v 2.0 zijn.
+- Anders kan de geaccepteerde token versie v 1.0 zijn.
 
 Nadat u de toepassing hebt gemaakt, kunt u de geaccepteerde token versie vaststellen of wijzigen door de volgende stappen uit te voeren:
 
 1. Selecteer in de Azure Portal uw app en selecteer vervolgens **manifest**.
-1. Zoek de eigenschap **accessTokenAcceptedVersion** in het manifest. De standaard waarde van de eigenschap is 2.
+1. Zoek de eigenschap **accessTokenAcceptedVersion** in het manifest.
 1. De waarde geeft aan Azure Active Directory (Azure AD) welke token versie de Web-API accepteert.
     - Als de waarde 2 is, accepteert de Web-API v 2.0-tokens.
     - Als de waarde **Null**is, accepteert de Web-API v 1.0-tokens.
@@ -51,7 +52,7 @@ Web-Api's hoeven geen omleidings-URI te registreren, omdat er niet interactief e
 
 ## <a name="exposed-api"></a>Weer gegeven API
 
-Andere specifieke instellingen voor web-Api's zijn de beschik bare API en de weer gegeven bereiken.
+Andere instellingen die specifiek zijn voor web-Api's zijn de beschik bare API en de weer gegeven bereiken of app-rollen.
 
 ### <a name="application-id-uri-and-scopes"></a>URI en bereiken van de toepassings-ID
 
@@ -63,7 +64,7 @@ Tijdens de registratie van de app moet u deze para meters definiëren:
 - Een of meer scopes
 - Een of meer app-rollen
 
-De portal voor toepassings registratie raadt u standaard aan de resource-URI te gebruiken `api://{clientId}` . Deze URI is uniek, maar niet leesbaar. Als u de URI wijzigt, moet u ervoor zorgen dat de nieuwe waarde uniek is.
+De portal voor toepassings registratie raadt u standaard aan de resource-URI te gebruiken `api://{clientId}` . Deze URI is uniek, maar niet leesbaar. Als u de URI wijzigt, moet u ervoor zorgen dat de nieuwe waarde uniek is. De portal voor toepassings registratie zorgt ervoor dat u een [geconfigureerde Uitgever domein](howto-configure-publisher-domain.md) gebruikt
 
 Voor client toepassingen worden scopes weer gegeven als *gedelegeerde machtigingen* en app-rollen weer gegeven als *toepassings machtigingen* voor uw web-API.
 
@@ -72,10 +73,12 @@ Bereiken worden ook weer gegeven in het venster met toestemming dat wordt gepres
 - Zoals gezien door een gebruiker.
 - Die door een Tenant beheerder worden gezien en die beheerders toestemming kan verlenen.
 
+App-rollen kunnen niet worden door gegeven aan een gebruiker (omdat ze worden gebruikt door een toepassing die de Web-API aanroept namens zichzelf). Een Tenant beheerder moet toestemming geven voor client toepassingen van uw web-API die app-rollen weer geven. Zie [beheerders toestemming](v2-admin-consent.md) voor meer informatie
+
 ### <a name="exposing-delegated-permissions-scopes"></a>Gedelegeerde machtigingen (bereiken) weer geven
 
 1. Selecteer **een API beschikbaar** maken in de registratie van de toepassing.
-1. Selecteer **Een bereik toevoegen**.
+1. Selecteer **een bereik toevoegen**.
 1. Als u hierom wordt gevraagd, accepteert u de voorgestelde URI voor de toepassings-ID ( `api://{clientId}` ) door **opslaan en door gaan**te selecteren.
 1. Geef deze waarden op:
     - Selecteer **Scope naam** en voer **access_as_user**in.

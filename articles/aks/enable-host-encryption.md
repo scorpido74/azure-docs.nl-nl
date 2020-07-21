@@ -4,12 +4,12 @@ description: Meer informatie over het configureren van een op een host gebaseerd
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 7b9d930d62d0acea30af9b5e7e12e43fa8fcd5da
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d2b34d8c3090eb6ae3f1445ff1fc663d90367977
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244307"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517719"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Versleuteling op basis van een host op de Azure Kubernetes-service (AKS) (preview)
 
@@ -27,18 +27,18 @@ Deze functie kan alleen worden ingesteld tijdens het maken van het cluster of he
 
 - Controleer of u de `aks-preview` cli-extensie v 0.4.55 of hoger hebt geïnstalleerd
 - Zorg ervoor dat u de `EncryptionAtHost` functie vlag onder `Microsoft.Compute` ingeschakeld hebt.
-- Zorg ervoor dat u de `EncryptionAtHost` functie vlag onder `Microsoft.ContainerService` ingeschakeld hebt.
+- Zorg ervoor dat u de `EnableEncryptionAtHostPreview` functie vlag onder `Microsoft.ContainerService` ingeschakeld hebt.
 
 ### <a name="register-encryptionathost--preview-features"></a>`EncryptionAtHost`Preview-functies registreren
 
-Als u een AKS-cluster wilt maken dat gebruikmaakt van versleuteling op basis van een host, moet u de `EncryptionAtHost` functie vlag inschakelen voor uw abonnement.
+Als u een AKS-cluster wilt maken dat gebruikmaakt van versleuteling op basis van een host, moet u de `EnableEncryptionAtHostPreview` en `EncryptionAtHost` functie vlaggen inschakelen voor uw abonnement.
 
 Registreer de `EncryptionAtHost` functie vlag met de opdracht [AZ feature REGI ster][az-feature-register] , zoals weer gegeven in het volgende voor beeld:
 
 ```azurecli-interactive
 az feature register --namespace "Microsoft.Compute" --name "EncryptionAtHost"
 
-az feature register --namespace "Microsoft.ContainerService"  --name "EncryptionAtHost"
+az feature register --namespace "Microsoft.ContainerService"  --name "EnableEncryptionAtHostPreview"
 ```
 
 Het duurt enkele minuten voordat de status is *geregistreerd*. U kunt de registratie status controleren met de opdracht [AZ Feature List][az-feature-list] :
@@ -46,7 +46,7 @@ Het duurt enkele minuten voordat de status is *geregistreerd*. U kunt de registr
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.Compute/EncryptionAtHost')].{Name:name,State:properties.state}"
 
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EncryptionAtHost')].{Name:name,State:properties.state}"
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEncryptionAtHostPreview')].{Name:name,State:properties.state}"
 ```
 
 Als u klaar bent, vernieuwt u de registratie van de `Microsoft.ContainerService` `Microsoft.Compute` resource providers met de opdracht [AZ provider REGI ster][az-provider-register] :
@@ -58,12 +58,12 @@ az provider register --namespace Microsoft.ContainerService
 ```
 
 > [!IMPORTANT]
-> De preview-functies van AKS zijn self-service opt-in. Previews worden ' as-is ' en ' as available ' gegeven en zijn uitgesloten van de service level agreements en beperkte garantie. AKS-previews worden gedeeltelijk gedekt door klant ondersteuning, op basis van de beste inspanningen. Daarom zijn deze functies niet bedoeld voor productie gebruik. Raadpleeg de volgende artikelen met technische ondersteuning voor meer informatie.
+> De preview-functies van AKS zijn self-service opt-in. Previews worden ' as-is ' en ' as available ' gegeven en zijn uitgesloten van de service level agreements en beperkte garantie. AKS-previews worden gedeeltelijk gedekt door klant ondersteuning, op basis van de beste inspanningen. Daarom zijn deze functies niet bedoeld voor productie gebruik. Raadpleeg de volgende ondersteunings artikelen voor meer informatie:
 >
 > - [AKS-ondersteunings beleid](support-policies.md)
 > - [Veelgestelde vragen over ondersteuning voor Azure](faq.md)
 
-### <a name="install-aks-preview-cli-extension"></a>AKS-preview CLI-extensie installeren
+### <a name="install-aks-preview-cli-extension"></a>De CLI-extensie aks-preview installeren
 
 Als u een AKS-cluster wilt maken dat is gebaseerd op een host-gebaseerde versleuteling, hebt u de meest recente *AKS-preview cli-* extensie nodig. Installeer de Azure CLI *-extensie AKS-preview* met behulp van de opdracht [AZ extension add][az-extension-add] of Controleer of er beschik bare updates zijn met behulp van de opdracht [AZ extension update][az-extension-update] :
 

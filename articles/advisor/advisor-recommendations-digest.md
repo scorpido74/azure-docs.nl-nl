@@ -4,11 +4,12 @@ description: Periodieke samen vatting van uw actieve aanbevelingen ophalen
 ms.topic: article
 ms.date: 03/16/2020
 ms.author: sagupt
-ms.openlocfilehash: 98f1bfd42a486e005cd1e777a83f5b615a7c8304
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e446fca11e029e28e44ada884efd071f3142514c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79502462"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518076"
 ---
 # <a name="configure-periodic-summary-for-recommendations"></a>Periodieke samen vatting voor aanbevelingen configureren
 
@@ -20,7 +21,7 @@ Advisor **Recommendation digesties** bieden een gemakkelijke en proactieve manie
 Met de functie voor het maken van **aanbevelings samenvatting** kunt u de samen vatting configureren. U kunt de onderstaande para meters voor configuraties selecteren:
 1. Categorie: we hebben aanbevelings categorieën zoals kosten, hoge Beschik baarheid, prestaties en bedrijfs kwaliteit. De mogelijkheid is nog niet beschikbaar voor beveiligings aanbevelingen.
 2. Frequentie van Digest: frequentie voor de samenvattings meldingen kan wekelijks, twee weken en maandelijks zijn.
-3. Actie groep: u kunt een bestaande actie groep selecteren of een nieuwe actie groep maken. Zie [actie groepen maken en beheren](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)voor meer informatie over actie groepen.
+3. Actie groep: u kunt een bestaande actie groep selecteren of een nieuwe actie groep maken. Zie [actie groepen maken en beheren](../azure-monitor/platform/action-groups.md)voor meer informatie over actie groepen.
 4. Taal voor de samen vatting
 5. Naam van aanbevelings Samenvatting: u kunt een gebruiks vriendelijke teken reeks gebruiken om de samen vattingen beter bij te houden en te controleren.
 
@@ -43,7 +44,7 @@ Hier volgen de stappen voor het maken van **aanbevelings Samenvatting:**
 
    ![Invoer voorwaarden voor aanbevelings samenvatting opgeven](./media/digest-2.png)
 
-* **Stap 5:** Selecteer in de sectie **actie groep** de **actie groep** voor de samen vatting. Hier vindt u meer informatie- [actie groepen maken en beheren](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
+* **Stap 5:** Selecteer in de sectie **actie groep** de **actie groep** voor de samen vatting. Hier vindt u meer informatie- [actie groepen maken en beheren](../azure-monitor/platform/action-groups.md)
 
    ![Invoer actie groep aanbevelings samenvatting opgeven](./media/digest-3.png)
 
@@ -59,4 +60,4 @@ Zie voor meer informatie over Advisor-aanbevelingen:
 * [Aanbevelingen voor Advisor-prestaties](advisor-performance-recommendations.md)
 * [Aanbevelingen voor de beveiliging van Advisor](advisor-security-recommendations.md)
 * [Aanbevelingen voor operationele uitmuntendheid van Advisor](advisor-operational-excellence-recommendations.md)
-* [Advisor REST API](https://docs.microsoft.com/rest/api/advisor/)
+* [Advisor REST API](/rest/api/advisor/)

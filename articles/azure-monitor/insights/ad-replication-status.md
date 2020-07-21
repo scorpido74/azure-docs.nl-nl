@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/24/2018
-ms.openlocfilehash: 30b0c7c87f6d55586b931be1445b175ce58565d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 65ced5021305dce15236ded59cf79a6578e7372a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80055906"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516784"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Active Directory replicatie status controleren met Azure Monitor
 
@@ -64,7 +64,7 @@ De volgende tabel toont methoden voor gegevens verzameling en andere informatie 
 
 [!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
 
-Op de tegel AD-replicatiestatus wordt weer gegeven hoeveel replicatie fouten er momenteel zijn. **Kritieke replicatie fouten** zijn fouten die gelijk zijn aan of hoger 75% van de [tombstone-levens duur](https://technet.microsoft.com/library/cc784932%28v=ws.10%29.aspx) voor uw Active Directory-forest.
+Op de tegel AD-replicatiestatus wordt weer gegeven hoeveel replicatie fouten er momenteel zijn. **Kritieke replicatie fouten** zijn fouten die gelijk zijn aan of hoger 75% van de [tombstone-levens duur](/previous-versions/windows/it-pro/windows-server-2003/cc784932(v=ws.10)) voor uw Active Directory-forest.
 
 ![AD-replicatiestatus tegel](./media/ad-replication-status/oms-ad-replication-tile.png)
 

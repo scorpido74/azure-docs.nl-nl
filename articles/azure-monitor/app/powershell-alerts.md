@@ -3,12 +3,12 @@ title: Power shell gebruiken om waarschuwingen in te stellen in Application Insi
 description: De configuratie van Application Insights automatiseren om e-mails over metrische wijzigingen te ontvangen.
 ms.topic: conceptual
 ms.date: 10/31/2016
-ms.openlocfilehash: ea33ecfbc02bfed75a66e751ce1788474a6d0e8f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3a3d614ec57242a2ea4b29a86d6365a2efe56f94
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111300"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516954"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>PowerShell gebruiken om waarschuwingen in te stellen in Application Insights
 
@@ -101,7 +101,7 @@ Add-AzMetricAlertRule -Name "poor sales" `
 Dezelfde regel kan worden gebruikt voor de metrische gegevens die worden gerapporteerd met behulp van de [para meter meet](../../azure-monitor/app/api-custom-events-metrics.md#properties) van een andere tracerings aanroep, zoals track event of trackPageView.
 
 ## <a name="metric-names"></a>Metrische namen
-| Naam van metrische gegevens | Scherm naam | Description |
+| Naam van meetwaarde | Scherm naam | Beschrijving |
 | --- | --- | --- |
 | `basicExceptionBrowser.count` |Browseruitzonderingen |Aantal niet-onderschepte uitzonde ringen dat in de browser wordt gegenereerd. |
 | `basicExceptionServer.count` |Server uitzonderingen |Aantal niet-verwerkte uitzonde ringen die door de app worden gegenereerd |
@@ -138,8 +138,8 @@ De metrische gegevens worden verzonden door verschillende telemetrie-modules:
 ## <a name="webhooks"></a>Webhooks
 U kunt [uw reactie op een waarschuwing automatiseren](../../azure-monitor/platform/alerts-webhooks.md). Azure roept een webadres van uw keuze aan wanneer een waarschuwing wordt gegenereerd.
 
-## <a name="see-also"></a>Zie ook
-* [Script voor het configureren van Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)
+## <a name="see-also"></a>Zie tevens
+* [Script voor het configureren van Application Insights](./create-new-resource.md#creating-a-resource-automatically)
 * [Application Insights-en web-test resources maken op basis van sjablonen](powershell.md)
 * [Koppelings Microsoft Azure Diagnostics automatiseren voor Application Insights](powershell-azure-diagnostics.md)
 * [Uw reactie op een waarschuwing automatiseren](../../azure-monitor/platform/alerts-webhooks.md)

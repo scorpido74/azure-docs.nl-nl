@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/29/2019
 ms.author: memildin
-ms.openlocfilehash: dcf7df501665ea3885d00b9f7668a95cbbf02428
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a9541eb3b7c662b43de0d3a609ecec4fe2621ca
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78208539"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519402"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Endpoint Protection-evaluatie en aanbevelingen in Azure Security Center
 
@@ -58,25 +59,19 @@ Azure Security Center biedt status beoordelingen van [ondersteunde](security-cen
 
 * Security Center raadt u **aan om problemen met de Endpoint Protection-status op uw computers op te lossen** wanneer **Get-MprotComputerStatus** wordt uitgevoerd en een van de volgende situaties zich voordoet:
 
-    * Ten minste één van de volgende eigenschappen is onwaar:
+  * Ten minste één van de volgende eigenschappen is onwaar:
 
-            **AMServiceEnabled**
+    * **AMServiceEnabled**
+    * **AntispywareEnabled**
+    * **RealTimeProtectionEnabled**
+    * **BehaviorMonitorEnabled**
+    * **IoavProtectionEnabled**
+    * **OnAccessProtectionEnabled**
 
-            **AntispywareEnabled**
-    
-            **RealTimeProtectionEnabled**
-    
-            **BehaviorMonitorEnabled**
-    
-            **IoavProtectionEnabled**
-    
-            **OnAccessProtectionEnabled**
-          
-    * Als een of beide van de volgende handtekening updates groter of gelijk zijn aan 7. 
+  * Als een of beide van de volgende handtekening updates groter of gelijk zijn aan 7. 
 
-            **AntispywareSignatureAge**
-    
-            **AntivirusSignatureAge**
+    * **AntispywareSignatureAge**
+    * **AntivirusSignatureAge**
 
 ## <a name="trend-micro"></a>Trend Micro
 

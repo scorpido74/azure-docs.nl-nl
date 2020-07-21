@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/30/2019
+ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 40e788099a159e1f60c0af02deccd7e3bef82744
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4904cd95dc81aad959c88c1dfdb09416923046e6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82181729"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518178"
 ---
 # <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>Een web-app die web-Api's aanroept: een Token ophalen voor de app
 
@@ -50,6 +50,7 @@ De `ITokenAcquisition` service wordt geïnjecteerd door ASP.net met behulp van a
 Hier volgt een vereenvoudigde code voor de actie van `HomeController` , waarmee een token wordt opgehaald om Microsoft Graph aan te roepen:
 
 ```csharp
+[AuthorizeForScopes(Scopes = new[] { "user.read" })]
 public async Task<IActionResult> Profile()
 {
  // Acquire the access token.
@@ -65,6 +66,8 @@ public async Task<IActionResult> Profile()
 
 Zie de stap 2 ([2-1-Web-app-aanroepen Microsoft Graph](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)) van de zelf studie [MS-Identity-aspnetcore-zelf studie](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) voor meer informatie over de code die is vereist voor dit scenario.
 
+Het `AuthorizeForScopes` kenmerk boven op de controller actie (of op de pagina als u een Scheer sjabloon gebruikt) wordt geboden door micro soft. Identity. Web. Hiermee wordt gegarandeerd dat de gebruiker om toestemming wordt gevraagd, indien nodig en incrementeel.
+
 Er zijn andere complexe variaties, zoals:
 
 - Meerdere Api's aanroepen.
@@ -79,6 +82,36 @@ De code voor ASP.NET is vergelijkbaar met de code die wordt weer gegeven voor AS
 - Een controller actie, beveiligd door het kenmerk [autoriseren], extraheert de Tenant-ID en de gebruikers-ID van het `ClaimsPrincipal` lid van de controller. (ASP.NET gebruikt `HttpContext.User` .)
 - Van daaruit bouwt het een MSAL.NET- `IConfidentialClientApplication` object.
 - Ten slotte wordt de `AcquireTokenSilent` methode van de vertrouwelijke client toepassing aangeroepen.
+- Als er interactie is vereist, moet de Web-App de gebruiker vragen (opnieuw aanmelden) en vraagt u om meer claims.
+
+Het volgende code fragment is geëxtraheerd uit [HomeController. cs # L157-L192](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/257c8f96ec3ff875c351d1377b36403eed942a18/WebApp/Controllers/HomeController.cs#L157-L192) in het voor beeld [MS-Identity-ASPNET-webapp-openidconnect](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect) ASP.NET MVC-code:
+
+```C#
+public async Task<ActionResult> ReadMail()
+{
+    IConfidentialClientApplication app = MsalAppBuilder.BuildConfidentialClientApplication();
+    AuthenticationResult result = null;
+    var account = await app.GetAccountAsync(ClaimsPrincipal.Current.GetMsalAccountId());
+    string[] scopes = { "Mail.Read" };
+
+    try
+    {
+        // try to get token silently
+        result = await app.AcquireTokenSilent(scopes, account).ExecuteAsync().ConfigureAwait(false);
+    }
+    catch (MsalUiRequiredException)
+    {
+        ViewBag.Relogin = "true";
+        return View();
+    }
+
+    // More code here
+    return View();
+}
+```
+
+Zie de code voor [BuildConfidentialClientApplication ()](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Utils/MsalAppBuilder.cs) en [GetMsalAccountId](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/257c8f96ec3ff875c351d1377b36403eed942a18/WebApp/Utils/ClaimPrincipalExtension.cs#L38) in het code-voor beeld voor meer informatie.
+
 
 # <a name="java"></a>[Java](#tab/java)
 

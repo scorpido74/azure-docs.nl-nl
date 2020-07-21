@@ -1,25 +1,28 @@
 ---
-title: Azure Active Directory integreren met Azure Kubernetes Service
-description: Meer informatie over het gebruik van de Azure CLI om een AKS-cluster (Azure Kubernetes service) te maken en Azure Active Directory in te scha kelen
+title: Azure Active Directory integreren met Azure Kubernetes service (verouderd)
+description: Meer informatie over het gebruik van de Azure CLI voor het maken en Azure Active Directory van Azure Kubernetes service (AKS)-cluster (verouderd)
 services: container-service
 author: TomGeske
 ms.topic: article
-ms.date: 07/08/2020
+ms.date: 07/20/2020
 ms.author: thomasge
-ms.openlocfilehash: 0bbaca733eb9c1fffbc5c6781b51429edd73fb46
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: dfc3a546f4845d5eb2e4e144b66b5d97e4a68829
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252076"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518025"
 ---
-# <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Azure Active Directory integreren met de Azure Kubernetes-service met behulp van Azure CLI
+# <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli-legacy"></a>Azure Active Directory integreren met de Azure Kubernetes-service met behulp van de Azure CLI (verouderd)
 
 Azure Kubernetes service (AKS) kan worden geconfigureerd om Azure Active Directory (AD) te gebruiken voor gebruikers verificatie. In deze configuratie kunt u zich aanmelden bij een AKS-cluster met behulp van een Azure AD-verificatie token. Cluster operators kunnen ook RBAC (Kubernetes Role-based Access Control) configureren op basis van de identiteit of het lidmaatschap van de Directory groep van een gebruiker.
 
 In dit artikel wordt beschreven hoe u de vereiste onderdelen van Azure AD maakt en vervolgens een Azure AD-cluster implementeert en een eenvoudige RBAC-rol maakt in het AKS-cluster.
 
 Zie [Azure CLI-voor beelden-AKS-integratie met Azure AD][complete-script]voor het volledige voorbeeld script dat in dit artikel wordt gebruikt.
+
+> [!Important]
+> AKS heeft een nieuwe, verbeterde door [AKS beheerde Azure AD-][managed-aad] ervaring waarvoor u de server-of client toepassing niet hoeft te beheren. Als u wilt migreren, volgt u de instructies [hier][managed-aad-migrate].
 
 ## <a name="the-following-limitations-apply"></a>De volgende beperkingen zijn van toepassing:
 
@@ -29,7 +32,7 @@ Zie [Azure CLI-voor beelden-AKS-integratie met Azure AD][complete-script]voor he
 
 U moet de Azure CLI-versie 2.0.61 of hoger hebben geïnstalleerd en geconfigureerd. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][install-azure-cli] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
-Ga naar [https://shell.azure.com](https://shell.azure.com) om Cloud shell in uw browser te openen.
+Ga naar [https://shell.azure.com](https://shell.azure.com) om Cloud Shell in uw browser te openen.
 
 Voor consistentie en het uitvoeren van de opdrachten in dit artikel maakt u een variabele voor de gewenste AKS-cluster naam. In het volgende voor beeld wordt de naam *myakscluster*gebruikt:
 
@@ -280,3 +283,5 @@ Zie [Aanbevolen procedures voor verificatie en autorisatie in AKS][operator-best
 [rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-controls-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md
+[managed-aad]: managed-aad.md
+[managed-aad-migrate]: managed-aad.md#upgrading-to-aks-managed-azure-ad-integration
