@@ -3,16 +3,17 @@ title: Docker-toepassingen bewaken in Azure-toepassing Insights | Microsoft Docs
 description: Docker-prestatie meter items, gebeurtenissen en uitzonde ringen kunnen worden weer gegeven op Application Insights, samen met de telemetrie van de apps in de container.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 5ff3d6a2b31425a3fb6857c8c6aed45f7ef18d64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6af39db68c2020e578fe6fbd39870b2e00a16e07
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77669604"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539921"
 ---
 # <a name="monitor-docker-applications-in-application-insights-deprecated"></a>Docker-toepassingen in Application Insights bewaken (afgeschaft)
 
 > [!NOTE]
-> Deze oplossing is afgeschaft. Als u meer wilt weten over onze huidige investeringen in container bewaking, kunt u het beste [Azure monitor voor containers](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview)uitchecken.
+> Deze oplossing is afgeschaft. Als u meer wilt weten over onze huidige investeringen in container bewaking, kunt u het beste [Azure monitor voor containers](../insights/container-insights-overview.md)uitchecken.
 
 Levenscyclus gebeurtenissen en prestatie meter items van [docker](https://www.docker.com/) -containers kunnen worden gediagrameerd op Application Insights. Installeer de [Application Insights](https://hub.docker.com/r/microsoft/applicationinsights/) installatie kopie in een container in uw host en Hiermee worden de prestatie meter items voor de host weer gegeven, evenals de andere installatie kopieën.
 

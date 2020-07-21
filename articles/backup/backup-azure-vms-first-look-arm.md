@@ -3,11 +3,12 @@ title: Een back-up van een Azure VM maken op basis van de VM-instellingen
 description: In dit artikel vindt u informatie over het maken van een back-up van een enkelvoudige Azure-VM of meerdere virtuele Azure-machines met de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 72d6e5657add3e815bb0d77fadbdbc716712bee5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 580cb1ad5f611991212bc8cdb48c66339f14d8e8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76705442"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538884"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>Een back-up van een Azure VM maken op basis van de VM-instellingen
 
@@ -25,12 +26,12 @@ In dit artikel wordt uitgelegd hoe u een back-up van virtuele Azure-machines maa
 
 Azure Backup installeert een uitbrei ding op de VM-agent die op de computer wordt uitgevoerd om een back-up te maken van virtuele Azure-machines. Als uw virtuele machine is gemaakt op basis van een installatie kopie van Azure Marketplace, wordt de agent uitgevoerd. In sommige gevallen, bijvoorbeeld als u een aangepaste VM maakt of als u een machine van on-premises migreert. mogelijk moet u de agent hand matig installeren.
 
-- Als u de VM-agent hand matig moet installeren, volgt u de instructies voor [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) -of [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) -vm's.
+- Als u de VM-agent hand matig moet installeren, volgt u de instructies voor [Windows](../virtual-machines/extensions/agent-windows.md) -of [Linux](../virtual-machines/extensions/agent-linux.md) -vm's.
 - Wanneer de agent is geïnstalleerd en u back-up inschakelt, wordt de back-upextensie door Azure Backup op de agent geïnstalleerd. Hiermee wordt de extensie zonder tussen komst van de gebruiker bijgewerkt en opgelost.
 
 ## <a name="back-up-from-azure-vm-settings"></a>Back-ups maken van Azure VM-instellingen
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Klik op **alle services** en typ **virtuele machines**in het filter en klik vervolgens op **virtuele machines**.
 3. Selecteer in de lijst met Vm's de virtuele machine waarvan u een back-up wilt maken.
 4. Klik in het menu VM op **back-up**.

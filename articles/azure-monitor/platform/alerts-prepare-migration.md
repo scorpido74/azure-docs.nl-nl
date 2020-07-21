@@ -6,11 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: f31fcc07bed0287c2f86ca4fe52bf02a2a1d2a71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 09db7684c84bbde038c67f9ccfb3f27f6b61bee6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81114412"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539546"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Uw logische apps en runbooks voorbereiden voor de migratie van klassieke waarschuwingsregels
 
@@ -27,12 +28,12 @@ De Api's die klassieke waarschuwings regels maken en beheren ( `microsoft.insigh
 
 De volgende tabel bevat een verwijzing naar de programmatische interfaces voor zowel klassieke als nieuwe waarschuwingen:
 
-|         |Klassieke waarschuwingen  |Nieuwe metrische waarschuwingen |
-|---------|---------|---------|
-|REST-API     | [micro soft. Insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules)         | [micro soft. Insights/metricalerts](https://docs.microsoft.com/rest/api/monitor/metricalerts)       |
-|Azure CLI     | [AZ-monitor waarschuwing](https://docs.microsoft.com/cli/azure/monitor/alert?view=azure-cli-latest)        | [waarschuwing AZ monitor Metrics](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
-|PowerShell      | [Verwijzing](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrule)       |  [Verwijzing](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)    |
-| Azure Resource Manager-sjabloon | [Voor klassieke waarschuwingen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-enable-template)|[Voor nieuwe metrische waarschuwingen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)|
+| Implementatie script type | Klassieke waarschuwingen | Nieuwe metrische waarschuwingen |
+| ---------------------- | -------------- | ----------------- |
+|REST-API     | [micro soft. Insights/alertrules](/rest/api/monitor/alertrules)         | [micro soft. Insights/metricalerts](/rest/api/monitor/metricalerts)       |
+|Azure CLI     | [AZ-monitor waarschuwing](/cli/azure/monitor/alert?view=azure-cli-latest)        | [waarschuwing AZ monitor Metrics](/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
+|PowerShell      | [Verwijzing](/powershell/module/az.monitor/add-azmetricalertrule)       |  [Verwijzing](/powershell/module/az.monitor/add-azmetricalertrulev2)    |
+| Azure Resource Manager-sjabloon | [Voor klassieke waarschuwingen](./alerts-enable-template.md)|[Voor nieuwe metrische waarschuwingen](./alerts-metric-create-templates.md)|
 
 ## <a name="notification-payload-changes"></a>Wijzigingen aan de meldings lading
 
@@ -40,8 +41,8 @@ De indeling van de meldings lading verschilt enigszins van de [klassieke waarsch
 
 Gebruik de volgende tabel om de velden voor de nettolading van webhooks van de klassieke indeling toe te wijzen aan de nieuwe indeling:
 
-|  |Klassieke waarschuwingen  |Nieuwe metrische waarschuwingen |
-|---------|---------|---------|
+| Type meldings eindpunt | Klassieke waarschuwingen | Nieuwe metrische waarschuwingen |
+| -------------------------- | -------------- | ----------------- |
 |Is de waarschuwing geactiveerd of opgelost?    | **hebben**       | **data. status** |
 |Contextuele informatie over de waarschuwing     | **context**        | **data. context**        |
 |Tijds tempel waarop de waarschuwing is geactiveerd of opgelost     | **context. time stamp**       | **data. context. time stamp**        |
@@ -49,7 +50,7 @@ Gebruik de volgende tabel om de velden voor de nettolading van webhooks van de k
 | Naam van waarschuwingsregel | **context.name** | **data.context.name** |
 | Beschrijving van de waarschuwings regel | **context. Description** | **data. context. Description** |
 | Voor waarde waarschuwings regel | **context. condition** | **data. context. condition** |
-| Naam van metrische gegevens | **context. condition. metrische** | **data. context. condition. overzet [0]. metrische** |
+| Naam van meetwaarde | **context. condition. metrische** | **data. context. condition. overzet [0]. metrische** |
 | Tijd aggregatie (hoe de metrische gegevens worden geaggregeerd over het evaluatie venster)| **context. condition. timeAggregation** | **context. condition. timeAggregation** |
 | Evaluatie periode | **context. condition. windowSize** | **data. context. condition. windowSize** |
 | Operator (hoe de cumulatieve metrische waarde wordt vergeleken met de drempel) | **context. condition. operator** | **data. context. condition. operator** |
@@ -149,11 +150,11 @@ else {
 
 ```
 
-Zie de [Azure Automation-documentatie](https://docs.microsoft.com/azure/automation/automation-create-alert-triggered-runbook)voor een volledig voor beeld van een runbook dat een virtuele machine stopt wanneer een waarschuwing wordt geactiveerd.
+Zie de [Azure Automation-documentatie](../../automation/automation-create-alert-triggered-runbook.md)voor een volledig voor beeld van een runbook dat een virtuele machine stopt wanneer een waarschuwing wordt geactiveerd.
 
 ## <a name="partner-integration-via-webhooks"></a>Partner integratie via webhooks
 
-De meeste van [onze partners die integreren met klassieke waarschuwingen](https://docs.microsoft.com/azure/azure-monitor/platform/partners) , ondersteunen reeds nieuwere metrische waarschuwingen via hun integraties. Bekende integraties die al werken met nieuwe metrische waarschuwingen zijn:
+De meeste van [onze partners die integreren met klassieke waarschuwingen](./partners.md) , ondersteunen reeds nieuwere metrische waarschuwingen via hun integraties. Bekende integraties die al werken met nieuwe metrische waarschuwingen zijn:
 
 - [PagerDuty](https://www.pagerduty.com/docs/guides/azure-integration-guide/)
 - [OpsGenie](https://docs.opsgenie.com/docs/microsoft-azure-integration)

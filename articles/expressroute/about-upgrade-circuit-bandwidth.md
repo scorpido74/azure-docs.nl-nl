@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9f44cbd9b735839640702970a65de239b36b3f30
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a8f5aaa7b2a054aa31198779414387cebf0f0fbd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86209547"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537034"
 ---
 # <a name="about-upgrading-expressroute-circuit-bandwidth"></a>Over het upgraden van ExpressRoute-circuit bandbreedte
 
@@ -34,7 +34,7 @@ Als er capaciteit beschikbaar is, kunt u het circuit bijwerken met behulp van de
 
 Als de ExpressRoute-partner onvoldoende capaciteit heeft, moet u een nieuw circuit maken dat is geconfigureerd voor de gewenste band breedte. Als u de connectiviteit wilt behouden, moet u het oude circuit pas verwijderen als het nieuwe circuit is ingericht, peering is geconfigureerd en (met betrekking tot privé-peering) het verbindings object voor de gateway van het virtuele ExpressRoute-netwerk is ingericht.
 
-Als uw ExpressRoute-partner niet voldoende beschik bare capaciteit heeft, moet u extra capaciteit aanvragen op de gewenste locatie van de peering. Zodra de nieuwe capaciteit is ingericht, kunt u de stappen in de artikelen in de sectie [band breedte van het upgrade circuit](#upgrade) gebruiken om een nieuw circuit te maken, de verbinding te configureren en het oude circuit te verwijderen:
+Als uw ExpressRoute-partner niet voldoende beschik bare capaciteit heeft, moet u extra capaciteit aanvragen op de gewenste locatie van de peering. Zodra de nieuwe capaciteit is ingericht, kunt u de stappen in de artikelen in de sectie [band breedte van het upgrade circuit](#upgrade) gebruiken om een nieuw circuit te maken, de verbinding te configureren en het oude circuit te verwijderen.
 
 
 ### <a name="insufficient-expressroute-direct-bandwidth"></a><a name="bandwidth"></a>Onvoldoende ExpressRoute directe band breedte

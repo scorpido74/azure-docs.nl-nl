@@ -6,17 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
-ms.openlocfilehash: 6cd2a28ddbe970385ff44deec2158c257937982e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e8e2015e7d0798542ff0c80d8eb39461918ad67
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82591649"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539598"
 ---
 # <a name="overview-of-log-queries-in-azure-monitor"></a>Overzicht van logboek query's in Azure Monitor
 Met logboek query's kunt u de waarde van de gegevens die in [Azure monitor logboeken](../platform/data-platform-logs.md)worden verzameld, volledig benutten. Met een krachtige query taal kunt u gegevens uit meerdere tabellen samen voegen, grote gegevens sets verzamelen en complexe bewerkingen met minimale code uitvoeren. Vrijwel elke vraag kan worden beantwoord en de analyse wordt uitgevoerd zolang de ondersteunende gegevens zijn verzameld en u begrijpt hoe u de juiste query kunt bouwen.
 
-Sommige functies in Azure Monitor, zoals [inzichten](../insights/insights-overview.md) en [oplossingen](../insights/solutions-inventory.md) , verwerken logboek gegevens zonder dat u de onderliggende query's hoeft aan te bieden. Als u andere functies van Azure Monitor volledig wilt benutten, moet u weten hoe query's worden samengesteld en hoe u deze kunt gebruiken om gegevens in Azure Monitor logboeken interactief te analyseren.
+Sommige functies in Azure Monitor, zoals [inzichten](../insights/insights-overview.md) en [oplossingen](../monitor-reference.md) , verwerken logboek gegevens zonder dat u de onderliggende query's hoeft aan te bieden. Als u andere functies van Azure Monitor volledig wilt benutten, moet u weten hoe query's worden samengesteld en hoe u deze kunt gebruiken om gegevens in Azure Monitor logboeken interactief te analyseren.
 
 Gebruik dit artikel als uitgangs punt voor het leren over logboek query's in Azure Monitor. De oplossing beantwoordt veelgestelde vragen en bevat koppelingen naar andere documentatie met meer informatie en lessen.
 

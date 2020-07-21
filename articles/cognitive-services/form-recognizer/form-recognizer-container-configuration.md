@@ -7,34 +7,33 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 07/14/2020
 ms.author: aahi
-ms.openlocfilehash: bc48c0ba23e73adec312adfeeb1fcd57dba6ceec
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 324b70fc810acc4faba4f488f821049f7eb0875e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80879153"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538000"
 ---
 # <a name="configure-form-recognizer-containers"></a>Containers voor formulier herkenning configureren
 
+[!INCLUDE [Form Recognizer containers limit](includes/container-limit.md)]
+
 U kunt met behulp van Azure Form Recognizer-containers een toepassings architectuur maken die is geoptimaliseerd om te profiteren van zowel robuuste Cloud mogelijkheden als Edge-locatie.
 
-U configureert de indeling van de formulier Recognizer-container run-time `docker run` met behulp van de opdracht argumenten. Deze container heeft verschillende vereiste instellingen en enkele optionele instellingen. Zie de sectie [' voor beeld van docker-opdrachten uitvoeren '](#example-docker-run-commands) voor enkele voor beelden. De container-specifieke instellingen zijn de facturerings instellingen.
-
-> [!IMPORTANT]
-> De Form Recognizer-containers gebruiken momenteel versie 1,0 van de API voor formulier herkenning. U kunt in plaats daarvan de meest recente versie van de API openen met behulp van de beheerde service.
+U configureert de indeling van de formulier Recognizer-container run-time met behulp van de `docker run` opdracht argumenten. Deze container heeft verschillende vereiste instellingen en enkele optionele instellingen. Zie de sectie [' voor beeld van docker-opdrachten uitvoeren '](#example-docker-run-commands) voor enkele voor beelden. De container-specifieke instellingen zijn de facturerings instellingen.
 
 ## <a name="configuration-settings"></a>Configuratie-instellingen
 
 [!INCLUDE [Container shared configuration settings table](../../../includes/cognitive-services-containers-configuration-shared-settings-table.md)]
 
 > [!IMPORTANT]
-> De [`ApiKey`](#apikey-configuration-setting)instellingen [`Billing`](#billing-configuration-setting), en [`Eula`](#eula-setting) worden samen gebruikt. U moet geldige waarden opgeven voor alle drie de instellingen; anders kan de container niet worden gestart. Zie [facturering](form-recognizer-container-howto.md#billing)voor meer informatie over het gebruik van deze configuratie-instellingen voor het instantiëren van een container.
+> De [`ApiKey`](#apikey-configuration-setting) [`Billing`](#billing-configuration-setting) instellingen, en [`Eula`](#eula-setting) worden samen gebruikt. U moet geldige waarden opgeven voor alle drie de instellingen; anders kan de container niet worden gestart. Zie [facturering](form-recognizer-container-howto.md#billing)voor meer informatie over het gebruik van deze configuratie-instellingen voor het instantiëren van een container.
 
 ## <a name="apikey-configuration-setting"></a>Configuratie-instelling ApiKey
 
-Met `ApiKey` deze instelling geeft u de Azure-resource sleutel op die wordt gebruikt voor het bijhouden van facturerings gegevens voor de container. De waarde voor ApiKey moet een geldige sleutel zijn voor de _formulier Recognizer_ -resource die is opgegeven `Billing` in de sectie facturerings configuratie-instelling.
+Met deze `ApiKey` instelling geeft u de Azure-resource sleutel op die wordt gebruikt voor het bijhouden van facturerings gegevens voor de container. De waarde voor ApiKey moet een geldige sleutel zijn voor de _formulier Recognizer_ -resource die is opgegeven `Billing` in de sectie facturerings configuratie-instelling.
 
 U kunt deze instelling vinden in de Azure Portal, in de vorm van het **resource beheer voor formulieren**, onder **sleutels**.
 
@@ -44,13 +43,13 @@ U kunt deze instelling vinden in de Azure Portal, in de vorm van het **resource 
 
 ## <a name="billing-configuration-setting"></a>Instelling facturerings configuratie
 
-Met `Billing` deze instelling geeft u de EINDPUNT-URI op van de _formulier Recognizer_ -resource in azure die wordt gebruikt om de facturerings gegevens voor de container te meten. De waarde voor deze configuratie-instelling moet een geldige eind punt-URI zijn voor een _formulier Recognizer_ -resource in Azure. De container rapporteert het gebruik ongeveer elke 10 tot 15 minuten.
+Met deze `Billing` instelling geeft u de eindpunt-URI op van de _formulier Recognizer_ -resource in azure die wordt gebruikt om de facturerings gegevens voor de container te meten. De waarde voor deze configuratie-instelling moet een geldige eind punt-URI zijn voor een _formulier Recognizer_ -resource in Azure. De container rapporteert het gebruik ongeveer elke 10 tot 15 minuten.
 
 U kunt deze instelling vinden in het Azure Portal, in het **overzicht van formulier herkenning**, onder **eind punt**.
 
 |Vereist| Naam | Gegevenstype | Beschrijving |
 |--|------|-----------|-------------|
-|Ja| `Billing` | Tekenreeks | URL van het facturerings eindpunt. Zie [vereiste para meters verzamelen](form-recognizer-container-howto.md#gathering-required-parameters)voor meer informatie over het verkrijgen van de facturerings-URI. Zie [aangepaste subdomein namen voor Cognitive Services](../cognitive-services-custom-subdomains.md)voor meer informatie en een volledige lijst met regionale eind punten. |
+|Ja| `Billing` | Tekenreeks | URL van het facturerings eindpunt. Zie [vereiste para meters verzamelen](form-recognizer-container-howto.md#gathering-required-parameters)voor meer informatie over het verkrijgen van de facturerings-URI. Zie [Aangepaste subdomeinnamen voor Cognitive Services](../cognitive-services-custom-subdomains.md) voor meer informatie en een volledige lijst met regionale eindpunten. |
 
 ## <a name="eula-setting"></a>Gebruiksrecht overeenkomst instellen
 
@@ -84,9 +83,9 @@ De exacte syntaxis van de locatie voor het koppelen van de host varieert, afhank
 
 ## <a name="example-docker-run-commands"></a>Voor beeld van docker-opdrachten uitvoeren
 
-De volgende voor beelden gebruiken de configuratie-instellingen om te laten zien hoe u `docker run` -opdrachten schrijft en gebruikt. Wanneer deze wordt uitgevoerd, blijft de container actief totdat u [deze stopt](form-recognizer-container-howto.md#stop-the-container).
+De volgende voor beelden gebruiken de configuratie-instellingen om te laten zien hoe u-opdrachten schrijft en gebruikt `docker run` . Wanneer deze wordt uitgevoerd, blijft de container actief totdat u [deze stopt](form-recognizer-container-howto.md#stop-the-container).
 
-* **Regel voortzettings teken**: de docker-opdrachten in de volgende secties gebruiken een back slash\\() als een regel voortzettings teken. Vervang of verwijder dit teken, afhankelijk van de vereisten van uw hostbesturingssysteem.
+* **Regel voortzettings teken**: de docker-opdrachten in de volgende secties gebruiken een back slash ( \\ ) als een regel voortzettings teken. Vervang of verwijder dit teken, afhankelijk van de vereisten van uw hostbesturingssysteem.
 * **Argument volgorde**: Wijzig de volg orde van de argumenten alleen als u bekend bent met docker-containers.
 
 Vervang {_argument_name_} in de volgende tabel door uw eigen waarden:
@@ -96,14 +95,14 @@ Vervang {_argument_name_} in de volgende tabel door uw eigen waarden:
 | **{FORM_RECOGNIZER_API_KEY}** | De sleutel die wordt gebruikt om de container te starten. Deze is beschikbaar op de pagina Azure Portal formulier Recognizer Keys. |
 | **{FORM_RECOGNIZER_ENDPOINT_URI}** | De waarde voor de URL van het facturerings eindpunt is beschikbaar op de pagina overzicht van Azure Portal formulier Recognizer.|
 | **{COMPUTER_VISION_API_KEY}** | De sleutel is beschikbaar op de pagina Azure Portal Computer Vision-API sleutels.|
-| **{COMPUTER_VISION_ENDPOINT_URI}** | Het facturerings eindpunt. Als u een Computer Vision resource op basis van de Cloud gebruikt, is de URI-waarde beschikbaar op de overzichts pagina Azure Portal Computer Vision-API. Als u een cognitieve- *Services-Recognize-Text* -container gebruikt, gebruikt u de URL van het facturerings eindpunt dat is door `docker run` gegeven aan de container in de opdracht. |
+| **{COMPUTER_VISION_ENDPOINT_URI}** | Het facturerings eindpunt. Als u een Computer Vision resource op basis van de Cloud gebruikt, is de URI-waarde beschikbaar op de overzichts pagina Azure Portal Computer Vision-API. Als u een cognitieve- *Services-Recognize-Text* -container gebruikt, gebruikt u de URL van het facturerings eindpunt dat is door gegeven aan de container in de `docker run` opdracht. |
 
 Zie [vereiste para meters verzamelen](form-recognizer-container-howto.md#gathering-required-parameters) voor meer informatie over het verkrijgen van deze waarden.
 
 [!INCLUDE [cognitive-services-custom-subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
-> Als u de container wilt uitvoeren, `Eula`geeft `Billing`u de `ApiKey` opties, en op. anders wordt de container niet gestart. Zie [facturering](#billing-configuration-setting)voor meer informatie.
+> Als u de container wilt uitvoeren, geeft u de `Eula` Opties, en op. `Billing` `ApiKey` anders wordt de container niet gestart. Zie [facturering](#billing-configuration-setting)voor meer informatie.
 
 ## <a name="form-recognizer-container-docker-examples"></a>Docker-voor beelden van de container voor formulier herkenning
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 07/05/2020
-ms.openlocfilehash: 4fb593f303eea0f4866dc248412af2f261993e92
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: ad2e6a05fa8459d8e5a53d9bb8b8e08790a7d8ec
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170340"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539411"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor door de klant beheerde sleutel 
 
@@ -21,17 +21,17 @@ U wordt aangeraden [beperkingen en beperkingen](#limitationsandconstraints) hier
 
 ## <a name="customer-managed-key-cmk-overview"></a>Overzicht van door de klant beheerde sleutel (CMK)
 
-[Versleuteling bij rest](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)   is een veelvoorkomende privacy-en beveiligings vereiste in organisaties.U kunt de versleuteling op de rest van Azure volledig beheren, terwijl u verschillende opties hebt om versleutelings-of versleutelings sleutels nauw keurig te beheren.
+[Versleuteling bij rest](../../security/fundamentals/encryption-atrest.md)   is een veelvoorkomende privacy-en beveiligings vereiste in organisaties.U kunt de versleuteling op de rest van Azure volledig beheren, terwijl u verschillende opties hebt om versleutelings-of versleutelings sleutels nauw keurig te beheren.
 
-Azure Monitor zorgt ervoor dat alle gegevens en opgeslagen query's op rest worden versleuteld met behulp van door micro soft beheerde sleutels (MMK). Azure Monitor biedt ook een optie voor versleuteling met behulp van uw eigen sleutel die is opgeslagen in uw [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) en die toegankelijk is voor opslag met door het systeem toegewezen [beheerde identiteits](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) verificatie. Deze sleutel (CMK) kan [software of hardware-HSM zijn beveiligd](https://docs.microsoft.com/azure/key-vault/key-vault-overview).
+Azure Monitor zorgt ervoor dat alle gegevens en opgeslagen query's op rest worden versleuteld met behulp van door micro soft beheerde sleutels (MMK). Azure Monitor biedt ook een optie voor versleuteling met behulp van uw eigen sleutel die is opgeslagen in uw [Azure Key Vault](../../key-vault/general/overview.md) en die toegankelijk is voor opslag met door het systeem toegewezen [beheerde identiteits](../../active-directory/managed-identities-azure-resources/overview.md) verificatie. Deze sleutel (CMK) kan [software of hardware-HSM zijn beveiligd](../../key-vault/general/overview.md).
 
-Azure Monitor versleuteling is hetzelfde als de manier waarop [Azure Storage versleuteling](https://docs.microsoft.com/azure/storage/common/storage-service-encryption#about-azure-storage-encryption)   werkt.
+Azure Monitor versleuteling is hetzelfde als de manier waarop [Azure Storage versleuteling](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption)   werkt.
 
 Met CMK kunt u de toegang tot uw gegevens beheren en deze op elk gewenst moment intrekken. Azure Monitor Storage respecteert altijd wijzigingen in de sleutel machtigingen binnen een uur. De gegevens die in de afgelopen 14 dagen zijn opgenomen, worden ook opgeslagen in de Hot-cache (met SSD-back-ups) voor een efficiënte query-engine bewerking. Deze gegevens blijven versleuteld met micro soft-sleutels, ongeacht de CMK-configuratie, maar uw controle over SSD-gegevens voldoet aan de [sleutel intrekking](#cmk-kek-revocation). Er wordt gewerkt aan SSD-gegevens die zijn versleuteld met CMK in de tweede helft van 2020.
 
 De CMK-mogelijkheid wordt geleverd op toegewezen Log Analytics clusters. Om te controleren of we de vereiste capaciteit hebben in uw regio, moet u ervoor zorgen dat uw abonnement vooraf is toegestaan. Gebruik uw micro soft-contact persoon om uw abonnement op te halen voordat u begint met het configureren van CMK.
 
-Het [prijs model van log Analytics clusters](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters)   maakt gebruik van capaciteits reserveringen vanaf een niveau van 1000 GB per dag.
+Het [prijs model van log Analytics clusters](./manage-cost-storage.md#log-analytics-dedicated-clusters)   maakt gebruik van capaciteits reserveringen vanaf een niveau van 1000 GB per dag.
 
 ## <a name="how-cmk-works-in-azure-monitor"></a>Hoe CMK werkt in Azure Monitor
 
@@ -91,7 +91,7 @@ Waarbij *eyJ0eXAiO....* het volledige verificatie token vertegenwoordigt.
 
 U kunt het token verkrijgen met een van de volgende methoden:
 
-1. Gebruik [app-registraties](https://docs.microsoft.com/graph/auth/auth-concepts#access-tokens) methode.
+1. Gebruik [app-registraties](/graph/auth/auth-concepts#access-tokens) methode.
 2. In Azure Portal
     1. Navigeer naar Azure Portal in het hulp programma voor ontwikkel aars (F12)
     1. Zoek naar een autorisatie reeks onder ' aanvraag headers ' in een van de exemplaren van ' batch? API-Version '. Het ziet er als volgt uit: ' autorisatie: Bearer eyJ0eXAiO.... '. 
@@ -185,15 +185,16 @@ Maak of gebruik een Azure Key Vault die u al moet genereren of importeer een sle
 
 ![Zacht verwijderen en beveiligings instellingen opschonen](media/customer-managed-keys/soft-purge-protection.png)
 
-Deze instellingen zijn beschikbaar via CLI en Power shell:
-- [Voorlopig verwijderen](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
-- [Beveiligings](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection) beveiligingen verwijderen tegen het verwijderen van het geheim of de kluis, zelfs na het zacht verwijderen
+Deze instellingen kunnen worden bijgewerkt via CLI en Power shell:
+
+- [Voorlopig verwijderen](../../key-vault/general/overview-soft-delete.md)
+- [Beveiligings](../../key-vault/general/overview-soft-delete.md#purge-protection) beveiligingen verwijderen tegen het verwijderen van het geheim of de kluis, zelfs na het zacht verwijderen
 
 ### <a name="create-cluster-resource"></a>*Cluster* bron maken
 
 Deze resource wordt gebruikt als een tussenliggende identiteits verbinding tussen uw Key Vault en uw Log Analytics-werk ruimten. Nadat u een bevestiging hebt ontvangen dat uw abonnementen zijn toegestaan, maakt u een Log Analytics *cluster* resource in de regio waar uw werk ruimten zich bevinden.
 
-U moet het *capaciteits reserverings* niveau (SKU) opgeven bij het maken van een *cluster* bron. Het *capaciteits reserverings* niveau kan binnen het bereik van 1.000 tot 2.000 GB per dag liggen en kan worden bijgewerkt in stappen van 100 later. Als u een capaciteits reserverings niveau nodig hebt dat hoger is dan 2.000 GB per dag, neemt u contact met ons op LAIngestionRate@microsoft.com . [Meer informatie](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-clusters)
+U moet het *capaciteits reserverings* niveau (SKU) opgeven bij het maken van een *cluster* bron. Het *capaciteits reserverings* niveau kan binnen het bereik van 1.000 tot 2.000 GB per dag liggen en kan worden bijgewerkt in stappen van 100 later. Als u een capaciteits reserverings niveau nodig hebt dat hoger is dan 2.000 GB per dag, neemt u contact met ons op LAIngestionRate@microsoft.com . [Meer informatie](./manage-cost-storage.md#log-analytics-dedicated-clusters)
 
 De eigenschap *billingType* bepaalt het facturerings kenmerk voor de *cluster* bron en de bijbehorende gegevens:
 - *Cluster* (standaard): de kosten voor de capaciteits reservering voor uw cluster worden toegeschreven aan de *cluster* bron.
@@ -210,7 +211,7 @@ Deze bewerking is asynchroon en kan enige tijd worden voltooid.
 > 
 
 ```powershell
-New-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -Location "region-name" -SkuCapacity "daily-ingestion-gigabyte" 
+New-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -Location "region-name" -SkuCapacity daily-ingestion-gigabyte 
 ```
 
 ```rst
@@ -408,7 +409,7 @@ Content-type: application/json
 Opgenomen gegevens worden tijdens de koppelings bewerking opgeslagen die zijn versleuteld met uw beheerde sleutel. Dit kan tot 90 minuten duren. U kunt de status van de werkruimte koppeling op twee manieren controleren:
 
 1. Kopieer de URL-waarde voor Azure-AsyncOperation uit het antwoord en volg de controle van de [asynchrone bewerkings status](#asynchronous-operations-and-status-check).
-2. Een [werk ruimte verzenden: aanvraag ophalen](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) en het antwoord bekijken, de gekoppelde werk ruimte heeft een clusterResourceId onder "functies".
+2. Een [werk ruimte verzenden: aanvraag ophalen](/rest/api/loganalytics/workspaces/get) en het antwoord bekijken, de gekoppelde werk ruimte heeft een clusterResourceId onder "functies".
 
 ```rest
 GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalInsights/workspaces/<workspace-name>?api-version=2020-03-01-preview
@@ -468,13 +469,13 @@ De query taal die in Log Analytics wordt gebruikt, is een exprestje en kan gevoe
 > [!NOTE]
 > CMK voor query's die worden gebruikt in werkmappen en Azure-Dash boards, worden nog niet ondersteund. Deze query's blijven versleuteld met de micro soft-sleutel.  
 
-Wanneer u [uw eigen opslag](https://docs.microsoft.com/azure/azure-monitor/platform/private-storage) (BYOS) meebrengt en deze aan uw werk ruimte koppelt, worden de door de service *opgeslagen Zoek opdrachten* en *waarschuwingen voor logboek meldingen* naar uw opslag account geüpload. Dit betekent dat u het opslag account en het [beleid voor versleuteling op rest](https://docs.microsoft.com/azure/storage/common/encryption-customer-managed-keys) beheert met behulp van dezelfde sleutel die u gebruikt voor het versleutelen van gegevens in log Analytics cluster of een andere sleutel. U bent echter verantwoordelijk voor de kosten van het opslag account. 
+Wanneer u [uw eigen opslag](./private-storage.md) (BYOS) meebrengt en deze aan uw werk ruimte koppelt, worden de door de service *opgeslagen Zoek opdrachten* en *waarschuwingen voor logboek meldingen* naar uw opslag account geüpload. Dit betekent dat u het opslag account en het [beleid voor versleuteling op rest](../../storage/common/encryption-customer-managed-keys.md) beheert met behulp van dezelfde sleutel die u gebruikt voor het versleutelen van gegevens in log Analytics cluster of een andere sleutel. U bent echter verantwoordelijk voor de kosten van het opslag account. 
 
 **Overwegingen voor het instellen van CMK voor query's**
 * U moet schrijf machtigingen hebben voor de werk ruimte en het opslag account
 * Zorg ervoor dat u uw opslag account in dezelfde regio maakt als uw Log Analytics werk ruimte zich bevindt
 * De *opgeslagen Zoek opdrachten* in opslag worden beschouwd als service artefacten en de indeling ervan kan veranderen
-* Bestaande *Zoek opdrachten voor opslaan* worden verwijderd uit uw werk ruimte. Kopieer en *Sla de Zoek opdrachten* die u nodig hebt vóór de configuratie. U kunt uw *opgeslagen Zoek opdrachten* weer geven met [Power shell](https://docs.microsoft.com/powershell/module/az.operationalinsights/Get-AzOperationalInsightsSavedSearch)
+* Bestaande *Zoek opdrachten voor opslaan* worden verwijderd uit uw werk ruimte. Kopieer en *Sla de Zoek opdrachten* die u nodig hebt vóór de configuratie. U kunt uw *opgeslagen Zoek opdrachten* weer geven met [Power shell](/powershell/module/az.operationalinsights/get-azoperationalinsightssavedsearch)
 * De query geschiedenis wordt niet ondersteund en u kunt geen query's zien die u hebt uitgevoerd
 * U kunt één opslag account aan de werk ruimte koppelen voor het opslaan van query's, maar kan worden gebruikt in combi natie van query's met de functie voor *opgeslagen Zoek opdrachten* en *logboek waarschuwingen*
 * Vastmaken aan dash board wordt niet ondersteund
@@ -484,7 +485,7 @@ Wanneer u [uw eigen opslag](https://docs.microsoft.com/azure/azure-monitor/platf
 Het opslag account voor de *query* aan uw werk ruimte koppelen: *opgeslagen Zoek opdrachten* query's worden opgeslagen in uw opslag account. 
 
 ```powershell
-$storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "resource-group-name"storage-account-name"resource-group-name"
+$storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "storage-account-name"
 New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "resource-group-name" -WorkspaceName "workspace-name" -DataSourceType Query -StorageAccountIds $storageAccount.Id
 ```
 
@@ -511,7 +512,7 @@ Na de configuratie wordt een nieuwe *opgeslagen zoek opdracht* opgeslagen in uw 
 Opslag account voor *waarschuwingen* aan uw werk ruimte koppelen: query's voor *logboek waarschuwingen* worden opgeslagen in uw opslag account. 
 
 ```powershell
-$storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "resource-group-name"storage-account-name"resource-group-name"
+$storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "storage-account-name"
 New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "resource-group-name" -WorkspaceName "workspace-name" -DataSourceType Alerts -StorageAccountIds $storageAccount.Id
 ```
 
@@ -659,7 +660,7 @@ Na de configuratie wordt een nieuwe waarschuwings query opgeslagen in uw opslag.
   Opgenomen gegevens na de ontkoppelings bewerking worden opgeslagen in Log Analytics opslag. Dit kan 90 minuten duren. U kunt de status van de werk ruimte-koppeling op twee manieren controleren:
 
   1. Kopieer de URL-waarde voor Azure-AsyncOperation uit het antwoord en volg de controle van de [asynchrone bewerkings status](#asynchronous-operations-and-status-check).
-  2. Een [werk ruimte verzenden: aanvraag ophalen](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) en het antwoord bekijken, de niet-gekoppelde werk ruimte heeft niet de *clusterResourceId* onder *functies*.
+  2. Een [werk ruimte verzenden: aanvraag ophalen](/rest/api/loganalytics/workspaces/get) en het antwoord bekijken, de niet-gekoppelde werk ruimte heeft niet de *clusterResourceId* onder *functies*.
 
 - **Status van werkruimte koppeling controleren**
   
@@ -694,26 +695,25 @@ Na de configuratie wordt een nieuwe waarschuwings query opgeslagen in uw opslag.
 
 ## <a name="limitationsandconstraints"></a>Beperkingen en beperkingen
 
--De CMK wordt ondersteund op toegewezen Log Analytics cluster en is geschikt voor klanten die 1 TB per dag of langer verzenden.
+- De CMK wordt ondersteund op toegewezen Log Analytics cluster en is geschikt voor klanten die 1 TB per dag of langer verzenden.
 
--Het maximum aantal *cluster*   resources per regio en abonnement is 2
+- Het maximum aantal *cluster* resources per regio en abonnement is 2
 
--U kunt een werk ruimte aan uw *cluster*   bron koppelen en deze vervolgens loskoppelen als CMK niet vereist is voor de werk ruimte.Het aantal werkruimte koppelingen op een bepaalde werk ruimte in een periode van 30 dagen is beperkt tot 2
+- U kunt een werk ruimte aan uw *cluster* bron koppelen en deze vervolgens loskoppelen als CMK niet vereist is voor de werk ruimte. Het aantal werkruimte koppelingen op een bepaalde werk ruimte in een periode van 30 dagen is beperkt tot 2
 
--Werkruimte koppeling met *cluster*   bron moet alleen worden uitgevoerd nadat u hebt gecontroleerd of de inrichting van het log Analytics cluster is voltooid.Gegevens die vóór de voltooiing naar uw werk ruimte worden verzonden, worden verwijderd en kunnen niet worden hersteld.
+- Werkruimte koppeling met een *cluster* bron moet alleen worden uitgevoerd nadat u hebt gecontroleerd of de inrichting van het log Analytics cluster is voltooid. Gegevens die vóór de voltooiing naar uw werk ruimte worden verzonden, worden verwijderd en kunnen niet worden hersteld.
 
--CMK-versleuteling is van toepassing op nieuwe opgenomen gegevens na de CMK-      configuratie.Gegevens die zijn opgenomen vóór de CMK      -Configuratie, blijven versleuteld met micro soft-sleutel.U kunt een query uitvoeren op gegevens die zijn opgenomen      voor en na de CMK-configuratie naadloos.
+- CMK-versleuteling is van toepassing op nieuwe opgenomen gegevens na de CMK-configuratie. Gegevens die zijn opgenomen vóór de CMK-configuratie, blijven versleuteld met micro soft-sleutel. U kunt een query uitvoeren op gegevens die zijn opgenomen voor en na de CMK-configuratie naadloos.
 
--De Azure Key Vault moet worden geconfigureerd als herstelbaar.Deze eigenschappen zijn niet standaard ingeschakeld en moeten worden geconfigureerd met CLI of Power shell:
+- De Azure Key Vault moet worden geconfigureerd als herstelbaar. Deze eigenschappen zijn niet standaard ingeschakeld en moeten worden geconfigureerd met CLI of Power shell:<br>
+  - [Voorlopig verwijderen](../../key-vault/general/overview-soft-delete.md)
+  - Het [opschonen](../../key-vault/general/overview-soft-delete.md#purge-protection) van de beveiliging moet zijn ingeschakeld om te beschermen tegen het verwijderen van het geheim of de kluis, zelfs na het verwijderen van de software.
 
-  - [Voorlopig verwijderen](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) 
-      moet zijn ingeschakeld    - om de beveiliging op te  [schonen](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection)moet   worden ingeschakeld om te beschermen tegen het verwijderen van het geheim of de kluis, zelfs na het verwijderen van de software.
+- Het verplaatsen van een *cluster* bron naar een andere resource groep of een ander abonnement wordt momenteel niet ondersteund.
 
-- *Cluster*   resource verplaatsing naar een andere resource groep of een ander abonnement      wordt momenteel niet ondersteund.
+- Uw Azure Key Vault, *cluster* resource en gekoppelde werk ruimten moeten zich in dezelfde regio en in dezelfde Azure Active Directory (Azure AD)-Tenant bevinden, maar ze kunnen zich in verschillende abonnementen bevinden.
 
--Uw Azure Key Vault, *cluster*   resource en gekoppelde werk ruimten moeten zich in dezelfde regio en in dezelfde Azure Active Directory (Azure AD)-Tenant bevinden, maar ze kunnen zich in verschillende abonnementen bevinden.
-
--De koppeling van de werk ruimte met de *cluster*   bron mislukt als deze is      gekoppeld aan een andere *cluster*   bron
+- Werkruimte koppeling met *cluster* bron mislukt als deze is gekoppeld aan een andere *cluster* bron
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
@@ -743,3 +743,41 @@ Na de configuratie wordt een nieuwe waarschuwings query opgeslagen in uw opslag.
   2. Verzend aanvraag verzenden naar *cluster* of werk ruimte en Bekijk het antwoord. De niet-gekoppelde werk ruimte heeft bijvoorbeeld niet de *clusterResourceId* onder *functies*.
 
 - Gebruik uw contact personen in micro soft voor ondersteuning en Help met betrekking tot de door de klant beheerde sleutel.
+
+- Foutberichten
+  
+  *Cluster* bron maken:
+  -  400--de cluster naam is niet geldig. De cluster naam kan de tekens a-z, A-Z, 0-9 en de lengte van 3-63 bevatten.
+  -  400--de hoofd tekst van de aanvraag is null of heeft een ongeldige indeling.
+  -  400--SKU-naam is ongeldig. Stel de SKU-naam in op capacityReservation.
+  -  400--er is capaciteit gegeven, maar SKU is niet capacityReservation. Stel de SKU-naam in op capacityReservation.
+  -  400--ontbrekende capaciteit in SKU. Stel de capaciteits waarde in op 1000 of hoger in stappen van 100 (GB).
+  -  400--capaciteit in SKU valt niet binnen het bereik. Moet mini maal 1000 zijn en tot de Maxi maal toegestane capaciteit beschikken die beschikbaar is onder gebruik en geschatte kosten in uw werk ruimte.
+  -  400--capaciteit is 30 dagen vergrendeld. Het verminderen van de capaciteit is 30 dagen na de update toegestaan.
+  -  400--er is geen SKU ingesteld. Stel de SKU-naam in op capacityReservation en capaciteits waarde in 1000 of hoger in stappen van 100 (GB).
+  -  400--identiteit is null of leeg. Stel identiteit in met het type systemAssigned.
+  -  400--KeyVaultProperties worden ingesteld bij het maken. KeyVaultProperties bijwerken na het maken van het cluster.
+  -  400--bewerking kan nu niet worden uitgevoerd. De asynchrone bewerking bevindt zich in een andere status dan geslaagd. Het cluster moet de bewerking volt ooien voordat een update bewerking wordt uitgevoerd.
+
+  *Cluster* bron bijwerken
+  -  400--de status van het cluster wordt verwijderd. De asynchrone bewerking wordt uitgevoerd. Het cluster moet de bewerking volt ooien voordat een update bewerking wordt uitgevoerd.
+  -  400--KeyVaultProperties is niet leeg, maar heeft een ongeldige indeling. Zie [sleutel-id bijwerken](#update-cluster-resource-with-key-identifier-details).
+  -  400--kan de sleutel in Key Vault niet valideren. Kan worden veroorzaakt door onvoldoende machtigingen of wanneer de sleutel niet bestaat. Controleer of u het [sleutel-en toegangs beleid hebt ingesteld](#grant-key-vault-permissions) in Key Vault.
+  -  400--sleutel kan niet worden hersteld. Key Vault moet worden ingesteld op zacht verwijderen en de beveiliging op te schonen. Raadpleeg de [documentatie van Key Vault](../../key-vault/general/overview-soft-delete.md)
+  -  400--bewerking kan nu niet worden uitgevoerd. Wacht tot de asynchrone bewerking is voltooid en probeer het opnieuw.
+  -  400--de status van het cluster wordt verwijderd. Wacht tot de asynchrone bewerking is voltooid en probeer het opnieuw.
+
+    Get *cluster* resource:
+    -  404--het cluster is niet gevonden. mogelijk is het cluster verwijderd. Als u probeert een cluster met die naam te maken en conflicten op te halen, wordt het cluster gedurende 14 dagen voorlopig verwijderd. U kunt contact opnemen met de ondersteuning om het te herstellen, of een andere naam gebruiken om een nieuw cluster te maken. 
+
+  *Cluster* bron verwijderen
+    -  409--een cluster kan niet worden verwijderd tijdens de inrichtings status. Wacht tot de asynchrone bewerking is voltooid en probeer het opnieuw.
+
+  Werkruimte koppeling:
+  -  404--werk ruimte is niet gevonden. De werk ruimte die u hebt opgegeven, bestaat niet of is verwijderd.
+  -  409--werk ruimte koppeling of ontkoppelings bewerking wordt uitgevoerd.
+  -  400--het cluster is niet gevonden. het cluster dat u hebt opgegeven, bestaat niet of is verwijderd. Als u probeert een cluster met die naam te maken en conflicten op te halen, wordt het cluster gedurende 14 dagen voorlopig verwijderd. U kunt contact opnemen met de ondersteuning om deze te herstellen.
+
+  Ontkoppeling van werk ruimte:
+  -  404--werk ruimte is niet gevonden. De werk ruimte die u hebt opgegeven, bestaat niet of is verwijderd.
+  -  409--werk ruimte koppeling of ontkoppelings bewerking wordt uitgevoerd.

@@ -3,17 +3,18 @@ title: Geheugenlek detecteren-Azure-toepassing Insights Slimme detectie
 description: Bewaak toepassingen met Azure-toepassing inzichten voor mogelijke geheugen lekkages.
 ms.topic: conceptual
 ms.date: 12/12/2017
-ms.openlocfilehash: 85d138518dfb1313a810657016e9fe3143887b6d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3fe58cd7d61246c5565cd89fa782c8a977f09499
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671695"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539887"
 ---
 # <a name="memory-leak-detection-preview"></a>Detectie van geheugenlek (preview-versie)
 
 Application Insights analyseert automatisch het geheugen verbruik van elk proces in uw toepassing en kan u waarschuwen over mogelijke geheugen lekken of een groter geheugen gebruik.
 
-Voor deze functie is geen speciale configuratie vereist, behalve het [configureren van prestatie meter items](https://docs.microsoft.com/azure/application-insights/app-insights-performance-counters) voor uw app. Het is actief wanneer uw app voldoende geheugen prestatie meter items telemetrie (bijvoorbeeld persoonlijke bytes) genereert.
+Voor deze functie is geen speciale configuratie vereist, behalve het [configureren van prestatie meter items](./performance-counters.md) voor uw app. Het is actief wanneer uw app voldoende geheugen prestatie meter items telemetrie (bijvoorbeeld persoonlijke bytes) genereert.
 
 ## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Wanneer kan ik dit type Smart Detection-melding krijgen?
 Een typische melding volgt een consistente toename van het geheugen verbruik gedurende een lange periode, in een of meer processen en/of een of meer machines, die deel uitmaken van uw toepassing. Machine learning-algoritmen worden gebruikt voor het detecteren van een groter geheugen verbruik dat overeenkomt met het patroon van een geheugenlek.

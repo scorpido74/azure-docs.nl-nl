@@ -8,11 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 05/20/2020
 ms.author: anfeldma
-ms.openlocfilehash: aa5e741d8578253b8b3e8e5c692873c39cec8f79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccc872b24c78fbdf6e55673f9d1f78efc0647895
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85412631"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537881"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK v4 for core (SQL) API: release opmerkingen en bronnen
 > [!div class="op_single_selector"]
@@ -60,6 +61,17 @@ De Azure Cosmos DB Java SDK v4 for core (SQL) combineert een async API en een AP
 | **Azure Cosmos DB workshops en Labs** |[Start pagina van Cosmos DB workshops](https://aka.ms/cosmosworkshop)
 
 ## <a name="release-history"></a>Release geschiedenis
+
+### <a name="420-2020-07-14"></a>4.2.0 (2020-07-14)
+* De API voor script logboek registratie is ingeschakeld `CosmosStoredProcedureRequestOptions` .
+* De `DirectConnectionConfig` standaard waarde is bijgewerkt `idleEndpointTimeout` naar 1U en standaard ingesteld `connectTimeout` op 5s.
+#### <a name="key-bug-fixes"></a>Oplossingen voor belang rijke fouten
+* Er is een probleem opgelost waarbij `GatewayConnectionConfig` `idleConnectionTimeout` het is overschreven `DirectConnectionConfig` `idleConnectionTimeout` .
+* `responseContinuationTokenLimitInKb`Get en set api's in `CosmosQueryRequestOptions` .
+* Er is een probleem opgelost in de query-en wijzigings feed bij het opnieuw maken van de verzameling met dezelfde naam.
+* Probleem opgelost met top query-ClassCastException.
+* Probleem opgelost met order by query NullPointerException.
+* Probleem opgelost bij het verwerken van geannuleerde aanvragen in de directe modus waardoor reactor `onErrorDropped` wordt aangeroepen. 
 
 ### <a name="410-2020-06-25"></a>4.1.0 (2020-06-25)
 #### <a name="new-features"></a>Nieuwe functies

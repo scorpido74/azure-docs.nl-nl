@@ -3,12 +3,12 @@ title: Ondersteunings matrix voor MABS & System Center DPM
 description: Dit artikel bevat een overzicht van Azure Backup ondersteuning wanneer u Microsoft Azure Backup Server (MABS) of System Center DPM gebruikt om back-ups te maken van on-premises en Azure VM-resources.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2d3b9dbf0440809578fca113ee6674b79a5d7fb1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 476f1523eaf042576d38f5d2db283b525721389c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82193272"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538663"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Ondersteunings matrix voor back-up met Microsoft Azure Backup Server of System Center DPM
 
@@ -16,7 +16,7 @@ U kunt de [Azure backup-service](backup-overview.md) gebruiken voor het maken va
 
 ## <a name="about-dpmmabs"></a>Over DPM-MABS
 
-[System Center DPM](https://docs.microsoft.com/system-center/dpm/dpm-overview?view=sc-dpm-1807) is een bedrijfs oplossing waarmee back-ups en herstel van bedrijfs computers en-gegevens worden geconfigureerd, vergemakkelijkt en beheerd. Het maakt deel uit van de [System Center](https://www.microsoft.com/cloud-platform/system-center-pricing) -product suite.
+[System Center DPM](/system-center/dpm/dpm-overview) is een bedrijfs oplossing waarmee back-ups en herstel van bedrijfs computers en-gegevens worden geconfigureerd, vergemakkelijkt en beheerd. Het maakt deel uit van de [System Center](https://www.microsoft.com/system-center/pricing) -product suite.
 
 MABS is een server product dat kan worden gebruikt voor het maken van een back-up van on-premises fysieke servers, Vm's en apps die hierop worden uitgevoerd.
 
@@ -50,7 +50,7 @@ Voor meer informatie:
 
 ## <a name="supported-scenarios"></a>Ondersteunde scenario's
 
-**Scenario** | **Tussen** | **Locatie**
+**Scenario** | **Agent** | **Locatie**
 --- | --- | ---
 **Back-ups maken van on-premises machines/werk belastingen** | De DPM/MABS Protection-agent wordt uitgevoerd op de computers waarvan u een back-up wilt maken.<br/><br/> De MARS-agent op de DPM-MABS-server.<br/> De minimale versie van de Microsoft Azure Recovery Services agent, of Azure Backup Agent, die vereist is om deze functie in te scha kelen, is 2.0.8719.0.  | DPM-MABS moeten on-premises worden uitgevoerd.
 
@@ -71,7 +71,7 @@ Azure Backup kunt een back-up maken van DPM-MABS-exemplaren waarop een van de vo
 **Scenario** | **DPM-MABS**
 --- | ---
 **MABS op een Azure VM** |  Windows 2016 Data Center.<br/><br/> Windows 2019 Data Center.<br/><br/> U wordt aangeraden te beginnen met een installatie kopie van de Marketplace.<br/><br/> Mini maal Standard_A4_v2 met vier kernen en 8 GB RAM-geheugen.
-**DPM op een virtuele Azure-machine** | System Center 2012 R2 met update 3 of hoger.<br/><br/> Het Windows-besturings systeem zoals [vereist door System Center](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server).<br/><br/> U wordt aangeraden te beginnen met een installatie kopie van de Marketplace.<br/><br/> Mini maal Standard_A4_v2 met vier kernen en 8 GB RAM-geheugen.
+**DPM op een virtuele Azure-machine** | System Center 2012 R2 met update 3 of hoger.<br/><br/> Het Windows-besturings systeem zoals [vereist door System Center](/system-center/dpm/prepare-environment-for-dpm#dpm-server).<br/><br/> U wordt aangeraden te beginnen met een installatie kopie van de Marketplace.<br/><br/> Mini maal Standard_A4_v2 met vier kernen en 8 GB RAM-geheugen.
 **On-premises MABS** |  MABS v3 en hoger: Windows Server 2016 of Windows Server 2019
 **On-premises DPM** | Fysieke server/Hyper-V-VM: System Center 2012 SP1 of hoger.<br/><br/> VMware VM: System Center 2012 R2 met Update 5 of hoger.
 
@@ -82,7 +82,7 @@ Azure Backup kunt een back-up maken van DPM-MABS-exemplaren waarop een van de vo
 
 **Probleem** | **Details**
 --- | ---
-**Installatie** | Installeer DPM-MABS op een computer met één doel.<br/><br/> Installeer DPM/MABS niet op een domein controller, op een computer met de installatie van de functie toepassings server op een computer waarop micro soft Exchange Server of System Center Operations Manager, of op een cluster knooppunt.<br/><br/> [Controleer alle DPM-systeem vereisten](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server).
+**Installatie** | Installeer DPM-MABS op een computer met één doel.<br/><br/> Installeer DPM/MABS niet op een domein controller, op een computer met de installatie van de functie toepassings server op een computer waarop micro soft Exchange Server of System Center Operations Manager, of op een cluster knooppunt.<br/><br/> [Controleer alle DPM-systeem vereisten](/system-center/dpm/prepare-environment-for-dpm#dpm-server).
 **Domein** | DPM/MABS moet lid zijn van een domein. Installeer eerst en voeg vervolgens DPM-MABS toe aan een domein. Het verplaatsen van DPM-MABS naar een nieuw domein na implementatie wordt niet ondersteund.
 **Storage** | Moderne back-upopslag (MBS) wordt ondersteund vanuit DPM 2016/MABS v2 en hoger. Het is niet beschikbaar voor MABS v1.
 **MABS-upgrade** | U kunt MABS v3 rechtstreeks installeren of een upgrade uitvoeren naar MABS v3 vanuit MABS v2. [Meer informatie](backup-azure-microsoft-azure-backup.md#upgrade-mabs).
@@ -131,13 +131,13 @@ Met open bare peering: Zorg ervoor dat u toegang hebt tot de volgende domeinen/a
 - `.microsoftonline.com`
 - `.windows.net`
 
-Bij micro soft-peering moet u de volgende services/regio's en relevante Community-waarden selecteren:
+Selecteer bij micro soft-peering de volgende services/regio's en relevante Community-waarden:
 
 - Azure Active Directory (12076:5060)
 - Microsoft Azure regio (op basis van de locatie van uw Recovery Services kluis)
 - Azure Storage (op basis van de locatie van uw Recovery Services kluis)
 
-Zie de [ExpressRoute-routerings vereisten](https://docs.microsoft.com/azure/expressroute/expressroute-routing)voor meer informatie.
+Zie de [routerings vereisten voor ExpressRoute](../expressroute/expressroute-routing.md)voor meer informatie.
 
 >[!NOTE]
 >Open bare peering is afgeschaft voor nieuwe circuits.
@@ -153,6 +153,13 @@ Verbonden | Verlopen/niet-ingericht | Geen back-up naar schijf of Azure.<br/><br
 Geen connectiviteit langer dan 15 dagen | Actief | Geen back-up naar schijf of Azure.<br/><br/> U kunt herstellen vanaf schijf of Azure.
 Geen connectiviteit langer dan 15 dagen | Verlopen/niet-ingericht | Geen back-up naar schijf of Azure.<br/><br/> Als het abonnement is verlopen, kunt u het herstellen vanaf schijf of Azure.<br/><br/> Als het abonnement uit bedrijf is genomen, kunt u niet meer herstellen vanaf schijf of Azure. De Azure-herstel punten worden verwijderd.
 
+## <a name="domain-and-domain-trusts-support"></a>Ondersteuning voor domein-en domein vertrouwensrelaties
+
+|Vereiste |Details |
+|---------|---------|
+|Domein    | De DPM-MABS-server moet zich in een Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2012 domein.        |
+|Domeinvertrouwen   |  DPM/MABS ondersteunt gegevens beveiliging tussen forests, zolang u een twee richtings vertrouwensrelatie op forestniveau tot stand brengt tussen de afzonderlijke forests.   <BR><BR>   DPM/MABS kan servers en werk stations in domeinen beveiligen binnen een forest met een twee richtings vertrouwensrelatie met het DPM/MABS-Server domein. Zie [back-ups maken en herstellen in werk groepen en niet-vertrouwde domeinen](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019) voor het beveiligen van computers in werk groepen of niet-vertrouwde domeinen.  |
+
 ## <a name="dpmmabs-storage-support"></a>Ondersteuning voor DPM/MABS-opslag
 
 Gegevens waarvan een back-up is gemaakt naar DPM/MABS, worden opgeslagen op de lokale schijf opslag.
@@ -161,7 +168,7 @@ Gegevens waarvan een back-up is gemaakt naar DPM/MABS, worden opgeslagen op de l
 --- | ---
 **MB'S** | Moderne back-upopslag (MBS) wordt ondersteund vanuit DPM 2016/MABS v2 en hoger. Het is niet beschikbaar voor MABS v1.
 **MABS-opslag op Azure VM** | Gegevens worden opgeslagen op Azure-schijven die zijn gekoppeld aan de DPM/MABS-VM en die worden beheerd in DPM/MABS. Het aantal schijven dat kan worden gebruikt voor de DPM/MABS-opslag groep wordt beperkt door de grootte van de virtuele machine.<br/><br/> A2 VM: 4 schijven; A3 VM: 8 schijven; A4 VM: 16 schijven, met een maximale grootte van 1 TB voor elke schijf. Hiermee bepaalt u de totale beschik bare back-upopslaggroep.<br/><br/> De hoeveelheid gegevens waarvan u een back-up kunt maken, is afhankelijk van het aantal en de grootte van de gekoppelde schijven.
-**MABS voor het bewaren van gegevens op Azure VM** | We raden u aan gegevens voor één dag op de DPM-MABS Azure-schijf te bewaren en een back-up te maken van DPM/MABS naar de kluis voor een langere Bewaar periode. Zo kunt u een grotere hoeveelheid gegevens beveiligen door deze naar Azure Backup te offloaden.
+**MABS voor het bewaren van gegevens op Azure VM** | We raden u aan gegevens voor één dag op de DPM-MABS Azure-schijf te bewaren en een back-up te maken van DPM/MABS naar de kluis voor een langere Bewaar periode. Op deze manier kunt u een grotere hoeveelheid gegevens beveiligen door deze te offloaden naar Azure Backup.
 
 ### <a name="modern-backup-storage-mbs"></a>Moderne back-upopslag (MB)
 
@@ -174,11 +181,11 @@ Vanuit DPM 2016/MABS v2 (dat wordt uitgevoerd op Windows Server 2016) en hoger, 
 
 ## <a name="supported-backups-to-mabs"></a>Ondersteunde back-ups naar MABS
 
-Raadpleeg de [Azure Backup Server Protection-matrix](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix#protection-support-matrix)voor informatie over de verschillende servers en workloads die u kunt beveiligen met Azure backup server.
+Raadpleeg de [Azure Backup Server Protection-matrix](./backup-mabs-protection-matrix.md#protection-support-matrix)voor informatie over de verschillende servers en workloads die u kunt beveiligen met Azure backup server.
 
 ## <a name="supported-backups-to-dpm"></a>Ondersteunde back-ups naar DPM
 
-Voor informatie over de verschillende servers en workloads die u kunt beveiligen met Data Protection Manager raadpleegt u het artikel [waarvan u een back-up kunt maken van DPM?](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2019).
+Voor informatie over de verschillende servers en workloads die u kunt beveiligen met Data Protection Manager raadpleegt u het artikel [waarvan u een back-up kunt maken van DPM?](/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2019).
 
 - Het maken van een back-up van geclusterde werk belastingen door DPM/MABS moet zich in hetzelfde domein als DPM/MABS of in een onderliggend/vertrouwd domein bevallen.
 - U kunt NTLM/certificaat verificatie gebruiken om een back-up te maken van gegevens in niet-vertrouwde domeinen of werk groepen.
@@ -188,4 +195,4 @@ Voor informatie over de verschillende servers en workloads die u kunt beveiligen
 - Meer [informatie](backup-architecture.md#architecture-back-up-to-dpmmabs) over MABS-architectuur.
 - [Controleer](backup-support-matrix-mars-agent.md) wat wordt ondersteund voor de Mars-agent.
 - [Stel](backup-azure-microsoft-azure-backup.md) een MABS-server in.
-- [DPM instellen](https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-180).
+- [DPM instellen](/system-center/dpm/install-dpm).

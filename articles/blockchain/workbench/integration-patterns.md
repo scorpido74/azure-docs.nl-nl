@@ -4,12 +4,12 @@ description: Overzicht van de integratie patronen voor Smart-contracten in azure
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.reviewer: mmercuri
-ms.openlocfilehash: 716255f5e71ec19b5b9c5a0a32740abc39f1a40b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dae63e16356e825d3be31380df1648749e59d8bd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254630"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538323"
 ---
 # <a name="smart-contract-integration-patterns"></a>Integratiepatronen voor slimme contracten
 
@@ -134,7 +134,7 @@ Dit patroon wordt gewoonlijk geïmplementeerd met de volgende methode:
 -   De wijziging van de status wordt geoppereerd als een gebeurtenis voor een downstream-Consumer.
 -   De downstream-consument ontvangt de gebeurtenis en activeert het uitvoeren van externe code.
 
-![Besturings element overgang naar extern proces](./media/integration-patterns/transition-external-process.png)
+![Het diagram toont een status wijziging binnen het contract waardoor een gebeurtenis wordt uitgevoerd naar gedistribueerde grootboek. Block Chain Workbench kiest vervolgens de gebeurtenis en publiceert deze.](./media/integration-patterns/transition-external-process.png)
 
 #### <a name="return-of-control-from-the-smart-contract"></a>Het besturings element van het slimme contract retour neren
 
@@ -142,7 +142,7 @@ Afhankelijk van de mogelijkheid om het externe systeem aan te passen, kunnen er 
 
 ##### <a name="direct-delivery-of-an-azure-blockchain-workbench-in-the-expected-format"></a>Directe levering van een Azure Block Chain workbench in de verwachte indeling
 
-![](./media/integration-patterns/direct-delivery.png)
+![Het diagram toont een P I-bericht van het externe systeem dat wordt opgehaald door Block Chain Workbench via de Service Bus. Block Chain Workbench verzendt vervolgens namens de agent een bericht als een trans actie naar gedistribueerd groot boek. Het wordt door gegeven aan contract, waarbij een status wijziging wordt veroorzaakt.](./media/integration-patterns/direct-delivery.png)
 
 In dit model wordt de communicatie met het contract en de volgende status wijziging uitgevoerd na het vorige proces waarbij-
 

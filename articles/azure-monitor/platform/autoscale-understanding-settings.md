@@ -4,11 +4,12 @@ description: Een gedetailleerde uitsplitsing van instellingen voor automatisch s
 ms.topic: conceptual
 ms.date: 12/18/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 9a2b94208de7ce490a0e7acfbb71175b4a7c846e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03019b35a85d8d511e3ada131eff890a60fd57f6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75364302"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539377"
 ---
 # <a name="understand-autoscale-settings"></a>Inzicht in instellingen voor automatisch schalen
 Met instellingen voor automatisch schalen kunt u ervoor zorgen dat u over de juiste hoeveelheid resources beschikt voor het afhandelen van de schommeling van uw toepassing. U kunt instellingen voor automatisch schalen configureren om te worden geactiveerd op basis van metrische gegevens die belasting of prestaties aangeven, of op een geplande datum en tijd. In dit artikel vindt u gedetailleerde informatie over de anatomie van een instelling voor automatisch schalen. Het artikel begint met het schema en de eigenschappen van een instelling en gaat vervolgens door met de verschillende profiel typen die kunnen worden geconfigureerd. Ten slotte wordt in het artikel beschreven hoe de functie voor automatisch schalen in azure evalueert welk profiel op een bepaald moment moet worden uitgevoerd.
@@ -84,7 +85,7 @@ Ter illustratie van het instellings schema voor automatisch schalen wordt de vol
 }
 ```
 
-| Sectie | Elementnaam | Description |
+| Sectie | Elementnaam | Beschrijving |
 | --- | --- | --- |
 | Instelling | Id | De resource-ID van de instelling voor automatisch schalen. Instellingen voor automatisch schalen zijn een Azure Resource Manager resource. |
 | Instelling | naam | De naam van de instelling voor automatisch schalen. |
@@ -304,5 +305,4 @@ Meer informatie over automatisch schalen door te verwijzen naar het volgende:
 * [Azure Monitor automatisch schalen van algemene metrische gegevens](../../azure-monitor/platform/autoscale-common-metrics.md)
 * [Best practices voor automatische schaalaanpassing in Azure Monitor](../../azure-monitor/platform/autoscale-best-practices.md)
 * [Acties voor automatisch schalen gebruiken om e-mail berichten en webhook-waarschuwings meldingen te verzenden](../../azure-monitor/platform/autoscale-webhook-email.md)
-* [REST API automatisch schalen](https://msdn.microsoft.com/library/dn931953.aspx)
-
+* [REST API automatisch schalen](/rest/api/monitor/autoscalesettings)

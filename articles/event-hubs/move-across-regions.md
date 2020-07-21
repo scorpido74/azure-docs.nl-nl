@@ -3,12 +3,12 @@ title: Een Azure Event Hubs-naam ruimte naar een andere regio verplaatsen | Micr
 description: In dit artikel leest u hoe u een Azure Event Hubs-naam ruimte van de huidige regio naar een andere regio kunt verplaatsen.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: a70397772d22a65046f87877deab6263d4b2104f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51b02c34b0c28420a7e27da56b107ed3925a761b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85312956"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537068"
 ---
 # <a name="move-an-azure-event-hubs-namespace-to-another-region"></a>Een Azure Event Hubs-naam ruimte verplaatsen naar een andere regio
 Er zijn verschillende scenario's waarin u uw bestaande Event Hubs naam ruimte wilt verplaatsen van de ene regio naar een andere. Het is bijvoorbeeld mogelijk dat u een naam ruimte met dezelfde configuratie voor testen wilt maken. U kunt ook een secundaire naam ruimte in een andere regio maken als onderdeel van de [planning voor nood herstel](event-hubs-geo-dr.md#setup-and-failover-flow).
@@ -26,7 +26,7 @@ Er zijn verschillende scenario's waarin u uw bestaande Event Hubs naam ruimte wi
 ## <a name="prepare"></a>Voorbereiden
 Exporteer een resource manager-sjabloon om aan de slag te gaan. Deze sjabloon bevat instellingen die uw Event Hubs naam ruimte beschrijven.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Selecteer **alle resources** en selecteer vervolgens uw event hubs naam ruimte.
 
@@ -54,7 +54,7 @@ Implementeer de sjabloon om een Event Hubs naam ruimte te maken in de doel regio
 
 4. Selecteer **Maken**.
 
-5. Selecteer **uw eigen sjabloon bouwen in de editor**.
+5. Selecteer **Bouw uw eigen sjabloon in de editor**.
 
 6. Selecteer **bestand laden**en volg de instructies voor het laden van de **template.jsin** het bestand dat u in de laatste sectie hebt gedownload.
 
@@ -108,5 +108,5 @@ Een Event Hubs naam ruimte (bron of doel) verwijderen met behulp van de Azure Po
 In deze zelf studie hebt u een Azure Event Hubs-naam ruimte verplaatst van de ene regio naar een andere en de bron resources opgeschoond.  Raadpleeg voor meer informatie over het verplaatsen van resources tussen regio's en herstel na nood gevallen in Azure:
 
 
-- [Resources verplaatsen naar een nieuwe resourcegroep of een nieuw abonnement](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [Virtuele Azure-machines verplaatsen naar een andere regio](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [Resources verplaatsen naar een nieuwe resourcegroep of een nieuw abonnement](../azure-resource-manager/management/move-resource-group-and-subscription.md)
+- [Virtuele Azure-machines verplaatsen naar een andere regio](../site-recovery/azure-to-azure-tutorial-migrate.md)

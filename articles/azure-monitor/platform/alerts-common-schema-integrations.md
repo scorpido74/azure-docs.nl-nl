@@ -4,11 +4,12 @@ description: Meer informatie over het maken van een logische app die gebruikmaak
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/27/2019
-ms.openlocfilehash: 9042ed8ddbb698192e638fa7538f74561574c262
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05349554f4c5e076562a75d48d58e0849986d6cc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77668227"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539496"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>Het algemene waarschuwings schema integreren met Logic Apps
 
@@ -22,13 +23,13 @@ Het [algemene waarschuwings schema](https://aka.ms/commonAlertSchemaDocs) voorzi
 ## <a name="prerequisites"></a>Vereisten 
 
 In dit artikel wordt ervan uitgegaan dat de lezer bekend is met 
-* Waarschuwings regels instellen ([metrische gegevens](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric), [Logboeken](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log), [activiteiten logboeken](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log))
-* [Actie groepen](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) instellen
-* Het [algemene waarschuwings schema](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema#how-do-i-enable-the-common-alert-schema) inschakelen vanuit actie groepen
+* Waarschuwings regels instellen ([metrische gegevens](./alerts-metric.md), [Logboeken](./alerts-log.md), [activiteiten logboeken](./alerts-activity-log.md))
+* [Actie groepen](./action-groups.md) instellen
+* Het [algemene waarschuwings schema](./alerts-common-schema.md#how-do-i-enable-the-common-alert-schema) inschakelen vanuit actie groepen
 
 ## <a name="create-a-logic-app-leveraging-the-common-alert-schema"></a>Een logische app maken met behulp van het gemeen schappelijke waarschuwings schema
 
-1. Volg de [stappen die worden beschreven om uw logische app te maken](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups-logic-app). 
+1. Volg de [stappen die worden beschreven om uw logische app te maken](./action-groups-logic-app.md). 
 
 1.  Selecteer de trigger: **Wanneer een HTTP-aanvraag wordt ontvangen**.
 
@@ -129,7 +130,7 @@ In dit artikel wordt ervan uitgegaan dat de lezer bekend is met
       if(equals(triggerBody()?['data']?['essentials']?['monitoringService'],'Application Insights'),triggerBody()?['data']?['alertContext']?['SearchResults'],'NA')
     ```
     
-     Meer informatie over het [schrijven van expressies voor logische apps](https://docs.microsoft.com/azure/logic-apps/workflow-definition-language-functions-reference#logical-comparison-functions).
+     Meer informatie over het [schrijven van expressies voor logische apps](../../logic-apps/workflow-definition-language-functions-reference.md#logical-comparison-functions).
 
     
 
@@ -138,4 +139,3 @@ In dit artikel wordt ervan uitgegaan dat de lezer bekend is met
 
 * [Meer informatie over actiegroepen](../../azure-monitor/platform/action-groups.md).
 * Meer [informatie over het algemene waarschuwings schema](https://aka.ms/commonAlertSchemaDocs).
-

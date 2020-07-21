@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 430b1c044ac5fc22dbf3a4f4df33ff9017e21d6d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 727653314104ee1b2a27a1342de9824d8f303e23
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361952"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539734"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Azure-resources bewaken met Azure Monitor
 Wanneer u belang rijke toepassingen en bedrijfs processen hebt die afhankelijk zijn van Azure-resources, wilt u deze resources controleren op hun Beschik baarheid, prestaties en werking. In dit artikel worden de bewakings gegevens beschreven die worden gegenereerd door Azure-resources en hoe u de functies van Azure Monitor kunt gebruiken om deze gegevens te analyseren en te waarschuwen.
@@ -79,9 +79,9 @@ Voor het verzamelen van gegevens in Azure Monitor Logboeken is een Log Analytics
 ## <a name="diagnostic-settings"></a>Diagnostische instellingen
 Diagnostische instellingen bepalen waar bron logboeken en metrische gegevens voor een bepaalde resource moeten worden verzonden. Mogelijke bestemmingen zijn:
 
-- [Log Analytics werk ruimte](../platform/resource-logs-collect-workspace.md) waarmee u gegevens kunt analyseren met andere bewakings gegevens die worden verzameld door Azure monitor met behulp van krachtige logboek query's en ook voor het gebruik van andere Azure monitor functies, zoals logboek waarschuwingen en visualisaties. 
-- [Event hubs](../platform/resource-logs-stream-event-hubs.md) voor het streamen van gegevens naar externe systemen, zoals siem's van derden en andere log Analytics-oplossingen. 
-- [Azure Storage-account](../platform/resource-logs-collect-storage.md) dat nuttig is voor controle, statische analyses of back-ups.
+- [Log Analytics werk ruimte](../platform/resource-logs.md#send-to-log-analytics-workspace) waarmee u gegevens kunt analyseren met andere bewakings gegevens die worden verzameld door Azure monitor met behulp van krachtige logboek query's en ook voor het gebruik van andere Azure monitor functies, zoals logboek waarschuwingen en visualisaties. 
+- [Event hubs](../platform/resource-logs.md#send-to-azure-event-hubs) voor het streamen van gegevens naar externe systemen, zoals siem's van derden en andere log Analytics-oplossingen. 
+- [Azure Storage-account](../platform/resource-logs.md#send-to-azure-storage) dat nuttig is voor controle, statische analyses of back-ups.
 
 Volg de procedure in [Diagnostische instelling maken voor het verzamelen van platform logboeken en metrische gegevens in azure](../platform/diagnostic-settings.md) voor het maken en beheren van diagnostische instellingen via de Azure Portal. Zie [Diagnostische instelling maken in azure met behulp van een resource manager-sjabloon](../platform/diagnostic-settings-template.md) om deze in een sjabloon te definiëren en volledige bewaking in te scha kelen voor een resource wanneer deze wordt gemaakt.
 
@@ -90,7 +90,7 @@ Volg de procedure in [Diagnostische instelling maken voor het verzamelen van pla
  U hebt toegang tot bewakings gegevens voor de meeste Azure-resources vanuit het menu van de resource in de Azure Portal. Hiermee krijgt u toegang tot de gegevens van één resource met behulp van standaard Azure Monitor-hulpprogram ma's. Sommige Azure-Services bieden andere opties, dus u moet de documentatie voor die service raadplegen voor aanvullende informatie. Gebruik het menu **Azure monitor** om gegevens van alle bewaakte resources te analyseren. 
 
 ### <a name="overview"></a>Overzicht
-Veel services bevatten bewakings gegevens op de **overzichts** pagina als een kort overzicht van de werking ervan. Dit is doorgaans gebaseerd op een subset van platform metrieken die zijn opgeslagen in Azure Monitor metrische gegevens. Andere bewakings opties zijn doorgaans beschikbaar in een **bewakings** sectie van het menu van de service.
+Veel services bevatten bewakingsgegevens op de pagina **Overzicht** als een snelle weergave van hun werking. Dit is doorgaans gebaseerd op een subset van metrische gegevens van het platform die zijn opgeslagen in de metrische gegevens van Azure Monitor. Andere bewakings opties zijn doorgaans beschikbaar in een **bewakings** sectie van het menu van de service.
 
 ![Overzichtspagina](media/monitor-azure-resource/overview-page.png)
 
@@ -114,7 +114,7 @@ Analyseer de metrische gegevens in de Azure Portal met behulp van [Metrics Explo
 ### <a name="activity-log"></a>Activiteitenlogboek 
 Vermeldingen in het activiteiten logboek weer geven in de Azure Portal met het eerste filter dat is ingesteld op de huidige resource. Kopieer het activiteiten logboek naar een Log Analytics werk ruimte om het te openen om het te gebruiken in logboek query's en-werkmappen. 
 
-- Zie activiteiten [logboek gebeurtenissen van Azure weer geven en ophalen](../platform/activity-log-view.md) voor meer informatie over het weer geven van het activiteiten logboek en het ophalen van vermeldingen op basis van verschillende methoden.
+- Zie activiteiten [logboek gebeurtenissen van Azure weer geven en ophalen](../platform/activity-log.md#view-the-activity-log) voor meer informatie over het weer geven van het activiteiten logboek en het ophalen van vermeldingen op basis van verschillende methoden.
 - Raadpleeg de documentatie voor uw Azure-service voor de specifieke gebeurtenissen die worden vastgelegd in het logboek.
 
 ![Activiteitenlogboek](media/monitor-azure-resource/activity-log.png)
@@ -125,8 +125,8 @@ Met Azure Monitor logboeken worden logboeken en metrische gegevens van meerdere 
 Met [log Analytics](../log-query/get-started-portal.md) kunt u werken met [logboek query's](../log-query/log-query-overview.md). Dit is een krachtige functie van Azure monitor waarmee u een geavanceerde analyse van logboek gegevens kunt uitvoeren met behulp van een volledig aanbevolen query taal. Open Log Analytics van **Logboeken** in het **controle** menu voor een Azure-resource om te werken met logboek query's met behulp van de resource als [query bereik](../log-query/scope.md#query-scope). Zo kunt u gegevens analyseren over meerdere tabellen voor deze resource. Gebruik **Logboeken** in het menu Azure monitor om toegang te krijgen tot logboeken voor alle resources. 
 
 - Zie aan de [slag met logboek query's in azure monitor](../log-query/get-started-queries.md) voor een zelf studie over het gebruik van de query taal die wordt gebruikt om logboek query's te schrijven.
-- Zie [Azure-resource logboeken verzamelen in log Analytics werk ruimte in azure monitor](../platform/resource-logs-collect-workspace.md) voor informatie over hoe bron logboeken worden verzameld in azure monitor logboeken en Details over hoe u ze in een query kunt openen.
-- Zie [Verzamel modus](../platform/resource-logs-collect-workspace.md#resource-log-collection-mode) voor een uitleg van hoe bron logboek gegevens worden gestructureerd in azure monitor Logboeken.
+- Zie [Azure-resource logboeken verzamelen in log Analytics werk ruimte in azure monitor](../platform/resource-logs.md#send-to-log-analytics-workspace) voor informatie over hoe bron logboeken worden verzameld in azure monitor logboeken en Details over hoe u ze in een query kunt openen.
+- Zie [Verzamel modus](../platform/resource-logs.md#send-to-log-analytics-workspace) voor een uitleg van hoe bron logboek gegevens worden gestructureerd in azure monitor Logboeken.
 - Raadpleeg de documentatie voor elke Azure-service voor meer informatie over de tabel in Azure Monitor logs.
 
 ![Logboeken](media/monitor-azure-resource/logs.png)
@@ -163,4 +163,4 @@ Verschillende soorten bewakings gegevens worden gebruikt voor verschillende soor
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [ondersteunde services, schema's en categorieën voor Azure-resource logboeken](../platform/diagnostic-logs-schema.md) voor meer informatie over resource logboeken voor verschillende Azure-Services.  
+* Zie [ondersteunde services, schema's en categorieën voor Azure-resource logboeken](../platform/resource-logs-schema.md) voor meer informatie over resource logboeken voor verschillende Azure-Services.  

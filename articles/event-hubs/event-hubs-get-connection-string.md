@@ -3,12 +3,12 @@ title: Connection string ophalen-Azure Event Hubs | Microsoft Docs
 description: Dit artikel bevat instructies voor het ophalen van een connection string die clients kunnen gebruiken om verbinding te maken met Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 271d4dcc1f2fab08dc7f625ce36e021eda225b87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ae6c66ddbbf4b9946e7037e1a7723043bf60507
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320490"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537170"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>Een Event Hubs ophalen connection string
 
@@ -73,5 +73,5 @@ Zie voor meer informatie over Azure CLI-opdrachten voor Event Hubs [Azure CLI vo
 
 U kunt meer informatie over Event Hubs vinden via de volgende koppelingen:
 
-* [Event Hubs-overzicht](event-hubs-what-is-event-hubs.md)
+* [Event Hubs-overzicht](./event-hubs-about.md)
 * [Een event hub maken](event-hubs-create.md)

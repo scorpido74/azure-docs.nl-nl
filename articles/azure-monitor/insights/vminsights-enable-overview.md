@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 261e5f17e787fd96697b06a9b338e74ea0409454
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 072f8fd44fa45648afd15cb40cba26bb427c7b56
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85507072"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539615"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>Overzicht van Azure Monitor voor VM's inschakelen
 
 In dit artikel vindt u een overzicht van de beschik bare opties voor het inschakelen van Azure Monitor voor VM's om de status en prestaties van het volgende te controleren:
 
-- Virtuele machines van Azure 
+- Azure-VM's 
 - Virtuele-machineschaalsets van Azure
 - Hybride virtuele machines die zijn verbonden met Azure Arc
 - On-premises virtuele machines
@@ -43,18 +43,18 @@ Azure Monitor voor VM's ondersteunt een Log Analytics-werk ruimte in de volgende
 
 - VS - west-centraal
 - VS - west
-- VS - west 2
-- VS - zuid-centraal
+- US - west 2
+- South Central US
 - VS - oost
 - VS - oost 2
-- VS - centraal
+- US - centraal
 - VS - noord-centraal
 - US Gov AZ
 - US Gov VA
 - Canada - midden
 - Verenigd Koninkrijk Zuid
 - Europa - noord
-- Europa -west
+- Europa - west
 - Azië - oost
 - Azië - zuidoost
 - India - centraal
@@ -67,8 +67,8 @@ Azure Monitor voor VM's ondersteunt een Log Analytics-werk ruimte in de volgende
 >
 
 Als u geen Log Analytics-werk ruimte hebt, kunt u er een maken met behulp van een van de volgende resources:
-* [Azure-CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)
-* [PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md)
+* [Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)
+* [PowerShell](../platform/powershell-workspace-configuration.md)
 * [Azure-portal](../../azure-monitor/learn/quick-create-workspace.md)
 * [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)
 
@@ -86,7 +86,7 @@ Azure Monitor voor VM's is beschikbaar voor servers met Azure Arc ingeschakeld i
 
 De volgende tabel geeft een lijst van de Windows-en Linux-besturings systemen die Azure Monitor voor VM's ondersteunt. Verderop in dit gedeelte vindt u een volledige lijst met informatie over de belangrijkste en secundaire versie van het Linux-besturings systeem en de ondersteunde kernel-versies.
 
-|Besturingssysteemversie |Prestaties |Kaarten |
+|Besturingssysteemversie |Prestaties |Maps |
 |-----------|------------|-----|
 |Windows Server 2019 | X | X |
 |Windows Server 2016 1803 | X | X |
@@ -171,11 +171,11 @@ In een hybride omgeving kunt u de afhankelijkheids agent hand matig downloaden e
 
 De volgende tabel beschrijft de verbonden bronnen die de kaart functie ondersteunt in een hybride omgeving.
 
-| Verbonden bron | Ondersteund | Description |
+| Verbonden bron | Ondersteund | Beschrijving |
 |:--|:--|:--|
-| Windows-agents | Yes | Naast de [log Analytics-agent voor Windows](../../azure-monitor/platform/log-analytics-agent.md), hebben Windows-agents de afhankelijkheids agent nodig. Zie [ondersteunde besturings systemen](#supported-operating-systems)voor meer informatie. |
-| Linux-agents | Yes | Naast de [log Analytics-agent voor Linux](../../azure-monitor/platform/log-analytics-agent.md)hebben Linux-agents de afhankelijkheids agent nodig. Zie [ondersteunde besturings systemen](#supported-operating-systems)voor meer informatie. |
-| Beheergroep System Center Operations Manager | No | |
+| Windows-agents | Ja | Naast de [log Analytics-agent voor Windows](../../azure-monitor/platform/log-analytics-agent.md), hebben Windows-agents de afhankelijkheids agent nodig. Zie [ondersteunde besturings systemen](#supported-operating-systems)voor meer informatie. |
+| Linux-agents | Ja | Naast de [log Analytics-agent voor Linux](../../azure-monitor/platform/log-analytics-agent.md)hebben Linux-agents de afhankelijkheids agent nodig. Zie [ondersteunde besturings systemen](#supported-operating-systems)voor meer informatie. |
+| Beheergroep System Center Operations Manager | Nee | |
 
 U kunt de afhankelijkheids agent downloaden van de volgende locaties:
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 664e61697c1fb0c339a4c2caf8d0125a73e608c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28bbf9749375a4523237e840c217977853cd4ddd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85319631"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539819"
 ---
 # <a name="sampling-in-application-insights"></a>Steekproeven in Application Insights
 
@@ -21,7 +21,7 @@ Wanneer metrische aantallen worden weer gegeven in de portal, worden ze opnieuw 
 ## <a name="brief-summary"></a>Korte samen vatting
 
 * Er zijn drie verschillende soorten steek proeven: adaptieve steek proeven, steek proeven met een vaste frequentie en steek proeven voor opname.
-* Adaptieve steek proeven zijn standaard ingeschakeld in alle nieuwste versies van de Application Insights ASP.NET en ASP.NET Core Sdk's (Software Development Kits). Het wordt ook gebruikt door [Azure functions](https://docs.microsoft.com/azure/azure-functions/functions-overview).
+* Adaptieve steek proeven zijn standaard ingeschakeld in alle nieuwste versies van de Application Insights ASP.NET en ASP.NET Core Sdk's (Software Development Kits). Het wordt ook gebruikt door [Azure functions](../../azure-functions/functions-overview.md).
 * Beproefde vaste-rente Beschik baarheid is beschikbaar in recente versies van de Application Insights Sdk's voor ASP.NET, ASP.NET Core, java (zowel de agent als de SDK) en python.
 * Opname sampling werkt op het eind punt van de Application Insights service. Dit geldt alleen wanneer er geen andere steek proeven van kracht zijn. Als de SDK voor beelden van uw telemetrie is, wordt opname sampling uitgeschakeld.
 * Als u voor webtoepassingen aangepaste gebeurtenissen registreert en er zeker van wilt zijn dat een set gebeurtenissen wordt behouden of verwijderd, moeten de gebeurtenissen dezelfde `OperationId` waarde hebben.
@@ -34,9 +34,10 @@ De volgende tabel bevat een overzicht van de beschik bare bemonsterings typen vo
 |-|-|-|-|
 | ASP.NET | [Ja (standaard ingeschakeld)](#configuring-adaptive-sampling-for-aspnet-applications) | [Ja](#configuring-fixed-rate-sampling-for-aspnet-applications) | Alleen als er geen andere steek proeven van kracht zijn |
 | ASP.NET Core | [Ja (standaard ingeschakeld)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [Ja](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | Alleen als er geen andere steek proeven van kracht zijn |
-| Azure Functions | [Ja (standaard ingeschakeld)](#configuring-adaptive-sampling-for-azure-functions) | No | Alleen als er geen andere steek proeven van kracht zijn |
-| Java | No | [Ja](#configuring-fixed-rate-sampling-for-java-applications) | Alleen als er geen andere steek proeven van kracht zijn |
-| Python | No | [Ja](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Alleen als er geen andere steek proeven van kracht zijn |
+| Azure Functions | [Ja (standaard ingeschakeld)](#configuring-adaptive-sampling-for-azure-functions) | Nee | Alleen als er geen andere steek proeven van kracht zijn |
+| Java | Nee | [Ja](#configuring-fixed-rate-sampling-for-java-applications) | Alleen als er geen andere steek proeven van kracht zijn |
+| Node.JS | Nee | [Ja](./nodejs.md#sampling) | Alleen als er geen andere steek proeven van kracht zijn
+| Python | Nee | [Ja](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Alleen als er geen andere steek proeven van kracht zijn |
 | Alle andere | Nee | Nee | [Ja](#ingestion-sampling) |
 
 > [!NOTE]
@@ -209,7 +210,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 
 ### <a name="configuring-adaptive-sampling-for-azure-functions"></a>Adaptieve steek proeven configureren voor Azure Functions
 
-Volg de instructies op [Deze pagina](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling) om adaptieve steek proeven te configureren voor apps die worden uitgevoerd in azure functions.
+Volg de instructies op [Deze pagina](../../azure-functions/functions-monitoring.md#configure-sampling) om adaptieve steek proeven te configureren voor apps die worden uitgevoerd in azure functions.
 
 ## <a name="fixed-rate-sampling"></a>Steek proeven met een vaste frequentie
 
@@ -481,7 +482,7 @@ Als de voor waarden voor het gebruik van de andere vormen van steek proeven niet
 
 ## <a name="knowing-whether-sampling-is-in-operation"></a>Weten of steek proeven worden uitgevoerd
 
-Als u de werkelijke sampling frequentie wilt detecteren, ongeacht waar deze is toegepast, gebruikt u een [analyse query](../../azure-monitor/app/analytics.md) zoals deze:
+Als u de werkelijke sampling frequentie wilt detecteren, ongeacht waar deze is toegepast, gebruikt u een [analyse query](../log-query/log-query-overview.md) zoals deze:
 
 ```kusto
 union requests,dependencies,pageViews,browserTimings,exceptions,traces
@@ -586,4 +587,4 @@ Vóór v 2.5.0-beta2 van de ASP.NET SDK en v 2.2.0-beta3 van ASP.NET Core SDK we
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Filteren](../../azure-monitor/app/api-filtering-sampling.md) kan meer controle bieden over wat uw SDK verzendt.
-* Lees het artikel over het ontwikkel netwerk om [telemetrie te optimaliseren met Application Insights](https://msdn.microsoft.com/magazine/mt808502.aspx).
+* Lees het artikel over het ontwikkel netwerk om [telemetrie te optimaliseren met Application Insights](/archive/msdn-magazine/2017/may/devops-optimize-telemetry-with-application-insights).

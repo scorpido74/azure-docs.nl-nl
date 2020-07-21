@@ -11,11 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/26/2019
-ms.openlocfilehash: 1922e92f9314e48ae4e3106a53cf750da5daf5e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ca106e076bc789e8435b9e67d6bffa20af8a635
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84049832"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539173"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Service-lagen in het op DTU gebaseerde aankoopmodel
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -58,7 +59,7 @@ Het kiezen van een servicelaag is voornamelijk afhankelijk van de bedrijfs conti
 
 Reken grootten worden uitgedrukt in termen van Dtu's (data base Trans Action units) voor individuele data bases en elastische data base Trans Action units (Edtu's) voor elastische Pools. Zie voor meer informatie over Dtu's en Edtu's [het op DTU gebaseerde aankoop model](purchasing-models.md#dtu-based-purchasing-model).
 
-||Basic|Standard|Premium|
+|Basic|Standard|Premium|
 | :-- | --: | --: | --: |
 | Maximale opslag grootte | 2 GB | 1 TB | 4 TB  |
 | Maximum aantal Dtu's | 5 | 3000 | 4000 | 
@@ -69,7 +70,7 @@ Reken grootten worden uitgedrukt in termen van Dtu's (data base Trans Action uni
 
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>EDTU-, opslag-en gegroepeerde database limieten voor elastische Pools
 
-| | **Standaard** | **Standard** | **Premium** |
+| **Basic** | **Standard** | **Premium** |
 | :-- | --: | --: | --: |
 | Maximale opslag grootte per data base  | 2 GB | 1 TB | 1 TB |
 | Maximale opslag grootte per groep | 156 GB | 4 TB | 4 TB |
@@ -111,7 +112,7 @@ De grootte van de data base is gebaseerd op een ' schaal factor '. De schaal fac
 
 De werk belasting bestaat uit negen transactie typen, zoals wordt weer gegeven in de volgende tabel. Elke trans actie is ontworpen om een bepaalde set systeem kenmerken te markeren in de data base-engine en systeemhardware, met een hoog contrast van de andere trans acties. Deze aanpak maakt het gemakkelijker om de impact van verschillende onderdelen te beoordelen op de algehele prestaties. De trans actie ' read Heavy ' produceert bijvoorbeeld een groot aantal lees bewerkingen van de schijf.
 
-| Transactietype | Description |
+| Transactietype | Beschrijving |
 | --- | --- |
 | Lite lezen |UITGESCHAKELD in-Memory; alleen-lezen |
 | Medium lezen |UITGESCHAKELD voornamelijk in-Memory; alleen-lezen |

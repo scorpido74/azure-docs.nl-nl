@@ -3,12 +3,12 @@ title: Exporteren naar SQL vanuit Azure-toepassing Insights | Microsoft Docs
 description: Application Insights gegevens doorlopend naar SQL exporteren met behulp van Stream Analytics.
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 3c8586e8a6950e827d1078ca7d9cc3792fa58ae0
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 4975d91cc20b81de302a1dd0cb7b3326878a96a1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087220"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540091"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Walkthrough: exporteren naar SQL vanuit Application Insights met behulp van Stream Analytics
 In dit artikel wordt beschreven hoe u uw telemetriegegevens van [Azure-toepassing inzichten][start] kunt verplaatsen naar Azure SQL database met behulp van [continue export][export] en [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/). 
@@ -72,7 +72,7 @@ Doorlopend exporteren voert altijd gegevens uit naar een Azure Storage-account, 
 
 De gebeurtenissen worden geschreven naar BLOB-bestanden in JSON-indeling. Elk bestand kan een of meer gebeurtenissen bevatten. Daarom willen we de gegevens van de gebeurtenis lezen en de gewenste velden filteren. Er zijn allerlei dingen die we kunnen doen met de gegevens, maar het plan is nu het gebruik van Stream Analytics om de gegevens naar SQL Database te verplaatsen. Zo kunt u heel eenvoudig veel interessante query's uitvoeren.
 
-## <a name="create-an-azure-sql-database"></a>Een Azure SQL-database maken
+## <a name="create-an-azure-sql-database"></a>Een Azure SQL Database-exemplaar maken
 Nadat u het abonnement in [Azure Portal][portal]hebt gemaakt, maakt u de data base (en een nieuwe server, tenzij u er al een hebt) waarnaar u de gegevens gaat schrijven.
 
 ![Nieuwe, gegevens, SQL](./media/code-sample-export-sql-stream-analytics/090-sql.png)
@@ -82,7 +82,7 @@ Zorg ervoor dat de server toegang verleent tot Azure-Services:
 ![Bladeren, servers, uw server, instellingen, firewall, toegang tot Azure toestaan](./media/code-sample-export-sql-stream-analytics/100-sqlaccess.png)
 
 ## <a name="create-a-table-in-azure-sql-database"></a>Een tabel maken in Azure SQL Database
-Maak verbinding met de data base die in de vorige sectie is gemaakt met uw favoriete beheer programma. In deze walkthrough wordt [SQL Server Management tools](https://msdn.microsoft.com/ms174173.aspx) (SSMS) gebruikt.
+Maak verbinding met de data base die in de vorige sectie is gemaakt met uw favoriete beheer programma. In deze walkthrough wordt [SQL Server Management tools](/sql/ssms/sql-server-management-studio-ssms?view=sql-server-ver15) (SSMS) gebruikt.
 
 ![Verbinding maken met Azure SQL Database](./media/code-sample-export-sql-stream-analytics/31-sql-table.png)
 
@@ -255,4 +255,3 @@ FROM [dbo].[PageViewsTable]
 [metrics]: ../../azure-monitor/platform/metrics-charts.md
 [portal]: https://portal.azure.com/
 [start]: ../../azure-monitor/app/app-insights-overview.md
-

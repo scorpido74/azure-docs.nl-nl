@@ -8,12 +8,13 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 05/19/2020
-ms.openlocfilehash: 34d2ba05b00ab92066bc7fa3ccd0b7b2aa59e15c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/13/2020
+ms.openlocfilehash: 70a54f52470a715df1011199d5cbd6aa5030094d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669634"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539207"
 ---
 # <a name="supported-features-of-azure-sql-edge-preview"></a>Ondersteunde functies van de Azure SQL-rand (preview-versie) 
 
@@ -35,15 +36,17 @@ Azure SQL Edge is beschikbaar in twee verschillende edities of software plannen.
 
 ## <a name="operating-system"></a>Besturingssysteem
 
-Azure SQL Edge-containers zijn momenteel gebaseerd op Ubuntu 16,04 en worden alleen ondersteund om te worden uitgevoerd op docker-hosts met Ubuntu 16,04 (aanbevolen) of Ubuntu 18,04. Azure SQL Edge kan ook worden uitgevoerd op andere hosts van het besturings systeem. Het kan bijvoorbeeld worden uitgevoerd op andere distributies van Linux of op Windows (met behulp van docker CE of docker EE). Houd er echter rekening mee dat micro soft deze configuraties niet uitvoerig heeft getest.
+Azure SQL Edge-containers zijn momenteel gebaseerd op Ubuntu 16,04 en worden alleen ondersteund voor docker-hosts waarop Ubuntu 16,04 LTS (aanbevolen) of Ubuntu 18,04 LTS worden uitgevoerd. Het is mogelijk om Azure SQL Edge-containers op andere hosts van het besturings systeem uit te voeren. het kan bijvoorbeeld worden uitgevoerd op andere distributies van Linux of op Windows (met behulp van docker CE of docker EE), maar micro soft raadt u echter niet aan om dit te doen, omdat deze configuratie mogelijk niet uitgebreid is getest.
 
 Azure SQL Edge wordt momenteel alleen ondersteund voor implementatie via Azure IoT Edge. Zie [Azure IOT Edge ondersteunde systemen](https://docs.microsoft.com/azure/iot-edge/support)voor meer informatie.
 
 De aanbevolen configuratie voor het uitvoeren van Azure SQL Edge in Windows is het configureren van een Ubuntu VM op de Windows-host en het uitvoeren van Azure SQL Edge in de Linux-VM.
 
-## <a name="hardware-support"></a>Hardwaresupport
+Het aanbevolen en ondersteunde bestands systeem voor Azure SQL Edge is EXT4 en XFS. Als permanente volumes worden gebruikt om een back-up te maken van de Azure SQL Edge-database opslag, moet het onderliggende bestands systeem van de host EXT4 en XFS zijn.
 
-Voor Azure SQL Edge is een 64-bits processor vereist, die van Intel, AMD of ARM kan zijn, met mini maal één processor en één GB RAM-geheugen op de host. Terwijl het geheugen voor het opstarten van de Azure SQL-rand zich dicht bij 500 MB bevindt, is het extra geheugen nodig voor andere IoT Edge-modules die op het apparaat Edge worden uitgevoerd.
+## <a name="hardware-support"></a>Hardwareondersteuning
+
+Voor Azure SQL Edge is een 64-bits processor vereist (x64 of ARM64), met mini maal één processor en één GB RAM-geheugen op de host. Terwijl het geheugen voor het opstarten van de Azure SQL-rand zich dicht bij 500 MB bevindt, is het extra geheugen nodig voor andere IoT Edge-modules die op het apparaat Edge worden uitgevoerd. De werkelijke geheugen-en CPU-vereisten voor Azure SQL Edge variëren, afhankelijk van de complexiteit van de werk belasting en het volume van de gegevens die worden verwerkt. Wanneer u een hardware voor uw oplossing kiest, raadt micro soft u aan uitgebreide prestatie tests uit te voeren om ervoor te zorgen dat aan de vereiste prestatie kenmerken voor uw oplossing wordt voldaan.  
 
 ## <a name="azure-sql-edge-components"></a>Azure SQL Edge-onderdelen
 
@@ -61,7 +64,7 @@ Naast het ondersteunen van een subset van de functies van SQL Server on Linux bi
 
 De volgende lijst bevat de SQL Server 2019 in Linux-functies die momenteel niet worden ondersteund in Azure SQL Edge.
 
-| Onderwerp | Niet-ondersteunde functie of service |
+| Gebied | Niet-ondersteunde functie of service |
 |-----|-----|
 | **Database ontwerp** | In-Memory OLTP, en gerelateerde DDL-opdrachten en Transact-SQL-functies, catalogus weergaven en dynamische beheer weergaven. |
 | &nbsp; | `HierarchyID`gegevens type en gerelateerde DDL-opdrachten en Transact-SQL-functies, catalogus weergaven en dynamische beheer weergaven. |

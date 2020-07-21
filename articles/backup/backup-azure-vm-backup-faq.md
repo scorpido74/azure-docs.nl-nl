@@ -4,15 +4,16 @@ description: In dit artikel vindt u antwoorden op veelgestelde vragen over het m
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 5705b70dd210c336fc2baa4da07f96f2ad249f64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68f85b3d5da811f78ba398093db5a65ee5c49ab1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82800648"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538765"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Veelgestelde vragen: back-ups maken van virtuele Azure-machines
 
-In dit artikel vindt u antwoorden op veelgestelde vragen over het maken van back-ups van virtuele Azure-machines met de [Azure backup](backup-introduction-to-azure-backup.md) -service.
+In dit artikel vindt u antwoorden op veelgestelde vragen over het maken van back-ups van virtuele Azure-machines met de [Azure backup](./backup-overview.md) -service.
 
 ## <a name="backup"></a>Backup
 
@@ -82,7 +83,7 @@ Er kunnen geen moment opnamen worden gemaakt op de schijf met WA-functionaliteit
 
 Azure Backup kan geen back-up maken van de op WA ingeschakelde schijf, maar deze kan wel worden uitgesloten van een back-up. De back-up biedt echter geen consistentie van de data base, omdat er geen back-up wordt gemaakt van de gegevens op de schijf met WA. U kunt met deze configuratie back-ups maken van schijven als u back-ups wilt maken van de besturingssysteem schijf en een back-up wilt maken van schijven waarop geen WA is ingeschakeld.
 
-Azure Backup biedt een streaming-back-upoplossing voor SAP HANA-data bases met een RPO van 15 minuten. Het is Backint gecertificeerd door SAP om een systeem eigen back-upondersteuning te bieden die gebruikmaakt van de systeem eigen Api's van SAP HANA. Meer informatie [over het maken van back-ups van SAP Hana-data bases in azure-vm's](https://docs.microsoft.com/azure/backup/sap-hana-db-about).
+Azure Backup biedt een streaming-back-upoplossing voor SAP HANA-data bases met een RPO van 15 minuten. Het is Backint gecertificeerd door SAP om een systeem eigen back-upondersteuning te bieden die gebruikmaakt van de systeem eigen Api's van SAP HANA. Meer informatie [over het maken van back-ups van SAP Hana-data bases in azure-vm's](./sap-hana-db-about.md).
 
 ### <a name="what-is-the-maximum-delay-i-can-expect-in-backup-start-time-from-the-scheduled-backup-time-i-have-set-in-my-vm-backup-policy"></a>Wat is de maximale vertraging die ik kan verwachten in de start tijd van de back-up vanaf de geplande back-uptijd die ik heb ingesteld in mijn VM-back-upbeleid?
 
@@ -128,7 +129,11 @@ Het herstel proces blijft hetzelfde. Als het herstel punt een bepaald tijdstip h
 
 Meer [informatie hierover vindt](backup-azure-vms-automation.md#restore-an-azure-vm) u in Power shell.
 
-### <a name="can-i-restore-the-vm-thats-been-deleted"></a>Kan ik de verwijderde VM herstellen?
+### <a name="if-the-restore-fails-to-create-the-vm-what-happens-to-the-disks-included-in-the-restore"></a>Als de virtuele machine niet kan worden gemaakt met de herstel bewerking, wat gebeurt er dan met de schijven die zijn opgenomen in het herstellen?
+
+In het geval van een beheerde VM-herstel bewerking, zelfs als het maken van de virtuele machine mislukt, worden de schijven nog steeds hersteld.
+
+### <a name="can-i-restore-a-vm-thats-been-deleted"></a>Kan ik een verwijderde VM herstellen?
 
 Ja. Zelfs als u de virtuele machine verwijdert, kunt u naar het bijbehorende back-upitem in de kluis gaan en het herstellen vanaf een herstel punt.
 
@@ -142,13 +147,13 @@ Met de functie voor [direct terugzetten](backup-instant-restore-capability.md) k
 
 ### <a name="what-happens-when-we-change-the-key-vault-settings-for-the-encrypted-vm"></a>Wat gebeurt er wanneer de sleutel kluis instellingen voor de versleutelde VM worden gewijzigd?
 
-Nadat u de sleutel kluis instellingen voor de versleutelde virtuele machine hebt gewijzigd, blijven back-ups werken met de nieuwe set details. Na het herstellen van een herstel punt vóór de wijziging, moet u echter de geheimen in een sleutel kluis herstellen voordat u de virtuele machine kunt maken. Zie dit [artikel](https://docs.microsoft.com/azure/backup/backup-azure-restore-key-secret) voor meer informatie.
+Nadat u de sleutel kluis instellingen voor de versleutelde virtuele machine hebt gewijzigd, blijven back-ups werken met de nieuwe set details. Na het herstellen van een herstel punt vóór de wijziging, moet u echter de geheimen in een sleutel kluis herstellen voordat u de virtuele machine kunt maken. Zie dit [artikel](./backup-azure-restore-key-secret.md) voor meer informatie.
 
 Voor bewerkingen zoals geheime/sleutel rollen is deze stap niet vereist en dezelfde sleutel kluis kan na het herstellen worden gebruikt.
 
 ### <a name="can-i-access-the-vm-once-restored-due-to-a-vm-having-broken-relationship-with-domain-controller"></a>Kan ik toegang krijgen tot de virtuele machine nadat deze is hersteld vanwege een verbroken relatie met de domein controller?
 
-Ja, u kunt de VM na het herstellen openen als gevolg van een virtuele machine met een verbroken relatie met de domein controller. Raadpleeg dit [artikel](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#post-restore-steps) voor meer informatie
+Ja, u kunt de VM na het herstellen openen als gevolg van een virtuele machine met een verbroken relatie met de domein controller. Raadpleeg dit [artikel](./backup-azure-arm-restore-vms.md#post-restore-steps) voor meer informatie
 
 ## <a name="manage-vm-backups"></a>Back-ups van uw virtuele machine beheren
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 7c1f0c18fc8b867e16ce539a24839637e1d14379
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7d62777f73a92768b1ede3fb9b7e0cb97951823
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390785"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537507"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Gebeurtenissen binnen en buiten Azure Digital Apparaatdubbels routeren
 
@@ -46,7 +46,7 @@ Het gebeurtenis bericht bevat ook de ID van de bron die het bericht heeft verzon
 
 De compute-resource moet ook afzonderlijke beveiligings-en toegangs machtigingen tot stand brengen.
 
-Zie [How-to: een Azure-functie instellen voor het verwerken van gegevens](how-to-create-azure-function.md)om het proces van het instellen van een Azure-functie voor het verwerken van digitale dubbele gebeurtenissen door te lopen.
+Zie [*How-to: een Azure-functie instellen voor het verwerken van gegevens*](how-to-create-azure-function.md)om het proces van het instellen van een Azure-functie voor het verwerken van digitale dubbele gebeurtenissen door te lopen.
 
 ## <a name="create-an-endpoint"></a>Een eindpunt maken
 
@@ -90,7 +90,7 @@ Verschillende typen gebeurtenissen in IoT Hub en Azure Digital Apparaatdubbels g
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie een gebeurtenis route instellen en beheren:
-* [Instructies: eind punten en routes beheren](how-to-manage-routes.md)
+* [*Instructies: eind punten en routes beheren*](how-to-manage-routes.md)
 
 U kunt ook zien hoe u Azure Functions gebruikt voor het routeren van gebeurtenissen in azure Digital Apparaatdubbels:
-* [Instructies: een Azure-functie voor het verwerken van gegevens instellen](how-to-create-azure-function.md)
+* [*Instructies: een Azure-functie voor het verwerken van gegevens instellen*](how-to-create-azure-function.md)

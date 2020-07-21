@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: e38ae07aa032e4a828c9188fd78b112f4ff0d397
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a96db0e9a834dcddbb5f247953fa1bbf0dc39ce
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945389"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539700"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Virtuele Azure-machines bewaken met Azure Monitor
 In dit artikel wordt beschreven hoe u Azure Monitor kunt gebruiken om bewakings gegevens van virtuele Azure-machines te verzamelen en analyseren om hun status te behouden. Virtuele machines kunnen worden bewaakt voor Beschik baarheid en prestaties met Azure Monitor zoals elke [andere Azure-resource](monitor-azure-resource.md), maar ze zijn uniek van andere resources, aangezien u ook de gast besturingssystemen en het systeem en de werk belastingen die hierop worden uitgevoerd, moet bewaken. 
@@ -29,7 +29,7 @@ Het [bewaken van Azure-resources met Azure monitor](monitor-azure-resource.md) b
 - U kunt [Diagnostische instellingen](../platform/diagnostic-settings.md) voor een virtuele machine maken om platform metrieken te verzenden naar andere bestemmingen, zoals opslag en Event hubs, maar u kunt deze diagnostische instellingen niet configureren in de Azure Portal. 
 
 ## <a name="monitoring-data"></a>Bewakingsgegevens
-Virtuele machines in Azure in azure genereren [Logboeken](../platform/data-platform-logs.md) en [metrische gegevens](../platform/data-platform-metrics.md) die het volgende diagram weer geven.
+Virtuele machines in azure genereren [Logboeken](../platform/data-platform-logs.md) en [metrische gegevens](../platform/data-platform-metrics.md) , zoals wordt weer gegeven in het volgende diagram.
 
 ![Overzicht](media/monitor-vm-azure/logs-metrics.png)
 
@@ -130,15 +130,15 @@ Wanneer u de verzameling van bewakings gegevens voor een virtuele machine hebt g
 
 ![Bewaking in de Azure Portal](media/monitor-vm-azure/monitor-menu.png)
 
-| Menu optie | Description |
+| Menu optie | Beschrijving |
 |:---|:---|
 | Overzicht | Geeft de [platform metrische gegevens](../platform/data-platform-metrics.md) weer voor de host van de virtuele machine. Klik op een grafiek om met deze gegevens in [Metrics Explorer](../platform/metrics-getting-started.md)te werken. |
-| Activiteitenlogboek | Vermeldingen in het [activiteiten logboek](../platform/activity-log-view.md) gefilterd op de huidige virtuele machine. |
+| Activiteitenlogboek | Vermeldingen in het [activiteiten logboek](../platform/activity-log.md#view-the-activity-log) gefilterd op de huidige virtuele machine. |
 | Inzichten | Hiermee opent u [Azure monitor voor VM's](../insights/vminsights-overview.md) met de kaart voor de geselecteerde virtuele machine. |
 | Waarschuwingen | [Waarschuwingen](../platform/alerts-overview.md) weer geven voor de huidige virtuele machine.  |
 | Metrische gegevens | Open [Metrics Explorer](../platform/metrics-getting-started.md) met de scope die is ingesteld op de huidige virtuele machine. |
 | Diagnostische instellingen | De [uitbrei ding voor diagnostische gegevens](../platform/diagnostics-extension-overview.md) voor de huidige virtuele machine inschakelen en configureren. |
-| Advisor-aanbevelingen | Aanbevelingen voor de huidige virtuele machine van [Azure Advisor](/azure/advisor/). |
+| Advisor-aanbevelingen | Aanbevelingen voor de huidige virtuele machine van [Azure Advisor](../../advisor/index.yml). |
 | Logboeken | Open [log Analytics](../log-query/log-query-overview.md#what-is-log-analytics) met de [Scope](../log-query/scope.md) die is ingesteld op de huidige virtuele machine. |
 | Verbindings monitor | Open [Network Watcher verbindings monitor](../../network-watcher/connection-monitor-preview.md) om de verbindingen tussen de huidige virtuele machine en andere virtuele machines te bewaken. |
 
@@ -148,7 +148,7 @@ U kunt metrische gegevens voor virtuele machines analyseren met metrische gegeve
 
 Er zijn drie naam ruimten die door virtuele machines worden gebruikt voor metrische gegevens:
 
-| Naamruimte | Description | Vereiste |
+| Naamruimte | Beschrijving | Vereiste |
 |:---|:---|:---|
 | Host van virtuele machine | Metrische gegevens van de host worden automatisch verzameld voor alle virtuele machines van Azure. Gedetailleerde lijst met metrische gegevens bij [micro soft. Compute/informatie](../platform/metrics-supported.md#microsoftcomputevirtualmachines). | Automatisch verzameld zonder configuratie vereist. |
 | Gast (klassiek) | Beperkte set gast besturingssysteem en prestatie gegevens van toepassingen. Beschikbaar in Metrics Explorer, maar niet op andere Azure Monitor functies, zoals metrische waarschuwingen.  | [Diagnostische uitbrei ding](../platform/diagnostics-extension-overview.md) geïnstalleerd. Gegevens worden uit Azure Storage gelezen.  |
@@ -226,7 +226,7 @@ Event
 
 
 ## <a name="system-center-operations-manager"></a>System Center Operations Manager
-System Center Operations Manager (SCOM) biedt gedetailleerde bewaking van workloads op virtuele machines. Raadpleeg de [Cloud monitoring-hand leiding](https://docs.microsoft.com/azure/cloud-adoption-framework/manage/monitor/) voor een vergelijking van bewakings platforms en verschillende strategieën voor implementatie.
+System Center Operations Manager (SCOM) biedt gedetailleerde bewaking van workloads op virtuele machines. Raadpleeg de [Cloud monitoring-hand leiding](/azure/cloud-adoption-framework/manage/monitor/) voor een vergelijking van bewakings platforms en verschillende strategieën voor implementatie.
 
 Als u een bestaande SCOM-omgeving hebt die u wilt blijven gebruiken, kunt u deze integreren met Azure Monitor om aanvullende functionaliteit te bieden. De Log Analytics agent die door Azure Monitor wordt gebruikt, is hetzelfde als die voor SCOM, zodat u kunt controleren of virtuele machines gegevens verzenden naar beide. U moet de agent nog steeds toevoegen aan Azure Monitor voor VM's en de werk ruimte zodanig configureren dat er aanvullende gegevens worden verzameld, zoals hierboven is beschreven, maar de virtuele machines kunnen de bestaande Management Packs in een SCOM-omgeving zonder aanpassing blijven uitvoeren.
 
@@ -242,4 +242,3 @@ Zie [Connect Operations Manager to Azure monitor](../platform/om-agents.md) voor
 
 * [Meer informatie over het analyseren van gegevens in Azure Monitor logboeken met behulp van logboek query's.](../log-query/get-started-queries.md)
 * [Meer informatie over waarschuwingen met metrische gegevens en Logboeken in Azure Monitor.](../platform/alerts-overview.md)
-

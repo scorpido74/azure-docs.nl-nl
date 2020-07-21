@@ -4,12 +4,12 @@ description: Aangepaste bewerkingen bijhouden met Azure-toepassing Insights .NET
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 316c1b7ea32f661b009bfee7a89cb7e5ed082f3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49c2ad44dab5e4f57db2f11c17c269289e56d2d5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82690868"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540040"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Aangepaste bewerkingen bijhouden met Application Insights .NET SDK
 
@@ -346,7 +346,7 @@ Wanneer u het verwijderen van een bericht instrumenteert, moet u ervoor zorgen d
 
 ### <a name="dependency-types"></a>Afhankelijkheids typen
 
-Application Insights maakt gebruik van afhankelijkheids type om UI-ervaringen aan te passen. Voor wacht rijen herkent het de volgende typen `DependencyTelemetry` waarmee de ervaring voor het [diagnosticeren van trans acties](/azure/azure-monitor/app/transaction-diagnostics)wordt verbeterd:
+Application Insights maakt gebruik van afhankelijkheids type om UI-ervaringen aan te passen. Voor wacht rijen herkent het de volgende typen `DependencyTelemetry` waarmee de ervaring voor het [diagnosticeren van trans acties](./transaction-diagnostics.md)wordt verbeterd:
 - `Azure queue`voor Azure Storage wachtrijen
 - `Azure Event Hubs`voor Azure Event Hubs
 - `Azure Service Bus`voor Azure Service Bus
@@ -425,7 +425,7 @@ public async Task RunMyTaskAsync()
 
 Als u de bewerking ongedaan maakt, wordt de bewerking gestopt, dus u kunt dit doen in plaats van aan te roepen `StopOperation` .
 
-*Waarschuwing*: in sommige [gevallen kan een](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-finally) niet-beschik bare uitzonde ring `finally` worden opgeroepen zodat bewerkingen mogelijk niet worden bijgehouden.
+*Waarschuwing*: in sommige [gevallen kan een](/dotnet/csharp/language-reference/keywords/try-finally) niet-beschik bare uitzonde ring `finally` worden opgeroepen zodat bewerkingen mogelijk niet worden bijgehouden.
 
 ### <a name="parallel-operations-processing-and-tracking"></a>Parallelle bewerkingen verwerken en bijhouden
 

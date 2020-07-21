@@ -3,11 +3,12 @@ title: Over back-ups van Azure-bestands share
 description: Meer informatie over het maken van back-ups van Azure-bestands shares in de Recovery Services kluis
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 0a03871b61ab00f2dae18ba11a5a9127680a646b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40cb9ca0bd34fd65ab1983af6384d617db26e996
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84299227"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539088"
 ---
 # <a name="about-azure-file-share-backup"></a>Over back-ups van Azure-bestands share
 
@@ -20,7 +21,7 @@ Azure file share Backup is een systeem eigen, op de cloud gebaseerde back-upoplo
 * **Ingebouwde beheer mogelijkheden**: u kunt back-ups plannen en de gewenste Bewaar periode opgeven zonder de extra overhead voor het weghalen van gegevens.
 * **Direct terugzetten**: back-up van Azure-bestands share maakt gebruik van moment opnamen van bestands shares, zodat u alleen de bestanden kunt selecteren die u onmiddellijk wilt herstellen.
 * **Waarschuwingen en rapportage**: u kunt waarschuwingen configureren voor back-up-en herstel fouten en de rapportage oplossing van Azure Backup gebruiken om inzicht te krijgen in de back-ups van uw bestands shares.
-* **Bescherming tegen onbedoeld verwijderen van bestands shares**: Azure backup maakt de [functie voor voorlopig verwijderen](https://docs.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion) op een opslag account niveau mogelijk met een Bewaar periode van 14 dagen. Zelfs als een schadelijke actor de bestands share verwijdert, worden de inhoud en herstel punten (moment opnamen) van de bestands share bewaard voor een Configureer bare Bewaar periode, waardoor het herstel van de bron inhoud en moment opnamen zonder gegevens verlies kan worden voltooid.
+* **Bescherming tegen onbedoeld verwijderen van bestands shares**: Azure backup maakt de [functie voor voorlopig verwijderen](../storage/files/storage-files-prevent-file-share-deletion.md) op een opslag account niveau mogelijk met een Bewaar periode van 14 dagen. Zelfs als een schadelijke actor de bestands share verwijdert, worden de inhoud en herstel punten (moment opnamen) van de bestands share bewaard voor een Configureer bare Bewaar periode, waardoor het herstel van de bron inhoud en moment opnamen zonder gegevens verlies kan worden voltooid.
 
 ## <a name="architecture"></a>Architectuur
 

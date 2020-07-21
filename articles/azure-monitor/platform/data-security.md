@@ -6,22 +6,22 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/04/2019
-ms.openlocfilehash: 63d8d8d3701a9adca4bd01e6e061877f5d0bd245
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 540e824f301c402e1f65f6186b26ad1672e21d37
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80333362"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539343"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics gegevens beveiliging
-Dit document is bedoeld om informatie te verschaffen die specifiek is voor Log Analytics, een functie van Azure Monitor, om de informatie over [Vertrouwenscentrum van Azure](../../security/fundamentals/trust-center.md)aan te vullen.  
+Dit document is bedoeld om informatie te verschaffen die specifiek is voor Log Analytics, een functie van Azure Monitor, om de informatie over [Vertrouwenscentrum van Azure](https://www.microsoft.com/en-us/trust-center?rtc=1)aan te vullen.  
 
 In dit artikel wordt uitgelegd hoe data door Log Analytics wordt verzameld, verwerkt en beveiligd. U kunt agents gebruiken om verbinding te maken met de webservice, System Center Operations Manager te gebruiken om operationele gegevens te verzamelen of gegevens op te halen uit Azure Diagnostics voor gebruik door Log Analytics. 
 
 De Log Analytics-service beheert uw gegevens op basis van de Cloud veilig door de volgende methoden te gebruiken:
 
 * Gegevensscheiding
-* Bewaartijd van gegevens
+* Gegevensretentie
 * Fysieke beveiliging
 * Incidentbeheer
 * Naleving
@@ -42,14 +42,14 @@ Het wordt niet aanbevolen om uw agent expliciet in te stellen voor gebruik van T
 |Platform/taal | Ondersteuning | Meer informatie |
 | --- | --- | --- |
 |Linux | Linux-distributies zijn vaak afhankelijk van [openssl](https://www.openssl.org) voor TLS 1,2-ondersteuning.  | Controleer de [openssl wijzigingen logboek](https://www.openssl.org/news/changelog.html) om te bevestigen dat uw versie van openssl wordt ondersteund.|
-| Windows 8,0-10 | Wordt ondersteund en is standaard ingeschakeld. | Om te bevestigen dat u nog steeds de [standaard instellingen](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)gebruikt.  |
-| Windows Server 2012-2016 | Wordt ondersteund en is standaard ingeschakeld. | Controleren of u nog steeds de [standaard instellingen](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) gebruikt |
-| Windows 7 SP1 en Windows Server 2008 R2 SP1 | Ondersteund, maar is niet standaard ingeschakeld. | Zie de pagina met [register instellingen voor Transport Layer Security (TLS)](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) voor meer informatie over het inschakelen van.  |
+| Windows 8,0-10 | Wordt ondersteund en is standaard ingeschakeld. | Om te bevestigen dat u nog steeds de [standaard instellingen](/windows-server/security/tls/tls-registry-settings)gebruikt.  |
+| Windows Server 2012-2016 | Wordt ondersteund en is standaard ingeschakeld. | Controleren of u nog steeds de [standaard instellingen](/windows-server/security/tls/tls-registry-settings) gebruikt |
+| Windows 7 SP1 en Windows Server 2008 R2 SP1 | Ondersteund, maar is niet standaard ingeschakeld. | Zie de pagina met [register instellingen voor Transport Layer Security (TLS)](/windows-server/security/tls/tls-registry-settings) voor meer informatie over het inschakelen van.  |
 
 ## <a name="data-segregation"></a>Gegevensscheiding
 Nadat uw gegevens door de Log Analytics-service zijn opgenomen, worden de gegevens in de gehele service logisch gescheiden gehouden van elk onderdeel. Alle gegevens worden gelabeld per werk ruimte. Deze markering blijft aanwezig gedurende de levenscyclus van de gegevens en deze wordt afgedwongen op elke laag van de service. Uw gegevens worden opgeslagen in een specifieke data base in het opslag cluster in de regio die u hebt geselecteerd.
 
-## <a name="data-retention"></a>Bewaartijd van gegevens
+## <a name="data-retention"></a>Gegevensretentie
 Zoek gegevens voor geïndexeerde logboeken worden opgeslagen en bewaard volgens uw prijs plan. Zie [log Analytics prijzen](https://azure.microsoft.com/pricing/details/log-analytics/)voor meer informatie.
 
 Als onderdeel van uw [abonnements overeenkomst](https://azure.microsoft.com/support/legal/subscription-agreement/)houdt micro soft uw gegevens volgens de voor waarden van de overeenkomst.  Wanneer klant gegevens worden verwijderd, worden er geen fysieke stations vernietigd.  
@@ -66,10 +66,10 @@ De volgende tabel bevat een aantal van de beschik bare oplossingen en biedt voor
 
 De volgende tabel bevat voor beelden van gegevens typen:
 
-| **Gegevenstype** | **Fields** |
+| **Gegevens type** | **Fields** |
 | --- | --- |
 | Waarschuwing |Naam van waarschuwing, beschrijving van waarschuwing, BaseManagedEntityId, probleem-ID, IsMonitorAlert, RuleId, ResolutionState, prioriteit, Ernst, categorie, eigenaar, ResolvedBy, TimeRaised, TimeAdded, LastModified, LastModifiedBy, LastModifiedExceptRepeatCount, TimeResolved, TimeResolutionStateLastModified, TimeResolutionStateLastModifiedInDB, RepeatCount |
-| Configuratie |KlantId, AgentID, EntityID, ManagedTypeID, ManagedTypePropertyID, CurrentValue, Change date |
+| Configuration |KlantId, AgentID, EntityID, ManagedTypeID, ManagedTypePropertyID, CurrentValue, Change date |
 | Gebeurtenis |Gebeurtenis-instantie, EventOriginalID, BaseManagedEntityInternalId, RuleId, PublisherId, Uitgevernaam, FullNumber, Number, Category, ChannelLevel, LoggingComputer, Event Data, EventParameters, TimeGenerated, TimeAdded <br>**Opmerking:** Wanneer u gebeurtenissen met aangepaste velden in het Windows-gebeurtenis logboek schrijft, worden deze door Log Analytics verzameld. |
 | Metagegevens |BaseManagedEntityId, object status, OrganizationalUnit, ActiveDirectoryObjectSid, PhysicalProcessors, netwerkwerknaam, IPAddress, ForestDNSName, NetbiosComputerName, VirtualMachineName, LastInventoryDate, HostServerNameIsVirtualMachine, IP-adres, NetbiosDomainName, LogicalProcessors, DNSName, DisplayName, DomainDnsName, ActiveDirectorySite, principalnaam, OffsetInMinuteFromGreenwichTime |
 | Prestaties |ObjectName, CounterName, PerfmonInstanceName, PerformanceDataId, PerformanceSourceInternalID, SampleValue, TimeSampled, TimeAdded |
@@ -175,4 +175,3 @@ Als u toegang wilt krijgen tot uw Log Analytics-werk ruimte, meldt u zich aan bi
 * Meer informatie over het verzamelen van gegevens met Log Analytics voor uw virtuele Azure-machines na de [Snelstartgids van Azure VM](../../azure-monitor/learn/quick-collect-azurevm.md).  
 
 *  Als u gegevens wilt verzamelen van fysieke of virtuele Windows-of Linux-computers in uw omgeving, raadpleegt u de [Quick start voor Linux-computers](../../azure-monitor/learn/quick-collect-linux-computer.md) of [Quick start voor Windows-computers](../../azure-monitor/learn/quick-collect-windows-computer.md)
-

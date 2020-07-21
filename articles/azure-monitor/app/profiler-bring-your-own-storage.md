@@ -6,12 +6,12 @@ author: renatosalas
 ms.author: regutier
 ms.date: 04/14/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: d84010fd62d753fafd7edffab833b203657f74c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50dcd3f438645c99e0ed3cfdded7a101ee5f1852
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361935"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539853"
 ---
 # <a name="configure-bring-your-own-storage-byos-for-application-insights-profiler-and-snapshot-debugger"></a>Uw eigen opslag (BYOS) configureren voor Application Insights Profiler en Snapshot Debugger
 
@@ -21,9 +21,9 @@ Wanneer u Application Insights Profiler of Snapshot Debugger gebruikt, worden ar
 Met uw eigen opslag kunt u deze artefacten uploaden naar een opslag account dat u beheert. Dit betekent dat u het beleid voor versleuteling op rest, het levens duur beheer beleid en netwerk toegang beheert. U bent echter verantwoordelijk voor de kosten van het opslag account.
 
 > [!NOTE]
-> Als u een persoonlijke koppeling inschakelt, moet u uw eigen opslag ruimte maken. [Raadpleeg de documentatie](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security) voor meer informatie over persoonlijke koppelingen voor Application Insights.
+> Als u een persoonlijke koppeling inschakelt, moet u uw eigen opslag ruimte maken. [Raadpleeg de documentatie](../platform/private-link-security.md) voor meer informatie over persoonlijke koppelingen voor Application Insights.
 >
-> Als u door de klant beheerde sleutels inschakelt, moet u uw eigen opslag toevoegen. [Raadpleeg de documentatie](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys)voor meer informatie over door de klant beheerde sleutels voor Application Insights.
+> Als u door de klant beheerde sleutels inschakelt, moet u uw eigen opslag toevoegen. [Raadpleeg de documentatie](../platform/customer-managed-keys.md)voor meer informatie over door de klant beheerde sleutels voor Application Insights.
 
 ## <a name="how-will-my-storage-account-be-accessed"></a>Hoe wordt mijn opslag account geopend?
 1. Agents die worden uitgevoerd in uw Virtual Machines of App Service uploaden artefacten (profielen, moment opnamen en symbolen) naar BLOB-containers in uw account. Dit proces omvat het maken van contact met de Application Insights Profiler-of Snapshot Debugger-service om een SAS-token (Shared Access Signature) te verkrijgen voor een nieuwe Blob in uw opslag account.
@@ -60,7 +60,7 @@ Nadat u de rol hebt toegevoegd, wordt deze weer gegeven onder de sectie roltoewi
 _ ![ Afbeelding 1,1](media/profiler-bring-your-own-storage/figure-11.png)_ 
  _afbeelding 1,1_ 
 
-Als u ook een persoonlijke koppeling gebruikt, hebt u één aanvullende configuratie nodig om verbinding met onze vertrouwde micro soft-service van uw Virtual Network mogelijk te maken. Raadpleeg de [documentatie voor opslag netwerk beveiliging](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services).
+Als u ook een persoonlijke koppeling gebruikt, hebt u één aanvullende configuratie nodig om verbinding met onze vertrouwde micro soft-service van uw Virtual Network mogelijk te maken. Raadpleeg de [documentatie voor opslag netwerk beveiliging](../../storage/common/storage-network-security.md#trusted-microsoft-services).
 
 ### <a name="link-your-storage-account-with-your-application-insights-resource"></a>Uw opslag account koppelen aan uw Application Insights-resource
 Er zijn twee opties voor het configureren van BYOS voor diagnostische gegevens op code niveau (Profiler/Debugger):
@@ -73,7 +73,7 @@ Er zijn twee opties voor het configureren van BYOS voor diagnostische gegevens o
 
 1. Zorg ervoor dat AZ Power Shell 4.2.0 of hoger is geïnstalleerd.
 
-    Raadpleeg de [officiële Azure PowerShell documentatie](https://docs.microsoft.com/powershell/azure/install-az-ps)om Azure PowerShell te installeren.
+    Raadpleeg de [officiële Azure PowerShell documentatie](/powershell/azure/install-az-ps)om Azure PowerShell te installeren.
 
 1. Installeer de Application Insights Power shell-uitbrei ding.
     ```powershell
@@ -85,7 +85,7 @@ Er zijn twee opties voor het configureren van BYOS voor diagnostische gegevens o
     Connect-AzAccount -Subscription "{subscription_id}"
     ```
 
-    Raadpleeg de [documentatie bij Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount)voor meer informatie over het aanmelden.
+    Raadpleeg de [documentatie bij Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount)voor meer informatie over het aanmelden.
 
 1. Verwijder het vorige opslag account dat is gekoppeld aan de Application Insights resource.
 
@@ -121,7 +121,7 @@ Er zijn twee opties voor het configureren van BYOS voor diagnostische gegevens o
 
 1. Zorg ervoor dat u Azure CLI hebt geïnstalleerd.
 
-    Raadpleeg de [officiële Azure cli-documentatie](https://docs.microsoft.com/cli/azure/install-azure-cli)voor meer informatie over het installeren van Azure cli.
+    Raadpleeg de [officiële Azure cli-documentatie](/cli/azure/install-azure-cli)voor meer informatie over het installeren van Azure cli.
 
 1. Installeer de Application Insights CLI-extensie.
     ```powershell
@@ -152,7 +152,7 @@ Er zijn twee opties voor het configureren van BYOS voor diagnostische gegevens o
     ```
 
     > [!NOTE]
-    > Raadpleeg de [Application INSIGHTS cli-documentatie voor informatie](https://docs.microsoft.com/cli/azure/ext/application-insights/monitor/app-insights/component/linked-storage)over het uitvoeren van updates voor de gekoppelde opslag accounts aan uw Application Insights-resource.
+    > Raadpleeg de [Application INSIGHTS cli-documentatie voor informatie](/cli/azure/ext/application-insights/monitor/app-insights/component/linked-storage)over het uitvoeren van updates voor de gekoppelde opslag accounts aan uw Application Insights-resource.
 
 #### <a name="configure-using-azure-resource-manager-template"></a>Configureren met behulp van Azure Resource Manager sjabloon
 

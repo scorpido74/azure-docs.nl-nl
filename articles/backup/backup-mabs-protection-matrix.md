@@ -3,11 +3,12 @@ title: MABS (Azure Backup Server) v3 UR1 Protection-matrix
 description: In dit artikel wordt een ondersteunings matrix weer gegeven met alle werk belastingen, gegevens typen en installaties die Azure Backup Server beveiligt.
 ms.date: 03/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: f950c7be28a4ff0dd0caa12d1327c2a0e2ac4fc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cfcb8fbf9f793cfbe11d2c25b3d2caa7018d0fd4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84677318"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538731"
 ---
 # <a name="mabs-azure-backup-server-v3-ur1-protection-matrix"></a>MABS (Azure Backup Server) v3 UR1 Protection-matrix
 
@@ -53,7 +54,7 @@ De volgende secties bevatten informatie over de ondersteunings matrix voor bevei
 
 | **Workload** | **Versie**                               | **Installatie van Azure Backup Server**                      | **Ondersteund Azure Backup Server** | **Beveiliging en herstel**                                 |
 | ------------ | ----------------------------------------- | ------------------------------------------------------------ | ---------------------------------- | ------------------------------------------------------------ |
-| Linux        | Linux wordt uitgevoerd als Hyper-V-of VMware-gast | Fysieke server, on-premises Hyper-V VM, Windows VM in VMWare | V3 UR1                             | Hyper-V moet worden uitgevoerd op Windows Server 2012 R2 of Windows Server 2016. Beveiligen: volledige virtuele machine   <br><br>   Herstellen: volledige virtuele machine   <br><br>    Alleen bestandsconsistente momentopnamen worden ondersteund.    <br><br>   Zie het artikel [Linux op distributies die zijn goedgekeurd door Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)voor een volledige lijst met ondersteunde Linux-distributies en-versies. |
+| Linux        | Linux wordt uitgevoerd als Hyper-V-of VMware-gast | Fysieke server, on-premises Hyper-V VM, Windows VM in VMWare | V3 UR1                             | Hyper-V moet worden uitgevoerd op Windows Server 2012 R2 of Windows Server 2016. Beveiligen: volledige virtuele machine   <br><br>   Herstellen: volledige virtuele machine   <br><br>    Alleen bestandsconsistente momentopnamen worden ondersteund.    <br><br>   Zie het artikel [Linux op distributies die zijn goedgekeurd door Azure](../virtual-machines/linux/endorsed-distros.md)voor een volledige lijst met ondersteunde Linux-distributies en-versies. |
 
 ## <a name="azure-expressroute-support"></a>Ondersteuning voor Azure ExpressRoute
 
@@ -73,7 +74,7 @@ Selecteer bij micro soft-peering de volgende services/regio's en relevante Commu
 * Microsoft Azure regio (op basis van de locatie van uw Recovery Services kluis)
 * Azure Storage (op basis van de locatie van uw Recovery Services kluis)
 
-Zie de [routerings vereisten voor ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-routing)voor meer informatie.
+Zie de [routerings vereisten voor ExpressRoute](../expressroute/expressroute-routing.md)voor meer informatie.
 
 >[!NOTE]
 >Open bare peering is afgeschaft voor nieuwe circuits.

@@ -1,5 +1,5 @@
 ---
-title: Een waarschuwing voor metrische gegevens maken met een Resource Manager-sjabloon
+title: Een nieuwere metrische waarschuwing met Azure Resource Manager sjabloon maken
 description: Ontdek hoe u een Resource Manager-sjabloon kunt gebruiken om een waarschuwing voor metrische gegevens te maken.
 author: harelbr
 ms.author: harelbr
@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 7/9/2020
 ms.subservice: alerts
-ms.openlocfilehash: 4d8ec0c76259a8567906e9ac415864e2cd37a9cd
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 043ecc07c521f9c1c79835bcd67ff1d81cacfa34
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187571"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539462"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Een waarschuwing voor metrische gegevens maken met een Resource Manager-sjabloon
 
@@ -27,7 +27,7 @@ De basis stappen zijn als volgt:
 
 1. Gebruik een van de volgende sjablonen als een JSON-bestand met een beschrijving van het maken van de waarschuwing.
 2. Bewerk en gebruik het bijbehorende parameter bestand als een JSON om de waarschuwing aan te passen.
-3. `metricName`Zie de beschik bare metrische gegevens in [Azure monitor ondersteunde metrische gegevens](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)voor de para meter.
+3. `metricName`Zie de beschik bare metrische gegevens in [Azure monitor ondersteunde metrische gegevens](./metrics-supported.md)voor de para meter.
 4. Implementeer de sjabloon met [een implementatie methode](../../azure-resource-manager/templates/deploy-powershell.md).
 
 ## <a name="template-for-a-simple-static-threshold-metric-alert"></a>Sjabloon voor een eenvoudige waarschuwing voor een statische drempel waarde voor waarschuwingen
@@ -204,7 +204,7 @@ Sla de JSON hieronder op als simplestaticmetricalert.jsvoor het doel van deze pr
 }
 ```
 
-[Hier](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate)vindt u een uitleg van het schema en de eigenschappen voor een waarschuwings regel.
+[Hier](/rest/api/monitor/metricalerts/createorupdate)vindt u een uitleg van het schema en de eigenschappen voor een waarschuwings regel.
 
 U kunt de waarden voor de para meters instellen op de opdracht regel of via een parameter bestand. Hieronder vindt u een voor beeld van een parameter bestand.
 
@@ -477,7 +477,7 @@ Sla de onderstaande json op als simpledynamicmetricalert.json voor deze stapsgew
 }
 ```
 
-[Hier](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate)vindt u een uitleg van het schema en de eigenschappen voor een waarschuwings regel.
+[Hier](/rest/api/monitor/metricalerts/createorupdate)vindt u een uitleg van het schema en de eigenschappen voor een waarschuwings regel.
 
 U kunt de waarden voor de para meters instellen op de opdracht regel of via een parameter bestand. Hieronder vindt u een voor beeld van een parameter bestand. 
 
@@ -1248,7 +1248,7 @@ az group deployment create \
 
 U kunt het volgende sjabloon gebruiken om een meer geavanceerde waarschuwingsregel voor metrische gegevens met statische drempelwaarde te maken voor aangepaste metrische gegevens.
 
-Bekijk [Aangepaste metrische gegevens in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview) voor meer informatie over aangepaste metrische gegevens in Azure Monitor.
+Bekijk [Aangepaste metrische gegevens in Azure Monitor](./metrics-custom-overview.md) voor meer informatie over aangepaste metrische gegevens in Azure Monitor.
 
 Wanneer u een waarschuwingsregel maakt voor aangepaste metrische gegevens, moet u zowel de metrische naam als de metrische naamruimte opgeven. Zorg er ook voor dat er al over de aangepaste metrische gegevens wordt gerapporteerd, want u kunt geen waarschuwingsregel maken voor aangepaste metrische gegevens die nog niet bestaan.
 
@@ -1504,7 +1504,7 @@ az group deployment create \
 
 >[!NOTE]
 >
-> U vindt de metrische naamruimte van specifieke aangepaste metrische gegevens door [te zoeken naar uw aangepaste metrische gegevens via het Azure-portal](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#browse-your-custom-metrics-via-the-azure-portal)
+> U vindt de metrische naamruimte van specifieke aangepaste metrische gegevens door [te zoeken naar uw aangepaste metrische gegevens via het Azure-portal](./metrics-custom-overview.md#browse-your-custom-metrics-via-the-azure-portal)
 
 
 ## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>Sjabloon voor een metrische waarschuwing waarmee meerdere bronnen worden bewaakt

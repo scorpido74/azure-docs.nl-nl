@@ -3,12 +3,12 @@ title: Exporteren met behulp van Stream Analytics vanuit Azure-toepassing inzich
 description: Stream Analytics kunt de gegevens die u exporteert, continu transformeren, filteren en routeren vanuit Application Insights.
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 71b19f0b49dec8f7176a53eeb656519c65f9c1d0
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 70f952dcd6f8d942ac272afed58a7fe0f47d8a6e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224516"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539955"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Gebruik Stream Analytics voor het verwerken van geëxporteerde gegevens van Application Insights
 [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/) is het ideale hulp programma voor het verwerken van gegevens die zijn [geëxporteerd vanuit Application Insights](export-telemetry.md). Stream Analytics kunnen gegevens uit verschillende bronnen ophalen. De gegevens kunnen worden getransformeerd en gefilterd en vervolgens worden doorgestuurd naar verschillende Sinks.
@@ -138,7 +138,7 @@ GROUP BY TumblingWindow(minute, 1), flat.ArrayValue.name
 
 * export-invoer is de alias die we hebben opgegeven voor de stroom invoer
 * aan pbi-uitvoer is de uitvoer alias die we hebben gedefinieerd
-* We gebruiken [outer apply GetElements](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) omdat de naam van de gebeurtenis zich in een geneste JSON-matrix bevindt. Vervolgens selecteert de Select de naam van de gebeurtenis, samen met een telling van het aantal exemplaren met die naam in de tijds periode. De [Group By-Component groepeert](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics) de elementen in peri Oden van één minuut.
+* We gebruiken [outer apply GetElements](/stream-analytics-query/apply-azure-stream-analytics) omdat de naam van de gebeurtenis zich in een geneste JSON-matrix bevindt. Vervolgens selecteert de Select de naam van de gebeurtenis, samen met een telling van het aantal exemplaren met die naam in de tijds periode. De [Group By-Component groepeert](/stream-analytics-query/group-by-azure-stream-analytics) de elementen in peri Oden van één minuut.
 
 ### <a name="query-to-display-metric-values"></a>Query om meet waarden weer te geven
 
@@ -212,4 +212,3 @@ Noam ben Zeev laat zien hoe u geëxporteerde gegevens kunt verwerken met Stream 
 * [Continue export](export-telemetry.md)
 * [Gedetailleerde gegevens model verwijzing voor de eigenschaps typen en-waarden.](export-data-model.md)
 * [Application Insights](../../azure-monitor/app/app-insights-overview.md)
-

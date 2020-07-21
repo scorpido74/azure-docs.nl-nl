@@ -3,12 +3,12 @@ title: Beschik baarheid en consistentie-Azure Event Hubs | Microsoft Docs
 description: De maximale hoeveelheid Beschik baarheid en consistentie bieden met Azure Event Hubs met behulp van partities.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 497a6e7430c4e6f8e29f903294ca94a4cb23012b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 45ca5cc5790824d6c67a47a23691c6b0cae0b9f8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85315779"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537204"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Beschikbaarheid en consistentie in Event Hubs
 
@@ -141,5 +141,5 @@ In dit voor beeld wordt uw gebeurtenis verzonden naar een van de beschik bare pa
 ## <a name="next-steps"></a>Volgende stappen
 U kunt meer informatie over Event Hubs vinden via de volgende koppelingen:
 
-* [Overzicht van Event Hubs-service](event-hubs-what-is-event-hubs.md)
+* [Overzicht van Event Hubs-service](./event-hubs-about.md)
 * [Een Event Hub maken](event-hubs-create.md)

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: 637db3a0749b5a0738b0ccc5136d26e435a03c7b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: bfd25c2572e91c2984f2845e08941614fff65570
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203133"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539768"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Servicetoewijzing gebruiken in Azure
 
@@ -241,7 +241,7 @@ Servicetoewijzing integreert met zoeken in Logboeken om het aantal beschik bare 
 
 ## <a name="service-desk-integration"></a>Service Desk-integratie
 
-Servicetoewijzing integratie met de IT Service Management-connector automatisch wanneer beide oplossingen zijn ingeschakeld en geconfigureerd in uw Log Analytics-werk ruimte. De integratie in Servicetoewijzing heeft de naam ' Service Desk '. Zie [ITSM-werk items centraal beheren met IT Service Management-connector](https://docs.microsoft.com/azure/log-analytics/log-analytics-itsmc-overview)voor meer informatie.
+Servicetoewijzing integratie met de IT Service Management-connector automatisch wanneer beide oplossingen zijn ingeschakeld en geconfigureerd in uw Log Analytics-werk ruimte. De integratie in Servicetoewijzing heeft de naam ' Service Desk '. Zie [ITSM-werk items centraal beheren met IT Service Management-connector](../platform/itsmc-overview.md)voor meer informatie.
 
 In het deel venster **Machine Service Bureau** worden alle IT Service Management-gebeurtenissen voor de geselecteerde server weer gegeven in het geselecteerde tijds bereik. Op de server wordt een pictogram weer gegeven als er huidige items zijn en in het deel venster machine Service Desk ze worden weer gegeven.
 
@@ -270,7 +270,7 @@ Het deel venster **computer prestaties** bevat standaard metrische gegevens voor
 
 ![Deel venster computer prestaties](media/service-map/machine-performance.png)
 
-Als u prestatie gegevens wilt bekijken, moet u mogelijk [de juiste log Analytics prestatie meter items inschakelen](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-performance-counters).  De prestatie meter items die u wilt inschakelen:
+Als u prestatie gegevens wilt bekijken, moet u mogelijk [de juiste log Analytics prestatie meter items inschakelen](../platform/data-sources-performance-counters.md).  De prestatie meter items die u wilt inschakelen:
 
 Windows:
 - Processor (*) \\ % processor tijd
@@ -540,7 +540,7 @@ let remoteMachines = remote | summarize by RemoteMachine;
 
 ## <a name="rest-api"></a>REST-API
 
-Alle gegevens van de server, het proces en de afhankelijkheid in Servicetoewijzing zijn beschikbaar via de [Servicetoewijzing rest API](https://docs.microsoft.com/rest/api/servicemap/).
+Alle gegevens van de server, het proces en de afhankelijkheid in Servicetoewijzing zijn beschikbaar via de [Servicetoewijzing rest API](/rest/api/servicemap/).
 
 ## <a name="diagnostic-and-usage-data"></a>Diagnostische en gebruiks gegevens
 

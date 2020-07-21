@@ -2,13 +2,13 @@
 title: Azure DevTest Labs Veelgestelde vragen | Microsoft Docs
 description: In dit artikel vindt u antwoorden op enkele veelgestelde vragen over Azure DevTest Labs.
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: b687ae5c7b64239387dad7a51e124fa2f507f2b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/17/2020
+ms.openlocfilehash: 707b66fadab482a31ac02f10460d581997931a0b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481660"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537479"
 ---
 # <a name="azure-devtest-labs-faq"></a>Veelgestelde vragen over Azure DevTest Labs
 Krijg antwoorden op enkele van de meest voorkomende vragen over Azure DevTest Labs.
@@ -200,7 +200,7 @@ Uw bestaande Vm's kopiëren naar DevTest Labs:
 Ja, u kunt meerdere schijven koppelen aan uw Vm's.
 
 ### <a name="are-gen-2-images-supported-by-devtest-labs"></a>Worden gen 2-afbeeldingen ondersteund door DevTest Labs?
-Nee. De DevTest Labs-service biedt geen ondersteuning voor [generatie 2-installatie kopieën](../virtual-machines/windows/generation-2.md). Als zowel versies van 1 en Diversen 2 beschikbaar zijn voor een installatie kopie, toont DevTest Labs alleen de versie 1 van de installatie kopie bij het maken van een virtuele machine. Er wordt geen installatie kopie weer geven als er slechts een versie van gen 2 beschikbaar is. 
+Ja. De DevTest Labs-service ondersteunt [gen 2-installatie kopieën](../virtual-machines/windows/generation-2.md). Als zowel de versies van 1 en Diversen 2 beschikbaar zijn voor een installatie kopie, wordt in DevTest Labs echter alleen de versie 1 van de installatie kopie weer gegeven bij het maken van een virtuele machine. U ziet de installatie kopie als er slechts een versie van gen 2 beschikbaar is. 
 
 ### <a name="if-i-want-to-use-a-windows-os-image-for-my-testing-do-i-have-to-purchase-an-msdn-subscription"></a>Als ik een installatie kopie van een Windows-besturings systeem wil gebruiken voor mijn tests, moet ik dan een MSDN-abonnement aanschaffen?
 Voer een van de volgende stappen uit om Windows-client installatie kopieën (Windows 7 of een hogere versie) te gebruiken voor het ontwikkelen of testen in Azure:
@@ -212,7 +212,7 @@ Voor meer informatie over de Azure-tegoeden voor elke MSDN-aanbieding raadpleegt
 
 
 ### <a name="how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab"></a>Hoe kan ik het proces van het verwijderen van alle virtuele machines in mijn lab automatiseren?
-Als eigenaar van het lab kunt u Vm's uit uw Lab verwijderen in de Azure Portal. U kunt ook alle virtuele machines in uw Lab verwijderen met behulp van een Power shell-script. In het volgende voor beeld, onder de **waarde voor het wijzigen** van de opmerking, wijzigt u de parameter waarden. U kunt de abonnements-, labResourceGroup-en labName-waarden ophalen uit het deel venster Lab in de Azure Portal.
+Als eigenaar van het lab kunt u Vm's uit uw Lab verwijderen in de Azure Portal. U kunt ook alle virtuele machines in uw Lab verwijderen met behulp van een Power shell-script. In het volgende voor beeld, onder de **waarde voor het wijzigen** van de opmerking, wijzigt u de parameter waarden. U kunt de `subscriptionId` waarden, `labResourceGroup` en, ophalen `labName` uit het deel venster lab in de Azure Portal.
 
 ```powershell
 # Delete all the VMs in a lab.
@@ -277,7 +277,7 @@ Als u het uploaden van VHD-bestanden voor het maken van aangepaste installatie k
 
 Zoeken naar het doel-opslag account dat is gekoppeld aan uw Lab:
 
-1.  Meld u aan bij [Azure Portal](https://portal.azure.com).
+1.  Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2.  Selecteer **resource groepen**in het menu links.
 3.  Zoek en selecteer de resource groep die is gekoppeld aan uw Lab.
 4.  Selecteer een van de opslag accounts onder **overzicht**.
@@ -340,9 +340,9 @@ Voor de/Continuous Delivery (CD) toolchains van andere doorlopende integratie (C
 ## <a name="networking"></a>Netwerken
 
 ### <a name="when-should-i-create-a-new-virtual-network-for-my-devtest-labs-environment-vs-using-an-existing-virtual-network"></a>Wanneer moet ik een nieuw virtueel netwerk maken voor mijn DevTest Labs-omgeving versus een bestaand virtueel netwerk gebruiken?
-Als uw Vm's moeten communiceren met de bestaande infra structuur, kunt u overwegen om een bestaand virtueel netwerk in uw DevTest Labs-omgeving te gebruiken. Als u ExpressRoute gebruikt, is het raadzaam om de hoeveelheid VNets/subnetten zo klein mogelijk te maken dat u de IP-adres ruimte die wordt toegewezen voor gebruik in de abonnementen niet hoeft te fragmenteren.
+Als uw Vm's moeten communiceren met de bestaande infra structuur, kunt u overwegen om een bestaand virtueel netwerk in uw DevTest Labs-omgeving te gebruiken. Als u ExpressRoute gebruikt, wilt u mogelijk het aantal virtuele netwerken/subnetten minimaliseren, zodat u de IP-adres ruimte die wordt toegewezen voor gebruik in de abonnementen niet hoeft te fragmenteren.
 
-Denk ook aan het gebruik van het VNet-peering-patroon ([hub-spoke model](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)). Deze aanpak maakt vnet/subnet-communicatie mogelijk tussen abonnementen. Anders kan elke DevTest Labs-omgeving een eigen virtueel netwerk hebben.
+Overweeg hier het gebruik van het peering-patroon van het virtuele netwerk ([hub-spoke model](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)) te gebruiken. Deze aanpak maakt vnet/subnet-communicatie mogelijk tussen abonnementen. Anders kan elke DevTest Labs-omgeving een eigen virtueel netwerk hebben.
 
 Er zijn [limieten](../azure-resource-manager/management/azure-subscription-service-limits.md) voor het aantal virtuele netwerken per abonnement. De standaard waarde is 50, maar deze limiet kan worden verhoogd naar 100.
 

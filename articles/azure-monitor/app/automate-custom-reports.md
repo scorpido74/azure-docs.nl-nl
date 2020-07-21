@@ -4,12 +4,12 @@ description: Aangepaste dagelijkse/wekelijkse/maandelijkse rapporten automatiser
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.openlocfilehash: cf251d63645efc70ee93e84827db47ae3055ae33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4eb580b90c0bf9acafc4e8f805c2eef7eaae06d3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82161451"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540074"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Aangepaste rapporten automatiseren met Azure-toepassing Insights-gegevens
 
@@ -31,9 +31,9 @@ Elke onderneming heeft zijn unieke rapportage behoeften, zoals:
 
 U kunt [programmatisch query's uitvoeren op Application Insights](https://dev.applicationinsights.io/) gegevens om aangepaste rapporten te genereren op schema. U kunt de volgende opties gebruiken om snel aan de slag te gaan:
 
-* [Rapporten automatiseren met Microsoft Flow](automate-with-flow.md)
+* [Rapporten automatiseren met Microsoft Flow](../platform/logicapp-flow-connector.md)
 * [Rapporten automatiseren met Logic Apps](automate-with-logic-apps.md)
-* Gebruik de [Azure function](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function) -sjabloon ' Application Insights gepland overzicht ' in het bewakings scenario. Deze functie maakt gebruik van SendGrid om het e-mail bericht te leveren. 
+* Gebruik de [Azure function](../../azure-functions/functions-create-first-azure-function.md) -sjabloon ' Application Insights gepland overzicht ' in het bewakings scenario. Deze functie maakt gebruik van SendGrid om het e-mail bericht te leveren. 
 
     ![Azure-functie sjabloon](./media/automate-custom-reports/azure-function-template.png)
 
@@ -72,7 +72,7 @@ availabilityResults
 
 1. Maak een Azure-functie-app. ( _Application Insights is_ alleen vereist als u de nieuwe functie-app wilt controleren met Application Insights)
 
-   Ga naar de Azure Functions-documentatie voor meer informatie over het [maken van een functie-app](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function#create-a-function-app)
+   Ga naar de Azure Functions-documentatie voor meer informatie over het [maken van een functie-app](../../azure-functions/functions-create-first-azure-function.md#create-a-function-app)
 
 2. Wanneer de implementatie van uw nieuwe functie-app is voltooid, selecteert **u naar resource**.
 
@@ -83,7 +83,7 @@ availabilityResults
 4. Selecteer de **_sjabloon geplande samen vatting Application Insights_**.
 
      > [!NOTE]
-     > Functie-apps worden standaard gemaakt met runtime versie 3. x. U moet [Azure functions runtime versie](https://docs.microsoft.com/azure/azure-functions/set-runtime-version) **1. x** instellen voor het gebruik van de sjabloon Application Insights geplande samen vatting. Ga naar configuratie-> runtime-instellingen om de runtime versie te wijzigen. ![runtime scherm afbeelding](./media/automate-custom-reports/change-runtime-v.png)
+     > Functie-apps worden standaard gemaakt met runtime versie 3. x. U moet [Azure functions runtime versie](../../azure-functions/set-runtime-version.md) **1. x** instellen voor het gebruik van de sjabloon Application Insights geplande samen vatting. Ga naar configuratie-> runtime-instellingen om de runtime versie te wijzigen. ![runtime scherm afbeelding](./media/automate-custom-reports/change-runtime-v.png)
 
    ![Scherm afbeelding nieuwe functie Application Insights sjabloon](./media/automate-custom-reports/function-app-04.png)
 
@@ -106,7 +106,7 @@ availabilityResults
    * SendGridAPI = SendGrid-API-sleutel
 
      > [!NOTE]
-     > Als u geen SendGrid-account hebt, kunt u er een maken. De documentatie van SendGrid voor Azure Functions is [hier](https://docs.microsoft.com/azure/azure-functions/functions-bindings-sendgrid)beschikbaar. Als u alleen een minimale uitleg wilt over het instellen van SendGrid en het genereren van een API-sleutel, wordt aan het einde van dit artikel vermeld. 
+     > Als u geen SendGrid-account hebt, kunt u er een maken. De documentatie van SendGrid voor Azure Functions is [hier](../../azure-functions/functions-bindings-sendgrid.md)beschikbaar. Als u alleen een minimale uitleg wilt over het instellen van SendGrid en het genereren van een API-sleutel, wordt aan het einde van dit artikel vermeld. 
 
 8. Selecteer **integreren** en klik onder uitvoer op **SendGrid ($Return)**.
 
@@ -152,5 +152,5 @@ Deze stappen zijn alleen van toepassing als u nog geen SendGrid-account hebt gec
 
 * Meer informatie over het maken van [Analytics-query's](../../azure-monitor/log-query/get-started-queries.md).
 * Meer informatie over het [programmatisch opvragen van Application Insights gegevens](https://dev.applicationinsights.io/)
-* Meer informatie over [Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps).
+* Meer informatie over [Logic Apps](../../logic-apps/logic-apps-overview.md).
 * Meer informatie over [Microsoft flow](https://ms.flow.microsoft.com).

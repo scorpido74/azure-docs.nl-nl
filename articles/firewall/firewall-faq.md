@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 07/10/2020
+ms.date: 07/17/2020
 ms.author: victorh
-ms.openlocfilehash: 3174576201f0068191c2918b47fbd99eaa1ec182
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: b984bb581df54cba79a551dc870786ed228eaa43
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232080"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536966"
 ---
 # <a name="azure-firewall-faq"></a>Veelgestelde vragen over Azure Firewall
 
@@ -22,15 +22,7 @@ Azure Firewall is een beheerde, cloudgebaseerde netwerkbeveiligingsservice die u
 
 ## <a name="what-capabilities-are-supported-in-azure-firewall"></a>Welke mogelijkheden worden er in Azure Firewall ondersteund?
 
-* Stateful firewall as a Service
-* Ingebouwde hoge Beschik baarheid met onbeperkte Cloud schaal baarheid
-* Filteren op FQDN
-* FQDN-tags
-* Regels voor het filteren van netwerkverkeer
-* Ondersteuning voor uitgaande SNAT
-* Ondersteuning voor inkomende DNAT
-* Toepassingen en beleids regels voor netwerk verbindingen centraal maken, afdwingen en registreren in azure-abonnementen en VNETs
-* Volledig geïntegreerd met Azure Monitor voor logboek registratie en analyse
+Zie [Azure Firewall-functies](features.md) voor meer informatie over Azure Firewall-functies.
 
 ## <a name="what-is-the-typical-deployment-model-for-azure-firewall"></a>Wat is het typische implementatie model voor Azure Firewall?
 

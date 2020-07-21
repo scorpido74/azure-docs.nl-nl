@@ -3,12 +3,12 @@ title: Back-ups maken van SQL Server-databases in virtuele Azure-machines
 description: In dit artikel vindt u informatie over het maken van een back-up van SQL Server-data bases op virtuele machines van Azure met Azure Backup.
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 16e24ed94d8017d9fb922193bb16a33ec7a9cdfd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cfd8233b9a696b5b4b1981eefa81aa9723f6431
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84817538"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538943"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Back-ups maken van SQL Server-databases in virtuele Azure-machines
 
@@ -59,17 +59,17 @@ Meer informatie over het gebruik van deze opties vindt u hieronder:
 
 #### <a name="private-endpoints"></a>Privé-eindpunten
 
-Met persoonlijke eind punten kunt u veilig verbinding maken met servers in een virtueel netwerk naar uw Recovery Services kluis. Het persoonlijke eind punt gebruikt een IP-adres van de VNET-Address ruimte voor uw kluis. Het netwerk verkeer tussen uw resources binnen het virtuele netwerk en de kluis wordt verplaatst naar het virtuele netwerk en een privé-koppeling in het micro soft backbone-netwerk. Dit elimineert de bloot stelling van het open bare Internet. Lees [hier](https://docs.microsoft.com/azure/backup/private-endpoints)meer over privé-eind punten voor Azure backup.
+Met persoonlijke eind punten kunt u veilig verbinding maken met servers in een virtueel netwerk naar uw Recovery Services kluis. Het persoonlijke eind punt gebruikt een IP-adres van de VNET-Address ruimte voor uw kluis. Het netwerk verkeer tussen uw resources binnen het virtuele netwerk en de kluis wordt verplaatst naar het virtuele netwerk en een privé-koppeling in het micro soft backbone-netwerk. Dit elimineert de bloot stelling van het open bare Internet. Lees [hier](./private-endpoints.md)meer over privé-eind punten voor Azure backup.
 
 #### <a name="nsg-tags"></a>NSG-Tags
 
-Als u netwerk beveiligings groepen (NSG) gebruikt, gebruikt u de *AzureBackup* -servicetag om uitgaande toegang tot Azure backup toe te staan. Naast het Azure Backup-label moet u ook connectiviteit voor verificatie en gegevens overdracht toestaan door soort gelijke [NSG regels](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) te maken voor *Azure AD* en *Azure Storage*.  In de volgende stappen wordt het proces beschreven voor het maken van een regel voor de Azure Backup-tag:
+Als u netwerk beveiligings groepen (NSG) gebruikt, gebruikt u de *AzureBackup* -servicetag om uitgaande toegang tot Azure backup toe te staan. Naast het Azure Backup-label moet u ook connectiviteit voor verificatie en gegevens overdracht toestaan door soort gelijke [NSG regels](../virtual-network/security-overview.md#service-tags) te maken voor *Azure AD* en *Azure Storage*.  In de volgende stappen wordt het proces beschreven voor het maken van een regel voor de Azure Backup-tag:
 
 1. In **Alle services** gaat u naar **Netwerkbeveiligingsgroepen** en selecteert u de netwerkbeveiligingsgroep.
 
 1. Selecteer de optie **Uitgaande beveiligingsregels** onder **Instellingen**.
 
-1. Selecteer **Toevoegen**. Voer alle vereiste details in voor het maken van een nieuwe regel, zoals beschreven in de [instellingen voor beveiligingsregels](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings). Zorg ervoor dat de optie **bestemming** is ingesteld op *service label* en **doel service label** is ingesteld op *AzureBackup*.
+1. Selecteer **Toevoegen**. Voer alle vereiste details in voor het maken van een nieuwe regel, zoals beschreven in de [instellingen voor beveiligingsregels](../virtual-network/manage-network-security-group.md#security-rule-settings). Zorg ervoor dat de optie **bestemming** is ingesteld op *service label* en **doel service label** is ingesteld op *AzureBackup*.
 
 1. Klik op **toevoegen** om de zojuist gemaakte uitgaande beveiligings regel op te slaan.
 
@@ -77,7 +77,7 @@ U kunt ook NSG uitgaande beveiligings regels maken voor Azure Storage en Azure A
 
 #### <a name="azure-firewall-tags"></a>Azure Firewall Tags
 
-Als u Azure Firewall gebruikt, maakt u een toepassings regel met behulp van de *AzureBackup* [Azure firewall FQDN-tag](https://docs.microsoft.com/azure/firewall/fqdn-tags). Hiermee wordt alle uitgaande toegang tot Azure Backup.
+Als u Azure Firewall gebruikt, maakt u een toepassings regel met behulp van de *AzureBackup* [Azure firewall FQDN-tag](../firewall/fqdn-tags.md). Hiermee wordt alle uitgaande toegang tot Azure Backup.
 
 #### <a name="allow-access-to-service-ip-ranges"></a>Toegang tot de service-IP-adresbereiken toestaan
 
@@ -91,7 +91,7 @@ U kunt ook de volgende FQDN-namen gebruiken om toegang te verlenen tot de vereis
 | -------------- | ------------------------------------------------------------ |
 | Azure Backup  | `*.backup.windowsazure.com`                             |
 | Azure Storage | `*.blob.core.windows.net` <br><br> `*.queue.core.windows.net` |
-| Azure AD      | Toegang tot FQDN-gebieden onder de secties 56 en 59 toestaan volgens [dit artikel](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online) |
+| Azure AD      | Toegang tot FQDN-gebieden onder de secties 56 en 59 toestaan volgens [dit artikel](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online) |
 
 #### <a name="use-an-http-proxy-server-to-route-traffic"></a>Een HTTP-proxy server gebruiken om verkeer te routeren
 
@@ -107,7 +107,7 @@ Vermijd het gebruik van de volgende elementen in database namen:
 * Punt komma '; '
 * Slash/
 
-Aliasing is beschikbaar voor niet-ondersteunde tekens, maar we raden u aan om deze te vermijden. Zie [Het gegevensmodel van de tabelservice](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model) voor meer informatie.
+Aliasing is beschikbaar voor niet-ondersteunde tekens, maar we raden u aan om deze te vermijden. Zie [Het gegevensmodel van de tabelservice](/rest/api/storageservices/understanding-the-table-service-data-model) voor meer informatie.
 
 >[!NOTE]
 >Het **configureren** van de beveiliging voor data bases met speciale tekens zoals "+" of "&" in hun naam wordt niet ondersteund. U kunt de naam van de data base wijzigen of **automatische beveiliging**inschakelen, waardoor deze data bases kunnen worden beveiligd.
@@ -161,11 +161,15 @@ Data bases detecteren die worden uitgevoerd op een virtuele machine:
 
    ![Back-up configureren selecteren](./media/backup-azure-sql-database/backup-goal-configure-backup.png)
 
-2. In **items selecteren om een back-up te maken**, ziet u alle geregistreerde beschikbaarheids groepen en zelfstandige SQL Server exemplaren. Selecteer de pijl links van een rij om de lijst met alle onbeveiligde data bases in die instantie of AlwaysOn-beschikbaarheids groep uit te vouwen.  
+1. Klik op **resources toevoegen** om alle geregistreerde beschikbaarheids groepen en zelfstandige SQL Server exemplaren weer te geven.
 
-    ![Alle SQL Server-exemplaren met zelfstandige databases weergeven](./media/backup-azure-sql-database/list-of-sql-databases.png)
+    ![Resources toevoegen selecteren](./media/backup-azure-sql-database/add-resources.png)
 
-3. Kies alle data bases die u wilt beveiligen en selecteer vervolgens **OK**.
+1. Selecteer in het scherm **items selecteren voor back-up** de pijl links van een rij om de lijst met alle onbeveiligde data bases in die instantie of AlwaysOn-beschikbaarheids groep uit te vouwen.
+
+    ![Items selecteren waarvan een back-up moet worden gemaakt](./media/backup-azure-sql-database/select-items-to-backup.png)
+
+1. Kies alle data bases die u wilt beveiligen en selecteer vervolgens **OK**.
 
    ![De database beveiligen](./media/backup-azure-sql-database/select-database-to-protect.png)
 
@@ -174,28 +178,20 @@ Data bases detecteren die worden uitgevoerd op een virtuele machine:
      * Om meer dan 50 back-ups te beschermen moet u meerdere databases configureren.
      * Als u de volledige instantie of de AlwaysOn-beschikbaarheids groep wilt [inschakelen](#enable-auto-protection) , selecteert u in de vervolg KEUZELIJST **voor** **beveiliging** en selecteert u vervolgens **OK**.
 
-    > [!NOTE]
-    > De functie voor [automatisch beveiligen](#enable-auto-protection) biedt niet alleen beveiliging op alle bestaande data bases tegelijk, maar beveiligt ook automatisch nieuwe data bases die zijn toegevoegd aan het betreffende exemplaar of de beschikbaarheids groep.  
+         > [!NOTE]
+         > De functie voor [automatisch beveiligen](#enable-auto-protection) biedt niet alleen beveiliging op alle bestaande data bases tegelijk, maar beveiligt ook automatisch nieuwe data bases die zijn toegevoegd aan het betreffende exemplaar of de beschikbaarheids groep.  
 
-4. Selecteer **OK** om het **back-upbeleid**te openen.
+1. Het **back-upbeleid**definiëren. U kunt een van de volgende handelingen uitvoeren:
 
-    ![Automatische beveiliging inschakelen voor de AlwaysOn-beschikbaarheids groep](./media/backup-azure-sql-database/enable-auto-protection.png)
-
-5. Kies in **back-upbeleid**een beleid en selecteer vervolgens **OK**.
-
-   * Selecteer het standaard beleid als HourlyLogBackup.
+   * Selecteer het standaard beleid als *HourlyLogBackup*.
    * Een bestaand back-upbeleid kiezen dat u eerder hebt gemaakt voor SQL.
    * Een nieuw beleid definiëren op basis van uw RPO en retentiebereik.
 
      ![Back-upbeleid selecteren](./media/backup-azure-sql-database/select-backup-policy.png)
 
-6. Selecteer **back-up inschakelen**in **back-up**.
+1. Klik op **back-up inschakelen** om de bewerking **Beveiliging configureren** in te dienen en de configuratie voortgang bij te houden in het gebied **meldingen** van de portal.
 
-    ![Het gekozen back-upbeleid inschakelen](./media/backup-azure-sql-database/enable-backup-button.png)
-
-7. De voortgang van de configuratie volgen in het **Systeemvak** van de portal.
-
-    ![Systeemvak](./media/backup-azure-sql-database/notifications-area.png)
+   ![Voortgang van de configuratie bijhouden](./media/backup-azure-sql-database/track-configuration-progress.png)
 
 ### <a name="create-a-backup-policy"></a>Maak een back-upbeleid
 
@@ -210,22 +206,22 @@ Een back-upbeleid bepaalt wanneer back-ups worden gemaakt en hoe lang ze worden 
 Ga als volgt te werk om een back-upbeleid te maken:
 
 1. Selecteer in de kluis de optie **back-upbeleid**  >  **toevoegen**.
-2. In **toevoegen**selecteert u **SQL Server in azure VM** om het beleids type te definiëren.
+1. In **toevoegen**selecteert u **SQL Server in azure VM** om het beleids type te definiëren.
 
    ![Een beleidstype voor het nieuwe back-upbeleid kiezen](./media/backup-azure-sql-database/policy-type-details.png)
 
-3. Geef bij **Beleidsnaam** een naam voor het nieuwe beleid op.
-4. In **Beleid voor volledige back-ups** selecteert u een **Back-upfrequentie**. Kies **dagelijks** of **wekelijks**.
+1. Geef bij **Beleidsnaam** een naam voor het nieuwe beleid op.
 
-   * Als u **Dagelijks** kiest, selecteert u het tijdstip en de tijdzone waarop de back-uptaak moet worden gestart.
-   * Als u **Wekelijks** kiest, selecteert u de dag van de week, het tijdstip en de tijdzone waarop de back-uptaak moet worden gestart.
-   * Voer een volledige back-up uit omdat u de optie **volledige back-up** niet kunt uitschakelen.
-   * Selecteer **volledige back-up** om het beleid weer te geven.
-   * U kunt geen differentiële back-ups maken voor dagelijkse volledige back-ups.
+    ![Beleids naam invoeren](./media/backup-azure-sql-database/policy-name.png)
+
+1. Klik op de koppeling **bewerken** die overeenkomt met **volledige back-up**om de standaard instellingen te wijzigen.
+
+   * Selecteer een **back-upfrequentie**. Kies **dagelijks** of **wekelijks**.
+   * Als u **Dagelijks** kiest, selecteert u het tijdstip en de tijdzone waarop de back-uptaak moet worden gestart. U kunt geen differentiële back-ups maken voor dagelijkse volledige back-ups.
 
      ![Velden voor nieuw back-upbeleid](./media/backup-azure-sql-database/full-backup-policy.png)  
 
-5. In **Bewaar termijn**worden alle opties standaard geselecteerd. Wis de limieten voor het Bewaar bereik die u niet wilt en stel vervolgens de intervallen in voor gebruik.
+1. In **Bewaar termijn**worden alle opties standaard geselecteerd. Wis de limieten voor het Bewaar bereik die u niet wilt en stel vervolgens de intervallen in voor gebruik.
 
     * De minimale Bewaar periode voor elk type back-up (volledig, differentieel en logboek) is zeven dagen.
     * Herstelpunten worden getagd voor retentie op basis van de bewaarperiode. Als u een dagelijkse volledige back-up selecteert, wordt slechts één volledige back-up per dag geactiveerd.
@@ -234,28 +230,28 @@ Ga als volgt te werk om een back-upbeleid te maken:
 
        ![Intervalinstellingen voor bewaarperiode](./media/backup-azure-sql-database/retention-range-interval.png)
 
-6. In het menu voor het **beleid voor een volledige back-up** selecteert u **OK** om de instellingen te accepteren.
-7. Als u een beleid voor een differentiële back-up wilt toevoegen, selecteert u **Differentiële back-up**.
+1. Selecteer **OK** om de instelling voor volledige back-ups te accepteren.
+1. Klik op de koppeling **bewerken** die overeenkomt met **differentiële back-up**om de standaard instellingen te wijzigen.
 
-   ![Intervalinstellingen voor bewaarperiode](./media/backup-azure-sql-database/retention-range-interval.png)
-   ![Het menu voor het beleid voor een differentiële back-up openen](./media/backup-azure-sql-database/backup-policy-menu-choices.png)
+    * In **Beleid voor een differentiële back-up** selecteert u **Inschakelen** om de frequentie- en bewaarinstellingen te openen.
+    * U kunt slechts één differentiële back-up per dag activeren. Een differentiële back-up kan niet worden geactiveerd op dezelfde dag als een volledige back-up.
+    * Differentiële back-ups kunnen maximaal 180 dagen worden bewaard.
+    * Differentiële back-up wordt niet ondersteund voor de hoofd database.
 
-8. In **Beleid voor een differentiële back-up** selecteert u **Inschakelen** om de frequentie- en bewaarinstellingen te openen.
+      ![Differentiële back-upbeleid](./media/backup-azure-sql-database/differential-backup-policy.png)
 
-    * U kunt slechts één differentiële back-up per dag activeren.
-    * Differentiële back-ups kunnen maximaal 180 dagen worden bewaard. Gebruik voor langere retentie volledige back-ups.
+1. Klik op de koppeling **bewerken** die overeenkomt met **logboek back-up**om de standaard instellingen te wijzigen
 
-9. Selecteer **OK** om het beleid op te slaan en terug te gaan naar het hoofdmenu **Back-upbeleid**.
+    * In **Logboekback-up** selecteert u **Inschakelen** en stelt u de frequentie- en bewaarinstellingen in.
+    * Logboek back-ups kunnen worden uitgevoerd op elke 15 minuten en kunnen Maxi maal 35 dagen worden bewaard.
+    * Als de data base zich in het [eenvoudige herstel model](/sql/relational-databases/backup-restore/recovery-models-sql-server?view=sql-server-ver15)bevindt, wordt het back-upschema van het logboek voor die data base onderbroken en worden er geen logboek back-ups geactiveerd.
+    * Als het herstel model van de data base wordt gewijzigd van **volledig** in **eenvoudig**, worden logboek back-ups binnen 24 uur na de wijziging in het herstel model gepauzeerd. Op dezelfde manier kan, als het herstel model wordt gewijzigd van **eenvoudig**, het impliceren van logboek back-ups voor de data base, de planning back-ups van Logboeken worden ingeschakeld binnen 24 uur na het wijzigen van het herstel model.
 
-10. Als u een back-upbeleid voor een transactielogboek wilt toevoegen, selecteert u **Logboekback-up**.
-11. In **Logboekback-up** selecteert u **Inschakelen** en stelt u de frequentie- en bewaarinstellingen in. Logboek back-ups kunnen worden uitgevoerd op elke 15 minuten en kunnen Maxi maal 35 dagen worden bewaard.
-12. Selecteer **OK** om het beleid op te slaan en terug te gaan naar het hoofdmenu **Back-upbeleid**.
+      ![Logboek back-upbeleid](./media/backup-azure-sql-database/log-backup-policy.png)
 
-    ![Het logboekback-upbeleid bewerken](./media/backup-azure-sql-database/log-backup-policy-editor.png)
+1. Kies in het menu **back-upbeleid** of u **SQL-back-upcompressie** wilt inschakelen of niet. Deze optie is standaard uitgeschakeld. Als deze functie is ingeschakeld, stuurt SQL Server een gecomprimeerde back-upstream naar de VDI. Azure Backup overschrijft de standaard instellingen op exemplaar niveau met compressie/NO_COMPRESSION-component, afhankelijk van de waarde van dit besturings element.
 
-13. Kies in het menu **back-upbeleid** of u **SQL-back-upcompressie** wilt inschakelen of niet. Deze optie is standaard uitgeschakeld. Als deze functie is ingeschakeld, stuurt SQL Server een gecomprimeerde back-upstream naar de VDI.  Houd er rekening mee dat Azure Backup de standaard instellingen voor instantie niveau overschrijft met compressie/NO_COMPRESSION-component, afhankelijk van de waarde van dit besturings element.
-
-14. Als u klaar bent met het bewerken van het back-upbeleid, selecteert u **OK**.
+1. Als u klaar bent met het bewerken van het back-upbeleid, selecteert u **OK**.
 
 > [!NOTE]
 > Elke logboek back-up wordt gekoppeld aan de vorige volledige back-up om een herstel keten te vormen. Deze volledige back-up wordt bewaard totdat de retentie van de laatste back-up van het logboek is verlopen. Dit kan betekenen dat de volledige back-up gedurende een extra periode wordt bewaard om ervoor te zorgen dat alle logboeken kunnen worden hersteld. We gaan ervan uit dat de gebruiker een wekelijkse volledige back-up, een dagelijks differentieel en twee uur logboeken heeft. Deze zijn allemaal 30 dagen bewaard. Maar de wekelijkse volledige kan echter echt worden opgeruimd/verwijderd nadat de volgende volledige back-up beschikbaar is, dat wil zeggen, na 30 en 7 dagen. Stel dat er een wekelijkse volledige back-up plaatsvindt op een zestiende. Volgens het Bewaar beleid moet het worden bewaard tot dec 16de. De laatste keer dat de back-up van het logboek is gemaakt voor deze volledige, wordt de volgende geplande volledige, op nov 22. Totdat dit logboek beschikbaar is tot dec 22, kan de zestien 16de volledig niet worden verwijderd. Tot en met dec 22 wordt dus de ge16dede volledige nov bewaard.

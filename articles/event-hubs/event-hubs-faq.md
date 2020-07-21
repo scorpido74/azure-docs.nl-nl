@@ -3,12 +3,12 @@ title: Veelgestelde vragen-Azure Event Hubs | Microsoft Docs
 description: In dit artikel vindt u een lijst met veelgestelde vragen over Azure Event Hubs en de antwoorden hiervan.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 0094be0eef4595662477ef1c7914ae9f118b8e25
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bec50da97bc826eb1bd26452e8f69f5c11f2d65d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320580"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537177"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Veelgestelde vragen over Event Hubs
 
@@ -33,7 +33,7 @@ De Standard-laag van Azure Event Hubs biedt functies die groter zijn dan in de B
 * Langer bewaren van gebeurtenissen
 * Extra brokered Connections, met een overschrijding kosten voor meer dan het aantal inbegrepen
 * Meer dan één [consumenten groep](event-hubs-features.md#consumer-groups)
-* [Opnames](event-hubs-capture-overview.md)
+* [Vastleggen](event-hubs-capture-overview.md)
 * [Kafka-integratie](event-hubs-for-kafka-ecosystem-overview.md)
 
 Voor meer informatie over prijs categorieën, waaronder Event Hubs Dedicated, raadpleegt u de [Event hubs prijs informatie](https://azure.microsoft.com/pricing/details/event-hubs/).
@@ -261,7 +261,7 @@ Event Hubs ondersteunt twee typen [Diagnostische logboeken](event-hubs-diagnosti
 
 ### <a name="support-and-sla"></a>Ondersteuning en SLA
 
-Technische ondersteuning voor Event Hubs is beschikbaar via de [pagina micro soft Q&een vraag voor Azure service bus](https://docs.microsoft.com/answers/topics/azure-service-bus.html). Ondersteuning bij facturering en abonnements beheer is gratis.
+Technische ondersteuning voor Event Hubs is beschikbaar via de [pagina micro soft Q&een vraag voor Azure service bus](/answers/topics/azure-service-bus.html). Ondersteuning bij facturering en abonnements beheer is gratis.
 
 Voor meer informatie over onze SLA gaat u naar de pagina [Service Level Agreements](https://azure.microsoft.com/support/legal/sla/) .
 
@@ -269,6 +269,6 @@ Voor meer informatie over onze SLA gaat u naar de pagina [Service Level Agreemen
 
 U kunt meer informatie over Event Hubs vinden via de volgende koppelingen:
 
-* [Event Hubs-overzicht](event-hubs-what-is-event-hubs.md)
+* [Event Hubs-overzicht](./event-hubs-about.md)
 * [Een event hub maken](event-hubs-create.md)
 * [Event Hubs automatisch verg Roten](event-hubs-auto-inflate.md)

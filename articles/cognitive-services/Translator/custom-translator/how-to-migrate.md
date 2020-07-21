@@ -9,11 +9,12 @@ ms.subservice: translator-text
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 02e6d776dbb47ee8e30409f6b8adc5a61fc5fe52
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 5334168081ea18650bd6afd2411e076952e08749
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958919"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537983"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Hub-werk ruimte en projecten migreren naar een aangepaste vertaler
 
@@ -129,13 +130,13 @@ Als u meer gedetailleerde migratie rapporten wilt over uw projecten, trainingen 
 
 Deze tabel vergelijkt de functies tussen micro soft Translator hub en aangepaste Translator.
 
-|   | Hub | Custom Translator |
-|:-----|:----:|:----:|
-|Status van aanpassings functie    | Algemene Beschik baarheid    | Algemene Beschik baarheid |
+| Functie | Hub | Custom Translator |
+| ------- | :-: | :---------------: |
+| Status van aanpassings functie    | Algemene Beschik baarheid    | Algemene Beschik baarheid |
 | Tekst-API-versie    | V2     | V3  |
-| SMT-aanpassing    | Yes    | Nee |
-| NMT aanpassen    | Nee    | Yes |
-| Nieuwe aanpassing van Unified speech Services    | Nee    | Yes |
+| SMT-aanpassing    | Ja    | Nee |
+| NMT aanpassen    | Nee    | Ja |
+| Nieuwe aanpassing van Unified speech Services    | Nee    | Ja |
 | Geen tracering | Ja | Ja |
 
 ## <a name="new-languages"></a>Nieuwe talen

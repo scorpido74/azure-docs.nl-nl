@@ -7,11 +7,12 @@ ms.author: baanders
 ms.date: 05/25/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 53b20ded8e4b4a003beff1ef8489ecd9ff3451ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5272babf794529e5e9bd87a3c4a96e6df5758fb8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84725291"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537459"
 ---
 # <a name="use-the-azure-digital-twins-cli"></a>De Azure Digital Twins-CLI gebruiken
 
@@ -35,4 +36,4 @@ Naast het algemeen beheer van uw exemplaar, is de CLI ook een handig hulp middel
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie een Azure Digital Apparaatdubbels-exemplaar beheren met Api's en Sdk's voor een alternatief voor CLI-opdrachten:
-* [Instructies: de Azure Digital Apparaatdubbels-Api's en Sdk's gebruiken](how-to-use-apis-sdks.md)
+* [*Instructies: de Azure Digital Apparaatdubbels-Api's en Sdk's gebruiken*](how-to-use-apis-sdks.md)

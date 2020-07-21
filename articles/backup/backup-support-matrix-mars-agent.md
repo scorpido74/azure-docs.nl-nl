@@ -3,11 +3,12 @@ title: Ondersteunings matrix voor de MARS-agent
 description: Dit artikel bevat een overzicht van Azure Backup ondersteuning bij het maken van een back-up van computers waarop de Microsoft Azure Recovery Services-agent (MARS) wordt uitgevoerd.
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6085bc647c06b5907282460a2d8706b8549e1bc2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ff9510dfa31bb947d50b1a91fb7f73c2d767471
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84709875"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538646"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Ondersteunings matrix voor back-up met de Microsoft Azure Recovery Services-agent (MARS)
 
@@ -29,7 +30,7 @@ Uw back-upopties zijn afhankelijk van waar de agent is geïnstalleerd. Zie voor 
 **Installatie** | **Details**
 --- | ---
 De nieuwste MARS-agent downloaden | U kunt de nieuwste versie van de agent downloaden van de kluis of [deze rechtstreeks downloaden](https://aka.ms/azurebackup_agent).
-Rechtstreeks op een computer installeren | U kunt de MARS-agent rechtstreeks installeren op een on-premises Windows-Server of op een Windows-VM waarop een van de [ondersteunde besturings systemen](https://docs.microsoft.com/azure/backup/backup-support-matrix-mabs-dpm#supported-mabs-and-dpm-operating-systems)wordt uitgevoerd.
+Rechtstreeks op een computer installeren | U kunt de MARS-agent rechtstreeks installeren op een on-premises Windows-Server of op een Windows-VM waarop een van de [ondersteunde besturings systemen](./backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems)wordt uitgevoerd.
 Installeren op een back-upserver | Wanneer u DPM of MABS instelt om een back-up te maken naar Azure, downloadt en installeert u de MARS-agent op de-server. U kunt de agent installeren op [ondersteunde besturings systemen](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems) in de ondersteunings matrix van de back-upserver.
 
 > [!NOTE]
@@ -84,7 +85,7 @@ Bij micro soft-peering moet u de volgende services/regio's en relevante Communit
 - Microsoft Azure regio (op basis van de locatie van uw Recovery Services kluis)
 - Azure Storage (op basis van de locatie van uw Recovery Services kluis)
 
-Zie de [routerings vereisten voor ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-routing)voor meer informatie.
+Zie de [routerings vereisten voor ExpressRoute](../expressroute/expressroute-routing.md)voor meer informatie.
 
 >[!NOTE]
 >Open bare peering is afgeschaft voor nieuwe circuits.
@@ -116,7 +117,7 @@ Windows 8 (Enter prise, Pro) | Ja | Nee | Controleer de bijbehorende server vers
 Windows Server 2016 (Standard, Data Center, Essentials) | Ja | Ja | -.NET 4,5 <br> -Windows Power shell <br> -Nieuwste compatibele micro soft VC + + te distribueren pakket <br> -Micro soft Management Console (MMC) 3,0
 Windows Server 2012 R2 (Standard, Data Center, Foundation, Essentials) | Ja | Ja | -.NET 4,5 <br> -Windows Power shell <br> -Nieuwste compatibele micro soft VC + + te distribueren pakket <br> -Micro soft Management Console (MMC) 3,0
 Windows Server 2012 (Standard, Data Center, Foundation) | Ja | Ja |-.NET 4,5 <br> -Windows Power shell <br> -Nieuwste compatibele micro soft VC + + te distribueren pakket <br> -Micro soft Management Console (MMC) 3,0 <br> -Deployment Image Servicing and Management (DISM.exe)
-Windows Storage Server 2016/2012 R2/2012 (standaard, werk groep) | Yes | Nee | -.NET 4,5 <br> -Windows Power shell <br> -Nieuwste compatibele micro soft VC + + te distribueren pakket <br> -Micro soft Management Console (MMC) 3,0
+Windows Storage Server 2016/2012 R2/2012 (standaard, werk groep) | Ja | Nee | -.NET 4,5 <br> -Windows Power shell <br> -Nieuwste compatibele micro soft VC + + te distribueren pakket <br> -Micro soft Management Console (MMC) 3,0
 Windows Server 2019 (Standard, Data Center, Essentials) | Ja | Ja | -.NET 4,5 <br> -Windows Power shell <br> -Nieuwste compatibele micro soft VC + + te distribueren pakket <br> -Micro soft Management Console (MMC) 3,0
 
 Zie [supported MABS and DPM Operating Systems](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems)(Engelstalig) voor meer informatie.
@@ -127,13 +128,13 @@ De volgende besturings systemen zijn aan het einde van de ondersteuning en het w
 
 Als bestaande verplichtingen voor komen dat het besturings systeem wordt geüpgraded, kunt u overwegen om de Windows-servers te migreren naar Azure-Vm's en Azure VM-back-ups te gebruiken om de beveiliging te blijven gebruiken. Ga hier naar de [pagina migratie](https://azure.microsoft.com/migration/windows-server/) voor meer informatie over het migreren van uw Windows-Server.
 
-Voor on-premises of gehoste omgevingen waarin u het besturings systeem niet kunt upgraden of migreren naar Azure, kunt u uitgebreide beveiligings updates voor de machines activeren om te blijven beveiligen en worden ondersteund. U ziet dat alleen specifieke edities in aanmerking komen voor uitgebreide beveiligings updates. Ga naar de [pagina met veelgestelde vragen](https://www.microsoft.com/cloud-platform/extended-security-updates) voor meer informatie.
+Voor on-premises of gehoste omgevingen waarin u het besturings systeem niet kunt upgraden of migreren naar Azure, kunt u uitgebreide beveiligings updates voor de machines activeren om te blijven beveiligen en worden ondersteund. U ziet dat alleen specifieke edities in aanmerking komen voor uitgebreide beveiligings updates. Ga naar de [pagina met veelgestelde vragen](https://www.microsoft.com/windows-server/extended-security-updates) voor meer informatie.
 
 | **Besturingssysteem**                                       | **Bestanden/mappen** | **Systeem status** | **Vereisten voor software/modules**                           |
 | ------------------------------------------------------------ | ----------------- | ------------------ | ------------------------------------------------------------ |
-| Windows 7 (Ultimate, Enter prise, Pro, Home Premium/Basic, starter) | Yes               | Nee                 | Controleer de bijbehorende server versie voor vereisten voor software/modules |
+| Windows 7 (Ultimate, Enter prise, Pro, Home Premium/Basic, starter) | Ja               | Nee                 | Controleer de bijbehorende server versie voor vereisten voor software/modules |
 | Windows Server 2008 R2 (Standard, Enter prise, Data Center, Foundation) | Ja               | Ja                | -.NET 3,5, .NET 4,5 <br>  -Windows Power shell <br>  -Compatibel micro soft VC + + Redistributable <br>  -Micro soft Management Console (MMC) 3,0 <br>  -Deployment Image Servicing and Management (DISM.exe) |
-| Windows Server 2008 SP2 (Standard, Data Center, Foundation)  | Yes               | Nee                 | -.NET 3,5, .NET 4,5 <br>  -Windows Power shell <br>  -Compatibel micro soft VC + + Redistributable <br>  -Micro soft Management Console (MMC) 3,0 <br>  -Deployment Image Servicing and Management (DISM.exe) <br>  -Virtual Server 2005 base + KB KB948515 |
+| Windows Server 2008 SP2 (Standard, Data Center, Foundation)  | Ja               | Nee                 | -.NET 3,5, .NET 4,5 <br>  -Windows Power shell <br>  -Compatibel micro soft VC + + Redistributable <br>  -Micro soft Management Console (MMC) 3,0 <br>  -Deployment Image Servicing and Management (DISM.exe) <br>  -Virtual Server 2005 base + KB KB948515 |
 
 ## <a name="backup-limits"></a>Back-uplimieten
 

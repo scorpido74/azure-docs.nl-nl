@@ -4,11 +4,12 @@ description: Telemetrie-kanalen aanpassen in Azure-toepassing Insights-Sdk's voo
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9c292246f947e4d3a364f79b31fe7a1deebd33d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f9e93d477efeee7e1d8a0b0d8704f9c83d2a4f7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84691948"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539785"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Telemetrie-kanalen in Application Insights
 
@@ -16,7 +17,7 @@ Telemetrie-kanalen vormen een integraal onderdeel van de [Azure-toepassing Insig
 
 ## <a name="what-are-telemetry-channels"></a>Wat zijn telemetrie-kanalen?
 
-Telemetrie-kanalen zijn verantwoordelijk voor het bufferen van telemetriegegevens en het verzenden ervan naar de Application Insights-service, waar ze worden opgeslagen voor query's en analyses. Een telemetrie-kanaal is een klasse die de [`Microsoft.ApplicationInsights.ITelemetryChannel`](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.channel.itelemetrychannel?view=azure-dotnet) interface implementeert.
+Telemetrie-kanalen zijn verantwoordelijk voor het bufferen van telemetriegegevens en het verzenden ervan naar de Application Insights-service, waar ze worden opgeslagen voor query's en analyses. Een telemetrie-kanaal is een klasse die de [`Microsoft.ApplicationInsights.ITelemetryChannel`](/dotnet/api/microsoft.applicationinsights.channel.itelemetrychannel?view=azure-dotnet) interface implementeert.
 
 De `Send(ITelemetry item)` methode van een telemetrie-kanaal wordt aangeroepen na het aanroepen van alle telemetrie-initialisatie functies en telemetrie-processors. Daarom bereiken items die worden verwijderd door een telemetrie-processor het kanaal niet. `Send()`de items worden meestal niet direct naar de back-end verzonden. Normaal gesp roken worden ze in het geheugen gebufferd en worden ze in batches verzonden voor efficiënte verzen ding.
 
@@ -30,7 +31,7 @@ De Application Insights .NET en .NET core Sdk's worden geleverd met twee ingebou
 
     Dit kanaal maakt deel uit van het grotere micro soft. ApplicationInsights NuGet-pakket en is het standaard kanaal dat door de SDK wordt gebruikt wanneer niets anders is geconfigureerd.
 
-* `ServerTelemetryChannel`: Een geavanceerdere kanaal met beleid voor opnieuw proberen en de mogelijkheid om gegevens op te slaan op een lokale schijf. Dit kanaal probeert nieuwe telemetrie te verzenden als er tijdelijke fouten optreden. Dit kanaal gebruikt ook lokale schijf opslag om items op schijf te bewaren tijdens netwerk storingen of hoge telemetriegegevens. Als gevolg van deze methoden voor opnieuw proberen en lokale schijf opslag wordt dit kanaal als betrouwbaarder beschouwd en wordt het aanbevolen voor alle productie scenario's. Dit kanaal is de standaard waarde voor [ASP.net](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) -en [ASP.net core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) -toepassingen die zijn geconfigureerd volgens de officiële documentatie. Dit kanaal is geoptimaliseerd voor Server scenario's met langlopende processen. De [`Flush()`](#which-channel-should-i-use) methode die door dit kanaal wordt geïmplementeerd, is niet synchroon.
+* `ServerTelemetryChannel`: Een geavanceerdere kanaal met beleid voor opnieuw proberen en de mogelijkheid om gegevens op te slaan op een lokale schijf. Dit kanaal probeert nieuwe telemetrie te verzenden als er tijdelijke fouten optreden. Dit kanaal gebruikt ook lokale schijf opslag om items op schijf te bewaren tijdens netwerk storingen of hoge telemetriegegevens. Als gevolg van deze methoden voor opnieuw proberen en lokale schijf opslag wordt dit kanaal als betrouwbaarder beschouwd en wordt het aanbevolen voor alle productie scenario's. Dit kanaal is de standaard waarde voor [ASP.net](./asp-net.md) -en [ASP.net core](./asp-net-core.md) -toepassingen die zijn geconfigureerd volgens de officiële documentatie. Dit kanaal is geoptimaliseerd voor Server scenario's met langlopende processen. De [`Flush()`](#which-channel-should-i-use) methode die door dit kanaal wordt geïmplementeerd, is niet synchroon.
 
     Dit kanaal wordt verzonden als het pakket micro soft. ApplicationInsights. WindowsServer. TelemetryChannel NuGet en wordt automatisch aangeschaft wanneer u het micro soft. ApplicationInsights. Web of het micro soft. ApplicationInsights. AspNetCore NuGet-pakket gebruikt.
 

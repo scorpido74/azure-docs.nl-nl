@@ -3,11 +3,12 @@ title: Back-ups maken van Windows-machines met behulp van de MARS-agent
 description: Gebruik de Microsoft Azure Recovery Services (MARS)-agent om een back-up te maken van Windows-machines.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 4f0e605185be6db8629144e05f5f39309a3831ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34fa0906ec63eb51d37c192f9dadddc57dbf1cdf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85604842"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538629"
 ---
 # <a name="back-up-windows-server-files-and-folders-to-azure"></a>Back-ups maken van Windows Server-bestanden en-mappen naar Azure
 
@@ -103,7 +104,7 @@ Een offline-overdracht uitvoeren:
 1. Schrijf de back-upgegevens naar een faserings locatie.
 1. Gebruik het hulp programma AzureOfflineBackupDiskPrep om de gegevens van de faserings locatie naar een of meer SATA-schijven te kopiëren.
 
-    Het hulp programma maakt een Azure import-taak. Zie [Wat is de Azure import/export-service](https://docs.microsoft.com/azure/storage/common/storage-import-export-service)voor meer informatie.
+    Het hulp programma maakt een Azure import-taak. Zie [Wat is de Azure import/export-service](../storage/common/storage-import-export-service.md)voor meer informatie.
 1. Verzend de SATA-schijven naar een Azure-Data Center.
 
     In het Data Center worden de schijf gegevens gekopieerd naar een Azure-opslag account. Azure Backup kopieert de gegevens van het opslag account naar de kluis en incrementele back-ups worden gepland.
@@ -114,7 +115,7 @@ Zie [Azure data box gebruiken voor offline back-ups](offline-backup-azure-data-b
 
 U kunt bepalen hoe de MARS-agent netwerk bandbreedte gebruikt door netwerk beperking in te scha kelen. Beperking is handig als u tijdens werk uren een back-up van gegevens wilt maken, maar u wilt bepalen hoeveel band breedte de back-up-en herstel activiteit gebruikt.
 
-Netwerk beperking in Azure Backup maakt gebruik van [Quality of service (QoS)](https://docs.microsoft.com/windows-server/networking/technologies/qos/qos-policy-top) op het lokale besturings systeem.
+Netwerk beperking in Azure Backup maakt gebruik van [Quality of service (QoS)](/windows-server/networking/technologies/qos/qos-policy-top) op het lokale besturings systeem.
 
 Netwerk beperking voor back-ups is beschikbaar op Windows Server 2012 en hoger, en op Windows 8 en hoger. Besturings systemen moeten de nieuwste service packs uitvoeren.
 

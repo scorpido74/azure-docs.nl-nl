@@ -6,11 +6,12 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 83575aa7f9b63615f453e00bd06b00a5540b9a9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9eb753981821a6b53d81b1d03e65abf68e0064dc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80892254"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539989"
 ---
 # <a name="what-is-distributed-tracing"></a>Wat is gedistribueerde tracering?
 
@@ -20,9 +21,9 @@ In monolithische architecturen zijn we gebruikt voor het opsporen van fouten met
 
 Dat is waar gedistribueerde tracering beschikbaar is in.  
 
-Gedistribueerde tracering is het equivalent van aanroep stacks voor moderne Cloud-en micro Services-architecturen, met toevoeging van een vereenvoudigde-prestatie Profiler dat is opgetreden in. In Azure Monitor bieden we twee ervaringen voor het gebruiken van gedistribueerde tracerings gegevens. De eerste is de weer gave van de [Diagnostische gegevens over trans acties](https://docs.microsoft.com/azure/application-insights/app-insights-transaction-diagnostics) , die als een aanroep stack met een tijd dimensie is toegevoegd in. De weer gave voor de diagnostische gegevens van de trans actie biedt inzicht in één trans actie/aanvraag en is handig voor het vinden van de hoofd oorzaak van betrouwbaarheids problemen en prestatie knelpunten op basis van een aanvraag.
+Gedistribueerde tracering is het equivalent van aanroep stacks voor moderne Cloud-en micro Services-architecturen, met toevoeging van een vereenvoudigde-prestatie Profiler dat is opgetreden in. In Azure Monitor bieden we twee ervaringen voor het gebruiken van gedistribueerde tracerings gegevens. De eerste is de weer gave van de [Diagnostische gegevens over trans acties](./transaction-diagnostics.md) , die als een aanroep stack met een tijd dimensie is toegevoegd in. De weer gave voor de diagnostische gegevens van de trans actie biedt inzicht in één trans actie/aanvraag en is handig voor het vinden van de hoofd oorzaak van betrouwbaarheids problemen en prestatie knelpunten op basis van een aanvraag.
 
-Azure Monitor biedt ook een weer gave van een [toepassings overzicht](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) waarmee veel trans acties worden weer gegeven met een topologische weer gave van de manier waarop de systemen communiceren, en wat de gemiddelde prestatie-en fout tarieven zijn. 
+Azure Monitor biedt ook een weer gave van een [toepassings overzicht](./app-map.md) waarmee veel trans acties worden weer gegeven met een topologische weer gave van de manier waarop de systemen communiceren, en wat de gemiddelde prestatie-en fout tarieven zijn. 
 
 ## <a name="how-to-enable-distributed-tracing"></a>Gedistribueerde tracering inschakelen
 
@@ -32,16 +33,16 @@ Het inschakelen van gedistribueerde tracering over de services in een toepassing
 
 De Application Insights agents en/of Sdk's voor .NET, .NET core, Java, Node.js en Java script bieden alle ondersteuning voor gedistribueerde tracering. Instructies voor het installeren en configureren van elke Application Insights SDK zijn hieronder beschikbaar:
 
-* [.NET](https://docs.microsoft.com/azure/application-insights/quick-monitor-portal)
-* [.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-dotnetcore-quick-start)
-* [Java](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
-* [Node.js](https://docs.microsoft.com/azure/application-insights/app-insights-nodejs-quick-start)
-* [JavaScript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
+* [.NET](../learn/quick-monitor-portal.md)
+* [.NET Core](../learn/dotnetcore-quick-start.md)
+* [Java](./java-in-process-agent.md)
+* [Node.js](../learn/nodejs-quick-start.md)
+* [JavaScript](./javascript.md)
 * [Python](opencensus-python.md)
 
-Met de juiste Application Insights SDK geïnstalleerd en geconfigureerd, wordt tracerings informatie automatisch verzameld voor populaire frameworks, Bibliotheken en technologieën door de auto-Collector van de SDK-afhankelijkheden. De volledige lijst met ondersteunde technologieën is beschikbaar in [de documentatie voor het automatisch verzamelen van afhankelijkheden](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies).
+Met de juiste Application Insights SDK geïnstalleerd en geconfigureerd, wordt tracerings informatie automatisch verzameld voor populaire frameworks, Bibliotheken en technologieën door de auto-Collector van de SDK-afhankelijkheden. De volledige lijst met ondersteunde technologieën is beschikbaar in [de documentatie voor het automatisch verzamelen van afhankelijkheden](./auto-collect-dependencies.md).
 
- Daarnaast kan elke technologie hand matig worden gevolgd door een aanroep van [TrackDependency](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) op de [TelemetryClient](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics).
+ Daarnaast kan elke technologie hand matig worden gevolgd door een aanroep van [TrackDependency](./api-custom-events-metrics.md) op de [TelemetryClient](./api-custom-events-metrics.md).
 
 ## <a name="enable-via-opencensus"></a>Inschakelen via opentellingen
 

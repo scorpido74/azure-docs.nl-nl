@@ -7,11 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
-ms.openlocfilehash: c9b109fe12b709649adaa05d62b3d1255605986e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8309c98e9ae45650f65fcd54676cc7655934039d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987299"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537119"
 ---
 # <a name="expressroute-faq"></a>Veelgestelde vragen ExpressRoute
 
@@ -110,7 +111,7 @@ Micro soft controleert of de opgegeven ' aangekondigde open bare voor voegsels '
 
 Als u het bericht validatie vereist ziet, verzamelt u de documenten die de open bare voor voegsels bevatten, worden toegewezen aan uw organisatie door de entiteit die wordt vermeld als de eigenaar van de voor voegsels in het routerings register en verzendt deze documenten voor hand matige validatie door een ondersteunings ticket te openen, zoals hieronder wordt weer gegeven.
 
-![](./media/expressroute-faqs/ticket-portal-msftpeering-prefix-validation.png)
+![Scherm opname met een nieuwe ondersteunings aanvraag (ondersteunings ticket) voor ' eigendoms bewijs voor open bare voor voegsels '.](./media/expressroute-faqs/ticket-portal-msftpeering-prefix-validation.png)
 
 ### <a name="is-dynamics-365-supported-on-expressroute"></a>Wordt Dynamics 365 ondersteund op ExpressRoute?
 
@@ -175,7 +176,7 @@ Zie [hier](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-r
 
 Als uw service provider twee virtuele Ethernet-circuits kan maken via de fysieke verbinding, hebt u slechts één fysieke verbinding nodig. De fysieke verbinding (bijvoorbeeld een optisch glas) wordt beëindigd op een apparaat met laag 1 (L1) (Zie de afbeelding). De twee virtuele Ethernet-circuits zijn gelabeld met verschillende VLAN-Id's, een voor het primaire circuit en een voor de secundaire. Deze VLAN-Id's bevinden zich in de buitenste 802.1 Q Ethernet-header. De interne 802.1 Q-Ethernet-header (niet weer gegeven) wordt toegewezen aan een specifiek [ExpressRoute-routerings domein](expressroute-circuit-peerings.md).
 
-![](./media/expressroute-faqs/expressroute-p2p-ref-arch.png)
+![Diagram waarin de primaire en secundaire virtuele circuits van laag 1 (L1) worden gemarkeerd die de fysieke verbinding vormen tussen de switches op een klant site en een ExpressRoute locatie.](./media/expressroute-faqs/expressroute-p2p-ref-arch.png)
 
 ### <a name="can-i-extend-one-of-my-vlans-to-azure-using-expressroute"></a>Kan ik een van mijn VLAN'S uitbreiden naar Azure met behulp van ExpressRoute?
 

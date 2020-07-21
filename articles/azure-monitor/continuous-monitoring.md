@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: 6df27dde997bd34e86b1bb340817648bfe68f2c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb216f164e02dfa4dbc4ad11774569b2e8ea970f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83797604"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539683"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Doorlopende bewaking met Azure Monitor
 
@@ -37,7 +38,7 @@ Toepassingen zijn alleen betrouwbaar als de onderliggende infra structuur. Als u
 - U krijgt automatisch [platform metrieken, activiteiten logboeken en Diagnostische logboeken](platform/data-sources.md) van uw Azure-resources zonder configuratie.
 - Schakel diep gaande bewaking in voor Vm's met [Azure monitor voor VM's](insights/vminsights-overview.md).
 -  Schakel diep gaande bewaking in voor AKS-clusters met [Azure monitor voor containers](insights/container-insights-overview.md).
-- Voeg [bewakings oplossingen](insights/solutions-inventory.md) toe voor verschillende toepassingen en services in uw omgeving.
+- Voeg [bewakings oplossingen](./monitor-reference.md) toe voor verschillende toepassingen en services in uw omgeving.
 
 
 [Infra structuur als code](/azure/devops/learn/what-is-infrastructure-as-code) is het beheer van de infra structuur in een beschrijvende model, waarbij dezelfde versie wordt gebruikt als voor de DevOps teams voor de bron code. Het voegt de betrouw baarheid en schaal baarheid aan uw omgeving toe en maakt het u mogelijk vergelijk bare processen te gebruiken waarmee uw toepassingen worden beheerd.

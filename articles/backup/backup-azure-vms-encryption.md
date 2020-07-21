@@ -3,12 +3,12 @@ title: Back-up en herstel van versleutelde virtuele Azure-machines
 description: Hierin wordt beschreven hoe u back-ups van versleutelde virtuele Azure-machines maakt en herstelt met de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 0800a15b215b37ceb75abc0d6480331d642dc746
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1689ff89f15248f6771ccdce525cc136221e5577
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85124500"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538901"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Back-up en herstel van versleutelde Azure VM
 
@@ -30,8 +30,8 @@ Azure Backup kunt back-ups maken van virtuele Azure-machines met en zonder de Az
 **Niet-beheerd** | Ja | Ja
 **Beheerd**  | Ja | Ja
 
-- Meer informatie over [ADE](../security/azure-security-disk-encryption-overview.md), [Key Vault](../key-vault/general/overview.md)en [KEKs](https://docs.microsoft.com/azure/virtual-machine-scale-sets/disk-encryption-key-vault#set-up-a-key-encryption-key-kek).
-- Lees de [Veelgestelde vragen](../security/azure-security-disk-encryption-faq.md) over de schijf versleuteling van Azure VM.
+- Meer informatie over [ADE](../security/fundamentals/azure-disk-encryption-vms-vmss.md), [Key Vault](../key-vault/general/overview.md)en [KEKs](../virtual-machine-scale-sets/disk-encryption-key-vault.md#set-up-a-key-encryption-key-kek).
+- Lees de [Veelgestelde vragen](../security/fundamentals/azure-disk-encryption-vms-vmss.md) over de schijf versleuteling van Azure VM.
 
 ### <a name="limitations"></a>Beperkingen
 
@@ -45,7 +45,7 @@ Azure Backup kunt back-ups maken van virtuele Azure-machines met en zonder de Az
 
 Doe voordat u begint het volgende:
 
-1. Zorg ervoor dat u een of meer virtuele [Windows](../security/azure-security-disk-encryption-windows.md) -of [Linux](../virtual-machines/linux/disk-encryption-overview.md) -vm's met ade ingeschakeld hebt.
+1. Zorg ervoor dat u een of meer virtuele [Windows](../virtual-machines/linux/disk-encryption-overview.md) -of [Linux](../virtual-machines/linux/disk-encryption-overview.md) -vm's met ade ingeschakeld hebt.
 2. [De ondersteunings matrix](backup-support-matrix-iaas.md) voor Azure VM backup bekijken
 3. [Maak](backup-azure-arm-vms-prepare.md#create-a-vault) een Recovery Services back-upkluis als u er nog geen hebt.
 4. Als u versleuteling inschakelt voor virtuele machines die al zijn ingeschakeld voor back-up, hoeft u alleen maar een back-up te maken met machtigingen voor toegang tot de Key Vault zodat back-ups zonder onderbrekingen kunnen worden voortgezet. Meer [informatie](#provide-permissions) over het toewijzen van deze machtigingen.

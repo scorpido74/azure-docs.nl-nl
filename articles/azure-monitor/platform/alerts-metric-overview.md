@@ -1,15 +1,15 @@
 ---
 title: 'Begrijpen hoe waarschuwingen voor metrische gegevens werken in Azure Monitor:'
 description: Bekijk een overzicht van wat u met metrische waarschuwingen kunt doen en hoe ze werken in Azure Monitor.
-ms.date: 07/09/2020
+ms.date: 07/16/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: cd8c28b2c26e8859eda1634d2441982336cdd460
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 05e25a67279786ef4679552503e577b1b1a382ea
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187520"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539428"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Begrijpen hoe metrische waarschuwingen werken in Azure Monitor
 
@@ -119,6 +119,15 @@ Stel dat u een web-app hebt met veel instanties en u niet weet wat de meest gesc
 Deze regel controleert of het gemiddelde CPU-gebruik voor de laatste 5 minuten het verwachte gedrag voor elk exemplaar overschrijdt. Met dezelfde regel kunt u exemplaren controleren wanneer deze worden weer gegeven zonder dat u uw metrische waarschuwings regel opnieuw hoeft te wijzigen. Elk exemplaar krijgt een drempel waarde die past bij het gedrags patroon van de metrische reeks en verandert voortdurend op basis van nieuwe gegevens, zodat de drempel nauw keuriger wordt. Net als voorheen wordt elk exemplaar afzonderlijk bewaakt en ontvangt u meldingen afzonderlijk.
 
 Het verhogen van de doorlopende Peri Oden en het aantal schendingen kan er ook toe leiden dat waarschuwingen worden gefilterd op alleen waarschuwingen voor uw definitie van een aanzienlijke afwijking. Meer [informatie over geavanceerde opties voor dynamische drempel waarden](alerts-dynamic-thresholds.md#what-do-the-advanced-settings-in-dynamic-thresholds-mean).
+
+> [!NOTE]
+>
+> U kunt het beste een *aggregatie granulatie (punt)* kiezen die groter is dan de *frequentie van de evaluatie*, om de kans te verminderen dat de eerste evaluatie van toegevoegde tijd reeksen in de volgende gevallen wordt gereduceerd:
+> - Waarschuwings regel voor metrische gegevens die meerdere dimensies bewaakt: wanneer een nieuwe Dimensiewaardecombinatie wordt toegevoegd
+> - Waarschuwings regel voor metrische gegevens die meerdere resources bewaakt: wanneer een nieuwe resource wordt toegevoegd aan het bereik
+> - Waarschuwings regel voor metrische gegevens die een metriek bewaakt die niet continu wordt uitgezonden (sparse metrisch): wanneer de metriek wordt verzonden na een periode van meer dan 24 uur waarin deze niet is verzonden
+
+
 
 ## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Bewaking op schaal met behulp van metrische waarschuwingen in Azure Monitor
 

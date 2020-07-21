@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het oplossen van problemen m
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: cb9e5cf48f960a70c6a699df1163089eb4e8bc31
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: ddff3ca8a89d8d5674be00fdebc70b0232cdbd13
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056591"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539054"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Problemen met de Microsoft Azure Recovery Services-agent (MARS) oplossen
 
@@ -20,12 +20,12 @@ In dit artikel wordt beschreven hoe u fouten kunt oplossen die tijdens de config
 U wordt aangeraden het volgende te controleren voordat u begint met het oplossen van problemen met micro soft de Azure Recovery Services-agent (MARS):
 
 - [Zorg ervoor dat de Mars-agent up-to-date is](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409).
-- [Zorg ervoor dat u verbinding hebt met het netwerk tussen de Mars-agent en Azure](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup).
+- [Zorg ervoor dat u verbinding hebt met het netwerk tussen de Mars-agent en Azure](#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup).
 - Zorg ervoor dat MARS wordt uitgevoerd (in de service console). Als dat het geval is, start u de bewerking opnieuw en probeert u het opnieuw.
-- [Zorg ervoor dat 5% tot 10% beschik bare volume ruimte beschikbaar is op de locatie van de Scratch map](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#whats-the-minimum-size-requirement-for-the-cache-folder).
-- [Controleer of een ander proces of antivirus software de Azure backup verstoort](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup).
+- [Zorg ervoor dat 5% tot 10% beschik bare volume ruimte beschikbaar is op de locatie van de Scratch map](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder).
+- [Controleer of een ander proces of antivirus software de Azure backup verstoort](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup).
 - Zie [back-uptaken voltooid met waarschuwing](#backup-jobs-completed-with-warning) als de back-uptaak is voltooid met waarschuwingen
-- Zie [back-ups worden niet volgens schema uitgevoerd](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#backups-dont-run-according-to-schedule)als de geplande back-up mislukt, maar hand matige back-up werkt.
+- Zie [back-ups worden niet volgens schema uitgevoerd](#backups-dont-run-according-to-schedule)als de geplande back-up mislukt, maar hand matige back-up werkt.
 - Zorg ervoor dat uw besturings systeem over de meest recente updates beschikt.
 - [Zorg ervoor dat niet-ondersteunde stations en bestanden met niet-ondersteunde kenmerken worden uitgesloten van een back-up](backup-support-matrix-mars-agent.md#supported-drives-or-volumes-for-backup).
 - Zorg ervoor dat de klok op het beveiligde systeem is geconfigureerd voor de juiste tijd zone.
@@ -34,7 +34,7 @@ U wordt aangeraden het volgende te controleren voordat u begint met het oplossen
   - Zorg ervoor dat de agent wordt verwijderd van de server en dat deze wordt gewist uit de portal.
   - Gebruik dezelfde wachtwoordzin die voor het eerst is gebruikt om de server te registreren.
 - Zorg ervoor dat Azure PowerShell 3.7.0 is geïnstalleerd op zowel de bron-als de Kopieer computer voordat u de back-up start, voor offline back-ups.
-- Als de back-upagent wordt uitgevoerd op een virtuele machine van Azure, raadpleegt u [dit artikel](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-backup-agent-running-on-an-azure-virtual-machine).
+- Als de back-upagent wordt uitgevoerd op een virtuele machine van Azure, raadpleegt u [dit artikel](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-backup-agent-running-on-an-azure-virtual-machine).
 
 ## <a name="invalid-vault-credentials-provided"></a>Er zijn ongeldige kluisreferenties ingevoerd
 
@@ -42,7 +42,7 @@ U wordt aangeraden het volgende te controleren voordat u begint met het oplossen
 
 | Oorzaak | Aanbevolen acties |
 | ---     | ---    |
-| **De kluis referenties zijn niet geldig** <br/> <br/> De kluis referentie bestanden zijn mogelijk beschadigd of verlopen. (Het is bijvoorbeeld mogelijk dat ze meer dan 48 uur vóór de registratie tijd hebben gedownload.)| Down load nieuwe referenties van Recovery Services kluis op de Azure Portal. (Zie stap 6 in het gedeelte [de Mars-agent downloaden](https://docs.microsoft.com/azure/backup/install-mars-agent#download-the-mars-agent) .) Voer vervolgens de volgende stappen uit: <ul><li> Als u MARS al hebt geïnstalleerd en geregistreerd, opent u de MMC-console Microsoft Azure Backup Agent en selecteert u vervolgens **server registreren** in het deel venster **acties** om de registratie met de nieuwe referenties te volt ooien. <br/> <li> Als de nieuwe installatie mislukt, probeert u opnieuw te installeren met de nieuwe referenties.</ul> **Opmerking**: als er meerdere kluis referentie bestanden zijn gedownload, is alleen het meest recente bestand geldig voor de volgende 48 uur. U wordt aangeraden een nieuw kluis referentie bestand te downloaden.
+| **De kluis referenties zijn niet geldig** <br/> <br/> De kluis referentie bestanden zijn mogelijk beschadigd of verlopen. (Het is bijvoorbeeld mogelijk dat ze meer dan 48 uur vóór de registratie tijd hebben gedownload.)| Down load nieuwe referenties van Recovery Services kluis op de Azure Portal. (Zie stap 6 in het gedeelte [de Mars-agent downloaden](./install-mars-agent.md#download-the-mars-agent) .) Voer vervolgens de volgende stappen uit: <ul><li> Als u MARS al hebt geïnstalleerd en geregistreerd, opent u de MMC-console Microsoft Azure Backup Agent en selecteert u vervolgens **server registreren** in het deel venster **acties** om de registratie met de nieuwe referenties te volt ooien. <br/> <li> Als de nieuwe installatie mislukt, probeert u opnieuw te installeren met de nieuwe referenties.</ul> **Opmerking**: als er meerdere kluis referentie bestanden zijn gedownload, is alleen het meest recente bestand geldig voor de volgende 48 uur. U wordt aangeraden een nieuw kluis referentie bestand te downloaden.
 | **De registratie van Proxy Server/firewall is geblokkeerd** <br/>of <br/>**Geen Internet verbinding** <br/><br/> Als uw computer of proxy server beperkte internet connectiviteit heeft en u geen toegang hebt tot de benodigde Url's, mislukt de registratie.| Voer de volgende stappen uit:<br/> <ul><li> Werk samen met uw IT-team om te controleren of het systeem verbinding heeft met internet.<li> Als u geen proxy server hebt, moet u ervoor zorgen dat de proxy optie niet is geselecteerd bij het registreren van de agent. [Controleer de proxy-instellingen](#verifying-proxy-settings-for-windows).<li> Als u een firewall/proxy server hebt, moet u samen werken met uw netwerk team om ervoor te zorgen dat deze Url's en IP-adressen toegang hebben:<br/> <br> **URL's**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP-adressen**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>Probeer de registratie opnieuw uit te voeren nadat u de voor gaande stappen voor probleem oplossing hebt door lopen.<br></br> Als uw verbinding via Azure ExpressRoute is, controleert u of de instellingen zijn geconfigureerd zoals beschreven in [ondersteuning voor Azure ExpressRoute](backup-support-matrix-mars-agent.md#azure-expressroute-support).
 | **Registratie wordt geblokkeerd door antivirus software** | Als er antivirus software op de server is geïnstalleerd, voegt u de benodigde uitsluitings regels toe aan de antivirus scan voor deze bestanden en mappen: <br/><ul> <li> CBengine.exe <li> CSC.exe<li> De map Scratch. De standaard locatie is C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch. <li> De bin-map in C:\Program Files\Microsoft Azure Recovery Services Agent\Bin.
 
@@ -54,7 +54,7 @@ U wordt aangeraden het volgende te controleren voordat u begint met het oplossen
 
 ### <a name="verifying-proxy-settings-for-windows"></a>Proxy-instellingen voor Windows controleren
 
-1. Down load PsExec van de [Sysinternals](https://docs.microsoft.com/sysinternals/downloads/psexec) -pagina.
+1. Down load PsExec van de [Sysinternals](/sysinternals/downloads/psexec) -pagina.
 1. Voer `psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe"` uit vanaf een opdracht prompt met verhoogde bevoegdheid.
 
    Met deze opdracht wordt Internet Explorer geopend.
@@ -83,7 +83,7 @@ U wordt aangeraden het volgende te controleren voordat u begint met het oplossen
   ![De back-uptaak is voltooid met waarschuwingen](./media/backup-azure-mars-troubleshoot/backup-completed-with-warning.png)
 
 - Voor waarden die ervoor kunnen zorgen dat de back-ups bestanden overs Laan zijn:
-  - Niet-ondersteunde bestands kenmerken (bijvoorbeeld: in een OneDrive-map, gecomprimeerde stroom, reparsepunten). Raadpleeg de [ondersteunings matrix](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent#supported-file-types-for-backup)voor de volledige lijst.
+  - Niet-ondersteunde bestands kenmerken (bijvoorbeeld: in een OneDrive-map, gecomprimeerde stroom, reparsepunten). Raadpleeg de [ondersteunings matrix](./backup-support-matrix-mars-agent.md#supported-file-types-for-backup)voor de volledige lijst.
   - Problemen met het bestands systeem
   - Een ander proces zorgt ervoor dat de toegang van de MARS-agent tot de bestanden kan verhinderen (bijvoorbeeld door antivirus software op bestanden te houden)
   - Bestanden die zijn vergrendeld door een toepassing  
@@ -94,11 +94,11 @@ U wordt aangeraden het volgende te controleren voordat u begint met het oplossen
   | Foutcode             | Rechtvaardig                                             | Aanbevelingen                                              |
   | ---------------------- | --------------------------------------------------- | ------------------------------------------------------------ |
   | 0x80070570             | Het bestand of de map is beschadigd en onleesbaar. | Voer **chkdsk** uit op het bron volume.                             |
-  | 0x80070002, 0x80070003 | Het systeem kan het opgegeven bestand niet vinden.         | [Zorg ervoor dat de map met krassen niet vol is](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder)  <br><br>  Controleren of het volume waar de Scratch ruimte is geconfigureerd, bestaat (niet verwijderd)  <br><br>   [Zorg ervoor dat de MARS-agent wordt uitgesloten van de antivirus software die op de computer is geïnstalleerd](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup)  |
-  | 0x80070005             | De toegang is geweigerd                                    | [Controleren of de toegang wordt geblokkeerd door anti virus of software van derden](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup)     |
+  | 0x80070002, 0x80070003 | Het systeem kan het opgegeven bestand niet vinden.         | [Zorg ervoor dat de map met krassen niet vol is](./backup-azure-file-folder-backup-faq.md#manage-the-backup-cache-folder)  <br><br>  Controleren of het volume waar de Scratch ruimte is geconfigureerd, bestaat (niet verwijderd)  <br><br>   [Zorg ervoor dat de MARS-agent wordt uitgesloten van de antivirus software die op de computer is geïnstalleerd](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)  |
+  | 0x80070005             | De toegang is geweigerd                                    | [Controleren of de toegang wordt geblokkeerd door anti virus of software van derden](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)     |
   | 0x8007018b             | De toegang tot het cloud bestand is geweigerd.                | OneDrive-bestanden, Git-bestanden of andere bestanden die de status offline kunnen hebben op de computer |
 
-- U kunt [uitsluitings regels toevoegen aan het bestaande beleid](https://docs.microsoft.com/azure/backup/backup-azure-manage-mars#add-exclusion-rules-to-existing-policy) gebruiken om niet-ondersteunde, ontbrekende of verwijderde bestanden uit uw back-upbeleid uit te sluiten om geslaagde back-ups te maken.
+- U kunt [uitsluitings regels toevoegen aan het bestaande beleid](./backup-azure-manage-mars.md#add-exclusion-rules-to-existing-policy) gebruiken om niet-ondersteunde, ontbrekende of verwijderde bestanden uit uw back-upbeleid uit te sluiten om geslaagde back-ups te maken.
 
 - Vermijd het verwijderen en opnieuw maken van beveiligde mappen met dezelfde namen in de map op het hoogste niveau. Dit kan ertoe leiden dat de back-up wordt voltooid met waarschuwingen met de fout er *is een kritieke inconsistentie gedetecteerd. wijzigingen kunnen daarom niet worden gerepliceerd.*  Als u mappen wilt verwijderen en opnieuw wilt maken, kunt u overwegen om dit te doen in submappen onder de map beveiligd het hoogste niveau.
 
@@ -112,13 +112,13 @@ U wordt aangeraden het volgende te controleren voordat u begint met het oplossen
 
 | Fout  | Mogelijke oorzaken | Aanbevolen acties |
 |---------|---------|---------|
-|<br />De activering is niet voltooid. De huidige bewerking is mislukt vanwege een interne service fout [0x1FC07]. Probeer de bewerking na enige tijd opnieuw. Neem contact op met Microsoft Ondersteuning als het probleem zich blijft voordoen.     | <li> De map Scratch bevindt zich op een volume dat niet genoeg ruimte heeft. <li> De Scratch-map is onjuist verplaatst. <li> Het bestand OnlineBackup. KEK ontbreekt.         | <li>Voer een upgrade uit naar de [meest recente versie](https://aka.ms/azurebackup_agent) van de Mars-agent.<li>Verplaats de Scratch-map of cache locatie naar een volume met een vrije ruimte tussen 5% en 10% van de totale grootte van de back-upgegevens. Raadpleeg de stappen in [Veelgestelde vragen over het maken van back-ups van bestanden en mappen](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder)om de cache locatie correct te verplaatsen.<li> Zorg ervoor dat het bestand OnlineBackup. KEK aanwezig is. <br>*De standaard locatie voor de Scratch-map of het pad naar de cache is C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.        |
+|<br />De activering is niet voltooid. De huidige bewerking is mislukt vanwege een interne service fout [0x1FC07]. Probeer de bewerking na enige tijd opnieuw. Neem contact op met Microsoft Ondersteuning als het probleem zich blijft voordoen.     | <li> De map Scratch bevindt zich op een volume dat niet genoeg ruimte heeft. <li> De Scratch-map is onjuist verplaatst. <li> Het bestand OnlineBackup. KEK ontbreekt.         | <li>Voer een upgrade uit naar de [meest recente versie](https://aka.ms/azurebackup_agent) van de Mars-agent.<li>Verplaats de Scratch-map of cache locatie naar een volume met een vrije ruimte tussen 5% en 10% van de totale grootte van de back-upgegevens. Raadpleeg de stappen in [Veelgestelde vragen over het maken van back-ups van bestanden en mappen](./backup-azure-file-folder-backup-faq.md#manage-the-backup-cache-folder)om de cache locatie correct te verplaatsen.<li> Zorg ervoor dat het bestand OnlineBackup. KEK aanwezig is. <br>*De standaard locatie voor de Scratch-map of het pad naar de cache is C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.        |
 
 ## <a name="encryption-passphrase-not-correctly-configured"></a>Wachtwoordzin voor versleuteling niet correct geconfigureerd
 
 | Fout  | Mogelijke oorzaken | Aanbevolen acties |
 |---------|---------|---------|
-| <br />Fout 34506. De wachtwoordzin voor versleuteling die op deze computer is opgeslagen, is niet op de juiste wijze geconfigureerd.    | <li> De map Scratch bevindt zich op een volume dat niet genoeg ruimte heeft. <li> De Scratch-map is onjuist verplaatst. <li> Het bestand OnlineBackup. KEK ontbreekt.        | <li>Voer een upgrade uit naar de [meest recente versie](https://aka.ms/azurebackup_agent) van de Mars-agent.<li>Verplaats de Scratch-map of cache locatie naar een volume met een vrije ruimte tussen 5% en 10% van de totale grootte van de back-upgegevens. Raadpleeg de stappen in [Veelgestelde vragen over het maken van back-ups van bestanden en mappen](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder)om de cache locatie correct te verplaatsen.<li> Zorg ervoor dat het bestand OnlineBackup. KEK aanwezig is. <br>*De standaard locatie voor de Scratch-map of het pad naar de cache is C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.         |
+| <br />Fout 34506. De wachtwoordzin voor versleuteling die op deze computer is opgeslagen, is niet op de juiste wijze geconfigureerd.    | <li> De map Scratch bevindt zich op een volume dat niet genoeg ruimte heeft. <li> De Scratch-map is onjuist verplaatst. <li> Het bestand OnlineBackup. KEK ontbreekt.        | <li>Voer een upgrade uit naar de [meest recente versie](https://aka.ms/azurebackup_agent) van de Mars-agent.<li>Verplaats de Scratch-map of cache locatie naar een volume met een vrije ruimte tussen 5% en 10% van de totale grootte van de back-upgegevens. Raadpleeg de stappen in [Veelgestelde vragen over het maken van back-ups van bestanden en mappen](./backup-azure-file-folder-backup-faq.md#manage-the-backup-cache-folder)om de cache locatie correct te verplaatsen.<li> Zorg ervoor dat het bestand OnlineBackup. KEK aanwezig is. <br>*De standaard locatie voor de Scratch-map of het pad naar de cache is C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.         |
 
 ## <a name="backups-dont-run-according-to-schedule"></a>Back-ups worden niet volgens schema uitgevoerd
 

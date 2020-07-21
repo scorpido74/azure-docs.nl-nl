@@ -3,11 +3,12 @@ title: Overzicht van Recovery Services-kluizen
 description: Een overzicht en vergelijking tussen Recovery Services kluizen en Azure Backup kluizen.
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 798f49629ad1012e8cc9ac3ed43f5beddd6eefeb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11a218badfab141c41430c3f48a5e930bfa1af8b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84248903"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539037"
 ---
 # <a name="recovery-services-vaults-overview"></a>Overzicht van Recovery Services-kluizen
 
@@ -35,9 +36,9 @@ Recovery Services kluizen zijn gebaseerd op het Azure Resource Manager model van
 
 Een Recovery Service-kluis is een entiteit waarin de back-ups en herstelpunten worden opgeslagen die in de loop van de tijd zijn gemaakt. De Recovery Service-kluis bevat ook de beleidsregels voor back-up die aan de beveiligde virtuele machines zijn gekoppeld.
 
-Azure Backup beheert automatisch de opslag voor de kluis. Bekijk hoe [opslag instellingen kunnen worden gewijzigd](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy).
+Azure Backup beheert automatisch de opslag voor de kluis. Bekijk hoe [opslag instellingen kunnen worden gewijzigd](./backup-create-rs-vault.md#set-storage-redundancy).
 
-Zie deze artikelen over [geo](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs) en [lokale](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs) redundantie voor meer informatie over opslag redundantie.
+Zie deze artikelen over [geo](../storage/common/storage-redundancy.md) en [lokale](../storage/common/storage-redundancy.md) redundantie voor meer informatie over opslag redundantie.
 
 ## <a name="managing-your-recovery-services-vaults-in-the-portal"></a>Uw Recovery Services-kluizen beheren in de portal
 
@@ -61,7 +62,7 @@ De volgende secties bevatten koppelingen naar artikelen met uitleg over het gebr
 ### <a name="back-up-data"></a>Een back-up maken van gegevens
 
 - [Een back-up maken van een Azure VM](backup-azure-vms-first-look-arm.md)
-- [Back-up maken van een Windows-Server of Windows-werk station](backup-try-azure-backup-in-10-mins.md)
+- [Back-up maken van een Windows-Server of Windows-werk station](./backup-windows-with-mars-agent.md)
 - [Back-ups maken van DPM-workloads naar Azure](backup-azure-dpm-introduction.md)
 - [Maak een back-up van werk belastingen met behulp van Azure Backup Server](backup-azure-microsoft-azure-backup.md)
 
@@ -81,9 +82,9 @@ De volgende secties bevatten koppelingen naar artikelen met uitleg over het gebr
 
 ## <a name="azure-advisor"></a>Azure Advisor
 
-[Azure Advisor](https://docs.microsoft.com/azure/advisor/) is een gepersonaliseerde Cloud consultant waarmee u het gebruik van Azure kunt optimaliseren. Het analyseert uw Azure-gebruik en biedt tijdig aanbevelingen om uw implementaties te optimaliseren en te beveiligen. Het biedt aanbevelingen in vier categorieën: hoge Beschik baarheid, beveiliging, prestaties en kosten.
+[Azure Advisor](../advisor/index.yml) is een gepersonaliseerde Cloud consultant waarmee u het gebruik van Azure kunt optimaliseren. Het analyseert uw Azure-gebruik en biedt tijdig aanbevelingen om uw implementaties te optimaliseren en te beveiligen. Het biedt aanbevelingen in vier categorieën: hoge Beschik baarheid, beveiliging, prestaties en kosten.
 
-Azure Advisor voorziet in elk uur [aanbevelingen](https://docs.microsoft.com/azure/advisor/advisor-high-availability-recommendations#protect-your-virtual-machine-data-from-accidental-deletion) voor vm's waarvan geen back-up is gemaakt, zodat u nooit een back-up maakt van belang rijke vm's. U kunt de aanbevelingen ook beheren door ze uit te stellen.  U kunt op de aanbeveling klikken en back-up inschakelen op Vm's in de regel door de kluis op te geven (waarbij back-ups worden opgeslagen) en het back-upbeleid (schema van back-ups en bewaren van back-ups).
+Azure Advisor voorziet in elk uur [aanbevelingen](../advisor/advisor-high-availability-recommendations.md#protect-your-virtual-machine-data-from-accidental-deletion) voor vm's waarvan geen back-up is gemaakt, zodat u nooit een back-up maakt van belang rijke vm's. U kunt de aanbevelingen ook beheren door ze uit te stellen.  U kunt op de aanbeveling klikken en back-up inschakelen op Vm's in de regel door de kluis op te geven (waarbij back-ups worden opgeslagen) en het back-upbeleid (schema van back-ups en bewaren van back-ups).
 
 ![Azure Advisor](./media/backup-azure-recovery-services-vault-overview/azure-advisor.png)
 

@@ -11,11 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: 80c789f955b279e7771fe39c20087baa465b3293
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88f1e40101b807e82eaf69be6c167cd4aa2e2831
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84042622"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539190"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Nieuwe tenants inrichten en catalogiseren in een SaaS-toepassing met behulp van een Shard multi tenant-Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +30,7 @@ Dit artikel heeft twee belang rijke onderdelen:
 - [Zelf studie](#goto_1_tutorial) voor het markeren van de Power shell-script code die het inrichten en catalogiseren uitvoert.
   - In de zelf studie wordt gebruikgemaakt van de SaaS-toepassing Wingtip tickets, aangepast aan het database patroon multi-tenant Shard.
 
-<a name="goto_2_conceptual"/>
+<a name="goto_2_conceptual"></a>
 
 ## <a name="database-pattern"></a>Database patroon
 
@@ -110,7 +111,7 @@ De scripts voor het inrichten van tenants in deze zelf studie ondersteunen de vo
 
 Tenant gegevens worden vervolgens geïnitialiseerd en geregistreerd in de catalogus Shard-toewijzing. In de voor beeld-app worden data bases die meerdere tenants bevatten, een algemene naam gegeven, zoals *tenants1* of *tenants2*. Data bases die één Tenant bevatten, krijgen de naam van de Tenant. De specifieke naamgevings conventies die in het voor beeld worden gebruikt, zijn geen essentieel onderdeel van het patroon. Als u een catalogus gebruikt, kan elke naam worden toegewezen aan de data base.
 
-<a name="goto_1_tutorial"/>
+<a name="goto_1_tutorial"></a>
 
 ## <a name="tutorial-begins"></a>Zelf studie begint
 
@@ -168,7 +169,7 @@ Als u wilt weten hoe de Wingtip-app nieuwe Tenant inrichting implementeert in ee
 
 4. Wanneer het uitvoeren van het script stopt bij het onderbrekings punt, drukt u op **F11** om de code te Step into.
 
-   ![foutopsporing](./media/saas-multitenantdb-provision-and-catalog/debug.png)
+   ![debug](./media/saas-multitenantdb-provision-and-catalog/debug.png)
 
 5. De uitvoering van het script traceren met behulp van de opties voor het menu **fout opsporing** , **F10** en **F11**, om over te stappen of functies te noemen.
 

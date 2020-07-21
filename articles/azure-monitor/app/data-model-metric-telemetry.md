@@ -4,11 +4,12 @@ description: Application Insights gegevens model voor metrische telemetrie
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 3e4a1fc3de58b8e65ab9c7a288bdf3eb37e7bae0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 44f0b070a7c0da416002d9bf7e509d643a96dc7a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671967"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540006"
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>Metrische telemetrie: Application Insights gegevens model
 
@@ -23,7 +24,7 @@ Metrische waarde waarmee systeem-en proces tellers worden weer gegeven:
 | **.NET-naam**             | **Neutraal naam van het platform** | **REST API naam** | **Beschrijving**
 | ------------------------- | -------------------------- | ----------------- | ---------------- 
 | `\Processor(_Total)\% Processor Time` | Onderhanden werk... | [processorCpuPercentage](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessorCpuPercentage) | totale machine-CPU
-| `\Memory\Available Bytes`                 | Onderhanden werk... | [memoryAvailableBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FmemoryAvailableBytes) | Toont de hoeveelheid fysiek geheugen (in bytes) die beschikbaar is voor processen die op de computer worden uitgevoerd. Het wordt berekend door de hoeveelheid ruimte op de geheugen lijsten met nulwaarden, vrij en stand-by op te tellen. Beschikbaar geheugen is klaar voor gebruik. Zeroed geheugen bestaat uit pagina's van geheugen gevuld met nullen om te voor komen dat latere processen gegevens zien die worden gebruikt door een eerder proces; stand-by geheugen is geheugen dat is verwijderd uit de werkset van een proces (het fysieke geheugen) en de route naar de schijf, maar nog steeds beschikbaar is om te worden ingetrokken. [Geheugen object](https://msdn.microsoft.com/library/ms804008.aspx) weer geven
+| `\Memory\Available Bytes`                 | Onderhanden werk... | [memoryAvailableBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FmemoryAvailableBytes) | Toont de hoeveelheid fysiek geheugen (in bytes) die beschikbaar is voor processen die op de computer worden uitgevoerd. Het wordt berekend door de hoeveelheid ruimte op de geheugen lijsten met nulwaarden, vrij en stand-by op te tellen. Beschikbaar geheugen is klaar voor gebruik. Zeroed geheugen bestaat uit pagina's van geheugen gevuld met nullen om te voor komen dat latere processen gegevens zien die worden gebruikt door een eerder proces; stand-by geheugen is geheugen dat is verwijderd uit de werkset van een proces (het fysieke geheugen) en de route naar de schijf, maar nog steeds beschikbaar is om te worden ingetrokken. [Geheugen object](/previous-versions/ms804008(v=msdn.10)) weer geven
 | `\Process(??APP_WIN32_PROC??)\% Processor Time` | Onderhanden werk... | [processCpuPercentage](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessCpuPercentage) | CPU van het proces dat als host fungeert voor de toepassing
 | `\Process(??APP_WIN32_PROC??)\Private Bytes`      | Onderhanden werk... | [processPrivateBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessPrivateBytes) | geheugen dat wordt gebruikt door het proces dat als host fungeert voor de toepassing
 | `\Process(??APP_WIN32_PROC??)\IO Data Bytes/sec` | Onderhanden werk... | [processIOBytesPerSecond](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessIOBytesPerSecond) | het aantal I/O-bewerkingen wordt uitgevoerd door het proces dat als host fungeert voor de toepassing
@@ -32,7 +33,7 @@ Metrische waarde waarmee systeem-en proces tellers worden weer gegeven:
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time`   | Onderhanden werk... | [requestExecutionTime](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestExecutionTime) | gemiddelde uitvoerings tijd van aanvragen
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue` | Onderhanden werk... | [requestsInQueue](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestsInQueue) | aantal aanvragen dat wacht op verwerking in een wachtrij
 
-## <a name="name"></a>Name
+## <a name="name"></a>Naam
 
 De naam van de metrische gegevens die u wilt weer geven in Application Insights Portal en gebruikers interface. 
 
@@ -40,7 +41,7 @@ De naam van de metrische gegevens die u wilt weer geven in Application Insights 
 
 Eén waarde voor meting. Som van afzonderlijke metingen voor de aggregatie.
 
-## <a name="count"></a>Count
+## <a name="count"></a>Aantal
 
 Metrieke gewicht van de cumulatieve metriek. Mag niet worden ingesteld voor een meting.
 
@@ -48,11 +49,11 @@ Metrieke gewicht van de cumulatieve metriek. Mag niet worden ingesteld voor een 
 
 Minimum waarde van de cumulatieve metriek. Mag niet worden ingesteld voor een meting.
 
-## <a name="max"></a>Max.
+## <a name="max"></a>Max
 
 De maximum waarde van de cumulatieve metriek. Mag niet worden ingesteld voor een meting.
 
-## <a name="standard-deviation"></a>Standaardafwijking
+## <a name="standard-deviation"></a>Standaarddeviatie
 
 Standaard afwijking van de cumulatieve metriek. Mag niet worden ingesteld voor een meting.
 

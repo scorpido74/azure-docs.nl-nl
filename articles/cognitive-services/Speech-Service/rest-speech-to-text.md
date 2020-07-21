@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: yinhew
-ms.openlocfilehash: c4eb1419859d4a87e53371a266dcef52e632b6c8
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: e7bbedf253d6a64609179a8710fc9accd1f03818
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636084"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537966"
 ---
 # <a name="speech-to-text-rest-api"></a>REST API voor spraak-naar-tekst
 
@@ -60,7 +60,7 @@ Deze para meters kunnen worden opgenomen in de query reeks van de REST-aanvraag.
 
 Deze tabel bevat de vereiste en optionele kopteksten voor aanvragen voor spraak naar tekst.
 
-|Koptekst| Beschrijving | Vereist/optioneel |
+|Header| Beschrijving | Vereist/optioneel |
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | Uw abonnements sleutel voor spraak Services. | Deze header of `Authorization` is vereist. |
 | `Authorization` | Een autorisatie token dat wordt voorafgegaan door het woord `Bearer` . Zie [Verificatie](#authentication) voor meer informatie. | Deze header of `Ocp-Apim-Subscription-Key` is vereist. |
@@ -223,10 +223,10 @@ Het object in de `NBest` lijst kan het volgende bevatten:
 | `ITN` | De inverse-text-genormaliseerde ("canonieke") vorm van de herkende tekst, met telefoon nummers, cijfers, afkortingen ("Doctor Smith" naar "Dr Smith") en andere toegepaste trans formaties. |
 | `MaskedITN` | Het ITN-formulier waarbij de maskering voor scheld woorden is toegepast, indien aangevraagd. |
 | `Display` | De weergave vorm van de herkende tekst, met lees tekens en hoofdletter gebruik. Deze para meter is hetzelfde als de `DisplayText` waarde die is opgegeven als de notatie is ingesteld op `simple` . |
-| `AccuracyScore` | De score die de nauw keurigheid van de uitspraak van de opgegeven spraak aangeeft. |
-| `FluencyScore` | De Score waarmee de fluency van de opgegeven spraak wordt aangegeven. |
-| `CompletenessScore` | De Score waarmee de volledigheid van de opgegeven spraak wordt aangegeven door de verhouding van uitgesp roken woorden naar de volledige invoer te berekenen. |
-| `PronScore` | De totale score die de uitspraak kwaliteit van de opgegeven spraak aangeeft. Dit wordt berekend op basis van `AccuracyScore` `FluencyScore` en `CompletenessScore` met gewicht. |
+| `AccuracyScore` | Nauw keurigheid van de uitspraak van de spraak. Nauw keurigheid geeft aan hoe nauw keurig de fonemen overeenkomt met de uitspraak van de systeem eigen spreker. De nauw keurigheid van het woord en het volledige tekst niveau worden geaggregeerd van de nauwkeurigheids Score van het foneem niveau. |
+| `FluencyScore` | Fluency van de gegeven spraak. Fluency geeft aan hoe nauw keurig de spraak overeenkomt met het gebruik van stille onderbrekingen van de eigen spreker tussen woorden. |
+| `CompletenessScore` | Volledigheid van de spraak, bepaald door het berekenen van de verhouding van uitgesp roken woorden om naar tekst invoer te verwijzen. |
+| `PronScore` | Algemene score die de uitspraak kwaliteit van de opgegeven spraak aangeeft. Deze wordt samengesteld op basis `AccuracyScore` van `FluencyScore` en `CompletenessScore` met gewicht. |
 | `ErrorType` | Deze waarde geeft aan of een woord wordt wegge laten, wordt ingevoegd of verkeerd is uitgesp roken, vergeleken met `ReferenceText` . Mogelijke waarden zijn `None` (wat betekent dat er geen fout is in dit woord), `Omission` `Insertion` en `Mispronunciation` . |
 
 ## <a name="sample-responses"></a>Voorbeeld reacties

@@ -4,17 +4,18 @@ description: Meer informatie over hoe u uw resource kunt schalen op basis van aa
 ms.topic: conceptual
 ms.date: 05/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 7758c440c75af5819099110dcbdaf5a86a1d2a04
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8e744e6a91eb6fbe23a6b45f95c39b1acfdcb61f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77425116"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539581"
 ---
 # <a name="get-started-with-auto-scale-by-custom-metric-in-azure"></a>Aan de slag met automatisch schalen op basis van aangepaste metrische gegevens in azure
 In dit artikel wordt beschreven hoe u uw resource kunt schalen op basis van een aangepaste metriek in Azure Portal.
 
 Azure Monitor automatisch schalen alleen van toepassing is op [Virtual Machine Scale sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-web apps](https://azure.microsoft.com/services/app-service/web/), [Azure Data Explorer-cluster](https://azure.microsoft.com/services/data-explorer/)   
-Integratieserviceomgeving-en [API Management-Services](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
+Integratieserviceomgeving-en [API Management-Services](../../api-management/api-management-key-concepts.md).
 
 ## <a name="lets-get-started"></a>Hiermee kunt u aan de slag
 In dit artikel wordt ervan uitgegaan dat u een web-app met Application Insights hebt geconfigureerd. Als u er nog geen hebt, kunt u [Application Insights instellen voor uw ASP.net-website][1]
@@ -35,16 +36,15 @@ In dit artikel wordt ervan uitgegaan dat u een web-app met Application Insights 
   > Opmerking: als er een probleem is opgetreden bij het lezen van de metrische gegevens van de resource en de huidige capaciteit lager is dan de standaard capaciteit, moet automatisch schalen worden uitgebreid naar de standaard waarde om te zorgen voor de beschik baarheid van de resource. Als de huidige capaciteit al hoger is dan standaard capaciteit, kan automatisch schalen niet worden geschaald.
 - Klik op opslaan
 
-Gefeliciteerd! U hebt nu de schaal instelling gemaakt om uw web-app automatisch te schalen op basis van een aangepaste metriek.
+Gefeliciteerd. U hebt nu de schaal instelling gemaakt om uw web-app automatisch te schalen op basis van een aangepaste metriek.
 
 > Opmerking: dezelfde stappen zijn van toepassing om aan de slag te gaan met een VMSS of Cloud service-rol.
 
 <!--Reference-->
-[1]: https://docs.microsoft.com/azure/application-insights/app-insights-asp-net
+[1]: ../app/asp-net.md
 [2]: https://portal.azure.com
 [3]: ./media/autoscale-custom-metric/azure-monitor-launch.png
 [4]: ./media/autoscale-custom-metric/discover-autoscale-azure-monitor.png
 [5]: ./media/autoscale-custom-metric/scale-setting-new-web-app.png
 [6]: ./media/autoscale-custom-metric/scale-by-custom-metric.png
 [7]: ./media/autoscale-custom-metric/autoscale-setting-custom-metrics-ai.png
-

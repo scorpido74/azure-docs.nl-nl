@@ -7,18 +7,18 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: mialdrid
-ms.openlocfilehash: c68ffd019937f902567c3deda8d879448dc082da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2c730906e8dcb31c3365259088240c74e416855
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847039"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537017"
 ---
 # <a name="expressroute-circuits-and-peering"></a>ExpressRoute-circuits en peering
 
 ExpressRoute-circuits maken verbinding met uw on-premises infra structuur met micro soft via een connectiviteits provider. Dit artikel helpt u inzicht te krijgen in ExpressRoute-circuits en routerings domeinen/peering. In de volgende afbeelding ziet u een logische weer gave van de connectiviteit tussen uw WAN en micro soft.
 
-![](./media/expressroute-circuit-peerings/expressroute-basic.png)
+![Diagram waarin wordt weer gegeven hoe ExpressRoute-circuits uw on-premises infra structuur met micro soft verbinden via een connectiviteits provider.](./media/expressroute-circuit-peerings/expressroute-basic.png)
 
 > [!IMPORTANT]
 > Open bare Azure-peering is afgeschaft en is niet beschikbaar voor nieuwe ExpressRoute-circuits. Nieuwe circuits ondersteunen micro soft-peering en persoonlijke peering.  
@@ -42,7 +42,7 @@ Voor elk ExpressRoute-circuit gelden standaard quota's en limieten. Raadpleeg de
 
 Aan een ExpressRoute-circuit zijn meerdere routerings domeinen/peerings gekoppeld: Azure openbaar, Azure private en micro soft. Elke peering is op dezelfde manier geconfigureerd op een paar routers (in de configuratie voor het delen van actieve en actieve of laad taken) voor hoge Beschik baarheid. Azure-Services worden gecategoriseerd als *Azure Public* en *Azure private* om de IP-adresserings schema's weer te geven.
 
-![](./media/expressroute-circuit-peerings/expressroute-peerings.png)
+![Diagram waarin wordt getoond hoe Azure Public-, Azure private-en micro soft-peerings worden geconfigureerd in een ExpressRoute-circuit.](./media/expressroute-circuit-peerings/expressroute-peerings.png)
 
 ### <a name="azure-private-peering"></a><a name="privatepeering"></a>Persoonlijke Azure-peering
 
@@ -50,7 +50,7 @@ Azure Compute-Services, d.w.z. virtuele machines (IaaS) en Cloud Services (PaaS)
 
 U kunt meer dan één virtueel netwerk verbinden met het privé-peering domein. Bekijk de [pagina met veelgestelde vragen](expressroute-faqs.md) voor informatie over limieten en beperkingen. U kunt de pagina [Azure-abonnement en service limieten, quota's en beperkingen](../azure-resource-manager/management/azure-subscription-service-limits.md) voor actuele informatie over limieten bekijken.  Raadpleeg de pagina [route ring](expressroute-routing.md) voor gedetailleerde informatie over de routerings configuratie.
 
-### <a name="microsoft-peering"></a><a name="microsoftpeering"></a>Micro soft-peering
+### <a name="microsoft-peering"></a><a name="microsoftpeering"></a>Microsoft-peering
 
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 

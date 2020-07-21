@@ -3,12 +3,13 @@ title: Versleuteling in Azure Backup
 description: Meer informatie over hoe versleutelings functies in Azure Backup u helpen uw back-upgegevens te beschermen en te voldoen aan de beveiligings behoeften van uw bedrijf.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: aafb9868dfb6a63ec9b6a3ae654b88b202a1a145
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.custom: references_regions
+ms.openlocfilehash: 099e736bfb321f0f92bd3a57f9c24e88293b42bb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171819"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538748"
 ---
 # <a name="encryption-in-azure-backup"></a>Versleuteling in Azure Backup
 
@@ -16,7 +17,7 @@ Al uw back-upgegevens worden automatisch versleuteld wanneer deze worden opgesla
 
 Naast versleuteling in rust worden al uw back-upgegevens overgebracht via HTTPS. Het blijft altijd op het Azure-backbone-netwerk.
 
-Zie [Azure Storage versleuteling voor Data-at-rest](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)voor meer informatie. Raadpleeg de [Veelgestelde vragen over Azure backup](https://docs.microsoft.com/azure/backup/backup-azure-backup-faq#encryption) voor het beantwoorden van vragen die u mogelijk hebt over versleuteling.
+Zie [Azure Storage versleuteling voor Data-at-rest](../storage/common/storage-service-encryption.md)voor meer informatie. Raadpleeg de [Veelgestelde vragen over Azure backup](./backup-azure-backup-faq.md#encryption) voor het beantwoorden van vragen die u mogelijk hebt over versleuteling.
 
 ## <a name="encryption-of-backup-data-using-platform-managed-keys"></a>Versleuteling van back-upgegevens met door het platform beheerde sleutels
 
@@ -30,7 +31,7 @@ Lees [hier](encryption-at-rest-with-cmk.md)meer informatie over het versleutelen
 
 ## <a name="backup-of-managed-disk-vms-encrypted-using-customer-managed-keys"></a>Back-up van virtuele machines met beheerde schijven versleuteld met door de klant beheerde sleutels
 
-Met Azure Backup kunt u ook een back-up maken van uw Azure-Vm's die gebruikmaken van uw sleutel voor het [versleutelen van opslag Services](https://docs.microsoft.com/azure/storage/common/storage-service-encryption). De sleutel die wordt gebruikt voor het versleutelen van de schijven wordt opgeslagen in de Azure Key Vault en door u worden beheerd. Storage Service Encryption (SSE) met door de klant beheerde sleutels verschilt van Azure Disk Encryption, omdat ADE gebruikmaakt van BitLocker (voor Windows) en DM-crypt (voor Linux) voor het uitvoeren van in-gast versleuteling, worden gegevens in de opslag service door SSE versleuteld, zodat u elk besturings systeem of installatie kopieën voor uw virtuele machines kunt gebruiken. Raadpleeg voor meer informatie de [versleuteling van Managed disks met door de klant beheerde sleutels](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys) .
+Met Azure Backup kunt u ook een back-up maken van uw Azure-Vm's die gebruikmaken van uw sleutel voor het [versleutelen van opslag Services](../storage/common/storage-service-encryption.md). De sleutel die wordt gebruikt voor het versleutelen van de schijven wordt opgeslagen in de Azure Key Vault en door u worden beheerd. Storage Service Encryption (SSE) met door de klant beheerde sleutels verschilt van Azure Disk Encryption, omdat ADE gebruikmaakt van BitLocker (voor Windows) en DM-crypt (voor Linux) voor het uitvoeren van in-gast versleuteling, worden gegevens in de opslag service door SSE versleuteld, zodat u elk besturings systeem of installatie kopieën voor uw virtuele machines kunt gebruiken. Raadpleeg voor meer informatie de [versleuteling van Managed disks met door de klant beheerde sleutels](../virtual-machines/windows/disk-encryption.md#customer-managed-keys) .
 
 ## <a name="infrastructure-level-encryption-for-backup-data"></a>Versleuteling op infrastructuur niveau voor back-upgegevens
 
@@ -41,7 +42,7 @@ Naast het versleutelen van uw gegevens in de Recovery Services kluis met door de
 
 ## <a name="backup-of-vms-encrypted-using-ade"></a>Back-up van virtuele machines die zijn versleuteld met ADE
 
-Met Azure Backup kunt u ook een back-up maken van uw virtuele Azure-machines waarvan het besturings systeem of de gegevens schijven zijn versleuteld met behulp van Azure Disk Encryption. ADE maakt gebruik van BitLocker voor Windows-Vm's en DM-crypt voor Linux-Vm's voor het uitvoeren van in-gast versleuteling. Zie [back-up en herstel van versleutelde virtuele machines met Azure backup](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption)voor meer informatie.
+Met Azure Backup kunt u ook een back-up maken van uw virtuele Azure-machines waarvan het besturings systeem of de gegevens schijven zijn versleuteld met behulp van Azure Disk Encryption. ADE maakt gebruik van BitLocker voor Windows-Vm's en DM-crypt voor Linux-Vm's voor het uitvoeren van in-gast versleuteling. Zie [back-up en herstel van versleutelde virtuele machines met Azure backup](./backup-azure-vms-encryption.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

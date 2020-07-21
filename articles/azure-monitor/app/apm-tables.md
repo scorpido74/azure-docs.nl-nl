@@ -5,21 +5,22 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/09/2020
-ms.openlocfilehash: 21f387a87224615ea6afbdce620c56e3ad2cc6ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3175e43a841334719de80f44a226b1c7b87690d9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83210539"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540108"
 ---
 # <a name="workspace-based-resource-changes-preview"></a>Resource wijzigingen op basis van werk ruimten (preview-versie)
 
-Vóór de introductie van [Application Insights resources op basis van een werk ruimte](create-workspace-resource.md), zijn Application Insights gegevens gescheiden van andere logboek gegevens opgeslagen in azure monitor. Beide zijn gebaseerd op Azure Data Explorer en gebruiken dezelfde Kusto query language (KQL). Dit wordt beschreven in de [Logboeken van Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs).
+Vóór de introductie van [Application Insights resources op basis van een werk ruimte](create-workspace-resource.md), zijn Application Insights gegevens gescheiden van andere logboek gegevens opgeslagen in azure monitor. Beide zijn gebaseerd op Azure Data Explorer en gebruiken dezelfde Kusto query language (KQL). Dit wordt beschreven in de [Logboeken van Azure monitor](../platform/data-platform-logs.md).
 
 Met Application Insights resources-gegevens op basis van een werk ruimte worden opgeslagen in een Log Analytics-werk ruimte met andere bewakings gegevens en toepassings gegevens. Dit vereenvoudigt uw configuratie, zodat u gemakkelijker gegevens kunt analyseren over meerdere oplossingen en de mogelijkheden van werk ruimten kunt benutten.
 
 ## <a name="table-structure"></a>Tabel structuur
 
-| Verouderde tabel naam | Nieuwe tabel naam | Description |
+| Verouderde tabel naam | Nieuwe tabel naam | Beschrijving |
 |:---|:---|:---|
 | availabilityResults | AppAvailabilityResults |  Samenvattings gegevens van beschikbaarheids testen.|
 | browserTimings | AppBrowserTimings | Gegevens over client prestaties, zoals de tijd die nodig is om de binnenkomende gegevens te verwerken.|
@@ -67,7 +68,7 @@ Verouderde tabel: Beschik baarheid
 |Item type|tekenreeks|Type|Tekenreeks|
 |location|tekenreeks|Locatie|tekenreeks|
 |message|tekenreeks|Bericht|tekenreeks|
-|naam|tekenreeks|Name|tekenreeks|
+|naam|tekenreeks|Naam|tekenreeks|
 |operation_Id|tekenreeks|OperationId|tekenreeks|
 |operation_Name|tekenreeks|OperationName|tekenreeks|
 |operation_ParentId|tekenreeks|OperationParentId|tekenreeks|
@@ -76,7 +77,7 @@ Verouderde tabel: Beschik baarheid
 |sdkVersion|tekenreeks|SdkVersion|tekenreeks|
 |session_Id|tekenreeks|SessionId|tekenreeks|
 |grootte|werkelijk|Grootte|werkelijk|
-|voltooid|tekenreeks|Geslaagd|Booleaanse waarde|
+|voltooid|tekenreeks|Success|Booleaanse waarde|
 |tijdstempel|datum/tijd|TimeGenerated|datum/tijd|
 |user_AccountId|tekenreeks|UserAccountId|tekenreeks|
 |user_AuthenticatedId|tekenreeks|UserAuthenticatedId|tekenreeks|
@@ -107,7 +108,7 @@ Verouderde tabel: browserTimings
 |itemCount|int|ItemCount|int|
 |itemId|tekenreeks|\_ItemId|tekenreeks|
 |Item type|tekenreeks|Type|tekenreeks|
-|naam|tekenreeks|Name|datum/tijd|
+|naam|tekenreeks|Naam|datum/tijd|
 |networkDuration|werkelijk|NetworkDurationMs|werkelijk|
 |operation_Id|tekenreeks|OperationId|tekenreeks|
 |operation_Name|tekenreeks|OperationName|tekenreeks|
@@ -154,7 +155,7 @@ Verouderde tabel: afhankelijkheden
 |itemCount|int|ItemCount|int|
 |itemId|tekenreeks|\_ItemId|tekenreeks|
 |Item type|tekenreeks|Type|Tekenreeks|
-|naam|tekenreeks|Name|tekenreeks|
+|naam|tekenreeks|Naam|tekenreeks|
 |operation_Id|tekenreeks|OperationId|tekenreeks|
 |operation_Name|tekenreeks|OperationName|tekenreeks|
 |operation_ParentId|tekenreeks|OperationParentId|tekenreeks|
@@ -163,7 +164,7 @@ Verouderde tabel: afhankelijkheden
 |resultCode|tekenreeks|ResultCode|tekenreeks|
 |sdkVersion|tekenreeks|SdkVersion|tekenreeks|
 |session_Id|tekenreeks|SessionId|tekenreeks|
-|voltooid|tekenreeks|Geslaagd|Booleaanse waarde|
+|voltooid|tekenreeks|Success|Booleaanse waarde|
 |stemming|tekenreeks|Doel|tekenreeks|
 |tijdstempel|datum/tijd|TimeGenerated|datum/tijd|
 |type|tekenreeks|DependencyType|tekenreeks|
@@ -196,7 +197,7 @@ Verouderde tabel: customEvents
 |itemCount|int|ItemCount|int|
 |itemId|tekenreeks|\_ItemId|tekenreeks|
 |Item type|tekenreeks|Type|tekenreeks|
-|naam|tekenreeks|Name|tekenreeks|
+|naam|tekenreeks|Naam|tekenreeks|
 |operation_Id|tekenreeks|OperationId|tekenreeks|
 |operation_Name|tekenreeks|OperationName|tekenreeks|
 |operation_ParentId|tekenreeks|OperationParentId|tekenreeks|
@@ -231,7 +232,7 @@ Verouderde tabel: customMetrics
 |iKey|tekenreeks|IKey|tekenreeks|
 |itemId|tekenreeks|\_ItemId|tekenreeks|
 |Item type|tekenreeks|Type|tekenreeks|
-|naam|tekenreeks|Name|tekenreeks|
+|naam|tekenreeks|Naam|tekenreeks|
 |operation_Id|tekenreeks|OperationId|tekenreeks|
 |operation_Name|tekenreeks|OperationName|tekenreeks|
 |operation_ParentId|tekenreeks|OperationParentId|tekenreeks|
@@ -276,7 +277,7 @@ Verouderde tabel: page views
 |itemCount|int|ItemCount|int|
 |itemId|tekenreeks|\_ItemId|tekenreeks|
 |Item type|tekenreeks|Type|Tekenreeks|
-|naam|tekenreeks|Name|tekenreeks|
+|naam|tekenreeks|Naam|tekenreeks|
 |operation_Id|tekenreeks|OperationId|tekenreeks|
 |operation_Name|tekenreeks|OperationName|tekenreeks|
 |operation_ParentId|tekenreeks|OperationParentId|tekenreeks|
@@ -316,7 +317,7 @@ Verouderde tabel: Performance Counters
 |exemplaar|tekenreeks|Exemplaar|tekenreeks|
 |itemId|tekenreeks|\_ItemId|tekenreeks|
 |Item type|tekenreeks|Type|tekenreeks|
-|naam|tekenreeks|Name|tekenreeks|
+|naam|tekenreeks|Naam|tekenreeks|
 |operation_Id|tekenreeks|OperationId|tekenreeks|
 |operation_Name|tekenreeks|OperationName|tekenreeks|
 |operation_ParentId|tekenreeks|OperationParentId|tekenreeks|
@@ -356,7 +357,7 @@ Verouderde tabel: aanvragen
 |itemCount|int|ItemCount|int|
 |itemId|tekenreeks|\_ItemId|tekenreeks|
 |Item type|tekenreeks|Type|Tekenreeks|
-|naam|tekenreeks|Name|Tekenreeks|
+|naam|tekenreeks|Naam|Tekenreeks|
 |operation_Id|tekenreeks|OperationId|tekenreeks|
 |operation_Name|tekenreeks|OperationName|tekenreeks|
 |operation_ParentId|tekenreeks|OperationParentId|tekenreeks|
@@ -366,7 +367,7 @@ Verouderde tabel: aanvragen
 |sdkVersion|tekenreeks|SdkVersion|tekenreeks|
 |session_Id|tekenreeks|SessionId|tekenreeks|
 |source|tekenreeks|Bron|Tekenreeks|
-|voltooid|tekenreeks|Geslaagd|Booleaanse waarde|
+|voltooid|tekenreeks|Success|Booleaanse waarde|
 |tijdstempel|datum/tijd|TimeGenerated|datum/tijd|
 |url|tekenreeks|URL|Tekenreeks|
 |user_AccountId|tekenreeks|UserAccountId|tekenreeks|
@@ -466,4 +467,4 @@ Verouderde tabel: traceringen
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Metrische gegevens verkennen](../../azure-monitor/platform/metrics-charts.md)
-* [Analytics-query's schrijven](../../azure-monitor/app/analytics.md)
+* [Analytics-query's schrijven](../log-query/log-query-overview.md)

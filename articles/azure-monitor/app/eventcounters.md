@@ -3,15 +3,16 @@ title: Gebeurtenis tellers in Application Insights | Microsoft Docs
 description: Bewaak systeem-en aangepaste .NET/.NET core-EventCounters in Application Insights.
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 37d0e1e741548986788be78860830f36add1f5a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 06bf15bf60b1ee5e2c301935a30b3981d5233a08
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83700430"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539938"
 ---
 # <a name="eventcounters-introduction"></a>EventCounters-Inleiding
 
-`EventCounter`is .NET/.NET core-mechanisme voor het publiceren en gebruiken van tellers of statistieken. [Dit](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md) document bevat een overzicht van `EventCounters` en voor beelden voor het publiceren en gebruiken van deze. EventCounters worden ondersteund in alle OS-platformen-Windows, Linux en macOS. Het kan worden beschouwd als een platform dat gelijkwaardig is aan de [Performance Counters](https://docs.microsoft.com/dotnet/api/system.diagnostics.performancecounter) die alleen wordt ondersteund in Windows-systemen.
+`EventCounter`is .NET/.NET core-mechanisme voor het publiceren en gebruiken van tellers of statistieken. [Dit](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md) document bevat een overzicht van `EventCounters` en voor beelden voor het publiceren en gebruiken van deze. EventCounters worden ondersteund in alle OS-platformen-Windows, Linux en macOS. Het kan worden beschouwd als een platform dat gelijkwaardig is aan de [Performance Counters](/dotnet/api/system.diagnostics.performancecounter) die alleen wordt ondersteund in Windows-systemen.
 
 Hoewel gebruikers aangepaste kunnen publiceren `EventCounters` om aan hun behoeften te voldoen, publiceert de .net Core 3,0-runtime standaard een set van deze prestatie meter items. Het document doorloopt de stappen die nodig zijn voor het verzamelen en weer geven (door het `EventCounters` systeem gedefinieerde of door de gebruiker gedefinieerde definitie) in azure-toepassing Insights.
 
@@ -90,14 +91,14 @@ In het volgende voor beeld ziet u hoe u tellers kunt toevoegen/verwijderen. Deze
 
 ## <a name="event-counters-in-metric-explorer"></a>Gebeurtenis tellers in metrische Explorer
 
-Als u metrische gegevens van Event Counter wilt weer geven in de [metrische Explorer](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts), selecteert u Application Insights resource en kiest u metrische gegevens op basis van een logboek als metrische naam ruimte. Vervolgens worden event Counter-metrische gegevens weer gegeven onder aangepaste categorie.
+Als u metrische gegevens van Event Counter wilt weer geven in de [metrische Explorer](../platform/metrics-charts.md), selecteert u Application Insights resource en kiest u metrische gegevens op basis van een logboek als metrische naam ruimte. Vervolgens worden event Counter-metrische gegevens weer gegeven onder aangepaste categorie.
 
 > [!div class="mx-imgBorder"]
 > ![Gebeurtenis tellers die zijn gerapporteerd in Application Insights](./media/event-counters/metrics-explorer-counter-list.png)
 
 ## <a name="event-counters-in-analytics"></a>Gebeurtenis tellers in Analytics
 
-U kunt ook rapporten over gebeurtenis tellers in [Analytics](../../azure-monitor/app/analytics.md)zoeken en weer geven in de tabel **customMetrics** .
+U kunt ook rapporten over gebeurtenis tellers in [Analytics](../log-query/log-query-overview.md)zoeken en weer geven in de tabel **customMetrics** .
 
 Voer bijvoorbeeld de volgende query uit om te zien welke tellers worden verzameld en beschikbaar zijn voor het uitvoeren van query's:
 
@@ -143,7 +144,7 @@ Event Counter vereist geen speciale machtigingen en wordt ondersteund in alle pl
 
 ### <a name="i-have-enabled-application-insights-from-azure-web-app-portal-but-i-cant-see-eventcounters"></a>Ik heb Application Insights ingeschakeld vanuit de Azure web app-Portal. Maar ik zie EventCounters niet.?
 
- Deze functie wordt nog niet ondersteund door de [Application Insights extensie](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps) voor ASP.net core. Dit document wordt bijgewerkt wanneer deze functie wordt ondersteund.
+ Deze functie wordt nog niet ondersteund door de [Application Insights extensie](./azure-web-apps.md) voor ASP.net core. Dit document wordt bijgewerkt wanneer deze functie wordt ondersteund.
 
 ## <a name="next-steps"></a><a name="next"></a>Volgende stappen
 

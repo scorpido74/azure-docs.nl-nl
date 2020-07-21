@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: de1c6e91a6502e3a5e03dde69c5559445628d369
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: d85cd05ee6b40b6b660958330145ed0c61b1b0a3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184545"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539666"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Veelgestelde vragen over Netwerkprestatiemeter oplossingen
 
@@ -19,11 +19,11 @@ ms.locfileid: "86184545"
 
 In dit artikel worden de veelgestelde vragen over Netwerkprestatiemeter (NPM) in azure vastgelegd
 
-[Netwerkprestatiemeter](/azure/networking/network-monitoring-overview) is een op de cloud gebaseerde oplossing voor [hybride netwerk bewaking](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md) waarmee u de netwerk prestaties tussen verschillende punten in uw netwerk infrastructuur kunt bewaken. Daarnaast kunt u hiermee de netwerk connectiviteit van [service-en toepassings eindpunten](../../azure-monitor/insights/network-performance-monitor-service-connectivity.md) bewaken en [de prestaties van Azure ExpressRoute bewaken](../../azure-monitor/insights/network-performance-monitor-expressroute.md). 
+[Netwerkprestatiemeter](../../networking/network-monitoring-overview.md) is een op de cloud gebaseerde oplossing voor [hybride netwerk bewaking](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md) waarmee u de netwerk prestaties tussen verschillende punten in uw netwerk infrastructuur kunt bewaken. Daarnaast kunt u hiermee de netwerk connectiviteit van [service-en toepassings eindpunten](../../azure-monitor/insights/network-performance-monitor-service-connectivity.md) bewaken en [de prestaties van Azure ExpressRoute bewaken](../../azure-monitor/insights/network-performance-monitor-expressroute.md). 
 
 Netwerkprestatiemeter detecteert netwerk problemen zoals verkeer blackholing, routerings fouten en problemen die niet kunnen worden gedetecteerd door conventionele methoden voor netwerk bewaking. De oplossing genereert waarschuwingen en waarschuwt u als een drempelwaarde voor een netwerkverbinding wordt overschreden. Bovendien worden problemen met de netwerkprestaties tijdig gedetecteerd en wordt de oorzaak van het probleem op een bepaald netwerksegment of apparaat opgespoord. 
 
-Meer informatie over de verschillende mogelijkheden die door [Netwerkprestatiemeter](https://docs.microsoft.com/azure/networking/network-monitoring-overview) worden ondersteund, is online beschikbaar.
+Meer informatie over de verschillende mogelijkheden die door [Netwerkprestatiemeter](../../networking/network-monitoring-overview.md) worden ondersteund, is online beschikbaar.
 
 ## <a name="set-up-and-configure-agents"></a>Agents instellen en configureren
 
@@ -149,7 +149,7 @@ NetworkMonitoring
 NPM identificeert alleen de IP-en hostnaam van de onderliggende netwerk-hops (switches, routers, servers, enzovoort) tussen de bron-en doel-IP-adressen. Ook wordt de latentie tussen deze geïdentificeerde hops geïdentificeerd. Deze onderliggende hops worden niet afzonderlijk bewaakt.
 
 ### <a name="can-npm-be-used-to-monitor-network-connectivity-between-azure-and-aws"></a>Kan NPM worden gebruikt voor het bewaken van de netwerk verbinding tussen Azure en AWS?
-Ja. Raadpleeg het artikel [Azure, AWS en on-premises netwerken bewaken met behulp van NPM](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/) voor meer informatie.
+Ja. Raadpleeg het artikel [Azure, AWS en on-premises netwerken bewaken met behulp van NPM](/archive/blogs/msoms/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor) voor meer informatie.
 
 ### <a name="is-the-expressroute-bandwidth-usage-incoming-or-outgoing"></a>Is het ExpressRoute-bandbreedte gebruik binnenkomend of uitgaand?
 Bandbreedte gebruik is het totale aantal binnenkomende en uitgaande band breedte. De waarde wordt uitgedrukt in bits per seconde.
@@ -188,7 +188,7 @@ NPM kan de connectiviteit van netwerken in een deel van de wereld bewaken, van e
 NPM kan de connectiviteit van services in elk deel van de wereld bewaken, van een werk ruimte die wordt gehost in een van de [ondersteunde regio's](../../azure-monitor/insights/network-performance-monitor.md#supported-regions)
 
 ### <a name="which-regions-are-supported-for-npms-expressroute-monitor"></a>Welke regio's worden ondersteund voor de ExpressRoute-monitor van NPM?
-Met NPM kunt u uw ExpressRoute-circuits bewaken die zich in een Azure-regio bevinden. Voor een onboarding naar NPM hebt u een Log Analytics-werk ruimte nodig die moet worden gehost in een van de [ondersteunde regio's](/azure/expressroute/how-to-npm)
+Met NPM kunt u uw ExpressRoute-circuits bewaken die zich in een Azure-regio bevinden. Voor een onboarding naar NPM hebt u een Log Analytics-werk ruimte nodig die moet worden gehost in een van de [ondersteunde regio's](../../expressroute/how-to-npm.md)
 
 ## <a name="troubleshoot"></a>Problemen oplossen
 
@@ -231,7 +231,7 @@ Dit kan gebeuren als de host-firewall of de tussenliggende firewall (netwerk fir
 * Als u wilt controleren of de host-firewall de communicatie op de vereiste poort niet blokkeert, bekijkt u de status van de bron-en doel knooppunten in de volgende weer gave: Netwerkprestatiemeter-> configuratie-> knoop punten. 
   Als ze niet in orde zijn, raadpleegt u de instructies en neemt u corrigerende maat regelen. Als de knoop punten in orde zijn, gaat u naar stap b. hieronder.
 * Als u wilt controleren of een tussenliggende netwerk firewall of Azure NSG de communicatie op de vereiste poort niet blokkeert, gebruikt u het PsPing-hulp programma van derden met behulp van de onderstaande instructies:
-  * het hulp programma psping kan [hier](https://technet.microsoft.com/sysinternals/psping.aspx) worden gedownload 
+  * het hulp programma psping kan [hier](/sysinternals/downloads/psping) worden gedownload 
   * Voer de volgende opdracht uit vanaf het bron knooppunt.
     * psping-n 15 \<destination node IPAddress\> :P ortnumber gebruikt standaard NPM 8084-poort. Als u dit expliciet hebt gewijzigd met behulp van het EnableRules.ps1 script, voert u het aangepaste poort nummer in dat u gebruikt. Dit is een ping van Azure machine naar on-premises
 * Controleer of de pings zijn geslaagd. Als dat niet het geval is, duidt dit erop dat een tussenliggende netwerk firewall of Azure NSG het verkeer op deze poort blokkeert.

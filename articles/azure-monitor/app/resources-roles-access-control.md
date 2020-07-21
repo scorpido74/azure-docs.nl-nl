@@ -3,12 +3,12 @@ title: Resources, rollen en toegangs beheer in Azure-toepassing inzichten | Micr
 description: Eigen aren, mede werkers en lezers van de inzichten van uw organisatie.
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: ee14fee66e3aa6f4e8d999f6f98debe361387515
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92f40961cd824925fe6ed1b67745667121a66d2f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82628228"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539972"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Resources, rollen en toegangs beheer in Application Insights
 
@@ -59,7 +59,7 @@ Kies **toegangs beheer (IAM)** in het menu aan de linkerkant.
 
 De onderstaande **machtigingen weergave toevoegen** is voornamelijk specifiek voor Application Insights resources, als u de machtigingen voor toegangs beheer van een hoger niveau als resource groepen hebt bekeken, ziet u aanvullende niet-Application Insights gerichte rollen.
 
-Als u informatie wilt weer geven over alle ingebouwde rollen van op rollen gebaseerd toegangs beheer van Azure, gebruikt u de [officiële referentie-inhoud](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+Als u informatie wilt weer geven over alle ingebouwde rollen van op rollen gebaseerd toegangs beheer van Azure, gebruikt u de [officiële referentie-inhoud](../../role-based-access-control/built-in-roles.md).
 
 ![Scherm afbeelding van de lijst met gebruikers rollen in toegangs beheer](./media/resources-roles-access-control/0003-user-roles.png)
 
@@ -69,23 +69,23 @@ Waar van toepassing, gaan we een koppeling naar de bijbehorende officiële refer
 
 | Rol | In de resource groep |
 | --- | --- |
-| [Eigenaar](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) |Kan alles wijzigen, met inbegrip van gebruikers toegang. |
-| [Inzender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) |Kan alles bewerken, inclusief alle resources. |
-| [Inzender voor Application Insights onderdelen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-component-contributor) |Kan Application Insights resources bewerken. |
-| [Lezer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) |Kan weer geven, maar niet wijzigen. |
-| [Application Insights Snapshot Debugger](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-snapshot-debugger) | Hiermee krijgt de gebruiker toestemming om Application Insights Snapshot Debugger-functies te gebruiken. Houd er rekening mee dat deze rol is opgenomen in de rollen eigenaar en Inzender. |
+| [Eigenaar](../../role-based-access-control/built-in-roles.md#owner) |Kan alles wijzigen, met inbegrip van gebruikers toegang. |
+| [Inzender](../../role-based-access-control/built-in-roles.md#contributor) |Kan alles bewerken, inclusief alle resources. |
+| [Inzender voor Application Insights onderdelen](../../role-based-access-control/built-in-roles.md#application-insights-component-contributor) |Kan Application Insights resources bewerken. |
+| [Lezer](../../role-based-access-control/built-in-roles.md#reader) |Kan weer geven, maar niet wijzigen. |
+| [Application Insights Snapshot Debugger](../../role-based-access-control/built-in-roles.md#application-insights-snapshot-debugger) | Hiermee krijgt de gebruiker toestemming om Application Insights Snapshot Debugger-functies te gebruiken. Houd er rekening mee dat deze rol is opgenomen in de rollen eigenaar en Inzender. |
 | Inzender voor Azure service Deploy release management | Rol van Inzender voor services die worden geïmplementeerd via Azure service Deploy. |
-| [Gegevens opschoner](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#data-purger) | Speciale rol voor het leegmaken van persoonlijke gegevens. Bekijk onze [richt lijnen voor persoonlijke gegevens](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data) voor meer informatie.   |
+| [Gegevens opschoner](../../role-based-access-control/built-in-roles.md#data-purger) | Speciale rol voor het leegmaken van persoonlijke gegevens. Bekijk onze [richt lijnen voor persoonlijke gegevens](../platform/personal-data-mgmt.md) voor meer informatie.   |
 | ExpressRoute-beheerder | Kan snelle routes maken en verwijderen.|
-| [Inzender van Log Analytics](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-contributor) | Log Analytics Inzender kan alle bewakings gegevens lezen en controle-instellingen bewerken. Het bewerken van bewakings instellingen omvat het toevoegen van de VM-extensie aan Vm's; lezen van opslag account sleutels om het verzamelen van logboeken van Azure Storage te kunnen configureren. Automation-accounts maken en configureren; oplossingen toevoegen; en het configureren van Azure Diagnostics voor alle Azure-resources.  |
-| [Lezer van Log Analytics](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader) | Log Analytics Reader kan alle bewakings gegevens weer geven en doorzoeken en controle-instellingen weer geven, inclusief het weer geven van de configuratie van Azure Diagnostics op alle Azure-resources. |
+| [Inzender van Log Analytics](../../role-based-access-control/built-in-roles.md#log-analytics-contributor) | Log Analytics Inzender kan alle bewakings gegevens lezen en controle-instellingen bewerken. Het bewerken van bewakings instellingen omvat het toevoegen van de VM-extensie aan Vm's; lezen van opslag account sleutels om het verzamelen van logboeken van Azure Storage te kunnen configureren. Automation-accounts maken en configureren; oplossingen toevoegen; en het configureren van Azure Diagnostics voor alle Azure-resources.  |
+| [Lezer van Log Analytics](../../role-based-access-control/built-in-roles.md#log-analytics-reader) | Log Analytics Reader kan alle bewakings gegevens weer geven en doorzoeken en controle-instellingen weer geven, inclusief het weer geven van de configuratie van Azure Diagnostics op alle Azure-resources. |
 | masterreader | Hiermee kan een gebruiker alles weer geven, maar geen wijzigingen aanbrengen. |
-| [Inzender bewaken](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) | Kan alle bewakings gegevens lezen en controle-instellingen bijwerken.|
-| [De uitgever van metrische gegevens controleren](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-metrics-publisher) | Hiermee schakelt u de metrische gegevens voor publicatie in op Azure-resources. |
-| [Bewakings lezer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) | Kan alle controle gegevens lezen. |
+| [Inzender bewaken](../../role-based-access-control/built-in-roles.md#monitoring-contributor) | Kan alle bewakings gegevens lezen en controle-instellingen bijwerken.|
+| [De uitgever van metrische gegevens controleren](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher) | Hiermee schakelt u de metrische gegevens voor publicatie in op Azure-resources. |
+| [Bewakings lezer](../../role-based-access-control/built-in-roles.md#monitoring-reader) | Kan alle controle gegevens lezen. |
 | Inzender voor resource beleid (preview-versie) | Alsnog gebruikers van EA, met rechten voor het maken/wijzigen van het resource beleid, het maken van een ondersteunings ticket en het lezen van resources/hiërarchie.  |
-| [Beheerder van gebruikerstoegang](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) | Hiermee kan een gebruiker de toegang tot Azure-resources beheren voor andere gebruikers.|
-| [Website bijdrager](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#website-contributor) | Hiermee kunt u websites beheren (niet Webabonnementen), maar niet de toegang tot de sites.|
+| [Beheerder van gebruikerstoegang](../../role-based-access-control/built-in-roles.md#user-access-administrator) | Hiermee kan een gebruiker de toegang tot Azure-resources beheren voor andere gebruikers.|
+| [Website bijdrager](../../role-based-access-control/built-in-roles.md#website-contributor) | Hiermee kunt u websites beheren (niet Webabonnementen), maar niet de toegang tot de sites.|
 
 ' Bewerken ' omvat het maken, verwijderen en bijwerken:
 

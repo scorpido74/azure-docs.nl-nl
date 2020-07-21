@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: MS-jgol
 ms.author: jgol
 ms.date: 06/26/2020
-ms.openlocfilehash: 978cb7ece1f8b3e16815c1dc49e4983dc393cbfc
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: b9da3b0647d5abe60dd8f6cb21163ff21f07205b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85937538"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539717"
 ---
 # <a name="release-notes-for-azure-web-app-extension-for-application-insights"></a>Release opmerkingen voor de Azure web app-extensie voor Application Insights
 
@@ -21,12 +21,12 @@ Meer [informatie](azure-web-apps.md) over de extensie van Azure web-apps voor Ap
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
 - Hoe vind ik de versie van de uitbrei ding die ik momenteel heb?
-    - Ga naar `https://<yoursitename>.scm.azurewebsites.net/ApplicationInsights`. Ga naar [de stapsgewijze hand leiding voor het oplossen van problemen met de bewaking van extensies en agents](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps?tabs=net#troubleshooting) voor meer informatie.
+    - Ga naar `https://<yoursitename>.scm.azurewebsites.net/ApplicationInsights`. Ga naar [de stapsgewijze hand leiding voor het oplossen van problemen met de bewaking van extensies en agents](./azure-web-apps.md?tabs=net#troubleshooting) voor meer informatie.
 
 - Wat gebeurt er als ik persoonlijke extensies gebruik?
     - Verwijder de uitbrei dingen van de persoonlijke site, omdat deze niet meer worden ondersteund.
 
-## <a name="release-notes"></a>Releaseopmerkingen
+## <a name="release-notes"></a>Opmerkingen bij de release
 
 ### <a name="2833"></a>2.8.33
 

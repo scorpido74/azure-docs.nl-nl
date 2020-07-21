@@ -3,11 +3,12 @@ title: Gegevens model voor diagnostische gebeurtenissen van Azure Backup
 description: Dit gegevens model is een verwijzing naar de resource-specifieke modus voor het verzenden van diagnostische gebeurtenissen naar Log Analytics (LA).
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: af1e4159ff2794f8d4dd11480eb7f1789e034c06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46d40694da4eb025afc11da0f14b28691bf13bb8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484503"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538867"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Gegevens model voor diagnostische gebeurtenissen van Azure Backup
 
@@ -15,7 +16,7 @@ ms.locfileid: "84484503"
 
 Deze tabel bevat informatie over de belangrijkste back-upentiteiten, zoals kluizen en back-upitems.
 
-| **Veld**                         | **Gegevens type** | **Beschrijving**                                              |
+| **Veld**                         | **Gegevenstype** | **Beschrijving**                                              |
 | --------------------------------- | ------------- | ------------------------------------------------------------ |
 | ResourceId                        | Tekst          | De resource-id voor de gegevens die worden verzameld. Bijvoorbeeld Recovery Services kluis Resource-ID. |
 | OperationName                     | Tekst          | Dit veld vertegenwoordigt de naam van de huidige bewerking BackupItem, BackupItemAssociation of ProtectedContainer. |
@@ -66,7 +67,7 @@ Deze tabel bevat informatie over de belangrijkste back-upentiteiten, zoals kluiz
 
 Deze tabel bevat details over velden die betrekking hebben op waarschuwingen.
 
-| **Veld**                      | **Gegevens type** | **Beschrijving**                                              |
+| **Veld**                      | **Gegevenstype** | **Beschrijving**                                              |
 | :----------------------------- | ------------- | ------------------------------------------------------------ |
 | ResourceId                     | Tekst          | De unieke id voor de resource waarover gegevens worden verzameld. Bijvoorbeeld een Recovery Services kluis Resource-ID |
 | OperationName                  | Tekst          | De naam van de huidige bewerking. Bijvoorbeeld waarschuwing            |
@@ -77,13 +78,13 @@ Deze tabel bevat details over velden die betrekking hebben op waarschuwingen.
 | AlertRaisedOn                  | Tekst          | Het type entiteit waarop de waarschuwing is opgetreden                        |
 | AlertSeverity                  | Tekst          | Ernst van de waarschuwing. Bijvoorbeeld kritiek                 |
 | AlertStatus                    | Tekst          | De status van de waarschuwing. Bijvoorbeeld: Active                     |
-| AlertTimeToResolveInMinutes    | Aantal        | De tijd die nodig is om een waarschuwing op te lossen. Leeg voor actieve waarschuwingen.     |
+| AlertTimeToResolveInMinutes    | Getal        | De tijd die nodig is om een waarschuwing op te lossen. Leeg voor actieve waarschuwingen.     |
 | AlertType                      | Tekst          | Type waarschuwing. Bijvoorbeeld back-up                           |
 | AlertUniqueId                  | Tekst          | De unieke id van de gegenereerde waarschuwing                    |
 | BackupItemUniqueId             | Tekst          | De unieke id van het back-upitem dat aan de waarschuwing is gekoppeld |
 | BackupManagementServerUniqueId | Tekst          | Veld voor het identificeren van de back-upbeheerserver waarop het back-upitem is beveiligd, indien van toepassing |
 | BackupManagementType           | Tekst          | Provider type voor het uitvoeren van een back-uptaak van de server, bijvoorbeeld IaaSVM, FileFolder |
-| CountOfAlertsConsolidated      | Aantal        | Aantal geconsolidatiete waarschuwingen als het een geconsolideerde waarschuwing is  |
+| CountOfAlertsConsolidated      | Getal        | Aantal geconsolidatiete waarschuwingen als het een geconsolideerde waarschuwing is  |
 | ProtectedContainerUniqueId     | Tekst          | De unieke id van de beveiligde server die is gekoppeld aan de waarschuwing |
 | RecommendedAction              | Tekst          | Aanbevolen actie om de waarschuwing op te lossen                      |
 | SchemaVersion                  | Tekst          | Huidige versie van het schema, bijvoorbeeld **v2**            |
@@ -96,7 +97,7 @@ Deze tabel bevat details over velden die betrekking hebben op waarschuwingen.
 
 Deze tabel bevat basis velden die betrekking hebben op een beveiligd exemplaar.
 
-| **Veld**                      | **Gegevens type** | **Beschrijving**                                              |
+| **Veld**                      | **Gegevenstype** | **Beschrijving**                                              |
 | ------------------------------ | ------------- | ------------------------------------------------------------ |
 | ResourceId                     | Tekst          | De unieke id voor de resource waarover gegevens worden verzameld. Bijvoorbeeld een Recovery Services kluis Resource-ID |
 | OperationName                  | Tekst          | De naam van de bewerking, bijvoorbeeld ProtectedInstance         |
@@ -115,7 +116,7 @@ Deze tabel bevat basis velden die betrekking hebben op een beveiligd exemplaar.
 
 Deze tabel bevat details over projectgerelateerde velden.
 
-| **Veld**                      | **Gegevens type** | **Beschrijving**                                              |
+| **Veld**                      | **Gegevenstype** | **Beschrijving**                                              |
 | ------------------------------ | ------------- | ------------------------------------------------------------ |
 | ResourceId                     | Tekst          | De resource-id voor de gegevens die worden verzameld. Bijvoorbeeld Recovery Services kluis Resource-ID |
 | OperationName                  | Tekst          | Dit veld bevat de naam van de huidige bewerking-taak    |
@@ -124,8 +125,8 @@ Deze tabel bevat details over projectgerelateerde velden.
 | BackupItemUniqueId             | Tekst          | Unieke ID die wordt gebruikt om het back-upitem te identificeren dat is gerelateerd aan de opslag entiteit |
 | BackupManagementServerUniqueId | Tekst          | Unieke ID die wordt gebruikt om de back-upbeheerserver te identificeren die betrekking heeft op de opslag entiteit |
 | BackupManagementType           | Tekst          | Provider type voor het uitvoeren van back-ups, bijvoorbeeld IaaSVM, FileFolder waartoe deze taak behoort |
-| DataTransferredInMB            | Aantal        | Gegevens die worden overgebracht in MB voor deze taak                          |
-| JobDurationInSecs              | Aantal        | Totale taak duur in seconden                                |
+| DataTransferredInMB            | Getal        | Gegevens die worden overgebracht in MB voor deze taak                          |
+| JobDurationInSecs              | Getal        | Totale taak duur in seconden                                |
 | JobFailureCode                 | Tekst          | De teken reeks voor de fout code omdat de taak fout is opgetreden    |
 | JobOperation                   | Tekst          | Bewerking waarvoor de taak wordt uitgevoerd bijvoorbeeld back-ups maken, herstellen, back-up configureren |
 | JobOperationSubType            | Tekst          | Subtype van de taak bewerking. Bijvoorbeeld ' Log ', in het geval van een logboek back-uptaak |
@@ -146,7 +147,7 @@ Deze tabel bevat details over projectgerelateerde velden.
 
 Deze tabel bevat details over velden die betrekking hebben op het beleid.
 
-| **Veld**                       | **Gegevens type**  | **Beschrijving**                                              |
+| **Veld**                       | **Gegevenstype**  | **Beschrijving**                                              |
 | ------------------------------- | -------------- | ------------------------------------------------------------ |
 | ResourceId                      | Tekst           | De unieke id voor de resource waarover gegevens worden verzameld. Bijvoorbeeld een Recovery Services kluis Resource-ID |
 | OperationName                   | Tekst           | De naam van de bewerking, bijvoorbeeld beleid of PolicyAssociation |
@@ -195,7 +196,7 @@ Deze tabel bevat details over velden die betrekking hebben op het beleid.
 
 Deze tabel bevat details over velden die betrekking hebben op opslag.
 
-| **Veld**                      | **Gegevens type** | **Beschrijving**                                              |
+| **Veld**                      | **Gegevenstype** | **Beschrijving**                                              |
 | ------------------------------ | ------------- | ------------------------------------------------------------ |
 | ResourceId                     | Tekst          | De resource-id voor de gegevens die worden verzameld. Bijvoorbeeld Recovery Services kluis Resource-ID |
 | OperationName                  | Tekst          | Dit veld bevat de naam van de huidige bewerking-opslag of StorageAssociation |
@@ -207,8 +208,8 @@ Deze tabel bevat details over velden die betrekking hebben op opslag.
 | ProtectedContainerUniqueId     | Tekst          | De unieke id van de beveiligde container die is gekoppeld aan het back-upitem |
 | SchemaVersion                  | Tekst          | De versie van het schema. Bijvoorbeeld **v2**                   |
 | Status                          | Tekst          | Status van het object voor het back-upitem. Bijvoorbeeld actief, verwijderd |
-| StorageAllocatedInMBs          | Aantal        | Grootte van de opslag die wordt toegewezen door het bijbehorende back-upitem in de bijbehorende opslag van het type schijf |
-| StorageConsumedInMBs           | Aantal        | Grootte van de opslag die wordt gebruikt door het bijbehorende back-upitem in de bijbehorende opslag |
+| StorageAllocatedInMBs          | Getal        | Grootte van de opslag die wordt toegewezen door het bijbehorende back-upitem in de bijbehorende opslag van het type schijf |
+| StorageConsumedInMBs           | Getal        | Grootte van de opslag die wordt gebruikt door het bijbehorende back-upitem in de bijbehorende opslag |
 | StorageName                    | Tekst          | De naam van de opslag entiteit. Bijvoorbeeld E:\                      |
 | StorageTotalSizeInGBs          | Tekst          | Totale grootte van de opslag, in GB, die wordt verbruikt door de opslag entiteit     |
 | Para                    | Tekst          | Type opslag, bijvoorbeeld Cloud, volume, schijf             |
@@ -219,5 +220,5 @@ Deze tabel bevat details over velden die betrekking hebben op opslag.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Meer informatie over het verzenden van diagnostische gegevens naar Log Analytics](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events)
-- [Meer informatie over het schrijven van query's op resource-specifieke tabellen](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor#sample-kusto-queries)
+- [Meer informatie over het verzenden van diagnostische gegevens naar Log Analytics](./backup-azure-diagnostic-events.md)
+- [Meer informatie over het schrijven van query's op resource-specifieke tabellen](./backup-azure-monitoring-use-azuremonitor.md#sample-kusto-queries)

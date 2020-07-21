@@ -3,11 +3,12 @@ title: Back-ups van Azure-bestands shares beheren met Power shell
 description: Informatie over het gebruik van Power shell voor het beheren en bewaken van Azure-bestands shares waarvan een back-up is gemaakt door de Azure Backup service.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 6ee5fb92e4a66a9d6db66514f966c3650d3a4f13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 889c9bb3ef087c700bbfc3a68959f2c5924bffda
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83201981"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538590"
 ---
 # <a name="manage-azure-file-share-backups-with-powershell"></a>Back-ups van Azure-bestands shares beheren met Power shell
 
@@ -18,7 +19,7 @@ In dit artikel wordt beschreven hoe u Azure PowerShell gebruikt voor het beheren
 
 ## <a name="modify-the-protection-policy"></a>Het beveiligings beleid wijzigen
 
-Gebruik [Enable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection?view=azps-1.4.0)om het beleid te wijzigen dat wordt gebruikt voor het maken van een back-up van de Azure-bestands share. Geef het relevante back-upitem en het nieuwe back-upbeleid op.
+Gebruik [Enable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection)om het beleid te wijzigen dat wordt gebruikt voor het maken van een back-up van de Azure-bestands share. Geef het relevante back-upitem en het nieuwe back-upbeleid op.
 
 In het volgende voor beeld wordt het **testAzureFS** -beveiligings beleid gewijzigd van **dailyafs** in **monthlyafs**.
 
@@ -31,7 +32,7 @@ Enable-AzRecoveryServicesBackupProtection -Item $afsBkpItem -Policy $monthlyafsP
 
 ## <a name="track-backup-and-restore-jobs"></a>Back-up-en herstel taken bijhouden
 
-Back-ups op aanvraag en herstel bewerkingen geven een taak samen met een ID, zoals wordt weer gegeven wanneer u [een back-up op aanvraag uitvoert](backup-azure-afs-automation.md#trigger-an-on-demand-backup). Gebruik de cmdlet [Get-AzRecoveryServicesBackupJobDetails](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob?view=azps-1.4.0) om de voortgang en Details van de taak bij te houden.
+Back-ups op aanvraag en herstel bewerkingen geven een taak samen met een ID, zoals wordt weer gegeven wanneer u [een back-up op aanvraag uitvoert](backup-azure-afs-automation.md#trigger-an-on-demand-backup). Gebruik de cmdlet [Get-AzRecoveryServicesBackupJobDetails](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) om de voortgang en Details van de taak bij te houden.
 
 ```powershell
 $job = Get-AzRecoveryServicesBackupJob -JobId 00000000-6c46-496e-980a-3740ccb2ad75 -VaultId $vaultID
@@ -70,7 +71,7 @@ Er zijn mogelijk kosten verbonden aan het verlaten van de herstel punten in de o
 
 ## <a name="stop-protection-and-retain-recovery-points"></a>Beveiliging stoppen en herstel punten behouden
 
-Als u de beveiliging wilt stoppen tijdens het bewaren van gegevens, gebruikt u de cmdlet [Disable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection?view=azps-3.3.0) .
+Als u de beveiliging wilt stoppen tijdens het bewaren van gegevens, gebruikt u de cmdlet [Disable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) .
 
 In het volgende voor beeld wordt de beveiliging van de *afsfileshare* -bestands share gestopt, maar worden alle herstel punten behouden:
 
@@ -86,11 +87,11 @@ WorkloadName     Operation         Status         StartTime                 EndT
 afsfileshare     DisableBackup     Completed      1/26/2020 2:43:59 PM      1/26/2020 2:44:21 PM      98d9f8a1-54f2-4d85-8433-c32eafbd793f
 ```
 
-Het kenmerk taak-ID in de uitvoer komt overeen met de taak-ID van de taak die is gemaakt door de back-upservice voor de bewerking ' Stop beveiliging '. Gebruik de cmdlet [Get-AzRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob?view=azps-3.3.0) om de status van de taak bij te houden.
+Het kenmerk taak-ID in de uitvoer komt overeen met de taak-ID van de taak die is gemaakt door de back-upservice voor de bewerking ' Stop beveiliging '. Gebruik de cmdlet [Get-AzRecoveryServicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) om de status van de taak bij te houden.
 
 ## <a name="stop-protection-without-retaining-recovery-points"></a>Beveiliging stoppen zonder herstel punten te bewaren
 
-Als u de beveiliging wilt stoppen zonder herstel punten te bewaren, gebruikt u de cmdlet [Disable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection?view=azps-3.3.0) en voegt u de para meter **-RemoveRecoveryPoints** toe.
+Als u de beveiliging wilt stoppen zonder herstel punten te bewaren, gebruikt u de cmdlet [Disable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) en voegt u de para meter **-RemoveRecoveryPoints** toe.
 
 In het volgende voor beeld wordt de beveiliging van de *afsfileshare* -bestands share gestopt zonder herstel punten te bewaren:
 

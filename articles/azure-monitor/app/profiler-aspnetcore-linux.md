@@ -6,16 +6,16 @@ author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: b91abe282c25b161db72616d7123d7a2bf5dbc9f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 6ef67addba2bcc96cfb51f9f217d7d43e729bdf4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111062"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539904"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profiel ASP.NET Core Azure Linux-web-apps met Application Insights Profiler
 
-Deze functie is momenteel in preview.
+Deze functie is momenteel beschikbaar als preview-product.
 
 Ontdek hoeveel tijd wordt besteed aan elke methode van uw Live Web-app wanneer u [Application Insights](../../azure-monitor/app/app-insights-overview.md)gebruikt. Application Insights Profiler is nu beschikbaar voor ASP.NET Core web-apps die worden gehost in Linux op Azure App Service. Deze hand leiding bevat stapsgewijze instructies voor het verzamelen van de profilerings traceringen voor ASP.NET Core Linux-web-apps.
 
@@ -106,7 +106,7 @@ De volgende instructies zijn van toepassing op alle ontwikkel omgevingen van Win
 
     ![De Git-opslag plaats instellen](./media/profiler-aspnetcore-linux/setup-git-repo.png)
 
-Raadpleeg [dit artikel](https://docs.microsoft.com/azure/app-service/containers/choose-deployment-type)voor meer implementatie opties.
+Raadpleeg [dit artikel](../../app-service/containers/choose-deployment-type.md)voor meer implementatie opties.
 
 ## <a name="deploy-your-project"></a>Uw project implementeren
 

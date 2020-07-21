@@ -6,20 +6,21 @@ ms.topic: conceptual
 author: agummadi
 ms.author: agummadi
 ms.date: 04/02/2018
-ms.openlocfilehash: c5a80c7ff6d08ce601a6c2bbb0db0ef866d3b425
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f44afd84c58c94c6a8d3e6145e8a4f66e0e2e782
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77654389"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539649"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Prijs wijzigingen voor Azure Netwerkprestatiemeter
 
-We hebben geluisterd naar uw feedback en hebben onlangs een [nieuwe prijs ervaring](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) geïntroduceerd voor verschillende bewakings Services in Azure. In dit artikel worden de prijs wijzigingen met betrekking tot Azure [Netwerkprestatiemeter](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM) vastgelegd in een gemakkelijk te lezen vraag-en antwoord indeling.
+We hebben geluisterd naar uw feedback en hebben onlangs een [nieuwe prijs ervaring](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) geïntroduceerd voor verschillende bewakings Services in Azure. In dit artikel worden de prijs wijzigingen met betrekking tot Azure [Netwerkprestatiemeter](../../networking/network-monitoring-overview.md) (NPM) vastgelegd in een gemakkelijk te lezen vraag-en antwoord indeling.
 
 Netwerkprestatiemeter bestaat uit drie onderdelen:
-* [Prestatiemeter](https://docs.microsoft.com/azure/networking/network-monitoring-overview#performance-monitor)
-* [Controle programma voor service-eind punten](https://docs.microsoft.com/azure/networking/network-monitoring-overview)
-* [Monitor voor ExpressRoute](https://docs.microsoft.com/azure/networking/network-monitoring-overview#expressroute-monitor)
+* [Prestatiemeter](../../networking/network-monitoring-overview.md#performance-monitor)
+* [Controle programma voor service-eind punten](../../networking/network-monitoring-overview.md)
+* [Monitor voor ExpressRoute](../../networking/network-monitoring-overview.md#expressroute-monitor)
 
 In de volgende secties worden de prijs wijzigingen voor de NPM-onderdelen uitgelegd.
 
@@ -108,7 +109,6 @@ Een verbinding is een test op het bereiken van een eind punt (URL of netwerk ser
 
 Raadpleeg de sectie [verbindings bewaking](https://azure.microsoft.com/pricing/details/network-watcher/) voor de kosten voor het bewaken van een eind punt voor de hele maand. De kosten voor gegevens zijn beschikbaar op de [pagina met prijzen](https://azure.microsoft.com/pricing/details/log-analytics/) voor log Analytics, in de sectie gegevens opname.
 
-## <a name="references"></a>Referenties
+## <a name="references"></a>Naslaginformatie
 
 [Veelgestelde vragen over log Analytics prijs](https://azure.microsoft.com/pricing/details/log-analytics/): de sectie Veelgestelde vragen bevat informatie over de gratis laag, de prijzen per knoop punt en andere prijs informatie.
-

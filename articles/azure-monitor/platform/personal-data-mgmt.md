@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: 569731faffd97e816567af3f6ed1cf8cdf49f240
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d8998b450613e097230d7692a8ad1990830993b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83740447"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539326"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Richt lijnen voor persoons gegevens die zijn opgeslagen in Log Analytics en Application Insights
 
@@ -66,8 +67,8 @@ Log Analytics is een flexibele Store, waarmee u een schema voor uw gegevens voor
     | where timestamp > ago(1d)
     | project $table, timestamp, name, customDimensions 
     ```
-* *In-Memory en in-transit gegevens*: Application Insights worden uitzonde ringen, aanvragen, afhankelijkheids aanroepen en traceringen bijgehouden. Persoonlijke gegevens kunnen vaak worden verzameld op het niveau van code en HTTP-aanroepen. Bekijk de tabellen met uitzonde ringen, aanvragen, afhankelijkheden en traceringen om dergelijke gegevens te identificeren. Gebruik de [initialisatie functies voor telemetrie](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling) waar mogelijk deze gegevens kunnen worden verborgen.
-* *Snapshot debugger Capture*: met de functie [Snapshot debugger](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger) in Application Insights kunt u moment opnamen van fout opsporing verzamelen wanneer er een uitzonde ring wordt gedetecteerd op het productie-exemplaar van uw toepassing. Met moment opnamen wordt de volledige Stack tracering voor de uitzonde ringen en de waarden voor lokale variabelen bij elke stap in de stack beschikbaar gemaakt. Helaas is deze functie niet toegestaan voor selectieve verwijdering van magnetische punten of programmatische toegang tot gegevens in de moment opname. Als de standaard retentie tijd van de moment opname niet voldoet aan uw nalevings vereisten, is de aanbeveling daarom de functie uit te scha kelen.
+* *In-Memory en in-transit gegevens*: Application Insights worden uitzonde ringen, aanvragen, afhankelijkheids aanroepen en traceringen bijgehouden. Persoonlijke gegevens kunnen vaak worden verzameld op het niveau van code en HTTP-aanroepen. Bekijk de tabellen met uitzonde ringen, aanvragen, afhankelijkheden en traceringen om dergelijke gegevens te identificeren. Gebruik de [initialisatie functies voor telemetrie](../app/api-filtering-sampling.md) waar mogelijk deze gegevens kunnen worden verborgen.
+* *Snapshot debugger Capture*: met de functie [Snapshot debugger](../app/snapshot-debugger.md) in Application Insights kunt u moment opnamen van fout opsporing verzamelen wanneer er een uitzonde ring wordt gedetecteerd op het productie-exemplaar van uw toepassing. Met moment opnamen wordt de volledige Stack tracering voor de uitzonde ringen en de waarden voor lokale variabelen bij elke stap in de stack beschikbaar gemaakt. Helaas is deze functie niet toegestaan voor selectieve verwijdering van magnetische punten of programmatische toegang tot gegevens in de moment opname. Als de standaard retentie tijd van de moment opname niet voldoet aan uw nalevings vereisten, is de aanbeveling daarom de functie uit te scha kelen.
 
 ## <a name="how-to-export-and-delete-private-data"></a>Privé gegevens exporteren en verwijderen
 
@@ -100,7 +101,7 @@ Zodra de Azure Resource Manager rol is toegewezen, zijn er twee nieuwe API-paden
 
 #### <a name="log-data"></a>Logboekgegevens
 
-* [Bericht opschonen](https://docs.microsoft.com/rest/api/loganalytics/workspacepurge/purge) : Hiermee wordt een object opgegeven met de para meters voor het verwijderen van de gegevens en wordt een verwijzings-GUID geretourneerd 
+* [Bericht opschonen](/rest/api/loganalytics/workspacepurge/purge) : Hiermee wordt een object opgegeven met de para meters voor het verwijderen van de gegevens en wordt een verwijzings-GUID geretourneerd 
 * Status van leegmaken ophalen: de aanroep ' x-MS-status-location ' wordt door het aanroepen van de POST geretourneerd en bevat een URL die u kunt aanroepen om de status van uw opschoon API te bepalen. Bijvoorbeeld:
 
     ```
@@ -112,7 +113,7 @@ Zodra de Azure Resource Manager rol is toegewezen, zijn er twee nieuwe API-paden
 
 #### <a name="application-data"></a>Toepassingsgegevens
 
-* [Bericht opschonen](https://docs.microsoft.com/rest/api/application-insights/components/purge) : Hiermee wordt een object opgegeven met de para meters voor het verwijderen van de gegevens en wordt een verwijzings-GUID geretourneerd
+* [Bericht opschonen](/rest/api/application-insights/components/purge) : Hiermee wordt een object opgegeven met de para meters voor het verwijderen van de gegevens en wordt een verwijzings-GUID geretourneerd
 * Status van leegmaken ophalen: de aanroep ' x-MS-status-location ' wordt door het aanroepen van de POST geretourneerd en bevat een URL die u kunt aanroepen om de status van uw opschoon API te bepalen. Bijvoorbeeld:
 
    ```

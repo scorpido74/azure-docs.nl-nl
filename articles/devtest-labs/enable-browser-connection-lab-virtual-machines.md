@@ -1,16 +1,16 @@
 ---
-title: Browser verbinding op Azure DevTest Labs virtuele machines inschakelen | Microsoft Docs
+title: Browser verbinding inschakelen op Azure DevTest Labs virtuele machines
 description: DevTest Labs kan nu worden geïntegreerd met Azure Bastion. als eigenaar van het lab kunt u toegang tot alle virtuele lab-machines via een browser inschakelen.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 23fb43fa7295006d8d3784d1dbb5d80c48411431
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2ff55aa033ee9a024c8bc89cc9d39bc8d3ad25da
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85484125"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537522"
 ---
-# <a name="enable-browser-connection-on-lab-virtual-machines"></a>Browser verbinding inschakelen op virtuele lab-machines 
+# <a name="enable-browser-connection-on-azure-devtest-labs-virtual-machines"></a>Browser verbinding inschakelen op Azure DevTest Labs virtuele machines 
 DevTest Labs kan worden geïntegreerd met [Azure Bastion](https://docs.microsoft.com/azure/bastion/), waarmee u via een browser verbinding kunt maken met uw virtuele machines. U moet eerst de browser verbinding inschakelen op de virtuele lab-machines.
 
 Als eigenaar van een lab kunt u de toegang tot alle virtuele lab-machines inschakelen via een browser. U hebt geen aanvullende client, agent of software nodig. Azure Bastion biedt rechtstreeks een veilige en naadloze RDP/SSH-verbinding met uw virtuele machines in de Azure Portal via TLS. Wanneer u verbinding maakt via Azure Bastion, hebt u geen openbaar IP-adres nodig voor uw virtuele machines. Zie [Wat is Azure Bastion?](../bastion/bastion-overview.md) voor meer informatie.
@@ -33,7 +33,7 @@ U kunt geen Lab Vm's maken in een Azure Bastion-subnet. Maak een ander subnet in
 ## <a name="enable-vm-creation-in-the-subnet"></a>Het maken van VM'S in het subnet inschakelen
 Nu kunt u de virtuele machines in dit subnet maken door de volgende stappen uit te voeren: 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer **alle services** in het navigatie menu links. 
 1. Selecteer **DevTest Labs** uit de lijst. 
 1. Selecteer in de lijst met Labs *uw Lab*. 

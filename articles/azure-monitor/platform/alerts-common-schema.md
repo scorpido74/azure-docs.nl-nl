@@ -4,12 +4,12 @@ description: Meer informatie over het algemene waarschuwings schema, waarom u he
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: 1445e8cf38b2694146fc8749ba5e77f2297de969
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: faf9975e2795623305583d061d1af7f5eb0cfbe0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710929"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539479"
 ---
 # <a name="common-alert-schema"></a>Algemeen waarschuwingsschema
 
@@ -31,7 +31,7 @@ Dit betekent dat u mogelijk minder integraties kunt hebben, waardoor het proces 
 
 Het algemene waarschuwings schema wordt in eerste instantie in uw waarschuwings meldingen gemanifesteerd. De uitbrei dingen die u ziet, worden hieronder weer gegeven:
 
-| Bewerking | Verbeteringen |
+| Actie | Verbeteringen |
 |:---|:---|
 | Sms | Een consistente SMS-sjabloon voor alle waarschuwings typen. |
 | E-mail | Een consistente en gedetailleerde e-mail sjabloon waarmee u problemen eenvoudig kunt onderzoeken in één oogopslag. Inge sloten diep gaande koppelingen naar het waarschuwings exemplaar op de portal en de betreffende resource zorgen ervoor dat u snel naar het herstel proces kunt gaan. |
@@ -52,8 +52,8 @@ U kunt in-of afmelden bij het algemene waarschuwings schema via actie groepen, o
 > 1. De volgende waarschuwings typen ondersteunen standaard het algemene schema (geen opt-in vereist):
 >     * Slimme detectie waarschuwingen
 > 1. De volgende waarschuwings typen bieden momenteel geen ondersteuning voor het algemene schema:
->     * Waarschuwingen die zijn gegenereerd door [Azure monitor voor VM's](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-overview)
->     * Waarschuwingen die zijn gegenereerd door [Azure Cost Management](https://docs.microsoft.com/azure/billing/billing-cost-management-budget-scenario)
+>     * Waarschuwingen die zijn gegenereerd door [Azure monitor voor VM's](../insights/vminsights-overview.md)
+>     * Waarschuwingen die zijn gegenereerd door [Azure Cost Management](../../cost-management-billing/manage/cost-management-budget-scenario.md)
 
 ### <a name="through-the-azure-portal"></a>Via de Azure Portal
 
@@ -64,9 +64,9 @@ U kunt in-of afmelden bij het algemene waarschuwings schema via actie groepen, o
 
 ### <a name="through-the-action-groups-rest-api"></a>Via de actie groepen REST API
 
-U kunt ook de [Action groups-API](https://docs.microsoft.com/rest/api/monitor/actiongroups) gebruiken om u aan te melden bij het algemene waarschuwings schema. Tijdens het maken van de aanroep [Create of update](https://docs.microsoft.com/rest/api/monitor/actiongroups/createorupdate) rest API, kunt u de vlag "useCommonAlertSchema" instellen op True (om aan te melden) of ' false ' (om uit te kiezen) voor een van de volgende acties: e-mail/webhook/Logic app/Azure function/Automation runbook.
+U kunt ook de [Action groups-API](/rest/api/monitor/actiongroups) gebruiken om u aan te melden bij het algemene waarschuwings schema. Tijdens het maken van de aanroep [Create of update](/rest/api/monitor/actiongroups/createorupdate) rest API, kunt u de vlag "useCommonAlertSchema" instellen op True (om aan te melden) of ' false ' (om uit te kiezen) voor een van de volgende acties: e-mail/webhook/Logic app/Azure function/Automation runbook.
 
-De volgende hoofd tekst van de aanvraag in het REST API [maken of bijwerken](https://docs.microsoft.com/rest/api/monitor/actiongroups/createorupdate) gaat bijvoorbeeld als volgt te werk:
+De volgende hoofd tekst van de aanvraag in het REST API [maken of bijwerken](/rest/api/monitor/actiongroups/createorupdate) gaat bijvoorbeeld als volgt te werk:
 
 * Schakel het algemene waarschuwings schema in voor de e-mail actie ' e-mail adres van John Splinter '
 * Het algemene waarschuwings schema uitschakelen voor de e-mail actie "Rob Smith e-mail"
@@ -121,7 +121,4 @@ De volgende hoofd tekst van de aanvraag in het REST API [maken of bijwerken](htt
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Algemene schema definities voor waarschuwingen voor webhooks/Logic Apps/Azure Functions/Automation-Runbooks.](https://aka.ms/commonAlertSchemaDefinitions)
-- [Meer informatie over het maken van een logische app die gebruikmaakt van het algemene waarschuwings schema voor het afhandelen van al uw waarschuwingen.](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations) 
-
-
-
+- [Meer informatie over het maken van een logische app die gebruikmaakt van het algemene waarschuwings schema voor het afhandelen van al uw waarschuwingen.](./alerts-common-schema-integrations.md) 

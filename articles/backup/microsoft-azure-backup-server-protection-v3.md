@@ -3,11 +3,12 @@ title: Wat Azure Backup Server v3 RTM back-ups kan maken?
 description: Dit artikel bevat een beveiligings matrix met alle werk belastingen, gegevens typen en installaties die Azure Backup voor v3 RTM beveiligt.
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: 742b43d748fbd4c1235d0555ac3bd4419880db5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aebd1d1f90a2c0b84d7a6e1cb77d0e50915b091e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84632085"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538563"
 ---
 # <a name="azure-backup-server-v3-rtm-protection-matrix"></a>Azure Backup Server v3 RTM-beveiligings matrix
 
@@ -97,7 +98,7 @@ Bij micro soft-peering moet u de volgende services/regio's en relevante Communit
 * Microsoft Azure regio (op basis van de locatie van uw Recovery Services kluis)
 * Azure Storage (op basis van de locatie van uw Recovery Services kluis)
 
-Zie de [ExpressRoute-routerings vereisten](https://docs.microsoft.com/azure/expressroute/expressroute-routing)voor meer informatie.
+Zie de [ExpressRoute-routerings vereisten](../expressroute/expressroute-routing.md)voor meer informatie.
 
 >[!NOTE]
 >Open bare peering is afgeschaft voor nieuwe circuits.
