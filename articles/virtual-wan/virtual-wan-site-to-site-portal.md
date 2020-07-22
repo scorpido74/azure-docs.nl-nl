@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/09/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 219551f2bba229fb627092548fe5c5f5ff8798b9
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: eceb9e4c8c839e4da333e005e879ea6094936092
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220595"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525153"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Zelfstudie: Een site-naar-site-verbinding maken met Azure Virtual WAN
 
@@ -51,21 +51,7 @@ Controleer voordat u met de configuratie begint of u aan de volgende criteria he
 
 ## <a name="create-a-virtual-wan"></a><a name="openvwan"></a>Een virtueel WAN maken
 
-Open een browser, ga naar de Azure-portal en meld u aan met uw Azure-account.
-
-1. Ga naar de pagina Virtual WAN. Klik in de portal op **+Een resource maken**. Typ **Virtual WAN** in het zoekvak en selecteer Enter.
-2. Selecteer **Virtual WAN** uit de resultaten. Klik op de pagina Virtual WAN op **Maken** om de pagina WAN maken te openen.
-3. Vul op de pagina **Wan maken**, op het tabblad **Basisprincipes**, de volgende velden in:
-
-   ![Virtuele WAN](./media/virtual-wan-site-to-site-portal/vwan.png)
-
-   * **Abonnement** - selecteer het abonnement dat u wilt gebruiken.
-   * **Resourcegroep** - maak een nieuwe resourcegroep of gebruik een bestaande.
-   * **Locatie van de resourcegroep** - kies een resourcelocatie uit de vervolgkeuzelijst. Een WAN een globale resource en bevindt zich niet in een bepaalde regio. U moet echter een regio selecteren om de WAN-resource die u maakt eenvoudiger te kunnen beheren en vinden.
-   * **Naam** - typ de naam die u voor uw WAN hebt gekozen.
-   * **Type:** Basic of Standard. Als u een Basic-WAN maakt, kunt u alleen een Basic-hub maken. Basic-hubs zijn alleen geschikt voor VPN-verbindingen tussen sites.
-4. Nadat u klaar bent met het invullen van de velden, selecteert u **+Maken**.
-5. Wanneer de validatie is geslaagd, selecteert u **Maken** om het virtuele WAN te maken.
+[!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-create-vwan-include.md)]
 
 ## <a name="create-a-hub"></a><a name="hub"></a>Een hub maken
 

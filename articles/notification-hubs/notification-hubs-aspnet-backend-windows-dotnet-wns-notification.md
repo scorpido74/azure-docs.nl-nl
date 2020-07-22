@@ -17,12 +17,12 @@ ms.date: 03/22/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
-ms.openlocfilehash: a8a939f0d0c3575adec147c1942ddbbef334cb65
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: e13e7c1057d5a01867b561fc7ee7d1eed1a97ca3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220147"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530487"
 ---
 # <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>Zelfstudie: Meldingen verzenden naar specifieke gebruikers met behulp van Azure Notification Hubs
 
@@ -51,7 +51,7 @@ In deze zelfstudie voert u de volgende stappen uit:
 Deze zelfstudie bouwt voort op de Notification Hub die en het Visual Studio-project dat u hebt gemaakt in de [Zelfstudie: Meldingen verzenden naar Universeel Windows-platform-apps met behulp van Azure Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md). Het is dan ook belangrijk dat u eerst die zelfstudie voltooit voordat u aan de slag gaat met deze zelfstudie.
 
 > [!NOTE]
-> Als u Mobile Apps in Azure App Service gebruikt als uw back-endservice, raadpleegt u de [Mobile Apps-versie](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md) van deze zelfstudie.
+> Als u Mobile Apps in Azure App Service gebruikt als uw back-endservice, raadpleegt u de [Mobile Apps-versie](/previous-versions/azure/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push) van deze zelfstudie.
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
@@ -224,7 +224,7 @@ In deze sectie werkt u de code bij in het project dat u hebt gemaakt voor de [Ze
     ```
 13. Klik met de rechtermuisknop op het project **WindowsApp**, klik op **Add** en op **Class**. Geef de klasse de naam `RegisterClient.cs` en klik vervolgens op **OK** om de klasse te genereren.
 
-    Deze klasse verpakt de REST-aanroepen die nodig zijn om contact op te nemen met de app-back-end, om registratie voor pushmeldingen mogelijk te maken. Daarnaast wordt de *registrationIds* die is gemaakt door de Notification Hub, lokaal opgeslagen. Zie [Registering from your App Backend](https://msdn.microsoft.com/library/dn743807.aspx) (Registreren vanuit uw app-back-end) voor meer informatie. De klasse maakt gebruik van een verificatietoken dat wordt opgeslagen in de lokale opslag wanneer u op de knop **Login and register** klikt.
+    Deze klasse verpakt de REST-aanroepen die nodig zijn om contact op te nemen met de app-back-end, om registratie voor pushmeldingen mogelijk te maken. Daarnaast wordt de *registrationIds* die is gemaakt door de Notification Hub, lokaal opgeslagen. Zie [Registering from your App Backend](/previous-versions/azure/azure-services/dn743807(v=azure.100)) (Registreren vanuit uw app-back-end) voor meer informatie. De klasse maakt gebruik van een verificatietoken dat wordt opgeslagen in de lokale opslag wanneer u op de knop **Login and register** klikt.
 14. Voeg aan het begin van het bestand RegisterClient.cs de volgende `using`-instructies toe:
 
     ```csharp
@@ -357,4 +357,4 @@ In deze zelfstudie hebt u geleerd hoe u pushmeldingen kunt verzenden naar specif
 [Get started with Notification Hubs]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
 [Secure Push]: notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)

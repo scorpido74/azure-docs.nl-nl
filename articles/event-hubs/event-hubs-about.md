@@ -3,12 +3,12 @@ title: Wat is Azure Event Hubs? - een service voor de opname van Big Data | Micr
 description: Meer informatie over Azure Event Hubs, een big data-streamingservice die miljoenen gebeurtenissen per seconde opneemt.
 ms.topic: overview
 ms.date: 06/23/2020
-ms.openlocfilehash: 175f7e249e02d5c85dd38cf49821b2893de159a3
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: b442a7e0b10f3f882f12943c642ccdd6feef3114
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85314249"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522105"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs — Een streamingplatform en service voor het opnemen van big data
 Azure Event Hubs is een streamingplatform en service voor het opnemen van big data. Het kan miljoenen gebeurtenissen per seconde ontvangen en verwerken. Gegevens die naar een Event Hub worden verzonden, kunnen worden omgezet en opgeslagen door gebruik te maken van een provider voor realtime analytische gegevens of batchverwerking/opslagadapters.
@@ -44,7 +44,7 @@ U kunt uw stroom in realtime opnemen, bufferen, opslaan en verwerken om bruikbar
 
 [Leg uw gegevens bijna in realtime vast](event-hubs-capture-overview.md) in een [ Azure Blob-opslag](https://azure.microsoft.com/services/storage/blobs/) of [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/)  voor langdurige bewaring of microbatchverwerking. U kunt dit gedrag bereiken op dezelfde stroom die u gebruikt voor het afleiden van realtime analyses. Het instellen van het vastleggen van gebeurtenisgegevens gaat snel. Er zijn geen beheerkosten om het uit te voeren en het schaalt automatisch met Event Hubs- [doorvoereenheden](event-hubs-scalability.md#throughput-units). Met Event Hubs kunt u zich richten op gegevensverwerking in plaats van gegevens vast te leggen.
 
-Azure Event Hubs kan ook worden geïntegreerd met [Azure Functions](/azure/azure-functions/) voor een serverloze architectuur.
+Azure Event Hubs kan ook worden geïntegreerd met [Azure Functions](../azure-functions/index.yml) voor een serverloze architectuur.
 
 ## <a name="scalable"></a>Schaalbaar
 
@@ -74,7 +74,7 @@ Met Event Hubs in Azure Stack Hub kunt u hybride cloudscenario's verwezenlijken.
 
 De Event Hubs-versies (op Azure Stack Hub en op Azure) bieden een hoge functiepariteit. Deze pariteit betekent dat SDK's, voorbeelden, PowerShell, CLI en portalen dezelfde ervaring bieden met weinig verschillen. 
 
-Event Hubs in Stack is beschikbaar tijdens de openbare preview. Zie het [overzicht voor Event Hubs in Azure Stack Hub](https://docs.microsoft.com/azure-stack/user/event-hubs-overview) voor meer informatie.
+Event Hubs in Stack is beschikbaar tijdens de openbare preview. Zie het [overzicht voor Event Hubs in Azure Stack Hub](/azure-stack/user/event-hubs-overview) voor meer informatie.
 
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -94,5 +94,3 @@ Raadpleeg de volgende artikelen voor meer informatie over Event Hubs:
 
 - [Overzicht van functies van Event Hubs](event-hubs-features.md)
 - [Veelgestelde vragen](event-hubs-faq.md).
-
-

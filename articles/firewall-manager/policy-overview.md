@@ -7,12 +7,12 @@ services: firewall-manager
 ms.topic: overview
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 88b7dc60b865325ef7dcd9e79015fdee10b4f9a2
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 6e532634fb40eee100e73a333ac6aa7e0a79cf3c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563707"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521646"
 ---
 # <a name="azure-firewall-manager-policy-overview"></a>Overzicht van Azure Firewall Manager-beleid
 
@@ -47,8 +47,8 @@ Met overname worden alle wijzigingen in het bovenliggende beleid automatisch toe
 Azure Firewall biedt ondersteuning voor zowel traditionele regels als beleidsregels. In de volgende tabel worden beleidsregels en regels vergeleken:
 
 
-|         |Beleid  |Regels  |
-|---------|---------|---------|
+| Onderwerp | Beleid  | Regels |
+| ------- | ------- | ----- |
 |Contains     |NAT-, netwerk-, en toepassingsregels, aangepaste DNS- en DNS-proxyinstellingen, IP-groepen, en instellingen voor Bedreigingsinformatie (inclusief acceptatielijst)|NAT-, netwerk-, en toepassingsregels, aangepaste DNS- en DNS-proxyinstellingen, IP-groepen, en instellingen voor Bedreigingsinformatie (inclusief acceptatielijst)|
 |Beschermt     |Virtuele hubs en virtuele netwerken|Alleen virtuele netwerken|
 |Portalervaring     |Centraal beheer met behulp van Firewall Manager|Zelfstandige firewallervaring|

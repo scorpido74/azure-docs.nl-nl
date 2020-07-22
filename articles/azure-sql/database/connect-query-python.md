@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: bcd5a17cce9afea3325f90cb6fbc89887ada55e5
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 34d98905c9f068944ca9c149afa8fafa28a4cb68
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84554544"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515067"
 ---
 # <a name="quickstart-use-python-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Quickstart: Python gebruiken om een query uit te voeren op een database in Azure SQL Database of Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -30,7 +30,7 @@ U hebt het volgende nodig om deze quickstart te voltooien:
 
 - Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 
-  || SQL Database | SQL Managed Instance | SQL Server op virtuele Azure-machine |
+  | Bewerking | SQL Database | SQL Managed Instance | SQL Server op virtuele Azure-machine |
   |:--- |:--- |:---|:---|
   | Maken| [Portal](single-database-create-quickstart.md) | [Portal](../managed-instance/instance-create-quickstart.md) | [Portal](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
   || [CLI](scripts/create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
@@ -104,15 +104,16 @@ Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de da
    server = '<server>.database.windows.net'
    database = '<database>'
    username = '<username>'
-   password = '<password>'
+   password = '<password>'   
    driver= '{ODBC Driver 17 for SQL Server}'
-   cnxn = pyodbc.connect('DRIVER='+driver+';SERVER='+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
-   cursor = cnxn.cursor()
-   cursor.execute("SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName FROM [SalesLT].[ProductCategory] pc JOIN [SalesLT].[Product] p ON pc.productcategoryid = p.productcategoryid")
-   row = cursor.fetchone()
-   while row:
-       print (str(row[0]) + " " + str(row[1]))
-       row = cursor.fetchone()
+   
+   with pyodbc.connect('DRIVER='+driver+';SERVER='+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password) as conn:
+       with conn.cursor() as cursor:
+           cursor.execute("SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName FROM [SalesLT].[ProductCategory] pc JOIN [SalesLT].[Product] p ON pc.productcategoryid = p.productcategoryid")
+           row = cursor.fetchone()
+           while row:
+               print (str(row[0]) + " " + str(row[1]))
+               row = cursor.fetchone()
    ```
    
 

@@ -18,12 +18,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 2a2db9f7342b984a8c539a345f8e5038caf5ff85
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: fcf8eb8cd110fab4f1fc85a317f1dd491d21c091
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170272"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529944"
 ---
 # <a name="tutorial-send-push-notifications-to-windows-phone-apps-using-notification-hubs"></a>Zelfstudie: Pushmeldingen verzenden naar Windows Phone-apps met Notification Hubs
 
@@ -65,7 +65,7 @@ Het voltooien van deze zelfstudie is een vereiste voor alle andere Notification 
     De hub is nu gemaakt en geconfigureerd om niet-geverifieerde meldingen voor Windows Phone te verzenden.
 
     > [!NOTE]
-    > In deze zelfstudie wordt MPNS in niet-geverifieerde modus gebruikt. Bij de niet-geverifieerde MPNS-modus gelden beperkingen voor meldingen die u naar elk kanaal kunt verzenden. Notification Hubs ondersteunt de [geverifieerde MPNS-modus](https://msdn.microsoft.com/library/windowsphone/develop/ff941099.aspx) doordat u uw certificaat kunt uploaden.
+    > In deze zelfstudie wordt MPNS in niet-geverifieerde modus gebruikt. Bij de niet-geverifieerde MPNS-modus gelden beperkingen voor meldingen die u naar elk kanaal kunt verzenden. Notification Hubs ondersteunt de [geverifieerde MPNS-modus](/previous-versions/windows/apps/ff941099(v=vs.105)) doordat u uw certificaat kunt uploaden.
 
 ## <a name="create-a-windows-phone-application"></a>Een Windows Phone-toepassing maken
 
@@ -117,7 +117,7 @@ In deze sectie maakt u een Windows Phone-toepassing die zichzelf bij uw Notifica
     ```
 
    > [!NOTE]
-   > De waarde `MyPushChannel` is een index die wordt gebruikt om een bestaand kanaal te zoeken in de collectie [HttpNotificationChannel](https://msdn.microsoft.com/library/windows/apps/microsoft.phone.notification.httpnotificationchannel.aspx). Als het kanaal niet wordt gevonden, maakt u een nieuwe vermelding met die naam.
+   > De waarde `MyPushChannel` is een index die wordt gebruikt om een bestaand kanaal te zoeken in de collectie [HttpNotificationChannel](/previous-versions/ff402781(v=vs.110)). Als het kanaal niet wordt gevonden, maakt u een nieuwe vermelding met die naam.
 
     Voeg de naam van uw hub in en de verbindingsreeks met de naam `DefaultListenSharedAccessSignature` die u in de voorgaande sectie hebt genoteerd.
     Met deze code wordt de kanaal-URI voor de app opgehaald uit MPNS en wordt vervolgens die kanaal-URI voor uw Notification Hub geregistreerd. Ook wordt hiermee gegarandeerd dat de kanaal-URI in uw Notification Hub wordt geregistreerd telkens wanneer de toepassing wordt gestart.
@@ -174,10 +174,10 @@ In dit eenvoudige voorbeeld hebt u pushmeldingen uitgezonden naar al uw Windows 
 [213]: ./media/notification-hubs-windows-phone-get-started/notification-hub-create-console-app.png
 
 <!-- URLs. -->
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
-[MPNS authenticated mode]: https://msdn.microsoft.com/library/windowsphone/develop/ff941099(v=vs.105).aspx
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
+[MPNS authenticated mode]: /previous-versions/windows/apps/ff941099(v=vs.105)
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md
-[toast catalog]: https://msdn.microsoft.com/library/windowsphone/develop/jj662938(v=vs.105).aspx
-[tile catalog]: https://msdn.microsoft.com/library/windowsphone/develop/hh202948(v=vs.105).aspx
+[toast catalog]: /previous-versions/windows/apps/jj662938(v=vs.105)
+[tile catalog]: /previous-versions/windows/apps/hh202948(v=vs.105)
 [Notification Hubs - Windows Phone Silverlight-zelfstudie]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari

@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: 4d061e7a105fc73f7f44c8336df82ff363ee6ded
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 192219a804365957e9eaa0577019ff18d75861bf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203755"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498505"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Wat is er nieuw de documentatie van Azure Monitor?
 
@@ -67,21 +67,21 @@ In dit artikel vindt u een lijst met Azure Monitor-artikelen die nieuw of aanzie
 - [Azure-activiteitenlogboek verzenden naar Log Analytics-werkruimte met behulp van Azure Resource Manager-sjabloon](learn/quick-collect-activity-log-arm.md) - Nieuw artikel.
 
 #### <a name="new-and-updated-articles-from-restructure-and-consolidation-of-platform-log-content"></a>Nieuwe en bijgewerkte artikelen over de herstructurering en consolidatie van de logboekinhoud van het platform
-- [Azure-resourcelogboeken archiveren naar opslagaccount](platform/resource-logs-collect-storage.md)
+- [Azure-resourcelogboeken archiveren naar opslagaccount](./platform/resource-logs.md#send-to-azure-storage)
 - [Azure-gebeurtenisschema in het activiteitenlogboek](platform/activity-log-schema.md)
 - [Azure-activiteitenlogboek](platform/activity-log.md)
 - [CLI-voorbeelden van Azure Monitor](samples/cli-samples.md)
 - [Azure Monitor PowerShell-voorbeelden](samples/powershell-samples.md)
 - [Azure Monitoring REST API-overzicht](platform/rest-api-walkthrough.md)
-- [Ondersteunde services en schema's voor Azure-resourcelogboeken](platform/diagnostic-logs-schema.md)
+- [Ondersteunde services en schema's voor Azure-resourcelogboeken](./platform/resource-logs-schema.md)
 - [Azure-resourcelogboeken](platform/resource-logs.md)
-- [Azure-activiteitenlogboek in Azure Monitor verzamelen en analyseren](platform/activity-log-collect.md)
-- [Azure-resourcelogboeken verzamelen in Log Analytics-werkruimte](platform/resource-logs-collect-workspace.md)
+- [Azure-activiteitenlogboek in Azure Monitor verzamelen en analyseren](./platform/activity-log.md)
+- [Azure-resourcelogboeken verzamelen in Log Analytics-werkruimte](./platform/resource-logs.md#send-to-log-analytics-workspace)
 - [Diagnostische instellingen maken om logboeken en metrische gegevens van het platform te verzenden naar verschillende bestemmingen](platform/diagnostic-settings.md)
-- [Azure-activiteitenlogboek exporteren](platform/activity-log-export.md)
+- [Azure-activiteitenlogboek exporteren](./platform/activity-log.md#legacy-collection-methods)
 - [Overzicht van Azure-platformlogboeken](platform/platform-logs-overview.md)
-- [Azure-platformlogboeken naar een event hub streamen](platform/resource-logs-stream-event-hubs.md)
-- [Azure Activity-logboekgebeurtenissen weergeven in Azure Monitor](platform/activity-log-view.md)
+- [Azure-platformlogboeken naar een event hub streamen](./platform/resource-logs.md#send-to-azure-event-hubs)
+- [Azure Activity-logboekgebeurtenissen weergeven in Azure Monitor](./platform/activity-log.md#view-the-activity-log)
 
 ### <a name="virtual-machines"></a>Virtuele machines
 - [Azure Monitor inschakelen voor VM's in het Azure-portal](insights/vminsights-enable-single-vm.md) - Bijgewerkt met Azure Arc.
@@ -155,7 +155,7 @@ In dit artikel vindt u een lijst met Azure Monitor-artikelen die nieuw of aanzie
 
 ### <a name="insights"></a>Inzichten
 - [Azure Monitor voor Azure Cache voor Redis (preview)](insights/redis-cache-insights-overview.md): nieuw artikel.
-- [Sleutelkluis bewaken met Azure Monitor voor Key Vault (preview)](insights/key-vaults-insights-overview.md): nieuw artikel.
+- [Sleutelkluis bewaken met Azure Monitor voor Key Vault (preview)](./insights/key-vault-insights-overview.md): nieuw artikel.
 
 ### <a name="logs"></a>Logboeken
 - [Logboekanalyse maken en configureren met PowerShell](platform/powershell-workspace-configuration.md): sectie probleemoplossing toegevoegd.
@@ -280,7 +280,7 @@ In dit artikel vindt u een lijst met Azure Monitor-artikelen die nieuw of aanzie
 
 ### <a name="platform-logs"></a>Platformlogboeken
 
-- [Azure-activiteitenlogboek verzamelen en analyseren in Azure Monitor](platform/activity-log-collect.md): herschreven voor betere uitleg van verzamelen van activiteitenlogboek met diagnostische instellingen.
+- [Azure-activiteitenlogboek verzamelen en analyseren in Azure Monitor](./platform/activity-log.md): herschreven voor betere uitleg van verzamelen van activiteitenlogboek met diagnostische instellingen.
 
 ### <a name="virtual-machines"></a>Virtuele machines
 
@@ -326,7 +326,7 @@ Meerdere updates als onderdeel van het herschrijven van inhoud van extensie voor
 
 #### <a name="azure-monitor-for-containers"></a>Azure Monitor voor containers
 
-- [Azure Active Directory integreren met Azure Kubernetes Service](../aks/azure-ad-integration.md): opmerking toegevoegd voor het maken van een clienttoepassing om RBAC-enabled cluster te ondersteunen voor de ondersteuning van Azure Monitor voor containers.
+- [Azure Active Directory integreren met Azure Kubernetes Service](../aks/azure-ad-integration-cli.md): opmerking toegevoegd voor het maken van een clienttoepassing om RBAC-enabled cluster te ondersteunen voor de ondersteuning van Azure Monitor voor containers.
 
 #### <a name="azure-monitor-for-vms"></a>Azure Monitor voor virtuele machines
 
@@ -412,8 +412,8 @@ Meerdere nieuwe artikelen voor conversiegids View Designer naar werkmappen.
 
 ### <a name="platform-logs"></a>Platformlogboeken
 
-- [Azure-activiteitenlogboek verzamelen met diagnostische instellingen, Azure Monitor](platform/diagnostic-settings-legacy.md): extra informatie over gewijzigde eigenschappen.
-- [Azure-activiteitenlogboek exporteren](platform/activity-log-export.md): bijgewerkt voor gebruikersinterface. 
+- [Azure-activiteitenlogboek verzamelen met diagnostische instellingen, Azure Monitor](./platform/activity-log.md): extra informatie over gewijzigde eigenschappen.
+- [Azure-activiteitenlogboek exporteren](./platform/activity-log.md#legacy-collection-methods): bijgewerkt voor gebruikersinterface. 
 
 ## <a name="december-2019"></a>December 2019
 
@@ -450,7 +450,7 @@ Meerdere nieuwe artikelen voor conversiegids View Designer naar werkmappen.
 
 ### <a name="insights-and-solutions"></a>Inzicht en oplossingen
 
-- [Veelgestelde vragen over Azure Monitor voor containers](insights/container-insights-faq.md): vraag toegevoegd over velden installatiekopie en naam.
+- [Veelgestelde vragen over Azure Monitor voor containers](./faq.md): vraag toegevoegd over velden installatiekopie en naam.
 - [Azure SQL-analyseoplossing in Azure Monitor](insights/azure-sql.md): ondersteuning bijgewerkt voor database wacht op beheerd exemplaar.
 - [Gegevensverzameling agents Azure Monitor voor containers configureren](insights/container-insights-agent-config.md): instelling toegevoegd voor enrich_container_logs.
 - [Hybride Kubernetes-clusters configureren met Azure Monitor voor containers](insights/container-insights-hybrid-setup.md): sectie probleemoplossing toegevoegd.
@@ -474,19 +474,19 @@ Meerdere nieuwe artikelen voor conversiegids View Designer naar werkmappen.
 
 Meerdere artikelen bijgewerkt als onderdeel van herstructurering van platformlogboeken op basis van nieuwe functie voor configuratie van activiteitenlogboek met diagnostische instellingen.
 
-- [Azure-resourcelogboeken archiveren naar opslagaccount](platform/resource-logs-collect-storage.md)
+- [Azure-resourcelogboeken archiveren naar opslagaccount](./platform/resource-logs.md#send-to-azure-storage)
 - [Azure-gebeurtenisschema in het activiteitenlogboek](platform/activity-log-schema.md)
 - [Servicebeperkingen van Azure Monitor](service-limits.md)
-- [Azure-activiteitenlogboeken verzamelen en analyseren in Log Analytics-werkruimte](platform/activity-log-collect.md)
-- [Azure-activiteitenlogboek verzamelen met diagnostische instellingen (preview), Azure Monitor](platform/diagnostic-settings-legacy.md)
+- [Azure-activiteitenlogboeken verzamelen en analyseren in Log Analytics-werkruimte](./platform/activity-log.md)
+- [Azure-activiteitenlogboek verzamelen met diagnostische instellingen (preview), Azure Monitor](./platform/activity-log.md)
 - [Azure-activiteitenlogboeken verzamelen in een Log Analytics-werkruimte over Azure-tenants](platform/activity-log-collect-tenants.md)
-- [Azure-resourcelogboeken verzamelen in Log Analytics-werkruimte](platform/resource-logs-collect-workspace.md)
+- [Azure-resourcelogboeken verzamelen in Log Analytics-werkruimte](./platform/resource-logs.md#send-to-log-analytics-workspace)
 - [Diagnostische instellingen in Azure maken met Resource Manager-sjabloon](platform/diagnostic-settings-template.md)
 - [Diagnostische instelling maken die logboeken metrische gegevens verzamelt in Azure](platform/diagnostic-settings.md)
-- [Azure-activiteitenlogboek exporteren](platform/activity-log-export.md)
+- [Azure-activiteitenlogboek exporteren](./platform/activity-log.md#legacy-collection-methods)
 - [Overzicht van Azure-platformlogboeken](platform/platform-logs-overview.md)
 - [Bewakingsgegevens van Azure naar een event hub streamen](platform/stream-monitoring-data-event-hubs.md)
-- [Azure-platformlogboeken naar een event hub streamen](platform/resource-logs-stream-event-hubs.md)
+- [Azure-platformlogboeken naar een event hub streamen](./platform/resource-logs.md#send-to-azure-event-hubs)
 
 ### <a name="quickstarts-and-tutorials"></a>Snelstarts en zelfstudies
 

@@ -8,12 +8,12 @@ ms.author: thvankra
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/18/2020
-ms.openlocfilehash: 88ec29ef1a0c0766a6c50af218e66f5fec3b9087
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: e274db2983c476c2428fdd0d25f3dff9bbc5e6ad
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118420"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523873"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-sdk-and-azure-cosmos-db"></a>Quickstart: Een Cassandra-app bouwen met .NET SDK en Azure Cosmos DB
 
@@ -120,7 +120,7 @@ Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en ko
 
 1. Selecteer **Verbindingsreeks** in de [Azure-portal](https://portal.azure.com/).
 
-1. Gebruik de ![knop Kopiëren](./media/create-cassandra-dotnet/copy.png) aan de rechterkant van het scherm om de waarde USERNAME te kopiëren.
+1. Gebruik de knop :::image type="icon" source="./media/create-cassandra-dotnet/copy.png"::: aan de rechterkant van het scherm om de USERNAME-waarde te kopiëren.
 
    :::image type="content" source="./media/create-cassandra-dotnet/keys.png" alt-text="Een toegangssleutel in Azure Portal bekijken en kopiëren op de pagina Verbindingsreeks":::
 

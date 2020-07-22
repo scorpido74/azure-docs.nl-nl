@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 11207dceb29c779c081c140ee8cd362d8a217acf
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: dd042b28035b5e9a4b18041d6c1a81f77cfd4ea7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856743"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527401"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Overzicht van automatisch schalen met virtuele-machineschaalsets van Azure
 Met een virtuele-machineschaalset van Azure kunt u automatisch het aantal VM-exemplaren vergroten of verkleinen waarop uw toepassing wordt uitgevoerd. Dit geautomatiseerde en elastische gedrag vermindert de overhead die nodig is voor het controleren en optimaliseren van de prestaties van uw toepassing. U stelt regels op die de aanvaardbare prestaties bepalen voor een positieve klantervaring. Wanneer deze gedefinieerde drempelwaarden worden bereikt, worden op basis van de regels voor automatisch schalen acties ondernomen om de capaciteit van de schaalset aan te passen. U kunt ook gebeurtenissen plannen om de capaciteit van een schaalset op vaste tijden automatisch te vergroten of verkleinen. In dit artikel vindt u een overzicht van de metrische gegevens over prestaties die beschikbaar zijn en welke acties u met automatisch schalen kunt uitvoeren.
@@ -137,6 +137,6 @@ U kunt met een van de volgende hulpprogramma's regels voor automatisch schalen m
 
 In dit overzicht wordt uitgelegd hoe u regels voor automatisch schalen kunt gebruiken om horizontaal te schalen en het *aantal* VM-exemplaren in uw schaalset te vergroten of verkleinen. U kunt ook verticaal schalen om de *grootte* van VM-exemplaren te vergroten of verkleinen. Zie voor meer informatie [Vertical autoscale with virtual machine scale sets](virtual-machine-scale-sets-vertical-scale-reprovision.md) (Verticaal automatisch schalen met virtuele-machineschaalsets).
 
-Zie [Manage a virtual machine scale set with Azure PowerShell](virtual-machine-scale-sets-windows-manage.md) (Virtuele-machineschaalset beheren met Azure PowerShell) voor meer informatie over het beheren van uw VM-exemplaren.
+Zie [Manage a virtual machine scale set with Azure PowerShell](./virtual-machine-scale-sets-manage-powershell.md) (Virtuele-machineschaalset beheren met Azure PowerShell) voor meer informatie over het beheren van uw VM-exemplaren.
 
-Als u wilt weten hoe u waarschuwingen kunt genereren wanneer uw regels voor automatisch schalen worden geactiveerd, raadpleegt u [Use autoscale actions to send email and webhook alert notifications in Azure Monitor](../azure-monitor/platform/autoscale-webhook-email.md) (Acties voor automatisch schalen gebruiken om waarschuwingen per e-mail of webhooks te verzenden in Azure Monitor). U kunt ook [controlelogboeken gebruiken om waarschuwingen per e-mail of webhooks te verzenden in Azure Monitor](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md).
+Als u wilt weten hoe u waarschuwingen kunt genereren wanneer uw regels voor automatisch schalen worden geactiveerd, raadpleegt u [Use autoscale actions to send email and webhook alert notifications in Azure Monitor](../azure-monitor/platform/autoscale-webhook-email.md) (Acties voor automatisch schalen gebruiken om waarschuwingen per e-mail of webhooks te verzenden in Azure Monitor). U kunt ook [controlelogboeken gebruiken om waarschuwingen per e-mail of webhooks te verzenden in Azure Monitor](../azure-monitor/platform/alerts-log-webhook.md).

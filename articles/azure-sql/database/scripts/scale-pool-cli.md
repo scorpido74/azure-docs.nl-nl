@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/25/2019
-ms.openlocfilehash: 30862a85796fbe4373a88d80d9a6d26c8cf98901
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 01ccf7117cd17118941a00cc0480216bc436bc40
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196737"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514761"
 ---
 # <a name="use-the-azure-cli-to-scale-an-elastic-pool-in-azure-sql-database"></a>Gebruik Azure CLI om een elastische pool te schalen in Azure SQL Database
 
@@ -48,7 +48,7 @@ az group delete --name $resource
 
 In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is een koppeling naar opdracht-specifieke documentatie.
 
-| | |
+| Opdracht | Beschrijving |
 |---|---|
 | [az sql server](/cli/azure/sql/server) | Serveropdrachten. |
 | [az sql db](/cli/azure/sql/db) | Databaseopdrachten. |

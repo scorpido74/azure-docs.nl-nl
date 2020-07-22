@@ -3,12 +3,12 @@ title: 'Zelfstudie: back-ups maken van SAP HANA-databases in virtuele Azure-mach
 description: In deze zelfstudie ontdekt u hoe u een back-up naar een Azure Backup Recovery Services-kluis maakt van SAP HANA-databases die op een virtuele Azure-machine worden uitgevoerd.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 123f27a6e2114ed17cbb5e11b34202c17ba69a2d
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 8f6fa00f65a99798ee105852a269247d717ad75d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84770727"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513265"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Zelfstudie: Een back-up maken van SAP HANA-databases in een Azure-VM
 
@@ -23,7 +23,7 @@ In deze zelfstudie ziet u hoe u een back-up naar een Azure Backup Recovery Servi
 [Hier](sap-hana-backup-support-matrix.md#scenario-support) vindt u alle scenario's die we momenteel ondersteunen.
 
 >[!NOTE]
->[Aan de slag](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db) met de preview voor back-ups van SAP HANA voor RHEL (7.4, 7.6, 7.7 or 8.1). Neem voor verdere vragen contact met ons op via [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com).
+>[Aan de slag]() met de preview voor back-ups van SAP HANA voor RHEL (7.4, 7.6, 7.7 or 8.1). Neem voor verdere vragen contact met ons op via [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -53,13 +53,13 @@ Door deze optie zijn de [IP-bereiken](https://www.microsoft.com/download/details
 
 ### <a name="allow-access-using-nsg-tags"></a>Toegang toestaan met behulp van NSG-tags
 
-Als u NSG gebruikt om de connectiviteit te beperken, moet u de AzureBackup-servicetag gebruiken om uitgaande toegang tot Azure Backup toe te staan. Daarnaast moet u ook connectiviteit voor verificatie en gegevensoverdracht toestaan met behulp van [regels](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) voor Azure AD en Azure Storage. U kunt dit instellen via Azure Portal of via PowerShell.
+Als u NSG gebruikt om de connectiviteit te beperken, moet u de AzureBackup-servicetag gebruiken om uitgaande toegang tot Azure Backup toe te staan. Daarnaast moet u ook connectiviteit voor verificatie en gegevensoverdracht toestaan met behulp van [regels](../virtual-network/security-overview.md#service-tags) voor Azure AD en Azure Storage. U kunt dit instellen via Azure Portal of via PowerShell.
 
 U kunt als volgt een regel maken via de portal:
 
   1. In **Alle services** gaat u naar **Netwerkbeveiligingsgroepen** en selecteert u de netwerkbeveiligingsgroep.
   2. Selecteer de optie **Uitgaande beveiligingsregels** onder **Instellingen**.
-  3. Selecteer **Toevoegen**. Voer alle vereiste details in voor het maken van een nieuwe regel, zoals beschreven in de [instellingen voor beveiligingsregels](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings). Controleer of de optie **Doel** is ingesteld op **Servicetag** en **Doelservicetag** is ingesteld op **AzureBackup**.
+  3. Selecteer **Toevoegen**. Voer alle vereiste details in voor het maken van een nieuwe regel, zoals beschreven in de [instellingen voor beveiligingsregels](../virtual-network/manage-network-security-group.md#security-rule-settings). Controleer of de optie **Doel** is ingesteld op **Servicetag** en **Doelservicetag** is ingesteld op **AzureBackup**.
   4. Klik op **Toevoegen** om de zojuist gemaakt uitgaande beveiligingsregel op te slaan.
 
 U kunt als volgt een regel maken met behulp van PowerShell:
@@ -85,7 +85,7 @@ U kunt als volgt een regel maken met behulp van PowerShell:
  7. De NSG opslaan<br/>
     `Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg`
 
-**Toegang toestaan met behulp van Azure Firewall-tags**. Als u Azure Firewall gebruikt, maakt u een toepassingsregel met behulp van de [FQDN-tag](https://docs.microsoft.com/azure/firewall/fqdn-tags) AzureBackup. Hierdoor is uitgaande toegang tot Azure Backup toegestaan.
+**Toegang toestaan met behulp van Azure Firewall-tags**. Als u Azure Firewall gebruikt, maakt u een toepassingsregel met behulp van de [FQDN-tag](../firewall/fqdn-tags.md) AzureBackup. Hierdoor is uitgaande toegang tot Azure Backup toegestaan.
 
 **Implementeer een HTTP-proxyserver om verkeer te routeren**. Wanneer u een back-up maakt van een SAP HANA-database op een virtuele Azure-machine, gebruikt de back-upextensie op de virtuele machine de HTTPS-API's voor het verzenden van beheeropdrachten naar Azure Backup en gegevens naar Azure Storage. De back-upextensie maakt ook gebruik van Azure AD voor verificatie. Leid het verkeer van de back-upextensie voor deze drie services via de HTTP-proxy. De extensies zijn het enige onderdeel dat wordt geconfigureerd voor toegang tot het openbare internet.
 
@@ -153,7 +153,7 @@ Een Recovery Services-kluis maken:
    * **Naam**: De naam wordt gebruikt om de Recovery Service-kluis te identificeren en deze moet uniek zijn in het Azure-abonnement. Geef een naam op van minimaal 2 en maximaal 50 tekens. De naam moet beginnen met een letter en mag alleen uit letters, cijfers en afbreekstreepjes bestaan. Voor deze zelfstudie hebben we de naam **SAPHanaVault** gebruikt.
    * **Abonnement**: Kies het abonnement dat u wilt gebruiken. Als u lid bent van maar één abonnement, ziet u die naam. Als u niet zeker weet welk abonnement u moet gebruiken, gebruikt u het standaardabonnement (voorgesteld). Er zijn alleen meerdere mogelijkheden als uw werk- of schoolaccount is gekoppeld aan meerdere Azure-abonnementen. Hier hebben we het **SAP HANA Solution Lab-abonnement** gebruikt.
    * **Resourcegroep**: Gebruik een bestaande resourcegroep of maak een nieuwe. Hier hebben we **SAPHANADemo** gebruikt.<br>
-   Als u de lijst met beschikbare resourcegroepen in uw abonnement wilt weergeven, selecteert u **Bestaande gebruiken** en vervolgens selecteert u een resource uit de vervolgkeuzelijst. Als u een nieuwe resourcegroep wilt maken, selecteert u **Nieuwe maken** en voert u de naam in. Zie [Overzicht van Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) voor meer informatie over resourcegroepen.
+   Als u de lijst met beschikbare resourcegroepen in uw abonnement wilt weergeven, selecteert u **Bestaande gebruiken** en vervolgens selecteert u een resource uit de vervolgkeuzelijst. Als u een nieuwe resourcegroep wilt maken, selecteert u **Nieuwe maken** en voert u de naam in. Zie [Overzicht van Azure Resource Manager](../azure-resource-manager/management/overview.md) voor meer informatie over resourcegroepen.
    * **Locatie**: Selecteer de geografische regio voor de kluis. De kluis moet zich in dezelfde regio bevinden als de virtuele machine waarop SAP HANA wordt uitgevoerd. We hebben **US - oost 2** gebruikt.
 
 5. Selecteer **Controleren + maken**.

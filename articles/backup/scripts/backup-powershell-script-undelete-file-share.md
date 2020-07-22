@@ -3,12 +3,12 @@ title: PowerShell-script - Verwijderen van een bestandsshare ongedaan maken
 description: Leer hoe u een Azure PowerShell-script kunt gebruiken om het verwijderen van een per ongeluk verwijderde bestandsshare ongedaan te maken.
 ms.topic: sample
 ms.date: 02/02/2020
-ms.openlocfilehash: 2eb89735a8327e782d8d8a712f4f0d59911540cc
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 199cb4720c2efe03d47fd06ea0cf41eae29d06fa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84121259"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513231"
 ---
 # <a name="powershell-script-to-undelete-an-accidentally-deleted-file-share"></a>PowerShell-script - Verwijderen van een per ongeluk verwijderde bestandsshare ongedaan maken
 
@@ -154,7 +154,7 @@ Restore-DeletedFileShare $sa.Context $FileShareName $DeletedShareVersion
 
 ### <a name="prerequisites"></a>Vereisten
 
-1. Installeer de nieuwste Azure PowerShell Az-modules via [deze koppeling](https://docs.microsoft.com//powershell/azure/install-az-ps?view=azps-3.3.0) voordat u het script uitvoert.
+1. Installeer de nieuwste Azure PowerShell Az-modules via [deze koppeling](//powershell/azure/install-az-ps) voordat u het script uitvoert.
 2. Zorg ervoor dat u de volgende details bij de hand hebt, omdat u deze moet doorgeven als waarden voor verschillende parameters van het script:
 
     * **-SubscriptionId**: id van het abonnement waar de bestandsshare zich bevindt.
@@ -209,4 +209,3 @@ In het volgende voorbeeld wordt het verwijderen van versie *01D5D7F77ACC7864* va
 ```powershell
    .\UnDelete.ps1 -ResourceGroupName afsshare-StorageAccountName afsshare -SubscriptionId f75d8d8b-6735-4697-82e1-1a7a3ff0d5d4 -FileShareName share1 -DeletedShareVersion 01D5D7F77ACC7864
 ```
-

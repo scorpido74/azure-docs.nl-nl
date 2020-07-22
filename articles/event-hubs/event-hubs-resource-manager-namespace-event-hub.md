@@ -4,16 +4,16 @@ description: 'Quickstart: Een Event Hubs-naamruimte met een Event Hub en consume
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/23/2020
-ms.openlocfilehash: 1aa1dc0a4be8c74651a764788184ae1eefe17e75
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 445a52593e95074d9941a1592d688de7eea9c006
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86038086"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522037"
 ---
 # <a name="quickstart-create-an-event-hub-by-using-an-arm-template"></a>Quickstart: Een Event Hub maken met behulp van een ARM-sjabloon
 
-Azure Event Hubs is een big data-platform voor het streamen van gegevens en een gebeurtenisopneemservice die miljoenen gebeurtenissen per seconde kan opnemen en verwerken. Event Hubs kan gebeurtenissen, gegevens of telemetrie die wordt geproduceerd door gedistribueerde software en apparaten verwerken en opslaan. Gegevens die naar een Event Hub worden verzonden, kunnen worden omgezet en opgeslagen via een provider voor realtime analytische gegevens of batchverwerking/opslagadapters. Zie [Overzicht van Event Hubs](event-hubs-about.md) en [Functies van Event Hubs](event-hubs-features.md) voor een gedetailleerd overzicht van Event Hubs. In deze quickstart maakt u een Event Hub met behulp van een [Azure Resource Manager-sjabloon (ARM-sjabloon)](../azure-resource-manager/management/overview.md). U implementeert een ARM-sjabloon om een naamruimte van het type [Event Hubs](event-hubs-what-is-event-hubs.md)te maken met één Event Hub.
+Azure Event Hubs is een big data-platform voor het streamen van gegevens en een gebeurtenisopneemservice die miljoenen gebeurtenissen per seconde kan opnemen en verwerken. Event Hubs kan gebeurtenissen, gegevens of telemetrie die wordt geproduceerd door gedistribueerde software en apparaten verwerken en opslaan. Gegevens die naar een Event Hub worden verzonden, kunnen worden omgezet en opgeslagen via een provider voor realtime analytische gegevens of batchverwerking/opslagadapters. Zie [Overzicht van Event Hubs](event-hubs-about.md) en [Functies van Event Hubs](event-hubs-features.md) voor een gedetailleerd overzicht van Event Hubs. In deze quickstart maakt u een Event Hub met behulp van een [Azure Resource Manager-sjabloon (ARM-sjabloon)](../azure-resource-manager/management/overview.md). U implementeert een ARM-sjabloon om een naamruimte van het type [Event Hubs](./event-hubs-about.md)te maken met één Event Hub.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -107,6 +107,6 @@ In dit artikel hebt u een Event Hubs-naamruimte en een Event Hub in de naamruimt
 
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/templates/template-syntax.md
 [Azure Quickstart Templates]:  https://azure.microsoft.com/documentation/templates/?term=event+hubs
-[Using Azure PowerShell with Azure Resource Manager]: ../powershell-azure-resource-manager.md
-[Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../xplat-cli-azure-resource-manager.md
+[Using Azure PowerShell with Azure Resource Manager]: ../azure-resource-manager/management/manage-resources-powershell.md
+[Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../azure-resource-manager/management/manage-resources-cli.md
 [Event hub and consumer group template]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-event-hubs-create-event-hub-and-consumer-group/

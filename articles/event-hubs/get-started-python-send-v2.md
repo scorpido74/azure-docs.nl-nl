@@ -3,12 +3,12 @@ title: Gebeurtenissen verzenden naar of ontvangen van Azure Event Hubs met behul
 description: Dit artikel bevat een overzicht van het maken van een Python-toepassing waarmee gebeurtenissen worden verzonden naar/ontvangen van Azure Event Hubs met behulp van het nieuwste pakket azure-eventhub versie 5.
 ms.topic: quickstart
 ms.date: 02/11/2020
-ms.openlocfilehash: f47a770975caac7f07e0bfa3181e50a94b6e59ba
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 2203b76d22f2a90e89d6e2c4a849b2c8016df89a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85321674"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521833"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-python-azure-eventhub-version-5"></a>Gebeurtenissen verzenden naar of gebeurtenissen ontvangen van Event Hubs met behulp van Python (azure-eventhub versie 5)
 In deze quickstart ziet u hoe u gebeurtenissen kunt verzenden naar en ontvangen van een Event Hub met behulp van het Python-pakket **azure-eventhub versie 5**.
@@ -80,7 +80,7 @@ In deze sectie maakt u een Python-script voor het verzenden van gebeurtenissen n
 In deze quickstart wordt Azure Blob Storage gebruikt als controlepuntopslag. De controlepuntopslag wordt gebruikt om controlepunten te behouden (dat wil zeggen, de laatste leesposities).  
 
 > [!NOTE]
-> Als u gebruikmaakt van Azure Stack Hub, ondersteunt dat platform mogelijk een andere versie van de Storage Blob-SDK dan die doorgaans beschikbaar is op Azure. Als u bijvoorbeeld [uitvoert op Azure Stack Hub versie 2002](https://docs.microsoft.com/azure-stack/user/event-hubs-overview), is de hoogste beschikbare versie van de Storage-service versie 2017-11-09. In dit geval moet u naast de volgende stappen in deze sectie ook code toevoegen om de API-versie van de Storage-service te richten op 2017-11-09. Zie de [synchrone](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py) en [asynchrone](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py) voorbeelden in GitHub voor een voorbeeld van het instellen van een specifieke versie van de Storage-API. Voor meer informatie over de versies van de Azure Storage-service die in Azure Stack Hub worden ondersteund, raadpleegt u [Azure Stack Hub-opslag: Verschillen en overwegingen](https://docs.microsoft.com/azure-stack/user/azure-stack-acs-differences).
+> Als u gebruikmaakt van Azure Stack Hub, ondersteunt dat platform mogelijk een andere versie van de Storage Blob-SDK dan die doorgaans beschikbaar is op Azure. Als u bijvoorbeeld [uitvoert op Azure Stack Hub versie 2002](/azure-stack/user/event-hubs-overview), is de hoogste beschikbare versie van de Storage-service versie 2017-11-09. In dit geval moet u naast de volgende stappen in deze sectie ook code toevoegen om de API-versie van de Storage-service te richten op 2017-11-09. Zie de [synchrone](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py) en [asynchrone](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py) voorbeelden in GitHub voor een voorbeeld van het instellen van een specifieke versie van de Storage-API. Voor meer informatie over de versies van de Azure Storage-service die in Azure Stack Hub worden ondersteund, raadpleegt u [Azure Stack Hub-opslag: Verschillen en overwegingen](/azure-stack/user/azure-stack-acs-differences).
 
 
 ### <a name="create-an-azure-storage-account-and-a-blob-container"></a>Een Azure-opslagaccount en een blobcontainer maken

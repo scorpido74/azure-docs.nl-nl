@@ -3,12 +3,12 @@ title: Gebeurtenissen verzenden of ontvangen van Azure Event Hubs met behulp van
 description: Dit artikel bevat een overzicht van het maken van een JavaScript-toepassing waarmee gebeurtenissen worden verzonden naar/ontvangen van Azure Event Hubs met behulp van het nieuwste pakket azure/event-hubs versie 5.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: ad9a78aa48ee0d4c01e2748b8b52192e259add7b
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 7ec97d07843a9844387ad1038c075ed55e304a2c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85312936"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521884"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs-version-5"></a>Gebeurtenissen verzenden naar of gebeurtenissen ontvangen van Event Hubs met behulp van JavaScript (azure/event-hubs versie 5)
 In deze quickstart ziet u hoe u gebeurtenissen kunt verzenden naar en ontvangen van een Event Hub met behulp van het JavaScript-pakket **azure/event-hubs versie 5**. 
@@ -106,7 +106,7 @@ Gefeliciteerd! U hebt nu gebeurtenissen verzonden naar een Event Hub.
 In deze sectie ontvangt u gebeurtenissen van een Event Hub met behulp van een controlepuntarchief voor Azure Blob Storage-opslag in een Java script-toepassing. Er worden in een Azure Storage-blob regelmatig controlepunten voor metagegevens uitgevoerd voor ontvangen berichten. Met deze aanpak kunt u later eenvoudig berichten blijven ontvangen vanaf de plek waar u was gebleven.
 
 > [!NOTE]
-> Als u gebruikmaakt van Azure Stack Hub, ondersteunt dat platform mogelijk een andere versie van de Storage Blob-SDK dan die doorgaans beschikbaar is op Azure. Als u bijvoorbeeld [uitvoert op Azure Stack Hub versie 2002](https://docs.microsoft.com/azure-stack/user/event-hubs-overview), is de hoogste beschikbare versie van de Storage-service versie 2017-11-09. In dit geval moet u naast de volgende stappen in deze sectie ook code toevoegen om de API-versie van de Storage-service te richten op 2017-11-09. Bekijk de [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsWithApiSpecificStorage.js)- en [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript/src/receiveEventsWithApiSpecificStorage.ts)-voorbeelden in GitHub voor een voorbeeld van het instellen van een specifieke versie van de Storage-API. Voor meer informatie over de versies van de Azure Storage-service die in Azure Stack Hub worden ondersteund, raadpleegt u [Azure Stack Hub-opslag: Verschillen en overwegingen](https://docs.microsoft.com/azure-stack/user/azure-stack-acs-differences).
+> Als u gebruikmaakt van Azure Stack Hub, ondersteunt dat platform mogelijk een andere versie van de Storage Blob-SDK dan die doorgaans beschikbaar is op Azure. Als u bijvoorbeeld [uitvoert op Azure Stack Hub versie 2002](/azure-stack/user/event-hubs-overview), is de hoogste beschikbare versie van de Storage-service versie 2017-11-09. In dit geval moet u naast de volgende stappen in deze sectie ook code toevoegen om de API-versie van de Storage-service te richten op 2017-11-09. Bekijk de [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsWithApiSpecificStorage.js)- en [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript/src/receiveEventsWithApiSpecificStorage.ts)-voorbeelden in GitHub voor een voorbeeld van het instellen van een specifieke versie van de Storage-API. Voor meer informatie over de versies van de Azure Storage-service die in Azure Stack Hub worden ondersteund, raadpleegt u [Azure Stack Hub-opslag: Verschillen en overwegingen](/azure-stack/user/azure-stack-acs-differences).
 
 
 ### <a name="create-an-azure-storage-account-and-a-blob-container"></a>Een Azure-opslagaccount en een blobcontainer maken

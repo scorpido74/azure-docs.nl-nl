@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 050f95ac98ce1ab36dc4ca537db458e133581925
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 5caeb9ff5c289343e1869a55808bde7fbe035479
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746050"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517549"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Zelfstudie: Een winkelzoeker maken met behulp van Azure Maps
 
@@ -35,7 +35,7 @@ Spring vooruit naar het [live-winkelzoekervoorbeeld](https://azuremapscodesample
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor u de stappen in deze zelfstudie uitvoert, moet u eerst een Azure Maps-account maken en uw primaire sleutel (abonnementssleutel) ophalen. Volg de instructies in [Een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps) om een abonnement voor een Azure Maps-account te maken met prijscategorie S1, en volg de stappen in [Primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account) om de primaire sleutel voor uw account op te halen. Zie [Verificatie beheren in Azure Maps](how-to-manage-authentication.md) voor meer informatie over verificatie in Azure Maps.
+Voor u de stappen in deze zelfstudie uitvoert, moet u eerst een Azure Maps-account maken en uw primaire sleutel (abonnementssleutel) ophalen. Volg de instructies in [Een account maken](quick-demo-map-app.md#create-an-azure-maps-account) om een abonnement voor een Azure Maps-account te maken met prijscategorie S1, en volg de stappen in [Primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account) om de primaire sleutel voor uw account op te halen. Zie [Verificatie beheren in Azure Maps](how-to-manage-authentication.md) voor meer informatie over verificatie in Azure Maps.
 
 ## <a name="design"></a>Ontwerp
 
