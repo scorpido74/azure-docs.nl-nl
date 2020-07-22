@@ -3,12 +3,12 @@ title: Gebeurtenissen verzenden of ontvangen van Azure Event Hubs met behulp van
 description: Dit artikel bevat een overzicht van het maken van een .NET Core-toepassing die gebeurtenissen verzend/ontvangt naar/van Azure Event Hubs met behulp van het meest recente Azure.Messaging.EventHubs-pakket.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 8752064b59030c04e409e13baf7bf58836ce7ac7
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 9e7f40b0312798667b63c6cf5d02772307dbc2b9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85320152"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537136"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-azuremessagingeventhubs"></a>Gebeurtenissen verzenden naar en ontvangen van Azure Event Hubs - .NET (Azure.Messaging.EventHubs) 
 In deze quickstart ziet u hoe u gebeurtenissen kunt verzenden naar en ontvangen van een Event Hub met behulp van de .NET-bibliotheek **Azure.Messaging.EventHubs**. 
@@ -24,7 +24,7 @@ Als u nog geen ervaring hebt met Azure Event Hubs, raadpleegt u het [Event Hubs-
 Voor het voltooien van deze snelstart moet aan de volgende vereisten worden voldaan:
 
 - **Microsoft Azure-abonnement**. Als u Azure-services wilt gebruiken, met inbegrip van Azure Event Hubs, hebt u een abonnement nodig.  Als u nog geen Azure-account hebt, kunt u zich aanmelden voor een [gratis proefversie](https://azure.microsoft.com/free/) of uw voordelen als MSDN-abonnee gebruiken wanneer u [een account maakt](https://azure.microsoft.com).
-- **Microsoft Visual Studio 2019**. De Azure Event Hubs-clientbibliotheek maakt gebruik van nieuwe functies die in C# 8.0 zijn geïntroduceerd.  U kunt de bibliotheek nog steeds gebruiken met eerdere versies van C#, maar de nieuwe syntaxis is dan niet beschikbaar. Als u gebruik wilt maken van de volledige syntaxis, is het raadzaam om te compileren met [.NET Core SDK](https://dotnet.microsoft.com/download) 3.0 of hoger en de [taalversie](https://docs.microsoft.com/dotnet/csharp/language-reference/configure-language-version#override-a-default) ingesteld op `latest`. Als u Visual Studio gebruikt, weet dan dat de versies vóór Visual Studio 2019 niet compatibel met de hulpprogramma's die nodig zijn om C# 8.0 projecten te bouwen. Visual Studio 2019, met inbegrip van de gratis Community-editie, [hier](https://visualstudio.microsoft.com/vs/) worden gedownload.
+- **Microsoft Visual Studio 2019**. De Azure Event Hubs-clientbibliotheek maakt gebruik van nieuwe functies die in C# 8.0 zijn geïntroduceerd.  U kunt de bibliotheek nog steeds gebruiken met eerdere versies van C#, maar de nieuwe syntaxis is dan niet beschikbaar. Als u gebruik wilt maken van de volledige syntaxis, is het raadzaam om te compileren met [.NET Core SDK](https://dotnet.microsoft.com/download) 3.0 of hoger en de [taalversie](/dotnet/csharp/language-reference/configure-language-version#override-a-default) ingesteld op `latest`. Als u Visual Studio gebruikt, weet dan dat de versies vóór Visual Studio 2019 niet compatibel met de hulpprogramma's die nodig zijn om C# 8.0 projecten te bouwen. Visual Studio 2019, met inbegrip van de gratis Community-editie, [hier](https://visualstudio.microsoft.com/vs/) worden gedownload.
 - **Een Event Hubs-naamruimte en een Event Hub maken**. In de eerste stap gebruikt u [Azure Portal](https://portal.azure.com) om een naamruimte van het type Event Hubs te maken en de beheerreferenties te verkrijgen die de toepassing nodig heeft om met de Event Hub te communiceren. Volg de procedure in [dit artikel](event-hubs-create.md) om een naamruimte en een Event Hub te maken. Haal vervolgens de **verbindingsreeks voor de Event Hubs-naamruimte** op door de instructies in het artikel te volgen: [Verbindingstekenreeks ophalen](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). U gebruikt de verbindingsreeks later in deze quickstart.
 
 ## <a name="send-events"></a>Gebeurtenissen verzenden 
@@ -109,12 +109,12 @@ In deze sectie ziet u hoe u een .NET Core-consoletoepassing schrijft die met geb
 
 
 > [!NOTE]
-> Als u gebruikmaakt van Azure Stack Hub, ondersteunt dat platform mogelijk een andere versie van de Storage Blob-SDK dan die doorgaans beschikbaar is op Azure. Als u bijvoorbeeld [uitvoert op Azure Stack Hub versie 2002](https://docs.microsoft.com/azure-stack/user/event-hubs-overview), is de hoogste beschikbare versie van de Storage-service versie 2017-11-09. In dit geval moet u naast de volgende stappen in deze sectie ook code toevoegen om de API-versie van de Storage-service te richten op 2017-11-09. Zie [dit voorbeeld op GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs) voor een voorbeeld van hoe u een specifieke versie van Storage-API instelt. Voor meer informatie over de versies van de Azure Storage-service die op Azure Stack Hub worden ondersteund raadpleegt u [Azure Stack Hub-opslag: Verschillen en overwegingen](https://docs.microsoft.com/azure-stack/user/azure-stack-acs-differences).
+> Als u gebruikmaakt van Azure Stack Hub, ondersteunt dat platform mogelijk een andere versie van de Storage Blob-SDK dan die doorgaans beschikbaar is op Azure. Als u bijvoorbeeld [uitvoert op Azure Stack Hub versie 2002](/azure-stack/user/event-hubs-overview), is de hoogste beschikbare versie van de Storage-service versie 2017-11-09. In dit geval moet u naast de volgende stappen in deze sectie ook code toevoegen om de API-versie van de Storage-service te richten op 2017-11-09. Zie [dit voorbeeld op GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs) voor een voorbeeld van hoe u een specifieke versie van Storage-API instelt. Voor meer informatie over de versies van de Azure Storage-service die op Azure Stack Hub worden ondersteund raadpleegt u [Azure Stack Hub-opslag: Verschillen en overwegingen](/azure-stack/user/azure-stack-acs-differences).
 
 ### <a name="create-an-azure-storage-and-a-blob-container"></a>Een Azure Storage en een blobcontainer maken
 In deze quickstart gebruikt u Azure Storage als controlepuntopslag. Volg deze stappen om een Azure Storage-account te maken. 
 
-1. [Een Azure Storage-account maken](/azure/storage/common/storage-account-create?tabs=azure-portal)
+1. [Een Azure Storage-account maken](../storage/common/storage-account-create.md?tabs=azure-portal)
 2. [Een blobcontainer maken](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
 3. [De verbindingsreeks voor het opslagaccount ophalen](../storage/common/storage-configure-connection-string.md)
 

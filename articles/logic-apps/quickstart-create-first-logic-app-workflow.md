@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: 0b3559a27fe9fae6c34b07c648a289d205560bd8
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 2fdb83a61f7eaaefb3fab10af46315893791590c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85321584"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536276"
 ---
 # <a name="quickstart-create-your-first-workflow-by-using-azure-logic-apps---azure-portal"></a>Quickstart: Uw eerste werkstroom maken met Azure Logic Apps - Azure Portal
 
@@ -20,10 +20,10 @@ In deze quickstart worden de basisconcepten geïntroduceerd voor het maken van u
 
 ![Voorbeeld van een logische app-werkstroom op hoog niveau](./media/quickstart-create-first-logic-app-workflow/quickstart-workflow-overview.png)
 
-Voor dit scenario hebt u een Azure-abonnement of [een gratis Azure-account](https://azure.microsoft.com/free/) nodig, en een e-mailaccount van een service die wordt ondersteund door Azure Logic Apps, zoals Office 365 Outlook, Outlook.com of Gmail. [Bekijk hier de lijst met connectors](https://docs.microsoft.com/connectors/) voor andere ondersteunde e-mailservices. In dit voorbeeld maakt de logische app gebruik van een Office 365 Outlook-account. Als u een andere e-mailservice gebruikt, zijn de algemene stappen hetzelfde, maar kan uw gebruikersinterface enigszins verschillen.
+Voor dit scenario hebt u een Azure-abonnement of [een gratis Azure-account](https://azure.microsoft.com/free/) nodig, en een e-mailaccount van een service die wordt ondersteund door Azure Logic Apps, zoals Office 365 Outlook, Outlook.com of Gmail. [Bekijk hier de lijst met connectors](/connectors/) voor andere ondersteunde e-mailservices. In dit voorbeeld maakt de logische app gebruik van een Office 365 Outlook-account. Als u een andere e-mailservice gebruikt, zijn de algemene stappen hetzelfde, maar kan uw gebruikersinterface enigszins verschillen.
 
 > [!IMPORTANT]
-> Als u de Gmail-connector wilt gebruiken, kunnen alleen bedrijfsaccounts van G Suite deze connector zonder beperking in logische apps gebruiken. Als u een Gmail-consumentenaccount hebt, kunt u deze connector alleen gebruiken met specifieke door Google goedgekeurde services, of u kunt [een Google-client-app maken voor verificatie bij uw Gmail-connector](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Zie [Beleid voor gegevensbeveiliging en privacybeleid voor Google-connectors in Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md) voor meer informatie.
+> Als u de Gmail-connector wilt gebruiken, kunnen alleen bedrijfsaccounts van G Suite deze connector zonder beperking in logische apps gebruiken. Als u een Gmail-consumentenaccount hebt, kunt u deze connector alleen gebruiken met specifieke door Google goedgekeurde services, of u kunt [een Google-client-app maken voor verificatie bij uw Gmail-connector](/connectors/gmail/#authentication-and-bring-your-own-application). Zie [Beleid voor gegevensbeveiliging en privacybeleid voor Google-connectors in Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md) voor meer informatie.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
