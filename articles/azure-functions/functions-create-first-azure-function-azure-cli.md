@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: quickstart
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 671404b952156ff6ad20eaf082d7af33058923a3
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: 86be7ec73d8e19597062f3fa3777f3aa422082c3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85100022"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506346"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Quickstart: Een functie in Azure maken die reageert op HTTP-aanvragen
 
@@ -40,7 +40,7 @@ Er is ook een [Versie op basis van Visual Studio Code](functions-create-first-fu
 ::: zone-end  
 ::: zone pivot="programming-language-java"  
 > [!NOTE]
-> Als u liever niet ontwikkelt met Maven, raadpleegt u onze vergelijkbare zelfstudies voor Java-ontwikkelaars met [Gradle](/azure/azure-functions/functions-create-first-java-gradle), [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) en [Visual Studio Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java).
+> Als u liever niet ontwikkelt met Maven, raadpleegt u onze vergelijkbare zelfstudies voor Java-ontwikkelaars met [Gradle](./functions-create-first-java-gradle.md), [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) en [Visual Studio Code](./functions-create-first-function-vs-code.md?pivots=programming-language-java).
 ::: zone-end  
 
 [!INCLUDE [functions-requirements-cli](../../includes/functions-requirements-cli.md)]
@@ -139,7 +139,7 @@ Desgewenst kunt u doorgaan naar [De functie lokaal uitvoeren](#run-the-function-
 
 :::code language="csharp" source="~/functions-docs-csharp/http-trigger-template/HttpExample.cs":::
 
-Het retourobject is een [ActionResult](/dotnet/api/microsoft.aspnetcore.mvc.actionresult) die een antwoordbericht retourneert als een [OkObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.okobjectresult) (200) of een [BadRequestObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.badrequestobjectresult) (400). Zie [Azure Functions HTTP-triggers en -bindingen](/azure/azure-functions/functions-bindings-http-webhook?tabs=csharp) voor meer informatie.
+Het retourobject is een [ActionResult](/dotnet/api/microsoft.aspnetcore.mvc.actionresult) die een antwoordbericht retourneert als een [OkObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.okobjectresult) (200) of een [BadRequestObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.badrequestobjectresult) (400). Zie [Azure Functions HTTP-triggers en -bindingen](./functions-bindings-http-webhook.md?tabs=csharp) voor meer informatie.
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
@@ -169,7 +169,7 @@ Het archetype genereert ook een moduletest voor uw functie. Wanneer u de functie
 
 :::code language="python" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/__init__.py":::
 
-Voor een HTTP-trigger ontvangt de functie aanvraaggegevens in de variabele `req` zoals gedefinieerd in *function.json*. `req` is een instantie van de [azure.functions.HttpRequest-klasse](/python/api/azure-functions/azure.functions.httprequest). Het retourobject, gedefinieerd als `$return` in *function.json*, is een instantie van [azure.functions.HttpResponse-klasse](/python/api/azure-functions/azure.functions.httpresponse). Zie [Azure Functions HTTP-triggers en -bindingen](/azure/azure-functions/functions-bindings-http-webhook?tabs=python) voor meer informatie.
+Voor een HTTP-trigger ontvangt de functie aanvraaggegevens in de variabele `req` zoals gedefinieerd in *function.json*. `req` is een instantie van de [azure.functions.HttpRequest-klasse](/python/api/azure-functions/azure.functions.httprequest). Het retourobject, gedefinieerd als `$return` in *function.json*, is een instantie van [azure.functions.HttpResponse-klasse](/python/api/azure-functions/azure.functions.httpresponse). Zie [Azure Functions HTTP-triggers en -bindingen](./functions-bindings-http-webhook.md?tabs=python) voor meer informatie.
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript"
@@ -179,7 +179,7 @@ Voor een HTTP-trigger ontvangt de functie aanvraaggegevens in de variabele `req`
 
 :::code language="javascript" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-JavaScript/index.js":::
 
-Voor een HTTP-trigger ontvangt de functie aanvraaggegevens in de variabele `req` zoals gedefinieerd in *function.json*. Het retourobject, gedefinieerd als `$return` in *function.json*, is de reactie. Zie [Azure Functions HTTP-triggers en -bindingen](/azure/azure-functions/functions-bindings-http-webhook?tabs=javascript) voor meer informatie.
+Voor een HTTP-trigger ontvangt de functie aanvraaggegevens in de variabele `req` zoals gedefinieerd in *function.json*. Het retourobject, gedefinieerd als `$return` in *function.json*, is de reactie. Zie [Azure Functions HTTP-triggers en -bindingen](./functions-bindings-http-webhook.md?tabs=javascript) voor meer informatie.
 ::: zone-end
 
 ::: zone pivot="programming-language-typescript"

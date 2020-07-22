@@ -5,18 +5,18 @@ ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: mvc, tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: bb9fc07c0c909f1fcec1644175c1dbac1e2bbb57
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 57468a4b4234809ca6293ca39ed54a3934f9a4fc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560922"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506380"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Een functie in Linux maken met een aangepaste container
 
 In deze zelfstudie maakt en implementeert u uw code in Azure Functions als een aangepaste Docker-container met behulp van een Linux-basisinstallatiekopie. Een aangepaste installatiekopie gebruikt u meestal wanneer uw functies een specifieke taalversie nodig hebben of een specifieke afhankelijkheid of configuratie vereisen die niet wordt aangeboden door de ingebouwde installatiekopie.
 
-U kunt ook een standaardcontainer van Azure App Service gebruiken, zoals wordt beschreven in [Create your first function hosted on Linux](functions-create-first-azure-function-azure-cli-linux.md) (Uw eerste functie maken die wordt gehost in Linux). Ondersteunde basisinstallatie kopieën voor Azure Functions vindt u in de [opslagplaats voor basisinstallatiekopieën van Azure Functions](https://hub.docker.com/_/microsoft-azure-functions-base).
+U kunt ook een standaardcontainer van Azure App Service gebruiken, zoals wordt beschreven in [Create your first function hosted on Linux](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python) (Uw eerste functie maken die wordt gehost in Linux). Ondersteunde basisinstallatie kopieën voor Azure Functions vindt u in de [opslagplaats voor basisinstallatiekopieën van Azure Functions](https://hub.docker.com/_/microsoft-azure-functions-base).
 
 In deze zelfstudie leert u het volgende:
 
@@ -409,9 +409,7 @@ SSH maakt veilige communicatie tussen een container en een client mogelijk. Als 
     FROM mcr.microsoft.com/azure-functions/node:2.0-appservice
     ```
     ::: zone-end
-
-    De verschillen tussen de basisinstallatiekopieën worden beschreven in de zelfstudie over [App Services en aangepaste Docker-installatiekopieën](../app-service/containers/tutorial-custom-docker-image.md#enable-ssh-connections).
-
+    
 1. Bouw de installatiekopie opnieuw op met behulp van de opdracht `docker build`, waarbij u `<docker_id>` vervangt door uw Docker-ID:
 
     ```

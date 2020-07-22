@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 60e3529e68183488016e40211730412da8e3e0bb
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 83f83922b3bed19e98566002cbf9ad084ba66cb9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85564618"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496210"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>Quickstart: Aan de slag met Azure Sentinel
 
@@ -91,23 +91,26 @@ U kunt een volledig nieuwe werkmap maken of een ingebouwde werkmap gebruiken als
 
 Met de volgende voorbeeldquery kunt u trends vergelijken van verkeer voor verschillende weken. U kunt eenvoudig aanpassen voor welke apparaatleverancier en gegevensbron u de query wilt uitvoeren. In dit voorbeeld wordt SecurityEvent van Windows gebruikt. U kunt de query aanpassen voor uitvoering op AzureActivity of CommonSecurityLog op elke andere firewall.
 
-     |where DeviceVendor == "Palo Alto Networks":
-      // week over week query
-      SecurityEvent
-      | where TimeGenerated > ago(14d)
-      | summarize count() by bin(TimeGenerated, 1d)
-      | extend Week = iff(TimeGenerated>ago(7d), "This Week", "Last Week"), TimeGenerated = iff(TimeGenerated>ago(7d), TimeGenerated, TimeGenerated + 7d)
-
+```console
+ |where DeviceVendor == "Palo Alto Networks":
+  // week over week query
+  SecurityEvent
+  | where TimeGenerated > ago(14d)
+  | summarize count() by bin(TimeGenerated, 1d)
+  | extend Week = iff(TimeGenerated>ago(7d), "This Week", "Last Week"), TimeGenerated = iff(TimeGenerated>ago(7d), TimeGenerated, TimeGenerated + 7d)
+```
 
 Mogelijk wilt u een query maken die gegevens uit meerdere bronnen combineert. U kunt een query maken om te controleren of Azure Active Directory-auditlogboeken informatie bevatten over nieuwe gebruikers die zojuist zijn gemaakt. Daarna kunt u de logboeken van Azure controleren om na te gaan of deze gebruikers binnen 24 uur nadat ze zijn toegevoegd, hun roltoewijzing hebben gewijzigd. Deze verdachte activiteit zou in dit dashboard worden weergegeven:
 
-    AuditLogs
-    | where OperationName == "Add user"
-    | project AddedTime = TimeGenerated, user = tostring(TargetResources[0].userPrincipalName)
-    | join (AzureActivity
-    | where OperationName == "Create role assignment"
-    | project OperationName, RoleAssignmentTime = TimeGenerated, user = Caller) on user
-    | project-away user1
+```console
+AuditLogs
+| where OperationName == "Add user"
+| project AddedTime = TimeGenerated, user = tostring(TargetResources[0].userPrincipalName)
+| join (AzureActivity
+| where OperationName == "Create role assignment"
+| project OperationName, RoleAssignmentTime = TimeGenerated, user = Caller) on user
+| project-away user1
+```
 
 U kunt verschillende werkmappen maken op basis van de rol van de persoon die de gegevens bekijkt en waarnaar ze op zoek zijn. U kunt bijvoorbeeld een werkmap maken voor uw netwerkbeheerder die de firewallgegevens bevat. U kunt ook werkmappen maken op basis van hoe vaak u deze wilt bekijken, of u nu bepaalde zaken dagelijks wilt controleren en andere items eenmaal per uur. Het laatste is bijvoorbeeld zinvol om adequaat te kunnen reageren bij verdachte Azure AD-aanmeldingen. 
 

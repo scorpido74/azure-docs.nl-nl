@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f15beeee2c5843506f0bf89b4c6d66d77826e152
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 0e5cabdf9c69ead9a2d7f497aceec183cf0be900
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81459885"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509661"
 ---
 # <a name="troubleshoot-a-vms-operating-system-disk"></a>Problemen met de besturingssysteemschijf van een virtuele machine oplossen
 
@@ -36,18 +36,18 @@ Met dit script koppelt u de schijf van het besturingssysteem van een uitgevallen
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-In dit script worden de volgende opdrachten gebruikt voor het maken van een resourcegroep, een virtuele machine en alle gerelateerde resources. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt voor het maken van een resourcegroep, een virtuele machine en alle gerelateerde resources. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [az vm show](https://docs.microsoft.com/cli/azure/vm) | Hiermee wordt een lijst met virtuele machines weergegeven. In dit geval wordt de query-optie gebruikt om de schijf met het besturingssysteem van de virtuele machine op te vragen. Deze waarde wordt vervolgens toegevoegd aan de naam van de variabele 'uri'. |
-| [az vm delete](https://docs.microsoft.com/cli/azure/vm) | Hiermee verwijdert u een virtuele machine. |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm) | Hiermee maakt u een virtuele machine.  |
-| [az vm disk attach](https://docs.microsoft.com/cli/azure/vm/disk) | Hiermee wordt een schijf gekoppeld aan een virtuele machine. |
-| [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm) | Hiermee retourneert u de IP-adressen van een virtuele machine. |
+| [az vm show](/cli/azure/vm) | Hiermee wordt een lijst met virtuele machines weergegeven. In dit geval wordt de query-optie gebruikt om de schijf met het besturingssysteem van de virtuele machine op te vragen. Deze waarde wordt vervolgens toegevoegd aan de naam van de variabele 'uri'. |
+| [az vm delete](/cli/azure/vm) | Hiermee verwijdert u een virtuele machine. |
+| [az vm create](/cli/azure/vm) | Hiermee maakt u een virtuele machine.  |
+| [az vm disk attach](/cli/azure/vm/disk) | Hiermee wordt een schijf gekoppeld aan een virtuele machine. |
+| [az vm list-ip-addresses](/cli/azure/vm) | Hiermee retourneert u de IP-adressen van een virtuele machine. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
+Raadpleeg de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
 
 U kunt extra CLI-scriptvoorbeelden voor virtuele machines vinden in de [Azure-documentatie voor Linux-VM's](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

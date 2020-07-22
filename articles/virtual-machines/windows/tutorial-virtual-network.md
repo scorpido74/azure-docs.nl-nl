@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 80f7ba4a4493299d9d1795631401689f4619d873
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 5ae3f3dd31ad7a98a1b4a3d5ed00b568d1f8ed47
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014624"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508063"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-windows-virtual-machines-with-azure-powershell"></a>Zelfstudie: Virtuele Azure-netwerken voor virtuele Windows-machines maken en beheren met Azure PowerShell
 
@@ -59,13 +59,13 @@ Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek 
 
 Voor deze zelfstudie wordt één virtueel netwerk met twee subnetten gemaakt. Een front-endsubnet voor het hosten van een webtoepassing en een back-endsubnet voor het hosten van een databaseserver.
 
-Voordat u een virtueel netwerk kunt maken, moet u eerst een resourcegroep maken met [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). In het volgende voorbeeld wordt een resourcegroep met de naam *myRGNetwork* gemaakt op de locatie *EastUS*:
+Voordat u een virtueel netwerk kunt maken, moet u eerst een resourcegroep maken met [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). In het volgende voorbeeld wordt een resourcegroep met de naam *myRGNetwork* gemaakt op de locatie *EastUS*:
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName myRGNetwork -Location EastUS
 ```
 
-Maak een subnetconfiguratie genaamd *myFrontendSubnet* met [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig):
+Maak een subnetconfiguratie genaamd *myFrontendSubnet* met [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig):
 
 ```azurepowershell-interactive
 $frontendSubnet = New-AzVirtualNetworkSubnetConfig `
@@ -83,7 +83,7 @@ $backendSubnet = New-AzVirtualNetworkSubnetConfig `
 
 ## <a name="create-virtual-network"></a>Virtueel netwerk maken
 
-Maak een VNET genaamd *myVNet* met *myFrontendSubnet* en *myBackendSubnet* met [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork):
+Maak een VNET genaamd *myVNet* met *myFrontendSubnet* en *myBackendSubnet* met [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork):
 
 ```azurepowershell-interactive
 $vnet = New-AzVirtualNetwork `
@@ -102,7 +102,7 @@ Met een openbaar IP-adres kunnen Azure-resources toegankelijk zijn via internet.
 
 De toewijzingsmethode kan worden ingesteld op statisch. Dit zorgt ervoor dat het IP-adres aan een virtuele machine toegewezen blijft, zelfs bij een status waarin de toewijzing ongedaan is gemaakt. Wanneer u een statisch toegewezen IP-adres gebruikt, kan het IP-adres zelf niet worden opgegeven. Dit wordt toegewezen uit een groep met beschikbare adressen.
 
-Maak een openbaar IP-adres met de naam *myPublicIPAddress* met behulp van [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress):
+Maak een openbaar IP-adres met de naam *myPublicIPAddress* met behulp van [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress):
 
 ```azurepowershell-interactive
 $pip = New-AzPublicIpAddress `
@@ -116,7 +116,7 @@ U kunt de parameter - AllocationMethod wijzigen in `Static` om een statisch open
 
 ## <a name="create-a-front-end-vm"></a>Een front-end virtuele machine maken
 
-Voor communicatie in een virtueel netwerk heeft een VM een virtuele netwerkinterface (NIC) nodig. Maak een NIC met [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface):
+Voor communicatie in een virtueel netwerk heeft een VM een virtuele netwerkinterface (NIC) nodig. Maak een NIC met [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface):
 
 ```azurepowershell-interactive
 $frontendNic = New-AzNetworkInterface `
@@ -127,13 +127,13 @@ $frontendNic = New-AzNetworkInterface `
   -PublicIpAddressId $pip.Id
 ```
 
-Stel met [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) de gebruikersnaam en het wachtwoord in die nodig zijn voor het beheerdersaccount op de VM. U gebruikt deze referenties om verbinding te maken met de VM met extra stappen:
+Stel met [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) de gebruikersnaam en het wachtwoord in die nodig zijn voor het beheerdersaccount op de VM. U gebruikt deze referenties om verbinding te maken met de VM met extra stappen:
 
 ```azurepowershell-interactive
 $cred = Get-Credential
 ```
 
-Maak de VM's met [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm).
+Maak de VM's met [New-AzVM](/powershell/module/az.compute/new-azvm).
 
 ```azurepowershell-interactive
 New-AzVM `
@@ -163,7 +163,7 @@ Alle NSG's bevatten een set met standaardregels. De standaardregels kunnen niet 
 
 ### <a name="create-network-security-groups"></a>Netwerkbeveiligingsgroepen maken
 
-Maak een regel voor inkomend verkeer genaamd *myFrontendNSGRule* om inkomend webverkeer op *myFrontendVM* toe te staan met [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig):
+Maak een regel voor inkomend verkeer genaamd *myFrontendNSGRule* om inkomend webverkeer op *myFrontendVM* toe te staan met [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig):
 
 ```azurepowershell-interactive
 $nsgFrontendRule = New-AzNetworkSecurityRuleConfig `
@@ -193,7 +193,7 @@ $nsgBackendRule = New-AzNetworkSecurityRuleConfig `
   -Access Allow
 ```
 
-Voeg een netwerkbeveiligingsgroep toe genaamd *myFrontendNSG* met [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup):
+Voeg een netwerkbeveiligingsgroep toe genaamd *myFrontendNSG* met [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup):
 
 ```azurepowershell-interactive
 $nsgFrontend = New-AzNetworkSecurityGroup `

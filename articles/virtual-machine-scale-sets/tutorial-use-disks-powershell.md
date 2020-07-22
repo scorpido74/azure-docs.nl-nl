@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 5c82f087505c1634dd621252935c4017687340b2
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: b3b57cd2a2e5d5502f3865eddcdddfac67460dc7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198246"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495021"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>Zelfstudie: Schijven met virtuele-machineschaalset maken en gebruiken met Azure PowerShell
 
@@ -44,12 +44,12 @@ Op het moment dat u een schaalset maakt, worden er automatisch twee schijven aan
 ### <a name="temporary-disk-sizes"></a>Groottes van tijdelijke schijven
 | Type | Veelgebruikte grootten | Maximumgrootte van tijdelijke schijf (GiB) |
 |----|----|----|
-| [Algemeen doel](../virtual-machines/windows/sizes-general.md) | A-, B- en D-serie | 1600 |
-| [Geoptimaliseerde rekenkracht](../virtual-machines/windows/sizes-compute.md) | F-serie | 576 |
-| [Geoptimaliseerd geheugen](../virtual-machines/windows/sizes-memory.md) | D-, E-, G- en M-serie | 6144 |
-| [Geoptimaliseerde opslag](../virtual-machines/windows/sizes-storage.md) | L-serie | 5630 |
-| [GPU](../virtual-machines/windows/sizes-gpu.md) | N-serie | 1440 |
-| [Hoge prestaties](../virtual-machines/windows/sizes-hpc.md) | A- en H-serie | 2000 |
+| [Algemeen doel](../virtual-machines/sizes-general.md) | A-, B- en D-serie | 1600 |
+| [Geoptimaliseerde rekenkracht](../virtual-machines/sizes-compute.md) | F-serie | 576 |
+| [Geoptimaliseerd geheugen](../virtual-machines/sizes-memory.md) | D-, E-, G- en M-serie | 6144 |
+| [Geoptimaliseerde opslag](../virtual-machines/sizes-storage.md) | L-serie | 5630 |
+| [GPU](../virtual-machines/sizes-gpu.md) | N-serie | 1440 |
+| [Hoge prestaties](../virtual-machines/sizes-hpc.md) | A- en H-serie | 2000 |
 
 
 ## <a name="azure-data-disks"></a>Azure-gegevensschijven
@@ -58,12 +58,12 @@ Er kunnen extra gegevensschijven worden toegevoegd voor het installeren van toep
 ### <a name="max-data-disks-per-vm"></a>Max. aantal gegevensschijven per VM
 | Type | Veelgebruikte grootten | Max. aantal gegevensschijven per VM |
 |----|----|----|
-| [Algemeen doel](../virtual-machines/windows/sizes-general.md) | A-, B- en D-serie | 64 |
-| [Geoptimaliseerde rekenkracht](../virtual-machines/windows/sizes-compute.md) | F-serie | 64 |
-| [Geoptimaliseerd geheugen](../virtual-machines/windows/sizes-memory.md) | D-, E-, G- en M-serie | 64 |
-| [Geoptimaliseerde opslag](../virtual-machines/windows/sizes-storage.md) | L-serie | 64 |
-| [GPU](../virtual-machines/windows/sizes-gpu.md) | N-serie | 64 |
-| [Hoge prestaties](../virtual-machines/windows/sizes-hpc.md) | A- en H-serie | 64 |
+| [Algemeen doel](../virtual-machines/sizes-general.md) | A-, B- en D-serie | 64 |
+| [Geoptimaliseerde rekenkracht](../virtual-machines/sizes-compute.md) | F-serie | 64 |
+| [Geoptimaliseerd geheugen](../virtual-machines/sizes-memory.md) | D-, E-, G- en M-serie | 64 |
+| [Geoptimaliseerde opslag](../virtual-machines/sizes-storage.md) | L-serie | 64 |
+| [GPU](../virtual-machines/sizes-gpu.md) | N-serie | 64 |
+| [Hoge prestaties](../virtual-machines/sizes-hpc.md) | A- en H-serie | 64 |
 
 
 ## <a name="vm-disk-types"></a>Typen VM-schijven
@@ -135,7 +135,7 @@ Update-AzVmss `
 ## <a name="prepare-the-data-disks"></a>De gegevensschijven voorbereiden
 De schijven die worden gemaakt en die worden gekoppeld aan de VM-exemplaren in uw schaalset zijn RAW-schijven. U moet dit type schijven voorbereiden voordat u ze kunt gebruiken met uw gegevens en toepassingen. Dit doet u door een partitie en een bestandssysteem te maken en de schijven vervolgens te koppelen.
 
-Als u dit proces wilt automatiseren voor meerdere VM-exemplaren in een schaalset, kunt u de aangepaste scriptextensie van Azure gebruiken. Met deze extensie kunt u scripts lokaal uitvoeren op elk VM-exemplaar, bijvoorbeeld om gekoppelde gegevensschijven voor te bereiden. Zie voor meer informatie het [overzicht van de aangepaste scriptextensie](../virtual-machines/windows/extensions-customscript.md).
+Als u dit proces wilt automatiseren voor meerdere VM-exemplaren in een schaalset, kunt u de aangepaste scriptextensie van Azure gebruiken. Met deze extensie kunt u scripts lokaal uitvoeren op elk VM-exemplaar, bijvoorbeeld om gekoppelde gegevensschijven voor te bereiden. Zie voor meer informatie het [overzicht van de aangepaste scriptextensie](../virtual-machines/extensions/custom-script-windows.md).
 
 
 In het volgende voorbeeld wordt met [Add-AzVmssExtension](/powershell/module/az.compute/Add-AzVmssExtension) op elk VM-exemplaar een voorbeeldscript uit een GitHub-repository uitgevoerd waarmee alle gekoppelde RAW-gegevensschijven worden voorbereid:

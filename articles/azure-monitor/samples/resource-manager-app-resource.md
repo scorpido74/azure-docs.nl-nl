@@ -6,12 +6,12 @@ ms.topic: sample
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/08/2020
-ms.openlocfilehash: 82032c6a5ac8ec65265ffb44f896be6cea8fe4ce
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: d7a8a7b7fa75d7d9bb4dc45a3432370bac4cb4d6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86208855"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498641"
 ---
 # <a name="resource-manager-template-samples-for-creating-application-insights-resources"></a>Voorbeelden van Resource Manager-sjablonen voor het maken van Application Insights-resources
 
@@ -21,7 +21,7 @@ In dit artikel vindt u voorbeelden van [Azure Resource Manager-sjablonen](../../
 
 ## <a name="classic-application-insights-resource"></a>Klassieke Application Insights-resource
 
-In het volgende voorbeeld wordt een [klassieke Application Insights-resource](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) gemaakt. 
+In het volgende voorbeeld wordt een [klassieke Application Insights-resource](../app/create-new-resource.md) gemaakt. 
 
 ### <a name="template-file"></a>Sjabloonbestand
 
@@ -107,7 +107,7 @@ In het volgende voorbeeld wordt een [klassieke Application Insights-resource](ht
 
 ## <a name="workspace-based-application-insights-resource"></a>Op werkruimte gebaseerde Application Insights-resource 
 
-In het volgende voorbeeld wordt een Application Insights-resource [op basis van een werkruimte](https://docs.microsoft.com/azure/azure-monitor/app/create-workspace-resource) gemaakt. Op werkruimte gebaseerde Application Insights is momenteel in **preview**. 
+In het volgende voorbeeld wordt een Application Insights-resource [op basis van een werkruimte](../app/create-workspace-resource.md) gemaakt. Op werkruimte gebaseerde Application Insights is momenteel in **preview**. 
 
 
 ### <a name="template-file"></a>Sjabloonbestand

@@ -3,12 +3,12 @@ title: 'Zelfstudie: Meer informatie over toegang tot uw privécloud'
 description: Meer informatie over het openen van een AVS-privécloud (Azure VMware-oplossing)
 ms.topic: tutorial
 ms.date: 05/04/2020
-ms.openlocfilehash: 332b1b01f05ca97b03264201384ee38ac266470f
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 32dc5c173789996d2559eda1153b1509e10e5984
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873603"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497961"
 ---
 # <a name="tutorial-learn-how-to-access-an-azure-vmware-solution-avs-private-cloud"></a>Zelfstudie: Meer informatie over het openen van een AVS-privécloud (Azure VMware-oplossing)
 
@@ -43,7 +43,7 @@ Voer de vereiste gegevens in de velden in en selecteer **Controleren + maken**. 
 | **Gebruikersnaam** | Voer de gebruikersnaam in voor aanmelding bij de virtuele machine. |
 | **Wachtwoord** | Voer het wachtwoord in om u aan te melden bij de virtuele machine. |
 | **Wachtwoord bevestigen** | Voer het wachtwoord in om u aan te melden bij de virtuele machine. |
-| **Openbare binnenkomende poorten** | Selecteer **Geen**. Als u Geen selecteert, kunt u [JIT-toegang](../security-center/security-center-just-in-time.md#configure-jit-access-from-an-azure-vms-page-) gebruiken om de toegang tot de virtuele machine alleen te beheren wanneer u toegang wilt.  |
+| **Openbare binnenkomende poorten** | Selecteer **Geen**. Als u Geen selecteert, kunt u [JIT-toegang](../security-center/security-center-just-in-time.md#jit-configure) gebruiken om de toegang tot de virtuele machine alleen te beheren wanneer u toegang wilt.  |
 
 Nadat u de juiste informatie hebt ingevoerd, klikt u op **Controleren + maken**. Wanneer de validatie is geslaagd, selecteert u **Maken** om het proces voor het maken van de virtuele machine te starten.
 
