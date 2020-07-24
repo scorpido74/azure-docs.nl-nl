@@ -7,11 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 5477eea12ee41bae42365555e38aa95ca0faeb3a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 318656a779aa5ba2279f075fcc44589fe2039682
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987099"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87009489"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>Een VPN-gatewayverbinding tussen VNets configureren met behulp van PowerShell
 
@@ -80,7 +81,7 @@ Voor deze oefening kunt u configuraties combineren of alleen de configuratie kie
 
 * Omdat het Maxi maal 45 minuten duurt om een gateway te maken, Azure Cloud Shell time-out tijdens deze oefening. U kunt Cloud Shell opnieuw opstarten door in de linkerbovenhoek van de Terminal te klikken. Zorg ervoor dat u alle variabelen opnieuw declareert wanneer u de Terminal opnieuw opstart.
 
-* Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview)als u liever de nieuwste versie van de module Azure PowerShell lokaal installeert.
+* Zie [Azure PowerShell installeren en configureren](/powershell/azure/)als u liever de nieuwste versie van de module Azure PowerShell lokaal installeert.
 
 ### <a name="step-1---plan-your-ip-address-ranges"></a><a name="Step1"></a>Stap 1: De IP-adresbereiken plannen
 
@@ -363,7 +364,7 @@ Deze stap moet worden uitgevoerd in de context van het nieuwe abonnement. Dit de
    ```azurepowershell-interactive
    Select-AzSubscription -SubscriptionName $Sub5
    ```
-3. Maak een nieuwe resourcegroep.
+3. Een nieuwe resourcegroep maken.
 
    ```azurepowershell-interactive
    New-AzResourceGroup -Name $RG5 -Location $Location5

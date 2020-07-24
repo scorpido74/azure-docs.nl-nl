@@ -3,11 +3,12 @@ title: Veelgestelde vragen over live video Analytics op IoT Edge-Azure
 description: In dit onderwerp vindt u antwoorden op live video Analytics op IoT Edge Veelgestelde vragen.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 0a6c1c0f26116227454fa0968264644ea7a43178
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 705c74b1ba6d3a28911185b82a558099e87dc18d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84261322"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011512"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Veelgestelde vragen (FAQ)
 
@@ -17,16 +18,16 @@ In dit onderwerp vindt u antwoorden op live video Analytics op IoT Edge Veelgest
 
 Wat zijn de systeem variabelen die kunnen worden gebruikt in de definitie van de grafiek topologie?
 
-|Variabele   |Description|
+|Variabele   |Beschrijving|
 |---|---|
-|[System. DateTime](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/linq/system-datetime-methods)|Vertegenwoordigt een onmiddellijke tijd, meestal uitgedrukt als een datum en tijd van de dag.|
+|[System. DateTime](/dotnet/framework/data/adonet/sql/linq/system-datetime-methods)|Vertegenwoordigt een onmiddellijke tijd, meestal uitgedrukt als een datum en tijd van de dag.|
 |System. GraphTopologyName   |Vertegenwoordigt een media grafiek topologie, bevat de blauw druk van een grafiek.|
 |System. GraphInstanceName|  Vertegenwoordigt een exemplaar van een media grafiek, bevat parameter waarden en verwijst naar de topologie.|
 
 ## <a name="configuration-and-deployment"></a>Configuratie en implementatie
 
 Kan ik de module media Edge implementeren op een Windows 10-apparaat?
-    * Ja. Zie het artikel over [Linux-containers in Windows 10](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/linux-containers).
+    * Ja. Zie het artikel over [Linux-containers in Windows 10](/virtualization/windowscontainers/deploy-containers/linux-containers).
 
 ## <a name="capture-from-ip-camera-and-rtsp-settings"></a>Vastleggen van IP-camera en RTSP-instellingen
 

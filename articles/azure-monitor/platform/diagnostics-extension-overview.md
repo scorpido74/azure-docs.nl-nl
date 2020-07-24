@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 5dcdfba6e8dd00c8ba09e5e98293a30d19e51c99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6201a4e0551f0f75dde65b2bc4b8b560a0f5ea20
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83635952"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007993"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Overzicht van Azure Diagnostics extensie
 Azure Diagnostics extensie is een [agent in azure monitor](agents-overview.md) die bewakings gegevens verzamelt van het gast besturingssysteem van Azure Compute-resources, inclusief virtuele machines. Dit artikel bevat een overzicht van Azure Diagnostics extensie, inclusief specifieke functionaliteit die wordt ondersteund en opties voor installatie en configuratie. 
@@ -33,7 +34,7 @@ De belangrijkste verschillen die u moet overwegen:
 
 - Azure Diagnostics extensie kan alleen worden gebruikt met virtuele machines van Azure. De Log Analytics-agent kan worden gebruikt met virtuele machines in azure, andere Clouds en on-premises.
 - Met Azure Diagnostics extensie worden gegevens naar Azure Storage verzonden, worden [Azure monitor metriek](data-platform-metrics.md) (alleen Windows) en Event hubs. De Log Analytics-agent verzamelt gegevens naar [Azure monitor-logboeken](data-platform-logs.md).
-- De Log Analytics-agent is vereist voor [oplossingen](../monitor-reference.md#insights-and-core-solutions), [Azure monitor voor VM's](../insights/vminsights-overview.md)en andere services, zoals [Azure Security Center](/azure/security-center/).
+- De Log Analytics-agent is vereist voor [oplossingen](../monitor-reference.md#insights-and-core-solutions), [Azure monitor voor VM's](../insights/vminsights-overview.md)en andere services, zoals [Azure Security Center](../../security-center/index.yml).
 
 ## <a name="costs"></a>Kosten
 Er zijn geen kosten verbonden aan de diagnostische Azure-extensie, maar mogelijk worden er kosten in rekening gebracht voor de gegevens die zijn opgenomen. Controleer [Azure monitor prijzen](https://azure.microsoft.com/pricing/details/monitor/) voor de bestemming waar u gegevens verzamelt.
@@ -43,14 +44,14 @@ De volgende tabellen geven een lijst van de gegevens die kunnen worden verzameld
 
 ### <a name="windows-diagnostics-extension-wad"></a>Windows diagnostische gegevens extensie (WAD)
 
-| Gegevensbron | Description |
+| Gegevensbron | Beschrijving |
 | --- | --- |
 | Windows-gebeurtenis logboeken   | Gebeurtenissen van het Windows-gebeurtenis logboek. |
 | Prestatiemeteritems | Numerieke waarden meten de prestaties van verschillende aspecten van het besturings systeem en de werk belastingen. |
 | IIS-logboeken             | Gebruiks gegevens voor IIS-websites die worden uitgevoerd op het gast besturingssysteem. |
 | Toepassings logboeken     | Berichten traceren die zijn geschreven door uw toepassing. |
-| .NET Event source-logboeken |Code schrijven van gebeurtenissen met de .NET [Event source](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) -klasse |
-| [Op Manifest gebaseerde ETW-logboeken](https://docs.microsoft.com/windows/desktop/etw/about-event-tracing) |Event Tracing for Windows gebeurtenissen die door een proces worden gegenereerd. |
+| .NET Event source-logboeken |Code schrijven van gebeurtenissen met de .NET [Event source](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) -klasse |
+| [Op Manifest gebaseerde ETW-logboeken](/windows/desktop/etw/about-event-tracing) |Event Tracing for Windows gebeurtenissen die door een proces worden gegenereerd. |
 | Crash dumps (Logboeken)   | Informatie over de status van het proces als een toepassing vastloopt. |
 | Logboeken op basis van bestanden    | Logboeken die zijn gemaakt door uw toepassing of service. |
 | Diagnostische logboeken voor agent | Informatie over Azure Diagnostics zichzelf. |
@@ -58,7 +59,7 @@ De volgende tabellen geven een lijst van de gegevens die kunnen worden verzameld
 
 ### <a name="linux-diagnostics-extension-lad"></a>Linux-extensie voor diagnostische gegevens (LAD)
 
-| Gegevensbron | Description |
+| Gegevensbron | Beschrijving |
 | --- | --- |
 | Syslog | Gebeurtenissen die worden verzonden naar het systeem van de Linux-gebeurtenis registratie.   |
 | Prestatiemeteritems  | Numerieke waarden meten de prestaties van verschillende aspecten van het besturings systeem en de werk belastingen. |
@@ -71,7 +72,7 @@ Configureer een of meer *gegevens-sinks* voor het verzenden van gegevens naar an
 
 ### <a name="windows-diagnostics-extension-wad"></a>Windows diagnostische gegevens extensie (WAD)
 
-| Doel | Description |
+| Doel | Beschrijving |
 |:---|:---|
 | Azure Monitor metrische gegevens | Verzamelen van prestatie gegevens naar Azure Monitor meet waarden. Zie [metrische gegevens van het gast besturingssysteem verzenden naar de data base van de Azure monitor metriek](collect-custom-metrics-guestos-resource-manager-vm.md).  |
 | Event Hubs | Azure Event Hubs gebruiken om gegevens buiten Azure te verzenden. Zie [Azure Diagnostics gegevens streamen naar Event hubs](diagnostics-extension-stream-event-hubs.md) |
@@ -84,7 +85,7 @@ U kunt ook WAD-gegevens uit opslag verzamelen in een Log Analytics-werk ruimte o
 ### <a name="linux-diagnostics-extension-lad"></a>Linux-extensie voor diagnostische gegevens (LAD)
 LAD schrijft gegevens naar tabellen in Azure Storage. Het ondersteunt de sinks in de volgende tabel.
 
-| Doel | Description |
+| Doel | Beschrijving |
 |:---|:---|
 | Event Hubs | Azure Event Hubs gebruiken om gegevens buiten Azure te verzenden. |
 | Azure Storage blobs | Schrijf naast tabellen ook gegevens naar blobs in Azure Storage. |
@@ -116,4 +117,3 @@ Raadpleeg de volgende artikelen voor meer informatie over het installeren en con
 
 * Meer informatie over het [gebruik van prestatie meter items in azure Diagnostics](../../cloud-services/diagnostics-performance-counters.md).
 * Zie [problemen oplossen Azure Diagnostics](diagnostics-extension-troubleshooting.md) als u problemen ondervindt met het starten of vinden van uw gegevens in azure Storage-tabellen
-

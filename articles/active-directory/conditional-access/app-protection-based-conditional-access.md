@@ -5,17 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 05/08/2020
+ms.date: 07/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dae584bdfa97b2c30cab5f15881323c26366592c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5326fd6adf12d53d836594c8e53bda14e0871e5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253355"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87009115"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>Procedure: beveiligings beleid voor apps en een goedgekeurde client-app vereisen voor toegang tot Cloud-apps met voorwaardelijke toegang
 
@@ -29,10 +30,11 @@ In dit artikel worden drie scenario's beschreven voor het configureren van belei
 
 In de voorwaardelijke toegang zijn deze client-apps bekend om te worden beveiligd met een beveiligings beleid voor apps. Meer informatie over het beveiligings beleid voor apps vindt u in het artikel [overzicht van app-beveiligings beleid](/intune/apps/app-protection-policy)
 
-Zie [vereisten voor app-beveiligings beleid](concept-conditional-access-grant.md)voor een lijst met in aanmerking komende client-apps.
+> [!WARNING]
+> Niet alle toepassingen worden ondersteund als goedgekeurde toepassingen of bieden ondersteuning voor het beveiligings beleid voor toepassingen. Zie [vereisten voor app-beveiligings beleid](concept-conditional-access-grant.md#require-app-protection-policy)voor een lijst met in aanmerking komende client-apps.
 
 > [!NOTE]
->    De or-component wordt in het beleid gebruikt om gebruikers in staat te stellen apps te gebruiken die ondersteuning bieden voor het **beleid voor app-beveiliging** of het **verplicht stellen van goedgekeurde client-app** -machtigingen. Zie [app-beveiligings beleid vereisten](concept-conditional-access-grant.md)voor meer informatie over de apps die ondersteuning bieden voor de machtiging beheer **beleid voor app-beveiliging vereisen** .
+> Een van de geselecteerde besturings elementen vereisen onder besturings elementen voor Grant is een OR-component. Dit wordt in het beleid gebruikt om gebruikers in staat te stellen apps te gebruiken die ondersteuning bieden voor het **beveiligings beleid voor apps vereisen** of het **verplicht stellen van goedgekeurde client-app** -granting-besturings elementen. **Vereisen dat het beveiligings beleid voor apps** wordt afgedwongen als een app in beide beleids regels wordt ondersteund. Zie [app-beveiligings beleid vereisten](concept-conditional-access-grant.md#require-app-protection-policy)voor meer informatie over de apps die ondersteuning bieden voor de machtiging beheer **beleid voor app-beveiliging vereisen** .
 
 ## <a name="scenario-1-office-365-apps-require-approved-apps-with-app-protection-policies"></a>Scenario 1: Office 365-apps vereist goedgekeurde apps met app-beveiligings beleid
 
@@ -48,7 +50,7 @@ Organisaties moeten de volgende stappen uitvoeren om het gebruik van een goedgek
 1. Geef uw beleid een naam. Het is raadzaam dat organisaties een zinvolle norm maken voor de namen van hun beleid.
 1. Onder **toewijzingen**selecteert u **gebruikers en groepen**
    1. Onder **opnemen**selecteert u **alle gebruikers** of de specifieke **gebruikers en groepen** waarop u dit beleid wilt Toep assen. 
-   1. Selecteer **Voltooid**.
+   1. Selecteer **Gereed**.
 1. Onder **Cloud-apps of-acties**  >  **gaat**u naar **Office 365 (preview-versie)**.
 1. Onder **voor waarden**selecteert u **apparaat platforms**.
    1. Stel **configureren** in op **Ja**.
@@ -72,7 +74,7 @@ Configureer voor het beleid voor voorwaardelijke toegang in deze stap de volgend
 1. Geef uw beleid een naam. Het is raadzaam dat organisaties een zinvolle norm maken voor de namen van hun beleid.
 1. Onder **toewijzingen**selecteert u **gebruikers en groepen**
    1. Onder **opnemen**selecteert u **alle gebruikers** of de specifieke **gebruikers en groepen** waarop u dit beleid wilt Toep assen. 
-   1. Selecteer **Voltooid**.
+   1. Selecteer **Gereed**.
 1. **Cloud apps or actions**  >  **Include**Selecteer **Office 365 Exchange Online**onder Cloud-apps of-acties.
 1. Onder **voor waarden**:
    1. **Client-apps (preview-versie)**:
@@ -100,7 +102,7 @@ Organisaties moeten de volgende stappen uitvoeren om het gebruik van een goedgek
 1. Geef uw beleid een naam. Het is raadzaam dat organisaties een zinvolle norm maken voor de namen van hun beleid.
 1. Onder **toewijzingen**selecteert u **gebruikers en groepen**
    1. Onder **opnemen**selecteert u **alle gebruikers** of de specifieke **gebruikers en groepen** waarop u dit beleid wilt Toep assen. 
-   1. Selecteer **Voltooid**.
+   1. Selecteer **Gereed**.
 1. Onder **Cloud-apps of-acties**  >  **gaat**u naar **Office 365 (preview-versie)**.
 1. Onder **voor waarden**selecteert u **apparaat platforms**.
    1. Stel **configureren** in op **Ja**.
@@ -133,7 +135,7 @@ Organisaties moeten de volgende drie stappen uitvoeren om het gebruik van een go
 1. Geef uw beleid een naam. Het is raadzaam dat organisaties een zinvolle norm maken voor de namen van hun beleid.
 1. Onder **toewijzingen**selecteert u **gebruikers en groepen**
    1. Onder **opnemen**selecteert u **alle gebruikers** of de specifieke **gebruikers en groepen** waarop u dit beleid wilt Toep assen. 
-   1. Selecteer **Voltooid**.
+   1. Selecteer **Gereed**.
 1. Onder **Cloud-apps of-acties**  >  **gaat**u naar **Office 365 Exchange Online** en **Office 365 share point online**.
 1. Onder **voor waarden**selecteert u **apparaat platforms**.
    1. Stel **configureren** in op **Ja**.
@@ -155,7 +157,7 @@ Organisaties moeten de volgende drie stappen uitvoeren om het gebruik van een go
 1. Geef uw beleid een naam. Het is raadzaam dat organisaties een zinvolle norm maken voor de namen van hun beleid.
 1. Onder **toewijzingen**selecteert u **gebruikers en groepen**
    1. Onder **opnemen**selecteert u **alle gebruikers** of de specifieke **gebruikers en groepen** waarop u dit beleid wilt Toep assen. 
-   1. Selecteer **Voltooid**.
+   1. Selecteer **Gereed**.
 1. **Cloud apps or actions**  >  **Include**Selecteer **Office 365 Exchange Online**onder Cloud-apps of-acties.
 1. Onder **voor waarden**:
    1. **Client-apps (preview-versie)**:

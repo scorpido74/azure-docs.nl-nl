@@ -1,20 +1,20 @@
 ---
-title: Een Power BI-app-aanbieding maken in micro soft Commercial Marketplace
+title: Een Power BI-app-aanbieding maken in Microsoft AppSource
 description: Meer informatie over het maken en publiceren van een Power BI-app-aanbieding naar Microsoft AppSource.
 author: anbene
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 06/17/2020
-ms.openlocfilehash: 8a4ff5c5bce7774f805130f68d7418a73cb751f8
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.date: 07/22/2020
+ms.openlocfilehash: fa8c08f5d6f49b12306ea1f4bb82c07747622f48
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85980341"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011937"
 ---
-# <a name="create-a-power-bi-app-for-microsoft-appsource"></a>Een Power BI-app maken voor Microsoft AppSource
+# <a name="create-a-power-bi-app-offer"></a>Een Power BI-app-aanbieding maken
 
 In dit artikel wordt beschreven hoe u een Power BI app-aanbieding maakt en publiceert naar micro soft [AppSource](https://appsource.microsoft.com/).
 
@@ -137,16 +137,16 @@ Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in
 1. Logo
 2. Producten
 3. Categorieën
-4. Bedrijfstakken
+4. Branches
 5. Ondersteunings adres (koppeling)
 6. Gebruiksvoorwaarden
 7. Privacybeleid
 8. Naam van aanbieding
 9. Samenvatting
-10. Description
+10. Beschrijving
 11. Scherm afbeeldingen/Video's
 
-### <a name="name"></a>Name
+### <a name="name"></a>Naam
 
 De naam die u hier opgeeft, wordt weer gegeven als de titel van uw aanbieding. Dit veld is vooraf ingevuld met de tekst die u hebt ingevoerd in het vak **aanbiedings alias** wanneer u de aanbieding hebt gemaakt. U kunt deze naam later wijzigen.
 
@@ -160,7 +160,7 @@ De naam:
 
 Geef een korte beschrijving van uw aanbieding. Dit kan Maxi maal 100 tekens lang zijn en wordt gebruikt in Zoek resultaten voor Marketplace.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Beschrijving
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -237,7 +237,7 @@ Geef aanvullende informatie over uw aanbieding zodat wij deze kunnen valideren. 
 
 Voeg desgewenst instructies (Maxi maal 3.000 tekens) toe om het micro soft-validatie team te helpen bij het configureren, verbinden en testen van uw app. Bevatten typische configuratie-instellingen, accounts, para meters of andere informatie die kan worden gebruikt voor het testen van de optie gegevens verbinding maken. Deze informatie is alleen zichtbaar voor het validatie team en wordt alleen voor validatie doeleinden gebruikt.
 
-## <a name="review-and-publish"></a>Controleren en publiceren
+## <a name="review-and-publish"></a>Beoordelen en publiceren
 
 Nadat u alle vereiste gedeelten van de aanbieding hebt voltooid, kunt u uw aanbieding verzenden om deze te controleren en te publiceren.
 

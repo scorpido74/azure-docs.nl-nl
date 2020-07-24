@@ -6,12 +6,12 @@ ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
-ms.openlocfilehash: e078f81db75dd6b89a65ff2d00bb2805ea912d0d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d2b1afea746410e966b43bef01a039a8471d4ae7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249135"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007925"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Uitbreidings schema voor Windows diagnostische gegevens
 Azure Diagnostics extensie is een agent in Azure Monitor die bewakings gegevens verzamelt van het gast besturingssysteem en werk belastingen van Azure Compute-resources. Dit artikel bevat informatie over het schema dat wordt gebruikt voor het configureren van de diagnostische uitbrei ding op virtuele Windows-machines en andere reken bronnen.
@@ -157,7 +157,7 @@ Het element op het hoogste niveau van het diagnostische configuratie bestand.
 
 |Onderliggende elementen|Beschrijving|  
 |--------------------|-----------------|  
-|**EtwEventSourceProviderConfiguration**|Hiermee configureert u de verzameling van gebeurtenissen die zijn gegenereerd met de [klasse Event source](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx). Vereist kenmerk:<br /><br /> **provider** : de klassenaam van de gebeurtenis Event source.<br /><br /> Optionele kenmerken zijn:<br /><br /> - **scheduledTransferLogLevelFilter** : het minimale Ernst niveau dat u wilt overdragen naar uw opslag account.<br /><br /> - **scheduledTransferPeriod** : het interval tussen geplande transfers naar opslag die is afgerond op de dichtstbijzijnde minuut. De waarde is een [XML-duur-gegevens type.](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
+|**EtwEventSourceProviderConfiguration**|Hiermee configureert u de verzameling van gebeurtenissen die zijn gegenereerd met de [klasse Event source](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1). Vereist kenmerk:<br /><br /> **provider** : de klassenaam van de gebeurtenis Event source.<br /><br /> Optionele kenmerken zijn:<br /><br /> - **scheduledTransferLogLevelFilter** : het minimale Ernst niveau dat u wilt overdragen naar uw opslag account.<br /><br /> - **scheduledTransferPeriod** : het interval tussen geplande transfers naar opslag die is afgerond op de dichtstbijzijnde minuut. De waarde is een [XML-duur-gegevens type.](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
 |**EtwManifestProviderConfiguration**|Vereist kenmerk:<br /><br /> **provider** -de GUID van de gebeurtenis provider<br /><br /> Optionele kenmerken zijn:<br /><br /> - **scheduledTransferLogLevelFilter** : het minimale Ernst niveau dat u wilt overdragen naar uw opslag account.<br /><br /> - **scheduledTransferPeriod** : het interval tussen geplande transfers naar opslag die is afgerond op de dichtstbijzijnde minuut. De waarde is een [XML-duur-gegevens type.](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
 
 
@@ -165,7 +165,7 @@ Het element op het hoogste niveau van het diagnostische configuratie bestand.
 ## <a name="etweventsourceproviderconfiguration-element"></a>EtwEventSourceProviderConfiguration-element  
  *Tree: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-EtwProviders-EtwEventSourceProviderConfiguration*
 
- Hiermee configureert u de verzameling van gebeurtenissen die zijn gegenereerd met de [klasse Event source](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx).  
+ Hiermee configureert u de verzameling van gebeurtenissen die zijn gegenereerd met de [klasse Event source](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1).  
 
 |Onderliggende elementen|Beschrijving|  
 |--------------------|-----------------|  
@@ -208,7 +208,7 @@ Het element op het hoogste niveau van het diagnostische configuratie bestand.
 
 |Onderliggend element|Beschrijving|  
 |-------------------|-----------------|  
-|**PerformanceCounterConfiguration**|De volgende kenmerken zijn vereist:<br /><br /> - **counterSpecifier** : de naam van het prestatie meter item. Bijvoorbeeld `\Processor(_Total)\% Processor Time`. Voer de opdracht uit om een lijst met prestatie meter items op uw host op te halen `typeperf` .<br /><br /> - **sampleRate** : hoe vaak de teller moet worden gesampled.<br /><br /> Optioneel kenmerk:<br /><br /> **eenheid** : de maat eenheid van het prestatie meter item. Waarden zijn beschikbaar op de [klasse unit type](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.sql.models.unittype?view=azure-dotnet) |
+|**PerformanceCounterConfiguration**|De volgende kenmerken zijn vereist:<br /><br /> - **counterSpecifier** : de naam van het prestatie meter item. Bijvoorbeeld `\Processor(_Total)\% Processor Time`. Voer de opdracht uit om een lijst met prestatie meter items op uw host op te halen `typeperf` .<br /><br /> - **sampleRate** : hoe vaak de teller moet worden gesampled.<br /><br /> Optioneel kenmerk:<br /><br /> **eenheid** : de maat eenheid van het prestatie meter item. Waarden zijn beschikbaar op de [klasse unit type](/dotnet/api/microsoft.azure.management.sql.models.unittype?view=azure-dotnet) |
 |**wastafel** | Toegevoegd in 1,5. Optioneel. Verwijst naar een Sink-locatie om ook diagnostische gegevens te verzenden. Bijvoorbeeld Azure Monitor of Event Hubs. Opmerking: u moet de eigenschap *resourceId* onder het element *metrische gegevens* toevoegen als u wilt dat gebeurtenissen die naar Event hubs worden geüpload, een resource-id hebben.|    
 
 

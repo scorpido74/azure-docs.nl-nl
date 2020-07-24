@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: a2569ca3f998030680bd7dbd872d71ccd372a25d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73f2b3ea90cc94fa3411552c7b812fe53eb4dbbb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77672426"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008095"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>Diagnostische instelling maken in azure met behulp van een resource manager-sjabloon
 [Diagnostische instellingen](diagnostic-settings.md) in azure monitor opgeven waar u de [platform logboeken](platform-logs-overview.md) wilt verzenden die worden verzameld door Azure-resources en het Azure-platform waarvan ze afhankelijk zijn. In dit artikel vindt u details en voor beelden voor het gebruik van een [Azure Resource Manager sjabloon](../../azure-resource-manager/templates/template-syntax.md) voor het maken en configureren van diagnostische instellingen voor het verzamelen van platform logboeken op verschillende locaties.
@@ -29,7 +30,7 @@ Zie [resources implementeren met Resource Manager-sjablonen en resources Azure P
 
 
 ## <a name="resource-logs"></a>Resourcelogboeken
-Voor resource logboeken voegt u een resource van `<resource namespace>/providers/diagnosticSettings` het type toe aan de sjabloon. De sectie Properties is gebaseerd op de indeling die wordt beschreven in [Diagnostische instellingen-maken of bijwerken](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate). Geef een `category` in de `logs` sectie op voor elk van de categorieën die geldig zijn voor de resource die u wilt verzamelen. Voeg de `metrics` eigenschap voor het verzamelen van metrische gegevens van resources aan dezelfde doelen toe als de [resource metrische gegevens ondersteunt](metrics-supported.md).
+Voor resource logboeken voegt u een resource van `<resource namespace>/providers/diagnosticSettings` het type toe aan de sjabloon. De sectie Properties is gebaseerd op de indeling die wordt beschreven in [Diagnostische instellingen-maken of bijwerken](/rest/api/monitor/diagnosticsettings/createorupdate). Geef een `category` in de `logs` sectie op voor elk van de categorieën die geldig zijn voor de resource die u wilt verzamelen. Voeg de `metrics` eigenschap voor het verzamelen van metrische gegevens van resources aan dezelfde doelen toe als de [resource metrische gegevens ondersteunt](metrics-supported.md).
 
 Hieronder volgt een sjabloon waarmee een resource logboek categorie voor een bepaalde resource wordt verzameld voor een Log Analytics-werk ruimte, een opslag account en Event Hub.
 
@@ -143,7 +144,7 @@ Hier volgt een voor beeld van het maken van een diagnostische instelling voor ee
 ```
 
 ## <a name="activity-log"></a>Activiteitenlogboek
-Voor het Azure-activiteiten logboek voegt u een bron van het type toe `Microsoft.Insights/diagnosticSettings` . De beschik bare categorieën worden weer gegeven in [Categorieën in het activiteiten logboek](activity-log-view.md#categories-in-the-activity-log). Hieronder volgt een sjabloon waarmee alle activiteiten logboek categorieën worden verzameld voor een Log Analytics-werk ruimte, een opslag account en Event Hub.
+Voor het Azure-activiteiten logboek voegt u een bron van het type toe `Microsoft.Insights/diagnosticSettings` . De beschik bare categorieën worden weer gegeven in [Categorieën in het activiteiten logboek](./activity-log.md#view-the-activity-log). Hieronder volgt een sjabloon waarmee alle activiteiten logboek categorieën worden verzameld voor een Log Analytics-werk ruimte, een opslag account en Event Hub.
 
 
 ```json

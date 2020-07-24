@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1d30a32a58dd2385a214d813307c645c56afdc8
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 85beb04e39c5c47b9ee71ee96c2dff8910766ea3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024444"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87009048"
 ---
 # <a name="conditional-access-grant"></a>Voorwaardelijke toegang: verlenen
 
@@ -81,7 +81,6 @@ Deze instelling is van toepassing op de volgende iOS-en Android-apps:
 - Microsoft Edge
 - Microsoft Excel
 - Microsoft Flow
-- Microsoft Intune Managed Browser
 - Microsoft Invoicing
 - Microsoft Kaizala
 - Microsoft Launcher
@@ -123,9 +122,22 @@ Voor voorwaardelijke toegang moet het apparaat worden geregistreerd in Azure Act
 Deze instelling is van toepassing op de volgende client-apps:
 
 - Microsoft Cortana
+- Microsoft Edge
+- Microsoft Excel
+- Microsoft Office
 - Microsoft OneDrive
+- Microsoft OneNote
 - Microsoft Outlook
 - Microsoft Planner
+- Microsoft Power BI
+- Microsoft PowerPoint
+- Microsoft SharePoint
+- Microsoft Word
+- Meerdere lijnen voor intune
+- 9 e-mail adres & agenda
+
+> [!NOTE]
+> Micro soft Kaizala, micro soft Skype voor bedrijven en micro soft Visio bieden geen ondersteuning voor de toekenning van het **beveiligings beleid voor apps vereisen** . Als u wilt dat deze apps werken, moet u alleen de toekenning **goedgekeurde apps vereisen** . Het gebruik van de or-component tussen de twee subsidies werkt niet voor deze drie toepassingen.
 
 **Opmerkingen**
 

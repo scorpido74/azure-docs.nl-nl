@@ -6,11 +6,12 @@ ms.author: dukek
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.subservice: alerts
-ms.openlocfilehash: 655a3acc44a1418778b37fbef85e5df75d042317
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f592c42bc06c6bcd33ce6e10c506f8af0d8e0cf2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78206233"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008384"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Complexe acties met Azure Monitor waarschuwingen activeren
 
@@ -127,7 +128,7 @@ Het proces is vergelijkbaar als u wilt dat de logische app een andere actie uitv
 
 14. Selecteer op de pagina **Logic apps Designer**de optie **Opslaan** om uw logische app op te slaan.
 
-15. Open uw bestaande actie groep en voeg een actie toe om te verwijzen naar de logische app. Als u geen bestaande actie groep hebt, raadpleegt u [actie groepen maken en beheren in de Azure Portal](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) om er een te maken. Vergeet niet om uw wijzigingen op te slaan.
+15. Open uw bestaande actie groep en voeg een actie toe om te verwijzen naar de logische app. Als u geen bestaande actie groep hebt, raadpleegt u [actie groepen maken en beheren in de Azure Portal](./action-groups.md) om er een te maken. Vergeet niet om uw wijzigingen op te slaan.
 
     ![De actie groep bijwerken](media/action-groups-logic-app/update-action-group.png "De actie groep bijwerken")
 
@@ -294,6 +295,5 @@ Logic Apps heeft een aantal verschillende connectors waarmee u acties kunt activ
 
 ## <a name="next-steps"></a>Volgende stappen
 * Bekijk een [overzicht van de waarschuwingen voor Azure-activiteiten logboeken](../../azure-monitor/platform/alerts-overview.md) en lees hoe u waarschuwingen kunt ontvangen.  
-* Meer informatie over het [configureren van waarschuwingen wanneer een Azure service Health-melding wordt geplaatst](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
+* Meer informatie over het [configureren van waarschuwingen wanneer een Azure service Health-melding wordt geplaatst](../../service-health/alerts-activity-log-service-notifications-portal.md).
 * Meer informatie over [actie groepen](../../azure-monitor/platform/action-groups.md).
-

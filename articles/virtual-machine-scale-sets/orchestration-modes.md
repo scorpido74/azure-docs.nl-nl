@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 10/23/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 54515b347a95b9315ca9ba87568fb2104c3b2b45
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb7d4d8a6f1c1ee55601cdd839e330147e60bcc7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736999"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011070"
 ---
 # <a name="orchestration-modes-preview"></a>Orchestration-modi (preview-versie)
 
@@ -42,7 +42,7 @@ Virtuele-machine schaal sets ondersteunen 2 verschillende indelings modi:
 
 ## <a name="orchestration-modes"></a>Indelingsmodi
 
-|                             | "orchestrationMode": "VM" (VirtualMachine) | "orchestrationMode": "ScaleSetVM" (VirtualMachineScaleSetVM) |
+| Functie                     | "orchestrationMode": "VM" (VirtualMachine) | "orchestrationMode": "ScaleSetVM" (VirtualMachineScaleSetVM) |
 |-----------------------------|--------------------------------------------|--------------------------------------------------------------|
 | VM-configuratie model      | Geen                                       | Vereist |
 | Nieuwe VM toevoegen aan Schaalset  | Vm's worden expliciet toegevoegd aan de schaalset wanneer de virtuele machine wordt gemaakt. | Vm's worden impliciet gemaakt en toegevoegd aan de schaalset op basis van het VM-configuratie model, het aantal instanties en de regels voor automatisch schalen | |
@@ -64,4 +64,4 @@ Virtuele-machine schaal sets ondersteunen 2 verschillende indelings modi:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [overzicht van beschikbaarheids opties](availability.md)voor meer informatie.
+Zie [overzicht van beschikbaarheids opties](../virtual-machines/availability.md?toc=%2fazure%2fvirtual-machine-scale-sets%2ftoc.json)voor meer informatie.

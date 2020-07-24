@@ -3,8 +3,8 @@ title: Overzicht van desired state Configuration voor Azure
 description: Meer informatie over het gebruik van de Microsoft Azure extensie-handler voor Power shell desired state Configuration (DSC). Het artikel bevat vereisten, architectuur en cmdlets.
 services: virtual-machines-windows
 documentationcenter: ''
-author: bobbytreed
-manager: carmonm
+author: mgoedtel
+manager: evansma
 editor: ''
 tags: azure-resource-manager
 keywords: DSC
@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
-ms.date: 05/02/2018
-ms.author: robreed
-ms.openlocfilehash: 82d268eedd73b8de670da93ad3a601b5e75e6444
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/13/2020
+ms.author: magoedte
+ms.openlocfilehash: edf1fce488bf3bb8aa107a295cf3488243775192
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82188532"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010917"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Inleiding tot de uitbreiding van de Desired State Configuration-handler
 
@@ -59,7 +59,7 @@ Wanneer de uitbrei ding voor de eerste keer wordt aangeroepen, wordt een versie 
 - Als de eigenschap **wmfVersion** is opgegeven, wordt die versie van WMF geïnstalleerd, tenzij die versie niet compatibel is met het besturings systeem van de virtuele machine.
 - Als er geen eigenschap **wmfVersion** is opgegeven, wordt de meest recente versie van WMF geïnstalleerd.
 
-Voor het installeren van WMF moet de computer opnieuw worden opgestart. Nadat het opnieuw is opgestart, wordt het zip-bestand gedownload dat is opgegeven in de eigenschap **modulesUrl** , indien opgegeven. Als deze locatie zich in Azure Blob-opslag bevindt, kunt u een SAS-token opgeven in de eigenschap **sasToken** om het bestand te openen. Nadat de zip is gedownload en uitgepakt, wordt de configuratie functie die is gedefinieerd in **configurationFunction** uitgevoerd om een. MOF-bestand ([Managed Object Format](https://docs.microsoft.com/windows/win32/wmisdk/managed-object-format--mof-)) te genereren. De uitbrei ding wordt vervolgens uitgevoerd met `Start-DscConfiguration -Force` behulp van het gegenereerde. MOF-bestand. De uitbrei ding legt uitvoer vast en schrijft deze naar het status kanaal van Azure.
+Voor het installeren van WMF moet de computer opnieuw worden opgestart. Nadat het opnieuw is opgestart, wordt het zip-bestand gedownload dat is opgegeven in de eigenschap **modulesUrl** , indien opgegeven. Als deze locatie zich in Azure Blob-opslag bevindt, kunt u een SAS-token opgeven in de eigenschap **sasToken** om het bestand te openen. Nadat de zip is gedownload en uitgepakt, wordt de configuratie functie die is gedefinieerd in **configurationFunction** uitgevoerd om een. MOF-bestand ([Managed Object Format](/windows/win32/wmisdk/managed-object-format--mof-)) te genereren. De uitbrei ding wordt vervolgens uitgevoerd met `Start-DscConfiguration -Force` behulp van het gegenereerde. MOF-bestand. De uitbrei ding legt uitvoer vast en schrijft deze naar het status kanaal van Azure.
 
 ### <a name="default-configuration-script"></a>Standaard configuratie script
 
@@ -81,7 +81,7 @@ Deze informatie kan worden weer gegeven in de Azure Portal of u kunt Power shell
 ```
 
 Zorg ervoor dat de knooppunt configuratie bestaat in de Azure-status configuratie voor de naam van de knooppunt configuratie.  Als dat niet het geval is, wordt een fout geretourneerd door de implementatie van de extensie.  Zorg er ook voor dat u de naam van de *knooppunt configuratie* gebruikt en niet de configuratie.
-Een configuratie wordt gedefinieerd in een script dat wordt gebruikt [voor het compileren van de knooppunt configuratie (MOF-bestand)](https://docs.microsoft.com/azure/automation/automation-dsc-compile).
+Een configuratie wordt gedefinieerd in een script dat wordt gebruikt [voor het compileren van de knooppunt configuratie (MOF-bestand)](../../automation/automation-dsc-compile.md).
 De naam is altijd de configuratie, gevolgd door een punt `.` en een `localhost` of een specifieke computer naam.
 
 ## <a name="dsc-extension-in-resource-manager-templates"></a>DSC-extensie in Resource Manager-sjablonen
@@ -188,11 +188,11 @@ De portal verzamelt de volgende invoer:
 
 - **Configuratie argumenten**: als de configuratie functie argumenten accepteert, voert u deze hier in de notatie **argumentName1 = waarde1, argumentName2 = waarde2**. Deze indeling is een andere indeling waarin configuratie argumenten worden geaccepteerd in Power shell-cmdlets of Resource Manager-sjablonen.
 
-- **PSD1-bestand voor configuratie gegevens**: voor uw configuratie is een bestand met configuratie gegevens vereist in. PSD1, gebruikt u dit veld om het gegevens bestand te selecteren en te uploaden naar de Blob-opslag van uw gebruiker. Het bestand met configuratie gegevens wordt beveiligd door een SAS-token in Blob Storage.
+- **PSD1-bestand van de configuratie gegevens**: als voor uw configuratie een bestand met configuratie gegevens is vereist in `.psd1` , gebruikt u dit veld om het gegevens bestand te selecteren en te uploaden naar de Blob-opslag van uw gebruiker. Het bestand met configuratie gegevens wordt beveiligd door een SAS-token in Blob Storage.
 
 - **WMF-versie**: Hiermee geeft u de versie van Windows Management Framework (WMF) op die op uw virtuele machine moet worden geïnstalleerd. Als u deze eigenschap instelt op laatst, wordt de meest recente versie van WMF geïnstalleerd. Momenteel zijn de enige mogelijke waarden voor deze eigenschap 4,0, 5,0, 5,1 en meest recent. Deze mogelijke waarden zijn onderhevig aan updates. De standaard waarde is **meest recent**.
 
-- **Gegevens verzameling**: Hiermee wordt bepaald of de extensie telemetrie verzamelt. Zie [Azure DSC extension-gegevens verzameling](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/)voor meer informatie.
+- **Gegevens verzameling**: Hiermee wordt bepaald of de extensie telemetrie verzamelt. Zie [Azure DSC extension-gegevens verzameling](https://devblogs.microsoft.com/powershell/azure-dsc-extension-data-collection-2/)voor meer informatie.
 
 - **Versie**: Hiermee geeft u de versie op van de DSC-extensie die moet worden geïnstalleerd. Zie de versie geschiedenis van de [DSC-extensie](/powershell/scripting/dsc/getting-started/azuredscexthistory)voor meer informatie over versies.
 

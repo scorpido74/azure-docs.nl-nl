@@ -9,18 +9,18 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: caa8e928a10deb3d6d97e601c607074c09e0572e
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 681bd0aff909552531d682186d5b22dce5ef33f9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223513"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010764"
 ---
 # <a name="preview-create-an-image-from-a-vm"></a>Voor beeld: een installatie kopie maken op basis van een virtuele machine
 
 Als u een bestaande VM hebt die u wilt gebruiken om meerdere, identieke Vm's te maken, kunt u die VM gebruiken om een installatie kopie in een galerie met gedeelde afbeeldingen te maken met behulp van Azure PowerShell. U kunt ook een installatie kopie van een virtuele machine maken met behulp van de [Azure cli](image-version-vm-cli.md).
 
-U kunt een installatie kopie van zowel [gespecialiseerde als gegeneraliseerde](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#generalized-and-specialized-images) vm's vastleggen met behulp van Azure PowerShell. 
+U kunt een installatie kopie van zowel [gespecialiseerde als gegeneraliseerde](./windows/shared-image-galleries.md#generalized-and-specialized-images) vm's vastleggen met behulp van Azure PowerShell. 
 
 Afbeeldingen in een afbeeldings galerie hebben twee onderdelen, die we in dit voor beeld gaan maken:
 - Een **definitie van een installatie kopie** bevat informatie over de installatie kopie en vereisten voor het gebruik ervan. Dit omvat of de installatie kopie Windows of Linux, gespecialiseerde of gegeneraliseerde, release opmerkingen en minimale en maximale geheugen vereisten zijn. Het is een definitie van een type installatie kopie. 
@@ -54,7 +54,7 @@ $gallery = Get-AzGallery `
 
 ## <a name="get-the-vm"></a>De VM ophalen
 
-U met behulp van [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) een lijst met VM's weergeven die beschikbaar zijn in een resourcegroep. Zodra u de naam van de virtuele machine kent en de resource groep waarin deze zich bevindt, kunt u `Get-AzVM` opnieuw gebruiken om het VM-object op te halen en op te slaan in een variabele, zodat u deze later kunt gebruiken. In dit voor beeld wordt een virtuele machine met de naam *sourceVM* van de resource groep ' myResourceGroup ' opgehaald en toegewezen aan de variabele *$sourceVm*. 
+U met behulp van [Get-AzVM](/powershell/module/az.compute/get-azvm) een lijst met VM's weergeven die beschikbaar zijn in een resourcegroep. Zodra u de naam van de virtuele machine kent en de resource groep waarin deze zich bevindt, kunt u `Get-AzVM` opnieuw gebruiken om het VM-object op te halen en op te slaan in een variabele, zodat u deze later kunt gebruiken. In dit voor beeld wordt een virtuele machine met de naam *sourceVM* van de resource groep ' myResourceGroup ' opgehaald en toegewezen aan de variabele *$sourceVm*. 
 
 ```azurepowershell-interactive
 $sourceVm = Get-AzVM `
@@ -62,7 +62,7 @@ $sourceVm = Get-AzVM `
    -ResourceGroupName myResourceGroup
 ```
 
-Het is een best practice voor het stop\deallocate van de virtuele machine voordat u een installatie kopie maakt met behulp van [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm).
+Het is een best practice voor het stop\deallocate van de virtuele machine voordat u een installatie kopie maakt met behulp van [Stop-AzVM](/powershell/module/az.compute/stop-azvm).
 
 ```azurepowershell-interactive
 Stop-AzVM `
@@ -77,9 +77,9 @@ Definities van installatiekopieën maken een logische groepering voor installati
 
 Wanneer u de definitie van de installatie kopie maakt, moet u ervoor zorgen dat alle juiste gegevens worden verstrekt. Als u de virtuele machine hebt gegeneraliseerd (met behulp van Sysprep voor Windows of waagent-deprovision voor Linux), moet u een definitie van een installatie kopie maken met `-OsState generalized` . Als u de virtuele machine niet hebt gegeneraliseerd, maakt u een definitie van een installatie kopie met `-OsState specialized` .
 
-Zie [Installatiekopiedefinities](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions) voor meer informatie over de waarden die u kunt specificeren voor een installatiekopiedefinitie.
+Zie [Installatiekopiedefinities](./windows/shared-image-galleries.md#image-definitions) voor meer informatie over de waarden die u kunt specificeren voor een installatiekopiedefinitie.
 
-Maak de definitie van de installatiekopie met behulp van [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion). 
+Maak de definitie van de installatiekopie met behulp van [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion). 
 
 In dit voor beeld heeft de definitie van de installatie kopie de naam *myImageDefinition*en is voor een gespecialiseerde virtuele machine waarop Windows wordt uitgevoerd. Als u een definitie wilt maken voor installatie kopieën met Linux, gebruikt u `-OsType Linux` . 
 
@@ -99,7 +99,7 @@ $imageDefinition = New-AzGalleryImageDefinition `
 
 ## <a name="create-an-image-version"></a>De versie van een installatiekopie maken
 
-Maak een installatie kopie versie met behulp van [New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion). 
+Maak een installatie kopie versie met behulp van [New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion). 
 
 Toegestane tekens voor een installatiekopieversie zijn cijfers en punten. Cijfers moeten binnen het bereik van een 32-bits geheel getal zijn. Indeling: *MajorVersion*.*MinorVersion*.*Patch*.
 
@@ -133,7 +133,7 @@ $job.State
 > [!NOTE]
 > U moet wachten tot de installatiekopieversie volledig is gebouwd en gerepliceerd voordat u dezelfde beheerde installatiekopie kunt gebruiken om een andere versie van de installatiekopie te maken.
 >
-> U kunt uw installatiekopie ook opslaan in Premium Storage door een `-StorageAccountType Premium_LRS` toe te voegen, of in [Zone-redundante opslag](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) door `-StorageAccountType Standard_ZRS` toe te voegen wanneer u de installatiekopieversie maakt.
+> U kunt uw installatiekopie ook opslaan in Premium Storage door een `-StorageAccountType Premium_LRS` toe te voegen, of in [Zone-redundante opslag](../storage/common/storage-redundancy.md) door `-StorageAccountType Standard_ZRS` toe te voegen wanneer u de installatiekopieversie maakt.
 >
 
 ## <a name="next-steps"></a>Volgende stappen

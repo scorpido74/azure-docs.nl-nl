@@ -1,18 +1,18 @@
 ---
-title: Een nieuwe SaaS-aanbieding maken voor de micro soft Commercial Marketplace
-description: Het maken van een nieuwe SaaS-aanbieding (Software as a Service) voor het aanbieden of verkopen van Microsoft AppSource, Azure Marketplace of via het programma Cloud Solution Provider (CSP) met behulp van het micro soft-programma voor commerciële Marketplace in micro soft partner centrum.
+title: Een SaaS-aanbieding, Azure Marketplace en Microsoft AppSource maken
+description: Het maken van een SaaS-aanbieding (Software as a Service) voor het aanbieden of verkopen van Microsoft AppSource, Azure Marketplace of via het programma Cloud Solution Provider (CSP) met behulp van het micro soft-programma voor commerciële Marketplace in micro soft Partner Center.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 06/17/2020
-ms.openlocfilehash: a233f3594ace74a6bfeca90ffccfbcb233e5d890
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/22/2020
+ms.openlocfilehash: 2c5394dce503a6fa00e2a3e6ff73a683d3d2e76f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121879"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012090"
 ---
-# <a name="create-a-new-saas-offer-in-the-commercial-marketplace"></a>Een nieuwe SaaS-aanbieding maken in de commerciële Marketplace
+# <a name="create-a-saas-offer"></a>Een SaaS-aanbieding maken
 
 Als u wilt beginnen met het maken van SaaS-aanbiedingen (Software as a Service) in de commerciële Marketplace, moet u eerst [een partner centrum-account maken](./create-account.md) en het [dash board commerciële Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)openen, met het tabblad **overzicht** geselecteerd.
 
@@ -96,7 +96,7 @@ Dit is een voor beeld van een uitsplitsing van kosten en uitbetalingen om het ag
 - In dit voor beeld wordt micro soft billt $100,00 aan de klant voor uw software licentie en betaalt $80,00 de uitgever.
 
 > [!NOTE]
-> **Lagere kosten voor Marketplace-service** : voor bepaalde SaaS-aanbiedingen die u hebt gepubliceerd op de commerciële Marketplace, verlaagt micro soft de kosten voor Marketplace-service van 20% (zoals beschreven in de overeenkomst voor micro soft Publisher) tot 10%. Uw aanbieding (en) voor uw aanbieding (en) die u wilt kwalificeren, moeten zijn toegewezen door micro soft als IP-mede-verkoop gereed of IP co-sell priority. Voor het einde van elke kalender maand moet aan de geschiktheid ten minste vijf (5) werk dagen worden voldaan om de lagere kosten voor Marketplace-service voor de maand te ontvangen. De lagere kosten voor Marketplace-service zijn niet van toepassing op Vm's, beheerde apps of andere producten die beschikbaar worden gesteld via de commerciële Marketplace.
+> **Lagere kosten voor Marketplace-service** : voor bepaalde SaaS-aanbiedingen die u hebt gepubliceerd op de commerciële Marketplace, verlaagt micro soft de kosten voor Marketplace-service van 20% (zoals beschreven in de overeenkomst voor micro soft Publisher) tot 10%. Voor uw aanbieding (en) die u wilt kwalificeren, moeten uw aanbieding (en) zijn aangewezen door micro soft als Azure IP-gemotiveerd. Voor het einde van elke kalender maand moet aan de geschiktheid ten minste vijf (5) werk dagen worden voldaan om de lagere kosten voor Marketplace-service voor de maand te ontvangen. De lagere kosten voor Marketplace-service zijn ook van toepassing op Azure IP-gemotiveerd Vm's, beheerde apps en alle andere gekwalificeerd transactable IaaS-aanbiedingen die beschikbaar worden gesteld via de commerciële Marketplace.
 
 ### <a name="list-through-microsoft"></a>Lijst via micro soft
 
@@ -131,13 +131,13 @@ Hier volgt een voor beeld van hoe informatie over aanbiedingen wordt weer gegeve
 
 1. Groot logo
 2. Categorieën
-3. Bedrijfstakken
+3. Branches
 4. Ondersteunings adres (koppeling)
 5. Gebruiksvoorwaarden
 6. Privacybeleid
 7. Naam van aanbieding
 8. Samenvatting
-9. Description
+9. Beschrijving
 10. Scherm afbeeldingen/Video's
 11. Documenten
 
@@ -190,7 +190,7 @@ Uw aanbieding wordt gepubliceerd op AppSource of Azure Marketplace, afhankelijk 
 
 Bekijk de volledige lijst met categorieën en subcategorieën die van toepassing zijn op elke winkel in [Aanbevolen procedures voor aanbiedingen](../gtm-offer-listing-best-practices.md).
 
-### <a name="industries"></a>Bedrijfstakken
+### <a name="industries"></a>Branches
 
 [!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
@@ -260,7 +260,7 @@ Geef de details op die in Marketplace moeten worden weer gegeven, inclusief besc
 - **Zoek trefwoorden** : Voer Maxi maal drie Zoek trefwoorden in die klanten kunnen gebruiken om uw aanbieding te vinden in Marketplace ('s).
 - **Aan de slag-instructies** (vereist): in dit gedeelte wordt uitgelegd hoe u uw app kunt configureren en gebruiken voor potentiële klanten.  Deze Snelstartgids kan koppelingen bevatten naar gedetailleerde online documentatie. In dit veld kunnen Maxi maal 3.000 tekens tekst worden ingevoerd.
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Beschrijving
 
 Dit veld is vereist.
 
@@ -331,14 +331,14 @@ Diagrammen en gedetailleerde uitleg die het gebruik van de verzamelde velden bes
 
 - **URL van de landings pagina** (vereist): DEFINIEER de URL van de SaaS-site (bijvoorbeeld: `https://contoso.com/signup` ) waarmee eind klanten hun aanbieding van de Marketplace kunnen binnenhalen en het configuratie proces vanuit het zojuist gemaakte SaaS-abonnement kunnen activeren.  Deze URL wordt aangeroepen met de para meter voor het kopen van id-tokens voor Marketplace waarmee de specifieke SaaS-aankoop van de eind klant wordt geïdentificeerd.  U moet dit token omruilen voor de bijbehorende details van het SaaS-abonnement met behulp van de API voor [omzetten](./pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) .  Deze details en andere personen die u wilt verzamelen, moeten worden gebruikt als onderdeel van een klant-interactieve webpagina die in uw ervaring is gebouwd om de eind klant te registreren en hun aankoop te activeren.  Op deze pagina moet de gebruiker zich aanmelden met één klik om te verifiëren met behulp van Azure Active Directory (Azure AD). <br> <br> Deze URL met Marketplace-aankoop identificatie token para meter wordt ook aangeroepen wanneer de eind klant beheerde SaaS-ervaring vanuit Azure Portal of M365-beheer centrum start. U moet beide stromen afhandelen wanneer het token de eerste keer wordt ingevoerd na aankoop voor nieuwe klanten en wanneer het wordt verschaft voor een bestaande klant die zijn SaaS beheert. <br> <br> De landings pagina die u hier configureert, moet 24/7 zijn. Dit is de enige manier waarop u wordt gewaarschuwd over nieuwe aankopen van uw SaaS-aanbiedingen op Marketplace of configuratie aanvragen van een actief abonnement op een aanbieding.
 
-- **Verbindings-webhook** (vereist): voor alle asynchrone gebeurtenissen die micro soft naar u moet sturen (bijvoorbeeld SaaS-abonnement is geannuleerd), moet u een URL voor de verbindings-webhook opgeven. Deze URL wordt gebeld om u op de hoogte te stellen van de gebeurtenis. <br> <br> De webhook die u opgeeft, moet 24/7 zijn, omdat dit de enige manier is waarop u wordt gewaarschuwd over updates van de SaaS-abonnementen van uw klanten die zijn gekocht via Marketplace.  Als u nog geen webhooksysteem hebt, is de eenvoudigste configuratie een HTTP-eindpunt logische app waarmee wordt geluisterd naar gebeurtenissen die erop worden geplaatst en deze vervolgens op de juiste wijze afhandelen (bijvoorbeeld `https://prod-1westus.logic.azure.com:443/work` ). Zie [werk stromen aanroepen, activeren of nesten met HTTP-eind punten in Logic apps](../../logic-apps/logic-apps-http-endpoint.md)voor meer informatie.
+- **Verbindings-webhook** (vereist): voor alle asynchrone gebeurtenissen die micro soft naar u moet sturen (bijvoorbeeld SaaS-abonnement is geannuleerd), moet u een URL voor de verbindings-webhook opgeven. Deze URL wordt gebeld om u op de hoogte te stellen van de gebeurtenis. <br> <br> De webhook die u opgeeft, moet 24/7 zijn, omdat dit de enige manier is waarop u wordt gewaarschuwd over updates van de SaaS-abonnementen van uw klanten die zijn gekocht via Marketplace. Als u nog geen webhooksysteem hebt, is de eenvoudigste configuratie een HTTP-eindpunt logische app waarmee wordt geluisterd naar gebeurtenissen die erop worden geplaatst en deze vervolgens op de juiste wijze afhandelen (bijvoorbeeld `https://prod-1westus.logic.azure.com:443/work` ). Zie [werk stromen aanroepen, activeren of nesten met HTTP-eind punten in Logic apps](../../logic-apps/logic-apps-http-endpoint.md)voor meer informatie.
 
 - **Azure AD-Tenant-id** (vereist): in het Azure Portal moet u [een Azure Active Directory (AD)-app maken](../../active-directory/develop/howto-create-service-principal-portal.md) zodat de verbinding tussen de twee services achter een geverifieerde communicatie kan worden gevalideerd. Als u wilt zoeken naar de [Tenant-id](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)), gaat u naar uw Azure Active Directory en selecteert u **Eigenschappen**. vervolgens zoekt u naar de weer gegeven **Directory-id** (zoals 50c464d3-4930-494c-963c-1e951d15360e).
 
 - **Azure AD-App-ID** (vereist): u hebt de [toepassings-id](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)ook nodig). Als u de waarde wilt ophalen, gaat u naar uw Azure Active Directory en selecteert u **app-registraties**en vervolgens zoekt u naar het id-nummer van de **toepassing** die wordt weer gegeven (bijvoorbeeld `50c464d3-4930-494c-963c-1e951d15360e` ).
 
 >[!Note]
->De Azure AD-App-ID is gekoppeld aan uw uitgevers-ID in uw partner centrum-account.  Zorg ervoor dat dezelfde toepassings-ID wordt gebruikt in al uw aanbiedingen.
+>De Azure AD-App-ID is gekoppeld aan uw uitgevers-ID in uw partner centrum-account. Zorg ervoor dat u dezelfde toepassings-ID gebruikt in al uw aanbiedingen.
 
 >[!Note]
 >Als de uitgever twee of meer verschillende accounts in het partner centrum heeft, moeten er twee of meer verschillende Azure AD-App-Id's worden gebruikt, elk voor een van de accounts. Elk partner account in het partner centrum moet een unieke Azure AD-App-ID gebruiken voor alle SaaS-aanbiedingen die via dit account worden gepubliceerd.
@@ -347,7 +347,7 @@ Selecteer **concept opslaan** voordat u doorgaat.
 
 ## <a name="plan-overview"></a>Overzicht van plan
 
-Op deze pagina kunt u een verscheidenheid aan plan opties bieden binnen dezelfde aanbieding. Deze plannen (ook wel Sku's genoemd) kunnen verschillen qua versie, verdiensten maximaliseren of service lagen. U moet ten minste één abonnement instellen om uw aanbieding in Marketplace te verkopen.
+Op deze pagina kunt u een verscheidenheid aan plan opties bieden binnen dezelfde aanbieding. Deze plannen (voorheen Sku's genoemd) kunnen verschillen qua versie, verdiensten maximaliseren of service lagen. U moet ten minste één abonnement instellen om uw aanbieding in Marketplace te verkopen.
 
 Zodra u een abonnement hebt gemaakt, ziet u de namen, Id's, prijs modellen, Beschik baarheid (openbaar of privé), de huidige publicatie status en eventuele beschik bare acties.
 
@@ -380,7 +380,7 @@ Op deze pagina kunt u de markten configureren waarop dit abonnement beschikbaar 
 
 #### <a name="markets-optional"></a>Markten (optioneel)
 
-Elk plan moet beschikbaar zijn op ten minste één markt. Selecteer **markten bewerken** en schakel het selectie vakje in voor elke markt locatie waar u dit plan beschikbaar wilt maken. Deze pagina bevat een zoekvak en een optie voor het selecteren van de landen/regio's waarvoor ' BTW is geremitteerd ', waarbij micro soft namens u verkoop-en gebruiks belasting verkent.
+Elk plan moet beschikbaar zijn op ten minste één markt. Selecteer **markten bewerken** en schakel het selectie vakje in voor elke markt locatie waar u dit plan beschikbaar wilt maken. Deze pagina bevat een zoekvak en een optie voor het selecteren van de [landen/regio's waarvoor ' BTW is geremitteerd '](tax-details-paid-transactions.md), waarbij micro soft namens u verkoop-en gebruiks belasting verkent.
 
 Als u al prijzen voor uw abonnement hebt ingesteld in Verenigde Staten dollars (USD) en een andere markt locatie toevoegt, wordt de prijs voor de nieuwe markt berekend op basis van de huidige wissel koersen. Bekijk de prijs voor elke markt voordat u deze publiceert. Bekijk de prijzen op basis van de koppeling export prijzen (XLSX) nadat u uw wijzigingen hebt opgeslagen.
 

@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f209a8b1d7ba5ab4fc213e43d56c04aebc3bd410
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: d2deb59b5a10177b1a6e57046c013ec9dac0fb06
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224261"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010798"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Extensie van de virtuele machine Key Vault voor Linux
 
@@ -71,7 +71,7 @@ De volgende JSON toont het schema voor de extensie van de Key Vault-VM. Voor de 
 > [!NOTE]
 > De Url's van uw waargenomen certificaten moeten van het formulier zijn `https://myVaultName.vault.azure.net/secrets/myCertName` .
 > 
-> Dit komt doordat het `/secrets` pad het volledige certificaat retourneert, inclusief de persoonlijke sleutel, terwijl het `/certificates` pad niet. Meer informatie over certificaten vindt u hier: [Key Vault certificaten](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)
+> Dit komt doordat het `/secrets` pad het volledige certificaat retourneert, inclusief de persoonlijke sleutel, terwijl het `/certificates` pad niet. Meer informatie over certificaten vindt u hier: [Key Vault certificaten](../../key-vault/general/about-keys-secrets-certificates.md)
 
 > [!NOTE]
 > De eigenschap authenticationSettings is optioneel voor scenario's waarbij een VM meerdere toegewezen identiteiten heeft.
@@ -88,9 +88,9 @@ De volgende JSON toont het schema voor de extensie van de Key Vault-VM. Voor de 
 | typeHandlerVersion | 1.0 | int |
 | pollingIntervalInS | 3600 | tekenreeks |
 | Naam certificaat archief | Het wordt genegeerd op Linux | tekenreeks |
-| linkOnRenewal | false | booleaans |
+| linkOnRenewal | false | boolean |
 | certificateStoreLocation  | /var/lib/waagent/Microsoft.Azure.KeyVault | tekenreeks |
-| requiredInitialSync | true | booleaans |
+| requiredInitialSync | true | boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | teken reeks matrix
 | msiEndpoint | http://169.254.169.254/metadata/identity | tekenreeks |
 | msiClientId | c7373ae5-91c2-4165-8ab6-7381d6e75619 | tekenreeks |
@@ -204,7 +204,7 @@ De Azure CLI kan worden gebruikt om de Key Vault VM-extensie te implementeren op
 Houd rekening met de volgende beperkingen/vereisten:
 - Key Vault beperkingen:
   - Deze moet op het moment van de implementatie bestaan 
-  - De Key Vault Access Policy mustbe ingesteld voor de VM-VMSS-identiteit met behulp van een beheerde identiteit. Zie [Key Vault verificatie bieden met een beheerde identiteit](../../key-vault/managed-identity.md)
+  - De Key Vault Access Policy mustbe ingesteld voor de VM-VMSS-identiteit met behulp van een beheerde identiteit. Zie [Key Vault verificatie bieden met een beheerde identiteit](../../key-vault/general/managed-identity.md)
 
 
 ## <a name="troubleshoot-and-support"></a>Problemen oplossen en ondersteuning

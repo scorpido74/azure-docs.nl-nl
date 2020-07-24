@@ -7,11 +7,12 @@ ms.subservice: sizes
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: 4576a8bdcb6077a9d5de20c52f99325fdcacc0f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 21c28f3b6b498b162cbff276755b098c5ebba7c1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84673695"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010475"
 ---
 # <a name="mv2-series"></a>Mv2-serie
 
@@ -27,7 +28,7 @@ Livemigratie: niet ondersteund
 
 Updates voor het behouden van geheugen: niet ondersteund
 
-Write Accelerator: [ondersteund](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
+Write Accelerator: [ondersteund](./windows/how-to-enable-write-accelerator.md)
 
 |Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Maximale doorvoer voor schijven met caching en tijdelijke opslag: IOPS / MBps (cachegrootte in GiB) | Max. doorvoer voor schijf zonder caching: IOPS/MBps | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) |
 |---|---|---|---|---|---|---|---|
@@ -49,9 +50,9 @@ Write Accelerator: [ondersteund](https://docs.microsoft.com/azure/virtual-machin
 
 ## <a name="other-sizes"></a>Andere grootten
 
-- [Algemeen doel](sizes-general.md)
-- [Geoptimaliseerd geheugen](sizes-memory.md)
-- [Geoptimaliseerde opslag](sizes-storage.md)
+- [Algemeen gebruik](sizes-general.md)
+- [Geoptimaliseerd voor geheugen](sizes-memory.md)
+- [Geoptimaliseerd voor opslag](sizes-storage.md)
 - [Geoptimaliseerde GPU](sizes-gpu.md)
 - [Krachtig rekenvermogen](sizes-hpc.md)
 - [Vorige generaties](sizes-previous-gen.md)

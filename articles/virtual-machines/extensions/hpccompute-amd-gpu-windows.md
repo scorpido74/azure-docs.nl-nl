@@ -11,18 +11,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/10/2020
 ms.author: vikancha
-ms.openlocfilehash: cbba0401815f6754939cdaeb6e7343cf085dff68
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc7bfecbcb387fa0da0809a9a2287b243e861c49
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736965"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010866"
 ---
 # <a name="amd-gpu-driver-extension-for-windows"></a>Uitbrei ding van AMD GPU-stuur programma voor Windows
 
-Dit artikel bevat een overzicht van de VM-extensie voor het implementeren van AMD GPU-Stuur Programma's op virtuele machines uit de Windows [NVv4-serie](https://docs.microsoft.com/azure/virtual-machines/nvv4-series) . Wanneer u AMD-Stuur Programma's installeert met behulp van deze uitbrei ding, accepteert en gaat u akkoord met de voor waarden van de [gebruiksrecht overeenkomst voor de AMD-eind gebruiker](https://amd.com/radeonsoftwarems). Tijdens het installatie proces kan de virtuele machine opnieuw worden opgestart om de installatie van het stuur programma te volt ooien.
+Dit artikel bevat een overzicht van de VM-extensie voor het implementeren van AMD GPU-Stuur Programma's op virtuele machines uit de Windows [NVv4-serie](../nvv4-series.md) . Wanneer u AMD-Stuur Programma's installeert met behulp van deze uitbrei ding, accepteert en gaat u akkoord met de voor waarden van de [gebruiksrecht overeenkomst voor de AMD-eind gebruiker](https://amd.com/radeonsoftwarems). Tijdens het installatie proces kan de virtuele machine opnieuw worden opgestart om de installatie van het stuur programma te volt ooien.
 
-Instructies voor de hand matige installatie van de Stuur Programma's en de huidige ondersteunde versies zijn [hier](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-amd-driver-setup)beschikbaar.
+Instructies voor de hand matige installatie van de Stuur Programma's en de huidige ondersteunde versies zijn [hier](../windows/n-series-amd-driver-setup.md)beschikbaar.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -67,7 +67,7 @@ In de volgende JSON wordt het schema voor de uitbrei ding weer gegeven.
 
 ### <a name="properties"></a>Eigenschappen
 
-| Name | Waarde/voor beeld | Gegevenstype |
+| Naam | Waarde/voor beeld | Gegevenstype |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Micro soft. HpcCompute | tekenreeks |
@@ -81,7 +81,7 @@ In de volgende JSON wordt het schema voor de uitbrei ding weer gegeven.
 
 Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager sjablonen. Sjablonen zijn ideaal bij het implementeren van een of meer virtuele machines waarvoor na de implementatie configuratie een vereiste is.
 
-De JSON-configuratie voor een extensie van een virtuele machine kan worden genest in de resource van de virtuele machine of worden geplaatst op het hoofd niveau of op de hoogste niveaus van een JSON-sjabloon van Resource Manager. De plaatsing van de JSON-configuratie is van invloed op de waarde van de naam en het type van de resource. Zie voor meer informatie [naam en type voor onderliggende resources instellen](../../azure-resource-manager/resource-manager-template-child-resource.md). 
+De JSON-configuratie voor een extensie van een virtuele machine kan worden genest in de resource van de virtuele machine of worden geplaatst op het hoofd niveau of op de hoogste niveaus van een JSON-sjabloon van Resource Manager. De plaatsing van de JSON-configuratie is van invloed op de waarde van de naam en het type van de resource. Zie voor meer informatie [naam en type voor onderliggende resources instellen](../../azure-resource-manager/templates/child-resource-name-type.md). 
 
 In het volgende voor beeld wordt ervan uitgegaan dat de extensie is genest in de resource van de virtuele machine. Bij het nesten van de extensie bron wordt de JSON in het `"resources": []` object van de virtuele machine geplaatst.
 
@@ -172,4 +172,4 @@ Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen 
 ## <a name="next-steps"></a>Volgende stappen
 Zie [virtuele machines en functies voor Windows](features-windows.md)voor meer informatie over uitbrei dingen.
 
-Zie [grootten van virtuele machines](../windows/sizes-gpu.md)die zijn geoptimaliseerd voor GPU voor meer informatie over vm's van de N-serie.
+Zie [grootten van virtuele machines](../sizes-gpu.md)die zijn geoptimaliseerd voor GPU voor meer informatie over vm's van de N-serie.

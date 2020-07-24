@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 44c86dae3c7df8293404c253b94164c37d574158
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c89fcf22f669c97f2b17acce57c293eabcf96de
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736931"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87009693"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Problemen met de activering van virtuele Microsoft Azure-machines oplossen
 
@@ -46,9 +46,9 @@ Over het algemeen treden er activeringsproblemen met Azure-VM's op als de Window
 ## <a name="solution"></a>Oplossing
 
 >[!NOTE]
->Als u een site-naar-site-VPN en geforceerde tunneling gebruikt, raadpleegt u [aangepaste Azure-routes gebruiken om de KMS-activering met geforceerde Tunneling in te scha kelen](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-forced-tunneling). 
+>Als u een site-naar-site-VPN en geforceerde tunneling gebruikt, raadpleegt u [aangepaste Azure-routes gebruiken om de KMS-activering met geforceerde Tunneling in te scha kelen](../../vpn-gateway/vpn-gateway-about-forced-tunneling.md). 
 >
->Zie [kan ik Internet connectiviteit met virtuele netwerken die zijn verbonden met ExpressRoute-circuits blok keren](https://docs.microsoft.com/azure/expressroute/expressroute-faqs)als u ExpressRoute gebruikt en u een standaard route hebt gepubliceerd?.
+>Zie [kan ik Internet connectiviteit met virtuele netwerken die zijn verbonden met ExpressRoute-circuits blok keren](../../expressroute/expressroute-faqs.md)als u ExpressRoute gebruikt en u een standaard route hebt gepubliceerd?.
 
 ### <a name="step-1-configure-the-appropriate-kms-client-setup-key"></a>Stap 1 de juiste installatie sleutel voor de KMS-client configureren
 
@@ -61,7 +61,7 @@ Voor de virtuele machine die is gemaakt op basis van een aangepaste installatie 
     cscript c:\windows\system32\slmgr.vbs /dlv
     ```
 
-2. Als in **slmgr.vbs /dlv** het kanaal RETAIL wordt weergegeven, voert u de volgende opdrachten uit om de [installatiecode voor de KMS-client](https://technet.microsoft.com/library/jj612867%28v=ws.11%29.aspx?f=255&MSPPError=-2147217396) in te stellen voor de gebruikte versie van Windows Server, en dwingt u af dat de activering opnieuw wordt uitgevoerd: 
+2. Als in **slmgr.vbs /dlv** het kanaal RETAIL wordt weergegeven, voert u de volgende opdrachten uit om de [installatiecode voor de KMS-client](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj612867(v=ws.11)?f=255&MSPPError=-2147217396) in te stellen voor de gebruikte versie van Windows Server, en dwingt u af dat de activering opnieuw wordt uitgevoerd: 
 
     ```
     cscript c:\windows\system32\slmgr.vbs /ipk <KMS client setup key>
@@ -77,7 +77,7 @@ Voor de virtuele machine die is gemaakt op basis van een aangepaste installatie 
 
 ### <a name="step-2-verify-the-connectivity-between-the-vm-and-azure-kms-service"></a>Stap 2 de connectiviteit tussen de virtuele machine en de Azure KMS-service controleren
 
-1. Down load en pak het [PSping](https://docs.microsoft.com/sysinternals/downloads/psping) -hulp programma uit naar een lokale map in de virtuele machine die niet wordt geactiveerd. 
+1. Down load en pak het [PSping](/sysinternals/downloads/psping) -hulp programma uit naar een lokale map in de virtuele machine die niet wordt geactiveerd. 
 
 2. Ga naar Start, zoek op Windows Power shell, klik met de rechter muisknop op Windows Power shell en selecteer vervolgens als administrator uitvoeren.
 
@@ -102,7 +102,7 @@ Voor de virtuele machine die is gemaakt op basis van een aangepaste installatie 
   
     Zorg er ook voor dat het uitgaande netwerk verkeer naar het KMS-eind punt met de 1688-poort niet wordt geblokkeerd door de firewall in de virtuele machine.
 
-5. Controleer met [Network Watcher volgende hop](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview) of het type van de volgende hop van de virtuele machine in kwestie naar het doel-IP-23.102.135.246 (voor KMS.core.Windows.net) of het IP-adres van het juiste KMS-eind punt dat van toepassing is op uw regio **Internet**is.  Als het resultaat VirtualAppliance of VirtualNetworkGateway is, is er waarschijnlijk een standaard route aanwezig.  Neem contact op met uw netwerk beheerder en werk ermee om de juiste gedrags duur te bepalen.  Dit kan een [aangepaste route](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/custom-routes-enable-kms-activation) zijn als die oplossing overeenkomt met het beleid van uw organisatie.
+5. Controleer met [Network Watcher volgende hop](../../network-watcher/network-watcher-next-hop-overview.md) of het type van de volgende hop van de virtuele machine in kwestie naar het doel-IP-23.102.135.246 (voor KMS.core.Windows.net) of het IP-adres van het juiste KMS-eind punt dat van toepassing is op uw regio **Internet**is.  Als het resultaat VirtualAppliance of VirtualNetworkGateway is, is er waarschijnlijk een standaard route aanwezig.  Neem contact op met uw netwerk beheerder en werk ermee om de juiste gedrags duur te bepalen.  Dit kan een [aangepaste route](./custom-routes-enable-kms-activation.md) zijn als die oplossing overeenkomt met het beleid van uw organisatie.
 
 6. Nadat u hebt geverifieerd dat de connectiviteit met kms.core.windows.net is geslaagd, voert u de volgende opdracht uit wanneer een Windows PowerShell-opdrachtprompt met verhoogde bevoegdheid wordt weergegeven. Met deze opdracht wordt meerdere keren geprobeerd te activeren.
 
@@ -130,7 +130,7 @@ Ja.
 ### <a name="what-happens-if-windows-activation-period-expires"></a>Wat gebeurt er als de Windows-activerings periode verloopt? 
 
  
-Wanneer de respijt periode is verlopen en Windows nog steeds niet wordt geactiveerd, worden in Windows Server 2008 R2 en latere versies van Windows aanvullende meldingen over het activeren weer gegeven. De achtergrond van het bureau blad blijft zwart en Windows Update installeert alleen beveiligings-en essentiële updates, maar geen optionele updates. Zie de sectie meldingen onder aan de pagina [licentie voorwaarden](https://technet.microsoft.com/library/ff793403.aspx) .   
+Wanneer de respijt periode is verlopen en Windows nog steeds niet wordt geactiveerd, worden in Windows Server 2008 R2 en latere versies van Windows aanvullende meldingen over het activeren weer gegeven. De achtergrond van het bureau blad blijft zwart en Windows Update installeert alleen beveiligings-en essentiële updates, maar geen optionele updates. Zie de sectie meldingen onder aan de pagina [licentie voorwaarden](/previous-versions/tn-archive/ff793403(v=technet.10)) .   
 
 ## <a name="need-help-contact-support"></a>Hebt u hulp nodig? Neem contact op met ondersteuning.
 

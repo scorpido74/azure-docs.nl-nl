@@ -3,19 +3,21 @@ title: Cloud Partner-portal API-referentie-micro soft Commercial Marketplace
 description: Beschrijving van, vereiste te gebruiken en lijst met Marketplace API-bewerkingen.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 04/08/2020
-ms.openlocfilehash: 56594b41bd0b771d0cb9a2f49611d9b6c6d393db
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: reference
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 51c8b91ccf85087f965d632dee9296076aba0d86
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113578"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011955"
 ---
 # <a name="cloud-partner-portal-api-reference"></a>Naslaginformatie over Cloud Partner-portal-API
 
 > [!NOTE]
-> De Cloud Partner-portal-Api's zijn geïntegreerd met partner centrum en blijven werken nadat uw aanbiedingen zijn gemigreerd naar het partner centrum. De integratie introduceert kleine wijzigingen. Bekijk de [wijzigingen in CCP-api's](#changes-to-cpp-apis-after-the-migration-to-partner-center) die in dit document worden vermeld om te controleren of uw code blijft werken na de migratie naar het partner centrum.
+> De Cloud Partner-portal-Api's zijn geïntegreerd in en blijven werken in het partner centrum. De overgang introduceert kleine wijzigingen. Bekijk de [wijzigingen](#changes-to-cpp-apis-after-the-migration-to-partner-center) in de CCP-api's in dit document om te controleren of uw code blijft werken na het overstappen naar het partner centrum. CCP-Api's mogen alleen worden gebruikt voor bestaande producten die al zijn geïntegreerd vóór de overgang naar het partner centrum. nieuwe producten moeten de indienings-Api's van partner Center gebruiken.
 
 Met de Cloud Partner-portal REST Api's kan werk belastingen, aanbiedingen en Publisher-profielen programmatisch worden opgehaald en gemanipuleerd. De Api's gebruiken op rollen gebaseerd toegangs beheer (RBAC) om de juiste machtigingen af te dwingen tijdens de verwerkings tijd.
 
@@ -48,7 +50,7 @@ Deze referentie Details Api's om de volgende algemene taken uit te voeren.
 - [Een aanbieding maken](./cloud-partner-portal-api-creating-offer.md)
 - [Een aanbieding publiceren](./cloud-partner-portal-api-publish-offer.md)
 
-### <a name="operations"></a>Operations
+### <a name="operations"></a>Bewerkingen
 
 - [Bewerkingen ophalen](./cloud-partner-portal-api-retrieve-operations.md)
 - [Bewerkingen annuleren](./cloud-partner-portal-api-cancel-operations.md)
@@ -61,6 +63,6 @@ Deze referentie Details Api's om de volgende algemene taken uit te voeren.
 
 - [Prijzen voor aanbiedingen van virtuele machines instellen](./cloud-partner-portal-api-setting-price.md)
 
-### <a name="troubleshooting"></a>Probleemoplossing
+### <a name="troubleshooting"></a>Problemen oplossen
 
 - [Problemen met verificatiefouten oplossen](./cloud-partner-portal-api-troubleshooting-authentication-errors.md)

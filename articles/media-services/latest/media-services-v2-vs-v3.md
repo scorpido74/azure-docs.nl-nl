@@ -15,11 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: fd094e35ceaa718ec1b258d74106b39744cbd16f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 091a5d33e49e2abe811bf3cc250d04d69506165d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79087832"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011631"
 ---
 # <a name="media-services-v2-vs-v3"></a>Media Services v2 versus v3
 
@@ -27,7 +28,7 @@ In dit artikel worden wijzigingen beschreven die in Azure Media Services v3 zijn
 
 ## <a name="general-changes-from-v2"></a>Algemene wijzigingen van v2
 
-* Voor assets die zijn gemaakt met v3, Media Services alleen de [Azure storage opslag versleuteling aan de server zijde](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)ondersteunt.
+* Voor assets die zijn gemaakt met v3, Media Services alleen de [Azure storage opslag versleuteling aan de server zijde](../../storage/common/storage-service-encryption.md)ondersteunt.
     * U kunt v3-Api's gebruiken met assets die zijn gemaakt met v2-Api's met de [opslag versleuteling](../previous/media-services-rest-storage-encryption.md) (AES 256) van Media Services.
     * U kunt geen nieuwe assets maken met de verouderde AES 256- [opslag versleuteling](../previous/media-services-rest-storage-encryption.md) met behulp van v3-api's.
 * De eigenschappen van het [activum](assets-concept.md)in v3 verschillen van v2, Zie [hoe de eigenschappen worden toegewezen](#map-v3-asset-properties-to-v2).
@@ -87,11 +88,11 @@ De V3 API heeft de volgende functie hiaten ten opzichte van de v2 API. Het sluit
 
 ### <a name="map-v3-asset-properties-to-v2"></a>V3-Asset-eigenschappen toewijzen aan v2
 
-In de volgende tabel ziet u hoe de eigenschappen van het [element](https://docs.microsoft.com/rest/api/media/assets/createorupdate#asset)in v3 worden toegewezen aan de eigenschappen van het element in v2.
+In de volgende tabel ziet u hoe de eigenschappen van het [element](/rest/api/media/assets/createorupdate#asset)in v3 worden toegewezen aan de eigenschappen van het element in v2.
 
 |V3-eigenschappen|v2-eigenschappen|
 |---|---|
-|`id`-(uniek) het volledige Azure Resource Manager pad, zie voor beelden in [Asset](https://docs.microsoft.com/rest/api/media/assets/createorupdate)||
+|`id`-(uniek) het volledige Azure Resource Manager pad, zie voor beelden in [Asset](/rest/api/media/assets/createorupdate)||
 |`name`-(uniek) Zie [naamgevings conventies](media-services-apis-overview.md#naming-conventions) ||
 |`alternateId`|`AlternateId`|
 |`assetId`|`Id`-(unieke) waarde begint met het `nb:cid:UUID:` voor voegsel.|
@@ -106,11 +107,11 @@ In de volgende tabel ziet u hoe de eigenschappen van het [element](https://docs.
 
 Ter bescherming van uw assets op rest moeten de activa worden versleuteld door de versleuteling van de opslag side. In de volgende tabel ziet u hoe de opslag side-versleuteling werkt in Media Services:
 
-|Versleutelings optie|Description|Media Services v2|Media Services v3|
+|Versleutelings optie|Beschrijving|Media Services v2|Media Services v3|
 |---|---|---|---|
 |Opslag versleuteling Media Services|AES-256-versleuteling, sleutel beheerd door Media Services.|Ondersteund<sup>(1)</sup>|Niet ondersteund<sup>(2)</sup>|
-|[Storage Service Encryption voor Data-at-rest](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Versleuteling aan de server zijde die wordt aangeboden door Azure Storage, sleutel die wordt beheerd door Azure of door de klant.|Ondersteund|Ondersteund|
-|[Versleuteling van de opslag aan de client zijde](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Versleuteling aan de client zijde die wordt aangeboden door Azure Storage, sleutel die wordt beheerd door de klant in Key Vault.|Niet ondersteund|Niet ondersteund|
+|[Storage Service Encryption voor Data-at-rest](../../storage/common/storage-service-encryption.md)|Versleuteling aan de server zijde die wordt aangeboden door Azure Storage, sleutel die wordt beheerd door Azure of door de klant.|Ondersteund|Ondersteund|
+|[Versleuteling van de opslag aan de client zijde](../../storage/common/storage-client-side-encryption.md)|Versleuteling aan de client zijde die wordt aangeboden door Azure Storage, sleutel die wordt beheerd door de klant in Key Vault.|Niet ondersteund|Niet ondersteund|
 
 <sup>1</sup> hoewel Media Services de verwerking van inhoud in de Clear/zonder vorm van versleuteling ondersteunt, wordt dit niet aanbevolen.
 
@@ -132,7 +133,7 @@ In de volgende tabel ziet u de code verschillen tussen v2 en v3 voor algemene sc
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Vragen stellen, feedback geven, updates ophalen
 
-Bekijk het [Azure Media Services Community](media-services-community.md) -artikel voor verschillende manieren om vragen te stellen, feedback te geven en updates te ontvangen over Media Services.
+Ga naar het artikel van de [Azure Media Services-community](media-services-community.md) voor verschillende manieren om vragen te stellen, feedback te geven en updates voor Media Services op te halen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

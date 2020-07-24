@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: b85aab2491f4186cf4d6ee73144bc235a40cdeac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ab8d45c12d7b2c408328e306b1a6961cbe5272a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478481"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010934"
 ---
 # <a name="custom-script-extension-for-windows"></a>Aangepaste scriptextensie voor Windows
 
@@ -121,13 +121,13 @@ Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in
 
 ### <a name="property-values"></a>Eigenschaps waarden
 
-| Name | Waarde/voor beeld | Gegevenstype |
+| Naam | Waarde/voor beeld | Gegevenstype |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.Compute | tekenreeks |
 | type | CustomScriptExtension | tekenreeks |
 | typeHandlerVersion | 1,10 | int |
-| fileUris (bijvoorbeeld) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | matrix |
+| fileUris (bijvoorbeeld) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | array |
 | tijds tempel (bijvoorbeeld) | 123456789 | 32-bits geheel getal |
 | commandToExecute (bijvoorbeeld) | Power shell-ExecutionPolicy unrestricted-file configure-music-app.ps1 | tekenreeks |
 | storageAccountName (bijvoorbeeld) | examplestorageacct | tekenreeks |
@@ -144,7 +144,7 @@ Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in
 * `timestamp`(optioneel, 32-bits geheel getal) gebruik dit veld alleen om een opnieuw uitvoeren van het script te activeren door de waarde van dit veld te wijzigen.  Een gehele waarde is acceptabel; de waarde mag alleen gelijk zijn aan die van de vorige.
 * `storageAccountName`: (optioneel, String) de naam van het opslag account. Als u opslag referenties opgeeft, `fileUris` moeten alle url's voor Azure-blobs zijn.
 * `storageAccountKey`: (optioneel, String) de toegangs sleutel van het opslag account
-* `managedIdentity`: (optioneel, JSON-object) de [beheerde identiteit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) voor het downloaden van bestand (en)
+* `managedIdentity`: (optioneel, JSON-object) de [beheerde identiteit](../../active-directory/managed-identities-azure-resources/overview.md) voor het downloaden van bestand (en)
   * `clientId`: (optioneel, String) de client-ID van de beheerde identiteit
   * `objectId`: (optioneel, String) de object-ID van de beheerde identiteit
 
@@ -160,9 +160,9 @@ Open bare instellingen worden in ongecodeerde tekst verzonden naar de virtuele m
 > [!NOTE]
 > Deze eigenschap **moet** alleen worden opgegeven in beveiligde instellingen.
 
-CustomScript (versie 1,10 en hoger) ondersteunt [beheerde identiteit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) voor het downloaden van bestanden van url's die zijn opgenomen in de instelling ' fileUris '. Hiermee kan CustomScript toegang krijgen tot Azure Storage persoonlijke blobs of containers zonder dat de gebruiker geheimen zoals SAS-tokens of opslag account-sleutels hoeft door te geven.
+CustomScript (versie 1,10 en hoger) ondersteunt [beheerde identiteit](../../active-directory/managed-identities-azure-resources/overview.md) voor het downloaden van bestanden van url's die zijn opgenomen in de instelling ' fileUris '. Hiermee kan CustomScript toegang krijgen tot Azure Storage persoonlijke blobs of containers zonder dat de gebruiker geheimen zoals SAS-tokens of opslag account-sleutels hoeft door te geven.
 
-Als u deze functie wilt gebruiken, moet de gebruiker een door het [systeem toegewezen](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity) of door de [gebruiker toegewezen](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-user-assigned-identity) identiteit toevoegen aan de virtuele machine of VMSS waar CustomScript naar verwachting wordt uitgevoerd en [de beheerde identiteit toegang verlenen aan de Azure storage container of BLOB](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access).
+Als u deze functie wilt gebruiken, moet de gebruiker een door het [systeem toegewezen](../../app-service/overview-managed-identity.md?tabs=dotnet#add-a-system-assigned-identity) of door de [gebruiker toegewezen](../../app-service/overview-managed-identity.md?tabs=dotnet#add-a-user-assigned-identity) identiteit toevoegen aan de virtuele machine of VMSS waar CustomScript naar verwachting wordt uitgevoerd en [de beheerde identiteit toegang verlenen aan de Azure storage container of BLOB](../../active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage.md#grant-access).
 
 Als u de door het systeem toegewezen identiteit op de doel-VM-VMSS wilt gebruiken, stelt u het veld managedidentity in op een leeg JSON-object. 
 
@@ -283,7 +283,7 @@ The response content cannot be parsed because the Internet Explorer engine is no
 ```
 ## <a name="virtual-machine-scale-sets"></a>Virtuele-machineschaalsets
 
-Zie [add-AzVmssExtension](https://docs.microsoft.com/powershell/module/az.compute/add-azvmssextension?view=azps-3.3.0) voor meer informatie over het implementeren van de aangepaste script extensie voor een schaalset.
+Zie [add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension?view=azps-3.3.0) voor meer informatie over het implementeren van de aangepaste script extensie voor een schaalset.
 
 ## <a name="classic-vms"></a>Klassieke VM's
 
@@ -301,7 +301,7 @@ Selecteer op de pagina **extensie installeren** het lokale Power shell-bestand e
 
 ### <a name="powershell"></a>PowerShell
 
-U kunt de cmdlet [set-AzureVMCustomScriptExtension](/powershell/module/servicemanagement/azure/set-azurevmcustomscriptextension) gebruiken om de aangepaste script extensie toe te voegen aan een bestaande virtuele machine.
+U kunt de cmdlet [set-AzureVMCustomScriptExtension](/powershell/module/servicemanagement/azure.service/set-azurevmcustomscriptextension) gebruiken om de aangepaste script extensie toe te voegen aan een bestaande virtuele machine.
 
 ```powershell
 # define your file URI

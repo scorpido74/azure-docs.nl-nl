@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: d03e911b88e6a7729b0519e74941b47d85a97901
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cc00ecb3810b1499f52ea9f3a0c110e92c75dff
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84944624"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87009609"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>Een VHD uploaden naar Azure of een beheerde schijf kopiëren naar een andere regio-Azure PowerShell
 
@@ -34,7 +34,7 @@ Als u uw VHD naar Azure wilt uploaden, moet u een lege beheerde schijf maken die
 
 Dit soort beheerde schijven heeft twee unieke statussen:
 
-- ReadToUpload, wat betekent dat de schijf gereed is om een upload te ontvangen, maar geen [beveiligde toegangs handtekening](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) (SAS) is gegenereerd.
+- ReadToUpload, wat betekent dat de schijf gereed is om een upload te ontvangen, maar geen [beveiligde toegangs handtekening](../../storage/common/storage-sas-overview.md) (SAS) is gegenereerd.
 - ActiveUpload, wat betekent dat de schijf gereed is om een upload te ontvangen en dat de SAS is gegenereerd.
 
 > [!NOTE]
@@ -44,7 +44,7 @@ Dit soort beheerde schijven heeft twee unieke statussen:
 
 Voordat u een lege standaard HDD voor het uploaden kunt maken, hebt u de bestands grootte van de VHD die u wilt uploaden, in bytes. Met de voorbeeld code krijgt u maar zelf, kunt u het volgende gebruiken: `$vhdSizeBytes = (Get-Item "<fullFilePathHere>").length` . Deze waarde wordt gebruikt bij het opgeven van de para meter **-UploadSizeInBytes** .
 
-Maak nu op uw lokale shell een lege standaard HDD voor het uploaden door de **Upload** -instelling op te geven in de para meter **-CreateOption** en de para meter **-UploadSizeInBytes** in de cmdlet [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig?view=azps-1.8.0) . Roep vervolgens [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk?view=azps-1.8.0) aan om de schijf te maken.
+Maak nu op uw lokale shell een lege standaard HDD voor het uploaden door de **Upload** -instelling op te geven in de para meter **-CreateOption** en de para meter **-UploadSizeInBytes** in de cmdlet [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig?view=azps-1.8.0) . Roep vervolgens [New-AzDisk](/powershell/module/az.compute/new-azdisk?view=azps-1.8.0) aan om de schijf te maken.
 
 Vervang `<yourdiskname>` , `<yourresourcegroupname>` en `<yourregion>` Voer de volgende opdrachten uit:
 

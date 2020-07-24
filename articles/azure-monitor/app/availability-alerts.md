@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 5af6aec2267384c37f664522d075bf26c632e7e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19a0e94206691dc741020374bf5c827ba423515d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81382885"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008350"
 ---
 # <a name="availability-alerts"></a>Beschikbaarheidswaarschuwingen
 
@@ -24,7 +24,7 @@ Waarschuwingen worden nu standaard automatisch ingeschakeld, maar om de waarschu
 ![Ervaring maken](./media/availability-alerts/create-test.png)
 
 > [!NOTE]
->  Met de [nieuwe Unified Alerts](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)moeten de voor keuren voor waarschuwings regels en meldingen met [actie groepen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) **worden** geconfigureerd in de-ervaring met waarschuwingen. Zonder de volgende stappen ontvangt u alleen meldingen in de portal.
+>  Met de [nieuwe Unified Alerts](../platform/alerts-overview.md)moeten de voor keuren voor waarschuwings regels en meldingen met [actie groepen](../platform/action-groups.md) **worden** geconfigureerd in de-ervaring met waarschuwingen. Zonder de volgende stappen ontvangt u alleen meldingen in de portal.
 
 1. Nadat de beschikbaarheids test is opgeslagen, klikt u op het tabblad Details op het weglatings teken van de test die u zojuist hebt gemaakt. Klik op waarschuwing bewerken.
 
@@ -39,7 +39,7 @@ Waarschuwingen worden nu standaard automatisch ingeschakeld, maar om de waarschu
 
 ### <a name="alert-on-x-out-of-y-locations-reporting-failures"></a>Melding over problemen met de X-en Y-locaties
 
-De waarschuwing regel voor de X-locaties van de Y-locatie is standaard ingeschakeld in de [nieuwe Unified Alerts-ervaring](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)wanneer u een nieuwe beschikbaarheids test maakt. U kunt zich afmelden door de optie ' klassiek ' te selecteren of de waarschuwings regel uit te scha kelen.
+De waarschuwing regel voor de X-locaties van de Y-locatie is standaard ingeschakeld in de [nieuwe Unified Alerts-ervaring](../platform/alerts-overview.md)wanneer u een nieuwe beschikbaarheids test maakt. U kunt zich afmelden door de optie ' klassiek ' te selecteren of de waarschuwings regel uit te scha kelen.
 
 > [!NOTE]
 > Configureer de actie groepen om meldingen te ontvangen wanneer de waarschuwing wordt geactiveerd door de bovenstaande stappen te volgen. Zonder deze stap ontvangt u alleen meldingen over de Portal wanneer de regel wordt geactiveerd.
@@ -47,7 +47,7 @@ De waarschuwing regel voor de X-locaties van de Y-locatie is standaard ingeschak
 
 ### <a name="alert-on-availability-metrics"></a>Waarschuwing voor metrische gegevens over beschik baarheid
 
-Met de [nieuwe Unified Alerts](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)kunt u een waarschuwing ontvangen voor metrische gegevens over een gesegmenteerde geaggregeerde Beschik baarheid en voor het testen van de duur.
+Met de [nieuwe Unified Alerts](../platform/alerts-overview.md)kunt u een waarschuwing ontvangen voor metrische gegevens over een gesegmenteerde geaggregeerde Beschik baarheid en voor het testen van de duur.
 
 1. Selecteer een Application Insights bron in de werk ervaring metrische gegevens en selecteer een beschikbaarheids metriek:
 
@@ -57,7 +57,7 @@ Met de [nieuwe Unified Alerts](https://docs.microsoft.com/azure/monitoring-and-d
 
 ### <a name="alert-on-custom-analytics-queries"></a>Waarschuwing voor aangepaste analyse query's
 
-Met de [nieuwe Unified Alerts](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)kunt u waarschuwingen op [aangepaste logboek query's](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log)uitvoeren. Met aangepaste query's kunt u een waarschuwing sturen op elke wille keurige voor waarde die u helpt om het meest betrouw bare signaal van beschikbaarheids problemen op te lossen. Dit is ook van toepassing als u aangepaste beschikbaarheids resultaten verzendt met behulp van de TrackAvailability-SDK.
+Met de [nieuwe Unified Alerts](../platform/alerts-overview.md)kunt u waarschuwingen op [aangepaste logboek query's](../platform/alerts-unified-log.md)uitvoeren. Met aangepaste query's kunt u een waarschuwing sturen op elke wille keurige voor waarde die u helpt om het meest betrouw bare signaal van beschikbaarheids problemen op te lossen. Dit is ook van toepassing als u aangepaste beschikbaarheids resultaten verzendt met behulp van de TrackAvailability-SDK.
 
 > [!Tip]
 > De metrische gegevens over de beschik baarheid bevatten alle aangepaste beschikbaarheids resultaten die u kunt indienen door onze TrackAvailability SDK aan te roepen. U kunt de waarschuwing voor metrische gegevens over metrieken gebruiken om te waarschuwen voor aangepaste beschikbaarheids resultaten.

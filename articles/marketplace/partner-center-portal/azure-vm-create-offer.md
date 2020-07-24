@@ -1,18 +1,18 @@
 ---
 title: Een Azure virtual machine-aanbieding maken op Azure Marketplace
-description: Meer informatie over het maken van een aanbieding voor een virtuele machine op Azure Marketplace met de vereiste SKU.
+description: Meer informatie over het maken van een aanbieding voor een virtuele machine op Azure Marketplace met het vereiste abonnement.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 author: emuench
 ms.author: mingshen
-ms.date: 06/17/2020
-ms.openlocfilehash: fe53de2c81f9e9df5fd9270951f943b0b3505f1e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/17/2020
+ms.openlocfilehash: 6df1620f2d1097ac23e5dfa3903fefc74d13fa65
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110977"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012022"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Een Azure virtual machine-aanbieding maken op Azure Marketplace
 
@@ -20,7 +20,7 @@ In dit artikel wordt beschreven hoe u een Azure virtual machine-aanbieding maakt
 
 Voordat u begint, moet u [een commercieel Marketplace-account maken in het partner centrum](create-account.md). Zorg ervoor dat uw account is inge schreven in het Commercial Marketplace-programma.
 
-## <a name="introduction"></a>Introductie
+## <a name="introduction"></a>Inleiding
 
 ### <a name="the-benefits-of-publishing-to-azure-marketplace"></a>De voor delen van publiceren naar Azure Marketplace
 
@@ -180,7 +180,7 @@ Op de **aanbiedings** pagina kunt u de details van het voor stel opgeven, zoals 
 
 ### <a name="marketplace-details"></a>Marketplace-gegevens
 
-#### <a name="name"></a>Name
+#### <a name="name"></a>Naam
 
 De naam die u hier invoert, wordt aan klanten weer gegeven als de titel van de aanbieding. Dit veld wordt aangevuld met de naam die u hebt ingevoerd in het vak **aanbiedings alias** tijdens het maken van de aanbieding. U kunt deze naam later wijzigen. De naam:
 
@@ -196,7 +196,7 @@ Geef een korte beschrijving van uw aanbieding, die wordt weer gegeven in de zoek
 
 Geef een langere beschrijving van uw aanbieding op, zodat deze wordt weer gegeven in de zoek resultaten van Azure Marketplace. De naam mag Maxi maal 256 tekens bevatten.
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Beschrijving
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -226,7 +226,7 @@ Geef de ondersteunings website op waar klanten uw ondersteunings team kunnen ber
 
 Geef contact gegevens op voor micro soft-partners die kunnen worden gebruikt wanneer uw klanten een ondersteunings ticket openen. Deze informatie wordt niet vermeld op Azure Marketplace.
 
-- Name
+- Naam
 - E-mail
 - Telefoon
 
@@ -234,7 +234,7 @@ Geef contact gegevens op voor micro soft-partners die kunnen worden gebruikt wan
 
 Geef contact gegevens op die micro soft kan gebruiken wanneer er problemen zijn met uw aanbieding, met inbegrip van problemen met certificering. Deze informatie wordt niet vermeld op Azure Marketplace.
 
-- Name
+- Naam
 - E-mail
 - Telefoon
 
@@ -286,7 +286,7 @@ Selecteer **concept opslaan** voordat u doorgaat naar de volgende sectie.
 
 ## <a name="plan-overview"></a>Overzicht van plan
 
-U kunt in Partner Center diverse opties voor het plannen bieden binnen dezelfde aanbieding. Deze plannen werden voorheen Sku's genoemd. Voor een aanbieding is ten minste één abonnement vereist. Dit kan variëren per verdiensten maximaliseren-doel, Azure-regio,-functies of VM-installatie kopieën.
+U kunt in Partner Center diverse opties voor het plannen bieden binnen dezelfde aanbieding. Voor een aanbieding is ten minste één abonnement vereist (voorheen een SKU genoemd), wat kan variëren per verdiensten maximaliseren-doel, Azure-regio,-functies of VM-installatie kopieën.
 
 Nadat u uw plannen hebt gemaakt, selecteert u het tabblad Overzicht van het **plan** dat u wilt weer geven:
 
@@ -413,7 +413,6 @@ U kunt elk plan ontwerpen dat zichtbaar is voor iedereen of alleen voor een voor
 >[!Note]
 >Persoonlijke aanbiedingen worden niet ondersteund met Azure-abonnementen die zijn gemaakt via een wederverkoper van het Cloud Solution Provider-programma (CSP).
 
-
 #### <a name="hide-a-plan"></a>Een abonnement verbergen
 
 Als uw virtuele machine alleen indirect moet worden gebruikt wanneer ernaar wordt verwezen via een andere oplossings sjabloon of beheerde toepassing, schakelt u dit selectie vakje in om de virtuele machine te publiceren, maar deze te verbergen bij klanten die mogelijk rechtstreeks worden gezocht of hiernaar kunnen worden gebladerd.
@@ -487,7 +486,7 @@ Aanvullende bronnen voor test stations:
 
 Selecteer **concept opslaan** voordat u doorgaat.
 
-## <a name="review-and-publish"></a>Controleren en publiceren
+## <a name="review-and-publish"></a>Beoordelen en publiceren
 
 Nadat u alle vereiste delen van de aanbieding hebt voltooid, kunt u deze voor beoordeling en publicatie indienen.
 
@@ -516,10 +515,10 @@ Op de **overzichts** pagina van de aanbieding ziet u een visuele weer gave van d
 
 Deze pagina bevat ook koppelingen waarmee u kunt samen werken met de aanbieding, afhankelijk van de status:
 
-- Als de aanbieding een concept is: [concept aanbieding verwijderen](update-existing-offer.md#delete-a-draft-offer))
-- Als het aanbod Live is: wilt u [de aanbieding niet meer verkopen](update-existing-offer.md#stop-selling-an-offer-or-plan))
-- Als de aanbieding in preview is: [Go-Live](publishing-status.md#publisher-approval))
-- Als u Publisher-afmelding niet hebt voltooid: [Publicatie annuleren](update-existing-offer.md#cancel-publishing))
+- Als de aanbieding een concept is: [concept aanbieding verwijderen](update-existing-offer.md#delete-a-draft-offer)
+- Als de aanbieding Live is: de [aanbieding niet meer verkopen](update-existing-offer.md#stop-selling-an-offer-or-plan)
+- Als de aanbieding in preview is: [Go-Live](publishing-status.md#publisher-approval)
+- Als u Publisher-afmelding niet hebt voltooid: [Publicatie annuleren](update-existing-offer.md#cancel-publishing)
 
 ## <a name="marketplace-examples"></a>Marketplace-voor beelden
 
@@ -535,7 +534,7 @@ Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in
 4. Voorwaarden
 5. Adres van privacybeleid (koppeling)
 6. Naam van aanbieding
-7. Description
+7. Beschrijving
 8. Handige koppelingen
 9. Scherm afbeeldingen/Video's
 

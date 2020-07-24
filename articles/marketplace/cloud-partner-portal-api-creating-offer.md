@@ -4,19 +4,21 @@ description: API voor het maken van een nieuwe of het bijwerken van een bestaand
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 06/19/2020
-ms.openlocfilehash: 5104d11c1eaf9641f1d631db97dcca036308cd45
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 249eb982ee701ea0a442121c02e55ad98e1f6fb9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115720"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011988"
 ---
 <a name="create-or-modify-an-offer"></a>Een aanbieding toevoegen of veranderen
 =========================
 
 > [!NOTE]
-> De Cloud Partner-portal-Api's zijn geïntegreerd met partner centrum en blijven werken nadat uw aanbiedingen zijn gemigreerd naar het partner centrum. De integratie introduceert kleine wijzigingen. Bekijk de wijzigingen die worden vermeld in [Cloud Partner-Portal API-referentie](./cloud-partner-portal-api-overview.md) om ervoor te zorgen dat uw code blijft werken na de migratie naar het partner centrum.
+> De Cloud Partner-portal-Api's zijn geïntegreerd in en blijven werken in het partner centrum. De overgang introduceert kleine wijzigingen. Controleer de wijzigingen die worden vermeld in [Cloud Partner-Portal API-referentie](./cloud-partner-portal-api-overview.md) om ervoor te zorgen dat uw code blijft werken na het overstappen naar het partner centrum. CCP-Api's mogen alleen worden gebruikt voor bestaande producten die al zijn geïntegreerd vóór de overgang naar het partner centrum. nieuwe producten moeten de indienings-Api's van partner Center gebruiken.
 
 Met deze oproep wordt een specifieke aanbieding binnen de naam ruimte van de uitgever bijgewerkt of wordt een nieuwe aanbieding gemaakt.
 
@@ -26,14 +28,14 @@ Met deze oproep wordt een specifieke aanbieding binnen de naam ruimte van de uit
 <a name="uri-parameters"></a>URI-para meters
 --------------
 
-|  **Naam**         |  **Beschrijving**                      |  **Gegevenstype**  |
+|  **Naam**         |  **Beschrijving**                      |  **Gegevens type**  |
 |  --------         |  ----------------                     |  -------------  |
 | publisherId       |  Uitgevers-id, bijvoorbeeld`contoso` |   Tekenreeks |
 | offerId           |  Aanbiedings-id                     |   Tekenreeks        |
 | api-versie       |  Nieuwste versie van de API            |   Datum           |
 |  |  |  |
 
-<a name="header"></a>Koptekst
+<a name="header"></a>Header
 ------
 
 |  **Naam**        |  **Waarde**               |
@@ -143,7 +145,7 @@ In het volgende voor beeld wordt een aanbieding met offerID van gemaakt `contoso
 ```
 
 
-### <a name="response"></a>Antwoord
+### <a name="response"></a>Reactie
 
 ``` json
  {

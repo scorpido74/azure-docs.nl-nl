@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/04/2020
-ms.openlocfilehash: 81040adf6cfbb8820ec7f306c7d614830e3a2613
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1808623821d71169ec35beab1d33d4eb2c32c189
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82791103"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008401"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Aangepaste beschikbaarheids tests maken en uitvoeren met behulp van Azure Functions
 
@@ -23,7 +23,7 @@ In dit artikel wordt beschreven hoe u een Azure-functie maakt met TrackAvailabil
 
 - Als u een Application Insights resource hebt:
     - Azure Functions maakt standaard een Application Insights resource, maar als u een van de al gemaakte resources wilt gebruiken, moet u opgeven dat tijdens het maken.
-    - Volg de instructies voor het [maken van een Azure functions resource en timer geactiveerde functie](https://docs.microsoft.com/azure/azure-functions/functions-create-scheduled-function) (stoppen voor opschonen) met de volgende opties.
+    - Volg de instructies voor het [maken van een Azure functions resource en timer geactiveerde functie](../../azure-functions/functions-create-scheduled-function.md) (stoppen voor opschonen) met de volgende opties.
         -  Selecteer het tabblad **controle** in de buurt van de bovenkant.
 
             ![ Een Azure Functions-app maken met uw eigen app Insights-resource](media/availability-azure-functions/create-function-app.png)
@@ -35,7 +35,7 @@ In dit artikel wordt beschreven hoe u een Azure-functie maakt met TrackAvailabil
         - Selecteer **controleren + maken**
 - Als u nog geen Application Insights resource hebt gemaakt voor de door de timer geactiveerde functie:
     - Wanneer u uw Azure Functions-toepassing maakt, wordt er standaard een Application Insights resource voor u gemaakt.
-    - Volg de instructies voor het [maken van een Azure functions resource en timer geactiveerde functie](https://docs.microsoft.com/azure/azure-functions/functions-create-scheduled-function) (stoppen voor opschonen).
+    - Volg de instructies voor het [maken van een Azure functions resource en timer geactiveerde functie](../../azure-functions/functions-create-scheduled-function.md) (stoppen voor opschonen).
 
 ## <a name="sample-code"></a>Voorbeeldcode
 
@@ -45,7 +45,7 @@ Kopieer de onderstaande code naar het bestand run. CSX (de vooraf bestaande code
 >![Azure function run. CSX in Azure Portal](media/availability-azure-functions/runcsx.png)
 
 > [!NOTE]
-> Voor het eindpunt adres gebruikt u: `EndpointAddress= https://dc.services.visualstudio.com/v2/track` . Tenzij uw resource zich in een regio bevindt als Azure Government of Azure China in dat geval raadpleegt u dit artikel over [het overschrijven van de standaard eindpunten](https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification) en het juiste eind punt van het telemetrie-kanaal voor uw regio selecteren.
+> Voor het eindpunt adres gebruikt u: `EndpointAddress= https://dc.services.visualstudio.com/v2/track` . Tenzij uw resource zich in een regio bevindt als Azure Government of Azure China in dat geval raadpleegt u dit artikel over [het overschrijven van de standaard eindpunten](./custom-endpoints.md#regions-that-require-endpoint-modification) en het juiste eind punt van het telemetrie-kanaal voor uw regio selecteren.
 
 ```C#
 #load "runAvailabilityTest.csx"

@@ -11,11 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: juliako
-ms.openlocfilehash: e54944c0c10fb773a4a3141c0d3fb6524f288ae2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 70499ad354e2fafaac99fe46c1838a0be2813943
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987240"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011682"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Veelgestelde vragen over Media Services v3
 
@@ -45,7 +46,7 @@ Zie [Media verwerking schalen](media-reserved-units-cli-how-to.md)voor meer info
 
 ### <a name="what-is-the-recommended-method-to-process-videos"></a>Wat is de aanbevolen methode om Video's te verwerken?
 
-[Trans formaties](https://docs.microsoft.com/rest/api/media/transforms) gebruiken om algemene taken te configureren voor het coderen of analyseren van Video's. Elke trans formatie beschrijft een recept of een werk stroom van taken voor het verwerken van uw video-of audio bestanden. Een [taak](https://docs.microsoft.com/rest/api/media/jobs) is de daad werkelijke aanvraag om Media Services om de trans formatie toe te passen op een invoer video of audio-inhoud. Nadat de trans formatie is gemaakt, kunt u taken verzenden met behulp van Media Services Api's of een van de gepubliceerde Sdk's. Zie [trans formaties en jobs](transforms-jobs-concept.md)voor meer informatie.
+[Trans formaties](/rest/api/media/transforms) gebruiken om algemene taken te configureren voor het coderen of analyseren van Video's. Elke trans formatie beschrijft een recept of een werk stroom van taken voor het verwerken van uw video-of audio bestanden. Een [taak](/rest/api/media/jobs) is de daad werkelijke aanvraag om Media Services om de trans formatie toe te passen op een invoer video of audio-inhoud. Nadat de trans formatie is gemaakt, kunt u taken verzenden met behulp van Media Services Api's of een van de gepubliceerde Sdk's. Zie [Transformaties en taken](transforms-jobs-concept.md) voor meer informatie.
 
 ### <a name="i-uploaded-encoded-and-published-a-video-why-wont-the-video-play-when-i-try-to-stream-it"></a>Ik heb een video geüpload, gecodeerd en gepubliceerd. Waarom wordt de video niet afgespeeld wanneer ik deze probeer te streamen?
 
@@ -158,9 +159,9 @@ Op dit moment kunt u het [Azure Portal](https://portal.azure.com/) gebruiken voo
 
 * [Live Events](live-events-outputs-concept.md) beheren in Media Services v3. 
 * V3- [assets](assets-concept.md)weer geven (niet beheren). 
-* [Krijg informatie over het openen van api's](access-api-portal.md). 
+* [Krijg informatie over het openen van api's](./access-api-howto.md). 
 
-Gebruik voor alle andere beheer taken (bijvoorbeeld [trans formaties en taken](transforms-jobs-concept.md) en [inhouds beveiliging](content-protection-overview.md)) de [rest API](https://docs.microsoft.com/rest/api/media/), de [Azure cli](https://aka.ms/ams-v3-cli-ref)of een van de ondersteunde [sdk's](media-services-apis-overview.md#sdks).
+Gebruik voor alle andere beheer taken (bijvoorbeeld [trans formaties en taken](transforms-jobs-concept.md) en [inhouds beveiliging](content-protection-overview.md)) de [rest API](/rest/api/media/), de [Azure cli](https://aka.ms/ams-v3-cli-ref)of een van de ondersteunde [sdk's](media-services-apis-overview.md#sdks).
 
 ### <a name="is-there-an-assetfile-concept-in-v3"></a>Is er een AssetFile-concept in v3?
 
@@ -170,7 +171,7 @@ Zie [Migrate to Media Services v3](media-services-v2-vs-v3.md)(Engelstalig) voor
 
 ### <a name="where-did-client-side-storage-encryption-go"></a>Waar is de opslag versleuteling aan de client zijde gebleven?
 
-U wordt aangeraden om opslag versleuteling aan de server zijde te gebruiken (deze is standaard ingeschakeld). Zie [Azure Storage-service versleuteling voor Data-at-rest](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)voor meer informatie.
+U wordt aangeraden om opslag versleuteling aan de server zijde te gebruiken (deze is standaard ingeschakeld). Zie [Azure Storage-service versleuteling voor Data-at-rest](../../storage/common/storage-service-encryption.md)voor meer informatie.
 
 ## <a name="offline-streaming"></a>Offline streaming
 

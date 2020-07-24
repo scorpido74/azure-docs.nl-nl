@@ -9,11 +9,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 05/7/2019
 ms.author: haroldw
-ms.openlocfilehash: c338e9a6a793d1c2d0557d70242996175d5a85ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e254c0c87465b79a37d9a849cc966e34eed01474
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759451"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010560"
 ---
 # <a name="openshift-in-azure"></a>Open Shift in azure
 
@@ -29,7 +30,7 @@ Er zijn meerdere versies van open Shift beschikbaar.  Van deze versies zijn er s
 
 ## <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
-Microsoft Azure Red Hat open Shift is een volledig beheerd aanbod van open Shift dat wordt uitgevoerd in Azure. Deze service wordt gezamenlijk beheerd en ondersteund door micro soft en Red Hat. Zie de documentatie van [Azure Red Hat open Shift service](https://docs.microsoft.com/azure/openshift/) voor meer informatie.
+Microsoft Azure Red Hat open Shift is een volledig beheerd aanbod van open Shift dat wordt uitgevoerd in Azure. Deze service wordt gezamenlijk beheerd en ondersteund door micro soft en Red Hat. Zie de documentatie van [Azure Red Hat open Shift service](../../openshift/index.yml) voor meer informatie.
 
 ## <a name="openshift-container-platform"></a>OpenShift Container Platform
 

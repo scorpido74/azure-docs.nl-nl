@@ -6,11 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
-ms.openlocfilehash: 6a1dddfbcdbf2bd49586238872db15f1da5d7ce1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ed0009bce18e2b0970b425c31d2f38cef387187
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84457300"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008316"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Aanbevolen procedures voor Azure Cache voor Redis 
 Door deze aanbevolen procedures te volgen, kunt u de prestaties en het rendabele gebruik van uw Azure-cache voor redis-instantie maximaliseren.
@@ -82,10 +83,10 @@ Als u wilt testen hoe uw code werkt onder fout voorwaarden, kunt u overwegen de 
  
 ### <a name="redis-benchmark-examples"></a>Voor beelden van redis-benchmarks
 **Installatie vooraf testen**: bereid het cache-exemplaar voor met de gegevens die zijn vereist voor de onderstaande opdrachten voor latentie en door voer.
-> redis-benchmark.exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t SET-n 10-d 1024 
+> redis-Bench Mark-h yourcache.redis.cache.windows.net-a yourAccesskey-t SET-n 10-d 1024 
 
 **Test latentie**: aanvragen ophalen met een payload van 1 KB.
-> redis-benchmark.exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t GET-d 1024-P 50-c 4
+> redis-Bench Mark-h yourcache.redis.cache.windows.net-a yourAccesskey-t GET-d 1024-P 50-c 4
 
 De **door Voer testen:** GET-aanvragen in de pipeline met een payload van 1 KB.
-> redis-benchmark.exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t GET-n 1000000-d 1024-P 50-c 50
+> redis-Bench Mark-h yourcache.redis.cache.windows.net-a yourAccesskey-t GET-n 1000000-d 1024-P 50-c 50

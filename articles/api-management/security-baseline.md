@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: b5640a42c0fdcb0bd958011db28c19854b16a547
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 4e951b7eb2d3d5e49ab80af2604d5b44565dd25e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252756"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008537"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>Azure-beveiligings basislijn voor API Management
 
@@ -640,7 +640,7 @@ Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt mic
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
 
-**Hulp**: gebruik op rollen gebaseerd toegangs beheer voor het beheren van toegang tot Azure API management. Azure API Management is afhankelijk van de op Azure Role gebaseerde Access Control (RBAC) om nauw keurig toegangs beheer mogelijk te maken voor API Management Services en entiteiten (bijvoorbeeld Api's en beleids regels).
+**Hulp**: gebruik op rollen gebaseerd toegangs beheer voor het beheren van toegang tot Azure API management. Azure API Management is afhankelijk van Azure RBAC (op rollen gebaseerd toegangs beheer) voor het maken van nauw keurig toegangs beheer voor API Management Services en entiteiten (bijvoorbeeld Api's en beleids regels).
 
 * [Op rollen gebaseerd toegangsbeheer gebruiken in API Management](./api-management-role-based-access-control.md)
 
@@ -1120,7 +1120,7 @@ Schakel zacht verwijderen in Key Vault in om sleutels te beschermen tegen onbedo
 
 **Verantwoordelijkheid**: klant
 
-## <a name="incident-response"></a>Incidentrespons
+## <a name="incident-response"></a>Reageren op incidenten
 
 *Zie voor meer informatie [beveiligings beheer: reactie op incidenten](../security/benchmarks/security-control-incident-response.md).*
 

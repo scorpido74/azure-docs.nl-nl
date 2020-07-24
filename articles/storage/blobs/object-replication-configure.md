@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/16/2020
+ms.date: 07/16/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 9cb9f1a33c37487f4bfb1419d45d4e42a862d815
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ddf9a1309cb4f9156cec3aeb5d2ddd9d22cde485
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888120"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011445"
 ---
 # <a name="configure-object-replication-for-block-blobs-preview"></a>Object replicatie voor blok-blobs configureren (preview-versie)
 
@@ -52,7 +52,7 @@ Voer de volgende stappen uit om een replicatie beleid te maken in de Azure Porta
 
     :::image type="content" source="media/object-replication-configure/configure-replication-policy.png" alt-text="Scherm opname van de replicatie regels in Azure Portal":::
 
-1. Indien gewenst, geeft u een of meer filters op om alleen blobs te kopiëren die overeenkomen met het patroon van het voor voegsel. Als u bijvoorbeeld een voor voegsel opgeeft `b` , worden alleen blobs waarvan de naam begint met die letter, gerepliceerd. U kunt een virtuele map opgeven als onderdeel van het voor voegsel.
+1. Indien gewenst, geeft u een of meer filters op om alleen blobs te kopiëren die overeenkomen met het patroon van het voor voegsel. Als u bijvoorbeeld een voor voegsel opgeeft `b` , worden alleen blobs waarvan de naam begint met die letter, gerepliceerd. U kunt een virtuele map opgeven als onderdeel van het voor voegsel. De voorvoegsel teken reeks biedt geen ondersteuning voor joker tekens.
 
     De volgende afbeelding toont filters die bepalen welke blobs worden gekopieerd als onderdeel van een replicatie regel.
 
@@ -68,7 +68,7 @@ Voer de volgende stappen uit om een replicatie beleid te maken in de Azure Porta
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Als u een replicatie beleid wilt maken met Power shell, installeert u eerst versie [2.0.1-Preview](https://www.powershellgallery.com/packages/Az.Storage/2.0.1-preview) van de module AZ. Storage Power shell. Voer de volgende stappen uit om de preview-module te installeren:
+Als u een replicatie beleid wilt maken met Power shell, installeert u eerst versie [2.0.1-Preview](https://www.powershellgallery.com/packages/Az.Storage/2.0.1-preview) of hoger van de AZ. Storage Power shell-module. Voer de volgende stappen uit om de preview-module te installeren:
 
 1. Verwijder eerdere installaties van Azure PowerShell van Windows met de optie **Apps & onderdelen** onder **instellingen**.
 
@@ -157,7 +157,7 @@ Set-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
     -InputObject $destPolicy
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Als u een replicatie beleid met Azure CLI wilt maken, moet u eerst de preview-extensie voor Azure Storage installeren.:
 
@@ -259,7 +259,7 @@ Remove-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
     -PolicyId $destPolicy.PolicyId
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Als u een replicatie beleid wilt verwijderen, verwijdert u het beleid van zowel het bron account als het doel account. Als u het beleid verwijdert, worden ook alle bijbehorende regels verwijderd.
 

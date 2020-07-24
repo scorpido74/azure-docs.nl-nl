@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e5148ff9e92a2e550a3117356a4e77cbac8fc6f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da5811abec889bcc47d08878a0950df7f0983663
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67673303"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010819"
 ---
 *De cache opwarmen*  
 De schijf met alleen-lezen host-caching kan hogere IOPS geven dan de schijf limiet. Als u dit maximale Lees prestaties wilt ophalen uit de cache van de host, moet u eerst de cache van deze schijf opwarmen. Dit zorgt ervoor dat de Lees-IOs die het benchmarking-hulp programma op CacheReads volume plaatst, een treffer voor de cache krijgt, en niet rechtstreeks de schijf. Het aantal cache treffers resulteert in extra IOPS van de schijf met één cache.
@@ -62,18 +62,18 @@ Voer de onderstaande stappen uit om de cache op te schonen
 
 1. Maak twee toegangs specificaties met de waarden die hieronder worden weer gegeven,
 
-   | Name | Aanvraag grootte | Wille keurige | Wie |
+   | Naam | Aanvraag grootte | Wille keurige | Wie |
    | --- | --- | --- | --- |
    | RandomWrites \_ 1MB |1 MB |100 |0 |
    | RandomReads \_ 1MB |1 MB |100 |100 |
 1. Voer de Iometer-test uit voor het initialiseren van de cache schijf met de volgende para meters. Gebruik drie worker-threads voor het doel volume en een wachtrij diepte van 128. Stel de duur ' uitvoerings tijd ' van de test in op 2 uur op het tabblad ' test Setup '.
 
-   | Scenario | Doel volume | Name | Duur |
+   | Scenario | Doel volume | Naam | Duur |
    | --- | --- | --- | --- |
    | Cache schijf initialiseren |CacheReads |RandomWrites \_ 1MB |2 uur |
 1. Voer de Iometer-test uit voor het opwarmen van de cache schijf met de volgende para meters. Gebruik drie worker-threads voor het doel volume en een wachtrij diepte van 128. Stel de duur ' uitvoerings tijd ' van de test in op 2 uur op het tabblad ' test Setup '.
 
-   | Scenario | Doel volume | Name | Duur |
+   | Scenario | Doel volume | Naam | Duur |
    | --- | --- | --- | --- |
    | Cache schijf opwarmen |CacheReads |RandomReads \_ 1MB |2 uur |
 
@@ -153,7 +153,7 @@ sudo fio --runtime 30 fiowrite.ini
 ```
 
 Terwijl de test wordt uitgevoerd, kunt u het aantal schrijf-IOPS zien dat de VM en Premium-schijven leveren. Zoals u in het onderstaande voor beeld ziet, levert de DS14-VM de maximale schrijf-IOPS limiet van 50.000 IOPS op.  
-    ![Aantal schrijf-IOPS-VM'S en Premium-schijven leveren](../articles/virtual-machines/linux/media/premium-storage-performance/image11.png)
+    ![Aantal schrijf-IOPS-VM'S en Premium-schijven worden geleverd.](../articles/virtual-machines/linux/media/premium-storage-performance/image11.png)
 
 #### <a name="maximum-read-iops"></a>Maximale Lees-IOPS
 
@@ -194,7 +194,7 @@ sudo fio --runtime 30 fioread.ini
 ```
 
 Terwijl de test wordt uitgevoerd, kunt u het aantal gelezen IOPS zien dat de VM en Premium-schijven worden geleverd. Zoals u in het voor beeld hieronder ziet, wordt de DS14-VM meer dan 64.000 Lees-IOPS geleverd. Dit is een combi natie van de schijf-en cache prestaties.  
-    ![](../articles/virtual-machines/linux/media/premium-storage-performance/image12.png)
+    ![Scherm opname van het aantal schrijf-IOPS-VM'S en Premium-schijven die worden geleverd.](../articles/virtual-machines/linux/media/premium-storage-performance/image12.png)
 
 #### <a name="maximum-read-and-write-iops"></a>Maximale IOPS voor lezen en schrijven
 

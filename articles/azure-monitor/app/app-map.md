@@ -4,15 +4,16 @@ description: Complexe topologieën van toepassingen bewaken met het toepassings 
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 7c5c9173704535b1e34ffde5867bd512e3e02ed8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f9f19ea9370b9da3e69d871e8b53ccf7f64a6a5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80989524"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008503"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Toepassings overzicht: gedistribueerde toepassingen sorteren
 
-Met toepassings overzicht kunt u knel punten in de prestaties of HOTS pots voor alle onderdelen van uw gedistribueerde toepassing herkennen. Elk knoop punt op de kaart vertegenwoordigt een toepassings onderdeel of de afhankelijkheden ervan. en heeft de status van de KPI en de waarschuwingen. U kunt op een wille keurig onderdeel klikken voor gedetailleerdere diagnostische gegevens, zoals Application Insights gebeurtenissen. Als uw app gebruikmaakt van Azure-Services, kunt u ook klikken op Azure Diagnostics, zoals SQL Database Advisor aanbevelingen.
+Met het toepassingsoverzicht kunt u knelpunten met prestatieproblemen of hotspots met storingen in alle onderdelen van uw gedistribueerde toepassing herkennen. Elk knoop punt op de kaart vertegenwoordigt een toepassings onderdeel of de afhankelijkheden ervan. en heeft de status van de KPI en de waarschuwingen. U kunt op een wille keurig onderdeel klikken voor gedetailleerdere diagnostische gegevens, zoals Application Insights gebeurtenissen. Als uw app gebruikmaakt van Azure-Services, kunt u ook klikken op Azure Diagnostics, zoals SQL Database Advisor aanbevelingen.
 
 ## <a name="what-is-a-component"></a>Wat is een onderdeel?
 
@@ -156,7 +157,7 @@ Voor [ASP.net core](asp-net-core.md#adding-telemetryinitializers) toepassingen v
 
 **Java-Agent**
 
-Voor [Java-agent 3,0](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) is de rolnaam van de Cloud ingesteld op de volgende manier:
+Voor [Java-agent 3,0](./java-in-process-agent.md) is de rolnaam van de Cloud ingesteld op de volgende manier:
 
 ```json
 {
@@ -258,15 +259,15 @@ Voer de volgende stappen uit als u problemen ondervindt bij het ophalen van de t
 
 1. Zorg ervoor dat u een officieel ondersteunde SDK gebruikt. Niet-ondersteunde SDK's of community-SDK's bieden mogelijk geen ondersteuning voor correlatie.
 
-    Raadpleeg dit [artikel](https://docs.microsoft.com/azure/application-insights/app-insights-platforms) voor een lijst met ondersteunde sdk's.
+    Raadpleeg dit [artikel](./platforms.md) voor een lijst met ondersteunde SDK's.
 
 2. Upgrade alle onderdelen naar de nieuwste SDK-versie.
 
-3. Als u Azure Functions met C# gebruikt, moet u upgraden naar [functions v2](https://docs.microsoft.com/azure/azure-functions/functions-versions).
+3. Als u Azure Functions met C# gebruikt, moet u upgraden naar [functions v2](../../azure-functions/functions-versions.md).
 
 4. Bevestig dat de naam van de [Cloud functie](#set-cloud-role-name) correct is geconfigureerd.
 
-5. Als er een afhankelijkheid ontbreekt, zorgt u ervoor dat deze in de lijst met [automatisch verzamelde afhankelijkheden](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies) staat. Als dat niet zo is, kunt u de afhankelijkheid nog steeds handmatig traceren met een [aanroep voor het traceren van de afhankelijkheid](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency).
+5. Als er een afhankelijkheid ontbreekt, zorgt u ervoor dat deze in de lijst met [automatisch verzamelde afhankelijkheden](./auto-collect-dependencies.md) staat. Als dat niet zo is, kunt u de afhankelijkheid nog steeds handmatig traceren met een [aanroep voor het traceren van de afhankelijkheid](./api-custom-events-metrics.md#trackdependency).
 
 ### <a name="too-many-nodes-on-the-map"></a>Te veel knoop punten op de kaart
 
@@ -280,7 +281,7 @@ Om dit probleem op te lossen, moet u de instrumentatie wijzigen om de naam van d
 
 * Het afhankelijkheids type moet het logische type van een afhankelijkheid vertegenwoordigen. Bijvoorbeeld: HTTP, SQL of Azure Blob zijn typische typen afhankelijkheden. Het mag geen unieke Id's bevatten.
 
-* Het doel van de rolnaam van de Cloud wordt beschreven in de [bovenstaande sectie](https://docs.microsoft.com/azure/azure-monitor/app/app-map#set-cloud-role-name).
+* Het doel van de rolnaam van de Cloud wordt beschreven in de [bovenstaande sectie](#set-cloud-role-name).
 
 ## <a name="portal-feedback"></a>Feedback over de portal
 
