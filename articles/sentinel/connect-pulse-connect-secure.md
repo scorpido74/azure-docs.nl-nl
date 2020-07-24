@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 01d41b20c543262280e215cf4e31fd0cccce877f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f7f6de717f0ed9a2e27e15199b6f0ea566e0fdcd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531462"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021627"
 ---
 # <a name="connect-your-pulse-connect-secure-to-azure-sentinel"></a>Verbinding maken met uw Pulse verbinding beveiligen met Azure Sentinel
+
+> [!IMPORTANT]
+> De Pulse Connect-beveiligde gegevens connector in azure Sentinel is momenteel beschikbaar als open bare preview.
+> Deze functie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 In dit artikel wordt uitgelegd hoe u verbinding kunt maken tussen uw [Pulse en beveiligde](https://www.pulsesecure.net/products/pulse-connect-secure/) apparaten met Azure Sentinel. Met de Pulse Connected Data Connector kunt u eenvoudig verbinding maken met beveiligde logboeken met Azure Sentinel, voor het weer geven van Dash boards, het maken van aangepaste waarschuwingen en het verbeteren van onderzoek. Integratie tussen Pulse Connect beveiligde en Azure Sentinel maakt gebruik van syslog.
 

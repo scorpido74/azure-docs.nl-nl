@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: Zhchia
-ms.openlocfilehash: 94c261da0c935cb7a41dde768069099b4e5ed251
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb5e51503fa20cd3ace6070cb1b51f5bf32d0e13
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80384072"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87016255"
 ---
 # <a name="tutorial-configure-zoom-for-automatic-user-provisioning"></a>Zelf studie: zoomen configureren voor automatische gebruikers inrichting
 
@@ -122,7 +122,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
    |Kenmerk|Type|
    |---|---|
    |userName|Tekenreeks|
-   |actief|Boolean-waarde|
+   |actief|Boolean|
    |name. naam|Tekenreeks|
    |naam. familielid|Tekenreeks|
    |e-mail berichten [type EQ "werk]|Tekenreeks|
@@ -154,7 +154,10 @@ Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende bronnen om uw 
 ## <a name="connector-limitations"></a>Connector beperkingen
 * Als u inzoomt, worden er momenteel Maxi maal 9.999 basis gebruikers toegestaan.
 
-## <a name="additional-resources"></a>Extra resources
+## <a name="change-log"></a>Wijzigingenlogboek
+* 05/14/2020-ondersteuning voor UPDATE bewerkingen toegevoegd voor e-mails [type EQ "werk] kenmerk.
+
+## <a name="additional-resources"></a>Aanvullende resources
 
 * [Inrichten van gebruikers accounts voor zakelijke apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)

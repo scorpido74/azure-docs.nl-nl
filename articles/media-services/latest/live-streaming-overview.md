@@ -13,11 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: juliako
-ms.openlocfilehash: 23ee7ba7a5456916eb307e21aa2074924614cb4b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd592469a4435504f1eecf1f24e50faf23fad17a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84418140"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022970"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Live streamen met Azure Media Services v3
 
@@ -34,7 +35,7 @@ Voor klanten die inhoud willen leveren aan grote Internet doelgroepen, raden we 
 In dit artikel vindt u een overzicht en richt lijnen voor live streamen met Media Services en koppelingen naar andere relevante artikelen.
  
 > [!NOTE]
-> U kunt de [Azure Portal](https://portal.azure.com/) gebruiken om v3 [Live-gebeurtenissen](live-events-outputs-concept.md)te beheren, v3- [assets](assets-concept.md)weer te geven, informatie over het openen van api's op te halen. Gebruik voor alle andere beheer taken (bijvoorbeeld trans formaties en taken) de [rest API](https://docs.microsoft.com/rest/api/media/), [cli](https://aka.ms/ams-v3-cli-ref)of een van de ondersteunde [sdk's](media-services-apis-overview.md#sdks).
+> U kunt de [Azure Portal](https://portal.azure.com/) gebruiken om v3 [Live-gebeurtenissen](live-events-outputs-concept.md)te beheren, v3- [assets](assets-concept.md)weer te geven, informatie over het openen van api's op te halen. Gebruik voor alle andere beheer taken (bijvoorbeeld trans formaties en taken) de [rest API](/rest/api/media/), [cli](https://aka.ms/ams-v3-cli-ref)of een van de ondersteunde [sdk's](media-services-apis-overview.md#sdks).
 
 ## <a name="dynamic-packaging-and-delivery"></a>Dynamische verpakking en levering
 
@@ -53,7 +54,7 @@ Dynamische filtering wordt gebruikt voor het beheren van het aantal sporen, inde
 
 ## <a name="live-event-types"></a>Live gebeurtenis typen
 
-[Live-gebeurtenissen](https://docs.microsoft.com/rest/api/media/liveevents) zijn verantwoordelijk voor het opnemen en verwerken van live video feeds. Een livegebeurtenis kan worden ingesteld op een *pass-through* (een on-premises live-encoder verzendt een stroom met meerdere bitsnelheden) of *live-codering* (een on-premises live-encoder verzendt een stream met één bitsnelheid). Zie [Live Events en live outputs](live-events-outputs-concept.md)voor meer informatie over live streamen in Media Services v3.
+[Live-gebeurtenissen](/rest/api/media/liveevents) zijn verantwoordelijk voor het opnemen en verwerken van live video feeds. Een livegebeurtenis kan worden ingesteld op een *pass-through* (een on-premises live-encoder verzendt een stroom met meerdere bitsnelheden) of *live-codering* (een on-premises live-encoder verzendt een stream met één bitsnelheid). Zie [Live Events en live outputs](live-events-outputs-concept.md)voor meer informatie over live streamen in Media Services v3.
 
 ### <a name="pass-through"></a>Pass-through
 
@@ -107,7 +108,7 @@ Als u inzicht wilt krijgen in de werk stroom voor live streamen in Media Service
     * Stop de live-gebeurtenis. Zodra de live-gebeurtenis is gestopt, worden er geen kosten in rekening gebracht. Als u het kanaal opnieuw wilt starten, wordt dezelfde URL voor opnemen gebruikt, zodat u het coderingsprogramma niet opnieuw hoeft te configureren.
     * U kunt het streaming-eind punt stoppen, tenzij u wilt door gaan met het archiveren van uw live-gebeurtenis als een stroom op aanvraag. Als de live-gebeurtenis is gestopt, worden er geen kosten in rekening gebracht.
 
-De Asset waarnaar de live uitvoer wordt gearchiveerd, wordt automatisch een Asset op aanvraag wanneer de live uitvoer wordt verwijderd. U moet alle Live outputs verwijderen voordat een live gebeurtenis kan worden gestopt. U kunt een optionele vlag [removeOutputsOnStop](https://docs.microsoft.com/rest/api/media/liveevents/stop#request-body) gebruiken om live-uitvoer automatisch te verwijderen bij het stoppen. 
+De Asset waarnaar de live uitvoer wordt gearchiveerd, wordt automatisch een Asset op aanvraag wanneer de live uitvoer wordt verwijderd. U moet alle Live outputs verwijderen voordat een live gebeurtenis kan worden gestopt. U kunt een optionele vlag [removeOutputsOnStop](/rest/api/media/liveevents/stop#request-body) gebruiken om live-uitvoer automatisch te verwijderen bij het stoppen. 
 
 > [!TIP]
 > Zie [zelf studie over live streamen](stream-live-tutorial-with-api.md): in dit artikel wordt de code onderzocht waarmee de hierboven beschreven stappen worden geïmplementeerd.
@@ -117,7 +118,7 @@ De Asset waarnaar de live uitvoer wordt gearchiveerd, wordt automatisch een Asse
 - [Aanbevolen live-encoders](recommended-on-premises-live-encoders.md)
 - [Een cloud-DVR gebruiken](live-event-cloud-dvr.md)
 - [Functie vergelijking van live gebeurtenis typen](live-event-types-comparison.md)
-- [Staten en facturering](live-event-states-billing.md)
+- [Statussen en facturering](live-event-states-billing.md)
 - [Latentie](live-event-latency.md)
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
@@ -126,7 +127,7 @@ Zie het artikel [Veelgestelde vragen](frequently-asked-questions.md#live-streami
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Vragen stellen, feedback geven, updates ophalen
 
-Bekijk het [Azure Media Services Community](media-services-community.md) -artikel voor verschillende manieren om vragen te stellen, feedback te geven en updates te ontvangen over Media Services.
+Ga naar het artikel van de [Azure Media Services-community](media-services-community.md) voor verschillende manieren om vragen te stellen, feedback te geven en updates voor Media Services op te halen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2019
+ms.date: 05/06/2020
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8b7fa5aea835329be8f65a3bb1775ba5b0d97d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ca536ddacb0f81459625b733eb79282e145afba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389854"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87016300"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Zelf studie: toegestane vertraging voor automatische gebruikers inrichting configureren
 
@@ -107,12 +107,12 @@ In deze sectie wordt u begeleid bij het verbinden van de API voor het inrichten 
 
    |Kenmerk|Type|
    |---|---|
-   |actief|Boolean-waarde|
+   |actief|Boolean|
    |externalId|Tekenreeks|
    |displayName|Tekenreeks|
    |naam. familielid|Tekenreeks|
    |name. naam|Tekenreeks|
-   |titel|Tekenreeks|
+   |title|Tekenreeks|
    |e-mail berichten [type EQ "werk]. waarde|Tekenreeks|
    |userName|Tekenreeks|
    |Naam|Tekenreeks|
@@ -169,7 +169,7 @@ Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende bronnen om uw 
 2. Controleer de [voortgangs balk](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) om de status van de inrichtings cyclus te bekijken en te bepalen hoe dicht deze is voltooid
 3. Als de inrichtings configuratie een slechte status heeft, gaat de toepassing in quarantaine. Meer informatie over de quarantaine statussen [vindt u hier](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
 
-## <a name="connector-limitations"></a>Connector beperkingen
+## <a name="troubleshooting-tips"></a>Tips voor probleemoplossing
 
 * Bij het configureren van het kenmerk **DisplayName** van de toegestane vertraging moet u rekening houden met het volgende gedrag:
 
@@ -179,11 +179,15 @@ Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende bronnen om uw 
   
   * Toegestane interpunctie omvat punten, onderstrepings tekens, afbreek streepjes, apostrofs, haakjes (bijvoorbeeld **[{}]**)) en scheidings tekens (bijvoorbeeld **/;**).
   
+  * eigenschap displayName kan geen @-teken hebben. Als een @ is opgenomen, kunt u een overgeslagen gebeurtenis vinden in de inrichtings logboeken met de beschrijving ' AttributeValidationFailed '.
+
   * Alleen updates als deze twee instellingen zijn geconfigureerd in de werk plek/organisatie- **profiel synchronisatie is ingeschakeld** en **gebruikers kunnen de weergave naam niet wijzigen**.
-  
+
 * Het kenmerk van de **gebruikers naam** van de toegestane vertraging moet minder dan 21 tekens bevatten en moet een unieke waarde hebben.
 
 * De toegestane vertraging kan alleen overeenkomen met de kenmerken **username** en **e-mail**.  
+  
+* Algemene erorr-codes worden beschreven in de officiële documentatie over toegestane vertragingen-https://api.slack.com/scim#errors
 
 ## <a name="change-log"></a>Wijzigingenlogboek
 

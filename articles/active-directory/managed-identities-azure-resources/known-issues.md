@@ -17,12 +17,12 @@ ms.date: 12/12/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 6f18c9fe43b0b714e5709b014c051520b3722138
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: d8aa6cc7894b13789fe196e32c401128572346bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855124"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019060"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Veelgestelde vragen en bekende problemen met beheerde identiteiten voor Azure-resources
 
@@ -55,9 +55,12 @@ Beheerde identiteiten hebben geen toepassings object in de map, wat vaak wordt g
 
 Nee, er zijn geen plannen voor het ondersteunen van beheerde identiteiten voor Azure-resources in azure Cloud Services.
 
-### <a name="does-managed-identities-for-azure-resources-work-with-the-active-directory-authentication-library-adal-or-the-microsoft-authentication-library-msal"></a>Werken beheerde identiteiten voor Azure-resources met de Active Directory Authentication Library (ADAL) of de micro soft Authentication Library (MSAL)?
+### <a name="what-is-the-credential-associated-with-a-managed-identity-how-long-is-it-valid-and-how-often-is-it-rotated"></a>Wat is de referentie die is gekoppeld aan een beheerde identiteit? Hoe lang is het geldig en hoe vaak het draait?
 
-Nee, beheerde identiteiten voor Azure-resources zijn nog niet geïntegreerd met ADAL of MSAL. Ga voor meer informatie over het verkrijgen van een token voor beheerde identiteiten voor Azure-resources met het REST-eind punt naar [Managed Identities voor Azure resources op een Azure VM gebruiken om een toegangs token te verkrijgen](how-to-use-vm-token.md).
+> [!NOTE]
+> De verificatie van beheerde identiteiten is een intern implementatie detail dat kan zonder kennisgeving worden gewijzigd.
+
+Beheerde identiteiten gebruiken verificatie op basis van certificaten. De referenties van elke beheerde identiteit hebben een verval van 90 dagen en worden na 45 dagen opgerold.
 
 ### <a name="what-is-the-security-boundary-of-managed-identities-for-azure-resources"></a>Wat is de beveiligings grens van beheerde identiteiten voor Azure-resources?
 
@@ -133,7 +136,7 @@ Tijdelijke oplossing voor beheerde identiteiten in een abonnement dat is verplaa
  - Voor door het systeem toegewezen beheerde identiteiten: uitschakelen en opnieuw inschakelen. 
  - Voor door de gebruiker toegewezen beheerde identiteiten: verwijderen, opnieuw maken en opnieuw koppelen aan de benodigde resources (bijvoorbeeld virtuele machines)
 
-Zie [een Azure-abonnement overdragen naar een andere Azure AD-Directory (preview)](../../role-based-access-control/transfer-subscription.md)voor meer informatie.
+Zie voor meer informatie [Transfer an Azure subscription to a different Azure AD directory (Preview)](../../role-based-access-control/transfer-subscription.md).
 
 ### <a name="moving-a-user-assigned-managed-identity-to-a-different-resource-groupsubscription"></a>Een door de gebruiker toegewezen beheerde identiteit verplaatsen naar een andere resource groep of een ander abonnement
 

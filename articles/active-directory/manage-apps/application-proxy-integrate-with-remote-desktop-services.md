@@ -11,16 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/23/2019
+ms.date: 07/22/2020
 ms.author: kenwith
 ms.custom: it-pro
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34f3dcd607a7417932912528167a1120dbfd9b4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9cba74c773e1f141db14e06cf0cda8b31d06ba4f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764516"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019519"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Extern bureaublad publiceren met Azure AD-toepassingsproxy
 
@@ -28,7 +29,7 @@ Extern bureaublad service en Azure AD-toepassingsproxy samen werken om de produc
 
 De doel groep voor dit artikel is:
 - Klanten van de huidige toepassings proxy die meer toepassingen willen aanbieden aan hun eind gebruikers door on-premises toepassingen te publiceren via Extern bureaublad-services.
-- Huidige Extern bureaublad-services klanten die de kwets baarheid van hun implementatie willen beperken door gebruik te maken van Azure AD-toepassingsproxy. In dit scenario wordt een beperkt aantal verificaties in twee stappen en voorwaardelijke toegangs controle voor RDS.
+- Huidige Extern bureaublad-services klanten die de kwets baarheid van hun implementatie willen beperken door gebruik te maken van Azure AD-toepassingsproxy. Dit scenario bevat een set verificatie met twee stappen en voorwaardelijke toegangs controles voor RDS.
 
 ## <a name="how-application-proxy-fits-in-the-standard-rds-deployment"></a>Hoe toepassings proxy in de standaard-RDS-implementatie past
 
@@ -45,17 +46,17 @@ In een RDS-implementatie worden de extern bureau blad-webfunctie en de RD-gatewa
 
 ## <a name="requirements"></a>Vereisten
 
-- Gebruik een andere client dan de Extern bureaublad-webclient, omdat de webclient geen toepassings proxy ondersteunt.
-
 - Zowel het extern bureau blad-web als de RD-gateway-eind punten moeten zich op dezelfde computer bevinden en met een gemeen schappelijke basis. Extern bureau blad-web en-RD-gateway worden gepubliceerd als één toepassing met toepassings proxy, zodat u een eenmalige aanmelding kunt hebben tussen de twee toepassingen.
 
 - U moet al een [RDS](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure)-toepassing hebben geïmplementeerd en een [toepassings proxy hebben ingeschakeld](application-proxy-add-on-premises-application.md).
 
-- In dit scenario wordt ervan uitgegaan dat uw eind gebruikers gebruikmaken van Internet Explorer op Windows 7-of Windows 10-Desk tops die verbinding maken via de extern bureau blad-webpagina. Als u andere besturings systemen wilt ondersteunen, raadpleegt u [ondersteuning voor andere client configuraties](#support-for-other-client-configurations).
+- Uw eind gebruikers moeten een compatibele browser gebruiken om verbinding te maken met RD Web of de extern bureau blad-webclient. Zie [ondersteuning voor client configuraties](#support-for-other-client-configurations)voor meer informatie.
 
-- Bij het publiceren van extern bureau blad-webtoepassingen, is het raadzaam om dezelfde interne en externe FQDN te gebruiken. Als de interne en externe FQDN-namen verschillend zijn, moet u de vertaling van de aanvraag header uitschakelen om te voor komen dat de client ongeldige koppelingen ontvangt. 
+- Bij het publiceren van extern bureau blad-webtoepassingen, is het raadzaam om dezelfde interne en externe FQDN te gebruiken. Als de interne en externe FQDN-namen verschillend zijn, moet u de vertaling van de aanvraag header uitschakelen om te voor komen dat de client ongeldige koppelingen ontvangt.
 
-- Schakel in Internet Explorer de RDS-invoeg toepassing in.
+- Als u RD Web op Internet Explorer gebruikt, moet u de ActiveX-invoeg toepassing voor RDS inschakelen.
+
+- Als u de extern bureau blad-webclient gebruikt, moet u de connector versie van de toepassings proxy [1.5.1975 of hoger](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-release-version-history)gebruiken.
 
 - Gebruikers kunnen alleen verbinding maken met resources die in het deel venster **RemoteApp en Bureau bladen** zijn gepubliceerd voor de pre-verificatie stroom van Azure AD. Gebruikers kunnen geen verbinding maken met een bureau blad met behulp van het deel venster **verbinding maken met een externe computer** .
 
@@ -71,7 +72,11 @@ Nadat u RDS-en Azure-AD-toepassingsproxy voor uw omgeving hebt ingesteld, volgt 
    - Methode voor verificatie vooraf: Azure Active Directory
    - URL-headers vertalen: Nee
 2. Gebruikers toewijzen aan de gepubliceerde extern bureau blad-toepassing. Zorg ervoor dat alle gebruikers toegang hebben tot RDS.
-3. Wijzig de methode voor eenmalige aanmelding voor de toepassing als **eenmalige aanmelding voor Azure AD is uitgeschakeld**. Uw gebruikers wordt gevraagd één keer te verifiëren bij Azure AD en één keer naar een extern bureau blad, maar moet eenmalige aanmelding worden RD-gateway.
+3. Wijzig de methode voor eenmalige aanmelding voor de toepassing als **eenmalige aanmelding voor Azure AD is uitgeschakeld**.
+
+   >[!Note]
+   >Uw gebruikers wordt gevraagd eenmaal te authenticeren bij Azure AD en eenmaal naar de extern bureau blad, maar ze hebben eenmalige aanmelding voor RD-gateway.
+
 4. Selecteer **Azure Active Directory**en klik vervolgens op **app-registraties**. Kies uw app in de lijst.
 5. Selecteer onder **beheren**de optie **huis stijl**.
 6. Werk het URL-veld van de **Start pagina** zo aan dat deze naar uw extern bureau blad-webeindpunt verwijst (bijvoorbeeld `https://\<rdhost\>.com/RDWeb` ).
@@ -110,6 +115,11 @@ Maak verbinding met de RDS-implementatie als beheerder en wijzig de RD-gateway s
 
 Nu u Extern bureaublad hebt geconfigureerd, heeft Azure AD-toepassingsproxy het Internet gerichte onderdeel van RDS. U kunt de andere open bare Internet gerichte eind punten op uw extern bureau blad-en RD-gateway computers verwijderen.
 
+### <a name="enable-the-rd-web-client"></a>De extern bureau blad-webclient inschakelen
+Als u ook wilt dat gebruikers de extern bureau blad-webclient kunnen gebruiken, volgt u de stappen in [de Extern bureaublad-webclient instellen voor uw gebruikers](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-web-client-admin) om dit in te scha kelen.
+
+Met de Extern bureaublad-webclient kunnen gebruikers toegang krijgen tot de Extern bureaublad-infra structuur van uw organisatie via een HTML5-compatibele webbrowser, zoals micro soft Edge, Internet Explorer 11, Google Chrome, Safari of Mozilla Firefox (v 55.0 en hoger).
+
 ## <a name="test-the-scenario"></a>Het scenario testen
 
 Test het scenario met Internet Explorer op een computer met Windows 7 of 10.
@@ -121,11 +131,12 @@ Test het scenario met Internet Explorer op een computer met Windows 7 of 10.
 
 ## <a name="support-for-other-client-configurations"></a>Ondersteuning voor andere client configuraties
 
-De configuratie die in dit artikel wordt beschreven, is voor gebruikers van Windows 7 of 10, met Internet Explorer plus de ActiveX-invoeg toepassing van RDS. Als dat nodig is, kunt u echter andere besturings systemen of browsers ondersteunen. Het verschil bevindt zich in de verificatie methode die u gebruikt.
+De configuratie die in dit artikel wordt beschreven, is voor toegang tot RDS via RD Web of de extern bureau blad-webclient. Als dat nodig is, kunt u echter andere besturings systemen of browsers ondersteunen. Het verschil bevindt zich in de verificatie methode die u gebruikt.
 
 | Verificatiemethode | Ondersteunde client configuratie |
 | --------------------- | ------------------------------ |
-| Verificatie vooraf    | Windows 7/10 met Internet Explorer + RDS ActiveX-invoeg toepassing |
+| Verificatie vooraf    | Extern bureau blad-web-Windows 7/10 met Internet Explorer + RDS ActiveX-invoeg toepassing |
+| Verificatie vooraf    | Extern bureau blad-webclient-HTML5-compatibele webbrowser, zoals micro soft Edge, Internet Explorer 11, Google Chrome, Safari of Mozilla Firefox (v 55.0 en hoger) |
 | Voer | Elk ander besturings systeem dat ondersteuning biedt voor de Microsoft Extern bureaublad-toepassing |
 
 De stroom vóór verificatie biedt meer beveiligings voordelen dan de passthrough-stroom. Met verificatie vooraf kunt u gebruikmaken van Azure AD-verificatie functies, zoals eenmalige aanmelding, voorwaardelijke toegang en verificatie in twee stappen voor uw on-premises resources. U moet er ook voor zorgen dat alleen geverifieerd verkeer uw netwerk bereikt.
@@ -136,5 +147,5 @@ Als u Passthrough-verificatie wilt gebruiken, zijn er slechts twee wijzigingen i
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Externe toegang tot SharePoint inschakelen met Azure AD-toepassingsproxy](application-proxy-integrate-with-sharepoint-server.md)  
-[Beveiligings overwegingen voor het extern openen van apps met behulp van Azure AD-toepassingsproxy](application-proxy-security.md)
+[Externe toegang tot share point inschakelen met Azure AD-toepassingsproxy](application-proxy-integrate-with-sharepoint-server.md) 
+ [Beveiligings overwegingen voor het extern openen van apps met behulp van Azure AD-toepassingsproxy](application-proxy-security.md)

@@ -7,16 +7,16 @@ ms.workload: infrastructure
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: 04dba192488744d1b54b0a0e2d885c0b1766bdc6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ac2e94e9c0213f14999d730027e118df6584519
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82100529"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020199"
 ---
-# <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuele machines in een Azure Resource Manager sjabloon
+# <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuele machines in een Azure Resource Manager-sjabloon
 
-In dit artikel worden aspecten van een Azure Resource Manager sjabloon beschreven die van toepassing zijn op virtuele machines. In dit artikel wordt geen volledige sjabloon beschreven voor het maken van een virtuele machine. u hebt resource definities nodig voor opslag accounts, netwerk interfaces, open bare IP-adressen en virtuele netwerken. Zie het [overzicht van Resource Manager-sjablonen](../../azure-resource-manager/resource-manager-template-walkthrough.md)voor meer informatie over hoe deze bronnen samen kunnen worden gedefinieerd.
+In dit artikel worden aspecten van een Azure Resource Manager sjabloon beschreven die van toepassing zijn op virtuele machines. In dit artikel wordt geen volledige sjabloon beschreven voor het maken van een virtuele machine. u hebt resource definities nodig voor opslag accounts, netwerk interfaces, open bare IP-adressen en virtuele netwerken. Zie het [overzicht van Resource Manager-sjablonen](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)voor meer informatie over hoe deze bronnen samen kunnen worden gedefinieerd.
 
 Er zijn veel [sjablonen in de galerie](https://azure.microsoft.com/documentation/templates/?term=VM) die de VM-resource bevatten. Niet alle elementen die kunnen worden opgenomen in een sjabloon, worden hier beschreven.
 
@@ -156,14 +156,14 @@ De versie van de API die u in de sjabloon opgeeft, is van invloed op de eigensch
 
 Gebruik deze mogelijkheden voor het ophalen van de nieuwste API-versies:
 
-- REST API: [alle resource providers weer geven](https://docs.microsoft.com/rest/api/resources/providers)
-- Power shell- [Get-AzResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/get-azresourceprovider)
-- Azure CLI- [AZ provider show](https://docs.microsoft.com/cli/azure/provider)
+- REST API: [alle resource providers weer geven](/rest/api/resources/providers)
+- Power shell- [Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider)
+- Azure CLI- [AZ provider show](/cli/azure/provider)
 
 
 ## <a name="parameters-and-variables"></a>Para meters en variabelen
 
-Met [para meters](../../resource-group-authoring-templates.md) kunt u eenvoudig waarden voor de sjabloon opgeven wanneer u deze uitvoert. Dit gedeelte para meters wordt gebruikt in het voor beeld:
+Met [para meters](../../azure-resource-manager/templates/template-syntax.md) kunt u eenvoudig waarden voor de sjabloon opgeven wanneer u deze uitvoert. Dit gedeelte para meters wordt gebruikt in het voor beeld:
 
 ```json
 "parameters": {
@@ -175,7 +175,7 @@ Met [para meters](../../resource-group-authoring-templates.md) kunt u eenvoudig 
 
 Wanneer u de voorbeeld sjabloon implementeert, voert u waarden in voor de naam en het wacht woord van het beheerders account op elke virtuele machine en het aantal Vm's dat moet worden gemaakt. U hebt de optie om parameter waarden op te geven in een afzonderlijk bestand dat wordt beheerd met de sjabloon of waarmee waarden worden opgegeven wanneer u hierom wordt gevraagd.
 
-Met [variabelen](../../resource-group-authoring-templates.md) kunt u eenvoudig waarden instellen in de sjabloon die in het hele spel worden gebruikt of die in de loop van de tijd kunnen worden gewijzigd. Deze variabelen sectie wordt in het voor beeld gebruikt:
+Met [variabelen](../../azure-resource-manager/templates/template-syntax.md) kunt u eenvoudig waarden instellen in de sjabloon die in het hele spel worden gebruikt of die in de loop van de tijd kunnen worden gewijzigd. Deze variabelen sectie wordt in het voor beeld gebruikt:
 
 ```json
 "variables": { 
@@ -208,7 +208,7 @@ Met [variabelen](../../resource-group-authoring-templates.md) kunt u eenvoudig w
 }, 
 ```
 
-Wanneer u de voorbeeld sjabloon implementeert, worden variabelen waarden gebruikt voor de naam en id van het eerder gemaakte opslag account. Variabelen worden ook gebruikt om de instellingen voor de diagnostische uitbrei ding op te geven. Gebruik de [Aanbevolen procedures voor het maken van Azure Resource Manager sjablonen](../../resource-manager-template-best-practices.md) waarmee u kunt bepalen hoe u de para meters en variabelen in uw sjabloon wilt structureren.
+Wanneer u de voorbeeld sjabloon implementeert, worden variabelen waarden gebruikt voor de naam en id van het eerder gemaakte opslag account. Variabelen worden ook gebruikt om de instellingen voor de diagnostische uitbrei ding op te geven. Gebruik de [Aanbevolen procedures voor het maken van Azure Resource Manager sjablonen](../../azure-resource-manager/templates/template-best-practices.md) waarmee u kunt bepalen hoe u de para meters en variabelen in uw sjabloon wilt structureren.
 
 ## <a name="resource-loops"></a>Resource lussen
 
@@ -247,7 +247,7 @@ Als u een lus voor een resource in de sjabloon wilt maken, moet u mogelijk de lu
 
 ## <a name="dependencies"></a>Afhankelijkheden
 
-De meeste resources zijn afhankelijk van andere resources om goed te kunnen werken. Virtuele machines moeten worden gekoppeld aan een virtueel netwerk en hiervoor is een netwerk interface vereist. Het element [dependsOn](../../resource-group-define-dependencies.md) wordt gebruikt om ervoor te zorgen dat de netwerk interface gereed is om te worden gebruikt voordat de virtuele machines worden gemaakt:
+De meeste resources zijn afhankelijk van andere resources om goed te kunnen werken. Virtuele machines moeten worden gekoppeld aan een virtueel netwerk en hiervoor is een netwerk interface vereist. Het element [dependsOn](../../azure-resource-manager/templates/define-resource-dependency.md) wordt gebruikt om ervoor te zorgen dat de netwerk interface gereed is om te worden gebruikt voordat de virtuele machines worden gemaakt:
 
 ```json
 "dependsOn": [
@@ -277,7 +277,7 @@ Er worden verschillende profiel elementen gebruikt bij het definiëren van een v
 - [size](sizes.md)
 - [naam](/azure/architecture/best-practices/resource-naming) en referenties
 - instellingen voor schijf en [besturings systeem](cli-ps-findimage.md)
-- [netwerk interface](../../virtual-network/virtual-network-deploy-multinic-classic-ps.md) 
+- [netwerk interface](/previous-versions/azure/virtual-network/virtual-network-deploy-multinic-classic-ps) 
 - Diagnostische gegevens over opstarten
 
 ## <a name="disks-and-images"></a>Schijven en installatie kopieën
@@ -369,7 +369,7 @@ U kunt eventueel ook gegevens schijven toevoegen aan de Vm's. Het [aantal schijv
 
 ## <a name="extensions"></a>Extensies
 
-Hoewel [uitbrei dingen](extensions-features.md) een afzonderlijke resource zijn, zijn ze nauw verbonden met vm's. Extensies kunnen worden toegevoegd als een onderliggende resource van de virtuele machine of als een afzonderlijke resource. In het voor beeld ziet u de [uitbrei ding van diagnostische gegevens](extensions-diagnostics-template.md) die wordt toegevoegd aan de vm's:
+Hoewel [uitbrei dingen](../extensions/features-windows.md) een afzonderlijke resource zijn, zijn ze nauw verbonden met vm's. Extensies kunnen worden toegevoegd als een onderliggende resource van de virtuele machine of als een afzonderlijke resource. In het voor beeld ziet u de [uitbrei ding van diagnostische gegevens](../extensions/diagnostics-template.md) die wordt toegevoegd aan de vm's:
 
 ```json
 { 
@@ -404,7 +404,7 @@ Hoewel [uitbrei dingen](extensions-features.md) een afzonderlijke resource zijn,
 
 Deze extensie resource gebruikt de variabele storagenaam en de diagnostische variabelen om waarden op te geven. Als u de gegevens wilt wijzigen die door deze uitbrei ding worden verzameld, kunt u meer prestatie meter items toevoegen aan de variabele wadperfcounters. U kunt er ook voor kiezen om de diagnostische gegevens in een ander opslag account te plaatsen dan waar de VM-schijven worden opgeslagen.
 
-Er zijn veel uitbrei dingen die u op een virtuele machine kunt installeren, maar de handigste is waarschijnlijk de [aangepaste script extensie](extensions-customscript.md). In het voor beeld wordt een Power shell-script met de naam start.ps1 uitgevoerd op elke virtuele machine wanneer deze voor het eerst wordt gestart:
+Er zijn veel uitbrei dingen die u op een virtuele machine kunt installeren, maar de handigste is waarschijnlijk de [aangepaste script extensie](../extensions/custom-script-windows.md). In het voor beeld wordt een Power shell-script met de naam start.ps1 uitgevoerd op elke virtuele machine wanneer deze voor het eerst wordt gestart:
 
 ```json
 {
@@ -447,11 +447,11 @@ Als u op de hoogte bent van de status van resources in de implementatie, bekijkt
 
 ![Implementatie gegevens ophalen](./media/template-description/virtual-machines-deployment-info.png)
     
-Het is geen probleem om dezelfde sjabloon te gebruiken om resources te maken of om bestaande resources bij te werken. Wanneer u opdrachten gebruikt om sjablonen te implementeren, hebt u de mogelijkheid om te zeggen welke [modus](../../resource-group-template-deploy.md) u wilt gebruiken. De modus kan worden ingesteld op **voltooid** of **Incrementeel**. De standaard instelling is incrementele updates. Wees voorzichtig wanneer u de **volledige** modus gebruikt, omdat u per ongeluk resources kunt verwijderen. Wanneer u de modus instelt op **voltooid**, worden alle resources in de resource groep die zich niet in de sjabloon bevinden, door Resource Manager verwijderd.
+Het is geen probleem om dezelfde sjabloon te gebruiken om resources te maken of om bestaande resources bij te werken. Wanneer u opdrachten gebruikt om sjablonen te implementeren, hebt u de mogelijkheid om te zeggen welke [modus](../../azure-resource-manager/templates/deploy-powershell.md) u wilt gebruiken. De modus kan worden ingesteld op **voltooid** of **Incrementeel**. De standaard instelling is incrementele updates. Wees voorzichtig wanneer u de **volledige** modus gebruikt, omdat u per ongeluk resources kunt verwijderen. Wanneer u de modus instelt op **voltooid**, worden alle resources in de resource groep die zich niet in de sjabloon bevinden, door Resource Manager verwijderd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Maak uw eigen sjabloon met behulp van [ontwerp Azure Resource Manager sjablonen](../../resource-group-authoring-templates.md).
+- Maak uw eigen sjabloon met behulp van [ontwerp Azure Resource Manager sjablonen](../../azure-resource-manager/templates/template-syntax.md).
 - Implementeer de sjabloon die u hebt gemaakt met een [virtuele Windows-machine maken met een resource manager-sjabloon](ps-template.md).
 - Meer informatie over het beheren van de virtuele machines die u hebt gemaakt door [Windows-Vm's maken en beheren te bekijken met de module Azure PowerShell](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 - Zie [Azure Resource Manager-sjabloon verwijzing](/azure/templates/)voor de JSON-syntaxis en-eigenschappen van resource typen in sjablonen.

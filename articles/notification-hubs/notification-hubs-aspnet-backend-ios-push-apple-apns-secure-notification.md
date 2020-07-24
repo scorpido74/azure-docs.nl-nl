@@ -14,11 +14,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: aa84ad9f48f79a77bad1445dadc8c5c965b13655
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7dc3212007e9b9ec67d0d235135d4d46f20b950
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85248697"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022120"
 ---
 # <a name="azure-notification-hubs-secure-push"></a>Azure Notification Hubs Secure push
 
@@ -121,7 +122,7 @@ Om dit doel te verkrijgen, moeten we de logica schrijven om de beveiligde inhoud
 4. Nu moeten we de inkomende melding verwerken en de bovenstaande methode gebruiken om de inhoud op te halen om weer te geven. Eerst moeten we ervoor zorgen dat uw iOS-app op de achtergrond wordt uitgevoerd wanneer er een push melding wordt ontvangen. In **Xcode**selecteert u uw app-project in het linkerdeel venster en klikt u vervolgens op het hoofd doel van de app in het gedeelte **doelen** van het middelste deel venster.
 5. Klik vervolgens op het tabblad **mogelijkheden** boven aan het middelste deel venster en schakel het selectie vakje **externe meldingen** in.
 
-    ![][IOS1]
+    ![Scherm opname van XCode, waarbij het app-project is geselecteerd en het tabblad mogelijkheden geopend. De externe meldingen selectie vakje is ingeschakeld.][IOS1]
 
 6. In `AppDelegate.m` Voeg de volgende methode toe voor het verwerken van push meldingen:
 

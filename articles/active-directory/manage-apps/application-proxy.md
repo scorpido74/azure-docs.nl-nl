@@ -8,25 +8,23 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/09/2019
+ms.date: 07/14/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.custom: has-adal-ref
-ms.openlocfilehash: 84cd6f9d7612cc6cf5829c03c398dd65a6eec412
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6ed9d5eb8d230b05a090424d6105865acae69e61
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85318025"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019349"
 ---
-# <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>Externe toegang tot on-premises toepassingen via de toepassings proxy van Azure Active Directory
+# <a name="remote-access-to-on-premises-applications-through-azure-ad-application-proxy"></a>Externe toegang tot on-premises toepassingen via Azure AD-toepassingsproxy
 
 De toepassings proxy van Azure Active Directory biedt veilige externe toegang tot on-premises webtoepassingen. Na een eenmalige aanmelding bij Azure AD, hebben gebruikers toegang tot zowel Cloud-als on-premises toepassingen via een externe URL of een interne toepassings Portal. Toepassings proxy kan bijvoorbeeld externe toegang en eenmalige aanmelding bieden voor Extern bureaublad, share point, teams, tableau, Qlik en LOB-toepassingen (line-of-Business).
 
 Azure AD-toepassingsproxy is:
 
-- **Eenvoudig te gebruiken**. Gebruikers hebben toegang tot uw on-premises toepassingen op dezelfde manier als de toegang tot O365 en andere SaaS-apps die zijn geïntegreerd met Azure AD. U hoeft uw toepassingen niet te wijzigen of bij te werken om te kunnen werken met toegangsproxy.
+- **Eenvoudig te gebruiken**. Gebruikers hebben toegang tot uw on-premises toepassingen op dezelfde manier als de toegang tot O365 en andere SaaS-apps die zijn geïntegreerd met Azure AD. U hoeft uw toepassing niet te wijzigen of bij te werken om te kunnen werken met een toepassingsproxy.
 
 - **Beveiligd**. On-premises toepassingen kunnen gebruikmaken van de autorisatie-instellingen en beveiligings analyses van Azure. On-premises toepassingen kunnen bijvoorbeeld gebruikmaken van voorwaardelijke toegang en verificatie in twee stappen. Voor toepassings proxy is het niet nodig om binnenkomende verbindingen via uw firewall te openen.
 
@@ -60,7 +58,7 @@ In het volgende diagram ziet u hoe Azure AD en toepassings proxy samen werken om
 5. De connector stuurt de aanvraag naar de on-premises toepassing.
 6. Het antwoord wordt via de connector en de Application proxy-service naar de gebruiker verzonden.
 
-| Onderdeel | Description |
+| Onderdeel | Beschrijving |
 | --------- | ----------- |
 | Eindpunt  | Het eind punt is een URL of [eind gebruikers Portal](end-user-experiences.md). Gebruikers kunnen toepassingen en buiten uw netwerk bereiken door toegang te krijgen tot een externe URL. Gebruikers in uw netwerk hebben toegang tot de toepassing via een URL of een portal voor eindgebruikers. Wanneer gebruikers naar een van deze eindpunten gaan, verifiëren ze zichzelf in Azure AD en worden ze vervolgens via de connector naar de on-premises toepassing gestuurd.|
 | Azure AD | Azure AD voert de verificatie uit met behulp van de tenantmap die is opgeslagen in de cloud. |

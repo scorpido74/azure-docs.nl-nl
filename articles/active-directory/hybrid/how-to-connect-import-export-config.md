@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/25/2020
+ms.date: 07/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a13236294f74bbe4bdaf8c1a30408afad09d9796
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: a94d356cb3c0345f575b4b5a44aa7f228535e66d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86225126"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019876"
 ---
 # <a name="importing-and-exporting-azure-ad-connect-configuration-settings-public-preview"></a>Azure AD Connect configuratie-instellingen importeren en exporteren (open bare preview) 
 
@@ -24,7 +24,7 @@ Azure AD Connect implementaties variëren van een installatie van één forest E
 
 Telkens wanneer de configuratie wordt gewijzigd vanuit de wizard Azure AD Connect, wordt er automatisch een nieuw bestand met gestempelde JSON-instellingen geëxporteerd naar **%ProgramData%\AADConnect**. De naam van de instellingen is van het formulier **toegepast-SynchronizationPolicy-*. JSON** waarbij het laatste deel van de bestands naam een tijds tempel is. 
 
->[!IMPORTANT]
+> [!IMPORTANT]
 > Alleen wijzigingen die door Azure AD Connect zijn aangebracht, worden automatisch geëxporteerd. Wijzigingen die zijn aangebracht met behulp van Power shell, de Synchronization Service Manager of de editor voor synchronisatie regels, moeten naar behoefte worden geëxporteerd om een bijgewerkte kopie te onderhouden. Exporteren op aanvraag kan ook worden gebruikt om een kopie van de instellingen op een veilige locatie te plaatsen voor herstel na nood gevallen. 
 
 ## <a name="exporting-azure-ad-connect-settings"></a>Azure AD Connect-instellingen exporteren 
@@ -59,8 +59,8 @@ Dit zijn de enige wijzigingen die tijdens de installatie-ervaring kunnen worden 
 
 ![Verbinding maken met adreslijsten](media/how-to-connect-import-export-config/import2.png)
 
->[!NOTE]
->Er kan slechts één synchronisatie server zich in de primaire rol bevindt en de configuratie wijzigingen voor het actief naar Azure exporteert. Alle andere servers moeten in de Faserings modus worden geplaatst. 
+> [!NOTE]
+> Er kan slechts één synchronisatie server zich in de primaire rol bevindt en de configuratie wijzigingen voor het actief naar Azure exporteert. Alle andere servers moeten in de Faserings modus worden geplaatst. 
 
 ## <a name="migrating-settings-from-an-existing-server"></a>Instellingen migreren van een bestaande server 
 
@@ -71,21 +71,21 @@ Voor de migratie moet een Power shell-script worden uitgevoerd waarmee de bestaa
 ### <a name="migration-process"></a>Migratie proces 
 Ga als volgt te werk om de instellingen te migreren:
 
-1. Open cmd als Administrator op de nieuwe staging-server.
-2. Extraheer **AzureADConnect.msi** door het volgende uit te voeren: `msiexec /a msifile/qb TARGETDIR=targetpath` de **msifile** is het adres van het MSI-bestand en het **TargetPath** is de map waarnaar u de bestanden wilt extra heren.
-   
-   Hierbij`msiexec /a "C:\Holding\AzureADConnect.msi" TARGETDIR="C:\extractedfiles"`
-3. Kopieer **MigrateSettings.ps1** van de map Microsoft Azure AD Connect\Tools naar een locatie op de bestaande server.  Bijvoorbeeld C:\setup.  Waar het installatie programma een map is die is gemaakt op de bestaande server. 
-![Verbinding maken met adreslijsten](media/how-to-connect-import-export-config/migrate1.png)
+1. Start **AzureADConnect.msi** op de nieuwe staging-server en stop op de welkomst pagina van Azure AD Connect.
 
-4. Voer het script uit zoals hieronder wordt weer gegeven en sla de volledige server configuratie directory op. Kopieer deze map naar de nieuwe staging-server. Let op: u moet de volledige **geëxporteerde-ServerConfiguration-*-** map naar de nieuwe server kopiëren. 
- ![Verbinding maken met adreslijsten](media/how-to-connect-import-export-config/migrate2.png)
+2. Kopieer **MigrateSettings.ps1** van de map Microsoft Azure AD Connect\Tools naar een locatie op de bestaande server.  Bijvoorbeeld C:\setup.  Waar het installatie programma een map is die is gemaakt op de bestaande server.
 
- ![Verbinding maken met adreslijsten](media/how-to-connect-import-export-config/migrate3.png)
+   ![Verbinding maken met adreslijsten](media/how-to-connect-import-export-config/migrate1.png)
+
+3. Voer het script uit zoals hieronder wordt weer gegeven en sla de volledige server configuratie directory op. Kopieer deze map naar de nieuwe staging-server. Let op: u moet de volledige **geëxporteerde-ServerConfiguration-*-** map naar de nieuwe server kopiëren.
+
+   ![Connect directory's Connect ](media/how-to-connect-import-export-config/migrate2.png)
+    ![ directory's](media/how-to-connect-import-export-config/migrate3.png)
 
 5. Start **Azure AD Connect** door te dubbel klikken op het pictogram op het bureau blad. Ga akkoord met de gebruiksrecht overeenkomst en klik op de volgende pagina op de knop **aanpassen** . 
 6. Schakel het selectie vakje **synchronisatie-instellingen importeren** in en klik op de knop **Bladeren** om te bladeren naar de gekopieerde over geëxporteerde-ServerConfiguration-* map en selecteer de MigratedPolicy.jsop om de gemigreerde instellingen te importeren.
- ![Verbinding maken met adreslijsten](media/how-to-connect-import-export-config/migrate4.png)
+
+   ![Verbinding maken met adreslijsten](media/how-to-connect-import-export-config/migrate4.png)
 
 7. Als u de gemigreerde instellingen wilt vergelijken met de instellingen die zijn toegepast, zoekt u naar de meest recente **gemigreerde-SynchronizationPolicy-*. JSON** en **toegepast-SynchronizationPolicy-*. JSON** (* is het tijds tempel) onder **%ProgramData%\AADConnect**. Gebruik uw favoriete hulp programma voor het vergelijken van bestanden om de pariteit te vergelijken. 
 
@@ -94,11 +94,13 @@ Ga als volgt te werk om de instellingen te migreren:
 Het vergelijken van het oorspronkelijk geïmporteerde instellingen bestand, met het geëxporteerde-instellingen bestand, van de zojuist geïmplementeerde server is een essentiële stap bij het goed keuren van eventuele verschillen tussen de beoogde en de resulterende implementatie. Met uw favoriete side-by-side-toepassing voor tekst vergelijking krijgt u een snelle visualisatie die snel de gewenste of onbedoelde wijzigingen markeert. Hoewel veel eerder hand matige configuratie stappen nu zijn verwijderd, moet u nog steeds het certificerings proces van uw organisatie volgen om ervoor te zorgen dat er geen aanvullende configuratie is vereist. Deze configuratie kan optreden als u geavanceerde instellingen gebruikt, die momenteel niet zijn vastgelegd in de open bare preview-versie van instellingen beheer. 
 
 Bekende beperkingen zijn onder andere: 
-- **Synchronisatie regels**   : de prioriteit van een aangepaste regel moet binnen het gereserveerde bereik van 0-99 liggen om conflicten met de standaard regels van micro soft te voor komen. Als u een aangepaste regel buiten het gereserveerde bereik plaatst, kan dit ertoe leiden dat uw aangepaste regel wordt verplaatst als standaard regels worden toegevoegd aan de configuratie. Er treedt een soortgelijk probleem op als uw configuratie gewijzigde standaard regels bevat. Het wijzigen van een standaard regel wordt sterk afgeraden en het is waarschijnlijk dat de plaatsing van de regel onjuist is. Write-back van apparaat: deze instellingen worden gecatalogiseerd, maar deze worden momenteel niet toegepast tijdens de configuratie. Als write-back van het apparaat is ingeschakeld voor de oorspronkelijke server, moet u de functie hand matig configureren op de zojuist geïmplementeerde server. 
+- **Synchronisatie regels**   : de prioriteit van een aangepaste regel moet binnen het gereserveerde bereik van 0-99 liggen om conflicten met de standaard regels van micro soft te voor komen. Als u een aangepaste regel buiten het gereserveerde bereik plaatst, kan dit ertoe leiden dat uw aangepaste regel wordt verplaatst als standaard regels worden toegevoegd aan de configuratie. Er treedt een soortgelijk probleem op als uw configuratie gewijzigde standaard regels bevat. Het wijzigen van een standaard regel wordt sterk afgeraden en het is waarschijnlijk dat de plaatsing van de regel onjuist is. 
+- **Write-back**   van apparaat : deze instellingen worden gecatalogiseerd, maar deze worden momenteel niet toegepast tijdens de configuratie. Als write-back van het apparaat is ingeschakeld voor de oorspronkelijke server, moet u de functie hand matig configureren op de zojuist geïmplementeerde server. 
 - **Gesynchroniseerde object typen**   – Hoewel het mogelijk is om de lijst met gesynchroniseerde object typen (gebruikers, contact personen, groepen enzovoort) te beperken met behulp van de Synchronization Service Manager, wordt deze functie momenteel niet ondersteund via synchronisatie-instellingen. Nadat de installatie is voltooid, moet u de geavanceerde configuratie hand matig opnieuw Toep assen. 
 - **Aangepaste uitvoerings profielen**   -Hoewel het mogelijk is om de standaard reeks uitvoerings profielen te wijzigen met behulp van de Synchronization Service Manager, wordt deze functie momenteel niet ondersteund via synchronisatie-instellingen. Nadat de installatie is voltooid, moet u de geavanceerde configuratie hand matig opnieuw Toep assen. 
 - **De inrichtings hiërarchie configureren**   : deze geavanceerde functie van de Synchronization Service Manager wordt niet ondersteund via synchronisatie-instellingen en moet hand matig opnieuw worden geconfigureerd na het volt ooien van de eerste implementatie. 
 - **AD FS-en PingFederate-verificatie**   : de aanmeldings methoden die zijn gekoppeld aan deze verificatie functies, worden automatisch vooraf geselecteerd, maar u moet echter wel interactief alle andere vereiste configuratie parameters opgeven. 
+- **Een uitgeschakelde aangepaste synchronisatie regel wordt geïmporteerd als ingeschakeld** Een uitgeschakelde aangepaste synchronisatie regel wordt geïmporteerd als ingeschakeld. Zorg ervoor dat u dit ook op de nieuwe server uitschakelt.
 
  ## <a name="next-steps"></a>Volgende stappen
 

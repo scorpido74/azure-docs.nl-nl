@@ -1,5 +1,5 @@
 ---
-title: 'Power shell-voor beeld: alle toepassings proxy connector groepen weer geven'
+title: Azure AD-toepassingsproxy-connector groepen voor apps weer geven
 description: Power shell-voor beeld met een lijst met alle Azure Active Directory (Azure AD) connector groepen voor toepassings proxy met de toegewezen toepassingen.
 services: active-directory
 author: msmimart
@@ -12,11 +12,12 @@ ms.date: 12/05/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9dcf2eb6a1904e4a7223a19e598f0c06ddc36f71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f381d64e06d8b7abf67b08297baa616397cc439
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75482164"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019434"
 ---
 # <a name="get-all-application-proxy-apps-and-list-by-connector-group"></a>Alle toepassings proxy-apps en lijst op connector groep ophalen
 

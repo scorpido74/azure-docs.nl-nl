@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 3abd93e1699a701140e8b3558dcdf0161110ff6f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d02800d39e918478243429971c0d48c4d0c59148
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83758126"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020098"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Kies de juiste verificatie methode voor uw Azure Active Directory hybride identiteits oplossing
 
@@ -30,7 +30,7 @@ Het kiezen van de juiste verificatie methode is de eerste reden voor organisatie
 De identiteit is het nieuwe beheer vlak van IT-beveiliging, dus is de toegangs beveiliging van een organisatie naar de nieuwe Cloud wereld. Organisaties hebben een identiteits beheergebied nodig waarmee de beveiliging wordt versterkt en de Cloud-apps worden beschermd tegen indringers.
 
 > [!NOTE]
-> Het wijzigen van de verificatie methode vereist planning, testen en mogelijk downtime. [Gefaseerde implementatie](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-staged-rollout) is een uitstekende manier om te testen en geleidelijk te migreren van Federatie naar Cloud authenticatie.
+> Het wijzigen van de verificatie methode vereist planning, testen en mogelijk downtime. [Gefaseerde implementatie](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-staged-rollout) is een uitstekende manier om gebruikers migratie van Federatie naar Cloud verificatie te testen.
 
 ### <a name="out-of-scope"></a>Buiten bereik
 Organisaties die geen bestaande on-premises Directory-footprint hebben, zijn niet de focus van dit artikel. Normaal gesp roken maken deze bedrijven alleen identiteiten in de Cloud, waarvoor geen hybride identiteits oplossing nodig is. Alleen Cloud-identiteiten bestaan uitsluitend in de Cloud en zijn niet gekoppeld aan de bijbehorende on-premises identiteiten.
@@ -47,7 +47,7 @@ Azure AD biedt ondersteuning voor de volgende verificatie methoden voor hybride 
 ### <a name="cloud-authentication"></a>Cloud authenticatie
 Wanneer u deze verificatie methode kiest, wordt het aanmeldings proces van gebruikers door Azure AD afgehandeld. Met naadloze eenmalige aanmelding (SSO) kunnen gebruikers zich aanmelden bij Cloud-apps zonder hun referenties opnieuw in te voeren. Met Cloud authenticatie kunt u kiezen uit twee opties:
 
-**Synchronisatie van wacht woord-hash van Azure AD**. De eenvoudigste manier om verificatie in te scha kelen voor on-premises Directory-objecten in azure AD. Gebruikers kunnen dezelfde gebruikers naam en hetzelfde wacht woord gebruiken als ze on-premises gebruiken zonder dat ze een extra infra structuur hoeven te implementeren. Voor sommige Premium-functies van Azure AD, zoals identiteits beveiliging en [Azure AD Domain Services](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md), is wachtwoord hash-synchronisatie vereist, ongeacht welke verificatie methode u kiest.
+**Azure AD-wachtwoord-hashsynchronisatie**. De eenvoudigste manier om verificatie in te scha kelen voor on-premises Directory-objecten in azure AD. Gebruikers kunnen dezelfde gebruikers naam en hetzelfde wacht woord gebruiken als ze on-premises gebruiken zonder dat ze een extra infra structuur hoeven te implementeren. Voor sommige Premium-functies van Azure AD, zoals identiteits beveiliging en [Azure AD Domain Services](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md), is wachtwoord hash-synchronisatie vereist, ongeacht welke verificatie methode u kiest.
 
 > [!NOTE]
 > Wacht woorden worden nooit in ongecodeerde tekst opgeslagen of versleuteld met een omkeer bare algoritme in azure AD. Zie [wachtwoord hash synchronisatie implementeren met Azure AD Connect Sync](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)voor meer informatie over het feitelijke proces van wachtwoord hash-synchronisatie.

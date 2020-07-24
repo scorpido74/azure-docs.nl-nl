@@ -11,11 +11,12 @@ ms.topic: end-user-help
 ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: b6bda6d35391543e416c377557e34de317e293eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04076ed5b91f8e840a084b784477d07eea5adee7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83741576"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015967"
 ---
 # <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Niet-micro soft-accounts toevoegen aan de app Microsoft Authenticator
 
@@ -49,7 +50,7 @@ Voeg uw Google-account toe door twee ledige verificatie in te scha kelen en het 
 
 ### <a name="add-your-google-account-to-the-app"></a>Uw Google-account toevoegen aan de app
 
-1. Ga op de pagina Google op uw computer naar de sectie **alternatieve tweede stap instellen** en kies **instellen** in de sectie verificator- **app** .
+1. Ga op de pagina beveiliging Google-account op uw computer naar https://myaccount.google.com/security) het gedeelte **meer tweede stappen toevoegen om dit te controleren** en kies **instellen** in de sectie verificator- **app** .
 
 2. Op de pagina **codes van de verificator-app ophalen** selecteert u **Android** of **iPhone** op basis van uw telefoon type en selecteert u vervolgens **volgende**.
 

@@ -13,11 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: juliako
-ms.openlocfilehash: ef04b1b7b5030189482e89e26e4565397cbdd7c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2226d7a769caf049af30bbca81ca3079d72970b4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75779243"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023123"
 ---
 # <a name="create-filters-with-media-services-net-sdk"></a>Filters maken met Media Services .NET SDK
 
@@ -25,7 +26,7 @@ Bij het leveren van uw inhoud aan klanten (het streamen van Live-gebeurtenissen 
 
 Zie [dynamische manifesten](filters-dynamic-manifest-overview.md) en [filters](filters-concept.md)voor een gedetailleerde beschrijving van deze functie en scenario's waarin deze wordt gebruikt.
 
-In dit onderwerp wordt beschreven hoe u Media Services .NET SDK gebruikt om een filter te definiëren voor een video op aanvraag-Asset en om [account filters](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.accountfilter?view=azure-dotnet) en- [activa filters](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.assetfilter?view=azure-dotnet)te maken. 
+In dit onderwerp wordt beschreven hoe u Media Services .NET SDK gebruikt om een filter te definiëren voor een video op aanvraag-Asset en om [account filters](/dotnet/api/microsoft.azure.management.media.models.accountfilter?view=azure-dotnet) en- [activa filters](/dotnet/api/microsoft.azure.management.media.models.assetfilter?view=azure-dotnet)te maken. 
 
 > [!NOTE]
 > Zorg ervoor dat u de [presentationTimeRange](filters-concept.md#presentationtimerange)controleert.
@@ -33,13 +34,13 @@ In dit onderwerp wordt beschreven hoe u Media Services .NET SDK gebruikt om een 
 ## <a name="prerequisites"></a>Vereisten 
 
 - Controleer [filters en dynamische manifesten](filters-dynamic-manifest-overview.md).
-- [Maak een Media Services-account](create-account-cli-how-to.md). Zorg ervoor dat u de naam van de resource groep en de naam van het Media Services account vergeet. 
-- Gegevens ophalen die nodig zijn voor [toegang tot api's](access-api-cli-how-to.md)
+- [Een Azure Media Services-account maken](./create-account-howto.md). Zorg ervoor dat u de naam van de resource groep en de naam van het Media Services account vergeet. 
+- Gegevens ophalen die nodig zijn voor [toegang tot api's](./access-api-howto.md)
 - Bekijk het [uploaden, coderen en streamen met behulp van Azure Media Services](stream-files-tutorial-with-api.md) om te zien hoe u [.NET SDK kunt gaan gebruiken](stream-files-tutorial-with-api.md#start_using_dotnet)
 
 ## <a name="define-a-filter"></a>Een filter definiëren  
 
-In .NET configureert u het bijhouden van selecties met de klassen [FilterTrackSelection](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.filtertrackselection?view=azure-dotnet) en [FilterTrackPropertyCondition](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.filtertrackpropertycondition?view=azure-dotnet) . 
+In .NET configureert u het bijhouden van selecties met de klassen [FilterTrackSelection](/dotnet/api/microsoft.azure.management.media.models.filtertrackselection?view=azure-dotnet) en [FilterTrackPropertyCondition](/dotnet/api/microsoft.azure.management.media.models.filtertrackpropertycondition?view=azure-dotnet) . 
 
 Met de volgende code wordt een filter gedefinieerd dat audio nummers bevat die zijn opgenomen in EC-3 en video tracks met bitsnelheid in het 0-1000000-bereik.
 
@@ -118,5 +119,3 @@ In de volgende tabel ziet u enkele voor beelden van Url's met filters:
 ## <a name="next-steps"></a>Volgende stappen
 
 [Video streamen](stream-files-tutorial-with-api.md) 
-
-

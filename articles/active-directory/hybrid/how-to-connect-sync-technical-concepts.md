@@ -16,19 +16,19 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 251d156afbd367e83945397760a6afe98a1cfb98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 01e53b30a4c27296e30e031ffb771697afa8e1e9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356930"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019672"
 ---
 # <a name="azure-ad-connect-sync-technical-concepts"></a>Azure AD Connect-synchronisatie: technische concepten
 Dit artikel bevat een samen vatting van het onderwerp [over architectuur](how-to-connect-sync-technical-concepts.md).
 
 Azure AD Connect synchronisatie bouwt voort op een Solid-synchronisatie platform van de werkmap.
 In de volgende secties worden de concepten geïntroduceerd voor het synchroniseren van de werkmap.
-De Azure Active Directory Sync Services is Voortbouwend op MIIS, ILM en FIM en biedt het volgende platform voor het maken van verbinding met gegevens bronnen, het synchroniseren van gegevens tussen gegevens bronnen en het inrichten en ongedaan maken van de inrichting van identiteiten.
+De Azure Active Directory Sync Services biedt het volgende platform voor het maken van verbinding met gegevens bronnen, het synchroniseren van gegevens tussen gegevens bronnen en het inrichten en verwijderen van identiteiten op basis van MIIS (micro soft Identity Integration Server), ILM (Identity Lifecycle Manager) en FIM (Forefront Identity Manager).
 
 ![Technische concepten](./media/how-to-connect-sync-technical-concepts/scenario.png)
 

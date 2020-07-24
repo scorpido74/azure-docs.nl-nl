@@ -3,17 +3,17 @@ title: Queue Storage (C++)-Azure Storage gebruiken
 description: Meer informatie over het gebruik van de Queue Storage-service in Azure. Voor beelden zijn geschreven in C++.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 05/11/2017
+ms.date: 07/16/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: 0ae099e74db3137be49d59d01c83807108bf370f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a4f8b99be564779b350bff2ab5b37f3c7ccc6f2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809259"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020968"
 ---
 # <a name="how-to-use-queue-storage-from-c"></a>Queue Storage gebruiken met C++
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -40,7 +40,7 @@ Hiervoor moet u de Azure-opslagclientbibliotheek voor C++ installeren en een Azu
 Voor het installeren van de Azure-opslagclientbibliotheek voor C++ kunt u de volgende methoden gebruiken:
 
 * **Linux:** Volg de instructies in de [Azure Storage-client bibliotheek voor C++ Leesmij: aan de slag op de Linux](https://github.com/Azure/azure-storage-cpp#getting-started-on-linux) -pagina.
-* **Windows:** Gebruik [vcpkg](https://github.com/microsoft/vcpkg) in Windows als afhankelijkheids beheer. Volg de [Quick Start](https://github.com/microsoft/vcpkg#quick-start) om vcpkg te initialiseren. Gebruik vervolgens de volgende opdracht om de bibliotheek te installeren:
+* **Windows:** Gebruik [vcpkg](https://github.com/microsoft/vcpkg) in Windows als afhankelijkheids beheer. Volg de [Quick](https://github.com/microsoft/vcpkg#quick-start) start om vcpkg te initialiseren. Gebruik vervolgens de volgende opdracht om de bibliotheek te installeren:
 
 ```powershell
 .\vcpkg.exe install azure-storage-cpp
@@ -49,7 +49,7 @@ Voor het installeren van de Azure-opslagclientbibliotheek voor C++ kunt u de vol
 U vindt een hand leiding voor het maken van de bron code en het exporteren naar NuGet in het [Leesmij](https://github.com/Azure/azure-storage-cpp#download--install) -bestand.
 
 ## <a name="configure-your-application-to-access-queue-storage"></a>Uw toepassing configureren voor toegang tot Queue Storage
-Voeg de volgende include-instructies toe aan het begin van het C++-bestand waarin u de Azure Storage-Api's wilt gebruiken voor toegang tot wacht rijen:  
+Voeg de volgende include-instructies toe aan het begin van het C++-bestand waarin u de Azure Storage-Api's wilt gebruiken voor toegang tot wacht rijen:
 
 ```cpp
 #include <was/storage_account.h>
@@ -57,21 +57,21 @@ Voeg de volgende include-instructies toe aan het begin van het C++-bestand waari
 ```
 
 ## <a name="set-up-an-azure-storage-connection-string"></a>Een Azure Storage-connection string instellen
-Een Azure-opslagclient gebruikt een opslagverbindingstekenreeks om eindpunten en referenties voor toegang tot gegevensbeheerservices op te slaan. Wanneer u uitvoert in een client toepassing, moet u de opslag connection string in de volgende indeling opgeven, waarbij u de naam van uw opslag account en de toegangs sleutel voor opslag gebruikt voor het opslag account dat wordt vermeld in de [Azure-Portal](https://portal.azure.com) voor de waarden *AccountName* en *AccountKey* . Zie [over Azure Storage-accounts](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)voor meer informatie over opslag accounts en toegangs sleutels. In dit voorbeeld ziet u hoe u een statisch veld kunt declareren voor het opslaan van de verbindingstekenreeks:  
+Een Azure-opslagclient gebruikt een opslagverbindingstekenreeks om eindpunten en referenties voor toegang tot gegevensbeheerservices op te slaan. Wanneer u uitvoert in een client toepassing, moet u de opslag connection string in de volgende indeling opgeven, waarbij u de naam van uw opslag account en de toegangs sleutel voor opslag gebruikt voor het opslag account dat wordt vermeld in de [Azure Portal](https://portal.azure.com) voor de waarden *AccountName* en *AccountKey* . Zie [over Azure Storage-accounts](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)voor meer informatie over opslag accounts en toegangs sleutels. In dit voorbeeld ziet u hoe u een statisch veld kunt declareren voor het opslaan van de verbindingstekenreeks:
 
 ```cpp
 // Define the connection-string with your values.
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_storage_account;AccountKey=your_storage_account_key"));
 ```
 
-Als u uw toepassing wilt testen op uw lokale Windows-computer, kunt u de Microsoft Azure- [opslag emulator](../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) gebruiken die is geïnstalleerd met de [Azure SDK](https://azure.microsoft.com/downloads/). De opslag emulator is een hulp programma voor het simuleren van de blob-, wachtrij-en tabel services die beschikbaar zijn in azure op uw lokale ontwikkel computer. In het volgende voorbeeld ziet u hoe u een statisch veld kunt declareren voor het opslaan van de verbindingstekenreeks naar uw lokale opslagemulator:  
+Als u uw toepassing wilt testen op uw lokale Windows-computer, kunt u de [Azurite-opslag emulator](../common/storage-use-azurite.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)gebruiken. Azurite is een hulp programma voor het simuleren van de BLOB-en Queue-services die beschikbaar zijn in azure op uw lokale ontwikkel machine. In het volgende voorbeeld ziet u hoe u een statisch veld kunt declareren voor het opslaan van de verbindingstekenreeks naar uw lokale opslagemulator:
 
 ```cpp
-// Define the connection-string with Azure Storage Emulator.
+// Define the connection-string with Azurite.
 const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
 ```
 
-Als u de Azure-opslag emulator wilt starten, selecteert u de knop **Start** of drukt u op de **Windows** -toets. Begin met het typen van **Azure Storage emulator**en selecteer **Microsoft Azure-opslagemulator** in de lijst met toepassingen.
+Zie [de Azurite-emulator gebruiken voor het ontwikkelen van lokale Azure Storage](../common/storage-use-azurite.md)om Azurite te starten.
 
 In de volgende voorbeelden wordt ervan uitgegaan dat u een van deze twee methoden hebt gebruikt om de opslagverbindingstekenreeks op te halen.
 

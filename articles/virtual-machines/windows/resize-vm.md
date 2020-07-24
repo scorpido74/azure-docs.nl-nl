@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: cynthn
-ms.openlocfilehash: f456af143ac6ec21bcb9b0c3ec75635c51f748ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98a0a1a2ce0a5122a953b8cc9916e2bf56955feb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82099883"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020234"
 ---
 # <a name="resize-a-windows-vm"></a>Het formaat van een Windows-VM wijzigen
 
@@ -25,7 +25,7 @@ Als uw virtuele machine gebruikmaakt van Premium Storage, moet u ervoor zorgen d
 
 ## <a name="use-the-portal"></a>Gebruik de portal
 
-1. Open de [Azure Portal](https://portal.azure.com).
+1. Open [Azure Portal](https://portal.azure.com).
 1. Open de pagina voor de virtuele machine.
 1. Selecteer in het menu links **grootte**.
 1. Kies een nieuwe grootte in de lijst met beschik bare grootten en selecteer vervolgens **formaat wijzigen**.
@@ -126,5 +126,4 @@ $vmIds = $as.VirtualMachinesReferences
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voor extra schaal baarheid voert u meerdere VM-exemplaren uit en uitschalen. Zie [Windows-machines automatisch schalen in een schaalset voor virtuele machines](../../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md)voor meer informatie.
-
+Voor extra schaal baarheid voert u meerdere VM-exemplaren uit en uitschalen. Zie [Windows-machines automatisch schalen in een schaalset voor virtuele machines](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md)voor meer informatie.

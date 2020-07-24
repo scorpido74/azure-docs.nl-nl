@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/07/2020
+ms.date: 07/22/2020
 ms.subservice: app-mgmt
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83c41a357ebaf65cca8465bfc48dda3dd065c3e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 042509240eb2b88446d3ac1956d9056d5c39dfc8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84759994"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019383"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD-toepassingsproxy: release geschiedenis van versie
 In dit artikel vindt u een overzicht van de versies en functies van de toepassings proxy van Azure Active Directory (Azure AD) die is uitgebracht. Het Azure AD-team werkt de toepassings proxy regel matig bij met nieuwe functies en functionaliteit. Application proxy-connectors worden automatisch bijgewerkt wanneer een nieuwe versie wordt uitgebracht. 
@@ -36,6 +36,31 @@ Toepassings proxy inschakelen | De vereisten voor het inschakelen van toepassing
 Azure AD-toepassingsproxy-connectors begrijpen | Meer informatie over [connector beheer](application-proxy-connectors.md) en hoe connectors [automatisch worden bijgewerkt](application-proxy-connectors.md#automatic-updates).
 Downloaden van Azure AD-toepassingsproxy-connector |  [Down load de nieuwste connector](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download).
 
+## <a name="1519750"></a>1.5.1975.0
+
+### <a name="release-status"></a>Status van de release
+
+22 juli 2020: deze versie is beschikbaar voor downloaden via de download pagina. Een release van de automatische upgrade van deze versie wordt op een later tijdstip vrijgegeven.
+
+### <a name="new-features-and-improvements"></a>Nieuwe functies en verbeteringen
+-   Verbeterde ondersteuning voor Azure Government-Cloud omgevingen. Voor stappen voor het correct installeren van de connector voor Azure Government Cloud, raadpleegt u de [vereisten](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#allow-access-to-urls) en [installatie stappen](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#install-the-agent-for-the-azure-government-cloud).
+- Ondersteuning voor het gebruik van de Extern bureaublad-services-webclient met toepassings proxy. Zie [extern bureaublad publiceren met Azure AD-toepassingsproxy](application-proxy-integrate-with-remote-desktop-services.md) voor meer informatie.
+- Verbeterde WebSocket-extensie onderhandelingen. 
+
+### <a name="fixed-issues"></a>Opgeloste problemen
+- Er is een fout opgetreden bij een WebSocket met geforceerde kleine teken reeksen.
+- Er is een probleem opgelost dat ervoor zorgt dat connectors Occassionally niet meer reageren.
+
+## <a name="1516260"></a>1.5.1626.0
+
+### <a name="release-status"></a>Status van de release
+
+17 juli 2020: uitgebracht voor down loads. Deze versie is alleen beschikbaar voor installatie via de download pagina. Een release van de automatische upgrade van deze versie wordt op een later tijdstip vrijgegeven.
+
+### <a name="fixed-issues"></a>Opgeloste problemen
+- Er is een opgelost geheugenlek gevonden in de vorige versie
+- Algemene verbeteringen voor WebSocket-ondersteuning
+
 ## <a name="1515260"></a>1.5.1526.0
 
 ### <a name="release-status"></a>Status van de release
@@ -47,7 +72,7 @@ Downloaden van Azure AD-toepassingsproxy-connector |  [Down load de nieuwste con
 - Verbeterd Signa lering tussen de connector en Azure-Services. Dit omvat het ondersteunen van betrouw bare sessies voor WCF-communicatie tussen de connector en Azure-Services en verbeteringen in DNS-caching voor WebSocket-communicatie.
 - Ondersteuning voor het configureren van een proxy tussen de connector en de back-end-toepassing. Zie [werken met bestaande on-premises proxy servers](application-proxy-configure-connectors-with-proxy-servers.md)voor meer informatie.
 
-### <a name="fixed-issues"></a>Problemen opgelost
+### <a name="fixed-issues"></a>Opgeloste problemen
 - Terugvallen op poort 8080 voor communicatie van de connector naar Azure-Services.
 - Fout opsporingsgegevens toegevoegd voor WebSocket-communicatie. 
 - Opgelost waarbij het SameSite-kenmerk wordt behouden wanneer deze zijn ingesteld op back-end-toepassings cookies.
@@ -65,7 +90,7 @@ Downloaden van Azure AD-toepassingsproxy-connector |  [Down load de nieuwste con
 - Stel TLS 1,2 in als het standaard protocol voor connectors. 
 - Er is een nieuwe gebruiksrecht overeenkomst voor eind gebruikers toegevoegd.  
 
-### <a name="fixed-issues"></a>Problemen opgelost
+### <a name="fixed-issues"></a>Opgeloste problemen
 
 - Er is een fout opgelost die een aantal geheugen lekkages in de connector heeft veroorzaakt.
 - De Azure Service Bus versie is bijgewerkt, die een fout oplossing bevat voor problemen met de time-out van de connector.
@@ -76,7 +101,7 @@ Downloaden van Azure AD-toepassingsproxy-connector |  [Down load de nieuwste con
 
 19 januari 2018: uitgebracht voor downloaden
 
-### <a name="fixed-issues"></a>Problemen opgelost
+### <a name="fixed-issues"></a>Opgeloste problemen
 
 - Er is ondersteuning toegevoegd voor aangepaste domeinen die domein vertaling in de cookie nodig hebben.
 

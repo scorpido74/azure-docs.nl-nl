@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/21/2020
 ms.author: yelevin
-ms.openlocfilehash: a0eb234d9677c479d2cb404b065da408854168e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c9a7a09d3085b1ec67bf29f142c6e7b205561ef
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85368431"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021746"
 ---
 # <a name="connect-your-perimeter-81-activity-logs-to-azure-sentinel"></a>De activiteiten logboeken van uw perimeter 81 verbinden met Azure Sentinel
+
+> [!IMPORTANT]
+> De perimeter 81-gegevens connector in azure Sentinel is momenteel beschikbaar als open bare preview.
+> Deze functie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 In dit artikel wordt uitgelegd hoe u het apparaat voor de [activiteiten logboeken van de Perimeter 81](https://www.perimeter81.com/) verbindt met Azure Sentinel. Met de connector voor de activiteiten logboeken van de perimeter 81 kunt u eenvoudig uw perimeter 81-gegevens in azure Sentinel brengen, zodat u deze in werkmappen kunt bekijken, er aangepaste waarschuwingen voor moet maken en deze moet opnemen om het onderzoek te verbeteren.
 

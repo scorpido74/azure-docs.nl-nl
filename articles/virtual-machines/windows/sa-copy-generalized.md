@@ -9,11 +9,12 @@ ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
 ms.custom: storage-accounts
-ms.openlocfilehash: 31b8200b63780388fb53db588c418951c500ac19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8077689bce988124da34428842df8fd2ef757bf0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84232909"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020182"
 ---
 # <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Een niet-beheerde VM-installatiekopie maken van een Azure-VM
 
@@ -24,9 +25,9 @@ In dit artikel wordt beschreven hoe u Azure PowerShell kunt gebruiken om een ins
  
 
 ## <a name="generalize-the-vm"></a>De virtuele machine generaliseren 
-In deze sectie wordt beschreven hoe u uw virtuele Windows-machine generaliseren voor gebruik als een installatie kopie. Als u een virtuele machine generaliseert, worden alle gegevens van uw persoonlijke account, onder andere, verwijderd en wordt de computer voor bereid voor gebruik als installatie kopie. Raadpleeg [Sysprep gebruiken: een inleiding](https://technet.microsoft.com/library/bb457073.aspx) voor meer informatie over Sysprep.
+In deze sectie wordt beschreven hoe u uw virtuele Windows-machine generaliseren voor gebruik als een installatie kopie. Als u een virtuele machine generaliseert, worden alle gegevens van uw persoonlijke account, onder andere, verwijderd en wordt de computer voor bereid voor gebruik als installatie kopie. Raadpleeg [Sysprep gebruiken: een inleiding](/previous-versions/windows/it-pro/windows-xp/bb457073(v=technet.10)) voor meer informatie over Sysprep.
 
-Zorg ervoor dat de server functies die op de computer worden uitgevoerd, worden ondersteund door Sysprep. Zie [Sysprep-ondersteuning voor Server functies](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles) voor meer informatie.
+Zorg ervoor dat de server functies die op de computer worden uitgevoerd, worden ondersteund door Sysprep. Zie [Sysprep-ondersteuning voor Server functies](/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles) voor meer informatie.
 
 > [!IMPORTANT]
 > Als u de VHD voor het eerst uploadt naar Azure, moet u ervoor zorgen dat u [uw VM](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) hebt voor bereid voordat u Sysprep uitvoert. 
@@ -251,5 +252,3 @@ Als u klaar bent, ziet u de zojuist gemaakte vm in de [Azure Portal](https://por
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie [virtuele machines beheren met Azure Resource Manager en Power shell](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)voor meer informatie over het beheren van uw nieuwe virtuele machine met Azure PowerShell.
-
-

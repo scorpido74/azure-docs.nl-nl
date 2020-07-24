@@ -10,16 +10,16 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52684520aed8712aed40318f32a83194f7f86683
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2f547aa900c1b8dbea27eceff7ac7ebc86a83e33
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357848"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019825"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migreren naar Cloud authenticatie met behulp van gefaseerde implementatie (preview-versie)
 
-Door gebruik te maken van een gefaseerde implementatie kunt u een cutover van uw hele domein vermijden.  Zo kunt u groepen gebruikers selectief testen met Cloud verificatie mogelijkheden zoals Azure Multi-Factor Authentication (MFA), voorwaardelijke toegang, identiteits beveiliging voor gelekte referenties, identiteits beheer en anderen.  In dit artikel wordt beschreven hoe u de switch kunt maken. Voordat u begint met de gefaseerde implementatie, moet u rekening houden met de gevolgen als aan een of meer van de volgende voor waarden wordt voldaan:
+Met gefaseerde implementatie kunt u groepen gebruikers selectief testen met Cloud verificatie mogelijkheden zoals Azure Multi-Factor Authentication (MFA), voorwaardelijke toegang, identiteits beveiliging voor gelekte referenties, identiteits beheer en anderen, voordat u uw domeinen knipt.  In dit artikel wordt beschreven hoe u de switch kunt maken. Voordat u begint met de gefaseerde implementatie, moet u rekening houden met de gevolgen als aan een of meer van de volgende voor waarden wordt voldaan:
     
 -  U maakt momenteel gebruik van een on-premises Multi-Factor Authentication-Server. 
 -  U gebruikt Smart Cards voor verificatie. 
@@ -45,7 +45,7 @@ Bekijk voor een overzicht van de functie ' Azure Active Directory: wat is gefase
 
 -   U hebt alle toepasselijke beleids regels voor Tenant huismerk en voorwaardelijke toegang geconfigureerd die u nodig hebt voor gebruikers die worden gemigreerd naar Cloud authenticatie.
 
--   Als u van plan bent Azure Multi-Factor Authentication te gebruiken, raden we u aan om [geconvergeerde registratie te gebruiken voor selfservice voor wachtwoord herstel (SSPR) en multi-factor Authentication](../authentication/concept-registration-mfa-sspr-combined.md) zodat uw gebruikers hun verificatie methoden eenmaal moeten registreren.
+-   Als u van plan bent Azure Multi-Factor Authentication te gebruiken, raden we u aan om [gecombineerde registratie te gebruiken voor selfservice voor wachtwoord herstel (SSPR) en multi-factor Authentication](../authentication/concept-registration-mfa-sspr-combined.md) om ervoor te zorgen dat uw gebruikers hun verificatie methoden eenmaal registreren.
 
 -   Als u de functie voor gefaseerde implementatie wilt gebruiken, moet u een globale beheerder zijn op uw Tenant.
 
@@ -81,6 +81,8 @@ De volgende scenario's worden niet ondersteund voor gefaseerde implementatie:
 
 
 - Wanneer u voor het eerst een beveiligings groep voor gefaseerde implementatie toevoegt, bent u beperkt tot 200 gebruikers om een UX-time-out te voor komen. Nadat u de groep hebt toegevoegd, kunt u, indien nodig, meer gebruikers toevoegen.
+
+- Terwijl gebruikers zich in de gefaseerde implementatie bevinden, wordt het beleid voor wachtwoord verloop ingesteld op 90 dagen zonder optie om het aan te passen. 
 
 
 ## <a name="get-started-with-staged-rollout"></a>Aan de slag met gefaseerde implementatie
@@ -173,8 +175,9 @@ Ga als volgt te werk:
 
    >[!NOTE]
    >De leden in een groep worden automatisch ingeschakeld voor gefaseerde implementatie. Geneste en dynamische groepen worden niet ondersteund voor gefaseerde implementatie.
+   >Wanneer u een nieuwe groep toevoegt, worden gebruikers in de groep (Maxi maal 200 gebruikers voor een nieuwe groep) bijgewerkt met behulp van beheerde verificatie immidiatly. Het bewerken van een groep (het toevoegen of verwijderen van gebruikers) kan tot 24 uur duren voordat de wijzigingen van kracht worden.
 
-## <a name="auditing"></a>Controleren
+## <a name="auditing"></a>Controle
 
 We hebben controle gebeurtenissen ingeschakeld voor de verschillende acties die we voor gefaseerde implementatie uitvoeren:
 

@@ -7,11 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: c96fa4c453911c4ca4b8cf6d8f74647b4532109f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d4abd68e60201a17e56ee105777614c42691bfc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711541"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020335"
 ---
 # <a name="change-the-os-disk-used-by-an-azure-vm-using-powershell"></a>De besturingssysteem schijf wijzigen die wordt gebruikt door een Azure VM met behulp van Power shell
 
@@ -24,7 +25,7 @@ De VM moet stopped\deallocated zijn. vervolgens kan de bron-ID van de beheerde s
 Zorg ervoor dat de VM-grootte en het opslag type compatibel zijn met de schijf die u wilt koppelen. Als de schijf die u wilt gebruiken zich bijvoorbeeld in Premium Storage bevindt, moet de virtuele machine Premium Storage kunnen zijn (zoals een grootte van de DS-serie). Beide schijven moeten ook dezelfde grootte hebben.
 En zorg ervoor dat u geen niet-versleutelde virtuele machine mengt met een versleutelde besturingssysteem schijf. dit wordt niet ondersteund. Als de virtuele machine geen gebruik maakt van Azure Disk Encryption, moet de besturingssysteem schijf die wordt omgewisseld, niet gebruikmaken van Azure Disk Encryption.
 
-Een lijst met schijven in een resource groep ophalen met behulp van [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk)
+Een lijst met schijven in een resource groep ophalen met behulp van [Get-AzDisk](/powershell/module/az.compute/get-azdisk)
 
 ```azurepowershell-interactive
 Get-AzDisk -ResourceGroupName myResourceGroup | Format-Table -Property Name

@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 674befe7d01d0ef88026afeb2cb9179b167a88ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f621ed1342928b7f05fc8b84bfc2fceadf494fb5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357933"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019728"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory naadloze eenmalige aanmelding: veelgestelde vragen
 
@@ -102,6 +102,10 @@ Volg deze stappen op de on-premises server waarop u Azure AD Connect:
    >Het domein beheerders account dat wordt gebruikt, mag geen lid zijn van de groep met beveiligde gebruikers. Als dit het geval is, mislukt de bewerking.
 
    2. Aanroep `Update-AzureADSSOForest -OnPremCredentials $creds` . Met deze opdracht wordt de Kerberos-ontsleutelings sleutel voor het `AZUREADSSO` computer account in dit specifieke AD-forest bijgewerkt en bijgewerkt in azure AD.
+   
+   >[!NOTE]
+   >Als u geen domein beheerder bent en u machtigingen hebt toegewezen door de domein beheerder, moet u`Update-AzureADSSOForest -OnPremCredentials $creds -PreserveCustomPermissionsOnDesktopSsoAccount`
+   
    3. Herhaal de voor gaande stappen voor elk AD-forest waarop u de functie hebt ingesteld.
 
    >[!IMPORTANT]

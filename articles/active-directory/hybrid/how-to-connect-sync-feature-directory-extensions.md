@@ -16,12 +16,12 @@ ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3afec7c31488529af9ba15100c914899a0d1d808
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d64bfe66f5fb871ff9f85a5d58d128ac44643846
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357457"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019758"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect synchronisatie: Directory-extensies
 U kunt Directory-extensies gebruiken om het schema uit te breiden in Azure Active Directory (Azure AD) met uw eigen kenmerken van on-premises Active Directory. Met deze functie kunt u LOB-apps bouwen door gebruik te maken van kenmerken die u on-premises blijft beheren. Deze kenmerken kunnen worden gebruikt via [uitbrei dingen](https://docs.microsoft.com/graph/extensibility-overview
@@ -33,8 +33,8 @@ Op dit moment gebruikt geen Office 365-werk belasting deze kenmerken.
 
 U kunt configureren welke extra kenmerken u wilt synchroniseren in het pad voor aangepaste instellingen in de installatie wizard.
 
->[!NOTE]
->Het vak beschik bare kenmerken is hoofdletter gevoelig.
+> [!NOTE]
+> In Azure AD Connect eerdere versies dan 1.2.65.0 is het zoekvak voor **beschik bare kenmerken** hoofdletter gevoelig.
 
 ![Wizard schema-uitbrei ding](./media/how-to-connect-sync-feature-directory-extensions/extension2.png)  
 

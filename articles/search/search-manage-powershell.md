@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: a08b59464855b805173fa76d696107f8a7673d39
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0ce6a754ce09e227332309878bdddd3d8c1733be
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529560"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021899"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>Uw Azure Cognitive Search-service beheren met Power shell
 > [!div class="op_single_selector"]
@@ -42,7 +42,7 @@ Binnen een service is het maken en beheren van inhoud via [Search Service rest A
 
 ## <a name="check-versions-and-load-modules"></a>Versies controleren en modules laden
 
-De voor beelden in dit artikel zijn interactief en vereisen verhoogde machtigingen. Azure PowerShell (de **AZ** -module) moet zijn geïnstalleerd. Zie [Azure PowerShell installeren](/powershell/azure/overview) voor meer informatie.
+De voor beelden in dit artikel zijn interactief en vereisen verhoogde machtigingen. Azure PowerShell (de **AZ** -module) moet zijn geïnstalleerd. Zie [Azure PowerShell installeren](/powershell/azure/) voor meer informatie.
 
 ### <a name="powershell-version-check-51-or-later"></a>Controle van Power shell-versie (5,1 of hoger)
 

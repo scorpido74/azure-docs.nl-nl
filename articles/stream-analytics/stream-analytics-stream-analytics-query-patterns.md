@@ -8,11 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/18/2019
-ms.openlocfilehash: 78dde3f6706ecbc54daca162ac718911752fa0ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c79d810979641d1dc128c741c2124d9b5887aa3d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83832959"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020743"
 ---
 # <a name="common-query-patterns-in-azure-stream-analytics"></a>Algemene query patronen in Azure Stream Analytics
 
@@ -83,7 +84,7 @@ FROM Input
 ```
 ## <a name="data-aggregation-over-time"></a>Gegevens aggregatie in de loop van de tijd
 
-Als u informatie wilt berekenen over een tijd venster, kunnen gegevens samen worden geaggregeerd. In dit voor beeld wordt een telling berekend over de laatste tien minuten van de tijd voor elke specifieke auto.
+Als u informatie wilt berekenen over een tijd venster, kunnen gegevens samen worden geaggregeerd. In dit voor beeld wordt een telling berekend over de laatste tien seconden van de tijd voor elke specifieke auto.
 
 **Invoer**:
 
@@ -248,7 +249,7 @@ Meerdere **Select** -instructies kunnen worden gebruikt voor het uitvoeren van g
 
 **Uitvoer AlertOutput**:
 
-| Merk | Tijd | Count |
+| Merk | Tijd | Aantal |
 | --- | --- | --- |
 | Make2 |2015-01-01T00:00:10.0000000 Z |3 |
 
@@ -677,7 +678,7 @@ Zo is de klok voor *TollID* 2 vijf seconden achter *TollID* 1, en de klok van he
 
 **Uitvoer**:
 
-| TollID | Count |
+| TollID | Aantal |
 | --- | --- |
 | 1 | 2 |
 | 2 | 2 |
@@ -927,7 +928,7 @@ Met de query kan de fabrikant de locatie van de machines automatisch bewaken en 
 
 Raadpleeg voor meer informatie de scenario's voor [geoomheining en georuimtelijke aggregatie met Azure stream Analytics](geospatial-scenarios.md) artikel.
 
-## <a name="get-help"></a>Hulp vragen
+## <a name="get-help"></a>Help opvragen
 
 Probeer voor meer hulp onze [micro soft Q&een vraag pagina voor Azure stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html).
 

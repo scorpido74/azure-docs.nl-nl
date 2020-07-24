@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 01ce952ea774ba852c83d0d6aa3fe38d5dfd677e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 219e2b77a0f6f30307c43f006fcdd3828d3c8fbf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711847"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021372"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Een StorSimple-cloudapparaat implementeren en beheren in Azure (Update 3 en hoger)
 
@@ -66,7 +67,7 @@ In de volgende tabel ziet u enkele belangrijke verschillen tussen het StorSimple
 | **Locatie** |Bevindt zich in het datacenter. |Wordt uitgevoerd in Azure. |
 | **Netwerkinterfaces** |Heeft zes netwerkinterfaces: DATA 0 t/m DATA 5. |Heeft slechts één netwerkinterface: DATA 0 |
 | **Registratie** |Geregistreerd tijdens de initiële configuratiestap. |Registratie is een afzonderlijke taak. |
-| **Gegevensversleutelingssleutel van service** |Genereer de sleutel opnieuw op het fysieke apparaat en werk het cloudapparaat daarna bij met de nieuwe sleutel. |Het is niet mogelijk om sleutels opnieuw te genereren op het cloudapparaat. |
+| **Versleutelings sleutel voor service gegevens** |Genereer de sleutel opnieuw op het fysieke apparaat en werk het cloudapparaat daarna bij met de nieuwe sleutel. |Het is niet mogelijk om sleutels opnieuw te genereren op het cloudapparaat. |
 | **Ondersteunde volumetypen** |Ondersteunt zowel lokaal vastgemaakte als gelaagde volumes. |Ondersteunt alleen gelaagde volumes. |
 
 ## <a name="prerequisites-for-the-cloud-appliance"></a>Vereisten voor het cloudapparaat
@@ -83,7 +84,7 @@ Voordat u het cloudapparaat inricht, moet u de volgende voorbereidingen treffen 
 * Voor het cloudapparaat [configureert u een virtueel netwerk in Azure](../virtual-network/manage-virtual-network.md#create-a-virtual-network). Als u Premium-opslag gebruikt, moet u een virtueel netwerk maken in een Azure-regio die ondersteuning biedt voor Premium-opslag. De Premium Storage-regio's zijn regio's die overeenkomen met de rij voor Schijfruimte in de [lijst met Azure Services per regio](https://azure.microsoft.com/regions/services/).
 * Het is raadzaam om de standaard-DNS-server van Azure te gebruiken. Geef liever geen eigen naam op voor de DNS-server. Als uw DNS-servernaam niet geldig is of als de DNS-server IP-adressen niet correct kan omzetten, mislukt het maken van het cloudapparaat.
 * Punt-naar-site en site-naar-site zijn optioneel, maar niet vereist. Als u wilt, kunt u deze opties configureren in meer geavanceerde scenario's.
-* U kunt [virtuele Azure-machines](../virtual-machines/virtual-machines-windows-quick-create-portal.md) (hostservers) maken in het virtuele netwerk; deze maken gebruik van de volumes die beschikbaar worden gesteld door het cloudapparaat. Deze servers moeten aan de volgende vereisten voldoen:
+* U kunt [virtuele Azure-machines](../virtual-machines/windows/quick-create-portal.md) (hostservers) maken in het virtuele netwerk; deze maken gebruik van de volumes die beschikbaar worden gesteld door het cloudapparaat. Deze servers moeten aan de volgende vereisten voldoen:
 
   * Het moeten virtuele Windows- of Linux-machines zijn waarop de iSCSI-initiatorsoftware is geïnstalleerd.
   * Ze moeten in hetzelfde virtuele netwerk worden uitgevoerd als het cloudapparaat.
@@ -194,7 +195,7 @@ U hebt het interne of privé IP-adres van het cloudapparaat nodig om dit apparaa
 
      ![De virtuele machine voor het cloudapparaat selecteren](./media/storsimple-8000-cloud-appliance-u2/sca-vm.png)
 
-2. Ga naar **Instellingen > Netwerken**. In het rechterdeelvenster ziet u het privé IP-adres van het cloudapparaat. Noteer dit adres.
+2. Ga naar **Instellingen > Netwerken**. In het rechterdeelvenster ziet u het privé IP-adres van het cloudapparaat. Noteer deze naam.
 
     ![Het privé IP-adres voor het cloudapparaat ophalen](./media/storsimple-8000-cloud-appliance-u2/sca-private-ip-vm-networking.png)
 

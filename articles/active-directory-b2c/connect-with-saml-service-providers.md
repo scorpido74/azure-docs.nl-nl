@@ -12,18 +12,18 @@ ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b9ea9e756587af124ca94518d9f15271310ddee3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3baa659d454a24a132eda914d50acddbd5df8a90
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389375"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020063"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Een SAML-toepassing registreren in Azure AD B2C
 
 In dit artikel leert u hoe u Azure Active Directory B2C (Azure AD B2C) kunt configureren om te fungeren als een Security Assertion Markup Language (SAML)-ID-provider (IdP) voor uw toepassingen.
 
-## <a name="scenario-overview"></a>Overzicht van scenario's
+## <a name="scenario-overview"></a>Scenario-overzicht
 
 Organisaties die Azure AD B2C als klant identiteits-en toegangs beheer oplossing gebruiken, kunnen interactie vereisen met id-providers of toepassingen die zijn geconfigureerd voor verificatie met behulp van het SAML-protocol.
 
@@ -353,6 +353,51 @@ Als u deze zelf studie wilt volt ooien, gebruikt u de [SAML-test toepassing][sam
 * Geef de URI voor de verlener op:`https://contoso.onmicrosoft.com/app-name`
 
 Selecteer **Aanmelden** en u moet een aanmeldings scherm van de gebruiker weer gegeven. Bij het aanmelden wordt een SAML-bevestiging weer gegeven aan de voorbeeld toepassing.
+
+## <a name="enable-encypted-assertions"></a>Versleuteld-verklaringen inschakelen
+Voor het versleutelen van de SAML-bevestigingen die worden teruggestuurd naar de service provider, gebruikt Azure AD B2C het open bare-sleutel certificaat van de service providers. De open bare sleutel moet bestaan in de SAML-meta gegevens die in de bovenstaande ["samlMetadataUrl"](#samlmetadataurl) als sleutel descriptor met het gebruik van ' Encryption ' zijn beschreven.
+
+Hier volgt een voor beeld van de SAML-meta gegevenssleutel descriptor waarvoor een gebruik is ingesteld op versleuteling:
+
+```xml
+<KeyDescriptor use="encryption">
+  <KeyInfo xmlns="https://www.w3.org/2000/09/xmldsig#">
+    <X509Data>
+      <X509Certificate>valid certificate</X509Certificate>
+    </X509Data>
+  </KeyInfo>
+</KeyDescriptor>
+```
+
+Als u wilt dat Azure AD B2C versleutelde beweringen verzendt, stelt u het **WantsEncryptedAssertion** -meta gegevens item in op True in het technische profiel van de Relying Party, zoals hieronder wordt weer gegeven.
+
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TrustFrameworkPolicy
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
+  PolicySchemaVersion="0.3.0.0"
+  TenantId="contoso.onmicrosoft.com"
+  PolicyId="B2C_1A_signup_signin_saml"
+  PublicPolicyUri="http://contoso.onmicrosoft.com/B2C_1A_signup_signin_saml">
+ ..
+ ..
+  <RelyingParty>
+    <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+    <TechnicalProfile Id="PolicyProfile">
+      <DisplayName>PolicyProfile</DisplayName>
+      <Protocol Name="SAML2"/>
+      <Metadata>
+          <Item Key="WantsEncryptedAssertions">true</Item>
+      </Metadata>
+     ..
+     ..
+     ..
+    </TechnicalProfile>
+  </RelyingParty>
+</TrustFrameworkPolicy>
+```
 
 ## <a name="sample-policy"></a>Voorbeeldbeleid
 

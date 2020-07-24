@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: rajanaki
-ms.openlocfilehash: 25290a66da3d5c8325513b2bea6d27d12ca7da70
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 1df17ccb41c974c8939710850b5bb71ee3a5ef1b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134799"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021576"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Azure Automation-runbooks aan herstelplannen toevoegen
 
@@ -199,7 +199,7 @@ In sommige scenario's kunt u mogelijk geen afzonderlijke variabelen maken voor e
 - Een share point-herstel heeft bijvoorbeeld twee front-ends. Een Basic Line-of-Business-toepassing (LOB) heeft slechts één front-end.
 - In dit scenario kunt u geen afzonderlijke variabelen maken voor elk herstel plan.
 
-In het volgende voor beeld maken we een [complexe variabele](/powershell/module/servicemanagement/azure/set-azureautomationvariable) in het Azure Automation-account.
+In het volgende voor beeld maken we een [complexe variabele](/powershell/module/servicemanagement/azure.service/set-azureautomationvariable) in het Azure Automation-account.
 
 We doen dit door meerdere waarden op te geven met behulp van Azure PowerShell.
 

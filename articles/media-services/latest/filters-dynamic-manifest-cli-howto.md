@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 74516aa921e45917f327a193a1c972b021c9c8ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2385171a501d00f91c58f3fde9b487505ec21c60
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74896075"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023208"
 ---
 # <a name="creating-filters-with-cli"></a>Filters maken met CLI 
 
@@ -26,14 +27,14 @@ Bij het leveren van uw inhoud aan klanten (het streamen van Live-gebeurtenissen 
 
 Zie [dynamische manifesten](filters-dynamic-manifest-overview.md) en [filters](filters-concept.md)voor een gedetailleerde beschrijving van deze functie en scenario's waarin deze wordt gebruikt.
 
-In dit onderwerp wordt beschreven hoe u een filter configureert voor een video op aanvraag en gebruikt u CLI voor Media Services v3 om [account filters](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest) en [activa filters](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)te maken. 
+In dit onderwerp wordt beschreven hoe u een filter configureert voor een video op aanvraag en gebruikt u CLI voor Media Services v3 om [account filters](/cli/azure/ams/account-filter?view=azure-cli-latest) en [activa filters](/cli/azure/ams/asset-filter?view=azure-cli-latest)te maken. 
 
 > [!NOTE]
 > Zorg ervoor dat u de [presentationTimeRange](filters-concept.md#presentationtimerange)controleert.
 
 ## <a name="prerequisites"></a>Vereisten 
 
-- [Maak een Media Services-account](create-account-cli-how-to.md). Zorg ervoor dat u de naam van de resource groep en de naam van het Media Services account vergeet. 
+- [Een Azure Media Services-account maken](./create-account-howto.md). Zorg ervoor dat u de naam van de resource groep en de naam van het Media Services account vergeet. 
 
 [!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
 
@@ -79,7 +80,7 @@ In het volgende voor beeld worden de voor waarden voor het bijhouden van selecti
 
 ## <a name="create-account-filters"></a>Account filters maken
 
-Met de volgende [AZ AMS account-filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest) opdracht maakt u een account filter met selecties voor het bijhouden van filters die [eerder zijn gedefinieerd](#define-a-filter). 
+Met de volgende [AZ AMS account-filter](/cli/azure/ams/account-filter?view=azure-cli-latest) opdracht maakt u een account filter met selecties voor het bijhouden van filters die [eerder zijn gedefinieerd](#define-a-filter). 
 
 Met de opdracht kunt u een optionele `--tracks` para meter door geven die JSON bevat die de selecties van het bijhouden vertegenwoordigt.  Gebruik @ {file} om JSON vanuit een bestand te laden. Als u de Azure CLI lokaal gebruikt, geeft u het hele bestandspad op:
 
@@ -87,17 +88,17 @@ Met de opdracht kunt u een optionele `--tracks` para meter door geven die JSON b
 az ams account-filter create -a amsAccount -g resourceGroup -n filterName --tracks @tracks.json
 ```
 
-Zie ook [JSON-voor beelden voor filters](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate#create-an-account-filter).
+Zie ook [JSON-voor beelden voor filters](/rest/api/media/accountfilters/createorupdate#create-an-account-filter).
 
 ## <a name="create-asset-filters"></a>Activa filters maken
 
-Met de volgende opdracht [AZ AMS Asset-filter](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest) Command maakt u een activa filter met selecties voor het bijhouden van filters die [eerder zijn gedefinieerd](#define-a-filter). 
+Met de volgende opdracht [AZ AMS Asset-filter](/cli/azure/ams/asset-filter?view=azure-cli-latest) Command maakt u een activa filter met selecties voor het bijhouden van filters die [eerder zijn gedefinieerd](#define-a-filter). 
 
 ```azurecli
 az ams asset-filter create -a amsAccount -g resourceGroup -n filterName --asset-name assetName --tracks @tracks.json
 ```
 
-Zie ook [JSON-voor beelden voor filters](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create-an-asset-filter).
+Zie ook [JSON-voor beelden voor filters](/rest/api/media/assetfilters/createorupdate#create-an-asset-filter).
 
 ## <a name="associate-filters-with-streaming-locator"></a>Filters koppelen aan streaming-Locator
 
@@ -131,4 +132,4 @@ In de volgende tabel ziet u enkele voor beelden van Url's met filters:
 
 ## <a name="see-also"></a>Zie tevens
 
-[Azure-CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
+[Azure-CLI](/cli/azure/ams?view=azure-cli-latest)

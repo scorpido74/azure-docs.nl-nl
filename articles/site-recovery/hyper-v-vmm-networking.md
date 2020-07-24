@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: a61f7ff69e648262eb721eb61a98b09dbbee924c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0426872c29fa126514f22a5f4fb57f19903c967
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73961430"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021661"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>IP-adres Sering instellen om verbinding te maken met een secundaire on-premises site na een failover
 
@@ -78,12 +79,12 @@ Na een failover wijst Site Recovery een IP-adres toe voor elke netwerk interface
 
 Wanneer u de beveiliging voor een virtuele machine inschakelt, kunt u het volgende voorbeeld script gebruiken om het adres te controleren dat is toegewezen aan de virtuele machine. Dit IP-adres wordt ingesteld als het failover-IP-adres en wordt toegewezen aan de virtuele machine op het moment van de failover:
 
-    ```
-    $vm = Get-SCVirtualMachine -Name <VM_NAME>
-    $na = $vm[0].VirtualNetworkAdapters>
-    $ip = Get-SCIPAddress -GrantToObjectID $na[0].id
-    $ip.address 
-    ```
+```powershell
+$vm = Get-SCVirtualMachine -Name <VM_NAME>
+$na = $vm[0].VirtualNetworkAdapters>
+$ip = Get-SCIPAddress -GrantToObjectID $na[0].id
+$ip.address
+```
 
 ## <a name="use-a-different-ip-address"></a>Een ander IP-adres gebruiken
 
@@ -92,7 +93,7 @@ In dit scenario worden de IP-adressen van Vm's waarvoor een failover is uitgevoe
 - Gebruik lage TTL-waarden voor intranet toepassingen.
 - Gebruik het volgende script in een Site Recovery herstel plan voor een tijdige update van de DNS-server. U hebt het script niet nodig als u dynamische DNS-registratie gebruikt.
 
-    ```
+    ```powershell
     param(
     string]$Zone,
     [string]$name,

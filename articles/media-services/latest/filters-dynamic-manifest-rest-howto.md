@@ -13,11 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: f9134dd3bc926e6e2f454e5187e03365e91ed22a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93ef342ecee9bb9e2f32400655db0cacc01835c0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75780331"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023106"
 ---
 # <a name="creating-filters-with-media-services-rest-api"></a>Filters maken met Media Services REST API
 
@@ -25,7 +26,7 @@ Bij het leveren van uw inhoud aan klanten (het streamen van Live-gebeurtenissen 
 
 Zie [dynamische manifesten](filters-dynamic-manifest-overview.md) en [filters](filters-concept.md)voor een gedetailleerde beschrijving van deze functie en scenario's waarin deze wordt gebruikt.
 
-In dit onderwerp wordt uitgelegd hoe u een filter definieert voor een video op aanvraag-Asset en REST-Api's gebruikt om [account filters](https://docs.microsoft.com/rest/api/media/accountfilters) en- [activa filters](https://docs.microsoft.com/rest/api/media/assetfilters)te maken. 
+In dit onderwerp wordt uitgelegd hoe u een filter definieert voor een video op aanvraag-Asset en REST-Api's gebruikt om [account filters](/rest/api/media/accountfilters) en- [activa filters](/rest/api/media/assetfilters)te maken. 
 
 > [!NOTE]
 > Zorg ervoor dat u de [presentationTimeRange](filters-concept.md#presentationtimerange)controleert.
@@ -96,7 +97,7 @@ Selecteer **Verzenden**.
 
 Het filter is gemaakt.
 
-Zie [maken of bijwerken](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate)voor meer informatie. Zie ook [JSON-voor beelden voor filters](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate#create-an-account-filter).
+Zie [maken of bijwerken](/rest/api/media/accountfilters/createorupdate)voor meer informatie. Zie ook [JSON-voor beelden voor filters](/rest/api/media/accountfilters/createorupdate#create-an-account-filter).
 
 ## <a name="create-asset-filters"></a>Activa filters maken  
 
@@ -114,13 +115,13 @@ Selecteer **Verzenden**.
 
 Het activa filter is gemaakt.
 
-Zie [maken of bijwerken](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate)voor meer informatie over het maken of bijwerken van Asset-filters. Zie ook [JSON-voor beelden voor filters](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create-an-asset-filter). 
+Zie [maken of bijwerken](/rest/api/media/assetfilters/createorupdate)voor meer informatie over het maken of bijwerken van Asset-filters. Zie ook [JSON-voor beelden voor filters](/rest/api/media/assetfilters/createorupdate#create-an-asset-filter). 
 
 ## <a name="associate-filters-with-streaming-locator"></a>Filters koppelen aan streaming-Locator
 
 U kunt een lijst opgeven met activa of account filters die van toepassing zijn op uw streaming-Locator. Met de [dynamische pakket (streaming-eind punt)](dynamic-packaging-overview.md) wordt deze lijst met filters toegepast, samen met de gegevens die door uw client zijn opgegeven in de URL. Deze combi natie genereert een [dynamisch manifest](filters-dynamic-manifest-overview.md)dat is gebaseerd op filters in de URL + filters die u opgeeft in de streaming-Locator. U wordt aangeraden deze functie te gebruiken als u filters wilt Toep assen, maar niet de filter namen in de URL wilt weer geven.
 
-Als u filters met een streaming-Locator wilt maken en koppelen met behulp van REST, gebruikt u de [streams](https://docs.microsoft.com/rest/api/media/streaminglocators/create) voor het maken van een API en geeft u `properties.filters` in de [aanvraag tekst](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)op.
+Als u filters met een streaming-Locator wilt maken en koppelen met behulp van REST, gebruikt u de [streams](/rest/api/media/streaminglocators/create) voor het maken van een API en geeft u `properties.filters` in de [aanvraag tekst](/rest/api/media/streaminglocators/create#request-body)op.
                                 
 ## <a name="stream-using-filters"></a>Streamen met filters
 

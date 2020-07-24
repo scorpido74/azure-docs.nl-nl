@@ -14,13 +14,14 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0cd2de0929b22dda6e566316c4eda966d8d62e24
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2ccf986f81ec3abed54c85640b8afb1c5cf7172
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84732647"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015881"
 ---
-# <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Een niet-beheerde Directory als beheerder overnemen in Azure Active Directory
+# <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Als beheerder in Azure Active Directory een niet-beheerde directory overnemen
 
 In dit artikel worden twee manieren beschreven om een DNS-domein naam te nemen in een onbeheerde map in Azure Active Directory (Azure AD). Wanneer een selfservice-gebruiker zich registreert voor een cloudservice die gebruikmaakt van Azure AD, wordt deze toegevoegd aan een niet-beheerde Azure AD-adreslijst op basis van het e-maildomein. Zie [Wat is self-service-aanmelding voor Azure Active Directory?](directory-self-service-signup.md) voor meer informatie over selfservice of ' virale ' aanmelding voor een service.
 
@@ -31,7 +32,7 @@ Tijdens het proces van overname door een beheerder kunt u eigendom bewijzen, zoa
 
 * Wanneer u een [externe beheerder](#external-admin-takeover) van een onbeheerde Azure-Directory uitvoert, voegt u de DNS-domein naam van de niet-beheerde map toe aan uw beheerde Azure-Directory. Wanneer u de domeinnaam toevoegt, wordt een toewijzing van gebruikers aan bronnen gemaakt in uw beheerde Azure-adreslijst, zodat gebruikers zonder onderbreking toegang houden tot services. 
 
-## <a name="internal-admin-takeover"></a>Interne beheerder overname
+## <a name="internal-admin-takeover"></a>Interne overname door beheerder
 
 Sommige producten die share point en OneDrive bevatten, zoals Office 365, bieden geen ondersteuning voor externe overname. Als dat het geval is, of als u een beheerder bent en u wilt een niet-beheerde of ' Shadow ' Azure AD-organisatie maken op basis van gebruikers die gebruikmaken van self-service registratie, kunt u dit doen met een interne beheerders overname.
 
@@ -73,7 +74,7 @@ Wanneer u de voor gaande stappen hebt voltooid, bent u nu de globale beheerder v
 > [!NOTE]
 > Gebruikers van Power BI-of Azure Rights Management-service met licenties die zijn toegewezen in de Office 365-organisatie, moeten hun Dash boards opslaan als de domein naam wordt verwijderd. Ze moeten zich aanmelden met een gebruikers naam zoals de *gebruiker \@ fourthcoffeexyz.onmicrosoft.com* in plaats van de *gebruiker \@ fourthcoffee. xyz*.
 
-## <a name="external-admin-takeover"></a>Externe beheerder overname
+## <a name="external-admin-takeover"></a>Externe overname door beheerder
 
 Als u een organisatie al beheert met Azure-Services of Office 365, kunt u geen aangepaste domein naam toevoegen als deze al is geverifieerd in een andere Azure AD-organisatie. Vanuit uw beheerde organisatie in azure AD kunt u echter een niet-beheerde organisatie nemen als een externe beheerder. De algemene procedure volgt het artikel [een aangepast domein toevoegen aan Azure AD](../fundamentals/add-custom-domain.md).
 
@@ -81,7 +82,7 @@ Wanneer u het eigendom van de domein naam controleert, verwijdert Azure AD de do
 
 - Gebruikers
 - Abonnementen
-- Licentie toewijzingen
+- Licentietoewijzingen
 
 ### <a name="support-for-external-admin-takeover"></a>Ondersteuning voor externe beheerders overname
 Externe beheerders overname wordt ondersteund door de volgende onlineservices:
@@ -169,9 +170,9 @@ Bij een geslaagde poging keert u terug naar de prompt zonder fout.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Een aangepaste domein naam toevoegen aan Azure AD](../fundamentals/add-custom-domain.md)
-* [Azure PowerShell installeren en configureren](/powershell/azure/overview)
-* [Azure PowerShell](/powershell/azure/overview)
+* [Een aangepaste domeinnaam toevoegen aan Azure AD](../fundamentals/add-custom-domain.md)
+* [Azure PowerShell installeren en configureren](/powershell/azure/)
+* [Azure PowerShell](/powershell/azure/)
 * [Azure-cmdlet-naslaginformatie](/powershell/azure/get-started-azureps)
 * [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)
 

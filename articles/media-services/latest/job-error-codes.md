@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/28/2019
 ms.author: juliako
-ms.openlocfilehash: d66347bc5510189b1d947b4c6b00345b0a56c3f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec057d86ea39afb7eabd4e8227646eaec11c5655
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80582225"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023004"
 ---
 # <a name="media-services-job-error-codes"></a>Fout codes Media Services taak
 
@@ -26,13 +26,13 @@ In dit onderwerp vindt u koppelingen naar een REST-referentie document voor een 
 
 ## <a name="job-error-codes"></a>Foutcodes in taak
 
-In het volgende REST-document vindt u gedetailleerde uitleg over [taak fout codes](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
+In het volgende REST-document vindt u gedetailleerde uitleg over [taak fout codes](/rest/api/media/jobs/get#joberrorcode).
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Vragen stellen, feedback geven, updates ophalen
 
-Bekijk het [Azure Media Services Community](media-services-community.md) -artikel voor verschillende manieren om vragen te stellen, feedback te geven en updates te ontvangen over Media Services.
+Ga naar het artikel van de [Azure Media Services-community](media-services-community.md) voor verschillende manieren om vragen te stellen, feedback te geven en updates voor Media Services op te halen.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 - [Fout codes voor streaming-eind punten](streaming-endpoint-error-codes.md)
 - [Azure Media Services concepten](concepts-overview.md)

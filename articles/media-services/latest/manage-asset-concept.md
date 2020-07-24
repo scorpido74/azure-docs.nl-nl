@@ -13,16 +13,16 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 9136fd702fad5c12a8ec97a68ff8a592a203d7d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6accd303ba11c4c1406c7a157fa8176972fc7a3a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80582201"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022904"
 ---
 # <a name="manage-assets"></a>Assets beheren
 
-In Azure Media Services is een [activum](https://docs.microsoft.com/rest/api/media/assets) waar u 
+In Azure Media Services is een [activum](/rest/api/media/assets) waar u 
 
 * Media bestanden uploaden naar een Asset,
 * Live streams opnemen en archiveren in een Asset,
@@ -56,16 +56,16 @@ Nadat de digitale bestanden zijn geüpload naar de opslag en zijn gekoppeld aan 
     ```
 2. Haal een SAS-URL op met lees-/schrijfmachtigingen die wordt gebruikt voor het uploaden van digitale bestanden in de asset-container.
 
-    U kunt de Media Services-API gebruiken voor het [vermelden van de URL's voor de asset-container](https://docs.microsoft.com/rest/api/media/assets/listcontainersas).
+    U kunt de Media Services-API gebruiken voor het [vermelden van de URL's voor de asset-container](/rest/api/media/assets/listcontainersas).
 
-    **AssetContainerSas. listContainerSas** haalt een [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) -para meter op die u hebt ingesteld `expiryTime` . De tijd moet worden ingesteld op < 24 uur.
+    **AssetContainerSas. listContainerSas** haalt een [ListContainerSasInput](/rest/api/media/assets/listcontainersas#listcontainersasinput) -para meter op die u hebt ingesteld `expiryTime` . De tijd moet worden ingesteld op < 24 uur.
 
-    [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) retourneert meerdere SAS-url's als er twee opslag account sleutels voor elk opslag account zijn. Een opslag account heeft twee sleutels, omdat het een failover en naadloze rotatie van de sleutels van een opslag account biedt. De eerste SAS-URL vertegenwoordigt de eerste sleutel voor het opslag account en de tweede SAS-URL staat voor de tweede sleutel.
+    [ListContainerSasInput](/rest/api/media/assets/listcontainersas#listcontainersasinput) retourneert meerdere SAS-url's als er twee opslag account sleutels voor elk opslag account zijn. Een opslag account heeft twee sleutels, omdat het een failover en naadloze rotatie van de sleutels van een opslag account biedt. De eerste SAS-URL vertegenwoordigt de eerste sleutel voor het opslag account en de tweede SAS-URL staat voor de tweede sleutel.
 3. Gebruik de Azure Storage Api's of Sdk's (bijvoorbeeld de [Storage rest API](../../storage/common/storage-rest-api-auth.md) of [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) om bestanden te uploaden naar de-container van de Asset.
-4. Gebruik Media Services v3-API's om een transformatie en een taak te maken om uw 'invoer'-asset te verwerken. Zie [trans formaties en jobs](transform-concept.md)voor meer informatie.
+4. Gebruik Media Services v3-API's om een transformatie en een taak te maken om uw 'invoer'-asset te verwerken. Zie [Transformaties en taken](./transforms-jobs-concept.md) voor meer informatie.
 5. De inhoud van de Asset ' output ' streamen.
 
-### <a name="create-a-new-asset"></a>Een nieuwe Asset maken
+### <a name="create-a-new-asset"></a>Nieuwe asset maken
 
 > [!NOTE]
 > De eigenschappen van een Asset van het type datetime zijn altijd in UTC-indeling.
@@ -76,7 +76,7 @@ Nadat de digitale bestanden zijn geüpload naar de opslag en zijn gekoppeld aan 
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaServices/{amsAccountName}/assets/{assetName}?api-version=2018-07-01
 ```
 
-Zie het voor beeld [een activum maken met rest](https://docs.microsoft.com/rest/api/media/assets/createorupdate#examples) voor een rest-voor beeld.
+Zie het voor beeld [een activum maken met rest](/rest/api/media/assets/createorupdate#examples) voor een rest-voor beeld.
 
 Het voor beeld laat zien hoe u de **hoofd tekst** van de aanvraag maakt, waarin u een beschrijving, container naam, opslag account en andere nuttige informatie kunt opgeven.
 
@@ -100,14 +100,14 @@ curl -X PUT \
  Asset asset = await client.Assets.CreateOrUpdateAsync(resourceGroupName, accountName, assetName, new Asset());
 ```
 
-### <a name="see-also"></a>Zie ook
+### <a name="see-also"></a>Zie tevens
 
 * [Een taak invoer maken op basis van een lokaal bestand](job-input-from-local-file-how-to.md)
 * [Een taak invoer maken op basis van een HTTPS-URL](job-input-from-http-how-to.md)
 
 ## <a name="ingest-and-archive-live-streams-into-an-asset"></a>Live streams opnemen en archiveren in een Asset
 
-In Media Services is een [Live uitvoer](https://docs.microsoft.com/rest/api/media/liveoutputs) object net als een digitale video recorder waarmee uw live stream wordt onderschept en opgenomen in een asset in uw Media Services-account. De opgenomen inhoud wordt opgeslagen in de container die is gedefinieerd door de bron van de [activa](https://docs.microsoft.com/rest/api/media/assets) .
+In Media Services is een [Live uitvoer](/rest/api/media/liveoutputs) object net als een digitale video recorder waarmee uw live stream wordt onderschept en opgenomen in een asset in uw Media Services-account. De opgenomen inhoud wordt opgeslagen in de container die is gedefinieerd door de bron van de [activa](/rest/api/media/assets) .
 
 Zie voor meer informatie:
 
@@ -129,7 +129,7 @@ Als u een Asset voor streaming wilt publiceren, moet u een [streaming-Locator](s
 
 Zie voor meer informatie:
 
-[Zelf studie: Video's uploaden, coderen en streamen met Media Services v3](stream-files-tutorial-with-api.md)
+[Zelfstudie: Video's uploaden, coderen en streamen met Media Services v3](stream-files-tutorial-with-api.md)
 
 ## <a name="download-results-of-a-job-from-an-output-asset"></a>Resultaten van een taak downloaden van een uitvoer activum
 
@@ -145,6 +145,6 @@ Zie [filteren, ordenen, pagineren van Media Services entiteiten](entities-overvi
 
 Bekijk de volledige code voorbeelden die laten zien hoe u live en on-Demand kunt uploaden, coderen, analyseren en streamen: 
 
-* [Java](https://docs.microsoft.com/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/), 
-* [.Net](https://docs.microsoft.com/samples/azure-samples/media-services-v3-dotnet/azure-media-services-v3-samples-using-net/), 
-* [Rest](https://docs.microsoft.com/samples/azure-samples/media-services-v3-rest-postman/azure-media-services-postman-collection/).
+* [Java](/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/), 
+* [.Net](/samples/azure-samples/media-services-v3-dotnet/azure-media-services-v3-samples-using-net/), 
+* [Rest](/samples/azure-samples/media-services-v3-rest-postman/azure-media-services-postman-collection/).

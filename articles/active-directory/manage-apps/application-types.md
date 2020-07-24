@@ -15,12 +15,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97eef1f331d8e6965e378d6a76cfa7a0c50feb9a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6c329b7de3e18989e7dbfa35aa6e9303c129654
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317462"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019298"
 ---
 # <a name="unexpected-application-in-my-applications-list"></a>Onverwachte toepassing in de lijst met toepassingen
 
@@ -68,7 +68,7 @@ Bij het filteren op **alle toepassingen**wordt in de **lijst** **alle toepassing
 
 6. Wanneer u een toepassing die u ontwikkelt, toevoegt met behulp van de [ASP.NET-verificatie methoden](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) of [verbonden services](https://devblogs.microsoft.com/visualstudio/connecting-to-cloud-services/) van Visual Studio
 
-7. Wanneer u een Service-Principal-object maakt met behulp van de [Azure AD Power shell-module](/powershell/azure/install-adv2?view=azureadps-2.0)
+7. Wanneer u een Service-Principal-object maakt met behulp van de [Azure AD Power shell-module](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)
 
 8. Wanneer u [een toepassing](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) als beheerder hebt om gegevens in uw Tenant te gebruiken
 

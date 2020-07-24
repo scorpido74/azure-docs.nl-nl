@@ -12,11 +12,12 @@ ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48727e377c2b6707e570cad103e4b08bcb44a1cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c785e2b13e7d5c57ff6d5ce9161fea1a80da77e1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764924"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019536"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Werken met bestaande on-premises proxyservers
 
@@ -116,7 +117,7 @@ Sta toegang tot de volgende URL's toe:
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | De connector gebruikt deze Url's om certificaten te verifiëren |
 | login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>*. microsoftonline.com <br> *. microsoftonline-p.com<br>*. msauth.net <br> *. msauthimages.net<br>*. msecnd.net <br> *. msftauth.net<br>*. msftauthimages.net <br> *. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctdl.windowsupdate.com:80 | De connector gebruikt deze URL's tijdens het registratieproces. |
 
-Als uw firewall of proxy u toestaat om DNS-acceptatie lijsten te configureren, kunt u verbindingen met \* . msappproxy.net en \* . servicebus.Windows.net toestaan. Als dat niet het geval is, moet u toegang toestaan tot de [IP-bereiken van Azure DataCenter](https://www.microsoft.com/download/details.aspx?id=41653), die overigens elke week worden bijgewerkt.
+Als uw firewall of proxy u toestaat om DNS-acceptatie lijsten te configureren, kunt u verbindingen met \* . msappproxy.net en \* . servicebus.Windows.net toestaan. Als dat niet het geval is, moet u toegang verlenen tot de [IP-bereiken van Azure Data Center](https://www.microsoft.com/download/details.aspx?id=41653). die overigens elke week worden bijgewerkt.
 
 Als u geen verbinding kunt maken met FQDN en u in plaats daarvan IP-bereiken moet opgeven, gebruikt u de volgende opties:
 
@@ -152,6 +153,9 @@ Voer de volgende stappen uit om dit in te scha kelen:
 4.  Configureer de vereiste proxy instellingen. 
 
 Deze instellingen zorgen ervoor dat de connector dezelfde doorstuur proxy gebruikt voor de communicatie met Azure en de back-end-toepassing. Als voor de communicatie tussen de connector en Azure geen doorstuur proxy of een andere doorstuur proxy nodig is, kunt u dit instellen met het wijzigen van de bestands ApplicationProxyConnectorService.exe.config, zoals beschreven in de secties uitgaande proxy's overs Laan of de uitgaande proxy server gebruiken.
+
+> [!NOTE]
+> Er zijn verschillende manieren om de Internet proxy in het besturings systeem te configureren. Proxy-instellingen die zijn geconfigureerd via NETSH WINHTTP (uitvoeren `NETSH WINHTTP SHOW PROXY` om te controleren) overschrijven de proxy-instellingen die u in stap 2 hebt geconfigureerd. 
 
 De connector Updater-Service gebruikt ook de computer proxy. Dit gedrag kan worden gewijzigd door het bestand ApplicationProxyConnectorUpdaterService.exe.config te wijzigen.
 

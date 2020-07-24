@@ -5,27 +5,27 @@ ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.topic: conceptual
 ms.workload: big-data
-ms.date: 04/15/2020
+ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: 10616c8003d9bbbe42cb70bd1bac4193044907c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 170b90816535562d6740449157840cedb00f291d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81416999"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020505"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Een aangepaste weergave delen via een geparameteriseerde URL
 
-Als u een aangepaste weer gave in Time Series Insights Explorer wilt delen, kunt u programmatisch een geparametriseerde URL maken van de aangepaste weer gave.
+Als u een aangepaste weer gave in Azure Time Series Insights Explorer wilt delen, kunt u programmatisch een geparametriseerde URL maken van de aangepaste weer gave.
 
-De Time Series Insights Explorer ondersteunt URL-query parameters om weer gaven in de ervaring rechtstreeks vanuit de URL op te geven. U kunt bijvoorbeeld via de URL een doelomgeving, een zoekpredicaat en de gewenste tijdspanne opgeven. Wanneer een gebruiker de aangepaste URL selecteert, biedt de interface een koppeling rechtstreeks naar die asset in de Time Series Insights Portal. Beleid voor gegevenstoegang wordt toegepast.
+Azure Time Series Insights Explorer ondersteunt URL-query parameters om weer gaven in de ervaring rechtstreeks vanuit de URL op te geven. U kunt bijvoorbeeld via de URL een doelomgeving, een zoekpredicaat en de gewenste tijdspanne opgeven. Wanneer een gebruiker de aangepaste URL selecteert, biedt de interface een koppeling rechtstreeks naar die asset in de Azure Time Series Insights Portal. Beleid voor gegevenstoegang wordt toegepast.
 
 > [!TIP]
-> * Bekijk de gratis [Time Series Insights demo](https://insights.timeseries.azure.com/samples).
-> * Lees de documentatie bij de bijbehorende [Time Series Insights Explorer](./time-series-insights-explorer.md) .
+> * Bekijk de gratis [Azure time series Insights demo](https://insights.timeseries.azure.com/samples).
+> * Lees de documentatie bij de bijbehorende [Azure time series Insights Explorer](./time-series-insights-explorer.md) .
 
 ## <a name="environment-id"></a>Omgevings-id
 
@@ -53,7 +53,7 @@ Voor een relatieve tijd waarde gebruikt u `relativeMillis=<value>` , waarbij *wa
 
 `&relativeMillis=3600000` geeft bijvoorbeeld de afgelopen 60 minuten aan gegevens weer.
 
-Geaccepteerde waarden komen overeen met het menu **snelle tijd** van Time Series Insights Explorer en bevatten het volgende:
+Geaccepteerde waarden komen overeen met het menu **snelle tijd** van Azure time series Insights Explorer en bevatten het volgende:
 
 * `1800000`(Afgelopen 30 minuten)
 * `3600000`(Afgelopen 60 minuten)
@@ -66,7 +66,7 @@ Geaccepteerde waarden komen overeen met het menu **snelle tijd** van Time Series
 
 ### <a name="optional-parameters"></a>Optionele parameters
 
-Met de `timeSeriesDefinitions=<collection of term objects>` para meter worden de voor waarden van de predikaten opgegeven die worden weer gegeven in een time series Insights weergave:
+De `timeSeriesDefinitions=<collection of term objects>` para meter bepaalt de voor waarden die in een Azure time series Insights weer gave worden weer gegeven:
 
 | Parameter | URL-item | Beschrijving |
 | --- | --- | --- |
@@ -98,7 +98,7 @@ Met de `timeSeriesDefinitions=<collection of term objects>` para meter worden de
 
 ### <a name="examples"></a>Voorbeelden
 
-Als u de definities van de tijd reeks wilt toevoegen aan een Time Series Insights omgeving als een URL-para meter, voegt u het volgende toe:
+Als u de definities van de tijd reeks wilt toevoegen aan een Azure Time Series Insights omgeving als een URL-para meter, voegt u het volgende toe:
 
 ```URL parameter
 &timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},
@@ -117,16 +117,16 @@ U kunt de volgende geparametriseerde URL voor een weer gave maken:
 https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},{"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}]
 ```
 
-[![Time Series Insights Explorer-URL met para meter](media/parameterized-url/share-parameterized-url.png)](media/parameterized-url/share-parameterized-url.png#lightbox)
+[![Azure Time Series Insights Explorer-URL met para meter](media/parameterized-url/share-parameterized-url.png)](media/parameterized-url/share-parameterized-url.png#lightbox)
 
 > [!TIP]
 > Bekijk de Explorer Live [met behulp van het bovenstaande URL](https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},{"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}]) -voor beeld.
 
-De URL hierboven wordt beschreven en geeft de weer gave Time Series Insights Explorer met para meters. 
+De URL hierboven wordt beschreven en geeft de weer gave Azure Time Series Insights Explorer met para meters. 
 
 * De para meters-predikaten.
 
-  [![Time Series Insights Explorer-predikaten met para meters.](media/parameterized-url/share-parameterized-url-predicates.png)](media/parameterized-url/share-parameterized-url-predicates.png#lightbox)
+  [![Azure Time Series Insights Explorer-predikaten met para meters.](media/parameterized-url/share-parameterized-url-predicates.png)](media/parameterized-url/share-parameterized-url-predicates.png#lightbox)
 
 * De gedeelde volledige grafiek weergave.
 
@@ -136,4 +136,4 @@ De URL hierboven wordt beschreven en geeft de weer gave Time Series Insights Exp
 
 * Meer informatie over het [opvragen van gegevens met behulp van C#](time-series-insights-query-data-csharp.md).
 
-* Meer informatie over de [Time Series Insights Explorer](./time-series-insights-explorer.md).
+* Meer informatie over de [Azure time series Insights Explorer](./time-series-insights-explorer.md).

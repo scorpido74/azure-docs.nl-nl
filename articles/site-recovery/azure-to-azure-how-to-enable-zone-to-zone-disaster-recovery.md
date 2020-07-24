@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: 723329022d748ee18a07fcaeaecc2aff0e5f707b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a1952f6dccf12de4cb1571dacabecf78c65cd01b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528975"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021644"
 ---
 # <a name="enable-zone-to-zone-disaster-recovery-for-azure-virtual-machines"></a>Zone inschakelen voor herstel na nood geval voor Azure virtual machines
 
@@ -20,7 +20,6 @@ In dit artikel wordt beschreven hoe u virtuele Azure-machines kunt repliceren, f
 
 >[!NOTE]
 >
->- Site Recovery biedt momenteel geen ondersteuning voor herstel plannen voor zone-naar zone herstel na nood gevallen via de portal. Gebruik Power shell of REST API om herstel plannen te gebruiken voor zones voor herstel na nood gevallen. 
 >- Ondersteuning voor zone-naar-zone herstel na nood gevallen is momenteel beperkt tot twee regio's: Zuidoost-Azië en UK-zuid.  
 >- Site Recovery verplaatst of slaat klant gegevens niet uit de regio waarin deze wordt geïmplementeerd wanneer de klant gebruikmaakt van zone om herstel na nood gevallen van een zone te maken. Klanten kunnen een Recovery Services kluis uit een andere regio selecteren als ze dat doen. De Recovery Services kluis bevat meta gegevens, maar geen werkelijke klant gegevens.
 

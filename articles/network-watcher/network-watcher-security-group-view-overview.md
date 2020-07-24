@@ -1,6 +1,6 @@
 ---
-title: Inleiding tot de weer gave van beveiligings groepen in azure Network Watcher | Microsoft Docs
-description: Op deze pagina vindt u een overzicht van de mogelijkheden van de Network Watcher-beveiligings weergave
+title: Inleiding tot de weer gave effectief beveiligings regels in azure Network Watcher | Microsoft Docs
+description: Op deze pagina vindt u een overzicht van de functie voor het weer geven van de Network Watcher-efficiënte beveiligings regels
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -11,11 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: damendo
-ms.openlocfilehash: 18619cc0f7a21a39d0802575c484c68c5fa1a624
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4c601184a060c3dfc4f033bcf983bf773f7167f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76840754"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022647"
 ---
 # <a name="introduction-to-effective-security-rules-view-in-azure-network-watcher"></a>Inleiding tot de weer gave effectief beveiligings regels in azure Network Watcher
 
@@ -32,6 +33,11 @@ U kunt regels selecteren en er wordt een nieuwe blade geopend om de netwerk beve
 ![drilldownbewerking][2]
 
 ### <a name="next-steps"></a>Volgende stappen
+
+U kunt ook de functie *effectief beveiligings groepen* gebruiken via andere methoden die hieronder worden weer gegeven:
+* [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/NetworkInterfaces/ListEffectiveNetworkSecurityGroups)
+* [PowerShell](https://docs.microsoft.com/powershell/module/az.network/get-azeffectivenetworksecuritygroup?view=azps-4.4.0)
+* [Azure-CLI](https://docs.microsoft.com/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-list-effective-nsg)
 
 Meer informatie over het controleren van de instellingen van uw netwerk beveiligings groep vindt u in de instellingen voor de netwerk [beveiligings groep controleren met Power shell](network-watcher-nsg-auditing-powershell.md)
 

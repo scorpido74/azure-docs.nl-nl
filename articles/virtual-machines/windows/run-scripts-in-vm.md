@@ -8,12 +8,12 @@ ms.author: robreed
 ms.date: 05/02/2018
 ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: bd65f33663dea3663f14fb4167448e39b9b7d0b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c2999d5bd6d780d5815f22d18e6e8cdd580987af
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82099764"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020165"
 ---
 # <a name="run-scripts-in-your-windows-vm"></a>Scripts uitvoeren in uw Windows-VM
 
@@ -34,7 +34,7 @@ De [aangepaste script extensie](../extensions/custom-script-windows.md) wordt vo
 Met de functie voor het [uitvoeren van opdrachten](run-command.md) kunt u virtuele machines en toepassings beheer en probleem oplossing met behulp van scripts maken, ook als de computer niet bereikbaar is, bijvoorbeeld als de gast firewall geen RDP-of SSH-poort geopend heeft.
 
 * Voer scripts uit op virtuele machines van Azure.
-* Kan worden uitgevoerd met [Azure Portal](run-command.md), [rest API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [Azure cli](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke)of [Power shell](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand)
+* Kan worden uitgevoerd met [Azure Portal](run-command.md), [rest API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [Azure cli](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke)of [Power shell](/powershell/module/az.compute/invoke-azvmruncommand)
 * Voer snel een script uit en Bekijk de uitvoer en herhaal dit als dat nodig is in de Azure Portal.
 * Script kan rechtstreeks worden getypt of u kunt een van de ingebouwde scripts uitvoeren.
 * Power shell-script uitvoeren in Windows-computers en bash-script in Linux-machines.
@@ -57,7 +57,7 @@ De [Hybrid Runbook worker](../../automation/automation-hybrid-runbook-worker.md)
 
 ## <a name="serial-console"></a>Seriële console
 
-De [seriële console](serial-console.md) biedt directe toegang tot een virtuele machine, vergelijkbaar met een toetsen bord dat is verbonden met de virtuele machine.
+De [seriële console](../troubleshooting/serial-console-windows.md) biedt directe toegang tot een virtuele machine, vergelijkbaar met een toetsen bord dat is verbonden met de virtuele machine.
 
 * Voer opdrachten uit op virtuele machines van Azure.
 * Kan worden uitgevoerd met behulp van een op tekst gebaseerde console op de machine in de Azure Portal.
@@ -71,4 +71,4 @@ Meer informatie over de verschillende functies die beschikbaar zijn voor het uit
 * [Aangepaste scriptextensie](../extensions/custom-script-windows.md)
 * [Run-opdracht](run-command.md)
 * [Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md)
-* [Seriële console](serial-console.md)
+* [Seriële console](../troubleshooting/serial-console-windows.md)

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8679f9a03fded546db68f058bca716ba053aa0fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5884685f12c4697558a008287f446e52e5105d3b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73161209"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87016782"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Atlassian Jira en confluence-beheer handleiding voor Azure Active Directory
 
@@ -147,7 +147,7 @@ In de volgende afbeelding ziet u het configuratie scherm in zowel Jira als confl
 
 * **U wilt WebSudo uitschakelen (de beveiligde beheer sessie uitschakelen)**:
 
-  * Voor Jira zijn beveiligde beheerders sessies (dat wil zeggen, wacht woord bevestigen vóór toegang tot beheer functies) standaard ingeschakeld. Als u deze mogelijkheid in uw Jira-exemplaar wilt verwijderen, geeft u de volgende regel op in het bestand Jira-config. Properties:`ira.websudo.is.disabled = true`
+  * Voor Jira zijn beveiligde beheerders sessies (dat wil zeggen, wacht woord bevestigen vóór toegang tot beheer functies) standaard ingeschakeld. Als u deze mogelijkheid in uw Jira-exemplaar wilt verwijderen, geeft u de volgende regel op in het bestand Jira-config. Properties:`jira.websudo.is.disabled = true`
 
   * Volg voor confluence de stappen op de [ondersteunings site van confluence](https://confluence.atlassian.com/doc/configuring-secure-administrator-sessions-218269595.html).
 
