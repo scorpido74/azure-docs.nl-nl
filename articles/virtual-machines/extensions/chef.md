@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: akjosh
-ms.openlocfilehash: a21b8f2fea7433e9f65fd790321a28ea47a38c79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9391bb4867717b6780b50cf90b998254227d2310
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76544715"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082610"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Chef VM-extensie voor Linux en Windows
 
@@ -66,7 +67,7 @@ In de volgende JSON wordt het schema voor de VM-extensie chef weer gegeven. Voor
 
 ### <a name="core-property-values"></a>Kern eigenschaps waarden
 
-| Name | Waarde/voor beeld | Gegevenstype
+| Naam | Waarde/voor beeld | Gegevenstype
 | ---- | ---- | ----
 | apiVersion | `2017-12-01` | teken reeks (datum) |
 | publisher | `Chef.Bootstrap.WindowsAzure` | tekenreeks |
@@ -75,17 +76,17 @@ In de volgende JSON wordt het schema voor de VM-extensie chef weer gegeven. Voor
 
 ### <a name="settings"></a>Instellingen
 
-| Name | Waarde/voor beeld | Gegevenstype | Vereist?
+| Naam | Waarde/voor beeld | Gegevenstype | Vereist?
 | ---- | ---- | ---- | ----
-| instellingen/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | teken reeks (URL) | J |
-| instellingen/bootstrap_options/validation_client_name | `myorg-validator` | tekenreeks | J |
-| instellingen/runlist | `recipe[mycookbook::default]` | tekenreeks | J |
+| instellingen/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | teken reeks (URL) | Y |
+| instellingen/bootstrap_options/validation_client_name | `myorg-validator` | tekenreeks | Y |
+| instellingen/runlist | `recipe[mycookbook::default]` | tekenreeks | Y |
 
 ### <a name="protected-settings"></a>Beveiligde instellingen
 
-| Name | Voorbeeld | Gegevenstype | Vereist?
+| Naam | Voorbeeld | Gegevenstype | Vereist?
 | ---- | ---- | ---- | ---- |
-| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | tekenreeks | J |
+| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | tekenreeks | Y |
 
 <!--
 ### Linux-specific settings
@@ -105,7 +106,7 @@ Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager sja
 
 Een voor beeld van een resource manager-sjabloon met de extensie chef VM vindt u in de [Galerie van Azure Quick](https://github.com/Azure/azure-quickstart-templates/tree/master/chef-json-parameters-linux-vm)start.
 
-De JSON-configuratie voor een extensie van een virtuele machine kan worden genest in de resource van de virtuele machine of worden geplaatst op het hoofd niveau of op de hoogste niveaus van een JSON-sjabloon van Resource Manager. De plaatsing van de JSON-configuratie is van invloed op de waarde van de naam en het type van de resource. Zie voor meer informatie [naam en type voor onderliggende resources instellen](../../azure-resource-manager/resource-manager-template-child-resource.md).
+De JSON-configuratie voor een extensie van een virtuele machine kan worden genest in de resource van de virtuele machine of worden geplaatst op het hoofd niveau of op de hoogste niveaus van een JSON-sjabloon van Resource Manager. De plaatsing van de JSON-configuratie is van invloed op de waarde van de naam en het type van de resource. Zie voor meer informatie [naam en type voor onderliggende resources instellen](../../azure-resource-manager/templates/child-resource-name-type.md).
 
 ## <a name="azure-cli-deployment"></a>Implementatie van Azure CLI
 

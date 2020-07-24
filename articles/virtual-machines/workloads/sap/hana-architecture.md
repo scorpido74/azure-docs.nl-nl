@@ -13,11 +13,12 @@ ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 041da4198b0bdd040a4916008a1135aa2e2a5f7d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa059ec8159779969c7ef7a5f4c97f3e985993a9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77614525"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082185"
 ---
 # <a name="sap-hana-large-instances-architecture-on-azure"></a>Architectuur van SAP HANA (grote instanties) op Azure
 
@@ -40,7 +41,7 @@ De weer gegeven architectuur is onderverdeeld in drie secties:
 
    Voor SAP NetWeaver-toepassingen en-data bases die worden ondersteund voor uitvoering in azure, raadpleegt u [SAP-ondersteuning opmerking #1928533: SAP-toepassingen op Azure: ondersteunde producten en typen Azure VM](https://launchpad.support.sap.com/#/notes/1928533). Zie voor documentatie over het implementeren van SAP-oplossingen in Azure:
 
-  -  [SAP op virtuele Windows-machines gebruiken](../../virtual-machines-windows-sap-get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+  -  [SAP op virtuele Windows-machines gebruiken](./get-started.md?toc=/azure/virtual-machines/linux/toc.json)
   -  [SAP-oplossingen gebruiken op virtuele machines van Azure](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 - **Links**: toont de SAP Hana TDI-gecertificeerde hardware in de Azure-stempel voor grote instanties. De HANA-eenheden voor grote instanties zijn verbonden met de virtuele netwerken van uw Azure-abonnement met behulp van dezelfde technologie als de connectiviteit van on-premises in Azure. Vanaf mei 2019 werd een Optima Lise ring geïntroduceerd waarmee kan worden gecommuniceerd tussen de HANA-grote exemplaar eenheden en de virtuele Azure-machines zonder betrokkenheid van de ExpressRoute-gateway. Deze optimalisatie met de naam ExpressRoute Fast path wordt weer gegeven in deze architectuur (rode lijnen). 

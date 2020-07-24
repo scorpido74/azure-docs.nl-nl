@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/26/2020
 ms.author: radeltch
-ms.openlocfilehash: 4dce0a675f5841591da00a322b72718964d382ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d522d66642abf55e478cea7579e36bdc64a8cf79
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80348877"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085160"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Hoge Beschik baarheid voor NFS op Azure Vm's op SUSE Linux Enterprise Server
 
@@ -136,7 +136,7 @@ U moet eerst de virtuele machines voor dit NFS-cluster maken. Daarna maakt u een
    SLES for SAP-toepassingen 12 SP3 (BYOS) wordt gebruikt  
    Selecteer een Beschikbaarheidsset die u eerder hebt gemaakt  
 1. Voeg één gegevens schijf voor elk SAP-systeem toe aan beide virtuele machines.
-1. Maak een Load Balancer (intern). [Standaard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)worden aanbevolen.  
+1. Maak een Load Balancer (intern). [Standaard Load Balancer](../../../load-balancer/load-balancer-overview.md)worden aanbevolen.  
    1. Volg deze instructies voor het maken van een standaard Load Balancer:
       1. De frontend-IP-adressen maken
          1. IP-adres 10.0.0.4 voor NW1
@@ -213,10 +213,10 @@ U moet eerst de virtuele machines voor dit NFS-cluster maken. Daarna maakt u een
             * Herhaal de bovenstaande stappen voor poort 2049 en UDP voor NW2
 
 > [!Note]
-> Wanneer Vm's zonder open bare IP-adressen in de back-endadresgroep van intern (geen openbaar IP-adres load balancer) worden geplaatst, is er geen uitgaande Internet verbinding, tenzij er aanvullende configuratie wordt uitgevoerd om route ring naar open bare eind punten toe te staan. Zie [connectiviteit van open bare eind punten voor virtual machines met behulp van Azure Standard Load Balancer in scenario's met hoge Beschik baarheid voor SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)voor meer informatie over het bezorgen van uitgaande verbindingen.  
+> Wanneer Vm's zonder open bare IP-adressen in de back-endadresgroep van intern (geen openbaar IP-adres load balancer) worden geplaatst, is er geen uitgaande Internet verbinding, tenzij er aanvullende configuratie wordt uitgevoerd om route ring naar open bare eind punten toe te staan. Zie [connectiviteit van open bare eind punten voor virtual machines met behulp van Azure Standard Load Balancer in scenario's met hoge Beschik baarheid voor SAP](./high-availability-guide-standard-load-balancer-outbound-connections.md)voor meer informatie over het bezorgen van uitgaande verbindingen.  
 
 > [!IMPORTANT]
-> Schakel TCP-tijds tempels niet in op virtuele Azure-machines die achter Azure Load Balancer worden geplaatst. Door TCP-tijds tempels in te scha kelen, mislukken de status controles. Stel para meter **net. IPv4. tcp_timestamps** in op **0**. Zie [Load Balancer Health probe](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)(Engelstalig) voor meer informatie.
+> Schakel TCP-tijds tempels niet in op virtuele Azure-machines die achter Azure Load Balancer worden geplaatst. Door TCP-tijds tempels in te scha kelen, mislukken de status controles. Stel para meter **net. IPv4. tcp_timestamps** in op **0**. Zie [Load Balancer Health probe](../../../load-balancer/load-balancer-custom-probe-overview.md)(Engelstalig) voor meer informatie.
 
 ### <a name="create-pacemaker-cluster"></a>Een pacemaker-cluster maken
 

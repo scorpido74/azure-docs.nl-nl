@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 04/28/2020
 ms.author: genli
-ms.openlocfilehash: 3aa0a0d31e70300814f35c337197b383877fe7be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6010c67b531d0f1ebb0ed836062cd5e323e5474c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610214"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083511"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Een Windows VHD of VHDX voorbereiden om te uploaden naar Azure
 
@@ -58,11 +58,11 @@ Gebruik een van de methoden in deze sectie om de virtuele schijf om te zetten en
 1. Als u wilt converteren van VHDX, selecteert u **VHD**  >  **volgende**.
 1. Als u wilt converteren van een dynamisch uitbreid bare schijf, selecteert u de optie **vaste grootte**  >  **volgende**.
 1. Zoek en selecteer een pad om het nieuwe VHD-bestand op te slaan.
-1. Selecteer **Finish**.
+1. Selecteer **Voltooien**.
 
 ### <a name="use-powershell-to-convert-the-disk"></a>Power shell gebruiken om de schijf te converteren
 
-U kunt een virtuele schijf converteren met behulp van de cmdlet [Convert-VHD](/powershell/module/hyper-v/convert-vhd) in Power shell. Klik [hier](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)als u meer informatie wilt over het installeren van deze cmdlet.
+U kunt een virtuele schijf converteren met behulp van de cmdlet [Convert-VHD](/powershell/module/hyper-v/convert-vhd) in Power shell. Klik [hier](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)als u meer informatie wilt over het installeren van deze cmdlet.
 
 In het volgende voor beeld wordt de schijf van VHDX naar VHD geconverteerd. De schijf wordt ook geconverteerd van een dynamisch uitbreid bare schijf naar een schijf met een vaste grootte.
 
@@ -82,11 +82,11 @@ Als u een Windows VM-installatie kopie in de [VMDK-bestands indeling](https://en
 1. Selecteer uw virtuele schijf op de pagina **virtuele harde schijf zoeken** .
 1. Selecteer op de pagina **actie kiezen** de optie **uitvouwen**  >  **volgende**.
 1. Voer op de pagina **virtuele harde schijf zoeken** de nieuwe grootte in GiB > **volgende**.
-1. Selecteer **Finish**.
+1. Selecteer **Voltooien**.
 
 ### <a name="use-powershell-to-resize-the-disk"></a>Het formaat van de schijf wijzigen met Power shell
 
-U kunt de grootte van een virtuele schijf wijzigen met behulp van de cmdlet [Resize-VHD](/powershell/module/hyper-v/resize-vhd) in Power shell. Klik [hier](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)als u meer informatie wilt over het installeren van deze cmdlet.
+U kunt de grootte van een virtuele schijf wijzigen met behulp van de cmdlet [Resize-VHD](/powershell/module/hyper-v/resize-vhd) in Power shell. Klik [hier](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)als u meer informatie wilt over het installeren van deze cmdlet.
 
 In het volgende voor beeld wordt de grootte van de schijf van 100,5 MiB gewijzigd in 101 MiB om te voldoen aan de vereisten voor Azure-uitlijning.
 
@@ -138,7 +138,7 @@ Nadat de SFC-scan is voltooid, installeert u Windows-updates en start u de compu
    netsh.exe winhttp reset proxy
    ```
 
-    Als de virtuele machine moet werken met een specifieke proxy, voegt u een proxy uitzondering toe voor het Azure IP-adres ([168.63.129.16](/azure/virtual-network/what-is-ip-address-168-63-129-16)) zodat de virtuele machine verbinding kan maken met Azure:
+    Als de virtuele machine moet werken met een specifieke proxy, voegt u een proxy uitzondering toe voor het Azure IP-adres ([168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)) zodat de virtuele machine verbinding kan maken met Azure:
 
     ```
     $proxyAddress='<your proxy server>'
@@ -446,7 +446,7 @@ In het ideale geval moet u de computer bijwerken op het niveau van de *patch*. A
 |                         | http.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17285 - KB3042553                  | 6.3.9600.18574 - KB4022726          | 10.0.14393.251 - KB4022715                  | 10.0.15063.483             | -                                           | -                                           |
 |                         | vmswitch.sys   | 6.1.7601.23727 - KB4022719                | 6.2.9200.22117 - KB4022724                  | 6.3.9600.18654 - KB4022726          | 10.0.14393.1358 - KB4022715                 | 10.0.15063.138             | -                                           | -                                           |
 | Kern                    | ntoskrnl.exe   | 6.1.7601.23807 - KB4022719                | 6.2.9200.22170 - KB4022718                  | 6.3.9600.18696 - KB4022726          | 10.0.14393.1358 - KB4022715                 | 10.0.15063.483             | -                                           | -                                           |
-| Extern bureaublad-services | rdpcorets.dll  | 6.2.9200.21506 - KB4022719                | 6.2.9200.22104 - KB4022724                  | 6.3.9600.18619 - KB4022726          | 10.0.14393.1198 - KB4022715                 | 10.0.15063.0               | -                                           | -                                           |
+| Externe bureaubladservices | rdpcorets.dll  | 6.2.9200.21506 - KB4022719                | 6.2.9200.22104 - KB4022724                  | 6.3.9600.18619 - KB4022726          | 10.0.14393.1198 - KB4022715                 | 10.0.15063.0               | -                                           | -                                           |
 |                         | termsrv.dll    | 6.1.7601.23403 - KB3125574                | 6.2.9200.17048 - KB2973501                  | 6.3.9600.17415-KB3000850          | 10.0.14393.0 - KB4022715                    | 10.0.15063.0               | -                                           | -                                           |
 |                         | termdd.sys     | 6.1.7601.23403 - KB3125574                | -                                           | -                                   | -                                           | -                          | -                                           | -                                           |
 |                         | win32k.sys     | 6.1.7601.23807 - KB4022719                | 6.2.9200.22168 - KB4022718                  | 6.3.9600.18698 - KB4022726          | 10.0.14393.594 - KB4022715                  | -                          | -                                           | -                                           |
@@ -472,7 +472,7 @@ Normaal gesp roken voert u `sysprep.exe` uit om een sjabloon te maken van waarui
 Als u slechts één VM van één schijf wilt maken, hoeft u geen Sysprep te gebruiken. In plaats daarvan kunt u de virtuele machine maken op basis van een *gespecialiseerde installatie kopie*. Zie voor informatie over het maken van een virtuele machine op basis van een gespecialiseerde schijf:
 
 - [Een VM maken van een gespecialiseerde schijf](create-vm-specialized.md)
-- [Een virtuele machine maken op basis van een speciale VHD-schijf](/azure/virtual-machines/windows/create-vm-specialized-portal)
+- [Een virtuele machine maken op basis van een speciale VHD-schijf](./create-vm-specialized-portal.md)
 
 Als u een gegeneraliseerde installatie kopie wilt maken, moet u Sysprep uitvoeren. Zie [Sysprep gebruiken: een inleiding](/previous-versions/windows/it-pro/windows-xp/bb457073(v=technet.10))voor meer informatie.
 
@@ -519,4 +519,4 @@ De volgende instellingen zijn niet van invloed op het uploaden van de VHD. We ra
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Een Windows VM-installatie kopie uploaden naar Azure voor implementaties van Resource Manager](upload-generalized-managed.md)
-- [Problemen met activering van Azure Windows VM oplossen](troubleshoot-activation-problems.md)
+- [Problemen met activering van Azure Windows VM oplossen](../troubleshooting/troubleshoot-activation-problems.md)

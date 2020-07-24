@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: e53e9599da3c12fdf01c8902a7275fc75ce86643
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 36d74a8819285c5eb5fb0367a2b32ae299ae6c8e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223598"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084310"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>Hulp voor architectuur via pushmeldingen van het bedrijf
 
@@ -236,7 +236,7 @@ De volledige voorbeeld code is beschikbaar op [Notification hub]-voor beelden. H
     Scherm afbeelding van het dialoog venster Publish Web met de optie Microsoft Azure Websites geselecteerd, een groene pijl die verwijst naar het dialoog venster bestaande website selecteren met de nieuwe optie die wordt beschreven in rood en een groene pijl die verwijst naar het dialoog venster site maken op Microsoft Azure met de site naam en de opties voor het maken van een rood kader.
     :::image-end:::
 
-    bijvoorbeeld Configureer de taak zo dat deze continu wordt uitgevoerd. Als u zich aanmeldt bij de [Azure Portal] , moet u er ongeveer als volgt uitzien:
+    g. Configureer de taak zo dat deze continu wordt uitgevoerd. Als u zich aanmeldt bij de [Azure Portal] , moet u er ongeveer als volgt uitzien:
 
     ![Scherm opname van de Azure-Portal met de Enter prise push back-end-webtaken die worden weer gegeven en de naam, planning en logboeken waarden die in het rood worden beschreven.][4]
 
@@ -289,8 +289,8 @@ De volledige voorbeeld code is beschikbaar op [Notification hub]-voor beelden. H
 <!-- Links -->
 [Voor beelden van Notification hub]: https://github.com/Azure/azure-notificationhubs-samples
 [Azure Mobile Service]: https://azure.microsoft.com/documentation/services/mobile-services/
-[Azure Service Bus]: https://azure.microsoft.com/documentation/articles/fundamentals-service-bus-hybrid-solutions/
-[Service Bus pub/sub-programmering]: https://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
+[Azure Service Bus]: ../service-bus-messaging/service-bus-messaging-overview.md
+[Service Bus pub/sub-programmering]: ../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md
 [Azure-Webtaak]: ../app-service/webjobs-create.md
-[Notification Hubs-Windows Universal-zelf studie]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
+[Notification Hubs-Windows Universal-zelf studie]: ./notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
 [Azure-portal]: https://portal.azure.com/

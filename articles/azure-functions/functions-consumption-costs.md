@@ -3,19 +3,20 @@ title: De kosten van het verbruiks abonnement in Azure Functions schatten
 description: Meer informatie over hoe u de kosten die u kunt doen bij het uitvoeren van uw functie-app in een verbruiks abonnement in azure, beter kunt schatten.
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 0e3177d7c65eb1624441427f123e6f95095bdbbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 880d1c20c75ce297b556ac203e309e446227e97a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76963985"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083035"
 ---
 # <a name="estimating-consumption-plan-costs"></a>Kosten schatten voor verbruiksplan
 
 Er zijn momenteel drie typen hosting plannen voor een app die wordt uitgevoerd in Azure Functions, waarbij elk abonnement een eigen prijs model heeft: 
 
-| Plannen | Description |
+| Plannen | Beschrijving |
 | ---- | ----------- |
-| [**Meerverbruik**](functions-scale.md#consumption-plan) | Er worden alleen kosten in rekening gebracht voor de tijd dat uw functie-app wordt uitgevoerd. Dit abonnement bevat een [gratis][prijs pagina] voor granting per abonnement.|
+| [**Verbruik**](functions-scale.md#consumption-plan) | Er worden alleen kosten in rekening gebracht voor de tijd dat uw functie-app wordt uitgevoerd. Dit abonnement bevat een [gratis][prijs pagina] voor granting per abonnement.|
 | [**Premium**](functions-scale.md#premium-plan) | Biedt u dezelfde functies en schaal methode als het verbruiks abonnement, maar met verbeterde prestaties en VNET-toegang. De kosten zijn gebaseerd op de gekozen prijs categorie. Zie [Azure functions Premium-abonnement](functions-premium-plan.md)voor meer informatie. |
 | [**Toegewezen (App Service)**](functions-scale.md#app-service-plan) <br/>(Basic-laag of hoger) | Wanneer u moet worden uitgevoerd in specifieke Vm's of in isolatie, gebruikt u aangepaste installatie kopieën of wilt u uw overtollige App Service plan capaciteit gebruiken. Maakt gebruik van de facturering van het [normale app service plan](https://azure.microsoft.com/pricing/details/app-service/). De kosten zijn gebaseerd op de gekozen prijs categorie.|
 
@@ -60,7 +61,7 @@ Het volgende gedrag van uw functies kan de uitvoerings tijd beïnvloeden:
 
 ## <a name="view-execution-data"></a>Uitvoerings gegevens weer geven
 
-In [uw factuur](/azure/billing/billing-download-azure-invoice)kunt u de kosten gerelateerde gegevens van het **totale aantal uitvoeringen** bekijken-functies en **uitvoerings tijd-functies**, samen met de werkelijke gefactureerde kosten. Deze factuur gegevens zijn echter een maandelijkse statistische functie voor een eerdere factuur periode. 
+In [uw factuur](../cost-management-billing/understand/download-azure-invoice.md)kunt u de kosten gerelateerde gegevens van het **totale aantal uitvoeringen** bekijken-functies en **uitvoerings tijd-functies**, samen met de werkelijke gefactureerde kosten. Deze factuur gegevens zijn echter een maandelijkse statistische functie voor een eerdere factuur periode. 
 
 Voor een beter begrip van de kosten impact van uw functies kunt u Azure Monitor gebruiken om de metrische gegevens weer te geven die momenteel worden gegenereerd door uw functie-apps. U kunt in de [Azure Portal] -of rest-api's een [Azure monitor Metrics Explorer](../azure-monitor/platform/metrics-getting-started.md) gebruiken om deze gegevens op te halen.
 
@@ -205,7 +206,7 @@ performanceCounters
 
 De resultaten zien eruit als in het volgende voor beeld:
 
-| UTC-tijds tempel \[\]          | naam          | waarde       |
+| UTC-tijds tempel \[\]          | name          | waarde       |
 |----------------------------|---------------|-------------|
 | 9/12/2019, 1:05:14 \. 947 uur | Privé-bytes | 209.932.288 |
 | 9/12/2019, 1:06:14 \. 994 uur | Privé-bytes | 212.189.184 |
@@ -225,7 +226,7 @@ customMetrics
 | summarize averageDurationMilliseconds=avg(averageDuration) by name
 ```
 
-| naam                       | averageDurationMilliseconds |
+| name                       | averageDurationMilliseconds |
 |----------------------------|-----------------------------|
 | Queue trigger AvgDurationMs | 16 \. 087                     |
 | Queue trigger MaxDurationMs | 90 \. 249                     |

@@ -2,12 +2,13 @@
 title: Veelgestelde vragen over Azure Service Bus | Microsoft Docs
 description: In dit artikel vindt u antwoorden op enkele veelgestelde vragen over Azure Service Bus.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 35721d174ec4b840185727efe5fb384015040b80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/15/2020
+ms.openlocfilehash: 01d7869a158a3c2b5418f38f2a5d88fc161796c4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341467"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083851"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure Service Bus-Veelgestelde vragen (FAQ)
 
@@ -29,9 +30,9 @@ Een [Service Bus wachtrij](service-bus-queues-topics-subscriptions.md) is een en
 Een onderwerp kan worden gevisualiseerd als een wachtrij en wanneer meerdere abonnementen worden gebruikt, wordt het een rijkere berichten model. in wezen een een-op-veel-communicatie hulpprogramma. Dit model voor publiceren/abonneren (of *pub/sub*) maakt het mogelijk dat een toepassing die een bericht verzendt naar een onderwerp met meerdere abonnementen, het bericht ontvangt dat door meerdere toepassingen wordt ontvangen.
 
 ### <a name="what-is-a-partitioned-entity"></a>Wat is een gepartitioneerde entiteit?
-Een conventionele wachtrij of onderwerp wordt verwerkt door één Message Broker en opgeslagen in één berichten archief. Een [gepartitioneerde wachtrij of onderwerp](service-bus-partitioning.md) wordt alleen ondersteund in de lagen basis en standaard berichten, maar wordt verwerkt door meerdere bericht brokers en opgeslagen in meerdere berichten archieven. Deze functie houdt in dat de algemene door Voer van een gepartitioneerde wachtrij of onderwerp niet langer wordt beperkt door de prestaties van één bericht Broker of berichten archief. Daarnaast wordt een tijdelijke onderbreking van een berichten archief niet weer gegeven in een gepartitioneerde wachtrij of onderwerp niet beschikbaar.
+Een conventionele wachtrij of onderwerp wordt verwerkt door één Message Broker en opgeslagen in één berichten archief. Wordt alleen ondersteund in de lagen basis en standaard berichten, een [gepartitioneerde wachtrij of een onderwerp](service-bus-partitioning.md) wordt verwerkt door meerdere bericht brokers en opgeslagen in meerdere berichten archieven. Deze functie houdt in dat de algemene door Voer van een gepartitioneerde wachtrij of onderwerp niet langer wordt beperkt door de prestaties van één bericht Broker of berichten archief. Een tijdelijke onderbreking van een berichten archief kan ook geen gepartitioneerde wachtrij of onderwerp niet beschikbaar genereren.
 
-De volg orde wordt niet gegarandeerd wanneer gepartitioneerde entiteiten worden gebruikt. In het geval dat een partitie niet beschikbaar is, kunt u nog steeds berichten verzenden en ontvangen van de andere partities.
+De volg orde van het gebruik van gepartitioneerde entiteiten wordt niet gegarandeerd. In het geval dat een partitie niet beschikbaar is, kunt u nog steeds berichten verzenden en ontvangen van de andere partities.
 
  Gepartitioneerde entiteiten worden niet meer ondersteund in de [Premium-SKU](service-bus-premium-messaging.md). 
 
@@ -50,15 +51,15 @@ Zie de volgende tabel voor de uitgaande poorten die u moet openen om deze protoc
 | SBMP | 9350 tot 9354 | Zie [connectiviteits modus](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) |
 | HTTP, HTTPS | 80, 443 | 
 
-### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>Welke IP-adressen moet ik white list?
-Ga als volgt te werk om de juiste IP-adressen voor uw verbindingen te zoeken naar een witte lijst:
+### <a name="what-ip-addresses-do-i-need-to-add-to-allow-list"></a>Welke IP-adressen moet ik toevoegen aan de acceptatie lijst?
+Ga als volgt te werk om de juiste IP-adressen te zoeken die u wilt toevoegen aan de lijst toestaan voor uw verbindingen:
 
 1. Voer de volgende opdracht uit vanaf een opdracht prompt: 
 
     ```
     nslookup <YourNamespaceName>.cloudapp.net
     ```
-2. Noteer het IP-adres dat is geretourneerd in `Non-authoritative answer` . Dit IP-adres is statisch. Wanneer u de naam ruimte op een ander cluster herstelt, wordt het enige tijdstip gewijzigd dat het zou veranderen.
+2. Noteer het IP-adres dat is geretourneerd in `Non-authoritative answer` . Dit IP-adres is statisch. Als u de naam ruimte op een ander cluster herstelt, wordt de enige keer dat deze wordt gewijzigd.
 
 Als u de zone redundantie voor uw naam ruimte gebruikt, moet u een aantal extra stappen uitvoeren: 
 
@@ -76,6 +77,10 @@ Als u de zone redundantie voor uw naam ruimte gebruikt, moet u een aantal extra 
     ```
 3. Voer nslookup uit voor elk met achtervoegsels S1, S2 en S3 om de IP-adressen te verkrijgen van alle drie de instanties die worden uitgevoerd in drie beschikbaarheids zones, 
 
+### <a name="where-can-i-find-the-ip-address-of-the-client-sendingreceiving-messages-tofrom-a-namespace"></a>Waar vind ik het IP-adres van de client die berichten verzendt/ontvangt van een naam ruimte? 
+De IP-adressen van clients die berichten verzenden of ontvangen van uw naam ruimte worden niet geregistreerd. Genereer sleutels opnieuw zodat alle bestaande clients geen[RBAC](authenticate-application.md#built-in-rbac-roles-for-azure-service-bus)-instellingen (Role-based Access Control) kunnen verifiëren en controleren om ervoor te zorgen dat alleen toegestane gebruikers of toepassingen toegang hebben tot de naam ruimte. 
+
+Als u een **Premium** -naam ruimte gebruikt, kunt u [IP-filtering](service-bus-ip-filtering.md), [service-eind punten voor virtuele netwerken](service-bus-service-endpoints.md)en [privé-eind punten](private-link-service.md) gebruiken om de toegang tot de naam ruimte te beperken. 
 
 ## <a name="best-practices"></a>Aanbevolen procedures
 ### <a name="what-are-some-azure-service-bus-best-practices"></a>Wat zijn de aanbevolen procedures Azure Service Bus?
@@ -99,18 +104,18 @@ U kunt ook de [Veelgestelde vragen over Azure-ondersteuning](https://azure.micro
 ### <a name="how-do-you-charge-for-service-bus"></a>Hoe worden de kosten in rekening gebracht voor Service Bus?
 Zie [Service Bus prijs informatie][Pricing overview]voor volledige informatie over service bus prijzen. Naast de genoteerde prijzen worden er kosten in rekening gebracht voor de bijbehorende gegevens overdrachten voor uitgaand verkeer buiten het Data Center waarin uw toepassing is ingericht.
 
-### <a name="what-usage-of-service-bus-is-subject-to-data-transfer-what-is-not"></a>Welk gebruik van Service Bus is onderhevig aan gegevens overdracht? Wat is dat niet?
+### <a name="what-usage-of-service-bus-is-subject-to-data-transfer-what-isnt"></a>Welk gebruik van Service Bus is onderhevig aan gegevens overdracht? Wat is er niet?
 Elke gegevens overdracht binnen een bepaalde Azure-regio wordt gratis geleverd, evenals een binnenkomende gegevens overdracht. Gegevens overdracht buiten een regio is onderhevig aan uitstaande kosten, die [hier](https://azure.microsoft.com/pricing/details/bandwidth/)kunnen worden gevonden.
 
 ### <a name="does-service-bus-charge-for-storage"></a>Worden er Service Bus kosten in rekening gebracht voor opslag?
-Nee, er worden geen kosten in rekening gebracht voor opslag Service Bus. Er is echter een quotum dat de maximale hoeveelheid gegevens beperkt die kan worden bewaard per wachtrij/onderwerp. Zie de volgende veelgestelde vragen.
+Nee. Voor opslag Service Bus worden geen kosten in rekening gebracht. Er is echter een quotum dat de maximale hoeveelheid gegevens beperkt die kan worden bewaard per wachtrij/onderwerp. Zie de volgende veelgestelde vragen.
 
 ### <a name="i-have-a-service-bus-standard-namespace-why-do-i-see-charges-under-resource-group-system"></a>Ik heb een Service Bus standaard naam ruimte. Waarom worden kosten onder resource groep ' $system ' weer geven?
 De facturerings onderdelen Azure Service Bus recent bijgewerkt. Als u een Service Bus standaard naam ruimte hebt, ziet u mogelijk regel items voor de resource '/Subscriptions/<azure_subscription_id>/resourceGroups/$system/providers/Microsoft.ServiceBus/namespaces/$system ' onder resource groep $system.
 
 Deze kosten vertegenwoordigen de basis kosten per Azure-abonnement dat een Service Bus standaard naam ruimte heeft ingericht. 
 
-Het is belang rijk te weten dat dit geen nieuwe kosten zijn, dat wil zeggen dat ze ook in het vorige facturerings model aanwezig waren. De enige wijziging is dat ze nu worden vermeld onder $system. Dit wordt gedaan door Contraints in het nieuwe facturerings systeem waarbij kosten op abonnements niveau worden gegroepeerd, niet zijn gebonden aan een specifieke resource, onder de resource-id $system.
+Het is belang rijk te weten dat deze kosten niet nieuw zijn, dat wil zeggen, ze bestonden ook in het vorige facturerings model. De enige wijziging is dat ze nu worden vermeld onder $system. De oplossing wordt uitgevoerd vanwege beperkingen in het nieuwe facturerings systeem waarbij kosten op abonnements niveau worden gegroepeerd, niet zijn gekoppeld aan een specifieke resource, onder de resource-ID $system.
 
 ## <a name="quotas"></a>Quota
 

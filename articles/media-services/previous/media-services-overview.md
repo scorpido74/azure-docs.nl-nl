@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/19/2019
 ms.author: juliako
-ms.openlocfilehash: 1c2d6287a89c7816c30cf26978859c07dba0251d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78fa6b343a01e96c000b6c64a55d5fdf1f0284f2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78197501"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084650"
 ---
 # <a name="azure-media-services-overview"></a>Overzicht van Azure Media Services 
 
@@ -26,7 +27,7 @@ ms.locfileid: "78197501"
 > * [Versie 2](media-services-overview.md)
 
 > [!NOTE]
-> Er worden geen nieuwe functies meer aan Media Services v2 toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies meer aan Media Services v2 toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](../latest/index.yml). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
 Microsoft Azure Media Services (AMS) is een uitbreidbaar cloudplatform waarmee ontwikkelaars schaalbare toepassingen voor mediabeheer en -levering kunnen ontwikkelen. Media Services is gebaseerd op de REST API's waarmee u veilig video- of audio-inhoud kunt uploaden, opslaan, coderen en verpakken, zowel voor levering on demand als levering via livestreaming aan verschillende clients (bijvoorbeeld tv, pc en mobiele apparaten).
 
@@ -56,7 +57,7 @@ Als u Azure Media Services wilt gaan gebruiken, moet u over het volgende beschik
 
 Als u Media Services-oplossingen wilt maken, kunt u het volgende gebruiken:
 
-* [Media Services REST API](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)
+* [Media Services REST API](/rest/api/media/operations/azure-media-services-rest-api-reference)
 * Een van de beschikbare client-SDK's:
     * Azure Media Services SDK voor .NET
     
@@ -70,7 +71,7 @@ Als u Media Services-oplossingen wilt maken, kunt u het volgende gebruiken:
     * [Azure-Media-Services-Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (Azure Media Services Explorer (AMSE) is een Winforms-/C#-toepassing voor Windows)
 
 > [!NOTE]
-> Zie [Aan de slag met de SDK voor Java-clients voor Azure Media Services](https://docs.microsoft.com/azure/media-services/media-services-java-how-to-use) om de nieuwste versie van de Java-SDK op te halen en te ontwikkelen met Java. <br/>
+> Zie [Aan de slag met de SDK voor Java-clients voor Azure Media Services](./media-services-java-how-to-use.md) om de nieuwste versie van de Java-SDK op te halen en te ontwikkelen met Java. <br/>
 > Als u de nieuwste PHP-SDK voor Media Services wilt downloaden, zoekt u versie 0.5.7 van het Microsoft/WindowAzure-pakket in de [Packagist-opslagplaats](https://packagist.org/packages/microsoft/windowsazure#v0.5.7).  
 
 ## <a name="code-samples"></a>Codevoorbeelden

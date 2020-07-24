@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
-ms.openlocfilehash: fd4f57350e97ad38c2c78aec29b1e51d775e8a02
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 4df1aa53c09777ac2470581df07ac132255b005a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104109"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083664"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>Een API toevoegen aan de preview-versie van statische Web Apps van Azure met Azure Functions
 
@@ -133,7 +133,7 @@ Met de bovenstaande instellingen is het API-eind punt:
 
 ## <a name="run-the-api-locally"></a>De API lokaal uitvoeren
 
-Visual Studio code integreert met [Azure functions core tools](https://docs.microsoft.com/azure/azure-functions/functions-run-local) zodat u dit project kunt uitvoeren op uw lokale ontwikkel computer voordat u naar Azure publiceert.
+Visual Studio code integreert met [Azure functions core tools](../azure-functions/functions-run-local.md) zodat u dit project kunt uitvoeren op uw lokale ontwikkel computer voordat u naar Azure publiceert.
 
 > [!TIP]
 > Zorg ervoor dat alle resources in de sectie [vereisten](#prerequisites) zijn geïnstalleerd voordat u doorgaat.
@@ -221,7 +221,7 @@ Gebruik Visual Studio code om uw wijzigingen door te voeren en te pushen naar de
 1. Klik op **Een resource maken**
 1. Zoeken naar **statische web-app**
 1. Klik op **statische web-app (preview-versie)**
-1. Klik op **Maken**.
+1. Klik op **Maken**
 
 Voeg vervolgens de app-specifieke instellingen toe.
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: vikancha
-ms.openlocfilehash: 1d463242c923d766b500c1ede796e399e7af9c54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a6bf0499eb9ed6700111918c416f118414ae895
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84735928"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085453"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>NVIDIA GPU-Stuur Programma's installeren op Vm's met N-serie waarop Linux wordt uitgevoerd
 
@@ -21,7 +21,7 @@ Als u gebruik wilt maken van de GPU-mogelijkheden van virtuele machines van Azur
 
 Als u ervoor kiest om de NVIDIA GPU-Stuur Programma's hand matig te installeren, worden in dit artikel ondersteunde distributies, stuur Programma's en installatie-en verificatie stappen beschreven. Informatie over hand matige installatie van Stuur Programma's is ook beschikbaar voor [Windows-vm's](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Zie [GPU Linux VM-grootten](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)voor virtuele machines van de N-serie, opslag capaciteit en schijf Details. 
+Zie [GPU Linux VM-grootten](../sizes-gpu.md?toc=/azure/virtual-machines/linux/toc.json)voor virtuele machines van de N-serie, opslag capaciteit en schijf Details. 
 
 [!INCLUDE [virtual-machines-n-series-linux-support](../../../includes/virtual-machines-n-series-linux-support.md)]
 
@@ -355,7 +355,7 @@ Maak vervolgens een vermelding voor uw update script in `/etc/rc.d/rc3.d` zodat 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
 * U kunt de modus voor persistentie instellen met behulp `nvidia-smi` van zodat de uitvoer van de opdracht sneller is als u behoefte hebt aan een query uit te voeren op kaarten. Voer uit om de modus voor persistentie in te stellen `nvidia-smi -pm 1` . Houd er rekening mee dat als de virtuele machine opnieuw wordt opgestart, de instelling van de modus verdwijnt. U kunt de modus instelling altijd scripteren om uit te voeren bij het opstarten.
-* Als u de NVIDIA CUDA-Stuur Programma's hebt bijgewerkt naar de nieuwste versie en RDMA-connectiviteit niet meer werkt, [installeert u de RDMA-Stuur Programma's opnieuw](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup#rdma-network-connectivity) om die verbinding opnieuw tot stand te brengen. 
+* Als u de NVIDIA CUDA-Stuur Programma's hebt bijgewerkt naar de nieuwste versie en RDMA-connectiviteit niet meer werkt, [installeert u de RDMA-Stuur Programma's opnieuw](#rdma-network-connectivity) om die verbinding opnieuw tot stand te brengen. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

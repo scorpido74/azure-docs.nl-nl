@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 3fe5ea98f8db633eed7ce4e2c0ac0cafa56408ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ea5d975b73afcf03ad97bafd1c6f68f2b55263c2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82194513"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084718"
 ---
 # <a name="optimize-development-and-testing-cost-in-azure-cosmos-db"></a>Ontwikkelings- en testkosten optimaliseren in Azure Cosmos DB
 
@@ -23,7 +23,9 @@ In dit artikel worden de verschillende opties beschreven voor het gebruik van Az
 
 ## <a name="azure-cosmos-db-free-tier"></a>Azure Cosmos DB gratis laag
 
-Azure Cosmos DB gratis laag maakt het eenvoudig om aan de slag te gaan, uw toepassingen te ontwikkelen en te testen, of zelfs kleine productie werkbelastingen gratis uit te voeren. Wanneer de laag gratis is ingeschakeld voor een account, worden de eerste 400 RU/s en 5 GB aan opslag ruimte gratis in het account weer geven. U kunt ook een gedeelde doorvoer database maken met 25 containers die 400 RU/s op database niveau delen, allemaal in de laag gratis (Maxi maal 5 gedeelde doorvoer databases in een gratis laag account). De gratis laag is voor onbepaalde tijd voor de levens duur van het account en wordt geleverd met alle [voor delen en functies](introduction.md#key-benefits) van een gewoon Azure Cosmos DB account, waaronder onbeperkte opslag en door Voer (ru/s), sla's, hoge Beschik baarheid, kant-en-klare wereld wijde distributie in alle Azure-regio's, en meer. U kunt Maxi maal één gratis laag account per Azure-abonnement hebben en u moet zich aanmelden wanneer u het account maakt. Als u aan de slag wilt gaan, [maakt u een nieuw account in azure Portal met gratis laag ingeschakeld](create-cosmosdb-resources-portal.md) of gebruikt u een [arm-sjabloon](manage-sql-with-resource-manager.md#free-tier). Bekijk de [prijzenpagina](https://azure.microsoft.com/pricing/details/cosmos-db/) voor meer informatie.
+Azure Cosmos DB gratis laag maakt het eenvoudig om aan de slag te gaan, uw toepassingen te ontwikkelen en te testen, of zelfs kleine productie werkbelastingen gratis uit te voeren. Wanneer de laag gratis is ingeschakeld voor een account, worden de eerste 400 RU/s en 5 GB aan opslag ruimte gratis in het account weer geven. U kunt ook een gedeelde doorvoer database maken met 25 containers die 400 RU/s op database niveau delen, allemaal in de laag gratis (Maxi maal 5 gedeelde doorvoer databases in een gratis laag account). Als u de gratis laag gebruikt en u een gedeelde data base inricht met een minimale door Voer van 400 RU/s, kunnen alle containers in die data base de door Voer delen. Nieuwe data bases met gedeelde door Voer of containers met een speciale door voer worden gefactureerd tegen de normale prijzen.
+
+De gratis laag is voor onbepaalde tijd voor de levens duur van het account en wordt geleverd met alle [voor delen en functies](introduction.md#key-benefits) van een gewoon Azure Cosmos DB account, waaronder onbeperkte opslag en door Voer (ru/s), sla's, hoge Beschik baarheid, kant-en-klare wereld wijde distributie in alle Azure-regio's, en meer. U kunt Maxi maal één gratis laag account per Azure-abonnement hebben en u moet zich aanmelden wanneer u het account maakt. Als u aan de slag wilt gaan, [maakt u een nieuw account in azure Portal met gratis laag ingeschakeld](create-cosmosdb-resources-portal.md) of gebruikt u een [arm-sjabloon](manage-sql-with-resource-manager.md#free-tier). Bekijk de [prijzenpagina](https://azure.microsoft.com/pricing/details/cosmos-db/) voor meer informatie.
 
 ## <a name="try-azure-cosmos-db-for-free"></a>Probeer Azure Cosmos DB gratis uit
 

@@ -8,12 +8,12 @@ ms.custom: vs-azure
 ms.date: 02/18/2019
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 971ab39ddf4b383f92f0cd81e5258ad357e76e99
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: cf2437443350cf9b21b6abc0d0dd1dbd5d22e41f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85857077"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083188"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Webtaken ontwikkelen en implementeren met behulp van Visual Studio - Azure App Service
 
@@ -225,7 +225,7 @@ Wanneer u [een Webtaak maakt op basis van de Azure Portal](webjobs-create.md), w
 
 ### <a name="cron-expressions"></a>CRON-expressies
 
-Webjobs maakt gebruik van dezelfde CRON-expressies voor planning als de trigger timer in Azure Functions. Zie het [referentie artikel timer trigger](../azure-functions/functions-bindings-timer.md#ncrontab-expressions)voor meer informatie over cron-ondersteuning.
+Webjobs maakt gebruik van dezelfde CRON-expressies voor planning als de trigger timer in Azure Functions. Zie [Timer trigger voor Azure functions voor](../azure-functions/functions-bindings-timer.md#ncrontab-expressions)meer informatie over cron-ondersteuning.
 
 [!INCLUDE [webjobs-cron-timezone-note](../../includes/webjobs-cron-timezone-note.md)]
 

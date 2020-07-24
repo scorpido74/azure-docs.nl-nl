@@ -4,12 +4,12 @@ description: Maak uw eerste Linux-containertoepassing in Azure Service Fabric. B
 ms.topic: conceptual
 ms.date: 1/4/2019
 ms.custom: tracking-python
-ms.openlocfilehash: 783f6a06d57a447998710e2c8ff349b23ef751c5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 547030b983dd02e7b65d404188dccdcc24d53a22
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256400"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083834"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Uw eerste Service Fabric-containertoepassing maken in Linux
 > [!div class="op_single_selector"]
@@ -26,6 +26,8 @@ Er zijn geen wijzigingen in uw toepassing vereist om een bestaande toepassing in
   * [Service Fabric SDK en hulpprogramma's](service-fabric-get-started-linux.md).
   * [Docker CE voor Linux](https://docs.docker.com/engine/installation/#prior-releases). 
   * [Service Fabric-CLI](service-fabric-cli.md)
+
+* Een Linux-cluster met drie of meer knoop punten.
 
 * Een register in Azure Container Registry - [Een containerregister maken](../container-registry/container-registry-get-started-portal.md) in uw Azure-abonnement. 
 
@@ -371,7 +373,7 @@ Dit zijn de volledige manifesten voor de service en toepassing die in dit artike
 Voer de volgende stappen uit als u nog een containerservice wilt toevoegen aan een toepassing die al is gemaakt met yeoman:
 
 1. Stel de directory in op de hoofdmap van de bestaande toepassing. Bijvoorbeeld `cd ~/YeomanSamples/MyApplication` als `MyApplication` de toepassing is die is gemaakt door Yeoman.
-2. Voer `yo azuresfcontainer:AddService` uit.
+2. `yo azuresfcontainer:AddService` uitvoeren
 
 <a id="manually"></a>
 

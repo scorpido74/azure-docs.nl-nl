@@ -1,6 +1,6 @@
 ---
-title: Voor spellingen implementeren en maken met ONNX in Azure SQL Edge (preview)
-description: Meer informatie over het trainen van een model, het converteren van het naar ONNX, het implementeren ervan naar Azure SQL Edge (preview) en het uitvoeren van systeem eigen voor spel op gegevens met het geüploade ONNX-model.
+title: Voor spellingen implementeren en maken met ONNX
+description: Meer informatie over het trainen van een model, het converteren naar ONNX, het implementeren ervan naar Azure SQL Edge (preview) of Azure SQL Managed instance (preview), en vervolgens systeem eigen voor spel uitvoeren op gegevens met het geüploade ONNX-model.
 keywords: SQL-rand implementeren
 services: sql-edge
 ms.service: sql-edge
@@ -8,32 +8,40 @@ ms.subservice: machine-learning
 ms.topic: conceptual
 author: dphansen
 ms.author: davidph
-ms.date: 05/19/2020
-ms.openlocfilehash: b5cd655aaf9992c6908a7f9287f691fd36d84871
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/14/2020
+ms.openlocfilehash: fe1e4a195903803d3103da5f350de30a016e614b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476730"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085010"
 ---
-# <a name="deploy-and-make-predictions-with-an-onnx-model-in-azure-sql-edge-preview"></a>Voor spellingen implementeren en maken met een ONNX-model in Azure SQL Edge (preview)
+# <a name="deploy-and-make-predictions-with-an-onnx-model"></a>Voor spellingen implementeren en maken met een ONNX-model
 
-In deze Quick Start leert u hoe u een model traint, converteert naar ONNX, het implementeert in Azure SQL Edge (preview) en vervolgens systeem eigen voor beeld uitvoert op gegevens met behulp van het geüploade ONNX-model. Zie [machine learning en AI with ONNX in SQL Edge (preview)](onnx-overview.md)voor meer informatie.
+In deze Quick Start leert u hoe u een model traint, converteert naar ONNX, het implementeert in [Azure SQL Edge (preview)](onnx-overview.md) of [Azure SQL Managed instance (preview)](../azure-sql/managed-instance/machine-learning-services-overview.md)en vervolgens systeem eigen voor beeld uitvoert op gegevens met behulp van het geüploade ONNX-model.
 
 Deze Quick start is gebaseerd op **scikit-Learn** en maakt gebruik van de [Boston huisvesting-gegevensset](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html).
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-* Als u nog geen Azure SQL Edge-module hebt geïmplementeerd, volgt u de stappen voor [het implementeren van SQL Edge (preview) met behulp van de Azure Portal](deploy-portal.md).
+* Als u Azure SQL Edge gebruikt en u geen Azure SQL Edge-module hebt geïmplementeerd, volgt u de stappen voor [het implementeren van SQL Edge (preview) met behulp van de Azure Portal](deploy-portal.md).
 
 * Installeer [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download).
 
-* Open Azure Data Studio en voer de volgende stappen uit om de pakketten te installeren die nodig zijn voor deze Quick Start:
+* Python-pakketten installeren die nodig zijn voor deze Quick Start:
 
-    1. Open een [Nieuw notitie blok](https://docs.microsoft.com/sql/azure-data-studio/sql-notebooks) dat is verbonden met de python 3-kernel. 
-    1. Klik op **Pakketten beheren** en klik onder **nieuwe toevoegen**, zoek naar **scikit-Learn**en installeer het pakket met scikit-informatie. 
-    1. Installeer ook de **installatie**-, **numpy**-, **onnxmltools**-, **onnxruntime**-, **skl2onnx**-, **pyodbc**-en **sqlalchemy** -pakketten.
-    
+  1. Open een [Nieuw notitie blok](https://docs.microsoft.com/sql/azure-data-studio/sql-notebooks) dat is verbonden met de python 3-kernel. 
+  1. Klik op **Pakketten beheren**
+  1. Zoek op het tabblad **geïnstalleerd** naar de volgende python-pakketten in de lijst met geïnstalleerde pakketten. Als een van deze pakketten niet is geïnstalleerd, selecteert u het tabblad **Nieuw toevoegen** , zoekt u naar het pakket en klikt u op **installeren**.
+     - **scikit-learn**
+     - **numpy**
+     - **onnxmltools**
+     - **onnxruntime**
+     - **pyodbc**
+     - **setup tools**
+     - **skl2onnx**
+     - **sqlalchemy**
+
 * Voer voor elk script onderdeel dat hieronder in een cel in de Azure Data Studio notitie blok in en voer de cel uit.
 
 ## <a name="train-a-pipeline"></a>Een pijp lijn trainen
@@ -219,7 +227,7 @@ MSE are equal
 
 ## <a name="insert-the-onnx-model"></a>Het ONNX-model invoegen
 
-Sla het model op in Azure SQL Edge, in een `models` tabel in een Data Base `onnx` . Geef in het connection string het **server adres**, de **gebruikers naam**en het **wacht woord**op.
+Sla het model op in een `models` tabel in een data base in Azure SQL Edge of Azure SQL Managed instance `onnx` . Geef in het connection string het **server adres**, de **gebruikers naam**en het **wacht woord**op.
 
 ```python
 import pyodbc
@@ -277,7 +285,7 @@ conn.commit()
 
 ## <a name="load-the-data"></a>De gegevens laden
 
-Laad de gegevens in Azure SQL Edge.
+Laad de gegevens in SQL.
 
 Maak eerst twee tabellen, **onderdelen** en **doel items**om subsets van de Boston-Veste-gegevensset op te slaan.
 
@@ -350,7 +358,7 @@ U kunt nu de gegevens in de data base bekijken.
 
 ## <a name="run-predict-using-the-onnx-model"></a>Voor SPELing uitvoeren met het ONNX-model
 
-Gebruik het model in Azure SQL Edge om systeem eigen voor SPELing uit te voeren op de gegevens met behulp van het geüploade ONNX-model.
+Met het model in SQL voert u native voor SPELing uit voor de gegevens met behulp van het geüploade ONNX-model.
 
 > [!NOTE]
 > Wijzig de kernel van de notebook in SQL om de resterende cel uit te voeren.
@@ -390,3 +398,4 @@ FROM PREDICT(MODEL = @model, DATA = predict_input, RUNTIME=ONNX) WITH (variable1
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Machine Learning en AI met ONNX in SQL Edge](onnx-overview.md)
+* [Machine Learning Services in Azure SQL Managed instance (preview-versie)](../azure-sql/managed-instance/machine-learning-services-overview.md)

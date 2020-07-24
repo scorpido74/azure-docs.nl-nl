@@ -13,13 +13,14 @@ ms.workload: infrastructure
 ms.date: 10/16/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9cb2647cc5ac2dc60f5ae7327ee39ed2ff625193
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79ef279423c524f0d409815e7ae163aa699f5428
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82901379"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082202"
 ---
-# <a name="backup-and-restore"></a>Back-ups en herstellen
+# <a name="backup-and-restore-on-sap-hana-on-azure"></a>Back-ups maken en herstellen op SAP HANA in azure
 
 >[!IMPORTANT]
 >Dit artikel is geen vervanging voor de documentatie over SAP HANA beheer of SAP-opmerkingen. Het is belang rijk dat u beschikt over een solide kennis van en ervaring op het SAP HANA beheer en bewerkingen, met name voor back-up, herstel, hoge Beschik baarheid en herstel na nood gevallen. In dit artikel worden scherm afbeeldingen van SAP HANA Studio weer gegeven. De inhoud, de structuur en de aard van de schermen van SAP-beheer Programma's en de hulpprogram ma's zelf kunnen veranderen van SAP HANA release naar release.

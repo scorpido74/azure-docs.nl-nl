@@ -3,23 +3,27 @@ title: Naslag informatie over Java script-ontwikkel aars voor Azure Functions
 description: Meer informatie over het ontwikkelen van functies met behulp van Java script.
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: d71301ef73cd94c13b12e17c923ec73abb8e4aae
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/17/2020
+ms.openlocfilehash: c0e5dd7e1869accd309656b69bd2a07d21b1a3ec
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252722"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082967"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Ontwikkelaarshandleiding voor Azure Functions Javascript
 
-Deze hand leiding bevat informatie over de complexiteit voor het schrijven van Azure Functions met Java script.
+Deze hand leiding bevat gedetailleerde informatie die u kan helpen bij het ontwikkelen van Azure Functions met behulp van Java script.
 
-Een Java script-functie is een export `function` die wordt uitgevoerd wanneer geactiveerd ([triggers worden geconfigureerd in function.jsop](functions-triggers-bindings.md)). Het eerste argument dat aan elke functie is door gegeven, is een `context` object dat wordt gebruikt voor het ontvangen en verzenden van bindings gegevens, logboek registratie en communicatie met de runtime.
+Als Express.js, Node.js of Java script-ontwikkelaar, als u geen ervaring hebt met Azure Functions, kunt u eerst een van de volgende artikelen lezen:
 
-In dit artikel wordt ervan uitgegaan dat u de [Azure functions Naslag informatie voor ontwikkel aars](functions-reference.md)al hebt gelezen. Voltooi de Quick Start van functies om uw eerste functie te maken met behulp van [Visual Studio code](functions-create-first-function-vs-code.md) of [in de portal](functions-create-first-azure-function.md).
+| Aan de slag | Concepten| Begeleide training |
+| -- | -- | -- | 
+| <ul><li>[Node.js functie met Visual Studio code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-javascript)</li><li>[Node.js functie met Terminal/opdracht prompt](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-javascript)</li></ul> | <ul><li>[Ontwikkelaarsgids](functions-reference.md)</li><li>[Hostingopties](functions-scale.md)</li><li>[Type script-functies](#typescript)</li><li>[Prestatie &nbsp; overwegingen](functions-best-practices.md)</li></ul> | <ul><li>[Serverloze toepassingen maken](/learn/paths/create-serverless-applications/)</li><li>[Refactorion-Node.js en Express-Api's naar Serverloze Api's](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
 
-Dit artikel biedt ook ondersteuning voor [type script app-ontwikkeling](#typescript).
+## <a name="javascript-function-basics"></a>Basis beginselen van Java script-functies
+
+Een Java script-functie (Node.js) is een export `function` die wordt uitgevoerd wanneer geactiveerd ([triggers worden geconfigureerd in function.jsop](functions-triggers-bindings.md)). Het eerste argument dat aan elke functie is door gegeven, is een `context` object dat wordt gebruikt voor het ontvangen en verzenden van bindings gegevens, logboek registratie en communicatie met de runtime.
 
 ## <a name="folder-structure"></a>Mapstructuur
 
@@ -118,7 +122,7 @@ De invoer is onderverdeeld in twee categorieën in Azure Functions: een is de in
    };
    ```
    
- - **Als invoer met behulp van het Java script- [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) object.** Dit is in wezen hetzelfde als het door voeren van invoer als para meters, maar biedt u de mogelijkheid om invoer dynamisch te verwerken.
+ - **Als invoer met behulp van het Java script- [`arguments`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments) object.** Dit is in wezen hetzelfde als het door voeren van invoer als para meters, maar biedt u de mogelijkheid om invoer dynamisch te verwerken.
  
    ```javascript
    module.exports = async function(context) { 
@@ -559,11 +563,11 @@ In dit voor beeld is het belang rijk te weten dat er een object wordt geëxporte
 
 Wanneer met de `--inspect` para meter wordt gestart, luistert een Node.js proces naar een client voor fout opsporing op de opgegeven poort. In Azure Functions 2. x kunt u argumenten opgeven die moeten worden door gegeven aan het Node.js proces waarmee de code wordt uitgevoerd door de omgevings variabele of app-instelling toe te voegen `languageWorkers:node:arguments = <args>` . 
 
-Als u lokaal fouten wilt opsporen, voegt u `"languageWorkers:node:arguments": "--inspect=5858"` onder `Values` in uw [local.settings.js](https://docs.microsoft.com/azure/azure-functions/functions-run-local#local-settings-file) toe aan het bestand en koppelt u een fout opsporingsprogramma aan poort 5858.
+Als u lokaal fouten wilt opsporen, voegt u `"languageWorkers:node:arguments": "--inspect=5858"` onder `Values` in uw [local.settings.js](./functions-run-local.md#local-settings-file) toe aan het bestand en koppelt u een fout opsporingsprogramma aan poort 5858.
 
 Bij fout opsporing met behulp van VS code `--inspect` wordt de para meter automatisch toegevoegd met behulp van de `port` waarde in de launch.jsvan het project in het bestand.
 
-In versie 1. x wordt de instelling `languageWorkers:node:arguments` niet gebruikt. De poort voor fout opsporing kan worden geselecteerd met de [`--nodeDebugPort`](https://docs.microsoft.com/azure/azure-functions/functions-run-local#start) para meter op Azure functions core tools.
+In versie 1. x wordt de instelling `languageWorkers:node:arguments` niet gebruikt. De poort voor fout opsporing kan worden geselecteerd met de [`--nodeDebugPort`](./functions-run-local.md#start) para meter op Azure functions core tools.
 
 ## <a name="typescript"></a>TypeScript
 
@@ -632,7 +636,7 @@ Wanneer u werkt met Java script-functies, moet u rekening houden met de overwegi
 
 ### <a name="choose-single-vcpu-app-service-plans"></a>VCPU plannen voor eenmalige App Service kiezen
 
-Wanneer u een functie-app maakt die gebruikmaakt van het App Service-abonnement, wordt u aangeraden een schema met één vCPU te selecteren in plaats van een plan met meerdere Vcpu's. Vandaag voeren functies java script-functies efficiënter uit op virtuele machines met één vCPU, en het gebruik van grotere Vm's produceert niet de verwachte prestatie verbeteringen. Als dat nodig is, kunt u hand matig uitschalen door meer VM-exemplaren met één vCPU toe te voegen of automatisch schalen in te scha kelen. Zie [aantal exemplaren hand matig of automatisch schalen](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2ftoc.json)voor meer informatie.
+Wanneer u een functie-app maakt die gebruikmaakt van het App Service-abonnement, wordt u aangeraden een schema met één vCPU te selecteren in plaats van een plan met meerdere Vcpu's. Vandaag voeren functies java script-functies efficiënter uit op virtuele machines met één vCPU, en het gebruik van grotere Vm's produceert niet de verwachte prestatie verbeteringen. Als dat nodig is, kunt u hand matig uitschalen door meer VM-exemplaren met één vCPU toe te voegen of automatisch schalen in te scha kelen. Zie [aantal exemplaren hand matig of automatisch schalen](../azure-monitor/platform/autoscale-get-started.md?toc=/azure/app-service/toc.json)voor meer informatie.
 
 ### <a name="cold-start"></a>Koude start
 
@@ -694,7 +698,7 @@ module.exports = async function (context) {
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende resources voor meer informatie:
+Zie de volgende bronnen voor meer informatie:
 
 + [Aanbevolen procedures voor Azure Functions](functions-best-practices.md)
 + [Naslaginformatie over Azure Functions voor ontwikkelaars](functions-reference.md)

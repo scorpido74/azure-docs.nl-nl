@@ -6,11 +6,12 @@ ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 5607a737fa4616d4eda3d174144c1717125f4181
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 440eb1f39284f8d99a8d6b9067b018c4a54fcd27
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83122767"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083018"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>Een HTTP-eind punt in Azure Functions aanpassen
 
@@ -39,14 +40,14 @@ De functie HTTP-activering is standaard zo geconfigureerd dat elke HTTP-methode 
     | Veld | Voorbeeldwaarde | Beschrijving |
     |---|---|---|
     | Routesjabloon | /hello | Hiermee wordt bepaald welke route wordt gebruikt om deze functie aan te roepen |
-    | Autorisatieniveau | Anoniem | Optioneel: dit maakt uw functie toegankelijk zonder een API-sleutel |
+    | Verificatieniveau | Anoniem | Optioneel: dit maakt uw functie toegankelijk zonder een API-sleutel |
     | Geselecteerde HTTP-methoden | GET | Hiermee is het alleen geselecteerde HTTP-methoden toegestaan om deze functie aan te roepen |
 
     U hebt het `/api` voor voegsel van het basis traject niet in de route sjabloon ingevoegd, omdat het wordt verwerkt door een globale instelling.
 
 1. Selecteer **Opslaan**.
 
-Zie [Azure functions HTTP-bindingen](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook)voor meer informatie over het aanpassen van http-functies.
+Zie [Azure functions HTTP-bindingen](./functions-bindings-http-webhook.md)voor meer informatie over het aanpassen van http-functies.
 
 ### <a name="test-your-api"></a>Uw API testen
 
@@ -73,8 +74,8 @@ In de volgende sectie maakt u uw API via een proxy. Met Azure Functions-proxy's 
 
 Een proxy kan naar elke HTTP-bron verwijzen, zoals:
 - Azure Functions 
-- API Apps in [Azure App Service](https://docs.microsoft.com/azure/app-service/overview)
-- Docker-containers in [App Service in Linux](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro)
+- API Apps in [Azure App Service](../app-service/overview.md)
+- Docker-containers in [App Service in Linux](../app-service/containers/app-service-linux-intro.md)
 - Elke andere gehoste API
 
 Zie [Werken met Azure Functions-proxy's] voor meer informatie over proxy's.
@@ -85,7 +86,7 @@ In deze sectie maakt u een nieuwe proxy die fungeert als een frontend voor uw al
 
 ### <a name="setting-up-the-frontend-environment"></a>De front-endomgeving instellen
 
-Herhaal de stappen uit [Een functie-app maken](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function#create-a-function-app) om een nieuwe functie-app te maken waarin u uw proxy maakt. De URL van deze nieuwe app fungeert als de front-end voor de API en de functie-app die u eerder hebt bewerkt, fungeert als back-end.
+Herhaal de stappen uit [Een functie-app maken](./functions-create-first-azure-function.md#create-a-function-app) om een nieuwe functie-app te maken waarin u uw proxy maakt. De URL van deze nieuwe app fungeert als de front-end voor de API en de functie-app die u eerder hebt bewerkt, fungeert als back-end.
 
 1. Navigeer naar uw nieuwe front-end functie-app in de portal.
 1. Selecteer **Platformfuncties** en kies **Toepassingsinstellingen**.
@@ -125,7 +126,7 @@ Vervolgens gebruikt u een proxy om een model-API voor uw oplossing te maken. Met
 
 Als u deze model-API wilt maken, maakt u een nieuwe proxy met de [app service-editor](https://github.com/projectkudu/kudu/wiki/App-Service-Editor). Navigeer eerst naar uw nieuwe functie-app in de portal. Selecteer **platform functies**en onder **ontwikkelingsprogram ma's** vindt u **app service-editor**. De App Service-editor wordt geopend op een nieuw tabblad.
 
-Selecteer `proxies.json` in de linkernavigatiebalk. In dit bestand wordt de configuratie voor al uw proxy's opgeslagen. Als u een van de [functies voor implementatie methoden](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment)gebruikt, onderhoudt u dit bestand in broncode beheer. Zie [Geavanceerde configuratie van proxy's](https://docs.microsoft.com/azure/azure-functions/functions-proxies#advanced-configuration) voor meer informatie over dit bestand.
+Selecteer `proxies.json` in de linkernavigatiebalk. In dit bestand wordt de configuratie voor al uw proxy's opgeslagen. Als u een van de [functies voor implementatie methoden](./functions-continuous-deployment.md)gebruikt, onderhoudt u dit bestand in broncode beheer. Zie [Geavanceerde configuratie van proxy's](./functions-proxies.md#advanced-configuration) voor meer informatie over dit bestand.
 
 Als u tot nu toe hebt gevolgd, moet uw proxies.jser als volgt uitzien:
 
@@ -179,7 +180,7 @@ Vervolgens voegt u de model-API toe. Vervang uw proxies.jsdoor een bestand met d
 }
 ```
 
-Met deze code wordt een nieuwe proxy toegevoegd, `GetUserByName` zonder de `backendUri` eigenschap. In plaats van een andere resource aan te roepen, wordt de standaardreactie van Azure Functions-proxy's gewijzigd via het negeren van een antwoord. Het negeren van aanvragen en antwoorden kan ook worden gebruikt in combinatie met een back-end-URL. Deze techniek is vooral nuttig wanneer u een verouderd systeem gebruikt, waarbij u mogelijk kopteksten, query parameters, enzovoort moet wijzigen. Zie [Aanvragen en antwoorden negeren in proxy's](https://docs.microsoft.com/azure/azure-functions/functions-proxies) voor meer informatie over het negeren van aanvragen en antwoorden.
+Met deze code wordt een nieuwe proxy toegevoegd, `GetUserByName` zonder de `backendUri` eigenschap. In plaats van een andere resource aan te roepen, wordt de standaardreactie van Azure Functions-proxy's gewijzigd via het negeren van een antwoord. Het negeren van aanvragen en antwoorden kan ook worden gebruikt in combinatie met een back-end-URL. Deze techniek is vooral nuttig wanneer u een verouderd systeem gebruikt, waarbij u mogelijk kopteksten, query parameters, enzovoort moet wijzigen. Zie [Aanvragen en antwoorden negeren in proxy's](./functions-proxies.md) voor meer informatie over het negeren van aanvragen en antwoorden.
 
 Test uw mock-API door het `<YourProxyApp>.azurewebsites.net/api/users/{username}`-eindpunt aan te roepen met behulp van een browser of de REST-client van uw voorkeur. Vervang _{username}_ door een tekenreekswaarde die een gebruikersnaam vertegenwoordigt.
 
@@ -189,10 +190,10 @@ In dit artikel hebt u geleerd hoe u een API kunt bouwen en aanpassen op Azure Fu
 
 De volgende informatiebronnen kunnen nuttig zijn als u uw API verder ontwikkelt:
 
-- [HTTP-bindingen in Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook)
+- [HTTP-bindingen in Azure Functions](./functions-bindings-http-webhook.md)
 - [Werken met Azure Functions-proxy's]
-- [Een Azure Functions-API documenteren (preview)](https://docs.microsoft.com/azure/azure-functions/functions-api-definition-getting-started)
+- [Een Azure Functions-API documenteren (preview)](./functions-openapi-definition.md)
 
 
-[Create your first function]: https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function
-[Werken met Azure Functions-proxy's]: https://docs.microsoft.com/azure/azure-functions/functions-proxies
+[Create your first function]: ./functions-create-first-azure-function.md
+[Werken met Azure Functions-proxy's]: ./functions-proxies.md

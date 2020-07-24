@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 25e8be28903d490a7a8c17e16d2beddc44c95c41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b47fb242a82097a9fa5c9c41dac99f0a7f8ab2c8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782769"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085432"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Tijd synchronisatie voor virtuele Linux-machines in azure
 
@@ -127,11 +128,11 @@ In dit voor beeld wordt de geretourneerde waarde *ptp0*, zodat we deze gebruiken
 cat /sys/class/ptp/ptp0/clock_name
 ```
 
-Dit moet **hyper-v**retour neren.
+Dit moet worden geretourneerd `hyperv` .
 
 ### <a name="chrony"></a>chrony
 
-In Ubuntu 19,10 en hoger, Red Hat Enterprise Linux en CentOS 7. x, [chrony](https://chrony.tuxfamily.org/) is geconfigureerd voor het gebruik van een PTP-bron klok. In plaats van chrony maakt oudere linux-releases gebruik van de Network Time Protocol daemon (ntpd), die geen PTP-bronnen ondersteunt. Voor het inschakelen van PTP in deze releases moet chrony hand matig worden geïnstalleerd en geconfigureerd (in chrony. conf) met behulp van de volgende code:
+In Ubuntu 19,10 en hoger, Red Hat Enterprise Linux en CentOS 8. x, [chrony](https://chrony.tuxfamily.org/) is geconfigureerd voor het gebruik van een PTP-bron klok. In plaats van chrony maakt oudere linux-releases gebruik van de Network Time Protocol daemon (ntpd), die geen PTP-bronnen ondersteunt. Voor het inschakelen van PTP in deze releases moet chrony hand matig worden geïnstalleerd en geconfigureerd (in chrony. conf) met behulp van de volgende code:
 
 ```bash
 refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0
@@ -143,9 +144,9 @@ Zie [NTP configureren](https://access.redhat.com/documentation/en-us/red_hat_ent
 
 Zie [using chrony](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_the_chrony_suite#sect-Using_chrony)(Engelstalig) voor meer informatie over chrony.
 
-Als zowel de chrony-als de TimeSync-bron tegelijk zijn ingeschakeld, kunt u een als voor **keur**markeren, waarmee de andere bron wordt ingesteld als back-up. Omdat de NTP-Services de klok voor grote scheefheden, behalve na een lange periode, niet bijwerken, zal de VMICTimeSync de klok van onderbroken VM-gebeurtenissen veel sneller worden hersteld dan op NTP gebaseerde hulpprogram ma's.
+Als zowel de chrony-als de VMICTimeSync-bron tegelijk zijn ingeschakeld, kunt u een als voor **keur**markeren, waarmee de andere bron wordt ingesteld als back-up. Omdat de NTP-Services de klok voor grote scheefheden, behalve na een lange periode, niet bijwerken, zal de VMICTimeSync de klok van onderbroken VM-gebeurtenissen veel sneller worden hersteld dan op NTP gebaseerde hulpprogram ma's.
 
-Chronyd versnelt of vertraagt standaard de systeem klok om tijds drift te verhelpen. Als de drift te groot wordt, chrony de drift niet oplossen. Om dit op te lossen, `makestep` kan de para meter in **/etc/chrony.conf** worden gewijzigd om een TimeSync af te dwingen als de drift de opgegeven drempel waarde overschrijdt.
+Chronyd versnelt of vertraagt standaard de systeem klok om tijds drift te verhelpen. Als de drift te groot wordt, chrony de drift niet oplossen. Om dit op te lossen, `makestep` kan de para meter in **/etc/chrony.conf** worden gewijzigd om een tijd synchronisatie af te dwingen als de waarde van de drift de opgegeven drempel overschrijdt.
 
  ```bash
 makestep 1.0 -1

@@ -7,11 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/26/2020
 ms.author: yushwang
-ms.openlocfilehash: a8a4ba7ea3de9140d79856fad9d5d0bc42cf4c51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7fb344e16ed672dfc6c88fbe2c4888c52c9b717d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84984619"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081981"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>Azure VPN-gateways verbinden met meerdere on-premises op beleid gebaseerde VPN-apparaten met behulp van Power shell
 
@@ -35,8 +36,8 @@ De volgende diagrammen markeren de twee modellen:
 ### <a name="azure-support-for-policy-based-vpn"></a>Azure-ondersteuning voor op beleid gebaseerde VPN-verbindingen
 Azure ondersteunt momenteel beide modi van VPN-gateways: op route gebaseerde VPN-gateways en op beleid gebaseerde VPN-gateways. Ze zijn gebouwd op verschillende interne platforms, wat resulteert in verschillende specificaties:
 
-|                          | **PolicyBased VPN Gateway** | **RouteBased VPN Gateway**       |**RouteBased VPN Gateway**                          |
-| ---                      | ---                         | ---                              |---                                                 |
+| Categorie | PolicyBased VPN Gateway | RouteBased VPN Gateway | RouteBased VPN Gateway |
+| -------- | ----------------------- | ---------------------- | ---------------------- |---                                                 |
 | **Azure gateway-SKU**    | Basic                       | Basic                            | VpnGw1, VpnGw2, VpnGw3, VpnGw4, VpnGw5  |
 | **IKE-versie**          | IKEv1                       | IKEv2                            | IKEv1 en IKEv2                         |
 | **Aantal. S2S-verbindingen** | **1**                       | 10                               | 30                     |
@@ -204,6 +205,6 @@ De volgende regel geeft aan of de op beleid gebaseerde verkeers selecties worden
       ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Wanneer de verbinding is voltooid, kunt u virtuele machines aan uw virtuele netwerken toevoegen. Zie [Een virtuele machine maken](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) voor de stappen.
+Wanneer de verbinding is voltooid, kunt u virtuele machines aan uw virtuele netwerken toevoegen. Zie [Een virtuele machine maken](../virtual-machines/windows/quick-create-portal.md) voor de stappen.
 
 Lees ook [IPSec/IKE-beleid configureren voor S2S VPN-of vnet-naar-vnet-verbindingen](vpn-gateway-ipsecikepolicy-rm-powershell.md) voor meer informatie over aangepaste IPSec/IKE-beleids regels.

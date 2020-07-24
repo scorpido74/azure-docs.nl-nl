@@ -3,11 +3,12 @@ title: Azure Functions ontwikkelen met Visual Studio code
 description: Meer informatie over het ontwikkelen en testen van Azure Functions met behulp van de Azure Functions-extensie voor Visual Studio code.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 459162c277a9510297580a99acb8a88b0702a290
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8ccb93013b16fc919630251aa02edf48e30ce6d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84732464"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083120"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Azure Functions ontwikkelen met Visual Studio code
 
@@ -185,7 +186,7 @@ Met Visual Studio code kunt u bindingen toevoegen aan uw function.jsop bestand d
 
 Hieronder volgen enkele voor beelden van prompts voor het definiëren van een nieuwe opslag-uitvoer binding:
 
-| Vraag | Waarde | Beschrijving |
+| Prompt | Waarde | Beschrijving |
 | -------- | ----- | ----------- |
 | **Bindings richting selecteren** | `out` | De binding is een uitvoer binding. |
 | **Binding met richting selecteren** | `Azure Queue Storage` | De binding is een Azure Storage wachtrij binding. |
@@ -249,7 +250,7 @@ Met de volgende stappen publiceert u uw project naar een nieuwe functie-app die 
 
 1. Voer de volgende gegevens in om deze informatie op te geven:
 
-    | Vraag | Waarde | Beschrijving |
+    | Prompt | Waarde | Beschrijving |
     | ------ | ----- | ----------- |
     | Functie-app in azure selecteren | Nieuwe functie-app in azure maken | Typ bij de volgende prompt een wereld wijd unieke naam die uw nieuwe functie-app identificeert en selecteer vervolgens ENTER. Geldige tekens voor de naam van en functie-app zijn `a-z`, `0-9` en `-`. |
     | Selecteer een besturings systeem | Windows | De functie-app wordt uitgevoerd in Windows. |
@@ -294,7 +295,7 @@ Als u uw functions-project lokaal wilt uitvoeren, moet u aan deze aanvullende ve
 
     | Taal | Vereiste |
     | -------- | --------- |
-    | **C#** | [C#-extensie](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)<br/>[.NET Core CLI-hulpprogramma's](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x)   |
+    | **C#** | [C#-extensie](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)<br/>[.NET Core CLI-hulpprogramma's](/dotnet/core/tools/?tabs=netcore2x)   |
     | **Java** | [Fout opsporing voor Java-extensie](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3 of hoger](https://maven.apache.org/) |
     | **JavaScript** | [Node.js](https://nodejs.org/)<sup>*</sup> |  
     | **Python** | [Python-extensie](https://marketplace.visualstudio.com/items?itemName=ms-python.python)<br/>[Python 3.6.8](https://www.python.org/downloads/) aanbevolen|
@@ -408,7 +409,7 @@ Nadat u deze stappen hebt voltooid, bevatten de aanroepen van de onderliggende k
 
 De uitbrei ding Azure Functions biedt een handige grafische interface in het gebied voor interactie met uw functie-apps in Azure. Dezelfde functionaliteit is ook beschikbaar als opdrachten in het opdracht palet (F1). Deze Azure Functions-opdrachten zijn beschikbaar:
 
-|Azure Functions opdracht  | Description  |
+|Azure Functions opdracht  | Beschrijving  |
 |---------|---------|
 |**Nieuwe instellingen toevoegen**  |  Hiermee maakt u een nieuwe toepassings instelling in Azure. Zie [Toepassings instellingen publiceren](#publish-application-settings)voor meer informatie. Mogelijk moet u [deze instelling ook downloaden naar de lokale instellingen](#download-settings-from-azure). |
 | **Implementatie bron configureren** | Verbindt uw functie-app in azure met een lokale Git-opslag plaats. Zie [continue implementatie voor Azure functions voor](functions-continuous-deployment.md)meer informatie. |
@@ -447,5 +448,5 @@ Zie [werken met Azure functions core tools](functions-run-local.md)voor meer inf
 
 Zie [Azure functions C#-Naslag informatie voor ontwikkel aars](functions-dotnet-class-library.md)voor meer informatie over het ontwikkelen van functies als .net-klassen bibliotheken. Dit artikel bevat ook koppelingen naar voor beelden van het gebruik van kenmerken voor het declareren van de verschillende typen bindingen die door Azure Functions worden ondersteund.
 
-[Azure Functions extension for Visual Studio Code]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions (Azure Functions-extensie voor Visual Studio Code)
+[Azure Functions-extensie voor Visual Studio Code]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions
 [Azure Functions Core Tools]: functions-run-local.md

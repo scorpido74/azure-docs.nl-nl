@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: kumud
-ms.openlocfilehash: 26d82d4381649bc86950b1898c5c5351a97ec697
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 55993162c4ea3cd5bf60a9ee9acc869cc088a9d0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84688769"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085126"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions-and-azure-active-directory-tenants"></a>Een peering voor een virtueel netwerk maken-Resource Manager, verschillende abonnementen en Azure Active Directory tenants
 
@@ -180,7 +181,7 @@ Alle Azure-resources die u in een virtueel netwerk maakt, kunnen nu met elkaar c
 
 In deze zelf studie worden verschillende accounts voor elk abonnement gebruikt. Als u gebruikmaakt van een account met machtigingen voor beide abonnementen, kunt u hetzelfde account voor alle stappen gebruiken, de stappen voor het afmelden van Azure overs Laan en de regels van het script verwijderen waarmee gebruikers roltoewijzingen worden gemaakt. Vervang UserA@azure.com en UserB@azure.com in alle volgende scripts door de gebruikers namen die u gebruikt voor GebruikerA en UserB.
 
-1. Controleer of u Azure PowerShell versie 1.0.0 of hoger hebt. U kunt dit doen door de `Get-Module -Name Az` meest recente versie van de Power shell [AZ-module](/powershell/azure/install-az-ps)te installeren. Zie [Overzicht van Azure PowerShell](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json) als u nog geen ervaring hebt met Azure PowerShell. 
+1. Controleer of u Azure PowerShell versie 1.0.0 of hoger hebt. U kunt dit doen door de `Get-Module -Name Az` meest recente versie van de Power shell [AZ-module](/powershell/azure/install-az-ps)te installeren. Zie [Overzicht van Azure PowerShell](/powershell/azure/?toc=%2fazure%2fvirtual-network%2ftoc.json) als u nog geen ervaring hebt met Azure PowerShell. 
 2. Start een Power shell-sessie.
 3. Meld u in Power shell aan bij Azure als GebruikerA door de opdracht in te voeren `Connect-AzAccount` . Het account waarmee u zich aanmeldt, moet de benodigde machtigingen hebben voor het maken van een virtuele netwerk peering. Zie [machtigingen voor peering voor virtuele netwerken](virtual-network-manage-peering.md#permissions)voor een lijst met machtigingen.
 4. Maak een resource groep en een virtueel netwerk A. Kopieer het volgende script naar een tekst editor op uw PC. Vervang door `<SubscriptionA-Id>` de id van abonnementa. Als u uw abonnements-id niet weet, voert u de `Get-AzSubscription` opdracht in om deze weer te geven. De waarde voor **id** in de geretourneerde uitvoer is uw abonnements-id. Als u het script wilt uitvoeren, kopieert u het gewijzigde script, plakt u het in Power shell en drukt u vervolgens op `Enter` .
@@ -310,7 +311,7 @@ Wanneer u deze zelf studie hebt voltooid, kunt u de resources die u in de zelf s
    az group delete --name myResourceGroupB --yes
    ```
 
-### <a name="powershell"></a><a name="delete-powershell"></a>PowerShell
+### <a name="powershell"></a><a name="delete-powershell"></a>Zo
 
 1. Meld u aan bij Azure als GebruikerA en voer de volgende opdracht uit:
 

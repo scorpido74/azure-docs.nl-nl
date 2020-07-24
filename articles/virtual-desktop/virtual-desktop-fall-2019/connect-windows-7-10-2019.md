@@ -5,24 +5,24 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 07/10/2020
+ms.date: 07/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 78c400ffc6a84696a82c219294f133b729754259
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 3bddfe22f70c1044ca02fb41a1959884f41797bb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261804"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083545"
 ---
-# <a name="connect-with-the-windows-desktop-client"></a>Verbinding maken met de Windows Desktop-client
+# <a name="connect-with-the-windows-desktop-client---fall-2019"></a>Verbinding maken met de Windows-desktop client-najaar 2019
 
 > Van toepassing op: Windows 7, Windows 10 en Windows 10 IoT Enter prise
 
 >[!IMPORTANT]
 >Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../connect-windows-7-10.md) als u Azure Resource Manager Windows Virtual Desktop-objecten wilt beheren die zijn geïntroduceerd in de update Lente 2020.
 
-U hebt toegang tot de virtuele Bureau bladen van Windows op apparaten met Windows 7, Windows 10 en Windows 10 IoT Enter prise met behulp van de Windows-bureaubladclient.
+U hebt toegang tot de virtuele Bureau bladen van Windows op apparaten met Windows 7, Windows 10 en Windows 10 IoT Enter prise met behulp van de Windows-bureaubladclient. De client biedt geen ondersteuning voor Windows 8 of Windows 8,1.
 
 >[!NOTE]
 >De Windows-client wordt automatisch standaard ingesteld op Windows Virtual Desktop 2019 release. Als de client echter detecteert dat de gebruiker ook Azure Resource Manager resources heeft, worden de resources automatisch toegevoegd of krijgt de gebruiker een melding dat ze beschikbaar zijn.
@@ -66,7 +66,7 @@ Er zijn twee manieren waarop u zich kunt abonneren op een werk ruimte. De client
      - Windows virtueel bureau blad tot 2019:`https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`
      - Windows virtueel bureau blad lente 2020:`https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`
    - Als u in plaats daarvan het **e-mail** veld gebruikt, voert u uw e-mail adres in. Dit geeft de client de opdracht om te zoeken naar een URL die is gekoppeld aan uw e-mail adres als uw beheerder [e-mail detectie](/windows-server/remote/remote-desktop-services/rds-email-discovery)heeft ingesteld.
-3. Selecteer **Volgende**.
+3. Selecteer **Next**.
 4. Meld u aan met uw gebruikers account wanneer u hierom wordt gevraagd.
 5. De resources moeten worden weer gegeven in het verbindings centrum, gegroepeerd op werk ruimte.
 

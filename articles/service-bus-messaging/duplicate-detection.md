@@ -3,11 +3,12 @@ title: Dubbele bericht detectie Azure Service Bus | Microsoft Docs
 description: In dit artikel wordt uitgelegd hoe u dubbele items kunt detecteren in Azure Service Bus berichten. Het duplicaat bericht kan worden genegeerd en verwijderd.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: c8935fa67dda28bb2fec663c5e714982933f0f22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbca1b4b4f894d35835e7d37e0b4e742a2d3b917
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337900"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083885"
 ---
 # <a name="duplicate-detection"></a>Detectie van duplicaten
 
@@ -32,7 +33,7 @@ De *MessageId* kan altijd een bepaalde GUID zijn, maar het verankeren van de id 
 
 In de portal is de functie ingeschakeld tijdens het maken van de entiteit met het selectie vakje **Duplicaten detectie inschakelen** , die standaard uitgeschakeld is. De instelling voor het maken van nieuwe onderwerpen is gelijkwaardig.
 
-![][1]
+![Scherm afbeelding van het dialoog venster wachtrij maken met de optie Duplicaten detectie inschakelen geselecteerd en in rood beschreven.][1]
 
 > [!IMPORTANT]
 > U kunt duplicaten detectie niet in-of uitschakelen nadat de wachtrij is gemaakt. U kunt dit alleen doen op het moment van het maken van de wachtrij. 
@@ -41,7 +42,7 @@ Via een programma kunt u de markering instellen met de eigenschap [QueueDescript
 
 De geschiedenis van de duplicaten detectie tijd wordt standaard ingesteld op 30 seconden voor wacht rijen en onderwerpen, met een maximale waarde van zeven dagen. U kunt deze instelling wijzigen in het venster Eigenschappen van de wachtrij en het onderwerp in de Azure Portal.
 
-![][2]
+![Scherm afbeelding van de functie Service Bus met de instelling eigenschappen gemarkeerd en de optie geschiedenis van duplicaten detectie wordt rood beschreven.][2]
 
 Via een programma kunt u de grootte van het duplicaten detectie venster configureren waarin bericht-id's worden bewaard, met behulp van de eigenschap [QueueDescription. DuplicateDetectionHistoryTimeWindow](/dotnet/api/microsoft.servicebus.messaging.queuedescription.duplicatedetectionhistorytimewindow#Microsoft_ServiceBus_Messaging_QueueDescription_DuplicateDetectionHistoryTimeWindow) met de volledige .NET Framework-API. Met de Azure Resource Manager-API wordt de waarde ingesteld met de eigenschap [queueProperties. duplicateDetectionHistoryTimeWindow](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) .
 

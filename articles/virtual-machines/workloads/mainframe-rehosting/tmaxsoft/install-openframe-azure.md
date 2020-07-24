@@ -8,12 +8,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-ms.openlocfilehash: 1ad6e52c421d9cfec4640d3a330b5507d6ed3e9b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41b31d5c4a01183d4620dcd6ec6f4729f078d382
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72436047"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082389"
 ---
 # <a name="install-tmaxsoft-openframe-on-azure"></a>TmaxSoft open frame installeren op Azure
 
@@ -349,7 +349,7 @@ Tibero biedt de verschillende belang rijke functies in de open frame-omgeving va
      )
     ```
 
-7. Maak de data base. De volgende uitvoer wordt weergegeven:
+7. Maak de data base. De volgende uitvoer verschijnt:
 
     ```
     Change core dump dir to /opt/tmaxdb/tibero6/bin/prof.
@@ -1476,6 +1476,6 @@ Hiermee wordt de installatie van de onderdelen van OpenFrame voltooid.
 
 Als u een mainframe-migratie overweegt, is onze groeiende partner ecosysteem beschikbaar om u te helpen. Raadpleeg voor meer informatie over het kiezen van een partner oplossing het [platform modernisatie Alliance](https://datamigration.microsoft.com/).
 
--   [Aan de slag met Azure](https://docs.microsoft.com/azure/)
--   [Documentatie voor Host Integration Server (HIS)](https://docs.microsoft.com/host-integration-server/)
--   [Azure Virtual Data Center Lift-and-Shift-gids](https://blogs.msdn.microsoft.com/azurecat/2018/03/12/new-whitepaper-azure-virtual-datacenter-lift-and-shift-guide/)
+-   [Aan de slag met Azure](../../../../index.yml)
+-   [Documentatie voor Host Integration Server (HIS)](/host-integration-server/)
+-   [Azure Virtual Data Center Lift-and-Shift-gids](/archive/blogs/azurecat/new-whitepaper-azure-virtual-datacenter-lift-and-shift-guide)

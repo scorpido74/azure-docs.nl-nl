@@ -13,10 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 37c83e77cadae002ff701a08c4b36a86f7cab9a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79281234"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082831"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Gegevens verplaatsen van PostgreSQL met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
@@ -308,7 +309,7 @@ Bij het verplaatsen van gegevens naar PostgreSQL worden de volgende toewijzingen
 | bigserial |serial8 |Int64 |
 | bits [(n)] | |Byte [], teken reeks |
 | bits variërend [(n)] |varbit |Byte [], teken reeks |
-| booleaans |booleaans |Boolean-waarde |
+| boolean |booleaans |Boolean |
 | keuzelijst | |Byte [], teken reeks |
 | bytea | |Byte [], teken reeks |
 | teken [(n)] |teken [(n)] |Tekenreeks |
@@ -334,7 +335,7 @@ Bij het verplaatsen van gegevens naar PostgreSQL worden de volgende toewijzingen
 | numeriek [(p, s)] |decimaal [(p, s)] |Decimal |
 | numrange | |Tekenreeks |
 | nogmaals | |Int32 |
-| path | |Byte [], teken reeks |
+| leertraject | |Byte [], teken reeks |
 | pg_lsn | |Int64 |
 | spreek | |Byte [], teken reeks |
 | polygoon | |Byte [], teken reeks |

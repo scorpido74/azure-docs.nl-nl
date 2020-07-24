@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: aece41329d6481b8ad15090a834c8758f86abdc2
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 7a4408b54b663b2cd8abc22772ac1b799ea50de0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131335"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083766"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Herstel na nood geval instellen voor een IIS-webtoepassing met meerdere lagen
 
@@ -63,7 +63,7 @@ Scenario | Op een secundaire site | In Azure
 Hyper-V | Ja | Ja
 VMware | Ja | Ja
 Fysieke server | Nee | Yes
-Azure|NA|Yes
+Azure|N.v.t.|Yes
 
 ## <a name="replicate-virtual-machines"></a>Virtuele machines repliceren
 
@@ -102,12 +102,14 @@ Met de connection string geeft u de Data Base op waarmee de website communiceert
 
 Als de connection string verwijst naar de virtuele machine van de data base met behulp van een IP-adres, moet deze na de failover worden bijgewerkt. De volgende connection string verwijst bijvoorbeeld naar de data base met het IP-adres 127.0.1.2:
 
-        <?xml version="1.0" encoding="utf-8"?>
-        <configuration>
-        <connectionStrings>
-        <add name="ConnStringDb1" connectionString="Data Source= 127.0.1.2\SqlExpress; Initial Catalog=TestDB1;Integrated Security=False;" />
-        </connectionStrings>
-        </configuration>
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+<connectionStrings>
+<add name="ConnStringDb1" connectionString="Data Source= 127.0.1.2\SqlExpress; Initial Catalog=TestDB1;Integrated Security=False;" />
+</connectionStrings>
+</configuration>
+```
 
 Als u de connection string in de weblaag wilt bijwerken, voegt u een [update script voor IIS-verbindingen](https://gallery.technet.microsoft.com/Update-IIS-connection-2579aadc) toe na groep 3 in het herstel plan.
 

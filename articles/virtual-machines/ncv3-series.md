@@ -7,16 +7,16 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: c553117aa02106e744150469dee533da3ddc0265
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1cd5cee2d452e7762d784b90e80f8b9e39cf2007
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736982"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085347"
 ---
 # <a name="ncv3-series"></a>NCv3-serie
 
-Virtuele machines uit de NCv3-serie worden aangedreven door [Nvidia Tesla V100](https://www.nvidia.com/data-center/tesla-v100/) gpu's. Deze Gpu's kunnen 1,5 x de reken prestaties van de NCv2-serie bieden. Klanten kunnen profiteren van deze bijgewerkte Gpu's voor traditionele HPC-workloads, zoals het maken van tank modellen, DNA-sequentiëren, eiwithoudende analyse, Monte Carlo-simulaties en andere. De NC24rs v3-configuratie biedt een netwerk interface met lage latentie en hoge door Voer die is geoptimaliseerd voor nauw gekoppelde werk belastingen voor parallelle berekeningen. Naast de Gpu's worden de virtuele machines uit de NCv3-serie ook aangedreven door de Intel Xeon E5-2690 v4-Cpu's (Broadwell).
+Virtuele machines uit de NCv3-serie worden aangedreven door NVIDIA Tesla V100 Gpu's. Deze Gpu's kunnen 1,5 x de reken prestaties van de NCv2-serie bieden. Klanten kunnen profiteren van deze bijgewerkte Gpu's voor traditionele HPC-workloads, zoals het maken van tank modellen, DNA-sequentiëren, eiwithoudende analyse, Monte Carlo-simulaties en andere. De NC24rs v3-configuratie biedt een netwerk interface met lage latentie en hoge door Voer die is geoptimaliseerd voor nauw gekoppelde werk belastingen voor parallelle berekeningen. Naast de Gpu's worden de virtuele machines uit de NCv3-serie ook aangedreven door de Intel Xeon E5-2690 v4-Cpu's (Broadwell).
 
 Premium Storage: ondersteund
 
@@ -27,7 +27,7 @@ Livemigratie: niet ondersteund
 Updates voor het behouden van geheugen: niet ondersteund
 
 > [!IMPORTANT]
-> Voor deze VM-serie wordt het vCPU-quotum (core) in uw abonnement in eerste instantie ingesteld op 0 in elke regio. [Vraag een toename van een vCPU-quotum](../azure-supportability/resource-manager-core-quotas-request.md) aan voor deze reeks in een [beschik bare regio](https://azure.microsoft.com/regions/services/).
+> Voor deze VM-serie wordt het vCPU-quotum (core) in uw abonnement in eerste instantie ingesteld op 0 in elke regio. [Vraag een toename van een vCPU-quotum](../azure-portal/supportability/resource-manager-core-quotas-request.md) aan voor deze reeks in een [beschik bare regio](https://azure.microsoft.com/regions/services/).
 >
 | Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | GPU | GPU-geheugen: GiB | Max. aantal gegevensschijven | Maxi maal aantal niet-opgeslagen schijf doorvoer: IOPS/MBps | Max. aantal NIC's |
 |---|---|---|---|---|---|---|---|---|
@@ -52,9 +52,9 @@ Als u ervoor kiest om de NVIDIA GPU-Stuur Programma's hand matig te installeren,
 
 ## <a name="other-sizes"></a>Andere grootten
 
-- [Algemeen doel](sizes-general.md)
-- [Geoptimaliseerd geheugen](sizes-memory.md)
-- [Geoptimaliseerde opslag](sizes-storage.md)
+- [Algemeen gebruik](sizes-general.md)
+- [Geoptimaliseerd voor geheugen](sizes-memory.md)
+- [Geoptimaliseerd voor opslag](sizes-storage.md)
 - [Geoptimaliseerde GPU](sizes-gpu.md)
 - [Krachtig rekenvermogen](sizes-hpc.md)
 - [Vorige generaties](sizes-previous-gen.md)

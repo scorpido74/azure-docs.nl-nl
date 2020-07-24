@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 279f4cb1d8891f64fb01f4f8abb6b23a004c2b4d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 99c8ee79c51205c33d14328530f527ad8e3ff7b4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84269183"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085454"
 ---
 ## <a name="supported-distributions-and-drivers"></a>Ondersteunde distributies en stuurprogramma 's
 
@@ -29,9 +29,11 @@ NVIDIA CUDA-Stuur Programma's voor NC-, NCv2-, NCv3-, ND-en NDv2-serie-Vm's (opt
 
 Micro soft distribueert installatie Programma's voor NVIDIA-raster stations voor NV-en NVv3-Vm's die worden gebruikt als virtuele werk stations of voor virtuele toepassingen. Installeer alleen deze raster Stuur Programma's op Azure NV-Vm's, alleen voor de besturings systemen die in de volgende tabel worden vermeld. Deze Stuur Programma's omvatten licenties voor raster-Virtual GPU-software in Azure. U hoeft geen NVIDIA vGPU-software licentie server in te stellen.
 
+De raster Stuur Programma's die opnieuw worden gedistribueerd door Azure, werken niet op Vm's uit de niet-NV-serie, zoals NC-, NCv2-, NCv3-, ND-en NDv2-serie-vm's.
+
 | Distributie | Stuurprogramma |
 | --- | -- |
-|Ubuntu 18,04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7,0 tot 7,7<br/><br/>CentOS op basis van 7,0 tot 7,7<br/><br/>SUSE Linux Enterprise Server 12 SP2 | NVIDIA-raster 10,1, R440 van het stuur programma|
+|Ubuntu 18,04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7,6 tot 7,8, 8,0, 8,1<br/><br/>CentOS op basis van 7,6, 7,7, 8,0, 8 (1911)<br/><br/>SUSE Linux Enterprise Server 12 SP2 | NVIDIA-raster 11, R450 van het stuur programma|
 
 > [!WARNING] 
 > Installatie van software van derden in Red Hat-producten kan invloed hebben op de ondersteuningsvoorwaarden van Red Hat. Zie het [Knowledge Base-artikel over Red Hat](https://access.redhat.com/articles/1067).

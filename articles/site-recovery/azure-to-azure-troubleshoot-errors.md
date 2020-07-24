@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: 91aaedba13dfd9c0a3ea06b3460beaa8ead20233
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: d3e70384a99e2dad3f19825cb85b83861e4647e9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130448"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083817"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Replicatie fouten van Azure naar Azure-VM oplossen
 
@@ -534,6 +534,44 @@ Dit probleem kan optreden als de virtuele machine eerder is beveiligd en wanneer
 ### <a name="fix-the-problem"></a>Het probleem oplossen
 
 Verwijder de replica schijf die in het fout bericht wordt vermeld en voer de mislukte beveiligings taak opnieuw uit.
+
+## <a name="enable-protection-failed-as-the-installer-is-unable-to-find-the-root-disk-error-code-151137"></a>Het inschakelen van de beveiliging is mislukt omdat de hoofd schijf niet kan worden gevonden met het installatie programma (fout code 151137)
+
+Deze fout treedt op voor Linux-machines waarop de besturingssysteem schijf is versleuteld met behulp van Azure Disk Encryption (ADE). Dit is een geldig probleem in versie 9,35 van de agent.
+
+### <a name="possible-causes"></a>Mogelijke oorzaken
+
+Het installatie programma kan de hoofd schijf die als host fungeert voor het hoofd bestand-systeem niet vinden.
+
+### <a name="fix-the-problem"></a>Het probleem oplossen
+
+Volg de onderstaande stappen om dit probleem op te lossen-
+
+1. Zoek de agent-bits onder de Directory _/var/lib/waagent_ op RHEL-en CentOS-machines met behulp van de onderstaande opdracht: <br>
+
+    `# find /var/lib/ -name Micro\*.gz`
+
+   Verwachte uitvoer:
+
+    `/var/lib/waagent/Microsoft.Azure.RecoveryServices.SiteRecovery.LinuxRHEL7-1.0.0.9139/UnifiedAgent/Microsoft-ASR_UA_9.35.0.0_RHEL7-64_GA_30Jun2020_release.tar.gz`
+
+2. Maak een nieuwe map en wijzig de Directory in deze nieuwe map.
+3. Pak het agent bestand dat u in de eerste stap hebt gevonden, uit met behulp van de onderstaande opdracht:
+
+    `tar -xf <Tar Ball File>`
+
+4. Open het bestand _prereq_check_installer.jsop_ en verwijder de volgende regels. Sla het bestand op.
+
+    ```
+       {
+          "CheckName": "SystemDiskAvailable",
+          "CheckType": "MobilityService"
+       },
+    ```
+5. Roep het installatie programma aan met de opdracht: <br>
+
+    `./install -d /usr/local/ASR -r MS -q -v Azure`
+6. Als het installatie programma is geslaagd, voert u de taak replicatie inschakelen opnieuw uit.
 
 ## <a name="next-steps"></a>Volgende stappen
 

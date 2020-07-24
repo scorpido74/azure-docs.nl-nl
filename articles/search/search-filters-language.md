@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: b0ebbbb64e173e1501f08f8385b14c365759a804
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3bd0f01193b1e6579d60b581b43ad71ebb6001e3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82116278"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084191"
 ---
 # <a name="how-to-filter-by-language-in-azure-cognitive-search"></a>Filteren op taal in azure Cognitive Search 
 
@@ -21,7 +21,7 @@ Een belang rijke vereiste in een meertalige Zoek toepassing is de mogelijkheid o
 
 Query parameters op de aanvraag worden gebruikt om de zoek bewerking te bereiken en de resultaten te verkorten van alle velden die geen inhoud bieden die compatibel is met de zoek ervaring die u wilt leveren.
 
-| Parameters | Functie |
+| Parameters | Doel |
 |-----------|--------------|
 | **searchFields** | Hiermee beperkt u het zoeken in volledige tekst in de lijst met benoemde velden. |
 | **$select** | Hiermee verkleint u het antwoord op alleen de velden die u opgeeft. Standaard worden alle ophaalbaar velden geretourneerd. Met de para meter **$Select** kunt u kiezen welke items u wilt retour neren. |
@@ -34,7 +34,7 @@ In azure Cognitive Search worden query's gericht op één index. Ontwikkel aars 
 
 Het volgende voor beeld is afkomstig [uit het voor beeld van](search-get-started-portal.md) een onroerend goed met verschillende teken reeks velden die inhoud in verschillende talen bevatten. Let op de taal analyse toewijzingen voor de velden in deze index. Velden met teken reeksen worden beter in Zoek opdrachten in volledige tekst uitgevoerd wanneer ze zijn gekoppeld aan een Analyzer die is ontworpen om de taal kundige regels van de doel taal te verwerken.
 
-  ![](./media/search-filters-language/lang-fields.png)
+  ![Scherm opname van het venster velden van het voor beeld van het onroerend goed. Een groep velden wordt gemarkeerd om erachter te komen hoe de taal analyse toewijzingen overeenkomen met de talen voor de gemarkeerde velden.](./media/search-filters-language/lang-fields.png)
 
 > [!Note]
 > Zie [een index definiëren (.net)](https://docs.microsoft.com/azure/search/search-create-index-dotnet) en [een index definiëren (rest)](search-create-index-rest-api.md)voor code voorbeelden van veld definities met taal analysen.
@@ -60,7 +60,7 @@ parameters =
 > [!Note]
 > Hoewel er geen $filter argument is voor de query, wordt deze use-case sterk gekoppeld aan filter concepten, zodat deze wordt weer gegeven als een filter scenario.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 + [Filters in azure Cognitive Search](search-filters.md)
 + [Taalanalyse](https://docs.microsoft.com/rest/api/searchservice/language-support)

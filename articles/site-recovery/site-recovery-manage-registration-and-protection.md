@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: rajanaki
-ms.openlocfilehash: a411fc9a95bef595a8fc49cad77189bb88fb7661
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77dc21b4a04ec5de440b1a17da4747a3dcc711f9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699631"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083715"
 ---
 # <a name="remove-servers-and-disable-protection"></a>Servers verwijderen en beveiliging uitschakelen
 
@@ -168,11 +169,11 @@ Hyper-V-hosts die niet door VMM worden beheerd, worden in een Hyper-V-site verza
    - **Replicatie uitschakelen en verwijderen (aanbevolen)** : met deze optie wordt het gerepliceerde item verwijderd uit Azure site Recovery en wordt de replicatie voor de machine gestopt. De replicatie Configuratie op de on-premises virtuele machine wordt opgeruimd en Site Recovery facturering voor deze beveiligde server wordt gestopt.
    - **Verwijderen** : deze optie moet alleen worden gebruikt als de bron omgeving is verwijderd of niet is geopend (niet verbonden). Hiermee wordt het gerepliceerde item verwijderd uit de Azure Site Recovery (facturering wordt gestopt). De replicatie Configuratie op de on-premises virtuele machine **wordt niet** opgeschoond. 
 
- > [!NOTE]
-     > Als u de optie **verwijderen** hebt gekozen, voert u de volgende reeks scripts uit om de replicatie-instellingen op de lokale Hyper-V-Server op te schonen.
+    > [!NOTE]
+    > Als u de optie **verwijderen** hebt gekozen, voert u de volgende reeks scripts uit om de replicatie-instellingen op de lokale Hyper-V-Server op te schonen.
 
-> [!NOTE]
-> Als u al een failover hebt uitgevoerd voor een virtuele machine en deze actief is in azure, moet u er rekening mee houden dat het uitschakelen van de beveiliging geen invloed heeft op de failover van de virtuele machine.
+    > [!NOTE]
+    > Als u al een failover hebt uitgevoerd voor een virtuele machine en deze actief is in azure, moet u er rekening mee houden dat het uitschakelen van de beveiliging geen invloed heeft op de failover van de virtuele machine.
 
 1. Op de bron-Hyper-V-hostserver om de replicatie voor de virtuele machine te verwijderen. Vervang SQLVM1 door de naam van uw virtuele machine en voer het script uit vanuit een beheer-Power shell
 
@@ -195,8 +196,11 @@ Hyper-V-hosts die niet door VMM worden beheerd, worden in een Hyper-V-site verza
      > Als u de optie **verwijderen** hebt gekozen, voert u de volgende scripts uit om de on-premises VMM-server van de replicatie-instellingen op te schonen.
 3. Voer dit script uit op de Bron-VMM-server met behulp van Power shell (beheerders bevoegdheden vereist) van de VMM-console. Vervang de tijdelijke aanduiding **SQLVM1** door de naam van uw virtuele machine.
 
-        $vm = get-scvirtualmachine -Name "SQLVM1"
-        Set-SCVirtualMachine -VM $vm -ClearDRProtection
+    ```powershell
+    $vm = get-scvirtualmachine -Name "SQLVM1"
+    Set-SCVirtualMachine -VM $vm -ClearDRProtection
+    ```
+
 4. Met de bovenstaande stappen worden de replicatie-instellingen op de VMM-Server gewist. Als u de replicatie voor de virtuele machine die wordt uitgevoerd op de Hyper-V-hostserver wilt stoppen, voert u dit script uit. Vervang SQLVM1 door de naam van uw virtuele machine en host01.contoso.com met de naam van de Hyper-V-hostserver.
 
 ```powershell
@@ -219,17 +223,21 @@ Hyper-V-hosts die niet door VMM worden beheerd, worden in een Hyper-V-site verza
 
 3. Voer dit script uit op de Bron-VMM-server met behulp van Power shell (beheerders bevoegdheden vereist) van de VMM-console. Vervang de tijdelijke aanduiding **SQLVM1** door de naam van uw virtuele machine.
 
-        $vm = get-scvirtualmachine -Name "SQLVM1"
-        Set-SCVirtualMachine -VM $vm -ClearDRProtection
+    ```powershell
+    $vm = get-scvirtualmachine -Name "SQLVM1"
+    Set-SCVirtualMachine -VM $vm -ClearDRProtection
+    ```
+
 4. Voer dit script uit op de secundaire VMM-server om de instellingen voor de secundaire virtuele machine op te schonen:
 
-        $vm = get-scvirtualmachine -Name "SQLVM1"
-        Remove-SCVirtualMachine -VM $vm -Force
+    ```powershell
+    $vm = get-scvirtualmachine -Name "SQLVM1"
+    Remove-SCVirtualMachine -VM $vm -Force
+    ```
+
 5. Vernieuw de virtuele machines op de Hyper-V-hostserver op de secundaire VMM-server, zodat de secundaire virtuele machine weer wordt gedetecteerd in de VMM-console.
 6. In de bovenstaande stappen worden de replicatie-instellingen op de VMM-Server gewist. Als u de replicatie voor de virtuele machine wilt stoppen, voert u het volgende script uit om de primaire en secundaire Vm's uit te voeren. Vervang SQLVM1 door de naam van uw virtuele machine.
 
-        Remove-VMReplication –VMName “SQLVM1”
-
-
-
-
+    ```powershell
+    Remove-VMReplication –VMName "SQLVM1"
+    ```

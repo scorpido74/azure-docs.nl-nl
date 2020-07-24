@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: guybo
-ms.openlocfilehash: f700dec6486bad9e7024d7c908a70dd0ff2b342c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc18c278754afd4bb08d564a2f82680fd94bf866
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80066762"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082576"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Informatie over niet-goedgekeurde distributies
 
@@ -24,17 +24,18 @@ Alle distributies die worden uitgevoerd op Azure, hebben een aantal vereisten. D
 
 U wordt aangeraden te beginnen met een van de [Linux in azure goedgekeurde distributies](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). In de volgende artikelen wordt uitgelegd hoe u de verschillende getekende Linux-distributies die worden ondersteund op Azure voorbereidt:
 
-* **[Distributies op basis van CentOS](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[Debian Linux](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[Oracle Linux](oracle-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[SLES en OpenSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+- [CentOS-distributies](create-upload-centos.md)
+- [Debian Linux](debian-create-upload-vhd.md)
+- [Flatcar Container Linux](flatcar-create-upload-vhd.md)
+- [Oracle Linux](oracle-create-upload-vhd.md)
+- [Red Hat Enterprise Linux](redhat-create-upload-vhd.md)
+- [SLES en OpenSUSE](suse-create-upload-vhd.md)
+- [Ubuntu](create-upload-ubuntu.md)
 
 Dit artikel richt zich op algemene richt lijnen voor het uitvoeren van uw Linux-distributie op Azure.
 
 ## <a name="general-linux-installation-notes"></a>Algemene Linux-installatie notities
-* De indeling van de virtuele harde schijf (VHDX) van Hyper-V wordt niet ondersteund in azure, alleen *vaste VHD*.  U kunt de schijf converteren naar VHD-indeling met behulp van Hyper-V-beheer of de cmdlet [Convert-VHD](https://docs.microsoft.com/powershell/module/hyper-v/convert-vhd) . Als u VirtualBox gebruikt, selecteert u **vaste grootte** in plaats van de standaard waarde (dynamisch toegewezen) bij het maken van de schijf.
+* De indeling van de virtuele harde schijf (VHDX) van Hyper-V wordt niet ondersteund in azure, alleen *vaste VHD*.  U kunt de schijf converteren naar VHD-indeling met behulp van Hyper-V-beheer of de cmdlet [Convert-VHD](/powershell/module/hyper-v/convert-vhd) . Als u VirtualBox gebruikt, selecteert u **vaste grootte** in plaats van de standaard waarde (dynamisch toegewezen) bij het maken van de schijf.
 * Azure biedt ondersteuning voor gen1 (BIOS Boot) & Gen2 (UEFI boot) virtuele machines.
 * De maximale grootte die is toegestaan voor de VHD is 1.023 GB.
 * Bij de installatie van het Linux-systeem raden we u aan om standaard partities te gebruiken in plaats van Logical Volume Manager (LVM). Dit is de standaard instelling voor veel installaties. Het gebruik van standaard partities voor komt dat LVM naam strijdig is met gekloonde Vm's, met name als een besturingssysteem schijf ooit is gekoppeld aan een andere identieke virtuele machine voor het oplossen van problemen. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) of [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) kan worden gebruikt op gegevens schijven.
@@ -66,7 +67,7 @@ VHD-installatie kopieën in azure moeten een virtuele grootte hebben die is afge
 
 * De VHD http: \/ / \<mystorageaccount> . blob.core.Windows.net/VHDs/MyLinuxVM.VHD heeft een niet-ondersteunde virtuele grootte van 21475270656 bytes. De grootte moet een geheel getal zijn (in MB).
 
-In dit geval kunt u de grootte van de virtuele machine wijzigen met de Hyper-V-beheer console of met de Power shell [-cmdlet resize-VHD](https://technet.microsoft.com/library/hh848535.aspx) .  Als u niet in een Windows-omgeving wordt uitgevoerd, raden we u `qemu-img` aan om (indien nodig) te converteren en de grootte van de VHD te wijzigen.
+In dit geval kunt u de grootte van de virtuele machine wijzigen met de Hyper-V-beheer console of met de Power shell [-cmdlet resize-VHD](/powershell/module/hyper-v/resize-vhd?view=win10-ps) .  Als u niet in een Windows-omgeving wordt uitgevoerd, raden we u `qemu-img` aan om (indien nodig) te converteren en de grootte van de VHD te wijzigen.
 
 > [!NOTE]
 > Er is een [bekende fout in qemu-img-](https://bugs.launchpad.net/qemu/+bug/1490611) versies >= 2.2.1 dat resulteert in een VHD met een onjuiste indeling. Het probleem is opgelost in QEMU 2,6. We raden u `qemu-img` aan om 2.2.0 of lager of 2,6 of hoger te gebruiken.
@@ -189,4 +190,3 @@ De [Azure Linux-agent](../extensions/agent-linux.md) `waagent` richt zich op een
    > Op VirtualBox ziet u mogelijk de volgende fout na het uitvoeren van de `waagent -force -deprovision` tekst `[Errno 5] Input/output error` . Dit fout bericht is niet kritiek en kan worden genegeerd.
 
 * Sluit de virtuele machine af en upload de VHD naar Azure.
-

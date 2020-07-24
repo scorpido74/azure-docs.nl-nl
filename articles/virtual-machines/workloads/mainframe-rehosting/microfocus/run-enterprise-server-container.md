@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: 3cc561a7f7f6f58c439a70315eba857e63def09d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d266dbd0ee908c41a7d29ddbb6d9c73fcfdc7c9e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85561314"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083460"
 ---
 # <a name="run-micro-focus-enterprise-server-50-in-a-docker-container-on-azure"></a>Micro Focus Enter prise Server 5,0 uitvoeren in een docker-container in azure
 
@@ -171,6 +171,6 @@ Dat is alles. Nu voert u een CICS-toepassing uit en beheert u deze in een docker
 
 ## <a name="next-steps"></a>Volgende stappen
 
--   [Micro Focus Enter prise Server 5,0 en Enter prise Developer 5,0 op Azure installeren](https://docs.microsoft.com/azure/virtual-machines/workloads/mainframe-rehosting/microfocus/set-up-micro-focus-azure)
+-   [Micro Focus Enter prise Server 5,0 en Enter prise Developer 5,0 op Azure installeren](./set-up-micro-focus-azure.md)
 
--   [Migratie van mainframetoepassingen](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/application-strategies)
+-   [Migratie van mainframetoepassingen](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/application-strategies)

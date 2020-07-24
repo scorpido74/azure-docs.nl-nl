@@ -7,28 +7,26 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/19/2018
 ms.author: yushwang
-ms.openlocfilehash: ec370ca3aa8d89111dcb4737701c7ea58cd48195
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f693f6a40b87d024430c7626736fab0d0a032238
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84986101"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081998"
 ---
 # <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>Voorbeeld configuratie: Cisco ASA-apparaat (IKEv2/geen BGP)
 In dit artikel vindt u voor beelden van configuraties voor het koppelen van Cisco Adaptive Security Appliance-apparaten (ASA) aan Azure VPN-gateways. Het voor beeld is van toepassing op Cisco ASA-apparaten met IKEv2 zonder de Border Gateway Protocol (BGP). 
 
 ## <a name="device-at-a-glance"></a>Apparaat in één oogopslag
 
-|                        |                                   |
-| ---                    | ---                               |
-| Leverancier van apparaat          | Cisco                             |
-| Apparaatmodel           | ASA                               |
-| Doel versie         | 8,4 en hoger                     |
-| Getest model           | ASA 5505                          |
-| Geteste versie         | 9,2                               |
-| IKE-versie            | IKEv2                             |
-| BGP                    | No                                |
-| Azure VPN-gateway type | Op route gebaseerde VPN-gateway           |
-|                        |                                   |
+* Leverancier van apparaat: **Cisco**
+* Model apparaat: **ASA**           
+* Doel versie: **8,4 en hoger**
+* Getest model: **ASA 5505**
+* Geteste versie: **9,2**             
+* IKE-versie: **IKEv2**                  
+* BGP: **Nee**      
+* Azure VPN-gateway type: **op route gebaseerde VPN-gateway**
 
 > [!NOTE]
 > De voorbeeld configuratie verbindt een Cisco ASA-apparaat met een **op Azure route gebaseerde** VPN-gateway. De verbinding maakt gebruik van een aangepast IPsec/IKE-beleid met de optie **UsePolicyBasedTrafficSelectors** , zoals beschreven in [dit artikel](vpn-gateway-connect-multiple-policybased-rm-ps.md).

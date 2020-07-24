@@ -6,11 +6,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 133e89bd9187ae5e48fa208b407678760d31adfd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51edbc18a929f4f954fb1a582a417bc1600d1a6f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78163757"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082984"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>Power shell-Azure Functions lokaal debuggen
 
@@ -37,7 +38,7 @@ PSFunctionApp
  | - profile.ps1
 ```
 
-Deze functie-app is vergelijkbaar met de toepassing die u krijgt wanneer u de [Power shell-Snelstartgids](functions-create-first-function-powershell.md)voltooit.
+Deze functie-app is vergelijkbaar met de toepassing die u krijgt wanneer u de [Power shell-Snelstartgids](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell)voltooit.
 
 De functie code `run.ps1` ziet eruit als in het volgende script:
 
@@ -91,10 +92,10 @@ Met `Wait-Debugger` deze functie kunt u nu fouten opsporen in de functies met be
 Als u fouten wilt opsporen in uw Power shell-functies in Visual Studio code, moet u het volgende hebben geïnstalleerd:
 
 * [Power shell-extensie voor Visual Studio code](/powershell/scripting/components/vscode/using-vscode)
-* [Azure Functions extension for Visual Studio Code](functions-create-first-function-vs-code.md) (Azure Functions-extensie voor Visual Studio Code)
+* [Azure Functions-extensie voor Visual Studio Code](functions-create-first-function-vs-code.md)
 * [Power shell Core 6,2 of hoger](/powershell/scripting/install/installing-powershell-core-on-windows)
 
-Na het installeren van deze afhankelijkheden, laadt u een bestaand Power shell functions-project of [maakt u uw eerste Power shell functions-project](functions-create-first-function-powershell.md).
+Na het installeren van deze afhankelijkheden, laadt u een bestaand Power shell functions-project of [maakt u uw eerste Power shell functions-project](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell).
 
 >[!NOTE]
 > Als uw project niet de benodigde configuratie bestanden heeft, wordt u gevraagd deze toe te voegen.

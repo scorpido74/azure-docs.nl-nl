@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 57ec22cb02512577f8737718cae9175403fb5603
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 627eca1f9a775f12fc9d504629c2a3abbcc919a7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74900887"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084497"
 ---
 # <a name="manage-streaming-endpoints-with-the-azure-portal"></a>Streaming-eindpunten beheren met de Azure-portal 
 
@@ -66,7 +67,7 @@ Met streaming-eind punt kunt u de volgende eigenschappen configureren:
 * Cachebeheer
 * Beleid voor meerdere sites-toegang
 
-Zie [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint)voor meer informatie over deze eigenschappen.
+Zie [StreamingEndpoint](/rest/api/media/operations/streamingendpoint)voor meer informatie over deze eigenschappen.
 
 >[!NOTE]
 >Wanneer CDN is ingeschakeld, hebt u geen toegang tot IP-toegang. IP-toegang is alleen van toepassing als u geen CDN hebt.
@@ -121,4 +122,3 @@ Media Services-leertrajecten bekijken.
 
 ## <a name="provide-feedback"></a>Feedback geven
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

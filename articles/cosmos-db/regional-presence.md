@@ -7,16 +7,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 78f02c07932c6a058ba4fa27289640b7efd56169
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2242e8febad5d55813721266f1286250af47111
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85113667"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082882"
 ---
 # <a name="regional-presence-with-azure-cosmos-db"></a>Regionale aanwezigheid met Azure Cosmos DB
 
-Azure Cosmos DB is een Foundational service in Azure en is standaard altijd beschikbaar in alle regio's, waar Azure beschikbaar is. Azure is momenteel beschikbaar in [54 regio's](https://azure.microsoft.com/global-infrastructure/regions/) wereld wijd. 
+Azure Cosmos DB is een Foundational service in Azure en is standaard altijd beschikbaar in [alle regio's waar Azure beschikbaar is](https://azure.microsoft.com/global-infrastructure/services/?products=cosmos-db&regions=all).
 
 :::image type="content" source="./media/regional-presence/regional-presence.png" alt-text="Regio's waar Azure Cosmos DB beschikbaar is" lightbox="./media/regional-presence/regional-presence.png" border="false":::
 
@@ -26,7 +26,7 @@ Cosmos DB is beschikbaar in alle vijf verschillende Azure-Cloud omgevingen die b
 
 * **Azure China 21vianet** is beschikbaar via een unieke samen werking tussen micro soft en 21vianet, een van de grootste Internet providers van het land in China.
 
-* **Azure Duitsland** biedt services onder een model van de gegevens beheerder, wat ervoor zorgt dat klant gegevens in Duitsland blijven, onder controle van T-Systems International GmbH, een dochter onderneming van Deutsche Telecom, die fungeert als de Duitse gegevens beheerder.
+* **Azure Duitsland** biedt services onder een model van de gegevens beheerder, wat ervoor zorgt dat klant gegevens in Duitsland blijven onder controle van T-Systems International GmbH, een dochter onderneming van Deutsche Telekom, die fungeert als de Duitse gegevens beheerder.
 
 * **Azure Government** is beschikbaar in vier regio's van de Verenigde Staten naar overheids instanties van de Verenigde Staten en hun partners. 
 
@@ -37,6 +37,8 @@ Cosmos DB is beschikbaar in alle vijf verschillende Azure-Cloud omgevingen die b
 Alle Api's die worden weer gegeven door Azure Cosmos DB (inclusief SQL, MongoDB, Cassandra, Gremlin en Table) zijn standaard beschikbaar in alle Azure-regio's. U kunt bijvoorbeeld MongoDB-en Cassandra-Api's weer gegeven door Azure Cosmos DB niet alleen in alle wereld wijde Azure-regio's, maar ook in soevereine Clouds, zoals China, Duitsland, overheids instellingen en DoD-regio's (Ministerie van defensie).
 
 Azure Cosmos DB is een [wereld wijd gedistribueerde](distribute-data-globally.md) database service. U kunt een wille keurig aantal Azure-regio's koppelen aan uw Azure Cosmos-account en uw gegevens worden automatisch en transparant gerepliceerd. U kunt op elk gewenst moment een regio toevoegen aan of verwijderen uit uw Azure Cosmos-account. Met de kant-en-klare wereld wijde distributie en het replicatie protocol met meerdere masters biedt Azure Cosmos DB minder dan 10 MS Lees-en schrijf latenties voor het 99e-percentiel, 99,999 Lees-en schrijf beschikbaarheid en de mogelijkheid om de ingerichte door Voer voor lees-en schrijf bewerkingen op een elastische schaal te schalen voor alle regio's die zijn gekoppeld aan uw Azure Cosmos-account. Azure Cosmos DB biedt ook vijf goed gedefinieerde consistentie modellen en u kunt ervoor kiezen om een specifiek consistentie model toe te passen op uw gegevens. Ten slotte is Azure Cosmos DB de enige database service in de branche met een uitgebreide [Service Level Agreement (Sla)](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/) die voorziet in de ingerichte door Voer, latentie bij het 99e percentiel, hoge Beschik baarheid en consistentie. De bovenstaande mogelijkheden zijn beschikbaar in alle Azure-Clouds.
+
+Ondersteuning van globale replicatie is binnen een Azure-cloud omgeving. Azure Cosmos DB accounts in *Azure Public* kunnen bijvoorbeeld worden gerepliceerd naar een Azure-regio in *Azure Public* , maar kunnen niet worden gerepliceerd naar Azure-regio's in *Azure China 21vianet*.
 
 ## <a name="next-steps"></a>Volgende stappen
 

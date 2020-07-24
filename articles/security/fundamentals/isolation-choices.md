@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 9cb516b6d13b4b57a89bb276683857c62a758618
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0bcc67e80861df2827237298444175c3abdb6602
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84021871"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084042"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Isolatie in de open bare Azure-Cloud
 
@@ -63,9 +64,9 @@ Het concept van Tenant containers is diep gekorreld in de Directory service op a
 
 Zelfs wanneer meta gegevens van meerdere Azure Active Directory tenants op dezelfde fysieke schijf worden opgeslagen, is er geen relatie tussen de containers die zijn gedefinieerd door de Directory service, die op zijn beurt door de Tenant beheerder wordt bepaald.
 
-### <a name="azure-role-based-access-control-rbac"></a>Access Control op basis van rollen (RBAC) van Azure
+### <a name="azure-role-based-access-control-azure-rbac"></a>Op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC)
 
-Met [Access Control op basis van rollen (RBAC) van Azure](../../role-based-access-control/overview.md) kunt u verschillende onderdelen delen die beschikbaar zijn binnen een Azure-abonnement door nauw keurig toegangs beheer te bieden voor Azure. Met Azure RBAC kunt u taken binnen uw organisatie scheiden en toegang verlenen op basis van wat gebruikers nodig hebben om hun taken uit te voeren. In plaats van iedereen onbeperkte machtigingen in een Azure-abonnement of-resources te geven, kunt u alleen bepaalde acties toestaan.
+Met op [rollen gebaseerd toegangs beheer (Azure RBAC) van Azure](../../role-based-access-control/overview.md) kunt u verschillende onderdelen delen die beschikbaar zijn binnen een Azure-abonnement door nauw keurig toegang te bieden voor Azure. Met Azure RBAC kunt u taken binnen uw organisatie scheiden en toegang verlenen op basis van wat gebruikers nodig hebben om hun taken uit te voeren. In plaats van iedereen onbeperkte machtigingen in een Azure-abonnement of-resources te geven, kunt u alleen bepaalde acties toestaan.
 
 Azure RBAC heeft drie basis rollen die van toepassing zijn op alle resource typen:
 
@@ -144,7 +145,7 @@ De Azure Fabric-controller is verantwoordelijk voor het toewijzen van infrastruc
 
 De Azure-Hyper Visor dwingt geheugen en proces scheiding af tussen virtuele machines, en stuurt veilig netwerk verkeer naar gast besturingssysteem tenants. Hiermee elimineert u de kans op een aanval op VM-niveau.
 
-In Azure is de hoofd-VM speciaal: er wordt een harder besturings systeem uitgevoerd dat het basis besturingssysteem wordt genoemd en waarop een infrastructuur agent (FA) wordt gehost. FAs worden gebruikt om gast agenten (GA) in gast-besturings systemen te beheren op virtuele machines van de klant. FAs beheert ook opslag knooppunten.
+In Azure is de hoofd-VM speciaal: er wordt een harder besturings systeem uitgevoerd dat het basis besturingssysteem wordt genoemd en waarop een infrastructuur agent (FA) wordt gehost. FAs worden gebruikt om gast agenten (GA) te beheren binnen gast besturingssystemen op klant-Vm's. FAs beheert ook opslag knooppunten.
 
 De verzameling van Azure Hyper Visor, root OS/FA en de klant-Vm's/GAs bestaat uit een reken knooppunt. FAs worden beheerd door een infra structuur-controller (FC), die zich buiten Compute-en opslag knooppunten bevindt (Compute-en opslag clusters worden beheerd door afzonderlijke FCs). Als een klant het configuratie bestand van de toepassing bijwerkt terwijl deze wordt uitgevoerd, communiceert de FC met de FA, die vervolgens contact maakt met het GAs, die de toepassing van de configuratie wijziging op de hoogte stelt. In het geval van een hardwarestoring wordt de beschik bare hardware automatisch door de FC gevonden en wordt de VM daar opnieuw opgestart.
 
@@ -207,7 +208,7 @@ IP-opslag gegevens kunnen worden beschermd tegen onbevoegde gebruikers via een n
 
 Azure biedt de volgende typen versleuteling om gegevens te beveiligen:
 
-- Versleuteling tijdens overdracht
+- Versleuteling 'in transit'
 - Versleuteling 'at rest'
 
 #### <a name="encryption-in-transit"></a>Versleuteling in transit
@@ -318,4 +319,4 @@ Azure-implementatie heeft meerdere lagen voor netwerk isolatie. In het volgende 
 
 - Meer informatie over [netwerk isolatie opties voor computers in virtuele Windows Azure-netwerken](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/). Dit omvat het klassieke front-end-en back-end-scenario waarbij computers in een bepaald back-end-netwerk of subnetwerk mogelijk alleen toestaan dat bepaalde clients of andere computers verbinding maken met een bepaald eind punt op basis van een lijst met toegestane IP-adressen.
 
-- Meer informatie over de [isolatie van virtuele machines in azure](../../virtual-machines/windows/isolation.md). Azure Compute biedt virtuele machine grootten die zijn geïsoleerd voor een specifiek hardwaretype en die zijn toegewezen aan één klant.
+- Meer informatie over de [isolatie van virtuele machines in azure](../../virtual-machines/isolation.md). Azure Compute biedt virtuele machine grootten die zijn geïsoleerd voor een specifiek hardwaretype en die zijn toegewezen aan één klant.

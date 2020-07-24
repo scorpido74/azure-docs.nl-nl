@@ -7,11 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 04/12/2017
 ms.author: yushwang
-ms.openlocfilehash: 6896cc268f6472b1816608067340c2c5868a2547
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f75147da49a602cb384a1c0283192214ae32967f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84984635"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082015"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>BGP configureren op Azure VPN-gateways met behulp van Power shell
 Dit artikel begeleidt u stapsgewijs door de stappen voor het inschakelen van BGP op een cross-premises site-naar-site (S2S) VPN-verbinding en een VNet-naar-VNet-verbinding met behulp van het Resource Manager-implementatie model en Power shell.
@@ -44,7 +45,7 @@ Met de configuratie stappen worden de BGP-para meters van de Azure VPN-gateway i
 
 ### <a name="before-you-begin"></a>Voordat u begint
 * Controleer of u een Azure-abonnement hebt. Als u nog geen Azure-abonnement hebt, kunt u [uw voordelen als MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) of [u aanmelden voor een gratis account](https://azure.microsoft.com/pricing/free-trial/).
-* Installeer de Azure Resource Manager Power shell-cmdlets. Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview) voor meer informatie over het installeren van de PowerShell-cmdlets. 
+* Installeer de Azure Resource Manager Power shell-cmdlets. Zie [Azure PowerShell installeren en configureren](/powershell/azure/) voor meer informatie over het installeren van de PowerShell-cmdlets. 
 
 ### <a name="step-1---create-and-configure-vnet1"></a>Stap 1: VNet1 maken en configureren
 #### <a name="1-declare-your-variables"></a>1. Declareer de variabelen
@@ -313,4 +314,4 @@ Als u alle drie delen van deze oefening hebt voltooid, hebt u de volgende netwer
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Wanneer de verbinding is voltooid, kunt u virtuele machines aan uw virtuele netwerken toevoegen. Zie [Een virtuele machine maken](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) voor de stappen.
+Wanneer de verbinding is voltooid, kunt u virtuele machines aan uw virtuele netwerken toevoegen. Zie [Een virtuele machine maken](../virtual-machines/windows/quick-create-portal.md) voor de stappen.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/24/2020
 ms.author: radeltch
-ms.openlocfilehash: 4f1bfd58e27f0cd677980ff9351d32d91a68e3e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1de6ce3a653b4ef007c6f8c878cbe2aa49f507ca
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80247432"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085177"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-red-hat-enterprise-linux-for-sap-applications-multi-sid-guide"></a>Hoge Beschik baarheid voor SAP NetWeaver op Azure Vm's op Red Hat Enterprise Linux voor de multi-SID-hand leiding voor SAP-toepassingen
 
@@ -56,7 +56,7 @@ In de voorbeeld configuraties worden installatie opdrachten enz. drie SAP NetWea
 * **NW2**: ASCS-instantie nummer **10** en virtuele hostname **msnw2ascs**; Het ERS-exemplaar nummer is **12** en de naam van de virtuele host **msnw2ers**.  
 * **NW3**: ASCS-instantie nummer **20** en virtuele hostname **msnw3ascs**; Het ERS-exemplaar nummer is **22** en de naam van de virtuele host **msnw3ers**.  
 
-Het artikel heeft geen betrekking op de data base-laag en de implementatie van de SAP NFS-shares. In de voor beelden in dit artikel gebruiken we [Azure NetApp files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes) volume **SAPMSID** voor de NFS-shares, ervan uitgaande dat het volume al is geïmplementeerd. Ook wordt ervan uitgegaan dat het Azure NetApp Files-volume wordt geïmplementeerd met het NFSv3-protocol en dat de volgende bestands paden bestaan voor de cluster bronnen voor de ASCS-en ERS-instanties van SAP Systems NW1, NW2 en NW3:  
+Het artikel heeft geen betrekking op de data base-laag en de implementatie van de SAP NFS-shares. In de voor beelden in dit artikel gebruiken we [Azure NetApp files](../../../azure-netapp-files/azure-netapp-files-create-volumes.md) volume **SAPMSID** voor de NFS-shares, ervan uitgaande dat het volume al is geïmplementeerd. Ook wordt ervan uitgegaan dat het Azure NetApp Files-volume wordt geïmplementeerd met het NFSv3-protocol en dat de volgende bestands paden bestaan voor de cluster bronnen voor de ASCS-en ERS-instanties van SAP Systems NW1, NW2 en NW3:  
 
 * volume sapMSID (nfs://10.42.0.4/sapmnt<b>NW1</b>)
 * volume sapMSID (nfs://10.42.0.4/usrsap<b>NW1</b>ascs)
@@ -106,7 +106,7 @@ Voordat u begint, raadpleegt u eerst de volgende SAP-opmerkingen en-documenten:
 
 De virtuele machines die deel uitmaken van het cluster, moeten de grootte hebben om alle resources te kunnen uitvoeren, voor het geval failover wordt uitgevoerd. Elke SAP-SID kan onafhankelijk van elkaar worden overgenomen in het cluster met hoge Beschik baarheid met meerdere SID'S.  
 
-Voor een hoge Beschik baarheid zijn voor SAP net-Weave Maxi maal beschik bare shares vereist. In deze documentatie bieden we de voor beelden van de SAP-shares die zijn geïmplementeerd op [Azure NETAPP files NFS-volumes](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes). Het is ook mogelijk om de shares te hosten op Maxi maal beschik bare [glusterfs-cluster](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs), dat kan worden gebruikt door meerdere SAP-systemen.  
+Voor een hoge Beschik baarheid zijn voor SAP net-Weave Maxi maal beschik bare shares vereist. In deze documentatie bieden we de voor beelden van de SAP-shares die zijn geïmplementeerd op [Azure NETAPP files NFS-volumes](../../../azure-netapp-files/azure-netapp-files-create-volumes.md). Het is ook mogelijk om de shares te hosten op Maxi maal beschik bare [glusterfs-cluster](./high-availability-guide-rhel-glusterfs.md), dat kan worden gebruikt door meerdere SAP-systemen.  
 
 ![Overzicht van de hoge Beschik baarheid van SAP netweave](./media/high-availability-guide-rhel/ha-rhel-multi-sid.png)
 
@@ -116,7 +116,7 @@ Voor een hoge Beschik baarheid zijn voor SAP net-Weave Maxi maal beschik bare sh
 > [!TIP]
 > De multi-SID clustering van SAP ASCS/ERS is een oplossing met een grotere complexiteit. Het is complexer om te implementeren. Het omvat ook meer administratieve inspanningen wanneer er onderhouds activiteiten worden uitgevoerd (zoals patches van besturings systemen). Voordat u met de daad werkelijke implementatie begint, moet u de implementatie zorgvuldig plannen en alle betrokken onderdelen, zoals Vm's, NFS-koppels, Vip's, load balancer configuraties, enzovoort.  
 
-SAP NetWeaver ASCS, SAP NetWeaver SCS en SAP NetWeaver ERS gebruiken virtuele hostnamen en virtuele IP-adressen. Op Azure is een load balancer vereist voor het gebruik van een virtueel IP-adres. U kunt het beste [standaard Load Balancer](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal)gebruiken.  
+SAP NetWeaver ASCS, SAP NetWeaver SCS en SAP NetWeaver ERS gebruiken virtuele hostnamen en virtuele IP-adressen. Op Azure is een load balancer vereist voor het gebruik van een virtueel IP-adres. U kunt het beste [standaard Load Balancer](../../../load-balancer/quickstart-load-balancer-standard-public-portal.md)gebruiken.  
 
 De volgende lijst bevat de configuratie van de (A) SCS-en ERS-load balancer voor dit multi-SID-cluster voorbeeld met drie SAP-systemen. Voor elk van de Sid's hebt u afzonderlijke frontend-IP-, status controles en taakverdelings regels nodig voor elk ASCS-en ERS-exemplaar. Wijs alle virtuele machines, die deel uitmaken van het ASCS/ASCS-cluster, toe aan één back-end-pool van één ILB.  
 
@@ -162,23 +162,23 @@ De volgende lijst bevat de configuratie van de (A) SCS-en ERS-load balancer voor
   * Verbonden met primaire netwerk interfaces van alle virtuele machines die deel moeten uitmaken van het (A) SCS/ERS-cluster
 
 > [!Note]
-> Wanneer Vm's zonder open bare IP-adressen in de back-endadresgroep van intern (geen openbaar IP-adres load balancer) worden geplaatst, is er geen uitgaande Internet verbinding, tenzij er aanvullende configuratie wordt uitgevoerd om route ring naar open bare eind punten toe te staan. Zie [connectiviteit van open bare eind punten voor virtual machines met behulp van Azure Standard Load Balancer in scenario's met hoge Beschik baarheid voor SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)voor meer informatie over het bezorgen van uitgaande verbindingen.  
+> Wanneer Vm's zonder open bare IP-adressen in de back-endadresgroep van intern (geen openbaar IP-adres load balancer) worden geplaatst, is er geen uitgaande Internet verbinding, tenzij er aanvullende configuratie wordt uitgevoerd om route ring naar open bare eind punten toe te staan. Zie [connectiviteit van open bare eind punten voor virtual machines met behulp van Azure Standard Load Balancer in scenario's met hoge Beschik baarheid voor SAP](./high-availability-guide-standard-load-balancer-outbound-connections.md)voor meer informatie over het bezorgen van uitgaande verbindingen.  
 
 > [!IMPORTANT]
-> Schakel TCP-tijds tempels niet in op virtuele Azure-machines die achter Azure Load Balancer worden geplaatst. Door TCP-tijds tempels in te scha kelen, mislukken de status controles. Stel para meter **net. IPv4. tcp_timestamps** in op **0**. Zie [Load Balancer Health probe](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)(Engelstalig) voor meer informatie.
+> Schakel TCP-tijds tempels niet in op virtuele Azure-machines die achter Azure Load Balancer worden geplaatst. Door TCP-tijds tempels in te scha kelen, mislukken de status controles. Stel para meter **net. IPv4. tcp_timestamps** in op **0**. Zie [Load Balancer Health probe](../../../load-balancer/load-balancer-custom-probe-overview.md)(Engelstalig) voor meer informatie.
 
 ## <a name="sap-shares"></a>SAP-shares
 
-Voor SAP NetWeaver is gedeelde opslag vereist voor het Trans Port, de profielmap, enzovoort. Voor Maxi maal beschik bare SAP-systemen is het belang rijk dat u beschikt over Maxi maal beschik bare shares. U moet beslissen over de architectuur van uw SAP-shares. Een optie is het implementeren van de shares op [Azure NETAPP files NFS-volumes](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes).  Met Azure NetApp Files krijgt u ingebouwde hoge Beschik baarheid voor de SAP NFS-shares.
+Voor SAP NetWeaver is gedeelde opslag vereist voor het Trans Port, de profielmap, enzovoort. Voor Maxi maal beschik bare SAP-systemen is het belang rijk dat u beschikt over Maxi maal beschik bare shares. U moet beslissen over de architectuur van uw SAP-shares. Een optie is het implementeren van de shares op [Azure NETAPP files NFS-volumes](../../../azure-netapp-files/azure-netapp-files-create-volumes.md).  Met Azure NetApp Files krijgt u ingebouwde hoge Beschik baarheid voor de SAP NFS-shares.
 
-Een andere mogelijkheid is om [glusterfs te bouwen op virtuele machines in azure op Red Hat Enterprise Linux voor SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs), die kan worden gedeeld tussen meerdere SAP-systemen. 
+Een andere mogelijkheid is om [glusterfs te bouwen op virtuele machines in azure op Red Hat Enterprise Linux voor SAP NetWeaver](./high-availability-guide-rhel-glusterfs.md), die kan worden gedeeld tussen meerdere SAP-systemen. 
 
 ## <a name="deploy-the-first-sap-system-in-the-cluster"></a>Het eerste SAP-systeem in het cluster implementeren
 
 Nu u de architectuur van de SAP-shares hebt bepaald, implementeert u het eerste SAP-systeem in het cluster en volgt u de bijbehorende documentatie.
 
-* Als u Azure NetApp Files NFS-volumes gebruikt, volgt u [Azure-vm's hoge Beschik baarheid voor SAP NetWeaver op Red Hat Enterprise Linux met Azure NetApp files voor SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)  
-* Als u GlusterFS-cluster gebruikt, volgt u [glusterfs op virtuele machines van Azure op Red Hat Enterprise Linux voor SAP net-Weaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs).  
+* Als u Azure NetApp Files NFS-volumes gebruikt, volgt u [Azure-vm's hoge Beschik baarheid voor SAP NetWeaver op Red Hat Enterprise Linux met Azure NetApp files voor SAP-toepassingen](./high-availability-guide-rhel-netapp-files.md)  
+* Als u GlusterFS-cluster gebruikt, volgt u [glusterfs op virtuele machines van Azure op Red Hat Enterprise Linux voor SAP net-Weaver](./high-availability-guide-rhel-glusterfs.md).  
 
 De documenten die hierboven worden weer gegeven, begeleiden u bij de stappen voor het voorbereiden van de benodigde infra structuur, het bouwen van het cluster, het voorbereiden van het besturings systeem voor het uitvoeren van de SAP-toepassing.  
 
@@ -204,7 +204,7 @@ In deze documentatie wordt ervan uitgegaan dat:
 
 ### <a name="prepare-for-sap-netweaver-installation"></a>Voorbereiden op SAP NetWeaver-installatie
 
-1. Voeg configuratie toe voor het zojuist geïmplementeerde systeem ( **NW2**, **NW3**) aan de bestaande Azure Load Balancer, gevolgd door de instructies om [Azure Load Balancer hand matig te implementeren via Azure Portal](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files#deploy-linux-manually-via-azure-portal). Pas de IP-adressen, de status test poorten en de taakverdelings regels voor uw configuratie aan.  
+1. Voeg configuratie toe voor het zojuist geïmplementeerde systeem ( **NW2**, **NW3**) aan de bestaande Azure Load Balancer, gevolgd door de instructies om [Azure Load Balancer hand matig te implementeren via Azure Portal](./high-availability-guide-rhel-netapp-files.md#deploy-linux-manually-via-azure-portal). Pas de IP-adressen, de status test poorten en de taakverdelings regels voor uw configuratie aan.  
 
 2. **[A]** naam omzetting voor de extra SAP-systemen. U kunt de DNS-server gebruiken of wijzigen `/etc/hosts` op alle knoop punten. In dit voor beeld ziet u hoe u het `/etc/hosts` bestand gebruikt.  Pas de IP-adressen en de hostnamen aan uw omgeving aan. 
 
@@ -247,8 +247,8 @@ In deze documentatie wordt ervan uitgegaan dat:
 
    Update bestand `/etc/fstab` met de bestands systemen voor de extra SAP-systemen die u naar het cluster implementeert.  
 
-   * Als u Azure NetApp Files gebruikt, volgt u de instructies [hier](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files#prepare-for-sap-netweaver-installation)  
-   * Als u GlusterFS-cluster gebruikt, volgt u de instructies [hier](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel#prepare-for-sap-netweaver-installation)  
+   * Als u Azure NetApp Files gebruikt, volgt u de instructies [hier](./high-availability-guide-rhel-netapp-files.md#prepare-for-sap-netweaver-installation)  
+   * Als u GlusterFS-cluster gebruikt, volgt u de instructies [hier](./high-availability-guide-rhel.md#prepare-for-sap-netweaver-installation)  
 
 ### <a name="install-ascs--ers"></a>ASCS/ERS installeren
 
@@ -602,17 +602,17 @@ In deze documentatie wordt ervan uitgegaan dat:
 
 Voltooi uw SAP-installatie door:
 
-* [Uw SAP NetWeaver-toepassings servers voorbereiden](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files#2d6008b0-685d-426c-b59e-6cd281fd45d7)
-* [Een DBMS-exemplaar installeren](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files#install-database)
-* [Een primaire SAP-toepassings server installeren](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files#sap-netweaver-application-server-installation)
+* [Uw SAP NetWeaver-toepassings servers voorbereiden](./high-availability-guide-rhel-netapp-files.md#2d6008b0-685d-426c-b59e-6cd281fd45d7)
+* [Een DBMS-exemplaar installeren](./high-availability-guide-rhel-netapp-files.md#install-database)
+* [Een primaire SAP-toepassings server installeren](./high-availability-guide-rhel-netapp-files.md#sap-netweaver-application-server-installation)
 * Een of meer extra SAP-toepassings exemplaren installeren
 
 ## <a name="test-the-multi-sid-cluster-setup"></a>De multi-SID-cluster installatie testen
 
 De volgende tests zijn een subset van de test cases in de best practices-richt lijnen van Red Hat. Ze zijn opgenomen voor uw gemak. Raadpleeg de volgende documentatie voor een volledige lijst met cluster tests:
 
-* Als u Azure NetApp Files NFS-volumes gebruikt, volgt u [Azure-vm's hoge Beschik baarheid voor SAP NetWeaver op RHEL met Azure NetApp files voor SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
-* Als u Maxi maal beschikbaar `GlusterFS` wilt gebruiken, volgt u [Azure-vm's hoge beschik BAARHEID voor SAP NetWeaver op RHEL voor SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel).  
+* Als u Azure NetApp Files NFS-volumes gebruikt, volgt u [Azure-vm's hoge Beschik baarheid voor SAP NetWeaver op RHEL met Azure NetApp files voor SAP-toepassingen](./high-availability-guide-rhel-netapp-files.md)
+* Als u Maxi maal beschikbaar `GlusterFS` wilt gebruiken, volgt u [Azure-vm's hoge beschik BAARHEID voor SAP NetWeaver op RHEL voor SAP-toepassingen](./high-availability-guide-rhel.md).  
 
 Lees altijd de hand leidingen voor de best practices voor Red Hat en voer alle extra tests uit die mogelijk zijn toegevoegd.  
 De tests die worden weer gegeven, bevinden zich in een twee knoop punt, multi-SID-cluster waarop drie SAP-systemen zijn geïnstalleerd.  

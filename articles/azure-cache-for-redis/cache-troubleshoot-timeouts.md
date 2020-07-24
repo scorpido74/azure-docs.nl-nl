@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.openlocfilehash: a5c5c80aaba083b0f65ac0dab41350765a8f5631
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d9360a4b5c5f0ef080b3de2a9d425bcdf2b2e70
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833754"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081896"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Problemen met time-outs voor Azure Cache voor Redis oplossen
 
@@ -30,7 +30,7 @@ Met Azure cache voor redis worden de server software regel matig bijgewerkt als 
 
 ## <a name="stackexchangeredis-timeout-exceptions"></a>Uitzonde ringen voor stack Exchange. redis-out
 
-Stack Exchange. redis maakt gebruik van een configuratie-instelling `synctimeout` met de naam voor synchrone bewerkingen met een standaard waarde van 1000 MS. Als een synchrone aanroep in deze periode niet is voltooid, genereert de stack Exchange. redis-client een time-outfout die vergelijkbaar is met het volgende voor beeld:
+Stack Exchange. redis maakt gebruik van een configuratie-instelling `synctimeout` met de naam voor synchrone bewerkingen met een standaard waarde van 5000 MS. Als een synchrone aanroep in deze periode niet is voltooid, genereert de stack Exchange. redis-client een time-outfout die vergelijkbaar is met het volgende voor beeld:
 
 ```output
     System.TimeoutException: Timeout performing MGET 2728cc84-58ae-406b-8ec8-3f962419f641, inst: 1,mgr: Inactive, queue: 73, qu=6, qs=67, qc=0, wr=1/1, in=0/0 IOCP: (Busy=6, Free=999, Min=2,Max=1000), WORKER (Busy=7,Free=8184,Min=2,Max=8191)
@@ -73,7 +73,7 @@ U kunt de volgende stappen gebruiken om mogelijke hoofd oorzaken te onderzoeken.
 
 1. Zorg ervoor dat uw server en de client toepassing zich in dezelfde regio bevinden als Azure. U krijgt bijvoorbeeld time-outs wanneer uw cache zich in VS-Oost bevindt, maar de client is in VS-West en de aanvraag wordt niet binnen het `synctimeout` interval voltooid of u krijgt time-outs wanneer u fouten wilt opsporen vanuit uw lokale ontwikkel computer. 
 
-    Het is raadzaam om de cache en de client in dezelfde Azure-regio te hebben. Als u een scenario hebt met cross-regio aanroepen, moet u het `synctimeout` interval instellen op een waarde die hoger is dan het standaard interval van 1000 MS door een `synctimeout` eigenschap op te nemen in de Connection String. In het volgende voor beeld ziet u een fragment van een connection string voor stack Exchange. redis van Azure cache voor redis met een `synctimeout` van 2000 MS.
+    Het is raadzaam om de cache en de client in dezelfde Azure-regio te hebben. Als u een scenario hebt met cross-regio aanroepen, moet u het `synctimeout` interval instellen op een waarde die hoger is dan het standaard interval van 5000 MS door een `synctimeout` eigenschap op te nemen in de Connection String. In het volgende voor beeld ziet u een fragment van een connection string voor stack Exchange. redis van Azure cache voor redis met een `synctimeout` van 2000 MS.
 
     ```output
     synctimeout=2000,cachename.redis.cache.windows.net,abortConnect=false,ssl=true,password=...

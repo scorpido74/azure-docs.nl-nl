@@ -7,11 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: 231fbe3a30cc9507ebb9b401bd2fe07a451c59a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d3ab49d0ad24c2b2c8859408ed103178cede5b8b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987685"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082100"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Virtuele netwerken van verschillende implementatie modellen verbinden met behulp van de portal
 
@@ -33,7 +34,7 @@ Als u nog geen virtuele netwerk gateway hebt en u deze niet wilt maken, kunt u i
 
 * Bij deze stappen wordt ervan uitgegaan dat beide VNets al zijn gemaakt. Als u dit artikel als een oefening gebruikt en niet over VNets beschikt, zijn er koppelingen in de stappen die u kunt gebruiken om ze te maken.
 * Controleer of de adresbereiken voor de VNets elkaar niet overlappen of elkaar overlappen met een van de bereiken voor andere verbindingen waarmee de gateways kunnen worden verbonden.
-* Installeer de meest recente Power shell-cmdlets voor Resource Manager en Service Management (klassiek). In dit artikel gebruiken we de Azure Portal en Power shell. Power shell is vereist voor het maken van de verbinding van het klassieke VNet met het Resource Manager-VNet. Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview) voor meer informatie. 
+* Installeer de meest recente Power shell-cmdlets voor Resource Manager en Service Management (klassiek). In dit artikel gebruiken we de Azure Portal en Power shell. Power shell is vereist voor het maken van de verbinding van het klassieke VNet met het Resource Manager-VNet. Zie [Azure PowerShell installeren en configureren](/powershell/azure/) voor meer informatie. 
 
 ### <a name="example-settings"></a><a name="values"></a>Voorbeeldinstellingen
 

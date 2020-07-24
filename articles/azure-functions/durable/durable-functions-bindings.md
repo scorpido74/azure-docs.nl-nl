@@ -4,11 +4,12 @@ description: Triggers en bindingen gebruiken voor de uitbrei ding van de Durable
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 1f42c6c9b0086d49e539040334c83cfc0c6feb42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 899bc3fdc94b8232acd3edf3e0cbab3c481ff8f2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698058"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081845"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Bindingen voor Durable Functions (Azure Functions)
 
@@ -18,7 +19,7 @@ De uitbrei ding [Durable functions](durable-functions-overview.md) introduceert 
 
 Met de Orchestration-trigger kunt u [duurzame Orchestrator-functies](durable-functions-types-features-overview.md#orchestrator-functions)ontwerpen. Deze trigger ondersteunt het starten van nieuwe Orchestrator-functie instanties en het hervatten van bestaande Orchestrator-functie instanties die ' wachten op ' een taak.
 
-Wanneer u de Visual Studio-hulpprogram ma's voor Azure Functions gebruikt, wordt de Orchestration-trigger geconfigureerd met het kenmerk [OrchestrationTriggerAttribute](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.WebJobs.Extensions.DurableTask.OrchestrationTriggerAttribute?view=azure-dotnet) .net.
+Wanneer u de Visual Studio-hulpprogram ma's voor Azure Functions gebruikt, wordt de Orchestration-trigger geconfigureerd met het kenmerk [OrchestrationTriggerAttribute](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.orchestrationtriggerattribute?view=azure-dotnet) .net.
 
 Wanneer u Orchestrator-functies schrijft in script talen (bijvoorbeeld Java script of C#-Scripting), wordt de Orchestration-trigger gedefinieerd door het volgende JSON-object in de `bindings` matrix van de *function.jsin* het bestand:
 
@@ -429,7 +430,7 @@ Zie [syntaxis op basis van functies](durable-functions-dotnet-entities.md#functi
 
 ### <a name="trigger-sample-c-class-based-syntax"></a>Trigger-voor beeld (syntaxis op basis van C#-klasse)
 
-Het volgende voor beeld is een gelijkwaardige implementatie van de `Counter` entiteit met behulp van klassen en methoden.
+Het volgende voorbeeld is een equivalente implementatie van de `Counter`-entiteit met behulp van klassen en methoden.
 
 ```csharp
 [JsonObject(MemberSerialization.OptIn)]
@@ -450,9 +451,9 @@ public class Counter
 }
 ```
 
-De status van deze entiteit is een object van het type `Counter` , dat een veld bevat waarin de huidige waarde van de teller wordt opgeslagen. Als u dit object in de opslag ruimte wilt behouden, wordt het geserialiseerd en gedeserialiseerd door de [JSON.net](https://www.newtonsoft.com/json) -bibliotheek. 
+De status van deze entiteit is een object van het type `Counter`, dat een veld bevat waarin de huidige waarde van de teller wordt opgeslagen. Als u dit object in de opslag ruimte wilt behouden, wordt het geserialiseerd en gedeserialiseerd door de [JSON.net](https://www.newtonsoft.com/json) -bibliotheek. 
 
-Zie [entity branches definiëren](durable-functions-dotnet-entities.md#defining-entity-classes)voor meer informatie over de op klassen gebaseerde syntaxis en hoe u deze kunt gebruiken.
+Zie [Entiteitsklassen definiëren](durable-functions-dotnet-entities.md#defining-entity-classes) voor meer informatie over de op klassen gebaseerde syntaxis en hoe u deze kunt gebruiken.
 
 > [!NOTE]
 > De methode van het functie-invoer punt met het `[FunctionName]` kenmerk *moet* worden gedeclareerd `static` bij het gebruik van entity klassen. Niet-statische toegangs punt methoden kunnen leiden tot meervoudige initialisatie van objecten en mogelijk andere niet-gedefinieerde gedragingen.
@@ -499,7 +500,7 @@ module.exports = df.entity(function(context) {
 ```
 
 > [!NOTE]
-> Duurzame entiteiten zijn beschikbaar in Java script vanaf versie **1.3.0** van het `durable-functions` NPM-pakket.
+> Duurzame entiteiten zijn beschikbaar in JavaScript vanaf versie **1.3.0** van het npm-pakket `durable-functions`.
 
 ## <a name="entity-client"></a>Entiteit-client
 
@@ -633,7 +634,7 @@ module.exports = async function (context) {
 ```
 
 > [!NOTE]
-> Duurzame entiteiten zijn beschikbaar in Java script vanaf versie **1.3.0** van het `durable-functions` NPM-pakket.
+> Duurzame entiteiten zijn beschikbaar in JavaScript vanaf versie **1.3.0** van het npm-pakket `durable-functions`.
 
 <a name="host-json"></a>
 ## <a name="hostjson-settings"></a>host.jsop instellingen

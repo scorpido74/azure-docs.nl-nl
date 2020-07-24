@@ -8,12 +8,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: charwen
-ms.openlocfilehash: b1efaecc0bb857478a6a9f94db33ddaf547f1ac2
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 673c0e7af4be330f3d63d2fe6ed68c73142da5d2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985204"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084803"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>Gelijktijdige ExpressRoute- en site-to-site-verbindingen configureren (klassiek)
 > [!div class="op_single_selector"]
@@ -84,7 +84,7 @@ Er zijn twee sets met procedures waaruit u kunt kiezen om verbindingen te config
 ## <a name="to-create-a-new-virtual-network-and-coexisting-connections"></a><a name="new"></a>Een nieuw virtueel netwerk en naast elkaar bestaande verbindingen maken
 Deze procedure helpt u bij het maken van een VNet en site-naar-site- en ExpressRoute-verbindingen die naast elkaar kunnen worden gebruikt.
 
-1. U moet de meest recente versie van de Azure PowerShell-cmdlets installeren. Zie [How to install and configure Azure PowerShell](/powershell/azure/overview) (Azure PowerShell installeren en configureren) voor meer informatie over het installeren van de PowerShell-cmdlets. Houd er rekening mee dat de cmdlets die u voor deze configuratie gebruikt, mogelijk enigszins afwijken van de cmdlets waarmee u bekend bent. Zorg ervoor dat u de cmdlets gebruikt die in deze instructies worden vermeld. 
+1. U moet de meest recente versie van de Azure PowerShell-cmdlets installeren. Zie [How to install and configure Azure PowerShell](/powershell/azure/) (Azure PowerShell installeren en configureren) voor meer informatie over het installeren van de PowerShell-cmdlets. Houd er rekening mee dat de cmdlets die u voor deze configuratie gebruikt, mogelijk enigszins afwijken van de cmdlets waarmee u bekend bent. Zorg ervoor dat u de cmdlets gebruikt die in deze instructies worden vermeld. 
 2. Maak een schema voor het virtuele netwerk. Zie [Azure Virtual Network-configuratieschema](https://msdn.microsoft.com/library/azure/jj157100.aspx) voor meer informatie over het configuratieschema.
    
     Wanneer u uw schema maakt, moet u de volgende waarden gebruiken:
@@ -215,7 +215,7 @@ Als het gatewaysubnet /27 of groter is en het virtuele netwerk is verbonden via 
 > 
 > 
 
-1. U moet de meest recente versie van de Azure Resource Manager PowerShell-cmdlets installeren. Zie [How to install and configure Azure PowerShell](/powershell/azure/overview) (Azure PowerShell installeren en configureren) voor meer informatie over het installeren van de PowerShell-cmdlets. Houd er rekening mee dat de cmdlets die u voor deze configuratie gebruikt, mogelijk enigszins afwijken van de cmdlets waarmee u bekend bent. Zorg ervoor dat u de cmdlets gebruikt die in deze instructies worden vermeld. 
+1. U moet de meest recente versie van de Azure Resource Manager PowerShell-cmdlets installeren. Zie [How to install and configure Azure PowerShell](/powershell/azure/) (Azure PowerShell installeren en configureren) voor meer informatie over het installeren van de PowerShell-cmdlets. Houd er rekening mee dat de cmdlets die u voor deze configuratie gebruikt, mogelijk enigszins afwijken van de cmdlets waarmee u bekend bent. Zorg ervoor dat u de cmdlets gebruikt die in deze instructies worden vermeld. 
 2. Verwijder de bestaande ExpressRoute- of site-naar-site-VPN-gateway. Gebruik de volgende cmdlet, waarbij u de waarden vervangt door uw eigen waarden.
    
     ```azurepowershell

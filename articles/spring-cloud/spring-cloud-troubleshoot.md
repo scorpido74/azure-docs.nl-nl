@@ -6,11 +6,13 @@ ms.service: spring-cloud
 ms.topic: troubleshooting
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: db5363c5d8adaf29e2c460d9ce36afa2d29ae8e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: b7b3236fe1e4052689657316df851753de7edbe5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791653"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083681"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Veelvoorkomende problemen met Azure lente-Cloud oplossen
 
@@ -106,7 +108,7 @@ Maar als u probeert het Azure lente-Cloud service-exemplaar in te stellen met be
 * Het abonnement is actief.
 * De locatie wordt [ondersteund](spring-cloud-faq.md) door de Azure lente-Cloud.
 * De resource groep voor het exemplaar is al gemaakt.
-* De resource naam voldoet aan de naamgevings regel. De naam mag alleen kleine letters, cijfers en afbreek streepjes bevatten. Het eerste teken moet een letter zijn. Het laatste teken moet een letter of getal zijn. De waarde moet tussen 2 en 32 tekens bevatten.
+* De resource naam voldoet aan de naamgevings regel. De naam mag alleen kleine letters, cijfers en afbreek streepjes bevatten. Het eerste teken moet een letter zijn. Het eerste teken moet een letter of cijfer zijn. De waarde moet tussen 2 en 32 tekens bevatten.
 
 Als u het Azure lente-Cloud service-exemplaar wilt instellen met behulp van de Resource Manager-sjabloon, raadpleegt u eerst [de structuur en de syntaxis van Azure Resource Manager sjablonen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates).
 

@@ -4,11 +4,12 @@ description: Een .NET-zelfstudie waarmee u in Azure een app met meerdere lagen k
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: c7a64e708d860fe9e5832ad3f1375f41f9b86724
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 183f3b6e1231c843c04290024a89c270f0dd0026
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340304"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083936"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>.NET-toepassing met meerdere lagen die Azure Service Bus-wachtrijen gebruikt
 
@@ -27,7 +28,7 @@ In deze zelfstudie zult u de toepassing met meerdere lagen ontwikkelen en uitvoe
 
 In de volgende scherm afbeelding wordt de voltooide toepassing weer gegeven.
 
-![][0]
+![Scherm afbeelding van de verzend pagina van de toepassing.][0]
 
 ## <a name="scenario-overview-inter-role-communication"></a>Scenario-overzicht: communicatie tussen rollen
 Als u een order wilt indienen voor verwerking, moet het front-end UI-onderdeel, dat wordt uitgevoerd in de webrol, communiceren met de logica van de middelste laag, die wordt uitgevoerd in de werkrol. In dit voorbeeld wordt Service Bus Messaging gebruikt voor communicatie tussen de lagen.
@@ -36,7 +37,7 @@ Met behulp van Service Bus Messaging tussen de weblaag en de middelste laag word
 
 Service Bus biedt twee entiteiten ter ondersteuning van Brokered Messaging: wachtrijen en onderwerpen. Met wachtrijen wordt elk bericht dat naar de wachtrij wordt verzonden, verbruikt door een enkele ontvanger. Onderwerpen ondersteunen het patroon voor publiceren/abonneren waarin elk gepubliceerde bericht beschikbaar wordt gesteld aan een abonnement dat bij het onderwerp is geregistreerd. Elk abonnement onderhoudt logisch gezien zijn eigen wachtrij met berichten. Abonnementen kunnen ook worden geconfigureerd met filterregels die de set berichten die wordt doorgegeven aan de abonnementenwachtrij beperken tot berichten die overeenkomen met het filter. In het volgende voorbeeld wordt gebruikgemaakt van Service Bus-wachtrijen.
 
-![][1]
+![Diagram van de communicatie tussen de webrole, het Service Bus en de rol van de werk nemer.][1]
 
 Dit communicatiemechanisme heeft verschillende voordelen ten opzichte van Direct Messaging:
 
@@ -44,7 +45,7 @@ Dit communicatiemechanisme heeft verschillende voordelen ten opzichte van Direct
 * **Herverdeling van taken.** In veel toepassingen varieert de systeembelasting gedurende de tijd, terwijl de benodigde verwerkingstijd voor elke werkeenheid doorgaans constant blijft. Door een wachtrij tussen producenten en consumenten van berichten te plaatsen, hoeft de verbruikende toepassing (de werkrol) alleen te worden ingericht voor het opvangen van een gemiddelde belasting in plaats van een piekbelasting. De lengte van de wachtrij neemt toe of af, al naargelang het binnenkomende verkeer. Dit betekent een rechtstreekse besparing op de kosten voor de benodigde infrastructuur om de toepassingsbelasting te verwerken.
 * **Taak verdeling.** Naarmate het verkeer toeneemt, kunnen meer werkprocessen worden toegevoegd om uit de wachtrij te lezen. Elk bericht worden door slechts één van de werkprocessen verwerkt. Bovendien biedt deze pull-gebaseerde taakverdeling optimaal gebruik van de werkmachines, zelfs als de verwerkingskracht van de werkmachines verschilt en ze op eigen maximale snelheid berichten ophalen. Dit patroon wordt vaak aangeduid als het *concurrerend consumenten*-patroon.
   
-  ![][2]
+  ![Diagram waarin de communicatie tussen de webfunctie, de Service Bus en twee werk rollen wordt weer gegeven.][2]
 
 In de volgende gedeelten wordt de code besproken waarmee deze architectuur wordt geïmplementeerd.
 
@@ -66,24 +67,24 @@ Vervolgens voegt u code toe waarmee items worden verzonden naar een Service Bus-
    Klik in het menu **Bestand** van Visual Studio op **Nieuw** en klik vervolgens op **Project**.
 2. Klik vanuit **Geïnstalleerde sjablonen** onder **Visual C#** op **Cloud** en klik vervolgens op **Azure Cloud Service**. Geef het project de naam **MultiTierApp**. Klik vervolgens op **OK**.
    
-   ![][9]
+   ![Scherm afbeelding van het dialoog venster Nieuw project met geselecteerde Cloud en Azure Cloud service Visual C# gemarkeerd en in het rood beschreven.][9]
 3. Dubbelklik in het deelvenster **Rollen** op **ASP.NET-webrol**.
    
-   ![][10]
+   ![Scherm afbeelding van het dialoog venster nieuwe Microsoft Azure Cloud service met geselecteerde ASP.NET en WebRole1 ook geselecteerd.][10]
 4. Beweeg de muisaanwijzer over **WebRole1** onder **Azure Cloud Service-oplossing**, klik op het potloodpictogram en wijzig de naam van de webrol in **FrontendWebRole**. Klik vervolgens op **OK**. (Zorg ervoor dat u 'Frontend' invoert met een kleine letter 'e', dus niet 'FrontEnd'.)
    
-   ![][11]
+   ![Scherm afbeelding van het dialoog venster nieuwe Microsoft Azure Cloud service met de naam van de oplossing die is gewijzigd in FrontendWebRole.][11]
 5. Klik in het dialoogvenster **Nieuw ASP.NET-project** in de lijst **Een sjabloon selecteren** op **MVC**.
    
-   ![][12]
+   ![Screenshotof het nieuwe dialoog venster ASP.NET-project met MVC gemarkeerd en in rood en de optie voor het wijzigen van de verificatie rood.][12]
 6. Klik nog steeds vanuit het dialoogvenster **Nieuw ASP.NET-project** op de knop **Verificatie wijzigen**. Zorg dat in het dialoogvenster **Verificatie wijzigen** de optie **Geen verificatie** is geselecteerd en klik vervolgens op **OK**. In deze zelfstudie implementeert u een app waarvoor geen gebruikersaanmelding nodig is.
    
-    ![][16]
+    ![Scherm afbeelding van het dialoog venster verificatie wijzigen met de optie geen verificatie geselecteerd en in rood beschreven.][16]
 7. Ga terug naar het dialoogvenster **Nieuw ASP.NET-project** en klik op **OK** om het project te maken.
 8. Klik in **Solution Explorer** in het project **FrontendWebRole** met de rechtermuisknop op **Verwijzingen** en klik vervolgens op **NuGet-pakketten beheren**.
 9. Klik op het tabblad **Bladeren** en zoek vervolgens naar **WindowsAzure.ServiceBus**. Selecteer het **WindowsAzure.ServiceBus**-pakket, klik op **Installeren** en accepteer de gebruiksvoorwaarden.
    
-   ![][13]
+   ![Scherm afbeelding van het dialoog venster NuGet-pakketten beheren met de WindowsAzure. ServiceBus gemarkeerd en de installatie optie in een rood kader.][13]
    
    Na de installatie wordt verwezen naar de vereiste clientassembly's en zijn enkele nieuwe codebestanden toegevoegd.
 10. Klik in **Solution Explorer** met de rechtermuisknop op **Modellen** en klik achtereenvolgens op **Toevoegen** en **Klasse**. Typ in het vak **Naam** de naam **OnlineOrder.cs**. Klik vervolgens op **Toevoegen**.
@@ -165,16 +166,16 @@ In dit gedeelte maakt u de verschillende pagina's die door uw toepassing worden 
 4. Klik in het menu **Bouwen** op **Oplossing opbouwen** om de juistheid van uw werk tot nu toe te controleren.
 5. Maak nu de weergave voor de methode voor `Submit()` die u eerder hebt gemaakt. Klik met de rechtermuisknop in de methode voor `Submit()` (de overbelasting van `Submit()` waarvoor geen parameters zijn vereist) en kies vervolgens **Weergave toevoegen**.
    
-   ![][14]
+   ![Scherm afbeelding van de code met de focus op de methode Submit en een vervolg keuzelijst met de optie weer gave toevoegen gemarkeerd.][14]
 6. Een dialoogvenster voor het maken van de weergave wordt weergegeven. Kies **Maken** in de lijst **Sjabloon**. Selecteer in de lijst **Modelklasse** de klasse **OnlineOrder**.
    
-   ![][15]
+   ![Een scherm afbeelding van het dialoog venster weer gave toevoegen met de vervolg keuzelijsten sjabloon en model klasse, die in het rood worden beschreven.][15]
 7. Klik op **Add**.
 8. Wijzig nu de weergegeven naam van uw toepassing. Dubbelklik in **Solution Explorer** op het bestand **Views\Shared\\_Layout.cshtml** om dit te openen in de Visual Studio-editor.
 9. Vervang alle instanties van **Mijn ASP.NET-toepassing** door **Producten van Northwind Traders**.
 10. Verwijder de koppelingen **Start**, **Info** en **Contact**. Verwijder de gemarkeerde code:
     
-    ![][28]
+    ![Scherm afbeelding van de code met drie regels van de actie koppelings code voor H T/M L gemarkeerd.][28]
 11. Wijzig tot slot de verzendpagina om enige informatie over de wachtrij op te nemen. Dubbelklik in **Solution Explorer** op het bestand **Views\Home\Submit.cshtml** om dit te openen in de Visual Studio-editor. Voeg de volgende regel toe na `<h2>Submit</h2>`. Op dit moment is `ViewBag.MessageCount` leeg. U vult dit later in.
     
     ```html
@@ -182,7 +183,7 @@ In dit gedeelte maakt u de verschillende pagina's die door uw toepassing worden 
     ```
 12. U hebt nu de gebruikersinterface geïmplementeerd. Druk op **F5** om uw toepassing uit te voeren en te controleren of deze voldoet aan uw verwachting.
     
-    ![][17]
+    ![Scherm afbeelding van de verzend pagina van de toepassing.][17]
 
 ### <a name="write-the-code-for-submitting-items-to-a-service-bus-queue"></a>De code schrijven voor het indienen van items aan een Service Bus-wachtrij
 Voeg nu code toe voor het indienen van items aan een wachtrij. U maakt eerst een klasse die de verbindingsgegevens van de Service Bus-wachtrij bevat. Vervolgens initialiseert u de verbinding vanuit Global.aspx.cs. Tot slot werkt u de verzendcode bij die u eerder hebt gemaakt in HomeController.cs, zodat items daadwerkelijk naar een Service Bus-wachtrij worden verzonden.
@@ -289,13 +290,13 @@ Voeg nu code toe voor het indienen van items aan een wachtrij. U maakt eerst een
        }
        else
        {
-           return View(order);
+           return View(order); 
        }
    }
    ```
 9. U kunt nu de toepassing opnieuw uitvoeren. Het aantal berichten neemt toe elke keer wanneer u een order verzendt.
    
-   ![][18]
+   ![Scherm afbeelding van de verzend pagina van de toepassing met het aantal berichten dat wordt verhoogd naar 1.][18]
 
 ## <a name="create-the-worker-role"></a>De werkrol maken
 U maakt nu de werkrol die de orderverzendingen verwerkt. In dit voorbeeld wordt de Visual Studio-projectsjabloon **Werkrol met Service Bus-wachtrij** gebruikt. U hebt al de vereiste referenties ontvangen van de portal.
@@ -304,16 +305,16 @@ U maakt nu de werkrol die de orderverzendingen verwerkt. In dit voorbeeld wordt 
 2. Klik in Visual Studio in **Solution Explorer** met de rechtermuisknop op de map **Rollen** onder het **MultiTierApp**-project.
 3. Klik op **Toevoegen** en klik vervolgens op **Nieuw werkrolproject**. Het dialoogvenster **Nieuw rolproject toevoegen** wordt weergegeven.
    
-   ![][26]
+   ![Scherm afbeelding van het deel venster Blade Explorer met de optie Nieuw werk rollen project en de optie toevoegen gemarkeerd.][26]
 4. Klik in het dialoogvenster **Nieuw rolproject toevoegen** op **Werkrol met Service Bus-wachtrij**.
    
-   ![][23]
+   ![Scherm afbeelding van het dialoog venster AD New Role project met de rol worker met Service Bus wachtrij selectie gemarkeerd en in rood beschreven.][23]
 5. Voer in het vak **Naam** de naam **OrderProcessingRole** voor het project in. Klik vervolgens op **Toevoegen**.
 6. Kopieer de verbindingsreeks die u hebt verkregen in stap 9 van het gedeelte 'Een Service Bus-naamruimte maken' naar het klembord.
 7. Klik in **Solution Explorer** met de rechtermuisknop op de **OrderProcessingRole** die u in stap 5 hebt gemaakt (klik met de rechtermuisknop op **OrderProcessingRole** onder **Rollen** en niet onder de klasse). Klik vervolgens op **Eigenschappen**.
 8. Klik op het tabblad **Instellingen** van het dialoogvenster **Eigenschappen** in het vak **Waarde** voor **Microsoft.ServiceBus.ConnectionString**. Plak vervolgens de eindpuntwaarde die u in stap 6 hebt gekopieerd.
    
-   ![][25]
+   ![Scherm afbeelding van het dialoog venster Eigenschappen met het tabblad instellingen geselecteerd en de rij micro soft. ServiceBus. Connections Tring in een rood kader.][25]
 9. Maak een klasse **OnlineOrder** die de orders vertegenwoordigt tijdens het verwerken van de wachtrij. U kunt een klasse die u al hebt gemaakt opnieuw gebruiken. Klik in **Solution Explorer** met de rechtermuisknop op de klasse **OrderProcessingRole** (klik met de rechtermuisknop op het klassepictogram en niet op de rol). Klik op **Toevoegen** en vervolgens op **Bestaand item**.
 10. Blader naar de submap voor **FrontendWebRole\Models** en dubbelklik vervolgens op **OnlineOrder.cs** om het bestand toe te voegen aan dit project.
 11. Wijzig in **WorkerRole.cs** de waarde van de variabele **QueueName** van `"ProcessingQueue"` in `"OrdersQueue"`, zoals weergegeven in de volgende code.
@@ -338,9 +339,9 @@ U maakt nu de werkrol die de orderverzendingen verwerkt. In dit voorbeeld wordt 
     ```
 14. U hebt de toepassing nu voltooid. U kunt de volledige toepassing testen door met de rechtermuisknop te klikken op het MultiTierApp-project in Solution Explorer, **Instellen als opstartproject** te selecteren en vervolgens op F5 te drukken. Houd er rekening mee dat het aantal berichten niet toeneemt, omdat de werkrol items uit de wachtrij verwerkt en als voltooid markeert. U ziet de trace-uitvoer van uw werkrol door de gebruikersinterface van de Azure-rekenemulator weer te geven. Klik hiervoor met de rechtermuisknop op het emulatorpictogram in het systeemvak van de taakbalk en selecteer **Gebruikersinterface van de rekenemulator weergeven**.
     
-    ![][19]
+    ![Scherm opname van wat er wordt weer gegeven wanneer u op het Emulator pictogram klikt. Compute emulator weer geven gebruikers interface bevindt zich in de lijst met opties.][19]
     
-    ![][20]
+    ![Scherm afbeelding van het dialoog venster Microsoft Azure Compute emulator (Express).][20]
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende resources voor meer informatie over Service Bus:  

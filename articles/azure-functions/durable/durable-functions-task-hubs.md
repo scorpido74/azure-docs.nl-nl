@@ -3,13 +3,14 @@ title: Taak hubs in Durable Functions-Azure
 description: Meer informatie over wat een task hub is in de Durable Functions-extensie voor Azure Functions. Meer informatie over het configureren van taak hubs.
 author: cgillum
 ms.topic: conceptual
-ms.date: 11/03/2019
+ms.date: 07/14/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 427ab6c4e0e769ab881af0af3023d514c1b092c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: afee79aecaad97ec4b441df0758166073b2413cf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81604615"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083103"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Taak hubs in Durable Functions (Azure Functions)
 
@@ -127,6 +128,19 @@ public static async Task<HttpResponseMessage> Run(
 > Het vorige C#-voor beeld is voor Durable Functions 2. x. Voor Durable Functions 1. x moet u `DurableOrchestrationContext` in plaats van gebruiken `IDurableOrchestrationContext` . Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+De eigenschap task hub in het `function.json` bestand is ingesteld via de app-instelling:
+
+```json
+{
+    "name": "input",
+    "taskHub": "%MyTaskHub%",
+    "type": "orchestrationClient",
+    "direction": "in"
+}
+```
+
+# <a name="python"></a>[Python](#tab/python)
 
 De eigenschap task hub in het `function.json` bestand is ingesteld via de app-instelling:
 

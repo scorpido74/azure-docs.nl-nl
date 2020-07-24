@@ -6,11 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 1594c030839cccdd48c4b032c6ad92f746f78e26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78b11a4d900b8c9cf30a1d37a2b7e6380d6b989a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78970275"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082559"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Maak een virtuele Linux-machine die gebruikmaakt van SSH-verificatie met de REST API
 
@@ -45,7 +46,7 @@ De volgende headers zijn vereist:
 | Aanvraagheader   | Beschrijving |
 |------------------|-----------------|
 | *Content-Type:*  | Vereist. Ingesteld op `application/json`. |
-| *Authorization:* | Vereist. Ingesteld op een geldig `Bearer` [toegangstoken](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
+| *Authorization:* | Vereist. Ingesteld op een geldig `Bearer` [toegangstoken](/rest/api/azure/#authorization-code-grant-interactive-clients). |
 
 Voor algemene informatie over het werken met REST API-aanvragen raadpleegt u [onderdelen van een rest API aanvraag/antwoord](/rest/api/azure/#components-of-a-rest-api-requestresponse).
 
@@ -53,10 +54,10 @@ Voor algemene informatie over het werken met REST API-aanvragen raadpleegt u [on
 
 De volgende algemene definities worden gebruikt voor het bouwen van een aanvraag tekst:
 
-| Name                       | Vereist | Type                                                                                | Description  |
+| Naam                       | Vereist | Type                                                                                | Description  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
 | location                   | True     | tekenreeks                                                                              | Resource locatie. |
-| naam                       |          | tekenreeks                                                                              | Naam voor de virtuele machine. |
+| name                       |          | tekenreeks                                                                              | Naam voor de virtuele machine. |
 | Eigenschappen. hardwareProfile |          | [HardwareProfile](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | Hiermee geeft u de hardware-instellingen voor de virtuele machine op. |
 | Eigenschappen. storageProfile  |          | [StorageProfile](/rest/api/compute/virtualmachines/createorupdate#storageprofile)   | Hiermee geeft u de opslag instellingen voor de schijven van de virtuele machine. |
 | Eigenschappen. osProfile       |          | [OSProfile](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | Hiermee geeft u de instellingen van het besturings systeem voor de virtuele machine. |
@@ -121,7 +122,7 @@ Zie voor een volledige lijst van de beschik bare definities in de hoofd tekst va
 
 ## <a name="sending-the-request"></a>De aanvraag verzenden
 
-U kunt de client van uw voor keur gebruiken voor het verzenden van deze HTTP-aanvraag. U kunt ook een [hulp programma in de browser](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate) gebruiken door te klikken op de knop **Probeer het opnieuw** .
+U kunt de client van uw voor keur gebruiken voor het verzenden van deze HTTP-aanvraag. U kunt ook een [hulp programma in de browser](/rest/api/compute/virtualmachines/createorupdate) gebruiken door te klikken op de knop **Probeer het opnieuw** .
 
 ### <a name="responses"></a>Antwoorden
 
@@ -149,5 +150,5 @@ Zie het volgende voor meer informatie over de Azure REST Api's of andere beheer 
 
 - [REST API Azure Compute-provider](/rest/api/compute/)
 - [Aan de slag gaan met Azure REST API](/rest/api/azure/)
-- [Azure-CLI](/cli/azure/)
-- [Azure PowerShell-module](/powershell/azure/overview)
+- [Azure CLI](/cli/azure/)
+- [Azure PowerShell-module](/powershell/azure/)

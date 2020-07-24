@@ -7,11 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: 77d5731738fbade97be08841428c3bc6b712a7a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 09693a09e35503a2a221f8de1903b4218b8766f4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678729"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082440"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-portal"></a>Geplande onderhouds meldingen verwerken met behulp van de portal
 
@@ -49,7 +50,7 @@ U kunt de Azure Portal gebruiken en zoeken naar Vm's die zijn gepland voor onder
 
 ## <a name="notification-and-alerts-in-the-portal"></a>Meldingen en waarschuwingen in de portal
 
-Azure communiceert een planning voor gepland onderhoud door een e-mail bericht te verzenden naar de eigenaar van het abonnement en de groep mede-eigen aars. U kunt extra ontvangers en kanalen aan deze communicatie toevoegen door Azure-activiteiten logboek waarschuwingen te maken. Zie [waarschuwingen voor activiteiten logboek maken op service meldingen](../azure-monitor/platform/alerts-activity-log-service-notifications.md)voor meer informatie.
+Azure communiceert een planning voor gepland onderhoud door een e-mail bericht te verzenden naar de eigenaar van het abonnement en de groep mede-eigen aars. U kunt extra ontvangers en kanalen aan deze communicatie toevoegen door Azure-activiteiten logboek waarschuwingen te maken. Zie [waarschuwingen voor activiteiten logboek maken op service meldingen](../service-health/alerts-activity-log-service-notifications-portal.md)voor meer informatie.
 
 Zorg ervoor dat u het **gebeurtenis type** instelt als **gepland onderhoud**en **Services** als **Virtual Machine Scale sets** en/of **virtual machines**.
 

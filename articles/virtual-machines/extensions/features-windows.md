@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0ff4fb08b1e627184760bb0a33797b2a324d4c55
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: c28fe96fe88a3b0744aaad72d49e8e2f52912fb6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045906"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082627"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Extensies en functies van virtuele machines voor Windows
 
@@ -35,7 +35,7 @@ Dit artikel bevat een overzicht van VM-extensies, vereisten voor het gebruik van
 Er zijn verschillende verschillende Azure VM-extensies beschikbaar, elk met een specifieke use-case. Voorbeelden zijn:
 
 - Pas Power shell desired state configurations toe aan een virtuele machine met de DSC-extensie voor Windows. Zie [Azure desired state Configuration extension](dsc-overview.md)(Engelstalig) voor meer informatie.
-- De bewaking van een virtuele machine configureren met de VM-extensie Log Analytics agent. Zie [Azure Vm's verbinden met Azure monitor-logboeken](../../log-analytics/log-analytics-azure-vm-extension.md)voor meer informatie.
+- De bewaking van een virtuele machine configureren met de VM-extensie Log Analytics agent. Zie [Azure Vm's verbinden met Azure monitor-logboeken](../../azure-monitor/learn/quick-collect-azurevm.md)voor meer informatie.
 - Configureer een virtuele Azure-machine met behulp van chef. Zie [Azure VM-implementatie automatiseren met chef](../../chef/chef-automation.md)voor meer informatie.
 - Configureer de bewaking van uw Azure-infra structuur met de Datadog-extensie. Zie de [Datadog-blog](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/)voor meer informatie.
 
@@ -65,18 +65,18 @@ Sommige extensies worden niet ondersteund in alle besturings systemen en kunnen 
 
 #### <a name="network-access"></a>Netwerktoegang
 
-Uitbreidings pakketten worden gedownload uit de opslag plaats van de Azure Storage extensie en uploads van uitbreidings status worden naar Azure Storage gepost. Als u een [ondersteunde](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) versie van de agents gebruikt, hoeft u geen toegang tot Azure Storage toe te staan in de VM-regio, zoals de agent kan gebruiken om de communicatie te omleiden naar de Azure Fabric-controller voor agent communicatie (HostGAPlugin-functie via het geprivilegieerde kanaal op particuliere IP- [168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)). Als u een niet-ondersteunde versie van de agent hebt, moet u uitgaande toegang tot Azure Storage in die regio vanuit de VM toestaan.
+Uitbreidings pakketten worden gedownload uit de opslag plaats van de Azure Storage extensie en uploads van uitbreidings status worden naar Azure Storage gepost. Als u een [ondersteunde](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) versie van de agents gebruikt, hoeft u geen toegang tot Azure Storage toe te staan in de VM-regio, zoals de agent kan gebruiken om de communicatie te omleiden naar de Azure Fabric-controller voor agent communicatie (HostGAPlugin-functie via het geprivilegieerde kanaal op particuliere IP- [168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)). Als u een niet-ondersteunde versie van de agent hebt, moet u uitgaande toegang tot Azure Storage in die regio vanuit de VM toestaan.
 
 > [!IMPORTANT]
 > Als u de toegang tot *168.63.129.16* hebt geblokkeerd met behulp van de gast firewall of met een proxy, mislukt de extensies, ongeacht het bovenstaande. Poorten 80, 443 en 32526 zijn vereist.
 
-Agents kunnen alleen worden gebruikt voor het downloaden van uitbreidings pakketten en rapportage status. Als een extensie bijvoorbeeld een script moet downloaden van GitHub (aangepast script) of toegang moet hebben tot Azure Storage (Azure Backup), moeten er extra firewall/netwerk beveiligings groep poorten worden geopend. Verschillende uitbrei dingen hebben verschillende vereisten, omdat ze toepassingen in hun eigen recht zijn. Voor uitbrei dingen waarvoor toegang tot Azure Storage of Azure Active Directory vereist is, kunt u toegang tot opslag of AzureActiveDirectory via de [Azure NSG-service Tags](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) toestaan.
+Agents kunnen alleen worden gebruikt voor het downloaden van uitbreidings pakketten en rapportage status. Als een extensie bijvoorbeeld een script moet downloaden van GitHub (aangepast script) of toegang moet hebben tot Azure Storage (Azure Backup), moeten er extra firewall/netwerk beveiligings groep poorten worden geopend. Verschillende uitbrei dingen hebben verschillende vereisten, omdat ze toepassingen in hun eigen recht zijn. Voor uitbrei dingen waarvoor toegang tot Azure Storage of Azure Active Directory vereist is, kunt u toegang tot opslag of AzureActiveDirectory via de [Azure NSG-service Tags](../../virtual-network/security-overview.md#service-tags) toestaan.
 
 De Windows-gast agent heeft geen proxyserver ondersteuning voor u om aanvragen voor agent verkeer om te leiden via. Dit betekent dat de Windows-gast agent afhankelijk is van uw aangepaste proxy (als u er een hebt) om toegang te krijgen tot bronnen op internet of op de host via IP-168.63.129.16.
 
 ## <a name="discover-vm-extensions"></a>VM-extensies detecteren
 
-Er zijn veel verschillende VM-extensies beschikbaar voor gebruik met Azure-VM's. Als u een volledige lijst wilt weer geven, gebruikt u [Get-AzVMExtensionImage](https://docs.microsoft.com/powershell/module/az.compute/get-azvmextensionimage). In het volgende voor beeld worden alle beschik bare uitbrei dingen in de *westelijke* locatie weer gegeven:
+Er zijn veel verschillende VM-extensies beschikbaar voor gebruik met Azure-VM's. Als u een volledige lijst wilt weer geven, gebruikt u [Get-AzVMExtensionImage](/powershell/module/az.compute/get-azvmextensionimage). In het volgende voor beeld worden alle beschik bare uitbrei dingen in de *westelijke* locatie weer gegeven:
 
 ```powershell
 Get-AzVmImagePublisher -Location "WestUS" | `
@@ -92,7 +92,7 @@ U kunt de volgende methoden gebruiken om een uitbrei ding uit te voeren op basis
 
 ### <a name="powershell"></a>PowerShell
 
-Er bestaan verschillende Power shell-opdrachten voor het uitvoeren van afzonderlijke uitbrei dingen. Als u een lijst wilt weer geven, gebruikt u [Get-opdracht](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/get-command) en filter bij *extensie*:
+Er bestaan verschillende Power shell-opdrachten voor het uitvoeren van afzonderlijke uitbrei dingen. Als u een lijst wilt weer geven, gebruikt u [Get-opdracht](/powershell/module/microsoft.powershell.core/get-command) en filter bij *extensie*:
 
 ```powershell
 Get-Command Set-Az*Extension* -Module Az.Compute
@@ -127,7 +127,7 @@ Set-AzVMCustomScriptExtension -ResourceGroupName "myResourceGroup" `
     -Run "Create-File.ps1" -Location "West US"
 ```
 
-In het volgende voor beeld wordt de extensie VM-toegang gebruikt om het beheerders wachtwoord van een Windows-virtuele machine opnieuw in te stellen op een tijdelijk wacht woord. Zie [extern bureaublad-service opnieuw instellen in een Windows-VM](../windows/reset-rdp.md)voor meer informatie over de extensie voor VM-toegang. Wanneer u dit hebt gedaan, moet u het wacht woord bij de eerste aanmelding opnieuw instellen:
+In het volgende voor beeld wordt de extensie VM-toegang gebruikt om het beheerders wachtwoord van een Windows-virtuele machine opnieuw in te stellen op een tijdelijk wacht woord. Zie [extern bureaublad-service opnieuw instellen in een Windows-VM](../troubleshooting/reset-rdp.md)voor meer informatie over de extensie voor VM-toegang. Wanneer u dit hebt gedaan, moet u het wacht woord bij de eerste aanmelding opnieuw instellen:
 
 ```powershell
 $cred=Get-Credential
@@ -137,7 +137,7 @@ Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Nam
     -Password $cred.GetNetworkCredential().Password -typeHandlerVersion "2.0"
 ```
 
-De `Set-AzVMExtension` opdracht kan worden gebruikt om een VM-extensie te starten. Zie de [Naslag Gids set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension)voor meer informatie.
+De `Set-AzVMExtension` opdracht kan worden gebruikt om een VM-extensie te starten. Zie de [Naslag Gids set-AzVMExtension](/powershell/module/az.compute/set-azvmextension)voor meer informatie.
 
 
 ### <a name="azure-portal"></a>Azure Portal
@@ -267,7 +267,7 @@ Wanneer er een update beschikbaar is, wordt deze alleen geïnstalleerd op de vir
 - Container voor diagnostische gegevens over opstarten
 - Geheimen voor gast besturingssystemen
 - VM-grootte
-- Netwerk profiel
+- Netwerkprofiel
 
 Uitgevers maken updates beschikbaar voor regio's op verschillende tijdstippen, zodat u virtuele machines in verschillende regio's op verschillende versies kunt hebben.
 
@@ -315,7 +315,7 @@ Als u de laatste oplossingen voor problemen met een kleine release wilt ontvange
 
 #### <a name="identifying-if-the-extension-is-set-with-autoupgrademinorversion-on-a-vm"></a>Identificeren of de uitbrei ding is ingesteld met autoUpgradeMinorVersion op een virtuele machine
 
-U kunt vanuit het VM-model zien of de extensie is ingericht met ' autoUpgradeMinorVersion '. Als u wilt controleren, gebruikt u [Get-AzVm](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) en geeft u de naam van de resource groep en de VM op als volgt:
+U kunt vanuit het VM-model zien of de extensie is ingericht met ' autoUpgradeMinorVersion '. Als u wilt controleren, gebruikt u [Get-AzVm](/powershell/module/az.compute/get-azvm) en geeft u de naam van de resource groep en de VM op als volgt:
 
 ```powerShell
  $vm = Get-AzVm -ResourceGroupName "myResourceGroup" -VMName "myVM"
@@ -371,7 +371,7 @@ De volgende stappen voor probleem oplossing zijn van toepassing op alle VM-exten
 
 ### <a name="view-extension-status"></a>Uitbrei ding status weer geven
 
-Nadat een VM-extensie is uitgevoerd op een virtuele machine, gebruikt u [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) om de extensie status te retour neren. *Substatussen [0]* toont aan dat de extensie is ingericht, wat betekent dat de implementatie is gelukt naar de virtuele machine, maar dat de uitvoering van de uitbrei ding in de virtuele machine is mislukt, *Substatussen [1]*.
+Nadat een VM-extensie is uitgevoerd op een virtuele machine, gebruikt u [Get-AzVM](/powershell/module/az.compute/get-azvm) om de extensie status te retour neren. *Substatussen [0]* toont aan dat de extensie is ingericht, wat betekent dat de implementatie is gelukt naar de virtuele machine, maar dat de uitvoering van de uitbrei ding in de virtuele machine is mislukt, *Substatussen [1]*.
 
 ```powershell
 Get-AzVM -ResourceGroupName "myResourceGroup" -VMName "myVM" -Status
@@ -407,7 +407,7 @@ De uitvoerings status van de extensie kan ook worden gevonden in de Azure Portal
 
 ### <a name="rerun-vm-extensions"></a>VM-extensies opnieuw uitvoeren
 
-Er zijn mogelijk situaties waarin een VM-extensie opnieuw moet worden uitgevoerd. U kunt een uitbrei ding opnieuw uitvoeren door deze te verwijderen en vervolgens de uitbrei ding opnieuw uit te voeren met een gewenste uitvoer methode. Als u een uitbrei ding wilt verwijderen, gebruikt u [Remove-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/Remove-AzVMExtension) als volgt:
+Er zijn mogelijk situaties waarin een VM-extensie opnieuw moet worden uitgevoerd. U kunt een uitbrei ding opnieuw uitvoeren door deze te verwijderen en vervolgens de uitbrei ding opnieuw uit te voeren met een gewenste uitvoer methode. Als u een uitbrei ding wilt verwijderen, gebruikt u [Remove-AzVMExtension](/powershell/module/az.compute/remove-azvmextension) als volgt:
 
 ```powershell
 Remove-AzVMExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Name "myExtensionName"
@@ -421,7 +421,7 @@ U kunt een uitbrei ding ook als volgt verwijderen in de Azure Portal:
 4. Kies **verwijderen**.
 
 ## <a name="common-vm-extensions-reference"></a>Naslag informatie over algemene VM-extensies
-| Extensie naam | Description | Meer informatie |
+| Extensie naam | Beschrijving | Meer informatie |
 | --- | --- | --- |
 | Aangepaste scriptextensie voor Windows |Scripts uitvoeren op een virtuele Azure-machine |[Aangepaste scriptextensie voor Windows](custom-script-windows.md) |
 | DSC-extensie voor Windows |Uitbrei ding Power shell DSC (desired state Configuration) |[DSC-extensie voor Windows](dsc-overview.md) |

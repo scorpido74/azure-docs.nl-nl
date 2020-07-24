@@ -21,6 +21,12 @@
     - name: Ingebouwde modules voor Azure Policy
       displayName: 'samples, policies, definitions'
       href: ./policy-samples.md
+- name: Concepten
+  items:
+    - name: Beveiliging
+      items:
+        - name: Beveiligingsbasislijn voor Azure Security Benchmark
+          href: security-baseline.md
 - name: Procedures
   items:
     - name: Data Lake Analytics beheren
@@ -87,7 +93,7 @@
               href: data-lake-analytics-data-lake-tools-develop-usql-database.md
             - name: Taken doorzoeken en weergeven
               href: data-lake-analytics-data-lake-tools-view-jobs.md
-            - name: 'Fouten opsporen in aangepaste C#-code'
+            - name: Fouten opsporen in aangepaste C#-code
               href: data-lake-analytics-debug-u-sql-jobs.md
             - name: Problemen in terugkerende taken oplossen
               href: data-lake-analytics-data-lake-tools-debug-recurring-job.md

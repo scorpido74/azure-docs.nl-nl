@@ -7,11 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 203e5fcaa99f7aebeda34e6968f636ed72851ec8
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 5d0393ab5f2582efa2a4b727543bc799cdb1143e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921535"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082848"
 ---
 # <a name="what-are-wrangling-data-flows"></a>Wat zijn wrangling-gegevens stromen?
 
@@ -27,7 +28,7 @@ Wrangling-gegevens stroom vertaalt M die is gegenereerd door Power Query online 
 Wrangling-gegevens stromen zijn vooral nuttig voor gegevens technici of ' burger data Integrators '.
 
 > [!NOTE]
-> Wrangling-gegevens stroom is momenteel beschik bare in open bare preview
+> Wrangling-gegevens stroom is momenteel beschikbaar in de open bare preview
 
 ## <a name="use-cases"></a>Gebruiksvoorbeelden
 

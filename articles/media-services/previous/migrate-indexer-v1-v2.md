@@ -13,15 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: juliako
-ms.openlocfilehash: 2268c074480f99ca23117ca2ffd2c87c1dbb10a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84e4e34ab7b9f0250ae7bc94248fa98cbf23cd6c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76513232"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084378"
 ---
 # <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>Migreren van Media Indexer en Media Indexer 2 naar Video Indexer
 
-De media processor van [Azure media indexer](media-services-index-content.md) media en [Azure media indexer 2 Preview](media-services-process-content-with-indexer2.md) worden buiten gebruik gesteld. Voor de pensioen datums raadpleegt u dit onderwerp over [oudere onderdelen](legacy-components.md) . [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) vervangt deze verouderde media processors.
+De media processor van [Azure media indexer](media-services-index-content.md) media en [Azure media indexer 2 Preview](media-services-process-content-with-indexer2.md) worden buiten gebruik gesteld. Voor de pensioen datums raadpleegt u dit onderwerp over [oudere onderdelen](legacy-components.md) . [Azure Media Services video indexer](../video-indexer/index.yml) vervangt deze verouderde media processors.
 
 Azure Media Services Video Indexer is gebaseerd op Azure Media Analytics, Azure Cognitive Search, Cognitive Services (zoals de Face-API, micro soft Translator, de Computer Vision-API en Custom Speech Service). Hiermee kunt u inzichten ophalen uit uw video's met Video Indexer-modellen voor audio en video. Zie [video indexer video-en audio modellen](../video-indexer/video-indexer-overview.md)om te zien welke scenario's video indexer kunnen worden gebruikt in, welke functies worden aangeboden en hoe u aan de slag kunt gaan. 
 
@@ -41,13 +42,13 @@ In dit artikel worden de stappen beschreven voor het migreren van Azure Media In
 
 ## <a name="getting-started-with-video-indexer"></a>Aan de slag met Video Indexer
 
-In het volgende gedeelte vindt u relevante koppelingen: [Hoe ga ik aan de slag met video indexer?](https://docs.microsoft.com/azure/media-services/video-indexer/video-indexer-overview#how-can-i-get-started-with-video-indexer) 
+In het volgende gedeelte vindt u relevante koppelingen: [Hoe ga ik aan de slag met video indexer?](../video-indexer/video-indexer-overview.md#how-can-i-get-started-with-video-indexer) 
 
 ## <a name="getting-started-with-media-services-v3-apis"></a>Aan de slag met Media Services v3-Api's
 
 Met Azure Media Services v3 API kunt u inzichten uit uw video-en audio bestanden ophalen via de [voor instellingen van de Azure Media Services v3 Analyzer](../latest/analyzing-video-audio-files-concept.md). 
 
-Met **AudioAnalyzerPreset** kunt u meerdere geluids inzichten uit een audio-of video bestand ophalen. De uitvoer bevat een VTT-of TTML-bestand voor de transcripten van de audio en een JSON-bestand (met alle extra audio inzichten). De geluids inzichten bevatten tref woorden, het indexeren van sprekers en de analyse van spraak sentiment. AudioAnalyzerPreset biedt ook ondersteuning voor taal detectie voor specifieke talen. Zie [trans formaties](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset)voor gedetailleerde informatie.
+Met **AudioAnalyzerPreset** kunt u meerdere geluids inzichten uit een audio-of video bestand ophalen. De uitvoer bevat een VTT-of TTML-bestand voor de transcripten van de audio en een JSON-bestand (met alle extra audio inzichten). De geluids inzichten bevatten tref woorden, het indexeren van sprekers en de analyse van spraak sentiment. AudioAnalyzerPreset biedt ook ondersteuning voor taal detectie voor specifieke talen. Zie [trans formaties](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)voor gedetailleerde informatie.
 
 ### <a name="get-started"></a>Aan de slag
 
@@ -59,12 +60,12 @@ Om aan de slag te gaan, gaat u naar:
 
 ## <a name="getting-started-with-cognitive-services-speech-services"></a>Aan de slag met Cognitive Services speech Services
 
-[Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/) biedt een service voor spraak naar tekst waarmee audio stromen naar tekst in realtime worden getranscribeerd die uw toepassingen, hulpprogram ma's of apparaten kunnen gebruiken of weer geven. U kunt spraak naar tekst gebruiken om [uw eigen akoestische model, taal model of uitspraak model](../../cognitive-services/speech-service/how-to-custom-speech-train-model.md)aan te passen. Zie [Cognitive Services voor spraak naar tekst](../../cognitive-services/speech-service/speech-to-text.md)voor meer informatie. 
+[Azure Cognitive Services](../../cognitive-services/index.yml) biedt een service voor spraak naar tekst waarmee audio stromen naar tekst in realtime worden getranscribeerd die uw toepassingen, hulpprogram ma's of apparaten kunnen gebruiken of weer geven. U kunt spraak naar tekst gebruiken om [uw eigen akoestische model, taal model of uitspraak model](../../cognitive-services/speech-service/how-to-custom-speech-train-model.md)aan te passen. Zie [Cognitive Services voor spraak naar tekst](../../cognitive-services/speech-service/speech-to-text.md)voor meer informatie. 
 
 > [!NOTE] 
-> De spraak-naar-tekst-service heeft geen video bestands indelingen en heeft alleen [bepaalde audio-indelingen](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#audio-formats). 
+> De spraak-naar-tekst-service heeft geen video bestands indelingen en heeft alleen [bepaalde audio-indelingen](../../cognitive-services/speech-service/rest-speech-to-text.md#audio-formats). 
 
-Zie [Wat is spraak-naar-tekst?](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-to-text) voor meer informatie over de tekst-naar-spraak-service en hoe u aan de slag kunt gaan.
+Zie [Wat is spraak-naar-tekst?](../../cognitive-services/speech-service/speech-to-text.md) voor meer informatie over de tekst-naar-spraak-service en hoe u aan de slag kunt gaan.
 
 ## <a name="known-differences-from-deprecated-services"></a>Bekende verschillen van afgeschafte Services 
 
@@ -82,5 +83,3 @@ U kunt een ondersteunings ticket openen door te navigeren naar de [nieuwe onders
 
 * [Verouderde onderdelen](legacy-components.md)
 * [Pagina met prijzen](https://azure.microsoft.com/pricing/details/media-services/#encoding)
-
-

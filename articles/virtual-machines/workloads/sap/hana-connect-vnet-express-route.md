@@ -13,11 +13,12 @@ ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f7ac8e69c4e149fdd0f365e19f7a0282a547af43
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c7e8d4875a8bf3f53ac536ae95ac7499a74d45c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77617190"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082151"
 ---
 # <a name="connect-a-virtual-network-to-hana-large-instances"></a>Een virtueel netwerk verbinden met HANA grote instanties
 
@@ -95,7 +96,7 @@ New-AzVirtualNetworkGatewayConnection -Name $myConnectionName `
 ```
 
 > [!NOTE]
-> De laatste para meter in de opdracht New-AzVirtualNetworkGatewayConnection, **ExpressRouteGatewayBypass** is een nieuwe para meter waarmee het snelle pad ExpressRoute wordt ingeschakeld. Een functionaliteit die de netwerk latentie beperkt tussen uw HANA-grote exemplaar eenheden en Azure-Vm's. De functionaliteit is toegevoegd in mei 2019. Raadpleeg het artikel [SAP Hana (grote exemplaren) netwerk architectuur](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture)voor meer informatie. Zorg ervoor dat u de meest recente versie van Power shell-cmdlets gebruikt voordat u de opdrachten uitvoert.
+> De laatste para meter in de opdracht New-AzVirtualNetworkGatewayConnection, **ExpressRouteGatewayBypass** is een nieuwe para meter waarmee het snelle pad ExpressRoute wordt ingeschakeld. Een functionaliteit die de netwerk latentie beperkt tussen uw HANA-grote exemplaar eenheden en Azure-Vm's. De functionaliteit is toegevoegd in mei 2019. Raadpleeg het artikel [SAP Hana (grote exemplaren) netwerk architectuur](./hana-network-architecture.md)voor meer informatie. Zorg ervoor dat u de meest recente versie van Power shell-cmdlets gebruikt voordat u de opdrachten uitvoert.
 
 Als u de gateway wilt verbinden met meer dan één ExpressRoute-circuit dat is gekoppeld aan uw abonnement, moet u deze stap mogelijk meermaals uitvoeren. Zo wilt u waarschijnlijk dezelfde virtuele netwerk gateway verbinden met het ExpressRoute-circuit dat het virtuele netwerk verbindt met uw on-premises netwerk.
 
@@ -138,7 +139,7 @@ u moet rekening houden met het volgende:
 - Er is een beperking voor het Asn's (autonoom systeem nummer) dat kan worden gebruikt om uw on-premises routes naar HANA grote instanties te adverteren. Uw on-premises mogen geen routes adverteren met persoonlijke Asn's in het bereik van 65000 – 65020 of 65515. 
 - Voor het scenario voor de verbinding van on-premises directe toegang tot HANA grote instanties moet u kosten berekenen voor het circuit waarmee u verbinding maakt met Azure. Controleer de prijzen voor [Global Reach-invoeg toepassing](https://azure.microsoft.com/pricing/details/expressroute/)voor prijzen.
 
-Als u een of beide van de scenario's die worden toegepast op uw implementatie wilt ontvangen, opent u een ondersteunings bericht met Azure, zoals beschreven in [een ondersteunings aanvraag openen voor Hana grote instanties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal#open-a-support-request-for-hana-large-instances)
+Als u een of beide van de scenario's die worden toegepast op uw implementatie wilt ontvangen, opent u een ondersteunings bericht met Azure, zoals beschreven in [een ondersteunings aanvraag openen voor Hana grote instanties](./hana-li-portal.md#open-a-support-request-for-hana-large-instances)
 
 Gegevens die nodig zijn en de tref woorden die u voor micro soft moet gebruiken om uw aanvraag te kunnen door sturen en uitvoeren, ziet er als volgt uit:
 

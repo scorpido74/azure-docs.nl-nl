@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 9419ed320089ff85722e0d9c0582e92491377ab1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eca36a2c13fcdc232d4d06ca6e59598fe9a611f2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84907462"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082134"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>Connectiviteit van open bare eind punten voor Virtual Machines met behulp van Azure Standard Load Balancer in scenario's met hoge Beschik baarheid van SAP
 
@@ -31,11 +31,11 @@ Het artikel bevat verschillende opties waarmee u de optie kunt selecteren die he
 
 ## <a name="overview"></a>Overzicht
 
-Bij het implementeren van hoge Beschik baarheid voor SAP-oplossingen via clusters, is een van de benodigde onderdelen [Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview). Azure biedt twee load balancer Sku's: Standard en Basic.
+Bij het implementeren van hoge Beschik baarheid voor SAP-oplossingen via clusters, is een van de benodigde onderdelen [Azure Load Balancer](../../../load-balancer/load-balancer-overview.md). Azure biedt twee load balancer Sku's: Standard en Basic.
 
 Standard Azure load balancer biedt enkele voor delen ten opzichte van de basis load balancer. Het werkt bijvoorbeeld in azure-beschikbaarheids zones, het heeft betere controle en logboek registratie mogelijkheden voor eenvoudiger probleem oplossing, minder latentie. De functie HA-poorten heeft betrekking op alle poorten, dat wil zeggen dat het niet langer nodig is om alle afzonderlijke poorten weer te geven.  
 
-Er zijn enkele belang rijke verschillen tussen de basis-en de standaard-SKU van Azure load balancer. Een van deze is de afhandeling van uitgaand verkeer naar het open bare eind punt. Zie [Load BALANCER SKU-vergelijking](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)voor een volledige basis versus standaard SKU Load Balancer vergelijking.  
+Er zijn enkele belang rijke verschillen tussen de basis-en de standaard-SKU van Azure load balancer. Een van deze is de afhandeling van uitgaand verkeer naar het open bare eind punt. Zie [Load BALANCER SKU-vergelijking](../../../load-balancer/load-balancer-overview.md)voor een volledige basis versus standaard SKU Load Balancer vergelijking.  
  
 Wanneer Vm's zonder open bare IP-adressen in de back-end-groep van intern (geen openbaar IP-adres load balancer) worden geplaatst, is er geen uitgaande verbinding met open bare eind punten, tenzij er een extra configuratie wordt uitgevoerd.  
 
@@ -60,20 +60,20 @@ Als uw SAP-implementatie geen uitgaande verbinding met open bare eind punten nod
 Lees eerst de volgende documenten:
 
 * Azure Standard Load Balancer
-  * [Overzicht van azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) -uitgebreid overzicht van de Azure Standard Load Balancer, belang rijke principes, concepten en zelf studies 
-  * [Uitgaande verbindingen in azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#scenarios) : scenario's voor het bezorgen van uitgaande connectiviteit in azure
-  * [Uitgaande regels van Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview): hierin worden de concepten van Load Balancer regels voor uitgaande verbindingen en het maken van uitgaande regels uitgelegd
+  * [Overzicht van azure Standard Load Balancer](../../../load-balancer/load-balancer-overview.md) -uitgebreid overzicht van de Azure Standard Load Balancer, belang rijke principes, concepten en zelf studies 
+  * [Uitgaande verbindingen in azure](../../../load-balancer/load-balancer-outbound-connections.md#scenarios) : scenario's voor het bezorgen van uitgaande connectiviteit in azure
+  * [Uitgaande regels van Load Balancer](../../../load-balancer/load-balancer-outbound-connections.md#outboundrules): hierin worden de concepten van Load Balancer regels voor uitgaande verbindingen en het maken van uitgaande regels uitgelegd
 * Azure Firewall
-  * [Overzicht van Azure firewall](https://docs.microsoft.com/azure/firewall/overview)-overzicht van Azure firewall
-  * [Zelf studie: Azure firewall implementeren en configureren](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal) -instructies voor het configureren van Azure Firewall via Azure Portal
-* [Virtuele netwerken-door de gebruiker gedefinieerde regels](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined) : Azure-routerings concepten en-regels  
-* [Service tags voor beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) : Vereenvoudig uw netwerk beveiligings groepen en firewall configuratie met Service Tags
+  * [Overzicht van Azure firewall](../../../firewall/overview.md)-overzicht van Azure firewall
+  * [Zelf studie: Azure firewall implementeren en configureren](../../../firewall/tutorial-firewall-deploy-portal.md) -instructies voor het configureren van Azure Firewall via Azure Portal
+* [Virtuele netwerken-door de gebruiker gedefinieerde regels](../../../virtual-network/virtual-networks-udr-overview.md#user-defined) : Azure-routerings concepten en-regels  
+* [Service tags voor beveiligings groepen](../../../virtual-network/security-overview.md#service-tags) : Vereenvoudig uw netwerk beveiligings groepen en firewall configuratie met Service Tags
 
 ## <a name="additional-external-azure-standard-load-balancer-for-outbound-connections-to-internet"></a>Extra externe Azure-Standard Load Balancer voor uitgaande verbindingen met Internet
 
-Een optie voor het behalen van uitgaande connectiviteit met open bare eind punten, zonder inkomende connectiviteit met de virtuele machine vanaf een openbaar eind punt toe te staan, is het maken van een tweede load balancer met een openbaar IP-adres, het toevoegen van de virtuele machines aan de back-end-pool van de tweede load balancer en alleen [Uitgaande regels](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview)definiëren.  
-Gebruik [netwerk beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/security-overview) om de open bare eind punten te beheren die toegankelijk zijn voor uitgaande oproepen van de virtuele machine.  
-Zie scenario 2 in [uitgaande verbindingen](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#scenarios)voor documenten voor meer informatie.  
+Een optie voor het behalen van uitgaande connectiviteit met open bare eind punten, zonder inkomende connectiviteit met de virtuele machine vanaf een openbaar eind punt toe te staan, is het maken van een tweede load balancer met een openbaar IP-adres, het toevoegen van de virtuele machines aan de back-end-pool van de tweede load balancer en alleen [Uitgaande regels](../../../load-balancer/load-balancer-outbound-connections.md#outboundrules)definiëren.  
+Gebruik [netwerk beveiligings groepen](../../../virtual-network/security-overview.md) om de open bare eind punten te beheren die toegankelijk zijn voor uitgaande oproepen van de virtuele machine.  
+Zie scenario 2 in [uitgaande verbindingen](../../../load-balancer/load-balancer-outbound-connections.md#scenarios)voor documenten voor meer informatie.  
 De configuratie zou er als volgt uitzien:  
 
 ![Connectiviteit met open bare eind punten beheren met netwerk beveiligings groepen](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-public.png)
@@ -81,17 +81,17 @@ De configuratie zou er als volgt uitzien:
 ### <a name="important-considerations"></a>Belangrijke overwegingen
 
 - U kunt één extra open bare Load Balancer voor meerdere Vm's in hetzelfde subnet gebruiken om uitgaande connectiviteit naar het open bare eind punt te verzorgen en de kosten te optimaliseren  
-- Gebruik [netwerk beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/security-overview) om te bepalen welke open bare eind punten toegankelijk zijn vanaf de vm's. U kunt de netwerk beveiligings groep toewijzen aan het subnet of aan elke virtuele machine. Gebruik waar mogelijk [service Tags](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) om de complexiteit van de beveiligings regels te reduceren.  
+- Gebruik [netwerk beveiligings groepen](../../../virtual-network/security-overview.md) om te bepalen welke open bare eind punten toegankelijk zijn vanaf de vm's. U kunt de netwerk beveiligings groep toewijzen aan het subnet of aan elke virtuele machine. Gebruik waar mogelijk [service Tags](../../../virtual-network/security-overview.md#service-tags) om de complexiteit van de beveiligings regels te reduceren.  
 - Met de Azure Standard Load Balancer met een openbaar IP-adres en de uitgaande regels is directe toegang tot het open bare eind punt toegestaan. Als u beveiligings vereisten hebt om al het uitgaande verkeer door te geven via gecentraliseerde bedrijfs oplossing voor controle en logboek registratie, kunt u mogelijk niet aan de vereisten voldoen met dit scenario.  
 
 >[!TIP]
->Gebruik waar mogelijk [service Tags](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) om de complexiteit van de netwerk beveiligings groep te verminderen. 
+>Gebruik waar mogelijk [service Tags](../../../virtual-network/security-overview.md#service-tags) om de complexiteit van de netwerk beveiligings groep te verminderen. 
 
 ### <a name="deployment-steps"></a>Implementatiestappen
 
 1. Load Balancer maken  
    1. Klik in de [Azure Portal](https://portal.azure.com) op alle resources, toevoegen en zoek naar **Load Balancer**  
-   1. Klik op **Maken**. 
+   1. Klik op **Maken** 
    1. Load Balancer naam **MyPublicILB**  
    1. Selecteer **openbaar** als type, **standaard** als SKU  
    1. Selecteer **openbaar IP-adres maken** en opgeven als een naam **MyPublicILBFrondEndIP**  
@@ -100,7 +100,7 @@ De configuratie zou er als volgt uitzien:
 2. Maak de back- **MyBackendPoolOfPublicILB** en voeg de vm's toe.  
    1. Het virtuele netwerk selecteren  
    1. Selecteer de Vm's en hun IP-adressen en voeg deze toe aan de back-end-groep  
-3. [Uitgaande regels maken](https://docs.microsoft.com/azure/load-balancer/configure-load-balancer-outbound-cli#create-outbound-rule). Het is momenteel niet mogelijk om uitgaande regels te maken op basis van de Azure Portal. U kunt regels voor uitgaande verbindingen maken met [Azure cli](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest).  
+3. [Uitgaande regels maken](../../../load-balancer/configure-load-balancer-outbound-cli.md#create-outbound-rule). Het is momenteel niet mogelijk om uitgaande regels te maken op basis van de Azure Portal. U kunt regels voor uitgaande verbindingen maken met [Azure cli](../../../cloud-shell/overview.md?view=azure-cli-latest).  
 
    ```azurecli
     az network lb outbound-rule create --address-pool MyBackendPoolOfPublicILB --frontend-ip-configs MyPublicILBFrondEndIP --idle-timeout 30 --lb-name MyPublicILB --name MyOutBoundRules  --outbound-ports 10000 --enable-tcp-reset true --protocol All --resource-group MyResourceGroup
@@ -117,13 +117,13 @@ De configuratie zou er als volgt uitzien:
 
    ![Uitgaande verbinding met tweede Load Balancer met een openbaar IP-adres](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-network-security-groups.png)
 
-   Zie [beveiligings groepen ](https://docs.microsoft.com/azure/virtual-network/security-overview)voor meer informatie over Azure-netwerk beveiligings groepen. 
+   Zie [beveiligings groepen ](../../../virtual-network/security-overview.md)voor meer informatie over Azure-netwerk beveiligings groepen. 
 
 ## <a name="azure-firewall-for-outbound-connections-to-internet"></a>Azure Firewall voor uitgaande verbindingen met Internet
 
 Een andere optie voor het behalen van uitgaande connectiviteit naar open bare eind punten, zonder inkomende connectiviteit met de virtuele machine vanaf een openbaar eind punt toe te staan, is met Azure Firewall. Azure Firewall is een beheerde service met ingebouwde hoge Beschik baarheid en kan meerdere Beschikbaarheidszones omvatten.  
-U moet ook de door de [gebruiker gedefinieerde route](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes)implementeren die is gekoppeld aan het subnet waar vm's en de azure-Load Balancer worden geïmplementeerd, naar de Azure-firewall wijzen om het verkeer via de Azure firewall te routeren.  
-Zie [Azure firewall implementeren en configureren](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)voor meer informatie over het implementeren van Azure firewall.  
+U moet ook de door de [gebruiker gedefinieerde route](../../../virtual-network/virtual-networks-udr-overview.md#custom-routes)implementeren die is gekoppeld aan het subnet waar vm's en de azure-Load Balancer worden geïmplementeerd, naar de Azure-firewall wijzen om het verkeer via de Azure firewall te routeren.  
+Zie [Azure firewall implementeren en configureren](../../../firewall/tutorial-firewall-deploy-portal.md)voor meer informatie over het implementeren van Azure firewall.  
 
 De architectuur ziet er als volgt uit:
 
@@ -137,7 +137,7 @@ De architectuur ziet er als volgt uit:
 - Als de oplossing bedrijfs firewall niet Azure Firewall is en u beveiligings vereisten hebt om al het uitgaande verkeer uit te geven als gecentraliseerde bedrijfs oplossing, is deze oplossing mogelijk niet praktisch.  
 
 >[!TIP]
->Gebruik waar mogelijk [service Tags](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) om de complexiteit van de Azure firewall regels te verminderen.  
+>Gebruik waar mogelijk [service Tags](../../../virtual-network/security-overview.md#service-tags) om de complexiteit van de Azure firewall regels te verminderen.  
 
 ### <a name="deployment-steps"></a>Implementatiestappen
 
@@ -229,5 +229,5 @@ Als uitgaand verkeer wordt gerouteerd via firewall van derden:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het configureren van pacemaker op SUSE in azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)
-* [Meer informatie over het configureren van pacemaker op Red Hat in azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker)
+* [Meer informatie over het configureren van pacemaker op SUSE in azure](./high-availability-guide-suse-pacemaker.md)
+* [Meer informatie over het configureren van pacemaker op Red Hat in azure](./high-availability-guide-rhel-pacemaker.md)

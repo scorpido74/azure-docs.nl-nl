@@ -15,15 +15,15 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8512675381f6163e66b6b838e8262dd7d2b12374
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: d81a8b3a1596e8a447f7a2434e52df8c89b416b7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130872"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085262"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Beheer van grote Azure HANA-exemplaren via de Azure-portal
-In dit document wordt beschreven hoe [Hana grote instanties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) worden weer gegeven in [Azure Portal](https://portal.azure.com) en welke activiteiten kunnen worden uitgevoerd via Azure Portal met Hana grote instantie-eenheden die voor u zijn geïmplementeerd. Zicht baarheid van HANA grote instanties in Azure Portal wordt gegeven via een Azure-resource provider voor HANA grote instanties, die momenteel beschikbaar zijn in de open bare preview
+In dit document wordt beschreven hoe [Hana grote instanties](./hana-overview-architecture.md) worden weer gegeven in [Azure Portal](https://portal.azure.com) en welke activiteiten kunnen worden uitgevoerd via Azure Portal met Hana grote instantie-eenheden die voor u zijn geïmplementeerd. Zicht baarheid van HANA grote instanties in Azure Portal wordt gegeven via een Azure-resource provider voor HANA grote instanties, die momenteel beschikbaar zijn in de open bare preview
 
 ## <a name="register-hana-large-instance-resource-provider"></a>Bron provider van HANA-grote instanties registreren
 Normaal gesp roken is uw Azure-abonnement dat u gebruikt voor HANA-implementaties met grote instanties geregistreerd voor de bron provider van de HANA-grote instantie. Als u echter niet ziet dat u de geïmplementeerde omvang rijke HANA-exemplaar-eenheden kunt zien, moet u de resource provider registreren in uw Azure-abonnement. Er zijn twee manieren om de bron provider voor de HANA grote instanties te registreren
@@ -35,7 +35,7 @@ U moet zijn aangemeld bij uw Azure-abonnement, dat wordt gebruikt voor de implem
 az provider register --namespace Microsoft.HanaOnAzure
 ```
 
-Zie het artikel [Azure-resource providers en-typen](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services#azure-cli) voor meer informatie.
+Zie het artikel [Azure-resource providers en-typen](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli) voor meer informatie.
 
 
 ### <a name="register-through-azure-portal"></a>Registreren via Azure Portal
@@ -45,12 +45,12 @@ U kunt (opnieuw) de bron van de HANA-resource voor grote instanties registreren 
 
 De resource provider is al geregistreerd in de scherm opname die wordt weer gegeven. Als de resource provider nog niet is geregistreerd, klikt u op "opnieuw registreren" of "registreren".
 
-Zie het artikel [Azure-resource providers en-typen](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services#azure-powershell) voor meer informatie.
+Zie het artikel [Azure-resource providers en-typen](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell) voor meer informatie.
 
 
 ## <a name="display-of-hana-large-instance-units-in-the-azure-portal"></a>Weer gave van HANA grote instantie-eenheden in de Azure Portal
 Wanneer u een HANA-implementatie aanvraag voor een grote instantie verzendt, wordt u gevraagd om het Azure-abonnement op te geven dat u wilt verbinden met de grote omvang van de HANA-instanties. Het wordt aanbevolen om hetzelfde abonnement te gebruiken dat u gebruikt voor het implementeren van de SAP-toepassingslaag die werkt op basis van de HANA grote instantie-eenheden.
-Als uw eerste HANA grote instanties worden geïmplementeerd, wordt een nieuwe [Azure-resource groep](https://docs.microsoft.com/azure/azure-resource-manager/manage-resources-portal) gemaakt in het Azure-abonnement dat u hebt verzonden in de implementatie aanvraag voor uw Hana grote instanties.  De nieuwe resource groep bevat alle HANA grote instantie-eenheden die u hebt geïmplementeerd in het specifieke abonnement.
+Als uw eerste HANA grote instanties worden geïmplementeerd, wordt een nieuwe [Azure-resource groep](../../../azure-resource-manager/management/manage-resources-portal.md) gemaakt in het Azure-abonnement dat u hebt verzonden in de implementatie aanvraag voor uw Hana grote instanties.  De nieuwe resource groep bevat alle HANA grote instantie-eenheden die u hebt geïmplementeerd in het specifieke abonnement.
 
 Als u de nieuwe Azure-resource groep wilt zoeken, vermeldt u de resource groep in uw abonnement door te navigeren via het navigatie deel venster links van de Azure Portal
 
@@ -80,8 +80,8 @@ Nadat u op weer geven hebt geklikt, krijgt u in het scherm overzicht een present
 
 Op de verschillende kenmerken die worden weer gegeven, zien deze kenmerken er nauwelijks anders uit dan Azure VM-kenmerken. Op de kop van de linkerkant ziet u de resource groep, de Azure-regio, de abonnements naam en de ID, evenals een aantal tags die u hebt toegevoegd. Standaard heeft de HANA-eenheden voor grote instanties geen tag toegewezen. Aan de rechter kant van de kop wordt de naam van de eenheid vermeld als toegewezen wanneer de implementatie is uitgevoerd. Het besturings systeem wordt weer gegeven, evenals het IP-adres. Net als bij virtuele machines wordt het type HANA-eenheid voor grote instanties met het aantal CPU-threads en het geheugen ook weer gegeven. Meer details over de verschillende HANA-eenheden voor grote instanties worden hier weer gegeven:
 
-- [Beschikbare SKU's voor HLI](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus)
-- [Opslag architectuur van SAP HANA (grote exemplaren)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-storage-architecture) 
+- [Beschikbare SKU's voor HLI](./hana-available-skus.md)
+- [Opslag architectuur van SAP HANA (grote exemplaren)](./hana-storage-architecture.md) 
 
 Extra gegevens aan de rechter kant is de revisie van de HANA-stempel met grote instanties. Mogelijke waarden zijn:
 
@@ -89,7 +89,7 @@ Extra gegevens aan de rechter kant is de revisie van de HANA-stempel met grote i
 - Revisie 4
 
 Revisie 4 is de nieuwste architectuur van HANA grote instanties met grote verbeteringen in de netwerk latentie tussen virtuele Azure-machines en HANA grote instantie-eenheden die zijn geïmplementeerd in revisie 4 stem pels of rijen.
-In de rechter benedenhoek van het overzicht wordt een andere zeer belang rijke informatie gevonden met de naam van de Azure proximity-plaatsings groep die automatisch wordt gemaakt voor elke geïmplementeerde waarde van de grote instantie van HANA. Er moet naar deze plaatsings groep worden verwezen bij het implementeren van de Azure-Vm's die als host fungeren voor de SAP-toepassingslaag. Door gebruik te maken van de [Azure proximity-plaatsings groep](https://docs.microsoft.com/azure/virtual-machines/linux/co-location) die is gekoppeld aan de Hana-eenheid voor grote instanties, zorgt u ervoor dat de virtuele Azure-machines dicht bij elkaar liggen op de Hana grote instantie-eenheid. Hoe proximity-plaatsings groepen kunnen worden gebruikt om de SAP-toepassingslaag te vinden in hetzelfde Azure-Data Center als revisie 4 gehoste HANA grote instantie-eenheden, worden beschreven in [Azure proximity placement groups voor optimale netwerk latentie met SAP-toepassingen](sap-proximity-placement-scenarios.md).
+In de rechter benedenhoek van het overzicht wordt een andere zeer belang rijke informatie gevonden met de naam van de Azure proximity-plaatsings groep die automatisch wordt gemaakt voor elke geïmplementeerde waarde van de grote instantie van HANA. Er moet naar deze plaatsings groep worden verwezen bij het implementeren van de Azure-Vm's die als host fungeren voor de SAP-toepassingslaag. Door gebruik te maken van de [Azure proximity-plaatsings groep](../../linux/co-location.md) die is gekoppeld aan de Hana-eenheid voor grote instanties, zorgt u ervoor dat de virtuele Azure-machines dicht bij elkaar liggen op de Hana grote instantie-eenheid. Hoe proximity-plaatsings groepen kunnen worden gebruikt om de SAP-toepassingslaag te vinden in hetzelfde Azure-Data Center als revisie 4 gehoste HANA grote instantie-eenheden, worden beschreven in [Azure proximity placement groups voor optimale netwerk latentie met SAP-toepassingen](sap-proximity-placement-scenarios.md).
 
 Een aanvullend veld in de rechter kolom van de koptekst geeft informatie over de energie status van de HANA grote instantie-eenheid.
 
@@ -97,7 +97,7 @@ Een aanvullend veld in de rechter kolom van de koptekst geeft informatie over de
 > De energie status geeft aan of de hardware-eenheid is ingeschakeld of uitgeschakeld. Het geeft geen informatie over het besturings systeem dat actief is. Wanneer u een HANA grote instantie-eenheid opnieuw opstart, ondervindt u een korte periode waarin de status van de eenheid wordt **gewijzigd in de** status **gestart**. Als de status **gestart** is, betekent dat het besturings systeem wordt gestart of dat het besturings systeem volledig is gestart. Als gevolg hiervan kunt u na het opnieuw opstarten van de eenheid niet verwachten dat u zich onmiddellijk aanmeldt bij de eenheid zodra de status overschakelt naar **gestart**.
 > 
 
-Als u op ' meer weer geven ' drukt, wordt extra informatie weer gegeven. Een extra informatie geeft de revisie van de HANA-stempel van de grote instantie weer, de eenheid die is geïmplementeerd in. Zie het artikel [Wat is SAP Hana op Azure (grote exemplaren)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) voor de verschillende revisies van Hana grote instantie tempels
+Als u op ' meer weer geven ' drukt, wordt extra informatie weer gegeven. Een extra informatie geeft de revisie van de HANA-stempel van de grote instantie weer, de eenheid die is geïmplementeerd in. Zie het artikel [Wat is SAP Hana op Azure (grote exemplaren)](./hana-overview-architecture.md) voor de verschillende revisies van Hana grote instantie tempels
 
 ## <a name="check-activities-of-a-single-hana-large-instance-unit"></a>Activiteiten van één HANA grote instantie-eenheid controleren 
 Meer dan een overzicht van de HANA-eenheden voor grote instanties kunt u de activiteiten van de desbetreffende eenheid controleren. Een activiteiten logboek kan er als volgt uitzien:
@@ -109,7 +109,7 @@ Een van de geregistreerde hoofd activiteiten wordt opnieuw gestart van een eenhe
 Een andere activiteit die wordt opgenomen, is gewijzigd in de eenheid in de meta gegevens van Azure. Naast het opnieuw opstarten, ziet u de activiteit van **Write HANAInstances**. Met dit type activiteit worden geen wijzigingen aangebracht in de HANA-grote exemplaar-eenheid zelf, maar worden wijzigingen in de meta gegevens van de eenheid in azure gedocumenteerd. In de lijst wordt een tag toegevoegd en verwijderd (Zie de volgende sectie).
 
 ## <a name="add-and-delete-an-azure-tag-to-a-hana-large-instance-unit"></a>Een Azure-tag toevoegen en verwijderen in een HANA-eenheid voor grote instanties
-Een andere mogelijkheid is dat u een [tag](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) toevoegt aan een Hana-eenheid voor grote instanties. De manier waarop Tags worden toegewezen, verschilt niet van het toewijzen van tags aan Vm's. Net als bij Vm's zijn de Tags aanwezig in de meta gegevens van Azure en, voor HANA grote instanties, dezelfde beperkingen als labels voor Vm's.
+Een andere mogelijkheid is dat u een [tag](../../../azure-resource-manager/management/tag-resources.md) toevoegt aan een Hana-eenheid voor grote instanties. De manier waarop Tags worden toegewezen, verschilt niet van het toewijzen van tags aan Vm's. Net als bij Vm's zijn de Tags aanwezig in de meta gegevens van Azure en, voor HANA grote instanties, dezelfde beperkingen als labels voor Vm's.
 
 Het verwijderen van Tags werkt op dezelfde manier als met virtuele machines. Beide activiteiten, Toep assen en verwijderen van een tag worden vermeld in het activiteiten logboek van de bepaalde HANA grote instantie-eenheid.
 
@@ -119,7 +119,7 @@ De sectie- **Eigenschappen** bevatten belang rijke informatie die u krijgt wanne
 
 ![bovenste deel van de HLI-eigenschappen in Azure Portal](./media/hana-li-portal/portal-properties-top.png)
 
-De eerste paar gegevens items, u hebt al in het overzichts scherm gezien. Maar een belang rijk deel van de gegevens is de ExpressRoute circuit-ID, die u hebt gekregen toen de eerste geïmplementeerde eenheden werden ontvangen. In sommige ondersteunings gevallen wordt u mogelijk gevraagd om die gegevens. Onder aan de scherm opname wordt een belang rijke gegevens invoer weer gegeven. De weer gegeven gegevens zijn het IP-adres van de NFS-opslaglaag waarmee uw opslag wordt geïsoleerd in uw **Tenant** in de Hana-verzameling met grote exemplaren. Dit IP-adres is ook nodig wanneer u het [configuratie bestand bewerkt voor back-ups van opslag momentopnamen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-backup-restore#set-up-storage-snapshots). 
+De eerste paar gegevens items, u hebt al in het overzichts scherm gezien. Maar een belang rijk deel van de gegevens is de ExpressRoute circuit-ID, die u hebt gekregen toen de eerste geïmplementeerde eenheden werden ontvangen. In sommige ondersteunings gevallen wordt u mogelijk gevraagd om die gegevens. Onder aan de scherm opname wordt een belang rijke gegevens invoer weer gegeven. De weer gegeven gegevens zijn het IP-adres van de NFS-opslaglaag waarmee uw opslag wordt geïsoleerd in uw **Tenant** in de Hana-verzameling met grote exemplaren. Dit IP-adres is ook nodig wanneer u het [configuratie bestand bewerkt voor back-ups van opslag momentopnamen](./hana-backup-restore.md#set-up-storage-snapshots). 
 
 Terwijl u omlaag schuift in het eigenschappen venster, ontvangt u aanvullende gegevens, zoals een unieke Resource-ID voor uw HANA-grote exemplaar-eenheid of de abonnements-ID die is toegewezen aan de implementatie.
 
@@ -159,6 +159,5 @@ Wanneer u de vragen hebt beantwoord en aanvullende details hebt gegeven, kunt u 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [SAP HANA (grote exemplaren) in azure controleren](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/troubleshooting-monitoring)
-- [Bewaken en problemen oplossen vanaf de HANA-zijde](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-monitor-troubleshoot)
-
+- [SAP HANA (grote exemplaren) in azure controleren](./troubleshooting-monitoring.md)
+- [Bewaken en problemen oplossen vanaf de HANA-zijde](./hana-monitor-troubleshoot.md)

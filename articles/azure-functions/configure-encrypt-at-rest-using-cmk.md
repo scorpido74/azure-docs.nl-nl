@@ -3,13 +3,14 @@ title: Uw toepassings bron op rest versleutelen
 description: Versleutel uw toepassings gegevens in Azure Storage en implementeer deze als een pakket bestand.
 ms.topic: article
 ms.date: 03/06/2020
-ms.openlocfilehash: 62179e900ace0d6d7b8b1f07e8f0ab685508f991
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6dfb56a5ef6b1ab3cfbd0762bf7816e37ce0aa39
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79408721"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081879"
 ---
-# <a name="encryption-at-rest-using-customer-managed-keys"></a>Versleuteling in rust met door de klant beheerde sleutels
+# <a name="encrypt-your-application-data-at-rest-using-customer-managed-keys"></a>Versleutel uw toepassings gegevens in rust met door de klant beheerde sleutels
 
 Voor het versleutelen van de toepassings gegevens van uw functie-app in rust zijn een Azure Storage-account en een Azure Key Vault vereist. Deze services worden gebruikt wanneer u uw app uitvoert vanuit een implementatie pakket.
 

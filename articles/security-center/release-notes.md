@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2020
 ms.author: memildin
-ms.openlocfilehash: e8dc2edf19279aff05e5d5be6096505acf1b3438
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 66c8db580d0da29aa0be1193bf41b491f388e55a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519577"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083970"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Wat is er nieuw in Azure Security Center?
 
@@ -33,8 +33,8 @@ Deze pagina wordt regel matig bijgewerkt. Ga daarom vaak opnieuw te werk. Als u 
 
 De updates in juli zijn onder andere:
 - [Beveiliging tegen bedreigingen voor Azure Storage uitgebreid tot Azure Files en Azure Data Lake Storage Gen2 bevatten (preview)](#threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview)
+- [Verbeteringen in de container beveiliging-sneller zoeken in het REGI ster en de vernieuwde documentatie](#container-security-improvements---faster-registry-scanning-and-refreshed-documentation)
 - [Zes beleids regels voor de verouderde beveiliging van SQL Advanced Data](#six-policies-for-sql-advanced-data-security-deprecated)
-
 
 
 ### <a name="threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview"></a>Beveiliging tegen bedreigingen voor Azure Storage uitgebreid tot Azure Files en Azure Data Lake Storage Gen2 bevatten (preview)
@@ -44,6 +44,25 @@ Bedreigings beveiliging voor Azure Storage detecteert mogelijk schadelijke activ
 Uw gegevens kunnen worden beveiligd, ongeacht of deze zijn opgeslagen als blob-containers, bestands shares of gegevens-meren. 
 
 Meer informatie over [beveiliging tegen bedreigingen voor Azure Storage](threat-protection.md#threat-protection-for-azure-storage-).
+
+
+### <a name="container-security-improvements---faster-registry-scanning-and-refreshed-documentation"></a>Verbeteringen in de container beveiliging-sneller zoeken in het REGI ster en de vernieuwde documentatie
+
+Als onderdeel van de continue investeringen in het domein container beveiliging zijn we blij met het delen van een aanzienlijke prestatie verbetering in de dynamische scans van Security Center container installatie kopieën die zijn opgeslagen in Azure Container Registry. Scans zijn nu doorgaans in ongeveer twee minuten voltooid. In sommige gevallen kan het tot vijf tien minuten duren.
+
+Ter verbetering van de duidelijkheid en richt lijnen met betrekking tot de beveiligings mogelijkheden van de container van Azure Security Center, hebben we ook de pagina's met documentatie over de container beveiliging vernieuwd. 
+
+Meer informatie over de beveiliging van de container van Security Center in de volgende artikelen:
+
+- [Overzicht van de beveiligings functies van de container van Security Center](https://docs.microsoft.com/azure/security-center/container-security)
+- [Details van de integratie met Azure Container Registry](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)
+- [Details van de integratie met de Azure Kubernetes-service](https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration)
+- [Uw registers scannen en uw docker-hosts beveiligen](https://docs.microsoft.com/azure/security-center/monitor-container-security)
+- [Beveiligings waarschuwingen van de functies voor beveiliging tegen bedreigingen voor Azure Kubernetes-Service clusters](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-akscluster)
+- [Beveiligings waarschuwingen van de functies voor beveiliging tegen bedreigingen voor Azure Kubernetes-service-hosts](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-containerhost)
+- [Beveiligings aanbevelingen voor containers](https://docs.microsoft.com/azure/security-center/recommendations-reference#recs-containers)
+
+
 
 
 ### <a name="six-policies-for-sql-advanced-data-security-deprecated"></a>Zes beleids regels voor de verouderde beveiliging van SQL Advanced Data
@@ -230,14 +249,14 @@ Met deze update worden de volgende wijzigingen aangebracht in deze functie:
 
 - De aanbeveling waarmee u wordt geadviseerd om JIT in te scha kelen voor een VM, is hernoemd. Voorheen moet ' just-in-time-netwerk toegangs beheer worden toegepast op virtuele machines ' nu: ' beheer poorten van virtuele machines moeten worden beveiligd met Just-in-time-netwerk toegangs beheer '.
 
-- De aanbeveling is zo ingesteld dat deze alleen wordt geactiveerd als er open beheer poorten zijn.
+- De aanbeveling wordt alleen geactiveerd als er open beheer poorten zijn.
 
 Meer informatie over [de JIT-toegangs functie](security-center-just-in-time.md).
 
 
 ### <a name="custom-recommendations-have-been-moved-to-a-separate-security-control"></a>Aangepaste aanbevelingen zijn verplaatst naar een afzonderlijk beveiligings beheer
 
-Een van de beveiligings besturings elementen die zijn geïntroduceerd in de verbeterde beveiligde Score is ' Implementeer beveiligings best practices '. Aangepaste aanbevelingen die zijn gemaakt voor uw abonnementen, worden automatisch in dat besturings element geplaatst. 
+Een beveiligings controle dat is geïntroduceerd in de verbeterde beveiligde Score is ' Implementeer beveiligings best practices '. Aangepaste aanbevelingen die zijn gemaakt voor uw abonnementen, worden automatisch in dat besturings element geplaatst. 
 
 Om u te helpen uw aangepaste aanbevelingen gemakkelijker te vinden, zijn deze naar een speciaal beveiligings beheer, ' aangepaste aanbevelingen ', verplaatst. Dit besturings element heeft geen invloed op uw beveiligde Score.
 
@@ -260,7 +279,7 @@ Meer informatie over beveiligings controles in [Enhanced Secure Score (preview) 
 
 ### <a name="expanded-security-control-implement-security-best-practices"></a>Uitgebreide beveiliging, aanbevolen procedures voor het implementeren van beveiliging 
 
-Een van de beveiligings mechanismen die zijn geïntroduceerd met de verbeterde beveiligde Score is ' Implementeer beveiligings best practices '. Wanneer een aanbeveling zich in dit besturings element bevindt, heeft dit geen invloed op de beveiligde Score. 
+Een beveiligings controle dat is geïntroduceerd in de verbeterde beveiligde Score is ' Implementeer beveiligings best practices '. Wanneer een aanbeveling zich in dit besturings element bevindt, heeft dit geen invloed op de beveiligde Score. 
 
 Met deze update zijn drie aanbevelingen verplaatst van de besturings elementen waarin deze oorspronkelijk zijn geplaatst, en in dit best practices-besturings element. We hebben deze stap doorgevoerd omdat er is vastgesteld dat het risico van deze drie aanbevelingen lager is dan oorspronkelijk werd aangenomen.
 

@@ -5,14 +5,14 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/17/2020
+ms.date: 07/22/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 61d9712026daab63a002793adf2e17b9db943f94
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1640395b3a73116c27894a2b3f2b95b8bd5bb2eb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84976894"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084157"
 ---
 # <a name="supported-postgresql-major-versions"></a>Ondersteunde PostgreSQL primaire versies
 Micro soft streeft ernaar ondersteuning te bieden voor n-2 versies van de PostgreSQL-engine in Azure Database for PostgreSQL-één server. De versies zijn de huidige primaire versie op Azure (n) en de twee voor gaande primaire versies (-2).
@@ -34,7 +34,9 @@ De huidige secundaire release is 9.5.20. Raadpleeg de [postgresql-documentatie](
 ## <a name="managing-upgrades"></a>Upgrades beheren
 Het PostgreSQL-project ondervindt regel matig kleine releases voor het oplossen van gemelde bugs. Azure Database for PostgreSQL Servert automatisch servers met secundaire releases tijdens de maandelijkse implementaties van de service. 
 
-Automatische upgrade voor primaire versie wordt niet ondersteund. Er is bijvoorbeeld geen automatische upgrade van PostgreSQL 9.5 naar PostgreSQL 9.6. Als u een upgrade wilt uitvoeren naar de volgende primaire versie, maakt u een [databasedump en -herstel](./howto-migrate-using-dump-and-restore.md) op een server die is gemaakt met de nieuwe versie van de engine.
+Automatische in-place Upgrades voor primaire versies worden niet ondersteund. Als u een upgrade wilt uitvoeren naar de volgende primaire versie, kunt u 
+   * [Pg_dump en pg_restore](./howto-migrate-using-dump-and-restore.md) gebruiken om een Data Base te verplaatsen naar een server die is gemaakt met de nieuwe engine versie
+   * U kunt ook een upgrade uitvoeren van PostgreSQL 10 naar 11 met behulp van de [Azure data base Migration service](..\dms\tutorial-azure-postgresql-to-azure-postgresql-online-portal.md)
 
 ### <a name="version-syntax"></a>Versie syntaxis
 Vóór PostgreSQL versie 10 wordt het [postgresql-versie beleid](https://www.postgresql.org/support/versioning/) beschouwd als een _primaire versie_ -upgrade, zodat het eerste _of_ tweede nummer toeneemt. Bijvoorbeeld: 9,5 tot 9,6 werd beschouwd als een _primaire_ versie-upgrade. Vanaf versie 10 wordt alleen een wijziging in het eerste getal beschouwd als een primaire versie-upgrade. Een voor beeld: 10,0 tot 10,1 is een _kleine_ release-upgrade. Versie 10 tot 11 is een _primaire_ versie-upgrade.

@@ -39,9 +39,9 @@
         - name: ADCD instellen in zD&T
           href: ibm/demo.md
         - name: IBM Db2 pureScale
-          href: /azure/virtual-machines/linux/ibm-db2-purescale-azure?toc=/azure/virtual-machines/workloads/mainframe-rehosting/toc.json
+          href: ../../linux/ibm-db2-purescale-azure.md?toc=/azure/virtual-machines/workloads/mainframe-rehosting/toc.json
         - name: IBM Db2 pureScale implementeren
-          href: /azure/virtual-machines/linux/deploy-ibm-db2-purescale-azure?toc=/azure/virtual-machines/workloads/mainframe-rehosting/toc.json
+          href: ../../linux/deploy-ibm-db2-purescale-azure.md?toc=/azure/virtual-machines/workloads/mainframe-rehosting/toc.json
     - name: Resources
       items:
         - name: Technische documenten

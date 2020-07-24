@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 37ade037b7f3c88f5ff33d7fc4640b19f366fe7a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 05a9b8009d896a2ee87df3e1c4493d249a887566
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531526"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083919"
 ---
 # <a name="connect-your-okta-single-sign-on-to-azure-sentinel-with-azure-function"></a>Uw Okta single sign-on koppelen aan Azure Sentinel met Azure function
+
+> [!IMPORTANT]
+> De Okta single sign-on Data Connector in azure Sentinel is momenteel beschikbaar als open bare preview.
+> Deze functie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 Met de Okta single sign-on (SSO)-connector kunt u eenvoudig al uw Okta-logboeken met [eenmalige aanmelding (SSO)](https://www.okta.com/products/single-sign-on/) met Azure Sentinel verbinden, om Dash boards weer te geven, aangepaste waarschuwingen te maken en het onderzoek te verbeteren. Integratie tussen Okta single sign-on en Azure Sentinel maakt gebruik van Azure Functions om logboek gegevens te verzamelen met behulp van REST API.
 

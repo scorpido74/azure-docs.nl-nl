@@ -2,21 +2,22 @@
 title: YAML-verwijzing voor container groep
 description: Verwijzing voor het YAML-bestand dat wordt ondersteund door Azure Container Instances voor het configureren van een container groep
 ms.topic: article
-ms.date: 08/12/2019
-ms.openlocfilehash: be78c7d498187486a1502da17faa2b8faa5a0982
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/06/2020
+ms.openlocfilehash: d0ec8d13eebba1c60f5a52f8c43bdd8b90eeb913
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84730523"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084757"
 ---
 # <a name="yaml-reference-azure-container-instances"></a>YAML-verwijzing: Azure Container Instances
 
 In dit artikel worden de syntaxis en eigenschappen beschreven voor het YAML-bestand dat wordt ondersteund door Azure Container Instances om een [container groep](container-instances-container-groups.md)te configureren. Gebruik een YAML-bestand om de groeps configuratie in te voeren op de opdracht [AZ container Create][az-container-create] in de Azure cli. 
 
-Een YAML-bestand is een handige manier om een container groep te configureren voor reproduceer bare implementaties. Het is een beknopt alternatief voor het gebruik van een [Resource Manager-sjabloon](/azure/templates/Microsoft.ContainerInstance/2018-10-01/containerGroups) of de Azure container instances sdk's om een container groep te maken of bij te werken.
+Een YAML-bestand is een handige manier om een container groep te configureren voor reproduceer bare implementaties. Het is een beknopt alternatief voor het gebruik van een [Resource Manager-sjabloon](/azure/templates/Microsoft.ContainerInstance/2019-12-01/containerGroups) of de Azure container instances sdk's om een container groep te maken of bij te werken.
 
 > [!NOTE]
-> Deze verwijzing is van toepassing op YAML-bestanden voor Azure Container Instances REST API-versie `2018-10-01` .
+> Deze verwijzing is van toepassing op YAML-bestanden voor Azure Container Instances REST API-versie `2019-12-01` .
 
 ## <a name="schema"></a>Schema 
 
@@ -24,7 +25,7 @@ Het schema voor het YAML-bestand volgt, inclusief opmerkingen om de sleutel eige
 
 ```yml
 name: string  # Name of the container group
-apiVersion: '2018-10-01'
+apiVersion: '2019-12-01'
 location: string
 tags: {}
 identity: 
@@ -126,6 +127,25 @@ properties: # Properties of container group
     - string
     searchDomains: string
     options: string
+  sku: string # SKU for the container group
+  encryptionProperties:
+    vaultBaseUrl: string
+    keyName: string
+    keyVersion: string
+  initContainers: # Array of init containers in the group
+  - name: string
+    properties:
+      image: string
+      command:
+      - string
+      environmentVariables:
+      - name: string
+        value: string
+        secureValue: string
+      volumeMounts:
+      - name: string
+        mountPath: string
+        readOnly: boolean
 ```
 
 ## <a name="property-values"></a>Eigenschaps waarden
@@ -138,7 +158,7 @@ De volgende tabellen bevatten een beschrijving van de waarden die u moet instell
 
 |  Naam | Type | Vereist | Waarde |
 |  ---- | ---- | ---- | ---- |
-|  naam | tekenreeks | Yes | De naam van de container groep. |
+|  name | tekenreeks | Yes | De naam van de container groep. |
 |  apiVersion | vaste | Yes | 2018-10-01 |
 |  location | tekenreeks | No | De resource locatie. |
 |  tags | object | No | De resource Tags. |
@@ -162,15 +182,18 @@ De volgende tabellen bevatten een beschrijving van de waarden die u moet instell
 
 |  Naam | Type | Vereist | Waarde |
 |  ---- | ---- | ---- | ---- |
-|  containers | matrix | Yes | De containers in de container groep. - [Container object](#container-object) |
-|  imageRegistryCredentials | matrix | No | De register referenties voor de installatie kopie waarmee de container groep wordt gemaakt. - [ImageRegistryCredential-object](#imageregistrycredential-object) |
+|  containers | array | Yes | De containers in de container groep. - [Container object](#container-object) |
+|  imageRegistryCredentials | array | No | De register referenties voor de installatie kopie waarmee de container groep wordt gemaakt. - [ImageRegistryCredential-object](#imageregistrycredential-object) |
 |  restartPolicy | vaste | No | Start het beleid voor alle containers binnen de container groep opnieuw. - `Always`Altijd opnieuw opstarten opnieuw opstarten `OnFailure` bij fout- `Never` nooit opnieuw opstarten. -Always, OnFailure, Never |
 |  IPAdres | object | No | Het IP-adres type van de container groep. - [IpAddress-object](#ipaddress-object) |
 |  osType | vaste | Yes | Het type besturings systeem dat vereist is voor de containers in de container groep. -Windows of Linux |
-|  volumes | matrix | No | De lijst met volumes die kunnen worden gekoppeld door containers in deze container groep. - [Volume object](#volume-object) |
+|  volumes | array | No | De lijst met volumes die kunnen worden gekoppeld door containers in deze container groep. - [Volume object](#volume-object) |
 |  diagnostische gegevens | object | No | De diagnostische gegevens voor een container groep. - [ContainerGroupDiagnostics-object](#containergroupdiagnostics-object) |
 |  networkProfile | object | No | De netwerk profiel gegevens voor een container groep. - [ContainerGroupNetworkProfile-object](#containergroupnetworkprofile-object) |
 |  dnsConfig | object | No | De DNS-configuratie-informatie voor een container groep. - [DnsConfiguration-object](#dnsconfiguration-object) |
+| sku | vaste | No | De SKU voor een container groep: Standard of dedicated |
+| encryptionProperties | object | No | De versleutelings eigenschappen voor een container groep. - [EncryptionProperties-object](#encryptionproperties-object) | 
+| initContainers | array | No | De init-containers voor een container groep. - [InitContainerDefinition-object](#initcontainerdefinition-object) |
 
 
 
@@ -179,7 +202,7 @@ De volgende tabellen bevatten een beschrijving van de waarden die u moet instell
 
 |  Naam | Type | Vereist | Waarde |
 |  ---- | ---- | ---- | ---- |
-|  naam | tekenreeks | Yes | De door de gebruiker gegeven naam van het container exemplaar. |
+|  name | tekenreeks | Yes | De door de gebruiker gegeven naam van het container exemplaar. |
 |  properties | object | Yes | De eigenschappen van het container exemplaar. - [ContainerProperties-object](#containerproperties-object) |
 
 
@@ -200,7 +223,7 @@ De volgende tabellen bevatten een beschrijving van de waarden die u moet instell
 
 |  Naam | Type | Vereist | Waarde |
 |  ---- | ---- | ---- | ---- |
-|  ports | matrix | Yes | De lijst met poorten die worden weer gegeven in de container groep. - [Poort object](#port-object) |
+|  ports | array | Yes | De lijst met poorten die worden weer gegeven in de container groep. - [Poort object](#port-object) |
 |  type | vaste | Yes | Hiermee geeft u op of het IP-adres beschikbaar is voor het open bare Internet of het persoonlijke VNET. -Openbaar of privé |
 |  IP | tekenreeks | No | Het IP-adres dat toegankelijk is voor het open bare Internet. |
 |  dnsNameLabel | tekenreeks | No | Het DNS-naam label voor het IP-adres. |
@@ -212,7 +235,7 @@ De volgende tabellen bevatten een beschrijving van de waarden die u moet instell
 
 |  Naam | Type | Vereist | Waarde |
 |  ---- | ---- | ---- | ---- |
-|  naam | tekenreeks | Yes | De naam van het volume. |
+|  name | tekenreeks | Yes | De naam van het volume. |
 |  azureFile | object | No | Het Azure-bestands volume. - [AzureFileVolume-object](#azurefilevolume-object) |
 |  emptyDir | object | No | Het lege directory volume. |
 |  geheim | object | No | Het geheime volume. |
@@ -243,11 +266,25 @@ De volgende tabellen bevatten een beschrijving van de waarden die u moet instell
 
 |  Naam | Type | Vereist | Waarde |
 |  ---- | ---- | ---- | ---- |
-|  Naam servers | matrix | Yes | De DNS-servers voor de container groep. -teken reeks |
+|  Naam servers | array | Yes | De DNS-servers voor de container groep. -teken reeks |
 |  searchDomains | tekenreeks | No | De DNS-Zoek domeinen voor het opzoeken van hostnamen in de container groep. |
 |  opties | tekenreeks | No | De DNS-opties voor de container groep. |
 
 
+### <a name="encryptionproperties-object"></a>EncryptionProperties-object
+
+| Naam  | Type  | Vereist  | Waarde |
+|  ---- | ---- | ---- | ---- |
+| vaultBaseUrl  | tekenreeks    | Yes   | De basis-URL van de sleutel kluis. |
+| keyName   | tekenreeks    | Yes   | De naam van de versleutelings sleutel. |
+| Versie    | tekenreeks    | Yes   | De versie van de versleutelings sleutel. |
+
+### <a name="initcontainerdefinition-object"></a>InitContainerDefinition-object
+
+| Naam  | Type  | Vereist  | Waarde |
+|  ---- | ---- | ---- | ---- |
+| name  | tekenreeks |  Yes | De naam voor de init-container. |
+| properties    | object    | Yes   | De eigenschappen voor de init-container. - [InitContainerPropertiesDefinition-object](#initcontainerpropertiesdefinition-object)
 
 
 ### <a name="containerproperties-object"></a>ContainerProperties-object
@@ -255,11 +292,11 @@ De volgende tabellen bevatten een beschrijving van de waarden die u moet instell
 |  Naam | Type | Vereist | Waarde |
 |  ---- | ---- | ---- | ---- |
 |  image | tekenreeks | Yes | De naam van de installatie kopie die wordt gebruikt om het container exemplaar te maken. |
-|  command | matrix | No | De opdrachten die moeten worden uitgevoerd binnen het container exemplaar in het formulier exec. -teken reeks |
-|  ports | matrix | No | De weer gegeven poorten op het container exemplaar. - [ContainerPort-object](#containerport-object) |
-|  Omgevings variabelen | matrix | No | De omgevings variabelen die in het container exemplaar moeten worden ingesteld. - [EnvironmentVariable-object](#environmentvariable-object) |
+|  command | array | No | De opdrachten die moeten worden uitgevoerd binnen het container exemplaar in het formulier exec. -teken reeks |
+|  ports | array | No | De weer gegeven poorten op het container exemplaar. - [ContainerPort-object](#containerport-object) |
+|  Omgevings variabelen | array | No | De omgevings variabelen die in het container exemplaar moeten worden ingesteld. - [EnvironmentVariable-object](#environmentvariable-object) |
 |  resources | object | Yes | De resource vereisten van het container exemplaar. - [ResourceRequirements-object](#resourcerequirements-object) |
-|  volumeMounts | matrix | No | Het volume koppelt beschikbaar voor het container exemplaar. - [VolumeMount-object](#volumemount-object) |
+|  volumeMounts | array | No | Het volume koppelt beschikbaar voor het container exemplaar. - [VolumeMount-object](#volumemount-object) |
 |  livenessProbe | object | No | De duur van de liveiteit. - [ContainerProbe-object](#containerprobe-object) |
 |  readinessProbe | object | No | De gereedheids test. - [ContainerProbe-object](#containerprobe-object) |
 
@@ -281,7 +318,7 @@ De volgende tabellen bevatten een beschrijving van de waarden die u moet instell
 |  Naam | Type | Vereist | Waarde |
 |  ---- | ---- | ---- | ---- |
 |  shareName | tekenreeks | Yes | De naam van de Azure-bestands share die moet worden gekoppeld als een volume. |
-|  Kenmerk | booleaans | No | De vlag waarmee wordt aangegeven of het Azure-bestand dat als een volume is gedeeld, alleen-lezen is. |
+|  Kenmerk | boolean | No | De vlag waarmee wordt aangegeven of het Azure-bestand dat als een volume is gedeeld, alleen-lezen is. |
 |  storageAccountName | tekenreeks | Yes | De naam van het opslag account dat de Azure-bestands share bevat. |
 |  storageAccountKey | tekenreeks | No | De toegangs sleutel voor het opslag account die wordt gebruikt om toegang te krijgen tot de Azure-bestands share. |
 
@@ -298,7 +335,6 @@ De volgende tabellen bevatten een beschrijving van de waarden die u moet instell
 
 
 
-
 ### <a name="loganalytics-object"></a>LogAnalytics-object
 
 |  Naam | Type | Vereist | Waarde |
@@ -309,7 +345,14 @@ De volgende tabellen bevatten een beschrijving van de waarden die u moet instell
 |  metagegevens | object | No | Meta gegevens voor log Analytics. |
 
 
+### <a name="initcontainerpropertiesdefinition-object"></a>InitContainerPropertiesDefinition-object
 
+| Naam  | Type  | Vereist  | Waarde |
+|  ---- | ---- | ---- | ---- |
+| image | tekenreeks    | No    | De afbeelding van de init-container. |
+| command   | array | No    | De opdracht die moet worden uitgevoerd binnen de init-container in het formulier exec. -teken reeks |
+| Omgevings variabelen | array  | No |De omgevings variabelen die moeten worden ingesteld in de init-container. - [EnvironmentVariable-object](#environmentvariable-object)
+| volumeMounts |array   | No    | Het volume koppelt beschikbaar voor de init-container. - [VolumeMount-object](#volumemount-object)
 
 ### <a name="containerport-object"></a>ContainerPort-object
 
@@ -325,7 +368,7 @@ De volgende tabellen bevatten een beschrijving van de waarden die u moet instell
 
 |  Naam | Type | Vereist | Waarde |
 |  ---- | ---- | ---- | ---- |
-|  naam | tekenreeks | Yes | De naam van de omgevings variabele. |
+|  name | tekenreeks | Yes | De naam van de omgevings variabele. |
 |  waarde | tekenreeks | No | De waarde van de omgevings variabele. |
 |  Securevalue op | tekenreeks | No | De waarde van de variabele beveiligde omgeving. |
 
@@ -346,9 +389,9 @@ De volgende tabellen bevatten een beschrijving van de waarden die u moet instell
 
 |  Naam | Type | Vereist | Waarde |
 |  ---- | ---- | ---- | ---- |
-|  naam | tekenreeks | Yes | De naam van het volume koppeling. |
+|  name | tekenreeks | Yes | De naam van het volume koppeling. |
 |  mountPath | tekenreeks | Yes | Het pad binnen de container waarin het volume moet worden gekoppeld. Mag geen dubbele punt (:)) bevatten. |
-|  Kenmerk | booleaans | No | De vlag waarmee wordt aangegeven of de koppeling van het volume alleen-lezen is. |
+|  Kenmerk | boolean | No | De vlag waarmee wordt aangegeven of de koppeling van het volume alleen-lezen is. |
 
 
 
@@ -394,7 +437,7 @@ De volgende tabellen bevatten een beschrijving van de waarden die u moet instell
 
 |  Naam | Type | Vereist | Waarde |
 |  ---- | ---- | ---- | ---- |
-|  command | matrix | No | De opdrachten die moeten worden uitgevoerd in de container. -teken reeks |
+|  command | array | No | De opdrachten die moeten worden uitgevoerd in de container. -teken reeks |
 
 
 
@@ -403,7 +446,7 @@ De volgende tabellen bevatten een beschrijving van de waarden die u moet instell
 
 |  Naam | Type | Vereist | Waarde |
 |  ---- | ---- | ---- | ---- |
-|  path | tekenreeks | No | Het pad dat moet worden getest. |
+|  leertraject | tekenreeks | No | Het pad dat moet worden getest. |
 |  poort | geheel getal | Yes | Het poort nummer dat moet worden getest. |
 |  niveaus | vaste | No | Het schema. -http of https |
 

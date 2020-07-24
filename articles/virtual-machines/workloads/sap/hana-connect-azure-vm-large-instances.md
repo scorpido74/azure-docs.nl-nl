@@ -15,15 +15,16 @@ ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fb6f88fbfcbd539603e435b11661c428d54f3c34
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3231241e2fbc6e02725b5611d05b9ee4f0f1a35a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74224733"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082168"
 ---
 # <a name="connecting-azure-vms-to-hana-large-instances"></a>Azure-VM's verbinden met grote HANA-instanties
 
-Het artikel [Wat is SAP Hana op Azure (grote exemplaren)?](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) de minimale implementatie van HANA grote instanties met de SAP-toepassingslaag in azure ziet er als volgt uit:
+Het artikel [Wat is SAP Hana op Azure (grote exemplaren)?](./hana-overview-architecture.md) de minimale implementatie van HANA grote instanties met de SAP-toepassingslaag in azure ziet er als volgt uit:
 
 ![Azure VNet verbonden met SAP HANA op Azure (grote exemplaren) en on-premises](./media/hana-overview-architecture/image1-architecture.png)
 
@@ -93,13 +94,13 @@ Sommige IP-adresbereiken die nodig zijn voor de implementatie van HANA grote ins
 
 Optionele IP-adresbereiken die uiteindelijk moeten worden verzonden naar micro soft:
 
-- Als u ervoor kiest om [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) te gebruiken om directe route ring van on-premises naar Hana grote instantie-eenheden in te scha kelen, moet u een ander/29 IP-adres bereik reserveren. Dit bereik mag niet overlappen met een van de andere IP-adresbereiken die u eerder hebt gedefinieerd.
-- Als u ervoor kiest om [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) te gebruiken om direct routeren vanuit een Hana grote instantie-Tenant in een Azure-regio naar een andere Hana grote instantie-Tenant in een andere Azure-regio te scha kelen, moet u een ander/29 IP-adres bereik reserveren. Dit bereik mag niet overlappen met een van de andere IP-adresbereiken die u eerder hebt gedefinieerd.
+- Als u ervoor kiest om [ExpressRoute Global Reach](../../../expressroute/expressroute-global-reach.md) te gebruiken om directe route ring van on-premises naar Hana grote instantie-eenheden in te scha kelen, moet u een ander/29 IP-adres bereik reserveren. Dit bereik mag niet overlappen met een van de andere IP-adresbereiken die u eerder hebt gedefinieerd.
+- Als u ervoor kiest om [ExpressRoute Global Reach](../../../expressroute/expressroute-global-reach.md) te gebruiken om direct routeren vanuit een Hana grote instantie-Tenant in een Azure-regio naar een andere Hana grote instantie-Tenant in een andere Azure-regio te scha kelen, moet u een ander/29 IP-adres bereik reserveren. Dit bereik mag niet overlappen met een van de andere IP-adresbereiken die u eerder hebt gedefinieerd.
 
 Voor meer informatie over Global Reach ExpressRoute en gebruik rond HANA grote instanties controleert u de documenten:
 
-- [Netwerk architectuur van SAP HANA (grote exemplaren)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture)
-- [Een virtueel netwerk verbinden met HANA grote instanties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-connect-vnet-express-route)
+- [Netwerk architectuur van SAP HANA (grote exemplaren)](./hana-network-architecture.md)
+- [Een virtueel netwerk verbinden met HANA grote instanties](./hana-connect-vnet-express-route.md)
  
 U moet de IP-adresbereiken definiëren en plannen die eerder zijn beschreven. U hoeft deze echter niet allemaal naar micro soft te verzenden. De IP-adresbereiken die u nodig hebt voor de naam van micro soft zijn:
 

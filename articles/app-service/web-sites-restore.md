@@ -5,11 +5,12 @@ ms.assetid: 4444dbf7-363c-47e2-b24a-dbd45cb08491
 ms.topic: article
 ms.date: 07/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 1295080d0eec7a4e88029cdadd85863f5f40d034
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c1b0ce62905424032c2100a1a032fa43ba97578f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74689245"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084854"
 ---
 # <a name="restore-an-app-in-azure"></a>Een app in Azure herstellen
 In dit artikel wordt beschreven hoe u een app kunt herstellen in [Azure app service](../app-service/overview.md) waarvan u eerder een back-up hebt gemaakt (zie een back-up van [uw app maken in azure](manage-backup.md)). U kunt uw app met de gekoppelde data bases op aanvraag herstellen naar een eerdere status of een nieuwe app maken op basis van een van de back-ups van de oorspronkelijke app. Azure App Service ondersteunt de volgende data bases voor back-up en herstel:
@@ -28,14 +29,14 @@ Herstellen vanuit back-ups is beschikbaar voor apps die worden uitgevoerd in de 
     ![Kies nu herstellen][ChooseRestoreNow]
 2. Selecteer op de pagina **herstellen** eerst de bron van de back-up.
    
-    ![](./media/web-sites-restore/021ChooseSource1.png)
+    ![Scherm afbeelding die laat zien waar de back-upbron moet worden geselecteerd.](./media/web-sites-restore/021ChooseSource1.png)
    
     Met de optie **app-back-up** worden alle bestaande back-ups van de huidige app weer gegeven. u kunt er eenvoudig een selecteren.
     Met de optie **opslag** kunt u elk back-upzip-bestand selecteren op basis van een bestaand Azure Storage account en elke container in uw abonnement.
     Als u een back-up van een andere app wilt herstellen, gebruikt u de optie **opslag** .
 3. Geef vervolgens de bestemming voor het herstellen van de app op in de **terugzet bestemming**.
    
-    ![](./media/web-sites-restore/022ChooseDestination1.png)
+    ![Scherm afbeelding die laat zien waar u de bestemming voor het herstellen van de app kunt opgeven.](./media/web-sites-restore/022ChooseDestination1.png)
    
    > [!WARNING]
    > Als u **overschrijven**kiest, worden alle bestaande gegevens in uw huidige app gewist en overschreven. Voordat u op **OK**klikt, moet u ervoor zorgen dat deze precies overeenkomt met wat u wilt doen.
@@ -76,7 +77,7 @@ Op de pagina Details wordt de beschik bare informatie weer gegeven met betrekkin
 
 ## <a name="automate-with-scripts"></a>Automatiseren met scripts
 
-U kunt back-upbeheer automatiseren met scripts met behulp van [Azure cli](/cli/azure/install-azure-cli) of [Azure PowerShell](/powershell/azure/overview).
+U kunt back-upbeheer automatiseren met scripts met behulp van [Azure cli](/cli/azure/install-azure-cli) of [Azure PowerShell](/powershell/azure/).
 
 Zie voor voor beelden:
 

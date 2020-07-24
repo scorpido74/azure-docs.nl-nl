@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: ffbc850c580daee5890f9c75021cc518918d098e
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 073a92f07d17614cb386c5c33a8058af9b59aaea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145383"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084072"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity-preview"></a>Een verbinding met een Azure Storage account instellen met behulp van een beheerde identiteit (preview)
 
@@ -53,17 +53,19 @@ In deze stap geeft u uw Azure Cognitive Search-service toestemming om gegevens u
     ![Roltoewijzing toevoegen](./media/search-managed-identities/add-role-assignment-storage.png "Roltoewijzing toevoegen")
 
 4. Selecteer de gewenste rol (len) op basis van het type opslag account dat u wilt indexeren:
-    1. Voor Azure Blob-opslag moet u uw zoek service toevoegen aan de rollen **lezer en gegevens toegang** en **opslag BLOB-gegevens** .
-    1. Azure Data Lake Storage Gen2 moet u uw zoek service toevoegen aan de rollen **lezer en gegevens toegang** en **opslag BLOB-gegevens** .
-    1. Voor Azure Table-opslag moet u de zoek service alleen toevoegen aan de rol **lezer en gegevens toegang** .
+    1. Voor Azure Blob-opslag moet u uw zoek service toevoegen aan de rol van **BLOB-gegevens lezer voor opslag** .
+    1. Azure Data Lake Storage Gen2 moet u uw zoek service toevoegen aan de rol van **BLOB-gegevens lezer voor opslag** .
+    1. Voor Azure Table-opslag moet u uw zoek service toevoegen aan de rol **lezer en gegevens toegang** .
 5.  **Wijs toegang toe** als **Azure AD-gebruiker,-groep of-Service-Principal**
 6.  Zoek naar uw zoek service, Selecteer deze en selecteer vervolgens **Opslaan** .
 
+    Voor beeld voor Azure Blob Storage en Azure Data Lake Storage Gen2:
+
+    ![Roltoewijzing voor gegevens lezer van opslag-BLOB toevoegen](./media/search-managed-identities/add-role-assignment-storage-blob-data-reader.png "Roltoewijzing voor gegevens lezer van opslag-BLOB toevoegen")
+
+    Voor beeld voor Azure-tabel opslag:
+
     ![Toewijzing van de rol lezer en gegevens toegang toevoegen](./media/search-managed-identities/add-role-assignment-reader-and-data-access.png "Toewijzing van de rol lezer en gegevens toegang toevoegen")
-
-Houd er rekening mee dat wanneer u verbinding maakt met Azure Blob-opslag en Azure Data Lake Storage Gen2, u ook de rol toewijzing van **BLOB-gegevens lezer voor opslag** moet toevoegen.
-
-![Roltoewijzing voor gegevens lezer van opslag-BLOB toevoegen](./media/search-managed-identities/add-role-assignment-storage-blob-data-reader.png "Roltoewijzing voor gegevens lezer van opslag-BLOB toevoegen")
 
 ### <a name="3---create-the-data-source"></a>3: de gegevens bron maken
 
@@ -146,7 +148,7 @@ Bekijk [Indexeer functie maken](https://docs.microsoft.com/rest/api/searchservic
 
 Zie [Indexeer functies plannen voor Azure Cognitive Search](search-howto-schedule-indexers.md)voor meer informatie over het definiëren van de planningen voor de Indexeer functie.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 Meer informatie over Azure Storage Indexeer functies:
 * [Indexer van Azure Blob](search-howto-indexing-azure-blob-storage.md)

@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: af5e511cbf273bc4e4fa0a08d089a955426fe75c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: caa3717fdf915e205c1a4f82f4e199346ca29fcb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75454198"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082804"
 ---
 # <a name="use-the-opc-vault-certificate-management-service"></a>De OPC-kluis certificaat beheer service gebruiken
 
@@ -37,7 +38,7 @@ Als u dit nog niet hebt gedaan, maakt u het CA-certificaat van de certificaat ve
 
 1. Open uw certificaat service op `https://myResourceGroup-app.azurewebsites.net` en meld u aan.
 2. Ga naar **Nieuw registreren**. Voor een toepassings registratie moet aan een gebruiker ten minste de rol van schrijver zijn toegewezen.
-2. Het invoer formulier volgt naam conventies in OPC UA. Zo wordt in de volgende scherm afbeelding de instellingen voor het voor beeld van het [OPC UA-referentie server](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/SampleApplications/Workshop/Reference) in de OPC ua .NET Standard stack weer gegeven:
+2. Het invoer formulier volgt naam conventies in OPC UA. Zo wordt in de volgende scherm afbeelding de instellingen voor het voor beeld van het [OPC UA-referentie server](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/Applications/ReferenceServer) in de OPC ua .NET Standard stack weer gegeven:
 
    ![Scherm afbeelding van registratie van UA-referentie server](media/howto-opc-vault-secure/reference-server-registration.png "Registratie van UA-referentie server")
 

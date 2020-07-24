@@ -7,11 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: 7ab798ccbbbfc9cfc11ae85fd698ecedcb5e8e73
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a5d4f388d9e5f47a13812687489525590c520c3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84658157"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085483"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Azure File Storage koppelen aan linux-Vm's met behulp van SMB
 
@@ -62,7 +63,7 @@ STORAGEKEY=$(az storage account keys list \
 
 Maak de bestands opslag share met [AZ Storage share Create](/cli/azure/storage/share). 
 
-Share namen moeten bestaan uit kleine letters, cijfers en enkele afbreek streepjes, maar mogen niet beginnen met een koppel teken. Zie [Naming and Referencing Shares, Directories, Files, and Metadata](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata) (Shares, mappen, bestanden en metagegevens een naam geven en hiernaar verwijzen) voor meer informatie over de naamgeving van bestandsshares en bestanden.
+Share namen moeten bestaan uit kleine letters, cijfers en enkele afbreek streepjes, maar mogen niet beginnen met een koppel teken. Zie [Shares, mappen, bestanden en metagegevens een naam geven en hiernaar verwijzen](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata) voor meer informatie over de naamgeving van bestandsshares en bestanden.
 
 In dit voor beeld wordt een share gemaakt met de naam *MyShare* met een GiB-quotum van 10. 
 
@@ -110,4 +111,3 @@ Voor een betere beveiliging in productie omgevingen moet u uw referenties buiten
 - [Cloud-init gebruiken voor het aanpassen van een virtuele Linux-machine tijdens het maken](using-cloud-init.md)
 - [Een schijf toevoegen aan een virtuele Linux-machine](add-disk.md)
 - [Azure Disk Encryption voor Linux-Vm's](disk-encryption-overview.md)
-

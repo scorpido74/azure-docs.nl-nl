@@ -8,19 +8,19 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: a5a9ace105e56d9db61470c35f665954812c3825
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 92543383ad530242eab59387e658e7b9d137f328
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134260"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085500"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>IaaS-resources migreren van klassiek naar Azure Resource Manager met behulp van Azure CLI
 
 > [!IMPORTANT]
-> Nu gebruiken we op ongeveer 90% IaaS Vm's [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/). Vanaf 28 februari 2020 zijn klassieke Vm's afgeschaft en worden ze volledig buiten gebruik gesteld op 1 maart 2023. Meer [informatie]( https://aka.ms/classicvmretirement) over deze afschaffing en [hoe dit van invloed is op u](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation#how-does-this-affect-me).
+> Nu gebruiken we op ongeveer 90% IaaS Vm's [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/). Vanaf 28 februari 2020 zijn klassieke Vm's afgeschaft en worden ze volledig buiten gebruik gesteld op 1 maart 2023. Meer [informatie]( https://aka.ms/classicvmretirement) over deze afschaffing en [hoe dit van invloed is op u](../classic-vm-deprecation.md#how-does-this-affect-me).
 
-In deze stappen ziet u hoe u de opdracht regel interface (CLI) van Azure kunt gebruiken om IaaS-resources (Infrastructure as a Service) te migreren van het klassieke implementatie model naar het Azure Resource Manager-implementatie model. Voor het artikel is de [klassieke Azure-cli](../../cli-install-nodejs.md)vereist. Omdat Azure CLI alleen van toepassing is op Azure Resource Manager-resources, kan deze niet worden gebruikt voor deze migratie.
+In deze stappen ziet u hoe u de opdracht regel interface (CLI) van Azure kunt gebruiken om IaaS-resources (Infrastructure as a Service) te migreren van het klassieke implementatie model naar het Azure Resource Manager-implementatie model. Voor het artikel is de [klassieke Azure-cli](/cli/azure/install-classic-cli)vereist. Omdat Azure CLI alleen van toepassing is op Azure Resource Manager-resources, kan deze niet worden gebruikt voor deze migratie.
 
 > [!NOTE]
 > Alle bewerkingen die hier worden beschreven, zijn idempotent. Als er een ander probleem is dan een niet-ondersteunde functie of een configuratie fout, raden wij u aan de bewerking voor voorbereiden, afbreken of door voeren opnieuw uit. Het platform zal vervolgens de actie opnieuw proberen.
@@ -46,7 +46,7 @@ Hier volgen enkele aanbevolen procedures voor het evalueren van de migratie van 
 > 
 
 ## <a name="step-2-set-your-subscription-and-register-the-provider"></a>Stap 2: uw abonnement instellen en de provider registreren
-Voor migratie scenario's moet u uw omgeving instellen voor klassieke en Resource Manager. [Installeer Azure cli](../../cli-install-nodejs.md) en [Selecteer uw abonnement](/cli/azure/authenticate-azure-cli).
+Voor migratie scenario's moet u uw omgeving instellen voor klassieke en Resource Manager. [Installeer Azure cli](/cli/azure/install-classic-cli) en [Selecteer uw abonnement](/cli/azure/authenticate-azure-cli).
 
 Meld u aan bij uw account.
 

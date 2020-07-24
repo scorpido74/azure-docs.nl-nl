@@ -8,11 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: d28d7bd85326e8a4cf27dba1f3f605b64477c5aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0bdc5b9f3d43075cbeba664a5cfb4277c20de57
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83829934"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082542"
 ---
 # <a name="azure-disk-encryption-for-linux-virtual-machines-faq"></a>Veelgestelde vragen over Azure Disk Encryption voor virtuele Linux-machines
 
@@ -153,15 +154,15 @@ Versleuteling van XFS-gegevens schijven wordt alleen ondersteund als de para met
 
 ## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>Kan ik een back-up maken van een versleutelde VM en deze herstellen? 
 
-Azure Backup biedt een mechanisme voor het maken van back-ups en het herstellen van versleutelde VM'S binnen hetzelfde abonnement en dezelfde regio.  Zie [back-up en herstel van versleutelde virtuele machines met Azure backup](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption)voor instructies.  Het herstellen van een versleutelde VM naar een andere regio wordt momenteel niet ondersteund.  
+Azure Backup biedt een mechanisme voor het maken van back-ups en het herstellen van versleutelde VM'S binnen hetzelfde abonnement en dezelfde regio.  Zie [back-up en herstel van versleutelde virtuele machines met Azure backup](../../backup/backup-azure-vms-encryption.md)voor instructies.  Het herstellen van een versleutelde VM naar een andere regio wordt momenteel niet ondersteund.  
 
 ## <a name="where-can-i-go-to-ask-questions-or-provide-feedback"></a>Waar kan ik vragen stellen of feedback geven?
 
-U kunt vragen stellen of feedback geven op de [pagina micro soft Q&een vraag voor Azure Disk Encryption](https://docs.microsoft.com/answers/topics/azure-disk-encryption.html).
+U kunt vragen stellen of feedback geven op de [pagina micro soft Q&een vraag voor Azure Disk Encryption](/answers/topics/azure-disk-encryption.html).
 
 ## <a name="next-steps"></a>Volgende stappen
 In dit document hebt u meer geleerd over de meest voorkomende vragen met betrekking tot Azure Disk Encryption. Raadpleeg de volgende artikelen voor meer informatie over deze service:
 
 - [Overzicht van Azure Disk Encryption](disk-encryption-overview.md)
-- [Schijf versleuteling Toep assen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-apply-disk-encryption)
-- [Azure-gegevens versleuteling in rust](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
+- [Schijf versleuteling Toep assen in Azure Security Center](../../security-center/security-center-virtual-machine-protection.md)
+- [Versleuteling van inactieve gegevens in Azure](../../security/fundamentals/encryption-atrest.md)

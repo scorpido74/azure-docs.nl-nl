@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 9b81d58bbb79b05ea54af8b3f06f29b4a45a6555
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 2be430fc032acd94f851072f80d14a43638c8863
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058160"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084582"
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>Een autorisatie beleid voor de inhouds sleutel configureren
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -57,7 +57,7 @@ De beperking open houdt in dat het systeem de sleutel levert aan iedereen die ee
 ### <a name="token-restriction"></a>Token beperking
 Als u het token beperkt beleid wilt kiezen, selecteert u de knop **token** .
 
-Het token beperkt beleid moet vergezeld gaan van een token dat is uitgegeven door een beveiligings token service (STS). Media Services ondersteunt tokens in de indelingen simple web token ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) en JSON Web token (JWT). Zie [JWT-verificatie](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)voor meer informatie.
+Het token beperkt beleid moet vergezeld gaan van een token dat is uitgegeven door een beveiligings token service (STS). Media Services ondersteunt tokens in de indelingen simple web token ([SWT](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_2)) en JSON Web token (JWT). Zie [JWT-verificatie](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)voor meer informatie.
 
 Media Services biedt geen STS. U kunt een aangepaste STS maken om tokens te verlenen. De STS moet worden geconfigureerd om een token te maken dat is ondertekend met de opgegeven sleutel en claims uitgeven die u hebt opgegeven in de configuratie van de token beperking. Als het token geldig is en de claims in het token overeenkomen met die zijn geconfigureerd voor de inhouds sleutel, retourneert de Media Services key delivery service de versleutelings sleutel naar de client.
 
@@ -94,4 +94,3 @@ U kunt de knop **beleid XML importeren** selecteren en een andere XML opgeven di
 
 [open_policy]: ./media/media-services-portal-configure-content-key-auth-policy/media-services-protect-content-with-open-restriction.png
 [token_policy]: ./media/media-services-key-authorization-policy/media-services-protect-content-with-token-restriction.png
-

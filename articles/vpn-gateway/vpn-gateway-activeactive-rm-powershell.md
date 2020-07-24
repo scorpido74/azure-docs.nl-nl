@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.date: 07/24/2018
 ms.author: yushwang
 ms.reviewer: cherylmc
-ms.openlocfilehash: 854ca905ca8f951fb7678e46268b8bef57bd02bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b4707ec7d6de3b617572b194bbad76b608f185a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84988059"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082032"
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>Active-Active S2S VPN-verbindingen configureren met Azure VPN-gateways
 
@@ -48,7 +49,7 @@ De andere eigenschappen zijn gelijk aan die van de niet-actieve gateways.
 
 ### <a name="before-you-begin"></a>Voordat u begint
 * Controleer of u een Azure-abonnement hebt. Als u nog geen Azure-abonnement hebt, kunt u [uw voordelen als MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) of [u aanmelden voor een gratis account](https://azure.microsoft.com/pricing/free-trial/).
-* U moet de Azure Resource Manager PowerShell-cmdlets installeren. Zie [overzicht van Azure PowerShell](/powershell/azure/overview) voor meer informatie over het installeren van de Power shell-cmdlets.
+* U moet de Azure Resource Manager PowerShell-cmdlets installeren. Zie [overzicht van Azure PowerShell](/powershell/azure/) voor meer informatie over het installeren van de Power shell-cmdlets.
 
 ### <a name="step-1---create-and-configure-vnet1"></a>Stap 1: VNet1 maken en configureren
 #### <a name="1-declare-your-variables"></a>1. Declareer de variabelen
@@ -444,4 +445,4 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -DisableActiveActiveFeatu
 Deze update kan Maxi maal 30 tot 45 minuten duren.
 
 ## <a name="next-steps"></a>Volgende stappen
-Wanneer de verbinding is voltooid, kunt u virtuele machines aan uw virtuele netwerken toevoegen. Zie [Een virtuele machine maken](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) voor de stappen.
+Wanneer de verbinding is voltooid, kunt u virtuele machines aan uw virtuele netwerken toevoegen. Zie [Een virtuele machine maken](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) voor de stappen.

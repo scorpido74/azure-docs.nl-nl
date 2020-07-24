@@ -3,14 +3,14 @@ title: Parameterbestand maken
 description: Parameter bestand maken voor het door geven van waarden tijdens de implementatie van een Azure Resource Manager sjabloon
 ms.topic: conceptual
 ms.date: 06/19/2020
-ms.openlocfilehash: 7c03e161c7b3a18020de6a06d356720f5e4c31fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8039b63978e52b69b0f8ffb4dd4e052769f3c5e6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85117502"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082933"
 ---
-# <a name="create-resource-manager-parameter-file"></a>Resource Manager-parameter bestand maken
+# <a name="create-resource-manager-parameter-file"></a>Een Resource Manager-parameterbestand maken
 
 In plaats van para meters als inline waarden door te geven in uw script, is het wellicht eenvoudiger een JSON-bestand te gebruiken dat de parameter waarden bevat. In dit artikel wordt beschreven hoe u het parameter bestand maakt.
 
@@ -148,7 +148,7 @@ Bekijk ten slotte de toegestane waarden en eventuele beperkingen, zoals de maxim
 }
 ```
 
-## <a name="parameter-type-formats"></a>Notaties van het parameter type
+## <a name="parameter-type-formats"></a>Parametertype-indelingen
 
 In het volgende voor beeld ziet u de indelingen van verschillende parameter typen.
 
@@ -186,8 +186,8 @@ In het volgende voor beeld ziet u de indelingen van verschillende parameter type
 
 Zie:
 
-- [Resources implementeren met ARM-sjablonen en Azure CLI](./deploy-powershell.md#pass-parameter-values)
-- [Resources implementeren met ARM-sjablonen en Azure PowerShell](./deploy-cli.md#parameters)
+- [Resources implementeren met ARM-sjablonen en Azure CLI](./deploy-cli.md#parameters)
+- [Resources implementeren met ARM-sjablonen en Azure PowerShell](./deploy-powershell.md#pass-parameter-values)
 
 ## <a name="file-name"></a>Bestandsnaam
 

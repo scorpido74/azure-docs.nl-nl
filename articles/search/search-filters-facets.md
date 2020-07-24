@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 082575a67ea43d62f322e177cff087e5bd572c27
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 852d8f8f85536dc62dd792e5727dd7ec0571ba29
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72792899"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084208"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-cognitive-search"></a>Een facet filter maken in azure Cognitive Search 
 
@@ -28,7 +28,7 @@ Facet navigatie wordt gebruikt voor zelfgestuurde filters op query resultaten in
 
 Facetten zijn dynamisch en worden geretourneerd op een query. Zoek reacties nemen de facet categorieën mee die worden gebruikt om de resultaten te navigeren. Als u niet bekend bent met facetten, is het volgende voor beeld een illustratie van een facet navigatie structuur.
 
-  ![](./media/search-filters-facets/facet-nav.png)
+  ![Een afbeelding met een zoek venster met gefilterde Zoek resultaten, gegroepeerd op zakelijke titel. Een pijl geeft aan dat de resultaten facetten zijn die worden weer gegeven in een facet navigatie structuur.](./media/search-filters-facets/facet-nav.png)
 
 Nieuw in facet navigatie en wilt u meer details? Zie [facet navigatie implementeren in Azure Cognitive Search](search-faceted-navigation.md).
 
@@ -121,7 +121,7 @@ Een van de uitdagingen met facet navigatie in azure Cognitive Search is dat face
 
 Hoewel dit een veelvoorkomende use-case is, is het niet duidelijk dat de facet navigatie structuur momenteel out-of-the-box bevat. Ontwikkel aars die statische facetten willen, kunnen de beperking meestal omzeilen door twee gefilterde query's uit te geven: één scoped to the results, de andere die wordt gebruikt voor het maken van een statische lijst met facetten voor navigatie doeleinden.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 + [Filters in azure Cognitive Search](search-filters.md)
 + [Index REST API maken](https://docs.microsoft.com/rest/api/searchservice/create-index)

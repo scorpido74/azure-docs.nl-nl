@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 1fe26a880979a431e456d9a1819dfd1b18d25f77
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 48f0a247ed023583c8489994439a790944b90fdc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221218"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082593"
 ---
 # <a name="copy-an-image-from-another-gallery-using-powershell"></a>Een afbeelding uit een andere galerie kopiëren met behulp van Power shell
 
@@ -100,7 +100,7 @@ De uitvoer ziet er ongeveer als volgt uit:
 }
 ```
 
-Maak in de doel Galerie een nieuwe definitie van de installatie kopie met behulp van de cmdlet [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) en de informatie uit de bovenstaande uitvoer.
+Maak in de doel Galerie een nieuwe definitie van de installatie kopie met behulp van de cmdlet [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) en de informatie uit de bovenstaande uitvoer.
 
 
 In dit voor beeld heeft de definitie van de installatie kopie de naam *myDestinationImgDef* in de galerie met de naam *myDestinationGallery*.
@@ -123,7 +123,7 @@ $destinationImgDef  = New-AzGalleryImageDefinition `
 
 ## <a name="create-the-image-version"></a>De installatiekopieversie maken
 
-Maak een installatie kopie versie met behulp van [New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion). U moet de ID van de bron installatie kopie door geven in de `--managed-image` para meter voor het maken van de installatie kopie versie in de doel galerie. 
+Maak een installatie kopie versie met behulp van [New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion). U moet de ID van de bron installatie kopie door geven in de `--managed-image` para meter voor het maken van de installatie kopie versie in de doel galerie. 
 
 Toegestane tekens voor een installatiekopieversie zijn cijfers en punten. Cijfers moeten binnen het bereik van een 32-bits geheel getal zijn. Indeling: *MajorVersion*.*MinorVersion*.*Patch*.
 
@@ -156,7 +156,7 @@ $job.State
 > [!NOTE]
 > U moet wachten tot de installatiekopieversie volledig is gebouwd en gerepliceerd voordat u dezelfde beheerde installatiekopie kunt gebruiken om een andere versie van de installatiekopie te maken.
 >
-> U kunt uw installatiekopie ook opslaan in Premium Storage door een `-StorageAccountType Premium_LRS` toe te voegen, of in [Zone-redundante opslag](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) door `-StorageAccountType Standard_ZRS` toe te voegen wanneer u de installatiekopieversie maakt.
+> U kunt uw installatiekopie ook opslaan in Premium Storage door een `-StorageAccountType Premium_LRS` toe te voegen, of in [Zone-redundante opslag](../storage/common/storage-redundancy.md) door `-StorageAccountType Standard_ZRS` toe te voegen wanneer u de installatiekopieversie maakt.
 >
 
 

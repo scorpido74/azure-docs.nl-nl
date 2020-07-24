@@ -13,14 +13,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/22/2020
+ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: b6a284d13d0d737eca65b2593813b3d1b999cfdf
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: dbcb39641f35ad0f997db30b320826764a08bff1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133154"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082253"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Azure Virtual Machines-implementatie voor SAP NetWeaver
 
@@ -74,7 +74,7 @@ ms.locfileid: "86133154"
 [azure-cli]:../../../cli-install-nodejs.md
 [azure-cli-2]:https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest
 [azure-portal]:https://portal.azure.com
-[azure-ps]:/powershell/azureps-cmdlets-docs
+[azure-ps]:/powershell/azure/
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
 [azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
@@ -285,15 +285,15 @@ ms.locfileid: "86133154"
 [virtual-machines-linux-tutorial]:../../linux/quick-create-cli.md
 [virtual-machines-linux-update-agent]:../../linux/update-agent.md
 [virtual-machines-manage-availability]:../../linux/manage-availability.md
-[virtual-machines-ps-create-preconfigure-windows-resource-manager-vms]:../../virtual-machines-windows-ps-create.md
+[virtual-machines-ps-create-preconfigure-windows-resource-manager-vms]:../../windows/quick-create-powershell.md
 [virtual-machines-sizes]:../../linux/sizes.md
 [virtual-machines-windows-classic-ps-sql-alwayson-availability-groups]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md
 [virtual-machines-windows-classic-ps-sql-int-listener]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener.md
 [virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:../../../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
 [virtual-machines-sql-server-infrastructure-services]:../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
 [virtual-machines-sql-server-performance-best-practices]:../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md
-[virtual-machines-upload-image-windows-resource-manager]:../../virtual-machines-windows-upload-image.md
-[virtual-machines-windows-tutorial]:../../virtual-machines-windows-hero-tutorial.md
+[virtual-machines-upload-image-windows-resource-manager]:../../windows/upload-image.md
+[virtual-machines-windows-tutorial]:../../windows/quick-create-portal.md
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/documentation/templates/sql-server-2014-alwayson-dsc/
 [virtual-network-deploy-multinic-arm-cli]:../linux/multiple-nics.md
 [virtual-network-deploy-multinic-arm-ps]:../windows/multiple-nics.md
@@ -443,8 +443,8 @@ De wizard begeleidt u bij het instellen van de vereiste para meters voor het mak
 1. **Instellingen**:
    * **Storage**
      * **Schijf type**: Selecteer het schijf type van de besturingssysteem schijf. Als u Premium Storage voor uw gegevens schijven wilt gebruiken, raden we u aan om ook Premium Storage te gebruiken voor de besturingssysteem schijf.
-     * **Beheerde schijven gebruiken**: als u Managed disks wilt gebruiken, selecteert u Ja. Zie hoofd stuk [Managed disks](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage#microsoft-azure-storage-resiliency) in de plannings handleiding voor meer informatie over Managed disks.
-     * **Opslag account**: Selecteer een bestaand opslag account of maak een nieuwe. Niet alle opslag typen werken voor het uitvoeren van SAP-toepassingen. Zie [opslag structuur van een virtuele machine voor RDBMS-implementaties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)voor meer informatie over opslag typen.
+     * **Beheerde schijven gebruiken**: als u Managed disks wilt gebruiken, selecteert u Ja. Zie hoofd stuk [Managed disks](./planning-guide-storage.md#microsoft-azure-storage-resiliency) in de plannings handleiding voor meer informatie over Managed disks.
+     * **Opslag account**: Selecteer een bestaand opslag account of maak een nieuwe. Niet alle opslag typen werken voor het uitvoeren van SAP-toepassingen. Zie [opslag structuur van een virtuele machine voor RDBMS-implementaties](./dbms_guide_general.md#65fa79d6-a85f-47ee-890b-22e794f51a64)voor meer informatie over opslag typen.
    * **Netwerk**
      * **Virtueel netwerk** en **subnet**: als u de virtuele machine wilt integreren met uw intranet, selecteert u het virtuele netwerk dat is verbonden met uw on-premises netwerk.
      * **Openbaar IP-adres**: Selecteer het open bare IP-adres dat u wilt gebruiken of voer para meters in om een nieuw openbaar IP-adres te maken. U kunt een openbaar IP-adres gebruiken om toegang te krijgen tot uw virtuele machine via internet. Zorg ervoor dat u ook een netwerk beveiligings groep maakt om de toegang tot uw virtuele machine te beveiligen.
@@ -500,7 +500,7 @@ Voer in het Azure Portal de volgende para meters voor de sjabloon in:
 
      Voor grotere systemen raden we u aan Azure Premium Storage te gebruiken. Zie de volgende bronnen voor meer informatie over opslag typen:
       * [Gebruik van Azure Premium-SSD Storage voor SAP DBMS-exemplaar][2367194]
-      * [Opslag structuur van een virtuele machine voor RDBMS-implementaties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
+      * [Opslag structuur van een virtuele machine voor RDBMS-implementaties](./dbms_guide_general.md#65fa79d6-a85f-47ee-890b-22e794f51a64)
       * [Premium Storage: opslag met hoge prestaties voor werk belastingen van virtuele Azure-machines][storage-premium-storage-preview-portal]
       * [Inleiding tot Microsoft Azure Storage][storage-introduction]
    * **Gebruikers naam** en **beheerders wachtwoord**voor de beheerder: een gebruikers naam en wacht woord.
@@ -531,7 +531,7 @@ Om ervoor te zorgen dat SAP uw omgeving ondersteunt, stelt u de Azure-extensie v
 
 Controleer of de VM-extensie voor SAP werkt, zoals wordt beschreven in [controles en probleem oplossing][deployment-guide-troubleshooting-chapter].
 
-#### <a name="post-deployment-steps"></a>Stappen na de implementatie
+#### <a name="post-deployment-steps"></a>Stappen na implementatie
 
 Nadat u de virtuele machine hebt gemaakt en de virtuele machine is geïmplementeerd, moet u de vereiste software onderdelen installeren in de virtuele machine. Vanwege de implementatie-en software-installatie volgorde in dit type VM-implementatie moet de software die moet worden geïnstalleerd, al beschikbaar zijn in azure, op een andere virtuele machine of als een schijf die kan worden bijgevoegd. U kunt ook een cross-premises scenario gebruiken, waarin de verbinding met de lokale assets (installatie shares) wordt gegeven.
 
@@ -545,7 +545,7 @@ U kunt verschillende stappen gebruiken om een persoonlijke installatie kopie voo
 ---
 > ![Windows][Logo_Windows] Windows
 >
-> Om een Windows-installatie kopie voor te bereiden die u kunt gebruiken om meerdere virtuele machines te implementeren, moeten de Windows-instellingen (zoals Windows SID en hostname) worden abstracted of gegeneraliseerd op de on-premises VM. U kunt [Sysprep](https://msdn.microsoft.com/library/hh825084.aspx) gebruiken om dit te doen.
+> Om een Windows-installatie kopie voor te bereiden die u kunt gebruiken om meerdere virtuele machines te implementeren, moeten de Windows-instellingen (zoals Windows SID en hostname) worden abstracted of gegeneraliseerd op de on-premises VM. U kunt [Sysprep](/previous-versions/windows/it-pro/windows-8.1-and-8/hh825084(v=win.10)) gebruiken om dit te doen.
 >
 > ![Linux][Logo_Linux] Linux
 >
@@ -562,7 +562,7 @@ Het volgende stroom diagram toont de SAP-specifieke volg orde van de stappen voo
 
 #### <a name="create-a-virtual-machine-by-using-the-azure-portal"></a>Een virtuele machine maken met behulp van de Azure Portal
 
-De eenvoudigste manier om een nieuwe virtuele machine te maken op basis van een installatie kopie van een beheerde schijf is met behulp van de Azure Portal. Lees [een beheerde installatie kopie van een gegeneraliseerde vm in azure vastleggen](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource) voor meer informatie over het maken van een installatie kopie van een schijf.
+De eenvoudigste manier om een nieuwe virtuele machine te maken op basis van een installatie kopie van een beheerde schijf is met behulp van de Azure Portal. Lees [een beheerde installatie kopie van een gegeneraliseerde vm in azure vastleggen](../../windows/capture-image-resource.md) voor meer informatie over het maken van een installatie kopie van een schijf.
 
 1.  Ga naar <https://ms.portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Compute%2Fimages>. Of Selecteer in het menu Azure Portal de optie **installatie kopieën**.
 1.  Selecteer de installatie kopie van de beheerde schijf die u wilt implementeren en klik op **VM maken**
@@ -583,7 +583,7 @@ De wizard begeleidt u bij het instellen van de vereiste para meters voor het mak
 1. **Instellingen**:
    * **Storage**
      * **Schijf type**: Selecteer het schijf type van de besturingssysteem schijf. Als u Premium Storage voor uw gegevens schijven wilt gebruiken, raden we u aan om ook Premium Storage te gebruiken voor de besturingssysteem schijf.
-     * **Beheerde schijven gebruiken**: als u Managed disks wilt gebruiken, selecteert u Ja. Zie hoofd stuk [Managed disks](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage#microsoft-azure-storage-resiliency) in de plannings handleiding voor meer informatie over Managed disks.
+     * **Beheerde schijven gebruiken**: als u Managed disks wilt gebruiken, selecteert u Ja. Zie hoofd stuk [Managed disks](./planning-guide-storage.md#microsoft-azure-storage-resiliency) in de plannings handleiding voor meer informatie over Managed disks.
    * **Netwerk**
      * **Virtueel netwerk** en **subnet**: als u de virtuele machine wilt integreren met uw intranet, selecteert u het virtuele netwerk dat is verbonden met uw on-premises netwerk.
      * **Openbaar IP-adres**: Selecteer het open bare IP-adres dat u wilt gebruiken of voer para meters in om een nieuw openbaar IP-adres te maken. U kunt een openbaar IP-adres gebruiken om toegang te krijgen tot uw virtuele machine via internet. Zorg ervoor dat u ook een netwerk beveiligings groep maakt om de toegang tot uw virtuele machine te beveiligen.
@@ -636,7 +636,7 @@ Voer in het Azure Portal de volgende para meters voor de sjabloon in:
 
      Voor grotere systemen raden we u aan Azure Premium Storage te gebruiken. Raadpleeg de volgende bronnen voor meer informatie over opslag typen:
       * [Gebruik van Azure Premium-SSD Storage voor SAP DBMS-exemplaar][2367194]
-      * [Opslag structuur van een virtuele machine voor RDBMS-implementaties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
+      * [Opslag structuur van een virtuele machine voor RDBMS-implementaties](./dbms_guide_general.md#65fa79d6-a85f-47ee-890b-22e794f51a64)
       * [Premium Storage: opslag met hoge prestaties voor werk belastingen van virtuele Azure-machines][storage-premium-storage-preview-portal]
       * [Inleiding tot Microsoft Azure Storage][storage-introduction]
    * **VHD-URI van gebruikers installatie kopie** (alleen sjabloon voor onbeheerde schijf installatie kopie): de URI van de VHD van de persoonlijke installatie kopie, bijvoorbeeld https:// &lt; accountname>. blob.core.Windows.net/VHDs/userimage.VHD.
@@ -728,7 +728,7 @@ Voer in het Azure Portal de volgende para meters voor de sjabloon in:
 
      Voor grotere systemen raden we u aan Azure Premium Storage te gebruiken. Raadpleeg de volgende bronnen voor meer informatie over opslag typen:
       * [Gebruik van Azure Premium-SSD Storage voor SAP DBMS-exemplaar][2367194]
-      * [Opslag structuur van een virtuele machine voor RDBMS-implementaties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
+      * [Opslag structuur van een virtuele machine voor RDBMS-implementaties](./dbms_guide_general.md#65fa79d6-a85f-47ee-890b-22e794f51a64)
       * [Premium Storage: opslag met hoge prestaties voor werk belastingen van virtuele Azure-machines][storage-premium-storage-preview-portal]
       * [Inleiding tot Microsoft Azure Storage][storage-introduction]
    * **VHD-URI van besturingssysteem schijf** (alleen onbeheerde schijf sjabloon): de URI van de persoonlijke besturingssysteem schijf, bijvoorbeeld https:// &lt; accountnaam>. blob.core.Windows.net/VHDs/osdisk.VHD.
@@ -780,9 +780,9 @@ Deze sectie bevat gedetailleerde stappen voor het uitvoeren van specifieke taken
 
 ### <a name="deploy-azure-powershell-cmdlets"></a><a name="604bcec2-8b6e-48d2-a944-61b0f5dee2f7"></a>Azure PowerShell-cmdlets implementeren
 
-Volg de stappen die worden beschreven in het artikel [de Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps)
+Volg de stappen die worden beschreven in het artikel [de Azure PowerShell-module installeren](/powershell/azure/install-az-ps)
 
-Controleer regel matig op updates voor de Power shell-cmdlets, die meestal maandelijks worden bijgewerkt. Volg de stappen die in [Dit](https://docs.microsoft.com/powershell/azure/install-az-ps#update-the-azure-powershell-module) artikel worden beschreven. Tenzij anders vermeld in SAP Note [1928533] of sap opmerking [2015553], raden we u aan om te werken met de nieuwste versie van Azure PowerShell-cmdlets.
+Controleer regel matig op updates voor de Power shell-cmdlets, die meestal maandelijks worden bijgewerkt. Volg de stappen die in [Dit](/powershell/azure/install-az-ps#update-the-azure-powershell-module) artikel worden beschreven. Tenzij anders vermeld in SAP Note [1928533] of sap opmerking [2015553], raden we u aan om te werken met de nieuwste versie van Azure PowerShell-cmdlets.
 
 Als u de versie van de Azure PowerShell-cmdlets wilt controleren die op uw computer zijn geïnstalleerd, voert u de volgende Power shell-opdracht uit:
 
@@ -792,7 +792,7 @@ Als u de versie van de Azure PowerShell-cmdlets wilt controleren die op uw compu
 
 ### <a name="deploy-azure-cli"></a><a name="1ded9453-1330-442a-86ea-e0fd8ae8cab3"></a>Azure CLI implementeren
 
-Volg de stappen die worden beschreven in het artikel [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli)
+Volg de stappen die worden beschreven in het artikel [de Azure cli installeren](/cli/azure/install-azure-cli)
 
 Controleer regel matig op updates voor Azure CLI, die meestal maandelijks worden bijgewerkt.
 
@@ -933,7 +933,7 @@ De Azure-extensie voor SAP installeren met behulp van Power shell:
 
 1. Zorg ervoor dat u de nieuwste versie van de cmdlet Azure PowerShell hebt geïnstalleerd. Zie [deploying Azure PowerShell cmdlets][deployment-guide-4.1](Engelstalig) voor meer informatie.  
 1. Voer de volgende PowerShell-cmdlet uit.
-    Voer uit voor een lijst met beschik bare omgevingen `commandlet Get-AzEnvironment` . Als u wereld wijd Azure wilt gebruiken, is uw omgeving **Cloud**. Selecteer **AzureChinaCloud**voor Azure China 21vianet.
+    Voer cmdlet uit voor een lijst met beschik bare omgevingen `Get-AzEnvironment` . Als u wereld wijd Azure wilt gebruiken, is uw omgeving **Cloud**. Selecteer **AzureChinaCloud**voor Azure China 21vianet.
 
     ```powershell
     $env = Get-AzEnvironment -Name <name of the environment>
@@ -1023,44 +1023,21 @@ De Azure-extensie voor SAP installeren met behulp van Azure CLI:
 
 De nieuwe VM-extensie voor SAP maakt gebruik van een beheerde identiteit die is toegewezen aan de virtuele machine om toegang te krijgen tot de bewakings-en configuratie gegevens van de virtuele machine. Als u de nieuwe Azure-extensie voor SAP wilt installeren met behulp van Power shell, moet u eerst een dergelijke identiteit toewijzen aan de virtuele machine en die identiteit toegang verlenen tot alle resources die worden gebruikt door die VM, bijvoorbeeld schijven en netwerk interfaces.
 
-Het proces wordt geautomatiseerd in de volgende versie van Azure PowerShell (> 4.2.0). Dit artikel wordt bijgewerkt zodra de nieuwe versie beschikbaar is. Tot slot voert u deze stappen uit om de extensie hand matig te installeren.
-
 > [!NOTE]
 > Voor de volgende stappen zijn eigenaars rechten vereist voor de resource groep of afzonderlijke resources (virtuele machine, gegevens schijven, enzovoort).
 
 1. Zorg ervoor dat u SAP host agent 7,21 PL 47 of hoger gebruikt.
 1. Zorg ervoor dat u de huidige versie van de VM-extensie voor SAP verwijdert. Het is niet mogelijk om beide versies van de VM-extensie voor SAP op dezelfde virtuele machine te installeren.
-1. Zorg ervoor dat u de nieuwste versie van de cmdlet Azure PowerShell hebt geïnstalleerd. Zie [deploying Azure PowerShell cmdlets][deployment-guide-4.1](Engelstalig) voor meer informatie.
-1. Volg de stappen in het artikel [beheerde identiteiten voor Azure-resources configureren op een Azure VM met Power shell][qs-configure-powershell-windows-vm] om een door het systeem toegewezen beheerde identiteit in te scha kelen voor de virtuele machine. Door de gebruiker toegewezen beheerde identiteiten worden niet ondersteund door de VM-extensie voor SAP. U kunt echter zowel een door het systeem toegewezen als een door de gebruiker toegewezen identiteit inschakelen.
-    
-    Voorbeeld:
-    ```powershell
-    $vm = Get-AzVM -ResourceGroupName <resource-group-name> -Name <vm name>
-    Update-AzVM -ResourceGroupName $vm.ResourceGroupName -VM $vm -IdentityType SystemAssigned
-    ```
-
-1. Wijs de beheerde identiteits toegang toe aan de resource groep van de virtuele machine of aan alle netwerk interfaces, Managed disks en de virtuele machine zelf, zoals beschreven in [een beheerde identiteits toegang toewijzen aan een resource met behulp van Power shell][howto-assign-access-powershell] voor beeld:
+1. Zorg ervoor dat u de nieuwste versie van de Azure PowerShell cmdlet (ten minste 4.3.0) hebt geïnstalleerd. Zie [deploying Azure PowerShell cmdlets][deployment-guide-4.1](Engelstalig) voor meer informatie.
+1. Voer de volgende PowerShell-cmdlet uit.
+    Voer cmdlet uit voor een lijst met beschik bare omgevingen `Get-AzEnvironment` . Als u wereld wijd Azure wilt gebruiken, is uw omgeving **Cloud**. Selecteer **AzureChinaCloud**voor Azure China 21vianet.
 
     ```powershell
-    $spID = (Get-AzVM -ResourceGroupName <resource-group-name> -Name <vm name>).identity.principalid
-    $rg = Get-AzResourceGroup -Name $vm.ResourceGroupName
-    New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Reader" -Scope $rg.ResourceId
-    ```
-
-1. Voer de volgende Power shell-cmdlet uit om de Azure-extensie voor SAP te installeren.
-    De uitbrei ding wordt momenteel alleen ondersteund in Cloud. Azure China 21Vianet, Azure Government of een van de andere speciale omgevingen worden nog niet ondersteund.
-
-    ```powershell
-    $env = Get-AzEnvironment -Name AzureCloud
+    $env = Get-AzEnvironment -Name <name of the environment>
     Connect-AzAccount -Environment $env
     Set-AzContext -SubscriptionName <subscription name>
 
-    $vm = Get-AzVM -ResourceGroupName <resource-group-name> -Name <vm name>
-    if ($vm.StorageProfile.OsDisk.OsType -eq "Windows") {
-      Set-AzVMExtension -Publisher Microsoft.AzureCAT.AzureEnhancedMonitoring -ExtensionType MonitorX64Windows -Name MonitorX64Windows -TypeHandlerVersion "1.0" -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Settings @{"system" = "SAP"} -Location $vm.Location
-    } else {
-      Set-AzVMExtension -Publisher Microsoft.AzureCAT.AzureEnhancedMonitoring -ExtensionType MonitorX64Linux -Name MonitorX64Linux -TypeHandlerVersion "1.0" -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Settings @{"system" = "SAP"} -Location $vm.Location
-    }
+    Set-AzVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name> -InstallNewExtension
     ```
 
 #### <a name="configure-the-new-azure-extension-for-sap-with-azure-cli"></a><a name="c8749c24-fada-42ad-b114-f9aae2dc37da"></a>De nieuwe Azure-extensie voor SAP configureren met Azure CLI
@@ -1116,7 +1093,10 @@ Voer de gereedheids controle uit voor de Azure-extensie voor SAP, zoals beschrev
 
 ### <a name="readiness-check-for-the-azure-extension-for-sap"></a><a name="bb61ce92-8c5c-461f-8c53-39f5e5ed91f2"></a>Gereedheids controle voor de Azure-extensie voor SAP
 
-Met deze controle wordt ervoor gezorgd dat alle prestatie gegevens die in uw SAP-toepassing worden weer gegeven, worden verzorgd door de onderliggende Azure-extensie voor SAP. Als u de nieuwe Azure-extensie voor SAP hebt geïmplementeerd, volgt u de stappen [voor de gereedheids controle voor de nieuwe Azure-extensie voor SAP][deployment-guide-5.1-new] in deze hand leiding.
+> [!NOTE]
+> Er zijn twee versies van de VM-extensie. In dit hoofd stuk wordt de standaard-VM-extensie besproken. Als u de nieuwe VM-extensie hebt geïnstalleerd, raadpleegt u de [gereedheids controle voor de nieuwe Azure-extensie voor SAP][deployment-guide-5.1-new]
+
+Met deze controle wordt ervoor gezorgd dat alle prestatie gegevens die in uw SAP-toepassing worden weer gegeven, worden verzorgd door de onderliggende Azure-extensie voor SAP.
 
 #### <a name="run-the-readiness-check-on-a-windows-vm"></a>De gereedheids controle uitvoeren op een Windows-VM
 
@@ -1167,15 +1147,15 @@ Als de **status** waarde niet **OK**is, volgt u de instructies in [status contro
 
 1. Controleer de uitvoer van de Azure-extensie voor SAP.
 
-   a.  Voer `more /var/lib/AzureEnhancedMonitor/PerfCounters` uit.
+   a.  `more /var/lib/AzureEnhancedMonitor/PerfCounters` uitvoeren
 
    **Verwacht resultaat**: retourneert een lijst met prestatie meter items. Het bestand mag niet leeg zijn.
 
-   b. Voer `cat /var/lib/AzureEnhancedMonitor/PerfCounters | grep Error` uit.
+   b. `cat /var/lib/AzureEnhancedMonitor/PerfCounters | grep Error` uitvoeren
 
    **Verwacht resultaat**: retourneert één regel waarbij de fout **geen**is, bijvoorbeeld **3; config; Fout;; 0; 0; geen; 0; 1456416792; TST-servercs;**
 
-   c. Voer `more /var/lib/AzureEnhancedMonitor/LatestErrorRecord` uit.
+   c. `more /var/lib/AzureEnhancedMonitor/LatestErrorRecord` uitvoeren
 
    **Verwacht resultaat**: retourneert als leeg of bestaat niet.
 
@@ -1183,29 +1163,29 @@ Als de voor gaande controle niet is geslaagd, voert u de volgende extra controle
 
 1. Zorg ervoor dat de waagent is geïnstalleerd en ingeschakeld.
 
-   a.  Voer `sudo ls -al /var/lib/waagent/` uit.
+   a.  `sudo ls -al /var/lib/waagent/` uitvoeren
 
      **Verwacht resultaat**: hier wordt de inhoud van de waagent-map weer gegeven.
 
-   b.  Voer `ps -ax | grep waagent` uit.
+   b.  `ps -ax | grep waagent` uitvoeren
 
    **Verwacht resultaat**: er wordt een item weer gegeven dat er ongeveer als volgt uitziet:`python /usr/sbin/waagent -daemon`
 
 1. Zorg ervoor dat de Azure-extensie voor SAP is geïnstalleerd en wordt uitgevoerd.
 
-   a.  Voer `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-*/'` uit.
+   a.  `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-*/'` uitvoeren
 
    **Verwacht resultaat**: hier wordt de inhoud van de Azure-extensie voor SAP-Directory weer gegeven.
 
-   b. Voer `ps -ax | grep AzureEnhanced` uit.
+   b. `ps -ax | grep AzureEnhanced` uitvoeren
 
    **Verwacht resultaat**: er wordt een item weer gegeven dat er ongeveer als volgt uitziet:`python /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-2.0.0.2/handler.py daemon`
 
 1. Installeer de SAP host agent zoals beschreven in SAP Note [1031096]en controleer de uitvoer van `saposcol` .
 
-   a.  Voer `/usr/sap/hostctrl/exe/saposcol -d` uit.
+   a.  `/usr/sap/hostctrl/exe/saposcol -d` uitvoeren
 
-   b.  Voer `dump ccm` uit.
+   b.  `dump ccm` uitvoeren
 
    c.  Controleer of de **Virtualization_Configuration** meet waarde voor \Enhanced-controle **waar**is.
 
@@ -1215,7 +1195,10 @@ Als een van deze controles mislukt en voor gedetailleerde informatie over het op
 
 ### <a name="readiness-check-for-the-new-azure-extension-for-sap"></a><a name="7bf24f59-7347-4c7a-b094-4693e4687ee5"></a>Gereedheids controle voor de nieuwe Azure-extensie voor SAP
 
-Met deze controle wordt ervoor gezorgd dat alle prestatie gegevens die in uw SAP-toepassing worden weer gegeven, worden verzorgd door de onderliggende Azure-extensie voor SAP. Als u de oude Azure-extensie voor SAP hebt geïmplementeerd, volgt u de [voor bereiding op de gereedheids controle voor Azure-extensie voor SAP][deployment-guide-5.1] in deze hand leiding.
+> [!NOTE]
+> Er zijn twee versies van de VM-extensie. In dit hoofd stuk wordt de nieuwe VM-extensie besproken. Als u de standaard-VM-extensie hebt geïnstalleerd, raadpleegt u de [gereedheids controle voor Azure extension for SAP][deployment-guide-5.1].
+
+Met deze controle wordt ervoor gezorgd dat alle prestatie gegevens die in uw SAP-toepassing worden weer gegeven, worden verzorgd door de onderliggende Azure-extensie voor SAP.
 
 #### <a name="run-the-readiness-check-on-a-windows-vm"></a>De gereedheids controle uitvoeren op een Windows-VM
 
@@ -1245,29 +1228,29 @@ Als de voor gaande controle niet is geslaagd, voert u de volgende extra controle
 
 1. Zorg ervoor dat de waagent is geïnstalleerd en ingeschakeld.
 
-   a.  Voer `sudo ls -al /var/lib/waagent/` uit.
+   a.  `sudo ls -al /var/lib/waagent/` uitvoeren
 
      **Verwacht resultaat**: hier wordt de inhoud van de waagent-map weer gegeven.
 
-   b.  Voer `ps -ax | grep waagent` uit.
+   b.  `ps -ax | grep waagent` uitvoeren
 
    **Verwacht resultaat**: er wordt een item weer gegeven dat er ongeveer als volgt uitziet:`python /usr/sbin/waagent -daemon`
 
 1. Zorg ervoor dat de Azure-extensie voor SAP is geïnstalleerd en wordt uitgevoerd.
 
-   a.  Voer `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.AzureCAT.AzureEnhancedMonitoring.MonitorX64Linux-*/'` uit.
+   a.  `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.AzureCAT.AzureEnhancedMonitoring.MonitorX64Linux-*/'` uitvoeren
 
    **Verwacht resultaat**: hier wordt de inhoud van de Azure-extensie voor SAP-Directory weer gegeven.
 
-   b. Voer `ps -ax | grep AzureEnhanced` uit.
+   b. `ps -ax | grep AzureEnhanced` uitvoeren
 
    **Verwacht resultaat**: er wordt een item weer gegeven dat er ongeveer als volgt uitziet:`/var/lib/waagent/Microsoft.AzureCAT.AzureEnhancedMonitoring.MonitorX64Linux-1.0.0.82/AzureEnhancedMonitoring -monitor`
 
 1. Installeer de SAP host agent zoals beschreven in SAP Note [1031096]en controleer de uitvoer van `saposcol` .
 
-   a.  Voer `/usr/sap/hostctrl/exe/saposcol -d` uit.
+   a.  `/usr/sap/hostctrl/exe/saposcol -d` uitvoeren
 
-   b.  Voer `dump ccm` uit.
+   b.  `dump ccm` uitvoeren
 
    c.  Controleer of de **Virtualization_Configuration** meet waarde voor \Enhanced-controle **waar**is.
 
@@ -1276,6 +1259,9 @@ Als u al een SAP NetWeaver ABAP-toepassings server hebt geïnstalleerd, opent u 
 Als een van deze controles mislukt en voor gedetailleerde informatie over het opnieuw implementeren van de uitbrei ding, raadpleegt u [problemen met de nieuwe Azure-extensie voor SAP oplossen][deployment-guide-5.3-new].
 
 ### <a name="health-check-for-the-azure-extension-for-sap-configuration"></a><a name="e2d592ff-b4ea-4a53-a91a-e5521edb6cd1"></a>Status controle voor de Azure-extensie voor SAP-configuratie
+
+> [!NOTE]
+> Er zijn twee versies van de VM-extensie. In dit hoofd stuk wordt de standaard-VM-extensie besproken. Als u de nieuwe VM-extensie hebt geïnstalleerd, raadpleegt u de hoofdstuk [status controle voor de nieuwe Azure-extensie voor SAP-configuratie][deployment-guide-5.2-new].
 
 Als sommige infrastructuur gegevens niet correct worden afgeleverd, zoals wordt aangegeven door de test die wordt beschreven in de [gereedheids controle voor Azure extension for SAP][deployment-guide-5.1], voert `Test-AzVMAEMExtension` u de cmdlet uit om te controleren of de Azure-infra structuur en de Azure-extensie voor SAP correct zijn geconfigureerd.
 
@@ -1301,6 +1287,9 @@ Zorg ervoor dat elk resultaat van de status controle **OK**is. Als sommige contr
 
 ### <a name="health-check-for-the-new-azure-extension-for-sap-configuration"></a><a name="464ac96d-7d3c-435d-a5ae-3faf3bfef4b3"></a>Status controle voor de nieuwe Azure-extensie voor SAP-configuratie
 
+> [!NOTE]
+> Er zijn twee versies van de VM-extensie. In dit hoofd stuk wordt de nieuwe VM-extensie besproken. Als u de standaard-VM-extensie hebt geïnstalleerd, raadpleegt u de hoofdstuk [status controle voor de Azure-extensie voor SAP-configuratie][deployment-guide-5.2].
+
 Als sommige infrastructuur gegevens niet correct worden afgeleverd, zoals wordt aangegeven door de test die wordt beschreven in de [gereedheids controle voor Azure extension for SAP][deployment-guide-5.1-new], voert `Get-AzVMExtension` u de cmdlet uit om te controleren of de Azure-extensie voor SAP is geïnstalleerd. De `Test-AzVMAEMExtension` biedt nog geen ondersteuning voor de nieuwe extensie. Zodra de cmdlet de nieuwe uitbrei ding ondersteunt, wordt dit artikel bijgewerkt.
 
 1. Zorg ervoor dat u de nieuwste versie van de cmdlet Azure PowerShell hebt geïnstalleerd, zoals beschreven in [Azure PowerShell-cmdlets implementeren][deployment-guide-4.1].
@@ -1310,12 +1299,15 @@ Als sommige infrastructuur gegevens niet correct worden afgeleverd, zoals wordt 
    $env = Get-AzEnvironment -Name <name of the environment>
    Connect-AzAccount -Environment $env
    Set-AzContext -SubscriptionName <subscription name>
-   Get-AzVMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
+   Test-AzVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
    ```
 
-1. De cmdlet geeft een lijst van alle uitbrei dingen van de geselecteerde virtuele machine. Zorg ervoor dat de Azure-extensie voor SAP is geïnstalleerd op de VM.
+1. De cmdlet test de configuratie van de VM-extensie voor SAP op de virtuele machine die u selecteert.
 
 ### <a name="troubleshooting-azure-extension-for-sap"></a><a name="fe25a7da-4e4e-4388-8907-8abc2d33cfd8"></a>Problemen met Azure-extensie voor SAP oplossen
+
+> [!NOTE]
+> Er zijn twee versies van de VM-extensie. In dit hoofd stuk wordt de standaard-VM-extensie besproken. Als u de nieuwe VM-extensie hebt geïnstalleerd, raadpleegt u het hoofd stuk [problemen met de nieuwe Azure-extensie voor SAP oplossen][deployment-guide-5.3-new].
 
 #### <a name="windowslogo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows] Prestatie meter items van Azure worden helemaal niet weer gegeven
 
@@ -1406,6 +1398,9 @@ Voor een volledige en bijgewerkte lijst met bekende problemen raadpleegt u SAP N
 Als u het probleem niet kunt oplossen met SAP Note [1999351] , voert u het `Set-AzVMAEMExtension` configuratie script opnieuw uit zoals beschreven in [de Azure-extensie voor SAP configureren][deployment-guide-4.5]. Mogelijk moet u een uur wachten, omdat er mogelijk geen opslag analyse-of diagnostische tellers worden gemaakt direct nadat deze zijn ingeschakeld. Als het probleem zich blijft voordoen, opent u een SAP-klant bericht voor ondersteuning op de component BC-OP-NT-AZR voor Windows of BC-OP-LNX-AZR voor een virtuele Linux-machine.
 
 ### <a name="troubleshooting-the-new-azure-extension-for-sap"></a><a name="b7afb8ef-a64c-495d-bb37-2af96688c530"></a>Problemen met de nieuwe Azure-extensie voor SAP oplossen
+
+> [!NOTE]
+> Er zijn twee versies van de VM-extensie. In dit hoofd stuk wordt de nieuwe VM-extensie besproken. Als u de standaard-VM-extensie hebt geïnstalleerd, raadpleegt u hoofd stuk [problemen met de Azure-extensie voor SAP oplossen][deployment-guide-5.3].
 
 #### <a name="windowslogo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows] Prestatie meter items van Azure worden helemaal niet weer gegeven
 
@@ -1500,7 +1495,7 @@ Volg de stappen in hoofd stuk [de Azure-extensie voor SAP configureren][deployme
 
 Als de fouten niet verdwijnen, [neemt u contact op met de ondersteuning][deployment-guide-contact-support].
 
-#### <a name="contact-support"></a><a name="3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2"></a>Contact opnemen met ondersteuning
+#### <a name="contact-support"></a><a name="3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2"></a>Contact met ondersteuning
 
 Er is een onverwachte fout opgetreden of er is geen bekende oplossing. Verzamel het bestand AzureEnhancedMonitoring_service. log dat zich in de map C:\Packages\Plugins\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler \\ \<version\> \Drop (Windows) of/var/log/Azure/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux (Linux) bevindt en neem contact op met SAP-ondersteuning voor verdere ondersteuning.
 

@@ -14,12 +14,12 @@ ms.date: 04/29/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/28/2020
-ms.openlocfilehash: a87f3563b995081de8e7cbb4b4499718f77b02ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 87a3627d7820f9f456ac08e2f20b70af961f817e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82583260"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084242"
 ---
 # <a name="transport-layer-security-tls"></a>Transport Layer Security (TLS)
 
@@ -35,7 +35,7 @@ Voor Android-toepassingen die gebruikmaken van SSLSocket-instanties, stelt u ing
 
 De tabel op de ondersteunings pagina voor [TLS-protocol compatibiliteit](https://support.globalsign.com/customer/portal/articles/2934392-tls-protocol-compatibility) helpt met het toewijzen van besturings systemen met compatibele TLS-versies.
 
-Zie het overzicht van de [ondersteuning voor TLS-protocollen in Windows](https://docs.microsoft.com/archive/blogs/kaushal/support-for-ssltls-protocols-on-windows)voor meer informatie.
+Zie het overzicht van de [ondersteuning voor TLS-protocollen in Windows](/archive/blogs/kaushal/support-for-ssltls-protocols-on-windows)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

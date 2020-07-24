@@ -3,16 +3,16 @@ title: Cloud Solution Provider-micro soft Commercial Marketplace
 description: Meer informatie over het verkopen van uw aanbiedingen via het programma partner Channel van de Microsoft Cloud Solution Provider (CSP) in de commerciële Marketplace.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 author: keferna
 ms.author: keferna
-ms.date: 04/16/2020
-ms.openlocfilehash: d6c3af312717627a1719c5f1029ae638e7d4f827
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/14/2020
+ms.openlocfilehash: 8ac69d7d611aa75584955ed6ed83ab79c70ed73a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104432"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082799"
 ---
 # <a name="cloud-solution-provider-program"></a>Programma Cloud Solution Provider
 
@@ -30,31 +30,31 @@ De volgende aanbiedingen komen in aanmerking voor de keuze om te worden verkocht
 - Beheerde toepassingen
 
 > [!NOTE]
-> Containers en maken uw eigen licentie (BYOL) VM-Sku's worden standaard in de CSP-programma verkocht door partners.
+> In containers en worden uw eigen licentie (BYOL)-VM-abonnementen meegebracht die standaard worden verkocht door partners in het CSP-programma.
 
-## <a name="how-to-configure-an-offering"></a>Een aanbieding configureren
+## <a name="how-to-configure-an-offer"></a>Een aanbieding configureren
 
-De instelling voor het CSP-programma opt-in is geconfigureerd in het partner centrum of de ervaring Cloud Partner-portal aanbieding maken. Meer [informatie over het wijzigen van Publisher-ervaring](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293).
+Configureer de instelling voor het CSP-programma bij het maken van de aanbieding in Partner Center. Meer [informatie over het wijzigen van Publisher-ervaring](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293).
 
 ### <a name="partner-center-opt-in"></a>Partner centrum-opt-in
 
-In het partner centrum vindt u de opt-in-ervaring onder de doelgroep CSP reseller.
+De opt-in-ervaring bevindt zich in de module CSP reseller-doel groep:
 
 ![CSP reseller-groep](media/marketplace-publishers-guide/csp-reseller-audience.png)
 
-In de module CSP reseller-doel groep hebt u drie opties waaruit u kunt kiezen:
+U kunt kiezen uit drie opties:
 
-- Optie One: elke partner in het CSP-programma
-- Optie twee: specifieke partners in het CSP-programma dat ik Selecteer
-- Optie drie: geen partners in het CSP-programma
+1. Alle partners in het CSP-programma.
+2. Specifieke partners in het CSP-programma dat ik selecteer.
+3. Geen partners in het CSP-programma.
 
-#### <a name="option-one-any-partner-in-the-csp-program"></a>Optie One: elke partner in het CSP-programma
+#### <a name="option-1-any-partner-in-the-csp-program"></a>Optie 1: alle partners in het CSP-programma
 
 ![Alle partners in het CSP-programma](media/marketplace-publishers-guide/csp-reseller-option-one.png)
 
  Als u deze optie kiest, komen alle partners in het CSP-programma in aanmerking om uw aanbieding door te verkopen aan hun klanten.
 
-#### <a name="option-two-specific-partners-in-the-csp-program-i-select"></a>Optie twee: specifieke partners in het CSP-programma dat ik Selecteer
+#### <a name="option-2-specific-partners-in-the-csp-program-i-select"></a>Optie 2: specifieke partners in het CSP-programma dat ik Selecteer
 
 ![Specifieke partners in het CSP-programma dat ik Selecteer](media/marketplace-publishers-guide/csp-reseller-option-two.png)
 
@@ -87,17 +87,11 @@ Als u de lijst met CSP'S van een al gepubliceerde aanbieding bijwerkt, voegt u d
 
 Als u een aanbieding hebt die al een lijst met geautoriseerde partners heeft en u dezelfde lijst voor een andere aanbieding wilt gebruiken, gebruikt u **importeren/exporteren**. Navigeer naar het aanbod met de lijst met csp's en selecteer **Csp's exporteren**. De functie ontwikkelt een CSV-bestand dat in een andere aanbieding kan worden geïmporteerd.
 
-#### <a name="option-three-no-partners-in-the-csp-program"></a>Optie drie: geen partners in het CSP-programma
+#### <a name="option-3-no-partners-in-the-csp-program"></a>Optie 3: geen partners in het CSP-programma
 
 ![Geen partners in het CSP-programma](media/marketplace-publishers-guide/csp-reseller-option-three.png)
 
 Als u deze optie kiest, kunt u uw aanbieding uit het CSP-programma aansturen. U kunt deze selectie op elk gewenst moment wijzigen.
-
-### <a name="cloud-partner-portal-opt-in"></a>Opt-in Cloud Partner-portal
-
-In Cloud Partner-portal wordt de opt-in ingesteld op het tabblad Marketplace of winkel. De mogelijkheid om specifieke partners in het CSP-programma te kiezen, is alleen beschikbaar in partner centrum.
-
-![CSP-opt-in-ervaring in CPP](media/marketplace-publishers-guide/csp-opt-in.png)
 
 ## <a name="deauthorize-partners-in-the-csp-program"></a>De autorisatie van partners in het CSP-programma intrekken
 
@@ -115,9 +109,6 @@ Als een partner in het CSP-programma uw product niet aan hun klanten heeft verko
 4. Voor **een probleem selecteren dat het probleem het beste beschrijft**, selecteert u **bestaande aanbieding bijwerken**.
 5. Selecteer **volgende** om naar de pagina met **Details** van het probleem te verwijzen om meer informatie over uw probleem op te geven.
 6. Gebruik **CSP intrekken** als de titel van het probleem en vul de rest van de vereiste secties in.
-
-
-
 
 ## <a name="navigate-between-options"></a>Scha kelen tussen opties
 
@@ -182,12 +173,6 @@ Om ervoor te zorgen dat partners in het Cloud Solution Provider-programma het me
 Als u in het partner centrum hebt gekozen voor het CSP-kanaal, moeten uitgevers een URL invoeren die als host fungeert voor relevante marketing materialen en kanaal contact gegevens naar het CSP-kanaal onder de module aanbieding:
 
 ![Partner centrum CSP-informatie over onderpand](media/marketplace-publishers-guide/pc-csp-channel.png)
-
-### <a name="cloud-partner-portal-csp-channel"></a>CSP-kanaal Cloud Partner-portal
-
-Als u hebt gekozen voor het CSP-kanaal in Cloud Partner-portal, moeten uitgevers een URL invoeren die als host fungeert voor relevante marketing materialen en kanaal contactpersoongegevens naar het CSP-kanaal:
-
-![Informatie over het onderpand van CSP Cloud Partner-portal](media/marketplace-publishers-guide/cpp-csp-information.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

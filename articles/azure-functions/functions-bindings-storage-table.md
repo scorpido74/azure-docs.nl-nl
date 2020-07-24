@@ -6,11 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: dd98d27f5a14d284174dd779ae20b29f534920b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6d8ca41c56239bc994b34119600dfa9db60ada6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559941"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083086"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Table Storage-bindingen voor Azure Functions
 
@@ -139,7 +140,7 @@ namespace FunctionAppCloudTable2
 }
 ```
 
-Zie [aan de slag met Azure Table Storage](../cosmos-db/table-storage-how-to-use-dotnet.md)voor meer informatie over het gebruik van CloudTable.
+Zie [aan de slag met Azure Table Storage](../cosmos-db/tutorial-develop-table-dotnet.md)voor meer informatie over het gebruik van CloudTable.
 
 Als u probeert verbinding te maken met `CloudTable` een fout bericht, moet u ervoor zorgen dat u een verwijzing naar [de juiste versie van de Storage SDK](#azure-storage-sdk-version-in-functions-1x)hebt.
 
@@ -305,7 +306,7 @@ public class LogEntity : TableEntity
 }
 ```
 
-Zie [aan de slag met Azure Table Storage](../cosmos-db/table-storage-how-to-use-dotnet.md)voor meer informatie over het gebruik van CloudTable.
+Zie [aan de slag met Azure Table Storage](../cosmos-db/tutorial-develop-table-dotnet.md)voor meer informatie over het gebruik van CloudTable.
 
 Als u probeert verbinding te maken met `CloudTable` een fout bericht, moet u ervoor zorgen dat u een verwijzing naar [de juiste versie van de Storage SDK](#azure-storage-sdk-version-in-functions-1x)hebt.
 
@@ -554,7 +555,7 @@ Gebruik in de [runtime-bibliotheek van Java-functies](/java/api/overview/azure/f
 
 De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `Table` kenmerk.
 
-|function.jsbij eigenschap | Kenmerk eigenschap |Description|
+|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
 |**type** | N.v.t. | Moet worden ingesteld op `table` . Deze eigenschap wordt automatisch ingesteld wanneer u de binding maakt in de Azure Portal.|
 |**direction** | N.v.t. | Moet worden ingesteld op `in` . Deze eigenschap wordt automatisch ingesteld wanneer u de binding maakt in de Azure Portal. |
@@ -562,7 +563,7 @@ De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u 
 |**tableName** | **TableName** | De naam van de tabel.| 
 |**partitionKey** | **PartitionKey** |Optioneel. De partitie sleutel van de tabel entiteit die moet worden gelezen. Zie de sectie [gebruik](#input---usage) voor richt lijnen voor het gebruik van deze eigenschap.| 
 |**rowKey** |**RowKey** | Optioneel. De rij van de tabel entiteit die moet worden gelezen. Zie de sectie [gebruik](#input---usage) voor richt lijnen voor het gebruik van deze eigenschap.| 
-|**Houd** |**Houd** | Optioneel. Het maximum aantal entiteiten dat in Java script kan worden gelezen. Zie de sectie [gebruik](#input---usage) voor richt lijnen voor het gebruik van deze eigenschap.| 
+|**take** |**Houd** | Optioneel. Het maximum aantal entiteiten dat in Java script kan worden gelezen. Zie de sectie [gebruik](#input---usage) voor richt lijnen voor het gebruik van deze eigenschap.| 
 |**Filterwebonderdelen** |**Filter** | Optioneel. Een OData-filter expressie voor tabel invoer in Java script. Zie de sectie [gebruik](#input---usage) voor richt lijnen voor het gebruik van deze eigenschap.| 
 |**Combi** |**Verbinding** | De naam van een app-instelling die de opslag connection string bevat die moet worden gebruikt voor deze binding. De instelling kan de naam zijn van een vooringestelde app-instelling voor ' AzureWebJobs ' of connection string naam. Als de naam van de instelling bijvoorbeeld ' AzureWebJobsMyStorage ' is, kunt u hier ' mijn opslag ' opgeven. De functions-runtime zoekt automatisch naar een app-instelling met de naam ' AzureWebJobsMyStorage '. Als u `connection` leeg laat, gebruikt de functions runtime de standaard opslag Connection String in de app-instelling met de naam `AzureWebJobsStorage` .|
 
@@ -606,7 +607,7 @@ Tabel gegevens worden door gegeven aan de functie als een JSON-teken reeks. Dese
 
 # <a name="java"></a>[Java](#tab/java)
 
-Met het kenmerk [TableInput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.tableinput) krijgt u toegang tot de tabelrij waarin de functie is geactiveerd.
+Met het kenmerk [TableInput](/java/api/com.microsoft.azure.functions.annotation.tableinput) krijgt u toegang tot de tabelrij waarin de functie is geactiveerd.
 
 ---
 
@@ -941,7 +942,7 @@ Zie het voor [beeld voor meer informatie](#output).
 
 De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `Table` kenmerk.
 
-|function.jsbij eigenschap | Kenmerk eigenschap |Description|
+|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
 |**type** | N.v.t. | Moet worden ingesteld op `table` . Deze eigenschap wordt automatisch ingesteld wanneer u de binding maakt in de Azure Portal.|
 |**direction** | N.v.t. | Moet worden ingesteld op `out` . Deze eigenschap wordt automatisch ingesteld wanneer u de binding maakt in de Azure Portal. |
@@ -977,15 +978,15 @@ Er zijn twee opties voor het uitvoeren van een tabelrij bericht in tabel opslag 
 
 - **Retour waarde**: Stel de `name` eigenschap in *function.jsin op* aan `$return` . Met deze configuratie wordt de retour waarde van de functie persistent gemaakt als tabelrij.
 
-- Verplicht **: Geef**een waarde door aan de methode [set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) van de para meter die is gedeclareerd als een [out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python) -type. De waarde die is door gegeven aan `set` , wordt persistent gemaakt als een event hub-bericht.
+- Verplicht **: Geef**een waarde door aan de methode [set](/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) van de para meter die is gedeclareerd als een [out](/python/api/azure-functions/azure.functions.out?view=azure-python) -type. De waarde die is door gegeven aan `set` , wordt persistent gemaakt als een event hub-bericht.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Er zijn twee opties voor het uitvoeren van een rij in een tabel opslag van een functie met behulp van de [TableStorageOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.tableoutput?view=azure-java-stablet) -aantekening:
+Er zijn twee opties voor het uitvoeren van een rij in een tabel opslag van een functie met behulp van de [TableStorageOutput](/java/api/com.microsoft.azure.functions.annotation.tableoutput?view=azure-java-stablet) -aantekening:
 
 - **Retour waarde**: door de aantekening toe te passen op de functie zelf, wordt de geretourneerde waarde van de functie persistent gemaakt als een rij in tabel opslag.
 
-- Verplicht **: als**u de bericht waarde expliciet wilt instellen, past u de aantekening toe op een specifieke para meter van het type [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding) , waarbij `T` de `PartitionKey` Eigenschappen en zijn opgenomen `RowKey` . Deze eigenschappen gaan vaak vergezeld van implementatie `ITableEntity` of overname `TableEntity` .
+- Verplicht **: als**u de bericht waarde expliciet wilt instellen, past u de aantekening toe op een specifieke para meter van het type [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) , waarbij `T` de `PartitionKey` Eigenschappen en zijn opgenomen `RowKey` . Deze eigenschappen gaan vaak vergezeld van implementatie `ITableEntity` of overname `TableEntity` .
 
 ---
 
@@ -993,9 +994,9 @@ Er zijn twee opties voor het uitvoeren van een rij in een tabel opslag van een f
 
 | Binding | Verwijzing |
 |---|---|
-| Tabel | [Fout codes voor tabellen](https://docs.microsoft.com/rest/api/storageservices/fileservices/table-service-error-codes) |
-| BLOB, tabel, wachtrij | [Opslag fout codes](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
-| BLOB, tabel, wachtrij | [Problemen oplossen](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
+| Tabel | [Fout codes voor tabellen](/rest/api/storageservices/fileservices/table-service-error-codes) |
+| BLOB, tabel, wachtrij | [Opslag fout codes](/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
+| BLOB, tabel, wachtrij | [Problemen oplossen](/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
 ## <a name="next-steps"></a>Volgende stappen
 

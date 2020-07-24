@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogardle
-ms.openlocfilehash: 2b0b85792fe1266d2ec6478561193ef0c80ac98f
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: c6b064df1fe8943f9202446fb2857d50bcb4e0e1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224295"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083375"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Oracle Data Guard implementeren op een virtuele machine van Azure Linux 
 
 Azure CLI wordt gebruikt voor het maken en beheren van Azure-resources vanaf de opdrachtregel of in scripts. In dit artikel wordt beschreven hoe u Azure CLI gebruikt om een Oracle Database 12c-data base te implementeren vanuit de Azure Marketplace-installatie kopie. In dit artikel ziet u vervolgens stapsgewijze instructies, hoe u Data Guard kunt installeren en configureren op een virtuele Azure-machine (VM).
 
-Voordat u begint, moet u ervoor zorgen dat Azure CLI is geïnstalleerd. Raadpleeg de [installatie handleiding voor Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli)voor meer informatie.
+Voordat u begint, moet u ervoor zorgen dat Azure CLI is geïnstalleerd. Raadpleeg de [installatie handleiding voor Azure cli](/cli/azure/install-azure-cli)voor meer informatie.
 
 ## <a name="prepare-the-environment"></a>De omgeving voorbereiden
 ### <a name="assumptions"></a>Aannames
@@ -47,7 +47,7 @@ az login
 
 ### <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Maak een resourcegroep met de opdracht [az group create](/cli/azure/group). Een Azure-resource groep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. 
+Maak een resourcegroep met de opdracht [az group create](/cli/azure/group). Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. 
 
 In het volgende voorbeeld wordt een resourcegroep met de naam `myResourceGroup` gemaakt op de locatie `westus`:
 
@@ -57,7 +57,7 @@ az group create --name myResourceGroup --location westus
 
 ### <a name="create-an-availability-set"></a>Een beschikbaarheidsset maken
 
-Het maken van een beschikbaarheidsset is optioneel, maar we raden het aan. Zie de [richt lijnen voor Azure-beschikbaarheids sets](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines)voor meer informatie.
+Het maken van een beschikbaarheidsset is optioneel, maar we raden het aan. Zie de [richt lijnen voor Azure-beschikbaarheids sets](../../windows/infrastructure-example.md)voor meer informatie.
 
 ```azurecli
 az vm availability-set create \

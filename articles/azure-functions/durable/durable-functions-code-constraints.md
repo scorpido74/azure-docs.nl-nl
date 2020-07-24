@@ -5,11 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 4ed604302ca187ad4953e865d68dc73030a37c02
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14e0b86f11c3eabf93e7d4f0ebf563e59c0c21e9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77562136"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081862"
 ---
 # <a name="orchestrator-function-code-constraints"></a>Functie code beperkingen van Orchestrator
 
@@ -17,7 +18,7 @@ Durable Functions is een uitbrei ding van [Azure functions](../functions-overvie
 
 ## <a name="orchestrator-code-constraints"></a>Codebeperkingen voor orchestrator
 
-Orchestrator-functies gebruiken [gebeurtenis bronnen](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) om betrouw bare uitvoering te garanderen en om de lokale status van de variabele te onderhouden. Het [gedrag](durable-functions-orchestrations.md#reliability) voor opnieuw afspelen van Orchestrator-code maakt beperkingen voor het type code dat u kunt schrijven in een Orchestrator-functie. Orchestrator-functies moeten bijvoorbeeld *deterministisch*zijn: een Orchestrator-functie wordt meerdere keren opnieuw afgespeeld en moet telkens hetzelfde resultaat opleveren.
+Orchestrator-functies gebruiken [gebeurtenis bronnen](/azure/architecture/patterns/event-sourcing) om betrouw bare uitvoering te garanderen en om de lokale status van de variabele te onderhouden. Het [gedrag](durable-functions-orchestrations.md#reliability) voor opnieuw afspelen van Orchestrator-code maakt beperkingen voor het type code dat u kunt schrijven in een Orchestrator-functie. Orchestrator-functies moeten bijvoorbeeld *deterministisch*zijn: een Orchestrator-functie wordt meerdere keren opnieuw afgespeeld en moet telkens hetzelfde resultaat opleveren.
 
 ### <a name="using-deterministic-apis"></a>Deterministische Api's gebruiken
 

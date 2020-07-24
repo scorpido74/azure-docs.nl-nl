@@ -2,14 +2,14 @@
 title: Algemene vragen over de Azure Site Recovery-service
 description: In dit artikel worden populaire algemene vragen over Azure Site Recovery beschreven.
 ms.topic: conceptual
-ms.date: 1/24/2020
+ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: b02d001d6fad905badaf17422bdd0554e3fc8493
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 89a5785811b4f4833a5a5ddcef827b258ce1775a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133668"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083732"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Algemene vragen over Azure Site Recovery
 
@@ -116,6 +116,19 @@ Mobility-agents die zijn geïnstalleerd op de gerepliceerde items communiceren a
 ### <a name="how-can-i-enforce-tls-12-on-hyperv-to-azure-site-recovery-scenarios"></a>Hoe kan ik TLS 1,2 afdwingen voor Hyper-to-Azure Site Recovery-scenario's?
 Alle communicatie tussen de micro services van Azure Site Recovery gebeurt op het TLS 1,2-protocol. Site Recovery gebruikt beveiligings providers die zijn geconfigureerd in het systeem (OS) en maakt gebruik van het meest recente beschik bare TLS-protocol. U moet de TLS 1,2 expliciet inschakelen in het REGI ster en vervolgens Site Recovery gaan gebruiken van TLS 1,2 voor communicatie met Services. 
 
+### <a name="how-can-i-enforce-restricted-access-on-my-storage-accounts-which-are-accessed-by-site-recovery-service-for-readingwriting-replication-data"></a>Hoe kan ik beperkte toegang afdwingen voor mijn opslag accounts die worden gebruikt door Site Recovery service voor het lezen/schrijven van replicatie gegevens?
+U kunt overschakelen op de beheerde identiteit van de Recovery Services-kluis door te gaan naar de *identiteits* instelling. Zodra de kluis is geregistreerd bij Azure Active Directory, kunt u naar uw opslag accounts gaan en de volgende roltoewijzingen aan de kluis geven:
+
+- Op Resource Manager gebaseerde opslag accounts (standaard type):
+  - [Inzender](../role-based-access-control/built-in-roles.md#contributor)
+  - [Inzender voor Storage BLOB-gegevens](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
+- Op Resource Manager gebaseerde opslag accounts (Premium-type):
+  - [Inzender](../role-based-access-control/built-in-roles.md#contributor)
+  - [Eigenaar van gegevens van opslag-BLOB](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)
+- Klassieke opslag accounts:
+  - [Inzender voor klassieke opslag accounts](../role-based-access-control/built-in-roles.md#classic-storage-account-contributor)
+  - [Service functie voor de sleutel operator voor klassieke opslag accounts](../role-based-access-control/built-in-roles.md#classic-storage-account-key-operator-service-role)
+
 ## <a name="disaster-recovery"></a>Herstel na noodgeval
 
 ### <a name="what-can-site-recovery-protect"></a>Wat kan Site Recovery beschermen?
@@ -142,7 +155,7 @@ Ja, Site Recovery ondersteunt herstel na nood gevallen van on-premises VMware-Vm
 ### <a name="is-disaster-recovery-supported-for-hyper-v-vms"></a>Wordt herstel na nood gevallen ondersteund voor virtuele Hyper-V-machines?
 Ja, Site Recovery ondersteunt herstel na nood gevallen van on-premises Hyper-V-Vm's. [Bekijk veelgestelde vragen](hyper-v-azure-common-questions.md) voor herstel na nood gevallen voor virtuele Hyper-V-machines.
 
-## <a name="is-disaster-recovery-supported-for-physical-servers"></a>Wordt nood herstel ondersteund voor fysieke servers?
+### <a name="is-disaster-recovery-supported-for-physical-servers"></a>Wordt nood herstel ondersteund voor fysieke servers?
 Ja, Site Recovery ondersteunt herstel na nood gevallen van on-premises fysieke servers met Windows en Linux naar Azure of naar een secundaire site. Meer informatie over vereisten voor herstel na nood gevallen naar [Azure](vmware-physical-azure-support-matrix.md#replicated-machines)en naar[een secundaire site](vmware-physical-secondary-support-matrix.md#replicated-vm-support).
 Houd er rekening mee dat fysieke servers na een failover worden uitgevoerd als virtuele machines in Azure. Failback van Azure naar een on-premises fysieke server wordt momenteel niet ondersteund. U kunt alleen een failback uitvoeren naar een virtuele VMware-machine.
 

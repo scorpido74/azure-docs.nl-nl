@@ -8,13 +8,13 @@ ms.author: magottei
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 862b3056445bddb358e6485ce5fec4de4d53eace
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 07/12/2020
+ms.openlocfilehash: 725ee57a06d3d547142fdd39ef03e1c7e7c296a8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039276"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084140"
 ---
 # <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>Verbinding maken met Azure SQL-inhoud en deze indexeren met behulp van een Azure Cognitive Search Indexeer functie
 
@@ -314,7 +314,7 @@ De **softDeleteMarkerValue** moet een teken reeks zijn: gebruik de teken reeks r
 <a name="TypeMapping"></a>
 
 ## <a name="mapping-between-sql-and-azure-cognitive-search-data-types"></a>Toewijzing tussen SQL-en Azure Cognitive Search-gegevens typen
-| SQL-gegevenstype | Toegestane doel index veld typen | Notities |
+| SQL-gegevenstype | Toegestane doel index veld typen | Opmerkingen |
 | --- | --- | --- |
 | bit |EDM. Boolean, EDM. String | |
 | int, smallint, tinyint |EDM. Int32, EDM. Int64, EDM. String | |
@@ -331,7 +331,7 @@ De **softDeleteMarkerValue** moet een teken reeks zijn: gebruik de teken reeks r
 ## <a name="configuration-settings"></a>Configuratie-instellingen
 SQL Indexeer functie maakt verschillende configuratie-instellingen beschikbaar:
 
-| Instelling | Gegevenstype | Functie | Standaardwaarde |
+| Instelling | Gegevenstype | Doel | Standaardwaarde |
 | --- | --- | --- | --- |
 | queryTimeout |tekenreeks |Hiermee stelt u de time-out voor de uitvoering van SQL-query's |5 minuten ("00:05:00") |
 | disableOrderByHighWaterMarkColumn |booleaans |Zorgt ervoor dat de SQL-query die wordt gebruikt door het beleid voor hoog water merk, de component ORDER BY weglaat. Zie [beleid voor hoog water merk](#HighWaterMarkPolicy) |false |

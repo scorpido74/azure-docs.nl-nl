@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: bb9783b38185940f0e75e888c3bc69a1edcc6cbb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 02cb862c5ec6f75d546aabcd6e8ac97a4de961a4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249254"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082950"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Afhankelijkheidsinjectie gebruiken in .NET Azure Functions
 
-Azure Functions ondersteunt het ' Dependency Injection (DI)-ontwerp patroon voor software. Dit is een techniek voor het bezorgen [van een inversie van het besturings element (IOC)](https://docs.microsoft.com/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) tussen klassen en hun afhankelijkheden.
+Azure Functions ondersteunt het ' Dependency Injection (DI)-ontwerp patroon voor software. Dit is een techniek voor het bezorgen [van een inversie van het besturings element (IOC)](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) tussen klassen en hun afhankelijkheden.
 
-- Het invoegen van afhankelijkheden in Azure Functions is gebaseerd op de functies van de .NET core-invoeg injectie. Het is raadzaam om vertrouwd te raken met het [invoeren van .net core-afhankelijkheid](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection) . Er zijn verschillen in hoe u afhankelijkheden overschrijft en hoe configuratie waarden worden gelezen met Azure Functions op het verbruiks plan.
+- Het invoegen van afhankelijkheden in Azure Functions is gebaseerd op de functies van de .NET core-invoeg injectie. Het is raadzaam om vertrouwd te raken met het [invoeren van .net core-afhankelijkheid](/aspnet/core/fundamentals/dependency-injection) . Er zijn verschillen in hoe u afhankelijkheden overschrijft en hoe configuratie waarden worden gelezen met Azure Functions op het verbruiks plan.
 
 - Ondersteuning voor het invoegen van afhankelijkheden begint met Azure Functions 2. x.
 
@@ -115,7 +115,7 @@ In dit voor beeld wordt het pakket [micro soft. Extensions. http](https://www.nu
 
 ## <a name="service-lifetimes"></a>Levens duur van service
 
-Azure Functions-apps bieden dezelfde levens duur van de service als [ASP.net-afhankelijkheids injectie](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes). Voor een functions-app gedragen de verschillende levens duur van de service er als volgt uit:
+Azure Functions-apps bieden dezelfde levens duur van de service als [ASP.net-afhankelijkheids injectie](/aspnet/core/fundamentals/dependency-injection#service-lifetimes). Voor een functions-app gedragen de verschillende levens duur van de service er als volgt uit:
 
 - **Tijdelijk**: tijdelijke services worden op elke aanvraag van de service gemaakt.
 - **Bereik**: de levens duur van het bereik van de service komt overeen met de levens duur van een functie. Services met een bereik worden eenmaal per uitvoering gemaakt. Latere aanvragen voor die service tijdens het uitvoeren van het bestaande service-exemplaar opnieuw gebruiken.
@@ -125,7 +125,7 @@ Bekijk of down load een voor [beeld van de verschillende levens duur](https://ak
 
 ## <a name="logging-services"></a>Logboek registratie Services
 
-Als u uw eigen registratie provider nodig hebt, moet u een aangepast type registreren als een exemplaar van [`ILoggerProvider`](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.iloggerfactory) , dat beschikbaar is via het [micro soft. Extensions. logges. abstracties](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Abstractions/) NuGet-pakket.
+Als u uw eigen registratie provider nodig hebt, moet u een aangepast type registreren als een exemplaar van [`ILoggerProvider`](/dotnet/api/microsoft.extensions.logging.iloggerfactory) , dat beschikbaar is via het [micro soft. Extensions. logges. abstracties](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Abstractions/) NuGet-pakket.
 
 Application Insights wordt automatisch toegevoegd door Azure Functions.
 
@@ -250,14 +250,14 @@ public class HttpTrigger
 }
 ```
 
-Raadpleeg het [Opties patroon in ASP.net core](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options) voor meer informatie over het werken met opties.
+Raadpleeg het [Opties patroon in ASP.net core](/aspnet/core/fundamentals/configuration/options) voor meer informatie over het werken met opties.
 
 > [!WARNING]
 > Vermijd het lezen van waarden uit bestanden zoals *local.settings.jsop* of *appSettings. { Environment}. json* op het verbruiks plan. Waarden die zijn gelezen van deze bestanden met betrekking tot trigger verbindingen zijn niet beschikbaar als de app wordt geschaald omdat de hosting-infra structuur geen toegang heeft tot de configuratie gegevens omdat de schaal controller nieuwe exemplaren van de app maakt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende resources voor meer informatie:
+Zie de volgende bronnen voor meer informatie:
 
 - [Uw functie-app bewaken](functions-monitoring.md)
 - [Aanbevolen procedures voor functies](functions-best-practices.md)

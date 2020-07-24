@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 8a68c793d9aaf94ad28f2e478254e42ede4800de
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 611cb5b94ee2ad458fa00a61af673696d7e7a212
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170357"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085143"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Werken met Azure Functions Core Tools
 
@@ -35,7 +35,7 @@ Er zijn drie versies van Azure Functions Core Tools. Welke versie u gebruikt, is
 
 + **Versie 1. x**: ondersteunt versie 1. x van de Azure functions runtime. Deze versie van de hulpprogram ma's wordt alleen ondersteund op Windows-computers en wordt geïnstalleerd vanuit een [NPM-pakket](https://www.npmjs.com/package/azure-functions-core-tools).
 
-+ [**Versie 3. x/2. x**](#v2): ondersteunt [versie 3. x of 2. x van de Azure functions runtime](functions-versions.md). Deze versies ondersteunen [Windows](/azure/azure-functions/functions-run-local?tabs=windows#v2), [macOS](/azure/azure-functions/functions-run-local?tabs=macos#v2)en [Linux](/azure/azure-functions/functions-run-local?tabs=linux#v2) en gebruiken platformspecifieke pakket beheerders of NPM voor installatie.
++ [**Versie 3. x/2. x**](#v2): ondersteunt [versie 3. x of 2. x van de Azure functions runtime](functions-versions.md). Deze versies ondersteunen [Windows](?tabs=windows#v2), [macOS](?tabs=macos#v2)en [Linux](?tabs=linux#v2) en gebruiken platformspecifieke pakket beheerders of NPM voor installatie.
 
 Tenzij anders vermeld, zijn de voor beelden in dit artikel van versie 3. x.
 
@@ -48,7 +48,7 @@ Tenzij anders vermeld, zijn de voor beelden in dit artikel van versie 3. x.
 
 ### <a name="version-3x-and-2x"></a><a name="v2"></a>Versie 3. x en 2. x
 
-Versie 3. x/2. x van de hulpprogram ma's maakt gebruik van de Azure Functions runtime die is gebouwd op .NET core. Deze versie wordt ondersteund op alle platformen .NET core ondersteunt, waaronder [Windows](/azure/azure-functions/functions-run-local?tabs=windows#v2), [macOS](/azure/azure-functions/functions-run-local?tabs=macos#v2)en [Linux](/azure/azure-functions/functions-run-local?tabs=linux#v2). 
+Versie 3. x/2. x van de hulpprogram ma's maakt gebruik van de Azure Functions runtime die is gebouwd op .NET core. Deze versie wordt ondersteund op alle platformen .NET core ondersteunt, waaronder [Windows](?tabs=windows#v2), [macOS](?tabs=macos#v2)en [Linux](?tabs=linux#v2). 
 
 > [!IMPORTANT]
 > U kunt de vereiste voor het installeren van de .NET Core SDK overs Laan door gebruik te maken van [uitbreidings bundels].
@@ -240,7 +240,7 @@ Als er geen geldige opslag connection string is ingesteld voor [`AzureWebJobsSto
 
 ### <a name="get-your-storage-connection-strings"></a>Uw opslag verbindings reeksen ophalen
 
-Zelfs wanneer u de Microsoft Azure-opslagemulator voor ontwikkeling gebruikt, wilt u wellicht testen met een echte opslag verbinding. Ervan uitgaande dat u al [een opslag account hebt gemaakt](../storage/common/storage-create-storage-account.md), kunt u op een van de volgende manieren een geldig opslag Connection String krijgen:
+Zelfs wanneer u de Microsoft Azure-opslagemulator voor ontwikkeling gebruikt, wilt u wellicht testen met een echte opslag verbinding. Ervan uitgaande dat u al [een opslag account hebt gemaakt](../storage/common/storage-account-create.md), kunt u op een van de volgende manieren een geldig opslag Connection String krijgen:
 
 - Zoek en selecteer **opslag accounts**vanuit het [Azure Portal]. 
   ![Selecteer opslag accounts uit Azure Portal](./media/functions-run-local/select-storage-accounts.png)
@@ -343,7 +343,7 @@ func start
 ```
 func start
 ```
-Deze opdracht moet worden [uitgevoerd in een virtuele omgeving](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#create-venv).
+Deze opdracht moet worden [uitgevoerd in een virtuele omgeving](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python#create-venv).
 
 # <a name="typescript"></a>[TypeScript](#tab/ts)
 
@@ -574,13 +574,13 @@ Voor dit type streaming-logboeken moet Application Insights integratie zijn inge
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het ontwikkelen, testen en publiceren van Azure Functions met behulp van Azure Functions Core Tools [micro soft-leer module](https://docs.microsoft.com/learn/modules/develop-test-deploy-azure-functions-with-core-tools/) Azure functions core tools is [open source en wordt gehost op github](https://github.com/azure/azure-functions-cli).  
+Meer informatie over het ontwikkelen, testen en publiceren van Azure Functions met behulp van Azure Functions Core Tools [micro soft-leer module](/learn/modules/develop-test-deploy-azure-functions-with-core-tools/) Azure functions core tools is [open source en wordt gehost op github](https://github.com/azure/azure-functions-cli).  
 [Open een github-probleem](https://github.com/azure/azure-functions-cli/issues)als u een fout of een functie aanvraag wilt indienen.
 
 <!-- LINKS -->
 
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
-[Azure Portal]: https://portal.azure.com 
+[Azure-portal]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
 ['AzureWebJobsStorage']: functions-app-settings.md#azurewebjobsstorage

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-multiple
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: akjosh
-ms.openlocfilehash: 874e6f9b1c0bebedb5f50ca38d0703420be69de5
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: c4a4f641283a9a4771a236ba844cfe296b31c28c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186959"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082675"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>Trend Micro diepe Security als een service op een Windows-VM installeren en configureren
 
@@ -38,7 +38,7 @@ Als u een huidig abonnement hebt van Trend Micro voor een on-premises oplossing,
 
 Met de [Azure Portal](https://portal.azure.com) kunt u de trend micro Security-extensie installeren wanneer u een installatie kopie van de **Marketplace** gebruikt om de virtuele machine te maken. Als u één virtuele machine maakt, is het gebruik van de portal een eenvoudige manier om beveiliging van Trend Micro toe te voegen.
 
-Als u een item uit de **Marketplace** gebruikt, wordt er een wizard geopend die u helpt bij het instellen van de virtuele machine. U gebruikt de Blade **instellingen** , het derde paneel van de wizard, om de trend micro Security-extensie te installeren.  Zie [een virtuele machine met Windows maken in de Azure Portal](../windows/classic/tutorial.md)voor algemene instructies.
+Als u een item uit de **Marketplace** gebruikt, wordt er een wizard geopend die u helpt bij het instellen van de virtuele machine. U gebruikt de Blade **instellingen** , het derde paneel van de wizard, om de trend micro Security-extensie te installeren.  Zie [een virtuele machine met Windows maken in de Azure Portal](../windows/quick-create-portal.md)voor algemene instructies.
 
 Wanneer u de Blade **instellingen** van de wizard krijgt, voert u de volgende stappen uit:
 
@@ -57,7 +57,7 @@ Wanneer u de Blade **instellingen** van de wizard krijgt, voert u de volgende st
 ## <a name="install-the-deep-security-agent-on-an-existing-vm"></a>Installeer de grondige beveiligings agent op een bestaande virtuele machine
 Als u de agent wilt installeren op een bestaande virtuele machine, hebt u de volgende items nodig:
 
-* De Azure PowerShell module versie 0.8.2 of nieuwer, geïnstalleerd op uw lokale computer. U kunt de versie van Azure PowerShell die u hebt geïnstalleerd controleren met behulp van de opdracht **Get-module Azure | indeling-Table versie** . Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview)voor instructies en een koppeling naar de meest recente versie. Meld u aan bij uw Azure-abonnement met `Add-AzureAccount` .
+* De Azure PowerShell module versie 0.8.2 of nieuwer, geïnstalleerd op uw lokale computer. U kunt de versie van Azure PowerShell die u hebt geïnstalleerd controleren met behulp van de opdracht **Get-module Azure | indeling-Table versie** . Zie [Azure PowerShell installeren en configureren](/powershell/azure/)voor instructies en een koppeling naar de meest recente versie. Meld u aan bij uw Azure-abonnement met `Add-AzureAccount` .
 * De VM-agent die is geïnstalleerd op de virtuele doel machine.
 
 Controleer eerst of de VM-agent al is geïnstalleerd. Vul de naam van de Cloud service en de virtuele machine in en voer de volgende opdrachten uit op de opdracht prompt op beheerders niveau Azure PowerShell. Vervang alles binnen de aanhalings tekens, met inbegrip van de <-en > teken.

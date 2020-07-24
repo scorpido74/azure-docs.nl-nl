@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 1f08d6b8a2ce2381c3bc85891a292ac05561cf34
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be406744dc9752dd3c924c636e85f43e133c1cca
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85832556"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085075"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategieën voor het testen van uw code in Azure Functions
 
@@ -40,13 +40,13 @@ Als u uw omgeving wilt instellen, maakt u een functie-en test-app. De volgende s
 3. [Maak een timer functie op basis van de sjabloon](./functions-create-scheduled-function.md) en noem deze **MyTimerTrigger**.
 4. [Maak een xUnit-test-app](https://xunit.github.io/docs/getting-started-dotnet-core) in de oplossing en geef deze de naam **Function. tests**.
 5. Gebruik NuGet om een verwijzing toe te voegen vanuit de test-app naar [micro soft. AspNetCore. MVC](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/)
-6. [Raadpleeg de *functions* -app](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017) vanuit *functions. app tests* .
+6. [Raadpleeg de *functions* -app](/visualstudio/ide/managing-references-in-a-project?view=vs-2017) vanuit *functions. app tests* .
 
 ### <a name="create-test-classes"></a>Test klassen maken
 
 Nu de projecten zijn gemaakt, kunt u de klassen maken die worden gebruikt om de geautomatiseerde tests uit te voeren.
 
-Voor elke functie wordt een instantie van [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) gebruikt voor het afhandelen van bericht logboek registratie. Sommige tests registreren geen berichten of hebben geen betrekking op hoe logboek registratie wordt geïmplementeerd. Andere tests moeten de geregistreerde berichten evalueren om te bepalen of een test wordt door gegeven.
+Voor elke functie wordt een instantie van [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) gebruikt voor het afhandelen van bericht logboek registratie. Sommige tests registreren geen berichten of hebben geen betrekking op hoe logboek registratie wordt geïmplementeerd. Andere tests moeten de geregistreerde berichten evalueren om te bepalen of een test wordt door gegeven.
 
 U maakt een nieuwe klasse met de naam `ListLogger` die een interne lijst met berichten bevat die tijdens het testen moet worden geëvalueerd. Voor het implementeren van de vereiste `ILogger` interface moet de klasse een bereik hebben. De volgende klasse geeft een bereik aan voor de test cases die moeten worden door gegeven aan de `ListLogger` klasse.
 
@@ -192,7 +192,7 @@ namespace Functions.Tests
 
 De `TestFactory` klasse implementeert de volgende leden:
 
-- **Gegevens**: deze eigenschap retourneert een [IEnumerable](https://docs.microsoft.com/dotnet/api/system.collections.ienumerable) -verzameling van voorbeeld gegevens. De sleutel-waardeparen vertegenwoordigen waarden die worden door gegeven aan een query reeks.
+- **Gegevens**: deze eigenschap retourneert een [IEnumerable](/dotnet/api/system.collections.ienumerable) -verzameling van voorbeeld gegevens. De sleutel-waardeparen vertegenwoordigen waarden die worden door gegeven aan een query reeks.
 
 - **CreateDictionary**: deze methode accepteert een sleutel/waarde-paar als argumenten en retourneert een nieuwe `Dictionary` die wordt gebruikt om `QueryCollection` query teken reeks waarden weer te geven.
 

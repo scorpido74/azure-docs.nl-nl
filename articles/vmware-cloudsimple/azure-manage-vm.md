@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 44a0b8fe56477620c0ac47d5c5de8830dac46214
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82aa1ba6ec20e8242568a2725899ddc515a4dc0f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77014994"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082066"
 ---
 # <a name="manage-your-cloudsimple-private-cloud-virtual-machines-in-azure"></a>Uw virtuele CloudSimple-Cloud machines beheren in azure
 
@@ -22,13 +23,13 @@ Als u de virtuele machines die u hebt [gemaakt voor uw CloudSimple-privécloud](
 
 De volgende besturings elementen zijn beschikbaar op de pagina **overzicht** voor de geselecteerde virtuele machine.
 
-| Beheer | Description |
+| Beheer | Beschrijving |
 | ------------ | ------------- |
 | Verbinding maken | Verbinding maken met de opgegeven virtuele machine.  |
 | Starten | Start de opgegeven VM.  |
 | Opnieuw starten | Sluit af en schakel vervolgens de opgegeven virtuele machine uit.  |
 | Stoppen | Sluit de specifieke VM af.  |
-| Capture | Leg een installatie kopie van de opgegeven virtuele machine vast zodat deze kan worden gebruikt als een installatie kopie om andere Vm's te maken. Zie [een beheerde installatie kopie maken van een gegeneraliseerde vm in azure](../virtual-machines/windows/classic/capture-image.md).   |
+| Vastleggen | Leg een installatie kopie van de opgegeven virtuele machine vast zodat deze kan worden gebruikt als een installatie kopie om andere Vm's te maken. Zie [een beheerde installatie kopie maken van een gegeneraliseerde vm in azure](../virtual-machines/windows/capture-image-resource.md).   |
 | Verplaatsen | Verplaatsen naar de opgegeven virtuele machine.  |
 | Verwijderen | Verwijder de opgegeven virtuele machine.  |
 | Vernieuwen | De gegevens in de weer gave vernieuwen.  |
@@ -39,7 +40,7 @@ De grafieken in het onderste gedeelte van de pagina **overzicht** presen teren p
 
 De volgende grafieken worden weer gegeven.
 
-| Item | Description |
+| Item | Beschrijving |
 | ------------ | ------------- |
 | CPU (gemiddeld) | Gemiddeld CPU-gebruik in procenten gedurende het geselecteerde interval.   |
 | Netwerk | Verkeer binnen en buiten het netwerk (MB) over het geselecteerde interval.  |
@@ -63,7 +64,7 @@ Als u een schijf wilt verwijderen, selecteert u deze en klikt u op **verwijderen
 
 Als u de capaciteit van de virtuele machine wilt wijzigen, opent u de pagina **grootte** voor de geselecteerde virtuele machine. Geef een van de volgende op en klik op **Opslaan**.
 
-| Item | Description |
+| Item | Beschrijving |
 | ------------ | ------------- |
 | Aantal kerngeheugens | Het aantal kern geheugens dat aan de virtuele machine is toegewezen.  |
 | Hardwarevirtualisatie | Schakel het selectie vakje in om de hardware-virtualisatie beschikbaar te maken voor het gast besturingssysteem. Zie het VMware-artikel een door [VMware ondersteunde virtualisatie beschikbaar](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-2A98801C-68E8-47AF-99ED-00C63E4857F6.html)maken. |

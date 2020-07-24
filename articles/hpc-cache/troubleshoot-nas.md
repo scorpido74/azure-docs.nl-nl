@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: hpc-cache
 ms.topic: troubleshooting
 ms.date: 03/18/2020
-ms.author: rohogue
-ms.openlocfilehash: 8d576f8660d140a95eb67f7babf1c0af61f04278
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: v-erkel
+ms.openlocfilehash: efa163a2c10a7dc93bf5d26865a0e7eb43f11dea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515453"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082763"
 ---
 # <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>Problemen met de NAS-configuratie en NFS-opslag doelen oplossen
 
@@ -20,7 +20,7 @@ Dit artikel bevat oplossingen voor enkele veelvoorkomende configuratie fouten en
 Dit artikel bevat informatie over het controleren van poorten en het inschakelen van toegang tot het hoofd niveau van een NAS-systeem. Het bevat ook gedetailleerde informatie over minder veelvoorkomende problemen die ertoe kunnen leiden dat het maken van NFS-opslag doel mislukt.
 
 > [!TIP]
-> Lees de [vereisten voor NFS-opslag doelen](hpc-cache-prereqs.md#nfs-storage-requirements)voordat u deze hand leiding gebruikt.
+> Lees de [vereisten voor NFS-opslag doelen](hpc-cache-prerequisites.md#nfs-storage-requirements)voordat u deze hand leiding gebruikt.
 
 Als de oplossing voor uw probleem hier niet is opgenomen, [opent u een ondersteunings ticket](hpc-cache-support-ticket.md) zodat micro soft-service en-ondersteuning met u kunnen samen werken om het probleem te onderzoeken en op te lossen.
 

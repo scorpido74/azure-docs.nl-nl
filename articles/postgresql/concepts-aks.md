@@ -4,13 +4,14 @@ description: Meer informatie over het verbinden van Azure Kubernetes service (AK
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.date: 5/6/2019
+ms.date: 07/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 46aa411826dd3ea578a2d98b0fe631ab0a12ef4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4214b01f3f3651f8785f8644cf12326bf182bce7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74769877"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084174"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-postgresql---single-server"></a>Verbinding maken met de Azure Kubernetes-service en Azure Database for PostgreSQL-één server
 
@@ -40,11 +41,6 @@ De uitvoer is de gegenereerde resource groep die AKS maakt die de netwerk interf
 az network nic list --resource-group nodeResourceGroup -o table
 ```
 
-## <a name="open-service-broker-for-azure"></a>Open Service Broker voor Azure 
-Met [Service Broker open voor Azure](https://github.com/Azure/open-service-broker-azure/blob/master/README.md) (OSBA) kunt u Azure-Services rechtstreeks vanuit Kubernetes of Cloud Foundry inrichten. Het is een [Open service BROKER API](https://www.openservicebrokerapi.org/) -implementatie voor Azure.
-
-Met OSBA kunt u een Azure Database for PostgreSQL-server maken en deze koppelen aan uw AKS-cluster met behulp van Kubernetes ' native taal '. Meer informatie over het gebruik van OSBA en Azure Database for PostgreSQL samen op de [pagina OSBA github](https://github.com/Azure/open-service-broker-azure/blob/master/docs/modules/postgresql.md). 
-
 
 ## <a name="connection-pooling"></a>Groepsgewijze verbinding
 Een verbindings groep minimaliseert de kosten en tijd die zijn gekoppeld aan het maken en sluiten van nieuwe verbindingen met de data base. De pool is een verzameling verbindingen die opnieuw kunnen worden gebruikt. 
@@ -53,4 +49,4 @@ Er zijn meerdere groepsgewijze verbindingen die u kunt gebruiken met PostgreSQL.
 
 
 ## <a name="next-steps"></a>Volgende stappen
--  [Een upgrade maken van een Azure Kubernetes Service-cluster](../aks/kubernetes-walkthrough.md)
+-  [Een Azure Kubernetes Service-cluster maken](../aks/kubernetes-walkthrough.md)

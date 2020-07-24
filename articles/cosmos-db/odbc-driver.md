@@ -6,11 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/02/2019
 ms.author: sngun
-ms.openlocfilehash: 57db2253cbffa8e16313c7613de6d2ddb2f2b0a2
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 1bda235e5f3f867762457d0dc8214bbadc88059e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027236"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084820"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Met het ODBC-stuur programma verbinding maken met Azure Cosmos DB met behulp van BI Analytics-hulpprogram ma's
 
@@ -235,9 +236,9 @@ U kunt uw nieuwe DSN gebruiken om verbinding te maken met Azure Cosmos DB met al
 
 1. Als u de gegevens in Power BI bureau blad wilt visualiseren, schakelt u het selectie vakje voor de tabel naam in en klikt u vervolgens op **laden**.
 
-1. Selecteer in Power BI Desktop helemaal links het tabblad gegevens ![Het tabblad gegevens in Power BI Desktop](./media/odbc-driver/odbc-driver-data-tab.png) controleren of uw gegevens zijn geïmporteerd.
+1. Selecteer in Power BI Desktop helemaal links het tabblad gegevens :::image type="icon" source="./media/odbc-driver/odbc-driver-data-tab.png"::: om te controleren of uw gegevens zijn geïmporteerd. 
 
-1. U kunt nu visuals maken met behulp van Power BI door te klikken op het ![ tabblad rapport rapporten in Power bi Desktop ](./media/odbc-driver/odbc-driver-report-tab.png) , op **nieuwe Visual**te klikken en vervolgens uw tegel aan te passen. Zie [visualisatie typen in Power bi](https://powerbi.microsoft.com/documentation/powerbi-service-visualization-types-for-reports-and-q-and-a/)voor meer informatie over het maken van visualisaties in Power bi Desktop.
+1. U kunt nu visuals maken met behulp van Power BI door te klikken op het tabblad rapport :::image type="icon" source="./media/odbc-driver/odbc-driver-report-tab.png"::: , op **nieuwe Visual**te klikken en vervolgens uw tegel aan te passen. Zie [visualisatie typen in Power bi](https://powerbi.microsoft.com/documentation/powerbi-service-visualization-types-for-reports-and-q-and-a/)voor meer informatie over het maken van visualisaties in Power bi Desktop. 
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 

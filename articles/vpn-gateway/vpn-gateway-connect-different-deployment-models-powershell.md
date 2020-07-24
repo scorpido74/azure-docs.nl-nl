@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 843727c005fefdc2ca0484492a1feafe2a291b46
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 2c9b8a769dec1a2aa461a34203c98a228cf71d16
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040743"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082049"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>Virtuele netwerken van verschillende implementatiemodellen verbinden met PowerShell
 
@@ -37,7 +37,7 @@ De volgende stappen leiden u door de instellingen die nodig zijn voor het config
 
 * Beide VNets zijn al gemaakt. Als u een virtueel netwerk van Resource Manager wilt maken, raadpleegt u [een resource groep en een virtueel netwerk maken](../virtual-network/quick-create-powershell.md#create-a-resource-group-and-a-virtual-network). Zie [een klassiek VNet maken](https://docs.microsoft.com/azure/virtual-network/create-virtual-network-classic)voor het maken van een klassiek virtueel netwerk.
 * De adresbereiken voor de VNets overlappen elkaar niet of overlappen een van de bereiken voor andere verbindingen waarmee de gateways kunnen worden verbonden.
-* U hebt de meest recente Power shell-cmdlets geïnstalleerd. Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview) voor meer informatie. Zorg ervoor dat u de Service Management (SM) en de RM-cmdlets (Resource Manager) installeert. 
+* U hebt de meest recente Power shell-cmdlets geïnstalleerd. Zie [Azure PowerShell installeren en configureren](/powershell/azure/) voor meer informatie. Zorg ervoor dat u de Service Management (SM) en de RM-cmdlets (Resource Manager) installeert. 
 
 ### <a name="example-settings"></a><a name="exampleref"></a>Voorbeeldinstellingen
 

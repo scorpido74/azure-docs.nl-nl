@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 0c2a9612fab6c685cbc690aa9bbc12d1c7b7b746
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d0e2487632971579a1a473375eb2200f3a63a46
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74978199"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084531"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>Beveiligings beleid voor inhoud configureren met behulp van de Azure Portal
 
 > [!NOTE]
-> U hebt een Azure-account nodig om deze zelfstudie te voltooien. Zie [Gratis proefversie van Azure](https://azure.microsoft.com/pricing/free-trial/) voor meer informatie.   > er geen nieuwe functies of functionaliteit aan Media Services v2 worden toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> U hebt een Azure-account nodig om deze zelfstudie te voltooien. Zie [Gratis proefversie van Azure](https://azure.microsoft.com/pricing/free-trial/) voor meer informatie.   > er geen nieuwe functies of functionaliteit aan Media Services v2 worden toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](../latest/index.yml). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 >
 
  Met Azure Media Services kunt u uw media beveiligen vanaf het moment dat de computer de opslag, verwerking en levering verlaat. U kunt Media Services gebruiken om uw inhoud dynamisch te versleutelen met de Advanced Encryption Standard (AES) met behulp van 128-bits versleutelings sleutels. U kunt dit ook gebruiken met common Encryption (CENC) met behulp van PlayReady en/of Widevine Digital Rights Management (DRM) en Apple FairPlay. 
@@ -132,4 +133,3 @@ AES Clear Key-versleuteling is ingeschakeld op alle streaming-protocollen: Smoot
 
 ## <a name="provide-feedback"></a>Feedback geven
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-
