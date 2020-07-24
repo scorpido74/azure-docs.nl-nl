@@ -2,18 +2,19 @@
 title: Een daemon-toepassing beveiligen
 titleSuffix: Azure Maps
 description: Gebruik de Azure Portal om verificatie te beheren voor het configureren van een vertrouwde daemon-toepassing.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 4fa3492b0cd71e61900dc4be150cd0f0169379ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 066118622f19d7efac71ddd66ac1abe058008b55
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84988596"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126768"
 ---
 # <a name="secure-a-daemon-application"></a>Een daemon-toepassing beveiligen
 
@@ -99,7 +100,7 @@ Wanneer een niet-Azure-omgeving wordt uitgevoerd, zijn er geen beheerde identite
     * Als uw toepassing gebruikmaakt van server-of toepassings verificatie, gaat u op de pagina app-registratie naar **certificaten & geheimen**. Upload vervolgens een certificaat met een open bare sleutel of maak een wacht woord door **Nieuw client geheim**te selecteren.
 
         > [!div class="mx-imgBorder"]
-        > ![Een clientgeheim maken](./media/how-to-manage-authentication/app-keys.png)
+        > ![Een client geheim maken](./media/how-to-manage-authentication/app-keys.png)
 
     * Nadat u **toevoegen**hebt geselecteerd, kopieert u het geheim en slaat u het veilig op in een service zoals Azure Key Vault. Raadpleeg [Azure Key Vault ontwikkelaars handleiding](https://docs.microsoft.com/azure/key-vault/general/developers-guide) om het certificaat of geheim veilig op te slaan. U gebruikt dit geheim om tokens van Azure AD op te halen.
 
@@ -113,7 +114,7 @@ U verleent op *rollen gebaseerd toegangs beheer* (RBAC) door de gemaakte beheerd
 > [!div class="mx-imgBorder"]
 > ![Beschik bare rollen weer geven](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
 
-1. Ga naar uw **Azure Maps-account**. Selecteer **toegangs beheer (IAM)-**  >  **roltoewijzingen**.
+1. Ga naar uw **Azure Maps-account**. Selecteer **Toegangsbeheer (IAM)** > **Roltoewijzingen**.
 
     > [!div class="mx-imgBorder"]
     > ![RBAC toekennen](./media/how-to-manage-authentication/how-to-grant-rbac.png)

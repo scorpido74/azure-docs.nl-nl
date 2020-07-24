@@ -2,18 +2,19 @@
 title: Invoer beperkt apparaat beveiligen met Azure AD en Azure Maps REST-Api's
 titleSuffix: Azure Maps
 description: Het configureren van een toepassing zonder browser die ondersteuning biedt voor aanmelding bij Azure AD en aanroepen van Azure Maps REST-Api's.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: b9e75a25237a76c7fa6d300e01bb4d42db75fe08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91d73ad14cac77e4b00e90ec11791ef141436b7e
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84988592"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126738"
 ---
 # <a name="secure-an-input-constrained-device-with-azure-ad-and-azure-maps-rest-apis"></a>Een invoer beperkt apparaat beveiligen met Azure AD en Azure Maps REST-Api's
 
