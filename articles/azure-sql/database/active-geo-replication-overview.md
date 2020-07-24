@@ -11,11 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 04/28/2020
-ms.openlocfilehash: 5449bb335232d3c7a6f2b97c5cce41a8bd2cf0f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bdf5d006cf47f4552684aac8af4a759ed1761c93
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85249751"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087948"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Actieve geo-replicatie-Azure SQL Database maken en gebruiken
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -237,7 +238,7 @@ Als u de vertraging wilt meten met betrekking tot wijzigingen op de primaire dat
 
 ## <a name="programmatically-managing-active-geo-replication"></a>Programmatisch beheer van actieve geo-replicatie
 
-Zoals eerder besproken, kan actieve geo-replicatie ook programmatisch worden beheerd met behulp van Azure PowerShell en de REST API. De volgende tabellen bevatten een beschrijving van de beschik bare opdrachten. Actieve geo-replicatie bevat een set Azure Resource Manager Api's voor beheer, met inbegrip van de [Azure SQL database-rest API](https://docs.microsoft.com/rest/api/sql/) en [Azure PowerShell-cmdlets](https://docs.microsoft.com/powershell/azure/overview). Deze Api's vereisen het gebruik van resource groepen en bieden beveiliging op basis van rollen (RBAC). Zie [Access Control op basis van rollen](../../role-based-access-control/overview.md)voor meer informatie over het implementeren van toegangs rollen.
+Zoals eerder besproken, kan actieve geo-replicatie ook programmatisch worden beheerd met behulp van Azure PowerShell en de REST API. De volgende tabellen bevatten een beschrijving van de beschik bare opdrachten. Actieve geo-replicatie bevat een set Azure Resource Manager Api's voor beheer, met inbegrip van de [Azure SQL database-rest API](https://docs.microsoft.com/rest/api/sql/) en [Azure PowerShell-cmdlets](https://docs.microsoft.com/powershell/azure/). Deze Api's vereisen het gebruik van resource groepen en bieden beveiliging op basis van rollen (RBAC). Zie [Access Control op basis van rollen](../../role-based-access-control/overview.md)voor meer informatie over het implementeren van toegangs rollen.
 
 ### <a name="t-sql-manage-failover-of-single-and-pooled-databases"></a>T-SQL: failover van één en gepoolde data bases beheren
 
@@ -261,7 +262,7 @@ Zoals eerder besproken, kan actieve geo-replicatie ook programmatisch worden beh
 > [!IMPORTANT]
 > De Power shell-Azure Resource Manager module wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. Zie [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)voor deze cmdlets. De argumenten voor de opdrachten in de module AZ en in de AzureRm-modules zijn aanzienlijk identiek.
 
-| Cmdlet | Description |
+| Cmdlet | Beschrijving |
 | --- | --- |
 | [Get-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabase) |Hiermee haalt u een of meer databases op. |
 | [New-AzSqlDatabaseSecondary](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabasesecondary) |Hiermee maakt u een secundaire database voor een bestaande database en wordt gegevensreplicatie gestart. |
@@ -275,7 +276,7 @@ Zoals eerder besproken, kan actieve geo-replicatie ook programmatisch worden beh
 
 ### <a name="rest-api-manage-failover-of-single-and-pooled-databases"></a>REST API: failover van één en gepoolde data bases beheren
 
-| API | Description |
+| API | Beschrijving |
 | --- | --- |
 | [Data base maken of bijwerken (createMode = herstellen)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Hiermee wordt een primaire of secundaire data base gemaakt, bijgewerkt of teruggezet. |
 | [Database status van maken of bijwerken ophalen](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Retourneert de status tijdens het maken van een bewerking. |

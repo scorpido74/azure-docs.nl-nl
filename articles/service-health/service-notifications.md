@@ -3,11 +3,12 @@ title: Servicestatusmeldingen bekijken met de Azure-portal
 description: Met service status meldingen kunt u service status berichten weer geven die zijn gepubliceerd door Microsoft Azure.
 ms.topic: conceptual
 ms.date: 6/27/2019
-ms.openlocfilehash: 21416edc95d345eb183030a9b0cccb7529305d6d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f8297ae708d3f4e7921221f2c4bacee12a7a2b1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75748653"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089563"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Servicestatusmeldingen bekijken met de Azure-portal
 
@@ -29,7 +30,7 @@ Zie [Eigenschappen van service status meldingen](service-health-notifications-pr
 
     ![Scherm opname van het activiteiten logboek controleren, met geselecteerde waarschuwingen](./media/service-notifications/service-health-summary.png)
 
-1. Selecteer **+ waarschuwing voor activiteiten logboek toevoegen**en stel een waarschuwing in om ervoor te zorgen dat u wordt gewaarschuwd voor toekomstige service meldingen. Zie [waarschuwingen voor activiteiten logboek maken op service meldingen](../azure-monitor/platform/alerts-activity-log-service-notifications.md)voor meer informatie.
+1. Selecteer **+ waarschuwing voor activiteiten logboek toevoegen**en stel een waarschuwing in om ervoor te zorgen dat u wordt gewaarschuwd voor toekomstige service meldingen. Zie [waarschuwingen voor activiteiten logboek maken op service meldingen](./alerts-activity-log-service-notifications-portal.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

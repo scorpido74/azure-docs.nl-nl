@@ -8,12 +8,12 @@ manager: barbkess
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: ac1ed9ac25d65d0391175fc6d43b48048da74926
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6ab6133faef4a6c7a8eb929e5f4cd1840e971a99
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82101583"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088339"
 ---
 # <a name="security-controls-for-windows-virtual-machines"></a>Beveiligings controles voor Windows Virtual Machines
 
@@ -25,35 +25,35 @@ In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zi
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen |
 |---|---|--|
-| Ondersteuning voor service-eind punten| Ja | |
-| Ondersteuning voor VNet-injectie| Ja | |
-| Ondersteuning voor netwerk isolatie en firewalling| Ja |  |
-| Ondersteuning voor geforceerde tunneling| Ja | Zie [geforceerde tunneling configureren met het Azure Resource Manager-implementatie model](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm). |
+| Ondersteuning voor service-eind punten| Yes | |
+| Ondersteuning voor VNet-injectie| Yes | |
+| Ondersteuning voor netwerk isolatie en firewalling| Yes |  |
+| Ondersteuning voor geforceerde tunneling| Yes | Zie [geforceerde tunneling configureren met het Azure Resource Manager-implementatie model](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md). |
 
 ## <a name="monitoring--logging"></a>& logboek registratie controleren
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen|
 |---|---|--|
-| Ondersteuning voor Azure-bewaking (log Analytics, app Insights, enz.)| Ja | [Een virtuele Windows-machine bewaken en bijwerken in azure](tutorial-monitoring.md). |
-| Logboek registratie en controle op het vlak van controle en beheer| Ja |  |
-| Logboek registratie en controle van het gegevens vlak | Nee |  |
+| Ondersteuning voor Azure-bewaking (log Analytics, app Insights, enz.)| Yes | [Een virtuele Windows-machine bewaken en bijwerken in azure](./tutorial-monitor.md). |
+| Logboek registratie en controle op het vlak van controle en beheer| Yes |  |
+| Logboek registratie en controle van het gegevens vlak | No |  |
 
 ## <a name="identity"></a>Identiteit
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen|
 |---|---|--|
-| Verificatie| Ja |  |
-| Autorisatie| Ja |  |
+| Verificatie| Yes |  |
+| Autorisatie| Yes |  |
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen |
 |---|---|--|
-| Versleuteling aan server zijde op rest: door micro soft beheerde sleutels | Ja | Zie [virtuele schijven op een Windows-VM versleutelen](/azure/virtual-machines/windows/disk-encryption-overview). |
-| Versleuteling in transit (zoals ExpressRoute-versleuteling, in VNet-versleuteling en VNet-VNet-versleuteling)| Ja | Azure Virtual Machines ondersteunt [ExpressRoute](/azure/expressroute) -en VNet-versleuteling. Zie [in-transit versleuteling in vm's](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms). |
-| Versleuteling aan server zijde op rest: door de klant beheerde sleutels (BYOK) | Ja | Door de klant beheerde sleutels is een ondersteund Azure-versleutelings scenario. Zie [Azure Encryption Overview](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms)(Engelstalig).|
+| Versleuteling aan server zijde op rest: door micro soft beheerde sleutels | Yes | Zie [virtuele schijven op een Windows-VM versleutelen](./disk-encryption-overview.md). |
+| Versleuteling in transit (zoals ExpressRoute-versleuteling, in VNet-versleuteling en VNet-VNet-versleuteling)| Yes | Azure Virtual Machines ondersteunt [ExpressRoute](../../expressroute/index.yml) -en VNet-versleuteling. Zie [in-transit versleuteling in vm's](../../security/fundamentals/encryption-overview.md#in-transit-encryption-in-vms). |
+| Versleuteling aan server zijde op rest: door de klant beheerde sleutels (BYOK) | Yes | Door de klant beheerde sleutels is een ondersteund Azure-versleutelings scenario. Zie [Azure Encryption Overview](../../security/fundamentals/encryption-overview.md#in-transit-encryption-in-vms)(Engelstalig).|
 | Versleuteling op kolom niveau (Azure Data Services)| N.v.t. | |
-| Versleutelde API-aanroepen| Ja | Via HTTPS en TLS. |
+| Versleutelde API-aanroepen| Yes | Via HTTPS en TLS. |
 
 
 

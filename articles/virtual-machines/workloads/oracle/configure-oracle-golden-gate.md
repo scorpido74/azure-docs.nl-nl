@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogardle
-ms.openlocfilehash: 60d06fa4cf6d116f9c802cda544a356e469755b5
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 5ed99fd6a16743846033313fcf13702f69f3e728
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223071"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088356"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Oracle Golden-Gate implementeren op een Azure Linux-VM 
 
@@ -27,7 +27,7 @@ De Azure CLI wordt gebruikt voor het maken en beheren van Azure-resources vanaf 
 
 Dit document bevat stapsgewijze instructies voor het maken, installeren en configureren van Oracle Golden-Gate op een virtuele machine van Azure. In deze zelf studie worden twee virtuele machines ingesteld in een beschikbaarheidsset in één regio. Dezelfde zelf studie kan worden gebruikt voor het instellen van OracleGolden-Gate voor virtuele machines in verschillende Beschikbaarheidszones in één Azure-regio of voor het instellen van Vm's in twee verschillende regio's.
 
-Voordat u begint, moet u controleren of de Azure-CLI is geïnstalleerd. Zie voor meer informatie de [Installatiehandleiding van de Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Voordat u begint, moet u controleren of de Azure-CLI is geïnstalleerd. Zie voor meer informatie de [Installatiehandleiding van de Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="prepare-the-environment"></a>De omgeving voorbereiden
 
@@ -68,7 +68,7 @@ az group create --name myResourceGroup --location westus
 
 ### <a name="create-an-availability-set"></a>Een beschikbaarheidsset maken
 
-De volgende stap is optioneel, maar wordt aanbevolen. Zie de [hand leiding voor Azure-beschikbaarheids sets](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines)voor meer informatie.
+De volgende stap is optioneel, maar wordt aanbevolen. Zie de [hand leiding voor Azure-beschikbaarheids sets](../../windows/infrastructure-example.md)voor meer informatie.
 
 ```azurecli
 az vm availability-set create \

@@ -1,5 +1,5 @@
 ---
-title: Een aangepaste test maken met behulp van Power shell-Azure-toepassing gateway
+title: Een aangepaste test maken met behulp van het klassieke implementatie model-Azure-toepassing gateway
 description: Meer informatie over het maken van een aangepaste test voor Application Gateway met behulp van Power shell in het klassieke implementatie model
 services: application-gateway
 author: vhorne
@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 3a555fff758fdd1f4ddff60c7828a3e44af008ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1445d1418bde6d5d15e365c59ceb56e7661faccb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807292"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088067"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>Een aangepaste test voor Azure-toepassing gateway (klassiek) maken met behulp van Power shell
 
@@ -146,7 +146,7 @@ De configuratie parameters zijn:
 | **Protocol** | Gebruikt protocol (mogelijke waarden zijn HTTP of HTTPS).|
 | **Host** en **pad** | Volledige URL-pad dat door de toepassings gateway wordt aangeroepen om de status van het exemplaar te bepalen. Als u bijvoorbeeld een website http: \/ /contoso.com/hebt, kan de aangepaste test worden geconfigureerd voor "http: \/ /contoso.com/Path/custompath.htm" voor test controles om een geslaagde http-reactie te krijgen.|
 | **Interval** | Hiermee configureert u de controles van het test interval in seconden.|
-| **Time-out** | Hiermee wordt de time-out van de test voor een HTTP-antwoord controle gedefinieerd.|
+| **Out** | Hiermee wordt de time-out van de test voor een HTTP-antwoord controle gedefinieerd.|
 | **UnhealthyThreshold** | Het aantal mislukte HTTP-antwoorden dat nodig is voor het markeren van het back-end-exemplaar als *beschadigd*.|
 
 Er wordt in de configuratie naar de test naam verwezen \<BackendHttpSettings\> om toe te wijzen welke back-end-pool aangepaste test instellingen gebruikt.

@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: c774d3f56eaf666a31ff73f433a3b4a5a363ce2f
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 506d9cd9581172d6eb1f36921ab96e8731ea3803
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142497"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089427"
 ---
 # <a name="use-javascript-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Java script gebruiken voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2
 
@@ -219,6 +219,8 @@ async function ManageDirectoryACLs(fileSystemClient) {
 }
 ```
 
+U kunt ook de toegangs beheer lijst van de hoofdmap van een container ophalen en instellen. Als u de hoofdmap wilt ophalen, geeft u een lege teken reeks () door aan `/` de methode **DataLakeFileSystemClient. getDirectoryClient** .
+
 ## <a name="upload-a-file-to-a-directory"></a>Een bestand uploaden naar een map
 
 Lees eerst een bestand. In dit voor beeld wordt de module Node.js gebruikt `fs` . Maak vervolgens een bestands verwijzing in de doel directory door een **FileClient** -exemplaar te maken en vervolgens de methode **FileClient. Create** aan te roepen. Upload een bestand door de methode **FileClient. Append aan** te roepen. Zorg ervoor dat u de upload voltooit door de methode **FileClient. Flush** aan te roepen.
@@ -358,7 +360,7 @@ async function ListFilesInDirectory(fileSystemClient) {
 }
 ```
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 * [Pakket (node Package Manager)](https://www.npmjs.com/package/@azure/storage-file-datalake)
 * [Voorbeelden](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)

@@ -2,13 +2,13 @@
 title: Azure Service Bus metrische gegevens in Azure Monitor | Microsoft Docs
 description: In dit artikel wordt uitgelegd hoe u Azure Monitor kunt gebruiken om Service Bus entiteiten (wacht rijen, onderwerpen en abonnementen) te bewaken.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 57b791e67157908447956a14fae99545843f3bc0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/15/2020
+ms.openlocfilehash: c4bf33fc7aa21be150a1ee0d6c65df84a391565e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340286"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089682"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Service Bus metrische gegevens in Azure Monitor
 
@@ -29,17 +29,17 @@ Metrische gegevens zijn standaard ingeschakeld, en u kunt toegang krijgen tot de
 
 U kunt metrische gegevens gedurende een bepaalde periode bewaken in de [Azure Portal](https://portal.azure.com). In het volgende voor beeld ziet u hoe u geslaagde aanvragen en inkomende aanvragen kunt weer geven op account niveau:
 
-![][1]
+![Scherm afbeelding van de pagina met de monitor metrieken (preview) in de Azure Portal.][1]
 
 U kunt ook rechtstreeks toegang krijgen tot metrische gegevens via de naam ruimte. Hiertoe selecteert u uw naam ruimte en klikt u op **metrische gegevens**. Als u metrische gegevens wilt weer geven die zijn gefilterd op het bereik van de entiteit, selecteert u de entiteit en klikt u op **metrische gegevens**.
 
-![][2]
+![Scherm afbeelding van de pagina met monitor-metrische gegevens (preview), gefilterd op het bereik van de entiteit.][2]
 
 Voor metrische gegevens ondersteunen dimensies, moet u filteren met de gewenste dimensie waarde.
 
 ## <a name="billing"></a>Billing
 
-Metrische gegevens en waarschuwingen op Azure Monitor worden per waarschuwing in rekening gebracht. Deze kosten moeten beschikbaar zijn op de Portal wanneer de waarschuwing wordt ingesteld en voordat deze wordt opgeslagen. 
+Metrische gegevens en waarschuwingen op Azure Monitor worden per waarschuwing in rekening gebracht. Deze kosten moeten beschikbaar zijn op de Portal wanneer de waarschuwing is ingesteld en voordat deze wordt opgeslagen. 
 
 Aanvullende oplossingen waarmee metrische gegevens worden opgenomen, worden rechtstreeks door deze oplossingen in rekening gebracht. U wordt bijvoorbeeld gefactureerd door Azure Storage als u metrische gegevens archiveert naar een Azure Storage-account. U wordt ook gefactureerd door Log Analytics als u metrische gegevens streamt naar Log Analytics voor geavanceerde analyse.
 
@@ -54,13 +54,13 @@ Alle waarden voor metrische gegevens worden elke minuut naar Azure Monitor verzo
 
 Telt het aantal gegevens-en beheer bewerkings aanvragen.
 
-| Naam meetwaarde | Description |
+| Naam meetwaarde | Beschrijving |
 | ------------------- | ----------------- |
-| Binnenkomende aanvragen| Het aantal aanvragen voor de Service Bus-service gedurende een opgegeven periode. <br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
-|Geslaagde aanvragen|Het aantal geslaagde aanvragen voor de Service Bus-service gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
-|Server fouten|Het aantal niet-verwerkte aanvragen vanwege een fout in de Service Bus-service gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
-|Gebruikers fouten (Zie de volgende Subsectie)|Het aantal aanvragen dat niet is verwerkt wegens gebruikers fouten gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
-|Vertraagde aanvragen|Het aantal aanvragen dat is beperkt omdat het gebruik is overschreden.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
+| Binnenkomende aanvragen| Het aantal aanvragen voor de Service Bus-service gedurende een opgegeven periode. <br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: naam van entiteit|
+|Geslaagde aanvragen|Het aantal geslaagde aanvragen voor de Service Bus-service gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: naam van entiteit|
+|Server fouten|Het aantal niet-verwerkte aanvragen vanwege een fout in de Service Bus-service gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: naam van entiteit|
+|Gebruikers fouten (Zie de volgende Subsectie)|Het aantal aanvragen dat niet is verwerkt wegens gebruikers fouten gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: naam van entiteit|
+|Vertraagde aanvragen|Het aantal aanvragen dat is beperkt omdat het gebruik is overschreden.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: naam van entiteit|
 
 ### <a name="user-errors"></a>Gebruikers fouten
 
@@ -72,14 +72,15 @@ De volgende twee typen fouten worden geclassificeerd als gebruikers fouten:
 
 ## <a name="message-metrics"></a>Metrische gegevens van bericht
 
-| Naam meetwaarde | Description |
+| Naam meetwaarde | Beschrijving |
 | ------------------- | ----------------- |
-|Binnenkomende berichten|Het aantal gebeurtenissen of berichten dat is verzonden naar Service Bus gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
-|Uitgaande berichten|Het aantal gebeurtenissen of berichten dat is ontvangen van Service Bus gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
-| Berichten| Aantal berichten in een wachtrij/onderwerp. <br/><br/> Eenheid: aantal <br/> Aggregatie type: gemiddeld <br/> Dimensie: EntityName |
-| ActiveMessages| Aantal actieve berichten in een wachtrij/onderwerp. <br/><br/> Eenheid: aantal <br/> Aggregatie type: gemiddeld <br/> Dimensie: EntityName |
-| Onbestelbare berichten| Aantal onbestelbare berichten in een wachtrij/onderwerp. <br/><br/> Eenheid: aantal <br/> Aggregatie type: gemiddeld <br/>Dimensie: EntityName |
-| Geplande berichten| Aantal geplande berichten in een wachtrij/onderwerp. <br/><br/> Eenheid: aantal <br/> Aggregatie type: gemiddeld  <br/> Dimensie: EntityName |
+|Binnenkomende berichten|Het aantal gebeurtenissen of berichten dat is verzonden naar Service Bus gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: naam van entiteit|
+|Uitgaande berichten|Het aantal gebeurtenissen of berichten dat is ontvangen van Service Bus gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: naam van entiteit|
+| Berichten| Aantal berichten in een wachtrij/onderwerp. <br/><br/> Eenheid: aantal <br/> Aggregatie type: gemiddeld <br/> Dimensie: naam van entiteit |
+| Actieve berichten| Aantal actieve berichten in een wachtrij/onderwerp. <br/><br/> Eenheid: aantal <br/> Aggregatie type: gemiddeld <br/> Dimensie: naam van entiteit |
+| Onbestelbare berichten| Aantal onbestelbare berichten in een wachtrij/onderwerp. <br/><br/> Eenheid: aantal <br/> Aggregatie type: gemiddeld <br/>Dimensie: naam van entiteit |
+| Geplande berichten| Aantal geplande berichten in een wachtrij/onderwerp. <br/><br/> Eenheid: aantal <br/> Aggregatie type: gemiddeld  <br/> Dimensie: naam van entiteit |
+| Grootte | Grootte van een entiteit (wachtrij of onderwerp) in bytes. <br/><br/>Eenheid: aantal <br/>Aggregatie type: gemiddeld <br/>Dimensie: naam van entiteit | 
 
 > [!NOTE]
 > Waarden voor de volgende metrische gegevens zijn waarden voor een bepaald tijdstip. Inkomende berichten die onmiddellijk na dat tijdstip zijn verbruikt, mogen niet worden weer gegeven in deze metrische gegevens. 
@@ -90,11 +91,11 @@ De volgende twee typen fouten worden geclassificeerd als gebruikers fouten:
 
 ## <a name="connection-metrics"></a>Verbindings gegevens
 
-| Naam meetwaarde | Description |
+| Naam meetwaarde | Beschrijving |
 | ------------------- | ----------------- |
-|ActiveConnections|Het aantal actieve verbindingen op een naam ruimte en op een entiteit.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
-|Geopende verbindingen |Het aantal geopende verbindingen.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
-|Gesloten verbindingen |Het aantal gesloten verbindingen.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: EntityName|
+|Actieve verbindingen|Het aantal actieve verbindingen op een naam ruimte en op een entiteit.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: naam van entiteit|
+|Geopende verbindingen |Het aantal geopende verbindingen.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: naam van entiteit|
+|Gesloten verbindingen |Het aantal gesloten verbindingen.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: naam van entiteit|
 
 ## <a name="resource-usage-metrics"></a>Metrische gegevens over resource gebruik
 
@@ -105,18 +106,18 @@ De volgende twee typen fouten worden geclassificeerd als gebruikers fouten:
 > 
 > De andere metriek die u kunt bewaken is: **vertraagde aanvragen**. Het is niet mogelijk om een probleem op te lossen, omdat de naam ruimte binnen het geheugen, de CPU en de brokered Connections limieten blijft. Zie [beperking in azure service bus Premium-laag](service-bus-throttling.md#throttling-in-azure-service-bus-premium-tier) voor meer informatie.
 
-| Naam meetwaarde | Description |
+| Naam meetwaarde | Beschrijving |
 | ------------------- | ----------------- |
-|CPU-gebruik per naam ruimte|Het percentage CPU-gebruik van de naam ruimte.<br/><br/> Eenheid: percentage <br/> Aggregatie type: maximum <br/> Dimensie: EntityName|
-|Gebruik van geheugen grootte per naam ruimte|Het percentage geheugen gebruik van de naam ruimte.<br/><br/> Eenheid: percentage <br/> Aggregatie type: maximum <br/> Dimensie: EntityName|
+|CPU-gebruik per naam ruimte|Het percentage CPU-gebruik van de naam ruimte.<br/><br/> Eenheid: percentage <br/> Aggregatie type: maximum <br/> Dimensie: naam van entiteit|
+|Gebruik van geheugen grootte per naam ruimte|Het percentage geheugen gebruik van de naam ruimte.<br/><br/> Eenheid: percentage <br/> Aggregatie type: maximum <br/> Dimensie: naam van entiteit|
 
 ## <a name="metrics-dimensions"></a>Metrische dimensies
 
 Azure Service Bus ondersteunt de volgende dimensies voor metrische gegevens in Azure Monitor. Het toevoegen van dimensies aan uw metrische gegevens is optioneel. Als u geen dimensies toevoegt, worden metrische gegevens opgegeven op het niveau van de naam ruimte. 
 
-|Dimensie naam|Description|
+|Dimensie naam|Beschrijving|
 | ------------------- | ----------------- |
-|EntityName| Service Bus ondersteunt Messa ging-entiteiten in de naam ruimte.|
+|Naam van entiteit| Service Bus ondersteunt Messa ging-entiteiten in de naam ruimte.|
 
 ## <a name="set-up-alerts-on-metrics"></a>Waarschuwingen instellen voor metrische gegevens
 
@@ -127,7 +128,7 @@ Azure Service Bus ondersteunt de volgende dimensies voor metrische gegevens in A
     1. Selecteer **Service Bus naam ruimten** voor het veld **filteren op resource type** . 
     2. Selecteer uw abonnement voor het veld **filteren op abonnement** .
     3. Selecteer de **Service Bus-naam ruimte** in de lijst. 
-    4. Selecteer **Voltooid**. 
+    4. Selecteer **Gereed**. 
     
         ![Naamruimte selecteren](./media/service-bus-metrics-azure-monitor/select-namespace.png)
 1. Selecteer **criteria toevoegen**en voer de volgende acties uit op de pagina **signaal logica configureren** :
@@ -138,7 +139,7 @@ Azure Service Bus ondersteunt de volgende dimensies voor metrische gegevens in A
     1. Selecteer **groter dan** voor **waarde**.
     2. Selecteer **totaal** voor **tijd aggregatie**. 
     3. Voer **5** in als **drempel waarde**. 
-    4. Selecteer **Voltooid**.    
+    4. Selecteer **Gereed**.    
 
         ![Voor waarde opgeven](./media/service-bus-metrics-azure-monitor/specify-condition.png)    
 1. Vouw op de pagina **regel maken** de optie **waarschuwings Details definiëren**uit en voer de volgende acties uit:

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: aa662dfbd98be5ec16a30e690f28196ca3868390
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 35fd95272530ed31f8ee197679e9368ca74ebef1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855890"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089665"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Aanbevolen procedures voor de beveiliging van Azure Identity Management en Access Control
 
@@ -216,7 +216,7 @@ U kunt [RBAC](/azure/role-based-access-control/overview) gebruiken om machtiging
 * **Segment beheer groep** voor teams met een beperkt bereik (doorgaans door wettelijke of andere grenzen van de organisatie)
 
 **Best Practice**: Ken de juiste machtigingen toe aan beveiligings teams die directe operationele verantwoordelijkheden hebben.
-**Details**: Controleer de ingebouwde RBAC-rollen voor de juiste roltoewijzing. Als de ingebouwde rollen niet voldoen aan de specifieke behoeften van uw organisatie, kunt u [aangepaste rollen maken voor Azure-resources](/azure/role-based-access-control/custom-roles). Net als bij ingebouwde rollen kunt u aangepaste rollen toewijzen aan gebruikers, groepen en service-principals bij het abonnement, de resource groep en het bereik van de resource.
+**Details**: Controleer de ingebouwde RBAC-rollen voor de juiste roltoewijzing. Als de ingebouwde rollen niet voldoen aan de specifieke behoeften van uw organisatie, kunt u [aangepaste Azure-rollen](/azure/role-based-access-control/custom-roles)maken. Net als bij ingebouwde rollen kunt u aangepaste rollen toewijzen aan gebruikers, groepen en service-principals bij het abonnement, de resource groep en het bereik van de resource.
 
 **Best practices**: Ken Azure Security Center toegang toe aan beveiligings rollen die deze nodig hebben. Met Security Center kunnen beveiligings teams snel Risico's identificeren en oplossen.
 **Details**: Voeg beveiligings teams met deze behoeften toe aan de RBAC-beveiligingsrol voor [beveiliging](/azure/role-based-access-control/built-in-roles#security-admin) , zodat ze het beveiligings beleid kunnen bekijken, beveiligings status weer geven, beveiligings beleid bewerken, waarschuwingen en aanbevelingen weer geven en waarschuwingen en aanbevelingen negeren. U kunt dit doen met behulp van de hoofd beheer groep of de segment beheer groep, afhankelijk van het bereik van verantwoordelijkheden.

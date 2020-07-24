@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 11c1e0bf10725173a2a341addf4c3f845bbb7fba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4d16edae3b41bc9c3b4a849935fe8c6f94504ae
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82085685"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088424"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Gids voor het oplossen van problemen Azure Disk Encryption
 
@@ -36,7 +36,7 @@ Alle instellingen voor de netwerk beveiligings groep die worden toegepast, moete
 
 ### <a name="azure-key-vault-behind-a-firewall"></a>Azure Key Vault achter een firewall
 
-Wanneer versleuteling wordt ingeschakeld met [Azure AD-referenties](disk-encryption-windows-aad.md#), moet de doel-VM verbinding kunnen maken met zowel Azure Active Directory-eind punten als Key Vault-eind punten. De huidige Azure Active Directory-verificatie-eind punten worden onderhouden in de secties 56 en 59 van de documentatie voor [Office 365-url's en IP-](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) adresbereiken. Key Vault instructies vindt u in de documentatie over het [verkrijgen van toegang tot Azure Key Vault achter een firewall](../../key-vault/general/access-behind-firewall.md).
+Wanneer versleuteling wordt ingeschakeld met [Azure AD-referenties](disk-encryption-windows-aad.md#), moet de doel-VM verbinding kunnen maken met zowel Azure Active Directory-eind punten als Key Vault-eind punten. De huidige Azure Active Directory-verificatie-eind punten worden onderhouden in de secties 56 en 59 van de documentatie voor [Office 365-url's en IP-](/office365/enterprise/urls-and-ip-address-ranges) adresbereiken. Key Vault instructies vindt u in de documentatie over het [verkrijgen van toegang tot Azure Key Vault achter een firewall](../../key-vault/general/access-behind-firewall.md).
 
 ### <a name="azure-instance-metadata-service"></a>Azire Instance Metadata Service 
 De virtuele machine moet toegang hebben tot het [meta gegevens service](../windows/instance-metadata-service.md) -eind punt van Azure, dat gebruikmaakt van een bekende niet-Routeer bare IP-adres ( `169.254.169.254` ) die alleen vanuit de virtuele machine kan worden geopend.  Proxy configuraties waarmee lokaal HTTP-verkeer naar dit adres wordt gewijzigd (bijvoorbeeld het toevoegen van een X-doorgestuurd-for-header) worden niet ondersteund.
@@ -88,5 +88,5 @@ Gebruik [AZ VM Encryption Disable](/cli/azure/vm/encryption)om Azure Disk Encryp
 
 In dit document hebt u meer geleerd over enkele veelvoorkomende problemen in Azure Disk Encryption en hoe u deze problemen oplost. Raadpleeg de volgende artikelen voor meer informatie over deze service en de mogelijkheden ervan:
 
-- [Schijf versleuteling Toep assen in Azure Security Center](../../security-center/security-center-apply-disk-encryption.md)
-- [Azure-gegevens versleuteling in rust](../../security/fundamentals/encryption-atrest.md)
+- [Schijf versleuteling Toep assen in Azure Security Center](../../security-center/security-center-virtual-machine-protection.md)
+- [Versleuteling van inactieve gegevens in Azure](../../security/fundamentals/encryption-atrest.md)

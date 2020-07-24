@@ -4,19 +4,20 @@ description: API om de opgegeven aanbieding binnen de naam ruimte van de uitgeve
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 06/19/2020
-ms.openlocfilehash: a4bbe133d8b223bf717597467336eb486f432380
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: bf64645f672e54849064d86f9250a62efeac8d66
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115533"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087404"
 ---
-<a name="retrieve-a-specific-offer"></a>Een specifieke aanbieding ophalen
-=========================
+# <a name="retrieve-a-specific-offer"></a>Een specifieke aanbieding ophalen
 
 > [!NOTE]
-> De Cloud Partner-portal-Api's zijn geïntegreerd met partner centrum en blijven werken nadat uw aanbiedingen zijn gemigreerd naar het partner centrum. De integratie introduceert kleine wijzigingen. Bekijk de wijzigingen die worden vermeld in [Cloud Partner-Portal API-referentie](./cloud-partner-portal-api-overview.md) om ervoor te zorgen dat uw code blijft werken na de migratie naar het partner centrum.
+> De Cloud Partner-portal-Api's zijn geïntegreerd in en blijven werken in het partner centrum. De overgang introduceert kleine wijzigingen. Controleer de wijzigingen die worden vermeld in [Cloud Partner-Portal API-referentie](./cloud-partner-portal-api-overview.md) om ervoor te zorgen dat uw code blijft werken na het overstappen naar het partner centrum. CCP-Api's mogen alleen worden gebruikt voor bestaande producten die al zijn geïntegreerd vóór de overgang naar het partner centrum. nieuwe producten moeten de indienings-Api's van partner Center gebruiken.
 
 Hiermee wordt de opgegeven aanbieding binnen de naam ruimte van de uitgever opgehaald.  
 
@@ -34,12 +35,9 @@ U kunt ook een bepaalde versie van de aanbieding ophalen of de aanbieding in con
 
 ```
 
+## <a name="uri-parameters"></a>URI-para meters
 
-<a name="uri-parameters"></a>URI-para meters
---------------
-
-
-| **Naam**    | **Beschrijving**                                                                          | **Gegevenstype** |
+| **Naam**    | **Beschrijving**                                                                          | **Gegevens type** |
 |-------------|------------------------------------------------------------------------------------------|---------------|
 | publisherId | publisherId. Bijvoorbeeld contoso                                                        | Tekenreeks        |
 | offerId     | De GUID die de aanbieding uniek identificeert.                                                 | Tekenreeks        |
@@ -48,9 +46,7 @@ U kunt ook een bepaalde versie van de aanbieding ophalen of de aanbieding in con
 | api-versie | Nieuwste versie van API                                                                    | Datum          |
 |  |  |  |
 
-
-<a name="header"></a>Koptekst
-------
+## <a name="header"></a>Header
 
 |  **Naam**          |   **Waarde**            |
 |  ---------------   |  --------------        |
@@ -58,11 +54,9 @@ U kunt ook een bepaalde versie van de aanbieding ophalen of de aanbieding in con
 |  Autorisatie     | `Bearer YOUR_TOKEN`    |
 |  |  |
 
+## <a name="body-example"></a>Voor beeld van tekst
 
-<a name="body-example"></a>Voor beeld van tekst
-------------
-
-### <a name="response"></a>Antwoord
+### <a name="response"></a>Reactie
 
 ``` json
 {
@@ -175,7 +169,6 @@ U kunt ook een bepaalde versie van de aanbieding ophalen of de aanbieding in con
 }
 ```
 
-
 ### <a name="response-body-properties"></a>Eigenschappen van antwoord tekst
 
 |  **Naam**       |   **Beschrijving**                                                                                                               |
@@ -189,7 +182,6 @@ U kunt ook een bepaalde versie van de aanbieding ophalen of de aanbieding in con
 |  changedTime    | UTC-datum/tijd waarop de aanbieding voor het laatst is gewijzigd                                                                                   |
 |  |  |
 
-
 ### <a name="response-status-codes"></a>Antwoord status codes
 
 | **Code**  | **Beschrijving**                                                                                                                 |
@@ -200,7 +192,6 @@ U kunt ook een bepaalde versie van de aanbieding ophalen of de aanbieding in con
 |  404      | `Not found`-De opgegeven entiteit bestaat niet. De client moet de publisherId, offerId en versie controleren (indien opgegeven).      |
 |  |  |
 
-
 ### <a name="offer-status"></a>Status van aanbieding
 
 |  **Naam**                   |   **Beschrijving**                             |
@@ -208,7 +199,7 @@ U kunt ook een bepaalde versie van de aanbieding ophalen of de aanbieding in con
 |  NeverPublished             | De aanbieding is nooit gepubliceerd.               |
 |  NotStarted                 | De aanbieding is nieuw, maar is niet gestart.              |
 |  WaitingForPublisherReview  | Aanbieding wacht op goed keuring van de uitgever.      |
-|  In uitvoering                    | Verzen ding van aanbieding wordt verwerkt.          |
+|  Wordt uitgevoerd                    | Verzen ding van aanbieding wordt verwerkt.          |
 |  Geslaagd                  | Het verzenden van aanbiedingen is voltooid.    |
 |  Geannuleerd                   | Het verzenden van het aanbod is geannuleerd.                |
 |  Mislukt                     | Kan de aanbieding niet verzenden.                      |

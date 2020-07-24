@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1a8023a700e83892fae9a16bb2bfbe2a2eb0b307
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e66af8e55f7b60347d9577c64b7183c6ef8b44f4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85193410"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089308"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>Uw Synapse-werk ruimte beveiligen (preview-versie)
 
@@ -36,7 +36,7 @@ Als u een Synapse-werk ruimte (preview-versie) wilt beveiligen, volgt u een patr
 
 In dit document worden standaard namen gebruikt om de instructies te vereenvoudigen. Vervang deze door een of meer namen van uw keuze.
 
-|Instelling | Voorbeeldwaarde | Description |
+|Instelling | Voorbeeldwaarde | Beschrijving |
 | :------ | :-------------- | :---------- |
 | **Synapse-werkruimte** | WS1 |  De naam die de Synapse-werk ruimte heeft. |
 | **ADLSGEN2-account** | STG1 | Het ADLS-account dat moet worden gebruikt met uw werk ruimte. |
@@ -112,7 +112,7 @@ Hoewel u gebruikers hand matig aan Synapse-rollen kunt toewijzen, worden de item
 
 Gebruikers in elke rol moeten de volgende stappen uitvoeren:
 
-|   | Stap | Werkruimtebeheerders | Spark-beheerders | SQL-Administrators |
+| Getal | Stap | Werkruimtebeheerders | Spark-beheerders | SQL-Administrators |
 | --- | --- | --- | --- | --- |
 | 1 | Een Parquet-bestand uploaden naar CNT1 | JA | JA | JA |
 | 2 | Het Parquet-bestand lezen met behulp van SQL op aanvraag | JA | NO | JA |

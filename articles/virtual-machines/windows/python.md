@@ -8,11 +8,12 @@ ms.topic: article
 ms.date: 06/22/2017
 ms.author: cynthn
 ms.custom: tracking-python
-ms.openlocfilehash: b5f8b0e8f22a476ad379b55275d79c2874966852
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92b6d8c6cd59f82439beec24c003aac6673014e7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84551972"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088322"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Windows-Vm's maken en beheren in azure met behulp van python
 
@@ -31,7 +32,7 @@ Het duurt ongeveer 20 minuten om deze stappen uit te voeren.
 
 ## <a name="create-a-visual-studio-project"></a>Een Visual Studio-project maken
 
-1. Als u dat nog niet hebt gedaan, installeert u [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Selecteer **python-ontwikkeling** op de pagina workloads en klik vervolgens op **installeren**. In de samen vatting ziet u dat **Python 3 64-bits (3.6.0)** automatisch voor u wordt geselecteerd. Als u Visual Studio al hebt geïnstalleerd, kunt u de python-workload toevoegen met behulp van de Visual Studio Launcher.
+1. Als u dat nog niet hebt gedaan, installeert u [Visual Studio](/visualstudio/install/install-visual-studio). Selecteer **python-ontwikkeling** op de pagina workloads en klik vervolgens op **installeren**. In de samen vatting ziet u dat **Python 3 64-bits (3.6.0)** automatisch voor u wordt geselecteerd. Als u Visual Studio al hebt geïnstalleerd, kunt u de python-workload toevoegen met behulp van de Visual Studio Launcher.
 2. Klik na het installeren en starten van Visual Studio op **bestand**  >  **Nieuw**  >  **project**.
 3. Klik op **sjablonen**  >  **python**  >  **python-toepassing**, Voer *myPythonProject* in als de naam van het project, selecteer de locatie van het project en klik vervolgens op **OK**.
 
@@ -565,6 +566,5 @@ Omdat er in rekening worden gebracht voor resources die worden gebruikt in azure
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Als er problemen met de implementatie zijn, raadpleegt u als volgende stap [Problemen met resourcegroepimplementaties in Azure Portal oplossen](../../resource-manager-troubleshoot-deployments-portal.md).
-- Meer informatie over de [Azure python-bibliotheek](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python)
-
+- Als er problemen met de implementatie zijn, raadpleegt u als volgende stap [Problemen met resourcegroepimplementaties in Azure Portal oplossen](../../azure-resource-manager/templates/deployment-history.md).
+- Meer informatie over de [Azure python-bibliotheek](/python/api/overview/azure/?view=azure-python)

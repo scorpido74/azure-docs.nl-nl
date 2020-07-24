@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 6da9490d5d9a876922fb9c2ba5d908db411adb1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 877d1442c346b321562cb396a77224a6b40c7df2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512412"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087234"
 ---
 # <a name="azure-importexport-system-requirements"></a>Systeemvereisten voor Azure Import/Export
 
@@ -50,7 +50,7 @@ Zie [overzicht van Azure Storage-accounts](storage-account-overview.md)voor meer
 Elke taak kan worden gebruikt om gegevens over te dragen van slechts één opslag account. Met andere woorden, één import/export-taak kan niet over meerdere opslag accounts worden verdeeld. Zie [een opslag account maken](storage-account-create.md)voor meer informatie over het maken van een nieuw opslag account.
 
 > [!IMPORTANT]
-> De Azure import-export service biedt geen ondersteuning voor opslag accounts waarvoor de functie voor het [Virtual Network Service-eind punten](../../virtual-network/virtual-network-service-endpoints-overview.md)   is ingeschakeld. 
+> Voor opslag accounts waarop de functie [service-eind punten van Virtual Network](../../virtual-network/virtual-network-service-endpoints-overview.md)   is ingeschakeld, gebruikt u de instelling **vertrouwde micro soft-Services toestaan...** om de [import/export](/storage-network-security.md) -service in te scha kelen voor het uitvoeren van import/export van gegevens van/naar Azure.
 
 ## <a name="supported-storage-types"></a>Ondersteunde opslagtypen
 

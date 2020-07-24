@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 4caed3f330dd3e50fe2652a2cd33c0e4249f2fd9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a82a35f1736aa7908928cbca3397cbe9c705e5b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254341"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088103"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatisch schalen en zone-redundantie in Application Gateway v2 
 
@@ -34,7 +34,7 @@ De nieuwe v2-SKU bevat de volgende verbeteringen:
 
 ![Diagram van de zone voor automatisch schalen.](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
 
-## <a name="supported-regions"></a>Ondersteunde regio’s
+## <a name="supported-regions"></a>Ondersteunde regio's
 
 De Standard_v2-en WAF_v2 SKU is beschikbaar in de volgende regio's: Noord-Centraal VS, Zuid-Centraal VS, VS-West, VS-West 2, VS-Oost, VS-Oost 2, centraal VS, Europa-noord, Europa-west, Zuidoost-Azië, Frankrijk-centraal, UK-west, Japan-Oost, Japan-West, Australië-Oost, Australië-Zuidoost, Brazilië-zuid, Canada-centraal, Canada-oost, Azië-oost, Korea-centraal, Korea-Zuid , UK-zuid, Centraal-India, West-India, India-zuid.
 
@@ -148,10 +148,10 @@ Het maken van een nieuw exemplaar kan echter ongeveer zes of zeven minuten duren
 
 De volgende tabel vergelijkt de functies die beschikbaar zijn voor elke SKU.
 
-|                                                   | v1-SKU   | v2 SKU   |
+| Functie                                           | v1-SKU   | v2 SKU   |
 | ------------------------------------------------- | -------- | -------- |
 | Automatisch schalen                                       |          | &#x2713; |
-| Zone redundantie                                   |          | &#x2713; |
+| Zoneredundantie                                   |          | &#x2713; |
 | Statisch VIP                                        |          | &#x2713; |
 | Azure Kubernetes service (AKS) ingangs controller |          | &#x2713; |
 | Integratie van Azure Sleutelkluis                       |          | &#x2713; |

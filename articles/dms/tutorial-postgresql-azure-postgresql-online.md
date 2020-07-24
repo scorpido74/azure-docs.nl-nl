@@ -3,8 +3,8 @@ title: 'Zelf studie: PostgreSQL migreren naar Azure Database for PostgreSQL onli
 titleSuffix: Azure Database Migration Service
 description: Meer informatie over het uitvoeren van een online migratie van PostgreSQL on-premises naar Azure Database for PostgreSQL met behulp van Azure Database Migration Service via de CLI.
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: arunkumarthiags
+ms.author: arthiaga
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 04/11/2020
-ms.openlocfilehash: e8f79512e132ff4632c067b23ad6e80a76b8d4cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6a39a7967c061a90e75d717402cf63da15b06b3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81113891"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087625"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-cli"></a>Zelf studie: PostgreSQL migreren naar Azure DB voor PostgreSQL online met behulp van DMS via de Azure CLI
 
@@ -29,7 +30,7 @@ In deze zelfstudie leert u het volgende:
 > * De Azure-portal gebruiken om een Azure Database Migration Service-exemplaar te maken.
 > * Een migratieproject maken met behulp van de Azure Database Migration Service.
 > * De migratie uitvoeren.
-> * De migratie controleren.
+> * Houd de migratie in de gaten.
 
 > [!NOTE]
 > Als u Azure Database Migration Service voor het uitvoeren van een online migratie wilt gebruiken, moet u een instantie maken op basis van de prijs categorie Premium. De schijf wordt versleuteld om dief stal van gegevens tijdens het migratie proces te voor komen.
@@ -170,7 +171,7 @@ Om alle databaseobjecten zoals tabelschema’s, indexen en opgeslagen procedures
            az extension list-available –otable
            ```
 
-       * Voer de volgende opdracht uit om de extensie te installeren:
+       * Voer vervolgens de volgende opdracht uit om de extensie te installeren:
 
            ```azurecli
            az extension add –n dms-preview
@@ -181,7 +182,7 @@ Om alle databaseobjecten zoals tabelschema’s, indexen en opgeslagen procedures
        ```azurecli
        az extension list -otable
        ```
-       In dat geval moet de volgende uitvoer worden weergegeven:
+       U moet de volgende uitvoer zien:
 
        ```output
        ExtensionType    Name

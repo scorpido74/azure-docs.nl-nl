@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 08/23/2019
 ms.author: genli
 ms.custom: has-adal-ref
-ms.openlocfilehash: e0e0d9bfe46a473210b89701b5a8c56e999771d3
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 23523a3618ad31e34a81152e48d4ee0f606e5aac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132946"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088526"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>BitLocker-opstart fouten op een virtuele Azure-machine
 
@@ -28,7 +28,7 @@ ms.locfileid: "86132946"
 
 ## <a name="symptom"></a>Symptoom
 
- Een Windows-VM start niet. Wanneer u de scherm opnamen in het venster [Diagnostische gegevens over opstarten](../windows/boot-diagnostics.md) controleert, ziet u een van de volgende fout berichten:
+ Een Windows-VM start niet. Wanneer u de scherm opnamen in het venster [Diagnostische gegevens over opstarten](./boot-diagnostics.md) controleert, ziet u een van de volgende fout berichten:
 
 - Het USB-stuur programma met de BitLocker-sleutel aansluiten
 
@@ -48,7 +48,7 @@ U kunt dit probleem oplossen door de virtuele machine te stoppen en de toewijzin
 Als deze methode het probleem niet oplost, voert u de volgende stappen uit om het BEK-bestand hand matig te herstellen:
 
 1. Maak een moment opname van de systeem schijf van de betrokken VM als back-up. Zie [snap shot a disk](../windows/snapshot-copy-managed-disk.md)(Engelstalig) voor meer informatie.
-2. [Koppel de systeem schijf aan een herstel-VM](troubleshoot-recovery-disks-portal-windows.md). Als u de opdracht [Manage-BDE](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) in stap 7 wilt uitvoeren, moet u de functie **BitLocker-stationsversleuteling** ingeschakeld hebben op de virtuele machine voor herstel.
+2. [Koppel de systeem schijf aan een herstel-VM](troubleshoot-recovery-disks-portal-windows.md). Als u de opdracht [Manage-BDE](/windows-server/administration/windows-commands/manage-bde) in stap 7 wilt uitvoeren, moet u de functie **BitLocker-stationsversleuteling** ingeschakeld hebben op de virtuele machine voor herstel.
 
     Wanneer u een beheerde schijf koppelt, ontvangt u mogelijk een fout bericht ' bevat versleutelings instellingen en kan daarom niet worden gebruikt als een gegevens schijf '. In dit geval voert u het volgende script uit om opnieuw te proberen de schijf te koppelen:
 
@@ -70,7 +70,7 @@ Als deze methode het probleem niet oplost, voert u de volgende stappen uit om he
     ```
      U kunt een beheerde schijf niet koppelen aan een virtuele machine die is hersteld vanuit een BLOB-installatie kopie.
 
-3. Nadat de schijf is aangesloten, maakt u een verbinding met een extern bureau blad met de virtuele machine voor herstel zodat u enkele Azure PowerShell scripts kunt uitvoeren. Zorg ervoor dat de [meest recente versie van Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) is geïnstalleerd op de virtuele machine voor herstel.
+3. Nadat de schijf is aangesloten, maakt u een verbinding met een extern bureau blad met de virtuele machine voor herstel zodat u enkele Azure PowerShell scripts kunt uitvoeren. Zorg ervoor dat de [meest recente versie van Azure PowerShell](/powershell/azure/) is geïnstalleerd op de virtuele machine voor herstel.
 
 4. Open een verhoogde Azure PowerShell-sessie (als administrator uitvoeren). Voer de volgende opdrachten uit om u aan te melden bij een Azure-abonnement:
 

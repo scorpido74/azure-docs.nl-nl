@@ -7,11 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 06/10/2020
 ms.author: caya
-ms.openlocfilehash: 6cbfac4794a685e5858e689c20d6603807edcedf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 42952e379b9f68008de23ee3b1717280d8dd6cb2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987991"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088118"
 ---
 # <a name="tutorial-enable-application-gateway-ingress-controller-add-on-for-an-existing-aks-cluster-with-an-existing-application-gateway-through-azure-cli-preview"></a>Zelf studie: invoeg toepassing Application Gateway ingangs controller inschakelen voor een bestaand AKS-cluster met een bestaande Application Gateway via Azure CLI (preview)
 
@@ -41,7 +42,7 @@ az feature register --name AKS-IngressApplicationGatewayAddon --namespace micros
 
 Het kan een paar minuten duren voordat de status geregistreerd wordt weer gegeven. U kunt de registratie status controleren met de opdracht [AZ Feature List](https://docs.microsoft.com/cli/azure/feature#az-feature-register) :
 ```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-IngressApplicationGatewayAddon')].{Name:name,State:properties.state}"
+az feature list -o table --query "[?contains(name, 'microsoft.containerservice/AKS-IngressApplicationGatewayAddon')].{Name:name,State:properties.state}"
 ```
 
 Als u klaar bent, vernieuwt u de registratie van de resource provider micro soft. container service met de opdracht [AZ provider REGI ster](https://docs.microsoft.com/cli/azure/provider#az-provider-register) :

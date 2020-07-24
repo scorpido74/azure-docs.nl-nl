@@ -1,5 +1,5 @@
 ---
-title: GPU configureren voor virtueel bureau blad van Windows-Azure
+title: GPU configureren voor virtuele Windows-Bureau bladen van 2019-Azure
 description: Het inschakelen van GPU-versnelde rendering en code ring in Windows virtueel bureau blad.
 services: virtual-desktop
 author: gundarev
@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: denisgun
-ms.openlocfilehash: 33bc63887b73adaf570b385d2a289fcd97ff1632
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bbb0985e309601562587f3f1b26427f46a4a8987
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85206101"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087166"
 ---
-# <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>GPU-versnelling (graphics processing unit) configureren voor virtuele Windows-Bureau bladen
+# <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop-fall-2019"></a>GPU-versnelling (graphics processing unit) configureren voor Windows virtueel bureau blad-2019
 
 >[!IMPORTANT]
 >Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../configure-vm-gpu.md) als u Azure Resource Manager Windows Virtual Desktop-objecten wilt beheren die zijn geïntroduceerd in de update Lente 2020.

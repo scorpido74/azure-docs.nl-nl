@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 06/19/2020
+ms.date: 07/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c666a11f8d5e13d022309eddab16edb6aab76381
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5fb992edea38c3dff9beffab1f131d3e7a6fdbf6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527758"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087217"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>Eigenschappen van Remote Desktop Protocol (RDP) voor een hostgroep aanpassen
 
@@ -30,18 +30,6 @@ Zie [ondersteunde RDP-Bestands instellingen](https://docs.microsoft.com/windows-
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u begint, volgt u de instructies in [de Power shell-module van Windows Virtual Desktop instellen](powershell-module.md) om uw Power shell-module in te stellen en u aan te melden bij Azure.
-
-## <a name="default-rdp-properties"></a>Standaard RDP-eigenschappen
-
-Gepubliceerde RDP-bestanden bevatten standaard de volgende eigenschappen:
-
-|RDP-eigenschappen | Desktopcomputers | RemoteApps |
-|---|---| --- |
-| Modus voor meerdere monitors | Ingeschakeld | N.v.t. |
-| Omleidingen van stations ingeschakeld | Stations, klem bord, printers, COM-poorten, USB-apparaten en-Smart Cards| Stations, klem bord en printers |
-| Modus voor externe audio | Lokaal afspelen | Lokaal afspelen |
-
-Aangepaste eigenschappen die u voor de hostgroep definieert, overschrijven deze standaard waarden.
 
 ## <a name="configure-rdp-properties-in-the-azure-portal"></a>RDP-eigenschappen configureren in de Azure Portal
 

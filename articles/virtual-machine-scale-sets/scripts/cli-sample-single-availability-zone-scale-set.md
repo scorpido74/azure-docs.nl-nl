@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-voor beelden-schaalset met één zone
-description: Met dit script maakt u een virtuele-machine schaalset van Azure waarop Ubuntu wordt uitgevoerd in één beschikbaarheids zone.
+title: Voorbeelden van Azure CLI - Schaalset met één zone
+description: Met dit script maakt u een virtuele-machineschaalset voor Azure met Ubuntu in één beschikbaarheidszone.
 author: mimckitt
 ms.author: mimckitt
 ms.topic: sample
@@ -9,12 +9,12 @@ ms.subservice: availability
 ms.date: 03/27/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 8883bd099b684b5086554feded88e133764e614f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: b0b8cd79c464a101210d8ca56d09d9703abbc614
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83701602"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088951"
 ---
 # <a name="create-a-single-zone-virtual-machine-scale-set-with-the-azure-cli"></a>Een virtuele-machineschaalset met één zone maken met Azure CLI
 Met dit script maakt u een virtuele-machineschaalset met Ubuntu in één beschikbaarheidszone. Nadat het script is uitgevoerd, hebt u via RDP toegang tot de virtuele machine.
@@ -43,4 +43,4 @@ In dit script worden de volgende opdrachten gebruikt voor het maken van een reso
 | [az group delete](/cli/azure/ad/group) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 
 ## <a name="next-steps"></a>Volgende stappen
-Raadpleeg de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure/overview) voor meer informatie over de Azure CLI.
+Raadpleeg de [documentatie van Azure CLI](/cli/azure/overview) voor meer informatie over de Azure CLI.

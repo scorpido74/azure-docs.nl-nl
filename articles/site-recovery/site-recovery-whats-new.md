@@ -3,12 +3,12 @@ title: Wat is er nieuw in Azure Site Recovery
 description: Biedt een samen vatting van nieuwe functies en de meest recente updates in de Azure Site Recovery-service.
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 3017be90e84441ad84c6a5a9d54498028388dffe
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 4e3153ae611f368f66b045a69bab23ca0a52a033
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206402"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089512"
 ---
 # <a name="whats-new-in-site-recovery"></a>Nieuw in Site Recovery
 
@@ -22,7 +22,8 @@ Voor Site Recovery-onderdelen ondersteunen we N-4 versies, waarbij N de meest re
 
 **Bijwerken** |  **Unified Setup** | **Eicellen van de configuratie server** | **Mobility Service-agent** | **Site Recovery provider** | **Recovery Services-agent**
 --- | --- | --- | --- | --- | ---
-[Pakket 47](https://support.microsoft.com/help/4570609/) | 9.34.5634.1 | 5.1.6100.0 | 9.34.5634.1 | 5.1.6100.0 | 2.0.9183.0
+[Pakket 48](https://support.microsoft.com/help/4573888/) | 9.35.5659.1 | 5.1.6200.0 | 9.35.5659.1 | 5.1.6200.0 | 2.0.9186.0
+[Pakket 47](https://support.microsoft.com/help/4570609/) | 9.34.5634.1 | 5.1.6100.0 | 9.34.5634.1 | 5.1.6100.0 | Hyper-v-machines-2.0.9183.0 <br> VMware-machines-2.0.9177.0
 [Pakket 46](https://support.microsoft.com/help/4564347/) | 9.33.5598.1 | 5.1.5900.0 | 9.33.5598.1 | 5.1.5900.0 | 2.0.9175.0
 [Pakket 45](https://support.microsoft.com/help/4550047/) | 9.32.5487.1 | 5.1.5400.0 | 9.32.5487.1 | 5.1.5400.0 | 2.0.9165.0
 [Pakket 43](https://support.microsoft.com/help/4537047/) | 9.31.5449.1 | 5.1.5300.0 | 9.31.5449.1 | 5.1.5300.0 | 2.0.9165.0
@@ -34,6 +35,18 @@ Meer [informatie](service-updates-how-to.md) over installatie en ondersteuning v
 > Update pakket 44 wordt niet weer gegeven in de tabel omdat het geen updates bevat voor de Site Recovery providers en agents.
 
 ## <a name="updates-july-2020"></a>Updates (juli 2020)
+
+### <a name="update-rollup-48"></a>Update pakket 48
+
+[Update pakket 48](https://support.microsoft.com/help/4573888/update-rollup-48-for-azure-site-recovery) bevat de volgende updates:
+
+**Bijwerken** | **Details**
+--- | ---
+**Providers en agents** | Updates van Site Recovery agents en providers zoals beschreven in het pakket.
+**Problemen/verbeteringen van het probleem** | Een aantal oplossingen en verbeteringen zoals beschreven in de samen telling.
+
+> [!NOTE]
+> Update pakket 48 bevat een bekend probleem met het inschakelen van replicatie voor Linux-machines die zijn versleuteld met behulp van ADE. [Meer informatie](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-troubleshoot-errors#enable-protection-failed-as-the-installer-is-unable-to-find-the--root-disk-error-code-151137).
 
 ### <a name="update-rollup-47"></a>Update pakket 47
 
@@ -207,7 +220,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 **Functie** | **Details**
 --- | ---
-Opslagaccount | Site Recovery ondersteunt nu het gebruik van opslag accounts waarvoor Firewall is ingeschakeld voor Hyper-V naar Azure-herstel na nood gevallen.  U kunt opslag accounts met firewall mogelijkheden selecteren als doel account of voor cache opslag. Als u gebruikmaakt van Firewall-account, moet u ervoor zorgen dat u de optie voor het toestaan van vertrouwde micro soft-Services hebt ingeschakeld.<br/><br/> Dit wordt ondersteund voor virtuele Hyper-V-machines met of zonder System Center VMM.
+Storage-account | Site Recovery ondersteunt nu het gebruik van opslag accounts waarvoor Firewall is ingeschakeld voor Hyper-V naar Azure-herstel na nood gevallen.  U kunt opslag accounts met firewall mogelijkheden selecteren als doel account of voor cache opslag. Als u gebruikmaakt van Firewall-account, moet u ervoor zorgen dat u de optie voor het toestaan van vertrouwde micro soft-Services hebt ingeschakeld.<br/><br/> Dit wordt ondersteund voor virtuele Hyper-V-machines met of zonder System Center VMM.
 
 
 ## <a name="updates-august-2019"></a>Updates (augustus 2019)
@@ -324,7 +337,7 @@ De functies die deze maand zijn toegevoegd, worden in de tabel samenvatten.
 
 **Functie** | **Details**
 --- | ---
-**Beheerde schijven** | De replicatie van on-premises virtuele VMware-machines en fysieke servers is nu rechtstreeks voor beheerde schijven in Azure. On-premises gegevens worden verzonden naar een cache-opslag account in Azure en er worden herstel punten gemaakt op beheerde schijven op de doel locatie. Dit zorgt ervoor dat u niet meerdere doel opslag accounts hoeft te beheren.
+**Azure Managed Disks** | De replicatie van on-premises virtuele VMware-machines en fysieke servers is nu rechtstreeks voor beheerde schijven in Azure. On-premises gegevens worden verzonden naar een cache-opslag account in Azure en er worden herstel punten gemaakt op beheerde schijven op de doel locatie. Dit zorgt ervoor dat u niet meerdere doel opslag accounts hoeft te beheren.
 **Configuratie server** | Site Recovery ondersteunt nu configuratie servers met meerdere Nic's. Voeg extra adapters toe aan de configuratie Server-VM voordat u de configuratie server in de kluis registreert. Als u later toevoegt, moet u de server opnieuw registreren in de kluis.
 
 

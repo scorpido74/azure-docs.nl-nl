@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/25/2019
 ms.author: genli
-ms.openlocfilehash: 580ec443dc087f270e30856c336a5699bbf1ae71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03c1d8e6d6b5b1d55fee964b509c1bc08537cf6b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71058446"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088577"
 ---
 # <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>Extern bureaublad-services of het beheerders wachtwoord opnieuw instellen in een Windows-VM
 Als u geen verbinding kunt maken met een virtuele Windows-machine (VM), kunt u het lokale beheerders wachtwoord opnieuw instellen of de Extern bureaublad-services configuratie opnieuw instellen (niet ondersteund op Windows-domein controllers). Voor het opnieuw instellen van het wachtwoord gebruikt u de Azure-portal of de VM-toegangsextensie in Azure PowerShell. Wanneer u zich bij de VM hebt aangemeld, stelt u het wachtwoord van die lokale beheerder opnieuw in.  
-Als u Power shell gebruikt, moet u ervoor zorgen dat de [meest recente Power shell-module is geïnstalleerd en geconfigureerd](/powershell/azure/overview) en dat u bent aangemeld bij uw Azure-abonnement. U kunt [deze stappen ook uitvoeren voor virtuele machines die zijn gemaakt met het klassieke implementatiemodel](https://docs.microsoft.com/azure/virtual-machines/windows/classic/reset-rdp).
+Als u Power shell gebruikt, moet u ervoor zorgen dat de [meest recente Power shell-module is geïnstalleerd en geconfigureerd](/powershell/azure/) en dat u bent aangemeld bij uw Azure-abonnement. U kunt [deze stappen ook uitvoeren voor virtuele machines die zijn gemaakt met het klassieke implementatiemodel](/azure/virtual-machines/windows/classic/reset-rdp).
 
 U kunt Extern bureaublad-services en de referenties op de volgende manieren opnieuw instellen:
 
@@ -55,11 +55,11 @@ Met dit proces wordt Extern bureaublad-service in de VM ingeschakeld en wordt ee
 
 ## <a name="reset-by-using-the-vmaccess-extension-and-powershell"></a>Opnieuw instellen met behulp van de VMAccess-extensie en Power shell
 
-Controleer eerst of de [meest recente Power shell-module is geïnstalleerd en geconfigureerd](/powershell/azure/overview) en of u bent aangemeld bij uw Azure-abonnement met behulp van de cmdlet [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) .
+Controleer eerst of de [meest recente Power shell-module is geïnstalleerd en geconfigureerd](/powershell/azure/) en of u bent aangemeld bij uw Azure-abonnement met behulp van de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) .
 
 ### <a name="reset-the-local-administrator-account-password"></a>**Het wacht woord voor het lokale Administrator-account opnieuw instellen**
 
-- Stel het beheerders wachtwoord of de gebruikers naam opnieuw in met de Power shell [-cmdlet Set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) . De `typeHandlerVersion` instelling moet 2,0 of hoger zijn, omdat versie 1 is afgeschaft. 
+- Stel het beheerders wachtwoord of de gebruikers naam opnieuw in met de Power shell [-cmdlet Set-AzVMAccessExtension](/powershell/module/az.compute/set-azvmaccessextension) . De `typeHandlerVersion` instelling moet 2,0 of hoger zijn, omdat versie 1 is afgeschaft. 
 
     ```powershell
     $SubID = "<SUBSCRIPTION ID>" 
@@ -77,7 +77,7 @@ Controleer eerst of de [meest recente Power shell-module is geïnstalleerd en ge
 
 ### <a name="reset-the-remote-desktop-services-configuration"></a>**De configuratie van de Extern bureaublad-services opnieuw instellen**
 
-1. Externe toegang tot uw virtuele machine opnieuw instellen met de Power shell [-cmdlet Set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) . In het volgende voor beeld wordt de toegangs extensie opnieuw ingesteld `myVMAccess` op de naam van de virtuele machine `myVM` in de `myResourceGroup` resource groep:
+1. Externe toegang tot uw virtuele machine opnieuw instellen met de Power shell [-cmdlet Set-AzVMAccessExtension](/powershell/module/az.compute/set-azvmaccessextension) . In het volgende voor beeld wordt de toegangs extensie opnieuw ingesteld `myVMAccess` op de naam van de virtuele machine `myVM` in de `myResourceGroup` resource groep:
 
     ```powershell
     Set-AzVMAccessExtension -ResourceGroupName "myResoureGroup" -VMName "myVM" -Name "myVMAccess" -Location WestUS -typeHandlerVersion "2.0" -ForceRerun
@@ -94,7 +94,6 @@ Controleer eerst of de [meest recente Power shell-module is geïnstalleerd en ge
 
 - [Meer informatie over Azure VM-extensies en-functies](../extensions/features-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-- [Verbinding maken met een virtuele machine van Azure met RDP of SSH](https://msdn.microsoft.com/library/azure/dn535788.aspx).
+- [Verbinding maken met een virtuele machine van Azure met RDP of SSH](/previous-versions/azure/dn535788(v=azure.100)).
 
 - [Problemen met extern bureaublad verbindingen met een virtuele Azure-machine op basis van Windows oplossen](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-

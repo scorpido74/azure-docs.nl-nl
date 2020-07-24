@@ -1,19 +1,20 @@
 ---
-title: Synapse Analytics Security Baseline voor Azure Security-benchmark
+title: Azure-beveiligings basislijn voor Synapse Analytics
 description: De beveiligings basislijn van Synapse Analytics biedt procedure richtlijnen en resources voor het implementeren van de beveiligings aanbevelingen die zijn opgegeven in de Azure Security-Bench Mark.
 author: msmbaldwin
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 07/02/2020
+ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 4b40bdeb6f60aafea760c6c6e3e0b0f99b419614
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 34453dacd763b8b6a2bff3d977a7bc9b2ab78ca9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040653"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089325"
 ---
-# <a name="synapse-analytics-security-baseline-for-azure-security-benchmark"></a>Synapse Analytics Security Baseline voor Azure Security-benchmark
+# <a name="azure-security-baseline-for-synapse-analytics"></a>Azure-beveiligings basislijn voor Synapse Analytics
 
 De Azure Security Baseline voor Synapse Analytics bevat aanbevelingen waarmee u de beveiligings-postuur van uw implementatie kunt verbeteren.
 
@@ -27,9 +28,9 @@ Zie [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/azure
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Azure-resources in virtuele netwerken beveiligen
 
-**Hulp**: Beveilig Azure SQL database naar een virtueel netwerk via een persoonlijke koppeling. Met Azure private link kunt u toegang krijgen tot Azure PaaS Services via een persoonlijk eind punt in uw virtuele netwerk. Verkeer tussen uw virtuele netwerk en de service wordt via het Microsoft-backbonenetwerk verplaatst.
+**Hulp**: Beveilig uw Azure-SQL Server naar een virtueel netwerk via een persoonlijke koppeling. Met Azure private link kunt u toegang krijgen tot Azure PaaS Services via een persoonlijk eind punt in uw virtuele netwerk. Verkeer tussen uw virtuele netwerk en de service wordt via het Microsoft-backbonenetwerk verplaatst.
 
-U kunt ook bij het maken van verbinding met uw Synapse SQL-pool het bereik van de uitgaande verbinding beperken tot SQL Database met behulp van een netwerk beveiligings groep. Schakel alle Azure-serviceverkeer uit naar SQL Database via het openbare eindpunt door Azure-services toestaan UIT te schakelen. Zorg ervoor dat er geen open bare IP-adressen zijn toegestaan in de firewall regels.
+U kunt ook bij het maken van verbinding met uw Synapse SQL-groep het bereik van de uitgaande verbinding met de SQL database beperken door een netwerk beveiligings groep te gebruiken. Schakel alle Azure-service verkeer naar het SQL database via het open bare eind punt door de instelling Azure-Services toestaan in te scha kelen. Zorg ervoor dat er geen open bare IP-adressen zijn toegestaan in de firewall regels.
 
 * [Persoonlijke Azure-koppeling](https://docs.microsoft.com/azure/private-link/private-link-overview)
 
@@ -43,7 +44,7 @@ U kunt ook bij het maken van verbinding met uw Synapse SQL-pool het bereik van d
 
 **Verantwoordelijkheid**: klant
 
-### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1,2: de configuratie en het verkeer van virtuele netwerken, subnetten en Nic's bewaken en vastleggen
+### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-network-interfaces"></a>1,2: de configuratie en het verkeer van virtuele netwerken, subnetten en netwerk interfaces bewaken en vastleggen
 
 **Richt lijnen**: wanneer u verbinding maakt met uw Azure Synapse SQL-groep en u de stroom logboeken voor netwerk beveiligings groepen (NSG) hebt ingeschakeld, kunt u Logboeken verzenden naar een Azure Storage account voor het controleren van het verkeer.
 
@@ -123,7 +124,7 @@ Schakel DDoS Protection standaard in op de virtuele netwerken die zijn gekoppeld
 
 **Richt lijnen**: gebruik Tags voor het virtuele netwerk om netwerk toegangs beheer te definiëren voor netwerk beveiligings groepen of Azure firewall. U kunt servicetags gebruiken in plaats van specifieke IP-adressen wanneer u beveiligingsregels maakt. Door de naam van de service label (bijvoorbeeld ApiManagement) op te geven in het juiste bron-of doel veld van een regel, kunt u het verkeer voor de bijbehorende service toestaan of weigeren. Micro soft beheert de adres voorvoegsels die zijn opgenomen in het servicetag van de service en werkt de servicetag automatisch bij met gewijzigde adressen.
 
-Wanneer u een service-eind punt voor uw Azure Synapse SQL-groep gebruikt, is uitgaand naar Azure SQL Database open bare IP-adressen vereist: netwerk beveiligings groepen (Nsg's) moeten zijn geopend om te Azure SQL Database Ip's om verbinding te kunnen maken. U kunt dit doen met behulp van NSG-service tags voor Azure SQL Database.
+Wanneer u een service-eind punt voor uw Azure Synapse SQL-groep gebruikt, is uitgaand naar Azure SQL database open bare IP-adressen vereist: netwerk beveiligings groepen (Nsg's) moeten zijn geopend om te Azure SQL Database Ip's om verbinding te kunnen maken. U kunt dit doen met behulp van NSG-service tags voor Azure SQL Database.
 
 * [Informatie over service tags met Service-eind punten voor Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview#limitations)
 
@@ -135,7 +136,7 @@ Wanneer u een service-eind punt voor uw Azure Synapse SQL-groep gebruikt, is uit
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: standaard beveiligings configuraties voor netwerk apparaten onderhouden
 
-**Richt lijnen**: netwerk beveiligings configuraties voor resources die zijn gerelateerd aan uw SQL-groep definiëren en implementeren met Azure Policy. U kunt de naam ruimte ' micro soft. SQL ' gebruiken om aangepaste beleids definities te definiëren of een van de ingebouwde beleids definities te gebruiken die zijn ontworpen voor Azure SQL Database/Server-netwerk beveiliging. Een voor beeld van een toepasselijk ingebouwd netwerk beveiligings beleid voor Azure SQL Database Server is: ' SQL Server moet een service-eind punt van een virtueel netwerk gebruiken '.
+**Richt lijnen**: netwerk beveiligings configuraties voor resources die zijn gerelateerd aan uw SQL-groep definiëren en implementeren met Azure Policy. U kunt de naam ruimte ' micro soft. SQL ' gebruiken om aangepaste beleids definities te definiëren of een van de ingebouwde beleids definities te gebruiken die zijn ontworpen voor Azure SQL database/server-netwerk beveiliging. Een voor beeld van een toepasselijk ingebouwd netwerk beveiligings beleid voor Azure SQL Database Server is: ' SQL Server moet een service-eind punt van een virtueel netwerk gebruiken '.
 
 Gebruik Azure-blauw drukken om grootschalige Azure-implementaties te vereenvoudigen door essentiële omgevings artefacten, zoals Azure resource management-sjablonen, op rollen gebaseerd toegangs beheer (RBAC) en beleids regels, in één blauw definitie te voorzien. Pas de blauw druk toe op nieuwe abonnementen en omgevingen en Verfijn de controle en het beheer via versies.
 
@@ -359,7 +360,7 @@ Als u de beheerders accounts voor een Data Base wilt identificeren, opent u de A
 
 **Verantwoordelijkheid**: klant
 
-### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: eenmalige aanmelding (SSO) met Azure Active Directory gebruiken
+### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3,4: gebruik Azure Active Directory eenmalige aanmelding (SSO)
 
 **Richt lijnen**: gebruik een Azure-app-registratie (Service-Principal) om een token op te halen dat kan worden gebruikt voor interactie met uw data warehouse op het besturings vlak (Azure Portal) via API-aanroepen.
 
@@ -387,7 +388,7 @@ Als u de beheerders accounts voor een Data Base wilt identificeren, opent u de A
 
 **Verantwoordelijkheid**: klant
 
-### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: gebruik speciale machines (privileged Access workstations) voor alle beheer taken
+### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3,6: beveiligde, door Azure beheerde werk stations gebruiken voor beheer taken
 
 **Richt lijnen**: gebruik een privileged Access-werk station (Paw) met multi-factor Authentication (MFA) dat is geconfigureerd om Azure-resources aan te melden en te configureren.
 
@@ -475,7 +476,7 @@ Bij het gebruik van SQL-verificatie maakt u Inge sloten database gebruikers in d
 
 **Verantwoordelijkheid**: klant
 
-### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: waarschuwing voor de afwijking van het aanmeldings gedrag van accounts
+### <a name="312-alert-on-account-sign-in-behavior-deviation"></a>3,12: waarschuwing voor de afwijking van het aanmeldings gedrag van het account
 
 **Hulp**: gebruik Azure Active Directory (Azure AD) identiteits beveiliging en functies voor risico detectie om automatische antwoorden te configureren op gedetecteerde verdachte acties die betrekking hebben op gebruikers identiteiten. Daarnaast kunt u in azure Sentinel gegevens opnemen en indelen voor verder onderzoek.
 
@@ -503,7 +504,7 @@ Bij het gebruik van SQL-verificatie maakt u Inge sloten database gebruikers in d
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 *Zie [beveiligings beheer: gegevens beveiliging](/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 
@@ -583,7 +584,7 @@ Daarnaast kunt u een beleid voor dynamische gegevens maskering (DDM) instellen i
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: op rollen gebaseerd toegangs beheer gebruiken voor het beheren van de toegang tot bronnen
 
-**Hulp**: gebruik Azure op rollen gebaseerd toegangs beheer (RBAC) voor het beheren van de toegang tot Azure SQL database in uw Synapse SQL-groep.
+**Hulp**: gebruik Azure op rollen gebaseerd toegangs beheer (RBAC) voor het beheren van de toegang tot Azure SQL-data bases in uw Synapse SQL-groep.
 
 Autorisatie wordt beheerd door de databaserol lidmaatschappen en object machtigingen van uw gebruikers account. Het wordt aanbevolen om gebruikers de minimaal benodigde bevoegdheden te verlenen.
 
@@ -641,9 +642,9 @@ Daarnaast kunt u waarschuwingen instellen voor data bases in uw SQL Synapse-groe
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: automatische hulpprogram ma's voor het scannen van beveiligings problemen uitvoeren
 
-**Richt lijnen**: geavanceerde gegevens beveiliging inschakelen en aanbevelingen volgen van Azure Security Center over het uitvoeren van evaluatie van beveiligings problemen op SQL database.
+**Richt lijnen**: geavanceerde gegevens beveiliging inschakelen en aanbevelingen volgen van Azure Security Center over het uitvoeren van evaluatie van beveiligings problemen op uw Azure SQL-data bases.
 
-* [Beveiligings evaluaties uitvoeren op Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)
+* [Beveiligings evaluaties uitvoeren voor uw Azure SQL-data bases](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)
 
 * [Geavanceerde gegevens beveiliging inschakelen](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
 
@@ -737,7 +738,7 @@ Hoewel klassieke Azure-resources kunnen worden gedetecteerd via Azure resource G
 
 **Verantwoordelijkheid**: klant
 
-### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6,4: een inventaris van goedgekeurde Azure-resources definiëren en onderhouden
+### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6,4: de inventaris van goedgekeurde Azure-resources definiëren en onderhouden
 
 **Richt lijnen**: Definieer een lijst met goedgekeurde Azure-resources die zijn gerelateerd aan uw Synapse SQL-groep.
 
@@ -748,7 +749,7 @@ Hoewel klassieke Azure-resources kunnen worden gedetecteerd via Azure resource G
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: monitor voor niet-goedgekeurde Azure-resources
 
 **Hulp: gebruik**Azure Policy om beperkingen toe te voegen voor het type resources dat kan worden gemaakt in klant abonnementen met behulp van de volgende ingebouwde beleids definities:
-- Niet toegestane brontypen
+- Niet toegestane resourcetypen
 - Toegestane brontypen
 
 Gebruik Azure resource Graph voor het opvragen/detecteren van resources in uw abonnementen. Zorg ervoor dat alle Azure-resources die aanwezig zijn in de omgeving, zijn goedgekeurd.
@@ -788,7 +789,7 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources in uw ab
 ### <a name="69-use-only-approved-azure-services"></a>6,9: alleen goedgekeurde Azure-Services gebruiken
 
 **Hulp: gebruik**Azure Policy om beperkingen te plaatsen voor het type resources dat kan worden gemaakt in klant abonnementen met de volgende ingebouwde beleids definities:
-- Niet toegestane brontypen
+- Niet toegestane resourcetypen
 - Toegestane brontypen
 
 Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen uw abonnement (en). Zorg ervoor dat alle Azure-resources die aanwezig zijn in de omgeving, zijn goedgekeurd.
@@ -845,8 +846,7 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen u
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: veilige configuraties instellen voor alle Azure-resources
 
-**Hulp**: gebruik Azure Policy aliassen in de naam ruimte ' micro soft. SQL ' om aangepaste beleids regels te maken voor het controleren of afdwingen van de configuratie van resources die zijn gerelateerd aan uw Synapse SQL-groep. U kunt ook gebruikmaken van ingebouwde beleids definities voor Azure-data bases, zoals:
-
+**Hulp**: gebruik Azure Policy aliassen in de naam ruimte ' micro soft. SQL ' om aangepaste beleids regels te maken voor het controleren of afdwingen van de configuratie van resources die zijn gerelateerd aan uw Synapse SQL-groep. U kunt ook gebruikmaken van ingebouwde beleids definities voor Azure Data Base/Server, zoals:
 - Detectie van bedreigingen implementeren op SQL-servers
 - SQL Server moet gebruikmaken van een service-eindpunt voor een virtueel netwerk
 
@@ -1010,7 +1010,7 @@ Scan vooraf op inhoud die wordt geüpload naar niet-reken resources van Azure, z
 
 *Zie [beveiligings beheer: gegevens herstel](/azure/security/benchmarks/security-control-data-recovery)voor meer informatie.*
 
-### <a name="91-ensure-regular-automated-back-ups"></a>9,1: controleren op regel matige automatische back-ups
+### <a name="91-ensure-regular-automated-back-ups"></a>9,1: zorg voor regel matige automatische back-ups
 
 **Hulp**: moment opnamen van uw Synapse SQL-groep worden automatisch gemaakt voor de hele dag, waarbij u herstel punten maakt die zeven dagen beschikbaar zijn. Deze Bewaar periode kan niet worden gewijzigd. SQL-pool ondersteunt een RPO (acht Recovery Point Objective uur). U kunt uw data warehouse in de primaire regio herstellen vanuit een van de moment opnamen die in de afgelopen zeven dagen zijn gemaakt. U kunt ook hand matig moment opnamen activeren als dat nodig is.
 

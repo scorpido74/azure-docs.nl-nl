@@ -3,16 +3,16 @@ title: Een event hub maken met Capture ingeschakeld - Azure Event Hubs | Microso
 description: Een Azure Event Hubs-naamruimte met een gebeurtenishub maken en Capture inschakelen met behulp van een Azure Resource Manager-sjabloon
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 51b654635fa7e06901a257c930e04bff3ea86cf8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7308d951cf48d8123df050bdf58772ec914aac3e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85315695"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087591"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>Een naamruimte maken met Event Hub en Capture inschakelen met behulp van een sjabloon
 
-In dit artikel wordt beschreven hoe u een Azure Resource Manager-sjabloon gebruikt om een [Event Hubs](event-hubs-what-is-event-hubs.md)-naamruimte te maken met één exemplaar van de gebeurtenishub en de [functie Capture](event-hubs-capture-overview.md) op de gebeurtenishub in te schakelen. In het artikel wordt beschreven hoe u kunt aangeven welke resources worden geïmplementeerd en hoe u de parameters definieert die bij de uitvoering van de implementatie zijn opgegeven. U kunt deze sjabloon gebruiken voor uw eigen implementaties of de sjabloon aanpassen aan uw eisen.
+In dit artikel wordt beschreven hoe u een Azure Resource Manager-sjabloon gebruikt om een [Event Hubs](./event-hubs-about.md)-naamruimte te maken met één exemplaar van de gebeurtenishub en de [functie Capture](event-hubs-capture-overview.md) op de gebeurtenishub in te schakelen. In het artikel wordt beschreven hoe u kunt aangeven welke resources worden geïmplementeerd en hoe u de parameters definieert die bij de uitvoering van de implementatie zijn opgegeven. U kunt deze sjabloon gebruiken voor uw eigen implementaties of de sjabloon aanpassen aan uw eisen.
 
 Ook wordt uitgelegd hoe u kunt opgeven dat gebeurtenissen worden vastgelegd in Azure Storage-blobs of in een Azure Data Lake Store, op basis van de bestemming die u kiest.
 
@@ -418,7 +418,7 @@ U kunt Event Hubs Capture ook configureren via de [Azure-portal](https://portal.
 
 U kunt meer informatie over Event Hubs vinden via de volgende koppelingen:
 
-* [Event Hubs-overzicht](event-hubs-what-is-event-hubs.md)
+* [Event Hubs-overzicht](./event-hubs-about.md)
 * [Een Event Hub maken](event-hubs-create.md)
 * [Veelgestelde vragen over Event Hubs](event-hubs-faq.md)
 

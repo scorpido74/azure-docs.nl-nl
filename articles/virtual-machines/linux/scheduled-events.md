@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: ericrad
 ms.reviewer: mimckitt
-ms.openlocfilehash: ba06350a564990899a593714a1f49d1e00ea544a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f91b5879922fc473ff1e46f817b3d649b1b30a9c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262103"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088730"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Scheduled Events voor Linux-Vm's
 
@@ -39,7 +39,7 @@ Met Scheduled Events kan uw toepassing detecteren wanneer er onderhoud plaatsvin
 
 Scheduled Events bevat gebeurtenissen in de volgende use-cases:
 
-- Door het [platform geïnitieerd onderhoud](https://docs.microsoft.com/azure/virtual-machines/linux/maintenance-and-updates) (bijvoorbeeld VM opnieuw opstarten, Livemigratie of geheugen behoud van updates voor host)
+- Door het [platform geïnitieerd onderhoud](../maintenance-and-updates.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json) (bijvoorbeeld VM opnieuw opstarten, Livemigratie of geheugen behoud van updates voor host)
 - De virtuele machine wordt uitgevoerd op hardware die is [gedegradeerd als host](https://azure.microsoft.com/blog/find-out-when-your-virtual-machine-hardware-is-degraded-with-scheduled-events) die binnenkort wordt voorspeld
 - Door de gebruiker geïnitieerd onderhoud (bijvoorbeeld: een gebruiker start een virtuele machine opnieuw of implementeert deze)
 - [Spot-VM](spot-vms.md) en verwijderingen van exemplaren van de [schaalset](../../virtual-machine-scale-sets/use-spot.md) .
@@ -73,7 +73,7 @@ Als de virtuele machine niet is gemaakt binnen een Virtual Network, zijn de stan
 ### <a name="version-and-region-availability"></a>Beschik baarheid van versie en regio
 Er is een versie van de Scheduled Events-service. Versies zijn verplicht. de huidige versie is `2019-01-01` .
 
-| Versie | Release type | Regio's | Releaseopmerkingen | 
+| Versie | Release type | Regio's | Opmerkingen bij de release | 
 | - | - | - | - | 
 | 2019-08-01 | Algemene Beschik baarheid | Alles | <li> Ondersteuning toegevoegd voor Event source |
 | 2019-04-01 | Algemene Beschik baarheid | Alles | <li> Er is ondersteuning toegevoegd voor de beschrijving van de gebeurtenis |
@@ -98,7 +98,7 @@ Als u een virtuele machine opnieuw opstart, wordt een gebeurtenis met het type `
 
 ## <a name="use-the-api"></a>De API gebruiken
 
-### <a name="headers"></a>Headers
+### <a name="headers"></a>Kopteksten
 Wanneer u Metadata Service een query uitvoert, moet u de header opgeven `Metadata:true` om ervoor te zorgen dat de aanvraag niet per ongeluk is omgeleid. De `Metadata:true` header is vereist voor alle aanvragen voor geplande gebeurtenissen. Het toevoegen van de header in de aanvraag resulteert in een antwoord op een ' ongeldige aanvraag ' van Metadata Service.
 
 ### <a name="query-for-events"></a>Query's uitvoeren op gebeurtenissen
@@ -138,7 +138,7 @@ Als er geplande gebeurtenissen zijn, bevat het antwoord een matrix met gebeurten
 | Resources| Lijst met resources die deze gebeurtenis beïnvloedt. De lijst is gegarandeerd dat machines uit Maxi maal één [update domein](manage-availability.md)worden opgenomen, maar bevat mogelijk niet alle computers in de UD. <br><br> Voorbeeld: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | EventStatus | De status van deze gebeurtenis. <br><br> Waarden: <ul><li>`Scheduled`: Deze gebeurtenis is gepland om te starten na het tijdstip dat is opgegeven in de `NotBefore` eigenschap.<li>`Started`: Deze gebeurtenis is gestart.</ul> Er `Completed` is ooit geen of vergelijk bare status. De gebeurtenis wordt niet meer geretourneerd wanneer de gebeurtenis is voltooid.
 | NotBefore| Tijdstip waarna deze gebeurtenis kan worden gestart. <br><br> Voorbeeld: <br><ul><li> Ma, 19 sep 2016 18:29:47 GMT  |
-| Description | Beschrijving van deze gebeurtenis. <br><br> Voorbeeld: <br><ul><li> De hostserver ondergaat onderhoud. |
+| Beschrijving | Beschrijving van deze gebeurtenis. <br><br> Voorbeeld: <br><ul><li> De hostserver ondergaat onderhoud. |
 | Source | Initiator van de gebeurtenis. <br><br> Voorbeeld: <br><ul><li> `Platform`: Deze gebeurtenis wordt geïnitieerd door platfrom. <li>`User`: Deze gebeurtenis wordt geïnitieerd door de gebruiker. |
 
 ### <a name="event-scheduling"></a>Gebeurtenissen plannen
@@ -150,7 +150,7 @@ Elke gebeurtenis wordt in de toekomst gepland op basis van het gebeurtenis type.
 | Opnieuw opstarten | 15 minuten |
 | Opnieuw implementeren | 10 minuten |
 | Preempt | 30 seconden |
-| Tijdig | [Configureer bare gebruiker](../../virtual-machine-scale-sets/virtual-machine-scale-sets-terminate-notification.md#enable-terminate-notifications): 5 tot 15 minuten |
+| Terminate | [Configureer bare gebruiker](../../virtual-machine-scale-sets/virtual-machine-scale-sets-terminate-notification.md#enable-terminate-notifications): 5 tot 15 minuten |
 
 > [!NOTE] 
 > In sommige gevallen kan Azure host-uitval voors pellen vanwege gedegradeerde hardware en zal proberen de onderbreking van uw service te verhelpen door een migratie te plannen. De betrokken virtuele machines ontvangen een geplande gebeurtenis met een `NotBefore` van de meeste dagen in de toekomst. De werkelijke tijd is afhankelijk van de voorspelde risico analyse. Azure probeert zo de voorafgaande kennisgeving van 7 dagen te geven, maar de werkelijke tijd varieert en kan kleiner zijn als de voor spelling is dat er een hoge kans op het onmiddellijk uitvallen van de hardware is. Om het risico voor uw service tot een minimum te beperken, raden we u aan uw virtuele machine zo snel mogelijk zelf opnieuw te implementeren.
@@ -189,7 +189,7 @@ import json
 import socket
 import urllib2
 
-metadata_url = "http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01"
+metadata_url = "http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01"
 this_host = socket.gethostname()
 
 
@@ -233,4 +233,4 @@ if __name__ == '__main__':
 - Bekijk [Scheduled Events op Azure vrijdag](https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Scheduled-Events-to-Prepare-for-VM-Maintenance) om een demo te bekijken. 
 - Bekijk de Scheduled Events code voorbeelden in de [meta gegevens van het Azure-exemplaar Scheduled Events de GitHub-opslag plaats](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm).
 - Lees meer over de Api's die beschikbaar zijn in de [instance metadata service](instance-metadata-service.md).
-- Meer informatie over [gepland onderhoud voor virtuele Linux-machines in azure](planned-maintenance.md).
+- Meer informatie over [gepland onderhoud voor virtuele Linux-machines in azure](../maintenance-and-updates.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json).

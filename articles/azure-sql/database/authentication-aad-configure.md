@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 03/27/2020
-ms.openlocfilehash: f5ef4c701cab8b9e94f89607bf643699e95ccad0
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: d8da5bb32836ff50240bf6b781227fde8839be5c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984897"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087999"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure AD-verificatie configureren en beheren met Azure SQL
 
@@ -48,7 +48,7 @@ Zie voor meer informatie over de hybride identiteiten, het instellen en synchron
 
 Een Azure AD-exemplaar maken en vullen met gebruikers en groepen. Azure AD kan het eerste door Azure AD beheerde domein zijn. Azure AD kan ook een on-premises Active Directory Domain Services zijn die federatief is voor Azure AD.
 
-Zie [Uw on-premises identiteiten integreren met Azure Active Directory](../../active-directory/hybrid/whatis-hybrid-identity.md), [Uw domeinnaam toevoegen in Azure AD](../../active-directory/fundamentals/add-custom-domain.md), [Microsoft Azure ondersteunt nu federatie met Windows Server Active Directory](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/), [Uw Azure AD-adreslijst beheren](../../active-directory/fundamentals/active-directory-whatis.md), [Azure AD beheren met Windows PowerShell](/powershell/azure/overview) en [Poorten en protocollen waarvoor hybride identiteit is vereist](../../active-directory/hybrid/reference-connect-ports.md) voor meer informatie.
+Zie [Uw on-premises identiteiten integreren met Azure Active Directory](../../active-directory/hybrid/whatis-hybrid-identity.md), [Uw domeinnaam toevoegen in Azure AD](../../active-directory/fundamentals/add-custom-domain.md), [Microsoft Azure ondersteunt nu federatie met Windows Server Active Directory](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/), [Uw Azure AD-adreslijst beheren](../../active-directory/fundamentals/active-directory-whatis.md), [Azure AD beheren met Windows PowerShell](/powershell/azure/) en [Poorten en protocollen waarvoor hybride identiteit is vereist](../../active-directory/hybrid/reference-connect-ports.md) voor meer informatie.
 
 ## <a name="associate-or-add-an-azure-subscription-to-azure-active-directory"></a>Een Azure-abonnement aan Azure Active Directory koppelen of toevoegen
 
@@ -176,7 +176,7 @@ else {
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Als u Power shell-cmdlets wilt uitvoeren, moet Azure PowerShell zijn geïnstalleerd en worden uitgevoerd. Zie [How to install and configure Azure PowerShell](/powershell/azure/overview) (Azure PowerShell installeren en configureren) voor gedetailleerde informatie.
+Als u Power shell-cmdlets wilt uitvoeren, moet Azure PowerShell zijn geïnstalleerd en worden uitgevoerd. Zie [How to install and configure Azure PowerShell](/powershell/azure/) (Azure PowerShell installeren en configureren) voor gedetailleerde informatie.
 
 > [!IMPORTANT]
 > De module Power shell Azure Resource Manager (RM) wordt nog steeds ondersteund door Azure SQL Managed instance, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. De AzureRM-module blijft oplossingen ontvangen tot ten minste december 2020.  De argumenten voor de opdrachten in de module AZ en in de AzureRm-modules zijn aanzienlijk identiek. Zie [Inleiding tot de nieuwe Azure PowerShell AZ-module](/powershell/azure/new-azureps-module-az)voor meer informatie over de compatibiliteit.
@@ -188,7 +188,7 @@ Voer de volgende Azure PowerShell opdrachten uit om een Azure AD-beheerder in te
 
 De cmdlets die worden gebruikt voor het inrichten en beheren van Azure AD-beheerder voor uw SQL Managed instance worden weer gegeven in de volgende tabel:
 
-| Naam van cmdlet | Description |
+| Naam van cmdlet | Beschrijving |
 | --- | --- |
 | [Set-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) |Richt een Azure AD-beheerder in voor het beheerde exemplaar van SQL in het huidige abonnement. (Moet afkomstig zijn van het huidige abonnement)|
 | [Remove-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlinstanceactivedirectoryadministrator) |Hiermee verwijdert u een Azure AD-beheerder voor het beheerde exemplaar van SQL in het huidige abonnement. |
@@ -212,7 +212,7 @@ Met de volgende opdracht wordt de Azure AD-beheerder voor het SQL Managed instan
 Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstanceName01" -Confirm -PassThru
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 U kunt ook een Azure AD-beheerder inrichten voor het beheerde exemplaar van SQL door de volgende CLI-opdrachten aan te roepen:
 
@@ -272,14 +272,14 @@ Als u later een beheerder wilt verwijderen, selecteert u aan de bovenkant van de
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Als u Power shell-cmdlets wilt uitvoeren, moet Azure PowerShell zijn geïnstalleerd en worden uitgevoerd. Zie [How to install and configure Azure PowerShell](/powershell/azure/overview) (Azure PowerShell installeren en configureren) voor gedetailleerde informatie. Voer de volgende Azure PowerShell opdrachten uit om een Azure AD-beheerder in te richten:
+Als u Power shell-cmdlets wilt uitvoeren, moet Azure PowerShell zijn geïnstalleerd en worden uitgevoerd. Zie [How to install and configure Azure PowerShell](/powershell/azure/) (Azure PowerShell installeren en configureren) voor gedetailleerde informatie. Voer de volgende Azure PowerShell opdrachten uit om een Azure AD-beheerder in te richten:
 
 - Connect-AzAccount
 - Select-AzSubscription
 
 Cmdlets die worden gebruikt voor het inrichten en beheren van Azure AD-beheerder voor SQL Database en Azure Synapse:
 
-| Naam van cmdlet | Description |
+| Naam van cmdlet | Beschrijving |
 | --- | --- |
 | [Set-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |Richt een Azure Active Directory beheerder in voor de server die als host fungeert voor SQL Database of Azure Synapse. (Moet afkomstig zijn van het huidige abonnement) |
 | [Remove-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |Hiermee verwijdert u een Azure Active Directory beheerder voor de server die als host fungeert voor SQL Database of Azure Synapse.|
@@ -320,7 +320,7 @@ In het volgende voor beeld wordt een Azure AD-beheerder verwijderd:
 Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -ServerName "demo_server"
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 U kunt een Azure AD-beheerder inrichten door de volgende CLI-opdrachten aan te roepen:
 

@@ -1,5 +1,5 @@
 ---
-title: Machtigingen verlenen voor beheerde identiteit in de Azure Synapse-werk ruimte
+title: Machtigingen verlenen voor beheerde identiteit in de Synapse-werk ruimte
 description: Een artikel met uitleg over het configureren van machtigingen voor beheerde identiteit in de Azure Synapse-werk ruimte.
 author: RonyMSFT
 ms.service: synapse-analytics
@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8e33bd127fca9ddce7b15d144fd287ec4a6bf0e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9cb1ddceff30b247caf3ecd9ee3bc21d5addb519
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85193461"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089444"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity-preview"></a>Machtigingen verlenen voor beheerde identiteit van werk ruimte (preview-versie)
 

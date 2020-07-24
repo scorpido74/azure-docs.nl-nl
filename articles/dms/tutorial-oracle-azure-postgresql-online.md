@@ -3,8 +3,8 @@ title: 'Zelf studie: Oracle online migreren naar Azure Database for PostgreSQL'
 titleSuffix: Azure Database Migration Service
 description: Meer informatie over het uitvoeren van een online migratie van Oracle on-premises of op virtuele machines naar Azure Database for PostgreSQL met behulp van Azure Database Migration Service.
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: arunkumarthiags
+ms.author: arthiaga
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/24/2020
-ms.openlocfilehash: 956523e2b51795a4bc97c653dab8b408b06061f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 37bf610d1ecc6a05e8dd142ff3d72dd9ed72e51f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78255570"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087761"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>Zelf studie: Oracle migreren naar Azure Database for PostgreSQL online met behulp van DMS (preview)
 
@@ -30,7 +31,7 @@ In deze zelfstudie leert u het volgende:
 > * Maak een exemplaar van de Azure Database Migration Service.
 > * Een migratie project maken met behulp van Azure Database Migration Service.
 > * De migratie uitvoeren.
-> * De migratie controleren.
+> * Houd de migratie in de gaten.
 
 > [!NOTE]
 > Als u Azure Database Migration Service voor het uitvoeren van een online migratie wilt gebruiken, moet u een instantie maken op basis van de prijs categorie Premium.
@@ -290,7 +291,7 @@ Aan de slag:
 
 6. Selecteer **Maken** om de dienst te maken.
 
-## <a name="create-a-migration-project"></a>Maak een migratieproject
+## <a name="create-a-migration-project"></a>Een migratieproject maken
 
 Nadat de service is gemaakt, zoek deze op in de Azure-portal, open hem en maak vervolgens een nieuw migratieproject.
 

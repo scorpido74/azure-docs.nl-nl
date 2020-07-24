@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: 2228a9609b0e0325dc4e6f7ccbe88417c900b688
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8773f2f17ec632bbefee6b3bdfeb66e494ad7a54
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374335"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088033"
 ---
 # <a name="azure-cosmos-db-output-binding-for-azure-functions-2x-and-higher"></a>Azure Cosmos DB uitvoer binding voor Azure Functions 2. x en hoger
 
@@ -564,7 +564,7 @@ De `CosmosDBOutput` aantekening is beschikbaar voor het schrijven van gegevens n
 
 De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `CosmosDB` kenmerk.
 
-|function.jsbij eigenschap | Kenmerk eigenschap |Description|
+|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
 |**type**     | N.v.t. | Moet worden ingesteld op `cosmosDB` .        |
 |**direction**     | N.v.t. | Moet worden ingesteld op `out` .         |
@@ -591,7 +591,7 @@ Wanneer u in uw functie naar de uitvoer parameter schrijft, wordt er standaard e
 
 | Binding | Verwijzing |
 |---|---|
-| CosmosDB | [CosmosDB-fout codes](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb) |
+| Cosmos DB | [CosmosDB-fout codes](/rest/api/cosmos-db/http-status-codes-for-cosmosdb) |
 
 <a name="host-json"></a>
 
@@ -614,7 +614,7 @@ In deze sectie worden de algemene configuratie-instellingen beschreven die besch
 }
 ```
 
-|Eigenschap  |Standaard | Description |
+|Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------|
 |GatewayMode|Gateway|De verbindings modus die wordt gebruikt door de functie bij het maken van verbinding met de Azure Cosmos DB-service. Opties zijn `Direct` en`Gateway`|
 |Protocol|Https|Het verbindings protocol dat door de functie wordt gebruikt bij het verbinden met de Azure Cosmos DB-service.  Lees [hier voor een uitleg van beide modi](../cosmos-db/performance-tips.md#networking)|

@@ -1,6 +1,6 @@
 ---
-title: Toewijzings type voor het persoonlijk bureau blad van Windows Virtual Desktop-Azure
-description: Het toewijzings type configureren voor een Windows virtueel bureau blad-hostgroep voor persoonlijk bureau blad.
+title: Windows virtueel bureau blad Personal Desktop toewijzing (najaar 2019)-Azure
+description: Meer informatie over het configureren van het toewijzings type voor een virtueel bureau blad van Windows (najaar 2019 release) persoonlijk bureau blad-hostgroep.
 services: virtual-desktop
 author: HeidiLohr
 ms.service: virtual-desktop
@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.date: 05/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6f4ee0a6ba028a6359a83f5130aca7c6f05ba08b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 036e144922fcb49c486813b8668d944dd771536e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259797"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087183"
 ---
-# <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>Het toewijzings type voor de hostgroep voor persoonlijk bureau blad configureren
+# <a name="configure-the-personal-desktop-host-pool-assignment-type-fall-2019-release"></a>Het toewijzings type voor de hostgroep voor persoonlijk bureau blad configureren (najaar 2019 release)
 
 >[!IMPORTANT]
 >Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../configure-host-pool-personal-desktop-assignment-type.md) als u Azure Resource Manager Windows Virtual Desktop-objecten wilt beheren die zijn geïntroduceerd in de update Lente 2020.

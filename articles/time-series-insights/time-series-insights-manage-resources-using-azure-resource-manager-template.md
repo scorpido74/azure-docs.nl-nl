@@ -5,31 +5,31 @@ ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 04/16/2020
+ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: a670e32058794daeaa233464ba7d054f45ef25e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb818627cb38c736804a0e88cd701fe08b23b678
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81536315"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089070"
 ---
-# <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Time Series Insights-resources maken met behulp van Azure Resource Manager sjablonen
+# <a name="create-azure-time-series-insights-gen-1-resources-using-azure-resource-manager-templates"></a>Azure Time Series Insights gen 1-resources maken met behulp van Azure Resource Manager sjablonen
 
-In dit artikel wordt beschreven hoe u Time Series Insights-resources maakt en implementeert met behulp van [Azure Resource Manager sjablonen](https://docs.microsoft.com/azure/azure-resource-manager/), Power shell en de resource provider van Time Series Insights.
+In dit artikel wordt beschreven hoe u Azure Time Series Insights-resources maakt en implementeert met behulp van [Azure Resource Manager sjablonen](https://docs.microsoft.com/azure/azure-resource-manager/), Power shell en de resource provider van Azure time series Insights.
 
-Time Series Insights ondersteunt de volgende bronnen:
+Azure Time Series Insights ondersteunt de volgende bronnen:
 
    | Resource | Beschrijving |
    | --- | --- |
-   | Omgeving | Een Time Series Insights omgeving is een logische groepering van gebeurtenissen die worden gelezen vanuit gebeurtenis-Brokers, opgeslagen en beschikbaar worden gesteld voor query's. Lees [uw Azure time series Insights-omgeving plannen](time-series-insights-environment-planning.md) voor meer informatie |
-   | Bron van gebeurtenis | Een gebeurtenis bron is een verbinding met een gebeurtenis-Broker van waaruit Time Series Insights gebeurtenissen in de omgeving leest en opneemt. De momenteel ondersteunde gebeurtenis bronnen zijn IoT Hub en Event hub. |
+   | Omgeving | Een Azure Time Series Insights omgeving is een logische groepering van gebeurtenissen die worden gelezen vanuit gebeurtenis-Brokers, opgeslagen en beschikbaar worden gesteld voor query's. Lees [uw Azure time series Insights-omgeving plannen](time-series-insights-environment-planning.md) voor meer informatie |
+   | Bron van gebeurtenis | Een gebeurtenis bron is een verbinding met een gebeurtenis-Broker van waaruit Azure Time Series Insights gebeurtenissen in de omgeving leest en opneemt. De momenteel ondersteunde gebeurtenis bronnen zijn IoT Hub en Event hub. |
    | Gegevensset voor referentie | Referentie gegevens sets bevatten meta gegevens over de gebeurtenissen in de omgeving. Meta gegevens in de referentie gegevens sets worden samengevoegd met gebeurtenissen tijdens de ingang. Referentie gegevens sets worden als resources gedefinieerd op basis van hun gebeurtenis sleutel eigenschappen. De daad werkelijke meta gegevens waaruit de referentie gegevensverzameling bestaat, worden geüpload of gewijzigd via data plan-Api's. |
-   | Toegangs beleid | Toegangs beleid verleent machtigingen voor het uitgeven van gegevens query's, het bewerken van referentie gegevens in de omgeving en het delen van opgeslagen query's en perspectieven die aan de omgeving zijn gekoppeld. Lees [granting Data Access to a time series Insights environment using Azure Portal](time-series-insights-data-access.md) voor meer informatie. |
+   | Toegangs beleid | Toegangs beleid verleent machtigingen voor het uitgeven van gegevens query's, het bewerken van referentie gegevens in de omgeving en het delen van opgeslagen query's en perspectieven die aan de omgeving zijn gekoppeld. Lees [granting Data Access to a Azure time series Insights environment using Azure Portal](time-series-insights-data-access.md) voor meer informatie. |
 
 Een resource manager-sjabloon is een JSON-bestand dat de infra structuur en configuratie van resources in een resource groep definieert. De volgende documenten beschrijven sjabloon bestanden in meer detail:
 
@@ -37,13 +37,13 @@ Een resource manager-sjabloon is een JSON-bestand dat de infra structuur en conf
 - [Resources implementeren met Resource Manager-sjablonen en Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 - [Resource typen van micro soft. TimeSeriesInsights](/azure/templates/microsoft.timeseriesinsights/allversions)
 
-De Quick Start-sjabloon [201-timeseriesinsights-met-eventhub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-timeseriesinsights-environment-with-eventhub) wordt gepubliceerd op github. Met deze sjabloon maakt u een Time Series Insights omgeving, een onderliggende gebeurtenis bron die is geconfigureerd voor het gebruik van gebeurtenissen van een event hub en toegangs beleid dat toegang verleent tot de gegevens van de omgeving. Als er geen bestaande Event hub wordt opgegeven, wordt er een gemaakt met de implementatie.
+De Quick Start-sjabloon [201-timeseriesinsights-met-eventhub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-timeseriesinsights-environment-with-eventhub) wordt gepubliceerd op github. Met deze sjabloon maakt u een Azure Time Series Insights omgeving, een onderliggende gebeurtenis bron die is geconfigureerd voor het gebruik van gebeurtenissen van een event hub en toegangs beleid dat toegang verleent tot de gegevens van de omgeving. Als er geen bestaande Event hub wordt opgegeven, wordt er een gemaakt met de implementatie.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="specify-deployment-template-and-parameters"></a>Implementatie sjabloon en-para meters opgeven
 
-In de volgende procedure wordt beschreven hoe u Power shell gebruikt om een Azure Resource Manager sjabloon te implementeren waarmee een Time Series Insights omgeving wordt gemaakt, een onderliggende gebeurtenis bron die is geconfigureerd voor het gebruik van gebeurtenissen van een event hub en toegangs beleid waarmee toegang wordt verleend tot de gegevens van de omgeving. Als er geen bestaande Event hub wordt opgegeven, wordt er een gemaakt met de implementatie.
+In de volgende procedure wordt beschreven hoe u Power shell gebruikt om een Azure Resource Manager sjabloon te implementeren waarmee een Azure Time Series Insights omgeving wordt gemaakt, een onderliggende gebeurtenis bron die is geconfigureerd voor het gebruik van gebeurtenissen van een event hub en toegangs beleid waarmee toegang wordt verleend tot de gegevens van de omgeving. Als er geen bestaande Event hub wordt opgegeven, wordt er een gemaakt met de implementatie.
 
 1. Installeer Azure PowerShell door de instructies in aan de slag te volgen [met Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
@@ -63,7 +63,7 @@ In de volgende procedure wordt beschreven hoe u Power shell gebruikt om een Azur
      | --- | --- |
      | eventHubNamespaceName | De naam ruimte van de bron Event Hub. |
      | eventHubName | De naam van de bron Event Hub. |
-     | consumerGroupName | De naam van de Consumer groep die door de Time Series Insights-service wordt gebruikt om de gegevens van de Event Hub te lezen. **Opmerking:** Om bron conflicten te voor komen, moet deze Consumer groep worden toegewezen aan de Time Series Insights-service en niet worden gedeeld met andere lezers. |
+     | consumerGroupName | De naam van de Consumer groep die door de Azure Time Series Insights-service wordt gebruikt om de gegevens van de Event Hub te lezen. **Opmerking:** Om bron conflicten te voor komen, moet deze Consumer groep worden toegewezen aan de Azure Time Series Insights-service en niet worden gedeeld met andere lezers. |
      | environmentName | De naam van de omgeving. De naam mag niet de volgende tekens bevatten: `<` ,,,,,,,, `>` `%` `&` `:` `\\` `?` `/` en alle Stuur codes. Alle andere tekens zijn toegestaan.|
      | eventSourceName | De naam van de onderliggende bron van de gebeurtenis bron. De naam mag niet de volgende tekens bevatten: `<` ,,,,,,,, `>` `%` `&` `:` `\\` `?` `/` en alle Stuur codes. Alle andere tekens zijn toegestaan. |
 
@@ -73,14 +73,14 @@ In de volgende procedure wordt beschreven hoe u Power shell gebruikt om een Azur
 
      | Parameter | Beschrijving |
      | --- | --- |
-     | existingEventHubResourceId | Een optionele Resource-ID van een bestaande Event hub die wordt verbonden met de Time Series Insights omgeving via de bron van de gebeurtenis. **Opmerking:** De gebruiker die de sjabloon implementeert, moet bevoegdheden hebben om de listkeys ophalen-bewerking uit te voeren op de Event hub. Als er geen waarde wordt door gegeven, wordt er een nieuwe Event Hub gemaakt door de sjabloon. |
+     | existingEventHubResourceId | Een optionele Resource-ID van een bestaande Event hub die wordt verbonden met de Azure Time Series Insights omgeving via de bron van de gebeurtenis. **Opmerking:** De gebruiker die de sjabloon implementeert, moet bevoegdheden hebben om de listkeys ophalen-bewerking uit te voeren op de Event hub. Als er geen waarde wordt door gegeven, wordt er een nieuwe Event Hub gemaakt door de sjabloon. |
      | environmentDisplayName | Een optionele beschrijvende naam die wordt weer gegeven in hulp middelen of gebruikers interfaces in plaats van de naam van de omgeving. |
-     | environmentSkuName | De naam van de SKU. Lees de pagina met prijzen voor [Time Series Insights](https://azure.microsoft.com/pricing/details/time-series-insights/)voor meer informatie.  |
-     | environmentSkuCapacity | De capaciteit van de eenheid van de SKU. Lees de pagina met prijzen voor [Time Series Insights](https://azure.microsoft.com/pricing/details/time-series-insights/)voor meer informatie.|
+     | environmentSkuName | De naam van de SKU. Lees de pagina met prijzen voor [Azure time series Insights](https://azure.microsoft.com/pricing/details/time-series-insights/)voor meer informatie.  |
+     | environmentSkuCapacity | De capaciteit van de eenheid van de SKU. Lees de pagina met prijzen voor [Azure time series Insights](https://azure.microsoft.com/pricing/details/time-series-insights/)voor meer informatie.|
      | environmentDataRetentionTime | De minimale time span van de activiteiten van de omgeving zijn beschikbaar voor query's. De waarde moet worden opgegeven in de ISO 8601-indeling, bijvoorbeeld `P30D` voor een Bewaar beleid van 30 dagen. |
      | eventSourceDisplayName | Een optionele beschrijvende naam die wordt weer gegeven in hulp middelen of gebruikers interfaces in plaats van de naam van de gebeurtenis bron. |
      | eventSourceTimestampPropertyName | De gebeurtenis eigenschap die wordt gebruikt als tijds tempel van de gebeurtenis bron. Als er geen waarde is opgegeven voor timestampPropertyName, of als null of lege teken reeks is opgegeven, wordt de aanmaak tijd van de gebeurtenis gebruikt. |
-     | eventSourceKeyName | De naam van de gedeelde toegangs sleutel die door de Time Series Insights-service wordt gebruikt om verbinding te maken met de Event Hub. |
+     | eventSourceKeyName | De naam van de gedeelde toegangs sleutel die door de Azure Time Series Insights-service wordt gebruikt om verbinding te maken met de Event Hub. |
      | accessPolicyReaderObjectIds | Een lijst met object-Id's van de gebruikers of toepassingen in azure AD die lezers toegang moeten hebben tot de omgeving. U kunt de objectId voor de Service-Principal verkrijgen door de cmdlets **Get-AzADUser** of **Get-AzADServicePrincipal** aan te roepen. Het maken van een toegangs beleid voor Azure AD-groepen wordt nog niet ondersteund. |
      | accessPolicyContributorObjectIds | Een lijst met object-Id's van de gebruikers of toepassingen in azure AD die Inzender toegang moeten hebben tot de omgeving. U kunt de objectId voor de Service-Principal verkrijgen door de cmdlets **Get-AzADUser** of **Get-AzADServicePrincipal** aan te roepen. Het maken van een toegangs beleid voor Azure AD-groepen wordt nog niet ondersteund. |
 
@@ -124,7 +124,7 @@ In de volgende procedure wordt beschreven hoe u Power shell gebruikt om een Azur
 ## <a name="deploy-the-quickstart-template-locally-using-powershell"></a>De Quick Start-sjabloon lokaal implementeren met Power shell
 
 > [!IMPORTANT]
-> Met de volgende opdracht regel bewerkingen wordt de [AZ Power shell-module](https://docs.microsoft.com/powershell/azure/overview)beschreven.
+> Met de volgende opdracht regel bewerkingen wordt de [AZ Power shell-module](https://docs.microsoft.com/powershell/azure/)beschreven.
 
 1. Meld u in Power shell aan bij uw Azure-account.
 
@@ -252,4 +252,4 @@ In de volgende procedure wordt beschreven hoe u Power shell gebruikt om een Azur
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Lees [Time Series Insights Management](https://docs.microsoft.com/rest/api/time-series-insights-management/)voor informatie over het programmatisch beheren van Time Series Insights-resources met behulp van rest-api's.
+- Lees [Azure time series Insights Management](https://docs.microsoft.com/rest/api/time-series-insights-management/)voor informatie over het programmatisch beheren van Azure time series Insights-resources met behulp van rest-api's.

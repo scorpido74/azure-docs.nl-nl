@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 10/25/2019
-ms.openlocfilehash: 479c5165c206ced9f387d7b4a475945173da8a16
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 6d720eee668edf2de968f0ce6955a5a586a92419
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086225"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087676"
 ---
 # <a name="custom-roles-for-sql-server-to-azure-sql-managed-instance-online-migrations"></a>Aangepaste rollen voor SQL Server naar online migraties van Azure SQL Managed instance
 
@@ -83,7 +83,7 @@ Het is momenteel raadzaam om mini maal twee aangepaste rollen te maken voor de A
 
 De bovenstaande JSON moet worden opgeslagen in drie tekst bestanden en u kunt de AzureRM, AZ Power shell-cmdlets of Azure CLI gebruiken om de rollen te maken met behulp van **New-azurermroledefinition wordt (AzureRM)** of **New-AzRoleDefinition (AZ)**.
 
-Zie het artikel [aangepaste rollen voor Azure-resources](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)voor meer informatie.
+Zie het artikel [aangepaste Azure-rollen](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)voor meer informatie.
 
 Nadat u deze aangepaste rollen hebt gemaakt, moet u roltoewijzingen toevoegen aan gebruikers en APP-ID ('s) aan de juiste resources of resource groepen:
 

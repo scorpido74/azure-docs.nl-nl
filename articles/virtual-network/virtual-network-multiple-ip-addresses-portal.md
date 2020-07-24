@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: allensu
-ms.openlocfilehash: 6118763bf76795e30e862826f8f5b847f3382a5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9cec3e3ad4934ce368baa44984d252dc981d5d81
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84687970"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088203"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Meerdere IP-adressen toewijzen aan virtuele machines met behulp van de Azure Portal
 
@@ -29,7 +30,7 @@ ms.locfileid: "84687970"
 
 ## <a name="create-a-vm-with-multiple-ip-addresses"></a><a name = "create"></a>Een virtuele machine met meerdere IP-adressen maken
 
-Als u een virtuele machine met meerdere IP-adressen of een statisch privé-IP-adres wilt maken, moet u deze maken met behulp van Power shell of de Azure CLI. Als u wilt weten hoe, klikt u op de Power shell-of CLI-opties boven aan dit artikel. U kunt een virtuele machine maken met één dynamisch privé-IP-adres en (optioneel) één openbaar IP-adres. Gebruik de portal door de stappen in de [een Windows-VM maken](../virtual-machines/virtual-machines-windows-hero-tutorial.md) of [een Linux VM](../virtual-machines/linux/quick-create-portal.md) -artikel maken te volgen. Nadat u de virtuele machine hebt gemaakt, kunt u het IP-adres type van dynamisch naar statisch wijzigen en extra IP-adressen toevoegen met behulp van de portal door de stappen in de sectie [IP-adressen toevoegen aan een VM](#add) in dit artikel te volgen.
+Als u een virtuele machine met meerdere IP-adressen of een statisch privé-IP-adres wilt maken, moet u deze maken met behulp van Power shell of de Azure CLI. Als u wilt weten hoe, klikt u op de Power shell-of CLI-opties boven aan dit artikel. U kunt een virtuele machine maken met één dynamisch privé-IP-adres en (optioneel) één openbaar IP-adres. Gebruik de portal door de stappen in de [een Windows-VM maken](../virtual-machines/windows/quick-create-portal.md) of [een Linux VM](../virtual-machines/linux/quick-create-portal.md) -artikel maken te volgen. Nadat u de virtuele machine hebt gemaakt, kunt u het IP-adres type van dynamisch naar statisch wijzigen en extra IP-adressen toevoegen met behulp van de portal door de stappen in de sectie [IP-adressen toevoegen aan een VM](#add) in dit artikel te volgen.
 
 ## <a name="add-ip-addresses-to-a-vm"></a><a name="add"></a>IP-adressen toevoegen aan een VM
 

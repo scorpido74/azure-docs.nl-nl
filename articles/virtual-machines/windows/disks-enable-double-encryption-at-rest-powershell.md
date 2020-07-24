@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 0f386e4ba4a1835b88b753574bde23e93f7f8d17
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 5e70d434fcb297ff39b32a83b89a86e85fe9564f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86235894"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088441"
 ---
 # <a name="azure-powershell---enable-double-encryption-at-rest-on-your-managed-disks"></a>Azure PowerShell-dubbele versleuteling inschakelen op de rest van uw beheerde schijven
 
@@ -25,7 +25,7 @@ Azure Disk Storage ondersteunt dubbele versleuteling in rust voor beheerde schij
 
 ## <a name="prerequisites"></a>Vereisten
 
-Installeer de meest recente [versie van Azure PowerShell](/powershell/azure/install-az-ps)en meld u aan bij een Azure-account met [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-4.3.0).
+Installeer de meest recente [versie van Azure PowerShell](/powershell/azure/install-az-ps)en meld u aan bij een Azure-account met [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-4.3.0).
 
 ## <a name="getting-started"></a>Aan de slag
 
@@ -35,7 +35,7 @@ Installeer de meest recente [versie van Azure PowerShell](/powershell/azure/inst
     
     ```powershell
     $ResourceGroupName="yourResourceGroupName"
-    $LocationName="westcentralus"
+    $LocationName="westus2"
     $keyVaultName="yourKeyVaultName"
     $keyName="yourKeyName"
     $keyDestination="Software"
@@ -49,13 +49,13 @@ Installeer de meest recente [versie van Azure PowerShell](/powershell/azure/inst
 1.  Maak een DiskEncryptionSet met encryptionType ingesteld als EncryptionAtRestWithPlatformAndCustomerKeys. Gebruik API-versie **2020-05-01** in de sjabloon Azure Resource Manager (arm). 
     
     ```powershell
-    New-AzResourceGroupDeployment -ResourceGroupName CMKTesting `
+    New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName `
     -TemplateUri "https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/DoubleEncryption/CreateDiskEncryptionSetForDoubleEncryption.json" `
-    -diskEncryptionSetName "yourDESForDoubleEncryption" `
-    -keyVaultId "subscriptions/dd80b94e-0463-4a65-8d04-c94f403879dc/resourceGroups/yourResourceGroupName/providers/Microsoft.KeyVault/vaults/yourKeyVaultName" `
-    -keyVaultKeyUrl "https://yourKeyVaultName.vault.azure.net/keys/yourKeyName/403445136dee4a57af7068cab08f7d42" `
+    -diskEncryptionSetName $diskEncryptionSetName `
+    -keyVaultId $keyVault.ResourceId `
+    -keyVaultKeyUrl $key.Key.Kid `
     -encryptionType "EncryptionAtRestWithPlatformAndCustomerKeys" `
-    -region "CentralUSEUAP"
+    -region $LocationName
     ```
 
 1. Verleen de DiskEncryptionSet-resource toegang tot de sleutel kluis.
@@ -64,6 +64,7 @@ Installeer de meest recente [versie van Azure PowerShell](/powershell/azure/inst
     > Het kan enkele minuten duren voordat Azure de identiteit van uw DiskEncryptionSet in uw Azure Active Directory heeft gemaakt. Als er een fout optreedt, zoals ' kan het Active Directory-object niet vinden ' tijdens het uitvoeren van de volgende opdracht, wacht u enkele minuten en probeert u het opnieuw.
 
     ```powershell  
+    $des=Get-AzDiskEncryptionSet -name $diskEncryptionSetName -ResourceGroupName $ResourceGroupName
     Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ObjectId $des.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
     ```
 
@@ -71,5 +72,5 @@ Installeer de meest recente [versie van Azure PowerShell](/powershell/azure/inst
 
 Nu u deze resources hebt gemaakt en geconfigureerd, kunt u deze gebruiken om uw beheerde schijven te beveiligen. De volgende koppelingen bevatten voorbeeld scripts, elk met een eigen scenario, dat u kunt gebruiken om uw beheerde schijven te beveiligen.
 
-[Azure PowerShell-door de klant beheerde sleutels inschakelen met versleuteling aan server zijde-beheerde schijven](disks-enable-customer-managed-keys-powershell.md) 
- Voor [beelden van Azure Resource Manager sjablonen](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/tree/master/DoubleEncryption)
+- [Azure PowerShell-door de klant beheerde sleutels inschakelen met versleuteling aan server zijde-beheerde schijven](disks-enable-customer-managed-keys-powershell.md)
+- [Azure Resource Manager-voorbeeldsjablonen](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/tree/master/DoubleEncryption)

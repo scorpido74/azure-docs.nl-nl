@@ -4,10 +4,11 @@ description: Meer informatie over failover en fouten in Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 12/24/2019
 ms.openlocfilehash: d9b54f3c452212e12419a5ffd67b116c8660308d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79281806"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089529"
 ---
 # <a name="about-on-premises-disaster-recovery-failoverfailback"></a>Over on-premises nood herstel failover/failback
 
@@ -62,14 +63,14 @@ Site Recovery biedt verschillende opties voor failover.
 
 ## <a name="failover-processing"></a>Failover-verwerking
 
-In sommige gevallen vereist failover extra verwerking die ongeveer 8 tot 10 minuten duurt. U kunt langere failover-tijden voor het testen waarnemen:
+In sommige scenario's vereist de failover extra verwerking die circa acht tot tien minuten duurt. Er kunnen langere failover-tijden voor het testen nodig zijn:
 
-* VMware-Vm's met een Mobility Service-versie ouder dan 9,8.
+* VMware-VM's met een versie van Mobility-service ouder dan 9.8.
 * Fysieke servers.
-* Virtuele VMware Linux-machines.
-* Virtuele Hyper-V-machines die worden beveiligd als fysieke servers.
-* VMware-Vm's waarop de DHCP-service niet is ingeschakeld.
-* VMware-Vm's die niet de volgende opstart Stuur Programma's hebben: storvsc, vmbus, storflt, Intelide, ATAPI.
+* VMware Linux-VMs.
+* Hyper-V-VM's die worden beveiligd als fysieke servers.
+* VMware-VM's waarvoor de DHCP-service niet is ingeschakeld.
+* VMware-VM's die niet over de volgende opstartstuurprogramma's beschikken: storvsc, vmbus, storflt, intelide, atapi.
 
 ## <a name="recovery-point-options"></a>Opties voor herstel punten
 

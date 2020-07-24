@@ -8,11 +8,12 @@ ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
 ms.custom: storage accounts
-ms.openlocfilehash: 7ec9b670f8b2eb1731511deb1d01cfc7db55054f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dcc7c69809ae623606bd091821c5f2fc661f6c8b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81758567"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088747"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Een virtuele Linux-machine uploaden en maken op basis van een aangepaste schijf met de Azure CLI
 
@@ -78,10 +79,10 @@ Als u de volgende stappen wilt uitvoeren, moet u:
 
 * **Linux-besturings systeem geïnstalleerd in een VHD-bestand** : Installeer een door [Azure goedgekeurde Linux-distributie](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (of Zie [informatie over niet-goedgekeurde distributies](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)) naar een virtuele schijf in de VHD-indeling. Er zijn meerdere hulpprogram ma's voor het maken van een virtuele machine en VHD:
   * Installeer en configureer [qemu](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) of [KVM](https://www.linux-kvm.org/page/RunningKVM), waarbij u gebruik maakt van VHD als uw installatie kopie-indeling. Als dat nodig is, kunt u [een installatie kopie converteren](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) met behulp van `qemu-img convert` .
-  * U kunt ook Hyper-V gebruiken [in Windows 10](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install) of [op Windows Server 2012/2012 R2](https://technet.microsoft.com/library/hh846766.aspx).
+  * U kunt ook Hyper-V gebruiken [in Windows 10](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) of [op Windows Server 2012/2012 R2](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11)).
 
 > [!NOTE]
-> De nieuwere VHDX-indeling wordt niet ondersteund in Azure. Wanneer u een virtuele machine maakt, geeft u VHD op als de indeling. Indien nodig kunt u VHDX-schijven converteren naar VHD met [`qemu-img convert`](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) of de [`Convert-VHD`](https://technet.microsoft.com/library/hh848454.aspx) Power shell-cmdlet. Verder biedt Azure geen ondersteuning voor het uploaden van dynamische Vhd's. Daarom moet u dergelijke schijven converteren naar statische Vhd's voordat u deze uploadt. U kunt hulpprogram ma's zoals [Azure VHD Utilities voor Go](https://github.com/Microsoft/azure-vhd-utils-for-go) gebruiken om dynamische schijven te converteren tijdens het uploaden naar Azure.
+> De nieuwere VHDX-indeling wordt niet ondersteund in Azure. Wanneer u een virtuele machine maakt, geeft u VHD op als de indeling. Indien nodig kunt u VHDX-schijven converteren naar VHD met [`qemu-img convert`](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) of de [`Convert-VHD`](/powershell/module/hyper-v/convert-vhd?view=win10-ps) Power shell-cmdlet. Verder biedt Azure geen ondersteuning voor het uploaden van dynamische Vhd's. Daarom moet u dergelijke schijven converteren naar statische Vhd's voordat u deze uploadt. U kunt hulpprogram ma's zoals [Azure VHD Utilities voor Go](https://github.com/Microsoft/azure-vhd-utils-for-go) gebruiken om dynamische schijven te converteren tijdens het uploaden naar Azure.
 > 
 > 
 
@@ -98,7 +99,7 @@ Vervang in de volgende voor beelden voorbeeld parameter namen door uw eigen waar
 ## <a name="prepare-the-disk-to-be-uploaded"></a>De schijf voorbereiden om te worden geüpload
 Azure ondersteunt diverse Linux-distributies (Zie [goedgekeurde distributies](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)). De volgende artikelen begeleiden u bij het voorbereiden van de verschillende Linux-distributies die worden ondersteund in Azure:
 
-* **[Distributies op basis van CentOS](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[CentOS-distributies](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Debian Linux](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Oracle Linux](oracle-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
@@ -156,7 +157,7 @@ info:    storage account keys list command OK
 
 Noteer `key1` Wanneer u deze gebruikt om te communiceren met uw opslag account in de volgende stappen.
 
-## <a name="create-a-storage-container"></a>Een opslag container maken
+## <a name="create-a-storage-container"></a>Een opslagcontainer maken
 Op dezelfde manier als u verschillende directory's maakt om uw lokale bestands systeem logisch te organiseren, maakt u containers in een opslag account om uw schijven te organiseren. Een opslag account kan een wille keurig aantal containers bevatten. Maak een container met [AZ storage container Create](/cli/azure/storage/container).
 
 In het volgende voor beeld wordt een container gemaakt met de naam `mydisks` :
@@ -236,4 +237,3 @@ az group deployment create --resource-group myNewResourceGroup \
 
 ## <a name="next-steps"></a>Volgende stappen
 Nadat u uw aangepaste virtuele schijf hebt voor bereid en geüpload, kunt u meer lezen over het [gebruik van Resource Manager en sjablonen](../../azure-resource-manager/management/overview.md). Het is ook mogelijk dat u [een gegevens schijf wilt toevoegen](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) aan de nieuwe virtuele machines. Als u toepassingen hebt die worden uitgevoerd op uw Vm's die u wilt openen, moet u [poorten en eind punten openen](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-

@@ -5,15 +5,16 @@ ms.topic: reference
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/06/2020
-ms.openlocfilehash: 21e98ee9dc59e7520fb715f1146e492b9198f883
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba7830cc1c0a3e6a563b4343b37ec07f7d508af4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82891596"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087982"
 ---
 # <a name="dependency-auto-collection"></a>Afhankelijkheden automatisch verzamelen
 
-Hieronder ziet u de momenteel ondersteunde lijst met afhankelijkheids aanroepen die automatisch worden gedetecteerd als afhankelijkheden, zonder dat er extra wijzigingen hoeven te worden aangebracht in de code van uw toepassing. Deze afhankelijkheden worden gevisualiseerd in de weer gaven Application Insights [toepassings kaart](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) en [transactie diagnose](https://docs.microsoft.com/azure/application-insights/app-insights-transaction-diagnostics) . Als uw afhankelijkheid niet in de onderstaande lijst staat, kunt u deze nog steeds hand matig bijhouden met behulp van een [afhankelijkheids oproep](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency)voor een track.
+Hieronder ziet u de momenteel ondersteunde lijst met afhankelijkheids aanroepen die automatisch worden gedetecteerd als afhankelijkheden, zonder dat er extra wijzigingen hoeven te worden aangebracht in de code van uw toepassing. Deze afhankelijkheden worden gevisualiseerd in de weer gaven Application Insights [toepassings kaart](./app-map.md) en [transactie diagnose](./transaction-diagnostics.md) . Als uw afhankelijkheid niet in de onderstaande lijst staat, kunt u deze nog steeds hand matig bijhouden met behulp van een [afhankelijkheids oproep](./api-custom-events-metrics.md#trackdependency)voor een track.
 
 ## <a name="net"></a>.NET
 
@@ -43,7 +44,7 @@ Hieronder ziet u de momenteel ondersteunde lijst met afhankelijkheids aanroepen 
 | [JBoss EAP](https://developers.redhat.com/products/eap/download/) | 6, 7 |
 | [Jetty](https://www.eclipse.org/jetty/) | 9 |
 | <b>App-Frameworks</b> |  |
-| [Spring](https://spring.io/) | 3.0 |
+| [Spring](https://spring.io/) | 3,0 |
 | [Spring Boot](https://spring.io/projects/spring-boot) | 1.5.9 +<sup>*</sup> |
 | Java-servlet | 3.1 + |
 | <b>Communicatie bibliotheken</b> |  |
@@ -61,7 +62,7 @@ Hieronder ziet u de momenteel ondersteunde lijst met afhankelijkheids aanroepen 
 
 > [!NOTE]
 > * Behalve ondersteuning voor reactieve Program ma's.
-> <br>† Vereist de installatie van de [JVM-agent](https://docs.microsoft.com/azure/application-insights/app-insights-java-agent#install-the-application-insights-agent-for-java).
+> <br>† Vereist de installatie van de [JVM-agent](./java-agent.md#install-the-application-insights-agent-for-java).
 
 ## <a name="nodejs"></a>Node.js
 
@@ -79,7 +80,7 @@ Hieronder ziet u de momenteel ondersteunde lijst met afhankelijkheids aanroepen 
 | [Bunyan](https://www.npmjs.com/package/bunyan) | 1.x |
 | [Winston](https://www.npmjs.com/package/winston) | 2. x-3. x |
 
-## <a name="javascript"></a>Javascript
+## <a name="javascript"></a>JavaScript
 
 | Communicatie bibliotheken | Versies |
 | ------------------------|----------|

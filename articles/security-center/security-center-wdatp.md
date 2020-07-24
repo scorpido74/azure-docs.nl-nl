@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: memildin
-ms.openlocfilehash: d394f0bb72f353e65c48a564fa7187364eae8121
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: f8ed7dc2caf3ad471ea7d4bb2fc8213114aad109
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970804"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089699"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Micro soft Defender Advanced Threat Protection met Azure Security Center
 
@@ -59,8 +59,9 @@ Na de configuratie kunt u de locatie waar uw gegevens worden opgeslagen, niet me
 
 Als u servers wilt Security Center, klikt u op **Ga naar Azure Security Center voor** onboarding-servers van de micro soft Defender ATP server-onboarding.
 
-1. Selecteer of maak **in het** voorbereidings gebied een werk ruimte waarin u de gegevens wilt opslaan. <br>
-2. Als u niet al uw werk ruimten kunt zien, kan dit worden veroorzaakt door een gebrek aan machtigingen. Controleer of uw werk ruimte is ingesteld op de laag van Azure-beveiliging. Zie voor meer informatie [upgraden naar de Standard-laag van Security Center voor verbeterde beveiliging](security-center-pricing.md).
+1. Selecteer of maak **in het** voorbereidings gebied een werk ruimte waarin u de gegevens wilt opslaan.
+
+2. Als u niet alle werk ruimten kunt zien, kan dit worden veroorzaakt door een gebrek aan machtigingen. Zorg ervoor dat uw werk ruimte is ingesteld op de prijs categorie Azure-beveiligings Standard. Zie voor meer informatie [upgraden naar de Standard-laag van Security Center voor verbeterde beveiliging](security-center-pricing.md).
     
 3. Selecteer **servers toevoegen** om instructies te bekijken over het installeren van de log Analytics-agent. 
 

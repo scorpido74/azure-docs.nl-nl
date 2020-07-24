@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1a0bac96c3daa0d81786b1a3facf6ccd328cd579
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: dce46fd5de4eb4584af32c24738ebbdc2282ef83
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076756"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088475"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Voorbeeldscripts voor Azure Disk Encryption 
 
@@ -43,13 +43,13 @@ In de volgende tabel ziet u welke para meters kunnen worden gebruikt in het Powe
 
 |Parameter|Beschrijving|Ingevuld?|
 |------|------|------|
-|$resourceGroupName| De naam van de resource groep waartoe de sleutel kluis behoort.  Er wordt een nieuwe resource groep met deze naam gemaakt als er nog geen bestaat.| True|
-|$keyVaultName|De naam van de kluis waarin de versleutelings sleutels moeten worden geplaatst. Er wordt een nieuwe kluis met deze naam gemaakt als er nog geen bestaat.| True|
-|$location|Locatie van de sleutel kluis. Zorg ervoor dat de sleutel kluis en de virtuele machines die moeten worden gecodeerd, zich op dezelfde locatie bevinden. Haal een locatielijst op met `Get-AzLocation`.|True|
-|$subscriptionId|De id van het Azure-abonnement dat moet worden gebruikt.  U kunt uw abonnements-ID ophalen met `Get-AzSubscription`.|True|
-|$aadAppName|De naam van de Azure AD-toepassing die wordt gebruikt om geheimen te schrijven naar de sleutel kluis. Als er nog geen toepassing met deze naam bestaat, wordt deze aangemaakt. Als deze app al bestaat, geeft u de para meter aadClientSecret door aan het script.|False|
-|$aadClientSecret|Client geheim van de Azure AD-toepassing die eerder is gemaakt.|False|
-|$keyEncryptionKeyName|Naam van optionele coderings sleutel in de sleutel kluis. Er wordt een nieuwe sleutel met deze naam gemaakt als deze nog niet bestaat.|False|
+|$resourceGroupName| De naam van de resource groep waartoe de sleutel kluis behoort.  Er wordt een nieuwe resource groep met deze naam gemaakt als er nog geen bestaat.| Waar|
+|$keyVaultName|De naam van de kluis waarin de versleutelings sleutels moeten worden geplaatst. Er wordt een nieuwe kluis met deze naam gemaakt als er nog geen bestaat.| Waar|
+|$location|Locatie van de sleutel kluis. Zorg ervoor dat de sleutel kluis en de virtuele machines die moeten worden gecodeerd, zich op dezelfde locatie bevinden. Haal een locatielijst op met `Get-AzLocation`.|Waar|
+|$subscriptionId|De id van het Azure-abonnement dat moet worden gebruikt.  U kunt uw abonnements-ID ophalen met `Get-AzSubscription`.|Waar|
+|$aadAppName|De naam van de Azure AD-toepassing die wordt gebruikt om geheimen te schrijven naar de sleutel kluis. Als er nog geen toepassing met deze naam bestaat, wordt deze aangemaakt. Als deze app al bestaat, geeft u de para meter aadClientSecret door aan het script.|Niet waar|
+|$aadClientSecret|Client geheim van de Azure AD-toepassing die eerder is gemaakt.|Niet waar|
+|$keyEncryptionKeyName|Naam van optionele coderings sleutel in de sleutel kluis. Er wordt een nieuwe sleutel met deze naam gemaakt als deze nog niet bestaat.|Niet waar|
 
 ## <a name="resource-manager-templates"></a>Resource Manager-sjablonen
 
@@ -87,14 +87,14 @@ ServerManagerCmd -install BitLockers
 ```
 
 ### <a name="prepare-the-os-volume-for-bitlocker-by-using-bdehdcfg"></a>Het volume van het besturings systeem voorbereiden voor BitLocker met behulp van`bdehdcfg`
-Als u de besturingssysteem partitie wilt comprimeren en de machine wilt voorbereiden voor BitLocker, voert u de [bdehdcfg](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-basic-deployment) indien nodig uit:
+Als u de besturingssysteem partitie wilt comprimeren en de machine wilt voorbereiden voor BitLocker, voert u de [bdehdcfg](/windows/security/information-protection/bitlocker/bitlocker-basic-deployment) indien nodig uit:
 
 ```console
 bdehdcfg -target c: shrink -quiet 
 ```
 
 ### <a name="protect-the-os-volume-by-using-bitlocker"></a>Het volume van het besturings systeem beveiligen met BitLocker
-Gebruik de [`manage-bde`](https://technet.microsoft.com/library/ff829849.aspx) opdracht om versleuteling op het opstart volume in te scha kelen met behulp van een externe-sleutel beveiliging. Plaats ook de externe sleutel (. bek-bestand) op het externe station of volume. Versleuteling wordt ingeschakeld op het systeem-of opstart volume nadat de computer opnieuw is opgestart.
+Gebruik de [`manage-bde`](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/ff829849(v=ws.11)) opdracht om versleuteling op het opstart volume in te scha kelen met behulp van een externe-sleutel beveiliging. Plaats ook de externe sleutel (. bek-bestand) op het externe station of volume. Versleuteling wordt ingeschakeld op het systeem-of opstart volume nadat de computer opnieuw is opgestart.
 
 ```console
 manage-bde -on %systemdrive% -sk [ExternalDriveOrVolume]
@@ -150,7 +150,7 @@ Als u het geheim in uw sleutel kluis wilt instellen, gebruikt u [set-AzKeyVaultS
 Gebruik de `$secretUrl` in de volgende stap voor [het koppelen van de besturingssysteem schijf zonder gebruik te maken van KEK](#without-using-a-kek).
 
 ### <a name="disk-encryption-secret-encrypted-with-a-kek"></a>Het geheim voor schijf versleuteling is versleuteld met een KEK
-Voordat u het geheim uploadt naar de sleutel kluis, kunt u dit eventueel versleutelen met behulp van een sleutel versleutelings sleutel. Gebruik de omloop- [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) om het geheim eerst te versleutelen met behulp van de coderings sleutel sleutel. De uitvoer van deze terugloop bewerking is een met base64 gecodeerde URL-teken reeks, die u vervolgens als geheim kunt uploaden met behulp van de- [`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) cmdlet.
+Voordat u het geheim uploadt naar de sleutel kluis, kunt u dit eventueel versleutelen met behulp van een sleutel versleutelings sleutel. Gebruik de omloop- [API](/rest/api/keyvault/wrapkey) om het geheim eerst te versleutelen met behulp van de coderings sleutel sleutel. De uitvoer van deze terugloop bewerking is een met base64 gecodeerde URL-teken reeks, die u vervolgens als geheim kunt uploaden met behulp van de- [`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) cmdlet.
 
 ```powershell
     # This is the passphrase that was provided for encryption during the distribution installation

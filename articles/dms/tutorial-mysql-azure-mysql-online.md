@@ -3,8 +3,8 @@ title: 'Zelf studie: MySQL online migreren naar Azure Database for MySQL'
 titleSuffix: Azure Database Migration Service
 description: Meer informatie over het uitvoeren van een online migratie van MySQL on-premises naar Azure Database for MySQL met behulp van Azure Database Migration Service.
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: arunkumarthiags
+ms.author: arthiaga
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: e9fc2913a526e01ea5279c476e3deab779db88c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2ea351fb6b88a020a466849181fed0381baa7f04
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84609230"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087744"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>Zelfstudie: MySQL online migreren naar Azure Database for MySQL met behulp van DMS
 
@@ -29,7 +30,7 @@ In deze zelfstudie leert u het volgende:
 > * Maak een exemplaar van de Azure Database Migration Service.
 > * Een migratie project maken met behulp van Azure Database Migration Service.
 > * De migratie uitvoeren.
-> * De migratie controleren.
+> * Houd de migratie in de gaten.
 
 > [!NOTE]
 > Als u Azure Database Migration Service voor het uitvoeren van een online migratie wilt gebruiken, moet u een instantie maken op basis van de prijs categorie Premium.
@@ -139,6 +140,11 @@ SET group_concat_max_len = 8192;
 
 Voer het script voor verwijdering van refererende sleutels (de tweede kolom) in het queryresultaat uit om de refererende sleutel te verwijderen.
 
+> [!NOTE]
+> Azure DMS biedt geen ondersteuning voor de referentiële actie CASCADE, waarmee u een overeenkomende rij in de onderliggende tabel automatisch kunt verwijderen of bijwerken wanneer een rij wordt verwijderd of bijgewerkt in de bovenliggende tabel. Zie de sectie Referentiële acties in de [beperkingen van refererende sleutels](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html)van een artikel voor meer informatie.
+> Voor Azure DMS moet u beperkingen voor refererende sleutels in de doel database server weghalen tijdens het laden van gegevens en kunt u geen referentiële acties gebruiken. Als uw werk belasting afhankelijk is van het bijwerken van een gerelateerde onderliggende tabel via deze referentiële actie, raden we u aan om in plaats daarvan een [dump en herstel](https://docs.microsoft.com/azure/mysql/concepts-migrate-dump-restore) uit te voeren. 
+
+
 > [!IMPORTANT]
 > Als u gegevens importeert met behulp van een back-up, verwijdert u de opdrachten voor het maken van de opdracht hand matig of met behulp van de---overs laan voor het uitvoeren van een mysqldump. Voor het definiëren van de definitie moeten super bevoegdheden worden gemaakt en deze worden beperkt in Azure Database for MySQL.
 
@@ -190,7 +196,7 @@ SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGG
 
 6. Selecteer **Maken** om de dienst te maken.
 
-## <a name="create-a-migration-project"></a>Maak een migratieproject
+## <a name="create-a-migration-project"></a>Een migratieproject maken
 
 Nadat de service is gemaakt, zoek deze op in de Azure-portal, open hem en maak vervolgens een nieuw migratieproject.
 

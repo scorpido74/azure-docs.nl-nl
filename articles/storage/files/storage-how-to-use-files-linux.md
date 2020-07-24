@@ -7,19 +7,19 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 8f668844951a2416b25d1649721fc005a0d70b75
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0270cebec21ca10327a86ea5efebef9a52455930
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509843"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089342"
 ---
 # <a name="use-azure-files-with-linux"></a>Azure Files gebruiken met Linux
 [Azure Files ](storage-files-introduction.md) is het eenvoudig te gebruiken cloudbestandssysteem van Microsoft. Azure-bestands shares kunnen worden gekoppeld in Linux-distributies met behulp van de [SMB-kernel-client](https://wiki.samba.org/index.php/LinuxCIFS). In dit artikel ziet u twee manieren om een Azure-bestands share te koppelen: op aanvraag met de `mount` opdracht en aan-opstarten door een item in te maken `/etc/fstab` .
 
 De aanbevolen manier om een Azure-bestands share te koppelen aan Linux maakt gebruik van SMB 3,0. Azure Files moet standaard versleuteling in transit hebben. dit wordt alleen ondersteund door SMB 3,0. Azure Files biedt ook ondersteuning voor SMB 2,1, dat geen ondersteuning biedt voor versleuteling tijdens de overdracht, maar u mag geen Azure-bestands shares met SMB 2,1 vanuit een andere Azure-regio of on-premises koppelen om veiligheids redenen. Tenzij uw toepassing specifiek SMB 2,1 vereist, is er weinig reden om deze te gebruiken sinds de populairste, recent uitgebrachte Linux-distributies SMB 3,0:  
 
-| | SMB 2.1 <br>(Koppelt op Vm's binnen dezelfde Azure-regio) | SMB 3.0 <br>(Koppelt van on-premises en kruis regio's) |
+| Linux-distributie | SMB 2.1 <br>(Koppelt op Vm's binnen dezelfde Azure-regio) | SMB 3.0 <br>(Koppelt van on-premises en kruis regio's) |
 | --- | :---: | :---: |
 | Ubuntu | 14.04 + | 16.04 + |
 | Red Hat Enterprise Linux (RHEL) | 7 + | 7.5 + |
@@ -323,6 +323,6 @@ cat /sys/module/cifs/parameters/disable_legacy_dialects
 ## <a name="next-steps"></a>Volgende stappen
 Raadpleeg de volgende koppelingen voor meer informatie over Azure Files:
 
-* [Implementatie van Azure Files plannen](storage-files-planning.md)
+* [Een Azure Files-implementatie plannen](storage-files-planning.md)
 * [Veelgestelde vragen](../storage-files-faq.md)
 * [Problemen oplossen](storage-troubleshoot-linux-file-connection-problems.md)

@@ -1,5 +1,5 @@
 ---
-title: Een machine learning-app bouwen met Apache Spark MLlib en Azure Synapse Analytics
+title: Een machine learning-app bouwen met Apache Spark MLlib
 description: Meer informatie over het gebruik van Apache Spark MLlib voor het maken van een machine learning-app die een gegevensset analyseert met behulp van logistiek regressie.
 services: synapse-analytics
 author: euangMS
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: fd3637eed35fa4b9f40623612be9fc99703051e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8cd189bf4037d42348d9a94c47cf0122e63af58f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85368172"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089291"
 ---
 # <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Een machine learning-app bouwen met Apache Spark MLlib en Azure Synapse Analytics
 

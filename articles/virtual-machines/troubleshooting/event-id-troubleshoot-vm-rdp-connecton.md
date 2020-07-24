@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: d569bf454a62272a5c60cc92abc0f24715218894
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 507cd6cfe9f251dbc304b579d634ff986b001264
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958392"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088594"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>Problemen met Azure VM RDP-verbinding oplossen op basis van gebeurtenis-id 
 
@@ -273,8 +274,8 @@ Aanmelden bij de data base is mislukt.
 **Beschrijving:** De beschrijving voor gebeurtenis-ID 1296 van de bron micro soft-Windows-TerminalServices-SessionBroker-client is niet gevonden. Het onderdeel dat deze gebeurtenis activeert, is niet geïnstalleerd op de lokale computer of de installatie is beschadigd. U kunt het onderdeel op de lokale computer installeren of herstellen.
 Als de gebeurtenis afkomstig is van een andere computer, moest de weer gave-informatie worden opgeslagen met de gebeurtenis.
 De volgende informatie is opgenomen in de gebeurtenis:  <br />
-*SMS* <br />
-*SMS* <br />
+*tekst* <br />
+*tekst* <br />
 Extern bureaublad Connection Broker is niet gereed voor RPC-communicatie.
 
 ### <a name="cause"></a>Oorzaak
@@ -289,13 +290,12 @@ Om dit probleem op te lossen, moet de Extern bureaublad Connection Broker-rol en
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Schannel-gebeurtenissen](https://technet.microsoft.com/library/dn786445(v=ws.11).aspx)
+[Schannel-gebeurtenissen](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn786445(v=ws.11))
 
-[Technisch overzicht van Schannel-SSP](https://technet.microsoft.com/library/dn786429(v=ws.11).aspx)
+[Technisch overzicht van Schannel-SSP](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn786429(v=ws.11))
 
-[RDP mislukt met gebeurtenis-ID 1058 & gebeurtenis 36870 met Extern bureaublad Session Host-certificaat & SSL-communicatie](https://blogs.technet.microsoft.com/askperf/2014/10/22/rdp-fails-with-event-id-1058-event-36870-with-remote-desktop-session-host-certificate-ssl-communication/)
+[RDP mislukt met gebeurtenis-ID 1058 & gebeurtenis 36870 met Extern bureaublad Session Host-certificaat & SSL-communicatie](https://techcommunity.microsoft.com/t5/ask-the-performance-team/bg-p/AskPerf)
 
-[Schannel 36872 of Schannel 36870 op een domein controller](https://blogs.technet.microsoft.com/instan/2009/01/05/schannel-36872-or-schannel-36870-on-a-domain-controller/)
+[Schannel 36872 of Schannel 36870 op een domein controller](/archive/blogs/instan/schannel-36872-or-schannel-36870-on-a-domain-controller)
 
-[Gebeurtenis-ID 1058 — Extern bureaublad-services verificatie en versleuteling](https://technet.microsoft.com/library/ee890862(v=ws.10).aspx)
-
+[Gebeurtenis-ID 1058 — Extern bureaublad-services verificatie en versleuteling](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee890862(v=ws.10))

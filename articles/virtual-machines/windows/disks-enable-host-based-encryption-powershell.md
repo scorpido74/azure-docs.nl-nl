@@ -8,12 +8,12 @@ ms.date: 07/10/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: a13c17b2fcd6a42947b2f7d97f087735a5b18204
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 6cb6235c5c1a34cb3f48d315adee565591bb72c4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86235901"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088458"
 ---
 # <a name="enable-end-to-end-encryption-using-encryption-at-host---azure-powershell"></a>End-to-end-versleuteling inschakelen met behulp van versleuteling op host-Azure PowerShell
 
@@ -86,7 +86,7 @@ New-AzResourceGroupDeployment -ResourceGroupName <yourResourceGroupName> `
 
 Verouderde VM-grootten worden niet ondersteund. U kunt de lijst met ondersteunde VM-grootten vinden door een van de volgende opties:
 
-De [resource-sku's-API](https://docs.microsoft.com/rest/api/compute/resourceskus/list) wordt aangeroepen en er wordt gecontroleerd of de `EncryptionAtHostSupported` mogelijkheid is ingesteld op **waar**.
+De [resource-sku's-API](/rest/api/compute/resourceskus/list) wordt aangeroepen en er wordt gecontroleerd of de `EncryptionAtHostSupported` mogelijkheid is ingesteld op **waar**.
 
 ```json
     {
@@ -107,7 +107,7 @@ De [resource-sku's-API](https://docs.microsoft.com/rest/api/compute/resourceskus
     }
 ```
 
-U kunt ook de Power shell [-cmdlet Get-AzComputeResourceSku](https://docs.microsoft.com/powershell/module/az.compute/get-azcomputeresourcesku?view=azps-3.8.0) aanroepen.
+U kunt ook de Power shell [-cmdlet Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku?view=azps-3.8.0) aanroepen.
 
 ```powershell
 $vmSizes=Get-AzComputeResourceSku | where{$_.ResourceType -eq 'virtualMachines' -and $_.Locations.Contains('CentralUSEUAP')} 

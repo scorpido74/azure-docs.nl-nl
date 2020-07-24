@@ -1,18 +1,18 @@
 ---
 title: Aanmelden bij een virtuele Linux-machine met Azure Active Directory referenties
 description: Meer informatie over het maken en configureren van een virtuele Linux-machine om u aan te melden met Azure Active Directory-verificatie.
-author: iainfoulds
+author: SanDeo-MSFT
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.workload: infrastructure
 ms.date: 08/29/2019
-ms.author: iainfou
-ms.openlocfilehash: c5275a979cbffe7fb6600978487454ac11cd2002
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: sandeo
+ms.openlocfilehash: 89b89d30de46727f4d5b52a236a4b0133e663bb9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510426"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088764"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Voor beeld: Meld u aan bij een virtuele Linux-machine in azure met Azure Active Directory-verificatie
 
@@ -113,7 +113,7 @@ De *provisioningState* van *geslaagd* wordt weer gegeven zodra de uitbrei ding i
 
 ## <a name="configure-role-assignments-for-the-vm"></a>Roltoewijzingen voor de virtuele machine configureren
 
-Met het beleid voor Access Control op basis van rollen (RBAC) van Azure wordt bepaald wie zich kan aanmelden bij de virtuele machine. Er worden twee RBAC-rollen gebruikt voor het autoriseren van de VM-aanmelding:
+Op rollen gebaseerd toegangs beheer (Azure RBAC) van Azure bepaalt wie zich kan aanmelden bij de virtuele machine. Er worden twee RBAC-rollen gebruikt voor het autoriseren van de VM-aanmelding:
 
 - Aanmelding van de beheerder van de **virtuele machine**: gebruikers met deze rol kunnen zich aanmelden bij een virtuele Azure-machine met Windows-beheerders-of Linux-hoofd gebruikers bevoegdheden.
 - **Gebruikers aanmelding van de virtuele machine**: gebruikers met deze rol die is toegewezen, kunnen zich aanmelden bij een virtuele Azure-machine met gewone gebruikers bevoegdheden.

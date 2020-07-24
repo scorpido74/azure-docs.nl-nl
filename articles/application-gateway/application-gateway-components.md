@@ -5,14 +5,14 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 07/20/2020
 ms.author: absha
-ms.openlocfilehash: 798137a74f22824dbfec9653bff327d3a0a1f3b4
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 20d43666919f8528c25735592c2727601af10bbb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186755"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088084"
 ---
 # <a name="application-gateway-components"></a>Onderdelen van Application Gateway
 
@@ -69,13 +69,13 @@ Er zijn twee soorten listeners:
 
 - **Basic**. Dit type listener luistert naar één domein site, waarbij deze één DNS-toewijzing heeft voor het IP-adres van de toepassings gateway. Deze listener-configuratie is vereist wanneer u één site host achter een toepassings gateway.
 
-- **Meerdere locaties**. Deze listener-configuratie is vereist wanneer u meer dan een webtoepassing configureert op hetzelfde exemplaar van de toepassings gateway. Hiermee kunt u een efficiëntere topologie voor uw implementaties configureren door Maxi maal 100 websites toe te voegen aan één toepassings gateway. Elke website kan worden omgeleid naar een eigen back-endpool. U kunt bijvoorbeeld drie subdomeinen, abc.contoso.com, xyz.contoso.com en pqr.contoso.com aanwijzen naar het IP-adres van de toepassings gateway. U maakt drie multi-site listeners en configureert elke listener voor de respectieve poort-en protocol instelling.
+- **Meerdere locaties**. Deze listener-configuratie is vereist wanneer u route ring wilt configureren op basis van de hostnaam of domein naam voor meer dan één webtoepassing op dezelfde toepassings gateway. Hiermee kunt u een efficiëntere topologie voor uw implementaties configureren door Maxi maal 100 websites toe te voegen aan één toepassings gateway. Elke website kan worden omgeleid naar een eigen back-endpool. Bijvoorbeeld drie domeinen, contoso.com, fabrikam.com en adatum.com, wijs naar het IP-adres van de toepassings gateway. U maakt drie [multi-site listeners](multiple-site-overview.md) en configureert elke listener voor de respectieve poort-en protocol instelling. 
 
-    Zie [hosting op meerdere sites](application-gateway-web-app-overview.md)voor meer informatie.
+    U kunt ook hostnamen voor joker tekens definiëren in een multi-site-listener en Maxi maal vijf hostnamen per listener. Zie [namen van hostnamen in listener (preview)](multiple-site-overview.md#wildcard-host-names-in-listener-preview)voor meer informatie.
 
-Nadat u een listener hebt gemaakt, koppelt u deze aan een routerings regel voor aanvragen. Deze regel bepaalt hoe de ontvangen aanvraag op de listener moet worden doorgestuurd naar de back-end.
+    Zie voor meer informatie over het configureren van een multi-site [-listener meerdere sites hosten in Application Gateway met behulp van Azure Portal](create-multiple-sites-portal.md).
 
-Application Gateway verwerkt listeners in de [weer gegeven volg orde](configuration-overview.md#order-of-processing-listeners).
+Nadat u een listener hebt gemaakt, koppelt u deze aan een routerings regel voor aanvragen. Deze regel bepaalt hoe de ontvangen aanvraag op de listener moet worden doorgestuurd naar de back-end. De regel voor aanvraag routering bevat ook de back-end-groep waarnaar moet worden doorgestuurd en de HTTP-instelling waarin de back-end-poort, het protocol enzovoort worden genoemd.
 
 ## <a name="request-routing-rules"></a>Routerings regels voor aanvragen
 
@@ -99,13 +99,13 @@ U kunt kiezen dat het doel van de omleiding een andere listener is (waarmee auto
 
 Zie [verkeer omleiden naar uw toepassings gateway](redirect-overview.md)voor meer informatie.
 
-### <a name="rewrite-http-headers"></a>HTTP-headers opnieuw genereren
+### <a name="rewrite-http-headers-and-url"></a>HTTP-headers en URL opnieuw schrijven
 
-Door gebruik te maken van de regels voor aanvraag routering kunt u HTTP (S)-aanvragen en-antwoord headers toevoegen, verwijderen of bijwerken omdat de aanvraag-en antwoord pakketten worden verplaatst tussen de client en de back-end-pool via de toepassings gateway.
+Met behulp van regels voor herschrijven kunt u HTTP (S)-aanvragen en-antwoord headers toevoegen, verwijderen of bijwerken, evenals het URL-pad en de query reeks parameters, omdat de aanvraag-en antwoord pakketten worden verplaatst tussen de client-en back-end-groepen via de toepassings gateway.
 
-De headers kunnen worden ingesteld op statische waarden of op andere headers en Server variabelen. Dit helpt bij belang rijke gebruiks gevallen, zoals het extra heren van client-IP-adressen, het verwijderen van gevoelige informatie over de back-end, het toevoegen van meer beveiliging, enzovoort.
+De para meters headers en URL kunnen worden ingesteld op statische waarden of op andere headers en Server variabelen. Dit helpt bij belang rijke gebruiks gevallen, zoals het extra heren van client-IP-adressen, het verwijderen van gevoelige informatie over de back-end, het toevoegen van meer beveiliging, enzovoort.
 
-Zie [HTTP-headers herschrijven in uw toepassings gateway](rewrite-http-headers.md)voor meer informatie.
+Zie [HTTP-headers en-url's herschrijven in uw toepassings gateway](rewrite-http-headers-url.md)voor meer informatie.
 
 ## <a name="http-settings"></a>HTTP-instellingen
 

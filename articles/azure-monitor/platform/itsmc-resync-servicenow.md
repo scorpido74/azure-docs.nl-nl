@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: f09f5010c18f5ea064b02f0fbbae107bf473e1f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3382f93990612b0ab34eb0848cbf3d6577c44ff
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81313671"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087931"
 ---
 # <a name="how-to-manually-fix-servicenow-sync-problems"></a>Problemen met ServiceNow-synchronisatie hand matig oplossen
 
@@ -38,7 +38,7 @@ Gebruik het volgende synchronisatie proces om de verbinding opnieuw te activeren
     1. Klik op de naam van de connector om deze te configureren
     1. Alle connectors verwijderen die niet meer worden gebruikt
 
-    1. De velden bijwerken volgens [deze definities](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-connections) op basis van uw partner type
+    1. De velden bijwerken volgens [deze definities](./itsmc-connections.md) op basis van uw partner type
 
     1. Klik op synchroniseren
 

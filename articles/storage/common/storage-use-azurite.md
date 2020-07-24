@@ -1,22 +1,22 @@
 ---
 title: Azurite-emulator gebruiken voor het ontwikkelen van lokale Azure Storage
-description: De Azurite open-source emulator (preview) biedt een gratis lokale omgeving voor het testen van uw Azure Storage-toepassingen.
+description: De Azurite open-source-emulator biedt een gratis lokale omgeving voor het testen van uw Azure Storage-toepassingen.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 05/01/2020
+ms.date: 07/15/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.openlocfilehash: af846b0c203934468b7f6282234819142093286f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c850fccf5a86df4c35ce4db53b5b40d5e8588210
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512140"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089410"
 ---
-# <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>De Azurite-emulator gebruiken voor het ontwikkelen en testen van lokale Azure Storage (preview-versie)
+# <a name="use-the-azurite-emulator-for-local-azure-storage-development"></a>De Azurite-emulator gebruiken voor het ontwikkelen van lokale Azure Storage
 
-De Azurite-versie 3,2 open-source emulator (preview) biedt een gratis lokale omgeving voor het testen van uw Azure Blob-en Queue Storage-toepassingen. Wanneer u tevreden bent over de manier waarop uw toepassing lokaal werkt, schakelt u over naar het gebruik van een Azure Storage-account in de Cloud. De emulator biedt ondersteuning voor meerdere platforms voor Windows, Linux en macOS. Azurite v3 ondersteunt Api's die door Azure Blob service worden geïmplementeerd.
+De Azurite open-source-emulator biedt een gratis lokale omgeving voor het testen van uw Azure Blob-en Queue Storage-toepassingen. Wanneer u tevreden bent over de manier waarop uw toepassing lokaal werkt, schakelt u over naar het gebruik van een Azure Storage-account in de Cloud. De emulator biedt ondersteuning voor meerdere platforms voor Windows, Linux en macOS.
 
 Azurite is het toekomstige opslag emulator-platform. Azurite vervangt de [Azure Storage-emulator](storage-use-emulator.md). Azurite zal nog steeds worden bijgewerkt ter ondersteuning van de nieuwste versies van Azure Storage-Api's.
 
@@ -34,8 +34,6 @@ Selecteer in Visual Studio code het deel venster **uitbrei dingen** en zoek naar
 ![Marketplace voor Visual Studio-code uitbreidingen](media/storage-use-azurite/azurite-vs-code-extension.png)
 
 U kunt ook naar de [markt voor Visual Studio-code uitbreiding](https://marketplace.visualstudio.com/items?itemName=Azurite.azurite) navigeren in uw browser. Selecteer de knop **installeren** om Visual Studio code te openen en direct naar de uitbrei ding pagina Azurite te gaan.
-
-U kunt Azurite snel starten of sluiten in de status balk van Visual Studio code. Klik op **[Azurite BLOB Service]** of **[Azurite Queue Service]**.
 
 De extensie ondersteunt de volgende Visual Studio-code opdrachten. Druk op F1 in Visual Studio code om het opdracht palet te openen. 
 
@@ -67,6 +65,7 @@ De volgende instellingen worden ondersteund:
    - **Azurite: wachtrij-host** -het Queue-service luisterende eind punt. De standaard instelling is 127.0.0.1.
    - **Azurite: wachtrij poort** : de Queue-service Luister poort. De standaard poort is 10001.
    - **Azurite:** in de Stille modus wordt het toegangs logboek uitgeschakeld. De standaardwaarde is **onwaar**.
+   - **Azurite: Schakel de API-versie controle** over en sla de controle van de API-aanvraag versie over. De standaardwaarde is **onwaar**.
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>Azurite installeren en uitvoeren met behulp van NPM
 
@@ -311,6 +310,15 @@ azurite --oauth basic --cert path/server.pem --key path/key.pem
 
 Azurite ondersteunt basis verificatie door de `basic` para meter op te geven voor de `--oauth` Switch. Azurite voert basis verificatie uit, zoals het valideren van het binnenkomende Bearer-token, het controleren van de verlener, de doel groep en de verval datum. Azurite controleert de hand tekening van het token of de machtigingen niet.
 
+### <a name="skip-api-version-check"></a>Controle van API-versie overs Laan
+
+**Optioneel** : bij het starten controleert Azurite of de aangevraagde API-versie geldig is. Met de volgende opdracht slaat u de API-versie controle op:
+
+```console
+azurite --skipApiVersionCheck
+```
+
+
 ## <a name="authorization-for-tools-and-sdks"></a>Autorisatie voor hulpprogram ma's en Sdk's
 
 Maak verbinding met Azurite van Azure Storage Sdk's of hulpprogram ma's, zoals [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/), met behulp van een verificatie strategie. Verificatie is vereist. Azurite ondersteunt verificatie met OAuth, gedeelde sleutel en Shared Access signatures (SAS). Azurite biedt ook ondersteuning voor anonieme toegang tot open bare containers.
@@ -490,7 +498,7 @@ Voer de volgende stappen uit om Azurite HTTPS toe te voegen aan Storage Explorer
 1. **Lokale & gekoppeld** selecteren
 1. Klik met de rechter muisknop op **opslag accounts** en selecteer **verbinding maken met Azure Storage**.
 1. Selecteer **een Connection String gebruiken**
-1. Selecteer **Volgende**.
+1. Selecteer **Next**.
 1. Voer een waarde in het veld **weergave naam** in.
 1. Voer de [https-connection string](#https-connection-strings) in uit de vorige sectie van dit document
 1. Selecteer **Volgende**
@@ -554,4 +562,4 @@ Bijdragen en suggesties voor Azurite zijn welkom. Ga naar de Azurite [github-pro
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Gebruik de Azure-opslag emulator voor het ontwikkelen en testen van](storage-use-emulator.md) documenten de verouderde Azure-opslag emulator, die wordt vervangen door Azurite.
-- [Azure Storage verbindings reeksen configureren](storage-configure-connection-string.md) wordt uitgelegd hoe u een geldige Azure Storage-Connection String kunt samen stellen.
+- [Azure Storage verbindings reeksen configureren](storage-configure-connection-string.md) wordt uitgelegd hoe u een geldige Azure Storage Connection String kunt samen stellen.

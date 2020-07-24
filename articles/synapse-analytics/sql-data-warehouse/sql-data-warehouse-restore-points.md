@@ -11,12 +11,12 @@ ms.date: 07/03/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 18d341db8538af12dbbabab4797459779a553e4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 66a2dad9396e8bf7c8ef49db529f7a5486cc8a8f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204996"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089204"
 ---
 # <a name="user-defined-restore-points"></a>Door de gebruiker gedefinieerde herstel punten
 
@@ -26,7 +26,7 @@ In dit artikel leert u hoe u een nieuw, door de gebruiker gedefinieerd herstel p
 
 Als u een door de gebruiker gedefinieerd herstel punt wilt maken, gebruikt u de Power shell [-cmdlet New-AzSqlDatabaseRestorePoint](/powershell/module/az.sql/new-azsqldatabaserestorepoint?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) .
 
-1. Voordat u begint, moet u ervoor zorgen dat u [Azure PowerShell installeert](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+1. Voordat u begint, moet u ervoor zorgen dat u [Azure PowerShell installeert](/powershell/azure/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 2. Open PowerShell.
 3. Maak verbinding met uw Azure-account en vermeld alle abonnementen die aan uw account zijn gekoppeld.
 4. Selecteer het abonnement dat de Data Base bevat die u wilt herstellen.

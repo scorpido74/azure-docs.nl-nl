@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 7e59ee029b1705f6f789812b870de96bbb74a6e5
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 23556d6c0d64c6b6351d09ac1a658da0e5a4dd68
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223547"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088832"
 ---
 # <a name="migrate-from-a-managed-image-to-a-shared-image-gallery-image"></a>Migreren van een beheerde installatie kopie naar een afbeelding van de galerie met gedeelde afbeeldingen
 
@@ -54,9 +54,9 @@ Definities van installatiekopieën maken een logische groepering voor installati
 
 Wanneer u de definitie van de installatie kopie maakt, moet u ervoor zorgen dat alle juiste gegevens worden verstrekt. Omdat beheerde installatie kopieën altijd worden gegeneraliseerd, moet u instellen `-OsState generalized` . 
 
-Zie [Installatiekopiedefinities](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions) voor meer informatie over de waarden die u kunt specificeren voor een installatiekopiedefinitie.
+Zie [Installatiekopiedefinities](./windows/shared-image-galleries.md#image-definitions) voor meer informatie over de waarden die u kunt specificeren voor een installatiekopiedefinitie.
 
-Maak de definitie van de installatiekopie met behulp van [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion). In dit voor beeld wordt de definitie van de installatie kopie met de naam *myImageDefinition*en is deze voor een gegeneraliseerde Windows-besturings systeem. Als u een definitie voor installatie kopieën wilt maken met behulp van een Linux-besturings systeem, gebruikt u `-OsType Linux` . 
+Maak de definitie van de installatiekopie met behulp van [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion). In dit voor beeld wordt de definitie van de installatie kopie met de naam *myImageDefinition*en is deze voor een gegeneraliseerde Windows-besturings systeem. Als u een definitie voor installatie kopieën wilt maken met behulp van een Linux-besturings systeem, gebruikt u `-OsType Linux` . 
 
 ```azurepowershell-interactive
 $imageDefinition = New-AzGalleryImageDefinition `
@@ -73,7 +73,7 @@ $imageDefinition = New-AzGalleryImageDefinition `
 
 ## <a name="get-the-managed-image"></a>De beheerde installatie kopie ophalen
 
-U kunt een lijst met installatie kopieën die beschikbaar zijn in een resource groep weer geven met behulp van [Get-AzImage](https://docs.microsoft.com/powershell/module/az.compute/get-azimage). Zodra u de naam van de installatie kopie kent en de resource groep waarin deze zich bevindt, kunt u `Get-AzImage` opnieuw gebruiken om het afbeeldings object op te halen en op te slaan in een variabele, zodat u het later kunt gebruiken. In dit voor beeld wordt een afbeelding opgehaald met de naam *myImage* uit de resource groep ' myResourceGroup ' en toegewezen aan de variabele *$managedImage*. 
+U kunt een lijst met installatie kopieën die beschikbaar zijn in een resource groep weer geven met behulp van [Get-AzImage](/powershell/module/az.compute/get-azimage). Zodra u de naam van de installatie kopie kent en de resource groep waarin deze zich bevindt, kunt u `Get-AzImage` opnieuw gebruiken om het afbeeldings object op te halen en op te slaan in een variabele, zodat u het later kunt gebruiken. In dit voor beeld wordt een afbeelding opgehaald met de naam *myImage* uit de resource groep ' myResourceGroup ' en toegewezen aan de variabele *$managedImage*. 
 
 ```azurepowershell-interactive
 $managedImage = Get-AzImage `
@@ -84,7 +84,7 @@ $managedImage = Get-AzImage `
 
 ## <a name="create-an-image-version"></a>De versie van een installatiekopie maken
 
-Maak een installatie kopie versie van de beheerde installatie kopie met behulp van [New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion). 
+Maak een installatie kopie versie van de beheerde installatie kopie met behulp van [New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion). 
 
 Toegestane tekens voor een installatiekopieversie zijn cijfers en punten. Cijfers moeten binnen het bereik van een 32-bits geheel getal zijn. Indeling: *MajorVersion*.*MinorVersion*.*Patch*.
 
@@ -117,7 +117,7 @@ $job.State
 > [!NOTE]
 > U moet wachten tot de installatiekopieversie volledig is gebouwd en gerepliceerd voordat u dezelfde beheerde installatiekopie kunt gebruiken om een andere versie van de installatiekopie te maken. 
 >
-> U kunt uw installatiekopie ook opslaan in Premium Storage door een `-StorageAccountType Premium_LRS` toe te voegen, of in [Zone-redundante opslag](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) door `-StorageAccountType Standard_ZRS` toe te voegen wanneer u de installatiekopieversie maakt.
+> U kunt uw installatiekopie ook opslaan in Premium Storage door een `-StorageAccountType Premium_LRS` toe te voegen, of in [Zone-redundante opslag](../storage/common/storage-redundancy.md) door `-StorageAccountType Standard_ZRS` toe te voegen wanneer u de installatiekopieversie maakt.
 >
 
 ## <a name="delete-the-managed-image"></a>De beheerde installatie kopie verwijderen

@@ -6,22 +6,22 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/06/2020
+ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 26faad0bb8aeb8dff693eea4cb9d47e0df1814b4
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 30e8bd7fda08795ecc1aa78b0d2507e7c915ad0d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027326"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087251"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Azure Storage-verbindingsreeksen configureren
 
 Een connection string bevat de autorisatie-informatie die is vereist voor uw toepassing om toegang te krijgen tot gegevens in een Azure Storage account tijdens runtime met behulp van gedeelde sleutel verificatie. U kunt verbindings reeksen configureren voor het volgende:
 
-* Maak verbinding met de Azure-opslag emulator.
+* Maak verbinding met de Azurite-opslag emulator.
 * Toegang tot een opslag account in Azure.
 * Toegang krijgen tot opgegeven resources in azure via een Shared Access Signature (SAS).
 
@@ -37,15 +37,15 @@ Uw toepassing moet tijdens runtime toegang hebben tot de connection string om aa
 * Een toepassing die wordt uitgevoerd op het bureau blad of op een apparaat kan de connection string in een **app.config** of **web.config** bestand opslaan. Voeg de connection string toe aan de sectie **AppSettings** in deze bestanden.
 * Een toepassing die wordt uitgevoerd in een Azure-Cloud service kan de connection string opslaan in het [Azure service configuration schema-bestand (. cscfg)](https://msdn.microsoft.com/library/ee758710.aspx). Voeg de connection string toe aan de sectie **ConfigurationSettings** van het service configuratie bestand.
 
-Het opslaan van uw connection string in een configuratie bestand maakt het eenvoudig om de connection string bij te werken om te scha kelen tussen de opslag emulator en een Azure Storage-account in de Cloud. U hoeft alleen de connection string te bewerken om naar uw doel omgeving te verwijzen.
+Het opslaan van uw connection string in een configuratie bestand maakt het eenvoudig om de connection string bij te werken om te scha kelen tussen de [Azurite-opslag emulator](../common/storage-use-azurite.md) en een Azure-opslag account in de Cloud. U hoeft alleen de connection string te bewerken om naar uw doel omgeving te verwijzen.
 
 U kunt de [Microsoft Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/) gebruiken om toegang te krijgen tot uw Connection String in runtime, ongeacht waar de toepassing wordt uitgevoerd.
 
-## <a name="configure-a-connection-string-for-the-storage-emulator"></a>Een connection string configureren voor de opslag emulator
+## <a name="configure-a-connection-string-for-azurite"></a>Een connection string configureren voor Azurite
 
 [!INCLUDE [storage-emulator-connection-string-include](../../../includes/storage-emulator-connection-string-include.md)]
 
-Zie [de Azure-opslag emulator gebruiken voor ontwikkeling en testen](storage-use-emulator.md)voor meer informatie over de opslag emulator.
+Zie [de Azurite-emulator gebruiken voor lokale Azure Storage ontwikkeling](../common/storage-use-azurite.md)voor meer informatie over Azurite.
 
 ## <a name="configure-a-connection-string-for-an-azure-storage-account"></a>Een connection string configureren voor een Azure-opslag account
 
@@ -140,6 +140,6 @@ EndpointSuffix=core.chinacloudapi.cn;
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [De Azure-opslag emulator gebruiken voor ontwikkelen en testen](storage-use-emulator.md)
+* [De Azurite-emulator gebruiken voor het ontwikkelen van lokale Azure Storage](../common/storage-use-azurite.md)
 * [Azure Storage Explorers](storage-explorers.md)
 * [Shared Access signatures (SAS) gebruiken](storage-sas-overview.md)

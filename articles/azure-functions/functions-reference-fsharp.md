@@ -6,12 +6,12 @@ ms.assetid: e60226e5-2630-41d7-9e5b-9f9e5acc8e50
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: syclebsc
-ms.openlocfilehash: 005cb0044cb4d225c8b94602fb907fee09fb00b2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: f9b7b92fd21e12f1d86c5d5878e48c6ec6b0e748
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249186"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088016"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Functions F # referentie voor ontwikkel aars
 
@@ -90,7 +90,7 @@ let Run(input: string, item: byref<Item>) =
 ```
 
 ## <a name="logging"></a>Logboekregistratie
-Voor het vastleggen van de uitvoer naar uw [streaming-logboeken](../app-service/troubleshoot-diagnostic-logs.md) in F # moet uw functie een argument van het type [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger). Voor consistentie wordt aangeraden dit argument een naam te krijgen `log` . Bijvoorbeeld:
+Voor het vastleggen van de uitvoer naar uw [streaming-logboeken](../app-service/troubleshoot-diagnostic-logs.md) in F # moet uw functie een argument van het type [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger). Voor consistentie wordt aangeraden dit argument een naam te krijgen `log` . Bijvoorbeeld:
 
 ```fsharp
 let Run(blob: string, output: byref<string>, log: ILogger) =
@@ -285,7 +285,7 @@ Paden naar de `#load` instructie zijn relatief ten opzichte van de locatie van h
 De `#load` instructie werkt alleen met `.fsx` (F # script) bestanden en niet met `.fs` bestanden.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie de volgende resources voor meer informatie:
+Zie de volgende bronnen voor meer informatie:
 
 * [F #-hand leiding](/dotnet/articles/fsharp/index)
 * [Aanbevolen procedures voor Azure Functions](functions-best-practices.md)
@@ -293,4 +293,3 @@ Zie de volgende resources voor meer informatie:
 * [Azure Functions-triggers en -bindingen](functions-triggers-bindings.md)
 * [Azure Functions testen](functions-test-a-function.md)
 * [Azure Functions schalen](functions-scale.md)
-

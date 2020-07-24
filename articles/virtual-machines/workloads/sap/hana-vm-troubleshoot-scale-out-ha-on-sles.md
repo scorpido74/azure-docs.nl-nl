@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: e93b3412785817050ac53030be9ff2172a678c06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c3a24bc9d754a15a0b372667fbcd689365a9aec
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77617125"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088305"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>Controleren en problemen oplossen SAP HANA scale-out instellingen voor hoge Beschik baarheid in SLES 12 SP3 
 
@@ -64,7 +65,7 @@ Wanneer u de opdracht **CRM migreren** gebruikt, moet u ervoor zorgen dat u de c
  Voor SAP HANA scale-out HA-verificatie en-certificering werd een installatie gebruikt. Het bestaat uit twee systemen met drie SAP HANA knoop punten: één master en twee werk rollen. De volgende tabel bevat de namen van virtuele machines en interne IP-adressen. Alle verificatie voorbeelden die volgen, zijn uitgevoerd op deze Vm's. Door gebruik te maken van deze VM-namen en IP-adressen in de voor beelden van de opdracht, kunt u beter inzicht krijgen in de opdrachten en de bijbehorende uitvoer:
 
 
-| Knooppunt type | VM-naam | IP-adres |
+| Knooppunt type | VM-naam | Het IP-adres |
 | --- | --- | --- |
 | Hoofd knooppunt op site 1 | HSO-Hana-VM-S1-0 | 10.0.0.30 |
 | Worker-knoop punt 1 op site 1 | HSO-Hana-VM-S1-1 | 10.0.0.31 |
@@ -171,7 +172,7 @@ Het **corosync** -configuratie bestand moet correct zijn op elk knoop punt in he
 
 De inhoud van **corosync. conf** van het test systeem is een voor beeld.
 
-De eerste sectie is **totem**, zoals beschreven in [cluster installatie](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#cluster-installation), stap 11. U kunt de waarde voor **mcastaddr**negeren. U hoeft alleen maar de bestaande vermelding te gebruiken. De vermeldingen voor **token** en **consensus** moeten worden ingesteld volgens [Microsoft Azure SAP Hana documentatie][sles-pacemaker-ha-guide].
+De eerste sectie is **totem**, zoals beschreven in [cluster installatie](./high-availability-guide-suse-pacemaker.md#cluster-installation), stap 11. U kunt de waarde voor **mcastaddr**negeren. U hoeft alleen maar de bestaande vermelding te gebruiken. De vermeldingen voor **token** en **consensus** moeten worden ingesteld volgens [Microsoft Azure SAP Hana documentatie][sles-pacemaker-ha-guide].
 
 <pre><code>
 totem {
@@ -278,7 +279,7 @@ systemctl restart corosync
 
 ## <a name="sbd-device"></a>SBD-apparaat
 
-Het instellen van een SBD-apparaat op een virtuele Azure-machine wordt beschreven in [SBD omheining](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing).
+Het instellen van een SBD-apparaat op een virtuele Azure-machine wordt beschreven in [SBD omheining](./high-availability-guide-suse-pacemaker.md#sbd-fencing).
 
 Controleer eerst op de SBD Server-VM of er ACL-vermeldingen zijn voor elk knoop punt in het cluster. Voer de volgende opdracht uit op de SBD Server-VM:
 
@@ -421,7 +422,7 @@ Op de doel-VM zijde, **HSO-Hana-VM-S2-2** in dit voor beeld, kunt u de volgende 
 /dev/disk/by-id/scsi-36001405e614138d4ec64da09e91aea68:   notice: servant: Received command test from hso-hana-vm-s2-1 on disk /dev/disk/by-id/scsi-36001405e614138d4ec64da09e91aea68
 </code></pre>
 
-Controleer of de vermeldingen in **/etc/sysconfig/SBD** overeenkomen met de beschrijving bij het [instellen van pacemaker op SuSE Linux Enterprise Server in azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#sbd-fencing). Controleer of de opstart instelling in **/etc/iscsi/iscsid.conf** is ingesteld op automatisch.
+Controleer of de vermeldingen in **/etc/sysconfig/SBD** overeenkomen met de beschrijving bij het [instellen van pacemaker op SuSE Linux Enterprise Server in azure](./high-availability-guide-suse-pacemaker.md#sbd-fencing). Controleer of de opstart instelling in **/etc/iscsi/iscsid.conf** is ingesteld op automatisch.
 
 De volgende vermeldingen zijn belang rijk in **/etc/sysconfig/SBD**. Pas de **id-** waarde indien nodig aan:
 
@@ -978,4 +979,3 @@ Deze laatste scherm afbeelding toont de sectie **Details** van één overgang. H
 ## <a name="next-steps"></a>Volgende stappen
 
 In deze hand leiding wordt een hoge Beschik baarheid voor SAP HANA in een scale-out configuratie beschreven. Naast de-data base is een ander belang rijk onderdeel in een SAP-landschap de SAP net-Weaver-stack. Meer informatie over [hoge Beschik baarheid voor SAP NetWeaver op Azure virtual machines die gebruikmaken van de SuSE Enter prise Linux-server][sap-nw-ha-guide-sles].
-

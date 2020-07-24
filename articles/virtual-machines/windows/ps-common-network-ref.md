@@ -7,18 +7,18 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 5d1787b5bfc2939dca23c6898d89130aa3fcb170
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b4d6b20e63c42616aad0f8776fae159a0f2aa455
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525752"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088373"
 ---
 # <a name="common-powershell-commands-for-azure-virtual-networks"></a>Algemene Power shell-opdrachten voor virtuele Azure-netwerken
 
 Als u een virtuele machine wilt maken, moet u een [virtueel netwerk](../../virtual-network/virtual-networks-overview.md) maken of een bestaand virtueel netwerk weten waarin de VM kan worden toegevoegd. Wanneer u een virtuele machine maakt, moet u meestal ook overwegen om de resources te maken die in dit artikel worden beschreven.
 
-Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview) voor informatie over het installeren van de nieuwste versie van Azure PowerShell, het selecteren van het abonnement en het aanmelden bij uw account.
+Zie [Azure PowerShell installeren en configureren](/powershell/azure/) voor informatie over het installeren van de nieuwste versie van Azure PowerShell, het selecteren van het abonnement en het aanmelden bij uw account.
 
 Sommige variabelen kunnen nuttig zijn wanneer u meer dan een van de opdrachten in dit artikel uitvoert:
 

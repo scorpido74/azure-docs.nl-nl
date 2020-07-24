@@ -3,8 +3,8 @@ title: 'Zelf studie: RDS MySQL online migreren naar Azure Database for MySQL'
 titleSuffix: Azure Database Migration Service
 description: Meer informatie over het uitvoeren van een online migratie van RDS MySQL naar Azure Database for MySQL met behulp van de Azure Database Migration Service.
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: arunkumarthiags
+ms.author: arthiaga
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,13 +12,14 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 06/09/2020
-ms.openlocfilehash: 8cfe8d1a87b8b52c21927696101704bd01b7641a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0c62cf28c9e9368e80982fa7c5badeb79d40ae4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84609247"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087727"
 ---
-# <a name="tutorial-migrate-rds-mysql-to-azure-database-for-mysql-online-using-dms"></a>Zelf studie: RDS MySQL migreren naar Azure Database for MySQL online met behulp van DMS
+# <a name="tutorial-migrate-rds-mysql-to-azure-database-for-mysql-online-using-dms"></a>Zelfstudie: RDS MySQL online migreren naar Azure Database for MySQL met behulp van DMS
 
 U kunt Azure Database Migration Service gebruiken om data bases te migreren van een RDS MySQL-exemplaar naar [Azure database for MySQL](https://docs.microsoft.com/azure/mysql/) terwijl de bron database online blijft tijdens de migratie. Met andere woorden, migratie kan worden gerealiseerd met minimale downtime voor de toepassing. In deze zelf studie migreert u de voorbeeld database van **werk nemers** van een exemplaar van RDS MySQL naar Azure database for MySQL met behulp van de online migratie activiteit in azure database Migration service.
 
@@ -29,7 +30,7 @@ In deze zelfstudie leert u het volgende:
 > * Maak een exemplaar van de Azure Database Migration Service.
 > * Een migratie project maken met behulp van Azure Database Migration Service.
 > * De migratie uitvoeren.
-> * De migratie controleren.
+> * Houd de migratie in de gaten.
 
 > [!NOTE]
 > Als u Azure Database Migration Service voor het uitvoeren van een online migratie wilt gebruiken, moet u een instantie maken op basis van de prijs categorie Premium. Zie de pagina met [prijzen](https://azure.microsoft.com/pricing/details/database-migration/) van Azure Database Migration Service voor meer informatie.
@@ -122,6 +123,10 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
 4. Voer de refererende sleutel (die de tweede kolom is) in het query resultaat uit om de refererende sleutel te verwijderen.
 
+> [!NOTE]
+> Azure DMS biedt geen ondersteuning voor de referentiële actie CASCADE, waarmee u een overeenkomende rij in de onderliggende tabel automatisch kunt verwijderen of bijwerken wanneer een rij wordt verwijderd of bijgewerkt in de bovenliggende tabel. Zie de sectie Referentiële acties in de [beperkingen van refererende sleutels](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html)van een artikel voor meer informatie.
+> Voor Azure DMS moet u beperkingen voor refererende sleutels in de doel database server weghalen tijdens het laden van gegevens en kunt u geen referentiële acties gebruiken. Als uw werk belasting afhankelijk is van het bijwerken van een gerelateerde onderliggende tabel via deze referentiële actie, raden we u aan om in plaats daarvan een [dump en herstel](https://docs.microsoft.com/azure/mysql/concepts-migrate-dump-restore) uit te voeren. 
+
 5. Als u triggers hebt (invoeg-of update-trigger) in de gegevens, wordt de integriteit van gegevens in het doel afgedwongen voordat gegevens van de bron worden gerepliceerd. De aanbeveling is om tijdens de migratie triggers in alle tabellen *op het doel* uit te scha kelen en de triggers vervolgens in te scha kelen nadat de migratie is voltooid.
 
     Triggers uitschakelen in doel database:
@@ -147,7 +152,7 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
     ![Resourceprovider registreren](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/portal-register-resource-provider.png)
 
-## <a name="create-an-instance-of-azure-database-migration-service"></a>Een instantie van Azure Database Migration Service maken
+## <a name="create-an-instance-of-azure-database-migration-service"></a>Een exemplaar maken van Azure Database Migration Service
 
 1. Selecteer in de Azure-portal **Een resource maken**, zoek naar Azure Database Migration Service, en selecteer vervolgens **Azure Database Migration Service** uit de vervolgkeuzelijst.
 
@@ -173,7 +178,7 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
 7. Selecteer **Maken** om de dienst te maken.
 
-## <a name="create-a-migration-project"></a>Maak een migratieproject
+## <a name="create-a-migration-project"></a>Een migratieproject maken
 
 Nadat de service is gemaakt, zoek deze op in de Azure-portal, open hem en maak vervolgens een nieuw migratieproject.
 

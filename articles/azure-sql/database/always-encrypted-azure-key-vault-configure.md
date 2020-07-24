@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 04/23/2020
-ms.openlocfilehash: 46b899b1891a6759ea2b9501f43c687990198f1f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ab1865608146880bbf612b7cb08c2a673c93b31f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078014"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087957"
 ---
 # <a name="configure-always-encrypted-by-using-azure-key-vault"></a>Always Encrypted configureren met behulp van Azure Key Vault 
 
@@ -45,7 +45,7 @@ Volg de stappen in dit artikel en meer informatie over het instellen van Always 
 - [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) versie 13.0.700.242 of hoger.
 - [.NET Framework 4,6](https://msdn.microsoft.com/library/w0x726c2.aspx) of hoger (op de client computer).
 - [Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx).
-- [Azure PowerShell](/powershell/azure/overview) of [Azure cli](/cli/azure/install-azure-cli)
+- [Azure PowerShell](/powershell/azure/) of [Azure cli](/cli/azure/install-azure-cli)
 
 ## <a name="enable-client-application-access"></a>Toegang tot client toepassingen inschakelen
 
@@ -83,7 +83,7 @@ Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $resourceGro
 Set-AzKeyVaultAccessPolicy  -VaultName $vaultName  -ResourceGroupName $resourceGroupName -ServicePrincipalName $applicationId -PermissionsToKeys get,wrapKey,unwrapKey,sign,verify,list
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 $subscriptionName = '<subscriptionName>'
@@ -606,7 +606,7 @@ Nadat de data base is geconfigureerd voor het gebruik van Always Encrypted, kunt
 ## <a name="related-information"></a>Gerelateerde informatie
 
 - [Always Encrypted (client ontwikkeling)](https://msdn.microsoft.com/library/mt147923.aspx)
-- [Transparante gegevens versleuteling](https://msdn.microsoft.com/library/bb934049.aspx)
+- [Transparent Data Encryption](https://msdn.microsoft.com/library/bb934049.aspx)
 - [Versleuteling SQL Server](https://msdn.microsoft.com/library/bb510663.aspx)
 - [Wizard Always Encrypted](https://msdn.microsoft.com/library/mt459280.aspx)
 - [Always Encrypted blog](https://docs.microsoft.com/archive/blogs/sqlsecurity/always-encrypted-key-metadata)

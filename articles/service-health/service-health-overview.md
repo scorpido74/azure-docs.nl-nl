@@ -3,12 +3,12 @@ title: Overzicht van Service Health | Microsoft Docs
 description: Persoonlijke informatie over hoe uw Azure-apps worden beïnvloed door de huidige en toekomstige problemen met de Azure-service en het onderhoud.
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: bc1d07fdbba6da3540336438973fb1cfbb0c356b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2f2f0c8bf2cf4fe5beae7d48b198a23edba4e9ae
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563401"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089597"
 ---
 # <a name="service-health-overview"></a>Overzicht van Service Health
 
@@ -68,7 +68,7 @@ Filter Service Health om uw bedrijfs kritieke abonnementen, regio's en resource 
 
 ## <a name="configure-service-health-alerts"></a>Service status waarschuwingen configureren
 
-Service Health integreert met Azure Monitor om u te waarschuwen via e-mails, SMS-berichten en webhook-meldingen wanneer uw bedrijfs kritieke resources worden beïnvloed. Stel een waarschuwing voor een activiteiten logboek in voor de juiste service status gebeurtenis. Hiermee stuurt u een waarschuwing naar de juiste personen in uw organisatie met behulp van actie groepen. Zie [Configure alerts for service Health](../azure-monitor/platform/alerts-activity-log-service-notifications.md) voor meer informatie.
+Service Health integreert met Azure Monitor om u te waarschuwen via e-mails, SMS-berichten en webhook-meldingen wanneer uw bedrijfs kritieke resources worden beïnvloed. Stel een waarschuwing voor een activiteiten logboek in voor de juiste service status gebeurtenis. Hiermee stuurt u een waarschuwing naar de juiste personen in uw organisatie met behulp van actie groepen. Zie [Configure alerts for service Health](./alerts-activity-log-service-notifications-portal.md) voor meer informatie.
 
 >[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OaXt]
 

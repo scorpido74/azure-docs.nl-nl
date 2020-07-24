@@ -7,13 +7,14 @@ ms.service: firewall
 ms.topic: article
 ms.date: 04/10/2020
 ms.author: victorh
-ms.openlocfilehash: 93677b3e473ab825665fed5590ac345a8cfcc300
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84110e749dac9267e994385aa5f6d05e3ba224a6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81113423"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087540"
 ---
-# <a name="azure-firewall-rule-processing-logic"></a>Regels voor de logicaverwerking in Azure Firewall
+# <a name="configure-azure-firewall-rules"></a>Azure Firewall-regels configureren
 U kunt NAT-regels, netwerk regels en toepassings regels configureren op Azure Firewall. Regel verzamelingen worden verwerkt op basis van het regel type in volg orde van prioriteit, waarbij een lager aantal is van 100 tot 65.000. De naam van een regel verzameling mag alleen letters, cijfers, onderstrepings tekens, punten of afbreek streepjes bevatten. De naam moet beginnen met een letter of cijfer en eindigen op een letter, cijfer of onderstrepings teken. De maximale naam mag Maxi maal 80 tekens lang zijn.
 
 U kunt de prioriteits nummers van uw regel verzameling het beste in 100 stappen (100, 200, 300 enzovoort) plaatsen, zodat u zo nodig ruimte hebt om meer regel verzamelingen toe te voegen.
@@ -48,17 +49,17 @@ De verbinding met google.com is toegestaan vanwege een overeenkomende netwerk re
 - Actie: Toestaan
 
 
-|naam  |Protocol  |Brontype  |Bron  |Doeltype  |Doel adres  |Doelpoorten|
+|name  |Protocol  |Brontype  |Bron  |Doeltype  |Doel adres  |Doelpoorten|
 |---------|---------|---------|---------|----------|----------|--------|
-|Toestaan-Web     |TCP|IP-adres|*|IP-adres|*|80.443
+|Toestaan-Web     |TCP|Het IP-adres|*|Het IP-adres|*|80.443
 
 **Toepassings regel**
 
-- Actie: weigeren
+- Actie: Weigeren
 
-|naam  |Brontype  |Bron  |Protocol: poort|Doel-FQDN-naam|
+|name  |Brontype  |Bron  |Protocol: poort|Doel-FQDN-naam|
 |---------|---------|---------|---------|----------|----------|
-|Weigeren: Google     |IP-adres|*|http: 80, https: 443|google.com
+|Weigeren: Google     |Het IP-adres|*|http: 80, https: 443|google.com
 
 **Resultaat**
 
@@ -74,19 +75,19 @@ SSH-verkeer wordt geweigerd omdat de verzameling netwerk regels voor *weigeren* 
 - Prioriteit: 200
 - Actie: Toestaan
 
-|naam  |Protocol  |Brontype  |Bron  |Doeltype  |Doel adres  |Doelpoorten|
+|name  |Protocol  |Brontype  |Bron  |Doeltype  |Doel adres  |Doelpoorten|
 |---------|---------|---------|---------|----------|----------|--------|
-|Toestaan-SSH     |TCP|IP-adres|*|IP-adres|*|22
+|Toestaan-SSH     |TCP|Het IP-adres|*|Het IP-adres|*|22
 
 **Verzameling van netwerk regels 2**
 
 - Naam: weigeren-verzameling
 - Prioriteit: 100
-- Actie: weigeren
+- Actie: Weigeren
 
-|naam  |Protocol  |Brontype  |Bron  |Doeltype  |Doel adres  |Doelpoorten|
+|name  |Protocol  |Brontype  |Bron  |Doeltype  |Doel adres  |Doelpoorten|
 |---------|---------|---------|---------|----------|----------|--------|
-|Weigeren-SSH     |TCP|IP-adres|*|IP-adres|*|22
+|Weigeren-SSH     |TCP|Het IP-adres|*|Het IP-adres|*|22
 
 **Resultaat**
 

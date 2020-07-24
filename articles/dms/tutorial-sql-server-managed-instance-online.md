@@ -3,8 +3,8 @@ title: 'Zelf studie: SQL Server online migreren naar een beheerd exemplaar van S
 titleSuffix: Azure Database Migration Service
 description: Meer informatie over het uitvoeren van een online migratie van SQL Server naar een door Azure SQL beheerd exemplaar met behulp van Azure Database Migration Service.
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/10/2020
-ms.openlocfilehash: 3d462fa0fa2afe5937c60985938c8268991dfa41
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 4bd6c3dc1f3cd1ef553efc6ac3cd3c4e558afc97
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084219"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087659"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>Zelf studie: SQL Server naar een Azure SQL Managed instance online migreren met behulp van DMS
 
@@ -30,7 +30,7 @@ In deze zelfstudie leert u het volgende:
 >
 > * Maak een exemplaar van de Azure Database Migration Service.
 > * Maak een migratie project en start online migratie met behulp van Azure Database Migration Service.
-> * De migratie controleren.
+> * Houd de migratie in de gaten.
 > * Voer de migratie cutover uit wanneer u klaar bent.
 
 > [!IMPORTANT]
@@ -89,6 +89,9 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
 * Maak of noteer een Azure Storage-account in de **Standard-prestatielaag** waarmee de DMS-service de back-upbestanden van de database kan uploaden en gebruiken voor het migreren van databases.  Zorg ervoor dat u het Azure Storage-account maakt in dezelfde regio als de Azure Database Migration Service instantie is gemaakt.
 
+  > [!NOTE]
+  > Wanneer u een Data Base migreert die wordt beveiligd door [transparent Data Encryption](https://docs.microsoft.com/azure/azure-sql/database/transparent-data-encryption-tde-overview) naar een beheerd exemplaar met behulp van een online migratie, moet het bijbehorende certificaat van de on-premises of de Azure VM-SQL Server instantie worden gemigreerd voordat de data base wordt hersteld. Zie [een TDe-certificaat migreren naar een beheerd exemplaar](https://docs.microsoft.com/azure/azure-sql/database/transparent-data-encryption-tde-overview)voor gedetailleerde stappen.
+
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Registreer de Microsoft.DataMigration-resourceprovider
 
 1. Meld u aan bij de Azure-portal, selecteer **Alle services** en selecteer vervolgens **Abonnementen**.
@@ -136,7 +139,7 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
 7. Selecteer **Maken** om de dienst te maken.
 
-## <a name="create-a-migration-project"></a>Maak een migratieproject
+## <a name="create-a-migration-project"></a>Een migratieproject maken
 
 Nadat er een exemplaar van de service is gemaakt, zoekt u het exemplaar in de Azure-portal, opent u het en maakt u vervolgens een nieuw migratieproject.
 

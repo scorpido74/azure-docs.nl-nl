@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: 03356c0b4a93f4befdbc529523e58642137a8887
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc1ad3104596cc7ad4bb48f88e4c8312bc833371
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80420822"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088560"
 ---
 # <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>Verificatiefouten oplossen als u RDP gebruikt om verbinding te maken met Azure-VM's
 
@@ -161,7 +161,7 @@ Reset-ComputerMachinePassword -Server "<COMPUTERNAME>" -Credential <DOMAIN CREDE
 
 Als de communicatie tussen de domein controller en de VM goed is, maar de domein controller niet in orde is om een RDP-sessie te openen, kunt u proberen om de domein controller opnieuw op te starten.
 
-Als de voor gaande opdrachten het communicatie probleem met het domein niet hebben opgelost, kunt u deze VM opnieuw toevoegen aan het domein. Voer de volgende stappen uit om dit te doen:
+Als de voor gaande opdrachten het communicatie probleem met het domein niet hebben opgelost, kunt u deze VM opnieuw toevoegen aan het domein. Voer hiervoor de volgende stappen uit:
 
 1. Maak een script met de naam Unjoin.ps1 met behulp van de volgende inhoud en implementeer vervolgens het script als een aangepaste script extensie op de Azure Portal:
 
@@ -276,8 +276,8 @@ Start de VM opnieuw op zodat de wijzigingen in het REGI ster van kracht worden.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Methode SetEncryptionLevel van de klasse Win32_TSGeneralSetting](https://docs.microsoft.com/windows/desktop/TermServ/win32-tsgeneralsetting-setencryptionlevel)
+[Methode SetEncryptionLevel van de klasse Win32_TSGeneralSetting](/windows/desktop/termserv/win32-tsgeneralsetting-setencryptionlevel)
 
-[Server authenticatie-en versleutelings niveaus configureren](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770833(v=ws.11))
+[Server authenticatie-en versleutelings niveaus configureren](/previous-versions/windows/it-pro/windows-server-2008-r2-and-2008/cc770833(v=ws.11))
 
-[Win32_TSGeneralSetting klasse](https://docs.microsoft.com/windows/desktop/TermServ/win32-tsgeneralsetting)
+[Win32_TSGeneralSetting klasse](/windows/desktop/termserv/win32-tsgeneralsetting)

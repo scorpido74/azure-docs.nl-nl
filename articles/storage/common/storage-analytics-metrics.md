@@ -9,11 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 5613453667e3bb278f4da22ebed4502def70235b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4bb17fce7be7aeff2a6978177106201e4c80aee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83675898"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087268"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure Opslaganalyse metrische gegevens (klassiek)
 
@@ -37,7 +38,7 @@ Azure Storage gebruikt de Opslaganalyse oplossing voor het opslaan van metrische
 
  Metrische gegevens over trans acties worden vastgelegd voor gebruikers aanvragen en aanvragen van Opslaganalyse zichzelf. Aanvragen van Opslaganalyse voor het schrijven van Logboeken en tabel entiteiten worden bijvoorbeeld vastgelegd.
 
-## <a name="capacity-metrics"></a>Metrische capaciteitsgegevens  
+## <a name="capacity-metrics"></a>Metrische gegevens over capaciteit  
 
 > [!NOTE]
 >  Op dit moment zijn capaciteits gegevens alleen beschikbaar voor de BLOB-service.
@@ -145,18 +146,16 @@ In de sectie **bewaking (klassiek)** van het menu venster van het opslag account
 
 Als u de metrische gegevens wilt downloaden voor lange termijn opslag of als u ze lokaal wilt analyseren, moet u een hulp programma gebruiken of code schrijven om de tabellen te lezen. U moet de metrische gegevens over minuten voor analyse downloaden. De tabellen worden niet weer gegeven als u alle tabellen in uw opslag account vermeld, maar u kunt ze rechtstreeks op naam openen. Veel hulp middelen voor opslag bladeren zijn op de hoogte van deze tabellen en u kunt ze rechtstreeks weer geven. Zie [Azure Storage-client hulpprogramma's](/azure/storage/storage-explorers)voor een lijst met beschik bare hulpprogram ma's.
 
-||||  
+|Metrische gegevens|Tabel namen|Opmerkingen| 
 |-|-|-|  
-|**Metrische gegevens**|**Tabel namen**|**Opmerkingen**|  
 |Metrische gegevens per uur|$MetricsHourPrimaryTransactionsBlob<br /><br /> $MetricsHourPrimaryTransactionsTable<br /><br /> $MetricsHourPrimaryTransactionsQueue<br /><br /> $MetricsHourPrimaryTransactionsFile|In versies voorafgaand aan 15 augustus 2013 zijn deze tabellen bekend als:<br /><br /> $MetricsTransactionsBlob<br /><br /> $MetricsTransactionsTable<br /><br /> $MetricsTransactionsQueue<br /><br /> Metrische gegevens voor de bestands service zijn beschikbaar vanaf versie april 2015.|  
 |Metrische gegevens over minuten|$MetricsMinutePrimaryTransactionsBlob<br /><br /> $MetricsMinutePrimaryTransactionsTable<br /><br /> $MetricsMinutePrimaryTransactionsQueue<br /><br /> $MetricsMinutePrimaryTransactionsFile|Kan alleen worden ingeschakeld met Power shell of via een programma.<br /><br /> Metrische gegevens voor de bestands service zijn beschikbaar vanaf versie april 2015.|  
 |Capaciteit|$MetricsCapacityBlob|Alleen Blob service.|  
 
 Zie [Opslaganalyse-tabel schema metrische](/rest/api/storageservices/storage-analytics-metrics-table-schema)gegevens voor gedetailleerde informatie over de schema's voor deze tabellen. De volgende voorbeeld rijen tonen alleen een subset van de beschik bare kolommen, maar ze illustreren enkele belang rijke functies van de manier waarop metrische opslag gegevens deze metrische gegevens opslaan:  
 
-||||||||||||  
+|PartitionKey|RowKey|Timestamp|TotalRequests|TotalBillableRequests|TotalIngress|TotalEgress|Beschikbaarheid|AverageE2ELatency|AverageServerLatency|PercentSuccess| 
 |-|-|-|-|-|-|-|-|-|-|-|  
-|**PartitionKey**|**RowKey**|**Tijdstempel**|**TotalRequests**|**TotalBillableRequests**|**TotalIngress**|**TotalEgress**|**Beschikbaarheid**|**AverageE2ELatency**|**AverageServerLatency**|**PercentSuccess**|  
 |20140522T1100|gebruiker Hele|2014-05-22T11:01:16.7650250 Z|7|7|4003|46801|100|104,4286|6,857143|100|  
 |20140522T1100|gebruiker QueryEntities|2014-05-22T11:01:16.7640250 Z|5|5|2694|45951|100|143,8|7,8|100|  
 |20140522T1100|gebruiker QueryEntity|2014-05-22T11:01:16.7650250 Z|1|1|538|633|100|3|3|100|  

@@ -3,8 +3,8 @@ title: 'Zelf studie: SQL Server offline migreren naar een SQL-data base'
 titleSuffix: Azure Database Migration Service
 description: Meer informatie over het migreren van SQL Server naar Azure SQL Database offline met behulp van Azure Database Migration Service.
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 45a343fdbd41abf1388556131f1f53a675d8ab49
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a0d2353364767dfb1fd73d517926d0fa63c11a1d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85316221"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087710"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>Zelfstudie: SQL Server migreren naar een offline exemplaar van Azure SQL Database met behulp van DMS
 
@@ -31,7 +31,7 @@ In deze zelfstudie leert u het volgende:
 > - Maak een exemplaar van de Azure Database Migration Service.
 > - Een migratie project maken met behulp van Azure Database Migration Service.
 > - De migratie uitvoeren.
-> - De migratie controleren.
+> - Houd de migratie in de gaten.
 > - Een migratierapport downloaden.
 
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
@@ -189,7 +189,7 @@ Voer de volgende stappen uit om het **AdventureWorks2012** -schema te migreren n
 
 7. Selecteer **Maken** om de dienst te maken.
 
-## <a name="create-a-migration-project"></a>Maak een migratieproject
+## <a name="create-a-migration-project"></a>Een migratieproject maken
 
 Nadat de service is gemaakt, zoek deze op in de Azure-portal, open hem en maak vervolgens een nieuw migratieproject.
 
@@ -273,7 +273,7 @@ Nadat de service is gemaakt, zoek deze op in de Azure-portal, open hem en maak v
 
 3. Controleer de doel database (s) op de doel-Azure SQL Database.
 
-### <a name="additional-resources"></a>Aanvullende bronnen
+### <a name="additional-resources"></a>Aanvullende resources
 
 - [SQL-migratie met behulp van de Azure Data Migration service](https://www.microsoft.com/handsonlabs/SelfPacedLabs/?storyGuid=3b671509-c3cd-4495-8e8f-354acfa09587) -praktijk op Lab.
 - Zie het artikel [Bekende problemen met en tijdelijke oplossingen voor online migraties naar Azure SQL Database](known-issues-azure-sql-online.md) voor informatie over bekende problemen en beperkingen bij het uitvoeren van online migraties naar Azure SQL Database.

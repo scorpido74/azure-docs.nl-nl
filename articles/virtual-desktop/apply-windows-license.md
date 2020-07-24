@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 08/14/2019
 ms.author: chrimo
-ms.openlocfilehash: c60303d2306ca167a4d90b0cc27c1d265f2e2db8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53e70fbb1321f33849073bbd6b2176f5d88a1f8b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204418"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088994"
 ---
 # <a name="apply-windows-license-to-session-host-virtual-machines"></a>Windows-licentie Toep assen op virtuele machines van de sessiehost
 
@@ -27,7 +27,7 @@ Er zijn een aantal manieren om de Windows-licentie voor virtueel bureau blad te 
 - U kunt een licentie Toep assen op een bestaande virtuele machine van een host. Volg hiervoor de instructies in [een hostgroep maken met Power shell](./create-host-pools-powershell.md) om een hostgroep en gekoppelde vm's te maken en ga vervolgens terug naar dit artikel voor meer informatie over het Toep assen van de licentie.
 
 ## <a name="apply-a-windows-license-to-a-session-host-vm"></a>Een Windows-licentie Toep assen op een Session Host-VM
-Zorg ervoor dat u [de nieuwste Azure PowerShell hebt geïnstalleerd en geconfigureerd](/powershell/azure/overview). Voer de volgende Power shell-cmdlet uit om de Windows-licentie toe te passen:
+Zorg ervoor dat u [de nieuwste Azure PowerShell hebt geïnstalleerd en geconfigureerd](/powershell/azure/). Voer de volgende Power shell-cmdlet uit om de Windows-licentie toe te passen:
 
 ```powershell
 $vm = Get-AzVM -ResourceGroup <resourceGroupName> -Name <vmName>

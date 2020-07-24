@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: bced6a9e6c59dc32657dbabef986e29e0447b28b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29457f2f5021fed9d8785f5764c4119de4be1fa9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60947201"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089546"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Rapport met kostenramingen van Azure Site Recovery Deployment Planner 
 
@@ -119,7 +119,7 @@ Handmatig VM's toevoegen:
 
     f. **Duur van elke noodherstelanalyse (dagen)**
 
-    bijvoorbeeld **Het type besturingssysteem**
+    g. **Type besturingssysteem**
 
     h. **De gegevensredundantie**
 
@@ -167,16 +167,16 @@ eastus, eastus2, westus, centralus, northcentralus, southcentralus, northeurope,
 ## <a name="supported-currencies"></a>Ondersteunde valuta's
 Met Azure Site Recovery Deployment Planner kunt u het kostenrapport genereren met een van de volgende valuta's.
 
-|Valuta|Name||Valuta|Name||Valuta|Name|
+|Valuta|Naam|Valuta|Naam|Valuta|Naam|
 |---|---|---|---|---|---|---|---|
-|ARS|Argentijnse peso ($)||AUD|Australische dollar ($)||BRL|Braziliaanse real (R$)|
-|CAD|Canadese dollar ($)||CHF|Zwitserse frank (chf)||DKK|Deense kroon (kr)|
-|EUR|Euro (€)||GBP|Britse pond (£)||HKD|Hongkongse dollar (HK$)|
-|IDR|Indonesische roepia (Rp)||INR|Indiase rupee (₹)||JPY|Japanse yen (¥)|
-|KRW|Koreaanse won (₩)||MXN|Mexicaanse peso (MX$)||MYR|Maleisische ringgit (RM$)|
+|ARS|Argentijnse peso ($)|AUD|Australische dollar ($)|BRL|Braziliaanse real (R$)|
+|CAD|Canadese dollar ($)|CHF|Zwitserse frank (chf)|DKK|Deense kroon (kr)|
+|EUR|Euro (€)|GBP|Britse pond (£)|HKD|Hongkongse dollar (HK$)|
+|IDR|Indonesische roepia (Rp)|INR|Indiase rupee (₹)|JPY|Japanse yen (¥)|
+|KRW|Koreaanse won (₩)|MXN|Mexicaanse peso (MX$)|MYR|Maleisische ringgit (RM$)|
 |NOK|Noorse kroon (kr)||NZD|Nieuw-Zeelandse dollar ($)||RUB|Russische roebel (руб)|
-|SAR|Saudische riyal (SR)||SEK|Zweedse kroon (kr)||TWD|Taiwanese dollar (NT$)|
-|TRY|Turkse lira (TL)||USD| Amerikaanse dollar ($)||ZAR|Zuid-Afrikaanse rand (R)|
+|SAR|Saudische riyal (SR)|SEK|Zweedse kroon (kr)|TWD|Taiwanese dollar (NT$)|
+|TRY|Turkse lira (TL)|USD| Amerikaanse dollar ($)|ZAR|Zuid-Afrikaanse rand (R)|
 
 ## <a name="next-steps"></a>Volgende stappen
 Meer informatie over hoe u [Hyper-V-VM's naar Azure met Site Recovery](hyper-v-azure-tutorial.md) beveiligt.

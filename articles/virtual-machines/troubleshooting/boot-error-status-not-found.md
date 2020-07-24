@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
-ms.openlocfilehash: 817f9e362e639cbb8f0cc79607c376c0e8216ec7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3677d67f55cfccdc80245b2ec870ffa76b0a1940
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83664989"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088662"
 ---
 # <a name="troubleshoot-windows-boot-manager-error----0xc0000225-status-not-found"></a>Problemen met de Windows-opstart beheer fout oplossen-0xC0000225 ' status niet gevonden '
  
@@ -26,7 +27,7 @@ Dit artikel bevat stappen voor het oplossen van problemen waarbij fout code 0xC0
 
 ## <a name="symptoms"></a>Symptomen
 
-Wanneer u [Diagnostische gegevens over opstarten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) gebruikt om de scherm opname van de virtuele machine weer te geven, ziet u dat de scherm opname een Windows-fout bericht kan niet starten met de status code *0xc0000225*.
+Wanneer u [Diagnostische gegevens over opstarten](./boot-diagnostics.md) gebruikt om de scherm opname van de virtuele machine weer te geven, ziet u dat de scherm opname een Windows-fout bericht kan niet starten met de status code *0xc0000225*.
 
 Het bestand dat aan deze fout code is gekoppeld, laat u weten welke stappen u moet ondernemen om het probleem op te lossen. Zoek het **bestand:** de tekst van de sectie om de juiste gedrags duur te bepalen.
 
@@ -89,7 +90,7 @@ Een beschadiging van een register component kan de volgende oorzaken hebben:
 
 ### <a name="create-and-access-a-repair-vm"></a>Een herstel-VM maken en openen
 
-1. Gebruik stap 1-3 van de [VM-reparatie opdrachten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) om een herstel-VM voor te bereiden.
+1. Gebruik stap 1-3 van de [VM-reparatie opdrachten](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) om een herstel-VM voor te bereiden.
 1. Maak met behulp van Verbinding met extern bureaublad verbinding met de herstel-VM.
 
 ### <a name="select-a-solution"></a>Een oplossing selecteren
@@ -177,7 +178,7 @@ Als deze informatie verzameling een fout retourneert waarin zich geen **\boot\bc
          sel disk <DISK #>
          ```
 
-         In de volgende afbeelding ziet u de resultaten van het weer geven en selecteren van een schijf. Schijf 0 (127 GB | Online), schijf 1 (32 GB | Online) en schijf 2 (127 GB | Online) worden weer gegeven en schijf 2 wordt geselecteerd met behulp van de opdracht `sel disk 2` .
+         In de volgende afbeelding ziet u de resultaten van het weer geven en selecteren van een schijf. Schijf 0 (127 GB/online), schijf 1 (32 GB/online) en schijf 2 (127 GB/online) worden weer gegeven en schijf 2 wordt geselecteerd met behulp van de opdracht `sel disk 2` .
 
          ![De resultaten van de vermelding en het selecteren van een schijf. Schijf 0 (127 GB | Online), schijf 1 (32 GB | Online) en schijf 2 (127 GB | Online) worden weer gegeven, waarbij schijf 2 wordt geselecteerd.](./media/troubleshoot-boot-error-status-not-found/9.png)
 
@@ -188,7 +189,7 @@ Als deze informatie verzameling een fout retourneert waarin zich geen **\boot\bc
          sel partition <PARTITION #>
          ```
 
-         In de volgende afbeelding ziet u de resultaten van een vermelding en het selecteren van een partitie. Partitie 1 (gereserveerd | 16MB), partitie 2 (systeem | 100 MB) en partitie 3 (primair | 126 GB) worden weer gegeven, waarbij partitie 2 wordt geselecteerd met behulp van de opdracht `sel part 2` .
+         In de volgende afbeelding ziet u de resultaten van een vermelding en het selecteren van een partitie. Partitie 1 (gereserveerd/16 MB), partitie 2 (systeem/100 MB) en partitie 3 (primair/126 GB) worden weer gegeven, waarbij partitie 2 wordt geselecteerd met behulp van de opdracht `sel part 2` .
 
          ![De resultaten van de vermelding en het selecteren van een partitie. Partitie 1 (gereserveerd | 16 MB), partitie 2 (systeem | 100 MB) en partitie 3 (primair | 126 GB) worden weer gegeven en partitie 2 wordt geselecteerd.](./media/troubleshoot-boot-error-status-not-found/10.png)
 
@@ -302,4 +303,4 @@ Er is een oplossing voor het **register bestand** , maar u moet [een ondersteuni
    
 ### <a name="rebuild-the-vm"></a>De virtuele machine opnieuw bouwen
 
-Gebruik [stap 5 van de opdrachten voor het herstellen van de virtuele machine](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) om de virtuele machine opnieuw samen te stellen.
+Gebruik [stap 5 van de opdrachten voor het herstellen van de virtuele machine](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) om de virtuele machine opnieuw samen te stellen.

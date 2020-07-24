@@ -10,12 +10,12 @@ ms.workload: azure-vs
 ms.topic: how-to
 ms.date: 11/03/2017
 ms.author: ghogen
-ms.openlocfilehash: d864230ff524f6c008f9f05c16505cd9d0e9f229
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bdc03e8c136606ab7768705b0c8dbcc97782966f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82583360"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088390"
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>Een ASP.NET-Web-app publiceren naar een Azure VM vanuit Visual Studio
 
@@ -69,7 +69,7 @@ In de volgende sectie wordt beschreven hoe u een bestaande ASP.NET-webtoepassing
 
 11. Als het publiceren is gelukt, wordt een browser gestart om de URL van de zojuist gepubliceerde site te openen.
 
-**Gelukt!**
+**Geleverd!**
 
 U hebt nu uw web-app gepubliceerd naar een virtuele machine van Azure.
 
@@ -111,7 +111,7 @@ De instellingen moeten er ongeveer als volgt uitzien:
 
 ### <a name="set-up-cicd-for-automated-deployment-to-azure-vm"></a>CI/CD instellen voor automatische implementatie naar Azure VM
 
-Zie [implementeren op een virtuele Windows-machine](https://docs.microsoft.com/vsts/build-release/apps/cd/deploy-webdeploy-iis-deploygroups)om een continue leverings pijplijn met Azure-pijp lijnen in te stellen.
+Zie [implementeren op een virtuele Windows-machine](/vsts/build-release/apps/cd/deploy-webdeploy-iis-deploygroups)om een continue leverings pijplijn met Azure-pijp lijnen in te stellen.
 
 [VM Overview - DNS Name]: ../../../includes/media/publish-web-app-from-visual-studio/VMOverviewDNSName.png
 [IP Address Config - DNS Name]: ../../../includes/media/publish-web-app-from-visual-studio/IPAddressConfigDNSName.png

@@ -3,12 +3,12 @@ title: Azure Event Hubs-client-Sdk's | Microsoft Docs
 description: Dit artikel bevat informatie over de client-Sdk's voor Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 4c3557556500f2a536e20331bd3d05d84f608f0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b75a66197b152425198b94a68ac77e392cb4c0e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85312559"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087557"
 ---
 # <a name="azure-event-hubs---client-sdks"></a>Azure Event Hubs-client-Sdk's
 Dit artikel bevat de volgende informatie voor de Sdk's die worden ondersteund door Azure Event Hubs: 
@@ -27,13 +27,13 @@ In de volgende tabel worden alle momenteel beschik bare Azure Event Hubs runtime
 | . NET Standard (**verouderd** en ondersteunt zowel .net Core als .NET Framework) | [Microsoft.Azure.EventHubs](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) | <ul><li>[Locatie van GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Microsoft.Azure.EventHubs)</li><li>[Zelfstudie](event-hubs-dotnet-standard-getstarted-send.md)</li></ul> | 
 |       | [Microsoft.Azure.EventHubs.Processor](https://www.nuget.org/packages/Microsoft.Azure.EventHubs.Processor) | <ul><li>[Locatie van GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Microsoft.Azure.EventHubs.Processor)</li><li>[Zelfstudie](event-hubs-dotnet-standard-getstarted-send.md)</li></ul> |
 | . NET Framework (**oud**) | [WindowsAzure.Messaging](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) |<ul><li>[Zelfstudie](event-hubs-dotnet-framework-getstarted-send.md)</li></ul> |
-| Java | [Azure-Messa ging-Event hubs](https://search.maven.org/search?q=a:azure-messaging-eventhubs) | <ul><li>[Locatie van GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs)</li><li>[Zelfstudie](get-started-java-send-v2.md)</li></ul> |
+| Java | [azure-messaging-eventhubs](https://search.maven.org/search?q=a:azure-messaging-eventhubs) | <ul><li>[Locatie van GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs)</li><li>[Zelfstudie](get-started-java-send-v2.md)</li></ul> |
 |      | [Azure-Event hubs](https://search.maven.org/search?q=a:azure-eventhubs) **(verouderd)** | <ul><li>[Locatie van GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/microsoft-azure-eventhubs)</li><li>[Zelfstudie](event-hubs-java-get-started-send.md)</li></ul> |
 | Python |  [Azure-eventhub](https://pypi.org/project/azure-eventhub/) | <ul><li>[Locatie van GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub)</li><li>[Zelfstudie](get-started-python-send-v2.md)</li></ul> |
 |        | [Azure-eventhub-checkpointstoreblob-AIO](https://pypi.org/project/azure-eventhub-checkpointstoreblob-aio/) | <ul><li>[Locatie van GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio)</li><li>[Zelfstudie](get-started-python-send-v2.md)</li></ul> |
-| Javascript | [Azure/Event-hubs](https://www.npmjs.com/package/@azure/event-hubs) | <ul><li>[Locatie van GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs)</li><li>[Zelfstudie](get-started-node-send-v2.md)</li></ul> |
+| JavaScript | [Azure/Event-hubs](https://www.npmjs.com/package/@azure/event-hubs) | <ul><li>[Locatie van GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs)</li><li>[Zelfstudie](get-started-node-send-v2.md)</li></ul> |
 |            | [Azure-Event hubs-checkpointstore-BLOB](https://www.npmjs.com/package/@azure/eventhubs-checkpointstore-blob) | <ul><li>[Locatie van GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/eventhubs-checkpointstore-blob)</li><li>[Zelfstudie](get-started-node-send-v2.md)</li></ul> |
-| Aan de slag | [Azure-Event-hubs-go](https://github.com/Azure/azure-event-hubs-go) | <ul><li>[Locatie van GitHub](https://github.com/Azure/azure-event-hubs-go)</li><li>[Zelfstudie](event-hubs-go-get-started-send.md)</li></ul> |
+| Go | [Azure-Event-hubs-go](https://github.com/Azure/azure-event-hubs-go) | <ul><li>[Locatie van GitHub](https://github.com/Azure/azure-event-hubs-go)</li><li>[Zelfstudie](event-hubs-go-get-started-send.md)</li></ul> |
 | C | [Azure-Event-hubs-c](https://github.com/Azure/azure-event-hubs-c) | <ul><li>[Locatie van GitHub](https://github.com/Azure/azure-event-hubs-c)</li><li>[Zelfstudie](event-hubs-c-getstarted-send.md)</li></ul> |
 
 ## <a name="management-sdks"></a>Management-Sdk's
@@ -48,6 +48,6 @@ De volgende tabel geeft een lijst van alle momenteel beschik bare beheer bibliot
 
 U kunt meer informatie over Event Hubs vinden via de volgende koppelingen:
 
-* [Event Hubs-overzicht](event-hubs-what-is-event-hubs.md)
+* [Event Hubs-overzicht](./event-hubs-about.md)
 * [Een event hub maken](event-hubs-create.md)
 * [Veelgestelde vragen over Event Hubs](event-hubs-faq.md)

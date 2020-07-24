@@ -3,8 +3,8 @@ title: 'Zelf studie: PostgreSQL migreren naar Azure DB voor PostgreSQL via de Az
 titleSuffix: Azure Database Migration Service
 description: Meer informatie over het uitvoeren van een online migratie van PostgreSQL on-premises naar Azure Database for PostgreSQL met behulp van Azure Database Migration Service via de Azure Portal.
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: arunkumarthiags
+ms.author: arthiaga
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 04/11/2020
-ms.openlocfilehash: e01cc1c07d720c4743a03b5001e640f8b851dd5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ccbd22a44f0dfb05e425bff45cdc18803391812
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81114007"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087642"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-portal"></a>Zelf studie: PostgreSQL migreren naar Azure DB voor PostgreSQL online met behulp van DMS via de Azure Portal
 
@@ -29,7 +30,7 @@ In deze zelfstudie leert u het volgende:
 > * Maak een exemplaar van de Azure Database Migration Service.
 > * Maak een migratie project in Azure Database Migration Service.
 > * De migratie uitvoeren.
-> * De migratie controleren.
+> * Houd de migratie in de gaten.
 > * Migratie cutover uitvoeren.
 
 > [!NOTE]
@@ -200,7 +201,7 @@ Om alle databaseobjecten zoals tabelschema’s, indexen en opgeslagen procedures
 
    Het maken van een service wordt binnen ongeveer 10 tot 15 minuten voltooid.
 
-## <a name="create-a-migration-project"></a>Maak een migratieproject
+## <a name="create-a-migration-project"></a>Een migratieproject maken
 
 Nadat de service is gemaakt, zoek deze op in de Azure-portal, open hem en maak vervolgens een nieuw migratieproject.
 

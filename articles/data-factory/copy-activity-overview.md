@@ -9,13 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 07/15/2020
 ms.author: jingwang
-ms.openlocfilehash: 74210864332319dabb16eda865da9dc9793e3dbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6092395929f4990010e2212f28a5962cfe1c7e7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84187670"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087834"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Kopieer activiteit in Azure Data Factory
 
@@ -60,7 +61,7 @@ U kunt de Kopieer activiteit gebruiken om bestanden te kopiëren tussen twee op 
 * Kopieer gegevens in de indeling van de tekst in het type gzip (gecomprimeerd) in de vorm van Azure Blob-opslag en schrijf deze naar Azure SQL Database.
 * Veel meer activiteiten waarvoor serialisatie/deserialisatie of compressie/decompressie nodig is.
 
-## <a name="supported-regions"></a>Ondersteunde regio’s
+## <a name="supported-regions"></a>Ondersteunde regio's
 
 De service die de Kopieer activiteit mogelijk maakt, is wereld wijd beschikbaar in de regio's en geografies die worden vermeld in [Azure Integration runtime-locaties](concepts-integration-runtime.md#integration-runtime-location). De wereld wijd beschik bare topologie zorgt voor een efficiënte verplaatsing van gegevens die doorgaans interregionale hops voor komt. Zie [producten per regio](https://azure.microsoft.com/regions/#services) om de beschik baarheid van Data Factory en het verplaatsen van gegevens in een specifieke regio te controleren.
 
@@ -185,7 +186,7 @@ Zie [schema en gegevens type toewijzing](copy-activity-schema-and-type-mapping.m
 Naast het kopiëren van gegevens uit de brongegevens opslag naar sink, kunt u ook configureren om extra gegevens kolommen toe te voegen, samen met de sink. Bijvoorbeeld:
 
 - Bij kopiëren van bron op basis van een bestand slaat u het relatieve bestandspad op als een extra kolom om op te sporen van welk bestand de gegevens afkomstig zijn.
-- Voeg een kolom met een ADF-expressie toe om ADF-systeem variabelen als pijplijn naam/pijplijn-id te koppelen, of sla andere dynamische waarden op van de uitvoer van de upstream-activiteit.
+- Voeg een kolom met een ADF-expressie toe om ADF-systeem variabelen als pijplijn naam/pijplijn-ID te koppelen, of sla andere dynamische waarden op van de uitvoer van de upstream-activiteit.
 - Voeg een kolom toe met een statische waarde om te voldoen aan de behoeften van het stroomafwaartse verbruik.
 
 U vindt de volgende configuratie op het tabblad Bron van Kopieer activiteit: 
@@ -239,6 +240,22 @@ Als u het programma wilt configureren, voegt u de eigenschap toe aan de `additio
     }
 ]
 ```
+
+## <a name="auto-create-sink-tables"></a>Sink-tabellen automatisch maken
+
+Wanneer u gegevens naar SQL database/Azure Synapse Analytics kopieert en de doel tabel niet bestaat, ondersteunt de Kopieer activiteit automatisch het maken op basis van de bron gegevens. Het helpt u snel aan de slag te gaan met het laden van de gegevens en het evalueren van SQL database/Azure Synapse Analytics. Na het opnemen van de gegevens kunt u het sink-tabel schema controleren en aanpassen op basis van uw behoeften.
+
+Deze functie wordt ondersteund bij het kopiëren van gegevens uit een bron in de volgende Sink-gegevens opslag. U kunt de optie vinden in de *gebruikers interface van ADF-ontwerpen* – > *Kopieer activiteit Sink* – > *tabel optie* : > *tabel voor automatisch maken*of via `tableOption` eigenschap in de nettolading van de Kopieer activiteit.
+
+- [Azure SQL Database](connector-azure-sql-database.md)
+- [Beheerde instantie Azure SQL Database](connector-azure-sql-managed-instance.md)
+- [Azure Synapse Analytics (voorheen Azure SQL Data Warehouse)](connector-azure-sql-data-warehouse.md)
+- [SQL Server](connector-sql-server.md)
+
+![Sink-tabellen maken](media/copy-activity-overview/create-sink-table.png)
+
+> [!NOTE]
+> Het automatisch maken van tabellen wordt momenteel niet ondersteund wanneer het [gefaseerd kopiëren](copy-activity-performance-features.md#staged-copy) is ingeschakeld.
 
 ## <a name="fault-tolerance"></a>Fouttolerantie
 
