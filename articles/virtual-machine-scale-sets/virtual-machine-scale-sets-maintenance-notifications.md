@@ -9,11 +9,12 @@ ms.subservice: management
 ms.date: 08/20/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: c4b0cb8204891538ef9c4eef3fa0ff5fd9686536
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: db6a8965b6a0d03c3de95644d3d455ce3c950960
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83200091"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080434"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Meldingen voor gepland onderhoud voor virtuele-machineschaalsets
 
@@ -82,7 +83,7 @@ De kolom **self-service onderhoud** wordt nu weer gegeven in de lijst met virtue
 
 | Waarde | Beschrijving |
 |-------|-------------|
-| Yes | Ten minste één VM in de schaalset voor virtuele machines bevindt zich in een self-service venster. U kunt onderhoud starten op elk gewenst moment tijdens dit selfservice venster. | 
+| Ja | Ten minste één VM in de schaalset voor virtuele machines bevindt zich in een self-service venster. U kunt onderhoud starten op elk gewenst moment tijdens dit selfservice venster. | 
 | No | Er bevinden zich geen Vm's in een self-service venster in de desbetreffende schaalset voor virtuele machines. | 
 | - | Uw schaal sets voor virtuele machines maken geen deel uit van een geplande onderhouds Golf.| 
 
@@ -111,7 +112,7 @@ Nadat u het onderhoud hebt gestart, onderneemt de betrokken Vm's in de schaalset
  
 ## <a name="check-maintenance-status-by-using-powershell"></a>Onderhouds status controleren met behulp van Power shell
 
-U kunt Azure PowerShell gebruiken om te zien wanneer Vm's in uw schaal sets voor virtuele machines zijn gepland voor onderhoud. Informatie over gepland onderhoud is beschikbaar met behulp van de cmdlet [Get-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) wanneer u de `-InstanceView` para meter gebruikt.
+U kunt Azure PowerShell gebruiken om te zien wanneer Vm's in uw schaal sets voor virtuele machines zijn gepland voor onderhoud. Informatie over gepland onderhoud is beschikbaar met behulp van de cmdlet [Get-AzVmss](/powershell/module/az.compute/get-azvmss) wanneer u de `-InstanceView` para meter gebruikt.
  
 Onderhouds informatie wordt alleen geretourneerd als het onderhoud is gepland. Als er geen onderhoud wordt gepland die van invloed is op het VM-exemplaar, retourneert de cmdlet geen onderhouds informatie. 
 

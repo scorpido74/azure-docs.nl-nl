@@ -6,11 +6,12 @@ ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 05/28/2020
-ms.openlocfilehash: b5c4005c95a88a40a836b9c0f6d1fd01e0417ed0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8211127d7c886b86f97e83a61b3b3ebb055851e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84170270"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078675"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>Logische apps aanroepen, activeren of nesten met behulp van HTTPS-eind punten in Azure Logic Apps
 
@@ -165,7 +166,7 @@ Als u parameter waarden wilt accepteren via de URL van het eind punt, hebt u de 
 
    1. Selecteer **nieuwe stap**  >  **een actie toevoegen**onder de trigger voor aanvragen.
    
-   1. Voer onder **Kies een actie**in het zoekvak in `response` als uw filter. Selecteer in de lijst acties de actie **reactie** .
+   1. Voer in het zoekvak onder **Kies een actie** `response` in als uw filter. Selecteer in de lijst acties de actie **reactie** .
 
 1. Voer de volgende stappen uit om de expressie op te bouwen `triggerOutputs()` waarmee de parameter waarde wordt opgehaald:
 
@@ -232,7 +233,7 @@ Als u parameter waarden wilt accepteren via de URL van het eind punt, hebt u de 
 
    1. Selecteer **nieuwe stap**  >  **een actie toevoegen**onder de trigger voor aanvragen.
 
-   1. Voer onder **Kies een actie**in het zoekvak in `response` als uw filter. Selecteer in de lijst acties de actie **reactie** .
+   1. Voer in het zoekvak onder **Kies een actie** `response` in als uw filter. Selecteer in de lijst acties de actie **reactie** .
 
 1. Neem in de eigenschap **hoofd tekst** van de reactie actie het token op dat staat voor de para meter die u hebt opgegeven in het relatieve pad van uw trigger.
 
@@ -356,10 +357,10 @@ In de antwoord tekst kunt u meerdere kopteksten en elk type inhoud toevoegen. De
 
 Antwoorden hebben de volgende eigenschappen:
 
-| Eigenschap (weer geven) | Eigenschap (JSON) | Description |
+| Eigenschap (weer geven) | Eigenschap (JSON) | Beschrijving |
 |--------------------|-----------------|-------------|
 | **Status code** | `statusCode` | De HTTPS-status code die moet worden gebruikt in het antwoord op de binnenkomende aanvraag. Deze code kan een geldige status code zijn die begint met 2xx, 4xx of 5xx. 3xx-status codes zijn echter niet toegestaan. |
-| **Headers** | `headers` | Een of meer headers die moeten worden meegenomen in het antwoord |
+| **Kopteksten** | `headers` | Een of meer headers die moeten worden meegenomen in het antwoord |
 | **Hoofdtekst** | `body` | Een body-object dat een teken reeks, een JSON-object of zelfs binaire inhoud waarnaar wordt verwezen vanuit een vorige stap kan zijn. |
 ||||
 
@@ -387,7 +388,7 @@ Als u de JSON-definitie voor de reactie actie en de volledige JSON-definitie van
 
 #### <a name="q-what-about-url-security"></a>V: wat gebeurt er met URL-beveiliging?
 
-**A**: Azure maakt veilig-call back-url's voor logische apps met behulp van [Shared Access Signature (SAS)](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature). Deze hand tekening wordt door gegeven als een query parameter en moet worden gevalideerd voordat de logische app kan worden uitgevoerd. Azure genereert de hand tekening met een unieke combi natie van een geheime sleutel per logische app, de naam van de trigger en de bewerking die wordt uitgevoerd. Tenzij iemand toegang heeft tot de sleutel van de geheime logische app, kan er dus geen geldige hand tekening worden gegenereerd.
+**A**: Azure maakt veilig-call back-url's voor logische apps met behulp van [Shared Access Signature (SAS)](/rest/api/storageservices/delegate-access-with-shared-access-signature). Deze hand tekening wordt door gegeven als een query parameter en moet worden gevalideerd voordat de logische app kan worden uitgevoerd. Azure genereert de hand tekening met een unieke combi natie van een geheime sleutel per logische app, de naam van de trigger en de bewerking die wordt uitgevoerd. Tenzij iemand toegang heeft tot de sleutel van de geheime logische app, kan er dus geen geldige hand tekening worden gegenereerd.
 
 > [!IMPORTANT]
 > Voor productie-en hogere beveiligings systemen raden wij u ten zeerste aan om uw logische app rechtstreeks vanuit de browser aan te roepen om de volgende redenen:

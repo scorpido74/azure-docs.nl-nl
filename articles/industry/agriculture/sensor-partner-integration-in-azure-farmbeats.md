@@ -5,11 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 37a387b93f1c6b3796b66993405787cf43990bc4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88a8dcb53ab2f845f52121b11c96c23ad0a3e791
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83684014"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078929"
 ---
 # <a name="sensor-partner-integration"></a>Partnerintegratie voor sensoren
 
@@ -92,7 +93,7 @@ access_token = token_response.get('access_token')
 Hier volgen de meest voorkomende aanvraag headers die moeten worden opgegeven wanneer u een API-aanroep maakt naar FarmBeats Datahub.
 
 
-**Journaalkop** | **Beschrijving en voor beeld**
+**Header** | **Beschrijving en voor beeld**
 --- | ---
 Content-Type | De aanvraag indeling (content-type: Application/ <format> ). Voor FarmBeats Datahub-Api's is de indeling JSON. Content-type: Application/JSON
 Autorisatie | Hiermee geeft u het toegangs token op dat vereist is om een API-aanroep te maken. Autorisatie: Bearer <Access-token>
@@ -130,25 +131,25 @@ FarmBeats Datahub heeft de volgende Api's waarmee de apparaat partners apparaat-
 - /**SensorModel**: SensorModel komt overeen met de meta gegevens van de sensor, zoals de fabrikant, het type sensor dat analoog of digitaal is en de sensor meting, zoals omgevings temperatuur en druk.
 - /**Sensor**: sensor komt overeen met een fysieke sensor waarmee waarden worden vastgelegd. Een sensor is doorgaans verbonden met een apparaat met een apparaat-ID.
 
-  **DeviceModel** |  |
+  DeviceModel | Beschrijving |
   --- | ---
   Type (knoop punt, gateway)  | Type van het apparaat of de gateway |
   Fabrikant  | De naam van de fabrikant |
   Code  | Product code of model naam of-nummer van het apparaat. Bijvoorbeeld EnviroMonitor # 6800. |
   Poorten  | Poort naam en-type, digitaal of analoog.  |
-  Name  | Naam voor het identificeren van de resource. Bijvoorbeeld model naam of product naam. |
-  Description  | Geef een zinvolle beschrijving van het model op. |
+  Naam  | Naam voor het identificeren van de resource. Bijvoorbeeld model naam of product naam. |
+  Beschrijving  | Geef een zinvolle beschrijving van het model op. |
   Eigenschappen  | Aanvullende eigenschappen van de fabrikant. |
-  **Apparaat** |  |
+  **Apparaat** | **Beschrijving** |
   DeviceModelId  |ID van het gekoppelde model. |
   HardwareId   |De unieke ID voor het apparaat, zoals een MAC-adres.  |
   ReportingInterval |Rapportage-interval in seconden. |
   Locatie    |Apparaat Latitude (-90 tot + 90), lengte graad (-180 tot 180) en uitbrei ding (in meters). |
   ParentDeviceId | De ID van het bovenliggende apparaat waarmee dit apparaat is verbonden. Als een knoop punt bijvoorbeeld is verbonden met een gateway, heeft het knoop punt parentDeviceID als de gateway. |
-  Name  | Naam om de resource te identificeren. De partners van het apparaat moeten een naam verzenden die consistent is met de naam van het apparaat op de partner zijde van het apparaat. Als de apparaatnaam door de gebruiker is gedefinieerd op de partner zijde van het apparaat, moet dezelfde door de gebruiker gedefinieerde naam worden door gegeven aan FarmBeats.  |
-  Description  | Geef een zinvolle beschrijving op.  |
+  Naam  | Naam om de resource te identificeren. De partners van het apparaat moeten een naam verzenden die consistent is met de naam van het apparaat op de partner zijde van het apparaat. Als de apparaatnaam door de gebruiker is gedefinieerd op de partner zijde van het apparaat, moet dezelfde door de gebruiker gedefinieerde naam worden door gegeven aan FarmBeats.  |
+  Beschrijving  | Geef een zinvolle beschrijving op.  |
   Eigenschappen  |Aanvullende eigenschappen van de fabrikant.  |
-  **SensorModel** |  |
+  **SensorModel** | **Beschrijving** |
   Type (analoog, digitaal)  |Vermeld een analoge of digitale sensor.|
   Fabrikant  | De naam van de fabrikant. |
   Code  | Product code of model naam of-nummer. Bijvoorbeeld RS-CO2-N01.  |
@@ -159,17 +160,17 @@ FarmBeats Datahub heeft de volgende Api's waarmee de apparaat partners apparaat-
   SensorMeasures > AggregationType  | Geen, gemiddelde, maximum, minimum of StandardDeviation.
   Diepte van SensorMeasures->  | De diepte van de sensor in centimeters. Bijvoorbeeld de meting van het vocht 10 cm onder het wegdek.
   Beschrijving van SensorMeasures->  | Geef een duidelijke beschrijving van de meting op.
-  Name  | Naam voor het identificeren van de resource. Bijvoorbeeld de naam van het model of de product naam.
-  Description  | Geef een zinvolle beschrijving van het model op.
+  Naam  | Naam voor het identificeren van de resource. Bijvoorbeeld de naam van het model of de product naam.
+  Beschrijving  | Geef een zinvolle beschrijving van het model op.
   Eigenschappen  | Aanvullende eigenschappen van de fabrikant.
-  **Sensoren**  |  |
+  **Sensoren**  | **Beschrijving** |
   HardwareId  | De unieke ID voor de sensor die door de fabrikant is ingesteld.
   SensorModelId  | ID van het gekoppelde sensor model.
   Locatie  | Sensor Latitude (-90 tot + 90), lengte graad (-180 tot 180) en uitbrei ding (in meters).
   Naam van poort >  |Naam en type van de poort waarop de sensor is aangesloten op het apparaat. Dit moet dezelfde naam zijn als die is gedefinieerd in het model van het apparaat.
   DeviceId  | ID van het apparaat waarmee de sensor is verbonden.
-  Name  | Naam om de resource te identificeren. Bijvoorbeeld, de naam van de sensor of de product naam en het model nummer of de product code.
-  Description  | Geef een zinvolle beschrijving op.
+  Naam  | Naam om de resource te identificeren. Bijvoorbeeld, de naam van de sensor of de product naam en het model nummer of de product code.
+  Beschrijving  | Geef een zinvolle beschrijving op.
   Eigenschappen  | Aanvullende eigenschappen van de fabrikant.
 
  Zie [Swagger](https://aka.ms/FarmBeatsDatahubSwagger)voor meer informatie over elk van de objecten en hun eigenschappen.

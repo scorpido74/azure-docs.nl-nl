@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: f996ffa864fb4178ddedecde7c5511d5d9cf39a1
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: df318fea4960601dcbfa84149fdc47bedc9104a2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985803"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079822"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>Een algemene RDP-fout in een Azure-VM oplossen
 
@@ -163,7 +163,7 @@ Voordat u deze stappen volgt, moet u een moment opname maken van de besturingssy
       reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp" /v fLogonDisabled /t REG_DWORD /d 0 /f
       ```
 
-7. Start de VM opnieuw.
+7. Start de VM opnieuw op.
 
 8. Verlaat het CMD-exemplaar door te typen `exit` en vervolgens twee keer op **Enter** te drukken.
 
@@ -183,7 +183,7 @@ Zie [extern bureaublad regel matig verbinding maken in azure VM](troubleshoot-rd
 
 #### <a name="step-1-turn-on-remote-desktop"></a>Stap 1: Extern bureaublad inschakelen
 
-1. [Koppel de besturingssysteem schijf aan een herstel-VM](../windows/troubleshoot-recovery-disks-portal.md).
+1. [Koppel de besturingssysteem schijf aan een herstel-VM](./troubleshoot-recovery-disks-portal-windows.md).
 2. Start een Extern bureaublad verbinding met de virtuele machine voor herstel.
 3. Zorg ervoor dat de schijf is gemarkeerd als **online** in de schijf beheer-console. Noteer de stationsletter die is toegewezen aan de gekoppelde besturingssysteem schijf.
 4. Start een Extern bureaublad verbinding met de virtuele machine voor herstel.

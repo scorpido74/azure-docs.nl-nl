@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 05/29/2018
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: cfbd5af7063a4764820b5ce892a9a2b8a305b1b7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ac42fe3265163a5a967524fe11063803c9ca91d3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494935"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080587"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Schaal sets van virtuele machines automatisch schalen in de Azure Portal
 Wanneer u een schaalset maakt, definieert u het aantal VM-exemplaren dat u wilt uitvoeren. Wanneer de vraag van de toepassing verandert, kunt u het aantal VM-exemplaren automatisch vergroten of verkleinen. De mogelijkheid van automatisch schalen stelt u in staat om altijd te voldoen aan de vraag van klanten houden of om gedurende de levenscyclus van uw app te reageren op wijzigingen in de prestaties van de toepassing.
@@ -48,8 +48,8 @@ Als de vraag van uw toepassing toeneemt, neemt de belasting van de VM-exemplaren
     | *Tijdsintervalstatistieken* | Hiermee definieert u hoe de verzamelde metrische gegevens in elke tijd korrel moeten worden geaggregeerd voor analyse.                             | Average        |
     | *Operator*             | De operator die wordt gebruikt voor het vergelijken van de meetwaarden met de drempelwaarde.                                                     | Groter dan   |
     | *Drempelwaarde*            | Het percentage dat ervoor zorgt dat de regel voor automatisch schalen een actie activeert.                                                 | 70             |
-    | *Duur*             | De hoeveelheid tijd waarna de meetwaarde en drempelwaarde met elkaar worden vergeleken.                                   | 10 minuten     |
-    | *Bewerking*            | Hiermee wordt gedefinieerd of de schaalset omhoog of omlaag moet worden geschaald wanneer de regel van toepassing is en door welke toename                        | Percentage verhogen met |
+    | *Duur*             | De hoeveelheid tijd waarna de meetwaarde en drempelwaarde met elkaar worden vergeleken. Bevat geen afkoele periode.                                   | 10 minuten     |
+    | *Bewerking*            | Hiermee definieert u of de schaalset omhoog of omlaag moet worden geschaald wanneer de regel van toepassing is en door welke verhoging.                        | Percentage verhogen met |
     | *Aantal exemplaren*       | Het percentage VM-exemplaren dat moet worden gewijzigd wanneer de regel wordt geactiveerd.                                            | 20             |
     | *Afkoelen (minuten)*  | De tijd die moet worden gewacht voordat de regel opnieuw wordt toegepast, zodat de acties voor automatisch schalen voldoende tijd hebben om effectief te zijn. | 5 minuten      |
 

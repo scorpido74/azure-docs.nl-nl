@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: fa7464c70593c83c708aba49235ecdde1be0cc9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8a06435d4b5a4c11f74073e67e3f48fd2ed0779d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807757"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079567"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure verklarende woorden lijst: een woorden lijst met Cloud terminologie op het Azure-platform
 
@@ -51,7 +51,7 @@ Een opdracht regel interface die kan worden gebruikt voor het beheren van Azure-
 
 ## <a name="azure-powershell"></a><a name="powershell"></a>Azure PowerShell
 Een opdracht regel interface voor het beheren van Azure-Services via een opdracht regel van Windows-Pc's. Sommige services of service functies kunnen alleen worden beheerd via Power shell of de CLI.
-Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview)
+Zie [Azure PowerShell installeren en configureren](/powershell/azure/)
 
 ## <a name="azure-resource-manager-deployment-model"></a><a name="arm-model"></a>Azure Resource Manager implementatie model
 Een van de twee [implementatie modellen](resource-manager-deployment-model.md) die worden gebruikt voor het implementeren van resources in Microsoft Azure (de andere is het klassieke implementatie model). Sommige Azure-Services bieden alleen ondersteuning voor het Resource Manager-implementatie model, sommige ondersteunen alleen het klassieke implementatie model en sommige ondersteunen beide. In de documentatie voor elke Azure-service wordt aangegeven welke model (en) ze ondersteunen.

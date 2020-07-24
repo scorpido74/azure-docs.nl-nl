@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 69d018db26a42c331ff41d242eae54d6fcc43990
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 66796a819c0ca7e114d82210a988fc7e13003941
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536247"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078191"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>De uitvoerings status controleren, de trigger geschiedenis controleren en waarschuwingen instellen voor Azure Logic Apps
 
@@ -86,7 +86,7 @@ Telkens wanneer de trigger wordt geactiveerd voor een item of gebeurtenis, maakt
      U kunt nu gegevens weer geven, zoals invoer en uitvoer voor die stap, bijvoorbeeld:
 
    > [!NOTE]
-   > Alle runtime Details en-gebeurtenissen zijn versleuteld in de Logic Apps-service. Ze worden alleen ontsleuteld wanneer een gebruiker vraagt om die gegevens weer te geven. U kunt [invoer en uitvoer verbergen in de uitvoerings geschiedenis](../logic-apps/logic-apps-securing-a-logic-app.md#obfuscate) of de gebruikers toegang tot deze gegevens regelen met behulp van [op Azure Role gebaseerde Access Control (RBAC)](../role-based-access-control/overview.md).
+   > Alle runtime Details en-gebeurtenissen zijn versleuteld in de Logic Apps-service. Ze worden alleen ontsleuteld wanneer een gebruiker vraagt om die gegevens weer te geven. U kunt [invoer en uitvoer verbergen in de uitvoerings geschiedenis](../logic-apps/logic-apps-securing-a-logic-app.md#obfuscate) of de gebruikers toegang tot deze gegevens beheren door gebruik te maken van [Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../role-based-access-control/overview.md).
 
 <a name="review-trigger-history"></a>
 

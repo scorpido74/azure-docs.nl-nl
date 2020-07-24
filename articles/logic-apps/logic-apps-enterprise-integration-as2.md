@@ -7,18 +7,18 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 02/27/2020
-ms.openlocfilehash: 545c1720ef379ec74bd2e7c0bc68f6a2fcbba789
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/24/2020
+ms.openlocfilehash: e47cd89b2f0a5de4e0fc7663f37a2960e2ada971
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82115496"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078633"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>AS2-berichten voor B2B Enterprise-integratie in Azure Logic Apps uitwisselen met Enterprise Integration Pack
 
 > [!IMPORTANT]
-> De oorspronkelijke AS2-connector wordt afgeschaft, dus zorg ervoor dat u in plaats daarvan de **AS2 (v2)** -connector gebruikt. Deze versie biedt dezelfde functionaliteit als de oorspronkelijke versie, is standaard voor de runtime van de Logic Apps en biedt aanzienlijke prestatie verbeteringen in de voor waarden voor door Voer en bericht grootte. Daarnaast hoeft de systeem eigen v2-connector geen verbinding te maken met uw integratie account. In plaats daarvan moet u, zoals beschreven in de vereisten, ervoor zorgen dat u uw integratie account koppelt aan de logische app waar u van plan bent om de connector te gebruiken.
+> De oorspronkelijke AS2-connector wordt afgeschaft, dus tenzij u tracerings mogelijkheden nodig hebt, gebruikt u in plaats daarvan de **AS2 (v2)** -connector. Met uitzonde ring van het bijhouden van de v2-connector beschikt u over dezelfde mogelijkheden als voor de oorspronkelijke versie, is het systeem eigen voor de Logic Apps-runtime en heeft dat aanzienlijke prestatie verbeteringen in de bericht grootte, door Voer en latentie. Daarnaast hoeft de v2-connector geen verbinding te maken met uw integratie account. In plaats daarvan moet u, zoals beschreven in de vereisten, ervoor zorgen dat u uw integratie account koppelt aan de logische app waar u van plan bent om de connector te gebruiken.
 
 Als u wilt werken met AS2-berichten in Azure Logic Apps, kunt u de AS2-connector gebruiken. Deze levert triggers en acties voor het beheren van AS2-communicatie. Als u bijvoorbeeld beveiliging en betrouw baarheid tijdens het verzenden van berichten wilt instellen, kunt u deze acties gebruiken:
 
@@ -119,7 +119,7 @@ Zie de [sjabloon en het scenario voor de AS2 Logic-app](https://azure.microsoft.
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Voor meer technische informatie over deze connector, zoals acties en limieten zoals beschreven in het Swagger-bestand van de connector, raadpleegt u de [referentie pagina van de connector](https://docs.microsoft.com/connectors/as2/). 
+Voor meer technische informatie over deze connector, zoals acties en limieten zoals beschreven in het Swagger-bestand van de connector, raadpleegt u de [referentie pagina van de connector](/connectors/as2/). 
 
 > [!NOTE]
 > Voor Logic apps in een [Integration service Environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), gebruikt de ISE-label versie van deze connector de [limieten voor B2B-berichten voor ISE](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits).

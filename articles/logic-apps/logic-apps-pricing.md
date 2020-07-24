@@ -8,12 +8,12 @@ ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: 9ce807238e1e373701305f8b6bb03451e0202633
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: a5511d7cd4b5bb0f3fe901a735535f8db9036ee7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964631"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078159"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Prijs model voor Azure Logic Apps
 
@@ -77,27 +77,27 @@ Voor Logic apps die u in een ISE maakt en uitvoert, betaalt u voor deze mogelijk
 
 ## <a name="connectors"></a>Connectors
 
-Azure Logic Apps-connectors helpen uw logische app toegang te bieden tot apps, services en systemen in de Cloud of on-premises met behulp van [Triggers](#triggers), [acties](#actions)of beide. Connectors worden geclassificeerd als Standard of ENTER prise. Zie [connectors for Azure Logic apps](../connectors/apis-list.md)voor een overzicht van deze connectors. Als er geen vooraf gemaakte connectors beschikbaar zijn voor de REST-Api's die u wilt gebruiken in uw Logic apps, kunt u [aangepaste connectors](https://docs.microsoft.com/connectors/custom-connectors)maken. Dit zijn alleen wrappers rond die rest-api's. Aangepaste connectors worden gefactureerd als standaard connectors. De volgende secties bevatten meer informatie over hoe de facturering voor triggers en acties werkt.
+Azure Logic Apps-connectors helpen uw logische app toegang te bieden tot apps, services en systemen in de Cloud of on-premises met behulp van [Triggers](#triggers), [acties](#actions)of beide. Connectors worden geclassificeerd als Standard of ENTER prise. Zie [connectors for Azure Logic apps](../connectors/apis-list.md)voor een overzicht van deze connectors. Als er geen vooraf gemaakte connectors beschikbaar zijn voor de REST-Api's die u wilt gebruiken in uw Logic apps, kunt u [aangepaste connectors](/connectors/custom-connectors)maken. Dit zijn alleen wrappers rond die rest-api's. Aangepaste connectors worden gefactureerd als standaard connectors. De volgende secties bevatten meer informatie over hoe de facturering voor triggers en acties werkt.
 
 <a name="triggers"></a>
 
 ## <a name="triggers"></a>Triggers
 
-Triggers zijn speciale acties waarmee een logische app-instantie wordt gemaakt wanneer er een specifieke gebeurtenis plaatsvindt. Triggers handelen op verschillende manieren, wat van invloed is op hoe de logische app wordt gemeten. Hier volgen de verschillende soorten triggers die in Azure Logic Apps bestaan:
+Een trigger is altijd de eerste stap in de werk stroom van een logische app. Dit is een speciale actie waarmee een logisch app-exemplaar wordt gemaakt en uitgevoerd wanneer aan specifieke criteria wordt voldaan of een specifieke gebeurtenis plaatsvindt. Triggers handelen op verschillende manieren, wat van invloed is op hoe de logische app wordt gemeten. Hier volgen de verschillende soorten triggers die in Azure Logic Apps bestaan:
 
-* **Polling trigger**: deze trigger controleert voortdurend een eind punt op berichten die voldoen aan de criteria voor het maken van een logische app-instantie en het starten van de werk stroom. Zelfs wanneer er geen exemplaar van een logische app wordt gemaakt, Logic Apps meter elke polling-aanvraag als een uitvoering. Als u het polling-interval wilt opgeven, stelt u de trigger in via de ontwerp functie voor logische apps.
+* **Trigger voor terugkeer patroon**: u kunt deze algemene trigger gebruiken die niet specifiek is voor een service of systeem, om de werk stroom van de logische app te starten en een logische app-exemplaar te maken dat wordt uitgevoerd op basis van het terugkeer interval dat u in de trigger hebt ingesteld. U kunt bijvoorbeeld een terugkeer patroon trigger instellen die elke drie dagen of op een complexere planning wordt uitgevoerd.
+
+* **Polling trigger**: u kunt deze meer gespecialiseerde terugkeer patroon trigger gebruiken die meestal is gekoppeld aan de beheerde connector voor een specifieke service of systeem, om te controleren of er gebeurtenissen of berichten zijn die voldoen aan de criteria voor het maken en uitvoeren van een logische app-exemplaar op basis van het terugkeer interval dat u in de trigger hebt ingesteld. Zelfs wanneer er geen exemplaar van een logische app wordt gemaakt, bijvoorbeeld wanneer triggers worden overgeslagen, metert de Logic Apps-service elke polling-aanvraag als een uitvoering. Als u het polling-interval wilt opgeven, stelt u de trigger in via de ontwerp functie voor logische apps.
 
   [!INCLUDE [logic-apps-polling-trigger-non-standard-metering](../../includes/logic-apps-polling-trigger-non-standard-metering.md)]
 
-* **Webhook-trigger**: deze trigger wacht totdat een client een aanvraag naar een bepaald eind punt verzendt. Elke aanvraag die wordt verzonden naar het eind punt van de webhook, telt als een actie-uitvoering. De trigger Request en HTTP-webhook zijn bijvoorbeeld beide webhook-triggers.
-
-* **Terugkeer patroon trigger**: deze trigger maakt een logische app-exemplaar op basis van het terugkeer interval dat u in de trigger hebt ingesteld. U kunt bijvoorbeeld een terugkeer patroon trigger instellen die elke drie dagen of op een complexere planning wordt uitgevoerd.
+* **Webhook-trigger**: in plaats van een polling trigger te gebruiken, kunt u een webhook-trigger gebruiken om te wachten tot de client een aanvraag verzendt naar de logische app op een specifieke eind punt-URL. Elke aanvraag die naar het eind punt van de webhook wordt verzonden, telt als een actie-uitvoering. De trigger Request en HTTP-webhook zijn bijvoorbeeld zowel generieke webhook-triggers. Sommige connectors voor services of systemen hebben ook webhook-triggers.
 
 <a name="actions"></a>
 
 ## <a name="actions"></a>Acties
 
-Azure Logic Apps meters ' ingebouwde ' acties, zoals HTTP, als systeem eigen acties. Ingebouwde acties omvatten bijvoorbeeld HTTP-aanroepen, aanroepen van Azure Functions of API Management, en controle stroom stappen zoals voor waarden, lussen en switch instructies. Elke actie heeft een eigen actie type. Acties die [connectors](https://docs.microsoft.com/connectors) aanroepen, hebben bijvoorbeeld het type ' ApiConnection '. Deze connectors worden geclassificeerd als Standard-of ENTER prise-connectors, die worden gemeten op basis van hun respectieve [prijzen](https://azure.microsoft.com/pricing/details/logic-apps). Enter prise-connectors in *Preview* worden in rekening gebracht als standaard connectors.
+Azure Logic Apps meters ' ingebouwde ' acties, zoals HTTP, als systeem eigen acties. Ingebouwde acties omvatten bijvoorbeeld HTTP-aanroepen, aanroepen van Azure Functions of API Management, en controle stroom stappen zoals voor waarden, lussen en switch instructies. Elke actie heeft een eigen actie type. Acties die [connectors](/connectors) aanroepen, hebben bijvoorbeeld het type ' ApiConnection '. Deze connectors worden geclassificeerd als Standard-of ENTER prise-connectors, die worden gemeten op basis van hun respectieve [prijzen](https://azure.microsoft.com/pricing/details/logic-apps). Enter prise-connectors in *Preview* worden in rekening gebracht als standaard connectors.
 
 Azure Logic Apps meter alle geslaagde en mislukte acties als uitvoeringen. Logic Apps deze acties echter niet meten:
 
@@ -122,7 +122,7 @@ Als u een [ *Integration service Environment* (ISE)](../logic-apps/connect-virtu
 
 Als u wilt kiezen tussen een gratis, basis of standaard integratie account, raadpleegt u deze use-case-beschrijvingen:
 
-* **Gratis**: als u wilt proberen om verkennende scenario's, niet productie scenario's. Deze laag is alleen beschikbaar voor open bare regio's in azure, zoals vs-West of Zuidoost-Azië, maar niet voor [Azure China 21vianet](https://docs.microsoft.com/azure/china/overview-operations) of [Azure Government](../azure-government/documentation-government-welcome.md).
+* **Gratis**: als u wilt proberen om verkennende scenario's, niet productie scenario's. Deze laag is alleen beschikbaar voor open bare regio's in azure, zoals vs-West of Zuidoost-Azië, maar niet voor [Azure China 21vianet](/azure/china/overview-operations) of [Azure Government](../azure-government/documentation-government-welcome.md).
 
 * **Basis**: voor wanneer u alleen bericht verwerking wilt of als een kleine zakelijke partner die een relatie heeft met een handels partner met een grotere bedrijfs entiteit
 
@@ -130,7 +130,7 @@ Als u wilt kiezen tussen een gratis, basis of standaard integratie account, raad
 
 <a name="data-retention"></a>
 
-## <a name="data-retention"></a>Bewaartijd van gegevens
+## <a name="data-retention"></a>Bewaartijd voor gegevens
 
 Met uitzonde ring van Logic apps die worden uitgevoerd in een Integration service Environment (ISE), worden alle invoer en uitvoer die zijn opgeslagen in de uitvoerings geschiedenis van de logische app, gefactureerd op basis van de [uitvoerings periode](logic-apps-limits-and-config.md#run-duration-retention-limits)van een logische app. Logic apps die in een ISE worden uitgevoerd, zijn geen kosten voor het bewaren van gegevens. Zie [Logic apps prijzen](https://azure.microsoft.com/pricing/details/logic-apps)voor prijs tarieven.
 

@@ -4,12 +4,12 @@ description: In dit artikel leert u hoe u back-up-en herstel taken van Azure Bac
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
-ms.openlocfilehash: 628569c547aa776ec2fbb7ec7e32edad7c1fe7dd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8dbd6fd7add58f8458c21fc65381a52ff3306d2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847771"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079312"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>Back-up-en herstel taken bijhouden met behulp van REST API
 
@@ -33,7 +33,7 @@ Een bewerking zoals het activeren van een back-up retourneert altijd een jobID. 
 }
 ```
 
-De Azure VM-back-uptaak wordt [aangeduid met het](https://docs.microsoft.com/rest/api/backup/jobdetails/) veld jobId en kan worden gevolgd door een eenvoudige *Get* -aanvraag.
+De Azure VM-back-uptaak wordt [aangeduid met het](/rest/api/backup/jobdetails/) veld jobId en kan worden gevolgd door een eenvoudige *Get* -aanvraag.
 
 ## <a name="tracking-the-job"></a>De taak bijhouden
 
@@ -43,11 +43,11 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 De `{jobName}` is de ' jobId ' die hierboven wordt vermeld. Het antwoord is altijd 200 OK met het veld Status om de huidige status van de taak aan te geven. Zodra het ' voltooid ' of ' CompletedWithWarnings ' is, toont de sectie ' extendedInfo ' meer informatie over de taak.
 
-### <a name="response"></a>Antwoord
+### <a name="response"></a>Reactie
 
-|Naam  |Type  |Description  |
+|Naam  |Type  |Beschrijving  |
 |---------|---------|---------|
-|200 OK     | [JobResource](https://docs.microsoft.com/rest/api/backup/jobdetails/get#jobresource)        | OK        |
+|200 OK     | [JobResource](/rest/api/backup/jobdetails/get#jobresource)        | OK        |
 
 #### <a name="example-response"></a>Voorbeeld van een antwoord
 

@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 04/22/2020
 ms.author: cynthn
-ms.openlocfilehash: 950f4cfda73b40db0de8ba035868573cda1a5017
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3e914b904b0f6f1d3a4fae6c43c81cdf4eae819
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84675791"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080009"
 ---
 # <a name="managing-platform-updates-with-maintenance-control"></a>Platform updates beheren met onderhouds controle 
 
@@ -22,12 +23,12 @@ Met de onderhouds controle kunt u bepalen wanneer u updates wilt Toep assen op u
 Met onderhouds controle kunt u het volgende doen:
 - Batch updates in één update pakket.
 - Wacht tot 35 dagen om updates toe te passen. 
-- Platform updates voor uw onderhouds venster automatiseren met Azure Functions.
+- Platform updates voor uw onderhouds venster automatiseren met [Azure functions](https://github.com/Azure/azure-docs-powershell-samples/tree/master/maintenance-auto-scheduler).
 - Onderhouds configuraties werken in abonnementen en resource groepen. 
 
 ## <a name="limitations"></a>Beperkingen
 
-- Vm's moeten op een [specifieke host](./linux/dedicated-hosts.md)staan of worden gemaakt met behulp van een [geïsoleerde VM-grootte](./linux/isolation.md).
+- Vm's moeten op een [specifieke host](./linux/dedicated-hosts.md)staan of worden gemaakt met behulp van een [geïsoleerde VM-grootte](isolation.md).
 - Na 35 dagen wordt een update automatisch toegepast.
 - De gebruiker moet toegang hebben tot de **resource bijdrager** .
 
@@ -35,9 +36,11 @@ Met onderhouds controle kunt u het volgende doen:
 
 U kunt onderhouds configuraties maken en beheren met een van de volgende opties:
 
-- [Azure-CLI](maintenance-control-cli.md)
+- [Azure CLI](maintenance-control-cli.md)
 - [Azure PowerShell](maintenance-control-powershell.md)
 - [Azure-portal](maintenance-control-portal.md)
+
+Zie [onderhouds updates plannen met onderhouds beheer en Azure functions](https://github.com/Azure/azure-docs-powershell-samples/tree/master/maintenance-auto-scheduler)voor een Azure functions voor beeld.
 
 ## <a name="next-steps"></a>Volgende stappen
 

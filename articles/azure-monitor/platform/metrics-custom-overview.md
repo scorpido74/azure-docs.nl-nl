@@ -7,16 +7,16 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.subservice: metrics
-ms.openlocfilehash: 930e32cfc57cb5b48180c7695b7b6c7d11df8caa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9581bb17e29a25b618a90aece5675d132c14a97c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506970"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081488"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Aangepaste metrische gegevens in Azure Monitor (preview-versie)
 
-Wanneer u resources en toepassingen in azure implementeert, kunt u beginnen met het verzamelen van telemetrie om inzicht te krijgen in de prestaties en de status. In azure zijn enkele metrische gegevens voor u beschikbaar. Deze metrische gegevens worden [Standard of platform](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)genoemd. Ze zijn echter beperkt. 
+Wanneer u resources en toepassingen in azure implementeert, kunt u beginnen met het verzamelen van telemetrie om inzicht te krijgen in de prestaties en de status. In azure zijn enkele metrische gegevens voor u beschikbaar. Deze metrische gegevens worden [Standard of platform](./metrics-supported.md)genoemd. Ze zijn echter beperkt. 
 
 Mogelijk wilt u een aantal aangepaste prestatie-indica toren of bedrijfsspecifieke metrische gegevens verzamelen om meer inzicht te krijgen. Deze **aangepaste** metrische gegevens kunnen worden verzameld via de telemetrie van uw toepassing, een agent die wordt uitgevoerd op uw Azure-resources of zelfs een systeem voor het bewaken van een externe locatie en rechtstreeks aan Azure monitor is verzonden. Nadat u deze hebt gepubliceerd op Azure Monitor, kunt u bladeren, query's en waarschuwingen uitvoeren op aangepaste metrische gegevens voor uw Azure-resources en-toepassingen naast de standaard gegevens die door Azure worden verzonden.
 
@@ -37,7 +37,7 @@ Controleer de [Azure monitor prijs pagina](https://azure.microsoft.com/pricing/d
 Aangepaste metrische gegevens worden bewaard voor [dezelfde hoeveelheid tijd als de metrische gegevens](data-platform-metrics.md#retention-of-metrics)van het platform. 
 
 > [!NOTE]  
-> Gegevens die worden verzonden naar Azure Monitor via de Application Insights SDK worden gefactureerd als opgenomen logboek gegevens. Alleen extra metrische kosten worden alleen in rekening gebracht als de functie voor het Application Insights onderdeel [waarschuwing inschakelen op aangepaste metrische dimensies](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) is geselecteerd. Met dit selectie vakje worden gegevens naar de data base van de Azure Monitor metriek verzonden met behulp van de aangepaste Metrics-API om de complexere waarschuwingen toe te staan.  Meer informatie over het [Application Insights prijs model](https://docs.microsoft.com/azure/azure-monitor/app/pricing#pricing-model) en de [prijzen in uw regio](https://azure.microsoft.com/pricing/details/monitor/).
+> Gegevens die worden verzonden naar Azure Monitor via de Application Insights SDK worden gefactureerd als opgenomen logboek gegevens. Alleen extra metrische kosten worden alleen in rekening gebracht als de functie voor het Application Insights onderdeel [waarschuwing inschakelen op aangepaste metrische dimensies](../app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation) is geselecteerd. Met dit selectie vakje worden gegevens naar de data base van de Azure Monitor metriek verzonden met behulp van de aangepaste Metrics-API om de complexere waarschuwingen toe te staan.  Meer informatie over het [Application Insights prijs model](../app/pricing.md#pricing-model) en de [prijzen in uw regio](https://azure.microsoft.com/pricing/details/monitor/).
 
 
 ## <a name="how-to-send-custom-metrics"></a>Aangepaste metrische gegevens verzenden
@@ -46,8 +46,8 @@ Wanneer u aangepaste metrische gegevens naar Azure Monitor stuurt, moet u het vo
 
 ### <a name="authentication"></a>Verificatie
 Als u aangepaste metrische gegevens naar Azure Monitor wilt verzenden, moet de entiteit die de metrische gegevens indient, een geldig Azure Active Directory (Azure AD)-token in de **Bearer** -header van de aanvraag hebben. Er zijn een aantal ondersteunde manieren om een geldig Bearer-token te verkrijgen:
-1. [Beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). Geeft een identiteit aan een Azure-resource zelf, zoals een virtuele machine. Managed Service Identity (MSI) is ontworpen om resources machtigingen te geven om bepaalde bewerkingen uit te voeren. Een voor beeld is het toestaan van een resource over het verzenden van metrische gegevens. Aan een resource of het MSI-bestand kunnen **bewakings gegevens** voor de uitgever van machtigingen worden verleend voor een andere resource. Met deze machtiging kan het MSI-bestand ook metrische gegevens verzenden voor andere resources.
-2. [Azure AD-Service-Principal](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals). In dit scenario kan een Azure AD-toepassing of-service worden toegewezen aan machtigingen voor het verzenden van metrische gegevens over een Azure-resource.
+1. [Beheerde identiteiten voor Azure-resources](../../active-directory/managed-identities-azure-resources/overview.md). Geeft een identiteit aan een Azure-resource zelf, zoals een virtuele machine. Managed Service Identity (MSI) is ontworpen om resources machtigingen te geven om bepaalde bewerkingen uit te voeren. Een voor beeld is het toestaan van een resource over het verzenden van metrische gegevens. Aan een resource of het MSI-bestand kunnen **bewakings gegevens** voor de uitgever van machtigingen worden verleend voor een andere resource. Met deze machtiging kan het MSI-bestand ook metrische gegevens verzenden voor andere resources.
+2. [Azure AD-Service-Principal](../../active-directory/develop/app-objects-and-service-principals.md). In dit scenario kan een Azure AD-toepassing of-service worden toegewezen aan machtigingen voor het verzenden van metrische gegevens over een Azure-resource.
 Azure Monitor valideert het toepassings token met behulp van open bare Azure AD-sleutels om de aanvraag te verifiëren. De rol van uitgever van de bestaande **bewakings metrieken** heeft deze machtiging al. Deze is beschikbaar in de Azure Portal. De Service-Principal, afhankelijk van de resources waarvoor de aangepaste metrische gegevens worden verstrekt, kan de rol van de **Uitgever van metrische gegevens voor bewaking** aan het vereiste bereik krijgen. Voor beelden zijn een abonnement, resource groep of specifieke resource.
 
 > [!TIP]  
@@ -68,13 +68,13 @@ Met deze eigenschap wordt vastgelegd in welke Azure-regio de resource waarvoor u
 >
 >
 
-### <a name="timestamp"></a>Tijdstempel
+### <a name="timestamp"></a>Timestamp
 Elk gegevens punt dat naar Azure Monitor wordt verzonden, moet worden gemarkeerd met een tijds tempel. Deze tijds tempel legt de datum/tijd vast waarop de metrische waarde wordt gemeten of verzameld. Azure Monitor worden metrische gegevens met tijds tempels geaccepteerd tot 20 minuten in het verleden en vijf minuten in de toekomst. De tijds tempel moet de ISO 8601-indeling hebben.
 
 ### <a name="namespace"></a>Naamruimte
 Naam ruimten zijn een manier om Vergelijk bare metrische gegevens te categoriseren of groeperen. Met behulp van naam ruimten kunt u isolatie verkrijgen tussen groepen metrische gegevens die verschillende inzichten of prestatie-indica toren kunnen verzamelen. U kunt bijvoorbeeld een naam ruimte hebben met de naam **contosomemorymetrics** die geheugen gebruik houdt van metrische gegevens die uw app profiel. Een andere naam ruimte met de naam **contosoapptransaction** kan alle metrische gegevens over gebruikers transacties in uw toepassing bijhouden.
 
-### <a name="name"></a>Name
+### <a name="name"></a>Naam
 **Naam** is de naam van de metrische gegevens die worden gerapporteerd. Normaal gesp roken is de naam beschrijvend genoeg om te helpen bij het identificeren van wat wordt gemeten. Een voor beeld hiervan is een metrische waarde die het aantal door het geheugen gebruikte bytes op een bepaalde VM meet. Dit kan een metrische naam zijn, zoals het **geheugen bytes dat in gebruik**is.
 
 ### <a name="dimension-keys"></a>Dimensie sleutels
@@ -92,7 +92,7 @@ Wanneer u een metrische waarde publiceert, kunt u slechts één dimensie waarde 
 Dimensies zijn optioneel, niet alle metrische gegevens kunnen dimensies hebben. Als voor een metrische post dimensie sleutels worden gedefinieerd, zijn overeenkomstige dimensie waarden verplicht.
 
 ### <a name="metric-values"></a>Metrische waarden
-Azure Monitor worden alle metrische gegevens opgeslagen met granulatie intervallen van één minuut. We begrijpen dat er tijdens een bepaalde minuut een metriek mogelijk meerdere malen moet worden gesampled. Een voor beeld is het CPU-gebruik. Het is ook mogelijk dat er moet worden gemeten voor veel discrete gebeurtenissen. Een voor beeld is latentie van aanmeldings transacties. Als u het aantal onbewerkte waarden wilt beperken dat u wilt verzenden en betalen voor in Azure Monitor, kunt u de waarden lokaal vooraf combi neren en verzenden:
+Azure Monitor worden alle metrische gegevens opgeslagen met granulatie intervallen van één minuut. We begrijpen dat er tijdens een bepaalde minuut een metriek mogelijk meerdere malen moet worden gesampled. Een voorbeeld is CPU-gebruik. Het is ook mogelijk dat er moet worden gemeten voor veel discrete gebeurtenissen. Een voor beeld is latentie van aanmeldings transacties. Als u het aantal onbewerkte waarden wilt beperken dat u wilt verzenden en betalen voor in Azure Monitor, kunt u de waarden lokaal vooraf combi neren en verzenden:
 
 * **Min**: de minimale waargenomen waarde van alle voor beelden en metingen gedurende de minuut.
 * **Max**: de Maxi maal waargenomen waarde van alle voor beelden en metingen gedurende de minuut.
@@ -183,23 +183,23 @@ Nadat aangepaste metrische gegevens zijn verzonden naar Azure Monitor, kunt u ze
 5.    Selecteer de metrische naam ruimte voor uw aangepaste metrische gegevens.
 6.    Selecteer de aangepaste metriek.
 
-## <a name="supported-regions"></a>Ondersteunde regio’s
+## <a name="supported-regions"></a>Ondersteunde regio's
 Tijdens de open bare preview-periode is de mogelijkheid om aangepaste metrische gegevens te publiceren alleen beschikbaar in een subset van Azure-regio's. Deze beperking betekent dat metrische gegevens alleen voor resources in een van de ondersteunde regio's kunnen worden gepubliceerd. De volgende tabel bevat de set ondersteunde Azure-regio's voor aangepaste metrische gegevens. Ook worden de bijbehorende eind punten vermeld waarvoor metrische gegevens voor resources in deze regio's moeten worden gepubliceerd:
 
 |Azure-regio |Voor voegsel regionale eind punt|
 |---|---|
 | **VS en Canada** | |
 |VS - west-centraal | https: \/ /westcentralus.monitoring.Azure.com |
-|VS - west 2       | https: \/ /westus2.monitoring.Azure.com |
+|West US 2       | https: \/ /westus2.monitoring.Azure.com |
 |VS - noord-centraal | https: \/ /northcentralus.monitoring.Azure.com
-|VS - zuid-centraal| https: \/ /southcentralus.monitoring.Azure.com |
-|VS - centraal      | https: \/ /centralus.monitoring.Azure.com |
+|South Central US| https: \/ /southcentralus.monitoring.Azure.com |
+|Central US      | https: \/ /centralus.monitoring.Azure.com |
 |Canada - midden | https: \/ /canadacentral.monitoring.Azure.com |
 |VS - oost| https: \/ /eastus.monitoring.Azure.com |
-|VS - oost 2 | https: \/ /eastus2.monitoring.Azure.com |
+|US - oost 2 | https: \/ /eastus2.monitoring.Azure.com |
 | **Europa** | |
 |Europa - noord    | https: \/ /northeurope.monitoring.Azure.com |
-|Europa -west     | https: \/ /westeurope.monitoring.Azure.com |
+|Europa - west     | https: \/ /westeurope.monitoring.Azure.com |
 |Verenigd Koninkrijk Zuid | https: \/ /uksouth.monitoring.Azure.com
 |Frankrijk - centraal | https: \/ /francecentral.monitoring.Azure.com |
 | **Afrika** | |
@@ -207,7 +207,7 @@ Tijdens de open bare preview-periode is de mogelijkheid om aangepaste metrische 
 | **Azië** | |
 |India - centraal | https: \/ /centralindia.monitoring.Azure.com |
 |Australië - oost | https: \/ /australiaeast.monitoring.Azure.com |
-|Japan - oost | https: \/ /japaneast.monitoring.Azure.com |
+|Japan East | https: \/ /japaneast.monitoring.Azure.com |
 |Azië - zuidoost  | https: \/ /southeastasia.monitoring.Azure.com |
 |Azië - oost | https: \/ /EastAsia.monitoring.Azure.com |
 |Korea - centraal   | https: \/ /koreacentral.monitoring.Azure.com |

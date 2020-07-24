@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 21ecf33291924097f076aa28088eb4eac652ce67
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: f97b4877d87acec923812fd0289d5161529dbe7a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849658"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081029"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Beschik baarheid en betrouw baarheid van Apache Hadoop clusters in HDInsight
 
@@ -64,7 +64,7 @@ Toegang tot het cluster via internet wordt via een open bare gateway gegeven. De
 
 Toegang via de open bare gateway is beperkt tot poorten 443 (HTTPS), 22 en 23.
 
-|Poort |Description |
+|Poort |Beschrijving |
 |---|---|
 |443|Wordt gebruikt voor toegang tot Ambari en andere web-UI of REST-Api's die worden gehost op de hoofd knooppunten.|
 |22|Wordt gebruikt om toegang te krijgen tot het primaire knoop punt of Edge-knoop punt met SSH.|
@@ -119,7 +119,7 @@ Er kan een reeks pictogrammen naast een service worden weer gegeven om de status
 
 De volgende waarschuwingen helpen bij het bewaken van de beschik baarheid van een cluster:
 
-| Naam van waarschuwing                               | Description                                                                                                                                                                                  |
+| Naam van waarschuwing                               | Beschrijving                                                                                                                                                                                  |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Status van metrische monitor                    | Deze waarschuwing geeft de status van het bewakings proces voor metrische gegevens aan, zoals bepaald door het controle status script.                                                                                   |
 | Heartbeat van de Ambari-agent                   | Deze waarschuwing wordt geactiveerd als de server contact met een agent heeft verloren.                                                                                                                        |
@@ -268,7 +268,7 @@ Selecteer in de Ambari-webgebruikersinterface de service waarvoor u logboeken wi
 
 De grootte van een knoop punt kan alleen worden geselecteerd tijdens het maken van het cluster. Op de [pagina met hdinsight-prijzen](https://azure.microsoft.com/pricing/details/hdinsight/)vindt u een overzicht van de verschillende VM-grootten die beschikbaar zijn voor hdinsight.
 
-Wanneer u een cluster maakt, kunt u de grootte van de knoop punten opgeven. De volgende informatie bevat richt lijnen voor het opgeven van de grootte met behulp van de [Azure Portal](https://portal.azure.com/), [Azure PowerShell module AZ](/powershell/azureps-cmdlets-docs)en de [Azure cli](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest):
+Wanneer u een cluster maakt, kunt u de grootte van de knoop punten opgeven. De volgende informatie bevat richt lijnen voor het opgeven van de grootte met behulp van de [Azure Portal](https://portal.azure.com/), [Azure PowerShell module AZ](/powershell/azure/)en de [Azure cli](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest):
 
 * **Azure Portal**: wanneer u een cluster maakt, kunt u de grootte van de knoop punten instellen die door het cluster worden gebruikt:
 
@@ -284,6 +284,6 @@ Zie voor meer informatie over de items die in dit artikel worden besproken:
 
 * [Naslag informatie voor Apache Ambari-REST](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
 * [De Azure CLI installeren en configureren](https://docs.microsoft.com//cli/azure/install-azure-cli?view=azure-cli-latest)
-* [Azure PowerShell-module AZ installeren en configureren](/powershell/azure/overview)
+* [Azure PowerShell-module AZ installeren en configureren](/powershell/azure/)
 * [HDInsight beheren met Apache Ambari](hdinsight-hadoop-manage-ambari.md)
 * [HDInsight-clusters op basis van Linux inrichten](hdinsight-hadoop-provision-linux-clusters.md)

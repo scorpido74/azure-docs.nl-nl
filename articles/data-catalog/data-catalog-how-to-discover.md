@@ -4,13 +4,14 @@ description: In dit artikel wordt uitgelegd hoe u geregistreerde gegevensassets 
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: b12cb94832a1ea977fb13f5f2271984dc8780cee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4eb689b17df8236a00b5914912d1927804944f25
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68736380"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081199"
 ---
 # <a name="how-to-discover-data-sources-in-azure-data-catalog"></a>Gegevens bronnen in Azure Data Catalog ontdekken
 
@@ -32,7 +33,7 @@ Door gebruik te maken van een combi natie van zoeken en filteren kunt u snel nav
 
 Hoewel de standaard zoek functie voor vrije tekst eenvoudig en intuïtief is, kunt u ook Data Catalog Zoek syntaxis gebruiken voor meer controle over de zoek resultaten. Data Catalog zoeken ondersteunt de volgende technieken:
 
-| Techniek | Gebruiken | Voorbeeld |
+| Techniek | Gebruik | Voorbeeld |
 | --- | --- | --- |
 | Eenvoudige zoek opdracht |Basis zoekopdracht die gebruikmaakt van een of meer zoek termen. Resultaten zijn alle assets die overeenkomen met een eigenschap met een of meer van de opgegeven voor waarden. |`sales data` |
 | Bereik van eigenschap |Alleen gegevens bronnen retour neren waarbij de zoek term overeenkomt met de opgegeven eigenschap. |`name:finance` |

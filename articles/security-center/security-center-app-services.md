@@ -1,5 +1,5 @@
 ---
-title: Uw Azure App Service web-apps en Api's beveiligen
+title: Web-apps en API's van Azure App Service beveiligen
 description: Dit artikel helpt u bij het beveiligen van uw Azure App Service web apps en Api's in Azure Security Center.
 services: security-center
 documentationcenter: na
@@ -10,13 +10,14 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 01/27/2019
 ms.author: memildin
-ms.openlocfilehash: 2d81e1a1218add504e1e35015276b6924da0e3e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35b91aab8c228fc7dced5dfe06e33f939f4634f5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77616472"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080791"
 ---
-# <a name="protect-your-azure-app-service-web-apps-and-apis"></a>Uw Azure App Service web-apps en Api's beveiligen
+# <a name="protect-your-azure-app-service-web-apps-and-apis"></a>Web-apps en API's van Azure App Service beveiligen
 
 Azure App Service is een volledig beheerd platform voor het bouwen en hosten van uw web-apps en Api's zonder dat u zich zorgen hoeft te maken over het beheer van de infra structuur. Het biedt beheer, bewaking en operationele inzichten om te voldoen aan de vereisten voor prestaties, beveiliging en naleving van de bedrijfs kwaliteit. Zie [Azure app service](https://azure.microsoft.com/services/app-service/)voor meer informatie.
 

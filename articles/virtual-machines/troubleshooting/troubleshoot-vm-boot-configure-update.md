@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
-ms.openlocfilehash: 415895b894261ade9b2332eb3fb926eba74fe937
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: d7e56fe36af3d841cfd888dd6c1bf05502837cdd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078405"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079839"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>Het opstarten van de VM is vastgelopen op het ophalen van Windows Ready. Uw computer niet uitschakelen in azure
 
@@ -45,7 +45,7 @@ Als het probleem niet wordt opgelost nadat u hebt gewacht tot de wijzigingen zij
 ### <a name="attach-the-os-disk-to-a-recovery-vm"></a>De besturingssysteem schijf koppelen aan een herstel-VM
 
 1. Maak een moment opname van de besturingssysteem schijf van de betrokken VM als back-up. Zie [snap shot a disk](../windows/snapshot-copy-managed-disk.md)(Engelstalig) voor meer informatie.
-2. [Koppel de besturingssysteem schijf aan een herstel-VM](../windows/troubleshoot-recovery-disks-portal.md).
+2. [Koppel de besturingssysteem schijf aan een herstel-VM](./troubleshoot-recovery-disks-portal-windows.md).
 3. Extern bureau blad naar de herstel-VM. 
 4. Als de besturingssysteem schijf is versleuteld, moet u de versleuteling uitschakelen voordat u verdergaat met de volgende stap. Zie [de versleutelde besturingssysteem schijf ontsleutelen in de virtuele machine die niet kan worden opgestart](troubleshoot-bitlocker-boot-error.md#solution)voor meer informatie.
 
@@ -99,7 +99,7 @@ Voer het volgende script uit om dump logboek en seriële console in te scha kele
         reg unload HKLM\BROKENSYSTEM
         ```
 
-3. [Ontkoppel de besturingssysteem schijf en koppel de besturingssysteem schijf opnieuw aan de betreffende VM](../windows/troubleshoot-recovery-disks-portal.md).
+3. [Ontkoppel de besturingssysteem schijf en koppel de besturingssysteem schijf opnieuw aan de betreffende VM](./troubleshoot-recovery-disks-portal-windows.md).
 4. Start de VM en open de seriële console.
 5. Selecteer **niet-maskeer bare interrupt (NMI) verzenden** om de geheugen dump te activeren.
     ![de afbeelding over waar de niet-maskeer bare interrupt moet worden verzonden](./media/troubleshoot-vm-configure-update-boot/run-nmi.png)

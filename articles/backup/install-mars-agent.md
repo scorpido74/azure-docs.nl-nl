@@ -3,12 +3,12 @@ title: De Microsoft Azure Recovery Services-agent (MARS) installeren
 description: Meer informatie over het installeren van de Microsoft Azure Recovery Services-agent (MARS) voor het maken van back-ups van Windows-machines.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 7a43f585e978b7d6974ac89fbb5d93f15aebb1d7
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: b9842f6b07621301a0a8a32f5eb7fae5ece153bc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855226"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079363"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>Installeer de Azure Backup MARS-agent
 
@@ -42,10 +42,10 @@ De gegevens die beschikbaar zijn voor back-up, zijn afhankelijk van waar de agen
 
 ## <a name="modify-storage-replication"></a>Opslag replicatie wijzigen
 
-Standaard gebruiken kluizen de [geo-redundante opslag (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
+Standaard gebruiken kluizen de [geo-redundante opslag (GRS)](../storage/common/storage-redundancy.md).
 
 * Als de kluis uw primaire back-upmechanisme is, raden we u aan GRS te gebruiken.
-* U kunt [lokaal redundante opslag (LRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) gebruiken om de kosten voor Azure Storage te reduceren.
+* U kunt [lokaal redundante opslag (LRS)](../storage/common/storage-redundancy.md?toc=/azure/storage/blobs/toc.json) gebruiken om de kosten voor Azure Storage te reduceren.
 
 Het type opslag replicatie wijzigen:
 
@@ -95,7 +95,7 @@ Als u micro soft-peering wilt gebruiken, selecteert u de volgende services, regi
 * Azure-regio, op basis van de locatie van uw Recovery Services kluis
 * Azure Storage, op basis van de locatie van uw Recovery Services kluis
 
-Zie [ExpressRoute Routing requirements](https://docs.microsoft.com/azure/expressroute/expressroute-routing)(Engelstalig) voor meer informatie.
+Zie [ExpressRoute Routing requirements](../expressroute/expressroute-routing.md)(Engelstalig) voor meer informatie.
 
 > [!NOTE]
 > Open bare peering is afgeschaft voor nieuwe circuits.
@@ -160,7 +160,7 @@ Als u de agent al op alle computers hebt geïnstalleerd, moet u ervoor zorgen da
     * Sla de wachtwoordzin op een veilige locatie op. U hebt deze nodig om een back-up te herstellen.
     * Als u de wachtwoordzin kwijtraakt of vergeet, kan micro soft u niet helpen bij het herstellen van de back-upgegevens.
 
-1. Selecteer **Finish**. De agent is nu geïnstalleerd en de computer is geregistreerd bij de kluis. U kunt nu uw back-up configureren en plannen.
+1. Selecteer **Voltooien**. De agent is nu geïnstalleerd en de computer is geregistreerd bij de kluis. U kunt nu uw back-up configureren en plannen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

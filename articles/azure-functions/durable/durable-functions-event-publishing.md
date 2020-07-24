@@ -3,15 +3,16 @@ title: Durable Functions publiceren naar Azure Event Grid (preview-versie)
 description: Meer informatie over het configureren van automatische Azure Event Grid publicatie voor Durable Functions.
 ms.topic: conceptual
 ms.date: 04/25/2020
-ms.openlocfilehash: c0106f3754e0cdcbf1f295fbe3f1b5def8dc3ca1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e4651dd7548ba76380bfc2d1b314e67d7abe63d9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83124237"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081743"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Durable Functions publiceren naar Azure Event Grid (preview-versie)
 
-In dit artikel wordt beschreven hoe u Durable Functions instelt voor het publiceren van Orchestrator-levenscyclus gebeurtenissen (zoals gemaakte, voltooide en mislukte) naar een aangepast [Azure Event grid onderwerp](https://docs.microsoft.com/azure/event-grid/overview).
+In dit artikel wordt beschreven hoe u Durable Functions instelt voor het publiceren van Orchestrator-levenscyclus gebeurtenissen (zoals gemaakte, voltooide en mislukte) naar een aangepast [Azure Event grid onderwerp](../../event-grid/overview.md).
 
 Hier volgen enkele scenario's waarin deze functie nuttig is:
 
@@ -25,7 +26,7 @@ Hier volgen enkele scenario's waarin deze functie nuttig is:
 
 * Installeer [micro soft. Azure. webjobs. Extensions. DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) in uw Durable functions-project.
 * Installeer [Azure Storage-emulator](../../storage/common/storage-use-emulator.md) (alleen Windows) of gebruik een bestaand Azure Storage-account.
-* [Azure cli](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) installeren of [Azure Cloud shell](../../cloud-shell/overview.md) gebruiken
+* [Azure cli](/cli/azure/?view=azure-cli-latest) installeren of [Azure Cloud shell](../../cloud-shell/overview.md) gebruiken
 
 ## <a name="create-a-custom-event-grid-topic"></a>Een aangepast Event Grid onderwerp maken
 
@@ -167,7 +168,7 @@ Maak met behulp van de Azure Portal een andere functie-app om te Luis teren naar
 
 ### <a name="add-an-event-grid-subscription"></a>Een Event Grid-abonnement toevoegen
 
-U kunt nu een Event Grid-abonnement toevoegen voor het Event Grid onderwerp dat u hebt gemaakt. Zie [concepten in azure Event grid](https://docs.microsoft.com/azure/event-grid/concepts)voor meer informatie.
+U kunt nu een Event Grid-abonnement toevoegen voor het Event Grid onderwerp dat u hebt gemaakt. Zie [concepten in azure Event grid](../../event-grid/concepts.md)voor meer informatie.
 
 1. Selecteer in de nieuwe functie **integratie** en selecteer vervolgens **Event grid trigger (eventGridEvent)**. 
 
@@ -183,7 +184,7 @@ U kunt nu een Event Grid-abonnement toevoegen voor het Event Grid onderwerp dat 
 
 1. Selecteer **Maken**.
 
-    :::image type="content" source="./media/durable-functions-event-publishing/event-grid-subscription-details.png" alt-text="Een Event Grid-abonnement maken." border="true":::
+    :::image type="content" source="./media/durable-functions-event-publishing/event-grid-subscription-details.png" alt-text="Hiermee wordt een Event Grid-abonnement gemaakt." border="true":::
 
 Nu bent u klaar om levenscyclus gebeurtenissen te ontvangen.
 

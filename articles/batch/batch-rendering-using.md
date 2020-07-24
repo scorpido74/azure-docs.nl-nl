@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 262431cfcc906b6df1054aaa7dc2b9573c3b8833
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: e4f33f0974462197382ea6ac5d2b68d61909f73b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965243"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079250"
 ---
 # <a name="using-azure-batch-rendering"></a>Azure Batch Rendering gebruiken
 
@@ -19,7 +19,7 @@ Er zijn verschillende manieren om Azure Batch rendering te gebruiken:
 * API's:
   * Code schrijven met behulp van een van de batch-Api's.  Ontwikkel aars kunnen Azure Batch-mogelijkheden integreren in hun bestaande toepassingen of werk stroom, of deze in de Cloud of op basis van on-premises.
 * Opdracht regel Programma's:
-  * De [Azure-opdracht regel](/cli/azure/) of [Power shell](/powershell/azure/overview) kan worden gebruikt om batch gebruik te maken van scripts.
+  * De [Azure-opdracht regel](/cli/azure/) of [Power shell](/powershell/azure/) kan worden gebruikt om batch gebruik te maken van scripts.
   * Met name de [batch-cli-sjabloon ondersteuning](./batch-cli-templates.md) maakt het veel eenvoudiger om Pools te maken en taken te verzenden.
 * Batch Explorer-gebruikers interface:
   * [Batch Explorer](https://github.com/Azure/BatchLabs) is een platformoverschrijdende client hulpprogramma waarmee batch-accounts ook kunnen worden beheerd en bewaakt.

@@ -5,12 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 045b938e2612aa7e5b366f93c22669412f2d98e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 7/17/2020
+ms.openlocfilehash: 91980972dcbe7af28a1b222f6cd3002a7420145d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85100809"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080842"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>Service-eindpunten en -regels voor virtuele netwerken gebruiken voor Azure Database for MySQL
 
@@ -23,6 +24,8 @@ Als u een regel voor een virtueel netwerk wilt maken, moet u eerst een [virtueel
 > [!NOTE]
 > Deze functie is beschikbaar in alle regio's van Azure waar Azure Database for MySQL wordt geïmplementeerd voor Algemeen en servers die zijn geoptimaliseerd voor geheugen.
 > In het geval van VNet-peering, als verkeer via een gemeen schappelijke VNet-gateway met Service-eind punten stroomt en naar de peer moet stromen, moet u een ACL/VNet-regel maken om Azure Virtual Machines in de gateway-VNet toegang te geven tot de Azure Database for MySQL-server.
+
+U kunt ook een [persoonlijke koppeling](concepts-data-access-security-private-link.md) gebruiken voor verbindingen. Persoonlijke koppeling biedt een privé-IP-adres in uw VNet voor de Azure Database for MySQL-server.
 
 <a name="anch-terminology-and-description-82f"></a>
 
@@ -61,12 +64,6 @@ Met de Azure Database for MySQL firewall kunt u IP-adresbereiken opgeven waarvan
 U kunt de IP-optie inwaarderen door een *statisch* IP-adres voor uw virtuele machine op te halen. Zie voor meer informatie [privé IP-adressen configureren voor een virtuele machine met behulp van de Azure Portal][vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w].
 
 De aanpak van een statisch IP-adres kan echter moeilijk te beheren zijn, en het kost goed wanneer deze op schaal wordt uitgevoerd. Regels voor virtuele netwerken zijn eenvoudiger te maken en te beheren.
-
-### <a name="c-cannot-yet-have-azure-database-for-mysql-on-a-subnet-without-defining-a-service-endpoint"></a>C. Kan nog geen Azure Database for MySQL op een subnet hebben zonder een service-eind punt te definiëren
-
-Als uw **micro soft. SQL** server een knoop punt in een subnet in het virtuele netwerk is, kunnen alle knoop punten in het virtuele netwerk communiceren met uw Azure database for mysql-server. In dit geval kunnen uw Vm's communiceren met Azure Database for MySQL zonder dat er regels voor het virtuele netwerk of IP-regels nodig zijn.
-
-Vanaf 2018 augustus is de Azure Database for MySQL-service nog niet van de services die rechtstreeks aan een subnet kunnen worden toegewezen.
 
 <a name="anch-details-about-vnet-rules-38q"></a>
 
@@ -119,6 +116,8 @@ Voor Azure Database for MySQL heeft de functie regels voor virtuele netwerken de
 
 - Ondersteuning voor VNet-service-eind punten is alleen voor servers met Algemeen en geoptimaliseerd voor geheugen.
 
+- Als **micro soft. SQL** is ingeschakeld in een subnet, betekent dit dat u alleen VNet-regels wilt gebruiken om verbinding te maken. [Niet-VNet-firewall regels](concepts-firewall-rules.md) van bronnen in dat subnet werken niet.
+
 - IP-adresbereiken op de firewall zijn van toepassing op de volgende netwerk items, maar de regels voor het virtuele netwerk doen dit niet:
     - [Virtueel particulier netwerk (VPN) van site-naar-site (S2S)][vpn-gateway-indexmd-608y]
     - On-premises via [ExpressRoute][expressroute-indexmd-744v]
@@ -131,7 +130,7 @@ Als u communicatie van uw circuit naar Azure Database for MySQL wilt toestaan, m
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>Een VNET-firewall regel toevoegen aan uw server zonder de VNET-service-eind punten in te scha kelen
 
-Als u alleen een firewall regel instelt, kunt u de server niet beveiligen met het VNet. U moet ook VNet-service-eind punten **inschakelen om de beveiliging van kracht** te laten worden. Wanneer u service-eind punten inschakelt, wordt de **downtime van uw**VNet- **subnet in stand**gezet totdat de overgang van **uit** naar wordt voltooid. Dit geldt met name in de context van grote VNets. U kunt de vlag **IgnoreMissingServiceEndpoint** gebruiken om de downtime te verminderen of te elimineren tijdens de overgang.
+Als u alleen een VNet-firewall regel instelt, kunt u de server niet beveiligen met het VNet. U moet ook VNet-service-eind punten **inschakelen om de beveiliging van kracht** te laten worden. Wanneer u service-eind punten inschakelt, wordt de **downtime van uw**VNet- **subnet in stand**gezet totdat de overgang van **uit** naar wordt voltooid. Dit geldt met name in de context van grote VNets. U kunt de vlag **IgnoreMissingServiceEndpoint** gebruiken om de downtime te verminderen of te elimineren tijdens de overgang.
 
 U kunt de vlag **IgnoreMissingServiceEndpoint** instellen met behulp van de Azure CLI of portal.
 

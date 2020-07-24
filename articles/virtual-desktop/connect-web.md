@@ -1,5 +1,5 @@
 ---
-title: Verbinding maken met Windows Virtual Desktop Web client-Azure
+title: Verbinding maken met een virtueel bureau blad van Windows met de webclient-Azure
 description: Verbinding maken met het virtuele bureau blad van Windows via de webclient.
 services: virtual-desktop
 author: Heidilohr
@@ -8,13 +8,14 @@ ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bb3a73566cd2477e493ca8621336fb3a51f3b3b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4bb54db8a18baa237f1c32c223b5f609638c7523
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85212459"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080621"
 ---
-# <a name="connect-with-the-web-client"></a>Verbinding maken met de webclient
+# <a name="connect-to-windows-virtual-desktop-with-the-web-client"></a>Verbinding maken met een virtueel bureau blad van Windows met de webclient
 
 >[!IMPORTANT]
 >Deze inhoud is van toepassing op de update uit het voorjaar van 2020 met Azure Resource Manager Windows Virtual Desktop-objecten. Zie [dit artikel](./virtual-desktop-fall-2019/connect-web-2019.md) als u de release van Windows Virtual Desktop uit het najaar van 2019 zonder Azure Resource Manager-objecten gebruikt.
@@ -31,7 +32,7 @@ Met de webclient kunt u vanuit een webbrowser toegang krijgen tot uw virtuele bu
 
 Hoewel een voor HTML5 geschikte browser zou moeten werken, ondersteunen we de volgende besturings systemen en browsers officieel.
 
-| Browser           | Ondersteund besturings systeem                     | Notities               |
+| Browser           | Ondersteund besturings systeem                     | Opmerkingen               |
 |-------------------|----------------------------------|---------------------|
 | Microsoft Edge    | Windows                          |                     |
 | Internet Explorer | Windows                          |                     |

@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: e6ff33b6a23cb85649a8811a8bef27ab455ab9e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e554fe48c3cbf8b744bf2f435f7b51e424d28808
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82980895"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079550"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Geavanceerde functies van Azure Metrics Explorer
 
@@ -20,7 +21,7 @@ ms.locfileid: "82980895"
 
 ## <a name="metrics-in-azure"></a>Metrische gegevens in azure
 
-[Metrische gegevens in azure monitor](data-platform-metrics.md) zijn de reeks gemeten waarden en aantallen die gedurende een bepaalde periode worden verzameld en opgeslagen. Er zijn standaard metrische gegevens (of platformen) en aangepaste metrische gegevens. De standaard metrische gegevens worden aan u door het Azure-platform zelf verschaft. Standaard waarden zijn de status-en gebruiks statistieken van uw Azure-resources. Terwijl aangepaste metrische gegevens worden verzonden naar Azure door uw toepassingen met behulp [van de Application Insights-API voor aangepaste gebeurtenissen en metrische gegevens](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics), een [Windows Azure Diagnostics-extensie (WAD)](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-overview)of door [Azure monitor rest API](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-store-custom-rest-api).
+[Metrische gegevens in azure monitor](data-platform-metrics.md) zijn de reeks gemeten waarden en aantallen die gedurende een bepaalde periode worden verzameld en opgeslagen. Er zijn standaard metrische gegevens (of platformen) en aangepaste metrische gegevens. De standaard metrische gegevens worden aan u door het Azure-platform zelf verschaft. Standaard waarden zijn de status-en gebruiks statistieken van uw Azure-resources. Terwijl aangepaste metrische gegevens worden verzonden naar Azure door uw toepassingen met behulp [van de Application Insights-API voor aangepaste gebeurtenissen en metrische gegevens](../app/api-custom-events-metrics.md), een [Windows Azure Diagnostics-extensie (WAD)](./diagnostics-extension-overview.md)of door [Azure monitor rest API](./metrics-store-custom-rest-api.md).
 
 ## <a name="create-views-with-multiple-metrics-and-charts"></a>Weer gaven met meerdere metrische gegevens en grafieken maken
 
@@ -175,5 +176,4 @@ Raadpleeg dit [artikel](alerts-metric.md) voor meer informatie over het instelle
 
 ## <a name="next-steps"></a>Volgende stappen
 
-  Lees [aangepaste KPI-Dash boards maken](https://docs.microsoft.com/azure/application-insights/app-insights-tutorial-dashboards) voor meer informatie over de aanbevolen procedures voor het maken van Dash boards met maat staven met metrische gegevens.
-
+  Lees [aangepaste KPI-Dash boards maken](../learn/tutorial-app-dashboards.md) voor meer informatie over de aanbevolen procedures voor het maken van Dash boards met maat staven met metrische gegevens.

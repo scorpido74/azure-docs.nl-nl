@@ -3,12 +3,12 @@ title: Ondersteuning voor het verplaatsen van bewerkingen per resource type
 description: Een lijst met de Azure-resource typen die kunnen worden verplaatst naar een nieuwe resource groep of een nieuw abonnement.
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 7b7f6f05c9cae80cffb64245a3fc8a6b0890d577
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 16197210326d73284a4a83edc7876e4faddded86
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539224"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079504"
 ---
 # <a name="move-operation-support-for-resources"></a>Ondersteuning voor het verplaatsen van resources
 
@@ -288,6 +288,9 @@ Ga naar de naam ruimte van een resource provider:
 
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
 
+> [!IMPORTANT]
+> Een API Management-service die is ingesteld op de verbruiks-SKU, kan niet worden verplaatst.
+
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
@@ -298,9 +301,6 @@ Ga naar de naam ruimte van een resource provider:
 > | reportfeedback | Nee | Nee |
 > | service | Ja | Ja |
 > | validateservicename | Nee | Nee |
-
-> [!IMPORTANT]
-> Een API Management-service die is ingesteld op de verbruiks-SKU, kan niet worden verplaatst.
 
 ## <a name="microsoftappconfiguration"></a>Micro soft. AppConfiguration
 
@@ -330,15 +330,15 @@ Ga naar de naam ruimte van een resource provider:
 
 ## <a name="microsoftappservice"></a>Micro soft. AppService
 
+> [!IMPORTANT]
+> Zie [app service richt lijnen voor verplaatsen](./move-limitations/app-service-move-limitations.md).
+
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | apiapps | Nee | Nee |
 > | appidentities | Nee | Nee |
 > | gateways | Nee | Nee |
-
-> [!IMPORTANT]
-> Zie [app service richt lijnen voor verplaatsen](./move-limitations/app-service-move-limitations.md).
 
 ## <a name="microsoftattestation"></a>Micro soft. Attestation
 
@@ -375,6 +375,11 @@ Ga naar de naam ruimte van een resource provider:
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
 
+> [!IMPORTANT]
+> Runbooks moeten zich in dezelfde resource groep bevinden als het Automation-account.
+>
+> Zie [uw Azure Automation-account naar een ander abonnement verplaatsen](../../automation/how-to/move-account.md?toc=/azure/azure-resource-manager/toc.json)voor meer informatie.
+
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
@@ -388,11 +393,6 @@ Ga naar de naam ruimte van een resource provider:
 > | automationaccounts / softwareupdateconfigurations | Nee | Nee |
 > | automationaccounts/webhooks | Nee | Nee |
 > | bewerkingen | Nee | Nee |
-
-> [!IMPORTANT]
-> Runbooks moeten zich in dezelfde resource groep bevinden als het Automation-account.
->
-> Zie [uw Azure Automation-account naar een ander abonnement verplaatsen](../../automation/how-to/move-account.md?toc=/azure/azure-resource-manager/toc.json)voor meer informatie.
 
 ## <a name="microsoftavs"></a>Micro soft. AVS
 
@@ -626,6 +626,9 @@ Ga naar de naam ruimte van een resource provider:
 
 ## <a name="microsoftcache"></a>Microsoft.Cache
 
+> [!IMPORTANT]
+> Als de Azure-cache voor redis-exemplaar is geconfigureerd met een virtueel netwerk, kan het exemplaar niet worden verplaatst naar een ander abonnement. Zie [beperkingen](./move-limitations/networking-move-limitations.md)voor het verplaatsen van netwerken.
+
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
@@ -638,9 +641,6 @@ Ga naar de naam ruimte van een resource provider:
 > | redis/eventgridfilters | Nee | Nee |
 > | redis/privatelinkresources | Nee | Nee |
 > | redisenterprise | Nee | Nee |
-
-> [!IMPORTANT]
-> Als de Azure-cache voor redis-exemplaar is geconfigureerd met een virtueel netwerk, kan het exemplaar niet worden verplaatst naar een ander abonnement. Zie [beperkingen](./move-limitations/networking-move-limitations.md)voor het verplaatsen van netwerken.
 
 ## <a name="microsoftcapacity"></a>Micro soft. capacity
 
@@ -700,6 +700,9 @@ Ga naar de naam ruimte van een resource provider:
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
 
+> [!IMPORTANT]
+> Zie [app service richt lijnen voor verplaatsen](./move-limitations/app-service-move-limitations.md).
+
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
@@ -707,9 +710,6 @@ Ga naar de naam ruimte van een resource provider:
 > | certificateorders/certificaten | Nee | Nee |
 > | bewerkingen | Nee | Nee |
 > | validatecertificateregistrationinformation | Nee | Nee |
-
-> [!IMPORTANT]
-> Zie [app service richt lijnen voor verplaatsen](./move-limitations/app-service-move-limitations.md).
 
 ## <a name="microsoftchangeanalysis"></a>Micro soft. ChangeAnalysis
 
@@ -720,12 +720,15 @@ Ga naar de naam ruimte van een resource provider:
 
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
 
+> [!IMPORTANT]
+> Zie [richt lijnen](./move-limitations/classic-model-move-limitations.md)voor het verplaatsen van de klassieke implementatie. Klassieke implementatie resources kunnen worden verplaatst tussen abonnementen met een bewerking die specifiek is voor dat scenario.
+
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | mogelijkheden | Nee | Nee |
 > | checkdomainnameavailability | Nee | Nee |
-> | domein naam | Ja | Nee |
+> | domein naam | Yes | No |
 > | domein naam/mogelijkheden | Nee | Nee |
 > | domein naam/internalloadbalancers | Nee | Nee |
 > | domein naam/servicecertificates | Nee | Nee |
@@ -741,25 +744,25 @@ Ga naar de naam ruimte van een resource provider:
 > | quotas | Nee | Nee |
 > | resourcetypes | Nee | Nee |
 > | validatesubscriptionmoveavailability | Nee | Nee |
-> | informatie | Ja | Nee |
+> | informatie | Ja | No |
 > | informatie/diagnosticsettings | Nee | Nee |
 > | informatie/metricdefinitions | Nee | Nee |
 > | informatie/meet waarden | Nee | Nee |
 
+## <a name="microsoftclassicinfrastructuremigrate"></a>Micro soft. ClassicInfrastructureMigrate
+
 > [!IMPORTANT]
 > Zie [richt lijnen](./move-limitations/classic-model-move-limitations.md)voor het verplaatsen van de klassieke implementatie. Klassieke implementatie resources kunnen worden verplaatst tussen abonnementen met een bewerking die specifiek is voor dat scenario.
-
-## <a name="microsoftclassicinfrastructuremigrate"></a>Micro soft. ClassicInfrastructureMigrate
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | classicinfrastructureresources | Nee | Nee |
 
+## <a name="microsoftclassicnetwork"></a>Microsoft.ClassicNetwork
+
 > [!IMPORTANT]
 > Zie [richt lijnen](./move-limitations/classic-model-move-limitations.md)voor het verplaatsen van de klassieke implementatie. Klassieke implementatie resources kunnen worden verplaatst tussen abonnementen met een bewerking die specifiek is voor dat scenario.
-
-## <a name="microsoftclassicnetwork"></a>Microsoft.ClassicNetwork
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -776,10 +779,10 @@ Ga naar de naam ruimte van een resource provider:
 > | virtualnetworks/remotevirtualnetworkpeeringproxies | Nee | Nee |
 > | virtualnetworks/virtualnetworkpeerings | Nee | Nee |
 
+## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
+
 > [!IMPORTANT]
 > Zie [richt lijnen](./move-limitations/classic-model-move-limitations.md)voor het verplaatsen van de klassieke implementatie. Klassieke implementatie resources kunnen worden verplaatst tussen abonnementen met een bewerking die specifiek is voor dat scenario.
-
-## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -793,7 +796,7 @@ Ga naar de naam ruimte van een resource provider:
 > | osplatformimages | Nee | Nee |
 > | publicimages | Nee | Nee |
 > | quotas | Nee | Nee |
-> | Storage accounts | Ja | Nee |
+> | Storage accounts | Yes | No |
 > | Storage accounts/blobservices | Nee | Nee |
 > | Storage accounts/fileservices | Nee | Nee |
 > | Storage accounts/metricdefinitions | Nee | Nee |
@@ -807,18 +810,15 @@ Ga naar de naam ruimte van een resource provider:
 > | Storage accounts/vmimages | Nee | Nee |
 > | vmimages | Nee | Nee |
 
+## <a name="microsoftclassicsubscription"></a>Micro soft. ClassicSubscription
+
 > [!IMPORTANT]
 > Zie [richt lijnen](./move-limitations/classic-model-move-limitations.md)voor het verplaatsen van de klassieke implementatie. Klassieke implementatie resources kunnen worden verplaatst tussen abonnementen met een bewerking die specifiek is voor dat scenario.
-
-## <a name="microsoftclassicsubscription"></a>Micro soft. ClassicSubscription
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | bewerkingen | Nee | Nee |
-
-> [!IMPORTANT]
-> Zie [richt lijnen](./move-limitations/classic-model-move-limitations.md)voor het verplaatsen van de klassieke implementatie. Klassieke implementatie resources kunnen worden verplaatst tussen abonnementen met een bewerking die specifiek is voor dat scenario.
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 
@@ -843,6 +843,9 @@ Ga naar de naam ruimte van een resource provider:
 > | usageaggregates | Nee | Nee |
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
+
+> [!IMPORTANT]
+> Zie [virtual machines richt lijnen voor verplaatsen](./move-limitations/virtual-machines-move-limitations.md).
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -888,9 +891,6 @@ Ga naar de naam ruimte van een resource provider:
 > | virtualmachinescalesets/publicipaddresses | Nee | Nee |
 > | virtualmachinescalesets/informatie | Nee | Nee |
 > | virtualmachinescalesets/informatie/networkinterfaces | Nee | Nee |
-
-> [!IMPORTANT]
-> Zie [virtual machines richt lijnen voor verplaatsen](./move-limitations/virtual-machines-move-limitations.md).
 
 ## <a name="microsoftconsumption"></a>Micro soft. verbruik
 
@@ -1125,7 +1125,7 @@ Ga naar de naam ruimte van een resource provider:
 > | locaties/getnetworkpolicies | Nee | Nee |
 > | locaties/operationstatuses | Nee | Nee |
 > | bewerkingen | Nee | Nee |
-> | workspaces | Nee | Nee |
+> | werkruimten | Nee | Nee |
 > | werk ruimten/dbworkspaces | Nee | Nee |
 > | werk ruimten/virtualnetworkpeerings | Nee | Nee |
 
@@ -1393,7 +1393,7 @@ Ga naar de naam ruimte van een resource provider:
 > | hostpools / sessionhosts / usersessions | Nee | Nee |
 > | hostpools / usersessions | Nee | Nee |
 > | bewerkingen | Nee | Nee |
-> | workspaces | Ja | Ja |
+> | werkruimten | Ja | Ja |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 
@@ -1437,10 +1437,10 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | labcenters | Nee | Nee |
-> | Labs | Ja | Nee |
+> | Labs | Yes | No |
 > | Labs/omgevingen | Ja | Ja |
 > | Labs-servicerunners | Ja | Ja |
-> | Labs-informatie | Ja | Nee |
+> | Labs-informatie | Yes | No |
 > | locaties | Nee | Nee |
 > | locaties/bewerkingen | Nee | Nee |
 > | bewerkingen | Nee | Nee |
@@ -1533,24 +1533,24 @@ Ga naar de naam ruimte van een resource provider:
 > | locaties | Nee | Nee |
 > | locaties/deletevirtualnetworkorsubnets | Nee | Nee |
 > | naam ruimten | Ja | Ja |
-> | naam ruimten/authorizationrules | Nee | Nee |
-> | naam ruimten/disasterrecoveryconfigs | Nee | Nee |
-> | naam ruimten/disasterrecoveryconfigs/checknameavailability | Nee | Nee |
-> | naam ruimten/Event hubs | Nee | Nee |
-> | naam ruimten/Event hubs/authorizationrules | Nee | Nee |
-> | naam ruimten/Event hubs/consumergroups | Nee | Nee |
-> | naam ruimten/networkrulesets | Nee | Nee |
-> | bewerkingen | Nee | Nee |
-> | sku | Nee | Nee |
+> | naam ruimten/authorizationrules | Nee | No |
+> | naam ruimten/disasterrecoveryconfigs | Nee | No |
+> | naam ruimten/disasterrecoveryconfigs/checknameavailability | Nee | No |
+> | naam ruimten/Event hubs | Nee | No |
+> | naam ruimten/Event hubs/authorizationrules | Nee | No |
+> | naam ruimten/Event hubs/consumergroups | Nee | No |
+> | naam ruimten/networkrulesets | Nee | No |
+> | bewerkingen | Nee | No |
+> | sku | Nee | No |
 
 ## <a name="microsoftexperimentation"></a>Micro soft. experimenten
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
-> | experimentworkspaces | Nee | Nee |
-> | locaties | Nee | Nee |
-> | locaties/bewerkingen | Nee | Nee |
+> | experimentworkspaces | Nee | No |
+> | locaties | Nee | No |
+> | locaties/bewerkingen | Nee | No |
 
 ## <a name="microsoftfalcon"></a>Micro soft. Falcon
 
@@ -1564,31 +1564,31 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
-> | featureproviders | Nee | Nee |
-> | features | Nee | Nee |
-> | bewerkingen | Nee | Nee |
-> | providers | Nee | Nee |
-> | subscriptionfeatureregistrations | Nee | Nee |
+> | featureproviders | Nee | No |
+> | features | Nee | No |
+> | bewerkingen | Nee | No |
+> | providers | Nee | No |
+> | subscriptionfeatureregistrations | Nee | No |
 
 ## <a name="microsoftgenomics"></a>Micro soft. Genomics
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
-> | accounts | Nee | Nee |
+> | accounts | Nee | No |
 
 ## <a name="microsoftguestconfiguration"></a>Micro soft. GuestConfiguration
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
-> | automanagedaccounts | Nee | Nee |
-> | automanagedvmconfigurationprofiles | Nee | Nee |
-> | guestconfigurationassignments | Nee | Nee |
-> | bewerkingen | Nee | Nee |
-> | software | Nee | Nee |
-> | softwareupdateprofile | Nee | Nee |
-> | softwareupdates | Nee | Nee |
+> | automanagedaccounts | Nee | No |
+> | automanagedvmconfigurationprofiles | Nee | No |
+> | guestconfigurationassignments | Nee | No |
+> | bewerkingen | Nee | No |
+> | software | Nee | No |
+> | softwareupdateprofile | Nee | No |
+> | softwareupdates | Nee | No |
 
 ## <a name="microsofthanaonazure"></a>Micro soft. HanaOnAzure
 
@@ -1613,6 +1613,11 @@ Ga naar de naam ruimte van een resource provider:
 
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 
+> [!IMPORTANT]
+> U kunt HDInsight-clusters verplaatsen naar een nieuw abonnement of een nieuwe resource groep. U kunt echter niet overstappen op de netwerk resources die zijn gekoppeld aan het HDInsight-cluster (zoals het virtuele netwerk, de NIC of de load balancer). Daarnaast kunt u niet verplaatsen naar een nieuwe resource groep een NIC die is gekoppeld aan een virtuele machine voor het cluster.
+>
+> Wanneer u een HDInsight-cluster naar een nieuw abonnement verplaatst, moet u eerst andere resources (zoals het opslag account) verplaatsen. Verplaats vervolgens het HDInsight-cluster zelf.
+
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
@@ -1627,11 +1632,6 @@ Ga naar de naam ruimte van een resource provider:
 > | locaties/gebruik | Nee | Nee |
 > | locaties/validatecreaterequest | Nee | Nee |
 > | bewerkingen | Nee | Nee |
-
-> [!IMPORTANT]
-> U kunt HDInsight-clusters verplaatsen naar een nieuw abonnement of een nieuwe resource groep. U kunt echter niet overstappen op de netwerk resources die zijn gekoppeld aan het HDInsight-cluster (zoals het virtuele netwerk, de NIC of de load balancer). Daarnaast kunt u niet verplaatsen naar een nieuwe resource groep een NIC die is gekoppeld aan een virtuele machine voor het cluster.
->
-> Wanneer u een HDInsight-cluster naar een nieuw abonnement verplaatst, moet u eerst andere resources (zoals het opslag account) verplaatsen. Verplaats vervolgens het HDInsight-cluster zelf.
 
 ## <a name="microsofthealthcareapis"></a>Micro soft. HealthcareApis
 
@@ -1699,6 +1699,9 @@ Ga naar de naam ruimte van een resource provider:
 
 ## <a name="microsoftinsights"></a>micro soft. Insights
 
+> [!IMPORTANT]
+> Zorg ervoor dat het verplaatsen naar een nieuw abonnement geen [abonnements quota's](azure-subscription-service-limits.md#azure-monitor-limits)overschrijdt.
+
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
@@ -1754,9 +1757,6 @@ Ga naar de naam ruimte van een resource provider:
 > | werkmappen | Ja | Ja |
 > | workbooktemplates | Ja | Ja |
 
-> [!IMPORTANT]
-> Zorg ervoor dat het verplaatsen naar een nieuw abonnement geen [abonnements quota's](azure-subscription-service-limits.md#azure-monitor-limits)overschrijdt.
-
 ## <a name="microsoftiotcentral"></a>Micro soft. IoTCentral
 
 > [!div class="mx-tableFixed"]
@@ -1779,6 +1779,9 @@ Ga naar de naam ruimte van een resource provider:
 
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 
+> [!IMPORTANT]
+> Sleutel kluizen die worden gebruikt voor schijf versleuteling, kunnen niet worden verplaatst naar een resource groep in hetzelfde abonnement of tussen abonnementen.
+
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
@@ -1795,9 +1798,6 @@ Ga naar de naam ruimte van een resource provider:
 > | kluizen/accesspolicies | Nee | Nee |
 > | kluizen/eventgridfilters | Nee | Nee |
 > | kluizen/geheimen | Nee | Nee |
-
-> [!IMPORTANT]
-> Sleutel kluizen die worden gebruikt voor schijf versleuteling, kunnen niet worden verplaatst naar een resource groep in hetzelfde abonnement of tussen abonnementen.
 
 ## <a name="microsoftkubernetes"></a>Microsoft.Kubernetes
 
@@ -1866,8 +1866,8 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- | ---------- |
 > | hostingenvironments | Nee | Nee |
 > | integrationaccounts | Ja | Ja |
-> | integrationserviceenvironments | Ja | Nee |
-> | integrationserviceenvironments/beheerdeapi's | Ja | Nee |
+> | integrationserviceenvironments | Yes | No |
+> | integrationserviceenvironments/beheerdeapi's | Yes | No |
 > | isolatedenvironments | Nee | Nee |
 > | locaties | Nee | Nee |
 > | locaties/werk stromen | Nee | Nee |
@@ -1884,8 +1884,8 @@ Ga naar de naam ruimte van een resource provider:
 > | locaties/bewerkingen | Nee | Nee |
 > | locaties/operationsstatus | Nee | Nee |
 > | bewerkingen | Nee | Nee |
-> | webservices | Ja | Nee |
-> | workspaces | Ja | Ja |
+> | webservices | Yes | No |
+> | werkruimten | Ja | Ja |
 
 ## <a name="microsoftmachinelearningcompute"></a>Micro soft. MachineLearningCompute
 
@@ -1926,7 +1926,7 @@ Ga naar de naam ruimte van een resource provider:
 > | locaties/toegestane VM | Nee | Nee |
 > | locaties/workspaceoperationsstatus | Nee | Nee |
 > | bewerkingen | Nee | Nee |
-> | workspaces | Nee | Nee |
+> | werkruimten | Nee | Nee |
 > | werk ruimten/reken bewerkingen | Nee | Nee |
 > | werk ruimten/eventgridfilters | Nee | Nee |
 
@@ -2115,6 +2115,9 @@ Ga naar de naam ruimte van een resource provider:
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
+> [!IMPORTANT]
+> Zie [richt lijnen](./move-limitations/networking-move-limitations.md)voor het verplaatsen van netwerken.
+
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
@@ -2194,10 +2197,10 @@ Ga naar de naam ruimte van een resource provider:
 > | networkinterfaces | Ja | Ja |
 > | networkprofiles | Nee | Nee |
 > | networksecuritygroups | Ja | Ja |
-> | networkwatchers | Ja | Nee |
-> | networkwatchers / connectionmonitors | Ja | Nee |
-> | networkwatchers / flowlogs | Ja | Nee |
-> | networkwatchers / pingmeshes | Ja | Nee |
+> | networkwatchers | Yes | No |
+> | networkwatchers / connectionmonitors | Yes | No |
+> | networkwatchers / flowlogs | Yes | No |
+> | networkwatchers / pingmeshes | Yes | No |
 > | bewerkingen | Nee | Nee |
 > | p2svpngateways | Nee | Nee |
 > | privatednsoperationresults | Nee | Nee |
@@ -2237,9 +2240,6 @@ Ga naar de naam ruimte van een resource provider:
 > | vpnserverconfigurations | Nee | Nee |
 > | vpnsites (virtueel WAN) | Nee | Nee |
 
-> [!IMPORTANT]
-> Zie [richt lijnen](./move-limitations/networking-move-limitations.md)voor het verplaatsen van netwerken.
-
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 
 > [!div class="mx-tableFixed"]
@@ -2272,6 +2272,11 @@ Ga naar de naam ruimte van een resource provider:
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 
+> [!IMPORTANT]
+> Zorg ervoor dat het verplaatsen naar een nieuw abonnement geen [abonnements quota's](azure-subscription-service-limits.md#azure-monitor-limits)overschrijdt.
+>
+> U kunt geen werk ruimten verplaatsen die een gekoppeld Automation-account hebben. Zorg ervoor dat u alle Automation-accounts ontkoppelt voordat u begint met een Verplaats bewerking.
+
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
@@ -2282,18 +2287,13 @@ Ga naar de naam ruimte van een resource provider:
 > | locaties/operationstatuses | Nee | Nee |
 > | bewerkingen | Nee | Nee |
 > | storageinsightconfigs | Nee | Nee |
-> | workspaces | Ja | Ja |
+> | werkruimten | Ja | Ja |
 > | werk ruimten/gegevens bronnen | Nee | Nee |
 > | werk ruimten/linkedservices | Nee | Nee |
 > | werk ruimten/linkedstorageaccounts | Nee | Nee |
 > | werk ruimten/meta gegevens | Nee | Nee |
 > | werk ruimten/query | Nee | Nee |
 > | werk ruimten/scopedprivatelinkproxies | Nee | Nee |
-
-> [!IMPORTANT]
-> Zorg ervoor dat het verplaatsen naar een nieuw abonnement geen [abonnements quota's](azure-subscription-service-limits.md#azure-monitor-limits)overschrijdt.
->
-> U kunt geen werk ruimten verplaatsen die een gekoppeld Automation-account hebben. Zorg ervoor dat u alle Automation-accounts ontkoppelt voordat u begint met een Verplaats bewerking.
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 
@@ -2402,9 +2402,12 @@ Ga naar de naam ruimte van een resource provider:
 > | locaties | Nee | Nee |
 > | locaties/operationstatuses | Nee | Nee |
 > | bewerkingen | Nee | Nee |
-> | workspaces | Nee | Nee |
+> | werkruimten | Nee | Nee |
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
+
+> [!IMPORTANT]
+> Zie [Recovery Services richt lijnen voor verplaatsen](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json).
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -2426,9 +2429,6 @@ Ga naar de naam ruimte van een resource provider:
 > | bewerkingen | Nee | Nee |
 > | replicationeligibilityresults | Nee | Nee |
 > | kluizen | Ja | Ja |
-
-> [!IMPORTANT]
-> Zie [Recovery Services richt lijnen voor verplaatsen](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json).
 
 ## <a name="microsoftredhatopenshift"></a>Micro soft. RedHatOpenShift
 
@@ -2523,7 +2523,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
-> | toepassingen | Ja | Nee |
+> | toepassingen | Ja | No |
 > | checkmoderneligibility | Nee | Nee |
 > | checknameavailability | Nee | Nee |
 > | operationresults | Nee | Nee |
@@ -2531,6 +2531,9 @@ Ga naar de naam ruimte van een resource provider:
 > | saasresources | Nee | Nee |
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
+
+> [!IMPORTANT]
+> U kunt niet meerdere Zoek resources in verschillende regio's in één bewerking verplaatsen. Verplaats deze in plaats daarvan in afzonderlijke bewerkingen.
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -2540,9 +2543,6 @@ Ga naar de naam ruimte van een resource provider:
 > | bewerkingen | Nee | Nee |
 > | resourcehealthmetadata | Nee | Nee |
 > | searchservices | Ja | Ja |
-
-> [!IMPORTANT]
-> U kunt niet meerdere Zoek resources in verschillende regio's in één bewerking verplaatsen. Verplaats deze in plaats daarvan in afzonderlijke bewerkingen.
 
 ## <a name="microsoftsecurity"></a>Microsoft.Security
 
@@ -2748,6 +2748,9 @@ Ga naar de naam ruimte van een resource provider:
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
 
+> [!IMPORTANT]
+> Een Data Base en server moeten zich in dezelfde resource groep bestaan. Wanneer u een SQL-Server verplaatst, worden alle bijbehorende data bases ook verplaatst. Dit gedrag is van toepassing op Azure SQL Database en Azure Synapse Analytics-data bases.
+
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
@@ -2922,9 +2925,6 @@ Ga naar de naam ruimte van een resource provider:
 > | servers/vulnerabilityassessments | Nee | Nee |
 > | virtualclusters | Ja | Ja |
 
-> [!IMPORTANT]
-> Een Data Base en server moeten zich in dezelfde resource groep bestaan. Wanneer u een SQL-Server verplaatst, worden alle bijbehorende data bases ook verplaatst. Dit gedrag is van toepassing op Azure SQL Database en Azure Synapse Analytics-data bases.
-
 ## <a name="microsoftsqlvirtualmachine"></a>Micro soft. SqlVirtualMachine
 
 > [!div class="mx-tableFixed"]
@@ -3012,6 +3012,9 @@ Ga naar de naam ruimte van een resource provider:
 
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
 
+> [!IMPORTANT]
+> Stream Analytics taken kunnen niet worden verplaatst wanneer de status actief is.
+
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
@@ -3020,9 +3023,6 @@ Ga naar de naam ruimte van een resource provider:
 > | locaties/quota's | Nee | Nee |
 > | bewerkingen | Nee | Nee |
 > | streamingjobs | Ja | Ja |
-
-> [!IMPORTANT]
-> Stream Analytics taken kunnen niet worden verplaatst wanneer de status actief is.
 
 ## <a name="microsoftstreamanalyticsexplorer"></a>Micro soft. StreamAnalyticsExplorer
 
@@ -3070,7 +3070,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- | ---------- |
 > | checknameavailability | Nee | Nee |
 > | bewerkingen | Nee | Nee |
-> | workspaces | Ja | Ja |
+> | werkruimten | Ja | Ja |
 > | werk ruimten/bigdatapools | Ja | Ja |
 > | werk ruimten/operationresults | Nee | Nee |
 > | werk ruimten/operationstatuses | Nee | Nee |
@@ -3110,6 +3110,9 @@ Ga naar de naam ruimte van een resource provider:
 
 ## <a name="microsoftvisualstudio"></a>micro soft. Visual Studio
 
+> [!IMPORTANT]
+> Als u het abonnement voor Azure DevOps wilt wijzigen, raadpleegt u [het Azure-abonnement wijzigen dat wordt gebruikt voor facturering](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json).
+
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
@@ -3118,9 +3121,6 @@ Ga naar de naam ruimte van een resource provider:
 > | account/project | Nee | Nee |
 > | checknameavailability | Nee | Nee |
 > | bewerkingen | Nee | Nee |
-
-> [!IMPORTANT]
-> Als u het abonnement voor Azure DevOps wilt wijzigen, raadpleegt u [het Azure-abonnement wijzigen dat wordt gebruikt voor facturering](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json).
 
 ## <a name="microsoftvmware"></a>Micro soft. VMware
 
@@ -3178,12 +3178,15 @@ Ga naar de naam ruimte van een resource provider:
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 
+> [!IMPORTANT]
+> Zie [app service richt lijnen voor verplaatsen](./move-limitations/app-service-move-limitations.md).
+
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | availablestacks | Nee | Nee |
 > | billingmeters | Nee | Nee |
-> | certificaten | Nee | Ja |
+> | certificaten | No | Yes |
 > | checknameavailability | Nee | Nee |
 > | connectiongateways | Ja | Ja |
 > | inbel | Ja | Ja |
@@ -3232,9 +3235,6 @@ Ga naar de naam ruimte van een resource provider:
 > | staticsites | Nee | Nee |
 > | subelementid | Nee | Nee |
 > | verifyhostingenvironmentvnet | Nee | Nee |
-
-> [!IMPORTANT]
-> Zie [app service richt lijnen voor verplaatsen](./move-limitations/app-service-move-limitations.md).
 
 ## <a name="microsoftwindowsesu"></a>Micro soft. WindowsESU
 

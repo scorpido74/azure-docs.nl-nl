@@ -7,32 +7,32 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 040eeda3edc8aa1165915a157cb7e1bdd1594740
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b8e6797d1dbbe4260f7a5b701ada887f68a88a7c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82796497"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079669"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>Azure-beveiligings basislijn voor Azure Functions
 
 De Azure-beveiligings basislijn voor Azure Functions bevat aanbevelingen waarmee u de beveiligings postuur van uw implementatie kunt verbeteren.
 
-De basis lijn voor deze service wordt opgehaald uit de [Azure Security Bench Mark-versie 1,0](https://docs.microsoft.com/azure/security/benchmarks/overview), die aanbevelingen biedt over hoe u uw cloud oplossingen kunt beveiligen in azure met onze richt lijnen voor best practices.
+De basis lijn voor deze service wordt opgehaald uit de [Azure Security Bench Mark-versie 1,0](../security/benchmarks/overview.md), die aanbevelingen biedt over hoe u uw cloud oplossingen kunt beveiligen in azure met onze richt lijnen voor best practices.
 
-Zie het [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)voor meer informatie.
+Zie het [overzicht van Azure Security-basis lijnen](../security/benchmarks/security-baselines-overview.md)voor meer informatie.
 
 ## <a name="network-security"></a>Netwerkbeveiliging
 
-*Zie [beveiligings beheer: netwerk beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)voor meer informatie.*
+*Zie [beveiligings beheer: netwerk beveiliging](../security/benchmarks/security-control-network-security.md)voor meer informatie.*
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1,1: Beveilig bronnen met behulp van netwerk beveiligings groepen of Azure Firewall op de Virtual Network
 
 **Hulp**: integreer uw Azure functions-apps met een virtueel Azure-netwerk. Functie-apps die worden uitgevoerd in het Premium-abonnement hebben dezelfde hosting mogelijkheden als web-apps in Azure App Service, waaronder de functie VNet-integratie.  Met virtuele Azure-netwerken kunt u veel van uw Azure-resources, zoals Azure Functions, in een niet-Internet routeerbaar netwerk plaatsen.
 
-- [Functies integreren met een Azure-Virtual Network](https://docs.microsoft.com/azure/azure-functions/functions-create-vnet)
+- [Functies integreren met een Azure-Virtual Network](./functions-create-vnet.md)
 
-- [Meer informatie over Vnet-integratie voor Azure Functions en Azure App Service](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)
+- [Meer informatie over Vnet-integratie voor Azure Functions en Azure App Service](../app-service/web-sites-integrate-with-vnet.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -44,11 +44,11 @@ Zie het [overzicht van Azure Security-basis lijnen](https://docs.microsoft.com/a
 
 Als u netwerk beveiligings groepen (Nsg's) met uw Azure Functions-implementatie gebruikt, schakelt u NSG-stroom Logboeken in en verzendt u logboeken naar een Azure Storage account voor verkeers controles. U kunt ook NSG-stroom logboeken naar een Log Analytics-werk ruimte verzenden en Traffic Analytics gebruiken om inzicht te krijgen in de verkeers stroom in uw Azure-Cloud. Enkele voor delen van Traffic Analytics zijn de mogelijkheid om netwerk activiteiten te visualiseren en HOTS pots te identificeren, beveiligings dreigingen te identificeren, verkeers patronen te begrijpen en netwerk configuraties te lokaliseren.
 
-- [Informatie over de netwerk beveiliging die wordt verschaft door Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+- [Informatie over de netwerk beveiliging die wordt verschaft door Azure Security Center](../security-center/security-center-network-recommendations.md)
 
-- [NSG-stroom logboeken inschakelen](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+- [NSG-stroom logboeken inschakelen](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-- [Traffic Analytics inschakelen en gebruiken](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+- [Traffic Analytics inschakelen en gebruiken](../network-watcher/traffic-analytics.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -65,9 +65,9 @@ Zorg er bovendien voor dat externe fout opsporing is uitgeschakeld voor uw produ
 
 Overweeg om Azure Web Application firewall (WAF) te implementeren als onderdeel van de netwerk configuratie voor extra inspectie van binnenkomend verkeer. Schakel de diagnostische instelling voor WAF-en opname Logboeken in een opslag account, Event hub of Log Analytics werk ruimte in. 
 
-- [Azure function-eind punten in productie beveiligen](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook-trigger?tabs=csharp#secure-an-http-endpoint-in-production)
+- [Azure function-eind punten in productie beveiligen](./functions-bindings-http-webhook-trigger.md?tabs=csharp#secure-an-http-endpoint-in-production)
 
-- [Azure WAF implementeren](https://docs.microsoft.com/azure/web-application-firewall/ag/create-waf-policy-ag)
+- [Azure WAF implementeren](../web-application-firewall/ag/create-waf-policy-ag.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -78,25 +78,25 @@ Overweeg om Azure Web Application firewall (WAF) te implementeren als onderdeel 
 **Hulp**: Schakel DDoS Protection standaard in op de virtuele netwerken die zijn gekoppeld aan uw functions-apps om te beschermen tegen DDoS-aanvallen. Gebruik Azure Security Center geïntegreerde bedreigings informatie om communicatie met bekende of ongebruikte open bare IP-adressen te weigeren.
 Daarnaast kunt u een front-end-gateway, zoals Azure Web Application firewall, configureren om alle inkomende aanvragen te verifiëren en schadelijk verkeer te filteren. Met de firewall van Azure Web Application kunt u uw Azure-functie-apps beveiligen door inkomend webverkeer te inspecteren om SQL-injecties, cross-site scripting, uploads van malware en DDoS-aanvallen te blok keren. De introductie van een WAF vereist een App Service Environment of het gebruik van privé-eind punten (preview-versie). Zorg ervoor dat privé-eind punten niet meer in (preview) zijn voordat u ze gebruikt met productie werkbelastingen.
 
-- [Netwerkopties van Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-networking-options)
+- [Netwerkopties van Azure Functions](./functions-networking-options.md)
 
-- [Azure Functions Premium-abonnement](https://docs.microsoft.com/azure/azure-functions/functions-scale#premium-plan)
+- [Azure Functions Premium-abonnement](./functions-scale.md#premium-plan)
 
-- [Inleiding tot Azure App Service Environments](https://docs.microsoft.com/azure/app-service/environment/intro)
+- [Inleiding tot Azure App Service Environments](../app-service/environment/intro.md)
 
-- [Netwerkoverwegingen voor een App Service-omgeving](https://docs.microsoft.com/azure/app-service/environment/network-info)
+- [Netwerkoverwegingen voor een App Service-omgeving](../app-service/environment/network-info.md)
 
-- [DDoS-beveiliging configureren](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
+- [DDoS-beveiliging configureren](../virtual-network/manage-ddos-protection.md)
 
-- [Azure Firewall implementeren](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+- [Azure Firewall implementeren](../firewall/tutorial-firewall-deploy-portal.md)
 
-- [Meer informatie over Azure Security Center geïntegreerde bedreigings informatie](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer)
+- [Meer informatie over Azure Security Center geïntegreerde bedreigings informatie](../security-center/threat-protection.md)
 
-- [Meer informatie over Azure Security Center adaptieve netwerk beveiliging](https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening)
+- [Meer informatie over Azure Security Center adaptieve netwerk beveiliging](../security-center/security-center-adaptive-network-hardening.md)
 
-- [Meer informatie over Azure Security Center just-in-time-netwerk Access Control](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
+- [Meer informatie over Azure Security Center just-in-time-netwerk Access Control](../security-center/security-center-just-in-time.md)
 
-- [Privé-eind punten gebruiken voor Azure Functions](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)
+- [Privé-eind punten gebruiken voor Azure Functions](../app-service/networking/private-endpoint.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -106,11 +106,11 @@ Daarnaast kunt u een front-end-gateway, zoals Azure Web Application firewall, co
 
 **Richt lijnen**: als u netwerk beveiligings groepen (nsg's) met uw Azure functions-implementatie gebruikt, schakelt u stroom logboeken van de netwerk beveiligings groep in en verzendt u logboeken naar een opslag account voor verkeers controle. U kunt ook stroom logboeken naar een Log Analytics-werk ruimte verzenden en Traffic Analytics gebruiken om inzicht te krijgen in de verkeers stroom in uw Azure-Cloud. Enkele voor delen van Traffic Analytics zijn de mogelijkheid om netwerk activiteiten te visualiseren en HOTS pots te identificeren, beveiligings dreigingen te identificeren, verkeers patronen te begrijpen en netwerk configuraties te lokaliseren.
 
-- [NSG-stroom logboeken inschakelen](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+- [NSG-stroom logboeken inschakelen](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-- [Traffic Analytics inschakelen en gebruiken](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+- [Traffic Analytics inschakelen en gebruiken](../network-watcher/traffic-analytics.md)
 
-- [Network Watcher inschakelen](https://docs.microsoft.com/azure/network-watcher/network-watcher-create)
+- [Network Watcher inschakelen](../network-watcher/network-watcher-create.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -122,19 +122,19 @@ Daarnaast kunt u een front-end-gateway, zoals Azure Web Application firewall, co
 
 Het is ook mogelijk dat er meerdere Marketplace-opties zijn, zoals de Barracuda WAF voor Azure die beschikbaar zijn op de Azure Marketplace, die ID'S/IPS-functies bevatten.
 
-- [Netwerkopties van Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-networking-options)
+- [Netwerkopties van Azure Functions](./functions-networking-options.md)
 
-- [Azure Functions Premium-abonnement](https://docs.microsoft.com/azure/azure-functions/functions-scale#premium-plan)
+- [Azure Functions Premium-abonnement](./functions-scale.md#premium-plan)
 
-- [Inleiding tot Azure App Service Environments](https://docs.microsoft.com/azure/app-service/environment/intro)
+- [Inleiding tot Azure App Service Environments](../app-service/environment/intro.md)
 
-- [Netwerkoverwegingen voor een App Service-omgeving](https://docs.microsoft.com/azure/app-service/environment/network-info)
+- [Netwerkoverwegingen voor een App Service-omgeving](../app-service/environment/network-info.md)
 
-- [Meer informatie over Azure Web Application firewall](https://docs.microsoft.com/azure/application-gateway/overview#web-application-firewall)
+- [Meer informatie over Azure Web Application firewall](../web-application-firewall/index.yml)
 
-- [Privé-eind punten gebruiken voor Azure Functions](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)
+- [Privé-eind punten gebruiken voor Azure Functions](../app-service/networking/private-endpoint.md)
 
-- [Meer informatie over Barracuda WAF Cloud service](https://docs.microsoft.com/azure/app-service/environment/app-service-app-service-environment-web-application-firewall#configuring-your-barracuda-waf-cloud-service)
+- [Meer informatie over Barracuda WAF Cloud service](../app-service/environment/app-service-app-service-environment-web-application-firewall.md#configuring-your-barracuda-waf-cloud-service)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -144,19 +144,19 @@ Het is ook mogelijk dat er meerdere Marketplace-opties zijn, zoals de Barracuda 
 
 **Richt lijnen**: Configureer een front-end-gateway voor uw netwerk, zoals de firewall van Azure-webtoepassingen met end-to-end TLS-code ring. De introductie van een WAF vereist een App Service Environment of het gebruik van privé-eind punten (preview-versie). Zorg ervoor dat privé-eind punten niet meer in (preview) zijn voordat u ze gebruikt met productie werkbelastingen.
 
-- [Netwerkopties van Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-networking-options)
+- [Netwerkopties van Azure Functions](./functions-networking-options.md)
 
-- [Azure Functions Premium-abonnement](https://docs.microsoft.com/azure/azure-functions/functions-scale#premium-plan)
+- [Azure Functions Premium-abonnement](./functions-scale.md#premium-plan)
 
-- [Inleiding tot Azure App Service Environments](https://docs.microsoft.com/azure/app-service/environment/intro)
+- [Inleiding tot Azure App Service Environments](../app-service/environment/intro.md)
 
-- [Netwerkoverwegingen voor een App Service-omgeving](https://docs.microsoft.com/azure/app-service/environment/network-info)
+- [Netwerkoverwegingen voor een App Service-omgeving](../app-service/environment/network-info.md)
 
-- [Meer informatie over Azure Web Application firewall](https://docs.microsoft.com/azure/application-gateway/overview#web-application-firewall)
+- [Meer informatie over Azure Web Application firewall](../web-application-firewall/index.yml)
 
-- [End-to-end TLS configureren met behulp van Application Gateway met de portal](https://docs.microsoft.com/azure/application-gateway/end-to-end-ssl-portal)
+- [End-to-end TLS configureren met behulp van Application Gateway met de portal](../application-gateway/end-to-end-ssl-portal.md)
 
-- [Privé-eind punten gebruiken voor Azure Functions](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)
+- [Privé-eind punten gebruiken voor Azure Functions](../app-service/networking/private-endpoint.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -166,7 +166,7 @@ Het is ook mogelijk dat er meerdere Marketplace-opties zijn, zoals de Barracuda 
 
 **Hulp**: gebruik Virtual Network Service Tags om netwerk toegangs beheer te definiëren voor netwerk beveiligings groepen of Azure firewall. U kunt servicetags gebruiken in plaats van specifieke IP-adressen wanneer u beveiligingsregels maakt. Door de naam van de service label (bijvoorbeeld AzureAppService) op te geven in het juiste bron-of doel veld van een regel, kunt u het verkeer voor de bijbehorende service toestaan of weigeren. Micro soft beheert de adres voorvoegsels die zijn opgenomen in het servicetag van de service en werkt de servicetag automatisch bij met gewijzigde adressen.
 
-- [Voor meer informatie over het gebruik van service Tags](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+- [Voor meer informatie over het gebruik van service Tags](../virtual-network/service-tags-overview.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -181,9 +181,9 @@ Het is ook mogelijk dat er meerdere Marketplace-opties zijn, zoals de Barracuda 
 
 U kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties te vereenvoudigen door sleutel omgevings artefacten, zoals Azure Resource Manager sjablonen, op rollen gebaseerd toegangs beheer (RBAC) en beleids regels in één blauw druk-definitie. U kunt de blauw druk eenvoudig Toep assen op nieuwe abonnementen, omgevingen en het beheer en de verwerkings mogelijkheden van versies.
 
-- [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
-- [Een Azure Blueprint maken](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+- [Een Azure Blueprint maken](../governance/blueprints/create-blueprint-portal.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -197,7 +197,7 @@ Gebruik een van de ingebouwde Azure-beleids definities die betrekking hebben op 
 
 U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties op resources te zoeken of uit te voeren.
 
-- [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -207,9 +207,9 @@ U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties
 
 **Hulp**: Azure-activiteiten logboek gebruiken om netwerk resource configuraties te bewaken en wijzigingen te detecteren voor netwerk instellingen en-bronnen die betrekking hebben op uw Azure functions-implementaties. Maak waarschuwingen in Azure Monitor die worden geactiveerd wanneer er wijzigingen in essentiële netwerk instellingen of-resources plaatsvinden. 
 
-- [Activiteiten logboek gebeurtenissen van Azure weer geven en ophalen](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+- [Activiteiten logboek gebeurtenissen van Azure weer geven en ophalen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
-- [Waarschuwingen maken in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [Waarschuwingen maken in Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -217,7 +217,7 @@ U kunt Azure PowerShell of Azure CLI gebruiken om op basis van hun labels acties
 
 ## <a name="logging-and-monitoring"></a>Logboekregistratie en bewaking
 
-*Zie voor meer informatie [beveiligings beheer: logboek registratie en controle](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*Zie voor meer informatie [beveiligings beheer: logboek registratie en controle](../security/benchmarks/security-control-logging-monitoring.md).*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2,1: goedgekeurde tijd synchronisatie bronnen gebruiken
 
@@ -237,13 +237,13 @@ Als u in uw Azure function-app ingebouwde beveiligings-en controle logboek regis
 
 Optioneel kunt u gegevens in-en inschakelen voor Azure Sentinel of een SIEM van derden. 
 
-- [Diagnostische instellingen voor Azure-activiteiten logboek inschakelen](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Diagnostische instellingen voor Azure-activiteiten logboek inschakelen](../azure-monitor/platform/activity-log.md)
 
-- [Azure Functions met Azure-toepassing inzichten instellen](https://docs.microsoft.com/azure/azure-functions/functions-monitoring)
+- [Azure Functions met Azure-toepassing inzichten instellen](./functions-monitoring.md)
 
-- [Diagnostische instellingen inschakelen (door de gebruiker gegenereerde logboeken) voor Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-monitor-log-analytics)
+- [Diagnostische instellingen inschakelen (door de gebruiker gegenereerde logboeken) voor Azure Functions](./functions-monitor-log-analytics.md)
 
-- [Azure-Sentinel onboarden](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Azure-Sentinel onboarden](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -255,9 +255,9 @@ Optioneel kunt u gegevens in-en inschakelen voor Azure Sentinel of een SIEM van 
 
 Als u in uw Azure function-app ingebouwde beveiligings-en controle logboek registratie hebt, schakelt u de diagnostische instelling ' FunctionAppLogs ' in en verzendt u de logboeken naar een Log Analytics-werk ruimte, Azure Event Hub of Azure Storage-account voor archivering. 
 
-- [Diagnostische instellingen voor Azure-activiteiten logboek inschakelen](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Diagnostische instellingen voor Azure-activiteiten logboek inschakelen](../azure-monitor/platform/activity-log.md)
 
-- [Diagnostische instellingen inschakelen (door de gebruiker gegenereerde logboeken) voor Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-monitor-log-analytics)
+- [Diagnostische instellingen inschakelen (door de gebruiker gegenereerde logboeken) voor Azure Functions](./functions-monitor-log-analytics.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -275,7 +275,7 @@ Als u in uw Azure function-app ingebouwde beveiligings-en controle logboek regis
 
 **Richt lijnen**: stel in azure monitor de Bewaar periode voor logboek registratie In voor log Analytics werk ruimten die zijn gekoppeld aan uw Azure functions-apps volgens de nalevings voorschriften van uw organisatie.
 
-- [Para meters voor het bewaren van Logboeken instellen](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Para meters voor het bewaren van Logboeken instellen](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -291,13 +291,13 @@ Als u in uw Azure function-app ingebouwde beveiligings-en controle logboek regis
 
 Optioneel kunt u gegevens in-en inschakelen voor Azure Sentinel of een SIEM van derden. 
 
-- [Diagnostische instellingen voor Azure-activiteiten logboek inschakelen](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Diagnostische instellingen voor Azure-activiteiten logboek inschakelen](../azure-monitor/platform/activity-log.md)
 
-- [Diagnostische instellingen inschakelen voor Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-monitor-log-analytics)
+- [Diagnostische instellingen inschakelen voor Azure Functions](./functions-monitor-log-analytics.md)
 
-- [Azure Functions met Azure-toepassing inzichten instellen en de telemetriegegevens weer geven](https://docs.microsoft.com/azure/azure-functions/functions-monitoring)
+- [Azure Functions met Azure-toepassing inzichten instellen en de telemetriegegevens weer geven](./functions-monitoring.md)
 
-- [Azure-Sentinel onboarden](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Azure-Sentinel onboarden](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -311,15 +311,15 @@ Schakel Application Insights in voor uw Azure Functions-apps om logboek-, presta
 
 Optioneel kunt u gegevens in-en inschakelen voor Azure Sentinel of een SIEM van derden. 
 
-- [Diagnostische instellingen voor Azure-activiteiten logboek inschakelen](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Diagnostische instellingen voor Azure-activiteiten logboek inschakelen](../azure-monitor/platform/activity-log.md)
 
-- [Diagnostische instellingen inschakelen voor Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-monitor-log-analytics)
+- [Diagnostische instellingen inschakelen voor Azure Functions](./functions-monitor-log-analytics.md)
 
-- [Application Insights inschakelen voor Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#enable-application-insights-integration)
+- [Application Insights inschakelen voor Azure Functions](./functions-monitoring.md#enable-application-insights-integration)
 
-- [Waarschuwingen maken in azure](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
+- [Waarschuwingen maken in azure](../azure-monitor/learn/tutorial-response.md)
 
-- [Azure-Sentinel onboarden](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Azure-Sentinel onboarden](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -351,15 +351,15 @@ Optioneel kunt u gegevens in-en inschakelen voor Azure Sentinel of een SIEM van 
 
 ## <a name="identity-and-access-control"></a>Identiteits- en toegangsbeheer
 
-*Zie [beveiligings beheer: identiteits-en toegangs beheer](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)voor meer informatie.*
+*Zie [beveiligings beheer: identiteits-en toegangs beheer](../security/benchmarks/security-control-identity-access-control.md)voor meer informatie.*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: een inventaris van beheerders accounts onderhouden
 
 **Hulp**: Azure Active Directory (AD) heeft ingebouwde rollen die expliciet moeten worden toegewezen en waarop query's kunnen worden doorzocht. Gebruik de Azure AD Power shell-module om ad hoc-query's uit te voeren om accounts te detecteren die lid zijn van beheer groepen. 
 
-- [Een directory-rol verkrijgen in azure AD met Power shell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [Een directory-rol verkrijgen in azure AD met Power shell](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-- [Leden van een directory-rol in azure AD ophalen met Power shell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [Leden van een directory-rol in azure AD ophalen met Power shell](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 **Azure Security Center bewaking**: Ja
 
@@ -373,11 +373,11 @@ Toegang tot het gegevens vlak kan op verschillende manieren worden beheerd, waar
 
 Er zijn meerdere implementatie methoden beschikbaar voor het gebruik van apps, waarvan sommige een set van gegenereerde referenties kunnen gebruiken. Controleer de implementatie methoden die voor uw toepassing worden gebruikt.
 
-- [Een HTTP-eind punt beveiligen](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook-trigger?tabs=csharp#secure-an-http-endpoint-in-production)
+- [Een HTTP-eind punt beveiligen](./functions-bindings-http-webhook-trigger.md?tabs=csharp#secure-an-http-endpoint-in-production)
 
-- [Autorisatie sleutels verkrijgen en opnieuw genereren](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook-trigger?tabs=csharp#obtaining-keys)
+- [Autorisatie sleutels verkrijgen en opnieuw genereren](./functions-bindings-http-webhook-trigger.md?tabs=csharp#obtaining-keys)
 
-- [Implementatie technologieën in Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-deployment-technologies)
+- [Implementatie technologieën in Azure Functions](./functions-deployment-technologies.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -389,9 +389,9 @@ Er zijn meerdere implementatie methoden beschikbaar voor het gebruik van apps, w
 
 Om u te helpen bij het bijhouden van specifieke beheerders accounts, kunt u ook aanbevelingen van Azure Security Center of het ingebouwde Azure-beleid gebruiken, zoals: er moet meer dan één eigenaar worden toegewezen aan uw abonnement afgeschafte accounts met eigenaars machtigingen moeten worden verwijderd uit uw abonnement externe accounts met eigenaars machtigingen moeten worden verwijderd
 
-- [Azure Security Center gebruiken om identiteit en toegang te bewaken (preview)](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+- [Azure Security Center gebruiken om identiteit en toegang te bewaken (preview)](../security-center/security-center-identity-access.md)
 
-- [Azure Policy gebruiken](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy gebruiken](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -401,9 +401,9 @@ Om u te helpen bij het bijhouden van specifieke beheerders accounts, kunt u ook 
 
 **Richt lijnen**: gebruik waar mogelijk Azure Active Directory-SSO in plaats van afzonderlijke zelfstandige referenties voor gegevens toegang tot uw functie-app te configureren. Gebruik Azure Security Center aanbevelingen voor identiteits-en toegangs beheer. Implementeer eenmalige aanmelding voor uw Azure Functions-apps met behulp van de functie voor App Service verificatie/autorisatie.
 
-- [Meer informatie over verificatie en autorisatie in Azure Functions](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization#identity-providers)
+- [Meer informatie over verificatie en autorisatie in Azure Functions](../app-service/overview-authentication-authorization.md#identity-providers)
 
-- [Informatie over eenmalige aanmelding met Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Informatie over eenmalige aanmelding met Azure AD](../active-directory/manage-apps/what-is-single-sign-on.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -413,9 +413,9 @@ Om u te helpen bij het bijhouden van specifieke beheerders accounts, kunt u ook 
 
 **Hulp**: Schakel Azure Active Directory (AD) multi-factor Authentication (MFA) in en volg Azure Security Center aanbevelingen voor identiteits-en toegangs beheer.
 
-- [MFA inschakelen in azure](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+- [MFA inschakelen in azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
-- [Identiteit en toegang bewaken in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+- [Identiteit en toegang bewaken in Azure Security Center](../security-center/security-center-identity-access.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -425,9 +425,9 @@ Om u te helpen bij het bijhouden van specifieke beheerders accounts, kunt u ook 
 
 **Hulp**: gebruik paw (privileged Access workstations) met multi-factor Authentication (MFA) die zijn geconfigureerd voor aanmelding bij en configureren van Azure-resources.
 
-- [Meer informatie over privileged Access workstations](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [Meer informatie over privileged Access workstations](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-- [MFA inschakelen in azure](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+- [MFA inschakelen in azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -439,9 +439,9 @@ Om u te helpen bij het bijhouden van specifieke beheerders accounts, kunt u ook 
 
 Daarnaast kunt u met Azure AD-risico detectie waarschuwingen en rapporten bekijken over Risk ante gebruikers gedrag.
 
-- [Privileged Identity Management implementeren (PIM)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+- [Privileged Identity Management implementeren (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [Meer informatie over Azure AD-risico detectie](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+- [Meer informatie over Azure AD-risico detectie](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -451,7 +451,7 @@ Daarnaast kunt u met Azure AD-risico detectie waarschuwingen en rapporten bekijk
 
 **Hulp**: gebruik benoemde locaties voor voorwaardelijke toegang om alleen toegang toe te staan tot de Azure Portal vanuit specifieke logische groepen met IP-adresbereiken of landen/regio's.
 
-- [Benoemde locaties configureren in azure](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+- [Benoemde locaties configureren in azure](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -461,9 +461,9 @@ Daarnaast kunt u met Azure AD-risico detectie waarschuwingen en rapporten bekijk
 
 **Hulp**: gebruik Azure Active Directory (AD) als centraal verificatie-en autorisatie systeem voor uw Azure functions-apps. Azure AD beveiligt gegevens door gebruik te maken van sterke versleuteling voor gegevens in rust en onderweg. Azure AD bevat ook zouten, hashes en veilige gebruikers referenties.
 
-- [Uw Azure Functions-app configureren voor het gebruik van Azure AD-aanmelding](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad)
+- [Uw Azure Functions-app configureren voor het gebruik van Azure AD-aanmelding](../app-service/configure-authentication-provider-aad.md)
 
-- [Een AAD-exemplaar maken en configureren](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+- [Een AAD-exemplaar maken en configureren](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -473,9 +473,9 @@ Daarnaast kunt u met Azure AD-risico detectie waarschuwingen en rapporten bekijk
 
 **Hulp**: Azure Active Directory (AD) bevat logboeken waarmee u verouderde accounts kunt detecteren. Daarnaast kunt u Azure Identity Access revisies gebruiken om groepslid maatschappen en de toegang tot bedrijfs toepassingen en roltoewijzingen op efficiënte wijze te beheren. Gebruikers toegang kan regel matig worden gecontroleerd om ervoor te zorgen dat alleen de juiste gebruikers toegang hebben. 
 
-- [Meer informatie over Azure AD-rapportage](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+- [Meer informatie over Azure AD-rapportage](../active-directory/reports-monitoring/index.yml)
 
-- [Beoordelingen over Azure Identity Access gebruiken](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+- [Beoordelingen over Azure Identity Access gebruiken](../active-directory/governance/access-reviews-overview.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -489,11 +489,11 @@ U hebt toegang tot de Azure AD-aanmeldings activiteit, de controle-en risico geb
 
 U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-gebruikers accounts te maken en de audit logboeken en aanmeldings logboeken te verzenden naar een Log Analytics-werk ruimte. U kunt de gewenste logboek waarschuwingen configureren in Log Analytics.
 
-- [Uw Azure Functions-app configureren voor het gebruik van Azure AD-aanmelding](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad)
+- [Uw Azure Functions-app configureren voor het gebruik van Azure AD-aanmelding](../app-service/configure-authentication-provider-aad.md)
 
-- [Azure-activiteiten logboeken integreren in Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure-activiteiten logboeken integreren in Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-- [Azure-Sentinel aan de trein](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Azure-Sentinel aan de trein](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -503,11 +503,11 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 **Hulp**: gebruik Azure Active Directory (AD) als centraal verificatie-en autorisatie systeem voor uw Azure functions-apps. Voor de afwijking van het gedrag van de account aanmelding op het besturings vlak (de Azure Portal), gebruikt u de functies Azure Active Directory (AD) identiteits beveiliging en risico detectie om automatische antwoorden te configureren op gedetecteerde verdachte acties die betrekking hebben op gebruikers identiteiten. U kunt ook gegevens opnemen in azure Sentinel voor verder onderzoek.
 
-- [Risk ante aanmeldingen voor Azure AD weer geven](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Risk ante aanmeldingen voor Azure AD weer geven](../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Risico beleid voor identiteits beveiliging configureren en inschakelen](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+- [Risico beleid voor identiteits beveiliging configureren en inschakelen](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-- [Azure-Sentinel onboarden](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Azure-Sentinel onboarden](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -517,21 +517,21 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 **Hulp**: momenteel niet beschikbaar; Klanten-lockbox wordt momenteel niet ondersteund voor Azure Functions.
 
-- [Lijst met door Klanten-lockbox ondersteunde services](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+- [Lijst met door Klanten-lockbox ondersteunde services](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Azure Security Center bewaking**: niet van toepassing
 
 **Verantwoordelijkheid**: niet van toepassing
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
-*Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
+*Zie [beveiligings beheer: gegevens beveiliging](../security/benchmarks/security-control-data-protection.md)voor meer informatie.*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: een inventaris van gevoelige informatie onderhouden
 
 **Hulp**: Tags gebruiken om Azure-resources te helpen bij het bijhouden of verwerken van gevoelige informatie.
 
-- [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -543,19 +543,19 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 U kunt ook privé-eind punten gebruiken om netwerk isolatie uit te voeren. Een persoonlijk Azure-eind punt is een netwerk interface waarmee u privé en veilig kunt verbinden met een service (bijvoorbeeld: Azure Functions HTTPs-eind punt van de app) met een persoonlijke Azure-koppeling. Privé-eind punt gebruikt een privé-IP-adres uit uw VNet, waardoor de service effectief in uw VNet wordt gezet. Persoonlijke eind punten zijn in (preview) voor functie-apps die worden uitgevoerd in het Premium-abonnement. Zorg ervoor dat privé-eind punten niet meer in (preview) zijn voordat u ze gebruikt met productie werkbelastingen.
 
-- [Aanvullende Azure-abonnementen maken](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+- [Aanvullende Azure-abonnementen maken](../cost-management-billing/manage/create-subscription.md)
 
-- [Beheergroepen maken](https://docs.microsoft.com/azure/governance/management-groups/create)
+- [Beheergroepen maken](../governance/management-groups/create.md)
 
-- [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
-- [Netwerkopties van Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-networking-options)
+- [Netwerkopties van Azure Functions](./functions-networking-options.md)
 
-- [Azure Functions Premium-abonnement](https://docs.microsoft.com/azure/azure-functions/functions-scale#premium-plan)
+- [Azure Functions Premium-abonnement](./functions-scale.md#premium-plan)
 
-- [Persoonlijke eind punt begrijpen](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)
+- [Persoonlijke eind punt begrijpen](../private-link/private-endpoint-overview.md)
 
-- [Privé-eind punten gebruiken voor Azure Functions](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)
+- [Privé-eind punten gebruiken voor Azure Functions](../app-service/networking/private-endpoint.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -567,7 +567,7 @@ U kunt ook privé-eind punten gebruiken om netwerk isolatie uit te voeren. Een p
 
 Micro soft beheert de onderliggende infra structuur voor Azure Functions en heeft strikte controles geïmplementeerd om verlies of bloot stelling van klant gegevens te voor komen.
 
-- [Informatie over beveiliging van klanten in azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [Informatie over beveiliging van klanten in azure](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -587,7 +587,7 @@ Micro soft beheert de onderliggende infra structuur voor Azure Functions en heef
 
 Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt micro soft alle inhoud van de klant als gevoelig en gaat u naar een fantastische lengte om te beschermen tegen verlies en bloot stelling van klant gegevens. Om ervoor te zorgen dat klant gegevens binnen Azure veilig blijven, heeft micro soft een reeks robuuste besturings elementen en mogelijkheden voor gegevens bescherming geïmplementeerd en onderhouden.
 
-- [Informatie over beveiliging van klanten in azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [Informatie over beveiliging van klanten in azure](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -597,7 +597,7 @@ Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt mic
 
 **Hulp**: gebruik Azure Active Directory (AD) op rollen gebaseerd toegangs beheer (RBAC) voor het beheren van de toegang tot het Azure function Control-vlak (de Azure Portal). 
 
-- [RBAC configureren in azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+- [RBAC configureren in azure](../role-based-access-control/role-assignments-portal.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -609,7 +609,7 @@ Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt mic
 
 Micro soft beheert de onderliggende infra structuur voor Azure Functions en heeft strikte controles geïmplementeerd om verlies of bloot stelling van klant gegevens te voor komen.
 
-- [Informatie over beveiliging van klanten in azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [Informatie over beveiliging van klanten in azure](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -619,9 +619,9 @@ Micro soft beheert de onderliggende infra structuur voor Azure Functions en heef
 
 **Richt lijnen**: wanneer u een functie-app maakt, moet u een algemeen Azure Storage-account maken of koppelen dat ondersteuning biedt voor blob-, wachtrij-en tabel opslag. Dit komt omdat functies afhankelijk zijn van Azure Storage voor bewerkingen, zoals het beheren van triggers en de uitvoering van logboek functies. Azure Storage versleutelt alle gegevens in een opslag account in rust. Standaard worden gegevens versleuteld met door micro soft beheerde sleutels. Voor extra controle over versleutelings sleutels kunt u door de klant beheerde sleutels leveren voor versleuteling van BLOB-en bestands gegevens. Deze sleutels moeten aanwezig zijn in Azure Key Vault voor de functie-app om toegang te krijgen tot het opslag account.
 
-- [Informatie over de opslag van Azure Functions](https://docs.microsoft.com/azure/azure-functions/storage-considerations)
+- [Informatie over de opslag van Azure Functions](./storage-considerations.md)
 
-- [Meer informatie over Azure Storage-versleuteling voor Data-at-rest](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)
+- [Meer informatie over Azure Storage-versleuteling voor Data-at-rest](../storage/common/storage-service-encryption.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -631,7 +631,7 @@ Micro soft beheert de onderliggende infra structuur voor Azure Functions en heef
 
 **Hulp**: gebruik Azure monitor met het Azure-activiteiten logboek om waarschuwingen te maken voor wanneer er wijzigingen worden aangebracht in de productie-apps van Azure en op andere kritieke of verwante resources.
 
-- [Waarschuwingen maken voor gebeurtenissen in het Azure-activiteiten logboek](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [Waarschuwingen maken voor gebeurtenissen in het Azure-activiteiten logboek](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -639,7 +639,7 @@ Micro soft beheert de onderliggende infra structuur voor Azure Functions en heef
 
 ## <a name="vulnerability-management"></a>Beheer van beveiligingsproblemen
 
-*Zie [beveiligings beheer: beveiligingslek beheer](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)voor meer informatie.*
+*Zie [beveiligings beheer: beveiligingslek beheer](../security/benchmarks/security-control-vulnerability-management.md)voor meer informatie.*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: automatische hulpprogram ma's voor het scannen van beveiligings problemen uitvoeren
 
@@ -647,9 +647,9 @@ Micro soft beheert de onderliggende infra structuur voor Azure Functions en heef
 
 Volg daarnaast aanbevelingen van Azure Security Center om uw Azure function-apps te beveiligen.
 
-- [Continue beveiligings validatie toevoegen aan uw CI/CD-pijp lijn](https://docs.microsoft.com/azure/devops/migrate/security-validation-cicd-pipeline?view=azure-devops)
+- [Continue beveiligings validatie toevoegen aan uw CI/CD-pijp lijn](/azure/devops/migrate/security-validation-cicd-pipeline?view=azure-devops)
 
-- [Aanbevelingen voor de evaluatie van Azure Security Center-beveiligings problemen implementeren](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations)
+- [Aanbevelingen voor de evaluatie van Azure Security Center-beveiligings problemen implementeren](../security-center/security-center-vulnerability-assessment-recommendations.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -683,7 +683,7 @@ Volg daarnaast aanbevelingen van Azure Security Center om uw Azure function-apps
 
 **Hulp**: micro soft voert beveiligings beheer uit op de onderliggende systemen die ondersteuning bieden voor Azure functions. u kunt echter ook de ernst van de aanbevelingen in azure Security Center gebruiken en de beveiligde Score om het risico binnen uw omgeving te meten. Uw beveiligde Score is gebaseerd op het aantal Security Center aanbevelingen dat u hebt verminderd. Denk na over de ernst van de aanbevelingen om eerst de prioriteit te bepalen.
 
-- [Naslag Gids voor beveiligings aanbevelingen](https://docs.microsoft.com/azure/security-center/recommendations-reference)
+- [Naslag Gids voor beveiligings aanbevelingen](../security-center/recommendations-reference.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -691,7 +691,7 @@ Volg daarnaast aanbevelingen van Azure Security Center om uw Azure function-apps
 
 ## <a name="inventory-and-asset-management"></a>Inventarisatie en asset-management
 
-*Zie voor meer informatie [beveiligings beheer: inventarisatie en activa beheer](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+*Zie voor meer informatie [beveiligings beheer: inventarisatie en activa beheer](../security/benchmarks/security-control-inventory-asset-management.md).*
 
 ### <a name="61-use-azure-asset-discovery"></a>6,1: Azure Asset Discovery gebruiken
 
@@ -699,11 +699,11 @@ Volg daarnaast aanbevelingen van Azure Security Center om uw Azure function-apps
 
 Hoewel klassieke Azure-resources kunnen worden gedetecteerd via resource grafiek, is het raadzaam om Azure Resource Manager resources te maken en te gebruiken.
 
-- [Query's maken met Azure resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [Query's maken met Azure resource Graph](../governance/resource-graph/first-query-portal.md)
 
-- [Uw Azure-abonnementen weer geven](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [Uw Azure-abonnementen weer geven](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-- [Meer informatie over Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+- [Meer informatie over Azure RBAC](../role-based-access-control/overview.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -713,7 +713,7 @@ Hoewel klassieke Azure-resources kunnen worden gedetecteerd via resource grafiek
 
 **Richt lijnen**: Tags Toep assen op Azure-resources die meta gegevens geven om ze logisch in een taxonomie te organiseren.
 
-- [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -725,11 +725,11 @@ Hoewel klassieke Azure-resources kunnen worden gedetecteerd via resource grafiek
 
 Daarnaast kunt u met Azure Policy beperkingen opleggen aan het type resources dat kan worden gemaakt in klant abonnementen met behulp van de volgende ingebouwde beleids definities: niet toegestaan resource typen toegestane resource typen
 
-- [Aanvullende Azure-abonnementen maken](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+- [Aanvullende Azure-abonnementen maken](../cost-management-billing/manage/create-subscription.md)
 
-- [Beheergroepen maken](https://docs.microsoft.com/azure/governance/management-groups/create)
+- [Beheergroepen maken](../governance/management-groups/create.md)
 
-- [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags maken en gebruiken](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -749,9 +749,9 @@ Daarnaast kunt u met Azure Policy beperkingen opleggen aan het type resources da
 
 Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen hun abonnement (en).  Zorg ervoor dat alle Azure-resources die aanwezig zijn in de omgeving, zijn goedgekeurd. 
 
-- [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
-- [Query's maken met Azure Graph](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [Query's maken met Azure Graph](../governance/resource-graph/first-query-portal.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -785,9 +785,9 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen h
 
 **Hulp: gebruik**Azure Policy om beperkingen toe te voegen voor het type resources dat kan worden gemaakt in klant abonnementen met behulp van de volgende ingebouwde beleids definities: niet toegestaan resource typen toegestane resource typen
 
-- [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
-- [Een specifiek resource type weigeren met Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+- [Een specifiek resource type weigeren met Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -805,7 +805,7 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen h
 
 **Hulp**bij het configureren van voorwaardelijke toegang van Azure om gebruikers de mogelijkheid te bieden om te communiceren met Azure Resource Manager door ' blok toegang ' te configureren voor de app Microsoft Azure management.
 
-- [Voorwaardelijke toegang configureren om de toegang tot Azure Resource Manager te blok keren](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+- [Voorwaardelijke toegang configureren om de toegang tot Azure Resource Manager te blok keren](../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -825,19 +825,19 @@ Gebruik Azure resource Graph voor het opvragen/detecteren van resources binnen h
 
 Implementeer Azure function-apps met een hoog risico in hun eigen Virtual Network (VNet). De beveiliging van de verbinding in Azure Functions wordt bereikt via VNets. Functies die worden uitgevoerd in het Premium-abonnement of App Service Environment (ASE) kunnen worden geïntegreerd met VNets. Kies de beste architectuur voor uw use-case.
 
-- [Netwerkopties van Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-networking-options)
+- [Netwerkopties van Azure Functions](./functions-networking-options.md)
 
-- [Azure Functions Premium-abonnement](https://docs.microsoft.com/azure/azure-functions/functions-scale#premium-plan)
+- [Azure Functions Premium-abonnement](./functions-scale.md#premium-plan)
 
-- [Netwerkoverwegingen voor een App Service-omgeving](https://docs.microsoft.com/azure/app-service/environment/network-info)
+- [Netwerkoverwegingen voor een App Service-omgeving](../app-service/environment/network-info.md)
 
-- [Een externe ASE maken](https://docs.microsoft.com/azure/app-service/environment/create-external-ase)
+- [Een externe ASE maken](../app-service/environment/create-external-ase.md)
 
 Een interne ASE maken:
 
-- [https://docs.microsoft.com/azure/app-service/environment/create-ilb-as](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+- [https://docs.microsoft.com/azure/app-service/environment/create-ilb-as](../virtual-network/quick-create-portal.md)
 
-- [Een NSG maken met een beveiligings configuratie](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+- [Een NSG maken met een beveiligings configuratie](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -845,7 +845,7 @@ Een interne ASE maken:
 
 ## <a name="secure-configuration"></a>Veilige configuratie
 
-*Zie [beveiligings beheer: beveiligde configuratie](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)voor meer informatie.*
+*Zie [beveiligings beheer: beveiligde configuratie](../security/benchmarks/security-control-secure-configuration.md)voor meer informatie.*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: veilige configuraties instellen voor alle Azure-resources
 
@@ -854,9 +854,9 @@ Een interne ASE maken:
 - Externe foutopsporing moet worden uitgeschakeld voor Function-apps
 - Functie-app mag alleen toegankelijk zijn via HTTPS
 
-- [Beschik bare Azure Policy aliassen weer geven](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [Beschik bare Azure Policy aliassen weer geven](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-- [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -874,9 +874,9 @@ Een interne ASE maken:
 
 **Richt lijnen**: gebruik Azure Policy [deny] en [implementeren indien niet aanwezig] voor het afdwingen van beveiligde instellingen voor uw Azure-resources.
 
-- [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Policy effecten begrijpen](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+- [Azure Policy effecten begrijpen](../governance/policy/concepts/effects.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -886,7 +886,7 @@ Een interne ASE maken:
 
 **Richt lijnen**: niet van toepassing; Hoewel het mogelijk is om on-premises functies te implementeren, is deze richt lijn bedoeld voor IaaS Compute-resources. Bij het implementeren van on-premises functies bent u verantwoordelijk voor de veilige configuratie van uw omgeving.
 
-- [Meer informatie over on-premises functies](https://docs.microsoft.com/azure/azure-functions/functions-runtime-install)
+- [Meer informatie over on-premises functies](./functions-runtime-install.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -896,13 +896,13 @@ Een interne ASE maken:
 
 **Hulp**: arm-sjablonen en aangepaste Azure-beleids definities veilig opslaan en beheren in broncode beheer.
 
-- [Wat is een infra structuur als code](https://docs.microsoft.com/azure/devops/learn/what-is-infrastructure-as-code)
+- [Wat is infrastructuur als code?](/azure/devops/learn/what-is-infrastructure-as-code)
 
-- [Ontwerp beleid als code werk stromen](https://docs.microsoft.com/azure/governance/policy/concepts/policy-as-code)
+- [Ontwerp beleid als code werk stromen](../governance/policy/concepts/policy-as-code.md)
 
-- [Code opslaan in azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Code opslaan in azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-- [Documentatie voor Azure opslag plaatsen](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+- [Documentatie voor Azure opslag plaatsen](/azure/devops/repos/index?view=azure-devops)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -920,7 +920,7 @@ Een interne ASE maken:
 
 **Hulp**: gebruik ingebouwde Azure Policy definities en Azure Policy aliassen in de naam ruimte ' micro soft. Web ' om aangepaste beleids regels te maken om systeem configuraties te Signa lering, te controleren en af te dwingen. Ontwikkel bovendien een proces en pijp lijn voor het beheren van beleids uitzonderingen.
 
-- [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -938,7 +938,7 @@ Een interne ASE maken:
 
 **Hulp**: gebruik ingebouwde Azure Policy definities en Azure Policy aliassen in de naam ruimte ' micro soft. Web ' om aangepaste beleids regels te maken om systeem configuraties te Signa lering, te controleren en af te dwingen. Gebruik Azure Policy [audit], [deny] en [implementeren indien niet aanwezig] om automatisch configuraties af te dwingen voor uw Azure-resources.
 
-- [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -956,13 +956,13 @@ Een interne ASE maken:
 
 **Richt lijnen**: gebruik beheerde identiteiten in combi natie met Azure Key Vault om geheim beheer voor uw Cloud toepassingen te vereenvoudigen en te beveiligen. Met beheerde identiteiten kan uw functie-app worden geverifieerd bij elke service die ondersteuning biedt voor Azure AD-verificatie, met inbegrip van Key Vault, zonder enige referenties in uw code.
 
-- [Een Key Vault maken](https://docs.microsoft.com/azure/key-vault/quick-create-portal)
+- [Een Key Vault maken](../key-vault/secrets/quick-create-portal.md)
 
-- [Beheerde identiteiten gebruiken voor App Service en Azure Functions](https://docs.microsoft.com/azure/app-service/overview-managed-identity)
+- [Beheerde identiteiten gebruiken voor App Service en Azure Functions](../app-service/overview-managed-identity.md)
 
-- [Key Vault verificatie bieden met een beheerde identiteit](https://docs.microsoft.com/azure/key-vault/managed-identity)
+- [Key Vault verificatie bieden met een beheerde identiteit](../key-vault/general/managed-identity.md)
 
-- [Gebruik Key Vault verwijzingen voor App Service en Azure Functions](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references)
+- [Gebruik Key Vault verwijzingen voor App Service en Azure Functions](../app-service/app-service-key-vault-references.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -972,7 +972,7 @@ Een interne ASE maken:
 
 **Richt lijnen**: gebruik beheerde identiteiten om uw Azure-functie-app te voorzien van een automatisch beheerde identiteit in azure AD. Met beheerde identiteiten kunt u zich verifiëren bij elke service die ondersteuning biedt voor Azure AD-verificatie, met inbegrip van Key Vault, zonder enige referenties in uw code.
 
-- [Beheerde identiteiten gebruiken voor App Service en Azure Functions](https://docs.microsoft.com/azure/app-service/overview-managed-identity)
+- [Beheerde identiteiten gebruiken voor App Service en Azure Functions](../app-service/overview-managed-identity.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -990,7 +990,7 @@ Een interne ASE maken:
 
 ## <a name="malware-defense"></a>Beveiliging tegen malware
 
-*Zie [beveiligings beheer: verdediging tegen malware](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)voor meer informatie.*
+*Zie [beveiligings beheer: verdediging tegen malware](../security/benchmarks/security-control-malware-defense.md)voor meer informatie.*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: centraal beheerde anti-malware-software gebruiken
 
@@ -1023,7 +1023,7 @@ Micro soft anti-malware is ingeschakeld op de onderliggende host die ondersteuni
 
 ## <a name="data-recovery"></a>Gegevensherstel
 
-*Zie [beveiligings beheer: gegevens herstel](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)voor meer informatie.*
+*Zie [beveiligings beheer: gegevens herstel](../security/benchmarks/security-control-data-recovery.md)voor meer informatie.*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: controleren op regel matige automatische back-ups
 
@@ -1031,13 +1031,13 @@ Micro soft anti-malware is ingeschakeld op de onderliggende host die ondersteuni
 
 Maak ook gebruik van een broncode beheer oplossing zoals Azure opslag plaatsen en Azure DevOps om uw code veilig op te slaan en te beheren. Azure DevOps Services maakt gebruik van veel van de functies van Azure Storage om te zorgen voor de beschik baarheid van gegevens in het geval van hardwarestoringen, onderbreking van de service of de regionale nood situatie. Daarnaast volgt het Azure DevOps-team procedures voor het beveiligen van gegevens tegen onbedoelde of schadelijke verwijdering.
 
-- [Back-up maken van uw app in Azure](https://docs.microsoft.com/azure/app-service/manage-backup)
+- [Back-up maken van uw app in Azure](../app-service/manage-backup.md)
 
-- [Inzicht in de beschik baarheid van gegevens in azure DevOps](https://docs.microsoft.com/azure/devops/organizations/security/data-protection?view=azure-devops#data-availability)
+- [Inzicht in de beschik baarheid van gegevens in azure DevOps](/azure/devops/organizations/security/data-protection?view=azure-devops#data-availability)
 
-- [Code opslaan in azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Code opslaan in azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-- [Documentatie voor Azure opslag plaatsen](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+- [Documentatie voor Azure opslag plaatsen](/azure/devops/repos/index?view=azure-devops)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -1049,15 +1049,15 @@ Maak ook gebruik van een broncode beheer oplossing zoals Azure opslag plaatsen e
 
 Maak ook gebruik van een broncode beheer oplossing zoals Azure opslag plaatsen en Azure DevOps om uw code veilig op te slaan en te beheren. Azure DevOps Services maakt gebruik van veel van de functies van Azure Storage om te zorgen voor de beschik baarheid van gegevens in het geval van hardwarestoringen, onderbreking van de service of de regionale nood situatie. Daarnaast volgt het Azure DevOps-team procedures voor het beveiligen van gegevens tegen onbedoelde of schadelijke verwijdering.
 
-- [Back-up maken van uw app in Azure](https://docs.microsoft.com/azure/app-service/manage-backup)
+- [Back-up maken van uw app in Azure](../app-service/manage-backup.md)
 
-- [Hoe kan ik een back-up maken van sleutel kluis sleutels in azure?](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
+- [Hoe kan ik een back-up maken van sleutel kluis sleutels in azure?](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
-- [Inzicht in de beschik baarheid van gegevens in azure DevOps](https://docs.microsoft.com/azure/devops/organizations/security/data-protection?view=azure-devops#data-availability)
+- [Inzicht in de beschik baarheid van gegevens in azure DevOps](/azure/devops/organizations/security/data-protection?view=azure-devops#data-availability)
 
-- [Code opslaan in azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Code opslaan in azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-- [Documentatie voor Azure opslag plaatsen](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+- [Documentatie voor Azure opslag plaatsen](/azure/devops/repos/index?view=azure-devops)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -1067,11 +1067,11 @@ Maak ook gebruik van een broncode beheer oplossing zoals Azure opslag plaatsen e
 
 **Richt lijnen**: Zorg ervoor dat u de functie voor het maken en terugzetten van back-ups periodiek kunt herstellen. Als u een andere offline locatie gebruikt om een back-up te maken van uw code, zorgt u er dan voor dat u de volledige herstel bewerkingen uitvoert. Herstel van back-ups van door de klant beheerde sleutels testen.
 
-- [Een app in azure herstellen vanuit een back-up](https://docs.microsoft.com/azure/app-service/web-sites-restore)
+- [Een app in azure herstellen vanuit een back-up](../app-service/web-sites-restore.md)
 
-- [Een app in azure herstellen vanuit een moment opname](https://docs.microsoft.com/azure/app-service/app-service-web-restore-snapshots)
+- [Een app in azure herstellen vanuit een moment opname](../app-service/app-service-web-restore-snapshots.md)
 
-- [Sleutel kluis sleutels herstellen in azure](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Sleutel kluis sleutels herstellen in azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -1083,9 +1083,9 @@ Maak ook gebruik van een broncode beheer oplossing zoals Azure opslag plaatsen e
 
 Als u door de klant beheerde sleutels gebruikt, zorgt u ervoor dat de functie voor zacht verwijderen in Key Vault is ingeschakeld om sleutels te beschermen tegen onbedoelde of schadelijke verwijdering.
 
-- [Versleuteling-at-rest in Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)
+- [Versleuteling-at-rest in Azure Storage](../storage/common/storage-service-encryption.md)
 
-- [Zacht verwijderen inschakelen in Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Zacht verwijderen inschakelen in Key Vault](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
 
 **Azure Security Center bewaking**: Ja
 
@@ -1093,13 +1093,13 @@ Als u door de klant beheerde sleutels gebruikt, zorgt u ervoor dat de functie vo
 
 ## <a name="incident-response"></a>Reageren op incidenten
 
-*Zie voor meer informatie [beveiligings beheer: reactie op incidenten](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*Zie voor meer informatie [beveiligings beheer: reactie op incidenten](../security/benchmarks/security-control-incident-response.md).*
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: een hand leiding voor reactie op incidenten maken
 
 **Hulp**: een antwoord gids voor incidenten maken voor uw organisatie. Zorg ervoor dat er schriftelijke incidenten abonnementen zijn die alle werk rollen definiëren, evenals fasen van incident handling/management van detectie tot een beoordeling van het incident.
 
-- [Werk stroom automatisering configureren in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
+- [Werk stroom automatisering configureren in Azure Security Center](../security-center/security-center-planning-and-operations-guide.md)
 
 - [Richt lijnen voor het bouwen van uw eigen beveiligings incident antwoord proces](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
@@ -1135,7 +1135,7 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 **Hulp**: contact gegevens van beveiligings incidenten worden door micro soft gebruikt om contact met u op te nemen als het micro soft Security Response Center (MSRC) detecteert dat de gegevens van de klant zijn geopend door een onrecht matige of niet-gemachtigde partij.  Bekijk incidenten na het feit om te controleren of de problemen zijn opgelost.
 
-- [De Azure Security Center Security-contact persoon instellen](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+- [De Azure Security Center Security-contact persoon instellen](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -1145,9 +1145,9 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 **Richt lijnen**: uw Azure Security Center waarschuwingen en aanbevelingen exporteren met de functie continue export. Met doorlopend exporteren kunt u waarschuwingen en aanbevelingen hand matig of op een doorlopende manier exporteren. U kunt de Azure Security Center Data Connector gebruiken om de waarschuwingen naar Azure Sentinel te streamen.
 
-- [Continue export configureren](https://docs.microsoft.com/azure/security-center/continuous-export)
+- [Continue export configureren](../security-center/continuous-export.md)
 
-- [Waarschuwingen streamen naar Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+- [Waarschuwingen streamen naar Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -1157,7 +1157,7 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 **Hulp**: gebruik de functie werk stroom automatisering in azure Security Center om automatisch reacties te activeren op beveiligings waarschuwingen en aanbevelingen met Logic apps.
 
-- [Werk stroom automatisering en Logic Apps configureren](https://docs.microsoft.com/azure/security-center/workflow-automation)
+- [Werk stroom automatisering en Logic Apps configureren](../security-center/workflow-automation.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -1165,7 +1165,7 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Penetratietests en Red Team-oefeningen
 
-*Zie voor meer informatie [Security Control: Indringings tests en Red team-oefeningen](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*Zie voor meer informatie [Security Control: Indringings tests en Red team-oefeningen](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md).*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: voert regel matig indringings tests van uw Azure-resources uit en zorgt voor herbemiddeling van alle essentiële beveiligings resultaten
 
@@ -1181,5 +1181,5 @@ Daarnaast kunt u ook duidelijk abonnementen markeren (voor bijvoorbeeld producti
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie de [Azure Security-Bench Mark](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- Meer informatie over [Azure-beveiligings basislijnen](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
+- Zie de [Azure Security-Bench Mark](../security/benchmarks/overview.md)
+- Meer informatie over [Azure-beveiligings basislijnen](../security/benchmarks/security-baselines-overview.md)

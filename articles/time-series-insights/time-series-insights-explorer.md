@@ -5,51 +5,51 @@ ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: b564373780da5bba71bc46ddbac3dc69a0c94a4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e78b5118a2525fbf10a3089712f75e44cb7deceb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81382784"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080689"
 ---
-# <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights Explorer
+# <a name="azure-time-series-insights-gen1-explorer"></a>Azure Time Series Insights gen1 Explorer
 
-In dit artikel worden de functies en opties in algemene Beschik baarheid voor de [Web-app](https://insights.timeseries.azure.com/)van Azure time series Insights Explorer beschreven. De Time Series Insights Explorer demonstreert de krachtige functies voor gegevens visualisatie die door de service worden geboden en kunnen worden geopend in uw eigen omgeving.
+In dit artikel worden de functies en opties beschreven voor de [Web-app](https://insights.timeseries.azure.com/)Azure time series Insights gen1 Explorer. De Azure Time Series Insights Explorer demonstreert de krachtige functies voor gegevens visualisatie die door de service worden geboden en kunnen worden geopend in uw eigen omgeving.
 
-Azure Time Series Insights is een volledig beheerde service voor analyse, opslag en visualisatie die het eenvoudig maakt om miljarden IoT-gebeurtenissen tegelijkertijd te verkennen en te analyseren. Het biedt u een wereld wijde weer gave van uw gegevens, waarmee u uw IoT-oplossing snel kunt valideren en dure uitval tijd kunt vermijden voor bedrijfskritische apparaten. U kunt verborgen trends ontdekken, afwijkings afwijkingen en hoofd oorzaken van analyses in vrijwel realtime uitvoeren. De Time Series Insights Explorer is momenteel beschikbaar als open bare preview.
+Azure Time Series Insights is een volledig beheerde service voor analyse, opslag en visualisatie die het eenvoudig maakt om miljarden IoT-gebeurtenissen tegelijkertijd te verkennen en te analyseren. Het biedt u een wereld wijde weer gave van uw gegevens, waarmee u uw IoT-oplossing snel kunt valideren en dure uitval tijd kunt vermijden voor bedrijfskritische apparaten. U kunt verborgen trends ontdekken, afwijkings afwijkingen en hoofd oorzaken van analyses in vrijwel realtime uitvoeren. 
 
 > [!TIP]
 > Lees de [Azure time series Insights Snelstartgids](time-series-quickstart.md)voor een rond leiding door de demonstratie omgeving.
 
 ## <a name="video"></a>Video
 
-### <a name="learn-about-querying-data-by-using-the-time-series-insights-explorer-br"></a>Meer informatie over het opvragen van gegevens met behulp van de Time Series Insights Explorer. </br>
+### <a name="learn-about-querying-data-by-using-the-azure-time-series-insights-explorer-br"></a>Meer informatie over het opvragen van gegevens met behulp van de Azure Time Series Insights Explorer. </br>
 
 > [!VIDEO https://www.youtube.com/embed/SHFPZvrR71s]
 
 >[!NOTE]
->Speel de voor gaande video <a href="https://www.youtube.com/watch?v=6ehNf6AJkFo">' aan de slag met Time Series Insights met een Azure IOT-oplossings versneller '.</a>
+>Speel de voor gaande video <a href="https://www.youtube.com/watch?v=6ehNf6AJkFo">' aan de slag met Azure time series Insights met een Azure IOT-oplossings versneller '.</a>
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u Time Series Insights Explorer kunt gebruiken, moet u het volgende doen:
+Voordat u Azure Time Series Insights Explorer kunt gebruiken, moet u het volgende doen:
 
-- Een Time Series Insights omgeving maken. Lees voor meer informatie [hoe u aan de slag gaat met Time Series Insights](./time-series-insights-get-started.md).
+- Een Azure Time Series Insights omgeving maken. Lees voor meer informatie [hoe u aan de slag gaat met Azure time series Insights](./time-series-insights-get-started.md).
 - [Bied toegang](time-series-insights-data-access.md) tot uw account in de omgeving.
 - Voeg een [IOT-hub](time-series-insights-how-to-add-an-event-source-iothub.md) of [Event hub](time-series-insights-how-to-add-an-event-source-eventhub.md) gebeurtenis bron toe.
 
 ## <a name="explore-and-query-data"></a>Gegevens verkennen en opvragen
 
-Binnen enkele minuten nadat u uw gebeurtenis bron hebt verbonden met uw Time Series Insights-omgeving, kunt u uw time series-gegevens verkennen en opvragen.
+Binnen enkele minuten nadat u uw gebeurtenis bron hebt verbonden met uw Azure Time Series Insights-omgeving, kunt u uw time series-gegevens verkennen en opvragen.
 
-1. Open de [Time Series Insights Explorer](https://insights.timeseries.azure.com/) in uw webbrowser om te starten. Selecteer een omgeving aan de linkerkant van het venster. Alle omgevingen waartoe u toegang hebt, worden in alfabetische volg orde weer gegeven.
+1. Open de [Azure time series Insights Explorer](https://insights.timeseries.azure.com/) in uw webbrowser om te starten. Selecteer een omgeving aan de linkerkant van het venster. Alle omgevingen waartoe u toegang hebt, worden in alfabetische volg orde weer gegeven.
 
 1. Nadat u een omgeving hebt geselecteerd, gebruikt u de configuraties **van** en **tot aan** de bovenkant of selecteert u de gewenste tijds periode en sleept u deze. Selecteer het vergroot glas in de rechter bovenhoek of klik met de rechter muisknop op de geselecteerde time span en selecteer **zoeken**.
 
@@ -57,7 +57,7 @@ Binnen enkele minuten nadat u uw gebeurtenis bron hebt verbonden met uw Time Ser
 
 1. Met het pictogram van de Azure-Cloud gaat u naar uw omgeving in het Azure Portal.
 
-   [![Selectie van Time Series Insights omgeving](media/time-series-insights-explorer/tsi-ga-explorer-environments.png)](media/time-series-insights-explorer/tsi-ga-explorer-environments.png#lightbox)
+   [![Selectie van Azure Time Series Insights omgeving](media/time-series-insights-explorer/tsi-ga-explorer-environments.png)](media/time-series-insights-explorer/tsi-ga-explorer-environments.png#lightbox)
 
 1. Vervolgens wordt een grafiek weer gegeven met een telling van alle gebeurtenissen tijdens de geselecteerde tijds periode. Hier hebt u een aantal besturings elementen:
 
@@ -80,7 +80,7 @@ Binnen enkele minuten nadat u uw gebeurtenis bron hebt verbonden met uw Time Ser
 
       - **Voorbeelden van query's**
 
-         [![Voor beeld GA-query's](media/time-series-insights-explorer/tsi-ga-example-queries.png)](media/time-series-insights-explorer/tsi-ga-example-queries.png#lightbox)
+         [![Voor beeld van gen1-query's](media/time-series-insights-explorer/tsi-ga-example-queries.png)](media/time-series-insights-explorer/tsi-ga-example-queries.png#lightbox)
 
 1. U kunt de schuif regelaar voor **interval grootte** gebruiken om in en uit te zoomen op dezelfde tijds duur. De schuif regelaar biedt een nauw keurigere controle over de verplaatsing tussen grote tijd segmenten die soepele trends weer geven naar segmenten zo klein als de milliseconde, waarmee u nauw keurige delen van uw gegevens met hoge resolutie kunt weer geven en analyseren. Het standaard start punt van de schuif regelaar is ingesteld als de meest optimale weer gave van de gegevens uit uw selectie om de balans resolutie, de query snelheid en de granulatie te bekijken.
 
@@ -108,23 +108,23 @@ Binnen enkele minuten nadat u uw gebeurtenis bron hebt verbonden met uw Time Ser
 
 1. Gebruik de **heatmap** om snel unieke of afwijkende gegevens reeksen in een bepaalde query op te sporen. Er kan slechts één zoek term worden gevisualiseerd als een heatmap.
 
-    [![Explorer heatmap-grafiek](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png#lightbox)
+    [![Gen1 Explorer heatmap grafieken](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png#lightbox)
 
-1. Wanneer u gebeurtenissen bekijkt door te selecteren of met de rechter muisknop te klikken, wordt het deel venster **gebeurtenissen** beschikbaar gesteld. Hier kunt u al uw onbewerkte gebeurtenissen controleren en uw gebeurtenissen exporteren als JSON-of CSV-bestanden. Time Series Insights worden alle onbewerkte gegevens opgeslagen.
+1. Wanneer u gebeurtenissen bekijkt door te selecteren of met de rechter muisknop te klikken, wordt het deel venster **gebeurtenissen** beschikbaar gesteld. Hier kunt u al uw onbewerkte gebeurtenissen controleren en uw gebeurtenissen exporteren als JSON-of CSV-bestanden. Azure Time Series Insights worden alle onbewerkte gegevens opgeslagen.
 
     [![Gebeurtenissen](media/time-series-insights-explorer/tsi-ga-explorer-events-panel.png)](media/time-series-insights-explorer/tsi-ga-explorer-events-panel.png#lightbox)
 
 1. Selecteer het tabblad **Statistieken** nadat u gebeurtenissen hebt bekeken om patronen en kolom statistieken weer te geven.
 
-    - **Patronen**: met deze functie worden de meest statistische significante patronen in een geselecteerd gegevens gebied proactief geoppereerd. U hoeft geen duizenden gebeurtenissen te bekijken om te begrijpen welke patronen de meeste tijd en energie vereisen. Met Time Series Insights kunt u rechtstreeks naar deze statistisch significante patronen gaan om een analyse te blijven uitvoeren. Deze functie is ook handig voor het naslachten van historische gegevens.
+    - **Patronen**: met deze functie worden de meest statistische significante patronen in een geselecteerd gegevens gebied proactief geoppereerd. U hoeft geen duizenden gebeurtenissen te bekijken om te begrijpen welke patronen de meeste tijd en energie vereisen. Met Azure Time Series Insights kunt u rechtstreeks naar deze statistisch significante patronen gaan om een analyse te blijven uitvoeren. Deze functie is ook handig voor het naslachten van historische gegevens.
     - **Kolom statistieken**: kolom statistieken bieden grafieken en tabellen die gegevens opsplitsen van elke kolom van de geselecteerde gegevens reeks over de geselecteerde time span.
 
       [![Kolom diagram en opties voor statistieken](media/time-series-insights-explorer/tsi-ga-explorer-stat-column.png)](media/time-series-insights-explorer/tsi-ga-explorer-stat-column.png#lightbox)
 
-U hebt nu geleerd over de belangrijkste functies, configuratie-instellingen en weergave opties die beschikbaar zijn in de Web-App van Time Series Insights Explorer.
+U hebt nu geleerd over de belangrijkste functies, configuratie-instellingen en weergave opties die beschikbaar zijn in de Web-App van Azure Time Series Insights Explorer.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het [vaststellen en oplossen van problemen](time-series-insights-diagnose-and-solve-problems.md) in uw time series Insights omgeving.
+- Meer informatie over het [vaststellen en oplossen van problemen](time-series-insights-diagnose-and-solve-problems.md) in uw Azure time series Insights omgeving.
 
 - Volg de rond leiding door de begeleide [Azure time series Insights Snelstartgids](time-series-quickstart.md) .

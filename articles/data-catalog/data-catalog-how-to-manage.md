@@ -4,13 +4,14 @@ description: In het artikel wordt uitgelegd hoe u de zicht baarheid en het eigen
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 9905ed72ec54304bbdb0f7ee607cbb013fc645bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d035417b613c81487c493bde90cdcc461f04412
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68736333"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081148"
 ---
 # <a name="manage-data-assets-in-azure-data-catalog"></a>Gegevensassets beheren in Azure Data Catalog
 ## <a name="introduction"></a>Inleiding

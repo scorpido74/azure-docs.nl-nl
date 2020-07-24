@@ -3,11 +3,12 @@ title: Azure-toepassing Insights-processen automatiseren met behulp van Logic Ap
 description: Meer informatie over hoe u Herhaal bare processen snel kunt automatiseren door de Application Insights-connector toe te voegen aan uw logische app.
 ms.topic: conceptual
 ms.date: 03/11/2019
-ms.openlocfilehash: 4a0944e661932d86fac75f78c4faf5be751806c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76a199023ef37fbda27be59fdf70f6ca5d8481bc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79473163"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079618"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Application Insights processen automatiseren met behulp van Logic Apps
 
@@ -18,7 +19,7 @@ Vindt u het herhaaldelijk om dezelfde query's op uw telemetriegegevens uit te vo
 
 Met deze integratie kunt u talloze processen automatiseren zonder dat u maar één regel code hoeft te schrijven. U kunt een logische app maken met de Application Insights-connector om snel een Application Insights proces te automatiseren. 
 
-U kunt ook extra acties toevoegen. De functie Logic Apps van Azure App Service maakt honderden acties beschikbaar. Als u bijvoorbeeld een logische app gebruikt, kunt u automatisch een e-mail melding verzenden of een bug maken in azure DevOps. U kunt ook een van de vele beschik bare [sjablonen](https://docs.microsoft.com/azure/logic-apps/logic-apps-use-logic-app-templates) gebruiken om het proces van het maken van uw logische app te versnellen. 
+U kunt ook extra acties toevoegen. De functie Logic Apps van Azure App Service maakt honderden acties beschikbaar. Als u bijvoorbeeld een logische app gebruikt, kunt u automatisch een e-mail melding verzenden of een bug maken in azure DevOps. U kunt ook een van de vele beschik bare [sjablonen](../../logic-apps/logic-apps-create-logic-apps-from-templates.md) gebruiken om het proces van het maken van uw logische app te versnellen. 
 
 ## <a name="create-a-logic-app-for-application-insights"></a>Een logische app maken voor Application Insights
 
@@ -130,13 +131,8 @@ Wanneer de logische app wordt uitgevoerd, krijgen de ontvangers die u in de e-ma
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over het maken van [Analytics-query's](../../azure-monitor/log-query/get-started-queries.md).
-- Meer informatie over [Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps).
+- Meer informatie over [Logic Apps](../../logic-apps/logic-apps-overview.md).
 
 
 
 <!--Link references-->
-
-
-
-
-

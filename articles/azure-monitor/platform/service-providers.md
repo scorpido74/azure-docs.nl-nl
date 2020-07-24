@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: 3adb94709d089e2f1d106680acc00c08d2203a4d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e49f9caaeb1b16daa49fabb217b6fc40fff17f53
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340889"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081471"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>Azure Monitor logboeken voor service providers
 
@@ -20,7 +21,7 @@ Grote bedrijven delen veel overeenkomsten met service providers, met name wannee
 
 Voor partners en service providers die deel uitmaken van het programma [Cloud Solution Provider (CSP)](https://partner.microsoft.com/en-US/membership/cloud-solution-provider) , is Log Analytics in azure monitor een van de Azure-Services die beschikbaar zijn in azure CSP-abonnementen.
 
-Log Analytics in Azure Monitor kunnen ook worden gebruikt door een service provider die klant resources beheert via de Azure-beheer functie voor gedelegeerde resources in [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview).
+Log Analytics in Azure Monitor kunnen ook worden gebruikt door een service provider die klant resources beheert via de Azure-beheer functie voor gedelegeerde resources in [Azure Lighthouse](../../lighthouse/overview.md).
 
 ## <a name="architectures-for-service-providers"></a>Architecturen voor service providers
 
@@ -34,12 +35,12 @@ In deze architectuur wordt een werk ruimte geïmplementeerd in de Tenant van de 
 
 Er zijn twee manieren om toegang te krijgen tot een Log Analytics werkruimte in een Tenant van de klant:
 
-- Een klant kan afzonderlijke gebruikers van de service provider toevoegen als [Azure Active Directory gast gebruikers (B2B)](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b). De beheerder van de service provider moet zich aanmelden bij de directory van elke klant in het Azure Portal om toegang te kunnen krijgen tot deze werk ruimten. Dit vereist ook dat de klanten afzonderlijke toegang beheren voor elke beheerder van de service provider.
-- Voor een grotere schaal baarheid en flexibiliteit kunnen service providers de Azure-functie voor [gedelegeerde resource beheer](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management) van [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview) gebruiken om toegang te krijgen tot de Tenant van de klant. Met deze methode worden de service provider beheerders opgenomen in een Azure AD-gebruikers groep in de Tenant van de service provider en krijgt deze groep toegang tijdens het voorbereidings proces voor elke klant. Deze beheerders hebben vervolgens vanaf hun eigen Tenant van de service provider toegang tot de werk ruimten van elke klant, in plaats van zich afzonderlijk aan te melden bij de Tenant van elke klant. Door toegang te krijgen tot de resources van de Log Analytics-werk ruimte van uw klanten op deze manier vermindert u het werk dat aan de klant is vereist en kunt u gemakkelijker gegevens verzamelen en analyseren voor meerdere klanten die worden beheerd door dezelfde service provider via hulpprogram ma's als [Azure monitor werkmappen](https://docs.microsoft.com/azure//azure-monitor/platform/workbooks-overview). Zie voor meer informatie [klant resources op schaal bewaken](https://docs.microsoft.com/azure/lighthouse/how-to/monitor-at-scale).
+- Een klant kan afzonderlijke gebruikers van de service provider toevoegen als [Azure Active Directory gast gebruikers (B2B)](../../active-directory/b2b/what-is-b2b.md). De beheerder van de service provider moet zich aanmelden bij de directory van elke klant in het Azure Portal om toegang te kunnen krijgen tot deze werk ruimten. Dit vereist ook dat de klanten afzonderlijke toegang beheren voor elke beheerder van de service provider.
+- Voor een grotere schaal baarheid en flexibiliteit kunnen service providers de Azure-functie voor [gedelegeerde resource beheer](../../lighthouse/concepts/azure-delegated-resource-management.md) van [Azure Lighthouse](../../lighthouse/overview.md) gebruiken om toegang te krijgen tot de Tenant van de klant. Met deze methode worden de service provider beheerders opgenomen in een Azure AD-gebruikers groep in de Tenant van de service provider en krijgt deze groep toegang tijdens het voorbereidings proces voor elke klant. Deze beheerders hebben vervolgens vanaf hun eigen Tenant van de service provider toegang tot de werk ruimten van elke klant, in plaats van zich afzonderlijk aan te melden bij de Tenant van elke klant. Door toegang te krijgen tot de resources van de Log Analytics-werk ruimte van uw klanten op deze manier vermindert u het werk dat aan de klant is vereist en kunt u gemakkelijker gegevens verzamelen en analyseren voor meerdere klanten die worden beheerd door dezelfde service provider via hulpprogram ma's als [Azure monitor werkmappen](../..//azure-monitor/platform/workbooks-overview.md). Zie voor meer informatie [klant resources op schaal bewaken](../../lighthouse/how-to/monitor-at-scale.md).
 
 De voor delen van de gedistribueerde architectuur zijn:
 
-* De klant kan specifieke machtigings niveaus bevestigen via [Azure delegated resource management](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management), of u kunt de toegang tot de logboeken beheren met behulp van hun eigen [op rollen gebaseerde toegang](https://docs.microsoft.com/azure/role-based-access-control/overview).
+* De klant kan specifieke machtigings niveaus bevestigen via [Azure delegated resource management](../../lighthouse/concepts/azure-delegated-resource-management.md), of u kunt de toegang tot de logboeken beheren met behulp van hun eigen [op rollen gebaseerde toegang](../../role-based-access-control/overview.md).
 * Logboeken kunnen worden verzameld van alle typen resources, niet alleen voor de VM-gegevens op basis van de agent. Bijvoorbeeld Azure audit logs.
 * Elke klant kan verschillende instellingen voor hun werk ruimte hebben, zoals retentie en het afgetopten van gegevens.
 * Isolatie tussen klanten voor regelgevings-en nalevings.
@@ -74,7 +75,7 @@ De derde architectuur mix tussen de twee opties. Het is gebaseerd op de eerste g
 
 Er zijn twee opties voor het implementeren van Logboeken op een centrale locatie:
 
-1. Centrale werk ruimte: de service provider kan een werk ruimte maken in de Tenant en een script gebruiken dat gebruikmaakt van de [query-API](https://dev.loganalytics.io/) met de [API voor gegevens verzameling](../../azure-monitor/platform/data-collector-api.md) om de gegevens van de verschillende werk ruimten naar deze centrale locatie te brengen. Een andere optie, behalve een script, is het gebruik van [Azure Logic apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
+1. Centrale werk ruimte: de service provider kan een werk ruimte maken in de Tenant en een script gebruiken dat gebruikmaakt van de [query-API](https://dev.loganalytics.io/) met de [API voor gegevens verzameling](../../azure-monitor/platform/data-collector-api.md) om de gegevens van de verschillende werk ruimten naar deze centrale locatie te brengen. Een andere optie, behalve een script, is het gebruik van [Azure Logic apps](../../logic-apps/logic-apps-overview.md).
 
 2. Power BI als centrale locatie: Power BI kunnen fungeren als centrale locatie wanneer de verschillende werk ruimten gegevens exporteren met behulp van de integratie tussen de Log Analytics-werk ruimte en [Power bi](../../azure-monitor/platform/powerbi.md).
 
@@ -88,4 +89,4 @@ Er zijn twee opties voor het implementeren van Logboeken op een centrale locatie
 
 * Samenvattings rapporten genereren met behulp van [Power bi](../../azure-monitor/platform/powerbi.md)
 
-* Onboarding van klanten naar [Azure gedelegeerd resource beheer](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management).
+* Onboarding van klanten naar [Azure gedelegeerd resource beheer](../../lighthouse/concepts/azure-delegated-resource-management.md).

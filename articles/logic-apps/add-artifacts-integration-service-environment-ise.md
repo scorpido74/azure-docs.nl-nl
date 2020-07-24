@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: a4811bcb47120ba37337c73604e33826d9affcbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8fe945b028b574e71ae24b1483ad8e7fd67b01d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830023"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078728"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Resources toevoegen aan uw integratie service omgeving (ISE) in Azure Logic Apps
 
@@ -45,12 +45,12 @@ Voer de volgende stappen uit om Logic apps te bouwen die worden uitgevoerd in uw
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
    | **Naam** | Yes | De naam van de logische app die moet worden gemaakt |
-   | **Abonnement** | Yes | De naam voor het Azure-abonnement dat moet worden gebruikt |
-   | **Resourcegroep** | Ja | De naam voor de Azure-resource groep (nieuw of bestaand) die moet worden gebruikt |
-   | **Locatie** | Yes | Onder **integratie service omgevingen**selecteert u het te gebruiken ISE, als dit nog niet is geselecteerd. <p><p> **Belang rijk**: als u uw Logic Apps wilt gebruiken met een integratie account, moeten beide dezelfde ISE gebruiken. |
+   | **Abonnement** | Yes | De naam voor het te gebruiken Azure-abonnement |
+   | **Resourcegroep** | Yes | De naam voor de Azure-resource groep (nieuw of bestaand) die moet worden gebruikt |
+   | **Locatie** | Ja | Onder **integratie service omgevingen**selecteert u het te gebruiken ISE, als dit nog niet is geselecteerd. <p><p> **Belang rijk**: als u uw Logic Apps wilt gebruiken met een integratie account, moeten beide dezelfde ISE gebruiken. |
    ||||
 
-1. Selecteer **Maken** als u klaar bent.
+1. Als u gereed bent, selecteert u **Maken**.
 
 1. Blijf [op de gebruikelijke manier door gaan met het maken van uw logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
@@ -78,12 +78,12 @@ Voer de volgende stappen uit om een integratie account te maken dat gebruikmaakt
    |----------|----------|-------------|
    | **Naam** | Yes | De naam voor het integratie account dat u wilt maken |
    | **Abonnement** | Yes | De naam voor het Azure-abonnement dat u wilt gebruiken |
-   | **Resourcegroep** | Ja | De naam voor de Azure-resource groep (nieuw of bestaand) die moet worden gebruikt |
+   | **Resourcegroep** | Yes | De naam voor de Azure-resource groep (nieuw of bestaand) die moet worden gebruikt |
    | **Prijscategorie** | Yes | De prijs categorie die moet worden gebruikt voor het integratie account |
-   | **Locatie** | Yes | Onder **integratie service omgevingen**selecteert u dezelfde ISE als uw Logic apps, als deze nog niet is geselecteerd. <p><p> **Belang rijk**: als u uw integratie account wilt gebruiken met Logic apps, moeten beide dezelfde ISE gebruiken. |
+   | **Locatie** | Ja | Onder **integratie service omgevingen**selecteert u dezelfde ISE als uw Logic apps, als deze nog niet is geselecteerd. <p><p> **Belang rijk**: als u uw integratie account wilt gebruiken met Logic apps, moeten beide dezelfde ISE gebruiken. |
    ||||
 
-1. Selecteer **Maken** als u klaar bent.
+1. Als u gereed bent, selecteert u **Maken**.
 
 1. [Koppel uw logische app op de gebruikelijke manier aan uw integratie account](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account).
 
@@ -127,7 +127,7 @@ Als u aangepaste connectors in uw ISE wilt gebruiken, maakt u die aangepaste con
 
    ![Aangepaste connector selecteren en bewerken](./media/add-artifacts-integration-service-environment-ise/edit-custom-connectors.png)
 
-1. Ga door met het maken van de connector op de gebruikelijke manier vanuit een [OpenAPI-definitie](https://docs.microsoft.com/connectors/custom-connectors/define-openapi-definition#import-the-openapi-definition) of [SOAP](https://docs.microsoft.com/connectors/custom-connectors/create-register-logic-apps-soap-connector#2-define-your-connector).
+1. Ga door met het maken van de connector op de gebruikelijke manier vanuit een [OpenAPI-definitie](/connectors/custom-connectors/define-openapi-definition#import-the-openapi-definition) of [SOAP](/connectors/custom-connectors/create-register-logic-apps-soap-connector#2-define-your-connector).
 
 1. Zie [uw integratie service omgeving beheren](../logic-apps/ise-manage-integration-service-environment.md)voor het beheren van aangepaste connectors in uw ISE.
 

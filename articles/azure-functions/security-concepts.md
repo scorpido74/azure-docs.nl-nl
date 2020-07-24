@@ -3,19 +3,20 @@ title: Azure Functions beveiligen
 description: Meer informatie over hoe u de functie code die wordt uitgevoerd in azure beter kunt beveiligen tegen veelvoorkomende aanvallen.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 692e8420bda1e7baa8521dd6caaf5eef183823fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bdb012c3f379b1e0314364f79ccc4aa49eba4bd3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84259419"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079686"
 ---
 # <a name="securing-azure-functions"></a>Azure Functions beveiligen
 
-In veel gevallen is het plannen voor veilige ontwikkeling, implementatie en werking van serverloze functies veel hetzelfde als voor elke webtoepassing of gehoste toepassingen in de Cloud. [Azure app service](/azure/app-service/) biedt de hosting-infra structuur voor uw functie-apps. Dit artikel bevat beveiligings strategieën voor het uitvoeren van uw functie code en hoe App Service u kunt helpen bij het beveiligen van uw functies. 
+In veel gevallen is het plannen voor veilige ontwikkeling, implementatie en werking van serverloze functies veel hetzelfde als voor elke webtoepassing of gehoste toepassingen in de Cloud. [Azure app service](../app-service/index.yml) biedt de hosting-infra structuur voor uw functie-apps. Dit artikel bevat beveiligings strategieën voor het uitvoeren van uw functie code en hoe App Service u kunt helpen bij het beveiligen van uw functies. 
 
 [!INCLUDE [app-service-security-intro](../../includes/app-service-security-intro.md)]
 
-Zie [Azure-beveiligings basislijn voor Azure functions](security-baseline.md)voor een aantal beveiligings aanbevelingen die volgen op de [beveiligings benchmark van Azure](/azure/security/benchmarks/overview).
+Zie [Azure-beveiligings basislijn voor Azure functions](security-baseline.md)voor een aantal beveiligings aanbevelingen die volgen op de [beveiligings benchmark van Azure](../security/benchmarks/overview.md).
 
 ## <a name="secure-operation"></a>Beveiligde bewerking 
 
@@ -61,7 +62,7 @@ De volgende tabel vergelijkt het gebruik voor verschillende soorten toegangs sle
 |-----------------------------------------------|--------------------------|--------------------|
 | Een functie uitvoeren                            | Specifieke functie        | Functie           |
 | Een functie uitvoeren                            | Een functie             | Functie of host   |
-| Een Administrator-eind punt aanroepen                        | Function App             | Host (alleen Master) |
+| Een Administrator-eind punt aanroepen                        | Functie-app             | Host (alleen Master) |
 | Api's voor duurzame taak uitbreidingen aanroepen              | Functie-app<sup>1</sup> | Systeem<sup>2</sup> |
 | Een extensie-specifieke webhook aanroepen (intern) | Functie-app<sup>1</sup> | systeem<sup>2</sup> |
 

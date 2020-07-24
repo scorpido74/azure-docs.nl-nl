@@ -13,15 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: juliako
-ms.openlocfilehash: 692fe12d12538bc35e3a22d4af1bd185839f69d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce3d0a5beb5903d29b1deec345cf4673e3492e5d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84418713"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080921"
 ---
 # <a name="output-metadata"></a>Uitvoermetagegevens
 
-Een coderings taak is gekoppeld aan een invoer element (of activa) waarvoor u bepaalde coderings taken wilt uitvoeren. U kunt bijvoorbeeld een MP4-bestand coderen naar H. 264 MP4 Adaptive bitrate sets; Maak een miniatuur. Maak overlays. Wanneer een taak is voltooid, wordt een uitvoer activum geproduceerd.  Het uitvoer element bevat video, audio, miniaturen en andere bestanden. Het uitvoer activum bevat ook een bestand met meta gegevens over het uitvoer element. De naam van het JSON-bestand met meta gegevens heeft de volgende indeling: `<source_file_name>_manifest.json` (bijvoorbeeld `BigBuckBunny_manifest.json` ).  
+Een coderings taak is gekoppeld aan een invoer element (of activa) waarvoor u bepaalde coderings taken wilt uitvoeren. U kunt bijvoorbeeld een MP4-bestand coderen naar H. 264 MP4 Adaptive bitrate sets; Maak een miniatuur. Maak overlays. Wanneer een taak is voltooid, wordt een uitvoer activum geproduceerd.  Het uitvoer element bevat video, audio, miniaturen en andere bestanden. Het uitvoer activum bevat ook een bestand met meta gegevens over het uitvoer element. De naam van het JSON-bestand met meta gegevens heeft de volgende indeling: `<source_file_name>_manifest.json` (bijvoorbeeld `BigBuckBunny_manifest.json` ). U moet zoeken naar een * _metadata.jsen een query uitvoeren op de filepath teken reeks in om de bron bestandsnaam te vinden (zonder afkap ping).
 
 Media Services de invoer assets niet preventief om meta gegevens te genereren. Invoer meta gegevens worden alleen gegenereerd als een artefact wanneer een invoer element in een taak wordt verwerkt. Dit artefact wordt daarom geschreven naar de uitvoer Asset. Er worden verschillende hulpprogram ma's gebruikt voor het genereren van meta gegevens voor invoer assets en uitvoer assets. Daarom heeft de invoer meta gegevens een iets ander schema dan de uitvoer meta gegevens.
 
@@ -52,8 +53,8 @@ Elk fysiek AssetFile kan in de waarde nul bevatten of meer Video's worden getrac
 | **FourCC**<br />Vereist | Een code van de video-codec die wordt gerapporteerd door ffmpeg.  <br /><br />Voorbeeld: `"FourCC": "avc1"`|
 | **Profiel** |H264-Profiel (alleen van toepassing op H264-codec).  <br /><br />Voorbeeld: `"Profile": "High"` |
 | **Afvlakking** |Niveau H264 (alleen van toepassing op H264-codec).  <br /><br />Voorbeeld: `"Level": "3.2"`|
-| **Width**<br />Vereist |Breedte van gecodeerde video in pixels.  <br /><br />Voorbeeld: `"Width": "1280"`|
-| **Height**<br />Vereist |Versleutelde video hoogte in pixels.  <br /><br />Voorbeeld: `"Height": "720"`|
+| **Breedte**<br />Vereist |Breedte van gecodeerde video in pixels.  <br /><br />Voorbeeld: `"Width": "1280"`|
+| **Hoogte**<br />Vereist |Versleutelde video hoogte in pixels.  <br /><br />Voorbeeld: `"Height": "720"`|
 | **DisplayAspectRatioNumerator**<br />Vereist|Teller voor hoogte-breedte verhouding video weergave.  <br /><br />Voorbeeld: `"DisplayAspectRatioNumerator": 16.0`|
 | **DisplayAspectRatioDenominator**<br />Vereist |Noemer van hoogte-breedte verhouding video weergave.  <br /><br />Voorbeeld: `"DisplayAspectRatioDenominator": 9.0`|
 | **Framesnelheid**<br />Vereist |Gemeten video frame frequentie in. 3F-indeling.  <br /><br />Voorbeeld: `"Framerate": 29.970`|

@@ -3,12 +3,12 @@ title: Overzicht van Azure Functions runtime versies
 description: Azure Functions ondersteunt meerdere versies van de runtime. Meer informatie over de verschillen tussen deze en hoe u het kunt kiezen dat het beste bij u past.
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 0989795d802b21e07ad9fea3bd417f0408df706c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29dd4a1ea60c463655c5b9a17fedcf6d51eee927
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83996717"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081675"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Overzicht van Azure Functions runtime versies
 
@@ -91,7 +91,7 @@ Hieronder vindt u de wijzigingen die u moet kennen voordat u een upgrade uitvoer
 
 #### <a name="net"></a>.NET
 
-* [Synchrone Server bewerkingen zijn standaard uitgeschakeld](https://docs.microsoft.com/dotnet/core/compatibility/2.2-3.0#http-synchronous-io-disabled-in-all-servers).
+* [Synchrone Server bewerkingen zijn standaard uitgeschakeld](/dotnet/core/compatibility/2.2-3.0#http-synchronous-io-disabled-in-all-servers).
 
 ### <a name="changing-version-of-apps-in-azure"></a>De versie van de apps in azure wijzigen
 

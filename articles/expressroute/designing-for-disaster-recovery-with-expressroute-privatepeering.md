@@ -7,17 +7,22 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 05/25/2019
 ms.author: rambala
-ms.openlocfilehash: 726a014983c0da959d72b7976fef2ebb2c6e9b9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8adfb0ef0d9aa79d1b14127453f76223f035d62a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74076690"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081165"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>Ontwerpen voor herstel na nood gevallen met persoonlijke ExpressRoute-peering
 
 ExpressRoute is ontworpen voor hoge Beschik baarheid om de communicatie van particuliere netwerken naar micro soft-resources te verzorgen. Met andere woorden: er is geen Single Point of Failure in het pad ExpressRoute in het micro soft-netwerk. Zie [ontwerpen voor hoge Beschik baarheid met ExpressRoute][HA]voor overwegingen bij het ontwerpen van de beschik baarheid van een ExpressRoute-circuit.
 
 *Als er echter iets mis gaat*met Murphy--adage, kunt u in dit artikel zich richten op oplossingen die verder gaan dan storingen die kunnen worden opgelost met één ExpressRoute-circuit. Met andere woorden, in dit artikel, kunnen we in het kader van de netwerk architectuur controleren op het bouwen van robuuste back-end-netwerk connectiviteit voor herstel na nood gevallen met geo-redundante ExpressRoute-circuits.
+
+>[!NOTE]
+>De concepten die in dit artikel worden beschreven, zijn ook van toepassing wanneer een ExpressRoute-circuit wordt gemaakt onder een virtueel WAN of daarbuiten.
+>
 
 ## <a name="need-for-redundant-connectivity-solution"></a>Behoefte aan redundante connectiviteits oplossing
 
@@ -40,7 +45,7 @@ Als u echter taak verdeling van verkeer via Geo-redundante parallelle paden hebt
 
 Laten we eens kijken naar het voorbeeld netwerk geïllustreerd in het volgende diagram. In het voor beeld wordt geo-redundante ExpressRoute-connectiviteit tot stand gebracht tussen de on-premises locatie van Contoso en het VNet van Contoso in een Azure-regio. In het diagram geeft effen groene lijn aan dat het voorkeurs pad (via ExpressRoute 1) en de gestippelde waarde staat voor een pad (via ExpressRoute 2).
 
-[![1]][1]
+[![i]][1]
 
 Wanneer u ExpressRoute-connectiviteit ontwerpt voor herstel na nood gevallen, moet u rekening houden met het volgende:
 
@@ -75,7 +80,7 @@ De volgende scherm afbeelding illustreert het configureren van het gewicht van e
 
 Het volgende diagram illustreert de selectie van het ExpressRoute met behulp van het verbindings gewicht. Het standaard verbindings gewicht is 0. In het onderstaande voor beeld is het gewicht van de verbinding voor ExpressRoute 1 geconfigureerd als 100. Wanneer een VNet een route voorvoegsel ontvangt dat is geadverteerd via meer dan één ExpressRoute-circuit, zal het VNet de voor keur geven aan de verbinding met het hoogste gewicht.
 
-[![4]][4]
+[![3]][4]
 
 Als beide verbindingen van ExpressRoute 1 omlaag gaan, wordt de 10.1.11.0/24 route advertisement alleen weer geven via ExpressRoute 2. en daarom wordt het standby-circuit gebruikt in deze fout status.
 
@@ -123,7 +128,7 @@ Het scenario 2 wordt geïllustreerd in het volgende diagram. In het diagram geve
 
 De oplossing wordt geïllustreerd in het volgende diagram. Zoals u ziet, kunt u het scenario architecten met behulp van een specifiekere route (optie 1) of als laten voorafgaan door (optie 2) om de selectie van het VNet-pad te beïnvloeden. Als u de selectie van een on-premises netwerk route wilt beïnvloeden voor afhankelijk Azure-verkeer, moet u de onderlinge verbinding tussen de on-premises locatie zo weinig mogelijk configureren. Howe u de koppeling voor verbinding zoals gewenst configureert, is afhankelijk van het routerings protocol dat in het on-premises netwerk wordt gebruikt. U kunt lokale voor keur gebruiken met iBGP of metric met IGP (OSPF of IS-IS).
 
-[![10]][10]
+[![6]][10]
 
 
 ## <a name="next-steps"></a>Volgende stappen

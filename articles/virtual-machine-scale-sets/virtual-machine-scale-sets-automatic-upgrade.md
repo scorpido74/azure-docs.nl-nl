@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 06/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: af0dea5297cca02b12aecdc8252e62030032b93e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 558dd152aa1c6638155ad4215dc16f08d33d2e2f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85601340"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080536"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Upgrade van Azure virtual machine-schaal sets automatische installatie kopieën van besturings systemen
 
@@ -143,7 +143,7 @@ Tijdens een upgrade van het besturings systeem worden VM-exemplaren in een schaa
 
 Een schaalset kan eventueel worden geconfigureerd met toepassings status tests om het platform te voorzien van nauw keurige informatie over de doorlopende status van de toepassing. De status tests van toepassingen zijn aangepaste Load Balancer tests die worden gebruikt als een status signaal. De toepassing die wordt uitgevoerd op een VM-instantie van een schaalset kan reageren op externe HTTP-of TCP-aanvragen die aangeven of deze in orde zijn. Zie voor meer informatie over hoe aangepaste Load Balancer tests werken om te [begrijpen Load Balancer tests](../load-balancer/load-balancer-custom-probe-overview.md). De status tests van toepassingen worden niet ondersteund voor Service Fabric schaal sets. Voor niet-Service Fabric schaal sets is Load Balancer toepassings status tests of een [toepassings status uitbreiding](virtual-machine-scale-sets-health-extension.md)vereist.
 
-Als de schaalset is geconfigureerd voor het gebruik van meerdere plaatsings groepen, moeten tests met een [Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) worden gebruikt.
+Als de schaalset is geconfigureerd voor het gebruik van meerdere plaatsings groepen, moeten tests met een [Standard Load Balancer](../load-balancer/load-balancer-overview.md) worden gebruikt.
 
 ### <a name="configuring-a-custom-load-balancer-probe-as-application-health-probe-on-a-scale-set"></a>Een aangepaste Load Balancer test configureren als de status test van de toepassing in een schaalset
 Maak als best practice een load balancer test expliciet voor de status van de schaalset. Hetzelfde eind punt voor een bestaande HTTP-test of TCP-test kan worden gebruikt, maar een status test kan een ander gedrag van een traditionele Load Balancer-test vereisen. Een traditionele load balancer test kan bijvoorbeeld een slechte status retour neren als de belasting van het exemplaar te hoog is, maar dat niet geschikt zou zijn voor het bepalen van de status van het exemplaar tijdens een automatische upgrade van het besturings systeem. Stel de test zodanig in dat deze een hoge Zoek frequentie heeft van minder dan twee minuten.
@@ -161,7 +161,7 @@ Naar de Load Balancer-test kan worden verwezen in de *networkProfile* van de sch
 ```
 
 > [!NOTE]
-> Wanneer u automatische besturingssysteem upgrades met Service Fabric gebruikt, wordt de nieuwe installatie kopie van het besturings systeem bijgewerkt op basis van het update domein om hoge Beschik baarheid te behouden van de services die worden uitgevoerd in Service Fabric. Als u automatische besturingssysteem upgrades wilt gebruiken in Service Fabric moet uw cluster zijn geconfigureerd voor het gebruik van de Silver duurzaamheid-laag of hoger. Raadpleeg [deze documentatie](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster)voor meer informatie over de duurzaamheids kenmerken van service Fabric clusters.
+> Wanneer u automatische besturingssysteem upgrades met Service Fabric gebruikt, wordt de nieuwe installatie kopie van het besturings systeem bijgewerkt op basis van het update domein om hoge Beschik baarheid te behouden van de services die worden uitgevoerd in Service Fabric. Als u automatische besturingssysteem upgrades wilt gebruiken in Service Fabric moet uw cluster zijn geconfigureerd voor het gebruik van de Silver duurzaamheid-laag of hoger. Raadpleeg [deze documentatie](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)voor meer informatie over de duurzaamheids kenmerken van service Fabric clusters.
 
 ### <a name="keep-credentials-up-to-date"></a>Referenties up-to-date houden
 Als uw schaalset referenties gebruikt voor toegang tot externe bronnen, zoals een VM-extensie die is geconfigureerd voor het gebruik van een SAS-token voor opslag account, moet u ervoor zorgen dat de referenties worden bijgewerkt. Als er referenties, inclusief certificaten en tokens, zijn verlopen, mislukt de upgrade en wordt de eerste batch van Vm's in een mislukte status gelaten.

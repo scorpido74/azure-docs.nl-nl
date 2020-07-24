@@ -8,11 +8,12 @@ ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
-ms.openlocfilehash: 97399635399c12022006ac95e60c5828bf2a9dc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 975dcc357e244469f33385f84f2e15a89997597b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76905431"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078206"
 ---
 # <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>Migreer uw apps en oplossingen van BizTalk Services naar Azure Logic Apps
 
@@ -31,10 +32,10 @@ BizTalk Services bestaat uit twee subservices:
 
 Deze tabel wijst BizTalk Services mogelijkheden toe aan Logic Apps.
 
-| BizTalk Services   | Logic Apps            | Functie                      |
+| BizTalk Services   | Logic Apps            | Doel                      |
 | ------------------ | --------------------- | ---------------------------- |
 | Connector          | Connector             | Gegevens verzenden en ontvangen   |
-| Bridge             | Logische apps             | Pijplijn processor           |
+| Brug             | Logische apps             | Pijplijn processor           |
 | Fase valideren     | XML-validatie actie | Een XML-document valideren op basis van een schema | 
 | Verrijk fase       | Gegevens tokens           | Eigenschappen promo veren naar berichten of beslissingen voor route ring |
 | Transformatie fase    | Trans formatie actie      | XML-berichten van de ene indeling naar de andere converteren |
@@ -52,13 +53,13 @@ BizTalk Services heeft verschillende soorten artefacten.
 
 Met BizTalk Services Connectors kunnen gegevens worden verzonden en ontvangen, waaronder twee richtings bruggen die op HTTP gebaseerde aanvraag/antwoord interacties mogelijk maken. Logic Apps gebruikt dezelfde terminologie en heeft honderden connectors die hetzelfde doel hebben door verbinding te maken met een breed scala aan technologieën en services. Connectors zijn bijvoorbeeld beschikbaar voor Cloud SaaS-en PaaS-Services, zoals OneDrive, Office365, Dynamics CRM en meer, plus on-premises systemen via de on-premises gegevens gateway, waarmee de BizTalk adapter service voor BizTalk Services wordt vervangen. Bronnen in BizTalk Services zijn beperkt tot de FTP-, SFTP-en Service Bus-wachtrij of het onderwerp-abonnement.
 
-![](media/logic-apps-move-from-mabs/sources.png)
+![Diagram waarin de BizTalk Services stroom wordt weer gegeven.](media/logic-apps-move-from-mabs/sources.png)
 
 Elke Bridge heeft standaard een HTTP-eind punt dat is geconfigureerd met het runtime-adres en de relatieve adres eigenschappen voor de brug. Gebruik de acties voor [aanvragen en antwoorden](../connectors/connectors-native-reqres.md) om dezelfde resultaten te krijgen met Logic apps.
 
 ## <a name="xml-processing-and-bridges"></a>XML-verwerking en bruggen
 
-In BizTalk Services is een brug gelijk aan een verwerkings pijplijn. Een Bridge kan gegevens ontvangen van een connector, sommige werk met de gegevens uitvoeren en de resultaten naar een ander systeem verzenden. Logic Apps doet hetzelfde door het ondersteunen van dezelfde op pijplijn gebaseerde interactie patronen als BizTalk Services en ook andere integratie patronen bieden. De [XML-aanvraag/antwoord-brug](https://msdn.microsoft.com/library/azure/hh689781.aspx) in BizTalk Services wordt ook wel een VETER-pijp lijn genoemd, die bestaat uit fasen die deze taken uitvoeren:
+In BizTalk Services is een brug gelijk aan een verwerkings pijplijn. Een Bridge kan gegevens ontvangen van een connector, sommige werk met de gegevens uitvoeren en de resultaten naar een ander systeem verzenden. Logic Apps doet hetzelfde door het ondersteunen van dezelfde op pijplijn gebaseerde interactie patronen als BizTalk Services en ook andere integratie patronen bieden. De [XML-aanvraag/antwoord-brug](/previous-versions/azure/hh689781(v=azure.100)) in BizTalk Services wordt ook wel een VETER-pijp lijn genoemd, die bestaat uit fasen die deze taken uitvoeren:
 
 * (V) valideren
 * (E) verrijking
@@ -68,7 +69,7 @@ In BizTalk Services is een brug gelijk aan een verwerkings pijplijn. Een Bridge 
 
 In deze afbeelding ziet u hoe de verwerking wordt gesplitst tussen de aanvraag en het antwoord, waarmee u de aanvraag en de antwoord paden afzonderlijk kunt controleren, bijvoorbeeld door gebruik te maken van verschillende toewijzingen voor elk pad:
 
-![](media/logic-apps-move-from-mabs/xml-request-reply.png)
+![Scherm afbeelding die laat zien hoe de verwerking van de aanvraag en het antwoord wordt gesplitst.](media/logic-apps-move-from-mabs/xml-request-reply.png)
 
 Daarnaast voegt een XML eenrichtings brug de fase ring en versleutelen aan het begin en einde van de verwerking toe. De Pass-Through-brug bevat een enkele verrijkte fase.
 
@@ -90,7 +91,7 @@ In BizTalk Services converteert het transformatie stadium één op XML gebaseerd
 
 BizTalk Services maakt een routerings besluit waarop een eind punt of connector inkomende berichten of gegevens verzendt. De mogelijkheid om te kiezen uit vooraf geconfigureerde eind punten is mogelijk met behulp van de routerings filter optie:
 
-![](media/logic-apps-move-from-mabs/route-filter.png)
+![Scherm afbeelding met de optie routerings filter.](media/logic-apps-move-from-mabs/route-filter.png)
 
 Als er in BizTalk Services slechts twee opties zijn, is het gebruik van een *voor waarde* de beste manier om routerings filters in BizTalk services te converteren. Als er meer dan twee zijn, gebruikt u vervolgens een **Switch**.
 
@@ -102,7 +103,7 @@ Bij BizTalk Services verwerking voegt het verrijkte stadium eigenschappen toe aa
 
 ### <a name="run-custom-code"></a>Aangepaste code uitvoeren
 
-Met BizTalk Services kunt u [aangepaste code uitvoeren](https://msdn.microsoft.com/library/azure/dn232389.aspx) die is geüpload in uw eigen assembly's. Deze functionaliteit wordt geïmplementeerd door de [IMessageInspector](https://msdn.microsoft.com/library/microsoft.biztalk.services.imessageinspector) -interface. Elke fase in de Bridge bevat twee eigenschappen (op ENTER en op de Exitcontrole functie) die het .NET-type opgeven dat u hebt gemaakt en die deze interface implementeert. Met aangepaste code kunt u complexere verwerking uitvoeren op gegevens en kunt u bestaande code opnieuw gebruiken in assembly's die algemene bedrijfs logica uitvoeren. 
+Met BizTalk Services kunt u [aangepaste code uitvoeren](/previous-versions/azure/dn232389(v=azure.100)) die is geüpload in uw eigen assembly's. Deze functionaliteit wordt geïmplementeerd door de [IMessageInspector](/azure/logic-apps/logic-apps-move-from-mabs) -interface. Elke fase in de Bridge bevat twee eigenschappen (op ENTER en op de Exitcontrole functie) die het .NET-type opgeven dat u hebt gemaakt en die deze interface implementeert. Met aangepaste code kunt u complexere verwerking uitvoeren op gegevens en kunt u bestaande code opnieuw gebruiken in assembly's die algemene bedrijfs logica uitvoeren. 
 
 Logic Apps biedt twee primaire manieren om aangepaste code uit te voeren: Azure Functions en API Apps. Azure Functions kunnen worden gemaakt en worden aangeroepen vanuit Logic apps. Zie [aangepaste code toevoegen en uitvoeren voor logische apps via Azure functions](../logic-apps/logic-apps-azure-functions.md). Gebruik API Apps, onderdeel van Azure App Service, om uw eigen triggers en acties te maken. Meer informatie over het [maken van een aangepaste API voor het gebruik van Logic apps](../logic-apps/logic-apps-create-api-app.md). 
 

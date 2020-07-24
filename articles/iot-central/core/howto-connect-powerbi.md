@@ -7,12 +7,12 @@ author: viv-liu
 ms.author: viviali
 ms.date: 10/4/2019
 ms.topic: conceptual
-ms.openlocfilehash: a484ab2553aeefbbe8c03ae639bdd667e4d9cb8e
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: f996bb2d5126ef038ca872aee1f1893979a5229b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84661192"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "87080995"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>Uw Azure IoT Central-gegevens visualiseren en analyseren in een Power BI dash board
 
@@ -20,7 +20,7 @@ ms.locfileid: "84661192"
 
 :::image type="content" source="media/howto-connect-powerbi/iot-continuous-data-export.png" alt-text="Power BI solution-pijp lijn":::
 
-Gebruik de Power BI-oplossing voor Azure IoT Central om een krachtig Power BI dash board te maken voor het bewaken van de prestaties van uw IoT-apparaten. In uw Power BI dash board kunt u het volgende doen:
+Gebruik de Power BI-oplossing voor Azure IoT Central v3 om een krachtig Power BI dash board te maken voor het bewaken van de prestaties van uw IoT-apparaten. In uw Power BI dash board kunt u het volgende doen:
 
 - Bijhouden hoeveel gegevens uw apparaten na verloop van tijd worden verzonden
 - Gegevens volumes vergelijken tussen verschillende telemetrie-stromen
@@ -35,16 +35,19 @@ Als u de stappen in deze hand leiding wilt uitvoeren, hebt u een actief Azure-ab
 
 Voor het instellen van de oplossing zijn de volgende resources vereist:
 
-- IoT Central-toepassing. Zie [een Azure IOT Central-toepassing maken](./quick-deploy-iot-central.md)voor meer informatie.
+- Een IoT Central toepassing van versie 3. Zie [over uw toepassing](./howto-get-app-info.md)voor meer informatie over het controleren van de versie van uw toepassing. Zie [een Azure IOT Central-toepassing maken](./quick-deploy-iot-central.md)voor meer informatie over het maken van een IOT Central-toepassing.
 - Continue gegevens export geconfigureerd voor het exporteren van telemetrie, apparaten en apparaatinstellingen naar Azure Blob-opslag. Zie [IOT-gegevens exporteren naar bestemmingen in azure](howto-export-data.md)voor meer informatie.
   - Zorg ervoor dat alleen uw IoT Central-toepassing gegevens exporteert naar de BLOB-container.
   - Uw [apparaten moeten JSON-gecodeerde berichten verzenden](../../iot-hub/iot-hub-devguide-messages-d2c.md). Apparaten moeten `contentType:application/JSON` en `contentEncoding:utf-8` of of worden opgegeven `contentEncoding:utf-16` `contentEncoding:utf-32` in de eigenschappen van het bericht systeem.
 - Power BI Desktop (meest recente versie). Zie [Power bi down loads](https://powerbi.microsoft.com/downloads/).
 - Power BI Pro (als u het dash board met anderen wilt delen).
 
+> [!NOTE]
+> Als u een IoT Central toepassing van versie 2 gebruikt, raadpleegt u [uw Azure IOT Central-gegevens visualiseren en analyseren in een Power bi dash board](https://docs.microsoft.com/previous-versions/azure/iot-central/core/howto-connect-powerbi) op de documentatie site van eerdere versies.
+
 ## <a name="install"></a>Installeren
 
-Als u de pijp lijn wilt instellen, gaat u naar de pagina [Power BI-oplossing voor Azure IOT Central](https://appsource.microsoft.com/product/web-apps/iot-central.power-bi-solution-iot-central) op de **Microsoft AppSource** -site. Selecteer **nu downloaden**en volg de instructies.
+Als u de pijp lijn wilt instellen, gaat u naar de pagina [Power BI-oplossing voor Azure IOT Central v3](https://appsource.microsoft.com/product/web-apps/iot-central.power-bi-solution-iot-central) op de **Microsoft AppSource** -site. Selecteer **nu downloaden**en volg de instructies.
 
 Wanneer u het PBIX-bestand opent, moet u de instructies lezen en volgen op het voor blad. In deze instructies wordt beschreven hoe u uw rapport verbindt met uw SQL database.
 
@@ -68,7 +71,7 @@ De functie-app van Azure wordt elke keer geactiveerd IoT Central een nieuw besta
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
 
-Azure Data Factory maakt verbinding met de SQL database als een gekoppelde service. De sjabloon voert opgeslagen procedures uit om de gegevens te verwerken en op te slaan in de analyse tabellen.
+Azure Data Factory maakt verbinding met SQL Database als een gekoppelde service. De sjabloon voert opgeslagen procedures uit om de gegevens te verwerken en op te slaan in de analyse tabellen.
 
 Azure Data Factory wordt elke 15 minuten uitgevoerd om de laatste batch met gegevens te transformeren die in de SQL-tabellen moet worden geladen (dit is het huidige minimale nummer voor de trigger van het **tumblingvenstertriggers-venster**).
 
@@ -78,7 +81,7 @@ Azure Data Factory genereert een set analyse tabellen voor Power BI. U kunt deze
 
 ## <a name="estimated-costs"></a>Geschatte kosten
 
-De pagina [Power BI oplossing voor Azure IOT Central](https://appsource.microsoft.com/product/web-apps/iot-central.power-bi-solution-iot-central) op de Microsoft AppSource site bevat een koppeling naar een kosten Estimator voor de resources die u implementeert.
+De pagina [Power BI oplossing voor Azure IOT Central v3](https://appsource.microsoft.com/product/web-apps/iot-central.power-bi-solution-iot-central) op de Microsoft AppSource site bevat een koppeling naar een kosten Estimator voor de resources die u implementeert.
 
 ## <a name="next-steps"></a>Volgende stappen
 

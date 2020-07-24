@@ -7,11 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 07/24/2019
 ms.author: osamaz
-ms.openlocfilehash: b8a454c2a104dfe8545cf734bf0b020b8f749bb1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 80863b56334b0d2d76cdf505dcd15c5cc4c14c52
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73889633"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081097"
 ---
 # <a name="connecting-azure-with-public-clouds"></a>Azure verbinden met open bare Clouds
 
@@ -33,7 +34,7 @@ Layer3-providers worden meestal IP VPN-of MPLS-VPN-providers genoemd. Klanten ma
  
 Wanneer u verbinding maakt via een Layer3-provider, adverteert micro soft klant VNET-routes naar de service provider via BGP. De provider kan twee verschillende implementaties hebben.
 
-![](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l3.png)
+![Diagram waarin een Layer3-provider wordt weer gegeven.](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l3.png)
 
 Provider kan elke Cloud provider in een afzonderlijke VRF uitbrengen als verkeer van alle cloud providers op de klant router wordt bereikt. Als de klant BGP met service provider uitvoert, worden deze routes standaard opnieuw aangekondigd aan andere cloud providers. 
 
@@ -44,7 +45,7 @@ Elke open bare Cloud heeft een andere voorvoegsel limiet, dus bij het distribuer
 ### <a name="layer2-provider-and-direct-connection"></a>Layer2-provider en directe verbinding
 
 Hoewel fysieke connectiviteit in beide modellen anders is, maar op Layer3 BGP direct wordt ingesteld tussen MSEE en de klant router. Voor ExpressRoute direct-klanten maakt rechtstreeks verbinding met MSEE. In het geval van Layer2 breidt de service provider VLAN uit van de lokale locatie van de klant naar de Cloud. Klanten voeren BGP uit op het Layer2-netwerk om hun Dc's te verbinden met de Cloud.
-![](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l2.png)
+![Diagram waarin een Layer2-provider en directe verbinding worden weer gegeven.](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l2.png)
 In beide gevallen heeft de klant Point-to-point-verbindingen met elk van de open bare Clouds. De klant brengt een afzonderlijke BGP-verbinding tot stand met elke open bare Cloud. Routes die door een Cloud provider worden ontvangen, worden standaard naar een andere Cloud provider geadverteerd. Elke Cloud provider heeft een andere voorvoegsel limiet, zodat de routes die de klant aankondigen, deze limieten moeten overnemen. Klanten kunnen gebruikelijke BGP-knoppen met micro soft gebruiken tijdens het adverteren van routes van andere open bare Clouds.
 
 ## <a name="direct-connection-with-expressroute"></a>Directe verbinding met ExpressRoute

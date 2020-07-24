@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: 7ab7071f504231290f72646e59a30fa855cff6cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d71201da0c4af35720a309fe0dfa068cd2c69630
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84944488"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081607"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>Uw opslag service controleren met Azure Monitor voor opslag
 
@@ -31,7 +31,7 @@ Gecombineerd IT-levert:
 
 * **Aanpasbaar** waar u kunt wijzigen welke metrische gegevens u wilt zien, wijzigen of instellen van drempel waarden die worden uitgelijnd met uw limieten en opslaan als uw eigen werkmap. Grafieken in de werkmap kunnen worden vastgemaakt aan het dash board van Azure.  
 
-Voor deze functie hoeft u niets in te scha kelen of te configureren. de metrische opslag gegevens van uw opslag accounts worden standaard verzameld. Als u niet bekend bent met metrische gegevens die beschikbaar zijn op Azure Storage, kunt u de beschrijving en definitie in Azure Storage metrieken bekijken door de [metrische gegevens voor Azure Storage](../../storage/common/storage-metrics-in-azure-monitor.md)te controleren.
+Voor deze functie hoeft u niets in te scha kelen of te configureren. de metrische opslag gegevens van uw opslag accounts worden standaard verzameld. Als u niet bekend bent met metrische gegevens die beschikbaar zijn op Azure Storage, kunt u de beschrijving en definitie in Azure Storage metrieken bekijken door de [metrische gegevens voor Azure Storage](../../storage/common/monitor-storage.md)te controleren.
 
 >[!NOTE]
 >Er zijn geen kosten verbonden aan het verkrijgen van toegang tot deze functie en er worden alleen kosten in rekening gebracht voor de Azure Monitor essentiële functies die u configureert of inschakelt, zoals wordt beschreven op de pagina met [Azure monitor prijs informatie](https://azure.microsoft.com/pricing/details/monitor/) .
@@ -198,7 +198,7 @@ We gaan nu het kleuren thema wijzigen voor de metrische gegevens over capaciteit
 
 1. Selecteer **kolom instellingen** in het raster metrische gegevens.
 
-2. Selecteer in het deel venster **kolom instellingen bewerken** onder het **Columns** gedeelte kolommen **micro soft. Storage/Storage accounts-capacity-UsedCapacity $ | micro soft. Storage/Storage accounts/blobservices-capacity-BlobCapacity $ | micro soft. Storage/Storage accounts/fileservices-capacity-** FileCapacity $ | micro soft. Storage/Storage accounts/queueservices-capacity-QueueCapacity $ | micro soft. Storage/Storage accounts/tableservices-capacity-TableCapacity $ Selecteer **groen**onder het **kleuren palet**vervolg keuzelijst.
+2. Selecteer in het deel venster **kolom instellingen bewerken** onder het **Columns** gedeelte kolommen **micro soft. Storage/Storage accounts-capacity-UsedCapacity $ micro soft. Storage/ `|` Storage accounts/blobservices-capacity-BlobCapacity $ `|` micro soft. Storage/Storage accounts/fileservices-capacity `|` `|` **-FileCapacity $ micro soft. Storage/Storage accounts/queueservices-capacity-QueueCapacity $ micro soft. Storage/Storage accounts/tableservices-capacity-TableCapacity $. Selecteer **groen**onder het **kleuren palet**vervolg keuzelijst.
 
 3. Selecteer **opslaan en sluiten** om de wijziging door te voeren.
 
@@ -246,7 +246,7 @@ Raadpleeg de sectie [de drempel waarde voor Beschik baarheid wijzigen](storage-i
 
 ### <a name="how-to-analyze-and-troubleshoot-the-data-shown-in-azure-monitor-for-storage"></a>Hoe kunt u de gegevens die worden weer gegeven in Azure Monitor voor opslag analyseren en problemen oplossen?
 
- Raadpleeg Microsoft Azure Storage artikel [controleren, diagnosticeren en problemen oplossen](https://docs.microsoft.com/azure/storage/common/storage-monitoring-diagnosing-troubleshooting) voor meer informatie over het analyseren en oplossen van de Azure Storage gegevens die in azure monitor voor opslag worden weer gegeven.
+ Raadpleeg Microsoft Azure Storage artikel [controleren, diagnosticeren en problemen oplossen](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md) voor meer informatie over het analyseren en oplossen van de Azure Storage gegevens die in azure monitor voor opslag worden weer gegeven.
 
 ### <a name="why-dont-i-see-all-the-types-of-errors-in-metrics"></a>Waarom zie ik niet alle typen fouten in metrische gegevens?
 
@@ -269,7 +269,7 @@ Elke werkmap wordt opgeslagen in het opslag account waarin u deze hebt opgeslage
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Waarschuwingen voor metrische gegevens](../platform/alerts-metric.md) en [service status meldingen](../../service-health/alerts-activity-log-service-notifications.md) configureren om automatische waarschuwingen in te stellen voor hulp bij het detecteren van problemen.
+* [Waarschuwingen voor metrische gegevens](../platform/alerts-metric.md) en [service status meldingen](../../service-health/alerts-activity-log-service-notifications-portal.md) configureren om automatische waarschuwingen in te stellen voor hulp bij het detecteren van problemen.
 
 * Meer informatie over de scenario's werkmappen zijn ontworpen voor ondersteuning, het ontwerpen van nieuwe en het aanpassen van bestaande rapporten en meer door [interactieve rapporten maken met Azure monitor werkmappen](../platform/workbooks-overview.md)te controleren.
 

@@ -9,11 +9,12 @@ ms.subservice: management
 ms.date: 02/22/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 430c08fc318a89c4d11575eab90ee524b88a979a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07f72d54c0d62748196302ed1b77ea750dede8ff
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84607343"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080451"
 ---
 # <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>Exemplaar-Id's voor virtuele machines van Azure VM-schaal sets begrijpen
 In dit artikel worden exemplaar-Id's beschreven voor schaal sets en de verschillende manieren waarop ze zich bevinden.
@@ -22,19 +23,19 @@ In dit artikel worden exemplaar-Id's beschreven voor schaal sets en de verschill
 
 Elke virtuele machine in een schaalset haalt een exemplaar-ID op die een unieke identificatie heeft. Deze exemplaar-ID wordt in de schaalset-Api's gebruikt om bewerkingen uit te voeren op een specifieke virtuele machine in de schaalset. U kunt bijvoorbeeld een specifieke exemplaar-ID opgeven voor het opnieuw instellen van de installatie kopie bij gebruik van de Reimage-API:
 
-REST API: `POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/reimage?api-version={apiVersion}` (Zie de [rest API documentatie](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesetvms/reimage)voor meer informatie)
+REST API: `POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/reimage?api-version={apiVersion}` (Zie de [rest API documentatie](/rest/api/compute/virtualmachinescalesetvms/reimage)voor meer informatie)
 
-Power shell: `Set-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId} -Reimage` (Zie de [Power shell-documentatie](https://docs.microsoft.com/powershell/module/az.compute/set-azvmssvm)voor meer informatie)
+Power shell: `Set-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId} -Reimage` (Zie de [Power shell-documentatie](/powershell/module/az.compute/set-azvmssvm)voor meer informatie)
 
-CLI: `az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}` (Zie de [cli-documentatie](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest)voor meer informatie).
+CLI: `az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}` (Zie de [cli-documentatie](/cli/azure/vmss?view=azure-cli-latest)voor meer informatie).
 
 U kunt de lijst met exemplaar-Id's ophalen door alle exemplaren in een schaalset weer te geven:
 
-REST API: `GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines?api-version={apiVersion}` (Zie de [rest API documentatie](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesetvms/list)voor meer informatie)
+REST API: `GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines?api-version={apiVersion}` (Zie de [rest API documentatie](/rest/api/compute/virtualmachinescalesetvms/list)voor meer informatie)
 
-Power shell: `Get-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName}` (Zie de [Power shell-documentatie](https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvm)voor meer informatie)
+Power shell: `Get-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName}` (Zie de [Power shell-documentatie](/powershell/module/az.compute/get-azvmssvm)voor meer informatie)
 
-CLI: `az vmss list-instances -g {resourceGroupName} -n {vmScaleSetName}` (Zie de [cli-documentatie](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest)voor meer informatie).
+CLI: `az vmss list-instances -g {resourceGroupName} -n {vmScaleSetName}` (Zie de [cli-documentatie](/cli/azure/vmss?view=azure-cli-latest)voor meer informatie).
 
 U kunt ook [resources.Azure.com](https://resources.azure.com) of de [Azure-sdk's](https://azure.microsoft.com/downloads/) gebruiken om de virtuele machines in een schaalset weer te geven.
 
@@ -65,7 +66,7 @@ Zoals u ziet, is de eigenschap instanceId slechts een decimaal getal. De exempla
 
 In de voorbeeld uitvoer hierboven bevindt zich ook een ' naam ' voor de VM. Deze naam heeft de notatie {Scale-set-name} _ {exemplaar-id}. Dit is de naam die u ziet in de Azure Portal wanneer u instanties in een schaalset vermeldt:
 
-![](./media/virtual-machine-scale-sets-instance-ids/vmssInstances.png)
+![Scherm afbeelding met een lijst met exemplaren in een schaalset voor virtuele machines in de Azure Portal.](./media/virtual-machine-scale-sets-instance-ids/vmssInstances.png)
 
 Het gedeelte {instance-id} van de naam is hetzelfde decimaal getal als de eigenschap instanceId die eerder is besproken.
 

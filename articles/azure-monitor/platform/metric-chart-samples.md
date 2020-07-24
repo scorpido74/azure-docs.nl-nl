@@ -7,15 +7,16 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 00935762a5e19ec47074021aff59992fd3b801bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 762264cfe7e0441671411e2c277a0796cd527399
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83797449"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081522"
 ---
 # <a name="metric-chart-examples"></a>Voor beelden van metrische grafieken 
 
-Het Azure-platform biedt [meer dan duizend metrische gegevens](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported), waarvan vele dimensies zijn. Met behulp van [dimensie filters](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts), het Toep assen van [splitsen](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts), het beheren van grafiek typen en het aanpassen van de grafiek instellingen kunt u krachtige diagnostische weer gaven en dash boards maken die inzicht bieden in de status van uw infra structuur en toepassingen. Dit artikel bevat enkele voor beelden van de grafieken die u kunt bouwen met [Metrics Explorer](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts) en legt de benodigde stappen voor het configureren van elk van deze grafieken uit.
+Het Azure-platform biedt [meer dan duizend metrische gegevens](./metrics-supported.md), waarvan vele dimensies zijn. Met behulp van [dimensie filters](./metrics-charts.md), het Toep assen van [splitsen](./metrics-charts.md), het beheren van grafiek typen en het aanpassen van de grafiek instellingen kunt u krachtige diagnostische weer gaven en dash boards maken die inzicht bieden in de status van uw infra structuur en toepassingen. Dit artikel bevat enkele voor beelden van de grafieken die u kunt bouwen met [Metrics Explorer](./metrics-charts.md) en legt de benodigde stappen voor het configureren van elk van deze grafieken uit.
 
 Wilt u de voor beelden van uw fantastische grafieken delen met de wereld? U kunt hier een bijdrage leveren aan deze pagina op GitHub en uw eigen grafiek voorbeelden delen.
 
@@ -37,7 +38,7 @@ Bekijk de beschik baarheid per regio van uw toepassing om te bepalen welke geogr
 
 ### <a name="how-to-configure-this-chart"></a>Hoe kan ik deze grafiek configureren?
 
-U moet eerst [Application Insights beschikbaarheids](https://docs.microsoft.com/azure/azure-monitor/app/monitor-web-app-availability) controle inschakelen voor uw website. Vervolgens kiest u uw Application Insights resource en selecteert u de beschikbaarheids metriek. Splitsing Toep assen op de dimensie **uitvoerings locatie** .
+U moet eerst [Application Insights beschikbaarheids](../app/monitor-web-app-availability.md) controle inschakelen voor uw website. Vervolgens kiest u uw Application Insights resource en selecteert u de beschikbaarheids metriek. Splitsing Toep assen op de dimensie **uitvoerings locatie** .
 
 ## <a name="volume-of-storage-account-transactions-by-api-name"></a>Volume van opslag account transacties op API-naam
 

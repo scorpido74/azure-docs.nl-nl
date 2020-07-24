@@ -9,12 +9,12 @@ ms.subservice: faq
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: cf58b62001ce5d193e3a06973215d82138ad4b59
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 8170cfcbbf200c6ba5030aff5716f46b537d8c97
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855591"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080468"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Veelgestelde vragen over schaalsets voor virtuele Azure-machines
 
@@ -71,15 +71,15 @@ Ja. Zie het [document Scale set zone doc](./virtual-machine-scale-sets-use-avail
 
 ### <a name="what-are-best-practices-for-azure-autoscale"></a>Wat zijn de aanbevolen procedures voor Azure automatisch schalen?
 
-Zie [Aanbevolen procedures voor het automatisch schalen van virtuele machines](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-autoscale-best-practices)voor aanbevolen procedures voor automatische schaling.
+Zie [Aanbevolen procedures voor het automatisch schalen van virtuele machines](../azure-monitor/platform/autoscale-best-practices.md)voor aanbevolen procedures voor automatische schaling.
 
 ### <a name="where-do-i-find-metric-names-for-autoscaling-that-uses-host-based-metrics"></a>Waar vind ik metrische namen voor automatisch schalen die gebruikmaken van metrische gegevens op basis van een host?
 
-Zie [ondersteunde metrische gegevens met Azure monitor](https://azure.microsoft.com/documentation/articles/monitoring-supported-metrics/)voor metrische namen voor automatisch schalen die gebruikmaken van metrische gegevens op basis van een host.
+Zie [ondersteunde metrische gegevens met Azure monitor](../azure-monitor/platform/metrics-supported.md)voor metrische namen voor automatisch schalen die gebruikmaken van metrische gegevens op basis van een host.
 
 ### <a name="are-there-any-examples-of-autoscaling-based-on-an-azure-service-bus-topic-and-queue-length"></a>Zijn er voor beelden van automatisch schalen op basis van een Azure Service Bus onderwerp en wachtrij lengte?
 
-Ja. Zie voor voor beelden van automatisch schalen op basis van een Azure Service Bus onderwerp en wachtrij lengte [Azure monitor algemene metrische gegevens automatisch schalen](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/).
+Ja. Zie voor voor beelden van automatisch schalen op basis van een Azure Service Bus onderwerp en wachtrij lengte [Azure monitor algemene metrische gegevens automatisch schalen](../azure-monitor/platform/autoscale-common-metrics.md).
 
 Gebruik voor een Service Bus wachtrij de volgende JSON:
 
@@ -104,9 +104,9 @@ Vervang voorbeeld waarden door de URI (Uniform Resource Identifiers) van uw reso
 
 U kunt een instelling voor automatisch schalen maken op een VM voor het gebruik van metrische gegevens op hostniveau of metrische gegevens op basis van een gast besturingssysteem.
 
-Zie voor een lijst met ondersteunde metrische gegevens [Azure monitor automatisch schalen van algemene metrische gegevens](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-autoscale-common-metrics).
+Zie voor een lijst met ondersteunde metrische gegevens [Azure monitor automatisch schalen van algemene metrische gegevens](../azure-monitor/platform/autoscale-common-metrics.md).
 
-Zie [Geavanceerde configuratie van automatisch schalen met behulp van Resource Manager-sjablonen voor virtuele-machine schaal sets](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets)voor een volledig voor beeld van virtuele-machine schaal sets.
+Zie [Geavanceerde configuratie van automatisch schalen met behulp van Resource Manager-sjablonen voor virtuele-machine schaal sets](../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md)voor een volledig voor beeld van virtuele-machine schaal sets.
 
 In het voor beeld wordt gebruikgemaakt van de CPU-metrische gegevens op hostniveau en de metrische gegevens over het aantal berichten.
 
@@ -114,13 +114,13 @@ In het voor beeld wordt gebruikgemaakt van de CPU-metrische gegevens op hostnive
 
 ### <a name="how-do-i-set-alert-rules-on-a-virtual-machine-scale-set"></a>Hoe kan ik waarschuwings regels instellen voor een schaalset voor virtuele machines?
 
-U kunt waarschuwingen over metrische gegevens voor virtuele-machine schaal sets maken via Power shell of Azure CLI. Zie Azure Monitor voor beelden van [Power shell-Quick](https://azure.microsoft.com/documentation/articles/insights-powershell-samples/#create-alert-rules) start en [Azure monitor-voor beelden van cross-platform cli Quick](https://azure.microsoft.com/documentation/articles/insights-cli-samples/#work-with-alerts)start voor meer informatie.
+U kunt waarschuwingen over metrische gegevens voor virtuele-machine schaal sets maken via Power shell of Azure CLI. Zie Azure Monitor voor beelden van [Power shell-Quick](../azure-monitor/samples/powershell-samples.md#create-metric-alerts) start en [Azure monitor-voor beelden van cross-platform cli Quick](../azure-monitor/samples/cli-samples.md#work-with-alerts)start voor meer informatie.
 
 De TargetResourceId van de virtuele-machine schaalset ziet er als volgt uit:
 
 /subscriptions/yoursubscriptionid/resourceGroups/yourresourcegroup/providers/Microsoft.Compute/virtualMachineScaleSets/yourvmssname
 
-U kunt elk VM-prestatie meter item kiezen als metriek voor het instellen van een waarschuwing voor. Zie voor meer informatie de metrische gegevens van het [gast besturingssysteem voor Windows-vm's op basis van Resource Manager](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/#guest-os-metrics-resource-manager-based-windows-vms) en [metrische gegevens voor het gast besturingssysteem voor virtuele Linux-machines](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/#guest-os-metrics-linux-vms) in het artikel [Azure monitor automatisch schalen van algemene gegevens](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/) .
+U kunt elk VM-prestatie meter item kiezen als metriek voor het instellen van een waarschuwing voor. Zie voor meer informatie de metrische gegevens van het [gast besturingssysteem voor Windows-vm's op basis van Resource Manager](../azure-monitor/platform/autoscale-common-metrics.md#guest-os-metrics-for-resource-manager-based-windows-vms) en [metrische gegevens voor het gast besturingssysteem voor virtuele Linux-machines](../azure-monitor/platform/autoscale-common-metrics.md#guest-os-metrics-linux-vms) in het artikel [Azure monitor automatisch schalen van algemene gegevens](../azure-monitor/platform/autoscale-common-metrics.md) .
 
 ### <a name="how-do-i-set-up-autoscale-on-a-virtual-machine-scale-set-by-using-powershell"></a>Hoe kan ik automatisch schalen instellen voor een schaalset voor virtuele machines met behulp van Power shell?
 
@@ -159,7 +159,7 @@ Gebruik de volgende JSON:
 
 De code ondersteunt Windows en Linux.
 
-Zie [een schaalset voor virtuele machines maken of bijwerken](https://msdn.microsoft.com/library/mt589035.aspx)voor meer informatie.
+Zie [een schaalset voor virtuele machines maken of bijwerken](/rest/api/compute/virtualmachinescalesets/createorupdate)voor meer informatie.
 
 
 ### <a name="how-do-i-use-self-signed-certificates-provisioned-for-azure-service-fabric-clusters"></a>Hoe kan ik zelfondertekende certificaten gebruiken die zijn ingericht voor Azure Service Fabric-clusters?
@@ -169,7 +169,7 @@ Voor het meest recente voor beeld gebruikt u de volgende Azure CLI-instructie in
 az sf cluster create -h
 ```
 
-Zelfondertekende certificaten kunnen niet worden gebruikt voor gedistribueerde vertrouwens relaties die worden verstrekt door een certificerings instantie en mogen niet worden gebruikt voor een Service Fabric cluster dat is bedoeld voor het hosten van bedrijfs productie oplossingen. Raadpleeg de [Aanbevolen procedures voor Azure service Fabric Security](https://docs.microsoft.com/azure/security/fundamentals/service-fabric-best-practices) en [service Fabric scenario's voor cluster beveiliging](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/)voor aanvullende service Fabric beveiligings richtlijnen.
+Zelfondertekende certificaten kunnen niet worden gebruikt voor gedistribueerde vertrouwens relaties die worden verstrekt door een certificerings instantie en mogen niet worden gebruikt voor een Service Fabric cluster dat is bedoeld voor het hosten van bedrijfs productie oplossingen. Raadpleeg de [Aanbevolen procedures voor Azure service Fabric Security](../security/fundamentals/service-fabric-best-practices.md) en [service Fabric scenario's voor cluster beveiliging](../service-fabric/service-fabric-cluster-security.md)voor aanvullende service Fabric beveiligings richtlijnen.
 
 ### <a name="can-i-specify-an-ssh-key-pair-to-use-for-ssh-authentication-with-a-linux-virtual-machine-scale-set-from-a-resource-manager-template"></a>Kan ik een SSH-sleutel paar opgeven dat moet worden gebruikt voor SSH-verificatie met een virtuele Linux-machine schaalset van een resource manager-sjabloon?
 
@@ -197,7 +197,7 @@ Ja. De REST API voor **osProfile** is vergelijkbaar met de standaard-VM rest API
 
 Dit JSON-blok wordt gebruikt in [deze Azure Quick](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json)start-sjabloon.
 
-Zie [een schaalset voor virtuele machines maken of bijwerken](https://msdn.microsoft.com/library/azure/mt589035.aspx#linuxconfiguration)voor meer informatie.
+Zie [een schaalset voor virtuele machines maken of bijwerken](/rest/api/compute/virtualmachinescalesets/createorupdate#linuxconfiguration)voor meer informatie.
 
 ### <a name="how-do-i-remove-deprecated-certificates"></a>Afgeschafte certificaten Hoe kan ik verwijderen?
 
@@ -224,10 +224,10 @@ U kunt open bare SSH-sleutels in tekst zonder opmaak opgeven wanneer u een virtu
 }
 ```
 
-linuxConfiguration element naam | Vereist | Type | Description
+linuxConfiguration element naam | Vereist | Type | Beschrijving
 --- | --- | --- | ---
 SSH | No | Verzameling | Hiermee geeft u de configuratie van de SSH-sleutel voor een Linux-besturings systeem op
-path | Ja | Tekenreeks | Hiermee geeft u het pad naar het Linux-bestand op waar de SSH-sleutels of het certificaat zich bevinden
+leertraject | Ja | Tekenreeks | Hiermee geeft u het pad naar het Linux-bestand op waar de SSH-sleutels of het certificaat zich bevinden
 Gegevens | Ja | Tekenreeks | Hiermee geeft u een open bare SSH-sleutel met base64-code ring op
 
 Zie [de sjabloon 101-VM-Sshkey github Quick](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json)start voor een voor beeld.
@@ -240,7 +240,7 @@ Dit kan gebeuren als u probeert dezelfde kluis opnieuw toe te voegen in plaats v
 
 Als u meer geheimen wilt toevoegen uit dezelfde sleutel kluis, werkt u de $vmss. Properties. osProfile. geheimen [0]. vaultCertificates-lijst bij.
 
-Zie [een virtuele-machineset maken of bijwerken](https://msdn.microsoft.com/library/azure/mt589035.aspx)voor de verwachte invoer structuur.
+Zie [een virtuele-machineset maken of bijwerken](/rest/api/compute/virtualmachinescalesets/createorupdate)voor de verwachte invoer structuur.
 
 Zoek het geheim in het object voor virtuele-machine schaal sets dat zich in de sleutel kluis bevindt. Voeg vervolgens uw certificaat verwijzing (de URL en de naam van het geheime archief) toe aan de lijst die is gekoppeld aan de kluis.
 
@@ -268,7 +268,7 @@ Certificaten worden toegevoegd aan al uw Vm's, zelfs vooraf bestaande. Als uw ei
 
 ### <a name="where-do-i-put-certificates-for-linux-vms"></a>Waar kan ik certificaten voor Linux Vm's plaatsen?
 
-Zie [certificaten implementeren op vm's vanuit een door de klant beheerde sleutel kluis](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/)voor meer informatie over het implementeren van certificaten voor Linux-vm's.
+Zie [certificaten implementeren op vm's vanuit een door de klant beheerde sleutel kluis](/archive/blogs/kv/deploy-certificates-to-vms-from-customer-managed-key-vault)voor meer informatie over het implementeren van certificaten voor Linux-vm's.
 
 ### <a name="how-do-i-add-a-new-vault-certificate-to-a-new-certificate-object"></a>Hoe kan ik een nieuw kluis certificaat toevoegen aan een nieuw certificaat object?
 
@@ -304,7 +304,7 @@ Als u een virtuele machine maakt en vervolgens uw geheim in de sleutel kluis bij
 
 Als u open bare CER-sleutels wilt implementeren in een schaalset voor virtuele machines, kunt u een. pfx-bestand genereren dat alleen CER-bestanden bevat. Gebruik hiervoor `X509ContentType = Pfx` . Laad bijvoorbeeld het CER-bestand als een x509Certificate2-object in C# of Power shell en roep vervolgens de methode aan.
 
-Zie [X509Certificate. export Method (X509ContentType, String)](https://msdn.microsoft.com/library/24ww6yzk(v=vs.110.aspx))voor meer informatie.
+Zie [X509Certificate. export Method (X509ContentType, String)](/dotnet/api/system.security.cryptography.x509certificates.x509certificate.export?view=netcore-3.1#system_security_cryptography_x509certificates_x509certificate_export_system_security_cryptography_x509certificates_x509contenttype_system_string_)voor meer informatie.
 
 ### <a name="how-do-i-pass-in-certificates-as-base64-strings"></a>Certificaten Hoe kan ik door geven als base64-teken reeksen?
 
@@ -334,7 +334,7 @@ Vanuit het perspectief van naleving zijn schaalsets van virtuele machines een fu
 
 Zie [Microsoft Trust Center](https://www.microsoft.com/TrustCenter/Compliance/PCI) voor meer informatie.
 
-### <a name="does-managed-identities-for-azure-resources-work-with-virtual-machine-scale-sets"></a>Werken [beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azure/active-directory/msi-overview) met schaal sets voor virtuele machines?
+### <a name="does-managed-identities-for-azure-resources-work-with-virtual-machine-scale-sets"></a>Werken [beheerde identiteiten voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md) met schaal sets voor virtuele machines?
 
 Ja. U ziet enkele voor beelden van MSI-sjablonen in azure Quick Start-sjablonen voor [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) en [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi).
 
@@ -436,7 +436,7 @@ Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet
 
 ### <a name="how-do-i-execute-a-custom-script-thats-hosted-in-a-private-storage-account"></a>Hoe kan ik een aangepast script uitvoeren dat wordt gehost in een privé opslag account?
 
-Als u een aangepast script wilt uitvoeren dat wordt gehost in een privé-opslag account, stelt u beveiligde instellingen in met de sleutel en de naam van het opslag account. Zie [Custom Script extension](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/#template-example-for-a-windows-vm-with-protected-settings)(Engelstalig) voor meer informatie.
+Als u een aangepast script wilt uitvoeren dat wordt gehost in een privé-opslag account, stelt u beveiligde instellingen in met de sleutel en de naam van het opslag account. Zie [Custom Script extension](../virtual-machines/extensions/custom-script-windows.md?toc=/azure/virtual-machines/windows/toc.json#property-managedidentity)(Engelstalig) voor meer informatie.
 
 ## <a name="passwords"></a>Wachtwoorden
 
@@ -448,7 +448,7 @@ Er zijn twee belang rijke manieren om het wacht woord voor Vm's in schaal sets t
 
     Werk de beheerders referenties rechtstreeks bij in het model met de schaalset (bijvoorbeeld met behulp van de Azure Resource Explorer, Power shell of CLI). Zodra de schaalset is bijgewerkt, hebben alle nieuwe virtuele machines de nieuwe referenties. Bestaande Vm's hebben alleen de nieuwe referenties als ze worden geimageeerd.
 
-- Stel het wacht woord opnieuw in met behulp van de toegangs uitbreidingen van de VM. Zorg ervoor dat u de wachtwoord vereisten volgt, zoals [hier](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm)wordt beschreven.
+- Stel het wacht woord opnieuw in met behulp van de toegangs uitbreidingen van de VM. Zorg ervoor dat u de wachtwoord vereisten volgt, zoals [hier](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)wordt beschreven.
 
     Gebruik het volgende PowerShell-voorbeeld:
 
@@ -635,7 +635,7 @@ Ja, u kunt resources van schaal sets verplaatsen naar een nieuw abonnement of ee
 
 ### <a name="how-to-i-update-my-virtual-machine-scale-set-to-a-new-image-how-do-i-manage-patching"></a>Hoe kan ik mijn schaalset voor virtuele machines bijwerken naar een nieuwe installatie kopie? Patching Hoe kan ik beheren?
 
-Als u de schaalset van de virtuele machine wilt bijwerken naar een nieuwe installatie kopie en u patching wilt beheren, raadpleegt u [een upgrade van een virtuele-machine schaalset](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set).
+Als u de schaalset van de virtuele machine wilt bijwerken naar een nieuwe installatie kopie en u patching wilt beheren, raadpleegt u [een upgrade van een virtuele-machine schaalset](./virtual-machine-scale-sets-upgrade-scale-set.md).
 
 ### <a name="can-i-use-the-reimage-operation-to-reset-a-vm-without-changing-the-image-that-is-i-want-reset-a-vm-to-factory-settings-rather-than-to-a-new-image"></a>Kan ik de bewerking voor het opnieuw instellen van het image gebruiken om een virtuele machine opnieuw in te stellen zonder de installatie kopie te wijzigen? (Dat wil zeggen, ik wil een virtuele machine opnieuw instellen op de fabrieks instellingen in plaats van naar een nieuwe installatie kopie.)
 

@@ -8,11 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/18/2016
-ms.openlocfilehash: 577e2128cf7e4e9f914ec5504917053acb3c19d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b82dba923db16e96cc0884b629723c4e8496c3a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78898483"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080902"
 ---
 # <a name="powershell-cmdlets-reference-for-azure-scheduler"></a>Naslag informatie over Power shell-cmdlets voor Azure scheduler
 
@@ -21,11 +22,11 @@ ms.locfileid: "78898483"
 >
 > Scheduler is niet meer beschikbaar in de Azure Portal, maar de [rest API](/rest/api/scheduler) en [Azure scheduler Power shell-cmdlets](scheduler-powershell-reference.md) blijven op dit moment beschikbaar, zodat u uw taken en taak verzamelingen kunt beheren.
 
-U kunt Power shell-cmdlets gebruiken om scripts te schrijven voor het maken en beheren van scheduler-taken en-taak verzamelingen. In dit artikel vindt u een overzicht van de belangrijkste Power shell-cmdlets voor Azure scheduler met koppelingen naar de bijbehorende referentie artikelen. Zie [Azure PowerShell installeren en configureren voor meer informatie over](/powershell/azure/overview)het installeren van Azure PowerShell voor uw Azure-abonnement. Zie [Using Azure PowerShell with Azure Resource Manager](../powershell-azure-resource-manager.md)(Engelstalig) voor meer informatie over [Azure Resource Manager-cmdlets](/powershell/azure/overview).
+U kunt Power shell-cmdlets gebruiken om scripts te schrijven voor het maken en beheren van scheduler-taken en-taak verzamelingen. In dit artikel vindt u een overzicht van de belangrijkste Power shell-cmdlets voor Azure scheduler met koppelingen naar de bijbehorende referentie artikelen. Zie [Azure PowerShell installeren en configureren voor meer informatie over](/powershell/azure/)het installeren van Azure PowerShell voor uw Azure-abonnement. Zie [Using Azure PowerShell with Azure Resource Manager](../powershell-azure-resource-manager.md)(Engelstalig) voor meer informatie over [Azure Resource Manager-cmdlets](/powershell/azure/).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-| Cmdlet | Description |
+| Cmdlet | Beschrijving |
 |--------|-------------|
 | [Disable-AzSchedulerJobCollection](/powershell/module/azurerm.scheduler/disable-azurermschedulerjobcollection) |Hiermee wordt een taak verzameling uitgeschakeld. |
 | [Enable-AzureRmSchedulerJobCollection](/powershell/module/azurerm.scheduler/enable-azurermschedulerjobcollection) |Hiermee schakelt u een taak verzameling in. |

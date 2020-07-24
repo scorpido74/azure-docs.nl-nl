@@ -4,11 +4,12 @@ description: In dit artikel vindt u informatie over het beheren van herstel bewe
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: 87e3d75d925968b6521324f5b776cf8df1f6af11
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aabf687fb1f21473c7239d3fab26819b2ea2bea6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84247796"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079295"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Virtuele Azure-machines herstellen met behulp van REST API
 
@@ -18,7 +19,7 @@ Bij een herstel bewerking moet eerst het relevante herstel punt worden geïdenti
 
 ## <a name="select-recovery-point"></a>Herstel punt selecteren
 
-De beschik bare herstel punten van een back-upitem kunnen worden weer gegeven met behulp van de [lijst herstel punt rest API](https://docs.microsoft.com/rest/api/backup/recoverypoints/list). Het is een eenvoudige *Get* -bewerking met alle relevante waarden.
+De beschik bare herstel punten van een back-upitem kunnen worden weer gegeven met behulp van de [lijst herstel punt rest API](/rest/api/backup/recoverypoints/list). Het is een eenvoudige *Get* -bewerking met alle relevante waarden.
 
 ```http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2019-05-13
@@ -30,9 +31,9 @@ De *Get* -URI heeft alle vereiste para meters. Er is geen aanvullende aanvraag t
 
 ### <a name="responses"></a>Antwoorden
 
-|Naam  |Type  |Description  |
+|Naam  |Type  |Beschrijving  |
 |---------|---------|---------|
-|200 OK     |   [RecoveryPointResourceList](https://docs.microsoft.com/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       OK  |
+|200 OK     |   [RecoveryPointResourceList](/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       OK  |
 
 #### <a name="example-response"></a>Voorbeeld van een antwoord
 
@@ -118,7 +119,7 @@ Het herstel punt wordt aangeduid met het `{name}` veld in het bovenstaande antwo
 
 Als het maken van een virtuele machine moet worden aangepast op basis van de back-upgegevens, kan de ene schijf alleen herstellen naar een gekozen opslag account en een virtuele machine maken op basis van de vereisten. Het opslag account moet zich in dezelfde regio bevinden als de Recovery Services-kluis en mag niet zone redundant zijn. De schijven en de configuratie van de back-up van de virtuele machine (vmconfig.jsop) worden opgeslagen in het opgegeven opslag account.
 
-Het activeren van herstel schijven is een *post* -aanvraag. Raadpleeg de [rest API trigger herstellen](https://docs.microsoft.com/rest/api/backup/restores/trigger)voor meer informatie over de bewerking schijven herstellen.
+Het activeren van herstel schijven is een *post* -aanvraag. Raadpleeg de [rest API trigger herstellen](/rest/api/backup/restores/trigger)voor meer informatie over de bewerking schijven herstellen.
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2019-05-13
@@ -130,11 +131,11 @@ De `{containerName}` en `{protectedItemName}` zijn [hier](backup-azure-arm-usere
 
 Als u een schijf herstel wilt activeren vanuit een back-up van een Azure-VM, volgt u de onderdelen van de hoofd tekst van de aanvraag.
 
-|Naam  |Type  |Description  |
+|Naam  |Type  |Beschrijving  |
 |---------|---------|---------|
-|properties     | [IaaSVMRestoreRequest](https://docs.microsoft.com/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
+|properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
-Raadpleeg voor de volledige lijst met definities van de hoofd tekst van de aanvraag en andere details verwijzen naar [herstel rest API document activeren](https://docs.microsoft.com/rest/api/backup/restores/trigger#request-body).
+Raadpleeg voor de volledige lijst met definities van de hoofd tekst van de aanvraag en andere details verwijzen naar [herstel rest API document activeren](/rest/api/backup/restores/trigger#request-body).
 
 #### <a name="example-request"></a>Voorbeeldaanvraag
 
@@ -158,13 +159,13 @@ De volgende aanvraag hoofdtekst definieert eigenschappen die vereist zijn om een
 }
 ```
 
-### <a name="response"></a>Antwoord
+### <a name="response"></a>Reactie
 
-Het activeren van een herstel schijf is een [asynchrone bewerking](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Dit betekent dat met deze bewerking een andere bewerking wordt gemaakt die afzonderlijk moet worden bijgehouden.
+Het activeren van een herstel schijf is een [asynchrone bewerking](../azure-resource-manager/management/async-operations.md). Dit betekent dat met deze bewerking een andere bewerking wordt gemaakt die afzonderlijk moet worden bijgehouden.
 
 Er worden twee antwoorden geretourneerd: 202 (geaccepteerd) wanneer een andere bewerking wordt gemaakt en vervolgens 200 (OK) wanneer deze bewerking is voltooid.
 
-|Naam  |Type  |Description  |
+|Naam  |Type  |Beschrijving  |
 |---------|---------|---------|
 |202 geaccepteerd     |         |     Geaccepteerd    |
 

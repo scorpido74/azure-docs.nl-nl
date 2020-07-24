@@ -8,11 +8,12 @@ ms.date: 10/28/2019
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
-ms.openlocfilehash: 22c7243cd966f458610c2abc67ed5540b37357b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 530ddf7af5b95cfec948270affbd13b6d61d08ff
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77658812"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081437"
 ---
 # <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>Gebruik en geschatte kosten in Azure Monitor bewaken
 
@@ -27,7 +28,7 @@ Het basis Azure Monitor facturerings model is een op de cloud gebaseerde prijs o
 
 Naast het model voor betalen naar gebruik voor logboek gegevens, heeft Log Analytics capaciteits reserveringen, waarmee u Maxi maal 25% kunt besparen op basis van de betalen naar gebruik-prijs. Met de prijzen voor capaciteits reservering kunt u een reserve ring kopen vanaf 100 GB per dag. Elk gebruik boven het reserverings niveau wordt gefactureerd op basis van het betalen naar gebruik-tarief. Meer [informatie](https://azure.microsoft.com/pricing/details/monitor/) over de prijzen voor capaciteits reservering.
 
-Sommige klanten hebben toegang tot [verouderde log Analytics prijs categorieën](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#legacy-pricing-tiers) en de [verouderde prijs categorie voor Enter prise Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier). 
+Sommige klanten hebben toegang tot [verouderde log Analytics prijs categorieën](./manage-cost-storage.md#legacy-pricing-tiers) en de [verouderde prijs categorie voor Enter prise Application Insights](../app/pricing.md#legacy-enterprise-per-node-pricing-tier). 
 
 ## <a name="understanding-your-azure-monitor-costs"></a>Meer informatie over uw Azure Monitor kosten
 
@@ -43,15 +44,15 @@ Als u Azure Monitor-logboeken nog niet gebruikt, kunt u de [Azure monitor prijs 
 
 In elk hiervan kunt u met de prijs calculator uw waarschijnlijke kosten schatten op basis van het verwachte gebruik.
 
-Met Log Analytics kunt u bijvoorbeeld het aantal Vm's en de GB aan gegevens invoeren die u van elke virtuele machine verwacht te verzamelen. Doorgaans wordt 1 GB tot 3 GB aan gegevens maand van een typische Azure-VM opgenomen. Als u Azure Monitor logboeken al evalueert, kunt u uw gegevens statistieken uit uw eigen omgeving gebruiken. Hieronder vindt u informatie over het bepalen [van het aantal bewaakte vm's](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understanding-nodes-sending-data) en het [volume van de gegevens die in uw werk ruimte worden](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understanding-ingested-data-volume)opgenomen.
+Met Log Analytics kunt u bijvoorbeeld het aantal Vm's en de GB aan gegevens invoeren die u van elke virtuele machine verwacht te verzamelen. Doorgaans wordt 1 GB tot 3 GB aan gegevens maand van een typische Azure-VM opgenomen. Als u Azure Monitor logboeken al evalueert, kunt u uw gegevens statistieken uit uw eigen omgeving gebruiken. Hieronder vindt u informatie over het bepalen [van het aantal bewaakte vm's](./manage-cost-storage.md#understanding-nodes-sending-data) en het [volume van de gegevens die in uw werk ruimte worden](./manage-cost-storage.md#understanding-ingested-data-volume)opgenomen.
 
-Als u de functionaliteit voor het schattings gegevens volume op basis van de toepassings activiteit inschakelt, kunt u op dezelfde manier voor Application Insights een invoer opgeven over uw toepassing (aanvragen per maand en pagina weergaven per maand, voor het geval u telemetrie aan de client zijde verzamelt). vervolgens krijgt u de gemiddelde en negen tigste percentiel hoeveelheid gegevens die door vergelijk bare toepassingen worden verzameld. Deze toepassingen omvatten het bereik van Application Insights configuratie (er zijn bijvoorbeeld standaard steekproef waarden, sommige geen steek proeven enz.), zodat u nog steeds over het besturings element beschikt om de hoeveelheid gegevens die u onder het mediaan niveau hebt opgenomen, te verminderen met behulp van steek proeven. Maar dit is een uitgangs punt om te begrijpen wat andere, vergelijk bare klanten te zien krijgen. Meer [informatie](https://docs.microsoft.com/azure/azure-monitor/app/pricing#estimating-the-costs-to-manage-your-application) over het schatten van de kosten voor Application Insights.
+Als u de functionaliteit voor het schattings gegevens volume op basis van de toepassings activiteit inschakelt, kunt u op dezelfde manier voor Application Insights een invoer opgeven over uw toepassing (aanvragen per maand en pagina weergaven per maand, voor het geval u telemetrie aan de client zijde verzamelt). vervolgens krijgt u de gemiddelde en negen tigste percentiel hoeveelheid gegevens die door vergelijk bare toepassingen worden verzameld. Deze toepassingen omvatten het bereik van Application Insights configuratie (er zijn bijvoorbeeld standaard steekproef waarden, sommige geen steek proeven enz.), zodat u nog steeds over het besturings element beschikt om de hoeveelheid gegevens die u onder het mediaan niveau hebt opgenomen, te verminderen met behulp van steek proeven. Maar dit is een uitgangs punt om te begrijpen wat andere, vergelijk bare klanten te zien krijgen. Meer [informatie](../app/pricing.md#estimating-the-costs-to-manage-your-application) over het schatten van de kosten voor Application Insights.
 
 ### <a name="understanding-your-usage-and-estimated-costs"></a>Meer informatie over uw gebruik en geschatte kosten
 
 Het is belang rijk dat u het gebruik van Azure Monitor begrijpt en volgt, en er is een uitgebreide set hulpprogram ma's waarmee u dit kunt vergemakkelijken. 
 
-Azure biedt een groot aantal handige functies in de hub [Azure Cost Management en facturering](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json) . Nadat u de hub **Azure Cost Management en facturering** hebt geopend, klikt u op **Cost Management** en selecteert u het [bereik](https://docs.microsoft.com/azure/cost-management/understand-work-scopes) (het aantal te onderzoeken resources). 
+Azure biedt een groot aantal handige functies in de hub [Azure Cost Management en facturering](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=/azure/billing/TOC.json) . Nadat u de hub **Azure Cost Management en facturering** hebt geopend, klikt u op **Cost Management** en selecteert u het [bereik](../../cost-management-billing/costs/understand-work-scopes.md) (het aantal te onderzoeken resources). 
 
 Als u de Azure Monitor kosten voor de afgelopen 30 dagen wilt zien, klikt u op de tegel **dagelijkse kosten** , kiest u ' laatste 30 dagen ' onder relatieve datums en voegt u een filter toe waarmee de service namen worden geselecteerd:
 
@@ -66,10 +67,10 @@ Dit resulteert in een weer gave zoals:
 
 Hier kunt u inzoomen op basis van dit geaccumuleerde kosten overzicht om de details in de weer gave ' kosten per resource ' te verkrijgen. In de huidige prijs categorieën worden Azure-logboek gegevens in rekening gebracht op basis van dezelfde set meters, ongeacht of deze afkomstig is van Log Analytics of Application Insights. Als u de kosten van uw Log Analytics of Application Insights gebruik wilt scheiden, kunt u een filter toevoegen aan het **resource type**. Als u alle Application Insights kosten wilt zien, filtert u het resource type op ' micro soft. Insights/Components ' en filtert u resource type op ' micro soft. operationalinsights/Workspaces ' voor Log Analytics kosten. 
 
-Meer details van uw gebruik zijn beschikbaar door [uw gebruik te downloaden van de Azure Portal](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal). In het gedownloade werk blad kunt u het gebruik per Azure-resource per dag bekijken. In dit Excel-werk blad kunt u het gebruik van uw Application Insights-resources vinden door eerst te filteren op de kolom meter categorie om "Application Insights" en "Log Analytics" weer te geven, en vervolgens een filter toe te voegen aan de kolom exemplaar-ID, dat is "bevat micro soft. Insights/Components".  Het meeste Application Insights gebruik wordt gerapporteerd op meters van de meter categorie Log Analytics, omdat er één logboek back-end is voor alle Azure Monitor-onderdelen.  Alleen Application Insights bronnen in verouderde prijs categorieën en webtests met meerdere stappen worden gerapporteerd met een meter categorie van Application Insights.  Het gebruik wordt weer gegeven in de kolom verbruikte hoeveelheid en de eenheid voor elk item wordt weer gegeven in de kolom eenheid.  Meer informatie is beschikbaar om u te helpen [uw Microsoft Azure factuur te begrijpen](https://docs.microsoft.com/azure/billing/billing-understand-your-bill). 
+Meer details van uw gebruik zijn beschikbaar door [uw gebruik te downloaden van de Azure Portal](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal). In het gedownloade werk blad kunt u het gebruik per Azure-resource per dag bekijken. In dit Excel-werk blad kunt u het gebruik van uw Application Insights-resources vinden door eerst te filteren op de kolom meter categorie om "Application Insights" en "Log Analytics" weer te geven, en vervolgens een filter toe te voegen aan de kolom exemplaar-ID, dat is "bevat micro soft. Insights/Components".  Het meeste Application Insights gebruik wordt gerapporteerd op meters van de meter categorie Log Analytics, omdat er één logboek back-end is voor alle Azure Monitor-onderdelen.  Alleen Application Insights bronnen in verouderde prijs categorieën en webtests met meerdere stappen worden gerapporteerd met een meter categorie van Application Insights.  Het gebruik wordt weer gegeven in de kolom verbruikte hoeveelheid en de eenheid voor elk item wordt weer gegeven in de kolom eenheid.  Er is meer informatie beschikbaar om u te helpen [inzicht te krijgen in uw Microsoft Azure-factuur](../../cost-management-billing/understand/review-individual-bill.md). 
 
 > [!NOTE]
-> Het gebruik van **Cost Management** in de **Azure Cost Management + billing** hub is de aanbevolen benadering om de berekenings kosten breed te controleren.  Het **gebruik en de geschatte kosten** voor [log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs) en [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/pricing#understand-your-usage-and-estimate-costs) bieden een dieper inzicht voor elk van deze onderdelen van Azure monitor.
+> Het gebruik van **Cost Management** in de **Azure Cost Management + billing** hub is de aanbevolen benadering om de berekenings kosten breed te controleren.  Het **gebruik en de geschatte kosten** voor [log Analytics](./manage-cost-storage.md#understand-your-usage-and-estimate-costs) en [Application Insights](../app/pricing.md#understand-your-usage-and-estimate-costs) bieden een dieper inzicht voor elk van deze onderdelen van Azure monitor.
 
 Een andere optie voor het weer geven van uw Azure Monitor gebruik is de pagina **gebruik en geschatte kosten** in de hub bewaken. Hiermee wordt het gebruik van kern bewakings functies, zoals [waarschuwingen, metrische gegevens, meldingen](https://azure.microsoft.com/pricing/details/monitor/), [Azure log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/)en [Azure-toepassing Insights](https://azure.microsoft.com/pricing/details/application-insights/), weer gegeven. Voor klanten over de prijzen plannen die beschikbaar zijn vóór 2018 april, bevat dit ook Log Analytics gebruik dat u hebt aangeschaft via de aanbieding inzichten en analyse.
 
@@ -85,7 +86,7 @@ Selecteer de koppeling in de kolom maandelijks gebruik om een grafiek te openen 
 
 ## <a name="operations-management-suite-subscription-entitlements"></a>Rechten van het abonnement van Operations Management Suite
 
-Klanten die Microsoft Operations Management Suite E1 en E2 hebben gekocht, komen in aanmerking voor gegevens opname rechten per knoop punt voor [log Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite) en [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-pricing). Deze rechten voor Log Analytics werk ruimten of Application Insights resources in een bepaald abonnement ontvangen: 
+Klanten die Microsoft Operations Management Suite E1 en E2 hebben gekocht, komen in aanmerking voor gegevens opname rechten per knoop punt voor [log Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite) en [Application Insights](../app/pricing.md). Deze rechten voor Log Analytics werk ruimten of Application Insights resources in een bepaald abonnement ontvangen: 
 
 - Log Analytics-werk ruimten moeten de prijs categorie ' per knoop punt (OMS) ' gebruiken.
 - Application Insights resources moeten de prijs categorie onderneming gebruiken.

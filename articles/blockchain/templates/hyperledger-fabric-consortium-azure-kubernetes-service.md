@@ -4,12 +4,12 @@ description: Het Hyperledger Fabric consortium-netwerk implementeren en configur
 ms.date: 07/07/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: e1cbfa56f1e4ea9f8cbaa0ad973d06e8b8d486ca
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 1e90eeccb015b4d5ef78b79297565ddde9cfa305
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085798"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081271"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Hyperledger Fabric consortium op Azure Kubernetes service (AKS)
 
@@ -28,9 +28,9 @@ Voordat u een oplossings sjabloon gaat gebruiken, moet u uw scenario vergelijken
 
 Optie | Service model | Algemene use-case
 -------|---------------|-----------------
-Oplossingssjablonen | IaaS | Oplossings sjablonen zijn Azure Resource Manager sjablonen die u kunt gebruiken om een volledig geconfigureerde Block chain-netwerk topologie in te richten. De sjablonen implementeren en configureren Microsoft Azure compute-, netwerk-en opslag Services voor een bepaald Block chain-netwerk type. Er zijn oplossings sjablonen zonder service level agreement. Gebruik de [pagina micro soft Q&een vraag](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html) voor ondersteuning.
-[Azure Blockchain-service](../service/overview.md) | PaaS | De preview-versie van Azure Block Chain Service vereenvoudigt de vorming, het beheer en de governance van consortium Block Chain Networks. Gebruik Azure Block Chain Service voor oplossingen waarvoor PaaS, consortium beheer of de privacy van contracten en trans acties vereist is.
-[Azure Blockchain Workbench](../workbench/overview.md) | IaaS en PaaS | Azure Blockchain Workbench (preview-versie) is een verzameling Azure-services en -functies die zijn ontworpen om u te helpen bij het maken en implementeren van blockchain-toepassingen voor het delen van bedrijfsprocessen en gegevens met andere organisaties. Gebruik Azure Block Chain Workbench voor het prototypen van een Block Chain-oplossing of een Block Chain-toepassings bewijs van een concept. Azure Blockchain Workbench wordt zonder Service Level Agreement geleverd. Gebruik de [pagina micro soft Q&een vraag](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html) voor ondersteuning.
+Oplossingssjablonen | IaaS | Oplossings sjablonen zijn Azure Resource Manager sjablonen die u kunt gebruiken om een volledig geconfigureerde Block chain-netwerk topologie in te richten. De sjablonen implementeren en configureren Microsoft Azure compute-, netwerk-en opslag Services voor een bepaald Block chain-netwerk type. Er zijn oplossings sjablonen zonder service level agreement. Gebruik de [pagina micro soft Q&een vraag](/answers/topics/azure-blockchain-workbench.html) voor ondersteuning.
+[Azure Blockchain Service](../service/overview.md) | PaaS | De preview-versie van Azure Block Chain Service vereenvoudigt de vorming, het beheer en de governance van consortium Block Chain Networks. Gebruik Azure Block Chain Service voor oplossingen waarvoor PaaS, consortium beheer of de privacy van contracten en trans acties vereist is.
+[Azure Blockchain Workbench](../workbench/overview.md) | IaaS en PaaS | Azure Blockchain Workbench (preview-versie) is een verzameling Azure-services en -functies die zijn ontworpen om u te helpen bij het maken en implementeren van blockchain-toepassingen voor het delen van bedrijfsprocessen en gegevens met andere organisaties. Gebruik Azure Block Chain Workbench voor het prototypen van een Block Chain-oplossing of een Block Chain-toepassings bewijs van een concept. Azure Blockchain Workbench wordt zonder Service Level Agreement geleverd. Gebruik de [pagina micro soft Q&een vraag](/answers/topics/azure-blockchain-workbench.html) voor ondersteuning.
 
 ## <a name="hyperledger-fabric-consortium-architecture"></a>Consortium architectuur voor Hyperledger Fabric
 
@@ -113,7 +113,7 @@ Om aan de slag te gaan met de implementatie van HLF-netwerk onderdelen, gaat u n
     - **DNS-voor voegsel**: Domain Name System (DNS)-naam VOORVOEGSEL voor AKS-cluster. U gebruikt DNS om verbinding te maken met de Kubernetes-API wanneer u containers beheert nadat u het cluster hebt gemaakt.
     - **Knooppunt grootte**: de grootte van het Kubernetes-knoop punt, kunt u kiezen uit de lijst met Vm's (Stock Keeping Unit) die beschikbaar zijn op Azure. Voor optimale prestaties raden wij standaard DS3 v2 aan.
     - **Knooppunt telling**: het aantal Kubernetes-knoop punten dat in het cluster moet worden geïmplementeerd. U wordt aangeraden dit aantal knoop punten ten minste gelijk te houden aan het aantal HLF knooppunten dat is opgegeven in de infrastructuur instellingen.
-    - **Service-Principal-client-id**: Voer de client-id van een bestaande Service-Principal in of maak een nieuwe, die vereist is voor de AKS-verificatie. Zie stappen voor het [maken](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps?view=azps-3.2.0#create-a-service-principal)van een service-principal.
+    - **Service-Principal-client-id**: Voer de client-id van een bestaande Service-Principal in of maak een nieuwe, die vereist is voor de AKS-verificatie. Zie stappen voor het [maken](/powershell/azure/create-azure-service-principal-azureps?view=azps-3.2.0#create-a-service-principal)van een service-principal.
     - **Service-Principal-client geheim**: Voer het client geheim in van de service-principal die is opgegeven in de client-id van de Service-Principal.
     - **Client geheim bevestigen**: Bevestig het client geheim dat is opgenomen in het client geheim van de Service-Principal.
     - **Container bewaking inschakelen**: Selecteer deze optie om AKS-bewaking in te scha kelen, zodat de AKS-logboeken naar de opgegeven log Analytics werk ruimte pushen.
@@ -138,7 +138,7 @@ Als u het block Chain consortium na het implementeren van de best maat service e
 
 Alle opdrachten voor het uitvoeren van het Azure HLF-script kunnen worden uitgevoerd via de Azure bash-opdracht regel. Interface (CLI). U kunt zich aanmelden bij de Azure shell-webversie via  ![Hyperledger Fabric op de Azure Kubernetes-service sjabloon](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png) in de rechter bovenhoek van de Azure Portal. Typ bash en Enter in het opdracht prompt om over te scha kelen naar bash CLI.
 
-Zie [Azure shell](https://docs.microsoft.com/azure/cloud-shell/overview) voor meer informatie.
+Zie [Azure shell](../../cloud-shell/overview.md) voor meer informatie.
 
 ![Hyperledger Fabric op de Azure Kubernetes-service sjabloon](./media/hyperledger-fabric-consortium-azure-kubernetes-service/hyperledger-powershell.png)
 
@@ -441,6 +441,6 @@ Als u feedback over producten wilt geven of nieuwe functies wilt aanvragen, kunt
 
 In contact komen met Microsoft-technici en experts uit de Azure Blockchain-community.
 
-- [Micro soft Q&een vraag pagina](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html). Technische ondersteuning voor Block Chain-sjablonen is beperkt tot implementatie problemen.
+- [Micro soft Q&een vraag pagina](/answers/topics/azure-blockchain-workbench.html). Technische ondersteuning voor Block Chain-sjablonen is beperkt tot implementatie problemen.
 - [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 - [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)

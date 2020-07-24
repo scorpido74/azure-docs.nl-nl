@@ -3,12 +3,12 @@ title: Azure Backup Server voor de Azure VMware-oplossing instellen
 description: Stel uw Azure VMware-oplossings omgeving in om een back-up te maken van virtuele machines met behulp van Azure Backup Server.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: c56ebaff6b08f3d6586dfe025fdb2a5bfc708fa4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c45d2030e282057c487d142669ab634cd81f6929
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84816860"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079533"
 ---
 # <a name="set-up-azure-backup-server-for-azure-vmware-solution"></a>Azure Backup Server voor de Azure VMware-oplossing instellen
 
@@ -309,7 +309,7 @@ Als u het software pakket naar een andere server hebt gedownload, kopieert u de 
    * **Data Base**: **DATABASENAME** moet ** \<SQLInstanceName> Report Server $** zijn.
    * **URL van webportal**: de **virtuele map** moet **Reports_ \<SQLInstanceName> **zijn.
 
-   Meer [informatie](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) over de configuratie van SSRS.
+   Meer [informatie](/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) over de configuratie van SSRS.
 
    > [!NOTE]
    > [Micro soft Online Services-voor waarden](https://www.microsoft.com/licensing/product-licensing/products) (OST) bepaalt de licentie voor SQL Server gebruikt als de data base voor Azure backup server. Volgens OST kunnen SQL Server gebundeld met Azure Backup Server alleen worden gebruikt als de Data Base voor Azure Backup Server.
@@ -319,7 +319,7 @@ Als u het software pakket naar een andere server hebt gedownload, kopieert u de 
 1. Geef een locatie op voor de installatie van Microsoft Azure Backup Server-bestanden en selecteer **volgende**.
 
    > [!NOTE]
-   > De Scratch locatie is vereist voor back-up naar Azure. Zorg ervoor dat de Scratch locatie ten minste 5% van de gegevens bevindt waarvan een back-up naar de Cloud wordt gepland. Voor schijf beveiliging moeten afzonderlijke schijven worden geconfigureerd nadat de installatie is voltooid. Zie [opslag groepen en schijf opslag configureren](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758075(v=sc.12))voor meer informatie over opslag groepen.
+   > De Scratch locatie is vereist voor back-up naar Azure. Zorg ervoor dat de Scratch locatie ten minste 5% van de gegevens bevindt waarvan een back-up naar de Cloud wordt gepland. Voor schijf beveiliging moeten afzonderlijke schijven worden geconfigureerd nadat de installatie is voltooid. Zie [opslag groepen en schijf opslag configureren](/previous-versions/system-center/system-center-2012-r2/hh758075(v=sc.12))voor meer informatie over opslag groepen.
 
    ![Installatie-instellingen voor Microsoft Azure Backup installatie](../backup/media/backup-azure-microsoft-azure-backup/space-screen.png)
 
@@ -393,4 +393,3 @@ Ga door naar de volgende zelf studie voor meer informatie over het configureren 
 
 > [!div class="nextstepaction"]
 > [Back-ups van Azure VMware-oplossings Vm's configureren](backup-avs-vms-with-mabs.md)
-

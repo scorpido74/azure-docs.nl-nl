@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: b4e08cba2b49f43baea16b01ec709d8d9ab6a18d
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 91e5ca10e97e8fc1646367ac6d575d6813f3a291
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856955"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079856"
 ---
 # <a name="support-for-32-bit-operating-systems-in-azure-virtual-machines"></a>Ondersteuning voor 32-bits besturingssystemen in virtuele Azure-machines
 
@@ -34,8 +34,8 @@ Voor meer informatie over besturings systemen die worden ondersteund op virtuele
 ## <a name="references"></a>Referenties
 
 * [Meer informatie over gratis uitgebreide beveiligings updates voor Windows Server 2008/R2 in azure](https://www.microsoft.com/cloud-platform/windows-server-2008)
-* [Meer informatie over ondersteuning voor Windows Server 2008 SP2 32-bits gespecialiseerde installatie kopieën in azure](https://docs.microsoft.com/windows-server/get-started/uploading-specialized-ws08-image-to-azure)
-* [Meer informatie over ondersteuning voor de migratie van installatie kopieën van Windows Server 2008 naar Azure met behulp van Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-windows-server-2008)
+* [Meer informatie over ondersteuning voor Windows Server 2008 SP2 32-bits gespecialiseerde installatie kopieën in azure](/windows-server/get-started/uploading-specialized-ws08-image-to-azure)
+* [Meer informatie over ondersteuning voor de migratie van installatie kopieën van Windows Server 2008 naar Azure met behulp van Azure Site Recovery](../../site-recovery/migrate-tutorial-windows-server-2008.md)
 * [Meer informatie over ondersteunde besturings systemen voor Azure-extensies](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems)
 * [Meer informatie over het uitvoeren van Windows Server 2003 op Microsoft Azure](https://support.microsoft.com/help/3206074/running-windows-server-2003-on-microsoft-azure)
 

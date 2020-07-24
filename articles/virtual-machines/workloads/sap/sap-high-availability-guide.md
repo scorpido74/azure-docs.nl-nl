@@ -1,5 +1,5 @@
 ---
-title: Azure Virtual Machines hoge Beschik baarheid voor SAP NetWeaver | Microsoft Docs
+title: Azure Virtual Machines hoge Beschik baarheid voor SAP NetWeaver
 description: Hand leiding voor hoge Beschik baarheid voor SAP NetWeaver op Azure Virtual Machines
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -16,13 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d1b028472785b146a45c22b3d23db7cb241c11da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbdbae3d310d6e4c3224663dd523cb124744dfbd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84557319"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080179"
 ---
-# <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Azure Virtual Machines hoge Beschik baarheid voor SAP NetWeaver
+# <a name="high-availability-azure-virtual-machines-for-sap-netweaver"></a>Azure Virtual Machines met hoge Beschik baarheid voor SAP NetWeaver
 
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -35,7 +36,7 @@ ms.locfileid: "84557319"
 [azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 [azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
-[dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
+[dbms-guide]:dbms-guide.md
 
 [deployment-guide]:deployment-guide.md
 
@@ -170,7 +171,7 @@ Ter vereenvoudiging van de implementatie en configuratie gebruiken we in dit art
 ## <a name="prerequisites"></a><a name="217c5479-5595-4cd8-870d-15ab00d4f84c"></a>Vereisten
 Voordat u begint, moet u ervoor zorgen dat u voldoet aan de vereisten die worden beschreven in de volgende secties. Zorg er ook voor dat alle resources die worden vermeld in de sectie [resources][sap-ha-guide-2] , worden gecontroleerd.
 
-In dit artikel wordt gebruikgemaakt van Azure Resource Manager sjablonen voor [SAP NetWeaver met drie lagen met behulp van Managed disks](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md/). Zie [SAP Azure Resource Manager-sjablonen](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/)voor een nuttige overzicht van sjablonen.
+In dit artikel wordt gebruikgemaakt van Azure Resource Manager sjablonen voor [SAP NetWeaver met drie lagen met behulp van Managed disks](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md/). Zie [SAP Azure Resource Manager-sjablonen](/archive/blogs/saponsqlserver/azure-quickstart-templates-for-sap)voor een nuttige overzicht van sjablonen.
 
 ## <a name="resources"></a><a name="42b8f600-7ba3-4606-b8a5-53c4f026da08"></a>Resources
 Deze artikelen behandelen SAP-implementaties in Azure:
@@ -319,7 +320,7 @@ U moet alle virtuele machines die SAP Application Server-exemplaren hosten in de
 * Alle virtuele machines maken deel uit van hetzelfde upgrade domein. Een upgrade domein zorgt er bijvoorbeeld voor dat de virtuele machines niet tegelijkertijd worden bijgewerkt tijdens de uitval tijd voor gepland onderhoud.
 * Alle virtuele machines maken deel uit van hetzelfde fout domein. Een fout domein zorgt er bijvoorbeeld voor dat virtuele machines worden geïmplementeerd, zodat er geen Single Point of Failure invloed heeft op de beschik baarheid van alle virtuele machines.
 
-Meer informatie over [het beheren van de beschik baarheid van virtuele machines][virtual-machines-manage-availability].
+Meer informatie over het [beheren van de beschik baarheid van virtuele machines] [.. /manage-availability.md].
 
 Niet-beheerde schijf: omdat het Azure Storage-account een potentieel Single Point of Failure is, is het belang rijk dat u ten minste twee Azure-opslag accounts hebt, waarin ten minste twee virtuele machines worden gedistribueerd. In een ideale configuratie worden de schijven van elke virtuele machine waarop een SAP-dialoog exemplaar wordt uitgevoerd, geïmplementeerd in een ander opslag account.
 
@@ -739,7 +740,7 @@ Als u andere nummers wilt gebruiken voor de SAP-instanties ASCS of SCS, moet u d
 1. Selecteer in de Azure Portal ** < *sid* ->-lb-ascs Load Balancer**  >  **taakverdelings regels**.
 2. Wijzig deze waarden voor alle taakverdelings regels die horen bij het SAP ASCS-of SCS-exemplaar:
 
-   * Name
+   * Naam
    * Poort
    * Poort van back-end
 
@@ -770,7 +771,7 @@ Als u Register vermeldingen wilt toevoegen aan cluster knooppunten van het SAP A
 | Naam van de variabele |`KeepAliveTime` |
 | Type variabele |REG_DWORD (decimaal) |
 | Waarde |120000 |
-| Koppeling naar documentatie |[https://technet.microsoft.com/library/cc957549.aspx](https://technet.microsoft.com/library/cc957549.aspx) |
+| Koppeling naar documentatie |[https://technet.microsoft.com/library/cc957549.aspx](/previous-versions/windows/it-pro/windows-2000-server/cc957549(v=technet.10)) |
 
 _**Tabel 3:** De eerste TCP/IP-para meter wijzigen_
 
@@ -781,7 +782,7 @@ Voeg deze Windows-register vermeldingen vervolgens toe aan de Windows-cluster kn
 | Naam van de variabele |`KeepAliveInterval` |
 | Type variabele |REG_DWORD (decimaal) |
 | Waarde |120000 |
-| Koppeling naar documentatie |[https://technet.microsoft.com/library/cc957548.aspx](https://technet.microsoft.com/library/cc957548.aspx) |
+| Koppeling naar documentatie |[https://technet.microsoft.com/library/cc957548.aspx](/previous-versions/windows/it-pro/windows-2000-server/cc957548(v=technet.10)) |
 
 _**Tabel 4:** De tweede TCP/IP-para meter wijzigen_
 

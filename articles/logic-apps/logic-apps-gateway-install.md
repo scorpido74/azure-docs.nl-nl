@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 05/15/2020
-ms.openlocfilehash: 6624cd0ff70ab359f4af36ca2f1f107d8f0b5fd9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c52e8dfa3cda40cc663b5d7f27b67c7d2ad0b60
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83659266"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078660"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>On-premises gegevensgateway installeren voor Azure Logic Apps
 
@@ -21,7 +22,7 @@ Voordat u [verbinding kunt maken met on-premises gegevens bronnen vanuit Azure L
 * [On-premises gegevens gateway van micro soft power apps](/powerapps/maker/canvas-apps/gateway-reference)
 * [Azure Analysis Services on-premises gegevens gateway](../analysis-services/analysis-services-gateway.md)
 
-In dit artikel wordt beschreven hoe u uw on-premises gegevens gateway kunt downloaden, installeren en instellen, zodat u toegang hebt tot on-premises gegevens bronnen van Azure Logic Apps. U kunt ook meer te weten komen over [de manier waarop de gegevens gateway](#gateway-cloud-service) verderop in dit onderwerp werkt. Zie [Wat is een on-premises gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)? voor meer informatie over de gateway. Ga naar de Power shell-galerie voor de [DataGateway Power shell-cmdlets](https://www.powershellgallery.com/packages/DataGateway/3000.15.15)om de installatie-en beheer taken van de gateway te automatiseren.
+In dit artikel wordt beschreven hoe u uw on-premises gegevens gateway kunt downloaden, installeren en instellen, zodat u toegang hebt tot on-premises gegevens bronnen van Azure Logic Apps. U kunt ook meer te weten komen over [de manier waarop de gegevens gateway](#gateway-cloud-service) verderop in dit onderwerp werkt. Zie [Wat is een on-premises gateway](/data-integration/gateway/service-gateway-onprem)? voor meer informatie over de gateway. Ga naar de Power shell-galerie voor de [DataGateway Power shell-cmdlets](https://www.powershellgallery.com/packages/DataGateway/3000.15.15)om de installatie-en beheer taken van de gateway te automatiseren.
 
 <a name="requirements"></a>
 
@@ -79,7 +80,7 @@ In dit artikel wordt beschreven hoe u uw on-premises gegevens gateway kunt downl
 
   * De gateway heeft twee modi: standaard modus en persoonlijke modus, die alleen van toepassing is op Power BI. U kunt niet meer dan één gateway in dezelfde modus op dezelfde computer uitvoeren.
 
-  * Azure Logic Apps ondersteunt Lees-en schrijf bewerkingen via de gateway. Deze bewerkingen hebben echter [limieten voor de grootte van de nettolading](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations).
+  * Azure Logic Apps ondersteunt Lees-en schrijf bewerkingen via de gateway. Deze bewerkingen hebben echter [limieten voor de grootte van de nettolading](/data-integration/gateway/service-gateway-onprem#considerations).
 
 <a name="install-gateway"></a>
 
@@ -142,8 +143,8 @@ In dit artikel wordt beschreven hoe u uw on-premises gegevens gateway kunt downl
 
 De on-premises gegevens gateway is afhankelijk van [Azure service bus](../service-bus-messaging/service-bus-messaging-overview.md) voor Cloud connectiviteit en de bijbehorende uitgaande verbindingen naar de Azure-regio die aan de gateway is gekoppeld. Als uw werk omgeving vereist dat verkeer via een proxy of firewall wordt uitgevoerd om toegang te krijgen tot internet, kan deze beperking ertoe leiden dat de on-premises gegevens gateway geen verbinding kan maken met de gateway-Cloud service en Azure Service Bus. De gateway heeft verschillende communicatie-instellingen, die u kunt aanpassen. Raadpleeg de volgende onderwerpen voor meer informatie:
 
-* [Communicatie-instellingen voor de on-premises gegevens gateway aanpassen](https://docs.microsoft.com/data-integration/gateway/service-gateway-communication)
-* [Proxyinstellingen configureren voor de on-premises gegevensgateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)
+* [Communicatie-instellingen voor de on-premises gegevens gateway aanpassen](/data-integration/gateway/service-gateway-communication)
+* [Proxyinstellingen configureren voor de on-premises gegevensgateway](/data-integration/gateway/service-gateway-proxy)
 
 <a name="high-availability"></a>
 
@@ -155,7 +156,7 @@ Als u storingen wilt voor komen op individuele punten van uitval voor on-premise
 
 * Op uw primaire gateway moet de gateway-update van november 2017 of hoger worden uitgevoerd.
 
-Wanneer u na het instellen van de primaire gateway een andere gateway installeert, selecteert u **toevoegen aan een bestaand gateway cluster**, selecteert u de primaire gateway, de eerste gateway die u hebt geïnstalleerd, en geeft u de herstel sleutel voor die gateway op. Zie [clusters met hoge Beschik baarheid voor on-premises gegevens gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-install#add-another-gateway-to-create-a-cluster)voor meer informatie.
+Wanneer u na het instellen van de primaire gateway een andere gateway installeert, selecteert u **toevoegen aan een bestaand gateway cluster**, selecteert u de primaire gateway, de eerste gateway die u hebt geïnstalleerd, en geeft u de herstel sleutel voor die gateway op. Zie [clusters met hoge Beschik baarheid voor on-premises gegevens gateway](/data-integration/gateway/service-gateway-install#add-another-gateway-to-create-a-cluster)voor meer informatie.
 
 <a name="update-gateway-installation"></a>
 
@@ -185,7 +186,7 @@ Als u de locatie van de gateway moet wijzigen, de installatie van de gateway naa
 
 ## <a name="tenant-level-administration"></a>Beheer op Tenant niveau
 
-Om inzicht te krijgen in alle on-premises gegevens gateways in een Azure AD-Tenant, kunnen globale beheerders in die Tenant zich aanmelden bij het [Power platform-beheer centrum](https://powerplatform.microsoft.com) als Tenant beheerder en de optie **gegevens gateways** selecteren. Zie [beheer op Tenant niveau voor de on-premises gegevens gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-tenant-level-admin)voor meer informatie.
+Om inzicht te krijgen in alle on-premises gegevens gateways in een Azure AD-Tenant, kunnen globale beheerders in die Tenant zich aanmelden bij het [Power platform-beheer centrum](https://powerplatform.microsoft.com) als Tenant beheerder en de optie **gegevens gateways** selecteren. Zie [beheer op Tenant niveau voor de on-premises gegevens gateway](/data-integration/gateway/service-gateway-tenant-level-admin)voor meer informatie.
 
 <a name="restart-gateway"></a>
 
@@ -196,7 +197,7 @@ Standaard wordt de installatie van de gateway op uw lokale computer uitgevoerd a
 > [!NOTE]
 > Uw Windows-Service account wijkt af van het account dat wordt gebruikt om verbinding te maken met on-premises gegevens bronnen en van het Azure-account dat u gebruikt wanneer u zich aanmeldt bij Cloud Services.
 
-Net als elke andere Windows-service kunt u de gateway op verschillende manieren starten en stoppen. Zie [een on-premises gegevens Gateway opnieuw starten](https://docs.microsoft.com/data-integration/gateway/service-gateway-restart)voor meer informatie.
+Net als elke andere Windows-service kunt u de gateway op verschillende manieren starten en stoppen. Zie [een on-premises gegevens Gateway opnieuw starten](/data-integration/gateway/service-gateway-restart)voor meer informatie.
 
 <a name="gateway-cloud-service"></a>
 
@@ -217,11 +218,11 @@ In deze stappen wordt beschreven wat er gebeurt wanneer u communiceert met een-e
 
 1. De Cloud service maakt een query, samen met de versleutelde referenties voor de gegevens bron. De service verzendt vervolgens de query en referenties naar de gateway wachtrij voor verwerking.
 
-1. De gateway-Cloud service analyseert de query en duwt de aanvraag naar Azure Service Bus.
+1. De gatewaycloudservice analyseert de query en pusht de aanvraag naar Azure Service Bus.
 
 1. Azure Service Bus verzendt de in behandeling zijnde aanvragen naar de gateway.
 
-1. De gateway haalt de query op, ontsleutelt de referenties en maakt verbinding met een of meer gegevens bronnen met deze referenties.
+1. De gateway haalt de query op, ontsleutelt de aanmeldingsgegevens en maakt met deze aanmeldingsgegevens verbinding met een of meer gegevensbronnen.
 
 1. De gateway stuurt de query naar de gegevens bron om uit te voeren.
 
@@ -260,9 +261,9 @@ Hier vindt u een aantal manieren waarop u uw on-premises Active Directory accoun
 
 ## <a name="faq-and-troubleshooting"></a>Veelgestelde vragen en probleemoplossing
 
-* [Veelgestelde vragen over on-premises gegevensgateways](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
-* [Problemen met de on-premises gegevensgateway oplossen](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
-* [Gatewayprestaties bewaken en optimaliseren](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
+* [Veelgestelde vragen over on-premises gegevensgateways](/data-integration/gateway/service-gateway-onprem-faq)
+* [Problemen met de on-premises gegevensgateway oplossen](/data-integration/gateway/service-gateway-tshoot)
+* [Gatewayprestaties bewaken en optimaliseren](/data-integration/gateway/service-gateway-performance)
 
 ## <a name="next-steps"></a>Volgende stappen
 

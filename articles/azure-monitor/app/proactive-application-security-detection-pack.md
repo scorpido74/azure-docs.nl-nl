@@ -3,17 +3,18 @@ title: Beveiligings detectie pakket met Azure-toepassing Insights
 description: Bewaak de toepassing met Azure-toepassing inzichten en Slimme detectie voor mogelijke beveiligings problemen.
 ms.topic: conceptual
 ms.date: 12/12/2017
-ms.openlocfilehash: b23ada6fe4596a2eee242cc9145789521caf697f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ed304e903bb50591e61e294b6701f8268f9d8e1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77669723"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081624"
 ---
 # <a name="application-security-detection-pack-preview"></a>Application Security-detectie pakket (preview-versie)
 
 Application Insights analyseert automatisch de telemetrie die is gegenereerd door uw toepassing en detecteert mogelijke beveiligings problemen. Met deze mogelijkheid kunt u mogelijke beveiligings problemen identificeren en deze afhandelen door de toepassing te corrigeren of door de benodigde beveiligings maatregelen te nemen.
 
-Voor deze functie is geen speciale configuratie vereist, behalve [het configureren van uw app voor het verzenden van telemetrie](https://docs.microsoft.com/azure/application-insights/app-insights-usage-overview).
+Voor deze functie is geen speciale configuratie vereist, behalve [het configureren van uw app voor het verzenden van telemetrie](./usage-overview.md).
 
 ## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Wanneer kan ik dit type Smart Detection-melding krijgen?
 Er zijn drie typen beveiligings problemen die worden gedetecteerd:

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
-ms.openlocfilehash: 5d0eee6b89ec3e0be944f17c361aafa598724069
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: bc29a62f469b0b9d091fcdef2488afba764a09fe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042115"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080349"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Extensies en functies van virtuele machines voor Linux
 
@@ -32,7 +32,7 @@ Dit artikel bevat een overzicht van VM-extensies, vereisten voor het gebruik van
 Er zijn verschillende verschillende Azure VM-extensies beschikbaar, elk met een specifieke use-case. Voorbeelden zijn:
 
 - Pas Power shell desired state configurations toe aan een virtuele machine met de DSC-extensie voor Linux. Zie [Azure desired state Configuration extension](https://github.com/Azure/azure-linux-extensions/tree/master/DSC)(Engelstalig) voor meer informatie.
-- De bewaking van een virtuele machine configureren met de VM-extensie van micro soft monitoring agent. Zie [een virtuele Linux-machine controleren](../linux/tutorial-monitoring.md)voor meer informatie.
+- De bewaking van een virtuele machine configureren met de VM-extensie van micro soft monitoring agent. Zie [een virtuele Linux-machine controleren](../linux/tutorial-monitor.md)voor meer informatie.
 - Configureer de bewaking van uw Azure-infra structuur met de extensie chef of Datadog. Zie de blog met chef- [documenten](https://docs.chef.io/azure_portal.html) of [Datadog](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/)voor meer informatie.
 
 Naast verwerkings-specifieke uitbrei dingen is een aangepaste script extensie beschikbaar voor virtuele Windows-en Linux-machines. Met de aangepaste script extensie voor Linux kan elk bash-script worden uitgevoerd op een virtuele machine. Aangepaste scripts zijn handig voor het ontwerpen van Azure-implementaties waarvoor configuratie moet worden opgegeven dan wat er door het systeem eigen Azure-hulp programma kan worden geboden. Zie [aangepaste script extensie voor Linux VM](custom-script-linux.md)voor meer informatie.
@@ -65,7 +65,7 @@ Uitbreidings pakketten worden gedownload uit de opslag plaats van de Azure Stora
 > [!IMPORTANT]
 > Als u de toegang tot *168.63.129.16* hebt geblokkeerd met behulp van de gast firewall, mislukken uitbrei dingen, ongeacht het bovenstaande.
 
-Agents kunnen alleen worden gebruikt voor het downloaden van uitbreidings pakketten en rapportage status. Als een extensie bijvoorbeeld een script moet downloaden van GitHub (aangepast script) of toegang moet hebben tot Azure Storage (Azure Backup), moeten er extra firewall/netwerk beveiligings groep poorten worden geopend. Verschillende uitbrei dingen hebben verschillende vereisten, omdat ze toepassingen in hun eigen recht zijn. Voor uitbrei dingen waarvoor toegang tot Azure Storage is vereist, kunt u toegang toestaan via de Azure NSG-service tags voor [opslag](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
+Agents kunnen alleen worden gebruikt voor het downloaden van uitbreidings pakketten en rapportage status. Als een extensie bijvoorbeeld een script moet downloaden van GitHub (aangepast script) of toegang moet hebben tot Azure Storage (Azure Backup), moeten er extra firewall/netwerk beveiligings groep poorten worden geopend. Verschillende uitbrei dingen hebben verschillende vereisten, omdat ze toepassingen in hun eigen recht zijn. Voor uitbrei dingen waarvoor toegang tot Azure Storage is vereist, kunt u toegang toestaan via de Azure NSG-service tags voor [opslag](../../virtual-network/security-overview.md#service-tags).
 
 Voor het omleiden van agent verkeers aanvragen heeft de Linux-agent ondersteuning voor de proxy server. De ondersteuning voor deze proxy server is echter niet van toepassing op uitbrei dingen. U moet elke afzonderlijke extensie configureren voor gebruik met een proxy.
 
@@ -225,7 +225,7 @@ Wanneer er een update beschikbaar is, wordt deze alleen geïnstalleerd op de vir
 - Container voor diagnostische gegevens over opstarten
 - Geheimen voor gast besturingssystemen
 - VM-grootte
-- Netwerk profiel
+- Netwerkprofiel
 
 Uitgevers maken updates beschikbaar voor regio's op verschillende tijdstippen, zodat u virtuele machines in verschillende regio's op verschillende versies kunt hebben.
 
@@ -259,7 +259,7 @@ In het voor gaande voor beeld is de bovenliggende of ' package Implemented versi
 
 De ' doel status agent ' is de automatische update versie.
 
-Het wordt ten zeerste aanbevolen dat u altijd automatisch bijwerken hebt voor de agent, auto [Update. enabled = y](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent). Als u dit niet hebt ingeschakeld, moet u de agent hand matig bijwerken en worden er geen problemen met de fout en de beveiliging opgelost.
+Het wordt ten zeerste aanbevolen dat u altijd automatisch bijwerken hebt voor de agent, auto [Update. enabled = y](./update-linux-agent.md). Als u dit niet hebt ingeschakeld, moet u de agent hand matig bijwerken en worden er geen problemen met de fout en de beveiliging opgelost.
 
 #### <a name="extension-updates"></a>Extensie-updates
 
@@ -403,7 +403,7 @@ U kunt een uitbrei ding ook als volgt verwijderen in de Azure Portal:
 
 ## <a name="common-vm-extension-reference"></a>Naslag informatie over algemene VM-extensies
 
-| Extensie naam | Description | Meer informatie |
+| Extensie naam | Beschrijving | Meer informatie |
 | --- | --- | --- |
 | Aangepaste script extensie voor Linux |Scripts uitvoeren op een virtuele Azure-machine |[Aangepaste script extensie voor Linux](custom-script-linux.md) |
 | VM-extensie voor toegang |Toegang tot een virtuele Azure-machine herstellen |[VM-extensie voor toegang](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) |

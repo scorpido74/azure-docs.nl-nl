@@ -6,11 +6,12 @@ ms.topic: troubleshooting
 ms.date: 4/11/2019
 ms.author: alkarche
 ms.reviewer: glenga
-ms.openlocfilehash: acb1e942c1f342ce6fee7d8aeacafcc1d7b6fd91
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d3493cc76dfb05cca3c89114b279b99ab49bac2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75409530"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081641"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Veelgestelde vragen over netwerken in Azure Functions
 
@@ -54,7 +55,7 @@ U kunt ook een functie activeren vanuit alle andere resources in een virtueel ne
 
 ## <a name="how-can-i-deploy-my-function-app-in-a-virtual-network"></a>Hoe kan ik mijn functie-app in een virtueel netwerk implementeren?
 
-Implementeren op een App Service Environment is de enige manier om een functie-app te maken die volledig in een virtueel netwerk is. Voor meer informatie over het gebruik van een interne load balancer met een App Service Environment, begint u met het artikel [een interne Load Balancer maken en gebruiken met een app service Environment](https://docs.microsoft.com/azure/app-service/environment/create-ilb-ase).
+Implementeren op een App Service Environment is de enige manier om een functie-app te maken die volledig in een virtueel netwerk is. Voor meer informatie over het gebruik van een interne load balancer met een App Service Environment, begint u met het artikel [een interne Load Balancer maken en gebruiken met een app service Environment](../app-service/environment/create-ilb-ase.md).
 
 Zie het [Overzicht functies netwerken](functions-networking-options.md)voor scenario's waarbij u slechts één richting toegang wilt geven tot virtuele netwerk bronnen of minder uitgebreide netwerk isolatie.
 

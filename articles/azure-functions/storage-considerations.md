@@ -3,12 +3,12 @@ title: Aandachtspunten voor de opslag van Azure Functions
 description: Meer informatie over de opslag vereisten van Azure Functions en over het versleutelen van opgeslagen gegevens.
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 324516240d09a5443908cbffec514e4caba2b604
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2efd583b319e3f3b1fa3db307ea4a3cf53710165
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83648789"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079601"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Aandachtspunten voor de opslag van Azure Functions
 
@@ -41,7 +41,7 @@ Voor elke functie-app moet een opslag account worden gebruikt. Als dat account w
 
 De verbinding van het opslag account wordt onderhouden in de [toepassings instelling AzureWebJobsStorage](./functions-app-settings.md#azurewebjobsstorage). 
 
-Het connection string van het opslag account moet worden bijgewerkt wanneer u de opslag sleutels opnieuw genereert. [Lees hier meer over opslag sleutel beheer](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account).
+Het connection string van het opslag account moet worden bijgewerkt wanneer u de opslag sleutels opnieuw genereert. [Lees hier meer over opslag sleutel beheer](../storage/common/storage-account-create.md).
 
 ### <a name="shared-storage-accounts"></a>Gedeelde opslag accounts
 
@@ -80,5 +80,3 @@ Meer informatie over Azure Functions hosting opties.
 
 > [!div class="nextstepaction"]
 > [Schaal en hosting van Azure Functions](functions-scale.md)
-
-

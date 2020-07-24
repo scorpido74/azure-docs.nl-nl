@@ -6,12 +6,12 @@ author: harelbr
 ms.author: harelbr
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 7ca4df620739b2ab55b8ba986031cc48fe87f1fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5a4cb788a24252a2de7b9d669b166b25ed48be1c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80294905"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081590"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Application Insights Slimme detectie regels beheren met Azure Resource Manager sjablonen
 
@@ -22,7 +22,7 @@ Deze methode kan worden gebruikt bij het implementeren van nieuwe Application In
 
 U kunt de volgende instellingen configureren voor een regel voor Slimme detectie:
 - Als de regel is ingeschakeld (de standaard waarde is **waar**.)
-- Als er e-mail berichten moeten worden verzonden naar gebruikers die zijn gekoppeld aan de [bewakings lezer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) van het abonnement en bij het [bewaken van Inzender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) rollen wanneer een detectie wordt gevonden (de standaard waarde is **waar**.)
+- Als er e-mail berichten moeten worden verzonden naar gebruikers die zijn gekoppeld aan de [bewakings lezer](../../role-based-access-control/built-in-roles.md#monitoring-reader) van het abonnement en bij het [bewaken van Inzender](../../role-based-access-control/built-in-roles.md#monitoring-contributor) rollen wanneer een detectie wordt gevonden (de standaard waarde is **waar**.)
 - Aanvullende e-mail ontvangers die een melding moeten ontvangen wanneer een detectie wordt gevonden.
     -  De e-mail configuratie is niet beschikbaar voor slimme detectie regels die als _Preview_zijn gemarkeerd.
 

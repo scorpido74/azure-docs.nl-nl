@@ -9,13 +9,14 @@ ms.subservice: management
 ms.date: 05/29/2018
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: 7c39088890680b6cfc903083283ed09cb7618d16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90cda1e8d48e6c7f9e925d6d1b9e11b5d2514e93
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83124921"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080519"
 ---
-# <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Deploy your application on virtual machine scale sets (Uw toepassing implementeren op virtuele-machineschaalsets)
+# <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Uw toepassing implementeren op virtuele-machineschaalsets
 
 Als u toepassingen wilt uitvoeren op de exemplaren van een virtuele machine (VM) in een schaalset, moet u eerst de toepassingsonderdelen en de vereiste bestanden installeren. In dit artikel worden manieren beschreven om een aangepaste VM-installatie kopie te maken voor instanties in een schaalset, of om automatisch installatie scripts uit te voeren op bestaande VM-exemplaren. U leert ook hoe u updates van toepassingen of besturings systemen kunt beheren in een schaalset.
 
@@ -25,14 +26,14 @@ Wanneer u een van de installatie kopieën van het Azure-platform gebruikt om de 
 
 Om het configuratie beheer en de tijd voor het inrichten van een virtuele machine te beperken, kunt u een aangepaste VM-installatie kopie maken die gereed is voor het uitvoeren van uw toepassing zodra een exemplaar is ingericht in de schaalset. Zie de volgende zelf studies voor meer informatie over het maken en gebruiken van een aangepaste VM-installatie kopie met een schaalset:
 
-- [Azure-CLI](tutorial-use-custom-image-cli.md)
+- [Azure CLI](tutorial-use-custom-image-cli.md)
 - [Azure PowerShell](tutorial-use-custom-image-powershell.md)
 
 
 ## <a name="install-an-app-with-the-custom-script-extension"></a><a name="already-provisioned"></a>Een app met de aangepaste script extensie installeren
 Met de aangepaste scriptextensie kunnen scripts worden gedownload en uitgevoerd op virtuele machines in Azure. Deze uitbreiding is handig voor post-implementatieconfiguraties, software-installaties of andere configuratie-/beheertaken. Scripts kunnen worden gedownload uit Azure Storage of GitHub, of worden geleverd in Azure Portal tijdens de uitvoering van extensies. Zie de volgende zelf studies voor meer informatie over het installeren van een app met een aangepaste script extensie:
 
-- [Azure-CLI](tutorial-install-apps-cli.md)
+- [Azure CLI](tutorial-install-apps-cli.md)
 - [Azure PowerShell](tutorial-install-apps-powershell.md)
 - [Azure Resource Manager-sjabloon](tutorial-install-apps-template.md)
 
@@ -112,4 +113,4 @@ Als u een aangepaste VM-installatie kopie gebruikt waarop de toepassing vooraf i
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Wanneer u toepassingen op uw schaal sets bouwt en implementeert, kunt u het [ontwerp overzicht van de schaalset](virtual-machine-scale-sets-design-overview.md)bekijken. Zie [Power shell gebruiken voor het beheren van uw schaalset](virtual-machine-scale-sets-windows-manage.md)voor meer informatie over het beheren van uw schaalset.
+Wanneer u toepassingen op uw schaal sets bouwt en implementeert, kunt u het [ontwerp overzicht van de schaalset](virtual-machine-scale-sets-design-overview.md)bekijken. Zie [Power shell gebruiken voor het beheren van uw schaalset](./virtual-machine-scale-sets-manage-powershell.md)voor meer informatie over het beheren van uw schaalset.

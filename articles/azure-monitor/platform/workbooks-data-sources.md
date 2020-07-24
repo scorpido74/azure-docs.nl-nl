@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: mbullwin
-ms.openlocfilehash: 897e615234e17cfe36790778d00cd56371afd91f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f27771291d95770a693fa56041f7dce3de459d13
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85560134"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081420"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Gegevens bronnen Azure Monitor werkmappen
 
@@ -61,7 +61,7 @@ Als u een query besturings element wilt maken met deze gegevens bron, gebruikt u
 
 ## <a name="azure-data-explorer"></a>Azure Data Explorer
 
-Werkmappen bieden nu ondersteuning voor het uitvoeren van query's vanuit [Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/) -clusters met de krachtige [Kusto](https://docs.microsoft.com/azure/kusto/query/index) -query taal.   
+Werkmappen bieden nu ondersteuning voor het uitvoeren van query's vanuit [Azure Data Explorer](/azure/data-explorer/) -clusters met de krachtige [Kusto](/azure/kusto/query/index) -query taal.   
 
 ![Scherm opname van het Kusto-query venster](./media/workbooks-overview/data-explorer.png)
 
@@ -90,7 +90,7 @@ Met de JSON-provider kunt u een query resultaat maken op basis van statische JSO
 > [!NOTE]
 > De voorgestelde manier om informatie over Azure-waarschuwingen op te vragen, is door de gegevens bron van de [Azure-resource grafiek](#azure-resource-graph) te gebruiken door een query uit te stellen op de `AlertsManagementResources` tabel.
 >
-> Zie de [Naslag informatie over de tabel van Azure resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/reference/supported-tables-resources)of de [sjabloon waarschuwingen](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Workbooks/Azure%20Resources/Alerts/Alerts.workbook) voor voor beelden.
+> Zie de [Naslag informatie over de tabel van Azure resource Graph](../../governance/resource-graph/reference/supported-tables-resources.md)of de [sjabloon waarschuwingen](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Workbooks/Azure%20Resources/Alerts/Alerts.workbook) voor voor beelden.
 >
 > De gegevens bron van waarschuwingen blijft gedurende een bepaalde tijd beschikbaar terwijl auteurs overstappen op het gebruik van ARG. Het gebruik van deze gegevens bron in sjablonen wordt afgeraden. 
 
@@ -113,5 +113,5 @@ Om te voor komen dat u automatisch aanroepen naar niet-vertrouwde hosts maakt wa
 
 * [Ga](workbooks-visualizations.md) voor meer informatie over werkmappen veel uitgebreide visualisaties opties.
 * De toegang tot uw werkmap resources [beheren](workbooks-access-control.md) en delen.
-* [Tips voor het optimaliseren van query's Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization)
+* [Tips voor het optimaliseren van query's Log Analytics](../log-query/query-optimization.md)
 * 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 522aed07d850dfdb2782ee8263f33bd3f42eb8c2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 34a02de8a6789a028c776e784ea4aa9692f53d9d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258047"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079161"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>De Azure Digital Twins-API's en -SDK's gebruiken
 
@@ -54,7 +54,7 @@ De data-vlak-Api's gebruiken:
    - u vindt de SDK-bron, met inbegrip van een map met voor beelden, in GitHub: [Azure IOT Digital apparaatdubbels-client bibliotheek voor .net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). 
    - u kunt de [SDK-referentie documentatie](https://docs.microsoft.com/dotnet/api/overview/azure/digitaltwins?view=azure-dotnet-preview)raadplegen.
    - u kunt gedetailleerde informatie en voor beelden van gebruik bekijken door door te gaan naar de sectie [.net (C#) SDK (Data-vlieg tuig)](#net-c-sdk-data-plane) van dit artikel.
-* U kunt een SDK voor een andere taal genereren met behulp van auto rest. Volg de instructies in [How to: aangepaste sdk's voor Azure Digital Apparaatdubbels maken met auto rest](how-to-create-custom-sdks.md).
+* U kunt een SDK voor een andere taal genereren met behulp van auto rest. Volg de instructies in [*How to: aangepaste sdk's voor Azure Digital Apparaatdubbels maken met auto rest*](how-to-create-custom-sdks.md).
 
 U kunt ook datum vlak-Api's uitoefenen door interactie met Azure Digital Apparaatdubbels via de [cli](how-to-use-cli.md).
 
@@ -71,11 +71,11 @@ Als u de SDK wilt gebruiken, voegt u het NuGet-pakket **Azure. DigitalTwins. cor
 * Met het opdracht regel programma .NET kunt u het volgende uitvoeren:
 
     ```cmd/sh
-    dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.2
+    dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
     dotnet add package Azure.identity
     ```
 
-Zie de [zelf studie: een client-app coderen](tutorial-code.md)voor een gedetailleerde procedure voor het gebruik van de api's in de praktijk. 
+Zie de [*zelf studie: een client-app coderen*](tutorial-code.md)voor een gedetailleerde procedure voor het gebruik van de api's in de praktijk. 
 
 ### <a name="net-sdk-usage-examples"></a>Gebruiks voorbeelden van .NET SDK
 
@@ -137,7 +137,7 @@ await foreach (string twin in result)
 }
 ```
 
-Raadpleeg de [zelf studie: een client-app coderen](tutorial-code.md) voor een overzicht van deze app-voorbeeld code. 
+Raadpleeg de [*zelf studie: een client-app coderen*](tutorial-code.md) voor een overzicht van deze app-voorbeeld code. 
 
 U kunt ook aanvullende voor beelden vinden in de [github-opslag plaats voor de .net (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core/samples).
 
@@ -290,8 +290,8 @@ Hier kunt u de metrische gegevens voor uw exemplaar bekijken en aangepaste weer 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie hoe u de Api's gebruikt om een Azure Digital Apparaatdubbels-exemplaar te maken:
-* [Instructies: een Azure Digital Apparaatdubbels-exemplaar maken](how-to-set-up-instance.md)
+Zie hoe u de Api's gebruikt om een Azure Digital Apparaatdubbels-exemplaar en-verificatie in te stellen:
+* [*Instructies: een exemplaar en verificatie instellen*](how-to-set-up-instance-scripted.md)
 
 Of volg de stappen voor het maken van een client-app, zoals de toepassing die wordt gebruikt in deze procedure:
-* [Zelfstudie: Een client-app coderen](tutorial-code.md)
+* [*Zelfstudie: Een client-app coderen*](tutorial-code.md)

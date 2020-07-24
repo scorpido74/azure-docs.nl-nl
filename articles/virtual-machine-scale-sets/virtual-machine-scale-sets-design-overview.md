@@ -10,15 +10,15 @@ ms.subservice: management
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: d2160f2c014e1bf7c486c29a48c756936df12788
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5aad73db2f01cec8c1c8b0144d29c105b6e8ae0e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85373978"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080502"
 ---
 # <a name="design-considerations-for-scale-sets"></a>Ontwerp overwegingen voor schaal sets
-In dit artikel worden ontwerp overwegingen voor Virtual Machine Scale Sets beschreven. Raadpleeg [Virtual Machine Scale sets Overview](virtual-machine-scale-sets-overview.md)voor meer informatie over wat virtual machine Scale sets zijn.
+In dit artikel worden ontwerp overwegingen voor Virtual Machine Scale Sets beschreven. Raadpleeg [Virtual Machine Scale sets Overview](./overview.md)voor meer informatie over wat virtual machine Scale sets zijn.
 
 ## <a name="when-to-use-scale-sets-instead-of-virtual-machines"></a>Wanneer moet u schaal sets gebruiken in plaats van virtuele machines?
 In het algemeen zijn schaal sets handig voor het implementeren van een infra structuur met hoge Beschik baarheid, waarbij een set computers vergelijk bare configuratie heeft. Sommige functies zijn echter alleen beschikbaar in schaal sets, terwijl andere functies alleen beschikbaar zijn in Vm's. Als u een weloverwogen beslissing wilt nemen over het gebruik van elke technologie, moet u eerst een aantal veelgebruikte functies bekijken die beschikbaar zijn in schaal sets, maar niet op Vm's:
@@ -27,8 +27,8 @@ In het algemeen zijn schaal sets handig voor het implementeren van een infra str
 
 - Wanneer u de configuratie van de schaalset hebt opgegeven, kunt u de *capaciteits* eigenschap bijwerken om meer vm's parallel te implementeren. Dit proces is beter dan het schrijven van een script om de implementatie van veel afzonderlijke Vm's parallel te organiseren.
 - U kunt [Azure automatisch schalen gebruiken om een schaalset te schalen](./virtual-machine-scale-sets-autoscale-overview.md) , maar niet de afzonderlijke vm's.
-- U kunt de [schaalset-vm's](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/reimage) , maar [niet de afzonderlijke vm's](https://docs.microsoft.com/rest/api/compute/virtualmachines), opnieuw instellen.
-- U kunt virtuele machines met schaal sets [overinrichten](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview#overprovisioning) voor meer betrouw baarheid en snellere implementatie tijden. U kunt afzonderlijke Vm's niet overzetten, tenzij u aangepaste code schrijft om deze actie uit te voeren.
+- U kunt de [schaalset-vm's](/rest/api/compute/virtualmachinescalesets/reimage) , maar [niet de afzonderlijke vm's](/rest/api/compute/virtualmachines), opnieuw instellen.
+- U kunt virtuele machines met schaal sets [overinrichten](#overprovisioning) voor meer betrouw baarheid en snellere implementatie tijden. U kunt afzonderlijke Vm's niet overzetten, tenzij u aangepaste code schrijft om deze actie uit te voeren.
 - U kunt een [upgrade beleid](./virtual-machine-scale-sets-upgrade-scale-set.md) opgeven zodat upgrades op virtuele machines in uw schaalset eenvoudig kunnen worden geïmplementeerd. Met afzonderlijke Vm's moet u zelf updates organiseren.
 
 ### <a name="vm-specific-features"></a>VM-specifieke functies
@@ -68,4 +68,3 @@ Een schaalset die is geconfigureerd met door de gebruiker beheerde opslag accoun
 Een schaalset die is gebouwd op een aangepaste installatie kopie (één door u gebouwd), kan een capaciteit hebben van Maxi maal 600 Vm's wanneer deze is geconfigureerd met Azure Managed disks. Als de schaalset is geconfigureerd met door de gebruiker beheerde opslag accounts, moet de virtuele harde schijf van het besturings systeem in één opslag account worden gemaakt. Als gevolg hiervan is het Maxi maal aanbevolen aantal Vm's in een schaalset die is gebouwd op een aangepaste installatie kopie en door de gebruiker beheerde opslag, 20. Als u het overinrichten uitschakelt, kunt u Maxi maal 40 gaan.
 
 Voor meer Vm's dan deze limieten toestaan, moet u meerdere schaal sets implementeren, zoals in [deze sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/301-custom-images-at-scale)wordt weer gegeven.
-

@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: b8bf409d759b74e6a5ef0d840aebbe807a04448a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2a45218118282f4f1cadb29c9022fc05b30f907
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324833"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078736"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Stromen exporteren vanuit Power Automate en implementeren in Azure Logic Apps
 
@@ -19,9 +20,9 @@ Om de mogelijkheden van uw stroom uit te breiden en uit te breiden, kunt u die s
 > [!NOTE]
 > Niet alle stroom verautomatiseerde connectors zijn beschikbaar in Azure Logic Apps. U kunt alleen stroom geautomatiseerde stromen met de equivalente connectors in Azure Logic Apps migreren. De knop trigger, de goedkeurings connector en de notification connector zijn bijvoorbeeld specifiek voor het automatiseren van het energie verbruik. Op dit moment worden OpenAPI stromen in energie automatisering niet ondersteund voor exporteren en implementeren als sjablonen voor logische apps.
 >
-> * Als u wilt weten welke stroom lijnen voor automatische automatisering geen Logic Apps equivalenten hebben, raadpleegt u [connectors](https://docs.microsoft.com/connectors/connector-reference/connector-reference-powerautomate-connectors)voor het automatiseren van de stroom.
+> * Als u wilt weten welke stroom lijnen voor automatische automatisering geen Logic Apps equivalenten hebben, raadpleegt u [connectors](/connectors/connector-reference/connector-reference-powerautomate-connectors)voor het automatiseren van de stroom.
 >
-> * Zie [Logic apps connectors](https://docs.microsoft.com/connectors/connector-reference/connector-reference-powerautomate-connectors)als u wilt weten welke Logic apps connectors geen energie automatisering hebben.
+> * Zie [Logic apps connectors](/connectors/connector-reference/connector-reference-powerautomate-connectors)als u wilt weten welke Logic apps connectors geen energie automatisering hebben.
 
 ## <a name="prerequisites"></a>Vereisten
 
