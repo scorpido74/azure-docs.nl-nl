@@ -10,11 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: ccb95064f756ef035b7da92d029680f1c195982b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 3e1cfa13a3fd568ab2f1253c015880c57f99ce7e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958732"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012482"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Gegevens platforms die worden ondersteund op de Data Science Virtual Machine
 
@@ -24,13 +25,13 @@ De volgende hulpprogram ma's voor gegevens platforms worden ondersteund op de DS
 
 ## <a name="sql-server-developer-edition"></a>SQL Server Developer Edition
 
-| | |
+| Categorie | Waarde |
 | ------------- | ------------- |
 | Wat is het?   | Een lokale relationele-data base-instantie      |
 | Ondersteunde DSVM-edities      | Windows 2016: SQL Server 2017, Windows 2019: SQL Server 2019      |
-| Typische toepassingen      | Snelle ontwikkeling lokaal met kleinere gegevensset <br/> In-data base-R uitvoeren   |
-| Koppelingen naar voor beelden      |    Een klein voor beeld van een nieuwe gegevensset in Utrecht City wordt geladen in de SQL database:<br/>  `nyctaxi` <br/> Jupyter-voor beeld met Microsoft Machine Learning Server en in-data base Analytics vindt u op:<br/> `~notebooks/SQL_R_Services_End_to_End_Tutorial.ipynb`  |
-| Gerelateerde hulpprogram ma's op de DSVM       | SQL Server Management Studio <br/> ODBC/JDBC-Stuur Programma's<br/> pyodbc, RODBC<br />Apache Drill      |
+| Typische toepassingen      | <ul><li>Snelle ontwikkeling lokaal met kleinere gegevensset</li><li>In-data base-R uitvoeren</li></ul> |
+| Koppelingen naar voor beelden      | <ul><li>Een klein voor beeld van een nieuwe gegevensset in Utrecht City wordt geladen in de SQL database:<br/>  `nyctaxi`</li><li>Jupyter-voor beeld met Microsoft Machine Learning Server en in-data base Analytics vindt u op:<br/> `~notebooks/SQL_R_Services_End_to_End_Tutorial.ipynb`</li></ul> |
+| Gerelateerde hulpprogram ma's op de DSVM       | <ul><li>SQL Server Management Studio</li><li>ODBC/JDBC-Stuur Programma's</li><li>pyodbc, RODBC</li><li>Apache Drill</li></ul> |
 
 > [!NOTE]
 > SQL Server Developer Edition kan alleen worden gebruikt voor ontwikkelings-en test doeleinden. U hebt een licentie of een van de SQL Server Vm's nodig om deze in productie uit te voeren.
@@ -61,13 +62,13 @@ Daarnaast wordt de DSVM geleverd met ODBC-en JDBC-Stuur Programma's om te praten
 
 ## <a name="apache-spark-2x-standalone"></a>Apache Spark 2. x (zelfstandige versie)
 
-| | |
+| Categorie | Waarde |
 | ------------- | ------------- |
 | Wat is het?   | Een zelfstandig exemplaar (één knoop punt in het proces) van het populaire Apache Spark platform; een systeem voor snelle, grootschalige gegevens verwerking en machine learning     |
 | Ondersteunde DSVM-edities      | Linux     |
-| Typische toepassingen      | * Snelle ontwikkeling van Spark/PySpark-toepassingen lokaal met een kleinere gegevensset en een latere implementatie op grote Spark-clusters, zoals Azure HDInsight<br/> * Test Microsoft Machine Learning Server Spark-context <br />* Gebruik SparkML of de open-source [MMLSpark](https://github.com/Azure/mmlspark) -bibliotheek van micro soft om ml-toepassingen te bouwen |
-| Koppelingen naar voor beelden      |    Voor beeld van Jupyter: <br />&nbsp;&nbsp;* ~/notebooks/SparkML/pySpark <br /> &nbsp;&nbsp;* ~/notebooks/MMLSpark <br /> Microsoft Machine Learning Server (Spark-context):/dsvm/samples/MRS/MRSSparkContextSample.R |
-| Gerelateerde hulpprogram ma's op de DSVM       | PySpark, scala<br/>Jupyter (Spark/PySpark-kernels)<br/>Microsoft Machine Learning Server, Spark, Sparklyr <br />Apache Drill      |
+| Typische toepassingen      | <ul><li>Snelle ontwikkeling van Spark/PySpark-toepassingen lokaal met een kleinere gegevensset en een latere implementatie op grote Spark-clusters, zoals Azure HDInsight</li><li>Microsoft Machine Learning Server Spark-context testen</li><li>Gebruik SparkML of de open-source [MMLSpark](https://github.com/Azure/mmlspark) -bibliotheek van micro soft om ml-toepassingen te bouwen</li></ul> |
+| Koppelingen naar voor beelden      |    Voor beeld van Jupyter:<ul><li>~/notebooks/SparkML/pySpark</li><li>~/notebooks/MMLSpark</li></ul><p>Microsoft Machine Learning Server (Spark-context):/dsvm/samples/MRS/MRSSparkContextSample.R</p> |
+| Gerelateerde hulpprogram ma's op de DSVM       | <ul><li>PySpark, scala</li><li>Jupyter (Spark/PySpark-kernels)</li><li>Microsoft Machine Learning Server, Spark, Sparklyr</li><li>Apache Drill</li></ul> |
 
 ### <a name="how-to-use-it"></a>Gebruik
 U kunt Spark-taken verzenden op de opdracht regel door de of-opdracht uit te voeren `spark-submit` `pyspark` . U kunt ook een Jupyter-notebook maken door een nieuw notitie blok te maken met de Spark-kernel.

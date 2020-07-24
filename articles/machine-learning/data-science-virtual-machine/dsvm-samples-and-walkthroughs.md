@@ -10,11 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: d064e940997d13e51be4fd38e9f678b778ce31f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98a1cd883867aa2f785b15f4c7ae4f2266a421ae
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74900053"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012566"
 ---
 # <a name="samples-on-azure-data-science-virtual-machines"></a>Voor beelden van Azure data Science Virtual Machines
 
@@ -24,10 +25,10 @@ Azure data Science Virtual Machines (Dsvm) bevat een uitgebreide set voorbeeld c
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u deze voor beelden wilt uitvoeren, moet u een Data Science Virtual Machine hebben ingericht. Bekijk de Quick starts voor [Windows](./provision-vm.md) en [Ubuntu](./dsvm-ubuntu-intro.md).
+Als u deze voor beelden wilt uitvoeren, moet u een Ubuntu- [Data Science virtual machine](./dsvm-ubuntu-intro.md)hebben ingericht.
 
 ## <a name="available-samples"></a>Beschikbare voorbeelden
-| Categorie voor beelden | Description | Locaties |
+| Categorie voor beelden | Beschrijving | Locaties |
 | ------------- | ------------- | ------------- |
 | R-taal  | Voor beelden illustreren scenario's zoals het maken van verbinding met gegevens archieven op basis van Azure en het vergelijken van open source R en Microsoft Machine Learning Server. Er wordt ook uitgelegd hoe u operationeel maken modellen op Microsoft Machine Learning Server en SQL Server. <br/> [R-taal](#r-language) | <br/>`~notebooks` <br/> <br/> `~samples/MicrosoftR` <br/> <br/> `~samples/RSqlDemo` <br/> <br/> `~samples/SQLRServices`<br/> <br/>|
 | Python-taal  | Voor beelden van scenario's zoals het maken van verbinding met gegevens archieven op basis van Azure en het werken met Azure Machine Learning.  <br/> [Python-taal](#python-language) | <br/>`~notebooks` <br/><br/>|

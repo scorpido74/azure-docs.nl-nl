@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: c414087270558e21340e50114c0563ff7e50064c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 15c3f3994b9d519a4144fa2c2e1418e92cdbd6ae
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80282304"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012403"
 ---
 # <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Machine learning-en data Science-hulpprogram ma's op Azure data Science Virtual Machines
 Azure data Science Virtual Machines (Dsvm) beschikt over een uitgebreide set hulpprogram ma's en bibliotheken voor machine learning die beschikbaar zijn in populaire talen, zoals python, R en Julia.
@@ -26,7 +26,7 @@ Hier volgen enkele van de machine learning-hulpprogram ma's en-bibliotheken op D
 
 Zie de volledige referentie voor de [Azure machine learning SDK voor python](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml).
 
-|    |           |
+| Categorie | Waarde |
 | ------------- | ------------- |
 | Wat is het?   |   Azure Machine Learning is een Cloud service die u kunt gebruiken om machine learning-modellen te ontwikkelen en te implementeren. U kunt uw modellen volgen wanneer u deze bouwt, traint, schaalt en beheert met behulp van de python-SDK. Implementeer modellen als containers en voer deze uit in de Cloud, on-premises of op Azure IoT Edge.   |
 | Ondersteunde versies     | Windows (Conda-omgeving: AzureML), Linux (Conda-omgeving: py36)    |
@@ -38,7 +38,7 @@ Zie de volledige referentie voor de [Azure machine learning SDK voor python](htt
 
 ## <a name="h2o"></a>H2O
 
-|    |           |
+| Categorie | Waarde |
 | ------------- | ------------- |
 | Wat is het?   | Een open-source AI-platform dat ondersteuning biedt voor in-Memory, gedistribueerde, snelle en schaal bare machine learning.  |
 | Ondersteunde versies      | Linux   |
@@ -52,7 +52,7 @@ Er zijn verschillende andere machine learning-bibliotheken op Dsvm, zoals het po
 
 ## <a name="lightgbm"></a>LightGBM
 
-|    |           |
+| Categorie | Waarde |
 | ------------- | ------------- |
 | Wat is het?   | Een snel, gedistribueerd verloop van de kleur overgang-Boosting (GBDT, GBRT, GBM of MART Framework) op basis van de beslissings structuur-algoritmen. Dit wordt gebruikt voor classificatie, classificatie en veel andere taken voor machine learning.    |
 | Ondersteunde versies      | Windows, Linux    |
@@ -62,7 +62,7 @@ Er zijn verschillende andere machine learning-bibliotheken op Dsvm, zoals het po
 | Verwante hulpprogramma's      | MXNet, XgBoost  |
 
 ## <a name="rattle"></a>Rattle
-|    |           |
+| Categorie | Waarde |
 | ------------- | ------------- |
 | Wat is het?   |   Een Graphical User Interface voor gegevens analyse met behulp van R.   |
 | Ondersteunde versies     | Windows, Linux     |
@@ -72,7 +72,7 @@ Er zijn verschillende andere machine learning-bibliotheken op Dsvm, zoals het po
 | Verwante hulpprogramma's      |LightGBM, Fridge, XGBoost   |
 
 ## <a name="vowpal-wabbit"></a>Vowpal Wabbit
-|    |           |
+| Categorie | Waarde |
 | ------------- | ------------- |
 | Wat is het?   |   Een snelle, open-source, out-of-Core-learning systeem bibliotheek    |
 | Ondersteunde versies     | Windows, Linux     |
@@ -84,7 +84,7 @@ Er zijn verschillende andere machine learning-bibliotheken op Dsvm, zoals het po
 
 
 ## <a name="weka"></a>Weka
-|    |           |
+| Categorie | Waarde |
 | ------------- | ------------- |
 | Wat is het?   |  Een verzameling machine learning-algoritmen voor gegevens analyse taken. De algoritmen kunnen rechtstreeks worden toegepast op een gegevensset of worden aangeroepen vanuit uw eigen Java-code. Fridge bevat hulpprogram ma's voor het vooraf verwerken van gegevens, classificatie, regressie, Clustering, koppelings regels en visualisatie. |
 | Ondersteunde versies     | Windows, Linux     |
@@ -94,7 +94,7 @@ Er zijn verschillende andere machine learning-bibliotheken op Dsvm, zoals het po
 | Verwante hulpprogramma's      |LightGBM, Rattle, XGBoost   |
 
 ## <a name="xgboost"></a>XGBoost 
-|    |           |
+| Categorie | Waarde |
 | ------------- | ------------- |
 | Wat is het?   |   Een snelle, draag bare en gedistribueerde GBDT-, GBRT-of GBM-bibliotheek voor python, R, Java, scala, C++ en meer. Deze wordt uitgevoerd op één computer en op Apache Hadoop en Spark.    |
 | Ondersteunde versies     | Windows, Linux     |
@@ -105,7 +105,7 @@ Er zijn verschillende andere machine learning-bibliotheken op Dsvm, zoals het po
 | Verwante hulpprogramma's      | LightGBM, MXNet   |
 
 ## <a name="apache-drill"></a>Apache Drill
-|    |           |
+| Categorie | Waarde |
 | ------------- | ------------- |
 | Wat is het?   | Open-Source SQL-query-engine op big data    |
 | Ondersteunde DSVM-versies      | Windows 2019, Linux  |

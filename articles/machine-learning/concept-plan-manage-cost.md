@@ -10,11 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: ae1beeebfddfe250ae20a70c3e78ec32774218d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2fc9a1a1c3a08f0530649ae64926c673e2d666e0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82996320"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012685"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Kosten plannen en beheren voor Azure Machine Learning
 
@@ -80,7 +81,7 @@ AmlCompute-clusters zijn zodanig ontworpen dat ze dynamisch kunnen worden gescha
 
 U kunt ook configureren hoe lang het knoop punt inactief moet zijn voordat omlaag wordt geschaald. Standaard wordt de niet-actieve tijd vóór de schaal ingesteld op 120 seconden.
 
-+ Als u minder iteratieve experimenten uitvoert, moet u deze tijd beperken om kosten te besparen. 
++ Als u minder iteratieve experimenten uitvoert, moet u deze tijd beperken om kosten te besparen.
 + Als u een sterk iteratief dev/test-experiment wilt uitvoeren, moet u mogelijk de tijd verhogen zodat u niet betaalt voor constante schaling omhoog en omlaag na elke wijziging in uw trainings script of-omgeving.
 
 AmlCompute-clusters kunnen worden geconfigureerd voor uw gewijzigde werkbelasting vereisten in Azure Portal, met behulp van de [AMLCOMPUTE SDK-klasse](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) [AmlCompute cli](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute), met de [rest api's](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable).
@@ -106,31 +107,13 @@ Hier volgen enkele opties die u hebt:
 * Voor [afstemming tuning](how-to-tune-hyperparameters.md#early-termination)definieert u een beleid voor vroegtijdige beëindiging van een Bandit-beleid, een mediaan stop beleid of een selectie beleid voor afkap ping. Gebruik para meters zoals of als u afstemming-sweeps verder wilt beheren `max_total_runs` `max_duration_minutes` .
 * Stel voor [automatische machine learning](how-to-configure-auto-train.md#exit)soort gelijke afsluitings beleid in met behulp van de `enable_early_stopping` vlag. Gebruik ook eigenschappen zoals `iteration_timeout_minutes` en `experiment_timeout_minutes` om de maximale duur van een uitvoering of voor het hele experiment te bepalen.
 
-## <a name="use-low-priority-vms"></a>Virtuele machines met lage prioriteit gebruiken
+## <a name="use-low-priority-vms"></a><a id="low-pri-vm"></a>Virtuele machines met lage prioriteit gebruiken
 
 Met Azure kunt u overtollige ongebruikte capaciteit gebruiken als virtuele machines met lage prioriteit voor virtuele-machine schaal sets, batch en de Machine Learning service. Deze toewijzingen zijn pre-emptible, maar worden geleverd tegen een gereduceerde prijs vergeleken met toegewezen Vm's. Over het algemeen kunt u het beste virtuele machines met lage prioriteit gebruiken voor batch-workloads. U moet ze ook gebruiken waar onderbrekingen kunnen worden hersteld via opnieuw verzenden (voor batch destorie) of via het opnieuw opstarten (voor diepe trainingen met controle punten).
 
 Virtuele machines met lage prioriteit hebben één quotum gescheiden van de toegewezen quota waarde, die wordt door de VM-serie. Meer informatie [over AmlCompute-quota's](how-to-manage-quotas.md).
 
-Stel op een van de volgende manieren de prioriteit van de virtuele machine in:
-
-* Kies in de Studio **lage prioriteit** bij het maken van een virtuele machine.
-
-* Stel in de python-SDK het `vm_priority` kenmerk in uw inrichtings configuratie in.  
-
-    ```python
-    compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_D2_V2',
-                                                               vm_priority='lowpriority',
-                                                               max_nodes=4)
-    ```
-
-* Stel met behulp van de CLI het `vm-priority` volgende in:
-
-    ```azurecli-interactive
-    az ml computetarget create amlcompute --name lowpriocluster --vm-size Standard_NC6 --max-nodes 5 --vm-priority lowpriority
-    ```
-
- Vm's met lage prioriteit werken niet voor reken instanties, omdat ze interactieve notitieblok ervaringen moeten ondersteunen. 
+ Vm's met lage prioriteit werken niet voor reken instanties, omdat ze interactieve notitieblok ervaringen moeten ondersteunen.
 
 ## <a name="use-reserved-instances"></a>Gereserveerde instanties gebruiken
 
@@ -143,5 +126,5 @@ Azure Machine Learning Compute ondersteunt gereserveerde instanties inherent. Al
 
 Meer informatie over:
 * [Resource quota beheren en verhogen](how-to-manage-quotas.md)
-* [Kosten beheren met [kosten analyse](../cost-management-billing/costs/quick-acm-cost-analysis.md).
+* [Kosten beheren met kosten analyse](../cost-management-billing/costs/quick-acm-cost-analysis.md).
 * [Azure machine learning Compute](how-to-set-up-training-targets.md#amlcompute).

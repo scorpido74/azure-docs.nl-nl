@@ -10,16 +10,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 9d0964fb28451abe0a77276d6f9d605fcaac2514
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 72ccf2a765f50358635e4a803ed0b92e60bd7d19
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86156425"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012209"
 ---
 # <a name="azure-machine-learning-curated-environments"></a>Azure Machine Learningde gecuratore omgevingen
 
-In dit artikel vindt u een overzicht van de gewerkte omgevingen in Azure Machine Learning en de pakketten en kanalen die vooraf zijn geïnstalleerd.
+In dit artikel vindt u een overzicht van de gewerkte omgevingen in Azure Machine Learning en de pakketten en kanalen die vooraf zijn geïnstalleerd. Gehoste omgevingen worden verzorgd door Azure Machine Learning en zijn standaard beschikbaar in uw werk ruimte. Ze worden ondersteund door docker-installatie kopieën in de cache, waardoor de kosten voor het uitvoeren van de voor bereiding worden verminderd en sneller worden geïmplementeerd. Gebruik deze omgevingen om snel aan de slag te gaan met diverse machine learning frameworks.
 
 > [!NOTE]
 > Deze lijst wordt bijgewerkt vanaf juni 2020. Gebruik de python-SDK om de meest recente lijst op te halen. Zie het [artikel omgevingen](./how-to-use-environments.md#use-a-curated-environment)voor meer informatie.

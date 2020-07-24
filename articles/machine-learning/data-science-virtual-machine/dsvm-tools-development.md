@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: c48cf6a7a82e90d3c9d8dc4c35e37dfb944af99f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 42a595246f45b2c7423aaf77c95f17243cf8813c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80282678"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012380"
 ---
 # <a name="development-tools-on-the-azure-data-science-virtual-machine"></a>Ontwikkel hulpprogramma's op de Azure Data Science Virtual Machine
 
@@ -23,7 +23,7 @@ De Data Science Virtual Machine (DSVM) bundelt verschillende populaire hulpprogr
 
 ## <a name="visual-studio-community-edition"></a>Visual Studio Community Edition
 
-|    |           |
+| Categorie | Waarde |
 | ------------- | ------------- |
 | Wat is het?   | IDE voor algemeen gebruik      |
 | Ondersteunde DSVM-versies      | Windows: Visual Studio 2017, Windows 2019: Visual Studio 2019      |
@@ -37,7 +37,7 @@ De Data Science Virtual Machine (DSVM) bundelt verschillende populaire hulpprogr
 
 ## <a name="visual-studio-code"></a>Visual Studio Code 
 
-|    |           |
+| Categorie | Waarde |
 | ------------- | ------------- |
 | Wat is het?   | IDE voor algemeen gebruik      |
 | Ondersteunde DSVM-versies      | Windows, Linux     |
@@ -47,7 +47,7 @@ De Data Science Virtual Machine (DSVM) bundelt verschillende populaire hulpprogr
 
 ## <a name="rstudio-desktop"></a>RStudio Desktop
 
-|    |           |
+| Categorie | Waarde |
 | ------------- | ------------- |
 | Wat is het?   | Client-IDE voor R-taal   |
 | Ondersteunde DSVM-versies      | Windows, Linux      |
@@ -57,7 +57,7 @@ De Data Science Virtual Machine (DSVM) bundelt verschillende populaire hulpprogr
 
 ## <a name="rstudio-server"></a>RStudio Server
 
-|    |           |
+| Categorie | Waarde |
 | ------------- | ------------- |
 | Wat is het?   | Client-IDE voor R-taal   |
 | Wat is het?   | IDE op basis van het web voor R    |
@@ -68,7 +68,7 @@ De Data Science Virtual Machine (DSVM) bundelt verschillende populaire hulpprogr
 
 ## <a name="juno"></a>Juno 
 
-|    |           |
+| Categorie | Waarde |
 | ------------- | ------------- |
 | Wat is het?   | Client-IDE voor Julia-taal   |
 | Ondersteunde DSVM-versies      | Windows, Linux      |
@@ -78,7 +78,7 @@ De Data Science Virtual Machine (DSVM) bundelt verschillende populaire hulpprogr
 
 ## <a name="pycharm"></a>Pycharm
 
-|    |           |
+| Categorie | Waarde |
 | ------------- | ------------- |
 | Wat is het?   | Client-IDE voor python-taal    |
 | Ondersteunde DSVM-versies      | Windows 2019, Linux      |
