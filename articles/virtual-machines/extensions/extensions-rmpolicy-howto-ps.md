@@ -1,5 +1,5 @@
 ---
-title: Azure Policy gebruiken om de installatie van de VM-extensie te beperken
+title: Azure Policy gebruiken om de installatie van VM-extensies te beperken (Windows)
 description: Gebruik Azure Policy om uitbreidings implementaties te beperken.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 96cd16c08421a4e365391c0db0b257f71a06551f
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: e4959c9dca909afde4bf6d351d79ecca1e4022a0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919803"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069755"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>Azure Policy gebruiken om de installatie van extensies op Windows-Vm's te beperken
 
@@ -98,7 +98,7 @@ Wanneer u klaar bent, drukt u op **CTRL + O** en vervolgens op **Enter** om het 
 
 ## <a name="create-the-policy"></a>Beleid maken
 
-Een beleids definitie is een object dat wordt gebruikt voor het opslaan van de configuratie die u wilt gebruiken. De beleids definitie gebruikt de regels en parameter bestanden om het beleid te definiëren. Een beleids definitie maken met de cmdlet [New-AzPolicyDefinition](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicydefinition) .
+Een beleids definitie is een object dat wordt gebruikt voor het opslaan van de configuratie die u wilt gebruiken. De beleids definitie gebruikt de regels en parameter bestanden om het beleid te definiëren. Een beleids definitie maken met de cmdlet [New-AzPolicyDefinition](/powershell/module/az.resources/new-azpolicydefinition) .
 
  De beleids regels en para meters zijn de bestanden die u hebt gemaakt en opgeslagen als json-bestanden in uw Cloud shell.
 
@@ -117,9 +117,9 @@ $definition = New-AzPolicyDefinition `
 
 ## <a name="assign-the-policy"></a>Wijs het beleid toe
 
-In dit voor beeld wordt het beleid toegewezen aan een resource groep met behulp van [New-AzPolicyAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicyassignment). Elke VM die in de resource groep **myResourceGroup** is gemaakt, kan de VM-toegangs agent of aangepaste script extensies niet installeren. 
+In dit voor beeld wordt het beleid toegewezen aan een resource groep met behulp van [New-AzPolicyAssignment](/powershell/module/az.resources/new-azpolicyassignment). Elke VM die in de resource groep **myResourceGroup** is gemaakt, kan de VM-toegangs agent of aangepaste script extensies niet installeren. 
 
-De [Get-AzSubscription gebruiken | Maak](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription) de cmdlet Table om uw abonnements-id op te halen die u wilt gebruiken in plaats van het voor beeld.
+De [Get-AzSubscription gebruiken | Maak](/powershell/module/az.accounts/get-azsubscription) de cmdlet Table om uw abonnements-id op te halen die u wilt gebruiken in plaats van het voor beeld.
 
 ```azurepowershell-interactive
 $scope = "/subscriptions/<subscription id>/resourceGroups/myResourceGroup"

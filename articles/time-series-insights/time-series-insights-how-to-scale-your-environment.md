@@ -5,21 +5,22 @@ ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 04/17/2020
+ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9604f0c6eeb9d0ac4b7d07f1ab1ba03285fd60fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a552f03c8a8fa05ed7d2c6eb87374d4e7e17838d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81640069"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87070084"
 ---
-# <a name="how-to-scale-your-time-series-insights-environment"></a>Uw Time Series Insights omgeving schalen
+# <a name="how-to-scale-your-azure-time-series-insights-gen1-environment"></a>Uw Azure Time Series Insights gen1-omgeving schalen
 
-In dit artikel wordt beschreven hoe u de capaciteit van uw Time Series Insights omgeving kunt wijzigen met behulp van de [Azure Portal](https://portal.azure.com). Capaciteit is de vermenigvuldiger die wordt toegepast op de ingangs frequentie, opslag capaciteit en kosten die zijn gekoppeld aan uw geselecteerde SKU.
+In dit artikel wordt beschreven hoe u de capaciteit van uw Azure Time Series Insights omgeving kunt wijzigen met behulp van de [Azure Portal](https://portal.azure.com). Capaciteit is de vermenigvuldiger die wordt toegepast op de ingangs frequentie, opslag capaciteit en kosten die zijn gekoppeld aan uw geselecteerde SKU.
 
 U kunt de Azure Portal gebruiken om de capaciteit binnen een bepaalde prijs-SKU te verg Roten of te verkleinen.
 
@@ -31,11 +32,11 @@ Het wijzigen van de SKU van de prijs categorie is echter niet toegestaan. Een om
 
 ## <a name="change-the-capacity-of-your-environment"></a>De capaciteit van uw omgeving wijzigen
 
-1. Zoek en selecteer uw Time Series Insights omgeving in het Azure Portal.
+1. Zoek en selecteer uw Azure Time Series Insights omgeving in het Azure Portal.
 
-1. Selecteer **opslag configuratie**in het menu voor uw time series Insights omgeving.
+1. Selecteer **opslag configuratie**in het menu voor uw Azure time series Insights omgeving.
 
-   [![Uw Time Series Insights capaciteit configureren](media/scale-your-environment/scale-your-environment-configure.png)](media/scale-your-environment/scale-your-environment-configure.png#lightbox)
+   [![Uw Azure Time Series Insights capaciteit configureren](media/scale-your-environment/scale-your-environment-configure.png)](media/scale-your-environment/scale-your-environment-configure.png#lightbox)
 
 1. Pas de schuif regelaar **capaciteit** aan om de capaciteit te selecteren die voldoet aan de vereisten voor uw ingangs tarieven en opslag capaciteit. Let op de **ingangs rente**, **opslag capaciteit**en **geschatte kosten** update dynamisch om de impact van de wijziging weer te geven.
 
@@ -49,8 +50,8 @@ Het wijzigen van de SKU van de prijs categorie is echter niet toegestaan. Een om
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Lees voor meer informatie [uitleg over retentie in time series Insights](time-series-insights-concepts-retention.md).
+- Lees voor meer informatie [uitleg over retentie in azure time series Insights](time-series-insights-concepts-retention.md).
 
-- Meer informatie over het [configureren van gegevens retentie in azure time series Insights](time-series-insights-how-to-configure-retention.md).
+- Meer informatie over het [configureren van gegevens retentie in Azure Azure time series Insights](time-series-insights-how-to-configure-retention.md).
 
 - Meer informatie over [het plannen van uw omgeving](time-series-insights-environment-planning.md).

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/01/2020
 ms.author: v-miegge
-ms.openlocfilehash: dea09b1ac29db99e1c52a31a605007fa4129e8ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f59903ed111be1fe414f4b3ded250d754c91d323
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300524"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069150"
 ---
 # <a name="troubleshoot-boot-error---disk-read-error-occurred"></a>Opstart fout oplossen-schijf lees fout opgetreden
 
@@ -26,7 +27,7 @@ Dit artikel bevat stappen voor het oplossen van problemen waarbij de schijf niet
 
 ## <a name="symptoms"></a>Symptomen
 
-Wanneer u [Diagnostische gegevens over opstarten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) gebruikt om de scherm opname van de virtuele machine weer te geven, ziet u dat de scherm opname wordt weer gegeven met het bericht ' er is een lees fout opgetreden bij het lezen van de schijf. Druk op Ctrl+Alt+Del om opnieuw op te starten’.
+Wanneer u [Diagnostische gegevens over opstarten](./boot-diagnostics.md) gebruikt om de scherm opname van de virtuele machine weer te geven, ziet u dat de scherm opname wordt weer gegeven met het bericht ' er is een lees fout opgetreden bij het lezen van de schijf. Druk op Ctrl+Alt+Del om opnieuw op te starten’.
 
    ![Fout bericht: er is een fout opgetreden bij het lezen van de schijf. Druk op CTRL + ALT + DEL om opnieuw op te starten.](./media/disk-read-error-occurred/1.png)
 
@@ -50,7 +51,7 @@ Dit fout bericht geeft aan dat de schijf structuur beschadigd en onleesbaar is. 
 
 ### <a name="create-and-access-a-repair-vm"></a>Een herstel-VM maken en openen
 
-1. Gebruik stap 1-3 van de [VM-reparatie opdrachten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) om een herstel-VM voor te bereiden.
+1. Gebruik stap 1-3 van de [VM-reparatie opdrachten](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) om een herstel-VM voor te bereiden.
 1. Maak met behulp van Verbinding met extern bureaublad verbinding met de herstel-VM.
 
 ### <a name="set-partition-status-to-active"></a>Partitie status instellen op actief
@@ -142,4 +143,4 @@ Virtuele machines van de eerste generatie moeten eerst controleren of de besturi
    
 ### <a name="rebuild-the-vm"></a>De virtuele machine opnieuw bouwen
 
-Gebruik [stap 5 van de opdrachten voor het herstellen van de virtuele machine](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) om de virtuele machine opnieuw samen te stellen.
+Gebruik [stap 5 van de opdrachten voor het herstellen van de virtuele machine](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) om de virtuele machine opnieuw samen te stellen.

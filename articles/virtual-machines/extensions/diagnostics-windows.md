@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: mimckitt
-ms.openlocfilehash: 5aeae50c9cb7497c20f785f2a32c96f5a4fdec1e
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 9bb9b993b88b8f4b31bc56c6bb3fc16972bb6e41
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186976"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069807"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>Power shell gebruiken om Azure Diagnostics in te scha kelen op een virtuele machine met Windows
 
@@ -29,7 +29,7 @@ Azure Diagnostics is de mogelijkheid binnen Azure om het verzamelen van diagnost
 ## <a name="enable-the-diagnostics-extension-if-you-use-the-resource-manager-deployment-model"></a>De diagnostische uitbrei ding inschakelen als u het Resource Manager-implementatie model gebruikt
 U kunt de diagnostische uitbrei ding inschakelen tijdens het maken van een virtuele Windows-machine via het Azure Resource Manager-implementatie model door de extensie configuratie toe te voegen aan de Resource Manager-sjabloon. Zie [een virtuele Windows-machine met controle en diagnostische gegevens maken met behulp van de sjabloon Azure Resource Manager](diagnostics-template.md).
 
-Als u de uitbrei ding voor diagnostische gegevens wilt inschakelen op een bestaande virtuele machine die is gemaakt via het Resource Manager-implementatie model, kunt u de Power shell [-cmdlet Set-AzVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmdiagnosticsextension) gebruiken zoals hieronder wordt weer gegeven.
+Als u de uitbrei ding voor diagnostische gegevens wilt inschakelen op een bestaande virtuele machine die is gemaakt via het Resource Manager-implementatie model, kunt u de Power shell [-cmdlet Set-AzVMDiagnosticsExtension](/powershell/module/az.compute/set-azvmdiagnosticsextension) gebruiken zoals hieronder wordt weer gegeven.
 
 ```azurepowershell
 $vm_resourcegroup = "myvmresourcegroup"
@@ -52,7 +52,7 @@ Als het diagnostische opslag account zich in een ander abonnement dan de virtuel
 Set-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name -DiagnosticsConfigurationPath $diagnosticsconfig_path -StorageAccountName $diagnosticsstorage_name -StorageAccountKey $diagnosticsstorage_key
 ```
 
-Zodra de diagnostische uitbrei ding is ingeschakeld op een virtuele machine, kunt u de huidige instellingen ophalen met behulp van de cmdlet [Get-AzVmDiagnosticsExtension](https://docs.microsoft.com/powershell/module/az.compute/get-azvmdiagnosticsextension) .
+Zodra de diagnostische uitbrei ding is ingeschakeld op een virtuele machine, kunt u de huidige instellingen ophalen met behulp van de cmdlet [Get-AzVmDiagnosticsExtension](/powershell/module/az.compute/get-azvmdiagnosticsextension) .
 
 ```azurepowershell
 Get-AzVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name
@@ -67,13 +67,13 @@ $xmlconfig = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64
 Write-Host $xmlconfig
 ```
 
-De cmdlet [Remove-AzVmDiagnosticsExtension](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmdiagnosticsextension) kan worden gebruikt om de diagnostische uitbrei ding van de virtuele machine te verwijderen.  
+De cmdlet [Remove-AzVmDiagnosticsExtension](/powershell/module/az.compute/remove-azvmdiagnosticsextension) kan worden gebruikt om de diagnostische uitbrei ding van de virtuele machine te verwijderen.  
 
 ## <a name="enable-the-diagnostics-extension-if-you-use-the-classic-deployment-model"></a>De diagnostische uitbrei ding inschakelen als u het klassieke implementatie model gebruikt
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
-U kunt de cmdlet [set-AzureVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) gebruiken om een uitbrei ding van diagnostische gegevens in te scha kelen op een virtuele machine die u maakt via het klassieke implementatie model. In het volgende voor beeld ziet u hoe u een nieuwe virtuele machine maakt op basis van het klassieke implementatie model waarin de diagnostische uitbrei ding is ingeschakeld.
+U kunt de cmdlet [set-AzureVMDiagnosticsExtension](/powershell/module/servicemanagement/azure.service/set-azurevmdiagnosticsextension) gebruiken om een uitbrei ding van diagnostische gegevens in te scha kelen op een virtuele machine die u maakt via het klassieke implementatie model. In het volgende voor beeld ziet u hoe u een nieuwe virtuele machine maakt op basis van het klassieke implementatie model waarin de diagnostische uitbrei ding is ingeschakeld.
 
 ```azurepowershell
 $VM = New-AzureVMConfig -Name $VM -InstanceSize Small -ImageName $VMImage
@@ -82,7 +82,7 @@ $VM = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path
 New-AzVM -Location $Location -ServiceName $Service_Name -VM $VM
 ```
 
-Als u de diagnostische uitbrei ding wilt inschakelen op een bestaande virtuele machine die is gemaakt via het klassieke implementatie model, gebruikt u eerst de cmdlet [Get-AzureVM](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azurevm) om de VM-configuratie op te halen. Werk vervolgens de configuratie van de virtuele machine bij met de extensie voor diagnostische gegevens met behulp van de cmdlet [set-AzureVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) . Ten slotte past u de bijgewerkte configuratie toe op de virtuele machine met behulp van [Update-AzureVM](https://docs.microsoft.com/powershell/module/servicemanagement/azure/update-azurevm).
+Als u de diagnostische uitbrei ding wilt inschakelen op een bestaande virtuele machine die is gemaakt via het klassieke implementatie model, gebruikt u eerst de cmdlet [Get-AzureVM](/powershell/module/servicemanagement/azure.service/get-azurevm) om de VM-configuratie op te halen. Werk vervolgens de configuratie van de virtuele machine bij met de extensie voor diagnostische gegevens met behulp van de cmdlet [set-AzureVMDiagnosticsExtension](/powershell/module/servicemanagement/azure.service/set-azurevmdiagnosticsextension) . Ten slotte past u de bijgewerkte configuratie toe op de virtuele machine met behulp van [Update-AzureVM](/powershell/module/servicemanagement/azure.service/update-azurevm).
 
 ```azurepowershell
 $VM = Get-AzureVM -ServiceName $Service_Name -Name $VM_Name
@@ -212,5 +212,4 @@ De configuratie moet worden bijgewerkt om het volgende te kunnen bevatten:
 
 ## <a name="next-steps"></a>Volgende stappen
 * Zie voor meer informatie over het gebruik van de Azure Diagnostics mogelijkheden en andere technieken voor het oplossen van problemen [Diagnostische gegevens inschakelen in Azure Cloud Services en virtual machines](../../cloud-services/cloud-services-dotnet-diagnostics.md).
-* In [schema voor diagnostische configuraties](https://msdn.microsoft.com/library/azure/mt634524.aspx) worden de verschillende opties voor XML-configuraties voor de uitbrei ding van diagnostische gegevens uitgelegd.
-
+* In [schema voor diagnostische configuraties](/azure/azure-monitor/platform/diagnostics-extension-versions) worden de verschillende opties voor XML-configuraties voor de uitbrei ding van diagnostische gegevens uitgelegd.

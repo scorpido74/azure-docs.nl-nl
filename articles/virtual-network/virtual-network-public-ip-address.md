@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: kumud
-ms.openlocfilehash: 2f71a1d26543e7436dee039592d120b52d5c9fea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7da6c0f88ae68f473e57590824e675299f7d524b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710963"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068565"
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>Een openbaar IP-adres maken, wijzigen of verwijderen
 
@@ -46,7 +46,7 @@ Open bare IP-adressen hebben een nominale belasting. Lees de pagina met [prijzen
 
 ## <a name="create-a-public-ip-address"></a>Een openbaar IP-adres maken
 
-1. Selecteer in het menu van de Azure-portal of op de **startpagina** de optie **Een resource maken**.
+1. Selecteer in het menu van Azure Portal of op de **Startpagina** de optie **Een resource maken**.
 2. Geef het *open bare IP-adres* op in het vak *Zoeken in de Marketplace* . Wanneer het **open bare IP-adres** wordt weer gegeven in de zoek resultaten, selecteert u dit.
 3. Selecteer onder **openbaar IP-adres** **maken**.
 4. Typ of selecteer waarden voor de volgende instellingen onder **openbaar IP-adres maken**en selecteer vervolgens **maken**:
@@ -55,7 +55,7 @@ Open bare IP-adressen hebben een nominale belasting. Lees de pagina met [prijzen
    |---|---|---|
    |IP-versie|Yes| Selecteer IPv4 of IPv6 of beide. Als u beide selecteert, worden er twee open bare IP-adressen gemaakt: 1 IPv4-adres en één IPv6-adres. Meer informatie over [IPv6 in azure VNETs](../virtual-network/ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).|
    |SKU|Yes|Alle open bare IP-adressen die zijn gemaakt voor de introductie van Sku's zijn de open bare IP-adressen van de **basis** -SKU. U kunt de SKU niet wijzigen nadat het open bare IP-adres is gemaakt. Een zelfstandige virtuele machine, virtuele machines binnen een beschikbaarheidsset of schaal sets voor virtuele machines kunnen gebruikmaken van basis-of standaard-Sku's. Het is niet toegestaan Sku's te mengen tussen virtuele machines binnen beschikbaarheids sets of schaal sets of zelfstandige Vm's. **Basis** SKU: als u een openbaar IP-adres maakt in een regio die beschikbaarheids zones ondersteunt, wordt de instelling voor de **beschikbaarheids zone** standaard ingesteld op *geen* . Algemene open bare Ip's bieden geen ondersteuning voor beschikbaarheids zones. **Standaard** SKU: een openbaar IP-adres van een standaard-SKU kan worden gekoppeld aan een virtuele machine of een load balancer front-end. Als u een openbaar IP-adres maakt in een regio die beschikbaarheids zones ondersteunt, wordt de instelling voor de **beschikbaarheids zone** standaard ingesteld op *zone-redundant* . Zie de instelling **beschikbaarheids zone** voor meer informatie over beschikbaarheids zones. De standaard-SKU is vereist als u het adres koppelt aan een standaard load balancer. Zie [Azure Load Balancer Standard SKU](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)voor meer informatie over standaard load balancers. Als u een openbaar IP-adres van een standaard-SKU toewijst aan een netwerkinterface van een virtuele machine, moet u het bedoelde verkeer expliciet toestaan met een [netwerkbeveiligingsgroep](security-overview.md#network-security-groups). Communicatie met de resource mislukt totdat u een netwerkbeveiligingsgroep maakt en koppelt en het gewenste verkeer expliciet toestaat.|
-   |Name|Yes|De naam moet uniek zijn binnen de resource groep die u selecteert.|
+   |Naam|Yes|De naam moet uniek zijn binnen de resource groep die u selecteert.|
    |IP-adrestoewijzing|Yes|**Dynamisch:** Dynamische adressen worden alleen toegewezen nadat een openbaar IP-adres aan een Azure-resource is gekoppeld en de resource voor de eerste keer wordt gestart. Dynamische adressen kunnen worden gewijzigd als ze zijn toegewezen aan een resource, zoals een virtuele machine, en de virtuele machine is gestopt (toewijzing ongedaan gemaakt) en vervolgens opnieuw gestart. Het adres blijft hetzelfde als een virtuele machine opnieuw wordt opgestart of gestopt (maar niet ongedaan gemaakt). Dynamische adressen worden vrijgegeven wanneer een open bare IP-adres bron wordt ontkoppeld van een bron waaraan deze is gekoppeld. **Statisch:** Statische adressen worden toegewezen wanneer een openbaar IP-adres wordt gemaakt. Statische adressen worden pas vrijgegeven nadat een open bare IP-adres resource is verwijderd. Als het adres niet aan een resource is gekoppeld, kunt u de toewijzings methode wijzigen nadat het adres is gemaakt. Als het adres aan een resource is gekoppeld, kunt u de toewijzings methode mogelijk niet wijzigen. Als u *IPv6* selecteert voor de **IP-versie**, moet de toewijzings methode *dynamisch* zijn voor de basis-SKU.  Standaard-SKU-adressen zijn *statisch* voor zowel IPv4 als IPv6. |
    |Time-out voor inactiviteit (minuten)|No|Hoe lang duurt het voordat een TCP-of HTTP-verbinding is geopend, zonder dat er wordt gebruikgemaakt van clients om Keep-Alive-berichten te verzenden. Als u IPv6 selecteert voor de **IP-versie**, kan deze waarde niet worden gewijzigd. |
    |DNS-naamlabel|No|Moet uniek zijn binnen de Azure-locatie waar u de naam maakt in (voor alle abonnementen en alle klanten). Azure registreert automatisch de naam en het IP-adres in DNS zodat u verbinding kunt maken met een resource met de naam. Azure voegt een standaard-subnet, zoals *location.cloudapp.Azure.com* (waarbij locatie de locatie is die u hebt geselecteerd), toe aan de naam die u opgeeft, om de volledig gekwalificeerde DNS-naam te maken. Als u ervoor kiest beide adres versies te maken, wordt dezelfde DNS-naam toegewezen aan zowel IPv4-als IPv6-adressen. De standaard-DNS van Azure bevat IPv4 A-en IPv6 AAAA-naam records en reageert met beide records wanneer de DNS-naam wordt opgezocht. De client kiest voor welk adres (IPv4 of IPv6) moet worden gecommuniceerd. In plaats van of naast het gebruik van het DNS-naamlabel met het standaardachtervoegsel, kunt u de Azure DNS-service gebruiken om een DNS-naam met een aangepast achtervoegsel te configureren dat wordt omgezet naar het openbare IP-adres. Zie [Azure DNS gebruiken met een openbaar IP-adres van Azure](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address) voor meer informatie.|
@@ -98,7 +98,7 @@ Hoewel de Portal de mogelijkheid biedt om twee open bare IP-adres bronnen te mak
 
 Meer informatie over het toewijzen van een openbaar IP-adres aan de volgende bronnen:
 
-- Een virtuele [Windows](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -of [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -machine (bij het maken) of een [bestaande virtuele machine](virtual-network-network-interface-addresses.md#add-ip-addresses)
+- Een virtuele [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -of [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -machine (bij het maken) of een [bestaande virtuele machine](virtual-network-network-interface-addresses.md#add-ip-addresses)
 - [Internet gerichte Load Balancer](../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Azure Application Gateway](../application-gateway/application-gateway-create-gateway-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Site-naar-site-verbinding met behulp van een Azure-VPN Gateway](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -108,7 +108,7 @@ Meer informatie over het toewijzen van een openbaar IP-adres aan de volgende bro
 
 Als u taken wilt uitvoeren op open bare IP-adressen, moet uw account worden toegewezen aan de rol [netwerk bijdrager](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) of aan een [aangepaste](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) rol waaraan de juiste acties in de volgende tabel zijn toegewezen:
 
-| Bewerking                                                             | Name                                                           |
+| Bewerking                                                             | Naam                                                           |
 | ---------                                                          | -------------                                                  |
 | Microsoft.Network/publicIPAddresses/read                           | Een openbaar IP-adres lezen                                          |
 | Microsoft.Network/publicIPAddresses/write                          | Een openbaar IP-adres maken of bijwerken                           |

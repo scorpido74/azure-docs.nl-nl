@@ -1,16 +1,17 @@
 ---
-title: App Service-abonnementen
+title: App Service-plannen
 description: Meer informatie over de werking van App Service plannen in Azure App Service, hoe deze worden gefactureerd voor de klant en hoe u deze kunt schalen voor uw behoeften.
 keywords: app service, Azure app service, schaal, schaalbaar, schaal baarheid, app service-plan, kosten van app service
 ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 11/09/2017
 ms.custom: seodec18
-ms.openlocfilehash: b1c44fb9f44eb75e6d2a766213c5db094ebe79b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93f823a623145f8dd8bf5118de973dfbc095bfb4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537641"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068201"
 ---
 # <a name="azure-app-service-plan-overview"></a>Overzicht van Azure App Service-plan
 
@@ -78,8 +79,10 @@ Er worden geen kosten in rekening gebracht voor het gebruik van de App Service f
 
 > [!NOTE]
 > Als u App Service integreert met een andere Azure-service, moet u mogelijk rekening houden met de kosten van deze andere services. Als u bijvoorbeeld Azure Traffic Manager gebruikt om uw app geografisch te schalen, worden er door Azure Traffic Manager ook kosten in rekening gebracht op basis van uw gebruik. Zie [prijs calculator](https://azure.microsoft.com/pricing/calculator/)voor informatie over het schatten van de kosten voor meerdere services in Azure. 
->
->
+
+Wilt u uw clouduitgaven optimaliseren en geld besparen?
+
+[!INCLUDE [cost-management-horizontal](../../includes/cost-management-horizontal.md)]
 
 ## <a name="what-if-my-app-needs-more-capabilities-or-features"></a>Wat moet ik doen als mijn app meer mogelijkheden of functies nodig heeft?
 

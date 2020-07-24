@@ -7,11 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 4625a0fa75f992ac18eeb91629af373a426aa955
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5e621cc3763cfa7fe28790baf2f5d9866c8d618
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676570"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069801"
 ---
 # <a name="error-messages-for-spot-vms-and-scale-sets"></a>Fout berichten voor de plaats van virtuele machines en schaal sets
 
@@ -34,7 +35,6 @@ Hier volgen enkele mogelijke fout codes die u kunt ontvangen bij het gebruik van
 | MaxPriceIsSupportedOnlyForAzureSpotVirtualMachines  |  De maximale prijs wordt alleen ondersteund voor Azure Spot Virtual Machines. | Zie [Spot Virtual Machines](./linux/spot-vms.md)voor meer informatie. |
 | MoveResourcesWithAzureSpotVMNotSupported  |  De aanvraag voor het verplaatsen van resources bevat een Azure spot-virtuele machine. Dit wordt momenteel niet ondersteund. Raadpleeg de fout Details voor de Id's van de virtuele machine. | U kunt geen spot Vm's verplaatsen. |
 | MoveResourcesWithAzureSpotVmssNotSupported  |  De aanvraag resources verplaatsen bevat een Azure spot-schaalset voor virtuele machines. Dit wordt momenteel niet ondersteund. Raadpleeg de fout Details voor de virtuele-machine schaal sets-Id's. | U kunt geen instanties van de set met steun schalen verplaatsen. |
-| EphemeralOSDisksNotSupportedForSpotVMs | Tijdelijke besturingssysteem schijven worden niet ondersteund voor spot-Vm's. | Gebruik een reguliere besturingssysteem schijf voor uw spot-VM. |
 | AzureSpotVMNotSupportedInVmssWithVMOrchestrationMode | De virtuele machine van Azure spot wordt niet ondersteund in de Schaalset voor virtuele machines met de modus VM-indeling. | Stel de Orchestration-modus in op virtuele-machine schaal sets om spot instanties te gebruiken. |
 
 

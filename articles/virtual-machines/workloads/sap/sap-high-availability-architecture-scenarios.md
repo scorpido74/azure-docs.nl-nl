@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 045c73e3efefb29aac6bb25a8661fd510e351926
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5eee96702a5efbddcc66c2a0e428640f0848442a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84021123"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068621"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>Architectuur en scenario's met hoge Beschik baarheid voor SAP net-Weaver
 
@@ -288,12 +289,12 @@ Er wordt een beschikbaarheidsset gebruikt voor het bereiken van hoge Beschik baa
 
 
 ### <a name="azure-availability-zones"></a>Azure-beschikbaarheidszones
-Azure is bezig met het implementeren van een concept van [Azure-beschikbaarheidszones](https://docs.microsoft.com/azure/availability-zones/az-overview) in verschillende [Azure-regio's](https://azure.microsoft.com/global-infrastructure/regions/). In azure-regio's waar Beschikbaarheidszones worden aangeboden, hebben de Azure-regio's meerdere data centers, die onafhankelijk zijn van de levering van voedings bronnen, koeling en netwerk. Reden voor het aanleveren van verschillende zones binnen één Azure-regio is om te zorgen dat u toepassingen kunt implementeren op twee of drie Beschikbaarheidszones worden aangeboden. Ervan uitgaande dat problemen in energie bronnen en/of netwerk van invloed zijn op één infra structuur voor de beschikbaarheids zone, is de implementatie van uw toepassing binnen een Azure-regio nog steeds volledig functioneel. Uiteindelijk met enige gereduceerde capaciteit is het mogelijk dat sommige Vm's in de ene zone verloren zijn gegaan. Virtuele machines in de andere twee zones zijn echter nog actief. De Azure-regio's die zones aanbieden, worden weer gegeven in [Azure-beschikbaarheidszones](https://docs.microsoft.com/azure/availability-zones/az-overview).
+Azure is bezig met het implementeren van een concept van [Azure-beschikbaarheidszones](../../../availability-zones/az-overview.md) in verschillende [Azure-regio's](https://azure.microsoft.com/global-infrastructure/regions/). In azure-regio's waar Beschikbaarheidszones worden aangeboden, hebben de Azure-regio's meerdere data centers, die onafhankelijk zijn van de levering van voedings bronnen, koeling en netwerk. Reden voor het aanleveren van verschillende zones binnen één Azure-regio is om te zorgen dat u toepassingen kunt implementeren op twee of drie Beschikbaarheidszones worden aangeboden. Ervan uitgaande dat problemen in energie bronnen en/of netwerk van invloed zijn op één infra structuur voor de beschikbaarheids zone, is de implementatie van uw toepassing binnen een Azure-regio nog steeds volledig functioneel. Uiteindelijk met enige gereduceerde capaciteit is het mogelijk dat sommige Vm's in de ene zone verloren zijn gegaan. Virtuele machines in de andere twee zones zijn echter nog actief. De Azure-regio's die zones aanbieden, worden weer gegeven in [Azure-beschikbaarheidszones](../../../availability-zones/az-overview.md).
 
 Er zijn enkele dingen die u kunt overwegen om Beschikbaarheidszones te gebruiken. De lijst met overwegingen zoals:
 
 - U kunt geen Azure-beschikbaarheids sets implementeren binnen een beschikbaarheids zone. U moet een beschikbaarheids zone of een Beschikbaarheidsset voor een VM kiezen.
-- U kunt de [basis Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) niet gebruiken om failover-cluster oplossingen te maken op basis van Windows Failover Cluster-Services of Linux-pacemaker. In plaats daarvan moet u de [Azure Standard load BALANCER SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) gebruiken
+- U kunt de [basis Load Balancer](../../../load-balancer/load-balancer-overview.md) niet gebruiken om failover-cluster oplossingen te maken op basis van Windows Failover Cluster-Services of Linux-pacemaker. In plaats daarvan moet u de [Azure Standard load BALANCER SKU](../../../load-balancer/load-balancer-standard-availability-zones.md) gebruiken
 - Azure-beschikbaarheidszones geen garanties geven voor bepaalde afstanden tussen de verschillende zones binnen één regio
 - De netwerk latentie tussen de verschillende Azure-beschikbaarheidszones binnen de verschillende Azure-regio's kan verschillen van de Azure-regio naar de regio. Er zijn gevallen waarin u als klant redelijkerwijs de SAP-toepassingslaag kunt uitvoeren die in verschillende zones is geïmplementeerd, omdat de netwerk latentie van de ene zone naar de actieve DBMS-VM nog steeds acceptabel is voor een bedrijfs proces. Overwegende dat er klanten scenario's zijn waarbij de latentie tussen de actieve DBMS-VM in de ene zone en een SAP-toepassings exemplaar in een virtuele machine in een andere zone te opvallend en niet acceptabel voor de SAP-bedrijfs processen is. Als gevolg hiervan moeten de implementatie architecturen verschillen met een actieve/actieve architectuur voor de toepassing of de actieve/passieve architectuur als de latentie te hoog is.
 - Het gebruik van [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/) is verplicht voor de implementatie in azure-beschikbaarheidszones 
@@ -354,12 +355,12 @@ _**Afbeelding 1:** SAP-toepassings server met hoge Beschik baarheid_
 
 U moet alle virtuele machines die SAP Application Server-exemplaren hosten in dezelfde Azure-beschikbaarheidsset plaatsen. Een beschikbaarheidsset van Azure zorgt ervoor dat:
 
-* Alle virtuele machines maken deel uit van hetzelfde update domein.  
+* Alle virtuele machines maken geen deel uit van hetzelfde update domein.  
     Een update domein zorgt ervoor dat de virtuele machines niet tegelijkertijd worden bijgewerkt tijdens de uitval tijd voor gepland onderhoud.
 
     De basis functionaliteit, die voortbouwt op verschillende update-en fout domeinen binnen een Azure-schaal eenheid, is al geïntroduceerd in de sectie [Update domeinen][planning-guide-3.2.2] .
 
-* Alle virtuele machines maken deel uit van hetzelfde fout domein.  
+* Alle virtuele machines maken geen deel uit van hetzelfde fout domein.  
     Een fout domein zorgt ervoor dat virtuele machines worden geïmplementeerd, zodat er geen Single Point of Failure invloed heeft op de beschik baarheid van alle virtuele machines.
 
 Het aantal update-en fout domeinen dat kan worden gebruikt door een Azure-beschikbaarheidsset binnen een Azure-schaal eenheid is eindig. Als u Vm's aan één beschikbaarheidsset toevoegt, worden er uiteindelijk twee of meer Vm's in hetzelfde fout-of update domein beëindigd.
@@ -390,7 +391,7 @@ U kunt een WSFC-oplossing gebruiken om het SAP ASCS/SCS-exemplaar te beveiligen.
 
 * **Het SAP ASCS/SCS-exemplaar met behulp van de bestands share clusteren**: Zie [een SAP ASCS/SCS-exemplaar op een Windows-failovercluster clusteren met behulp van de bestands share][sap-high-availability-guide-wsfc-file-share]voor meer informatie over deze architectuur.
 
-* **De SAP ASCS/SCS-instantie clusteren met behulp van ANF SMB-share**: Zie cluster [cluster a SAP ASCS/SCS instance op een Windows-failovercluster met behulp van ANF SMB-bestands share](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb)voor meer informatie over deze architectuur.
+* **De SAP ASCS/SCS-instantie clusteren met behulp van ANF SMB-share**: Zie cluster [cluster a SAP ASCS/SCS instance op een Windows-failovercluster met behulp van ANF SMB-bestands share](./high-availability-guide-windows-netapp-files-smb.md)voor meer informatie over deze architectuur.
 
 ### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-linux"></a>Architectuur met hoge Beschik baarheid voor een SAP ASCS/SCS-instantie in Linux
 
@@ -398,7 +399,7 @@ U kunt een WSFC-oplossing gebruiken om het SAP ASCS/SCS-exemplaar te beveiligen.
 > 
 > Zie voor meer informatie over het clusteren van het SAP ASCS/SCS-exemplaar met behulp van het SLES-Cluster Framework [hoge Beschik baarheid voor SAP NetWeaver op Azure vm's op SuSE Linux Enterprise Server voor SAP-toepassingen][sap-suse-ascs-ha]. Voor een alternatieve architectuur voor SLES, waarvoor geen Maxi maal beschik bare NFS vereist is, raadpleegt u de [hand leiding met hoge Beschik baarheid voor SAP NetWeaver op SuSE Linux Enterprise Server met Azure NetApp files voor SAP-toepassingen][sap-suse-ascs-ha-anf].
 
-Voor meer informatie over het clusteren van het SAP ASCS/SCS-exemplaar met behulp van het Red Hat-Cluster Framework, Zie [Azure virtual machines hoge Beschik baarheid voor SAP NetWeaver op Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)
+Voor meer informatie over het clusteren van het SAP ASCS/SCS-exemplaar met behulp van het Red Hat-Cluster Framework, Zie [Azure virtual machines hoge Beschik baarheid voor SAP NetWeaver op Red Hat Enterprise Linux](./high-availability-guide-rhel.md)
 
 
 ### <a name="sap-netweaver-multi-sid-configuration-for-a-clustered-sap-ascsscs-instance"></a>Multi-SID-configuratie van SAP net-Weaver voor een geclusterde SAP ASCS/SCS-instantie
@@ -418,8 +419,8 @@ Voor meer informatie over het clusteren van het SAP ASCS/SCS-exemplaar met behul
 > Multi-SID clustering wordt ondersteund op Linux pacemaker-clusters voor SAP ASCS/ERS, beperkt tot **vijf** SAP-sid's op hetzelfde cluster.
 > Zie voor meer informatie over architectuur met een hoge Beschik baarheid voor multi-SID op Linux:
 
-* [HA voor SAP NW op Azure Vm's op SLES voor SAP-toepassingen multi-SID-hand leiding](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
-* [HA voor SAP NW op Azure Vm's op RHEL voor SAP-toepassingen multi-SID-hand leiding](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
+* [HA voor SAP NW op Azure Vm's op SLES voor SAP-toepassingen multi-SID-hand leiding](./high-availability-guide-suse-multi-sid.md)
+* [HA voor SAP NW op Azure Vm's op RHEL voor SAP-toepassingen multi-SID-hand leiding](./high-availability-guide-rhel-multi-sid.md)
 
 ### <a name="high-availability-dbms-instance"></a>DBMS-exemplaar met hoge Beschik baarheid
 

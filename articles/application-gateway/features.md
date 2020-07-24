@@ -7,11 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: victorh
-ms.openlocfilehash: f021eed959ef88a1ef3671e1d0ace8080710c92a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 560d836f99f7a1be85007bb9d488f80a68d7999b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80810230"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067974"
 ---
 # <a name="azure-application-gateway-features"></a>Azure-toepassing gateway functies
 
@@ -23,18 +24,18 @@ Application Gateway bevat de volgende functies:
 
 - [Beëindiging van Secure Sockets Layer (SSL/TLS)](#secure-sockets-layer-ssltls-termination)
 - [Automatisch schalen](#autoscaling)
-- [Zone redundantie](#zone-redundancy)
+- [Zoneredundantie](#zone-redundancy)
 - [Statisch VIP](#static-vip)
 - [Web Application Firewall](#web-application-firewall)
 - [Controller van inkomend verkeer voor AKS](#ingress-controller-for-aks)
-- [Route ring op basis van URL](#url-based-routing)
+- [URL-gebaseerde routering](#url-based-routing)
 - [Hosting van meerdere sites](#multiple-site-hosting)
 - [Omleiding](#redirection)
 - [Sessieaffiniteit](#session-affinity)
 - [Websocket- en HTTP-/2-verkeer](#websocket-and-http2-traffic)
 - [Verwerkingsstop voor verbindingen](#connection-draining)
 - [Aangepaste foutpagina's](#custom-error-pages)
-- [HTTP-headers opnieuw genereren](#rewrite-http-headers)
+- [HTTP-headers en URL opnieuw schrijven](#rewrite-http-headers-and-url)
 - [Grootte aanpassen](#sizing)
 
 ## <a name="secure-sockets-layer-ssltls-termination"></a>Beëindiging van Secure Sockets Layer (SSL/TLS)
@@ -49,7 +50,7 @@ Application Gateway Standard_v2 ondersteunt automatisch schalen en kan omhoog of
 
 Zie [v2 SKU](application-gateway-autoscaling-zone-redundant.md)voor automatisch schalen voor meer informatie over de functies van Application Gateway Standard_v2.
 
-## <a name="zone-redundancy"></a>Zone redundantie
+## <a name="zone-redundancy"></a>Zoneredundantie
 
 Een Standard_v2 Application Gateway kan meerdere Beschikbaarheidszones omvatten, waardoor er betere fout tolerantie wordt geboden en de nood zaak voor het inrichten van afzonderlijke toepassings gateways in elke zone wordt verwijderd.
 
@@ -82,13 +83,13 @@ Zie [URL-pad op basis van route ring-overzicht](url-route-overview.md)voor meer 
 
 ## <a name="multiple-site-hosting"></a>Hosting van meerdere sites
 
-Door meerdere sites te hosten, kunt u meer dan een website configureren op dezelfde instantie van de toepassingsgateway. Met deze functie kunt u een efficiëntere topologie voor uw implementaties configureren door Maxi maal 100 websites aan één Application Gateway toe te voegen (voor optimale prestaties). Elke website kan worden omgeleid naar een eigen pool. Application Gateway kan bijvoorbeeld verkeer regelen voor `contoso.com` en `fabrikam.com` vanaf twee servergroepen genaamd ContosoServerPool en FabrikamServerPool.
+Met Application Gateway kunt u route ring configureren op basis van hostnaam of domein naam voor meer dan één webtoepassing op dezelfde toepassings gateway. Hiermee kunt u een efficiëntere topologie voor uw implementaties configureren door Maxi maal 100 websites toe te voegen aan één toepassings gateway. Elke website kan worden omgeleid naar een eigen back-endpool. Bijvoorbeeld drie domeinen, contoso.com, fabrikam.com en adatum.com, wijs naar het IP-adres van de toepassings gateway. U maakt drie multi-site listeners en configureert elke listener voor de respectieve poort-en protocol instelling. 
 
-Aanvragen voor `http://contoso.com` worden gerouteerd naar ContosoServerPool en aanvragen voor `http://fabrikam.com` worden gerouteerd naar FabrikamServerPool.
+Aanvragen voor `http://contoso.com` worden doorgestuurd naar ContosoServerPool, `http://fabrikam.com` worden doorgestuurd naar FabrikamServerPool, enzovoort.
 
-Op dezelfde manier kunnen twee subdomeinen van hetzelfde bovenliggende domein worden gehost op dezelfde implementatie van een toepassingsgateway. Voorbeelden van subdomeinen die worden gehost op één toepassingsgateway-implementatie, zijn `http://blog.contoso.com` en `http://app.contoso.com`.
+Op dezelfde manier kunnen twee subdomeinen van hetzelfde bovenliggende domein worden gehost op dezelfde implementatie van een toepassingsgateway. Voorbeelden van subdomeinen die worden gehost op één toepassingsgateway-implementatie, zijn `http://blog.contoso.com` en `http://app.contoso.com`. Zie [Application Gateway multiple site hosting](multiple-site-overview.md)(Engelstalig) voor meer informatie.
 
-Zie [Application Gateway multiple site hosting](multiple-site-overview.md)(Engelstalig) voor meer informatie.
+U kunt ook hostnamen voor joker tekens definiëren in een multi-site-listener en Maxi maal vijf hostnamen per listener. Zie [namen van hostnamen in listener (preview)](multiple-site-overview.md#wildcard-host-names-in-listener-preview)voor meer informatie.
 
 ## <a name="redirection"></a>Omleiding
 
@@ -130,7 +131,7 @@ Met Application Gateway kunt u aangepaste foutpagina's maken in plaats van stand
 
 Zie [aangepaste fouten](custom-error.md)voor meer informatie.
 
-## <a name="rewrite-http-headers"></a>HTTP-headers opnieuw genereren
+## <a name="rewrite-http-headers-and-url"></a>HTTP-headers en URL opnieuw schrijven
 
 Met HTTP-headers kunnen de client en server aanvullende informatie door geven met de aanvraag of het antwoord. Het herschrijven van deze HTTP-headers helpt u bij het uitvoeren van verschillende belang rijke scenario's, zoals:
 
@@ -138,9 +139,11 @@ Met HTTP-headers kunnen de client en server aanvullende informatie door geven me
 - De velden van de antwoord header worden verwijderd die gevoelige informatie kunnen onthullen.
 - Poort gegevens van X-doorgestuurd-voor kopteksten
 
-Application Gateway ondersteunt de mogelijkheid om HTTP-aanvragen en-antwoord headers toe te voegen, te verwijderen of bij te werken, terwijl de aanvraag-en antwoord pakketten tussen de client en de back-end-pool worden verplaatst. Het biedt ook de mogelijkheid om voor waarden toe te voegen om ervoor te zorgen dat de opgegeven headers alleen worden herschreven wanneer aan bepaalde voor waarden wordt voldaan.
+Application Gateway en WAF v2 SKU ondersteunt de mogelijkheid om HTTP-aanvragen en-antwoord headers toe te voegen, te verwijderen of bij te werken, terwijl de aanvraag-en antwoord pakketten tussen de client en de back-end-groepen worden verplaatst. U kunt ook Url's, query reeks parameters en hostnaam herschrijven. Met het herschrijven van URL'S en op URL-pad gebaseerde route ring kunt u aanvragen routeren naar een van de back-endservers op basis van het oorspronkelijke pad of het herschrijf bare pad met behulp van de optie voor het opnieuw evalueren van het pad. 
 
-Zie [HTTP-headers herschrijven](rewrite-http-headers.md)voor meer informatie.
+Het biedt ook de mogelijkheid om voor waarden toe te voegen om ervoor te zorgen dat de opgegeven headers of URL'S alleen worden herschreven wanneer aan bepaalde voor waarden wordt voldaan. Deze voor waarden zijn gebaseerd op de aanvraag-en antwoord informatie.
+
+Zie [HTTP-headers en URL herschrijven](rewrite-http-headers-url.md)voor meer informatie.
 
 ## <a name="sizing"></a>Grootte aanpassen
 
@@ -152,7 +155,7 @@ Zie [Servicelimieten voor Application Gateway](../azure-resource-manager/managem
 
 De volgende tabel toont een gemiddelde prestaties doorvoer voor elke Application Gateway v1-instantie waarvoor SSL-offload is ingeschakeld:
 
-| Gemiddelde grootte van een antwoord van de back-endpagina | Klein | Normaal | Groot |
+| Gemiddelde grootte van een antwoord van de back-endpagina | Klein | Middelgroot | Groot |
 | --- | --- | --- | --- |
 | 6 kB |7,5 Mbps |13 Mbps |50 Mbps |
 | 100 kB |35 Mbps |100 Mbps |200 Mbps |

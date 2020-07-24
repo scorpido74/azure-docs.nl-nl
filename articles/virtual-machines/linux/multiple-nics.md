@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
-ms.openlocfilehash: ecbff4beadd9d10a8489c89cc322c0bb67ec5f40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 054462834d2712b8db10b40f2d7befdf330eec48
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84706678"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069510"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Een virtuele Linux-machine in azure maken met meerdere netwerk interface kaarten
 
@@ -167,7 +167,7 @@ Azure Resource Manager sjablonen gebruiken declaratieve JSON-bestanden om uw omg
 }
 ```
 
-Meer informatie over [het maken van meerdere exemplaren met behulp van *kopiëren*](../../resource-group-create-multiple.md). 
+Meer informatie over [het maken van meerdere exemplaren met behulp van *kopiëren*](../../azure-resource-manager/templates/copy-resources.md). 
 
 U kunt ook een gebruiken `copyIndex()` om een nummer toe te voegen aan een resource naam, zodat u `myNic1` ,, enzovoort, kunt maken `myNic2` . Hieronder ziet u een voor beeld van het toevoegen van de index waarde:
 

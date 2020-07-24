@@ -1,5 +1,5 @@
 ---
-title: Een schaalset maken op basis van een gegeneraliseerde installatie kopie
+title: Een schaalset maken op basis van een gegeneraliseerde installatie kopie met Azure CLI
 description: Een schaalset maken met behulp van een gegeneraliseerde installatie kopie in een galerie met gedeelde afbeeldingen.
 author: cynthn
 ms.service: virtual-machine-scale-sets
@@ -9,13 +9,14 @@ ms.topic: how-to
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 59e29be2aade993c8aeae64b4aa4918b36a26b26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3cde06b652befa8fbb655273c19f65bd2f38e850
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82797134"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069847"
 ---
-# <a name="create-a-scale-set-from-a-generalized-image"></a>Een schaalset maken op basis van een gegeneraliseerde installatie kopie
+# <a name="create-a-scale-set-from-a-generalized-image-with-azure-cli"></a>Een schaalset maken op basis van een gegeneraliseerde installatie kopie met Azure CLI
 
 Een schaalset maken van een gegeneraliseerde installatie kopie-versie die is opgeslagen in een [Galerie met gedeelde afbeeldingen](shared-image-galleries.md) met behulp van de Azure cli. Zie [instanties van een schaalset maken op basis van een gespecialiseerde](instance-specialized-image-version-cli.md)afbeelding als u een schaalset wilt maken met behulp van een gespecialiseerde afbeeldings versie.
 

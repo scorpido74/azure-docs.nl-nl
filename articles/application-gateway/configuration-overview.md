@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: absha
-ms.openlocfilehash: 0245a23e46770840295904685c913826950c0642
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 892ace66c4994f4c2e263d529d69e505ed9c1c1f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517838"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068030"
 ---
 # <a name="application-gateway-configuration-overview"></a>Overzicht van Application Gateway configuratie
 
@@ -286,7 +286,7 @@ Met behulp van regels voor herschrijven kunt u HTTP (S)-aanvragen en-antwoord he
 De para meters headers en URL kunnen worden ingesteld op statische waarden of op andere headers en Server variabelen. Dit helpt bij belang rijke gebruiks gevallen, zoals het extra heren van client-IP-adressen, het verwijderen van gevoelige informatie over de back-end, het toevoegen van meer beveiliging, enzovoort.
 Zie voor meer informatie:
 
- - [Overzicht van HTTP-headers opnieuw schrijven](rewrite-http-headers-url.md)
+ - [Overzicht van HTTP-headers en URL'S opnieuw schrijven](rewrite-http-headers-url.md)
  - [Herschrijven van HTTP-header configureren](rewrite-http-headers-portal.md)
  - [URL opnieuw schrijven configureren](rewrite-url-portal.md)
 

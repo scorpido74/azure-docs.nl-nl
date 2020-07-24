@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/02/2019
 ms.author: rimayber
 ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
-ms.openlocfilehash: dc77f3267813bd049274f44e43c4d64b0eb3801e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 67b635f09cb9407279e89b5f7b8526dab3c08946
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120276"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068523"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>TCP/IP-prestaties afstemmen voor Azure-Vm's
 
@@ -125,9 +125,8 @@ Voor Azure wordt u aangeraden TCP MSS in te stellen op 1.350 bytes en de tunnel 
 
 De netwerk latentie is onderhevig aan de snelheid van het licht via een glasvezel netwerk. De netwerk doorvoer van TCP wordt ook effectief beheerst door de RTT (round-trip) tussen twee netwerk apparaten.
 
-| | | | |
-|-|-|-|-|
-|**Route**|**Tussen**|**Tijd in één richting**|**RTT**|
+| Route | Afstand | Tijd in één richting | RTT |
+| ----- | -------- | ------------ | --- |
 |New York naar San Francisco|4.148 km|21 MS|42 MS|
 |New York naar Londen|5.585 km|28 MS|56 MS|
 |New York naar Sydney|15.993 km|80 MS|160 MS|
@@ -162,9 +161,8 @@ Dit is de formule voor het berekenen van de maximale door Voer van één TCP-ver
 
 In deze tabel wordt de maximale door Voer van het aantal mega bytes/per seconde van één TCP-verbinding weer gegeven. (Voor de Lees baarheid worden mega bytes voor de maat eenheid gebruikt.)
 
-| | | | |
-|-|-|-|-|
-|**TCP-venster grootte (bytes)**|**Latentie van RTT (MS)**|**Maximale door Voer van MB/seconde**|**Maximale door Voer van megabit/seconde**|
+| TCP-venster grootte (bytes) | Latentie van RTT (MS) | Maximale door Voer van MB/seconde | Maximale door Voer van megabit/seconde |
+| ----------------------- | ---------------- | ---------------------------------- | --------------------------------- |
 |65.535|1|65,54|524,29|
 |65.535|30|2,18|17,48|
 |65.535|60|1.09|8,74|
@@ -179,9 +177,8 @@ TCP-venster schalen is een techniek waarmee de TCP-venster grootte dynamisch wor
 
 Deze tabel illustreert de volgende relaties:
 
-| | | | |
-|-|-|-|-|
-|**TCP-venster grootte (bytes)**|**Latentie van RTT (MS)**|**Maximale door Voer van MB/seconde**|**Maximale door Voer van megabit/seconde**|
+| TCP-venster grootte (bytes) | Latentie van RTT (MS) | Maximale door Voer van MB/seconde | Maximale door Voer van megabit/seconde |
+| ----------------------- | ---------------- | ---------------------------------- | --------------------------------- |
 |65.535|30|2,18|17,48|
 |131.070|30|4,37|34,95|
 |262.140|30|8,74|69,91|
@@ -221,9 +218,8 @@ Set-NetTCPSetting
 
 Dit zijn de effectiefste TCP-instellingen voor `AutoTuningLevel` :
 
-| | | | |
-|-|-|-|-|
-|**AutoTuningLevel**|**Schaal factor**|**Vermenigvuldigings factor schalen**|**Formule voor het berekenen van de <br/> Maximale venster grootte**|
+| AutoTuningLevel | Schaal factor | Vermenigvuldigings factor schalen | Formule naar<br/>Maximum venster grootte berekenen |
+| --------------- | -------------- | ------------------ | -------------------------------------------- |
 |Uitgeschakeld|Geen|Geen|Venster grootte|
 |Beperkt|4|2 ^ 4|Venster grootte * (2 ^ 4)|
 |Zeer beperkt|2|2 ^ 2|Venster grootte * (2 ^ 2)|

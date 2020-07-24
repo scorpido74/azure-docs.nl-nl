@@ -6,11 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: alkohli
-ms.openlocfilehash: d9a75cde58062061149fa4304eace587b1480dd1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 55cc3049e437cc18eac6dc537de3ee1c0d894c23
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76277036"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87070336"
 ---
 # <a name="storsimple-solution-support"></a>Ondersteuning voor StorSimple-oplossingen
 
@@ -27,8 +28,8 @@ Micro soft biedt flexibele ondersteunings opties voor StorSimple Enter prise Sto
 
 ## <a name="storsimple-support-plans"></a>StorSimple-ondersteunings abonnementen
 
-|                                                                                                                                                     | **Standaard** <sup> i                                                 |  **Premium** <sup> i                                                                         |
-|---------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------|--------------------------------------------------------------------------------|
+| Ondersteunings functie | STANDAARD <sup> 1 | PREMIUM <sup> 1 |
+| --------------- | --------------- | -------------- |
 | Facturerings-en abonnements beheer                                                                     | ✓                                                                               | ✓                                                                              |
 | Verzenden van Azure Portal ticket                                                                          | ✓                                                                               | ✓                                                                              |
 | Portal toegang voor online ondersteuning                                                                            | ✓                                                                               | ✓                                                                              |

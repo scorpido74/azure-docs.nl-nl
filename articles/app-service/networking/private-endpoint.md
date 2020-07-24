@@ -9,12 +9,12 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: fdad2f7c2ce4f82529866b4235ebebab8da664d3
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 4fab75aef2a94ba7108085e9d5b5dbbf190342f6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054573"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068305"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Privé-eind punten gebruiken voor Azure-web-app (preview-versie)
 
@@ -127,7 +127,7 @@ De functie voor persoonlijke koppelingen en het persoonlijke eind punt worden re
 - Zie [een persoonlijke verbinding met een web-app maken met de portal voor meer informatie over][howtoguide1] het implementeren van een persoonlijk eind punt voor uw web-app via de portal
 - Zie [een persoonlijke verbinding met een web-app maken met Azure CLI voor meer informatie over][howtoguide2] het implementeren van een persoonlijk eind punt voor uw web-app met behulp van Azure cli
 - Zie [een persoonlijke verbinding met een web-app maken met Power shell voor meer informatie over][howtoguide3] het implementeren van een persoonlijk eind punt voor uw web-app
-
+- Zie voor het implementeren van een persoonlijk eind punt voor uw web-app met behulp van Azure-sjabloon [een persoonlijke verbinding maken met een web-app met Azure-sjabloon][howtoguide4]
 
 
 <!--Links-->
@@ -143,3 +143,4 @@ De functie voor persoonlijke koppelingen en het persoonlijke eind punt worden re
 [howtoguide1]: https://docs.microsoft.com/azure/private-link/create-private-endpoint-webapp-portal
 [howtoguide2]: https://docs.microsoft.com/azure/app-service/scripts/cli-deploy-privateendpoint
 [howtoguide3]: https://docs.microsoft.com/azure/app-service/scripts/powershell-deploy-private-endpoint
+[howtoguide4]: https://docs.microsoft.com/azure/app-service/scripts/template-deploy-private-endpoint

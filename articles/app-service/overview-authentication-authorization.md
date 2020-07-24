@@ -6,18 +6,14 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 9588777305ca42603623075b908eee5d76164c84
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 1b537e57edd777d78ce40d0ac4c5c6a7acca7659
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206751"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068218"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Verificatie en autorisatie in Azure App Service en Azure Functions
-
-> [!NOTE]
-> Op dit moment biedt ASP.NET Core momenteel geen ondersteuning voor het vullen van de huidige gebruiker met de functie voor verificatie/autorisatie.
->
 
 Azure App Service biedt ingebouwde ondersteuning voor verificatie en autorisatie, zodat u gebruikers kunt aanmelden en toegang hebt tot gegevens door minimale of geen code te schrijven in uw web-app, de REST-API en de mobiele back-end en ook [Azure functions](../azure-functions/functions-overview.md). In dit artikel wordt beschreven hoe App Service de verificatie en autorisatie voor uw app vereenvoudigt.
 
@@ -29,9 +25,12 @@ Voor beveiligde verificatie en autorisatie is grondige inzichten van beveiliging
 > De versies van de ASP.NET Core 2,1 en hoger die door App Service worden gehost, worden al bijgewerkt voor deze breuk wijziging en verwerkten gechrome 80 en oudere browsers op de juiste manier. Daarnaast wordt dezelfde patch voor ASP.NET Framework 4.7.2 geïmplementeerd in het App Service-exemplaar gedurende januari 2020. Zie [Azure app service SameSite cookie update](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/)(Engelstalig) voor meer informatie over hoe u weet of uw app de patch heeft ontvangen.
 >
 
+> [!NOTE]
+> De functie voor verificatie/autorisatie wordt ook wel ' eenvoudige verificatie ' genoemd.
+
 Zie [gebruikers verificatie en autorisatie voor mobiele apps met Azure app service](../app-service-mobile/app-service-mobile-auth.md)voor meer informatie over systeem eigen mobiele apps.
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Uitleg
 
 De module authenticatie en autorisatie wordt uitgevoerd in dezelfde sandbox als de code van uw toepassing. Wanneer deze is ingeschakeld, stuurt elke binnenkomende HTTP-aanvraag deze door voordat deze wordt verwerkt door de code van uw toepassing.
 
@@ -53,6 +52,10 @@ Voor alle taal Frameworks maakt App Service de claims in het inkomende token (of
 Voor [Azure functions](../azure-functions/functions-overview.md) `ClaimsPrincipal.Current` is niet ingevuld voor .net-code, maar u kunt wel de gebruikers claims in de aanvraag headers vinden of het `ClaimsPrincipal` object ophalen uit de context van de aanvraag of zelfs via een bindings parameter. Zie [werken met client identiteiten](../azure-functions/functions-bindings-http-webhook-trigger.md#working-with-client-identities) voor meer informatie.
 
 Zie voor meer informatie [gebruikers claims voor toegang](app-service-authentication-how-to.md#access-user-claims).
+
+> [!NOTE]
+> Op dit moment biedt ASP.NET Core momenteel geen ondersteuning voor het vullen van de huidige gebruiker met de functie voor verificatie/autorisatie. Het is echter wel mogelijk dat [middleware-onderdelen van derden worden geopend](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth) om deze ruimte te vullen.
+>
 
 ### <a name="token-store"></a>Tokenarchief
 
@@ -134,10 +137,6 @@ Met deze optie hoeft u geen verificatie code in uw app te schrijven. Nauw keurig
 
 > [!CAUTION]
 > Het beperken van de toegang op deze manier is van toepassing op alle aanroepen naar uw app. Dit is mogelijk niet wenselijk voor apps die een openbaar beschik bare start pagina willen, zoals in veel toepassingen met één pagina.
-
-> [!NOTE]
-> Verificatie/autorisatie was voorheen bekend als Easy auth.
->
 
 ## <a name="more-resources"></a>Meer bronnen
 

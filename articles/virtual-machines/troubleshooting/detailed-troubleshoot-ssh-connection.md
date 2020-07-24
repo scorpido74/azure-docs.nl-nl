@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: ee6d437915f6c87ce9ef5f9c711d90793a96048c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b4890181721d08b741d327adb74bd097be5c9f2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77920124"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069163"
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Gedetailleerde stappen om SSH-problemen op te lossen bij verbindingsproblemen van een Linux-VM in Azure
 Er zijn veel mogelijke redenen waarom de SSH-client de SSH-service mogelijk niet kan bereiken op de virtuele machine. Als u de meer [algemene stappen](troubleshoot-ssh-connection.md)voor het oplossen van SSH-problemen hebt gevolgd, moet u het verbindings probleem verder oplossen. In dit artikel vindt u gedetailleerde stappen voor probleem oplossing om te bepalen waar de SSH-verbinding is mislukt en hoe u deze kunt oplossen.
@@ -105,9 +106,9 @@ Als u nog geen VM in hetzelfde virtuele netwerk hebt, kunt u er eenvoudig een ma
 Als u een SSH-verbinding met een VM in hetzelfde virtuele netwerk kunt maken, controleert u de volgende gebieden:
 
 * **De eindpunt configuratie voor SSH-verkeer op de doel-VM.** De particuliere TCP-poort van het eind punt moet overeenkomen met de TCP-poort waarop de SSH-service op de VM luistert. (De standaard poort is 22). Controleer het SSH TCP-poort nummer in de Azure portal door **virtuele machines**  >  *VM naam*  >  **instellingen**  >  **eind punten**te selecteren.
-* **De ACL voor het SSH-verkeer eindpunt op de virtuele doel machine.** U kunt met een ACL het toegestane of geweigerde binnenkomende verkeer van Internet opgeven, op basis van het bron-IP-adres. Onjuist geconfigureerde Acl's kunnen binnenkomend SSH-verkeer naar het eind punt verhinderen. Controleer uw Acl's om ervoor te zorgen dat binnenkomend verkeer van de open bare IP-adressen van uw proxy of een andere Edge-Server wordt toegestaan. Zie [about Network Access Control Lists (acl's)](../../virtual-network/virtual-networks-acl.md)voor meer informatie.
+* **De ACL voor het SSH-verkeer eindpunt op de virtuele doel machine.** U kunt met een ACL het toegestane of geweigerde binnenkomende verkeer van Internet opgeven, op basis van het bron-IP-adres. Onjuist geconfigureerde Acl's kunnen binnenkomend SSH-verkeer naar het eind punt verhinderen. Controleer uw Acl's om ervoor te zorgen dat binnenkomend verkeer van de open bare IP-adressen van uw proxy of een andere Edge-Server wordt toegestaan. Zie [about Network Access Control Lists (acl's)](/previous-versions/azure/virtual-network/virtual-networks-acl)voor meer informatie.
 
-Als u het eind punt als een bron van het probleem wilt elimineren, verwijdert u het huidige eind punt, maakt u een ander eind punt en geeft u de SSH-naam op (TCP-poort 22 voor het open bare en particuliere poort nummer). Zie [eind punten instellen op een virtuele machine in azure](../windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)voor meer informatie.
+Als u het eind punt als een bron van het probleem wilt elimineren, verwijdert u het huidige eind punt, maakt u een ander eind punt en geeft u de SSH-naam op (TCP-poort 22 voor het open bare en particuliere poort nummer). Zie [eind punten instellen op een virtuele machine in azure](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints?toc=/azure/virtual-machines/windows/classic/toc.json)voor meer informatie.
 
 <a id="nsg"></a>
 
@@ -115,14 +116,14 @@ Als u het eind punt als een bron van het probleem wilt elimineren, verwijdert u 
 Met netwerk beveiligings groepen kunt u meer nauw keurige controle hebben over toegestaan binnenkomend en uitgaand verkeer. U kunt regels maken die subnetten en Cloud Services omvatten in een virtueel Azure-netwerk. Controleer de regels voor de netwerk beveiligings groep om ervoor te zorgen dat SSH-verkeer van en naar Internet wordt toegestaan.
 Zie [over netwerk beveiligings groepen](../../virtual-network/security-overview.md)voor meer informatie.
 
-U kunt ook IP-verificatie gebruiken om de NSG-configuratie te valideren. Zie overzicht van Azure- [netwerk bewaking](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)voor meer informatie. 
+U kunt ook IP-verificatie gebruiken om de NSG-configuratie te valideren. Zie overzicht van Azure- [netwerk bewaking](../../network-watcher/network-watcher-monitoring-overview.md)voor meer informatie. 
 
 ## <a name="source-5-linux-based-azure-virtual-machine"></a>Bron 5: Azure virtual machine op basis van Linux
 De laatste bron van mogelijke problemen is de virtuele Azure-machine zelf.
 
 ![Diagram voor het markeren van Azure virtual machine op basis van Linux](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot5.png)
 
-Als u dit nog niet hebt gedaan, volgt u de instructies [voor het opnieuw instellen van een op Linux gebaseerde virtuele machines op basis van een wacht woord](../linux/reset-password.md).
+Als u dit nog niet hebt gedaan, volgt u de instructies [voor het opnieuw instellen van een op Linux gebaseerde virtuele machines op basis van een wacht woord](./reset-password.md).
 
 Probeer opnieuw verbinding te maken vanaf uw computer. Als de service nog steeds mislukt, zijn dit enkele van de mogelijke problemen:
 
@@ -131,5 +132,5 @@ Probeer opnieuw verbinding te maken vanaf uw computer. Als de service nog steeds
 * De lokale firewall op de virtuele doel machine bevat regels die inkomend of uitgaand SSH-verkeer verhinderen.
 * De indringings detectie of de netwerk bewakings software die wordt uitgevoerd op de virtuele machine van Azure, verhindert SSH-verbindingen.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
-Zie [problemen oplossen met toegang tot een toepassing die wordt uitgevoerd op een virtuele machine van Azure](../linux/troubleshoot-app-connection.md) voor meer informatie over het oplossen van toepassings toegang
+## <a name="additional-resources"></a>Aanvullende resources
+Zie [problemen oplossen met toegang tot een toepassing die wordt uitgevoerd op een virtuele machine van Azure](./troubleshoot-app-connection.md) voor meer informatie over het oplossen van toepassings toegang

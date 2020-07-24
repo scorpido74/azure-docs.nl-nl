@@ -4,21 +4,23 @@ description: Dit artikel bevat een overzicht van de ondersteuning voor meerdere 
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 03/11/2020
+ms.date: 07/20/2020
 ms.author: amsriva
 ms.topic: conceptual
-ms.openlocfilehash: 4d945a255dacd35c61c3c80574b7d46b56de4aab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3e6bc6d2dd5568dcc11a37c6ab44bd3b4089c66
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80257407"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067943"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Meerdere sites in Application Gateway hosten
 
-Als u meerdere sites host, kunt u meer dan één webtoepassing configureren op dezelfde poort van een toepassings gateway. Met deze functie kunt u een efficiëntere topologie voor uw implementaties configureren door maximaal 100 websites toe te voegen aan één toepassingsgateway. Elke website kan worden omgeleid naar een eigen back-endpool. In het volgende voor beeld verzendt Application Gateway verkeer voor `contoso.com` en `fabrikam.com` van twee back-end-server Pools met de naam ContosoServerPool en FabrikamServerPool.
+Als u meerdere sites host, kunt u meer dan één webtoepassing configureren op dezelfde poort van een toepassings gateway. Hiermee kunt u een efficiëntere topologie voor uw implementaties configureren door Maxi maal 100 websites toe te voegen aan één toepassings gateway. Elke website kan worden omgeleid naar een eigen back-endpool. Bijvoorbeeld drie domeinen, contoso.com, fabrikam.com en adatum.com, wijs naar het IP-adres van de toepassings gateway. U maakt drie multi-site listeners en configureert elke listener voor de respectieve poort-en protocol instelling. 
 
-![imageURLroute](./media/multiple-site-overview/multisite.png)
+U kunt ook hostnamen voor joker tekens definiëren in een multi-site-listener en Maxi maal vijf hostnamen per listener. Zie [namen van hostnamen in listener](#wildcard-host-names-in-listener-preview)voor meer informatie.
+
+:::image type="content" source="./media/multiple-site-overview/multisite.png" alt-text="Application Gateway voor meerdere locaties":::
 
 > [!IMPORTANT]
 > Regels worden verwerkt in de volg orde waarin ze worden weer gegeven in de portal voor de V1-SKU. Voor de v2-SKU hebben exacte overeenkomsten een hogere prioriteit. Het is raadzaam om eerst listeners voor meerdere locaties te configureren voordat u een basislistener configureert.  Dit zorgt ervoor dat verkeer naar de juiste back-end wordt geleid. Als een basislistener als eerste wordt weergegeven en overeenkomt met een inkomende aanvraag, wordt deze door die listener verwerkt.
@@ -26,6 +28,56 @@ Als u meerdere sites host, kunt u meer dan één webtoepassing configureren op d
 Aanvragen voor `http://contoso.com` worden gerouteerd naar ContosoServerPool en aanvragen voor `http://fabrikam.com` worden gerouteerd naar FabrikamServerPool.
 
 Op dezelfde manier kunt u meerdere subdomeinen van hetzelfde bovenliggende domein hosten op dezelfde toepassings gateway-implementatie. U kunt bijvoorbeeld hosten `http://blog.contoso.com` en `http://app.contoso.com` op één toepassings Gateway implementeren.
+
+## <a name="wildcard-host-names-in-listener-preview"></a>Namen van hostnamen in de listener (preview-versie)
+
+Application Gateway staat route ring op basis van een host met behulp van HTTP (S)-listener op meerdere locaties toe. U hebt nu de mogelijkheid joker tekens als sterretje (*) en vraag teken (?) te gebruiken in de hostnaam en Maxi maal vijf hostnamen per multi-site HTTP (S)-listener. Bijvoorbeeld `*.contoso.com`.
+
+Als u een Joker teken in de hostnaam gebruikt, kunt u meerdere hostnamen in één listener vinden. `*.contoso.com`Kan bijvoorbeeld overeenkomen met en `ecom.contoso.com` , enzovoort `b2b.contoso.com` `customer1.b2b.contoso.com` . Als u een matrix met hostnamen gebruikt, kunt u meer dan één hostnaam voor een listener configureren om aanvragen naar een back-end-groep te routeren. Een listener kan bijvoorbeeld bevatten `contoso.com, fabrikam.com` waarmee aanvragen voor beide hostnamen worden geaccepteerd.
+
+:::image type="content" source="./media/multiple-site-overview/wildcard-listener-diag.png" alt-text="Joker-listener":::
+
+>[!NOTE]
+> Deze functie is in Preview en is alleen beschikbaar voor Standard_v2 en WAF_v2 SKU van Application Gateway. Zie hier voor meer informatie over het [gebruik van voor](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)beelden.
+
+In [Azure Portal](create-multiple-sites-portal.md)kunt u deze definiëren in afzonderlijke tekst vakken, zoals wordt weer gegeven in de onderstaande scherm afbeelding.
+
+:::image type="content" source="./media/multiple-site-overview/wildcard-listener-example.png" alt-text="Voorbeeld configuratie van Joker teken-listener":::
+
+>[!NOTE]
+>Als u een nieuwe listener voor meerdere sites maakt of meer dan een hostnaam toevoegt aan uw bestaande listener voor meerdere sites vanuit de Azure Portal, wordt deze standaard toegevoegd aan de `HostNames` para meter van de listener-configuratie, waardoor meer mogelijkheden aan de bestaande `HostName` para meter in de configuratie worden toegevoegd.
+
+In [Azure PowerShell](tutorial-multiple-sites-powershell.md)moet u in `-HostNames` plaats van gebruiken `-HostName` . Met HostNamen kunt u Maxi maal 5 hostnamen als door komma's gescheiden waarden vermelden en Joker tekens gebruiken. Bijvoorbeeld: `-HostNames "*.contoso.com,*.fabrikam.com"`
+
+In [Azure cli](tutorial-multiple-sites-cli.md)moet u `--host-names` in plaats van gebruiken `--host-name` . Met host-namen kunt u Maxi maal 5 hostnamen als door komma's gescheiden waarden vermelden en Joker tekens gebruiken. Bijvoorbeeld: `--host-names "*.contoso.com,*.fabrikam.com"`
+
+### <a name="allowed-characters-in-the-host-names-field"></a>Toegestane tekens in het veld hostnamen:
+
+* `(A-Z,a-z,0-9)`-alfanumerieke tekens
+* `-`-koppel teken of minteken
+* `.`-punt als scheidings teken
+*   `*`-kan overeenkomen met meerdere tekens in het toegestane bereik
+*   `?`-kan overeenkomen met één teken in het toegestane bereik
+
+### <a name="conditions-for-using-wildcard-characters-and-multiple-host-names-in-a-listener"></a>Voor waarden voor het gebruik van joker tekens en meerdere hostnamen in een listener:
+
+*   U kunt Maxi maal 5 hostnamen in één listener vermelden
+*   Sterretjes `*` kunnen slechts één keer worden vermeld in een onderdeel van een domein stijl naam of hostnaam. Bijvoorbeeld Component1 *. component2*. component3. `(*.contoso-*.com)`is geldig.
+*   De naam van een host mag Maxi maal twee sterretjes bevatten `*` . `*.contoso.*`Is bijvoorbeeld geldig en `*.contoso.*.*.com` is ongeldig.
+*   Een hostnaam mag Maxi maal 4 joker tekens bevatten. Zo zijn bijvoorbeeld `????.contoso.com` `w??.contoso*.edu.*` geldig, maar dit `????.contoso.*` is ongeldig.
+*   Het gebruik `*` van een sterretje en vraag teken `?` in een onderdeel van een hostnaam `*?` ( `?*` of `**` ) is ongeldig. `*?.contoso.com`En `**.contoso.com` zijn bijvoorbeeld ongeldig.
+
+### <a name="considerations-and-limitations-of-using-wildcard-or-multiple-host-names-in-a-listener"></a>Overwegingen en beperkingen van het gebruik van joker tekens of meerdere hostnamen in een listener:
+
+*   [SSL-beëindiging en end-to-end SSL](ssl-overview.md) vereist dat u het protocol CONFIGUREERT als HTTPS en een certificaat uploadt dat moet worden gebruikt in de configuratie van de listener. Als het een multi-site-listener is, kunt u ook de hostnaam invoeren. Dit is meestal de CN van het SSL-certificaat. Wanneer u meerdere hostnamen in de listener opgeeft of joker tekens gebruikt, moet u rekening houden met het volgende:
+    *   Als de hostnaam een Joker teken is, zoals *. contoso.com, moet u een certificaat met Joker tekens uploaden met CN als *. contoso.com
+    *   Als meerdere hostnamen worden vermeld in dezelfde listener, moet u een SAN-certificaat (alternatieve namen onderwerp) uploaden met de CNs die overeenkomt met de vermelde hostnamen.
+*   U kunt geen reguliere expressie gebruiken om de hostnaam te vermelden. U kunt alleen joker tekens als sterretje (*) en vraag teken (?) gebruiken om het patroon van de hostnaam te maken.
+*   Voor back-end status controle kunt u niet meerdere [aangepaste tests](application-gateway-probe-overview.md) per http-instellingen koppelen. In plaats daarvan kunt u een van de websites op de back-end testen of "127.0.0.1" gebruiken om de localhost van de back-endserver te testen. Wanneer u echter joker tekens of meerdere hostnamen in een listener gebruikt, worden de aanvragen voor alle opgegeven domein patronen doorgestuurd naar de back-end-groep, afhankelijk van het regel type (op basis of op basis van een pad).
+*   De eigenschappen ' hostname ' hebben één teken reeks als invoer, waarbij u slechts één niet-Joker teken domein naam kunt opgeven en ' hostnames ' een matrix van teken reeksen als invoer krijgt, waar u Maxi maal vijf joker tekens domein namen kunt vermelden. De eigenschappen kunnen echter niet tegelijk worden gebruikt.
+*   U kunt geen [omleidings](redirect-overview.md) regel maken met een doel-listener waarvoor joker tekens of meerdere hostnamen worden gebruikt.
+
+Zie [multi-site maken met behulp van Azure Portal](create-multiple-sites-portal.md) of [Azure POWERSHELL](tutorial-multiple-sites-powershell.md) of [Azure cli](tutorial-multiple-sites-cli.md) gebruiken voor stapsgewijze instructies over het configureren van hostnamen in een multi-site-listener.
 
 ## <a name="host-headers-and-server-name-indication-sni"></a>Hostheaders en Servernaamindicatie (SNI)
 
@@ -41,92 +93,8 @@ Application Gateway ondersteunt meerdere toepassingen elke die op verschillende 
 
 Application Gateway maakt gebruik van HTTP 1.1-hostheaders voor het hosten van meer dan één website op hetzelfde openbare IP-adres en dezelfde poort. De sites die worden gehost op Application Gateway kunnen ook TLS-offload ondersteunen met de Servernaamindicatie (SNI) TLS-extensie. Dit scenario houdt in dat de clientbrowser en back-end-webfarm de HTTP/1.1- en TLS-extensie moeten ondersteunen zoals gedefinieerd in RFC 6066.
 
-## <a name="listener-configuration-element"></a>Configuratie-element Listener
-
-Bestaande HTTPListener-configuratie-elementen zijn uitgebreid ter ondersteuning van de hostnaam en de server naam indicatie-elementen. Het wordt gebruikt door Application Gateway om verkeer door te sturen naar de juiste back-end-groep. 
-
-Het volgende code voorbeeld is het fragment van een HttpListeners-element van een sjabloon bestand:
-
-```json
-"httpListeners": [
-    {
-        "name": "appGatewayHttpsListener1",
-        "properties": {
-            "FrontendIPConfiguration": {
-                "Id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/frontendIPConfigurations/DefaultFrontendPublicIP"
-            },
-            "FrontendPort": {
-                "Id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/frontendPorts/appGatewayFrontendPort443'"
-            },
-            "Protocol": "Https",
-            "SslCertificate": {
-                "Id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/sslCertificates/appGatewaySslCert1'"
-            },
-            "HostName": "contoso.com",
-            "RequireServerNameIndication": "true"
-        }
-    },
-    {
-        "name": "appGatewayHttpListener2",
-        "properties": {
-            "FrontendIPConfiguration": {
-                "Id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/frontendIPConfigurations/appGatewayFrontendIP'"
-            },
-            "FrontendPort": {
-                "Id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/frontendPorts/appGatewayFrontendPort80'"
-            },
-            "Protocol": "Http",
-            "HostName": "fabrikam.com",
-            "RequireServerNameIndication": "false"
-        }
-    }
-],
-```
-
-U kunt ook [Resource Manager-sjabloon met het hosten van meerdere sites](https://github.com/Azure/azure-quickstart-templates/blob/master/201-application-gateway-multihosting) bezoeken voor een end-to-end implementatie op basis van sjablonen.
-
-## <a name="routing-rule"></a>Routeringsregel
-
-Er is geen wijziging vereist in de routerings regel. De routeringsregel Basic moet nog steeds worden gekozen om de geschikte site-listener te binden aan de overeenkomende back-end-adresgroep.
-
-```json
-"requestRoutingRules": [
-{
-    "name": "<ruleName1>",
-    "properties": {
-        "RuleType": "Basic",
-        "httpListener": {
-            "id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/httpListeners/appGatewayHttpsListener1')]"
-        },
-        "backendAddressPool": {
-            "id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/backendAddressPools/ContosoServerPool')]"
-        },
-        "backendHttpSettings": {
-            "id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/backendHttpSettingsCollection/appGatewayBackendHttpSettings')]"
-        }
-    }
-
-},
-{
-    "name": "<ruleName2>",
-    "properties": {
-        "RuleType": "Basic",
-        "httpListener": {
-            "id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/httpListeners/appGatewayHttpListener2')]"
-        },
-        "backendAddressPool": {
-            "id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/backendAddressPools/FabrikamServerPool')]"
-        },
-        "backendHttpSettings": {
-            "id": "/subscriptions/<subid>/resourceGroups/<rgName>/providers/Microsoft.Network/applicationGateways/applicationGateway1/backendHttpSettingsCollection/appGatewayBackendHttpSettings')]"
-        }
-    }
-
-}
-]
-```
-
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u meer hebt geleerd over het hosten van meerdere sites, gaat u naar [Een toepassingsgateway maken met het hosten van meerdere sites](tutorial-multiple-sites-powershell.md) om een toepassingsgateway te maken met de mogelijkheid om meer dan één webtoepassing te ondersteunen.
+Nadat u hebt geleerd hoe u meerdere sites kunt hosten, gaat u naar [meerdere sites maken met behulp van Azure Portal](create-multiple-sites-portal.md) of [gebruikt u Azure PowerShell](tutorial-multiple-sites-powershell.md) of [gebruikt u Azure cli](tutorial-multiple-sites-cli.md) voor stapsgewijze instructies over het maken van een Application Gateway om meerdere websites te hosten.
 
+U kunt ook [Resource Manager-sjabloon met het hosten van meerdere sites](https://github.com/Azure/azure-quickstart-templates/blob/master/201-application-gateway-multihosting) bezoeken voor een end-to-end implementatie op basis van sjablonen.

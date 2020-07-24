@@ -1,21 +1,25 @@
 ---
-title: De Azure-opslag emulator gebruiken voor ontwikkeling en tests | Microsoft Docs
+title: De Azure-opslag emulator gebruiken voor ontwikkelen en testen
 description: De Azure-opslag emulator biedt een gratis lokale ontwikkel omgeving voor het ontwikkelen en testen van uw Azure Storage-toepassingen.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 08/21/2019
+ms.date: 07/16/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.openlocfilehash: eb13dbb7e4cfbbb1b2ea42ea1753e7615df03a7d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd179160ad6796da40a5b98e89a10999ad0445d1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512175"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87070538"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>De Azure-opslag emulator gebruiken voor ontwikkelen en testen
 
 De Microsoft Azure Storage emulator is een hulp programma waarmee de Azure Blob-, wachtrij-en tabel services worden geëmuleerd voor lokale ontwikkelings doeleinden. U kunt uw toepassing lokaal testen op de opslag Services zonder een Azure-abonnement te maken of kosten te betalen. Als u tevreden bent over hoe uw toepassing werkt in de emulator, schakelt u over naar een Azure-opslag account in de Cloud.
+
+> [!IMPORTANT]
+> De Azure Storage-emulator wordt niet meer actief ontwikkeld. [**Azurite**](storage-use-azurite.md) is het opslag emulator platform. Azurite vervangt de Azure Storage-emulator. Azurite zal nog steeds worden bijgewerkt ter ondersteuning van de nieuwste versies van Azure Storage-Api's. Zie voor meer informatie [**de Azurite-emulator gebruiken voor het ontwikkelen van lokale Azure Storage**](storage-use-azurite.md).
 
 ## <a name="get-the-storage-emulator"></a>De opslag emulator ophalen
 
@@ -74,7 +78,7 @@ U kunt het opdracht regel programma voor de opslag-emulator gebruiken om de opsl
 
    `AzureStorageEmulator.exe init /server .`
 
-   U kunt ook de volgende opdracht gebruiken, waarmee de data base opnieuw wordt geïnitialiseerd naar het standaard LocalDB-exemplaar:
+   U kunt ook de volgende opdracht gebruiken, waarmee de data base wordt geïnitialiseerd naar het standaard LocalDB-exemplaar:
 
    `AzureStorageEmulator.exe init /forceCreate`
 
@@ -178,7 +182,7 @@ Vanaf versie 3,0 wordt een console venster weer gegeven wanneer u de opslag emul
 
 Typ `/help` bij de opdrachtprompt om een lijst met opties te zien.
 
-| Optie | Description | Opdracht | Argumenten |
+| Optie | Beschrijving | Opdracht | Argumenten |
 | --- | --- | --- | --- |
 | **Begin** |Hiermee wordt de opslag emulator gestart. |`AzureStorageEmulator.exe start [-inprocess]` |*-Opnieuw verwerken*: Start de emulator in het huidige proces in plaats van een nieuw proces te maken. |
 | **Stoppen** |Hiermee stopt u de opslag emulator. |`AzureStorageEmulator.exe stop` | |
@@ -327,3 +331,7 @@ Er zijn geen verschillen die specifiek zijn voor de wachtrij opslag in de emulat
 * Evalueer de platformoverschrijdende, door de Community beheerde open-source Storage emulator- [Azurite](https://github.com/azure/azurite). 
 * [Azure Storage-voor beelden met behulp van .net](../storage-samples-dotnet.md) bevatten koppelingen naar verschillende code voorbeelden die u kunt gebruiken bij het ontwikkelen van uw toepassing.
 * U kunt de [Microsoft Azure Storage Explorer](https://storageexplorer.com) gebruiken om te werken met resources in uw Cloud-opslag account en in de-opslag emulator.
+
+## <a name="see-also"></a>Zie ook
+
+* [Lokale Azure Storage ontwikkeling met Azurite, Azure Sdk's en Azure Storage Explorer](https://blog.jongallant.com/2020/04/local-azure-storage-development-with-azurite-azuresdks-storage-explorer/)
