@@ -8,11 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: 76bf38c9d15e977b39922fdfbc7d30f533707cda
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5f558aaa367d156a8a4fa8633f113c6480236f5b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801373"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038611"
 ---
 # <a name="monitor-the-security-of-your-containers"></a>De beveiliging van uw containers bewaken
 
@@ -35,13 +36,11 @@ Op deze pagina wordt uitgelegd hoe u de beveiligings functies van de container k
 
 1. U kunt de scan van een afbeelding activeren door deze naar uw REGI ster te pushen. 
 
-    Wanneer de scan is voltooid (doorgaans na ongeveer 10 minuten), zijn er conclusies beschikbaar in Security Center aanbevelingen.
-    
+    Wanneer de scan is voltooid (doorgaans na ongeveer 2 minuten, maar Maxi maal 15 minuten kan zijn), zijn er conclusies beschikbaar als Security Center aanbevelingen als volgt:
 
 1. Ga naar de pagina **aanbevelingen** om de resultaten weer te geven. Als er problemen zijn gevonden, wordt de volgende aanbeveling weer gegeven:
 
     ![Aanbeveling voor het oplossen van problemen ](media/monitor-container-security/acr-finding.png)
-
 
 1. Selecteer de aanbeveling. 
     De pagina met aanbevelings Details wordt geopend met aanvullende informatie. Deze informatie omvat de lijst met registers met kwets bare installatie kopieën ("betrokken bronnen") en de herstels tappen. 

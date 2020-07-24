@@ -2,13 +2,13 @@
 title: De Azure Monitor voor de agent voor containers beheren | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u de meest voorkomende onderhouds taken beheert met de Log Analytics agent die wordt gebruikt door Azure Monitor voor containers.
 ms.topic: conceptual
-ms.date: 06/15/2020
-ms.openlocfilehash: fc5bc0d60cb4ef1e375a997cbb3fe4bd2aed3235
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/21/2020
+ms.openlocfilehash: 1a397dbc5ebc4952b09c504b70df6ad99c00b216
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107407"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041261"
 ---
 # <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>De Azure Monitor voor de agent voor containers beheren
 
@@ -30,31 +30,12 @@ Het proces voor het upgraden van de agent op AKS-clusters bestaat uit twee recht
 
 Als u de nieuwe versie van de agent wilt installeren, volgt u de stappen die worden beschreven in de [controle inschakelen met Azure cli](container-insights-enable-new-cluster.md#enable-using-azure-cli)om dit proces te volt ooien.  
 
-Nadat u de bewaking opnieuw hebt ingeschakeld, kan het ongeveer 15 minuten duren voordat u bijgewerkte metrische gegevens voor de status voor het cluster kunt weer geven. Voer de volgende opdracht uit om te controleren of de upgrade van de agent is uitgevoerd:`kubectl logs omsagent-484hw --namespace=kube-system`
+Nadat u de bewaking opnieuw hebt ingeschakeld, kan het ongeveer 15 minuten duren voordat u bijgewerkte metrische gegevens voor de status voor het cluster kunt weer geven. Als u wilt controleren of de upgrade van de agent is uitgevoerd, kunt u het volgende doen:
 
-De status moet lijken op het volgende voor beeld, waarbij de waarde voor *Omi* en *omsagent* moet overeenkomen met de nieuwste versie die is opgegeven in de [release geschiedenis](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)van de agent.  
+* Voer de opdracht uit: `kubectl get pod <omsagent-pod-name> -n kube-system -o=jsonpath='{.spec.containers[0].image}'` . In de status die is geretourneerd, noteert u de waarde onder **afbeelding** voor omsagent in de sectie *containers* van de uitvoer.
+* Op het tabblad **knoop punten** selecteert u het cluster knooppunt en in het deel venster **Eigenschappen** aan de rechter kant, noteer de waarde onder **Agent-installatie kopie code**.
 
-```console
-User@aksuser:~$ kubectl logs omsagent-484hw --namespace=kube-system
-:
-:
-instance of Container_HostInventory
-{
-    [Key] InstanceID=3a4407a5-d840-4c59-b2f0-8d42e07298c2
-    Computer=aks-nodepool1-39773055-0
-    DockerVersion=1.13.1
-    OperatingSystem=Ubuntu 16.04.3 LTS
-    Volume=local
-    Network=bridge host macvlan null overlay
-    NodeRole=Not Orchestrated
-    OrchestratorType=Kubernetes
-}
-Primary Workspace: b438b4f6-912a-46d5-9cb1-b44069212abc
-Status: Onboarded(OMSAgent Running)
-omi 1.4.2.5
-omsagent 1.6.0-163
-docker-cimprov 1.0.0.31
-```
+De versie van de weer gegeven agent moet overeenkomen met de meest recente versie die wordt vermeld op de pagina [release geschiedenis](https://github.com/microsoft/docker-provider/tree/ci_feature_prod) .
 
 ### <a name="upgrade-agent-on-hybrid-kubernetes-cluster"></a>Upgrade agent op hybride Kubernetes-cluster
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 88f06bd30c97f857cd5a81068322a95c480a7b34
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 3b86c249630f7bfa5c2d319577c66d750b0f6268
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187418"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045904"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Azure-beveiligings basislijn voor Automation
 
@@ -918,7 +918,7 @@ Wanneer u de functie Hybrid Runbook Worker gebruikt, gebruikt u Azure Security C
 
 * [Wat zijn Azure Policy effecten?](../governance/policy/concepts/effects.md)
 
-* [Een Automation-account implementeren met behulp van een Azure Resource Manager sjabloon](./automation-create-account-template.md#deploy-the-template)
+* [Een Automation-account implementeren met behulp van een Azure Resource Manager sjabloon](./quickstart-create-automation-account-template.md#deploy-the-template)
 
 * [Azure Policy voor beeld van ingebouwde invoeg toepassingen voor Azure Automation](./policy-samples.md)
 
@@ -1064,7 +1064,7 @@ Wanneer u de functie Hybrid Runbook Worker gebruikt, gebruikt u Azure Automation
 
 **Richt lijnen**: referentie scanner implementeren om referenties in code te identificeren. Referentie scanner stimuleert ook het verplaatsen van gedetecteerde referenties naar veiliger locaties, zoals Azure Key Vault.
 
-* [Referentie scanner instellen](https://secdevtools.azurewebsites.net/helpcredscan.htm)
+* [Referentie scanner instellen](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -1124,7 +1124,7 @@ Gebruik de functie integratie van bron beheer om uw runbooks in uw Automation-ac
 
 * [Azure Resource Manager-sjabloon verwijzing voor Azure Automation resources](/azure/templates/microsoft.automation/allversions)
 
-* [Een Automation-account maken met behulp van een Azure Resource Manager sjabloon](./automation-create-account-template.md)
+* [Een Automation-account maken met behulp van een Azure Resource Manager sjabloon](./quickstart-create-automation-account-template.md)
 
 * [Eén en meerdere resources exporteren naar een sjabloon in Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -1150,7 +1150,7 @@ Gebruik de functie integratie van bron beheer om uw runbooks in uw Automation-ac
 
 * [Azure Resource Manager-sjabloon verwijzing voor Azure Automation resources](/azure/templates/microsoft.automation/allversions)
 
-* [Een Automation-account maken met behulp van een Azure Resource Manager sjabloon](./automation-create-account-template.md)
+* [Een Automation-account maken met behulp van een Azure Resource Manager sjabloon](./quickstart-create-automation-account-template.md)
 
 * [Eén en meerdere resources exporteren naar een sjabloon in Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -1198,7 +1198,7 @@ Gebruik de functie integratie van bron beheer om uw runbooks in uw Automation-ac
 
 **Verantwoordelijkheid**: klant
 
-## <a name="incident-response"></a>Incidentrespons
+## <a name="incident-response"></a>Reageren op incidenten
 
 *Zie voor meer informatie [beveiligings beheer: reactie op incidenten](../security/benchmarks/security-control-incident-response.md).*
 

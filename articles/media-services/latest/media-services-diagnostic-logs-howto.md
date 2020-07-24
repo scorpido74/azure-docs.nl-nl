@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: 4d4587c701a054828fc34785e2ae680fef47625d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19acd39be11a33424008662eb27cd68ec0005f77
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80382916"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038950"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Diagnostische logboeken van Media Services controleren
 
@@ -28,7 +28,7 @@ In dit artikel wordt beschreven hoe u gegevens naar het opslag account rondstuur
 
 ## <a name="prerequisites"></a>Vereisten
 
-- [Maak een Media Services-account](create-account-cli-how-to.md).
+- [Een Azure Media Services-account maken](./create-account-howto.md).
 - Controleren [Media Services metrische gegevens en Diagnostische logboeken](media-services-metrics-diagnostic-logs.md).
 
 ## <a name="route-data-to-the-storage-account-using-the-portal"></a>Gegevens naar het opslag account routeren met behulp van de portal
@@ -178,7 +178,7 @@ Wellicht moet u vijf minuten wachten voordat de gebeurtenis in het opslagaccount
 
 * Widevine is een service van Google Inc. en is onderworpen aan de servicevoorwaarden en het privacybeleid van Google Inc.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 * [Azure Monitor metrische gegevens](../../azure-monitor/platform/data-platform.md)
 * [Diagnostische logboeken Azure Monitor](../../azure-monitor/platform/platform-logs-overview.md)

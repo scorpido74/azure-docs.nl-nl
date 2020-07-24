@@ -4,11 +4,12 @@ description: Application Insights voert een slimme analyse uit van de telemetrie
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: 22c1eeb00372b9b3c67d6a87f2300225a071438e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5152a3deb73c7069655ff016fbfc03f6b9cee16d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84016845"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045789"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Slimme detectie-prestatie afwijkingen
 
@@ -48,7 +49,7 @@ De meldingen bevatten diagnostische gegevens. Hier volgt een voorbeeld:
 
 ## <a name="configure-email-notifications"></a>E-mailmeldingen configureren
 
-Slimme detectie meldingen zijn standaard ingeschakeld en worden verzonden naar personen die een [bewakings lezer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) hebben en de toegang tot het abonnement waartoe de Application Insights-bron zich bevindt, [bewaken.](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) Als u dit wilt wijzigen, klikt u in de e-mail melding op **configureren** of opent u instellingen voor slimme detectie in Application Insights. 
+Slimme detectie meldingen zijn standaard ingeschakeld en worden verzonden naar personen die een [bewakings lezer](../../role-based-access-control/built-in-roles.md#monitoring-reader) hebben en de toegang tot het abonnement waartoe de Application Insights-bron zich bevindt, [bewaken.](../../role-based-access-control/built-in-roles.md#monitoring-contributor) Als u dit wilt wijzigen, klikt u in de e-mail melding op **configureren** of opent u instellingen voor slimme detectie in Application Insights. 
   
   ![Instellingen voor slimme detectie](media/proactive-performance-diagnostics/smart_detection_configuration.png)
   
@@ -69,12 +70,12 @@ E-mail berichten over fouten met betrekking tot Slimme detectie van prestaties z
 * *Kan ik mijn eigen anomalie detectie regels maken of bestaande regels aanpassen?*
 
   * Nog niet, maar u kunt het volgende doen:
-    * [Stel waarschuwingen](/azure/azure-monitor/platform/alerts-log) in waarmee u wordt gewaarschuwd wanneer een metriek een drempel waarde overschrijdt.
+    * [Stel waarschuwingen](../platform/alerts-log.md) in waarmee u wordt gewaarschuwd wanneer een metriek een drempel waarde overschrijdt.
     * [Telemetrie exporteren](../../azure-monitor/app/export-telemetry.md) naar een [Data base](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md) of [naar Power bi](../../azure-monitor/app/export-power-bi.md ), waar u deze zelf kunt analyseren.
 * *Hoe vaak wordt de analyse uitgevoerd?*
 
   * We voeren de analyse dagelijks uit op de telemetrie van de vorige dag (volle dag in UTC-tijd zone).
-* *Daarom worden [metrische waarschuwingen](/azure/azure-monitor/platform/alerts-log)vervangen?*
+* *Daarom worden [metrische waarschuwingen](../platform/alerts-log.md)vervangen?*
   * Nee.  Het detecteren van elk gedrag dat u mogelijk zou kunnen overwegen, wordt niet door ons vastgelegd.
 
 
@@ -175,9 +176,9 @@ Met deze diagnostische hulpprogram ma's kunt u de telemetrie van uw app inspecte
 * [Profiler](profiler.md) 
 * [Fout opsporing voor moment opnamen](../../azure-monitor/app/snapshot-debugger.md)
 * [Analyse](../../azure-monitor/log-query/get-started-portal.md)
-* [Slimme diagnostische gegevens over analyse](../../azure-monitor/app/analytics.md)
+* [Slimme diagnostische gegevens over analyse](../log-query/log-query-overview.md)
 
 Slimme detecties zijn volledig automatisch. Maar misschien wilt u nog meer waarschuwingen instellen?
 
-* [Hand matig geconfigureerde metrische waarschuwingen](/azure/azure-monitor/platform/alerts-log)
+* [Hand matig geconfigureerde metrische waarschuwingen](../platform/alerts-log.md)
 * [Webtests voor beschikbaarheid](../../azure-monitor/app/monitor-web-app-availability.md)

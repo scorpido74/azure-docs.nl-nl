@@ -4,16 +4,16 @@ description: Meer informatie over het maken van uw eerste Azure Resource Manager
 ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: conceptual
-ms.openlocfilehash: fa09fbe8d239bbe10c0762d3aad7e19df23a9044
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: bce3d8ff2662ff62e1493cb26d797619b65c2762
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057446"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040731"
 ---
 # <a name="create-and-deploy-arm-templates-by-using-the-intellij-idea"></a>ARM-sjablonen maken en implementeren met behulp van het IntelliJ-idee
 
-Leer hoe u een Azure Resource Manager-sjabloon (ARM) implementeert in azure met behulp van het IntelliJ-idee en het proces voor het bewerken en bijwerken van de sjabloon rechtstreeks vanuit de IDE. ARM-sjablonen zijn JSON-bestanden waarmee de resources worden gedefinieerd die u voor uw oplossing moet implementeren. Zie [overzicht van sjabloon implementatie](overview.md)voor meer informatie over de concepten van het implementeren en beheren van uw Azure-oplossingen.
+Leer hoe u een Azure Resource Manager-sjabloon (ARM) implementeert in azure met behulp van het IntelliJ-idee en het proces voor het bewerken en bijwerken van de sjabloon rechtstreeks vanuit de IDE. ARM-sjablonen zijn JSON-bestanden waarmee de resources worden gedefinieerd die u voor uw oplossing moet implementeren. Zie het [overzicht van het implementeren van sjablonen](overview.md) om de concepten te begrijpen die verband houden met het implementeren en beheren van Azure-oplossingen.
 
 ![Portal diagram van Resource Manager-sjabloon](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-export-deploy-template-portal.png)
 
@@ -27,11 +27,11 @@ Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 
 * Een [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) Ultimate Edition of Community Edition geïnstalleerd
 * [Azure-toolkit voor IntelliJ](https://plugins.jetbrains.com/plugin/8053) moet zijn geïnstalleerd. Raadpleeg de [beheerhandleiding voor IntelliJ-invoegtoepassingen](https://www.jetbrains.com/help/idea/managing-plugins.html) voor meer informatie
-* U moet ook [zijn aangemeld](/java/azure/intellij/azure-toolkit-for-intellij-sign-in-instructions) bij uw Azure-account voor de Azure-toolkit voor IntelliJ
+* U moet ook [zijn aangemeld](/azure/developer/java/toolkit-for-intellij/sign-in-instructions) bij uw Azure-account voor de Azure-toolkit voor IntelliJ
 
 ## <a name="deploy-a-quickstart-template"></a>Een Quick Start-sjabloon implementeren
 
-In plaats van een sjabloon helemaal opnieuw te maken, opent u een sjabloon in [Azure-snelstartsjablonen](https://azure.microsoft.com/resources/templates/). Quick Start-sjablonen van Azure is een opslag plaats voor ARM-sjablonen. De sjabloon die in dit artikel wordt gebruikt, wordt [een standaard-opslag account maken](https://github.com/Azure/azure-quickstart-templates/tree/master/101-storage-account-create/)genoemd. Hiermee wordt een Azure Storage-account resource gedefinieerd.
+In plaats van een sjabloon helemaal opnieuw te maken, opent u een sjabloon in [Azure-snelstartsjablonen](https://azure.microsoft.com/resources/templates/). Snelstartsjablonen voor Azure is een opslagplaats voor ARM-sjablonen. De sjabloon die in dit artikel wordt gebruikt, wordt [een standaard-opslag account maken](https://github.com/Azure/azure-quickstart-templates/tree/master/101-storage-account-create/)genoemd. Hiermee wordt een Azure Storage-account resource gedefinieerd.
 
 1. Klik met de rechter muisknop en sla de [`azuredeploy.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) en [`azuredeploy.parameters.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.parameters.json) op uw lokale computer op.
 
@@ -80,7 +80,7 @@ In plaats van een sjabloon helemaal opnieuw te maken, opent u een sjabloon in [A
 
 ## <a name="next-steps"></a>Volgende stappen
 
-De belangrijkste focus van dit artikel is het gebruik van IntelliJ-idee voor het implementeren van een bestaande sjabloon vanuit Azure Quick Start-sjablonen. U hebt ook geleerd hoe u een bestaande implementatie op Azure weergeeft en bijwerkt. De sjablonen van de Azure-snelstartsjablonen voldoen mogelijk niet volledig aan uw behoeften. Zie voor meer informatie over het ontwikkelen van sjablonen onze nieuwe zelf studie reeks voor beginners:
+De belangrijkste focus van dit artikel is het gebruik van IntelliJ-idee voor het implementeren van een bestaande sjabloon vanuit Azure Quick Start-sjablonen. U hebt ook geleerd hoe u een bestaande implementatie op Azure weergeeft en bijwerkt. De sjablonen van de Azure-snelstartsjablonen voldoen mogelijk niet volledig aan uw behoeften. Zie voor meer informatie over het ontwikkelen van sjablonen onze nieuwe zelfstudiereeks voor beginners:
 
 > [!div class="nextstepaction"]
 > [Zelfstudies voor beginners](./template-tutorial-create-first-template.md)

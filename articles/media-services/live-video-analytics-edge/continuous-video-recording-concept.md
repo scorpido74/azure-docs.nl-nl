@@ -3,11 +3,12 @@ title: Continue video-opname-Azure
 description: Continue video-opname (CVR) verwijst naar het proces van het continu vastleggen van de video van een video bron. In dit onderwerp wordt beschreven wat CVR is.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 9a785125d4cfb2324224f4676e1d429342ec325c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76af97fe1398421f5f37cfca32127d926ce56bac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84261245"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043314"
 ---
 # <a name="continuous-video-recording"></a>Continue video-opname  
 
@@ -33,7 +34,7 @@ Live video Analytics op IoT Edge ondersteunt het gebruik van minder dan perfecte
     "localMediaCacheMaximumSizeMiB": "2048",
     "localMediaCachePath": "/var/lib/azuremediaservices/tmp/",
 ```
-De laatste twee eigenschappen zijn relevant voor een flexibele opname (beide zijn ook de vereiste eigenschappen voor een Asset Sink-knoop punt). De eigenschap localMediaCachePath geeft aan dat de Asset-Sink dat mappad gebruikt om media gegevens in de cache op te slaan voordat ze naar de Asset worden geüpload. U kunt [Dit](https://docs.microsoft.com/azure/iot-edge/how-to-access-host-storage-from-module) artikel raadplegen om te begrijpen hoe de Edge-module gebruik kan maken van de lokale opslag van uw apparaat. De eigenschap localMediaCacheMaximumSizeMiB definieert hoeveel schijf ruimte de Asset-Sink als cache kan gebruiken (1 MiB = 1024 * 1024 bytes). 
+De laatste twee eigenschappen zijn relevant voor een flexibele opname (beide zijn ook de vereiste eigenschappen voor een Asset Sink-knoop punt). De eigenschap localMediaCachePath geeft aan dat de Asset-Sink dat mappad gebruikt om media gegevens in de cache op te slaan voordat ze naar de Asset worden geüpload. U kunt [Dit](../../iot-edge/how-to-access-host-storage-from-module.md) artikel raadplegen om te begrijpen hoe de Edge-module gebruik kan maken van de lokale opslag van uw apparaat. De eigenschap localMediaCacheMaximumSizeMiB definieert hoeveel schijf ruimte de Asset-Sink als cache kan gebruiken (1 MiB = 1024 * 1024 bytes). 
 
 Als uw Edge-module de connectiviteit gedurende een lange periode verliest en de inhoud die in de cachemap is opgeslagen, de localMediaCacheMaximumSizeMiB-waarde bereikt, worden de gegevens uit de cache verwijderd, beginnend bij de oudste gegevens. Als het apparaat bijvoorbeeld verbinding heeft met 10AM en de cache de maximum limiet bereikt bij 18:00 uur, begint de Asset Sink met het verwijderen van gegevens die zijn geregistreerd bij 10AM. 
 

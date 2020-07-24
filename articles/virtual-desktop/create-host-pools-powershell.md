@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6b064c6e4107da5695e2a9945240e4276ac795b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 621d654e54d1f42a8714605c0c864b7653524f05
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211847"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046281"
 ---
-# <a name="create-a-host-pool-with-powershell"></a>Een hostpool maken met PowerShell
+# <a name="create-a-windows-virtual-desktop-host-pool-with-powershell"></a>Een Windows-hostgroep voor virtueel bureau blad maken met Power shell
 
 >[!IMPORTANT]
 >Deze inhoud is van toepassing op de update uit het voorjaar van 2020 met Azure Resource Manager Windows Virtual Desktop-objecten. Zie [dit artikel](./virtual-desktop-fall-2019/create-host-pools-powershell-2019.md) als u de release van Windows Virtual Desktop uit het najaar van 2019 zonder Azure Resource Manager-objecten gebruikt.

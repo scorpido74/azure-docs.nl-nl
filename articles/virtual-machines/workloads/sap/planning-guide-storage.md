@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1e64624865a314a7487a7ce474c1e5e56e3d9277
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 65fbd84a6fa4b03db9f5dfce81eeba23aceebbc9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362999"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042304"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>Azure Storage-typen voor SAP-workload
 Azure heeft talloze opslag typen die in de mogelijkheden, door Voer, latentie en prijzen aanzienlijk verschillen. Sommige opslag typen zijn niet of zijn beperkt bruikbaar voor SAP-scenario's. Dat zijn verschillende Azure Storage-typen goed geschikt of geoptimaliseerd voor specifieke SAP-werkbelasting scenario's. Met name voor SAP HANA hebben sommige Azure Storage-typen gecertificeerd voor het gebruik met SAP HANA. In dit document gaan we de verschillende soorten opslag door lopen en de mogelijkheden en bruikbaarheid van SAP-workloads en SAP-onderdelen beschrijven.
@@ -32,11 +32,11 @@ Opmerkingen over de eenheden die in dit artikel worden gebruikt. De leveranciers
 
 Microsoft Azure opslag van Standard-HDD, Standard-SSD, Azure Premium-opslag en ultra Disk blijven de basis-VHD (met OS) en gegevens schijven of Vhd's met gekoppelde virtuele machines in drie kopieën op drie verschillende opslag knooppunten. Het uitvoeren van een failover naar een andere replica en het seeden van een nieuwe replica in het geval van een storing in een opslag knooppunt is transparant. Als gevolg van deze redundantie is het **niet** nodig om een ander type opslag redundantie laag te gebruiken op meerdere Azure-schijven. Dit feit wordt lokale redundante opslag (LRS) genoemd. LRS is standaard voor deze opslag typen in Azure. [Azure NetApp files](https://azure.microsoft.com/services/netapp/) biedt voldoende redundantie voor het uitvoeren van dezelfde sla's als andere systeem eigen Azure-opslag.
 
-Er zijn diverse redundante methoden, die allemaal worden beschreven in het artikel [Azure storage replicatie](https://docs.microsoft.com/azure/storage/common/storage-redundancy?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) die van toepassing zijn op enkele van de verschillende opslag typen die Azure te bieden heeft. 
+Er zijn diverse redundante methoden, die allemaal worden beschreven in het artikel [Azure storage replicatie](../../../storage/common/storage-redundancy.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) die van toepassing zijn op enkele van de verschillende opslag typen die Azure te bieden heeft. 
 
 ### <a name="azure-managed-disks"></a>Azure Managed disks
 
-Managed disks is een resource type in Azure Resource Manager dat kan worden gebruikt in plaats van Vhd's die zijn opgeslagen in Azure Storage accounts. Managed Disks automatisch uitgelijnd met de [Availability set] [virtual-machines-Manage-Availability] van de virtuele machine waaraan ze zijn gekoppeld, waardoor de beschik baarheid van uw virtuele machine en de services die op de virtuele machine worden uitgevoerd, worden verhoogd. Lees het [artikel overzicht](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview)voor meer informatie.
+Managed disks is een resource type in Azure Resource Manager dat kan worden gebruikt in plaats van Vhd's die zijn opgeslagen in Azure Storage accounts. Managed Disks automatisch uitgelijnd met de [Availability set] [virtual-machines-Manage-Availability] van de virtuele machine waaraan ze zijn gekoppeld, waardoor de beschik baarheid van uw virtuele machine en de services die op de virtuele machine worden uitgevoerd, worden verhoogd. Lees het [artikel overzicht](../../windows/managed-disks-overview.md)voor meer informatie.
 
 In dit voor beeld wordt gebruikgemaakt van de flexibiliteit van Managed disks:
 
@@ -61,16 +61,16 @@ Er is persistente opslag nodig in de SAP-werk belasting in verschillende onderde
 - Bestands shares of gedeelde schijven die uw globale transport Directory bevatten voor NetWeaver of S/4HANA. De inhoud van deze shares wordt geconsumeerd door software die wordt uitgevoerd op meerdere Vm's of wordt gebruikt voor het bouwen van failover cluster scenario's met hoge Beschik baarheid
 - De/sapmnt-map of algemene bestands shares voor EDI-processen of dergelijke. De inhoud van deze shares wordt geconsumeerd door software die wordt uitgevoerd op meerdere Vm's of wordt gebruikt voor het bouwen van failover cluster scenario's met hoge Beschik baarheid
 
-In de volgende secties worden de verschillende typen Azure-opslag en de gebruiks vriendelijkheid voor SAP-workloads besproken die van toepassing zijn op de drie bovenstaande scenario's. Een algemene categorisatie van de manier waarop de verschillende typen Azure-opslag moeten worden gebruikt, wordt beschreven in het artikel [welke schijf typen beschikbaar zijn in azure?](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types). De aanbevelingen voor het gebruik van de verschillende typen Azure-opslag voor SAP-workloads zijn niet aanzienlijk anders.
+In de volgende secties worden de verschillende typen Azure-opslag en de gebruiks vriendelijkheid voor SAP-werk belasting besproken die van toepassing zijn op de vier bovenstaande scenario's. Een algemene categorisatie van de manier waarop de verschillende typen Azure-opslag moeten worden gebruikt, wordt beschreven in het artikel [welke schijf typen beschikbaar zijn in azure?](../../linux/disks-types.md). De aanbevelingen voor het gebruik van de verschillende typen Azure-opslag voor SAP-workloads zijn niet aanzienlijk anders.
 
-Lees voor ondersteunings beperkingen voor Azure Storage-typen voor SAP NetWeaver/Application Layer of S/4HANA de [SAP-ondersteunings opmerking 2015553](https://launchpad.support.sap.com/#/notes/2015553) voor SAP Hana gecertificeerde en ondersteunde Azure-opslag typen raadpleegt u het artikel [SAP Hana opslag configuraties voor virtuele Azure-machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage).
+Lees voor ondersteunings beperkingen voor Azure Storage-typen voor SAP NetWeaver/Application Layer of S/4HANA de [SAP-ondersteunings opmerking 2015553](https://launchpad.support.sap.com/#/notes/2015553) voor SAP Hana gecertificeerde en ondersteunde Azure-opslag typen raadpleegt u het artikel [SAP Hana opslag configuraties voor virtuele Azure-machines](./hana-vm-operations-storage.md).
 
 In de secties waarin de verschillende typen Azure-opslag worden beschreven, krijgt u meer achtergrond over de beperkingen en mogelijkheden die gebruikmaken van de door SAP ondersteunde opslag. 
 
 ## <a name="storage-recommendations-for-sap-storage-scenarios"></a>Opslag aanbevelingen voor SAP-opslag scenario's
 Voordat u naar de details gaat, worden de samen vatting en aanbevelingen aan het begin van het document weer gegeven. De Details voor de specifieke typen Azure-opslag volgen deze sectie van het document. Samen vatting van de opslag aanbevelingen voor de SAP-opslag scenario's in een tabel ziet er als volgt uit:
 
-| Gebruiks scenario | Standard HDD | Standard - SSD | Premium Storage | Ultraschijven | Azure NetApp Files |
+| Gebruiks scenario | Standard - HDD | Standard - SSD | Premium Storage | Ultraschijven | Azure NetApp Files |
 | --- | --- | --- | --- | --- | --- |
 | Besturingssysteemschijf | niet geschikt |  beperkt geschikt (niet-productie) | aanbevelingen | niet mogelijk | niet mogelijk |
 | Globale transport Directory | niet ondersteund | niet ondersteund | aanbevelingen | aanbevelingen | aanbevelingen |
@@ -84,11 +84,11 @@ Voordat u naar de details gaat, worden de samen vatting en aanbevelingen aan het
 | DBMS-logboek volume niet-HANA niet-M/Mv2 VM-families | niet ondersteund | beperkt geschikt (niet-productie) | geschikt voor een gemiddelde werk belasting | aanbevelingen | niet ondersteund |
 
 
-<sup>1</sup> met het gebruik van [Azure write Accelerator](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator) voor Mv2 VM-families voor logboek-en opnieuw uitvoeren op logboek volumes <sup>2</sup> met ANF zijn/Hana/data en/Hana/log vereist voor ANF 
+<sup>1</sup> met het gebruik van [Azure write Accelerator](../../windows/how-to-enable-write-accelerator.md) voor Mv2 VM-families voor logboek-en opnieuw uitvoeren op logboek volumes <sup>2</sup> met ANF zijn/Hana/data en/Hana/log vereist voor ANF 
 
 Eigenschappen die u kunt verwachten van de lijst met verschillende soorten opslag, zoals:
 
-| Gebruiks scenario | Standard HDD | Standard - SSD | Premium Storage | Ultraschijven | Azure NetApp Files |
+| Gebruiks scenario | Standard - HDD | Standard - SSD | Premium Storage | Ultraschijven | Azure NetApp Files |
 | --- | --- | --- | --- | --- | --- |
 | SLA voor door Voer/IOPS | nee | nee | ja | ja | ja |
 | Lees latentie | hoog | gemiddeld tot hoog | gebrek | submilliseconde | submilliseconde |
@@ -101,7 +101,7 @@ Eigenschappen die u kunt verwachten van de lijst met verschillende soorten opsla
 | Geo-redundantie | niet voor beheerde schijven | niet voor beheerde schijven | nee | nee | nee |
 
 
-<sup>1</sup> met gebruik van [Azure write Accelerator](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator) voor Mv2 VM-families voor logboeken/opnieuw uitvoeren van logboek volumes
+<sup>1</sup> met gebruik van [Azure write Accelerator](../../windows/how-to-enable-write-accelerator.md) voor Mv2 VM-families voor logboeken/opnieuw uitvoeren van logboek volumes
 
 <sup>2</sup> kosten zijn afhankelijk van ingerichte IOPS en door Voer
 
@@ -123,7 +123,7 @@ Azure Premium SSD-opslag is geïntroduceerd met het doel om het volgende te bied
 * Sla's voor IOPS en door Voer
 * Minder variabiliteit in I/O-latentie
 
-Dit type opslag is gericht op DBMS-workloads, opslag verkeer waarvoor een lage latentie vertraging van één cijfer en de kosten voor de door Voer in het geval van Azure Premium Storage niet het daad werkelijke gegevens volume is dat op dergelijke schijven is opgeslagen, maar de grootte categorie van een dergelijke schijf, onafhankelijk van de hoeveelheid gegevens die op de schijf is opgeslagen. U kunt ook schijven maken op Premium-opslag die niet rechtstreeks worden toegewezen in de grootte categorieën die in het artikel [Premium-SSD](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#premium-ssd)worden weer gegeven. De conclusies in dit artikel zijn:
+Dit type opslag is gericht op DBMS-workloads, opslag verkeer waarvoor een lage latentie vertraging van één cijfer en de kosten voor de door Voer in het geval van Azure Premium Storage niet het daad werkelijke gegevens volume is dat op dergelijke schijven is opgeslagen, maar de grootte categorie van een dergelijke schijf, onafhankelijk van de hoeveelheid gegevens die op de schijf is opgeslagen. U kunt ook schijven maken op Premium-opslag die niet rechtstreeks worden toegewezen in de grootte categorieën die in het artikel [Premium-SSD](../../linux/disks-types.md#premium-ssd)worden weer gegeven. De conclusies in dit artikel zijn:
 
 - De opslag is ingedeeld in bereiken. Bijvoorbeeld, een schijf in het bereik 513 GiB tot 1024 GiB capaciteit delen dezelfde mogelijkheden en dezelfde maandelijkse kosten
 - De IOPS per GiB volgen geen lineair over de grootte categorieën. Kleinere schijven onder 32 GiB hebben hogere IOPS-tarieven per GiB. Voor schijven van meer dan 32 GiB tot 1024 GiB ligt het aantal IOPS per GiB tussen 4-5 IOPS per GiB. Voor grotere schijven tot 32.767 GiB is de IOPS-frequentie per GiB lager dan 1
@@ -137,7 +137,7 @@ De functie matrix voor SAP-werk belasting ziet er als volgt uit:
 | Mogelijkheid| Opmerking| Opmerkingen/koppelingen | 
 | --- | --- | --- | 
 | VHD-basis versie van het besturings systeem | oplos | alle systemen |
-| Gegevensschijf | oplos | alle systemen- [speciaal voor SAP Hana](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator) |
+| Gegevensschijf | oplos | alle systemen- [speciaal voor SAP Hana](../../windows/how-to-enable-write-accelerator.md) |
 | SAP Global Trans Port-map | JA | [Ondersteund](https://launchpad.support.sap.com/#/notes/2015553) |
 | SAP-sapmnt | oplos | alle systemen |
 | Back-upopslag | oplos | voor opslag van back-ups op korte termijn |
@@ -146,15 +146,15 @@ De functie matrix voor SAP-werk belasting ziet er als volgt uit:
 | Latentie | laag naar normaal | - |
 | SLA VOOR IOPS | JA | - |
 | IOPS lineaire tot capaciteit | halve lineaire tussen haakjes  | [Prijzen beheerde schijven](https://azure.microsoft.com/pricing/details/managed-disks/) |
-| Maximum aantal IOPS per schijf | 20.000 [afhankelijk van de schijf grootte](https://azure.microsoft.com/pricing/details/managed-disks/) | VM- [limieten](https://docs.microsoft.com/azure/virtual-machines/linux/sizes) ook overwegen |
+| Maximum aantal IOPS per schijf | 20.000 [afhankelijk van de schijf grootte](https://azure.microsoft.com/pricing/details/managed-disks/) | VM- [limieten](../../linux/sizes.md) ook overwegen |
 | SLA voor door Voer | JA | - |
 | Door Voer lineair naar capaciteit | halve lineaire tussen haakjes | [Prijzen beheerde schijven](https://azure.microsoft.com/pricing/details/managed-disks/) |
-| HANA-gecertificeerd | JA | [speciaal voor SAP HANA](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator) |
+| HANA-gecertificeerd | JA | [speciaal voor SAP HANA](../../windows/how-to-enable-write-accelerator.md) |
 | Schijf momentopnamen mogelijk | JA | - |
-| Azure Backup mogelijke VM-moment opnamen | JA | met uitzonde ring van [Write Accelerator](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator) schijven in de cache  |
+| Azure Backup mogelijke VM-moment opnamen | JA | met uitzonde ring van [Write Accelerator](../../windows/how-to-enable-write-accelerator.md) schijven in de cache  |
 | Kosten | DRAGER | - |
 
-Azure Premium Storage voldoet niet aan de SAP HANA opslag latentie-Kpi's met de algemene typen caching die worden aangeboden met Azure Premium Storage. Als u wilt voldoen aan de opslag latentie-Kpi's voor het schrijven van SAP HANA logboeken, moet u Azure Write Accelerator cache gebruiken, zoals beschreven in het artikel [enable write Accelerator](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator). Azure Write Accelerator voor delen van alle andere DBMS-systemen voor het schrijven van transactie logboeken en het opnieuw registreren van Logboeken. Daarom is het raadzaam om het te gebruiken in alle SAP-DBMS-implementaties. Voor SAP HANA is het gebruik van Azure Write Accelerator in combi natie met Azure Premium Storage verplicht.
+Azure Premium Storage voldoet niet aan de SAP HANA opslag latentie-Kpi's met de algemene typen caching die worden aangeboden met Azure Premium Storage. Als u wilt voldoen aan de opslag latentie-Kpi's voor het schrijven van SAP HANA logboeken, moet u Azure Write Accelerator cache gebruiken, zoals beschreven in het artikel [enable write Accelerator](../../windows/how-to-enable-write-accelerator.md). Azure Write Accelerator voor delen van alle andere DBMS-systemen voor het schrijven van transactie logboeken en het opnieuw registreren van Logboeken. Daarom is het raadzaam om het te gebruiken in alle SAP-DBMS-implementaties. Voor SAP HANA is het gebruik van Azure Write Accelerator in combi natie met Azure Premium Storage verplicht.
 
 
 
@@ -162,7 +162,7 @@ Azure Premium Storage voldoet niet aan de SAP HANA opslag latentie-Kpi's met de 
 
 
 ### <a name="azure-burst-functionality-for-premium-storage"></a>Azure burst-functionaliteit voor Premium-opslag
-Voor Azure Premium-opslag schijven die kleiner zijn dan of gelijk zijn aan 512 GiB in capaciteit, wordt burst-functionaliteit aangeboden. De exacte manier waarop schijf bursting werkt, wordt beschreven in het artikel [schijf bursting](https://docs.microsoft.com/azure/virtual-machines/linux/disk-bursting). Wanneer u het artikel leest, begrijpt u het concept van het aantal beschik bare IOPS en door Voer in de tijden dat de I/O-werk belasting lager is dan de nominale IOPS en de door Voer van de schijven (Zie [prijzen voor beheerde schijven](https://azure.microsoft.com/pricing/details/managed-disks/)voor meer informatie over de nominale door Voer). U gaat de Delta van IOPS en door Voer samen voegen tussen het huidige gebruik en de nominale waarden van de schijf. De bursts zijn beperkt tot Maxi maal 30 minuten.
+Voor Azure Premium-opslag schijven die kleiner zijn dan of gelijk zijn aan 512 GiB in capaciteit, wordt burst-functionaliteit aangeboden. De exacte manier waarop schijf bursting werkt, wordt beschreven in het artikel [schijf bursting](../../linux/disk-bursting.md). Wanneer u het artikel leest, begrijpt u het concept van het aantal beschik bare IOPS en door Voer in de tijden dat de I/O-werk belasting lager is dan de nominale IOPS en de door Voer van de schijven (Zie [prijzen voor beheerde schijven](https://azure.microsoft.com/pricing/details/managed-disks/)voor meer informatie over de nominale door Voer). U gaat de Delta van IOPS en door Voer samen voegen tussen het huidige gebruik en de nominale waarden van de schijf. De bursts zijn beperkt tot Maxi maal 30 minuten.
 
 De ideale gevallen waarin deze burst-functionaliteit kan worden gepland in, zijn waarschijnlijk de volumes of schijven die gegevens bestanden voor de verschillende DBMS bevatten. De I/O-werk belasting verwacht op die volumes, vooral met kleine tot middel grote systemen, moet er als volgt uitzien:
 
@@ -184,8 +184,8 @@ Azure-ultraschijven leveren een hoge doorvoer, hoge IOPS en een consistente schi
 Wanneer u een ultra schijf maakt, hebt u drie dimensies die u kunt definiëren:
 
 - De capaciteit van de schijf. Bereiken zijn van 4 GiB tot 65.536 GiB
-- Ingerichte IOPS voor de schijf. Verschillende maximum waarden zijn van toepassing op de capaciteit van de schijf. Lees het artikel [Ultra Disk](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-disk) voor meer informatie
-- Ingerichte band breedte voor opslag. De maximale band breedte is afhankelijk van de capaciteit van de schijf. Lees het artikel [Ultra Disk](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-disk) voor meer informatie
+- Ingerichte IOPS voor de schijf. Verschillende maximum waarden zijn van toepassing op de capaciteit van de schijf. Lees het artikel [Ultra Disk](../../linux/disks-types.md#ultra-disk) voor meer informatie
+- Ingerichte band breedte voor opslag. De maximale band breedte is afhankelijk van de capaciteit van de schijf. Lees het artikel [Ultra Disk](../../linux/disks-types.md#ultra-disk) voor meer informatie
 
 De kosten van één schijf worden bepaald door de drie dimensies die u afzonderlijk kunt definiëren voor de specifieke schijven. 
 
@@ -218,7 +218,7 @@ De functie matrix voor SAP-werk belasting ziet er als volgt uit:
 
 
 ## <a name="azure-netapp-files-anf"></a>Azure NetApp-bestanden (ANF)
-[Azure NetApp files](https://azure.microsoft.com/services/netapp/) is het resultaat van een samen werking tussen micro soft en NetApp met het doel om hoge prestaties van Azure native NFS en SMB-shares te bieden. De nadruk ligt op het bieden van een hoge band breedte en een lage latentie opslag die DBMS-implementatie scenario's mogelijk maakt en in de loop van de tijd standaard operationele functionaliteit van de NetApp-opslag mogelijk maken via Azure. NFS/SMB-shares worden aangeboden in drie verschillende service niveaus die differentiëren bij opslag doorvoer en-prijs. De service niveaus worden beschreven in het artikel [service niveaus voor Azure NetApp files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels). Voor de verschillende typen SAP-werk belasting worden de volgende service niveaus nadrukkelijk aanbevolen:
+[Azure NetApp files](https://azure.microsoft.com/services/netapp/) is het resultaat van een samen werking tussen micro soft en NetApp met het doel om hoge prestaties van Azure native NFS en SMB-shares te bieden. De nadruk ligt op het bieden van een hoge band breedte en een lage latentie opslag die DBMS-implementatie scenario's mogelijk maakt en in de loop van de tijd standaard operationele functionaliteit van de NetApp-opslag mogelijk maken via Azure. NFS/SMB-shares worden aangeboden in drie verschillende service niveaus die differentiëren bij opslag doorvoer en-prijs. De service niveaus worden beschreven in het artikel [service niveaus voor Azure NetApp files](../../../azure-netapp-files/azure-netapp-files-service-levels.md). Voor de verschillende typen SAP-werk belasting worden de volgende service niveaus nadrukkelijk aanbevolen:
 
 - SAP DBMS-workload: prestaties, idea-zo ultra
 - SAPMNT-share: prestaties, idea-ideaal Ultra
@@ -231,10 +231,10 @@ ANF-opslag wordt momenteel ondersteund voor verschillende SAP-werkbelasting scen
 
 - SMB-of NFS-shares opgeven voor de globale transport Directory van SAP
 - De share sapmnt in scenario's met hoge Beschik baarheid, zoals beschreven in:
-    - [Hoge Beschik baarheid voor SAP NetWeaver op Azure Vm's in Windows met Azure NetApp Files (SMB) voor SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb)
-    - [Hoge Beschik baarheid voor SAP NetWeaver op Azure Vm's op SUSE Linux Enterprise Server met Azure NetApp Files voor SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
-    - [Azure Virtual Machines hoge Beschik baarheid voor SAP NetWeaver op Red Hat Enterprise Linux met Azure NetApp Files voor SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
-- SAP HANA implementaties die gebruikmaken van NFS v 4.1-shares voor/Hana/data-en/Hana/log-volumes en/of NFS v 4.1-of NFS v3-volumes voor/Hana/Shared-volumes zoals beschreven in het artikel [SAP Hana opslag configuraties voor virtuele Azure-machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
+    - [Hoge Beschik baarheid voor SAP NetWeaver op Azure Vm's in Windows met Azure NetApp Files (SMB) voor SAP-toepassingen](./high-availability-guide-windows-netapp-files-smb.md)
+    - [Hoge Beschik baarheid voor SAP NetWeaver op Azure Vm's op SUSE Linux Enterprise Server met Azure NetApp Files voor SAP-toepassingen](./high-availability-guide-suse-netapp-files.md)
+    - [Azure Virtual Machines hoge Beschik baarheid voor SAP NetWeaver op Red Hat Enterprise Linux met Azure NetApp Files voor SAP-toepassingen](./high-availability-guide-rhel-netapp-files.md)
+- SAP HANA implementaties die gebruikmaken van NFS v 4.1-shares voor/Hana/data-en/Hana/log-volumes en/of NFS v 4.1-of NFS v3-volumes voor/Hana/Shared-volumes zoals beschreven in het artikel [SAP Hana opslag configuraties voor virtuele Azure-machines](./hana-vm-operations-storage.md)
 
 > [!NOTE]
 > Er wordt geen andere workload DBMS ondersteund voor op Azure NetApp Files gebaseerde NFS-of SMB-shares. Updates en wijzigingen worden gegeven als dit wordt gewijzigd.
@@ -258,9 +258,9 @@ De functie matrix voor SAP-werk belasting ziet er als volgt uit:
 | Flexibiliteit | LRS | Geen GRS of ZRS beschikbaar voor schijven |
 | Latentie | zeer laag | - |
 | SLA VOOR IOPS | JA | - |
-| IOPS lineaire tot capaciteit | strikt lineair  | Afhankelijk van [service niveau](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels) |
+| IOPS lineaire tot capaciteit | strikt lineair  | Afhankelijk van [service niveau](../../../azure-netapp-files/azure-netapp-files-service-levels.md) |
 | SLA voor door Voer | JA | - |
-| Door Voer lineair naar capaciteit | halve lineaire tussen haakjes | Afhankelijk van [service niveau](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels) |
+| Door Voer lineair naar capaciteit | halve lineaire tussen haakjes | Afhankelijk van [service niveau](../../../azure-netapp-files/azure-netapp-files-service-levels.md) |
 | HANA-gecertificeerd | JA | - |
 | Schijf momentopnamen mogelijk | JA | - |
 | Azure Backup mogelijke VM-moment opnamen | NO | - |
@@ -335,11 +335,11 @@ In het tegenovergestelde van on-premises scenario's speelt het afzonderlijke VM-
 
 | Opslagtype| Linux | Windows | Opmerkingen |
 | --- | --- | --- | --- |
-| Standard HDD | [Grootten voor virtuele Linux-machines in azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes) | [Grootten voor virtuele Windows-machines in azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) | De opslag limieten van medium of grote Vm's zijn waarschijnlijk hard. |
-| Standard - SSD | [Grootten voor virtuele Linux-machines in azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes) | [Grootten voor virtuele Windows-machines in azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) | De opslag limieten van medium of grote Vm's zijn waarschijnlijk hard. |
-| Premium Storage | [Grootten voor virtuele Linux-machines in azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes) | [Grootten voor virtuele Windows-machines in azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) | Onbeperkte limieten voor IOPS of VM-doorvoer opslag met opslag configuratie |
-| Ultra Disk-opslag | [Grootten voor virtuele Linux-machines in azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes) | [Grootten voor virtuele Windows-machines in azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) | Onbeperkte limieten voor IOPS of VM-doorvoer opslag met opslag configuratie |
-| Azure NetApp Files | [Grootten voor virtuele Linux-machines in azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes) | [Grootten voor virtuele Windows-machines in azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) | Opslag verkeer maakt gebruik van netwerk doorvoer bandbreedte en geen opslag bandbreedte. |
+| Standard - HDD | [Grootten voor virtuele Linux-machines in azure](../../linux/sizes.md) | [Grootten voor virtuele Windows-machines in azure](../../windows/sizes.md) | De opslag limieten van medium of grote Vm's zijn waarschijnlijk hard. |
+| Standard - SSD | [Grootten voor virtuele Linux-machines in azure](../../linux/sizes.md) | [Grootten voor virtuele Windows-machines in azure](../../windows/sizes.md) | De opslag limieten van medium of grote Vm's zijn waarschijnlijk hard. |
+| Premium Storage | [Grootten voor virtuele Linux-machines in azure](../../linux/sizes.md) | [Grootten voor virtuele Windows-machines in azure](../../windows/sizes.md) | Onbeperkte limieten voor IOPS of VM-doorvoer opslag met opslag configuratie |
+| Ultra Disk-opslag | [Grootten voor virtuele Linux-machines in azure](../../linux/sizes.md) | [Grootten voor virtuele Windows-machines in azure](../../windows/sizes.md) | Onbeperkte limieten voor IOPS of VM-doorvoer opslag met opslag configuratie |
+| Azure NetApp Files | [Grootten voor virtuele Linux-machines in azure](../../linux/sizes.md) | [Grootten voor virtuele Windows-machines in azure](../../windows/sizes.md) | Opslag verkeer maakt gebruik van netwerk doorvoer bandbreedte en geen opslag bandbreedte. |
 
 Als beperkingen kunt u het volgende weten:
 
@@ -365,7 +365,7 @@ Sommige regels moeten worden gevolgd voor Stripe:
 
 Striping over meerdere kleinere schijven is de beste manier om een goede prijs-prestatie verhouding te krijgen met behulp van Azure Premium Storage. Het is duidelijk dat striping een aantal extra overhead voor implementatie en beheer heeft.
 
-Lees de documentatie voor het verschillende DBMS, zoals [SAP Hana opslag configuraties van virtuele Azure-machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage), voor specifieke aanbevelingen voor de Stripe-grootte.
+Lees de documentatie voor het verschillende DBMS, zoals [SAP Hana opslag configuraties van virtuele Azure-machines](./hana-vm-operations-storage.md), voor specifieke aanbevelingen voor de Stripe-grootte.
 
 
 
@@ -373,6 +373,6 @@ Lees de documentatie voor het verschillende DBMS, zoals [SAP Hana opslag configu
 ## <a name="next-steps"></a>Volgende stappen
 Lees de artikelen:
 
-- [Overwegingen voor de implementatie van Azure Virtual Machines DBMS voor SAP-workloads](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)
-- [Configuraties van SAP HANA in virtuele Azure-machineopslag](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
+- [Overwegingen voor de implementatie van Azure Virtual Machines DBMS voor SAP-workloads](./dbms_guide_general.md)
+- [Configuraties van SAP HANA in virtuele Azure-machineopslag](./hana-vm-operations-storage.md)
  

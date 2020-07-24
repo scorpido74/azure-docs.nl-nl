@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit, tracking-python
-ms.openlocfilehash: c86a58c384c7356ecdaf668644f08c011a4c0a40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4d40618c5d1a7200b452268a6b36841a846c6cf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85832998"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041893"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Event Grid trigger voor Azure Functions
 
@@ -307,7 +307,7 @@ Met de aantekening [EventGridTrigger](https://github.com/Azure/azure-functions-j
 
 De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand. Er zijn geen constructor-para meters of-eigenschappen om in het kenmerk in te stellen `EventGridTrigger` .
 
-|function.jsbij eigenschap |Description|
+|function.jsbij eigenschap |Beschrijving|
 |---------|---------|
 | **type** | Vereist: moet worden ingesteld op `eventGridTrigger` . |
 | **direction** | Vereist: moet worden ingesteld op `in` . |
@@ -413,7 +413,7 @@ Zie voor meer informatie over het maken van abonnementen met behulp van de Azure
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Als u een abonnement wilt maken met behulp van [de Azure cli](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest), gebruikt u de opdracht [AZ eventgrid Event-Subscription Create](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-create) .
+Als u een abonnement wilt maken met behulp van [de Azure cli](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest), gebruikt u de opdracht [AZ eventgrid Event-Subscription Create](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-create) .
 
 De opdracht vereist de eind punt-URL die de functie aanroept. In het volgende voor beeld wordt het versie-specifieke URL-patroon weer gegeven:
 
@@ -508,7 +508,7 @@ Als u een Event Grid trigger lokaal wilt testen, moet u Event Grid HTTP-aanvrage
 1. [Genereer een aanvraag](#generate-a-request) en kopieer de aanvraag tekst uit de viewer-app.
 1. Plaats [de aanvraag hand matig](#manually-post-the-request) naar de LOCALHOST-URL van uw event grid-activerings functie.
 
-Wanneer u klaar bent met testen, kunt u hetzelfde abonnement voor productie gebruiken door het eind punt bij te werken. Gebruik de opdracht [AZ eventgrid Event-Subscription update](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-update) Azure cli.
+Wanneer u klaar bent met testen, kunt u hetzelfde abonnement voor productie gebruiken door het eind punt bij te werken. Gebruik de opdracht [AZ eventgrid Event-Subscription update](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-update) Azure cli.
 
 ### <a name="create-a-viewer-web-app"></a>Een web-app voor Viewer maken
 

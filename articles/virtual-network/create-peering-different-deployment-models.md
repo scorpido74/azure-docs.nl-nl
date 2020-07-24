@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 11/15/2018
 ms.author: kumud
 ms.reviewer: anavin
-ms.openlocfilehash: 318e51f12653b5cbe6bd47b9c48a57d72286a4a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 148d57da549e8364620c8417cbd61d975cea1498
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710045"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046101"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-same-subscription"></a>Een peering voor een virtueel netwerk maken-verschillende implementatie modellen, hetzelfde abonnement
 
@@ -53,7 +53,7 @@ U kunt de Azure Portal, de Azure [-opdracht regel interface](#cli) (CLI), Azure 
     - **Abonnement**: Selecteer uw abonnement
     - **Resource groep**: Selecteer **nieuwe maken** en voer *myResourceGroup* in
     - **Locatie**: *VS-Oost*
-4. Klik op **+ New**. Typ in het vak **Marketplace doorzoeken de** tekst *virtueel netwerk*. Klik op **virtueel netwerk** wanneer dit wordt weer gegeven in de zoek resultaten.
+4. Klik op **+ Nieuw**. Typ in het vak **Marketplace doorzoeken de** tekst *virtueel netwerk*. Klik op **virtueel netwerk** wanneer dit wordt weer gegeven in de zoek resultaten.
 5. Selecteer in de Blade **virtueel netwerk** de optie **klassiek** in het vak **een implementatie model selecteren** en klik vervolgens op **maken**.
 6. Voer op de Blade **virtueel netwerk maken** een waarde in of selecteer waarden voor de volgende instellingen en klik vervolgens op **maken**:
     - **Naam**: *myVnet2*
@@ -145,7 +145,7 @@ Voer de volgende stappen uit met behulp van de klassieke Azure-CLI en de Azure C
 
 ## <a name="create-peering---powershell"></a><a name="powershell"></a>Peering maken-Power shell
 
-1. Installeer de meest recente versie van de Power shell [Azure](https://www.powershellgallery.com/packages/Azure) -en [AZ](https://www.powershellgallery.com/packages/Az/) -modules. Zie [Overzicht van Azure PowerShell](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json) als u nog geen ervaring hebt met Azure PowerShell.
+1. Installeer de meest recente versie van de Power shell [Azure](https://www.powershellgallery.com/packages/Azure) -en [AZ](https://www.powershellgallery.com/packages/Az/) -modules. Zie [Overzicht van Azure PowerShell](/powershell/azure/?toc=%2fazure%2fvirtual-network%2ftoc.json) als u nog geen ervaring hebt met Azure PowerShell.
 2. Start een Power shell-sessie.
 3. Meld u in Power shell aan bij Azure door de opdracht in te voeren `Add-AzureAccount` . Het account waarmee u zich aanmeldt, moet de benodigde machtigingen hebben voor het maken van een virtuele netwerk peering. Zie [machtigingen voor peering voor virtuele netwerken](virtual-network-manage-peering.md#requirements-and-constraints)voor een lijst met machtigingen.
 4. Als u een virtueel netwerk (klassiek) met Power shell wilt maken, moet u een nieuw netwerk configuratie bestand maken of wijzigen. Meer informatie over het [exporteren, bijwerken en importeren van netwerk configuratie bestanden](virtual-networks-using-network-configuration-file.md). Het bestand moet het volgende **VirtualNetworkSite** -element bevatten voor het virtuele netwerk dat in deze zelf studie wordt gebruikt:
@@ -232,7 +232,7 @@ Wanneer u deze zelf studie hebt voltooid, kunt u de resources die u in de zelf s
     azure network vnet delete --vnet myVnet2 --quiet
     ```
 
-### <a name="powershell"></a><a name="delete-powershell"></a>PowerShell
+### <a name="powershell"></a><a name="delete-powershell"></a>Zo
 
 1. Voer de volgende opdracht in om het virtuele netwerk (Resource Manager) te verwijderen:
 

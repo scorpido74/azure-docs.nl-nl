@@ -1,5 +1,5 @@
 ---
-title: Ontwerp ELT voor Synapse SQL-pool in plaats van ETL | Microsoft Docs
+title: Een poly base-strategie voor het laden van gegevens ontwerpen voor een SQL-groep
 description: In plaats van ETL kunt u een uitpak-, laad-en transformatie proces (ELT) ontwerpen voor het laden van gegevens of SQL-groep.
 services: synapse-analytics
 author: kevinvngo
@@ -10,16 +10,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 49ffb848dbcbed72776a5d767bb4b4872978af20
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: ca1f535c7f2d949e1f71a06ba9efab2818ee0201
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965499"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046772"
 ---
 # <a name="designing-a-polybase-data-loading-strategy-for-azure-synapse-sql-pool"></a>Ontwerpen van een poly base-strategie voor het laden van gegevens voor Azure Synapse SQL-groep
 
-Traditionele SMP-data warehouses maken gebruik van een proces voor het laden van gegevens met de methode extract, Transform en load (ETL). De Azure SQL-groep is een enorm parallelle verwerkings architectuur (MPP) die gebruikmaakt van de schaal baarheid en flexibiliteit van reken-en opslag resources. Het gebruik van een extractie-, laad-en Transform-proces (ELT) kan profiteren van MPP en resources elimineren die nodig zijn om de gegevens te transformeren voordat ze worden geladen.
+Traditionele SMP-data warehouses maken gebruik van een proces voor het laden van de gegevens extract, Transform en load (ETL). De Azure SQL-groep is een enorm parallelle verwerkings architectuur (MPP) die gebruikmaakt van de schaal baarheid en flexibiliteit van reken-en opslag resources. U kunt met behulp van een uitpak-, laad-en transformatie proces gebruikmaken van MPP en resources elimineren die nodig zijn om de gegevens te transformeren voordat ze worden geladen.
 
 Hoewel de SQL-groep veel methoden voor het laden ondersteunt, inclusief niet-polybase-opties zoals BCP en SQL BulkCopy-API, is de snelste en meest schaal bare manier om de gegevens te laden via Poly base.  Poly Base is een technologie die toegang heeft tot externe gegevens die zijn opgeslagen in Azure Blob Storage of Azure Data Lake Store via de T-SQL-taal.
 
@@ -50,7 +50,7 @@ Het ophalen van gegevens uit uw bron systeem is afhankelijk van de opslag locati
 
 Poly base laadt gegevens van UTF-8-en UTF-16-gecodeerde tekst bestanden met scheidings tekens. Naast de tekst bestanden met scheidings tekens, wordt deze geladen vanuit de Hadoop-bestands indelingen RC-bestand, ORC en Parquet. Poly Base kan ook gegevens laden uit gzip-en Snappy gecomprimeerde bestanden. Poly Base ondersteunt momenteel geen uitgebreide ASCII-indeling met een vaste breedte en geneste indelingen zoals WinZip, JSON en XML.
 
-Als u exporteert vanaf SQL Server, kunt u het [opdracht regel programma BCP](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) gebruiken om de gegevens te exporteren naar tekst bestanden met scheidings tekens. De Parquet naar SQL DW-gegevens type toewijzing is het volgende:
+Als u exporteert vanaf SQL Server, kunt u het [opdracht regel programma BCP](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) gebruiken om de gegevens te exporteren naar tekst bestanden met scheidings tekens. De Parquet voor SQL DW-gegevens type toewijzing is als volgt:
 
 | **Parquet-gegevens type** |                      **SQL-gegevens type**                       |
 | :-------------------: | :----------------------------------------------------------: |
@@ -58,7 +58,7 @@ Als u exporteert vanaf SQL Server, kunt u het [opdracht regel programma BCP](/sq
 |       smallint        |                           smallint                           |
 |          int          |                             int                              |
 |        bigint         |                            bigint                            |
-|        booleaans        |                             bit                              |
+|        boolean        |                             bit                              |
 |        double         |                            float                             |
 |         float         |                             werkelijk                             |
 |        double         |                            money                             |
@@ -95,7 +95,7 @@ Mogelijk moet u de gegevens in uw opslag account voorbereiden en opschonen voord
 
 Voordat u gegevens kunt laden, moet u externe tabellen definiëren in uw data warehouse. Poly base gebruikt externe tabellen voor het definiëren en openen van de gegevens in Azure Storage. Een externe tabel is vergelijkbaar met een database weergave. De externe tabel bevat het tabel schema en verwijst naar gegevens die buiten het Data Warehouse zijn opgeslagen.
 
-Als u externe tabellen definieert, moet u de gegevens bron, de indeling van de tekst bestanden en de tabel definities opgeven. Dit zijn de T-SQL-syntaxis onderwerpen die u nodig hebt:
+Als u externe tabellen definieert, moet u de gegevens bron, de indeling van de tekst bestanden en de tabel definities opgeven. Hieronder vindt u de functies van de T-SQL-syntaxis die u nodig hebt:
 
 - [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)

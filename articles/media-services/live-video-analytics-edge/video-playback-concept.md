@@ -3,11 +3,12 @@ title: Video afspelen-Azure
 description: Tijdelijke aanduiding
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 1fc65a00b2aa1e82c5585583ee9e0ccb97e5168f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17b1f93c18dfb013916c4c0d3756fb97a73e2675
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84260930"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042971"
 ---
 # <a name="video-playback"></a>Video afspelen 
 
@@ -45,7 +46,7 @@ Zoals beschreven in [Media Graph file Sink](media-graph-concept.md#file-sink), k
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/)
+[Azure IoT Edge](../../iot-edge/index.yml)
 <!--
 ## Next steps
 

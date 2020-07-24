@@ -3,15 +3,16 @@ title: Aangepaste Azure Resource Manager rol maken en toewijzen aan Service-Prin
 description: Dit artikel bevat richt lijnen voor het maken van aangepaste Azure Resource Manager-rollen en het toewijzen van de service-principal voor live video Analytics op IoT Edge met behulp van Azure CLI.
 ms.topic: how-to
 ms.date: 05/27/2020
-ms.openlocfilehash: be317ac1e86fd38c72b87734909004a64dc2938b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb4c9a1f90ab50f7070184fc9a394d9e6edb833a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84261168"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043168"
 ---
 # <a name="create-custom-azure-resource-manager-role-and-assign-to-service-principal"></a>Aangepaste Azure Resource Manager rol maken en toewijzen aan Service-Principal
 
-Voor het goed functioneren van live video Analytics op IoT Edge module-exemplaar is een actief Azure Media Services account vereist. De relatie tussen de live video Analytics op IoT Edge module en het Azure media-service account wordt tot stand gebracht via een set module-dubbele eigenschappen. Een van deze dubbele eigenschappen is een [Service-Principal](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object) waarmee het module-exemplaar kan communiceren met en de benodigde bewerkingen op het Media Services-account kan activeren. Deze service-principal moet de minste bevoegdheden hebben om mogelijke misbruik en/of accidentele gegevens bloot stelling van het edge-apparaat te minimaliseren.
+Voor het goed functioneren van live video Analytics op IoT Edge module-exemplaar is een actief Azure Media Services account vereist. De relatie tussen de live video Analytics op IoT Edge module en het Azure media-service account wordt tot stand gebracht via een set module-dubbele eigenschappen. Een van deze dubbele eigenschappen is een [Service-Principal](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) waarmee het module-exemplaar kan communiceren met en de benodigde bewerkingen op het Media Services-account kan activeren. Deze service-principal moet de minste bevoegdheden hebben om mogelijke misbruik en/of accidentele gegevens bloot stelling van het edge-apparaat te minimaliseren.
 
 In dit artikel worden de stappen beschreven voor het maken van een aangepaste Azure Resource Manager rol met Azure Cloud Shell, die vervolgens wordt gebruikt om een service-principal te maken.
 
@@ -22,7 +23,7 @@ De vereisten voor dit artikel zijn als volgt:
 * Azure-abonnement met eigenaars abonnement.
 * Een Azure Active Directory met bevoegdheden voor het maken van een app en het toewijzen van een service-principal aan een rol.
 
-De eenvoudigste manier om te controleren of uw account over de juiste machtigingen beschikt, verloopt via de portal. Zie [Check required permission](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions) (Vereiste machtiging controleren).
+De eenvoudigste manier om te controleren of uw account over de juiste machtigingen beschikt, verloopt via de portal. Zie [Check required permission](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app) (Vereiste machtiging controleren).
 
 ## <a name="overview"></a>Overzicht  
 
@@ -48,7 +49,7 @@ Als u geen media service-account hebt, gebruikt u de volgende stappen om er een 
     ```
     az account set --subscription " <yourSubscriptionName or yourSubscriptionId>"
     ```
-1. Maak een [resource groep](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) en een [opslag account](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create).
+1. Maak een [resource groep](/cli/azure/group?view=azure-cli-latest#az-group-create) en een [opslag account](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create).
 1. Maak nu een Azure media service-account met behulp van de volgende opdracht sjabloon in Cloud Shell:
 
     ```
@@ -84,8 +85,8 @@ Met deze opdracht wordt een antwoord gegenereerd dat er als volgt uitziet:
 ```
 1. De uitvoer van een service-principal met wachtwoord verificatie bevat de wachtwoord sleutel die in dit geval de para meter ' AadSecret ' is. 
 
-    Zorg ervoor dat u deze waarde kopieert. deze kan niet worden opgehaald. Als u het wacht woord vergeet, moet u [de referenties van de Service-Principal opnieuw instellen](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#reset-credentials).
-1. De appId en Tenant sleutel worden respectievelijk weer gegeven in de uitvoer als ' AadClientId ' en ' AadTenantId '. Ze worden gebruikt in Service-Principal-verificatie. Noteer hun waarden, maar ze kunnen op elk moment worden opgehaald met [AZ AD SP List](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-list).
+    Zorg ervoor dat u deze waarde kopieert. deze kan niet worden opgehaald. Als u het wacht woord vergeet, moet u [de referenties van de Service-Principal opnieuw instellen](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#reset-credentials).
+1. De appId en Tenant sleutel worden respectievelijk weer gegeven in de uitvoer als ' AadClientId ' en ' AadTenantId '. Ze worden gebruikt in Service-Principal-verificatie. Noteer hun waarden, maar ze kunnen op elk moment worden opgehaald met [AZ AD SP List](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-list).
 
 ### <a name="create-a-custom-role-definition"></a>Een aangepaste roldefinitie maken  
 
@@ -170,7 +171,7 @@ Met de bovenstaande opdracht wordt de objectId van de Service-Principal afgedruk
 “objectId” : “<yourObjectId>”,
 ```
 
-Gebruik [AZ Role Assignment opdracht sjabloon maken](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) om de aangepaste rol te koppelen aan de Service-Principal:
+Gebruik [AZ Role Assignment opdracht sjabloon maken](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) om de aangepaste rol te koppelen aan de Service-Principal:
 
 ```
 az role assignment create --role “LVAEdge User” --assignee-object-id < objectId>    
@@ -178,7 +179,7 @@ az role assignment create --role “LVAEdge User” --assignee-object-id < objec
 
 Parameters:
 
-|Parameters|Description| 
+|Parameters|Beschrijving| 
 |---|---|
 |--rol |De naam of ID van de aangepaste rol. In ons geval: "LVAEdge gebruiker".|
 |--object-id van de gebruiker|De object-ID van de service-principal die u wilt gebruiken.|
@@ -240,7 +241,7 @@ Hiermee wordt bevestigd dat de aangepaste gebruikersrol is gekoppeld aan de serv
     ```
     az login --service-principal --username "< AadClientID>" --password " <AadSecret>" --tenant "<AadTenantId>"
     ```
-3.  Nu gaan we kijken of de aanmelding is beperkt tot de service-principal met de rol ' LVAEdge User ' door te proberen een resource groep te maken om ervoor te zorgen dat deze mislukt. Voer de volgende opdracht uit in Cloud Shell:
+3.  Nu gaan we kijken of de aanmelding is beperkt tot de service-principal met de rol ' LVAEdge User ' door te proberen een resource groep te maken om ervoor te zorgen dat deze mislukt. Voer de volgende opdracht in Cloud Shell uit:
 
     ```
     az group create --location "central us" --name "testresourcegroup"

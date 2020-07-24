@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: ''
-ms.openlocfilehash: 7656b60c31e7da7841f9afb723167eb061fe3401
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 87277c0c61f6d63e453386724dd472d2663e3148
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85124468"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045215"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>Metrische gegevens van het gast besturingssysteem verzenden naar de data base van de Azure Monitor metrics voor een virtuele Windows-machine (klassiek)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Met de [uitbrei ding voor de Azure monitor diagnostische gegevens](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) (bekend als ' wad ' of ' diagnostiek ') kunt u metrische gegevens en logboeken verzamelen van het gast besturingssysteem (gast besturingssysteem) dat wordt uitgevoerd als onderdeel van een virtuele machine, Cloud service of service Fabric cluster. De uitbrei ding kan telemetrie verzenden naar een [groot aantal verschillende locaties.](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)
+Met de [uitbrei ding voor de Azure monitor diagnostische gegevens](./diagnostics-extension-overview.md) (bekend als ' wad ' of ' diagnostiek ') kunt u metrische gegevens en logboeken verzamelen van het gast besturingssysteem (gast besturingssysteem) dat wordt uitgevoerd als onderdeel van een virtuele machine, Cloud service of service Fabric cluster. De uitbrei ding kan telemetrie verzenden naar een [groot aantal verschillende locaties.](./data-platform.md?toc=/azure/azure-monitor/toc.json)
 
 In dit artikel wordt het proces beschreven voor het verzenden van de prestatie gegevens voor het gast besturingssysteem voor een Windows-virtuele machine (klassiek) naar de data base van de Azure Monitor metriek. Te beginnen met diagnostische gegevens van versie 1,11, kunt u metrische gegevens rechtstreeks naar de opslag voor metrische gegevens van Azure Monitor schrijven, waar de metrische gegevens van het standaard platform al zijn verzameld. 
 
@@ -30,9 +30,9 @@ Het proces dat wordt beschreven in dit artikel, werkt alleen op klassieke virtue
 
 - U moet een [service beheerder of mede beheerder](../../cost-management-billing/manage/add-change-subscription-administrator.md) zijn voor uw Azure-abonnement. 
 
-- Uw abonnement moet zijn geregistreerd bij [micro soft. Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services). 
+- Uw abonnement moet zijn geregistreerd bij [micro soft. Insights](../../azure-resource-manager/management/resource-providers-and-types.md). 
 
-- U moet [Azure PowerShell](/powershell/azure) of [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview) hebben geïnstalleerd.
+- U moet [Azure PowerShell](/powershell/azure) of [Azure Cloud shell](../../cloud-shell/overview.md) hebben geïnstalleerd.
 
 - De VM-resource moet zich in een regio bevinden [die aangepaste metrische gegevens ondersteunt](metrics-custom-overview.md#supported-regions).
 
@@ -44,7 +44,7 @@ Het proces dat wordt beschreven in dit artikel, werkt alleen op klassieke virtue
 1. Wanneer u deze virtuele machine maakt, kiest u de optie voor het maken van een nieuw klassiek opslag account. We gebruiken dit opslag account in latere stappen.
 
 1. Ga in het Azure Portal naar de Blade resource voor **opslag accounts** . Selecteer **sleutels**en noteer de naam van het opslag account en de sleutel van het opslag account. U hebt deze informatie nodig in latere stappen.
-   ![Toegangs sleutels voor opslag](./media/collect-custom-metrics-guestos-vm-classic/storage-access-keys.png)
+   ![Toegangssleutels voor opslag](./media/collect-custom-metrics-guestos-vm-classic/storage-access-keys.png)
 
 ## <a name="create-a-service-principal"></a>Een service-principal maken
 
@@ -204,4 +204,3 @@ Geef deze app ' bewaking metrische gegevens Uitgever ' door aan de resource waar
 
 ## <a name="next-steps"></a>Volgende stappen
 - Meer informatie over [aangepaste metrische gegevens](metrics-custom-overview.md).
-

@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: how-to
 ms.date: 05/31/2019
 ms.author: allensu
-ms.openlocfilehash: 3c61407b2a0c9d0423d1f856101400771e27d846
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a49912bc2275e478d657f06587c4ddc830210d3a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887425"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040204"
 ---
 # <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>HTTP-gedrag negeren met behulp van de Azure CDN van de Verizon Premium-regel engine
 
@@ -55,7 +55,7 @@ Voor toegang tot de regel engine moet u eerst **beheren** selecteren vanaf de bo
     ![Opties voor nieuwe CDN-regel](./media/cdn-rules-engine/cdn-new-rule.png)
    
    > [!IMPORTANT]
-   > De volg orde waarin meerdere regels worden weer gegeven, is van invloed op de manier waarop ze worden verwerkt. Een volgende regel kan de acties overschrijven die door een vorige regel zijn opgegeven.
+   > De volg orde waarin meerdere regels worden weer gegeven, is van invloed op de manier waarop ze worden verwerkt. Een volgende regel kan de acties overschrijven die door een vorige regel zijn opgegeven. Als u bijvoorbeeld een regel hebt waarmee u toegang krijgt tot een resource op basis van een aanvraag eigenschap en een regel die de toegang tot alle aanvragen weigert, overschrijft de tweede regel de eerste. Met regels worden eerdere regels alleen overschreven als ze met dezelfde eigenschappen communiceren.
    >
 
 3. Voer een naam in het tekstvak **naam/beschrijving** in.

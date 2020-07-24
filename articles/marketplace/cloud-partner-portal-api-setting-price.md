@@ -3,26 +3,25 @@ title: Prijzen voor aanbiedingen van virtuele machines-Azure Marketplace
 description: Hierin worden de drie methoden beschreven om de prijs van aanbiedingen van virtuele machines op te geven.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 04/08/2020
-ms.openlocfilehash: b3d38c59d4c79e908aeef857164603a2a5160e05
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: reference
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 8d6dcd7f3f86e111cfb17fb08c4faadac1552b94
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115499"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039110"
 ---
-<a name="pricing-for-virtual-machine-offers"></a>Prijzen voor virtuele machine-aanbiedingen
-==================================
+# <a name="pricing-for-virtual-machine-offers"></a>Prijzen voor virtuele machine-aanbiedingen
 
 > [!NOTE]
-> De Cloud Partner-portal-Api's zijn geïntegreerd met partner centrum en blijven werken nadat uw aanbiedingen zijn gemigreerd naar het partner centrum. De integratie introduceert kleine wijzigingen. Bekijk de wijzigingen die worden vermeld in [Cloud Partner-Portal API-referentie](./cloud-partner-portal-api-overview.md) om ervoor te zorgen dat uw code blijft werken na de migratie naar het partner centrum.
+> De Cloud Partner-portal-Api's zijn geïntegreerd in en blijven werken in het partner centrum. De overgang introduceert kleine wijzigingen. Controleer de wijzigingen die worden vermeld in [Cloud Partner-Portal API-referentie](./cloud-partner-portal-api-overview.md) om ervoor te zorgen dat uw code blijft werken na het overstappen naar het partner centrum. CCP-Api's mogen alleen worden gebruikt voor bestaande producten die al zijn geïntegreerd vóór de overgang naar het partner centrum. nieuwe producten moeten de indienings-Api's van partner Center gebruiken.
 
 Er zijn drie manieren om prijzen voor aanbiedingen van virtuele machines op te geven: aangepaste prijzen voor kernen, tarieven per kern en prijs informatie voor spread sheets.
 
-
-<a name="customized-core-pricing"></a>Aangepaste prijzen voor kernen
------------------------
+## <a name="customized-core-pricing"></a>Aangepaste prijzen voor kernen
 
 Prijzen zijn specifiek voor elke regio en kern combinatie. Elke regio in de lijst verkopen moet worden opgegeven in de sectie **virtualMachinePricing** / **regionPrices** van de definitie.  Gebruik de juiste valuta codes voor elke [regio](#regions) in uw aanvraag.  In het volgende voor beeld ziet u deze vereisten:
 
@@ -66,9 +65,7 @@ Prijzen zijn specifiek voor elke regio en kern combinatie. Elke regio in de lijs
      }
 ```
 
-
-<a name="per-core-pricing"></a>Prijzen per kern
-----------------
+## <a name="per-core-pricing"></a>Prijzen per kern
 
 In dit geval geven de uitgevers één prijs op in USD voor de SKU en worden alle overige prijzen automatisch gegenereerd. De prijs per kern is opgegeven in de **para meter van de aanvraag** .
 
@@ -84,9 +81,7 @@ In dit geval geven de uitgevers één prijs op in USD voor de SKU en worden alle
      }
 ```
 
-
-<a name="spreadsheet-pricing"></a>Prijzen van spread sheet
--------------------
+## <a name="spreadsheet-pricing"></a>Prijzen van spread sheet
 
 De uitgever kan ook hun prijs werk blad uploaden naar een tijdelijke opslag locatie en vervolgens de URI in de aanvraag, zoals andere bestands artefacten, toevoegen. Het werk blad wordt vervolgens geüpload, vertaald om het opgegeven prijs schema te evalueren en de aanbieding wordt met de prijs informatie bijgewerkt. Bij volgende GET-aanvragen voor de aanbieding worden de spread sheet-URI en de geëvalueerde prijzen voor de regio geretourneerd.
 
@@ -101,14 +96,11 @@ De uitgever kan ook hun prijs werk blad uploaden naar een tijdelijke opslag loca
      }
 ```
 
-<a name="new-core-sizes-added-on-722019"></a>Nieuwe kern grootten toegevoegd op 7/2/2019
----------------------------
+## <a name="new-core-sizes-added-on-722019"></a>Nieuwe kern grootten toegevoegd op 7/2/2019
 
 VM-uitgevers zijn op 2 juli 2019 op de hoogte gebracht van de toevoeging van nieuwe prijzen voor nieuwe Azure virtual machine-grootten (op basis van het aantal kern geheugens).  De nieuwe prijzen gelden voor de belangrijkste grootten 10, 44, 48, 60, 120, 208 en 416.  Voor bestaande virtuele machines zijn de nieuwe prijzen voor deze kern geheugens automatisch berekend op basis van de huidige prijzen.  Uitgevers moeten tot 1 augustus 2019 de extra prijzen bekijken en de gewenste wijzigingen aanbrengen.  Na deze datum worden de automatisch berekende prijzen voor deze nieuwe kern groottes van kracht als u de uitgever nog niet opnieuw hebt gepubliceerd.
 
-
-<a name="regions"></a>Regio's
--------
+## <a name="regions"></a>Regio's
 
 In de volgende tabel ziet u de verschillende regio's die u kunt opgeven voor aangepaste kern prijzen en de bijbehorende valuta codes.
 
@@ -123,7 +115,7 @@ In de volgende tabel ziet u de verschillende regio's die u kunt opgeven voor aan
 | BE         | België              | EUR               |
 | BR         | Brazilië               | USD               |
 | BG         | Bulgarije             | BGN               |
-| CA         | Canada               | CAD               |
+| CA (consistentie en beschikbaarheid)         | Canada               | CAD               |
 | CL         | Chili                | CLP               |
 | CO         | Colombia             | BLEK               |
 | CR         | Costa Rica           | CRC               |

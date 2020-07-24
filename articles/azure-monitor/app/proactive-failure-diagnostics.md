@@ -4,12 +4,12 @@ description: Hiermee wordt u gewaarschuwd voor ongebruikelijke wijzigingen in de
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: 35c1769672e11cd7d1ec2f628b9d763dc8b90ac3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27cf38a1cfcf8a9f87582ab3e78b48e78f3c63c2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254783"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045799"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Slimme detectie-fout afwijkingen
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) waarschuwt u automatisch in bijna realtime als uw web-app een abnormale toename in de frequentie van mislukte aanvragen ondervindt. Er wordt een ongebruikelijke toename gedetecteerd met het aantal HTTP-aanvragen of afhankelijkheids aanroepen dat als mislukt wordt gerapporteerd. Voor aanvragen bevat mislukte aanvragen meestal antwoord codes van 400 of hoger. Om u te helpen het probleem te sorteren en te diagnosticeren, wordt een analyse van de kenmerken van de fouten en gerelateerde toepassings gegevens weer gegeven in de waarschuwings Details. Er zijn ook koppelingen naar de Application Insights portal voor verdere diagnose. De functie heeft geen instellingen of configuratie nodig, omdat deze machine learning algoritmen gebruikt om het normale fout aantal te voors pellen.
@@ -61,13 +61,13 @@ De waarschuwingen worden geactiveerd door onze eigen machine learning-algoritme,
 
 ## <a name="configure-alerts"></a>Waarschuwingen configureren
 
-U kunt de waarschuwings regel voor slimme detectie uitschakelen vanuit de portal of met behulp van Azure Resource Manager ([Zie voor beeld van sjabloon](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config)).
+U kunt de waarschuwings regel voor slimme detectie uitschakelen vanuit de portal of met behulp van Azure Resource Manager ([Zie voor beeld van sjabloon](./proactive-arm-config.md)).
 
-Deze waarschuwings regel wordt gemaakt met een bijbehorende [actie groep](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) met de naam ' Application Insights Slimme detectie ' die e-mail en webhook-acties bevat, en kan worden uitgebreid om aanvullende acties te activeren wanneer de waarschuwing wordt geactiveerd.
+Deze waarschuwings regel wordt gemaakt met een bijbehorende [actie groep](../platform/action-groups.md) met de naam ' Application Insights Slimme detectie ' die e-mail en webhook-acties bevat, en kan worden uitgebreid om aanvullende acties te activeren wanneer de waarschuwing wordt geactiveerd.
 
 > [!NOTE]
-> E-mail meldingen die vanuit deze waarschuwings regel worden verzonden, worden nu standaard verzonden naar gebruikers die zijn gekoppeld aan de bewakings-en bewakings functies van het abonnement. Hier vindt u meer informatie over dit [onderwerp](https://docs.microsoft.com/azure/azure-monitor/app/proactive-email-notification).
-> Meldingen die vanuit deze waarschuwings regel worden verzonden, volgen het [algemene waarschuwings schema](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema).
+> E-mail meldingen die vanuit deze waarschuwings regel worden verzonden, worden nu standaard verzonden naar gebruikers die zijn gekoppeld aan de bewakings-en bewakings functies van het abonnement. Hier vindt u meer informatie over dit [onderwerp](./proactive-email-notification.md).
+> Meldingen die vanuit deze waarschuwings regel worden verzonden, volgen het [algemene waarschuwings schema](../platform/alerts-common-schema.md).
 >
 
 Open de pagina waarschuwingen. Waarschuwings regels voor fout afwijkingen zijn opgenomen in alle waarschuwingen die u hand matig hebt ingesteld en u kunt zien of deze zich momenteel in de status van de waarschuwing bevindt.
@@ -348,7 +348,7 @@ Slimme detectie van fout afwijkingen is een aanvulling op andere vergelijk bare 
 
 *Sommige waarschuwingen zijn te vinden op bekende problemen en ik wil ze niet ontvangen.*
 
-* U kunt de functie voor het onderdrukken van [waarschuwings regels](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-action-rules) gebruiken.
+* U kunt de functie voor het onderdrukken van [waarschuwings regels](../platform/alerts-action-rules.md) gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
 Deze diagnostische hulpprogram ma's helpen u bij het controleren van de gegevens in uw app:

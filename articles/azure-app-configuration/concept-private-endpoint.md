@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 3/12/2020
 ms.author: lcozzens
-ms.openlocfilehash: bbf2039ad695f332b69bd5429ff527a4a2534e26
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 3ec2a0e38f3bead5fbab8a119099bb5bbc3ded2e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026981"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042114"
 ---
 # <a name="using-private-endpoints-for-azure-app-configuration"></a>Privé-eind punten gebruiken voor Azure-app configuratie
 
@@ -22,9 +22,6 @@ Met persoonlijke eind punten voor uw app-configuratie archief kunt u het volgend
 - Beveilig de configuratie gegevens van uw toepassing door de firewall zodanig te configureren dat alle verbindingen met de app-configuratie op het open bare eind punt worden geblokkeerd.
 - Verg root de beveiliging van het virtuele netwerk (VNet) zodat gegevens niet van het VNet te zien zijn.
 - Maak een beveiligde verbinding met het app-configuratie archief vanuit on-premises netwerken die verbinding maken met het VNet met behulp van [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) of [expressroutes waaraan](../expressroute/expressroute-locations.md) met privé-peering.
-
-> [!NOTE]
-> De functionaliteit van het persoonlijke eind punt is nu algemeen beschikbaar in alle regio's *, behalve* voor Centraal-India. In de regio **Centraal-India** biedt Azure-app configuratie het gebruik van privé-eind punten als een open bare preview. Met openbare preview-aanbiedingen kunnen klanten voorafgaand aan de officiële release met nieuwe functies experimenteren.  Openbare preview-functies en -services zijn niet bedoeld voor gebruik in productie.
 
 ## <a name="conceptual-overview"></a>Conceptueel overzicht
 

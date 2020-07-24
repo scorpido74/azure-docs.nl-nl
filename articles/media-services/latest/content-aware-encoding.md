@@ -12,15 +12,16 @@ ms.topic: article
 ms.date: 04/29/2020
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: 57a8d308955719be0d84b87fb3a23c6f510c2836
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3669919a8ddf4ffcbcf0d3e7e060c62f4c8df1c6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84234897"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039139"
 ---
 # <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>De vooraf ingestelde coderings voorinstelling gebruiken om de optimale bitrate waarde voor een bepaalde oplossing te vinden
 
-Video moet worden gecodeerd met meerdere bitsnelheden (hoog naar laag) om inhoud voor te bereiden voor levering door [Adaptive bitrate streaming](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming). Dit zorgt voor een goede vermindering van de kwaliteit, omdat de bitsnelheid lager is. Dit is de resolutie van de video. Een dergelijke multiple-bit-factor encoding maakt gebruik van een zogenaamde ' coderings ladder ', een tabel met resoluties en bitrates, de Media Services [ingebouwde coderings definities](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset).
+Video moet worden gecodeerd met meerdere bitsnelheden (hoog naar laag) om inhoud voor te bereiden voor levering door [Adaptive bitrate streaming](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming). Dit zorgt voor een goede vermindering van de kwaliteit, omdat de bitsnelheid lager is. Dit is de resolutie van de video. Een dergelijke multiple-bit-factor encoding maakt gebruik van een zogenaamde ' coderings ladder ', een tabel met resoluties en bitrates, de Media Services [ingebouwde coderings definities](/rest/api/media/transforms/createorupdate#encodernamedpreset).
 
 U moet rekening houden met de inhoud die u verwerkt en de coderings ladder aanpassen of afstemmen op de complexiteit van de afzonderlijke video. Bij elke oplossing is er sprake van een bitsnelheid waarboven een toename van de kwaliteit niet perceptive is. het coderings programma werkt op deze optimale bitrate waarde. Het volgende optimalisatie niveau is het selecteren van de oplossingen op basis van de inhoud. een video van een Power Point-presentatie biedt bijvoorbeeld geen voor deel uit van de volgende 720p. Het coderings programma kan ook worden getaakd om de instellingen voor elke foto in de video te optimaliseren. 
 
@@ -80,8 +81,8 @@ TransformOutput[] output = new TransformOutput[]
   
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Zelf studie: Video's uploaden, coderen en streamen met Media Services v3](stream-files-tutorial-with-api.md)
-* [Zelf studie: een extern bestand coderen op basis van URL en de video-REST streamen](stream-files-tutorial-with-rest.md)
+* [Zelfstudie: Video's uploaden, coderen en streamen met Media Services v3](stream-files-tutorial-with-api.md)
+* [Zelfstudie: Extern bestand coderen op basis van URL en video streamen - REST](stream-files-tutorial-with-rest.md)
 * [Zelf studie: een extern bestand coderen op basis van URL en de video-CLI streamen](stream-files-cli-quickstart.md)
 * [Zelf studie: een extern bestand coderen op basis van URL en de video-.NET streamen](stream-files-dotnet-quickstart.md)
 * [Zelf studie: een extern bestand coderen op basis van URL en de video-Node.jsstreamen](stream-files-nodejs-quickstart.md)

@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: 5e41f5d2189cce19dab3e0b48943ef0568ddedb8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2c3e872dee06ac4fa0c8c37ce8fb77bd34dc78bc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807006"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041869"
 ---
 # <a name="azure-cosmos-db-input-binding-for-azure-functions-2x-and-higher"></a>Invoer binding Azure Cosmos DB voor Azure Functions 2. x en hoger
 
@@ -296,7 +296,7 @@ namespace CosmosDBSamplesV2
 In het volgende voor beeld ziet u een [C#-functie](functions-dotnet-class-library.md) die een lijst met documenten ophaalt. De functie wordt geactiveerd door een HTTP-aanvraag. De code gebruikt een `DocumentClient` exemplaar van de Azure Cosmos DB binding om een lijst met documenten te lezen. Het `DocumentClient` exemplaar kan ook worden gebruikt voor schrijf bewerkingen.
 
 > [!NOTE]
-> U kunt ook de [IDocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.idocumentclient?view=azure-dotnet) -interface gebruiken om het testen gemakkelijker te maken.
+> U kunt ook de [IDocumentClient](/dotnet/api/microsoft.azure.documents.idocumentclient?view=azure-dotnet) -interface gebruiken om het testen gemakkelijker te maken.
 
 ```cs
 using Microsoft.AspNetCore.Http;
@@ -1420,7 +1420,7 @@ Kenmerken worden niet ondersteund door python.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Gebruik in de [runtime-bibliotheek van Java-functies](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)de `@CosmosDBOutput` aantekening voor para meters die naar Cosmos DB schrijven. Het parameter type van de aantekening moet zijn `OutputBinding<T>` , waarbij `T` een systeem eigen Java-type of een POJO is.
+Gebruik in de [runtime-bibliotheek van Java-functies](/java/api/overview/azure/functions/runtime)de `@CosmosDBOutput` aantekening voor para meters die naar Cosmos DB schrijven. Het parameter type van de aantekening moet zijn `OutputBinding<T>` , waarbij `T` een systeem eigen Java-type of een POJO is.
 
 ---
 
@@ -1428,7 +1428,7 @@ Gebruik in de [runtime-bibliotheek van Java-functies](https://docs.microsoft.com
 
 De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `CosmosDB` kenmerk.
 
-|function.jsbij eigenschap | Kenmerk eigenschap |Description|
+|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
 |**type**     | N.v.t. | Moet worden ingesteld op `cosmosDB` .        |
 |**direction**     | N.v.t. | Moet worden ingesteld op `in` .         |
@@ -1463,7 +1463,7 @@ Gegevens worden via een para meter beschikbaar gemaakt voor de functie `Document
 
 # <a name="java"></a>[Java](#tab/java)
 
-Met de aantekening in de [runtime bibliotheek van Java functions](https://docs.microsoft.com/java/api/overview/azure/functions/runtime) [@CosmosDBInput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.cosmosdbinput) worden Cosmos DB gegevens aan de functie toegevoegd. Deze aantekening kan worden gebruikt met systeem eigen Java-typen, Pojo's of nullable-waarden met `Optional<T>` .
+Met de aantekening in de [runtime bibliotheek van Java functions](/java/api/overview/azure/functions/runtime) [@CosmosDBInput](/java/api/com.microsoft.azure.functions.annotation.cosmosdbinput) worden Cosmos DB gegevens aan de functie toegevoegd. Deze aantekening kan worden gebruikt met systeem eigen Java-typen, Pojo's of nullable-waarden met `Optional<T>` .
 
 ---
 

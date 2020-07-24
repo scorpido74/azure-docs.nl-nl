@@ -13,28 +13,29 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 7ea74c85af062ce00dbccf8a486ce39cbd524bb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 703c08cd5a884c8bfdd027b4ecf457c9e954a2dc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515058"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043414"
 ---
-# <a name="develop-with-media-services-v3-apis"></a>Ontwikkelen met Media Services v3-Api's
+# <a name="develop-with-media-services-v3-apis"></a>Ontwikkelen met Media Services v3-API’s
 
-Als een ontwikkelaar kunt u de [REST-API](https://docs.microsoft.com/rest/api/media/) van Media Services gebruiken, of clientbibliotheken waarmee u kunt communiceren met de REST-API, om eenvoudig aangepaste mediawerkstromen te maken, beheren en onderhouden. De [Media Services v3](https://aka.ms/ams-v3-rest-sdk) API is gebaseerd op de OpenAPI-specificatie (voorheen bekend als Swagger).
+Als een ontwikkelaar kunt u de [REST-API](/rest/api/media/) van Media Services gebruiken, of clientbibliotheken waarmee u kunt communiceren met de REST-API, om eenvoudig aangepaste mediawerkstromen te maken, beheren en onderhouden. De [Media Services v3](https://aka.ms/ams-v3-rest-sdk) API is gebaseerd op de OpenAPI-specificatie (voorheen bekend als Swagger).
 
 In dit artikel worden regels beschreven die van toepassing zijn op entiteiten en Api's bij het ontwikkelen met Media Services v3.
 
-## <a name="accessing-the-azure-media-services-api"></a>Toegang tot de Azure Media Services-API
+## <a name="accessing-the-azure-media-services-api"></a>Toegang tot de API van Azure Media Services
 
-Als u toegang wilt hebben tot Media Services resources en de Media Services-API, moet u eerst worden geverifieerd. Media Services ondersteunt [Azure Active Directory (op Azure AD) gebaseerde](../../active-directory/fundamentals/active-directory-whatis.md) verificatie. Twee algemene verificatie opties zijn:
+Om te worden geautoriseerd voor toegang tot Media Services-resources en de API van Media Services, moet u eerst worden geverifieerd. Media Services biedt ondersteuning voor [verificatie op basis van Azure AD (Azure Active Directory)](../../active-directory/fundamentals/active-directory-whatis.md). Twee algemene verificatieopties zijn:
  
-* **Service-Principal-verificatie**: wordt gebruikt voor het verifiëren van een service (bijvoorbeeld: Web apps, functie-apps, Logic apps, API en micro Services). Toepassingen die meestal gebruikmaken van deze verificatie methode zijn apps die daemon services, middelste laag Services of geplande taken uitvoeren. Voor web-apps moet er bijvoorbeeld altijd een mid-tier zijn die verbinding maakt met Media Services met een service-principal.
-* **Gebruikers verificatie**: wordt gebruikt voor het verifiëren van een persoon die de app gebruikt om te communiceren met Media Services-resources. De interactieve app moet eerst de gebruiker vragen naar de referenties van de gebruiker. Een voor beeld is een beheer console-app die door geautoriseerde gebruikers wordt gebruikt voor het bewaken van coderings taken of live streamen.
+* **Verificatie van service-principal**: Wordt gebruikt om een service te verifiëren (bijvoorbeeld: web-apps, functie-apps, logische apps, API en microservices). Toepassingen die meestal gebruikmaken van deze verificatiemethode, zijn apps waarmee daemonservices, services uit de middelste laag, of geplande taken worden uitgevoerd. Voor web-apps moet er bijvoorbeeld altijd een mid-tier zijn die verbinding maakt met Media Services met een service-principal.
+* **Gebruikersverificatie**: Wordt gebruikt om een persoon te verifiëren die de app gebruikt om te communiceren met Media Services-resources. De interactieve app moet de gebruiker eerst vragen om zijn/haar referenties. Een voorbeeld is een beheerconsole-app die door geautoriseerde gebruikers wordt gebruikt om coderingstaken of livestreams te bewaken.
 
-De Media Services-API vereist dat de gebruiker of app die de REST API aanvragen maakt toegang tot de resource van het Media Services-account heeft en een rol voor **Inzender** of **eigenaar** kan gebruiken. De API kan worden geopend met de rol **lezer** , maar er zijn alleen **Get** -of **List** -bewerkingen beschikbaar.Zie [op rollen gebaseerd toegangs beheer voor Media Services accounts](rbac-overview.md)voor meer informatie.
+Voor de API van Media Services is vereist dat de gebruiker of app die de REST API-aanvragen doet, toegang heeft tot het Media Services-account en beschikt over de rol **Inzender** of **Eigenaar**. Toegang tot de API met de rol **Lezer** is ook mogelijk, maar dan zijn alleen **Get**- of **List**-bewerkingen beschikbaar.Zie [Op rollen gebaseerd toegangsbeheer voor Media Services-accounts](rbac-overview.md) voor meer informatie.
 
-In plaats van een service-principal te maken, kunt u overwegen beheerde identiteiten te gebruiken voor Azure-resources om toegang te krijgen tot de Media Services-API via Azure Resource Manager. Zie [Wat is beheerde identiteiten voor Azure](../../active-directory/managed-identities-azure-resources/overview.md)-resources voor meer informatie over beheerde identiteiten voor Azure-resources.
+In plaats van een service-principal te maken, kunt u overwegen beheerde identiteiten te gebruiken voor Azure-resources, om via Azure Resource Manager toegang te krijgen tot de API van Media Services. Zie [Wat zijn beheerde identiteiten voor Azure-resources](../../active-directory/managed-identities-azure-resources/overview.md) voor meer informatie over beheerde identiteiten voor Azure-resources.
 
 ### <a name="azure-ad-service-principal"></a>Service-Principal van Azure AD
 
@@ -53,7 +54,7 @@ In de volgende afbeelding vertegenwoordigen de cijfers de stroom van de aanvrage
    * Resource-URI voor REST-Media Services.
    * Azure AD-App-waarden: de client-ID en het client geheim.
 
-   Als u alle benodigde waarden wilt ophalen, raadpleegt u de [Access Azure Media Services-API](access-api-cli-how-to.md).
+   Als u alle benodigde waarden wilt ophalen, raadpleegt u de [Access Azure Media Services-API](./access-api-howto.md).
 
 2. Het Azure AD-toegangs token wordt verzonden naar de middelste laag.
 4. De middelste laag verzendt een aanvraag naar de Azure media-REST API met het Azure AD-token.
@@ -79,36 +80,36 @@ Zie [naamgevings vereisten](https://github.com/Azure/azure-resource-manager-rpc/
 
 ### <a name="names-of-filesblobs-within-an-asset"></a>Namen van bestanden/blobs in een Asset
 
-De namen van bestanden/blobs in een Asset moeten de [vereisten voor de BLOB-naam](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) en de [NTFS-naam](https://docs.microsoft.com/windows/win32/fileio/naming-a-file)volgen. De reden voor deze vereisten is dat de bestanden kunnen worden gekopieerd van Blob Storage naar een lokale NTFS-schijf voor verwerking.
+De namen van bestanden/blobs in een Asset moeten de [vereisten voor de BLOB-naam](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) en de [NTFS-naam](/windows/win32/fileio/naming-a-file)volgen. De reden voor deze vereisten is dat de bestanden kunnen worden gekopieerd van Blob Storage naar een lokale NTFS-schijf voor verwerking.
 
 ## <a name="long-running-operations"></a>Langlopende bewerkingen
 
 De bewerkingen die zijn gemarkeerd met `x-ms-long-running-operation` in de Azure Media Services [Swagger-bestanden](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json) zijn langlopende bewerkingen. 
 
-Zie [asynchrone bewerkingen](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations#monitor-status-of-operation)voor meer informatie over het bijhouden van asynchrone Azure-bewerkingen.
+Zie [asynchrone bewerkingen](../../azure-resource-manager/management/async-operations.md#monitor-status-of-operation)voor meer informatie over het bijhouden van asynchrone Azure-bewerkingen.
 
 Media Services heeft de volgende langlopende bewerkingen:
 
-* [Live-gebeurtenissen maken](https://docs.microsoft.com/rest/api/media/liveevents/create)
-* [Live-gebeurtenissen bijwerken](https://docs.microsoft.com/rest/api/media/liveevents/update)
-* [Live-gebeurtenis verwijderen](https://docs.microsoft.com/rest/api/media/liveevents/delete)
-* [Live-gebeurtenis starten](https://docs.microsoft.com/rest/api/media/liveevents/start)
-* [LiveEvent stoppen](https://docs.microsoft.com/rest/api/media/liveevents/stop)
+* [Live-gebeurtenissen maken](/rest/api/media/liveevents/create)
+* [Live-gebeurtenissen bijwerken](/rest/api/media/liveevents/update)
+* [Live-gebeurtenis verwijderen](/rest/api/media/liveevents/delete)
+* [Live-gebeurtenis starten](/rest/api/media/liveevents/start)
+* [LiveEvent stoppen](/rest/api/media/liveevents/stop)
 
   Gebruik de `removeOutputsOnStop` para meter om alle gekoppelde live-uitvoer te verwijderen bij het stoppen van de gebeurtenis.  
-* [LiveEvent opnieuw instellen](https://docs.microsoft.com/rest/api/media/liveevents/reset)
-* [LiveOutput maken](https://docs.microsoft.com/rest/api/media/liveevents/create)
-* [LiveOutput verwijderen](https://docs.microsoft.com/rest/api/media/liveevents/delete)
-* [StreamingEndpoint maken](https://docs.microsoft.com/rest/api/media/streamingendpoints/create)
-* [StreamingEndpoint bijwerken](https://docs.microsoft.com/rest/api/media/streamingendpoints/update)
-* [StreamingEndpoint verwijderen](https://docs.microsoft.com/rest/api/media/streamingendpoints/delete)
-* [StreamingEndpoint starten](https://docs.microsoft.com/rest/api/media/streamingendpoints/start)
-* [StreamingEndpoint stoppen](https://docs.microsoft.com/rest/api/media/streamingendpoints/stop)
-* [StreamingEndpoint schalen](https://docs.microsoft.com/rest/api/media/streamingendpoints/scale)
+* [LiveEvent opnieuw instellen](/rest/api/media/liveevents/reset)
+* [LiveOutput maken](/rest/api/media/liveevents/create)
+* [LiveOutput verwijderen](/rest/api/media/liveevents/delete)
+* [StreamingEndpoint maken](/rest/api/media/streamingendpoints/create)
+* [StreamingEndpoint bijwerken](/rest/api/media/streamingendpoints/update)
+* [StreamingEndpoint verwijderen](/rest/api/media/streamingendpoints/delete)
+* [StreamingEndpoint starten](/rest/api/media/streamingendpoints/start)
+* [StreamingEndpoint stoppen](/rest/api/media/streamingendpoints/stop)
+* [StreamingEndpoint schalen](/rest/api/media/streamingendpoints/scale)
 
 Wanneer een lange bewerking is ingediend, ontvangt u een ' 202 accepted ' en moet u de bewerking volt ooien met de geretourneerde bewerkings-ID.
 
-In het artikel [asynchrone Azure-bewerkingen bijhouden](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) wordt uitgelegd hoe u de status van asynchrone bewerkingen van Azure kunt volgen met de waarden die in het antwoord worden geretourneerd.
+In het artikel [asynchrone Azure-bewerkingen bijhouden](../../azure-resource-manager/management/async-operations.md) wordt uitgelegd hoe u de status van asynchrone bewerkingen van Azure kunt volgen met de waarden die in het antwoord worden geretourneerd.
 
 Er wordt slechts één langlopende bewerking ondersteund voor een bepaalde live gebeurtenis of een van de bijbehorende live-uitvoer bewerkingen. Eenmaal gestart, moet een langlopende bewerking worden voltooid voordat een volgende langlopende bewerking wordt gestart op dezelfde LiveEvent of aan de gekoppelde live uitvoer. Voor Live-gebeurtenissen met meerdere Live outputs moet u wachten op het volt ooien van een langlopende bewerking op één live uitvoer voordat een langlopende bewerking wordt geactiveerd op een andere live uitvoer. 
 
@@ -143,11 +144,11 @@ Zie [filteren, ordenen, pagineren van Azure Media Services entiteiten](entities-
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Vragen stellen, feedback geven, updates ophalen
 
-Bekijk het [Azure Media Services Community](media-services-community.md) -artikel voor verschillende manieren om vragen te stellen, feedback te geven en updates te ontvangen over Media Services.
+Ga naar het artikel van de [Azure Media Services-community](media-services-community.md) voor verschillende manieren om vragen te stellen, feedback te geven en updates voor Media Services op te halen.
 
 ## <a name="see-also"></a>Zie tevens
 
-Als u alle benodigde waarden wilt ophalen, raadpleegt u de [Access Azure Media Services-API](access-api-cli-how-to.md).
+Als u alle benodigde waarden wilt ophalen, raadpleegt u de [Access Azure Media Services-API](./access-api-howto.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

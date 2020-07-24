@@ -4,23 +4,23 @@ description: bestand opnemen
 services: digital-twins
 ms.service: digital-twins
 ms.topic: include
-ms.date: 02/03/2020
+ms.date: 07/09/2020
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.custom: include file
-ms.openlocfilehash: 11469d992e0f5669cd3fc1e3864627dd0b8ae23d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e07f56bc2e820b325414e124c7825c1d356ca26
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81263337"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046422"
 ---
-Hieronder vindt u een overzicht van de belangrijkste limieten voor algemene Beschik baarheid.
+Hieronder vindt u een overzicht van de belangrijkste limieten in Azure Time Series Insights gen1.
 
 ### <a name="sku-ingress-rates-and-capacities"></a>Tarieven en capaciteit van de SKU
 
-De snelheid en capaciteit van de SKU van de sku's van de S2 bieden flexibiliteit bij het configureren van een nieuwe Time Series Insights-omgeving. Uw SKU-capaciteit geeft uw dagelijkse ingangs rente aan op basis van het aantal gebeurtenissen of opgeslagen bytes, afhankelijk van wat het eerste komt. Houd er rekening mee dat ingangen *per minuut*wordt gemeten en dat **beperking** wordt toegepast met behulp van het token bucket algoritme. Binnenkomend verkeer wordt gemeten in blokken van 1 KB. Zo wordt een werkelijke gebeurtenis van 0,8 KB gemeten als één gebeurtenis, en wordt een gebeurtenis van 2,6 KB geteld als drie gebeurtenissen.
+De snelheid en capaciteit van de SKU van de sku's van de S2 bieden flexibiliteit bij het configureren van een nieuwe Azure Time Series Insights-omgeving. Uw SKU-capaciteit geeft uw dagelijkse ingangs rente aan op basis van het aantal gebeurtenissen of opgeslagen bytes, afhankelijk van wat het eerste komt. Houd er rekening mee dat ingangen *per minuut*wordt gemeten en dat **beperking** wordt toegepast met behulp van het token bucket algoritme. Binnenkomend verkeer wordt gemeten in blokken van 1 KB. Zo wordt een werkelijke gebeurtenis van 0,8 KB gemeten als één gebeurtenis, en wordt een gebeurtenis van 2,6 KB geteld als drie gebeurtenissen.
 
 | Capaciteit van S1-SKU | Ingangs frequentie | Maximale opslag capaciteit
 | --- | --- | --- |
@@ -44,7 +44,7 @@ S2-SKU-omgevingen ondersteunen aanzienlijk meer gebeurtenissen per maand en hebb
 
 ### <a name="property-limits"></a>Eigenschaps limieten
 
-Eigenschaps limieten voor GA zijn afhankelijk van de geselecteerde SKU-omgeving. De opgegeven gebeurtenis eigenschappen hebben bijbehorende JSON-, CSV-en grafiek kolommen die kunnen worden weer gegeven in de [Time Series Insights Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart).
+Limieten voor gen1-eigenschappen zijn afhankelijk van de geselecteerde SKU-omgeving. De opgegeven gebeurtenis eigenschappen hebben bijbehorende JSON-, CSV-en grafiek kolommen die kunnen worden weer gegeven in de [Azure time series Insights Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart).
 
 | SKU | Maximum aantal eigenschappen |
 | --- | --- |
@@ -53,11 +53,11 @@ Eigenschaps limieten voor GA zijn afhankelijk van de geselecteerde SKU-omgeving.
 
 ### <a name="event-sources"></a>Gebeurtenisbronnen
 
-Er worden Maxi maal twee gebeurtenis bronnen per instantie ondersteund. 
+Er worden Maxi maal twee gebeurtenis bronnen per instantie ondersteund.
 
 * Meer informatie over het [toevoegen van een event hub bron](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub).
 * [Een IOT hub-bron](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub)configureren.
 
 ### <a name="api-limits"></a>API-limieten
 
-REST API limieten voor Time Series Insights algemene Beschik baarheid worden opgegeven in de [referentie documentatie van rest API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#limits).
+REST API limieten voor Azure Time Series Insights gen1 zijn opgegeven in de [referentie documentatie van rest API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#limits).

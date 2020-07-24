@@ -5,23 +5,24 @@ ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 05/05/2020
-ms.custom: seodec18~~~~
-ms.openlocfilehash: 010f7b908ceb9c8d07208db1312d8af8d4e27051
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 06/30/2020
+ms.custom: seodec18
+ms.openlocfilehash: 2503a58f7d5fe05240f374fabbe2bf88d34dcf6c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82838515"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046626"
 ---
-# <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Maak een referentie gegevensverzameling voor uw Time Series Insights-omgeving met behulp van de Azure Portal
+# <a name="create-a-reference-data-set-for-your-azure-time-series-insights-gen1-environment-using-the-azure-portal"></a>Maak een set referentie gegevens voor uw Azure Time Series Insights gen1-omgeving met behulp van de Azure Portal
 
 In dit artikel wordt beschreven hoe u een set met referentie gegevens toevoegt aan uw Azure Time Series Insights omgeving. Referentie gegevens zijn handig om samen te voegen met de bron gegevens om de waarden te verbeteren.
 
-Een referentie gegevensset is een verzameling items waarmee de gebeurtenissen worden uitgebreid van de bron van de gebeurtenis. Time Series Insights ingangs engine koppelt elke gebeurtenis uit de bron van de gebeurtenis met de overeenkomstige gegevensrij in uw referentie gegevensverzameling. Deze uitgebreide gebeurtenis is vervolgens beschikbaar voor query’s. Deze samen voeging is gebaseerd op de kolom (men) van de primaire sleutel die is gedefinieerd in uw referentie gegevensverzameling.
+Een referentie gegevensset is een verzameling items waarmee de gebeurtenissen worden uitgebreid van de bron van de gebeurtenis. Azure Time Series Insights ingangs engine koppelt elke gebeurtenis uit de bron van de gebeurtenis met de overeenkomstige gegevensrij in uw referentie gegevensverzameling. Deze uitgebreide gebeurtenis is vervolgens beschikbaar voor query’s. Deze samen voeging is gebaseerd op de kolom (men) van de primaire sleutel die is gedefinieerd in uw referentie gegevensverzameling.
 
 Referentie gegevens worden niet met terugwerkende kracht samengevoegd. Daarom worden alleen huidige en toekomstige ingangs gegevens vergeleken en samengevoegd met de referentie datumset, zodra deze is geconfigureerd en geüpload.
 
@@ -35,15 +36,15 @@ Referentie gegevens worden niet met terugwerkende kracht samengevoegd. Daarom wo
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
-1. Zoek uw bestaande Azure Time Series Insights-omgeving. Selecteer **alle resources** in het menu aan de linkerkant van het Azure Portal. Selecteer uw Time Series Insights-omgeving.
+1. Zoek uw bestaande Azure Time Series Insights-omgeving. Selecteer **alle resources** in het menu aan de linkerkant van het Azure Portal. Selecteer uw Azure Time Series Insights omgeving.
 
-1. Selecteer de pagina **overzicht** . Vouw de sectie **Essentials** aan de bovenkant van de pagina uit om de **URL van de time series Insights Explorer** te vinden en de koppeling te openen.  
+1. Selecteer de pagina **Overzicht**. Vouw de sectie **Essentials** aan de bovenkant van de pagina uit om de **URL van de time series Insights Explorer** te vinden en de koppeling te openen.  
 
    [![De sectie Essentials uitbreiden](media/add-reference-data-set/essentials.png)](media/add-reference-data-set/essentials.png#lightbox)
 
-   Bekijk de Verkenner voor uw Time Series Insights-omgeving.
+   Bekijk de Verkenner voor uw Azure Time Series Insights-omgeving.
 
-1. Vouw de omgevings kiezer uit in de Time Series Insights Explorer. Kies de actieve omgeving. Selecteer het pictogram referentie gegevens in de rechter bovenhoek van de Explorer-pagina.
+1. Vouw de omgevings kiezer uit in de Azure Time Series Insights Explorer. Kies de actieve omgeving. Selecteer het pictogram referentie gegevens in de rechter bovenhoek van de Explorer-pagina.
 
    [![Referentie gegevens toevoegen](media/add-reference-data-set/tsi-select-environment-and-data-icons.png)](media/add-reference-data-set/tsi-select-environment-and-data-icons.png#lightbox)
 

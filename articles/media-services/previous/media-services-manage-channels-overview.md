@@ -14,16 +14,17 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f875b4a5c4f1322f4a992dc3738ab1ce6431149d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b28e200cab2edb4c1f603e4c67264cdc1c46d7f8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81641127"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042851"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>Overzicht van live streamen met Media Services
 
 > [!NOTE]
-> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](../latest/index.yml). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
 ## <a name="overview"></a>Overzicht
 
@@ -105,7 +106,7 @@ Zie [Werken met kanalen waarmee Live Encoding kan worden uitgevoerd met Azure Me
 
 ### <a name="channel"></a>Kanaal
 
-In Media Services zijn [Channel](https://docs.microsoft.com/rest/api/media/operations/channel)s verantwoordelijk voor het verwerken van live streaming-inhoud. Een kanaal biedt een invoer eindpunt (opname-URL) dat u vervolgens verstrekt aan een live-transcodeer. Het kanaal ontvangt Live-invoer stromen van de Live-transcodeer en maakt deze beschikbaar voor streaming via een of meer StreamingEndpoints. Kanalen bieden ook een preview-eind punt (Preview-URL) die u gebruikt om uw stroom te bekijken en te valideren vóór verdere verwerking en levering.
+In Media Services zijn [Channel](/rest/api/media/operations/channel)s verantwoordelijk voor het verwerken van live streaming-inhoud. Een kanaal biedt een invoer eindpunt (opname-URL) dat u vervolgens verstrekt aan een live-transcodeer. Het kanaal ontvangt Live-invoer stromen van de Live-transcodeer en maakt deze beschikbaar voor streaming via een of meer StreamingEndpoints. Kanalen bieden ook een preview-eind punt (Preview-URL) die u gebruikt om uw stroom te bekijken en te valideren vóór verdere verwerking en levering.
 
 U kunt de opname-URL en de voor beeld-URL ophalen wanneer u het kanaal maakt. Om deze Url's op te halen, hoeft het kanaal niet de status gestart te hebben. Wanneer u klaar bent om gegevens van een live-transcodeer naar het kanaal te pushen, moet het kanaal worden gestart. Zodra de Live-code ring begint met het opnemen van gegevens, kunt u een voor beeld van de stroom bekijken.
 
@@ -114,7 +115,7 @@ Elk Media Services-account kan meerdere kanalen, meerdere Program Ma's en meerde
 Wanneer u een kanaal maakt, kunt u toegestane IP-adressen in een van de volgende indelingen opgeven: IpV4-adres met 4 getallen, CIDR-adres bereik.
 
 ### <a name="program"></a>Programma
-Met een [programma](https://docs.microsoft.com/rest/api/media/operations/program) kunt u het publiceren en opslaan van segmenten in een live stream beheren. Kanalen beheren programma's. De kanaal-/programmarelatie lijkt erg op traditionele media waarbij een kanaal een constante stream met inhoud heeft en een programma is afgestemd op een bepaalde getimede gebeurtenis op dat kanaal.
+Met een [programma](/rest/api/media/operations/program) kunt u het publiceren en opslaan van segmenten in een live stream beheren. Kanalen beheren programma's. De kanaal-/programmarelatie lijkt erg op traditionele media waarbij een kanaal een constante stream met inhoud heeft en een programma is afgestemd op een bepaalde getimede gebeurtenis op dat kanaal.
 U kunt het aantal uren opgeven dat u de opgenomen inhoud voor het programma wilt behouden door de eigenschap **ArchiveWindowLength** in te stellen. Deze waarde kan worden ingesteld van minimaal 5 minuten tot maximaal 25 uur.
 
 ArchiveWindowLength bepaalt ook de maximale hoeveelheid tijd die clients vanaf de huidige Live positie op tijd kunnen zoeken. Programma's kunnen in de opgegeven tijdsduur worden uitgevoerd, maar de inhoud die achter de lengte van het venster valt, wordt altijd verwijderd. De waarde van deze eigenschap bepaalt ook hoe lang de client manifesten kunnen groeien.
@@ -150,7 +151,7 @@ In de volgende tabel ziet u hoe kanaal statussen worden toegewezen aan de factur
 | Kanaal status | UI-indica toren van portal | Is het facturerings abonnement? |
 | --- | --- | --- |
 | Starten |Starten |Nee (tijdelijke status) |
-| In uitvoering |Gereed (geen actieve Program ma's)<br/>of<br/>Streaming (ten minste één programma dat wordt uitgevoerd) |JA |
+| Wordt uitgevoerd |Gereed (geen actieve Program ma's)<br/>of<br/>Streaming (ten minste één programma dat wordt uitgevoerd) |JA |
 | Stoppen |Stoppen |Nee (tijdelijke status) |
 | Gestopt |Gestopt |No |
 

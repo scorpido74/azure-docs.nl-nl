@@ -7,11 +7,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 06bdedf1dac92a2010718ffd3eb5c6e43bb51e6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf8ea45f37e421d70a68c4a6e138f5203e92d78f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83798127"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045772"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Resource groepen bewaken met Azure Monitor (preview-versie)
 
@@ -45,10 +46,10 @@ De pagina resource groep Insights bevat verschillende andere hulpprogram ma's di
 
    |         |          |
    | ---------------- |:-----|
-   | [**Waarschuwingen**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)      |  Uw waarschuwingen weer geven, maken en beheren. |
-   | [**Metrische gegevens**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics) | Visualiseer en verken uw metrische gegevens op basis van metriek.    |
-   | [**Activiteiten logboeken**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) | Gebeurtenissen op abonnements niveau die zich hebben voorgedaan in Azure.  |
-   | [**Overzicht van de toepassing**](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) | Navigeer door de topologie van de gedistribueerde toepassing om knel punten in de prestaties of HOTS pots te identificeren. |
+   | [**Waarschuwingen**](../platform/alerts-overview.md)      |  Uw waarschuwingen weer geven, maken en beheren. |
+   | [**Metrische gegevens**](../platform/data-platform.md) | Visualiseer en verken uw metrische gegevens op basis van metriek.    |
+   | [**Activiteiten logboeken**](../platform/platform-logs-overview.md) | Gebeurtenissen op abonnements niveau die zich hebben voorgedaan in Azure.  |
+   | [**Overzicht van de toepassing**](../app/app-map.md) | Navigeer door de topologie van de gedistribueerde toepassing om knel punten in de prestaties of HOTS pots te identificeren. |
 
 ## <a name="failures-and-performance"></a>Fouten en prestaties
 
@@ -116,6 +117,6 @@ Azure Monitor voor resource groepen is afhankelijk van het beheer systeem voor A
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure Monitor werkmappen](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)
-- [Azure Resource Health](https://docs.microsoft.com/azure/service-health/resource-health-overview)
-- [Azure Monitor waarschuwingen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)
+- [Azure Monitor werkmappen](../platform/workbooks-overview.md)
+- [Azure Resource Health](../../service-health/resource-health-overview.md)
+- [Azure Monitor-waarschuwingen](../platform/alerts-overview.md)

@@ -6,11 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 05/11/2020
-ms.openlocfilehash: 4d0d56dc4d6e7fa7765439e7387d67bb80a6ec9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a31c089971b7e70e70c5906480deb2b17c197b9f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83124632"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043616"
 ---
 # <a name="known-issues"></a>Bekende problemen #
 
@@ -49,7 +50,7 @@ De huidige versie heeft de volgende bekende problemen:
 
 - Activa die alleen audio zijn, worden niet afgespeeld via de AzureHtml5JS-techniek.
   - Als u activa zonder audio wilt afspelen, kunt u dit doen door lege audio in te voegen met behulp van de [Azure Media Services Explorer](https://aka.ms/amse)
-  - Instructies voor het invoegen van Silent audio vindt u [hier](https://azure.microsoft.com/documentation/articles/media-services-advanced-encoding-with-mes/#silent_audio)
+  - Instructies voor het invoegen van Silent audio vindt u [hier](../previous/media-services-advanced-encoding-with-mes.md#silent_audio)
 
 ## <a name="flash"></a>Flits ##
 

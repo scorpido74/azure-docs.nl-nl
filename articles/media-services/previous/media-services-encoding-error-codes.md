@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 5c038f0be31acea52c2ef07d43f0dbaf3434a371
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b40bc8521755fae08e851e5b324979d5798e3dcd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "64709525"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042864"
 ---
 # <a name="encoding-error-codes"></a>Foutcodes voor codering
 
-De volgende tabel bevat de fout codes die kunnen worden geretourneerd als er een fout is opgetreden tijdens het uitvoeren van de coderings taak.  Als u fout gegevens in uw .NET-code wilt ophalen, gebruikt u de [Error Details](https://msdn.microsoft.com/library/microsoft.windowsazure.mediaservices.client.errordetail.aspx) -klasse. Als u details van de fout in uw REST code wilt weer geven, gebruikt u de [ErrorDetail](https://msdn.microsoft.com/library/jj853026.aspx) -rest API.
+De volgende tabel bevat de fout codes die kunnen worden geretourneerd als er een fout is opgetreden tijdens het uitvoeren van de coderings taak.  Als u fout gegevens in uw .NET-code wilt ophalen, gebruikt u de [Error Details](/previous-versions/azure/jj126075(v=azure.100)) -klasse. Als u details van de fout in uw REST code wilt weer geven, gebruikt u de [ErrorDetail](/rest/api/media/operations/errordetail) -rest API.
 
 | ErrorDetail. code | Mogelijke oorzaken voor fout |
 | --- | --- |

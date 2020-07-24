@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/21/2020
-ms.openlocfilehash: 469b402c694bcfae5a826c03ea35dbef2c365148
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 70bf39011761bcf59c8270ecdcc0542e326aef42
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945406"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045853"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis-preview"></a>Azure Monitor voor Azure-cache verkennen voor redis (preview-versie)
 
@@ -120,7 +120,7 @@ Wanneer u de **fout** boven aan de pagina selecteert, wordt de tabel **fouten** 
 
 ### <a name="metric-definitions"></a>Metrische definities
 
-Raadpleeg het [artikel over de beschik bare metrische gegevens en rapportage-intervallen](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-monitor#available-metrics-and-reporting-intervals)voor een volledige lijst van de metrische definities die deze werkmappen vormen.
+Raadpleeg het [artikel over de beschik bare metrische gegevens en rapportage-intervallen](../../azure-cache-for-redis/cache-how-to-monitor.md#available-metrics-and-reporting-intervals)voor een volledige lijst van de metrische definities die deze werkmappen vormen.
 
 ## <a name="view-from-an-azure-cache-for-redis-resource"></a>Weer geven vanuit een Azure-cache voor redis-resource
 
@@ -156,7 +156,7 @@ Als u een van de andere tabbladen voor **prestaties** of **bewerkingen** selecte
 
 ## <a name="pin-export-and-expand"></a>Vastmaken, exporteren en uitvouwen
 
-Als u een metrische gedeelte aan een [Azure-dash board](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards)wilt vastmaken, selecteert u het markerings teken in de rechter bovenhoek van de sectie.
+Als u een metrische gedeelte aan een [Azure-dash board](../../azure-portal/azure-portal-dashboards.md)wilt vastmaken, selecteert u het markerings teken in de rechter bovenhoek van de sectie.
 
 ![Een metrische sectie met het symbool punaise gemarkeerd](./media/cosmosdb-insights-overview/pin.png)
 
@@ -186,6 +186,6 @@ Raadpleeg het [artikel speciale probleemoplossings problemen](troubleshoot-workb
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Waarschuwingen voor metrische gegevens](../platform/alerts-metric.md) en [service status meldingen](../../service-health/alerts-activity-log-service-notifications.md) configureren om automatische waarschuwingen in te stellen die ondersteuning bieden bij het detecteren van problemen.
+* [Waarschuwingen voor metrische gegevens](../platform/alerts-metric.md) en [service status meldingen](../../service-health/alerts-activity-log-service-notifications-portal.md) configureren om automatische waarschuwingen in te stellen die ondersteuning bieden bij het detecteren van problemen.
 
 * Meer informatie over de scenario's die door werkmappen worden ondersteund, over het ontwerpen of aanpassen van rapporten en meer door [interactieve rapporten maken met Azure monitor werkmappen](../platform/workbooks-overview.md)te controleren.

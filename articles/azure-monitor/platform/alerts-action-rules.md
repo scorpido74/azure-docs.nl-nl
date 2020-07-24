@@ -4,12 +4,12 @@ description: Meer informatie over actie regels in Azure Monitor zijn en hoe u de
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 573567386ba9cbaf8b36440fda5073f899fcdfc7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 083db4ad046ee586f139309b62eedf0fcc2ffa6a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112337"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045729"
 ---
 # <a name="action-rules-preview"></a>Actie regels (preview-versie)
 
@@ -21,14 +21,13 @@ Met actie regels kunt u acties definiëren of onderdrukken voor elk Azure Resour
 
 ### <a name="suppression-of-alerts"></a>Waarschuwingen onderdrukken
 
-Er zijn veel scenario's waarin het nuttig is om de meldingen te onderdrukken die worden gegenereerd door waarschuwingen. Deze scenario's lopen uiteen van onderdrukking tijdens het geplande onderhouds venster tot onderdrukking tijdens niet-kantoor uren. Het team dat verantwoordelijk is voor **ContosoVM** wil bijvoorbeeld waarschuwings meldingen onderdrukken voor het komende weekend, omdat **ContosoVM** het gepland onderhoud ondergaat. 
+Er zijn veel scenario's waarin het nuttig is om de meldingen te onderdrukken die worden gegenereerd door waarschuwingen. Deze scenario's lopen uiteen van onderdrukking tijdens het geplande onderhouds venster tot onderdrukking tijdens niet-kantoor uren. Het team dat verantwoordelijk is voor **ContosoVM** wil bijvoorbeeld waarschuwings meldingen onderdrukken voor het komende weekend, omdat **ContosoVM** het gepland onderhoud ondergaat.
 
 Hoewel het team elke waarschuwings regel die is geconfigureerd voor **ContosoVM** hand matig kan uitschakelen (en deze opnieuw inschakelt na onderhoud), is het geen eenvoudig proces. Met actie regels kunt u waarschuwings onderdrukking op schaal definiëren, zodat de periode van onderdrukking flexibel kan worden geconfigureerd. In het vorige voor beeld kan het team één actie regel definiëren voor **ContosoVM** die alle waarschuwings meldingen voor het weekend onderdrukt.
 
-
 ### <a name="actions-at-scale"></a>Acties op schaal
 
-Hoewel waarschuwings regels u helpen om de actie groep te definiëren die wordt geactiveerd wanneer de waarschuwing wordt gegenereerd, hebben klanten vaak een gemeen schappelijke actie groep binnen hun bereik van bewerkingen. Een team dat verantwoordelijk is voor de **ContosoRG** van de resource groep, definieert bijvoorbeeld waarschijnlijk dezelfde actie groep voor alle waarschuwings regels die zijn gedefinieerd in **ContosoRG**. 
+Hoewel waarschuwings regels u helpen om de actie groep te definiëren die wordt geactiveerd wanneer de waarschuwing wordt gegenereerd, hebben klanten vaak een gemeen schappelijke actie groep binnen hun bereik van bewerkingen. Een team dat verantwoordelijk is voor de **ContosoRG** van de resource groep, definieert bijvoorbeeld waarschijnlijk dezelfde actie groep voor alle waarschuwings regels die zijn gedefinieerd in **ContosoRG**.
 
 Met actie regels kunt u dit proces vereenvoudigen. Door acties op schaal te definiëren, kan een actie groep worden geactiveerd voor elke waarschuwing die wordt gegenereerd voor het geconfigureerde bereik. In het vorige voor beeld kan het team één actie regel definiëren voor **ContosoRG** die dezelfde actie groep activeren voor alle waarschuwingen die erin worden gegenereerd.
 
@@ -37,11 +36,13 @@ Met actie regels kunt u dit proces vereenvoudigen. Door acties op schaal te defi
 
 ## <a name="configuring-an-action-rule"></a>Een actieregel configureren
 
+### <a name="portal"></a>[Portal](#tab/portal)
+
 U kunt de functie openen door **acties beheren** te selecteren op de pagina **waarschuwings signalen** in azure monitor. Selecteer vervolgens **actie regels (preview)**. U kunt de regels openen door **actie regels (preview)** te selecteren in het dash board van de landings pagina voor waarschuwingen.
 
 ![Actie regels van de Azure Monitor landings pagina](media/alerts-action-rules/action-rules-landing-page.png)
 
-Selecteer **+ nieuwe actie regel**. 
+Selecteer **+ nieuwe actie regel**.
 
 ![Nieuwe actie regel toevoegen](media/alerts-action-rules/action-rules-new-rule.png)
 
@@ -49,7 +50,7 @@ U kunt ook een actie regel maken tijdens het configureren van een waarschuwings 
 
 ![Nieuwe actie regel toevoegen](media/alerts-action-rules/action-rules-alert-rule.png)
 
-U ziet nu de pagina stroom voor het maken van actie regels. Configureer de volgende elementen: 
+U ziet nu de pagina stroom voor het maken van actie regels. Configureer de volgende elementen:
 
 ![Stroom voor maken van nieuwe actie regel](media/alerts-action-rules/action-rules-new-rule-creation-flow.png)
 
@@ -61,9 +62,9 @@ Kies eerst het bereik (Azure-abonnement, resource groep of doel resource). U kun
 
 ### <a name="filter-criteria"></a>Filter criteria
 
-U kunt ook filters definiëren om ze te beperken tot een specifieke subset van de waarschuwingen. 
+U kunt ook filters definiëren om ze te beperken tot een specifieke subset van de waarschuwingen.
 
-De beschikbare filters zijn: 
+De beschikbare filters zijn:
 
 * **Ernst**: de optie voor het selecteren van een of meer waarschuwings ernst. **Ernst = Sev1** betekent dat de actie regel van toepassing is op alle waarschuwingen die zijn ingesteld op Sev1.
 * **Bewakings service**: een filter op basis van de oorspronkelijke bewakings service. Dit filter is ook meervoudige selectie. Bijvoorbeeld: de **controle service = "Application Insights"** betekent dat de actie regel van toepassing is voor alle waarschuwingen op basis van Application Insights.
@@ -73,7 +74,7 @@ De beschikbare filters zijn:
 * **Beschrijving**: een regex (reguliere expressie) die overeenkomt met een teken reeks die overeenkomt met de beschrijving, gedefinieerd als onderdeel van de waarschuwings regel. De **Beschrijving bevat bijvoorbeeld ' Prod '** die overeenkomt met alle waarschuwingen die de teken reeks ' Prod ' in hun beschrijvingen bevatten.
 * **Waarschuwings context (Payload)**: een matching-overeenkomst die een teken reeks overeenkomst definieert op basis van de waarschuwings context velden van de nettolading van een waarschuwing. Bijvoorbeeld: **waarschuwings context (Payload) bevat ' computer-01 '** komt overeen met alle waarschuwingen waarvan de nettolading de teken reeks ' computer-01 ' bevatten.
 
-Deze filters worden in combi natie met elkaar toegepast. Als u bijvoorbeeld **resource type = virtual machines** en **Ernst = Sev0**hebt ingesteld, hebt u gefilterd op alle **Sev0** -waarschuwingen op uw virtuele machines. 
+Deze filters worden in combi natie met elkaar toegepast. Als u bijvoorbeeld **resource type = virtual machines** en **Ernst = Sev0**hebt ingesteld, hebt u gefilterd op alle **Sev0** -waarschuwingen op uw virtuele machines.
 
 ![Actie regel filters](media/alerts-action-rules/action-rules-new-rule-creation-flow-filters.png)
 
@@ -92,7 +93,7 @@ Als u **onderdrukking**selecteert, configureert u de duur voor het onderdrukken 
 
 #### <a name="action-group"></a>Actiegroep
 
-Als u in de wissel knop **actie groep** selecteert, moet u een bestaande actie groep toevoegen of een nieuwe maken. 
+Als u in de wissel knop **actie groep** selecteert, moet u een bestaande actie groep toevoegen of een nieuwe maken.
 
 > [!NOTE]
 > U kunt slechts één actie groep koppelen aan een actie regel.
@@ -102,9 +103,85 @@ Als u in de wissel knop **actie groep** selecteert, moet u een bestaande actie g
 ### <a name="action-rule-details"></a>Details van de actie regel
 
 Configureer als laatste de volgende Details voor de actie regel:
-* Name
+* Naam
 * De resource groep waarin deze is opgeslagen
-* Description 
+* Beschrijving
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+U kunt actie regels maken met de Azure CLI met behulp van de opdracht [AZ monitor Action-Rule Create](/cli/azure/ext/alertsmanagement/monitor/action-rule#ext-alertsmanagement-az-monitor-action-rule-create) .  De `az monitor action-rule` verwijzing is slechts een van de vele [Azure cli-verwijzingen voor Azure monitor](/cli/azure/azure-cli-reference-for-monitor).
+
+### <a name="prepare-your-environment"></a>Uw omgeving voorbereiden
+
+1. [Azure CLI installeren](/cli/azure/install-azure-cli)
+
+   Als u wilt, kunt u ook Azure Cloud Shell gebruiken om de stappen in dit artikel uit te voeren.  Azure Cloud Shell is een interactieve shell-omgeving die u via uw browser gebruikt.  Start Cloud Shell met een van de volgende methoden:
+
+   - Open Cloud Shell door naar te gaan[https://shell.azure.com](https://shell.azure.com)
+
+   - Selecteer de knop **Cloud shell** in de menu balk in de rechter bovenhoek van de [Azure Portal](https://portal.azure.com)
+
+1. Meld u aan.
+
+   Als u een lokale installatie van de CLI gebruikt, meldt u zich aan met de opdracht [AZ login](/cli/azure/reference-index#az-login) .  Volg de weergegeven stappen in uw terminal om het verificatieproces te voltooien.
+
+    ```azurecli
+    az login
+    ```
+
+1. De extensie `alertsmanagement` installeren
+
+   De `az monitor action-rule` opdracht is een experimentele uitbrei ding van de Azure cli-kern. Meer informatie over extensie Verwijzingen in [use extension with Azure cli](/cli/azure/azure-cli-extensions-overview?).
+
+   ```azurecli
+   az extension add --name alertsmanagement
+   ```
+
+   De volgende waarschuwing wordt verwacht.
+
+   ```output
+   The installed extension `alertsmanagement` is experimental and not covered by customer support.  Please use with discretion.
+   ```
+
+### <a name="create-action-rules-with-the-azure-cli"></a>Actie regels maken met Azure CLI
+
+Zie de Azure CLI-referentie-inhoud voor [AZ monitor Action-Rule Create](/cli/azure/ext/alertsmanagement/monitor/action-rule#ext-alertsmanagement-az-monitor-action-rule-create) voor meer informatie over de vereiste en optionele para meters.
+
+Maak een actie regel om meldingen in een resource groep te onderdrukken.
+
+```azurecli
+az monitor action-rule create --resource-group MyResourceGroupName \
+                              --name MyNewActionRuleName \
+                              --location Global \
+                              --status Enabled \
+                              --rule-type Suppression \
+                              --scope-type ResourceGroup \
+                              --scope /subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/MyResourceGroupName \
+                              --suppression-recurrence-type Always \
+                              --alert-context Contains Computer-01 \
+                               --monitor-service Equals "Log Analytics"
+```
+
+Maak een actie regel om meldingen voor alle Sev4-waarschuwingen op alle virtuele machines in het abonnement elk weekend te onderdrukken.
+
+```azurecli
+az monitor action-rule create --resource-group MyResourceGroupName \
+                              --name MyNewActionRuleName \
+                              --location Global \
+                              --status Enabled \
+                              --rule-type Suppression \
+                              --severity Equals Sev4 \
+                              --target-resource-type Equals Microsoft.Compute/VirtualMachines \
+                              --suppression-recurrence-type Weekly \
+                              --suppression-recurrence 0 6 \
+                              --suppression-start-date 12/09/2018 \
+                              --suppression-end-date 12/18/2018 \
+                              --suppression-start-time 06:00:00 \
+                              --suppression-end-time 14:00:00
+
+```
+
+* * *
 
 ## <a name="example-scenarios"></a>Voorbeeldscenario 's
 
@@ -132,7 +209,7 @@ Contoso wil meldingen onderdrukken voor alle logboek waarschuwingen die zijn geg
 
 ### <a name="scenario-3-action-group-defined-at-a-resource-group"></a>Scenario 3: een actie groep die is gedefinieerd voor een resource groep
 
-Contoso heeft [een metrische waarschuwing gedefinieerd op abonnements niveau](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview#monitoring-at-scale-using-metric-alerts-in-azure-monitor). Maar het wil ook bepalen van de acties die specifiek worden geactiveerd voor waarschuwingen die zijn gegenereerd op basis van de resource groep **ContosoRG**.
+Contoso heeft [een metrische waarschuwing gedefinieerd op abonnements niveau](./alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor). Maar het wil ook bepalen van de acties die specifiek worden geactiveerd voor waarschuwingen die zijn gegenereerd op basis van de resource groep **ContosoRG**.
 
 **Oplossing:** Een actie regel maken met:
 * Scope = **ContosoRG**
@@ -140,15 +217,39 @@ Contoso heeft [een metrische waarschuwing gedefinieerd op abonnements niveau](ht
 * De actie groep is ingesteld op **ContosoActionGroup**
 
 > [!NOTE]
-> *Actie groepen die zijn gedefinieerd in actie regels en waarschuwings regels, worden onafhankelijk van elkaar uitgevoerd, zonder ontdubbeling.* Als er in het eerder beschreven scenario een actie groep is gedefinieerd voor de waarschuwings regel, wordt deze geactiveerd in combi natie met de actie groep die is gedefinieerd in de actie regel. 
+> *Actie groepen die zijn gedefinieerd in actie regels en waarschuwings regels, worden onafhankelijk van elkaar uitgevoerd, zonder ontdubbeling.* Als er in het eerder beschreven scenario een actie groep is gedefinieerd voor de waarschuwings regel, wordt deze geactiveerd in combi natie met de actie groep die is gedefinieerd in de actie regel.
 
 ## <a name="managing-your-action-rules"></a>Uw actie regels beheren
+
+### <a name="portal"></a>[Portal](#tab/portal)
 
 U kunt uw actie regels weer geven en beheren in de lijst weergave:
 
 ![Lijst weergave actie regels](media/alerts-action-rules/action-rules-list-view.png)
 
 Hier kunt u actie regels op schaal inschakelen, uitschakelen of verwijderen door het selectie vakje ernaast in te scha kelen. Wanneer u een actie regel selecteert, wordt de bijbehorende configuratie pagina geopend. De pagina helpt u de definitie van de actie regel bij te werken en in of uit te scha kelen.
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+U kunt uw actie regels weer geven en beheren met behulp van de opdracht [AZ monitor Action-Rule](/cli/azure/ext/alertsmanagement/monitor) van de Azure cli.
+
+Voordat u actie regels met de Azure CLI beheert, moet u uw omgeving voorbereiden met behulp van de instructies in [een actie regel configureren](#configuring-an-action-rule).
+
+```azurecli
+# List all action rules for a subscription
+az monitor action-rule list
+
+# Get details of an action rule
+az monitor action-rule show --resource-group MyResourceGroupName --name MyActionRuleName
+
+# Update an action rule.
+az monitor action-rule update --resource-group MyResourceGroupName --name MyActionRuleName --status Disabled
+
+# Delete an action rule.
+az monitor action-rule delete --resource-group MyResourceGroupName --name MyActionRuleName
+```
+
+* * *
 
 ## <a name="best-practices"></a>Aanbevolen procedures
 
@@ -181,12 +282,12 @@ Nadat u de doel resource voor uw waarschuwings regel hebt gedefinieerd, kunt u d
 * Een subset: de waarschuwings regel die u definieert, bevindt zich bijvoorbeeld op een abonnement en de actie regel bevindt zich op een resource groep in het abonnement.
 * Een hoofd verzameling: de waarschuwings regel die u definieert, bevindt zich bijvoorbeeld in een resource groep en de actie regel bevindt zich op het abonnement dat de resource groep bevat.
 * Een snij punt: de waarschuwings regel die u definieert, bevindt zich bijvoorbeeld op **VM1** en **VM2**, en de actie regel bevindt zich op **VM2** en **VM3**.
-    
+
 ![Overlappende actie regels](media/alerts-action-rules/action-rules-alert-rule-overlapping.png)
 
 ### <a name="can-i-see-the-alerts-that-have-been-suppressed-by-an-action-rule"></a>Kan ik de waarschuwingen zien die zijn onderdrukt door een actie regel?
 
-Op de [pagina waarschuwingen lijst](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-managing-alert-instances)kunt u een aanvullende kolom met de naam **status onderdrukken**kiezen. Als de melding voor een waarschuwings exemplaar is onderdrukt, wordt deze status in de lijst weer gegeven.
+Op de [pagina waarschuwingen lijst](./alerts-managing-alert-instances.md)kunt u een aanvullende kolom met de naam **status onderdrukken**kiezen. Als de melding voor een waarschuwings exemplaar is onderdrukt, wordt deze status in de lijst weer gegeven.
 
 ![Onderdrukte waarschuwings instanties](media/alerts-action-rules/action-rules-suppressed-alerts.png)
 
@@ -200,7 +301,7 @@ Onderdrukking heeft altijd voor rang op hetzelfde bereik.
 
    `action rule AR2 defined for VM2 and VM3 with action group AG1`
 
-Voor elke waarschuwing voor VM1 en VM3 wordt de actie groeps AG1 één keer geactiveerd. Voor elke waarschuwing op **VM2**wordt de AG1 van de actie groep twee keer geactiveerd, omdat actie regels geen acties ontdubbelen. 
+Voor elke waarschuwing voor VM1 en VM3 wordt de actie groeps AG1 één keer geactiveerd. Voor elke waarschuwing op **VM2**wordt de AG1 van de actie groep twee keer geactiveerd, omdat actie regels geen acties ontdubbelen.
 
 ### <a name="what-happens-if-i-have-a-resource-monitored-in-two-separate-action-rules-and-one-calls-for-action-while-another-for-suppression-for-example-vm2-in-the-following-scenario"></a>Wat gebeurt er als er een resource wordt gevolgd in twee afzonderlijke actie regels en één aanroepen voor actie terwijl een andere wordt onderdrukt? Bijvoorbeeld, **VM2** in het volgende scenario:
 
@@ -208,7 +309,7 @@ Voor elke waarschuwing voor VM1 en VM3 wordt de actie groeps AG1 één keer geac
 
    `action rule AR2 defined for VM2 and VM3 with suppression`
 
-Voor elke waarschuwing op VM1 wordt de AG1 van de actie groep eenmaal geactiveerd. Acties en meldingen voor elke waarschuwing in VM2 en VM3 worden onderdrukt. 
+Voor elke waarschuwing op VM1 wordt de AG1 van de actie groep eenmaal geactiveerd. Acties en meldingen voor elke waarschuwing in VM2 en VM3 worden onderdrukt.
 
 ### <a name="what-happens-if-i-have-an-alert-rule-and-an-action-rule-defined-for-the-same-resource-calling-different-action-groups-for-example-vm1-in-the-following-scenario"></a>Wat gebeurt er als er een waarschuwings regel en een actie regel zijn gedefinieerd voor dezelfde resource die verschillende actie groepen aanroept? Bijvoorbeeld, **VM1** in het volgende scenario:
 
@@ -216,8 +317,8 @@ Voor elke waarschuwing op VM1 wordt de AG1 van de actie groep eenmaal geactiveer
 
    `action rule AR1 defined for VM1 with action group AG1`
 
-Voor elke waarschuwing op VM1 wordt de AG1 van de actie groep eenmaal geactiveerd. Wanneer waarschuwings regel "firewallregel1" wordt geactiveerd, wordt ook AG2 geactiveerd. Actie groepen die zijn gedefinieerd in actie regels en waarschuwings regels, worden onafhankelijk van elkaar uitgevoerd, zonder ontdubbeling. 
+Voor elke waarschuwing op VM1 wordt de AG1 van de actie groep eenmaal geactiveerd. Wanneer waarschuwings regel "firewallregel1" wordt geactiveerd, wordt ook AG2 geactiveerd. Actie groepen die zijn gedefinieerd in actie regels en waarschuwings regels, worden onafhankelijk van elkaar uitgevoerd, zonder ontdubbeling.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Meer informatie over waarschuwingen in azure](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)
+- [Meer informatie over waarschuwingen in azure](./alerts-overview.md)

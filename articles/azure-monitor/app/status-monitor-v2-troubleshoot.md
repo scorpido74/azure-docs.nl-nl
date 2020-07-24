@@ -5,11 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 9bb22b12a7b3e972ff144bd121db4288801e2488
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07b5ae99b98c6c6bbf4dc903cd1b583eb655a825
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81732938"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041395"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Problemen met Application Insights agent oplossen (voorheen Status Monitor v2 genoemd)
 
@@ -54,7 +55,7 @@ U kunt hulpprogram ma's voor probleem oplossing gebruiken om het gedrag van Symp
 
 ### <a name="conflict-with-iis-shared-configuration"></a>Conflict met gedeelde IIS-configuratie
 
-Als u een cluster van webservers hebt, kunt u gebruikmaken van een [gedeelde configuratie](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211).
+Als u een cluster van webservers hebt, kunt u gebruikmaken van een [gedeelde configuratie](/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211).
 De HTTP module kan niet worden ingevoegd in deze gedeelde configuratie.
 Voer de opdracht inschakelen op elke webserver uit om de DLL te installeren in de GAC van elke server.
 
@@ -134,7 +135,7 @@ Raadpleeg de [API-naslag informatie](status-monitor-v2-api-reference.md) voor ee
 
 1. Down load PerfView.exe en PerfView64.exe van [github](https://github.com/Microsoft/perfview/releases).
 2. Start PerfView64.exe.
-3. Vouw **Geavanceerde opties**uit.
+3. Vouw **Geavanceerde opties** uit.
 4. Schakel deze selectie vakjes uit:
     - **Telefoon**
     - **Samenvoegen**

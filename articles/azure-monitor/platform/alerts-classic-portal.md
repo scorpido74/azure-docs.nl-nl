@@ -5,11 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/18/2018
-ms.openlocfilehash: e635c243a887690fb1f7a5dcd017c1130d74a747
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 97c1819d665e6964343e853249a0d22aa07c3588
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81114588"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045589"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Klassieke metrische waarschuwingen maken, weer geven en beheren met behulp van Azure Monitor
 
@@ -51,7 +52,7 @@ Nadat u een waarschuwing hebt gemaakt, kunt u deze selecteren en een van de volg
 
 ## <a name="with-azure-cli"></a>Met Azure CLI
 
-In de vorige secties wordt beschreven hoe u metrische waarschuwings regels kunt maken, weer geven en beheren met behulp van Azure Portal. In deze sectie wordt beschreven hoe u hetzelfde kunt doen met meerdere platformen van [Azure cli](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest). De snelste manier om te beginnen met het gebruik van Azure CLI is via [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest).
+In de vorige secties wordt beschreven hoe u metrische waarschuwings regels kunt maken, weer geven en beheren met behulp van Azure Portal. In deze sectie wordt beschreven hoe u hetzelfde kunt doen met meerdere platformen van [Azure cli](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest). De snelste manier om te beginnen met het gebruik van Azure CLI is via [Azure Cloud shell](../../cloud-shell/overview.md?view=azure-cli-latest).
 
 ### <a name="get-all-classic-metric-alert-rules-in-a-resource-group"></a>Alle klassieke metrische waarschuwings regels ophalen in een resource groep
 
@@ -87,7 +88,7 @@ az monitor alert delete --name <alert name> --resource-group <group name>
 
 In deze secties ziet u hoe u met Power shell-opdrachten klassieke metrische waarschuwingen kunt maken, weer geven en beheren. In de voor beelden in dit artikel wordt uitgelegd hoe u Azure Monitor-cmdlets kunt gebruiken voor klassieke metrische waarschuwingen.
 
-1. Als u dat nog niet hebt gedaan, stelt u PowerShell in op uw computer. Zie [PowerShell installeren en configureren](/powershell/azure/overview) voor meer informatie. U kunt ook de volledige lijst met Azure Monitor PowerShell-cmdlets bekijken via [Azure Monitor-cmdlets (Insights)](https://docs.microsoft.com/powershell/module/az.applicationinsights).
+1. Als u dat nog niet hebt gedaan, stelt u PowerShell in op uw computer. Zie [PowerShell installeren en configureren](/powershell/azure/) voor meer informatie. U kunt ook de volledige lijst met Azure Monitor PowerShell-cmdlets bekijken via [Azure Monitor-cmdlets (Insights)](/powershell/module/az.applicationinsights).
 
 2. Meld u eerst aan bij uw Azure-abonnement.
 

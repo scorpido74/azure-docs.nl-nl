@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: 6210d6ee4877c6ba84178340cf0a6610e402da31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d103e6a0f7a47aadce524325e58fbb7069a1e13
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81641107"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042822"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Live streamen met Azure Media Services om multi-bitrate streams te maken
 
@@ -70,7 +71,7 @@ In de volgende tabel ziet u hoe kanaal statussen worden toegewezen aan de factur
 | Kanaal status | UI-indica toren van portal | Is het facturerings abonnement? |
 | --- | --- | --- |
 | Starten |Starten |Nee (tijdelijke status) |
-| In uitvoering |Gereed (geen actieve Program ma's)<br/>of<br/>Streaming (ten minste één programma dat wordt uitgevoerd) |JA |
+| Wordt uitgevoerd |Gereed (geen actieve Program ma's)<br/>of<br/>Streaming (ten minste één programma dat wordt uitgevoerd) |JA |
 | Stoppen |Stoppen |Nee (tijdelijke status) |
 | Gestopt |Gestopt |No |
 
@@ -174,7 +175,7 @@ U kunt de IP-adressen definiëren die video naar dit kanaal mogen publiceren. To
 Als geen IP-adressen zijn opgegeven en er geen regeldefinitie bestaat, zijn er geen IP-adressen toegestaan. Als u IP-adres(sen) wilt toestaan, maakt u een regel en stelt u 0.0.0.0/0 in.
 
 ## <a name="channel-preview"></a>Channel Preview
-### <a name="preview-urls"></a>Preview-Url's
+### <a name="preview-urls"></a>Preview-URL's
 Kanalen bieden een preview-eind punt (Preview-URL) die u gebruikt om uw stroom te bekijken en te valideren vóór verdere verwerking en levering.
 
 U kunt de voor beeld-URL ophalen wanneer u het kanaal maakt. Om de URL op te halen, hoeft het kanaal niet te worden **uitgevoerd** .
@@ -216,7 +217,7 @@ Met **Default720p** wordt de video in de volgende 6 lagen gecodeerd.
 
 #### <a name="output-video-stream"></a>Video stroom voor uitvoer
 
-| Bitsnelheid | Breedte | Height | MaxFPS | Profiel | Naam van de uitvoer stroom |
+| Bitsnelheid | Breedte | Hoogte | MaxFPS | Profiel | Naam van de uitvoer stroom |
 | --- | --- | --- | --- | --- | --- |
 | 3500 |1280 |720 |30 |Hoog |Video_1280x720_3500kbps |
 | 2200 |960 |540 |30 |Hoog |Video_960x540_2200kbps |
@@ -312,7 +313,7 @@ In de volgende tabel ziet u hoe kanaal statussen worden toegewezen aan de factur
 | Kanaal status | UI-indica toren van portal | Gefactureerd? |
 | --- | --- | --- |
 | Starten |Starten |Nee (tijdelijke status) |
-| In uitvoering |Gereed (geen actieve Program ma's)<br/>of<br/>Streaming (ten minste één programma dat wordt uitgevoerd) |Yes |
+| Wordt uitgevoerd |Gereed (geen actieve Program ma's)<br/>of<br/>Streaming (ten minste één programma dat wordt uitgevoerd) |Yes |
 | Stoppen |Stoppen |Nee (tijdelijke status) |
 | Gestopt |Gestopt |No |
 
@@ -359,11 +360,10 @@ Media Services-leertrajecten bekijken.
 
 [Kanalen maken voor het uitvoeren van Live code ring vanuit een afzonderlijke bitrate voor een adaptieve bitrate stroom met de .NET SDK](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 
-[Kanalen beheren met REST API](https://docs.microsoft.com/rest/api/media/operations/channel)
+[Kanalen beheren met REST API](/rest/api/media/operations/channel)
 
 [Media Services concepten](media-services-concepts.md)
 
 [Azure Media Services gefragmenteerde MP4 Live opname-specificatie](../media-services-fmp4-live-ingest-overview.md)
 
 [live-overview]: ./media/media-services-manage-live-encoder-enabled-channels/media-services-live-streaming-new.png
-

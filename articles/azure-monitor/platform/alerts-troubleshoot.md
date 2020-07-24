@@ -6,11 +6,12 @@ ms.author: ofmanor
 ms.topic: reference
 ms.date: 03/16/2020
 ms.subservice: alerts
-ms.openlocfilehash: 3e9eb9d0910e4c0e00e57eac80c09910f214db6a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3eed095d87d1e1fa1f210b360822ceefdbe0521
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300770"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045253"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>Problemen met Azure Monitor waarschuwingen oplossen
 
@@ -240,13 +241,13 @@ Als er een fout is opgetreden bij het maken, bijwerken of verwijderen van een [a
 
 1. **Hebt u een machtigings fout ontvangen?**  
 
-    U moet de [ingebouwde rol voor het bijhouden van Inzender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)hebben of de specifieke machtigingen met betrekking tot actie regels en waarschuwingen.
+    U moet de [ingebouwde rol voor het bijhouden van Inzender](../../role-based-access-control/built-in-roles.md#monitoring-contributor)hebben of de specifieke machtigingen met betrekking tot actie regels en waarschuwingen.
 
 1. **Hebt u de para meters voor de actie regel gecontroleerd?**  
 
-    Raadpleeg de [documentatie over de actie regel](alerts-action-rules.md)of de [actie regel Power shell set-AzActionRule](https://docs.microsoft.com/powershell/module/az.alertsmanagement/Set-AzActionRule?view=azps-3.5.0) opdracht. 
+    Raadpleeg de [documentatie over de actie regel](alerts-action-rules.md)of de [actie regel Power shell set-AzActionRule](/powershell/module/az.alertsmanagement/set-azactionrule?view=azps-3.5.0) opdracht. 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- Als u een logboek waarschuwing gebruikt, raadpleegt u ook [logboek waarschuwingen voor problemen oplossen](alert-log-troubleshoot.md).
+- Als u een logboek waarschuwing gebruikt, raadpleegt u ook [logboek waarschuwingen voor problemen oplossen](./alerts-troubleshoot-log.md).
 - Ga terug naar de [Azure Portal](https://portal.azure.com) om te controleren of u het probleem hebt opgelost met bovenstaande richt lijnen 

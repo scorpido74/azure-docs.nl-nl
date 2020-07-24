@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.subservice: alerts
-ms.openlocfilehash: 4c9998488013ce89b17a30a6c3948a02407d06bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53ea43213a48cb712eb6ce685f03b733b83948b1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945321"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045531"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Metrische waarschuwingen maken voor logboeken in Azure Monitor
 
@@ -68,10 +68,10 @@ Zie [metrische waarschuwingen maken en beheren](https://aka.ms/createmetricalert
 - Het signaal dat is gekozen voor de metrische waarschuwing voor de geselecteerde *log Analytics werk ruimte* is van het type **metric**
 - Filteren op specifieke voor waarden of resources met behulp van dimensie filters; metrische gegevens voor logboeken zijn meerdere dimensies
 - Bij het configureren van de *signaal logica*kan één waarschuwing worden gemaakt om meerdere dimensie waarden (zoals computer) te omvatten
-- Als er **geen** Azure portal wordt gebruikt voor het maken van een metrische waarschuwing voor de geselecteerde *log Analytics werk ruimte*; vervolgens moet de gebruiker hand matig een expliciete regel maken voor het converteren van logboek gegevens naar een metriek met behulp van [Azure monitor geplande query regels](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules).
+- Als er **geen** Azure portal wordt gebruikt voor het maken van een metrische waarschuwing voor de geselecteerde *log Analytics werk ruimte*; vervolgens moet de gebruiker hand matig een expliciete regel maken voor het converteren van logboek gegevens naar een metriek met behulp van [Azure monitor geplande query regels](/rest/api/monitor/scheduledqueryrules).
 
 > [!NOTE]
-> Bij het maken van een metrische waarschuwing voor Log Analytics werk ruimte via Azure Portal-overeenkomende regel voor het converteren van logboek gegevens naar metriek via [Azure monitor-geplande query regels](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) wordt automatisch op de achtergrond gemaakt, *zonder dat dit tussen komst van een gebruiker of actie nodig*is. Voor de metrische waarschuwing voor het maken van logboeken met behulp van een andere methode dan Azure Portal, Zie [resource sjabloon voor metrische waarschuwingen voor logboeken](#resource-template-for-metric-alerts-for-logs) in het voor beeld van een ScheduledQueryRule op basis van metrische conversie regel voordat de metrische waarschuwing wordt gemaakt. anders worden er geen gegevens weer gegeven voor de metrische waarschuwing op Logboeken die zijn gemaakt.
+> Bij het maken van een metrische waarschuwing voor Log Analytics werk ruimte via Azure Portal-overeenkomende regel voor het converteren van logboek gegevens naar metriek via [Azure monitor-geplande query regels](/rest/api/monitor/scheduledqueryrules) wordt automatisch op de achtergrond gemaakt, *zonder dat dit tussen komst van een gebruiker of actie nodig*is. Voor de metrische waarschuwing voor het maken van logboeken met behulp van een andere methode dan Azure Portal, Zie [resource sjabloon voor metrische waarschuwingen voor logboeken](#resource-template-for-metric-alerts-for-logs) in het voor beeld van een ScheduledQueryRule op basis van metrische conversie regel voordat de metrische waarschuwing wordt gemaakt. anders worden er geen gegevens weer gegeven voor de metrische waarschuwing op Logboeken die zijn gemaakt.
 
 ## <a name="resource-template-for-metric-alerts-for-logs"></a>Resource sjabloon voor metrische waarschuwingen voor logboeken
 

@@ -11,11 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 5f2c823b0932db42876be6ab04ebcd82783729aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 097c894594987e92038beeaf4b17a3e67538fdad
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734418"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046064"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services"></a>Scoped Synchronization from Azure AD to Azure Active Directory Domain Services configureren
 
@@ -39,8 +40,8 @@ De volgende tabel bevat een overzicht van het gebruik van scoped Synchronization
 
 Met de Azure Portal of Power shell kunt u de scoped synchronisatie-instellingen configureren:
 
-| Bewerking | | |
-|--|--|--|
+| Bewerking | Gebruik<br>Azure Portal | Gebruik<br>PowerShell |
+| ------ | ------------------- | ----------------- |
 | Een beheerd domein maken en een synchronisatie met een scope configureren | [Azure-portal](#enable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#enable-scoped-synchronization-using-powershell) |
 | Scoped synchronisatie wijzigen | [Azure-portal](#modify-scoped-synchronization-using-the-azure-portal) | [PowerShell](#modify-scoped-synchronization-using-powershell) |
 | Scoped synchronisatie uitschakelen | [Azure-portal](#disable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#disable-scoped-synchronization-using-powershell) |

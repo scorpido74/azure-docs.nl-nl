@@ -3,12 +3,12 @@ title: Verbindings problemen oplossen-Azure Event Hubs | Microsoft Docs
 description: Dit artikel bevat informatie over het oplossen van verbindings problemen met Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 15c93873a25e70b0f9a88fc5ea621b90d58e7581
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b85c0895d1c8f165f494d29013adea014187dd23
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322384"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039324"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-hubs"></a>Verbindings problemen oplossen-Azure Event Hubs
 Er zijn verschillende redenen waarom client toepassingen geen verbinding kunnen maken met een Event Hub. De verbindings problemen die u ondervindt, kunnen permanent of tijdelijk zijn. Als het probleem voortdurend optreedt (permanent), wilt u mogelijk de connection string controleren, de firewall instellingen van uw organisatie, de instellingen van de IP-firewall, de instellingen voor netwerk beveiliging (Service-eind punten, persoonlijke eind punten, enzovoort). Voor tijdelijke problemen voert u een upgrade uit naar de nieuwste versie van de SDK, voert u opdrachten uit om verwijderde pakketten te controleren en netwerk traceringen te verkrijgen, kan u helpen bij het oplossen van de problemen. 
@@ -48,7 +48,7 @@ telnet <yournamespacename>.servicebus.windows.net 5671
 ```
 
 ### <a name="verify-that-ip-addresses-are-allowed-in-your-corporate-firewall"></a>Controleren of IP-adressen zijn toegestaan in uw bedrijfs firewall
-Wanneer u met Azure werkt, moet u soms specifieke IP-adresbereiken of Url's in uw bedrijfs firewall of-proxy toestaan om toegang te krijgen tot alle Azure-Services die u gebruikt of probeert te gebruiken. Controleer of het verkeer is toegestaan op IP-adressen die worden gebruikt door Event Hubs. Voor IP-adressen die worden gebruikt door Azure Event Hubs: Zie [Azure IP-adresbereiken en service Tags-Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519) and [service tag-EventHub](network-security.md#service-tags).
+Wanneer u met Azure werkt, moet u soms specifieke IP-adresbereiken of Url's in uw bedrijfs firewall of-proxy toestaan om toegang te krijgen tot alle Azure-Services die u gebruikt of probeert te gebruiken. Controleer of het verkeer is toegestaan op IP-adressen die worden gebruikt door Event Hubs. Voor IP-adressen die worden gebruikt door Azure Event Hubs: Zie [Azure IP-adresbereiken en service Tags-open bare Cloud](https://www.microsoft.com/download/details.aspx?id=56519).
 
 Controleer ook of het IP-adres voor uw naam ruimte is toegestaan. Voer de volgende stappen uit om de juiste IP-adressen te vinden die u voor uw verbindingen wilt toestaan:
 
@@ -75,13 +75,16 @@ Als u de zone redundantie voor uw naam ruimte gebruikt, moet u een aantal extra 
     ```
 3. Voer nslookup uit voor elk van deze met achtervoegsels S1, S2 en S3 om de IP-adressen te verkrijgen van alle drie de instanties die in drie beschikbaarheids zones worden uitgevoerd. 
 
+### <a name="verify-that-azureeventgrid-service-tag-is-allowed-in-your-network-security-groups"></a>Controleer of het AzureEventGrid-service label is toegestaan in uw netwerk beveiligings groepen
+Als uw toepassing wordt uitgevoerd in een subnet en er een netwerk beveiligings groep is gekoppeld, moet u controleren of het Internet uitgaand is toegestaan of dat het AzureEventGrid-service label is toegestaan. Zie [service tags voor het virtuele netwerk](../virtual-network/service-tags-overview.md) en zoeken naar `EventHub` .
+
 ### <a name="check-if-the-application-needs-to-be-running-in-a-specific-subnet-of-a-vnet"></a>Controleren of de toepassing moet worden uitgevoerd in een specifiek subnet van een vnet
 Controleer of de toepassing wordt uitgevoerd in een subnet van een virtueel netwerk dat toegang heeft tot de naam ruimte. Als dat niet het geval is, voert u de toepassing uit in het subnet dat toegang tot de naam ruimte heeft of voegt u het IP-adres toe van de computer waarop de toepassing wordt uitgevoerd voor de [IP-firewall](event-hubs-ip-filtering.md). 
 
 Wanneer u een service-eind punt voor een virtueel netwerk maakt voor een Event Hub naam ruimte, accepteert de naam ruimte alleen verkeer van het subnet dat is gekoppeld aan het service-eind punt. Er is een uitzonde ring op dit gedrag. U kunt specifieke IP-adressen toevoegen aan de IP-firewall om toegang tot het open bare eind punt van Event hub mogelijk te maken. Zie [netwerk service-eind punten](event-hubs-service-endpoints.md)voor meer informatie.
 
 ### <a name="check-the-ip-firewall-settings-for-your-namespace"></a>Controleer de IP-Firewall instellingen voor uw naam ruimte
-Controleer of uw IP-adres van de computer waarop de toepassing wordt uitgevoerd, niet wordt geblokkeerd door de IP-firewall.  
+Controleer of het open bare IP-adres van de computer waarop de toepassing wordt uitgevoerd, niet wordt geblokkeerd door de IP-firewall.  
 
 Event Hubs naam ruimten zijn standaard toegankelijk vanuit Internet zolang de aanvraag een geldige verificatie en autorisatie heeft. Met IP-firewall kunt u dit nog verder beperken tot een aantal IPv4-adressen of IPv4-adresbereiken in CIDR-notatie [(Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) .
 
@@ -108,9 +111,9 @@ Schakel Diagnostische logboeken in voor [Event hubs van virtuele netwerk verbind
 ### <a name="check-if-the-namespace-can-be-accessed-using-only-a-private-endpoint"></a>Controleren of de naam ruimte kan worden geopend met alleen een persoonlijk eind punt
 Als de naam ruimte van de Event Hubs zodanig is geconfigureerd dat deze alleen toegankelijk is via een particulier eind punt, controleert u of de client toepassing toegang heeft tot de naam ruimte via het persoonlijke eind punt. 
 
-Met [Azure Private Link service](../private-link/private-link-overview.md) kunt u toegang krijgen tot Azure Event hubs via een **persoonlijk eind punt** in uw virtuele netwerk. Een persoonlijk eind punt is een netwerk interface waarmee u privé en veilig kunt verbinden met een service die wordt aangestuurd door een persoonlijke Azure-koppeling. Het privé-eindpunt maakt gebruik van een privé-IP-adres van uw VNet, waardoor de service feitelijk in uw VNet wordt geplaatst. Al het verkeer naar de service kan worden gerouteerd via het privé-eindpunt, zodat er geen gateways, NAT-apparaten, ExpressRoute of VPN-verbindingen of openbare IP-adressen nodig zijn. Verkeer tussen uw virtuele netwerk en de services wordt via het backbonenetwerk van Microsoft geleid, waarmee de risico's van het openbare internet worden vermeden. U kunt verbinding maken met een exemplaar van een Azure-resource, zodat u het hoogste granulariteit krijgt in toegangsbeheer.
+Met [Azure Private Link service](../private-link/private-link-overview.md) kunt u toegang krijgen tot Azure Event hubs via een **persoonlijk eind punt** in uw virtuele netwerk. Een persoonlijk eind punt is een netwerk interface waarmee u privé en veilig kunt verbinden met een service die wordt aangestuurd door een persoonlijke Azure-koppeling. Het persoonlijke eind punt maakt gebruik van een privé-IP-adres van uw virtuele netwerk, waardoor de service in het virtuele netwerk effectief wordt. Al het verkeer naar de service kan worden gerouteerd via het privé-eindpunt, zodat er geen gateways, NAT-apparaten, ExpressRoute of VPN-verbindingen of openbare IP-adressen nodig zijn. Verkeer tussen uw virtuele netwerk en de services wordt via het backbonenetwerk van Microsoft geleid, waarmee de risico's van het openbare internet worden vermeden. U kunt verbinding maken met een exemplaar van een Azure-resource, zodat u het hoogste granulariteit krijgt in toegangsbeheer.
 
-Zie [Private-eind punten configureren](private-link-service.md)voor meer informatie. 
+Zie [Private-eind punten configureren](private-link-service.md)voor meer informatie. Zie de sectie controleren **of de verbinding met het persoonlijke eind punt werkt** om te bevestigen dat een persoonlijk eind punt wordt gebruikt. 
 
 ### <a name="troubleshoot-network-related-issues"></a>Problemen met het netwerk oplossen
 Voer de volgende stappen uit om problemen met het netwerk op te lossen met Event Hubs: 
@@ -160,7 +163,7 @@ Problemen met de tijdelijke verbinding kunnen zich voordoen als de back-end-serv
 - De verbinding van de toepassingen kan enkele seconden worden verbroken met de service.
 - Aanvragen kunnen tijdelijk worden beperkt.
 
-Als de toepassings code gebruikmaakt van SDK, is het beleid voor opnieuw proberen al ingebouwd en actief. De toepassing zal opnieuw verbinding maken zonder belang rijke gevolgen voor de toepassing/werk stroom. Als dat niet het geval is, probeert u na enkele minuten opnieuw verbinding te maken met de service. 
+Als de toepassings code gebruikmaakt van SDK, is het beleid voor opnieuw proberen al ingebouwd en actief. De toepassing zal opnieuw verbinding maken zonder belang rijke gevolgen voor de toepassing/werk stroom. Door deze tijdelijke fouten op te lossen en vervolgens opnieuw te proberen, zorgt u ervoor dat uw code bestand is tegen deze tijdelijke problemen.
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende artikelen:

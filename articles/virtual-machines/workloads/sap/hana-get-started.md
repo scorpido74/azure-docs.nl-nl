@@ -15,34 +15,34 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: juergent
-ms.openlocfilehash: e017e082472e7a4a2fab6a2845e52d3dc7acc460
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec63d08b164a3ed767a7622a9829beaf73e65ef3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80123353"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042326"
 ---
 # <a name="installation-of-sap-hana-on-azure-virtual-machines"></a>Installatie van SAP HANA op virtuele machines van Azure
 ## <a name="introduction"></a>Inleiding
 Deze hand leiding helpt u bij het aanwijzen van de juiste resources om HANA in azure virtual machines te implementeren. Deze hand leiding gaat u naar documentatie bronnen die u moet controleren voordat u SAP HANA installeert in een Azure-VM. Daarom kunt u de juiste stappen uitvoeren om te eindigen met een ondersteunde configuratie van SAP HANA in azure Vm's.  
 
 > [!NOTE]
-> In deze hand leiding worden de implementaties van SAP HANA in azure Vm's beschreven. Zie [SAP Hana (grote exemplaren) installeren en configureren in azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-installation)voor meer informatie over het implementeren van SAP Hana in Hana grote instanties.
+> In deze hand leiding worden de implementaties van SAP HANA in azure Vm's beschreven. Zie [SAP Hana (grote exemplaren) installeren en configureren in azure](./hana-installation.md)voor meer informatie over het implementeren van SAP Hana in Hana grote instanties.
  
 ## <a name="prerequisites"></a>Vereisten
 In deze hand leiding wordt ervan uitgegaan dat u bekend bent met:
 * SAP HANA en SAP NetWeaver en hoe ze on-premises moeten worden geïnstalleerd.
 * SAP HANA en SAP-toepassings exemplaren installeren en uitvoeren op Azure.
 * De concepten en procedures die zijn beschreven in:
-   * Planning voor SAP-implementatie op Azure, waaronder Azure Virtual Network planning en Azure Storage gebruik. Zie [SAP NetWeaver op Azure virtual machines-planning en implementatie handleiding](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)
-   * Implementatie principes en manieren om Vm's in azure te implementeren. Zie [Azure virtual machines-implementatie voor SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide)
-   * Concepten met hoge Beschik baarheid voor SAP HANA zoals beschreven in [SAP Hana hoge Beschik baarheid voor virtuele machines van Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview)
+   * Planning voor SAP-implementatie op Azure, waaronder Azure Virtual Network planning en Azure Storage gebruik. Zie [SAP NetWeaver op Azure virtual machines-planning en implementatie handleiding](./planning-guide.md)
+   * Implementatie principes en manieren om Vm's in azure te implementeren. Zie [Azure virtual machines-implementatie voor SAP](./deployment-guide.md)
+   * Concepten met hoge Beschik baarheid voor SAP HANA zoals beschreven in [SAP Hana hoge Beschik baarheid voor virtuele machines van Azure](./sap-hana-availability-overview.md)
 
 ## <a name="step-by-step-before-deploying"></a>Stap voor stap voordat u implementeert
 In deze sectie worden de verschillende stappen vermeld die u moet uitvoeren voordat u begint met de installatie van SAP HANA op een virtuele Azure-machine. De volg orde wordt opgesomd en moet zo worden gevolgd dat deze wordt geïnventariseerd:
 
-1. Niet alle mogelijke implementatie scenario's worden ondersteund op Azure. Daarom moet u de [SAP-werk belasting van het document controleren op ondersteunde scenario's voor virtuele Azure-machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-planning-supported-configurations) voor het scenario dat u in acht neemt met uw SAP Hana-implementatie. Als het scenario niet wordt weer gegeven, moet u aannemen dat het niet is getest en daarom niet wordt ondersteund
-2. Ervan uitgaande dat u een ruwe indruk hebt op de geheugen vereisten voor uw SAP HANA-implementatie, moet u een aanpasbaar Azure-VM vinden. Niet alle virtuele machines die zijn gecertificeerd voor SAP NetWeaver, zoals beschreven in [SAP-ondersteunings opmerking #1928533](https://launchpad.support.sap.com/#/notes/1928533), zijn SAP Hana gecertificeerd. De bron van waarheid voor SAP HANA gecertificeerde Azure-Vm's is de website [SAP Hana hardware-map](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). De eenheden die beginnen met **S** zijn Hana-eenheden voor [grote instanties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) en geen virtuele Azure-machines.
+1. Niet alle mogelijke implementatie scenario's worden ondersteund op Azure. Daarom moet u de [SAP-werk belasting van het document controleren op ondersteunde scenario's voor virtuele Azure-machines](./sap-planning-supported-configurations.md) voor het scenario dat u in acht neemt met uw SAP Hana-implementatie. Als het scenario niet wordt weer gegeven, moet u aannemen dat het niet is getest en daarom niet wordt ondersteund
+2. Ervan uitgaande dat u een ruwe indruk hebt op de geheugen vereisten voor uw SAP HANA-implementatie, moet u een aanpasbaar Azure-VM vinden. Niet alle virtuele machines die zijn gecertificeerd voor SAP NetWeaver, zoals beschreven in [SAP-ondersteunings opmerking #1928533](https://launchpad.support.sap.com/#/notes/1928533), zijn SAP Hana gecertificeerd. De bron van waarheid voor SAP HANA gecertificeerde Azure-Vm's is de website [SAP Hana hardware-map](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). De eenheden die beginnen met **S** zijn Hana-eenheden voor [grote instanties](./hana-overview-architecture.md) en geen virtuele Azure-machines.
 3. Verschillende Azure VM-typen hebben verschillende minimum versies van het besturings systeem voor SUSE Linux of Red Hat Linux. Op de website [SAP Hana hardware-map](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure), klikt u op een vermelding in de lijst met SAP Hana gecertificeerde eenheden om gedetailleerde gegevens van deze eenheid op te halen. Naast de ondersteunde HANA-workloads, worden de versies van het besturings systeem die worden ondersteund met deze eenheden voor SAP HANA vermeld
 4. Vanaf besturingssysteem releases moet u rekening houden met bepaalde minimale kernel-releases. Deze minimale releases worden beschreven in deze SAP-ondersteunings opmerkingen:
     - [SAP-ondersteunings Opmerking #2814271 SAP HANA back-up mislukt op Azure met controlesom fout](https://launchpad.support.sap.com/#/notes/2814271)
@@ -57,7 +57,7 @@ In deze fase moet u de stappen door lopen om HANA te installeren en uiteindelijk
 
 1. Kies de basis installatie kopie uit de Azure-galerie. Als u uw eigen installatie kopie van een besturings systeem voor SAP HANA wilt maken, moet u alle andere pakketten kennen die nodig zijn om een geslaagde SAP HANA installatie te kunnen volt ooien. Anders is het raadzaam om de SUSE-en Red Hat-installatie kopieën voor SAP of SAP HANA uit de galerie met installatie kopieën van Azure te gebruiken. Deze installatie kopieën bevatten de pakketten die nodig zijn voor een geslaagde HANA-installatie. Op basis van uw ondersteunings contract met de provider van het besturings systeem moet u een installatie kopie kiezen waarin u uw eigen licentie brengt. Of u kiest een installatie kopie van het besturings systeem dat ondersteuning bevat
 2. Als u een installatie kopie voor een gast besturingssysteem hebt gekozen waarvoor u uw eigen licentie nodig hebt, moet u de installatie kopie van het besturings systeem registreren bij uw abonnement, zodat u de meest recente patches kunt downloaden en Toep assen. In deze stap wordt de open bare Internet toegang vereist. Tenzij u uw persoonlijke exemplaar van instelt, bijvoorbeeld een SMT-server in Azure.
-3. Bepaal de netwerk configuratie van de virtuele machine. Meer informatie vindt u in het document [SAP Hana infrastructuur configuraties en-bewerkingen in azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations). Houd er wel bij dat er geen quota voor netwerk doorvoer kunnen worden toegewezen aan virtuele netwerk kaarten in Azure. Als gevolg hiervan is het enige doel om verkeer via verschillende Vnic's te omleiden, gebaseerd op beveiligings overwegingen. We vertrouwen u om een ondersteunings risico te vinden tussen complexiteit van verkeers routering via meerdere Vnic's en de vereisten die worden afgedwongen door beveiligings aspecten.
+3. Bepaal de netwerk configuratie van de virtuele machine. Meer informatie vindt u in het document [SAP Hana infrastructuur configuraties en-bewerkingen in azure](./hana-vm-operations.md). Houd er wel bij dat er geen quota voor netwerk doorvoer kunnen worden toegewezen aan virtuele netwerk kaarten in Azure. Als gevolg hiervan is het enige doel om verkeer via verschillende Vnic's te omleiden, gebaseerd op beveiligings overwegingen. We vertrouwen u om een ondersteunings risico te vinden tussen complexiteit van verkeers routering via meerdere Vnic's en de vereisten die worden afgedwongen door beveiligings aspecten.
 3. Pas de meest recente patches toe op het besturings systeem wanneer de virtuele machine is geïmplementeerd en geregistreerd. Geregistreerd bij uw eigen abonnement. Of als u een installatie kopie hebt gekozen die ondersteuning biedt voor het besturings systeem, moet de VM al toegang hebben tot de patches. 
 4. Pas de benodigde afstemmingen voor SAP HANA toe. Deze afstemmingen worden vermeld in deze SAP-ondersteunings opmerkingen:
 
@@ -71,8 +71,8 @@ In deze fase moet u de stappen door lopen om HANA te installeren en uiteindelijk
     -  [SAP-ondersteuning Opmerking #2455582-Linux: SAP-toepassingen uitvoeren die zijn gecompileerd met GCC 6. x](https://launchpad.support.sap.com/#/notes/0002455582)
     -  [SAP-ondersteunings Opmerking #2382421-optimalisatie van de netwerk configuratie op HANA-en OS-niveau](https://launchpad.support.sap.com/#/notes/2382421)
 
-1. Selecteer het Azure-opslag type voor SAP HANA. In deze stap moet u beslissen over de opslag indeling voor de SAP HANA-installatie. U gaat gebruikmaken van gekoppelde Azure-schijven of de systeem eigen Azure NFS-shares. De Azure-opslag typen of ondersteunde en combi Naties van verschillende Azure-opslag typen die kunnen worden gebruikt, worden beschreven in [SAP Hana opslag configuraties van virtuele Azure-machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage). Volg de configuraties die worden beschreven als uitgangs punt. Voor niet-productie systemen kunt u mogelijk een lagere door Voer of IOPS configureren. Voor productie doeleinden moet u mogelijk een bit meer door Voer en IOPS configureren.
-2. Zorg ervoor dat u [Azure write Accelerator](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator) hebt geconfigureerd voor uw volumes die de DBMS-transactie logboeken bevatten of meldt u opnieuw aan wanneer u virtuele machines uit de M-serie of Mv2-serie gebruikt. Houd rekening met de beperkingen voor Write Accelerator zoals beschreven.
+1. Selecteer het Azure-opslag type voor SAP HANA. In deze stap moet u beslissen over de opslag indeling voor de SAP HANA-installatie. U gaat gebruikmaken van gekoppelde Azure-schijven of de systeem eigen Azure NFS-shares. De Azure-opslag typen of ondersteunde en combi Naties van verschillende Azure-opslag typen die kunnen worden gebruikt, worden beschreven in [SAP Hana opslag configuraties van virtuele Azure-machines](./hana-vm-operations-storage.md). Volg de configuraties die worden beschreven als uitgangs punt. Voor niet-productie systemen kunt u mogelijk een lagere door Voer of IOPS configureren. Voor productie doeleinden moet u mogelijk een bit meer door Voer en IOPS configureren.
+2. Zorg ervoor dat u [Azure write Accelerator](../../linux/how-to-enable-write-accelerator.md) hebt geconfigureerd voor uw volumes die de DBMS-transactie logboeken bevatten of meldt u opnieuw aan wanneer u virtuele machines uit de M-serie of Mv2-serie gebruikt. Houd rekening met de beperkingen voor Write Accelerator zoals beschreven.
 2. Controleer of [Azure versneld netwerken](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) is ingeschakeld op de virtuele machine (s) die zijn geïmplementeerd.
 
 > [!NOTE]
@@ -84,26 +84,21 @@ Een van de details van Azure is de installatie van een Azure VM-extensie die bew
 -  [SAP Note 2191498](https://launchpad.support.sap.com/#/notes/2191498/E) BEspreekt SAP-verbeterde bewaking met Linux-Vm's in azure 
 -  [SAP Note 1102124](https://launchpad.support.sap.com/#/notes/1102124/E) bevat informatie over SAPOSCOL in Linux 
 -  [SAP-opmerking 2178632](https://launchpad.support.sap.com/#/notes/2178632/E) bevat informatie over de belangrijkste bewakings gegevens voor SAP op Microsoft Azure
--  [Azure Virtual Machines-implementatie voor SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide#d98edcd3-f2a1-49f7-b26a-07448ceb60ca)
+-  [Azure Virtual Machines-implementatie voor SAP NetWeaver](./deployment-guide.md#d98edcd3-f2a1-49f7-b26a-07448ceb60ca)
 
 ## <a name="sap-hana-installation"></a>Installatie van SAP HANA
 Als de virtuele machines van Azure zijn geïmplementeerd en de besturings systemen zijn geregistreerd en geconfigureerd, kunt u SAP HANA installeren volgens de SAP-installatie. Als u aan deze documentatie wilt gaan, kunt u beginnen met deze SAP website [Hana-resources](https://www.sap.com/products/hana/implementation/resources.html)
 
-Voor SAP HANA scale-out-configuraties met behulp van direct gekoppelde schijven van Azure Premium Storage of Ultra disk leest u de specifieke informatie in het document [SAP Hana infrastructuur configuraties en-bewerkingen op Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations#configuring-azure-infrastructure-for-sap-hana-scale-out)
+Voor SAP HANA scale-out-configuraties met behulp van direct gekoppelde schijven van Azure Premium Storage of Ultra disk leest u de specifieke informatie in het document [SAP Hana infrastructuur configuraties en-bewerkingen op Azure](./hana-vm-operations.md#configuring-azure-infrastructure-for-sap-hana-scale-out)
 
 
 ## <a name="additional-resources-for-sap-hana-backup"></a>Aanvullende bronnen voor SAP HANA back-up
 Zie voor informatie over het maken van een back-up van SAP HANA-data bases op virtuele machines van Azure:
-* [Back-upgids voor SAP HANA op Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)
-* [Azure Backup op bestands niveau SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-file-level)
+* [Back-upgids voor SAP HANA op Azure Virtual Machines](./sap-hana-backup-guide.md)
+* [Azure Backup op bestands niveau SAP HANA](./sap-hana-backup-file-level.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 Lees de documentatie:
 
-- [Configuraties en bewerkingen van SAP HANA-infrastructuur in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)
-- [Configuraties van SAP HANA in virtuele Azure-machineopslag](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
-
-
-
-
-
+- [Configuraties en bewerkingen van SAP HANA-infrastructuur in Azure](./hana-vm-operations.md)
+- [Configuraties van SAP HANA in virtuele Azure-machineopslag](./hana-vm-operations-storage.md)

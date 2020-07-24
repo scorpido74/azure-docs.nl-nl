@@ -3,24 +3,25 @@ title: Verbind uw omgeving met Power BI-Azure Time Series Insights | Microsoft D
 description: Informatie over het verbinden van Azure Time Series Insights naar Power BI voor het delen, het diagram en weer geven van gegevens in uw organisatie.
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 06/01/2020
-ms.openlocfilehash: ea46f37b0c09ca655b29ac3cfa2f168e18c85590
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 06/30/2020
+ms.openlocfilehash: b9d91921fc375a1209e8fa8df6e3c6ff56e55be0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85052440"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046708"
 ---
-# <a name="visualize-data-from-time-series-insights-in-power-bi"></a>Gegevens visualiseren van Time Series Insights in Power BI
+# <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>Gegevens visualiseren van Azure Time Series Insights in Power BI
 
-Azure Time Series Insights is een platform voor het opslaan, beheren, opvragen en visualiseren van Time Series-gegevens in de Cloud. [Power bi](https://powerbi.microsoft.com) is een Business Analytics-hulp programma met uitgebreide visualisatie mogelijkheden waarmee u inzichten en resultaten kunt delen binnen uw organisatie. Beide services kunnen nu worden geïntegreerd om optimaal gebruik te maken van de Time Series Insights ' inherente visualisatie mogelijkheden en Power BI.
+Azure Time Series Insights is een platform voor het opslaan, beheren, opvragen en visualiseren van Time Series-gegevens in de Cloud. [Power bi](https://powerbi.microsoft.com) is een Business Analytics-hulp programma met uitgebreide visualisatie mogelijkheden waarmee u inzichten en resultaten kunt delen binnen uw organisatie. Beide services kunnen nu worden geïntegreerd om optimaal gebruik te maken van de Azure Time Series Insights ' inherente visualisatie mogelijkheden en Power BI.
 
 U leert het volgende:
 
-* Time Series Insights verbinding maken met Power BI met behulp van de Cloud connector
+* Azure Time Series Insights verbinding maken met Power BI met behulp van de Cloud connector
 * Visuals maken met uw gegevens in Power BI
 * Het rapport publiceren naar Power BI en delen met de rest van uw organisatie
 
@@ -31,16 +32,18 @@ Zorg ervoor dat u zich aanmeldt voor een [gratis Azure-abonnement](https://azure
 ## <a name="prerequisites"></a>Vereisten
 
 * Down load en installeer de nieuwste versie van [Power bi Desktop](https://powerbi.microsoft.com/downloads/)
-* Een [Azure time series Insights preview-exemplaar](time-series-insights-update-how-to-manage.md) hebben of maken
+* Een [Azure time series Insights Gen2-omgeving](time-series-insights-update-how-to-manage.md) hebben of maken
 
 > [!IMPORTANT]
-> De Power BI-connector wordt momenteel ondersteund in Time Series Insights voor beeld van *betalen naar gebruik* -omgevingen die zijn geconfigureerd voor **warme Store**.
+>
+> * De connector wordt momenteel ondersteund in Azure Time Series Insights Gen2-omgevingen die alleen zijn geconfigureerd met een **warme Store**.
+> * Als u gast toegang hebt tot de Azure Time Series Insights Gen2-omgeving vanuit een andere Azure AD-Tenant, hebt u geen toegang tot de connector. Meer informatie over het beleid voor de [toegang tot de omgeving](./concepts-access-policies.md).
 
-## <a name="connect-data-from-time-series-insights-to-power-bi"></a>Gegevens verbinden van Time Series Insights naar Power BI
+## <a name="connect-data-from-azure-time-series-insights-to-power-bi"></a>Gegevens verbinden van Azure Time Series Insights naar Power BI
 
-Voer de volgende stappen uit om uw Time Series Insights-omgeving te verbinden met Power BI:
+Voer de volgende stappen uit om uw Azure Time Series Insights-omgeving te verbinden met Power BI:
 
-1. Time Series Insights Explorer openen
+1. Azure Time Series Insights Explorer openen
 1. Gegevens exporteren als een query of als onbewerkte gegevens
 1. Power BI Desktop openen
 1. Laden vanuit aangepaste query
@@ -49,10 +52,10 @@ Voer de volgende stappen uit om uw Time Series Insights-omgeving te verbinden me
 
 Aan de slag:
 
-1. Open de Time Series Insights preview Explorer en uw gegevens te openen.
+1. Open de Azure Time Series Insights Gen2 Explorer om uw gegevens te openen.
 1. Wanneer u een weer gave hebt gemaakt waarin u tevreden bent, gaat u naar het vervolg keuzemenu **meer acties** en selecteert u **verbinding maken met Power bi**.
 
-    [![Time Series Insights preview Explorer exporteren](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
+    [![Azure Time Series Insights Gen2 Explorer exporteren](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
 
 1. Stel de para meters in op dit tabblad:
 
@@ -64,11 +67,11 @@ Aan de slag:
        > U kunt uw gegevens later in Power BI samen voegen, maar niet herstellen naar onbewerkte gegevens na aggregatie. 
        
        > [!NOTE]
-       > Er is een limiet van 100 kB voor het aantal gebeurtenissen voor onbewerkte gebeurtenis niveau.
+       > Er is een limiet van 250.000 gebeurtenissen voor onbewerkte gebeurtenis niveau gegevens.
 
        [![Verbinding maken](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
 
-   1. Als u uw Time Series Insights-exemplaar voor **warme Store**niet hebt geconfigureerd, wordt een waarschuwing weer gegeven.
+   1. Als u uw Azure Time Series Insights-omgeving niet hebt geconfigureerd met een **warme archief**, wordt een waarschuwing weer gegeven.
 
        [![Waarschuwing voor warme Store](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
 
@@ -81,9 +84,9 @@ Aan de slag:
 
     [![Start vervolg keuzelijst](media/how-to-connect-power-bi/power-bi-home-drop-down.png)](media/how-to-connect-power-bi/power-bi-home-drop-down.png#lightbox)
 
-1. Zoek naar **Time Series Insights**, selecteer **Azure time series Insights (bèta)** en vervolgens **verbinding maken**.
+1. Zoek naar **Azure time series Insights**, selecteer **Azure time series Insights (bèta)** en vervolgens **verbinding maken**.
 
-    [![Power BI verbinden met Time Series Insights](media/how-to-connect-power-bi/connect-to-time-series-insights.png)](media/how-to-connect-power-bi/connect-to-time-series-insights.png#lightbox)
+    [![Power BI verbinden met Azure Time Series Insights](media/how-to-connect-power-bi/connect-to-time-series-insights.png)](media/how-to-connect-power-bi/connect-to-time-series-insights.png#lightbox)
 
     U kunt ook naar het tabblad **Azure** gaan, **Azure time series Insights (bèta)** selecteren en vervolgens **verbinding maken**.
     
@@ -146,5 +149,3 @@ De interface geeft nu de gewenste wijzigingen weer.
 * Meer informatie over [Power bi connector concepten](https://docs.microsoft.com/power-bi/desktop-query-overview) voor Azure time series Insights.
 
 * Meer informatie over [Power bi bureau blad](https://docs.microsoft.com/power-bi/desktop-query-overview).
-
-* Lees [Time Series INSIGHTS ga Verkenner](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart) en [Time Series Insights preview Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart).

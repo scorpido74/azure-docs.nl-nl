@@ -3,33 +3,46 @@ ms.service: logic-apps
 ms.topic: include
 author: ecfan
 ms.author: estfan
-ms.date: 11/03/2016
-ms.openlocfilehash: 8b5f72f18ee5bf9c1e4dbaaa87d6705f55b09bc5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/21/2020
+ms.openlocfilehash: 27df83552b450b7657c0595d1d419001df98148c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524201"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040232"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-account; u kunt een [gratis account](https://azure.microsoft.com/free) maken
 * Een [OneDrive](https://www.microsoft.com/store/apps/onedrive/9wzdncrfj1p3) -account 
 
-Voordat u uw OneDrive-account kunt gebruiken in een logische app, moet u de logische app machtigen om verbinding te maken met uw OneDrive-account.  U kunt dit eenvoudig doen in uw logische app op het Azure Portal. 
+Voordat u uw OneDrive-account kunt gebruiken met Logic Apps, moet u Logic Apps toestemming geven om verbinding te maken met uw OneDrive-account in de Azure Portal.
 
-Machtig uw logische app om verbinding te maken met uw OneDrive-account door de volgende stappen uit te voeren:
+Voer de volgende stappen uit om Logic Apps om verbinding te maken met uw OneDrive-account:  
 
-1. Maak een logische app. Selecteer in de Logic Apps Designer **micro soft Managed Api's weer geven** in de vervolg keuzelijst en voer ' onedrive ' in het zoekvak in. Selecteer een van de Triggers of acties:  
-   ![Een dialoog venster met de titel ' door micro soft beheerde Api's weer geven ' bevat een zoekvak dat ' onedrive ' bevat. Hieronder ziet u een lijst met vier triggers. De eerste in de lijst is ' OneDrive-wanneer een bestand wordt gemaakt ', dat is geselecteerd.](./media/connectors-create-api-onedrive/onedrive-1.png)
-2. Als u nog geen verbindingen met OneDrive hebt gemaakt, wordt u gevraagd u aan te melden met uw OneDrive-referenties:  
-   ![Er wordt een dialoog venster met de titel ' OneDrive-wanneer een bestand wordt gemaakt ' met een knop met de naam ' meldt '.](./media/connectors-create-api-onedrive/onedrive-2.png)
-3. Selecteer **Aanmelden**en voer uw gebruikers naam en wacht woord in. Selecteer **Aanmelden**:  
-   ![In een dialoog venster met de titel ' Aanmelden ' krijgt u de Microsoft-account. Het heeft twee tekst vakken met het label "E-mail of telefoon" en "wacht woord" heeft ook een selectie vakje met het label "aangemeld blijven" en een knop met het label "aanmelden".](./media/connectors-create-api-onedrive/onedrive-3.png)   
-   
-    Deze referenties worden gebruikt om uw logische app te autoriseren om verbinding te maken met en om toegang te krijgen tot de gegevens in uw OneDrive-account. 
+1. Meld u aan bij Azure Portal. 
+
+1. Onder **Azure-Services**selecteert u **Logic apps**. Selecteer vervolgens de naam van uw logische app in de lijst.
+
+1. Selecteer in het menu van de logische app de optie **Logic app-ontwerp** onder **ontwikkelingsprogram ma's**.
+
+1. Selecteer in de Logic Apps Designer **micro soft Managed Api's weer geven** in de vervolg keuzelijst en voer *OneDrive* in het zoekvak in. Selecteer de trigger of actie die u wilt gebruiken:
+
+   ![Scherm opname van Logic Apps Designer, met een lijst met OneDrive API-acties die moeten worden toegevoegd.](./media/connectors-create-api-onedrive/onedrive-1.png)
+
+2. Als u nog geen verbindingen met OneDrive hebt gemaakt, volgt u de prompt om u aan te melden met uw OneDrive-referenties:  
+
+   ![Scherm opname van Logic Apps Designer, waarin de aanmeldings prompt voor de OneDrive API wordt weer gegeven.](./media/connectors-create-api-onedrive/onedrive-2.png)
+
+3. Selecteer **Aanmelden**en voer uw gebruikers naam en wacht woord in. Selecteer **Aanmelden**: 
+
+   ![Scherm afbeelding van Microsoft-account aanmeldings pagina voor de OneDrive API-autorisatie.](./media/connectors-create-api-onedrive/onedrive-3.png)   
+
+    Deze referenties worden gebruikt om uw logische app te autoriseren voor toegang tot de gegevens in uw OneDrive-account. 
+
 4. Selecteer **Ja** om de logische app te autoriseren voor het gebruik van uw OneDrive-account:  
-   ![Een dialoog venster met de titel ' laat deze app toegang krijgen tot uw gegevens ' vraagt om toestemming om de volgende vier dingen uit te voeren: 1) ' Meld u automatisch aan ', 2) ' toegang tot uw e-mail adressen ', 3) ' toegang tot uw gegevens altijd ' en 4) ' toegang tot OneDrive-bestanden '. Er is een knop ' ja ' om machtigingen toe te kennen en een knop ' nee ' om deze te weigeren. Er is een koppeling om deze toepassings machtigingen te wijzigen.](./media/connectors-create-api-onedrive/onedrive-4.png)   
-5. U ziet dat de verbinding is gemaakt. Ga nu verder met de andere stappen in uw logische app:  
-   ![Een dialoog venster met de titel ' wanneer een bestand wordt gemaakt ' heeft een tekstvak met de titel ' map ' met een bijbehorende knop Bladeren.](./media/connectors-create-api-onedrive/onedrive-5.png)
 
+   ![Scherm opname van Microsoft-account autorisatie voor Logic Apps, waarbij de toegestane acties worden weer gegeven.](./media/connectors-create-api-onedrive/onedrive-4.png)   
+   
+5. De verbinding wordt nu weer gegeven in de stap. Selecteer opslaan en ga door met het maken van de logische app. 
+
+   ![Scherm opname van Logic Apps Designer, met actie-editor met de API-verbinding van OneDrive.](./media/connectors-create-api-onedrive/onedrive-5.png)

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: cenkdin
-ms.openlocfilehash: b2099283bc3af19f7d23e5007377b8baac0066d8
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: cd1272b6c49d247d58486193fcbc488d566ec1b3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964818"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043040"
 ---
 # <a name="creating-filters-with-media-services-net-sdk"></a>Filters maken met Media Services .NET SDK 
 > [!div class="op_single_selector"]
@@ -40,10 +40,10 @@ Opmerking Als u een filter bijwerkt, kan het Maxi maal twee minuten duren voorda
 ## <a name="types-used-to-create-filters"></a>Typen die worden gebruikt om filters te maken
 De volgende typen worden gebruikt bij het maken van filters: 
 
-* **IStreamingFilter**.  Dit type is gebaseerd op het volgende REST API [filter](https://docs.microsoft.com/rest/api/media/operations/filter)
-* **IStreamingAssetFilter**. Dit type is gebaseerd op de volgende REST API [AssetFilter](https://docs.microsoft.com/rest/api/media/operations/assetfilter)
-* **PresentationTimeRange**. Dit type is gebaseerd op de volgende REST API [PresentationTimeRange](https://docs.microsoft.com/rest/api/media/operations/presentationtimerange)
-* **FilterTrackSelectStatement** en **IFilterTrackPropertyCondition**. Deze typen zijn gebaseerd op de volgende REST Api's [FilterTrackSelect en FilterTrackPropertyCondition](https://docs.microsoft.com/rest/api/media/operations/filtertrackselect)
+* **IStreamingFilter**.  Dit type is gebaseerd op het volgende REST API [filter](/rest/api/media/operations/filter)
+* **IStreamingAssetFilter**. Dit type is gebaseerd op de volgende REST API [AssetFilter](/rest/api/media/operations/assetfilter)
+* **PresentationTimeRange**. Dit type is gebaseerd op de volgende REST API [PresentationTimeRange](/rest/api/media/operations/presentationtimerange)
+* **FilterTrackSelectStatement** en **IFilterTrackPropertyCondition**. Deze typen zijn gebaseerd op de volgende REST Api's [FilterTrackSelect en FilterTrackPropertyCondition](/rest/api/media/operations/filtertrackselect)
 
 ## <a name="createupdatereaddelete-global-filters"></a>Globale filters maken/bijwerken/lezen/verwijderen
 De volgende code laat zien hoe u .NET gebruikt voor het maken, bijwerken, lezen en verwijderen van Asset-filters.
@@ -137,4 +137,3 @@ In de volgende voor beelden ziet u hoe u filters kunt toevoegen aan uw streaming
 
 ## <a name="see-also"></a>Zie ook
 [Overzicht van dynamische manifesten](media-services-dynamic-manifest-overview.md)
-

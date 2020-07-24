@@ -4,14 +4,14 @@ description: Veelvoorkomende problemen met Azure Monitor metrische waarschuwinge
 author: harelbr
 ms.author: harelbr
 ms.topic: reference
-ms.date: 07/15/2020
+ms.date: 07/21/2020
 ms.subservice: alerts
-ms.openlocfilehash: 0d569facb6c2b58222980cfa1488de3b1f5fb60f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 98cd7a4d31f4d7053426f44dd02a876759688cc7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515764"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045224"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Problemen in Azure Monitor metrische waarschuwingen oplossen 
 
@@ -32,7 +32,7 @@ Als u denkt dat een metrische waarschuwing moet worden geactiveerd, maar niet is
 
 2. **Gestart, maar geen melding** : Controleer de [lijst met geactiveerde waarschuwingen](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/alertsV2) om te zien of u de geactiveerde waarschuwing kunt vinden. Als u de waarschuwing in de lijst kunt zien, maar een probleem met een aantal acties of meldingen hebt, raadpleegt u [hier](./alerts-troubleshoot.md#action-or-notification-on-my-alert-did-not-work-as-expected)meer informatie.
 
-3. **Al actief** : Controleer of er al een waarschuwing is geactiveerd voor de metrische tijds reeks waarnaar u verwacht een waarschuwing te ontvangen. Metrische waarschuwingen zijn stateful, wat betekent dat wanneer een waarschuwing wordt geactiveerd voor een specifieke metrische tijd reeks, extra waarschuwingen over die tijd reeksen niet worden geactiveerd totdat het probleem niet meer wordt waargenomen. Deze ontwerp keuze vermindert de ruis. De waarschuwing wordt automatisch opgelost wanneer aan de voor waarde van de waarschuwing niet wordt voldaan voor drie opeenvolgende evaluaties.
+3. **Al actief** : Controleer of er al een waarschuwing is geactiveerd voor de metrische tijds reeks waarnaar u verwacht een waarschuwing te ontvangen. Metrische waarschuwingen zijn stateful, wat betekent dat wanneer een waarschuwing wordt geactiveerd voor een specifieke metrische tijdreeks, extra waarschuwingen over die tijdreeksen pas worden geactiveerd zodra het probleem niet meer wordt waargenomen. Deze ontwerp keuze vermindert de ruis. De waarschuwing wordt automatisch opgelost wanneer aan de voor waarde van de waarschuwing niet wordt voldaan voor drie opeenvolgende evaluaties.
 
 4. **Gebruikte dimensies** : als u bepaalde [dimensie waarden voor een metriek](./alerts-metric-overview.md#using-dimensions)hebt geselecteerd, wordt met de waarschuwings regel elke afzonderlijke meet tijd reeks gecontroleerd (zoals gedefinieerd door de combi natie van dimensie waarden) voor een schending van drempel waarden. Als u ook de cumulatieve metrische tijd reeks (zonder geselecteerde dimensies) wilt bewaken, moet u een extra waarschuwings regel voor de metriek configureren zonder dat u dimensies hoeft te selecteren.
 
@@ -47,7 +47,7 @@ Als u denkt dat uw metrische waarschuwing niet hoeft te worden geactiveerd, maar
 1. Raadpleeg de [lijst met geactiveerde waarschuwingen](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/alertsV2) om de geactiveerde waarschuwing te vinden en klik om de details ervan weer te geven. Lees de informatie in **Waarom is deze waarschuwing geactiveerd?** om de metrische grafiek, **metrische waarde**en **drempel waarde** weer te geven op het moment dat de waarschuwing werd geactiveerd.
 
     > [!NOTE] 
-    > Als u het voorwaardetype Dynamische drempelwaarden gebruikt en denkt dat de gebruikte drempelwaarden niet kloppen, geeft u feedback via het pictogram Frons. Deze feedback is van invloed op het machine learning algoritme onderzoek en helpt toekomstige detecties te verbeteren.
+    > Als u een voor waarde voor de dynamische drempel waarden gebruikt en u er zeker van wilt zijn dat de gebruikte drempel waarden onjuist zijn, geeft u feedback met behulp van het frons pictogram. Deze feedback is van invloed op het machine learning algoritme onderzoek en helpt toekomstige detecties te verbeteren.
 
 2. Als u meerdere dimensie waarden voor een metriek hebt geselecteerd, wordt de waarschuwing geactiveerd wanneer **een** van de metrische time series (zoals gedefinieerd door de combi natie van dimensie waarden) de drempel overschrijdt. Kijk [hier](./alerts-metric-overview.md#using-dimensions) voor meer informatie over het gebruik van dimensies in metrische waarschuwingen.
 
@@ -58,7 +58,7 @@ Als u denkt dat uw metrische waarschuwing niet hoeft te worden geactiveerd, maar
    > [!NOTE]
    > Dynamische drempel waarden vereisen ten minste 3 dagen en 30 metrische voor beelden voordat ze actief zijn.
 
-4. Als u de metriek wilt visualiseren met [metrische gegevens](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/metrics), moet u ervoor zorgen dat:
+4. Als u de metrische gegevens wilt visualiseren [, moet](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/metrics)u ervoor zorgen dat:
     - De geselecteerde **aggregatie** in de metrische grafiek is hetzelfde als het **aggregatie type** in uw waarschuwings regel
     - De geselecteerde **tijd granulariteit** is hetzelfde als de **granulariteit van de aggregatie (punt)** in uw waarschuwings regel (en niet ingesteld op ' automatisch ')
 
@@ -67,7 +67,7 @@ Als u denkt dat uw metrische waarschuwing niet hoeft te worden geactiveerd, maar
 
 ## <a name="cant-find-the-metric-to-alert-on---virtual-machines-guest-metrics"></a>Kan de metrische gegevens niet vinden voor waarschuwingen over de metrische gegevens van de gast voor virtuele machines
 
-Als u een waarschuwing wilt ontvangen over de metrische gegevens van het gast besturingssysteem van virtuele machines (bijvoorbeeld geheugen, schijf ruimte), moet u ervoor zorgen dat u de vereiste agent hebt geïnstalleerd om deze gegevens te verzamelen voor Azure Monitor metrieken:
+Als u een waarschuwing wilt ontvangen voor de metrische gegevens van het gast besturingssysteem van virtuele machines (bijvoorbeeld: geheugen, schijf ruimte), moet u ervoor zorgen dat u de vereiste agent hebt geïnstalleerd voor het verzamelen van deze informatie voor Azure Monitor metrieken:
 - [Voor Windows-VM's](./collect-custom-metrics-guestos-resource-manager-vm.md)
 - [Voor Linux-VM's](./collect-custom-metrics-linux-telegraf.md)
 
@@ -106,12 +106,35 @@ Metrische waarschuwingen zijn standaard stateful en daarom worden er geen extra 
 > [!NOTE] 
 > Als u een metrische waarschuwings regel stateless maakt, voor komt u dat er geactiveerde waarschuwingen worden opgelost, dus zelfs nadat de voor waarde niet meer is gehaald, blijven de geactiveerde waarschuwingen in de status geactiveerd totdat de Bewaar periode van 30 dagen is verstreken.
 
+## <a name="define-an-alert-rule-on-a-custom-metric-that-isnt-emitted-yet"></a>Een waarschuwings regel definiëren op basis van een aangepaste metriek die nog niet is verzonden
+
+Wanneer u een metrische waarschuwings regel maakt, wordt de naam van de metrische gegevens gevalideerd op basis van de [API voor metrische definities](https://docs.microsoft.com/rest/api/monitor/metricdefinitions/list) om er zeker van te zijn dat deze bestaat. In sommige gevallen wilt u een waarschuwings regel maken voor een aangepaste metriek, zelfs voordat deze wordt verzonden. Bijvoorbeeld bij het maken (met een ARM-sjabloon) een Application Insights resource die een aangepaste metriek zal genereren, samen met een waarschuwings regel die de metrische gegevens bewaakt.
+
+Als u wilt voor komen dat de implementatie mislukt wanneer u probeert de definities van de aangepaste metrische gegevens te valideren, kunt u de para meter *skipMetricValidation* gebruiken in het gedeelte criteria van de waarschuwings regel, waardoor de metrische validatie wordt overgeslagen. Zie het volgende voor beeld voor het gebruik van deze para meter in een ARM-sjabloon (Zie [hier]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)voor voor beelden van volledige arm-sjablonen voor het maken van regels voor metrische waarschuwingen).
+
+```json
+"criteria": {
+    "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria",
+        "allOf": [
+            {
+                    "name" : "condition1",
+                        "metricName": "myCustomMetric",
+                "metricNamespace": "myCustomMetricNamespace",
+                        "dimensions":[],
+                        "operator": "GreaterThan",
+                        "threshold" : 10,
+                        "timeAggregation": "Average",
+                    "skipMetricValidation": true
+        }
+              ]
+        }
+```
 
 ## <a name="metric-alert-rules-quota-too-small"></a>Het quotum voor de waarschuwings regels voor metrische gegevens is te klein
 
 Voor het toegestane aantal metrische waarschuwings regels per abonnement gelden [quotum limieten](../service-limits.md).
 
-Als u de quotumlimiet hebt bereikt, kunt u de volgende stappen uitvoeren om het probleem op te lossen:
+Als u de quotum limiet hebt bereikt, kunt u de volgende stappen uitvoeren om het probleem op te lossen:
 1. Probeer regels voor metrische waarschuwingen te verwijderen of uit te scha kelen die niet meer worden gebruikt.
 
 2. Overschakelen naar het gebruik van regels voor metrische waarschuwingen voor het bewaken van meerdere resources. Met deze mogelijkheid kan één waarschuwings regel meerdere resources bewaken met slechts één waarschuwings regel die bij het quotum wordt geteld. Zie [hier](./alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor)voor meer informatie over deze functie en de ondersteunde resourcetypen.
@@ -133,7 +156,7 @@ Volg de onderstaande stappen om het huidige gebruik van metrische waarschuwings 
 3. Zorg ervoor dat u niet filtert op een specifieke resource groep, resource type of resource
 4. Selecteer **metrische gegevens** in de vervolg keuzelijst **type signaal**
 5. Controleer of het besturings element voor de vervolg keuzelijst **status** is ingesteld op **ingeschakeld**
-6. Het totale aantal metrische waarschuwings regels wordt weer gegeven boven de lijst met regels
+6. Het totale aantal metrische waarschuwings regels wordt weer gegeven boven de lijst waarschuwings regels
 
 ### <a name="from-api"></a>Van API
 
@@ -152,7 +175,7 @@ Als u problemen ondervindt bij het maken, bijwerken, ophalen of verwijderen van 
 
 ### <a name="rest-api"></a>REST-API
 
-Raadpleeg de [REST API-handleiding](/rest/api/monitor/metricalerts/) om te controleren of u alle parameters correct invoert
+Raadpleeg de [rest API-hand leiding](/rest/api/monitor/metricalerts/) om te controleren of alle para meters correct worden door gegeven
 
 ### <a name="powershell"></a>PowerShell
 
@@ -171,13 +194,13 @@ Zorg ervoor dat u de juiste CLI-opdrachten gebruikt voor metrische waarschuwinge
 
 ### <a name="general"></a>Algemeen
 
-- Als u een `Metric not found`-fout krijgt:
+- Als u een `Metric not found` fout bericht ontvangt:
 
    - Voor een platform metriek: Zorg ervoor dat u de naam van de **metrische gegevens** gebruikt op [de pagina Azure monitor ondersteunde metrische gegevens](./metrics-supported.md)en niet de **weergave naam van de metrische gegevens**
 
    - Voor een aangepaste metriek: Zorg ervoor dat de metriek al wordt verzonden (u kunt geen waarschuwings regel maken op een aangepaste metriek die nog niet bestaat) en dat u de naam ruimte van de aangepaste metriek opgeeft (Zie [hier](./alerts-metric-create-templates.md#template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric)een arm-sjabloon)
 
-- Als u [metrische waarschuwingen voor logboeken](./alerts-metric-logs.md) maakt, zorg er dan voor dat de juiste afhankelijkheden zijn opgenomen. Zie de [voorbeeldsjabloon](./alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
+- Als u [metrische waarschuwingen op Logboeken](./alerts-metric-logs.md)wilt maken, moet u ervoor zorgen dat de juiste afhankelijkheden worden opgenomen. Zie de [voorbeeldsjabloon](./alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
 
 - Als u een waarschuwings regel maakt die meerdere criteria bevat, moet u rekening houden met de volgende beperkingen:
 
@@ -197,7 +220,7 @@ Als u een waarschuwings regel voor metrische gegevens wilt maken, moet u over de
 
 ## <a name="naming-restrictions-for-metric-alert-rules"></a>Naamgevings beperkingen voor metrische waarschuwings regels
 
-Houd rekening met de volgende beperkingen voor de naam van de regel voor metrische waarschuwingen:
+Houd rekening met de volgende beperkingen voor de namen van regels voor metrische waarschuwingen:
 
 - De namen van de waarschuwings regels voor metrische gegevens kunnen niet worden gewijzigd (hernoemd) nadat deze is gemaakt
 - De naam van de metrische waarschuwings regel moet uniek zijn binnen een resource groep
@@ -210,9 +233,9 @@ Houd rekening met de volgende beperkingen voor de naam van de regel voor metrisc
 Metrische waarschuwingen ondersteunen waarschuwingen over multidimensionale metrische gegevens en bieden ondersteuning voor het definiëren van meerdere voor waarden (Maxi maal 5 voor waarden per waarschuwings regel).
 
 Houd rekening met de volgende beperkingen bij het gebruik van dimensies in een waarschuwings regel die meerdere voor waarden bevat:
-1. U kunt binnen elke voor waarde slechts één waarde per dimensie selecteren.
-2. U kunt de optie ' alle huidige en toekomstige waarden selecteren ' (selecteren) niet gebruiken \* .
-3. Wanneer de metrische gegevens die in verschillende voor waarden zijn geconfigureerd, dezelfde dimensie ondersteunen, moet een geconfigureerde dimensie waarde expliciet op dezelfde manier worden ingesteld voor al deze metrische gegevens (in de relevante omstandigheden).
+- U kunt binnen elke voor waarde slechts één waarde per dimensie selecteren.
+- U kunt de optie ' alle huidige en toekomstige waarden selecteren ' (selecteren) niet gebruiken \* .
+- Wanneer de metrische gegevens die in verschillende voor waarden zijn geconfigureerd, dezelfde dimensie ondersteunen, moet een geconfigureerde dimensie waarde expliciet op dezelfde manier worden ingesteld voor al deze metrische gegevens (in de relevante omstandigheden).
 Bijvoorbeeld:
     - Houd rekening met een metrische waarschuwings regel die is gedefinieerd in een opslag account en controleert twee voor waarden:
         * Totaal aantal **trans acties** > 5

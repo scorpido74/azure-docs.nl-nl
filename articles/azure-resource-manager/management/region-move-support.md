@@ -4,13 +4,14 @@ description: Een lijst met de Azure-resource typen die kunnen worden verplaatst 
 author: rayne-wiselman
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 05/31/2020
+ms.date: 07/21/2020
 ms.author: raynew
-ms.openlocfilehash: 0510df504c8de70cfb6a486f394db6da65dbfce2
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 70f981f2763dd36f0f417faec6c81e168e9856e7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057684"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040968"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>Ondersteuning voor het verplaatsen van Azure-resources in verschillende regio's
 
@@ -48,7 +49,7 @@ Ga naar de naam ruimte van een resource provider:
 > - [Micro soft. container](#microsoftcontainer)
 > - [Micro soft. ContainerInstance](#microsoftcontainerinstance)
 > - [Microsoft.ContainerRegistry](#microsoftcontainerregistry)
-> - [Microsoft.ContainerService](#microsoftcontainerservice)
+> - [Micro soft. container service](#microsoftcontainerservice)
 > - [Microsoft.ContentModerator](#microsoftcontentmoderator)
 > - [Micro soft. CortanaAnalytics](#microsoftcortanaanalytics)
 > - [Micro soft. CostManagement](#microsoftcostmanagement)
@@ -258,7 +259,7 @@ Ga naar de naam ruimte van een resource provider:
 > | clusters | No <br/><br/> De Azure Batch AI-service is [buiten gebruik gesteld](/previous-versions/azure/batch-ai/overview-what-happened-batch-ai).
 > | fileservers | No | 
 > | functies | No | 
-> | workspaces | No | 
+> | werkruimten | No | 
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
 
@@ -467,7 +468,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | workspaces | No | 
+> | werkruimten | No | 
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
 
@@ -542,14 +543,14 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | Server | Als de service is ingericht met geografisch redundante back-upopslag, kunt u geo-herstel gebruiken om in andere regio's te herstellen. [Meer informatie](../../mariadb/concepts-business-continuity.md#recover-from-an-azure-regional-data-center-outage)
+> | Server | U kunt een replicatie met meerdere regio's gebruiken om een bestaande server te verplaatsen. [Meer informatie](../../postgresql/howto-move-regions-portal.md).<br/><br/> Als de service is ingericht met geografisch redundante back-upopslag, kunt u geo-herstel gebruiken om in andere regio's te herstellen. [Meer informatie](../../mariadb/concepts-business-continuity.md#recover-from-an-azure-regional-data-center-outage).
 
 ## <a name="microsoftdbformysql"></a>Micro soft. DBforMySQL
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | Server | No |  
+> | Server | U kunt een replicatie met meerdere regio's gebruiken om een bestaande server te verplaatsen. [Meer informatie](../../mysql/howto-move-regions-portal.md).
 
 ## <a name="microsoftdbforpostgresql"></a>Micro soft. DBforPostgreSQL
 
@@ -557,7 +558,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
 > | servergroups | No | 
-> | Server | No |  
+> | Server | U kunt een replicatie met meerdere regio's gebruiken om een bestaande server te verplaatsen. [Meer informatie](../../postgresql/howto-move-regions-portal.md).
 > | serversv2 | No | 
 
 ## <a name="microsoftdeploymentmanager"></a>Micro soft. DeploymentManager
@@ -717,7 +718,7 @@ Ga naar de naam ruimte van een resource provider:
 > | checknameavailability |  Nee.<br/><br/> IoT Central werkt met geographs en geen regio's.
 > | Graph | No
 
-## <a name="microsoftiothub"></a>Micro soft. IoTHub
+## <a name="microsoftiothub"></a>Microsoft.IotHub
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
@@ -787,7 +788,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- |
 > | commitmentplans |  No | 
 > | webservices |  No | 
-> | workspaces |  No | 
+> | werkruimten |  No | 
 
 ## <a name="microsoftmachinelearningcompute"></a>Micro soft. MachineLearningCompute
 
@@ -827,7 +828,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | workspaces | No | 
+> | werkruimten | No | 
 
 ## <a name="microsoftmanagedidentity"></a>Micro soft. ManagedIdentity
 
@@ -951,7 +952,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Regio verplaatsen | 
 > | ------------- | ----------- |
-> | workspaces |  No | 
+> | werkruimten |  No | 
 
 
 
@@ -1288,7 +1289,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- |
 > | applicationgroups | No | 
 > | hostpools | No | 
-> | workspaces | No | 
+> | werkruimten | No | 
 
 ## <a name="third-party-services"></a>Services van derden
 

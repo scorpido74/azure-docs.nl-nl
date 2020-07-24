@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: d420f244b0d1e5ccf9a7aaa78c10f613cdbad38f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e844934852f3eb45f665a67bbdb7087a8ba0202
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564274"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039156"
 ---
 # <a name="move-logic-app-resources-to-other-azure-resource-groups-regions-or-subscriptions"></a>Logische app-resources verplaatsen naar andere Azure-resource groepen,-regio's of-abonnementen
 
@@ -94,7 +94,7 @@ Sommige Azure-resources, zoals on-premises gegevens gateway resources in azure, 
 
 Als u bijvoorbeeld een logische app wilt koppelen aan een integratie account, moeten beide resources zich in dezelfde regio bevinden. In scenario's als herstel na nood gevallen wilt u doorgaans integratie accounts met dezelfde configuratie en artefacten. In andere scenario's hebt u mogelijk integratie accounts met verschillende configuraties en artefacten nodig.
 
-Aangepaste connectors in Azure Logic Apps zijn zichtbaar voor de auteurs van de connectors en gebruikers die hetzelfde Azure-abonnement hebben en dezelfde Azure Active Directory Tenant. Deze connectors zijn beschikbaar in dezelfde regio waar Logic apps worden geïmplementeerd. Zie voor meer informatie [Share custom connectors in your organization](https://docs.microsoft.com/connectors/custom-connectors/share) (Aangepaste connectors delen in uw organisatie).
+Aangepaste connectors in Azure Logic Apps zijn zichtbaar voor de auteurs van de connectors en gebruikers die hetzelfde Azure-abonnement hebben en dezelfde Azure Active Directory Tenant. Deze connectors zijn beschikbaar in dezelfde regio waar Logic apps worden geïmplementeerd. Zie voor meer informatie [Share custom connectors in your organization](/connectors/custom-connectors/share) (Aangepaste connectors delen in uw organisatie).
 
 De sjabloon die u in Visual Studio krijgt, bevat alleen de resource definities voor uw logische app en de bijbehorende verbindingen. Als uw logische app bijvoorbeeld gebruikmaakt van andere resources, zoals een integratie account en B2B-artefacten, zoals partners, overeenkomsten en schema's, moet u de sjabloon van dat integratie account exporteren met behulp van de Azure Portal. Deze sjabloon bevat de resource definities voor het integratie account en de artefacten. De sjabloon heeft echter geen volledige para meters. Daarom moet u de waarden die u wilt gebruiken voor implementatie hand matig para meters.
 

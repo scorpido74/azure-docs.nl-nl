@@ -1,25 +1,26 @@
 ---
-title: Uw GA-omgeving plannen-Azure Time Series Insights | Microsoft Docs
-description: Aanbevolen procedures voor het voorbereiden, configureren en implementeren van uw Azure Time Series Insights GA-omgeving.
+title: Uw gen1-omgeving plannen-Azure Time Series Insights | Microsoft Docs
+description: Aanbevolen procedures voor het voorbereiden, configureren en implementeren van uw Azure Time Series Insights gen1-omgeving.
 services: time-series-insights
 ms.service: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 04/13/2020
+ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: 85910ee5467ecc9f4fe3c1a8bc13110b6f218e5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ea243ffd125a527949c4a264177e78de04a22aae
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81272709"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046426"
 ---
-# <a name="plan-your-azure-time-series-insights-ga-environment"></a>Uw Azure Time Series Insights GA-omgeving plannen
+# <a name="plan-your-azure-time-series-insights-gen1-environment"></a>Uw Azure Time Series Insights gen1-omgeving plannen
 
-In dit artikel wordt beschreven hoe u de Azure Time Series Insights algemene Beschik baarheid (GA) plant op basis van uw verwachte Ingangs frequentie en de vereisten voor het bewaren van gegevens.
+In dit artikel wordt beschreven hoe u uw Azure Time Series Insights gen1-omgeving plant op basis van uw verwachte Ingangs frequentie en de vereisten voor het bewaren van gegevens.
 
 ## <a name="video"></a>Video
 
@@ -31,9 +32,9 @@ In dit artikel wordt beschreven hoe u de Azure Time Series Insights algemene Bes
 
 Om aan de slag te gaan met Azure Time Series Insights, is het het beste als u weet hoeveel gegevens u naar verwachting wilt pushen per minuut en hoe lang uw gegevens moeten worden opgeslagen.  
 
-Lees [Time Series Insights prijzen](https://azure.microsoft.com/pricing/details/time-series-insights/)voor meer informatie over capaciteit en retentie voor beide time series Insights sku's.
+Lees [Azure time series Insights prijzen](https://azure.microsoft.com/pricing/details/time-series-insights/)voor meer informatie over capaciteit en retentie voor beide Azure time series Insights sku's.
 
-Houd rekening met de volgende kenmerken als u uw Time Series Insights omgeving voor een lange termijn wilt best uren:
+Houd rekening met de volgende kenmerken als u uw Azure Time Series Insights omgeving voor een lange termijn wilt best uren:
 
 - [Opslagcapaciteit](#storage-capacity)
 - [Bewaarperiode van gegevens](#data-retention)
@@ -43,9 +44,9 @@ Houd rekening met de volgende kenmerken als u uw Time Series Insights omgeving v
 
 ## <a name="storage-capacity"></a>Opslagcapaciteit
 
-Standaard worden gegevens door Time Series Insights bewaard op basis van de hoeveelheid opslag ruimte die u hebt ingericht (eenheden &#215; de hoeveelheid opslag per eenheid) en binnenhalen.
+Standaard worden gegevens door Azure Time Series Insights bewaard op basis van de hoeveelheid opslag ruimte die u hebt ingericht (eenheden &#215; de hoeveelheid opslag per eenheid) en binnenhalen.
 
-## <a name="data-retention"></a>Bewaartijd van gegevens
+## <a name="data-retention"></a>Bewaartijd voor gegevens
 
 U kunt de instelling voor de **Bewaar tijd van gegevens** in uw Azure time series Insights omgeving wijzigen. U kunt Maxi maal 400 dagen retentie inschakelen. 
 
@@ -57,7 +58,7 @@ Azure Time Series Insights heeft twee modi:
 U kunt de Bewaar periode aanpassen en scha kelen tussen de twee modi op de configuratie pagina van de omgeving in het Azure Portal.
 
 > [!IMPORTANT]
-> U kunt Maxi maal 400 dagen aan gegevens bewaaring configureren in uw Azure Time Series Insights GA-omgeving.
+> U kunt Maxi maal 400 dagen aan gegevens bewaaring configureren in uw Azure Time Series Insights gen1-omgeving.
 
 ### <a name="configure-data-retention"></a>Gegevensretentie configureren
 
@@ -74,21 +75,21 @@ U kunt de Bewaar periode aanpassen en scha kelen tussen de twee modi op de confi
 
 ## <a name="ingress-capacity"></a>Ingangs capaciteit
 
-[!INCLUDE [Azure Time Series Insights GA limits](../../includes/time-series-insights-ga-limits.md)]
+[!INCLUDE [Azure Time Series Insights Gen1 limits](../../includes/time-series-insights-ga-limits.md)]
 
 ### <a name="environment-planning"></a>Omgeving plannen
 
-Het tweede gebied waarop u zich kunt richten voor het plannen van uw Time Series Insights-omgeving, is de capaciteit van ingang. De dagelijkse ingang van de opslag en de gebeurtenis capaciteit wordt gemeten per minuut, in blokken van 1 KB. De Maxi maal toegestane pakket grootte is 32 KB. Gegevens pakketten groter dan 32 KB worden afgekapt.
+Het tweede gebied waarop u zich kunt richten voor het plannen van uw Azure Time Series Insights-omgeving, is de capaciteit van ingang. De dagelijkse ingang van de opslag en de gebeurtenis capaciteit wordt gemeten per minuut, in blokken van 1 KB. De Maxi maal toegestane pakket grootte is 32 KB. Gegevens pakketten groter dan 32 KB worden afgekapt.
 
 U kunt de capaciteit van een S1-of S2-SKU verhogen tot 10 eenheden in één omgeving. U kunt niet migreren van een S1-omgeving naar een S2. U kunt niet migreren van een S2-omgeving naar een S1.
 
 Voor ingangs capaciteit bepaalt u eerst het totale aantal binnenkomend dat u per maand nodig hebt. Bepaal vervolgens wat uw behoeften per minuut zijn. 
 
-Beperking en latentie spelen een rol in capaciteit per minuut. Als u een Prikker hebt in uw gegevens die minder dan 24 uur duren, kan Time Series Insights een ingangs snelheid hebben van twee keer de tarieven die in de voor gaande tabel worden weer gegeven.
+Beperking en latentie spelen een rol in capaciteit per minuut. Als u een Prikker hebt in uw gegevens die minder dan 24 uur duren, kan Azure Time Series Insights een ingangs snelheid hebben van twee keer de tarieven die in de voor gaande tabel worden weer gegeven.
 
 Als u bijvoorbeeld een enkele S1-SKU hebt, hebt u gegevens binnenkomen met een snelheid van 720 gebeurtenissen per minuut, en de gegevens snelheids pieken voor minder dan een uur met een snelheid van 1.440 gebeurtenissen of minder, er is geen merkbaar latentie in uw omgeving. Als u echter meer dan één uur 1.440 gebeurtenissen per minuut overschrijdt, zal er waarschijnlijk een latentie optreden in gegevens die worden gevisualiseerd en beschikbaar zijn voor query's in uw omgeving.
 
-Mogelijk weet u niet vooraf hoeveel gegevens u naar verwachting pusht. In dit geval kunt u gegevens-telemetrie voor [azure IOT hub](../iot-hub/iot-hub-metrics.md) en [Azure Event hubs](https://blogs.msdn.microsoft.com/cloud_solution_architect/2016/05/25/using-the-azure-rest-apis-to-retrieve-event-hub-metrics/) vinden in uw Azure Portal-abonnement. U kunt de telemetrie gebruiken om te bepalen hoe uw omgeving moet worden ingericht. Gebruik het deel venster **metrische gegevens** in de Azure portal voor de betreffende gebeurtenis bron om de telemetrie weer te geven. Als u de metrische gegevens van uw gebeurtenis bron begrijpt, kunt u uw Time Series Insights omgeving effectiever plannen en inrichten.
+Mogelijk weet u niet vooraf hoeveel gegevens u naar verwachting pusht. In dit geval kunt u gegevens-telemetrie voor [azure IOT hub](../iot-hub/iot-hub-metrics.md) en [Azure Event hubs](https://blogs.msdn.microsoft.com/cloud_solution_architect/2016/05/25/using-the-azure-rest-apis-to-retrieve-event-hub-metrics/) vinden in uw Azure Portal-abonnement. U kunt de telemetrie gebruiken om te bepalen hoe uw omgeving moet worden ingericht. Gebruik het deel venster **metrische gegevens** in de Azure portal voor de betreffende gebeurtenis bron om de telemetrie weer te geven. Als u de metrische gegevens van uw gebeurtenis bron begrijpt, kunt u uw Azure Time Series Insights omgeving effectiever plannen en inrichten.
 
 ### <a name="calculate-ingress-requirements"></a>Ingangs vereisten berekenen
 
@@ -104,26 +105,26 @@ Lees [beperkende latentie en beperking](time-series-insights-environment-mitigat
 
 ## <a name="shape-your-events"></a>Uw gebeurtenissen vorm geven
 
-Het is belang rijk om ervoor te zorgen dat de manier waarop u gebeurtenissen naar Time Series Insights verzendt, de grootte van de omgeving die u wilt inrichten ondersteunt. (U kunt de grootte van de omgeving daarentegen toewijzen aan het aantal gebeurtenissen Time Series Insights Lees bewerkingen en de grootte van elke gebeurtenis.) Het is ook belang rijk om na te denken over de kenmerken die u wilt gebruiken om te segmenteren en te filteren wanneer u een query op uw gegevens uitvoert.
+Het is belang rijk om ervoor te zorgen dat de manier waarop u gebeurtenissen naar Azure Time Series Insights verzendt, de grootte van de omgeving die u wilt inrichten ondersteunt. (U kunt de grootte van de omgeving daarentegen toewijzen aan het aantal gebeurtenissen Azure Time Series Insights Lees bewerkingen en de grootte van elke gebeurtenis.) Het is ook belang rijk om na te denken over de kenmerken die u wilt gebruiken om te segmenteren en te filteren wanneer u een query op uw gegevens uitvoert.
 
 > [!TIP]
 > Raadpleeg de documentatie over JSON-vormgeving bij het [verzenden van gebeurtenissen](time-series-insights-send-events.md).
 
 ## <a name="ensure-that-you-have-reference-data"></a>Controleer of u referentie gegevens hebt
 
-Een *referentie gegevensset* is een verzameling items waarmee de gebeurtenissen van uw gebeurtenis bron worden uitgebreid. De Time Series Insights ingangs engine voegt elke gebeurtenis uit uw gebeurtenis bron samen met de overeenkomstige gegevensrij in uw referentie gegevensset. De uitgebreide gebeurtenis is vervolgens beschikbaar voor query's. De koppeling is gebaseerd op de **primaire-sleutel** kolommen die in de referentie gegevensset zijn gedefinieerd.
+Een *referentie gegevensset* is een verzameling items waarmee de gebeurtenissen van uw gebeurtenis bron worden uitgebreid. De Azure Time Series Insights ingangs engine voegt elke gebeurtenis uit uw gebeurtenis bron samen met de overeenkomstige gegevensrij in uw referentie gegevensset. De uitgebreide gebeurtenis is vervolgens beschikbaar voor query's. De koppeling is gebaseerd op de **primaire-sleutel** kolommen die in de referentie gegevensset zijn gedefinieerd.
 
 > [!NOTE]
-> Referentie gegevens worden niet met terugwerkende kracht samengevoegd. Alleen huidige en toekomstige ingangs gegevens worden vergeleken en samengevoegd met de referentie gegevensset nadat deze is geconfigureerd en geüpload. Als u van plan bent om een grote hoeveelheid historische gegevens naar Time Series Insights te verzenden en niet eerst te uploaden of referentie gegevens in Time Series Insights te maken, moet u uw werk mogelijk opnieuw uitvoeren (Hint: niet leuk).  
+> Referentie gegevens worden niet met terugwerkende kracht samengevoegd. Alleen huidige en toekomstige ingangs gegevens worden vergeleken en samengevoegd met de referentie gegevensset nadat deze is geconfigureerd en geüpload. Als u van plan bent om een grote hoeveelheid historische gegevens naar Azure Time Series Insights te verzenden en niet eerst te uploaden of referentie gegevens in Azure Time Series Insights te maken, moet u uw werk mogelijk opnieuw uitvoeren (Hint: niet leuk).  
 
-Lees onze [documentatie over referentie gegevensset](time-series-insights-add-reference-data-set.md)voor meer informatie over het maken, uploaden en beheren van uw referentie gegevens in time series Insights.
+Lees onze [documentatie over referentie gegevensset](time-series-insights-add-reference-data-set.md)voor meer informatie over het maken, uploaden en beheren van uw referentie gegevens in azure time series Insights.
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Ga aan de slag door [een nieuwe time series Insights-omgeving te maken in de Azure Portal](time-series-insights-get-started.md).
+- Ga aan de slag door [een nieuwe Azure time series Insights-omgeving te maken in de Azure Portal](time-series-insights-get-started.md).
 
-- Meer informatie over het [toevoegen van een event hubs gebeurtenis bron](time-series-insights-how-to-add-an-event-source-eventhub.md) aan time series Insights.
+- Meer informatie over het [toevoegen van een event hubs gebeurtenis bron](time-series-insights-how-to-add-an-event-source-eventhub.md) aan Azure time series Insights.
 
 - Meer informatie over het [configureren van een IOT hub gebeurtenis bron](time-series-insights-how-to-add-an-event-source-iothub.md).

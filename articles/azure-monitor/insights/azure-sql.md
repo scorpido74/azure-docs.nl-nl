@@ -7,12 +7,12 @@ author: danimir
 ms.author: danil
 ms.date: 02/21/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: bb9bc847944a4228a7b583e21d0aa957f1910a29
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 7e5f7bd9ec3cc9a66adb8743ce2a56d8b2ead204
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087177"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041558"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Azure SQL Database bewaken met behulp van Azure SQL-analyse (preview)
 
@@ -31,10 +31,10 @@ Zie de Inge sloten video voor een praktische beschrijving van het gebruik van Az
 
 Azure SQL-analyse is een bewakings oplossing die alleen in de Cloud wordt ondersteund voor het streamen van de telemetrie van diagnostische gegevens voor alle Azure SQL-data bases Omdat Azure SQL-analyse geen agents gebruikt om verbinding te maken met Azure Monitor, biedt het geen ondersteuning voor de bewaking van SQL Server die on-premises of in virtuele machines worden gehost.
 
-| Verbonden bron | Ondersteund | Description |
+| Verbonden bron | Ondersteund | Beschrijving |
 | --- | --- | --- |
 | [Diagnostische instellingen](../platform/diagnostic-settings.md) | **Ja** | Azure metrische en logboek gegevens worden rechtstreeks door Azure naar Azure Monitor logboeken verzonden. |
-| [Azure-opslag account](../platform/collect-azure-metrics-logs.md) | No | Azure Monitor leest de gegevens van een opslag account niet. |
+| [Azure-opslag account](../platform/resource-logs.md#send-to-log-analytics-workspace) | No | Azure Monitor leest de gegevens van een opslag account niet. |
 | [Windows-agents](../platform/agent-windows.md) | No | Directe Windows-agents worden niet gebruikt door Azure SQL-analyse. |
 | [Linux-agents](../learn/quick-collect-linux-computer.md) | No | Direct Linux-agents worden niet gebruikt door Azure SQL-analyse. |
 | [Beheergroep System Center Operations Manager](../platform/om-agents.md) | No | Een directe verbinding van de Operations Manager agent naar Azure Monitor wordt niet gebruikt door Azure SQL-analyse. |
@@ -43,11 +43,11 @@ Azure SQL-analyse is een bewakings oplossing die alleen in de Cloud wordt onders
 
 De onderstaande tabel bevat een overzicht van de ondersteunde opties voor twee versies van het dash board Azure SQL-analyse, één voor Azure SQL Database en de andere voor Azure SQL Managed instance-data bases.
 
-| Azure SQL-analyse optie | Description | Ondersteuning voor SQL Database | Ondersteuning voor SQL Managed instance |
+| Azure SQL-analyse optie | Beschrijving | Ondersteuning voor SQL Database | Ondersteuning voor SQL Managed instance |
 | --- | ------- | ----- | ----- |
 | Resource per type | Perspectief dat alle bewaakte resources telt. | Ja | Ja |
 | Inzichten | Voorziet in een hiërarchisch inzoomen op de prestaties van Intelligent Insights. | Ja | Ja |
-| Fouten | Voorziet in hiërarchische inzoomen op SQL-fouten die zijn opgetreden in de data bases. | Ja | Ja |
+| Errors | Voorziet in hiërarchische inzoomen op SQL-fouten die zijn opgetreden in de data bases. | Ja | Ja |
 | Time-outs | Voorziet in hiërarchische inzoomen op SQL-time-outs die zijn opgetreden in de data bases. | Yes | Nee |
 | Blok keren | Voorziet in hiërarchische inzoomen op SQL-blok keringen die zijn opgetreden in de data bases. | Yes | Nee |
 | Data base wacht | Voorziet in hiërarchische inzoomen op het database niveau van SQL-wacht statistieken. Bevat samen vattingen van de totale wacht tijd en de wacht tijd per wacht type. |Yes | Nee |

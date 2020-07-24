@@ -2,12 +2,13 @@
 title: Implementatiemodi
 description: Hierin wordt beschreven hoe u kunt opgeven of u een volledige of incrementele implementatie modus met Azure Resource Manager wilt gebruiken.
 ms.topic: conceptual
-ms.date: 01/17/2020
-ms.openlocfilehash: 1077d92f076797fb03c4fe750b353e2306f9b6de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/22/2020
+ms.openlocfilehash: f20f41e989e1a994b7806aecf6e7cee5a4c27014
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79460242"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040428"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Implementatie modi Azure Resource Manager
 
@@ -20,6 +21,9 @@ De standaard modus is incrementeel.
 ## <a name="complete-mode"></a>Volledige modus
 
 In de volledige modus **verwijdert** Resource Manager resources die voor komen in de resource groep, maar die niet zijn opgegeven in de sjabloon.
+
+> [!NOTE]
+> Gebruik altijd de [What-if-bewerking](template-deploy-what-if.md) voordat u een sjabloon in de volledige modus implementeert. Wat-als toont u welke resources worden gemaakt, verwijderd of gewijzigd. Gebruik wat-als om onbedoeld resources te verwijderen.
 
 Als uw sjabloon een resource bevat die niet is geïmplementeerd omdat de [voor waarde](conditional-resource-deployment.md) wordt geëvalueerd als onwaar, is het resultaat afhankelijk van de rest API versie die u gebruikt om de sjabloon te implementeren. Als u een eerdere versie dan 2019-05-10 gebruikt, wordt de resource **niet verwijderd**. Met 2019-05-10 of hoger wordt de resource **verwijderd**. Met de nieuwste versies van Azure PowerShell en Azure CLI verwijdert u de resource.
 
@@ -49,6 +53,8 @@ In de incrementele modus blijven Resource Manager **ongewijzigde** resources die
 
 > [!NOTE]
 > Wanneer een bestaande resource opnieuw wordt geïmplementeerd in de incrementele modus, worden alle eigenschappen opnieuw toegepast. De **eigenschappen zijn niet incrementeel toegevoegd**. Een veelvoorkomende misverstand is om te denken dat eigenschappen die niet zijn opgegeven in de sjabloon, ongewijzigd blijven. Als u bepaalde eigenschappen niet opgeeft, interpreteert Resource Manager de implementatie als het overschrijven van die waarden. Eigenschappen die niet in de sjabloon zijn opgenomen, worden opnieuw ingesteld op de standaard waarden. Geef alle niet-standaard waarden voor de resource op, niet alleen voor de resources die u wilt bijwerken. De resource definitie in de sjabloon bevat altijd de laatste status van de resource. Het kan geen gedeeltelijke update voor een bestaande resource vertegenwoordigen.
+>
+> In zeldzame gevallen worden eigenschappen die u opgeeft voor een resource, in werkelijkheid geïmplementeerd als een onderliggende resource. Wanneer u bijvoorbeeld site configuratie waarden opgeeft voor een web-app, worden deze waarden geïmplementeerd in het onderliggende resource type `Microsoft.Web/sites/config` . Als u de web-app opnieuw implementeert en een leeg object voor de site configuratie waarden opgeeft, wordt de onderliggende resource niet bijgewerkt. Als u echter nieuwe site configuratie waarden opgeeft, wordt het onderliggende resource type bijgewerkt.
 
 ## <a name="example-result"></a>Voorbeeld resultaat
 

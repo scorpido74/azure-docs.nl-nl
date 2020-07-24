@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/18/2016
 tags: connectors
-ms.openlocfilehash: 8dd54fec963b8f4775a8ade6277b071d62ca3850
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9fe4988b5499943f4b11ec5d640209ceb68e84ec
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524200"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040244"
 ---
 # <a name="access-and-manage-files-in-onedrive-connector-by-using-azure-logic-apps"></a>Bestanden in OneDrive connector openen en beheren met behulp van Azure Logic Apps
 
@@ -40,7 +40,7 @@ Een trigger is een gebeurtenis die kan worden gebruikt om de werk stroom te star
 
 1. Typ in de ontwerp functie voor logische apps `onedrive` om een lijst van de triggers op te halen:  
 
-   ![Een dialoog venster met de titel ' door micro soft beheerde Api's weer geven ' heeft een vak dat ' onedrive ' bevat. Hieronder ziet u een lijst met vier triggers. De eerste hiervan is ' OneDrive-wanneer een bestand wordt gemaakt '. De tweede, ' OneDrive-wanneer een bestand wordt gewijzigd ', is geselecteerd.](./media/connectors-create-api-onedrive/onedrive-1.png)
+   ![Er wordt een dialoog venster weer gegeven met de titel ' micro soft Managed A P I ' heeft een vak dat ' onedrive ' bevat. Hieronder ziet u een lijst met vier triggers. De eerste hiervan is ' OneDrive-wanneer een bestand wordt gemaakt '. De tweede, ' OneDrive-wanneer een bestand wordt gewijzigd ', is geselecteerd.](./media/connectors-create-api-onedrive/onedrive-1.png)
 
 2. Selecteren **Wanneer een bestand wordt gewijzigd**. Als er al een verbinding bestaat, selecteert u de knop kiezer weer geven om een map te selecteren.
 
@@ -68,7 +68,7 @@ Een actie is een bewerking die wordt uitgevoerd door de werk stroom die is gedef
 
 3. Typ in het zoekvak `onedrive` om een lijst met alle beschik bare acties op te halen.
 
-   ![Een dialoog venster met de titel ' door micro soft beheerde Api's weer geven ' heeft een vak dat ' onedrive ' bevat. Hieronder ziet u een lijst met acht acties. De eerste is OneDrive-Create File en is geselecteerd.](./media/connectors-create-api-onedrive/onedrive-actions.png) 
+   ![Er wordt een dialoog venster weer gegeven met de titel ' micro soft Managed A P I ' heeft een vak dat ' onedrive ' bevat. Hieronder ziet u een lijst met acht acties. De eerste is OneDrive-Create File en is geselecteerd.](./media/connectors-create-api-onedrive/onedrive-actions.png) 
 
 4. In ons voor beeld kiest u **OneDrive-bestand maken**. Als er al een verbinding bestaat, **selecteert u het mappad om het** bestand te plaatsen, voert u de **Bestands naam**in en kiest u de gewenste **Bestands inhoud** :  
 

@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 9a7aa512c636f700cf9c6d990814d9367007c942
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76f73df01b34cb20be48aefa3b5b3a6392a35b8b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83125771"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045202"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>De metrische gegevens van het gast besturingssysteem naar het Azure Monitor metrische archief verzenden met behulp van een Azure Resource Manager sjabloon voor een Windows-schaalset voor virtuele machines
 
@@ -25,9 +26,9 @@ Als u niet bekend bent met Resource Manager-sjablonen, kunt u meer te weten kome
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Uw abonnement moet zijn geregistreerd bij [micro soft. Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services). 
+- Uw abonnement moet zijn geregistreerd bij [micro soft. Insights](../../azure-resource-manager/management/resource-providers-and-types.md). 
 
-- U moet [Azure PowerShell](/powershell/azure) hebben geïnstalleerd of u kunt [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview)gebruiken. 
+- U moet [Azure PowerShell](/powershell/azure) hebben geïnstalleerd of u kunt [Azure Cloud shell](../../cloud-shell/overview.md)gebruiken. 
 
 - De VM-resource moet zich in een regio bevinden [die aangepaste metrische gegevens ondersteunt](metrics-custom-overview.md#supported-regions).
 
@@ -292,5 +293,3 @@ U kunt er ook voor kiezen om de dimensies op deze metrische waarde te gebruiken 
 
 ## <a name="next-steps"></a>Volgende stappen
 - Meer informatie over [aangepaste metrische gegevens](metrics-custom-overview.md).
-
-

@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: 3d02c335f6e950300a7ced36643e6276c3d8d16a
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 79f06bd5d6af05e334faf4e1f6d8cd3e358f89ba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957372"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039188"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Ontwerp van een inhoudsbeveiligingssysteem van een multi-DRM met toegangsbeheer 
 
@@ -138,8 +139,8 @@ De volgende tabel toont de toewijzing.
 | **DRM-beveiligings werk stroom** |Dynamische beveiliging Azure Media Services |
 | **Levering van DRM-licentie** |* Media Services licentie levering (PlayReady, Widevine, FairPlay) <br/>* Axinom-licentie server <br/>* Aangepaste PlayReady-licentie server |
 | **Oorsprong** |Azure Media Services streaming-eind punt |
-| **Sleutelbeheer** |Niet nodig voor referentie-implementatie |
-| **Inhoudsbeheer** |Een C#-console toepassing |
+| **Sleutel beheer** |Niet nodig voor referentie-implementatie |
+| **Inhoudbeheer** |Een C#-console toepassing |
 
 Met andere woorden, zowel IDP als STS worden geleverd door Azure AD. De [Azure Media Player-API](https://amp.azure.net/libs/amp/latest/docs/) wordt gebruikt voor de speler. Zowel Azure Media Services als Azure Media Player ondersteunen CENC via DASH, FairPlay via HLS, PlayReady over smooth streaming en AES-128-versleuteling voor DASH, HLS en Smooth.
 
@@ -213,7 +214,7 @@ Zie [JWT-token verificatie in azure Media Services en dynamische versleuteling](
 Voor informatie over Azure AD:
 
 * In de [hand leiding voor ontwikkel aars van Azure Active Directory](../../active-directory/develop/v2-overview.md)vindt u informatie voor ontwikkel aars.
-* U kunt beheerders informatie vinden in [uw Azure AD-Tenant Directory beheren](../../active-directory/fundamentals/active-directory-administer.md).
+* U kunt beheerders informatie vinden in [uw Azure AD-Tenant Directory beheren](../../active-directory/fundamentals/active-directory-whatis.md).
 
 ### <a name="some-issues-in-implementation"></a>Enkele problemen in de implementatie
 

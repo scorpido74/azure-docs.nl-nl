@@ -6,16 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/16/2020
-ms.openlocfilehash: 18cd74ac9298b7dd058de2b224f677ec0d8f2d64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 736daa8a09a8f08721c7b7d9c20f012f274b384a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79480280"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045517"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Voor beelden van Azure Monitor-logboek query
 Dit artikel bevat verschillende voor beelden van [query's](log-query-overview.md) met behulp van de [Kusto-query taal](/azure/kusto/query/) om verschillende soorten logboek gegevens op te halen uit Azure monitor. Er worden verschillende methoden gebruikt om gegevens samen te voegen en te analyseren. u kunt deze voor beelden gebruiken om verschillende strategieën te identificeren die u voor uw eigen vereisten kunt gebruiken.  
 
-Zie de [Kusto-taal referentie](https://docs.microsoft.com/azure/kusto/query/) voor meer informatie over de verschillende tref woorden die in deze voor beelden worden gebruikt. Door loop een [Les over het maken van query's](get-started-queries.md) als u geen ervaring hebt met Azure monitor.
+Zie de [Kusto-taal referentie](/azure/kusto/query/) voor meer informatie over de verschillende tref woorden die in deze voor beelden worden gebruikt. Door loop een [Les over het maken van query's](get-started-queries.md) als u geen ervaring hebt met Azure monitor.
 
 ## <a name="events"></a>Gebeurtenissen
 
@@ -374,7 +375,7 @@ suspicious_users_that_later_logged_in
 
 ## <a name="usage"></a>Gebruik
 
-Het `Usage` gegevens type kan worden gebruikt om het opgenomen gegevens volume op basis van de oplossing of het gegevens type bij te houden. Er zijn andere technieken voor het onderzoeken van opgenomen gegevens volumes door de [computer](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-computer) of het [Azure-abonnement, de resource groep of de resource](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-azure-resource-resource-group-or-subscription).
+Het `Usage` gegevens type kan worden gebruikt om het opgenomen gegevens volume op basis van de oplossing of het gegevens type bij te houden. Er zijn andere technieken voor het onderzoeken van opgenomen gegevens volumes door de [computer](../platform/manage-cost-storage.md#data-volume-by-computer) of het [Azure-abonnement, de resource groep of de resource](../platform/manage-cost-storage.md#data-volume-by-azure-resource-resource-group-or-subscription).
 
 #### <a name="data-volume-by-solution"></a>Gegevensvolume per oplossing
 

@@ -7,12 +7,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: daperlov
-ms.openlocfilehash: 74c2e738153b1afa5c90f4769b6d9b0e982af363
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: e9df7b00a384859fb29577be0ad05da233683f46
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86225276"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87044521"
 ---
 # <a name="delta-format-in-azure-data-factory"></a>Delta-indeling in Azure Data Factory
 
@@ -22,6 +22,8 @@ In dit artikel wordt uitgelegd hoe u gegevens kopieert van en naar een Delta Lak
 
 > [!NOTE]
 > De connector voor de Delta-indeling voor het toewijzen van gegevens stromen is momenteel beschikbaar als open bare preview.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4ALTs]
 
 ## <a name="mapping-data-flow-properties"></a>Eigenschappen van gegevens stroom toewijzen
 
@@ -37,7 +39,7 @@ De onderstaande tabel geeft een lijst van de eigenschappen die worden ondersteun
 | Bestandssysteem | De container/het bestands systeem van de Delta Lake | ja | Tekenreeks | System |
 | Mappad | De rechtstreekse van de Delta Lake | ja | Tekenreeks | folderPath |
 | Compressie type | Het compressie type van de Delta tabel | nee | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | compressionType |
-| Compressie niveau | Kies of de compressie zo snel mogelijk wordt voltooid of dat het resulterende bestand optimaal moet worden gecomprimeerd. | vereist als `compressedType` is opgegeven. | compressionLevel |
+| Compressie niveau | Kies of de compressie zo snel mogelijk wordt voltooid of dat het resulterende bestand optimaal moet worden gecomprimeerd. | vereist als `compressedType` is opgegeven. | `Optimal` of `Fastest` | compressionLevel |
 | Tijd reis | Kies of u een query wilt uitvoeren op een oudere moment opname van een Delta tabel | nee | Query op tijds tempel: tijds tempel <br> Query op versie: geheel getal | timestampAsOf <br> versionAsOf |
 
 #### <a name="import-schema"></a>Schema importeren
@@ -73,7 +75,7 @@ De onderstaande tabel geeft een lijst van de eigenschappen die worden ondersteun
 | Bestandssysteem | De container/het bestands systeem van de Delta Lake | ja | Tekenreeks | System |
 | Mappad | De rechtstreekse van de Delta Lake | ja | Tekenreeks | folderPath |
 | Compressie type | Het compressie type van de Delta tabel | nee | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | compressionType |
-| Compressie niveau | Kies of de compressie zo snel mogelijk wordt voltooid of dat het resulterende bestand optimaal moet worden gecomprimeerd. | vereist als `compressedType` is opgegeven. | compressionLevel |
+| Compressie niveau | Kies of de compressie zo snel mogelijk wordt voltooid of dat het resulterende bestand optimaal moet worden gecomprimeerd. | vereist als `compressedType` is opgegeven. | `Optimal` of `Fastest` | compressionLevel |
 | Vacuum | Geef de drempel waarde voor bewaren op in uren voor oudere versies van de tabel. Een waarde van 0 of minder standaard ingesteld op 30 dagen | ja | Geheel getal | vacuüm |
 | Update methode | Opgeven welke bijwerk bewerkingen zijn toegestaan op Delta Lake. Voor-methoden die niet worden ingevoegd, is een voor gaande trans formatie van rijen vereist voor het markeren van een rij. | ja | `true` of `false` | verwijderd <br> invoegen <br> bij te werken <br> upsertable |
 

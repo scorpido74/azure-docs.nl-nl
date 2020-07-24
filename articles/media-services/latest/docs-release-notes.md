@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: 40a2510fcb6fd5fe51cebc702604e2d09df7b061
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 56c6b3732d0a77580c27f6cc8720b414e8e49d23
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84982166"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038984"
 ---
 # <a name="azure-media-services-v3-documentation-updates"></a>Azure Media Services v3-documentatie-updates
 
@@ -26,7 +26,7 @@ In dit artikel vindt u informatie over de meest recente Media Services v3-docume
 
 ## <a name="june-2020"></a>Juni 2020
 
-* De preview-versie van live video Analytics op IoT Edge openbaar geworden. Zie de informatie in de documentatie [over live video-analyses op IOT Edge](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/) .
+* De preview-versie van live video Analytics op IoT Edge openbaar geworden. Zie de informatie in de documentatie [over live video-analyses op IOT Edge](../live-video-analytics-edge/index.yml) .
 * Nieuwe Quick starts:
 
     * [De portal gebruiken om inhoud te uploaden, coderen en te streamen](manage-assets-quickstart.md)

@@ -1,6 +1,6 @@
 ---
-title: Taak verdeling van hostgroep voor Windows Virtual Desktop-Azure
-description: Methoden voor het verdelen van de hostgroep voor een virtueel-bureaublad omgeving van Windows.
+title: Taak verdeling van hostgroep voor Windows Virtual Desktop (najaar 2019)-Azure
+description: Meer informatie over methoden voor het verdelen van de hostgroep voor een Windows-omgeving met een virtueel bureau blad (een versie van 2019).
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e2bfbd580d0e114cf4a135879340745107183b6a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50819fc6b1e13aeb1c0eddf306ecdfbe8147a44f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82614809"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046259"
 ---
-# <a name="host-pool-load-balancing-methods"></a>Taakverdelingsmethoden voor hostpool
+# <a name="host-pool-load-balancing-methods-fall-2019-release"></a>Methoden voor taak verdeling van hostgroep (najaar 2019 versie)
 
 >[!IMPORTANT]
 >Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../host-pool-load-balancing.md) als u Azure Resource Manager Windows Virtual Desktop-objecten wilt beheren die zijn geïntroduceerd in de update Lente 2020.

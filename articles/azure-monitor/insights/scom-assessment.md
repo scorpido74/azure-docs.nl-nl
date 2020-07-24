@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2018
-ms.openlocfilehash: 94251dfa2d9fa732912ed20d825e64f542d79188
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b71c6d8e0890bde377fae761f4486803229ceff4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80055416"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045686"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>De omgeving optimaliseren met behulp van System Center Operations Manager-statuscontrole (preview)
 
@@ -64,7 +64,7 @@ Gegevens worden verzameld op de beheer server en elke zeven dagen doorgestuurd n
 
 ## <a name="operations-manager-run-as-accounts-for-log-analytics"></a>Uitvoeren als-accounts van Operations Manager voor Log Analytics
 
-Log Analytics bouwt voort op Management Packs voor werk belastingen om services te kunnen toevoegen. Elke workload vereist systeemspecifieke bevoegdheden om Management Packs uit te voeren in een andere beveiligings context, zoals een domein gebruikers account. Configureer een Operations Manager uitvoeren als-account met bevoegde referenties. Zie [een uitvoeren als-account maken](https://technet.microsoft.com/library/hh321655(v=sc.12).aspx) in de Operations Manager documentatie voor meer informatie.
+Log Analytics bouwt voort op Management Packs voor werk belastingen om services te kunnen toevoegen. Elke workload vereist systeemspecifieke bevoegdheden om Management Packs uit te voeren in een andere beveiligings context, zoals een domein gebruikers account. Configureer een Operations Manager uitvoeren als-account met bevoegde referenties. Zie [een uitvoeren als-account maken](/previous-versions/system-center/system-center-2012-R2/hh321655(v=sc.12)) in de Operations Manager documentatie voor meer informatie.
 
 Gebruik de volgende informatie om de Operations Manager uitvoeren als-account voor System Center Operations Manager-statuscontrole in te stellen.
 

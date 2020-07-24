@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 04/28/2020
 ms.reviewer: sdash
-ms.openlocfilehash: 8f03099cf2890882a1c1d4ba9d69fcb64d0db600
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8544ad292d9e8982e236566fb53189c70922232c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82233955"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041384"
 ---
 # <a name="troubleshooting"></a>Problemen oplossen
 
@@ -35,7 +35,7 @@ Dit artikel helpt u bij het oplossen van veelvoorkomende problemen die zich kunn
 |----|---------|
 |Een verbindings poging is mislukt omdat de verbonden partij na een bepaalde tijd niet goed heeft gereageerd  | Test agents op bepaalde locaties worden geblokkeerd door een firewall.|
 |    |Het opnieuw routeren van bepaalde IP-adressen vindt plaats via (load balancers, geo Traffic managers, Azure Express route). 
-|    |Als u Azure ExpressRoute gebruikt, zijn er scenario's waarin pakketten kunnen worden verwijderd in gevallen waarin [asymmetrische route ring plaatsvindt](https://docs.microsoft.com/azure/expressroute/expressroute-asymmetric-routing).|
+|    |Als u Azure ExpressRoute gebruikt, zijn er scenario's waarin pakketten kunnen worden verwijderd in gevallen waarin [asymmetrische route ring plaatsvindt](../../expressroute/expressroute-asymmetric-routing.md).|
 
 ## <a name="test-failure-with-a-protocol-violation-error"></a>Fout in de test fout met een schending van het Protocol
 
@@ -66,11 +66,11 @@ Controleer de configuratie van de klassieke waarschuwingen om te bevestigen dat 
 
 ### <a name="i-did-not-receive-the-webhook-notification"></a>Ik heb de webhook-melding niet ontvangen?
 
-Controleer of de toepassing die de webhook-melding ontvangt, beschikbaar is en de webhook-aanvragen verwerkt. Zie [voor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook) meer informatie.
+Controleer of de toepassing die de webhook-melding ontvangt, beschikbaar is en de webhook-aanvragen verwerkt. Zie [voor](../platform/alerts-log-webhook.md) meer informatie.
 
 ### <a name="i-am-getting--403-forbidden-errors-what-does-this-mean"></a>Ik ontvang 403 verboden fouten, wat betekent dit?
 
-Deze fout geeft aan dat u Firewall uitzonderingen moet toevoegen om ervoor te zorgen dat de beschik bare agents uw doel-URL testen. Raadpleeg het [artikel over IP-uitzonde ringen](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses#availability-tests)voor een volledige lijst met IP-adressen van de agent die u wilt toestaan.
+Deze fout geeft aan dat u Firewall uitzonderingen moet toevoegen om ervoor te zorgen dat de beschik bare agents uw doel-URL testen. Raadpleeg het [artikel over IP-uitzonde ringen](./ip-addresses.md#availability-tests)voor een volledige lijst met IP-adressen van de agent die u wilt toestaan.
 
 ### <a name="intermittent-test-failure-with-a-protocol-violation-error"></a>Onregelmatige testfout met een protocolfout?
 
@@ -97,7 +97,7 @@ De twee voorwaarden kunnen door elkaar worden gebruikt. 'Beschikbaarheidstest' i
    Er zijn twee mogelijke oplossingen:
 
    * Configureer uw firewall om binnenkomende aanvragen van de [IP-adressen van onze webtestagents](../../azure-monitor/app/ip-addresses.md) toe te staan.
-   * Schrijf uw eigen code om uw interne server periodiek te testen. Voer de code uit als achtergrondproces op een testserver achter de firewall. De resultaten van het testproces kunnen worden verzonden naar Application Insights door de API [TrackAvailability()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) te gebruiken in het SDK-kernpakket. Hiervoor moet uw testserver uitgaande toegang hebben tot het opname-eindpunt van Application Insights, maar dit is een veel kleiner beveiligingsrisico dan wanneer u binnenkomende aanvragen toestaat. De resultaten worden weer gegeven op de Blades voor beschik baarheids webtests, maar de ervaring is enigszins vereenvoudigd, wat beschikbaar is voor testen die zijn gemaakt via de portal. Aangepaste beschikbaarheids tests worden ook weer gegeven als beschikbaarheids resultaten in analyses, zoek acties en metrische gegevens.
+   * Schrijf uw eigen code om uw interne server periodiek te testen. Voer de code uit als achtergrondproces op een testserver achter de firewall. De resultaten van het testproces kunnen worden verzonden naar Application Insights door de API [TrackAvailability()](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) te gebruiken in het SDK-kernpakket. Hiervoor moet uw testserver uitgaande toegang hebben tot het opname-eindpunt van Application Insights, maar dit is een veel kleiner beveiligingsrisico dan wanneer u binnenkomende aanvragen toestaat. De resultaten worden weer gegeven op de Blades voor beschik baarheids webtests, maar de ervaring is enigszins vereenvoudigd, wat beschikbaar is voor testen die zijn gemaakt via de portal. Aangepaste beschikbaarheids tests worden ook weer gegeven als beschikbaarheids resultaten in analyses, zoek acties en metrische gegevens.
 
 ### <a name="uploading-a-multi-step-web-test-fails"></a>Het uploaden van een webtest met meerdere stappen mislukt
 

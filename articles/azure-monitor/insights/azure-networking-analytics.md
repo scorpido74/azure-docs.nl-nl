@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 1084be9a63e023257326de824ea200dcc1be74d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 96df96fd6145d1c6e58eb5dfc672ec324da75202
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83684640"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041598"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure-netwerk bewakings oplossingen in Azure Monitor
 
@@ -23,18 +24,18 @@ Azure Monitor biedt de volgende oplossingen voor het bewaken van uw netwerken:
     * Azure-toepassing gateway-logboeken
     * Metrische gegevens van Azure-toepassing gateway
 * Oplossingen voor het bewaken en controleren van de netwerk activiteit in uw Cloud netwerk
-    * [Traffic Analytics](https://docs.microsoft.com/azure/networking/network-monitoring-overview#traffic-analytics) 
+    * [Traffic Analytics](../../networking/network-monitoring-overview.md#traffic-analytics) 
     * Azure Analyse van netwerkbeveiligingsgroep
 
 ## <a name="network-performance-monitor-npm"></a>Netwerkprestatiemeter (NPM)
 
-De oplossing voor het beheer van [Netwerkprestatiemeter](https://docs.microsoft.com/azure/networking/network-monitoring-overview) is een netwerk bewakings oplossing, die de status, Beschik baarheid en bereikbaarheid van netwerken bewaakt.  Het wordt gebruikt voor het bewaken van de connectiviteit tussen:
+De oplossing voor het beheer van [Netwerkprestatiemeter](../../networking/network-monitoring-overview.md) is een netwerk bewakings oplossing, die de status, Beschik baarheid en bereikbaarheid van netwerken bewaakt.  Het wordt gebruikt voor het bewaken van de connectiviteit tussen:
 
 * Open bare Cloud en on-premises
 * Data centers en gebruikers locaties (filialen)
 * Subnetten die als host fungeren voor verschillende lagen van een toepassing met meerdere lagen.
 
-Zie [Netwerkprestatiemeter](https://docs.microsoft.com/azure/networking/network-monitoring-overview)voor meer informatie.
+Zie [Netwerkprestatiemeter](../../networking/network-monitoring-overview.md)voor meer informatie.
 
 ## <a name="azure-application-gateway-and-network-security-group-analytics"></a>Analyse van Azure-toepassing gateway en netwerk beveiligings groep
 Voor het gebruik van de oplossingen:

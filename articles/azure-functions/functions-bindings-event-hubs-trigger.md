@@ -6,15 +6,16 @@ ms.assetid: daf81798-7acc-419a-bc32-b5a41c6db56b
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: b046017a4e6ae2eb08271792ed708e558dc23093
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72312df41a74ac8f2321b31287cbb3cd87d1a04b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79277672"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041737"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Event Hubs-bindingen voor Azure Functions
 
-In dit artikel wordt uitgelegd hoe u kunt werken met de [Azure Event hubs](../event-hubs/event-hubs-what-is-event-hubs.md) -trigger voor Azure functions. Azure Functions ondersteunt trigger-en [uitvoer bindingen](functions-bindings-event-hubs-output.md) voor Event hubs.
+In dit artikel wordt uitgelegd hoe u kunt werken met de [Azure Event hubs](../event-hubs/event-hubs-about.md) -trigger voor Azure functions. Azure Functions ondersteunt trigger-en [uitvoer bindingen](functions-bindings-event-hubs-output.md) voor Event hubs.
 
 Zie het [overzicht](functions-bindings-event-hubs.md)voor meer informatie over de installatie-en configuratie details.
 

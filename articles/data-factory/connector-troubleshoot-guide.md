@@ -5,15 +5,16 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 01/09/2020
+ms.date: 07/20/2020
 ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: a1b2f74af02db1560dbcdd0bf0c72976dc6dcea8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8edb36345de4516077b3c857cff33389062cc7f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84022330"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87044570"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Problemen met Azure Data Factory-connectors oplossen
 
@@ -156,12 +157,28 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 - **Bericht**:`Error occurred when trying to upload a file. It's possible because you have multiple concurrent copy activities runs writing to the same file '%name;'. Check your ADF configuration.`
 
 
-### <a name="error-code--adlsgen2timeouterror"></a>Fout code: AdlsGen2TimeoutError
+### <a name="error-code-adlsgen2timeouterror"></a>Fout code: AdlsGen2TimeoutError
 
 - **Bericht**:`Request to ADLS Gen2 account '%account;' met timeout error. It is mostly caused by the poor network between the Self-hosted IR machine and the ADLS Gen2 account. Check the network to resolve such error.`
 
 
 ## <a name="azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1
+
+### <a name="error-message-the-underlying-connection-was-closed-could-not-establish-trust-relationship-for-the-ssltls-secure-channel"></a>Fout bericht: de onderliggende verbinding is gesloten: kan geen vertrouwens relatie tot stand brengen voor het beveiligde SSL/TLS-kanaal.
+
+- **Symptomen**: de Kopieer activiteit mislukt met de volgende fout: 
+
+    ```
+    Message: Failure happened on 'Sink' side. ErrorCode=UserErrorFailedFileOperation,'Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Upload file failed at path STAGING/PLANT/INDIARENEWABLE/LiveData/2020/01/14\\20200114-0701-oem_gibtvl_mannur_data_10min.csv.,Source=Microsoft.DataTransfer.ClientLibrary,''Type=System.Net.WebException,Message=The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel.,Source=System,''Type=System.Security.Authentication.AuthenticationException,Message=The remote certificate is invalid according to the validation procedure.,Source=System,'.
+    ```
+
+- **Oorzaak**: de validatie van het certificaat is mislukt tijdens de TLS-handshake.
+
+- **Oplossing**: tijdelijke oplossing: gebruik gefaseerde kopie om de TLS-validatie voor ADLS gen1 over te slaan. U dient dit probleem te reproduceren en netmon-tracering te verzamelen en vervolgens uw netwerk team te laten controleren of de lokale netwerk configuratie volgt op [dit artikel](self-hosted-integration-runtime-troubleshoot-guide.md#how-to-collect-netmon-trace).
+
+
+    ![Problemen met ADLS Gen1 oplossen](./media/connector-troubleshoot-guide/adls-troubleshoot.png)
+
 
 ### <a name="error-message-the-remote-server-returned-an-error-403-forbidden"></a>Fout bericht: de externe server heeft een fout geretourneerd: (403) verboden
 
@@ -221,6 +238,7 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 - **Oorzaak**: als het fout bericht ' InvalidOperationException ' bevat, wordt dit meestal veroorzaakt door ongeldige invoer gegevens.
 
 - **Aanbeveling**: als u wilt identificeren in welke rij het probleem zich voordoet, schakelt u de functie fout tolerantie in op Kopieer activiteit, waarmee u problematische rij (en) kunt omleiden naar de opslag voor verdere onderzoek. Verwijzings document: https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance .
+
 
 
 ### <a name="error-code--sqlunauthorizedaccess"></a>Fout code: SqlUnauthorizedAccess
@@ -371,7 +389,7 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 - **Oplossing**: Stel in Sink voor kopieer activiteiten onder poly base-instellingen de optie**type standaard gebruiken**in op ONWAAR.
 
-### <a name="error-message-java-exception-messagehdfsbridgecreaterecordreader"></a>Fout bericht: Java-uitzonderings bericht: HdfsBridge:: CreateRecordReader
+### <a name="error-message-java-exception-message-hdfsbridgecreaterecordreader"></a>Fout bericht: Java-uitzonderings bericht: HdfsBridge:: CreateRecordReader
 
 - **Symptomen**: u kopieert gegevens naar Azure SQL data warehouse met poly base en de volgende fout wordt weer gegeven:
 
@@ -676,7 +694,7 @@ Probeer deze bronnen voor meer informatie over probleem oplossing:
 
 *  [Data Factory Blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Data Factory functie aanvragen](https://feedback.azure.com/forums/270578-data-factory)
-*  [Azure-Video's](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
+*  [Azure-video's](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [Microsoft Q&A-vragenpagina](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
 *  [Stack Overflow forum voor Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Twitter-informatie over Data Factory](https://twitter.com/hashtag/DataFactory)

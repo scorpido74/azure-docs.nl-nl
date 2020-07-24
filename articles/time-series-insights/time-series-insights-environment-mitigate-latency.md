@@ -5,20 +5,21 @@ ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 01/21/2020
+ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2812b535c7aef7987db7106bfa6b07e15a1b61c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9fa47c81aede9de5d083f16f9e1705f687ad39a4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81263383"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046429"
 ---
-# <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Beperking controleren en beperken om de latentie in Azure Time Series Insights te verminderen
+# <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights-gen1"></a>Beperking controleren en beperken om de latentie in Azure Time Series Insights gen1 te verminderen
 
 Wanneer de hoeveelheid binnenkomende gegevens de configuratie van uw omgeving overschrijdt, kan er latentie of beperking in Azure Time Series Insights optreden.
 
@@ -26,14 +27,14 @@ U kunt latentie en beperking voor komen door uw omgeving correct te configureren
 
 U hebt hoogstwaarschijnlijk latentie en beperking bij het volgende:
 
-- Voeg een gebeurtenis bron toe die oude gegevens bevat die mogelijk de toegewezen ingangs snelheden overschrijden (Time Series Insights moet worden opgevangen).
+- Voeg een gebeurtenis bron toe die oude gegevens bevat die mogelijk de toegewezen ingangs snelheden overschrijden (Azure Time Series Insights moet worden opgevangen).
 - Voeg meer gebeurtenis bronnen toe aan een omgeving, wat resulteert in een piek van aanvullende gebeurtenissen (wat de capaciteit van uw omgeving kan overschrijden).
-- Grote hoeveel heden historische gebeurtenissen naar een gebeurtenis bron pushen, wat resulteert in een vertraging (Time Series Insights moet worden opgevangen).
+- Grote hoeveel heden historische gebeurtenissen naar een gebeurtenis bron pushen, wat resulteert in een vertraging (Azure Time Series Insights moet worden opgevangen).
 - Koppel referentie gegevens met telemetrie, wat resulteert in een grotere gebeurtenis grootte. De Maxi maal toegestane pakket grootte is 32 KB; gegevens pakketten groter dan 32 KB worden afgekapt.
 
 ## <a name="video"></a>Video
 
-### <a name="learn-about-time-series-insights-data-ingress-behavior-and-how-to-plan-for-itbr"></a>Meer informatie over het gedrag van Time Series Insights voor het inkomen van gegevens en hoe u het kunt plannen.</br>
+### <a name="learn-about-azure-time-series-insights-data-ingress-behavior-and-how-to-plan-for-itbr"></a>Meer informatie over het gedrag van Azure Time Series Insights voor het inkomen van gegevens en hoe u het kunt plannen.</br>
 
 > [!VIDEO https://www.youtube.com/embed/npeZLAd9lxo]
 
@@ -41,9 +42,9 @@ U hebt hoogstwaarschijnlijk latentie en beperking bij het volgende:
 
 Waarschuwingen kunnen u helpen bij het vaststellen en oplossen van latentie problemen die in uw omgeving optreden.
 
-1. Selecteer uw Time Series Insights omgeving in het Azure Portal. Selecteer vervolgens **waarschuwingen**.
+1. Selecteer uw Azure Time Series Insights omgeving in het Azure Portal. Selecteer vervolgens **waarschuwingen**.
 
-   [![Een waarschuwing toevoegen aan uw Time Series Insights omgeving](media/environment-mitigate-latency/mitigate-latency-add-alert.png)](media/environment-mitigate-latency/mitigate-latency-add-alert.png#lightbox)
+   [![Een waarschuwing toevoegen aan uw Azure Time Series Insights omgeving](media/environment-mitigate-latency/mitigate-latency-add-alert.png)](media/environment-mitigate-latency/mitigate-latency-add-alert.png#lightbox)
 
 1. Selecteer **+ Nieuwe waarschuwingsregel**. Het deel venster **regel maken** wordt weer gegeven. Selecteer **toevoegen** onder **voor waarde**.
 
@@ -65,7 +66,7 @@ Waarschuwingen kunnen u helpen bij het vaststellen en oplossen van latentie prob
    |**Tijds vertraging van ontvangen berichten**   |  Verschil in seconden tussen het tijdstip waarop het bericht in de bron van de gebeurtenis in de wachtrij is geplaatst en de tijd die wordt verwerkt in binnenkomend verkeer.      |
    |**Vertraging van ontvangen berichten aantal aangekomen items**   |  Het verschil tussen het Volg nummer van de laatste bericht in de bron partitie en het Volg nummer van het bericht dat wordt verwerkt in ingress.      |
 
-   Selecteer **Voltooid**.
+   Selecteer **Gereed**.
 
 1. Nadat u de gewenste signaal logica hebt geconfigureerd, controleert u de gekozen waarschuwings regel visueel.
 
@@ -73,7 +74,7 @@ Waarschuwingen kunnen u helpen bij het vaststellen en oplossen van latentie prob
 
 ## <a name="throttling-and-ingress-management"></a>Beperkings-en ingangs beheer
 
-* Als u een beperking ondervindt, wordt er een waarde voor de *tijds vertraging van ontvangen berichten weer gegeven* . u weet hoeveel seconden achter uw time series Insights-omgeving afkomstig zijn van de werkelijke tijd die het bericht ophaalt uit de bron van de gebeurtenis (exclusief indexerings tijd van appx. 30-60 seconden).  
+* Als u een beperking ondervindt, wordt een waarde voor de *tijds vertraging van ontvangen berichten weer gegeven* , met de melding dat het aantal seconden achter uw Azure time series Insights-omgeving afkomstig is van de werkelijke tijd dat het bericht de gebeurtenis bron ophaalt (exclusief indexerings tijd van appx). 30-60 seconden).  
 
   De vertraging bij het *Ontvangen van berichten* van het aantal inkomende berichten moet ook een waarde hebben, zodat u kunt bepalen hoeveel achterstanden er achter u zijn.  De eenvoudigste manier om aan de slag te gaan is om de capaciteit van uw omgeving te verg Roten tot een grootte waardoor u het verschil kunt oplossen.  
 
@@ -83,7 +84,7 @@ Waarschuwingen kunnen u helpen bij het vaststellen en oplossen van latentie prob
 
   Als u bijvoorbeeld drie S1-eenheden hebt ingericht (of 2100 gebeurtenissen per minuut ingangs capaciteit), kunt u voor twee uur een waarschuwing voor de **opgeslagen gebeurtenissen** van de ingang instellen voor >= 1900 gebeurtenissen. Als u deze drempel waarde voortdurend overschrijdt en u de waarschuwing hebt geactiveerd, bent u waarschijnlijk onder provisiond.  
 
-* Als u vermoedt dat u wordt vertraagd, kunt u uw **ontvangen berichten** vergelijken met de egressed-berichten van uw gebeurtenis bron.  Als binnenkomend in uw event hub groter is dan uw **berichten ontvangen**, worden uw time series Insights waarschijnlijk beperkt.
+* Als u vermoedt dat u wordt vertraagd, kunt u uw **ontvangen berichten** vergelijken met de egressed-berichten van uw gebeurtenis bron.  Als binnenkomend in uw event hub groter is dan uw **berichten ontvangen**, worden uw Azure time series Insights waarschijnlijk beperkt.
 
 ## <a name="improving-performance"></a>Prestaties verbeteren
 
@@ -93,6 +94,6 @@ U kunt latentie en beperking voor komen door uw omgeving correct te configureren
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [het diagnosticeren en oplossen van problemen in uw time series Insights omgeving](time-series-insights-diagnose-and-solve-problems.md).
+- Meer informatie over [het diagnosticeren en oplossen van problemen in uw Azure time series Insights omgeving](time-series-insights-diagnose-and-solve-problems.md).
 
-- Meer informatie [over het schalen van uw time series Insights-omgeving](time-series-insights-how-to-scale-your-environment.md).
+- Meer informatie [over het schalen van uw Azure time series Insights-omgeving](time-series-insights-how-to-scale-your-environment.md).

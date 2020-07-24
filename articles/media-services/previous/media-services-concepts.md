@@ -13,23 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: dc39ef8f3d72b2b8fc5aa55aacb2e2503b052023
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ca1b8b453be433f7db428f3b256677b9945ce40
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82160219"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038899"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services concepten 
 
 > [!NOTE]
-> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](../latest/index.yml). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
 In dit onderwerp vindt u een overzicht van de belangrijkste Media Services concepten.
 
-## <a name="assets-and-storage"></a><a id="assets"/>Activa en opslag
+## <a name="assets-and-storage"></a><a name="assets"></a>Activa en opslag
 ### <a name="assets"></a>Assets
-Een [Asset](https://docs.microsoft.com/rest/api/media/operations/asset) bevat digitale bestanden (inclusief video, audio, afbeeldingen, miniatuur verzamelingen, tekst sporen en ondertitelings bestanden) en de meta gegevens over deze bestanden. Nadat de digitale bestanden zijn geüpload naar een Asset, kunnen ze worden gebruikt in de Media Services encoding-en streaming-werk stromen.
+Een [Asset](/rest/api/media/operations/asset) bevat digitale bestanden (inclusief video, audio, afbeeldingen, miniatuur verzamelingen, tekst sporen en ondertitelings bestanden) en de meta gegevens over deze bestanden. Nadat de digitale bestanden zijn geüpload naar een Asset, kunnen ze worden gebruikt in de Media Services encoding-en streaming-werk stromen.
 
 Een Asset wordt toegewezen aan een BLOB-container in het Azure Storage-account en de bestanden in de Asset worden opgeslagen als blok-blobs in die container. Pagina-blobs worden niet ondersteund door Azure Media Services.
 
@@ -39,7 +39,7 @@ Wanneer u bepaalt welke media-inhoud moet worden geüpload en opgeslagen in een 
 * Een activum mag niet meerdere vertoningen of bewerkingen van een audiovisueel bestand bevatten. Een voor beeld van een onjuist gebruik van een activum zou proberen om meer dan één TV-aflevering, advertentie of meerdere camera hoeken op te slaan vanuit één productie binnen een Asset. Het opslaan van meerdere weer gaven of bewerkingen van een audiovisueel bestand in een Asset kan leiden tot problemen met het indienen van coderings taken, het streamen en beveiligen van de levering van het activum later in de werk stroom.  
 
 ### <a name="asset-file"></a>Asset-bestand
-Een [AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) vertegenwoordigt een daad werkelijk video-of audio bestand dat is opgeslagen in een BLOB-container. Een activum bestand is altijd gekoppeld aan een Asset en een Asset kan een of meer bestanden bevatten. De Media Services encoder-taak mislukt als een object van een activa bestand niet is gekoppeld aan een digitaal bestand in een BLOB-container.
+Een [AssetFile](/rest/api/media/operations/assetfile) vertegenwoordigt een daad werkelijk video-of audio bestand dat is opgeslagen in een BLOB-container. Een activum bestand is altijd gekoppeld aan een Asset en een Asset kan een of meer bestanden bevatten. De Media Services encoder-taak mislukt als een object van een activa bestand niet is gekoppeld aan een digitaal bestand in een BLOB-container.
 
 Het **AssetFile** -exemplaar en het daad werkelijke media bestand zijn twee verschillende objecten. Het AssetFile-exemplaar bevat meta gegevens over het Media bestand, terwijl het Media bestand de daad werkelijke media-inhoud bevat.
 
@@ -62,7 +62,7 @@ Als u een door opslag versleutelde Asset wilt leveren, moet u het leverings bele
 **EnvelopeEncryptionProtected** : gebruik deze optie als u wilt beveiligen (of upload al beveiligd) http live streaming (HLS) versleuteld met Advanced Encryption Standard (AES). Als u HLS al versleuteld met AES uploadt, moet deze zijn versleuteld met trans formatie Manager.
 
 ### <a name="access-policy"></a>Toegangsbeleid
-Een [AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy) definieert machtigingen (zoals lezen, schrijven en lijst) en de duur van toegang tot een Asset. Normaal gesp roken geeft u een AccessPolicy-object door aan een Locator die vervolgens wordt gebruikt voor toegang tot de bestanden in een Asset.
+Een [AccessPolicy](/rest/api/media/operations/accesspolicy) definieert machtigingen (zoals lezen, schrijven en lijst) en de duur van toegang tot een Asset. Normaal gesp roken geeft u een AccessPolicy-object door aan een Locator die vervolgens wordt gebruikt voor toegang tot de bestanden in een Asset.
 
 >[!NOTE]
 >Er geldt een limiet van 1.000.000 beleidsregels voor verschillende AMS-beleidsitems (bijvoorbeeld voor Locator-beleid of ContentKeyAuthorizationPolicy). U moet dezelfde beleids-id gebruiken als u altijd dezelfde dagen/toegangsmachtigingen gebruikt, bijvoorbeeld beleidsregels voor locators die zijn bedoeld om gedurende een lange periode gehandhaafd te blijven (niet-upload-beleidsregels). Raadpleeg [dit](media-services-dotnet-manage-entities.md#limit-access-policies) onderwerp voor meer informatie.
@@ -75,8 +75,8 @@ Een BLOB-container biedt een groepering van een set blobs. BLOB-containers worde
 > 
 > 
 
-### <a name="locators"></a><a id="locators"/>Locators
-[Locator](https://docs.microsoft.com/rest/api/media/operations/locator)s bieden een toegangs punt voor toegang tot de bestanden in een Asset. Een toegangs beleid wordt gebruikt voor het definiëren van de machtigingen en de duur die een client heeft voor toegang tot een bepaalde Asset. Locators kunnen een veel-op-een-relatie hebben met een toegangs beleid, zodat verschillende Locators verschillende start tijden en verbindings typen kunnen leveren aan verschillende clients, terwijl alle dezelfde machtigingen en duur instellingen worden gebruikt. vanwege een beperking van een gedeeld toegangs beleid dat door Azure Storage-services is ingesteld, kunt u echter niet meer dan vijf unieke Locators koppelen aan een bepaalde Asset. 
+### <a name="locators"></a><a name="locators"></a>Locators
+[Locator](/rest/api/media/operations/locator)s bieden een toegangs punt voor toegang tot de bestanden in een Asset. Een toegangs beleid wordt gebruikt voor het definiëren van de machtigingen en de duur die een client heeft voor toegang tot een bepaalde Asset. Locators kunnen een veel-op-een-relatie hebben met een toegangs beleid, zodat verschillende Locators verschillende start tijden en verbindings typen kunnen leveren aan verschillende clients, terwijl alle dezelfde machtigingen en duur instellingen worden gebruikt. vanwege een beperking van een gedeeld toegangs beleid dat door Azure Storage-services is ingesteld, kunt u echter niet meer dan vijf unieke Locators koppelen aan een bepaalde Asset. 
 
 Media Services ondersteunt twee typen Locators: OnDemandOrigin-Locators, die worden gebruikt voor het streamen van media (bijvoorbeeld MPEG DASH, HLS of Smooth Streaming) of het progressief downloaden van media en SAS URL-Locators, die worden gebruikt voor het uploaden of downloaden van media bestanden to\from Azure Storage. 
 
@@ -84,12 +84,12 @@ Media Services ondersteunt twee typen Locators: OnDemandOrigin-Locators, die wor
 >De lijst machtiging (AccessPermissions. List) moet niet worden gebruikt bij het maken van een OnDemandOrigin-Locator. 
 
 ### <a name="storage-account"></a>Storage-account
-Alle toegang tot Azure Storage wordt uitgevoerd via een opslag account. Een media service-account kan worden gekoppeld aan een of meer opslag accounts. Een account kan een onbeperkt aantal containers bevatten, zolang de totale grootte ervan onder 500TB per opslag account is.  Media Services biedt hulp middelen op het niveau van de SDK waarmee u meerdere opslag accounts kunt beheren en taak verdeling kunt Toep assen op de distributie van uw assets tijdens het uploaden naar deze accounts op basis van metrische gegevens of wille keurige distributie. Zie werken met [Azure Storage](https://msdn.microsoft.com/library/azure/dn767951.aspx)voor meer informatie. 
+Alle toegang tot Azure Storage wordt uitgevoerd via een opslag account. Een media service-account kan worden gekoppeld aan een of meer opslag accounts. Een account kan een onbeperkt aantal containers bevatten, zolang de totale grootte ervan onder 500TB per opslag account is.  Media Services biedt hulp middelen op het niveau van de SDK waarmee u meerdere opslag accounts kunt beheren en taak verdeling kunt Toep assen op de distributie van uw assets tijdens het uploaden naar deze accounts op basis van metrische gegevens of wille keurige distributie. Zie werken met [Azure Storage](/previous-versions/azure/dn767951(v=azure.100))voor meer informatie. 
 
 ## <a name="jobs-and-tasks"></a>Taken
-Een [taak](https://docs.microsoft.com/rest/api/media/operations/job) wordt meestal gebruikt voor het verwerken van een audio-of video presentatie (bijvoorbeeld index of code ring). Als u meerdere Video's verwerkt, maakt u een taak voor elke video die moet worden gecodeerd.
+Een [taak](/rest/api/media/operations/job) wordt meestal gebruikt voor het verwerken van een audio-of video presentatie (bijvoorbeeld index of code ring). Als u meerdere Video's verwerkt, maakt u een taak voor elke video die moet worden gecodeerd.
 
-Een taak bevat meta gegevens over de verwerking die moet worden uitgevoerd. Elke taak bevat een of meer [taken](https://docs.microsoft.com/rest/api/media/operations/task)die een Atomic-verwerkings taak opgeven, de invoer assets, uitvoer assets, een media processor en de bijbehorende instellingen. Taken in een taak kunnen samen worden gekoppeld, waarbij het uitvoer activum van een taak wordt gegeven als het invoer activum voor de volgende taak. Op deze manier kan één taak alle benodigde bewerkingen voor een media presentatie bevatten.
+Een taak bevat meta gegevens over de verwerking die moet worden uitgevoerd. Elke taak bevat een of meer [taken](/rest/api/media/operations/task)die een Atomic-verwerkings taak opgeven, de invoer assets, uitvoer assets, een media processor en de bijbehorende instellingen. Taken in een taak kunnen samen worden gekoppeld, waarbij het uitvoer activum van een taak wordt gegeven als het invoer activum voor de volgende taak. Op deze manier kan één taak alle benodigde bewerkingen voor een media presentatie bevatten.
 
 ## <a name="encoding"></a><a id="encoding"></a>Encoding
 Azure Media Services biedt meerdere opties voor het coderen van media in de Cloud.
@@ -115,14 +115,14 @@ In Azure Media Services vertegenwoordigt een kanaal een pijp lijn voor het verwe
 * Een stream met één bitsnelheid (in een van de volgende indelingen: RTMP of Smooth Streaming (gefragmenteerde MP4)) wordt verzonden naar het kanaal dat is ingeschakeld voor het uitvoeren van Live code ring met Media Services. Het kanaal codeert de inkomende single-bitrate stream vervolgens live naar een (adaptieve) multi-bitrate videostream. Desgevraagd levert Media Services de stream aan klanten.
 
 ### <a name="channel"></a>Kanaal
-In Media Services zijn [Channel](https://docs.microsoft.com/rest/api/media/operations/channel)s verantwoordelijk voor het verwerken van live streaming-inhoud. Een kanaal biedt een invoer eindpunt (opname-URL) dat u vervolgens verstrekt aan een live-transcodeer. Het kanaal ontvangt Live-invoer stromen van de Live-transcodeer en maakt deze beschikbaar voor streaming via een of meer StreamingEndpoints. Kanalen bieden ook een preview-eind punt (Preview-URL) die u gebruikt om uw stroom te bekijken en te valideren vóór verdere verwerking en levering.
+In Media Services zijn [Channel](/rest/api/media/operations/channel)s verantwoordelijk voor het verwerken van live streaming-inhoud. Een kanaal biedt een invoer eindpunt (opname-URL) dat u vervolgens verstrekt aan een live-transcodeer. Het kanaal ontvangt Live-invoer stromen van de Live-transcodeer en maakt deze beschikbaar voor streaming via een of meer StreamingEndpoints. Kanalen bieden ook een preview-eind punt (Preview-URL) die u gebruikt om uw stroom te bekijken en te valideren vóór verdere verwerking en levering.
 
 U kunt de opname-URL en de voor beeld-URL ophalen wanneer u het kanaal maakt. Om deze Url's op te halen, hoeft het kanaal niet de status gestart te hebben. Wanneer u klaar bent om gegevens van een live-transcodeer naar het kanaal te pushen, moet het kanaal worden gestart. Zodra de Live-code ring begint met het opnemen van gegevens, kunt u een voor beeld van de stroom bekijken.
 
 Elk Media Services-account kan meerdere kanalen, meerdere Program Ma's en meerdere StreamingEndpoints bevatten. Afhankelijk van de behoefte aan band breedte en beveiliging, kunnen StreamingEndpoint-services worden toegewezen aan een of meer kanalen. Elk StreamingEndpoint kan uit elk kanaal halen.
 
 ### <a name="program-event"></a>Programma (gebeurtenis)
-Met een [programma (gebeurtenis)](https://docs.microsoft.com/rest/api/media/operations/program) kunt u het publiceren en opslaan van segmenten in een live stream beheren. Kanalen beheren Program Ma's (gebeurtenissen). De kanaal-en programma relatie is vergelijkbaar met traditionele media, waarbij een kanaal een constante stroom inhoud heeft en een programma een bepaalde time-outgebeurtenis op dat kanaal heeft.
+Met een [programma (gebeurtenis)](/rest/api/media/operations/program) kunt u het publiceren en opslaan van segmenten in een live stream beheren. Kanalen beheren Program Ma's (gebeurtenissen). De kanaal-en programma relatie is vergelijkbaar met traditionele media, waarbij een kanaal een constante stroom inhoud heeft en een programma een bepaalde time-outgebeurtenis op dat kanaal heeft.
 U kunt het aantal uren opgeven dat u de opgenomen inhoud voor het programma wilt behouden door de eigenschap **ArchiveWindowLength** in te stellen. Deze waarde kan worden ingesteld van minimaal 5 minuten tot maximaal 25 uur.
 
 ArchiveWindowLength bepaalt ook de maximale hoeveelheid tijd die clients vanaf de huidige Live positie op tijd kunnen zoeken. Programma's kunnen in de opgegeven tijdsduur worden uitgevoerd, maar de inhoud die achter de lengte van het venster valt, wordt altijd verwijderd. De waarde van deze eigenschap bepaalt ook hoe lang de clientmanifesten kunnen groeien.
@@ -160,7 +160,7 @@ Raadpleeg voor meer informatie de volgende artikelen:
 - [Beveiligen met PlayReady/Widevine](media-services-protect-with-playready-widevine.md)
 
 ## <a name="delivering"></a>Leveren
-### <a name="dynamic-packaging"></a><a id="dynamic_packaging"/>Dynamische verpakking
+### <a name="dynamic-packaging"></a><a name="dynamic_packaging"></a>Dynamische verpakking
 Wanneer u werkt met Media Services, wordt aanbevolen om uw mezzanine-bestanden te coderen in een adaptieve bitsnelheid MP4 en de set vervolgens te converteren naar de gewenste indeling met behulp van de [dynamische verpakking](media-services-dynamic-packaging-overview.md).
 
 ### <a name="streaming-endpoint"></a>Streaming-eindpunt
@@ -180,7 +180,7 @@ Standaard kunt u Maxi maal 2 streaming-eind punten in uw Media Services-account 
 Er worden alleen kosten in rekening gebracht wanneer uw StreamingEndpoint actief is.
 
 ### <a name="asset-delivery-policy"></a>Leverings beleid voor assets
-Een van de stappen in de Media Services werk stroom voor het leveren van inhoud is het configureren [van leverings beleid voor assets](https://docs.microsoft.com/rest/api/media/operations/assetdeliverypolicy)die u wilt streamen. Het beleid voor levering van activa vertelt Media Services hoe u wilt dat uw activa worden geleverd: in het streaming-protocol moet uw asset dynamisch worden verpakt (bijvoorbeeld MPEG DASH, HLS, Smooth Streaming of alle), ongeacht of u uw activa dynamisch wilt versleutelen en hoe (envelop of gemeen schappelijke versleuteling).
+Een van de stappen in de Media Services werk stroom voor het leveren van inhoud is het configureren [van leverings beleid voor assets](/rest/api/media/operations/assetdeliverypolicy)die u wilt streamen. Het beleid voor levering van activa vertelt Media Services hoe u wilt dat uw activa worden geleverd: in het streaming-protocol moet uw asset dynamisch worden verpakt (bijvoorbeeld MPEG DASH, HLS, Smooth Streaming of alle), ongeacht of u uw activa dynamisch wilt versleutelen en hoe (envelop of gemeen schappelijke versleuteling).
 
 Als u een met opslag versleutelde Asset hebt, voordat uw asset kan worden gestreamd, verwijdert de streaming-server de opslag versleuteling en streamt uw inhoud met behulp van het opgegeven leverings beleid. Als u bijvoorbeeld uw asset versleuteld met Advanced Encryption Standard (AES) versleutelings sleutel wilt leveren, stelt u het beleids type in op DynamicEnvelopeEncryption. Als u de opslag versleuteling wilt verwijderen en het activum in de heldere stroom wilt streamen, stelt u het beleids type in op NoDynamicEncryption.
 
@@ -237,4 +237,3 @@ http: \/ /testendpoint-testaccount.streaming.mediaservices.Windows.net/fecebb23-
 
 ## <a name="provide-feedback"></a>Feedback geven
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-
