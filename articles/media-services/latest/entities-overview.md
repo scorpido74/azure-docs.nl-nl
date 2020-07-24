@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 01/21/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 7e4f1141a9d4bd58451782e8412063a22565556d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a9f9463cd1cac49e36ea52cafaf4d07f4e709ca7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80584536"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053254"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Filters, ordening en paginering van Media Services entiteiten
 
@@ -158,34 +158,34 @@ In de volgende tabel ziet u hoe u de opties voor filteren en ordenen kunt Toep a
 
 |Entiteitsnaam|Naam van eigenschap|Filter|Bestellen|
 |---|---|---|---|
-|[Assets](https://docs.microsoft.com/rest/api/media/assets/)|naam|`eq`, `gt`, `lt`, `ge`, `le`|`asc` en `desc`|
+|[Assets](/rest/api/media/assets/)|name|`eq`, `gt`, `lt`, `ge`, `le`|`asc` en `desc`|
 ||Eigenschappen. alternateId |`eq`||
 ||Eigenschappen. assetId |`eq`||
 ||Eigenschappen. gemaakt| `eq`, `gt`, `lt`| `asc` en `desc`|
-|[Beleid voor inhoudssleutels](https://docs.microsoft.com/rest/api/media/contentkeypolicies)|naam|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
+|[Beleid voor inhoudssleutels](/rest/api/media/contentkeypolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
 ||Eigenschappen. gemaakt    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
 ||Eigenschappen. Beschrijving    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`||
 ||Eigenschappen. lastModified|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
 ||Eigenschappen. policyId|`eq`, `ne`||
-|[Taken](https://docs.microsoft.com/rest/api/media/jobs)| naam  | `eq`            | `asc` en `desc`|
+|[Taken](/rest/api/media/jobs)| name  | `eq`            | `asc` en `desc`|
 ||Eigenschappen. State        | `eq`, `ne`        |                         |
 ||Eigenschappen. gemaakt      | `gt`, `ge`, `lt`, `le`| `asc` en `desc`|
 ||Eigenschappen. lastModified | `gt`, `ge`, `lt`, `le` | `asc` en `desc`| 
-|[Streaming-locators](https://docs.microsoft.com/rest/api/media/streaminglocators)|naam|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
+|[Streaming-locators](/rest/api/media/streaminglocators)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
 ||Eigenschappen. gemaakt    |`eq`, `ne`, `ge`, `le`,  `gt`, `lt`|`asc` en `desc`|
 ||Eigenschappen. endTime    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
-|[Beleid voor streaming](https://docs.microsoft.com/rest/api/media/streamingpolicies)|naam|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
+|[Beleid voor streaming](/rest/api/media/streamingpolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
 ||Eigenschappen. gemaakt    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
-|[Transformaties](https://docs.microsoft.com/rest/api/media/transforms)| naam | `eq`            | `asc` en `desc`|
+|[Transformaties](/rest/api/media/transforms)| name | `eq`            | `asc` en `desc`|
 || Eigenschappen. gemaakt      | `gt`, `ge`, `lt`, `le`| `asc` en `desc`|
 || Eigenschappen. lastModified | `gt`, `ge`, `lt`, `le`| `asc` en `desc`|
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Lijst assets](https://docs.microsoft.com/rest/api/media/assets/list)
-* [Lijst met inhouds sleutel beleidsregels](https://docs.microsoft.com/rest/api/media/contentkeypolicies/list)
-* [Taken weer geven](https://docs.microsoft.com/rest/api/media/jobs/list)
-* [Streaming-beleids regels weer geven](https://docs.microsoft.com/rest/api/media/streamingpolicies/list)
-* [Streaming-Locators weer geven](https://docs.microsoft.com/rest/api/media/streaminglocators/list)
+* [Lijst assets](/rest/api/media/assets/list)
+* [Lijst met inhouds sleutel beleidsregels](/rest/api/media/contentkeypolicies/list)
+* [Taken weer geven](/rest/api/media/jobs/list)
+* [Streaming-beleids regels weer geven](/rest/api/media/streamingpolicies/list)
+* [Streaming-Locators weer geven](/rest/api/media/streaminglocators/list)
 * [Een bestand streamen](stream-files-dotnet-quickstart.md)
 * [Quota en limieten](limits-quotas-constraints.md)

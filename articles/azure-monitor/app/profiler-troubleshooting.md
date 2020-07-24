@@ -6,17 +6,17 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 7c9dd20aea410aecb34811ca6e08e0f641be292b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa9b186e74ed3b8fe5496afd5b21c54f50537d5f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84148341"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049789"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Problemen met het inschakelen of weer geven van Application Insights Profiler oplossen
 
-## <a name="active-issues"></a>Actieve problemen
-
-* Profile ring voor ASP.NET Core 3. x-toepassingen wordt nu ondersteund op Azure-app Services.
+> [!CAUTION]
+> Er is een fout opgelopende Profiler voor het uitvoeren van ASP.NET Core-Apps op Azure App Service. We hebben een oplossing, maar het duurt enkele weken om de wereld wijde implementatie uit te voeren. U kunt de fout omzeilen door de Application Insights SDK toe te voegen aan uw toepassing met [hier](./asp-net-core.md#enable-application-insights-server-side-telemetry-visual-studio)instructies.
 
 ## <a name="general-troubleshooting"></a><a id="troubleshooting"></a>Algemene probleem oplossing
 
@@ -75,7 +75,7 @@ Profiler werkt alleen goed als:
 
 
 * De **ApplicationInsightsProfiler3** -Webtaak moet worden uitgevoerd. De Webtaak controleren:
-   1. Ga naar [kudu](https://blogs.msdn.microsoft.com/cdndevs/2015/04/01/the-kudu-debug-console-azure-websites-best-kept-secret/).
+   1. Ga naar [kudu](/archive/blogs/cdndevs/the-kudu-debug-console-azure-websites-best-kept-secret).
    1. Selecteer in het menu **extra** het **dash board webjobs**.  
       Het deel venster **webjobs** wordt geopend. 
    
@@ -193,11 +193,3 @@ Als uw toepassing verbinding maakt met Internet via een proxy of een firewall, m
 [profiler-search-telemetry]:./media/profiler-troubleshooting/Profiler-Search-Telemetry.png
 [Profiler-Webtaak]:./media/profiler-troubleshooting/Profiler-webjob.png
 [Profiler-Webtaak-logboek]:./media/profiler-troubleshooting/Profiler-webjob-log.png
-
-
-
-
-
-
-
-

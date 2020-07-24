@@ -13,16 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: fa0cf5d698bc2186928e0db19be173ec725485e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0eec42c0703e7158b478b8297848dc2ee6735cb8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80985929"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047564"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Scenario's en de beschikbaarheid van Media Services-functies in datacenters
 
 > [!NOTE]
-> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](../latest/index.yml). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
 Met Microsoft Azure Media Services (AMS) kunt u veilig video- of audio-inhoud uploaden, opslaan, coderen en verpakken, zowel voor levering on-demand als levering via livestreaming aan verschillende clients (bijvoorbeeld tv, pc en mobiele apparaten).
 
@@ -158,7 +159,7 @@ AMS-klanten kunnen streaming-eindpunten, de mediaverwerking en de opslag in hun 
     >RU's werken voor het parallel verwerken van alle media, waaronder indexeringstaken via Azure Media Indexer. Indexeringstaken worden echter niet sneller verwerkt met snellere gereserveerde eenheden, terwijl dit bij coderen wel het geval is.
 
     Zie [Media verwerking schalen](media-services-portal-scale-media-processing.md)voor meer informatie.
-* U kunt uw Media Services-account schalen door opslagaccounts toe te voegen. Elk opslagaccount is beperkt tot 500 TB. Als u uw opslag wilt uitbreiden buiten de standaardbeperkingen, kunt u meerdere opslagaccounts aan een enkel Media Services-account koppelen. Zie [Opslagaccounts beheren](meda-services-managing-multiple-storage-accounts.md) voor meer informatie.
+* U kunt uw Media Services-account schalen door opslagaccounts toe te voegen. Elk opslagaccount is beperkt tot 500 TB. Als u uw opslag wilt uitbreiden buiten de standaardbeperkingen, kunt u meerdere opslagaccounts aan een enkel Media Services-account koppelen. Zie [Opslagaccounts beheren](./media-services-managing-multiple-storage-accounts.md) voor meer informatie.
 
 ## <a name="availability-of-media-services-features-across-datacenters"></a><a id="availability"></a> De beschikbaarheid van Media Services-functies in datacenters
 
@@ -176,7 +177,7 @@ Media Services-klanten kunnen een **Standard**-streaming-eindpunt of een Premium
 
 #### <a name="availability"></a>Beschikbaarheid
 
-|Name|Status|Datacenters
+|Naam|Status|Datacenters
 |---|---|---|
 |Standard|Algemene beschikbaarheid|Alles|
 |Premium|Algemene beschikbaarheid|Alles|
@@ -266,4 +267,3 @@ Media Services-leertrajecten bekijken.
 
 ## <a name="provide-feedback"></a>Feedback geven
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

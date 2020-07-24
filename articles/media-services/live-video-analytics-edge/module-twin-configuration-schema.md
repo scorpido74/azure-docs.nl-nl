@@ -3,26 +3,27 @@ title: Module dubbele JSON-schema-Azure
 description: In dit onderwerp wordt het module dubbele JSON-schema van live video Analytics op IoT Edge beschreven.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: a342c59b35c7ebb4b6021163da76bdd3e0d449c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8bd86bdc2c8de9ee586e785db2074fa772100420
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266811"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053071"
 ---
 # <a name="module-twin-json-schema"></a>Module dubbele JSON-schema
 
-Apparaatdubbels zijn JSON-documenten die status informatie van een apparaat opslaan, inclusief meta gegevens, configuraties en voor waarden. Azure IoT Hub onderhoudt een apparaatdubbel voor elk apparaat dat u verbindt met IoT Hub. Zie voor gedetailleerde uitleg [begrijpen en apparaatdubbels module gebruiken in IOT hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins)
+Apparaatdubbels zijn JSON-documenten die status informatie van een apparaat opslaan, inclusief meta gegevens, configuraties en voor waarden. Azure IoT Hub onderhoudt een apparaatdubbel voor elk apparaat dat u verbindt met IoT Hub. Zie voor gedetailleerde uitleg [begrijpen en apparaatdubbels module gebruiken in IOT hub](../../iot-hub/iot-hub-devguide-module-twins.md)
 
 In dit onderwerp wordt het module dubbele JSON-schema van live video Analytics op IoT Edge beschreven.
 
 > [!NOTE]
-> Als u toegang wilt hebben tot Media Services resources en de Media Services-API, moet u eerst worden geverifieerd. Zie [toegang tot de Azure Media Services-API](../latest/media-services-apis-overview.md#accessing-the-azure-media-services-api)voor meer informatie.
+> Om te worden geautoriseerd voor toegang tot Media Services-resources en de API van Media Services, moet u eerst worden geverifieerd. Zie [toegang tot de Azure Media Services-API](../latest/media-services-apis-overview.md#accessing-the-azure-media-services-api)voor meer informatie.
 
 ## <a name="module-twin-properties"></a>Dubbele eigenschappen van module
 
 Met live video Analytics op IoT Edge worden de volgende twee eigenschappen van de module weer gegeven. 
 
-|Eigenschap |Vereist |Dynamisch |Description |
+|Eigenschap |Vereist |Dynamisch |Beschrijving |
 |---|---|---|---|
 |applicationDataDirectory |Yes |No |Pad naar een gekoppeld volume voor permanente configuratie. |
 |azureMediaServicesArmId |Yes |No |Unieke id voor het beheer van Azure-resources voor het Media Services-account.|
@@ -42,7 +43,7 @@ Met live video Analytics op IoT Edge worden de volgende twee eigenschappen van d
 
 <sup>*</sup>U moet een Service-Principal-certificaat of-wacht woord opgeven. 
 
-Dynamische eigenschappen kunnen worden bijgewerkt zonder de module opnieuw op te starten. U kunt de waarden voor een aantal van deze eigenschappen verkrijgen door de instructie in het artikel [toegang tot Media Services-API verkrijgen te](../latest/access-api-cli-how-to.md) volgen. 
+Dynamische eigenschappen kunnen worden bijgewerkt zonder de module opnieuw op te starten. U kunt de waarden voor een aantal van deze eigenschappen verkrijgen door de instructie in het artikel [toegang tot Media Services-API verkrijgen te](../latest/access-api-howto.md) volgen. 
 
 Zie het artikel over [bewaking en logboek registratie](monitoring-logging.md) voor meer informatie over de rol van de optionele Diagnostische instellingen.
 

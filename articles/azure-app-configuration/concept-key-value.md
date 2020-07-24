@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
-ms.openlocfilehash: b8f8bda52be63a4176411855dd9ff9919e9e31f5
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 14ff1a00b40d956f369b1978f15f01f113c50270
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856679"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050140"
 ---
 # <a name="keys-and-values"></a>Sleutels en waarden
 
@@ -77,7 +77,7 @@ U kunt elk Unicode-teken gebruiken in labels, behalve voor `*` , `,` , en `\` . 
 
 Elke sleutel waarde wordt uniek aangeduid door de sleutel plus een label dat kan zijn `null` . U kunt een app-configuratie Archief voor sleutel waarden opvragen door een patroon op te geven. In het app-configuratie archief worden alle sleutel waarden geretourneerd die overeenkomen met het patroon en de bijbehorende waarden en kenmerken. Gebruik de volgende sleutel patronen in REST API-aanroepen naar app-configuratie:
 
-| Sleutel | |
+| Sleutel | Beschrijving |
 |---|---|
 | `key` wordt weggelaten of `key=*` | Komt overeen met alle sleutels |
 | `key=abc` | Komt exact overeen met sleutel naam **ABC** |
@@ -86,7 +86,7 @@ Elke sleutel waarde wordt uniek aangeduid door de sleutel plus een label dat kan
 
 U kunt ook de volgende label patronen toevoegen:
 
-| Label | |
+| Label | Beschrijving |
 |---|---|
 | `label` wordt weggelaten of `label=*` | Komt overeen met een label, inclusief`null` |
 | `label=%00` | Komt overeen met `null` label |

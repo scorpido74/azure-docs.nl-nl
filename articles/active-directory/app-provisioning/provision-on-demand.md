@@ -11,25 +11,27 @@ ms.topic: how-to
 ms.date: 06/23/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.openlocfilehash: 78a56b6a848139c47d7934a47decb126afe00b7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7799e873afb117481cebafd982df59a3267f4405
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85297525"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051583"
 ---
 # <a name="on-demand-provisioning"></a>Inrichting op aanvraag
 Met inrichten op aanvraag kunt u binnen enkele seconden een gebruiker inrichten in een toepassing. U kunt de mogelijkheid gebruiken om snel configuratie problemen op te lossen, expressies te valideren die u hebt gedefinieerd, filters voor bereik te testen en nog veel meer. 
 
 ## <a name="how-to-use-on-demand-provisioning"></a>Instructies voor het gebruik van on-demand inrichten 
 
-1. Meld u aan bij de **Azure Portal**.
+1. Meld u aan bij de **Azure-portal**.
 2. Navigeer naar **bedrijfs toepassingen**.
 3. Selecteer uw toepassing en navigeer naar de pagina inrichtings configuratie.
 4. Configureer inrichting door uw beheerders referenties op te geven.
 5. Klik op **aanvraag inrichten**.
 6. Zoek naar een gebruiker op voor naam, achternaam, weergave naam, user principal name of e-mail adres.
 7. Selecteer aan de onderkant van de pagina inrichten.
+
+:::image type="content" source="media/provision-on-demand/on-demand-provision-user.jpg" alt-text="Een gebruiker inrichten op aanvraag.":::
 
 ## <a name="understanding-the-provisioning-steps"></a>Informatie over de inrichtings stappen
 De functie voor inrichting op aanvraag probeert de stappen weer te geven die de inrichtings service onderneemt bij het inrichten van een gebruiker. Er zijn meestal vijf stappen voor het inrichten van een gebruiker en een of meer van de onderstaande stappen worden weer gegeven in de ervaring op aanvraag inrichten.
@@ -88,6 +90,8 @@ Op de pagina's details weer geven ziet u de eigenschappen van de gebruiker (s) d
 ### <a name="step-5-perform-action"></a>Stap 5: actie uitvoeren
 Ten slotte neemt de inrichtings service een actie, zoals het maken, bijwerken, verwijderen of overs laan van de gebruiker. 
 
+:::image type="content" source="media/provision-on-demand/success-on-demand-provision.jpg" alt-text="Het inrichten van de gebruiker is geslaagd.":::
+
 **Details weergeven**
 
 In het gedeelte weer gave Details worden de kenmerken weer gegeven die zijn gewijzigd in de doel toepassing. Dit vertegenwoordigt de uiteindelijke uitvoer van de inrichtings service activiteit en de kenmerken die zijn geëxporteerd. Als deze stap mislukt, vertegenwoordigen de weer gegeven kenmerken de kenmerken die de inrichtings service heeft geprobeerd te wijzigen.  
@@ -102,11 +106,11 @@ In het gedeelte weer gave Details worden de kenmerken weer gegeven die zijn gewi
 **Hoe lang duurt het inrichten op aanvraag?** Het duurt over het algemeen minder dan 30 seconden. 
 
 ## <a name="known-limitations"></a>Bekende beperkingen
-Er zijn momenteel enkele bekende beperkingen. Post op [UserVoice](https://aka.ms/appprovisioningfeaturerequest) zodat we beter kunnen bepalen welke verbeteringen er nu moeten worden gemaakt. Houd er rekening mee dat deze beperkingen specifiek zijn voor de inrichtings mogelijkheid op aanvraag. Raadpleeg de zelf studie over toepassingen voor specifieke informatie over of een toepassing inrichtings groepen, verwijderingen, enzovoort ondersteunt. 
+Er zijn momenteel enkele bekende beperkingen. Neem contact op met de [gebruikers stem](https://aka.ms/appprovisioningfeaturerequest) zodat we beter kunnen bepalen welke verbeteringen er nu moeten worden gemaakt. Houd er rekening mee dat deze beperkingen specifiek zijn voor de inrichtings mogelijkheid op aanvraag. Raadpleeg de zelf studie over toepassingen voor specifieke informatie over of een toepassing inrichtings groepen, verwijderingen, enzovoort ondersteunt. 
 
 * De toepassingen workday, AWS en SuccessFactors bieden geen ondersteuning voor inrichting op aanvraag.
 * Inrichtings groepen en rollen op aanvraag worden niet ondersteund.
-* Het uitschakelen of verwijderen van gebruikers en groepen wordt niet ondersteund.
+* Inrichtings inrichting op aanvraag biedt ondersteuning voor het uitschakelen van gebruikers die niet zijn toegewezen uit de toepassing, maar die geen ondersteuning biedt voor het uitschakelen of verwijderen van gebruikers die zijn uitgeschakeld of verwijderd uit Azure Active Directory (die gebruikers worden niet weer gegeven bij het zoeken naar een gebruiker).
 
 ## <a name="next-steps"></a>Volgende stappen
 

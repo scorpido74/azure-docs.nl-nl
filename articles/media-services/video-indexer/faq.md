@@ -10,11 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: juliako
-ms.openlocfilehash: bb57af37308badcd3123af3348178aaac061f376
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d533735af340b23e8a79b6c5953df748a548609c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83652181"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046966"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>Veelgestelde vragen over Video Indexer
 
@@ -58,13 +59,13 @@ Nee, Video Indexer biedt de integratie van meerdere machine learning modellen in
 
 ### <a name="what-media-formats-does-video-indexer-support"></a>Welke media-indelingen ondersteunt Video Indexer?
 
-Video Indexer ondersteunt de meeste gang bare media-indelingen. Raadpleeg de lijst met [Azure Media Encoder standaard indelingen](https://docs.microsoft.com/azure/media-services/latest/media-encoder-standard-formats) voor meer informatie.
+Video Indexer ondersteunt de meeste gang bare media-indelingen. Raadpleeg de lijst met [Azure Media Encoder standaard indelingen](../latest/media-encoder-standard-formats.md) voor meer informatie.
 
 ### <a name="how-do-i-upload-a-media-file-into-video-indexer-and-what-are-the-limitations"></a>Hoe kan ik een media bestand uploaden naar Video Indexer en wat zijn de beperkingen?
 
 In de Video Indexer-webportal kunt u een media bestand uploaden met behulp van het dialoog venster voor het uploaden van bestanden of door een URL aan te wijzen die het bron bestand rechtstreeks host (Zie [voor beeld](https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/Ignite-short.mp4)). Een URL die als host fungeert voor de media-inhoud die gebruikmaakt van een iFrame of invoeg code, werkt niet (Zie [voor beeld](https://www.videoindexer.ai/accounts/7e1282e8-083c-46ab-8c20-84cae3dc289d/videos/5cfa29e152/?t=4.11)). 
 
-Lees voor meer informatie deze [hand leiding](https://docs.microsoft.com/azure/media-services/video-indexer/upload-index-videos).
+Lees voor meer informatie deze [hand leiding](./upload-index-videos.md).
 
 #### <a name="limitations"></a>Beperkingen
 
@@ -75,7 +76,7 @@ Zie [overwegingen en beperkingen uploaden](upload-index-videos.md#uploading-cons
 
 ### <a name="how-long-does-it-take-video-indexer-to-extract-insights-from-media"></a>Hoe lang duurt het Video Indexer om inzichten te extra heren van media?
 
-De hoeveelheid tijd die nodig is om een video-of audio bestand te indexeren, zowel met de Video Indexer-API als met de Video Indexer-webinterface, is afhankelijk van meerdere para meters, zoals de bestands lengte en de kwaliteit, het aantal inzichten in het bestand, het aantal beschik bare [gereserveerde eenheden](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview) en of het [streaming-eind punt](https://docs.microsoft.com/azure/media-services/previous/media-services-streaming-endpoints-overview) is ingeschakeld of niet. We raden u aan een paar test bestanden met uw eigen inhoud uit te voeren en zo een beter idee te krijgen.
+De hoeveelheid tijd die nodig is om een video-of audio bestand te indexeren, zowel met de Video Indexer-API als met de Video Indexer-webinterface, is afhankelijk van meerdere para meters, zoals de bestands lengte en de kwaliteit, het aantal inzichten in het bestand, het aantal beschik bare [gereserveerde eenheden](../previous/media-services-scale-media-processing-overview.md) en of het [streaming-eind punt](../previous/media-services-streaming-endpoints-overview.md) is ingeschakeld of niet. We raden u aan een paar test bestanden met uw eigen inhoud uit te voeren en zo een beter idee te krijgen.
 
 ### <a name="can-i-create-customized-workflows-to-automate-processes-with-video-indexer"></a>Kan ik aangepaste werk stromen maken voor het automatiseren van processen met Video Indexer?
 

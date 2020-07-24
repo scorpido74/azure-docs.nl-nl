@@ -14,20 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 95d8d819aa1b418b4a7ec736cef64cb989f7e37b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbd460b584789aa7d40de9ba6430ff6202c3764b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74885633"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052525"
 ---
 # <a name="streaming-endpoints-overview"></a>Overzicht van streaming-eind punten  
 
 > [!NOTE]
-> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](../latest/index.yml). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
 In Microsoft Azure Media Services (AMS) vertegenwoordigt een **streaming-eind punt** een streaming-service die inhoud rechtstreeks kan leveren aan een client speler of een Content Delivery Network (CDN) voor verdere distributie. Media Services biedt ook naadloze Azure CDN integratie. De uitgaande stroom van een StreamingEndpoint-service kan een live stream, een video op aanvraag of een progressief downloaden van uw asset in uw Media Services-account zijn. Elk Azure Media Services account bevat een standaard-StreamingEndpoint. Aanvullende StreamingEndpoints kunnen worden gemaakt onder het account. Er zijn twee versies van StreamingEndpoints, 1,0 en 2,0. Vanaf 10 januari 2017 zullen nieuw gemaakte AMS-accounts versie 2,0 **standaard** StreamingEndpoint bevatten. Extra streaming-eind punten die u aan dit account toevoegt, zijn ook versie 2,0. Deze wijziging heeft geen invloed op de bestaande accounts. de bestaande StreamingEndpoints wordt versie 1,0 en kan worden bijgewerkt naar versie 2,0. Deze wijziging is van invloed op wijzigingen in de facturerings-en onderdelen (Zie de sectie **streaming-typen en-versies** die hieronder worden beschreven) voor meer informatie.
 
-Azure Media Services de volgende eigenschappen toegevoegd aan de streaming-eindpunt entiteit: **CdnProvider**, **CdnProfile**, **StreamingEndpointVersion**. Zie voor gedetailleerde informatie [over deze eigenschappen](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint). 
+Azure Media Services de volgende eigenschappen toegevoegd aan de streaming-eindpunt entiteit: **CdnProvider**, **CdnProfile**, **StreamingEndpointVersion**. Zie voor gedetailleerde informatie [over deze eigenschappen](/rest/api/media/operations/streamingendpoint). 
 
 Wanneer u een Azure Media Services account maakt, wordt er een standaard-streaming-eind punt voor u gemaakt in de status **gestopt** . U kunt het standaard streaming-eind punt niet verwijderen. Afhankelijk van de beschik baarheid van Azure CDN in de doel regio, bevat standaard nieuw gemaakt StandardVerizon-eind punt ook de integratie van de CDN-provider. 
                 
@@ -49,7 +50,7 @@ Voor alle extra eind punten:`{EndpointName}-{AccountName}.streaming.mediaservice
 Vanaf de versie van Media Services januari 2017 hebt u twee streaming-typen: **Standard** (preview) en **Premium**. Deze typen maken deel uit van de streaming-eindpunt versie ' 2,0 '.
 
 
-|Type|Description|
+|Type|Beschrijving|
 |--------|--------|  
 |**Standard**|Het standaard streaming-eind punt is een **standaard** type, dat kan worden gewijzigd in het Premium-type door streaming-eenheden aan te passen.|
 |**Premium** |Deze optie is geschikt voor professionele scenario's die een hogere schaal of beheer vereisen. U gaat naar een **Premium** -type door streaming-eenheden aan te passen.<br/>Toegewezen streaming-eind punten zijn Live in geïsoleerde omgevingen en concurreren niet voor resources.|
@@ -76,10 +77,10 @@ Als het streaming-eind punt van uw **versie 1,0** >= 1 Premium streaming-eenhede
 
 |Type|StreamingEndpointVersion|ScaleUnits|CDN|Billing|
 |--------------|----------|-----------------|-----------------|-----------------|
-|Klassiek|1.0|0|NA|Gratis|
-|Standard streaming-eind punt (preview-versie)|2.0|0|Yes|Teken|
+|Klassiek|1.0|0|N.v.t.|Gratis|
+|Standard streaming-eind punt (preview-versie)|2,0|0|Yes|Teken|
 |Premium-streaming-eenheden|1.0|>0|Yes|Teken|
-|Premium-streaming-eenheden|2.0|>0|Yes|Teken|
+|Premium-streaming-eenheden|2,0|>0|Yes|Teken|
 
 ### <a name="features"></a>Functies
 
@@ -101,7 +102,7 @@ Zie [prijzen en sla](https://azure.microsoft.com/pricing/details/media-services/
 
 ## <a name="migration-between-types"></a>Migratie tussen typen
 
-Van | Handeling | Bewerking
+Van | Tot | Bewerking
 ---|---|---
 Klassiek|Standard|Moet u zich aanmelden
 Klassiek|Premium| Schalen (extra streaming-eenheden)
@@ -121,4 +122,3 @@ Media Services-leertrajecten bekijken.
 
 ## <a name="provide-feedback"></a>Feedback geven
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

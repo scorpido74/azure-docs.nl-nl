@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/15/2020
 ms.author: juliako
-ms.openlocfilehash: 2f1694825319ed8b8682c044e7e2282ed4c43dcd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e32a9053e4ab7cc3618f7b50b7291a660a14e1b1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79478797"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053494"
 ---
 # <a name="create-a-media-services-account"></a>Een Media Services-account kunt maken
 
@@ -38,7 +39,7 @@ Op dit moment kunt u het [Azure Portal](https://portal.azure.com/) gebruiken voo
 
 * Media Services v3 [Live-gebeurtenissen](live-events-outputs-concept.md)beheren, 
 * V3- [assets](assets-concept.md)weer geven (niet beheren), 
-* [krijg informatie over het openen van api's](access-api-portal.md). 
+* [krijg informatie over het openen van api's](./access-api-howto.md). 
 
 Gebruik de [rest API](https://aka.ms/ams-v3-rest-ref), [cli](https://aka.ms/ams-v3-cli-ref)of een van de ondersteunde [sdk's](media-services-apis-overview.md#sdks)voor alle andere beheer taken (bijvoorbeeld [trans formaties en taken](transforms-jobs-concept.md) en [inhouds beveiliging](content-protection-overview.md)).
 
@@ -54,9 +55,9 @@ In dit artikel wordt uitgelegd hoe u een Media Services-account maakt met de Azu
     | ---|---|
     |**Accountnaam**|Voer de naam van het nieuwe Media Services-account in. Voor de naam van een Media Services-account mogen alleen cijfers en kleine letters worden gebruikt. Spaties zijn niet toegestaan. De naam mag 3 tot 24 tekens lang zijn.|
     |**Abonnement**|Als u meer dan één abonnement hebt, selecteert u er een in de lijst met Azure-abonnementen waartoe u toegang hebt.|
-    |**Resourcegroep**|Selecteer de nieuwe of bestaande resource. Een resourcegroep is een verzameling resources met dezelfde levenscyclus, dezelfde machtigingen en hetzelfde beleid. Meer informatie [vindt u hier](../../azure-resource-manager/management/overview.md#resource-groups).|
+    |**Resourcegroep**|Selecteer de nieuwe of bestaande resource. Een resourcegroep is een verzameling resources met dezelfde levenscyclus, dezelfde machtigingen en hetzelfde beleid. Klik [hier](../../azure-resource-manager/management/overview.md#resource-groups) voor meer informatie.|
     |**Locatie**|Selecteer de geografische regio die wordt gebruikt om de media-en meta gegevens records voor uw Media Services-account op te slaan. Deze regio wordt gebruikt om uw media te verwerken en te streamen. Alleen de beschikbare Media Services-regio's worden in de vervolgkeuzelijst weergegeven. |
-    |**Opslag account**|Selecteer een opslag account om Blob Storage van de media-inhoud van uw Media Services-account op te geven. U kunt een bestaand opslagaccount in dezelfde geografische regio als uw Media Services-account selecteren of u kunt een nieuw opslagaccount maken. Een nieuw opslagaccount wordt in dezelfde regio gemaakt. De regels voor opslagaccountnamen zijn hetzelfde als voor Media Services-accounts.<br/><br/>U kunt maar één **primaire** opslagaccount koppelen aan uw Media Services-account, maar een onbeperkt aantal **secundaire** opslagaccounts. U kunt de Azure Portal gebruiken om secundaire opslag accounts toe te voegen. Zie [Azure Storage accounts met Azure Media Services accounts](storage-account-concept.md)voor meer informatie.<br/><br/>Het Media Services-account en alle gekoppelde opslagaccounts moeten zich in hetzelfde Azure-abonnement bevinden. Het wordt sterk aangeraden opslagaccounts te gebruiken op dezelfde locatie als het Media Services-account om aanvullende kosten voor latentie en uitgaande data te vermijden.|
+    |**Opslagaccount**|Selecteer een opslag account om Blob Storage van de media-inhoud van uw Media Services-account op te geven. U kunt een bestaand opslagaccount in dezelfde geografische regio als uw Media Services-account selecteren of u kunt een nieuw opslagaccount maken. Een nieuw opslagaccount wordt in dezelfde regio gemaakt. De regels voor opslagaccountnamen zijn hetzelfde als voor Media Services-accounts.<br/><br/>U kunt maar één **primaire** opslagaccount koppelen aan uw Media Services-account, maar een onbeperkt aantal **secundaire** opslagaccounts. U kunt de Azure Portal gebruiken om secundaire opslag accounts toe te voegen. Zie [Azure Storage accounts met Azure Media Services accounts](storage-account-concept.md)voor meer informatie.<br/><br/>Het Media Services-account en alle gekoppelde opslagaccounts moeten zich in hetzelfde Azure-abonnement bevinden. Het wordt sterk aangeraden opslagaccounts te gebruiken op dezelfde locatie als het Media Services-account om aanvullende kosten voor latentie en uitgaande data te vermijden.|
     
 1. Selecteer **Vastmaken aan dashboard** om de voortgang van de implementatie van het account te bekijken.
 1. Klik op **Maken** onder in het formulier.
@@ -89,9 +90,9 @@ az group create --name amsResourceGroup --location westus2
 
 Als u een Media Services-account gaat maken, moet u de naam van een Azure Storage-accountresource opgeven. Het opgegeven opslagaccount wordt gekoppeld aan uw Media Services-account. Zie [Storage-accounts](storage-account-concept.md) voor meer informatie over het gebruik van Storage-accounts in Media Services.
 
-U moet één **primair** opslag account hebben en u kunt een onbeperkt aantal **secundaire** opslag accounts aan uw Media Services-account koppelen. Media Services ondersteunt **GPv2**-accounts (General-purpose v2) of **GPv1**-accounts (General-purpose v1). Blob-accounts kunt u niet instellen als **primaire** account. Zie [Opties voor Azure Storage-account](../../storage/common/storage-account-options.md) voor meer informatie over opslagaccounts. 
+U moet één **primair** opslag account hebben en u kunt een onbeperkt aantal **secundaire** opslag accounts aan uw Media Services-account koppelen. Media Services ondersteunt **GPv2**-accounts (General-purpose v2) of **GPv1**-accounts (General-purpose v1). Blob-accounts kunt u niet instellen als **primaire** account. Zie [Opties voor Azure Storage-account](../../storage/common/storage-account-overview.md) voor meer informatie over opslagaccounts. 
 
-In dit voorbeeld maakt u een Standard LRS-account voor algemeen gebruik (v2). Als u wilt experimenteren met opslagaccounts, gebruikt u `--sku Standard_LRS`. Als u echter een SKU voor productie selecteert, kunt u overwegen om `--sku Standard_RAGRS` te gebruiken. Deze biedt geografische replicatie voor bedrijfscontinuïteit. Zie [Opslagaccounts](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest) voor meer informatie.
+In dit voorbeeld maakt u een Standard LRS-account voor algemeen gebruik (v2). Als u wilt experimenteren met opslagaccounts, gebruikt u `--sku Standard_LRS`. Als u echter een SKU voor productie selecteert, kunt u overwegen om `--sku Standard_RAGRS` te gebruiken. Deze biedt geografische replicatie voor bedrijfscontinuïteit. Zie [Opslagaccounts](/cli/azure/storage/account?view=azure-cli-latest) voor meer informatie.
  
 Met de volgende opdracht maakt u een Storage-account die wordt gekoppeld aan de Media Services-account. In het onderstaande script kunt u `storageaccountforams` door uw waarde vervangen. `amsResourceGroup`in de vorige stap moet overeenkomen met de waarde die u hebt opgegeven voor de resource groep. De naam van het opslag account moet minder dan 24 tekens lang zijn.
 
@@ -115,8 +116,8 @@ az ams account create --name amsaccount \
 
 ### <a name="see-also"></a>Zie tevens
 
-* [Azure-CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
-* [Een secundaire opslag toevoegen aan een Media Services-account](https://docs.microsoft.com/cli/azure/ams/account/storage?view=azure-cli-latest#az-ams-account-storage-add)
+* [Azure CLI](/cli/azure/ams?view=azure-cli-latest)
+* [Een secundaire opslag toevoegen aan een Media Services-account](/cli/azure/ams/account/storage?view=azure-cli-latest#az-ams-account-storage-add)
 
 ---
 

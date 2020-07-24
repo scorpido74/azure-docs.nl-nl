@@ -6,11 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 11/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 7c5dfe6ed08df01f78346c76fd5a35e7d64ab520
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8beb1d60ca8dcc18978ffeb523a7d63f90ca6c01
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671576"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049802"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Profiel Web-apps die worden uitgevoerd op een virtuele machine van Azure of een schaalset voor virtuele machines met behulp van Application Insights Profiler
 
@@ -24,7 +25,7 @@ U kunt ook Azure-toepassing Insights Profiler implementeren op deze services:
 ## <a name="deploy-profiler-on-a-virtual-machine-or-a-virtual-machine-scale-set"></a>Profiler implementeren op een virtuele machine of een schaalset voor virtuele machines
 In dit artikel wordt beschreven hoe u Application Insights Profiler op uw virtuele machine met Azure virtual machine (VM) of virtuele-machinehost van Azure kunt ophalen. Profiler wordt geïnstalleerd met de Azure Diagnostics-extensie voor Vm's. Configureer de uitbrei ding voor het uitvoeren van Profiler en bouw de Application Insights SDK in uw toepassing.
 
-1. Voeg de Application Insights SDK toe aan uw [ASP.NET-toepassing](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net).
+1. Voeg de Application Insights SDK toe aan uw [ASP.NET-toepassing](./asp-net.md).
 
    Als u profielen voor uw aanvragen wilt weer geven, moet u de aanvraag-telemetrie naar Application Insights verzenden.
 
@@ -71,7 +72,7 @@ In dit artikel wordt beschreven hoe u Application Insights Profiler op uw virtue
     ```powershell
     Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All
     ```  
-   b. Als externe toegang tot stand is gebracht, kunt u de [Azure cli](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) gebruiken om de volgende opdracht uit te voeren:  
+   b. Als externe toegang tot stand is gebracht, kunt u de [Azure cli](/cli/azure/get-started-with-azure-cli) gebruiken om de volgende opdracht uit te voeren:  
 
     ```powershell
     az vm run-command invoke -g MyResourceGroupName -n MyVirtualMachineName --command-id RunPowerShellScript --scripts "Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All"

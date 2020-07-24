@@ -15,3 +15,6 @@
         - name: Beleid
           tocHref: /azure/key-vault
           topicHref: /azure/governance/policy
+        - name: Beleid
+          tocHref: /azure/aks
+          topicHref: /azure/governance/policy

@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: ce014fc338ebfad18b91ba65b614ca0a380a3f7c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: be80c0d5999ed06bcc505ec5737e7e416d28b981
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243848"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050686"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Ondersteunings beleid voor de Azure Kubernetes-service
 
@@ -137,7 +137,7 @@ Hoewel klanten zich kunnen aanmelden bij en wijzigen van worker-knoop punten, wo
 
 ## <a name="network-ports-access-and-nsgs"></a>Netwerk poorten, Access en Nsg's
 
-Als beheerde service heeft AKS specifieke netwerk-en connectiviteits vereisten. Deze vereisten zijn minder flexibel dan vereisten voor normale IaaS-onderdelen. In AKS, zoals het aanpassen van NSG-regels, het blok keren van een specifieke poort (bijvoorbeeld met firewall regels die de uitgaande poort 443 blok keren) en white list-Url's kan uw cluster niet meer worden ondersteund.
+Als beheerde service heeft AKS specifieke netwerk-en connectiviteits vereisten. Deze vereisten zijn minder flexibel dan vereisten voor normale IaaS-onderdelen. In AKS, zoals het aanpassen van NSG-regels, het blok keren van een specifieke poort (bijvoorbeeld het gebruik van firewall regels die de uitgaande poort 443 blok keren), en het toevoegen van Url's aan een acceptatie lijst, kan uw cluster niet meer worden ondersteund.
 
 > [!NOTE]
 > Op dit moment kunt u geen uitgaand verkeer van het cluster volledig vergren delen met AKS. Zie limiet voor uitgaand [verkeer beperken](limit-egress-traffic.md)voor het beheren van de lijst met url's en poorten die door uw cluster kunnen worden gebruikt voor het uitgaande verkeer.

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5b6879d11a4b47c0090f13baa0a15dcc696c8534
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3301667c0ee6ad739b6fb734c2cea3aef4889bd9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525378"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051840"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines DBMS-implementatie voor SAP-workload
 
@@ -74,7 +74,7 @@ ms.locfileid: "86525378"
 
 [azure-cli]:../../../cli-install-nodejs.md
 [azure-portal]:https://portal.azure.com
-[azure-ps]:/powershell/azureps-cmdlets-docs
+[azure-ps]:/powershell/azure/
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
 [azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
@@ -420,7 +420,7 @@ Zie [herstel na nood gevallen voor een Oracle database 12c-data base in een Azur
 
 ### <a name="accelerated-networking"></a>Versneld netwerken
 Voor Oracle-implementaties in Windows wordt het beste versneld netwerken aanbevolen, zoals beschreven in [Azure versneld netwerken](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Houd ook rekening met de aanbevelingen die worden gedaan in [overwegingen voor Azure virtual machines DBMS-implementatie voor SAP-workloads](dbms_guide_general.md). 
-### <a name="other"></a>Overige
+### <a name="other"></a>Anders
 [Overwegingen voor azure virtual machines DBMS-implementatie voor SAP-workload](dbms_guide_general.md) beschrijft andere belang rijke concepten met betrekking tot implementaties van vm's met Oracle database, inclusief Azure-beschikbaarheids sets en SAP-bewaking.
 
 ## <a name="specifics-for-oracle-database-on-oracle-linux"></a>Details voor Oracle Database op Oracle Linux
@@ -523,5 +523,5 @@ sudo curl -so /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules https://raw.gi
 </code></pre>
 
 
-### <a name="other"></a>Overige
+### <a name="other"></a>Anders
 [Overwegingen voor azure virtual machines DBMS-implementatie voor SAP-workload](dbms_guide_general.md) beschrijft andere belang rijke concepten met betrekking tot implementaties van vm's met Oracle database, inclusief Azure-beschikbaarheids sets en SAP-bewaking.

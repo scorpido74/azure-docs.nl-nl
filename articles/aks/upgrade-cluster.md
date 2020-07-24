@@ -4,18 +4,18 @@ description: Meer informatie over hoe u een AKS-cluster (Azure Kubernetes servic
 services: container-service
 ms.topic: article
 ms.date: 05/28/2020
-ms.openlocfilehash: 603a27f0ecffb762a18f58847110c4dd3de68425
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: da46c44dc9cc16dfa44aacb15b35b652c0c912a9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250988"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050610"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Een AKS-cluster (Azure Kubernetes Service) upgraden
 
 Als onderdeel van de levens cyclus van een AKS-cluster moet u vaak een upgrade uitvoeren naar de nieuwste versie van Kubernetes. Het is belang rijk dat u de meest recente Kubernetes-beveiligings releases toepast of een upgrade uitvoert om de nieuwste functies op te halen. In dit artikel wordt beschreven hoe u de hoofd onderdelen of een enkele standaard knooppunt groep in een AKS-cluster bijwerkt.
 
-Zie [een knooppunt groep bijwerken in AKS][nodepool-upgrade]voor AKS-clusters die gebruikmaken van meerdere knooppunt groepen of Windows Server-knoop punten (momenteel in de preview-versie van AKS).
+Zie [een knooppunt groep bijwerken in AKS][nodepool-upgrade]voor AKS-clusters die gebruikmaken van meerdere knooppunt groepen of Windows Server-knoop punten.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -33,9 +33,11 @@ az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --outpu
 ```
 
 > [!NOTE]
-> Wanneer u een upgrade uitvoert voor een AKS-cluster, kunnen secundaire versies van Kubernetes niet worden overgeslagen. Bijvoorbeeld: upgrades tussen *1.12. x*  ->  *1.13. x* of *1.13. x*  ->  *1.14. x* zijn toegestaan, maar *1.12. x*  ->  *1.14. x* is niet.
+> Wanneer u een ondersteund AKS-cluster bijwerkt, kunnen secundaire versies van Kubernetes niet worden overgeslagen. Bijvoorbeeld: upgrades tussen *1.12. x*  ->  *1.13. x* of *1.13. x*  ->  *1.14. x* zijn toegestaan, maar *1.12. x*  ->  *1.14. x* is niet.
 >
 > Als u een upgrade wilt uitvoeren, van *1.12. x*  ->  *1.14. x*, moet u eerst een upgrade uitvoeren van *1.12. x*  ->  *1.13. x*en vervolgens een upgrade uitvoeren van *1.13. x*  ->  *1.14. x*.
+>
+> Het overs laan van meerdere versies kan alleen worden uitgevoerd wanneer u een upgrade uitvoert van een niet-ondersteunde versie terug naar een ondersteunde versie. U kunt bijvoorbeeld een upgrade uitvoeren van een niet-ondersteund *1,10. x* --> een ondersteunde *1.15. x* kan worden voltooid.
 
 In de volgende voorbeeld uitvoer ziet u dat het cluster kan worden bijgewerkt naar versies *1.13.9* en *1.13.10*:
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/09/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 79f2df0f94b212ea45c01c825b23f1dbb4cc40db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6715014485b227713447ce5d552cf7ba79737845
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80582295"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053212"
 ---
 # <a name="scaling-media-processing"></a>Mediaverwerking schalen
 
@@ -49,7 +49,7 @@ In de rest van het artikel ziet u hoe u [Media Services v3 cli](https://aka.ms/a
 
 ## <a name="prerequisites"></a>Vereisten 
 
-[Maak een Media Services-account](create-account-cli-how-to.md).
+[Een Azure Media Services-account maken](./create-account-howto.md).
 
 [!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
 
@@ -57,7 +57,7 @@ In de rest van het artikel ziet u hoe u [Media Services v3 cli](https://aka.ms/a
 
 Voer de opdracht `mru` uit.
 
-Met de volgende opdracht [AZ AMS account MRU](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) worden de gereserveerde media-eenheden voor het account ' amsaccount ' ingesteld met behulp van de para meters **Count** en **type** .
+Met de volgende opdracht [AZ AMS account MRU](/cli/azure/ams/account/mru?view=azure-cli-latest) worden de gereserveerde media-eenheden voor het account ' amsaccount ' ingesteld met behulp van de para meters **Count** en **type** .
 
 ```azurecli
 az ams account mru set -n amsaccount -g amsResourceGroup --count 10 --type S3
@@ -71,7 +71,7 @@ Er worden kosten in rekening gebracht op basis van het aantal minuten dat de ger
 
 [Video's analyseren](analyze-videos-tutorial-with-api.md) 
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 * [Quota en limieten](limits-quotas-constraints.md)
-* [Azure-CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
+* [Azure-CLI](/cli/azure/ams?view=azure-cli-latest)

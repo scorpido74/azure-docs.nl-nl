@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 72f9381a320dc0fb946dbf6f48c5bcab5390aed5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c49e92cda89cfc1d72a0550c2a53430f3e6f2844
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243576"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050325"
 ---
 # <a name="azure-api-management-faqs"></a>Veelgestelde vragen over Azure API Management
 Krijg antwoorden op veelgestelde vragen, patronen en aanbevolen procedures voor Azure API Management.
@@ -77,7 +77,7 @@ U kunt als volgt een gebruiker toevoegen aan de groep Administrators:
 2. Ga naar de resource groep met de API Management instantie die u wilt bijwerken.
 3. Wijs in API Management de rol van **API Management-service Inzender** toe aan de gebruiker.
 
-De zojuist toegevoegde mede werker kan nu Azure PowerShell- [cmdlets](/powershell/azure/overview)gebruiken. U kunt als volgt aanmelden als beheerder:
+De zojuist toegevoegde mede werker kan nu Azure PowerShell- [cmdlets](/powershell/azure/)gebruiken. U kunt als volgt aanmelden als beheerder:
 
 1. Gebruik de `Connect-AzAccount` cmdlet om u aan te melden.
 2. Stel de context in op het abonnement dat de service heeft met behulp van `Set-AzContext -SubscriptionID <subscriptionGUID>` .

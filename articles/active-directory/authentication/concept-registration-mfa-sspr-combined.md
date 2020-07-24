@@ -1,24 +1,24 @@
 ---
-title: Gecombineerde registratie voor SSPR en MFA - Azure Active Directory
-description: Azure AD Multi-Factor Authentication en self-service voor wachtwoord herstel
+title: Gecombineerde registratie voor SSPR en Azure Multi-Factor Authentication-Azure Active Directory
+description: Meer informatie over de gecombineerde registratie-ervaring voor Azure Active Directory waarmee gebruikers zich kunnen registreren voor zowel Azure Multi-Factor Authentication als self-service voor wachtwoord herstel
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 07/14/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87cec45ac3d7bf491278a4ba8520e8257fd0f6c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b8ceb375eb9da853b4c89ffe278d3483f6a4fa72
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550667"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050955"
 ---
-# <a name="combined-security-information-registration-overview"></a>Overzicht van registratie van gecombineerde beveiligings gegevens
+# <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Registratie van gecombineerde beveiligings gegevens voor Azure Active Directory overzicht
 
 Vóór de gecombineerde registratie hebben gebruikers de verificatie methoden voor Azure Multi-Factor Authentication en self-service voor wachtwoord herstel (SSPR) afzonderlijk geregistreerd. Het is bekend dat er soort gelijke methoden werden gebruikt voor Multi-Factor Authentication en SSPR, maar dat ze voor beide functies moesten registreren. Met gecombineerde registratie kunnen gebruikers zich eenmaal registreren en profiteren van de voor delen van Multi-Factor Authentication en SSPR.
 
@@ -34,11 +34,13 @@ Voordat u de nieuwe ervaring inschakelt, raadpleegt u deze documentatie met behe
 Registratie van gegevens over gecombineerde beveiliging van Azure AD is momenteel niet beschikbaar voor nationale Clouds, zoals Azure VS government, Azure Duitsland of Azure China 21Vianet.
 
 > [!IMPORTANT]
-> Gebruikers die zijn ingeschakeld voor de oorspronkelijke preview-versie en de verbeterde gecombineerde registratie-ervaring, zien het nieuwe gedrag. Gebruikers die zijn ingeschakeld voor beide ervaringen, zien alleen de nieuwe ervaring mijn profiel. Het nieuwe mijn profiel wordt uitgelijnd met het uiterlijk van de gecombineerde registratie en biedt een naadloze ervaring voor gebruikers. Gebruikers kunnen mijn profiel zien door naar te gaan [https://myprofile.microsoft.com](https://myprofile.microsoft.com) .
+> Gebruikers die zijn ingeschakeld voor de oorspronkelijke preview-versie en de verbeterde gecombineerde registratie-ervaring, zien het nieuwe gedrag. Gebruikers die zijn ingeschakeld voor beide ervaringen, zien alleen de nieuwe ervaring mijn profiel. Het nieuwe *Mijn profiel* wordt uitgelijnd met het uiterlijk van de gecombineerde registratie en biedt een naadloze ervaring voor gebruikers. Gebruikers kunnen mijn profiel zien door naar te gaan [https://myprofile.microsoft.com](https://myprofile.microsoft.com) .
 >
-> Er wordt mogelijk een fout bericht weer gegeven wanneer u probeert toegang te krijgen tot de optie beveiligings gegevens. Bijvoorbeeld, we kunnen u niet aanmelden. In dit geval moet u bevestigen dat u geen configuratie-of groeps beleidsobject hebt waarmee cookies van derden in de webbrowser worden geblokkeerd.
+> Er wordt mogelijk een fout bericht weer gegeven wanneer u probeert toegang te krijgen tot de optie beveiligings gegevens, zoals ' Sorry, we kunnen u niet aanmelden '. Bevestig dat u geen configuratie-of groeps beleidsobject hebt waarmee cookies van derden in de webbrowser worden geblokkeerd.
 
-Mijn profiel pagina's worden gelokaliseerd op basis van de taal instellingen van de computer die toegang heeft tot de pagina. Micro soft slaat de meest recente taal op die wordt gebruikt in de cache van de browser, zodat de daaropvolgende pogingen om toegang te krijgen tot de pagina's worden weer gegeven in de laatste gebruikte taal. Als u de cache wist, worden de pagina's opnieuw weer gegeven. Als u een specifieke taal wilt forceren, kunt u `?lng=<language>` aan het einde van de URL toevoegen, waarbij `<language>` de code is van de taal die u wilt weer geven.
+*Mijn profiel* pagina's worden gelokaliseerd op basis van de taal instellingen van de computer die toegang heeft tot de pagina. Micro soft slaat de meest recente taal op die wordt gebruikt in de cache van de browser, zodat de volgende keer dat de pagina's worden geopend, worden weer gegeven in de laatste gebruikte taal. Als u de cache wist, worden de pagina's opnieuw weer gegeven.
+
+Als u een specifieke taal wilt forceren, kunt u `?lng=<language>` aan het einde van de URL toevoegen, waarbij `<language>` de code is van de taal die u wilt weer geven.
 
 ![SSPR of andere methoden voor beveiligings verificatie instellen](media/howto-registration-mfa-sspr-combined/combined-security-info-my-profile.png)
 
@@ -53,7 +55,7 @@ Bij gecombineerde registratie worden de volgende verificatie methoden en-acties 
 | Hardware-token | Nee | Nee | Yes |
 | Telefoon | Ja | Ja | Ja |
 | Alternatief telefoon nummer | Ja | Ja | Ja |
-| Bureautelefoon | Nee | Nee | Nee |
+| Zakelijke telefoon | Nee | Nee | Nee |
 | E-mail | Ja | Ja | Ja |
 | Beveiligingsvragen | Yes | No | Yes |
 | App-wachtwoorden | Yes | No | Yes |
@@ -66,10 +68,10 @@ Gebruikers kunnen een van de volgende opties instellen als de standaard Multi-Fa
 
 - Microsoft Authenticator: melding.
 - Verificator-app of-hardware-token-code.
-- Telefoon oproep.
+- Telefoongesprek.
 - Sms-bericht.
 
-Wanneer we meer authenticatie methoden blijven toevoegen aan Azure AD, zullen deze methoden beschikbaar zijn in gecombineerde registratie.
+Wanneer we meer authenticatie methoden blijven toevoegen aan Azure AD, zijn deze methoden beschikbaar in gecombineerde registratie.
 
 ## <a name="combined-registration-modes"></a>Gecombineerde registratie modi
 
@@ -78,30 +80,30 @@ Er zijn twee modi voor gecombineerde registratie: onderbreken en beheren.
 - De **interrupt-modus** is een wizard-achtige ervaring die wordt weer gegeven aan gebruikers wanneer ze hun beveiligings gegevens registreren of vernieuwen bij het aanmelden.
 - De **beheer modus** maakt deel uit van het gebruikers profiel en stelt gebruikers in staat om hun beveiligings gegevens te beheren.
 
-Voor beide modi moeten gebruikers die eerder een methode hebben geregistreerd die kan worden gebruikt voor Multi-Factor Authentication, Multi-Factor Authentication uitvoeren voordat ze toegang kunnen krijgen tot hun beveiligings gegevens. Gebruikers moeten hun gegevens bevestigen voordat ze hun eerder geregistreerde methoden blijven gebruiken. 
+Voor beide modi moeten gebruikers die eerder een methode hebben geregistreerd die kan worden gebruikt voor Multi-Factor Authentication Multi-Factor Authentication uitvoeren voordat ze toegang kunnen krijgen tot hun beveiligings gegevens. Gebruikers moeten hun gegevens bevestigen voordat ze hun eerder geregistreerde methoden blijven gebruiken. 
 
 ### <a name="interrupt-mode"></a>Interrupt-modus
 
 Gecombineerde registratie respecteert zowel Multi-Factor Authentication als SSPR-beleid als beide zijn ingeschakeld voor uw Tenant. Deze beleids regels bepalen of een gebruiker wordt onderbroken voor registratie tijdens het aanmelden en welke methoden beschikbaar zijn voor registratie.
 
-Hier volgen enkele scenario's waarin gebruikers mogelijk wordt gevraagd om de beveiligings gegevens te registreren of te vernieuwen:
+Hieronder ziet u voor beelden van scenario's waarin gebruikers mogelijk wordt gevraagd om de beveiligings gegevens te registreren of te vernieuwen:
 
-- Multi-Factor Authentication registratie afgedwongen via identiteits beveiliging: gebruikers worden gevraagd zich te registreren tijdens het aanmelden. Ze registreren Multi-Factor Authentication methoden en SSPR-methoden (als de gebruiker is ingeschakeld voor SSPR).
-- Multi-Factor Authentication registratie wordt afgedwongen via Multi-Factor Authentication per gebruiker: gebruikers worden gevraagd zich te registreren tijdens het aanmelden. Ze registreren Multi-Factor Authentication methoden en SSPR-methoden (als de gebruiker is ingeschakeld voor SSPR).
-- Multi-Factor Authentication registratie wordt afgedwongen via voorwaardelijke toegang of ander beleid: gebruikers worden gevraagd zich te registreren wanneer ze een resource gebruiken waarvoor Multi-Factor Authentication is vereist. Ze registreren Multi-Factor Authentication methoden en SSPR-methoden (als de gebruiker is ingeschakeld voor SSPR).
-- SSPR registratie afgedwongen: gebruikers worden gevraagd zich te registreren tijdens het aanmelden. Ze registreren alleen SSPR-methoden.
-- SSPR vernieuwen afgedwongen: gebruikers moeten hun beveiligings gegevens controleren met een interval dat door de beheerder is ingesteld. Gebruikers worden weer gegeven met hun informatie en kunnen de huidige gegevens bevestigen of zo nodig wijzigingen aanbrengen.
+- *Registratie multi-factor Authentication afgedwongen via identiteits beveiliging:* Gebruikers worden gevraagd zich te registreren tijdens het aanmelden. Ze registreren Multi-Factor Authentication methoden en SSPR-methoden (als de gebruiker is ingeschakeld voor SSPR).
+- *Multi-factor Authentication registratie wordt afgedwongen via multi-factor Authentication per gebruiker:* Gebruikers worden gevraagd zich te registreren tijdens het aanmelden. Ze registreren Multi-Factor Authentication methoden en SSPR-methoden (als de gebruiker is ingeschakeld voor SSPR).
+- *Registratie van multi-factor Authentication afgedwongen via voorwaardelijke toegang of ander beleid:* Gebruikers worden gevraagd zich te registreren wanneer ze een resource gebruiken die Multi-Factor Authentication vereist. Ze registreren Multi-Factor Authentication methoden en SSPR-methoden (als de gebruiker is ingeschakeld voor SSPR).
+- *SSPR registratie afgedwongen:* Gebruikers worden gevraagd zich te registreren tijdens het aanmelden. Ze registreren alleen SSPR-methoden.
+- *SSPR vernieuwing afgedwongen:* Gebruikers moeten hun beveiligings gegevens controleren met een interval dat door de beheerder is ingesteld. Gebruikers worden weer gegeven met hun informatie en kunnen de huidige gegevens bevestigen of zo nodig wijzigingen aanbrengen.
 
 Wanneer registratie wordt afgedwongen, worden gebruikers weer gegeven het minimale aantal methoden dat nodig is om te voldoen aan de Multi-Factor Authentication-en SSPR-beleids regels, van de meeste tot minst veilig.
 
-Bijvoorbeeld:
+Bekijk het volgende voorbeeld scenario:
 
 - Een gebruiker is ingeschakeld voor SSPR. Het SSPR-beleid vereist twee methoden om opnieuw te worden ingesteld en heeft mobiele app-code, e-mail en telefoon ingeschakeld.
-   - Deze gebruiker is verplicht om twee methoden te registreren.
-      - De gebruiker wordt standaard de verificator-app en-telefoon weer gegeven.
-      - De gebruiker kan ervoor kiezen om e-mail te registreren in plaats van de verificator-app of-telefoon.
+- Deze gebruiker is verplicht om twee methoden te registreren.
+   - De gebruiker wordt standaard de verificator-app en-telefoon weer gegeven.
+   - De gebruiker kan ervoor kiezen om e-mail te registreren in plaats van de verificator-app of-telefoon.
 
-Dit stroom diagram beschrijft welke methoden worden weer gegeven wanneer een gebruiker wordt gestuit tijdens het aanmelden:
+In het volgende stroom diagram wordt beschreven welke methoden worden weer gegeven wanneer een gebruiker wordt gestuit tijdens het aanmelden:
 
 ![Stroom diagram van gecombineerde beveiligings gegevens](media/concept-registration-mfa-sspr-combined/combined-security-info-flow-chart.png)
 
@@ -125,7 +127,7 @@ Een gebruiker heeft niet alle vereiste beveiligings gegevens ingesteld en gaat n
 
 Een beheerder heeft de registratie niet afgedwongen.
 
-Een gebruiker die de vereiste beveiligings gegevens nog niet heeft ingesteld, gaat naar [https://myprofile.microsoft.com](https://myprofile.microsoft.com) . De gebruiker selecteert **beveiligings gegevens** in het linkerdeel venster. Van daaruit kiest de gebruiker om een methode toe te voegen, selecteert een van de beschik bare methoden en volgt de stappen om die methode in te stellen. Wanneer u klaar bent, ziet de gebruiker de methode die zojuist is ingesteld op de pagina met beveiligings gegevens.
+Een gebruiker die de vereiste beveiligings gegevens nog niet heeft ingesteld, gaat naar [https://myprofile.microsoft.com](https://myprofile.microsoft.com) . De gebruiker selecteert **beveiligings gegevens** in het linkerdeel venster. Van daaruit kiest de gebruiker om een methode toe te voegen, selecteert een van de beschik bare methoden en volgt de stappen om die methode in te stellen. Wanneer u klaar bent, ziet de gebruiker de methode die is ingesteld op de pagina met beveiligings gegevens.
 
 ### <a name="delete-security-info-from-my-profile"></a>Beveiligings gegevens uit mijn profiel verwijderen
 

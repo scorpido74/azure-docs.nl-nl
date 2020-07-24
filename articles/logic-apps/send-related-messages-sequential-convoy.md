@@ -6,15 +6,16 @@ ms.suite: integration
 ms.reviewer: apseth, divswa, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: bd6b05489d13f835de4dce2aa3d885132285efca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c00d2e4f622bcfad7b2468013336f0d936e318c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987605"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87048665"
 ---
 # <a name="send-related-messages-in-order-by-using-a-sequential-convoy-in-azure-logic-apps-with-azure-service-bus"></a>Verzend gerelateerde berichten in de juiste volg orde door gebruik te maken van een opeenvolgende verwerkings in Azure Logic Apps met Azure Service Bus
 
-Wanneer u gecorreleerde berichten in een specifieke volg orde wilt verzenden, kunt u het [ *sequentiële verwerkings* patroon](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy) volgen wanneer u [Azure Logic apps](../logic-apps/logic-apps-overview.md) gebruikt met behulp van de [Azure service bus-connector](../connectors/connectors-create-api-servicebus.md). Gerelateerde berichten hebben een eigenschap die de relatie tussen deze berichten definieert, zoals de ID van de [sessie](../service-bus-messaging/message-sessions.md) in service bus.
+Wanneer u gecorreleerde berichten in een specifieke volg orde wilt verzenden, kunt u het [ *sequentiële verwerkings* patroon](/azure/architecture/patterns/sequential-convoy) volgen wanneer u [Azure Logic apps](../logic-apps/logic-apps-overview.md) gebruikt met behulp van de [Azure service bus-connector](../connectors/connectors-create-api-servicebus.md). Gerelateerde berichten hebben een eigenschap die de relatie tussen deze berichten definieert, zoals de ID van de [sessie](../service-bus-messaging/message-sessions.md) in service bus.
 
 Stel bijvoorbeeld dat u 10 berichten hebt voor een sessie met de naam ' sessie 1 ' en u vijf berichten hebt voor een sessie met de naam ' sessie 2 ' die allemaal naar dezelfde [Service Bus wachtrij](../service-bus-messaging/service-bus-queues-topics-subscriptions.md)worden verzonden. U kunt een logische app maken die berichten uit de wachtrij verwerkt, zodat alle berichten van "sessie 1" worden verwerkt door één trigger uitvoering en alle berichten van sessie 2 worden verwerkt door de volgende trigger uitvoering.
 
@@ -28,7 +29,7 @@ In dit artikel wordt beschreven hoe u een logische app maakt die dit patroon imp
 
 Als u het JSON-bestand van deze sjabloon wilt bekijken, raadpleegt u [github: service-bus-sessions.jsop](https://github.com/Azure/logicapps/blob/master/templates/service-bus-sessions.json).
 
-Zie voor meer informatie [sequentieel verwerkings-patroon: Azure Architecture Cloud-ontwerp patronen](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy).
+Zie voor meer informatie [sequentieel verwerkings-patroon: Azure Architecture Cloud-ontwerp patronen](/azure/architecture/patterns/sequential-convoy).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -143,7 +144,7 @@ Dit is de stroom op het hoogste niveau in de `Try` [bereik actie](../logic-apps/
 
 #### <a name="branch-1-complete-initial-message-in-queue"></a>Vertakking #1: het eerste bericht in de wachtrij volt ooien
 
-| Naam | Description |
+| Naam | Beschrijving |
 |------|-------------|
 | `Complete initial message in queue` | Met deze Service Bus actie wordt het ophalen van een bericht als voltooid gemarkeerd en wordt het bericht uit de wachtrij verwijderd om te voor komen dat de bewerking opnieuw wordt uitgevoerd. Zie [het eerste bericht afhandelen](#handle-initial-message)voor meer informatie. |
 | `While there are more messages for the session in the queue` | De [lus wordt **pas** ](../logic-apps/logic-apps-control-flow-loops.md#until-loop) uitgevoerd als er berichten worden ontvangen terwijl er berichten bestaan of totdat het één uur duurt. Zie voor meer informatie over de acties in deze lus, [terwijl er meer berichten zijn voor de sessie in de wachtrij](#while-more-messages-for-session). |
@@ -167,7 +168,7 @@ Dit is de stroom op het hoogste niveau in de `Catch` bereik actie wanneer de det
 
 ![Werk stroom voor bereik acties catch](./media/send-related-messages-sequential-convoy/catch-scope-action.png)
 
-| Naam | Description |
+| Naam | Beschrijving |
 |------|-------------|
 | **`Close a session in a queue and fail`** | Met deze Service Bus actie wordt de sessie in de wachtrij gesloten, zodat de sessie vergrendeling niet actief blijft. Zie [een sessie in een wachtrij sluiten](#close-session-fail)voor meer informatie. |
 | **`Find failure msg from 'Try' block`** | Met deze actie voor de [ **filter matrix** ](../logic-apps/logic-apps-perform-data-operations.md#filter-array-action) wordt een matrix gemaakt op basis van de invoer en uitvoer van alle acties binnen het `Try` bereik op basis van de opgegeven criteria. In dit geval retourneert deze actie de uitvoer van de acties die de status hebben veroorzaakt `Failed` . Zie [fout bericht in try-blok zoeken](#find-failure-message)voor meer informatie. |
@@ -201,7 +202,7 @@ Ga als volgt te werk om de waarden op te geven voor de trigger en acties in de *
   | **Frequentie** | Yes | **Seconde**, **minuut**, **uur**, **dag**, **week**of **maand** | De tijds eenheid voor het terugkeer patroon dat moet worden gebruikt bij het controleren op een bericht. <p>**Tip**: als u een **tijd zone** of **begin tijd**wilt toevoegen, selecteert u deze eigenschappen in de lijst **nieuwe para meters toevoegen** . |
   |||||
 
-  Zie [service bus-wanneer een bericht wordt ontvangen in een wachtrij (Peek-Lock)](https://docs.microsoft.com/connectors/servicebus/#when-a-message-is-received-in-a-queue-(peek-lock))voor meer informatie over triggers. De trigger voert een [ServiceBusMessage](https://docs.microsoft.com/connectors/servicebus/#servicebusmessage)uit.
+  Zie [service bus-wanneer een bericht wordt ontvangen in een wachtrij (Peek-Lock)](/connectors/servicebus/#when-a-message-is-received-in-a-queue-(peek-lock))voor meer informatie over triggers. De trigger voert een [ServiceBusMessage](/connectors/servicebus/#servicebusmessage)uit.
 
 Na het initialiseren van de sessie gebruikt de werk stroom de actie **variabele initialiseren** om een Booleaanse variabele te maken die in eerste instantie is ingesteld op `false` en geeft aan wanneer aan de volgende voor waarden wordt voldaan: 
 
@@ -421,4 +422,4 @@ Als u uw logische app wilt testen, verzendt u berichten naar uw Service Bus wach
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over de [Triggers en acties van de service bus-connector](https://docs.microsoft.com/connectors/servicebus/)
+* Meer informatie over de [Triggers en acties van de service bus-connector](/connectors/servicebus/)

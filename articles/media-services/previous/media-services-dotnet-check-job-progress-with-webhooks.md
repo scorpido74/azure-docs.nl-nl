@@ -14,17 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: c0e4d281880b3870c81352efca146ece7100be74
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 0a82050bef36e139c122ea97f777fb5cb1906974
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964308"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052958"
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Gebruik Azure-webhooks om Media Services taak meldingen te bewaken met .NET 
 
 > [!NOTE]
-> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](../latest/index.yml). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
 Wanneer u taken uitvoert, hebt u vaak een manier nodig om de voortgang van de taak bij te houden. U kunt Media Services taak meldingen bewaken met behulp van Azure-webhooks of [Azure Queue-opslag](media-services-dotnet-check-job-progress-with-queues.md). In dit artikel wordt beschreven hoe u kunt werken met webhooks.
 
@@ -61,7 +61,7 @@ Wanneer u Media Services functies ontwikkelt, is het handig om omgevings variabe
 
 De sectie [Toepassings instellingen](media-services-dotnet-how-to-use-azure-functions.md#configure-function-app-settings) definieert para meters die worden gebruikt in de webhook die in dit artikel is gedefinieerd. Voeg ook de volgende para meters toe aan de app-instellingen. 
 
-|Name|Definitie|Voorbeeld| 
+|Naam|Definitie|Voorbeeld| 
 |---|---|---|
 |SigningKey |Een handtekening sleutel.| j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt|
 |WebHookEndpoint | Een adres van een webhook-eind punt. Zodra de webhook-functie is gemaakt, kunt u de URL kopiëren van de koppeling **functie-URL ophalen** . | https: \/ /juliakofuncapp.azurewebsites.net/API/Notification_Webhook_Function?code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g = =.|

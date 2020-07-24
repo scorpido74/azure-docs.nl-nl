@@ -9,11 +9,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/17/2017
 ms.author: tagore
-ms.openlocfilehash: 774d2bb58fd7dd75825be8f433f078d70c13fe8c
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 25cde21d72de49c5a4f51121f2aa4295319899ac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919980"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049200"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Een Node.js-toepassing maken en implementeren in een Azure Cloud Service
 
@@ -85,10 +86,10 @@ http.createServer(function (req, res) {
 
 Deze code is in wezen hetzelfde als het testitem 'Hallo wereld' op de [nodejs.org]-website, behalve dat het poortnummer wordt gebruikt dat is toegewezen door de cloudomgeving.
 
-## <a name="deploy-the-application-to-azure"></a>De toepassing implementeren in Azure
+## <a name="deploy-the-application-to-azure"></a>De app implementeren in Azure
 
 > [!NOTE]
-> U hebt een Azure-account nodig om deze zelfstudie te voltooien. U kunt [uw voordelen als MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) of [u aanmelden voor een gratis proefversie](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A85619ABF).
+> U hebt een Azure-account nodig om deze zelfstudie te voltooien. U kunt [de voor delen van uw MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) of [zich aanmelden voor een gratis account](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A85619ABF).
 
 ### <a name="download-the-azure-publishing-settings"></a>De Azure-publicatie-instellingen downloaden
 Voor het implementeren van uw toepassing naar Azure moet u eerst de publicatie-instellingen voor uw Azure-abonnement downloaden.
@@ -177,9 +178,9 @@ Zie het [Node.js-ontwikkelaarscentrum] voor meer informatie.
 
 [Vergelijking van Azure Websites, Cloud Services en Virtual Machines]: /azure/architecture/guide/technology-choices/compute-decision-tree
 [een eenvoudige web-app-functie te gebruiken]: ../app-service/app-service-web-get-started-nodejs.md
-[Azure Powershell]: /powershell/azureps-cmdlets-docs
+[Azure Powershell]: /powershell/azure/
 [Azure SDK voor .NET 2.7]: https://www.microsoft.com/en-us/download/details.aspx?id=48178
-[Koppel PowerShell]: /powershell/azureps-cmdlets-docs
+[Koppel PowerShell]: /powershell/azure/
 [nodejs.org]: https://nodejs.org/
 [Overzicht van het maken van een gehoste service voor Azure]: https://azure.microsoft.com/documentation/services/cloud-services/
 [Node.js Developer Center]: https://azure.microsoft.com/develop/nodejs/

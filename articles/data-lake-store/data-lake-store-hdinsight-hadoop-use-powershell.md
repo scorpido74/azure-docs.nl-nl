@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 902210f0ba6fc195cd219dd5a24e7098ed484d8f
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: b1a228e9d15a349f032291fb0678bdd0ad9d95b3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855656"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87048848"
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-as-additional-storage"></a>Azure PowerShell gebruiken om een HDInsight-cluster te maken met Azure Data Lake Storage Gen1 (als extra opslag)
 
@@ -51,7 +51,7 @@ Het configureren van HDInsight voor het werken met Data Lake Storage Gen1 met Po
 Voordat u met deze zelfstudie begint, moet u het volgende hebben of hebben gedaan:
 
 * **Een Azure-abonnement**. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial/).
-* **Azure PowerShell 1.0 of hoger**. Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview).
+* **Azure PowerShell 1.0 of hoger**. Zie [Azure PowerShell installeren en configureren](/powershell/azure/).
 * **Windows SDK**. Deze kunt u [hier](https://dev.windows.com/en-us/downloads) downloaden. U kunt dit gebruiken om een beveiligings certificaat te maken.
 * **Azure Active Directory Service-Principal**. De stappen in deze zelf studie bevatten instructies over het maken van een Service-Principal in azure AD. U moet echter een Azure AD-beheerder zijn om een service-principal te kunnen maken. Als u een Azure AD-beheerder bent, kunt u deze vereiste overs Laan en door gaan met de zelf studie.
 

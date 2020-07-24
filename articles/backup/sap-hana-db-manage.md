@@ -3,17 +3,18 @@ title: Back-ups van SAP HANA data bases op virtuele machines van Azure beheren
 description: In dit artikel leert u algemene taken voor het beheren en bewaken van SAP HANA-data bases die worden uitgevoerd op virtuele machines van Azure.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: e3705750e32b8b34ed397b8f68f22b0728129266
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98dd67668d1b88a25dfa3b91174cd96730c435e1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83701122"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049461"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Back-ups van SAP HANA-databases beheren en bewaken
 
-In dit artikel worden algemene taken beschreven voor het beheren en bewaken van SAP HANA-data bases die worden uitgevoerd op een virtuele Azure-machine (VM) en waarvan een back-up is gemaakt naar een Azure Backup Recovery Services kluis door de [Azure backup](https://docs.microsoft.com/azure/backup/backup-overview) -service. U leert hoe u taken en waarschuwingen bewaken, een back-up op aanvraag kunt activeren, beleids regels kunt bewerken, de database beveiliging wilt stoppen en hervatten en de registratie van een VM kunt verwijderen uit back-ups.
+In dit artikel worden algemene taken beschreven voor het beheren en bewaken van SAP HANA-data bases die worden uitgevoerd op een virtuele Azure-machine (VM) en waarvan een back-up is gemaakt naar een Azure Backup Recovery Services kluis door de [Azure backup](./backup-overview.md) -service. U leert hoe u taken en waarschuwingen bewaken, een back-up op aanvraag kunt activeren, beleids regels kunt bewerken, de database beveiliging wilt stoppen en hervatten en de registratie van een VM kunt verwijderen uit back-ups.
 
-Als u nog geen back-ups hebt geconfigureerd voor uw SAP HANA-data bases, raadpleegt u back-ups [maken SAP Hana data bases op Azure-vm's](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database).
+Als u nog geen back-ups hebt geconfigureerd voor uw SAP HANA-data bases, raadpleegt u back-ups [maken SAP Hana data bases op Azure-vm's](./backup-azure-sap-hana-database.md).
 
 ## <a name="monitor-manual-backup-jobs-in-the-portal"></a>Hand matige back-uptaken controleren in de portal
 
@@ -25,7 +26,7 @@ De taken die u in deze Portal ziet, omvatten database detectie en-registratie, e
 
 ![Lijst met back-uptaken](./media/sap-hana-db-manage/backup-jobs-list.png)
 
-Ga voor meer informatie over bewaking naar [bewaking in het Azure Portal](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor) en [bewaking met behulp van Azure monitor](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor).
+Ga voor meer informatie over bewaking naar [bewaking in het Azure Portal](./backup-azure-monitoring-built-in-monitor.md) en [bewaking met behulp van Azure monitor](./backup-azure-monitoring-use-azuremonitor.md).
 
 ## <a name="view-backup-alerts"></a>Waarschuwingen voor back-ups weergeven
 
@@ -50,7 +51,7 @@ Vandaag kunt Azure Backup de verzen ding van waarschuwingen via e-mail toestaan.
 * Geconsolideerd op database niveau op fout code.
 * Alleen verzonden voor de eerste back-upfout van een Data Base.
 
-Naar meer informatie over bewaking, gaat u naar [bewaking in het Azure Portal](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor) en [bewaking met behulp van Azure monitor](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor).
+Ga voor meer informatie over bewaking naar [bewaking in het Azure Portal](./backup-azure-monitoring-built-in-monitor.md) en [bewaking met behulp van Azure monitor](./backup-azure-monitoring-use-azuremonitor.md).
 
 ## <a name="management-operations"></a>Beheerbewerkingen
 
@@ -62,7 +63,7 @@ Back-ups worden uitgevoerd volgens het beleids schema. U kunt als volgt een back
 
 1. Klik in het menu kluis op **Back-upitems**.
 2. Selecteer in **Back-upitems**de virtuele machine waarop de SAP Hana-data base wordt uitgevoerd en klik vervolgens op **Nu back-up maken**.
-3. In **Nu back-up**kunt u het besturings element kalender gebruiken om de laatste dag te selecteren dat het herstel punt moet worden bewaard. Klik vervolgens op **OK**.
+3. Kies in **Nu back-up**het type back-up dat u wilt uitvoeren. Klik vervolgens op **OK**. Deze back-up wordt bewaard op basis van het beleid dat aan dit back-upitem is gekoppeld.
 4. De portal meldingen bewaken. U kunt de voortgang van de taak in het kluis dashboard controleren > **back-uptaken**worden  >  **uitgevoerd**. Afhankelijk van de grootte van de data base kan het maken van de eerste back-up enige tijd duren.
 
 ### <a name="hana-native-client-integration"></a>HANA native client-integratie
@@ -73,7 +74,7 @@ Back-ups op aanvraag die vanuit een van de HANA-systeem eigen clients (naar **Ba
 
 ![Laatste back-ups worden uitgevoerd](./media/sap-hana-db-manage/last-backups.png)
 
-U kunt [deze back-ups ook bewaken](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#monitor-manual-backup-jobs-in-the-portal) op de pagina **back-uptaken** .
+U kunt [deze back-ups ook bewaken](#monitor-manual-backup-jobs-in-the-portal) op de pagina **back-uptaken** .
 
 Deze back-ups op aanvraag worden ook weer gegeven in de lijst met herstel punten voor herstel.
 
@@ -81,7 +82,7 @@ Deze back-ups op aanvraag worden ook weer gegeven in de lijst met herstel punten
 
 #### <a name="restore"></a>Herstellen
 
-Herstel bewerkingen die zijn geactiveerd vanuit HANA native clients (met behulp van **Backint**) om op dezelfde computer te herstellen, kunnen worden [gecontroleerd](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#monitor-manual-backup-jobs-in-the-portal) vanaf de pagina **back-uptaken** .
+Herstel bewerkingen die zijn geactiveerd vanuit HANA native clients (met behulp van **Backint**) om op dezelfde computer te herstellen, kunnen worden [gecontroleerd](#monitor-manual-backup-jobs-in-the-portal) vanaf de pagina **back-uptaken** .
 
 ### <a name="run-sap-hana-native-client-backup-on-a-database-with-azure-backup-enabled"></a>SAP HANA systeem eigen client back-up uitvoeren op een Data Base waarvoor Azure Backup is ingeschakeld
 
@@ -115,13 +116,13 @@ U kunt het onderliggende beleid voor een SAP HANA back-upitem wijzigen.
 
   ![Bestaand back-upbeleid selecteren](./media/sap-hana-db-manage/existing-backup-policy.png)
 
-* Wijzig het beleid en kies in de lijst. [Maak indien nodig een nieuw back-upbeleid](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database#create-a-backup-policy) .
+* Wijzig het beleid en kies in de lijst. [Maak indien nodig een nieuw back-upbeleid](./backup-azure-sap-hana-database.md#create-a-backup-policy) .
 
   ![Beleid kiezen uit vervolg keuzelijst](./media/sap-hana-db-manage/choose-backup-policy.png)
 
-* Sla de wijzigingen op
+* De wijzigingen opslaan
 
-  ![Sla de wijzigingen op](./media/sap-hana-db-manage/save-changes.png)
+  ![De wijzigingen opslaan](./media/sap-hana-db-manage/save-changes.png)
 
 * Beleids wijzigingen zijn van invloed op alle gekoppelde back-upitems en triggers die overeenkomen met het **configureren van beveiligings** taken.
 
@@ -241,4 +242,4 @@ Gebruik deze optie met de volgende waarschuwing: wanneer een virtuele machine wo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het [oplossen van veelvoorkomende problemen bij het maken van back-ups van SAP Hana-data bases.](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot)
+* Meer informatie over het [oplossen van veelvoorkomende problemen bij het maken van back-ups van SAP Hana-data bases.](./backup-azure-sap-hana-database-troubleshoot.md)

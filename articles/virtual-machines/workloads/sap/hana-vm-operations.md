@@ -15,11 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0ede0f5d74ceb5ce79cdfc095b3ffeccd96a1b3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e01eecf24802bc43aebfa7b02105a2b1aa679a52
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84230139"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051942"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Configuraties en bewerkingen van SAP HANA-infrastructuur in Azure
 Dit document bevat richt lijnen voor het configureren van Azure-infra structuur en-besturings SAP HANA systemen die zijn geïmplementeerd op Azure native virtual machines (Vm's). Het document bevat ook configuratie-informatie voor SAP HANA scale-out voor de M128s VM-SKU. Dit document is niet bedoeld als vervanging van de Standard SAP-documentatie, die de volgende inhoud bevat:
@@ -31,20 +32,20 @@ Dit document bevat richt lijnen voor het configureren van Azure-infra structuur 
 ## <a name="prerequisites"></a>Vereisten
 Als u deze hand leiding wilt gebruiken, moet u basis kennis hebben van de volgende Azure-onderdelen:
 
-- [Virtuele machines van Azure](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
-- [Azure-netwerken en virtuele netwerken](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
-- [Azure Storage](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-disks)
+- [Virtuele machines van Azure](../../linux/tutorial-manage-vm.md)
+- [Azure-netwerken en virtuele netwerken](../../linux/tutorial-virtual-network.md)
+- [Azure Storage](../../linux/tutorial-manage-disks.md)
 
-Zie de sectie [SAP on Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) van de [Azure-documentatie](https://docs.microsoft.com/azure/)voor meer informatie over SAP NetWeaver en andere SAP-onderdelen op Azure.
+Zie de sectie [SAP on Azure](./get-started.md) van de [Azure-documentatie](../../../index.yml)voor meer informatie over SAP NetWeaver en andere SAP-onderdelen op Azure.
 
 ## <a name="basic-setup-considerations"></a>Algemene overwegingen bij de installatie
 In de volgende secties worden de belangrijkste overwegingen beschreven voor het implementeren van SAP HANA systemen op Azure-Vm's.
 
 ### <a name="connect-into-azure-virtual-machines"></a>Verbinding maken met virtuele machines van Azure
-Zoals beschreven in de [plannings handleiding voor Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)zijn er twee basis methoden om verbinding te maken met Azure vm's:
+Zoals beschreven in de [plannings handleiding voor Azure virtual machines](./planning-guide.md)zijn er twee basis methoden om verbinding te maken met Azure vm's:
 
 - Maak verbinding via internet en open bare eind punten op een Jump VM of op de VM met SAP HANA.
-- Maak verbinding via een [VPN-](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal) of Azure- [ExpressRoute](https://azure.microsoft.com/services/expressroute/).
+- Maak verbinding via een [VPN-](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) of Azure- [ExpressRoute](https://azure.microsoft.com/services/expressroute/).
 
 Site-naar-site-connectiviteit via VPN of ExpressRoute is nodig voor productie scenario's. Dit type verbinding is ook nodig voor niet-productie scenario's waarbij wordt gefeedd in productie scenario's waarin SAP-software wordt gebruikt. In de volgende afbeelding ziet u een voor beeld van connectiviteit tussen sites:
 
@@ -63,7 +64,7 @@ Implementeer de virtuele machines in azure met behulp van:
 - Azure PowerShell-cmdlets.
 - De Azure CLI.
 
-U kunt ook een volledig geïnstalleerd SAP HANA-platform implementeren op de Azure VM-Services via het [SAP-Cloud platform](https://cal.sap.com/). Het installatie proces wordt beschreven in [SAP S/4HANA of BW/4HANA op Azure implementeren](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h) of met de automatisering die [hier](https://github.com/AzureCAT-GSI/SAP-HANA-ARM)is uitgebracht.
+U kunt ook een volledig geïnstalleerd SAP HANA-platform implementeren op de Azure VM-Services via het [SAP-Cloud platform](https://cal.sap.com/). Het installatie proces wordt beschreven in [SAP S/4HANA of BW/4HANA op Azure implementeren](./cal-s4h.md) of met de automatisering die [hier](https://github.com/AzureCAT-GSI/SAP-HANA-ARM)is uitgebracht.
 
 >[!IMPORTANT]
 > Als u M208xx_v2 Vm's wilt gebruiken, moet u zorgvuldig uw Linux-installatie kopie selecteren in de galerie met installatie kopieën van Azure VM. Lees de [grootten van de virtuele machines geoptimaliseerd voor geheugen](../../mv2-series.md)om de details te lezen.
@@ -78,11 +79,11 @@ Lees het document [SAP Hana Azure virtual machine-opslag configuraties](./hana-v
 Wanneer u een site-naar-site-verbinding hebt met Azure via VPN of ExpressRoute, moet u ten minste één virtueel Azure-netwerk hebben dat is verbonden via een virtuele gateway naar het VPN-of ExpressRoute-circuit. In eenvoudige implementaties kan de virtuele gateway worden geïmplementeerd in een subnet van het virtuele Azure-netwerk (VNet) dat als host fungeert voor de SAP HANA exemplaren. Als u SAP HANA wilt installeren, maakt u twee extra subnetten in het virtuele Azure-netwerk. Eén subnet fungeert als host voor de virtuele machines om de SAP HANA-exemplaren uit te voeren. Het andere subnet voert JumpBox of Management-Vm's uit voor het hosten van SAP HANA Studio, andere beheer software of uw toepassings software.
 
 > [!IMPORTANT]
-> Buiten de functionaliteit, maar belang rijker vanwege de prestaties wordt niet ondersteund voor het configureren van [virtuele Azure-netwerk apparaten](https://azure.microsoft.com/solutions/network-appliances/) in het communicatie traject tussen de SAP-toepassing en de DBMS-laag van een SAP NetWeaver, hybris of S/4HANA SAP-systeem. De communicatie tussen de SAP-toepassingslaag en de DBMS-laag moet direct een van beide zijn. De beperking omvat geen [Azure ASG-en NSG-regels](https://docs.microsoft.com/azure/virtual-network/security-overview) zolang deze ASG-en NSG-regels directe communicatie toestaan. Andere scenario's waarbij Nva's niet worden ondersteund, zijn in communicatie paden tussen Azure-Vm's die Linux pacemaker-cluster knooppunten en SBD-apparaten vertegenwoordigen, zoals wordt beschreven in [hoge Beschik baarheid voor SAP NetWeaver op Azure vm's op SuSE Linux Enterprise Server voor SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse). Of in communicatie paden tussen virtuele machines van Azure en Windows Server SOFS, zoals beschreven in een [SAP ASCS/SCS-exemplaar op een Windows-failovercluster in een cluster met behulp van een bestands share in azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share). Nva's in communicatie paden kunnen eenvoudig de netwerk latentie tussen twee communicatie partners verdubbelen, kan de door Voer beperken tot kritieke paden tussen de SAP-toepassingslaag en de DBMS-laag. In sommige scenario's met klanten kan Nva's ertoe leiden dat pacemaker Linux-clusters mislukken wanneer de communicatie tussen de Linux pacemaker-cluster knooppunten via een NVA moet communiceren met hun SBD-apparaat.  
+> Buiten de functionaliteit, maar belang rijker vanwege de prestaties wordt niet ondersteund voor het configureren van [virtuele Azure-netwerk apparaten](https://azure.microsoft.com/solutions/network-appliances/) in het communicatie traject tussen de SAP-toepassing en de DBMS-laag van een SAP NetWeaver, hybris of S/4HANA SAP-systeem. De communicatie tussen de SAP-toepassingslaag en de DBMS-laag moet direct een van beide zijn. De beperking omvat geen [Azure ASG-en NSG-regels](../../../virtual-network/security-overview.md) zolang deze ASG-en NSG-regels directe communicatie toestaan. Andere scenario's waarbij Nva's niet worden ondersteund, zijn in communicatie paden tussen Azure-Vm's die Linux pacemaker-cluster knooppunten en SBD-apparaten vertegenwoordigen, zoals wordt beschreven in [hoge Beschik baarheid voor SAP NetWeaver op Azure vm's op SuSE Linux Enterprise Server voor SAP-toepassingen](./high-availability-guide-suse.md). Of in communicatie paden tussen virtuele machines van Azure en Windows Server SOFS, zoals beschreven in een [SAP ASCS/SCS-exemplaar op een Windows-failovercluster in een cluster met behulp van een bestands share in azure](./sap-high-availability-guide-wsfc-file-share.md). Nva's in communicatie paden kunnen eenvoudig de netwerk latentie tussen twee communicatie partners verdubbelen, kan de door Voer beperken tot kritieke paden tussen de SAP-toepassingslaag en de DBMS-laag. In sommige scenario's met klanten kan Nva's ertoe leiden dat pacemaker Linux-clusters mislukken wanneer de communicatie tussen de Linux pacemaker-cluster knooppunten via een NVA moet communiceren met hun SBD-apparaat.  
 > 
 
 > [!IMPORTANT]
-> Een ander ontwerp dat **niet** wordt ondersteund, is de schei ding van de SAP-toepassingslaag en de DBMS-laag in verschillende virtuele netwerken [van Azure die niet met elkaar](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) zijn gekoppeld. Het is raadzaam om de SAP-toepassingslaag en de DBMS-laag te scheiden met subnetten in een virtueel Azure-netwerk in plaats van verschillende virtuele netwerken van Azure te gebruiken. Als u besluit de aanbeveling niet te volgen en in plaats daarvan de twee lagen te scheiden in verschillende virtuele netwerken, moeten de twee virtuele netwerken worden [gekoppeld.](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) Houd er rekening mee dat het netwerk verkeer tussen twee [gepeerde](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) virtuele netwerken van Azure onderhevig is aan overdrachts kosten. Met het enorme gegevens volume in veel terabytes tussen de SAP-toepassingslaag en de DBMS-laag kunnen aanzienlijke kosten worden gecumuleerd als de SAP-toepassingslaag en de DBMS-laag worden gescheiden tussen twee peered virtuele netwerken van Azure. 
+> Een ander ontwerp dat **niet** wordt ondersteund, is de schei ding van de SAP-toepassingslaag en de DBMS-laag in verschillende virtuele netwerken [van Azure die niet met elkaar](../../../virtual-network/virtual-network-peering-overview.md) zijn gekoppeld. Het is raadzaam om de SAP-toepassingslaag en de DBMS-laag te scheiden met subnetten in een virtueel Azure-netwerk in plaats van verschillende virtuele netwerken van Azure te gebruiken. Als u besluit de aanbeveling niet te volgen en in plaats daarvan de twee lagen te scheiden in verschillende virtuele netwerken, moeten de twee virtuele netwerken worden [gekoppeld.](../../../virtual-network/virtual-network-peering-overview.md) Houd er rekening mee dat het netwerk verkeer tussen twee [gepeerde](../../../virtual-network/virtual-network-peering-overview.md) virtuele netwerken van Azure onderhevig is aan overdrachts kosten. Met het enorme gegevens volume in veel terabytes tussen de SAP-toepassingslaag en de DBMS-laag kunnen aanzienlijke kosten worden gecumuleerd als de SAP-toepassingslaag en de DBMS-laag worden gescheiden tussen twee peered virtuele netwerken van Azure. 
 
 Wanneer u de Vm's installeert om SAP HANA uit te voeren, moeten de Vm's:
 
@@ -90,24 +91,24 @@ Wanneer u de Vm's installeert om SAP HANA uit te voeren, moeten de Vm's:
 - Statische privé-IP-adressen die worden geïmplementeerd voor virtuele Nic's.
 
 > [!NOTE]
-> Wijs statische IP-adressen via Azure toe aan afzonderlijke Vnic's. Wijs geen vaste IP-adressen in het gast besturingssysteem toe aan een vNIC. Sommige Azure-Services, zoals Azure Backup-Service, zijn afhankelijk van het feit dat ten minste de primaire vNIC is ingesteld op DHCP en niet op statische IP-adressen. Zie ook het document [problemen met back-up van Azure Virtual Machine oplossen](https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot#networking). Als u meerdere statische IP-adressen aan een virtuele machine wilt toewijzen, moet u meerdere Vnic's toewijzen aan een virtuele machine.
+> Wijs statische IP-adressen via Azure toe aan afzonderlijke Vnic's. Wijs geen vaste IP-adressen in het gast besturingssysteem toe aan een vNIC. Sommige Azure-Services, zoals Azure Backup-Service, zijn afhankelijk van het feit dat ten minste de primaire vNIC is ingesteld op DHCP en niet op statische IP-adressen. Zie ook het document [problemen met back-up van Azure Virtual Machine oplossen](../../../backup/backup-azure-vms-troubleshoot.md#networking). Als u meerdere statische IP-adressen aan een virtuele machine wilt toewijzen, moet u meerdere Vnic's toewijzen aan een virtuele machine.
 >
 >
 
 Voor implementaties die zich nu voordoen, moet u echter een Virtual Data Center-netwerk architectuur in azure maken. Deze architectuur adviseert de schei ding van de Azure VNet-gateway die is verbonden met on-premises in een afzonderlijk Azure-VNet. Dit afzonderlijke VNet moet het hosten van al het verkeer dat naar een on-premises of het internet blijft. Met deze aanpak kunt u software implementeren voor controle en logboek registratie van verkeer waarmee het virtuele Data Center in Azure in dit afzonderlijke hub VNet wordt ingevoerd. U hebt dus één VNet dat als host fungeert voor alle software en configuraties die betrekking hebben op in-en uitgaand verkeer naar uw Azure-implementatie.
 
-De artikelen [Azure Virtual Data Center: een netwerk perspectief](https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter) en [Azure Virtual Data Center en het Enter prise Control-vlak](https://docs.microsoft.com/azure/architecture/vdc/) geven meer informatie over de virtuele datacenter benadering en het gerelateerde Azure VNet-ontwerp.
+De artikelen [Azure Virtual Data Center: een netwerk perspectief](/azure/architecture/vdc/networking-virtual-datacenter) en [Azure Virtual Data Center en het Enter prise Control-vlak](/azure/architecture/vdc/) geven meer informatie over de virtuele datacenter benadering en het gerelateerde Azure VNet-ontwerp.
 
 
 >[!NOTE]
->Voor verkeer dat stroomt tussen een hub VNet en spoke VNet met behulp van [Azure VNet-peering](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) , worden extra [kosten](https://azure.microsoft.com/pricing/details/virtual-network/)in rekening gebracht. Op basis van deze kosten moet u wellicht overwegen om inbreuk te maken op het uitvoeren van een strikt hub-en spoke-netwerk ontwerp en het uitvoeren van meerdere [Azure ExpressRoute-gateways](https://docs.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways) waarmee u verbinding maakt met ' spokes ' om VNet-peering over te slaan. Azure ExpressRoute-gateways introduceren echter ook extra [kosten](https://azure.microsoft.com/pricing/details/vpn-gateway/) . Er kunnen ook extra kosten voor software van derden optreden die u gebruikt voor het vastleggen van netwerk verkeer, controle en bewaking. Afhankelijk van de kosten voor het uitwisselen van gegevens met behulp van VNet-peering aan de ene kant en de kosten die zijn gemaakt door extra Azure ExpressRoute-gateways en extra software licenties, kunt u kiezen voor micro segmentering binnen één VNet door subnetten als isolatie-eenheid te gebruiken in plaats van VNets.
+>Voor verkeer dat stroomt tussen een hub VNet en spoke VNet met behulp van [Azure VNet-peering](../../../virtual-network/virtual-network-peering-overview.md) , worden extra [kosten](https://azure.microsoft.com/pricing/details/virtual-network/)in rekening gebracht. Op basis van deze kosten moet u wellicht overwegen om inbreuk te maken op het uitvoeren van een strikt hub-en spoke-netwerk ontwerp en het uitvoeren van meerdere [Azure ExpressRoute-gateways](../../../expressroute/expressroute-about-virtual-network-gateways.md) waarmee u verbinding maakt met ' spokes ' om VNet-peering over te slaan. Azure ExpressRoute-gateways introduceren echter ook extra [kosten](https://azure.microsoft.com/pricing/details/vpn-gateway/) . Er kunnen ook extra kosten voor software van derden optreden die u gebruikt voor het vastleggen van netwerk verkeer, controle en bewaking. Afhankelijk van de kosten voor het uitwisselen van gegevens met behulp van VNet-peering aan de ene kant en de kosten die zijn gemaakt door extra Azure ExpressRoute-gateways en extra software licenties, kunt u kiezen voor micro segmentering binnen één VNet door subnetten als isolatie-eenheid te gebruiken in plaats van VNets.
 
 
 Zie [IP-adres typen en toewijzings methoden in azure](../../../virtual-network/public-ip-addresses.md)voor een overzicht van de verschillende methoden voor het toewijzen van IP-adressen. 
 
 Voor Vm's met SAP HANA moet u werken met vaste IP-adressen die zijn toegewezen. Reden is dat sommige configuratie kenmerken voor HANA-referentie-IP-adressen.
 
-[Azure-netwerk beveiligings groepen (nsg's)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) worden gebruikt voor het omleiden van verkeer dat wordt doorgestuurd naar het SAP Hana-exemplaar of de JumpBox. De Nsg's en uiteindelijk [toepassings beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/security-overview#application-security-groups) zijn gekoppeld aan de SAP Hana subnet en het beheer subnet.
+[Azure-netwerk beveiligings groepen (nsg's)](../../../virtual-network/virtual-network-vnet-plan-design-arm.md) worden gebruikt voor het omleiden van verkeer dat wordt doorgestuurd naar het SAP Hana-exemplaar of de JumpBox. De Nsg's en uiteindelijk [toepassings beveiligings groepen](../../../virtual-network/security-overview.md#application-security-groups) zijn gekoppeld aan de SAP Hana subnet en het beheer subnet.
 
 De volgende afbeelding toont een overzicht van een ruwe implementatie schema voor SAP HANA na een hub-en spoke-VNet-architectuur:
 
@@ -118,7 +119,7 @@ Als u SAP HANA in azure wilt implementeren zonder een site-naar-site-verbinding,
 ![Ruw implementatie schema voor SAP HANA zonder een site-naar-site-verbinding](media/hana-vm-operations/hana-simple-networking-dmz.png)
  
 
-Een andere beschrijving van het gebruik van Azure Nva's voor het beheren en controleren van de toegang vanaf internet zonder de hub-en spoke VNet-architectuur, vindt u in het artikel [Maxi maal beschik bare virtuele netwerk apparaten implementeren](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha).
+Een andere beschrijving van het gebruik van Azure Nva's voor het beheren en controleren van de toegang vanaf internet zonder de hub-en spoke VNet-architectuur, vindt u in het artikel [Maxi maal beschik bare virtuele netwerk apparaten implementeren](/azure/architecture/reference-architectures/dmz/nva-ha).
 
 
 ## <a name="configuring-azure-infrastructure-for-sap-hana-scale-out"></a>Azure-infra structuur voor SAP HANA scale-out configureren
@@ -139,7 +140,7 @@ Een typisch basis ontwerp voor één knoop punt in een scale-out configuratie ga
 De basis configuratie van een VM-knoop punt voor SAP HANA uitschalen ziet er als volgt uit:
 
 - Voor **/Hana/Shared**gebruikt u de systeem eigen NFS-service die via Azure NetApp files wordt meegeleverd. 
-- Alle andere schijf volumes worden niet gedeeld tussen de verschillende knoop punten en zijn niet gebaseerd op NFS. Installatie configuraties en-stappen voor het uitschalen van HANA-installaties met niet-gedeelde **/Hana/data** en **/Hana/log** worden verderop in dit document nader beschreven. Voor HANA-gecertificeerde opslag die kan worden gebruikt, raadpleegt u het artikel [SAP Hana opslag configuraties voor virtuele Azure-machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage).
+- Alle andere schijf volumes worden niet gedeeld tussen de verschillende knoop punten en zijn niet gebaseerd op NFS. Installatie configuraties en-stappen voor het uitschalen van HANA-installaties met niet-gedeelde **/Hana/data** en **/Hana/log** worden verderop in dit document nader beschreven. Voor HANA-gecertificeerde opslag die kan worden gebruikt, raadpleegt u het artikel [SAP Hana opslag configuraties voor virtuele Azure-machines](./hana-vm-operations-storage.md).
 
 
 Als u het formaat van de volumes of schijven wilt wijzigen, moet u het document controleren [SAP Hana TDI-opslag vereisten](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)voor de grootte die is vereist, afhankelijk van het aantal worker-knoop punten. In het document wordt een formule vrijgegeven die u moet Toep assen om de vereiste capaciteit van het volume op te halen
@@ -176,7 +177,7 @@ Als uw Azure VM-infra structuur wordt geïmplementeerd en alle andere voor berei
 - Nadat de uiteindelijke wijziging in de global.ini para meter, start u de SAP HANA instantie opnieuw op
 - Voeg extra worker-knoop punten toe. Zie ook <https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.00/en-US/0d9fe701e2214e98ad4f8721f6558c34.html> . Geef het interne netwerk voor SAP HANA communicatie tussen knoop punten op tijdens de installatie of later met behulp van bijvoorbeeld de lokale hdblcm. Zie ook [SAP opmerking #2183363](https://launchpad.support.sap.com/#/notes/2183363)voor gedetailleerdere documentatie. 
 
-Details voor het instellen van een SAP HANA scale-out systeem met een stand-by-knoop punt in SUSE Linux wordt uitvoerig beschreven in [een SAP Hana scale-out systeem implementeren met stand-by-knoop punt op Azure-vm's met behulp van Azure NetApp files op SuSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse). Gelijkwaardige documentatie voor Red Hat vindt u in het artikel [een SAP Hana scale-out systeem met stand-by-knoop punt op virtuele machines van Azure implementeren met behulp van Azure NetApp files op Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel). 
+Details voor het instellen van een SAP HANA scale-out systeem met een stand-by-knoop punt in SUSE Linux wordt uitvoerig beschreven in [een SAP Hana scale-out systeem implementeren met stand-by-knoop punt op Azure-vm's met behulp van Azure NetApp files op SuSE Linux Enterprise Server](./sap-hana-scale-out-standby-netapp-files-suse.md). Gelijkwaardige documentatie voor Red Hat vindt u in het artikel [een SAP Hana scale-out systeem met stand-by-knoop punt op virtuele machines van Azure implementeren met behulp van Azure NetApp files op Red Hat Enterprise Linux](./sap-hana-scale-out-standby-netapp-files-rhel.md). 
 
 
 ## <a name="sap-hana-dynamic-tiering-20-for-azure-virtual-machines"></a>SAP HANA Dynamic Tiering 2,0 voor virtuele machines van Azure
@@ -210,7 +211,7 @@ In azure IaaS wordt DT 2,0 alleen ondersteund op een specifieke virtuele machine
 - M64-32ms 
 - E32sv3 
 
-Zie [hier](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory) de beschrijving van het VM-type
+Zie [hier](../../sizes-memory.md) de beschrijving van het VM-type
 
 Gezien het basis idee van DT 2,0, dat informatie over het offloaden van ' warme ' gegevens om kosten te besparen, is het zinvol om de bijbehorende VM-grootten te gebruiken. Er is geen strikte regel die betrekking heeft op de mogelijke combi Naties. Dit is afhankelijk van de specifieke werk belasting van de klant.
 
@@ -231,7 +232,7 @@ Alle combi Naties van SAP HANA-gecertificeerde M-serie-Vm's met ondersteunde DT 
 
 Het installeren van DT 2,0 op een toegewezen VM vereist een netwerk doorvoer tussen de DT 2,0 VM en de SAP HANA VM van Mini maal 10 GB. Daarom is het verplicht om alle Vm's binnen hetzelfde Azure-Vnet te plaatsen en Azure versnelde netwerken in te scha kelen.
 
-Meer informatie over versneld netwerken van Azure vindt u [hier](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)
+Meer informatie over versneld netwerken van Azure vindt u [hier](../../../virtual-network/create-vm-accelerated-networking-cli.md)
 
 ### <a name="vm-storage-for-sap-hana-dt-20"></a>VM-opslag voor SAP HANA DT 2,0
 
@@ -243,8 +244,8 @@ Volgens de best practice richt lijnen voor DT 2,0 moet de i/o-door Voer van de s
 Het is verplicht om meerdere Azure-schijven aan de DT 2,0-VM te koppelen en een software matige RAID (striping) te maken op het niveau van het besturings systeem om de maximale limiet van de schijf doorvoer per virtuele machine te krijgen. Eén Azure-schijf kan de door Voer niet bieden om de maximale VM-limiet in dit opzicht te bereiken. Azure Premium Storage is verplicht om DT 2,0 uit te voeren. 
 
 - Meer informatie over beschik bare typen Azure-schijven vindt u [hier](../../windows/disks-types.md)
-- Meer informatie over het maken van software-RAID via mdadm vindt u [hier](https://docs.microsoft.com/azure/virtual-machines/linux/configure-raid)
-- Meer informatie over het configureren van LVM voor het maken van een striped volume voor de maximale door Voer, vindt u [hier](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm)
+- Meer informatie over het maken van software-RAID via mdadm vindt u [hier](../../linux/configure-raid.md)
+- Meer informatie over het configureren van LVM voor het maken van een striped volume voor de maximale door Voer, vindt u [hier](../../linux/configure-lvm.md)
 
 Afhankelijk van de grootte vereisten zijn er verschillende opties om de maximale door Voer van een virtuele machine te bereiken. Hier vindt u mogelijke configuraties van gegevens volume schijven voor elk DT 2,0 VM-type om de maximale doorvoer limiet van de VM te bereikt. De E32sv3-VM moet worden beschouwd als een invoer niveau voor kleinere werk belastingen. Als het niet snel genoeg is om te voor komen dat het nodig is om de grootte van de virtuele machine te wijzigen in M64-32MS.
 Omdat de M64-32MS-VM veel geheugen heeft, kan de i/o-belasting de limiet voor het lezen van intensieve werk belastingen mogelijk niet bereiken. Daarom kunnen minder schijven in de Stripe-set voldoende zijn, afhankelijk van de specifieke werk belasting van de klant. Aan de kluis zijde worden de onderstaande schijf configuraties geselecteerd om de maximale door voer te garanderen:
@@ -258,7 +259,7 @@ Omdat de M64-32MS-VM veel geheugen heeft, kan de i/o-belasting de limiet voor he
 
 Met name als de werk belasting Lees-intensiever is, kan de IO-prestaties worden verhoogd om de alleen-lezen cache van Azure host in te scha kelen, zoals aanbevolen voor de gegevens volumes van database software. Dat voor het transactie logboek Azure host disk cache de waarde ' geen ' moet zijn. 
 
-Met betrekking tot de grootte van het logboek volume een aanbevolen begin punt is een heuristiek van 15% van de gegevens grootte. Het maken van het logboek volume kan worden uitgevoerd met behulp van verschillende Azure-schijf typen, afhankelijk van de kosten-en doorvoer vereisten. Voor het logboek volume is de hoge I/O-door Voer vereist.  In het geval van het gebruik van het VM-type M64-32MS is het verplicht om [Write Accelerator](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)in te scha kelen. Azure Write Accelerator biedt optimale schrijf latentie voor de schijf voor het transactie logboek (alleen beschikbaar voor de M-serie). Er zijn enkele items waarmee u rekening moet houden, zoals het maximum aantal schijven per VM-type. [Hier](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator) vindt u meer informatie over write Accelerator.
+Met betrekking tot de grootte van het logboek volume een aanbevolen begin punt is een heuristiek van 15% van de gegevens grootte. Het maken van het logboek volume kan worden uitgevoerd met behulp van verschillende Azure-schijf typen, afhankelijk van de kosten-en doorvoer vereisten. Voor het logboek volume is de hoge I/O-door Voer vereist.  In het geval van het gebruik van het VM-type M64-32MS is het verplicht om [Write Accelerator](../../linux/how-to-enable-write-accelerator.md)in te scha kelen. Azure Write Accelerator biedt optimale schrijf latentie voor de schijf voor het transactie logboek (alleen beschikbaar voor de M-serie). Er zijn enkele items waarmee u rekening moet houden, zoals het maximum aantal schijven per VM-type. [Hier](../../windows/how-to-enable-write-accelerator.md) vindt u meer informatie over write Accelerator.
 
 
 Hier volgen enkele voor beelden van het formaat van het logboek volume:
@@ -289,9 +290,9 @@ In de volgende secties worden enkele bewerkingen beschreven die betrekking hebbe
 ### <a name="back-up-and-restore-operations-on-azure-vms"></a>Back-up-en herstel bewerkingen op virtuele Azure-machines
 De volgende documenten bevatten informatie over het maken van back-ups en het herstellen van uw SAP HANA-implementatie:
 
-- [Overzicht van back-ups van SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)
-- [Back-up op bestands niveau SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-file-level)
-- [Bench Mark-moment opname van SAP HANA opslag](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-storage-snapshots)
+- [Overzicht van back-ups van SAP HANA](./sap-hana-backup-guide.md)
+- [Back-up op bestands niveau SAP HANA](./sap-hana-backup-file-level.md)
+- [Bench Mark-moment opname van SAP HANA opslag](./sap-hana-backup-guide.md)
 
 
 ### <a name="start-and-restart-vms-that-contain-sap-hana"></a>Vm's met SAP HANA starten en opnieuw opstarten
@@ -317,11 +318,10 @@ Als u SUSE Linux Enterprise Server of Red Hat uitvoert, kunt u een pacemaker-clu
 
 ## <a name="next-steps"></a>Volgende stappen
 Vertrouwd raken met de artikelen zoals vermeld
-- [Configuraties van SAP HANA in virtuele Azure-machineopslag](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
-- [Een SAP HANA scale-out systeem met stand-by-knoop punt op virtuele Azure-machines implementeren met behulp van Azure NetApp Files op SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)
-- [Een SAP HANA scale-out systeem met stand-by-knoop punt op virtuele Azure-machines implementeren met behulp van Azure NetApp Files op Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)
-- [Hoge Beschik baarheid van SAP HANA op virtuele machines van Azure op SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability)
-- [Hoge Beschik baarheid van SAP HANA op virtuele machines van Azure op Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel)
+- [Configuraties van SAP HANA in virtuele Azure-machineopslag](./hana-vm-operations-storage.md)
+- [Een SAP HANA scale-out systeem met stand-by-knoop punt op virtuele Azure-machines implementeren met behulp van Azure NetApp Files op SUSE Linux Enterprise Server](./sap-hana-scale-out-standby-netapp-files-suse.md)
+- [Een SAP HANA scale-out systeem met stand-by-knoop punt op virtuele Azure-machines implementeren met behulp van Azure NetApp Files op Red Hat Enterprise Linux](./sap-hana-scale-out-standby-netapp-files-rhel.md)
+- [Hoge Beschik baarheid van SAP HANA op virtuele machines van Azure op SUSE Linux Enterprise Server](./sap-hana-high-availability.md)
+- [Hoge Beschik baarheid van SAP HANA op virtuele machines van Azure op Red Hat Enterprise Linux](./sap-hana-high-availability-rhel.md)
 
  
-

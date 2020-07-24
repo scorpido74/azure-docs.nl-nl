@@ -13,11 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 06/25/2020
 ms.author: kumud
 ms.reviewer: anavin
-ms.openlocfilehash: 0f2bcb78b1a998c1b335a5757b832fbb1d3fc7fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88e576231e0231a105cd9ec303f63307b5eaff89
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85412495"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051621"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Een peering voor een virtueel netwerk maken-verschillende implementatie modellen en abonnementen
 
@@ -182,7 +183,7 @@ In deze zelf studie worden verschillende accounts voor elk abonnement gebruikt. 
 
 In deze zelf studie worden verschillende accounts voor elk abonnement gebruikt. Als u gebruikmaakt van een account met machtigingen voor beide abonnementen, kunt u hetzelfde account voor alle stappen gebruiken, de stappen voor het afmelden van Azure overs Laan en de regels van het script verwijderen waarmee gebruikers roltoewijzingen worden gemaakt. Vervang UserA@azure.com en UserB@azure.com in alle volgende scripts door de gebruikers namen die u gebruikt voor GebruikerA en UserB. 
 
-1. Installeer de meest recente versie van de Power shell [Azure](https://www.powershellgallery.com/packages/Azure) -en [AZ](https://www.powershellgallery.com/packages/Az) -modules. Zie [Overzicht van Azure PowerShell](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json) als u nog geen ervaring hebt met Azure PowerShell.
+1. Installeer de meest recente versie van de Power shell [Azure](https://www.powershellgallery.com/packages/Azure) -en [AZ](https://www.powershellgallery.com/packages/Az) -modules. Zie [Overzicht van Azure PowerShell](/powershell/azure/?toc=%2fazure%2fvirtual-network%2ftoc.json) als u nog geen ervaring hebt met Azure PowerShell.
 2. Start een Power shell-sessie.
 3. Meld u in Power shell aan bij UserB-abonnement als UserB door de opdracht in te voeren `Add-AzureAccount` . Het account waarmee u zich aanmeldt, moet de benodigde machtigingen hebben voor het maken van een virtuele netwerk peering. Zie [machtigingen voor peering voor virtuele netwerken](virtual-network-manage-peering.md#permissions)voor een lijst met machtigingen.
 4. Als u een virtueel netwerk (klassiek) met Power shell wilt maken, moet u een nieuw netwerk configuratie bestand maken of wijzigen. Meer informatie over het [exporteren, bijwerken en importeren van netwerk configuratie bestanden](virtual-networks-using-network-configuration-file.md). Het bestand moet het volgende **VirtualNetworkSite** -element bevatten voor het virtuele netwerk dat in deze zelf studie wordt gebruikt:
@@ -296,7 +297,7 @@ Wanneer u deze zelf studie hebt voltooid, kunt u de resources die u in de zelf s
    azure network vnet delete --vnet myVnetB --quiet
    ```
 
-### <a name="powershell"></a><a name="delete-powershell"></a>PowerShell
+### <a name="powershell"></a><a name="delete-powershell"></a>Zo
 
 1. Voer bij de Power shell-opdracht prompt de volgende opdracht in om het virtuele netwerk (Resource Manager) te verwijderen:
 

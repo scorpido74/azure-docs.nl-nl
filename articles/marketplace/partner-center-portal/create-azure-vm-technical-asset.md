@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: dannyevers
 ms.author: mingshen
 ms.date: 04/13/2020
-ms.openlocfilehash: aee2016b422dcf447dbae047c8a77ae93bf79ab7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5bed073799521498efe5302ab9af616dcdf9f9ab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107152"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053571"
 ---
 # <a name="create-your-azure-virtual-machine-technical-assets"></a>Uw technische bedrijfs middelen voor virtuele Azure-machines maken
 
@@ -43,12 +43,12 @@ Het ontwerpen, bouwen en testen van deze assets vergt tijd en vereist technische
 
 Overweeg het gebruik van een van de volgende script omgevingen om Vm's en Vhd's te beheren:
 
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
+* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)
 * [Azure-CLI](https://code.visualstudio.com/)
 
 Daarnaast kunt u de volgende hulpprogram ma's toevoegen aan uw ontwikkel omgeving:
 
-* [Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
+* [Azure-opslagverkenner](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
 * [Visual Studio Code](https://code.visualstudio.com/)
   * Extensie: [Azure Resource Manager-Hulpprogram ma's](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
   * Extensie: [beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
@@ -163,7 +163,7 @@ In deze sectie wordt beschreven hoe u een installatie kopie van een door de gebr
 
 Maak uw installatie kopie met behulp van de Azure Portal of Azure PowerShell.
 
-#### <a name="deploy-using-the-azure-portal"></a>Implementeren met de Azure-portal
+#### <a name="deploy-using-the-azure-portal"></a>Implementeren met behulp van de Azure-portal
 
 1. Op de start pagina selecteert u **een resource maken**, zoekt u naar "sjabloon implementatie" en selecteert u **maken**.
 2. Kies **uw eigen sjabloon bouwen in de editor**.
@@ -180,7 +180,7 @@ Maak uw installatie kopie met behulp van de Azure Portal of Azure PowerShell.
     | DNS-naam voor openbaar IP-adres | De naam van het open bare IP-adres. Definieer de DNS-naam voor het open bare IP-adres in de Azure Portal nadat de aanbieding is geïmplementeerd. |
     | Gebruikers naam voor de beheerder | Gebruikers naam van beheerders account voor nieuwe VM |
     | Beheerderswachtwoord | Wacht woord van beheerders account voor nieuwe VM |
-    | Het type besturingssysteem | VM-besturings systeem: Windows of Linux |
+    | Type besturingssysteem | VM-besturings systeem: Windows of Linux |
     | Abonnements-id | Id van het geselecteerde abonnement |
     | Locatie | Geografische locatie van de implementatie |
     | VM-grootte | [Azure VM-grootte](../../virtual-machines/windows/sizes.md), bijvoorbeeld Standard_A2 |

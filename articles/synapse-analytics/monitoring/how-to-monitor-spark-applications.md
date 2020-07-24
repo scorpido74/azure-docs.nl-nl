@@ -1,6 +1,6 @@
 ---
-title: Apache Spark toepassingen bewaken
-description: Gebruik Azure Synapse Studio om uw Apache Spark-toepassingen te bewaken.
+title: Apache Spark toepassingen bewaken in Synapse Studio
+description: Gebruik Synapse Studio om uw Apache Spark-toepassingen te bewaken.
 services: synapse-analytics
 author: matt1883
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: e646f1bc1a25f58dd54437cbd77750479ac9ae99
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: a4dc2604dbd62da1baa4278ff3463f41337886bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970893"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052506"
 ---
-# <a name="use-the-azure-synapse-studio-preview-to-monitor-your-apache-spark-applications"></a>Azure Synapse Studio (preview) gebruiken om uw Apache Spark-toepassingen te bewaken
+# <a name="use-synapse-studio-preview-to-monitor-your-apache-spark-applications"></a>Synapse Studio (preview) gebruiken om uw Apache Spark-toepassingen te bewaken
 
 Met Azure Synapse Analytics kunt u Spark gebruiken om notitie blokken, taken en andere soorten toepassingen uit te voeren in uw Spark-Pools in uw werk ruimte.
 
@@ -24,7 +24,7 @@ In dit artikel wordt uitgelegd hoe u uw Apache Spark-toepassingen kunt bewaken, 
 
 ## <a name="accessing-the-list-of-apache-spark-applications"></a>Toegang tot de lijst met Apache Spark toepassingen
 
-Als u de lijst met Apache Spark toepassingen in uw werk ruimte wilt zien, opent u eerst [Azure Synapse Studio](https://web.azuresynapse.net/) en selecteert u uw werk ruimte.
+Als u de lijst met Apache Spark toepassingen in uw werk ruimte wilt zien, opent u eerst [de Synapse Studio](https://web.azuresynapse.net/) en selecteert u uw werk ruimte.
 
 ![Aanmelden bij werk ruimte](./media/common/login-workspace.png)
 
@@ -52,6 +52,6 @@ Als u de details van een van uw Apache Spark toepassingen wilt weer geven, selec
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie het artikel [Azure Synapse Studio](how-to-monitor-pipeline-runs.md) voor meer informatie over het bewaken van pijplijn uitvoeringen. 
+Zie voor meer informatie over het bewaken van pipeline-uitvoeringen het artikel [Synapse Studio](how-to-monitor-pipeline-runs.md) . 
 
-Zie voor meer informatie over het opsporen van fouten Apache Spark toepassing het artikel [Apache Spark toepassingen bewaken in azure Synapse Studio](apache-spark-applications.md) .
+Zie voor meer informatie over het opsporen van fouten Apache Spark toepassing het artikel [Apache Spark toepassingen bewaken in Synapse Studio](apache-spark-applications.md) .

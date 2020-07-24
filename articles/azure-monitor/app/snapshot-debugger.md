@@ -4,11 +4,12 @@ description: Moment opnamen van fout opsporing worden automatisch verzameld wann
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.reviewer: cweining
-ms.openlocfilehash: 18f43ba90157d71ec9488b6858fa9f41b2ee42a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c920ab019d5d802ea862ab923297670da766a456
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84692016"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049687"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Momentopnamen voor foutopsporing over uitzonderingen in .NET-apps
 Wanneer er een uitzonde ring optreedt, kunt u automatisch een moment opname van de fout opsporing verzamelen vanuit uw Live Web-app. De moment opname toont de status van de bron code en variabelen op het moment dat de uitzonde ring werd gegenereerd. Met de Snapshot Debugger in [Azure-toepassing Insights](../../azure-monitor/app/app-insights-overview.md) wordt de telemetrie van de uitzonde ring van uw web-app gecontroleerd. Er worden moment opnamen van uw belangrijkste uitzonde ringen verzameld, zodat u over de benodigde informatie beschikt voor het vaststellen van problemen in de productie. Neem het [snap shot Collector NuGet-pakket](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) in uw toepassing op en Configureer eventueel verzamelings parameters in [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md). Moment opnamen worden weer gegeven op [uitzonde ringen](../../azure-monitor/app/asp-net-exceptions.md) in de Application Insights Portal.
@@ -37,7 +38,7 @@ Raadpleeg de gids voor het [oplossen van problemen](snapshot-debugger-troublesho
 
 ## <a name="grant-permissions"></a>Machtigingen verlenen
 
-Toegang tot moment opnamen wordt beveiligd door middel van op rollen gebaseerd toegangs beheer (RBAC). Als u een moment opname wilt inspecteren, moet u eerst worden toegevoegd aan de gewenste rol door de eigenaar van het abonnement.
+Toegang tot momentopnames is beveiligd met RBAC (op rollen gebaseerd toegangsbeheer). Als u een momentopname wilt inspecteren, moet de eigenaar van het abonnement u eerst toevoegen aan de benodigde rol.
 
 > [!NOTE]
 > Eigen aren en mede werkers hebben deze rol niet automatisch. Als ze moment opnamen willen bekijken, moeten ze zichzelf aan de rol toevoegen.
@@ -45,7 +46,7 @@ Toegang tot moment opnamen wordt beveiligd door middel van op rollen gebaseerd t
 Abonnements eigenaren moeten de `Application Insights Snapshot Debugger` rol toewijzen aan gebruikers die moment opnamen zullen inspecteren. Deze rol kan worden toegewezen aan afzonderlijke gebruikers of groepen op abonnements eigenaren voor het doel Application Insights bron of de resource groep of het abonnement.
 
 1. Navigeer naar de Application Insights-resource in de Azure Portal.
-1. Klik op **Toegangsbeheer (IAM)** .
+1. Klik op **Toegangsbeheer (IAM)**.
 1. Klik op de knop **+ roltoewijzing toevoegen** .
 1. Selecteer **Application Insights snapshot debugger** in de vervolg keuzelijst **rollen** .
 1. Zoek en voer een naam in voor de gebruiker die u wilt toevoegen.
@@ -88,7 +89,7 @@ De Snapshot Collector wordt geïmplementeerd als een [Application Insights Telem
 Telkens wanneer uw toepassing [TrackException](../../azure-monitor/app/asp-net-exceptions.md#exceptions)aanroept, wordt door de snapshot Collector een probleem-id berekend op basis van het type uitzonde ring dat wordt gegenereerd en de methode voor het activeren.
 Telkens wanneer uw toepassing TrackException aanroept, wordt een teller verhoogd voor de juiste probleem-ID. Wanneer het item de `ThresholdForSnapshotting` waarde bereikt, wordt de probleem-id toegevoegd aan een verzamelings plan.
 
-De Snapshot Collector bewaakt ook uitzonde ringen als deze worden gegenereerd door u te abonneren op de gebeurtenis [AppDomain. currentDomain. FirstChanceException](https://docs.microsoft.com/dotnet/api/system.appdomain.firstchanceexception) . Wanneer deze gebeurtenis wordt geactiveerd, wordt de probleem-ID van de uitzonde ring berekend en vergeleken met de probleem-Id's in het verzamelings plan.
+De Snapshot Collector bewaakt ook uitzonde ringen als deze worden gegenereerd door u te abonneren op de gebeurtenis [AppDomain. currentDomain. FirstChanceException](/dotnet/api/system.appdomain.firstchanceexception) . Wanneer deze gebeurtenis wordt geactiveerd, wordt de probleem-ID van de uitzonde ring berekend en vergeleken met de probleem-Id's in het verzamelings plan.
 Als er een overeenkomst wordt gevonden, wordt een moment opname van het actieve proces gemaakt. Aan de moment opname is een unieke id toegewezen en er wordt een uitzonde ring met die id stempel gemaakt. Nadat de FirstChanceException-handler retourneert, wordt de gegenereerde uitzonde ring als normaal verwerkt. Uiteindelijk bereikt de uitzonde ring de TrackException-methode opnieuw, waar deze samen met de moment opname-id wordt gerapporteerd aan Application Insights.
 
 Het belangrijkste proces blijft het uitvoeren en verwerken van verkeer naar gebruikers met een beetje onderbreking. Ondertussen wordt de moment opname doorgestuurd naar het Uploader-proces van de moment opname. De moment opname van Uploader maakt een mini maal en uploadt deze naar Application Insights samen met alle relevante Symbol-bestanden (. pdb).
@@ -116,7 +117,7 @@ Met versie 15,2 (of hoger) van Visual Studio 2017 worden symbolen voor release b
 Voor Azure Compute en andere typen zorgt u ervoor dat de symbool bestanden zich in dezelfde map bevinden als de hoofd toepassing. dll (normaal `wwwroot/bin` ) of beschikbaar zijn in het huidige pad.
 
 > [!NOTE]
-> Raadpleeg de [documentatie van Visual Studio](https://docs.microsoft.com/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019#output
+> Raadpleeg de [documentatie van Visual Studio](/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019#output
 )voor meer informatie over de verschillende beschik bare symbool opties. Voor de beste resultaten raden wij u aan ' Full ', ' Portable ' of ' embedded ' te gebruiken.
 
 ### <a name="optimized-builds"></a>Geoptimaliseerde builds
@@ -137,6 +138,6 @@ Application Insights Snapshot Debugger voor uw toepassing inschakelen:
 
 Meer dan Application Insights Snapshot Debugger:
  
-* [Stel snappoints in uw code in](https://docs.microsoft.com/visualstudio/debugger/debug-live-azure-applications) om moment opnamen op te halen zonder dat er wordt gewacht op een uitzonde ring.
+* [Stel snappoints in uw code in](/visualstudio/debugger/debug-live-azure-applications) om moment opnamen op te halen zonder dat er wordt gewacht op een uitzonde ring.
 * [Diagnose uitzonde ringen in uw web-apps](../../azure-monitor/app/asp-net-exceptions.md) wordt uitgelegd hoe u meer uitzonde ringen zichtbaar maakt voor Application Insights.
 * [Slimme detectie](../../azure-monitor/app/proactive-diagnostics.md) detecteert automatisch prestatie afwijkingen.

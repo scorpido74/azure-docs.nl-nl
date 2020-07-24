@@ -1,5 +1,5 @@
 ---
-title: GitOps gebruiken voor een Azure Arc-cluster configuratie (preview-versie)
+title: Configuraties implementeren met behulp van GitOps op het Kubernetes-cluster waarvoor Arc is ingeschakeld (preview)
 services: azure-arc
 ms.service: azure-arc
 ms.date: 05/19/2020
@@ -8,24 +8,24 @@ author: mlearned
 ms.author: mlearned
 description: GitOps gebruiken voor een Azure Arc-cluster configuratie (preview-versie)
 keywords: GitOps, Kubernetes, K8s, azure, Arc, Azure Kubernetes service, containers
-ms.openlocfilehash: 890b35aac33a6fa207a71d76143997a1b93116bf
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: e25fdf3a51b3e9264c85707df31d3a4d107b25ea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856984"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049979"
 ---
-# <a name="use-gitops-for-an-azure-arc-enabled--configuration-preview"></a>GitOps gebruiken voor een configuratie met Azure-Arc-functionaliteit (preview-versie)
+# <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Configuraties implementeren met behulp van GitOps op het Kubernetes-cluster waarvoor Arc is ingeschakeld (preview)
 
-Deze architectuur maakt gebruik van een GitOps-werk stroom voor het configureren van het cluster en het implementeren van toepassingen. De configuratie wordt declaratief beschreven in. YAML-bestanden en opgeslagen in Git. Een agent controleert de Git-opslag plaats op wijzigingen en past deze toe.  Dezelfde agent zorgt er ook voor dat de cluster status overeenkomt met de status die is gedeclareerd in de Git-opslag plaats en retourneert het cluster naar de gewenste status als er onbeheerde wijzigingen hebben plaatsgevonden.
+GitOps is de praktijk van het declareren van de gewenste status van de Kubernetes-configuratie (implementaties, naam ruimten, enzovoort) in een Git-opslag plaats, gevolgd door een polling en pull gebaseerde implementatie van deze configuraties naar het cluster met behulp van een operator. Dit document bevat informatie over de installatie van dergelijke werk stromen op Azure Arc enabled Kubernetes-clusters.
 
-De verbinding tussen uw cluster en een of meer Git-opslag plaatsen wordt bijgehouden in Azure Resource Manager als een `sourceControlConfiguration` uitbreidings resource. De `sourceControlConfiguration` resource-eigenschappen geven aan waar en hoe Kubernetes resources van Git naar uw cluster moeten stromen. De `sourceControlConfiguration` gegevens worden opgeslagen versleuteld op rest in een CosmosDb-data base om de vertrouwelijkheid van gegevens te garanderen.
+De verbinding tussen uw cluster en een of meer Git-opslag plaatsen wordt bijgehouden in Azure Resource Manager als een `sourceControlConfiguration` uitbreidings resource. De `sourceControlConfiguration` resource-eigenschappen geven aan waar en hoe Kubernetes resources van Git naar uw cluster moeten stromen. De `sourceControlConfiguration` gegevens worden opgeslagen versleuteld op rest in een Azure Cosmos DB-Data Base om de vertrouwelijkheid van gegevens te garanderen.
 
-De Azure-Kubernetes die `config-agent` in uw cluster wordt uitgevoerd, is verantwoordelijk voor het volgen van nieuwe of bijgewerkte `sourceControlConfiguration` resources en bevat koppelingen voor het toevoegen, bijwerken of verwijderen van de Git-opslag plaats.
-
-Dezelfde patronen kunnen worden gebruikt voor het beheren van een grotere verzameling clusters, die kunnen worden geïmplementeerd in heterogene omgevingen. U hebt bijvoorbeeld één opslag plaats die de basislijn configuratie voor uw organisatie definieert en die in één keer van toepassing is op tien tallen Kubernetes-clusters.
+De `config-agent` uitvoering in uw cluster is verantwoordelijk voor het volgen van nieuwe of bijgewerkte `sourceControlConfiguration` uitbreidings resources op de Azure-Kubernetes-resource, het implementeren van een stroom operator voor het bekijken van de Git-opslag plaats en het door geven van updates die zijn aangebracht in de `sourceControlConfiguration` . Het is zelfs mogelijk om meerdere `sourceControlConfiguration` bronnen met `namespace` een bereik te maken op hetzelfde Azure Arc-Kubernetes-cluster om multitenancy te bereiken. In dat geval kan elke operator alleen configuraties implementeren naar de betreffende naam ruimte.
 
 De Git-opslag plaats kan alle geldige Kubernetes-resources bevatten, waaronder naam ruimten, ConfigMaps, implementaties, DaemonSets, enzovoort.  Het kan ook helm-grafieken bevatten voor het implementeren van toepassingen. Een gemeen schappelijke reeks scenario's is het definiëren van een basislijn configuratie voor uw organisatie, zoals algemene RBAC-rollen en-bindingen, bewakings-of logboek registratie agenten of cluster-brede Services.
+
+Hetzelfde patroon kan worden gebruikt om een grotere verzameling clusters te beheren, die kan worden geïmplementeerd in heterogene omgevingen. U hebt bijvoorbeeld één opslag plaats die de basislijn configuratie voor uw organisatie definieert en die in één keer van toepassing is op tien tallen Kubernetes-clusters. Met [Azure Policy kan](use-azure-policy.md) het maken van een `sourceControlConfiguration` met een specifieke set para meters worden geautomatiseerd op alle Kubernetes-resources van Azure-Arc onder een bereik (abonnement of resource groep).
 
 In deze hand leiding vindt u instructies voor het Toep assen van een set configuraties met het bereik Cluster beheer.
 
@@ -39,8 +39,8 @@ De voor beeld-opslag plaats is gestructureerd rond de persoon van een cluster op
  **implementatie:** `cluster-config/azure-vote` 
  **ConfigMap:**`team-a/endpoints`
 
-De `config-agent` pollt Azure voor nieuw of `sourceControlConfiguration` elke 30 seconden bijgewerkt.  Dit is de maximale tijd die nodig is `config-agent` om een nieuwe of bijgewerkte configuratie op te halen.
-Als u een privé opslagplaats koppelt, moet u er ook voor zorgen dat u de stappen in [configuratie Toep assen uit een privé Git-opslag plaats](#apply-configuration-from-a-private-git-repository) uitvoert
+De `config-agent` polleert Azure gedurende een nieuwe of bijgewerkte `sourceControlConfiguration` periode van 30 seconden. Dit is de maximale hoeveelheid tijd die nodig is `config-agent` om een nieuwe of bijgewerkte configuratie op te halen.
+Als u een persoonlijke opslag plaats koppelt aan de `sourceControlConfiguration` , moet u de stappen in [configuratie Toep assen vanuit een persoonlijke Git-opslag plaats](#apply-configuration-from-a-private-git-repository)ook volt ooien.
 
 ### <a name="using-azure-cli"></a>Azure CLI gebruiken
 
@@ -99,14 +99,14 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 Dit zijn de ondersteunde scenario's voor de waarde van de para meter---Repository-URL.
 
-| Scenario | Indeling | Description |
+| Scenario | Indeling | Beschrijving |
 | ------------- | ------------- | ------------- |
 | Privé GitHub opslag plaats-SSH | git@github.com:username/repo | SSH-sleutel paar gegenereerd door stroom.  Gebruiker moet de open bare sleutel toevoegen aan het GitHub-account als Deploy-sleutel. |
 | Open bare GitHub-opslag plaats | `http://github.com/username/repo`of git://github.com/username/repo   | Openbaar Git-opslag plaats  |
 
 Deze scenario's worden nog ondersteund door stroom, maar niet door sourceControlConfiguration. 
 
-| Scenario | Indeling | Description |
+| Scenario | Indeling | Beschrijving |
 | ------------- | ------------- | ------------- |
 | Privé GitHub opslag plaats-HTTPS | `https://github.com/username/repo` | Er wordt geen SSH-sleutel paar gegenereerd door stroom.  [Instructies](https://docs.fluxcd.io/en/1.17.0/guides/use-git-https.html) |
 | Privé Git-host | user@githost:path/to/repo | [Instructies](https://docs.fluxcd.io/en/1.18.0/guides/use-private-git-host.html) |
@@ -117,7 +117,7 @@ Deze scenario's worden nog ondersteund door stroom, maar niet door sourceControl
 
 Hier volgen enkele aanvullende para meters om het maken van de configuratie aan te passen:
 
-`--enable-helm-operator`: *Optionele* Schakel optie voor het inschakelen van ondersteuning voor helm-grafiek implementaties. Deze optie is standaard uitgeschakeld.
+`--enable-helm-operator`: *Optionele* Schakel optie voor het inschakelen van ondersteuning voor helm-grafiek implementaties.
 
 `--helm-operator-chart-values`: *Optionele* grafiek waarden voor de operator helm (indien ingeschakeld).  Bijvoorbeeld: '--set helm. Verses = v3 '.
 
@@ -125,11 +125,11 @@ Hier volgen enkele aanvullende para meters om het maken van de configuratie aan 
 
 `--operator-namespace`: *Optionele* naam voor de operator naam ruimte. Standaard: ' default '
 
-`--operator-params`: *Optionele* para meters voor de operator. Moet binnen enkele aanhalings tekens worden opgegeven. Bijvoorbeeld: ```--operator-params='--git-readonly --git-path=releases/prod' ```
+`--operator-params`: *Optionele* para meters voor de operator. Moet binnen enkele aanhalings tekens worden opgegeven. Bijvoorbeeld: ```--operator-params='--git-readonly --git-path=releases' ```
 
 Opties die worden ondersteund in--operator-params
 
-| Optie | Description |
+| Optie | Beschrijving |
 | ------------- | ------------- |
 | --Git-Branch  | Vertakking van Git opslag plaats die moet worden gebruikt voor Kubernetes-manifesten. De standaard waarde is ' Master '. |
 | --Git-pad  | Relatief pad binnen de Git-opslag plaats voor stroom om Kubernetes-manifesten te vinden. |
@@ -143,13 +143,16 @@ Opties die worden ondersteund in--operator-params
 
 * Als '--Git-gebruiker ' of '--git-e-mail ' niet is ingesteld (wat betekent dat u niet wilt dat stroom wordt geschreven naar de opslag plaats), wordt--Git-ReadOnly automatisch ingesteld (als u dit nog niet hebt ingesteld).
 
-* Als enableHelmOperator is ingesteld op True, kunnen operatorInstanceName + operatorNamespace-teken reeksen niet langer zijn dan 47 tekens.  Als u niet aan deze limiet voldoet, krijgt u deze fout:
+* Als enableHelmOperator is ingesteld op True, kunnen operatorInstanceName + operatorNamespace-teken reeksen niet langer zijn dan 47 tekens.  Als u niet aan deze limiet voldoet, krijgt u de volgende fout:
 
    ```console
    {"OperatorMessage":"Error: {failed to install chart from path [helm-operator] for release [<operatorInstanceName>-helm-<operatorNamespace>]: err [release name \"<operatorInstanceName>-helm-<operatorNamespace>\" exceeds max length of 53]} occurred while doing the operation : {Installing the operator} on the config","ClusterState":"Installing the operator"}
    ```
 
-Zie voor meer informatie de [documentatie over de stroom](https://aka.ms/FluxcdReadme).
+Zie [vloei documentatie](https://aka.ms/FluxcdReadme)voor meer informatie.
+
+> [!TIP]
+> Het is mogelijk om een sourceControlConfiguration te maken op de Azure Portal en ook op het tabblad **configuraties** van de Blade Kubernetes van Azure-Arc ingeschakeld.
 
 ## <a name="validate-the-sourcecontrolconfiguration"></a>De sourceControlConfiguration valideren
 
@@ -195,7 +198,7 @@ Wanneer de `sourceControlConfiguration` is gemaakt, zijn er enkele dingen die zi
     * `config-agent`maakt de doel naam ruimte
     * `config-agent`bereidt een Kubernetes-service account voor met de juiste machtiging ( `cluster` of `namespace` bereik)
     * `config-agent`implementeert een exemplaar van`flux`
-    * `flux`Hiermee wordt een SSH-sleutel gegenereerd en de open bare sleutel geregistreerd
+    * `flux`Hiermee wordt een SSH-sleutel gegenereerd en wordt de open bare sleutel geregistreerd
 1. `config-agent`rapporteert de status terug naar de`sourceControlConfiguration`
 
 Terwijl het inrichtings proces plaatsvindt, `sourceControlConfiguration` wordt de status van een aantal wijzigingen gewijzigd. Bewaak de voortgang met de `az k8sconfiguration show ...` bovenstaande opdracht:
@@ -206,7 +209,7 @@ Terwijl het inrichtings proces plaatsvindt, `sourceControlConfiguration` wordt d
 
 ## <a name="apply-configuration-from-a-private-git-repository"></a>Configuratie Toep assen vanuit een persoonlijke Git-opslag plaats
 
-Als u een privé Git-opslag plaats gebruikt, moet u één taak uitvoeren om de lus te sluiten: u moet de open bare sleutel toevoegen die is gegenereerd door `flux` als een **implementatie sleutel** in de opslag plaats.
+Als u een privé Git-opslag plaats gebruikt, moet u één taak uitvoeren om de lus te sluiten: Voeg de open bare sleutel toe die is gegenereerd door `flux` als een **implementatie sleutel** in de opslag plaats.
 
 **De open bare sleutel ophalen met behulp van Azure CLI**
 
@@ -232,7 +235,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 5. Plak de open bare sleutel (min eventuele omringende aanhalings tekens)
 6. Klik op **sleutel toevoegen**
 
-Zie de documentatie van GitHub voor meer informatie over het beheren van implementatie sleutels.
+Zie de documentatie van GitHub voor meer informatie over het beheren van deze sleutels.
 
 **Als u een Azure DevOps-opslag plaats gebruikt, voegt u de sleutel toe aan uw SSH-sleutels**
 
@@ -292,9 +295,11 @@ kubectl -n itops get all
 
 ## <a name="delete-a-configuration"></a>Een configuratie verwijderen
 
-U kunt een `sourceControlConfiguration` gebruiken van Azure CLI of Azure Portal verwijderen.  Nadat u de opdracht verwijderen initieert, `sourceControlConfiguration` wordt de resource direct verwijderd in azure, maar het kan Maxi maal één uur duren voordat de gekoppelde objecten van het cluster volledig worden verwijderd (er is een achterstands item om dit te verkorten). Als het `sourceControlConfiguration` is gemaakt met het bereik van de naam ruimte, wordt die naam ruimte niet verwijderd uit het cluster (om te voor komen dat andere resources die in die naam ruimte zijn gemaakt).
+Een `sourceControlConfiguration` gebruiken van Azure CLI of Azure Portal verwijderen.  Nadat u de opdracht verwijderen initieert, `sourceControlConfiguration` wordt de resource direct verwijderd in azure, maar het kan Maxi maal één uur duren voordat de gekoppelde objecten van het cluster volledig worden verwijderd (er is een achterstands item om deze vertraging te verminderen).
 
-Houd er rekening mee dat wijzigingen in het cluster die het resultaat zijn van implementaties van de getraceerde Git-opslag plaats niet worden verwijderd wanneer het `sourceControlConfiguration` wordt verwijderd.
+> [!NOTE]
+> Nadat een sourceControlConfiguration met het bereik van de naam ruimte is gemaakt, is het mogelijk dat gebruikers met een rol die is gekoppeld aan `edit` de naam ruimte, werk belastingen implementeren op deze naam ruimte. Wanneer `sourceControlConfiguration` het bereik van de naam ruimte wordt verwijderd, blijft de naam ruimte intact en wordt deze niet verwijderd om te voor komen dat deze andere workloads worden opgesplitst.
+> Wijzigingen in het cluster die het resultaat zijn van implementaties van de getraceerde Git-opslag plaats, worden niet verwijderd wanneer het `sourceControlConfiguration` wordt verwijderd.
 
 ```console
 az k8sconfiguration delete --name '<config name>' -g '<resource group name>' --cluster-name '<cluster name>' --cluster-type connectedClusters
@@ -308,5 +313,5 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [GitOps gebruiken met helm voor cluster configuratie](./use-gitops-with-helm.md)
+- [Helm gebruiken met broncode beheer configuratie](./use-gitops-with-helm.md)
 - [Azure Policy gebruiken om de cluster configuratie te bepalen](./use-azure-policy.md)

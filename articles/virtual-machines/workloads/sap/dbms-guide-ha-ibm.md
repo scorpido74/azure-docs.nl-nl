@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/06/2020
 ms.author: juergent
-ms.openlocfilehash: a9041b373c215ac226764b737ee3bf35b008e5db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d453fba37e62e8528ae7b4ea86d1604973b84a1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82978379"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052000"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-suse-linux-enterprise-server-with-pacemaker"></a>Hoge Beschik baarheid van IBM Db2 LUW op Azure Vm's op SUSE Linux Enterprise Server met pacemaker
 
@@ -32,7 +33,7 @@ De ondersteunde IBM Db2-versies zijn 10,5 en hoger, zoals beschreven in SAP Note
 
 Raadpleeg de volgende SAP-opmerkingen en-documentatie voordat u met de installatie begint:
 
-| SAP-Opmerking | Description |
+| SAP-Opmerking | Beschrijving |
 | --- | --- |
 | [1928533] | SAP-toepassingen op Azure: ondersteunde producten en Azure VM-typen |
 | [2015553] | SAP on Azure: vereisten voor ondersteuning |
@@ -59,7 +60,7 @@ Raadpleeg de volgende SAP-opmerkingen en-documentatie voordat u met de installat
 | [IBM Db2 HADR R 10,5][db2-hadr-10.5] |
 
 ## <a name="overview"></a>Overzicht
-Om hoge Beschik baarheid te kunnen garanderen, wordt IBM Db2 LUW met HADR geïnstalleerd op ten minste twee virtuele machines van Azure, die worden geïmplementeerd in een [Azure-beschikbaarheidsset](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) of op meerdere [Azure-beschikbaarheidszones](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones). 
+Om hoge Beschik baarheid te kunnen garanderen, wordt IBM Db2 LUW met HADR geïnstalleerd op ten minste twee virtuele machines van Azure, die worden geïmplementeerd in een [Azure-beschikbaarheidsset](../../windows/tutorial-availability-sets.md) of op meerdere [Azure-beschikbaarheidszones](./sap-ha-availability-zones.md). 
 
 In de volgende afbeeldingen ziet u een installatie van twee Azure-Vm's voor de Data Base-Server. Zowel de Azure-Vm's van de database server als de eigen opslag zijn gekoppeld en zijn actief. In HADR is één data base-exemplaar op een van de virtuele machines van Azure de rol van het primaire exemplaar. Alle clients zijn verbonden met dit primaire exemplaar. Alle wijzigingen in database transacties worden lokaal opgeslagen in het Db2-transactie logboek. Omdat de transactie logboek records lokaal blijven bestaan, worden de records via TCP/IP overgebracht naar het data base-exemplaar op de tweede database server, de stand-by-server of de stand-by-instantie. Het standby-exemplaar werkt de lokale data base bij door de overgebrachte transactie logboek records door te sturen. Op deze manier wordt de stand-by-server gesynchroniseerd met de primaire server.
 
@@ -109,7 +110,7 @@ Voltooi het plannings proces voordat u de implementatie uitvoert. Planning bouwt
 | Azure Load Balancer | Gebruik van Basic of Standard (aanbevolen), test poort voor de Db2-data base (onze aanbeveling 62500) **test poort**. |
 | Naamomzetting| Hoe naam omzetting werkt in de omgeving. DNS-service wordt sterk aanbevolen. Lokaal Hosts-bestand kan worden gebruikt. |
     
-Zie [pacemaker instellen op SuSE Linux Enterprise Server in azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)voor meer informatie over Linux-pacemaker in Azure.
+Zie [pacemaker instellen op SuSE Linux Enterprise Server in azure](./high-availability-guide-suse-pacemaker.md)voor meer informatie over Linux-pacemaker in Azure.
 
 ## <a name="deployment-on-suse-linux"></a>Implementatie op SUSE Linux
 
@@ -395,10 +396,10 @@ sudo crm configure property maintenance-mode=false</pre></code>
 
 
 ### <a name="configure-azure-load-balancer"></a>Azure Load Balancer configureren
-Als u Azure Load Balancer wilt configureren, is het raadzaam om de [Azure Standard load BALANCER SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) te gebruiken en vervolgens de volgende handelingen uit te voeren.
+Als u Azure Load Balancer wilt configureren, is het raadzaam om de [Azure Standard load BALANCER SKU](../../../load-balancer/load-balancer-overview.md) te gebruiken en vervolgens de volgende handelingen uit te voeren.
 
 > [!NOTE]
-> De Standard Load Balancer SKU heeft beperkingen voor het openen van open bare IP-adressen van de knoop punten onder de Load Balancer. De connectiviteit van het [open bare eind punt van het artikel voor virtual machines het gebruik van Azure Standard Load Balancer in scenario's met hoge Beschik baarheid van SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections) beschrijft manieren om deze knoop punten in te scha kelen voor toegang tot open bare IP-adressen
+> De Standard Load Balancer SKU heeft beperkingen voor het openen van open bare IP-adressen van de knoop punten onder de Load Balancer. De connectiviteit van het [open bare eind punt van het artikel voor virtual machines het gebruik van Azure Standard Load Balancer in scenario's met hoge Beschik baarheid van SAP](./high-availability-guide-standard-load-balancer-outbound-connections.md) beschrijft manieren om deze knoop punten in te scha kelen voor toegang tot open bare IP-adressen
 
 1. Een front-end-IP-adres groep maken:
 
@@ -497,8 +498,8 @@ U kunt het beste een algemene NFS-share configureren waarbij logboeken worden ge
 U kunt bestaande Maxi maal beschik bare NFS-shares gebruiken voor trans porten of profielmap. Zie voor meer informatie:
 
 - [Hoge Beschik baarheid voor NFS op Azure Vm's op SUSE Linux Enterprise Server][nfs-ha] 
-- [Hoge Beschik baarheid voor SAP NetWeaver op Azure Vm's op SUSE Linux Enterprise Server met Azure NetApp Files voor SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
-- [Azure NetApp files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction) (voor het maken van NFS-shares)
+- [Hoge Beschik baarheid voor SAP NetWeaver op Azure Vm's op SUSE Linux Enterprise Server met Azure NetApp Files voor SAP-toepassingen](./high-availability-guide-suse-netapp-files.md)
+- [Azure NetApp files](../../../azure-netapp-files/azure-netapp-files-introduction.md) (voor het maken van NFS-shares)
 
 
 ## <a name="test-the-cluster-setup"></a>De Cluster installatie testen
@@ -878,8 +879,8 @@ stonith-sbd     (stonith:external/sbd): Started azibmdb02
      Slaves: [ azibmdb01 ]</code></pre>
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Architectuur en scenario's met hoge Beschik baarheid voor SAP net-Weaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios)
-- [Pacemaker instellen voor SUSE Linux Enterprise Server in azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)
+- [Architectuur en scenario's met hoge Beschik baarheid voor SAP net-Weaver](./sap-high-availability-architecture-scenarios.md)
+- [Pacemaker instellen voor SUSE Linux Enterprise Server in azure](./high-availability-guide-suse-pacemaker.md)
 
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [2015553]:https://launchpad.support.sap.com/#/notes/2015553

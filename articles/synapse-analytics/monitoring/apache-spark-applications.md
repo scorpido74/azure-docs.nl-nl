@@ -1,6 +1,6 @@
 ---
-title: Apache Spark toepassingen bewaken
-description: Gebruik Azure Synapse Studio om uw Apache Spark-toepassingen te bewaken.
+title: Apache Spark-toepassingen bewaken met behulp van Synapse Studio
+description: Gebruik Synapse Studio om uw Apache Spark-toepassingen te bewaken.
 services: synapse-analytics
 author: matt1883
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 20c4216e7af0cb4100204ebae1b484a53e3c50a6
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: ecc34b84e5be2d0470cc5a58a71a70e9ffcab1b6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971301"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052556"
 ---
-# <a name="use-the-azure-synapse-studio-to-monitor-your-apache-spark-applications"></a>Azure Synapse Studio gebruiken om uw Apache Spark-toepassingen te bewaken
+# <a name="use-synapse-studio-to-monitor-your-apache-spark-applications"></a>Synapse Studio gebruiken om uw Apache Spark-toepassingen te bewaken
 
 Met Azure Synapse Analytics kunt u Apache Spark gebruiken om notitie blokken, taken en andere soorten toepassingen uit te voeren op uw Apache Spark-groepen in uw werk ruimte.
 
@@ -33,7 +33,7 @@ Deze zelfstudie bestaat uit de volgende taken:
 
 Zorg ervoor dat u aan de volgende vereisten voldoet voordat u met deze zelfstudie begint:
 
-- Een Azure Synapse studio-werk ruimte. Zie [een Azure Synapse studio-werk ruimte maken](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace#create-a-workspace)voor instructies.
+- Een Synapse studio-werk ruimte. Zie [een Synapse studio-werk ruimte maken](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace#create-a-workspace)voor instructies.
 
 - Een Apache Spark groep.
 
@@ -147,4 +147,4 @@ Open **monitor**en selecteer vervolgens **Apache Spark toepassingen**. Als u de 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie het artikel [Azure Synapse Studio](how-to-monitor-pipeline-runs.md) voor meer informatie over het bewaken van pijplijn uitvoeringen.  
+Voor meer informatie over het bewaken van pijplijn uitvoeringen raadpleegt [u de pipeline-bewaken in het artikel Synapse Studio](how-to-monitor-pipeline-runs.md) .  

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2019
-ms.openlocfilehash: 77fe4b4ffbf7c189a5bf64e662f395fc78e53944
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 021e5e8ee01745dd0b534e53dbb6d75b5b78c419
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82581503"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049611"
 ---
 # <a name="enable-azure-monitor-for-vms-using-azure-powershell-or-resource-manager-templates"></a>Azure Monitor voor VM's inschakelen met behulp van Azure PowerShell-of Resource Manager-sjablonen
 
@@ -31,7 +31,7 @@ Als u niet weet hoe u resources kunt implementeren met behulp van een sjabloon, 
 * [Resources implementeren met Resource Manager-sjablonen en Azure PowerShell](../../azure-resource-manager/templates/deploy-powershell.md)
 * [Resources implementeren met Resource Manager-sjablonen en Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
 
-Als u Azure CLI wilt gebruiken, moet u de CLI eerst lokaal installeren en gebruiken. U moet de Azure CLI-versie 2.0.27 of hoger uitvoeren. Voer uit om uw versie te identificeren `az --version` . Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Als u Azure CLI wilt gebruiken, moet u de CLI eerst lokaal installeren en gebruiken. U moet de Azure CLI-versie 2.0.27 of hoger uitvoeren. Voer uit om uw versie te identificeren `az --version` . Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](/cli/azure/install-azure-cli).
 
 1. Kopieer en plak de volgende JSON-syntaxis in het bestand:
 
@@ -122,7 +122,7 @@ Als u niet weet hoe u resources kunt implementeren met behulp van een sjabloon, 
 * [Resources implementeren met Resource Manager-sjablonen en Azure PowerShell](../../azure-resource-manager/templates/deploy-powershell.md)
 * [Resources implementeren met Resource Manager-sjablonen en Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
 
-Als u Azure CLI wilt gebruiken, moet u de CLI eerst lokaal installeren en gebruiken. U moet de Azure CLI-versie 2.0.27 of hoger uitvoeren. Voer uit om uw versie te identificeren `az --version` . Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Als u Azure CLI wilt gebruiken, moet u de CLI eerst lokaal installeren en gebruiken. U moet de Azure CLI-versie 2.0.27 of hoger uitvoeren. Voer uit om uw versie te identificeren `az --version` . Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](/cli/azure/install-azure-cli).
 
 ### <a name="download-templates"></a>Sjablonen downloaden
 
@@ -178,7 +178,7 @@ Gebruik het Power shell-script [Install-VMInsights.ps1](https://www.powershellga
 
 Voor elke VM of virtuele-machine schaalset wordt in het script gecontroleerd of de VM-extensie al is geïnstalleerd. Als de VM-extensie is geïnstalleerd, probeert het script deze opnieuw te installeren. Als de extensie van de virtuele machine niet is geïnstalleerd, installeert het script de Log Analytics en de VM-extensies van de afhankelijkheids agent.
 
-Controleer of u Azure PowerShell-module AZ version 1.0.0 of later gebruikt met `Enable-AzureRM` compatibiliteits aliassen ingeschakeld. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
+Controleer of u Azure PowerShell-module AZ version 1.0.0 of later gebruikt met `Enable-AzureRM` compatibiliteits aliassen ingeschakeld. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
 
 Als u een lijst wilt ophalen met de argument Details van het script en het gebruiks voorbeeld, voert u uit `Get-Help` .
 

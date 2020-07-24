@@ -1,180 +1,232 @@
 ---
-title: Dynamisch verboden wacht woorden-Azure Active Directory
-description: Zwakke wacht woorden van uw omgeving verzwakken met dynamisch uitgesloten wacht woorden van Azure AD
+title: Wachtwoord beveiliging in Azure Active Directory
+description: Meer informatie over hoe u met Azure Active Directory wachtwoord beveiliging zwakke wacht woorden van uw omgeving dynamisch kunt verbieden
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 07/16/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f905b3eb6d1675f0bc252c3500169b3144287d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f0f7571cf9f8d355330c4acf425e38ce215e840
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550698"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050880"
 ---
-# <a name="eliminate-bad-passwords-in-your-organization"></a>Onjuiste wachtwoorden uit uw organisatie verwijderen
+# <a name="eliminate-bad-passwords-using-azure-active-directory-password-protection"></a>Verwijder ongeldige wacht woorden met Azure Active Directory wachtwoord beveiliging
 
-Industrie leiders weten dat u niet hetzelfde wacht woord op meerdere locaties kunt gebruiken om het complex te maken en om het niet eenvoudig te maken zoals ' Password123 '. Hoe kunnen organisaties garanderen dat hun gebruikers de volgende best practice-richt lijnen volgen? Hoe kunnen ze ervoor zorgen dat gebruikers geen zwakke wacht woorden gebruiken of zelfs variaties in zwakke wacht woorden?
+Een groot aantal beveiligings richtlijnen raadt u aan om niet hetzelfde wacht woord op meerdere locaties te gebruiken, om het complex te maken en eenvoudige wacht woorden te vermijden, zoals *Password123*. U kunt uw gebruikers hulp geven bij [het kiezen van wacht woorden](https://www.microsoft.com/research/publication/password-guidance), maar zwakke of onveilige wacht woorden worden vaak nog steeds gebruikt. Azure AD-wachtwoord beveiliging detecteert en blokkeert bekende zwakke wacht woorden en hun varianten, en kan ook extra zwakke termen die specifiek zijn voor uw organisatie blok keren.
 
-De eerste stap bij het hebben van sterkere wacht woorden is het bieden van hulp aan uw gebruikers. De huidige richt lijnen voor dit onderwerp van micro soft zijn te vinden op de volgende koppeling:
+Met Azure AD-wachtwoord beveiliging worden standaard globale lijsten met verboden wacht woorden automatisch toegepast op alle Cloud-gebruikers. Ter ondersteuning van uw eigen bedrijfs-en beveiligings behoeften kunt u vermeldingen definiëren in een aangepaste lijst met verboden wacht woorden. Wanneer gebruikers hun wacht woord wijzigen of opnieuw instellen, worden deze verboden wachtwoord lijsten gecontroleerd om het gebruik van sterke wacht woorden af te dwingen.
 
-[Richt lijnen voor micro soft-wacht woorden](https://www.microsoft.com/research/publication/password-guidance)
+U moet aanvullende functies zoals [azure multi-factor Authentication](concept-mfa-howitworks.md)gebruiken. u hoeft niet alleen te vertrouwen op sterke wacht woorden die worden afgedwongen door Azure AD-wachtwoord beveiliging. Meer informatie over het gebruik van meerdere beveiligings lagen voor uw aanmeldings gebeurtenissen vindt [u in uw PA $ $Word niet van belang](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984)is.
 
-Het is belang rijk dat u weet dat veel gebruikers nog steeds zwakke wacht woorden kunnen kiezen. Met Azure AD-wachtwoord beveiliging kunt u uw organisatie beveiligen door bekende zwakke wacht woorden en hun varianten te detecteren en te blok keren, en desgewenst extra zwakke termen die specifiek zijn voor uw organisatie, te blok keren.
-
-Zie het [micro soft Security Intelligence-rapport](https://www.microsoft.com/security/operations/security-intelligence-report)voor meer informatie over de huidige beveiligings inspanningen.
+> [!IMPORTANT]
+> In dit conceptuele artikel wordt uitgelegd hoe een beheerder de wachtwoord beveiliging van Azure AD werkt. Als u een eind gebruiker bent al geregistreerd voor selfservice voor het opnieuw instellen van het wacht woord en als u weer toegang wilt krijgen tot uw account, gaat u naar [https://aka.ms/sspr](https://aka.ms/sspr) .
+>
+> Als uw IT-team u de mogelijkheid niet heeft gegeven uw eigen wachtwoord opnieuw in te stellen, kunt u contact opnemen met de helpdesk voor meer informatie.
 
 ## <a name="global-banned-password-list"></a>Algemene lijst met geblokkeerde wacht woorden
 
-Het Azure AD Identity Protection Team analyseert gegevens van de telemetrie van Azure AD-beveiliging die vaak worden gebruikt voor veelvoorkomende, zwakke of gemanipuleerde wacht woorden, of de zwakke basis termen die veelvuldig worden gebruikt als basis voor zwakke wacht woorden. Wanneer dergelijke zwakke voor waarden worden gevonden, worden deze toegevoegd aan de lijst met globale verboden wacht woorden. De inhoud van de lijst met globale verboden wacht woorden is niet gebaseerd op een externe gegevens bron. De algemene lijst met geblokkeerde wacht woorden is volledig gebaseerd op de lopende resultaten van de telemetrie en analyse van Azure AD-beveiliging.
+Het Azure AD Identity Protection Team analyseert gegevens van de telemetrie van Azure AD-beveiliging die vaak worden gebruikt voor veelvoorkomende en zwakke wacht woorden. De analyse zoekt in het bijzonder naar basis termen die vaak worden gebruikt als basis voor zwakke wacht woorden. Wanneer er zwakke voor waarden worden gevonden, worden deze toegevoegd aan de *lijst met globale verboden wacht woorden*. De inhoud van de lijst met globale verboden wacht woorden is niet gebaseerd op een externe gegevens bron, maar op de resultaten van de telemetrie en analyse van Azure AD-beveiliging.
 
-Wanneer een nieuw wacht woord wordt gewijzigd of opnieuw wordt ingesteld voor een gebruiker in een Tenant in azure AD, wordt de huidige versie van de lijst met globale verboden wacht woorden gebruikt als de sleutel invoer bij het valideren van de sterkte van het wacht woord. Deze validatie resulteert in veel sterkere wacht woorden voor alle klanten van Azure AD.
+Wanneer een wacht woord wordt gewijzigd of opnieuw wordt ingesteld voor een gebruiker in een Azure AD-Tenant, wordt de huidige versie van de lijst met globale verboden wacht woorden gebruikt om de sterkte van het wacht woord te valideren. Deze validatie controle resulteert in sterkere wacht woorden voor alle klanten van Azure AD.
+
+De lijst met globale verboden wacht woorden wordt automatisch toegepast op alle Cloud gebruikers in een Azure AD-Tenant. Er is niets om in te scha kelen of te configureren en kan niet worden uitgeschakeld.
 
 > [!NOTE]
-> Cyber criminelen gebruiken vergelijk bare strategieën in hun aanvallen. Daarom publiceert micro soft de inhoud van deze lijst openbaar niet.
+> Cyber criminelen gebruiken vergelijk bare strategieën in hun aanvallen om veelvoorkomende zwakke wacht woorden en variaties te identificeren. Ter verbetering van de beveiliging publiceert micro soft de inhoud van de lijst met globale verboden wacht woorden niet.
 
 ## <a name="custom-banned-password-list"></a>Aangepaste lijst met verboden wacht woorden
 
-Sommige organisaties willen de beveiliging nog verder verbeteren door hun eigen aanpassingen toe te voegen boven op de lijst met algemene verboden wacht woorden in wat micro soft de aangepaste lijst met geblokkeerde wacht woorden aanroept. Micro soft adviseert dat de voor waarden die zijn toegevoegd aan deze lijst voornamelijk gericht zijn op organisatie-specifieke voor waarden, zoals:
+Sommige organisaties willen de beveiliging verbeteren en hun eigen aanpassingen toevoegen boven op de lijst met globale verboden wacht woorden. U kunt de *aangepaste lijst met geblokkeerde wacht woorden*gebruiken om uw eigen vermeldingen toe te voegen. Termen die zijn toegevoegd aan de lijst met aangepaste geblokkeerde wacht woorden, moeten worden gericht op organisatie-specifieke voor waarden, zoals de volgende voor beelden:
 
 - Merk namen
 - Product namen
-- Locaties (bijvoorbeeld het hoofd kantoor van het bedrijf)
+- Locaties, zoals het hoofd kantoor van het bedrijf
 - Bedrijfsspecifieke interne termen
-- Afkortingen die een specifieke betekenis van het bedrijf hebben.
+- Afkortingen met specifieke bedrijfs betekenis
 
-Wanneer de voor waarden worden toegevoegd aan de lijst met aangepaste geblokkeerde wacht woorden, worden deze gecombineerd met de voor waarden in de lijst met globale verboden wacht woorden bij het valideren van wacht woord.
+Wanneer voor waarden worden toegevoegd aan de lijst met aangepaste geblokkeerde wacht woorden, worden deze gecombineerd met de voor waarden in de lijst globaal verboden wacht woorden. Wachtwoord wijzigingen of reset gebeurtenissen worden vervolgens gevalideerd op basis van de gecombineerde set van deze verboden wachtwoord lijsten.
 
 > [!NOTE]
-> De aangepaste lijst met verboden wacht woorden is beperkt tot een maximum van 1000 voor waarden. Het is niet ontworpen voor het blok keren van extreem grote lijsten met wacht woorden. Als u de voor delen van de aangepaste lijst met geblokkeerde wacht woorden volledig wilt benutten, raadt micro soft u aan eerst de wachtwoord evaluatie algoritme te controleren en te begrijpen (Zie [hoe wacht woorden worden geëvalueerd](concept-password-ban-bad.md#how-are-passwords-evaluated)) voordat nieuwe voor waarden worden toegevoegd aan de lijst met aangepaste verboden. Als u begrijpt hoe het algoritme werkt, kan uw onderneming een grote hoeveelheid zwakke wacht woorden en hun varianten efficiënt detecteren en blok keren.
+> De aangepaste lijst met verboden wacht woorden is beperkt tot een maximum van 1000 voor waarden. Het is niet ontworpen voor het blok keren van extreem grote lijsten met wacht woorden.
+>
+> Als u de voor delen van de aangepaste lijst met geblokkeerde wacht woorden volledig wilt benutten, moet u eerst begrijpen [hoe wacht woord wordt geëvalueerd](#how-are-passwords-evaluated) voordat u voor waarden toevoegt aan de lijst met aangepaste verboden. Met deze aanpak kunt u op efficiënte wijze grote aantallen zwakke wacht woorden en hun varianten detecteren en blok keren.
 
-Bijvoorbeeld: overweeg een klant met de naam contoso, die is gebaseerd op Londen, en die een product met de naam ' widget ' maakt. Voor een dergelijke klant zou het verspilling en minder veilig zijn om bepaalde variaties van deze voor waarden te blok keren, zoals:
+![De aangepaste lijst met verboden wacht woorden onder verificatie methoden wijzigen](./media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords-cropped.png)
+
+Laten we eens kijken naar een klant met de naam *Contoso*. Het bedrijf is gebaseerd op Londen en maakt een product met de naam *widget*. Voor dit voorbeeld klant zou het verspilling en minder veilig zijn om bepaalde variaties van deze voor waarden te blok keren, zoals de volgende:
 
 - Contoso! 1
 - "Contoso@London"
 - "ContosoWidget"
 - "! Contoso
 - "LondonHQ"
-- ... etcetera
 
-In plaats daarvan is het veel efficiënter en veiliger om alleen de basis begrippen van de sleutel te blok keren:
+In plaats daarvan is het veel efficiënter en veiliger om alleen de basis voorwaarden van de sleutel te blok keren, zoals de volgende voor beelden:
 
 - Contoso
 - Meubel
 - Opmaken
 
-De wachtwoord validatie algoritme blokkeert vervolgens automatisch zwakke varianten en combi Naties van bovenstaande voor delen.
+De wachtwoord validatie algoritme blokkeert vervolgens automatisch zwakke varianten en combi Naties.
 
-De aangepaste lijst met geblokkeerde wacht woorden en de mogelijkheid om on-premises Active Directory integratie in te scha kelen, wordt beheerd met behulp van de Azure Portal.
+Voltooi de volgende zelf studie om aan de slag te gaan met het gebruik van een aangepaste lijst met geblokkeerde wacht woorden:
 
-![De aangepaste lijst met verboden wacht woorden onder verificatie methoden wijzigen](./media/concept-password-ban-bad/authentication-methods-password-protection.png)
+> [!div class="nextstepaction"]
+> [Zelf studie: aangepaste verboden wacht woorden configureren](tutorial-configure-custom-password-protection.md)
 
 ## <a name="password-spray-attacks-and-third-party-compromised-password-lists"></a>Wachtwoord sproei-aanvallen en lijsten met wacht woorden van derden
 
-Een van de belangrijkste voor delen van Azure AD-wachtwoord beveiliging is om u te helpen bij het beschermen van aanvallen op wachtwoord spray. De meeste aanvallen met een wacht woord worden niet meer dan een paar keer geprobeerd een aanval uit te voeren, omdat dit gedrag de kans op detectie aanzienlijk verg root, hetzij via account vergrendeling of op andere wijze. Het meren deel van wachtwoord spray-aanvallen is daarom afhankelijk van het verzenden van slechts een klein aantal bekende zwakke wacht woorden voor elk van de accounts in een onderneming. Met deze techniek kan de aanvaller snel een eenvoudig te vinden account zoeken, terwijl mogelijke drempel waarden voor detectie worden voor komen.
+Met Azure AD-wachtwoord beveiliging kunt u zich beschermen tegen wachtwoord spray-aanvallen. De meeste aanvallen met een wacht woord worden niet meer dan een paar keer geprobeerd om afzonderlijke accounts aan te vallen. Dit gedrag zou de kans op detectie verg Roten, hetzij via account vergrendeling of op een andere manier.
 
-Azure AD-wachtwoord beveiliging is ontworpen voor het efficiënt blok keren van alle bekende zwakke wacht woorden die waarschijnlijk worden gebruikt in aanvallen met een wacht woord, op basis van de gegevens van de actuele beveiligings-telemetriegegevens, zoals wordt gezien door Azure AD.  Micro soft is op de hoogte van websites van derden die miljoenen wacht woorden opsommen die zijn aangetast in eerdere bekende inbreuken op de veiligheid. Het is gebruikelijk dat producten voor wachtwoord validatie van derden worden gebaseerd op de verdubbeling van een felle vergelijking met die miljoenen wacht woorden. Micro soft voelt dat dergelijke technieken niet de beste manier zijn om de algehele wachtwoord sterkte te verbeteren, gezien de typische strategieën die worden gebruikt door kwaadwillende gebruikers met een wacht woord.
+In plaats daarvan verzenden het meren deel van de aanvallen voor wachtwoord spray slechts een klein aantal bekende zwakke wacht woorden voor elk van de accounts in een onderneming. Met deze techniek kan de aanvaller snel zoeken naar een eenvoudig gemanipuleerd account en mogelijke drempel waarden voor detectie voor komen.
+
+Azure AD-wachtwoord beveiliging blokkeert op efficiënte wijze alle bekende zwakke wacht woorden die waarschijnlijk worden gebruikt voor aanvallen met een wacht woord. Deze beveiliging is gebaseerd op de telemetriegegevens van de actuele beveiliging van Azure AD om de algemene lijst met geblokkeerde wacht woorden samen te stellen.
+
+Er zijn enkele websites van derden die miljoenen wacht woorden opsommen die zijn aangetast in eerdere, bekende inbreuken op de beveiliging. Het is gebruikelijk dat producten voor wachtwoord validatie van derden worden gebaseerd op een felle vergelijking met de miljoenen wacht woorden. Deze technieken zijn echter niet de beste manier om de algehele wachtwoord sterkte te verbeteren, gezien de typische strategieën die worden gebruikt door kwaadwillende gebruikers met een wacht woord.
 
 > [!NOTE]
-> De lijst met niet-micro soft-wacht woorden is niet gebaseerd op gegevens bronnen van derden, met inbegrip van gemanipuleerde wachtwoord lijsten.
+> De lijst met verboden wacht woorden is niet gebaseerd op gegevens bronnen van derden, met inbegrip van gemanipuleerde wachtwoord lijsten.
 
-Hoewel de lijst met algemene geblokkeerde micro soft-lijsten klein is in vergelijking met een bulk lijst van derden, worden de beveiligings effecten versterkt door het feit dat deze is gebrond op basis van de beveiligings-telemetrie van Real-World op effectief wacht woord voor wachtwoord spray, plus het feit dat het micro soft-wachtwoord validatie algoritme gebruikmaakt van slimme methoden voor het afstemmen van benadering. Het eind resultaat is dat hiermee miljoenen van de meest voorkomende zwakke wacht woorden efficiënt worden gedetecteerd en geblokkeerd voor gebruik in uw onderneming. Klanten die ervoor kiezen organisatie-specifieke voor waarden toe te voegen aan de aangepaste lijst met geblokkeerde wacht woorden, hebben ook voor deel van hetzelfde algoritme.
-
-Meer informatie over beveiligings problemen op basis van wacht woorden kan worden gecontroleerd op [uw PA $ $Word niet van belang](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984)is.
+Hoewel de algemene lijst met geblokkeerde verbindingen klein is in vergelijking met een bulk lijst van derden, wordt het bron materiaal van Real-World-telemetrie op de werkelijke wachtwoord spray-aanvallen verwerkt. Deze benadering verbetert de algehele beveiliging en effectiviteit en de algoritme voor wachtwoord validatie maakt ook gebruik van slimme methoden voor het afstemmen van de benadering. Als gevolg hiervan detecteert Azure AD-wachtwoord beveiliging op efficiënte wijze miljoenen van de meest voorkomende zwakke wacht woorden die worden gebruikt in uw onderneming.
 
 ## <a name="on-premises-hybrid-scenarios"></a>On-premises hybride scenario's
 
-Het beveiligen van alleen Cloud accounts is handig, maar veel organisaties onderhouden hybride scenario's met inbegrip van on-premises Windows Server-Active Directory. De beveiligings voordelen van Azure AD-wachtwoord beveiliging kunnen ook worden uitgebreid naar uw Windows Server-Active Directory omgeving via de installatie van on-premises agents. Gebruikers en beheerders die wacht woorden in Active Directory wijzigen of opnieuw instellen, moeten zich verplichten om te voldoen aan hetzelfde wachtwoord beleid als alleen-Cloud gebruikers.
+Veel organisaties hebben een hybride identiteits model met AD DS-omgevingen (on-premises Active Directory Domain Services). Als u de beveiligings voordelen van Azure AD-wachtwoord beveiliging in uw AD DS omgeving wilt uitbreiden, kunt u onderdelen op uw on-premises servers installeren. Deze agents vereisen wachtwoord wijzigings gebeurtenissen in de on-premises AD DS omgeving om te voldoen aan hetzelfde wachtwoord beleid als alleen-Cloud gebruikers.
+
+Zie [Azure AD-wachtwoord beveiliging afdwingen voor AD DS](concept-password-ban-bad-on-premises.md)voor meer informatie.
 
 ## <a name="how-are-passwords-evaluated"></a>Hoe wacht woorden worden geëvalueerd
 
-Wanneer een gebruiker het wacht woord wijzigt of opnieuw instelt, wordt het nieuwe wacht woord gecontroleerd op sterkte en complexiteit door het te valideren op basis van de gecombineerde lijst met voor waarden uit de lijsten met globale en aangepaste verboden wacht woorden (als de laatste is geconfigureerd).
+Wanneer een gebruiker het wacht woord wijzigt of opnieuw instelt, wordt het nieuwe wacht woord gecontroleerd op sterkte en complexiteit door het te valideren op basis van de gecombineerde lijst met voor waarden uit de lijsten met globale en aangepaste verboden wacht woorden.
 
-Zelfs als het wacht woord van een gebruiker een verboden wacht woord bevat, kan het wacht woord nog steeds worden geaccepteerd als het algemene wacht woord sterk genoeg is. Een nieuw geconfigureerd wacht woord gaat door de volgende stappen om de algehele sterkte te beoordelen om te bepalen of het moet worden geaccepteerd of afgewezen.
+Zelfs als het wacht woord van een gebruiker een verboden wacht woord bevat, kan het wacht woord worden geaccepteerd als het algemene wacht woord op een andere manier sterk genoeg is. Een nieuw geconfigureerd wacht woord gaat door de volgende stappen om de algehele sterkte te beoordelen om te bepalen of het moet worden geaccepteerd of afgewezen:
 
 ### <a name="step-1-normalization"></a>Stap 1: normalisatie
 
 Een nieuw wacht woord gaat eerst door een normalisatie proces. Met deze techniek kan een klein aantal verboden wacht woorden worden toegewezen aan een veel grotere set van mogelijk zwakke wacht woorden.
 
-Normalisatie bestaat uit twee delen.  Als eerste worden alle hoofd letters gewijzigd in een kleine letter.  Ten tweede worden algemene teken vervangingen uitgevoerd, bijvoorbeeld:  
+Normalisatie heeft de volgende twee onderdelen:
 
-| Oorspronkelijke brief  | Vervangend letter |
-| --- | --- |
-| 0,3  | o |
-| i  | winst |
-| '$'  | maatschappij |
-| '\@'  | één |
+* Alle hoofd letters worden gewijzigd in een kleine letter.
+* Vervolgens worden algemene teken vervangingen uitgevoerd, zoals in het volgende voor beeld:
 
-Voor beeld: Stel dat het wacht woord ' leeg ' is verboden en dat een gebruiker het wacht woord wil wijzigen in ' Bl@nK '. Hoewel " Bl@nk " niet specifiek is verboden, wordt dit wacht woord door het normalisatie proces geconverteerd naar "blank", een verboden wacht woord.
+   | Oorspronkelijke brief | Vervangend letter |
+   |-----------------|--------------------|
+   | 0               | o                  |
+   | 1               | l                  |
+   | $               | s                  |
+   | \@              | een                  |
+
+Kijk eens naar het volgende voorbeeld:
+
+* Het wacht woord ' leeg ' is niet toegestaan.
+* Een gebruiker probeert het wacht woord te wijzigen in Bl@nK .
+* Hoewel " Bl@nk " niet verboden is, wordt dit wacht woord door het normalisatie proces omgezet in "leeg".
+* Dit wacht woord wordt geweigerd.
 
 ### <a name="step-2-check-if-password-is-considered-banned"></a>Stap 2: controleren of het wacht woord wordt beschouwd als verboden
 
+Een wacht woord wordt vervolgens onderzocht op ander overeenkomend gedrag en er wordt een score gegenereerd. Met deze laatste score wordt bepaald of de aanvraag voor het wijzigen van het wacht woord wordt geaccepteerd of geweigerd.
+
 #### <a name="fuzzy-matching-behavior"></a>Gedrag bij benadering treffers
 
-Fuzzy matching wordt gebruikt op het genormaliseerde wacht woord om te bepalen of het een wacht woord bevat dat is gevonden in de lijsten globaal of aangepast verboden wacht woorden. Het overeenkomende proces is gebaseerd op een bewerkings afstand van één (1) vergelijking.  
+Fuzzy matching wordt gebruikt op het genormaliseerde wacht woord om te bepalen of het een wacht woord bevat dat is gevonden in de lijsten globaal of aangepast verboden wacht woorden. Het overeenkomende proces is gebaseerd op een bewerkings afstand van één (1) vergelijking.
 
-Voor beeld: Stel dat het wacht woord "ABCDEF" is verboden en dat een gebruiker het wacht woord wil wijzigen in een van de volgende:
+Kijk eens naar het volgende voorbeeld:
 
-' abcdeg ' *(laatste teken gewijzigd van ' f ' naar ' g ')* ' ABCDEFG ' *' (g ' toegevoegd aan het einde)* ' abcde ' *(gevolgd door ' f ' is verwijderd van het einde)*
+* Het wacht woord ' ABCDEF ' is geblokkeerd.
+* Een gebruiker probeert het wacht woord te wijzigen in een van de volgende:
 
-Elk van de bovenstaande wacht woorden komt niet specifiek overeen met het verboden wacht woord ' ABCDEF '. Omdat elk voor beeld echter binnen een bewerkings afstand van 1 van de verboden term ' ABCDEF ' ligt, worden deze allemaal beschouwd als een overeenkomst met ' ABCDEF '.
+   * ' abcdeg '- *laatste teken gewijzigd van ' f ' naar ' g '*
+   * ' ABCDEFG '- *' g ' toegevoegd aan end*
+   * ' abcde '- *navolgende ' f ' is verwijderd van het einde*
+
+* Elk van de bovenstaande wacht woorden komt niet precies overeen met het verboden wacht woord ' ABCDEF '.
+
+    Omdat elk voor beeld echter binnen een bewerkings afstand van 1 van de verboden term ' ABCDEF ' ligt, worden deze allemaal beschouwd als een overeenkomst met ' ABCDEF '.
+* Deze wacht woorden worden geweigerd.
 
 #### <a name="substring-matching-on-specific-terms"></a>Overeenkomende subtekenreeks (op specifieke voor waarden)
 
-Overeenkomende subtekenreeks wordt gebruikt op het genormaliseerde wacht woord om te controleren op de voor-en achternaam van de gebruiker en de naam van de Tenant (Houd er rekening mee dat er geen Tenant naam wordt gevonden bij het valideren van wacht woorden op een Active Directory domein controller).
+Overeenkomende subtekenreeks wordt gebruikt op het genormaliseerde wacht woord om te controleren op de voor-en achternaam van de gebruiker en de naam van de Tenant. Het vergelijken van de Tenant naam wordt niet uitgevoerd bij het valideren van wacht woorden op een AD DS domein controller voor on-premises hybride scenario's.
 
-Voor beeld: Stel dat we een gebruiker, Pol, hebben die hun wacht woord opnieuw willen instellen op ' P0l123fb '. Na normalisatie zou dit wacht woord "pol123fb" worden. Met subtekenreeks-overeenkomst wordt gezocht naar het wacht woord de voor naam van de gebruiker ' Pol ' bevat. Hoewel "P0l123fb" niet specifiek is op een van de lijst met geblokkeerde wacht woorden, komt de subtekenreeks die overeenkomt met "Pol" in het wacht woord. Daarom zou dit wacht woord worden afgewezen.
+> [!IMPORTANT]
+> Het vergelijken van subtekenreeksen wordt alleen afgedwongen voor namen en andere termen die ten minste vier tekens bevatten.
+
+Kijk eens naar het volgende voorbeeld:
+
+* Een gebruiker met de naam poll waarvan het wacht woord opnieuw moet worden ingesteld op ' p0LL23fb '.
+* Na normalisatie zou dit wacht woord "poll23fb" worden.
+* Met subtekenreeks-overeenkomst wordt gevonden dat het wacht woord de voor naam van de gebruiker ' Poll ' bevat.
+* Hoewel "poll23fb" niet specifiek is op een van de lijst met geblokkeerde wacht woorden, komt de subtekenreeks die overeenkomt met "poll" in het wacht woord.
+* Dit wacht woord wordt geweigerd.
 
 #### <a name="score-calculation"></a>Score berekening
 
-De volgende stap is het identificeren van alle instanties van verboden wacht woorden in het genormaliseerde nieuwe wacht woord van de gebruiker. Vervolgens:
+De volgende stap is het identificeren van alle instanties van verboden wacht woorden in het genormaliseerde nieuwe wacht woord van de gebruiker. Punten worden toegewezen op basis van de volgende criteria:
 
 1. Elk verboden wacht woord dat is gevonden in het wacht woord van een gebruiker wordt één punt gegeven.
-2. Elk resterend uniek teken wordt op één punt gegeven.
-3. Een wacht woord moet ten minste vijf (5) punten zijn om te worden geaccepteerd.
+1. Elk resterend uniek teken wordt op één punt gegeven.
+1. Een wacht woord moet ten minste vijf (5) punten zijn om te worden geaccepteerd.
 
-Voor de volgende twee voor beelden gaan we ervan uit dat contoso Azure AD-wachtwoord beveiliging gebruikt en ' Contoso ' heeft in de aangepaste lijst. Er wordt ook van uitgegaan dat "leeg" voor komt in de globale lijst.
+Voor de volgende twee voorbeeld scenario's gebruikt contoso Azure AD-wachtwoord beveiliging en heeft Contoso de aangepaste lijst met geblokkeerde wacht woorden. Er wordt ook van uitgegaan dat "leeg" voor komt in de globale lijst.
 
-Voor beeld: een gebruiker wijzigt het wacht woord in ' C0ntos0Blank12 '
+In het volgende voorbeeld scenario wijzigt een gebruiker hun wacht woord in ' C0ntos0Blank12 ':
 
-Na normalisatie wordt dit wacht woord "contosoblank12". Het overeenkomende proces vindt dat dit wacht woord twee verboden wacht woorden bevat: contoso en blank. Dit wacht woord krijgt vervolgens een score:
+* Na normalisatie wordt dit wacht woord "contosoblank12".
+* Het overeenkomende proces vindt dat dit wacht woord twee verboden wacht woorden bevat: contoso en blank.
+* Dit wacht woord krijgt vervolgens de volgende Score:
 
-[contoso] + [lege] + [1] + [2] = 4 punten omdat dit wacht woord minder is dan vijf (5) punten, wordt het geweigerd.
+    *[contoso] + [leeg] + [1] + [2] = 4 punten*
 
-Voor beeld: een gebruiker wijzigt het wacht woord in " ContoS0Bl@nkf9 !".
+* Omdat dit wacht woord minder dan vijf punten (5) is, wordt het geweigerd.
 
-Na normalisatie wordt dit wacht woord "contosoblankf9!". Het overeenkomende proces vindt dat dit wacht woord twee verboden wacht woorden bevat: contoso en blank. Dit wacht woord krijgt vervolgens een score:
+Laten we eens kijken hoe extra complexiteit in een wacht woord het vereiste aantal punten kan bouwen dat moet worden geaccepteerd. In het volgende voorbeeld scenario wijzigt een gebruiker hun wacht woord in " ContoS0Bl@nkf9 !":
 
-[contoso] + [lege] + [f] + [9] + [!] = 5 punten omdat dit wacht woord ten minste vijf (5) punten is, wordt het geaccepteerd.
+* Na normalisatie wordt dit wacht woord "contosoblankf9!".
+* Het overeenkomende proces vindt dat dit wacht woord twee verboden wacht woorden bevat: contoso en blank.
+* Dit wacht woord krijgt vervolgens de volgende Score:
 
-   > [!IMPORTANT]
-   > Houd er rekening mee dat de verboden wachtwoord algoritme samen met de globale lijst op elk gewenst moment kan worden gewijzigd in azure, op basis van de continue beveiligings analyse en onderzoek. Voor de on-premises DC-Agent service worden bijgewerkte algoritmen pas van kracht nadat de software van de DC-agent opnieuw is geïnstalleerd.
+    *[contoso] + [leeg] + [f] + [9] + [!] = 5 punten*
 
-## <a name="license-requirements"></a>Licentievereisten
+* Omdat dit wacht woord ten minste vijf (5) punten heeft, wordt het geaccepteerd.
 
-| Gebruikers | Azure AD-wachtwoord beveiliging met globale lijst met geblokkeerde wacht woorden | Azure AD-wachtwoord beveiliging met aangepaste lijst met geblokkeerde wacht woorden|
-| --- | --- | --- |
-| Alleen Cloud gebruikers | Azure AD Free | Azure AD Premium P1 of P2 |
-| Gebruikers die zijn gesynchroniseerd vanuit een on-premises Windows Server-Active Directory | Azure AD Premium P1 of P2 | Azure AD Premium P1 of P2 |
-
-> [!NOTE]
-> On-premises Windows Server Active Directory gebruikers die niet zijn gesynchroniseerd met Azure Active Directory ook voor delen van Azure AD-wachtwoord beveiliging op basis van bestaande licenties voor gesynchroniseerde gebruikers.
-
-Meer informatie over licenties, waaronder kosten, vindt u op de [Azure Active Directory prijs site](https://azure.microsoft.com/pricing/details/active-directory/).
+> [!IMPORTANT]
+> De verboden wachtwoord algoritme, samen met de lijst met globale verboden wacht woorden, kan op elk gewenst moment in Azure worden gewijzigd op basis van de continue beveiligings analyse en onderzoek.
+>
+> Voor de on-premises DC-Agent service in hybride scenario's worden bijgewerkte algoritmen pas van kracht nadat de software van de DC-agent opnieuw is geïnstalleerd.
 
 ## <a name="what-do-users-see"></a>Wat gebruikers zien
 
 Wanneer een gebruiker probeert een wacht woord opnieuw in te stellen op een waarde die niet kan worden geblokkeerd, wordt het volgende fout bericht weer gegeven:
 
-Uw wacht woord bevat helaas een woord, woord groep of patroon waarmee uw wacht woord gemakkelijk kan worden geraden. Probeer het opnieuw met een ander wacht woord.
+*"Helaas, uw wacht woord bevat een woord, woord groep of patroon waarmee uw wacht woord gemakkelijk kan worden geraden. Probeer het opnieuw met een ander wacht woord.*
+
+## <a name="license-requirements"></a>Licentievereisten
+
+| Gebruikers | Azure AD-wachtwoord beveiliging met globale lijst met geblokkeerde wacht woorden | Azure AD-wachtwoord beveiliging met aangepaste lijst met geblokkeerde wacht woorden|
+|-------------------------------------------|---------------------------|---------------------------|
+| Alleen Cloud gebruikers                          | Azure AD Free             | Azure AD Premium P1 of P2 |
+| Gebruikers gesynchroniseerd van on-premises AD DS | Azure AD Premium P1 of P2 | Azure AD Premium P1 of P2 |
+
+> [!NOTE]
+> On-premises AD DS gebruikers die niet zijn gesynchroniseerd met Azure AD, profiteren ook van Azure AD-wachtwoord beveiliging op basis van bestaande licenties voor gesynchroniseerde gebruikers.
+
+Meer informatie over licenties, waaronder kosten, vindt u op de [Azure Active Directory prijs site](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [De aangepaste lijst met uitgesloten wacht woorden configureren](howto-password-ban-bad.md)
-- [On-premises Azure AD-agenten voor wachtwoord beveiliging inschakelen](howto-password-ban-bad-on-premises-deploy.md)
+Voltooi de volgende zelf studie om aan de slag te gaan met het gebruik van een aangepaste lijst met geblokkeerde wacht woorden:
+
+> [!div class="nextstepaction"]
+> [Zelf studie: aangepaste verboden wacht woorden configureren](tutorial-configure-custom-password-protection.md)
+
+U kunt ook [on-premises Azure AD-wachtwoord beveiliging inschakelen](howto-password-ban-bad-on-premises-deploy.md).

@@ -9,13 +9,13 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
 ms.date: 02/04/2020
-ms.author: anzaman
-ms.openlocfilehash: 19067bbbaf93c9abc9a9220b09dd482ce9115655
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: kumud
+ms.openlocfilehash: f373afae03357ffb65eb459f806fe441e29b21b9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80127982"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047089"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-api"></a>Een taal model aanpassen met de Video Indexer-API
 
@@ -37,7 +37,7 @@ Als u bestanden wilt uploaden die moeten worden toegevoegd aan het taal model, m
 * De sleutel wordt de bestands naam en de waarde is het txt-bestand.
 * De sleutel wordt de bestands naam en de waarde is een URL naar een txt-bestand.
 
-### <a name="response"></a>Antwoord
+### <a name="response"></a>Reactie
 
 Het antwoord geeft de meta gegevens van het zojuist gemaakte taal model samen met de meta gegevens van elk van de bestanden van het model volgens de indeling van dit voor beeld JSON-uitvoer:
 
@@ -75,7 +75,7 @@ De [trein een taal model-API traint](https://api-portal.videoindexer.ai/docs/ser
 > [!NOTE]
 > U moet eerst het taal model maken en de bestanden uploaden. U kunt bestanden uploaden bij het maken van het taal model of door het taal model bij te werken.
 
-### <a name="response"></a>Antwoord
+### <a name="response"></a>Reactie
 
 Het antwoord geeft de meta gegevens van het zojuist getrainde taal model samen met de meta gegevens van elk van de bestanden van het model volgens de indeling van dit voor beeld JSON-uitvoer:
 
@@ -111,7 +111,7 @@ De geretourneerde `id` is een unieke id die wordt gebruikt om onderscheid te mak
 
 Met de API voor het [verwijderen van een taal model](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model?&pattern=delete) wordt een aangepast taal model uit het opgegeven account verwijderd. Alle Video's die het verwijderde taal model gebruiken, blijven dezelfde index totdat u de video opnieuw indexeert. Als u de video opnieuw indexeert, kunt u een nieuw taal model toewijzen aan de video. Anders wordt het standaard model van Video Indexer gebruikt voor het opnieuw indexeren van de video.
 
-### <a name="response"></a>Antwoord
+### <a name="response"></a>Reactie
 
 Er is geen inhoud geretourneerd wanneer het taal model is verwijderd.
 
@@ -127,7 +127,7 @@ Als u bestanden wilt uploaden die moeten worden toegevoegd aan het taal model, m
 * De sleutel wordt de bestands naam en de waarde is het txt-bestand.
 * De sleutel wordt de bestands naam en de waarde is een URL naar een txt-bestand.
 
-### <a name="response"></a>Antwoord
+### <a name="response"></a>Reactie
 
 Het antwoord geeft de meta gegevens van het zojuist getrainde taal model samen met de meta gegevens van elk van de bestanden van het model volgens de indeling van dit voor beeld JSON-uitvoer:
 
@@ -163,7 +163,7 @@ Gebruik de `id` van de bestanden die zijn geretourneerd in het antwoord op het d
 
 Met de [Update van een bestand](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model-file?&pattern=update) kunt u de naam en `enable` status van een bestand in een aangepast taal model in het opgegeven account bijwerken.
 
-### <a name="response"></a>Antwoord
+### <a name="response"></a>Reactie
 
 Het antwoord bevat meta gegevens voor het bestand dat u hebt bijgewerkt, volgens de indeling van de voor beeld-JSON-uitvoer hieronder.
 
@@ -183,7 +183,7 @@ Gebruik het `id` van het bestand dat is geretourneerd in het antwoord op het dow
 
 De [Get](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model?&pattern=get) -API retourneert informatie over het opgegeven taal model in het opgegeven account, zoals taal en de bestanden in het taal model.
 
-### <a name="response"></a>Antwoord
+### <a name="response"></a>Reactie
 
 Het antwoord geeft de meta gegevens van het opgegeven taal model samen met de meta gegevens van elk van de bestanden van het model volgens de indeling van dit voor beeld JSON-uitvoer:
 
@@ -219,7 +219,7 @@ Gebruik het `id` van het bestand dat is geretourneerd in het antwoord op het dow
 
 De [Alles ophalen](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Models?&pattern=get) -API retourneert alle aangepaste taal modellen in het opgegeven account in een lijst.
 
-### <a name="response"></a>Antwoord
+### <a name="response"></a>Reactie
 
 Het antwoord bevat een lijst met alle taal modellen in uw account en elk van de meta gegevens en bestanden volgens de indeling van dit voor beeld JSON-uitvoer:
 
@@ -263,7 +263,7 @@ Het antwoord bevat een lijst met alle taal modellen in uw account en elk van de 
 
 Met de API [verwijderen](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model-File?&pattern=delete) wordt het opgegeven bestand uit het opgegeven taal model in het opgegeven account verwijderd.
 
-### <a name="response"></a>Antwoord
+### <a name="response"></a>Reactie
 
 Er is geen inhoud die wordt geretourneerd wanneer het bestand wordt verwijderd uit het taal model.
 
@@ -271,7 +271,7 @@ Er is geen inhoud die wordt geretourneerd wanneer het bestand wordt verwijderd u
 
 De [meta gegevens van een bestands](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model-File-Data?&pattern=get%20language%20model) -API ophalen retourneert de inhoud van en meta gegevens van het opgegeven bestand uit het gekozen taal model in uw account.
 
-### <a name="response"></a>Antwoord
+### <a name="response"></a>Reactie
 
 Het antwoord bevat de inhoud en meta gegevens van het bestand in de JSON-indeling, zoals in dit voor beeld:
 
@@ -293,7 +293,7 @@ Het antwoord bevat de inhoud en meta gegevens van het bestand in de JSON-indelin
 
 Het [downloaden van een bestand](https://api-portal.videoindexer.ai/docs/services/operations/operations/Download-Language-Model-File-Content?) -API downloadt een tekst bestand met de inhoud van het opgegeven bestand uit het opgegeven taal model in het opgegeven account. Dit tekst bestand moet overeenkomen met de inhoud van het tekst bestand dat oorspronkelijk is geüpload.
 
-### <a name="response"></a>Antwoord
+### <a name="response"></a>Reactie
 
 Het antwoord is het downloaden van een tekst bestand met de inhoud van het bestand in de JSON-indeling.
 

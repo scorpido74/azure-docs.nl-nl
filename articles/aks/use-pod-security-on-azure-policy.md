@@ -4,12 +4,13 @@ description: Meer informatie over het beveiligen van het gehele Azure Policy op 
 services: container-service
 ms.topic: article
 ms.date: 07/06/2020
-ms.openlocfilehash: 8a5107b9ba3c05c92a06753b2cb30bcfc2896d91
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+author: jluk
+ms.openlocfilehash: 8be0b05c260037bbe8afc92726d81668e1391d4a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86090898"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050461"
 ---
 # <a name="secure-pods-with-azure-policy-preview"></a>Alles beveiligen met Azure Policy (preview-versie)
 
@@ -63,7 +64,7 @@ Dit document bevat informatie over het gebruik van Azure Policy voor het beveili
 
 Na de installatie van de Azure Policy-invoeg toepassing worden standaard geen beleids regels toegepast.
 
-Er zijn 14 (14) ingebouwde afzonderlijke Azure-beleids regels en twee (2) ingebouwde initiatieven die specifiek zijn beveiligd in een AKS-cluster.
+Er zijn elf (11) ingebouwde afzonderlijke Azure-beleids regels en twee (2) ingebouwde initiatieven die specifiek zijn beveiligd in een AKS-cluster.
 Elk beleid kan worden aangepast met een effect. Hier vindt u een volledige lijst met [AKS-beleid en de ondersteunde effecten][policy-samples]. Lees meer over [Azure Policy effecten](../governance/policy/concepts/effects.md).
 
 Azure-beleid kan worden toegepast op het niveau van de beheer groep, het abonnement of de resource groep. Wanneer u een beleid toewijst op het niveau van de resource groep, moet u ervoor zorgen dat de resource groep van het doel AKS-cluster is geselecteerd binnen het bereik van het beleid. Elk cluster in het toegewezen bereik waarop de Azure Policy-invoeg toepassing is geïnstalleerd, is binnen het bereik van het beleid.
@@ -78,24 +79,41 @@ Azure Policy voor Kubernetes biedt twee ingebouwde initiatieven die van Peul, [b
 
 Beide ingebouwde initiatieven zijn gebaseerd op definities die worden gebruikt in [pod-beveiligings beleid van Kubernetes](https://github.com/kubernetes/website/blob/master/content/en/examples/policy/baseline-psp.yaml).
 
-|[Beheer van pod-beveiligings beleid](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#what-is-a-pod-security-policy)| Koppeling voor Azure Policy definitie| Baseline Initiative | Beperkt initiatief |
+|[Beheer van pod-beveiligings beleid](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#what-is-a-pod-security-policy)| Koppeling voor Azure Policy definitie| [Baseline Initiative](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2Fa8640138-9b0a-4a28-b8cb-1666c838647d) | [Beperkt initiatief](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2F42b8ef37-b724-4e24-bbc8-7a7708edfe00) |
 |---|---|---|---|
 |Uitvoering van geprivilegieerde containers niet toestaan|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F95edb821-ddaf-4404-9732-666045e056b4)| Ja | Ja
 |Gedeeld gebruik van host-naam ruimten niet toestaan|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F47a1ee2f-2a2a-4576-bf2a-e0e36709c2b8)| Ja | Ja
-|Gebruik van hostnetwerkadapters en poorten beperken tot een bekende lijst|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F82985f06-dc18-4a48-bc1c-b9f4f0098cfe)| Ja | Ja
-|Het gebruik van het host-bestands systeem beperken|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F098fc59e-46c7-4d99-9b16-64990e543d75)| Ja | Ja
-|Linux-mogelijkheden toevoegen buiten de [standaardset](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities)|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc26596ff-4d70-4e6a-9a30-c2506bd2f80c) | Ja | Ja
-|Gebruik van gedefinieerde volume typen beperken|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F16697877-1118-4fb1-9b65-9898ec2509ec)| - | Yes
+|Het gebruik van hostnetwerkadapters en poorten beperken|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F82985f06-dc18-4a48-bc1c-b9f4f0098cfe)| Ja | Ja
+|Gebruik van het host-bestands systeem beperken|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F098fc59e-46c7-4d99-9b16-64990e543d75)| Ja | Ja
+|Linux-mogelijkheden beperken tot de [standaardset](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities)|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc26596ff-4d70-4e6a-9a30-c2506bd2f80c) | Ja | Ja
+|Gebruik van gedefinieerde volume typen beperken|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F16697877-1118-4fb1-9b65-9898ec2509ec)| - | Ja, toegestane volume typen zijn `configMap` , `emptyDir` , `projected` , `downwardAPI` ,`persistentVolumeClaim`|
 |Escalatie van bevoegdheden naar hoofdmap|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1c6e92c9-99f0-4e55-9cf2-0c234dc48f99) | - | Yes |
-|De gebruikers-en groeps-Id's van de container beperken|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | Yes |
-|Het toewijzen van een FSGroup die eigenaar is van de volumes van de pod beperken|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | Yes |
-|Vereist dat het seccomp-profiel moet worden gebruikt|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F975ce327-682c-4f2e-aa46-b9598289b86c) | - | - |
-|Het sysctl-profiel beperken dat door containers wordt gebruikt|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F56d0a13f-712f-466b-8416-56fb354fb823) | - | - |
-|Standaard procedure koppelings typen worden gedefinieerd om de kwets baarheid voor aanvallen te beperken|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff85eb0dd-92ee-40e9-8a76-db25a507d6d3) | - | - |
-|Beperken tot specifieke FlexVolume-Stuur Programma's|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff4a8fce0-2dd5-4c21-9a36-8f0ec809d663) | - | - |
-|Koppelen toestaan die niet alleen-lezen zijn|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdf49d893-a74c-421d-bc95-c663042e5b80) | - | - |
-|De aangepaste SELinux-context van een container definiëren|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe1e6c427-07d9-46ab-9689-bfa85431e636) | - | - |
-|Het AppArmor-profiel definiëren dat wordt gebruikt door containers|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F511f5417-5d12-434d-ab2e-816901e72a5e) | - | - |
+|De gebruikers-en groeps-Id's van de container beperken|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | Yes|
+|Het toewijzen van een FSGroup die eigenaar is van de volumes van de pod beperken|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | Ja, toegestane regels zijn `runAsUser: mustRunAsNonRoot` , `supplementalGroup: mustRunAs 1:65536` , `fsGroup: mustRunAs 1:65535` , `runAsGroup: mustRunAs 1:65535` .  |
+|Vereist seccomp-profiel|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F975ce327-682c-4f2e-aa46-b9598289b86c) | - | Ja, allowedProfiles zijn * `docker/default` of`runtime/default` |
+
+\*docker/default is afgeschaft in Kubernetes sinds v 1.11
+
+### <a name="additional-optional-policies"></a>Aanvullende optionele beleids regels
+
+Er zijn extra Azure-beleids regels die afzonderlijk kunnen worden toegepast buiten het Toep assen van een initiatief. U kunt deze beleids regels toevoegen naast initiatieven als aan uw vereisten niet wordt voldaan door de ingebouwde initiatieven.
+
+|[Beheer van pod-beveiligings beleid](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#what-is-a-pod-security-policy)| Koppeling voor Azure Policy definitie| Gelden naast Baseline Initiative | Gelden naast beperkt initiatief |
+|---|---|---|---|
+|Het AppArmor-profiel definiëren dat wordt gebruikt door containers|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F511f5417-5d12-434d-ab2e-816901e72a5e) | Optioneel | Optioneel |
+|Koppelen toestaan die niet alleen-lezen zijn|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdf49d893-a74c-421d-bc95-c663042e5b80) | Optioneel | Optioneel |
+|Beperken tot specifieke FlexVolume-Stuur Programma's|[Open bare Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff4a8fce0-2dd5-4c21-9a36-8f0ec809d663) | Optioneel: gebruik deze optie als u alleen FlexVolume-Stuur Programma's wilt beperken, maar niet de andere die zijn ingesteld met de optie gebruik van gedefinieerde volume typen beperken | Niet van toepassing: het beperkte initiatief omvat het beperken van het gebruik van gedefinieerde volume typen, waardoor niet alle FlexVolume-Stuur Programma's worden toegestaan |
+
+### <a name="unsupported-built-in-policies-for-managed-aks-clusters"></a>Niet-ondersteund ingebouwd beleid voor beheerde AKS-clusters
+
+> [!NOTE]
+> De volgende drie beleids regels worden **niet ondersteund in AKS** vanwege het aanpassen van aspecten die worden beheerd en beveiligd door aks als een beheerde service. Deze beleids regels worden speciaal gebouwd voor met Azure Arc verbonden clusters met onbeheerde besturings plannen.
+
+|[Beheer van pod-beveiligings beleid](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#what-is-a-pod-security-policy)|
+|---|
+|De aangepaste SELinux-context van een container definiëren|
+|Het sysctl-profiel beperken dat door containers wordt gebruikt|
+|Standaard procedure koppelings typen worden gedefinieerd om de kwets baarheid voor aanvallen te beperken|
 
 <!---
 # Removing until custom initiatives are supported the week after preview

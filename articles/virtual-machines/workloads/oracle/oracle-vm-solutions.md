@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: rogardle
-ms.openlocfilehash: 363d26391c8ee40fb95a0b8fd92c4d94f1082b8d
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 2201cae66aae8c2d9d106871db0d4ebbd003f361
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221524"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052144"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Oracle-VM-installatie kopieën en hun implementatie op Microsoft Azure
 
@@ -107,12 +107,12 @@ Azure NetApp Files is ontworpen om te voldoen aan de belangrijkste vereisten voo
 - Hoge Beschik baarheid, hoge duurzaamheid en beheer baarheid op schaal, meestal vereist door bedrijfs werkbelastingen die essentieel zijn voor bedrijven (zoals SAP en Oracle)
 - Snelle en efficiënte back-up en herstel om de meest agressieve RTO-en RPO-SLA te halen
 
-Deze mogelijkheden zijn mogelijk omdat Azure NetApp Files is gebaseerd op NetApp® ONTAP® alle-Flash systemen die worden uitgevoerd in een Azure Data Center-omgeving, als een systeem eigen Azure-service. Het resultaat is een ideale database opslag technologie die net als andere opties voor Azure Storage kan worden ingericht en verbruikt. Zie [Azure NetApp files-documentatie](https://docs.microsoft.com/azure/azure-netapp-files/) voor meer informatie over het implementeren en gebruiken van Azure NetApp files NFS-volumes. Zie de [Best practices-hand leiding voor Oracle in azure met behulp van Azure NetApp files](https://www.netapp.com/us/media/tr-4780.pdf) voor Best Practice aanbevelingen voor het werken met een Oracle-data base op Azure NetApp files.
+Deze mogelijkheden zijn mogelijk omdat Azure NetApp Files is gebaseerd op NetApp® ONTAP® alle-Flash systemen die worden uitgevoerd in een Azure Data Center-omgeving, als een systeem eigen Azure-service. Het resultaat is een ideale database opslag technologie die net als andere opties voor Azure Storage kan worden ingericht en verbruikt. Zie [Azure NetApp files-documentatie](../../../azure-netapp-files/index.yml) voor meer informatie over het implementeren en gebruiken van Azure NetApp files NFS-volumes. Zie de [Best practices-hand leiding voor Oracle in azure met behulp van Azure NetApp files](https://www.netapp.com/us/media/tr-4780.pdf) voor Best Practice aanbevelingen voor het werken met een Oracle-data base op Azure NetApp files.
 
 ## <a name="licensing-oracle-database--software-on-azure"></a>Licentie Oracle Database & software op Azure
 
 Microsoft Azure is een geautoriseerde cloud omgeving voor het uitvoeren van Oracle Database. De Oracle core factor Table is niet van toepassing op Oracle-data bases in de Cloud. Bij het gebruik van Vm's met Hyper-Threading-technologie die is ingeschakeld voor Enter prise Edition-data bases, telt u twee Vcpu's als gelijkwaardig aan één Oracle-processor licentie als hyperthreading is ingeschakeld (zoals vermeld in het beleids document). De details van het beleid vindt u [hier](http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf).
-Oracle-data bases vereisen over het algemeen meer geheugen en IO. Daarom worden [Vm's geoptimaliseerd voor geheugen](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory) aanbevolen voor deze werk belastingen. Om uw workloads verder te optimaliseren, worden [beperkte kern vcpu's](https://docs.microsoft.com/azure/virtual-machines/linux/constrained-vcpu) aanbevolen voor Oracle database workloads die hoge geheugen, opslag ruimte en I/O-band breedte nodig hebben, maar geen hoog aantal kernen.
+Oracle-data bases vereisen over het algemeen meer geheugen en IO. Daarom worden [Vm's geoptimaliseerd voor geheugen](../../sizes-memory.md) aanbevolen voor deze werk belastingen. Om uw workloads verder te optimaliseren, worden [beperkte kern vcpu's](../../linux/constrained-vcpu.md) aanbevolen voor Oracle database workloads die hoge geheugen, opslag ruimte en I/O-band breedte nodig hebben, maar geen hoog aantal kernen.
 
 Wanneer Oracle-software en-workloads van on-premises naar Microsoft Azure worden gemigreerd, biedt Oracle licentie mobiliteit zoals vermeld in de [Veelgestelde vragen over Oracle op Azure](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html)
 

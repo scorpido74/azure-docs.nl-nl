@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: apimpm
-ms.openlocfilehash: 2870a654faad4e760a9d022488cb2c4c406cbeab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e79248e16ca21ae84022f8ac7f280d93f489c6a4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82203128"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050346"
 ---
 # <a name="provision-a-self-hosted-gateway-in-azure-api-management"></a>Een zelf-hostende gateway inrichten in azure API Management
 
@@ -25,13 +25,13 @@ Het inrichten van een gateway bron in uw Azure API Management-exemplaar is een v
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voer de volgende Snelstartgids uit: [een Azure API Management-exemplaar maken](get-started-create-service-instance.md)
+Voltooi de volgende quickstart: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="provision-a-self-hosted-gateway"></a>Een zelf-hostende gateway inrichten
 
-1. Selecteer de **gateways** onder **instellingen**.
+1. Selecteer de **gateways** onder **implementatie en infra structuur**.
 2. Klik op **+ Toevoegen**.
 3. Voer de **naam** en de **regio** van de gateway in.
 > [!TIP]

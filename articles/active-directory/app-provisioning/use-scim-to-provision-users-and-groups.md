@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/07/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: b08509bed6b26cb56caebd4dc47fc3b7ac84ce27
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8138f125c55e3b2d76cb680ea48366c5a3e05fd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85117315"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051517"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Een SCIM-eind punt bouwen en gebruikers inrichten met Azure AD configureren
 
@@ -60,7 +60,7 @@ Voor elke toepassing zijn verschillende kenmerken vereist om een gebruiker of gr
 |tag|urn: IETF: params: scim: schemas: extension: 2.0: CustomExtension: tag|extensionAttribute1|
 |status|actief|isSoftDeleted (berekende waarde niet opgeslagen op gebruiker)|
 
-Het hierboven gedefinieerde schema wordt weer gegeven met behulp van de JSON-nettolading hieronder. Houd er rekening mee dat naast de vereiste kenmerken voor de toepassing, de JSON-weer gave de vereiste kenmerken ' id ', ' externalId ' en ' meta ' bevat.
+Het hierboven gedefinieerde schema wordt weer gegeven met behulp van de JSON-nettolading hieronder. Houd er rekening mee dat naast de vereiste kenmerken voor de toepassing, de JSON-weer gave de vereiste `id` `externalId` kenmerken, en `meta` attributen bevat.
 
 ```json
 {
@@ -100,7 +100,7 @@ U kunt de onderstaande tabel gebruiken om te begrijpen hoe de kenmerken die uw t
 |employeeId|urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: employeeNumber|
 | Fax-TelephoneNumber |phoneNumbers [type EQ "fax"]. waarde |
 | givenName |name. naam |
-| jobTitle |titel |
+| jobTitle |title |
 | mail |e-mail berichten [type EQ "werk]. waarde |
 | mailNickname |externalId |
 | manager |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: Manager |
@@ -134,7 +134,7 @@ Er zijn verschillende eind punten gedefinieerd in de SCIM RFC. U kunt aan de sla
 |/Group|RUWE bewerkingen uitvoeren op een groeps object.|
 |/ServiceProviderConfig|Bevat informatie over de functies van de SCIM-standaard die worden ondersteund, bijvoorbeeld de bronnen die worden ondersteund en de verificatie methode.|
 |/ResourceTypes|Hiermee geeft u de meta gegevens van elke resource op|
-|/Schemas|De set met kenmerken die door elke client en service provider wordt ondersteund, kan variëren. Hoewel een service provider ' naam, ' titel ' en ' e-mailen ' kan bevatten, terwijl een andere service provider ' naam ', ' titel ' en ' phoneNumbers ' gebruikt. Het eind punt voor schema's maakt het mogelijk om de kenmerken te detecteren die worden ondersteund.|
+|/Schemas|De set met kenmerken die door elke client en service provider wordt ondersteund, kan variëren. Een service provider kan `name` , `title` , en `emails` , terwijl een andere service provider, `name` `title` `phoneNumbers` , en. Het eind punt voor schema's maakt het mogelijk om de kenmerken te detecteren die worden ondersteund.|
 |/Bulk|Met bulk bewerkingen kunt u bewerkingen uitvoeren op een grote verzameling Resource objecten in één bewerking (zoals lidmaatschappen van updates voor een grote groep).|
 
 
@@ -149,7 +149,7 @@ Binnen de [SCIM 2,0-protocol specificatie](http://www.simplecloud.info/#Specific
 * Biedt ondersteuning voor het maken van gebruikers, en optioneel ook groepen, zoals wordt bepaald door para graaf [3,3 van het scim-protocol](https://tools.ietf.org/html/rfc7644#section-3.3).  
 * Ondersteunt het wijzigen van gebruikers of groepen met PATCH aanvragen, zoals wordt bepaald door [de sectie 3.5.2 van het scim-protocol](https://tools.ietf.org/html/rfc7644#section-3.5.2).  
 * Biedt ondersteuning voor het ophalen van een bekende resource voor een eerder gemaakte gebruiker of groep, zoals wordt bepaald door [de sectie 3.4.1 van het scim-protocol](https://tools.ietf.org/html/rfc7644#section-3.4.1).  
-* Biedt ondersteuning voor het uitvoeren van query's op gebruikers of groepen, zoals wordt bepaald door sectie [3.4.2 van het scim-protocol](https://tools.ietf.org/html/rfc7644#section-3.4.2).  Gebruikers worden standaard opgehaald door hun en er wordt een query uitgevoerd op `id` de `username` `externalid` groepen en en er wordt een query uitgevoerd `displayName` .  
+* Biedt ondersteuning voor het uitvoeren van query's op gebruikers of groepen, zoals wordt bepaald door sectie [3.4.2 van het scim-protocol](https://tools.ietf.org/html/rfc7644#section-3.4.2).  Gebruikers worden standaard opgehaald door hun en er wordt een query uitgevoerd op `id` de `username` `externalId` groepen en en er wordt een query uitgevoerd `displayName` .  
 * Biedt ondersteuning voor het uitvoeren van query's op de gebruiker door de ID en per Manager, zoals wordt bepaald door de sectie 3.4.2 van het SCIM-protocol.  
 * Ondersteunt het opvragen van groepen op ID en op lid, zoals wordt bepaald door de sectie 3.4.2 van het SCIM-protocol.  
 * Hiermee wordt één Bearer-token geaccepteerd voor verificatie en autorisatie van Azure AD voor uw toepassing.
@@ -252,7 +252,7 @@ Deze sectie bevat voor beelden van SCIM-aanvragen die worden verzonden door de A
 }
 ```
 
-##### <a name="response"></a>Antwoord
+##### <a name="response"></a>Reactie
 
 *HTTP/1.1 201 gemaakt*
 ```json
@@ -745,7 +745,7 @@ Minimale staaf voor TLS 1,2-coderings suites:
 - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 
 ### <a name="ip-ranges"></a>IP-bereiken
-De Azure AD-inrichtings service kan momenteel worden opperate onder elk Azure IP-bereik. Er wordt gewerkt aan het consolideren van de set IP-bereiken waarmee de service wordt uitgevoerd. Dit document wordt bijgewerkt zodra de lijst met IP-adresbereiken is geconsolideerd. 
+De Azure AD-inrichtings service kan momenteel worden gebruikt onder een Azure IP-bereik. Er wordt gewerkt aan het consolideren van de set IP-bereiken waarmee de service wordt uitgevoerd. Dit document wordt bijgewerkt zodra de lijst met IP-adresbereiken is geconsolideerd. 
 
 ## <a name="step-3-build-a-scim-endpoint"></a>Stap 3: een SCIM-eind punt bouwen
 
@@ -915,10 +915,10 @@ Een GET-aanvraag naar de token controller verzenden om een geldig Bearer-token o
 
 ***Voor beeld 1. Een query uitvoeren op de service voor een overeenkomende gebruiker***
 
-Azure Active Directory vraagt de service om een gebruiker met een externalId-kenmerk waarde die overeenkomt met de kenmerk waarde mailnickname van een gebruiker in azure AD. De query wordt weer gegeven als een Hypertext Transfer Protocol (HTTP)-aanvraag, zoals dit voor beeld, waarbij jyoung een voor beeld is van een mailnickname van een gebruiker in Azure Active Directory.
+Azure Active Directory vraagt de service om een gebruiker met een `externalId` kenmerk waarde die overeenkomt met de kenmerk waarde mailnickname van een gebruiker in azure AD. De query wordt weer gegeven als een Hypertext Transfer Protocol (HTTP)-aanvraag, zoals dit voor beeld, waarbij jyoung een voor beeld is van een mailnickname van een gebruiker in Azure Active Directory.
 
 >[!NOTE]
-> Dit is een voor beeld. Niet alle gebruikers hebben een mailnickname-kenmerk en de waarde die een gebruiker heeft, is mogelijk niet uniek in de Directory. Het kenmerk dat wordt gebruikt voor het vergelijken (in dit geval externalId) kan ook worden geconfigureerd in de [kenmerk toewijzingen van Azure AD](customize-application-attributes.md).
+> Dit is een voor beeld. Niet alle gebruikers hebben een mailnickname-kenmerk en de waarde die een gebruiker heeft, is mogelijk niet uniek in de Directory. Het kenmerk dat wordt gebruikt voor het vergelijken (in dit geval `externalId` ) kan ook worden geconfigureerd in de [kenmerk toewijzingen van Azure AD](customize-application-attributes.md).
 
 ```
 GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1
@@ -939,7 +939,7 @@ In de voorbeeld code wordt de aanvraag omgezet in een aanroep naar de methode Qu
  Task<Resource[]> QueryAsync(IRequest<IQueryParameters> request);
 ```
 
-In de voorbeeld query voor een gebruiker met een opgegeven waarde voor het kenmerk externalId, zijn de waarden van de argumenten die zijn door gegeven aan de methode QueryAsync:
+In de voorbeeld query voor een gebruiker met een opgegeven waarde voor het `externalId` kenmerk zijn de waarden van de argumenten die zijn door gegeven aan de methode QueryAsync:
 
 * instellen. AlternateFilters. Count: 1
 * instellen. AlternateFilters. ElementAt (0). AttributePath: "externalId"
@@ -948,7 +948,7 @@ In de voorbeeld query voor een gebruiker met een opgegeven waarde voor het kenme
 
 ***Voor beeld 2. Een gebruiker inrichten***
 
-Als het antwoord op een query naar de webservice voor een gebruiker met een externalId-kenmerk waarde die overeenkomt met de kenmerk waarde mailnickname van een gebruiker geen gebruikers retourneert, worden Azure Active Directory aanvragen die door de service worden ingericht, voorzien van een gebruiker die overeenkomt met de service in Azure Active Directory.  Hier volgt een voor beeld van een dergelijke aanvraag: 
+Als het antwoord op een query naar de webservice voor een gebruiker met een `externalId` kenmerk waarde die overeenkomt met de kenmerk waarde mailnickname van een gebruiker geen gebruikers retourneert, worden Azure Active Directory aanvragen die de service inricht, een gebruiker die overeenkomt met de service in azure Active Directory.  Hier volgt een voor beeld van een dergelijke aanvraag: 
 
 ```
  POST https://.../scim/Users HTTP/1.1
@@ -1191,7 +1191,7 @@ De SCIM spec definieert geen SCIM-specifiek schema voor verificatie en autorisat
 |--|--|--|--|
 |Gebruikers naam en wacht woord (niet aanbevolen of niet ondersteund door Azure AD)|Eenvoudig te implementeren|Onveilig: [uw PA $ $Word is niet van belang](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/your-pa-word-doesn-t-matter/ba-p/731984)|Per geval ondersteund voor galerij-apps. Niet ondersteund voor niet-galerij-apps.|
 |Token met lange levens drager|Voor tokens met een lange levens duur hoeft geen gebruiker aanwezig te zijn. Ze kunnen eenvoudig worden gebruikt bij het instellen van de inrichting.|Tokens met een lange levens duur kunnen moeilijk worden gedeeld met een beheerder zonder gebruik te maken van onveilige methoden zoals e-mail. |Ondersteund voor Gallery-en niet-galerij-apps. |
-|Verleende OAuth-autorisatie code|Toegangs tokens zijn veel korter dan wacht woorden en beschikken over een mechanisme voor automatisch vernieuwen die de tokens van de lange levens drager niet hebben.  Er moet een echte gebruiker aanwezig zijn tijdens de eerste autorisatie, waarbij een verantwoordelijkheids niveau wordt toegevoegd. |Hiervoor moet een gebruiker aanwezig zijn. Als de gebruiker de organisatie verlaat, is het token ongeldig en moet de autorisatie opnieuw worden uitgevoerd.|Ondersteund voor galerie-apps. Er wordt ondersteuning geboden voor niet-galerij-apps.|
+|Verleende OAuth-autorisatie code|Toegangs tokens zijn veel korter dan wacht woorden en beschikken over een mechanisme voor automatisch vernieuwen die de tokens van de lange levens drager niet hebben.  Er moet een echte gebruiker aanwezig zijn tijdens de eerste autorisatie, waarbij een verantwoordelijkheids niveau wordt toegevoegd. |Hiervoor moet een gebruiker aanwezig zijn. Als de gebruiker de organisatie verlaat, is het token ongeldig en moet de autorisatie opnieuw worden uitgevoerd.|Ondersteund voor galerij-apps, maar niet voor niet-galerij-apps. Ondersteuning voor niet-galerie is in onze achterstand.|
 |Verleende OAuth-client referenties|Toegangs tokens zijn veel korter dan wacht woorden en beschikken over een mechanisme voor automatisch vernieuwen die de tokens van de lange levens drager niet hebben. Zowel de autorisatie code Grant als de client referenties geven hetzelfde type toegangs token maken, zodat het verplaatsen tussen deze methoden transparant is voor de API.  Het inrichten kan volledig worden geautomatiseerd en nieuwe tokens kunnen zonder tussen komst van de gebruiker worden aangevraagd. ||Niet ondersteund voor apps uit de galerie en niet-galerij. Ondersteuning bevindt zich in onze achterstand.|
 
 > [!NOTE]
@@ -1209,7 +1209,7 @@ Aanbevolen procedures (aanbevolen maar niet vereist):
 * Ondersteuning voor meerdere omleidings-Url's. Beheerders kunnen het inrichten configureren van zowel ' portal.azure.com ' als ' aad.portal.azure.com '. Ondersteuning voor meerdere omleidings-Url's zorgt ervoor dat gebruikers toegang kunnen verlenen vanuit een van de portals.
 * Meerdere geheimen ondersteunen om te zorgen voor een soepele geheime verlenging, zonder uitval tijd. 
 
-**Lange levens duur van OAuth Bearer-tokens:** Als uw toepassing geen ondersteuning biedt voor de overdrachts stroom van de OAuth-autorisatie code, kunt u ook een lang bewaarde OAuth Bearer-token genereren dan die een beheerder kan gebruiken om de inrichtings integratie in te stellen. Het token moet permanent zijn, anders wordt de inrichtings taak in [quarantaine geplaatst](application-provisioning-quarantine-status.md) wanneer het token verloopt. Dit token moet kleiner zijn dan 1 KB.  
+**Langlopende OAuth Bearer-tokens:** Als uw toepassing geen ondersteuning biedt voor de overdrachts stroom van de OAuth-autorisatie code, kunt u ook een lang bewaarde OAuth Bearer-token genereren dan die een beheerder kan gebruiken om de inrichtings integratie in te stellen. Het token moet permanent zijn, anders wordt de inrichtings taak in [quarantaine geplaatst](application-provisioning-quarantine-status.md) wanneer het token verloopt. Dit token moet kleiner zijn dan 1 KB.  
 
 Laat het ons weten op [UserVoice](https://aka.ms/appprovisioningfeaturerequest)voor aanvullende verificatie-en autorisatie methoden.
 

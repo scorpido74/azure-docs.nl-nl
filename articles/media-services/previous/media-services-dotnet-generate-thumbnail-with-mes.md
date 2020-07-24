@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 3c5e22c14d0df46ddac9a503f43df8d54c3c93d5
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: d9b4766b42704da8c81704822f263a6ddf46ce5a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964750"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052844"
 ---
 # <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Miniatuurweergaven genereren met Media Encoder Standard met .NET 
 
@@ -282,7 +282,7 @@ Let op het gebruik van de macro {resolution} in de bestands naam; Hiermee wordt 
 Hoewel al deze voor beelden hebben besproken hoe u een coderings taak kunt verzenden die alleen installatie kopieën produceert, kunt u ook video-en audio codering combi neren met het genereren van miniaturen. Met de volgende vooraf ingestelde JSON en XML wordt **Media Encoder Standard** een miniatuur tijdens het coderen te genereren.
 
 ### <a name="json-preset"></a><a id="json"></a>JSON-voor instelling
-Zie dit artikel voor meer informatie over [het](https://msdn.microsoft.com/library/mt269962.aspx) schema.
+Zie dit artikel voor meer informatie over [het](/azure/media-services/previous/media-services-mes-schema) schema.
 
 ```json
     {
@@ -347,7 +347,7 @@ Zie dit artikel voor meer informatie over [het](https://msdn.microsoft.com/libra
 ```
 
 ### <a name="xml-preset"></a><a id="xml"></a>XML-voor instelling
-Zie dit artikel voor meer informatie over [het](https://msdn.microsoft.com/library/mt269962.aspx) schema.
+Zie dit artikel voor meer informatie over [het](/azure/media-services/previous/media-services-mes-schema) schema.
 
 ```csharp
     <?xml version="1.0" encoding="utf-16"?>
@@ -576,4 +576,3 @@ U kunt de voortgang van de [taak](media-services-check-job-progress.md) controle
 
 ## <a name="see-also"></a>Zie ook
 [Overzicht van Media Services encoding](media-services-encode-asset.md)
-

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 83f7f16d8406744a10451e8d488b7719845c525d
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: b2509539551b3991690e6d0313e069ae015eb892
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135947"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052399"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>Een toepassings ontwikkelaars ADCD (Controlled Distribution) instellen in IBM zD&T v1
 
@@ -72,7 +72,7 @@ Nu u de pakket (en) hebt, moet u deze uploaden naar uw VM in Azure.
 
 2. Selecteer het tabblad **SSH** en kopieer de SSH-opdracht naar het klem bord.
 
-3. Meld u aan bij uw virtuele machine met uw referenties en de gewenste [SSH-client](/azure/virtual-machines/linux/use-remote-desktop) . Deze demo maakt gebruik van de Linux-uitbrei dingen voor Windows 10, waarmee een bash-shell wordt toegevoegd aan de Windows-opdracht prompt. PuTTy werkt net zo goed.
+3. Meld u aan bij uw virtuele machine met uw referenties en de gewenste [SSH-client](../../../linux/use-remote-desktop.md) . Deze demo maakt gebruik van de Linux-uitbrei dingen voor Windows 10, waarmee een bash-shell wordt toegevoegd aan de Windows-opdracht prompt. PuTTy werkt net zo goed.
 
 4. Wanneer u bent aangemeld, maakt u een map voor het uploaden van de IBM-pakketten. Houd er rekening mee dat Linux hoofdletter gevoelig is. Deze demo gaat er bijvoorbeeld van uit dat de pakketten worden geüpload naar:
 
@@ -184,13 +184,13 @@ Uw installatie kopie kan nu worden geïmplementeerd en kan worden gekoppeld door
 > [!NOTE]
 > Als er een fout bericht wordt weer gegeven met de melding dat er onvoldoende schijf ruimte is, moet u er rekening mee houden dat de regio 151 GB vereist.
 
-Gefeliciteerd U voert nu een IBM mainframe-omgeving uit op Azure.
+Gefeliciteerd. U voert nu een IBM mainframe-omgeving uit op Azure.
 
-## <a name="learn-more"></a>Lees meer
+## <a name="learn-more"></a>Meer informatie
 
-- [Mainframe migratie: mythen en feiten](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
-- [IBM DB2 pureScale op Azure](https://docs.microsoft.com/azure/virtual-machines/linux/ibm-db2-purescale-azure)
-- [Problemen oplossen](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
+- [Mainframe migratie: mythen en feiten](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
+- [IBM DB2 pureScale op Azure](../../../linux/ibm-db2-purescale-azure.md)
+- [Problemen oplossen](../../../troubleshooting/index.yml)
 - [Ontrafelen mainframe naar Azure-migratie](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
 <!-- INTERNAL LINKS -->

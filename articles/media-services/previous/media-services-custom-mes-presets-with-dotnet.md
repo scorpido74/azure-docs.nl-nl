@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: juliako
-ms.openlocfilehash: 9509a38dbe9655cd7f70096bc5f3283f35c190f0
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 085a186ffd98220257ad912ede93f43d339707f2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956710"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052933"
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>Media Encoder Standard voor instellingen aanpassen  
 
@@ -30,7 +30,7 @@ In dit artikel wordt beschreven hoe u met een aangepaste voor instelling geavanc
 In dit artikel wordt beschreven hoe u een vooraf ingestelde procedure kunt aanpassen door de [H264 multiple bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) -voor instelling te nemen en het aantal lagen te verminderen. Het artikel [customizing Media Encoder Standard presets](media-services-advanced-encoding-with-mes.md) bevat aangepaste voor instellingen die kunnen worden gebruikt voor het uitvoeren van geavanceerde coderings taken.
 
 > [!NOTE]
-> De aangepaste voor instellingen die in dit artikel worden beschreven, kunnen niet worden gebruikt in [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) -trans formaties of de CLI-opdrachten. Zie de [richt lijnen voor migratie van v2 naar v3](../latest/migrate-from-v2-to-v3.md) voor meer informatie.
+> De aangepaste voor instellingen die in dit artikel worden beschreven, kunnen niet worden gebruikt in [Media Services v3](../latest/index.yml) -trans formaties of de CLI-opdrachten. Zie de [richt lijnen voor migratie van v2 naar v3](../latest/migrate-from-v2-to-v3.md) voor meer informatie.
 
 ## <a name="customizing-a-mes-preset"></a><a id="customizing_presets"></a>Een MES-voor instelling aanpassen
 

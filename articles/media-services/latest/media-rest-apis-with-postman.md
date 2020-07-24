@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2019
 ms.author: juliako
-ms.openlocfilehash: 872dad95fc5b536c51e251612f40439da020a059
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16c74e10e88d3f8eacd8f59222adbdb19be813ef
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75779634"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053209"
 ---
 # <a name="configure-postman-for-media-services-v3-rest-api-calls"></a>Postman configureren voor Media Services v3-REST API-aanroepen
 
@@ -27,8 +28,8 @@ Controleer voordat u begint met het ontwikkelen [met behulp van Media Services v
 
 ## <a name="prerequisites"></a>Vereisten
 
-- [Maak een Media Services-account](create-account-cli-how-to.md). Zorg ervoor dat u de naam van de resource groep en de naam van het Media Services account vergeet. 
-- Gegevens ophalen die nodig zijn voor [toegang tot api's](access-api-cli-how-to.md)
+- [Een Azure Media Services-account maken](./create-account-howto.md). Zorg ervoor dat u de naam van de resource groep en de naam van het Media Services account vergeet. 
+- Gegevens ophalen die nodig zijn voor [toegang tot api's](./access-api-howto.md)
 - Installeer de [Postman](https://www.getpostman.com/) REST-client als u de REST-API's wilt uitvoeren die in een aantal AMS REST-zelfstudies worden weergegeven. 
 
     We gebruiken **Postman** maar elk ander REST-hulpprogramma is hiervoor geschikt. Andere alternatieven zijn: **Visual Studio code** met de rest-invoeg toepassing of **Telerik Fiddler**. 
@@ -105,4 +106,4 @@ Voordat u begint met het bewerken van AMS v3-resources, moet u Azure AD-token vo
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Streamen van bestanden met rest](stream-files-tutorial-with-rest.md).  
-- [Zelf studie: een extern bestand coderen op basis van URL en de video-REST streamen](stream-files-tutorial-with-rest.md)
+- [Zelfstudie: Extern bestand coderen op basis van URL en video streamen - REST](stream-files-tutorial-with-rest.md)

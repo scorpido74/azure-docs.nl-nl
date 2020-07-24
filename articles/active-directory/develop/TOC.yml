@@ -343,8 +343,6 @@
               href: msal-js-use-ie-browser.md
             - name: Bekende problemen - IE en Microsoft Edge
               href: msal-js-known-issues-ie-edge-browsers.md
-            - name: Bekende problemen - Safari
-              href: msal-js-known-issues-safari-browser.md
             - name: Fouten en uitzonderingen verwerken
               href: msal-handling-exceptions.md?tabs=javascript
             - name: Logboekregistratie

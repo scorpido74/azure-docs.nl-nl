@@ -1,5 +1,5 @@
 ---
-title: Azure Synapse SQL-architectuur
+title: Synapse SQL-architectuur
 description: Meer informatie over hoe Azure Synapse SQL een enorme combi natie van parallelle verwerking (MPP) combineert met Azure Storage om hoge prestaties en schaal baarheid te garanderen.
 services: synapse-analytics
 author: mlee3gsd
@@ -10,11 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: d073bc82b3a9e42e443caa5d3e7855fd4eb5b98b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f2f3eee12bb8741f6d079f6f081a08f4e2db9b5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83658911"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046856"
 ---
 # <a name="azure-synapse-sql-architecture"></a>Azure Synapse SQL-architectuur 
 
@@ -44,7 +45,7 @@ Bij het gebruik van Synapse SQL One kan een onafhankelijke omvang van reken krac
 
 * De reken kracht binnen een SQL-groep (Data Warehouse) verg Roten of verkleinen zonder gegevens te verplaatsen.
 * De rekencapaciteit onderbreekt terwijl gegevens intact blijven, zodat u alleen betaalt voor opslag.
-* De rekencapaciteit hervatten tijdens werktijden.
+* De rekencapaciteit hervat tijdens werktijden.
 
 ## <a name="azure-storage"></a>Azure Storage
 
@@ -53,7 +54,7 @@ Synapse SQL maakt gebruik van Azure Storage om uw gebruikers gegevens veilig te 
 Met SQL on-Demand kunt u bestanden in uw data Lake doorzoeken op een alleen-lezen manier, terwijl u met SQL-pool ook gegevens kunt opnemen. Wanneer gegevens worden opgenomen in de SQL-pool, worden de gegevens in **distributies** Shard om de prestaties van het systeem te optimaliseren. U kunt kiezen welk sharding-patroon u wilt gebruiken om de gegevens te distribueren wanneer u de tabel definieert. Deze sharding-patronen worden ondersteund:
 
 * Hash
-* Round robin
+* Round Robin
 * Repliceren
 
 ## <a name="control-node"></a>Beheerknooppunt

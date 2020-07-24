@@ -10,13 +10,14 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
-ms.openlocfilehash: af608dcfbb5d98cf3116de4e14dc12bf6facb97b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b449f68b25fce19dc034d2a0db0ae5ce8a28ec7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76989906"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047498"
 ---
-# <a name="animated-character-detection-preview"></a>Detectie van geanimeerde tekens (preview-versie)
+# <a name="animated-character-detection-preview"></a>Detectie van geanimeerde tekens (preview)
 
 Azure Media Services Video Indexer ondersteunt de detectie, groepering en herkenning van tekens in inhoud met animatie via integratie met [Cognitive Services aangepaste visie](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/). Deze functionaliteit is beschikbaar via de portal en via de API.
 
@@ -133,7 +134,7 @@ Volg deze stappen om u te verbinden Custom Vision account te Video Indexer of he
         ![Aanpassing van het inhouds model](./media/animated-characters-recognition/content-model-customization-tab.png)
 
      1. Eenmaal getraind, worden de getrainde tekens herkend door alle Video's die worden geïndexeerd of herindexeerd met het model. 
-    Betaalde accounts die toegang hebben tot hun Custom Vision-account kunnen de modellen en gelabelde installatie kopieën daar zien. Meer informatie over [het verbeteren van uw classificatie in Custom Vision](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier).
+    Betaalde accounts die toegang hebben tot hun Custom Vision-account kunnen de modellen en gelabelde installatie kopieën daar zien. Meer informatie over [het verbeteren van uw classificatie in Custom Vision](../../cognitive-services/custom-vision-service/getting-started-improving-your-classifier.md).
 
 1. Een animatie teken verwijderen.
 
@@ -159,7 +160,7 @@ Volg deze stappen om u te verbinden Custom Vision account te Video Indexer of he
 1. Verbinding maken met een Custom Vision-account.
 
     Als u een Video Indexer betaalde account hebt, moet u eerst verbinding maken met een Custom Vision-account. <br/>
-    Als u nog geen Custom Vision-account hebt, moet u er een maken. Zie [Custom Vision](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/home)voor meer informatie.
+    Als u nog geen Custom Vision-account hebt, moet u er een maken. Zie [Custom Vision](../../cognitive-services/custom-vision-service/home.md)voor meer informatie.
 
     [Verbind uw Custom Vision-account met behulp van API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Connect-Custom-Vision-Account?tags=&pattern=&groupBy=tag).
 1. Maak een model met animatie-tekens.

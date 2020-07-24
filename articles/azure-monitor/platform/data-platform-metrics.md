@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 839347ce0a04cc1ca1bf16c68e0ccc36fcf0f7fc
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 2f82d5d4dcb29504abbfa6881fa825b6d8efce0d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200797"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049535"
 ---
 # <a name="metrics-in-azure-monitor"></a>Metrische gegevens in Azure Monitor
 
@@ -35,9 +35,9 @@ De volgende tabel geeft een lijst van de verschillende manieren waarop u metrisc
 | **Visualiseren** | Een grafiek vastmaken aan een [Azure-dash board](../learn/tutorial-app-dashboards.md)vanuit de metrics Explorer.<br>Een [werkmap](../platform/workbooks-overview.md) maken om te combi neren met meerdere gegevens sets in een interactief rapport. De resultaten van een query exporteren naar [Grafana](grafana-plugin.md) om gebruik te maken van Dash boards en combi neren met andere gegevens bronnen. |
 | **Waarschuwing** | Configureer een [waarschuwings regel voor metrische gegevens](alerts-metric.md) die een melding verzendt of [geautomatiseerd actie](action-groups.md) onderneemt wanneer de metrische waarde een drempel overschrijdt. |
 | **Automatiseren** |  Gebruik [automatisch schalen](autoscale-overview.md) om resources te verg Roten of te verkleinen op basis van een metrische waarde die een drempel overschrijdt. |
-| **Exporteren** | U [kunt metrische gegevens naar Logboeken routeren](resource-logs-collect-storage.md) voor het analyseren van informatie in azure monitor metrieken samen met gegevens in azure monitor-logboeken en om meet waarden langer dan 93 dagen op te slaan.<br>Meet gegevens streamen naar een [Event hub](stream-monitoring-data-event-hubs.md) om ze naar externe systemen te routeren. |
-| **Ophalen** | Toegang krijgen tot metrische waarden van een opdracht regel met behulp van [Power shell-cmdlets](https://docs.microsoft.com/powershell/module/az.applicationinsights)<br>Toegang krijgen tot meet waarden van aangepaste toepassing met behulp van [rest API](rest-api-walkthrough.md).<br>Toegang krijgen tot meet waarden van een opdracht regel met behulp van [cli](/cli/azure/monitor/metrics). |
-| **Faxberichten** | [Archiveer](..//learn/tutorial-archive-data.md) de prestaties of de status geschiedenis van uw resource voor naleving, controle of offline rapportage. |
+| **Exporteren** | U [kunt metrische gegevens naar Logboeken routeren](./resource-logs.md#send-to-azure-storage) voor het analyseren van informatie in azure monitor metrieken samen met gegevens in azure monitor-logboeken en om meet waarden langer dan 93 dagen op te slaan.<br>Meet gegevens streamen naar een [Event hub](stream-monitoring-data-event-hubs.md) om ze naar externe systemen te routeren. |
+| **Ophalen** | Toegang krijgen tot metrische waarden van een opdracht regel met behulp van [Power shell-cmdlets](/powershell/module/az.applicationinsights)<br>Toegang krijgen tot meet waarden van aangepaste toepassing met behulp van [rest API](rest-api-walkthrough.md).<br>Toegang krijgen tot meet waarden van een opdracht regel met behulp van [cli](/cli/azure/monitor/metrics). |
+| **Archiveren** | [Archiveer](./platform-logs-overview.md) de prestaties of de status geschiedenis van uw resource voor naleving, controle of offline rapportage. |
 
 ## <a name="how-is-data-in-azure-monitor-metrics-structured"></a>Hoe worden gegevens in Azure Monitor meet waarden gestructureerd?
 Gegevens die worden verzameld door Azure Monitor metrieken worden opgeslagen in een Data Base met een tijd reeks die is geoptimaliseerd voor het analyseren van gegevens met tijds tempel. Elke set metrische waarden is een tijd reeks met de volgende eigenschappen:
@@ -56,7 +56,7 @@ In het onderstaande voor beeld ziet u twee gegevens sets voor een hypothetische 
 
 ### <a name="network-throughput"></a>Netwerk doorvoer
 
-| Tijdstempel     | Metrische waarde |
+| Timestamp     | Metrische waarde |
 | ------------- |:-------------|
 | 8/9/2017 8:14 | 1.331,8 kbps |
 | 8/9/2017 8:15 | 1.141,4 kbps |
@@ -66,7 +66,7 @@ Deze niet-dimensionale metriek kan alleen een basis vraag beantwoorden zoals ' w
 
 ### <a name="network-throughput--two-dimensions-ip-and-direction"></a>Netwerk doorvoer + twee dimensies ("IP" en "richting")
 
-| Tijdstempel     | Dimensie ' IP '   | Dimensie "richting" | Metrische waarde|
+| Timestamp     | Dimensie ' IP '   | Dimensie "richting" | Metrische waarde|
 | ------------- |:-----------------|:------------------- |:-----------|
 | 8/9/2017 8:14 | IP = "192.168.5.2" | Direction = "verzenden"    | 646,5 kbps |
 | 8/9/2017 8:14 | IP = "192.168.5.2" | Direction = "ontvangen" | 420,1 kbps |
@@ -108,7 +108,7 @@ Voor de meeste resources in Azure worden metrische gegevens 93 dagen bewaard. Er
 
 
 > [!NOTE]
-> U kunt [de metrische gegevens van het platform voor Azure monitor resources naar een log Analytics-werk ruimte verzenden voor een](resource-logs-collect-storage.md) lange termijn trending.
+> U kunt [de metrische gegevens van het platform voor Azure monitor resources naar een log Analytics-werk ruimte verzenden voor een](./resource-logs.md#send-to-azure-storage) lange termijn trending.
 
 
 

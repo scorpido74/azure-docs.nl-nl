@@ -9,16 +9,16 @@ ms.author: mlearned
 description: Een Azure Arc-Kubernetes-cluster verbinden met Azure Arc
 keywords: Kubernetes, Arc, azure, K8s, containers
 ms.custom: references_regions
-ms.openlocfilehash: 1a186ac3bf2297de5ffc7ff478ba9b4350dae4c8
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 2c5e697f3dd67087582118fb6a6e083feecf549f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104276"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050089"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Een Azure Arc-Kubernetes-cluster verbinden (preview-versie)
 
-Een Kubernetes-cluster verbinden met Azure Arc.
+In dit document wordt het proces beschreven voor het verbinden van een CNCF-Kubernetes-cluster (native computing Foundation) van de Cloud, zoals AKS-engine op Azure, AKS-engine op Azure Stack hub, GKE, EKS en VMware vSphere cluster naar Azure Arc.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -28,7 +28,7 @@ Controleer of u de volgende vereisten hebt voor bereid:
   * Een Kubernetes-cluster maken met behulp [van Kubernetes in docker (kind)](https://kind.sigs.k8s.io/)
   * Een Kubernetes-cluster maken met behulp van docker voor [Mac](https://docs.docker.com/docker-for-mac/#kubernetes) of [Windows](https://docs.docker.com/docker-for-windows/#kubernetes)
 * U hebt een kubeconfig-bestand nodig om toegang te krijgen tot de rol cluster en Cluster beheerder op het cluster voor de implementatie van Kubernetes-agents die zijn ingeschakeld voor Arc.
-* De gebruiker of service-principal die wordt gebruikt met `az login` en `az connectedk8s connect` opdrachten moeten de machtigingen lezen en schrijven hebben voor het resource type micro soft. Kubernetes/connectedclusters. De rol ' Azure Arc for Kubernetes-onboarding ' met deze machtigingen kan worden gebruikt voor roltoewijzingen op de gebruiker of service-principal die wordt gebruikt met Azure CLI voor onboarding.
+* De gebruiker of service-principal die wordt gebruikt met `az login` en `az connectedk8s connect` opdrachten moeten de machtigingen lezen en schrijven hebben voor het resource type micro soft. Kubernetes/connectedclusters. De rol ' Kubernetes cluster-Azure Arc-onboarding ' heeft deze machtigingen en kan worden gebruikt voor roltoewijzingen op de gebruiker of Service-Principal.
 * Helm 3 is vereist voor de onboarding van het cluster met behulp van de connectedk8s-extensie. [Installeer de nieuwste versie van helm 3](https://helm.sh/docs/intro/install) om te voldoen aan deze vereiste.
 * De Azure CLI-versie 2.3 + is vereist voor de installatie van de Azure Arc enabled Kubernetes CLI-extensies. [Installeer Azure cli](/cli/azure/install-azure-cli?view=azure-cli-latest) of werk bij naar de nieuwste versie om ervoor te zorgen dat u beschikt over Azure CLI-versie 2.3 +.
 * De Arc enabled Kubernetes CLI-extensies installeren:
@@ -52,7 +52,7 @@ Controleer of u de volgende vereisten hebt voor bereid:
   az extension update --name k8sconfiguration
   ```
 
-## <a name="supported-regions"></a>Ondersteunde regio’s
+## <a name="supported-regions"></a>Ondersteunde regio's
 
 * VS - oost
 * Europa -west
@@ -64,7 +64,7 @@ Voor Azure Arc-agenten moeten de volgende protocollen/poorten/uitgaande Url's wo
 * TCP op poort 443-->`https://:443`
 * TCP op poort 9418-->`git://:9418`
 
-| Eind punt (DNS)                                                                                               | Description                                                                                                                 |
+| Eind punt (DNS)                                                                                               | Beschrijving                                                                                                                 |
 | ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
 | `https://management.azure.com`                                                                                 | Vereist voor de agent om verbinding te maken met Azure en het cluster te registreren                                                        |
 | `https://eastus.dp.kubernetesconfiguration.azure.com`, `https://westeurope.dp.kubernetesconfiguration.azure.com` | Gegevens vlak eindpunt voor de agent om de status te pushen en configuratie gegevens op te halen                                      |
@@ -169,6 +169,9 @@ AzureArcTest1  eastus      AzureArcTest
 
 U kunt deze resource ook bekijken op de [Azure Portal](https://portal.azure.com/). Zodra u de portal in uw browser hebt geopend, navigeert u naar de resource groep en de Azure Arc-Kubernetes-resource op basis van de resource naam en de naam invoer van de resource groep die eerder in de opdracht zijn gebruikt `az connectedk8s connect` .
 
+> [!NOTE]
+> Na de onboarding van het cluster duurt het ongeveer vijf tot tien minuten voor de meta gegevens van het cluster (cluster versie, versie van agent, aantal knoop punten) naar het Opper vlak op de overzichts pagina van de Azure Arc enabled Kubernetes-resource in Azure Portal.
+
 Azure Arc enabled Kubernetes implementeert enkele opera tors in de `azure-arc` naam ruimte. U kunt deze implementaties en peulen hier bekijken:
 
 ```console
@@ -204,7 +207,7 @@ Azure Arc enabled Kubernetes bestaat uit een aantal agents (opera tors) die in u
 * `deployment.apps/config-agent`: Hiermee wordt het verbonden cluster gewatcheerd voor configuratie bronnen voor broncode beheer die zijn toegepast op het cluster en de nalevings status van updates
 * `deployment.apps/controller-manager`: is een operator van Opera tors en organiseert de interacties tussen onderdelen van Azure Arc
 * `deployment.apps/metrics-agent`: verzamelt metrische gegevens van andere Arc-agents om ervoor te zorgen dat deze agents de optimale prestaties vertonen
-* `deployment.apps/cluster-metadata-operator`: Hiermee worden de meta gegevens van het cluster verzameld, de Cluster versie, het aantal knoop punten en de Arc-agent versie
+* `deployment.apps/cluster-metadata-operator`: verzamelt de meta gegevens van het cluster, de Cluster versie, het aantal knoop punten en de versie van de Azure Arc-agent
 * `deployment.apps/resource-sync-agent`: synchroniseert de hierboven vermelde meta gegevens van het cluster naar Azure
 * `deployment.apps/clusteridentityoperator`: Azure Arc enabled Kubernetes ondersteunt momenteel de toegewezen identiteit van het systeem. clusteridentityoperator onderhoudt het Managed Service Identity (MSI)-certificaat dat door andere agents wordt gebruikt voor communicatie met Azure.
 * `deployment.apps/flux-logs-agent`: Hiermee worden logboeken van de stroom-Opera tors verzameld die zijn geïmplementeerd als onderdeel van de configuratie van broncode beheer
@@ -218,7 +221,7 @@ U kunt een `Microsoft.Kubernetes/connectedcluster` resource verwijderen met behu
   ```console
   az connectedk8s delete --name AzureArcTest1 --resource-group AzureArcTest
   ```
-  Hiermee verwijdert u de `Microsoft.Kubernetes/connectedCluster` resource en eventuele bijbehorende `sourcecontrolconfiguration` resources in Azure. De Azure CLI maakt gebruik van helm uninstall om de agents die op het cluster worden uitgevoerd, te verwijderen.
+  Met deze opdracht verwijdert u de `Microsoft.Kubernetes/connectedCluster` resource en eventuele gekoppelde `sourcecontrolconfiguration` resources in Azure. De Azure CLI maakt gebruik van helm uninstall om de agents die op het cluster worden uitgevoerd, te verwijderen.
 
 * **Verwijderen bij Azure Portal**: als u de Azure-Kubernetes-resource op Azure Portal verwijdert, worden de `Microsoft.Kubernetes/connectedcluster` resource en alle bijbehorende `sourcecontrolconfiguration` resources in azure verwijderd, maar worden de agents die op het cluster worden uitgevoerd, niet verwijderd. Voer de volgende opdracht uit om de agents die op het cluster worden uitgevoerd, te verwijderen.
 

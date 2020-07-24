@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: ca19ccb925721126f7e7d8495addd0794766f376
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 94955e27dcadb3acbea03926d6d1ed73e9c5c9ed
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202880"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051351"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Aan de slag met verificatie op basis van certificaten in Azure Active Directory
 
@@ -93,7 +93,7 @@ Het schema voor een certificerings instantie ziet er als volgt uit:
     }
 ```
 
-Voor de configuratie kunt u de [Azure Active Directory Power shell versie 2](/powershell/azure/install-adv2?view=azureadps-2.0)gebruiken:
+Voor de configuratie kunt u de [Azure Active Directory Power shell versie 2](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)gebruiken:
 
 1. Start Windows Power shell met beheerders bevoegdheden.
 2. Installeer de Azure AD-module versie [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) of hoger.
@@ -122,7 +122,7 @@ Gebruik de cmdlet [Get-AzureADTrustedCertificateAuthority](/powershell/module/az
 
 ### <a name="add"></a>Toevoegen
 
-Als u een vertrouwde certificerings instantie wilt maken, gebruikt u de cmdlet [New-AzureADTrustedCertificateAuthority](/azurepowershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) en stelt u het kenmerk **crlDistributionPoint** in op een juiste waarde:
+Als u een vertrouwde certificerings instantie wilt maken, gebruikt u de cmdlet [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) en stelt u het kenmerk **crlDistributionPoint** in op een juiste waarde:
 
 ```azurepowershell
     $cert=Get-Content -Encoding byte "[LOCATION OF THE CER FILE]"

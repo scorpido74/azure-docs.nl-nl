@@ -2,16 +2,15 @@
 title: Beheerde identiteiten gebruiken in azure Kubernetes service
 description: Meer informatie over het gebruik van beheerde identiteiten in azure Kubernetes service (AKS)
 services: container-service
-author: mlearned
 ms.topic: article
-ms.date: 07/10/2020
-ms.author: mlearned
-ms.openlocfilehash: 95a303a4b6a83901560b26679bca920b9de4d3f4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/17/2020
+ms.author: thomasge
+ms.openlocfilehash: e96126d1516e8a1e20e6f6db9b3a448b94c71cd7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250902"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050597"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Beheerde identiteiten gebruiken in azure Kubernetes service
 
@@ -27,29 +26,29 @@ U moet de volgende bron hebben geïnstalleerd:
 
 ## <a name="limitations"></a>Beperkingen
 
-* Het is momenteel niet mogelijk om uw eigen beheerde identiteiten te maken.
 * AKS-clusters met beheerde identiteiten kunnen alleen worden ingeschakeld tijdens het maken van het cluster.
-* Bestaande AKS-clusters kunnen niet worden bijgewerkt of bijgewerkt om beheerde identiteiten in te scha kelen.
+* Bestaande AKS-clusters kunnen niet worden gemigreerd naar beheerde identiteiten.
 * Tijdens de **upgrade** bewerkingen van het cluster is de beheerde identiteit tijdelijk niet beschikbaar.
+* Tenants verplaatsen/migreren van beheerde identiteits clusters worden niet ondersteund.
 
 ## <a name="summary-of-managed-identities"></a>Samen vatting van beheerde identiteiten
 
 AKS maakt gebruik van verschillende beheerde identiteiten voor ingebouwde services en invoeg toepassingen.
 
-| Identiteit                       | Naam    | Gebruiksvoorbeeld | Standaard machtigingen | Uw eigen identiteit meenemen
+| Identiteit                       | Naam    | Toepassing | Standaard machtigingen | Uw eigen identiteit meenemen
 |----------------------------|-----------|----------|
-| Besturingsvlak | niet zichtbaar | Wordt door AKS gebruikt voor het beheren van netwerk bronnen, zoals het maken van een load balancer voor ingangen, open bare IP, enzovoort.| Rol Inzender voor knooppunt resource groep | Momenteel niet ondersteund
+| Besturingsvlak | niet zichtbaar | Gebruikt door AKS voor beheerde netwerk bronnen, waaronder binnenloads voor binnenkomend verkeer en AKS beheerde open bare Ip's | Rol Inzender voor knooppunt resource groep | Preview
 | Kubelet | AKS-cluster naam-agent pool | Verificatie met Azure Container Registry (ACR) | Rol van lezer voor knooppunt resource groep | Momenteel niet ondersteund
-| Invoeg toepassing | AzureNPM | Geen identiteit vereist | NA | Nee
-| Invoeg toepassing | AzureCNI netwerk bewaking | Geen identiteit vereist | NA | Nee
-| Invoeg toepassing | azurepolicy (gate keeper) | Geen identiteit vereist | NA | Nee
-| Invoeg toepassing | azurepolicy | Geen identiteit vereist | NA | Nee
-| Invoeg toepassing | Calico | Geen identiteit vereist | NA | Nee
-| Invoeg toepassing | Dashboard | Geen identiteit vereist | NA | Nee
-| Invoeg toepassing | HTTPApplicationRouting | Hiermee worden de vereiste netwerk bronnen beheerd | Rol van lezer voor knooppunt resource groep, rol Inzender voor DNS-zone | Nee
-| Invoeg toepassing | Ingangs toepassings gateway | Hiermee worden de vereiste netwerk bronnen beheerd| Rol Inzender voor knooppunt resource groep | Nee
-| Invoeg toepassing | omsagent | Wordt gebruikt om AKS-metrische gegevens naar Azure Monitor te verzenden | Rol van uitgever voor metrische gegevens controleren | Nee
-| Invoeg toepassing | Virtueel knoop punt (ACIConnector) | Beheert vereiste netwerk bronnen voor Azure Container Instances (ACI) | Rol Inzender voor knooppunt resource groep | Nee
+| Invoeg toepassing | AzureNPM | Geen identiteit vereist | N.v.t. | No
+| Invoeg toepassing | AzureCNI netwerk bewaking | Geen identiteit vereist | N.v.t. | No
+| Invoeg toepassing | azurepolicy (gate keeper) | Geen identiteit vereist | N.v.t. | No
+| Invoeg toepassing | azurepolicy | Geen identiteit vereist | N.v.t. | No
+| Invoeg toepassing | Calico | Geen identiteit vereist | N.v.t. | No
+| Invoeg toepassing | Dashboard | Geen identiteit vereist | N.v.t. | No
+| Invoeg toepassing | HTTPApplicationRouting | Hiermee worden de vereiste netwerk bronnen beheerd | Rol van lezer voor knooppunt resource groep, rol Inzender voor DNS-zone | No
+| Invoeg toepassing | Ingangs toepassings gateway | Hiermee worden de vereiste netwerk bronnen beheerd| Rol Inzender voor knooppunt resource groep | No
+| Invoeg toepassing | omsagent | Wordt gebruikt om AKS-metrische gegevens naar Azure Monitor te verzenden | Rol van uitgever voor metrische gegevens controleren | No
+| Invoeg toepassing | Virtueel knoop punt (ACIConnector) | Beheert vereiste netwerk bronnen voor Azure Container Instances (ACI) | Rol Inzender voor knooppunt resource groep | No
 
 
 ## <a name="create-an-aks-cluster-with-managed-identities"></a>Een AKS-cluster maken met beheerde identiteiten
@@ -71,7 +70,7 @@ az aks create -g myResourceGroup -n myManagedCluster --enable-managed-identity
 
 Een succes volle cluster maken met behulp van beheerde identiteiten bevat deze service-principal-profiel informatie:
 
-```json
+```output
 "servicePrincipalProfile": {
     "clientId": "msi"
   }
@@ -80,18 +79,20 @@ Een succes volle cluster maken met behulp van beheerde identiteiten bevat deze s
 Gebruik de volgende opdracht om een query op te vragen van het object objectid van de beheerde identiteit van het beheer vlak:
 
 ```azurecli-interactive
-az aks show -g myResourceGroup -n MyManagedCluster --query "identity"
+az aks show -g myResourceGroup -n myManagedCluster --query "identity"
 ```
 
 Het resultaat moet er als volgt uitzien:
 
-```json
+```output
 {
   "principalId": "<object_id>",   
   "tenantId": "<tenant_id>",      
   "type": "SystemAssigned"                                 
 }
 ```
+
+Zodra het cluster is gemaakt, kunt u de werk belasting van uw toepassing implementeren naar het nieuwe cluster en ermee werken, net zoals u dat hebt gedaan met AKS-clusters op basis van de Service-Principal.
 
 > [!NOTE]
 > Voor het maken en gebruiken van uw eigen VNet, een statisch IP-adres of een gekoppelde Azure-schijf waar de resources zich buiten de resource groep van het worker-knoop punt bevinden, gebruikt u de PrincipalID van het cluster systeem toegewezen beheerde identiteit voor het uitvoeren van een roltoewijzing. Zie [toegang tot andere Azure-resources delegeren](kubernetes-service-principal.md#delegate-access-to-other-azure-resources)voor meer informatie over het toewijzen van rollen.
@@ -101,13 +102,115 @@ Het resultaat moet er als volgt uitzien:
 Haal tot slot referenties op voor toegang tot het cluster:
 
 ```azurecli-interactive
-az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster
+az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
 ```
 
-Het cluster wordt in een paar minuten gemaakt. U kunt vervolgens de werk belasting van uw toepassing implementeren naar het nieuwe cluster en ermee werken, net zoals u dat hebt gedaan met AKS-clusters op basis van de Service-Principal.
+## <a name="bring-your-own-control-plane-mi-preview"></a>Uw eigen besturings vlak instellen MI (preview-versie)
+De identiteit van een aangepast besturings element biedt toegang tot de bestaande identiteit voordat het cluster wordt gemaakt. Dit maakt scenario's mogelijk, zoals het gebruik van een aangepast VNET of outboundType van UDR met een beheerde identiteit.
+
+> [!IMPORTANT]
+> AKS preview-functies zijn beschikbaar op self-service. Previews worden ' as-is ' en ' as available ' gegeven en zijn uitgesloten van de service level agreements en beperkte garantie. AKS-previews worden gedeeltelijk gedekt door de klant ondersteuning. Daarom zijn deze functies niet bedoeld voor productie gebruik. Zie de volgende ondersteunings artikelen voor meer informatie:
+>
+> - [AKS-ondersteunings beleid](support-policies.md)
+> - [Veelgestelde vragen over ondersteuning voor Azure](faq.md)
+
+U moet de volgende resources hebben geïnstalleerd:
+- De Azure CLI, versie 2.9.0 of hoger
+- De 0.4.57-uitbrei ding AKS-preview
+
+Beperkingen voor het maken van uw eigen besturings vlak MI (preview):
+* Azure Government wordt momenteel niet ondersteund.
+* Azure China 21Vianet wordt momenteel niet ondersteund.
+
+```azurecli-interactive
+az extension add --name aks-preview
+az extension list
+```
+
+```azurecli-interactive
+az extension update --name aks-preview
+az extension list
+```
+
+```azurecli-interactive
+az feature register --name UserAssignedIdentityPreview --namespace Microsoft.ContainerService
+```
+
+Het kan enkele minuten duren voordat de status als **geregistreerd**wordt weer gegeven. U kunt de registratie status controleren met behulp van de opdracht [AZ Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list) :
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UserAssignedIdentityPreview')].{Name:name,State:properties.state}"
+```
+
+Wanneer de status wordt weer gegeven als geregistreerd, vernieuwt u de registratie van de `Microsoft.ContainerService` resource provider met behulp van de opdracht [AZ provider REGI ster](/cli/azure/provider?view=azure-cli-latest#az-provider-register) :
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
+
+Als u nog geen beheerde identiteit hebt, moet u er een voor beeld maken met behulp van [AZ Identity cli][az-identity-create].
+
+```azurecli-interactive
+az identity create --name myIdentity --resource-group myResourceGroup
+```
+Het resultaat moet er als volgt uitzien:
+
+```output
+{                                                                                                                                                                                 
+  "clientId": "<client-id>",
+  "clientSecretUrl": "<clientSecretUrl>",
+  "id": "/subscriptions/<subscriptionid>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myIdentity", 
+  "location": "westus2",
+  "name": "myIdentity",
+  "principalId": "<principalId>",
+  "resourceGroup": "myResourceGroup",                       
+  "tags": {},
+  "tenantId": "<tenant-id>>",
+  "type": "Microsoft.ManagedIdentity/userAssignedIdentities"
+}
+```
+
+Als uw beheerde identiteit deel uitmaakt van uw abonnement, kunt u de [opdracht AZ Identity cli][az-identity-list] gebruiken om een query uit te maken.  
+
+```azurecli-interactive
+az identity list --query "[].{Name:name, Id:id, Location:location}" -o table
+```
+
+U kunt nu de volgende opdracht gebruiken om uw cluster te maken met uw bestaande identiteit:
+
+```azurecli-interactive
+az aks create \
+    --resource-group myResourceGroup \
+    --name myManagedCluster \
+    --network-plugin azure \
+    --vnet-subnet-id <subnet-id> \
+    --docker-bridge-address 172.17.0.1/16 \
+    --dns-service-ip 10.2.0.10 \
+    --service-cidr 10.2.0.0/24 \
+    --enable-managed-identity \
+    --assign-identity <identity-id> \
+```
+
+Een succes volle cluster maken met uw eigen beheerde identiteiten bevat deze userAssignedIdentities-profiel informatie:
+
+```output
+ "identity": {
+   "principalId": null,
+   "tenantId": null,
+   "type": "UserAssigned",
+   "userAssignedIdentities": {
+     "/subscriptions/<subscriptionid>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myIdentity": {
+       "clientId": "<client-id>",
+       "principalId": "<principal-id>"
+     }
+   }
+ },
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 * Gebruik [Azure Resource Manager (arm)-Sjablonen][aks-arm-template] voor het maken van beheerde identiteits clusters.
 
 <!-- LINKS - external -->
 [aks-arm-template]: /azure/templates/microsoft.containerservice/managedclusters
+[az-identity-create]: https://docs.microsoft.com/cli/azure/identity?view=azure-cli-latest#az-identity-create
+[az-identity-list]: https://docs.microsoft.com/cli/azure/identity?view=azure-cli-latest#az-identity-list

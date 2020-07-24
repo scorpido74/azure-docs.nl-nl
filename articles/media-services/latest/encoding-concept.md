@@ -13,11 +13,12 @@ ms.topic: article
 ms.date: 04/29/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 04706de4b1cc18a4f3146f75442de84340319cef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a54f86081774ffb9ac2fe23a72c8ba83e3d6845c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84220161"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053345"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Video en audio coderen met Media Services
 
@@ -28,7 +29,7 @@ Video's worden meestal geleverd aan apparaten en apps door [progressief te downl
 > [!IMPORTANT]
 > Media Services worden geen geannuleerde of fout taken gefactureerd. Een taak die bijvoorbeeld een voortgang van 50% heeft bereikt en wordt geannuleerd, wordt niet in rekening gebracht tegen 50% van de taak minuten. Er worden alleen kosten in rekening gebracht voor voltooide taken.
 
-* Voor het leveren van een progressieve down load kunt u Azure Media Services gebruiken om een digitaal media bestand (mezzanine) te converteren naar een [MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14) -bestand, dat Video's bevat die zijn gecodeerd met de [H. 264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC) -codec en de audio die is gecodeerd met de [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) -codec. Dit MP4-bestand wordt naar een asset in uw opslag account geschreven. U kunt de Azure Storage Api's of Sdk's (bijvoorbeeld [Storage rest API](../../storage/common/storage-rest-api-auth.md) of [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) gebruiken om het bestand rechtstreeks te downloaden. Als u het uitvoer activum hebt gemaakt met een specifieke container naam in Storage, gebruikt u die locatie. Als dat niet het geval is, kunt u Media Services gebruiken om [de url's van de Asset-container weer te geven](https://docs.microsoft.com/rest/api/media/assets/listcontainersas). 
+* Voor het leveren van een progressieve down load kunt u Azure Media Services gebruiken om een digitaal media bestand (mezzanine) te converteren naar een [MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14) -bestand, dat Video's bevat die zijn gecodeerd met de [H. 264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC) -codec en de audio die is gecodeerd met de [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) -codec. Dit MP4-bestand wordt naar een asset in uw opslag account geschreven. U kunt de Azure Storage Api's of Sdk's (bijvoorbeeld [Storage rest API](../../storage/common/storage-rest-api-auth.md) of [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) gebruiken om het bestand rechtstreeks te downloaden. Als u het uitvoer activum hebt gemaakt met een specifieke container naam in Storage, gebruikt u die locatie. Als dat niet het geval is, kunt u Media Services gebruiken om [de url's van de Asset-container weer te geven](/rest/api/media/assets/listcontainersas). 
 * Om inhoud voor te bereiden voor levering door Adaptive Bitrate Streaming, moet het mezzanine-bestand worden gecodeerd op meerdere bitsnelheden (hoog naar laag). Om te zorgen voor een correcte overgang van kwaliteit, wordt de resolutie van de video verlaagd naarmate de bitsnelheid wordt verlaagd. Dit resulteert in een zogenaamde coderings ladder, een tabel met resoluties en bitrates (zie een [automatisch gegenereerde, Adaptive bitrate ladder](autogen-bitrate-ladder.md)). U kunt Media Services gebruiken om uw mezzanine-bestanden op meerdere bitsnelheden te coderen. In dat geval krijgt u een set van MP4-bestanden en bijbehorende streaming-configuratie bestanden die worden geschreven naar een asset in uw opslag account. U kunt vervolgens de [dynamische verpakkings](dynamic-packaging-overview.md) functie in Media Services gebruiken om de video via streaming protocollen zoals [MPEG-Dash](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP) en [HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming)te leveren. Hiervoor moet u een streaming- [Locator](streaming-locators-concept.md) maken en streaming-url's bouwen die overeenkomen met de ondersteunde protocollen. deze kunnen vervolgens worden door gegeven aan apparaten/apps op basis van hun mogelijkheden.
 
 In het volgende diagram ziet u de werk stroom voor code ring op aanvraag met dynamische verpakking.
@@ -39,7 +40,7 @@ In dit onderwerp vindt u richt lijnen voor het coderen van inhoud met Media Serv
 
 ## <a name="transforms-and-jobs"></a>Transformaties en taken
 
-Als u wilt coderen met Media Services v3, moet u een [trans formatie](https://docs.microsoft.com/rest/api/media/transforms) en een [taak](https://docs.microsoft.com/rest/api/media/jobs)maken. De trans formatie definieert een recept voor uw coderings instellingen en-uitvoer. de taak is een exemplaar van het recept. Zie [trans formaties en jobs](transforms-jobs-concept.md)voor meer informatie.
+Als u wilt coderen met Media Services v3, moet u een [trans formatie](/rest/api/media/transforms) en een [taak](/rest/api/media/jobs)maken. De trans formatie definieert een recept voor uw coderings instellingen en-uitvoer. de taak is een exemplaar van het recept. Zie [Transformaties en taken](transforms-jobs-concept.md) voor meer informatie.
 
 Wanneer u code ring met Media Services, gebruikt u voor instellingen om de encoder te vertellen hoe de invoer media bestanden moeten worden verwerkt. In Media Services V3 gebruikt u de standaard encoder om uw bestanden te coderen. U kunt bijvoorbeeld de video resolutie en/of het aantal audio kanalen opgeven dat u in de gecodeerde inhoud wilt opnemen.
 
@@ -71,9 +72,9 @@ De invoer video kan worden opgeslagen als een media service-Asset. in dat geval 
 
 ### <a name="creating-job-input-with-subclipping"></a>Taak invoer met subknipsel maken
 
-Bij het coderen van een video kunt u opgeven dat u het bron bestand ook wilt knippen of knippen en een uitvoer wilt genereren die alleen een gedeelte van de invoer video bevat. Deze functionaliteit werkt met elke [trans formatie](https://docs.microsoft.com/rest/api/media/transforms) die is gebouwd met behulp van de [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) -voor instellingen of de [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) -voor waarden.
+Bij het coderen van een video kunt u opgeven dat u het bron bestand ook wilt knippen of knippen en een uitvoer wilt genereren die alleen een gedeelte van de invoer video bevat. Deze functionaliteit werkt met elke [trans formatie](/rest/api/media/transforms) die is gebouwd met behulp van de [BuiltInStandardEncoderPreset](/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) -voor instellingen of de [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset) -voor waarden.
 
-U kunt opgeven om een [taak](https://docs.microsoft.com/rest/api/media/jobs/create) te maken met één clip op aanvraag of Live Archive (een vastgelegde gebeurtenis). De taak invoer kan een activa-of een HTTPS-URL zijn.
+U kunt opgeven om een [taak](/rest/api/media/jobs/create) te maken met één clip op aanvraag of Live Archive (een vastgelegde gebeurtenis). De taak invoer kan een activa-of een HTTPS-URL zijn.
 
 > [!TIP]
 > Als u een sublip van uw video wilt streamen zonder de video opnieuw te coderen, kunt u overwegen om voor het gebruiken van [voor het filteren van manifesten met dynamische pakket](filters-dynamic-manifest-overview.md)functie.
@@ -91,7 +92,7 @@ Media Services ondersteunt de volgende ingebouwde coderings definities:
 
 ### <a name="builtinstandardencoderpreset"></a>BuiltInStandardEncoderPreset
 
-[BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) wordt gebruikt voor het instellen van een ingebouwde voor instelling voor het coderen van de invoer video met de standaard encoder.
+[BuiltInStandardEncoderPreset](/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) wordt gebruikt voor het instellen van een ingebouwde voor instelling voor het coderen van de invoer video met de standaard encoder.
 
 De volgende voor instellingen worden momenteel ondersteund:
 
@@ -108,13 +109,13 @@ De volgende voor instellingen worden momenteel ondersteund:
 - **EncoderNamedPreset. H264SingleBitrate720p**: produceert een MP4-bestand waarin de video is gecodeerd met de H. 264-codec van 4500 kbps en een afbeeldings hoogte van 720 pixels en de stereo-audio is gecodeerd met AAC-LC-codec op 64 kbps.
 - **EncoderNamedPreset. H264SingleBitrateSD**: produceert een MP4-bestand waarin de video is gecodeerd met de H. 264-codec van 2200 kbps en een afbeeldings hoogte van 480 pixels en de stereo-audio is gecodeerd met AAC-LC-codec op 64 kbps.
 
-Zie [ingebouwde voor instellingen voor het coderen van Video's](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset)voor een overzicht van de meest recente lijst met voor waarden.
+Zie [ingebouwde voor instellingen voor het coderen van Video's](/rest/api/media/transforms/createorupdate#encodernamedpreset)voor een overzicht van de meest recente lijst met voor waarden.
 
 Zie [bestanden uploaden, coderen en streamen](stream-files-tutorial-with-api.md)om te zien hoe de voor instellingen worden gebruikt.
 
 ### <a name="standardencoderpreset"></a>StandardEncoderPreset
 
-[StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) beschrijft de instellingen die moeten worden gebruikt bij het coderen van de invoer video met de standaard encoder. Gebruik deze standaard instelling bij het aanpassen van de transformatie definities.
+[StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset) beschrijft de instellingen die moeten worden gebruikt bij het coderen van de invoer video met de standaard encoder. Gebruik deze standaard instelling bij het aanpassen van de transformatie definities.
 
 #### <a name="considerations"></a>Overwegingen
 
@@ -135,7 +136,7 @@ Media Services volledig ondersteunt het aanpassen van alle waarden in voor inste
 
 ## <a name="preset-schema"></a>Vooraf ingesteld schema
 
-In Media Services v3 zijn de voor instellingen sterk getypeerde entiteiten in de API zelf. U kunt de definitie ' schema ' voor deze objecten vinden in de [open API-specificatie (of Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01). U kunt de vooraf ingestelde definities (zoals **StandardEncoderPreset**) ook weer geven in de [rest API](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset), [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet) (of een andere Media Services v3 SDK-referentie documentatie).
+In Media Services v3 zijn de voor instellingen sterk getypeerde entiteiten in de API zelf. U kunt de definitie ' schema ' voor deze objecten vinden in de [open API-specificatie (of Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01). U kunt de vooraf ingestelde definities (zoals **StandardEncoderPreset**) ook weer geven in de [rest API](/rest/api/media/transforms/createorupdate#standardencoderpreset), [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet) (of een andere Media Services v3 SDK-referentie documentatie).
 
 ## <a name="scaling-encoding-in-v3"></a>Versleuteling schalen in v3
 
@@ -149,7 +150,7 @@ Ga voor meer informatie naar het overzicht van [prijzen](https://azure.microsoft
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Vragen stellen, feedback geven, updates ophalen
 
-Bekijk het [Azure Media Services Community](media-services-community.md) -artikel voor verschillende manieren om vragen te stellen, feedback te geven en updates te ontvangen over Media Services.
+Ga naar het artikel van de [Azure Media Services-community](media-services-community.md) voor verschillende manieren om vragen te stellen, feedback te geven en updates voor Media Services op te halen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Azure Policy gebruiken om cluster configuraties op schaal toe te passen
 keywords: Kubernetes, Arc, azure, K8s, containers
-ms.openlocfilehash: 26b291e2a957047361d4f52eeff58cbe8aa8c633
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e4279f3d89376320116067bf191e3196271918ce
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111266"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050047"
 ---
 # <a name="use-azure-policy-to-apply-cluster-configurations-at-scale-preview"></a>Gebruik Azure Policy om cluster configuraties op schaal toe te passen (preview-versie)
 
@@ -23,6 +23,10 @@ Gebruik Azure Policy om af te dwingen dat `Microsoft.Kubernetes/connectedcluster
 
 Als u meerdere Git-opslag plaatsen gebruikt als de bronnen van de waarheid voor elk cluster (bijvoorbeeld één opslag plaats voor centrale IT/cluster operator en andere opslag plaatsen voor toepassings teams), kunt u dit inschakelen met behulp van meerdere beleids toewijzingen, elke beleids toewijzing die is geconfigureerd om een andere Git-opslag plaats te gebruiken.
 
+## <a name="prerequisite"></a>Vereiste
+
+Controleer of u `Microsoft.Authorization/policyAssignments/write` machtigingen hebt voor het bereik (abonnement of resource groep) waar u deze beleids toewijzing wilt maken.
+
 ## <a name="create-a-policy-assignment"></a>Een beleidstoewijzing maken
 
 1. Ga in het Azure Portal naar beleid en selecteer in het gedeelte **ontwerpen** van de zijbalk de optie **definities**.
@@ -31,9 +35,9 @@ Als u meerdere Git-opslag plaatsen gebruikt als de bronnen van de waarheid voor 
 4. Als u resources uit het beleids bereik wilt uitsluiten, stelt u **uitsluitingen**in.
 5. Geef de beleids toewijzing een **naam** en **Beschrijving** die u kunt gebruiken om deze gemakkelijk te identificeren.
 6. Zorg ervoor dat het **afdwingen van beleid** is ingesteld op *ingeschakeld*.
-7. Selecteer **Volgende**.
+7. Selecteer **Next**.
 8. Stel parameter waarden in die worden gebruikt tijdens het maken van de `sourceControlConfiguration` .
-9. Selecteer **Volgende**.
+9. Selecteer **Next**.
 10. Schakel **een herstel taak maken**in.
 11. Verzeker u ervan dat het **maken van een beheerde identiteit** is ingeschakeld en dat de identiteit **Inzender** machtigingen heeft. Zie [dit document](../../governance/policy/assign-policy-portal.md) en [de opmerking in dit document](../../governance/policy/how-to/remediate-resources.md) voor meer informatie over de machtigingen die u nodig hebt.
 12. Selecteer **Controleren + maken**.
@@ -42,7 +46,7 @@ Nadat de beleids toewijzing is gemaakt, wordt voor elke nieuwe `connectedCluster
 
 ## <a name="verify-a-policy-assignment"></a>Een beleids toewijzing controleren
 
-1. In de Azure Portal gaat u naar een van uw `connectedCluster` resources en selecteert u in de sectie **instellingen** van de zijbalk **beleids regels**. (De UX voor AKS Managed cluster is nog niet geïmplementeerd, maar is wel beschikbaar.)
+1. In de Azure Portal gaat u naar een van uw `connectedCluster` resources en selecteert u in de sectie **instellingen** van de zijbalk **beleids regels**. (De UX voor het AKS-cluster is nog niet geïmplementeerd, maar het is wel beschikbaar.)
 2. In de lijst ziet u de beleids toewijzing die u hierboven hebt gemaakt, en de **nalevings status** moet *voldoen*aan het beleid.
 3. Selecteer in de sectie **instellingen** van de zijbalk **configuraties**.
 4. In de lijst ziet u `sourceControlConfiguration` dat de beleids toewijzing is gemaakt.

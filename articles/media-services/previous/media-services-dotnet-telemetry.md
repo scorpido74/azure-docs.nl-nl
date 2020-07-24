@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 1ffaefc51121aeb7421d6e49a3c0e58c76d4391e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c101f6f2007e9d772f03be5d69e56d5f52866d6d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61464943"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052775"
 ---
 # <a name="configuring-azure-media-services-telemetry-with-net"></a>Azure Media Services telemetrie configureren met .NET 
 
@@ -30,7 +30,7 @@ In dit artikel worden algemene stappen beschreven die u kunt uitvoeren bij het c
 
 U kunt telemetrie-gegevens op een van de volgende manieren gebruiken:
 
-- Lees gegevens rechtstreeks vanuit Azure Table Storage (bijvoorbeeld met de opslag-SDK). Zie de **informatie** over het gebruik van telemetriegegevens in [Dit](https://msdn.microsoft.com/library/mt742089.aspx) artikel voor de beschrijving van de telemetrie-opslag tabellen.
+- Lees gegevens rechtstreeks vanuit Azure Table Storage (bijvoorbeeld met de opslag-SDK). Zie de **informatie** over het gebruik van telemetriegegevens in [Dit](/previous-versions/azure/mt742089(v=azure.100)) artikel voor de beschrijving van de telemetrie-opslag tabellen.
 
 of
 

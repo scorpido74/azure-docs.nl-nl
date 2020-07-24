@@ -1,32 +1,32 @@
 - name: Documentatie voor Virtual Machines
   href: index.yml
 - name: Virtuele Linux-machines in Azure
-  href: 'https://docs.microsoft.com/azure/virtual-machines/linux/'
+  href: ./linux/index.yml
 - name: Virtuele Windows-machines in Azure
-  href: 'https://docs.microsoft.com/azure/virtual-machines/windows/'
+  href: ./windows/index.yml
 - name: Documentatie over VM-extensies
   href: ./extensions/overview.md
 - name: Workloads
   items:
     - name: Red Hat
-      href: ./workloads/redhat/redhat-overview.md
+      href: ./workloads/redhat/overview.md
     - name: High Performance Computing
       href: ./workloads/hpc/overview.md
     - name: SAP
       href: ./workloads/sap/get-started.md
     - name: Oracle
-      href: ./workloads/oracle/oracle-considerations.md
+      href: ./workloads/oracle/oracle-overview.md
     - name: Mainframe opnieuw hosten
       href: ./workloads/mainframe-rehosting/overview.md
 - name: Klassieke implementaties
   items:
     - name: Linux-VM's met klassieke implementatie
-      href: 'https://docs.microsoft.com/previous-versions/azure/virtual-machines/linux/classic/'
+      href: /previous-versions/azure/virtual-machines/linux/classic/
     - name: Windows-VM's met klassieke implementatie
-      href: 'https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/'
-- name: Bronnen
+      href: /previous-versions/azure/virtual-machines/windows/classic/
+- name: Resources
   items:
-    - name: Ontwikkel uw vaardigheden met Microsoft Learn
+    - name: Uw vaardigheden ontwikkelen met Microsoft Learn
       href: /learn/browse/?products=azure-virtual-machines
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=compute'

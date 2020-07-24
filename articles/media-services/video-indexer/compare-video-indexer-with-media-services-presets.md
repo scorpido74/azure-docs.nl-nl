@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2020
 ms.author: juliako
-ms.openlocfilehash: dcfc6ea4afe23424e72c625518356be52f62bc81
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0961aa3e573e511a6941bc59ddc335f64799abb4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77602184"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047342"
 ---
 # <a name="compare-azure-media-services-v3-presets-and-video-indexer"></a>Azure Media Services voorinstellingen voor v3 en Video Indexer vergelijken 
 
@@ -30,7 +31,7 @@ Er is momenteel een overlap ping tussen de functies die worden geboden door de [
 
 |Functie|Video Indexer-Api's |Video-en audio analyse-voor instellingen<br/>in Media Services v3-Api's|
 |---|---|---|
-|Media Insights|[Verbeterd](video-indexer-output-json-v2.md) |[Basisprincipes](../latest/intelligence-concept.md)|
+|Media Insights|[Verbeterd](video-indexer-output-json-v2.md) |[Basisprincipes](../latest/analyzing-video-audio-files-concept.md)|
 |Bewerkingen|Bekijk de volledige lijst met ondersteunde functies: <br/> [Overzicht](video-indexer-overview.md)|Retourneert alleen video inzichten|
 |Billing|[Media Services prijzen](https://azure.microsoft.com/pricing/details/media-services/#analytics)|[Media Services prijzen](https://azure.microsoft.com/pricing/details/media-services/#analytics)|
 |Naleving|Ga voor de meest recente nalevings updates naar [Azure compliance Offerings.pdf](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf) en zoek naar "video indexer" om te controleren of het voldoet aan een certificaat van belang.|Ga voor de meest recente nalevings updates naar [Azure compliance Offerings.pdf](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf) en zoek naar "Media Services" om te controleren of het voldoet aan een certificaat van belang.|

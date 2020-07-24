@@ -15,11 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5a7343bcf6ba4388beda118b242fa47d13baaa89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 842ab7a1562c731e790ba03b2fd5acdc3987a90d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84022587"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051957"
 ---
 # <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>Implementatie van SAP MaxDB, liveCache en Content Server op virtuele machines van Azure
 
@@ -73,7 +74,7 @@ ms.locfileid: "84022587"
 
 [azure-cli]:../../../cli-install-nodejs.md
 [azure-portal]:https://portal.azure.com
-[azure-ps]:/powershell/azureps-cmdlets-docs
+[azure-ps]:/powershell/azure/
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
 [azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
@@ -308,7 +309,7 @@ ms.locfileid: "84022587"
 
 
 
-In dit document worden verschillende gebieden besproken waarmee u rekening moet houden bij het implementeren van MaxDB, liveCache en inhouds server in azure IaaS. Als een voor waarde voor dit document, moet u de document [overwegingen voor Azure virtual machines DBMS-implementatie van de SAP-werk belasting](dbms_guide_general.md) en andere hand leidingen in de [SAP-werk belasting op de Azure-documentatie](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)lezen. 
+In dit document worden verschillende gebieden besproken waarmee u rekening moet houden bij het implementeren van MaxDB, liveCache en inhouds server in azure IaaS. Als een voor waarde voor dit document, moet u de document [overwegingen voor Azure virtual machines DBMS-implementatie van de SAP-werk belasting](dbms_guide_general.md) en andere hand leidingen in de [SAP-werk belasting op de Azure-documentatie](./get-started.md)lezen. 
 
 ## <a name="specifics-for-the-sap-maxdb-deployments-on-windows"></a>Details voor de SAP MaxDB-implementaties in Windows
 ### <a name="sap-maxdb-version-support-on-azure"></a>Ondersteuning voor SAP MaxDB-versie op Azure
@@ -328,7 +329,7 @@ U kunt de bijgewerkte lijst met SAP MaxDB-documentatie vinden in de volgende SAP
 
 ### <a name="sap-maxdb-configuration-guidelines-for-sap-installations-in-azure-vms"></a>SAP MaxDB-configuratie richtlijnen voor SAP-installaties in azure-Vm's
 #### <a name="storage-configuration"></a><a name="b48cfe3b-48e9-4f5b-a783-1d29155bd573"></a>Opslag configuratie
-Aanbevolen procedures voor Azure Storage voor SAP MaxDB Volg de algemene aanbevelingen die worden vermeld in de hoofd stuk [opslag structuur van een virtuele machine voor RDBMS-implementaties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64).
+Aanbevolen procedures voor Azure Storage voor SAP MaxDB Volg de algemene aanbevelingen die worden vermeld in de hoofd stuk [opslag structuur van een virtuele machine voor RDBMS-implementaties](./dbms_guide_general.md#65fa79d6-a85f-47ee-890b-22e794f51a64).
 
 > [!IMPORTANT]
 > Net als andere data bases bevat SAP MaxDB ook gegevens en logboek bestanden. In SAP MaxDB is de juiste term echter "volume" (niet "bestand"). Er zijn bijvoorbeeld SAP MaxDB-gegevens volumes en logboek volumes. Verwar deze niet met besturingssysteem schijf volumes. 
@@ -347,7 +348,7 @@ Kortom, u hebt het volgende nodig:
 ![Referentie configuratie van Azure IaaS VM voor SAP MaxDB DBMS](./media/dbms_maxdb_deployment_guide/Simple_disk_structure_maxdb.PNG)
 
 
-#### <a name="backup-and-restore"></a><a name="23c78d3b-ca5a-4e72-8a24-645d141a3f5d"></a>Back-ups maken en herstellen
+#### <a name="backup-and-restore"></a><a name="23c78d3b-ca5a-4e72-8a24-645d141a3f5d"></a>Back-up en herstel
 Wanneer u SAP MaxDB in azure implementeert, moet u uw back-upmethodologie controleren. Zelfs als het systeem geen productief systeem is, moet u regel matig een back-up maken van de SAP-data base die wordt gehost door SAP MaxDB. Omdat Azure Storage drie installatie kopieën houdt, is een back-up nu minder belang rijk voor de bescherming van uw systeem tegen opslag storingen en belang rijke operationele of administratieve storingen. De belangrijkste reden voor het onderhouden van een juiste back-up-en herstel planning is dat u logische of hand matige fouten kunt compenseren door herstel mogelijkheden op basis van een bepaald tijdstip te bieden. Het doel is dus om back-ups te maken om de data base te herstellen naar een bepaald tijdstip of om de back-ups in azure te gebruiken voor het seeden van een ander systeem door de bestaande Data Base te kopiëren. 
 
 Het maken van een back-up en het herstellen van een data base in azure werkt op dezelfde manier als voor on-premises systemen, zodat u Standard SAP MaxDB-hulpprogram ma's voor back-up/herstel kunt gebruiken, die worden beschreven in een van de SAP MaxDB-documentatie documenten die worden vermeld in SAP Note [767598]. 

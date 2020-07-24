@@ -12,12 +12,12 @@ ms.topic: article
 ms.custom: ''
 ms.date: 05/14/2019
 ms.author: juliako
-ms.openlocfilehash: 30e22cb786e5dc2a667fe41ca8edf398cf0b7613
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4bd092dbee09a783dcbd6e36c82a70ff5decaf83
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "65761798"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053322"
 ---
 # <a name="how-to-encode-with-a-custom-transform---rest"></a>Coderen met een aangepaste transform-REST
 
@@ -32,7 +32,7 @@ Bij het maken van aangepaste voor instellingen gelden de volgende overwegingen:
 
 ## <a name="prerequisites"></a>Vereisten 
 
-- [Maak een Media Services-account](create-account-cli-how-to.md). <br/>Zorg ervoor dat u de naam van de resource groep en de naam van het Media Services account vergeet. 
+- [Een Azure Media Services-account maken](./create-account-howto.md). <br/>Zorg ervoor dat u de naam van de resource groep en de naam van het Media Services account vergeet. 
 - [Postman configureren voor Azure Media Services rest API-aanroepen](media-rest-apis-with-postman.md).<br/>Zorg ervoor dat u de laatste stap in het onderwerp [Azure AD-Token ophalen](media-rest-apis-with-postman.md#get-azure-ad-token)volgt. 
 
 ## <a name="define-a-custom-preset"></a>Een aangepaste voor instelling definiëren
@@ -133,7 +133,7 @@ In dit voor beeld voegen we eerst een AacAudio-laag toe voor de audio codering e
 
 ## <a name="create-a-new-transform"></a>Een nieuwe trans formatie maken  
 
-In dit voor beeld maken we een **trans formatie** die is gebaseerd op de aangepaste voor instelling die we eerder hebben gedefinieerd. Wanneer u een trans formatie maakt, moet u eerst [Get](https://docs.microsoft.com/rest/api/media/transforms/get) gebruiken om te controleren of er al een bestaat. Als de trans formatie bestaat, kunt u deze opnieuw gebruiken. 
+In dit voor beeld maken we een **trans formatie** die is gebaseerd op de aangepaste voor instelling die we eerder hebben gedefinieerd. Wanneer u een trans formatie maakt, moet u eerst [Get](/rest/api/media/transforms/get) gebruiken om te controleren of er al een bestaat. Als de trans formatie bestaat, kunt u deze opnieuw gebruiken. 
 
 Selecteer in de verzameling die u hebt gedownload, trans **formaties en taken** -> **transform maken of bijwerken**.
 
@@ -151,4 +151,4 @@ Als Media Services de trans formatie op de opgegeven video of audio wilt Toep as
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Andere rest-bewerkingen](https://docs.microsoft.com/rest/api/media/) weer geven
+[Andere rest-bewerkingen](/rest/api/media/) weer geven

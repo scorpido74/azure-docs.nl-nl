@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: c87812e665617f3ccfe48db3a0cca2ceac67f0bc
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 0f3682338c9373f3ba30c8b32ea5cf4132c18949
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147435"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87048276"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Reken doelen voor model training instellen en gebruiken 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -98,12 +98,11 @@ Azure Machine Learning Compute-Cluster is een beheerde infra structuur voor behe
 
 U kunt Azure Machine Learning Compute gebruiken om het trainings proces te distribueren over een cluster van CPU-of GPU-reken knooppunten in de Cloud. Zie [grootten geoptimaliseerd voor virtuele machines](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)voor meer informatie over de VM-grootten die GPU bevatten. 
 
-Azure Machine Learning Compute heeft standaard limieten, zoals het aantal kernen dat kan worden toegewezen. Zie voor meer informatie [beheer en aanvragen van quota's voor Azure-resources](https://docs.microsoft.com/azure/machine-learning/how-to-manage-quotas).
+Azure Machine Learning Compute heeft standaard limieten, zoals het aantal kernen dat kan worden toegewezen. Zie voor meer informatie [beheer en aanvragen van quota's voor Azure-resources](/how-to-manage-quotas.md).
 
-U kunt ook virtuele machines met lage prioriteit gebruiken om enkele of alle werk belastingen uit te voeren. Deze Vm's hebben geen gegarandeerde Beschik baarheid en kunnen worden afgebroken tijdens het gebruik. Een afgebroken taak wordt opnieuw gestart, niet hervat.  Vm's met lage prioriteit hebben kortings tarieven vergeleken met normale Vm's, Zie [kosten plannen en beheren](https://docs.microsoft.com/azure/machine-learning/concept-plan-manage-cost).
 
 > [!TIP]
-> Clusters kunnen over het algemeen tot 100 knoop punten worden geschaald zolang u voldoende quota hebt voor het vereiste aantal kernen. Standaard worden clusters ingesteld met communicatie tussen knoop punten die is ingeschakeld tussen de cluster knooppunten voor de ondersteuning van MPI-taken. U kunt uw clusters echter naar duizenden knoop punten schalen door simpelweg [een ondersteunings ticket te verhogen](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)en u te vragen uw abonnement of werk ruimte te white list of een specifiek cluster voor het uitschakelen van communicatie tussen knoop punten. 
+> Clusters kunnen over het algemeen tot 100 knoop punten worden geschaald zolang u voldoende quota hebt voor het vereiste aantal kernen. Standaard worden clusters ingesteld met communicatie tussen knoop punten die is ingeschakeld tussen de cluster knooppunten voor de ondersteuning van MPI-taken. U kunt uw clusters echter naar duizenden knoop punten schalen door simpelweg [een ondersteunings ticket te verhogen](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)en u aan te vragen om een lijst met uw abonnement of werk ruimte of een specifiek cluster te maken voor het uitschakelen van communicatie tussen knoop punten. 
 
 Azure Machine Learning Compute kan worden hergebruikt in uitvoeringen. De compute kan worden gedeeld met andere gebruikers in de werk ruimte en wordt bewaard tussen uitvoeringen, waarbij knoop punten automatisch omhoog of omlaag worden geschaald op basis van het aantal verzonden uitvoeringen en de max_nodes die in uw cluster zijn ingesteld. Met de instelling min_nodes bepaalt u de mini maal beschik bare knoop punten.
 
@@ -118,14 +117,38 @@ Azure Machine Learning Compute kan worden hergebruikt in uitvoeringen. De comput
 
    U kunt ook verschillende geavanceerde eigenschappen configureren wanneer u Azure Machine Learning Compute maakt. Met de eigenschappen kunt u een permanent cluster met een vaste grootte of binnen een bestaand Azure-Virtual Network in uw abonnement maken.  Zie de [klasse AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py
     ) voor meer informatie.
-    
-   U kunt ook een permanente Azure Machine Learning Compute-bron maken en koppelen in [Azure machine learning Studio](#portal-create).
 
+    U kunt ook een permanente Azure Machine Learning Compute-bron maken en koppelen in [Azure machine learning Studio](#portal-create).
+
+   
 1. **Configureren**: een uitvoerings configuratie maken voor het permanente Compute-doel.
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=run_amlcompute)]
 
 Nu u de reken kracht hebt gekoppeld en de uitvoering hebt geconfigureerd, is de volgende stap [het verzenden van de trainings uitvoering](#submit).
+
+ ### <a name="lower-your-compute-cluster-cost"></a><a id="low-pri-vm"></a>De kosten voor reken clusters verlagen
+
+U kunt ook [virtuele machines met lage prioriteit](concept-plan-manage-cost.md#low-pri-vm) gebruiken om enkele of alle werk belastingen uit te voeren. Deze Vm's hebben geen gegarandeerde Beschik baarheid en kunnen worden afgebroken tijdens het gebruik. Een afgebroken taak wordt opnieuw gestart, niet hervat. 
+
+Gebruik een van de volgende manieren om een VM met lage prioriteit op te geven:
+    
+* Kies in de Studio **lage prioriteit** bij het maken van een virtuele machine.
+    
+* Stel in de python-SDK het `vm_priority` kenmerk in uw inrichtings configuratie in.  
+    
+    ```python
+    compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_D2_V2',
+                                                                vm_priority='lowpriority',
+                                                                max_nodes=4)
+    ```
+    
+* Stel met behulp van de CLI het `vm-priority` volgende in:
+    
+    ```azurecli-interactive
+    az ml computetarget create amlcompute --name lowpriocluster --vm-size Standard_NC6 --max-nodes 5 --vm-priority lowpriority
+    ```
+
 
 
 ### <a name="azure-machine-learning-compute-instance"></a><a id="instance"></a>Reken instantie Azure Machine Learning

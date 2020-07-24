@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/10/2020
 ms.author: alsin
-ms.openlocfilehash: af541faaf9529cec81c60cb1a879161d66e34a7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54d703b8a493610174f00844cd0736f65f3ee541
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84694379"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052168"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux uw gouden installatie kopieën met uw eigen abonnement in azure
 
@@ -68,7 +69,7 @@ De rest van dit document richt zich op de CLI-methode om de voor waarden van de 
 
 ## <a name="use-the-red-hat-gold-images-from-the-azure-cli"></a>Red Hat Gold-installatie kopieën van de Azure CLI gebruiken
 
-De volgende instructies begeleiden u bij het eerste implementatie proces voor een RHEL-VM met behulp van de Azure CLI. Bij deze instructies wordt ervan uitgegaan dat u de [Azure cli hebt geïnstalleerd](https://docs.microsoft.com/cli/azure/install-azure-cli).
+De volgende instructies begeleiden u bij het eerste implementatie proces voor een RHEL-VM met behulp van de Azure CLI. Bij deze instructies wordt ervan uitgegaan dat u de [Azure cli hebt geïnstalleerd](/cli/azure/install-azure-cli).
 
 >[!IMPORTANT]
 >Zorg ervoor dat u alle kleine letters in de Publisher-, aanbiedings-, plan-en afbeeldings verwijzingen gebruikt voor de volgende opdrachten.
@@ -199,7 +200,7 @@ Zie [Azure Disk Encryption scenario's voor Linux-vm's](../../linux/disk-encrypti
 
     Neem in dit geval contact op met micro soft of Red Hat om uw abonnement in te scha kelen.
 
-- Als u een moment opname van een RHEL BYOS-installatie kopie wijzigt en probeert die aangepaste installatie kopie te publiceren naar de [Galerie met gedeelde afbeeldingen](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries), moet u plan gegevens opgeven die overeenkomen met de oorspronkelijke bron van de moment opname. De opdracht kan er bijvoorbeeld als volgt uitzien:
+- Als u een moment opname van een RHEL BYOS-installatie kopie wijzigt en probeert die aangepaste installatie kopie te publiceren naar de [Galerie met gedeelde afbeeldingen](../../linux/shared-image-galleries.md), moet u plan gegevens opgeven die overeenkomen met de oorspronkelijke bron van de moment opname. De opdracht kan er bijvoorbeeld als volgt uitzien:
 
     ```azurecli
     az vm create –image \

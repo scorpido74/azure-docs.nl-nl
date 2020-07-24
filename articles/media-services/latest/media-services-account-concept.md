@@ -11,11 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: 08579f7ba952bb4ebcba1595508612affb852528
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46f5644fb47b840f273ccab37da4f4743ad335f3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75980379"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053122"
 ---
 # <a name="manage-azure-media-services-v3-accounts"></a>Azure Media Services v3-accounts beheren
 
@@ -42,4 +43,4 @@ Als een Media Services account of een gekoppeld Azure Storage account wordt ' lo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Een account maken](create-account-cli-quickstart.md)
+[Een account maken](./create-account-howto.md)

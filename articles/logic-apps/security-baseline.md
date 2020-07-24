@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d27abfda789a9bb1bd5479b059355703388333f8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1e547cf3f08e49ce707cd079778588fb6be5acb5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520643"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87048418"
 ---
 # <a name="azure-security-baseline-for-logic-apps"></a>Azure-beveiligings basislijn voor Logic Apps
 
@@ -551,7 +551,7 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 *Zie [beveiligings beheer: gegevens beveiliging](../security/benchmarks/security-control-data-protection.md)voor meer informatie.*
 
@@ -643,7 +643,7 @@ Micro soft beheert de onderliggende infra structuur voor Azure Logic Apps en hee
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: op rollen gebaseerd toegangs beheer gebruiken voor het beheren van de toegang tot bronnen
 
-**Hulp**: u kunt alleen specifieke gebruikers of groepen toestaan specifieke taken uit te voeren, zoals het beheren, bewerken en weer geven van logische apps. Als u de machtigingen wilt beheren, moet u gebruikmaken van Azure Role Access Control (RBAC), zodat u aangepaste of ingebouwde rollen kunt toewijzen aan de leden van uw Azure-abonnement:
+**Hulp**: u kunt alleen specifieke gebruikers of groepen toestaan specifieke taken uit te voeren, zoals het beheren, bewerken en weer geven van logische apps. Als u de machtigingen wilt beheren, gebruikt u Azure RBAC (op rollen gebaseerd toegangs beheer), zodat u aangepaste of ingebouwde rollen kunt toewijzen aan de leden van uw Azure-abonnement:
 - Inzender van Logic apps: Hiermee kunt u logische apps beheren, maar u kunt de toegang niet wijzigen.
 - Logische app-operator: Hiermee kunt u logische apps lezen, inschakelen en uitschakelen, maar u kunt ze niet bewerken of bijwerken.
 

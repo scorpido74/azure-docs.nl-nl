@@ -1,5 +1,5 @@
 ---
-title: Installatie kopieën Red Hat Enterprise Linux in azure | Microsoft Docs
+title: Red Hat Enterprise Linux installatie kopieën die beschikbaar zijn in azure
 description: Meer informatie over Red Hat Enterprise Linux installatie kopieën in Microsoft Azure
 services: virtual-machines-linux
 documentationcenter: ''
@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/16/2020
 ms.author: alsin
-ms.openlocfilehash: 089858c789bb11245e98f32047cabb4117ece904
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 01c9c4389e2c950fe68c8be171b4c50d3d6271c1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82838583"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052029"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Red Hat Enterprise Linux-installatie kopieën (RHEL) die beschikbaar zijn in azure
 Azure biedt een aantal RHEL-installatie kopieën voor verschillende use cases.
@@ -30,7 +31,7 @@ Dit is een lijst met RHEL-installatie kopieën die beschikbaar zijn in Azure. Te
 > [!NOTE]
 > Onbewerkte afbeeldingen worden niet meer geproduceerd in het voor deel van LVM-gepartitioneerde installatie kopieën. LVM biedt verschillende voor delen ten opzichte van het oudere schema voor onbewerkte (niet-LVM), waaronder aanzienlijk meer flexibele opties voor het wijzigen van de partitie.
 
-Aanbieding| SKU | Partitionering | Inrichten | Notities
+Aanbieding| SKU | Partitionering | Inrichten | Opmerkingen
 :----|:----|:-------------|:-------------|:-----
 RHEL          | 6.7      | UITGANG    | Linux-agent |
 |             | 6.8      | UITGANG    | Linux-agent |
@@ -54,10 +55,14 @@ RHEL          | 6.7      | UITGANG    | Linux-agent |
 |             | 78-Gen2  | LVM    | Linux-agent | Gekoppeld aan reguliere opslag plaatsen (EUS niet beschikbaar voor RHEL 7,8)
 |             | 8-LVM    | LVM    | Linux-agent | RHEL 8. x-familie van installatie kopieën. Gekoppeld aan reguliere opslag plaatsen.
 |             | 8-LVM-Gen2| LVM    | Linux-agent | Hyper-V-generatie 2-RHEL 8. x-familie van installatie kopieën. Gekoppeld aan reguliere opslag plaatsen.
-|             | 8        | LVM    | Linux-agent | RHEL 8,0-installatie kopieën
+|             | 8        | LVM    | Linux-agent | RHEL 8,0-installatie kopieën.
 |             | 8-Gen2   | LVM    | Linux-agent | Hyper-V-generatie 2-RHEL 8,0 installatie kopieën.
-|             | 8.1      | LVM    | Linux-agent | RHEL 8,1-installatie kopieën. Momenteel gekoppeld aan reguliere opslag plaatsen.
+|             | 8.1      | LVM    | Linux-agent | RHEL 8,2-installatie kopieën. Momenteel gekoppeld aan reguliere opslag plaatsen.
 |             | 81gen2   | LVM    | Linux-agent | Hyper-V-generatie 2-RHEL 8,1 installatie kopieën. Momenteel gekoppeld aan reguliere opslag plaatsen.
+|             | 8,1-CI   | LVM    | Linux-agent | RHEL 8,1-installatie kopieën die gebruikmaken van Cloud-init als inrichtings agent. Momenteel gekoppeld aan reguliere opslag plaatsen.
+|             | 81-CI-Gen2| LVM    | Linux-agent | Hyper-V-generatie 2-RHEL 8,1-installatie kopieën met Cloud-init als inrichtings agent. Momenteel gekoppeld aan reguliere opslag plaatsen.
+|             | 8,2      | LVM    | Linux-agent | RHEL 8,2-installatie kopieën. Momenteel gekoppeld aan reguliere opslag plaatsen.
+|             | 82gen2   | LVM    | Linux-agent | Hyper-V-generatie 2-RHEL 8,1 installatie kopieën. Momenteel gekoppeld aan reguliere opslag plaatsen.
 RHEL-SAP      | 7.4      | LVM    | Linux-agent | RHEL 7,4 voor SAP HANA en zakelijke apps. Aan de E4S-opslag plaatsen wordt een Premium voor SAP en RHEL, en de basis reken kosten in rekening gebracht.
 |             | 74sap-Gen2| LVM    | Linux-agent | RHEL 7,4 voor SAP HANA en zakelijke apps. Installatie kopie van de 2e generatie. Aan de E4S-opslag plaatsen wordt een Premium voor SAP en RHEL, en de basis reken kosten in rekening gebracht.
 |             | 7,5       | LVM    | Linux-agent | RHEL 7,5 voor SAP HANA en zakelijke apps. Aan de E4S-opslag plaatsen wordt een Premium voor SAP en RHEL, en de basis reken kosten in rekening gebracht.
@@ -84,7 +89,8 @@ RHEL-BYOS     |RHEL-lvm74| LVM    | Linux-agent | RHEL 7,4 BYOS-installatie kopi
 |             |RHEL-lvm75| LVM    | Linux-agent | RHEL 7,5 BYOS-installatie kopieën die niet zijn gekoppeld aan een bron van updates, brengen geen kosten in rekening voor een RHEL Premium.
 |             |RHEL-lvm76| LVM    | Linux-agent | RHEL 7,6 BYOS-installatie kopieën die niet zijn gekoppeld aan een bron van updates, brengen geen kosten in rekening voor een RHEL Premium.
 |             |RHEL-lvm77| LVM    | Linux-agent | RHEL 7,7 BYOS-installatie kopieën die niet zijn gekoppeld aan een bron van updates, brengen geen kosten in rekening voor een RHEL Premium.
-|             |RHEL-lvm8 | LVM    | Linux-agent | RHEL 8 BYOS-installatie kopieën (RHEL secundaire versie wordt weer gegeven in de waarde van de installatie kopie versie), niet gekoppeld aan een bron van updates, brengt geen RHEL Premium in rekening.
+|             |RHEL-lvm8 | LVM    | Linux-agent | RHEL 8,0 BYOS-installatie kopieën die niet zijn gekoppeld aan een bron van updates, brengen geen kosten in rekening voor een RHEL Premium.
+|             |RHEL-lvm81 | LVM    | Linux-agent | RHEL 8,1 BYOS-installatie kopieën die niet zijn gekoppeld aan een bron van updates, brengen geen kosten in rekening voor een RHEL Premium.
 
 > [!NOTE]
 > De product aanbieding van RHEL-SAP-HANA wordt als einde van de levens duur beschouwd door Red Hat. Bestaande implementaties blijven normaal werken, maar Red Hat raadt aan dat klanten migreren van de RHEL-SAP-HANA-afbeeldingen naar de RHEL-SAP-HA-installatie kopieën die de SAP HANA-opslag plaatsen en de HA-invoeg toepassing bevatten. Meer informatie over de SAP-Cloud aanbiedingen van Red Hat vindt u [hier](https://access.redhat.com/articles/3751271).

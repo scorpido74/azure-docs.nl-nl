@@ -9,16 +9,17 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
 ms.date: 06/26/2019
-ms.author: anzaman
-ms.openlocfilehash: 09e6fd8530ddb1745a92c6f31f4d5a5843a2ac10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: kumud
+ms.openlocfilehash: 937a73847e867e826b3a577adf0c85184d7a93d0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76513164"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047231"
 ---
 # <a name="customizing-content-models-in-video-indexer"></a>Inhouds modellen aanpassen in Video Indexer
 
-Met Video Indexer kunt u sommige modellen aanpassen zodat deze aan uw specifieke use-case kunnen worden aangepast. Deze modellen zijn onder andere [Brands](customize-brands-model-overview.md), [taal](customize-language-model-overview.md)en [persoon](customize-person-model-overview.md). U kunt deze modellen eenvoudig aanpassen met behulp van de Video Indexer website of API.
+In Video Indexer kunt u sommige modellen aanpassen aan uw specifieke use-case. Deze modellen zijn onder andere [Brands](customize-brands-model-overview.md), [taal](customize-language-model-overview.md)en [persoon](customize-person-model-overview.md). U kunt deze modellen eenvoudig aanpassen met behulp van de website of API van Video Indexer.
 
 Dit artikel bevat koppelingen naar artikelen waarin de voor delen van elk type aanpassing worden uitgelegd. Het artikel bevat ook koppelingen naar hand leidingen die laten zien hoe u de aanpassing van elk model kunt implementeren.
 
@@ -26,7 +27,7 @@ Dit artikel bevat koppelingen naar artikelen waarin de voor delen van elk type a
 
 * [Detectie van animatie tekens](animated-characters-recognition.md)
 
-## <a name="brands-model"></a>Brands model
+## <a name="brands-model"></a>Merkenmodel
 
 * [Het model overzicht van de Brands aanpassen](customize-brands-model-overview.md)
 * [Het merk model aanpassen met behulp van de Video Indexer-website](customize-brands-model-with-website.md)
@@ -38,7 +39,7 @@ Dit artikel bevat koppelingen naar artikelen waarin de voor delen van elk type a
 * [Taal modellen aanpassen met behulp van de Video Indexer-website](customize-language-model-with-website.md)
 * [Taal modellen aanpassen met behulp van de Video Indexer-API](customize-language-model-with-api.md)
  
-## <a name="person-model"></a>Model van persoon
+## <a name="person-model"></a>Persoonsmodel
 
 * [Overzicht van persoons modellen aanpassen](customize-person-model-overview.md)
 * [Persoonlijke modellen aanpassen met behulp van de Video Indexer-website](customize-person-model-with-website.md)

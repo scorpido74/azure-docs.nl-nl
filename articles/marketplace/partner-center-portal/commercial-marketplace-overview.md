@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 05/19/2020
-ms.openlocfilehash: 676a0471ad4321f37cf6dd854d6d98083723f5de
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8f827d3e983a50589975eca59808bd1471fe4810
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116689"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047586"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>Overzicht van de portal voor commerciële Marketplace in het partner centrum
 
@@ -28,9 +28,9 @@ Partner centrum is de hub van een micro soft-partner ervaring. Voor organisaties
 
 ## <a name="migration-from-the-cloud-partner-portal"></a>Migratie van de Cloud Partner-portal
 
-Het partner centrum is in ontwikkeling om alle aspecten van onze relatie met software-uitgevers beter te integreren. Als onderdeel van deze evolutie hebben we alle commerciële Marketplace-aanbiedingen gemigreerd van de [Cloud Partner-Portal](https://cloudpartner.azure.com/) naar het partner centrum.
+Het partner centrum is in ontwikkeling om alle aspecten van onze relatie met software-uitgevers beter te integreren. Als onderdeel van deze evolutie hebben we alle commerciële Marketplace-aanbiedingen gemigreerd van de Cloud Partner-portal (CPP) naar het partner centrum.
 
-Bestaande uitgevers die de Cloud Partner-portal eerder hebben gebruikt, vinden een vertrouwde, verbeterde en intuïtieve gebruikers ervaring met partner centrum. Gebruikers worden probleemloos omgeleid naar de juiste locatie. Deze upgrade van partner ervaring is niet van invloed op klanten.
+Bestaande uitgevers die eerder het CPP hebben gebruikt, vinden een vertrouwde, verbeterde en intuïtieve gebruikers ervaring met partner centrum. Gebruikers worden probleemloos omgeleid naar de juiste locatie. Deze upgrade van partner ervaring is niet van invloed op klanten.
 
 ### <a name="improvements-on-publishing-and-offer-management-user-experience"></a>Verbeteringen voor het publiceren en aanbieden van gebruikers ervaring voor beheer
 

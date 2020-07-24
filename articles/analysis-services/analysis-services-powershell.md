@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: dfa9de94665c0ee98d0252be6de807f18e39b087
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e64ffe5007d27a44167f08807a9694875fe48c4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83697971"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050453"
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>Azure Analysis Services beheren met PowerShell
 
@@ -25,7 +26,7 @@ Server Resource beheer taken zoals het maken of verwijderen van een server, het 
 
 Voor de meeste Power shell-taken moet u beheerders bevoegdheden hebben op de Analysis Services-server die u beheert. Geplande power shell-taken zijn bewerkingen zonder toezicht. De account of Service-Principal waarop de scheduler wordt uitgevoerd, moet beheerders bevoegdheden hebben op de Analysis Services-server. 
 
-Voor Server bewerkingen die gebruikmaken van Azure PowerShell-cmdlets, moet uw account of het account dat scheduler uitvoert ook behoren tot de rol van eigenaar van de resource in [Azure op rollen gebaseerde Access Control (RBAC)](../role-based-access-control/overview.md). 
+Voor Server bewerkingen met Azure PowerShell-cmdlets moet uw account of het account dat scheduler uitvoert ook behoren tot de rol van eigenaar van de resource in [Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../role-based-access-control/overview.md). 
 
 ## <a name="resource-and-server-operations"></a>Resource-en Server bewerkingen 
 
@@ -43,7 +44,7 @@ Documentatie- [sqlserver-referentie](/powershell/module/sqlserver)
 
 ### <a name="supported-cmdlets"></a>Ondersteunde cmdlets
 
-|Cmdlet|Description|
+|Cmdlet|Beschrijving|
 |------------|-----------------| 
 |[Add-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|Een lid toevoegen aan een databaserol.| 
 |[Backup-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase)|Back-up maken van een Analysis Services-Data Base.|  

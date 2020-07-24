@@ -5,12 +5,12 @@ author: btardif
 ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
-ms.openlocfilehash: 94a5fd3ae1de0708f0e5550547f7ab2fc9f881cb
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: c3c79944aa4add0a32dbb584b13606e32e146a1a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146229"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050291"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>Verwijderde App Service-apps herstellen met PowerShell
 
@@ -58,7 +58,7 @@ De gedetailleerde informatie omvat:
 Zodra de app die u wilt herstellen is geïdentificeerd, kunt u deze herstellen met `Restore-AzDeletedWebApp` .
 
 ```powershell
-Restore-AzDeletedWebApp -ResourceGroupName <my_rg> -Name <my_app> -TargetAppServicePlanName <my_asp>
+Restore-AzDeletedWebApp -TargetResourceGroupName <my_rg> -Name <my_app> -TargetAppServicePlanName <my_asp>
 ```
 > [!NOTE]
 > Implementatie sites worden niet teruggezet als onderdeel van uw app. Als u een faserings sleuf moet herstellen, gebruikt u de `-Slot <slot-name>` vlag.
@@ -66,7 +66,7 @@ Restore-AzDeletedWebApp -ResourceGroupName <my_rg> -Name <my_app> -TargetAppServ
 
 De invoer voor opdracht is:
 
-- **Resource groep**: doel resource groep waar de app wordt teruggezet
+- **Doel resource groep**: doel resource groep waar de app wordt teruggezet
 - **Naam**: de naam voor de app moet wereld wijd uniek zijn.
 - **TargetAppServicePlanName**: app service plan dat aan de app is gekoppeld
 

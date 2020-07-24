@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 07/14/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a0295a73d325d8de7673b9a66c7047a80d82b09
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 105f911b97e01a4b05673fc67b51c677df15eb89
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981852"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051279"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Verificatie opties met een wacht woord voor Azure Active Directory
 
-Multi-factor Authentication (MFA) is een uitstekende manier om uw organisatie te beveiligen, maar gebruikers worden vaak met de extra beveiligingslaag op de hoogte gehouden om hun wacht woord te onthouden. Verificatie methoden met een wacht woord zijn handiger omdat het wacht woord wordt verwijderd en vervangen door iets wat u hebt, en wat u wel of iets weet.
+Functies zoals multi-factor Authentication (MFA) zijn een uitstekende manier om uw organisatie te beveiligen, maar gebruikers worden vaak met de extra beveiligingslaag op de hoogte gehouden om hun wacht woord te onthouden. Verificatie methoden met een wacht woord zijn handiger omdat het wacht woord wordt verwijderd en vervangen door iets wat u hebt, en wat u wel of iets weet.
 
 | Verificatie  | Iets dat u hebt | Iets dat u weet of weet |
 | --- | --- | --- |
@@ -36,11 +36,11 @@ Elke organisatie heeft verschillende behoeften wanneer dit van toepassing is op 
 
 ## <a name="windows-hello-for-business"></a>Windows Hello voor Bedrijven
 
-Windows hello voor bedrijven is ideaal voor IT-mede werkers die hun eigen aangewezen Windows-PC hebben. De biometrische en pincode zijn rechtstreeks gebonden aan de PC van de gebruiker, waardoor de toegang van iemand anders dan de eigenaar wordt voor komen. Met de integratie van open bare-sleutel infrastructuur (PKI) en ingebouwde ondersteuning voor eenmalige aanmelding (SSO) biedt Windows hello voor bedrijven een handige methode voor probleemloze toegang tot bedrijfs bronnen on-premises en in de Cloud.
+Windows hello voor bedrijven is ideaal voor IT-mede werkers die hun eigen aangewezen Windows-PC hebben. De referentie biometrische en pincode zijn rechtstreeks gebonden aan de PC van de gebruiker, waardoor de toegang van iemand anders dan de eigenaar wordt voor komen. Met de integratie van open bare-sleutel infrastructuur (PKI) en ingebouwde ondersteuning voor eenmalige aanmelding (SSO) biedt Windows hello voor bedrijven een handige methode voor probleemloze toegang tot bedrijfs bronnen on-premises en in de Cloud.
 
 ![Voor beeld van een gebruiker die zich aanmeldt met Windows hello voor bedrijven](./media/concept-authentication-passwordless/windows-hellow-sign-in.jpeg)
 
-De volgende stappen laten zien hoe het aanmeldings proces werkt met Azure Active Directory.
+De volgende stappen laten zien hoe het aanmeldings proces werkt met Azure AD:
 
 ![Diagram met een overzicht van de stappen die nodig zijn voor het aanmelden van gebruikers met Windows hello voor bedrijven](./media/concept-authentication-passwordless/windows-hello-flow.png)
 
@@ -56,7 +56,7 @@ De [plannings handleiding](https://docs.microsoft.com/windows/security/identity-
 
 ## <a name="microsoft-authenticator-app"></a>App Microsoft Authenticator
 
-Laat de telefoon van uw werk nemer een verificatie methode met een wacht woord maken. U kunt ook de Microsoft Authenticator-app gebruiken als een handige multi-factor Authentication-optie naast een wacht woord. U kunt de verificator-app ook gebruiken als een optie met een wacht woord.
+U kunt ook de telefoon van uw werk nemer een verificatie methode met een wacht woord maken. U kunt ook de Microsoft Authenticator-app gebruiken als een handige multi-factor Authentication-optie naast een wacht woord. U kunt de verificator-app ook gebruiken als een optie met een wacht woord.
 
 ![Aanmelden bij micro soft Edge met de app Microsoft Authenticator](./media/concept-authentication-passwordless/concept-web-sign-in-microsoft-authenticator-app.png)
 
@@ -75,11 +75,18 @@ Verificatie met een wacht woord met behulp van de verificator-app volgt hetzelfd
 1. De nonce is ondertekend met de persoonlijke sleutel en teruggestuurd naar Azure AD.
 1. Azure AD voert een validatie van open bare/persoonlijke sleutels uit en retourneert een token.
 
+Voer de volgende instructies uit om aan de slag te gaan met aanmelden zonder wacht woord:
+
+> [!div class="nextstepaction"]
+> [Wacht woordloos aanmelden met de verificator-app inschakelen](howto-authentication-passwordless-phone.md)
+
 ## <a name="fido2-security-keys"></a>FIDO2-beveiligings sleutels
 
 FIDO2-beveiligings sleutels zijn een niet-verwerkte op standaarden gebaseerde verificatie methode op basis van een wacht woord, die in elke vorm factor kan worden gebruikt. Fast Identity online (FIDO) is een open standaard voor verificatie met een wacht woord. Met FIDO kunnen gebruikers en organisaties de standaard gebruiken om zich aan te melden bij hun resources zonder gebruikers naam of wacht woord met behulp van een externe beveiligings sleutel of een platform sleutel die is ingebouwd in een apparaat.
 
-Voor een open bare Preview kunnen werk nemers beveiligings sleutels gebruiken om zich aan te melden bij hun Azure AD-of hybride Azure AD-lid van Windows 10-apparaten en eenmalige aanmelding op hun Cloud-en on-premises resources op te halen. Gebruikers kunnen zich ook aanmelden bij ondersteunde browsers. FIDO2-beveiligings sleutels zijn een uitstekende optie voor ondernemingen die zeer gevoelig zijn voor bedrijven of die scenario's of werk nemers hebben die hun telefoon niet kunnen gebruiken als een tweede factor.
+Werk nemers kunnen beveiligings sleutels gebruiken om zich aan te melden bij hun Azure AD-of hybride Azure AD-lid van Windows 10-apparaten en eenmalige aanmelding aan te schaffen bij hun Cloud-en on-premises resources. Gebruikers kunnen zich ook aanmelden bij ondersteunde browsers. FIDO2-beveiligings sleutels zijn een uitstekende optie voor ondernemingen die zeer gevoelig zijn voor bedrijven of die scenario's of werk nemers hebben die hun telefoon niet kunnen gebruiken als een tweede factor.
+
+Aanmelden met FIDO2-beveiligings sleutels voor Azure AD zijn momenteel beschikbaar als preview-versie.
 
 ![Aanmelden bij micro soft Edge met een beveiligings sleutel](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 
@@ -127,7 +134,15 @@ De volgende providers bieden FIDO2-beveiligings sleutels van verschillende vorm 
 
 Als u een leverancier bent en uw apparaat op deze lijst met ondersteunde apparaten wilt ontvangen, neemt u contact op met [Fido2Request@Microsoft.com](mailto:Fido2Request@Microsoft.com) .
 
+Voer de volgende instructies uit om aan de slag te gaan met FIDO2-beveiligings sleutels:
+
+> [!div class="nextstepaction"]
+> [Aanmelden zonder wacht woord inschakelen met behulp van FIDO2-beveiligings sleutels](howto-authentication-passwordless-security-key.md)
+
+
 ## <a name="what-scenarios-work-with-the-preview"></a>Welke scenario's werken met de preview-versie?
+
+Aanmeld functies voor Azure AD-wacht woorden zijn momenteel beschikbaar als preview-versie. De volgende overwegingen zijn van toepassing:
 
 - Beheerders kunnen verificatie methoden met een wacht woord toestaan voor hun Tenant
 - Beheerders kunnen alle gebruikers bereiken of gebruikers/groepen selecteren binnen hun Tenant voor elke methode
@@ -147,7 +162,7 @@ Hier volgen enkele factoren waarmee u rekening moet houden bij het kiezen van mi
 |**Vereiste**| Windows 10, versie 1809 of hoger<br>Azure Active Directory| Microsoft Authenticator-app<br>Telefoon (iOS-en Android-apparaten met Android 6,0 of hoger.)|Windows 10, versie 1809 of hoger<br>Azure Active Directory|
 |**Modus**|Platform|Software|Hardware|
 |**Systemen en apparaten**|PC met ingebouwde Trusted Platform Module (TPM)<br>Herkenning van PINCODEs en biometrie |Herkenning van PINCODEs en biometrie op telefoon|FIDO2-beveiligings apparaten die compatibel zijn met micro soft|
-|**Gebruikerservaring**|Meld u aan met een pincode of biometrische herkenning (gezicht, Iris of vinger afdruk) met Windows-apparaten.<br>Windows hello-verificatie is gekoppeld aan het apparaat. de gebruiker heeft het apparaat en een aanmeldings onderdeel zoals een pincode of biometrische factor nodig om toegang te krijgen tot bedrijfs bronnen.|Meld u aan met een mobiele telefoon met vingerafdruk scan, gezichts controle of Iris herkenning of pincode.<br>Gebruikers melden zich aan bij een werk-of persoonlijk account vanaf hun PC of mobiele telefoon.|Aanmelden met FIDO2-beveiligings apparaat (biometrie, PIN en NFC)<br>Gebruiker heeft toegang tot het apparaat op basis van organisatie besturings elementen en verificatie op basis van pincode, biometrie met behulp van apparaten zoals USB-beveiligings sleutels en met NFC ingeschakelde Smart Cards, sleutels of Wearables.|
+|**Gebruikers ervaring**|Meld u aan met een pincode of biometrische herkenning (gezicht, Iris of vinger afdruk) met Windows-apparaten.<br>Windows hello-verificatie is gekoppeld aan het apparaat. de gebruiker heeft het apparaat en een aanmeldings onderdeel zoals een pincode of biometrische factor nodig om toegang te krijgen tot bedrijfs bronnen.|Meld u aan met een mobiele telefoon met vingerafdruk scan, gezichts controle of Iris herkenning of pincode.<br>Gebruikers melden zich aan bij een werk-of persoonlijk account vanaf hun PC of mobiele telefoon.|Aanmelden met FIDO2-beveiligings apparaat (biometrie, PIN en NFC)<br>Gebruiker heeft toegang tot het apparaat op basis van organisatie besturings elementen en verificatie op basis van pincode, biometrie met behulp van apparaten zoals USB-beveiligings sleutels en met NFC ingeschakelde Smart Cards, sleutels of Wearables.|
 |**Ingeschakelde scenario's**| Wachtwoord minder ervaring met Windows-apparaat.<br>Van toepassing op toegewezen werk computer met mogelijkheid voor eenmalige aanmelding bij apparaten en toepassingen.|Een wacht woord met een mobiele telefoon.<br>Van toepassing voor toegang tot zakelijke of persoonlijke toepassingen op het web vanaf elk apparaat.|Wacht woord minder ervaring voor werk nemers met biometrie, PIN en NFC.<br>Van toepassing op gedeelde Pc's en waar een mobiele telefoon geen geschikte optie is (zoals voor helpdesk personeel, open bare kiosk of ziekenhuis team)|
 
 Gebruik de volgende tabel om te kiezen welke methode uw vereisten en gebruikers ondersteunt.
@@ -162,12 +177,12 @@ Gebruik de volgende tabel om te kiezen welke methode uw vereisten en gebruikers 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Opties voor wacht woordloze FIDO2 inschakelen in uw organisatie](howto-authentication-passwordless-security-key.md)
+Om aan de slag te gaan met een wacht woord in azure AD, voert u een van de volgende procedures uit:
 
-[Op telefoon gebaseerde opties voor wacht woord in uw organisatie inschakelen](howto-authentication-passwordless-phone.md)
+* [Aanmelden zonder wacht woord voor FIDO2-beveiligings sleutel inschakelen](howto-authentication-passwordless-security-key.md)
+* [Aanmelden op basis van een wacht woord zonder wachtwoord verificatie met de verificator-app inschakelen](howto-authentication-passwordless-phone.md)
 
 ### <a name="external-links"></a>Externe koppelingen
 
-[FIDO Alliance](https://fidoalliance.org/)
-
-[FIDO2 CTAP-specificatie](https://fidoalliance.org/specs/fido-v2.0-id-20180227/fido-client-to-authenticator-protocol-v2.0-id-20180227.html)
+* [FIDO Alliance](https://fidoalliance.org/)
+* [FIDO2 CTAP-specificatie](https://fidoalliance.org/specs/fido-v2.0-id-20180227/fido-client-to-authenticator-protocol-v2.0-id-20180227.html)

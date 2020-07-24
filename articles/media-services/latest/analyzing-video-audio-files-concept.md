@@ -12,25 +12,25 @@ ms.workload: ''
 ms.topic: article
 ms.date: 01/30/2020
 ms.author: juliako
-ms.openlocfilehash: 1d28fc37b98493322b9e201ac899b7911dd1d705
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c0eb626b827656a478e02a43b98ed15e7469f92
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708957"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053467"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Video-en audio bestanden analyseren met Azure Media Services
 
 Met Azure Media Services v3 kunt u inzichten uit uw video-en audio bestanden ophalen met Video Indexer. In dit artikel worden de Media Services v3 Analyzer-voor waarden beschreven die worden gebruikt om deze inzichten te extra heren. Als u meer gedetailleerde inzichten wilt, gebruikt u Video Indexer rechtstreeks. Bekijk het [vergelijkings document](../video-indexer/compare-video-indexer-with-media-services-presets.md)als u wilt weten wanneer de voor instellingen van Video Indexer versus Media Services Analyzer moeten worden gebruikt.
 
-Als u uw inhoud wilt analyseren met Media Services v3-voor instellingen, maakt u een **trans formatie** en verzendt u een **taak** die gebruikmaakt van een van deze voor instellingen: [VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset) of **AudioAnalyzerPreset**. Zie [Video's analyseren met Azure Media Services](analyze-videos-tutorial-with-api.md)voor een zelf studie waarin wordt uitgelegd hoe u **VideoAnalyzerPreset**kunt gebruiken.
+Als u uw inhoud wilt analyseren met Media Services v3-voor instellingen, maakt u een **trans formatie** en verzendt u een **taak** die gebruikmaakt van een van deze voor instellingen: [VideoAnalyzerPreset](/rest/api/media/transforms/createorupdate#videoanalyzerpreset) of **AudioAnalyzerPreset**. Zie [Video's analyseren met Azure Media Services](analyze-videos-tutorial-with-api.md)voor een zelf studie waarin wordt uitgelegd hoe u **VideoAnalyzerPreset**kunt gebruiken.
 
 > [!NOTE]
 > Wanneer u voorinstellingen voor een Video of Audio Analyzer gebruikt, moet u de Azure-portal gebruiken om uw account in te stellen op 10 S3 Door media gereserveerde eenheden. Zie [Mediaverwerking schalen](media-reserved-units-cli-how-to.md) voor meer informatie.
 
 ## <a name="compliance-privacy-and-security"></a>Compliance, privacy en beveiliging
 
-Als belang rijke herinnering moet u zich houden aan alle toepasselijke wetgeving bij het gebruik van Video Indexer en mag u Video Indexer of een andere Azure-service niet gebruiken op een manier die de rechten van anderen schendt of schadelijk voor anderen is. Voordat u Video's, met inbegrip van biometrische gegevens, naar de Video Indexer-service voor de verwerking en opslag uploadt, moet u over alle juiste rechten beschikken, met inbegrip van alle toepasselijke toestemmingen, van de afzonderlijke (en) in de video. Voor meer informatie over naleving, privacy en beveiliging in Video Indexer, de micro soft [Cognitive Services-voor waarden](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/). Raadpleeg [de privacyverklaring van](https://privacy.microsoft.com/PrivacyStatement)micro soft voor de privacy van micro soft en de verwerking van uw gegevens, de [voor waarden voor Online Services](https://www.microsoft.com/licensing/product-licensing/products) ("Ost") en de [addendum op gegevens verwerking](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA"). Aanvullende privacy-informatie, inclusief gegevens retentie, verwijdering/vernietiging, is beschikbaar in de OST en [hier](../video-indexer/faq.md). Door Video Indexer te gebruiken, gaat u akkoord met de Cognitive Services voor waarden, de OST, DPA en de privacyverklaring.
+Het is heel belangrijk dat u zich realiseert dat u zich bij het gebruik van Video Indexer moet houden aan alle toepasselijke wetgeving en dat het niet is toegestaan Video Indexer of een andere Azure-service te gebruiken op een manier die de rechten van anderen schendt of anderen schade berokkent. Voordat u video's, met inbegrip van eventuele biometrische gegevens, uploadt naar de Video Indexer-service om daar te worden verwerkt of opgeslagen, moet u over alle daarvoor benodigde rechten beschikken, waaronder alle toepasselijke toestemmingen van de persoon of personen in de video. Meer informatie over compliance, privacy en beveiliging in Video Indexer vindt u in de [voorwaarden van Microsoft Cognitive Services](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/). Als u meer wilt weten over de privacyverplichtingen die Microsoft hanteert ten aanzien van uw gegevens, kunt u de [Privacyverklaring](https://privacy.microsoft.com/PrivacyStatement) van Microsoft, de [Voorwaarden voor Online Diensten](https://www.microsoft.com/licensing/product-licensing/products) ('OST') en het [Addendum met betrekking tot gegevensverwerking](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ('DPA') raadplegen. Aanvullende informatie over privacy, waaronder informatie over de bewaarplicht voor gegevens en over de verwijdering/vernietiging ervan, is beschikbaar in de Voorwaarden voor Online Diensten (OST) en [hier](../video-indexer/faq.md). Door Video Indexer te gebruiken, gaat u akkoord met de voorwaarden van Cognitive Services, de OST, DPA en de Privacyverklaring.
 
 ## <a name="built-in-presets"></a>Ingebouwde voor instellingen
 
@@ -38,9 +38,9 @@ Media Services ondersteunt momenteel de volgende ingebouwde Analyzer-voor waarde
 
 |**Naam van voor instelling**|**Scenario**|**Details**|
 |---|---|---|
-|[AudioAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Audio analyseren|De voor instelling past een vooraf gedefinieerde set op AI-gebaseerde analyse bewerkingen toe, waaronder spraak transcriptie. Op dit moment ondersteunt de vooraf ingestelde verwerking van inhoud met één audio track die spraak in één taal bevat. U kunt de taal voor de audio lading in de invoer opgeven met de BCP-47-indeling van de taal code-regio. Ondersteunde talen zijn Engels (' en-US ' en ' en ' en ' en '), Spaans (' es-ES ' en ' es-MX '), Frans (' fr-FR '), Italiaans (' it-IT '), Japans (' ja-JP '), Portugees (' pt-BR '), Chinees (' zh-CN '), Duits (' de '), Arabisch (' ar-EG ' en ' ar-SY '), Russisch (' ru-RU '), Hindi (' Hi-IN ') en Koreaans (' ko-KR ').<br/><br/> Als de taal niet is opgegeven of is ingesteld op NULL, kiest automatische taal detectie de eerst gedetecteerde taal en wordt de geselecteerde taal voor de duur van het bestand voortgezet. De functie voor automatische taal detectie ondersteunt momenteel Engels, Chinees, Frans, Duits, Italiaans, Japans, Spaans, Russisch en Portugees. Het is niet mogelijk om dynamische switches te scha kelen tussen talen nadat de eerste taal is gedetecteerd. De functie voor automatische taal detectie werkt het beste met geluids opnamen met duidelijk waarneembaar spraak. Als de taal niet kan worden gevonden met de automatische taal detectie, valt de transcriptie terug naar Engels.|
-|[VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|Audio en video analyseren|Extraheert inzichten (Rich meta data) van audio en video en voert een JSON-indelings bestand uit. U kunt opgeven of u alleen geluids inzichten wilt extra heren tijdens het verwerken van een video bestand. Zie [video analyseren](analyze-videos-tutorial-with-api.md)voor meer informatie.|
-|[FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset)|In video aanwezige gezichten detecteren|Hierin worden de instellingen beschreven die moeten worden gebruikt bij het analyseren van een video om alle gezichten te detecteren die aanwezig zijn.|
+|[AudioAnalyzerPreset](/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|Audio analyseren|De voor instelling past een vooraf gedefinieerde set op AI-gebaseerde analyse bewerkingen toe, waaronder spraak transcriptie. Op dit moment ondersteunt de vooraf ingestelde verwerking van inhoud met één audio track die spraak in één taal bevat. U kunt de taal voor de audio lading in de invoer opgeven met de BCP-47-indeling van de taal code-regio. Ondersteunde talen zijn Engels (' en-US ' en ' en ' en ' en '), Spaans (' es-ES ' en ' es-MX '), Frans (' fr-FR '), Italiaans (' it-IT '), Japans (' ja-JP '), Portugees (' pt-BR '), Chinees (' zh-CN '), Duits (' de '), Arabisch (' ar-EG ' en ' ar-SY '), Russisch (' ru-RU '), Hindi (' Hi-IN ') en Koreaans (' ko-KR ').<br/><br/> Als de taal niet is opgegeven of is ingesteld op NULL, kiest automatische taal detectie de eerst gedetecteerde taal en wordt de geselecteerde taal voor de duur van het bestand voortgezet. De functie voor automatische taal detectie ondersteunt momenteel Engels, Chinees, Frans, Duits, Italiaans, Japans, Spaans, Russisch en Portugees. Het is niet mogelijk om dynamische switches te scha kelen tussen talen nadat de eerste taal is gedetecteerd. De functie voor automatische taal detectie werkt het beste met geluids opnamen met duidelijk waarneembaar spraak. Als de taal niet kan worden gevonden met de automatische taal detectie, valt de transcriptie terug naar Engels.|
+|[VideoAnalyzerPreset](/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|Audio en video analyseren|Extraheert inzichten (Rich meta data) van audio en video en voert een JSON-indelings bestand uit. U kunt opgeven of u alleen geluids inzichten wilt extra heren tijdens het verwerken van een video bestand. Zie [video analyseren](analyze-videos-tutorial-with-api.md)voor meer informatie.|
+|[FaceDetectorPreset](/rest/api/media/transforms/createorupdate#facedetectorpreset)|In video aanwezige gezichten detecteren|Hierin worden de instellingen beschreven die moeten worden gebruikt bij het analyseren van een video om alle gezichten te detecteren die aanwezig zijn.|
 
 ### <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset
 
@@ -151,14 +151,14 @@ Voorbeeld:
 |Naam|Beschrijving|
 |---|---|
 |id|De face-ID.|
-|naam|De naam van het gezicht. Dit kan ' onbekend #0 ', een geïdentificeerde beroemdheden of een door de klant getrainde persoon zijn.|
+|name|De naam van het gezicht. Dit kan ' onbekend #0 ', een geïdentificeerde beroemdheden of een door de klant getrainde persoon zijn.|
 |betrouwbaarheid|De gezichts-id-betrouw baarheid.|
 |description|Een beschrijving van de beroemdheden. |
 |thumbnailId|De ID van de miniatuur van het gezicht.|
 |knownPersonId|De interne ID (als deze een bekende persoon is).|
 |referenceId|De Bing-ID (als het een Bing-beroemdheden is).|
 |Type|Momenteel alleen Bing.|
-|titel|De titel (als het een beroemdheden is, bijvoorbeeld ' micro soft ' CEO ').|
+|title|De titel (als het een beroemdheden is, bijvoorbeeld ' micro soft ' CEO ').|
 |imageUrl|De afbeeldings-URL, als het een beroemdheden is.|
 |vaak|Exemplaren waarvan het gezicht in het opgegeven tijds bereik is verschenen. Elk exemplaar heeft ook een thumbnailsId. |
 
@@ -301,7 +301,7 @@ Gevoel worden geaggregeerd met het veld sentimentType (positief/neutraal/negatie
 |Naam|Beschrijving|
 |---|---|
 |id|De label-ID.|
-|naam|De naam van het label (bijvoorbeeld ' computer ', ' TV ').|
+|name|De naam van het label (bijvoorbeeld ' computer ', ' TV ').|
 |language|De naam taal van het label (bij omzetting). BCP-47|
 |vaak|Een lijst met tijds bereiken waar dit label wordt weer gegeven (een label kan meerdere keren voor komen). Elk exemplaar heeft een veld betrouw baarheid. |
 

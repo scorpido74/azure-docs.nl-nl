@@ -5,21 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 04/15/2020
+ms.date: 07/20/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7997359fb29afc876b184b811e0409cfdbeb265a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2eff16e0d1aa242ed4ca8b427c7af8e8defa7804
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83826465"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051298"
 ---
-# <a name="password-management-frequently-asked-questions"></a>Veelgestelde vragen over wachtwoord beheer
+# <a name="self-service-password-reset-frequently-asked-questions"></a>Veelgestelde vragen over self-service voor wachtwoord herstel
 
-Hier volgen enkele veelgestelde vragen (FAQ) voor alle zaken met betrekking tot het opnieuw instellen van wacht woorden.
+Hier volgen enkele veelgestelde vragen (FAQ) voor alle zaken met betrekking tot de selfservice voor wachtwoord herstel.
 
 Als u een algemene vraag hebt over Azure Active Directory (Azure AD) en self-service voor het opnieuw instellen van wacht woorden (SSPR) die hier niet wordt beantwoord, kunt u de Community vragen om hulp op de [pagina micro soft Q&een vraag voor Azure Active Directory](https://docs.microsoft.com/answers/topics/azure-active-directory.html). Leden van de Community bevatten technici, product managers, Mvp's en andere IT-professionals.
 
@@ -37,7 +38,7 @@ Deze veelgestelde vragen zijn onderverdeeld in de volgende secties:
 
   > **A:** Klikt. Zolang het wacht woord opnieuw moet worden ingesteld en de licenties zijn ingeschakeld, kunnen gebruikers naar de registratie portal voor het opnieuw instellen van het wacht woord gaan ( https://aka.ms/ssprsetup) om hun verificatie gegevens te registreren. Gebruikers kunnen zich ook registreren via het toegangs venster ( https://myapps.microsoft.com) . Als u zich wilt registreren via het toegangs venster, moeten ze hun profiel afbeelding selecteren, **profiel**selecteren en vervolgens de optie **registreren voor wacht woord opnieuw instellen** selecteren.
   >
-  >
+  > Als u [gecombineerde registratie](concept-registration-mfa-sspr-combined.md)inschakelt, kunnen gebruikers zich op hetzelfde moment registreren voor zowel SSPR als Azure multi-factor Authentication.
 * **V: als ik het opnieuw instellen van het wacht woord inschakel voor een groep en vervolgens besluit dit voor iedereen in te scha kelen, moeten mijn gebruikers zich opnieuw registreren?**
 
   > **A:** Geen. Gebruikers met ingevulde verificatie gegevens hoeven zich niet opnieuw te registreren.

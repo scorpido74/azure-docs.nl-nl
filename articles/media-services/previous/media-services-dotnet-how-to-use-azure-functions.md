@@ -14,11 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 618acae10b874eb5ebd5b6da7fe081368528dbd8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 43e16d15c48471d75a7ab5ce23898f1161a60153
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84712493"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052833"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>Azure Functions ontwikkelen met Media Services
 
@@ -337,7 +338,7 @@ Als u uw functie wilt testen, moet u een MP4-bestand uploaden naar de **invoer**
 4. Druk op **uploaden** en blader naar een. MP4-bestand dat u wilt uploaden.
 
 >[!NOTE]
-> Wanneer u een BLOB-trigger in een verbruiks plan gebruikt, kan er een vertraging van 10 minuten zijn bij het verwerken van nieuwe blobs nadat een functie-app niet actief is geweest. Nadat de functie-app is uitgevoerd, worden de blobs onmiddellijk verwerkt. Zie [Blob Storage-triggers en-bindingen](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob)voor meer informatie.
+> Wanneer u een BLOB-trigger in een verbruiks plan gebruikt, kan er een vertraging van 10 minuten zijn bij het verwerken van nieuwe blobs nadat een functie-app niet actief is geweest. Nadat de functie-app is uitgevoerd, worden de blobs onmiddellijk verwerkt. Zie [Blob Storage-triggers en-bindingen](../../azure-functions/functions-bindings-storage-blob.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -349,4 +350,3 @@ Zie ook [Azure-Webhooks gebruiken om Media Services taak meldingen te bewaken me
 
 ## <a name="provide-feedback"></a>Feedback geven
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-
