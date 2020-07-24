@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/04/2020
 ms.author: mlottner
-ms.openlocfilehash: 3b39d70c60a4c9701d0a8bafde17b241fe01cc46
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f676c4129b79499eb9ed524821a336b3859dbb3c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81311639"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004848"
 ---
-# <a name="azure-security-center-for-iot-security-alerts"></a>Beveiligingswaarschuwingen in Azure Security Center for IoT
+# <a name="azure-security-center-for-iot-customizable-security-alerts"></a>Aanpas bare beveiligings waarschuwingen Azure Security Center voor IoT
 
 Azure Security Center voor IoT analyseert voortdurend uw IoT-oplossing met behulp van geavanceerde analyses en bedreigings informatie om u te waarschuwen voor schadelijke activiteiten.
 

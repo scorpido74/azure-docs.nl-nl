@@ -3,32 +3,35 @@ title: CreateUiDefinition.jsin het deel venster bestand voor portal
 description: Hierin wordt beschreven hoe u gebruikers interface definities maakt voor de Azure Portal. Wordt gebruikt bij het definiëren van Azure Managed Applications.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 07/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: 2956c76f5bec353639b39228b982db21b6932deb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ee489e8b596adf0767856e3358c9bdcb17fbb6a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80294896"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004359"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>CreateUiDefinition. json voor het maken van beheerde Azure-toepassingen
 
-In dit document worden de basis concepten geïntroduceerd van de **createUiDefinition.jsvoor** het bestand dat Azure Portal gebruikt voor het definiëren van de gebruikers interface bij het maken van een beheerde toepassing.
+In dit document worden de belangrijkste concepten van de **createUiDefinition.jsin** het bestand geïntroduceerd. Het Azure Portal gebruikt dit bestand om de gebruikers interface te definiëren bij het maken van een beheerde toepassing.
 
 De sjabloon is als volgt
 
 ```json
 {
-   "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
-   "handler": "Microsoft.Azure.CreateUIDef",
-   "version": "0.1.2-preview",
-   "parameters": {
-      "basics": [ ],
-      "steps": [ ],
-      "outputs": { },
-      "resourceTypes": [ ]
-   }
+    "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
+    "handler": "Microsoft.Azure.CreateUIDef",
+    "version": "0.1.2-preview",
+    "parameters": {
+        "config": {
+            "basics": { }
+        },
+        "basics": [ ],
+        "steps": [ ],
+        "outputs": { },
+        "resourceTypes": [ ]
+    }
 }
 ```
 
@@ -40,7 +43,7 @@ Een CreateUiDefinition bevat altijd drie eigenschappen:
 
 De handler moet altijd zijn `Microsoft.Azure.CreateUIDef` en de meest recente ondersteunde versie is `0.1.2-preview` .
 
-Het schema van de eigenschap para meters is afhankelijk van de combi natie van de opgegeven handler en versie. Voor beheerde toepassingen zijn de ondersteunde eigenschappen `basics` , `steps` en `outputs` . De eigenschappen van de basis beginselen en de stappen bevatten de [elementen](create-uidefinition-elements.md) , zoals tekst vakken en vervolg keuzelijsten, die moeten worden weer gegeven in de Azure Portal. De eigenschap outputs wordt gebruikt om de uitvoer waarden van de opgegeven elementen toe te wijzen aan de para meters van de Azure Resource Manager-implementatie sjabloon.
+Het schema van de eigenschap para meters is afhankelijk van de combi natie van de opgegeven handler en versie. Voor beheerde toepassingen zijn de ondersteunde eigenschappen `basics` ,, `steps` `outputs` en `config` . De eigenschappen van de basis beginselen en de stappen bevatten de [elementen](create-uidefinition-elements.md) , zoals tekst vakken en vervolg keuzelijsten, die moeten worden weer gegeven in de Azure Portal. De eigenschap outputs wordt gebruikt om de uitvoer waarden van de opgegeven elementen toe te wijzen aan de para meters van de Azure Resource Manager sjabloon. U gebruikt `config` deze alleen wanneer u het standaard gedrag van de stap wilt negeren `basics` .
 
 Inclusief `$schema` wordt aanbevolen, maar is optioneel. Indien opgegeven, moet de waarde voor `version` overeenkomen met de versie in de `$schema` URI.
 
@@ -48,11 +51,97 @@ U kunt een JSON-editor gebruiken om uw createUiDefinition te maken en deze vervo
 
 ## <a name="basics"></a>Basisbeginselen
 
-Basis beginselen is de eerste stap die wordt gegenereerd wanneer de Azure Portal het bestand parseert. Naast het weer geven van de elementen die `basics` zijn opgegeven in, injecteert de portal elementen voor gebruikers om het abonnement, de resource groep en de locatie voor de implementatie te kiezen. Als dat mogelijk is, moeten elementen die para meters voor implementatie query's uitvoeren, zoals de naam van een cluster of beheerders referenties, in deze stap gaan.
+De stap **basis beginselen** is de eerste stap die wordt gegenereerd wanneer de Azure Portal het bestand parseert. Met de stappen in de basis beginselen kunnen gebruikers standaard het abonnement, de resource groep en de locatie voor de implementatie kiezen.
+
+:::image type="content" source="./media/create-uidefinition-overview/basics.png" alt-text="Basis principes standaard":::
+
+U kunt in deze sectie meer elementen toevoegen. Voeg, indien mogelijk, elementen toe die para meters voor implementatie query's uitvoeren, zoals de naam van een cluster-of beheerders referenties.
+
+In het volgende voor beeld wordt een tekstvak weer gegeven dat is toegevoegd aan de standaard elementen.
+
+```json
+"basics": [
+    {
+        "name": "textBox1",
+        "type": "Microsoft.Common.TextBox",
+        "label": "Textbox on basics",
+        "defaultValue": "my text value",
+        "toolTip": "",
+        "visible": true
+    }
+]
+```
+
+## <a name="config"></a>Configureren
+
+U geeft het configuratie-element op wanneer u het standaard gedrag voor de basis stappen wilt onderdrukken. In het volgende voor beeld ziet u de beschik bare eigenschappen.
+
+```json
+"config": {  
+    "basics": {  
+        "description": "Customized description with **markdown**, see [more](https://www.microsoft.com).",
+        "subscription": {
+            "constraints": {
+                "validations": [
+                    {
+                        "isValid": "[expression for checking]",
+                        "message": "Please select a valid subscription."
+                    },
+                    {
+                        "permission": "<Resource Provider>/<Action>",
+                        "message": "Must have correct permission to complete this step."
+                    }
+                ]
+            },
+            "resourceProviders": [ "<Resource Provider>" ]
+        },
+        "resourceGroup": {
+            "constraints": {
+                "validations": [
+                    {
+                        "isValid": "[expression for checking]",
+                        "message": "Please select a valid resource group."
+                    }
+                ]
+            },
+            "allowExisting": true
+        },
+        "location": {  
+            "label": "Custom label for location",  
+            "toolTip": "provide a useful tooltip",  
+            "resourceTypes": [ "Microsoft.Compute/virtualMachines" ],
+            "allowedValues": [ "eastus", "westus2" ],  
+            "visible": true  
+        }  
+    }  
+},  
+```
+
+`description`Geef voor een teken reeks met kortings functionaliteit op waarmee uw resource wordt beschreven. Opmaak van meerdere regels en koppelingen worden ondersteund.
+
+Geef voor de `location` Eigenschappen op voor het locatie besturings element dat u wilt overschrijven. Alle eigenschappen die niet worden overschreven, worden ingesteld op hun standaard waarden. `resourceTypes`Hiermee wordt een matrix met teken reeksen geaccepteerd die volledige namen van resource typen bevatten. De locatie opties zijn beperkt tot alleen regio's die ondersteuning bieden voor de resource typen.  `allowedValues`   Hiermee wordt een matrix met de teken reeksen van regio's geaccepteerd. In de vervolg keuzelijst worden alleen de regio's weer gegeven.U kunt zowel `allowedValues`   als instellen  `resourceTypes` . Het resultaat is het snij punt van beide lijsten. De `visible` eigenschap kan ten slotte worden gebruikt om de vervolg keuzelijst locatie voorwaardelijk of volledig uit te scha kelen.  
+
+`subscription`Met de `resourceGroup` elementen en kunt u aanvullende validaties opgeven. De syntaxis voor het opgeven van validaties is identiek aan de aangepaste validatie voor het [tekstvak](microsoft-common-textbox.md). U kunt ook `permission` validaties opgeven voor het abonnement of de resource groep.  
+
+Het besturings element voor abonnementen accepteert een lijst met naam ruimten van de resource provider. U kunt bijvoorbeeld **micro soft. Compute**opgeven. Er wordt een fout bericht weer gegeven wanneer de gebruiker een abonnement selecteert dat geen ondersteuning biedt voor de resource provider. De fout treedt op wanneer de resource provider niet is geregistreerd bij dat abonnement en de gebruiker geen machtiging heeft om de resource provider te registreren.  
+
+Voor het besturings element voor de resource groep is een optie voor `allowExisting` . Wanneer `true` kunnen de gebruikers resource groepen selecteren die al resources hebben. Deze vlag is het meest van toepassing op oplossings sjablonen, waarbij gebruikers standaard gedrag verplichten om een nieuwe of lege resource groep te selecteren. In de meeste andere scenario's is het niet nodig om deze eigenschap op te geven.  
 
 ## <a name="steps"></a>Stappen
 
-De eigenschap Steps kan nul of meer extra stappen bevatten om weer te geven na basis beginselen, die elk een of meer elementen bevatten. U kunt stappen toevoegen per rol of laag van de toepassing die wordt geïmplementeerd. Voeg bijvoorbeeld een stap toe voor invoer van hoofd knooppunten en een stap voor de worker-knoop punten in een cluster.
+De eigenschap Steps bevat geen of meer extra stappen die na de basis beginselen worden weer gegeven. Elke stap bevat een of meer elementen. U kunt stappen toevoegen per rol of laag van de toepassing die wordt geïmplementeerd. Voeg bijvoorbeeld een stap toe voor invoer van hoofd knooppunten en een stap voor de worker-knoop punten in een cluster.
+
+```json
+"steps": [
+    {
+        "name": "demoConfig",
+        "label": "Configuration settings",
+        "elements": [
+          ui-elements-needed-to-create-the-instance
+        ]
+    }
+]
+```
 
 ## <a name="outputs"></a>Uitvoerwaarden
 
@@ -80,9 +169,9 @@ Als u de beschik bare locaties wilt filteren op alleen de locaties die ondersteu
     "handler": "Microsoft.Azure.CreateUIDef",
     "version": "0.1.2-preview",
     "parameters": {
-      "resourceTypes": ["Microsoft.Compute/disks"],
-      "basics": [
-        ...
+        "resourceTypes": ["Microsoft.Compute/disks"],
+        "basics": [
+          ...
 ```  
 
 ## <a name="functions"></a>Functions

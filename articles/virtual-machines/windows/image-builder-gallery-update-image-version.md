@@ -6,13 +6,14 @@ ms.author: cynthn
 ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
-ms.openlocfilehash: ee3e2a224789c899dcfabdbee56b949ea86f0a08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bdae608d573bc411242b4bf66ea033a7df421cfc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82872272"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005698"
 ---
-# <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder"></a>Voor beeld: een nieuwe VM-installatie kopie maken van een bestaande installatie kopie versie met behulp van Azure Image Builder
+# <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder-in-windows"></a>Voor beeld: een nieuwe VM-installatie kopie maken van een bestaande installatie kopie versie met behulp van Azure image builder in Windows
 
 In dit artikel wordt beschreven hoe u een bestaande versie van een installatie kopie in een [Galerie met gedeelde afbeeldingen](shared-image-galleries.md)kunt maken, hoe u deze kunt bijwerken en hoe u deze publiceert als een nieuwe installatie kopie versie naar de galerie.
 

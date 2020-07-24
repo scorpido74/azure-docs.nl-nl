@@ -13,13 +13,13 @@ author: swinarko
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 07/09/2020
-ms.openlocfilehash: 172a2ae863714b54e052819df93f872385b9c77a
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.date: 07/20/2020
+ms.openlocfilehash: 2f8706fa8b272075ec64e2d36475509732914acf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86183338"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003185"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Een SSIS-pakket uitvoeren met de activiteit SSIS-pakket uitvoeren in Azure Data Factory
 
@@ -57,7 +57,7 @@ In deze stap gebruikt u de Data Factory-gebruikers interface of-app om een pijp 
 
 Voer de volgende stappen uit op het tabblad **Algemeen** van de activiteit SSIS-pakket uitvoeren.
 
-   ![Eigenschappen instellen op het tabblad Algemeen](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
+![Eigenschappen instellen op het tabblad Algemeen](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
 
    1. Voer bij **naam**de naam in van de activiteit voor het uitvoeren van SSIS-pakketten.
 
@@ -77,7 +77,7 @@ Voer de volgende stappen uit op het tabblad **Algemeen** van de activiteit SSIS-
 
 Voer de volgende stappen uit op het tabblad **instellingen** van de activiteit voor het uitvoeren van SSIS-pakketten.
 
-   ![Eigenschappen instellen op het tabblad Instellingen-automatisch](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings.png)
+![Eigenschappen instellen op het tabblad Instellingen-automatisch](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings.png)
 
    1. Selecteer voor **Azure-SSIS IR**de aangewezen Azure-SSIS IR om de activiteit voor het uitvoeren van SSIS-pakketten uit te voeren.
 
@@ -103,13 +103,13 @@ Voer de volgende stappen uit op het tabblad **instellingen** van de activiteit v
 
    1. Als uw Azure-SSIS IR niet wordt uitgevoerd of het selectie vakje **hand matige invoer** is ingeschakeld, voert u de paden voor het pakket en de omgeving van SSISDB rechtstreeks in de volgende indelingen in: `<folder name>/<project name>/<package name>.dtsx` en `<folder name>/<environment name>` .
 
-   ![Eigenschappen instellen op het tabblad instellingen-hand matig](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings2.png)
+      ![Eigenschappen instellen op het tabblad instellingen-hand matig](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings2.png)
 
 ##### <a name="package-location-file-system-package"></a>Pakket locatie: bestands systeem (pakket)
 
 **Bestands systeem (pakket)** als uw pakket locatie wordt automatisch geselecteerd als uw Azure-SSIS IR is ingericht zonder SSISDB of u kunt het zelf selecteren. Als deze is geselecteerd, voert u de volgende stappen uit.
 
-   ![Eigenschappen instellen op het tabblad Instellingen-Bestands systeem (pakket)](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings3.png)
+![Eigenschappen instellen op het tabblad Instellingen-Bestands systeem (pakket)](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings3.png)
    
    1. Geef het pakket op dat moet worden uitgevoerd door een UNC-pad (Universal Naming Convention) naar uw pakket bestand (met `.dtsx` ) in het vak **pakket pad** op te geven. U kunt door het pakket bladeren en selecteren door **Bladeren in bestands opslag** te selecteren of het pad hand matig in te voeren. Als u bijvoorbeeld uw pakket opslaat in Azure Files, is het pad `\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx` . 
    
@@ -133,13 +133,13 @@ Voer de volgende stappen uit op het tabblad **instellingen** van de activiteit v
    
    1. Geef de referenties op voor toegang tot uw Logboekmap. Als u de waarden voor uw pakket toegangs referenties eerder hebt ingevoerd (zie hierboven), kunt u ze opnieuw gebruiken door **hetzelfde selectie vakje als toegangs referenties** voor het pakket in te scha kelen. Voer anders de waarden in voor uw toegangs referenties voor logboek registratie in de vakken **domein**, **gebruikers naam**en **wacht woord** . Als u bijvoorbeeld uw logboeken opslaat in Azure Files, is het domein `Azure` , de gebruikers naam `<storage account name>` en het wacht woord `<storage account key>` . U kunt ook geheimen die zijn opgeslagen in uw Azure Key Vault gebruiken als waarden (zie hierboven).
    
-   Voor alle eerder genoemde UNC-paden moet de volledige naam van het bestand kleiner zijn dan 260 tekens. De mapnaam mag niet langer zijn dan 248 tekens.
+Voor alle eerder genoemde UNC-paden moet de volledige naam van het bestand kleiner zijn dan 260 tekens. De mapnaam mag niet langer zijn dan 248 tekens.
 
 ##### <a name="package-location-file-system-project"></a>Pakket locatie: bestands systeem (project)
 
 Als u **Bestands systeem (project)** als uw pakket locatie selecteert, voert u de volgende stappen uit.
 
-   ![Eigenschappen instellen op het tabblad Instellingen-Bestands systeem (project)](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings4.png)
+![Eigenschappen instellen op het tabblad Instellingen-Bestands systeem (project)](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings4.png)
 
    1. Geef het pakket op dat moet worden uitgevoerd door een UNC-pad op te geven naar uw project bestand (met `.ispac` ) in het vak **pad naar project** en een pakket bestand (met `.dtsx` ) uit uw project in het vak **pakket naam** . U kunt door het project bladeren en selecteren door **Bladeren in file storage** te selecteren of het pad hand matig in te voeren. Als u bijvoorbeeld uw project opslaat in Azure Files, is het pad `\\<storage account name>.file.core.windows.net\<file share name>\<project name>.ispac` .
 
@@ -161,19 +161,19 @@ Als u **Bestands systeem (project)** als uw pakket locatie selecteert, voert u d
    
    1. Geef de referenties op voor toegang tot uw Logboekmap. Als u de waarden voor uw pakket toegangs referenties eerder hebt ingevoerd (zie hierboven), kunt u ze opnieuw gebruiken door **hetzelfde selectie vakje als toegangs referenties** voor het pakket in te scha kelen. Voer anders de waarden in voor uw toegangs referenties voor logboek registratie in de vakken **domein**, **gebruikers naam**en **wacht woord** . Als u bijvoorbeeld uw logboeken opslaat in Azure Files, is het domein `Azure` , de gebruikers naam `<storage account name>` en het wacht woord `<storage account key>` . U kunt ook geheimen die zijn opgeslagen in uw Azure Key Vault gebruiken als waarden (zie hierboven).
    
-   Voor alle eerder genoemde UNC-paden moet de volledige naam van het bestand kleiner zijn dan 260 tekens. De mapnaam mag niet langer zijn dan 248 tekens.
+Voor alle eerder genoemde UNC-paden moet de volledige naam van het bestand kleiner zijn dan 260 tekens. De mapnaam mag niet langer zijn dan 248 tekens.
 
 ##### <a name="package-location-embedded-package"></a>Pakket locatie: Inge sloten pakket
 
 Als u **Inge sloten pakket** als uw pakket locatie selecteert, voert u de volgende stappen uit.
 
-   ![Eigenschappen instellen op het tabblad Instellingen-Inge sloten pakket](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings5.png)
+![Eigenschappen instellen op het tabblad Instellingen-Inge sloten pakket](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings5.png)
 
-   1. Sleep uw pakket om het uit te voeren of te **uploaden** vanuit een bestandsmap naar het meegeleverde vak. Uw pakket wordt automatisch gecomprimeerd en Inge sloten in de nettolading van de activiteit. Als u het pakket hebt Inge sloten, kunt u het later **downloaden** om het te bewerken. U kunt ook uw Inge sloten pakket **para meters** door het toe te wijzen aan een pijplijn parameter die in meerdere activiteiten kan worden gebruikt, waardoor u de grootte van de pijplijn lading optimaliseert. 
+   1. Sleep het pakket bestand (met) en `.dtsx` **Upload** het uit een bestandsmap naar het meegeleverde vak. Uw pakket wordt automatisch gecomprimeerd en Inge sloten in de nettolading van de activiteit. Als u het pakket hebt Inge sloten, kunt u het later **downloaden** om het te bewerken. U kunt ook uw Inge sloten pakket **para meters** door het toe te wijzen aan een pijplijn parameter die in meerdere activiteiten kan worden gebruikt, waardoor u de grootte van de pijplijn lading optimaliseert. Het insluiten van Project bestanden (met `.ispac` ) wordt momenteel niet ondersteund. u kunt geen SSIS-para meters/verbindings beheer gebruiken met bereik op project niveau in uw Inge sloten pakketten.
    
-   1. Als uw Inge sloten pakket niet is versleuteld en het gebruik van de taak voor het uitvoeren van een pakket wordt gedetecteerd, wordt het selectie vakje **pakket taak uitvoeren** automatisch ingeschakeld en worden de relevante onderliggende pakketten met de bijbehorende bestandssysteem verwijzingen automatisch toegevoegd zodat u ze ook kunt insluiten. 
+   1. Als uw Inge sloten pakket niet is versleuteld en wij het gebruik van de Execute package-taak (EPT) detecteren, wordt het selectie vakje **pakket taak uitvoeren** automatisch ingeschakeld en worden de onderliggende pakketten waarnaar wordt verwezen door het bestandssysteempad automatisch toegevoegd, zodat u ze ook kunt insluiten.
    
-      Als we het gebruik van de taak voor het uitvoeren van een pakket niet kunnen detecteren, moet u hand matig het selectie vakje **pakket taak uitvoeren** inschakelen en de relevante onderliggende pakketten toevoegen aan het bestands systeem, zodat u deze ook kunt insluiten. Als de onderliggende pakketten SQL Server verwijzingen gebruiken, moet u ervoor zorgen dat de SQL Server toegankelijk is voor uw Azure-SSIS IR.  Het gebruik van project verwijzingen voor onderliggende pakketten wordt momenteel niet ondersteund.
+      Als het gebruik van EPT niet kan worden gedetecteerd, moet u hand matig het selectie vakje **pakket taak uitvoeren** inschakelen en uw onderliggende pakketten toevoegen waarnaar wordt verwezen door het bestandssysteempad een voor een. u kunt ze ook insluiten. Als uw onderliggende pakketten zijn opgeslagen in SQL Server Data Base (MSDB), kunt u ze niet insluiten. u moet er dus voor zorgen dat uw Azure-SSIS IR toegang heeft tot MSDB om ze op te halen met behulp van hun SQL Server verwijzingen. Het insluiten van Project bestanden (met `.ispac` ) wordt momenteel niet ondersteund. u kunt geen op project gebaseerde verwijzingen voor uw onderliggende pakketten gebruiken.
    
    1. Als u het beveiligings niveau **EncryptAllWithPassword** of **EncryptSensitiveWithPassword** hebt gebruikt toen u het pakket hebt gemaakt via SSDT, voert u de waarde voor uw wacht woord in het vak **versleutelings wachtwoord** in. 
    
@@ -189,13 +189,13 @@ Als u **Inge sloten pakket** als uw pakket locatie selecteert, voert u de volgen
    
    1. Geef de referenties op voor toegang tot uw Logboekmap door hun waarden in de vakken **domein**, **gebruikers naam**en **wacht woord** in te voeren. Als u bijvoorbeeld uw logboeken opslaat in Azure Files, is het domein `Azure` , de gebruikers naam `<storage account name>` en het wacht woord `<storage account key>` . U kunt ook geheimen die zijn opgeslagen in uw Azure Key Vault gebruiken als waarden (zie hierboven).
    
-   Voor alle eerder genoemde UNC-paden moet de volledige naam van het bestand kleiner zijn dan 260 tekens. De mapnaam mag niet langer zijn dan 248 tekens.
+Voor alle eerder genoemde UNC-paden moet de volledige naam van het bestand kleiner zijn dan 260 tekens. De mapnaam mag niet langer zijn dan 248 tekens.
 
 ##### <a name="package-location-package-store"></a>Pakket locatie: pakket archief
 
 Als u **pakket archief** als uw pakket locatie selecteert, voert u de volgende stappen uit.
 
-   ![Eigenschappen instellen op het tabblad Instellingen-pakket archief](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings6.png)
+![Eigenschappen instellen op het tabblad Instellingen-pakket archief](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings6.png)
    
    1. Voor de naam van het **pakket archief**selecteert u een bestaande pakket opslag die is gekoppeld aan uw Azure-SSIS IR.
 
@@ -221,49 +221,73 @@ Als u **pakket archief** als uw pakket locatie selecteert, voert u de volgende s
    
    1. Geef de referenties op voor toegang tot uw Logboekmap door hun waarden in de vakken **domein**, **gebruikers naam**en **wacht woord** in te voeren. Als u bijvoorbeeld uw logboeken opslaat in Azure Files, is het domein `Azure` , de gebruikers naam `<storage account name>` en het wacht woord `<storage account key>` . U kunt ook geheimen die zijn opgeslagen in uw Azure Key Vault gebruiken als waarden (zie hierboven).
    
-   Voor alle eerder genoemde UNC-paden moet de volledige naam van het bestand kleiner zijn dan 260 tekens. De mapnaam mag niet langer zijn dan 248 tekens.
+Voor alle eerder genoemde UNC-paden moet de volledige naam van het bestand kleiner zijn dan 260 tekens. De mapnaam mag niet langer zijn dan 248 tekens.
 
 #### <a name="ssis-parameters-tab"></a>Tabblad SSIS-para meters
 
 Voer de volgende stappen uit op het tabblad **SSIS-para meters** van de activiteit voor het uitvoeren van SSIS-pakketten.
 
-   ![Eigenschappen instellen op het tabblad SSIS-para meters](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-ssis-parameters.png)
+![Eigenschappen instellen op het tabblad SSIS-para meters](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-ssis-parameters.png)
 
    1. Als uw Azure-SSIS IR wordt uitgevoerd, wordt **SSISDB** geselecteerd als uw pakket locatie en wordt het selectie vakje **hand matige vermeldingen** op het tabblad **instellingen** uitgeschakeld. de bestaande SSIS-para meters in het geselecteerde project en pakket van SSISDB worden weer gegeven zodat u waarden aan hen kunt toewijzen. Als dat niet het geval is, kunt u ze één voor één invoeren om waarden hand matig toe te wijzen. Zorg ervoor dat deze bestaan en correct zijn ingevoerd voor het slagen van de pakket uitvoering. 
    
    1. Als u het **EncryptSensitiveWithUserKey** -beveiligings niveau hebt gebruikt bij het maken van het pakket via SSDT en het **Bestands systeem (pakket)**, het **Bestands systeem (project)**, een **Inge sloten pakket**of **pakket archief** is geselecteerd als uw pakket locatie, moet u ook uw gevoelige para meters opnieuw invoeren om waarden toe te wijzen aan deze op dit tabblad. 
    
-   Wanneer u waarden toewijst aan uw para meters, kunt u dynamische inhoud toevoegen met behulp van expressies, functies, Data Factory systeem variabelen en Data Factory pijplijn parameters of-variabelen.
+Wanneer u waarden toewijst aan uw para meters, kunt u dynamische inhoud toevoegen met behulp van expressies, functies, Data Factory systeem variabelen en Data Factory pijplijn parameters of-variabelen.
 
-   U kunt ook geheimen die zijn opgeslagen in uw Azure Key Vault als waarden gebruiken. Als u dit wilt doen, schakelt u het selectie vakje **Azure Key kluis** in naast deze. Selecteer of bewerk uw bestaande sleutel kluis gekoppelde service of maak een nieuwe. Selecteer vervolgens de naam en versie van het geheim voor uw waarde. Wanneer u uw Key kluis gekoppelde service maakt of bewerkt, kunt u uw bestaande sleutel kluis selecteren of bewerken of een nieuwe maken. Zorg ervoor dat u Data Factory beheerde identiteits toegang verleent aan uw sleutel kluis als u dit nog niet hebt gedaan. U kunt uw geheim ook rechtstreeks in de volgende indeling invoeren: `<key vault linked service name>/<secret name>/<secret version>` . 
+U kunt ook geheimen die zijn opgeslagen in uw Azure Key Vault als waarden gebruiken. Als u dit wilt doen, schakelt u het selectie vakje **Azure Key kluis** in naast deze. Selecteer of bewerk uw bestaande sleutel kluis gekoppelde service of maak een nieuwe. Selecteer vervolgens de naam en versie van het geheim voor uw waarde. Wanneer u uw Key kluis gekoppelde service maakt of bewerkt, kunt u uw bestaande sleutel kluis selecteren of bewerken of een nieuwe maken. Zorg ervoor dat u Data Factory beheerde identiteits toegang verleent aan uw sleutel kluis als u dit nog niet hebt gedaan. U kunt uw geheim ook rechtstreeks in de volgende indeling invoeren: `<key vault linked service name>/<secret name>/<secret version>` . 
 
 #### <a name="connection-managers-tab"></a>Tabblad verbindings beheer
 
 Voer de volgende stappen uit op het tabblad **verbindings beheer** van de activiteit voor het uitvoeren van SSIS-pakketten.
 
-   ![Eigenschappen instellen op het tabblad verbindings beheer](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers.png)
+![Eigenschappen instellen op het tabblad verbindings beheer](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers.png)
 
    1. Als uw Azure-SSIS IR wordt uitgevoerd, wordt **SSISDB** geselecteerd als uw pakket locatie en wordt het selectie vakje **hand matige vermeldingen** op het tabblad **instellingen** uitgeschakeld, worden de bestaande verbindings beheer in uw geselecteerde project en pakket van SSISDB weer gegeven om waarden aan hun eigenschappen toe te wijzen. Als dat niet het geval is, kunt u ze één voor één invoeren om waarden hand matig toe te wijzen aan hun eigenschappen. Zorg ervoor dat deze bestaan en correct zijn ingevoerd voor het slagen van de pakket uitvoering. 
    
-   1. Als u het beveiligings niveau **EncryptSensitiveWithUserKey** hebt gebruikt toen u het pakket hebt gemaakt via SSDT en **Bestands systeem (pakket)**, een **Bestands systeem (project)**, een **Inge sloten pakket**of **pakket archief** is geselecteerd als uw pakket locatie, moet u ook de eigenschappen van uw gevoelige verbindings beheer opnieuw invoeren om waarden toe te wijzen aan deze op dit tabblad. 
-   
-   Wanneer u waarden toewijst aan de eigenschappen van verbindings beheer, kunt u dynamische inhoud toevoegen met behulp van expressies, functies, Data Factory systeem variabelen en Data Factory pijplijn parameters of-variabelen. 
+      U kunt het juiste **bereik**, de **naam**en **eigenschapnamen** voor verbindings beheer verkrijgen door het pakket te openen dat het bevat op SSDT. Nadat het pakket is geopend, selecteert u de relevante verbindings beheer om de namen en waarden voor alle eigenschappen ervan weer te geven in het venster **Eigenschappen** van SSDT. Met deze informatie kunt u de waarden van eigenschappen van verbindings beheer tijdens runtime onderdrukken. 
 
-   U kunt ook geheimen die zijn opgeslagen in uw Azure Key Vault als waarden gebruiken. Als u dit wilt doen, schakelt u het selectie vakje **Azure Key kluis** in naast deze. Selecteer of bewerk uw bestaande sleutel kluis gekoppelde service of maak een nieuwe. Selecteer vervolgens de naam en versie van het geheim voor uw waarde. Wanneer u uw Key kluis gekoppelde service maakt of bewerkt, kunt u uw bestaande sleutel kluis selecteren of bewerken of een nieuwe maken. Zorg ervoor dat u Data Factory beheerde identiteits toegang verleent aan uw sleutel kluis als u dit nog niet hebt gedaan. U kunt uw geheim ook rechtstreeks in de volgende indeling invoeren: `<key vault linked service name>/<secret name>/<secret version>` . 
+      ![Eigenschappen van verbindings beheer ophalen uit SSDT](media/how-to-invoke-ssis-package-ssis-activity/ssdt-connection-manager-properties.png)
+
+      Bijvoorbeeld, zonder uw oorspronkelijke pakket op SSDT te wijzigen, kunt u de on-premises-to-on-premises gegevens stromen die worden uitgevoerd op SQL Server converteren naar on-premises-naar-Cloud gegevens stromen die worden uitgevoerd op SSIS IR in ADF door de waarden van **ConnectByProxy**, **Connections Tring**en **ConnectUsingManagedIdentity** -eigenschappen in bestaande verbindings beheer tijdens runtime te overschrijven.
+      
+      Deze run-time onderdrukkingen kunnen zelf-Hostende IR (SHIR) inschakelen als proxy voor SSIS IR bij het openen van gegevens on-premises. Zie [Configuring SHIR as a proxy for SSIS IR](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)en Azure SQL database/Managed instance Connections met behulp van het nieuwste MSOLEDBSQL-stuur programma waarmee Azure Active Directory (Aad)-verificatie wordt ingeschakeld met de identiteit voor het uitvoeren [van](https://docs.microsoft.com/sql/integration-services/connection-manager/ole-db-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication)webservers.
+
+      ![Eigenschappen instellen van SSDT op het tabblad verbindings beheer](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers2.png)
+   
+   1. Als u het beveiligings niveau **EncryptSensitiveWithUserKey** hebt gebruikt toen u het pakket hebt gemaakt via SSDT en **Bestands systeem (pakket)**, een **Bestands systeem (project)**, een **Inge sloten pakket**of **pakket archief** is geselecteerd als uw pakket locatie, moet u ook de eigenschappen van uw gevoelige verbindings beheer opnieuw invoeren om waarden toe te wijzen aan deze op dit tabblad. 
+
+Wanneer u waarden toewijst aan de eigenschappen van verbindings beheer, kunt u dynamische inhoud toevoegen met behulp van expressies, functies, Data Factory systeem variabelen en Data Factory pijplijn parameters of-variabelen. 
+
+U kunt ook geheimen die zijn opgeslagen in uw Azure Key Vault als waarden gebruiken. Als u dit wilt doen, schakelt u het selectie vakje **Azure Key kluis** in naast deze. Selecteer of bewerk uw bestaande sleutel kluis gekoppelde service of maak een nieuwe. Selecteer vervolgens de naam en versie van het geheim voor uw waarde. Wanneer u uw Key kluis gekoppelde service maakt of bewerkt, kunt u uw bestaande sleutel kluis selecteren of bewerken of een nieuwe maken. Zorg ervoor dat u Data Factory beheerde identiteits toegang verleent aan uw sleutel kluis als u dit nog niet hebt gedaan. U kunt uw geheim ook rechtstreeks in de volgende indeling invoeren: `<key vault linked service name>/<secret name>/<secret version>` . 
 
 #### <a name="property-overrides-tab"></a>Tabblad onderdrukkingen van eigenschappen
 
 Voer de volgende stappen uit op het tabblad **Eigenschappen onderdrukking** van de activiteit voor het uitvoeren van SSIS-pakketten.
 
-   ![Eigenschappen instellen op het tabblad Eigenschappen onderdrukkingen](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-property-overrides.png)
+![Eigenschappen instellen op het tabblad Eigenschappen onderdrukkingen](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-property-overrides.png)
 
    1. Voer één voor één de paden van bestaande eigenschappen in het geselecteerde pakket in om de waarden hand matig toe te wijzen. Zorg ervoor dat deze bestaan en correct zijn ingevoerd voor het slagen van de pakket uitvoering. Als u bijvoorbeeld de waarde van uw gebruikers variabele wilt overschrijven, voert u het pad in de volgende indeling in: `\Package.Variables[User::<variable name>].Value` . 
+
+      U kunt het juiste eigenschapspad voor elke **pakket eigenschap verkrijgen** door het pakket te openen dat het bevat op SSDT. Nadat het pakket is geopend, selecteert u de eigenschap controle stroom en **configuratie** in het venster **Eigenschappen** van SSDT. Selecteer vervolgens de knop met weglatings tekens (**...**) naast de bijbehorende **configuratie** -eigenschap om de **package configurations-Organizer** te openen die normaal gesp roken wordt gebruikt voor het [maken van pakket configuraties in pakket implementatie model](https://docs.microsoft.com/sql/integration-services/create-package-configurations?view=sql-server-2014). 
+
+      ![Pakket eigenschappen ophalen van SSDT-configurations-eigenschap](media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties.png)
+
+      Schakel op **de package**configurations Organizer het selectie vakje **pakket configuraties inschakelen** in en de knop **toevoegen...** om de **wizard pakket configuratie**te openen. 
+      
+      Selecteer in de **wizard pakket configuratie**het item **XML-configuratie bestand** in het vervolg keuzemenu **configuratie type** en klik op de knop **configuratie-instellingen opgeven** , voer de naam van het configuratie bestand in en selecteer de knop **volgende >** . 
+
+      ![Pakket eigenschappen ophalen uit SSDT-Configuration Organizer](media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties2.png)
+
+      Selecteer ten slotte de eigenschappen van het pakket waarvan u het pad wilt en de knop **volgende >** .  U kunt nu de gewenste paden voor het pakket eigenschap kopiëren & plakken en opslaan in het configuratie bestand. Met deze informatie kunt u de waarden van elke pakket eigenschappen tijdens runtime overschrijven. 
+
+      ![Pakket eigenschappen ophalen van SSDT-configuratie wizard](media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties3.png)
    
    1. Als u het beveiligings niveau **EncryptSensitiveWithUserKey** hebt gebruikt toen u het pakket hebt gemaakt via SSDT en **Bestands systeem (pakket)**, **Bestands systeem (project)**, **Inge sloten pakket**of **pakket archief** is geselecteerd als uw pakket locatie, moet u ook uw gevoelige pakket eigenschappen opnieuw invoeren om waarden toe te wijzen aan hen op dit tabblad. 
    
-   Wanneer u waarden toewijst aan de pakket eigenschappen, kunt u dynamische inhoud toevoegen met behulp van expressies, functies, Data Factory systeem variabelen en Data Factory pijplijn parameters of-variabelen.
+Wanneer u waarden toewijst aan de pakket eigenschappen, kunt u dynamische inhoud toevoegen met behulp van expressies, functies, Data Factory systeem variabelen en Data Factory pijplijn parameters of-variabelen.
 
-   De waarden die zijn toegewezen in configuratie bestanden en op het tabblad **SSIS-para meters** kunnen worden overschreven met behulp van de tabbladen **verbindings beheer** of **eigenschaps onderdrukkingen** . De waarden die zijn toegewezen op het tabblad **verbindings beheer** kunnen ook worden overschreven met behulp van het tabblad **Eigenschappen onderdrukkingen** .
+De waarden die zijn toegewezen in configuratie bestanden en op het tabblad **SSIS-para meters** kunnen worden overschreven met behulp van de tabbladen **verbindings beheer** of **eigenschaps onderdrukkingen** . De waarden die zijn toegewezen op het tabblad **verbindings beheer** kunnen ook worden overschreven met behulp van het tabblad **Eigenschappen onderdrukkingen** .
 
 Selecteer **valideren** op de werk balk om de configuratie van de pijp lijn te valideren. Selecteer om het **rapport pijplijn validatie**te sluiten **>>** .
 

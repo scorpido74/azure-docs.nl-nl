@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/08/2020
-ms.openlocfilehash: bd6d02ce1cd60a6d54047139f06fa59f359f9da9
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: ff0c7001184af58432a7915b3a7df29f900bedec
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202413"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006599"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>MapReduce-taken uitvoeren met Apache Hadoop op HDInsight met behulp van Power shell
 
@@ -25,7 +25,7 @@ Dit document bevat een voor beeld van het gebruik van Azure PowerShell om een Ma
 
 * Een Apache Hadoop cluster in HDInsight. Zie [Apache Hadoop clusters maken met behulp van de Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
-* De Power shell [AZ-module](https://docs.microsoft.com/powershell/azure/overview) is geïnstalleerd.
+* De Power shell [AZ-module](https://docs.microsoft.com/powershell/azure/) is geïnstalleerd.
 
 ## <a name="run-a-mapreduce-job"></a>Een MapReduce-taak uitvoeren
 

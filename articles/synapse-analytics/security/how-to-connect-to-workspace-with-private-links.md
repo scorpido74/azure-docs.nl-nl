@@ -1,5 +1,5 @@
 ---
-title: Verbinding maken met een Azure Synapse-werk ruimte met behulp van persoonlijke koppelingen
+title: Verbinding maken met een Synapse-werk ruimte met behulp van persoonlijke koppelingen
 description: In dit artikel leert u hoe u verbinding kunt maken met uw Azure Synapse-werk ruimte met behulp van persoonlijke koppelingen
 author: RonyMSFT
 ms.service: synapse-analytics
@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0f2e01390a1ddd179e50523a8b5748994524a52e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17636bf993df5105093ca690e36db22493a2472e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85193869"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005970"
 ---
 # <a name="connect-to-your-azure-synapse-workspace-using-private-links-preview"></a>Verbinding maken met uw Azure Synapse-werk ruimte met behulp van persoonlijke koppelingen (preview-versie)
 
@@ -47,7 +47,7 @@ Selecteer **volgende: configuratie>** om door te gaan naar het volgende deel van
 
 Selecteer op het tabblad **configuratie** het **virtuele netwerk** en het **subnet** waarin het persoonlijke eind punt moet worden gemaakt. U moet ook een DNS-record maken die is toegewezen aan het persoonlijke eind punt.
 
-Selecteer **Ja** om te **integreren met een particuliere DNS-zone** om uw persoonlijke eind punt te integreren met een privé-DNS-zone. Als u geen privé-DNS-zone hebt die aan uw VNet is gekoppeld, wordt een nieuwe privé-DNS-zone gemaakt. Selecteer **controleren + maken** wanneer u klaar bent.
+Selecteer **Ja** om te **integreren met een particuliere DNS-zone** om uw persoonlijke eind punt te integreren met een privé-DNS-zone. Als u geen privé-DNS-zone hebt die is gekoppeld aan uw Microsoft Azure Virtual Network, wordt er een nieuwe privé-DNS-zone gemaakt. Selecteer **controleren + maken** wanneer u klaar bent.
 
 ![Details van abonnement en regio selecteren](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-4.png)
 
@@ -57,7 +57,7 @@ Wanneer de implementatie is voltooid, opent u de Azure Synapse-werk ruimte in Az
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [Managed Workspace VNet](./synapse-workspace-managed-vnet.md)
+Meer informatie over [Managed workspace Virtual Network](./synapse-workspace-managed-vnet.md)
 
 Meer informatie over [beheerde privé-eindpunten](./synapse-workspace-managed-private-endpoints.md)
 

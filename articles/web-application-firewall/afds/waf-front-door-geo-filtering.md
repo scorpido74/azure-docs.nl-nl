@@ -8,13 +8,14 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: f620ced1bc859e5c824b45839a21ab21d0244d89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fcd7a0fe60639bbb17661a906d15136996b325e4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83747777"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005443"
 ---
-# <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Wat is geo-filteren op een domein voor Azure Front Door?
+# <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door-service"></a>Wat is geo-filtering voor een domein voor de Azure front-deur service?
 
 Standaard reageert AFD op gebruikersaanvragen, ongeacht de locatie van deze gebruiker. In sommige gevallen wilt u echter mogelijk de toegang tot uw webtoepassingen beperken op basis van land/regio. Met de WAF-service (Web Application firewall) aan de voor deur kunt u een beleid definiëren met aangepaste toegangs regels voor een specifiek pad op uw eind punt om toegang toe te staan of te blok keren voor bepaalde landen/regio's. 
 
@@ -56,7 +57,7 @@ U kunt een beleid voor geofiltering configureren voor uw voor deur door gebruik 
 | BW | Botswana|
 | BY | Belarus|
 | BZ | Belize|
-| CA | Canada|
+| CA (consistentie en beschikbaarheid) | Canada|
 | CD | Democratische Republiek Congo|
 | CF | Centraal-Afrikaanse Republiek|
 | CH | Zwitserland|
@@ -144,7 +145,7 @@ U kunt een beleid voor geofiltering configureren voor uw voor deur door gebruik 
 | MX | Mexico|
 | MY | Maleisië|
 | MZ | Mozambique|
-| NA | Namibië|
+| N.v.t. | Namibië|
 | NE | Niger|
 | NG | Nigeria|
 | NI | Nicaragua|

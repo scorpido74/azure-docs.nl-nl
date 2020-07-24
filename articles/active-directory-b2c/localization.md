@@ -10,14 +10,14 @@ ms.topic: reference
 ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 69368ecd7234912bcaf5eb606545f62ddb7b30a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84850b7d44033a2759c51c5c6b9c53d1c945a99d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204180"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005375"
 ---
-# <a name="localization"></a>Lokalisatie
+# <a name="localization-element"></a>Lokalisatie-element
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -45,7 +45,7 @@ Het **lokalisatie** -element bevat de volgende kenmerken:
 
 Het **lokalisatie** -element bevat de volgende XML-elementen
 
-| Element | Instanties | Description |
+| Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
 | SupportedLanguages | 1: n | Lijst met ondersteunde talen. |
 | LocalizedResources | 0: n | Lijst met gelokaliseerde resources. |
@@ -63,7 +63,7 @@ Het **SupportedLanguages** -element bevat de volgende kenmerken:
 
 Het **SupportedLanguages** -element bevat de volgende elementen:
 
-| Element | Instanties | Description |
+| Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
 | SupportedLanguage | 1: n | Geeft inhoud weer die voldoet aan een taal code per RFC 5646-Tags voor het identificeren van talen. |
 
@@ -77,7 +77,7 @@ Het **LocalizedResources** -element bevat de volgende kenmerken:
 
 Het **LocalizedResources** -element bevat de volgende elementen:
 
-| Element | Instanties | Description |
+| Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
 | LocalizedCollections | 0: n | Definieert volledige verzamelingen in verschillende cult uren. Een verzameling kan een verschillend aantal items en verschillende teken reeksen voor verschillende cult uren hebben. Voor beelden van verzamelingen zijn de opsommingen die worden weer gegeven in claim typen. Een lijst met landen/regio's wordt bijvoorbeeld weer gegeven aan de gebruiker in een vervolg keuzelijst. |
 | LocalizedStrings | 0: n | Hiermee worden alle teken reeksen gedefinieerd, met uitzonde ring van de teken reeksen die in verzamelingen worden weer gegeven, in verschillende cult uren. |
@@ -86,7 +86,7 @@ Het **LocalizedResources** -element bevat de volgende elementen:
 
 Het **LocalizedCollections** -element bevat de volgende elementen:
 
-| Element | Instanties | Description |
+| Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
 | LocalizedCollection | 1: n | Lijst met ondersteunde talen. |
 
@@ -102,7 +102,7 @@ Het **LocalizedCollection** -element bevat de volgende kenmerken:
 
 Het **LocalizedCollection** -element bevat de volgende elementen:
 
-| Element | Instanties | Description |
+| Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
 | Item | 0: n | Hiermee definieert u een beschik bare optie voor de gebruiker om te selecteren voor een claim in de gebruikers interface, zoals een waarde in een vervolg keuzelijst. |
 
@@ -138,7 +138,7 @@ In het volgende voor beeld ziet u het gebruik van het element **LocalizedCollect
 
 Het **LocalizedStrings** -element bevat de volgende elementen:
 
-| Element | Instanties | Description |
+| Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
 | LocalizedString | 1: n | Een gelokaliseerde teken reeks. |
 

@@ -7,11 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: victorh
-ms.openlocfilehash: 493ed1a31a23366a90b80d3ab510218c8dce0e9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40f0195ced375da09891eb577bd81f36b2f37cba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74186640"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005545"
 ---
 # <a name="configure-a-web-application-firewall-policy-using-azure-powershell"></a>Een firewall beleid voor webtoepassingen configureren met behulp van Azure PowerShell
 
@@ -28,7 +29,7 @@ Voordat u begint met het instellen van een beleid voor frequentie limieten, stel
 
 Azure PowerShell voorziet in een set van cmdlets die gebruikmaken van het [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)-model om uw Azure-resources te beheren. 
 
-U kunt [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) op uw lokale computer installeren en in elke PowerShell-sessie gebruiken. Volg de instructies op de pagina om u aan te melden met uw Azure-referenties en de AZ Power shell-module te installeren.
+U kunt [Azure PowerShell](https://docs.microsoft.com/powershell/azure/) op uw lokale computer installeren en in elke PowerShell-sessie gebruiken. Volg de instructies op de pagina om u aan te melden met uw Azure-referenties en de AZ Power shell-module te installeren.
 
 #### <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 

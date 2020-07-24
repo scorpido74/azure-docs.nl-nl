@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/01/2020
-ms.openlocfilehash: be206b312394eab6367f179872c8c36b7f4f3d44
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: eaddae04c198742007947831046139d80828534b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083216"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006582"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>HDInsight-clusters aanpassen met Boots trap
 
@@ -48,7 +48,7 @@ Zie [HDInsight-clusters aanpassen met script Action (Linux)](hdinsight-hadoop-cu
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Als u Power shell gebruikt, hebt u de [AZ-module](https://docs.microsoft.com/powershell/azure/overview)nodig.
+* Als u Power shell gebruikt, hebt u de [AZ-module](https://docs.microsoft.com/powershell/azure/)nodig.
 
 ## <a name="use-azure-powershell"></a>Azure PowerShell gebruiken
 

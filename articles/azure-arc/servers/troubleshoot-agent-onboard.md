@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 07/10/2020
+ms.date: 07/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 37f99ade366a73cb96caf55a562a92476223eb6b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 46096e1f3f4266e9c070bd1d67f328241163126b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261798"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004542"
 ---
 # <a name="troubleshoot-the-connected-machine-agent-connection-issues"></a>Problemen met de verbindings problemen van de verbonden computer agent oplossen
 
@@ -48,6 +48,9 @@ Hier volgt een voor beeld van de opdracht om uitgebreide logboek registratie in 
 
 Hier volgt een voor beeld van de opdracht om uitgebreide logboek registratie in te scha kelen met de verbonden machine agent voor Linux wanneer een interactieve installatie wordt uitgevoerd.
 
+>[!NOTE]
+>U moet toegangs machtigingen voor het *hoofd* hebben op Linux-machines om **azcmagent**uit te voeren.
+
 ```
 azcmagent connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID" --verbose
 ```
@@ -73,12 +76,15 @@ De volgende tabel bevat enkele van de bekende fouten en suggesties voor het oplo
 |--------|------|---------------|---------|
 |Kan de apparaat stroom voor het verificatie token niet ophalen |`Error occurred while sending request for Device Authorization Code: Post https://login.windows.net/fb84ce97-b875-4d12-b031-ef5e7edf9c8e/oauth2/devicecode?api-version=1.0:  dial tcp 40.126.9.7:443: connect: network is unreachable.` |Kan `login.windows.net` eind punt niet bereiken | Controleer de verbinding met het eind punt. |
 |Kan de apparaat stroom voor het verificatie token niet ophalen |`Error occurred while sending request for Device Authorization Code: Post https://login.windows.net/fb84ce97-b875-4d12-b031-ef5e7edf9c8e/oauth2/devicecode?api-version=1.0:  dial tcp 40.126.9.7:443: connect: network is Forbidden`. |De toegang tot het eind punt wordt geblokkeerd door de proxy of firewall `login.windows.net` . | Controleer de verbinding met het eind punt en wordt deze niet geblokkeerd door een firewall of proxy server. |
+|Kan de apparaat stroom voor het verificatie token niet ophalen  |`Error occurred while sending request for Device Authorization Code: Post https://login.windows.net/fb84ce97-b875-4d12-b031-ef5e7edf9c8e/oauth2/devicecode?api-version=1.0:  dial tcp lookup login.windows.net: no such host`. | Groepsbeleid-object *computer configuratie \ Beheersjablonen \ systeem \ gebruikers profielen \ gebruikers profielen verwijderen die ouder zijn dan het opgegeven aantal dagen bij het opnieuw opstarten van het systeem* is ingeschakeld. | Controleer of het groeps beleidsobject is ingeschakeld en het doel heeft van de betreffende computer. Zie voet noot <sup>[1](#footnote1)</sup> voor meer informatie. |
 |Kan geen autorisatie token verkrijgen van de SPN |`Failed to execute the refresh request. Error = 'Post https://login.windows.net/fb84ce97-b875-4d12-b031-ef5e7edf9c8e/oauth2/token?api-version=1.0: Forbidden'` |De toegang tot het eind punt wordt geblokkeerd door de proxy of firewall `login.windows.net` . |Controleer de verbinding met het eind punt en wordt deze niet geblokkeerd door een firewall of proxy server. |
 |Kan geen autorisatie token verkrijgen van de SPN |`Invalid client secret is provided` |Onjuist of ongeldig Service-Principal Secret. |Controleer het geheim van de Service-Principal. |
 | Kan geen autorisatie token verkrijgen van de SPN |`Application with identifier 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' was not found in the directory 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'. This can happen if the application has not been installed by the administrator of the tenant or consented to by any user in the tenant` |Onjuiste Service-Principal en/of Tenant-ID. |Controleer de Service-Principal en/of de Tenant-ID.|
 |Reactie van ARM-resource ophalen |`The client 'username@domain.com' with object id 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx' does not have authorization to perform action 'Microsoft.HybridCompute/machines/read' over scope '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.HybridCompute/machines/MSJC01' or the scope is invalid. If access was recently granted, please refresh your credentials."}}" Status Code=403` |Verkeerde referenties en/of machtigingen |Controleer of de service-principal lid is van de voor bereide rol **Azure connectd machine** . |
 |Kan de ARM-resource niet AzcmagentConnect |`The subscription is not registered to use namespace 'Microsoft.HybridCompute'` |Azure-resource providers zijn niet geregistreerd. |Registreer de [resource providers](./agent-overview.md#register-azure-resource-providers). |
 |Kan de ARM-resource niet AzcmagentConnect |`Get https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.HybridCompute/machines/MSJC01?api-version=2019-03-18-preview:  Forbidden` |De toegang tot het eind punt wordt geblokkeerd door de proxy server of firewall `management.azure.com` . |Controleer de verbinding met het eind punt en wordt deze niet geblokkeerd door een firewall of proxy server. |
+
+<a name="footnote1"></a><sup>1</sup> Als dit groeps beleidsobject is ingeschakeld en van toepassing is op machines met de verbonden machine agent, wordt het gebruikers profiel verwijderd dat is gekoppeld aan het ingebouwde account dat is opgegeven voor de *himds* -service. Als gevolg hiervan wordt het verificatie certificaat dat wordt gebruikt om te communiceren met de service die in het lokale certificaat archief gedurende 30 dagen in de cache is opgeslagen, ook verwijderd. Voor de limiet van 30 dagen wordt een poging gedaan om het certificaat te vernieuwen. Volg de stappen voor het [opheffen van de registratie van de machine](manage-agent.md#unregister-machine) en Registreer deze opnieuw bij de service die wordt uitgevoerd om dit probleem op te lossen `azcmagent connect` .
 
 ## <a name="next-steps"></a>Volgende stappen
 

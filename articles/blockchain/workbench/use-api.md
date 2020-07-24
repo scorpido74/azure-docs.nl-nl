@@ -4,12 +4,12 @@ description: Scenario's voor het gebruik van de preview-versie van Azure Block C
 ms.date: 03/05/2020
 ms.topic: how-to
 ms.reviewer: brendal
-ms.openlocfilehash: 7c96e45c8bcc9834df7ef2a0b2a59f53fd8315cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 696f1f2f96034f7a044f6a39182774c02804518f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85210059"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003063"
 ---
 # <a name="using-the-azure-blockchain-workbench-preview-rest-api"></a>De preview-versie van Azure Block Chain Workbench gebruiken REST API
 
@@ -32,7 +32,7 @@ Block Chain Workbench-Api's worden geopend via een eind punt voor uw implementat
 
 Aanvragen voor de Block Chain Workbench REST API worden beveiligd met Azure Active Directory (Azure AD).
 
-Voor het maken van een geverifieerde aanvraag voor de REST-Api's, vereist de client code verificatie met geldige referenties voordat u de API kunt aanroepen. Verificatie wordt gecoördineerd tussen de verschillende actoren van Azure AD en biedt uw client een [toegangs token](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#access-token) als bewijs van de verificatie. Het token wordt vervolgens verzonden in de HTTP-autorisatie-header van REST API-aanvragen. Zie [Azure Active Directory voor ontwikkel aars voor](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)meer informatie over Azure AD-verificatie.
+Voor het maken van een geverifieerde aanvraag voor de REST-Api's, vereist de client code verificatie met geldige referenties voordat u de API kunt aanroepen. Verificatie wordt gecoördineerd tussen de verschillende actoren van Azure AD en biedt uw client een [toegangs token](../../active-directory/develop/developer-glossary.md#access-token) als bewijs van de verificatie. Het token wordt vervolgens verzonden in de HTTP-autorisatie-header van REST API-aanvragen. Zie [Azure Active Directory voor ontwikkel aars voor](../../active-directory/develop/index.yml)meer informatie over Azure AD-verificatie.
 
 Raadpleeg [rest API](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/rest-api-samples) voor beelden voor voor beelden van verificatie.
 
@@ -44,7 +44,7 @@ Als u met Workbench Api's wilt testen of experimenteren, kunt u [postman](https:
 
 U gebruikt twee API-aanroepen om een Block Chain Workbench-toepassing te maken. Deze methode kan alleen worden uitgevoerd door gebruikers die Workbench beheerders zijn.
 
-Gebruik de [API-berichten](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/applicationspost) om het JSON-bestand van de toepassing te uploaden en een toepassings-id op te halen.
+Gebruik de [API-berichten](/rest/api/azure-blockchain-workbench/applications/applicationspost) om het JSON-bestand van de toepassing te uploaden en een toepassings-id op te halen.
 
 ### <a name="applications-post-request"></a>Sollicitatie POST-aanvraag
 
@@ -70,7 +70,7 @@ Content-Type: "application/json"
 
 ### <a name="contract-code-post-request"></a>POST-aanvraag contract code
 
-Gebruik de [contract code](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/contractcodepost) van de toepassing post-API door de toepassings-id door te geven voor het uploaden van het bestand met de code ring van de toepassing. De payload kan één bestand met een volheid zijn of een zip-bestand met volheid-bestanden.
+Gebruik de [contract code](/rest/api/azure-blockchain-workbench/applications/contractcodepost) van de toepassing post-API door de toepassings-id door te geven voor het uploaden van het bestand met de code ring van de toepassing. De payload kan één bestand met een volheid zijn of een zip-bestand met volheid-bestanden.
 
 Vervang de volgende waarden:
 
@@ -98,7 +98,7 @@ Content-Type: "application/json"
 
 ## <a name="assign-roles-to-users"></a>Rollen toewijzen aan gebruikers
 
-Gebruik de [functie toewijzingen van toepassingen post-API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/roleassignmentspost) door de toepassings-id, gebruikers-id en toepassingsrol-id door te geven om een gebruiker-to-Role-toewijzing in de opgegeven Block Chain-toepassing te maken. Deze methode kan alleen worden uitgevoerd door gebruikers die Workbench beheerders zijn.
+Gebruik de [functie toewijzingen van toepassingen post-API](/rest/api/azure-blockchain-workbench/applications/roleassignmentspost) door de toepassings-id, gebruikers-id en toepassingsrol-id door te geven om een gebruiker-to-Role-toewijzing in de opgegeven Block Chain-toepassing te maken. Deze methode kan alleen worden uitgevoerd door gebruikers die Workbench beheerders zijn.
 
 ### <a name="role-assignments-post-request"></a>Roltoewijzingen POST-aanvraag
 
@@ -132,7 +132,7 @@ HTTP/1.1 200
 
 ## <a name="list-applications"></a>Lijst met toepassingen weergeven
 
-Gebruik de [apps Get API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/applicationsget) om alle Block Chain Workbench-toepassingen voor de gebruiker op te halen. In dit voor beeld heeft de aangemelde gebruiker toegang tot twee toepassingen:
+Gebruik de [apps Get API](/rest/api/azure-blockchain-workbench/applications/applicationsget) om alle Block Chain Workbench-toepassingen voor de gebruiker op te halen. In dit voor beeld heeft de aangemelde gebruiker toegang tot twee toepassingen:
 
 - [Asset overboeking](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer/readme.md)
 - [Koel transport](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/refrigerated-transportation/readme.md)
@@ -180,7 +180,7 @@ Content-type: application/json
 
 ## <a name="list-workflows-for-an-application"></a>Lijst met werkstromen voor een toepassing weergeven
 
-Gebruik [toepassingen werk stromen API ophalen](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/workflowsget) om een lijst weer te geven met alle werk stromen van een opgegeven Block Chain-toepassing waartoe een gebruiker toegang heeft in Block Chain Workbench. Elke blockchain-toepassing heeft een of meer werkstromen en elke werkstroom heeft nul of meer exemplaren van slimme contracten. Voor een Block Chain-client toepassing die slechts één werk stroom heeft, wordt u aangeraden de stroom voor gebruikers ervaring over te slaan waarmee gebruikers de juiste werk stroom kunnen selecteren.
+Gebruik [toepassingen werk stromen API ophalen](/rest/api/azure-blockchain-workbench/applications/workflowsget) om een lijst weer te geven met alle werk stromen van een opgegeven Block Chain-toepassing waartoe een gebruiker toegang heeft in Block Chain Workbench. Elke blockchain-toepassing heeft een of meer werkstromen en elke werkstroom heeft nul of meer exemplaren van slimme contracten. Voor een Block Chain-client toepassing die slechts één werk stroom heeft, wordt u aangeraden de stroom voor gebruikers ervaring over te slaan waarmee gebruikers de juiste werk stroom kunnen selecteren.
 
 ### <a name="application-workflows-request"></a>Aanvraag voor toepassings werk stromen
 
@@ -214,7 +214,7 @@ Content-type: application/json
 
 ## <a name="create-a-contract-instance"></a>Een contract exemplaar maken
 
-Gebruik [contracten v2 post-API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/contractsv2/contractpost) om een nieuw exemplaar van het slimme contract te maken voor een werk stroom. Gebruikers kunnen alleen een nieuw intelligent contract exemplaar maken als de gebruiker is gekoppeld aan een toepassingsrol, waarmee een info contract exemplaar voor de werk stroom kan worden gestart.
+Gebruik [contracten v2 post-API](/rest/api/azure-blockchain-workbench/contractsv2/contractpost) om een nieuw exemplaar van het slimme contract te maken voor een werk stroom. Gebruikers kunnen alleen een nieuw intelligent contract exemplaar maken als de gebruiker is gekoppeld aan een toepassingsrol, waarmee een info contract exemplaar voor de werk stroom kan worden gestart.
 
 > [!NOTE]
 > In dit voor beeld wordt versie 2 van de API gebruikt. Versie 2-contract-Api's bieden meer granulatie voor de gekoppelde ProvisioningStatus velden.
@@ -477,4 +477,4 @@ Content-type: application/json
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor naslag informatie over Block Chain Workbench-Api's de [Naslag Gids voor Azure Block Chain Workbench rest API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench).
+Zie voor naslag informatie over Block Chain Workbench-Api's de [Naslag Gids voor Azure Block Chain Workbench rest API](/rest/api/azure-blockchain-workbench).

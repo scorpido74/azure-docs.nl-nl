@@ -3,12 +3,12 @@ title: Back-up van Windows-systeem status maken in azure
 description: Meer informatie over het maken van een back-up van de systeem status van Windows Server-en/of Windows-computers naar Azure.
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: 4319e03f9673baa2be01c1650ac1929204741087
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ea38b76d9a8b7b8ccc1898ed9450177da2cb2458
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611438"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003732"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>Back-up van Windows-systeem status maken in azure
 
@@ -40,7 +40,7 @@ Wanneer u een Recovery Services-kluis maakt, zorg er dan voor dat de opslagredun
 
     ![keuzes bij opslagconfiguratie](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
 
-    Uw kluis heeft standaard geografisch redundante opslag. Als Azure uw primaire eindpunt is voor back-upopslag, blijf dan **Geografisch redundant** gebruiken. Als Azure niet uw primaire eindpunt is voor back-upopslag, kiest u **Lokaal redundant**, zodat u de kosten voor Azure-opslag verlaagt. U vindt meer informatie over de opties voor [geografisch redundante](../storage/common/storage-redundancy-grs.md) en [lokaal redundante ](../storage/common/storage-redundancy-lrs.md) opslag in dit [overzicht van opslagredundantie](../storage/common/storage-redundancy.md).
+    Uw kluis heeft standaard geografisch redundante opslag. Als Azure uw primaire eindpunt is voor back-upopslag, blijf dan **Geografisch redundant** gebruiken. Als Azure niet uw primaire eindpunt is voor back-upopslag, kiest u **Lokaal redundant**, zodat u de kosten voor Azure-opslag verlaagt. U vindt meer informatie over de opties voor [geografisch redundante](../storage/common/storage-redundancy.md) en [lokaal redundante ](../storage/common/storage-redundancy.md) opslag in dit [overzicht van opslagredundantie](../storage/common/storage-redundancy.md).
 
 Nu u een kluis hebt gemaakt, configureert u deze voor het maken van een back-up van de Windows-systeem status.
 
@@ -174,7 +174,7 @@ Gebruik de Microsoft Azure Recovery Services-agent om de eerste back-up uit te v
 
 5. Klik op **Sluiten** om de wizard te sluiten. Als u de wizard sluit voordat het back-upproces is voltooid, blijft de wizard op de achtergrond aanwezig.
     > [!NOTE]
-    > De MARS-agent activeert SFC/verifyonly als onderdeel van de voor controle voor elke systeem status back-up. Dit is om ervoor te zorgen dat bestanden waarvan een back-up is gemaakt als onderdeel van de systeem status, de juiste versies hebben die overeenkomen met de Windows-versie. Meer informatie over System File Checker (SFC) vindt u in [dit artikel](https://docs.microsoft.com/windows-server/administration/windows-commands/sfc).
+    > De MARS-agent activeert SFC/verifyonly als onderdeel van de voor controle voor elke systeem status back-up. Dit is om ervoor te zorgen dat bestanden waarvan een back-up is gemaakt als onderdeel van de systeem status, de juiste versies hebben die overeenkomen met de Windows-versie. Meer informatie over System File Checker (SFC) vindt u in [dit artikel](/windows-server/administration/windows-commands/sfc).
     >
 
 Nadat de eerste back-up is voltooid, wordt de status **Taak voltooid** weergegeven in de back-upconsole.

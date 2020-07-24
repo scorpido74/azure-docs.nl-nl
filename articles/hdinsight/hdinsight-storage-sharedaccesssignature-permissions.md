@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: 3756e7d1f58c37038347888a21d98326cd4eb71f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 8ab181eb72b5a3ab54ad8dba19d23288926b8969
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087449"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006310"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Azure Storage Shared Access Signatures gebruiken om de toegang tot gegevens in HDInsight te beperken
 
@@ -31,7 +31,7 @@ HDInsight heeft volledige toegang tot de gegevens in de Azure Storage accounts d
 
 * Een bestaande [opslag container](../storage/blobs/storage-quickstart-blobs-portal.md).  
 
-* Als u Power shell gebruikt, hebt u de [AZ-module](https://docs.microsoft.com/powershell/azure/overview)nodig.
+* Als u Power shell gebruikt, hebt u de [AZ-module](https://docs.microsoft.com/powershell/azure/)nodig.
 
 * Als u Azure CLI wilt gebruiken en u deze nog niet hebt geïnstalleerd, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
@@ -211,7 +211,7 @@ Mogelijk moet u uitvoeren `pip install --upgrade azure-storage` als het fout ber
 
 3. Selecteer **instellingen** en voeg waarden toe voor de volgende vermeldingen:
 
-    |Item |Description |
+    |Item |Beschrijving |
     |---|---|
     |StorageConnectionString|De connection string voor het opslag account waarvoor u een opgeslagen beleid en SA'S wilt maken. De notatie moet zijn `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey` als `myaccount` de naam van uw opslag account en `mykey` de sleutel voor het opslag account is.|
     |ContainerName|De container in het opslag account waartoe u de toegang wilt beperken.|

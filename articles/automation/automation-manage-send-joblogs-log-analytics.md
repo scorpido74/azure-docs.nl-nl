@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 05/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0c8863615446f8b14043cd7bd13e529b7efa1e46
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 2fe6cbdbcb0cf5b5c28d34f2059a2b070b059566
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186194"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004746"
 ---
 # <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>Azure Automation-taakgegevens doorsturen naar Azure Monitor-logboeken
 
@@ -28,7 +28,7 @@ Azure Automation kunt de status van de runbook-taak en taak stromen verzenden na
 
 Als u uw Automation-logboeken wilt gaan verzenden naar Azure Monitor-logboeken, hebt u het volgende nodig:
 
-* De nieuwste versie van [Azure PowerShell](/powershell/azureps-cmdlets-docs/).
+* De nieuwste versie van [Azure PowerShell](/powershell/azure/).
 * Een Log Analytics-werkruimte. Zie [aan de slag met Azure monitor-logboeken](../azure-monitor/overview.md)voor meer informatie.
 * De resource-ID voor uw Azure Automation-account.
 

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: timlt
-ms.openlocfilehash: 2a6650cac975c575415a329361da00d4fbfcaa9d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64f91263154f7e65238acdcef9d97e5f2d09aad5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68965119"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006019"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000-serie: een Hybrid Cloud Storage oplossing
 
@@ -59,7 +60,7 @@ De Microsoft Azure StorSimple oplossing omvat de volgende onderdelen:
 * **StorSimple Cloud Appliance** , ook wel bekend als het virtuele StorSimple, is dit een software versie van het StorSimple-apparaat dat de architectuur en de meeste mogelijkheden van het fysieke Hybrid Storage-apparaat repliceert. De StorSimple Cloud Appliance wordt uitgevoerd op één knoop punt in een virtuele Azure-machine. Premium virtuele apparaten, die profiteren van Azure Premium Storage, zijn beschikbaar in update 2 en hoger.
 * **StorSimple Apparaatbeheer-service** : een uitbrei ding van de Azure Portal waarmee u een StorSimple-apparaat of StorSimple Cloud Appliance kunt beheren vanuit één webinterface. U kunt de StorSimple Apparaatbeheer-service gebruiken voor het maken en beheren van services, het weer geven en beheren van apparaten, het weer geven van waarschuwingen, het beheren van volumes en het weer geven en beheren van back-upbeleid en de back-catalogus.
 * **Windows PowerShell voor StorSimple** : een opdracht regel interface die u kunt gebruiken om het StorSimple-apparaat te beheren. Windows PowerShell voor StorSimple beschikt over functies waarmee u uw StorSimple-apparaat kunt registreren, de netwerk interface op uw apparaat kunt configureren, bepaalde soorten updates kunt installeren, het apparaat moet oplossen door toegang te krijgen tot de ondersteunings sessie en de apparaatstatus te wijzigen. U hebt toegang tot Windows PowerShell voor StorSimple door verbinding te maken met de seriële console of door Windows Power shell Remoting te gebruiken.
-* **Azure PowerShell StorSimple-cmdlets** : een verzameling Windows Power shell-cmdlets waarmee u taken op service niveau en migratie kunt automatiseren vanaf de opdracht regel. Ga naar de [cmdlet-verwijzing](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0#azure)voor meer informatie over de Azure PowerShell-cmdlets voor StorSimple.
+* **Azure PowerShell StorSimple-cmdlets** : een verzameling Windows Power shell-cmdlets waarmee u taken op service niveau en migratie kunt automatiseren vanaf de opdracht regel. Ga naar de [cmdlet-verwijzing](/powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0#azure)voor meer informatie over de Azure PowerShell-cmdlets voor StorSimple.
 * **StorSimple Snapshot Manager** : een MMC-module die gebruikmaakt van volume groepen en de Windows-Volume Shadow Copy service voor het genereren van toepassings consistente back-ups. Daarnaast kunt u StorSimple Snapshot Manager gebruiken om back-upschemas te maken en volumes te klonen of te herstellen.
 * **StorSimple-adapter voor share point** : een hulp programma waarmee Microsoft Azure StorSimple opslag en gegevens beveiliging op transparante wijze kan worden uitgebreid naar share Point server-farms, terwijl StorSimple-opslag kan worden weer gegeven en beheerd vanuit de portal voor Centraal beheer van share point.
 
@@ -128,7 +129,7 @@ U hebt toegang tot Windows PowerShell voor StorSimple vanaf een seriële console
 Ga voor meer informatie naar [gebruik Windows PowerShell voor StorSimple om uw apparaat te beheren](storsimple-8000-windows-powershell-administration.md).
 
 ## <a name="azure-powershell-storsimple-cmdlets"></a>Azure PowerShell StorSimple-cmdlets
-De Azure PowerShell StorSimple-cmdlets zijn een verzameling Windows Power shell-cmdlets waarmee u taken op service niveau en migratie kunt automatiseren vanaf de opdracht regel. Ga naar de [cmdlet-verwijzing](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0)voor meer informatie over de Azure PowerShell-cmdlets voor StorSimple.
+De Azure PowerShell StorSimple-cmdlets zijn een verzameling Windows Power shell-cmdlets waarmee u taken op service niveau en migratie kunt automatiseren vanaf de opdracht regel. Ga naar de [cmdlet-verwijzing](/powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0)voor meer informatie over de Azure PowerShell-cmdlets voor StorSimple.
 
 ## <a name="storsimple-snapshot-manager"></a>StorSimple Snapshot Manager
 StorSimple Snapshot Manager is een MMC-module (micro soft Management Console) die u kunt gebruiken voor het maken van consistente, tijdgebonden back-upkopieën van lokale en Cloud gegevens. De module wordt uitgevoerd op een Windows Server-host. U kunt StorSimple Snapshot Manager gebruiken voor het volgende:
@@ -257,7 +258,7 @@ Hieronder volgt een lijst met andere software die wordt gebruikt met StorSimple 
 Voordat u uw Microsoft Azure StorSimple-oplossing implementeert, wordt u aangeraden de volgende voor waarden en definities te bekijken.
 
 ### <a name="key-terms-and-definitions"></a>Belangrijkste termen en definities
-| Term (acroniem of afkorting) | Description |
+| Term (acroniem of afkorting) | Beschrijving |
 | --- | --- |
 | Access Control Record (ACR) |Een record die is gekoppeld aan een volume op uw Microsoft Azure StorSimple-apparaat dat bepaalt welke hosts er verbinding mee kunnen maken. De bepaling is gebaseerd op de iSCSI Qualified Name (IQN) van de hosts (opgenomen in de ACR) die verbinding maken met uw StorSimple-apparaat. |
 | AES-256 |Een 256-bits Advanced Encryption Standard (AES)-algoritme voor het versleutelen van gegevens tijdens het verplaatsen van en naar de Cloud. |

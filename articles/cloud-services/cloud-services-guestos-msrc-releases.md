@@ -10,21 +10,74 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 6/12/2020
+ms.date: 7/21/2020
 ms.author: yohaddad
-ms.openlocfilehash: 6cde6470a8e533879de72307b8f00c70f9f165a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04e75d108b9f518311ad19b2f9027dd0ad7e9e88
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737458"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002876"
 ---
 # <a name="azure-guest-os"></a>Azure-gast besturingssysteem
 In de volgende tabellen ziet u de micro soft Security Response Center-updates (MSRC) die zijn toegepast op het Azure-gast besturingssysteem. Zoek in dit artikel om te bepalen of een bepaalde update van toepassing is op het gast besturingssysteem dat u gebruikt. Updates worden altijd uitgevoerd voor de desbetreffende [familie][family-explain] waarin ze zijn geïntroduceerd.
 
+## <a name="july-2020-guest-os"></a>2020 juli-gast besturingssysteem
+>[!NOTE]
+>Het besturings systeem van juli wordt momenteel geïmplementeerd naar Cloud service-Vm's die zijn geconfigureerd voor automatische updates. Wanneer de implementatie is voltooid, wordt deze versie beschikbaar gesteld voor hand matige updates via de Azure Portal-en configuratie bestanden. De volgende patches zijn opgenomen in het besturings systeem van april gast. Deze lijst is onderhevig aan wijzigingen.
+
+
+| Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
+| --- | --- | --- | --- | --- |
+|  Rel 20-07 |  [4565479]  |  Internet Explorer | 2,100, 3,87, 4,80 | Jul 14, 2020 |
+|  Rel 20-07 |  [4565511]  |  Meest recente cumulatieve update (LCU) | 5,45 | Jul 14, 2020 |
+|  Rel 20-07 |  [4558998]  |  Meest recente cumulatieve update (LCU) | 6,21 | Jul 14, 2020 |
+|  Rel 20-07 |  [4565524]  |  Maandelijks samen vouwen | 2,100 | Jul 14, 2020 |
+|  Rel 20-07 |  [4565616]  |  Maandelijks samen vouwen | 2,100 | Jul 16, 2020 |
+|  Rel 20-07 |  [4565354]  |  Onderhouds stack-update | 2,100 | Jul 14, 2020 |
+|  Rel 20-07 |  [4565612]  |  Maandelijks samen vouwen | 2,100 | Jul 14, 2020 |
+|  Rel 20-07 |  [4565615]  |  Maandelijks samen vouwen | 3,87 | Jul 14, 2020 |
+|  Rel 20-07 |  [4566426]  |  Onderhouds stack-update | 3,87 | Jul 14, 2020 |
+|  Rel 20-07 |  [4565537]  |  Maandelijks samen vouwen | 3,87 | Jul 14, 2020 |
+|  Rel 20-07 |  [4565610]  |  Maandelijks samen vouwen | 3,87 | Jul 14, 2020 |
+|  Rel 20-07 |  [4565541]  |  Maandelijks samen vouwen | 4,80 | Jul 14, 2020 |
+|  Rel 20-07 |  [4566425]  |  Onderhouds stack-update | 4,80 | Jul 14, 2020 |
+|  Rel 20-07 |  [4565614]  |  Maandelijks samen vouwen | 4,80 | Jul 14, 2020 |
+|  Rel 20-07 |  [4565613]  |  Maandelijks samen vouwen | 4,80 | Jul 14, 2020 |
+|  Rel 20-07 |  [4565912]  |  Onderhouds stack-update | 5,45 | Jul 14, 2020 |
+|  Rel 20-07 |  [4565628]  |  Maandelijks samen vouwen | 5,45 | Jul 14, 2020 |
+|  Rel 20-07 |  [4494175]  |  Micro | 5,45 | 25 februari 2020 |
+|  Rel 20-07 |  [4565632]  |  Maandelijks samen vouwen | 6,21 | Jul 14, 2020 |
+|  Rel 20-07 |  [4558997]  |  Onderhouds stack-update | 6,21 | Jul 14, 2020 |
+|  Rel 20-07 |  [4494174]  |  Micro | 6,21 | 25 februari 2020 |
+
+
+[4565479]: https://support.microsoft.com/kb/4565479
+[4565511]: https://support.microsoft.com/kb/4565511
+[4558998]: https://support.microsoft.com/kb/4558998
+[4565524]: https://support.microsoft.com/kb/4565524
+[4565616]: https://support.microsoft.com/kb/4565616
+[4565354]: https://support.microsoft.com/kb/4565354
+[4565612]: https://support.microsoft.com/kb/4565612
+[4565615]: https://support.microsoft.com/kb/4565615
+[4566426]: https://support.microsoft.com/kb/4566426
+[4565537]: https://support.microsoft.com/kb/4565537
+[4565610]: https://support.microsoft.com/kb/4565610
+[4565541]: https://support.microsoft.com/kb/4565541
+[4566425]: https://support.microsoft.com/kb/4566425
+[4565614]: https://support.microsoft.com/kb/4565614
+[4565613]: https://support.microsoft.com/kb/4565613
+[4565912]: https://support.microsoft.com/kb/4565912
+[4565628]: https://support.microsoft.com/kb/4565628
+[4494175]: https://support.microsoft.com/kb/4494175
+[4565632]: https://support.microsoft.com/kb/4565632
+[4558997]: https://support.microsoft.com/kb/4558997
+[4494174]: https://support.microsoft.com/kb/4494174
+
+
 ## <a name="june-2020-guest-os"></a>Juni 2020-gast besturingssysteem
-">[!NOTE]
->Het juni gast besturingssysteem wordt momenteel geïmplementeerd naar Cloud service-Vm's die zijn geconfigureerd voor automatische updates. Wanneer de implementatie is voltooid, wordt deze versie beschikbaar gesteld voor hand matige updates via de Azure Portal-en configuratie bestanden. De volgende patches zijn opgenomen in het besturings systeem van april gast. Deze lijst is onderhevig aan wijzigingen. "
+>[!NOTE]
+>Het juni gast besturingssysteem wordt momenteel geïmplementeerd naar Cloud service-Vm's die zijn geconfigureerd voor automatische updates. Wanneer de implementatie is voltooid, wordt deze versie beschikbaar gesteld voor hand matige updates via de Azure Portal-en configuratie bestanden. De volgende patches zijn opgenomen in het besturings systeem van april gast. Deze lijst is onderhevig aan wijzigingen.
 
 
 | Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
@@ -1140,7 +1193,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | Rel 17-09 | [4038779], [4038786], [4038793] |Alleen Windows-beveiliging |2,66, 3,53, 4,46 |12 september 2017 |
 | Rel 17-09 | [4040966], [4040960], [4040965], [4040959], [4033988], [4040955], [4040967], [4040958]|Update van september .NET |2,66, 3,53, 4,46 |12 september 2017 |
 | Rel 17-09 | [4036586] |Internet Explorer |2,66, 3,53, 4,46 |12 september 2017 |
-| CVE-2017-8704 | [4038782] |Denial of service |5.11 |12 september 2017 |
+| CVE-2017-8704 | [4038782] |Denial of Service |5.11 |12 september 2017 |
 | N.v.t. | [4034664] |Niet-beveiligings Rollup in augustus  |2,66 |8 augustus 2017 |
 | N.v.t. | [4034665] |Niet-beveiligings Rollup in augustus |5.11 |8 augustus 2017 |
 | N.v.t. | [4034681] |Niet-beveiligings Rollup in augustus |4,46 |8 augustus 2017 |
@@ -1543,7 +1596,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | MS15-075 |[3072633] |Beveiligings problemen in OLE kunnen leiden tot uitbrei ding van bevoegdheden |4,22, 3,29, 2,41 |14 juli 2015 |
 | MS15-076 |[3067505] |Beveiligings probleem in Windows Remote Procedure Call kan leiden tot uitbrei ding van bevoegdheden |4,22, 3,29, 2,41 |14 juli 2015 |
 | MS15-077 |[3077657] |Beveiligings probleem in het ATM-letter type-stuur programma kan leiden tot uitbrei ding van bevoegdheden |4,22, 3,29, 2,41 |14 juli 2015 |
-| NA |[3057154] |Bijwerken om het gebruik van DES-versleuteling te beperken |4,22, 3,29, 2,41 |14 juli 2015 |
+| N.v.t. |[3057154] |Bijwerken om het gebruik van DES-versleuteling te beperken |4,22, 3,29, 2,41 |14 juli 2015 |
 
 ## <a name="june-2015-guest-os"></a>Juni 2015-gast besturingssysteem
 | Bulletin-ID | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
@@ -1576,7 +1629,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | MS15-040 |[3045711] |Beveiligings probleem in ADFS kan leiden tot vrijgeven van informatie |4,20, 3,27, 2,39 |Apr 17, 2015 |
 | MS15-041 |[3048010] |Beveiligings probleem in .NET Framework kan leiden tot vrijgeven van informatie |4,20, 3,27, 2,39 |Apr 17, 2015 |
 | MS15-042 |[3047234] |Beveiligings probleem in Windows Hyper-V kan denial of service toestaan |4,20, 3,27, 2,39 |Apr 17, 2015 |
-| NA |[3045755] |Bijwerken om PKU2U-verificatie te verbeteren |4,20, 3,27, 2,39 |Apr 17, 2015 |
+| N.v.t. |[3045755] |Bijwerken om PKU2U-verificatie te verbeteren |4,20, 3,27, 2,39 |Apr 17, 2015 |
 
 ## <a name="april-2015-guest-os"></a>April 2015-gast besturingssysteem
 | Bulletin-ID | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/16/2018
 ms.author: genli
-ms.openlocfilehash: b9a4cf8b9bbf88ae792f345d330503cb4698c430
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6c4e507df0f112934979d4e59778b667743cf623
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86509219"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005953"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>Netwerkinterface opnieuw instellen voor virtuele Azure-machine voor Windows 
 
@@ -47,7 +47,7 @@ In dit artikel wordt beschreven hoe u de netwerk interface voor Azure Windows VM
 
 #### <a name="use-azure-powershell"></a>Azure PowerShell gebruiken
 
-1. Zorg ervoor dat u [de nieuwste Azure PowerShell](/powershell/azure/overview) hebt geïnstalleerd
+1. Zorg ervoor dat u [de nieuwste Azure PowerShell](/powershell/azure/) hebt geïnstalleerd
 2. Open een verhoogde Azure PowerShell-sessie (als administrator uitvoeren). Voer de volgende opdrachten uit:
 
     ```powershell
@@ -90,7 +90,7 @@ Voer de volgende stappen uit om de netwerk interface opnieuw in te stellen:
 
 #### <a name="use-azure-powershell"></a>Azure PowerShell gebruiken
 
-1. Zorg ervoor dat u [de nieuwste Azure PowerShell](/powershell/azure/overview) hebt geïnstalleerd.
+1. Zorg ervoor dat u [de nieuwste Azure PowerShell](/powershell/azure/) hebt geïnstalleerd.
 2. Open een verhoogde Azure PowerShell-sessie (als administrator uitvoeren). Voer de volgende opdrachten uit:
 
     ```powershell

@@ -3,13 +3,14 @@ title: UI-definitie-elementen maken
 description: Beschrijft de elementen die moeten worden gebruikt bij het maken van UI-definities voor Azure Portal.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 02/06/2020
+ms.date: 07/13/2020
 ms.author: tomfitz
-ms.openlocfilehash: 12bf5d131001d95a3f4327f95c24125dbf3fb510
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 221e4dc2e909561c70b1cd1b86df026619c2b31f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77086699"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004304"
 ---
 # <a name="createuidefinition-elements"></a>CreateUiDefinition-elementen
 
@@ -34,7 +35,7 @@ Het schema voor de meeste elementen is als volgt:
 
 | Eigenschap | Vereist | Beschrijving |
 | -------- | -------- | ----------- |
-| naam | Yes | Een interne id om te verwijzen naar een specifiek exemplaar van een element. Het meest voorkomende gebruik van de element naam bevindt zich in `outputs` , waarbij de uitvoer waarden van de opgegeven elementen worden toegewezen aan de para meters van de sjabloon. U kunt dit ook gebruiken om de uitvoer waarde van een element aan het `defaultValue` van een ander element te koppelen. |
+| name | Yes | Een interne id om te verwijzen naar een specifiek exemplaar van een element. Het meest voorkomende gebruik van de element naam bevindt zich in `outputs` , waarbij de uitvoer waarden van de opgegeven elementen worden toegewezen aan de para meters van de sjabloon. U kunt dit ook gebruiken om de uitvoer waarde van een element aan het `defaultValue` van een ander element te koppelen. |
 | type | Yes | Het besturings element in de gebruikers interface dat voor het element moet worden weer gegeven. Zie [elementen](#elements)voor een lijst met ondersteunde typen. |
 | label | Yes | De weergave tekst van het element. Sommige element typen bevatten meerdere labels. de waarde kan dus een object met meerdere teken reeksen zijn. |
 | Standaard | No | De standaard waarde van het element. Sommige element typen ondersteunen complexe standaard waarden, dus de waarde kan een object zijn. |
@@ -47,12 +48,14 @@ Het schema voor de meeste elementen is als volgt:
 
 De documentatie voor elk element bevat een UI-voor beeld, schema, opmerkingen over het gedrag van het element (meestal met betrekking tot validatie en ondersteunde aanpassing) en voorbeeld uitvoer.
 
+- [Micro soft. common. CheckBox](microsoft-common-checkbox.md)
 - [Microsoft.Common.DropDown](microsoft-common-dropdown.md)
 - [Microsoft.Common.FileUpload](microsoft-common-fileupload.md)
 - [Micro soft. common. InfoBox](microsoft-common-infobox.md)
 - [Microsoft.Common.OptionsGroup](microsoft-common-optionsgroup.md)
 - [Microsoft.Common.PasswordBox](microsoft-common-passwordbox.md)
 - [Microsoft.Common.Section](microsoft-common-section.md)
+- [Micro soft. common. Slider](microsoft-common-slider.md)
 - [Micro soft. common. TagsByResource](microsoft-common-tagsbyresource.md)
 - [Micro soft. common. TextBlock](microsoft-common-textblock.md)
 - [Microsoft.Common.TextBox](microsoft-common-textbox.md)
@@ -62,6 +65,8 @@ De documentatie voor elk element bevat een UI-voor beeld, schema, opmerkingen ov
 - [Micro soft. ManagedIdentity. IdentitySelector](microsoft-managedidentity-identityselector.md)
 - [Microsoft.Network.PublicIpAddressCombo](microsoft-network-publicipaddresscombo.md)
 - [Microsoft.Network.VirtualNetworkCombo](microsoft-network-virtualnetworkcombo.md)
+- [Micro soft. Solutions. ArmApiControl](microsoft-solutions-armapicontrol.md)
+- [Micro soft. Solutions. ResourceSelector](microsoft-solutions-resourceselector.md)
 - [Microsoft.Storage.MultiStorageAccountCombo](microsoft-storage-multistorageaccountcombo.md)
 - [Microsoft.Storage.StorageAccountSelector](microsoft-storage-storageaccountselector.md)
 

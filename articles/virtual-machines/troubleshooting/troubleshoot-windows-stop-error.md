@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 67064cf694445acf8472b958660133c2f2d31db9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 33b4c59e14301e496d0eddafa7bdfdf201b7aa29
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85660840"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005902"
 ---
 # <a name="windows-stop-error---status-no-memory"></a>Windows-stopfout - Status geen geheugen
 
@@ -26,7 +27,7 @@ Dit artikel bevat stappen voor het oplossen van problemen waarbij Windows niet k
 
 ## <a name="symptom"></a>Symptoom
 
-Wanneer u [Diagnostische gegevens over opstarten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) gebruikt voor het weer geven van de scherm opname van de virtuele machine (VM), ziet u dat de volgende fout code wordt weer gegeven in de scherm opname: `0xC0000017` . Afhankelijk van de versie van Windows die u gebruikt, ziet u mogelijk deze code die wordt weer gegeven in **Windows Boot Manager** of in het **herstel scherm**.
+Wanneer u [Diagnostische gegevens over opstarten](./boot-diagnostics.md) gebruikt voor het weer geven van de scherm opname van de virtuele machine (VM), ziet u dat de volgende fout code wordt weer gegeven in de scherm opname: `0xC0000017` . Afhankelijk van de versie van Windows die u gebruikt, ziet u mogelijk deze code die wordt weer gegeven in **Windows Boot Manager** of in het **herstel scherm**.
 
    **Windows-opstart beheer**
 
@@ -56,7 +57,7 @@ De schijf van het besturings systeem is vol, te gefragmenteerd of het besturings
 
 ### <a name="create-and-access-a-repair-vm"></a>Een herstel-VM maken en openen
 
-1. Gebruik [stap 1-3 van de VM-reparatie opdrachten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) om een herstel-VM voor te bereiden.
+1. Gebruik [stap 1-3 van de VM-reparatie opdrachten](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) om een herstel-VM voor te bereiden.
 1. Gebruik Verbinding met extern bureaublad verbinding maken met de herstel-VM.
 
 ### <a name="for-generation-2-vms-assign-a-letter-to-the-extensible-firmware-interface-efi-partition"></a>Wijs voor virtuele machines van de 2e generatie een letter toe aan de EFI-partitie (Extensible Firmware Interface):
@@ -93,7 +94,7 @@ Als u een virtuele machine van de tweede generatie gebruikt, is er mogelijk geen
 Nu de defecte schijf is gekoppeld aan de herstel-VM, moet u controleren of het besturings systeem op die schijf voldoende ruimte heeft om goed te werken. 
 
 1. Controleer of de schijf vol is door met de rechter muisknop op het station van de aangesloten schijf te klikken en **Eigenschappen**te selecteren.
-1. Als de schijf **minder dan 300 MB beschik bare ruimte**heeft, kunt u [deze uitbreiden tot Maxi maal 1 TB met behulp van Power shell](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk).
+1. Als de schijf **minder dan 300 MB beschik bare ruimte**heeft, kunt u [deze uitbreiden tot Maxi maal 1 TB met behulp van Power shell](../windows/expand-os-disk.md).
 1. Zodra de schijf grootte **1 TB**is, moet u een schijf opruiming uitvoeren. U kunt het [hulp programma schijf opruiming](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup) gebruiken om ruimte vrij te maken.
 1. Open een opdracht prompt met verhoogde bevoegdheid (als administrator uitvoeren) en voer een defragmentatie uit op het station:
 
@@ -222,4 +223,4 @@ Voer het volgende script uit om geheugen dump verzameling en seriële console in
    
 ### <a name="rebuild-the-vm"></a>De virtuele machine opnieuw bouwen
 
-Gebruik [stap 5 van de opdrachten voor het herstellen van de virtuele machine](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) om de virtuele machine opnieuw samen te stellen.
+Gebruik [stap 5 van de opdrachten voor het herstellen van de virtuele machine](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) om de virtuele machine opnieuw samen te stellen.

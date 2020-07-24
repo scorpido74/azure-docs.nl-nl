@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: tyao
-ms.openlocfilehash: 077f127648688b25d45b433fa2bc94ee011b3f2d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f41dc688996b2431060a3cde209ca1ed4a21fe8c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80336079"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005613"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door"></a>Een IP-beperkings regel configureren met een Web Application Firewall voor Azure front deur
 
@@ -37,7 +37,7 @@ Maak een Azure front deur-profiel door de instructies te volgen die worden besch
    |Instelling  |Waarde  |
    |---------|---------|
    |Beleid voor     |Globale WAF (front-deur)|
-   |Abonnement     |Uw abonnement selecteren|
+   |Abonnement     |Selecteer uw abonnement|
    |Resourcegroep     |Selecteer de resource groep waar uw voor deur zich bevindt.|
    |Beleidsnaam     |Voer een naam in voor het beleid|
    |Beleidsstatus     |Ingeschakeld|
@@ -56,7 +56,7 @@ Maak een Azure front deur-profiel door de instructies te volgen die worden besch
    |Status     |Ingeschakeld|
    |Regel type     |Match|
    |Prioriteit    |100|
-   |Type overeenkomst     |IP-adres|
+   |Type overeenkomst     |Het IP-adres|
    |Overeenkomende variabele|RemoteAddr|
    |Bewerking|Bevat niet|
    |IP-adres of-bereik|10.10.10.0/24|
@@ -168,7 +168,7 @@ Voordat u begint met het configureren van een IP-beperkings beleid, stelt u uw P
 #### <a name="set-up-your-powershell-environment"></a>Uw PowerShell-omgeving instellen
 Azure PowerShell biedt een set cmdlets die gebruikmaken van het [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) model voor het beheer van Azure-resources.
 
-U kunt [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) op uw lokale computer installeren en in elke PowerShell-sessie gebruiken. Volg de instructies op de pagina om u aan te melden bij Power shell met behulp van uw Azure-referenties en installeer vervolgens de AZ-module.
+U kunt [Azure PowerShell](https://docs.microsoft.com/powershell/azure/) op uw lokale computer installeren en in elke PowerShell-sessie gebruiken. Volg de instructies op de pagina om u aan te melden bij Power shell met behulp van uw Azure-referenties en installeer vervolgens de AZ-module.
 
 1. Maak verbinding met Azure met behulp van de volgende opdracht en gebruik vervolgens een interactief dialoog venster om u aan te melden.
     ```

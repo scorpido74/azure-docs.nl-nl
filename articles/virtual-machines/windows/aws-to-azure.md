@@ -7,18 +7,18 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 59d1bf08c0680d222710b55c6d6bdb4d5745da56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 843a51ca04ae4256ed21912268443595a5f36083
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82084512"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005715"
 ---
 # <a name="move-a-windows-vm-from-amazon-web-services-aws-to-an-azure-virtual-machine"></a>Een Windows-VM verplaatsen van Amazon Web Services (AWS) naar een virtuele machine van Azure
 
 Als u virtuele machines van Azure evalueert om uw workloads te hosten, kunt u een bestaande Amazon Web Services (AWS) EC2 Windows VM-exemplaar exporteren en vervolgens de virtuele harde schijf (VHD) uploaden naar Azure. Zodra de VHD is geüpload, kunt u in azure een nieuwe virtuele machine maken op basis van de VHD. 
 
-In dit artikel wordt beschreven hoe u één VM verplaatst van AWS naar Azure. Als u Vm's op schaal wilt verplaatsen van AWS naar Azure, raadpleegt u [virtual machines in Amazon Web Services (AWS) migreren naar Azure met Azure site Recovery](../../site-recovery/site-recovery-migrate-aws-to-azure.md).
+In dit artikel wordt beschreven hoe u één VM verplaatst van AWS naar Azure. Als u Vm's op schaal wilt verplaatsen van AWS naar Azure, raadpleegt u [virtual machines in Amazon Web Services (AWS) migreren naar Azure met Azure site Recovery](../../site-recovery/migrate-tutorial-aws-azure.md).
 
 ## <a name="prepare-the-vm"></a>De virtuele machine voorbereiden 
  

@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: fc14c3bd069162c390c09fddbfe9169b90bf66ce
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: a9d419052f000b220c993109e45d371398607275
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086004"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006447"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight-clusters schalen
 
 HDInsight biedt flexibiliteit met opties om het aantal worker-knoop punten in uw clusters omhoog en omlaag te schalen. Deze elasticiteit stelt u in staat om een cluster na uren of in het weekend te verkleinen. En breid het uit tijdens de piek behoeften van uw bedrijf.
 
-U moet uw cluster omhoog schalen voor periodieke batch verwerking, zodat het cluster voldoende bronnen heeft. Wanneer de verwerking is voltooid en het gebruik uitvalt, schaalt u het HDInsight-cluster naar minder werk knooppunten.
+U moet uw cluster omhoog schalen voor periodieke batch verwerking, zodat het cluster voldoende bronnen heeft.  Wanneer de verwerking is voltooid en het gebruik uitvalt, schaalt u het HDInsight-cluster naar minder werk knooppunten.
 
 U kunt een cluster hand matig schalen met behulp van een van de hieronder beschreven methoden. U kunt ook opties voor automatisch [schalen](hdinsight-autoscale-clusters.md) gebruiken om op basis van bepaalde metrische gegevens naar boven en beneden te schalen.
 
@@ -30,11 +30,11 @@ U kunt een cluster hand matig schalen met behulp van een van de hieronder beschr
 
 Micro soft biedt de volgende hulpprogram ma's om clusters te schalen:
 
-|Hulpprogramma | Description|
+|Hulpprogramma | Beschrijving|
 |---|---|
 |[PowerShell Az](https://docs.microsoft.com/powershell/azure)|[`Set-AzHDInsightClusterSize`](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
 |[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[`Set-AzureRmHDInsightClusterSize`](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
-|[Azure-CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) | [`az hdinsight resize`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) `--resource-group RESOURCEGROUP --name CLUSTERNAME --workernode-count NEWSIZE`|
+|[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) | [`az hdinsight resize`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) `--resource-group RESOURCEGROUP --name CLUSTERNAME --workernode-count NEWSIZE`|
 |[Klassieke versie van Azure-CLI](hdinsight-administer-use-command-line.md)|`azure hdinsight cluster resize CLUSTERNAME NEWSIZE` |
 |[Azure-portal](https://portal.azure.com)|Open het deel venster HDInsight-cluster, selecteer **cluster grootte** in het menu aan de linkerkant en typ in het deel venster cluster grootte het aantal worker-knoop punten en selecteer Opslaan.|  
 
@@ -106,6 +106,14 @@ De impact van het wijzigen van het aantal gegevens knooppunten varieert voor elk
 * Kafka
 
     U moet partitie replica's na schaal bewerkingen opnieuw verdelen. Zie voor meer informatie de [hoge Beschik baarheid van gegevens met Apache Kafka in HDInsight](./kafka/apache-kafka-high-availability.md) -document.
+
+* Apache Hive LLAP
+
+    Nadat u hebt geschaald naar `N` werk knooppunten, worden de volgende configuraties automatisch door HDInsight ingesteld en wordt de Hive opnieuw gestart.
+
+  * Maximum aantal gelijktijdige Query's:`hive.server2.tez.sessions.per.default.queue = min(N, 32)`
+  * Aantal knoop punten dat wordt gebruikt door de LLAP van de component:`num_llap_nodes  = N`
+  * Aantal knoop punten voor het uitvoeren van de Hive LLAP-daemon:`num_llap_nodes_for_llap_daemons = N`
 
 ## <a name="how-to-safely-scale-down-a-cluster"></a>Een cluster veilig omlaag schalen
 

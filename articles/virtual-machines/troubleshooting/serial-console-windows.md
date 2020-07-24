@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 4f02d92e6264a05ed2cb4021adb5ae6312f58a85
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 4778ea7781d181a89e7a6b2d6c4ad5d474e9b5c9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146635"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005936"
 ---
 # <a name="azure-serial-console-for-windows"></a>Azure Serial console voor Windows
 
@@ -38,7 +38,7 @@ Zie [Azure Serial console voor Linux](serial-console-linux.md)voor meer informat
 
 - Uw account dat gebruikmaakt van seriële console, moet de [rol Inzender voor virtuele machines](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) hebben voor de VM en het opslag account voor [Diagnostische gegevens over opstarten](boot-diagnostics.md)
 
-- Uw virtuele machine of exemplaar van de VM-schaalset moet een gebruiker met een wacht woord zijn. U kunt er een maken met de functie [wacht woord opnieuw instellen](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) van de extensie VM-toegang. Selecteer **wacht woord opnieuw instellen** in het gedeelte **ondersteuning en probleem oplossing** .
+- Uw virtuele machine of exemplaar van de VM-schaalset moet een gebruiker met een wacht woord zijn. U kunt er een maken met de functie [wacht woord opnieuw instellen](../extensions/vmaccess.md#reset-password) van de extensie VM-toegang. Selecteer **wacht woord opnieuw instellen** in het gedeelte **ondersteuning en probleem oplossing** .
 
 * Voor de VM voor het exemplaar van de virtuele-machine schaalset moet [Diagnostische gegevens over opstarten](boot-diagnostics.md) zijn ingeschakeld.
 
@@ -50,7 +50,7 @@ Zie [Azure Serial console voor Linux](serial-console-linux.md)voor meer informat
 > Als u niets in de seriële console ziet, zorg er dan voor dat de diagnostische gegevens over opstarten zijn ingeschakeld op de virtuele machine of in de schaalset van virtual machines.
 
 ### <a name="enable-the-serial-console-in-custom-or-older-images"></a>De seriële console inschakelen in aangepaste of oudere installatie kopieën
-Nieuwere Windows Server-installatie kopieën op Azure hebben standaard een [speciale beheer console](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (SAC) ingeschakeld. SAC wordt ondersteund op Server versies van Windows, maar is niet beschikbaar op client versies (bijvoorbeeld Windows 10, Windows 8 of Windows 7).
+Nieuwere Windows Server-installatie kopieën op Azure hebben standaard een [speciale beheer console](/previous-versions/windows/it-pro/windows-server-2003/cc787940(v=ws.10)) (SAC) ingeschakeld. SAC wordt ondersteund op Server versies van Windows, maar is niet beschikbaar op client versies (bijvoorbeeld Windows 10, Windows 8 of Windows 7).
 
 Voor oudere Windows Server-installatie kopieën (gemaakt vóór 2018 februari), kunt u de seriële console automatisch inschakelen met behulp van de opdracht functie voor het uitvoeren van de Azure Portal. Selecteer in de Azure Portal de **opdracht uitvoeren**en selecteer vervolgens de opdracht met de naam **EnableEMS** in de lijst.
 
@@ -76,11 +76,11 @@ Als dat nodig is, kan de SAC ook offline worden ingeschakeld:
 
 #### <a name="how-do-i-know-if-sac-is-enabled"></a>Hoe kan ik weet of SAC is ingeschakeld?
 
-Als [SAC](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) niet is ingeschakeld, wordt de SAC-prompt niet weer gegeven door de seriële console. In sommige gevallen wordt informatie over de status van de virtuele machine weer gegeven en in andere gevallen is deze leeg. Als u een Windows Server-installatie kopie gebruikt die vóór februari 2018 is gemaakt, wordt SAC waarschijnlijk niet ingeschakeld.
+Als [SAC](/previous-versions/windows/it-pro/windows-server-2003/cc787940(v=ws.10)) niet is ingeschakeld, wordt de SAC-prompt niet weer gegeven door de seriële console. In sommige gevallen wordt informatie over de status van de virtuele machine weer gegeven en in andere gevallen is deze leeg. Als u een Windows Server-installatie kopie gebruikt die vóór februari 2018 is gemaakt, wordt SAC waarschijnlijk niet ingeschakeld.
 
 ### <a name="enable-the-windows-boot-menu-in-the-serial-console"></a>Het Windows-opstart menu inschakelen in de seriële console
 
-Als u het Windows-opstart laad programma moet inschakelen om weer te geven in de seriële console, kunt u de volgende extra opties toevoegen aan de opstart configuratie gegevens. Zie [bcdedit](https://docs.microsoft.com/windows-hardware/drivers/devtest/bcdedit--set)voor meer informatie.
+Als u het Windows-opstart laad programma moet inschakelen om weer te geven in de seriële console, kunt u de volgende extra opties toevoegen aan de opstart configuratie gegevens. Zie [bcdedit](/windows-hardware/drivers/devtest/bcdedit--set)voor meer informatie.
 
 1. Maak verbinding met uw Windows-VM of een installatie kopie van een virtuele machine met behulp van Extern bureaublad.
 
@@ -126,7 +126,7 @@ Voor informatie over het configureren van Windows voor het maken van een crash d
 Functie sleutels zijn ingeschakeld voor gebruik van seriële console in Windows-Vm's. Met de F8 in de vervolg keuzelijst van de seriële console kunt u eenvoudig het menu Geavanceerde opstart instellingen openen, maar de seriële console is compatibel met alle andere functie sleutels. Mogelijk moet u op **FN**  +  **F1** drukken (of F2, F3, etc.) op het toetsen bord, afhankelijk van de computer waarvan u de seriële console gebruikt.
 
 ### <a name="use-wsl-in-serial-console"></a>WSL gebruiken in de seriële console
-Het Windows-subsysteem voor Linux (WSL) is ingeschakeld voor Windows Server 2019 of hoger, dus het is ook mogelijk om WSL in te scha kelen voor gebruik in de seriële console als u Windows Server 2019 of hoger uitvoert. Dit kan handig zijn voor gebruikers die ook vertrouwd zijn met Linux-opdrachten. Raadpleeg de [installatie handleiding](https://docs.microsoft.com/windows/wsl/install-on-server)voor instructies voor het inschakelen van WSL voor Windows Server.
+Het Windows-subsysteem voor Linux (WSL) is ingeschakeld voor Windows Server 2019 of hoger, dus het is ook mogelijk om WSL in te scha kelen voor gebruik in de seriële console als u Windows Server 2019 of hoger uitvoert. Dit kan handig zijn voor gebruikers die ook vertrouwd zijn met Linux-opdrachten. Raadpleeg de [installatie handleiding](/windows/wsl/install-on-server)voor instructies voor het inschakelen van WSL voor Windows Server.
 
 ### <a name="restart-your-windows-vmvirtual-machine-scale-set-instance-within-serial-console"></a>Uw Windows VM/virtual machine Scale set-exemplaar opnieuw starten binnen een seriële console
 U kunt een herstart starten binnen de seriële console door te navigeren naar de aan/uit-knop en op VM opnieuw opstarten te klikken. Hiermee start u het opnieuw opstarten van een virtuele machine en ziet u een melding binnen het Azure Portal met betrekking tot de herstart.
@@ -147,7 +147,7 @@ Toegang tot de seriële console is beperkt tot gebruikers die de rol van toegang
 Alle gegevens die worden verzonden, worden versleuteld op de kabel.
 
 ### <a name="audit-logs"></a>Auditlogboeken
-Alle toegang tot de seriële console is momenteel geregistreerd in de logboeken voor [Diagnostische gegevens over opstarten](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics) van de virtuele machine. Toegang tot deze logboeken is eigendom van en beheerd door de beheerder van de virtuele Azure-machine.
+Alle toegang tot de seriële console is momenteel geregistreerd in de logboeken voor [Diagnostische gegevens over opstarten](./boot-diagnostics.md) van de virtuele machine. Toegang tot deze logboeken is eigendom van en beheerd door de beheerder van de virtuele Azure-machine.
 
 > [!CAUTION]
 > Er zijn geen toegangs wachtwoorden voor de console vastgelegd. Als opdrachten echter worden uitgevoerd in de-console bevatten of uitvoer wachtwoorden, geheimen, gebruikers namen of andere vormen van persoons gegevens (PII), worden deze geschreven naar de logboeken voor diagnostische opstart gegevens van de VM. Ze worden samen met alle andere zicht bare tekst geschreven, als onderdeel van de implementatie van de functie scroll back van de seriële console. Deze logboeken zijn circulaire en alleen personen met lees machtigingen voor het diagnostische-opslag account hebben toegang tot ze. We raden u echter aan de best practice van het gebruik van de Extern bureaublad te volgen voor alles wat geheimen en/of PII kan inhouden.
@@ -173,7 +173,7 @@ Scenario          | Acties in de seriële console
 :------------------|:-----------------------------------------
 Onjuiste firewall regels | Toegang tot seriële console en Windows Firewall-regels herstellen.
 Beschadiging/controle van bestands systeem | Open de seriële console en herstel het bestands systeem.
-Problemen met de RDP-configuratie | Toegang tot de seriële console en de instellingen te wijzigen. Zie de [RDP-documentatie](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access)voor meer informatie.
+Problemen met de RDP-configuratie | Toegang tot de seriële console en de instellingen te wijzigen. Zie de [RDP-documentatie](/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access)voor meer informatie.
 Netwerk vergrendeling systeem | Open de seriële console vanuit het Azure Portal om het systeem te beheren. Sommige netwerk opdrachten worden weer gegeven in [Windows-opdrachten: cmd en Power shell](serial-console-cmd-ps-commands.md).
 Interactie met bootloader | Toegang tot BCD via de seriële console. Zie [het Windows-opstart menu inschakelen in de seriële console](#enable-the-windows-boot-menu-in-the-serial-console)voor meer informatie.
 

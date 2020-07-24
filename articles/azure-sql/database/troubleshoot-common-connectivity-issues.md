@@ -12,12 +12,12 @@ author: dalechen
 ms.author: ninarn
 ms.reviewer: carlrab, vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: acc61cefbc9d89f11eae5b6549add57871035ddb
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 0b28fa788e7b35e94482104d807c228db21f49b4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078966"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003913"
 ---
 # <a name="troubleshoot-transient-connection-errors-in-sql-database-and-sql-managed-instance"></a>Tijdelijke verbindings fouten in SQL Database en SQL Managed instance oplossen
 
@@ -148,8 +148,8 @@ Als de telling bijvoorbeeld gelijk is aan 3 en het interval 10 seconden is, geef
 
 Met de **ConnectRetryCount** -en **ConnectRetryInterval** -para meters kan uw **SqlConnection** -object de verbindings bewerking opnieuw proberen zonder dat uw programma wordt weer gegeven, zoals het retour neren van uw programma. De nieuwe pogingen kunnen in de volgende situaties optreden:
 
-- aanroep van de methode mySqlConnection. Open
-- Aanroep van mySqlConnection.Exemethode schattige
+- Aanroep van de methode SqlConnection. Open
+- Aanroep van SqlConnection.Exemethode schattige
 
 Er is een subtlety. Als er een tijdelijke fout optreedt tijdens het uitvoeren van uw *query* , probeert uw **SqlConnection** -object de verbindings bewerking niet opnieuw uit te voeren. De query wordt zeker niet opnieuw uitgevoerd. De verbinding wordt echter door **SqlConnection** zeer snel gecontroleerd voordat de query wordt verzonden voor uitvoering. Als de snelle controle een verbindings probleem detecteert, probeert **SqlConnection** de verbindings bewerking opnieuw. Als de nieuwe poging slaagt, wordt uw query verzonden voor uitvoering.
 
@@ -276,7 +276,7 @@ Enter prise Library 6 (EntLib60) biedt .NET-beheerde klassen om te helpen bij he
 
 Hier volgen enkele Transact-SQL-instructies voor het uitvoeren van query's op fout logboeken en andere informatie.
 
-| Query op logboek | Description |
+| Query op logboek | Beschrijving |
 |:--- |:--- |
 | `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |De weer gave [sys. event_log](https://msdn.microsoft.com/library/dn270018.aspx) biedt informatie over afzonderlijke gebeurtenissen, waaronder een aantal dat kan leiden tot tijdelijke fouten of verbindings fouten.<br/><br/>In het ideale geval kunt u de **start_time** -of **end_time** waarden correleren met informatie over wanneer het client programma problemen heeft ondervonden.<br/><br/>U moet verbinding maken met de *hoofd* database om deze query uit te voeren. |
 | `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |De weer gave [sys. database_connection_stats](https://msdn.microsoft.com/library/dn269986.aspx) biedt geaggregeerde aantallen gebeurtenis typen voor aanvullende diagnostische gegevens.<br/><br/>U moet verbinding maken met de *hoofd* database om deze query uit te voeren. |

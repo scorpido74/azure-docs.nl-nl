@@ -9,13 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/22/2020
+ms.date: 07/13/2020
 ms.author: iainfou
-ms.openlocfilehash: 7cbd9250ecfb05e52204e1754046e02e4045fa6b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7eaf8b6b5cddc8a01b59cda0cafc819e06a5ec7c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734704"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005001"
 ---
 # <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Een Ubuntu Linux virtuele machine toevoegen aan een Azure Active Directory Domain Services beheerd domein
 
@@ -42,7 +43,7 @@ Als u een bestaande Ubuntu Linux virtuele machine in azure hebt, kunt u er verbi
 Als u een Ubuntu Linux virtuele machine moet maken of een test-VM wilt maken voor gebruik met dit artikel, kunt u een van de volgende methoden gebruiken:
 
 * [Azure-portal](../virtual-machines/linux/quick-create-portal.md)
-* [Azure-CLI](../virtual-machines/linux/quick-create-cli.md)
+* [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
 Wanneer u de virtuele machine maakt, moet u aandacht best Eden aan de instellingen voor virtueel netwerk om ervoor te zorgen dat de virtuele machine kan communiceren met het beheerde domein:
@@ -140,7 +141,7 @@ Nu de vereiste pakketten zijn geïnstalleerd op de VM en NTP is geconfigureerd, 
     kinit contosoadmin@AADDSCONTOSO.COM
     ```
 
-1. Voeg ten slotte de computer toe aan het beheerde domein met behulp van de `realm join` opdracht. Gebruik hetzelfde gebruikers account dat deel uitmaakt van het beheerde domein dat u in de vorige opdracht hebt opgegeven `kinit` , zoals `contosoadmin@AADDSCONTOSO.COM` :
+1. Ten slotte voegt u de virtuele machine toe aan het beheerde domein met behulp van de `realm join` opdracht. Gebruik hetzelfde gebruikers account dat deel uitmaakt van het beheerde domein dat u in de vorige opdracht hebt opgegeven `kinit` , zoals `contosoadmin@AADDSCONTOSO.COM` :
 
     ```console
     sudo realm join --verbose AADDSCONTOSO.COM -U 'contosoadmin@AADDSCONTOSO.COM' --install=/

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/23/2020
+ms.date: 07/13/2020
 ms.author: iainfou
-ms.openlocfilehash: 845b48d84040343f829648f9c7fda2372e3413dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93f16629b74ab76d7b46603d84d52cff4bf1ca13
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734738"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005103"
 ---
 # <a name="join-a-coreos-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Een virtuele CoreOS-machine toevoegen aan een Azure Active Directory Domain Services beheerd domein
 
@@ -43,7 +43,7 @@ Als u een bestaande virtuele machine met CoreOS Linux in azure hebt, kunt u er v
 Als u een virtuele machine met CoreOS Linux wilt maken of een test-VM wilt maken voor gebruik met dit artikel, kunt u een van de volgende methoden gebruiken:
 
 * [Azure-portal](../virtual-machines/linux/quick-create-portal.md)
-* [Azure-CLI](../virtual-machines/linux/quick-create-cli.md)
+* [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
 Wanneer u de virtuele machine maakt, moet u aandacht best Eden aan de instellingen voor virtueel netwerk om ervoor te zorgen dat de virtuele machine kan communiceren met het beheerde domein:
@@ -85,7 +85,7 @@ sudo vi /etc/sssd/sssd.conf
 Geef uw eigen beheerde domein naam op voor de volgende para meters:
 
 * *domeinen* in alle hoofd letters
-* *[domain/AADDS]* waarbij AADDS zich in alle hoofd letters bevindt
+* *[domain/AADDSCONTOSO]* waarbij AADDSCONTOSO zich in alle hoofd letters bevindt
 * *ldap_uri*
 * *ldap_search_base*
 * *krb5_server*
@@ -97,7 +97,7 @@ config_file_version = 2
 services = nss, pam
 domains = AADDSCONTOSO.COM
 
-[domain/AADDSCONTOSO.COM]
+[domain/AADDSCONTOSO]
 id_provider = ad
 auth_provider = ad
 chpass_provider = ad

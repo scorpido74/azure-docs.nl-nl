@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 2c5ef71059fd3ba96299624818a13ebe1ae0929b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a25625e085ee07a2dc036fd40f70e6b0376b42a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737849"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003879"
 ---
 # <a name="how-to-use-azure-powershell-to-provision-sql-server-on-azure-virtual-machines"></a>Azure PowerShell gebruiken om SQL Server in te richten op Azure Virtual Machines
 
@@ -152,7 +152,7 @@ New-AzResourceGroup -Name $ResourceGroupName -Location $Location
 
 ## <a name="create-a-storage-account"></a>Create a storage account
 
-Voor de virtuele machine zijn opslag resources vereist voor de schijf met het besturings systeem en voor de SQL Server gegevens en logboek bestanden. Voor eenvoud maakt u één schijf voor beide. U kunt later extra schijven toevoegen met behulp van de cmdlet [add-Azure Disk](https://docs.microsoft.com/powershell/module/servicemanagement/azure/add-azuredisk) om uw SQL Server-gegevens en-logboek bestanden op toegewezen schijven te plaatsen. Gebruik de cmdlet [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) om een standaard-opslag account te maken in de nieuwe resource groep. Geef de variabelen op die u eerder hebt geïnitialiseerd voor de naam van het opslag account, de naam van de opslag-SKU en de locatie.
+Voor de virtuele machine zijn opslag resources vereist voor de schijf met het besturings systeem en voor de SQL Server gegevens en logboek bestanden. Voor eenvoud maakt u één schijf voor beide. U kunt later extra schijven toevoegen met behulp van de cmdlet [add-Azure Disk](/powershell/module/servicemanagement/azure.service/add-azuredisk) om uw SQL Server-gegevens en-logboek bestanden op toegewezen schijven te plaatsen. Gebruik de cmdlet [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) om een standaard-opslag account te maken in de nieuwe resource groep. Geef de variabelen op die u eerder hebt geïnitialiseerd voor de naam van het opslag account, de naam van de opslag-SKU en de locatie.
 
 Voer deze cmdlet uit om uw nieuwe opslag account te maken.
 
@@ -351,7 +351,7 @@ $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine `
 Nu u de configuratie stappen hebt voltooid, bent u klaar om de virtuele machine te maken. Gebruik de cmdlet [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) om de virtuele machine te maken met de variabelen die u hebt gedefinieerd.
 
 > [!TIP]
-> Het maken van de VM kan een paar minuten duren.
+> Het opstarten van de virtuele machine kan enkele minuten duren.
 
 Voer deze cmdlet uit om uw virtuele machine te maken.
 

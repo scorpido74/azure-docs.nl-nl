@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 36aaee030dd5267a391dd9a235dd5f8dc0932fa0
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 383c64c585f05869e1d01b5c99693fcf560cdedc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087088"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006668"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Azure HDInsight-clusters aanpassen met behulp van script acties
 
@@ -131,7 +131,7 @@ Script actie scripts kunnen worden gebruikt via de volgende hulpprogram ma's:
 
 HDInsight biedt scripts voor het installeren van de volgende onderdelen op HDInsight-clusters:
 
-| Name | Script |
+| Naam | Script |
 | --- | --- |
 | Een Azure Storage-account toevoegen |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`. Zie [extra opslag accounts toevoegen aan HDInsight](hdinsight-hadoop-add-storage.md). |
 | Kleur Toon installeren |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. Zie [kleur Toon installeren en gebruiken op HDInsight Hadoop-clusters](hdinsight-hadoop-hue-linux.md). |
@@ -156,7 +156,7 @@ In deze sectie worden de verschillende manieren beschreven waarop u script actie
     | Eigenschap | Waarde |
     | --- | --- |
     | Een script selecteren | Selecteer __aangepast__om uw eigen script te gebruiken. Anders selecteert u een van de meegeleverde scripts. |
-    | Name |Geef een naam op voor de script actie. |
+    | Naam |Geef een naam op voor de script actie. |
     | Bash-script-URI |Geef de URI van het script op. |
     | Hoofd/werk-ZooKeeper |Geef de knoop punten op waarop het script wordt uitgevoerd: **Head**, **worker**of **ZooKeeper**. |
     | Parameters |Geef de para meters op, indien vereist door het script. |
@@ -195,7 +195,7 @@ Meer informatie over het implementeren van een sjabloon:
 
 ### <a name="use-a-script-action-during-cluster-creation-from-azure-powershell"></a>Een script actie gebruiken tijdens het maken van het cluster van Azure PowerShell
 
-In deze sectie gebruikt u de cmdlet [add-AzHDInsightScriptAction](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightscriptaction) om scripts aan te roepen om een cluster aan te passen. Voordat u begint, moet u ervoor zorgen dat u Azure PowerShell installeert en configureert. Als u deze Power shell-opdrachten wilt gebruiken, hebt u de [AZ-module](https://docs.microsoft.com/powershell/azure/overview)nodig.
+In deze sectie gebruikt u de cmdlet [add-AzHDInsightScriptAction](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightscriptaction) om scripts aan te roepen om een cluster aan te passen. Voordat u begint, moet u ervoor zorgen dat u Azure PowerShell installeert en configureert. Als u deze Power shell-opdrachten wilt gebruiken, hebt u de [AZ-module](https://docs.microsoft.com/powershell/azure/)nodig.
 
 Het volgende script laat zien hoe u een script actie toepast wanneer u een cluster maakt met behulp van Power shell:
 
@@ -230,7 +230,7 @@ In deze sectie wordt uitgelegd hoe u script acties toepast op een actief cluster
     | Eigenschap | Waarde |
     | --- | --- |
     | Een script selecteren | Selecteer __aangepast__om uw eigen script te gebruiken. Als dat niet het geval is, selecteert u een gegeven script. |
-    | Name |Geef een naam op voor de script actie. |
+    | Naam |Geef een naam op voor de script actie. |
     | Bash-script-URI |Geef de URI van het script op. |
     | Hoofd/werk-Zookeeper |Geef de knoop punten op waarop het script wordt uitgevoerd: **Head**, **worker**of **ZooKeeper**. |
     | Parameters |Geef de para meters op, indien vereist door het script. |
@@ -241,7 +241,7 @@ In deze sectie wordt uitgelegd hoe u script acties toepast op een actief cluster
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-azure-powershell"></a>Een script actie Toep assen op een actief cluster vanaf Azure PowerShell
 
-Als u deze Power shell-opdrachten wilt gebruiken, hebt u de [AZ-module](https://docs.microsoft.com/powershell/azure/overview)nodig. In het volgende voor beeld ziet u hoe u een script actie toepast op een actief cluster:
+Als u deze Power shell-opdrachten wilt gebruiken, hebt u de [AZ-module](https://docs.microsoft.com/powershell/azure/)nodig. In het volgende voor beeld ziet u hoe u een script actie toepast op een actief cluster:
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/use-script-action/use-script-action.ps1?range=105-117)]
 

@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 tags: azure-synapse
-ms.openlocfilehash: 8e04cb87895f00e1ee992745c43a884596bd8398
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 3f1f284255d1c0e77779c175951eaf33d3e56067
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85987262"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004100"
 ---
 # <a name="data-discovery--classification"></a>Gegevensdetectie en -classificatie
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -119,7 +119,7 @@ Nadat u het beleid voor de hele organisatie hebt gedefinieerd, kunt u afzonderli
 
 Een belang rijk aspect van het gegevens beveiligings model is de mogelijkheid om toegang tot gevoelige gegevens te bewaken. [Azure SQL auditing](../../azure-sql/database/auditing-overview.md) is uitgebreid met een nieuw veld in het audit logboek met de naam `data_sensitivity_information` . Dit veld registreert de gevoeligheids classificaties (labels) van de gegevens die door een query zijn geretourneerd. Hier volgt een voorbeeld:
 
-![Audit logboek](./media/data-discovery-and-classification-overview/11_data_classification_audit_log.png)
+![Auditlogboek](./media/data-discovery-and-classification-overview/11_data_classification_audit_log.png)
 
 ## <a name="permissions"></a><a id="permissions"></a>Machtigingen
 
@@ -137,7 +137,7 @@ Deze ingebouwde rollen kunnen de gegevens classificatie van een Data Base wijzig
 - Inzender
 - SQL-beveiligings beheer
 
-Meer informatie over op rollen gebaseerde machtigingen in [RBAC voor Azure-resources](https://docs.microsoft.com/azure/role-based-access-control/overview).
+Meer informatie over op rollen gebaseerde machtigingen in [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview).
 
 ## <a name="manage-classifications"></a><a id="manage-classification"></a>Classificaties beheren
 

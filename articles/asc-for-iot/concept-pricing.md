@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/27/2019
 ms.author: mlottner
-ms.openlocfilehash: fe117cf8d05ba3392b71858acf94d1fc88c1a527
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98afd1eb1f8a73c2d6dd3f293a07cdb70780d238
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81311568"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004763"
 ---
 # <a name="pricing-and-associated-costs"></a>Prijs en bijbehorende kosten
 
@@ -54,7 +54,7 @@ Uw instellingen wijzigen:
 
 De volgende tabel bevat een samen vatting van de bijbehorende kosten en implicaties van elke optie.
 
-|     | Gebruik | Opmerking |
+| Optie | Gebruik | Opmerking |
 | --- | --- | --- |
 | **Opslag Log Analytics** |  |
 | Aanbeveling en waarschuwingen van het apparaat| Beveiligings aanbeveling en waarschuwingen die worden gegenereerd door de service | Niet optioneel |
@@ -73,7 +73,7 @@ De volgende tabel bevat een samen vatting van de bijbehorende kosten en implicat
 | | Er zijn geen gegevens over [waarschuwingen](concept-security-alerts.md) en [aanbevelings](concept-recommendations.md) onderzoeken beschikbaar |
 |
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 - Toegang tot uw [onbewerkte beveiligings gegevens](how-to-security-data-access.md)
 - [Een apparaat onderzoeken](how-to-investigate-device.md)

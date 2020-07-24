@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 0481f92666c8ca547dc427e117f9917afb257629
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ef243d5b151f95a00e22ac7636a46b93090ccce3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511871"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006531"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Opmerkingen bij de release van Azure HDInsight
 
@@ -62,4 +62,4 @@ Er is een probleem opgetreden bij de bruikbaarheid van Hive Warehouse-connectors
 Zeppelin is onjuist afgekapt voor voorloop nullen in de tabel uitvoer voor teken reeks indeling. Dit probleem is opgelost in deze release.
 
 ## <a name="component-version-change"></a>Onderdeel versie wijzigen
-Er is geen wijziging van de onderdeel versie voor deze versie. In [dit document](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)vindt u de huidige versie van de onderdelen voor HDInsight 4,0 ad hdinsight 3,6.
+Er is geen wijziging van de onderdeel versie voor deze versie. In [dit document](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)vindt u de huidige versie van de onderdelen voor hdinsight 4,0 en hdinsight 3,6.

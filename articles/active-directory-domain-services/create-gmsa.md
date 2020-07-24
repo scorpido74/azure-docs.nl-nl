@@ -11,11 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 923502132fdbe0b4a56c0fc23c19475e9074b8ff
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 19b7962462e5cdb03bad0c6004b8c19f781ccc69
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040245"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005273"
 ---
 # <a name="create-a-group-managed-service-account-gmsa-in-azure-active-directory-domain-services"></a>Een door een groep beheerd service account (gMSA) maken in Azure Active Directory Domain Services
 
@@ -34,7 +35,7 @@ U hebt de volgende resources en bevoegdheden nodig om dit artikel te volt ooien:
 * Een Azure Active Directory-tenant die aan uw abonnement is gekoppeld, gesynchroniseerd met een on-premises map of een cloudmap.
     * [Maak zo nodig een Azure Active Directory-tenant][create-azure-ad-tenant] of [koppel een Azure-abonnement aan uw account][associate-azure-ad-tenant].
 * Een door Azure Active Directory Domain Services beheerd domein dat in uw Azure AD-tenant is ingeschakeld en geconfigureerd.
-    * Als dat nodig is, voltooit u de zelf studie voor het [maken en configureren van een Azure Active Directory Domain Services beheerd-domein][create-azure-ad-ds-instance].
+    * Als dat nodig is, voltooit u de zelf studie voor het [maken en configureren van een Azure Active Directory Domain Services beheerd domein][create-azure-ad-ds-instance].
 * Een Windows Server Management-VM die deel uitmaakt van het door Azure AD DS beheerde domein.
     * Als dat nodig is, voltooit u de zelf studie voor het [maken van een beheer-VM][tutorial-create-management-vm].
 

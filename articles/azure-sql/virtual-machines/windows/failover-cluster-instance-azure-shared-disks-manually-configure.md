@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: 4e704a25e0c9700afbe4fa85031d7ff4d6a8d0c1
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: e1a4a366b3e4fa045df69683d6e72b157ccf0a1f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965496"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003624"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Een FCI maken met gedeelde Azure-schijven (SQL Server op virtuele machines van Azure)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -153,11 +153,11 @@ Als u het cluster wilt valideren met behulp van de gebruikers interface, gaat u 
 
 1. Klik onder **Serverbeheer**op **extra**en selecteer vervolgens **Failoverclusterbeheer**.
 1. Selecteer onder **Failoverclusterbeheer** **actie**en selecteer vervolgens **configuratie valideren**.
-1. Selecteer **Volgende**.
+1. Selecteer **Next**.
 1. Voer onder **servers of een cluster selecteren**de namen van beide virtuele machines in.
 1. Onder **test opties**selecteert u **alleen geselecteerde tests uitvoeren**. 
-1. Selecteer **Volgende**.
-1. Selecteer onder **selectie testen**alle tests, *behalve* **opslagruimten direct**.
+1. Selecteer **Next**.
+1. Selecteer onder **selectie testen**alle tests *behalve* **opslag**
 
 ## <a name="test-cluster-failover"></a>Cluster-Failover testen
 
@@ -181,9 +181,7 @@ Nadat u het failovercluster en alle cluster onderdelen, inclusief opslag, hebt g
 
 1. Selecteer **nieuwe SQL Server failover-cluster installatie**. Volg de instructies in de wizard om de SQL Server FCI te installeren.
 
-   De FCI-gegevens directory's moeten zich op geclusterde opslag beslaan. Met Opslagruimten Direct is het geen gedeelde schijf, maar een koppel punt naar een volume op elke server. Opslagruimten Direct synchroniseert het volume tussen beide knoop punten. Het volume wordt door gegeven aan het cluster als een Cluster Shared Volume (CSV). Gebruik het CSV-koppel punt voor de gegevens directory's.
-
-   ![Gegevens directory's](./media/failover-cluster-instance-storage-spaces-direct-manually-configure/20-data-dicrectories.png)
+De FCI-gegevens directory's moeten op de gedeelde Azure-schijven staan. 
 
 1. Nadat u de instructies in de wizard hebt voltooid, installeert Setup een SQL Server FCI op het eerste knoop punt.
 

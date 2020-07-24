@@ -3,11 +3,12 @@ title: Back-ups maken van SQL Server met behulp van Azure Backup Server
 description: In dit artikel leert u de configuratie voor het maken van back-ups van SQL Server-data bases met behulp van Microsoft Azure Backup-Server (MABS).
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: 2bb172ca36f3f932fdaaf5b71e8fa183c04d1510
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d682e63424ca247161e9784a8a05b91186da54b7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84194188"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003641"
 ---
 # <a name="back-up-sql-server-to-azure-by-using-azure-backup-server"></a>Back-ups van SQL Server naar Azure maken met behulp van Azure Backup Server
 
@@ -18,6 +19,34 @@ Een back-up maken van een SQL Server-Data Base en deze herstellen vanuit Azure:
 1. Maak een back-upbeleid om SQL Server-data bases in azure te beveiligen.
 1. Maak back-ups op aanvraag in Azure.
 1. Herstel de data base in Azure.
+
+## <a name="prerequisites-and-limitations"></a>Vereisten en beperkingen
+
+* Als u een database met bestanden op een externe bestandsshare hebt, mislukt de beveiliging met fout-id 104. MABS biedt geen ondersteuning voor de beveiliging van SQL Server gegevens op een externe bestands share.
+* MABS kan geen data bases beveiligen die zijn opgeslagen op externe SMB-shares.
+* Zorg ervoor dat de replica's van de [beschikbaarheids groep zijn geconfigureerd als alleen-lezen](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server?view=sql-server-ver15).
+* U moet de systeem account **NTAuthority\System** expliciet toevoegen aan de groep Sysadmin op SQL Server.
+* Wanneer u een herstel bewerking op een andere locatie uitvoert voor een gedeeltelijk Inge sloten data base, moet u ervoor zorgen dat de functie [Inge sloten data bases](/sql/relational-databases/databases/migrate-to-a-partially-contained-database?view=sql-server-ver15#enable) is ingeschakeld voor het SQL-doel exemplaar.
+* Wanneer u een herstel bewerking op een andere locatie uitvoert voor een bestands stroom database, moet u ervoor zorgen dat de functie [Bestands stroom database](/sql/relational-databases/blob/enable-and-configure-filestream?view=sql-server-ver15) is ingeschakeld voor het SQL-doel exemplaar.
+* Beveiliging voor SQL Server AlwaysOn:
+  * MABS detecteert beschikbaarheids groepen bij het uitvoeren van een query bij het maken van de beveiligings groep.
+  * MABS detecteert een failover en gaat verder met de beveiliging van de data base.
+  * MABS ondersteunt configuraties met meerdere site clusters voor een exemplaar van SQL Server.
+* Wanneer u data bases beveiligt die de functie AlwaysOn gebruiken, heeft MABS de volgende beperkingen:
+  * MABS zal het back-upbeleid voor beschikbaarheids groepen dat is ingesteld in SQL Server, op basis van de voor keuren voor back-ups, als volgt door:
+    * Voorkeur voor secundaire: back-ups moeten op een secundaire replica plaatsvinden, behalve wanneer de primaire replica de enige replica online is. Als er meerdere secundaire replica's beschikbaar zijn, wordt het knoop punt met de hoogste back-upprioriteit geselecteerd voor back-up. Als alleen de primaire replica beschikbaar is, moet de back-up op de primaire replica worden uitgevoerd.
+    * Alleen secundaire: back-up mag niet op de primaire replica worden uitgevoerd. Als de primaire replica de enige online replica is, mag de back-up niet plaatsvinden.
+    * Primaire: back-ups moeten altijd op de primaire replica plaatsvinden.
+    * Iedere replica: back-ups kunnen op alle beschikbare replica's in de beschikbaarheidsgroep plaatsvinden. Het knooppunt waarvan een back-up moet worden gemaakt, zal gebaseerd zijn op de back-upprioriteiten voor elk van de knooppunten.
+  * Houd rekening met het volgende:
+    * U kunt back-ups maken van elke Lees bare replica, dat wil zeggen primair, synchroon secundair, asynchroon secundair.
+    * Als een replica wordt uitgesloten van de back-up, bijvoorbeeld als **replica uitsluiten** is ingeschakeld of als niet leesbaar is gemarkeerd, wordt die replica niet geselecteerd voor back-up onder een van de opties.
+    * Als er meerdere replica's beschikbaar en leesbaar zijn, wordt het knoop punt met de hoogste back-upprioriteit geselecteerd voor back-up.
+    * Als de back-up mislukt op het geselecteerde knoop punt, mislukt de back-upbewerking.
+    * Herstel naar de oorspronkelijke locatie wordt niet ondersteund.
+* Back-upproblemen SQL Server 2014 of hoger:
+  * SQL Server 2014 heeft een nieuwe functie toegevoegd voor het maken van een [Data Base voor on-premises SQL Server in Windows Azure Blob-opslag](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure?view=sql-server-ver15). MABS kan niet worden gebruikt om deze configuratie te beveiligen.
+  * Er zijn enkele bekende problemen met de voor keur voor secundaire back-upvoorkeur voor de SQL AlwaysOn-optie. MABS maakt altijd een back-up van secundair. Als er geen secundair kan worden gevonden, mislukt de back-up.
 
 ## <a name="before-you-start"></a>Voordat u begint
 
@@ -35,7 +64,7 @@ Als u SQL Server-data bases in azure wilt beveiligen, moet u eerst een back-upbe
 1. Selecteer voor het type beveiligings groep de optie **servers**.
 
     ![Het type server beveiligings groep selecteren](./media/backup-azure-backup-sql/pg-servers.png)
-1. Vouw het SQL Server-exemplaar uit waarvan de data bases waarvan u een back-up wilt maken, zich bevinden. U ziet de gegevens bronnen waarvan een back-up van die server kan worden gemaakt. Vouw **alle SQL-shares** uit en selecteer vervolgens de data bases waarvan u een back-up wilt maken. In dit voor beeld selecteren we Report Server $ MSDPM2012 en Report Server $ MSDPM2012TempDB. Selecteer **Volgende**.
+1. Vouw het SQL Server-exemplaar uit waarvan de data bases waarvan u een back-up wilt maken, zich bevinden. U ziet de gegevens bronnen waarvan een back-up van die server kan worden gemaakt. Vouw **alle SQL-shares** uit en selecteer vervolgens de data bases waarvan u een back-up wilt maken. In dit voor beeld selecteren we Report Server $ MSDPM2012 en Report Server $ MSDPM2012TempDB. Selecteer **Next**.
 
     ![Een SQL Server-Data Base selecteren](./media/backup-azure-backup-sql/pg-databases.png)
 1. Geef de beveiligings groep de naam en selecteer **Ik wil online beveiliging**.
@@ -52,7 +81,7 @@ Als u SQL Server-data bases in azure wilt beveiligen, moet u eerst een back-upbe
    >
    >
 
-1. Selecteer **Volgende**. MABS toont de totale beschik bare opslag ruimte. Ook wordt het mogelijke schijfruimte gebruik weer gegeven.
+1. Selecteer **Next**. MABS toont de totale beschik bare opslag ruimte. Ook wordt het mogelijke schijfruimte gebruik weer gegeven.
 
     ![Schijf toewijzing instellen in MABS](./media/backup-azure-backup-sql/pg-storage.png)
 
@@ -90,7 +119,7 @@ Als u SQL Server-data bases in azure wilt beveiligen, moet u eerst een back-upbe
 
     ![Kies een Bewaar beleid in MABS](./media/backup-azure-backup-sql/pg-retentionschedule.png)
 
-    In dit voorbeeld geldt het volgende:
+    In dit voorbeeld:
 
     * Back-ups worden dagelijks uitgevoerd om 12:00 uur en 8:00 PM. Ze worden gedurende 180 dagen bewaard.
     * De back-up op zaterdag om 12:00 uur wordt gedurende 104 weken bewaard.
@@ -135,7 +164,7 @@ Een beveiligde entiteit, zoals een SQL Server Data Base, herstellen vanuit Azure
 1. Klik met de rechter muisknop op de naam van de data base en selecteer **herstellen**.
 
     ![Een Data Base herstellen vanuit Azure](./media/backup-azure-backup-sql/sqlbackup-recover.png)
-1. DPM toont de details van het herstel punt. Selecteer **Volgende**. Als u de Data Base wilt overschrijven, selecteert u het herstel type **herstellen naar het oorspronkelijke exemplaar van SQL Server**. Selecteer vervolgens **Volgende**.
+1. DPM toont de details van het herstel punt. Selecteer **Next**. Als u de Data Base wilt overschrijven, selecteert u het herstel type **herstellen naar het oorspronkelijke exemplaar van SQL Server**. Selecteer vervolgens **Volgende**.
 
     ![Een Data Base op de oorspronkelijke locatie herstellen](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
 

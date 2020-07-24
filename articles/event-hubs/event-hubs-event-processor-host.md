@@ -3,12 +3,12 @@ title: Gebeurtenissen ontvangen met Event processor host-Azure Event Hubs | Micr
 description: In dit artikel wordt de Event processor host in azure Event Hubs beschreven, waarmee u het beheer van controle punten, leasing en het lezen van gebeurtenissen met een parallelle activiteit vereenvoudigt.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 338b4e890d61aca0d48287db6f042f9dc088754b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd11e3ef77ff665a0207a2cf7e63b1b9f2df0e08
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320635"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002519"
 ---
 # <a name="event-processor-host"></a>Gebeurtenisprocessorhost
 > [!NOTE]
@@ -22,7 +22,7 @@ ms.locfileid: "85320635"
 
 Azure Event Hubs is een krachtige telemetrie-opname service die kan worden gebruikt voor het streamen van miljoenen gebeurtenissen tegen lage kosten. In dit artikel wordt beschreven hoe u opgenomen gebeurtenissen kunt gebruiken met behulp van de *Event processor host* (EPH). een intelligente Consumer-agent die het beheer van de controle punten, leasing en parallelle gebeurtenis lezers vereenvoudigt.  
 
-De te schalen sleutel voor Event Hubs is het idee van gepartitioneerde gebruikers. In tegens telling tot het patroon van [concurrerende gebruikers](https://msdn.microsoft.com/library/dn568101.aspx) , maakt het gepartitioneerde consument patroon een hoge schaal door de knel punt conflicten te verwijderen en end-to-end-parallellisme te vereenvoudigen.
+De te schalen sleutel voor Event Hubs is het idee van gepartitioneerde gebruikers. In tegens telling tot het patroon van [concurrerende gebruikers](/previous-versions/msp-n-p/dn568101(v=pandp.10)) , maakt het gepartitioneerde consument patroon een hoge schaal door de knel punt conflicten te verwijderen en end-to-end-parallellisme te vereenvoudigen.
 
 ## <a name="home-security-scenario"></a>Home Security-scenario
 
@@ -126,7 +126,7 @@ Het is raadzaam om dingen relatief snel uit te voeren. dat wil zeggen, zo weinig
 
 Op een bepaald moment tijdens uw verwerking wilt u mogelijk bijhouden wat u hebt gelezen en voltooid. Bijhouden is essentieel als u de Lees bewerking opnieuw moet starten, zodat u niet terugkeert naar het begin van de stroom. [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) vereenvoudigt dit bijhouden met behulp van *controle punten*. Een controle punt is een locatie, of offset, voor een bepaalde partitie, binnen een bepaalde consumenten groep, op welk moment u tevreden bent over het verwerken van de berichten. Het markeren van een controle punt in **EventProcessorHost** wordt bereikt door het aanroepen van de methode [CheckpointAsync](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext.checkpointasync) op het [PartitionContext](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext) -object. Deze bewerking wordt uitgevoerd in de [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) -methode, maar kan ook worden uitgevoerd in [CloseAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.closeasync).
 
-## <a name="checkpointing"></a>Controlepunten plaatsen
+## <a name="checkpointing"></a>Controlepunten maken
 
 De methode [CheckpointAsync](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext.checkpointasync) heeft twee Overloads: de eerste, zonder para meters, de controle punten voor de hoogste gebeurtenis verschuiving in de verzameling die wordt geretourneerd door [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync). Deze offset is een ' hoog water merk '. Hierbij wordt ervan uitgegaan dat u alle recente gebeurtenissen hebt verwerkt wanneer u deze aanroept. Als u deze methode op deze manier gebruikt, moet u er rekening mee houden dat u deze zou moeten aanroepen nadat de andere code voor de gebeurtenis verwerking is geretourneerd. Met de tweede overbelasting kunt u een [Event Data](/dotnet/api/microsoft.azure.eventhubs.eventdata) -exemplaar opgeven voor het controle punt. Met deze methode kunt u een ander type water merk gebruiken om een controle punt te maken. Met dit water merk kunt u een ' laag water '-markering implementeren: de laagste geordende gebeurtenis die u zeker hebt, is verwerkt. Deze overbelasting wordt gegeven om flexibiliteit in te scha kelen voor offset beheer.
 
@@ -162,7 +162,7 @@ Daarnaast neemt één overbelasting van [RegisterEventProcessorAsync](/dotnet/ap
 De receive-epoche werkt als volgt:
 
 ### <a name="with-epoch"></a>Met epoche
-Epoche is een unieke id (epoche waarde) die door de service wordt gebruikt om het eigendom van een partitie/lease af te dwingen. U maakt een op epoche gebaseerde ontvanger met behulp van de methode [CreateEpochReceiver](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createepochreceiver?view=azure-dotnet) . Met deze methode wordt een op epoche gebaseerde ontvanger gemaakt. De ontvanger wordt gemaakt voor een specifieke Event Hub partitie van de opgegeven Consumer groep.
+Epoche is een unieke id (epoche waarde) die door de service wordt gebruikt om het eigendom van een partitie/lease af te dwingen. U maakt een op epoche gebaseerde ontvanger met behulp van de methode [CreateEpochReceiver](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createepochreceiver?view=azure-dotnet) . Met deze methode wordt een op epoche gebaseerde ontvanger gemaakt. De ontvanger wordt gemaakt voor een specifieke Event Hub partitie van de opgegeven Consumer groep.
 
 De epoche-functie biedt gebruikers de mogelijkheid om ervoor te zorgen dat er op elk moment maar één ontvanger op een Consumer groep is, met de volgende regels:
 
@@ -171,7 +171,7 @@ De epoche-functie biedt gebruikers de mogelijkheid om ervoor te zorgen dat er op
 - Als er een ontvanger is met een epoche waarde E1 en er een nieuwe ontvanger wordt gemaakt met een epoche waarde E2 waarbij E1 > E2, wordt het maken van E2 met een fout gegenereerd: er bestaat al een ontvanger met epoche E1.
 
 ### <a name="no-epoch"></a>Geen epoche
-U maakt een ontvanger op basis van een niet-epoche met behulp van de methode [CreateReceiver](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createreceiver?view=azure-dotnet) . 
+U maakt een ontvanger op basis van een niet-epoche met behulp van de methode [CreateReceiver](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createreceiver?view=azure-dotnet) . 
 
 Er zijn enkele scenario's in de verwerking van stromen waarbij gebruikers meerdere ontvangers willen maken op één consumer groep. Om dergelijke scenario's te ondersteunen, hebben we de mogelijkheid om een ontvanger zonder epoche te maken. in dit geval kunnen we Maxi maal vijf gelijktijdige ontvangers voor de consumenten groep toestaan.
 

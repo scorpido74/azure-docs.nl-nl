@@ -3,14 +3,14 @@ title: Azure Automation gegevens beveiliging
 description: In dit artikel leest u hoe Azure Automation uw privacy beschermt en uw gegevens beveiligt.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 06/03/2020
+ms.date: 07/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: cc96f2dd81b618b4170acd4b415a09248adbb7d5
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 610c2050150a533e246bc74ed7750ce87f7cf617
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186160"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004644"
 ---
 # <a name="management-of-azure-automation-data"></a>Beheer van Azure Automation-gegevens
 
@@ -41,7 +41,7 @@ Zie [log Analytics agent Overview-TLS 1,2](..//azure-monitor/platform/log-analyt
 | Windows Server 2012-2016 | Wordt ondersteund en is standaard ingeschakeld. | Controleren of u nog steeds de [standaard instellingen](/windows-server/security/tls/tls-registry-settings) gebruikt |
 | Windows 7 SP1 en Windows Server 2008 R2 SP1 | Ondersteund, maar is niet standaard ingeschakeld. | Zie de pagina met [register instellingen voor Transport Layer Security (TLS)](/windows-server/security/tls/tls-registry-settings) voor meer informatie over het inschakelen van.  |
 
-## <a name="data-retention"></a>Gegevensretentie
+## <a name="data-retention"></a>Bewaartijd voor gegevens
 
 Wanneer u een resource in Azure Automation verwijdert, wordt deze gedurende een aantal dagen voor controle doeleinden bewaard voordat deze definitief worden verwijderd. U kunt de resource niet zien of gebruiken tijdens deze periode. Dit beleid is ook van toepassing op bronnen die horen bij een verwijderd Automation-account.
 
@@ -50,7 +50,7 @@ De volgende tabel bevat een overzicht van het Bewaar beleid voor verschillende r
 | Gegevens | Beleid |
 |:--- |:--- |
 | Accounts |Een account wordt definitief verwijderd 30 dagen nadat een gebruiker het heeft verwijderd. |
-| Assets |Een activum wordt definitief verwijderd 30 dagen nadat een gebruiker het heeft verwijderd, of 30 dagen nadat een gebruiker een account heeft verwijderd dat de Asset bevat. |
+| Assets |Een activum wordt definitief verwijderd 30 dagen nadat een gebruiker het heeft verwijderd, of 30 dagen nadat een gebruiker een account heeft verwijderd dat de Asset bevat. Activa bevatten variabelen, schema's, referenties, certificaten, Python 2-pakketten en verbindingen. |
 | DSC-knoop punten |Een DSC-knoop punt wordt permanent verwijderd 30 dagen nadat de registratie van een Automation-account is ongedaan gemaakt met Azure Portal of de cmdlet [unregister-AzAutomationDscNode](/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-3.7.0) in Windows Power shell. Een knoop punt wordt ook 30 dagen nadat een gebruiker het account dat het knoop punt bevat verwijderd, definitief verwijderd. |
 | Taken |Een taak wordt verwijderd en wordt 30 dagen na de wijziging permanent verwijderd, bijvoorbeeld nadat de taak is voltooid, is gestopt of is onderbroken. |
 | Modules |Een module wordt definitief verwijderd 30 dagen nadat een gebruiker deze heeft verwijderd, of 30 dagen nadat een gebruiker het account heeft verwijderd dat de module bevat. |
@@ -66,7 +66,7 @@ Wanneer u een Automation-account in azure verwijdert, worden alle objecten in he
 
 ### <a name="runbooks"></a>Runbooks
 
-U kunt uw runbooks exporteren naar script bestanden met behulp van de Azure Portal of de cmdlet [Get-AzureAutomationRunbookDefinition](/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition) in Windows Power shell. U kunt deze script bestanden importeren in een ander Automation-account, zoals beschreven in [Runbooks beheren in azure Automation](manage-runbooks.md).
+U kunt uw runbooks exporteren naar script bestanden met behulp van de Azure Portal of de cmdlet [Get-AzureAutomationRunbookDefinition](/powershell/module/servicemanagement/azure.service/get-azureautomationrunbookdefinition) in Windows Power shell. U kunt deze script bestanden importeren in een ander Automation-account, zoals beschreven in [Runbooks beheren in azure Automation](manage-runbooks.md).
 
 ### <a name="integration-modules"></a>Integratiemodules
 

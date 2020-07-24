@@ -2,13 +2,13 @@
 title: Event Hub van Apache Kafka app gebruiken-Azure Event Hubs | Microsoft Docs
 description: Dit artikel bevat informatie over Apache Kafka ondersteuning door Azure Event Hubs.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 733623895176bb3b573c2efcbda8a40b9e2d87c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/20/2020
+ms.openlocfilehash: 6dad797f6769e9804cce7d47ed74794fdddcfb0b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320525"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002475"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Azure Event Hubs van Apache Kafka toepassingen gebruiken
 Event Hubs biedt een Kafka-eind punt dat door uw bestaande op Kafka gebaseerde toepassingen kan worden gebruikt als alternatief voor het uitvoeren van uw eigen Kafka-cluster. Event Hubs ondersteunt [Apache Kafka protocol 1,0 en hoger](https://kafka.apache.org/documentation/)en werkt met uw bestaande Kafka-toepassingen, waaronder MirrorMaker.  
@@ -79,16 +79,14 @@ Met de functie Event Hubs voor Kafka kunt u met één protocol schrijven en met 
 
 Hier volgt een lijst met Kafka-functies die nog niet worden ondersteund:
 
-*   Idempotent producer
 *   Transactie
 *   Compressie
 *   Bewaar periode op basis van grootte
 *   Logboek compressie
-*   Partities toevoegen aan een bestaand onderwerp
 *   HTTP Kafka API-ondersteuning
 *   Kafka stromen
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel is een inleiding tot Event Hubs voor Kafka beschreven. Zie [Apache Kafka ontwikkelaars handleiding voor Azure Event hubs](apache-kafka-developer-guide.md)voor meer informatie.
+In dit artikel is een inleiding tot Event Hubs voor Kafka beschreven. Zie [Ontwikkelaarshandleiding van Apache Kafka voor Azure Event Hubs](apache-kafka-developer-guide.md) voor meer informatie.
 
 

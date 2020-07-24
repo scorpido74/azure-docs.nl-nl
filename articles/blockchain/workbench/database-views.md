@@ -4,15 +4,16 @@ description: Overzicht van beschik bare SQL Data Base-weer gaven voor Azure Bloc
 ms.date: 09/05/2019
 ms.topic: article
 ms.reviewer: mmercuri
-ms.openlocfilehash: 585084b4c85c48533bdad96d4f99813ef2e418b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e715bd2297c1e051ae92b15d73c945c9e80c3d94
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74325976"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003318"
 ---
 # <a name="azure-blockchain-workbench-database-views"></a>Database weergaven voor Azure Block Chain workbench
 
-Azure Block Chain Workbench preview levert gegevens van gedistribueerde groot boeken aan een externe SQL DB *-* data base. De buiten-keten database maakt het mogelijk om SQL en bestaande hulpprogram ma's, zoals [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017), te gebruiken om te communiceren met block Chain-gegevens.
+Azure Block Chain Workbench preview levert gegevens van gedistribueerde groot boeken aan een externe SQL DB *-* data base. De buiten-keten database maakt het mogelijk om SQL en bestaande hulpprogram ma's, zoals [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017), te gebruiken om te communiceren met block Chain-gegevens.
 
 Azure Block Chain Workbench biedt een reeks database weergaven die toegang bieden tot gegevens die handig zijn bij het uitvoeren van uw query's. Deze weer gaven zijn sterk genormaliseerd, zodat het eenvoudig is om snel aan de slag te gaan met het maken van rapporten, analyses en andere Block Chain-gegevens met bestaande hulpprogram ma's en zonder dat u de data base-mede werkers hoeft te trainen.
 
@@ -26,7 +27,7 @@ Deze sectie bevat een overzicht van de database weergaven en de gegevens die ze 
 
 Deze weer gave bevat details over **toepassingen** die zijn geüpload naar Azure Block Chain Workbench.
 
-| Naam                             | Type          | Kan null zijn | Description                                                                                                                                                                                                                                                   |
+| Naam                             | Type          | Kan null zijn | Beschrijving                                                                                                                                                                                                                                                   |
 |----------------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationID                    | int           | No          | Een unieke id voor de toepassing |
 | ApplicationName                  | nvarchar (50)  | No          | De naam van de toepassing |
@@ -47,7 +48,7 @@ Deze weer gave bevat details over de rollen die zijn gedefinieerd in azure Block
 
 In een *Asset overboeking* -toepassing kunnen bijvoorbeeld rollen zoals de rollen *koper* en *verkoper* worden gedefinieerd.
 
-| Naam                   | Type             | Kan null zijn | Description                                       |
+| Naam                   | Type             | Kan null zijn | Beschrijving                                       |
 |------------------------|------------------|-------------|---------------------------------------------------|
 | ApplicationID          | int              | No          | Een unieke id voor de toepassing           |
 | ApplicationName        | nvarchar (50)     | No          | De naam van de toepassing                       |
@@ -63,7 +64,7 @@ Deze weer gave bevat details over de rollen die zijn gedefinieerd in azure Block
 
 In een *Asset overboeking* -toepassing kan bijvoorbeeld *John Smith* worden gekoppeld aan de rol van de *koper* .
 
-| Naam                       | Type          | Kan null zijn | Description                                                                                                                                                                                                                           |
+| Naam                       | Type          | Kan null zijn | Beschrijving                                                                                                                                                                                                                           |
 |----------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationID              | int           | No          | Een unieke id voor de toepassing                                                                                                                                                                                               |
 | ApplicationName            | nvarchar (50)  | No          | De naam van de toepassing                                                                                                                                                                                                           |
@@ -86,7 +87,7 @@ Deze weer gave bevat details over de verbindingen die zijn gedefinieerd in azure
 -   Gekoppelde grootboek gegevens
 -   Bijbehorende gebruikers gegevens
 
-| Naam                     | Type          | Kan null zijn | Description                                                                                                                                                                                                                           |
+| Naam                     | Type          | Kan null zijn | Beschrijving                                                                                                                                                                                                                           |
 |--------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ConnectionId             | int           | No          | De unieke id voor een verbinding in azure Block Chain workbench |
 | ConnectionEndpointUrl    | nvarchar (50)  | No          | De eind punt-URL voor een verbinding |
@@ -111,7 +112,7 @@ Deze weer gave bevat details over geïmplementeerde contracten. Voor elk contrac
 -   Details van de gebruiker die de actie heeft gestart
 -   Details met betrekking tot het block Chain-blok en de trans actie
 
-| Naam                                     | Type           | Kan null zijn | Description                                                                                                                                                                                                                                                   |
+| Naam                                     | Type           | Kan null zijn | Beschrijving                                                                                                                                                                                                                                                   |
 |------------------------------------------|----------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ConnectionId                             | int            | No          | De unieke id voor een verbinding in azure Block Chain Workbench.                                                                                                                                                                                         |
 | ConnectionEndpointUrl                    | nvarchar (50)   | No          | De eind punt-URL voor een verbinding |
@@ -152,7 +153,7 @@ Deze weer gave vertegenwoordigt het meren deel van informatie met betrekking tot
 -   Details van de gebruiker die de actie heeft gestart
 -   Details met betrekking tot het block Chain-blok en de trans actie
 
-| Naam                                     | Type          | Kan null zijn | Description                                                                                                                                                                                                                                                                                                    |
+| Naam                                     | Type          | Kan null zijn | Beschrijving                                                                                                                                                                                                                                                                                                    |
 |------------------------------------------|---------------|-------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationID                            | int           | No          | Een unieke id voor de toepassing |
 | ApplicationName                          | nvarchar (50)  | No          | De naam van de toepassing |
@@ -211,7 +212,7 @@ Deze weer gave vertegenwoordigt het meren deel van informatie met betrekking tot
 -   Specifieke instantie waarden voor eigenschappen
 -   Details voor de eigenschap State van het contract
 
-| Naam                               | Type          | Kan null zijn | Description                                                                                                                                                                                                                                                                        |
+| Naam                               | Type          | Kan null zijn | Beschrijving                                                                                                                                                                                                                                                                        |
 |------------------------------------|---------------|-------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationID                      | int           | No          | Een unieke id voor de toepassing |
 | ApplicationName                    | nvarchar (50)  | No          | De naam van de toepassing |
@@ -251,7 +252,7 @@ Deze weer gave vertegenwoordigt het meren deel van informatie met betrekking tot
 -   Definitie van gekoppelde Smart-contract eigenschap
 -   Details voor de eigenschap State van het contract
 
-| Naam                               | Type          | Kan null zijn | Description                                                                                                                                                                                                                                                                        |
+| Naam                               | Type          | Kan null zijn | Beschrijving                                                                                                                                                                                                                                                                        |
 |------------------------------------|---------------|-------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationID                      | int           | No          | Een unieke id voor de toepassing |
 | ApplicationName                    | nvarchar (50)  | No          | De naam van de toepassing |
@@ -303,7 +304,7 @@ Deze weer gave bevat de meta gegevens van de werk stroom en de functies en para 
 -   Gekoppelde werk stroom definitie
 -   Informatie over de begin status van de werk stroom
 
-| Naam                              | Type          | Kan null zijn | Description                                                                                                                                |
+| Naam                              | Type          | Kan null zijn | Beschrijving                                                                                                                                |
 |-----------------------------------|---------------|-------------|--------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationID                     | int           | No          | Een unieke id voor de toepassing |
 | ApplicationName                   | nvarchar (50)  | No          | De naam van de toepassing |
@@ -330,7 +331,7 @@ Deze weer gave bevat de meta gegevens van de werk stroom en de functies en para 
 -   Gekoppelde werk stroom definitie
 -   Details van werk stroom functie
 
-| Naam                                 | Type          | Kan null zijn | Description                                                                          |
+| Naam                                 | Type          | Kan null zijn | Beschrijving                                                                          |
 |--------------------------------------|---------------|-------------|--------------------------------------------------------------------------------------|
 | ApplicationID                        | int           | No          | Een unieke id voor de toepassing |
 | ApplicationName                      | nvarchar (50)  | No          | De naam van de toepassing |
@@ -359,7 +360,7 @@ Deze weer gave bevat de eigenschappen die voor een werk stroom zijn gedefinieerd
 -   Gekoppelde werk stroom definitie
 -   Details van werk stroom eigenschap
 
-| Naam                         | Type          | Kan null zijn | Description                                                                                                                                                                                                                                                   |
+| Naam                         | Type          | Kan null zijn | Beschrijving                                                                                                                                                                                                                                                   |
 |------------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationID                | int           | No          | Een unieke id voor de toepassing |
 | ApplicationName              | nvarchar (50)  | No          | De naam van de toepassing |
@@ -386,7 +387,7 @@ Deze weer gave bevat de eigenschappen die aan een werk stroom zijn gekoppeld. Vo
 -   Gekoppelde werk stroom definitie
 -   Status informatie werk stroom
 
-| Naam                         | Type          | Kan null zijn | Description                                                                                                                                                                                                                                                   |
+| Naam                         | Type          | Kan null zijn | Beschrijving                                                                                                                                                                                                                                                   |
 |------------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationID                | int           | No          | Een unieke id voor de toepassing |
 | ApplicationName              | nvarchar (50)  | No          | De naam van de toepassing |

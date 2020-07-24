@@ -3,12 +3,12 @@ title: Azure Event Hubs-Exchange-gebeurtenissen met verschillende protocollen
 description: In dit artikel wordt uitgelegd hoe consumenten en producenten die gebruikmaken van verschillende protocollen (AMQP, Apache Kafka en HTTPS), gebeurtenissen kunnen uitwisselen bij het gebruik van Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: ec3122dcf151fe3e7b7b9578725e810ddca22bdf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6cdc4b9040f314b4ec41f84cc7436f0f2e3d6af6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320601"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002502"
 ---
 # <a name="exchange-events-between-consumers-and-producers-that-use-different-protocols-amqp-kafka-and-https"></a>Uitwisseling van gebeurtenissen tussen consumenten en producenten die verschillende protocollen gebruiken: AMQP, Kafka en HTTPS
 Azure Event Hubs ondersteunt drie protocollen voor consumenten en producenten: AMQP, Kafka en HTTPS. Elk van deze protocollen heeft een eigen manier om een bericht weer te geven, waardoor natuurlijk de volgende vraag zich voordoet: als een toepassing gebeurtenissen verzendt naar een event hub met één protocol en deze gebruikt met een ander protocol, wat betekenen de verschillende onderdelen en waarden van de gebeurtenis eruit als bij de consument? In dit artikel worden aanbevolen procedures voor zowel de producent als de consument beschreven om ervoor te zorgen dat de waarden in een gebeurtenis correct worden geïnterpreteerd door de verbruikte toepassing.
@@ -329,9 +329,9 @@ String myStringProperty = new String(rawbytes, StandardCharsets.UTF_8);
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel hebt u geleerd hoe u kunt streamen naar Event Hubs zonder uw protocol-clients te wijzigen of uw eigen clusters uit te voeren. Raadpleeg de volgende artikelen voor meer informatie over Event Hubs en Event Hubs voor Kafka:  
+In dit artikel hebt u geleerd u hoe u kunt streamen naar Event Hubs zonder uw protocolclients te wijzigen of uw eigen clusters uit te voeren. Raadpleeg de volgende artikelen voor meer informatie over Event Hubs en Event Hubs voor Kafka:  
 
-* [Meer informatie over Event Hubs](event-hubs-what-is-event-hubs.md)
+* [Meer informatie over Event Hubs](./event-hubs-about.md)
 * [Meer informatie over Event Hubs for Kafka](event-hubs-for-kafka-ecosystem-overview.md)
 * [Meer voorbeelden van de Event Hubs for Kafka-GitHub verkennen](https://github.com/Azure/azure-event-hubs-for-kafka)
 * Gebruik [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) voor het [streamen van gebeurtenissen van Kafka on-premises naar Event hubs in de Cloud.](event-hubs-kafka-mirror-maker-tutorial.md)

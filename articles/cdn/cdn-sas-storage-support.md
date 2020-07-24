@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/21/2018
 ms.author: allensu
-ms.openlocfilehash: c1deffe36df081908294d3c7fe58a17c8a454687
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 702ea4e76f1fb13a3c7935f131da4ef11d369813
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887042"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002995"
 ---
 # <a name="using-azure-cdn-with-sas"></a>Azure CDN gebruiken met SAS
 
@@ -81,7 +81,8 @@ Deze optie is alleen beschikbaar voor **Azure CDN Premium van Verizon** -profiel
    
    Bron:   
    `(container1\/.*)`
-   
+
+
    Bestemming:   
    ```
    $1?sv=2017-07-29&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
@@ -133,7 +134,7 @@ Als u Azure CDN verificatie van beveiligings tokens wilt gebruiken, moet u een *
 
 Omdat SAS-para meters niet zichtbaar zijn voor Azure CDN, kan Azure CDN het bezorgings gedrag niet wijzigen op basis hiervan. De gedefinieerde parameter beperkingen gelden alleen voor aanvragen die Azure CDN van de oorspronkelijke server, en niet van aanvragen van de client naar Azure CDN. Het is belang rijk dat u rekening houdt met het instellen van SAS-para meters. Als deze geavanceerde mogelijkheden vereist zijn en u [optie 3](#option-3-using-cdn-security-token-authentication-with-a-rewrite-rule)gebruikt, stelt u de juiste beperkingen in voor het beveiligings token van Azure CDN.
 
-| SAS-parameter naam | Description |
+| SAS-parameter naam | Beschrijving |
 | --- | --- |
 | Starten | Het tijdstip waarop Azure CDN toegang tot het blobbestand kan krijgen. Als gevolg van Clock scheefheid (wanneer een klok signaal op verschillende tijdstippen voor verschillende onderdelen arriveert), kiest u een tijd van 15 minuten eerder als u wilt dat de Asset direct beschikbaar is. |
 | Beëindigen | De tijd waarna Azure CDN geen toegang meer heeft tot het blobbestand. Eerder in de cache opgeslagen bestanden op Azure CDN zijn nog steeds toegankelijk. Als u de verval tijd van het bestand wilt beheren, stelt u de juiste verloop tijd in op het Azure CDN beveiligings token of verwijdert u de Asset. |

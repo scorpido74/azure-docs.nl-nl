@@ -8,11 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: 80481bc11933b0404079221f23b5054024f00acb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 471aa6e5297f8b68f08567a66e3f07e9688ca57e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80811363"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002927"
 ---
 # <a name="manage-cloud-services-in-the-azure-portal"></a>Cloud Services beheren in de Azure Portal
 In het gedeelte **Cloud Services** van de Azure Portal kunt u het volgende doen:
@@ -76,7 +77,7 @@ Er zijn twee belang rijke vereisten voor een geslaagde implementatie swap:
 
 - Als u een statisch IP-adres voor uw productie sleuf wilt gebruiken, moet u deze ook reserveren voor uw staging-sleuf. Anders mislukt de wissel.
 
-- Alle exemplaren van uw rollen moeten worden uitgevoerd voordat u de swap kunt uitvoeren. U kunt de status van uw instanties controleren op de Blade **overzicht** van de Azure Portal. U kunt ook de opdracht [Get-AzureRole](/powershell/module/servicemanagement/azure/get-azurerole?view=azuresmps-3.7.0) gebruiken in Windows Power shell.
+- Alle exemplaren van uw rollen moeten worden uitgevoerd voordat u de swap kunt uitvoeren. U kunt de status van uw instanties controleren op de Blade **overzicht** van de Azure Portal. U kunt ook de opdracht [Get-AzureRole](/powershell/module/servicemanagement/azure.service/get-azurerole?view=azuresmps-3.7.0) gebruiken in Windows Power shell.
 
 Houd er rekening mee dat de bewerkingen voor het bijwerken van gast besturingssystemen en service retouchies ook kunnen leiden tot het mislukken van implementaties. Zie [problemen met Cloud service-implementatie oplossen](cloud-services-troubleshoot-deployment-problems.md)voor meer informatie.
 

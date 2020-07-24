@@ -8,11 +8,12 @@ ms.topic: article
 ms.date: 06/10/2020
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: 14e4ccdf17647823dc9e1005c1c68a9f1f217b9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a995460793686d8293d77965e74e2cbf916925a0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84726366"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005596"
 ---
 # <a name="configure-a-custom-response-for-azure-web-application-firewall-waf"></a>Een aangepast antwoord configureren voor de firewall van Azure Web Application (WAF)
 
@@ -36,7 +37,7 @@ In het bovenstaande voor beeld hebben we de antwoord code als 403 bewaard en een
 
 Azure PowerShell voorziet in een set van cmdlets die gebruikmaken van het [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)-model om uw Azure-resources te beheren. 
 
-U kunt [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) op uw lokale computer installeren en in elke PowerShell-sessie gebruiken. Volg de instructies op de pagina om u aan te melden met uw Azure-referenties en Az PowerShell te installeren.
+U kunt [Azure PowerShell](https://docs.microsoft.com/powershell/azure/) op uw lokale computer installeren en in elke PowerShell-sessie gebruiken. Volg de instructies op de pagina om u aan te melden met uw Azure-referenties en Az PowerShell te installeren.
 
 ### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>Verbinding maken met Azure met een interactief dialoogvenster voor aanmelden
 

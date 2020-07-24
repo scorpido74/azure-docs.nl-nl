@@ -3,21 +3,25 @@ title: OptionsGroup UI-element
 description: Hierin wordt het micro soft. common. OptionsGroup UI-element voor Azure Portal beschreven. Hiermee kunnen gebruikers kiezen uit beschik bare opties bij het implementeren van een beheerde toepassing.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 06/27/2018
+ms.date: 07/09/2020
 ms.author: tomfitz
-ms.openlocfilehash: c1da0b0082bfe046adf9596a10397e9063c888be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa73b4cbded98291a14792a7151df9fdfb885b53
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75652344"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004184"
 ---
 # <a name="microsoftcommonoptionsgroup-ui-element"></a>Micro soft. common. OptionsGroup UI-element
 
-Een selectie besturings element met een rij beschik bare opties.
+Met het besturings element OptionsGroup kunnen gebruikers één optie selecteren uit twee of meer keuzes. Een gebruiker kan slechts één optie selecteren.
+
+> [!NOTE]
+> In het verleden heeft dit besturings element de opties horizon taal gerenderd. Het besturings element bevat nu de opties verticaal als keuze rondjes.
 
 ## <a name="ui-sample"></a>UI-voor beeld
 
-![Microsoft.Common.OptionsGroup](./media/managed-application-elements/microsoft.common.optionsgroup.png)
+:::image type="content" source="./media/managed-application-elements/microsoft-common-optionsgroup-2.png" alt-text="Microsoft.Common.OptionsGroup":::
 
 ## <a name="schema"></a>Schema
 

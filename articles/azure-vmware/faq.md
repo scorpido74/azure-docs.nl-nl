@@ -4,11 +4,12 @@ description: Hier vindt u antwoorden op enkele veelgestelde vragen over de Azure
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: dikamath
-ms.openlocfilehash: 1649b5649bd18b7ab53f3cc0196d7dff0f6f5b2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f160e617163f11c02e4d661cbf1c14f63a6772f8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84112691"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003420"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution-avs-preview"></a>Veelgestelde vragen over de preview-versie van Azure VMware Solution (AVS)
 
@@ -84,15 +85,15 @@ De servers hebben 576 GB RAM-geheugen.
 
 **Wat is de opslag capaciteit van elke host?**
 
-Elke ESXi-host heeft twee VSAN-diskgroups met een capaciteits laag van 15,2 TB en een cache-laag van 3,2 TB NVMe (1,6 TB in elke diskgroup).
+Elke ESXi-host heeft twee vSAN-diskgroups met een capaciteits laag van 15,2 TB en een cache-laag van 3,2 TB NVMe (1,6 TB in elke diskgroup).
 
 **Hoeveel netwerk bandbreedte is beschikbaar op elke ESXi-host?**
 
 ESXi-hosts ondersteunen connectiviteits bandbreedte van Maxi maal 25 Gbps.
 
-**Worden gegevens opgeslagen op de VSAN-data stores die zijn versleuteld op rest?**
+**Worden gegevens opgeslagen op de vSAN-data stores die zijn versleuteld op rest?**
 
-Ja, alle VSAN-gegevens worden standaard versleuteld met sleutels die zijn opgeslagen in Azure Key Vault.
+Ja, alle vSAN-gegevens worden standaard versleuteld met sleutels die zijn opgeslagen in Azure Key Vault.
 
 ## <a name="hosts-clusters-and-private-clouds"></a>Hosts, clusters en privéclouds
 
@@ -136,7 +137,7 @@ Nee, u hoeft NSX niet on-premises te gebruiken.
 
 **Wat is de upgrade en update planning voor VMware-software in een privécloud?**
 
-De software bundel upgrades van de privécloud worden uitgevoerd om de software binnen één versie van de meest recente release van de software bundel uit VMware te laten. De software versies van de privécloud kunnen afwijken van de meest recente versies van de afzonderlijke software onderdelen (ESXi, NSX-T, vCenter, VSAN).
+De software bundel upgrades van de privécloud worden uitgevoerd om de software binnen één versie van de meest recente release van de software bundel uit VMware te laten. De software versies van de privécloud kunnen afwijken van de meest recente versies van de afzonderlijke software onderdelen (ESXi, NSX-T, vCenter, vSAN).
 
 **Hoe vaak wordt de software stack voor de privécloud bijgewerkt?**
 
@@ -215,7 +216,7 @@ U kunt een quotum verhoging aanvragen door [een ondersteunings aanvraag](..\azur
 > ```azurecli-interactive
 > az provider register -n Microsoft.AVS --subscription <your subscription ID>
 > ```
-> Zie [Azure-resourceproviders en -typen](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types) voor meer manieren om de Azure Synapse-resourceprovider te registeren.
+> Zie [Azure-resourceproviders en -typen](../azure-resource-manager/management/resource-providers-and-types.md) voor meer manieren om de Azure Synapse-resourceprovider te registeren.
 
 1. Maak in uw Azure Portal onder **Help en ondersteuning**een **nieuwe ondersteunings aanvraag** en geef de volgende informatie op voor het ticket:
    - **Type probleem:** Documentatie
