@@ -6,11 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: d2b9f705c73e667f34e46fdeed3c80af1e65fb12
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61aec3936ffef488b989f54894568d206c759b12
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83830103"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014980"
 ---
 # <a name="automation-account-authentication-overview"></a>Overzicht van Automation-accountverificatie
 
@@ -47,5 +48,5 @@ Runbooks die worden uitgevoerd op een Hybrid Runbook Worker in uw Data Center of
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [een zelfstandig Azure Automation account maken](automation-create-standalone-account.md)als u een Automation-account wilt maken op basis van de Azure Portal.
-* Als u uw account liever met behulp van een sjabloon wilt maken, raadpleegt u [een Automation-account maken met behulp van een Azure Resource Manager sjabloon](automation-create-account-template.md).
+* Als u uw account liever met behulp van een sjabloon wilt maken, raadpleegt u [een Automation-account maken met behulp van een Azure Resource Manager sjabloon](quickstart-create-automation-account-template.md).
 * Zie [Runbooks verifiëren met Amazon Web Services](automation-config-aws-account.md)voor verificatie met behulp van Amazon Web Services.

@@ -5,11 +5,12 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 05/24/2019
-ms.openlocfilehash: e56ba304d197984110de5127a0f163ac0accf1aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d3835f88eb581693d10f68a9a495329466a657a2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537505"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014487"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Snelstartgids: aan de slag met Application Insights in een Java-webproject
 
@@ -171,7 +172,7 @@ Klik op een specifiek aanvraagtype om de afzonderlijke exemplaren weer te geven.
 ![Inzoomen op een specifieke voorbeeld weergave](./media/java-get-started/007-instance.png)
 
 ### <a name="analytics-powerful-query-language"></a>Analyse: krachtige querytaal
-Naarmate u meer gegevens verzamelt, kunt u query's uitvoeren voor zowel het samenvoegen van gegevens als het zoeken naar afzonderlijke exemplaren.  [Analyse](../../azure-monitor/app/analytics.md) is een krachtig hulpprogramma om inzicht te krijgen in prestaties en gebruik, en om diagnoses uit te voeren.
+Naarmate u meer gegevens verzamelt, kunt u query's uitvoeren voor zowel het samenvoegen van gegevens als het zoeken naar afzonderlijke exemplaren.  [Analyse](../log-query/log-query-overview.md) is een krachtig hulpprogramma om inzicht te krijgen in prestaties en gebruik, en om diagnoses uit te voeren.
 
 ![Voorbeeld van het hulpprogramma Analyse](./media/java-get-started/0025.png)
 
@@ -263,7 +264,7 @@ U kunt opgeven dat er aanvullende prestatiemeteritems moeten worden verzameld.
   * `tabular`: de gegevens van de prestatiemeteritems hebben de vorm van een rij in een tabel
 
 #### <a name="windows-performance-counters"></a>Windows-prestatiemeteritems
-Elk [Windows-prestatiemeteritem](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx) maakt deel uit van een categorie (net zoals een veld deel uitmaakt van een klasse). Categorieën kunnen globaal zijn, maar ook genummerde of benoemde exemplaren hebben.
+Elk [Windows-prestatiemeteritem](/windows/win32/perfctrs/performance-counters-portal) maakt deel uit van een categorie (net zoals een veld deel uitmaakt van een klasse). Categorieën kunnen globaal zijn, maar ook genummerde of benoemde exemplaren hebben.
 
 ```XML
     <PerformanceCounters>
@@ -307,7 +308,7 @@ Application Insights kan uw website regelmatig testen om te controleren of deze 
 * [Unix-prestatiemeteritems bewaken](java-collectd.md)
 * Voeg [bewaking toe aan uw webpagina's](javascript.md) om de laadtijden, AJAX-aanroepen en browseruitzonderingen te bewaken.
 * Typ [aangepaste telemetrie](../../azure-monitor/app/api-custom-events-metrics.md) om het gebruik in de browser of op de server bij te houden.
-* Gebruik [analyses](../../azure-monitor/app/analytics.md) voor krachtige query's via telemetrie van uw app
+* Gebruik [analyses](../log-query/log-query-overview.md) voor krachtige query's via telemetrie van uw app
 * Voor meer informatie gaat u naar [Azure voor Java-ontwikkelaars](/java/azure).
 
 <!--Link references-->

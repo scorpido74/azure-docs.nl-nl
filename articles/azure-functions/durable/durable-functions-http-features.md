@@ -3,13 +3,14 @@ title: HTTP-functies in Durable Functions-Azure Functions
 description: Meer informatie over de geïntegreerde HTTP-functies in de Durable Functions-extensie voor Azure Functions.
 author: cgillum
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 07/14/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 1ffa116f6877b58d54c22f918b4e83574b85860c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16a133205b13a3d0a4aa76f75c8ce316f6c09199
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82800716"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014895"
 ---
 # <a name="http-features"></a>HTTP-functies
 
@@ -53,6 +54,57 @@ De [Orchestration-client binding](durable-functions-bindings.md#orchestration-cl
 **function.json**
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/HttpStart/function.json)]
+
+# <a name="python"></a>[Python](#tab/python)
+
+**__init__. py**
+
+```python
+import logging
+import azure.functions as func
+import azure.durable_functions as df
+
+async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+    function_name = req.route_params['functionName']
+    event_data = req.get_body()
+
+    instance_id = await client.start_new(function_name, instance_id, event_data)
+    
+    logging.info(f"Started orchestration with ID = '{instance_id}'.")
+    return client.create_check_status_response(req, instance_id)
+```
+
+**function.json**
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "authLevel": "function",
+      "name": "req",
+      "type": "httpTrigger",
+      "direction": "in",
+      "route": "orchestrators/{functionName}",
+      "methods": [
+        "post",
+        "get"
+      ]
+    },
+    {
+      "name": "$return",
+      "type": "http",
+      "direction": "out"
+    },
+    {
+      "name": "starter",
+      "type": "orchestrationClient",
+      "direction": "in"
+    }
+  ]
+}
+```
 
 ---
 
@@ -147,6 +199,22 @@ module.exports = df.orchestrator(function*(context){
     }
 });
 ```
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+from datetime import datetime, timedelta
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    url = context.get_input()
+    response = yield context.call_http('GET', url)
+    
+    if response["statusCode"] >= 400:
+        # handling of error codes goes here
+
+main = df.Orchestrator.create(orchestrator_function)
+```
 
 ---
 
@@ -169,7 +237,7 @@ De API call HTTP kan automatisch de client zijde van het polling Consumer-patroo
 
 Durable Functions ondersteunt systeem eigen aanroepen naar Api's die Azure Active Directory-tokens (Azure AD) voor autorisatie accepteren. Deze ondersteuning maakt gebruik van door [Azure beheerde identiteiten](../../active-directory/managed-identities-azure-resources/overview.md) voor het verkrijgen van deze tokens.
 
-De volgende code is een voor beeld van een .NET Orchestrator-functie. De functie maakt geverifieerde aanroepen om een virtuele machine opnieuw op te starten met behulp van de Azure Resource Manager [virtuele machines rest API](https://docs.microsoft.com/rest/api/compute/virtualmachines).
+De volgende code is een voor beeld van een .NET Orchestrator-functie. De functie maakt geverifieerde aanroepen om een virtuele machine opnieuw op te starten met behulp van de Azure Resource Manager [virtuele machines rest API](/rest/api/compute/virtualmachines).
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -221,6 +289,30 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    subscription_id = "mySubId"
+    resource_group = "myRg"
+    vm_name = "myVM"
+    api_version = "2019-03-01"
+    token_source = df.ManagedIdentityTokenSource("https://management.core.windows.net")
+
+    # get a list of the Azure subscriptions that I have access to
+    restart_response = yield context.call_http("POST", 
+        f"https://management.azure.com/subscriptions/${subscription_id}/resourceGroups/${resource_group}/providers/Microsoft.Compute/virtualMachines/${vm_name}/restart?api-version=${api_version}",
+        None,
+        None,
+        token_source)
+    return restart_response
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
 ---
 
 In het vorige voor beeld `tokenSource` is de para meter geconfigureerd voor het verkrijgen van Azure AD-tokens voor [Azure Resource Manager](../../azure-resource-manager/management/overview.md). De tokens worden geïdentificeerd door de resource-URI `https://management.core.windows.net` . In het voor beeld wordt ervan uitgegaan dat de huidige functie-app lokaal wordt uitgevoerd of is geïmplementeerd als een functie-app met een beheerde identiteit. Er wordt van uitgegaan dat de lokale identiteit of de beheerde identiteit gemachtigd is voor het beheren van virtuele machines in de opgegeven resource groep `myRG` .
@@ -251,11 +343,11 @@ Als een van deze beperkingen van invloed kan zijn op uw use-case, kunt u overweg
 > [!NOTE]
 > Als u een .NET-ontwikkelaar bent, kunt u zich afvragen waarom deze functie gebruikmaakt van de typen **DurableHttpRequest** en **DurableHttpResponse** in plaats van de ingebouwde .net **HttpRequestMessage** -en **HttpResponseMessage** -typen.
 >
-> Deze ontwerp keuze is opzettelijk. De belangrijkste reden hiervoor is dat gebruikers bij aangepaste typen ervoor zorgen dat ze geen onjuiste veronderstellingen doen over het ondersteunde gedrag van de interne HTTP-client. De typen die specifiek zijn voor Durable Functions, maken het mogelijk om het API-ontwerp te vereenvoudigen. Ze kunnen ook eenvoudiger beschik bare speciale functies, zoals [beheerde identiteits integratie](#managed-identities) en het [polling Consumer-patroon](#http-202-handling)maken. 
+> Dit is een opzettelijke ontwerpkeuze. De belangrijkste reden hiervoor is dat gebruikers bij aangepaste typen ervoor zorgen dat ze geen onjuiste veronderstellingen doen over het ondersteunde gedrag van de interne HTTP-client. De typen die specifiek zijn voor Durable Functions, maken het mogelijk om het API-ontwerp te vereenvoudigen. Ze kunnen ook eenvoudiger beschik bare speciale functies, zoals [beheerde identiteits integratie](#managed-identities) en het [polling Consumer-patroon](#http-202-handling)maken. 
 
 ### <a name="extensibility-net-only"></a>Uitbreid baarheid (alleen .NET)
 
-Het aanpassen van het gedrag van de interne HTTP-client van de Orchestration kan worden uitgevoerd met behulp van [Azure functions .net-afhankelijkheids injectie](https://docs.microsoft.com/azure/azure-functions/functions-dotnet-dependency-injection). Deze mogelijkheid kan nuttig zijn om kleine gedrags wijzigingen aan te brengen. Het kan ook handig zijn voor het testen van de HTTP-client door het injecteren van object-objecten.
+Het aanpassen van het gedrag van de interne HTTP-client van de Orchestration kan worden uitgevoerd met behulp van [Azure functions .net-afhankelijkheids injectie](../functions-dotnet-dependency-injection.md). Deze mogelijkheid kan nuttig zijn om kleine gedrags wijzigingen aan te brengen. Het kan ook handig zijn voor het testen van de HTTP-client door het injecteren van object-objecten.
 
 In het volgende voor beeld wordt gedemonstreerd met behulp van afhankelijkheids injectie voor het uitschakelen van TLS/SSL-certificaat validatie voor Orchestrator-functies die externe HTTP-eind punten aanroepen.
 

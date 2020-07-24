@@ -3,28 +3,28 @@ title: Doorlopend exporteren van telemetrie uit Application Insights | Microsoft
 description: Exporteer diagnostische en gebruiks gegevens naar opslag in Microsoft Azure en down load deze vanaf daar.
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: 8ca2dc30b6e0681b5ee10fa3c77fab15ffb18b1d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 54cd6db6de4aa9c1b8f8894c03a8803ee4aa2b00
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110212"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014521"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Telemetrie exporteren vanuit Application Insights
 Wilt u de telemetrie langer houden dan de standaard retentie periode? Of verwerk het op een specifieke manier? Continue export is ideaal voor dit. De gebeurtenissen die u in de Application Insights Portal ziet, kunnen worden geëxporteerd naar de opslag in Microsoft Azure in JSON-indeling. Van daaruit kunt u uw gegevens downloaden en de code schrijven die u nodig hebt om deze te verwerken.  
 
 > [!NOTE]
-> Continue export wordt alleen ondersteund voor klassieke Application Insights-resources. [Op werk ruimte gebaseerde Application Insights resources](https://docs.microsoft.com/azure/azure-monitor/app/create-workspace-resource) moeten [Diagnostische instellingen](https://docs.microsoft.com/azure/azure-monitor/app/create-workspace-resource#export-telemetry)gebruiken.
+> Continue export wordt alleen ondersteund voor klassieke Application Insights-resources. [Op werk ruimte gebaseerde Application Insights resources](./create-workspace-resource.md) moeten [Diagnostische instellingen](./create-workspace-resource.md#export-telemetry)gebruiken.
 >
 
 Voordat u doorlopend exporteren instelt, zijn er enkele alternatieven die u wellicht wilt overwegen:
 
 * Met de knop Exporteren boven aan een metriek of zoek tabblad kunt u tabellen en grafieken overdragen naar een Excel-spread sheet.
 
-* [Analytics](../../azure-monitor/app/analytics.md) biedt een krachtige query taal voor telemetrie. Er kunnen ook resultaten worden geëxporteerd.
+* [Analytics](../log-query/log-query-overview.md) biedt een krachtige query taal voor telemetrie. Er kunnen ook resultaten worden geëxporteerd.
 * Als u [uw gegevens in Power bi wilt verkennen](../../azure-monitor/app/export-power-bi.md ), kunt u dat doen zonder doorlopend exporteren te gebruiken.
 * Met de [rest API voor gegevens toegang](https://dev.applicationinsights.io/) kunt u via een programma toegang krijgen tot uw telemetrie.
-* U kunt ook instellen dat [doorlopende export via Power shell wordt uitgevoerd](https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport).
+* U kunt ook instellen dat [doorlopende export via Power shell wordt uitgevoerd](/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport).
 
 Nadat u uw gegevens hebt gekopieerd naar de opslag ruimte (waar u deze zo lang mogelijk kunt blijven), is deze nog steeds beschikbaar in Application Insights voor de gebruikelijke [Bewaar periode](../../azure-monitor/app/data-retention-privacy.md).
 
@@ -32,9 +32,9 @@ Nadat u uw gegevens hebt gekopieerd naar de opslag ruimte (waar u deze zo lang m
 
 Continue export **biedt geen ondersteuning** voor de volgende functies/configuraties van Azure Storage:
 
-* Gebruik van [VNET/Azure Storage-firewalls](https://docs.microsoft.com/azure/storage/common/storage-network-security) in combi natie met Azure Blob Storage.
+* Gebruik van [VNET/Azure Storage-firewalls](../../storage/common/storage-network-security.md) in combi natie met Azure Blob Storage.
 
-* [Azure data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction).
+* [Azure data Lake Storage Gen2](../../storage/blobs/data-lake-storage-introduction.md).
 
 ## <a name="create-a-continuous-export"></a><a name="setup"></a>Een continue export maken
 

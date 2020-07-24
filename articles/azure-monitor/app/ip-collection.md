@@ -3,11 +3,12 @@ title: Verzameling van Azure-toepassing Insights-IP-adressen | Microsoft Docs
 description: Meer informatie over hoe IP-adressen en geolocatie worden verwerkt met Azure-toepassing Insights
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: c7a4506c6a4246edc007a5ea2158998b472ec316
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1576207eb267166a33b84009407ec119de471e6e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807125"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014436"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>Verwerking van geolocatie en IP-adres
 
@@ -26,7 +27,7 @@ Dit gedrag is inherent aan het ontwerp om onnodig verzamelen van persoons gegeve
 
 ## <a name="overriding-default-behavior"></a>Standaard gedrag negeren
 
-Hoewel het standaard gedrag is om het verzamelen van persoons gegevens te minimaliseren, bieden we nog steeds de flexibiliteit om IP-adres gegevens te verzamelen en op te slaan. Voordat u ervoor kiest om persoonlijke gegevens op te slaan, zoals IP-adressen, wordt u ten zeerste aangeraden te controleren of dit geen nalevings vereisten of lokale voor Schriften bevat waarvan u mogelijk afhankelijk bent. Raadpleeg de [richt lijnen voor persoonlijke gegevens](https://docs.microsoft.com/azure/azure-monitor/platform/personal-data-mgmt)voor meer informatie over het afhandelen van persoonlijke gegevens in Application Insights.
+Hoewel het standaard gedrag is om het verzamelen van persoons gegevens te minimaliseren, bieden we nog steeds de flexibiliteit om IP-adres gegevens te verzamelen en op te slaan. Voordat u ervoor kiest om persoonlijke gegevens op te slaan, zoals IP-adressen, wordt u ten zeerste aangeraden te controleren of dit geen nalevings vereisten of lokale voor Schriften bevat waarvan u mogelijk afhankelijk bent. Raadpleeg de [richt lijnen voor persoonlijke gegevens](../platform/personal-data-mgmt.md)voor meer informatie over het afhandelen van persoonlijke gegevens in Application Insights.
 
 ## <a name="storing-ip-address-data"></a>IP-adres gegevens opslaan
 
@@ -98,7 +99,7 @@ Als u het gedrag voor een enkele Application Insights resource alleen hoeft te w
 
 ### <a name="rest-api"></a>Rest API
 
-De nettolading van de [rest-API](https://docs.microsoft.com/rest/api/azure/) voor het maken van dezelfde wijzigingen is als volgt:
+De nettolading van de [rest-API](/rest/api/azure/) voor het maken van dezelfde wijzigingen is als volgt:
 
 ```
 PATCH https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/microsoft.insights/components/<resource-name>?api-version=2018-05-01-preview HTTP/1.1
@@ -119,7 +120,7 @@ Content-Length: 54
 
 ## <a name="telemetry-initializer"></a>Initialisatie functie voor telemetrie
 
-Als u een flexibeler alternatief nodig hebt dan `DisableIpMasking` voor het vastleggen van alle of een deel van de IP-adressen, kunt u een [initialisatie functie voor telemetrie](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#addmodify-properties-itelemetryinitializer) gebruiken om het hele IP-adres of een deel van een aangepast veld te kopiëren. 
+Als u een flexibeler alternatief nodig hebt dan `DisableIpMasking` voor het vastleggen van alle of een deel van de IP-adressen, kunt u een [initialisatie functie voor telemetrie](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer) gebruiken om het hele IP-adres of een deel van een aangepast veld te kopiëren. 
 
 ### <a name="aspnet--aspnet-core"></a>ASP.NET/ASP.NET Core
 
@@ -232,6 +233,6 @@ Nieuwe IP-adressen moeten worden weer gegeven in de `customDimensions_client-ip`
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het [verzamelen van persoonlijke gegevens](https://docs.microsoft.com/azure/azure-monitor/platform/personal-data-mgmt) in Application Insights.
+* Meer informatie over het [verzamelen van persoonlijke gegevens](../platform/personal-data-mgmt.md) in Application Insights.
 
 * Meer informatie over hoe [IP-adres verzameling](https://apmtips.com/posts/2016-07-05-client-ip-address/) in Application Insights werkt. (Dit is een oudere externe blog post, geschreven door een van onze technici. Het huidige standaard gedrag waarbij het IP-adres wordt vastgelegd `0.0.0.0` , wordt voorgezet, maar het gaat in op meer gedetailleerde informatie over de mechanismen van de ingebouwde `ClientIpHeaderTelemetryInitializer` .)

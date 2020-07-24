@@ -5,12 +5,12 @@ author: ofirmanor
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: 951894bcd047d93809b41f47213ad670823a27e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fff1aac5df50550e43ae3e87c63c2130c6b39644
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445369"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013960"
 ---
 # <a name="common-alert-schema-definitions"></a>Definities van algemeen waarschuwingsschema
 
@@ -149,7 +149,7 @@ Elk waarschuwings exemplaar beschrijft de bron die is beïnvloed en de oorzaak v
 ### <a name="log-alerts"></a>Waarschuwingen voor logboeken
 
 > [!NOTE]
-> Voor logboek waarschuwingen waarvoor een aangepast e-mail onderwerp en/of JSON-nettolading is gedefinieerd, wordt het onderwerp van de e-mail en/of het payload-schema door het algemene schema opnieuw ingesteld op de volgende manier. Waarschuwingen waarvoor het algemene schema is ingeschakeld, hebben een maximale grootte van 256 KB per waarschuwing. Zoek resultaten worden niet Inge sloten in de payload voor logboek waarschuwingen als de grootte van de waarschuwing deze drempel overschrijdt. U kunt dit vaststellen door de vlag te controleren `IncludeSearchResults` . Wanneer de zoek resultaten niet zijn opgenomen, moet u de zoek query gebruiken in combi natie met de [log Analytics-API](https://docs.microsoft.com/rest/api/loganalytics/dataaccess/query/get). 
+> Voor logboek waarschuwingen waarvoor een aangepast e-mail onderwerp en/of JSON-nettolading is gedefinieerd, wordt het onderwerp van de e-mail en/of het payload-schema door het algemene schema opnieuw ingesteld op de volgende manier. Waarschuwingen waarvoor het algemene schema is ingeschakeld, hebben een maximale grootte van 256 KB per waarschuwing. Zoek resultaten worden niet Inge sloten in de payload voor logboek waarschuwingen als de grootte van de waarschuwing deze drempel overschrijdt. U kunt dit vaststellen door de vlag te controleren `IncludeSearchResults` . Wanneer de zoek resultaten niet zijn opgenomen, moet u de zoek query gebruiken in combi natie met de [log Analytics-API](/rest/api/loganalytics/dataaccess/query/get). 
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 
@@ -220,7 +220,7 @@ Elk waarschuwings exemplaar beschrijft de bron die is beïnvloed en de oorzaak v
                     "Heartbeat"
                 ]
             }
-        ]
+        ],
     "IncludeSearchResults": "True",
     "AlertType": "Metric measurement"
     }
@@ -500,5 +500,4 @@ Elk waarschuwings exemplaar beschrijft de bron die is beïnvloed en de oorzaak v
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over het [algemene waarschuwings schema](https://aka.ms/commonAlertSchemaDocs).
-- Meer informatie [over het maken van een logische app die gebruikmaakt van het algemene waarschuwings schema voor het afhandelen van al uw waarschuwingen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations). 
-
+- Meer informatie [over het maken van een logische app die gebruikmaakt van het algemene waarschuwings schema voor het afhandelen van al uw waarschuwingen](./alerts-common-schema-integrations.md). 

@@ -3,12 +3,12 @@ title: Een opslag plaats voor artefacten toevoegen aan uw Lab in Azure DevTest L
 description: Meer informatie over het toevoegen van een artefact opslagplaats aan uw Lab in azure DevTest Labs.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 0c2c1b5f93e2b4dcaae818b3f529dc16440c3c75
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d823f437cddef0a33c7d7ea3b4c4fbdaad90fb8e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483904"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013434"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>Een opslag plaats voor artefacten toevoegen aan uw Lab in DevTest Labs
 Met DevTest Labs kunt u een artefact opgeven die moet worden toegevoegd aan een virtuele machine op het moment dat de virtuele machine wordt gemaakt of nadat de virtuele machine is aangemaakt. Dit artefact kan een hulp programma of een toepassing zijn die u wilt installeren op de VM. Artefacten worden gedefinieerd in een JSON-bestand dat is geladen vanuit een GitHub-of Azure DevOps Git-opslag plaats.
@@ -183,7 +183,7 @@ New-AzResourceGroupDeployment `
 Nadat New-AzResourceGroupDeployment is uitgevoerd, voert de opdracht belang rijke informatie uit, zoals de inrichtings status (moet zijn geslaagd) en eventuele uitvoer van de sjabloon.
 
 ## <a name="use-azure-powershell"></a>Azure PowerShell gebruiken
-Deze sectie biedt een voor beeld van een Power shell-script dat kan worden gebruikt om een artefact opslagplaats toe te voegen aan een lab. Als u geen Azure PowerShell hebt, raadpleegt u [Azure PowerShell installeren en configureren](/powershell/azure/overview?view=azps-1.2.0) voor gedetailleerde instructies om het te installeren.
+Deze sectie biedt een voor beeld van een Power shell-script dat kan worden gebruikt om een artefact opslagplaats toe te voegen aan een lab. Als u geen Azure PowerShell hebt, raadpleegt u [Azure PowerShell installeren en configureren](/powershell/azure/?view=azps-1.2.0) voor gedetailleerde instructies om het te installeren.
 
 ### <a name="full-script"></a>Volledige script
 Dit is het volledige script, inclusief enkele uitgebreide berichten en opmerkingen:
@@ -360,7 +360,7 @@ if ($ArtifactRepositoryName -eq $null){
 
 ### <a name="powershell-commands-used-in-the-script"></a>Power shell-opdrachten die in het script worden gebruikt
 
-| PowerShell-opdracht | Notities |
+| PowerShell-opdracht | Opmerkingen |
 | ------------------ | ----- |
 | [Get-AzResource](/powershell/module/az.resources/get-azresource) | Deze opdracht wordt gebruikt om details over het lab, zoals de locatie ervan, op te halen. |
 | [New-AzResource](/powershell/module/az.resources/new-azresource) | Er is geen specifieke opdracht voor het toevoegen van artefact opslagplaatsen. De algemene cmdlet [New-AzResource](/powershell/module/az.resources/new-azresource) voert de taak uit. Voor deze cmdlet **moet de waarde** **ResourceID** of de combi natie resourcenaam en **resource** type zijn ingesteld om te weten welk soort bron moet worden gemaakt. Dit voorbeeld script maakt gebruik van de resource naam en het resource type paar. <br/><br/>U ziet dat u de opslag plaats voor artefacten op dezelfde locatie en onder dezelfde resource groep maakt als het lab.|

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2d73b87248fff2e99f05d2d6d6263f2bb3abba57
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 4338bc4a11b785b27f6316748f9cbc4eeaaddbea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185633"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015099"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>Een runbook starten vanuit een webhook
 
@@ -133,7 +133,7 @@ Ervan uitgaande dat de aanvraag is geslaagd, bevat de webhook-respons de taak-ID
 {"JobIds":["<JobId>"]}
 ```
 
-De client kan niet bepalen wanneer de runbook-taak is voltooid of de voltooiings status van de webhook. Deze informatie kan worden gevonden met behulp van de taak-ID met een ander mechanisme, zoals [Windows Power shell](/powershell/module/servicemanagement/azure/get-azureautomationjob) of de [Azure Automation-API](/rest/api/automation/job).
+De client kan niet bepalen wanneer de runbook-taak is voltooid of de voltooiings status van de webhook. Deze informatie kan worden gevonden met behulp van de taak-ID met een ander mechanisme, zoals [Windows Power shell](/powershell/module/servicemanagement/azure.service/get-azureautomationjob) of de [Azure Automation-API](/rest/api/automation/job).
 
 ## <a name="renew-a-webhook"></a>Een webhook vernieuwen
 

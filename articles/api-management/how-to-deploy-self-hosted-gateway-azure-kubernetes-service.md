@@ -10,12 +10,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 04/26/2020
 ms.author: apimpm
-ms.openlocfilehash: 7321331adcfc81e26b40e7a3c4869b8b1e50fc0e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 02962e9c5be2c4b73d121a53a7b595c573ad6cd0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254381"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015218"
 ---
 # <a name="deploy-to-azure-kubernetes-service"></a>Implementeren naar Azure Kubernetes Service
 
@@ -29,7 +29,7 @@ Dit artikel bevat de stappen voor het implementeren van een zelf-hostend gateway
 
 ## <a name="deploy-the-self-hosted-gateway-to-aks"></a>De zelf-hostende Gateway implementeren op AKS
 
-1. Selecteer **gateways** onder **instellingen**.
+1. Selecteer **gateways** onder **implementatie en infra structuur**.
 2. Selecteer de zelf-hostende gateway resource die u wilt implementeren.
 3. Selecteer **implementatie**.
 4. Houd er rekening mee dat een nieuw token in het tekstvak **token** voor u automatisch wordt gegenereerd met de standaard waarden voor de **verlopende** en **geheime sleutel** . Pas een van beide of beide indien gewenst aan en selecteer **genereren** om een nieuw token te maken.

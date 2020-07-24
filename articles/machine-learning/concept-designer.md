@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: a2074b1ecd37fd18a9a0ac9091f05e734765e40b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 181f0d62f160a6644e0423be052012521752525f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86199988"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012940"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Wat is een Azure Machine Learning-ontwerpfunctie (preview)? 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -90,7 +90,7 @@ Zie voor meer informatie over de beschik bare bibliotheek met machine learning a
 
 Gebruik reken resources van uw werk ruimte om uw pijp lijn uit te voeren en uw geïmplementeerde modellen als realtime-eind punten of pijplijn eindpunten te hosten (voor batch-deinterferentie). De ondersteunde Compute-doelen zijn:
 
-| Rekendoel | Bezig met trainen | Implementatie |
+| Rekendoel | Training | Implementatie |
 | ---- |:----:|:----:|
 | Azure Machine Learning compute | ✓ | |
 | Reken instantie Azure Machine Learning | ✓ | |
@@ -115,25 +115,6 @@ Gepubliceerde pijp lijnen zijn flexibel, ze kunnen worden gebruikt om modellen t
 Een gepubliceerde pijp lijn wordt uitgevoerd op de reken resources die u in de pijp lijn concept voor elke module definieert.
 
 De Designer maakt hetzelfde [PublishedPipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline?view=azure-ml-py) -object als de SDK.
-
-
-## <a name="moving-from-the-visual-interface-to-the-designer"></a>Overstappen van de visuele interface naar de ontwerp functie
-
-De visuele interface (preview) is bijgewerkt en is nu Azure Machine Learning Designer (preview). De ontwerp functie is opnieuw ontworpen om een op een pijp lijn gebaseerde backend te gebruiken die volledig is geïntegreerd met de andere functies van Azure Machine Learning. 
-
-Als gevolg van deze updates zijn sommige concepten en voor waarden voor de visuele interface gewijzigd of is de naam van de weer gegeven. Zie de onderstaande tabel voor de belangrijkste concept wijzigingen. 
-
-| Concept in de ontwerp functie | Eerder in de visuele interface |
-| ---- |:----:|
-| Pijp lijn concept | Experiment |
-| Real-time eind punt | Webservice |
-
-### <a name="migrating-to-the-designer"></a>Migreren naar de ontwerp functie
-
-U kunt bestaande visuele interface experimenten en webservices omzetten in pijp lijnen en real-time eind punten in de ontwerp functie. Gebruik de volgende stappen om uw Visual Interface-assets te migreren:
-
-[!INCLUDE [migrate from the visual interface](../../includes/aml-vi-designer-migration.md)]
-
 
 ## <a name="next-steps"></a>Volgende stappen
 

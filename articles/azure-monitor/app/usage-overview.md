@@ -3,11 +3,12 @@ title: Gebruiks analyse met Azure-toepassing Insights | Micro soft docs
 description: Inzicht in uw gebruikers en wat ze met uw app doen.
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 7f4f46f183291684fa59e5aa35b65c8ac3352563
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1acc803d66bef29a77266d4e38e1605ffd75f36f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83797781"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014062"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Gebruiksanalyse met Application Insights
 
@@ -33,7 +34,7 @@ De beste ervaring wordt verkregen door Application Insights te installeren in de
     </script>
     ```
 
-    Raadpleeg het [naslag artikel over Java script SDK](https://docs.microsoft.com/azure/azure-monitor/app/javascript)voor meer informatie over geavanceerde configuraties voor het controleren van websites.
+    Raadpleeg het [naslag artikel over Java script SDK](./javascript.md)voor meer informatie over geavanceerde configuraties voor het controleren van websites.
 
 3. **Mobiele app-code:** Gebruik de App Center SDK voor het verzamelen van gebeurtenissen uit uw app en verzend vervolgens kopieën van deze gebeurtenissen naar Application Insights voor analyse door [deze hand leiding te volgen](../../azure-monitor/learn/mobile-center-quickstart.md).
 
@@ -44,7 +45,7 @@ De beste ervaring wordt verkregen door Application Insights te installeren in de
 ## <a name="include-user-and-session-id-in-your-telemetry"></a>Gebruikers-en sessie-ID in uw telemetrie toevoegen
 Om gebruikers na verloop van tijd bij te houden, moet Application Insights een manier om ze te identificeren. Het hulp programma gebeurtenissen is het enige gebruiks hulpmiddel waarvoor geen gebruikers-ID of sessie-ID is vereist.
 
-Het verzenden van gebruikers-en sessie-Id's starten met [dit proces](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context).
+Het verzenden van gebruikers-en sessie-Id's starten met [dit proces](./usage-send-user-context.md).
 
 ## <a name="explore-usage-demographics-and-statistics"></a>Demografische gegevens over gebruik en statistieken verkennen
 Ontdek wanneer mensen uw app gebruiken, op welke pagina's ze het meest geïnteresseerd zijn, waar uw gebruikers zich bevinden, welke browsers en besturings systemen ze gebruiken. 

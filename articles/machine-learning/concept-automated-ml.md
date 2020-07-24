@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: 5f4b48dfbef7362a0b49e53a17b080e127701c94
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 8a951a4920f2f80a4b9738317bdb2da96c613d53
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86199886"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013042"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Wat is geautomatiseerde machine learning (AutoML)?
 
@@ -174,7 +174,7 @@ Houd rekening met deze voor delen en nadelen bij het kiezen van lokaal versus ex
 
  Meer functies zijn beschikbaar wanneer u de externe Compute gebruikt, zoals wordt weer gegeven in de volgende tabel. Sommige van deze functies zijn alleen beschikbaar in een bedrijfs werkruimte.
 
-| Functie                                                    | Externe | Lokaal | Nodig <br>Enter prise-werk ruimte |
+| Functie                                                    | Extern | Lokaal | Nodig <br>Enter prise-werk ruimte |
 |------------------------------------------------------------|--------|-------|-------------------------------|
 | Gegevens streaming (ondersteuning voor grote gegevens, Maxi maal 100 GB)          | ✓      |       | ✓                             |
 | DNN: op BERT gebaseerde tekst parametrisatie en training             | ✓      |       | ✓                             |

@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0560d9a5156f06f7ae7473f63359d9d17926b7ab
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 425a7ff0553ddeac502c59e240f5ab152d6e0d79
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186449"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015150"
 ---
 # <a name="integrate-with-azure-monitor-logs"></a>Integreren met Azure Monitor-logboeken
 
@@ -34,7 +34,7 @@ Azure Monitor-Logboeken biedt meer operationele zicht baarheid van de configurat
 
 U hebt het volgende nodig om de configuratie Rapporten van de Automation-status te verzenden naar Azure Monitor-logboeken:
 
-- De release van [Azure PowerShell](/powershell/azure/overview) november 2016 of hoger (v 2.3.0).
+- De release van [Azure PowerShell](/powershell/azure/) november 2016 of hoger (v 2.3.0).
 - Een Azure Automation-account. Zie [een inleiding tot Azure Automation](automation-intro.md)voor meer informatie.
 - Een Log Analytics-werk ruimte met een Automation & Control service-aanbieding. Zie [aan de slag met log Analytics in azure monitor](../azure-monitor/log-query/get-started-portal.md)voor meer informatie.
 - Ten minste één configuratie knooppunt voor Azure Automation status. Zie voor meer informatie [onboarding machines voor beheer door Azure Automation status configuratie](automation-dsc-onboarding.md).

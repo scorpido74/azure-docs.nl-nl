@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6913ae8cbd8c73bd2763bd89172280feee9df973
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 31c769039009889559b6aa05bb76139d63c42feb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185616"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015014"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Een Windows-Hybrid Runbook Worker implementeren
 
@@ -173,7 +173,7 @@ In de zoek resultaten ziet u heartbeat-records voor de machine, waarmee wordt aa
 
 2. Als u de versie van de Hybrid Runbook Worker wilt bevestigen, bladert u naar `C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\` de submap **versie** .
 
-### <a name="step-3---install-the-runbook-environment-and-connect-to-azure-automation"></a>Stap 3: de runbook-omgeving installeren en verbinding maken met Azure Automation
+### <a name="step-2---install-the-runbook-environment-and-connect-to-azure-automation"></a>Stap 2: de runbook-omgeving installeren en verbinding maken met Azure Automation
 
 Wanneer u een agent configureert om te rapporteren aan een Log Analytics-werk ruimte, wordt door de Azure Automation `HybridRegistration` -functie de Power shell-module met de cmdlet gepusht `Add-HybridRunbookWorker` . Gebruik deze cmdlet om de runbook-omgeving op de computer te installeren en te registreren bij Azure Automation.
 
@@ -202,7 +202,7 @@ U kunt de informatie ophalen die vereist is voor de para meters `Url` en `Key` v
 
 * Stel, indien nodig, de `Verbose` para meter in om details over de installatie te ontvangen.
 
-### <a name="step-4----install-powershell-modules"></a>Stap 4-Power shell-modules installeren
+### <a name="step-3----install-powershell-modules"></a>Stap 3: Power shell-modules installeren
 
 Runbooks kunnen gebruikmaken van de activiteiten en cmdlets die zijn gedefinieerd in de modules die in uw Azure Automation omgeving zijn geïnstalleerd. Omdat deze modules niet automatisch worden geïmplementeerd op on-premises machines, moet u ze hand matig installeren. De uitzonde ring hierop is de Azure-module. Deze module wordt standaard geïnstalleerd en biedt toegang tot cmdlets voor alle Azure-Services en-activiteiten voor Azure Automation.
 

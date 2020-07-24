@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 06/22/2020
-ms.openlocfilehash: b53a2c0cb3c709a6f22b57b45bef8b2894594a4d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3edb8da6d535ac7817c29db254aa84efd92321b6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85602449"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012974"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Wat is een Azure Machine Learning-rekeninstantie?
 
@@ -30,7 +30,7 @@ Gebruik voor de training van productie kwaliteit model een [Azure machine learni
 
 Een reken instantie is een volledig beheerd werk station in de cloud dat is geoptimaliseerd voor uw machine learning-ontwikkel omgeving. Het biedt de volgende voor delen:
 
-|Belangrijkste voordelen||
+|Belangrijkste voordelen|Beschrijving|
 |----|----|
 |Productiviteit|U kunt modellen bouwen en implementeren met behulp van geïntegreerde notebooks en de volgende hulpprogram ma's in Azure Machine Learning studio:<br/>-Jupyter<br/>-Jjupyterlab<br/>-RStudio (preview-versie)<br/>Reken instantie is volledig geïntegreerd met Azure Machine Learning werk ruimte en Studio. U kunt notitie blokken en gegevens delen met andere gegevens wetenschappers in de werk ruimte. U kunt ook externe ontwikkeling via code instellen met behulp van [SSH](how-to-set-up-vs-code-remote.md) |
 |Beheerde & beveiligd|Verminder uw beveiligings footprint en voeg naleving toe met beveiligings vereisten voor ondernemingen. Reken instanties bieden robuust beheer beleid en beveiligde netwerk configuraties zoals:<br/><br/>-Automatisch inrichten vanuit Resource Manager-sjablonen of Azure Machine Learning SDK<br/>- [Op rollen gebaseerd toegangs beheer (RBAC)](/azure/role-based-access-control/overview)<br/>- [Ondersteuning voor virtuele netwerken](how-to-enable-virtual-network.md#compute-instance)<br/>-SSH-beleid voor het inschakelen/uitschakelen van SSH-toegang<br/>TLS 1,2 ingeschakeld |
@@ -39,8 +39,11 @@ Een reken instantie is een volledig beheerd werk station in de cloud dat is geop
 
 ## <a name="tools-and-environments"></a><a name="contents"></a>Hulpprogram ma's en omgevingen
 
-Met Azure Machine Learning Compute-instantie kunt u modellen ontwerpen, trainen en implementeren in een volledig geïntegreerde laptop ervaring in uw werk ruimte.
+> [!IMPORTANT]
+> De hulpprogram ma's die zijn gemarkeerd (preview) zijn momenteel beschikbaar als open bare preview.
+> De preview-versie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
+Met Azure Machine Learning Compute-instantie kunt u modellen ontwerpen, trainen en implementeren in een volledig geïntegreerde laptop ervaring in uw werk ruimte.
 
 Deze hulpprogram ma's en omgevingen zijn geïnstalleerd op het reken exemplaar: 
 
@@ -59,7 +62,7 @@ Deze hulpprogram ma's en omgevingen zijn geïnstalleerd op het reken exemplaar:
 |----|:----:|
 |RStudio server open source Edition (preview-versie)||
 |R-kernel||
-|Azure Machine Learning SDK voor R|[azuremlsdk](https://azure.github.io/azureml-sdk-for-r/reference/index.html)</br>SDK-voorbeelden|
+|Azure Machine Learning SDK voor R|[azuremlsdk](https://azure.github.io/azureml-sdk-for-r/reference/index.html)</br>SDK steekproeven|
 
 |**PYTHON** -hulpprogram ma's & omgevingen|Details|
 |----|----|

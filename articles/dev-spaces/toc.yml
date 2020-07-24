@@ -73,8 +73,6 @@
               href: how-dev-spaces-works-routing.md
             - name: Foutopsporing op afstand
               href: how-dev-spaces-works-remote-debugging.md
-            - name: Lokaal proces met Kubernetes
-              href: how-dev-spaces-works-local-process-kubernetes.md
         - name: Hoe VS Code werkt met Dev Spaces
           href: how-vs-code-works-with-dev-spaces.md
         - name: Netwerkconfiguratie in verschillende netwerktopologieën
@@ -111,10 +109,6 @@
           href: how-to/ingress-https-traefik.md
         - name: NGINX gebruiken voor aangepaste opname en HTTPS
           href: how-to/ingress-https-nginx.md
-        - name: Lokaal proces met Kubernetes gebruiken met Visual Studio Code (preview)
-          href: how-to/local-process-kubernetes-vs-code.md
-        - name: Lokaal proces met Kubernetes gebruiken met Visual Studio (preview)
-          href: how-to/local-process-kubernetes-visual-studio.md
     - name: Problemen oplossen
       href: troubleshooting.md
     - name: Veelgestelde vragen

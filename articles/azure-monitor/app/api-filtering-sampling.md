@@ -3,12 +3,12 @@ title: Filters en voor verwerking in de Application Insights SDK | Microsoft Doc
 description: U kunt telemetrie-processors en initialisatie functies voor telemetrie voor de SDK schrijven om eigenschappen te filteren of toe te voegen aan de gegevens voordat de telemetrie naar de Application Insights portal wordt verzonden.
 ms.topic: conceptual
 ms.date: 11/23/2016
-ms.openlocfilehash: d33aeebfb374f081b4ae5dee7f83ccd04d0835ee
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: adaada3589fd0db1c7d47b788ad50d570defe780
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86075787"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014623"
 ---
 # <a name="filter-and-preprocess-telemetry-in-the-application-insights-sdk"></a>Telemetrie filteren en voorverwerken in de Application Insights SDK
 
@@ -498,7 +498,7 @@ public void Initialize(ITelemetry telemetry)
 
 #### <a name="add-information-from-httpcontext"></a>Informatie uit http context toevoegen
 
-De volgende voor beeld-initialisatie functie leest gegevens uit [`HttpContext`](https://docs.microsoft.com/aspnet/core/fundamentals/http-context?view=aspnetcore-3.1) en voegt deze toe aan een `RequestTelemetry` exemplaar. De `IHttpContextAccessor` wordt automatisch via een afhankelijkheids injectie van een constructor verschaft.
+De volgende voor beeld-initialisatie functie leest gegevens uit [`HttpContext`](/aspnet/core/fundamentals/http-context?view=aspnetcore-3.1) en voegt deze toe aan een `RequestTelemetry` exemplaar. De `IHttpContextAccessor` wordt automatisch via een afhankelijkheids injectie van een constructor verschaft.
 
 ```csharp
 public class HttpContextRequestTelemetryInitializer : ITelemetryInitializer
@@ -543,7 +543,7 @@ Wat is het verschil tussen telemetrie-processors en initialisatie functies voor 
 ## <a name="reference-docs"></a>Referentie documenten
 
 * [API-overzicht](../../azure-monitor/app/api-custom-events-metrics.md)
-* [ASP.NET-verwijzing](https://msdn.microsoft.com/library/dn817570.aspx)
+* [ASP.NET-verwijzing](/previous-versions/azure/dn817570(v=azure.100))
 
 ## <a name="sdk-code"></a>SDK-code
 
@@ -554,4 +554,4 @@ Wat is het verschil tussen telemetrie-processors en initialisatie functies voor 
 ## <a name="next-steps"></a><a name="next"></a>Volgende stappen
 * [Zoeken naar gebeurtenissen en Logboeken](../../azure-monitor/app/diagnostic-search.md)
 * [Steekproeven](../../azure-monitor/app/sampling.md)
-* [Problemen oplossen](../../azure-monitor/app/troubleshoot-faq.md)
+* [Problemen oplossen](../faq.md)

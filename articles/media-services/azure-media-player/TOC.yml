@@ -6,7 +6,7 @@
       href: azure-media-player-release-notes.md
     - name: Wijzigingenlogboek
       href: azure-media-player-changelog.md
-- name: Snelstartgidsen
+- name: Snelstarts
   items:
     - name: Quickstart voor Azure Media Player
       href: azure-media-player-quickstart.md
@@ -41,7 +41,7 @@
 - name: Naslaginformatie
   items:
     - name: API
-      href: 'https://docs.microsoft.com/javascript/api/azuremediaplayer/?view=azure-node-latest'
+      href: /javascript/api/azuremediaplayer/?view=azure-node-latest
     - name: API-methoden
       href: azure-media-player-api-methods.md
     - name: Opties

@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 8be8ffa1b569c365c8fa9b985d2b8319b7c0731b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: faef2721b48ffab12264c585d2dec55ab9334016
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249832"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015286"
 ---
 # <a name="how-to-use-role-based-access-control-in-azure-api-management"></a>Op rollen gebaseerd toegangsbeheer gebruiken in API Management
 
-Azure API Management is afhankelijk van de op Azure Role gebaseerde Access Control (RBAC) om nauw keurig toegangs beheer mogelijk te maken voor API Management Services en entiteiten (bijvoorbeeld Api's en beleids regels). In dit artikel vindt u een overzicht van de ingebouwde en aangepaste rollen in API Management. Zie [aan de slag met toegangs beheer in de Azure Portal](../role-based-access-control/overview.md)voor meer informatie over toegangs beheer in de Azure Portal.
+Azure API Management is afhankelijk van Azure RBAC (op rollen gebaseerd toegangs beheer) voor het maken van nauw keurig toegangs beheer voor API Management Services en entiteiten (bijvoorbeeld Api's en beleids regels). In dit artikel vindt u een overzicht van de ingebouwde en aangepaste rollen in API Management. Zie [aan de slag met toegangs beheer in de Azure Portal](../role-based-access-control/overview.md)voor meer informatie over toegangs beheer in de Azure Portal.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

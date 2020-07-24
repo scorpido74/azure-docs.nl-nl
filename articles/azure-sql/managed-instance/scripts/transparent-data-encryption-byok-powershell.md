@@ -12,12 +12,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: vanto, carlrab
 ms.date: 11/05/2019
-ms.openlocfilehash: eba53254d58ddfa2577212723b7234bbb5939a6b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34d91b23b0383f4128b7f03619ad0e2b07496f33
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708430"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014128"
 ---
 # <a name="transparent-data-encryption-in-sql-managed-instance-using-your-own-key-from-azure-key-vault"></a>Transparent Data Encryption in SQL Managed instance met uw eigen sleutel vanuit Azure Key Vault
 
@@ -45,6 +45,6 @@ Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om ve
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Documentatie over Azure PowerShell](/powershell/azure/overview) voor meer informatie over Azure PowerShell.
+Zie [Documentatie over Azure PowerShell](/powershell/azure/) voor meer informatie over Azure PowerShell.
 
 Extra PowerShell-voorbeeldscripts voor SQL Managed Instance vindt u in [PowerShell-scripts voor Azure SQL Managed Instance](../../database/powershell-script-content-guide.md).

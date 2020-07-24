@@ -6,12 +6,12 @@ author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: d9906e43bad296cc850942c01c83c6bfee2651fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81e27c0f62e921eb468c78521e426c8917da250a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482119"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014135"
 ---
 # <a name="connection-strings"></a>Verbindingsreeksen
 
@@ -25,18 +25,18 @@ De sleutel-waardeparen bieden een eenvoudige manier om gebruikers een combi nati
 > Het is niet raadzaam om zowel de verbindings reeks als de instrumentatie sleutel in te stellen. In het geval dat een gebruiker beide heeft ingesteld, is de laatste ingesteld, afhankelijk van de waarde van de vorige. 
 
 
-## <a name="scenario-overview"></a>Overzicht van scenario's 
+## <a name="scenario-overview"></a>Scenario-overzicht 
 
 Klanten scenario's waarin we dit hebben gevisualiseerd, hebben de meeste impact:
 
 - Firewall-uitzonde ringen of proxy omleidingen 
 
-    In gevallen waarin de bewaking voor intranet webserver is vereist, hebben onze oudere oplossingen klanten de mogelijkheid verleend om afzonderlijke service-eind punten toe te voegen aan uw configuratie. Klik [hier](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#can-i-monitor-an-intranet-web-server) voor meer informatie. 
+    In gevallen waarin de bewaking voor intranet webserver is vereist, hebben onze oudere oplossingen klanten de mogelijkheid verleend om afzonderlijke service-eind punten toe te voegen aan uw configuratie. Klik [hier](../faq.md#can-i-monitor-an-intranet-web-server) voor meer informatie. 
     Verbindings reeksen bieden een beter alternatief door deze moeite te beperken tot één instelling. Een eenvoudig voor voegsel, achtervoegsel wijziging maakt automatische populatie en omleiding van alle eind punten naar de juiste services mogelijk. 
 
 - Soevereine of hybride Cloud omgevingen
 
-    Gebruikers kunnen gegevens verzenden naar een gedefinieerde [Azure Government regio](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights).
+    Gebruikers kunnen gegevens verzenden naar een gedefinieerde [Azure Government regio](../../azure-government/compare-azure-government-global-azure.md#application-insights).
     Met verbindings reeksen kunt u eindpunt instellingen definiëren voor uw intranet servers of Hybrid Cloud-instellingen. 
 
 ## <a name="getting-started"></a>Aan de slag

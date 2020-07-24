@@ -4,11 +4,12 @@ description: Overzicht van het beschikbaar maken van een API die wordt gehost in
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.reviewer: sunayv
-ms.openlocfilehash: 8ded1c5fba902adeaeb883894452c00c4ae1d617
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d968c62afbfc92952f747e1e7627c98fe07436d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83115814"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015082"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Een door Azure gehoste API exporteren naar PowerApps en Microsoft Flow
 
@@ -59,7 +60,7 @@ Voer de volgende stappen uit om de export in **Express** -modus te volt ooien:
 
     |Instelling|Beschrijving|
     |--------|------------|
-    |**Omgeving**|Selecteer de omgeving waarin de aangepaste connector moet worden opgeslagen. Zie voor meer informatie [Overzicht van omgevingen](https://powerapps.microsoft.com/tutorials/environments-overview/).|
+    |**Variabelen**|Selecteer de omgeving waarin de aangepaste connector moet worden opgeslagen. Zie voor meer informatie [Overzicht van omgevingen](https://powerapps.microsoft.com/tutorials/environments-overview/).|
     |**Aangepaste API-naam**|Voer een naam in, die PowerApps en Microsoft Flow bouwers worden weer geven in de lijst met connectors.|
     |**Beveiligings configuratie voorbereiden**|Geef indien nodig de beveiligings configuratie gegevens op die nodig zijn om gebruikers toegang te verlenen tot uw API. Dit voor beeld toont een API-sleutel. Zie voor meer informatie [verificatie type opgeven](#auth) hieronder.|
  
@@ -145,9 +146,9 @@ Wanneer u Azure AD gebruikt, hebt u twee Azure AD-toepassings registraties nodig
 
 - Als u de registratie voor de API wilt configureren, gebruikt u de functie voor [app service verificatie/autorisatie](../app-service/configure-authentication-provider-aad.md) .
 
-- Als u registratie voor de connector wilt configureren, volgt u de stappen in [een Azure AD-toepassing toevoegen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications). De registratie moet gedelegeerde toegang hebben tot uw API en een antwoord-URL van `https://msmanaged-na.consent.azure-apim.net/redirect` . 
+- Als u registratie voor de connector wilt configureren, volgt u de stappen in [een Azure AD-toepassing toevoegen](../active-directory/develop/quickstart-register-app.md). De registratie moet gedelegeerde toegang hebben tot uw API en een antwoord-URL van `https://msmanaged-na.consent.azure-apim.net/redirect` . 
 
-Zie de registratie voorbeelden van Azure AD voor [PowerApps](https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) en [Microsoft flow](https://docs.microsoft.com/connectors/custom-connectors/azure-active-directory-authentication)voor meer informatie. In deze voor beelden wordt Azure Resource Manager als de API gebruikt. Vervang de API door de volgende stappen uit te voeren.
+Zie de registratie voorbeelden van Azure AD voor [PowerApps](https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) en [Microsoft flow](/connectors/custom-connectors/azure-active-directory-authentication)voor meer informatie. In deze voor beelden wordt Azure Resource Manager als de API gebruikt. Vervang de API door de volgende stappen uit te voeren.
 
 De volgende configuratie waarden zijn vereist:
 - **Client-id** : de client-id van de connector Azure AD-registratie
@@ -168,5 +169,3 @@ De volgende configuratie waarden zijn vereist:
 - **Autorisatie-URL** : de OAuth 2,0-autorisatie-URL
 - **URL van token** : de URL van het OAuth 2,0-token
 - **URL vernieuwen** -de OAuth 2,0-vernieuwings-URL
-
-

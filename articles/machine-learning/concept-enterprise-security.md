@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 05/19/2020
-ms.openlocfilehash: 5afa6b9127317fcd1a683651be86cdfe078cfcd6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 94724ea44b52ae885594fe55b67d74a03e339dab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259432"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012863"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Enter prise Security voor Azure Machine Learning
 
@@ -34,7 +34,7 @@ Multi-factor Authentication wordt ondersteund als Azure Active Directory (Azure 
 1. De client geeft het token aan Azure Resource Manager en alle Azure Machine Learning.
 1. De Machine Learning-service levert een Machine Learning-service token aan het gebruikers Compute-doel (bijvoorbeeld Machine Learning Compute). Dit token wordt gebruikt door het gebruikers Compute-doel om terug te bellen naar de Machine Learning-service nadat de uitvoering is voltooid. Het bereik is beperkt tot de werk ruimte.
 
-[![Verificatie in Azure Machine Learning](media/concept-enterprise-security/authentication.png)](media/concept-enterprise-security/authentication-expanded.png#lightbox)
+[![Verificatie in Azure Machine Learning](media/concept-enterprise-security/authentication.png)](media/concept-enterprise-security/authentication.png#lightbox)
 
 Zie [verificatie instellen voor Azure machine learning resources en werk stromen](how-to-setup-authentication.md)voor meer informatie. Dit artikel bevat informatie en voor beelden over verificatie, waaronder het gebruik van service-principals en geautomatiseerde werk stromen.
 
@@ -91,7 +91,7 @@ Zie [beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azur
 | Resource | Machtigingen |
 | ----- | ----- |
 | Werkruimte | Inzender |
-| Opslagaccount | Inzender voor Storage BLOB-gegevens |
+| Storage-account | Inzender voor Storage BLOB-gegevens |
 | Key Vault | Toegang tot alle sleutels, geheimen, certificaten |
 | Azure Container Registry | Inzender |
 | Resource groep die de werk ruimte bevat | Inzender |
@@ -128,6 +128,8 @@ De `hbi_workspace` markering bepaalt de hoeveelheid gegevens die micro soft verz
 * Referenties voor uw opslag account, container register en SSH-account veilig door gegeven van de uitvoerings slaag naar uw reken clusters met behulp van uw sleutel kluis
 * IP-filtering inschakelen om ervoor te zorgen dat de onderliggende batch-groepen niet kunnen worden aangeroepen door andere externe services dan AzureMachineLearningService
 
+> [!WARNING]
+> De `hbi_workspace` vlag kan alleen worden ingesteld wanneer een werk ruimte wordt gemaakt. Het kan niet worden gewijzigd voor een bestaande werk ruimte.
 
 Zie [Azure Data Encryption at rest](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)(Engelstalig) voor meer informatie over de werking van versleuteling bij rest in Azure.
 
@@ -229,7 +231,7 @@ Elke virtuele machine heeft ook een lokale tijdelijke schijf voor besturingssyst
 
 Azure Databricks kunnen worden gebruikt in Azure Machine Learning pijp lijnen. Het Databricks File System (DBFS) dat door Azure Databricks wordt gebruikt, is standaard versleuteld met een door micro soft beheerde sleutel. Zie door de klant beheerde sleutels [configureren op standaard (root) DBFS](/azure/databricks/security/customer-managed-keys-dbfs)om Azure Databricks te configureren voor het gebruik van door de klant beheerde sleutels.
 
-### <a name="encryption-in-transit"></a>Versleuteling 'in transit'
+### <a name="encryption-in-transit"></a>Versleuteling tijdens overdracht
 
 Azure Machine Learning gebruikt TLS om interne communicatie tussen verschillende Azure Machine Learning micro services te beveiligen. Alle Azure Storage toegang vindt ook plaats via een beveiligd kanaal.
 
@@ -317,7 +319,7 @@ Aanvullende resources worden tijdens het maken van de werk ruimte gemaakt in het
 
 De gebruiker kan ook andere reken doelen inrichten die zijn gekoppeld aan een werk ruimte (zoals Azure Kubernetes service of Vm's), indien nodig.
 
-[![Werkruimte werk stroom maken](media/concept-enterprise-security/create-workspace.png)](media/concept-enterprise-security/create-workspace-expanded.png#lightbox)
+[![Werkruimte werk stroom maken](media/concept-enterprise-security/create-workspace.png)](media/concept-enterprise-security/create-workspace.png#lightbox)
 
 ### <a name="save-source-code-training-scripts"></a>Bron code opslaan (trainings scripts)
 
@@ -325,9 +327,9 @@ In het volgende diagram ziet u de werk stroom voor code momentopnamen.
 
 Gekoppeld aan een Azure Machine Learning werk ruimte zijn mappen (experimenten) die de bron code (trainings scripts) bevatten. Deze scripts worden opgeslagen op uw lokale machine en in de Cloud (in de Azure Blob-opslag voor uw abonnement). De code momentopnamen worden gebruikt voor uitvoering of inspectie voor historische controle.
 
-[![Workflow voor code momentopname](media/concept-enterprise-security/code-snapshot.png)](media/concept-enterprise-security/code-snapshot-expanded.png#lightbox)
+[![Workflow voor code momentopname](media/concept-enterprise-security/code-snapshot.png)](media/concept-enterprise-security/code-snapshot.png#lightbox)
 
-### <a name="training"></a>Bezig met trainen
+### <a name="training"></a>Training
 
 In het volgende diagram ziet u de werk stroom training.
 
@@ -352,7 +354,7 @@ Omdat Machine Learning Compute een beheerd reken doel is (dat wil zeggen, wordt 
 
 In het onderstaande stroom diagram treedt deze stap op wanneer het doel voor het berekenen van de training de metrische uitvoerings waarden terugschrijft naar Azure Machine Learning van opslag in de Cosmos DB-Data Base. Clients kunnen Azure Machine Learning aanroepen. Met Machine Learning worden de metrische gegevens van de Cosmos DB-Data Base opgehaald en terug naar de client geretourneerd.
 
-[![Werk stroom voor training](media/concept-enterprise-security/training-and-metrics.png)](media/concept-enterprise-security/training-and-metrics-expanded.png#lightbox)
+[![Werk stroom voor training](media/concept-enterprise-security/training-and-metrics.png)](media/concept-enterprise-security/training-and-metrics.png#lightbox)
 
 ### <a name="creating-web-services"></a>Webservices maken
 
@@ -367,7 +369,7 @@ Dit zijn de details:
 * Details van Score aanvragen worden opgeslagen in Application Insights, dat zich in het abonnement van de gebruiker bevindt.
 * Telemetrie wordt ook gepusht naar het micro soft/Azure-abonnement.
 
-[![Werk stroom afwijzen](media/concept-enterprise-security/inferencing.png)](media/concept-enterprise-security/inferencing-expanded.png#lightbox)
+[![Werk stroom afwijzen](media/concept-enterprise-security/inferencing.png)](media/concept-enterprise-security/inferencing.png#lightbox)
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -3,12 +3,12 @@ title: Java-toepassingen bewaken op elke omgeving-Azure Monitor Application Insi
 description: Bewaking van toepassings prestaties voor Java-toepassingen die worden uitgevoerd in een wille keurige omgeving zonder de app te instrumenteren. Gedistribueerde tracering en toepassings toewijzing.
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 3e3d108603ad6210143deea58049ff7b230bb6fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3ca6e7050b1c7649298d2417f9f7f66ef8898816
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85319700"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014334"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Bewaking van Java-toepassingen Azure Monitor Application Insights-open bare preview-versie
 
@@ -32,11 +32,11 @@ Toevoegen `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.5.jar` aan
 
 Typische argumenten voor JVM zijn onder andere `-Xmx512m` en `-XX:+UseG1GC` . Als u weet waar u deze toevoegt, weet u dus al waar u dit kunt toevoegen.
 
-Voor meer informatie over het configureren van de JVM-argumenten van uw toepassing raadpleegt [u 3,0 Preview: tips voor het bijwerken van uw JVM-argumenten](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-arguments).
+Voor meer informatie over het configureren van de JVM-argumenten van uw toepassing raadpleegt [u 3,0 Preview: tips voor het bijwerken van uw JVM-argumenten](./java-standalone-arguments.md).
 
 **3. Wijs de agent naar uw Application Insights-resource**
 
-Als u nog geen Application Insights resource hebt, kunt u een nieuw item maken door de stappen in de [hand leiding](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)voor het maken van resources te volgen.
+Als u nog geen Application Insights resource hebt, kunt u een nieuw item maken door de stappen in de [hand leiding](./create-new-resource.md)voor het maken van resources te volgen.
 
 Wijs de agent naar uw Application Insights-bron, door een omgevings variabele in te stellen:
 
@@ -80,7 +80,7 @@ In het `ApplicationInsights.json` bestand kunt u verder configureren:
 * HTTP-proxy
 * Zelf diagnostische gegevens
 
-Bekijk de Details voor de [open bare preview van 3,0: configuratie opties](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config).
+Bekijk de Details voor de [open bare preview van 3,0: configuratie opties](./java-standalone-config.md).
 
 ## <a name="autocollected-requests-dependencies-logs-and-metrics"></a>Autogeïncasseerde aanvragen, afhankelijkheden, logboeken en metrische gegevens
 

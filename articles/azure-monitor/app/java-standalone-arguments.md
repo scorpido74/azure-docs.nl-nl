@@ -3,12 +3,12 @@ title: Java-toepassingen bewaken die worden uitgevoerd in een omgeving-Azure Mon
 description: Bewaking van toepassings prestaties voor Java-toepassingen die worden uitgevoerd op een wille keurige omgeving met Java zelfstandige agent zonder de app te instrumenteren. Gedistribueerde tracering en toepassings toewijzing.
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 527f1eaf04be7b5e8c89c12912a06d2f5d50321f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6499fbc62a78cb333c623dbea8269144e623921c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82508034"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014238"
 ---
 # <a name="configuring-jvm-args-java-standalone-agent-for-azure-monitor-application-insights"></a>De Java zelfstandige JVM args-agent configureren voor Azure Monitor Application Insights
 
@@ -16,7 +16,7 @@ ms.locfileid: "82508034"
 
 ## <a name="azure-environments"></a>Azure-omgevingen
 
-[App Services](https://docs.microsoft.com/azure/app-service/configure-language-java#set-java-runtime-options)configureren.
+[App Services](../../app-service/configure-language-java.md#set-java-runtime-options)configureren.
 
 ## <a name="spring-boot"></a>Spring Boot
 

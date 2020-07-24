@@ -8,12 +8,12 @@ ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4ce23e9da84d01a288c1c37c6a6d884db2ed3969
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ce8f7347e4813e72ede426ab17f09221ab859136
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077555"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015405"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Een Service-Principal toevoegen aan de rol Server beheerder 
 
@@ -44,7 +44,7 @@ U kunt Server beheerders configureren met behulp van SQL Server Management Studi
 
 ## <a name="using-a-resource-manager-template"></a>Een Resource Manager-sjabloon gebruiken
 
-U kunt Server beheerders ook configureren door de Analysis Services server te implementeren met behulp van een Azure Resource Manager sjabloon. De identiteit waarmee de implementatie wordt uitgevoerd, moet behoren tot de rol **Inzender** voor de resource in [Azure role-based Access Control (RBAC)](../role-based-access-control/overview.md).
+U kunt Server beheerders ook configureren door de Analysis Services server te implementeren met behulp van een Azure Resource Manager sjabloon. De identiteit waarmee de implementatie wordt uitgevoerd, moet deel uitmaken van de rol **Inzender** voor de resource in [Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../role-based-access-control/overview.md).
 
 > [!IMPORTANT]
 > De Service-Principal moet worden toegevoegd met de indeling `app:{service-principal-client-id}@{azure-ad-tenant-id}` .
@@ -119,5 +119,3 @@ U kunt deze client-ID vervolgens gebruiken in combi natie met de Tenant-ID om de
 
 * [SQL Server Power shell-module downloaden](https://docs.microsoft.com/sql/ssms/download-sql-server-ps-module)   
 * [SSMS downloaden](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)   
-
-

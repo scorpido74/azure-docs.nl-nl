@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 04/09/2020
-ms.openlocfilehash: 171b355f40939efb31e96a4bf8b2d77e97d19f25
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 77b5b52153c552008406b4b85083bcba5542cebe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147106"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012719"
 ---
 # <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>Voor komen dat gegevens met automatische machine learning worden verdeeld en gebalanceerd.
 
@@ -101,7 +101,7 @@ De volgende technieken zijn aanvullende opties voor het afhandelen van niet-slui
 
 - Hersampling naar zelfs het onevenwicht van de klasse, hetzij door de kleinere klassen te bemonsteren of de grotere klassen te verlagen. Deze methoden vereisen expertise om te verwerken en te analyseren.
 
-- Controleer de metrische gegevens over de prestaties van niet-sluitende informatie. De F1-Score is bijvoorbeeld een gewogen gemiddelde van de precisie en intrekken. Precisie meet de nauw keurigheid van een classificatie--lage precisie geeft aan dat er een groot aantal fout-positieven is--, terwijl intrekken meet waarden voor de volledigheid van een classificatie, een hoog aantal onwaare negatieven aangeeft.
+- Controleer de metrische gegevens over de prestaties van niet-sluitende informatie. De F1-Score is bijvoorbeeld het harmonische gemiddelde van Precision en intrekken. Nauw keurigheid meet de nauw keurigheid van een classificatie, waarbij een grotere nauw keurigheid minder fout-positieven aangeeft, terwijl intrekken meet de volledigheid van een classificatie, waarbij een hogere inhaal bewerking minder valse negatieven aanduidt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -4,11 +4,12 @@ description: Aan de slag met Application Insights. Analyseer het gebruik, de bes
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
-ms.openlocfilehash: 873fc41585c387246d83008a8f97d6c4d9a32c3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b93e7f0fdb909a40667b001fa99929b3cfe27ad
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80985062"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014162"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Prestaties in webtoepassingen controleren
 
@@ -25,7 +26,7 @@ Als u Application Insights nog niet aan uw project hebt toegevoegd (dat wil zegg
 * [ASP.NET-web-apps](../../azure-monitor/app/asp-net.md)
   * [Uitzonderings bewaking toevoegen](../../azure-monitor/app/asp-net-exceptions.md)
   * [Afhankelijkheids bewaking toevoegen](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* [Java EE web apps](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
+* [Java EE web apps](./java-in-process-agent.md)
 
 ## <a name="exploring-performance-metrics"></a><a name="view"></a>Metrische prestatie gegevens verkennen
 Blader in [het Azure Portal](https://portal.azure.com)naar de Application Insights resource die u voor uw toepassing hebt ingesteld. De Blade overzicht bevat algemene prestatie gegevens:
@@ -60,15 +61,15 @@ Zoek naar ongebruikelijke pieken. In het algemeen wordt de reactie tijd verwacht
 
 Klik op de tegel om tijden voor specifieke Url's op te halen.
 
-![](./media/web-monitor-performance/appinsights-42reqs.png)
+![Scherm opname van het deel venster status van de toepassing, waarin lijn grafieken worden weer gegeven in de loop van de tijd van de zwevende gemiddelden van aanvragen en de reactie tijd.](./media/web-monitor-performance/appinsights-42reqs.png)
 
 ### <a name="slowest-requests"></a>Langzaamste aanvragen
-![](./media/web-monitor-performance/appinsights-44slowest.png)
+![Scherm afbeelding van een lijst met de traagste aanvragen en hun reactie tijden.](./media/web-monitor-performance/appinsights-44slowest.png)
 
 Hier ziet u welke aanvragen mogelijk prestatie afstemming nodig hebben.
 
 ### <a name="failed-requests"></a>Mislukte aanvragen
-![](./media/web-monitor-performance/appinsights-46failed.png)
+![Scherm afbeelding van een lijn diagram in de loop van de tijd van het aantal mislukte aanvragen; dat wil zeggen, aanvragen waarvoor niet-onderschepte uitzonde ringen zijn gegenereerd.](./media/web-monitor-performance/appinsights-46failed.png)
 
 Een aantal aanvragen dat niet-onderschepte uitzonde ringen heeft veroorzaakt.
 
@@ -86,7 +87,7 @@ Als u een wille keurige waarde selecteert, worden de andere gegevens uitgeschake
 ## <a name="set-alerts"></a>Waarschuwingen instellen
 Voeg een waarschuwing toe om een melding te ontvangen van een e-mail bericht van ongebruikelijke waarden van een wille keurige waarde. U kunt kiezen of u het e-mail bericht wilt verzenden naar de account beheerders of naar specifieke e-mail adressen.
 
-![](./media/web-monitor-performance/appinsights-413setMetricAlert.png)
+![Scherm afbeelding van het dialoog venster een waarschuwings regel toevoegen, samen met scherm opnamen die zijn verbonden via pijlen die laten zien hoe dat dialoog venster van Metrics Explorer kan worden bereikt.](./media/web-monitor-performance/appinsights-413setMetricAlert.png)
 
 Stel de resource in vóór de andere eigenschappen. Kies niet de webtest-resources als u waarschuwingen wilt instellen voor metrische gegevens over prestaties of gebruik.
 
@@ -144,12 +145,9 @@ In de ervaring voor prestatie onderzoek ziet u relevante inzichten aan de kant v
 [availability]: ../../azure-monitor/app/monitor-web-app-availability.md
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [greenbrown]: ../../azure-monitor/app/asp-net.md
-[qna]: ../../azure-monitor/app/troubleshoot-faq.md
+[qna]: ../faq.md
 [redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
 [start]: ../../azure-monitor/app/app-insights-overview.md
 [usage]: usage-overview.md
 [livestream]: ../../azure-monitor/app/live-stream.md
 [snapshot]: ../../azure-monitor/app/snapshot-debugger.md
-
-
-

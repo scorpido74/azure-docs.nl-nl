@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 3d785edb82e62363dd96d9fd67447f1be7ffe8f5
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: b90acafb9146ec6cd796a0916ad46bf880398b22
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85982596"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013977"
 ---
 # <a name="manage-databases-in-azure-sql-database-by-using-azure-automation"></a>Data bases in Azure SQL Database beheren met Azure Automation
 
@@ -34,7 +34,7 @@ Verlaag operationele overhead en maak IT/DevOps-personeel meer werk dat bedrijfs
 
 ## <a name="how-azure-automation-can-help-manage-your-databases"></a>Hoe Azure Automation u kan helpen bij het beheren van uw data bases
 
-Met Azure Automation kunt u data bases beheren in Azure SQL Database met behulp van [Power shell-cmdlets](https://docs.microsoft.com/powershell/module/servicemanagement/azure/#sql) die beschikbaar zijn in de [Azure PowerShell-hulpprogram ma's](/powershell/azure/overview). Azure Automation heeft deze Azure SQL Database Power shell-cmdlets die beschikbaar zijn in het vak, zodat u al uw SQL Database beheer taken binnen de service kunt uitvoeren. U kunt deze cmdlets ook in Azure Automation koppelen met de cmdlets voor andere Azure-Services, om complexe taken te automatiseren in Azure-Services en op systemen van derden.
+Met Azure Automation kunt u data bases beheren in Azure SQL Database met behulp van [Power shell-cmdlets](/powershell/module/servicemanagement/azure.service/#sql) die beschikbaar zijn in de [Azure PowerShell-hulpprogram ma's](/powershell/azure/). Azure Automation heeft deze Azure SQL Database Power shell-cmdlets die beschikbaar zijn in het vak, zodat u al uw SQL Database beheer taken binnen de service kunt uitvoeren. U kunt deze cmdlets ook in Azure Automation koppelen met de cmdlets voor andere Azure-Services, om complexe taken te automatiseren in Azure-Services en op systemen van derden.
 
 Azure Automation heeft ook de mogelijkheid om rechtstreeks te communiceren met SQL-servers door SQL-opdrachten uit te geven met behulp van Power shell.
 

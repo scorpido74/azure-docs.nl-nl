@@ -3,12 +3,12 @@ title: Java-toepassingen overal bewaken-Azure Monitor Application Insights
 description: Toepassings prestatie bewaking voor Java-toepassingen die worden uitgevoerd in een wille keurige omgeving zonder de app te instrumenteren. Zoek de hoofd oorzaak van de problemen d met behulp van gedistribueerde tracering en toepassings overzicht.
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 0c66ad01f265dde7da2f48b17b3ad4438d59a0ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a01f2e9339f3ba4f8f50fc41617fabf9da9d8cd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85319683"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014198"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>Configuratie opties-Java zelfstandige agent voor Azure Monitor Application Insights
 
@@ -216,7 +216,7 @@ Hier volgt een voor beeld van het instellen van de steek proef op **10% van alle
 
 ## <a name="http-proxy"></a>HTTP-proxy
 
-Als uw toepassing zich achter een firewall bevindt en niet rechtstreeks verbinding kan maken met Application Insights (Zie [IP-adressen die worden gebruikt door Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses)), kunt u Application Insights Java 3,0 Preview configureren voor het gebruik van een http-proxy:
+Als uw toepassing zich achter een firewall bevindt en niet rechtstreeks verbinding kan maken met Application Insights (Zie [IP-adressen die worden gebruikt door Application Insights](./ip-addresses.md)), kunt u Application Insights Java 3,0 Preview configureren voor het gebruik van een http-proxy:
 
 ```json
 {
