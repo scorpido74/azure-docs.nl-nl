@@ -7,11 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: db256c8361af740ac536e059969a5085e57df485
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb57606259fe674519015fd2de741d6c1d08c5e9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84263339"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127193"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>Overzicht van Azure Files verificatie opties op basis van een identiteit voor SMB-toegang
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -45,7 +46,7 @@ Het is handig om enkele belang rijke termen te begrijpen met betrekking tot Azur
 
 -   **Access Control op basis van Azure Role (RBAC)**
 
-    Met op rollen gebaseerd toegangsbeheer (RBAC) beschikt u over geavanceerd toegangsbeheer voor Azure. Met RBAC kunt u de toegang tot resources beheren door gebruikers de minste machtigingen te verlenen die nodig zijn om hun taken uit te voeren. Zie [Wat is op rollen gebaseerd toegangs beheer (RBAC) in azure?](../../role-based-access-control/overview.md)voor meer informatie over RBAC.
+    Met op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC) hebt u verfijnd toegang tot Azure. Met RBAC kunt u de toegang tot resources beheren door gebruikers de minste machtigingen te verlenen die nodig zijn om hun taken uit te voeren. Zie [Wat is Azure op rollen gebaseerd toegangs beheer (Azure RBAC) in azure?](../../role-based-access-control/overview.md)voor meer informatie over RBAC.
 
 ## <a name="common-use-cases"></a>Algemene scenario’s
 
@@ -145,7 +146,7 @@ Er worden geen extra kosten in rekening gebracht voor het inschakelen van verifi
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende bronnen voor meer informatie over Azure Files en verificatie op basis van identiteit via SMB:
 
-- [Implementatie van Azure Files plannen](storage-files-planning.md)
+- [Een Azure Files-implementatie plannen](storage-files-planning.md)
 - [On-premises Active Directory Domain Services authenticatie inschakelen via SMB voor Azure-bestands shares](storage-files-identity-auth-active-directory-enable.md)
 - [Azure Active Directory Domain Services authenticatie inschakelen op Azure Files](storage-files-identity-auth-active-directory-domain-service-enable.md)
 - [Veelgestelde vragen](storage-files-faq.md)

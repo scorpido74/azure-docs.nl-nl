@@ -2,19 +2,17 @@
 title: Azure Data Lake Analytics beheren met Azure .NET SDK
 description: In dit artikel wordt beschreven hoe u de Azure .NET SDK gebruikt om apps te schrijven die Data Lake Analytics taken, gegevens bronnen & gebruikers beheren.
 services: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: 811d172d-9873-4ce9-a6d5-c1a26b374c79
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 06/18/2017
-ms.openlocfilehash: aa2a128e25e3751813f056286fff4eb6caa24437
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 12043ead1c7d59cc3955bb927fabb54278c18bd5
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121381"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127686"
 ---
 # <a name="manage-azure-data-lake-analytics-a-net-app"></a>Azure Data Lake Analytics beheren met behulp van een .NET-app
 

@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/07/2019
-ms.openlocfilehash: 0f5b2fbd13cb9658e255fde727e115df748aaed9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccc5578944dc6eea9a62360045272896d78e2fac
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77654865"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128672"
 ---
 # <a name="azure-monitor-for-networks-preview"></a>Azure Monitor voor netwerken (preview-versie)
 Azure Monitor voor netwerk biedt een uitgebreid overzicht van de status en metrische gegevens voor alle geïmplementeerde netwerk bronnen zonder enige configuratie. De geavanceerde zoek functie helpt u bij het identificeren van bron afhankelijkheden, het inschakelen van scenario's zoals het identificeren van resources die als host fungeren voor uw website door eenvoudigweg te zoeken naar gehoste website naam.
@@ -29,7 +30,7 @@ De weer gave resource status en waarschuwingen kan worden aangepast met filters 
 
 Het zoekvak kan worden gebruikt om te zoeken naar resources en gekoppelde resources. Een openbaar IP-adres is bijvoorbeeld gekoppeld aan een Application Gateway. Als u zoekt naar de open bare Ip's DNS-naam, worden zowel het open bare IP-adres als de bijbehorende Application Gateway geïdentificeerd.
 
-![Search](media/network-insights-overview/search.png)
+![Zoeken](media/network-insights-overview/search.png)
 
 
 ## <a name="resource-health-and-metric"></a>Resource Health en metrische gegevens
@@ -47,7 +48,7 @@ U kunt klikken op elk element in de raster weergave. Klik op het pictogram statu
 In het raster **waarschuwingen** aan de rechter kant ziet u een overzicht van alle waarschuwingen die zijn gegenereerd voor de geselecteerde resources in alle abonnementen. Klik op het aantal waarschuwingen om naar de pagina gedetailleerde waarschuwingen te gaan.
 
 ## <a name="dependency-view"></a>Afhankelijkheids weergave
-De weer gave **afhankelijkheid** helpt bij het configureren van de configuratie van de resource. Momenteel wordt de afhankelijkheids weergave alleen ondersteund voor Application Gateway. U kunt de afhankelijkheids weergave openen door te klikken op de Application Gateway resource naam in de raster weergave metrische gegevens.
+De weer gave **afhankelijkheid** helpt bij het configureren van de configuratie van de resource. De huidige afhankelijkheids weergave wordt nu ondersteund voor Application Gateway, virtueel WAN en Load Balancer. In het geval van Application Gateway is de afhankelijkheids weergave bijvoorbeeld toegankelijk door te klikken op de naam van de Application Gateway resource in de raster weergave metrische gegevens. Dit geldt ook voor virtuele WAN-en Load Balancer. 
 
 ![Application Gateway weer gave](media/network-insights-overview/application-gateway.png)
 
@@ -69,4 +70,4 @@ Klik op **gedetailleerde metrische weer gave** om een vooraf geconfigureerde wer
 
 ## <a name="next-steps"></a>Volgende stappen 
 
-- Meer informatie over netwerk bewaking bij wat is [Azure Network Watcher?](/azure/network-watcher/network-watcher-monitoring-overview).
+- Meer informatie over netwerk bewaking bij wat is [Azure Network Watcher?](../../network-watcher/network-watcher-monitoring-overview.md).

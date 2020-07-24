@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: tomsh
-ms.openlocfilehash: 675e10101d01d831aad7652c70cbfcf320085a3c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da59c0d54fa08194f9d77fc79754cbfbaca1a1e8
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70999173"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128400"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>Aanbevolen procedures voor het beveiligen van PaaS web-en mobiele toepassingen met Azure Storage
 In dit artikel bespreken we een verzameling Azure Storage best practices voor het beveiligen van uw PaaS-web en mobiele toepassingen (platform-as-a-Service). Deze aanbevolen procedures zijn afgeleid van onze ervaring met Azure en de ervaringen van klanten, zoals uzelf.
@@ -65,7 +65,7 @@ Organisaties die geen gegevens toegangs beheer afdwingen door gebruik te maken v
 Zie voor meer informatie over RBAC:
 
 - [Toegang beheren met op rollen gebaseerd toegangsbeheer en Azure Portal](/azure/role-based-access-control/role-assignments-portal)
-- [Ingebouwde rollen voor Azure-resources](/azure/role-based-access-control/built-in-roles)
+- [Ingebouwde Azure-rollen](/azure/role-based-access-control/built-in-roles)
 - [Azure Storage-beveiligingshandleiding](/azure/storage/common/storage-security-guide) 
 
 ## <a name="use-client-side-encryption-for-high-value-data"></a>Versleuteling aan client zijde gebruiken voor gegevens met hoge waarde

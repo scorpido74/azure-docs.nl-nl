@@ -1,18 +1,19 @@
 ---
 title: Ondersteuning voor lokalisatie | Microsoft Azure kaarten
 description: In dit artikel vindt u meer informatie over ondersteunde talen voor de services in Microsoft Azure Maps.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 2bab7b101b5461d854bb2db509b5cb243012a592
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d3adc4bc49379a9ec3408ab76b913a096840dbb
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83746009"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127890"
 ---
 # <a name="localization-support-in-azure-maps"></a>Ondersteuning voor lokalisatie in Azure Maps
 
@@ -24,7 +25,7 @@ Azure Maps ondersteunt diverse talen en weer gaven op basis van land/regio. In d
 Azure Maps zijn gelokaliseerd in de verschillende talen van alle services. De volgende tabel bevat de ondersteunde taal codes voor elke service.  
   
 
-| Id         | Name                   |  Kaarten | Search | Routering | Weer | Verkeers incidenten | JS-toewijzings beheer |
+| Id         | Naam                   |  Maps | Zoeken | Routering | Weer | Verkeers incidenten | JS-toewijzings beheer |
 |------------|------------------------|:-----:|:------:|:-------:|:--------:|:-----------------:|:--------------:|
 | af-ZA      | Afrikaans              |       |    ✓   |    ✓    |         |                   |                |
 | ar-SA      | Arabisch                 |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
@@ -125,7 +126,7 @@ Zorg ervoor dat u de **weer gave** -para meter hebt ingesteld zoals vereist voor
 >    * Zoek in de buurt ophalen
 >    * Zoek adres ophalen
 >    * Gestructureerd Zoek adres ophalen
->    * Zoek adres terugdraaien
+>    * Zoekadres omkeren
 >    * Adres omgekeerde cross-straat ophalen
 >    * Post-zoekopdracht binnen geometrie
 >    * Batch Preview voor het zoeken naar een adres
@@ -146,7 +147,7 @@ De weer gave-para meter is standaard ingesteld op **Unified**, zelfs als u deze 
 
 De volgende tabel bevat ondersteunde weer gaven.
 
-| Weergave         | Description                            |  Kaarten | Search | JS-Map Control |
+| Weergave         | Beschrijving                            |  Maps | Zoeken | JS-Map Control |
 |--------------|----------------------------------------|:-----:|:------:|:--------------:|
 | AE           | Verenigde Arabische Emiraten (Arabische weer gave)    |   ✓   |        |     ✓          |
 | AR           | Argentinië (Argentijnse weer gave)           |   ✓   |    ✓   |     ✓          |

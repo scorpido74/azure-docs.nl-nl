@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/16/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ba4188445f9bdf791ef760936bd27ac0f507fb4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d82289366d79f44460b96d75781cac4fa50de53a
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737169"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129726"
 ---
 # <a name="integrate-azure-digital-twins-with-other-services"></a>Azure Digital Apparaatdubbels integreren met andere services
 
@@ -24,7 +24,7 @@ Azure Digital Apparaatdubbels kan worden geactiveerd met gegevens uit IoT Hub. Z
 
 Azure Digital Apparaatdubbels heeft geen ingebouwde IoT Hub. U kunt een bestaande IoT Hub gebruiken die momenteel in productie is of een nieuwe implementeren. Hiermee hebt u volledige toegang tot alle functies van het beheer van het apparaat van IoT Hub.
 
-Als u gegevens wilt opnemen van IoT Hub in azure Digital Apparaatdubbels, gebruikt u een [Azure-functie](../azure-functions/functions-overview.md). Meer informatie over dit patroon vindt [u in procedures: opname telemetrie van IOT hub](how-to-ingest-iot-hub-data.md)of probeer het zelf in de [Azure Digital apparaatdubbels zelf studie: verbinding maken met een end-to-end oplossing](tutorial-end-to-end.md).
+Als u gegevens wilt opnemen van IoT Hub in azure Digital Apparaatdubbels, gebruikt u een [Azure-functie](../azure-functions/functions-overview.md). Meer informatie over dit patroon vindt [*u in procedures: opname telemetrie van IOT hub*](how-to-ingest-iot-hub-data.md)of probeer het zelf in de Azure Digital Apparaatdubbels [*zelf studie: verbinding maken met een end-to-end oplossing*](tutorial-end-to-end.md).
 
 ## <a name="data-egress-services"></a>Services voor gegevens uitgaand verkeer
 
@@ -33,7 +33,7 @@ Azure Digital Apparaatdubbels kan gegevens verzenden naar verbonden **eind punte
 * [Event Grid](../event-grid/overview.md)
 * [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)
 
-Eind punten worden aan Azure Digital Apparaatdubbels gekoppeld met behulp van beheer-Api's of de Azure Portal. Meer informatie over het koppelen van een eind punt aan Azure Digital Apparaatdubbels in [procedures: eind punten en routes beheren](how-to-manage-routes.md).
+Eind punten worden aan Azure Digital Apparaatdubbels gekoppeld met behulp van beheer-Api's of de Azure Portal. Meer informatie over het koppelen van een eind punt aan Azure Digital Apparaatdubbels in [*procedures: eind punten en routes beheren*](how-to-manage-routes.md).
 
 Er zijn veel andere services waar u uw gegevens uiteindelijk wilt door sturen, zoals [Azure Storage](../storage/common/storage-introduction.md) of [Time Series Insights](../time-series-insights/time-series-insights-update-overview.md). Als u uw gegevens naar Services wilt verzenden, koppelt u de doel service aan een eind punt.
 
@@ -42,7 +42,7 @@ Als u bijvoorbeeld ook [Azure Maps](../azure-maps/about-azure-maps.md) gebruikt 
 ## <a name="next-steps"></a>Volgende stappen
 
 Meer informatie over eind punten en routerings gebeurtenissen naar externe services:
-* [Concepten: Azure Digital Apparaatdubbels-gebeurtenissen routeren](concepts-route-events.md)
+* [*Concepten: Azure Digital Apparaatdubbels-gebeurtenissen routeren*](concepts-route-events.md)
 
 Zie Azure Digital Apparaatdubbels instellen om gegevens op te nemen uit IoT Hub:
-* [Instructies: telemetrie opnemen van IoT Hub](how-to-ingest-iot-hub-data.md)
+* [*Instructies: telemetrie opnemen van IoT Hub*](how-to-ingest-iot-hub-data.md)

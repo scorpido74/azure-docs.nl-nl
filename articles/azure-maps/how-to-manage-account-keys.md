@@ -1,25 +1,25 @@
 ---
 title: Uw Azure Maps-account beheren in de Azure Portal | Microsoft Azure kaarten
 description: In dit artikel leert u hoe u de Azure Portal kunt gebruiken om uw Microsoft Azure Maps-account te beheren.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/27/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 42247cc576e55c7c504e9832017af336439b11b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3317b063b5b05a57f08bbd15be827cd83075de34
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335557"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126955"
 ---
 # <a name="manage-your-azure-maps-account"></a>Uw Azure Maps-account beheren
 
 U kunt uw Azure Maps-account beheren via de Azure Portal. Nadat u een account hebt, kunt u de Api's implementeren in uw website of mobiele toepassing.
 
-Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="create-a-new-account"></a>Een nieuw account maken
 

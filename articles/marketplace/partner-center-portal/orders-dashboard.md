@@ -1,16 +1,16 @@
 ---
-title: Dash board bestellingen van partner centrum in de commerciële Marketplace-analyse
-description: Meer informatie over het openen van analytische rapporten over uw Marketplace-aanbod orders in een grafische en download bare indeling.
+title: Dash board orders van de partner centrum in de commerciële Marketplace Analytics, Microsoft AppSource en Azure Marketplace
+description: Meer informatie over het openen van analytische rapporten over uw commerciële Marketplace-bestellingen in een grafische en download bare indeling.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 07/01/2020
-ms.openlocfilehash: fe1f64994d344ad9b23895823b846da62d895128
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/22/2020
+ms.openlocfilehash: 7a704936b35ba5c747ab5884c61f3f5413ac5f07
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536127"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127312"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Dashboard Bestellingen in Commerciële marketplace-analyses
 
@@ -33,6 +33,8 @@ In het **dash board orders** van het menu **analyseren** worden de huidige order
 - [Trend van orders en stoelen](#orders-and-seats-trend)
 - [Tabel Order Details](#order-details-table)
 
+De maximale latentie tussen het maken en rapporteren van orders in het partner centrum is 48 uur.
+
 ## <a name="order-dashboard-details"></a>Details van bestel dashboard
 
 In deze sectie worden de analyse rapporten uitvoeriger beschreven.
@@ -53,7 +55,7 @@ De percentage waarde naast totaal aantal orders vertegenwoordigt de hoeveelheid 
 
 ### <a name="orders-by-geography"></a>Orders op geografie
 
-In het heatmap **Orders per geografie** wordt een telling weer gegeven van uw orders op een wereld kaart en worden de stoelen weer gegeven die zijn toegewezen op basis van het land of de regio van de klant. Deze heatmap werkt op dezelfde locatie als de **[klant op geografie heatmap](./customer-dashboard.md#customer-by-geography)**.
+Op basis van het heatmap voor **Orders per regio** wordt een telling weer gegeven van uw orders op een wereld kaart en worden de seats weer gegeven die zijn toegewezen in het land of de regio van de klant. Deze heatmap werkt op dezelfde locatie als de **[klant op geografie heatmap](./customer-dashboard.md#customer-by-geography)**.
 
 ![Partner centrum orders per geografie analyseren](./media/orders-by-geography.png)
 
@@ -63,7 +65,7 @@ Met de **opdrachten orders per biedt** ring grafiek worden de orders (inclusief 
 
 - De beste aanbiedingen worden weer gegeven in de grafiek en de rest van de aanbiedingen worden als ' rest all ' gegroepeerd.
 - U kunt specifieke aanbiedingen in de legenda selecteren om alleen die aanbiedingen in de grafiek weer te geven.
-- Als u de muis aanwijzer boven een segment in de grafiek houdt, wordt het aantal orders en percentage van die aanbieding weer gegeven vergeleken met het totale aantal orders in alle aanbiedingen.
+- Als u de muis aanwijzer boven een segment in de grafiek houdt, wordt het aantal orders en percentage van die aanbieding vergeleken met het totale aantal orders in alle aanbiedingen.
 - De **trend orders per aanbiedingen** worden weer gegeven per maand trends in groei. De kolom maand vertegenwoordigt het aantal orders per aanbiedings naam. In het lijn diagram wordt de trend van het groei percentage weer gegeven die op een z-as is getekend.
 - U kunt de schuif regelaar aan de bovenkant van de grafiek gebruiken om naar rechts en naar links op de x-as te schuiven en te focussen op specifieke gegevens punten.
 - U kunt het trendanalyse diagram weer geven door een specifiek item in de legenda te selecteren.
@@ -71,7 +73,7 @@ Met de **opdrachten orders per biedt** ring grafiek worden de orders (inclusief 
 
 ### <a name="orders-trend-per-site-versus-per-seat"></a>Trend van orders per site versus per seat
 
-De grafiek **per site versus per seat** ring vertegenwoordigt de uitsplitsing van per site SaaS en per seat SaaS-orders die door klanten zijn aangeschaft (dit diagram bevat geannuleerde orders). Het kolom diagram vertegenwoordigt de trend van per site SaaS en per seat SaaS-orders die door klanten zijn aangeschaft (deze grafiek bevat geannuleerde orders).
+De grafiek **per locatie versus per seat-** ring vertegenwoordigt de uitsplitsing van de SaaS-orders per locatie en per seat-SaaS die door klanten zijn aangeschaft (deze grafiek bevat geannuleerde orders). Het kolom diagram vertegenwoordigt de trend van per site SaaS en per seat SaaS-orders die door klanten zijn aangeschaft (deze grafiek bevat geannuleerde orders).
 
 ### <a name="orders-by-plans"></a>Orders per plan
 
@@ -79,10 +81,10 @@ Het diagram **Orders per abonnementen** vertegenwoordigt de trend van orders op 
 
 ### <a name="orders-and-seats-trend"></a>Trend van orders en stoelen
 
-In het **trend diagram orders en stoelen** worden de belangrijkste 50 aanbiedingen met het hoogste aantal orders weer gegeven. Deze worden weer gegeven op een Leader Board en worden gesorteerd op het hoogste aantal orders en het order percentage.
+In het **trend diagram orders en stoelen** worden de belangrijkste 50 aanbiedingen met het hoogste aantal orders weer gegeven. Deze worden weer gegeven op een opvul bord en worden gesorteerd op het hoogste aantal orders en het percentage van de bestelling.
 
 - **Orders per plan** : Selecteer een aanbieding om de uitsplitsing van het aantal orders voor de vijf beste plannen in de grafiek weer te geven.
-- **Stoelen per plan** : de maandelijkse trend van seats voor de vijf tien plannen. Als het aanbod dat u selecteert geen aanbieding per seat is, worden er geen gegevens weer gegeven in dit vlak diagram.
+- **Stoelen per plan** : de maandelijkse trend van seats voor de vijf tien plannen. Als het aanbod dat u selecteert, geen aanbieding per seat is, worden er geen gegevens weer gegeven.
 
 ### <a name="canceled-orders-by-offers"></a>Geannuleerde orders per aanbiedingen
 
@@ -98,8 +100,8 @@ In de tabel Order Details wordt een genummerde lijst met de 1000 belangrijkste o
 - Elke kolom in het raster is sorteerbaar.
 - De gegevens kunnen worden geëxtraheerd naar een TSV-bestand als het aantal records kleiner is dan 1000.
 - Als records een getal van meer dan 1000, worden geëxporteerde gegevens asynchroon in een download pagina voor de volgende 30 dagen geplaatst.
-- Filters kunnen worden toegepast op de **tabel Order Details** om alleen de gegevens weer te geven waarin u bent geïnteresseerd. Gegevens kunnen worden gefilterd op land/regio, het type Azure-licentie, het Marketplace-licentie type, het type aanbieding, de status van de bestelling, de gratis sporen, de abonnements-ID van de Marketplace, de klant-ID en de bedrijfs naam.
-- Omdat SaaS-aanbiedingen zijn gekocht via Azure Marketplace of AppSource geen Azure-abonnement vereist, wordt de Marketplace-abonnements-ID weer gegeven als 00000000-0000-0000-0000-000000000000 in de sectie **gedetailleerde order gegevens** .
+- Filters toep assen op de **tabel Order Details** om alleen de gegevens weer te geven waarin u bent geïnteresseerd. Filteren op land/regio, type Azure-licentie, licentie type voor commerciële Marketplace, type aanbieding, Bestel status, gratis sporen, abonnements-ID van de commerciële Marketplace, klant-ID en bedrijfs naam.
+- Omdat SaaS-aanbiedingen zijn gekocht via Azure Marketplace of AppSource, hebt u geen Azure-abonnement nodig. de Marketplace-abonnements-ID wordt weer gegeven als 00000000-0000-0000-0000-000000000000 in de sectie **gedetailleerde order gegevens** .
 
 #### <a name="orders-page-filters"></a>Pagina filters voor orders
 

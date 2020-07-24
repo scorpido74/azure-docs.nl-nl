@@ -1,20 +1,20 @@
 ---
-title: Marketplace Insights-micro soft Commercial Marketplace
+title: Marketplace Insights-micro soft Commercial Marketplace, Microsoft AppSource en Azure Marketplace
 description: Krijg toegang tot een overzicht van Marketplace Web Analytics, waarmee u de betrokkenheid van klanten in Microsoft AppSource en Azure Marketplace kunt meten.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 12/16/2019
-ms.openlocfilehash: 8b5f90449f27007febe93f1193c6d2245b076e7e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: article
+ms.date: 07/22/2019
+ms.openlocfilehash: c72f3c9cce19896557fa9f4114b935fcc5ca8dc2
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120395"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128944"
 ---
 # <a name="marketplace-insights-dashboard-in-partner-center"></a>Marketplace Insights-dash board in partner centrum
 
-Dit artikel bevat informatie over het Marketplace Insights-dash board in het partner centrum. In dit dash board wordt een samen vatting weer gegeven van Marketplace Web Analytics, waarmee uitgevers klant betrokkenheid kunnen meten voor hun respectieve product detail pagina's die worden vermeld op de Marketplace-winkels: Microsoft AppSource en Azure Marketplace.
+Dit artikel bevat informatie over het Marketplace Insights-dash board in het partner centrum. In dit dash board wordt een samen vatting weer gegeven van Marketplace Web Analytics waarmee uitgevers klant betrokkenheid kunnen meten voor hun respectievelijke product detail pagina's die worden vermeld op de Commercial Marketplace-winkels: Microsoft AppSource en Azure Marketplace.
 
 ## <a name="marketplace-insights-dashboard"></a>Dashboard voor Marketplace-inzichten
 
@@ -25,18 +25,20 @@ U kunt grafische weer gaven van de volgende items bekijken:
 - [Overzicht van Marketplace Insights](#marketplace-insights-summary)
 - [Pagina bezoekers per Geografie](#page-visits-by-geography)  
 - [Pagina bezoeken tegenover unieke bezoekers trend](#page-visits-versus-unique-visitors-trend)
-- [Aanroepen van actie tegenover unieke bezoekers met CTAs](#call-to-action-versus-unique-visitors-with-ctas)
+- [Roep to Action (CTA) tegenover unieke bezoekers met CTAs](#call-to-action-versus-unique-visitors-with-ctas)
 - [Pagina bezoeken en aanroepen van actie door aanbiedingen](#page-visits-and-calls-to-action-by-offers)
 - [Trend van actie percentage aanroepen](#call-to-action-percentage-trend)
 - [Pagina bezoeken en aanroepen naar actie door referentie domeinen](#page-visits-and-calls-to-action-by-referral-domains)
 - [Informatie tabel voor Marketplace Insights](#marketplace-insights-details-table)
+
+De maximale latentie tussen gebruikers die aanbiedingen bezoeken op Azure Marketplace of AppSource en rapportage in het partner centrum is 48 uur.
 
 >[!NOTE]
 > Zie [Veelgestelde vragen en terminologie voor de analyse van commerciële Marketplace](./faq-terminology.md)voor gedetailleerde definities van analyse terminologie.
 
 ### <a name="insights-dashboard-layout"></a>Lay-out van Insights-dash board
 
-U kunt de Marketplace-metrische gegevens op verschillende manieren bekijken:
+Bekijk de metrische gegevens voor commerciële Marketplace op verschillende manieren:
 
 - Tabbladen van de winkel
 - Pagina filters
@@ -74,7 +76,7 @@ Dit nummer vertegenwoordigt het aantal unieke bezoekers tijdens het geselecteerd
 
 ### <a name="call-to-action"></a>Actie aanroepen
 
-Dit nummer geeft het aantal **aanroepen aan actie** knop klikken dat is voltooid op de aanbiedings pagina (Product detail pagina). **Aanroepen naar actie** worden geteld als de knoppen **nu downloaden**, **gratis proef versie**, **contact persoon**en **test station** zijn geselecteerd.
+Dit nummer geeft het aantal **aanroepen aan actie** knop klikken dat is voltooid op de aanbiedings pagina (Product detail pagina). **Aanroepen naar actie** worden geteld wanneer gebruikers de knoppen **nu downloaden**, **gratis proef versie**, **contact opnemen**of **station testen** selecteren.
 
 ![Partner centrum Insights-overzicht van actie-oproep](./media/insights-summary.png)
 
@@ -128,7 +130,7 @@ Deze tabel bevat een lijst weergave van de bezoeken van de pagina en de aanroepe
 
 - De gegevens kunnen worden geëxtraheerd naar een CSV-bestand als het aantal records kleiner is dan 1000.
 - Als het aantal records meer dan 1000 is, worden geëxporteerde gegevens asynchroon in een download pagina voor de volgende 30 dagen geplaatst.
-- Filters kunnen worden toegepast om de gegevens weer te geven waarin u geïnteresseerd bent. Gegevens kunnen worden gefilterd op naam van aanbieding en campagne namen.  
+- Filter gegevens op naam van aanbieding en campagne namen om de gegevens weer te geven waarin u geïnteresseerd bent.
 
 ## <a name="next-steps"></a>Volgende stappen
 

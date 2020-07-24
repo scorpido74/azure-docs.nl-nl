@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d482b3335b31d116846ec64883b43897fcc4e43d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: baab0160247e17556f0928f12f26a5ecca767210
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255656"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129301"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Micro soft teams gebruiken op het virtuele bureau blad van Windows
 
@@ -54,6 +54,14 @@ Als u media optimalisatie voor teams wilt inschakelen, stelt u de volgende regis
 ### <a name="install-the-teams-websocket-service"></a>De teams-WebSocket-service installeren
 
 Installeer de [WebSocket-service](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yj0i) op uw VM-installatie kopie. Als er een installatie fout optreedt, installeert u de [meest recente versie van micro soft Visual C++ Redistributable](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) en probeert u het opnieuw.
+
+#### <a name="latest-websocket-service-versions"></a>Nieuwste versies van de WebSocket-service
+
+De volgende tabel geeft een lijst van de huidige versies die beschikbaar zijn voor elke gebruikers groep:
+
+|Versie    |Releasedatum  |
+|-----------|--------------|
+|0.11.0     |05/29/2020    |
 
 ### <a name="install-microsoft-teams"></a>Micro soft teams installeren
 

@@ -1,21 +1,21 @@
 ---
 title: Azure CLI gebruiken om een RBAC-rol toe te wijzen voor gegevens toegang
 titleSuffix: Azure Storage
-description: Informatie over het gebruik van Azure CLI om machtigingen toe te wijzen aan een Azure Active Directory beveiligingsprincipal met op rollen gebaseerd toegangs beheer (RBAC). Azure Storage ondersteunt ingebouwde en aangepaste RBAC-rollen voor verificatie via Azure AD.
+description: Informatie over het gebruik van Azure CLI om machtigingen toe te wijzen aan een Azure Active Directory beveiligingsprincipal met op rollen gebaseerd toegangs beheer (RBAC). Azure Storage ondersteunt ingebouwde en aangepaste Azure-functies voor verificatie via Azure AD.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 25a38fc6f9607ef878ad3c5bf7074f5b63d5c121
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7c74bc8bd92e2d210c8fe5deaff30d55a36bb5e
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808867"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127210"
 ---
 # <a name="use-azure-cli-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>Azure CLI gebruiken om een RBAC-rol toe te wijzen voor toegang tot Blob-en wachtrij gegevens
 
@@ -23,7 +23,7 @@ Met Azure Active Directory (Azure AD) worden de toegangs rechten voor beveiligde
 
 Wanneer een RBAC-rol is toegewezen aan een Azure AD-beveiligings-principal, verleent Azure toegang tot de resources voor die beveiligings-principal. De toegang kan worden beperkt tot het niveau van het abonnement, de resource groep, het opslag account of een afzonderlijke container of wachtrij. Een beveiligings-principal voor Azure AD kan een gebruiker, een groep, een service-principal van de toepassing of een [beheerde identiteit voor Azure-resources](../../active-directory/managed-identities-azure-resources/overview.md)zijn.
 
-In dit artikel wordt beschreven hoe u Azure CLI gebruikt om ingebouwde RBAC-rollen weer te geven en toe te wijzen aan gebruikers. Zie [Azure-opdracht regel interface (CLI)](https://docs.microsoft.com/cli/azure)voor meer informatie over het gebruik van Azure cli.
+In dit artikel wordt beschreven hoe u Azure CLI gebruikt om ingebouwde RBAC-rollen weer te geven en toe te wijzen aan gebruikers. Zie [Azure-opdracht regel interface (CLI)](/cli/azure)voor meer informatie over het gebruik van Azure cli.
 
 ## <a name="rbac-roles-for-blobs-and-queues"></a>RBAC-rollen voor blobs en wacht rijen
 
@@ -108,7 +108,7 @@ az role assignment create \
     --scope "/subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>"
 ```
 
-### <a name="resource-group-scope"></a>Bereik van de resource groep
+### <a name="resource-group-scope"></a>Bereik van de resourcegroep
 
 Als u een rollen bereik wilt toewijzen aan de resource groep, geeft u de naam van de resource groep of ID voor de `--resource-group` para meter op. In het volgende voor beeld wordt de rol van **gegevens lezer van de opslag wachtrij** toegewezen aan een gebruiker op het niveau van de resource groep. Vervang de voorbeeld waarden en de waarden van de tijdelijke aanduiding tussen vier Kante haken door uw eigen waarden:
 

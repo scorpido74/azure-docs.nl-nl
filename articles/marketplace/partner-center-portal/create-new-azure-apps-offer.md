@@ -3,14 +3,16 @@ title: Een Azure-toepassings aanbieding maken-micro soft Commercial Marketplace
 description: Meer informatie over de stappen en overwegingen voor het maken van een nieuwe Azure-toepassings aanbieding in de portal voor commerciële Marketplace in het partner centrum. U kunt uw Azure-toepassings aanbieding aanbieden of verkopen in azure Marketplace of via het programma Cloud Solution Provider (CSP).
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 06/17/2020
-ms.openlocfilehash: c5371b2d9379ca861addac07de50d7cdf9c34c8b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: article
+author: qianw211
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 6789e32cbbb1257a668e7be87a8b73a0511b6fb0
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121964"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127431"
 ---
 # <a name="create-an-azure-application-offer"></a>Een Azure-toepassingsaanbieding maken
 
@@ -48,7 +50,7 @@ Bekijk de volgende bronnen wanneer u uw Azure-toepassings aanbieding voorbereidt
 
 * Voor beelden
 
-    * [Azure-CLI](../../managed-applications/cli-samples.md)
+    * [Azure CLI](../../managed-applications/cli-samples.md)
     * [Azure PowerShell](../../managed-applications/powershell-samples.md)
     * [Beheerde toepassingsoplossingen](../../managed-applications/sample-projects.md)
 
@@ -65,12 +67,12 @@ De video [buil ding Solution-sjablonen en beheerde toepassingen voor Azure Marke
 
 Kies een of beide van de volgende script omgevingen om uw Azure-toepassing te beheren:
 
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
+* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)
 * [Azure-CLI](https://docs.microsoft.com/cli/azure)
 
 Het is raadzaam om de volgende hulpprogram ma's toe te voegen aan uw ontwikkel omgeving:
 
-* [Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
+* [Azure-opslagverkenner](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
 * [Visual Studio Code](https://code.visualstudio.com/) met de volgende extensies:
     * Extensie: [Azure Resource Manager-Hulpprogram ma's](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
     * Extensie: [beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
@@ -186,7 +188,7 @@ Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in
 5. Adres van privacybeleid (koppeling)
 6. Naam van aanbieding
 7. Samenvatting
-8. Description
+8. Beschrijving
 9. Scherm afbeeldingen/Video's
 
 <br>Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in de Azure Portal:
@@ -200,7 +202,7 @@ Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in
 3. Handige koppelingen
 4. Schermopnamen
 
-#### <a name="name"></a>Name
+#### <a name="name"></a>Naam
 
 De naam die u hier invoert, wordt aan klanten weer gegeven als de titel van de aanbieding. Dit veld is vooraf ingevuld met de tekst die u hebt ingevoerd voor de **aanbiedings alias** tijdens het maken van de aanbieding, maar u kunt deze waarde wijzigen. Deze naam kan worden aangemerkt (en u kunt symbolen van het handels merk of copyright bevatten). De naam mag niet langer zijn dan 50 tekens en mag geen emojis bevatten.
 
@@ -212,7 +214,7 @@ Geef een korte beschrijving van uw aanbieding, Maxi maal 100 tekens. Deze beschr
 
 Geef een langere beschrijving van uw aanbieding, Maxi maal 256 tekens. Deze beschrijving kan worden gebruikt in Zoek resultaten.
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>Beschrijving
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -308,7 +310,7 @@ De technische configuratie definieert de Details (Tenant-ID en App-ID) die worde
 
 ## <a name="plan-overview"></a>Overzicht van plan
 
-Op dit tabblad kunt u binnen dezelfde aanbieding verschillende plan opties opgeven. Deze plannen (zoals Sku's in de Cloud Partner-portal) kunnen verschillen qua plan type (oplossings sjabloon versus beheerde toepassing), verdiensten maximaliseren of doel groep.  Configureer ten minste één abonnement om uw aanbieding in Marketplace te vermelden.
+Op dit tabblad kunt u binnen dezelfde aanbieding verschillende plan opties opgeven. Deze plannen (voorheen Sku's genoemd) kunnen verschillen qua plan type (oplossings sjabloon versus beheerde toepassing), verdiensten maximaliseren of doel groep. Configureer ten minste één abonnement om uw aanbieding in Marketplace te vermelden.
 
 Nadat u hebt gemaakt, ziet u de namen van uw plannen, Id's, plan type, Beschik baarheid (openbaar of privé), huidige publicatie status en eventuele beschik bare acties op dit tabblad.
 
@@ -327,7 +329,7 @@ Nadat u hebt gemaakt, ziet u de namen van uw plannen, Id's, plan type, Beschik b
 
 Op dit tabblad kunt u de configuratie op hoog niveau voor het type abonnement instellen, ongeacht of de pakketten van een ander abonnement opnieuw worden gebruikt en op welke Clouds het plan beschikbaar moet zijn. Uw antwoorden op dit tabblad beïnvloeden welke velden worden weer gegeven op andere tabbladen voor hetzelfde abonnement.
 
-#### <a name="plan-type"></a>Type abonnement
+#### <a name="plan-type"></a>Plantype
 Selecteer het type abonnement voor uw aanbieding. Een **oplossings sjabloon** plan wordt volledig door de klant beheerd. Met een **beheerd toepassings** abonnement kunnen uitgevers de toepassing namens de klant beheren. Zie [typen Azure-toepassings plannen](#types-of-azure-application-plans)voor meer informatie.
 
 #### <a name="re-use-technical-configuration"></a>Technische configuratie opnieuw gebruiken
@@ -500,7 +502,7 @@ Geef een HTTPS-webhook-eind punt op om meldingen over alle ruwe bewerkingen op b
 
 Selecteer deze optie om op te geven welke acties klanten kunnen uitvoeren op de beheerde resources naast de `*/read` acties die standaard beschikbaar zijn. 
 
-Geef een lijst van de aanvullende acties die u uw klant wilt laten uitvoeren, gescheiden door punt komma's.  Zie voor meer informatie [over het weigeren van toewijzingen voor Azure-resources](../../role-based-access-control/deny-assignments.md).  Zie Azure Resource Manager-bewerkingen voor de [resource provider](../../role-based-access-control/resource-provider-operations.md)voor beschik bare acties. Als u bijvoorbeeld wilt toestaan dat gebruikers virtuele machines opnieuw opstarten, `Microsoft.Compute/virtualMachines/restart/action` moet u de toegestane acties toevoegen.
+Geef een lijst van de aanvullende acties die u uw klant wilt laten uitvoeren, gescheiden door punt komma's.  Zie voor meer informatie [over het weigeren van toewijzingen voor Azure-resources](../../role-based-access-control/deny-assignments.md).  Zie [Bewerkingen voor de resourceprovider van Azure Resource Manager](../../role-based-access-control/resource-provider-operations.md) voor beschikbare acties. Als u bijvoorbeeld wilt toestaan dat consumenten virtuele machines opnieuw opstarten, moet u `Microsoft.Compute/virtualMachines/restart/action` toevoegen aan de toegestane acties.
 
 #### <a name="global-azure--azure-government-cloud"></a>Wereld wijd Azure/Azure Government-Cloud
 
@@ -510,7 +512,7 @@ Geef aan wie beheer toegang moet hebben tot deze beheerde toepassing in elke ond
 
 **Autorisaties** : voeg de Azure Active Directory object-id toe van de gebruiker, groep of toepassing waaraan u machtigingen wilt verlenen voor de beheerde resource groep. Identificeer de gebruiker op basis van de principal-ID, die u kunt vinden op de [blade Azure Active Directory gebruikers op de Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers).
 
-Selecteer voor elke principal een van de ingebouwde Azure AD-rollen uit de lijst (eigenaar of bijdrager). De rol die u selecteert, beschrijft de machtigingen die de principal heeft op de resources in het abonnement van de klant. Zie [Ingebouwde rollen voor Azure-resources](../../role-based-access-control/built-in-roles.md) voor meer informatie. Zie [aan de slag met RBAC in de Azure Portal](../../role-based-access-control/overview.md)voor meer informatie over op rollen gebaseerd toegangs beheer (RBAC).
+Selecteer voor elke principal een van de ingebouwde Azure AD-rollen uit de lijst (eigenaar of bijdrager). De rol die u selecteert, beschrijft de machtigingen die de principal heeft op de resources in het abonnement van de klant. Zie [ingebouwde rollen van Azure](../../role-based-access-control/built-in-roles.md)voor meer informatie. Zie [aan de slag met RBAC in de Azure Portal](../../role-based-access-control/overview.md)voor meer informatie over op rollen gebaseerd toegangs beheer (RBAC).
 
 >[!Note]
 >Hoewel u Maxi maal 100 autorisaties per Cloud kunt toevoegen, is het over het algemeen eenvoudiger om een Active Directory gebruikers groep te maken en de ID op te geven in de principal-ID. Hierdoor kunt u meer gebruikers toevoegen aan de beheer groep nadat het plan is geïmplementeerd en de nood zaak voor het bijwerken van het plan beperken om meer autorisaties toe te voegen.

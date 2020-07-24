@@ -3,15 +3,16 @@ title: Uw resource hiërarchie beveiligen-Azure governance
 description: Meer informatie over het beveiligen van uw resource hiërarchie met hiërarchie-instellingen, zoals het instellen van de standaard beheer groep.
 ms.date: 05/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 60c184d176ae62c1af525db656c56a83422cb94a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50b5ba1bccf3d603b6d273892d0c903d433786f3
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83837414"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127993"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>Uw resource hiërarchie beveiligen
 
-Uw resources, resource groepen, abonnementen, beheer groepen en Tenant vormen samen de resource hiërarchie. Instellingen in de hoofd beheer groep, zoals aangepaste RBAC-rollen of Azure Policy-beleids toewijzingen, kunnen van invloed zijn op elke resource in de resource hiërarchie. Het is belang rijk om de resource hiërarchie te beschermen tegen wijzigingen die een negatieve invloed kunnen hebben op alle resources.
+Uw resources, resource groepen, abonnementen, beheer groepen en Tenant vormen samen de resource hiërarchie. Instellingen in de hoofd beheer groep, zoals aangepaste Azure-rollen of Azure Policy-beleids toewijzingen, kunnen van invloed zijn op elke resource in de resource hiërarchie. Het is belang rijk om de resource hiërarchie te beschermen tegen wijzigingen die een negatieve invloed kunnen hebben op alle resources.
 
 Beheer groepen hebben nu hiërarchie-instellingen waarmee de Tenant beheerder dit gedrag kan beheren. In dit artikel worden alle beschik bare hiërarchie-instellingen beschreven en wordt uitgelegd hoe u deze kunt instellen.
 

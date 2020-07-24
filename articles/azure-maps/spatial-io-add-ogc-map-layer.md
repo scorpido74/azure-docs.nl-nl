@@ -1,19 +1,19 @@
 ---
 title: Een Open Geospatial Consortium-kaartLaag (OGC) toevoegen | Microsoft Azure kaarten
 description: Meer informatie over het bedekken van een OGC-kaartLaag op de kaart en het gebruik van de verschillende opties in de klasse OgcMapLayer.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: b753ecfc07cfb3806838f8a05dbe33ef0bb92730
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6efc6b27090ecc7171bb66deb303a4764d9b6f04
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334287"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128553"
 ---
 # <a name="add-a-map-layer-from-the-open-geospatial-consortium-ogc"></a>Een kaartLaag toevoegen vanuit de Open Geospatial Consortium (OGC)
 
@@ -28,7 +28,7 @@ De volgende secties bevatten een overzicht van de functies van de web map-servic
 - GetFeatureInfo vereist dat de service `EPSG:4326` herprojecties ondersteunt of verwerkt. 
 - Ondersteunde bewerkingen:
 
-    | | |
+    | Bewerking | Beschrijving |
     | :-- | :-- |
     | GetCapabilities | Hiermee worden meta gegevens van de service met de ondersteunde mogelijkheden opgehaald |
     | GetMap | Hiermee wordt een kaart afbeelding voor een opgegeven regio opgehaald |
@@ -42,7 +42,7 @@ De volgende secties bevatten een overzicht van de functies van de web map-servic
 - De TileMatrix-id moet een geheel getal zijn dat overeenkomt met een zoom niveau op de kaart. Op een Azure-kaart is het zoom niveau een waarde tussen `"0"` en `"22"` . Dit wordt dus wel `"0"` ondersteund, maar wordt `"00"` niet ondersteund.
 - Ondersteunde bewerkingen:
 
-    | | |
+    | Bewerking | Beschrijving |
     | :-- | :-- |
     | GetCapabilities | Hiermee worden de ondersteunde bewerkingen en functies opgehaald |
     | GetTile | Hiermee wordt de afbeelding voor een bepaalde tegel opgehaald |

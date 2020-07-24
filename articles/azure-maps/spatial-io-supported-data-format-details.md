@@ -1,19 +1,19 @@
 ---
 title: Details van ondersteunde gegevens indeling | Microsoft Azure kaarten
 description: Meer informatie over hoe gescheiden ruimtelijke gegevens worden geparseerd in de ruimtelijke IO-module.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 3353620f1751e939a04543115fe704555fb3bc21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b7c82e4650c7680709e809d9f563d79f068601f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334086"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127924"
 ---
 # <a name="supported-data-format-details"></a>Details van ondersteunde gegevensindeling
 
@@ -391,7 +391,7 @@ De eerste rij met gegevens wordt gescand op teken reeksen met een bekende tekst 
 
 Bij het scannen van de rij met koppen, worden alle typen gegevens die in de kolom naam staan, geëxtraheerd en gebruikt om de cellen in die kolom te casten. Hier volgt een voor beeld van een kolom naam die een type waarde heeft: ' columnName (typeName) '. De volgende niet-hoofdletter gevoelige type namen worden ondersteund:
 
-#### <a name="numbers"></a>Nummers
+#### <a name="numbers"></a>Getallen
 
 - EDM. int64
 - int
@@ -405,7 +405,7 @@ Bij het scannen van de rij met koppen, worden alle typen gegevens die in de kolo
 
 - EDM. Boolean
 - booleaans
-- booleaans
+- boolean
 
 #### <a name="dates"></a>Datums
 

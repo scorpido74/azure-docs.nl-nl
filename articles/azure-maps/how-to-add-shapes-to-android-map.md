@@ -1,19 +1,19 @@
 ---
 title: Shapes toevoegen aan Android-kaarten | Microsoft Azure kaarten
 description: In dit artikel wordt beschreven hoe u verschillende shapes op een kaart kunt weer geven met behulp van de Microsoft Azure Mapss Android SDK.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 7a793ff35675c876dc429976ebee96887b12735a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 855a05bd228a3bf903b79522549ed519b4745e17
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335597"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127091"
 ---
 # <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>Een shape aan een kaart toevoegen met Azure Maps Android SDK
 

@@ -3,11 +3,12 @@ title: Een toepassing verifiëren voor toegang tot Azure Service Bus entiteiten
 description: Dit artikel bevat informatie over het verifiëren van een toepassing met Azure Active Directory om toegang te krijgen tot Azure Service Bus entiteiten (wacht rijen, onderwerpen, enzovoort)
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 707fbec4317b4c34349e04895f9c6a0bdf4f1b47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 371fa42420c2cc90a581b05ac47d7a65f28fc473
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341503"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128485"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Een toepassing met Azure Active Directory voor toegang tot Azure Service Bus entiteiten verifiëren en autoriseren
 Azure Service Bus ondersteunt het gebruik van Azure Active Directory (Azure AD) voor het machtigen van aanvragen voor het Service Bus van entiteiten (wacht rijen, onderwerpen, abonnementen of filters). Met Azure AD kunt u gebruikmaken van op rollen gebaseerd toegangs beheer (RBAC) om machtigingen toe te kennen aan een beveiligingsprincipal. Dit kan een gebruiker, groep of toepassings Service-Principal zijn. Zie [informatie over de verschillende rollen](../role-based-access-control/overview.md)voor meer informatie over rollen en roltoewijzingen.
@@ -50,7 +51,7 @@ In de volgende lijst worden de niveaus beschreven waarmee u toegang tot Service 
 > [!NOTE]
 > Houd er rekening mee dat de toewijzing van RBAC-rollen tot vijf minuten kan duren. 
 
-Zie voor meer informatie over hoe ingebouwde rollen worden gedefinieerd [begrijpen functie definities](../role-based-access-control/role-definitions.md#management-and-data-operations). Zie voor meer informatie over het maken van aangepaste RBAC-rollen [aangepaste rollen maken voor op rollen gebaseerd Azure-Access Control](../role-based-access-control/custom-roles.md).
+Zie voor meer informatie over hoe ingebouwde rollen worden gedefinieerd [begrijpen functie definities](../role-based-access-control/role-definitions.md#management-and-data-operations). Zie [aangepaste rollen in azure](../role-based-access-control/custom-roles.md)voor meer informatie over het maken van aangepaste Azure-rollen.
 
 
 ## <a name="assign-rbac-roles-using-the-azure-portal"></a>RBAC-rollen toewijzen met behulp van de Azure Portal  
@@ -64,7 +65,7 @@ Nadat u het juiste bereik voor een roltoewijzing hebt bepaald, navigeert u naar 
 1. Navigeer in het [Azure Portal](https://portal.azure.com/)naar uw service bus naam ruimte. Selecteer **Access Control (IAM)** in het menu links om de instellingen voor toegangs beheer voor de naam ruimte weer te geven. Als u een Service Bus naam ruimte moet maken, volgt u de instructies in dit artikel: [een service bus Messa ging-naam ruimte maken](service-bus-create-namespace-portal.md).
 
     ![Selecteer Access Control in het menu links](./media/authenticate-application/select-access-control-menu.png)
-1. Selecteer het **tabblad roltoewijzingen om de lijst** met roltoewijzingen weer te geven. Selecteer de knop **toevoegen** op de werk balk en selecteer vervolgens **functie toewijzing toevoegen**. 
+1. Selectter het tabblad **Roltoewijzingen** om de lijst met roltoewijzingen te zien. Selecteer de knop **toevoegen** op de werk balk en selecteer vervolgens **functie toewijzing toevoegen**. 
 
     ![Knop toevoegen op de werk balk](./media/authenticate-application/role-assignments-add-button.png)
 1. Voer op de pagina **roltoewijzing toevoegen** de volgende stappen uit:
@@ -149,7 +150,7 @@ Wanneer u de console toepassing uitvoert, wordt u gevraagd een scenario te selec
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- Zie [Wat is op rollen gebaseerd toegangs beheer (RBAC)](../role-based-access-control/overview.md)? voor meer informatie over RBAC.
+- Zie [Wat is Azure Role-based Access Control (Azure RBAC)](../role-based-access-control/overview.md)? voor meer informatie over RBAC.
 - Zie de volgende artikelen voor meer informatie over het toewijzen en beheren van RBAC-roltoewijzingen met Azure PowerShell, Azure CLI of de REST API:
     - [Op rollen gebaseerd toegangs beheer (RBAC) beheren met Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)  
     - [Op rollen gebaseerd toegangs beheer (RBAC) beheren met Azure CLI](../role-based-access-control/role-assignments-cli.md)

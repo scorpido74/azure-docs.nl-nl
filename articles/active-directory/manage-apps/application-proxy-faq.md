@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 10/03/2019
+ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 839ce418fa8ad72e18537cf673c8af0479409ba7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b95ae3c7fcf52a732304bb835f91c52b015801e
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85386280"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128927"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Veelgestelde vragen over de toepassings proxy van Active Directory (Azure AD)
 
@@ -52,6 +52,9 @@ Zie [hoge Beschik baarheid en taak verdeling voor de connectors en toepassingen 
 ### <a name="is-tls-termination-tlshttps-inspection-or-acceleration-on-traffic-from-the-connector-servers-to-azure-supported"></a>Wordt TLS-beëindiging (TLS/HTTPS-inspectie of-versnelling) op verkeer van de connector servers naar Azure ondersteund?
 
 De Application proxy-connector voert verificatie op basis van certificaten uit voor Azure. TLS-beëindiging (TLS/HTTPS-inspectie of-versnelling) verbreekt deze verificatie methode en wordt niet ondersteund. Verkeer van de connector naar Azure moet alle apparaten die TLS-beëindiging uitvoeren, overs Laan.  
+
+### <a name="is-tls-12-required-for-all-connections"></a>Is TLS 1,2 vereist voor alle verbindingen?
+Ja. Om onze klanten de allerbeste versleuteling te bieden, beperkt de Application Proxy-service de toegang tot alleen TLS 1.2-protocollen. Deze wijzigingen zijn geleidelijk aan geïmplementeerd en van kracht sinds 31 augustus 2019. Zorg ervoor dat al uw client-server- en browser-server-combinaties zijn bijgewerkt en TLS 1.2 gebruiken om verbonden te blijven met de Application Proxy-service. Dit omvat clients die uw gebruikers gebruiken voor toegang tot toepassingen die worden gepubliceerd via Application Proxy. Zie [Voorbereiden voor TLS 1.2 in Office 365](https://docs.microsoft.com/microsoft-365/compliance/prepare-tls-1.2-in-office-365) voor handige naslaginformatie en bronnen.
 
 ### <a name="can-i-place-a-forward-proxy-device-between-the-connector-servers-and-the-back-end-application-server"></a>Kan ik een doorstuur proxy apparaat tussen de connector server (s) en de back-end-toepassings server plaatsen?
 Ja, dit scenario wordt ondersteund vanaf de connector versie 1.5.1526.0. Zie [werken met bestaande on-premises proxy servers](application-proxy-configure-connectors-with-proxy-servers.md).
@@ -93,6 +96,9 @@ Op de pagina Toepassings registraties kunt u de URL van de start pagina wijzigen
 
 Nee, er is geen IIS-vereiste voor toepassingen die worden gepubliceerd. U kunt webtoepassingen die worden uitgevoerd op servers met uitzonde ring van Windows Server publiceren. Het is echter mogelijk dat u geen vooraf-verificatie kunt gebruiken met een niet-Windows-Server, afhankelijk van of de webserver Negotiate (Kerberos-verificatie) ondersteunt. IIS is niet vereist op de server waarop de connector is geïnstalleerd.
 
+### <a name="can-i-configure-application-proxy-to-add-the-hsts-header"></a>Kan ik toepassings proxy configureren om de HSTS-header toe te voegen?
+Toepassings proxy voegt de header HTTP strict-Trans Port-Security niet automatisch toe aan HTTPS-antwoorden, maar behoudt de header als deze zich in het oorspronkelijke antwoord bevindt dat is verzonden door de gepubliceerde toepassing. Het bewijs van een instelling om deze functionaliteit in te scha kelen, bevindt zich op het schema. Als u geïnteresseerd bent in een preview-versie waarmee u deze kunt toevoegen aan antwoorden, kunt u contact opdoen met aadapfeedback@microsoft.com voor meer informatie.
+
 ## <a name="integrated-windows-authentication"></a>Geïntegreerde Windows-authenticatie
 
 ### <a name="when-should-i-use-the-principalsallowedtodelegatetoaccount-method-when-setting-up-kerberos-constrained-delegation-kcd"></a>Wanneer moet ik de methode PrincipalsAllowedToDelegateToAccount gebruiken bij het instellen van een Kerberos-beperkte overdracht (KCD)?
@@ -133,7 +139,7 @@ Ja, dit wordt verwacht. Voor het scenario vóór verificatie is een ActiveX-best
 
 ### <a name="is-the-remote-desktop-web-client-html5-supported"></a>Wordt de Extern bureaublad-webclient (HTML5) ondersteund?
 
-Nee, dit scenario wordt momenteel niet ondersteund. Volg ons het [UserVoice](https://aka.ms/aadapuservoice) -feedback forum voor updates over deze functie.
+Ja, dit scenario is momenteel beschikbaar als open bare preview. Raadpleeg [extern bureaublad publiceren met Azure AD-toepassingsproxy](application-proxy-integrate-with-remote-desktop-services.md).
 
 ### <a name="after-i-configured-the-pre-authentication-scenario-i-realized-that-the-user-has-to-authenticate-twice-first-on-the-azure-ad-sign-in-form-and-then-on-the-rdweb-sign-in-form-is-this-expected-how-can-i-reduce-this-to-one-sign-in"></a>Nadat ik het scenario voor verificatie vooraf heb geconfigureerd, heb ik dan de eerste keer een verificatie van de gebruiker uitvoeren: eerst op het aanmeld formulier van Azure AD en vervolgens op het aanmeld formulier RDWeb. Wordt dit verwacht? Hoe kan ik deze beperken tot één aanmelding?
 

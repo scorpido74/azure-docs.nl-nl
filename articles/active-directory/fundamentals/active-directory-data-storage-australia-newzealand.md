@@ -9,30 +9,26 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/13/2019
-ms.custom: it-pro, seodec18
+ms.date: 7/21/2020
+ms.custom: it-pro, seodec18, references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0dc659f3d580646c1e86e5e97940268311e5546f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 749ee479f19b0855700cf1ca15aefd9b983dd7f7
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79460531"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129539"
 ---
-# <a name="identity-data-storage-for-australian-and-new-zealand-customers-in-azure-active-directory"></a>Identiteits gegevens opslag voor Australische en Nieuw-Zeelandse klanten in Azure Active Directory
+# <a name="customer-data-storage-for-australian-and-new-zealand-customers-in-azure-active-directory"></a>Klant gegevens opslag voor Australische en Nieuw-Zeelandse klanten in Azure Active Directory
 
-Identiteits gegevens worden opgeslagen door Azure AD op een geografische locatie op basis van het adres van uw organisatie bij het abonneren op een micro soft online service, zoals Office 365 en Azure. Voor informatie over waar uw identiteits klant gegevens zijn opgeslagen, kunt u de sectie [waar bevinden zich uw gegevens?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) in het micro soft vertrouwens centrum.
+Azure Active Directory (Azure AD) slaat de klant gegevens op in een geografische locatie op basis van het land dat u hebt ingevoerd toen u zich aanmeldde voor een online service van micro soft. Micro soft Online Services omvatten Office 365 en Azure. 
+
+Zie de sectie waar bevindt zich [uw gegevens?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) in het micro soft vertrouwens centrum voor informatie over waar de gegevens van Azure AD en andere micro soft-Services zich bevinden.
+
+Vanaf 26 februari 2020 begon micro soft de klant gegevens van Azure AD te bewaren voor nieuwe tenants met een Australische of Nieuw-Zeelandse facturerings adres in de Australische data centers. Tussen 1 mei 2020 en 31 oktober 2020 migreert micro soft bestaande tenants met een Australische of Nieuw-Zeelandse factuur adres aan de Australische data centers zonder dat hiervoor actie van de klant vereist is. Het migratie proces omvat geen uitval tijd voor klanten en heeft geen invloed op de functionaliteit van een Tenant tijdens de migratie.
+
+Daarnaast biedt bepaalde Azure AD-functies nog geen ondersteuning voor opslag van klant gegevens in Australië. Ga naar de [Azure AD-gegevens toewijzing](https://msit.powerbi.com/view?r=eyJrIjoiYzEyZTc5OTgtNTdlZS00ZTVkLWExN2ItOTM0OWU4NjljOGVjIiwidCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsImMiOjV9)voor specifieke informatie over de functie. Microsoft Azure Multi-Factor Authentication bijvoorbeeld klant gegevens in de VS opslaat en deze wereld wijd verwerkt. Zie [gegevens locatie en klant gegevens voor Azure multi-factor Authentication](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-data-residency).
 
 > [!NOTE]
-> Services en toepassingen die met Azure AD worden geïntegreerd, hebben toegang tot klant gegevens van de identiteit. Evalueer elke service en toepassing die u gebruikt om te bepalen hoe klant gegevens van de identiteit worden verwerkt door die specifieke service en toepassing, en of ze voldoen aan de vereisten voor gegevens opslag van uw bedrijf. Zie de sectie Waar bevinden uw gegevens zich? van het Microsoft Trust Center voor meer informatie over de gegevenslocatie van Microsoft-services.
+> Micro soft-producten,-services en-toepassingen van derden die met Azure AD worden geïntegreerd, hebben toegang tot klant gegevens. Evalueer elk product, de service en de toepassing die u gebruikt om te bepalen hoe klant gegevens worden verwerkt door het specifieke product, de service en de toepassing en of ze voldoen aan de vereisten voor gegevens opslag van uw bedrijf. Zie de sectie [Waar bevinden uw gegevens zich?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) van het Microsoft Trust Center voor meer informatie over de gegevenslocatie van Microsoft-services.
 
-Voor klanten die een adres hebben ontvangen in Australië en Nieuw-Zeeland en gebruikmaakt van Azure AD Free Edition, blijven PII-gegevens op rest in Australische data centers. 
-
-Alle andere Azure AD Premium-Services slaan klant gegevens op in wereld wijde data centers. Als u het Data Center voor een service wilt zoeken, raadpleegt u [Azure Active Directory – waar bevinden zich uw gegevens?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)
-
-## <a name="microsoft-azure-multi-factor-authentication-mfa"></a>Multi-factor Authentication (MFA) Microsoft Azure
-
-MFA-service in azure AD slaat identiteits gegevens van klanten op in wereld wijde data centers. Zie [azure multi-factor Authentication verzameling van gebruikers gegevens](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-data-residency)voor meer informatie over de gebruikers gegevens die worden verzameld en opgeslagen door Azure MFA en Azure MFA-server op basis van de Cloud. Als klanten MFA gebruiken, worden hun gegevens buiten Australië-data centers in rust opgeslagen. 
-
-## <a name="next-steps"></a>Volgende stappen
-Zie de volgende artikelen voor meer informatie over de functies en functionaliteit die hierboven worden beschreven:
-- [Wat is Multi-Factor Authentication?](https://docs.microsoft.com/azure/active-directory/authentication/multi-factor-authentication)

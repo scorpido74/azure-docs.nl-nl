@@ -1,19 +1,19 @@
 ---
 title: Module voor teken hulpprogramma's | Microsoft Azure kaarten
 description: In dit artikel leert u hoe u gegevens voor teken opties kunt instellen met behulp van de Microsoft Azure Maps Web SDK
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 711609f9382e2153cbc738d544933796dbbe2e99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 261202173a0692c66a24091b2173f5d4fe271058
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334312"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129505"
 ---
 # <a name="use-the-drawing-tools-module"></a>De module voor tekenprogramma's gebruiken
 
@@ -30,7 +30,7 @@ De Azure Maps Web-SDK bevat een *module voor teken hulpprogramma's*. Met deze mo
         <script src="https://atlas.microsoft.com/sdk/javascript/drawing/0/atlas-drawing.min.js"></script>
         ```
 
-    - U kunt ook de module teken hulpprogramma's voor de Azure Maps Web SDK-bron code lokaal laden met behulp van het NPM-pakket [Azure-Maps-drawing tools](https://www.npmjs.com/package/azure-maps-drawing-tools) en het vervolgens hosten met uw app. Dit pakket bevat ook TypeScript-definities. Gebruik deze opdracht:
+    - U kunt ook de module teken hulpprogramma's voor de Azure Maps Web SDK-bron code lokaal laden met behulp van het NPM-pakket [Azure-Maps-drawing tools](https://www.npmjs.com/package/azure-maps-drawing-tools) en het vervolgens hosten met uw app. Dit pakket bevat ook TypeScript-definities. Gebruik hiervoor deze opdracht:
     
         > **NPM Azure-Maps-draw-tools installeren**
     

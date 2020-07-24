@@ -15,11 +15,12 @@ ms.date: 05/01/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: ac5c19866a164bbc927d23495e9d6ec9a1ef6bfe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d6c9ab2bacf94b3a27bfd1de0189d8b89b5efaf
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84790701"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129437"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Problemen met Azure RBAC oplossen
 
@@ -65,7 +66,7 @@ $ras.Count
 - U kunt slechts één beheer groep definiëren in `AssignableScopes` een aangepaste rol. Een beheer groep toevoegen aan `AssignableScopes` is momenteel beschikbaar als preview-versie.
 - Aangepaste rollen met `DataActions` kunnen niet worden toegewezen in het bereik van de beheer groep.
 - Azure Resource Manager valideert niet het bestaan van de beheer groep in het toewijs bare bereik van de roldefinitie.
-- Zie [uw resources organiseren met Azure-beheer groepen](../governance/management-groups/overview.md#custom-rbac-role-definition-and-assignment)voor meer informatie over aangepaste rollen en beheer groepen.
+- Zie [uw resources organiseren met Azure-beheer groepen](../governance/management-groups/overview.md#azure-custom-role-definition-and-assignment)voor meer informatie over aangepaste rollen en beheer groepen.
 
 ## <a name="transferring-a-subscription-to-a-different-directory"></a>Een abonnement overdragen naar een andere map
 

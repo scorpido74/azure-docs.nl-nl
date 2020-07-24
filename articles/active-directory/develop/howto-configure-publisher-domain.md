@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 04/05/2019
+ms.date: 07/23/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
-ms.openlocfilehash: 408d8856130947e9be9c6d2714310332d9935cdd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d62328534157a1e2d9e53830be9d6b87e08c9e40
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477988"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129267"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain"></a>Procedure: het domein van de uitgever van een toepassing configureren
 
@@ -50,9 +50,9 @@ Voer de volgende stappen uit om het Uitgever domein van uw app in te stellen.
 
 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
 
-1. Als uw account in meer dan één Azure AD-Tenant aanwezig is:
-   1. Selecteer uw profiel in het menu in de rechter bovenhoek van de pagina en **Schakel vervolgens over naar de map**.
-   1. Wijzig uw sessie in de Azure AD-Tenant waar u de toepassing wilt maken.
+1. Als uw account in meerdere Azure AD-tenants aanwezig is:
+   1. Selecteer uw profiel in het menu in de rechterbovenhoek van de pagina en klik op **Schakelen tussen directory's**.
+   1. Wijzig uw sessie in de Azure AD-tenant waar u de toepassing wilt maken.
 
 1. Navigeer naar [Azure Active Directory > app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) om de app te zoeken en te selecteren die u wilt configureren.
 
@@ -76,9 +76,12 @@ Als uw app niet is geregistreerd in een Tenant, ziet u alleen de optie om een ni
    ```json
    {
       "associatedApplications": [
-        {
-           "applicationId": "{YOUR-APP-ID-HERE}"
-        }
+         {
+            "applicationId": "{YOUR-APP-ID-HERE}"
+         },
+         {
+            "applicationId": "{YOUR-OTHER-APP-ID-HERE}"
+         }
       ]
     }
    ```

@@ -7,12 +7,12 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.custom: mvc
 ms.date: 04/29/2020
-ms.openlocfilehash: 62807ef25fe6ee70844e72c90751eb383d0ece7c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9cf964b8b5ebbfe5f790a1e325b48cd4179cf4ee
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82598433"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127669"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Logische apps beheren met Visual Studio
 
@@ -35,9 +35,9 @@ U kunt ook [uw Logic apps beheren in de Azure Portal](manage-logic-apps-with-azu
 
     > [!IMPORTANT]
     > Wanneer u Visual Studio 2019 of 2017 installeert, moet u ervoor zorgen dat u de **Azure Development** -werk belasting selecteert.
-    > Zie [resources die zijn gekoppeld aan uw Azure-accounts beheren in Visual Studio Cloud Explorer](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view)voor meer informatie.
+    > Zie [resources die zijn gekoppeld aan uw Azure-accounts beheren in Visual Studio Cloud Explorer](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer)voor meer informatie.
 
-    Als u Cloud Explorer voor Visual Studio 2015 wilt installeren, [downloadt u Cloud Explorer van Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVisualStudio2015). Zie [resources beheren die zijn gekoppeld aan uw Azure-accounts in Visual Studio Cloud Explorer (2015)](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2015)voor meer informatie.
+    Als u Cloud Explorer voor Visual Studio 2015 wilt installeren, [downloadt u Cloud Explorer van Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVisualStudio2015). Zie [resources beheren die zijn gekoppeld aan uw Azure-accounts in Visual Studio Cloud Explorer (2015)](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2015)voor meer informatie.
 
   * [Azure SDK (2.9.1 of hoger)](https://azure.microsoft.com/downloads/)
 
@@ -51,44 +51,46 @@ U kunt ook [uw Logic apps beheren in de Azure Portal](manage-logic-apps-with-azu
 
     * [Visual Studio 2015](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2015)
 
-    U kunt hulpprogramma's van Azure Logic Apps ofwel rechtstreeks vanuit Visual Studio Marketplace downloaden en installeren, of leer [deze extensie te installeren vanuit Visual Studio](https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions). Zorg ervoor dat u Visual Studio opnieuw opstart na de installatie.
+    U kunt hulpprogramma's van Azure Logic Apps ofwel rechtstreeks vanuit Visual Studio Marketplace downloaden en installeren, of leer [deze extensie te installeren vanuit Visual Studio](/visualstudio/ide/finding-and-using-visual-studio-extensions). Zorg ervoor dat u Visual Studio opnieuw opstart na de installatie.
+
+  * Als u Azure Government-abonnementen met Visual Studio wilt gebruiken, raadpleegt u de volgende onderwerpen voor aanvullende installatie:
+
+    * Visual Studio 2019: [Quick Start: verbinding maken met Azure Government met Visual Studio](../azure-government/documentation-government-connect-vs.md)
+
+    * Visual Studio 2017: [introductie van de Azure Environment selector Visual Studio-extensie](https://devblogs.microsoft.com/azuregov/introducing-the-azure-environment-selector-visual-studio-extension/), die u kunt downloaden en installeren via de [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=SteveMichelotti.AzureEnvironmentSelector).
 
 * Toegang tot het web terwijl u de Inge sloten Logic Apps Designer gebruikt
 
-  De ontwerpfunctie moet over een internetverbinding beschikken om resources te maken in Azure en de eigenschappen en gegevens van connectoren in uw logische app te lezen. Als u bijvoorbeeld de Dynamics CRM Online-connector gebruikt, controleert de ontwerpfunctie uw CRM-exemplaar voor de beschikbare standaardregels en aangepaste eigenschappen.
+  De ontwerpfunctie moet over een internetverbinding beschikken om resources te maken in Azure en de eigenschappen en gegevens van connectoren in uw logische app te lezen.
 
 <a name="find-logic-apps-vs"></a>
 
-## <a name="find-your-logic-apps"></a>Uw Logic apps zoeken
+## <a name="find-logic-apps"></a>Logische apps zoeken
 
 In Visual Studio vindt u alle Logic apps die zijn gekoppeld aan uw Azure-abonnement en die worden geïmplementeerd in de Azure Portal met behulp van Cloud Explorer.
 
 1. Open Visual Studio. Selecteer in het menu **weer gave** de optie **Cloud Explorer**.
 
-1. Selecteer **account beheer**in Cloud Explorer. Selecteer het Azure-abonnement dat is gekoppeld aan uw Logic apps en selecteer vervolgens **Toep assen**. Bijvoorbeeld:
+1. Selecteer in Cloud Explorer het pictogram **account beheer** . Selecteer het Azure-abonnement dat is gekoppeld aan uw Logic apps en selecteer **Toep assen**. Bijvoorbeeld:
 
    ![Selecteer account beheer](./media/manage-logic-apps-with-visual-studio/account-management-select-Azure-subscription.png)
 
-1. Voer de volgende stappen uit op basis van het feit of u zoekt op **resource groepen** of **resource typen**:
+1. Klik naast het pictogram **account beheer** op **resource typen**. Vouw onder uw Azure-abonnement **Logic apps** uit zodat u alle geïmplementeerde Logic apps kunt weer geven die zijn gekoppeld aan uw abonnement.
 
-   * **Resource groepen**: onder uw Azure-abonnement worden alle resource groepen weer gegeven die zijn gekoppeld aan het abonnement. Vouw de resource groep met uw logische app uit en selecteer vervolgens uw logische app.
-
-   * **Resource typen**: Vouw **Logic apps**uit onder uw Azure-abonnement. Nadat Cloud Explorer alle geïmplementeerde Logic apps bevat die aan uw abonnement zijn gekoppeld, selecteert u uw logische app.
+Open vervolgens uw logische app in de editor voor logische apps.
 
 <a name="open-designer"></a>
 
-## <a name="open-in-visual-studio"></a>Openen in Visual Studio
+## <a name="open-logic-apps-in-visual-studio"></a>Logic apps openen in Visual Studio
 
 In Visual Studio kunt u logische apps openen die eerder zijn gemaakt en geïmplementeerd, rechtstreeks via de Azure Portal of als Azure-resource groeps projecten met Visual Studio.
 
-1. Open Cloud Explorer en zoek uw logische app.
+1. [Open Cloud Explorer en zoek uw logische app](#find-logic-apps-vs).
 
 1. Selecteer in het snelmenu van de logische app de optie **openen met Logic app-editor**.
 
    > [!TIP]
    > Als u deze opdracht niet in Visual Studio 2019 hebt, controleert u of u de meest recente updates voor Visual Studio hebt.
-
-   Dit voor beeld toont Logic apps op resource type, zodat uw logische apps worden weer gegeven in de sectie **Logic apps** .
 
    ![Geïmplementeerde logische app openen vanuit Azure Portal](./media/manage-logic-apps-with-visual-studio/open-logic-app-in-editor.png)
 
@@ -100,14 +102,14 @@ In Visual Studio kunt u logische apps openen die eerder zijn gemaakt en geïmple
 
 U kunt Logic apps downloaden van de [Azure Portal](https://portal.azure.com) en deze opslaan als [Azure Resource Manager](../azure-resource-manager/management/overview.md) sjablonen. U kunt de sjablonen vervolgens lokaal bewerken met Visual Studio en Logic apps aanpassen voor verschillende implementatie omgevingen.  Bij het downloaden van Logic apps worden de definities in [Resource Manager-sjablonen](../azure-resource-manager/templates/overview.md)automatisch *parameterizes* , die ook JavaScript object Notation (JSON) gebruiken.
 
-1. Open in Visual Studio Cloud Explorer. Zoek en selecteer de logische app die u wilt downloaden van Azure.
+1. Open in Visual Studio met behulp van Cloud Explorer [de logische app die u wilt downloaden van Azure](#open-designer).
 
-1. Selecteer in het snelmenu van de app **openen met Logic app-editor**.
+1. Selecteer in het snelmenu van de logische app de optie **openen met Logic app-editor**.
 
    > [!TIP]
    > Als u deze opdracht niet in Visual Studio 2019 hebt, controleert u of u de meest recente updates voor Visual Studio hebt.
 
-   De Logic app-ontwerp functie wordt geopend en toont de logische app. Als u de onderliggende definitie en structuur van de logische app wilt bekijken, selecteert u de **code weergave**onder aan de ontwerp functie.
+   De logische app wordt geopend in de ontwerp functie voor logische apps.
 
 1. Selecteer **downloaden**op de werk balk van de ontwerp functie.
 
