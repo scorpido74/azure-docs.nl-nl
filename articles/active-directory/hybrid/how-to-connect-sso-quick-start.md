@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58e779e6feeba27711a1746fbf7d6878725790fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc955fe64ae68cb1248b0e616357bccf82f5f036
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358001"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87115748"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory naadloze eenmalige aanmelding: Quick Start
 
@@ -37,7 +37,7 @@ Zorg ervoor dat aan de volgende vereisten is voldaan:
 
 * **Uw Azure AD Connect-server instellen**: als u [Pass-Through-verificatie](how-to-connect-pta.md) gebruikt als uw aanmeldings methode, is er geen aanvullende controle op vereisten vereist. Als u [wachtwoord hash-synchronisatie](how-to-connect-password-hash-synchronization.md) gebruikt als uw aanmeldings methode en als er een firewall is tussen Azure AD Connect en Azure AD, moet u ervoor zorgen dat:
    - U gebruikt versie 1.1.644.0 of hoger van Azure AD Connect. 
-   - Als uw firewall of proxy toestaat, voegt u de verbindingen toe aan de lijst met toegestane ** \* Msappproxy.net** -url's via poort 443. Als dat niet het geval is, verleent u toegang tot de [IP-bereiken van het Azure-Data Center](https://www.microsoft.com/download/details.aspx?id=41653), die wekelijks worden bijgewerkt. Deze vereiste is alleen van toepassing wanneer u de functie inschakelt. Het is niet vereist voor de werkelijke gebruikers aanmeldingen.
+   - Als uw firewall of proxy toestaat, voegt u de verbindingen toe aan de lijst met toegestane ** \* Msappproxy.net** -url's via poort 443. Als dat niet het geval is, moet u toegang toestaan tot de [IP-adresbereiken van Azure Datacenter](https://www.microsoft.com/download/details.aspx?id=41653), die elke week worden bijgewerkt. Deze vereiste is alleen van toepassing wanneer u de functie inschakelt. Het is niet vereist voor de werkelijke gebruikers aanmeldingen.
 
     >[!NOTE]
     >Azure AD Connect versies 1.1.557.0, 1.1.558.0, 1.1.561.0 en 1.1.614.0 hebben een probleem met de synchronisatie van wacht woord-hashes. Als u de synchronisatie van wacht woord-hash _niet_ wilt gebruiken in combi natie met Pass-Through-verificatie, raadpleegt u de opmerkingen bij de [Azure AD Connect-release](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470) voor meer informatie.
@@ -162,9 +162,9 @@ Er zijn twee manieren om de intranet zone-instellingen van gebruikers te wijzige
 
 4. Voer de volgende waarden in de juiste velden in en klik op **OK**.
    - **Sleutelpad:** ***Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-SSO.com\autologon***
-   - **Waardenaam**: ***https***.
-   - **Waardetype**: ***REG_DWORD***.
-   - **Waardegegevens**: ***00000001***.
+   - **Waardenaam**: ***https***
+   - **Waardetype**: ***REG_DWORD***
+   - **Waardegegevens**: ***00000001***
  
      ![Eenmalige aanmelding](./media/how-to-connect-sso-quick-start/sso16.png)
  

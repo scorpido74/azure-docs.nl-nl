@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/08/2018
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: e683d17422321b780a1c01b3011292f2e2c631cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30bbd06e36ed1e03caa391165a8abc275f1899a7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67176082"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102589"
 ---
 Als u een volume container wilt verwijderen, moet u
  - Verwijder de volumes in de volume container. Als er volumes aan de volume container zijn gekoppeld, moet u deze volumes eerst offline halen. Volg de stappen in [een volume offline halen](../articles/storsimple/storsimple-8000-manage-volumes-u2.md#take-a-volume-offline). Nadat de volumes offline zijn, kunt u ze verwijderen. 
@@ -36,6 +36,6 @@ Wanneer de volume container geen gekoppelde volumes, back-upbeleid en Cloud mome
 
 De lijst met volume containers wordt bijgewerkt om de verwijderde volume container weer te geven.
 
-![](./media/storsimple-8000-delete-volume-container/deletevolumecontainer5.png)
+![Scherm afbeelding van de pagina met de volume container. De tabel lijst met volume containers bevat de verwijderde container niet meer.](./media/storsimple-8000-delete-volume-container/deletevolumecontainer5.png)
 
 

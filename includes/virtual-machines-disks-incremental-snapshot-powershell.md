@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: d63ec0c2d82ec316a61771b4642731c932b045cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e7386e21442b5a76aae656a36e2858b52ecef65
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84224938"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102600"
 ---
 [!INCLUDE [virtual-machines-disks-incremental-snapshots-description](virtual-machines-disks-incremental-snapshots-description.md)]
 
-### <a name="supported-regions"></a>Ondersteunde regio’s
+### <a name="supported-regions"></a>Ondersteunde regio's
 [!INCLUDE [virtual-machines-disks-incremental-snapshots-regions](virtual-machines-disks-incremental-snapshots-regions.md)]
 
 ## <a name="restrictions"></a>Beperkingen
@@ -36,15 +36,17 @@ Als dat is gebeurd, meldt u zich aan bij uw Power shell-sessie met `Connect-AzAc
 
 Als u een incrementele moment opname met Azure PowerShell wilt maken, stelt u de configuratie met [New-AzSnapShotConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) met de `-Incremental` para meter in en geeft u die als een variabele door aan [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) door de `-Snapshot` para meter.
 
-Vervang `<yourDiskNameHere>` , `<yourResourceGroupNameHere>` , en `<yourDesiredSnapShotNameHere>` met uw waarden, vervolgens kunt u het volgende script gebruiken om een incrementele moment opname te maken:
-
 ```PowerShell
+$diskName = "yourDiskNameHere>"
+$resourceGroupName = "yourResourceGroupNameHere"
+$snapshotName = "yourDesiredSnapshotNameHere"
+
 # Get the disk that you need to backup by creating an incremental snapshot
-$yourDisk = Get-AzDisk -DiskName <yourDiskNameHere> -ResourceGroupName <yourResourceGroupNameHere>
+$yourDisk = Get-AzDisk -DiskName $diskName -ResourceGroupName $resourceGroupName
 
 # Create an incremental snapshot by setting the SourceUri property with the value of the Id property of the disk
 $snapshotConfig=New-AzSnapshotConfig -SourceUri $yourDisk.Id -Location $yourDisk.Location -CreateOption Copy -Incremental 
-New-AzSnapshot -ResourceGroupName <yourResourceGroupNameHere> -SnapshotName <yourDesiredSnapshotNameHere> -Snapshot $snapshotConfig 
+New-AzSnapshot -ResourceGroupName $resourceGroupName -SnapshotName $snapshotName -Snapshot $snapshotConfig 
 ```
 
 U kunt incrementele moment opnamen identificeren van dezelfde schijf met de `SourceResourceId` en de `SourceUniqueId` Eigenschappen van moment opnamen. `SourceResourceId`is de Azure Resource Manager Resource-ID van de bovenliggende schijf. `SourceUniqueId`is de waarde die wordt overgenomen van de `UniqueId` eigenschap van de schijf. Als u een schijf verwijdert en vervolgens een nieuwe schijf met dezelfde naam maakt, verandert de waarde van de `UniqueId` eigenschap.
@@ -52,7 +54,7 @@ U kunt incrementele moment opnamen identificeren van dezelfde schijf met de `Sou
 U kunt `SourceResourceId` en gebruiken `SourceUniqueId` om een lijst te maken met alle moment opnamen die zijn gekoppeld aan een bepaalde schijf. Vervang door `<yourResourceGroupNameHere>` uw waarde en u kunt het volgende voor beeld gebruiken om uw bestaande incrementele moment opnamen weer te geven:
 
 ```PowerShell
-$snapshots = Get-AzSnapshot -ResourceGroupName <yourResourceGroupNameHere>
+$snapshots = Get-AzSnapshot -ResourceGroupName $resourceGroupName
 
 $incrementalSnapshots = New-Object System.Collections.ArrayList
 foreach ($snapshot in $snapshots)

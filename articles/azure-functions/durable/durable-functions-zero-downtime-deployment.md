@@ -6,16 +6,16 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 45f87898f7da432e5bdd09061e74c33a1a8fe41b
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 11bbc30179cc27f4799b1fd2869cb312dfa34473
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165699"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87093065"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Implementatie met een nul-uitval tijd voor Durable Functions
 
-Het [betrouw bare uitvoerings model](durable-functions-checkpointing-and-replay.md) van Durable functions vereist dat indelingen deterministisch zijn, wat een extra uitdaging vormt om te overwegen wanneer u updates implementeert. Wanneer een implementatie wijzigingen bevat in de hand tekeningen of Orchestrator-logica van de activiteit functie, mislukken in vlucht indelings instanties. Deze situatie is met name een probleem voor exemplaren van langlopende orchestrator, die uren of werk dagen kunnen Voorst Ellen.
+Het [betrouw bare uitvoerings model](./durable-functions-orchestrations.md) van Durable functions vereist dat indelingen deterministisch zijn, wat een extra uitdaging vormt om te overwegen wanneer u updates implementeert. Wanneer een implementatie wijzigingen bevat in de hand tekeningen of Orchestrator-logica van de activiteit functie, mislukken in vlucht indelings instanties. Deze situatie is met name een probleem voor exemplaren van langlopende orchestrator, die uren of werk dagen kunnen Voorst Ellen.
 
 Om te voor komen dat deze fouten zich voordoen, hebt u twee opties: 
 - Stel uw implementatie uit totdat alle actieve Orchestrator-exemplaren zijn voltooid.
@@ -52,7 +52,7 @@ Gebruik de volgende procedure om dit scenario in te stellen.
 
 1. Stel voor elke sleuf de [toepassings instelling AzureWebJobsStorage](../functions-app-settings.md#azurewebjobsstorage) in op de Connection String van een gedeeld opslag account. Dit opslag account connection string wordt gebruikt door de Azure Functions-runtime. Dit account wordt gebruikt door de Azure Functions runtime en beheert de sleutels van de functie.
 
-1. Maak voor elke sleuf een nieuwe app-instelling, bijvoorbeeld `DurableManagementStorage` . Stel de waarde ervan in op de connection string van verschillende opslag accounts. Deze opslag accounts worden gebruikt door de extensie Durable Functions voor [betrouw bare uitvoering](durable-functions-checkpointing-and-replay.md). Gebruik een afzonderlijk opslag account voor elke sleuf. Markeer deze instelling niet als een implementatie site-instelling.
+1. Maak voor elke sleuf een nieuwe app-instelling, bijvoorbeeld `DurableManagementStorage` . Stel de waarde ervan in op de connection string van verschillende opslag accounts. Deze opslag accounts worden gebruikt door de extensie Durable Functions voor [betrouw bare uitvoering](./durable-functions-orchestrations.md). Gebruik een afzonderlijk opslag account voor elke sleuf. Markeer deze instelling niet als een implementatie site-instelling.
 
 1. In dehost.jsvan de functie-app [in de sectie durableTask van het bestand](durable-functions-bindings.md#hostjson-settings), geeft `azureStorageConnectionStringName` u de naam op van de app-instelling die u in stap 3 hebt gemaakt.
 
@@ -172,4 +172,3 @@ Zie [instanties beheren in Durable functions in azure](durable-functions-instanc
 
 > [!div class="nextstepaction"]
 > [Versie beheer Durable Functions](durable-functions-versioning.md)
-

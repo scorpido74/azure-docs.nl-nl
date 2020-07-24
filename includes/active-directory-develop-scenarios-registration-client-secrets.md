@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/18/2018
+ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: a5d34ac7eea50b67bd679d8cb8ddecf7ca277abd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3acdbb93dd20f0b89e4f99d64f5f7a30ce40623
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76773394"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102598"
 ---
 ## <a name="register-secrets-or-certificates"></a>Geheimen of certificaten registreren
 
@@ -31,12 +31,10 @@ Het beheer van client referenties vindt plaats op de pagina **certificaten & geh
 
 ![Pagina certificaten & geheimen](../articles/active-directory/develop/media/quickstart-update-azure-ad-app-preview/credentials-certificates-secrets.png)
 
-- Het toepassings geheim (ook wel het client geheim genoemd) wordt gegenereerd door Azure AD tijdens de registratie van de vertrouwelijke client toepassing. Deze generatie gebeurt wanneer u **Nieuw client geheim**selecteert. Op dat moment moet u de geheime teken reeks naar het klem bord kopiëren voor gebruik in uw app, voordat u **Opslaan**selecteert. Deze teken reeks wordt niet meer weer gegeven.
+- U maakt een *client geheim* door **Nieuw client geheim** te selecteren in de registratie van de app in de Azure Portal. Wanneer u een client geheim maakt, _moet_ u de teken reeks van het geheim vastleggen voordat u naar het deel venster **certificaten & geheimen** gaat navigeren. De teken reeks van het geheim wordt nooit opnieuw weer gegeven.
 - Tijdens de registratie van de toepassing gebruikt u de knop **certificaat uploaden** om het certificaat te uploaden. Azure AD ondersteunt alleen certificaten die rechtstreeks zijn geregistreerd bij de toepassing en die niet voldoen aan de certificaat ketens.
 
 Voor meer informatie raadpleegt [u Quick Start: een client toepassing configureren voor toegang tot Web-api's | Voeg referenties toe aan uw toepassing](../articles/active-directory/develop/quickstart-configure-app-access-web-apis.md#add-credentials-to-your-web-application).
-
-
 
 ### <a name="register-client-secrets-by-using-powershell"></a>Client geheimen registreren met behulp van Power shell
 

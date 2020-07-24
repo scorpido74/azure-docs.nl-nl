@@ -1,18 +1,19 @@
 ---
-title: Zoom niveaus en tegel raster | Microsoft Azure kaarten
+title: Zoom niveaus en tegel raster in Microsoft Azure Maps
 description: In dit artikel vindt u meer informatie over zoom niveaus en tegel rasters in Microsoft Azure kaarten.
-author: Philmea
-ms.author: philmea
-ms.date: 01/22/2020
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 07/14/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: ''
-ms.openlocfilehash: b7dde6e1a77cebd1e88cc574d99e781ab55f0934
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+manager: philmea
+ms.openlocfilehash: 9493ad21847cca230606ff1641c9ac02c3355f53
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83123901"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87093048"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Zoomniveaus en tegelraster
 
@@ -23,15 +24,11 @@ Azure Maps het bolvormige Mercator-projectie coördinaten systeem (EPSG: 3857) g
 
 De kaart is onderverdeeld in vier Kante tegels om de prestaties van het ophalen en weer geven van toewijzingen te optimaliseren. De Azure Maps-SDK gebruiken tegels met een grootte van 512 x 512 pixels voor wegwijs kaarten en kleinere 256 x 256 pixels voor satelliet afbeelding. Azure Maps biedt raster-en vector tegels voor 23 zoom niveaus, genummerd van 0 tot en met 22. Op Zoom niveau 0 past de hele wereld op één tegel aan:
 
-<center>
-
-![Tegel voor wereld kaart](./media/zoom-levels-and-tile-grid/world0.png)</center>
+:::image type="content" source="./media/zoom-levels-and-tile-grid/world0.png" alt-text="Tegel voor wereld kaart":::
 
 Zoom niveau 1 maakt gebruik van vier tegels voor het weer geven van de wereld: a 2 x 2 vier kant
 
-<center>
-
-![tegel indeling 2x2 kaart](media/zoom-levels-and-tile-grid/map-2x2-tile-layout.png)</center>
+:::image type="content" source="./media/zoom-levels-and-tile-grid/map-2x2-tile-layout.png" alt-text="tegel indeling 2x2 kaart":::
 
 Elk extra zoom niveau Quad-splitst de tegels van de vorige, waardoor een raster van 2<sup>zoomen</sup> x 2<sup>zoomen</sup>wordt gemaakt. Zoom niveau 22 is een raster 2<sup>22</sup> x 2<sup>22</sup>of 4.194.304 x 4.194.304 tegels (17.592.186.044.416 tegels in totaal).
 
@@ -79,11 +76,7 @@ var mapHeight = mapWidth;
 
 Omdat de breedte en hoogte van de kaart verschillen voor elk zoom niveau, zijn de pixel coördinaten. De pixel in de linkerbovenhoek van de kaart heeft altijd pixel coördinaten (0, 0). De pixel in de rechter benedenhoek van de kaart heeft pixel coördinaten *(breedte-1, hoogte-1)* of verwijst naar de vergelijkingen in de vorige sectie *(tileSize \* 2<sup>Zoom</sup>– 1, tileSize \* 2<sup>Zoom</sup>-1)*. Wanneer u bijvoorbeeld 512 vier Kante tegels op niveau 2 gebruikt, variëren de pixel coördinaten van (0, 0) tot (2047, 2047), als volgt:
 
-<center>
-
-![Kaart met pixel afmetingen](media/zoom-levels-and-tile-grid/map-width-height.png)
-
-</center>
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-width-height.png" alt-text="Kaart met pixel afmetingen":::
 
 Gezien de breedte graad en lengte graad in graden en het detail niveau, worden de pixel XY-coördinaten als volgt berekend:
 
@@ -109,9 +102,7 @@ var numberOfTilesHigh = numberOfTilesWide;
 
 Elke tegel krijgt XY-coördinaten, variërend van (0,0) in de linkerbovenhoek tot *(2<sup>Zoom</sup>– 1, 2<sup>Zoom</sup>– 1)* in de rechter benedenhoek. Zo wordt bij zoom niveau 2 de tegel coördinaten variëren van (0, 0) tot (7, 7) als volgt:
 
-<center>
-
-![Toewijzing van Tegel coördinaten](media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png)</center>
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png" alt-text="Toewijzing van Tegel coördinaten":::
 
 Op basis van een paar pixels XY-coördinaten kunt u eenvoudig de tegel XY-coördinaten bepalen van de tegel die deze pixel bevat:
 
@@ -125,17 +116,13 @@ Tegels worden aangeroepen door het zoom niveau. De x-en y-coördinaten komen ove
 
 Wanneer u bepaalt welk zoom niveau u wilt gebruiken, onthoud dan dat elke locatie zich op een vaste positie op de tegel bevindt. Als gevolg hiervan is het aantal tegels dat nodig is voor het weer geven van een gegeven Expanse van het gebied afhankelijk van de specifieke plaatsing van het zoom raster op de wereld kaart. Als er bijvoorbeeld twee punten 900 meters zijn, *kan* het slechts drie tegels hebben om een route ertussen weer te geven op Zoom niveau 17. Als het westelijk punt zich rechts van de tegel bevindt en het Eastern-punt links van de tegel, kan het echter vier tegels aannemen:
 
-<center>
-
-![Inzoomen op demo schaal](media/zoom-levels-and-tile-grid/zoomdemo_scaled.png)</center>
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/zoomdemo_scaled.png" alt-text="Inzoomen op demo schaal":::
 
 Zodra het zoom niveau is bepaald, kunnen de x-en y-waarden worden berekend. De tegel linksboven in elk zoom raster is x = 0, y = 0; de tegel aan de rechter kant is x = 2<sup>Zoom-1</sup>, y = 2<sup>Zoom-1</sup>.
 
 Dit is het zoom raster voor zoom niveau 1:
 
-<center>
-
-![Zoom raster voor zoom niveau 1](media/zoom-levels-and-tile-grid/api_x_y.png)</center>
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/api_x_y.png" alt-text="Zoom raster voor zoom niveau 1":::
 
 ## <a name="quadkey-indices"></a>Quadkey-indexen
 
@@ -156,9 +143,7 @@ quadkey = 100111 (base 2) = 213 (base 4) = "213"
 
 `Qquadkeys`verschillende interessante eigenschappen hebben. Ten eerste is de lengte van een `quadkey` (het aantal cijfers) gelijk aan het zoom niveau van de corresponderende tegel. Ten tweede `quadkey` begint de tegel met de van de `quadkey` bovenliggende Tegel (de bevatde tegel op het vorige niveau). Zoals u in het onderstaande voor beeld ziet, is tegel 2 het bovenliggende element van de tegels 20 tot en met 23:
 
-<center>
-
-![Tegel piramide Quadkey](media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png)</center>
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png" alt-text="Tegel piramide Quadkey":::
 
 Ten slotte kunt u `quadkeys` een eendimensionale index sleutel opgeven die gewoonlijk de nabijheid van tegels in de xy-ruimte behoudt. Met andere woorden, twee tegels met een nabijgelegen XY-coördinaten hebben meestal `quadkeys` relatief dicht bij elkaar. Dit is belang rijk voor het optimaliseren van de prestaties van de data base, omdat naburige tegels vaak worden aangevraagd in groepen. het is wenselijk dat deze tegels op dezelfde schijf blokken worden bewaard, zodat het aantal lees bewerkingen van de schijf wordt geminimaliseerd.
 

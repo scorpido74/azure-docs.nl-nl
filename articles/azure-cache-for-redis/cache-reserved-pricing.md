@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 8af8db6b6853d6b8cbd4ba1105f05ebb9bcf771b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4ea8db464c7cae57b80837ced9f8886a8b3cf4a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84974837"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87093014"
 ---
 # <a name="prepay-for-azure-cache-for-redis-compute-resources-with-reserved-capacity"></a>Vooruitbetalen voor Azure cache voor redis Compute-resources met gereserveerde capaciteit
 
@@ -32,7 +32,7 @@ Zie het [gebruik van Azure-reserve ringen voor uw Enter prise-inschrijving](http
 
 De grootte van de reserve ring moet worden gebaseerd op de totale hoeveelheid geheugen die wordt gebruikt door de bestaande of binnenkort geïmplementeerde cache binnen een bepaalde regio en met dezelfde servicelaag.
 
-Stel bijvoorbeeld dat u twee caches gebruikt, één bij 13 GB en de andere bij 26 GB. U hebt beide voor ten minste één jaar nodig. Stel dat u van plan bent om de bestaande 13 GB-caches voor een maand te schalen naar 26 GB om te voldoen aan de behoeften van uw seizoen en vervolgens terug te schalen. In dit geval kunt u 1 P1-cache en 1 P2-cache of 3 P1-caches aanschaffen met een reserve ring van één jaar om de besparingen te maximaliseren. U ontvangt korting op de totale hoeveelheid cache geheugen die u reserveert, onafhankelijk van de manier waarop deze hoeveelheid wordt toegewezen in uw caches.
+Stel bijvoorbeeld dat u twee caches gebruikt, één bij 13 GB en de andere bij 26 GB. U hebt beide voor ten minste één jaar nodig. Stel dat u van plan bent om de bestaande 13 GB-caches voor een maand te schalen naar 26 GB om te voldoen aan de behoeften van uw seizoen en vervolgens terug te schalen. In dit geval kunt u 1 P2-cache en 1 P3-cache of 3 P2-caches aanschaffen voor een reserve ring van één jaar om de besparingen te maximaliseren. U ontvangt korting op de totale hoeveelheid cache geheugen die u reserveert, onafhankelijk van de manier waarop deze hoeveelheid wordt toegewezen in uw caches.
 
 
 ## <a name="buy-azure-cache-for-redis-reserved-capacity"></a>Azure-cache kopen voor redis gereserveerde capaciteit
@@ -54,8 +54,8 @@ In de volgende tabel worden de vereiste velden beschreven.
 | Bereik | Het bereik van de reserve ring kan betrekking hebben op één abonnement of meerdere abonnementen (gedeeld bereik). Als u het volgende selecteert: </br></br> **Gedeeld**, de reserverings korting wordt toegepast op Azure cache voor redis-exemplaren die worden uitgevoerd in abonnementen binnen uw facturerings context. Voor zakelijke klanten is het gedeelde bereik de inschrijving en omvat alle abonnementen binnen de inschrijving. Voor betalen per gebruik-klanten bestaat het gedeelde bereik uit alle abonnementen op gebruiksbasis gemaakt door de accountbeheerder.</br></br> **Eén abonnement**: de reserverings korting wordt toegepast op Azure cache voor redis-exemplaren in dit abonnement. </br></br> **Eén resource groep**, de reserverings korting wordt toegepast op Azure cache voor redis-exemplaren in het geselecteerde abonnement en de geselecteerde resource groep in dat abonnement.
 | Regio | De Azure-regio die wordt gedekt door de Azure-cache voor gereserveerde capaciteits reservering van redis.
 | Prijscategorie | De servicelaag voor de Azure-cache voor redis-servers.
-| Termijn | Eén jaar of drie jaar
-| Aantal | De hoeveelheid reken resources die in de Azure-cache worden gekocht voor gereserveerde capaciteits reservering redis. De hoeveelheid is een aantal caches in de geselecteerde Azure-regio en service tier die worden gereserveerd en de facturerings korting krijgt. Als u bijvoorbeeld werkt met of plant om een Azure-cache uit te voeren voor redis-servers met de totale cache capaciteit van 26 GB in de regio VS-Oost, geeft u het aantal op van 26 om het voor deel van alle caches te maximaliseren.
+| Term | Eén jaar of drie jaar
+| Aantal | De hoeveelheid reken resources die in de Azure-cache worden gekocht voor gereserveerde capaciteits reservering redis. De hoeveelheid is een aantal caches in de geselecteerde Azure-regio en service tier die worden gereserveerd en de facturerings korting krijgt. Als u bijvoorbeeld uitvoert of een Azure-cache wilt uitvoeren voor redis-servers met de totale cache capaciteit van 26 GB in de regio VS-Oost, geeft u de hoeveelheid op die u het equivalent van 26 GB geeft om het voor deel van alle caches te maximaliseren. Dit kan 1 P3-of 2 P2-caches zijn.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Reserveringen annuleren, ruilen of terugbetalen
 
