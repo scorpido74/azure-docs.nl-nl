@@ -7,20 +7,20 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6d51abab46cd8450dd3a09e5e5ef47e6267b990d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7f7239e0c13478af712d8e8d9dad8fda23fe42c7
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258102"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87125529"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Een grafiek van digitale apparaatdubbels beheren met behulp van relaties
 
 De kern van Azure Digital Apparaatdubbels is de [dubbele grafiek](concepts-twins-graph.md) die uw hele omgeving weergeeft. Het dubbele diagram bestaat uit afzonderlijke digitale apparaatdubbels die zijn verbonden via **relaties**.
 
-Zodra u een werkend [Azure Digital apparaatdubbels-exemplaar](how-to-set-up-instance.md) hebt en [verificatie](how-to-authenticate-client.md) hebt ingesteld voor uw client-app, kunt u de [**DigitalTwins-api's**](how-to-use-apis-sdks.md) gebruiken voor het maken, wijzigen en verwijderen van digitale Apparaatdubbels en hun relaties in een Azure Digital apparaatdubbels-instantie. U kunt ook de [.net (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)of de [Azure Digital apparaatdubbels cli](how-to-use-cli.md)gebruiken.
+Zodra u een werkend [Azure Digital apparaatdubbels-exemplaar](how-to-set-up-instance-scripted.md) hebt en [verificatie](how-to-authenticate-client.md) code hebt ingesteld in uw client-app, kunt u de [**DigitalTwins-api's**](how-to-use-apis-sdks.md) gebruiken voor het maken, wijzigen en verwijderen van digitale Apparaatdubbels en hun relaties in een Azure Digital apparaatdubbels-instantie. U kunt ook de [.net (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)of de [Azure Digital apparaatdubbels cli](how-to-use-cli.md)gebruiken.
 
-Dit artikel richt zich op het beheren van relaties en de hele grafiek; Zie [How-to: Manage Digital apparaatdubbels](how-to-manage-twin.md)(Engelstalig) als u wilt werken met afzonderlijke digitale apparaatdubbels.
+Dit artikel richt zich op het beheren van relaties en de hele grafiek; Zie [*How-to: Manage Digital apparaatdubbels*](how-to-manage-twin.md)(Engelstalig) als u wilt werken met afzonderlijke digitale apparaatdubbels.
 
 [!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
 
@@ -62,7 +62,7 @@ public async static Task CreateRelationship(DigitalTwinsClient client, string sr
 }
 ```
 
-`BasicRelationship`Zie [How-to: use the Azure Digital apparaatdubbels Api's and sdk's](how-to-use-apis-sdks.md)(Engelstalig) voor meer informatie over de helper-klasse.
+`BasicRelationship`Zie [*How-to: use the Azure Digital apparaatdubbels Api's and sdk's*](how-to-use-apis-sdks.md)(Engelstalig) voor meer informatie over de helper-klasse.
 
 ## <a name="list-relationships"></a>Lijst met relaties
 
@@ -108,7 +108,7 @@ Azure Digital Apparaatdubbels heeft ook een API voor het zoeken van alle inkomen
 
 Het vorige code voorbeeld is gericht op het vinden van uitgaande relaties. Het volgende voor beeld is vergelijkbaar, maar zoekt in plaats daarvan binnenkomende relaties. Ze worden ook verwijderd zodra ze zijn gevonden.
 
-Houd er rekening mee dat de IncomingRelationship-aanroepen niet de volledige waarde Retour neren
+Houd er rekening mee dat de `IncomingRelationship` aanroepen de volledige hoofd tekst van de relatie niet retour neren.
 
 ```csharp
 async Task<List<IncomingRelationship>> FindIncomingRelationshipsAsync(string dtId)
@@ -301,10 +301,10 @@ foreach (JsonElement row in data.RootElement.EnumerateArray())
 ```
 ## <a name="manage-relationships-with-cli"></a>Relaties beheren met CLI
 
-Apparaatdubbels en hun relaties kunnen ook worden beheerd met behulp van de Azure Digital Apparaatdubbels CLI. De opdrachten zijn te vinden in [How to: gebruik de Azure Digital APPARAATDUBBELS cli](how-to-use-cli.md).
+Apparaatdubbels en hun relaties kunnen ook worden beheerd met behulp van de Azure Digital Apparaatdubbels CLI. De opdrachten zijn te vinden in [*How to: gebruik de Azure Digital APPARAATDUBBELS cli*](how-to-use-cli.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Meer informatie over het uitvoeren van query's op een Azure Digital Apparaatdubbels-grafiek:
-* [Concepten: query taal](concepts-query-language.md)
-* [Instructies: een query uitvoeren op de dubbele grafiek](how-to-query-graph.md)
+* [*Concepten: query taal*](concepts-query-language.md)
+* [*Instructies: een query uitvoeren op de dubbele grafiek*](how-to-query-graph.md)

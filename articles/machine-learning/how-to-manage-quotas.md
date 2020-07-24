@@ -11,11 +11,12 @@ author: nishankgu
 ms.author: nigup
 ms.date: 05/08/2020
 ms.custom: contperfq4
-ms.openlocfilehash: df636ce1200d8c3744681a60532b22c409dd81dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8be4169a44b2ef57db8aa49b96f6c5fe85ded1c
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84430465"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87125085"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>& quota voor resources met Azure Machine Learning beheren
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -71,7 +72,7 @@ Beschik bare resources:
 | Maximum aantal knoop punten in een enkele Azure Machine Learning Compute-resource (AmlCompute) | 100 knoop punten |
 | Maximum aantal GPU-MPI processen per knoop punt | 1-4 |
 | Maximum aantal GPU-werk nemers per knoop punt | 1-4 |
-| Maximale levens duur van de taak | 90 dagen<sup>1</sup> |
+| Maximale levens duur van de taak | 21 dagen<sup>1</sup> |
 | Maximale levens duur van de taak op een knoop punt met een lage prioriteit | 7 dagen<sup>2</sup> |
 | Maximum aantal parameter servers per knoop punt | 1 |
 

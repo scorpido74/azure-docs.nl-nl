@@ -1,19 +1,19 @@
 ---
 title: Core i/o-bewerkingen | Microsoft Azure kaarten
 description: Informatie over het efficiënt lezen en schrijven van XML en gescheiden gegevens met behulp van kern bibliotheken in de ruimtelijke IO-module.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 0b8fe1b319dc480879944d28f10645025a8cb38e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e142fe348a339e4903d692cad569015edb69f75
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80371446"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124473"
 ---
 # <a name="core-io-operations"></a>Core i/o-bewerkingen
 
@@ -30,7 +30,7 @@ De `atlas.io.core.CsvReader` klasse leest teken reeksen die gescheiden gegevens 
 
 De Reader gebruikt standaard het punt komma als scheidings teken. Het scheidings teken kan echter worden gewijzigd in een wille keurig teken of worden ingesteld op `'auto'` . Als deze is ingesteld op `'auto'` , wordt de eerste regel tekst in de teken reeks door de lezer geanalyseerd. Vervolgens wordt het meest voorkomende teken geselecteerd uit de onderstaande tabel om te gebruiken als scheidings tekens.
 
-| | |
+| Scheidingsteken | Teken |
 | :-- | :-- |
 | Komma | `,` |
 | Tabblad | `\t` |

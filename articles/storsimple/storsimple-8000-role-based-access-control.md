@@ -14,15 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
-ms.openlocfilehash: a6dc55138977727dc5399ec9653340225bcc3901
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec98060a09a1fad4f851689daff3f4b578c164f5
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514644"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124099"
 ---
 # <a name="role-based-access-control-for-storsimple"></a>Access Control op basis van rollen voor StorSimple
 
-In dit artikel vindt u een korte beschrijving van de manier waarop op Azure Role gebaseerde Access Control (RBAC) kan worden gebruikt voor uw StorSimple-apparaat. RBAC biedt verfijnd toegangs beheer voor Azure. Gebruik RBAC om alleen de juiste hoeveelheid toegang tot de StorSimple-gebruikers toe te kennen om hun taken uit te voeren in plaats van iedereen onbeperkte toegang te geven. Zie [aan de slag met op rollen gebaseerde Access Control in de Azure Portal](../role-based-access-control/overview.md)voor meer informatie over de basis principes van toegangs beheer in Azure.
+In dit artikel vindt u een korte beschrijving van de manier waarop Azure RBAC (op rollen gebaseerd toegangs beheer) voor uw StorSimple-apparaat kan worden gebruikt. RBAC biedt verfijnd toegangs beheer voor Azure. Gebruik RBAC om alleen de juiste hoeveelheid toegang tot de StorSimple-gebruikers toe te kennen om hun taken uit te voeren in plaats van iedereen onbeperkte toegang te geven. Zie [aan de slag met op rollen gebaseerde Access Control in de Azure Portal](../role-based-access-control/overview.md)voor meer informatie over de basis principes van toegangs beheer in Azure.
 
 Dit artikel is van toepassing op apparaten met de StorSimple 8000-serie waarop update 3,0 of hoger wordt uitgevoerd in de Azure Portal.
 
@@ -34,7 +35,7 @@ RBAC kan worden toegewezen op basis van de rollen. De rollen zorgen voor bepaald
 
 * **Ingebouwde rollen** : de ingebouwde rollen kunnen eigenaar, bijdrager, lezer of beheerder voor gebruikers toegang zijn. Zie [ingebouwde rollen voor op rollen gebaseerde Access Control voor Azure](../role-based-access-control/built-in-roles.md)voor meer informatie.
 
-* **Aangepaste rollen** : als de ingebouwde rollen niet aan uw behoeften voldoen, kunt u aangepaste RBAC-rollen maken voor StorSimple. Als u een aangepaste RBAC-rol wilt maken, begint u met een ingebouwde rol, bewerkt u deze en importeert u deze vervolgens weer in de omgeving. Het downloaden en uploaden van de rol wordt beheerd met behulp van Azure PowerShell of de Azure CLI. Zie [aangepaste rollen maken voor op rollen gebaseerd Access Control](../role-based-access-control/custom-roles.md)voor meer informatie.
+* **Aangepaste rollen** : als de ingebouwde rollen niet aan uw behoeften voldoen, kunt u aangepaste Azure-rollen maken voor StorSimple. Als u een aangepaste Azure-rol wilt maken, begint u met een ingebouwde rol, bewerkt u deze en importeert u deze vervolgens weer in de omgeving. Het downloaden en uploaden van de rol wordt beheerd met behulp van Azure PowerShell of de Azure CLI. Zie [aangepaste rollen maken voor op rollen gebaseerd Access Control](../role-based-access-control/custom-roles.md)voor meer informatie.
 
 Als u de verschillende beschik bare rollen voor een StorSimple apparaat gebruiker in het Azure Portal wilt weer geven, gaat u naar uw StorSimple Apparaatbeheer-service en gaat u naar **toegangs beheer (IAM) > rollen**.
 
@@ -101,7 +102,7 @@ In het volgende voor beeld beginnen we met de ingebouwde functie **lezer** waarm
     }
     ```
 
-6. Importeer de aangepaste RBAC-rol weer in de omgeving.
+6. Importeer de aangepaste Azure-rol terug naar de omgeving.
 
     `New-AzRoleDefinition -InputFile "C:\ssrbaccustom.json"`
 

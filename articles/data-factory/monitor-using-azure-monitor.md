@@ -10,12 +10,13 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: 2c9bb4bbf52c968afe267bfa3e2b8d6dae980833
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/13/2020
+ms.openlocfilehash: b7f58c13181c9ec966d548096ffc2756d5d333e3
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801581"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124885"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Data Factory bewaken en waarschuwen door gebruik te maken van Azure Monitor
 
@@ -27,14 +28,14 @@ Azure Monitor biedt metrische gegevens op basis van de infra structuur en logboe
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Monitor-Data-Factory-pipelines-using-Operations-Management-Suite-OMS/player]
 
-Zie [Azure monitor Overview](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor)voor meer informatie.
+Zie [Overzicht van Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor) voor meer informatie.
 
 ## <a name="keeping-azure-data-factory-metrics-and-pipeline-run-data"></a>Azure Data Factory metrische gegevens en pijp lijn bewaren
 
 Data Factory Stores-pijp lijn-gegevens slechts 45 dagen worden uitgevoerd. Gebruik Azure Monitor als u deze gegevens gedurende een langere periode wilt blijven gebruiken. Met monitor kunt u Diagnostische logboeken voor analyse naar meerdere verschillende doelen routeren.
 
 * **Opslag account**: Sla uw Diagnostische logboeken op in een opslag account voor controle of hand matige inspectie. U kunt de diagnostische instellingen gebruiken om de Bewaar tijd in dagen op te geven.
-* **Event hub**: de logboeken naar Azure Event hubs streamen. De logboeken worden ingevoerd in een partner service of op een aangepaste analyse oplossing, zoals Power BI.
+* **Event hub**: de logboeken naar Azure Event hubs streamen. De logboeken worden ingevoerd in een partner service/aangepaste analyse oplossing, zoals Power BI.
 * **Log Analytics**: Analyseer de logboeken met log Analytics. De integratie van Data Factory met Azure Monitor is handig in de volgende scenario's:
   * U wilt complexe query's schrijven naar een uitgebreide set metrische gegevens die worden gepubliceerd door Data Factory om te bewaken. U kunt met behulp van monitor aangepaste waarschuwingen maken voor deze query's.
   * U wilt controleren op gegevens fabrieken. U kunt gegevens van meerdere gegevens fabrieken naar een enkele werk ruimte van de monitor routeren.
@@ -61,11 +62,20 @@ Diagnostische instellingen voor uw data factory maken of toevoegen.
 
     * In de _Diagnostische_ modus van Azure stroomt Diagnostische logboeken in de tabel _AzureDiagnostics_ .
 
-    * In de _resource-specifieke_ modus worden Diagnostische logboeken van Azure Data Factory flow in de tabellen _ADFActivityRun_, _ADFPipelineRun_, _ADFTriggerRun_, _ADFSSISIntegrationRuntimeLogs_, _ADFSSISPackageEventMessageContext_, _ADFSSISPackageEventMessages_, _ADFSSISPackageExecutableStatistics_, _ADFSSISPackageExecutionComponentPhases_en _ADFSSISPackageExecutionDataStatistics_ .
+    * In de _resource-specifieke_ modus worden Diagnostische logboeken van Azure Data Factory in de volgende tabellen geplaatst:
+      - _ADFActivityRun_
+      - _ADFPipelineRun_
+      - _ADFTriggerRun_
+      - _ADFSSISIntegrationRuntimeLogs_
+      - _ADFSSISPackageEventMessageContext_
+      - _ADFSSISPackageEventMessages_
+      - _ADFSSISPackageExecutableStatistics_
+      - _ADFSSISPackageExecutionComponentPhases_
+      - _ADFSSISPackageExecutionDataStatistics_
 
-      U kunt verschillende logboeken selecteren die relevant zijn voor uw workloads om te verzenden naar Log Analytics tabellen. Als u bijvoorbeeld geen gebruikmaakt van SQL Server Integration Services (SSIS), hoeft u geen SSIS-logboeken te selecteren. Als u de bewerkingen voor starten/stoppen en onderhoud van SSIS Integration Runtime (IR) wilt registreren, kunt u SSIS IR-logboeken selecteren. Als u SSIS-pakket uitvoeringen alleen aanroept via T-SQL, kunt u alleen SSIS-pakket logboeken selecteren. Als u SSIS-pakket uitvoeringen aanroept via uitvoering van SSIS-pakket activiteiten in ADF-pijp lijnen, kunt u alle logboeken selecteren.
+      U kunt verschillende logboeken selecteren die relevant zijn voor uw workloads om te verzenden naar Log Analytics tabellen. Als u bijvoorbeeld geen gebruikmaakt van SQL Server Integration Services (SSIS), hoeft u geen SSIS-logboeken te selecteren. Als u de bewerkingen voor starten/stoppen en onderhoud van SSIS Integration Runtime (IR) wilt registreren, kunt u SSIS IR-logboeken selecteren. Als u SSIS-pakket uitvoeringen aanroept via T-SQL op SQL Server Management Studio (SSMS), SQL Server Agent of andere aangewezen hulpprogram ma's, kunt u SSIS-pakket logboeken selecteren. Als u SSIS-pakket uitvoeringen aanroept via uitvoering van SSIS-pakket activiteiten in ADF-pijp lijnen, kunt u alle logboeken selecteren.
 
-    * Als u _AllMetrics_selecteert, worden de metrische gegevens voor de ADF-entiteit Count/grootte, activiteit/pijp lijn/trigger-uitvoeringen, Integration runtime (IR) CPU-gebruik/geheugen/knooppunt telling/wachtrij en voor SSIS-pakket uitvoeringen en SSIS IR-begin/stop-bewerkingen beschikbaar gesteld voor het bewaken/activeren van waarschuwingen.
+    * Als u _AllMetrics_selecteert, worden er diverse ADF-metrische gegevens beschikbaar gesteld waarmee u waarschuwingen kunt bewaken of genereren, inclusief de metrische gegevens voor ADF-activiteiten, pijp lijnen en triggers en voor SSIS IR-bewerkingen en SSIS-pakket uitvoeringen.
 
    ![Geef uw instellingen een naam en selecteer een werk ruimte voor logboek analyse](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
@@ -98,7 +108,7 @@ Deze oplossing biedt een overzicht van de algemene status van uw Data Factory, m
 
 ### <a name="monitor-data-factory-metrics"></a>Data Factory metrische gegevens bewaken
 
-Als u Azure Data Factory Analytics installeert, wordt er een standaardset weer gaven gemaakt in de sectie werkmappen van de gekozen Log Analytics werk ruimte. Dit resulteert in de volgende metrische gegevens:
+Als u deze oplossing installeert, wordt er een standaardset weer gaven gemaakt in de sectie werkmappen van de gekozen Log Analytics werk ruimte. Als gevolg hiervan worden de volgende metrische gegevens ingeschakeld:
 
 * ADF-uitvoeringen-1) pijplijn uitvoeringen door Data Factory
 * ADF-uitvoeringen-2) uitvoering van activiteit op gegevens factor
@@ -125,30 +135,30 @@ Met monitor kunt u inzicht krijgen in de prestaties en status van uw Azure-workl
 
 Hier volgen enkele van de metrische gegevens die worden verzonden door Azure Data Factory versie 2:
 
-| **Meting**                           | **Weergave naam voor metrische gegevens**                  | **Teleenheid** | **Type aggregatie** | **Beschrijving**                |
+| **Meting**                           | **Weergave naam voor metrische gegevens**                  | **Eenheid** | **Aggregatietype** | **Beschrijving**                |
 |--------------------------------------|------------------------------------------|----------|----------------------|--------------------------------|
-| ActivityCanceledRuns                 | Metrische gegevens voor geannuleerde activiteit uitvoeringen           | Count    | Totaal                | Het totale aantal uitgevoerde activiteiten dat in een minuut venster is geannuleerd. |
-| ActivityFailedRuns                   | Metrische gegevens mislukte uitvoering van activiteit             | Count    | Totaal                | Het totale aantal uitgevoerde activiteiten in een minuut venster. |
-| ActivitySucceededRuns                | Metrische gegevens uitvoeringen uitgevoerde activiteit          | Count    | Totaal                | Het totale aantal uitgevoerde activiteiten in een minuut venster. |
-| PipelineCanceledRuns                 | Metrische gegevens voor de pijplijn uitvoeringen geannuleerd           | Count    | Totaal                | Het totale aantal pijplijn uitvoeringen dat in een minuut venster is geannuleerd. |
-| PipelineFailedRuns                   | Metrische gegevens van mislukte pijplijn uitvoeringen             | Count    | Totaal                | Het totale aantal uitvoeringen van de pijp lijn dat is mislukt binnen een minuut venster. |
-| PipelineSucceededRuns                | Metrische uitvoerings metingen geslaagde pijp lijnen          | Count    | Totaal                | Het totale aantal uitvoeringen van de pijp lijn dat is geslaagd binnen een minuut venster. |
-| TriggerCanceledRuns                  | Statistieken voor uitvoeringen geannuleerde triggers            | Count    | Totaal                | Het totale aantal trigger uitvoeringen dat in een minuut venster is geannuleerd. |
-| TriggerFailedRuns                    | Meet waarden voor uitvoering van mislukte triggers              | Count    | Totaal                | Het totale aantal uitvoeringen van triggers dat is mislukt binnen een minuut venster. |
-| TriggerSucceededRuns                 | Meet waarden voor uitvoering van geslaagde triggers           | Count    | Totaal                | Het totale aantal uitvoeringen van triggers dat is geslaagd binnen een minuut venster. |
-| SSISIntegrationRuntimeStartCanceled  | Begin metrische gegevens van SSIS-IR geannuleerd           | Count    | Totaal                | Het totale aantal SSIS IR begint dat in een minuut venster is geannuleerd. |
-| SSISIntegrationRuntimeStartFailed    | Mislukte SSIS IR-begin waarden             | Count    | Totaal                | Het totale aantal SSIS IR-start dat is mislukt binnen een minuut venster. |
-| SSISIntegrationRuntimeStartSucceeded | Geslaagde SSIS IR-begin waarden          | Count    | Totaal                | Het totale aantal SSIS IR begint in een minuut venster. |
-| SSISIntegrationRuntimeStopStuck      | Vastgelopen SSIS IR-stop metrieken               | Count    | Totaal                | Het totale aantal SSIS IR-stops dat binnen een minuut venster is vastgelopen. |
-| SSISIntegrationRuntimeStopSucceeded  | Geslaagde SSIS IR-stop metrieken           | Count    | Totaal                | Het totale aantal SSIS IR-onderbrekingen dat in een minuut venster is geslaagd. |
-| SSISPackageExecutionCanceled         | Metrische uitvoerings statistieken geannuleerde SSIS-pakketten  | Count    | Totaal                | Het totale aantal uitvoeringen van SSIS-pakketten dat in een minuut venster is geannuleerd. |
-| SSISPackageExecutionFailed           | Metrische gegevens voor uitvoering van SSIS-pakket mislukt    | Count    | Totaal                | Het totale aantal uitvoeringen SSIS-pakketten dat is mislukt binnen een minuut venster. |
-| SSISPackageExecutionSucceeded        | Metrische uitvoerings gegevens geslaagd SSIS-pakket | Count    | Totaal                | Het totale aantal uitvoeringen van SSIS-pakketten dat is voltooid binnen een minuut venster. |
+| ActivityCancelledRuns                 | Metrische gegevens voor geannuleerde activiteit uitgevoerd           | Aantal    | Totaal                | Het totale aantal uitgevoerde activiteiten dat in een minuut venster is geannuleerd. |
+| ActivityFailedRuns                   | Metrische gegevens mislukte uitvoering van activiteit             | Aantal    | Totaal                | Het totale aantal uitgevoerde activiteiten in een minuut venster. |
+| ActivitySucceededRuns                | Metrische gegevens uitvoeringen uitgevoerde activiteit          | Aantal    | Totaal                | Het totale aantal uitgevoerde activiteiten in een minuut venster. |
+| PipelineCancelledRuns                 | Metrische gegevens van de pijplijn uitvoeringen geannuleerd           | Aantal    | Totaal                | Het totale aantal uitvoeringen van de pijp lijn dat in een minuut venster is geannuleerd. |
+| PipelineFailedRuns                   | Metrische gegevens van mislukte pijplijn uitvoeringen             | Aantal    | Totaal                | Het totale aantal uitvoeringen van de pijp lijn dat is mislukt binnen een minuut venster. |
+| PipelineSucceededRuns                | Metrische uitvoerings metingen geslaagde pijp lijnen          | Aantal    | Totaal                | Het totale aantal uitvoeringen van de pijp lijn dat is geslaagd binnen een minuut venster. |
+| TriggerCancelledRuns                  | Metrische gegevens over de trigger is geannuleerd            | Aantal    | Totaal                | Het totale aantal uitgevoerde triggers dat binnen een minuut venster is geannuleerd. |
+| TriggerFailedRuns                    | Meet waarden voor uitvoering van mislukte triggers              | Aantal    | Totaal                | Het totale aantal uitvoeringen van triggers dat is mislukt binnen een minuut venster. |
+| TriggerSucceededRuns                 | Meet waarden voor uitvoering van geslaagde triggers           | Aantal    | Totaal                | Het totale aantal uitvoeringen van triggers dat is geslaagd binnen een minuut venster. |
+| SSISIntegrationRuntimeStartCancelled  | Geannuleerde SSIS IR-begin waarden           | Aantal    | Totaal                | Het totale aantal SSIS IR begint dat binnen een minuut venster is geannuleerd. |
+| SSISIntegrationRuntimeStartFailed    | Mislukte SSIS IR-begin waarden             | Aantal    | Totaal                | Het totale aantal SSIS IR-start dat is mislukt binnen een minuut venster. |
+| SSISIntegrationRuntimeStartSucceeded | Geslaagde SSIS IR-begin waarden          | Aantal    | Totaal                | Het totale aantal SSIS IR begint in een minuut venster. |
+| SSISIntegrationRuntimeStopStuck      | Vastgelopen SSIS IR-stop metrieken               | Aantal    | Totaal                | Het totale aantal SSIS IR-stops dat binnen een minuut venster is vastgelopen. |
+| SSISIntegrationRuntimeStopSucceeded  | Geslaagde SSIS IR-stop metrieken           | Aantal    | Totaal                | Het totale aantal SSIS IR-onderbrekingen dat in een minuut venster is geslaagd. |
+| SSISPackageExecutionCancelled         | Metrische uitvoerings gegevens geannuleerd SSIS-pakket  | Aantal    | Totaal                | Het totale aantal uitvoeringen van SSIS-pakketten dat binnen een minuut venster is geannuleerd. |
+| SSISPackageExecutionFailed           | Metrische gegevens voor uitvoering van SSIS-pakket mislukt    | Aantal    | Totaal                | Het totale aantal uitvoeringen SSIS-pakketten dat is mislukt binnen een minuut venster. |
+| SSISPackageExecutionSucceeded        | Metrische uitvoerings gegevens geslaagd SSIS-pakket | Aantal    | Totaal                | Het totale aantal uitvoeringen van SSIS-pakketten dat is voltooid binnen een minuut venster. |
 
 Volg de instructies in [Azure monitor data platform](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)om toegang te krijgen tot de metrische gegevens.
 
 > [!NOTE]
-> Alleen voltooide, geactiveerde activiteiten-en pijplijn uitvoeringen worden verzonden. Wordt uitgevoerd en de uitvoering van sandbox/debug wordt **niet** verzonden. Aan de andere kant worden alle gebeurtenissen van SSIS-pakket uitvoeringen verzonden, met inbegrip van de taken die zijn voltooid, worden uitgevoerd en aangeroepen via T-SQL op SSMS/SQL Server Agent/andere aangewezen hulpprogram ma's of als triggered/sandbox/debug-uitvoeringen van SSIS-pakket activiteiten uitvoeren in ADF-pijp lijnen.
+> Alleen gebeurtenissen uit voltooide, geactiveerde activiteiten en pijplijn uitvoeringen worden verzonden. Uitvoeringen en fout opsporing worden **niet** verzonden. Aan de andere kant worden gebeurtenissen van **alle** SSIS-pakket uitvoeringen verzonden, met inbegrip van de procedures die zijn voltooid en worden uitgevoerd, ongeacht hun aanroep methoden. U kunt bijvoorbeeld pakket uitvoeringen aanroepen op met Azure ingeschakelde SQL Server Data Tools (SSDT), via T-SQL op SSMS, SQL Server Agent of andere aangewezen hulpprogram ma's, en als geactiveerd of fout opsporing uitvoeren van SSIS-pakket activiteiten in ADF-pijp lijnen.
 
 ## <a name="data-factory-alerts"></a>Data Factory waarschuwingen
 
@@ -185,7 +195,7 @@ Meld u aan bij de Azure Portal en selecteer **monitor**  >  **waarschuwingen** o
 
     ![E-mail, SMS, push en Voice configureren](media/monitor-using-azure-monitor/alerts_image11.png)
 
-    ![Een actie groep definiëren](media/monitor-using-azure-monitor/alerts_image12.png)
+    ![Een actiegroep definiëren](media/monitor-using-azure-monitor/alerts_image12.png)
 
 ## <a name="set-up-diagnostic-logs-via-the-azure-monitor-rest-api"></a>Diagnostische logboeken instellen via de Azure Monitor REST API
 
@@ -211,7 +221,7 @@ PUT
 https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnosticSettings/service?api-version={api-version}
 ```
 
-##### <a name="headers"></a>Headers
+##### <a name="headers"></a>Kopteksten
 
 * Vervang `{api-version}` door `2016-09-01`.
 * Vervang door `{resource-id}` de id van de resource waarvoor u de diagnostische instellingen wilt bewerken. Zie [resource groepen gebruiken om Azure-resources te beheren](../azure-resource-manager/management/manage-resource-groups-portal.md)voor meer informatie.
@@ -259,7 +269,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | --- | --- | --- |
 | **storageAccountId** |Tekenreeks | De resource-ID van het opslag account waarnaar u Diagnostische logboeken wilt verzenden. |
 | **Servicebusruleid kunnen** |Tekenreeks | De service bus-regel-ID van de service bus-naam ruimte waarin u Event Hubs wilt maken voor het streamen van Diagnostische logboeken. De regel-ID heeft de indeling `{service bus resource ID}/authorizationrules/{key name}` .|
@@ -268,11 +278,11 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | **hout**| Complex type| De naam van een diagnostische logboek categorie voor een resource type. Als u de lijst met diagnostische logboek categorieën voor een resource wilt ophalen, voert u de bewerking Diagnostische instellingen ophalen uit. |
 | **category**| Tekenreeks| Een matrix met logboek categorieën en het Bewaar beleid. |
 | **timeGrain** | Tekenreeks | De granulatie van metrische gegevens, die worden vastgelegd in de ISO 8601-duur notatie. De waarde van de eigenschap moet `PT1M` een minuut zijn. |
-| **ingeschakeld**| Boolean-waarde | Hiermee wordt aangegeven of de verzameling van de categorie metrisch of logboek is ingeschakeld voor deze resource. |
+| **ingeschakeld**| Boolean | Hiermee wordt aangegeven of de verzameling van de categorie metrisch of logboek is ingeschakeld voor deze resource. |
 | **retentionPolicy**| Complex type| Hierin wordt het Bewaar beleid voor een metrische of logboek categorie beschreven. Deze eigenschap wordt alleen gebruikt voor opslag accounts. |
 |**resterende**| Int| Het aantal dagen dat de metrische gegevens of logboeken moeten worden bewaard. Als de waarde van de eigenschap 0 is, worden de logboeken permanent bewaard. Deze eigenschap wordt alleen gebruikt voor opslag accounts. |
 
-##### <a name="response"></a>Antwoord
+##### <a name="response"></a>Reactie
 
 200 OK.
 
@@ -331,14 +341,14 @@ GET
 https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnosticSettings/service?api-version={api-version}
 ```
 
-##### <a name="headers"></a>Headers
+##### <a name="headers"></a>Kopteksten
 
 * Vervang `{api-version}` door `2016-09-01`.
 * Vervang door `{resource-id}` de id van de resource waarvoor u de diagnostische instellingen wilt bewerken. Zie [resource groepen gebruiken om Azure-resources te beheren](../azure-resource-manager/management/manage-resource-groups-portal.md)voor meer informatie.
 * Stel de `Content-Type` koptekst in op `application/json` .
 * Stel de autorisatie-header in op een JSON-webtoken dat u hebt ontvangen van Azure AD. Zie [verificatie aanvragen](../active-directory/develop/authentication-scenarios.md)voor meer informatie.
 
-##### <a name="response"></a>Antwoord
+##### <a name="response"></a>Reactie
 
 200 OK.
 
@@ -539,7 +549,7 @@ Zie [Diagnostische instellingen](https://docs.microsoft.com/rest/api/monitor/dia
 
 #### <a name="ssis-integration-runtime-log-attributes"></a>Kenmerken van SSIS Integration runtime-logboeken
 
-Dit zijn de logboek kenmerken/eigenschappen van SSIS-Integration Runtime (IR) starten/stoppen/onderhouds bewerkingen.
+Hier vindt u de logboek kenmerken van SSIS IR start/stop/onderhouds bewerkingen.
 
 ```json
 {
@@ -573,7 +583,7 @@ Dit zijn de logboek kenmerken/eigenschappen van SSIS-Integration Runtime (IR) st
 
 #### <a name="ssis-event-message-context-log-attributes"></a>Kenmerken van context logboek van SSIS-gebeurtenis berichten
 
-Dit zijn de logboek kenmerken/eigenschappen van voor waarden met betrekking tot gebeurtenis berichten die zijn gegenereerd door SSIS-pakket uitvoeringen op uw SSIS-IR. Ze geven soort gelijke informatie als [SSIS Catalog (SSISDB) gebeurtenis bericht context tabel/weer gave](https://docs.microsoft.com/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15) waarin runtime waarden van veel SSIS-pakket eigenschappen worden weer gegeven. Ze worden gegenereerd wanneer u `Basic/Verbose` logboek registratie niveau selecteert en nuttig is voor het controleren op fouten.
+Hier vindt u de logboek kenmerken van voor waarden met betrekking tot gebeurtenis berichten die door SSIS-pakket uitvoeringen op uw SSIS-IR worden gegenereerd. Ze geven soort gelijke informatie als de [context tabel of weer gave van de gebeurtenis bericht van de SSIS-catalogus (SSISDB)](https://docs.microsoft.com/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15) waarin runtime waarden van veel SSIS-pakket eigenschappen worden weer gegeven. Ze worden gegenereerd wanneer u `Basic/Verbose` logboek registratie niveau selecteert en nuttig is voor het controleren op fouten.
 
 ```json
 {
@@ -607,7 +617,7 @@ Dit zijn de logboek kenmerken/eigenschappen van voor waarden met betrekking tot 
 | **dataFactoryName**        | Tekenreeks | De naam van de ADF                                                 | `MyADFv2` |
 | **integrationRuntimeName** | Tekenreeks | De naam van uw SSIS IR                                             | `MySSISIR` |
 | **niveau**                  | Tekenreeks | Het niveau van Diagnostische logboeken                                         | `Informational` |
-| **operationId**            | Tekenreeks | De unieke ID voor het bijhouden van een bepaalde bewerking in SSISDB          | `1`(1 betekent bewerkingen met betrekking tot pakketten die niet zijn opgeslagen in SSISDB) |
+| **operationId**            | Tekenreeks | De unieke ID voor het bijhouden van een bepaalde bewerking in SSISDB          | `1`(1 betekent bewerkingen met betrekking tot pakketten die **niet** zijn opgeslagen in SSISDB/aangeroepen via T-SQL) |
 | **contextDepth**           | Tekenreeks | De diepte van de context van uw gebeurtenis bericht                              | `0`(0 geeft de context aan voordat de uitvoering van het pakket wordt gestart, 1 geeft de context aan als er een fout optreedt, en neemt toe naarmate de context verder van de fout is) |
 | **packagePath**            | Tekenreeks | Het pad van het pakket object als de context bron van uw gebeurtenis bericht      | `\Package` |
 | **contextType**            | Tekenreeks | Het type pakket object als de context bron van het gebeurtenis bericht      | `60`(Zie [meer context typen](https://docs.microsoft.com/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15#remarks)) |
@@ -619,7 +629,7 @@ Dit zijn de logboek kenmerken/eigenschappen van voor waarden met betrekking tot 
 
 #### <a name="ssis-event-messages-log-attributes"></a>Logboek kenmerken van SSIS-gebeurtenis berichten
 
-Dit zijn de kenmerken/eigenschappen van het logboek van gebeurtenis berichten die door SSIS-pakket uitvoeringen op uw SSIS-IR worden gegenereerd. Ze geven soort gelijke informatie als [SSISDB gebeurtenis berichten tabel/weer gave](https://docs.microsoft.com/sql/integration-services/system-views/catalog-event-messages?view=sql-server-ver15) waarin de gedetailleerde tekst/meta gegevens van gebeurtenis berichten worden weer gegeven. Ze worden gegenereerd op basis van elk registratie niveau, behalve `None` .
+Hier vindt u de logboek kenmerken van gebeurtenis berichten die door SSIS-pakket uitvoeringen op uw SSIS-IR worden gegenereerd. Ze geven soort gelijke informatie als [SSISDB gebeurtenis berichten tabel of weer gave](https://docs.microsoft.com/sql/integration-services/system-views/catalog-event-messages?view=sql-server-ver15) waarin de gedetailleerde tekst/meta gegevens van gebeurtenis berichten worden weer gegeven. Ze worden gegenereerd op basis van elk registratie niveau, behalve `None` .
 
 ```json
 {
@@ -657,7 +667,7 @@ Dit zijn de kenmerken/eigenschappen van het logboek van gebeurtenis berichten di
 | **dataFactoryName**        | Tekenreeks | De naam van de ADF                                               | `MyADFv2` |
 | **integrationRuntimeName** | Tekenreeks | De naam van uw SSIS IR                                           | `MySSISIR` |
 | **niveau**                  | Tekenreeks | Het niveau van Diagnostische logboeken                                       | `Informational` |
-| **operationId**            | Tekenreeks | De unieke ID voor het bijhouden van een bepaalde bewerking in SSISDB        | `1`(1 betekent bewerkingen met betrekking tot pakketten die niet zijn opgeslagen in SSISDB) |
+| **operationId**            | Tekenreeks | De unieke ID voor het bijhouden van een bepaalde bewerking in SSISDB        | `1`(1 betekent bewerkingen met betrekking tot pakketten die **niet** zijn opgeslagen in SSISDB/aangeroepen via T-SQL) |
 | **messageTime**            | Tekenreeks | Het tijdstip waarop uw gebeurtenis bericht is gemaakt in UTC-indeling          | `2017-06-28T21:00:27.3534352Z` |
 | **Message type**            | Tekenreeks | Het type gebeurtenis bericht                                     | `70`( [meer bericht typen](https://docs.microsoft.com/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks)weer geven) |
 | **messageSourceType**      | Tekenreeks | Het type van de bron van het gebeurtenis bericht                              | `20`(Zie [meer bron typen van berichten](https://docs.microsoft.com/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks)) |
@@ -673,7 +683,7 @@ Dit zijn de kenmerken/eigenschappen van het logboek van gebeurtenis berichten di
 
 #### <a name="ssis-executable-statistics-log-attributes"></a>Logboek kenmerken van de SSIS-uitvoer bare statistieken
 
-Dit zijn de kenmerken/eigenschappen van het uitvoer bare bestand dat is gegenereerd door SSIS-pakket uitvoeringen op uw SSIS-IR, waarbij uitvoer bare containers/taken in de stroom van het pakket besturings elementen zijn. Ze geven soort gelijke informatie als [SSISDB uitvoer bare statistische tabel/weer gave](https://docs.microsoft.com/sql/integration-services/system-views/catalog-executable-statistics?view=sql-server-ver15) waarin een rij wordt weer gegeven voor elk uitvoerbaar uitvoer bare bestand, met inbegrip van de herhalingen. Ze worden gegenereerd met elk logboek registratie niveau, behalve `None` en nuttig voor het identificeren van knel punten op taak niveau of fouten.
+Dit zijn de logboek kenmerken van uitvoer bare gegevens die worden gegenereerd door SSIS-pakket uitvoeringen op uw SSIS-IR, waarbij uitvoer bare containers of taken in de controle stroom van pakketten zijn. Ze geven soort gelijke informatie als [SSISDB uitvoer bare statistieken tabel of weer gave](https://docs.microsoft.com/sql/integration-services/system-views/catalog-executable-statistics?view=sql-server-ver15) waarin een rij wordt weer gegeven voor elk uitgevoerd uitvoer bare bestand, met inbegrip van de herhalingen. Ze worden gegenereerd met elk logboek registratie niveau, behalve `None` en nuttig voor het identificeren van knel punten op taak niveau of fouten.
 
 ```json
 {
@@ -706,7 +716,7 @@ Dit zijn de kenmerken/eigenschappen van het uitvoer bare bestand dat is gegenere
 | **dataFactoryName**        | Tekenreeks | De naam van de ADF                                             | `MyADFv2` |
 | **integrationRuntimeName** | Tekenreeks | De naam van uw SSIS IR                                         | `MySSISIR` |
 | **niveau**                  | Tekenreeks | Het niveau van Diagnostische logboeken                                     | `Informational` |
-| **Executionid is vereist**            | Tekenreeks | De unieke ID voor het bijhouden van een bepaalde uitvoering in SSISDB      | `1`(1 geeft uitvoeringen aan die betrekking hebben op pakketten die niet zijn opgeslagen in SSISDB) |
+| **Executionid is vereist**            | Tekenreeks | De unieke ID voor het bijhouden van een bepaalde uitvoering in SSISDB      | `1`(1 betekent uitvoeringen gerelateerd aan pakketten die **niet** zijn opgeslagen in SSISDB/aangeroepen via T-SQL) |
 | **executionPath**          | Tekenreeks | Het volledige pad van het bovenliggende pakket naar het uitgevoerde onderdeel          | `\Transformation\Data Flow Task`(In dit pad worden ook onderdeel herhalingen vastgelegd) |
 | **startTime**              | Tekenreeks | Het tijdstip waarop het uitvoer bare fase vooraf wordt uitgevoerd in de UTC-indeling  | `2017-06-28T21:00:27.3534352Z` |
 | **endTime**                | Tekenreeks | Het tijdstip waarop het uitvoer bare post-Execute-fase in UTC-indeling wordt ingevoerd | `2017-06-28T21:00:27.3534352Z` |
@@ -717,7 +727,7 @@ Dit zijn de kenmerken/eigenschappen van het uitvoer bare bestand dat is gegenere
 
 #### <a name="ssis-execution-component-phases-log-attributes"></a>Logboek kenmerken van fasen van SSIS-uitvoerings onderdelen
 
-Dit zijn de kenmerken/eigenschappen van het logboek voor de gegevens stroom onderdelen die zijn gegenereerd door SSIS-pakket uitvoeringen op uw SSIS-IR. Ze geven soort gelijke informatie als [SSISDB-uitvoerings onderdeel fasen tabel/weer gave](https://docs.microsoft.com/sql/integration-services/system-views/catalog-execution-component-phases?view=sql-server-ver15) waarin de tijd wordt weer gegeven die door de onderdelen van de gegevens stroom in alle uitvoerings fasen wordt besteed. Ze worden gegenereerd wanneer u `Performance/Verbose` logboek registratie niveau selecteert en nuttig is voor het vastleggen van uitvoerings statistieken voor de gegevens stroom.
+Hier vindt u de logboek kenmerken van runtime-statistieken voor gegevens stroom onderdelen die worden gegenereerd door SSIS-pakket uitvoeringen op uw SSIS-IR. Ze geven soort gelijke informatie als de [tabel of weer gave met SSISDB-uitvoerings onderdelen](https://docs.microsoft.com/sql/integration-services/system-views/catalog-execution-component-phases?view=sql-server-ver15) waarin de tijd wordt weer gegeven die door de onderdelen van de gegevens stroom in al hun uitvoerings fasen wordt besteed. Ze worden gegenereerd wanneer u `Performance/Verbose` logboek registratie niveau selecteert en nuttig is voor het vastleggen van uitvoerings statistieken voor de gegevens stroom.
 
 ```json
 {
@@ -751,7 +761,7 @@ Dit zijn de kenmerken/eigenschappen van het logboek voor de gegevens stroom onde
 | **dataFactoryName**        | Tekenreeks | De naam van de ADF                                                | `MyADFv2` |
 | **integrationRuntimeName** | Tekenreeks | De naam van uw SSIS IR                                            | `MySSISIR` |
 | **niveau**                  | Tekenreeks | Het niveau van Diagnostische logboeken                                        | `Informational` |
-| **Executionid is vereist**            | Tekenreeks | De unieke ID voor het bijhouden van een bepaalde uitvoering in SSISDB         | `1`(1 geeft uitvoeringen aan die betrekking hebben op pakketten die niet zijn opgeslagen in SSISDB) |
+| **Executionid is vereist**            | Tekenreeks | De unieke ID voor het bijhouden van een bepaalde uitvoering in SSISDB         | `1`(1 betekent uitvoeringen gerelateerd aan pakketten die **niet** zijn opgeslagen in SSISDB/aangeroepen via T-SQL) |
 | **packageName**            | Tekenreeks | De naam van het uitgevoerde pakket bestand                              | `MyPackage.dtsx` |
 | **taskName**               | Tekenreeks | De naam van de uitgevoerde gegevens stroom taak                                 | `Data Flow Task` |
 | **subonderdeelnaam**       | Tekenreeks | De naam van het gegevens stroom onderdeel                                     | `Derived Column` |
@@ -763,7 +773,7 @@ Dit zijn de kenmerken/eigenschappen van het logboek voor de gegevens stroom onde
 
 #### <a name="ssis-execution-data-statistics-log-attributes"></a>Logboek kenmerken statistieken uitvoerings gegevens SSIS
 
-Dit zijn de logboek kenmerken/eigenschappen van gegevens verplaatsingen via elke leg van gegevens stroom pijplijnen, van upstream naar downstream-onderdelen, gegenereerd door SSIS-pakket uitvoeringen op uw SSIS-IR. Ze geven soort gelijke informatie als de [Statistieken tabel/weer gave SSISDB met uitvoerings gegevens](https://docs.microsoft.com/sql/integration-services/system-views/catalog-execution-data-statistics?view=sql-server-ver15) die het aantal rijen van gegevens die zijn verplaatst via gegevens stroom taken. Ze worden gegenereerd wanneer u `Verbose` logboek registratie niveau selecteert en nuttig is voor het berekenen van de door Voer van gegevens stromen.
+Dit zijn de logboek kenmerken van gegevens verplaatsing via elke leg van gegevens stroom pijplijnen, van upstream naar downstream-onderdelen, die worden gegenereerd door SSIS-pakket uitvoeringen op uw SSIS-IR. Ze geven soort gelijke informatie als de [Statistieken tabel van de SSISDB-uitvoerings gegevens of weer gave](https://docs.microsoft.com/sql/integration-services/system-views/catalog-execution-data-statistics?view=sql-server-ver15) waarin het aantal rijen van de gegevens die worden verplaatst via gegevens stroom taken worden weer gegeven. Ze worden gegenereerd wanneer u `Verbose` logboek registratie niveau selecteert en nuttig is voor het berekenen van de door Voer van gegevens stromen.
 
 ```json
 {
@@ -799,7 +809,7 @@ Dit zijn de logboek kenmerken/eigenschappen van gegevens verplaatsingen via elke
 | **dataFactoryName**          | Tekenreeks | De naam van de ADF                                               | `MyADFv2` |
 | **integrationRuntimeName**   | Tekenreeks | De naam van uw SSIS IR                                           | `MySSISIR` |
 | **niveau**                    | Tekenreeks | Het niveau van Diagnostische logboeken                                       | `Informational` |
-| **Executionid is vereist**              | Tekenreeks | De unieke ID voor het bijhouden van een bepaalde uitvoering in SSISDB        | `1`(1 geeft uitvoeringen aan die betrekking hebben op pakketten die niet zijn opgeslagen in SSISDB) |
+| **Executionid is vereist**              | Tekenreeks | De unieke ID voor het bijhouden van een bepaalde uitvoering in SSISDB        | `1`(1 betekent uitvoeringen gerelateerd aan pakketten die **niet** zijn opgeslagen in SSISDB/aangeroepen via T-SQL) |
 | **packageName**              | Tekenreeks | De naam van het uitgevoerde pakket bestand                             | `MyPackage.dtsx` |
 | **taskName**                 | Tekenreeks | De naam van de uitgevoerde gegevens stroom taak                                | `Data Flow Task` |
 | **dataflowPathIdString**     | Tekenreeks | De unieke ID voor het pad naar de tracerings gegevensstroom                          | `Paths[SQLDB Table3.ADO NET Source Output]` |
@@ -835,24 +845,24 @@ Log Analytics neemt het schema over van monitor met de volgende uitzonde ringen:
 
 ## <a name="monitor-ssis-operations-with-azure-monitor"></a>SSIS-bewerkingen bewaken met Azure Monitor
 
-Als u de werk belastingen van uw SQL Server Integration Services (SSIS) wilt & verschuiven, kunt u [ssis Integration runtime (IR) inrichten in azure Data Factory (ADF)](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) die ondersteuning biedt voor:
+Als u uw SSIS-werk belastingen wilt & verplaatsen, kunt u [SSIS IR inrichten in ADF](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) die ondersteuning biedt voor:
 
 - Pakketten die zijn geïmplementeerd in SSIS Catalog (SSISDB) die worden gehost door een server of beheerd exemplaar van Azure SQL Database (projectimplementatiemodel)
 - Pakketten die zijn geïmplementeerd in het bestandssysteem, Azure Files of SQL Server-database (MSDB) die worden gehost door Azure SQL Managed Instance (pakketimplementatiemodel)
 
-Wanneer u eenmaal hebt ingericht, kunt u de [operationele status van SSIS IR controleren met behulp van Azure PowerShell of op de hub **bewaken** van de ADF-Portal](https://docs.microsoft.com/azure/data-factory/monitor-integration-runtime#azure-ssis-integration-runtime). Met het project implementatie model worden SSIS-pakket uitvoerings Logboeken opgeslagen in SSISDB interne tabellen/weer gaven, zodat ze kunnen worden opgevraagd, geanalyseerd en visueel worden weer gegeven met behulp van aangeduide hulp middelen als SQL Server Management Studio (SSMS). Met het pakket implementatie model kunnen SSIS-uitvoer logboeken worden opgeslagen in bestands systeem/Azure Files als CSV-bestanden die nog moeten worden geparseerd en verwerkt met andere aangewezen hulpprogram ma's voordat ze kunnen worden opgevraagd, geanalyseerd en visueel worden gepresenteerd.
+Wanneer u eenmaal hebt ingericht, kunt u de [operationele status van SSIS IR controleren met behulp van Azure PowerShell of op de hub **bewaken** van de ADF-Portal](https://docs.microsoft.com/azure/data-factory/monitor-integration-runtime#azure-ssis-integration-runtime). Met het project implementatie model worden SSIS-pakket uitvoerings Logboeken opgeslagen in SSISDB interne tabellen of weer gaven, zodat u ze kunt opvragen, analyseren en visueel weer geven met behulp van aangewezen hulpprogram ma's als SSMS. Met het pakket implementatie model kunnen SSIS-uitvoer logboeken worden opgeslagen in bestands systeem of Azure Files als CSV-bestanden die u nog steeds moet parseren en verwerken met andere aangewezen hulpprogram ma's voordat u ze kunt opvragen, analyseren en visueel weer geven.
 
-Nu met [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform) -integratie kunnen alle metrische gegevens en logboeken die zijn gegenereerd door SSIS IR-bewerkingen en SSIS-pakket uitvoeringen, worden opgevraagd, geanalyseerd en visueel worden gepresenteerd op Azure Portal, terwijl waarschuwingen ook kunnen worden gegenereerd.
+Nu met [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform) -integratie kunt u alle metrische gegevens en logboeken die zijn gegenereerd door SSIS IR-bewerkingen en SSIS-pakket uitvoeringen, opvragen, analyseren en visueel weer geven op Azure Portal. Daarnaast kunt u ook waarschuwingen genereren.
 
 ### <a name="configure-diagnostic-settings-and-workspace-for-ssis-operations"></a>Diagnostische instellingen en werk ruimte voor SSIS-bewerkingen configureren
 
-Als u alle metrische gegevens en logboeken die zijn gegenereerd door SSIS IR-bewerkingen en SSIS-pakket uitvoeringen wilt verzenden naar Azure Monitor, volgt u de stapsgewijze instructies voor het [configureren van diagnostische instellingen en werk ruimte voor uw ADF](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#configure-diagnostic-settings-and-workspace).
+Als u alle metrische gegevens en logboeken die zijn gegenereerd door SSIS IR-bewerkingen en SSIS-pakket uitvoeringen wilt verzenden naar Azure Monitor, moet u [Diagnostische instellingen en werk ruimte voor uw ADF configureren](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#configure-diagnostic-settings-and-workspace).
 
 ### <a name="ssis-operational-metrics"></a>Operationele metrische gegevens voor SSIS
 
-SSIS operationele [metrische gegevens](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics) zijn prestatie meter items/numerieke waarden die de status van SSIS IR start/stop-bewerkingen en SSIS-pakket uitvoeringen op een bepaald moment beschrijven. Ze maken deel uit van [ADF-metrische gegevens in azure monitor](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#data-factory-metrics), met inbegrip van de waarden voor de ADF-entiteit Count/grootte, activiteit/pijp lijn/trigger, en het IR-CPU-gebruik/het aantal geheugen/knoop punten/wachtrij.
+SSIS operationele [metrische gegevens](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics) zijn prestatie meter items of numerieke waarden die de status van de start-en stop bewerkingen van SSIS IR beschrijven, evenals de uitvoeringen van SSIS-pakketten op een bepaald moment. Ze maken deel uit van [ADF-metrische gegevens in azure monitor](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#data-factory-metrics).
 
-Wanneer u Diagnostische instellingen en werk ruimte voor uw ADF op Azure Monitor configureert en u het selectie vakje _AllMetrics_ inschakelt, zullen SSIS operationele metrische gegevens beschikbaar worden gesteld voor [interactieve analyse met behulp van Azure Metrics Explorer](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started), [presentatie op Azure-dash board](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-app-dashboards)en [nabije real-time waarschuwingen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric).
+Wanneer u Diagnostische instellingen en werk ruimte voor uw ADF op Azure Monitor configureert en u het selectie vakje _AllMetrics_ inschakelt, krijgen SSIS operationele metrische gegevens beschikbaar voor [interactieve analyse met behulp van Azure Metrics Explorer](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started), [presentatie op Azure-dash board](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-app-dashboards)en [bijna real time-waarschuwingen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric).
 
 ![Geef uw instellingen een naam en selecteer een werk ruimte voor logboek analyse](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
@@ -868,13 +878,13 @@ Als u waarschuwingen wilt genereren op basis van de SSIS-metrische gegevens van 
 
 ### <a name="ssis-operational-logs"></a>SSIS-operationele logboeken
 
-SSIS-operationele [Logboeken](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs) zijn gebeurtenissen die worden gegenereerd door SSIS IR-bewerkingen en SSIS-pakket uitvoeringen die voldoende context/informatie bevatten over problemen die worden geïdentificeerd en die nuttig zijn voor het analyseren van hoofd oorzaken. 
+SSIS-operationele [Logboeken](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs) zijn gebeurtenissen die worden gegenereerd door SSIS IR-bewerkingen en SSIS-pakket uitvoeringen die voldoende context bieden voor geïdentificeerde problemen en die nuttig zijn voor analyse van hoofd oorzaken. 
 
-Wanneer u Diagnostische instellingen en werk ruimte voor uw ADF op Azure Monitor configureert, kunt u de relevante SSIS-operationele logboeken selecteren en deze verzenden naar Log Analytics die is gebaseerd op Azure Data Explorer, waar ze beschikbaar worden gesteld voor [analyse met behulp van uitgebreide query taal](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview), [presentatie op Azure-dash board](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-app-dashboards)en [bijna realtime meldingen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log).
+Wanneer u Diagnostische instellingen en werk ruimte voor uw ADF op Azure Monitor configureert, kunt u de relevante SSIS-operationele logboeken selecteren en deze naar Log Analytics op basis van Azure Data Explorer verzenden. In dat geval worden ze beschikbaar gesteld voor [analyse met behulp van uitgebreide query taal](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview), [presentatie op Azure-dash board](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-app-dashboards)en [nabije real-time waarschuwingen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log).
 
 ![Geef uw instellingen een naam en selecteer een werk ruimte voor logboek analyse](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
-De schema's en inhoud van de SSIS-logboeken voor het uitvoeren van een pakket in Azure Monitor en Log Analytics zijn vergelijkbaar met die in SSISDB interne tabellen/weer gaven.
+De schema's en inhoud van de SSIS-logboeken voor het uitvoeren van een pakket in Azure Monitor en Log Analytics lijken op de schema's van interne tabellen of weer gaven van SSISDB.
 
 | Azure Monitor-logboek Categorieën          | Log Analytics tabellen                     | SSISDB interne tabellen/weer gaven              |
 | ------------------------------------- | ---------------------------------------- | ----------------------------------------- |
@@ -887,11 +897,15 @@ De schema's en inhoud van de SSIS-logboeken voor het uitvoeren van een pakket in
 
 Zie [Azure monitor en log Analytics schema's voor ADF](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#schema-of-logs-and-events)voor meer informatie over de kenmerken/eigenschappen van het SSIS-operationele logboek.
 
-Uw geselecteerde SSIS-pakket uitvoerings logboeken worden altijd naar Log Analytics verzonden, ongeacht uw aanroep methoden, bijvoorbeeld op Azure enabled SQL Server Data Tools (SSDT), via T-SQL op SSMS/SQL Server Agent/andere aangewezen hulpprogram ma's, of als triggered/sandbox/debug-uitvoeringen van SSIS-pakket activiteiten in ADF-pijp lijnen.
+De geselecteerde SSIS-pakket uitvoerings logboeken worden altijd naar Log Analytics verzonden, ongeacht hun aanroep methoden. U kunt bijvoorbeeld pakket uitvoeringen aanroepen op Azure-SSDT, via T-SQL op SSMS, SQL Server Agent of andere aangewezen hulpprogram ma's, en als triggered of debug uitvoering van SSIS-pakket activiteiten uitvoeren in ADF-pijp lijnen.
 
-Bij het uitvoeren van query's op SSIS-pakket uitvoer Logboeken in Logboeken kunt u deze koppelen met behulp van OperationId/Executionid is vereist/CorrelationId-eigenschappen. OperationId/Executionid is vereist zijn altijd ingesteld op 1 voor alle bewerkingen/uitvoeringen die betrekking hebben op pakketten die **niet** zijn opgeslagen in SSISDB.
+Bij het uitvoeren van query's op SSIS IR-bewerkings logboeken op Logboeken kunt u de **bewerkings** -en **ResultType** -eigenschappen gebruiken die zijn ingesteld op `Start/Stop/Maintenance` en `Started/InProgress/Succeeded/Failed` respectievelijk. 
 
-![Uitvoerings logboeken van SSIS-pakketten uitvoeren op Log Analytics](media/data-factory-monitor-oms/log-analytics-query.png)
+![Query's uitvoeren op SSIS IR-bewerkings logboeken op Log Analytics](media/data-factory-monitor-oms/log-analytics-query.png)
+
+Bij het uitvoeren van query's op SSIS-pakket uitvoer Logboeken in Logboeken, kunt u deze koppelen met behulp van de **OperationId** / **executionid is vereist** / **CorrelationId** -eigenschappen. **OperationId** / **Executionid is vereist** zijn altijd ingesteld op `1` voor alle bewerkingen/uitvoeringen die zijn gerelateerd aan pakketten die **niet** zijn opgeslagen in SSISDB/aangeroepen via T-SQL.
+
+![Uitvoerings logboeken van SSIS-pakketten uitvoeren op Log Analytics](media/data-factory-monitor-oms/log-analytics-query2.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 [Pijp lijnen programmatisch controleren en beheren](monitor-programmatically.md)

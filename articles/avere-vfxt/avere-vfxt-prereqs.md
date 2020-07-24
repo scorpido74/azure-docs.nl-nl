@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: c1828bcde5c26c5605b867c115127eb2502bdd86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24c803bd94f56af551f3afa2cb7350219b4fa448
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85505338"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124728"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Voorbereiden op het maken van de Avere vFXT
 
@@ -38,7 +38,7 @@ Er zijn enkele tijdelijke oplossingen waarmee een niet-eigenaar een avere vFXT v
 |----------|--------|-------|
 | De beheerder van de resource groep maakt de vFXT | Het virtuele netwerk, de cluster controller en de cluster knooppunten moeten worden gemaakt in de resource groep. | [Gebruikers toegang beheerder](../role-based-access-control/built-in-roles.md#user-access-administrator) en [Inzender](../role-based-access-control/built-in-roles.md#contributor) rollen, zowel binnen het bereik van de doel resource groep. |
 | Een bestaand, extern virtueel netwerk gebruiken | De cluster controller en cluster knooppunten worden gemaakt in de resource groep van de vFXT, maar er wordt een bestaand virtueel netwerk gebruikt in een andere resource groep. | (1) de beheerders-en [Inzender](../role-based-access-control/built-in-roles.md#contributor) rollen van de [gebruikers toegang](../role-based-access-control/built-in-roles.md#user-access-administrator) tot de resource groep vFXT. en (2) de Inzender van de [virtuele machine](../role-based-access-control/built-in-roles.md#virtual-machine-contributor), de [gebruikers toegangs beheerder](../role-based-access-control/built-in-roles.md#user-access-administrator)en de [avere-Inzender](../role-based-access-control/built-in-roles.md#avere-contributor) rollen binnen het bereik van de resource groep van het virtuele netwerk. |
-| Aangepaste rol voor cluster makers | Geen beperkingen voor de plaatsing van resources. Deze methode geeft niet-eigen aren belang rijke bevoegdheden. | De eigenaar van het abonnement maakt een aangepaste RBAC-rol, zoals wordt beschreven in [dit artikel](avere-vfxt-non-owner.md). |
+| Aangepaste rol voor cluster makers | Geen beperkingen voor de plaatsing van resources. Deze methode geeft niet-eigen aren belang rijke bevoegdheden. | De eigenaar van het abonnement maakt een aangepaste Azure-rol zoals beschreven in [dit artikel](avere-vfxt-non-owner.md). |
 
 ## <a name="quota-for-the-vfxt-cluster"></a>Quota voor het vFXT-cluster
 
@@ -54,7 +54,7 @@ Controleer of u voldoende quota hebt voor de volgende Azure-onderdelen. Indien n
 |Virtuele machines|3 of meer E32s_v3 (één per cluster knooppunt) |
 |Premium SSD-opslag|200 GB ruimte in het besturingssysteem plus 1 tot 4 TB ruimte in de cache per knooppunt |
 |Opslagaccount (optioneel) |v2|
-|Back-end van gegevens (optioneel) |Een nieuwe LRS-BLOB-container |
+|Back-endopslag van gegevens (optioneel) |Een nieuwe LRS-BLOB-container |
 <!-- this table also appears in the overview - update it there if updating here -->
 
 ## <a name="accept-software-terms"></a>Software voorwaarden accepteren

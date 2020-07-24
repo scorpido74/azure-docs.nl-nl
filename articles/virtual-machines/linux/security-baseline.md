@@ -1,5 +1,5 @@
 ---
-title: Linux Virtual Machines beveiligings basislijn voor Azure Security Bench Mark
+title: Azure-beveiligings basislijn voor Linux Virtual Machines
 description: De Linux Virtual Machines Security Baseline voorziet in procedure richtlijnen en resources voor het implementeren van de beveiligings aanbevelingen die zijn opgegeven in de Azure Security-Bench Mark.
 author: msmbaldwin
 ms.service: virtual-machines-linux
@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2d8c4d67ed9b268bae55711fae8c4def33b967fc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bd6157f2775b2496e489cfbf03b35f49fb6f5442
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531507"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124711"
 ---
-# <a name="linux-virtual-machines-security-baseline-for-azure-security-benchmark"></a>Linux Virtual Machines beveiligings basislijn voor Azure Security Bench Mark
+# <a name="azure-security-baseline-for-linux-virtual-machines"></a>Azure-beveiligings basislijn voor Linux Virtual Machines
 
 De Azure-beveiligings basislijn voor Linux Virtual Machines bevat aanbevelingen waarmee u de beveiligings postuur van uw implementatie kunt verbeteren.
 
@@ -494,7 +494,7 @@ U kunt ook gegevens in-of uitschakelen voor Azure Sentinel of een SIEM van derde
 
 **Verantwoordelijkheid**: klant
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 *Zie [beveiligings beheer: gegevens beveiliging](../../security/benchmarks/security-control-data-protection.md)voor meer informatie.*
 
@@ -568,7 +568,7 @@ Micro soft maakt gebruik van het Transport Layer Security (TLS)-protocol voor he
 
 * [Op rollen gebaseerd toegangsbeheer (RBAC) voor Azure-resources?](../../role-based-access-control/overview.md)
 
-* [Ingebouwde rollen voor Azure-resources](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
+* [Ingebouwde Azure-rollen](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
 
 **Azure Security Center bewaking**: niet beschikbaar
 

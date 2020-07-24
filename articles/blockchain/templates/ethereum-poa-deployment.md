@@ -1,15 +1,15 @@
 ---
 title: Ethereum proof-of-Authority consortium-oplossings sjabloon implementeren in azure
 description: Gebruik de Ethereum proof-of-Authority consortium-oplossing voor het implementeren en configureren van een consortium Ethereum Network voor meerdere leden op Azure
-ms.date: 07/07/2020
+ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 859be5d779663e429ef333c8fd8163c0aa60eab5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: d75b5348c49728d2a796257fa4000f6c3a36831d
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085919"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124921"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Ethereum proof-of-Authority consortium-oplossings sjabloon implementeren in azure
 
@@ -23,11 +23,14 @@ De oplossings sjabloon kan door elk consortium onderdeel worden gebruikt om een 
 
 Voordat u kiest voor het gebruik van de sjabloon Ethereum proof-of-Authority consortium, vergelijkt u uw scenario met de algemene use-cases van de beschik bare Azure Block Chain-opties.
 
+> [!IMPORTANT]
+> U kunt overwegen de [Azure Block Chain-Service](../service/overview.md) te gebruiken in plaats van de Ethereum op de Azure-oplossings sjabloon. De Azure Block Chain-service is een ondersteunde beheerde Azure-service. Pariteit Ethereum overgang naar gestuurde ontwikkeling en onderhoud door de community. Zie [overstappen op pariteit Ethereum naar OPENETHEREUM DAO](https://www.parity.io/parity-ethereum-openethereum-dao/)voor meer informatie.
+
 Optie | Service model | Algemene use-case
 -------|---------------|-----------------
-Oplossingssjablonen | IaaS | Oplossings sjablonen zijn Azure Resource Manager sjablonen die u kunt gebruiken om een volledig geconfigureerde Block chain-netwerk topologie in te richten. De sjablonen implementeren en configureren Microsoft Azure compute-, netwerk-en opslag Services voor een bepaald Block chain-netwerk type. Er zijn oplossings sjablonen zonder service level agreement. Gebruik de [pagina micro soft Q&een vraag](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html) voor ondersteuning.
-[Azure Blockchain-service](../service/overview.md) | PaaS | De preview-versie van Azure Block Chain Service vereenvoudigt de vorming, het beheer en de governance van consortium Block Chain Networks. Gebruik Azure Block Chain Service voor oplossingen waarvoor PaaS, consortium beheer of de privacy van contracten en trans acties vereist is.
-[Azure Blockchain Workbench](../workbench/overview.md) | IaaS en PaaS | Azure Blockchain Workbench (preview-versie) is een verzameling Azure-services en -functies die zijn ontworpen om u te helpen bij het maken en implementeren van blockchain-toepassingen voor het delen van bedrijfsprocessen en gegevens met andere organisaties. Gebruik Azure Block Chain Workbench voor het prototypen van een Block Chain-oplossing of een Block Chain-toepassings bewijs van een concept. Azure Blockchain Workbench wordt zonder Service Level Agreement geleverd. Gebruik de [pagina micro soft Q&een vraag](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html) voor ondersteuning.
+Oplossingssjablonen | IaaS | Oplossings sjablonen zijn Azure Resource Manager sjablonen die u kunt gebruiken om een volledig geconfigureerde Block chain-netwerk topologie in te richten. De sjablonen implementeren en configureren Microsoft Azure compute-, netwerk-en opslag Services voor een bepaald Block chain-netwerk type. Er zijn oplossings sjablonen zonder service level agreement. Gebruik de [pagina micro soft Q&een vraag](/answers/topics/azure-blockchain-workbench.html) voor ondersteuning.
+[Azure Blockchain Service](../service/overview.md) | PaaS | De preview-versie van Azure Block Chain Service vereenvoudigt de vorming, het beheer en de governance van consortium Block Chain Networks. Gebruik Azure Block Chain Service voor oplossingen waarvoor PaaS, consortium beheer of de privacy van contracten en trans acties vereist is.
+[Azure Blockchain Workbench](../workbench/overview.md) | IaaS en PaaS | Azure Blockchain Workbench (preview-versie) is een verzameling Azure-services en -functies die zijn ontworpen om u te helpen bij het maken en implementeren van blockchain-toepassingen voor het delen van bedrijfsprocessen en gegevens met andere organisaties. Gebruik Azure Block Chain Workbench voor het prototypen van een Block Chain-oplossing of een Block Chain-toepassings bewijs van een concept. Azure Blockchain Workbench wordt zonder Service Level Agreement geleverd. Gebruik de [pagina micro soft Q&een vraag](/answers/topics/azure-blockchain-workbench.html) voor ondersteuning.
 
 ## <a name="solution-architecture"></a>Architectuur voor de oplossing
 
@@ -95,7 +98,7 @@ Verificatietype | De methode voor verificatie bij de virtuele machine. | Wachtwo
 Wachtwoord | Het wacht woord voor het beheerders account voor elk van de virtuele machines die zijn geïmplementeerd. Alle Vm's hebben in eerste instantie hetzelfde wacht woord. U kunt het wacht woord na het inrichten wijzigen. | 12-72 tekens 
 Abonnement | Het abonnement waarop het consortium netwerk moet worden geïmplementeerd |
 Resourcegroep| De resource groep waarvoor het consortium netwerk moet worden geïmplementeerd. | myResourceGroup
-Locatie | De Azure-regio voor de resource groep. | VS - west 2
+Locatie | De Azure-regio voor de resource groep. | West US 2
 
 Selecteer **OK**.
 
@@ -108,8 +111,8 @@ Geef onder *implementatie regio's*het aantal regio's en locaties voor elk op. U 
 Parameter | Beschrijving | Voorbeeldwaarde
 ----------|-------------|--------------
 Aantal regio's|Aantal regio's voor de implementatie van het consortium netwerk| 2
-Eerste regio | Eerste regio voor het implementeren van het consortium netwerk | VS - west 2
-Tweede regio | Tweede regio voor het implementeren van het consortium netwerk. Extra regio's zijn zichtbaar wanneer het aantal regio's twee of meer is. | VS - oost 2
+Eerste regio | Eerste regio voor het implementeren van het consortium netwerk | West US 2
+Tweede regio | Tweede regio voor het implementeren van het consortium netwerk. Extra regio's zijn zichtbaar wanneer het aantal regio's twee of meer is. | US - oost 2
 
 Selecteer **OK**.
 
@@ -165,8 +168,8 @@ Parameter | Beschrijving | Voorbeeldwaarde
 Bewaking | Optie om bewaking in te scha kelen | Inschakelen
 Verbinding maken met bestaande Azure Monitor-logboeken | Optie voor het maken van een nieuw exemplaar van Azure Monitor Logboeken of voor het toevoegen van een bestaand exemplaar | Nieuwe maken
 Locatie | De regio waar het nieuwe exemplaar is geïmplementeerd | VS - oost
-Bestaande log Analytics-werk ruimte-ID (verbinding maken met bestaande Azure Monitor logs = deel nemen aan bestaande bestanden)|Werk ruimte-ID van het bestaande exemplaar van Azure Monitor logboeken||NA
-Bestaande primaire sleutel voor logboek analyse (verbinding maken met bestaande Azure Monitor logs = lid worden van bestaande)|De primaire sleutel die wordt gebruikt om verbinding te maken met het bestaande exemplaar van Azure Monitor logboeken||NA
+Bestaande log Analytics-werk ruimte-ID (verbinding maken met bestaande Azure Monitor logs = deel nemen aan bestaande bestanden)|Werk ruimte-ID van het bestaande exemplaar van Azure Monitor logboeken||N.v.t.
+Bestaande primaire sleutel voor logboek analyse (verbinding maken met bestaande Azure Monitor logs = lid worden van bestaande)|De primaire sleutel die wordt gebruikt om verbinding te maken met het bestaande exemplaar van Azure Monitor logboeken||N.v.t.
 
 Selecteer **OK**.
 
@@ -731,10 +734,10 @@ Als u feedback over producten wilt geven of nieuwe functies wilt aanvragen, kunt
 
 In contact komen met Microsoft-technici en experts uit de Azure Blockchain-community.
 
-* [Micro soft Q&een vraag pagina](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html). Technische ondersteuning voor Block Chain-sjablonen is beperkt tot implementatie problemen.
+* [Micro soft Q&een vraag pagina](/answers/topics/azure-blockchain-workbench.html). Technische ondersteuning voor Block Chain-sjablonen is beperkt tot implementatie problemen.
 * [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [Azure Block Chain-documentatie](https://docs.microsoft.com/azure/blockchain/)voor meer Block chain-oplossingen van Azure.
+Zie de [Azure Block Chain-documentatie](../index.yml)voor meer Block chain-oplossingen van Azure.

@@ -16,11 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: f61b6193a0d2082296a17128b41d7220f9b7e05f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1440bf2b8af85b81355dbc43b695a85994e4b8d
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77565890"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124133"
 ---
 # <a name="azure-identity-management-security-overview"></a>Overzicht van Azure Identity Management-beveiliging
 
@@ -45,7 +46,7 @@ Het artikel is gericht op de volgende kern mogelijkheden van Azure Identity Mana
 * Identiteits-en toegangs beheer van consumenten
 * Apparaatregistratie
 * Privileged Identity Management
-* Identiteitsbeveiliging
+* Identiteitsbescherming
 * Hybride identiteits beheer/Azure AD Connect
 * Azure AD-toegangsbeoordelingen
 
@@ -90,10 +91,15 @@ Meer informatie:
 
 Op rollen gebaseerd toegangsbeheer is een machtigingssysteem dat is gebouwd op Azure Resource Manager dat een geavanceerd toegangsbeheer van resources in Azure biedt. Met RBAC kunt u het toegangs niveau voor gebruikers nauw keurig beheren. U kunt bijvoorbeeld een gebruiker beperken tot het beheer van virtuele netwerken en een andere gebruiker voor het beheren van alle resources in een resource groep. Azure bevat diverse ingebouwde rollen die u kunt gebruiken. Hier volgen vier fundamentele ingebouwde rollen. De eerste drie zijn op alle resourcetypen van toepassing.
 
+- [Eigenaar](/azure/role-based-access-control/built-in-roles.md#owner) : heeft volledige toegang tot alle resources, waaronder het recht om de toegang tot anderen te delegeren. 
+- [Inzender](/azure/role-based-access-control/built-in-roles.md#contributor) : kan alle typen Azure-resources maken en beheren, maar kan geen toegang verlenen aan anderen.
+- [Lezer](/azure/role-based-access-control/built-in-roles.md#reader) : kan bestaande Azure-resources weer geven.
+- [Beheerder van gebruikers toegang](/azure/role-based-access-control/built-in-roles.md#administrator) : Hiermee kunt u de gebruikers toegang tot Azure-resources beheren.
+
 Meer informatie:
 
-* [Wat is toegangsbeheer op basis van rollen (RBAC)?](/azure/role-based-access-control/overview)
-* [Ingebouwde rollen voor Azure-resources](/azure/role-based-access-control/built-in-roles)
+* [Wat is Azure RBAC (toegangsbeheer op basis van rollen)?](/azure/role-based-access-control/overview)
+* [Ingebouwde Azure-rollen](/azure/role-based-access-control/built-in-roles)
 
 ## <a name="security-monitoring-alerts-and-machine-learning-based-reports"></a>Beveiligings bewaking, waarschuwingen en rapporten op basis van machine learning
 
@@ -157,13 +163,13 @@ Meer informatie:
 * [Wat is Azure AD Privileged Identity Management?](../../active-directory/privileged-identity-management/pim-configure.md)
 * [Azure AD-adreslijst rollen toewijzen in PIM](../../active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md)
 
-## <a name="identity-protection"></a>Identiteitsbeveiliging
+## <a name="identity-protection"></a>Identiteitsbescherming
 
 Azure AD Identity Protection is een beveiligings service die een geconsolideerde weer gave biedt voor risico detecties en mogelijke beveiligings problemen die van invloed zijn op de identiteiten van uw organisatie. Identiteits bescherming maakt gebruik van de bestaande Azure AD-detectie mogelijkheden voor afwijkingen, die beschikbaar zijn via rapporten van afwijkende activiteiten van Azure AD. Identiteits beveiliging introduceert ook nieuwe typen risico detectie waarmee afwijkingen in realtime kunnen worden gedetecteerd.
 
 Meer informatie:
 
-* [Azure AD-identiteitsbeveiliging](/azure/active-directory/identity-protection/overview)
+* [Azure AD Identity Protection](/azure/active-directory/identity-protection/overview)
 * [Channel 9: Azure AD en identiteits weergave: preview van identiteits beveiliging](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="hybrid-identity-managementazure-ad-connect"></a>Hybride identiteits beheer/Azure AD Connect

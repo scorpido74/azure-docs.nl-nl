@@ -1,0 +1,105 @@
+---
+title: Een exemplaar en authenticatie instellen (met een script)
+titleSuffix: Azure Digital Twins
+description: Zie een exemplaar van de Azure Digital Apparaatdubbels-service instellen, met inbegrip van de juiste verificatie. Script versie.
+author: baanders
+ms.author: baanders
+ms.date: 7/22/2020
+ms.topic: how-to
+ms.service: digital-twins
+ms.openlocfilehash: c601d01589a89667b630d04ddb19dfbe190cca9f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
+ms.contentlocale: nl-NL
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87125774"
+---
+# <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Een Azure Digital Apparaatdubbels-exemplaar en-verificatie instellen (met een script)
+
+[!INCLUDE [digital-twins-setup-selector.md](../../includes/digital-twins-setup-selector.md)]
+
+In dit artikel worden de stappen beschreven voor het **instellen van een nieuwe Azure Digital apparaatdubbels-instantie**, inclusief het maken van het exemplaar en het instellen van verificatie. Nadat dit artikel is voltooid, hebt u een Azure Digital Apparaatdubbels-exemplaar gereed om te Program meren.
+
+Deze versie van dit artikel voert u deze stappen uit door een voor beeld van een [ **geautomatiseerd implementatie script** ](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/) uit te voeren dat het proces stroomlijnt. Als u de hand matige stappen wilt weer geven waarmee het script wordt uitgevoerd achter de schermen, raadpleegt u de hand matige versie van dit artikel: [*instructies: een exemplaar en authenticatie (hand matig) instellen*](how-to-set-up-instance-manual.md).
+
+[!INCLUDE [digital-twins-setup-starter.md](../../includes/digital-twins-setup-starter.md)]
+
+## <a name="run-the-deployment-script"></a>Het implementatie script uitvoeren
+
+In dit artikel wordt een voor beeld van een Azure Digital Apparaatdubbels-code gebruikt om een Azure Digital Apparaatdubbels-exemplaar en de vereiste verificatie semi-automatisch te implementeren. Het kan ook worden gebruikt als uitgangs punt voor het schrijven van uw eigen interscript-interacties.
+
+Het voorbeeld script is geschreven in Power shell. Het maakt deel uit van de [Azure Digital apparaatdubbels](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/)-voor beelden, die u kunt downloaden naar uw computer door te navigeren naar de voorbeeld koppeling en de knop *zip downloaden* te selecteren onder de titel.
+
+In de gedownloade voorbeeld map bevindt het implementatie script zich in _Azure_Digital_Twins_samples.zip > scripts > **deploy.ps1** _.
+
+Hier volgen de stappen voor het uitvoeren van het implementatie script in Cloud Shell.
+1. Ga naar een [Azure Cloud shell](https://shell.azure.com/) -venster in uw browser. Meld u aan met deze opdracht:
+    ```azurecli-interactive
+    az login
+    ```
+    Als de CLI uw standaard browser kan openen, wordt dit gedaan en wordt er een Azure-aanmeldings pagina geladen. Als dat niet het geval is, opent u een browser pagina op *https://aka.ms/devicelogin* en voert u de autorisatie code in die wordt weer gegeven in uw Terminal.
+ 
+2. Nadat u zich hebt aangemeld, gaat u naar de pictogram balk van het Cloud Shell venster. Selecteer het pictogram bestanden uploaden/downloaden en kies uploaden.
+
+    :::image type="content" source="media/how-to-set-up-instance/cloud-shell-upload.png" alt-text="Cloud Shell venster met de selectie van de Upload optie":::
+
+    Ga naar het _**deploy.ps1**_ -bestand op uw computer en klik op openen. Hiermee wordt het bestand geüpload naar Cloud Shell, zodat u het kunt uitvoeren in het Cloud Shell-venster.
+
+3. Voer het script uit door de `./deploy.ps1` opdracht in het venster Cloud shell te verzenden. Wanneer het script wordt uitgevoerd via de automatische installatie stappen, wordt u gevraagd de volgende waarden door te geven:
+    * Voor het exemplaar: de *abonnements-id* van uw Azure-abonnement dat moet worden gebruikt
+    * Voor het exemplaar: een *locatie* waar u het exemplaar wilt implementeren. Als u wilt zien welke regio's Azure Digital Apparaatdubbels ondersteunen, gaat u naar [*Azure-producten beschikbaar per regio*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins).
+    * Voor het exemplaar: een naam van een *resource groep* . U kunt een bestaande resource groep gebruiken of een nieuwe naam opgeven om deze te maken.
+    * Voor het exemplaar: een *naam* voor uw Azure Digital apparaatdubbels-exemplaar. De naam van het nieuwe exemplaar moet uniek zijn binnen de regio (wat betekent dat als een ander Azure Digital Apparaatdubbels-exemplaar in die regio al gebruikmaakt van de naam die u kiest, wordt u gevraagd een andere naam te kiezen).
+    * Voor de app-registratie: een *weergave naam van de Azure AD-toepassing* die u aan de registratie wilt koppelen. Met deze app-registratie kunt u toegangs machtigingen voor de [Azure Digital apparaatdubbels-api's](how-to-use-apis-sdks.md)configureren. Later wordt de client-app geverifieerd op basis van de app-registratie, en worden daarom de geconfigureerde toegangs machtigingen voor de Api's verleend.
+    * Voor de app-registratie: een antwoord-URL voor de *Azure AD-toepassing* voor de Azure AD-toepassing. U kunt gebruiken `http://localhost` .
+
+Met het script maakt u een Azure Digital Apparaatdubbels-exemplaar, wijst u uw Azure-gebruiker de rol *Azure Digital apparaatdubbels-eigenaar (preview)* toe aan het exemplaar en stelt u een Azure AD-App-registratie in voor uw client-app.
+
+Hier volgt een fragment van het uitvoer logboek van het script:
+
+:::image type="content" source="media/how-to-set-up-instance/deployment-script-output.png" alt-text="Cloud Shell venster met het logboek van de invoer en uitvoer via het uitvoeren van het script implementeren" lightbox="media/how-to-set-up-instance/deployment-script-output.png":::
+
+Als het script is voltooid, wordt de uiteindelijke afdruk weer te zeggen `Deployment completed successfully` . Als dat niet het geval is, adresseert u het fout bericht en voert u het script opnieuw uit. De stappen die u al hebt voltooid, worden overgeslagen en de invoer wordt opnieuw gestart op het punt waar u was gebleven.
+
+Wanneer het script is voltooid, hebt u nu een Azure Digital Apparaatdubbels-exemplaar gereed om de machtigingen te beheren.
+
+## <a name="collect-important-values"></a>Belang rijke waarden verzamelen
+
+Er zijn twee belang rijke waarden van de app-registratie die later nodig zijn om [een client-app te verifiëren tegen de Azure Digital apparaatdubbels-api's](how-to-authenticate-client.md). 
+
+Als u deze wilt vinden, volgt u [deze koppeling](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) om naar de pagina overzicht van Azure AD-App-registratie in de Azure portal te gaan. Op deze pagina worden alle app-registraties weer gegeven die zijn gemaakt in uw abonnement.
+
+De registratie van de app die u zojuist hebt gemaakt, ziet u in deze lijst. Selecteer deze om de details ervan te openen:
+
+:::image type="content" source="media/how-to-set-up-instance/app-important-values.png" alt-text="Portal weergave van de belang rijke waarden voor de app-registratie":::
+
+Noteer de ID van de *toepassings* -id en de *Directory (Tenant)* die op **de** pagina wordt weer gegeven. Als u niet de persoon bent die code gaat schrijven voor client toepassingen, moet u deze waarden delen met de persoon die het gaat doen.
+
+## <a name="verify-success"></a>Controleren geslaagd
+
+Als u wilt controleren of uw resources en machtigingen zijn ingesteld door het script, kunt u deze bekijken in de [Azure Portal](https://portal.azure.com).
+
+### <a name="verify-instance"></a>Exemplaar controleren
+
+Als u wilt controleren of uw exemplaar is gemaakt, gaat u naar de [pagina Azure Digital apparaatdubbels](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.DigitalTwins%2FdigitalTwinsInstances) in de Azure Portal. Op deze pagina vindt u een lijst met alle Azure Digital Apparaatdubbels-instanties. Zoek naar de naam van uw nieuw gemaakte exemplaar in de lijst.
+
+### <a name="verify-user-role-assignment"></a>Gebruikersrol toewijzing controleren
+
+[!INCLUDE [digital-twins-setup-verify-role-assignment.md](../../includes/digital-twins-setup-verify-role-assignment.md)]
+
+### <a name="verify-app-registration"></a>App-registratie verifiëren
+
+[!INCLUDE [digital-twins-setup-verify-app-registration-1.md](../../includes/digital-twins-setup-verify-app-registration-1.md)]
+
+Controleer eerst of de instellingen voor de Azure Digital Apparaatdubbels-machtigingen correct zijn ingesteld voor de registratie. Als u dit wilt doen, selecteert u *manifest* in de menu balk om de manifest code van de app-registratie weer te geven. Ga naar de onderkant van het code venster en zoek deze velden onder `requiredResourceAccess` . De waarden moeten overeenkomen met die in de onderstaande scherm afbeelding:
+
+[!INCLUDE [digital-twins-setup-verify-app-registration-2.md](../../includes/digital-twins-setup-verify-app-registration-2.md)]
+
+## <a name="other-possible-steps-for-your-organization"></a>Andere mogelijke stappen voor uw organisatie
+
+[!INCLUDE [digital-twins-setup-additional-requirements.md](../../includes/digital-twins-setup-additional-requirements.md)]
+
+## <a name="next-steps"></a>Volgende stappen
+
+Bekijk hoe u uw client toepassing verbindt met uw exemplaar door de verificatie code van de client-app te schrijven:
+* [*Instructies: app-verificatie code schrijven*](how-to-authenticate-client.md)

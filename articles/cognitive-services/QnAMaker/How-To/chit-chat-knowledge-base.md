@@ -3,20 +3,18 @@ title: Chit-Chat toevoegen aan een QnA Maker Knowledge Base
 titleSuffix: Azure Cognitive Services
 description: Door persoonlijke Chit toe te voegen aan uw bot kunt u meer praten en oefenen wanneer u een KB maakt. Met QnA Maker kunt u eenvoudig een vooraf gevulde set van de bovenste Chit-Chat toevoegen aan uw KB.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: e06cad8e8ca62330b09e173cf6058905b49f19e4
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 0aca072a9e659d242dec9dd45a12f9568d419599
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83992902"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124422"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>Chit-Chat toevoegen aan een kennis database
 
@@ -74,7 +72,7 @@ Als u de meta gegevens wilt bekijken, selecteert u **weergave opties** op de wer
 ## <a name="add-additional-chit-chat-questions-and-answers"></a>Aanvullende chit-chat vragen en-antwoorden toevoegen
 U kunt een nieuw Chit-Chat QnA-paar toevoegen dat zich niet in de vooraf gedefinieerde gegevensset bevindt. Zorg ervoor dat u geen QnA-paar dupliceert dat al wordt behandeld in de Chit-Chat set. Wanneer u een nieuwe Chit-Chat QnA toevoegt, wordt deze toegevoegd aan uw **redactionele** bron. Om ervoor te zorgen dat de classificatieer weet dat dit Chit is, voegt u de meta gegevens sleutel/waardepaar ' Redactionel: Chitchat ' toe, zoals in de volgende afbeelding wordt weer gegeven:
 
-![! [Add Chit-Chat QnAs] (.. /media/qnamaker-how-to-chit-chat/add-new-chit-chat.png)](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png#lightbox)
+![! [Add Chit-Chat QnAs] (.. /Media/qnamaker-How-to-chit-chat/add-new-chit-chat.png)](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png#lightbox)
 
 ## <a name="delete-chit-chat-from-an-existing-kb"></a>Chit verwijderen van een bestaande KB
 Selecteer uw KB en navigeer naar de pagina **instellingen** . Uw specifieke Chit-Chat bron wordt weer gegeven als een bestand met de naam van de geselecteerde persoonlijkheid. U kunt dit als een bron bestand verwijderen.
@@ -86,6 +84,6 @@ Selecteer uw KB en navigeer naar de pagina **instellingen** . Uw specifieke Chit
 > [!div class="nextstepaction"]
 > [Een Knowledge Base importeren](../Tutorials/migrate-knowledge-base.md)
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 [Overzicht van QnA Maker](../Overview/overview.md)

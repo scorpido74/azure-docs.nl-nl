@@ -3,19 +3,17 @@ title: Meta gegevens met GenerateAnswer-API-QnA Maker
 titleSuffix: Azure Cognitive Services
 description: Met QnA Maker kunt u meta gegevens, in de vorm van sleutel/waarde-paren, toevoegen aan uw vraag/antwoord-paren. U kunt de resultaten filteren op gebruikers query's en aanvullende informatie opslaan die kan worden gebruikt bij opvolgings gesprekken.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 03/31/2020
-ms.author: diberry
-ms.openlocfilehash: 171efd0e5750555130588f783c4a858def11afec
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.date: 07/16/2020
+ms.openlocfilehash: 863143cb2ec1085bf03b070c225f2be5e8e4393d
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83993504"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126173"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Een antwoord krijgen met de GenerateAnswer-API en meta gegevens
 
@@ -146,7 +144,7 @@ var response = await _services.QnAServices[QnAMakerKey].GetAnswersAsync(turnCont
 
 De vorige JSON heeft alleen antwoorden aangevraagd die 30% of hoger zijn dan de drempel waarde.
 
-## <a name="use-qna-maker-with-a-bot-in-nodejs"></a>QnA Maker gebruiken met een bot in node. js
+## <a name="use-qna-maker-with-a-bot-in-nodejs"></a>QnA Maker gebruiken met een bot in Node.js
 
 Het bot-Framework biedt toegang tot de eigenschappen van de QnA Maker met de [getAnswer-API](https://docs.microsoft.com/javascript/api/botbuilder-ai/qnamaker?view=botbuilder-ts-latest#generateanswer-string---undefined--number--number-):
 
@@ -184,13 +182,40 @@ Omdat de resultaten alleen vereist zijn voor het restaurant "Paradise", kunt u e
 {
     "question": "When does this hotel close?",
     "top": 1,
-    "strictFilters": [
-      {
-        "name": "restaurant",
-        "value": "paradise"
-      }]
+    "strictFilters": [ { "name": "restaurant", "value": "paradise"}]
 }
 ```
+
+### <a name="logical-and-by-default"></a>Logische en standaard
+
+Als u verschillende filters voor meta gegevens wilt combi neren in de query, voegt u de extra filters voor meta gegevens toe aan de matrix van de `strictFilters` eigenschap. Standaard worden de waarden logisch gecombineerd (en). Een logische combi natie vereist dat alle filters overeenkomen met de QnA-paren zodat het paar in het antwoord wordt geretourneerd.
+
+Dit komt overeen met het gebruik `strictFiltersCompoundOperationType` van de eigenschap met de waarde van `AND` .
+
+### <a name="logical-or-using-strictfilterscompoundoperationtype-property"></a>Logische of met behulp van de eigenschap strictFiltersCompoundOperationType
+
+Bij het combi neren van verschillende filters voor meta gegevens kunt u, als u alleen een of meer bevindt met een van de filteringen, de `strictFiltersCompoundOperationType` eigenschap gebruiken met de waarde van `OR` .
+
+Op deze manier kan uw Knowledge Base antwoorden retour neren als er filters overeenkomen, maar geen antwoorden zonder meta gegevens retour neren.
+
+```json
+{
+    "question": "When do facilities in this hotel close?",
+    "top": 1,
+    "strictFilters": [
+      { "name": "type","value": "restaurant"},
+      { "name": "type", "value": "bar"},
+      { "name": "type", "value": "poolbar"}
+    ],
+    "strictFiltersCompoundOperationType": "OR"
+}
+```
+
+### <a name="metadata-examples-in-quickstarts"></a>Voor beelden van meta gegevens in Quick starts
+
+Meer informatie over meta gegevens vindt u in de QnA Maker portal voor meta gegevens:
+* [Ontwerpen: meta gegevens toevoegen aan QnA-paar](../quickstarts/add-question-metadata-portal.md#add-metadata-to-filter-the-answers)
+* [Query's voor voor spelling-antwoorden filteren op meta gegevens](../quickstarts/get-answer-from-knowledge-base-using-url-tool.md)
 
 <a name="keep-context"></a>
 

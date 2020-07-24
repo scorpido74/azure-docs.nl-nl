@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 51111d92e85c6ddbdfac85c333293c2af8b31fbe
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 68be8d08939464d200da588c481447f8206c9117
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498958"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117196"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Netwerkprestatiemeter oplossing in azure
 
@@ -56,7 +56,7 @@ NPM kan de connectiviteit tussen netwerken en toepassingen in elk deel van de we
 * Zuid-Brittannië
 * Azië - oost
 * Korea - centraal
-* Central India
+* India - centraal
 * Virginia van de Amerikaanse overheid
 * China-oost 2
 
@@ -65,6 +65,9 @@ De lijst met ondersteunde regio's voor de monitor ExpressRoute is beschikbaar in
 
 
 ## <a name="set-up-and-configure"></a>Instellen en configureren
+
+> [!NOTE]
+> Mogelijk ziet u ook de Log Analytics agent waarnaar wordt verwezen als de micro soft Monitoring Agent (MMA) of OMS Linux-agent.
 
 ### <a name="install-and-configure-agents"></a>Agents installeren en configureren 
 

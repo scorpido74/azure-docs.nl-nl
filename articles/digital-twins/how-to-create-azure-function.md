@@ -7,11 +7,12 @@ ms.author: cschorm
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3b416e6ccb035ede06a360c2697a9b20ca417d98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e284bc76da9ca40341d72f772aa7ee947a11638
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84725899"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124303"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>Azure Functions-apps verbinden voor het verwerken van gegevens
 
@@ -77,7 +78,7 @@ Dit is de basis functie van Azure.
 
 U kunt nu de functie compileren en uitvoeren. Hoewel Azure functions uiteindelijk bedoeld zijn om te worden uitgevoerd in de Cloud, kunt u Azure-functies ook lokaal uitvoeren en fouten opsporen.
 
-Zie [Debug Event grid trigger lokaal](../azure-functions/functions-debug-event-grid-trigger-local.md)voor meer informatie hierover.
+Zie [*Debug Event grid trigger lokaal*](../azure-functions/functions-debug-event-grid-trigger-local.md)voor meer informatie hierover.
 
 ### <a name="add-the-azure-digital-twins-sdk-to-your-azure-function-app"></a>De Azure Digital Apparaatdubbels SDK toevoegen aan uw Azure-functie-app
 
@@ -162,9 +163,9 @@ Gebruik de waarde van *principalId* in de volgende opdracht om de functie-app-id
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Owner (Preview)"
 ```
 
-Voor meer informatie over beheerde identiteiten raadpleegt u [beheerde identiteiten gebruiken voor app service en Azure functions](../app-service/overview-managed-identity.md).
+Voor meer informatie over beheerde identiteiten raadpleegt u [*beheerde identiteiten gebruiken voor app service en Azure functions*](../app-service/overview-managed-identity.md).
 
-Ten slotte kunt u de URL van uw Azure Digital Apparaatdubbels-exemplaar toegankelijk maken voor uw functie door een omgevings variabele in te stellen. Zie [omgevings variabelen](https://docs.microsoft.com/sandbox/functions-recipes/environment-variables)voor meer informatie.
+Ten slotte kunt u de URL van uw Azure Digital Apparaatdubbels-exemplaar toegankelijk maken voor uw functie door een omgevings variabele in te stellen. Zie [*omgevings variabelen*](https://docs.microsoft.com/sandbox/functions-recipes/environment-variables)voor meer informatie.
 
 > [!TIP]
 > De URL van het Azure Digital Apparaatdubbels-exemplaar wordt gemaakt door *https://* toe te voegen aan het begin van de *hostnaam*van uw Azure Digital apparaatdubbels-exemplaar. Als u de hostnaam, samen met alle eigenschappen van uw exemplaar, wilt zien, kunt u uitvoeren `az dt show --dt-name <your-Azure-Digital-Twins-instance>` .
@@ -208,7 +209,7 @@ Noteer ook de **object-id** die op deze pagina wordt weer gegeven, zoals deze wo
 
 ### <a name="assign-access-roles"></a>Toegangs rollen toewijzen
 
-Omdat Azure Digital Apparaatdubbels toegangs beheer op basis van rollen gebruikt voor het beheren van toegang (Zie [concepten: beveiliging voor Azure Digital apparaatdubbels-oplossingen](concepts-security.md) voor meer informatie), moet u ook een rol toevoegen voor elke functie-app die u toegang wilt geven tot Azure Digital apparaatdubbels.
+Omdat Azure Digital Apparaatdubbels toegangs beheer op basis van rollen gebruikt voor het beheren van toegang (Zie [*concepten: beveiliging voor Azure Digital apparaatdubbels-oplossingen*](concepts-security.md) voor meer informatie), moet u ook een rol toevoegen voor elke functie-app die u toegang wilt geven tot Azure Digital apparaatdubbels.
 
 Als u een rol wilt toewijzen, moet u de **resource-id** van het Azure Digital apparaatdubbels-exemplaar dat u hebt gemaakt, hebben. Als u deze niet eerder hebt vastgelegd tijdens het maken van uw exemplaar, kunt u deze ophalen met behulp van de volgende opdracht:
 
@@ -231,4 +232,4 @@ In dit artikel hebt u de stappen voor het instellen van een Azure-functie gevolg
 * Een Event Grid-eind punt dat berichten van andere services ontvangt
 
 Bekijk vervolgens hoe u uw eenvoudige Azure function bouwt om IoT Hub gegevens op te nemen in azure Digital Apparaatdubbels:
-* [Instructies: telemetrie opnemen van IoT Hub](how-to-ingest-iot-hub-data.md)
+* [*Instructies: telemetrie opnemen van IoT Hub*](how-to-ingest-iot-hub-data.md)

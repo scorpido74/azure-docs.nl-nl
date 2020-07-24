@@ -3,8 +3,8 @@ title: Azure-web-en-werk rollen maken voor PHP
 description: Een hand leiding voor het maken van PHP-web-en-werk rollen in een Azure-Cloud service en het configureren van de PHP-runtime.
 services: ''
 documentationcenter: php
-author: msangapu
-manager: cfowler
+author: msangapu-msft
+manager: gwallace
 ms.assetid: 9f7ccda0-bd96-4f7b-a7af-fb279a9e975b
 ms.service: cloud-services
 ms.workload: tbd
@@ -13,12 +13,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: 70d48ba9519c627addf58939866633cdcc43049e
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: fd04c6315a5a6915159c0cbb6a9640ae0695ed73
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919829"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117226"
 ---
 # <a name="create-php-web-and-worker-roles"></a>PHP-web- en -werkrollen maken
 
@@ -32,7 +32,7 @@ Zie [Compute hosting Options van Azure](cloud-services/cloud-services-choose-me.
 
 ## <a name="download-the-azure-sdk-for-php"></a>De Azure SDK voor PHP downloaden
 
-De [Azure SDK voor php](https://github.com/Azure/azure-sdk-for-php) bestaat uit verschillende onderdelen. In dit artikel worden twee gebruikt: Azure PowerShell en de Azure-emulators. Deze twee onderdelen kunnen worden geïnstalleerd via het installatie programma voor het micro soft-webplatform. Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview) voor meer informatie.
+De [Azure SDK voor php](https://github.com/Azure/azure-sdk-for-php) bestaat uit verschillende onderdelen. In dit artikel worden twee gebruikt: Azure PowerShell en de Azure-emulators. Deze twee onderdelen kunnen worden geïnstalleerd via het installatie programma voor het micro soft-webplatform. Zie [Azure PowerShell installeren en configureren](/powershell/azure/) voor meer informatie.
 
 ## <a name="create-a-cloud-services-project"></a>Een Cloud Services project maken
 
@@ -182,7 +182,7 @@ PS C:\MyProject> Stop-AzureEmulator
 
 ## <a name="publish-your-application"></a>Uw toepassing publiceren
 
-Als u uw toepassing wilt publiceren, moet u eerst de publicatie-instellingen importeren met behulp van de cmdlet [import-AzurePublishSettingsFile](https://docs.microsoft.com/powershell/module/servicemanagement/azure/import-azurepublishsettingsfile) . Vervolgens kunt u uw toepassing publiceren met behulp van de cmdlet [Publish-AzureServiceProject](https://docs.microsoft.com/powershell/module/servicemanagement/azure/publish-azureserviceproject) . Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview)voor informatie over het aanmelden.
+Als u uw toepassing wilt publiceren, moet u eerst de publicatie-instellingen importeren met behulp van de cmdlet [import-AzurePublishSettingsFile](/powershell/module/servicemanagement/azure.service/import-azurepublishsettingsfile) . Vervolgens kunt u uw toepassing publiceren met behulp van de cmdlet [Publish-AzureServiceProject](/powershell/module/servicemanagement/azure.service/publish-azureserviceproject) . Zie [Azure PowerShell installeren en configureren](/powershell/azure/)voor informatie over het aanmelden.
 
 ## <a name="next-steps"></a>Volgende stappen
 

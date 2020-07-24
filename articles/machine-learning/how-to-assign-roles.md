@@ -11,12 +11,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: f289be1b3432d9c62b4841c513088afa16e0e447
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff8d532bf1c19ded9567e8c1e4b63e674c01d0d8
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609245"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87125170"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Toegang tot een Azure Machine Learning-werk ruimte beheren
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,18 +25,18 @@ In dit artikel leert u hoe u de toegang tot een Azure Machine Learning-werk ruim
 
 ## <a name="default-roles"></a>Standaard rollen
 
-Een Azure Machine Learning-werk ruimte is een Azure-resource. Net als bij andere Azure-resources geldt dat als er een nieuwe Azure Machine Learning-werk ruimte wordt gemaakt, deze drie standaard rollen bevat. U kunt gebruikers toevoegen aan de werk ruimte en ze toewijzen aan een van deze ingebouwde rollen.
+Een Azure Machine Learning-werkruimte is een Azure-resource. Net als andere Azure-resources, heeft een nieuwe Azure Machine Learning-werkruimte drie standaardrollen wanneer deze wordt gemaakt. U kunt gebruikers toevoegen aan de werk ruimte en ze toewijzen aan een van deze ingebouwde rollen.
 
 | Rol | Toegangsniveau |
 | --- | --- |
 | **Lezer** | Alleen-lezen acties in de werk ruimte. Lezers kunnen assets in een werk ruimte opnemen en weer geven (inclusief [Data Store](how-to-access-data.md) -referenties), maar kunnen deze assets niet maken of bijwerken. |
-| **Inzender** | Activa in een werk ruimte weer geven, maken, bewerken of verwijderen (indien van toepassing). Inzenders kunnen bijvoorbeeld een experiment maken, een berekenings cluster maken of koppelen, een run verzenden en een webservice implementeren. |
+| **Inzender** | Activa in een werk ruimte weer geven, maken, bewerken of verwijderen (indien van toepassing). Zo kunnen inzenders een experiment maken, een rekencluster maken of koppelen, een uitvoering starten en een webservice implementeren. |
 | **Eigenaar** | Volledige toegang tot de werk ruimte, met inbegrip van de mogelijkheid om activa in een werk ruimte weer te geven, te maken, te bewerken of te verwijderen (indien van toepassing). Daarnaast kunt u roltoewijzingen wijzigen. |
 
 > [!IMPORTANT]
 > De toegang tot rollen kan worden beperkt tot meerdere niveaus in Azure. Bijvoorbeeld: iemand met een eigenaar van de gebruikers toegang tot een werk ruimte heeft geen eigenaars toegang tot de resource groep die de werk ruimte bevat. Zie [How RBAC werkt](/azure/role-based-access-control/overview#how-rbac-works)voor meer informatie.
 
-Zie [ingebouwde rollen voor Azure](/azure/role-based-access-control/built-in-roles)voor meer informatie over specifieke ingebouwde rollen.
+Zie [ingebouwde rollen van Azure](/azure/role-based-access-control/built-in-roles)voor meer informatie over specifieke ingebouwde rollen.
 
 ## <a name="manage-workspace-access"></a>Toegang tot de werk ruimte beheren
 
@@ -45,7 +45,7 @@ Als u eigenaar bent van een werk ruimte, kunt u rollen toevoegen en verwijderen 
 - [PowerShell](/azure/role-based-access-control/role-assignments-powershell)
 - [Azure-CLI](/azure/role-based-access-control/role-assignments-cli)
 - [REST API](/azure/role-based-access-control/role-assignments-rest)
-- [Azure Resource Manager-sjablonen](/azure/role-based-access-control/role-assignments-template)
+- [Azure Resource Manager sjablonen](/azure/role-based-access-control/role-assignments-template)
 
 Als u de [Azure machine learning cli](reference-azure-machine-learning-cli.md)hebt geïnstalleerd, kunt u ook een CLI-opdracht gebruiken om rollen toe te wijzen aan gebruikers.
 
@@ -69,7 +69,7 @@ Azure Machine Learning ingebouwde acties voor veel bewerkingen en taken. Zie [Az
 
 ## <a name="create-custom-role"></a>Aangepast rol maken
 
-Als de ingebouwde rollen onvoldoende zijn, kunt u aangepaste rollen maken. Aangepaste rollen kunnen Lees-, schrijf-, verwijder-en reken resource machtigingen hebben in die werk ruimte. U kunt de rol beschikbaar maken op een specifiek werk ruimte niveau, op een specifiek niveau van een resource groep of op een specifiek abonnements niveau.
+Als de ingebouwde rollen niet voldoen, kunt u aangepaste rollen maken. Aangepaste rollen kunnen Lees-, schrijf-, verwijder-en reken resource machtigingen hebben in die werk ruimte. U kunt de rol beschikbaar maken op een specifiek werk ruimte niveau, op een specifiek niveau van een resource groep of op een specifiek abonnements niveau.
 
 > [!NOTE]
 > U moet een eigenaar van de resource op dat niveau zijn om aangepaste rollen te maken binnen die resource.
@@ -117,7 +117,7 @@ Na de implementatie wordt deze rol beschikbaar in de opgegeven werk ruimte. U ku
 az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientist" --user jdoe@contoson.com
 ```
 
-Zie [aangepaste rollen voor Azure-resources](/azure/role-based-access-control/custom-roles)voor meer informatie over aangepaste rollen.
+Zie aangepaste rollen voor [Azure](/azure/role-based-access-control/custom-roles)voor meer informatie over aangepaste rollen.
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
