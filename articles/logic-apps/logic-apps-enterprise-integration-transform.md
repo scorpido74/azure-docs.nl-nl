@@ -8,11 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/08/2016
-ms.openlocfilehash: 500769a39ba7658b35c1abb80101f6234170c941
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 38861ed941d49317e69bfab9afd17638a790bf7b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74792391"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072425"
 ---
 # <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>Kaarten maken die XML transformeren tussen indelingen in Azure Logic Apps met Enterprise Integration Pack
 
@@ -37,11 +38,11 @@ Nu u de vereiste onderdelen hebt gemaakt, is het tijd om uw logische app te make
 
 1. Maak een logische app en [koppel deze aan uw integratie account](../logic-apps/logic-apps-enterprise-integration-accounts.md "Meer informatie over het koppelen van een integratie account aan een logische app") dat de kaart bevat.
 2. Een **aanvraag** trigger toevoegen aan uw logische app  
-   ![](./media/logic-apps-enterprise-integration-transforms/transform-1.png)    
+   ![Scherm afbeelding van de vervolg keuzelijst ' door micro soft beheerde Api's weer geven ' terwijl de trigger voor de aanvraag is geselecteerd. De vervolg keuzelijst bevindt zich in een logische app die is gemaakt met behulp van de Visual Studio Bedrijfsintegratie SDK.](./media/logic-apps-enterprise-integration-transforms/transform-1.png)    
 3. Voeg eerst **een actie toevoegen** toe om de **trans formatie XML-** actie te selecteren   
-   ![](./media/logic-apps-enterprise-integration-transforms/transform-2.png)   
+   ![Scherm afbeelding met de knop voor het toevoegen van een actie die is geselecteerd in het scherm voor het activeren van de aanvraag.](./media/logic-apps-enterprise-integration-transforms/transform-2.png)   
 4. Voer de woord *transformatie* in het zoekvak in om alle acties die u wilt gebruiken, te filteren.  
-   ![](./media/logic-apps-enterprise-integration-transforms/transform-3.png)  
+   ![Scherm afbeelding die laat zien hoe u kunt zoeken naar de trans formatie-XML in de vervolg keuzelijst ' micro soft Managed Api's weer geven ' zodat deze kan worden toegevoegd aan de aanvraag trigger.](./media/logic-apps-enterprise-integration-transforms/transform-3.png)  
 5. De actie **XML-trans formatie** selecteren   
 6. Voeg de XML- **inhoud** toe die u transformeert. U kunt alle XML-gegevens die u in de HTTP-aanvraag ontvangt als de **inhoud**gebruiken. Selecteer in dit voor beeld de hoofd tekst van de HTTP-aanvraag die de logische app heeft geactiveerd.
 
@@ -50,9 +51,9 @@ Nu u de vereiste onderdelen hebt gemaakt, is het tijd om uw logische app te make
  
 
 7. Selecteer de naam van de **kaart** die u wilt gebruiken om de trans formatie uit te voeren. De kaart moet al aanwezig zijn in uw integratie account. In een eerdere stap hebt u uw logische app al toegang gegeven tot uw integratie account dat de kaart bevat.      
-   ![](./media/logic-apps-enterprise-integration-transforms/transform-4.png) 
+   ![Scherm opname van de velden inhoud en kaart in het XML-venster trans formatie voor de trigger van de aanvraag.](./media/logic-apps-enterprise-integration-transforms/transform-4.png) 
 8. Uw werk opslaan  
-    ![](./media/logic-apps-enterprise-integration-transforms/transform-5.png) 
+    ![Scherm afbeelding met de knop Opslaan in de Logic Apps Designer.](./media/logic-apps-enterprise-integration-transforms/transform-5.png) 
 
 U bent nu klaar met het instellen van de kaart. In een echte wereld toepassing wilt u mogelijk de getransformeerde gegevens opslaan in een LOB-toepassing, zoals Sales Force. U kunt gemakkelijk als een actie de uitvoer van de trans formatie naar Sales Force verzenden. 
 
@@ -132,7 +133,7 @@ Standaard begint de reactie van de trans formatie met de byte order Mark (BOM). 
 
 
 
-## <a name="learn-more"></a>Lees meer
+## <a name="learn-more"></a>Meer informatie
 * [Meer informatie over de Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Meer informatie over Enterprise Integration Pack")  
 * [Meer informatie over Maps](../logic-apps/logic-apps-enterprise-integration-maps.md "Meer informatie over Enter prise Integration Maps")  
 

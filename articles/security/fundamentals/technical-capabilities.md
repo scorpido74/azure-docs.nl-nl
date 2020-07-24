@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2020
 ms.author: terrylan
-ms.openlocfilehash: 29e6aa96ea1c435e4d734e80824e1cedcfe9a761
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d861388c8c7a5ff64a17607736d4c8a292343dec
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519317"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071597"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technische mogelijkheden van Azure-beveiliging
 Dit artikel bevat een inleiding tot beveiligings Services in azure waarmee u uw gegevens, resources en toepassingen in de cloud kunt beveiligen en voldoen aan de beveiligings behoeften van uw bedrijf.
@@ -152,7 +152,7 @@ Toegangs beheer in azure wordt gestart vanuit een facturerings perspectief. De e
 
 Abonnementen hebben ook een koppeling met een map. De map definieert een aantal gebruikers. Deze kunnen gebruikers zijn van het werk of de school waarmee de Directory is gemaakt, of ze kunnen externe gebruikers (micro soft-accounts) zijn. Abonnementen zijn toegankelijk voor een subset van de Directory-gebruikers die zijn toegewezen als service beheerder (SA) of mede beheerder (CA). de enige uitzonde ring hierop is dat micro soft-accounts (voorheen Windows Live ID), om verouderde redenen, kunnen worden toegewezen als SA of CA zonder dat ze in de Directory aanwezig zijn.
 
-Beveiligings gerichte bedrijven moeten zich richten op het geven van werk nemers de exacte machtigingen die ze nodig hebben. Te veel machtigingen kunnen een account bloot stellen aan kwaadwillende personen. Te weinig machtigingen betekenen dat werk nemers hun werk niet efficiënt kunnen uitvoeren. Met [Access Control op basis van rollen (RBAC) van Azure](../../role-based-access-control/overview.md) kunt u dit probleem oplossen door nauw keurig toegangs beheer voor Azure aan te bieden.
+Beveiligings gerichte bedrijven moeten zich richten op het geven van werk nemers de exacte machtigingen die ze nodig hebben. Te veel machtigingen kunnen een account bloot stellen aan kwaadwillende personen. Te weinig machtigingen betekenen dat werk nemers hun werk niet efficiënt kunnen uitvoeren. Met [op rollen gebaseerd toegangs beheer van Azure (Azure RBAC)](../../role-based-access-control/overview.md) kunt u dit probleem oplossen door het bieden van nauw keurig toegang tot Azure.
 
 ![Beveiligde toegang tot bron](./media/technical-capabilities/azure-security-technical-capabilities-fig4.png)
 
@@ -444,6 +444,6 @@ Lees meer over beveiliging door enkele van onze diep gaande onderwerpen over bev
 
 - [Identiteits- en toegangsbeheer](https://www.microsoft.com/en-us/trustcenter/security/identity)
 
-- [Netwerk beveiliging](https://www.microsoft.com/en-us/trustcenter/security/networksecurity)
+- [Netwerkbeveiliging](https://www.microsoft.com/en-us/trustcenter/security/networksecurity)
 
 - [Beveiligingsbeheer](https://www.microsoft.com/en-us/trustcenter/security/threatmanagement)

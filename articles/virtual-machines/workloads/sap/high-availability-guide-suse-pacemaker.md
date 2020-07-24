@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/24/2020
 ms.author: radeltch
-ms.openlocfilehash: ed754e3f69feaf6d5415db8f71cb5c1bb65632e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28e53c5ca53f5be4aafc685445e67dcf4d558773
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85368244"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074001"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Pacemaker instellen voor SUSE Linux Enterprise Server in azure
 
@@ -41,7 +41,7 @@ De Azure Fence-agent vereist geen extra virtuele machine (s) implementeren.
 ![Overzicht van pacemaker op SLES](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
 
 >[!IMPORTANT]
-> Wanneer u Linux pacemaker geclusterde knoop punten en SBD-apparaten plant en implementeert, is het essentieel voor de algehele betrouw baarheid van de volledige cluster configuratie, waardoor de route ring tussen de betrokken Vm's en de virtuele machine (s) die de SBD-apparaten hosten, niet via andere apparaten, zoals [nva's](https://azure.microsoft.com/solutions/network-appliances/), wordt door gegeven. Anders kunnen problemen en onderhouds gebeurtenissen met de NVA een negatieve invloed hebben op de stabiliteit en betrouw baarheid van de algehele cluster configuratie. Om dergelijke obstakels te voor komen, definieert u geen routerings regels van Nva's of door de [gebruiker gedefinieerde routerings regels](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) die verkeer routeren tussen geclusterde knoop punten en SBD-apparaten via nva's en vergelijk bare apparaten bij het plannen en implementeren van Linux pacemaker geclusterde knoop punten en SBD-apparaten. 
+> Wanneer u Linux pacemaker geclusterde knoop punten en SBD-apparaten plant en implementeert, is het essentieel voor de algehele betrouw baarheid van de volledige cluster configuratie, waardoor de route ring tussen de betrokken Vm's en de virtuele machine (s) die de SBD-apparaten hosten, niet via andere apparaten, zoals [nva's](https://azure.microsoft.com/solutions/network-appliances/), wordt door gegeven. Anders kunnen problemen en onderhouds gebeurtenissen met de NVA een negatieve invloed hebben op de stabiliteit en betrouw baarheid van de algehele cluster configuratie. Om dergelijke obstakels te voor komen, definieert u geen routerings regels van Nva's of door de [gebruiker gedefinieerde routerings regels](../../../virtual-network/virtual-networks-udr-overview.md) die verkeer routeren tussen geclusterde knoop punten en SBD-apparaten via nva's en vergelijk bare apparaten bij het plannen en implementeren van Linux pacemaker geclusterde knoop punten en SBD-apparaten. 
 >
 
 ## <a name="sbd-fencing"></a>SBD-omheining
@@ -583,7 +583,7 @@ Het STONITH-apparaat gebruikt een Service-Principal om te autoriseren bij Micros
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** een aangepaste rol maken voor de Fence-agent
 
-De service-principal heeft standaard geen machtigingen voor toegang tot uw Azure-resources. U moet de Service-Principal machtigingen geven om alle virtuele machines van het cluster te starten en te stoppen (toewijzing ongedaan te maken). Als u de aangepaste rol nog niet hebt gemaakt, kunt u deze maken met behulp van [Power shell](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-powershell#create-a-custom-role) of [Azure cli](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-cli)
+De service-principal heeft standaard geen machtigingen voor toegang tot uw Azure-resources. U moet de Service-Principal machtigingen geven om alle virtuele machines van het cluster te starten en te stoppen (toewijzing ongedaan te maken). Als u de aangepaste rol nog niet hebt gemaakt, kunt u deze maken met behulp van [Power shell](../../../role-based-access-control/custom-roles-powershell.md#create-a-custom-role) of [Azure cli](../../../role-based-access-control/custom-roles-cli.md)
 
 Gebruik de volgende inhoud voor het invoer bestand. U moet de inhoud aanpassen aan uw abonnementen, door c276fc76-9cd4-44c9-99a7-4fd71546436e en e91d47c4-76f3-4271-a796-21b4ecfe3624 te vervangen door de Id's van uw abonnement. Als u slechts één abonnement hebt, verwijdert u de tweede vermelding in AssignableScopes.
 
@@ -647,11 +647,11 @@ sudo crm configure property stonith-timeout=900
 > De bewakings-en omheinings bewerkingen worden gedeserialiseerd. Als er een langere bewakings bewerking en gelijktijdige Afleidings gebeurtenis optreedt, is er dus geen vertraging voor de failover van het cluster vanwege de bewakings bewerking die al wordt uitgevoerd.
 
 > [!TIP]
->De Azure Fence-agent vereist uitgaande connectiviteit met open bare eind punten zoals gedocumenteerd, samen met mogelijke oplossingen, in [open bare-eindpunt connectiviteit voor vm's met behulp van standaard ILB](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).  
+>De Azure Fence-agent vereist uitgaande connectiviteit met open bare eind punten zoals gedocumenteerd, samen met mogelijke oplossingen, in [open bare-eindpunt connectiviteit voor vm's met behulp van standaard ILB](./high-availability-guide-standard-load-balancer-outbound-connections.md).  
 
 ## <a name="pacemaker-configuration-for-azure-scheduled-events"></a>Pacemaker-configuratie voor geplande Azure-evenementen
 
-Azure biedt [geplande gebeurtenissen](https://docs.microsoft.com/azure/virtual-machines/linux/scheduled-events). Geplande gebeurtenissen worden via de meta gegevens service verschaft en bieden de tijd om de toepassing voor te bereiden op gebeurtenissen zoals het afsluiten van de VM, het opnieuw implementeren van VM'S, enzovoort. **[Azure-gebeurtenissen](https://github.com/ClusterLabs/resource-agents/pull/1161)** van de resource agent voor geplande Azure-gebeurtenissen. Als er gebeurtenissen worden gedetecteerd, probeert de agent alle resources op de betrokken VM te stoppen en deze naar een ander knoop punt in het cluster te verplaatsen. Om te voor komen dat er extra pacemaker-resources moeten worden geconfigureerd. 
+Azure biedt [geplande gebeurtenissen](../../linux/scheduled-events.md). Geplande gebeurtenissen worden via de meta gegevens service verschaft en bieden de tijd om de toepassing voor te bereiden op gebeurtenissen zoals het afsluiten van de VM, het opnieuw implementeren van VM'S, enzovoort. **[Azure-gebeurtenissen](https://github.com/ClusterLabs/resource-agents/pull/1161)** van de resource agent voor geplande Azure-gebeurtenissen. Als er gebeurtenissen worden gedetecteerd, probeert de agent alle resources op de betrokken VM te stoppen en deze naar een ander knoop punt in het cluster te verplaatsen. Om te voor komen dat er extra pacemaker-resources moeten worden geconfigureerd. 
 
 1. **[A]** Controleer of het pakket voor de **Azure-gebeurtenis** agent al is geïnstalleerd en up-to-date is. 
 

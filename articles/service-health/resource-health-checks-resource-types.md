@@ -3,11 +3,12 @@ title: Ondersteunde resource typen via Azure Resource Health | Microsoft Docs
 description: Ondersteunde resource typen via Azure resource Health
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 38c7e0754649d650521cc510bcac326496bcec38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4d622ac6d37059731b51a679e13f824670b9dc8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83816095"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071295"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Resource typen en status controles in azure resource Health
 Hieronder vindt u een volledige lijst met alle controles die worden uitgevoerd door middel van resource typen.
@@ -188,7 +189,7 @@ Hieronder vindt u een volledige lijst met alle controles die worden uitgevoerd d
 |---|
 |<ul><li>Kunnen er diagnostische bewerkingen worden uitgevoerd op het cluster?</li></ul>|
 
-## <a name="microsoftservicebusnamespaces"></a>Micro soft. ServiceBus/naam ruimten
+## <a name="microsoftservicebusnamespaces"></a>Microsoft.ServiceBus/namespaces
 |Controles uitgevoerd|
 |---|
 |<ul><li>Ondervindt klanten die door de gebruiker zijn gegenereerd Service Bus fouten?</li><li>Ondervinden gebruikers een toename van tijdelijke fouten vanwege een upgrade van de naam ruimte van Service Bus?</li></ul>|
@@ -231,4 +232,4 @@ Hieronder vindt u een volledige lijst met alle controles die worden uitgevoerd d
 ## <a name="next-steps"></a>Volgende stappen
 -  Zie [Inleiding tot Azure service Health dash board](service-health-overview.md) en [Inleiding tot Azure resource Health](resource-health-overview.md) om meer te weten te komen over hen. 
 -  [Veelgestelde vragen over Azure Resource Health](resource-health-faq.md)
-- Stel waarschuwingen in zodat u op de hoogte wordt gesteld van status problemen. Zie [Configure alerts for service Health Events](../azure-monitor/platform/alerts-activity-log-service-notifications.md)(Engelstalig) voor meer informatie. 
+- Stel waarschuwingen in zodat u op de hoogte wordt gesteld van status problemen. Zie [Configure alerts for service Health Events](./alerts-activity-log-service-notifications-portal.md)(Engelstalig) voor meer informatie. 

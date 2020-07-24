@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/03/2019
 ms.author: damaerte
-ms.openlocfilehash: 513c3da8031774f5f111ee357b5a3c43e1d09d95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0cfd428e1bd380d17049cbc229bb8850793056e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75832477"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073033"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Overzicht van Azure Cloud Shell
 Azure Cloud Shell is een interactieve, geverifieerde en vanuit de browser toegankelijke shell voor het beheer van Azure-resources.
@@ -60,15 +61,15 @@ Meer [informatie over de Cloud shell editor](using-cloud-shell-editor.md).
 
 ### <a name="integrated-with-docsmicrosoftcom"></a>Geïntegreerd met docs.microsoft.com
 
-U kunt Cloud Shell rechtstreeks vanuit documentatie die op [docs.Microsoft.com](https://docs.microsoft.com)wordt gehost gebruiken. Het is geïntegreerd in [Microsoft Learn](https://docs.microsoft.com/learn/), [Azure POWERSHELL](https://docs.microsoft.com/powershell/azure/overview) en [Azure cli-documentatie](https://docs.microsoft.com/cli/azure) : Klik op de knop ' proberen ' in een code fragment om de insluitende shell-ervaring te openen. 
+U kunt Cloud Shell rechtstreeks vanuit documentatie die op [docs.Microsoft.com](https://docs.microsoft.com)wordt gehost gebruiken. Het is geïntegreerd in [Microsoft Learn](https://docs.microsoft.com/learn/), [Azure POWERSHELL](https://docs.microsoft.com/powershell/azure/) en [Azure cli-documentatie](https://docs.microsoft.com/cli/azure) : Klik op de knop ' proberen ' in een code fragment om de insluitende shell-ervaring te openen. 
 
-### <a name="multiple-access-points"></a>Meerdere toegangs punten
+### <a name="multiple-access-points"></a>Meerdere toegangspunten
 Cloud Shell is een flexibel hulp programma dat kan worden gebruikt vanuit:
 * [portal.azure.com](https://portal.azure.com)
 * [shell.azure.com](https://shell.azure.com)
 * [Documentatie voor Azure CLI](https://docs.microsoft.com/cli/azure)
-* [Documentatie voor Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
-* [Azure mobile app](https://azure.microsoft.com/features/azure-portal/mobile-app/)
+* [Documentatie voor Azure PowerShell](https://docs.microsoft.com/powershell/azure/)
+* [Mobiele Azure-app](https://azure.microsoft.com/features/azure-portal/mobile-app/)
 * [Visual Studio code Azure-account extensie](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
 ### <a name="connect-your-microsoft-azure-files-storage"></a>De opslag van uw Microsoft Azure-bestanden verbinden

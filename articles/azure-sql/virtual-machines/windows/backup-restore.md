@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: 1a19bf26418d6a61d3aa2421957614abe6dd04e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27438b0729aa309878eb54a346f04754cb983af1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669191"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073259"
 ---
 # <a name="backup-and-restore-for-sql-server-on-azure-vms"></a>Back-ups maken en herstellen voor SQL Server op virtuele machines in azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -30,7 +31,7 @@ In het eerste deel van dit artikel vindt u een overzicht van de beschik bare opt
 
 De volgende tabel bevat informatie over verschillende opties voor back-up en herstel voor SQL Server op Azure-Vm's:
 
-| Strategie | SQL-versies | Description |
+| Strategie | SQL-versies | Beschrijving |
 |---|---|---|
 | [Automatische back-up](#automated) | 2014<br/> 2016<br/> 2017 | Met automatische back-up kunt u regel matige back-ups plannen voor alle data bases op een SQL Server-VM. Back-ups worden Maxi maal 30 dagen opgeslagen in azure Storage. Vanaf SQL Server 2016 biedt automatische back-up v2 extra opties, zoals het configureren van hand matige planning en de frequentie van volledige en logboek back-ups. |
 | [Azure Backup voor SQL-VM's](#azbackup) | 2008<br/> 2012<br/> 2014<br/> 2016<br/> 2017 | Azure Backup biedt een back-upfunctie voor bedrijfs klasse voor SQL Server op Azure-Vm's. Met deze service kunt u back-ups centraal beheren voor meerdere servers en duizenden data bases. Data bases kunnen worden hersteld naar een bepaald punt in de tijd in de portal. Het biedt een aanpasbaar Bewaar beleid waarmee back-ups voor jaren kunnen worden onderhouden. |
@@ -126,7 +127,7 @@ Zie voor meer informatie een van de volgende artikelen op basis van uw versie va
 
 De volgende tabel bevat een overzicht van de mogelijkheden van elke back-up-en herstel optie voor SQL Server virtuele machines in Azure.
 
-|| **Automatische back-up** | **Azure Backup voor SQL** | **Hand matige back-up** |
+| Optie | Automatische back-up | Azure Backup voor SQL | Hand matige back-up |
 |---|---|---|---|
 | Vereist extra Azure-service |   | ![Yes](./media/backup-restore/yes.png) |   |
 | Back-upbeleid configureren in Azure Portal | ![Yes](./media/backup-restore/yes.png) | ![Ja](./media/backup-restore/yes.png) |   |

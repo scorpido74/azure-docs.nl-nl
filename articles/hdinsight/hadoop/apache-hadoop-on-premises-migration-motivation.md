@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/15/2019
-ms.openlocfilehash: b975ee8cebdac3855c3fca88b20c01145d11baeb
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 1de9fc480c753b2497a1ea4e3438583b3582bc96
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080190"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072791"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>On-premises Apache Hadoop clusters migreren naar Azure HDInsight-motivatie en voor delen
 
@@ -111,7 +111,7 @@ Deze sectie bevat sjabloon vragenlijsten waarmee u belang rijke informatie kunt 
 |Autorisatie voor cluster verificatie &|Active Directory, Ambari, Cloudera Manager, geen verificatie|
 |HDFS Access Control|  Hand matig, SSH-gebruikers|
 |Autorisatie van Hive-verificatie &|Sentry, LDAP, AD met Kerberos, zwerver|
-|Controleren|Ambari, Cloudera Navigator, zwerver|
+|Controle|Ambari, Cloudera Navigator, zwerver|
 |Bewaking|Grafiet, verzamelde, statistieken, telegrafie, InfluxDB|
 |Waarschuwingen|Kapacitor, Prometheus, Datadog|
 |Duur van gegevens retentie| 3 jaar, 5 jaar|
@@ -163,9 +163,9 @@ Deze sectie bevat sjabloon vragenlijsten waarmee u belang rijke informatie kunt 
 
 ### <a name="azure-requirements-questionnaire"></a>Vragen lijst Azure-vereisten
 
-|**Onderwerp**: **infra structuur** |||
-|---|---|---|
 |**Vraag**|**Voorbeeld**|**Antwoord**|
+|---|---|---|
+|**Onderwerp**: **infra structuur** |||
 | Voorkeurs regio|US - oost||
 |Voor keur voor VNet?|Yes||
 |HA/DR nodig?|Yes||

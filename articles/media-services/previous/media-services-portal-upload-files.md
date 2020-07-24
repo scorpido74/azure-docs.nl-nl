@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 3327304916c30863bb4de4b4d18c41ba3c58270d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73e92fa505a994cc5cc2fdb3a297dfd653a596a1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84982557"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071810"
 ---
 # <a name="upload-files-to-a-media-services-account-in-the-azure-portal"></a>Bestanden uploaden naar een Media Services-account via Azure Portal 
 
@@ -30,7 +30,7 @@ ms.locfileid: "84982557"
 > 
 
 > [!NOTE]
-> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. Voor de bijgewerkte Upload bestanden met de portal raadpleegt u [Portal gebruiken om inhoud te uploaden, coderen en streamen](../latest/manage-assets-quickstart.md).<br/>Kijk ook eens naar: [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. Voor de bijgewerkte Upload bestanden met de portal raadpleegt u [Portal gebruiken om inhoud te uploaden, coderen en streamen](../latest/manage-assets-quickstart.md).<br/>Kijk ook eens naar: [Media Services v3](../latest/index.yml). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
 In Azure Media Services uploadt u de digitale bestanden naar een asset. De asset kan video, audio, afbeeldingen, verzamelingen van miniaturen, tekstsporen en ondertitelingsbestanden (en de metagegevens voor deze bestanden) bevatten. Nadat de bestanden zijn geüpload, wordt uw inhoud veilig opgeslagen in de cloud voor verdere verwerking en streaming.
 
@@ -65,5 +65,3 @@ Wanneer het uploaden is voltooid, wordt de nieuwe asset in het deelvenster **Ass
 * Meer informatie over het [coderen van de geüploade assets](media-services-portal-encode.md).
 
 * U kunt ook Azure Functions gebruiken om een coderingstaak te activeren wanneer er een bestand binnenkomt in de geconfigureerde container. Bekijk voor meer informatie het voorbeeld in [Media Services: Integrating Azure Media Services with Azure Functions and Logic Apps](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/) (Media Services: Azure Media Services integreren met Azure Functions en Logic Apps).
-
-

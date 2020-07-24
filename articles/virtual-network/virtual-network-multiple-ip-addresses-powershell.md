@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/24/2017
 ms.author: allensu
-ms.openlocfilehash: 819b6af0d336e454aeeb67a9be62109cb6b08bb8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5cd050c88fbc954a211c3a75cdabcb557ae998c4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708226"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073925"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>Meerdere IP-adressen toewijzen aan virtuele machines met behulp van Power shell
 
@@ -34,7 +34,7 @@ In dit artikel wordt uitgelegd hoe u een virtuele machine (VM) maakt via het Azu
 
 In de volgende stappen wordt uitgelegd hoe u een voor beeld van een virtuele machine met meerdere IP-adressen maakt, zoals beschreven in het scenario. Wijzig de variabelen waarden zoals vereist voor uw implementatie.
 
-1. Open een Power shell-opdracht prompt en voltooi de resterende stappen in deze sectie binnen één Power shell-sessie. Als u Power shell nog niet hebt geïnstalleerd en geconfigureerd, voltooit u de stappen in het artikel [Azure PowerShell installeren en configureren](/powershell/azure/overview) .
+1. Open een Power shell-opdracht prompt en voltooi de resterende stappen in deze sectie binnen één Power shell-sessie. Als u Power shell nog niet hebt geïnstalleerd en geconfigureerd, voltooit u de stappen in het artikel [Azure PowerShell installeren en configureren](/powershell/azure/) .
 2. Meld u aan bij uw account met de `Connect-AzAccount` opdracht.
 3. Vervang *myResourceGroup* en *westus* door de naam en locatie van uw keuze. Maak een resourcegroep. Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd.
 
@@ -196,7 +196,7 @@ In de volgende stappen wordt uitgelegd hoe u een voor beeld van een virtuele mac
 
 U kunt persoonlijke en open bare IP-adressen toevoegen aan de Azure-netwerk interface door de volgende stappen uit te voeren. In de voor beelden in de volgende secties wordt ervan uitgegaan dat u al een virtuele machine hebt met de drie IP-configuraties die zijn beschreven in het [scenario](#scenario) in dit artikel, maar dit is niet vereist.
 
-1. Open een Power shell-opdracht prompt en voltooi de resterende stappen in deze sectie binnen één Power shell-sessie. Als u Power shell nog niet hebt geïnstalleerd en geconfigureerd, voltooit u de stappen in het artikel [Azure PowerShell installeren en configureren](/powershell/azure/overview) .
+1. Open een Power shell-opdracht prompt en voltooi de resterende stappen in deze sectie binnen één Power shell-sessie. Als u Power shell nog niet hebt geïnstalleerd en geconfigureerd, voltooit u de stappen in het artikel [Azure PowerShell installeren en configureren](/powershell/azure/) .
 2. Wijzig de "waarden" van de volgende $Variables in de naam van de NIC waaraan u het IP-adres wilt toevoegen en de resource groep en de locatie waar de NIC zich bevindt:
 
    ```powershell

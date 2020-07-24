@@ -3,15 +3,16 @@ title: Gereedheid van productie en aanbevolen procedures-Azure
 description: Dit artikel bevat richt lijnen voor het configureren en implementeren van de live video-analyse op IoT Edge module in productie omgevingen.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: a5a2ff78d456d4423facdf5f3533ee94bc25bfc4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c34e05e184cfa6f0933701a76177fae3eed70c0a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84261070"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071929"
 ---
 # <a name="production-readiness-and-best-practices"></a>Productiegereedheid en best practices
 
-Dit artikel bevat richt lijnen voor het configureren en implementeren van de live video-analyse op IoT Edge module in productie omgevingen. Raadpleeg de voor [bereiding voor het implementeren van uw IOT EDGE oplossing in productie](https://docs.microsoft.com/azure/iot-edge/production-checklist) artikel over het voorbereiden van uw IOT EDGE-oplossing. 
+Dit artikel bevat richt lijnen voor het configureren en implementeren van de live video-analyse op IoT Edge module in productie omgevingen. Raadpleeg de voor [bereiding voor het implementeren van uw IOT EDGE oplossing in productie](../../iot-edge/production-checklist.md) artikel over het voorbereiden van uw IOT EDGE-oplossing. 
 
 > [!NOTE]
 > U moet de IT-afdeling van uw organisatie raadplegen over aspecten die betrekking hebben op de beveiliging.

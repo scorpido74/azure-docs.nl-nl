@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: a686465b0006c2e9aac6e06cb4ab12d30921e8c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f92281be683d7f9a4e8a820b54f9795928eb97e4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847079"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071876"
 ---
 # <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>Activa en gerelateerde entiteiten beheren met Media Services .NET SDK
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "85847079"
 > 
 
 > [!NOTE]
-> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](../latest/index.yml). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
 In dit onderwerp wordt beschreven hoe u Azure Media Services entiteiten beheert met .NET.
 
@@ -429,4 +429,3 @@ In het volgende code voorbeeld ziet u hoe u een verwijzing naar een toegangs bel
 
 ## <a name="provide-feedback"></a>Feedback geven
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

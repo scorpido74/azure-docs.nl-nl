@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/17/2018
-ms.openlocfilehash: d50a9a064e6fa279d65f196c0f031e60081d86bf
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 59a709a206eb29b875272674ee19e414023cc37f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85979995"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073315"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database--sql-managed-instance"></a>Mogelijkheden van meerdere modellen van Azure SQL Database & SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -95,9 +95,6 @@ Document modellen kunnen worden gebruikt in plaats van de relationele modellen i
 ## <a name="spatial-features"></a>Ruimtelijke functies
 
 Ruimtelijke gegevens vertegenwoordigen informatie over de fysieke locatie en vorm van geometrische objecten. Deze objecten kunnen punt locaties of complexere objecten zijn, zoals landen/regio's, wegen of meren.
-
-Met de Azure SQL-familie van producten kunt u gegevens parseren en opvragen die worden weer gegeven in de indeling van JavaScript Object Notation [(JSON)](https://www.json.org/) en uw relationele gegevens exporteren als JSON-tekst.
-
 
  De twee ondersteunde ruimtelijke gegevens typen: 
 

@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/01/2020
+ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: e8857da1410ca68a695a9d7995aeb375fb154cd2
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 61c2b2b8bce676bd7032eb65fcf48b5ad07092ad
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080020"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87070664"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Firewalls en virtuele netwerken voor Azure Storage configureren
 
@@ -386,8 +386,9 @@ Wanneer u de instelling **vertrouwde micro soft-Services toestaan...** inschakel
 
 Met de instelling **vertrouwde micro soft-Services toestaan...** kan ook een bepaald exemplaar van de onderstaande services toegang krijgen tot het opslag account, als u expliciet [een RBAC-rol toewijst](storage-auth-aad.md#assign-rbac-roles-for-access-rights) aan de door het [systeem toegewezen beheerde identiteit](../../active-directory/managed-identities-azure-resources/overview.md) voor dat bron exemplaar. In dit geval komt de reik wijdte van toegang voor het exemplaar overeen met de RBAC-rol die is toegewezen aan de beheerde identiteit.
 
-| Service                        | Naam van resource provider                 | Functie            |
+| Service                        | Naam van resource provider                 | Doel            |
 | :----------------------------- | :------------------------------------- | :----------------- |
+| Azure API Management           | Microsoft.ApiManagement/service        | Hiermee wordt de API Management-service toegang tot opslag accounts achter firewall ingeschakeld met behulp van beleid. [Meer informatie](/azure/api-management/api-management-authentication-policies#use-managed-identity-in-send-request-policy). |
 | Azure Cognitive Search         | Micro soft. Search/searchServices        | Hiermee kunnen Cognitive Search Services toegang krijgen tot opslag accounts voor indexering, verwerking en query's. |
 | Azure Container Registry Tasks | Micro soft. ContainerRegistry/registers | ACR-taken hebben toegang tot opslag accounts tijdens het maken van container installatie kopieën. |
 | Azure Data Factory             | Micro soft. DataFactory/fabrieken        | Hiermee hebt u toegang tot opslag accounts via de ADF-runtime. |
@@ -397,7 +398,7 @@ Met de instelling **vertrouwde micro soft-Services toestaan...** kan ook een bep
 | Azure Machine Learning-service | Microsoft.MachineLearningServices      | Geautoriseerde Azure Machine Learning-werk ruimten schrijven experiment-uitvoer, modellen en logboeken naar Blob Storage en lezen de gegevens. [Meer informatie](/azure/machine-learning/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace). | 
 | Azure SQL Data Warehouse       | Microsoft.Sql                          | Staat het importeren en exporteren van gegevens uit specifieke SQL Database instanties met poly base toe. [Meer informatie](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview). |
 | Azure SQL Database       | Microsoft.Sql                          | Staat het [importeren](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql?view=sql-server-ver15#f-importing-data-from-a-file-in-azure-blob-storage) van gegevens uit opslag accounts toe en het [schrijven](https://docs.microsoft.com/azure/azure-sql/database/audit-write-storage-account-behind-vnet-firewall) van controle gegevens naar opslag accounts achter de firewall. |
-| Azure Stream Analytics         | Microsoft.StreamAnalytics             | Hiermee staat u toe dat gegevens van een streaming-taak naar de Blob-opslag worden geschreven. Deze functie is momenteel in preview. [Meer informatie](/azure/stream-analytics/blob-output-managed-identity). |
+| Azure Stream Analytics         | Microsoft.StreamAnalytics             | Hiermee staat u toe dat gegevens van een streaming-taak naar de Blob-opslag worden geschreven. Deze functie is momenteel beschikbaar als preview-product. [Meer informatie](/azure/stream-analytics/blob-output-managed-identity). |
 | Azure Synapse Analytics        | Micro soft. Synapse/werk ruimten          | Hiermee schakelt u toegang tot gegevens in Azure Storage van Synapse Analytics. |
 
 

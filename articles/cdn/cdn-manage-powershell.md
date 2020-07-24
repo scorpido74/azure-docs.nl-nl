@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/20/2019
 ms.author: allensu
-ms.openlocfilehash: ba67ea9455c8d7f077eae87f582f05b5c2672735
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e7ad3034ff3730cdadcfd55765af01c97df78028
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887617"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073054"
 ---
 # <a name="manage-azure-cdn-with-powershell"></a>Azure CDN beheren met Power shell
 Power shell biedt een van de meest flexibele methoden om uw Azure CDN profielen en eind punten te beheren.  U kunt Power shell interactief gebruiken of scripts schrijven om beheer taken te automatiseren.  In deze zelf studie ziet u een aantal van de meest voorkomende taken die u kunt uitvoeren met Power shell voor het beheren van uw Azure CDN profielen en eind punten.
@@ -28,7 +28,7 @@ Power shell biedt een van de meest flexibele methoden om uw Azure CDN profielen 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Als u Power shell wilt gebruiken om uw Azure CDN profielen en eind punten te beheren, moet u de module Azure PowerShell hebben geïnstalleerd.  `Connect-AzAccount`Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview)voor meer informatie over het installeren van Azure PowerShell en het maken van verbinding met Azure met behulp van de cmdlet.
+Als u Power shell wilt gebruiken om uw Azure CDN profielen en eind punten te beheren, moet u de module Azure PowerShell hebben geïnstalleerd.  `Connect-AzAccount`Zie [Azure PowerShell installeren en configureren](/powershell/azure/)voor meer informatie over het installeren van Azure PowerShell en het maken van verbinding met Azure met behulp van de cmdlet.
 
 > [!IMPORTANT]
 > U moet zich aanmelden met `Connect-AzAccount` voordat u Azure PowerShell-cmdlets kunt uitvoeren.

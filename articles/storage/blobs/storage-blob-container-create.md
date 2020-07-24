@@ -5,14 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/17/2019
+ms.date: 07/22/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 24e754a583125c962e67f849edcec8f8609746a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: abf4cb33fa953ec9a257397551b3d17752fe67f5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84464909"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87070731"
 ---
 # <a name="create-or-delete-a-container-in-azure-storage-with-net"></a>Een container maken of verwijderen in Azure Storage met .NET
 
@@ -24,7 +25,7 @@ Een container naam moet een geldige DNS-naam zijn, omdat deze deel uitmaakt van 
 
 - Container namen kunnen tussen de 3 en 63 tekens lang zijn.
 - Container namen moeten beginnen met een letter of cijfer en mogen alleen kleine letters, cijfers en het streepje (-) bevatten.
-- Twee of meer opeenvolgende streepjes tekens zijn niet toegestaan in container namen.
+- Twee of meer opeenvolgende streep tekens zijn niet toegestaan in container namen.
 
 De URI voor een container heeft de volgende indeling:
 
@@ -34,10 +35,20 @@ De URI voor een container heeft de volgende indeling:
 
 Als u een container wilt maken, roept u een van de volgende methoden op:
 
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+
+- [Maken](/dotnet/api/azure.storage.blobs.blobcontainerclient.create)
+- [CreateAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.createasync)
+- [CreateIfNotExists](/dotnet/api/azure.storage.blobs.blobcontainerclient.createifnotexists)
+- [CreateIfNotExistsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.createifnotexistsasync)
+
+# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+
 - [Maken](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.create)
 - [CreateAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createasync)
 - [CreateIfNotExists](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexists)
 - [CreateIfNotExistsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexistsasync)
+---
 
 De methoden **Create** en **CreateAsync** genereren een uitzonde ring als er al een container met dezelfde naam bestaat.
 
@@ -46,6 +57,12 @@ De **CreateIfNotExists** -en **CreateIfNotExistsAsync** -methoden retour neren e
 Containers worden direct onder het opslag account gemaakt. Het is niet mogelijk om één container onder een andere te nesten.
 
 In het volgende voor beeld wordt een container asynchroon gemaakt:
+
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Containers.cs" id="CreateSampleContainerAsync":::
+
+# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
 ```csharp
 private static async Task<CloudBlobContainer> CreateSampleContainerAsync(CloudBlobClient blobClient)
@@ -77,16 +94,23 @@ private static async Task<CloudBlobContainer> CreateSampleContainerAsync(CloudBl
     return container;
 }
 ```
+---
 
 ## <a name="create-the-root-container"></a>De basis container maken
 
-Een basis container fungeert als een standaard container voor uw opslag account. Elk opslag account kan één basis container hebben, die $root moet worden genoemd *.* U moet de basis container expliciet maken of verwijderen.
+Een basis container fungeert als een standaard container voor uw opslag account. Elk opslag account kan één basis container hebben, die *$root*moet worden genoemd. De basis container moet expliciet worden gemaakt of verwijderd.
 
 U kunt verwijzen naar een blob die is opgeslagen in de hoofd container zonder de naam van de hoofd container op te nemen. Met de hoofd container kunt u verwijzen naar een BLOB op het hoogste niveau van de hiërarchie van het opslag account. U kunt bijvoorbeeld verwijzen naar een blob die zich in de hoofd container op de volgende manier bevindt:
 
 `https://myaccount.blob.core.windows.net/default.html`
 
 In het volgende voor beeld wordt de hoofd container synchroon gemaakt:
+
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Containers.cs" id="CreateRootContainer":::
+
+# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
 ```csharp
 private static void CreateRootContainer(CloudBlobClient blobClient)
@@ -113,23 +137,40 @@ private static void CreateRootContainer(CloudBlobClient blobClient)
     }
 }
 ```
+---
 
 ## <a name="delete-a-container"></a>Een container verwijderen
 
 Als u een container in .NET wilt verwijderen, gebruikt u een van de volgende methoden:
 
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+
+- [Verwijderen](/dotnet/api/azure.storage.blobs.blobcontainerclient.delete)
+- [DeleteAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.deleteasync)
+- [DeleteIfExists](/dotnet/api/azure.storage.blobs.blobcontainerclient.deleteifexists)
+- [DeleteIfExistsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.deleteifexistsasync)
+
+# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+
 - [Verwijderen](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.delete)
 - [DeleteAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteasync)
 - [DeleteIfExists](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteifexists)
 - [DeleteIfExistsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteifexistsasync)
+---
 
 De methoden **Delete** en **DeleteAsync** genereren een uitzonde ring als de container niet bestaat.
 
 De **DeleteIfExists** -en **DeleteIfExistsAsync** -methoden retour neren een Booleaanse waarde die aangeeft of de container is verwijderd. Als de opgegeven container niet bestaat, retour neren deze methoden **False** om aan te geven dat de container niet is verwijderd.
 
-Nadat u een container hebt verwijderd, kunt u niet meer dan 30 seconden een container maken met dezelfde naam en mogelijk langer. Terwijl de container wordt verwijderd, mislukt een poging om een container met dezelfde naam te maken, met de HTTP-fout code 409 (conflict). Eventuele andere bewerkingen in de container of de blobs die deze bevat, mislukken met de HTTP-fout code 404 (niet gevonden) terwijl de container wordt verwijderd.
+Nadat u een container hebt verwijderd, kunt u niet meer *dan 30 seconden* een container met dezelfde naam maken. Het maken van een container met dezelfde naam mislukt met HTTP-fout code 409 (conflict). Eventuele andere bewerkingen in de container of de blobs die deze bevat, mislukken met HTTP-fout code 404 (niet gevonden).
 
 In het volgende voor beeld wordt de opgegeven container verwijderd en wordt de uitzonde ring verwerkt als de container niet bestaat:
+
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Containers.cs" id="DeleteSampleContainerAsync":::
+
+# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
 ```csharp
 private static async Task DeleteSampleContainerAsync(CloudBlobClient blobClient, string containerName)
@@ -151,8 +192,15 @@ private static async Task DeleteSampleContainerAsync(CloudBlobClient blobClient,
     }
 }
 ```
+---
 
-In het volgende voor beeld ziet u hoe u alle containers verwijdert die beginnen met een opgegeven voor voegsel. In het voor beeld wordt de lease onderbroken als er een bestaande lease in de container is.
+In het volgende voor beeld ziet u hoe u alle containers verwijdert die beginnen met een opgegeven voor voegsel.
+
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Containers.cs" id="DeleteContainersWithPrefixAsync":::
+
+# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
 ```csharp
 private static async Task DeleteContainersWithPrefixAsync(CloudBlobClient blobClient, string prefix)
@@ -163,11 +211,6 @@ private static async Task DeleteContainersWithPrefixAsync(CloudBlobClient blobCl
         foreach (var container in blobClient.ListContainers(prefix))
         {
             Console.WriteLine("\tContainer:" + container.Name);
-            if (container.Properties.LeaseState == LeaseState.Leased)
-            {
-                await container.BreakLeaseAsync(null);
-            }
-
             await container.DeleteAsync();
         }
 
@@ -181,6 +224,7 @@ private static async Task DeleteContainersWithPrefixAsync(CloudBlobClient blobCl
     }
 }
 ```
+---
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 

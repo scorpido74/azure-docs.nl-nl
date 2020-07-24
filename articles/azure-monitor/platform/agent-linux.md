@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 01/21/2020
-ms.openlocfilehash: 9807d6eeb07b953ab75b328ce64c5166ca52dd2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: accd7c3ad82853c1f2af0b632326b2798f85b36b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80637522"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073651"
 ---
 # <a name="connect-linux-computers-to-azure-monitor"></a>Linux-computers verbinden met Azure Monitor
 
@@ -154,6 +155,18 @@ Als verificatie vereist is in beide gevallen, moet u de gebruikers naam en het w
     ```
     sudo /opt/microsoft/omsagent/bin/service_control restart [<workspace id>]
     ``` 
+
+## <a name="supported-linux-hardening"></a>Ondersteunde Linux-beveiliging
+De OMS-agent heeft beperkte aanpassings ondersteuning voor Linux. 
+
+De volgende worden momenteel ondersteund: 
+- FIPs
+
+De volgende zijn gepland, maar nog niet ondersteund:
+- CIS-SELINUX
+
+Andere methoden voor beveiliging en aanpassing worden niet ondersteund en worden niet gepland voor de OMS-agent.  
+
 
 ## <a name="upgrade-from-a-previous-release"></a>Upgrade uitvoeren van een eerdere versie
 

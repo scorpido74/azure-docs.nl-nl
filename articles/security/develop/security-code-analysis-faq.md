@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 3d5eac2d3e2f3cd87ddad02aac68ce015163bd00
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: df995f60867cb2062330e19a2ccfb8c29f173653
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362071"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071447"
 ---
 # <a name="frequently-asked-questions"></a>Veelgestelde vragen
 Hebt u vragen? Bekijk de volgende veelgestelde vragen voor meer informatie.
@@ -106,15 +106,17 @@ Hier vindt u meer informatie over twee van de meest voorkomende onderdrukkingen 
 
 De hash-sleutel van het geheim van het uitvoer bestand CredScan is vereist, zoals wordt weer gegeven in het volgende voor beeld.
 
-        {
-            "tool": "Credential Scanner",
-            "suppressions": [
-            {
-                "hash": "CLgYxl2FcQE8XZgha9/UbKLTkJkUh3Vakkxh2CAdhtY=",
-                "_justification": "Secret used by MSDN sample, it is fake."
-            }
-          ]
-        }
+```js
+{
+    "tool": "Credential Scanner",
+    "suppressions": [
+    {
+        "hash": "CLgYxl2FcQE8XZgha9/UbKLTkJkUh3Vakkxh2CAdhtY=",
+        "_justification": "Secret used by MSDN sample, it is fake."
+    }
+  ]
+}
+```
 
 >[!WARNING]
 > De hash-sleutel wordt gegenereerd door een deel van de overeenkomende waarde of bestands inhoud. Elke bron code revisie kan de hash-sleutel wijzigen en de onderdrukkings regel uitschakelen.
@@ -133,19 +135,21 @@ Voor beelden van geldige onderdrukkings regels:
 - \lib\angular.js
 - angular.js-onderdrukt elk bestand met dezelfde naam
 
-        {
-            "tool": "Credential Scanner",
-            "suppressions": [
-            {
-                "file": "\\files\\AdditonalSearcher.xml", 
-                "_justification": "Additional CredScan searcher specific to my team"
-            },
-            {
-                "file": "\\files\\unittest.pfx", 
-                "_justification": "Legitimate UT certificate file with private key"
-            }
-          ]
-        }      
+```js
+{
+    "tool": "Credential Scanner",
+    "suppressions": [
+    {
+        "file": "\\files\\AdditonalSearcher.xml", 
+        "_justification": "Additional CredScan searcher specific to my team"
+    },
+    {
+        "file": "\\files\\unittest.pfx", 
+        "_justification": "Legitimate UT certificate file with private key"
+    }
+  ]
+}
+```
 
 >[!WARNING] 
 > Alle toekomstige geheimen die worden toegevoegd aan het bestand worden ook automatisch onderdrukt.

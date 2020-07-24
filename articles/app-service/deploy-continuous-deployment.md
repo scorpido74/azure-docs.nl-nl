@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 03/20/2020
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 847de2c2c8916558d542473d9b7c80fd5552dbf7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51b6be8b4deffd81da6c0b714bc6afeff4b06ab2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80437255"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073940"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Continue implementatie naar Azure App Service
 
@@ -174,10 +174,10 @@ Als u continue implementatie wilt uitschakelen, selecteert u de **verbinding ver
 
 Voor Windows-apps kunt u een continue implementatie hand matig configureren vanuit een Git-of mercurial-opslag plaats in de cloud die niet rechtstreeks wordt ondersteund door de portal, zoals [GitLab](https://gitlab.com/). U doet dit door het externe vak op de pagina **implementatie centrum** te kiezen. Zie [continue implementatie instellen met behulp van hand matige stappen](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps)voor meer informatie.
 
-## <a name="additional-resources"></a>Extra resources
+## <a name="additional-resources"></a>Aanvullende resources
 
 * [Veelvoorkomende problemen met doorlopende implementatie onderzoeken](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment)
-* [Azure PowerShell gebruiken](/powershell/azureps-cmdlets-docs)
+* [Azure PowerShell gebruiken](/powershell/azure/)
 * [Git-documentatie](https://git-scm.com/documentation)
 * [Project Kudu](https://github.com/projectkudu/kudu/wiki)
 

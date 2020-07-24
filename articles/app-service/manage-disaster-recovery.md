@@ -4,12 +4,12 @@ description: Meer informatie over hoe Azure App Service u helpt de mogelijkheden
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.custom: subject-moving-resources
-ms.openlocfilehash: 8c57cf5054bea898370cdccc7bea4243877d27b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1388dc11254324f74efcbaa55c97cac2ccd0c026
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84947049"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073736"
 ---
 # <a name="move-an-app-service-app-to-another-region"></a>Een App Service-app naar een andere regio verplaatsen
 
@@ -43,7 +43,7 @@ Bepaalde resources, zoals geïmporteerde certificaten of hybride verbindingen, b
 
 1. Ga in het [Azure Portal](https://portal.azure.com)naar de beheer pagina van de impact van de app. In een mislukte Azure-regio toont de betrokken app een waarschuwings tekst. Klik op de tekst van de waarschuwing.
 
-    ![](media/manage-disaster-recovery/restore-start.png)
+    ![Scherm afbeelding van de pagina met impact van de app. Er wordt een waarschuwings bericht weer gegeven waarin de situatie wordt beschreven en een koppeling wordt geboden voor het herstellen van de app.](media/manage-disaster-recovery/restore-start.png)
 
 1. Configureer op de pagina **back-up terugzetten** de herstel bewerking volgens de volgende tabel. Klik op **OK**wanneer u klaar bent.
 
@@ -53,7 +53,7 @@ Bepaalde resources, zoals geïmporteerde certificaten of hybride verbindingen, b
    | **Doel herstellen** | **Bestaande app** | Klik hieronder op de opmerking om de doel-app **voor herstellen te wijzigen** en de doel-app te selecteren. In een nood geval kunt u de moment opname alleen herstellen naar een app in een andere Azure-regio. |
    | **Site configuratie herstellen** | **Ja** | |
 
-    ![](media/manage-disaster-recovery/restore-configure.png)
+    ![Scherm afbeelding van de back-uppagina voor terugzetten. Een specifieke moment opname, de opties die in de voor gaande tabel worden weer gegeven en de knop OK zijn gemarkeerd.](media/manage-disaster-recovery/restore-configure.png)
 
 3. Configureer [alle andere](#prepare) in de doel-app om de betrokken app te spie gelen en controleer uw configuratie.
 
@@ -65,7 +65,7 @@ Als u alleen de bestanden van de betrokken app wilt herstellen zonder deze te he
 
 1. Navigeer in het [Azure Portal](https://portal.azure.com)naar de beheer pagina van de impact van de app en klik op **publicatie profiel ophalen**.
 
-    ![](media/manage-disaster-recovery/get-publish-profile.png)
+    ![Scherm afbeelding van de pagina met impact van de app. Er wordt een waarschuwings melding weer gegeven, maar deze is niet gemarkeerd. In plaats daarvan is het item publicatie profiel ophalen gemarkeerd.](media/manage-disaster-recovery/get-publish-profile.png)
 
 1. Open het gedownloade bestand en zoek het publicatie profiel met `ReadOnly - FTP` de naam. Dit is het nood herstel profiel. Bijvoorbeeld:
 
@@ -84,7 +84,7 @@ Als u alleen de bestanden van de betrokken app wilt herstellen zonder deze te he
 
 1. Nadat de verbinding is gemaakt, downloadt u de volledige map */site/wwwroot* . De volgende scherm afbeelding laat zien hoe u kunt downloaden in [filezilla](https://filezilla-project.org/).
 
-    ![](media/manage-disaster-recovery/download-content.png)
+    ![Scherm opname van een FileZilla-bestands hiërarchie. De map wwwroot wordt gemarkeerd en het bijbehorende snelmenu wordt weer gegeven. Down load is in dat menu gemarkeerd.](media/manage-disaster-recovery/download-content.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 [Een app in azure herstellen vanuit een moment opname](app-service-web-restore-snapshots.md)

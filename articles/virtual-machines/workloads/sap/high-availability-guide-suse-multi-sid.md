@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/26/2020
 ms.author: radeltch
-ms.openlocfilehash: 793851780e1154b6b6a21c88ea8cae063a277790
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 89d7ca3e37b107dce3f832499db45e0506c3fa64
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80350059"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074004"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications-multi-sid-guide"></a>Hoge Beschik baarheid voor SAP NetWeaver op Azure Vm's op SUSE Linux Enterprise Server voor de multi-SID-hand leiding voor SAP-toepassingen
 
@@ -91,7 +91,7 @@ Voordat u begint, raadpleegt u eerst de volgende SAP-opmerkingen en-documenten:
 
 De virtuele machines die deel uitmaken van het cluster, moeten de grootte hebben om alle resources te kunnen uitvoeren, voor het geval failover wordt uitgevoerd. Elke SAP-SID kan onafhankelijk van elkaar worden overgenomen in het cluster met hoge Beschik baarheid met meerdere SID'S.  Als u gebruikmaakt van een SBD-omheining, kunnen de SBD-apparaten worden gedeeld tussen meerdere clusters.  
 
-Voor een hoge Beschik baarheid zijn voor SAP net-Weave Maxi maal beschik bare NFS-shares vereist. In dit voor beeld gaan we ervan uit dat de SAP NFS-shares worden gehost op een Maxi maal beschik bare [NFS-Bestands server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs), die door meerdere SAP-systemen kan worden gebruikt. Of de shares worden geïmplementeerd op [Azure NETAPP files NFS-volumes](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes).  
+Voor een hoge Beschik baarheid zijn voor SAP net-Weave Maxi maal beschik bare NFS-shares vereist. In dit voor beeld gaan we ervan uit dat de SAP NFS-shares worden gehost op een Maxi maal beschik bare [NFS-Bestands server](./high-availability-guide-suse-nfs.md), die door meerdere SAP-systemen kan worden gebruikt. Of de shares worden geïmplementeerd op [Azure NETAPP files NFS-volumes](../../../azure-netapp-files/azure-netapp-files-create-volumes.md).  
 
 ![Overzicht van de hoge Beschik baarheid van SAP netweave](./media/high-availability-guide-suse/ha-suse-multi-sid.png)
 
@@ -101,7 +101,7 @@ Voor een hoge Beschik baarheid zijn voor SAP net-Weave Maxi maal beschik bare NF
 > [!TIP]
 > De multi-SID clustering van SAP ASCS/ERS is een oplossing met een grotere complexiteit. Het is complexer om te implementeren. Het omvat ook meer administratieve inspanningen wanneer er onderhouds activiteiten worden uitgevoerd (zoals patches van besturings systemen). Voordat u met de daad werkelijke implementatie begint, moet u de implementatie zorgvuldig plannen en alle betrokken onderdelen, zoals Vm's, NFS-koppels, Vip's, load balancer configuraties, enzovoort.  
 
-De NFS-server, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS en de SAP HANA Data Base gebruiken virtuele hostnamen en virtuele IP-adressen. Op Azure is een load balancer vereist voor het gebruik van een virtueel IP-adres. U kunt het beste [standaard Load Balancer](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal)gebruiken.  
+De NFS-server, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS en de SAP HANA Data Base gebruiken virtuele hostnamen en virtuele IP-adressen. Op Azure is een load balancer vereist voor het gebruik van een virtueel IP-adres. U kunt het beste [standaard Load Balancer](../../../load-balancer/quickstart-load-balancer-standard-public-portal.md)gebruiken.  
 
 De volgende lijst bevat de configuratie van de (A) SCS-en ERS-load balancer voor dit multi-SID-cluster voorbeeld met drie SAP-systemen. Voor elk van de Sid's hebt u afzonderlijke frontend-IP-, status controles en taakverdelings regels nodig voor elk ASCS-en ERS-exemplaar. Wijs alle virtuele machines, die deel uitmaken van het ASCS/ASCS-cluster, toe aan één back-end-pool.  
 
@@ -147,23 +147,23 @@ De volgende lijst bevat de configuratie van de (A) SCS-en ERS-load balancer voor
 
 
 > [!Note]
-> Wanneer Vm's zonder open bare IP-adressen in de back-endadresgroep van intern (geen openbaar IP-adres load balancer) worden geplaatst, is er geen uitgaande Internet verbinding, tenzij er aanvullende configuratie wordt uitgevoerd om route ring naar open bare eind punten toe te staan. Zie [connectiviteit van open bare eind punten voor virtual machines met behulp van Azure Standard Load Balancer in scenario's met hoge Beschik baarheid voor SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)voor meer informatie over het bezorgen van uitgaande verbindingen.  
+> Wanneer Vm's zonder open bare IP-adressen in de back-endadresgroep van intern (geen openbaar IP-adres load balancer) worden geplaatst, is er geen uitgaande Internet verbinding, tenzij er aanvullende configuratie wordt uitgevoerd om route ring naar open bare eind punten toe te staan. Zie [connectiviteit van open bare eind punten voor virtual machines met behulp van Azure Standard Load Balancer in scenario's met hoge Beschik baarheid voor SAP](./high-availability-guide-standard-load-balancer-outbound-connections.md)voor meer informatie over het bezorgen van uitgaande verbindingen.  
 
 > [!IMPORTANT]
-> Schakel TCP-tijds tempels niet in op virtuele Azure-machines die achter Azure Load Balancer worden geplaatst. Door TCP-tijds tempels in te scha kelen, mislukken de status controles. Stel para meter **net. IPv4. tcp_timestamps** in op **0**. Zie [Load Balancer Health probe](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)(Engelstalig) voor meer informatie.
+> Schakel TCP-tijds tempels niet in op virtuele Azure-machines die achter Azure Load Balancer worden geplaatst. Door TCP-tijds tempels in te scha kelen, mislukken de status controles. Stel para meter **net. IPv4. tcp_timestamps** in op **0**. Zie [Load Balancer Health probe](../../../load-balancer/load-balancer-custom-probe-overview.md)(Engelstalig) voor meer informatie.
 
 ## <a name="sap-nfs-shares"></a>SAP NFS-shares
 
 Voor SAP NetWeaver is gedeelde opslag vereist voor het Trans Port, de profielmap, enzovoort. Voor Maxi maal beschik bare SAP-systemen is het belang rijk dat u beschikt over Maxi maal beschik bare NFS-shares. U moet beslissen over de architectuur voor uw SAP NFS-shares. Een van de opties is het bouwen van een [Maxi maal beschik bare NFS-cluster op virtuele Azure-machines op SuSE Linux Enterprise Server][nfs-ha], dat kan worden gedeeld tussen meerdere SAP-systemen. 
 
-Een andere optie is het implementeren van de shares op [Azure NETAPP files NFS-volumes](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes).  Met Azure NetApp Files krijgt u ingebouwde hoge Beschik baarheid voor de SAP NFS-shares.
+Een andere optie is het implementeren van de shares op [Azure NETAPP files NFS-volumes](../../../azure-netapp-files/azure-netapp-files-create-volumes.md).  Met Azure NetApp Files krijgt u ingebouwde hoge Beschik baarheid voor de SAP NFS-shares.
 
 ## <a name="deploy-the-first-sap-system-in-the-cluster"></a>Het eerste SAP-systeem in het cluster implementeren
 
 Nu u hebt besloten over de architectuur van de SAP NFS-shares, implementeert u het eerste SAP-systeem in het cluster en volgt u de bijbehorende documentatie.
 
-* Als u een Maxi maal beschik bare NFS-server gebruikt, volgt u [hoge Beschik baarheid voor SAP NetWeaver op Azure-vm's op SuSE Linux Enterprise Server voor SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse).  
-* Als u Azure NetApp Files NFS-volumes gebruikt, volgt u [hoge Beschik baarheid voor SAP NetWeaver op Azure-vm's op SuSE Linux Enterprise Server met Azure NetApp files voor SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
+* Als u een Maxi maal beschik bare NFS-server gebruikt, volgt u [hoge Beschik baarheid voor SAP NetWeaver op Azure-vm's op SuSE Linux Enterprise Server voor SAP-toepassingen](./high-availability-guide-suse.md).  
+* Als u Azure NetApp Files NFS-volumes gebruikt, volgt u [hoge Beschik baarheid voor SAP NetWeaver op Azure-vm's op SuSE Linux Enterprise Server met Azure NetApp files voor SAP-toepassingen](./high-availability-guide-suse-netapp-files.md)
 
 De documenten die hierboven worden weer gegeven, begeleiden u bij de stappen voor het voorbereiden van de benodigde infra structuur, het bouwen van het cluster, het voorbereiden van het besturings systeem voor het uitvoeren van de SAP-toepassing.  
 
@@ -189,7 +189,7 @@ In deze documentatie wordt ervan uitgegaan dat:
 
 ### <a name="prepare-for-sap-netweaver-installation"></a>Voorbereiden op SAP NetWeaver-installatie
 
-1. Voeg configuratie toe voor het zojuist geïmplementeerde systeem ( **NW2**, **NW3**) aan de bestaande Azure Load Balancer, gevolgd door de instructies om [Azure Load Balancer hand matig te implementeren via Azure Portal](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files#deploy-azure-load-balancer-manually-via-azure-portal). Pas de IP-adressen, de status test poorten en de taakverdelings regels voor uw configuratie aan.  
+1. Voeg configuratie toe voor het zojuist geïmplementeerde systeem ( **NW2**, **NW3**) aan de bestaande Azure Load Balancer, gevolgd door de instructies om [Azure Load Balancer hand matig te implementeren via Azure Portal](./high-availability-guide-suse-netapp-files.md#deploy-azure-load-balancer-manually-via-azure-portal). Pas de IP-adressen, de status test poorten en de taakverdelings regels voor uw configuratie aan.  
 
 2. **[A]** naam omzetting instellen voor de extra SAP-systemen. U kunt de DNS-server gebruiken of wijzigen `/etc/hosts` op alle knoop punten. In dit voor beeld ziet u hoe u het `/etc/hosts` bestand gebruikt.  Pas de IP-adressen en de hostnamen aan uw omgeving aan. 
 
@@ -236,8 +236,8 @@ In deze documentatie wordt ervan uitgegaan dat:
 
    Update bestand `/etc/auto.direct` met de bestands systemen voor de extra SAP-systemen die u naar het cluster implementeert.  
 
-   * Als u NFS-Bestands server gebruikt, volgt u de instructies [hier](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse#prepare-for-sap-netweaver-installation)
-   * Als u Azure NetApp Files gebruikt, volgt u de instructies [hier](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files#prepare-for-sap-netweaver-installation) 
+   * Als u NFS-Bestands server gebruikt, volgt u de instructies [hier](./high-availability-guide-suse.md#prepare-for-sap-netweaver-installation)
+   * Als u Azure NetApp Files gebruikt, volgt u de instructies [hier](./high-availability-guide-suse-netapp-files.md#prepare-for-sap-netweaver-installation) 
 
    U moet de service opnieuw starten `autofs` om de zojuist toegevoegde shares te koppelen.  
 
@@ -561,17 +561,17 @@ In deze documentatie wordt ervan uitgegaan dat:
 
 Voltooi uw SAP-installatie door:
 
-* [Uw SAP NetWeaver-toepassings servers voorbereiden](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse#2d6008b0-685d-426c-b59e-6cd281fd45d7)
-* [Een DBMS-exemplaar installeren](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse#install-database)
-* [Een primaire SAP-toepassings server installeren](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse#sap-netweaver-application-server-installation)
+* [Uw SAP NetWeaver-toepassings servers voorbereiden](./high-availability-guide-suse.md#2d6008b0-685d-426c-b59e-6cd281fd45d7)
+* [Een DBMS-exemplaar installeren](./high-availability-guide-suse.md#install-database)
+* [Een primaire SAP-toepassings server installeren](./high-availability-guide-suse.md#sap-netweaver-application-server-installation)
 * Een of meer extra SAP-toepassings exemplaren installeren
 
 ## <a name="test-the-multi-sid-cluster-setup"></a>De multi-SID-cluster installatie testen
 
 De volgende tests zijn een subset van de test cases in de best practices-gidsen van SUSE. Ze zijn opgenomen voor uw gemak. Raadpleeg de volgende documentatie voor een volledige lijst met cluster tests:
 
-* Als u een Maxi maal beschik bare NFS-server gebruikt, volgt u [hoge Beschik baarheid voor SAP NetWeaver op Azure-vm's op SuSE Linux Enterprise Server voor SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse).  
-* Als u Azure NetApp Files NFS-volumes gebruikt, volgt u [hoge Beschik baarheid voor SAP NetWeaver op Azure-vm's op SuSE Linux Enterprise Server met Azure NetApp files voor SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
+* Als u een Maxi maal beschik bare NFS-server gebruikt, volgt u [hoge Beschik baarheid voor SAP NetWeaver op Azure-vm's op SuSE Linux Enterprise Server voor SAP-toepassingen](./high-availability-guide-suse.md).  
+* Als u Azure NetApp Files NFS-volumes gebruikt, volgt u [hoge Beschik baarheid voor SAP NetWeaver op Azure-vm's op SuSE Linux Enterprise Server met Azure NetApp files voor SAP-toepassingen](./high-availability-guide-suse-netapp-files.md)
 
 Lees altijd de hand leidingen voor de best practices van SUSE en voer alle extra tests uit die mogelijk zijn toegevoegd.  
 De tests die worden weer gegeven, bevinden zich in een twee knoop punt, multi-SID-cluster waarop drie SAP-systemen zijn geïnstalleerd.  

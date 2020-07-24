@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: how-to
 ms.date: 02/1/2018
 ms.author: mazha
-ms.openlocfilehash: c41e14490842068895aea383d384007f308e9e1c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49748b3d77d097e655ee6ec5777022c038841a6d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887678"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073123"
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>De verval datum van Azure Blob-opslag in Azure CDN beheren
 > [!div class="op_single_selector"]
@@ -91,7 +91,7 @@ De voorkeurs methode voor het instellen van de koptekst van een BLOB `Cache-Cont
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[Azure PowerShell](/powershell/azure/overview) is een van de snelste en krach tigste manieren om uw Azure-Services te beheren. Gebruik de `Get-AzStorageBlob` cmdlet om een verwijzing naar de BLOB op te halen en stel vervolgens de `.ICloudBlob.Properties.CacheControl` eigenschap in. 
+[Azure PowerShell](/powershell/azure/) is een van de snelste en krach tigste manieren om uw Azure-Services te beheren. Gebruik de `Get-AzStorageBlob` cmdlet om een verwijzing naar de BLOB op te halen en stel vervolgens de `.ICloudBlob.Properties.CacheControl` eigenschap in. 
 
 Bijvoorbeeld:
 

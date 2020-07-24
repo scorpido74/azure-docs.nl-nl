@@ -10,12 +10,13 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: carlrab, jovanpop
-ms.date: 04/25/2019
-ms.openlocfilehash: c9a9b42d6f6d8c89847b03f5eda858c75d198c58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/21/2020
+ms.openlocfilehash: ba2dd167cdf49b5f1a4b4f2dcd0edd48ea969fae
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711388"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073332"
 ---
 # <a name="migrate-a-certificate-of-a-tde-protected-database-to-azure-sql-managed-instance"></a>Een certificaat van een met TDE beveiligde data base migreren naar een met Azure SQL beheerd exemplaar
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -59,7 +60,7 @@ Install-Module -Name Az.Sql
 Update-Module -Name Az.Sql
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli).
 
@@ -148,7 +149,7 @@ Als het certificaat in het certificaat archief van de SQL Server lokale machine 
 2. Als alle voorbereidende stappen zijn uitgevoerd, voert u de volgende opdrachten uit om een base-64-gecodeerd certificaat te uploaden naar het beheerde exemplaar van de doel groep:
 
    ```azurepowershell
-   $fileContentBytes = Get-Content 'C:/full_path/TDE_Cert.pfx' -Encoding Byte
+   $fileContentBytes = Get-Content 'C:/full_path/TDE_Cert.pfx' -AsByteStream
    $base64EncodedCert = [System.Convert]::ToBase64String($fileContentBytes)
    $securePrivateBlob = $base64EncodedCert  | ConvertTo-SecureString -AsPlainText -Force
    $password = "<password>"
@@ -157,7 +158,7 @@ Als het certificaat in het certificaat archief van de SQL Server lokale machine 
        -ManagedInstanceName "<managedInstanceName>" -PrivateBlob $securePrivateBlob -Password $securePassword
    ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 U moet eerst [een Azure-sleutel kluis instellen](/azure/key-vault/key-vault-manage-with-cli2) met uw *PFX* -bestand.
 

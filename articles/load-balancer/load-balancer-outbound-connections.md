@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/24/2020
 ms.author: allensu
-ms.openlocfilehash: b22ce64e7058f093a102aebec8b00842c8a41cb5
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: a2292dc789938b8bde709728f5bbffe661529cc2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849409"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072637"
 ---
 # <a name="outbound-connections-in-azure"></a>Uitgaande verbindingen in Azure
 
@@ -64,7 +64,7 @@ Het wijzigen van de grootte van uw back-end-pool kan invloed hebben op sommige v
 
 ## <a name="outbound-connections-scenario-overview"></a><a name="scenarios"></a>Overzicht van scenario voor uitgaande verbindingen
 
-| Scenario | Methode | IP-protocollen | Description |
+| Scenario | Methode | IP-protocollen | Beschrijving |
 |  --- | --- | --- | --- |
 |  1. VM met een openbaar IP-adres (met of zonder Azure Load Balancer | SNAT, poort masker niet gebruikt | TCP, UDP, ICMP, ESP | Azure gebruikt het open bare IP-adres dat is toegewezen aan de IP-configuratie van de NIC van het exemplaar voor alle uitgaande stromen. Alle tijdelijke poorten zijn beschikbaar voor het exemplaar. Het maakt niet uit of de virtuele machine gelijkmatig is verdeeld of niet. Dit scenario heeft voor rang op de andere. Een openbaar IP-adres dat is toegewezen aan een virtuele machine is een 1:1-relatie (in plaats van 1: veel) en geïmplementeerd als een stateless 1:1 NAT. |
 | 2. open bare Load Balancer gekoppeld aan een virtuele machine (geen openbaar IP-adres op de VM/exemplaar) | SNAT met poort maskering (PAT) met behulp van de Load Balancer-frontends | TCP, UDP | In dit scenario moet de Load Balancer bron worden geconfigureerd met een load balancer regel om een koppeling te maken tussen de open bare IP-front-end met de back-end-groep. Als u deze regel configuratie niet voltooit, wordt het gedrag in scenario 3 beschreven. Het is niet nodig dat de regel een werkende listener in de back-end-pool heeft om de status test te laten slagen. Wanneer een virtuele machine een uitgaande stroom maakt, vertaalt Azure het IP-adres van de privé bron van de uitgaande stroom naar het open bare IP-adres van de open bare Load Balancer frontend via SNAT. Tijdelijke poorten van het front-end-open bare IP-adres van de load balancer worden gebruikt voor het onderscheiden van afzonderlijke stromen die afkomstig zijn van de virtuele machine. SNAT maakt dynamisch gebruik van [vooraf toegewezen tijdelijke poorten](#preallocatedports) wanneer uitgaande stromen worden gemaakt. In deze context worden de tijdelijke poorten die worden gebruikt voor SNAT de SNAT-poorten genoemd. SNAT-poorten worden vooraf toegewezen, zoals wordt beschreven in de [standaard tabel SNAT-poorten toegewezen](#snatporttable). |

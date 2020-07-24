@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.service: service-bus
 ms.date: 07/02/2020
 ms.author: alvidela
-ms.openlocfilehash: df0541802dfc331ffc94e95be112ea7e005960b5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: cf21030fbf1aaa9f36e4d34aac918c4604066ec2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86049864"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071622"
 ---
 # <a name="how-to-integrate-rabbitmq-with-azure-service-bus"></a>RabbitMQ integreren met Azure Service Bus
 
@@ -90,7 +90,7 @@ Voordat u deze connection string kunt gebruiken, moet u deze converteren naar de
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/converter.png" alt-text="connection string converteren":::
 
-Open nu de RabbitMQ Management-invoeg toepassing in de browser [http://localhost:15672/#/dynamic-shovels](http://localhost:15672/#/dynamic-shovels) en ga naar `Admin -> Shovel Management` , waar u de nieuwe Shovel kunt toevoegen waarmee berichten van een RabbitMQ-wachtrij naar uw Azure service bus wachtrij worden verzonden.
+Open nu de RabbitMQ Management-invoeg toepassing in de browser `http://localhost:15672/#/dynamic-shovels` en ga naar `Admin -> Shovel Management` , waar u de nieuwe Shovel kunt toevoegen waarmee berichten van een RabbitMQ-wachtrij naar uw Azure service bus wachtrij worden verzonden.
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/add-shovel.png" alt-text="RabbitMQ Shovel toevoegen":::
 

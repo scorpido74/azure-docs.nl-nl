@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: c143d8aa24d3479f4619ea2c220d4a0c593f9cb1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b18c34f8c0378d22d138b865d72fa4f351d7b8f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77665150"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073635"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights-connector-beheer oplossing (afgeschaft)
 
@@ -41,12 +42,12 @@ Wanneer u de oplossing gebruikt, kunt u het volgende doen:
 
 In tegens telling tot de meeste andere Log Analytics oplossingen, worden er geen gegevens verzameld voor de Application Insights-connector door agents. Alle gegevens die door de oplossing worden gebruikt, zijn rechtstreeks afkomstig van Azure.
 
-| Verbonden bron | Ondersteund | Description |
+| Verbonden bron | Ondersteund | Beschrijving |
 | --- | --- | --- |
 | [Windows-agents](../../azure-monitor/platform/agent-windows.md) | No | De oplossing verzamelt geen gegevens van Windows-agents. |
 | [Linux-agents](../../azure-monitor/learn/quick-collect-linux-computer.md) | No | De oplossing verzamelt geen gegevens van Linux-agents. |
 | [SCOM-beheer groep](../../azure-monitor/platform/om-agents.md) | No | De oplossing verzamelt geen gegevens van agents in een verbonden SCOM-beheer groep. |
-| [Azure-opslag account](collect-azure-metrics-logs.md) | No | De oplossing verzamelt geen gegevens uit Azure Storage. |
+| [Azure-opslag account](./resource-logs.md#send-to-log-analytics-workspace) | No | De oplossing verzamelt geen gegevens uit Azure Storage. |
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -303,7 +304,7 @@ $Headers = @{
 $Connections = Invoke-RestMethod -Method "GET" -Uri "https://management.azure.com$($LAWorkspace.ResourceId)/dataSources/?%24filter=kind%20eq%20'ApplicationInsights'&api-version=2015-11-01-preview" -Headers $Headers
 $ConnectionsJson = $Connections | ConvertTo-Json
 ```
-Voor dit script is een Bearer-verificatie token vereist voor verificatie op basis van Azure Active Directory. Een manier om dit token op te halen, is het gebruik van een artikel op de [Documentatie site van rest API](https://docs.microsoft.com/rest/api/loganalytics/datasources/createorupdate). Klik op **Probeer het** en meld u aan bij uw Azure-abonnement. U kunt het Bearer-token kopiëren uit de preview van de **aanvraag** , zoals wordt weer gegeven in de volgende afbeelding.
+Voor dit script is een Bearer-verificatie token vereist voor verificatie op basis van Azure Active Directory. Een manier om dit token op te halen, is het gebruik van een artikel op de [Documentatie site van rest API](/rest/api/loganalytics/datasources/createorupdate). Klik op **Probeer het** en meld u aan bij uw Azure-abonnement. U kunt het Bearer-token kopiëren uit de preview van de **aanvraag** , zoals wordt weer gegeven in de volgende afbeelding.
 
 
 ![Bearer-token](media/app-insights-connector/bearer-token.png)

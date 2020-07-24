@@ -15,22 +15,22 @@ ms.workload: infrastructure
 ms.date: 06/30/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c553b3508b56245be166afcdb4cb5a6c7520b271
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: c1e0efc2c64a1cbdcc2c83c019f7743406054afe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85857100"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074033"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>Configuraties van SAP HANA in virtuele Azure-machineopslag
 
 Azure biedt verschillende soorten opslag die geschikt zijn voor Azure-Vm's met SAP HANA. De **SAP Hana gecertificeerde Azure-opslag typen** die kunnen worden overwogen voor SAP Hana implementaties lijst zoals: 
 
 - Azure Premium SSD-of Premium-opslag 
-- [Ultraschijven](https://docs.microsoft.com/azure/virtual-machines/linux/disks-enable-ultra-ssd)
+- [Ultraschijven](../../linux/disks-enable-ultra-ssd.md)
 - [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) 
 
-Voor meer informatie over deze schijf typen raadpleegt u het artikel [Azure Storage typen voor SAP-werk belasting](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) en [selecteert u een schijf type](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types)
+Voor meer informatie over deze schijf typen raadpleegt u het artikel [Azure Storage typen voor SAP-werk belasting](./planning-guide-storage.md) en [selecteert u een schijf type](../../linux/disks-types.md)
 
 Azure biedt twee implementatie methoden voor Vhd's in azure Standard en Premium Storage. U wordt verwacht te profiteren van [Azure Managed Disk](https://azure.microsoft.com/services/managed-disks/) voor Azure Block Storage-implementaties. 
 
@@ -42,7 +42,7 @@ Raadpleeg de [Azure-documentatie voor beheerde schijven](https://azure.microsoft
 
 De minimale SAP HANA gecertificeerde voor waarden voor de verschillende opslag typen zijn: 
 
-- Azure Premium Storage- **/Hana/log** moet worden ondersteund door Azure [Write Accelerator](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator). Het **/Hana/data** -volume kan in Premium Storage worden geplaatst zonder Azure write Accelerator of op een ultra schijf
+- Azure Premium Storage- **/Hana/log** moet worden ondersteund door Azure [Write Accelerator](../../linux/how-to-enable-write-accelerator.md). Het **/Hana/data** -volume kan in Premium Storage worden geplaatst zonder Azure write Accelerator of op een ultra schijf
 - Azure Ultra Disk ten minste voor het **/Hana/log** -volume. Het **/Hana/data** -volume kan worden geplaatst in Premium Storage zonder Azure write Accelerator of om sneller opnieuw opstarten te krijgen met een hoge schijf
 - **NFS v 4.1** -volumes boven op Azure NetApp files voor **/Hana/log en/Hana/data**. Het volume van/Hana/Shared kan NFS v3 of NFS v 4.1-protocol gebruiken
 
@@ -59,8 +59,8 @@ Gezien de minimale opslag latentie is essentieel voor de DBMS-systemen, zelfs al
 
 Sommige richt lijnen voor het selecteren van de opslag configuratie voor HANA kunnen als volgt worden weer gegeven:
 
-- Bepaal het type opslag op basis van [Azure Storage typen voor SAP-werk belasting](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) en [Selecteer een schijf type](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types)
-- De totale I/O-door Voer van de virtuele machine en IOPS beperken bij het verg Roten/verkleinen of bepalen van een virtuele machine. De totale VM-opslag doorvoer wordt beschreven in de grootte van het door het artikel [geoptimaliseerde virtuele machines](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory)
+- Bepaal het type opslag op basis van [Azure Storage typen voor SAP-werk belasting](./planning-guide-storage.md) en [Selecteer een schijf type](../../linux/disks-types.md)
+- De totale I/O-door Voer van de virtuele machine en IOPS beperken bij het verg Roten/verkleinen of bepalen van een virtuele machine. De totale VM-opslag doorvoer wordt beschreven in de grootte van het door het artikel [geoptimaliseerde virtuele machines](../../sizes-memory.md)
 - Bij het bepalen van de opslag configuratie kunt u de algemene door Voer van de virtuele machine blijven vervangen door de **/Hana/data** -volume configuratie. Het schrijven van opslag punten, SAP HANA kan agressief uitgeven I/O's zijn. Het is eenvoudig om te pushen naar de doorvoer limieten van uw **/Hana/data** -volume tijdens het schrijven van een opslag punt. Als uw schijven die het **/Hana/data** -volume bouwen een hogere door voer hebben dan uw virtuele machine toestaat, kunt u in situaties optreden waarbij de door Voer die wordt gebruikt door de schrijf bewerking voor het opslag punt, de doorvoer vereisten van de logboeken voor het opnieuw registreren van het opnieuw schrijven verstoort. Een situatie die de door Voer van de toepassing kan beïnvloeden
 - Als u Azure Premium Storage gebruikt, is de minst dure configuratie het gebruik van logische volume managers om stripesets te bouwen om de **/Hana/data** -en **/Hana/log** -volumes te bouwen.
 
@@ -75,7 +75,7 @@ Linux heeft verschillende I/O-plannings modi. Algemene aanbeveling via Linux-lev
 Azure Write Accelerator is een functionaliteit die alleen beschikbaar is voor virtuele machines uit de M-serie van Azure. Als de naam statussen is het doel van de functionaliteit om de I/O-latentie van schrijf bewerkingen te verbeteren voor de Azure Premium-opslag. Voor SAP HANA moet Write Accelerator alleen worden gebruikt voor het **/Hana/log** -volume. Daarom zijn de **/Hana/data** en **/Hana/log** afzonderlijke volumes met Azure write Accelerator alleen het **/Hana/log** -volume ondersteunen. 
 
 > [!IMPORTANT]
-> Als Azure Premium Storage wordt gebruikt, is het gebruik van Azure [Write Accelerator](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator) voor het **/Hana/log** -volume verplicht. Write Accelerator is alleen beschikbaar voor Premium-opslag en alleen Vm's uit de M-serie en Mv2-serie. Write Accelerator werkt niet in combi natie met andere Azure VM-families, zoals Esv3 of Edsv4.
+> Als Azure Premium Storage wordt gebruikt, is het gebruik van Azure [Write Accelerator](../../linux/how-to-enable-write-accelerator.md) voor het **/Hana/log** -volume verplicht. Write Accelerator is alleen beschikbaar voor Premium-opslag en alleen Vm's uit de M-serie en Mv2-serie. Write Accelerator werkt niet in combi natie met andere Azure VM-families, zoals Esv3 of Edsv4.
 
 In de onderstaande cache aanbevelingen voor Azure Premium-schijven worden de I/O-kenmerken voor SAP HANA deze lijst als volgt aangenomen:
 
@@ -111,7 +111,7 @@ Het samen voegen van een aantal Azure-Vhd's onder een Stripe-set is cumulatief v
 
 
 ### <a name="azure-burst-functionality-for-premium-storage"></a>Azure burst-functionaliteit voor Premium-opslag
-Voor Azure Premium-opslag schijven die kleiner zijn dan of gelijk zijn aan 512 GiB in capaciteit, wordt burst-functionaliteit aangeboden. De exacte manier waarop schijf bursting werkt, wordt beschreven in het artikel [schijf bursting](https://docs.microsoft.com/azure/virtual-machines/linux/disk-bursting). Wanneer u het artikel leest, begrijpt u het concept van het aantal beschik bare IOPS en door Voer in de tijden dat de I/O-werk belasting lager is dan de nominale IOPS en de door Voer van de schijven (Zie [prijzen voor beheerde schijven](https://azure.microsoft.com/pricing/details/managed-disks/)voor meer informatie over de nominale door Voer). U gaat de Delta van IOPS en door Voer samen voegen tussen het huidige gebruik en de nominale waarden van de schijf. De bursts zijn beperkt tot Maxi maal 30 minuten.
+Voor Azure Premium-opslag schijven die kleiner zijn dan of gelijk zijn aan 512 GiB in capaciteit, wordt burst-functionaliteit aangeboden. De exacte manier waarop schijf bursting werkt, wordt beschreven in het artikel [schijf bursting](../../linux/disk-bursting.md). Wanneer u het artikel leest, begrijpt u het concept van het aantal beschik bare IOPS en door Voer in de tijden dat de I/O-werk belasting lager is dan de nominale IOPS en de door Voer van de schijven (Zie [prijzen voor beheerde schijven](https://azure.microsoft.com/pricing/details/managed-disks/)voor meer informatie over de nominale door Voer). U gaat de Delta van IOPS en door Voer samen voegen tussen het huidige gebruik en de nominale waarden van de schijf. De bursts zijn beperkt tot Maxi maal 30 minuten.
 
 De ideale gevallen waarin deze burst-functionaliteit kan worden gepland in, zijn waarschijnlijk de volumes of schijven die gegevens bestanden voor de verschillende DBMS bevatten. De I/O-werk belasting verwacht op die volumes, vooral met kleine tot middel grote systemen, moet er als volgt uitzien:
 
@@ -133,7 +133,7 @@ Met name op kleinere DBMS-systemen waarbij uw werk belasting enkele honderden tr
 > SAP HANA certificering voor virtuele machines uit de M-serie van Azure bestaat uitsluitend met Azure Write Accelerator voor het **/Hana/log** -volume. Als gevolg hiervan wordt het productie scenario SAP HANA implementaties op virtuele machines uit de d-serie van Azure M naar verwachting geconfigureerd met Azure Write Accelerator voor het **/Hana/log** -volume.  
 
 > [!NOTE]
-> In scenario's waarbij Azure Premium Storage betrokken is, implementeren we burst-mogelijkheden in de configuratie. Zorg ervoor dat als u hulpprogram ma's voor opslag testen van ongeacht welke vorm of hetzelfde formulier, de manier waarop [Azure Premium schijf bursting](https://docs.microsoft.com/azure/virtual-machines/linux/disk-bursting) werkt. Als u de opslag tests uitvoert die worden geleverd via het SAP HWCCT-of HCMT-hulp programma, zullen we niet verwachten dat alle tests aan de criteria voldoen omdat sommige tests de bursting-tegoed overschrijden die u kunt verzamelen. Met name wanneer alle tests opeenvolgend worden uitgevoerd zonder te onderbreken.
+> In scenario's waarbij Azure Premium Storage betrokken is, implementeren we burst-mogelijkheden in de configuratie. Zorg ervoor dat als u hulpprogram ma's voor opslag testen van ongeacht welke vorm of hetzelfde formulier, de manier waarop [Azure Premium schijf bursting](../../linux/disk-bursting.md) werkt. Als u de opslag tests uitvoert die worden geleverd via het SAP HWCCT-of HCMT-hulp programma, zullen we niet verwachten dat alle tests aan de criteria voldoen omdat sommige tests de bursting-tegoed overschrijden die u kunt verzamelen. Met name wanneer alle tests opeenvolgend worden uitgevoerd zonder te onderbreken.
 
 
 > [!NOTE]
@@ -194,9 +194,9 @@ Voor de andere volumes ziet de configuratie er als volgt uit:
 
 Controleer of de opslag doorvoer voor de verschillende voorgestelde volumes voldoet aan de werk belasting die u wilt uitvoeren. Als voor de werk belasting hogere volumes zijn vereist voor **/Hana/data** en **/Hana/log**, moet u het aantal Azure Premium-opslag-vhd's verhogen. Het formaat van een volume met meer Vhd's dan wordt weer gegeven, verhoogt de IOPS en I/O-door Voer binnen de limieten van het type virtuele machine van Azure.
 
-Azure Write Accelerator werkt alleen in combi natie met [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/). Ten minste de Azure Premium-opslag schijven die het **/Hana/log** -volume vormen, moeten worden geïmplementeerd als managed disks. Meer gedetailleerde instructies en beperkingen van Azure Write Accelerator vindt u in het artikel [Write Accelerator](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator).
+Azure Write Accelerator werkt alleen in combi natie met [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/). Ten minste de Azure Premium-opslag schijven die het **/Hana/log** -volume vormen, moeten worden geïmplementeerd als managed disks. Meer gedetailleerde instructies en beperkingen van Azure Write Accelerator vindt u in het artikel [Write Accelerator](../../linux/how-to-enable-write-accelerator.md).
 
-Voor de HANA-gecertificeerde Vm's van de Azure [Esv3](https://docs.microsoft.com/azure/virtual-machines/ev3-esv3-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#esv3-series) -familie en de [EDSV4](https://docs.microsoft.com/azure/virtual-machines/edv4-edsv4-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#edsv4-series)moet u ANF voor het **/Hana/data** -en **/Hana/log** -volume. U moet ook gebruikmaken van de ultra schijf opslag van Azure in plaats van Azure Premium Storage voor het **/Hana/log** -volume. Als gevolg hiervan kunnen de configuraties voor het **/Hana/data** -volume in azure Premium Storage er als volgt uitzien:
+Voor de HANA-gecertificeerde Vm's van de Azure [Esv3](../../ev3-esv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#esv3-series) -familie en de [EDSV4](../../edv4-edsv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#edsv4-series)moet u ANF voor het **/Hana/data** -en **/Hana/log** -volume. U moet ook gebruikmaken van de ultra schijf opslag van Azure in plaats van Azure Premium Storage voor het **/Hana/log** -volume. Als gevolg hiervan kunnen de configuraties voor het **/Hana/data** -volume in azure Premium Storage er als volgt uitzien:
 
 | VM-SKU | RAM | Met maximaal VM-I/O<br /> Doorvoer | /hana/data | Maximale burst-door Voer | IOPS | Burst IOPS |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -218,7 +218,7 @@ Voor de andere volumes, met inbegrip van **/Hana/log** op ultra disk, kan de con
 
 
 ## <a name="azure-ultra-disk-storage-configuration-for-sap-hana"></a>Configuratie van de Azure Ultra Disk-opslag voor SAP HANA
-Een ander Azure-opslag type heet [Azure Ultra Disk](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#ultra-disk). Het aanzienlijke verschil tussen Azure Storage dat tot nu toe wordt aangeboden en ultra disk is dat de schijf mogelijkheden niet meer zijn gebonden aan de schijf grootte. Als klant kunt u deze mogelijkheden voor Ultra Disk definiëren:
+Een ander Azure-opslag type heet [Azure Ultra Disk](../../windows/disks-types.md#ultra-disk). Het aanzienlijke verschil tussen Azure Storage dat tot nu toe wordt aangeboden en ultra disk is dat de schijf mogelijkheden niet meer zijn gebonden aan de schijf grootte. Als klant kunt u deze mogelijkheden voor Ultra Disk definiëren:
 
 - De grootte van een schijf, variërend van 4 GiB tot 65.536 GiB
 - IOPS variëren van 100 IOPS tot 160K IOPS (maximum is ook afhankelijk van VM-typen)
@@ -229,7 +229,7 @@ Ultra Disk biedt u de mogelijkheid om één schijf te definiëren die voldoet aa
 Andere voor delen van ultra Disk kunnen de betere lees latentie zijn in vergelijking met Premium Storage. De snellere lees latentie kan de voor delen hebben wanneer u de HANA-opstart tijden en de daaropvolgende belasting van de gegevens in het geheugen wilt reduceren. Voor delen van ultra Disk-opslag kunnen ook vilt zijn wanneer HANA opslag punten schrijft. 
 
 > [!NOTE]
-> Ultra disk is nog niet in alle Azure-regio's aanwezig en biedt nog geen ondersteuning voor alle typen VM'S die hieronder worden weer gegeven. Raadpleeg het artikel wat zijn de [schijf typen die beschikbaar zijn in azure?](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#ultra-disk)voor meer informatie over hoe Ultra Disk beschikbaar is en welke VM-families worden ondersteund.
+> Ultra disk is nog niet in alle Azure-regio's aanwezig en biedt nog geen ondersteuning voor alle typen VM'S die hieronder worden weer gegeven. Raadpleeg het artikel wat zijn de [schijf typen die beschikbaar zijn in azure?](../../windows/disks-types.md#ultra-disk)voor meer informatie over hoe Ultra Disk beschikbaar is en welke VM-families worden ondersteund.
 
 ### <a name="production-recommended-storage-solution-with-pure-ultra-disk-configuration"></a>Productie Aanbevolen opslag oplossing met zuivere Ultra schijf configuratie
 In deze configuratie behoudt u de **/Hana/data** -en **/Hana/log** -volumes afzonderlijk. De voorgestelde waarden worden afgeleid van de Kpi's die door SAP moeten worden gecertificeerd voor SAP HANA-en opslag configuraties zoals aanbevolen in het [Witboek SAP TDI-opslag](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html).
@@ -272,10 +272,10 @@ Houd rekening met de volgende belang rijke overwegingen bij het overwegen van Az
 
 - De minimale capaciteits pool is 4 TiB.  
 - De minimale volume grootte is 100 GiB
-- Azure NetApp Files en alle virtuele machines, waarbij Azure NetApp Files volumes worden gekoppeld, moeten zich in dezelfde Azure-Virtual Network of in gekoppelde [virtuele netwerken](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) in dezelfde regio bevinden.  
+- Azure NetApp Files en alle virtuele machines, waarbij Azure NetApp Files volumes worden gekoppeld, moeten zich in dezelfde Azure-Virtual Network of in gekoppelde [virtuele netwerken](../../../virtual-network/virtual-network-peering-overview.md) in dezelfde regio bevinden.  
 - Het geselecteerde virtuele netwerk moet een subnet hebben, gedelegeerd aan Azure NetApp Files.
-- De door Voer van een Azure NetApp-volume is een functie van volume quota en service niveau, zoals beschreven in [service niveau voor Azure NetApp files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels). Wanneer u de grootte van de HANA Azure NetApp-volumes wijzigt, moet u ervoor zorgen dat de resulterende door voer voldoet aan de HANA-systeem vereisten.  
-- Azure NetApp Files biedt [export beleid](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy): u kunt de toegestane clients, het toegangs type (lezen&schrijven, alleen-lezen, enz.) beheren. 
+- De door Voer van een Azure NetApp-volume is een functie van volume quota en service niveau, zoals beschreven in [service niveau voor Azure NetApp files](../../../azure-netapp-files/azure-netapp-files-service-levels.md). Wanneer u de grootte van de HANA Azure NetApp-volumes wijzigt, moet u ervoor zorgen dat de resulterende door voer voldoet aan de HANA-systeem vereisten.  
+- Azure NetApp Files biedt [export beleid](../../../azure-netapp-files/azure-netapp-files-configure-export-policy.md): u kunt de toegestane clients, het toegangs type (lezen&schrijven, alleen-lezen, enz.) beheren. 
 - Er is nog geen zone bewust van Azure NetApp Files-functie. Momenteel wordt Azure NetApp Files-functie niet geïmplementeerd in alle beschikbaarheids zones in een Azure-regio. Houd rekening met de mogelijke latentie implicaties in sommige Azure-regio's.  
 - Het is belang rijk om de virtuele machines dicht bij de Azure NetApp-opslag te laten implementeren voor een lage latentie. 
 - De gebruikers-ID voor <b>sid</b>adm en de groeps-id voor `sapsys` op de virtuele machines moeten overeenkomen met de configuratie in azure NetApp files. 
@@ -288,7 +288,7 @@ Houd rekening met de volgende belang rijke overwegingen bij het overwegen van Az
 
 ### <a name="sizing-for-hana-database-on-azure-netapp-files"></a>Grootte van HANA-Data Base op Azure NetApp Files
 
-De door Voer van een Azure NetApp-volume is een functie van de volume grootte en het service niveau, zoals beschreven in [service niveau voor Azure NetApp files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels). 
+De door Voer van een Azure NetApp-volume is een functie van de volume grootte en het service niveau, zoals beschreven in [service niveau voor Azure NetApp files](../../../azure-netapp-files/azure-netapp-files-service-levels.md). 
 
 Bij het ontwerpen van de infra structuur voor SAP in azure moet u rekening houden met enkele minimale vereisten voor opslag doorvoer door SAP, die worden omgezet in kenmerken met minimale door Voer van:
 
@@ -296,12 +296,12 @@ Bij het ontwerpen van de infra structuur voor SAP in azure moet u rekening houde
 - Lees activiteit van ten minste 400 MB/sec. voor **/Hana/data** met 16 mb en 64 MB I/O-grootte inschakelen  
 - Schrijf activiteit van ten minste 250 MB per seconde voor **/Hana/data** met 16 mb en 64 MB I/O-grootte inschakelen  
 
-De [Azure NetApp files doorvoer limieten](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels) per 1 TIB volume quota zijn:
+De [Azure NetApp files doorvoer limieten](../../../azure-netapp-files/azure-netapp-files-service-levels.md) per 1 TIB volume quota zijn:
 - Premium Storage-laag-64 MiB/s  
 - Ultra Storage-laag-128 MiB/s  
 
 > [!IMPORTANT]
-> Onafhankelijk van de capaciteit die u implementeert op één NFS-volume, wordt de door Voer verwacht tot een hoeveelheid van 1,2-1.4 GB/sec. band breedte die wordt gebruikt door een consument op een virtuele machine. Dit heeft te maken met de onderliggende architectuur van de ANF-aanbieding en de gerelateerde Linux-sessie limieten rondom NFS. De prestatie-en doorvoer aantallen zoals beschreven in de [resultaten van het artikel prestatie benchmark test voor Azure NetApp files](https://docs.microsoft.com/azure/azure-netapp-files/performance-benchmarks-linux) zijn uitgevoerd op een gedeeld NFS-volume met meerdere client-vm's en als gevolg van meerdere sessies. Dit scenario wijkt af van het scenario dat we in SAP meten. Waarbij de door Voer van een enkele virtuele machine wordt gemeten op basis van een NFS-volume. gehost op ANF.
+> Onafhankelijk van de capaciteit die u implementeert op één NFS-volume, wordt de door Voer verwacht tot een hoeveelheid van 1,2-1.4 GB/sec. band breedte die wordt gebruikt door een consument op een virtuele machine. Dit heeft te maken met de onderliggende architectuur van de ANF-aanbieding en de gerelateerde Linux-sessie limieten rondom NFS. De prestatie-en doorvoer aantallen zoals beschreven in de [resultaten van het artikel prestatie benchmark test voor Azure NetApp files](../../../azure-netapp-files/performance-benchmarks-linux.md) zijn uitgevoerd op een gedeeld NFS-volume met meerdere client-vm's en als gevolg van meerdere sessies. Dit scenario wijkt af van het scenario dat we in SAP meten. Waarbij de door Voer van een enkele virtuele machine wordt gemeten op basis van een NFS-volume. gehost op ANF.
 
 Om te voldoen aan de vereisten voor de minimum doorvoer van SAP voor gegevens en logboeken en volgens de richt lijnen voor `/hana/shared` , zien de aanbevolen grootten er als volgt uit:
 
@@ -320,10 +320,10 @@ Daarom kunt u overwegen om een vergelijk bare door Voer voor de ANF-volumes te i
 > [!TIP]
 > U kunt de grootte van Azure NetApp Files volumes dynamisch opnieuw instellen, zonder dat u de volumes nodig hebt `unmount` , de virtuele machines stoppen of SAP Hana stoppen. Zo kan de toepassing voldoen aan de verwachte en onvoorziene doorvoer vereisten.
 
-Documentatie over het implementeren van een SAP HANA scale-out configuratie met een stand-by-knoop punt met behulp van NFS v 4.1-volumes die worden gehost in ANF, wordt gepubliceerd in [SAP Hana uitschalen met het stand-by-knoop punt op virtuele machines van Azure met Azure NetApp files op SuSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse).
+Documentatie over het implementeren van een SAP HANA scale-out configuratie met een stand-by-knoop punt met behulp van NFS v 4.1-volumes die worden gehost in ANF, wordt gepubliceerd in [SAP Hana uitschalen met het stand-by-knoop punt op virtuele machines van Azure met Azure NetApp files op SuSE Linux Enterprise Server](./sap-hana-scale-out-standby-netapp-files-suse.md).
 
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie voor meer informatie:
 
-- [SAP Hana hand leiding voor maximale Beschik baarheid voor virtuele machines van Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview).
+- [SAP Hana hand leiding voor maximale Beschik baarheid voor virtuele machines van Azure](./sap-hana-availability-overview.md).

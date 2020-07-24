@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: juliako
-ms.openlocfilehash: d09fba2130dc302378a59200349a569cc248234b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 53e337cf4ccbabf7f0b7a227632ba5e996e2b4f3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86075430"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072143"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Release opmerkingen bij Azure Media Services v3
 
@@ -36,6 +36,20 @@ Om u op de hoogte te houden van de nieuwste ontwikkelingen, biedt dit artikel u 
 >
 > Zie voor meer informatie: [de Azure Portal beperkingen voor Media Services v3](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3).
 
+## <a name="july-2020"></a>Juli 2020
+
+### <a name="live-transcriptions"></a>Live-transcripties
+
+Live transcripties ondersteunt nu 19 talen en 8 regio's.
+
+## <a name="protecting-your-content-with-media-services-and-azure-ad"></a>Uw inhoud beveiligen met Media Services en Azure AD
+
+We hebben een zelf studie gepubliceerd met de naam [end-to-end inhouds beveiliging met behulp van Azure AD](./azure-ad-content-protection.md).
+
+### <a name="high-availablity"></a>High-Beschik baarheid
+
+We hebben een hoge Beschik baarheid gepubliceerd met het [overzicht](./media-services-high-availability-encoding.md) van Media Services en video on demand (VOD) en voor [beeld](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/HighAvailabilityEncodingStreaming).
+
 ## <a name="june-2020"></a>Juni 2020
 
 ### <a name="live-video-analytics-on-iot-edge-preview-release"></a>Preview-versie van live video-analyses op IoT Edge
@@ -43,16 +57,6 @@ Om u op de hoogte te houden van de nieuwste ontwikkelingen, biedt dit artikel u 
 De preview-versie van live video Analytics op IoT Edge openbaar geworden. Zie [release opmerkingen](../live-video-analytics-edge/release-notes.md)voor meer informatie.
 
 Live video Analytics op IoT Edge is een uitbrei ding van de media service familie. Zo kunt u live video analyseren met AI-modellen van uw keuze op uw eigen edge-apparaten en deze video optioneel vastleggen en opnemen. U kunt nu apps bouwen met realtime video analyses aan de rand zonder dat u zich zorgen hoeft te maken over de complexiteit van het bouwen en gebruiken van een live video pijplijn.
-
-### <a name="search-by-topics"></a>Zoeken op onderwerpen
-
-U kunt nu de zoek-API gebruiken om te zoeken naar Video's met specifieke onderwerpen (alleen API).
-
-Onderwerpen worden toegevoegd als onderdeel van de `textScope` (optionele para meter). Zie de [API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Search-Videos) voor meer informatie.  
-
-### <a name="labels-enhancement"></a>Uitbrei ding van labels
-
-Het label Tagger is bijgewerkt en bevat nu meer visuele labels die kunnen worden geïdentificeerd.
 
 ## <a name="may-2020"></a>Mei 2020
 
@@ -79,7 +83,7 @@ Media Services GA'ed in de volgende Azure Government regio's: *USGov Arizona* en
 
 CDN-ondersteuning is toegevoegd voor de *oorsprong: prefetch-* headers voor Live en video on-demand streaming; beschikbaar voor klanten die een direct-contract met Akamai CDN hebben. Origin-assisteren CDN-prefetch-functie omvat de volgende HTTP-header-uitwisselingen tussen Akamai CDN en Azure Media Services Origin:
 
-|HTTP-header|Waarden|Afzender|Ontvanger|Functie|
+|HTTP-header|Waarden|Afzender|Ontvanger|Doel|
 | ---- | ---- | ---- | ---- | ----- |
 |CDN-oorsprong-assistentie-prefetch-ingeschakeld | 1 (standaard) of 0 |CDN|Oorsprong|Om aan te geven dat CDN prefetch is ingeschakeld|
 |CDN-oorsprong-assisteren-prefetch-pad| Voorbeeld: <br/>Fragmenten (video = 1400000000, Format = mpd-time-CMAF)|Oorsprong|CDN|Het prefetch-pad naar CDN opgeven|
@@ -137,11 +141,11 @@ Media Services v3 kondigt de preview van 24 uur x 365 dagen aan live lineaire co
 
 #### <a name="deprecation-of-media-processors"></a>Afschaffing van media processors
 
-Er wordt een afschaffing van *Azure media indexer* en *Azure media indexer 2 Preview*aangekondigd. Zie het onderwerp [oudere onderdelen](../previous/legacy-components.md) voor de pensioen datums. [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) vervangt deze verouderde media processors.
+Er wordt een afschaffing van *Azure media indexer* en *Azure media indexer 2 Preview*aangekondigd. Zie het onderwerp [oudere onderdelen](../previous/legacy-components.md) voor de pensioen datums. [Azure Media Services video indexer](../video-indexer/index.yml) vervangt deze verouderde media processors.
 
 Zie [Migrate from Azure media indexer en Azure media indexer 2 to Azure Media Services video indexer](../previous/migrate-indexer-v1-v2.md)voor meer informatie.
 
-## <a name="august-2019"></a>augustus 2019
+## <a name="august-2019"></a>Augustus 2019
 
 ###  <a name="media-services-v3"></a>Media Services v3  
 
@@ -171,9 +175,9 @@ Vanaf juli was de preview-functie alleen beschikbaar in VS Centraal en VS-West-c
 
 ### <a name="video-subclipping"></a>Video subknipsel
 
-U kunt nu een video knippen of subfragmenten wanneer u deze codeert met behulp van een [taak](https://docs.microsoft.com/rest/api/media/jobs). 
+U kunt nu een video knippen of subfragmenten wanneer u deze codeert met behulp van een [taak](/rest/api/media/jobs). 
 
-Deze functionaliteit werkt met elke [trans formatie](https://docs.microsoft.com/rest/api/media/transforms) die is gebouwd met behulp van de [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) -voor instellingen of de [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) -voor waarden. 
+Deze functionaliteit werkt met elke [trans formatie](/rest/api/media/transforms) die is gebouwd met behulp van de [BuiltInStandardEncoderPreset](/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) -voor instellingen of de [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset) -voor waarden. 
 
 Zie voor beelden:
 
@@ -212,8 +216,8 @@ Er zijn updates toegevoegd die Media Services prestatie verbeteringen bevatten.
 
 ### <a name="new-presets"></a>Nieuwe voor instellingen
 
-* [FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset) is toegevoegd aan de ingebouwde analyse-voor instellingen.
-* [ContentAwareEncodingExperimental](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset) is toegevoegd aan de ingebouwde coderings definities. Zie voor meer informatie [code ring met inhoud](content-aware-encoding.md). 
+* [FaceDetectorPreset](/rest/api/media/transforms/createorupdate#facedetectorpreset) is toegevoegd aan de ingebouwde analyse-voor instellingen.
+* [ContentAwareEncodingExperimental](/rest/api/media/transforms/createorupdate#encodernamedpreset) is toegevoegd aan de ingebouwde coderings definities. Zie voor meer informatie [code ring met inhoud](content-aware-encoding.md). 
 
 ## <a name="march-2019"></a>Maart 2019
 
@@ -246,21 +250,21 @@ Updates van de GA-versie van de V3 API zijn onder andere:
 
 ## <a name="november-2018"></a>November 2018
 
-De CLI 2,0-module is nu beschikbaar voor [Azure Media Services v3 ga](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest) – v-2.0.50.
+De CLI 2,0-module is nu beschikbaar voor [Azure Media Services v3 ga](/cli/azure/ams?view=azure-cli-latest) – v-2.0.50.
 
 ### <a name="new-commands"></a>Nieuwe opdrachten
 
-- [AZ AMS account](https://docs.microsoft.com/cli/azure/ams/account?view=azure-cli-latest)
-- [AZ AMS account-filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest)
-- [AZ AMS Asset](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest)
-- [AZ AMS Asset-filter](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)
-- [AZ AMS content-Key-policy](https://docs.microsoft.com/cli/azure/ams/content-key-policy?view=azure-cli-latest)
-- [AZ AMS job](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
-- [AZ AMS Live-Event](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)
-- [AZ AMS live-output](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
-- [AZ AMS streaming-Endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
-- [AZ AMS streaming-Locator](https://docs.microsoft.com/cli/azure/ams/streaming-locator?view=azure-cli-latest)
-- [AZ AMS account MRU](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) -Hiermee kunt u gereserveerde media-eenheden beheren. Zie [gereserveerde media-eenheden schalen](media-reserved-units-cli-how-to.md)voor meer informatie.
+- [AZ AMS account](/cli/azure/ams/account?view=azure-cli-latest)
+- [AZ AMS account-filter](/cli/azure/ams/account-filter?view=azure-cli-latest)
+- [AZ AMS Asset](/cli/azure/ams/asset?view=azure-cli-latest)
+- [AZ AMS Asset-filter](/cli/azure/ams/asset-filter?view=azure-cli-latest)
+- [AZ AMS content-Key-policy](/cli/azure/ams/content-key-policy?view=azure-cli-latest)
+- [AZ AMS job](/cli/azure/ams/job?view=azure-cli-latest)
+- [AZ AMS Live-Event](/cli/azure/ams/live-event?view=azure-cli-latest)
+- [AZ AMS live-output](/cli/azure/ams/live-output?view=azure-cli-latest)
+- [AZ AMS streaming-Endpoint](/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
+- [AZ AMS streaming-Locator](/cli/azure/ams/streaming-locator?view=azure-cli-latest)
+- [AZ AMS account MRU](/cli/azure/ams/account/mru?view=azure-cli-latest) -Hiermee kunt u gereserveerde media-eenheden beheren. Zie [gereserveerde media-eenheden schalen](media-reserved-units-cli-how-to.md)voor meer informatie.
 
 ### <a name="new-features-and-breaking-changes"></a>Nieuwe functies en belang rijke wijzigingen
 
@@ -351,7 +355,7 @@ Ondersteuning voor CMAF en ' cbcs-versleuteling voor Apple HLS (iOS 11 +) en MPE
 
 ### <a name="video-indexer"></a>Video Indexer
 
-Video Indexer GA release is in augustus aangekondigd. Zie [Wat is video indexer](../../cognitive-services/video-indexer/video-indexer-overview.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json)voor nieuwe informatie over momenteel ondersteunde functies. 
+Video Indexer GA release is in augustus aangekondigd. Zie [Wat is video indexer](../video-indexer/video-indexer-overview.md?bc=/azure/media-services/video-indexer/breadcrumb/toc.json&toc=/azure/media-services/video-indexer/toc.json)voor nieuwe informatie over momenteel ondersteunde functies. 
 
 ### <a name="plans-for-changes"></a>Plannen voor wijzigingen
 
@@ -384,7 +388,7 @@ De volgende functies zijn aanwezig in de .NET SDK:
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Vragen stellen, feedback geven, updates ophalen
 
-Bekijk het [Azure Media Services Community](media-services-community.md) -artikel voor verschillende manieren om vragen te stellen, feedback te geven en updates te ontvangen over Media Services.
+Ga naar het artikel van de [Azure Media Services-community](media-services-community.md) voor verschillende manieren om vragen te stellen, feedback te geven en updates voor Media Services op te halen.
 
 ## <a name="see-also"></a>Zie tevens
 

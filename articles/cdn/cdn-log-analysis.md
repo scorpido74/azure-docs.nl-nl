@@ -1,28 +1,38 @@
 ---
-title: Azure CDN gebruiks patronen analyseren | Microsoft Docs
+title: Gebruikspatronen van Azure CDN analyseren
 description: In dit artikel worden de verschillende typen analyse rapporten beschreven die beschikbaar zijn voor Azure CDN producten.
 services: cdn
-documentationcenter: ''
 author: asudbring
-manager: danielgi
-editor: ''
-ms.assetid: 95e18b3c-b987-46c2-baa8-a27a029e3076
+manager: KumudD
 ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2017
+ms.date: 7/22/2020
 ms.author: allensu
-ms.openlocfilehash: c78dff9f5258023d90100c70bd244e8e0d016d6f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 169889dbb87d00fdde44ff72c0d2004c331604ab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81253608"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073039"
 ---
 # <a name="analyze-azure-cdn-usage-patterns"></a>Gebruikspatronen van Azure CDN analyseren
 
 Nadat u CDN hebt ingeschakeld voor uw toepassing, kunt u het CDN-gebruik controleren, de status van uw levering controleren en mogelijke problemen oplossen. Azure CDN biedt deze mogelijkheden op de volgende manieren: 
+
+## <a name="raw-logs-for-azure-cdn-from-microsoft"></a>Onbewerkte logboeken voor Azure CDN van micro soft
+Met een standaard Profiel van micro soft kunt u onbewerkte logboeken inschakelen en logboeken selecteren voor het volgende:
+
+* Azure Storage
+* Event Hubs
+* Azure Log Analytics
+
+Met Azure Log Analytics kunt u metrische gegevens over bewaking bekijken en waarschuwingen instellen. 
+
+Zie [Azure CDN onbewerkte HTTP-logboeken](enable-raw-logs.md)voor meer informatie.
+
 
 ## <a name="core-analytics-via-azure-diagnostic-logs"></a>Kern analyse via Diagnostische logboeken van Azure
 
@@ -30,16 +40,27 @@ Kern analyse is beschikbaar voor CDN-eind punten voor alle prijs categorieën. M
 
 ## <a name="verizon-core-reports"></a>Verizon-kern rapporten
 
-Als Azure CDN gebruiker met een **Azure CDN standaard van Verizon** of **Azure CDN Premium van Verizon** -profiel, kunt u Verizon-kern rapporten weer geven in de aanvullende portal van Verizon. Verizon-kern rapporten zijn toegankelijk via de optie **beheren** van de Azure Portal en bieden diverse grafieken en weer gaven. Zie voor meer informatie [kern rapporten van Verizon](cdn-analyze-usage-patterns.md).
+**Azure CDN Standard van Verizon** -of **Azure CDN Premium van Verizon** -profielen bieden kern rapporten. U kunt kern rapporten weer geven in de aanvullende portal van Verizon. Verizon-kern rapporten zijn toegankelijk via de optie **beheren** van de Azure Portal en bieden verschillende soorten grafieken en weer gaven. Zie voor meer informatie [kern rapporten van Verizon](cdn-analyze-usage-patterns.md).
 
 ## <a name="verizon-custom-reports"></a>Aangepaste Verizon-rapporten
 
-Als Azure CDN gebruiker met een **Azure CDN standaard van Verizon** of **Azure CDN Premium van Verizon** -profiel, kunt u aangepaste Verizon-rapporten weer geven in de aanvullende portal van Verizon. Aangepaste Verizon-rapporten zijn toegankelijk via de optie **beheren** van de Azure Portal. Op de pagina met aangepaste Verizon-rapporten vindt u het aantal treffers of gegevens die zijn overgedragen voor elke rand CName die deel uitmaakt van een Azure CDN profiel. De gegevens kunnen worden gegroepeerd op HTTP-respons code of de cache status voor een wille keurige periode. Zie [aangepaste rapporten van Verizon](cdn-verizon-custom-reports.md)voor meer informatie.
+**Azure CDN Standard van Verizon** -of **Azure CDN Premium van Verizon** -profielen bieden aangepaste rapporten. U kunt aangepaste rapporten weer geven in de aanvullende portal van Verizon. Aangepaste Verizon-rapporten zijn toegankelijk via de optie **beheren** van de Azure Portal. 
+
+In de aangepaste rapporten wordt het aantal treffers of gegevens overgezet voor elke Edge CNAME weer gegeven. Gegevens worden gegroepeerd op HTTP-respons code of cache status over de periode. Zie [aangepaste rapporten van Verizon](cdn-verizon-custom-reports.md)voor meer informatie.
 
 ## <a name="azure-cdn-premium-from-verizon-reports"></a>Azure CDN Premium van Verizon-rapporten
 
 Met **Azure CDN Premium van Verizon**kunt u ook toegang krijgen tot de volgende rapporten:
    * [Geavanceerde HTTP-rapporten](cdn-advanced-http-reports.md)
    * [Realtime statistieken](cdn-real-time-stats.md)
-   * [Prestaties van edge-knooppunt](cdn-edge-performance.md)
+   * [Prestaties van Azure CDN Edge-knoop punt](cdn-edge-performance.md)
+
+## <a name="next-steps"></a>Volgende stappen
+In dit artikel hebt u geleerd over de verschillende opties voor analyse rapporten voor Azure CDN.
+
+Zie voor meer informatie over Azure CDN en de andere Azure-Services die in dit artikel worden genoemd:
+
+* [Wat is Azure CDN?](cdn-overview.md)
+* [Onbewerkte HTTP-logboeken Azure CDN](enable-raw-logs.md)
+
 

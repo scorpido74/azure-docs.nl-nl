@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/14/2020
 ms.author: dimazaid
-ms.openlocfilehash: 01749e1ae5c29a7e77b2143939e25cf1ccd1aec2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 857210efdc5740defcde4187b7b04cce55215325
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76263967"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071615"
 ---
 # <a name="use-powershell-to-create-an-azure-notification-hub"></a>Power shell gebruiken om een Azure notification hub te maken
 
@@ -56,4 +57,4 @@ In dit script worden de volgende opdrachten gebruikt:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Documentatie over Azure PowerShell](https://docs.microsoft.com/powershell/) voor meer informatie over Azure PowerShell.
+Zie [Documentatie over Azure PowerShell](/powershell/) voor meer informatie over Azure PowerShell.

@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
-ms.openlocfilehash: 4b5a18f0dc5edc06e4800215e88b694e681b5bbb
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 254659c58b9830645211596da0095c33d70e8d95
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960459"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072026"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Ontwerp van een inhouds beschermings systeem met toegangs beheer met Azure Media Services 
 
@@ -153,8 +154,8 @@ De volgende tabel toont de toewijzing.
 | **DRM-beveiligings werk stroom** |Dynamische beveiliging Media Services |
 | **Levering van DRM-licentie** |* Media Services licentie levering (PlayReady, Widevine, FairPlay) <br/>* Axinom-licentie server <br/>* Aangepaste PlayReady-licentie server |
 | **Oorsprong** |Media Services streaming-eind punt |
-| **Sleutelbeheer** |Niet nodig voor referentie-implementatie |
-| **Inhoudsbeheer** |Een C#-console toepassing |
+| **Sleutel beheer** |Niet nodig voor referentie-implementatie |
+| **Inhoudbeheer** |Een C#-console toepassing |
 
 Met andere woorden, zowel IDP als STS worden gebruikt met Azure AD. De [Azure Media Player-API](https://amp.azure.net/libs/amp/latest/docs/) wordt gebruikt voor de speler. Zowel Media Services als Media Player ondersteunen DASH en CENC met multi-DRM.
 
@@ -226,7 +227,7 @@ Zie [JWT-token verificatie in azure Media Services en dynamische versleuteling](
 Voor informatie over Azure AD:
 
 * In de [hand leiding voor ontwikkel aars van Azure Active Directory](../../active-directory/azuread-dev/v1-overview.md)vindt u informatie voor ontwikkel aars.
-* U kunt beheerders informatie vinden in [uw Azure AD-Tenant Directory beheren](../../active-directory/fundamentals/active-directory-administer.md).
+* U kunt beheerders informatie vinden in [uw Azure AD-Tenant Directory beheren](../../active-directory/fundamentals/active-directory-whatis.md).
 
 ### <a name="some-issues-in-implementation"></a>Enkele problemen in de implementatie
 Gebruik de volgende informatie voor probleem oplossing voor hulp bij implementatie problemen.
@@ -295,7 +296,7 @@ Rollover van de handtekening sleutel is een belang rijk punt om rekening mee te 
 
 Azure AD maakt gebruik van industrie normen om een vertrouwens relatie tot stand te brengen tussen zichzelf en toepassingen die gebruikmaken van Azure AD. In het bijzonder maakt Azure AD gebruik van een handtekening sleutel die bestaat uit een openbaar en een persoonlijk sleutel paar. Wanneer Azure AD een beveiligings token maakt dat informatie over de gebruiker bevat, wordt het ondertekend door Azure AD met een persoonlijke sleutel voordat het wordt teruggestuurd naar de toepassing. Om te controleren of het token geldig is en afkomstig is van Azure AD, moet de toepassing de hand tekening van het token valideren. De toepassing maakt gebruik van de open bare sleutel die wordt weer gegeven door Azure AD die is opgenomen in het federatieve meta gegevens document van de Tenant. Deze open bare sleutel en de ondertekeningssleutel waarvan deze is afgeleid, zijn hetzelfde als de sleutel die wordt gebruikt voor alle tenants in azure AD.
 
-Zie [belang rijke informatie over de rollover van de handtekening sleutel in azure AD](../../active-directory/active-directory-signing-key-rollover.md)voor meer informatie over de sleutel rollover van Azure AD.
+Zie [belang rijke informatie over de rollover van de handtekening sleutel in azure AD](../../active-directory/develop/active-directory-signing-key-rollover.md)voor meer informatie over de sleutel rollover van Azure AD.
 
 Tussen het [open bare-persoonlijke sleutel paar](https://login.microsoftonline.com/common/discovery/keys/):
 
@@ -328,7 +329,7 @@ Als u kijkt hoe een web-app een API-app aanroept onder [toepassings identiteit m
 * Azure AD verifieert de toepassing en retourneert een JWT-toegangs token dat wordt gebruikt om de Web-API aan te roepen.
 * Via HTTPS gebruikt de webtoepassing het geretourneerde JWT-toegangs token om de JWT-teken reeks toe te voegen met de aanduiding ' Bearer ' in de koptekst ' autorisatie ' van de aanvraag naar de Web-API. De Web-API valideert vervolgens de JWT. Als de validatie is geslaagd, wordt de gewenste resource geretourneerd.
 
-In deze toepassings identiteits stroom vertrouwt de Web-API dat de gebruiker de webtoepassing heeft geverifieerd. Daarom wordt dit patroon een vertrouwd subsysteem genoemd. In het [diagram autorisatie stroom](https://docs.microsoft.com/azure/active-directory/active-directory-protocols-oauth-code) wordt beschreven hoe autorisatie-granting flow werkt.
+In deze toepassings identiteits stroom vertrouwt de Web-API dat de gebruiker de webtoepassing heeft geverifieerd. Daarom wordt dit patroon een vertrouwd subsysteem genoemd. In het [diagram autorisatie stroom](../../active-directory/azuread-dev/v1-protocols-oauth-code.md) wordt beschreven hoe autorisatie-granting flow werkt.
 
 Het ophalen van licenties met token beperking volgt hetzelfde patroon van het vertrouwde subsysteem. De service voor het leveren van licenties in Media Services is de Web-API-resource of de ' back-end-bron ' die een webtoepassing nodig heeft om toegang te krijgen. Waar bevindt zich het toegangs token?
 

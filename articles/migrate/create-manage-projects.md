@@ -2,13 +2,13 @@
 title: Azure Migrate-projecten maken en beheren
 description: U kunt projecten vinden, maken, beheren en verwijderen in Azure Migrate.
 ms.topic: how-to
-ms.date: 04/19/2020
-ms.openlocfilehash: 644ac5ecab9f5384b446c3b1ebe762a5d06aaf12
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/23/2020
+ms.openlocfilehash: d60868f9d0d4c60291cfd92a9e8d11fd3f9a42b9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113425"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071805"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>Azure Migrate-projecten maken en beheren
 
@@ -65,7 +65,6 @@ Verwijder als volgt:
     - Het resource type is **micro soft. migrate/migrateprojects**.
     - Als de resource groep uitsluitend wordt gebruikt door het Azure Migrate project, kunt u de hele resource groep verwijderen.
 
-
 Opmerking:
 
 - Wanneer u verwijdert, worden zowel het project als de meta gegevens over gedetecteerde machines verwijderd.
@@ -73,6 +72,7 @@ Opmerking:
 - Als u afhankelijkheids analyse gebruikt met een Azure Log Analytics-werk ruimte:
     - Als u een Log Analytics-werk ruimte hebt gekoppeld aan het hulp programma voor Server evaluatie, wordt de werk ruimte niet automatisch verwijderd. Dezelfde Log Analytics-werk ruimte kan voor meerdere scenario's worden gebruikt.
     - Als u de werk ruimte Log Analytics wilt verwijderen, doet u dat hand matig.
+- Het verwijderen van het project is onomkeerbaar. Verwijderde objecten kunnen niet worden hersteld.
 
 ### <a name="delete-a-workspace-manually"></a>Een werk ruimte hand matig verwijderen
 

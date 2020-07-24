@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 6e283ff140e02d604fdf5e20d69fff96aab94f71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d5158bbb32635ebf030879f4d0290a1feba0ec93
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260590"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072929"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Gebruik de BulkExecutor-bibliotheek voor Java om bulkbewerkingen uit te voeren in Azure Cosmos DB
 
@@ -28,12 +28,12 @@ Op dit moment wordt de bibliotheek voor bulksgewijs uitvoering alleen ondersteun
 
 * U kunt [Azure Cosmos DB gratis uitproberen](https://azure.microsoft.com/try/cosmosdb/) zonder Azure-abonnement, gratis en toezeg gingen. U kunt ook de Azure Cosmos DB- [emulator](https://docs.microsoft.com/azure/cosmos-db/local-emulator) gebruiken met het `https://localhost:8081` eind punt. De primaire sleutel wordt gegeven in [Aanvragen verifiëren](local-emulator.md#authenticating-requests).  
 
-* [Java Development Kit (JDK) 1.7+](/java/azure/jdk/?view=azure-java-stable)  
+* [Java Development Kit (JDK) 1.7 +](/java/azure/jdk/?view=azure-java-stable)  
   - Voer op Ubuntu `apt-get install default-jdk` uit om de JDK te installeren.  
 
   - Zorg dat de omgevingsvariabele JAVA_HOME verwijst naar de map waarin de JDK is geïnstalleerd.
 
-* [Download](https://maven.apache.org/download.cgi) en [installeer](https://maven.apache.org/install.html) een binair [Maven](https://maven.apache.org/)-archief  
+* Een binair archief van [maven](https://maven.apache.org/) [downloaden](https://maven.apache.org/download.cgi) en [installeren](https://maven.apache.org/install.html)  
   
   - Op Ubuntu kunt u `apt-get install maven` uitvoeren om Maven te installeren.
 
@@ -43,7 +43,7 @@ Op dit moment wordt de bibliotheek voor bulksgewijs uitvoering alleen ondersteun
 
 We gaan nu naar het werken met code door een Java-voorbeeld toepassing te downloaden van GitHub. Met deze toepassing worden bulk bewerkingen uitgevoerd op Azure Cosmos DB gegevens. Als u de toepassing wilt klonen, opent u een opdracht prompt, gaat u naar de map waar u de toepassing wilt kopiëren en voert u de volgende opdracht uit:
 
-```
+```bash
  git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-java-getting-started.git 
 ```
 
@@ -123,13 +123,13 @@ De gekloonde opslag plaats bevat twee voor beelden van ' bulkimport ' en ' Bulku
 
 5. Nadat u de toepassing voor bulk import gereed hebt, bouwt u het opdracht regel programma vanuit de bron met behulp van de opdracht ' MVN Cleanup package '. Met deze opdracht wordt een jar-bestand in de doelmap gegenereerd:  
 
-   ```java
+   ```bash
    mvn clean package
    ```
 
 6. Nadat de doel afhankelijkheden zijn gegenereerd, kunt u de toepassing voor bulk import aanroepen met behulp van de volgende opdracht:  
 
-   ```java
+   ```bash
    java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint *<Fill in your Azure Cosmos DB's endpoint>*  -masterKey *<Fill in your Azure Cosmos DB's master key>* -databaseId bulkImportDb -collectionId bulkImportColl -operation import -shouldCreateCollection -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
    ```
 
@@ -186,13 +186,13 @@ U kunt bestaande documenten bijwerken met behulp van de BulkUpdateAsync-API. In 
 
 3. Nadat u de toepassing voor bulk update gereed hebt, bouwt u het opdracht regel programma vanuit de bron met behulp van de opdracht ' MVN Cleanup package '. Met deze opdracht wordt een jar-bestand in de doelmap gegenereerd:  
 
-   ```
+   ```bash
    mvn clean package
    ```
 
 4. Nadat de doel afhankelijkheden zijn gegenereerd, kunt u de toepassing bulksgewijze Update aanroepen met behulp van de volgende opdracht:
 
-   ```
+   ```bash
    java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint **<Fill in your Azure Cosmos DB's endpoint>* -masterKey **<Fill in your Azure Cosmos DB's master key>* -databaseId bulkUpdateDb -collectionId bulkUpdateColl -operation update -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
    ```
 

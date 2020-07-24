@@ -4,11 +4,12 @@ description: Azure Monitor-en Application Insights gegevens routeren zodat u ze 
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/06/2017
-ms.openlocfilehash: 142e3e19c13710963d239a75bc237b63713c29cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 23bba091628eee767fbf292a8a8d772ffab674cb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77672205"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073463"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Uw Azure-Services controleren in Grafana
 U kunt nu Azure-Services en-toepassingen bewaken vanuit [Grafana](https://grafana.com/) met behulp van de [invoeg toepassing voor Azure monitor gegevens bron](https://grafana.com/plugins/grafana-azure-monitor-datasource). De invoeg toepassing verzamelt de prestatie gegevens voor toepassingen die worden verzameld door Azure Monitor, met inbegrip van verschillende logboeken en metrieken. U kunt deze gegevens vervolgens weer geven op uw Grafana-dash board.
@@ -23,7 +24,7 @@ Als u een lokale Grafana-server wilt instellen, [downloadt en installeert u Graf
 ### <a name="set-up-grafana-on-azure-through-the-azure-marketplace"></a>Grafana op Azure instellen via de Azure Marketplace
 1. Ga naar Azure Marketplace en kies Grafana door Grafana Labs.
 
-2. Vul de namen en gegevens in. Maak een nieuwe resourcegroep. Houd de waarden bij die u kiest voor de VM-gebruikers naam, het VM-wacht woord en het wacht woord voor de Grafana-Server beheerder.  
+2. Vul de namen en gegevens in. Een nieuwe resourcegroep maken. Houd de waarden bij die u kiest voor de VM-gebruikers naam, het VM-wacht woord en het wacht woord voor de Grafana-Server beheerder.  
 
 3. Kies de grootte van de virtuele machine en een opslag account.
 
@@ -58,9 +59,9 @@ Nadat u bent aangemeld, ziet u dat de Azure Monitor-invoeg toepassing voor gegev
 2. Kies een naam voor de gegevens bron en selecteer **Azure monitor** als het type in de vervolg keuzelijst.
 
 3. Een service-principal maken-Grafana maakt gebruik van een Azure Active Directory Service-Principal om verbinding te maken met Azure Monitor Api's en gegevens te verzamelen. U moet een bestaande service-principal maken of gebruiken om de toegang tot uw Azure-resources te beheren.
-    * Zie [deze instructies](../../azure-resource-manager/resource-group-create-service-principal-portal.md) voor het maken van een service-principal. Kopieer en sla uw Tenant-ID (Directory-id), client-ID (toepassings-ID) en client geheim op (waarde van toepassing Key).
-    * Zie [toepassing toewijzen aan rol](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) om de rol van lezer toe te wijzen aan de Azure Active Directory toepassing op het abonnement, de resource groep of de resource die u wilt bewaken. 
-    De Log Analytics-API vereist de [rol van log Analytics lezer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader), die de machtigingen van de rol lezer bevat en er een toevoegt.
+    * Zie [deze instructies](../../active-directory/develop/howto-create-service-principal-portal.md) voor het maken van een service-principal. Kopieer en sla uw Tenant-ID (Directory-id), client-ID (toepassings-ID) en client geheim op (waarde van toepassing Key).
+    * Zie [toepassing toewijzen aan rol](../../active-directory/develop/howto-create-service-principal-portal.md) om de rol van lezer toe te wijzen aan de Azure Active Directory toepassing op het abonnement, de resource groep of de resource die u wilt bewaken. 
+    De Log Analytics-API vereist de [rol van log Analytics lezer](../../role-based-access-control/built-in-roles.md#log-analytics-reader), die de machtigingen van de rol lezer bevat en er een toevoegt.
 
 4. Geef de verbindings gegevens op voor de Api's die u wilt gebruiken. U kunt verbinding maken met alle of een aantal ervan. 
     * Als u verbinding maakt met zowel de metrische gegevens als de logboeken in Azure Monitor, kunt u dezelfde referenties opnieuw gebruiken door **dezelfde gegevens te selecteren als Azure monitor-API**.
@@ -158,4 +159,3 @@ Als u een Grafana-omgeving hebt ingesteld op Azure, worden er kosten in rekening
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Overzicht van Azure Monitor metrische gegevens](data-platform.md)
-

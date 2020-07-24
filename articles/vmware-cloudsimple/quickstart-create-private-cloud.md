@@ -9,11 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a2fe7daf1476f19f6a6eea83174342fa1273fe14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 487308aca3231650aee3fac5ae127006649e19b9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81867966"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073914"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Snelstartgids-een Privécloud configureren
 
@@ -33,7 +34,7 @@ Een Privécloud is een geïsoleerde VMware-stack die ondersteuning biedt voor ES
 
 Persoonlijke Clouds worden beheerd via de CloudSimple-Portal. Ze hebben hun eigen vCenter-Server in een eigen beheer domein. De stack wordt uitgevoerd op toegewezen knoop punten en geïsoleerde bare metal hardware-knoop punten.
 
-1. Selecteer **alle services**.
+1. Selecteer **Alle services**.
 2. Zoek naar **CloudSimple Services**.
 3. Selecteer de CloudSimple-service waarop u uw Privécloud wilt maken.
 4. Klik in **overzicht**op **privécloud maken** om een nieuw browser tabblad voor CloudSimple portal te openen.  Meld u aan met uw aanmeldings referenties voor Azure als u hierom wordt gevraagd.  
@@ -65,7 +66,7 @@ Het inrichtings proces voor de privécloud wordt gestart.  Het kan tot twee uur 
 
 U kunt de CloudSimple-Portal openen via Azure Portal.  De CloudSimple-portal wordt gestart met uw Azure-aanmeldings referenties via eenmalige aanmelding (SSO).  Voor toegang tot de CloudSimple-Portal moet u de **CloudSimple-service autorisatie** toepassing autoriseren.  Zie [instemming met de CloudSimple-service autorisatie toepassing](access-cloudsimple-portal.md#consent-to-cloudsimple-service-authorization-application)voor meer informatie over het verlenen van machtigingen.
 
-1. Selecteer **alle services**.
+1. Selecteer **Alle services**.
 2. Zoek naar **CloudSimple Services**.
 3. Selecteer de CloudSimple-service waarop u uw Privécloud wilt maken.
 4. Klik in overzicht op **Ga naar de CloudSimple-Portal** om een nieuw browser tabblad voor CloudSimple-portal te openen.  Meld u aan met uw aanmeldings referenties voor Azure als u hierom wordt gevraagd.  
@@ -113,7 +114,7 @@ VPN-client is nodig om vanaf uw computer verbinding te maken met CloudSimple.  D
 1. Start de CloudSimple-Portal en selecteer **netwerk**.
 2. Selecteer **VPN gateway**.
 3. Klik in de lijst met VPN-gateways op de punt-naar-site-VPN-gateway.
-4. Selecteer **gebruikers**.
+4. Selecteer **Gebruikers**.
 5. Klik op **mijn VPN-configuratie downloaden**.
 
     ![VPN-configuratie downloaden](media/download-p2s-vpn-configuration.png)
@@ -147,7 +148,7 @@ Het VLAN/subnet wordt gemaakt.  U kunt deze VLAN-ID nu gebruiken om een gedistri
 
 ## <a name="connect-your-environment-to-an-azure-virtual-network"></a>Uw omgeving verbinden met een virtueel Azure-netwerk
 
-CloudSimple biedt u een ExpressRoute-circuit voor uw Privécloud. U kunt uw virtuele netwerk op Azure aansluiten op het ExpressRoute-circuit. Volg de stappen in [Azure Virtual Network-verbinding met ExpressRoute](https://docs.microsoft.com/azure/vmware-cloudsimple/cloudsimple-azure-network-connection)voor volledige informatie over het instellen van de verbinding.
+CloudSimple biedt u een ExpressRoute-circuit voor uw Privécloud. U kunt uw virtuele netwerk op Azure aansluiten op het ExpressRoute-circuit. Volg de stappen in [Azure Virtual Network-verbinding met ExpressRoute](./cloudsimple-azure-network-connection.md)voor volledige informatie over het instellen van de verbinding.
 
 ## <a name="sign-in-to-vcenter"></a>Aanmelden bij vCenter
 

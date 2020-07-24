@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 09a4700ce794458ee4dcad2291a93e0b13ca5feb
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 39a92dbdc0bdcd0fdd2bb06efe3fbd4bfe33069d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133775"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071190"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Problemen oplossen bij het mislukken van een virtuele VMware-machine of fysieke machine naar Azure
 
@@ -54,9 +54,11 @@ Volg de onderstaande stappen om het opstart type van Stuur Programma's voor **Wi
 
     Dit resulteert in het volgende resultaat als Hydration vereist is:
 
-        REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
+    ```output
+    REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
 
-        This system doesn't meet no-hydration requirement.
+    This system doesn't meet no-hydration requirement.
+    ```
 
     Als de virtuele machine voldoet aan de niet-Hydration vereiste, geeft het script het resultaat ' dit systeem voldoet aan no-Hydration-vereiste '. In dit geval zijn alle Stuur Programma's en services in de status die is vereist door Azure en Hydration op de VM is niet vereist.
 
@@ -65,12 +67,14 @@ Volg de onderstaande stappen om het opstart type van Stuur Programma's voor **Wi
     `.\Script-no-hydration.ps1 -set`
     
     Hiermee wordt het opstart type van Stuur Programma's geconverteerd en wordt het resultaat als hieronder weer gegeven:
-    
-        REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0 
 
-        Updating registry:  REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc   start =  0 
+    ```output
+    REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
 
-        This system is now no-hydration compatible. 
+    Updating registry:  REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc   start =  0
+
+    This system is now no-hydration compatible.
+    ```
 
 ## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-due-to-grayed-out-connect-button-on-the-virtual-machine"></a>Kan geen verbinding maken/RDP/SSH met de virtuele machine waarvoor een failover is uitgevoerd omdat de knop verbinding maken op de virtuele machine grijs wordt weer gegeven
 
@@ -116,11 +120,15 @@ Als u verbinding kunt maken met de computer met behulp van RDP, maar u kunt geen
 
 * Als het besturings systeem van de machine Red Hat of Oracle Linux 7. */8.0 is, voert u de volgende opdracht uit op de failover Azure-VM met hoofd machtigingen. Start de VM opnieuw op na de opdracht.
 
-        grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
+  ```console
+  grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
+  ```
 
 * Als het besturings systeem van de machine CentOS 7. * is, voert u de volgende opdracht uit op de failover Azure VM met hoofd machtigingen. Start de VM opnieuw op na de opdracht.
 
-        grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
+  ```console
+  grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
+  ```
 
 ## <a name="unexpected-shutdown-message-event-id-6008"></a>Onverwacht afsluit bericht (gebeurtenis-ID 6008)
 

@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 17ba8f5bbbf0ac17e0ccb6881379a511afc7c1c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19a7bc70bd782f9b684cb48672147f5009e4a08f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833269"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073861"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Faseringsomgevingen in Azure App Service instellen
 <a name="Overview"></a>
@@ -288,7 +288,7 @@ Zoek en selecteer uw app. Selecteer overzicht van **implementatie sites**  >  *\
 
 Azure PowerShell is een module die cmdlets biedt voor het beheren van Azure via Windows Power shell, inclusief ondersteuning voor het beheren van implementatie sleuven in Azure App Service.
 
-Zie [Microsoft Azure PowerShell installeren en configureren](/powershell/azure/overview)voor meer informatie over het installeren en configureren van Azure PowerShell en over het verifiëren van Azure PowerShell met uw Azure-abonnement.  
+Zie [Microsoft Azure PowerShell installeren en configureren](/powershell/azure/)voor meer informatie over het installeren en configureren van Azure PowerShell en over het verifiëren van Azure PowerShell met uw Azure-abonnement.  
 
 ---
 ### <a name="create-a-web-app"></a>Een webtoepassing maken

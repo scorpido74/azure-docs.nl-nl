@@ -3,15 +3,16 @@ title: Back-ups van Azure-bestandsshares beheren
 description: In dit artikel worden algemene taken beschreven voor het beheren en bewaken van de Azure-bestands shares waarvan een back-up is gemaakt door Azure Backup.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: cb764fa441c063328dc350cf26f42c5bc7a0ca99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6684cb348c9edb35b5f3e46fb7922e9aa265c725
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84712085"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073302"
 ---
 # <a name="manage-azure-file-share-backups"></a>Back-ups van Azure-bestandsshares beheren
 
-In dit artikel worden algemene taken beschreven voor het beheren en bewaken van de Azure-bestands shares waarvan een back-up is gemaakt door [Azure backup](https://docs.microsoft.com/azure/backup/backup-overview). U leert hoe u beheer taken kunt uitvoeren in de Recovery Services kluis.
+In dit artikel worden algemene taken beschreven voor het beheren en bewaken van de Azure-bestands shares waarvan een back-up is gemaakt door [Azure backup](./backup-overview.md). U leert hoe u beheer taken kunt uitvoeren in de Recovery Services kluis.
 
 ## <a name="monitor-jobs"></a>Taken controleren
 
@@ -164,4 +165,4 @@ De registratie van het opslag account ongedaan maken:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [problemen met back-ups van Azure-bestands shares oplossen](https://docs.microsoft.com/azure/backup/troubleshoot-azure-files)voor meer informatie.
+Zie [problemen met back-ups van Azure-bestands shares oplossen](./troubleshoot-azure-files.md)voor meer informatie.

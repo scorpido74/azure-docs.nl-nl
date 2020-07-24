@@ -6,20 +6,21 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 5/31/2019
 ms.subservice: alerts
-ms.openlocfilehash: 0e81d48f4e709a9a0bb8ebb33c7029d3841167b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d080c18a1af9549373750b787093fec03b32006
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84609043"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073610"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Waarschuwingen registreren in Azure Monitor
 
 Logboek waarschuwingen zijn een van de waarschuwings typen die worden ondersteund in [Azure-waarschuwingen](../../azure-monitor/platform/alerts-overview.md). Met logboek waarschuwingen kunnen gebruikers het Azure Analytics-platform gebruiken als basis voor waarschuwingen.
 
-De logboek waarschuwing bestaat uit logboek zoek regels die zijn gemaakt voor [Azure monitor logboeken](../../azure-monitor/learn/tutorial-viewdata.md) of [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events). Zie [logboek waarschuwingen maken in azure](../../azure-monitor/platform/alerts-log.md) voor meer informatie over het gebruik ervan.
+De logboek waarschuwing bestaat uit logboek zoek regels die zijn gemaakt voor [Azure monitor logboeken](../log-query/get-started-portal.md) of [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events). Zie [logboek waarschuwingen maken in azure](../../azure-monitor/platform/alerts-log.md) voor meer informatie over het gebruik ervan.
 
 > [!NOTE]
-> Populaire logboek gegevens uit [Azure monitor-logboeken](../../azure-monitor/learn/tutorial-viewdata.md) zijn nu ook beschikbaar op het meet platform in azure monitor. Voor detail weergave, [metrische waarschuwing voor logboeken](../../azure-monitor/platform/alerts-metric-logs.md)
+> Populaire logboek gegevens uit [Azure monitor-logboeken](../log-query/get-started-portal.md) zijn nu ook beschikbaar op het meet platform in azure monitor. Voor detail weergave, [metrische waarschuwing voor logboeken](../../azure-monitor/platform/alerts-metric-logs.md)
 
 
 ## <a name="log-search-alert-rule---definition-and-types"></a>Waarschuwings regel voor zoeken in Logboeken-definitie en typen
@@ -40,7 +41,7 @@ Zoek regels voor logboeken worden gedefinieerd door de volgende details:
 
 - **Drempel waarde**.  De resultaten van de zoek opdracht in het logboek worden geëvalueerd om te bepalen of er een waarschuwing moet worden gemaakt.  De drempel waarde verschilt voor de verschillende typen waarschuwings regels voor logboek zoeken.
 
-De logboeken voor het zoeken naar [Azure monitor logboeken](../../azure-monitor/learn/tutorial-viewdata.md) of [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events)kunnen van twee typen zijn. Elk van deze typen wordt gedetailleerd beschreven in de volgende secties.
+De logboeken voor het zoeken naar [Azure monitor logboeken](../log-query/get-started-portal.md) of [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events)kunnen van twee typen zijn. Elk van deze typen wordt gedetailleerd beschreven in de volgende secties.
 
 - **[Aantal resultaten](#number-of-results-alert-rules)**. Er wordt één waarschuwing gemaakt wanneer de aantal records die worden geretourneerd door de logboek zoekactie een opgegeven aantal overschrijdt.
 - **[Meting van metrische gegevens](#metric-measurement-alert-rules)**.  Er is een waarschuwing gemaakt voor elk object in de resultaten van het zoeken naar Logboeken met waarden die de opgegeven drempel waarde overschrijden.
@@ -89,7 +90,7 @@ Met regels voor **metrische waarderings** waarschuwingen wordt een waarschuwing 
     
 - **Drempel waarde**: de drempel waarde voor waarschuwings regels voor metrische metingen wordt gedefinieerd door een aggregatie-en een aantal schendingen.  Als een gegevens punt in de zoek opdracht voor logboeken deze waarde overschrijdt, wordt het beschouwd als een schending.  Als het aantal schendingen in voor een object in de resultaten de opgegeven waarde overschrijdt, wordt er een waarschuwing voor dat object gemaakt.
 
-Onjuiste configuratie van de optie *aggregatie op* of *metricColumn* kan waarschuwings regels veroorzaken die niet kunnen worden gestart. Zie [problemen oplossen als waarschuwings regel voor metrische meting onjuist is](alert-log-troubleshoot.md#metric-measurement-alert-rule-is-incorrect)voor meer informatie.
+Onjuiste configuratie van de optie *aggregatie op* of *metricColumn* kan waarschuwings regels veroorzaken die niet kunnen worden gestart. Zie [problemen oplossen als waarschuwings regel voor metrische meting onjuist is](./alerts-troubleshoot-log.md#metric-measurement-alert-rule-is-incorrect)voor meer informatie.
 
 #### <a name="example-of-metric-measurement-type-log-alert"></a>Voor beeld van een waarschuwing voor het type metrische maat eenheid
 
@@ -149,7 +150,7 @@ Om 1:20 uur als er geen nul records worden weer gegeven met de 500-resultaat cod
 De prijzen die van toepassing zijn op logboek waarschuwingen worden vermeld op de pagina [Azure monitor prijzen](https://azure.microsoft.com/pricing/details/monitor/) . In azure-facturen worden logboek waarschuwingen weer gegeven als type `microsoft.insights/scheduledqueryrules` met:
 
 - Waarschuwingen registreren op Application Insights die worden weer gegeven met de naam van een exacte waarschuwing samen met de eigenschappen van de resource groep en de waarschuwing
-- Waarschuwingen in het logboek vastleggen op Log Analytics die worden weer gegeven met de naam van de resource groep en van de waarschuwing. Wanneer gemaakt met behulp van de [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)
+- Waarschuwingen in het logboek vastleggen op Log Analytics die worden weer gegeven met de naam van de resource groep en van de waarschuwing. Wanneer gemaakt met behulp van de [scheduledQueryRules-API](/rest/api/monitor/scheduledqueryrules)
 
 De [verouderde log Analytics-API](../../azure-monitor/platform/api-alerts.md) heeft waarschuwings acties en schema's als onderdeel van log Analytics opgeslagen zoek opdracht en niet de juiste [Azure-resources](../../azure-resource-manager/management/overview.md). Daarom is het mogelijk om facturering in te scha kelen voor dergelijke verouderde logboek waarschuwingen die zijn gemaakt voor Log Analytics met behulp van Azure Portal **zonder** [over te scha kelen naar een nieuwe API](../../azure-monitor/platform/alerts-log-api-switch.md) of via [verouderde log Analytics API](../../azure-monitor/platform/api-alerts.md) -verborgen pseudo-waarschuwings regels worden gemaakt `microsoft.insights/scheduledqueryrules` voor facturering op Azure. De verborgen pseudo-waarschuwings regels die voor facturering zijn gemaakt `microsoft.insights/scheduledqueryrules` , worden weer gegeven als `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` samen met de eigenschappen van de resource groep en de waarschuwing.
 
@@ -158,15 +159,15 @@ De [verouderde log Analytics-API](../../azure-monitor/platform/api-alerts.md) he
 
 Voor het verwijderen van de verborgen scheduleQueryRules-resources die zijn gemaakt voor het factureren van waarschuwings regels met behulp van [verouderde log Analytics-API](api-alerts.md), kan de gebruiker het volgende doen:
 
-- Beide gebruikers kunnen [de API-voor keuren voor de waarschuwings regels in de werk ruimte log Analytics](../../azure-monitor/platform/alerts-log-api-switch.md) en zonder verlies van hun waarschuwings regels of bewaking verplaatsen naar Azure Resource Manager compatibele [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Hierdoor hoeft u geen pseudo-regels te maken om te worden gewaarschuwd voor facturering.
+- Beide gebruikers kunnen [de API-voor keuren voor de waarschuwings regels in de werk ruimte log Analytics](../../azure-monitor/platform/alerts-log-api-switch.md) en zonder verlies van hun waarschuwings regels of bewaking verplaatsen naar Azure Resource Manager compatibele [scheduledQueryRules-API](/rest/api/monitor/scheduledqueryrules). Hierdoor hoeft u geen pseudo-regels te maken om te worden gewaarschuwd voor facturering.
 - Of als de gebruiker de voor keur van de API niet wil wijzigen, moet de gebruiker de oorspronkelijke planning en waarschuwings actie **verwijderen** met behulp van [verouderde log Analytics-API](api-alerts.md) of verwijderen in [Azure Portal de oorspronkelijke waarschuwings regel](../../azure-monitor/platform/alerts-log.md#view--manage-log-alerts-in-azure-portal) voor het logboek
 
-Daarnaast worden voor de verborgen scheduleQueryRules-resources die zijn gemaakt voor het factureren van waarschuwings regels met behulp van [verouderde log Analytics-API](api-alerts.md), een wijzigings bewerking zoals put mislukt. Omdat het `microsoft.insights/scheduledqueryrules` type pseudo-regels het doel zijn om de waarschuwings regels te factureren die zijn gemaakt met [verouderde log Analytics-API](api-alerts.md). Het wijzigen van waarschuwings regels moet worden uitgevoerd met behulp van een [verouderde log Analytics API](api-alerts.md) (of) gebruiker kan [de API-voor keur voor de waarschuwings regels voor het gebruik van](../../azure-monitor/platform/alerts-log-api-switch.md) [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) wijzigen.
+Daarnaast worden voor de verborgen scheduleQueryRules-resources die zijn gemaakt voor het factureren van waarschuwings regels met behulp van [verouderde log Analytics-API](api-alerts.md), een wijzigings bewerking zoals put mislukt. Omdat het `microsoft.insights/scheduledqueryrules` type pseudo-regels het doel zijn om de waarschuwings regels te factureren die zijn gemaakt met [verouderde log Analytics-API](api-alerts.md). Het wijzigen van waarschuwings regels moet worden uitgevoerd met behulp van een [verouderde log Analytics API](api-alerts.md) (of) gebruiker kan [de API-voor keur voor de waarschuwings regels voor het gebruik van](../../azure-monitor/platform/alerts-log-api-switch.md) [scheduledQueryRules-API](/rest/api/monitor/scheduledqueryrules) wijzigen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over [het maken van waarschuwingen in Logboeken in azure](../../azure-monitor/platform/alerts-log.md).
 * Informatie [over webhooks in logboek waarschuwingen in azure](alerts-log-webhook.md).
 * Meer informatie over [Azure-waarschuwingen](../../azure-monitor/platform/alerts-overview.md).
-* Meer informatie over [Application Insights](../../azure-monitor/app/analytics.md).
+* Meer informatie over [Application Insights](../log-query/log-query-overview.md).
 * Meer informatie over [log Analytics](../../azure-monitor/log-query/log-query-overview.md).

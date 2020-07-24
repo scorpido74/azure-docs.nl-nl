@@ -3,16 +3,16 @@ title: Back-ups van Azure-bestands shares beheren met rest-API
 description: Meer informatie over het gebruik van REST API voor het beheren en bewaken van Azure-bestands shares waarvan een back-up is gemaakt door Azure Backup.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 1e1d3463aa5d6ee10782e2ee17a7c17ffd64cb61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4d1ee187fd1c45dfd043b28c0d4b3d5935f50e1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82184908"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073246"
 ---
 # <a name="manage-azure-file-share-backup-with-rest-api"></a>Back-ups van Azure-bestands shares beheren met REST API
 
-In dit artikel wordt uitgelegd hoe u taken kunt uitvoeren voor het beheren en bewaken van de Azure-bestands shares waarvan een back-up is gemaakt door [Azure backup](https://docs.microsoft.com/azure/backup/backup-overview).
+In dit artikel wordt uitgelegd hoe u taken kunt uitvoeren voor het beheren en bewaken van de Azure-bestands shares waarvan een back-up is gemaakt door [Azure backup](./backup-overview.md).
 
 ## <a name="monitor-jobs"></a>Taken controleren
 
@@ -38,7 +38,7 @@ De laatste reactie van een [trigger back-up rest API](backup-azure-file-share-re
 }
 ```
 
-De back-uptaak voor Azure-bestands share wordt geïdentificeerd door het veld **jobId** en kan worden gevolgd als [hier](https://docs.microsoft.com/rest/api/backup/jobdetails/) wordt beschreven met BEhulp van een GET-aanvraag.
+De back-uptaak voor Azure-bestands share wordt geïdentificeerd door het veld **jobId** en kan worden gevolgd als [hier](/rest/api/backup/jobdetails/) wordt beschreven met BEhulp van een GET-aanvraag.
 
 ### <a name="tracking-the-job"></a>De taak bijhouden
 
@@ -52,7 +52,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupJobs/e2ca2cf4-2eb9-4d4b-b16a-8e592d2a658b?api-version=2019-05-13'
 ```
 
-#### <a name="response"></a>Antwoord
+#### <a name="response"></a>Reactie
 
 Naam  | Type  |  Beschrijving
 --- | --- | ----
@@ -190,7 +190,7 @@ GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af
 
 ## <a name="stop-protection-and-delete-data"></a>Beveiliging stoppen en gegevens verwijderen
 
-Als u de beveiliging op een beveiligde bestands share wilt verwijderen en ook de back-upgegevens wilt verwijderen, moet u een Verwijder bewerking uitvoeren, zoals [hier](https://docs.microsoft.com/rest/api/backup/protecteditems/delete)wordt beschreven.
+Als u de beveiliging op een beveiligde bestands share wilt verwijderen en ook de back-upgegevens wilt verwijderen, moet u een Verwijder bewerking uitvoeren, zoals [hier](/rest/api/backup/protecteditems/delete)wordt beschreven.
 
 ```http
 DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}?api-version=2019-05-13

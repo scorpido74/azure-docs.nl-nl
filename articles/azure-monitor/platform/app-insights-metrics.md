@@ -7,17 +7,18 @@ ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
-ms.openlocfilehash: 12bc51e800ef5ccd4ad3c72d3860fb22bac5b749
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ca8aa62c4119b9b0b7bbed53cf722c694696ef5b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77664912"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073573"
 ---
 # <a name="application-insights-log-based-metrics"></a>Metrische gegevens op basis van het logboek Application Insights
 
 Met Application Insights metrische gegevens op basis van een logboek kunt u de status van uw bewaakte apps analyseren, krachtige Dash boards maken en waarschuwingen configureren. Er zijn twee soorten metrische gegevens:
 
-* [Metrische gegevens op basis](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#log-based-metrics) van een logboek achter de scène worden omgezet in [Kusto-query's](https://docs.microsoft.com/azure/kusto/query/) van opgeslagen gebeurtenissen.
+* [Metrische gegevens op basis](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#log-based-metrics) van een logboek achter de scène worden omgezet in [Kusto-query's](/azure/kusto/query/) van opgeslagen gebeurtenissen.
 * [Standaard metrische gegevens](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics) worden opgeslagen als vooraf samengestelde tijd reeksen.
 
 Aangezien *standaard metrische gegevens* vooraf worden geaggregeerd tijdens het verzamelen, hebben ze betere prestaties op het moment van de query. Dit maakt ze een betere keuze voor het maken van Dash boards en in realtime waarschuwingen. De *metrische gegevens op basis van een logboeken* hebben meer dimensies, waardoor ze de superieure optie zijn voor het analyseren van analyses en ad-hoc diagnostiek. Gebruik de [naam ruimte kiezer](metrics-getting-started.md#create-your-first-metric-chart) om te scha kelen tussen op logboek gebaseerde en standaard metrische gegevens in [Metrics Explorer](metrics-getting-started.md).
@@ -78,7 +79,7 @@ De metrische *beschikbaarheids tests* weerspiegelt het aantal van de webtests da
 
 |Meeteenheid|Ondersteunde aggregaties|Ondersteunde dimensies|
 |---|---|---|---|---|---|
-|Count|Count|Uitvoerings locatie, naam van test, resultaat van test|
+|Aantal|Aantal|Uitvoerings locatie, naam van test, resultaat van test|
 
 ```Kusto
 availabilityResults
@@ -181,9 +182,9 @@ De metrische gegevens in **fouten** tonen problemen met verwerkings aanvragen, a
 
 Deze metriek weerspiegelt het aantal uitzonde ringen dat is veroorzaakt door de toepassings code die in de browser wordt uitgevoerd. Alleen uitzonde ringen die worden bijgehouden met een ```trackException()``` Application Insights-API-aanroep, zijn opgenomen in de metrische gegevens.
 
-|Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|Notities|
+|Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|Opmerkingen|
 |---|---|---|---|
-|Count|Count|Geen|Bij versie op basis van een logboek functie worden **Sum** -aggregatie gebruikt|
+|Aantal|Aantal|Geen|Bij versie op basis van een logboek functie worden **Sum** -aggregatie gebruikt|
 
 ```Kusto
 exceptions
@@ -196,9 +197,9 @@ exceptions
 
 Het aantal mislukte afhankelijkheids aanroepen.
 
-|Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|Notities|
+|Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|Opmerkingen|
 |---|---|---|---|
-|Count|Count|Geen|Bij versie op basis van een logboek functie worden **Sum** -aggregatie gebruikt|
+|Aantal|Aantal|Geen|Bij versie op basis van een logboek functie worden **Sum** -aggregatie gebruikt|
 
 ```Kusto
 dependencies
@@ -211,9 +212,9 @@ dependencies
 
 Telkens wanneer u een uitzonde ring registreert op Application Insights, wordt er een aanroep naar de [methode trackException ()](../../azure-monitor/app/api-custom-events-metrics.md#trackexception) van de SDK. De metriek uitzonde ringen toont het aantal geregistreerde uitzonde ringen.
 
-|Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|Notities|
+|Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|Opmerkingen|
 |---|---|---|---|
-|Count|Count|Rolnaam van Cloud, instantie van Cloud-rol, apparaattype|Bij versie op basis van een logboek functie worden **Sum** -aggregatie gebruikt|
+|Aantal|Aantal|Rolnaam van Cloud, instantie van Cloud-rol, apparaattype|Bij versie op basis van een logboek functie worden **Sum** -aggregatie gebruikt|
 
 ```Kusto
 exceptions
@@ -225,9 +226,9 @@ exceptions
 
 Het aantal bijgehouden server aanvragen dat is gemarkeerd als *mislukt*. Standaard markeert de Application Insights SDK automatisch elke server aanvraag die de 5xx of 4xx van HTTP-antwoorden als een mislukte aanvraag heeft geretourneerd. U kunt deze logica aanpassen door de eigenschap *success* van het aanvraag-telemetrie in een [aangepaste telemetrie-initialisatie functie](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)te wijzigen.
 
-|Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|Notities|
+|Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|Opmerkingen|
 |---|---|---|---|
-|Count|Count|Cloud rolinstantie, naam van Cloud functie, reëel of synthetisch verkeer, prestaties aanvragen, respons code|Bij versie op basis van een logboek functie worden **Sum** -aggregatie gebruikt|
+|Aantal|Aantal|Cloud rolinstantie, naam van Cloud functie, reëel of synthetisch verkeer, prestaties aanvragen, respons code|Bij versie op basis van een logboek functie worden **Sum** -aggregatie gebruikt|
 
 ```Kusto
 requests
@@ -240,9 +241,9 @@ requests
 
 Met deze metriek wordt het aantal server uitzonderingen weer gegeven.
 
-|Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|Notities|
+|Meeteenheid|Ondersteunde aggregaties|Vooraf samengestelde dimensies|Opmerkingen|
 |---|---|---|---|
-|Count|Count|Rolnaam van Cloud, instantie van Cloud-rol|Bij versie op basis van een logboek functie worden **Sum** -aggregatie gebruikt|
+|Aantal|Aantal|Rolnaam van Cloud, instantie van Cloud-rol|Bij versie op basis van een logboek functie worden **Sum** -aggregatie gebruikt|
 
 ```Kusto
 exceptions

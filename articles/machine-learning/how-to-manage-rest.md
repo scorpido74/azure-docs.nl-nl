@@ -10,11 +10,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 01/31/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 6b74f9cdc5b3317edc8bf2339ba1d2c29f43e55b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90ad8cc87f1d6a1893b96f6201a4260c03c94fee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560162"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072211"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>Azure ML-resources maken, uitvoeren en verwijderen met REST
 
@@ -47,7 +48,7 @@ Beheer REST-aanvragen worden geverifieerd met een OAuth2 impliciete stroom. Deze
 - De client-ID (die wordt gekoppeld aan het gemaakte token)
 - Uw client geheim (dat u moet beveiligen)
 
-U moet deze waarden van het antwoord hebben op het maken van de Service-Principal zoals wordt beschreven in [verificatie instellen voor Azure machine learning resources en werk stromen](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication). Als u uw bedrijfs abonnement gebruikt, bent u mogelijk niet gemachtigd om een service-principal te maken. In dat geval moet u een [gratis of betaald persoonlijk abonnement](https://aka.ms/AMLFree)gebruiken.
+U moet deze waarden van de reactie hebben op het maken van de Service-Principal. Deze waarden worden beschreven in [verificatie instellen voor Azure machine learning resources en werk stromen](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication). Als u uw bedrijfs abonnement gebruikt, bent u mogelijk niet gemachtigd om een service-principal te maken. In dat geval moet u een [gratis of betaald persoonlijk abonnement](https://aka.ms/AMLFree)gebruiken.
 
 Een Token ophalen:
 
@@ -199,15 +200,15 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/mod
 -H "Authorization:Bearer {your-access-token}"
 ```
 
-U ziet dat bij het weer geven van experimenten het pad begint met `history/v1.0` while om modellen weer te geven, het pad begint met `modelmanagement/v1.0` . De REST API is onderverdeeld in verschillende operationele groepen, elk met een uniek pad. De API-referentie documenten op de koppelingen hieronder staan de bewerkingen, para meters en antwoord codes voor de verschillende bewerkingen.
+U ziet dat bij het weer geven van experimenten het pad begint met `history/v1.0` while om modellen weer te geven, het pad begint met `modelmanagement/v1.0` . De REST API is onderverdeeld in verschillende operationele groepen, elk met een uniek pad. 
 
-|Onderwerp|Pad|Verwijzing|
-|-|-|-|
-|Artifacts|artefact/v 2.0/|[REST API referentie](https://docs.microsoft.com/rest/api/azureml/artifacts)|
-|Gegevensopslag|Data Store/v 1.0/|[REST API referentie](https://docs.microsoft.com/rest/api/azureml/datastores)|
-|Hyperparameters afstemmen|Hyperdrive/v 1.0/|[REST API referentie](https://docs.microsoft.com/rest/api/azureml/hyperparametertuning)|
-|Modellen|Modelmanagement/v 1.0/|[REST API referentie](https://docs.microsoft.com/rest/api/azureml/modelsanddeployments/mlmodels)|
-|Uitvoer.gesch|uitvoering/v 1.0/en geschiedenis/v 1.0/|[REST API referentie](https://docs.microsoft.com/rest/api/azureml/runs)|
+|Gebied|Pad|
+|-|-|
+|Artifacts|artefact/v 2.0/|
+|Gegevensopslag|Data Store/v 1.0/|
+|Hyperparameters afstemmen|Hyperdrive/v 1.0/|
+|Modellen|Modelmanagement/v 1.0/|
+|Uitvoer.gesch|uitvoering/v 1.0/en geschiedenis/v 1.0/|
 
 U kunt de REST API verkennen met behulp van het algemene patroon van:
 

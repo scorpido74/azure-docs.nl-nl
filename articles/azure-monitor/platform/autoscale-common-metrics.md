@@ -4,11 +4,12 @@ description: Meer informatie over de metrische gegevens die vaak worden gebruikt
 ms.topic: conceptual
 ms.date: 12/6/2016
 ms.subservice: autoscale
-ms.openlocfilehash: 2c335168683212337876c963a7cfdb441d0ac69a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 57bffede3b6c6c137da2feea32ad467a13f71a37
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76845575"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073518"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure Monitor automatisch schalen van algemene metrische gegevens
 
@@ -16,7 +17,7 @@ ms.locfileid: "76845575"
 
 Azure Monitor automatisch schalen, kunt u het aantal actieve instanties omhoog of omlaag schalen op basis van telemetriegegevens (metrische gegevens). In dit document worden algemene metrische gegevens beschreven die u mogelijk wilt gebruiken. In het Azure Portal kunt u de metriek kiezen van de resource die u wilt schalen. U kunt echter ook een wille keurige metriek kiezen van een andere resource om door te schalen.
 
-Azure Monitor automatisch schalen is alleen van toepassing op [Virtual Machine Scale sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [app service-Web apps](https://azure.microsoft.com/services/app-service/web/)en [API Management Services](https://docs.microsoft.com/azure/api-management/api-management-key-concepts). Andere Azure-Services gebruiken verschillende schaal methoden.
+Azure Monitor automatisch schalen is alleen van toepassing op [Virtual Machine Scale sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [app service-Web apps](https://azure.microsoft.com/services/app-service/web/)en [API Management Services](../../api-management/api-management-key-concepts.md). Andere Azure-Services gebruiken verschillende schaal methoden.
 
 ## <a name="compute-metrics-for-resource-manager-based-vms"></a>Reken gegevens voor virtuele machines op basis van Resource Manager
 Standaard worden metrische gegevens op basis van Resource Manager Virtual Machines en Virtual Machine Scale Sets basis waarden (op het niveau van de host). Wanneer u de diagnostische gegevens verzameling voor een Azure-VM en VMSS configureert, worden de diagnostische Azure-extensie bovendien ook prestatie meter items van het gast besturingssysteem (meestal ' metrische gegevens van het besturings systeem ' genoemd).  U gebruikt al deze metrische gegevens in regels voor automatisch schalen.
@@ -51,10 +52,10 @@ U kunt een waarschuwing maken voor de volgende metrische gegevens:
 | \Processor(_Total)\% Processor Time |Percentage |
 | \Processor (_Total) \% beschermde tijd |Percentage |
 | Gebruikers tijd van \Processor (_Total) \% |Percentage |
-| \Processor-frequentie \Processor Information (_Total) |Count |
-| \System\Processes |Count |
-| \Process (_Total) \Thread aantal |Count |
-| \Process (_Total) \Handle aantal |Count |
+| \Processor-frequentie \Processor Information (_Total) |Aantal |
+| \System\Processes |Aantal |
+| \Process (_Total) \Thread aantal |Aantal |
+| \Process (_Total) \Handle aantal |Aantal |
 | \Memory \% toegewezen bytes in gebruik |Percentage |
 | \Memory\Available Bytes |Bytes |
 | \Memory\Committed bytes |Bytes |
@@ -70,11 +71,11 @@ U kunt een waarschuwing maken voor de volgende metrische gegevens:
 | \PhysicalDisk (_Total) \Gelezen bytes per seconde |BytesPerSecond |
 | \PhysicalDisk (_Total) \Gelezen Lees bewerkingen in bytes per seconde |BytesPerSecond |
 | \PhysicalDisk (_Total) \Gelezen geschreven bytes per seconde |BytesPerSecond |
-| \PhysicalDisk (_Total) \Avg.-wachtrij lengte voor de schijf |Count |
-| \PhysicalDisk (_Total) \Avg.-wachtrij lengte voor lezen van schijf |Count |
-| \PhysicalDisk (_Total) \Avg. schijf lengte schrijf wachtrij |Count |
+| \PhysicalDisk (_Total) \Avg.-wachtrij lengte voor de schijf |Aantal |
+| \PhysicalDisk (_Total) \Avg.-wachtrij lengte voor lezen van schijf |Aantal |
+| \PhysicalDisk (_Total) \Avg. schijf lengte schrijf wachtrij |Aantal |
 | \LogicalDisk (_Total) \% beschik bare ruimte |Percentage |
-| \LogicalDisk (_Total) \Resterende MB |Count |
+| \LogicalDisk (_Total) \Resterende MB |Aantal |
 
 ### <a name="guest-os-metrics-linux-vms"></a>Gegevens van virtuele machines van het gast besturingssysteem Linux-Vm's
 Wanneer u een virtuele machine in azure maakt, wordt de diagnostische gegevens standaard ingeschakeld met behulp van de diagnostische extensie.
@@ -118,15 +119,15 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | \PhysicalDisk\AverageReadTime |Seconden |
 | \PhysicalDisk\AverageWriteTime |Seconden |
 | \PhysicalDisk\AverageTransferTime |Seconden |
-| \PhysicalDisk\AverageDiskQueueLength |Count |
+| \PhysicalDisk\AverageDiskQueueLength |Aantal |
 | \NetworkInterface\BytesTransmitted |Bytes |
 | \NetworkInterface\BytesReceived |Bytes |
-| \NetworkInterface\PacketsTransmitted |Count |
-| \NetworkInterface\PacketsReceived |Count |
+| \NetworkInterface\PacketsTransmitted |Aantal |
+| \NetworkInterface\PacketsReceived |Aantal |
 | \NetworkInterface\BytesTotal |Bytes |
-| \NetworkInterface\TotalRxErrors |Count |
-| \NetworkInterface\TotalTxErrors |Count |
-| \NetworkInterface\TotalCollisions |Count |
+| \NetworkInterface\TotalRxErrors |Aantal |
+| \NetworkInterface\TotalTxErrors |Aantal |
+| \NetworkInterface\TotalCollisions |Aantal |
 
 ## <a name="commonly-used-app-service-server-farm-metrics"></a>Gegevens die vaak worden gebruikt App Service (server farm)
 U kunt ook automatisch schalen uitvoeren op basis van algemene gegevens van webservers, zoals de lengte van de http-wachtrij. De naam van de metrische waarde is **HttpQueueLength**.  In de volgende sectie worden metrische gegevens van de beschik bare server farm (App Service) weer gegeven.
@@ -144,8 +145,8 @@ U kunt een melding ontvangen over of schalen op basis van deze metrische gegeven
 | --- | --- |
 | CpuPercentage |Percentage |
 | MemoryPercentage |Percentage |
-| DiskQueueLength |Count |
-| HttpQueueLength |Count |
+| DiskQueueLength |Aantal |
+| HttpQueueLength |Aantal |
 | BytesReceived |Bytes |
 | Bytes sent |Bytes |
 
@@ -185,4 +186,3 @@ Voor VM-schaal sets kunt u de instelling voor automatisch schalen in het Resourc
 > Voor Service Bus bestaat het concept van de resource groep niet, maar Azure Resource Manager maakt een standaard resource groep per regio. De resource groep bevindt zich doorgaans in de indeling ' default-ServiceBus-[regio] '. Bijvoorbeeld ' default-ServiceBus-oostelijke ', ' default-ServiceBus-Westus ', ' default-ServiceBus-AustraliaEast ' enzovoort.
 >
 >
-

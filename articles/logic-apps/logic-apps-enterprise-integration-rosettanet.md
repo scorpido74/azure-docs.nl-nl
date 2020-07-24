@@ -8,11 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: 2cc2ac08b9624c1d1d9bee9ce91a7c91189d7f2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 833e2a6f64301c39ba2b9e7959585c3edeab9445
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74792419"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072588"
 ---
 # <a name="exchange-rosettanet-messages-for-b2b-enterprise-integration-in-azure-logic-apps"></a>Exchange RosettaNet-berichten voor B2B Enter prise integration in Azure Logic Apps
 
@@ -80,8 +81,8 @@ Voer de volgende stappen uit om een PIP-proces configuratie toe te voegen aan uw
 
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
-   | **Naam** | Yes | Uw PIP-naam |
-   | **PIP-code** | Yes | De PIP-code van drie cijfers. Zie [RosettaNet PIPs](https://docs.microsoft.com/biztalk/adapters-and-accelerators/accelerator-rosettanet/rosettanet-pips)voor meer informatie. |
+   | **Naam** | Ja | Uw PIP-naam |
+   | **PIP-code** | Yes | De PIP-code van drie cijfers. Zie [RosettaNet PIPs](/biztalk/adapters-and-accelerators/accelerator-rosettanet/rosettanet-pips)voor meer informatie. |
    | **PIP-versie** | Yes | Het PIP-versie nummer, dat beschikbaar is op basis van de geselecteerde PIP-code |
    ||||
 
@@ -111,7 +112,7 @@ Voer de volgende stappen uit om een PIP-proces configuratie toe te voegen aan uw
 
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
-   | **Naam** | Yes | De naam van de overeenkomst |
+   | **Naam** | Ja | De naam van de overeenkomst |
    | **Type overeenkomst** | Yes | Selecteer **RosettaNet**. |
    | **Host-partner** | Yes | Een overeenkomst vereist zowel een host-als een gast partner. De host-partner vertegenwoordigt de organisatie die de overeenkomst configureert. |
    | **Host-id** | Yes | Een id voor de host-partner |
@@ -201,7 +202,7 @@ Voor het versnellen van de ontwikkeling en het aanbevelen van integratie patrone
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
    | **Bericht** | Yes | Het RosettaNet-bericht dat moet worden gedecodeerd  |
-   | **Headers** | Yes | De HTTP-headers die de waarden opgeven voor de versie, die de RNIF-versie is, en het antwoord type, waarmee het communicatie type tussen de partners wordt aangegeven en synchroon of asynchroon kan zijn |
+   | **Kopteksten** | Yes | De HTTP-headers die de waarden opgeven voor de versie, die de RNIF-versie is, en het antwoord type, waarmee het communicatie type tussen de partners wordt aangegeven en synchroon of asynchroon kan zijn |
    | **Role** | Yes | De rol van de host-partner in het PIP- |
    ||||
 

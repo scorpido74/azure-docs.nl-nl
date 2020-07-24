@@ -6,11 +6,12 @@ ms.date: 07/10/2019
 ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: d31c856e17348c23ad61130869af6ae440d3050d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9696167d9addc3029a53f25e289d17bd3add263
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81114310"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073628"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>Werking van het hulpprogramma voor migratie
 
@@ -63,7 +64,7 @@ Alle klassieke waarschuwingen voor opslag accounts kunnen worden gemigreerd, met
 - SASThrottlingError
 - ThrottlingError
 
-Klassieke waarschuwings regels op percentage metrieken moeten worden gemigreerd op basis van [de toewijzing tussen oude en nieuwe metrische opslag gegevens](https://docs.microsoft.com/azure/storage/common/storage-metrics-migration#metrics-mapping-between-old-metrics-and-new-metrics). Drempel waarden moeten op de juiste wijze worden aangepast, omdat de nieuwe beschik bare waarde een absoluut item is.
+Klassieke waarschuwings regels op percentage metrieken moeten worden gemigreerd op basis van [de toewijzing tussen oude en nieuwe metrische opslag gegevens](../../storage/common/storage-metrics-migration.md#metrics-mapping-between-old-metrics-and-new-metrics). Drempel waarden moeten op de juiste wijze worden aangepast, omdat de nieuwe beschik bare waarde een absoluut item is.
 
 Klassieke waarschuwings regels op AnonymousThrottlingError, SASThrottlingError en ThrottlingError moeten worden opgesplitst in twee nieuwe waarschuwingen omdat er geen gecombineerde metriek is die dezelfde functionaliteit biedt. Drempel waarden moeten op de juiste manier worden aangepast.
 

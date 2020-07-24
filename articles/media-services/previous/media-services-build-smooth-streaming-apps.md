@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 65e1fa07d2af15e9ccb5f85ce4645e3e6c287952
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 44f10bd49a768004fc63a3287799e6b79dd5bae1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960364"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071902"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Een Smooth Streaming Windows Store-toepassing bouwen  
 
@@ -53,7 +53,7 @@ In deze les maakt u een Windows Store-toepassing met een media element-besturing
 
 ![Smooth Streaming voor beeld van Windows Store-toepassing][PlayerApplication]
 
-Zie voor meer informatie over het ontwikkelen van Windows Store-toepassing [fantastische apps ontwikkelen voor Windows 8](https://msdn.microsoft.com/windows/apps/br229512.aspx). Deze les bevat de volgende procedures:
+Zie voor meer informatie over het ontwikkelen van Windows Store-toepassing [fantastische apps ontwikkelen voor Windows 8](https://developer.microsoft.com/en-us/windows/). Deze les bevat de volgende procedures:
 
 1. Een Windows Store-project maken
 2. De gebruikers interface (XAML) ontwerpen
@@ -66,14 +66,14 @@ Zie voor meer informatie over het ontwikkelen van Windows Store-toepassing [fant
 1. Klik in het menu **bestand** op **Nieuw**en klik vervolgens op **project**.
 1. Typ of Selecteer in het dialoog venster Nieuw project de volgende waarden:
 
-    | Name | Waarde |
+    | Naam | Waarde |
     | --- | --- |
     | Sjabloon groep |Geïnstalleerd/templates/Visual C#/Windows Store |
     | Template |Lege app (XAML) |
-    | Name |SSPlayer |
+    | Naam |SSPlayer |
     | Locatie |C:\SSTutorials |
     | Naam van de oplossing |SSPlayer |
-    | Map maken voor oplossing |geselecteerde |
+    | Map maken voor oplossing |(geselecteerd) |
 
 1. Klik op **OK**.
 
@@ -82,7 +82,7 @@ Zie voor meer informatie over het ontwikkelen van Windows Store-toepassing [fant
 1. Klik in Solution Explorer met de rechter muisknop op **SSPlayer**en klik vervolgens op **verwijzing toevoegen**.
 1. Typ of selecteer de volgende waarden:
 
-    | Name | Waarde |
+    | Naam | Waarde |
     | --- | --- |
     | Verwijzings groep |Windows/uitbrei dingen |
     | Verwijzing |Selecteer micro soft Smooth Streaming client SDK voor Windows 8 en micro soft Visual C++ runtime-pakket |
@@ -1045,4 +1045,3 @@ U hebt Les 4 voltooid.  In deze les voegt u de functionaliteit toe om sporen te 
 
 [PlayerApplication]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-1.png
 [CodeViewPic]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-2.png
-

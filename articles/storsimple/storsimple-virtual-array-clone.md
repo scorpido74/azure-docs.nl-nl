@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
-ms.openlocfilehash: 1596503f5f0a333bf061015827596464aed7558e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd82f7dd821991bbcf57cc7d8105575e0baa4d12
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513645"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87070695"
 ---
 # <a name="clone-from-a-backup-of-your-storsimple-virtual-array"></a>Klonen vanuit een back-up van uw virtuele StorSimple-matrix
 
@@ -127,7 +127,7 @@ Elke share heeft een map *. backups* die de meest recente back-ups bevat. U kunt
    * **Geplande back-ups** met de naam &lt; apparaatnaam &gt; instelling DAILYSCHEDULE-JJJMMDD-hhmmss-UTC.
    * **Hand matige back-ups** met de naam ad-hoc-JJJMMDD-hhmmss-UTC.
      
-     ![](./media/storsimple-virtual-array-clone/image14.png)
+     ![Scherm opname van bestanden Verkenner met de map. backups. In die map wordt de map hand matige back-ups geselecteerd.](./media/storsimple-virtual-array-clone/image14.png)
 
 2. De back-up met de meest recente versie van het verwijderde bestand identificeren. Hoewel de mapnaam een UTC-tijds tempel bevat in elk van de voor gaande gevallen, is het tijdstip waarop de map is gemaakt de werkelijke apparaattijd waarop de back-up is gestart. Gebruik de time stamp van de map om de back-ups te zoeken en te identificeren.
 

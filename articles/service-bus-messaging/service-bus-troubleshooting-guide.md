@@ -2,12 +2,13 @@
 title: Gids voor probleem oplossing voor Azure Service Bus | Microsoft Docs
 description: Dit artikel bevat een lijst met Azure Service Bus Messa ging-uitzonde ringen en voorgestelde acties die moeten worden uitgevoerd wanneer de uitzonde ring optreedt.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 3b2759916e1f9ef0cec660157f577ff54cd39928
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/15/2020
+ms.openlocfilehash: 6071aae85daa1852c9384656d7caf5e2deffd84e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340449"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071311"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Gids voor probleem oplossing voor Azure Service Bus
 In dit artikel vindt u tips en aanbevelingen voor het oplossen van problemen die kunnen optreden bij het gebruik van Azure Service Bus. 
@@ -15,7 +16,7 @@ In dit artikel vindt u tips en aanbevelingen voor het oplossen van problemen die
 ## <a name="connectivity-certificate-or-timeout-issues"></a>Problemen met connectiviteit, certificaten of time-outs
 De volgende stappen kunnen u helpen bij het oplossen van problemen met connectiviteit/certificaat/time-out voor alle services onder *. servicebus.windows.net. 
 
-- Blader naar of [wget](https://www.gnu.org/software/wget/) `https://<yournamespace>.servicebus.windows.net/` . Het helpt te controleren of er problemen zijn met de IP-filtering of het virtuele netwerk of de certificaat keten (het meest gebruikelijk wanneer u Java SDK gebruikt).
+- Blader naar of [wget](https://www.gnu.org/software/wget/) `https://<yournamespace>.servicebus.windows.net/` . Het helpt te controleren of er problemen zijn met de IP-filtering of het virtuele netwerk of de certificaat keten, die gemeen schappelijk zijn bij het gebruik van Java SDK.
 
     Een voor beeld van een geslaagd bericht:
     
@@ -53,25 +54,48 @@ De volgende stappen kunnen u helpen bij het oplossen van problemen met connectiv
 - Verkrijg een netwerk tracering als de vorige stappen niet helpen en analyseren met behulp van hulpprogram ma's zoals [wireshark](https://www.wireshark.org/). Neem zo nodig contact op met [Microsoft ondersteuning](https://support.microsoft.com/) . 
 
 ## <a name="issues-that-may-occur-with-service-upgradesrestarts"></a>Problemen die zich kunnen voordoen met Service-upgrades/opnieuw opstarten
-Het upgraden van de back-end-service en opnieuw opstarten kan de volgende invloed hebben op uw toepassingen:
 
+### <a name="symptoms"></a>Symptomen
 - Aanvragen kunnen tijdelijk worden beperkt.
 - Er is mogelijk een neerzetten in inkomende berichten/aanvragen.
 - Het logboek bestand kan fout berichten bevatten.
 - De verbinding van de toepassingen kan enkele seconden worden verbroken met de service.
 
-Als de toepassings code gebruikmaakt van SDK, is het beleid voor opnieuw proberen al ingebouwd en actief. De toepassing zal opnieuw verbinding maken zonder belang rijke gevolgen voor de toepassing/werk stroom.
+### <a name="cause"></a>Oorzaak
+Het upgraden van de back-end-service en opnieuw starten kan deze problemen in uw toepassingen veroorzaken.
+
+### <a name="resolution"></a>Oplossing
+Als de toepassings code SDK gebruikt, is het beleid voor opnieuw proberen al ingebouwd en actief. De toepassing zal opnieuw verbinding maken zonder belang rijke gevolgen voor de toepassing/werk stroom.
 
 ## <a name="unauthorized-access-send-claims-are-required"></a>Onbevoegde toegang: verzend claims zijn vereist
+
+### <a name="symptoms"></a>Symptomen 
 Deze fout kan optreden wanneer u probeert een Service Bus onderwerp te openen vanuit Visual Studio op een on-premises computer met behulp van een door de gebruiker toegewezen beheerde identiteit met verzend machtigingen.
 
 ```bash
 Service Bus Error: Unauthorized access. 'Send' claim\(s\) are required to perform this operation.
 ```
 
+### <a name="cause"></a>Oorzaak
+De identiteit heeft geen machtigingen voor toegang tot het onderwerp Service Bus. 
+
+### <a name="resolution"></a>Oplossing
 Om deze fout op te lossen, installeert u de bibliotheek [micro soft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/) .  Zie [Local Development Authentication](..\key-vault\service-to-service-authentication.md#local-development-authentication)(Engelstalig) voor meer informatie. 
 
 Zie [een beheerde identiteit verifiëren met Azure Active Directory om toegang te krijgen tot Azure service bus resources](service-bus-managed-service-identity.md)voor meer informatie over het toewijzen van machtigingen aan rollen.
+
+## <a name="service-bus-exception-put-token-failed"></a>Service Bus-uitzonde ring: put-token mislukt
+
+### <a name="symptoms"></a>Symptomen
+Wanneer u probeert meer dan 1000 berichten te verzenden met behulp van dezelfde Service Bus verbinding, wordt het volgende fout bericht weer gegeven: 
+
+`Microsoft.Azure.ServiceBus.ServiceBusException: Put token failed. status-code: 403, status-description: The maximum number of '1000' tokens per connection has been reached.` 
+
+### <a name="cause"></a>Oorzaak
+Er is een limiet voor het aantal tokens dat wordt gebruikt voor het verzenden en ontvangen van berichten met één verbinding met een Service Bus naam ruimte. Het is 1000. 
+
+### <a name="resolution"></a>Oplossing
+Open een nieuwe verbinding met de Service Bus naam ruimte om meer berichten te verzenden.
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende artikelen: 

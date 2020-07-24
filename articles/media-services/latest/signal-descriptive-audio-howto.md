@@ -12,12 +12,12 @@ ms.topic: article
 ms.custom: ''
 ms.date: 09/25/2019
 ms.author: juliako
-ms.openlocfilehash: 0d8f88e6c2fe273efa969278146de67ba18eaecf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 99e0a78ea1aed0ecf08618c919e7949c5645de5b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72392187"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072084"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>Beschrijvende geluids sporen voor signalen
 
@@ -27,14 +27,14 @@ In dit artikel wordt beschreven hoe u een video codeert, een alleen-audio-MP4-be
 
 ## <a name="prerequisites"></a>Vereisten
 
-- [Maak een Media Services-account](create-account-cli-how-to.md).
-- Volg de stappen in [Access Azure Media Services API with the Azure CLI](access-api-cli-how-to.md) (Toegang tot de Azure Media Services-API met de Azure CLI) en sla de referenties op. U hebt deze nodig voor toegang tot de API.
+- [Een Azure Media Services-account maken](./create-account-howto.md).
+- Volg de stappen in [Access Azure Media Services API with the Azure CLI](./access-api-howto.md) (Toegang tot de Azure Media Services-API met de Azure CLI) en sla de referenties op. U hebt deze nodig voor toegang tot de API.
 - Bekijk [dynamische verpakkingen](dynamic-packaging-overview.md).
 - Bekijk de zelf studie [Video's uploaden, coderen en streamen](stream-files-tutorial-with-api.md) .
 
 ## <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>Een invoerasset maken en er een lokaal bestand in uploaden 
 
-Met de functie **CreateInputAsset** wordt een nieuwe [invoerasset](https://docs.microsoft.com/rest/api/media/assets) gemaakt en het opgegeven lokale videobestand wordt hierin geladen. Deze **asset** wordt gebruikt als invoer voor uw coderingstaak. In Media Services v3 kan de invoer van een **taak** een **Asset**zijn of inhoud die u beschikbaar maakt voor uw Media Services-account via https-url's. 
+Met de functie **CreateInputAsset** wordt een nieuwe [invoerasset](/rest/api/media/assets) gemaakt en het opgegeven lokale videobestand wordt hierin geladen. Deze **Asset** wordt gebruikt als invoer voor uw coderings taak. In Media Services v3 kan de invoer van een **taak** een **Asset**zijn of inhoud die u beschikbaar maakt voor uw Media Services-account via https-url's. 
 
 Zie [dit artikel](job-input-from-http-how-to.md) voor meer informatie over het coderen van een HTTPS-URL.  
 
@@ -42,8 +42,8 @@ In Media Services v3 kunt u Azure Storage-API's gebruiken om bestanden te upload
 
 De volgende functie voert deze acties uit:
 
-* Maakt een **asset** 
-* Haalt een beschrijfbare [SAS-URL](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) op voor de [container in opslag](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container) van de asset
+* Hiermee maakt u een **Asset** 
+* Hiermee wordt een Beschrijf bare [SAS-URL](../../storage/common/storage-sas-overview.md) naar de container van het activum [in de opslag](../../storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-a-container) opgehaald
 * Uploadt het bestand naar de container in opslag met de SAS-URL
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateInputAsset)]
@@ -52,7 +52,7 @@ Als u de naam van het gemaakte invoer element wilt door geven aan andere methode
 
 ## <a name="create-an-output-asset-to-store-the-result-of-the-encoding-job"></a>Een uitvoer activum maken om het resultaat van de coderings taak op te slaan
 
-In de [uitvoerasset](https://docs.microsoft.com/rest/api/media/assets) wordt het resultaat van de coderingstaak opgeslagen. De volgende functie laat zien hoe u een uitvoer activum maakt.
+In de [uitvoerasset](/rest/api/media/assets) wordt het resultaat van de coderingstaak opgeslagen. De volgende functie laat zien hoe u een uitvoer activum maakt.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateOutputAsset)]
 
@@ -62,7 +62,7 @@ In het geval van dit artikel geeft u de `outputAsset.Name` waarde door aan `Subm
 
 ## <a name="create-a-transform-and-a-job-that-encodes-the-uploaded-file"></a>Een trans formatie en een taak maken die het geüploade bestand codeert
 
-Bij het coderen of verwerken van inhoud in Media Services is het een gangbaar patroon om de coderingsinstellingen als recept in te stellen. U dient vervolgens een **taak** in te dienen om het recept toe te passen op een video. Door voor elke nieuwe video nieuwe taken in te dienen, past u dat recept toe op alle video's in de bibliotheek. Een recept in Media Services wordt aangeroepen als een **transformatie**. Zie [trans formaties en jobs](transform-concept.md)voor meer informatie. Het voorbeeld dat wordt beschreven in deze zelfstudie definieert een recept dat de video codeert om het te streamen naar tal van iOS- en Android-apparaten. 
+Bij het coderen of verwerken van inhoud in Media Services is het een gangbaar patroon om de coderingsinstellingen als recept in te stellen. U dient vervolgens een **taak** in te dienen om het recept toe te passen op een video. Door voor elke nieuwe video nieuwe taken in te dienen, past u dat recept toe op alle video's in de bibliotheek. Een recept in Media Services wordt aangeroepen als een **transformatie**. Zie [Transformaties en taken](./transforms-jobs-concept.md) voor meer informatie. Het voorbeeld dat wordt beschreven in deze zelfstudie definieert een recept dat de video codeert om het te streamen naar tal van iOS- en Android-apparaten. 
 
 In het volgende voor beeld wordt een Transform gemaakt (als deze niet bestaat).
 
@@ -76,7 +76,7 @@ Met de volgende functie wordt een taak verzonden.
 
 De taak neemt enige tijd in beslag en wanneer deze is voltooid, wordt u hiervan op de hoogte gesteld. U kunt het beste Event Grid gebruiken om te wachten tot de taak is voltooid.
 
-De taak doorloopt doorgaans de volgende statussen: **gepland**, **in de wachtrij geplaatst**, **verwerkt**, **voltooid** (de eind status). Als er een fout is opgetreden in de taak, krijgt u de **fout** status. Als de taak momenteel wordt geannuleerd, krijgt u de melding **Wordt geannuleerd** en **Geannuleerd** wanneer het annuleren is voltooid.
+De taak doorloopt doorgaans de volgende statussen: **gepland**, **in de wachtrij geplaatst**, **verwerkt**, **voltooid** (de eind status). Als bij de taak een fout is opgetreden is, krijgt u de status **Fout**. Als de taak momenteel wordt geannuleerd, krijgt u de melding **Wordt geannuleerd** en **Geannuleerd** wanneer het annuleren is voltooid.
 
 Zie [Handling Event grid Events](reacting-to-media-services-events.md)(Engelstalig) voor meer informatie.
 
@@ -202,14 +202,14 @@ Wanneer uw coderings taak is voltooid, bevat de uitvoer-Asset de bestanden die d
 
 ## <a name="get-a-streaming-locator"></a>Een streaming-Locator ophalen
 
-Nadat de codering is voltooid, bestaat de volgende stap eruit om de video in de uitvoerasset beschikbaar te maken voor weergave door clients. U kunt dit doen in twee stappen: maak eerst een [streaming-locator](https://docs.microsoft.com/rest/api/media/streaminglocators) en bouw vervolgens de streaming-URL's die clients kunnen gebruiken. 
+Nadat de codering is voltooid, bestaat de volgende stap eruit om de video in de uitvoerasset beschikbaar te maken voor weergave door clients. U kunt dit doen in twee stappen: maak eerst een [streaming-locator](/rest/api/media/streaminglocators) en bouw vervolgens de streaming-URL's die clients kunnen gebruiken. 
 
 Het proces van het maken van een **streaming-locator** wordt publiceren genoemd. De **streaming-locator** is standaard onmiddellijk geldig nadat u de API-aanroepen hebt gemaakt en totdat deze wordt verwijderd, tenzij u de optionele start- en eindtijden configureert. 
 
-Bij het maken van een [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) moet u de gewenste **StreamingPolicyName** opgeven. In dit voor beeld moet u in-the-Clear (of niet-versleutelde inhoud) streamen, zodat het vooraf gedefinieerde beleid voor Clear streaming (**PredefinedStreamingPolicy. ClearStreamingOnly**) wordt gebruikt.
+Bij het maken van een [StreamingLocator](/rest/api/media/streaminglocators) moet u de gewenste **StreamingPolicyName** opgeven. In dit voor beeld moet u in-the-Clear (of niet-versleutelde inhoud) streamen, zodat het vooraf gedefinieerde beleid voor Clear streaming (**PredefinedStreamingPolicy. ClearStreamingOnly**) wordt gebruikt.
 
 > [!IMPORTANT]
-> Wanneer u een aangepast [streamingbeleid](https://docs.microsoft.com/rest/api/media/streamingpolicies) gebruikt, moet u een beperkte set met dergelijke beleidsregels ontwerpen voor uw Media Service-account, en deze opnieuw gebruiken voor de StreamingLocators wanneer dezelfde versleutelingsopties en protocollen nodig zijn. Uw Media Service-account heeft een quotum voor het aantal streaming-beleidsvermeldingen. U hoeft geen nieuw streaming-beleid te maken voor elke streaming-locator.
+> Wanneer u een aangepast [streamingbeleid](/rest/api/media/streamingpolicies) gebruikt, moet u een beperkte set met dergelijke beleidsregels ontwerpen voor uw Media Service-account, en deze opnieuw gebruiken voor de StreamingLocators wanneer dezelfde versleutelingsopties en protocollen nodig zijn. Uw Media Service-account heeft een quotum voor het aantal streaming-beleidsvermeldingen. U hoeft geen nieuw streaming-beleid te maken voor elke streaming-locator.
 
 Bij de volgende code wordt ervan uitgegaan dat u de functie met een unieke locatorName aanroept.
 
@@ -219,7 +219,7 @@ Terwijl in het voorbeeld in dit onderwerp streaming wordt behandeld, kunt u deze
 
 ### <a name="get-streaming-urls"></a>Streaming-URL's ophalen
 
-Nu de [streaming-locator](https://docs.microsoft.com/rest/api/media/streaminglocators) is gemaakt, kunt u de streaming-URL's ophalen, zoals weergegeven in **GetStreamingURLs**. Als u een URL wilt samenstellen, moet u de hostnaam van het [streaming-eindpunt](https://docs.microsoft.com/rest/api/media/streamingendpoints) en het pad van de **streaming-locator** samenvoegen. In dit voorbeeld wordt het *standaard* **streaming-eindpunt** gebruikt. Wanneer u voor het eerst een Media Service-account maakt, wordt dit *standaard* **streaming-eindpunt** gestopt. Daarom moet u **Start** aanroepen.
+Nu de [streaming-locator](/rest/api/media/streaminglocators) is gemaakt, kunt u de streaming-URL's ophalen, zoals weergegeven in **GetStreamingURLs**. Als u een URL wilt samenstellen, moet u de hostnaam van het [streaming-eindpunt](/rest/api/media/streamingendpoints) en het pad van de **streaming-locator** samenvoegen. In dit voorbeeld wordt het *standaard***streaming-eindpunt** gebruikt. Wanneer u voor het eerst een Media Service-account maakt, wordt dit *standaard***streaming-eindpunt** gestopt. Daarom moet u **Start** aanroepen.
 
 > [!NOTE]
 > In deze methode hebt u de locatorName nodig die is gebruikt bij het maken van de **streaming-locator** voor de uitvoerasset.
@@ -233,7 +233,7 @@ In dit artikel gebruiken we Azure Media Player om de stream te testen.
 > [!NOTE]
 > Als een speler wordt gehost op een https-site, moet u de URL bijwerken naar 'https'.
 
-1. Open een webbrowser en ga naar [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/) .
+1. Open een browser en ga naar [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/).
 2. Plak in het vak **URL:** een van de waarden van de streaming-URL die u hebt ontvangen van uw toepassing. 
  
      U kunt de URL plakken in de HLS-, Dash-, of Smooth-indeling. Azure Media Player schakelt over op naar een geschikt streaming-protocol zodat de stream automatisch op uw apparaat wordt afgespeeld.
