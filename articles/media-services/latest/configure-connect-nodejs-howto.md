@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: juliako
-ms.openlocfilehash: 0381a2e2b8fd2a8b60e7cb702e0336a5678df057
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ac82687cb28344f682c58a132f04d71184d5d74
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74896101"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001193"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>Verbinding maken met Media Services v3 API-Node.js
 
@@ -26,7 +27,7 @@ In dit artikel wordt beschreven hoe u verbinding maakt met de Azure Media Servic
 ## <a name="prerequisites"></a>Vereisten
 
 - [Node.js](https://nodejs.org/en/download/) installeren.
-- [Maak een Media Services-account](create-account-cli-how-to.md). Zorg ervoor dat u de naam van de resource groep en de naam van het Media Services account vergeet.
+- [Een Azure Media Services-account maken](./create-account-howto.md). Zorg ervoor dat u de naam van de resource groep en de naam van het Media Services account vergeet.
 
 > [!IMPORTANT]
 > Bekijk [naam conventies](media-services-apis-overview.md#naming-conventions).
@@ -53,7 +54,7 @@ In dit artikel wordt beschreven hoe u verbinding maakt met de Azure Media Servic
 
 De volgende pakketten moeten worden opgegeven:
 
-|Pakket|Description|
+|Pakket|Beschrijving|
 |---|---|
 |`azure-arm-mediaservices`|Azure Media Services SDK. <br/>Om ervoor te zorgen dat u het meest recente Azure Media Services-pakket gebruikt, controleert u [NPM Azure-arm-Media Services installeren](https://www.npmjs.com/package/azure-arm-mediaservices/).|
 |`azure-storage`|Opslag-SDK. Wordt gebruikt bij het uploaden van bestanden naar assets.|
@@ -69,7 +70,7 @@ npm install azure-arm-mediaservices
 
 1. Maak een JS-bestand met behulp van uw favoriete editor.
 1. Open het bestand en plak de volgende code.
-1. Stel de waarden in de sectie endpoint config in op de waarden die u hebt ontvangen van [Access-api's](access-api-cli-how-to.md).
+1. Stel de waarden in de sectie endpoint config in op de waarden die u hebt ontvangen van [Access-api's](./access-api-howto.md).
 
 ```js
 'use strict';
@@ -130,4 +131,3 @@ node index.js
 ## <a name="next-steps"></a>Volgende stappen
 
 Raadpleeg de [Node.js-naslagdocumentatie](/javascript/api/overview/azure/mediaservices/management) van Media Services en bekijk [voorbeelden](https://github.com/Azure-Samples/media-services-v3-node-tutorials) waarin u ziet hoe u Media Services-API gebruikt met Node.js.
-

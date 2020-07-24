@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 9a8805666e1e162f76cf5fa6f7d828833c573bed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40d372eb5569f3a4079acda3ab1e43b3e86cc113
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510447"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999595"
 ---
 # <a name="part-four-mount-a-file-share-from-a-domain-joined-vm"></a>Deel vier: een bestands share koppelen vanaf een virtuele machine die lid is van een domein
 
@@ -33,9 +33,18 @@ Voordat u de bestands share kunt koppelen, moet u ervoor zorgen dat u de volgend
 
 Vervang de waarden van de tijdelijke aanduiding door uw eigen waarden en gebruik vervolgens de volgende opdracht om de Azure-bestands share te koppelen:
 
-```cli
+```PSH
 # Always mount your share using.file.core.windows.net, even if you setup a private endpoint for your share.
-net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name>
+$connectTestResult = Test-NetConnection -ComputerName <storage-account-name>.file.core.windows.net -Port 445
+if ($connectTestResult.TcpTestSucceeded)
+{
+  net use <desired-drive letter>: \\<storage-account-name>.file.core.windows.net\<fileshare-name>
+} 
+else 
+{
+  Write-Error -Message "Unable to reach the Azure storage account via port 445. Check to make sure your organization or ISP is not blocking port 445, or use Azure P2S VPN, Azure S2S VPN, or Express Route to tunnel SMB traffic over a different port."
+}
+
 ```
 
 Als u problemen ondervindt met het koppelen van AD DS referenties, raadpleegt u [Azure files niet koppelen aan AD-referenties](storage-troubleshoot-windows-file-connection-problems.md#unable-to-mount-azure-files-with-ad-credentials) voor hulp.

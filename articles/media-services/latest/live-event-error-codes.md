@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/4/2020
 ms.author: inhenkel
-ms.openlocfilehash: e039a240465478e86ce816890219e5dfaa07dfbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f86c157652f6219afdf1df1da9b8ad385f059aa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82791048"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000948"
 ---
 # <a name="media-services-live-event-error-codes"></a>Fout codes voor Live-gebeurtenissen Media Services
 
@@ -26,7 +26,7 @@ In de tabellen in deze sectie worden de fout codes voor [Live-gebeurtenissen](li
 
 ## <a name="liveeventconnectionrejected"></a>LiveEventConnectionRejected
 
-Wanneer u zich abonneert op de [Event grid](https://docs.microsoft.com/azure/event-grid/) gebeurtenissen voor een live gebeurtenis, ziet u mogelijk een van de volgende fouten van de [LiveEventConnectionRejected](media-services-event-schemas.md#liveeventconnectionrejected) -gebeurtenis.
+Wanneer u zich abonneert op de [Event grid](../../event-grid/index.yml) gebeurtenissen voor een live gebeurtenis, ziet u mogelijk een van de volgende fouten van de [LiveEventConnectionRejected](media-services-event-schemas.md#liveeventconnectionrejected) -gebeurtenis.
 
 | Resultaatcode | Beschrijving |
 | ----------- | ----------- |
@@ -54,7 +54,7 @@ Mogelijk wordt een van de volgende fouten weer geven in de [LiveEventEncoderDisc
 |Onbekende fout codes|Deze fout codes kunnen variëren van geheugen fout om vermeldingen in de hash-map te dupliceren.|
 
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 [Fout codes voor streaming-eind punten (oorsprong)](streaming-endpoint-error-codes.md)
 

@@ -12,11 +12,12 @@ ms.topic: article
 ms.date: 5/28/2020
 ms.author: inhenkel
 ms.custom: references_regions
-ms.openlocfilehash: cefd366e29fe1c6f68ec38816247f78bb53cd6e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6ecc8cad4480528477f6bb470c7bc32ee2a20e11
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84196246"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001346"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Clouds en regio's waarin Azure Media Services v3 bestaat
 
@@ -38,13 +39,13 @@ Azure Media Services v3 is beschikbaar via Azure Resource Manager-manifest in Gl
 [LiveTranscription](live-transcription.md) is beschikbaar in de volgende regio's:
 
 - Azië - zuidoost
-- Europa -west
+- Europa - west
 - Europa - noord
 - VS - oost
-- VS - centraal
+- Central US
 - VS - zuid-centraal
 - VS - west 2
-- Brazilië - zuid
+- Brazil South
 
 ## <a name="regionsgeographieslocations"></a>Regio's/geografi/locaties
 
@@ -52,7 +53,7 @@ Azure Media Services v3 is beschikbaar via Azure Resource Manager-manifest in Gl
 
 ### <a name="region-code-name"></a>Regio code naam
 
-Wanneer u de **locatie** parameter moet opgeven, moet u de naam van de regio code opgeven als **locatie** waarde. Als u de code naam wilt ophalen van de regio waarin uw account zich bevindt en de aanroep moet worden doorgestuurd naar, kunt u de volgende regel uitvoeren in [Azure cli](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)
+Wanneer u de **locatie** parameter moet opgeven, moet u de naam van de regio code opgeven als **locatie** waarde. Als u de code naam wilt ophalen van de regio waarin uw account zich bevindt en de aanroep moet worden doorgestuurd naar, kunt u de volgende regel uitvoeren in [Azure cli](/cli/azure/?view=azure-cli-latest)
 
 ```azurecli-interactive
 az account list-locations
@@ -79,32 +80,32 @@ De volgende eind punten zijn belang rijk om te weten wanneer u verbinding maakt 
 
 ### <a name="global-azure"></a>Wereld wijd Azure
 
-|Eindpunten||
-| --- | --- |
+| Service | Eindpunt |
+| ------- | -------- |
 | Azure Resource Manager |  `https://management.azure.com/` |
 | Verificatie | `https://login.microsoftonline.com/` |
 | Token doelgroep | `https://management.core.windows.net/` |
 
 ### <a name="azure-government"></a>Azure Government
 
-|Eindpunten||
-| --- | --- |
+| Service | Eindpunt |
+| ------- | -------- |
 | Azure Resource Manager |  `https://management.usgovcloudapi.net/` |
 | Verificatie | `https://login.microsoftonline.us/` |
 | Token doelgroep | `https://management.core.usgovcloudapi.net/` |
 
 ### <a name="azure-germany"></a>Azure Duitsland
 
-| Eindpunten ||
-| --- | --- |  
+| Service | Eindpunt |
+| ------- | -------- |
 | Azure Resource Manager | `https://management.cloudapi.de/` |
 | Verificatie | `https://login.microsoftonline.de/` |
 | Token doelgroep | `https://management.core.cloudapi.de/`|
 
 ### <a name="azure-china-21vianet"></a>Azure China 21Vianet
 
-|Eindpunten||
-| --- | --- |
+| Service | Eindpunt |
+| ------- | -------- |
 | Azure Resource Manager | `https://management.chinacloudapi.cn/` |
 | Verificatie | `https://login.chinacloudapi.cn/` |
 | Token doelgroep |  `https://management.core.chinacloudapi.cn/` |

@@ -8,11 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 05/09/2020
-ms.openlocfilehash: 81c1c95e2af7b537a12c8c86245b009005aa0aa2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aebce8f284ed4bb21d99efffc8dd6d0c51b39533
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83005288"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001482"
 ---
 # <a name="encode-and-decode-flat-files-in-azure-logic-apps-by-using-the-enterprise-integration-pack"></a>Platte bestanden coderen en decoderen in Azure Logic Apps met behulp van de Enterprise Integration Pack
 
@@ -24,7 +25,7 @@ Voordat u XML-inhoud naar een zakelijke partner verzendt in een Business-to-busi
 
 * De logische app waarvoor u de **platte bestands** connector wilt gebruiken en een trigger waarmee de werk stroom van de logische app wordt gestart. De connector voor **platte bestanden** biedt alleen acties, niet voor triggers. U kunt de trigger of een andere actie gebruiken voor het invoeren van de XML-inhoud in uw logische app voor het coderen of decoderen. Als u geen ervaring hebt met Logic apps, raadpleegt u [Quick Start: uw eerste logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-* Een [integratie account](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) dat is gekoppeld aan uw Azure-abonnement en dat is [gekoppeld aan de logische app](logic-apps-enterprise-integration-accounts.md#link-account) , waar u van plan bent om de **platte bestands** connector te gebruiken. De logische app en het integratie account moeten zich op dezelfde locatie of Azure-regio bevinden.
+* Een [integratie account](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) dat is gekoppeld aan uw Azure-abonnement en dat is [gekoppeld aan de logische app](./logic-apps-enterprise-integration-create-integration-account.md#link-account) , waar u van plan bent om de **platte bestands** connector te gebruiken. De logische app en het integratie account moeten zich op dezelfde locatie of Azure-regio bevinden.
 
 * Een plat bestands [schema](logic-apps-enterprise-integration-schemas.md) dat u hebt geüpload naar uw integratie account voor het coderen of decoderen van de XML-inhoud
 

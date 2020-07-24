@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 38168db9706bd168b3edc2e740eaea40b23d4b0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e293bb98405affd824d4bbc50b6f24c5a0e3c11
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510582"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999612"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>Deel drie: machtigingen voor mappen en bestands niveau configureren via SMB 
 
@@ -51,7 +51,16 @@ De volgende machtigingen zijn opgenomen in de hoofdmap van een bestands share:
 Gebruik de Windows- `net use` opdracht om de Azure-bestands share te koppelen. Vergeet niet om de waarden van de tijdelijke aanduidingen in het volgende voor beeld te vervangen door uw eigen waarden. Zie [een Azure-bestands share gebruiken met Windows](storage-how-to-use-files-windows.md)voor meer informatie over het koppelen van bestands shares. 
 
 ```
-net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> /user:Azure\<storage-account-name> <storage-account-key>
+$connectTestResult = Test-NetConnection -ComputerName <storage-account-name>.file.core.windows.net -Port 445
+if ($connectTestResult.TcpTestSucceeded)
+{
+  net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> /user:Azure\<storage-account-name> <storage-account-key>
+} 
+else 
+{
+  Write-Error -Message "Unable to reach the Azure storage account via port 445. Check to make sure your organization or ISP is not blocking port 445, or use Azure P2S VPN,   Azure S2S VPN, or Express Route to tunnel SMB traffic over a different port."
+}
+
 ```
 
 Als u problemen ondervindt bij het maken van verbinding met Azure Files, raadpleegt u [het hulp programma voor probleem oplossing dat is gepubliceerd voor Azure files-montage fouten in Windows](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5). We bieden ook [richt lijnen](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access) voor het omzeilen van scenario's wanneer poort 445 wordt geblokkeerd. 

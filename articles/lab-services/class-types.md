@@ -3,11 +3,12 @@ title: Voor beeld klassen typen op Azure Lab Services | Microsoft Docs
 description: Biedt een aantal typen klassen waarvoor u Labs kunt instellen met behulp van Azure Lab Services.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 8564f5ece9d6df7db852c5ac16f00f1455d013ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 21159aacfcd87bb929eaeaf9884b0275c7005e1a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443754"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001620"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>Overzicht van klassen typen-Azure Lab Services
 
@@ -45,12 +46,7 @@ U kunt een sjabloon machine instellen in Azure Lab Services met de hulpprogram m
 
 Zie [een Lab instellen om data Science te leren met python-en Jupyter-notebooks](class-type-jupyter-notebook.md)voor gedetailleerde informatie over het instellen van dit type Lab.
 
-## <a name="mobile-app-development-with-android-studio"></a>Ontwikkeling met Android Studio via de mobiele app
-U kunt een Lab instellen in Azure Lab Services om een inleidende klasse voor de ontwikkeling van mobiele toepassingen te leren. Deze klasse richt zich op mobiele Android-toepassingen die op de [Google Play Store](https://play.google.com/store/apps)kunnen worden gepubliceerd.  Studenten leren hoe u [Android Studio](https://developer.android.com/studio) kunt gebruiken om toepassingen te bouwen.  [Visual Studio emulator voor Android](https://visualstudio.microsoft.com/vs/msft-android-emulator/) wordt gebruikt om de toepassing lokaal te testen.
-
-Voor gedetailleerde informatie over het instellen van dit type Lab raadpleegt u [een Lab instellen om de ontwikkeling van mobiele toepassingen te leren maken met Android Studio](class-type-mobile-dev-android-studio.md).
-
-## <a name="big-data-analytics"></a>Big data-analyse
+## <a name="big-data-analytics"></a>Analyse van big data
 U kunt een GPU-Lab instellen om een big data Analytics-klasse te leren. Met dit type klasse leren cursisten hoe ze grote hoeveel heden gegevens verwerken en de algoritmen voor machine-en statistische lessen Toep assen om gegevens inzichten af te leiden. Een belang rijke doel stelling voor studenten is het leren gebruiken van hulpprogram ma's voor gegevens analyse, zoals het open-source software pakket van Apache Hadoop waarmee u big data kunt opslaan, beheren en verwerken. 
 
 Zie [een Lab instellen voor Big Data Analytics met docker-implementatie van HortonWorks-gegevens platform](class-type-big-data-analytics.md)voor meer informatie over het instellen van dit type Lab.

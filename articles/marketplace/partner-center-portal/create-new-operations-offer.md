@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: 621d657f527e5307ed3a0b583e4c9171005d4f8c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 2c6c6b3fb4f863840b39de6f56fe473be693fe87
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121833"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001431"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Een Dynamics 365 for Operations-aanbieding maken
 
@@ -128,7 +128,7 @@ Hier volgt een voor beeld van hoe informatie over aanbiedingen wordt weer gegeve
 1. Logo
 2. Producten
 3. Categorieën
-4. Bedrijfstakken
+4. Branches
 5. Ondersteunings adres (koppeling)
 6. Gebruiksvoorwaarden
 7. Privacybeleid
@@ -144,7 +144,7 @@ De naam die u hier invoert, wordt aan klanten weer gegeven als de titel van de a
 
 Geef een korte beschrijving van uw aanbieding, Maxi maal 100 tekens. Deze beschrijving kan worden gebruikt in Zoek resultaten voor Marketplace.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Beschrijving
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -295,7 +295,7 @@ Als dit de eerste keer is dat u deze aanbieding publiceert, kunt u het volgende 
     - **Niet gestart** : de sectie is niet gerakend en moet worden voltooid.
     - **Onvolledig** : de sectie bevat fouten die moeten worden hersteld of waarvoor meer informatie moet worden verstrekt. Ga terug naar de sectie (s) en werk deze bij.
     - **Voltooid** : de sectie is voltooid, alle vereiste gegevens zijn opgegeven en er zijn geen fouten. Alle secties van de aanbieding moeten een volledige status hebben voordat u de aanbieding kunt indienen.
-- Geef in de sectie **opmerkingen voor certificering** test instructies op voor het certificerings team om ervoor te zorgen dat uw app correct wordt getest, naast eventuele aanvullende notities die nuttig zijn voor de uitleg van uw app.
+- Geef in de sectie **opmerkingen voor certificering** test instructies op voor het certificerings team om ervoor te zorgen dat uw app correct wordt getest, naast eventuele aanvullende notities die nuttig zijn voor de uitleg van uw app. Voor meer informatie over het testen van instructies en het volt ooien van een eerste publicatie raadpleegt u [AppSource Dynamics 365 Finance and Operations functionele Validation](https://docs.microsoft.com/azure/marketplace/dynamics-365-finance-operations-functional-validation).
 - Verzend de aanbieding voor publicatie door **verzenden**te selecteren. We sturen u een e-mail om u te laten weten wanneer een preview-versie van de aanbieding beschikbaar is om te controleren en goed te keuren. Ga terug naar het partner centrum en selecteer **Go-Live** voor de aanbieding om uw aanbieding naar het publiek te publiceren.
 
 ## <a name="next-step"></a>Volgende stap

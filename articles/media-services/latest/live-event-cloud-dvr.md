@@ -14,17 +14,18 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 05/07/2020
 ms.author: juliako
-ms.openlocfilehash: 231aeb210a7b97e8c0cfd0e21c48053c660b6128
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c5afe45ce864ba76d5d637df3534d426d39167a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82995806"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000989"
 ---
 # <a name="use-time-shifting-and-live-outputs-to-create-on-demand-video-playback"></a>Gebruik tijd verschuivingen en live uitvoer om video weergave op aanvraag te maken
 
-In Azure Media Services is een [Live uitvoer](https://docs.microsoft.com/rest/api/media/liveoutputs) object net als een digitale video recorder waarmee uw live stream wordt onderschept en opgenomen in een asset in uw Media Services-account. De opgenomen inhoud wordt opgeslagen in de container die is gedefinieerd door de bron van de [Asset](https://docs.microsoft.com/rest/api/media/assets) (de container bevindt zich in het Azure Storage-account dat aan uw account is gekoppeld). Met de live uitvoer kunt u ook enkele eigenschappen van de uitgaande Live Stream beheren, zoals hoeveel van de stroom wordt bewaard in de registratie van het archief (bijvoorbeeld de capaciteit van de Cloud-DVR) of wanneer viewers kunnen beginnen met het bekijken van de live stream. Het archief op schijf is een circulair Archief ' venster ' dat alleen de hoeveelheid inhoud bevat die is opgegeven in de eigenschap **archiveWindowLength** van de actieve uitvoer. Inhoud die buiten dit venster valt, wordt automatisch verwijderd uit de opslag container en kan niet worden hersteld. De waarde archiveWindowLength vertegenwoordigt een duur van ISO-8601 time span (bijvoorbeeld PTHH: MM: SS), waarmee de capaciteit van het DVR wordt opgegeven. De waarde kan worden ingesteld van Mini maal één minuut tot Maxi maal 25 uur.
+In Azure Media Services is een [Live uitvoer](/rest/api/media/liveoutputs) object net als een digitale video recorder waarmee uw live stream wordt onderschept en opgenomen in een asset in uw Media Services-account. De opgenomen inhoud wordt opgeslagen in de container die is gedefinieerd door de bron van de [Asset](/rest/api/media/assets) (de container bevindt zich in het Azure Storage-account dat aan uw account is gekoppeld). Met de live uitvoer kunt u ook enkele eigenschappen van de uitgaande Live Stream beheren, zoals hoeveel van de stroom wordt bewaard in de registratie van het archief (bijvoorbeeld de capaciteit van de Cloud-DVR) of wanneer viewers kunnen beginnen met het bekijken van de live stream. Het archief op schijf is een circulair Archief ' venster ' dat alleen de hoeveelheid inhoud bevat die is opgegeven in de eigenschap **archiveWindowLength** van de actieve uitvoer. Inhoud die buiten dit venster valt, wordt automatisch verwijderd uit de opslag container en kan niet worden hersteld. De waarde archiveWindowLength vertegenwoordigt een duur van ISO-8601 time span (bijvoorbeeld PTHH: MM: SS), waarmee de capaciteit van het DVR wordt opgegeven. De waarde kan worden ingesteld van Mini maal één minuut tot Maxi maal 25 uur.
 
-De relatie tussen een live gebeurtenis en de live uitvoer is vergelijkbaar met de traditionele TV-uitzending, in dat een kanaal (live event) een constante stroom video en een opname (live-uitvoer) is gericht op een specifiek tijds segment (bijvoorbeeld avond nieuws van 6:17.30 tot 7:13:00). Zodra u de stroom naar de live gebeurtenis hebt gestroomd, kunt u de streaming-gebeurtenis starten door een Asset, live output en streaming-Locator te maken. Live uitvoer archiveert de stream en maakt deze beschikbaar voor gebruikers via het [streaming-eind punt](https://docs.microsoft.com/rest/api/media/streamingendpoints). U kunt meerdere Live outputs (Maxi maal drie) maken voor een live-gebeurtenis met verschillende archief lengten en-instellingen. Zie de sectie [algemene stappen](live-streaming-overview.md#general-steps) voor informatie over de werk stroom voor live streamen.
+De relatie tussen een live gebeurtenis en de live uitvoer is vergelijkbaar met de traditionele TV-uitzending, in dat een kanaal (live event) een constante stroom video en een opname (live-uitvoer) is gericht op een specifiek tijds segment (bijvoorbeeld avond nieuws van 6:17.30 tot 7:13:00). Zodra u de stroom naar de live gebeurtenis hebt gestroomd, kunt u de streaming-gebeurtenis starten door een Asset, live output en streaming-Locator te maken. Live uitvoer archiveert de stream en maakt deze beschikbaar voor gebruikers via het [streaming-eind punt](/rest/api/media/streamingendpoints). U kunt meerdere Live outputs (Maxi maal drie) maken voor een live-gebeurtenis met verschillende archief lengten en-instellingen. Zie de sectie [algemene stappen](live-streaming-overview.md#general-steps) voor informatie over de werk stroom voor live streamen.
 
 ## <a name="using-a-dvr-during-an-event"></a>Een DVR gebruiken tijdens een gebeurtenis
 
@@ -38,7 +39,7 @@ Een live-gebeurtenis ondersteunt Maxi maal drie gelijktijdig actieve live-uitvoe
 
 ## <a name="creating-an-archive-for-on-demand-playback"></a>Een archief maken voor het afspelen op aanvraag
 
-De Asset waarin de live uitvoer wordt gearchiveerd, wordt automatisch een Asset op aanvraag, wanneer de live uitvoer wordt verwijderd. U moet alle Live outputs verwijderen voordat een live gebeurtenis kan worden gestopt. U kunt een optionele vlag [removeOutputsOnStop](https://docs.microsoft.com/rest/api/media/liveevents/stop#request-body) gebruiken om live-uitvoer automatisch te verwijderen bij het stoppen.
+De Asset waarin de live uitvoer wordt gearchiveerd, wordt automatisch een Asset op aanvraag, wanneer de live uitvoer wordt verwijderd. U moet alle Live outputs verwijderen voordat een live gebeurtenis kan worden gestopt. U kunt een optionele vlag [removeOutputsOnStop](/rest/api/media/liveevents/stop#request-body) gebruiken om live-uitvoer automatisch te verwijderen bij het stoppen.
 
 Zelfs nadat u de gebeurtenis hebt gestopt en verwijderd, kunnen gebruikers de gearchiveerde inhoud als een video op aanvraag streamen, mits u de Asset niet verwijdert. Een activum mag niet worden verwijderd als het wordt gebruikt door een gebeurtenis; de gebeurtenis moet eerst worden verwijderd.
 

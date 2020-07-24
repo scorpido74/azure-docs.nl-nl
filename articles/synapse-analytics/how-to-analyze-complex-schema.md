@@ -9,31 +9,28 @@ ms.subservice: ''
 ms.date: 06/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: b02c3627cea5e441739c77d1882505c6b82489bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad6761466cc958235557609e929e641a0311ee43
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84908120"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999165"
 ---
-# <a name="analyze-complex-data-types-in-synapse"></a>Complexe gegevens typen in Synapse analyseren
+# <a name="analyze-complex-data-types-in-azure-synapse-analytics"></a>Complexe gegevens typen analyseren in azure Synapse Analytics
 
-Dit artikel is relevant voor Parquet-bestanden en-containers in **Azure Synapse-koppeling voor Azure Cosmos DB**. Hierin wordt uitgelegd hoe gebruikers Spark of SQL kunnen gebruiken om gegevens te lezen of te transformeren met een complex schema, zoals matrices of geneste structuren. Het volgende voor beeld wordt uitgevoerd met één document, maar kan eenvoudig worden geschaald naar miljarden documenten met Spark of SQL. In de onderstaande code wordt PySpark (python) gebruikt.
+Dit artikel is relevant voor Parquet-bestanden en-containers in de [Synapse-koppeling voor Azure Cosmos DB](.\synapse-link\how-to-connect-synapse-link-cosmos-db.md). Hierin wordt uitgelegd hoe gebruikers Spark of SQL kunnen gebruiken om gegevens te lezen of te transformeren met complexe schema's zoals matrices of geneste structuren. Het volgende voor beeld wordt met één document voltooid, maar kan eenvoudig worden geschaald naar miljarden documenten met Spark of SQL. De code die in dit artikel is opgenomen, maakt gebruik van PySpark (python).
 
-## <a name="use-case"></a>Use-case
+## <a name="use-case"></a>Toepassing
 
-Met moderne gegevens typen zijn complexe gegevens typen vaak gebruikelijk en vertegenwoordigen ze een uitdaging voor gegevens technici. Het analyseren van genest schema en matrices bevat enkele uitdagingen:
-* Complex om SQL-query's te schrijven
-* Het is lastig om het gegevens type van geneste kolommen te wijzigen
-* Problemen met prestaties treffers met diep geneste objecten
+Complexe gegevens typen worden steeds vaker gebruikt en vormen een uitdaging voor gegevens technici, zoals het analyseren van geneste schema's en matrices bevat vaak tijdrovende en complexe SQL-query's. Het kan ook lastig zijn om het gegevens type geneste kolommen te hernoemen of te casten. Prestatie problemen doen zich ook voor bij het werken met diep geneste objecten.
 
-Data engineers moeten begrijpen hoe deze gegevens typen efficiënt kunnen worden verwerkt en ze gemakkelijk toegankelijk zijn voor iedereen.
+Data engineers moeten begrijpen hoe complexe gegevens typen efficiënt kunnen worden verwerkt en eenvoudig toegankelijk zijn voor iedereen.
 
-In het onderstaande voor beeld wordt Synapse Spark gebruikt voor het lezen en transformeren van objecten via gegevens frames naar een vlakke structuur. Synapse SQL Server wordt gebruikt om direct objecten op te vragen en deze resultaten te retour neren als een normale tabel.
+In het volgende voor beeld wordt Synapse Spark gebruikt voor het lezen en transformeren van objecten naar een platte structuur via gegevens frames. Synapse SQL Server wordt gebruikt om dergelijke objecten direct te doorzoeken en deze resultaten als een normale tabel te retour neren.
 
 ## <a name="what-are-arrays-and-nested-structures"></a>Wat zijn matrices en geneste structuren?
 
-Het volgende object is afkomstig uit app Insight. In dit object zijn geneste structuren, maar ook matrices die geneste structuren bevatten.
+Het volgende object is afkomstig uit [app Insight](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). In dit object zijn geneste structuren en matrices die geneste structuren bevatten.
 
 ```json
 {
@@ -73,24 +70,24 @@ Het volgende object is afkomstig uit app Insight. In dit object zijn geneste str
 ```
 
 ### <a name="schema-example-of-arrays-and-nested-structures"></a>Schema voorbeeld van matrices en geneste structuren
-Bij het afdrukken van het schema van het gegevens frame van dat object ( **DF**genoemd) met de opdracht **DF. printschema**, zien we de volgende representatie:
+Wanneer u het schema van het gegevens frame van het object ( **DF**) afdrukt met de opdracht `df.printschema` , zien we de volgende representatie:
 
-* de gele kleur vertegenwoordigt geneste structuur
-* de groene kleur vertegenwoordigt een matrix met twee elementen
+* Gele kleur vertegenwoordigt geneste structuur
+* Een groene kleur vertegenwoordigt een matrix met twee elementen
 
 [![Schema oorsprong](./media/how-to-complex-schema/schema-origin.png)](./media/how-to-complex-schema/schema-origin.png#lightbox)
 
-_rid, _ts en _etag zijn toegevoegd aan het systeem als het document is opgenomen in Azure Cosmos DB transactionele Store.
+**_rid**, **_ts**en **_etag** zijn aan het systeem toegevoegd als het document is opgenomen in azure Cosmos DB transactionele Store.
 
 Het bovenstaande gegevens frame telt vijf kolommen en één rij alleen. Na de trans formatie bevat het gegevens frame met de curator 13 kolommen en twee rijen in tabel vorm.
 
 ## <a name="flatten-nested-structures-and-explode-arrays-with-apache-spark"></a>Geneste structuren platen en matrices exploderen met Apache Spark
 
-Met Synapse Spark kunt u eenvoudig geneste structuren transformeren naar kolommen en matrix elementen in meerdere rijen. De onderstaande stappen kunnen door iedereen worden gebruikt voor hun eigen implementatie.
+Met Synapse Spark kunt u eenvoudig geneste structuren omzetten in kolommen en matrix elementen in meerdere rijen. De volgende stappen kunnen worden gebruikt voor de implementatie.
 
-[![Stappen voor mousserende trans formaties](./media/how-to-complex-schema/spark-transfo-steps.png)](./media/how-to-complex-schema/spark-transfo-steps.png#lightbox)
+[![Stappen voor mousserende trans formaties](./media/how-to-complex-schema/spark-transform-steps.png)](./media/how-to-complex-schema/spark-transform-steps.png#lightbox)
 
-**Stap 1**: we definiëren een functie voor het afvlakking van genest schema. Deze functie kan zonder wijziging worden gebruikt. Maak een cel in een Pyspark-notebook met die functie:
+**Stap 1**: we definiëren een functie voor het afvlakken van het geneste schema. Deze functie kan zonder wijziging worden gebruikt. Maak een cel in een [PySpark-notebook](quickstart-apache-spark-notebook.md) met de volgende functie:
 
 ```python
 from pyspark.sql.functions import col
@@ -123,7 +120,7 @@ def flatten_df(nested_df):
     return nested_df.select(columns)
 ```
 
-**Stap 2**: gebruik de functie voor het afvlakken van het geneste schema van het gegevens frame **VG** in een nieuw gegevens frame **df_flat**:
+**Stap 2**: gebruik de functie voor het afvlakken van het geneste schema van het gegevens frame (**DF**) in een nieuw gegevens frame `df_flat` :
 
 ```python
 from pyspark.sql.types import StringType, StructField, StructType
@@ -133,7 +130,7 @@ display(df_flat.limit(10))
 
 De weergave functie moet 10 kolommen en één rij retour neren. De matrix en de geneste elementen ervan zijn nog steeds beschikbaar.
 
-**Stap 3**: we transformeren nu de matrix **context_custom_dimensions** in het gegevens frame **df_flat** naar een nieuwe data frame **df_flat_explode**. In de onderstaande code definiëren we ook welke kolom er wordt geselecteerd:
+**Stap 3**: de matrix `context_custom_dimensions` in het gegevens frame transformeren `df_flat` naar een nieuwe data frame `df_flat_explode` . In de volgende code definiëren we ook welke kolom moet worden geselecteerd:
 
 ```python
 from pyspark.sql.functions import explode
@@ -145,25 +142,25 @@ display(df_flat_explode.limit(10))
 
 ```
 
-De weergave functie moet het volgende resultaat retour neren: 10 kolommen en 2 rijen. De volgende stap is het samen voegen van geneste schema's met de functie die u in stap 1 hebt gedefinieerd.
+De weergave functie moet 10 kolommen en twee rijen retour neren. De volgende stap is het samen voegen van geneste schema's met de functie die u in stap 1 hebt gedefinieerd.
 
-**Stap 4**: gebruik de functie voor het afvlakken van het geneste schema van het gegevens frame **df_flat_explode** in een nieuw gegevens frame **df_flat_explode_flat**:
+**Stap 4**: gebruik de functie voor het afvlakken van het geneste schema van het gegevens frame `df_flat_explode` in een nieuw gegevens frame `df_flat_explode_flat` :
 ```python
 df_flat_explode_flat = flatten_df(df_flat_explode)
 display(df_flat_explode_flat.limit(10))
 ```
 
-De weergave functie moet 13 kolommen en 2 rijen weer geven:
+De weergave functie moet 13 kolommen en twee rijen weer geven.
 
-De functie printSchema van het gegevens frame df_flat_explode_flat retourneert het volgende resultaat:
+De functie `printSchema` van het gegevens frame `df_flat_explode_flat` retourneert het volgende resultaat:
 
 [![Definitief schema](./media/how-to-complex-schema/schema-final.png)](./media/how-to-complex-schema/schema-final.png#lightbox)
 
 ## <a name="read-arrays-and-nested-structures-directly-with-sql-serverless"></a>Matrices en geneste structuren rechtstreeks lezen met SQL serverloos
 
-Het maken van query's, weer gaven en tabellen over dergelijke objecten is mogelijk met SQL serverloos.
+Het uitvoeren van query's en het maken van weer gaven en tabellen via dergelijke objecten is mogelijk met SQL serverloos.
 
-Eerst moeten gebruikers de volgende taxonomie gebruiken, afhankelijk van de manier waarop gegevens zijn opgeslagen. Alle hoofd letters zijn specifiek voor uw use-case:
+Eerst moeten gebruikers de volgende taxonomie gebruiken, afhankelijk van de manier waarop de gegevens zijn opgeslagen. Alles wat in hoofd letters wordt weer gegeven, is specifiek voor uw use-case:
 
 | Loss              | FORMAT |
 | -------------------- | --- |
@@ -171,12 +168,12 @@ Eerst moeten gebruikers de volgende taxonomie gebruiken, afhankelijk van de mani
 | N'endpoint = https://ACCOUNTNAME.documents-staging.windows-ppe.net:443/ ; account = AccountName; data base = DATABASENAME; verzameling = verzamelingnaam; Region = REGIONTOQUERY, geheim = ' YOURSECRET ' |' CosmosDB ' (Synapse-koppeling)|
 
 
+> [!NOTE]
+> SQL Server wordt ondersteund voor de koppeling van de gekoppelde service voor Synapse voor Azure Cosmos en AAD passthrough. De mogelijkheid is momenteel onder gated Preview voor Synapse-koppeling.
 
-**SQL Server** biedt ondersteuning voor de gekoppelde service voor Azure Synapse-koppeling voor Azure Cosmos DB en Aad passthrough. De mogelijkheid is momenteel onder gated Preview voor Synapse-koppeling.
-
-Vervangen:
-* ' Uw BULK waarde hierboven ' door de connection string van de gegevens bron waarmee u verbinding maakt
-* ' Uw TYPE hierboven ' op basis van de indeling die u gebruikt om verbinding te maken met de bron
+Vervang elk veld als volgt:
+* ' Uw BULKSGEWIJZE boven ' = de connection string van de gegevens bron waarmee u verbinding maakt
+* ' Uw TYPE boven ' = de indeling die u gebruikt om verbinding te maken met de bron
 
 ```sql
 select *
@@ -201,25 +198,24 @@ with ( ProfileType varchar(50) '$.customerInfo.ProfileType',
     )
 ```
 
-Er zijn twee verschillende soorten bewerkingen uitgevoerd:
-* In de onderstaande regel code wordt de kolom gedefinieerd met de naam contextdataeventTime die verwijst naar het geneste element: context. data. eventTime
+Er zijn twee verschillende soorten bewerkingen:
+
+Het eerste bewerkings type wordt aangegeven in de volgende regel code, waarmee de kolom wordt gedefinieerd `contextdataeventTime` die verwijst naar het geneste element: context. data. eventTime 
 ```sql
 contextdataeventTime varchar(50) '$.context.data.eventTime'
 ```
 
 Deze regel definieert de kolom met de naam contextdataeventTime die verwijst naar het nest element: context>data>eventTime
 
-* **Apply** wordt gebruikt voor het maken van nieuwe rijen voor elk element onder de matrix en definieert vervolgens elk genest object dat lijkt op het eerste punt in de opsomming: 
+Het tweede bewerkings type gebruikt `cross apply` voor het maken van nieuwe rijen voor elk element onder de matrix en vervolgens definieert elk genest object dat lijkt op het eerste punt in de opsomming: 
 ```sql
 cross apply openjson (contextcustomdimensions) 
 with ( ProfileType varchar(50) '$.customerInfo.ProfileType', 
 ```
 
-Als de matrix vijf elementen met 4 geneste structuren had, retourneert SQL serverloze 5 rijen en 4 kolommen.
-
-SQL Server kan een query in-place uitvoeren, de matrix toewijzen in twee rijen en alle geneste structuren in kolommen weer geven.
+Als de matrix vijf elementen met 4 geneste structuren had, retourneert SQL serverloze 5 rijen en 4 kolommen. SQL Server kan een query in-place uitvoeren, de matrix toewijzen in twee rijen en alle geneste structuren in kolommen weer geven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het opvragen van een Azure Synapse-koppeling voor Azure Cosmos DB met Spark](./synapse-link/how-to-query-analytical-store-spark.md)
+* [Meer informatie over het opvragen van de Synapse-koppeling voor Azure Cosmos DB met Spark](./synapse-link/how-to-query-analytical-store-spark.md)
 * [Parquet geneste typen opvragen](./sql/query-parquet-nested-types.md) 

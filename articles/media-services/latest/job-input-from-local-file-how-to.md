@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
-ms.openlocfilehash: aba987ba232a29ffc240f72039b1e24bb87a2ed4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a635a75a64db59fc56c6890f79af967a58735853
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80345912"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001125"
 ---
 # <a name="create-a-job-input-from-a-local-file"></a>Een taak invoer maken op basis van een lokaal bestand
 
@@ -24,7 +24,7 @@ Wanneer u in Media Services v3 taken verzendt voor het verwerken van uw video's,
 
 ## <a name="prerequisites"></a>Vereisten 
 
-* [Maak een Media Services-account](create-account-cli-how-to.md).
+* [Een Azure Media Services-account maken](./create-account-howto.md).
 * [Beheer assets](manage-asset-concept.md)controleren.
 
 ## <a name="net-sample"></a>.NET-voor beeld
@@ -32,7 +32,7 @@ Wanneer u in Media Services v3 taken verzendt voor het verwerken van uw video's,
 De volgende code laat zien hoe u een invoer element maakt en dit als invoer voor de taak gebruikt. De functie CreateInputAsset voert de volgende acties uit:
 
 * Maakt de Asset
-* Hiermee wordt een Beschrijf bare [SAS-URL](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) naar de container van het activum [in de opslag](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container) opgehaald
+* Hiermee wordt een Beschrijf bare [SAS-URL](../../storage/common/storage-sas-overview.md) naar de container van het activum [in de opslag](../../storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-a-container) opgehaald
 * Uploadt het bestand naar de container in opslag met de SAS-URL
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateInputAsset)]
@@ -47,7 +47,7 @@ Met het volgende code fragment wordt een coderings taak verzonden:
 
 ## <a name="job-error-codes"></a>Foutcodes in taak
 
-Zie [Foutcodes](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
+Zie [Foutcodes](/rest/api/media/jobs/get#joberrorcode).
 
 ## <a name="next-steps"></a>Volgende stappen
 

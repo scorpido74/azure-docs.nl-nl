@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 4693ad8b168ce1ddd7c07afe650a89fc1888ccd7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 74827e78017ad3540709fa0e671762a985976cda
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86183321"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999000"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>AMD GPU-Stuur Programma's installeren op Vm's met N-serie waarop Windows wordt uitgevoerd
 
@@ -23,7 +23,7 @@ Als u ervoor kiest om de AMD GPU-Stuur Programma's hand matig te installeren, wo
 
 Alleen GPU-Stuur Programma's die door micro soft zijn gepubliceerd, worden ondersteund op NVv4 Vm's. Installeer geen GPU-Stuur Programma's vanuit een andere bron.
 
-Zie [GPU Windows VM-grootten](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)voor basis specificaties, opslag capaciteit en schijf Details.
+Zie [GPU Windows VM-grootten](../sizes-gpu.md?toc=/azure/virtual-machines/windows/toc.json)voor basis specificaties, opslag capaciteit en schijf Details.
 
 
 
@@ -57,5 +57,3 @@ U kunt Dxdiag gebruiken om de eigenschappen van de GPU-weer gave te controleren,
 Als u Windows 10 build 1903 of hoger gebruikt, wordt in Dxdiag geen informatie weer gegeven op het tabblad weer geven. Gebruik de optie ' alle gegevens opslaan ' onderaan en in het uitvoer bestand worden de gegevens weer gegeven die betrekking hebben op AMD MI25 GPU.
 
 ![Eigenschappen van GPU-stuur programma](./media/n-series-amd-driver-setup/dxdiag-details.png)
-
-

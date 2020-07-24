@@ -4,13 +4,13 @@ description: In dit artikel worden de prijs-, facturerings-, facturerings-en uit
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 06/15/2020
-ms.openlocfilehash: 653c55fa7476fa5fed077002db226297a33dfef6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/22/2020
+ms.openlocfilehash: 29fa4126d8d0b4f3419c729ee3a73ae315b13122
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119426"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001363"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>De Transact-mogelijkheden voor commerciële Marketplace
 
@@ -76,7 +76,7 @@ Met deze optie kunnen hogere of lagere prijzen worden gemaakt dan voor de openba
 
 ### <a name="examples"></a>Voorbeelden
 
-**Pay-As-You-Go** 
+**Betalen per gebruik** 
 
 Betalen per gebruik heeft de volgende kosten structuur:
 
@@ -95,7 +95,7 @@ In dit scenario $1,14 factureert micro soft per uur voor het gebruik van uw gepu
 |Micro soft bewaart 100% van de kosten voor Azure-gebruik | $0,14 per uur |
 ||
 
-**Neem uw eigen licentie mee (BYOL)**
+**Bring Your Own License (BYOL)**
 
 BYOL heeft de volgende kosten structuur:
 
@@ -134,7 +134,7 @@ In dit scenario betaalt micro soft de $100,00 voor uw software licentie en wordt
 |Micro soft betaalt u 80% van uw licentie kosten <br> \*Micro soft betaalt u 90% van de licentie kosten voor alle gekwalificeerde SaaS-apps   |   $80,00 per maand <br> \*$90,00 per maand    |
 |Micro soft bewaart 20% van de licentie kosten <br> \*Micro soft houdt 10% van de licentie kosten voor alle gekwalificeerde SaaS-apps.  |  $20,00 per maand <br> \*$10,00     |
 
-Voor bepaalde SaaS-producten die u op commerciële Marketplace publiceert, verlaagt micro soft de **service kosten voor Marketplace** van 20% (zoals beschreven in de overeenkomst voor micro soft Publisher) tot 10%. Als u wilt dat uw aanbieding in aanmerking komt, moet u ten minste één van uw aanbiedingen door micro soft worden aangewezen als een voor bereiding op het IP-adres of door de IP-mede-verkoop prioriteit. Om dit gereduceerde service-tarief voor de Marketplace voor de maand te ontvangen, moet aan de voor waarden worden voldaan ten minste vijf werk dagen vóór het einde van de vorige kalender maand. Lagere kosten voor Marketplace-service zijn niet van toepassing op Vm's, beheerde apps of andere producten die beschikbaar worden gesteld via de commerciële Marketplace. Dit verlaagde tarief is beschikbaar voor gekwalificeerde aanbiedingen, met licentie kosten die door micro soft zijn verzameld tussen 1 mei 2019 en 30 juni 2020. Na deze periode keert de kosten terug naar de normale hoeveelheid.
+Voor bepaalde aanbiedingen die u publiceert op commerciële Marketplace, verlaagt micro soft de kosten voor Marketplace-service van 20% (zoals beschreven in de overeenkomst voor micro soft Publisher) tot 10%. Voor uw aanbieding (en) die u wilt kwalificeren, moeten uw aanbieding (en) zijn aangewezen door micro soft als Azure IP-incetivized. Voor het einde van elke kalender maand moet aan de geschiktheid ten minste vijf (5) werk dagen worden voldaan om de lagere kosten voor Marketplace-service voor de maand te ontvangen. De lagere kosten voor Marketplace-service zijn van toepassing op Azure IP gemotiveerd SaaS, Vm's, beheerde apps en alle andere gekwalificeerd transactable IaaS-aanbiedingen die beschikbaar worden gesteld via de commerciële Marketplace.
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>Facturering, betaling, facturering en verzamelingen van klanten
 
@@ -180,7 +180,7 @@ Zie [uw commerciële Marketplace-account beheren in partner centrum](partner-cen
 
 De optie voor het publiceren van Transact is alleen beschikbaar voor gebruik met de volgende typen Marketplace-aanbiedingen:
 
-- **Virtuele machine** : u kunt kiezen uit gratis, uw eigen licentie of betalen per gebruik-prijs modellen en aanwezig als sku's die zijn gedefinieerd op het niveau van de aanbieding. Op de Azure-factuur van de klant presenteert micro soft de licentie kosten van de uitgever software afzonderlijk van de onderliggende kosten voor Azure-infra structuur. Kosten voor Azure-infra structuur worden aangestuurd door het gebruik van de uitgever software.
+- **Virtuele machine** : Selecteer een gratis, uw eigen licentie of uw betalen per gebruik-prijs modellen en presenteert als plannen die zijn gedefinieerd op het niveau van de aanbieding. Op de Azure-factuur van de klant presenteert micro soft de licentie kosten van de uitgever software afzonderlijk van de onderliggende kosten voor Azure-infra structuur. Kosten voor Azure-infra structuur worden aangestuurd door het gebruik van de uitgever software.
 
 - **Azure-toepassing: oplossings sjabloon of beheerde app** : moet een of meer virtuele machines inrichten en de som van de prijzen van de virtuele machine ophalen. Voor beheerde apps in één abonnement kan een maandelijks abonnement met een vaste frequentie worden geselecteerd als het prijs model in plaats van de prijzen van de virtuele machine. In sommige gevallen worden gebruiks kosten voor Azure-infra structuur door gegeven aan de klant, onafhankelijk van software licentie kosten, maar op hetzelfde factuur overzicht. Als u echter een beheerde app-aanbieding voor ISV-infrastructuur kosten configureert, worden de Azure-resources gefactureerd aan de uitgever en ontvangt de klant een vast bedrag dat de kosten van infra structuur, software licenties en beheer Services omvat.
 

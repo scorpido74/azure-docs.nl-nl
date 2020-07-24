@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewr: cenkdin
-ms.openlocfilehash: 8166a85d1c3421d95ac2b818e51b6b60e7663165
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 9bc351f72f5dac38ebfc1983a7b918d46f5fc8ea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170663"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000309"
 ---
 # <a name="creating-filters-with-azure-media-services-rest-api"></a>Filters maken met Azure Media Services REST API 
 > [!div class="op_single_selector"]
@@ -38,10 +38,10 @@ In dit artikel wordt beschreven hoe u REST-Api's gebruikt om filters te maken, b
 ## <a name="types-used-to-create-filters"></a>Typen die worden gebruikt om filters te maken
 De volgende typen worden gebruikt bij het maken van filters:  
 
-* [Filter](https://docs.microsoft.com/rest/api/media/operations/filter)
-* [AssetFilter](https://docs.microsoft.com/rest/api/media/operations/assetfilter)
-* [PresentationTimeRange](https://docs.microsoft.com/rest/api/media/operations/presentationtimerange)
-* [FilterTrackSelect en FilterTrackPropertyCondition](https://docs.microsoft.com/rest/api/media/operations/filtertrackselect)
+* [Filter](/rest/api/media/operations/filter)
+* [AssetFilter](/rest/api/media/operations/assetfilter)
+* [PresentationTimeRange](/rest/api/media/operations/presentationtimerange)
+* [FilterTrackSelect en FilterTrackPropertyCondition](/rest/api/media/operations/filtertrackselect)
 
 > [!NOTE]
 > 
@@ -217,7 +217,7 @@ x-ms-client-request-id: 00000000
 ```
 
 ## <a name="update-filters"></a>Filters bijwerken
-Gebruik PATCH, PUT of MERGe om een filter met nieuwe eigenschaps waarden bij te werken.  Zie [patch, put en merge](https://msdn.microsoft.com/library/dd541276.aspx)voor meer informatie over deze bewerkingen.
+Gebruik PATCH, PUT of MERGe om een filter met nieuwe eigenschaps waarden bij te werken.  Zie [patch, put en merge](/openspecs/windows_protocols/ms-odata/59d5abd3-7b12-490a-a0e2-9d9324b91893)voor meer informatie over deze bewerkingen.
 
 Als u een filter bijwerkt, kan het tot twee minuten duren voordat het streaming-eind punt de regels heeft vernieuwd. Als de inhoud is geleverd met dit filter (en in cache is opgeslagen in proxy's en CDN-caches), kan het bijwerken van dit filter leiden tot fouten in de speler. Wis de cache na het bijwerken van het filter. Als deze optie niet mogelijk is, kunt u overwegen een ander filter te gebruiken.  
 
@@ -371,4 +371,3 @@ In de volgende voor beelden ziet u hoe u filters kunt toevoegen aan uw streaming
 
 ## <a name="see-also"></a>Zie ook
 [Overzicht van dynamische manifesten](media-services-dynamic-manifest-overview.md)
-

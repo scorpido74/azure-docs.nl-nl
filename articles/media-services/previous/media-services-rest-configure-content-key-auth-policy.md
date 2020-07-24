@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 8075de6690026a6d7ee08a581985744cf88ec6f4
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 71e336ffac557c33aa803cf0e9c123c3bae9427d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056953"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000598"
 ---
 # <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>Dynamische versleuteling: een autorisatie beleid voor de inhouds sleutel configureren  
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -31,7 +31,7 @@ Als u Media Services een Asset wilt versleutelen, moet u een versleutelings sleu
 
 Wanneer een stroom wordt aangevraagd door een speler, gebruikt Media Services de opgegeven sleutel om uw inhoud dynamisch te versleutelen met behulp van AES of PlayReady-versleuteling. Voor het ontsleutelen van de stream, wordt door de speler de sleutel van de sleutelleveringsservice aangevraagd. Om te bepalen of de gebruiker gemachtigd is om de sleutel op te halen, evalueert de service het autorisatie beleid dat u hebt opgegeven voor de sleutel.
 
-Media Services ondersteunt meerdere manieren om gebruikers te verifiëren die sleutels aanvragen. Het autorisatie beleid voor inhouds sleutels kan een of meer autorisatie beperkingen hebben door gebruik te maken van de beperking open of token. Het beleid met de tokenbeperking moet vergezeld gaan van een token dat is uitgegeven door een beveiligingstokenservice (STS). Media Services ondersteunt tokens in de indelingen simple web token ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) en JSON Web token (JWT).
+Media Services ondersteunt meerdere manieren om gebruikers te verifiëren die sleutels aanvragen. Het autorisatie beleid voor inhouds sleutels kan een of meer autorisatie beperkingen hebben door gebruik te maken van de beperking open of token. Het beleid met de tokenbeperking moet vergezeld gaan van een token dat is uitgegeven door een beveiligingstokenservice (STS). Media Services ondersteunt tokens in de indelingen simple web token ([SWT](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_2)) en JSON Web token (JWT).
 
 Media Services biedt geen STS. U kunt een aangepaste STS maken of Azure Active Directory (Azure AD) gebruiken voor het uitgeven van tokens. De STS moet worden geconfigureerd om een token te maken dat is ondertekend met de opgegeven sleutel en claims uitgeven die u hebt opgegeven in de configuratie van de token beperking (zoals beschreven in dit artikel). Als het token geldig is en de claims in het token overeenkomen met die zijn geconfigureerd voor de inhouds sleutel, retourneert de Media Services key delivery service de versleutelings sleutel naar de client.
 
@@ -490,4 +490,3 @@ public enum ContentKeyDeliveryType
 
 ## <a name="next-steps"></a>Volgende stappen
 Nu u het autorisatie beleid voor de inhouds sleutel hebt geconfigureerd, raadpleegt u beleid voor het [leveren van assets configureren](media-services-rest-configure-asset-delivery-policy.md).
-

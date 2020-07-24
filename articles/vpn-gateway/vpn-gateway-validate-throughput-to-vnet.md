@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.date: 05/29/2019
 ms.author: radwiv
 ms.reviewer: chadmat;genli
-ms.openlocfilehash: dcf86deda32069bf9711dbeb733dc9361e22a771
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d19cc4a474324ff3e88ec0c5353a47c157ec715
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80631775"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998473"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>VPN-doorvoer naar een virtueel netwerk valideren
 
@@ -43,11 +43,11 @@ In het volgende diagram ziet u de logische connectiviteit van een on-premises ne
 
 1. Bepaal de vereisten voor de basislijn doorvoer van uw toepassing.
 1. Bepaal de doorvoer limieten van Azure VPN gateway. Zie de sectie ' gateway-Sku's ' van [About VPN gateway](vpn-gateway-about-vpngateways.md#gwsku)voor meer informatie.
-1. Bepaal de [Azure VM-doorvoer richtlijnen](../virtual-machines/virtual-machines-windows-sizes.md) voor uw VM-grootte.
+1. Bepaal de [Azure VM-doorvoer richtlijnen](../virtual-machines/sizes.md) voor uw VM-grootte.
 1. Bepaal de band breedte van uw Internet provider (ISP).
 1. Bereken de verwachte door voer door de minste band breedte van de virtuele machine, VPN Gateway of ISP, te nemen. Dit wordt gemeten in megabits per seconde (/) gedeeld door acht (8).
 
-Als de berekende door Voer niet voldoet aan de vereisten voor basis doorvoer van uw toepassing, moet u de band breedte verg Roten van de bron die u als bottleneck hebt geïdentificeerd. Als u het formaat van een Azure VPN Gateway wilt wijzigen, raadpleegt u [een gateway-SKU wijzigen](vpn-gateway-about-vpn-gateway-settings.md#gwsku). Zie [het formaat van een](../virtual-machines/virtual-machines-windows-resize-vm.md)virtuele machine wijzigen als u het formaat van een VM wilt wijzigen. Als u niet de verwachte Internet bandbreedte ondervindt, kunt u ook contact opnemen met uw Internet provider.
+Als de berekende door Voer niet voldoet aan de vereisten voor basis doorvoer van uw toepassing, moet u de band breedte verg Roten van de bron die u als bottleneck hebt geïdentificeerd. Als u het formaat van een Azure VPN Gateway wilt wijzigen, raadpleegt u [een gateway-SKU wijzigen](vpn-gateway-about-vpn-gateway-settings.md#gwsku). Zie [het formaat van een](../virtual-machines/windows/resize-vm.md)virtuele machine wijzigen als u het formaat van een VM wilt wijzigen. Als u niet de verwachte Internet bandbreedte ondervindt, kunt u ook contact opnemen met uw Internet provider.
 
 > [!NOTE]
 > VPN Gateway door Voer is een aggregatie van alle Site-to-Site\VNET-to-VNET-of Point-to-site-verbindingen.

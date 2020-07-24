@@ -14,17 +14,17 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 3adbb9471cc501861b65efd0321b3b4f72b07aea
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: e5978cff8da4697cf130e499c8d9273d75118963
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057854"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000615"
 ---
 # <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>Aan de slag met de SDK voor Java-clients voor Azure Media Services  
 
 > [!NOTE]
-> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](../latest/index.yml). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
 In deze zelfstudie wordt u begeleid bij het implementeren van een basisservice voor levering van video-inhoud met Azure Media Services via de SDK voor Java-clients.
 
@@ -65,7 +65,7 @@ De code maakt verbinding met de Azure Media Services API met behulp van service-
 * `clientKey`: De client-sleutel van de Azure Active Directory-toepassing
 * `restApiEndpoint`: het REST API-eindpunt van het Azure Media Services-account
 
-U kunt een Azure Active Directory-toepassing maken en de voorgaande configuratiewaarden ophalen via Azure Portal. Zie het gedeelte **Service principal authentication** (Verificatie van service-principal) in [Getting started with Azure AD authentication using the Azure portal](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad) (Aan de slag met Azure Active Directory-verificatie via Azure Portal) voor meer informatie.
+U kunt een Azure Active Directory-toepassing maken en de voorgaande configuratiewaarden ophalen via Azure Portal. Zie het gedeelte **Service principal authentication** (Verificatie van service-principal) in [Getting started with Azure AD authentication using the Azure portal](./media-services-portal-get-started-with-aad.md) (Aan de slag met Azure Active Directory-verificatie via Azure Portal) voor meer informatie.
 
 De code maakt ook gebruik van een lokaal opgeslagen videobestand. U moet de code bewerken om uw eigen lokale bestand te krijgen om te uploaden.
 
@@ -320,6 +320,5 @@ Zie [Azure-bibliotheken voor Java-documentatie][Azure-bibliotheken voor Java-doc
 
 [Azure Media Services SDK Maven Package]: https://mvnrepository.com/artifact/com.microsoft.azure/azure-media/latest
 [Azure Java Developer Center]: https://azure.microsoft.com/develop/java/
-[Azure for Java developers]: https://docs.microsoft.com/java/azure/
-[Media Services Client Development]: https://msdn.microsoft.com/library/windowsazure/dn223283.aspx
-
+[Azure for Java developers]: /java/azure/
+[Media Services Client Development]: /previous-versions/azure/dn223283(v=azure.100)

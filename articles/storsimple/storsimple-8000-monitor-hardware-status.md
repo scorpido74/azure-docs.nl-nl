@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2018
 ms.author: alkohli
-ms.openlocfilehash: 6eb983eb5e36c5f3ac6b6eca049239d12bc01a0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8faf4ca8e27b280a60750d5f349ab0282ed593bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514628"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999493"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-hardware-components-and-status"></a>De StorSimple Apparaatbeheer-service gebruiken voor het bewaken van hardware-onderdelen en-status
 
@@ -49,11 +49,11 @@ Voer de volgende stappen uit om de hardware-status van een onderdeel van een app
 
 1. Navigeer naar **apparaten**, selecteer een specifiek StorSimple-apparaat. Ga naar **Monitor > hardware Health**.
 
-    ![](./media/storsimple-8000-monitor-hardware-status/hw-health1.png)
+    ![Scherm opname van de Blade instellingen van de Apparaatbeheer service. Onder monitor wordt de hardware-status geselecteerd.](./media/storsimple-8000-monitor-hardware-status/hw-health1.png)
 
 2. Ga naar de sectie **hardware-onderdelen** en kies uit de beschik bare onderdelen. Klik op het onderdeel label om de lijst uit te vouwen en de status van de verschillende onderdelen van het apparaat weer te geven. Zie de [gedetailleerde onderdelen lijst voor de primaire behuizing](#component-list-for-primary-enclosure-of-storsimple-device) en de [gedetailleerde onderdelen lijst voor de EBOD behuizing](#component-list-for-ebod-enclosure-of-storsimple-device).
 
-    ![](./media/storsimple-8000-monitor-hardware-status/hw-health2.png)
+    ![Scherm opname van het ene onderdeel dat is geselecteerd in het gedeelte hardware-onderdelen. Een aangrenzende Blade bevat de naam en de status van de onderdelen van dat onderdeel.](./media/storsimple-8000-monitor-hardware-status/hw-health2.png)
 
 3. Gebruik het volgende schema voor kleur codering om de status van het onderdeel te interpreteren:
    
@@ -64,22 +64,22 @@ Voer de volgende stappen uit om de hardware-status van een onderdeel van een app
    
    In de volgende scherm afbeelding ziet u een apparaat met onderdelen in **OK**, **waarschuwing**en **fout** status.
        
-   ![](./media/storsimple-8000-monitor-hardware-status/hw-health3.png)
+   ![Scherm afbeelding met drie onderdelen in het gedeelte hardware-onderdelen: een in de status niet in orde, een in een mislukte status en een in een waarschuwings status.](./media/storsimple-8000-monitor-hardware-status/hw-health3.png)
 
    Als u de **lijst met gedeelde onderdelen**uitbreidt, kunnen we zien dat het NVRAM en het cluster gedegradeerd zijn.
 
-   ![](./media/storsimple-8000-monitor-hardware-status/hw-health5.png)
+   ![Scherm opname van het item gedeelde onderdelen dat is geselecteerd. Op de Blade ernaast bevinden de N V R A M en het cluster een waarschuwings status.](./media/storsimple-8000-monitor-hardware-status/hw-health5.png)
 
    Als u de lijst met **Controller 1-onderdelen** uitbreidt, kunnen we zien dat het cluster knooppunt is mislukt.  
 
-   ![](./media/storsimple-8000-monitor-hardware-status/hw-health4.png)  
+   ![Scherm afbeelding van het item controller 1-onderdelen geselecteerd. Het cluster knooppunt bevindt zich in de aangrenzende Blade met de status mislukt.](./media/storsimple-8000-monitor-hardware-status/hw-health4.png)  
 
 4. Neem contact op met Microsoft Ondersteuning als u een onderdeel tegen komt dat niet in **orde** is. Als waarschuwingen zijn ingeschakeld op uw apparaat, ontvangt u een e-mail waarschuwing. Als u een defect hardwareonderdeel moet vervangen, raadpleegt u [StorSimple hardware-onderdeel vervanging](storsimple-hardware-component-replacement.md).
 
 ## <a name="component-list-for-primary-enclosure-of-storsimple-device"></a>Onderdelen lijst voor de primaire behuizing van het StorSimple-apparaat
 De volgende tabel bevat een overzicht van de fysieke en logische onderdelen in de primaire behuizing (aanwezig in 8100 en 8600) van uw on-premises StorSimple-apparaat.
 
-| Onderdeel | Module | Type | Locatie | De vervangable-eenheid (FRU) van het veld? | Description |
+| Onderdeel | Module | Type | Locatie | De vervangable-eenheid (FRU) van het veld? | Beschrijving |
 | --- | --- | --- | --- | --- | --- |
 | Station in sleuf [0-11] |Schijf stations |Fysiek |Gedeeld |Yes |Er wordt één regel weer gegeven voor elk van de SSD-of HDD-schijven in de primaire behuizing. |
 | Omgevings temperatuur sensor |Sluit |Fysiek |Gedeeld |No |Meet de Tempe ratuur binnen het chassis. |
@@ -120,7 +120,7 @@ De volgende tabel bevat een overzicht van de fysieke en logische onderdelen in d
 ## <a name="component-list-for-ebod-enclosure-of-storsimple-device"></a>Lijst met onderdelen voor EBOD Enclosure van StorSimple-apparaat
 De volgende tabel bevat een overzicht van de fysieke en logische onderdelen in de EBOD Enclosure (alleen aanwezig in het 8600-model) van uw on-premises StorSimple-apparaat.
 
-| Onderdeel | Module | Type | Locatie | FRU? | Description |
+| Onderdeel | Module | Type | Locatie | FRU? | Beschrijving |
 | --- | --- | --- | --- | --- | --- |
 | Station in sleuf [0-11] |Schijf stations |Fysiek |Gedeeld |Yes |Er wordt één regel weer gegeven voor elk van de harde schijven in de voor zijde van de EBOD-behuizing. |
 | Omgevings temperatuur sensor |Sluit |Fysiek |Gedeeld |No |Meet de Tempe ratuur binnen het chassis. |

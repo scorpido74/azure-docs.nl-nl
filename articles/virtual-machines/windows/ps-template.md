@@ -7,14 +7,14 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cafe28be1d7c08c24b728de2476cb2210c6e5bd0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58b8a22ff36f85f25bb6a4b22617029fe3858660
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82098319"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998864"
 ---
-# <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>Een virtuele Windows-machine maken op basis van een resource manager-sjabloon
+# <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>Een virtuele Windows-machine maken op basis van een Resource Manager-sjabloon
 
 Meer informatie over het maken van een virtuele Windows-machine met behulp van een Azure Resource Manager sjabloon en Azure PowerShell van de Azure Cloud shell. De sjabloon die in dit artikel wordt gebruikt, implementeert één virtuele machine met Windows Server in een nieuw virtueel netwerk met één subnet. Zie [een virtuele Linux-machine maken met Azure Resource Manager sjablonen](../linux/create-ssh-secured-vm-from-template.md)voor het maken van een virtuele Linux-machine.
 
@@ -56,7 +56,7 @@ In het vorige voor beeld hebt u een sjabloon opgegeven die is opgeslagen in GitH
 
 Hier volgen enkele aanvullende bronnen:
 
-- Raadpleeg [Azure Resource Manager-documentatie](/azure/azure-resource-manager/) voor meer informatie over het ontwikkelen van Resource Manager-sjablonen.
+- Raadpleeg [Azure Resource Manager-documentatie](../../azure-resource-manager/index.yml) voor meer informatie over het ontwikkelen van Resource Manager-sjablonen.
 - Zie [Naslag informatie over Azure-sjablonen](/azure/templates/microsoft.compute/allversions)voor een overzicht van de Azure virtual machine-schema's.
 - Zie [Azure Quick](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular)start-sjablonen voor meer voor beelden van virtuele-machine sjablonen.
 
@@ -66,7 +66,7 @@ In de laatste Power shell-opdracht uit het vorige script ziet u de naam van de v
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Als er problemen zijn met de implementatie, kunt u een kijkje nemen bij het [oplossen van veelvoorkomende problemen met Azure-implementaties met Azure Resource Manager](../../resource-manager-common-deployment-errors.md).
+- Als er problemen zijn met de implementatie, kunt u een kijkje nemen bij het [oplossen van veelvoorkomende problemen met Azure-implementaties met Azure Resource Manager](../../azure-resource-manager/templates/common-deployment-errors.md).
 - Meer informatie over het maken en beheren van een virtuele machine in [Windows-Vm's maken en beheren met de module Azure PowerShell](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 Voor meer informatie over het maken van sjablonen bekijkt u de JSON-syntaxis en de eigenschappen voor de typen resources die u hebt geïmplementeerd:

@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 07/03/2019
 ms.author: cynthn
-ms.openlocfilehash: 6e156af2d4805ba310443a2acf6cc47d06a735eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f919a4af85a15bbe80d7176c316100c3bad634a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84762323"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998915"
 ---
 # <a name="move-a-windows-vm-to-another-azure-subscription-or-resource-group"></a>Move a Windows VM to another Azure subscription or resource group (Een Windows-VM verplaatsen naar een ander Azure-abonnement of een andere resourcegroep)
 In dit artikel wordt uitgelegd hoe u een virtuele Windows-machine (VM) verplaatst tussen resource groepen of abonnementen. Het verplaatsen tussen abonnementen kan handig zijn als u een virtuele machine in een persoonlijk abonnement hebt gemaakt en u deze nu wilt verplaatsen naar het abonnement van uw bedrijf om door te gaan met uw werk. U hoeft de virtuele machine niet te stoppen voordat u deze kunt verplaatsen. de VM moet blijven worden uitgevoerd tijdens de verplaatsing.
@@ -26,13 +26,13 @@ In dit artikel wordt uitgelegd hoe u een virtuele Windows-machine (VM) verplaats
 
 ## <a name="use-powershell-to-move-a-vm"></a>Power shell gebruiken om een virtuele machine te verplaatsen
 
-Als u een virtuele machine naar een andere resource groep wilt verplaatsen, moet u ervoor zorgen dat u ook alle afhankelijke resources verplaatst. Als u een lijst met de resource-ID van elk van deze resources wilt ophalen, gebruikt u de cmdlet [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) .
+Als u een virtuele machine naar een andere resource groep wilt verplaatsen, moet u ervoor zorgen dat u ook alle afhankelijke resources verplaatst. Als u een lijst met de resource-ID van elk van deze resources wilt ophalen, gebruikt u de cmdlet [Get-AzResource](/powershell/module/az.resources/get-azresource) .
 
 ```azurepowershell-interactive
  Get-AzResource -ResourceGroupName myResourceGroup | Format-table -wrap -Property ResourceId
 ```
 
-U kunt de uitvoer van de vorige opdracht gebruiken om een door komma's gescheiden lijst met resource-Id's te maken en te [verplaatsen-AzResource](https://docs.microsoft.com/powershell/module/az.resources/move-azresource) om elke resource naar het doel te verplaatsen.
+U kunt de uitvoer van de vorige opdracht gebruiken om een door komma's gescheiden lijst met resource-Id's te maken en te [verplaatsen-AzResource](/powershell/module/az.resources/move-azresource) om elke resource naar het doel te verplaatsen.
 
 ```azurepowershell-interactive
 Move-AzResource -DestinationResourceGroupName "myDestinationResourceGroup" `

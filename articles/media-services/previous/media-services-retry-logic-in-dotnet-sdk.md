@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 63715f668438519131eba5bfff7aa38fc73267d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 120b7e044452dc47126923449a3e1a6e55cfd6a8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61094646"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000020"
 ---
 # <a name="retry-logic-in-the-media-services-sdk-for-net"></a>Logica voor opnieuw proberen in de Media Services SDK voor .NET  
 
@@ -40,17 +40,17 @@ In de volgende tabel worden de uitzonde ringen beschreven die worden verwerkt do
 | Uitzondering | Webaanvraag | Storage | Query’s uitvoeren | Change |
 | --- | --- | --- | --- | --- |
 | WebException<br/>Zie de sectie [webexcept-status codes](media-services-retry-logic-in-dotnet-sdk.md#WebExceptionStatus) voor meer informatie. |Ja |Ja |Ja |Ja |
-| DataServiceClientException<br/> Zie [HTTP-fout status codes](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode)voor meer informatie. |Nee |Ja |Ja |Ja |
-| DataServiceQueryException<br/> Zie [HTTP-fout status codes](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode)voor meer informatie. |Nee |Ja |Ja |Ja |
-| DataServiceRequestException<br/> Zie [HTTP-fout status codes](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode)voor meer informatie. |Nee |Ja |Ja |Ja |
+| DataServiceClientException<br/> Zie [HTTP-fout status codes](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode)voor meer informatie. |No |Ja |Ja |Ja |
+| DataServiceQueryException<br/> Zie [HTTP-fout status codes](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode)voor meer informatie. |No |Ja |Ja |Ja |
+| DataServiceRequestException<br/> Zie [HTTP-fout status codes](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode)voor meer informatie. |No |Ja |Ja |Ja |
 | DataServiceTransportException |Nee |Nee |Ja |Ja |
-| TimeoutException |Ja |Ja |Ja |Nee |
+| TimeoutException |Ja |Ja |Ja |No |
 | SocketException |Ja |Ja |Ja |Ja |
-| StorageException |Nee |Ja |Nee |Nee |
-| IOException |Nee |Ja |Nee |Nee |
+| StorageException |No |Yes |Nee |Nee |
+| IOException |No |Yes |Nee |Nee |
 
 ### <a name="webexception-status-codes"></a><a name="WebExceptionStatus"></a>Webexcept-status codes
-In de volgende tabel wordt weer gegeven voor welke uitzonderings fout codes de logica voor opnieuw proberen wordt geïmplementeerd. De [WebExceptionStatus](https://msdn.microsoft.com/library/system.net.webexceptionstatus.aspx) -opsomming definieert de status codes.  
+In de volgende tabel wordt weer gegeven voor welke uitzonderings fout codes de logica voor opnieuw proberen wordt geïmplementeerd. De [WebExceptionStatus](/dotnet/api/system.net.webexceptionstatus?view=netcore-3.1) -opsomming definieert de status codes.  
 
 | Status | Webaanvraag | Storage | Query’s uitvoeren | Change |
 | --- | --- | --- | --- | --- |
@@ -58,13 +58,13 @@ In de volgende tabel wordt weer gegeven voor welke uitzonderings fout codes de l
 | NameResolutionFailure |Ja |Ja |Ja |Ja |
 | ProxyNameResolutionFailure |Ja |Ja |Ja |Ja |
 | SendFailure |Ja |Ja |Ja |Ja |
-| PipelineFailure |Ja |Ja |Ja |Nee |
-| ConnectionClosed |Ja |Ja |Ja |Nee |
-| KeepAliveFailure |Ja |Ja |Ja |Nee |
-| UnknownError |Ja |Ja |Ja |Nee |
-| ReceiveFailure |Ja |Ja |Ja |Nee |
-| RequestCanceled |Ja |Ja |Ja |Nee |
-| Time-out |Ja |Ja |Ja |Nee |
+| PipelineFailure |Ja |Ja |Ja |No |
+| ConnectionClosed |Ja |Ja |Ja |No |
+| KeepAliveFailure |Ja |Ja |Ja |No |
+| UnknownError |Ja |Ja |Ja |No |
+| ReceiveFailure |Ja |Ja |Ja |No |
+| RequestCanceled |Ja |Ja |Ja |No |
+| Time-out |Ja |Ja |Ja |No |
 | ProtocolError <br/>De nieuwe poging op ProtocolError wordt bepaald door de verwerking van de HTTP-status code. Zie [HTTP-fout status codes](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode)voor meer informatie. |Ja |Ja |Ja |Ja |
 
 ### <a name="http-error-status-codes"></a><a name="HTTPStatusCode"></a>Status codes voor HTTP-fouten
@@ -72,14 +72,14 @@ Wanneer de bewerkingen query en Save Changes DataServiceClientException, DataSer
 
 | Status | Webaanvraag | Storage | Query’s uitvoeren | Change |
 | --- | --- | --- | --- | --- |
-| 401 |Nee |Ja |Nee |Nee |
-| 403 |Nee |Ja<br/>Verwerken van nieuwe pogingen met langere wacht tijden. |Nee |Nee |
+| 401 |No |Yes |Nee |Nee |
+| 403 |No |Yes<br/>Verwerken van nieuwe pogingen met langere wacht tijden. |Nee |Nee |
 | 408 |Ja |Ja |Ja |Ja |
 | 429 |Ja |Ja |Ja |Ja |
-| 500 |Ja |Ja |Ja |Nee |
-| 502 |Ja |Ja |Ja |Nee |
+| 500 |Ja |Ja |Ja |No |
+| 502 |Ja |Ja |Ja |No |
 | 503 |Ja |Ja |Ja |Ja |
-| 504 |Ja |Ja |Ja |Nee |
+| 504 |Ja |Ja |Ja |No |
 
 Zie [Azure-SDK-for-Media Services](https://github.com/Azure/azure-sdk-for-media-services/tree/dev/src/net/Client/TransientFaultHandling)(Engelstalig) als u de daad werkelijke implementatie wilt bekijken van de Media Services SDK voor .net-pogingen.
 
@@ -88,4 +88,3 @@ Zie [Azure-SDK-for-Media Services](https://github.com/Azure/azure-sdk-for-media-
 
 ## <a name="provide-feedback"></a>Feedback geven
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

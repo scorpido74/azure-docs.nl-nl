@@ -9,17 +9,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 63dc18c522a1e2e3b03bdf806945e0be67774b18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 628824a3d303184e199452b0974c7f99d99a4933
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81870479"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998949"
 ---
 # <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>Persoonlijke Cloud vCenter-bevoegdheden escaleren vanuit de CloudSimple-Portal
 
 Voor beheerders toegang tot uw persoonlijke Cloud-vCenter kunt u uw CloudSimple-bevoegdheden tijdelijk escaleren.  Met verhoogde bevoegdheden kunt u VMware-oplossingen installeren, identiteits bronnen toevoegen en gebruikers beheren.
 
-Nieuwe gebruikers kunnen worden gemaakt in het vCenter-SSO-domein en hebben toegang tot de vCenter.  Wanneer u nieuwe gebruikers maakt, voegt u deze toe aan de CloudSimple ingebouwde groepen voor toegang tot vCenter.  Zie [CloudSimple Private Cloud permission model van VMware vCenter](https://docs.microsoft.com/azure/vmware-cloudsimple/learn-private-cloud-permissions/)(Engelstalig) voor meer informatie.
+Nieuwe gebruikers kunnen worden gemaakt in het vCenter-SSO-domein en hebben toegang tot de vCenter.  Wanneer u nieuwe gebruikers maakt, voegt u deze toe aan de CloudSimple ingebouwde groepen voor toegang tot vCenter.  Zie [CloudSimple Private Cloud permission model van VMware vCenter](./learn-private-cloud-permissions.md)(Engelstalig) voor meer informatie.
 
 > [!CAUTION]
 > Breng geen wijzigingen aan in de configuratie voor beheer onderdelen. Acties die worden uitgevoerd tijdens de status van de escalated privilege kunnen een nadelige invloed hebben op uw systeem of ervoor zorgen dat uw systeem niet meer beschikbaar is.
@@ -87,5 +88,5 @@ Als uw beheer taken zijn voltooid, moet u uw bevoegdheden deactiveren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [VCenter-identiteits bronnen instellen voor het gebruik van Active Directory](https://docs.microsoft.com/azure/vmware-cloudsimple/set-vcenter-identity/)
-* Back-upoplossing installeren voor [virtuele machines met een back-up van werk belasting](https://docs.microsoft.com/azure/vmware-cloudsimple/backup-workloads-veeam/)
+* [VCenter-identiteits bronnen instellen voor het gebruik van Active Directory](./set-vcenter-identity.md)
+* Back-upoplossing installeren voor [virtuele machines met een back-up van werk belasting](./backup-workloads-veeam.md)

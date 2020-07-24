@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 8553c54b60d1d4e60e28bcb3006bcc804dbc39ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 43203a756bcb42c7d00de9c11e9223f1d8b9e2a8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84803691"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001584"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Aan de slag met het maken van een Internet gerichte load balancer met IPv6 met behulp van Power shell voor Resource Manager
 
@@ -198,7 +199,7 @@ In dit voorbeeld worden de volgende items gemaakt:
 
 ## <a name="create-virtual-machines-and-assign-the-newly-created-nics"></a>Virtuele machines maken en de zojuist gemaakte Nic's toewijzen
 
-Zie [een virtuele Windows-machine maken en vooraf configureren met Resource Manager en Azure PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json) voor meer informatie over het maken van een VM.
+Zie [een virtuele Windows-machine maken en vooraf configureren met Resource Manager en Azure PowerShell](../virtual-machines/windows/quick-create-powershell.md?toc=%2fazure%2fload-balancer%2ftoc.json) voor meer informatie over het maken van een VM.
 
 1. Een Beschikbaarheidsset en een opslag account maken
 

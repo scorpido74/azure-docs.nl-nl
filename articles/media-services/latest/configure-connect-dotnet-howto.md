@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
 ms.custom: has-adal-ref
-ms.openlocfilehash: 6dc05f225e3585b83bd6a57ca47bd5adf97934ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30c91b71b952bb68761015325a00ff6926c62dfe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83201117"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001312"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Verbinding maken met Media Services v3 API-.NET
 
@@ -26,7 +27,7 @@ In dit artikel wordt beschreven hoe u verbinding maakt met de Azure Media Servic
 
 ## <a name="prerequisites"></a>Vereisten
 
-- [Maak een Media Services-account](create-account-cli-how-to.md). Zorg ervoor dat u de naam van de resource groep en de naam van het Media Services account vergeet
+- [Een Azure Media Services-account maken](./create-account-howto.md). Zorg ervoor dat u de naam van de resource groep en de naam van het Media Services account vergeet
 - Installeer een hulp programma dat u wilt gebruiken voor .NET-ontwikkeling. In de stappen in dit artikel ziet u hoe u [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)gebruikt. U kunt Visual Studio code gebruiken. Zie [werken met C#](https://code.visualstudio.com/docs/languages/csharp). U kunt ook een andere code-editor gebruiken.
 
 > [!IMPORTANT]
@@ -38,14 +39,14 @@ In dit artikel wordt beschreven hoe u verbinding maakt met de Azure Media Servic
 1. Klik in het menu **bestand** op **Nieuw**  >  **project**. 
 1. Maak een **.net core** -console toepassing.
 
-De voor beeld-app in dit onderwerp streeft naar doelen `netcoreapp2.0` . De code maakt gebruik van ' async Main ', dat beschikbaar is vanaf C# 7,1. Raadpleeg dit [blog](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/) voor meer informatie.
+De voor beeld-app in dit onderwerp streeft naar doelen `netcoreapp2.0` . De code maakt gebruik van ' async Main ', dat beschikbaar is vanaf C# 7,1. Raadpleeg dit [blog](/archive/blogs/benwilli/async-main-is-available-but-hidden) voor meer informatie.
 
 ## <a name="add-required-nuget-packages"></a>Vereiste NuGet-pakketten toevoegen
 
 1. Selecteer in Visual Studio **extra**  >  **NuGet package manager**  >  **NuGet Manager-console**.
 2. In het venster **Package Manager-console** gebruikt u `Install-Package` de opdracht om de volgende NuGet-pakketten toe te voegen. Bijvoorbeeld `Install-Package Microsoft.Azure.Management.Media`.
 
-|Pakket|Description|
+|Pakket|Beschrijving|
 |---|---|
 |`Microsoft.Azure.Management.Media`|Azure Media Services SDK. <br/>Om ervoor te zorgen dat u het meest recente Azure Media Services-pakket gebruikt, controleert u [micro soft. Azure. Management. Media](https://www.nuget.org/packages/Microsoft.Azure.Management.Media).|
 |`Microsoft.Rest.ClientRuntime.Azure.Authentication`|ADAL-verificatie bibliotheek voor Azure SDK voor NET|
@@ -63,7 +64,7 @@ De voor beeld-app in dit onderwerp streeft naar doelen `netcoreapp2.0` . De code
 
 ### <a name="set-values-in-appsettingsjson"></a>Waarden instellen in appsettings.jsop
 
-Voer de `az ams account sp create` opdracht uit zoals beschreven in [Access-api's](access-api-cli-how-to.md). De opdracht retourneert een JSON-bestand dat u moet kopiëren naar de appsettings.jsop.
+Voer de `az ams account sp create` opdracht uit zoals beschreven in [Access-api's](./access-api-howto.md). De opdracht retourneert een JSON-bestand dat u moet kopiëren naar de appsettings.jsop.
  
 ## <a name="add-configuration-file"></a>Een configuratiebestand toevoegen
 
@@ -242,5 +243,5 @@ namespace ConsoleApp1
 
 ## <a name="see-also"></a>Zie tevens
 
-* [Naslaginformatie over .NET](https://docs.microsoft.com/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
+* [Naslaginformatie over .NET](/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
 * Zie de [.NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet) -voor beelden opslag plaats voor meer code voorbeelden.

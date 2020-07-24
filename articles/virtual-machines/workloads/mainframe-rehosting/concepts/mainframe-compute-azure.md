@@ -6,11 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 97f354d0a313d58c671366dd0e5f485504823e13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c5941ec88cd793961ad66245d0dc0b5e0d7772f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76288928"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998932"
 ---
 # <a name="move-mainframe-compute-to-azure"></a>Mainframe Compute verplaatsen naar Azure
 
@@ -93,13 +94,13 @@ De benadering is het migreren van LPARs naar afzonderlijke Vm's. Vervolgens scha
 
 Een van de voor delen van een Azure-gebaseerde oplossing is de mogelijkheid om uit te schalen. Schaling maakt bijna onbeperkte reken capaciteit beschikbaar voor een toepassing. Azure ondersteunt meerdere methoden om reken kracht uit te schalen:
 
-- **Taak verdeling over een cluster.** In dit scenario kan een toepassing een [Load Balancer](/azure/load-balancer/load-balancer-overview) of Resource Manager gebruiken om de werk belasting over meerdere vm's in een cluster uit te breiden. Als er meer reken capaciteit nodig is, worden er extra Vm's aan het cluster toegevoegd.
+- **Taak verdeling over een cluster.** In dit scenario kan een toepassing een [Load Balancer](../../../../load-balancer/load-balancer-overview.md) of Resource Manager gebruiken om de werk belasting over meerdere vm's in een cluster uit te breiden. Als er meer reken capaciteit nodig is, worden er extra Vm's aan het cluster toegevoegd.
 
-- **Schaal sets voor virtuele machines.** In dit burst-scenario kan een toepassing worden geschaald naar extra [reken resources](/azure/virtual-machine-scale-sets/overview) op basis van het gebruik van de virtuele machine. Wanneer de vraag daalt, kan het aantal Vm's in een schaalset ook worden uitgeschakeld, waardoor het gebruik van reken kracht efficiënt kan worden benut.
+- **Schaal sets voor virtuele machines.** In dit burst-scenario kan een toepassing worden geschaald naar extra [reken resources](../../../../virtual-machine-scale-sets/overview.md) op basis van het gebruik van de virtuele machine. Wanneer de vraag daalt, kan het aantal Vm's in een schaalset ook worden uitgeschakeld, waardoor het gebruik van reken kracht efficiënt kan worden benut.
 
-- **PaaS schalen.** Azure PaaS-aanbiedingen schaal Compute-resources. Zo wijst [Azure service Fabric](/azure/service-fabric/service-fabric-overview) reken bronnen toe om te voldoen aan de toename van het aantal aanvragen.
+- **PaaS schalen.** Azure PaaS-aanbiedingen schaal Compute-resources. Zo wijst [Azure service Fabric](../../../../service-fabric/service-fabric-overview.md) reken bronnen toe om te voldoen aan de toename van het aantal aanvragen.
 
-- **Kubernetes-clusters.** Toepassingen op Azure kunnen gebruikmaken van [Kubernetes-clusters](/azure/aks/concepts-clusters-workloads) voor Compute-Services voor opgegeven resources. Azure Kubernetes service (AKS) is een beheerde service die Kubernetes-knoop punten, Pools en clusters in azure organiseert.
+- **Kubernetes-clusters.** Toepassingen op Azure kunnen gebruikmaken van [Kubernetes-clusters](../../../../aks/concepts-clusters-workloads.md) voor Compute-Services voor opgegeven resources. Azure Kubernetes service (AKS) is een beheerde service die Kubernetes-knoop punten, Pools en clusters in azure organiseert.
 
 Als u de juiste methode voor het schalen van reken resources wilt kiezen, is het belang rijk om te begrijpen hoe Azure en mainframes verschillen. De sleutel is hoe, of als — gegevens worden gedeeld door reken bronnen. In azure wordt gegevens (standaard) doorgaans niet gedeeld door meerdere Vm's. Als het delen van gegevens vereist is voor meerdere Vm's in een scale-out Compute-Cluster, moeten de gedeelde gegevens zich in een resource bevinden die deze functionaliteit ondersteunt. Voor het delen van gegevens in Azure is opslag vereist, zoals in de volgende sectie wordt beschreven.
 
@@ -114,7 +115,7 @@ Elke laag kan ook geschikte nood herstel services bieden. Voor productie-en data
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Mainframe migratie](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
-- [Mainframe herhosten op Azure Virtual Machines](/azure/virtual-machines/workloads/mainframe-rehosting/overview)
+- [Mainframe herhosten op Azure Virtual Machines](../overview.md)
 - [Mainframe-opslag verplaatsen naar Azure](mainframe-storage-Azure.md)
 
 ### <a name="ibm-resources"></a>IBM-bronnen

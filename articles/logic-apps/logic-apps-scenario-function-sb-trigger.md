@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: jehollan, klam, logicappspm
 ms.topic: article
 ms.date: 11/08/2019
-ms.openlocfilehash: afd2735bae2a79ad942c347219019ef200b61070
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec2225633e5621c51067b64af2968a0dc0f5da87
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75428708"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001414"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>Logische apps aanroepen of activeren met behulp van Azure Functions en Azure Service Bus
 
@@ -118,11 +119,11 @@ Maak vervolgens de functie die als trigger fungeert en luistert naar de wachtrij
 
    * In dit voor beeld wordt het `application/json` inhouds type bericht gebruikt, maar u kunt dit type zo nodig wijzigen.
    
-   * Als gevolg van mogelijke gelijktijdig uitgevoerde functies, grote volumes of zware belastingen, moet u voor komen dat u de [httpclient maakt-klasse](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) bij de-instructie instantiëren `using` en rechtstreeks httpclient maakt-exemplaren per aanvraag maakt. Zie [HttpClientFactory gebruiken voor het implementeren van flexibele HTTP-aanvragen](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net-core)voor meer informatie.
+   * Als gevolg van mogelijke gelijktijdig uitgevoerde functies, grote volumes of zware belastingen, moet u voor komen dat u de [httpclient maakt-klasse](/dotnet/api/system.net.http.httpclient) bij de-instructie instantiëren `using` en rechtstreeks httpclient maakt-exemplaren per aanvraag maakt. Zie [HttpClientFactory gebruiken voor het implementeren van flexibele HTTP-aanvragen](/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net-core)voor meer informatie.
    
    * Gebruik, indien mogelijk, het exemplaar van HTTP-clients opnieuw. Zie [verbindingen beheren in azure functions](../azure-functions/manage-connections.md)voor meer informatie.
 
-   In dit voor beeld wordt de- [ `Task.Run` methode](https://docs.microsoft.com/dotnet/api/system.threading.tasks.task.run) in de [asynchrone](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/async) modus gebruikt. Zie [asynchrone programmering met async en await](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)voor meer informatie.
+   In dit voor beeld wordt de- [ `Task.Run` methode](/dotnet/api/system.threading.tasks.task.run) in de [asynchrone](/dotnet/csharp/language-reference/keywords/async) modus gebruikt. Zie [asynchrone programmering met async en await](/dotnet/csharp/programming-guide/concepts/async/)voor meer informatie.
 
    ```csharp
    using System;

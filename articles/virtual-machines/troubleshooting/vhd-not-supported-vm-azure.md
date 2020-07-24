@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure
 ms.date: 06/29/2020
 ms.author: genli
-ms.openlocfilehash: ff4822b513ed2aea6a18ba45bffc1d060ee2410e
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: a843a42de6fc1e6cd8ef788552ab4a8ac17b4e25
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85937530"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999051"
 ---
 # <a name="vhd-is-not-supported-when-you-create-a-virtual-machine-in-azure"></a>VHD wordt niet ondersteund bij het maken van een virtuele machine in azure
 
@@ -48,21 +48,21 @@ Dit probleem treedt op om een van de volgende redenen:
 
 Om dit probleem op te lossen, wijzigt u het formaat van de schijf zodat deze voldoet aan de uitlijning van 1 MB:
 
-- Gebruik de [Power shell-cmdlet resize-VHD](https://docs.microsoft.com/powershell/module/hyper-v/resize-vhd)om het probleem in Windows op te lossen. Houd er rekening mee dat het **wijzigen van de VHD** geen Azure PowerShell-cmdlet is.
+- Gebruik de [Power shell-cmdlet resize-VHD](/powershell/module/hyper-v/resize-vhd)om het probleem in Windows op te lossen. Houd er rekening mee dat het **wijzigen van de VHD** geen Azure PowerShell-cmdlet is.
 
-  1. [Installeer de Hyper-V-rol op Windows Server](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)
-  1. [De virtuele schijf converteren naar een VHD met een vaste grootte](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#convert-the-virtual-disk-to-a-fixed-size-vhd)
+  1. [Installeer de Hyper-V-rol op Windows Server](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)
+  1. [De virtuele schijf converteren naar een VHD met een vaste grootte](../windows/prepare-for-upload-vhd-image.md#convert-the-virtual-disk-to-a-fixed-size-vhd)
 
-- Gebruik de [qemu-img opdracht](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic)om het probleem in Linux op te lossen.
+- Gebruik de [qemu-img opdracht](../linux/create-upload-generic.md)om het probleem in Linux op te lossen.
 
 Raadpleeg de volgende artikelen voor meer informatie over het maken en uploaden van een VHD voor het maken van een Azure-VM:
 
-- [Een Linux-VM uploaden en maken op basis van een aangepaste schijf kopie met behulp van de Azure CLI 1,0](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd)
-- [Een Windows Server-VHD maken en uploaden naar Azure](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed)
+- [Een Linux-VM uploaden en maken op basis van een aangepaste schijf kopie met behulp van de Azure CLI 1,0](../linux/upload-vhd.md)
+- [Een Windows Server-VHD maken en uploaden naar Azure](../windows/upload-generalized-managed.md)
 
 Voortdurende problemen kunnen duiden op een beschadigde VHD. In dit geval wordt u aangeraden de VHD helemaal opnieuw te bouwen.
 
 Raadpleeg voor meer informatie de volgende artikelen:
 
-- [Over Windows VHD](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#about-vhds)
-- [Over Linux-VHD](https://docs.microsoft.com/azure/virtual-machines/linux/about-disks-and-vhds#about-vhds)
+- [Over Windows VHD](../windows/managed-disks-overview.md)
+- [Over Linux-VHD](../linux/managed-disks-overview.md)

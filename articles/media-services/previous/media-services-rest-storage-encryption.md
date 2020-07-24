@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: abf9610dd67c82af0da9a629245ea792bd5a3402
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 0e477b95f43c091bf17ec54d2fef9f971d5f6986
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170748"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000157"
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>Uw inhoud versleutelen met opslag versleuteling 
 
 > [!NOTE]
-> U hebt een Azure-account nodig om deze zelfstudie te voltooien. Zie [Gratis proefversie van Azure](https://azure.microsoft.com/pricing/free-trial/) voor meer informatie.   > er geen nieuwe functies of functionaliteit aan Media Services v2 worden toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> U hebt een Azure-account nodig om deze zelfstudie te voltooien. Zie [Gratis proefversie van Azure](https://azure.microsoft.com/pricing/free-trial/) voor meer informatie.   > er geen nieuwe functies of functionaliteit aan Media Services v2 worden toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](../latest/index.yml). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 >   
 
 Het wordt ten zeerste aangeraden om uw inhoud lokaal te versleutelen met AES-256-bits versleuteling en vervolgens te uploaden naar Azure Storage waar het versleuteld op rest wordt opgeslagen.
@@ -38,7 +38,7 @@ Dit artikel bevat een overzicht van de AMS-opslag versleuteling en laat zien hoe
 * Koppel de inhouds sleutel aan de Asset.  
 * Stel de versleutelings gerelateerde para meters in voor de AssetFile-entiteiten.
 
-## <a name="considerations"></a>Aandachtspunten 
+## <a name="considerations"></a>Overwegingen 
 
 Als u een door opslag versleutelde Asset wilt leveren, moet u het leverings beleid van het activum configureren. Voordat uw asset kan worden gestreamd, verwijdert de streaming-server de opslag versleuteling en streamt uw inhoud met behulp van het opgegeven leverings beleid. Zie beleid voor levering van [assets configureren](media-services-rest-configure-asset-delivery-policy.md)voor meer informatie.
 
@@ -49,8 +49,8 @@ Wanneer u entiteiten in Media Services opent, moet u specifieke header-velden en
 |Versleutelings optie|Beschrijving|Media Services v2|Media Services v3|
 |---|---|---|---|
 |Opslag versleuteling Media Services|AES-256-versleuteling, sleutel beheerd door Media Services|Ondersteund<sup>(1)</sup>|Niet ondersteund<sup>(2)</sup>|
-|[Storage Service Encryption voor Data-at-rest](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Versleuteling aan de server zijde die wordt aangeboden door Azure Storage, sleutel die wordt beheerd door Azure of door de klant|Ondersteund|Ondersteund|
-|[Versleuteling van de opslag aan de client zijde](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Versleuteling aan de client zijde die wordt aangeboden door Azure Storage, sleutel die wordt beheerd door de klant in Key Vault|Niet ondersteund|Niet ondersteund|
+|[Storage Service Encryption voor Data-at-rest](../../storage/common/storage-service-encryption.md)|Versleuteling aan de server zijde die wordt aangeboden door Azure Storage, sleutel die wordt beheerd door Azure of door de klant|Ondersteund|Ondersteund|
+|[Versleuteling van de opslag aan de client zijde](../../storage/common/storage-client-side-encryption.md)|Versleuteling aan de client zijde die wordt aangeboden door Azure Storage, sleutel die wordt beheerd door de klant in Key Vault|Niet ondersteund|Niet ondersteund|
 
 <sup>1</sup> hoewel Media Services het verwerken van inhoud in de Clear/zonder vorm van versleuteling ondersteunt, wordt dit niet aanbevolen.
 
@@ -75,7 +75,7 @@ Hieronder vindt u algemene stappen voor het genereren van inhouds sleutels die u
 1. Genereer voor opslag versleuteling wille keurig een 32-bytes AES-sleutel. 
    
     De 32-bytes AES-sleutel is de inhouds sleutel voor uw asset, wat betekent dat alle bestanden die aan die Asset zijn gekoppeld, dezelfde inhouds sleutel moeten gebruiken tijdens het ontsleutelen. 
-2. Roep de methoden [GetProtectionKeyId](https://docs.microsoft.com/rest/api/media/operations/rest-api-functions#getprotectionkeyid) en [GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey) aan om het juiste X. 509-certificaat op te halen dat moet worden gebruikt om uw inhouds sleutel te versleutelen.
+2. Roep de methoden [GetProtectionKeyId](/rest/api/media/operations/rest-api-functions#getprotectionkeyid) en [GetProtectionKey](/rest/api/media/operations/rest-api-functions#getprotectionkey) aan om het juiste X. 509-certificaat op te halen dat moet worden gebruikt om uw inhouds sleutel te versleutelen.
 3. Versleutel uw inhouds sleutel met de open bare sleutel van het X. 509-certificaat. 
    
    Media Services .NET SDK gebruikt RSA met OAEP wanneer de versleuteling wordt uitgevoerd.  U kunt een .NET-voor beeld bekijken in de [functie EncryptSymmetricKeyData](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs).
@@ -331,7 +331,7 @@ HTTP/1.1 204 No Content
 ```
 
 ## <a name="create-an-assetfile"></a>Een AssetFile maken
-De entiteit [AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) vertegenwoordigt een video-of audio bestand dat is opgeslagen in een BLOB-container. Een activum bestand is altijd gekoppeld aan een Asset en een Asset kan een of meer Asset-bestanden bevatten. De Media Services encoder-taak mislukt als een object van een activa bestand niet is gekoppeld aan een digitaal bestand in een BLOB-container.
+De entiteit [AssetFile](/rest/api/media/operations/assetfile) vertegenwoordigt een video-of audio bestand dat is opgeslagen in een BLOB-container. Een activum bestand is altijd gekoppeld aan een Asset en een Asset kan een of meer Asset-bestanden bevatten. De Media Services encoder-taak mislukt als een object van een activa bestand niet is gekoppeld aan een digitaal bestand in een BLOB-container.
 
 Het **AssetFile** -exemplaar en het daad werkelijke media bestand zijn twee verschillende objecten. Het AssetFile-exemplaar bevat meta gegevens over het Media bestand, terwijl het Media bestand de daad werkelijke media-inhoud bevat.
 

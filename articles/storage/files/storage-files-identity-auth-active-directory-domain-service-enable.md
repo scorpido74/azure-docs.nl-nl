@@ -7,18 +7,18 @@ ms.topic: how-to
 ms.date: 04/21/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2d9f7eccae6b87923b52119ded90ced5e4206d7b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fe2bbc1d6f42819354f48812a34371a49e5acbac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510387"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999629"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Azure Active Directory Domain Services authenticatie inschakelen op Azure Files
 
-[!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
+[Azure files](storage-files-introduction.md)   ondersteunt op identiteit gebaseerde verificatie via Server Message Block (SMB) via twee typen Domain Services: on-premises Active Directory Domain Services (AD DS) en Azure Active Directory Domain Services (Azure AD DS). We raden u ten zeerste aan de [sectie How it Works](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview#how-it-works) te bekijken om de juiste domein service voor authentcation te selecteren. Het instellen verschilt, is afhankelijk van de domein service die u kiest. Deze artikelen zijn gericht op het inschakelen en configureren van Azure AD DS voor verificatie met Azure-bestands shares.
 
-Voor een overzicht van Azure AD-verificatie via SMB voor Azure-bestands shares, Zie [overzicht van Azure Active Directory-verificatie via SMB voor Azure files](storage-files-active-directory-overview.md). Dit artikel is gericht op het inschakelen van verificatie met Azure Active Directory Domain Services (Azure AD DS) op Azure Files.
+Als u geen ervaring hebt met Azure-bestands shares, raden we u aan onze [plannings handleiding](storage-files-planning.md) te lezen voordat u de volgende serie artikelen leest.
 
 > [!NOTE]
 > Azure Files ondersteunt Kerberos-verificatie met Azure AD DS met RC4-HMAC-versleuteling. AES Kerberos-versleuteling wordt nog niet ondersteund.

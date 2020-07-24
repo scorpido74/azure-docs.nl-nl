@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 8f1273f1476ea7da03eb44b700519482deac3284
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8fedad40c18818932bf37dfe93c1b236357c30b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809180"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001601"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-powershell"></a>Taak verdeling op meerdere IP-configuraties met behulp van Power shell
 
@@ -38,7 +38,7 @@ In dit artikel wordt beschreven hoe u Azure Load Balancer gebruikt met meerdere 
 
 Volg de onderstaande stappen om het scenario te verduidelijken dat in dit artikel wordt beschreven:
 
-1. Installeer Azure PowerShell. Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview) voor informatie over het installeren van de nieuwste versie van Azure PowerShell, het selecteren van het abonnement en het aanmelden bij uw account.
+1. Installeer Azure PowerShell. Zie [Azure PowerShell installeren en configureren](/powershell/azure/) voor informatie over het installeren van de nieuwste versie van Azure PowerShell, het selecteren van het abonnement en het aanmelden bij uw account.
 2. Maak een resource groep met de volgende instellingen:
 
     ```powershell
@@ -46,7 +46,7 @@ Volg de onderstaande stappen om het scenario te verduidelijken dat in dit artike
     $myResourceGroup = "contosofabrikam"
     ```
 
-    Zie voor meer informatie stap 2 van [een resource groep maken](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json).
+    Zie voor meer informatie stap 2 van [een resource groep maken](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fazure%2fload-balancer%2ftoc.json).
 
 3. [Maak een beschikbaarheidsset](../virtual-machines/windows/tutorial-availability-sets.md?toc=%2fazure%2fload-balancer%2ftoc.json) die uw virtuele machines bevat. Voor dit scenario gebruikt u de volgende opdracht:
 
@@ -54,14 +54,14 @@ Volg de onderstaande stappen om het scenario te verduidelijken dat in dit artike
     New-AzAvailabilitySet -ResourceGroupName "contosofabrikam" -Name "myAvailset" -Location "West Central US"
     ```
 
-4. Volg de instructies stappen 3 tot en met 5 in [een Windows VM](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json) -artikel maken om het maken van een virtuele machine met één NIC voor te bereiden. Voer stap 6,1 uit en gebruik het volgende in plaats van stap 6,2:
+4. Volg de instructies stappen 3 tot en met 5 in [een Windows VM](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fazure%2fload-balancer%2ftoc.json) -artikel maken om het maken van een virtuele machine met één NIC voor te bereiden. Voer stap 6,1 uit en gebruik het volgende in plaats van stap 6,2:
 
     ```powershell
     $availset = Get-AzAvailabilitySet -ResourceGroupName "contosofabrikam" -Name "myAvailset"
     New-AzVMConfig -VMName "VM1" -VMSize "Standard_DS1_v2" -AvailabilitySetId $availset.Id
     ```
 
-    Maak vervolgens [een Windows VM](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json) -stap 6,3 tot en met 6,8.
+    Maak vervolgens [een Windows VM](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fazure%2fload-balancer%2ftoc.json) -stap 6,3 tot en met 6,8.
 
 5. Voeg een tweede IP-configuratie toe aan elke virtuele machine. Volg de instructies in het artikel [meerdere IP-adressen toewijzen aan virtuele machines](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md#add) . Gebruik de volgende configuratie-instellingen:
 

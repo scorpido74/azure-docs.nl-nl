@@ -13,17 +13,18 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 10/24/2019
 ms.author: juliako
-ms.openlocfilehash: e4eee3b9f3f97bf7cd7a7b61425ec5c9a3a198ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd63152776e0268b8f9e3e0ce116fea897cdf4e2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76543072"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000870"
 ---
 # <a name="live-event-states-and-billing"></a>Live gebeurtenis statussen en facturering
 
 In Azure Media Services begint de facturering van een live gebeurtenis zodra de status overgangen **wordt uitgevoerd**. U wordt gefactureerd, zelfs als er geen video door de service wordt getransporteerd. Als u de live-gebeurtenis van facturering wilt stoppen, moet u de live-gebeurtenis beëindigen. Live transcriptie wordt gefactureerd op dezelfde manier als de live-gebeurtenis.
 
-Wanneer **LiveEventEncodingType** voor uw [live-gebeurtenis](https://docs.microsoft.com/rest/api/media/liveevents) is ingesteld op Standard of Premium1080p, wordt met Media Services automatisch elke live gebeurtenis afgesloten die nog 12 uur na het invoeren van de invoer wordt **uitgevoerd** , en worden er geen **Live uitvoer**s uitgevoerd. Er worden echter nog steeds kosten in rekening gebracht voor de tijd dat de live-gebeurtenis de status **actief** heeft.
+Wanneer **LiveEventEncodingType** voor uw [live-gebeurtenis](/rest/api/media/liveevents) is ingesteld op Standard of Premium1080p, wordt met Media Services automatisch elke live gebeurtenis afgesloten die nog 12 uur na het invoeren van de invoer wordt **uitgevoerd** , en worden er geen **Live uitvoer**s uitgevoerd. Er worden echter nog steeds kosten in rekening gebracht voor de tijd dat de live-gebeurtenis de status **actief** heeft.
 
 > [!NOTE]
 > Passthrough-Live-gebeurtenissen worden niet automatisch afgesloten en moeten expliciet worden gestopt door de API om buitensporige facturering te voor komen. 

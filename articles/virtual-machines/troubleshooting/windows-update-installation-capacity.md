@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
-ms.openlocfilehash: bb7b641a7169c6577320f07a964d278ac1727b1c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 596303223554589ef26938486ccfd2281ccd46f5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83664695"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999102"
 ---
 # <a name="troubleshoot-os-start-up--windows-update-installation-capacity"></a>Problemen oplossen met opstarten vanaf een besturings systeem – Windows Update installatie capaciteit
 
@@ -48,7 +49,7 @@ In dit geval kan het besturings systeem (OS) de installatie van een Windows Upda
 
 ### <a name="create-and-access-a-repair-vm"></a>Een herstel-VM maken en openen
 
-1. Gebruik stap 1-3 van de [VM-reparatie opdrachten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) om een herstel-VM voor te bereiden.
+1. Gebruik stap 1-3 van de [VM-reparatie opdrachten](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) om een herstel-VM voor te bereiden.
 1. Maak met behulp van Verbinding met extern bureaublad verbinding met de herstel-VM.
 
 ### <a name="free-up-space-on-the-disk"></a>Ruimte vrijmaken op de schijf
@@ -59,10 +60,10 @@ Om het probleem op te lossen:
 - Voer een schijf opruiming uit.
 - Defragmenteer het station.
 
-1. Controleer of de schijf vol is. Als de schijf kleiner is dan 1 TB, kunt u deze uitbreiden tot Maxi maal 1 TB [met behulp van Power shell](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk).
+1. Controleer of de schijf vol is. Als de schijf kleiner is dan 1 TB, kunt u deze uitbreiden tot Maxi maal 1 TB [met behulp van Power shell](../windows/expand-os-disk.md).
 1. Als de schijf al 1 TB is, moet u een schijf opruiming uitvoeren.
-   1. Ontkoppel de gegevens schijf [van de verbroken virtuele machine](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk).
-   1. Koppel de gegevens schijf [aan een WERKENDE VM](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps#attach-an-existing-data-disk-to-a-vm).
+   1. Ontkoppel de gegevens schijf [van de verbroken virtuele machine](../windows/detach-disk.md).
+   1. Koppel de gegevens schijf [aan een WERKENDE VM](../windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm).
    1. Gebruik het [hulp programma schijf opruiming](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup) om ruimte vrij te maken.
 1. Nadat het formaat is gewijzigd en het opschonen is voltooid, kunt u het station ontfragmenten met de volgende opdracht:
 
@@ -122,4 +123,4 @@ Afhankelijk van het niveau van de fragmentatie kan de defragmentatie enkele uren
    
 ### <a name="rebuild-the-vm"></a>De virtuele machine opnieuw bouwen
 
-Gebruik [stap 5 van de opdrachten voor het herstellen van de virtuele machine](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) om de virtuele machine opnieuw samen te stellen.
+Gebruik [stap 5 van de opdrachten voor het herstellen van de virtuele machine](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) om de virtuele machine opnieuw samen te stellen.

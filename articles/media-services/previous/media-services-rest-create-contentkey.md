@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 373b863441eb21b52a18bbaece10779260eaeb7a
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 76717c580136d23030565c5476f8b282897784a7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166193"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000411"
 ---
 # <a name="create-content-keys-with-rest"></a>Inhouds sleutels maken met REST
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ Hieronder vindt u algemene stappen voor het genereren van inhouds sleutels die u
 1. Een wille keurige generatie van een AES-sleutel van 16 bytes (voor veelvoorkomende en envelop versleuteling) of een 32-bytes AES-sleutel (voor opslag versleuteling). 
    
     Dit is de inhouds sleutel voor uw asset, wat betekent dat alle bestanden die zijn gekoppeld aan die Asset, dezelfde inhouds sleutel moeten gebruiken tijdens het ontsleutelen. 
-2. Roep de methoden [GetProtectionKeyId](https://docs.microsoft.com/rest/api/media/operations/rest-api-functions#getprotectionkeyid) en [GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey) aan om het juiste X. 509-certificaat op te halen dat moet worden gebruikt om uw inhouds sleutel te versleutelen.
+2. Roep de methoden [GetProtectionKeyId](/rest/api/media/operations/rest-api-functions#getprotectionkeyid) en [GetProtectionKey](/rest/api/media/operations/rest-api-functions#getprotectionkey) aan om het juiste X. 509-certificaat op te halen dat moet worden gebruikt om uw inhouds sleutel te versleutelen.
 3. Versleutel uw inhouds sleutel met de open bare sleutel van het X. 509-certificaat. 
    
    Media Services .NET SDK gebruikt RSA met OAEP wanneer de versleuteling wordt uitgevoerd.  U ziet een voor beeld in de [functie EncryptSymmetricKeyData](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs).
@@ -268,4 +268,3 @@ HTTP/1.1 204 No Content
 
 ## <a name="provide-feedback"></a>Feedback geven
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

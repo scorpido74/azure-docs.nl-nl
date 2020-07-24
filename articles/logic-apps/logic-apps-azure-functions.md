@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
-ms.openlocfilehash: 6240b0813132f4a14dbe94b870774ebe7a0663aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ac35fde59479ffc13c17f8e63d6fccf65c3be27
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83714573"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001703"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>Azure-functies aanroepen vanuit Azure Logic Apps
 
@@ -124,7 +125,7 @@ Voordat u een Azure-functie kunt maken, moet u echter al een Azure function-app 
 
    1. Geef in het vak **functie naam** een naam op voor de functie.
 
-   1. Voeg in het vak **code** de code toe aan de functie sjabloon, met inbegrip van de reactie en de nettolading die u wilt retour neren naar uw logische app nadat de functie is voltooid. Selecteer **Maken** als u klaar bent.
+   1. Voeg in het vak **code** de code toe aan de functie sjabloon, met inbegrip van de reactie en de nettolading die u wilt retour neren naar uw logische app nadat de functie is voltooid. Als u gereed bent, selecteert u **Maken**.
 
    Bijvoorbeeld:
 
@@ -256,7 +257,7 @@ Voordat u met deze taak begint, zoekt en plaatst u deze waarden voor later gebru
 
 * De Directory-ID voor uw Tenant in Azure Active Directory (Azure AD)
 
-  Als u de Directory-ID van uw Tenant wilt ophalen, kunt u de [`Get-AzureAccount`](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureaccount) Power shell-opdracht uitvoeren. Of voer de volgende stappen uit in het Azure Portal:
+  Als u de Directory-ID van uw Tenant wilt ophalen, kunt u de [`Get-AzureAccount`](/powershell/module/servicemanagement/azure.service/get-azureaccount) Power shell-opdracht uitvoeren. Of voer de volgende stappen uit in het Azure Portal:
 
   1. Zoek in het [Azure Portal](https://portal.azure.com)de functie-app en selecteer deze.
 

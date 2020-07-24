@@ -8,16 +8,17 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 314d7a4725709f00ba5cdbf54595857502bc5805
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 026b869556e1bd49018b2afce27e732a3109b9fd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81865950"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999119"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>IaaS-resources van klassiek naar Azure Resource Manager migreren met behulp van Power shell
 
 > [!IMPORTANT]
-> Nu gebruiken we op ongeveer 90% IaaS Vm's [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/). Vanaf 28 februari 2020 zijn klassieke Vm's afgeschaft en worden ze volledig buiten gebruik gesteld op 1 maart 2023. Meer [informatie]( https://aka.ms/classicvmretirement) over deze afschaffing en [hoe dit van invloed is op u](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation#how-does-this-affect-me).
+> Nu gebruiken we op ongeveer 90% IaaS Vm's [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/). Vanaf 28 februari 2020 zijn klassieke Vm's afgeschaft en worden ze volledig buiten gebruik gesteld op 1 maart 2023. Meer [informatie]( https://aka.ms/classicvmretirement) over deze afschaffing en [hoe dit van invloed is op u](../classic-vm-deprecation.md#how-does-this-affect-me).
 
 In deze stappen ziet u hoe u Azure PowerShell-opdrachten kunt gebruiken om IaaS-resources (Infrastructure as a Service) te migreren van het klassieke implementatie model naar het Azure Resource Manager-implementatie model.
 
@@ -48,7 +49,7 @@ Hier volgen enkele aanbevolen procedures voor het bepalen van de migratie van Ia
 ## <a name="step-2-install-the-latest-version-of-powershell"></a>Stap 2: de nieuwste versie van Power Shell installeren
 Er zijn twee belang rijke opties voor het installeren van Azure PowerShell: [PowerShell Gallery](https://www.powershellgallery.com/profiles/azure-sdk/) of [Web platform Installer (WebPI)](https://aka.ms/webpi-azps). WebPI ontvangt maandelijkse updates. PowerShell Gallery updates doorlopend worden ontvangen. Dit artikel is gebaseerd op Azure PowerShell versie 2.1.0.
 
-Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview)voor installatie-instructies.
+Zie [Azure PowerShell installeren en configureren](/powershell/azure/)voor installatie-instructies.
 
 ## <a name="step-3-ensure-that-youre-an-administrator-for-the-subscription"></a>Stap 3: Zorg ervoor dat u een beheerder bent voor het abonnement
 Als u deze migratie wilt uitvoeren, moet u worden toegevoegd als een cobeheerder voor het abonnement in de [Azure Portal](https://portal.azure.com).
@@ -220,7 +221,7 @@ Als de voor bereide configuratie goed lijkt, kunt u de resources door lopen en d
 
 Als u virtuele machines in een virtueel netwerk wilt migreren, migreert u het virtuele netwerk. De virtuele machines worden automatisch gemigreerd met het virtuele netwerk. Kies het virtuele netwerk dat u wilt migreren.
 > [!NOTE]
-> [Migreer één virtuele machine](migrate-single-classic-to-resource-manager.md) die is gemaakt met behulp van het klassieke implementatie model door een nieuwe virtuele machine van Resource Manager met Managed disks te maken met behulp van de VHD-(OS-en gegevens bestanden) van de virtuele machine.
+> [Migreer één virtuele machine](./create-vm-specialized-portal.md) die is gemaakt met behulp van het klassieke implementatie model door een nieuwe virtuele machine van Resource Manager met Managed disks te maken met behulp van de VHD-(OS-en gegevens bestanden) van de virtuele machine.
 <br>
 
 > [!NOTE]

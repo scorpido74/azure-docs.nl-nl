@@ -15,25 +15,25 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 288b7302b12d607c9090f699af83691b832256a3
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 83e945fccfbfbec207723d6c16f2a4dfc7290c52
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170816"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000037"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Overzicht van Media Services bewerkingen REST API 
 
 > [!NOTE]
-> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](../latest/index.yml). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
-De REST-API van **Media Services bewerkingen** wordt gebruikt voor het maken van taken, assets, Live kanalen en andere resources in een Media Services-account. Zie [Media Services Operations rest API Reference](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)(Engelstalig) voor meer informatie.
+De REST-API van **Media Services bewerkingen** wordt gebruikt voor het maken van taken, assets, Live kanalen en andere resources in een Media Services-account. Zie [Media Services Operations rest API Reference](/rest/api/media/operations/azure-media-services-rest-api-reference)(Engelstalig) voor meer informatie.
 
 Media Services biedt een REST API die zowel JSON als Atom + pub XML-indeling accepteert. Media Services REST API vereist specifieke HTTP-headers die elke client moet verzenden wanneer er verbinding wordt gemaakt met Media Services, evenals een set optionele headers. In de volgende secties worden de kopteksten en HTTP-termen beschreven die u kunt gebruiken bij het maken van aanvragen en het ontvangen van antwoorden van Media Services.
 
 Verificatie voor de Media Services REST API wordt uitgevoerd via Azure Active Directory verificatie. dit wordt beschreven in het artikel [Azure AD-verificatie gebruiken om toegang te krijgen tot de API van Azure Media Services met rest](media-services-rest-connect-with-aad.md)
 
-## <a name="considerations"></a>Aandachtspunten
+## <a name="considerations"></a>Overwegingen
 
 De volgende overwegingen zijn van toepassing wanneer u REST gebruikt.
 
@@ -64,8 +64,8 @@ Voor elke aanroep die u in Media Services maakt, moet u een set vereiste kopteks
 | --- | --- | --- |
 | Autorisatie |Drager |Bearer is het enige geaccepteerde autorisatie mechanisme. De waarde moet ook het toegangs token bevatten dat door Azure Active Directory is geleverd. |
 | x-ms-version |Decimal |2,17 (of meest recente versie)|
-| DataServiceVersion |Decimal |3.0 |
-| MaxDataServiceVersion |Decimal |3.0 |
+| DataServiceVersion |Decimal |3,0 |
+| MaxDataServiceVersion |Decimal |3,0 |
 
 > [!NOTE]
 > Omdat Media Services OData gebruikt om de REST-Api's weer te geven, moeten de DataServiceVersion-en MaxDataServiceVersion-headers worden opgenomen in alle aanvragen; Als dat niet het geval is, 3,0 wordt de DataServiceVersion-waarde Media Services die in gebruik is, echter gebruikt.
@@ -130,4 +130,3 @@ Zie [Azure AD-verificatie gebruiken om toegang te krijgen tot de API van Azure M
 
 ## <a name="provide-feedback"></a>Feedback geven
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

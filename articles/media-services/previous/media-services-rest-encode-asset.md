@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: e5523b7c39763fb53d0847b79c70d5ab8b9d3b52
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 9320677e970d9194e2cccad07522d7a63b6353d6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169320"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999969"
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Een Asset coderen met behulp van Media Encoder Standard
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.locfileid: "86169320"
 
 Als u digitale video via internet wilt leveren, moet u het medium comprimeren. Digitale video bestanden zijn groot en zijn mogelijk te groot om te leveren via internet of voor de apparaten van uw klanten om goed te kunnen worden weer gegeven. Encoding is het proces van het comprimeren van video en audio zodat uw klanten uw media kunnen bekijken.
 
-Coderings taken zijn een van de meest voorkomende verwerkings bewerkingen in Azure Media Services. U maakt coderings taken voor het converteren van media bestanden van de ene code ring naar een andere. Wanneer u codeert, kunt u het ingebouwde coderings programma (Media Encoder Standard) van Media Services gebruiken. U kunt ook een coderings programma van een Media Services partner gebruiken. Coderings Programma's van derden zijn beschikbaar via de Azure Marketplace. U kunt de details van coderings taken opgeven met behulp van vooraf gedefinieerde teken reeksen die zijn gedefinieerd voor uw encoder, of met behulp van vooraf ingestelde configuratie bestanden. Zie [taak voorinstellingen voor Media Encoder Standard voor](https://msdn.microsoft.com/library/mt269960)een overzicht van de beschik bare soorten voor instellingen.
+Coderings taken zijn een van de meest voorkomende verwerkings bewerkingen in Azure Media Services. U maakt coderings taken voor het converteren van media bestanden van de ene code ring naar een andere. Wanneer u codeert, kunt u het ingebouwde coderings programma (Media Encoder Standard) van Media Services gebruiken. U kunt ook een coderings programma van een Media Services partner gebruiken. Coderings Programma's van derden zijn beschikbaar via de Azure Marketplace. U kunt de details van coderings taken opgeven met behulp van vooraf gedefinieerde teken reeksen die zijn gedefinieerd voor uw encoder, of met behulp van vooraf ingestelde configuratie bestanden. Zie [taak voorinstellingen voor Media Encoder Standard voor](/azure/media-services/previous/media-services-mes-presets-overview)een overzicht van de beschik bare soorten voor instellingen.
 
 Elke taak kan een of meer taken bevatten, afhankelijk van het type verwerking dat u wilt uitvoeren. Via de REST API kunt u op een van de volgende twee manieren taken en de bijbehorende taken maken:
 
@@ -44,7 +44,7 @@ U wordt aangeraden om uw bron bestanden altijd te coderen in een adaptieve bitsn
 
 Als uw uitvoer activum is versleuteld, moet u het beleid voor de levering van assets configureren. Zie voor meer informatie beleid voor het [leveren van assets configureren](media-services-rest-configure-asset-delivery-policy.md).
 
-## <a name="considerations"></a>Aandachtspunten
+## <a name="considerations"></a>Overwegingen
 
 Wanneer u entiteiten in Media Services opent, moet u specifieke header-velden en-waarden in uw HTTP-aanvragen instellen. Zie [Setup for Media Services rest API Development](media-services-rest-how-to-use.md)(Engelstalig) voor meer informatie.
 
@@ -65,7 +65,7 @@ Zie [toegang tot de Azure Media Services-API met Azure AD-verificatie](media-ser
 >
 >
 
-In het volgende voor beeld ziet u hoe u een taak maakt en post met één taakset voor het coderen van een video met een specifieke resolutie en kwaliteit. Wanneer u codeert met Media Encoder Standard, kunt u [hier](https://msdn.microsoft.com/library/mt269960)opgegeven voor instellingen voor taak configuratie gebruiken.
+In het volgende voor beeld ziet u hoe u een taak maakt en post met één taakset voor het coderen van een video met een specifieke resolutie en kwaliteit. Wanneer u codeert met Media Encoder Standard, kunt u [hier](/azure/media-services/previous/media-services-mes-presets-overview)opgegeven voor instellingen voor taak configuratie gebruiken.
 
 Aanvraag:
 
@@ -98,7 +98,7 @@ In het volgende voor beeld ziet u hoe u het kenmerk assets instelt:
 { "TaskBody" : "<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset assetName=\"CustomOutputAssetName\">JobOutputAsset(0)</outputAsset></taskBody>"}`
 ```
 
-## <a name="considerations"></a>Aandachtspunten
+## <a name="considerations"></a>Overwegingen
 * TaskBody-eigenschappen moeten letterlijke XML gebruiken om het aantal invoer-of uitvoer activa te definiëren dat door de taak wordt gebruikt. Het taak artikel bevat de XML-schema definitie voor de XML.
 * In de TaskBody-definitie moet elke interne waarde voor `<inputAsset>` en `<outputAsset>` worden ingesteld op JobInputAsset (waarde) of JobOutputAsset (waarde).
 * Een taak kan meerdere uitvoer assets hebben. Een JobOutputAsset (x) kan slechts één keer worden gebruikt als uitvoer van een taak in een taak.
@@ -151,7 +151,7 @@ x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
 }
 ```
 
-### <a name="considerations"></a>Aandachtspunten
+### <a name="considerations"></a>Overwegingen
 Taak koppeling inschakelen:
 
 * Een taak moet ten minste twee taken bevatten.
@@ -292,5 +292,5 @@ HTTP/1.1 201 Created
 ## <a name="next-steps"></a>Volgende stappen
 Nu u weet hoe u een taak kunt maken om een Asset te coderen, raadpleegt u de [voortgang van de taak controleren met Media Services](media-services-rest-check-job-progress.md).
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 [Media processors ophalen](media-services-rest-get-media-processor.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
-ms.openlocfilehash: 03bedba280fca4c051685eabdfa47eaaf00f05d3
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: edc17b9636792ce00458716e3461077fa689b3ed
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963322"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001570"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Een open bare load balancer met IPv6 maken met behulp van Azure CLI
 
@@ -268,7 +268,7 @@ Maak Nic's en koppel deze aan NAT-regels, load balancer regels en tests.
 
 ## <a name="create-the-back-end-vm-resources-and-attach-each-nic"></a>De back-end-VM-resources maken en elke NIC koppelen
 
-Als u Vm's wilt maken, moet u een opslag account hebben. Voor taak verdeling moeten de virtuele machines lid zijn van een beschikbaarheidsset. Zie [een Azure-VM maken met behulp van Power shell](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json)voor meer informatie over het maken van vm's.
+Als u Vm's wilt maken, moet u een opslag account hebben. Voor taak verdeling moeten de virtuele machines lid zijn van een beschikbaarheidsset. Zie [een Azure-VM maken met behulp van Power shell](../virtual-machines/windows/quick-create-powershell.md?toc=%2fazure%2fload-balancer%2ftoc.json)voor meer informatie over het maken van vm's.
 
 1. De Power shell-variabelen instellen:
 

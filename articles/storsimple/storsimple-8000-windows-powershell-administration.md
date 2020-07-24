@@ -6,11 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: c1976adba0159b54bd64b2c8830c3aaad9959912
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bba3666fbce6a8ea591654d1abdad319f1e0857c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513707"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999513"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Een apparaat beheren met Windows PowerShell voor StorSimple
 
@@ -28,7 +29,7 @@ Na het lezen van dit artikel kunt u het volgende doen:
 
 > [!NOTE]
 > * Met Windows PowerShell voor StorSimple-cmdlets kunt u uw StorSimple-apparaat vanuit een seriële console of extern beheren via Windows Power shell Remoting. Voor meer informatie over elk van de afzonderlijke cmdlets die in deze interface kunnen worden gebruikt, gaat u naar de [cmdlet-naslag voor Windows PowerShell voor StorSimple](https://technet.microsoft.com/library/dn688168.aspx).
-> * De Azure PowerShell StorSimple-cmdlets zijn een andere verzameling cmdlets waarmee u StorSimple service-en migratie taken kunt automatiseren vanaf de opdracht regel. Voor meer informatie over de Azure PowerShell-cmdlets voor StorSimple gaat u naar de naslag informatie voor de [Azure StorSimple-cmdlet](https://docs.microsoft.com/powershell/module/servicemanagement/azure/?view=azuresmps-4.0.0&viewFallbackFrom=azuresmps-3.7.0#azure).
+> * De Azure PowerShell StorSimple-cmdlets zijn een andere verzameling cmdlets waarmee u StorSimple service-en migratie taken kunt automatiseren vanaf de opdracht regel. Voor meer informatie over de Azure PowerShell-cmdlets voor StorSimple gaat u naar de naslag informatie voor de [Azure StorSimple-cmdlet](/powershell/module/servicemanagement/azure.service/?view=azuresmps-4.0.0&viewFallbackFrom=azuresmps-3.7.0#azure).
 
 
 U kunt de Windows PowerShell voor StorSimple met een van de volgende methoden openen:

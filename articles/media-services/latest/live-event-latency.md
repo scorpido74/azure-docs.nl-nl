@@ -13,18 +13,18 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/22/2019
 ms.author: juliako
-ms.openlocfilehash: 720931cf9f955f63075e3881b6b9f2e884bd3a76
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 24eb5f8691c94c1f319820f3133b66065504ace3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232454"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000888"
 ---
 # <a name="live-event-low-latency-settings"></a>Instellingen voor lage latentie van Live Event
 
-In dit artikel wordt beschreven hoe u een lage latentie kunt instellen voor een [live gebeurtenis](https://docs.microsoft.com/rest/api/media/liveevents). Ook worden de gebruikelijke resultaten besproken die u ziet wanneer u de instellingen voor lage latentie gebruikt in verschillende spelers. De resultaten variëren op basis van CDN en netwerk latentie.
+In dit artikel wordt beschreven hoe u een lage latentie kunt instellen voor een [live gebeurtenis](/rest/api/media/liveevents). Ook worden de gebruikelijke resultaten besproken die u ziet wanneer u de instellingen voor lage latentie gebruikt in verschillende spelers. De resultaten variëren op basis van CDN en netwerk latentie.
 
-Als u de nieuwe functie **LowLatency** wilt gebruiken, stelt u de **StreamOptionsFlag** in op **LowLatency** op de **LiveEvent**. Wanneer u [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) maakt voor HLS afspelen, stelt u [LiveOutput. HLS. fragmentsPerTsSegment](https://docs.microsoft.com/rest/api/media/liveoutputs/create#hls) in op 1. Zodra de stroom actief is, kunt u de [Azure Media Player](https://ampdemo.azureedge.net/) (pagina amp-demo) gebruiken en de afspeel opties instellen op het gebruik van het profiel ' laag latentie heuristiek '.
+Als u de nieuwe functie **LowLatency** wilt gebruiken, stelt u de **StreamOptionsFlag** in op **LowLatency** op de **LiveEvent**. Wanneer u [LiveOutput](/rest/api/media/liveoutputs) maakt voor HLS afspelen, stelt u [LiveOutput. HLS. fragmentsPerTsSegment](/rest/api/media/liveoutputs/create#hls) in op 1. Zodra de stroom actief is, kunt u de [Azure Media Player](https://ampdemo.azureedge.net/) (pagina amp-demo) gebruiken en de afspeel opties instellen op het gebruik van het profiel ' laag latentie heuristiek '.
 
 > [!NOTE]
 > Op dit moment is de LowLatency HeuristicProfile in Azure Media Player ontworpen voor het afspelen van streams in MPEG-DASH protocol, met een KVP-of CMAF-indeling (bijvoorbeeld `format=mdp-time-csf` of `format=mdp-time-cmaf` ). 
@@ -79,4 +79,3 @@ In de volgende tabellen worden de gemiddelde resultaten weer gegeven voor latent
 
 - [Overzicht van live streamen](live-streaming-overview.md)
 - [Zelf studie over live streamen](stream-live-tutorial-with-api.md)
-

@@ -10,12 +10,12 @@ ms.author: robinsh
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 2f1f059f3abfd04ae78d9a2a19cff2929e84b8a4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 72c012ba9ce28c0ca5dd5a315cf94b8895558a0b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521119"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001686"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Communiceren met uw IoT-hub met behulp van het MQTT-Protocol
 
@@ -41,7 +41,7 @@ De MQTT-poort (8883) is geblokkeerd in veel bedrijfs-en educatieve netwerk omgev
 
 ## <a name="using-the-device-sdks"></a>De apparaat-Sdk's gebruiken
 
-[Apparaat-sdk's](https://github.com/Azure/azure-iot-sdks) die het MQTT-protocol ondersteunen, zijn beschikbaar voor Java, Node.js, C, C# en python. De Sdk's van het apparaat maken gebruik van de Standard-IoT Hub connection string om een verbinding met een IoT-hub tot stand te brengen. Als u het MQTT-protocol wilt gebruiken, moet de para meter client protocol worden ingesteld op **MQTT**. U kunt ook MQTT via web sockets opgeven in de para meter client protocol. De Sdk's van het apparaat maken standaard verbinding met een IoT Hub met de vlag **CleanSession** ingesteld op **0** en gebruiken **QoS 1** voor berichten uitwisseling met de IOT-hub.
+[Apparaat-sdk's](https://github.com/Azure/azure-iot-sdks) die het MQTT-protocol ondersteunen, zijn beschikbaar voor Java, Node.js, C, C# en python. De Sdk's van het apparaat maken gebruik van de Standard-IoT Hub connection string om een verbinding met een IoT-hub tot stand te brengen. Als u het MQTT-protocol wilt gebruiken, moet de para meter client protocol worden ingesteld op **MQTT**. U kunt ook MQTT via web sockets opgeven in de para meter client protocol. De Sdk's van het apparaat maken standaard verbinding met een IoT Hub met de vlag **CleanSession** ingesteld op **0** en gebruiken **QoS 1** voor berichten uitwisseling met de IOT-hub. Hoewel het mogelijk is om **QoS 0** te configureren voor een snellere uitwisseling van berichten, moet u er rekening mee houden dat de levering niet gegarandeerd noch bevestigd wordt. Daarom wordt **QoS 0** vaak aangeduid als brand en verg eten.
 
 Wanneer een apparaat is verbonden met een IoT-hub, bieden de Sdk's van het apparaat methoden die het apparaat in staat stellen om berichten uit te wisselen met een IoT-hub.
 
@@ -76,11 +76,11 @@ Om ervoor te zorgen dat een client/IoT Hub verbinding actief blijft, worden zowe
 
 |Taal  |Standaard interval voor Keep-Alive  |Configureerbaar  |
 |---------|---------|---------|
-|Node.js     |   180 seconden      |     Nee    |
-|Java     |    230 seconden     |     Nee    |
+|Node.js     |   180 seconden      |     No    |
+|Java     |    230 seconden     |     No    |
 |C     | 240 seconden |  [Ja](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md#mqtt-transport)   |
 |C#     | 300 seconden |  [Ja](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/src/Transport/Mqtt/MqttTransportSettings.cs#L89)   |
-|Python (v2)   | 60 seconden |  Nee   |
+|Python (v2)   | 60 seconden |  No   |
 
 De volgende [MQTT-specificatie](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718081), het Keep-Alive ping-interval van IoT Hub is 1,5 keer de client Keep-Alive-waarde. IoT Hub beperkt echter de maximale time-out aan de server zijde tot 29,45 minuten (1767 seconden), omdat alle Azure-Services zijn gebonden aan de Azure load balancer TCP-time-out voor inactiviteit, 29,45 minuten. 
 
@@ -348,7 +348,7 @@ De mogelijke status codes zijn:
 
 |Status | Beschrijving |
 | ----- | ----------- |
-| 200 | Success |
+| 200 | Geslaagd |
 | 429 | Te veel aanvragen (beperkt), conform [IOT hub beperking](iot-hub-devguide-quotas-throttling.md) |
 | 5 * * | Serverfouten |
 

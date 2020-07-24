@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: juliako
-ms.openlocfilehash: 619d40ab56715b4444d8e5649c7fb3401b3f57ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 276cb3e6078fec915f266c5eb9aa557f92973dd7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71937289"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001159"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-cli"></a>Media Services gebeurtenissen maken en bewaken met Event Grid met behulp van de Azure CLI
 
@@ -26,12 +26,12 @@ In dit artikel gebruikt u de Azure CLI om u te abonneren op gebeurtenissen voor 
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een actief Azure-abonnement. Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) voordat u begint.
+- Een actief Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) aan voordat u begint.
 - Installeer en gebruik de CLI lokaal. Voor dit artikel dient u gebruik te maken van Azure CLI, versie 2.0 of hoger. Voer `az --version` uit om te zien welke versie u hebt. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli). 
 
     Momenteel werken niet alle [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref)-opdrachten in Azure Cloud Shell. U wordt aangeraden de CLI lokaal te gebruiken.
 
-- [Maak een Media Services-account](create-account-cli-how-to.md).
+- [Een Azure Media Services-account maken](./create-account-howto.md).
 
     Vergeet niet de waarden die u hebt gebruikt voor de namen van de resourcegroep en het Media Services-account.
 
@@ -109,4 +109,3 @@ Bekijk opnieuw uw web-app en u zult zien dat er een validatiegebeurtenis voor ee
 ## <a name="next-steps"></a>Volgende stappen
 
 [Uploaden, coderen en streamen](stream-files-tutorial-with-api.md)
-

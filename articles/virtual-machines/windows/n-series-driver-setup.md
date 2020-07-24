@@ -10,11 +10,12 @@ ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: vikancha
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5dfcb4abc7a6859955bc36fad2cee893a78c79cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2dccfebed26c8064db697413e7417ae08d69a3ac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84726562"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998970"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>NVIDIA GPU-Stuur Programma's installeren op Vm's met N-serie waarop Windows wordt uitgevoerd 
 
@@ -22,7 +23,7 @@ Als u gebruik wilt maken van de GPU-mogelijkheden van virtuele machines van Azur
 
 Als u ervoor kiest om de NVIDIA GPU-Stuur Programma's hand matig te installeren, worden in dit artikel ondersteunde besturings systemen, stuur Programma's en installatie-en verificatie stappen beschreven. Informatie over hand matige installatie van Stuur Programma's is ook beschikbaar voor [Linux-vm's](../linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Zie [GPU Windows VM-grootten](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)voor basis specificaties, opslag capaciteit en schijf Details. 
+Zie [GPU Windows VM-grootten](../sizes-gpu.md?toc=/azure/virtual-machines/windows/toc.json)voor basis specificaties, opslag capaciteit en schijf Details. 
 
 [!INCLUDE [virtual-machines-n-series-windows-support](../../../includes/virtual-machines-n-series-windows-support.md)]
 
@@ -52,19 +53,17 @@ Als u de status van het GPU-apparaat wilt opvragen, voert u het [NVIDIA-SMI-](ht
 
 ## <a name="rdma-network-connectivity"></a>RDMA-netwerk verbinding
 
-RDMA-netwerk connectiviteit kan worden ingeschakeld op met RDMA geschikte virtuele machines uit de N-serie, zoals NC24r geïmplementeerd in dezelfde beschikbaarheidsset of in één plaatsings groep in een virtuele-machine schaalset. De HpcVmDrivers-extensie moet worden toegevoegd om Windows-netwerk Stuur Programma's te installeren waarmee RDMA-connectiviteit mogelijk wordt gemaakt. Gebruik [Azure PowerShell](/powershell/azure/overview) -cmdlets voor Azure Resource Manager om de VM-extensie toe te voegen aan een RDMA-VM van de N-serie.
+RDMA-netwerk connectiviteit kan worden ingeschakeld op met RDMA geschikte virtuele machines uit de N-serie, zoals NC24r geïmplementeerd in dezelfde beschikbaarheidsset of in één plaatsings groep in een virtuele-machine schaalset. De HpcVmDrivers-extensie moet worden toegevoegd om Windows-netwerk Stuur Programma's te installeren waarmee RDMA-connectiviteit mogelijk wordt gemaakt. Gebruik [Azure PowerShell](/powershell/azure/) -cmdlets voor Azure Resource Manager om de VM-extensie toe te voegen aan een RDMA-VM van de N-serie.
 
 Als u de meest recente versie 1,1 HpcVMDrivers-extensie wilt installeren op een bestaande, met RDMA geschikte virtuele machine met de naam myVM in de regio vs-West:
   ```powershell
   Set-AzVMExtension -ResourceGroupName "myResourceGroup" -Location "westus" -VMName "myVM" -ExtensionName "HpcVmDrivers" -Publisher "Microsoft.HpcCompute" -Type "HpcVmDrivers" -TypeHandlerVersion "1.1"
   ```
-  Zie voor meer informatie [virtuele-machine uitbreidingen en functies voor Windows](extensions-features.md).
+  Zie voor meer informatie [virtuele-machine uitbreidingen en functies voor Windows](../extensions/features-windows.md).
 
-Het RDMA-netwerk ondersteunt MPI-verkeer (Message Passing Interface) voor toepassingen die worden uitgevoerd met [micro soft mpi](https://docs.microsoft.com/message-passing-interface/microsoft-mpi) of Intel mpi 5. x. 
+Het RDMA-netwerk ondersteunt MPI-verkeer (Message Passing Interface) voor toepassingen die worden uitgevoerd met [micro soft mpi](/message-passing-interface/microsoft-mpi) of Intel mpi 5. x. 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Ontwikkel aars die GPU-versnelde toepassingen bouwen voor de NVIDIA Tesla-Gpu's, kunnen ook de meest recente [CUDA-Toolkit](https://developer.nvidia.com/cuda-downloads)downloaden en installeren. Zie de [installatie handleiding voor CUDA](https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html#axzz4ZcwJvqYi)voor meer informatie.
-
-

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: fa7dca62ed51c52b704c199ca04eadb6306be4df
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: c3d776362b0447b148c0b2bdedba1287fa56058b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170782"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000190"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Bestanden uploaden naar een Media Services-account met REST  
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "86170782"
 > * [Portal](media-services-portal-upload-files.md)
 > 
 
-In Media Services uploadt u de digitale bestanden naar (of neemt u deze op in) een asset. De [Asset](https://docs.microsoft.com/rest/api/media/operations/asset) -entiteit kan video, audio, afbeeldingen, miniatuur verzamelingen, tekst sporen en ondertitelings bestanden (en de meta gegevens over deze bestanden) bevatten.  Zodra de bestanden in de Asset zijn geüpload, wordt uw inhoud veilig opgeslagen in de Cloud voor verdere verwerking en streaming. 
+In Media Services uploadt u de digitale bestanden naar (of neemt u deze op in) een asset. De [Asset](/rest/api/media/operations/asset) -entiteit kan video, audio, afbeeldingen, miniatuur verzamelingen, tekst sporen en ondertitelings bestanden (en de meta gegevens over deze bestanden) bevatten.  Zodra de bestanden in de Asset zijn geüpload, wordt uw inhoud veilig opgeslagen in de Cloud voor verdere verwerking en streaming. 
 
 In deze zelf studie leert u hoe u een bestand en een andere bewerking die eraan is gekoppeld, kunt uploaden:
 
@@ -45,10 +45,10 @@ In deze zelf studie leert u hoe u een bestand en een andere bewerking die eraan 
 - Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) aan voordat u begint.
 - [Maak een Azure Media Services-account met behulp van de Azure Portal](media-services-portal-create-account.md).
 - Raadpleeg het artikel [toegang tot Azure Media Services-API met Aad-verificatie](media-services-use-aad-auth-to-access-ams-api.md) .
-- Zie ook voor meer informatie de [Azure AD-verificatie gebruiken om toegang te krijgen tot de Media Services-API met het rest](https://docs.microsoft.com/azure/media-services/previous/media-services-rest-connect-with-aad) -artikel.
+- Zie ook voor meer informatie de [Azure AD-verificatie gebruiken om toegang te krijgen tot de Media Services-API met het rest](./media-services-rest-connect-with-aad.md) -artikel.
 - Een **postman** configureren zoals beschreven in [postman configureren voor Media Services rest API-aanroepen](media-rest-apis-with-postman.md).
 
-## <a name="considerations"></a>Aandachtspunten
+## <a name="considerations"></a>Overwegingen
 
 De volgende overwegingen zijn van toepassing wanneer u Media Services REST API gebruikt:
  
@@ -69,7 +69,7 @@ Zie voor meer informatie over het instellen van Postman voor deze zelf studie [p
 
     Als u waarden voor de eerste vijf variabelen wilt ophalen, raadpleegt u [de Azure Media Services-API openen met Azure AD-verificatie](media-services-use-aad-auth-to-access-ams-api.md). 
 
-    ![Een bestand uploaden](./media/media-services-rest-upload-files/postman-import-env.png)
+    ![Bestand uploaden](./media/media-services-rest-upload-files/postman-import-env.png)
 2. Geef de waarde op voor de omgevings variabele **MediaFileName** .
 
     Geef de bestands naam op van de media die u wilt uploaden. In dit voor beeld gaan we de BigBuckBunny.mp4 uploaden. 
@@ -91,7 +91,7 @@ Zie voor meer informatie over het instellen van Postman voor deze zelf studie [p
 
     Het URL-gedeelte wordt gevuld met de omgevings variabele **AzureADSTSEndpoint** (eerder in de zelf studie stelt u de waarden van omgevings variabelen in die ondersteuning bieden voor de verzameling).
 
-    ![Een bestand uploaden](./media/media-services-rest-upload-files/postment-get-token.png)
+    ![Bestand uploaden](./media/media-services-rest-upload-files/postment-get-token.png)
 
 5. Druk op **Verzenden**.
 
@@ -106,14 +106,14 @@ Zie voor meer informatie over het instellen van Postman voor deze zelf studie [p
 >[!NOTE]
 >Er geldt een limiet van 1.000.000 beleidsregels voor verschillende AMS-beleidsitems (bijvoorbeeld voor Locator-beleid of ContentKeyAuthorizationPolicy). U moet dezelfde beleids-id gebruiken als u altijd dezelfde dagen/toegangsmachtigingen gebruikt, bijvoorbeeld beleidsregels voor locators die zijn bedoeld om gedurende een lange periode gehandhaafd te blijven (niet-upload-beleidsregels). Zie [Dit](media-services-dotnet-manage-entities.md#limit-access-policies) artikel voor meer informatie.
 
-Voordat u bestanden naar Blob Storage uploadt, stelt u de rechten voor het toegangs beleid in voor het schrijven naar een Asset. Hiertoe plaatst u een HTTP-aanvraag naar de AccessPolicies-entiteitset. Definieer een DurationInMinutes-waarde bij het maken of ontvang een fout bericht 500 interne server als reactie. Zie [AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy)voor meer informatie over AccessPolicies.
+Voordat u bestanden naar Blob Storage uploadt, stelt u de rechten voor het toegangs beleid in voor het schrijven naar een Asset. Hiertoe plaatst u een HTTP-aanvraag naar de AccessPolicies-entiteitset. Definieer een DurationInMinutes-waarde bij het maken of ontvang een fout bericht 500 interne server als reactie. Zie [AccessPolicy](/rest/api/media/operations/accesspolicy)voor meer informatie over AccessPolicies.
 
 ### <a name="create-an-access-policy"></a>Een toegangs beleid maken
 
 1. Selecteer **AccessPolicy**  ->  **maken om AccessPolicy te uploaden**.
 2. Druk op **Verzenden**.
 
-    ![Een bestand uploaden](./media/media-services-rest-upload-files/postman-access-policy.png)
+    ![Bestand uploaden](./media/media-services-rest-upload-files/postman-access-policy.png)
 
     Het script ' test ' haalt de AccessPolicy-id op en stelt de juiste omgevings variabele in.
 
@@ -121,7 +121,7 @@ Voordat u bestanden naar Blob Storage uploadt, stelt u de rechten voor het toega
 
 ### <a name="overview"></a>Overzicht
 
-Een [Asset](https://docs.microsoft.com/rest/api/media/operations/asset) is een container voor meerdere typen of verzamelingen van objecten in Media Services, zoals video, audio, afbeeldingen, miniatuur verzamelingen, tekst sporen en ondertitelings bestanden. In de REST API vereist het maken van een Asset POST-aanvraag verzenden naar Media Services en het plaatsen van eigenschaps informatie over uw asset in de hoofd tekst van de aanvraag.
+Een [Asset](/rest/api/media/operations/asset) is een container voor meerdere typen of verzamelingen van objecten in Media Services, zoals video, audio, afbeeldingen, miniatuur verzamelingen, tekst sporen en ondertitelings bestanden. In de REST API vereist het maken van een Asset POST-aanvraag verzenden naar Media Services en het plaatsen van eigenschaps informatie over uw asset in de hoofd tekst van de aanvraag.
 
 Een van de eigenschappen die u kunt toevoegen wanneer u een Asset maakt, is **Opties**. U kunt een van de volgende versleutelings opties opgeven: **geen** (standaard, er wordt geen versleuteling gebruikt), **StorageEncrypted** (voor inhoud die vooraf is versleuteld met opslag versleuteling aan de client zijde), **CommonEncryptionProtected**of **EnvelopeEncryptionProtected**. Wanneer u een versleuteld activum hebt, moet u een leverings beleid configureren. Zie beleid voor levering van [assets configureren](media-services-rest-configure-asset-delivery-policy.md)voor meer informatie.
 
@@ -134,7 +134,7 @@ In dit voor beeld maken we een niet-versleutelde Asset.
 1. Selecteer **activa**  ->  **maken activa**.
 2. Druk op **Verzenden**.
 
-    ![Een bestand uploaden](./media/media-services-rest-upload-files/postman-create-asset.png)
+    ![Bestand uploaden](./media/media-services-rest-upload-files/postman-create-asset.png)
 
     Het script test haalt de Asset-id op en stelt de juiste omgevings variabele in.
 
@@ -144,15 +144,15 @@ In dit voor beeld maken we een niet-versleutelde Asset.
 
 Zodra u de AccessPolicy en de Locator hebt ingesteld, wordt het daad werkelijke bestand geüpload naar een Azure Blob Storage-container met behulp van de Azure Storage REST-Api's. U moet de bestanden uploaden als blok-blobs. Pagina-blobs worden niet ondersteund door Azure Media Services.  
 
-Zie [BLOB Service rest API](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API)voor meer informatie over het werken met Azure Storage-blobs.
+Zie [BLOB Service rest API](/rest/api/storageservices/blob-service-rest-api)voor meer informatie over het werken met Azure Storage-blobs.
 
-Als u de daad werkelijke upload-URL wilt ontvangen, moet u een SAS-Locator maken (zie hieronder). Locators definiëren de begin tijd en het type van het verbindings eindpunt voor clients die toegang willen krijgen tot bestanden in een Asset. U kunt meerdere Locator-entiteiten maken voor een bepaald AccessPolicy en activa paar voor het afhandelen van verschillende client aanvragen en-behoeften. Elk van deze locators gebruikt de waarde StartTime plus de DurationInMinutes-waarde van de AccessPolicy om te bepalen hoe lang een URL kan worden gebruikt. Zie [Locator](https://docs.microsoft.com/rest/api/media/operations/locator)voor meer informatie.
+Als u de daad werkelijke upload-URL wilt ontvangen, moet u een SAS-Locator maken (zie hieronder). Locators definiëren de begin tijd en het type van het verbindings eindpunt voor clients die toegang willen krijgen tot bestanden in een Asset. U kunt meerdere Locator-entiteiten maken voor een bepaald AccessPolicy en activa paar voor het afhandelen van verschillende client aanvragen en-behoeften. Elk van deze locators gebruikt de waarde StartTime plus de DurationInMinutes-waarde van de AccessPolicy om te bepalen hoe lang een URL kan worden gebruikt. Zie [Locator](/rest/api/media/operations/locator)voor meer informatie.
 
 Een SAS-URL heeft de volgende indeling:
 
 `{https://myaccount.blob.core.windows.net}/{asset name}/{video file name}?{SAS signature}`
 
-### <a name="considerations"></a>Aandachtspunten
+### <a name="considerations"></a>Overwegingen
 
 Hierbij geldt het volgende:
 
@@ -167,17 +167,17 @@ Hierbij geldt het volgende:
 
     Met het script ' test ' wordt de ' upload-URL ' gemaakt op basis van de media bestands naam die u hebt opgegeven en de SAS-locatorgegevens en wordt de juiste omgevings variabele ingesteld.
 
-    ![Een bestand uploaden](./media/media-services-rest-upload-files/postman-create-sas-locator.png)
+    ![Bestand uploaden](./media/media-services-rest-upload-files/postman-create-sas-locator.png)
 
 ## <a name="upload-a-file-to-blob-storage-using-the-upload-url"></a>Een bestand uploaden naar Blob Storage met behulp van de upload-URL
 
 ### <a name="overview"></a>Overzicht
 
-Nu u de upload-URL hebt, moet u code schrijven met behulp van de Azure Blob Api's om uw bestand te uploaden naar de SAS-container. Raadpleeg de volgende artikelen voor meer informatie:
+Nu u de upload-URL hebt, moet u code schrijven met behulp van de Azure Blob Api's om uw bestand te uploaden naar de SAS-container. Raadpleeg voor meer informatie de volgende artikelen:
 
-- [De Azure Storage REST API gebruiken](https://docs.microsoft.com/azure/storage/common/storage-rest-api-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-- [BLOB plaatsen](https://docs.microsoft.com/rest/api/storageservices/put-blob)
-- [Blobs uploaden naar Blob Storage](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy#upload-blobs-to-blob-storage)
+- [De Azure Storage REST API gebruiken](../../storage/common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+- [BLOB plaatsen](/rest/api/storageservices/put-blob)
+- [Blobs uploaden naar Blob Storage](/previous-versions/azure/storage/storage-use-azcopy#upload-blobs-to-blob-storage)
 
 ### <a name="upload-a-file-with-postman"></a>Een bestand uploaden met de Postman
 
@@ -194,7 +194,7 @@ Een nieuwe aanvraag maken en instellen:
 4. Kies het bestand met de naam die u hebt opgegeven in de omgevings variabele **MediaFileName** .
 5. Druk op **Verzenden**.
 
-    ![Een bestand uploaden](./media/media-services-rest-upload-files/postman-upload-file.png)
+    ![Bestand uploaden](./media/media-services-rest-upload-files/postman-upload-file.png)
 
 ##  <a name="create-a-metadata-in-the-asset"></a>Een meta gegevens in de Asset maken
 
@@ -203,13 +203,13 @@ Zodra het bestand is geüpload, moet u een meta gegevens maken in de Asset voor 
 1. Selecteer **AssetFiles**  ->  **CreateFileInfos**.
 2. Druk op **Verzenden**.
 
-    ![Een bestand uploaden](./media/media-services-rest-upload-files/postman-create-file-info.png)
+    ![Bestand uploaden](./media/media-services-rest-upload-files/postman-create-file-info.png)
 
 Het bestand moet worden geüpload en de meta gegevens zijn ingesteld.
 
 ## <a name="validate"></a>Valideren
 
-Als u wilt controleren of het bestand is geüpload, wilt u mogelijk een query uitvoeren op de [AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) en de **ContentFileSize** (of andere details) vergelijken met wat u verwacht te zien in de nieuwe Asset. 
+Als u wilt controleren of het bestand is geüpload, wilt u mogelijk een query uitvoeren op de [AssetFile](/rest/api/media/operations/assetfile) en de **ContentFileSize** (of andere details) vergelijken met wat u verwacht te zien in de nieuwe Asset. 
 
 Met de volgende **Get** -bewerking worden bijvoorbeeld bestands gegevens voor uw asset-bestand (in of geval het BigBuckBunny.mp4-bestand) geplaatst. De query gebruikt de [omgevings variabelen](postman-environment.md) die u eerder hebt ingesteld.
 
@@ -229,4 +229,3 @@ Het antwoord bevat een grootte, naam en andere informatie.
 U kunt nu de geüploade assets coderen. Zie [Assets coderen](media-services-portal-encode.md) voor meer informatie.
 
 U kunt ook Azure Functions gebruiken om een coderingstaak te activeren op basis van een bestand dat binnenkomt in de geconfigureerde container. Zie [dit voorbeeld](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/ ) voor meer informatie.
-

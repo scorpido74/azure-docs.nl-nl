@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: juliako
-ms.openlocfilehash: f136fb666e93adc0fe92aee014e3da9a37bbd6aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82d5c605baf6f95df7fee62379772ce13d696ac6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70035797"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000802"
 ---
 # <a name="use-azure-cli-to-create-an-azure-ad-app-and-configure-it-to-access-media-services-api"></a>Azure CLI gebruiken om een Azure AD-app te maken en deze te configureren voor toegang tot Media Services-API 
 
 > [!NOTE]
-> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](../latest/index.yml). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
 In dit onderwerp wordt beschreven hoe u de Azure CLI gebruikt om een Azure Active Directory (Azure AD)-toepassing en Service-Principal te maken voor toegang tot Azure Media Services resources. 
 
@@ -39,7 +39,7 @@ In dit onderwerp wordt beschreven hoe u de Azure CLI gebruikt om een Azure Activ
 
     ![Cloud Shell](./media/media-services-cli-create-and-configure-aad-app/media-services-cli-create-and-configure-aad-app01.png) 
 
-Zie [overzicht van Azure Cloud shell](../../cloud-shell/overview.md)voor meer informatie.
+Zie [Overzicht van Azure Cloud Shell](../../cloud-shell/overview.md) voor meer informatie.
 
 ## <a name="create-an-azure-ad-app-and-configure-access-to-the-media-account-with-azure-cli"></a>Een Azure AD-app maken en toegang tot het Media account configureren met Azure CLI
  
@@ -63,7 +63,7 @@ Dit kan bijvoorbeeld een van de volgende niveaus zijn:
 * Het niveau van de **resource groep** .
 * Het **resource** niveau (bijvoorbeeld een media-account).
 
-Zie [een Azure-service-principal maken met de Azure cli](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli) voor meer informatie.
+Zie [een Azure-service-principal maken met de Azure cli](/cli/azure/create-an-azure-service-principal-azure-cli) voor meer informatie.
 
 Zie ook [Access Control op basis van rollen beheren met de Azure-opdracht regel interface](../../role-based-access-control/role-assignments-cli.md). 
 

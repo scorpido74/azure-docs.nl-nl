@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: f18885634503cc65a5bf78d93bd84afd018956bd
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 0e79469aa0e405a0096d483ae290d10415fe74f3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170799"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000046"
 ---
 # <a name="managing-media-services-entities-with-rest"></a>Media Services entiteiten beheren met REST  
 
@@ -36,7 +36,7 @@ In dit onderwerp wordt beschreven hoe u Azure Media Services entiteiten met REST
 >[!NOTE]
 > Vanaf 1 april 2017 wordt elke taakrecord in uw account die ouder is dan 90 dagen, automatisch verwijderd, samen met de bijbehorende onderliggende taakrecords, zelfs als het totale aantal records lager is dan het maximale quotum. Bijvoorbeeld, op 1 april 2017, wordt een taak record in uw account die ouder is dan 31 december 2016 automatisch verwijderd. Als u de taak/taak gegevens wilt archiveren, kunt u de code gebruiken die in dit onderwerp wordt beschreven.
 
-## <a name="considerations"></a>Aandachtspunten  
+## <a name="considerations"></a>Overwegingen  
 
 Wanneer u entiteiten in Media Services opent, moet u specifieke header-velden en-waarden in uw HTTP-aanvragen instellen. Zie [Setup for Media Services rest API Development](media-services-rest-how-to-use.md)(Engelstalig) voor meer informatie.
 
@@ -149,7 +149,7 @@ Host: media.windows.net
 ```
 
 ## <a name="updating-entities"></a>Entiteiten bijwerken
-Afhankelijk van het entiteits type en de status waarin deze zich bevindt, kunt u de eigenschappen van die entiteit bijwerken via een PATCH, PUT of MERGe HTTP-aanvragen. Zie [patch/put/merge](https://msdn.microsoft.com/library/dd541276.aspx)voor meer informatie over deze bewerkingen.
+Afhankelijk van het entiteits type en de status waarin deze zich bevindt, kunt u de eigenschappen van die entiteit bijwerken via een PATCH, PUT of MERGe HTTP-aanvragen. Zie [patch/put/merge](/openspecs/windows_protocols/ms-odata/59d5abd3-7b12-490a-a0e2-9d9324b91893)voor meer informatie over deze bewerkingen.
 
 In het volgende code voorbeeld ziet u hoe u de eigenschap name van een activum entiteit bijwerkt.
 
@@ -190,4 +190,3 @@ Content-Length: 0
 
 ## <a name="provide-feedback"></a>Feedback geven
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

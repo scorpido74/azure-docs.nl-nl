@@ -12,18 +12,18 @@ ms.topic: article
 ms.date: 05/03/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 2bcd5f0e6229c4130dddb48c1a20de1c711c6fcf
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 28525c198bb6863e942f5ff33d17226769efdc21
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519878"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001142"
 ---
 # <a name="how-to-encode-with-a-custom-transform---net"></a>Coderen met een aangepaste trans formatie-.NET
 
 Wanneer u code ring met Azure Media Services, kunt u snel aan de slag met een van de aanbevolen standaard instellingen op basis van best practices in de branche, zoals wordt getoond in de zelf studie voor [streaming-bestanden](stream-files-tutorial-with-api.md) . U kunt ook een aangepaste voor instelling maken om uw specifieke scenario-of apparaat vereisten te bereiken.
 
-## <a name="considerations"></a>Aandachtspunten
+## <a name="considerations"></a>Overwegingen
 
 Bij het maken van aangepaste voor instellingen gelden de volgende overwegingen:
 
@@ -32,7 +32,7 @@ Bij het maken van aangepaste voor instellingen gelden de volgende overwegingen:
 
 ## <a name="prerequisites"></a>Vereisten 
 
-[Een Azure Media Services-account maken](create-account-cli-how-to.md)
+[Een Azure Media Services-account maken](./create-account-howto.md)
 
 ## <a name="download-the-sample"></a>Het voorbeeld downloaden
 
@@ -46,9 +46,9 @@ Het voor beeld van een aangepaste voor instelling bevindt zich in de map [Encode
 
 ## <a name="create-a-transform-with-a-custom-preset"></a>Een trans formatie maken met een aangepaste voor instelling 
 
-Wanneer u een nieuwe [trans formatie](https://docs.microsoft.com/rest/api/media/transforms)maakt, moet u opgeven wat u wilt produceren als uitvoer. De vereiste parameter is een [TransformOutput](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#transformoutput)-object, zoals weergegeven in de onderstaande code. Elke **transformatie-uitvoer** bevat een **voorinstelling**. In de **voor instelling** worden de stapsgewijze instructies beschreven van de bewerkingen voor video en/of audio verwerking die moeten worden gebruikt om de gewenste **TransformOutput**te genereren. Met de volgende **TransformOutput** worden aangepaste codec-en laag uitvoer instellingen gemaakt.
+Wanneer u een nieuwe [trans formatie](/rest/api/media/transforms)maakt, moet u opgeven wat u wilt produceren als uitvoer. De vereiste parameter is een [TransformOutput](/rest/api/media/transforms/createorupdate#transformoutput)-object, zoals weergegeven in de onderstaande code. Elke **transformatie-uitvoer** bevat een **voorinstelling**. In de **voor instelling** worden de stapsgewijze instructies beschreven van de bewerkingen voor video en/of audio verwerking die moeten worden gebruikt om de gewenste **TransformOutput**te genereren. Met de volgende **TransformOutput** worden aangepaste codec-en laag uitvoer instellingen gemaakt.
 
-Bij het maken van een [transformatie](https://docs.microsoft.com/rest/api/media/transforms) moet u controleren of er al een bestaat met de methode **Ophalen** zoals weergegeven in de volgende code. In Media Services v3, **Get** -methoden op entiteiten retour neren **Null** als de entiteit niet bestaat (een niet-hoofdletter gevoelige controle op de naam).
+Bij het maken van een [transformatie](/rest/api/media/transforms) moet u controleren of er al een bestaat met de methode **Ophalen** zoals weergegeven in de volgende code. In Media Services v3, **Get** -methoden op entiteiten retour neren **Null** als de entiteit niet bestaat (een niet-hoofdletter gevoelige controle op de naam).
 
 ### <a name="example"></a>Voorbeeld
 

@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
-ms.openlocfilehash: 6b0f21c3fa7a9c827f7201f4b899a33ea77eaf08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2337a7543f84d7eba5f565d875129cf22e8b27ed
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74888492"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001210"
 ---
 # <a name="connect-to-media-services-v3-api---java"></a>Verbinding maken met Media Services v3 API-Java
 
@@ -33,8 +34,8 @@ In dit artikel wordt de Visual Studio-code gebruikt voor het ontwikkelen van de 
    - Apache Maven
    - Java-uitbreidings pakket
 - Zorg ervoor dat u- `JAVA_HOME` en `PATH` omgevings variabelen hebt ingesteld.
-- [Maak een Media Services-account](create-account-cli-how-to.md). Zorg ervoor dat u de naam van de resource groep en de naam van het Media Services account vergeet.
-- Volg de stappen in het onderwerp [toegangs-api's](access-api-cli-how-to.md) . Noteer de abonnements-ID, toepassings-ID (client-ID), de verificatie sleutel (geheim) en de Tenant-ID die u in een latere stap nodig hebt.
+- [Een Azure Media Services-account maken](./create-account-howto.md). Zorg ervoor dat u de naam van de resource groep en de naam van het Media Services account vergeet.
+- Volg de stappen in het onderwerp [toegangs-api's](./access-api-howto.md) . Noteer de abonnements-ID, toepassings-ID (client-ID), de verificatie sleutel (geheim) en de Tenant-ID die u in een latere stap nodig hebt.
 
 Ook controleren:
 
@@ -93,7 +94,7 @@ Wanneer u de opdracht uitvoert, `pom.xml` worden de-, `App.java` en andere besta
    import com.microsoft.azure.management.mediaservices.v2018_07_01.implementation.MediaManager;
    import com.microsoft.rest.LogLevel;
    ```
-1. Als u de Active Directory referenties wilt maken die u nodig hebt om aanvragen te doen, voegt u de volgende code toe aan de methode Main van de app-klasse en stelt u de waarden in die u hebt ontvangen van [Access-api's](access-api-cli-how-to.md):
+1. Als u de Active Directory referenties wilt maken die u nodig hebt om aanvragen te doen, voegt u de volgende code toe aan de methode Main van de app-klasse en stelt u de waarden in die u hebt ontvangen van [Access-api's](./access-api-howto.md):
    
    ```java
    final String clientId = "00000000-0000-0000-0000-000000000000";
@@ -129,4 +130,4 @@ Wanneer u de opdracht uitvoert, `pom.xml` worden de-, `App.java` en andere besta
 
 U kunt nu `import com.microsoft.azure.management.mediaservices.v2018_07_01.*;` entiteiten toevoegen en bewerken.
 
-Zie de [Java SDK](https://docs.microsoft.com/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/) -voor beelden opslag plaats voor meer code voorbeelden.
+Zie de [Java SDK](/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/) -voor beelden opslag plaats voor meer code voorbeelden.

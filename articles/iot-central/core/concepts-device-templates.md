@@ -7,11 +7,12 @@ ms.date: 05/21/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 2d5009086a24a54c9a2ec4734d3c4dcbebb04475
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e90a4e9ec88e074ec7b30d78bc99cfa8bf39ba2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84418797"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002349"
 ---
 # <a name="what-are-device-templates"></a>Wat zijn apparaatsjablonen?
 
@@ -28,7 +29,7 @@ Een sjabloon voor een apparaat bestaat uit de volgende secties:
 - _Aanpassingen_. In dit deel van de sjabloon voor het apparaat kan de oplossings ontwikkelaar enkele van de definities in de DCM overschrijven. Aanpassingen zijn handig als de oplossings ontwikkelaar wil verfijnen hoe de toepassing een waarde verwerkt, zoals het wijzigen van de weergave naam voor een eigenschap of de kleur die wordt gebruikt om een telemetrie-waarde weer te geven. Aanpassingen hebben geen invloed op de code die een ontwikkelaar van het apparaat schrijft om de DCM te implementeren.
 - _Weer gaven_. In dit deel van de sjabloon kunt u met de oplossings ontwikkelaar visualisaties definiëren om gegevens van het apparaat weer te geven en formulieren voor het beheren en controleren van een apparaat. De weer gaven gebruiken DCM, Cloud eigenschappen en aanpassingen. Weer gaven hebben geen invloed op de code die een ontwikkelaar van het apparaat schrijft om de DCM te implementeren.
 
-## <a name="device-capability-models"></a>Apparaatfuncties
+## <a name="device-capability-models"></a>Modellen voor apparaatfuncties
 
 Een DCM bepaalt hoe een apparaat samenwerkt met uw IoT Central-toepassing. De ontwikkelaar van het apparaat moet ervoor zorgen dat het apparaat het gedrag implementeert dat in de DCM is gedefinieerd, zodat IoT Central het apparaat kunt bewaken en beheren. Een DCM bestaat uit een of meer _interfaces_, en elke interface kan een verzameling _telemetrie_ -typen, _Apparaateigenschappen_en _opdrachten_definiëren. Een oplossings ontwikkelaar kan een JSON-bestand importeren dat de DCM in een apparaatprofiel definieert, of u kunt de Web-UI in IoT Central gebruiken om een DCM te maken of te bewerken. Wijzigingen aan een DCM die zijn gemaakt met behulp van de Web-UI, hebben een versie van de [sjabloon](./howto-version-device-template.md).
 
@@ -181,7 +182,7 @@ Met IoT Central kunt u telemetrie in dash boards en grafieken weer geven en rege
 
 U kunt de functie gegevens export van IoT Central gebruiken om telemetrie te streamen naar andere bestemmingen, zoals opslag of Event Hubs.
 
-### <a name="commands"></a>Opdrachten
+### <a name="commands"></a>Opdracht
 
 Opdrachten zijn ofwel synchroon of asynchroon. Een synchrone opdracht moet standaard binnen 30 seconden worden uitgevoerd en het apparaat moet zijn verbonden als de opdracht binnenkomt. Als het apparaat op tijd reageert of als het apparaat niet is verbonden, mislukt de opdracht.
 
@@ -193,7 +194,7 @@ Gebruik asynchrone opdrachten voor langlopende bewerkingen. Het apparaat verzend
  `iothub-interface-name`: de naam van de instantie van deze interface, bijvoorbeeld `myAssetTracker` .
 - `iothub-command-statuscode`: de status code die is geretourneerd van het apparaat, bijvoorbeeld `202` .
 
-## <a name="cloud-properties"></a>Eigenschappen van Cloud
+## <a name="cloud-properties"></a>Cloudeigenschappen
 
 Cloud eigenschappen maken deel uit van de sjabloon van het apparaat, maar maken geen deel uit van de DCM. Met Cloud eigenschappen kunnen de oplossings ontwikkelaar de meta gegevens van een apparaat opgeven om op te slaan in de IoT Central-toepassing. Cloud eigenschappen hebben geen invloed op de code die een ontwikkelaar van het apparaat schrijft om de DCM te implementeren.
 
@@ -220,6 +221,6 @@ De telemetrie, eigenschappen en opdrachten die u aan een weer gave kunt toevoege
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als ontwikkel aars van apparaten, nu dat u hebt geleerd over sjablonen voor apparaten, kunt u de volgende stappen uitvoeren om [verbinding te maken met Azure IOT Central](./concepts-get-connected.md) om meer te weten te komen over het registreren van apparaten met IOT Central en hoe IOT Central verbindingen met apparaten beveiligt.
+Als ontwikkel aars van apparaten, nu dat u hebt geleerd over sjablonen voor apparaten, kunt u de volgende stappen uitvoeren om de [telemetrie-, Property-en Command-payloads](./concepts-telemetry-properties-commands.md) te lezen voor meer informatie over de gegevens die een apparaat moet uitwisselen met IOT Central.
 
 Als ontwikkelaar van oplossingen is een voorgestelde volgende stap het lezen [van een nieuw IOT-apparaattype in uw Azure IOT Central-toepassing](./howto-set-up-template.md) . meer informatie over het maken van een sjabloon voor een apparaat.

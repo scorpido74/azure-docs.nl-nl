@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 2d5f3382965d9166fabf99ac650e707e29c38a72
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: a8ada16bbfff66c60a1400542742396b667160dc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057089"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000513"
 ---
 # <a name="how-to-check-job-progress"></a>Procedure: de voortgang van de taak controleren
 
 > [!NOTE]
-> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](../latest/index.yml). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
-Wanneer u taken uitvoert, hebt u vaak een manier nodig om de voortgang van de taak bij te houden. U kunt de taak status achterhalen met behulp van de eigenschap State van het project. Zie Eigenschappen van de [taak entiteit](https://docs.microsoft.com/rest/api/media/operations/job#job_entity_properties)voor meer informatie over de eigenschap State.
+Wanneer u taken uitvoert, hebt u vaak een manier nodig om de voortgang van de taak bij te houden. U kunt de taak status achterhalen met behulp van de eigenschap State van het project. Zie Eigenschappen van de [taak entiteit](/rest/api/media/operations/job#job_entity_properties)voor meer informatie over de eigenschap State.
 
 ## <a name="connect-to-media-services"></a>Verbinding met Media Services maken
 
