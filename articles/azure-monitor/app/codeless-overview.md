@@ -6,12 +6,12 @@ author: MS-jgol
 ms.author: jgol
 ms.date: 05/31/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 87342dcd316b0364522baa01e632b704665c998e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9be0808d4edc9662c1d3a4144f3102242560564
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85363760"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075360"
 ---
 # <a name="what-is-auto-instrumentation-or-codeless-attach---azure-monitor-application-insights"></a>Wat is het automatisch instrumenteren of koppelen Azure Monitor Application Insights?
 
@@ -41,7 +41,7 @@ Wanneer we meer en meer integraties toevoegen, wordt de matrix voor automatische
 
 ### <a name="windows"></a>Windows
 
-[Toepassings bewaking op Azure app service](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps?tabs=net) is beschikbaar voor .NET-toepassingen en is standaard ingeschakeld, .net core kan worden ingeschakeld met één klik en Java en Node.js zijn in een persoonlijke preview.
+[Toepassings bewaking op Azure app service](./azure-web-apps.md?tabs=net) is beschikbaar voor .NET-toepassingen en is standaard ingeschakeld, .net core kan worden ingeschakeld met één klik en Java en Node.js zijn in een persoonlijke preview.
 
 ### <a name="linux"></a>Linux 
 
@@ -49,24 +49,24 @@ Bewaking van Java-en Node.js-toepassingen in App Service is in open bare preview
 
 ## <a name="azure-functions"></a>Azure Functions
 
-De basis bewaking voor Azure Functions is standaard ingeschakeld voor het verzamelen van logboek-, prestatie-, fout gegevens-en HTTP-aanvragen. Voor Java-toepassingen kunt u uitgebreide bewaking met gedistribueerde tracering inschakelen en de end-to-end-transactie Details ophalen. Deze functionaliteit voor Java bevindt zich in de open bare preview en u kunt [deze functie inschakelen in azure Portal](https://docs.microsoft.com/azure/azure-monitor/app/monitor-functions).
+De basis bewaking voor Azure Functions is standaard ingeschakeld voor het verzamelen van logboek-, prestatie-, fout gegevens-en HTTP-aanvragen. Voor Java-toepassingen kunt u uitgebreide bewaking met gedistribueerde tracering inschakelen en de end-to-end-transactie Details ophalen. Deze functionaliteit voor Java bevindt zich in de open bare preview en u kunt [deze functie inschakelen in azure Portal](./monitor-functions.md).
 
 ## <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 
-Er is momenteel code instrumentatie van de Azure Kubernetes-service beschikbaar voor Java-toepassingen via de [zelfstandige agent](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent). 
+Er is momenteel code instrumentatie van de Azure Kubernetes-service beschikbaar voor Java-toepassingen via de [zelfstandige agent](./java-in-process-agent.md). 
 
 ## <a name="azure-windows-vms-and-virtual-machine-scale-set"></a>Azure Windows-Vm's en schaal sets voor virtuele machines
 
-[Automatische instrumentatie voor Azure-vm's en schaal sets voor virtuele machines](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps) is beschikbaar voor .NET-toepassingen 
+[Automatische instrumentatie voor Azure-vm's en schaal sets voor virtuele machines](./azure-vm-vmss-apps.md) is beschikbaar voor .NET-toepassingen 
 
 ## <a name="on-premises-servers"></a>On-premises servers
-U kunt de bewaking eenvoudig inschakelen voor uw [on-premises Windows-servers voor .NET-toepassingen](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview) en voor [Java-apps](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent).
+U kunt de bewaking eenvoudig inschakelen voor uw [on-premises Windows-servers voor .NET-toepassingen](./status-monitor-v2-overview.md) en voor [Java-apps](./java-in-process-agent.md).
 
 ## <a name="other-environments"></a>Andere omgevingen
-De veelzijdige Java-agent werkt op elke omgeving, maar u hoeft uw code niet te instrumenteren. [Volg de richt lijnen](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) voor het inschakelen van Application Insights en lees meer over de fantastische mogelijkheden van de Java-Agent. De agent bevindt zich in de open bare preview-versie en is beschikbaar voor alle regio's. 
+De veelzijdige Java-agent werkt op elke omgeving, maar u hoeft uw code niet te instrumenteren. [Volg de richt lijnen](./java-in-process-agent.md) voor het inschakelen van Application Insights en lees meer over de fantastische mogelijkheden van de Java-Agent. De agent bevindt zich in de open bare preview-versie en is beschikbaar voor alle regio's. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Overzicht van Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)
+* [Overzicht van Application Insights](./app-insights-overview.md)
 * [Toepassings overzicht](./../../azure-monitor/app/app-map.md)
 * [End-to-end prestatie bewaking](./../../azure-monitor/learn/tutorial-performance.md)

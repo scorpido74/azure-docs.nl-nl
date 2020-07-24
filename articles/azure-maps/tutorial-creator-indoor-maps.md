@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: c3c34ea9e32e100d5756a3930ce9d0147363e379
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 7ea1995b6d1232b3e4c6371313e5b3d45bdbb756
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027866"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075399"
 ---
 # <a name="use-creator-to-create-indoor-maps"></a>De Creator gebruiken om kaarten voor de binnenste toe te maken
 
@@ -31,7 +32,7 @@ In deze zelf studie leert u hoe u kaarten kunt maken. In deze zelf studie leert 
 
 Kaarten voor een binnenste maken:
 
-1. [Een Azure Maps account maken](quick-demo-map-app.md#create-an-account-with-azure-maps)
+1. [Een Azure Maps account maken](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Verkrijg een primaire abonnements sleutel](quick-demo-map-app.md#get-the-primary-key-for-your-account), ook wel de primaire sleutel of de abonnements sleutel genoemd.
 3. [Een Creator-resource maken](how-to-manage-creator.md)
 4. Down load het [voorbeeld teken pakket](https://github.com/Azure-Samples/am-creator-indoor-data-examples).
@@ -51,7 +52,7 @@ De API voor het uploaden van gegevens is een langlopende trans actie die het hie
 
 2. Als u de aanvraag wilt maken, selecteert u **Nieuw** opnieuw. Selecteer **aanvraag**in het venster **Nieuw maken** . Voer een **aanvraag naam** in voor de aanvraag. Selecteer de verzameling die u in de vorige stap hebt gemaakt en selecteer vervolgens **Opslaan**.
 
-3. Selecteer de **post** HTTP-methode op het tabblad Builder en voer de volgende URL in om het teken pakket naar de Azure Maps-service te uploaden. Voor deze aanvraag en andere aanvragen die in dit artikel worden vermeld, vervangt `<Azure-Maps-Primary-Subscription-key>` u door de sleutel van uw primaire abonnement.
+3. Selecteer de **post** HTTP-methode op het tabblad Builder en voer de volgende URL in om het teken pakket naar de Azure Maps-service te uploaden. Voor deze aanvraag en andere aanvragen die in dit artikel worden vermeld, vervangt `{Azure-Maps-Primary-Subscription-key}` u door de sleutel van uw primaire abonnement.
 
     ```http
     https://atlas.microsoft.com/mapData/upload?api-version=1.0&dataFormat=zip&subscription-key={Azure-Maps-Primary-Subscription-key}
@@ -66,7 +67,7 @@ De API voor het uploaden van gegevens is een langlopende trans actie die het hie
 6. Als u de status van de API-aanroep wilt controleren, maakt u een **Get** HTTP-aanvraag op de `status URL` . U moet uw primaire abonnements sleutel toevoegen aan de URL voor authenticatie. De **Get** -aanvraag moet eruitzien als de volgende URL:
 
     ```http
-    https://atlas.microsoft.com/mapData/operations/{operationId}?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://atlas.microsoft.com/mapData/operations/<operationId>?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
 7. Wanneer de **Get** HTTP-aanvraag is voltooid, wordt een geretourneerd `resourceLocation` . De `resourceLocation` bevat de unieke `udid` voor de geüploade inhoud. U kunt eventueel de `resourceLocation` URL gebruiken om meta gegevens op te halen uit deze resource in de volgende stap.
@@ -169,7 +170,7 @@ De gegevensset is een verzameling kaart functies, zoals gebouwen, niveaus en rui
 4. Maak een **Get** -aanvraag op de `statusURL` om de te verkrijgen `datasetId` . Voeg uw Azure Maps primaire abonnements sleutel toe voor authenticatie. De aanvraag moet er ongeveer uitzien als de volgende URL:
 
     ```http
-    https://atlas.microsoft.com/dataset/operations/{operationId}?api-version=1.0&subscription-key=<Azure-Maps-Primary-Subscription-key>
+    https://atlas.microsoft.com/dataset/operations/<operationId>?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
 5. Wanneer de **Get** HTTP-aanvraag is voltooid, bevat de antwoord header de `datasetId` voor de gemaakte gegevensset. Kopieer de `datasetId` . U moet de gebruiken `datasetId` om een tegelset te maken.
@@ -198,7 +199,7 @@ Een tegelset is een set vector tegels die op de kaart worden weer gegeven. Tiles
 3. Maak een **Get** -aanvraag op de `statusURL` voor de tegelset. Voeg uw Azure Maps primaire abonnements sleutel toe voor authenticatie. De aanvraag moet er ongeveer uitzien als de volgende URL:
 
    ```http
-    https://atlas.microsoft.com/tileset/operations/{operationId}?api-version=1.0&subscription-key=<Azure-Maps-Primary-Subscription-key>
+    https://atlas.microsoft.com/tileset/operations/<operationId>?api-version=1.0&subscription-key=<Azure-Maps-Primary-Subscription-key>
     ```
 
 4. Wanneer de **Get** HTTP-aanvraag is voltooid, bevat de antwoord header de `tilesetId` voor de gemaakte tegelset. Kopieer de `tilesetId` .

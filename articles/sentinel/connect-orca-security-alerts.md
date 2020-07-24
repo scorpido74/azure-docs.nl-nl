@@ -1,5 +1,5 @@
 ---
-title: Orca-waarschuwingen verbinden met Azure Sentinel | Microsoft Docs
+title: Beveiligings waarschuwingen van Orca verbinden met Azure Sentinel | Microsoft Docs
 description: Meer informatie over het verbinden van de Orca-beveiligings waarschuwings gegevens met Azure Sentinel, voor het weer geven van Dash boards, het maken van aangepaste waarschuwingen en het verbeteren van het onderzoek.
 services: sentinel
 documentationcenter: na
@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 1f2f67281079142f0c4fe4985738dc48332a107d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 735f4b447d7258a9b444f3b75a6537dec20b1307
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531710"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076278"
 ---
-# <a name="connect-your-orca-alerts-to-azure-sentinel"></a>Uw Orca-waarschuwingen verbinden met Azure Sentinel 
+# <a name="connect-your-orca-security-alerts-to-azure-sentinel"></a>Uw Orca-beveiligings waarschuwingen verbinden met Azure Sentinel 
+
+> [!IMPORTANT]
+> De Orca Security Alerts-connector in azure Sentinel is momenteel beschikbaar als open bare preview.
+> Deze functie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 Met de Orca Security Alerts-connector kunt u eenvoudig waarschuwingen voor beveiligings oplossingen van uw [Orca](https://orca.security/) naar Azure-Sentinel brengen, zodat u ze in werkmappen kunt bekijken, ze met behulp van een aangepaste waarschuwing en deze op te nemen om het onderzoek te verbeteren. Integratie tussen Orca-beveiligings waarschuwingen en Azure-Sentinel maakt gebruik van REST API.
 

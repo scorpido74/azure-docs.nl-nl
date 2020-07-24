@@ -3,12 +3,12 @@ title: DevTest Labs-concepten | Microsoft Docs
 description: Meer informatie over de basis concepten van DevTest Labs en hoe u Azure virtual machines eenvoudig kunt maken, beheren en bewaken
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: b6e845acb34a398af52392b3a90b9213a9945dd2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f82f0484caf23d20092318b5bc2a32b0e6b1f1d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482748"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074968"
 ---
 # <a name="devtest-labs-concepts"></a>DevTest Labs-concepten
 ## <a name="overview"></a>Overzicht
@@ -56,7 +56,7 @@ Met beleids regels kunt u de kosten in uw Lab beheren. U kunt bijvoorbeeld een b
 Caps is een mechanisme voor het minimaliseren van afval in uw Lab. U kunt bijvoorbeeld een cap instellen om het aantal Vm's te beperken dat per gebruiker of in een Lab kan worden gemaakt.
 
 ## <a name="security-levels"></a>Beveiligings niveaus
-Beveiligings toegang wordt bepaald door op Azure Role gebaseerde Access Control (RBAC). Om te begrijpen hoe Access werkt, is het handig om te begrijpen wat de verschillen zijn tussen een machtiging, een rol en een bereik zoals gedefinieerd door RBAC.
+Beveiligings toegang wordt bepaald door Azure op rollen gebaseerd toegangs beheer (Azure RBAC). Om te begrijpen hoe Access werkt, is het handig om te begrijpen wat de verschillen zijn tussen een machtiging, een rol en een bereik zoals gedefinieerd door RBAC.
 
 * Machtiging: een machtiging is een gedefinieerde toegang tot een specifieke actie (bijvoorbeeld lees toegang tot alle virtuele machines).
 * Rol: een rol is een set machtigingen die kan worden gegroepeerd en toegewezen aan een gebruiker. De rol van *abonnements eigenaar* heeft bijvoorbeeld toegang tot alle resources in een abonnement.

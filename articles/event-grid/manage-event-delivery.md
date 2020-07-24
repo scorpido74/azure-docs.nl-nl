@@ -2,19 +2,22 @@
 title: Onbestelbare letter en beleid voor opnieuw proberen-Azure Event Grid
 description: Hierin wordt beschreven hoe u de bezorgings opties voor gebeurtenissen kunt aanpassen voor Event Grid. Stel een bestemming voor onbestelbare berichten in en geef op hoe lang de levering moet worden herhaald.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 88e782eb7dafc10956120bdae870aa2eb58778a5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/20/2020
+ms.openlocfilehash: 2ff1d05899fb74583489649154ffa062e857cb95
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105503"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074871"
 ---
 # <a name="dead-letter-and-retry-policies"></a>Onbestelbare letter en beleid voor opnieuw proberen
 
 Bij het maken van een gebeurtenis abonnement kunt u de instellingen voor gebeurtenis levering aanpassen. In dit artikel wordt beschreven hoe u een locatie voor een onbestelbare letter instelt en hoe u de instellingen voor opnieuw proberen aanpast. Zie [Event grid aflevering van berichten en probeer het opnieuw](delivery-and-retry.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+> [!NOTE]
+> Zie voor meer informatie over het bezorgen van berichten, nieuwe pogingen en het onbestelbare bericht, het conceptuele artikel: [Event grid aflevering van berichten en probeer het opnieuw]().
 
 ## <a name="set-dead-letter-location"></a>Locatie van onbestelbare letter instellen
 
@@ -95,7 +98,8 @@ az eventgrid event-subscription create \
   --max-delivery-attempts 18
 ```
 
-Als u zowel als `event-ttl` als hebt ingesteld `max-deliver-attempts` , gebruikt Event grid de eerste om te verloopt om te bepalen wanneer de gebeurtenis levering moet worden gestopt.
+> [!NOTE]
+> Als u zowel als `event-ttl` als hebt ingesteld `max-deliver-attempts` , gebruikt Event grid de eerste om te verloopt om te bepalen wanneer de gebeurtenis levering moet worden gestopt. Als u bijvoorbeeld 30 minuten instelt als TTL (time-to-Live) en 10 Maxi maal bezorgings pogingen. Wanneer een gebeurtenis niet na 30 minuten (of) wordt afgeleverd na tien pogingen, afhankelijk van wat er eerst gebeurt, is de gebeurtenis onbestelbaar.  
 
 ### <a name="powershell"></a>PowerShell
 
@@ -123,7 +127,8 @@ New-AzEventGridSubscription `
   -MaxDeliveryAttempt 18
 ```
 
-Als u zowel als `EventTtl` als hebt ingesteld `MaxDeliveryAttempt` , gebruikt Event grid de eerste om te verloopt om te bepalen wanneer de gebeurtenis levering moet worden gestopt.
+> [!NOTE]
+> Als u zowel als `event-ttl` als hebt ingesteld `max-deliver-attempts` , gebruikt Event grid de eerste om te verloopt om te bepalen wanneer de gebeurtenis levering moet worden gestopt. Als u bijvoorbeeld 30 minuten instelt als TTL (time-to-Live) en 10 Maxi maal bezorgings pogingen. Wanneer een gebeurtenis niet na 30 minuten (of) wordt afgeleverd na tien pogingen, afhankelijk van wat er eerst gebeurt, is de gebeurtenis onbestelbaar.  
 
 ## <a name="next-steps"></a>Volgende stappen
 

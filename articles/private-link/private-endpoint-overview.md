@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: c739c6483832c08a91f2a5318853bf48e5d41854
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d61527a7a57c82c0e1485ef249306618def9a57c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496958"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077941"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Wat is een persoonlijk Azure-eind punt?
 
@@ -78,6 +78,13 @@ Een persoonlijke koppelings bron is het doel doel van een gegeven persoonlijk ei
 |**Azure Event Grid** | Micro soft. EventGrid/domeinen    | domein |
 |**Azure webapps** | Micro soft. web/sites    | sites |
 |**Azure Machine Learning** | Micro soft. MachineLearningServices/werk ruimten    | werkruimte |
+|**SignalR** | Micro soft. SignalRService/Signa lering    | signalR |
+|**Azure Monitor** | Micro soft. Insights/privateLinkScopes    | azuremonitor |
+|**Cognitive Services** | (Micro soft. CognitiveServices/accounts    | account |
+|**Azure File Sync** | Micro soft. StorageSync/storageSyncServices    | AFS |
+    
+  
+
   
  
 ## <a name="network-security-of-private-endpoints"></a>Netwerk beveiliging van privé-eind punten 

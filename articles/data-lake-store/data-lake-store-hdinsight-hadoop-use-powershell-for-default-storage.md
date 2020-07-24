@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 053ee85318d8ac9ccd5fb8b63fb44df966d34821
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: f7c41dc11e7321d6fb9e6f8c030eb74b586a1b3e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855043"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075025"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>HDInsight-clusters met Azure Data Lake Storage Gen1 als standaard opslag maken met behulp van Power shell
 
@@ -38,7 +38,7 @@ Volg de instructies in de volgende vijf secties om HDInsight te configureren voo
 Voordat u met deze zelf studie begint, moet u ervoor zorgen dat u aan de volgende vereisten voldoet:
 
 * **Een Azure-abonnement**: Ga naar [gratis proef versie van Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Azure PowerShell 1,0 of hoger**: Zie [Power Shell installeren en configureren](/powershell/azure/overview).
+* **Azure PowerShell 1,0 of hoger**: Zie [Power Shell installeren en configureren](/powershell/azure/).
 * **Windows Software Development Kit (SDK)**: Ga naar [down loads en Hulpprogram ma's voor windows 10](https://dev.windows.com/downloads)om Windows SDK te installeren. De SDK wordt gebruikt voor het maken van een beveiligings certificaat.
 * **Azure Active Directory Service-Principal**: in deze zelf studie wordt beschreven hoe u een Service-Principal maakt in azure Active Directory (Azure AD). Als u een Service-Principal wilt maken, moet u echter een Azure AD-beheerder zijn. Als u een beheerder bent, kunt u deze vereiste overs Laan en door gaan met de zelf studie.
 

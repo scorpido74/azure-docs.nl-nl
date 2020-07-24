@@ -1,5 +1,5 @@
 ---
-title: Functies-LUIS
+title: Functies gebruiken om de LUIS woorden lijst te verbeteren
 titleSuffix: Azure Cognitive Services
 description: Gebruik Language Understanding (LUIS) om app-functies toe te voegen die de detectie of voor spelling van intenties en entiteiten die categorieën en patronen kunnen verbeteren
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: 7d9f1e520ab5c96b9c5288383324b165a4cd74f0
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 25698fe2b05cbfb564e441e488bfa93221a9618a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344438"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075200"
 ---
 # <a name="use-features-to-boost-signal-of-word-list"></a>Functies gebruiken om het signaal van een woorden lijst te verhogen
 
@@ -26,7 +26,7 @@ Bekijk de [concepten](luis-concept-feature.md) om te begrijpen wanneer en waarom
 
 ## <a name="add-phrase-list-as-a-feature"></a>Woordgroepen lijst toevoegen als een functie
 
-1. Meld u aan bij de [Luis-Portal](https://www.luis.ai)en selecteer uw **abonnement** en de resource voor het **ontwerpen** van de apps die zijn toegewezen aan die ontwerp bron.
+1. Meld u aan bij de [LUIS-portal](https://www.luis.ai) en selecteer uw **abonnement** en **Ontwerpresource** om de apps weer te geven die aan die ontwerpresource zijn toegewezen.
 1. Open uw app door de naam ervan op **mijn apps** -pagina te selecteren.
 1. Selecteer **Build**en selecteer vervolgens **functies** in het linkerdeel venster van uw app.
 
@@ -43,7 +43,7 @@ Bekijk de [concepten](luis-concept-feature.md) om te begrijpen wanneer en waarom
 
 1. De lijst met zinsdelen kan worden toegepast op de volledige app met de **algemene** instelling of op een specifiek model (intentie of entiteit). Als u de woordgroepen lijst maakt als een _functie_ van een intentie of entiteit, wordt de wissel knop niet ingesteld voor globaal. In dit geval is de betekenis van de wissel knop dat de functie alleen lokaal is voor dat model, dus _niet globaal_ voor de toepassing.
 
-1. Selecteer **Done**. De nieuwe functie wordt toegevoegd aan de pagina **ml-functies** .
+1. Selecteer **Gereed**. De nieuwe functie wordt toegevoegd aan de pagina **ml-functies** .
 
 <a name="edit-phrase-list"></a>
 <a name="delete-phrase-list"></a>

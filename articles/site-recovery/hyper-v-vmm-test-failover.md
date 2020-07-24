@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 0363911574a076b13cb72591fb2564364e096c76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b6055cdf930c93ba096a21ebc0b74c204540a79
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710674"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076061"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>Een DR-analyse uitvoeren voor virtuele Hyper-V-machines naar een secundaire site
 
@@ -102,17 +103,17 @@ Maak als volgt een DNS-server voor de testfailover:
 * **DHCP**: als virtuele machines DHCP gebruiken, moet het IP-adres van de test-DNS worden bijgewerkt op de DHCP-test server. Als u een netwerk type van Windows-Netwerkvirtualisatie gebruikt, fungeert de VMM-server als de DHCP-server. Daarom moet het IP-adres van DNS worden bijgewerkt in het netwerk van de testfailover. In dit geval registreren de virtuele machines zich bij de relevante DNS-server.
 * **Statisch adres**: als virtuele machines een statisch IP-adres gebruiken, moet het IP-adres van de test-DNS-server worden bijgewerkt in het netwerk van de test-failover. Mogelijk moet u DNS bijwerken met het IP-adres van de virtuele test machines. U kunt het volgende voorbeeld script gebruiken voor dit doel:
 
-        Param(
-        [string]$Zone,
-        [string]$name,
-        [string]$IP
-        )
-        $Record = Get-DnsServerResourceRecord -ZoneName $zone -Name $name
-        $newrecord = $record.clone()
-        $newrecord.RecordData[0].IPv4Address  =  $IP
-        Set-DnsServerResourceRecord -zonename $zone -OldInputObject $record -NewInputObject $Newrecord
-
-
+  ```powershell
+  Param(
+  [string]$Zone,
+  [string]$name,
+  [string]$IP
+  )
+  $Record = Get-DnsServerResourceRecord -ZoneName $zone -Name $name
+  $newrecord = $record.clone()
+  $newrecord.RecordData[0].IPv4Address  =  $IP
+  Set-DnsServerResourceRecord -zonename $zone -OldInputObject $record -NewInputObject $Newrecord
+  ```
 
 ## <a name="run-a-test-failover"></a>Een testfailover uitvoeren
 

@@ -7,11 +7,12 @@ ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: 65e8818e19ac5ad20bb87fd8eb27a4c36c2839cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0db618d63964c6f271f9a14b91849e704cfd7820
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83656675"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077513"
 ---
 # <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Voor beeld: een Windows-installatie kopie maken en deze distribueren naar een gedeelde installatie kopie galerie 
 
@@ -23,7 +24,7 @@ De sjabloon maakt gebruik van [sharedImage](../linux/image-builder-json.md?toc=%
 
 Azure Image Builder voert automatisch Sysprep uit om de installatie kopie te generaliseren. Dit is een generieke Sysprep-opdracht, die u zo nodig kunt [overschrijven](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#vms-created-from-aib-images-do-not-create-successfully) . 
 
-Houd er rekening mee dat het aantal keren dat u de laag wilt aanpassen. U kunt de Sysprep-opdracht Maxi maal 8 keer uitvoeren op één Windows-installatie kopie. Nadat u Sysprep acht keer hebt uitgevoerd, moet u de Windows-installatie kopie opnieuw maken. Zie [limieten voor het aantal keren dat u Sysprep kunt uitvoeren](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep)voor meer informatie. 
+Houd er rekening mee dat het aantal keren dat u de laag wilt aanpassen. U kunt de Sysprep-opdracht Maxi maal 8 keer uitvoeren op één Windows-installatie kopie. Nadat u Sysprep acht keer hebt uitgevoerd, moet u de Windows-installatie kopie opnieuw maken. Zie [limieten voor het aantal keren dat u Sysprep kunt uitvoeren](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep)voor meer informatie. 
 
 > [!IMPORTANT]
 > Azure Image Builder is momenteel beschikbaar als open bare preview.
@@ -97,7 +98,7 @@ New-AzResourceGroup `
 
 
 ## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>Een door de gebruiker toegewezen identiteit maken en machtigingen instellen voor de resource groep
-De opbouw functie voor installatie kopieën gebruikt de door de [gebruiker gedefinieerde identiteit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell) voor het injecteren van de installatie kopie in de galerie met gedeelde installatie kopieën van Azure (SIG). In dit voor beeld maakt u een Azure-roldefinitie met de gedetailleerde acties waarmee de installatie kopie kan worden gedistribueerd naar de SIG. De roldefinitie wordt vervolgens toegewezen aan de identiteit van de gebruiker.
+De opbouw functie voor installatie kopieën gebruikt de door de [gebruiker gedefinieerde identiteit](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md) voor het injecteren van de installatie kopie in de galerie met gedeelde installatie kopieën van Azure (SIG). In dit voor beeld maakt u een Azure-roldefinitie met de gedetailleerde acties waarmee de installatie kopie kan worden gedistribueerd naar de SIG. De roldefinitie wordt vervolgens toegewezen aan de identiteit van de gebruiker.
 
 ```powershell
 # setup role def names, these need to be unique

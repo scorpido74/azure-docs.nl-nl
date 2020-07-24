@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: a92e96a835f24ac54fa55b05086a35b9a91d609e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 550b4fb7ba17d911618e0b60d16c0a9f9d1f2cfa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80298339"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077283"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Computers zonder Internet toegang verbinden met behulp van de Log Analytics-gateway in Azure Monitor
 
@@ -149,7 +149,7 @@ Voer de volgende stappen uit als u een gateway wilt installeren met de wizard Se
 
 ## <a name="install-the-log-analytics-gateway-using-the-command-line"></a>De Log Analytics-gateway installeren met behulp van de opdracht regel
 
-Het gedownloade bestand voor de gateway is een Windows Installer-pakket dat een installatie op de achtergrond ondersteunt vanaf de opdracht regel of een andere automatische methode. Zie [opdracht regel opties](https://docs.microsoft.com/windows/desktop/Msi/command-line-options)als u niet bekend bent met de standaard opdracht regel opties voor Windows Installer.
+Het gedownloade bestand voor de gateway is een Windows Installer-pakket dat een installatie op de achtergrond ondersteunt vanaf de opdracht regel of een andere automatische methode. Zie [opdracht regel opties](/windows/desktop/msi/command-line-options)als u niet bekend bent met de standaard opdracht regel opties voor Windows Installer.
  
 De volgende tabel geeft een overzicht van de para meters die door Setup worden ondersteund.
 
@@ -185,11 +185,11 @@ Na de installatie kunt u controleren of de instellingen zijn geaccepteerd (met u
 
 ## <a name="configure-network-load-balancing"></a>Network Load Balancing configureren
 
-U kunt de gateway configureren voor maximale Beschik baarheid met behulp van Network Load Balancing (NLB) met behulp van micro soft [Network Load Balancing (NLB)](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing), [Azure Load Balancer](../../load-balancer/load-balancer-overview.md)of load balancers op basis van hardware. De load balancer beheert het verkeer door de aangevraagde verbindingen van de Log Analytics agents of Operations Manager beheerser vers over de knoop punten te omleiden. Als één gateway server uitvalt, wordt het verkeer omgeleid naar andere knoop punten.
+U kunt de gateway configureren voor maximale Beschik baarheid met behulp van Network Load Balancing (NLB) met behulp van micro soft [Network Load Balancing (NLB)](/windows-server/networking/technologies/network-load-balancing), [Azure Load Balancer](../../load-balancer/load-balancer-overview.md)of load balancers op basis van hardware. De load balancer beheert het verkeer door de aangevraagde verbindingen van de Log Analytics agents of Operations Manager beheerser vers over de knoop punten te omleiden. Als één gateway server uitvalt, wordt het verkeer omgeleid naar andere knoop punten.
 
 ### <a name="microsoft-network-load-balancing"></a>Micro soft Network Load Balancing
 
-Zie [Network Load Balancing](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing)voor meer informatie over het ontwerpen en implementeren van een Windows Server 2016 Network Load Balancing-cluster. In de volgende stappen wordt beschreven hoe u een micro soft Network Load Balancing-cluster configureert.  
+Zie [Network Load Balancing](/windows-server/networking/technologies/network-load-balancing)voor meer informatie over het ontwerpen en implementeren van een Windows Server 2016 Network Load Balancing-cluster. In de volgende stappen wordt beschreven hoe u een micro soft Network Load Balancing-cluster configureert.  
 
 1. Meld u aan bij de Windows-Server die lid is van het NLB-cluster met een Administrator-account.  
 2. Open beheer van netwerk taakverdeling in Serverbeheer, klik op **extra**en klik vervolgens op **beheer van netwerk**taakverdeling.
@@ -270,7 +270,7 @@ Nadat de integratie met Log Analytics is voltooid, verwijdert u de wijziging doo
 
    ![Scherm opname van Operations Manager, met het proxyserver adres](./media/gateway/scom02.png)
 
-1. Selecteer **Finish**. Uw Operations Manager-beheer groep is nu geconfigureerd om te communiceren via de gateway server naar de Log Analytics-service.
+1. Selecteer **Voltooien**. Uw Operations Manager-beheer groep is nu geconfigureerd om te communiceren via de gateway server naar de Log Analytics-service.
 
 ### <a name="configure-operations-manager-where-specific-agents-use-a-proxy-server"></a>Operations Manager configureren, waarbij specifieke agenten een proxy server gebruiken
 
@@ -350,7 +350,7 @@ Als u gebeurtenissen wilt verzamelen die door de gateway worden geregistreerd, m
 
 In de volgende tabel worden de gebeurtenis-Id's en beschrijvingen voor Log Analytics-gateway logboek gebeurtenissen weer gegeven.
 
-| **Id** | **Beschrijving** |
+| **ID** | **Beschrijving** |
 | --- | --- |
 | 400 |Een toepassings fout die geen specifieke ID heeft. |
 | 401 |Onjuiste configuratie. Bijvoorbeeld, listenPort = "text" in plaats van een geheel getal. |

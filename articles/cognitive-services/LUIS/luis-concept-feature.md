@@ -1,14 +1,14 @@
 ---
-title: Functies-LUIS
+title: Machine learning-functies met LUIS
 description: Voeg functies toe aan een taal model om tips te bieden over het herkennen van de invoer die u wilt labelen of classificeren.
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: fbf39382e418bef9a7d39886076a4100a26ce3e7
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 02a6fd27dbe22a40b29b47515edec5506d3b2075
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362455"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075166"
 ---
 # <a name="machine-learning-features"></a>Machine learning-functies
 

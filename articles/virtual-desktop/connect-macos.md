@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.date: 04/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f2b4696886c898eec5895c4ccb59347cf2a49f03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bcd7bf46a3def963a4f9fe8913c4f8afcdce743f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208991"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075651"
 ---
-# <a name="connect-with-the-macos-client"></a>Verbinding maken met de macOS-client
+# <a name="connect-to-windows-virtual-desktop-with-the-macos-client"></a>Verbinding maken met het virtuele bureau blad van Windows met de macOS-client
 
 > Van toepassing op: macOS 10,12 of hoger
 

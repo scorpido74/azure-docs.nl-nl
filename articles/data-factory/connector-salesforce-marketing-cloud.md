@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/25/2019
-ms.openlocfilehash: 1a5a2682198f9ce9f5cb39f21e244c723ca513d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/17/2020
+ms.openlocfilehash: 1f0fb1ee8580c0c7f6eb30228b65e0a3780ef0a8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81416650"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076796"
 ---
 # <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory"></a>Gegevens kopiëren uit Sales Force marketing Cloud met behulp van Azure Data Factory
 
@@ -30,11 +30,11 @@ In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factor
 Deze Sales Force marketing-Cloud connector wordt ondersteund voor de volgende activiteiten:
 
 - [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
-- [Opzoek activiteit](control-flow-lookup-activity.md)
+- [Activiteit Lookup](control-flow-lookup-activity.md)
 
 U kunt gegevens uit Sales Force marketing-Cloud kopiëren naar elk ondersteund Sink-gegevens archief. Zie de tabel [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als bron/sinks door de Kopieer activiteit.
 
-De Sales Force marketing Cloud connector ondersteunt OAuth 2-verificatie. Het is gebouwd op basis van de [Sales Force marketing Cloud rest API](https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/index-api.htm).
+De Sales Force marketing-Cloud connector ondersteunt OAuth 2-verificatie en ondersteunt zowel oudere als uitgebreide pakket typen. De connector is gebaseerd op de [rest API Sales Force marketing Cloud](https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/index-api.htm).
 
 >[!NOTE]
 >Deze connector biedt geen ondersteuning voor het ophalen van aangepaste objecten of aangepaste gegevens extensies.
@@ -51,14 +51,18 @@ De volgende eigenschappen worden ondersteund voor aan Sales Force marketing Clou
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet worden ingesteld op: **SalesforceMarketingCloud** | Ja |
-| clientId | De client-ID die is gekoppeld aan de Sales Force marketing Cloud-toepassing.  | Ja |
-| clientSecret | Het client geheim dat is gekoppeld aan de Sales Force marketing Cloud-toepassing. U kunt dit veld markeren als SecureString om het veilig op te slaan in ADF, of het wacht woord op te slaan in Azure Key Vault en de ADF-Kopieer activiteit uit te voeren tijdens het uitvoeren van de gegevens kopie: meer informatie over [referenties voor opslaan in Key Vault](store-credentials-in-key-vault.md). | Ja |
-| useEncryptedEndpoints | Hiermee geeft u op of de eind punten van de gegevens bron moeten worden versleuteld met HTTPS. De standaardwaarde is waar.  | Nee |
-| useHostVerification | Hiermee geeft u op of de hostnaam in het certificaat van de server moet overeenkomen met de hostnaam van de server bij het maken van verbinding via TLS. De standaardwaarde is waar.  | Nee |
-| usePeerVerification | Hiermee wordt aangegeven of de identiteit van de server moet worden gecontroleerd wanneer er verbinding wordt gemaakt via TLS. De standaardwaarde is waar.  | Nee |
+| type | De eigenschap type moet worden ingesteld op: **SalesforceMarketingCloud** | Yes |
+| connectionProperties | Een groep eigenschappen die definieert hoe verbinding moet worden gemaakt met Sales Force marketing Cloud. | Yes |
+| ***Onder `connectionProperties` :*** | | |
+| authenticationType | Hiermee geeft u de verificatie methode op die moet worden gebruikt. Toegestane waarden zijn `Enhanced sts OAuth 2.0` of `OAuth_2.0` .<br><br>Het verouderde pakket Sales Force marketing Cloud wordt alleen ondersteund `OAuth_2.0` , terwijl er uitgebreide pakket behoeften nodig zijn `Enhanced sts OAuth 2.0` . <br>Sinds 1 augustus 2019 heeft Sales Force marketing Cloud de mogelijkheid om verouderde pakketten te maken, verwijderd. Alle nieuwe pakketten zijn uitgebreide pakketten. | Yes |
+| host | Voor een verbeterd pakket moet de host uw [subdomein](https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/your-subdomain-tenant-specific-endpoints.htm) zijn dat wordt vertegenwoordigd door een teken reeks van 28 tekens, te beginnen met de letters ' MC ', bijvoorbeeld `mc563885gzs27c5t9-63k636ttgm` . <br>Geef voor verouderd pakket op `www.exacttargetapis.com` . | Yes |
+| clientId | De client-ID die is gekoppeld aan de Sales Force marketing Cloud-toepassing.  | Yes |
+| clientSecret | Het client geheim dat is gekoppeld aan de Sales Force marketing Cloud-toepassing. U kunt dit veld markeren als SecureString om het veilig op te slaan in ADF, of het geheim op te slaan in Azure Key Vault en de ADF Copy-activiteit van daaruit te halen bij het uitvoeren van een gegevens kopie: meer informatie over [referenties voor opslaan in Key Vault](store-credentials-in-key-vault.md). | Yes |
+| useEncryptedEndpoints | Hiermee geeft u op of de eind punten van de gegevens bron moeten worden versleuteld met HTTPS. De standaardwaarde is waar.  | No |
+| useHostVerification | Hiermee geeft u op of de hostnaam in het certificaat van de server moet overeenkomen met de hostnaam van de server bij het maken van verbinding via TLS. De standaardwaarde is waar.  | No |
+| usePeerVerification | Hiermee wordt aangegeven of de identiteit van de server moet worden gecontroleerd wanneer er verbinding wordt gemaakt via TLS. De standaardwaarde is waar.  | No |
 
-**Voorbeeld:**
+**Voor beeld: uitgebreide STS OAuth 2-verificatie gebruiken voor uitgebreid pakket** 
 
 ```json
 {
@@ -66,14 +70,66 @@ De volgende eigenschappen worden ondersteund voor aan Sales Force marketing Clou
     "properties": {
         "type": "SalesforceMarketingCloud",
         "typeProperties": {
-            "clientId" : "<clientId>",
+            "connectionProperties": {
+                "host": "<subdomain e.g. mc563885gzs27c5t9-63k636ttgm>",
+                "authenticationType": "Enhanced sts OAuth 2.0",
+                "clientId": "<clientId>",
+                "clientSecret": {
+                     "type": "SecureString",
+                     "value": "<clientSecret>"
+                },
+                "useEncryptedEndpoints": true,
+                "useHostVerification": true,
+                "usePeerVerification": true
+            }
+        }
+    }
+}
+
+```
+
+**Voor beeld: OAuth 2-verificatie gebruiken voor verouderd pakket** 
+
+```json
+{
+    "name": "SalesforceMarketingCloudLinkedService",
+    "properties": {
+        "type": "SalesforceMarketingCloud",
+        "typeProperties": {
+            "connectionProperties": {
+                "host": "www.exacttargetapis.com",
+                "authenticationType": "OAuth_2.0",
+                "clientId": "<clientId>",
+                "clientSecret": {
+                     "type": "SecureString",
+                     "value": "<clientSecret>"
+                },
+                "useEncryptedEndpoints": true,
+                "useHostVerification": true,
+                "usePeerVerification": true
+            }
+        }
+    }
+}
+
+```
+
+Als u de gekoppelde service Sales Force marketing-Cloud met de volgende Payload gebruikt, wordt deze nog steeds ondersteund als-is, terwijl u het nieuwe abonnement wilt gebruiken waarmee u een verbeterde pakket ondersteuning toevoegt.
+
+```json
+{
+    "name": "SalesforceMarketingCloudLinkedService",
+    "properties": {
+        "type": "SalesforceMarketingCloud",
+        "typeProperties": {
+            "clientId": "<clientId>",
             "clientSecret": {
                  "type": "SecureString",
                  "value": "<clientSecret>"
             },
-            "useEncryptedEndpoints" : true,
-            "useHostVerification" : true,
-            "usePeerVerification" : true
+            "useEncryptedEndpoints": true,
+            "useHostVerification": true,
+            "usePeerVerification": true
         }
     }
 }
@@ -88,7 +144,7 @@ Als u gegevens wilt kopiëren uit Sales Force marketing Cloud, stelt u de eigens
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de gegevensset moet worden ingesteld op: **SalesforceMarketingCloudObject** | Ja |
+| type | De eigenschap type van de gegevensset moet worden ingesteld op: **SalesforceMarketingCloudObject** | Yes |
 | tableName | De naam van de tabel. | Nee (als "query" in activiteit bron is opgegeven) |
 
 **Voorbeeld**
@@ -118,7 +174,7 @@ Als u gegevens wilt kopiëren uit Sales Force marketing Cloud, stelt u het bron 
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **SalesforceMarketingCloudSource** | Ja |
+| type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **SalesforceMarketingCloudSource** | Yes |
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM MyTable"`. | Nee (als ' Tablename ' in gegevensset is opgegeven) |
 
 **Voorbeeld:**

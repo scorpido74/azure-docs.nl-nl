@@ -2,34 +2,35 @@
 title: Waarschuwingen instellen voor metrische gegevens van Azure VPN Gateway
 description: Stappen voor het configureren van waarschuwingen voor VPN Gateway metrische gegevens
 services: vpn-gateway
-author: anzaman
+author: kumudD
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 04/22/2019
 ms.author: alzam
-ms.openlocfilehash: ce9ab972d961a9193c3aa568878f9c93ccdcf6b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c2c44720853500ad6a9a4af1c8d93d6c8bc3eea2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84988022"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075527"
 ---
 # <a name="set-up-alerts-on-vpn-gateway-metrics"></a>Waarschuwingen instellen voor VPN Gateway metrische gegevens
 
 Dit artikel helpt u bij het instellen van waarschuwingen op Azure VPN Gateway metrische gegevens. Azure Monitor biedt de mogelijkheid om waarschuwingen in te stellen voor Azure-resources. U kunt waarschuwingen instellen voor virtuele netwerk gateways van het type VPN.
 
 
-|**Meting**   | **Teleenheid** | **Granulariteit** | **Beschrijving** | 
+|**Meting**   | **Eenheid** | **Granulariteit** | **Beschrijving** | 
 |---       | ---        | ---       | ---            | ---       |
 |**AverageBandwidth**| Bytes/s  | 5 minuten| Gemiddelde gecombineerde bandbreedte gebruik van alle site-naar-site-verbindingen op de gateway.     |
 |**P2SBandwidth**| Bytes/s  | 1 minuut  | Gemiddelde gecombineerde bandbreedte gebruik van alle punt-naar-site-verbindingen op de gateway.    |
-|**P2SConnectionCount**| Count  | 1 minuut  | Aantal Point-to-site-verbindingen op de gateway.   |
+|**P2SConnectionCount**| Aantal  | 1 minuut  | Aantal Point-to-site-verbindingen op de gateway.   |
 |**TunnelAverageBandwidth** | Bytes/s    | 5 minuten  | Gemiddeld bandbreedte gebruik van tunnels die zijn gemaakt op de gateway. |
 |**TunnelEgressBytes** | Bytes | 5 minuten | Uitgaand verkeer op tunnels die zijn gemaakt op de gateway.   |
-|**TunnelEgressPackets** | Count | 5 minuten | Aantal uitgaande pakketten op tunnels die zijn gemaakt op de gateway.   |
-|**TunnelEgressPacketDropTSMismatch** | Count | 5 minuten | Aantal uitgaande pakketten dat is verwijderd op tunnels die zijn veroorzaakt door een niet-overeenkomend verkeers selectie. |
+|**TunnelEgressPackets** | Aantal | 5 minuten | Aantal uitgaande pakketten op tunnels die zijn gemaakt op de gateway.   |
+|**TunnelEgressPacketDropTSMismatch** | Aantal | 5 minuten | Aantal uitgaande pakketten dat is verwijderd op tunnels die zijn veroorzaakt door een niet-overeenkomend verkeers selectie. |
 |**TunnelIngressBytes** | Bytes | 5 minuten | Binnenkomend verkeer op tunnels die zijn gemaakt op de gateway.   |
-|**TunnelIngressPackets** | Count | 5 minuten | Aantal inkomende pakketten op tunnels die zijn gemaakt op de gateway.   |
-|**TunnelIngressPacketDropTSMismatch** | Count | 5 minuten | Aantal binnenkomende pakketten dat is verwijderd op tunnels die zijn veroorzaakt door een niet-overeenkomend Traffic-selector. |
+|**TunnelIngressPackets** | Aantal | 5 minuten | Aantal inkomende pakketten op tunnels die zijn gemaakt op de gateway.   |
+|**TunnelIngressPacketDropTSMismatch** | Aantal | 5 minuten | Aantal binnenkomende pakketten dat is verwijderd op tunnels die zijn veroorzaakt door een niet-overeenkomend Traffic-selector. |
 
 
 ## <a name="set-up-azure-monitor-alerts-based-on-metrics-by-using-the-azure-portal"></a><a name="setup"></a>Azure Monitor waarschuwingen instellen op basis van metrische gegevens met behulp van de Azure Portal

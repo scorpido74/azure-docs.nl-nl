@@ -5,16 +5,17 @@ ms.topic: conceptual
 author: MS-jgol
 ms.author: jgol
 ms.date: 05/13/2020
-ms.openlocfilehash: 76f9f922697ef6be6c959ea7f9bafd0872dba6ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 52bd6d2a98e5126ff2463de1ef99da03ca555567
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83773760"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075299"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes---azure-monitor-application-insights"></a>Bewaking van nul-toepassings controle voor Kubernetes-Azure Monitor Application Insights
 
 > [!IMPORTANT]
->  Op dit moment kunt u bewaking inschakelen voor uw java-apps die worden uitgevoerd op Kubernetes zonder uw code te gebruiken. Gebruik de [zelfstandige Java-Agent](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent). Hoewel de oplossing om toepassings bewaking naadloos in te scha kelen in de Works voor andere talen, gebruikt u de Sdk's om uw apps te bewaken die worden uitgevoerd op AKS: [ASP.net core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core), [ASP.net](https://docs.microsoft.com/azure/azure-monitor/app/asp-net), [Node.js](https://docs.microsoft.com/azure/azure-monitor/app/nodejs), [Java script](https://docs.microsoft.com/azure/azure-monitor/app/javascript)en [python](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python).
+>  Op dit moment kunt u bewaking inschakelen voor uw java-apps die worden uitgevoerd op Kubernetes zonder uw code te gebruiken. Gebruik de [zelfstandige Java-Agent](./java-in-process-agent.md). Hoewel de oplossing om toepassings bewaking naadloos in te scha kelen in de Works voor andere talen, gebruikt u de Sdk's om uw apps te bewaken die worden uitgevoerd op AKS: [ASP.net core](./asp-net-core.md), [ASP.net](./asp-net.md), [Node.js](./nodejs.md), [Java script](./javascript.md)en [python](./opencensus-python.md).
 
 ## <a name="application-monitoring-without-instrumenting-the-code"></a>Toepassings bewaking zonder de code te instrumenteren
 Momenteel kunt u met alleen Java toepassings bewaking inschakelen zonder de code te instrumenteren. Als u toepassingen in andere talen wilt bewaken, gebruikt u de Sdk's. 
@@ -22,18 +23,18 @@ Momenteel kunt u met alleen Java toepassings bewaking inschakelen zonder de code
 ## <a name="java"></a>Java
 Zodra de Java-Agent is ingeschakeld, worden er automatisch een groot aantal aanvragen, afhankelijkheden, logboeken en metrische gegevens van de meest gebruikte bibliotheken en frameworks verzameld.
 
-Volg [de gedetailleerde instructies](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) voor het bewaken van uw java-apps die worden uitgevoerd in Kubernetes-apps, evenals andere omgevingen. 
+Volg [de gedetailleerde instructies](./java-in-process-agent.md) voor het bewaken van uw java-apps die worden uitgevoerd in Kubernetes-apps, evenals andere omgevingen. 
 
 ## <a name="other-languages"></a>Andere talen
 
 Voor de toepassingen in andere talen raden we u aan de Sdk's te gebruiken:
-* [ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)
-* [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)
-* [Node.js](https://docs.microsoft.com/azure/azure-monitor/app/nodejs) 
-* [JavaScript](https://docs.microsoft.com/azure/azure-monitor/app/javascript)
-* [Python](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python)
+* [ASP.NET Core](./asp-net-core.md)
+* [ASP.NET](./asp-net.md)
+* [Node.js](./nodejs.md) 
+* [JavaScript](./javascript.md)
+* [Python](./opencensus-python.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) en [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)
-* Bekijk een overzicht van [gedistribueerde tracering](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing) en zie welke [toepassings toewijzing](https://docs.microsoft.com/azure/azure-monitor/app/app-map?tabs=net) voor uw bedrijf kan worden uitgevoerd
+* Meer informatie over [Azure monitor](../overview.md) en [Application Insights](./app-insights-overview.md)
+* Bekijk een overzicht van [gedistribueerde tracering](./distributed-tracing.md) en zie welke [toepassings toewijzing](./app-map.md?tabs=net) voor uw bedrijf kan worden uitgevoerd

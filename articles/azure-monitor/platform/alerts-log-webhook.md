@@ -7,13 +7,14 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 6c9bacfc4354351cbbf2eb735414ff3334cd7d0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3311819f021533a28a41daf2c2f08193218fae96
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84323668"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075262"
 ---
-# <a name="webhook-actions-for-log-alert-rules"></a>Webhook-acties voor waarschuwings regels voor logboeken
+# <a name="webhook-actions-for-log-alert-rules"></a>Webhook-acties voor waarschuwingsregels voor logboeken
 Wanneer er een [logboek waarschuwing wordt gemaakt in azure](alerts-log.md), kunt u [deze configureren met behulp van actie groepen](action-groups.md) om een of meer acties uit te voeren. In dit artikel worden de verschillende webhook-acties beschreven die beschikbaar zijn en wordt getoond hoe u een aangepaste JSON-gebaseerde webhook configureert.
 
 > [!NOTE]
@@ -36,7 +37,7 @@ Webhook-acties vereisen de eigenschappen in de volgende tabel.
 Webhooks bevatten een URL en een nettolading die in JSON is ingedeeld en die de gegevens die naar de externe service worden verzonden. De payload bevat standaard de waarden in de volgende tabel. U kunt ervoor kiezen om deze Payload te vervangen door een aangepaste versie. In dat geval gebruikt u de variabelen in de tabel voor elk van de para meters om hun waarden in uw aangepaste nettolading op te laten staan.
 
 
-| Parameter | Variabele | Description |
+| Parameter | Variabele | Beschrijving |
 |:--- |:--- |:--- |
 | *AlertRuleName* |#alertrulename |De naam van de waarschuwings regel. |
 | *Ernst* |#severity |Ernst ingesteld voor de waarschuwing voor het geactiveerde logboek. |
@@ -264,6 +265,5 @@ De volgende voor beeld-nettolading is voor een aangepaste webhook-actie voor een
 - Meer informatie over [logboek waarschuwingen in azure-waarschuwingen](alerts-unified-log.md).
 - Meer informatie over het [beheren van logboek waarschuwingen in azure](alerts-log.md).
 - Actie groepen maken en beheren [in azure](action-groups.md).
-- Meer informatie over [Application Insights](../../azure-monitor/app/analytics.md).
+- Meer informatie over [Application Insights](../log-query/log-query-overview.md).
 - Meer informatie over [logboek query's](../log-query/log-query-overview.md). 
-

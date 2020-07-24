@@ -3,12 +3,12 @@ title: VMware-evaluatie ondersteuning in Azure Migrate
 description: Meer informatie over ondersteuning voor VMware VM-evaluatie met Azure Migrate server-evaluatie.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 4ca59e3b9eaf62a46ca4df3a582e7b8f290e7da6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 1c1e349f31f6650c0f0910642d60193ebc0dd3a5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108801"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078005"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Ondersteunings matrix voor VMware-evaluatie 
 
@@ -87,7 +87,7 @@ Naast het detecteren van computers kunnen server analyses apps, rollen en functi
 **Virtuele Windows-machines** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64-bits).
 **vCenter Server referenties** | Voor afhankelijkheids visualisatie moet een vCenter Server account met alleen-lezen toegang en bevoegdheden zijn ingeschakeld voor Virtual Machines >-gast bewerkingen.
 **Machtigingen voor Windows-VM'S** |  Voor de afhankelijkheids analyse heeft het Azure Migrate-apparaat een domein beheerders account of een lokaal beheerders account nodig om toegang te krijgen tot Windows-Vm's.
-**VM-machtigingen voor Linux** | Red Hat Enterprise Linux 7, 6, 5<br/> Ubuntu Linux 14,04, 16,04<br/> Debian 7, 8<br/> Oracle Linux 6, 7<br/> CentOS 5, 6, 7.
+**Virtuele Linux-machines** | Red Hat Enterprise Linux 7, 6, 5<br/> Ubuntu Linux 14,04, 16,04<br/> Debian 7, 8<br/> Oracle Linux 6, 7<br/> CentOS 5, 6, 7.
 **Linux-account** | Voor afhankelijkheids analyse, op Linux-machines, heeft het Azure Migrate apparaat een gebruikers account nodig met de bevoegdheid root.<br/><br/> Het gebruikers account heeft ook de volgende machtigingen nodig voor/bin/netstat-en/bin/ls-bestanden: CAP_DAC_READ_SEARCH en CAP_SYS_PTRACE.
 **Vereiste agents** | Er is geen agent vereist voor computers die u wilt analyseren.
 **VMware-Hulpprogram Ma's** | VMware-Hulpprogram Ma's (hoger dan 10,2) moeten zijn geïnstalleerd en worden uitgevoerd op elke virtuele machine die u wilt analyseren.

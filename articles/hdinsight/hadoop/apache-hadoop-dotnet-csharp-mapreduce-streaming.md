@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: 77d8143743f899bcb9fd3927de223d84d406ed6f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 0a20a120f72c70cb50cae37cece54d5efad31f47
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086786"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074813"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>C# gebruiken met MapReduce streaming op Apache Hadoop in HDInsight
 
@@ -47,7 +47,7 @@ Zie [Hadoop streaming](https://hadoop.apache.org/docs/r2.7.1/hadoop-streaming/Ha
 
 * Een manier om exe-bestanden te uploaden naar het cluster. De stappen in dit document gebruiken de Data Lake-Hulpprogram Ma's voor Visual Studio voor het uploaden van de bestanden naar de primaire opslag voor het cluster.
 
-* Als u Power shell gebruikt, hebt u de [AZ-module](https://docs.microsoft.com/powershell/azure/overview)nodig.
+* Als u Power shell gebruikt, hebt u de [AZ-module](https://docs.microsoft.com/powershell/azure/)nodig.
 
 * Een Apache Hadoop cluster in HDInsight. Zie aan de [slag met HDInsight op Linux](../hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
@@ -175,7 +175,7 @@ Vervolgens moet u de toewijzing van de *Mapper* en het *verkorten* van toepassin
 
 In de volgende procedure wordt beschreven hoe u een MapReduce-taak kunt uitvoeren met behulp van een SSH-sessie:
 
-1. Gebruik de [SSH-opdracht](../hdinsight-hadoop-linux-use-ssh-unix.md) om verbinding te maken met uw cluster. Bewerk de onderstaande opdracht door CLUSTERNAME te vervangen door de naam van uw cluster en voer vervolgens de volgende opdracht in:
+1. Gebruik de [ssh-opdracht](../hdinsight-hadoop-linux-use-ssh-unix.md) om verbinding te maken met uw cluster. Bewerk de onderstaande opdracht door CLUSTERNAME te vervangen door de naam van uw cluster. Voer vervolgens deze opdracht in:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net

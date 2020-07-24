@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2016
 ms.author: matd
-ms.openlocfilehash: f2a514b6f44df7be15f18aa8f7c42668c872ab4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05ee60986703096c004c4d15764028b73d04c0bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509690"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077881"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>StorSimple als een back-updoel met Veeam
 
@@ -276,11 +276,11 @@ Maak op basis van de voor gaande hypo theses een gelaagd volume van 26 TiB StorS
 
     ![Veeam-beheer console, pagina Back-upopslagplaats](./media/storsimple-configure-backup-target-using-veeam/veeamimage1.png)
 
-2.  Voer in het dialoog venster **nieuwe back-upopslagplaats** een naam en een beschrijving in voor de opslag plaats. Selecteer **Volgende**.
+2.  Voer in het dialoog venster **nieuwe back-upopslagplaats** een naam en een beschrijving in voor de opslag plaats. Selecteer **Next**.
 
     ![Veeam-beheer console, naam en beschrijvings pagina](./media/storsimple-configure-backup-target-using-veeam/veeamimage2.png)
 
-3.  Selecteer **micro soft Windows Server**voor het type. Selecteer de Veeam-server. Selecteer **Volgende**.
+3.  Selecteer **micro soft Windows Server**voor het type. Selecteer de Veeam-server. Selecteer **Next**.
 
     ![Veeam-beheer console, type back-upopslagplaats selecteren](./media/storsimple-configure-backup-target-using-veeam/veeamimage3.png)
 
@@ -293,7 +293,7 @@ Maak op basis van de voor gaande hypo theses een gelaagd volume van 26 TiB StorS
 
     ![Veeam-beheer console, instellingen voor opslag compatibiliteit](./media/storsimple-configure-backup-target-using-veeam/veeamimage5.png)
 
-6.  Schakel in het dialoog venster **nieuwe back-upopslagplaats** het selectie vakje **vPower NFS-service inschakelen op het koppel server (aanbevolen)** in. Selecteer **Volgende**.
+6.  Schakel in het dialoog venster **nieuwe back-upopslagplaats** het selectie vakje **vPower NFS-service inschakelen op het koppel server (aanbevolen)** in. Selecteer **Next**.
 
     ![Veeam-beheer console, pagina Back-upopslagplaats](./media/storsimple-configure-backup-target-using-veeam/veeamimage6.png)
 
@@ -320,7 +320,7 @@ Hier volgt een voor beeld van een GFS-rotatie schema voor vier weken, maandelijk
 |---|---|---|
 | Wekelijks (weken 1-4) | Saturday | Maandag t/m vrijdag |
 | Maandelijks  | Saturday  |   |
-| Jaar | Saturday  |   |
+| Jaarlijks | Saturday  |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-veeam-backup-job"></a>StorSimple-volumes toewijzen aan een Veeam-back-uptaak
@@ -400,7 +400,7 @@ GFS draaiing wekelijks, maandelijks en jaarlijks plannen
 | Week 3 | StorSimple weken 2-4 |   |   |   |   |   |
 | Week 4 | StorSimple weken 2-4 |   |   |   |   |   |
 | Maandelijks | StorSimple maandelijks |   |   |   |   |   |
-| Jaar | Jaarlijks StorSimple  |   |   |   |   |   |
+| Jaarlijks | Jaarlijks StorSimple  |   |   |   |   |   |
 
 ### <a name="assign-storsimple-volumes-to-a-veeam-copy-job"></a>StorSimple-volumes toewijzen aan een Veeam-Kopieer taak
 
@@ -468,7 +468,7 @@ In de volgende sectie wordt beschreven hoe u een kort script maakt voor het star
 
 ### <a name="to-start-or-delete-a-cloud-snapshot"></a>Een Cloud momentopname starten of verwijderen
 
-1. [Installeer Azure PowerShell](/powershell/azure/overview).
+1. [Installeer Azure PowerShell](/powershell/azure/).
 2. Down load en Setup [Manage-CloudSnapshots.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) Power shell-script.
 3. Op de server waarop het script wordt uitgevoerd, voert u Power shell uit als beheerder. Zorg ervoor dat u het script uitvoert `-WhatIf $true` om te zien welke wijzigingen door het script worden aangebracht. Zodra de validatie is voltooid, geeft u door `-WhatIf $false` . Voer de onderstaande opdracht uit:
    ```powershell
@@ -500,14 +500,14 @@ Met Veeam krijgt u snel en gedetailleerd herstel op bestands niveau via StorSimp
 
 Een nood geval kan worden veroorzaakt door diverse factoren. De volgende tabel geeft een lijst van veelvoorkomende scenario's voor herstel na nood gevallen.
 
-| Scenario | Impact | Herstellen | Notities |
+| Scenario | Impact | Herstellen | Opmerkingen |
 |---|---|---|---|
 | StorSimple-apparaat is mislukt | Back-up-en herstel bewerkingen worden onderbroken. | Vervang het apparaat dat is mislukt en voer een [StorSimple-failover en nood herstel](storsimple-device-failover-disaster-recovery.md)uit. | Als u na het herstel van het apparaat een herstel bewerking moet uitvoeren, worden volledige gegevens verzamelingen opgehaald uit de Cloud naar het nieuwe apparaat. Alle bewerkingen bevinden zich in de Cloud snelheid. Het proces voor het opnieuw scannen van indexen en catalogussen kan ertoe leiden dat alle back-upsets worden gescand en opgehaald van de Cloud laag naar de laag van het lokale apparaat. Dit kan een tijdrovend proces zijn. |
 | Veeam-server fout | Back-up-en herstel bewerkingen worden onderbroken. | Bouw de back-upserver opnieuw op en voer data base terugzetten uit zoals beschreven in [Veeam Help Center (technische documentatie)](https://www.veeam.com/documentation-guides-datasheets.html).  | U moet de Veeam-server opnieuw samen stellen of herstellen op de site voor nood herstel. Zet de data base terug naar het meest recente punt. Als de herstelde Veeam-data base niet is gesynchroniseerd met uw meest recente back-uptaken, is indexeren en catalogiseren vereist. Dit proces voor het opnieuw scannen van index en catalogus kan ertoe leiden dat alle back-upsets worden gescand en van de Cloud laag worden opgehaald naar de laag van het lokale apparaat. Hierdoor is het veel tijdrovender. |
 | Site fout die leidt tot verlies van zowel de back-upserver als de StorSimple | Back-up-en herstel bewerkingen worden onderbroken. | Herstel StorSimple eerst en herstel vervolgens Veeam. | Herstel StorSimple eerst en herstel vervolgens Veeam. Als u na het herstel van het apparaat een herstel bewerking moet uitvoeren, worden de volledige gegevens sets van de Cloud naar het nieuwe apparaat opgehaald. Alle bewerkingen bevinden zich in de Cloud snelheid. |
 
 
-## <a name="references"></a>Verwijzingen
+## <a name="references"></a>Referenties
 
 In dit artikel wordt verwezen naar de volgende documenten:
 

@@ -6,11 +6,13 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: brendm
-ms.openlocfilehash: 81ca6b2c365b0dd8a249a337f51d78516cb2cc61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: 6af23f566e8768dd1213095402b7af029d494476
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83657191"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076039"
 ---
 # <a name="azure-spring-cloud-disaster-recovery"></a>Herstel na nood geval in de cloud van Azure lente
 
@@ -42,7 +44,7 @@ U hebt twee service-exemplaren van Azure lente-Cloud geïmplementeerd in twee ve
 | Servicenaam | Locatie | Toepassing |
 |--|--|--|
 | service-voor beeld-a | VS - oost | Gateway/auth-service/account-service |
-| service-voor beeld-b | Europa -west | Gateway/auth-service/account-service |
+| service-voor beeld-b | Europa - west | Gateway/auth-service/account-service |
 
 2. Aangepast domein voor service instellen Volg [aangepast domein document](spring-cloud-tutorial-custom-domain.md) voor het instellen van een aangepast domein voor deze twee bestaande service-exemplaren. Nadat de installatie is voltooid, worden beide service-exemplaren gebonden aan het aangepaste domein: bcdr-test.contoso.com
 

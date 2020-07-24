@@ -1,20 +1,20 @@
 ---
-title: Data Lake Analytics beveiligings basislijn voor Azure Security Bench Mark
+title: Azure-beveiligings basislijn voor Data Lake Analytics
 description: De Data Lake Analytics Security Baseline voorziet in procedure richtlijnen en resources voor het implementeren van de beveiligings aanbevelingen die zijn opgegeven in de Azure Security-Bench Mark.
 author: msmbaldwin
 ms.service: data-lake-analytics
 ms.topic: conceptual
-ms.date: 07/13/2020
+ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 5e6d5beaad5080bf3081d5f68722623fb62d6c8a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cb93fa266111a0f60a139d7b76a149ba81b486e9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531571"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075079"
 ---
-# <a name="data-lake-analytics-security-baseline-for-azure-security-benchmark"></a>Data Lake Analytics beveiligings basislijn voor Azure Security Bench Mark
+# <a name="azure-security-baseline-for-data-lake-analytics"></a>Azure-beveiligings basislijn voor Data Lake Analytics
 
 De Azure-beveiligings basislijn voor Data Lake Analytics bevat aanbevelingen waarmee u de beveiligings postuur van uw implementatie kunt verbeteren.
 
@@ -388,7 +388,7 @@ U kunt ook Just-in-time-toegang inschakelen met behulp van Azure AD Privileged I
 
 **Verantwoordelijkheid**: niet van toepassing
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 *Zie [beveiligings beheer: gegevens beveiliging](/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 

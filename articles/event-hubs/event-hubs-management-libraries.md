@@ -3,12 +3,12 @@ title: Beheer bibliotheken-Azure Event Hubs | Microsoft Docs
 description: Dit artikel bevat informatie over de bibliotheek die u kunt gebruiken voor het beheren van Azure Event Hubs-naam ruimten en-entiteiten van .NET.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: f3129ae5586a3096dda89eea3af21eefd1606f30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79656d95cf925c21b0f0c5f2b3bafe6348e0b553
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85312980"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074824"
 ---
 # <a name="event-hubs-management-libraries"></a>Event Hubs-beheerbibliotheken
 
@@ -26,7 +26,7 @@ Om aan de slag te gaan met de Event Hubs-beheer Bibliotheken, moet u verifiëren
 
 * [Gebruik de Azure Portal om Active Directory-toepassing en Service-Principal te maken die toegang hebben tot resources](../active-directory/develop/howto-create-service-principal-portal.md)
 * [Azure PowerShell gebruiken om een service-principal te maken voor toegang tot resources](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
-* [Azure CLI gebruiken om een service-principal te maken voor toegang tot resources](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md)
+* [Azure CLI gebruiken om een service-principal te maken voor toegang tot resources](/cli/azure/create-an-azure-service-principal-azure-cli)
 
 Deze zelf studies bieden u een `AppId` (client-id), `TenantId` , en `ClientSecret` (verificatie sleutel), die allemaal worden gebruikt voor verificatie door de beheer bibliotheken. U moet **eigenaars** machtigingen hebben voor de resource groep waarvoor u wilt uitvoeren.
 

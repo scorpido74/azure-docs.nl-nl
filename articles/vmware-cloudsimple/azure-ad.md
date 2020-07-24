@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 674ca8bea110d60557d1e50e7b68c9c3f7a92bf2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f90f5f4298fcca77e293965ddd377598bcfd1930
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77564581"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077315"
 ---
 # <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>Azure AD gebruiken als een id-provider voor vCenter op CloudSimple Private Cloud
 
@@ -45,7 +46,7 @@ Voordat u aan de slag gaat, moet u toegang hebben tot uw Azure-abonnement met gl
 > [!NOTE]
 > Als u Azure AD al hebt, kunt u deze sectie overs Laan.
 
-1. Stel Azure AD in op uw abonnement, zoals beschreven in [Azure AD-documentatie](../active-directory/fundamentals/get-started-azure-ad.md).
+1. Stel Azure AD in op uw abonnement, zoals beschreven in [Azure AD-documentatie](../active-directory/fundamentals/active-directory-whatis.md).
 2. Schakel Azure Active Directory Premium in voor uw abonnement, zoals wordt beschreven in [registreren voor Azure Active Directory Premium](../active-directory/fundamentals/active-directory-get-started-premium.md).
 3. Stel een aangepaste domein naam in en controleer de naam van het aangepaste domein, zoals wordt beschreven in [een aangepaste domein naam toevoegen aan Azure Active Directory](../active-directory/fundamentals/add-custom-domain.md).
     1. Stel een DNS-record in voor uw domein registratie service met de informatie die is opgegeven in Azure.
@@ -58,17 +59,17 @@ U kunt desgewenst andere Azure AD-functies configureren.  Deze zijn niet vereist
 > [!NOTE]
 > Dit is een belang rijke stap voor het inschakelen van Azure AD als een identiteits bron voor vCenter.  Als u problemen wilt voor komen, moet u ervoor zorgen dat alle stappen correct worden uitgevoerd.
 
-1. Schakel Azure AD Domain Services in, zoals beschreven in [enable Azure Active Directory Domain Services met behulp van de Azure Portal](../active-directory-domain-services/active-directory-ds-getting-started.md).
-2. Stel het netwerk in dat door Azure AD Domain Services wordt gebruikt, zoals wordt beschreven in [Azure Active Directory Domain Services inschakelen met behulp van de Azure Portal](../active-directory-domain-services/active-directory-ds-getting-started-network.md).
-3. Configureer de groep Administrators voor het beheren van Azure AD Domain Services, zoals beschreven in [enable Azure Active Directory Domain Services met behulp van de Azure Portal](../active-directory-domain-services/active-directory-ds-getting-started-admingroup.md).
-4. Werk de DNS-instellingen voor uw Azure AD Domain Services bij zoals beschreven in [enable Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-getting-started-dns.md).  Als u via Internet verbinding wilt maken met AD, stelt u de DNS-record voor het open bare IP-adres van de Azure AD Domain Services in op de domein naam.
-5. Wachtwoord hash-synchronisatie inschakelen voor gebruikers.  Met deze stap wordt de synchronisatie van wacht woord-hashes ingeschakeld die vereist zijn voor NT LAN Manager (NTLM) en Kerberos-verificatie om te Azure AD Domain Services. Wanneer u de synchronisatie voor wachtwoordhashes hebt ingesteld, kunnen gebruikers zich bij het beheerde domein aanmelden met hun zakelijke referenties. Zie [wachtwoord-hash-synchronisatie inschakelen voor Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md).
+1. Schakel Azure AD Domain Services in, zoals beschreven in [enable Azure Active Directory Domain Services met behulp van de Azure Portal](../active-directory-domain-services/tutorial-create-instance.md).
+2. Stel het netwerk in dat door Azure AD Domain Services wordt gebruikt, zoals wordt beschreven in [Azure Active Directory Domain Services inschakelen met behulp van de Azure Portal](../active-directory-domain-services/tutorial-create-instance.md).
+3. Configureer de groep Administrators voor het beheren van Azure AD Domain Services, zoals beschreven in [enable Azure Active Directory Domain Services met behulp van de Azure Portal](../active-directory-domain-services/tutorial-create-instance.md).
+4. Werk de DNS-instellingen voor uw Azure AD Domain Services bij zoals beschreven in [enable Azure Active Directory Domain Services](../active-directory-domain-services/tutorial-create-instance.md).  Als u via Internet verbinding wilt maken met AD, stelt u de DNS-record voor het open bare IP-adres van de Azure AD Domain Services in op de domein naam.
+5. Wachtwoord hash-synchronisatie inschakelen voor gebruikers.  Met deze stap wordt de synchronisatie van wacht woord-hashes ingeschakeld die vereist zijn voor NT LAN Manager (NTLM) en Kerberos-verificatie om te Azure AD Domain Services. Wanneer u de synchronisatie voor wachtwoordhashes hebt ingesteld, kunnen gebruikers zich bij het beheerde domein aanmelden met hun zakelijke referenties. Zie [wachtwoord-hash-synchronisatie inschakelen voor Azure Active Directory Domain Services](../active-directory-domain-services/tutorial-create-instance.md).
     1. Als alleen Cloud gebruikers aanwezig zijn, moeten ze hun wacht woord wijzigen via <a href="http://myapps.microsoft.com/" target="_blank">Azure AD-toegangs venster</a> om ervoor te zorgen dat wacht woord-hashes worden opgeslagen in de vereiste indeling voor NTLM of Kerberos.  Volg de instructies in [Schakel wacht woord-hash synchronisatie naar uw beheerde domein in voor Cloud gebruikers accounts](../active-directory-domain-services/tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds).  Deze stap moet worden uitgevoerd voor afzonderlijke gebruikers en voor elke nieuwe gebruiker die in uw Azure AD-Directory is gemaakt met behulp van de Azure Portal of Azure AD Power shell-cmdlets. Gebruikers die toegang nodig hebben tot Azure AD Domain Services, moeten het <a href="http://myapps.microsoft.com/" target="_blank">Azure AD-toegangs venster</a> gebruiken en toegang krijgen tot hun profiel om het wacht woord te wijzigen.
 
         > [!NOTE]
         > Als uw organisatie gebruikersaccounts in de cloud heeft, moeten alle gebruikers die Azure Active Directory Domain Services willen gebruiken, hun wachtwoord wijzigen. Een cloudgebruikersaccount is een account dat is gemaakt in uw Azure AD-directory via de Azure portal of Azure AD PowerShell-cmdlets. Deze gebruikersaccounts zijn niet gesynchroniseerd vanuit een on-premises map.
 
-    2. Als u wacht woorden van uw on-premises Active Directory synchroniseert, volgt u de stappen in de [Active Directory documentatie](../active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant.md).
+    2. Als u wacht woorden van uw on-premises Active Directory synchroniseert, volgt u de stappen in de [Active Directory documentatie](../active-directory-domain-services/tutorial-configure-password-hash-sync.md).
 
 6.  Configureer beveiligde LDAP op uw Azure Active Directory Domain Services, zoals beschreven in [secure LDAP (LDAPS) configureren voor een Azure AD Domain Services beheerd domein](../active-directory-domain-services/tutorial-configure-ldaps.md).
     1. Upload een certificaat voor gebruik door secure LDAP zoals beschreven in het Azure-onderwerp [een certificaat voor beveiligde LDAP verkrijgen](../active-directory-domain-services/tutorial-configure-ldaps.md#create-a-certificate-for-secure-ldap).  CloudSimple raadt aan het gebruik van een ondertekend certificaat dat is uitgegeven door een certificerings instantie om ervoor te zorgen dat vCenter het certificaat kan vertrouwen.

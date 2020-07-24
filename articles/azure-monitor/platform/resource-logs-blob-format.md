@@ -7,16 +7,17 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 001dfbc78c0027249143e933684523d47af383d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 45b18352d88877a5d611f203d87da83fd0d58c6b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79096777"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077124"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-platform-logs-archived-to-a-storage-account"></a>Voorbereiden van opmaak wijziging in Azure Monitor platform-logboeken die zijn gearchiveerd in een opslag account
 
 > [!WARNING]
-> Als u Azure- [resource Logboeken of-metrische gegevens naar een opslag account verzendt met Diagnostische instellingen](resource-logs-collect-storage.md) of [activiteiten logboeken naar een opslag account met behulp van logboek profielen](resource-logs-collect-storage.md), wordt de indeling van de informatie in het opslag account gewijzigd in JSON-regels op november. 1, 2018. De onderstaande instructies beschrijven de impact en het bijwerken van uw hulp programma voor het afhandelen van de nieuwe indeling.
+> Als u Azure- [resource Logboeken of-metrische gegevens naar een opslag account verzendt met Diagnostische instellingen](./resource-logs.md#send-to-azure-storage) of [activiteiten logboeken naar een opslag account met behulp van logboek profielen](./resource-logs.md#send-to-azure-storage), wordt de indeling van de informatie in het opslag account gewijzigd in JSON-regels op november. 1, 2018. De onderstaande instructies beschrijven de impact en het bijwerken van uw hulp programma voor het afhandelen van de nieuwe indeling.
 >
 
 ## <a name="what-changed"></a>Wat is er gewijzigd
@@ -28,9 +29,9 @@ Azure Monitor biedt een mogelijkheid waarmee u bron logboeken en activiteiten Lo
 * Als u een diagnostische instelling instelt tussen vóór 1 november, blijven gegevens in de huidige indeling verzenden tot 1 november.
 * Deze wijziging is in alle open bare Cloud regio's in één keer opgetreden. De wijziging wordt niet doorgevoerd in Microsoft Azure die door 21Vianet, Azure Duitsland of Azure Government Clouds worden gebruikt.
 * Deze wijziging is van invloed op de volgende gegevens typen:
-  * [Azure-resource logboeken](archive-diagnostic-logs.md) ([Zie de lijst met resources hier](diagnostic-logs-schema.md))
+  * [Azure-resource logboeken](./resource-logs.md#send-to-azure-storage) ([Zie de lijst met resources hier](./resource-logs-schema.md))
   * [Metrische gegevens van Azure-resource die worden geëxporteerd door Diagnostische instellingen](diagnostic-settings.md)
-  * [Gegevens van Azure-activiteiten logboek worden geëxporteerd op logboek profielen](activity-log-collect.md)
+  * [Gegevens van Azure-activiteiten logboek worden geëxporteerd op logboek profielen](./activity-log.md)
 * Deze wijziging heeft geen invloed op:
   * Netwerk stroom logboeken
   * Azure-service logboeken zijn nog niet via Azure Monitor beschikbaar gemaakt (bijvoorbeeld Azure App Service Resource logboeken, logboeken voor opslag analyse)
@@ -122,7 +123,7 @@ De nieuwe indeling maakt gebruik van [JSON-lijnen](http://jsonlines.org/), waarb
 {"time": "2016-01-05T01:33:56.5264523Z","resourceId": "/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSOGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT","operationName": "VaultGet","operationVersion": "2015-06-01","category": "AuditEvent","resultType": "Success","resultSignature": "OK","resultDescription": "","durationMs": "83","callerIpAddress": "104.40.82.76","correlationId": "","identity": {"claim": {"http://schemas.microsoft.com/identity/claims/objectidentifier": "d9da5048-2737-4770-bd64-XXXXXXXXXXXX","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "live.com#username@outlook.com","appid": "1950a258-227b-4e31-a9cf-XXXXXXXXXXXX"}},"properties": {"clientInfo": "azure-resource-manager/2.0","requestUri": "https://control-prod-wus.vaultcore.azure.net/subscriptions/361da5d4-a47a-4c79-afdd-XXXXXXXXXXXX/resourcegroups/contosoresourcegroup/providers/Microsoft.KeyVault/vaults/contosokeyvault?api-version=2015-06-01","id": "https://contosokeyvault.vault.azure.net/","httpStatusCode": 200}}
 ```
 
-Met deze nieuwe indeling Azure Monitor kunt u logboek bestanden pushen met behulp van [toevoeg-blobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs). Dit is efficiënter voor het voortdurend toevoegen van nieuwe gebeurtenis gegevens.
+Met deze nieuwe indeling Azure Monitor kunt u logboek bestanden pushen met behulp van [toevoeg-blobs](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs). Dit is efficiënter voor het voortdurend toevoegen van nieuwe gebeurtenis gegevens.
 
 ## <a name="how-to-update"></a>Update
 
@@ -132,6 +133,5 @@ Aangepaste hulpprogram ma's moeten worden bijgewerkt om zowel de huidige indelin
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [het archiveren van resource bron Logboeken in een opslag account](./../../azure-monitor/platform/archive-diagnostic-logs.md)
-* Meer informatie over [het archiveren van activiteiten logboek gegevens naar een opslag account](./../../azure-monitor/platform/archive-activity-log.md)
-
+* Meer informatie over [het archiveren van resource bron Logboeken in een opslag account](./resource-logs.md#send-to-azure-storage)
+* Meer informatie over [het archiveren van activiteiten logboek gegevens naar een opslag account](./activity-log.md#legacy-collection-methods)

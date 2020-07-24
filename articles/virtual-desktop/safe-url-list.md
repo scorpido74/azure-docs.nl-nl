@@ -5,17 +5,17 @@ services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 07/10/2020
+ms.date: 07/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9b1bdfc326ff217e68785d823b4af046af3241b7
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 9f7a3b51afa11562123a280da8634e100a22e6b6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86225104"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075608"
 ---
-# <a name="safe-url-list"></a>Lijst met veilige URL'S
+# <a name="safe-url-list"></a>Lijst met veilige URL's
 
 U moet bepaalde Url's blok keren zodat uw Windows Virtual Desktop-implementatie goed werkt. In dit artikel vindt u een overzicht van deze Url's, zodat u weet welke items veilig zijn.
 
@@ -33,6 +33,7 @@ De virtuele Azure-machine die u maakt voor Windows Virtual Desktop moet toegang 
 |catalogartifact.azureedge.net|443|Azure Marketplace|AzureCloud|
 |kms.core.windows.net|1688|Windows-activering|Internet|
 |wvdportalstorageblob.blob.core.windows.net|443|Ondersteuning Azure-portal|AzureCloud|
+| 169.254.169.254 | 80 | [Azure instance meta data service-eind punt](../virtual-machines/windows/instance-metadata-service.md) | N.v.t. |
 
 >[!IMPORTANT]
 >Windows Virtual Desktop biedt nu ondersteuning voor de FQDN-tag. Zie [Azure Firewall gebruiken om Windows Virtual Desktop-implementaties te beveiligen](../firewall/protect-windows-virtual-desktop.md) voor meer informatie.
@@ -59,8 +60,8 @@ In de volgende tabel vindt u optionele URL's waar uw virtuele Azure-machines toe
 >U moet het jokerteken (*) gebruiken voor URL's met serviceverkeer. Als u liever geen * gebruikt voor agent-gerelateerd verkeer, dan kunt u als volgt URL's zonder jokers vinden:
 >
 >1. Registreer uw virtuele machines bij de Windows Virtual Desktop-hostgroep.
->2. Open **Logboeken**en ga naar **Windows logs**  >  **Application**  >  **WVD-agent** en zoek naar gebeurtenis-id 3702.
->3. Neem de URL's onder gebeurtenis-id 3702 op in uw whitelist. De URL's onder gebeurtenis-id 3702 zijn regiospecifiek. U moet het deblokkeren van het proces herhalen met de relevante Url's voor elke regio waarin u uw virtuele machines wilt implementeren.
+>2. Open **Logboeken**en ga naar **Windows logs**  >  **Application**  >  **WVD-agent** en zoek naar gebeurtenis-id 3701.
+>3. White List de Url's die u vindt onder gebeurtenis-ID 3701. De Url's onder gebeurtenis-ID 3701 zijn specifiek voor een regio. U moet het deblokkeren van het proces herhalen met de relevante Url's voor elke regio waarin u uw virtuele machines wilt implementeren.
 
 ## <a name="remote-desktop-clients"></a>Extern bureaublad-clients
 

@@ -11,11 +11,12 @@ ms.date: 01/29/2018
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: b984ee7ed662bf089e7bcb6fc7e948fb61ed1209
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b86610910ed532e737720bb3b83e773596987aba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81733219"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074682"
 ---
 # <a name="device-to-cloud-communications-guidance"></a>Communicatie richtlijnen voor apparaat-naar-Cloud
 
@@ -31,7 +32,7 @@ Bij het verzenden van informatie van de apparaat-app naar de back-end van de opl
 
 Hier volgt een gedetailleerde vergelijking van de verschillende opties voor apparaat-naar-Cloud communicatie.
 
-|  | Apparaat-naar-cloud-berichten | De gerapporteerde eigenschappen van het apparaat dubbele | Uploads van bestanden |
+| Factor | Apparaat-naar-cloud-berichten | De gerapporteerde eigenschappen van het apparaat dubbele | Uploads van bestanden |
 | ---- | ------- | ---------- | ---- |
 | Scenario | Telemetrische time series en waarschuwingen. Bijvoorbeeld: 256-KB-sensor gegevens batches die elke vijf minuten worden verzonden. | Beschik bare mogelijkheden en voor waarden. Bijvoorbeeld de huidige connectiviteits modus voor apparaten, zoals mobiel of WiFi. Het synchroniseren van langlopende werk stromen, zoals configuratie-en software-updates. | Media bestanden. Grote (meestal gecomprimeerde) telemetrie-batches. |
 | Opslag en ophalen | Tijdelijk opgeslagen door IoT Hub, Maxi maal 7 dagen. Alleen sequentiële Lees bewerkingen. | Opgeslagen door IoT Hub op het dubbele apparaat. Kan worden opgehaald met behulp van de [IOT hub-query taal](iot-hub-devguide-query-language.md). | Opgeslagen in Azure Storage account van de gebruiker. |

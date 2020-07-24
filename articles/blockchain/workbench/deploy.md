@@ -1,15 +1,16 @@
 ---
 title: Azure Block Chain Workbench preview implementeren
 description: Azure Block Chain Workbench preview implementeren
-ms.date: 01/08/2020
+ms.date: 07/16/2020
 ms.topic: how-to
-ms.reviewer: brendal
-ms.openlocfilehash: aaef42f715c9f4fa2550f4a2468b42c5077af14c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.reviewer: ravastra
+ms.custom: references_regions
+ms.openlocfilehash: b46a35b45a51d0cc76942c4ca142c4c7792a28b4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85210759"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077023"
 ---
 # <a name="deploy-azure-blockchain-workbench-preview"></a>Azure Block Chain Workbench preview implementeren
 
@@ -45,7 +46,7 @@ De kosten van Block Chain Workbench zijn een samen vatting van de kosten van de 
 Azure Block Chain Workbench vereist Azure AD-configuratie-en-toepassings registraties. U kunt ervoor kiezen om de Azure AD- [configuraties hand matig](#azure-ad-configuration) te doen voordat u de implementatie uitvoert of u voert een script na de implementatie uit. Als u Block Chain Workbench opnieuw wilt implementeren, raadpleegt u [Azure AD-configuratie](#azure-ad-configuration) om uw Azure AD-configuratie te controleren.
 
 > [!IMPORTANT]
-> Workbench hoeft niet te worden geïmplementeerd in dezelfde Tenant als het account dat u gebruikt om een Azure AD-toepassing te registreren. Workbench moet worden geïmplementeerd in een Tenant waarvoor u voldoende machtigingen hebt voor het implementeren van resources. Zie [een Active Directory Tenant verkrijgen](../../active-directory/develop/quickstart-create-new-tenant.md) en [toepassingen integreren met Azure Active Directory](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)voor meer informatie over Azure AD-tenants.
+> Workbench hoeft niet te worden geïmplementeerd in dezelfde Tenant als het account dat u gebruikt om een Azure AD-toepassing te registreren. Workbench moet worden geïmplementeerd in een Tenant waarvoor u voldoende machtigingen hebt voor het implementeren van resources. Zie [een Active Directory Tenant verkrijgen](../../active-directory/develop/quickstart-create-new-tenant.md) en [toepassingen integreren met Azure Active Directory](../../active-directory/develop/quickstart-register-app.md)voor meer informatie over Azure AD-tenants.
 
 ## <a name="deploy-blockchain-workbench"></a>Block Chain Workbench implementeren
 
@@ -66,7 +67,7 @@ Zodra de vereiste stappen zijn voltooid, bent u klaar voor de implementatie van 
     | Wachtwoord | Het wacht woord wordt gebruikt om verbinding te maken met Vm's. |
     | SSH | Gebruik een open bare RSA-sleutel in de indeling met één regel die begint met **ssh-rsa** of gebruik de PEM-indeling met meerdere regels. U kunt SSH-sleutels genereren met behulp `ssh-keygen` van Linux en OS X, of met behulp van puttygen in Windows. Zie [SSH-sleutels gebruiken met Windows op Azure voor](../../virtual-machines/linux/ssh-from-windows.md)meer informatie over SSH-sleutels. |
     | Data Base-en block Chain-wacht woord | Geef het wacht woord op dat moet worden gebruikt voor toegang tot de data base die is gemaakt als onderdeel van de implementatie. Het wacht woord moet aan drie van de volgende vier vereisten voldoen: de lengte moet tussen 12 & 72 tekens, 1 kleine letter, 1 hoofd letter, 1 cijfer en 1 speciaal teken zijn dat geen hekje (#), procent (%), komma (,), ster (*), back-quote ( \` ), dubbele aanhalings tekens ("), één aanhalings teken (), streepje (-) en semicolumn (;) |
-    | Implementatie regio | Geef op waar u Block Chain Workbench-resources wilt implementeren. Voor de beste Beschik baarheid moet dit overeenkomen met de **locatie** -instelling. |
+    | Implementatie regio | Geef op waar u Block Chain Workbench-resources wilt implementeren. Voor de beste Beschik baarheid moet dit overeenkomen met de instelling voor de **regio** locatie. Niet alle regio's zijn beschikbaar tijdens de preview-versie. Functies zijn mogelijk niet beschikbaar in sommige regio's. Azure Block Chain Data Manager is beschikbaar in de volgende Azure-regio's: VS-Oost en Europa-west.|
     | Abonnement | Geef het Azure-abonnement op dat u wilt gebruiken voor uw implementatie. |
     | Resourcegroepen | Maak een nieuwe resource groep door **Nieuw maken** te selecteren en geef een unieke naam op voor de resource groep. |
     | Locatie | Geef de regio op waarvoor u het Framework wilt implementeren. |
@@ -106,7 +107,7 @@ Zodra de vereiste stappen zijn voltooid, bent u klaar voor de implementatie van 
      | Azure Active Directory-instellingen | Kies **later toevoegen**.</br>Opmerking: als u ervoor kiest om [Azure AD vooraf te configureren of opnieuw](#azure-ad-configuration) te implementeren, kiest u *nu toevoegen*. |
      | VM selecteren | Selecteer voorkeurs opslag prestaties en VM-grootte voor uw Block chain-netwerk. Kies een kleinere VM-grootte, zoals *Standard ds1 v2* als u een abonnement hebt met lage service limieten, zoals de gratis laag van Azure. |
 
-1. Selecteer **OK** om de geavanceerde instellingen te volt ooien.
+1. Selecteer **beoordeling + maken** om geavanceerde instellingen te volt ooien.
 
 1. Bekijk de samen vatting om te controleren of de para meters juist zijn.
 
@@ -281,7 +282,7 @@ Zodra Azure Block Chain Workbench is geïmplementeerd, moet u de **antwoord-URL*
 1. Controleer of u zich in de Tenant bevindt waarin u de Azure AD-client toepassing hebt geregistreerd.
 1. Selecteer in het navigatiedeelvenster aan de linkerkant de **Azure Active Directory**-service. Selecteer **App-registraties**.
 1. Selecteer de Azure AD-client toepassing die u hebt geregistreerd in de sectie vereisten.
-1. Selecteer **verificatie**.
+1. Selecteer **Verificatie**.
 1. Geef de web-URL op van de Azure Block Chain Workbench-implementatie die u hebt opgehaald in de sectie [Block Chain Workbench web URL](#blockchain-workbench-web-url) . De antwoord-URL wordt voorafgegaan door `https://` . Bijvoorbeeld: `https://myblockchain2-7v75.azurewebsites.net`
 
     ![Antwoord-Url's voor verificatie](media/deploy/configure-reply-url.png)

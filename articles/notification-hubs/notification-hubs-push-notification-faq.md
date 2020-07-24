@@ -15,12 +15,12 @@ ms.date: 11/13/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: 0fe4ae76645ec2a0ae8aae93b9db987ece9a45b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85ebb7f5ac52f4eea25f9e6f1a2b1b5ac6f4caa5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255123"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077918"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Push meldingen met Azure Notification Hubs: veelgestelde vragen
 
@@ -138,7 +138,7 @@ Registraties van de back-end van de app zijn handig wanneer u clients moet verif
 
 ### <a name="what-is-the-push-notification-delivery-security-model"></a>Wat is het beveiligings model voor levering van push meldingen?
 
-Azure Notification Hubs gebruikt een op hand tekening gebaseerd beveiligings model op basis van een [gedeelde toegang](../storage/common/storage-dotnet-shared-access-signature-part-1.md). U kunt de tokens voor Shared Access Signature gebruiken op het niveau van de hoofd naam ruimte of op het niveau van de onderliggend notification hub. Shared Access Signature-tokens kunnen worden ingesteld op het volgen van verschillende autorisatie regels, bijvoorbeeld om bericht machtigingen te verzenden of om te Luis teren naar meldings machtigingen. Zie het document [Notification hubs security model] voor meer informatie.
+Azure Notification Hubs gebruikt een op hand tekening gebaseerd beveiligings model op basis van een [gedeelde toegang](../storage/common/storage-sas-overview.md). U kunt de tokens voor Shared Access Signature gebruiken op het niveau van de hoofd naam ruimte of op het niveau van de onderliggend notification hub. Shared Access Signature-tokens kunnen worden ingesteld op het volgen van verschillende autorisatie regels, bijvoorbeeld om bericht machtigingen te verzenden of om te Luis teren naar meldings machtigingen. Zie het document [Notification hubs security model] voor meer informatie.
 
 ### <a name="how-should-i-handle-sensitive-payload-in-push-notifications"></a>Hoe kan ik een gevoelige Payload in push meldingen afhandelen?
 
@@ -195,7 +195,7 @@ U kunt ook programmatisch toegang krijgen tot metrische gegevens. Raadpleeg voor
 
 - [Azure monitor metrische gegevens ophalen met .net](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/). In dit voor beeld worden de gebruikers naam en het wacht woord gebruikt. Als u een certificaat wilt gebruiken, overbelast u de FromServicePrincipal-methode om een certificaat op te geven, zoals wordt weer gegeven in [dit voor beeld](https://github.com/Azure/azure-libraries-for-net/blob/master/src/ResourceManagement/ResourceManager/Authentication/AzureCredentialsFactory.cs). 
 - [Metrische gegevens en activiteiten logboeken voor een resource ophalen](https://azure.microsoft.com/resources/samples/monitor-dotnet-query-metrics-activitylogs/)
-- [Azure monitoring REST API-overzicht](../azure-monitor/platform/rest-api-walkthrough.md)
+- [Azure Monitoring REST API-overzicht](../azure-monitor/platform/rest-api-walkthrough.md)
 
 > [!NOTE]
 > Geslaagde meldingen betekenen gewoon dat push meldingen zijn bezorgd bij de externe PNS (bijvoorbeeld APNs voor iOS en macOS of FCM voor Android-apparaten). Het is de verantwoordelijkheid van de PNS om de meldingen te leveren aan doel apparaten. Normaal gesp roken worden door de PNS geen metrische gegevens over levering aan derden blootgesteld.  
@@ -203,15 +203,15 @@ U kunt ook programmatisch toegang krijgen tot metrische gegevens. Raadpleeg voor
 [Azure-portal]: https://portal.azure.com
 [Notification Hubs prijzen]: https://azure.microsoft.com/pricing/details/notification-hubs/
 [Notification Hubs SLA]: https://azure.microsoft.com/support/legal/sla/
-[REST API's voor Notification Hubs]: https://msdn.microsoft.com/library/azure/dn530746.aspx
+[REST API's voor Notification Hubs]: /previous-versions/azure/reference/dn530746(v=azure.100)
 [Mobile Services Pricing]: https://azure.microsoft.com/pricing/details/mobile-services/
-[Hulp bij het registreren van back-end]: https://msdn.microsoft.com/library/azure/dn743807.aspx
-[Hulp bij het registreren van back-end 2]: https://msdn.microsoft.com/library/azure/dn530747.aspx
-[Notification Hubs beveiligings model]: https://msdn.microsoft.com/library/azure/dn495373.aspx
-[Notification Hubs Secure push-zelf studie]: https://azure.microsoft.com/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/
-[Notification Hubs probleem oplossing]: https://azure.microsoft.com/documentation/articles/notification-hubs-diagnosing/
+[Hulp bij het registreren van back-end]: /previous-versions/azure/azure-services/dn743807(v=azure.100)
+[Hulp bij het registreren van back-end 2]: /previous-versions/azure/azure-services/dn530747(v=azure.100)
+[Notification Hubs beveiligings model]: /previous-versions/azure/azure-services/dn495373(v=azure.100)
+[Notification Hubs Secure push-zelf studie]: ./notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md
+[Notification Hubs probleem oplossing]: ./notification-hubs-push-notification-fixer.md
 [Notification Hubs metrische gegevens]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
-[Registraties exporteren/importeren]: https://docs.microsoft.com/azure/notification-hubs/export-modify-registrations-bulk
+[Registraties exporteren/importeren]: ./export-modify-registrations-bulk.md
 [Azure-portal]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples
 [App Service Pricing]: https://azure.microsoft.com/pricing/details/app-service/

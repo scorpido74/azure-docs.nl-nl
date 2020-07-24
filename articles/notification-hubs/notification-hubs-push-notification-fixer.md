@@ -16,11 +16,12 @@ ms.date: 02/25/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/04/2019
-ms.openlocfilehash: 1f3c16e6fe1855cf7882d83e620c70d15ce3cb92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3bad65dbecd6e4a7d9bcb7fbdee6faafc31ead86
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77657531"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078025"
 ---
 # <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>Problemen met verwijderde meldingen in azure Notification Hubs vaststellen
 
@@ -103,7 +104,7 @@ Elke batch wordt verzonden naar de Push Notification Service, die op zijn beurt 
 
 In dit geval wordt de fout registratie verwijderd uit de data base. Vervolgens wordt de meldings levering voor de rest van de apparaten in die batch opnieuw geprobeerd.
 
-Als u meer informatie wilt over de mislukte bezorgings poging voor een registratie, kunt u de Notification Hubs REST-Api's [per bericht-telemetrie gebruiken: Ontvang een telemetrie-meldings bericht](https://docs.microsoft.com/rest/api/notificationhubs/get-notification-message-telemetry) en [PNS feedback](https://msdn.microsoft.com/library/azure/mt705560.aspx). Zie de [rest-voor beeld verzenden](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/)voor een voorbeeld code.
+Als u meer informatie wilt over de mislukte bezorgings poging voor een registratie, kunt u de Notification Hubs REST-Api's [per bericht-telemetrie gebruiken: Ontvang een telemetrie-meldings bericht](/rest/api/notificationhubs/get-notification-message-telemetry) en [PNS feedback](/previous-versions/azure/reference/mt705560(v=azure.100)). Zie de [rest-voor beeld verzenden](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/)voor een voorbeeld code.
 
 ## <a name="push-notification-service-issues"></a>Problemen met Push Notification Service
 
@@ -125,7 +126,7 @@ Hier vindt u de paden voor het vaststellen van de hoofd oorzaak van verwijderde 
 
 #### <a name="push-notification-service-developer-portal"></a>Service ontwikkelaars portal voor push meldingen
 
-Controleer de referenties in de respectieve Push Notification Service Developer-Portal (APNs, FCM, Windows Notification Service, enzovoort). Zie [zelf studie: meldingen verzenden naar universeel Windows-platform-apps met behulp van Azure notification hubs](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification)voor meer informatie.
+Controleer de referenties in de respectieve Push Notification Service Developer-Portal (APNs, FCM, Windows Notification Service, enzovoort). Zie [zelf studie: meldingen verzenden naar universeel Windows-platform-apps met behulp van Azure notification hubs](./notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)voor meer informatie.
 
 #### <a name="azure-portal"></a>Azure Portal
 
@@ -162,7 +163,7 @@ U kunt de pagina **verzenden testen** gebruiken om een bericht voor een test mel
 ![Visual Studio: verzenden testen](./media/notification-hubs-push-notification-fixer/test-send-vs.png)
 
 > [!NOTE]
-> Gebruik Visual Studio om alleen registraties te bewerken tijdens ontwikkeling/testen en met een beperkt aantal registraties. Als u uw registraties in bulk wilt bewerken, kunt u overwegen om de registratie functionaliteit voor exporteren en importeren te gebruiken die wordt beschreven in [How to: registraties bulksgewijs exporteren en wijzigen](https://msdn.microsoft.com/library/dn790624.aspx).
+> Gebruik Visual Studio om alleen registraties te bewerken tijdens ontwikkeling/testen en met een beperkt aantal registraties. Als u uw registraties in bulk wilt bewerken, kunt u overwegen om de registratie functionaliteit voor exporteren en importeren te gebruiken die wordt beschreven in [How to: registraties bulksgewijs exporteren en wijzigen](/previous-versions/azure/azure-services/dn790624(v=azure.100)).
 
 #### <a name="service-bus-explorer"></a>Service Bus Explorer
 
@@ -184,7 +185,7 @@ U kunt ook test meldingen verzenden vanuit Visual Studio.
 
 Zie de volgende artikelen voor meer informatie over het gebruik van Notification Hubs met Visual Studio Server Explorer:
 
-* [Apparaatregistratie voor notification hubs weer geven](https://docs.microsoft.com/previous-versions/windows/apps/dn792122(v=win.10))
+* [Apparaatregistratie voor notification hubs weer geven](/previous-versions/windows/apps/dn792122(v=win.10))
 * [Grondige kennis: Visual Studio 2013 update 2 RC en Azure SDK 2,3]
 * [Aankondiging van de release van Visual Studio 2013 update 3 en Azure SDK 2,4]
 
@@ -265,7 +266,7 @@ In de portal kunt u een snel overzicht krijgen van alle activiteiten in uw notif
 
 #### <a name="programmatic-access"></a>Toegang op programmeerniveau
 
-Zie [programmatische toegang](https://docs.microsoft.com/previous-versions/azure/azure-services/dn458823(v=azure.100))voor meer informatie over toegang via een programma.
+Zie [programmatische toegang](/previous-versions/azure/azure-services/dn458823(v=azure.100))voor meer informatie over toegang via een programma.
 
 > [!NOTE]
 > Verschillende telemetrie-gerelateerde functies, zoals het exporteren en importeren van registraties en telemetrie-toegang via Api's, zijn alleen beschikbaar voor de Standard-servicelaag. Als u deze functies probeert te gebruiken vanuit de laag gratis of Basic, ontvangt u een uitzonderings bericht als u de SDK gebruikt. U ontvangt een HTTP-fout 403 (verboden) als u de functies rechtstreeks vanuit de REST-Api's gebruikt.
@@ -287,13 +288,13 @@ Zie [programmatische toegang](https://docs.microsoft.com/previous-versions/azure
 <!-- LINKS -->
 [Overzicht van Notification Hubs]: notification-hubs-push-notification-overview.md
 [Aan de slag met Azure Notification Hubs]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
-[Sjablonen]: https://msdn.microsoft.com/library/dn530748.aspx
+[Sjablonen]: /previous-versions/azure/azure-services/dn530748(v=azure.100)
 [Overzicht van APNs]: https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html
 [Over FCM-berichten]: https://firebase.google.com/docs/cloud-messaging/concept-options
-[Export and modify registrations in bulk]: https://msdn.microsoft.com/library/dn790624.aspx
+[Export and modify registrations in bulk]: /previous-versions/azure/azure-services/dn790624(v=azure.100)
 [Service Bus Explorer code]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Explorer-f2abca5a
-[View device registrations for notification hubs]: https://msdn.microsoft.com/library/windows/apps/xaml/dn792122.aspx
+[View device registrations for notification hubs]: /previous-versions/windows/apps/dn792122(v=win.10)
 [Grondige kennis: Visual Studio 2013 update 2 RC en Azure SDK 2,3]: https://azure.microsoft.com/blog/2014/04/09/deep-dive-visual-studio-2013-update-2-rc-and-azure-sdk-2-3/#NotificationHubs
 [Aankondiging van de release van Visual Studio 2013 update 3 en Azure SDK 2,4]: https://azure.microsoft.com/blog/2014/08/04/announcing-release-of-visual-studio-2013-update-3-and-azure-sdk-2-4/
-[EnableTestSend]: https://docs.microsoft.com/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.enabletestsend?view=azure-dotnet
-[Programmatic telemetry access]: https://msdn.microsoft.com/library/azure/dn458823.aspx
+[EnableTestSend]: /dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.enabletestsend?view=azure-dotnet
+[Programmatic telemetry access]: /previous-versions/azure/azure-services/dn458823(v=azure.100)

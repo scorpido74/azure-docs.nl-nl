@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 07/09/2020
-ms.openlocfilehash: da09cb8aa112cdf927c1a67401ab3f6a92e85ece
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 59d19bd2a1dca2a3bc3c6ec3aee9e63b8f12b5d3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86225114"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075175"
 ---
 # <a name="cognitive-services-docs-whats-new-for-june-1-2020---june-30-2020"></a>Cognitive Services documenten: wat is er nieuw voor 1 juni 2020 tot en met 30 juni 2020
 
@@ -35,7 +35,7 @@ Welkom bij wat er nieuw is in de Cognitive Services docs van 1 juni 2020 tot en 
 
 ### <a name="new-articles"></a>Nieuwe artikelen
 
-- [Snelstartgids: de client bibliotheek voor de insluitende lezer gebruiken](/azure/cognitive-services/immersive-reader/quickstarts/client-libraries)
+- [Quickstart: Gebruik de clientbibliotheek voor de Insluitende lezer](/azure/cognitive-services/immersive-reader/quickstarts/client-libraries)
 
 ## <a name="luis"></a>LUIS
 
@@ -45,8 +45,8 @@ Welkom bij wat er nieuw is in de Cognitive Services docs van 1 juni 2020 tot en 
 - [Continue integratie en doorlopende leverings werk stromen voor LUIS DevOps](/azure/cognitive-services/luis/luis-concept-devops-automation)
 - [DevOps-procedures voor LUIS](/azure/cognitive-services/luis/luis-concept-devops-sourcecontrol)
 - [Testen op LUIS DevOps](/azure/cognitive-services/luis/luis-concept-devops-testing)
-- [Snelstartgids: gebruik krul en REST om het doel te verkrijgen](/azure/cognitive-services/luis/luis-get-started-rest-get-intent)
-- [Snelstartgids: gebruik krul en REST om het model te wijzigen](/azure/cognitive-services/luis/luis-get-started-rest-get-model)
+- [Quickstart: cURL en REST gebruiken om intent op te halen](/azure/cognitive-services/luis/luis-get-started-rest-get-intent)
+- [Quickstart: cURL en REST gebruiken om een model te veranderen](/azure/cognitive-services/luis/luis-get-started-rest-get-model)
 - [DevOps Toep assen op het ontwikkelen van LUIS-apps met behulp van GitHub-acties](/azure/cognitive-services/luis/luis-how-to-devops-with-github)
 
 ### <a name="updated-articles"></a>Bijgewerkte artikelen
@@ -69,16 +69,16 @@ Welkom bij wat er nieuw is in de Cognitive Services docs van 1 juni 2020 tot en 
 ### <a name="new-articles"></a>Nieuwe artikelen
 
 - [Concepten van aangepaste opdrachten](/azure/cognitive-services/speech-service/custom-commands-references)
-- [Bevestigingen toevoegen aan een opdracht](/azure/cognitive-services/speech-service/how-to-custom-commands-add-confirmations)
-- [Para meter als externe catalogus entiteit configureren](/azure/cognitive-services/speech-service/how-to-custom-commands-add-external-catalog-string-entity)
+- [Bevestigingen toevoegen aan een opdracht](/azure/cognitive-services/speech-service/how-to-custom-commands-add-interaction-rules#add-confirmations-to-a-command)
+- [Para meter als externe catalogus entiteit configureren](/azure/cognitive-services/speech-service/how-to-custom-commands-add-parameter-configuration#configure-parameter-as-external-catalog-entity)
 - [Sjablonen voor het genereren van talen gebruiken voor spraak reacties](/azure/cognitive-services/speech-service/how-to-custom-commands-add-language-generation-templates)
-- [Correcties implementeren in een opdracht](/azure/cognitive-services/speech-service/how-to-custom-commands-add-one-step-correction)
+- [Correcties implementeren in een opdracht](/azure/cognitive-services/speech-service/how-to-custom-commands-add-parameter-configuration)
 - [Parameters toevoegen aan opdrachten](/azure/cognitive-services/speech-service/how-to-custom-commands-add-parameters-to-commands)
-- [Eenvoudige opdrachten toevoegen](/azure/cognitive-services/speech-service/how-to-custom-commands-add-simple-commands)
-- [Validaties toevoegen aan aangepaste opdracht parameters](/azure/cognitive-services/speech-service/how-to-custom-commands-add-validations)
-- [Een toepassing voor aangepaste opdrachten maken](/azure/cognitive-services/speech-service/how-to-custom-commands-create-empty-project)
+- [Eenvoudige opdrachten toevoegen](/azure/cognitive-services/speech-service/how-to-custom-commands-create-application-with-simple-commands)
+- [Validaties toevoegen aan aangepaste opdracht parameters](/azure/cognitive-services/speech-service/how-to-custom-commands-add-parameter-configuration#add-validation-to-parameters)
+- [Een toepassing voor aangepaste opdrachten maken](/azure/cognitive-services/speech-service/how-to-custom-commands-create-application-with-simple-commands#create-empty-application)
 - [CI/CD voor Custom Speech](/azure/cognitive-services/speech-service/how-to-custom-speech-continuous-integration-continuous-deployment)
-- [Een end-to-end-assistent maken met aangepaste opdrachten](/azure/cognitive-services/speech-service/quickstart-custom-commands-e2e-application)
+- [Een end-to-end-assistent maken met aangepaste opdrachten](/azure/cognitive-services/speech-service/quickstart-custom-commands-application)
 - [Snelstartgids: een model testen met behulp van een audio bestand in speech Studio](/azure/cognitive-services/speech-service/quickstarts/speech-studio-test-model)
 - [Meer informatie over de basis beginselen van Speaker Recognition](/azure/cognitive-services/speech-service/speaker-recognition-basics)
 - [Wat is de Azure Speaker Recognition-service?](/azure/cognitive-services/speech-service/speaker-recognition-overview)
@@ -89,18 +89,18 @@ Welkom bij wat er nieuw is in de Cognitive Services docs van 1 juni 2020 tot en 
 - [Wat is batch-transcriptie?](/azure/cognitive-services/speech-service/batch-transcription)
 - [Taal-en spraak ondersteuning voor de spraak service](/azure/cognitive-services/speech-service/language-support)
 
-## <a name="text-analytics"></a>Tekstanalyse
+## <a name="text-analytics"></a>Text Analytics
 
 ### <a name="updated-articles"></a>Bijgewerkte artikelen
 
-- [Snelstartgids: Go gebruiken om de Text Analytics Cognitive Service aan te roepen](/azure/cognitive-services/text-analytics/quickstarts/go)
-- [Snelstartgids: Java gebruiken om de service Azure Text Analytics cognitieve aan te roepen](/azure/cognitive-services/text-analytics/quickstarts/java)
-- [Snelstartgids: Node.js gebruiken om de Text Analytics cognitieve service aan te roepen](/azure/cognitive-services/text-analytics/quickstarts/nodejs)
+- [Quickstart: Go gebruiken om de Text Analytics Cognitive Service aan te roepen](/azure/cognitive-services/text-analytics/quickstarts/go)
+- [Quickstart: Java gebruiken om de Text Analytics Cognitive Service van Azure aan te roepen](/azure/cognitive-services/text-analytics/quickstarts/java)
+- [Quickstart: Node.js gebruiken om de Text Analytics Cognitive Service aan te roepen](/azure/cognitive-services/text-analytics/quickstarts/nodejs)
 - [Quickstart: PHP gebruiken om de Text Analytics Cognitive Service aan te roepen](/azure/cognitive-services/text-analytics/quickstarts/php)
-- [Quick Start: de python-REST API gebruiken om de Text Analytics cognitieve service aan te roepen](/azure/cognitive-services/text-analytics/quickstarts/python)
-- [Snelstart: Ruby gebruiken om de Text Analytics Cognitive Service aan te roepen](/azure/cognitive-services/text-analytics/quickstarts/ruby)
+- [Quickstart: De Python REST API gebruiken om de Text Analytics Cognitive Service aan te roepen](/azure/cognitive-services/text-analytics/quickstarts/python)
+- [Quickstart: Ruby gebruiken om de Text Analytics Cognitive Service aan te roepen](/azure/cognitive-services/text-analytics/quickstarts/ruby)
 
-## <a name="translator"></a>Vertaler
+## <a name="translator"></a>Translator
 
 ### <a name="updated-articles"></a>Bijgewerkte artikelen
 

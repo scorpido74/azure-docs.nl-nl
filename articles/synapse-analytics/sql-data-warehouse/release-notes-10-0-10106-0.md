@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 6af05a6c17253a2032f493a7d2cd6254dafd352c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4873c1c998f62b6180df73a04852704665a4125d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831417"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075829"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Release opmerkingen bij Azure Synapse Analytics
 
@@ -28,7 +28,6 @@ In dit artikel vindt u een overzicht van de nieuwe functies en verbeteringen in 
 Wanneer er nieuwe functies zijn geïmplementeerd in alle regio's, controleert u de versie die is geïnstalleerd in uw exemplaar en de meest recente release opmerkingen voor de beschik baarheid van functies. Als u de versie wilt controleren, maakt u verbinding met uw SQL-groep via SQL Server Management Studio (SSMS) en voert `SELECT @@VERSION;` u uit om de huidige versie te retour neren. Gebruik deze versie om te controleren welke release is toegepast op de SQL-groep. De datum in de uitvoer geeft de maand aan voor de release die wordt toegepast op de SQL-groep. Dit is alleen van toepassing op verbeteringen op service niveau. 
 
 Zorg ervoor dat de juiste versie is geïnstalleerd in de opmerking bij de release voor hulp bij het maken van verbeteringen. 
-
 
 > [!NOTE]
 > De product naam die is geretourneerd door SELECT @ @VERSION , wordt gewijzigd van Microsoft Azure SQL Data Warehouse naar Microsoft Azure Synapse Analytics. Er wordt een geavanceerde kennisgeving verzonden voordat de wijziging wordt doorgevoerd. Deze wijziging is van belang voor klanten die de product naam uit het resultaat van SELECT @ @VERSION in hun toepassings code hebben geparseerd. Als u wijzigingen in de toepassings code wilt voor komen door het product opnieuw in te stellen, gebruikt u deze opdrachten om server Property te zoeken naar de product naam en-versie van de Data Base: om versie nummer XX te retour neren. X. XXXXX. X (zonder product naam) gebruik deze opdracht:
@@ -42,11 +41,13 @@ Zorg ervoor dat de juiste versie is geïnstalleerd in de opmerking bij de releas
 > ```
 
 ## <a name="july-2020"></a>Juli 2020
+
 | Service verbeteringen | Details |
 | --- | --- |
 |**Versleuteling op kolom niveau (open bare preview)**|Beveilig gevoelige informatie in uw Synapse SQL Data Warehouse door symmetrische versleuteling toe te passen op een kolom met gegevens met behulp van Transact-SQL. Versleuteling op kolom niveau heeft ingebouwde functies die u kunt gebruiken om gegevens te versleutelen met behulp van symmetrische sleutels die verder worden beveiligd met een certificaat, wacht woord, symmetrische sleutel of asymmetrische sleutel. Ga voor meer informatie naar [een kolom met gegevens versleutelen](/sql/relational-databases/security/encryption/encrypt-a-column-of-data?view=azure-sqldw-latest).|
 |**Ondersteuning voor compatibiliteits niveau (GA)**|Met deze release kunnen gebruikers nu het compatibiliteits niveau van een Data Base instellen om de Transact-SQL-taal en het verwerkings gedrag van query's te verkrijgen van een specifieke versie van de Synapse SQL-engine. Zie [sys. database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) en [ALTER data base scoped Configuration](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)(Engelstalig) voor meer informatie.|
 |**Beveiliging op rijniveau**|Deze release bevat een verbetering voor update-en verwijderings bewerkingen op rijen waarop beveiliging op basis van een gebruikers beleid wordt afgedwongen. Met deze release, update-en verwijder bewerkingen met intrinsieke functies zoals is_rolemember, als de intrinsieke niet verwijst naar een kolom in de DML-doel tabel. Vóór deze verbetering is het mogelijk dat deze bewerkingen niet worden uitgevoerd omdat de onderliggende DML-bewerkingen zijn beperkt.|
+|**DBCC SHRINKDATABASE (GA)**|U kunt nu de grootte van de gegevens en logboek bestanden in de opgegeven Data Base verkleinen. Raadpleeg de [documentatie](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql?view=sql-server-ver15)voor meer informatie.|
 
 ## <a name="may-2020"></a>Mei 2020
 

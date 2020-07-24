@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ef1266b783034cf18dc2b3ea4be5ebc01bc12c70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7531a22d5b0f44fdaae837a75d17ea18852acf0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77024684"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077292"
 ---
 # <a name="set-up-dns-and-dhcp-applications-and-workloads-in-your-cloudsimple-private-cloud"></a>DNS-en DHCP-toepassingen en werk belastingen instellen in uw CloudSimple-Privécloud
 
@@ -32,5 +33,5 @@ Linux biedt verschillende pakketten voor het instellen van DNS-servers.  Hier vo
 
 In deze micro soft-onderwerpen wordt beschreven hoe u een Windows-Server als een DNS-server en als een DHCP-server instelt.
 
-* [Windows Server als DNS-server](https://docs.microsoft.com/windows-server/networking/dns/dns-top)
-* [Windows Server als DHCP-server](https://docs.microsoft.com/windows-server/networking/technologies/dhcp/dhcp-top)
+* [Windows Server als DNS-server](/windows-server/networking/dns/dns-top)
+* [Windows Server als DHCP-server](/windows-server/networking/technologies/dhcp/dhcp-top)

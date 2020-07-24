@@ -11,12 +11,12 @@ ms.date: 07/12/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2b7e980f2ffd31bd10b481fe4fc8e0617c40717a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3c8d78c164cefbab03d9d3fa783c75ded9773d38
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85205081"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075818"
 ---
 # <a name="geo-restore-for-sql-pool"></a>Geo-herstel voor SQL-groep
 
@@ -36,7 +36,7 @@ Gebruik de cmdlet [Get-AzSqlDatabaseGeoBackup](/powershell/module/az.sql/get-azs
 > U kunt een geo-herstel bewerking uitvoeren op Gen2. Als u dit wilt doen, geeft u een Gen2 ServiceObjectiveName op (bijvoorbeeld DW1000**c**) als een optionele para meter.
 >
 
-1. Voordat u begint, moet u ervoor zorgen dat u [Azure PowerShell installeert](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+1. Voordat u begint, moet u ervoor zorgen dat u [Azure PowerShell installeert](/powershell/azure/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 2. Open PowerShell.
 3. Maak verbinding met uw Azure-account en vermeld alle abonnementen die aan uw account zijn gekoppeld.
 4. Selecteer het abonnement dat het Data Warehouse bevat dat moet worden hersteld.
@@ -77,7 +77,7 @@ De herstelde data base wordt TDE ingeschakeld als de bron database TDE is ingesc
 Volg de onderstaande stappen om een SQL-groep te herstellen vanuit een geo-back-up:
 
 1. Meld u aan bij uw [Azure Portal](https://portal.azure.com/) -account.
-2. Klik op **+ een resource maken**.
+2. Klik op **+ Een resource maken**.
 
    ![Nieuwe DW](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
 
@@ -89,7 +89,7 @@ Volg de onderstaande stappen om een SQL-groep te herstellen vanuit een geo-back-
 
    ![Basisbeginselen](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
 
-5. Selecteer voor het gebruik van de para meter **bestaande gegevens** **back-up** en selecteer de juiste back-up in de opties omlaag schuiven. Klik op **beoordeling + maken**.
+5. Selecteer voor het gebruik van de para meter **bestaande gegevens** **back-up** en selecteer de juiste back-up in de opties omlaag schuiven. Klik op **Controleren + maken**.
 
    ![Back-up](./media/sql-data-warehouse-restore-from-geo-backup/georestore-select.png)
 

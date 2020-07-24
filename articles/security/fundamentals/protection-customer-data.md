@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2018
+ms.date: 07/10/2020
 ms.author: terrylan
-ms.openlocfilehash: d723e60afe543808c88b1ae040e2979412ff324c
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 4f3b4b5e26c8feab44a01d3714c194eee0fc98e9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86273469"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076288"
 ---
 # <a name="azure-customer-data-protection"></a>Azure-klant gegevens beveiliging   
 De toegang tot klant gegevens door micro soft Operations en het ondersteunings personeel wordt standaard geweigerd. Wanneer er toegang wordt verleend tot gegevens met betrekking tot een ondersteunings aanvraag, wordt deze alleen verleend met behulp van een just-in-time-model (JIT) met behulp van beleids regels die worden gecontroleerd en gecontroleerd aan de hand van het nalevings-en privacybeleid beleid.  De vereisten voor toegangs beheer worden vastgesteld door het volgende Azure-beveiligings beleid:

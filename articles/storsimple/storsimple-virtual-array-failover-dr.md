@@ -15,11 +15,12 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b864cc8bc0e5d39967a2307bd98bda082b6cfd5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05f31993b7491dbfb0bff46c8fd2362b6bab0d4e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515217"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077793"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Herstel na noodgevallen en failover van apparaat voor virtuele StorSimple-array via Azure-portal
 
@@ -121,12 +122,12 @@ Voer de volgende stappen uit om het apparaat te herstellen naar een virtueel Sto
 
 5. Op de Blade **deactiveren** wordt u gevraagd om bevestiging. Het deactiveren van het apparaat is een *permanent* proces dat niet ongedaan kan worden gemaakt. U wordt ook gevraagd om uw shares/volumes offline te halen op de host. Typ de naam van het apparaat dat u wilt bevestigen en klik op **deactiveren**.
    
-    ![](./media/storsimple-virtual-array-failover-dr/failover1.png)
+    ![Scherm afbeelding van de Blade deactiveren. Het vak apparaatnaam is ingevuld en de knop deactiveren is gemarkeerd.](./media/storsimple-virtual-array-failover-dr/failover1.png)
 6. Het deactiveren wordt gestart. U ontvangt een melding nadat de activering is voltooid.
    
-    ![](./media/storsimple-virtual-array-failover-dr/failover2.png)
+    ![Scherm opname van een voortgangs balk die aangeeft dat het apparaat wordt gedeactiveerd.](./media/storsimple-virtual-array-failover-dr/failover2.png)
 7. Op de pagina apparaten wordt de status van het apparaat nu gewijzigd in **gedeactiveerd**.
-    ![](./media/storsimple-virtual-array-failover-dr/failover3.png)
+    ![Scherm afbeelding van de pagina apparaten. De eigenschappen van het gedeactiveerde apparaat worden weer gegeven, inclusief de status, die wordt weer gegeven als gedeactiveerd.](./media/storsimple-virtual-array-failover-dr/failover3.png)
 8. Selecteer op de Blade **apparaten** het gedeactiveerde bron apparaat voor failover. 
 9. Klik op de Blade van het **dash board apparaat** op **failover**. 
 10. Ga als volgt te werk op de Blade **failover van apparaat** :
@@ -139,22 +140,22 @@ Voer de volgende stappen uit om het apparaat te herstellen naar een virtueel Sto
 
     4. Klik op **failover**.
     
-        ![](./media/storsimple-virtual-array-failover-dr/failover4.png)
+        ![Scherm opname van de Blade failover van apparaat, waarbij het bron-en doel apparaat is ingevuld, de optie ingeschakeld en de knop failover is gemarkeerd.](./media/storsimple-virtual-array-failover-dr/failover4.png)
 11. Een failover-taak wordt gestart en er wordt een melding weer gegeven. Ga naar **apparaten > taken** om de failover te controleren.
     
-     ![](./media/storsimple-virtual-array-failover-dr/failover5.png)
+     ![Scherm opname van een voortgangs balk die aangeeft dat er een failover voor het apparaat wordt uitgevoerd.](./media/storsimple-virtual-array-failover-dr/failover5.png)
 12. Op de Blade **taken** ziet u een failover-taak die is gemaakt voor het bron apparaat. Met deze taak worden de voor spellingen van DR uitgevoerd.
     
-    ![](./media/storsimple-virtual-array-failover-dr/failover6.png)
+    ![Scherm afbeelding die laat zien dat een failover-taak is gestart.](./media/storsimple-virtual-array-failover-dr/failover6.png)
     
      Nadat de DR-controle is geslaagd, worden met de failover-taak herstel taken voor elk share/volume dat op uw bron apparaat bestaat.
     
-    ![](./media/storsimple-virtual-array-failover-dr/failover7.png)
+    ![Scherm opname met de details van de failover-taak, zoals de status, het apparaat en de duur.](./media/storsimple-virtual-array-failover-dr/failover7.png)
 13. Nadat de failover is voltooid, gaat u naar de Blade **apparaten** .
     
     1. Selecteer en klik op het StorSimple-apparaat dat is gebruikt als doel apparaat voor het failoverproces.
     2. Ga naar **instellingen > beheer > shares** (of **volumes** als iSCSI-server). Op de Blade **shares** kunt u alle shares (volumes) van het oude apparaat weer geven.
-        ![](./media/storsimple-virtual-array-failover-dr/failover9.png)
+        ![Scherm opname van de Blade apparaten. Het doel apparaat wordt weer gegeven met de status online.](./media/storsimple-virtual-array-failover-dr/failover9.png)
 14. U moet [een DNS-alias maken](https://support.microsoft.com/kb/168322) zodat alle toepassingen die verbinding proberen te maken, kunnen worden omgeleid naar het nieuwe apparaat.
 
 ## <a name="errors-during-dr"></a>Fouten tijdens DR

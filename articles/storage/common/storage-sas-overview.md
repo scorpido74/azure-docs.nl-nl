@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 07/17/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: b853817b670f59bbfeef9ecd81c70dc63cbd367b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 108dd37370290a68d620a61f84b4553ed59792ab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84804623"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077878"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Beperkte toegang verlenen tot Azure Storage-resources met behulp van Shared Access signatures (SAS)
 
@@ -109,7 +109,7 @@ De volgende aanbevelingen voor het gebruik van hand tekeningen voor gedeelde toe
 - **Definieer een opgeslagen toegangs beleid voor een service-SAS.** Opgeslagen toegangs beleid biedt u de mogelijkheid om machtigingen in te trekken voor een service-SA'S zonder dat u de sleutels van het opslag account opnieuw hoeft te genereren. Stel de verloop tijd in de toekomst (of oneindig) in en zorg ervoor dat deze regel matig wordt bijgewerkt om deze verder in de toekomst te verplaatsen.
 - **De bijna-termijn verloop tijden voor een ad-hoc SAS-service SAS of account-SA'S gebruiken.** Op deze manier, zelfs als er een SAS is aangetast, is deze alleen geldig voor een korte periode. Deze procedure is vooral belang rijk als u niet kunt verwijzen naar een opgeslagen toegangs beleid. De bijna-termijn verloop tijd beperkt ook de hoeveelheid gegevens die naar een BLOB kan worden geschreven door de beschik bare tijd voor het uploaden ervan te beperken.
 - **Laat clients automatisch de SA'S vernieuwen als dat nodig is.** Clients moeten de SA'S goed vernieuwen voordat het verloopt, om tijd te bieden voor nieuwe pogingen als de service die de SAS biedt, niet beschikbaar is. Als uw SAS is bedoeld om te worden gebruikt voor een klein aantal directe, korte, langdurige bewerkingen die naar verwachting binnen de verloop periode zullen worden voltooid, kan dit onnodig zijn omdat de SA'S niet naar verwachting worden verlengd. Als u echter een client hebt die regel matig aanvragen maakt via SAS, is het mogelijk dat de verval datum wordt afgespeeld. De belangrijkste overweging is om de nood zaak van de SA'S te verkorten (zoals eerder vermeld), met de nood zaak om ervoor te zorgen dat de client de vernieuwing vroeg genoeg aanvraagt (om onderbrekingen te voor komen vanwege de verstrijking van SAS vóór een geslaagde vernieuwing).
-- **Wees voorzichtig met de start tijd van SAS.** Als u de begin tijd voor een SAS op dit **moment**instelt, dan kan de eerste paar minuten afnemen als gevolg van de klok scheefheid (verschillen in de huidige tijd op basis van verschillende computers). In het algemeen stelt u de start tijd in op ten minste 15 minuten in het verleden. U kunt de service ook niet instellen, waardoor deze onmiddellijk in alle gevallen geldig is. Dit geldt ook voor verloop tijd. Vergeet niet dat u tot wel 15 minuten aan de hand van een wille keurige aanvraag kunt zien. Voor clients die gebruikmaken van een REST-versie van vóór 2012-02-12, is de maximale duur voor een SAS die niet verwijst naar een opgeslagen toegangs beleid, 1 uur en alle beleids regels die een langere termijn opgeven dan mislukt.
+- **Wees voorzichtig met de start tijd van SAS.** Als u de begin tijd voor een SAS instelt op de huidige tijd, worden er mogelijk fouten gezien die in de eerste paar minuten af en toe optreden vanwege verschillende computers met een kleine variatie op de huidige tijd (ook wel Clock scheefheid genoemd). In het algemeen stelt u de start tijd in op ten minste 15 minuten in het verleden. U kunt de service ook niet instellen, waardoor deze onmiddellijk in alle gevallen geldig is. Dit geldt ook voor verloop tijd. Vergeet niet dat u tot wel 15 minuten aan de hand van een wille keurige aanvraag kunt zien. Voor clients die gebruikmaken van een REST-versie van vóór 2012-02-12, is de maximale duur voor een SAS die niet verwijst naar een opgeslagen toegangs beleid, 1 uur en alle beleids regels die een langere termijn opgeven dan mislukt.
 - **Wees voorzichtig met de SAS DateTime-indeling.** Als u de start tijd en/of het verloop voor een SAS instelt voor sommige hulpprogram ma's (bijvoorbeeld voor het opdracht regel hulpprogramma AzCopy), hebt u de datum notatie nodig in +% Y-% m-% dT% H:%M:% SZ, met name de seconden om te werken met het SAS-token.  
 - **De resource moet specifiek zijn voor toegang tot de bron.** Een beveiligings best practice is om een gebruiker te voorzien van de mini maal vereiste bevoegdheden. Als een gebruiker alleen lees toegang nodig heeft tot één entiteit, dan verlenen zij Lees-en schrijf toegang tot de ene entiteit en niet lezen/schrijven/verwijderen voor alle entiteiten. Dit helpt ook de schade te beperken als een SAS is aangetast omdat de SAS minder kracht in de handen van een aanvaller heeft.
 - **U begrijpt dat uw account wordt gefactureerd voor gebruik, inclusief via een SAS.** Als u schrijf toegang voor een BLOB biedt, kan een gebruiker ervoor kiezen om een 200 GB-BLOB te uploaden. Als u de gebruikers ook lees toegang hebt gegeven, kunnen ze het 10 keer downloaden, waardoor er 2 TB worden bespaard op basis van de kosten voor u. U kunt ook beperkte machtigingen opgeven om de mogelijke acties van kwaadwillende gebruikers te helpen voor komen. Gebruik SA'S met een korte levens duur om deze dreiging te verminderen (maar mindful aan de eind tijd te scheefen).

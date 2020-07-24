@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e58df0997c62a131a3c9987369f8e076a62d6654
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82114164d70eae71678e70ff2bdb7ea44a54d4cd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81408347"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076303"
 ---
 # <a name="security-control-logging-and-monitoring"></a>Beveiligings beheer: logboek registratie en controle
 
@@ -124,9 +124,9 @@ U kunt ook gegevens naar Azure-Sentinel inschakelen en op het bord zetten.
 
 Schakel de verzameling van antimalware-gebeurtenissen in voor Azure Virtual Machines en Cloud Services.
 
-- [Micro soft antimalware configureren voor Virtual Machines](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmmicrosoftantimalwareextension?view=azuresmps-4.0.0)
+- [Micro soft antimalware configureren voor Virtual Machines](/powershell/module/servicemanagement/azure.service/set-azurevmmicrosoftantimalwareextension?view=azuresmps-4.0.0)
 
-- [Micro soft antimalware configureren voor Cloud Services](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azureserviceantimalwareextension?view=azuresmps-4.0.0)
+- [Micro soft antimalware configureren voor Cloud Services](/powershell/module/servicemanagement/azure.service/set-azureserviceantimalwareextension?view=azuresmps-4.0.0)
 
 - [Micro soft antimalware begrijpen](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
 

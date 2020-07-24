@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 06/12/2020
+ms.date: 07/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a0853266e4fda4393ba49fb740755e6b8bd03cf5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: d78de3d8e7fadc4b6760fef85fb4b850cc25111e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86038052"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075749"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integratie van virtuele bureau blad-partners van Windows
 
@@ -48,7 +48,22 @@ Als een Windows-goedgekeurd virtuele bureau blad-provider kan VMware klanten hel
 
 10ZiG's wereld-Market leiderschap in dun en nul-client eindpunt apparaten en beheer software voor virtuele Bureau bladen wordt geïllustreerd door de wijze waarop ze voor hun klanten werken. De thin client-hardware wordt geleverd met goed opgebouwde voor delen van functies en opties om ervoor te zorgen dat klanten de juiste client apparaten ontvangen op basis van hun behoeften. 10ZiG past de apparaten aan aan de klant omgevingen met Windows-en Linux-clients die de best mogelijke prestaties bieden in virtuele Bureau bladen, zowel binnen als buiten de Cloud.
 
-- [Ga naar de website van de partner](https://www.10zig.com/).
+- [Ga naar de website van de partner](https://www.10zig.com/about/microsoft-wvd).
+
+## <a name="automai"></a>Automai
+
+![Automai-logo](./media/partners/automai.png)
+
+U kunt het robot automatiserings platform van Automai gebruiken om belang rijke bedrijfs processen te testen in een virtueel-bureaublad omgeving van Windows voordat de implementatie live gaat.
+
+Met het ScenarioBuilder-hulp programma en de op GUI gebaseerde werk stroom Engine kunnen IT-teams echte eind gebruikers werk stromen vastleggen en deze automatisch vertalen in scripts. Automai maakt vervolgens gebruik van bots actieve processen van afzonderlijke Bureau bladen om de activiteit van eind gebruikers in een simulatie te emuleren en de resultaten te rapporteren. Dit vereenvoudigt het proces van testen aanzienlijk, zodat IT-beheerders ook de meest complexe scenario's kunnen testen.
+
+Wanneer u klaar bent om te starten, kunt u alle werk stroom scripts gebruiken die u hebt gemaakt voor het testen van de prestaties van de productie. Het bots van Automai kan meer doen dan alleen de beschikbaarheids bewaking. De bots kan ook werk stromen van eind gebruikers testen op basis van belang rijke locaties, scherm afbeeldingen maken en fout rapporten verzamelen in realtime. Dit leidt tot een meer proactief dan een reactieve aanpak voor het oplossen van oplossingen voor Windows-toepassingen voor virtueel bureau blad.
+
+Met Automai kunt u dezelfde scripts gebruiken voor prestatie testen, functionele tests, prestatie bewaking en zelfs geautomatiseerde proces automatisering, allemaal op één platform.
+
+- [Bekijk de kortere oplossing](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4B76N).
+- [Ga naar de website van de partner](https://www.automai.com/wvd-testing-monitoring?hs_preview=EyZXkOWu-30742040580).
 
 ## <a name="cloudhouse"></a>Cloudhouse
 
@@ -112,6 +127,17 @@ De unieke drijvende eindpunt licenties van ekran-systeemclients is geautomatisee
 
 - [Bekijk de kortere oplossing](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yqY8).
 - [Ga naar de partner pagina](https://www.ekransystem.com/product/supported-platforms/windows-virtual-desktop-monitoring).
+
+## <a name="fabulatech"></a>FabulaTech
+
+![FabulaTech-logo](./media/partners/fabulatech.png)
+
+FabulaTech wordt naadloos geïntegreerd met Windows-clients voor virtueel bureau blad. Na de installatie wordt de FabulaTech-software automatisch gestart wanneer u een verbinding met een extern bureau blad tot stand brengt.
+
+Wanneer een gebruiker zich aanmeldt bij hun virtuele bureau blad, maakt de FabulaTech-software een virtueel apparaat. U kunt bijvoorbeeld een virtuele webcam, scanner of vingerafdruk lezer maken. Alle apps die in een externe sessie worden uitgevoerd, hebben toegang tot het virtuele apparaat alsof het een fysiek apparaat is. U kunt het virtuele apparaat in Windows virtueel bureau blad configureren met het pictogram menu van het systeemvak. Dit betekent dat u deze oplossing ook kunt gebruiken op thin clients. Op die manier wordt alle communicatie over de bestaande verbinding met extern bureau blad uitgevoerd, wat betekent dat de firewall voor u is ingesteld. Alles werkt direct naar het vak.
+
+- [Bekijk de kortere oplossing](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4B4zO).
+- [Ga naar de website van de partner](https://www.fabulatech.com/partners/microsoft-windows-virtual-desktop/).
 
 ## <a name="flexxible-it"></a>Flexxible
 
@@ -274,7 +300,7 @@ Rimo3 biedt een eenvoudig te gebruiken, schaalbaar, geautomatiseerd platform voo
 
 ![sepago-logo](./media/partners/sepago.png)
 
-sepago is opgericht in 2002 door vier vrienden in Cologne. Tegenwoordig is sepago een advies voor IT-beheer met een gestaag toenemend aantal sepagists, met locaties in Duitsland in Cologne, München en Hamburg. sepago zijn experts voor het automatisch inrichten van toepassingen, virtualisatie, Cloud oplossingen en IT-beveiliging. sepago biedt ondersteuning voor middel grote en grote bedrijven op hun manier voor digitale trans formatie en zorgt ervoor dat gebruikers veilig en efficiënt kunnen werken.
+sepago is opgericht in 2002 door vier vrienden in Cologne. Tegenwoordig is sepago een advies voor IT-beheer met een gestaag toenemend aantal sepagists, met locaties in Duitsland in Cologne, München en Hamburg. sepago zijn experts voor het automatisch inrichten van toepassingen, virtualisatie, Cloud oplossingen en IT-beveiliging. sepago biedt ondersteuning voor middel grote en grote bedrijven op hun manier tot digitale trans formatie en zorgt ervoor dat gebruikers veilig en efficiënt kunnen werken.
 
 het innovatie-en ontwikkelings Lab van sepago bouwt slimme oplossingen met behulp van big data-en AI-technologieën. Deze oplossingen zijn gericht op het verbeteren van het bedrijf, de gebruikers ervaring en de administraties van partner producten zoals virtueel bureau blad van Windows.
 

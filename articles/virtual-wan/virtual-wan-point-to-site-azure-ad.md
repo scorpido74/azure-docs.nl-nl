@@ -2,17 +2,17 @@
 title: 'Azure AD-verificatie configureren voor de VPN-verbinding van de gebruiker: Virtual WAN'
 description: Meer informatie over het configureren van Azure Active Directory-verificatie voor gebruikers-VPN.
 services: virtual-wan
-author: anzaman
+author: kumudD
 ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 03/17/2020
 ms.author: alzam
-ms.openlocfilehash: dd80724d62c71fdec81965fb4aa6a07a6233a288
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2028cae4908214db28de2545f02f5f2997eeb8af
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753950"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077488"
 ---
 # <a name="configure-azure-active-directory-authentication-for-user-vpn"></a>Azure Active Directory-verificatie voor gebruikers-VPN configureren
 
@@ -26,7 +26,7 @@ In dit artikel leert u het volgende:
 > * Een WAN maken
 > * Een hub maken
 > * Een P2S-configuratie maken
-> * Een VPN-client profiel downloaden
+> * Een VPN-clientprofiel downloaden
 > * P2S-configuratie toepassen op een hub
 > * Een VNet verbinden met een hub
 > * Een configuratie voor een VPN-client downloaden en toepassen
@@ -48,7 +48,7 @@ Controleer voordat u met de configuratie begint of u aan de volgende criteria he
 
 ## <a name="create-a-virtual-wan"></a><a name="wan"></a>Een virtueel WAN maken
 
-Ga in een browser naar het [Azure Portal](https://portal.azure.com) en meld u aan met uw Azure-account.
+Open een browser, ga naar [Azure Portal](https://portal.azure.com) en meld u aan met uw Azure-account.
 
 1. Ga naar de pagina Virtual WAN. Klik in de portal op **+Een resource maken**. Typ **Virtual WAN** in het zoekvak en selecteer Enter.
 2. Selecteer **Virtual WAN** uit de resultaten. Klik op de pagina Virtual WAN op **Maken** om de pagina WAN maken te openen.
@@ -59,7 +59,7 @@ Ga in een browser naar het [Azure Portal](https://portal.azure.com) en meld u aa
    * **Abonnement** - selecteer het abonnement dat u wilt gebruiken.
    * **Resourcegroep** - maak een nieuwe resourcegroep of gebruik een bestaande.
    * **Locatie van de resourcegroep** - kies een resourcelocatie uit de vervolgkeuzelijst. Een WAN een globale resource en bevindt zich niet in een bepaalde regio. U moet echter een regio selecteren om de WAN-resource die u maakt eenvoudiger te kunnen beheren en vinden.
-   * **Naam** - typ de naam die u voor uw WAN hebt gekozen.
+   * **Naam**, typ de naam die u voor uw WAN hebt gekozen.
    * **Type:** Standaard. Als u een Basic-WAN maakt, kunt u alleen een Basic-hub maken. Basic-hubs zijn alleen geschikt voor VPN-verbindingen tussen sites.
 4. Nadat u klaar bent met het invullen van de velden, selecteert u **+Maken**.
 5. Nadat de validatie is geslaagd, selecteert u **maken** om het virtuele WAN te maken.
@@ -69,13 +69,13 @@ Ga in een browser naar het [Azure Portal](https://portal.azure.com) en meld u aa
 1. Onder uw virtuele WAN selecteert u hubs en klikt u op **+ nieuwe hub**.
 
    ![Nieuwe site](media/virtual-wan-point-to-site-azure-ad/hub1.jpg)
-2. Vul op de pagina virtuele hub maken de volgende velden in.
+2. Vul de volgende velden in op de pagina virtuele hub maken.
 
-   **Regio** : Selecteer de regio waarin u de virtuele hub wilt implementeren.
+   **Regio**, selecteer de regio waarin u de virtuele hub wilt implementeren.
 
-   **Naam** : Voer de naam in die u wilt aanroepen van de virtuele hub.
+   **Naam**, typ de naam die u voor uw virtuele hub hebt gekozen.
 
-   **Privé-adres ruimte van hub** : het adres bereik van de hub in CIDR-notatie.
+   **Privé-adresruimte hub**, het adresbereik van de hub in CIDR-notatie.
 
    ![Nieuwe site](media/virtual-wan-point-to-site-azure-ad/hub2.jpg)  
 3. Klik op **Controleren + maken**.
@@ -118,7 +118,7 @@ Gebruik het VPN-profiel om uw clients te configureren.
 1. Klik op de pagina voor uw virtuele WAN op **VPN-configuraties voor gebruikers**.
 2. Klik boven aan de pagina op **VPN-configuratie voor gebruiker downloaden**.
 3. Wanneer het bestand gereed is, klikt u op de koppeling om het te downloaden.
-4. Gebruik het profiel bestand voor het configureren van de VPN-clients.
+4. Gebruik het profielbestand om de VPN-clients te configureren.
 
 ## <a name="configure-user-vpn-clients"></a>VPN-clients voor gebruikers configureren
 
@@ -158,11 +158,11 @@ Gebruik deze [koppeling](https://www.microsoft.com/p/azure-vpn-client-preview/9n
 
 1. Selecteer het beletsel teken (...) naast het client profiel dat u wilt verwijderen. Selecteer vervolgens **verwijderen**.
 
-    ![delete](./media/virtual-wan-point-to-site-azure-ad/delete/delete1.jpg)
+    ![verwijderen](./media/virtual-wan-point-to-site-azure-ad/delete/delete1.jpg)
 
 2. Selecteer **verwijderen** om te verwijderen.
 
-    ![delete](./media/virtual-wan-point-to-site-azure-ad/delete/delete2.jpg)
+    ![verwijderen](./media/virtual-wan-point-to-site-azure-ad/delete/delete2.jpg)
 
 #### <a name="diagnose-connection-issues"></a><a name="diagnose"></a>Problemen met de verbinding vaststellen
 

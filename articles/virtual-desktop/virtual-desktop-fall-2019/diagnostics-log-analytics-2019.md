@@ -1,6 +1,6 @@
 ---
-title: Logboek analyse van diagnostische gegevens van Windows Virtual Desktop-Azure
-description: Log Analytics gebruiken met de Windows-functie diagnostische gegevens over virtueel bureau blad.
+title: Diagnostische logboeken van Windows virtueel bureau blad (najaar 2019)-Azure
+description: Meer informatie over het gebruik van log Analytics met de Windows-functie diagnostische gegevens over het virtuele bureau blad (versie 2019).
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: beb48b90afd54b044eb6d0ceaff32b53ebfcdc34
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4c59268f63252813c7e08608d5d8ee499b11f53
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85205965"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077614"
 ---
-# <a name="use-log-analytics-for-the-diagnostics-feature"></a>Log Analytics gebruiken voor de functie voor diagnostische gegevens
+# <a name="use-log-analytics-for-the-diagnostics-feature-fall-2019-release"></a>Log Analytics gebruiken voor de functie voor diagnostische gegevens (najaar 2019 versie)
 
 >[!IMPORTANT]
 >Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../diagnostics-log-analytics.md) als u Azure Resource Manager Windows Virtual Desktop-objecten wilt beheren die zijn geïntroduceerd in de update Lente 2020.

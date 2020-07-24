@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: ff13f8301274ebfc8b31dcbe01ef2a0fe6cd6fcc
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: bcb9ca9e73c0898dc778202eca036a5ae92bebf8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247758"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076145"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Gebeurtenis aggregatie en verzameling met behulp van Windows Azure Diagnostics
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ Een manier om logboeken te uploaden en te verzamelen, is door gebruik te maken v
 De volgende hulpprogram ma's worden gebruikt in dit artikel:
 
 * [Azure Resource Manager](../azure-resource-manager/management/overview.md)
-* [Azure PowerShell](/powershell/azure/overview)
+* [Azure PowerShell](/powershell/azure/)
 * [Azure Resource Manager-sjabloon](../virtual-machines/extensions/diagnostics-template.md?toc=/azure/virtual-machines/windows/toc.json)
 
 ## <a name="service-fabric-platform-events"></a>Service Fabric-platform gebeurtenissen
@@ -68,7 +68,7 @@ Als u de instelling diagnostische gegevens in de Resource Manager-sjabloon wilt 
 U kunt ook het Resource Manager-voor beeld downloaden, wijzigingen aanbrengen en een cluster maken met de gewijzigde sjabloon met behulp van de `New-AzResourceGroupDeployment` opdracht in een Azure PowerShell-venster. Raadpleeg de volgende code voor de para meters die u doorgeeft aan de opdracht. Voor gedetailleerde informatie over het implementeren van een resource groep met behulp van Power shell raadpleegt u het artikel [een resource groep implementeren met de sjabloon Azure Resource Manager](../azure-resource-manager/templates/deploy-powershell.md).
 
 ### <a name="add-the-diagnostics-extension-to-an-existing-cluster"></a>De diagnostische extensie toevoegen aan een bestaand cluster
-Als u een bestaand cluster hebt waarvoor geen diagnostische gegevens zijn geïmplementeerd, kunt u het toevoegen of bijwerken via de cluster sjabloon. Wijzig de Resource Manager-sjabloon die wordt gebruikt voor het maken van het bestaande cluster of down load de sjabloon uit de portal zoals eerder beschreven. Wijzig de template.jsin het bestand door de volgende taken uit te voeren:
+Als u een bestaand cluster hebt waarvoor geen diagnostische gegevens zijn geïmplementeerd, kunt u het toevoegen of bijwerken via de clustersjabloon. Wijzig de Resource Manager-sjabloon die wordt gebruikt voor het maken van het bestaande cluster of down load de sjabloon uit de portal zoals eerder beschreven. Wijzig het bestand template.json door de volgende taken uit te voeren:
 
 Voeg een nieuwe opslag resource toe aan de sjabloon door toe te voegen aan de sectie resources.
 

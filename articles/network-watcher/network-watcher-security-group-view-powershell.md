@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: b87d076c12a40d84dc99ef5b48454afa3f0ffce0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69fe84d6546e3fcb9e905a6b77ad3d9af3ed4d51
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738719"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077960"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-powershell"></a>De beveiliging van uw virtuele machine analyseren met behulp van Power shell
 
@@ -25,6 +25,9 @@ ms.locfileid: "84738719"
 > - [PowerShell](network-watcher-security-group-view-powershell.md)
 > - [Azure-CLI](network-watcher-security-group-view-cli.md)
 > - [REST API](network-watcher-security-group-view-rest.md)
+
+> [!NOTE]
+> De API voor de weer gave van beveiligings groepen wordt niet meer onderhouden en zal binnenkort worden afgeschaft. Gebruik de [functie effectief beveiligings regels](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview) die dezelfde functionaliteit biedt. 
 
 De weer gave beveiligings groep retourneert geconfigureerde en efficiënte netwerk beveiligings regels die worden toegepast op een virtuele machine. Deze mogelijkheid is nuttig bij het controleren en diagnosticeren van netwerk beveiligings groepen en-regels die zijn geconfigureerd op een virtuele machine om ervoor te zorgen dat verkeer correct wordt toegestaan of geweigerd. In dit artikel laten we zien hoe u de geconfigureerde en efficiënte beveiligings regels kunt ophalen voor een virtuele machine met behulp van Power shell
 

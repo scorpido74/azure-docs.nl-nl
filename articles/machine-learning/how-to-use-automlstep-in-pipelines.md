@@ -11,12 +11,12 @@ author: lobrien
 manager: cgronlun
 ms.date: 06/15/2020
 ms.custom: tracking-python
-ms.openlocfilehash: f162aca8c30d890ecf662a88fb5f2182edb14c9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1b8dfa37047113d84470f86cd67c601ebf48f793
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85298239"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078090"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Automatische ML gebruiken in een Azure Machine Learning pijp lijn in python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -97,6 +97,8 @@ if not compute_name in ws.compute_targets :
 
 compute_target = ws.compute_targets[compute_name]
 ```
+
+[!INCLUDE [low-pri-note](../../includes/machine-learning-low-pri-vm.md)]
 
 De tussenliggende gegevens tussen de gegevens voorbereiding en de automatische ML stap kunnen worden opgeslagen in de standaard gegevens opslag van de werk ruimte, zodat we niet meer `get_default_datastore()` op het object hoeven te bellen `Workspace` . 
 
@@ -268,7 +270,7 @@ prepped_data = Dataset.get_by_name(ws, 'Data_prepared')
 
 Vergelijking van de twee technieken:
 
-| Techniek |  | 
+| Techniek | Voor delen en nadelen | 
 |-|-|
 |`PipelineOutputTabularDataset`| Hogere prestaties | 
 || Natuurlijke route van`PipelineData` | 

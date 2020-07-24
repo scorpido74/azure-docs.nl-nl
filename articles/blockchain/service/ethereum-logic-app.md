@@ -4,16 +4,16 @@ description: Gebruik de Ethereum Block Chain-connector met Azure Logic Apps om s
 ms.date: 10/14/2019
 ms.topic: how-to
 ms.reviewer: chrisseg
-ms.openlocfilehash: c7b45134e8b5c3e33e5d05d59c006abe103e5bda
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61dbda7cd7f486c7a8d838084875b34803833502
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85200729"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077043"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>De Ethereum Block Chain-connector gebruiken met Azure Logic Apps
 
-Gebruik de [Ethereum Block Chain-connector](https://docs.microsoft.com/connectors/blockchainethereum/) met [Azure Logic apps](https://docs.microsoft.com/azure/logic-apps/) om slimme contract acties uit te voeren en te reageren op slimme contract gebeurtenissen. Stel bijvoorbeeld dat u een REST-gebaseerde micro service wilt maken die gegevens uit een Block Chain-boek houding retourneert. Door gebruik te maken van een logische app, kunt u HTTP-aanvragen accepteren die query's uitvoeren op gegevens die zijn opgeslagen in een Block Chain-groot boek.
+Gebruik de [Ethereum Block Chain-connector](/connectors/blockchainethereum/) met [Azure Logic apps](../../logic-apps/index.yml) om slimme contract acties uit te voeren en te reageren op slimme contract gebeurtenissen. Stel bijvoorbeeld dat u een REST-gebaseerde micro service wilt maken die gegevens uit een Block Chain-boek houding retourneert. Door gebruik te maken van een logische app, kunt u HTTP-aanvragen accepteren die query's uitvoeren op gegevens die zijn opgeslagen in een Block Chain-groot boek.
 
 ## <a name="prerequisites"></a>Vereisten
 

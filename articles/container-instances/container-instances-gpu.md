@@ -3,12 +3,12 @@ title: Met GPU ingeschakelde container instantie implementeren
 description: Meer informatie over het implementeren van Azure container instances voor het uitvoeren van Compute-container-apps met GPU-resources.
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: a25efc90573eb338b81f4a6532a632a140c7ab7d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 3ddeb7da2667b774724fe05227cefeec5227101a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259599"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076869"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>Container instanties implementeren die GPU-bronnen gebruiken
 
@@ -63,7 +63,7 @@ Wanneer u GPU-resources implementeert, stelt u de CPU-en geheugen resources in d
 
 * **CUDA-Stuur Programma's** : container instanties met GPU-resources zijn vooraf ingericht met NVIDIA CUDA-Stuur Programma's en container-runtimes, zodat u container installatie kopieën kunt gebruiken die zijn ontwikkeld voor CUDA-workloads.
 
-  We ondersteunen CUDA 9,0 in deze fase. U kunt bijvoorbeeld de volgende basis installatie kopieën voor uw docker-bestand gebruiken:
+  We ondersteunen in deze fase alleen CUDA 9,0. U kunt bijvoorbeeld de volgende basis installatie kopieën voor uw docker-bestand gebruiken:
   * [NVIDIA/CUDA: 9.0-base-Ubuntu 16.04](https://hub.docker.com/r/nvidia/cuda/)
   * [tensor flow/tensor flow: 1.12.0-GPU-py3](https://hub.docker.com/r/tensorflow/tensorflow)
     

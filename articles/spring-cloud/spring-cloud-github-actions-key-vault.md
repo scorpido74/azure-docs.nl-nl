@@ -1,18 +1,20 @@
 ---
-title: Azure lente-Cloud verifiëren met Key Vault in GitHub-acties
+title: Azure Spring Cloud verifiëren met Key Vault in GitHub Actions
 description: Sleutel kluis met CI/CD-werk stroom gebruiken voor Azure lente-Cloud met GitHub-acties
 author: MikeDodaro
 ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/20/2019
-ms.openlocfilehash: 4a836ae195674556c486592a421c188f7c40e3f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: 433cd9e7b8cfe69ce5008366db884659cccbc149
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484353"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076025"
 ---
-# <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>Azure lente-Cloud verifiëren met Key Vault in GitHub-acties
+# <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>Azure Spring Cloud verifiëren met Key Vault in GitHub Actions
 Sleutel kluis is een veilige plaats voor het opslaan van sleutels. Zakelijke gebruikers moeten referenties opslaan voor CI/CD-omgevingen binnen het bereik dat ze beheren. De sleutel voor het ophalen van referenties in de sleutel kluis moet beperkt zijn tot het bron bereik.  Het heeft alleen toegang tot het sleutel kluis bereik, niet voor het hele Azure-bereik. Het lijkt erop dat een sleutel die alleen een sterk vak kan openen, geen hoofd sleutel is die alle deuren in een gebouw kan openen. Het is een manier om een sleutel te verkrijgen met een andere sleutel. Dit is handig in een CICD-werk stroom. 
 
 ## <a name="generate-credential"></a>Referentie genereren

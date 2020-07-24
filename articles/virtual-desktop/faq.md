@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 07/13/2020
+ms.date: 07/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b7ab9e63bfe92967eca22b60dceec0de882768a6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 721f9c623255b964e38da1c0f4b7bbf72d0c721d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531867"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075621"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Veelgestelde vragen over Windows virtueel bureau blad
 
@@ -121,7 +121,7 @@ De volgende tabel bevat een voor beeld van hoe resources een FSLogix-profiel nod
 | Resource | Vereiste |
 |---|---|
 | IOPS met stabiele status | 10 |
-| IOPS voor aanmelden/afmelden | 5 |
+| IOPS voor aanmelden/afmelden | 50 |
 
 Het voor beeld in deze tabel is van één gebruiker, maar kan worden gebruikt voor het schatten van de vereisten voor het totale aantal gebruikers in uw omgeving. U hebt bijvoorbeeld ongeveer 1.000 IOPS nodig voor 100 gebruikers, en rond 5.000 IOPS tijdens het aanmelden en afmelden.
 

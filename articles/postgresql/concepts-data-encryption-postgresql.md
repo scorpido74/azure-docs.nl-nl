@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 1300ef64b6081135c400baa10aa73b8139aec170
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: e8ab6e2e62bdcb08754d011a6b576cb615371a09
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86025587"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076459"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Azure Database for PostgreSQL gegevens versleuteling met één server met een door de klant beheerde sleutel
 
@@ -51,7 +51,7 @@ Voor een PostgreSQL-server voor het gebruik van door de klant beheerde sleutels 
 * **wrapKey**: de dek kan worden versleuteld.
 * **sleutel uitpakken**: de dek kan worden ontsleuteld.
 
-De sleutel kluis beheerder kan [logboek registratie van Key Vault controle gebeurtenissen ook inschakelen](../azure-monitor/insights/azure-key-vault.md), zodat ze later kunnen worden gecontroleerd.
+De sleutel kluis beheerder kan [logboek registratie van Key Vault controle gebeurtenissen ook inschakelen](../azure-monitor/insights/key-vault-insights-overview.md), zodat ze later kunnen worden gecontroleerd.
 
 Wanneer de server is geconfigureerd voor het gebruik van de door de klant beheerde sleutel die is opgeslagen in de sleutel kluis, verzendt de server de DEK naar de sleutel kluis voor versleuteling. Key Vault retourneert de versleutelde DEK, die wordt opgeslagen in de gebruikers database. Zo nodig verzendt de server de beveiligde DEK naar de sleutel kluis voor ontsleuteling. Audi tors kunnen Azure Monitor gebruiken om Key Vault controle gebeurtenis logboeken te controleren, als logboek registratie is ingeschakeld.
 

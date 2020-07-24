@@ -10,12 +10,12 @@ ms.service: storage
 ms.subservice: common
 services: storage
 tags: ''
-ms.openlocfilehash: 28d7f6a9fa5d128783f2eb1dfcbcb75775cc499e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: efae9cd2a73bf6df89007ac313ca6dfe6efe6ddd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113102"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075950"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>Problemen met latentie oplossen met behulp van logboeken voor Opslaganalyse
 
@@ -97,7 +97,7 @@ De volgende stappen laten zien hoe u latentie problemen kunt identificeren en op
 
    De volgende tabel bevat informatie over de OperationType-en RequestStatus-resultaten met een hoge latentie:
 
-   |   |RequestStatus =<br>Geslaagd|RequestStatus =<br>GEBASEERD NetworkError|Aanbeveling|
+   | BLOB-type |RequestStatus =<br>Geslaagd|RequestStatus =<br>GEBASEERD NetworkError|Aanbeveling|
    |---|---|---|---|
    |GetBlob|Ja|Nee|[**GetBlob-bewerking:** RequestStatus = geslaagd](#getblob-operation-requeststatus--success)|
    |GetBlob|Nee|Ja|[**GetBlob-bewerking:** RequestStatus = (SAS) NetworkError](#getblob-operation-requeststatus--sasnetworkerror)|

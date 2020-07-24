@@ -3,12 +3,12 @@ title: Een back-up van een Azure-bestands share maken met behulp van Power shell
 description: In dit artikel vindt u informatie over het maken van een back-up van een Azure Files bestands share met behulp van de Azure Backup-service en Power shell.
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 18c03eda9d9daca3a0fa536843e32f7fc3158287
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 948931764769bc967b88e7942b7e8384b0f93dff
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971025"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077000"
 ---
 # <a name="back-up-an-azure-file-share-by-using-powershell"></a>Een back-up van een Azure-bestands share maken met behulp van Power shell
 
@@ -89,13 +89,13 @@ De Recovery Services kluis is een resource manager-resource, dus u moet deze in 
 
 Volg deze stappen om een Recovery Services kluis te maken:
 
-1. Als u geen bestaande resource groep hebt, maakt u een nieuwe met behulp van de cmdlet [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-1.4.0) . In dit voor beeld maken we een resource groep in de regio vs-West:
+1. Als u geen bestaande resource groep hebt, maakt u een nieuwe met behulp van de cmdlet [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) . In dit voor beeld maken we een resource groep in de regio vs-West:
 
    ```powershell
    New-AzResourceGroup -Name "test-rg" -Location "West US"
    ```
 
-1. Gebruik de cmdlet [New-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/New-AzRecoveryServicesVault?view=azps-1.4.0) om de kluis te maken. Geef dezelfde locatie op voor de kluis die u hebt gebruikt voor de resource groep.
+1. Gebruik de cmdlet [New-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/new-azrecoveryservicesvault) om de kluis te maken. Geef dezelfde locatie op voor de kluis die u hebt gebruikt voor de resource groep.
 
     ```powershell
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
@@ -103,7 +103,7 @@ Volg deze stappen om een Recovery Services kluis te maken:
 
 ### <a name="view-the-vaults-in-a-subscription"></a>De kluizen in een abonnement weer geven
 
-Als u alle kluizen in het abonnement wilt weer geven, gebruikt u [Get-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesvault?view=azps-1.4.0):
+Als u alle kluizen in het abonnement wilt weer geven, gebruikt u [Get-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/get-azrecoveryservicesvault):
 
 ```powershell
 Get-AzRecoveryServicesVault
@@ -127,7 +127,7 @@ Sla het kluis object op in een variabele en stel de kluis context in.
 
 Voor veel Azure Backup-cmdlets is het Recovery Services kluis-object vereist als invoer, zodat het handig is om het kluis object op te slaan in een variabele.
 
-De context van de kluis is het type gegevens dat in de kluis wordt beveiligd. Stel deze in met behulp van [set-AzRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext?view=azps-1.4.0). Nadat de context is ingesteld, is deze van toepassing op alle volgende cmdlets.
+De context van de kluis is het type gegevens dat in de kluis wordt beveiligd. Stel deze in met behulp van [set-AzRecoveryServicesVaultContext](/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext). Nadat de context is ingesteld, is deze van toepassing op alle volgende cmdlets.
 
 In het volgende voor beeld wordt de kluis context voor **testvault**ingesteld:
 
@@ -152,9 +152,9 @@ Een back-upbeleid is gekoppeld aan ten minste één Bewaar beleid. Een Bewaar be
 
 Hier volgen enkele cmdlets voor back-upbeleid:
 
-* Bekijk de standaard retentie van het back-upbeleid met behulp van [Get-AzRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject?view=azps-1.4.0).
-* Bekijk het standaard schema voor back-upbeleid met behulp van [Get-AzRecoveryServicesBackupSchedulePolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject?view=azps-1.4.0).
-* Maak een nieuw back-upbeleid met behulp van [New-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy?view=azps-1.4.0). U voert de plannings-en bewaar beleidsobjecten in als invoer.
+* Bekijk de standaard retentie van het back-upbeleid met behulp van [Get-AzRecoveryServicesBackupRetentionPolicyObject](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject).
+* Bekijk het standaard schema voor back-upbeleid met behulp van [Get-AzRecoveryServicesBackupSchedulePolicyObject](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject).
+* Maak een nieuw back-upbeleid met behulp van [New-AzRecoveryServicesBackupProtectionPolicy](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy). U voert de plannings-en bewaar beleidsobjecten in als invoer.
 
 Standaard wordt een begin tijd gedefinieerd in het object plannings beleid. Gebruik het volgende voor beeld om de begin tijd te wijzigen in de gewenste start tijd. De gewenste start tijd moet in UTC (Universal Coordinated Time) liggen. In het voor beeld wordt ervan uitgegaan dat de gewenste start tijd 01:00 uur UTC is voor dagelijkse back-ups.
 
@@ -190,7 +190,7 @@ Nadat u het back-upbeleid hebt gedefinieerd, kunt u de beveiliging van de Azure-
 
 ### <a name="retrieve-a-backup-policy"></a>Een back-upbeleid ophalen
 
-U haalt het relevante beleids object op met behulp van [Get-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy?view=azps-1.4.0). Gebruik deze cmdlet om de beleids regels weer te geven die zijn gekoppeld aan een type werk belasting, of om een specifiek beleid op te halen.
+U haalt het relevante beleids object op met behulp van [Get-AzRecoveryServicesBackupProtectionPolicy](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy). Gebruik deze cmdlet om de beleids regels weer te geven die zijn gekoppeld aan een type werk belasting, of om een specifiek beleid op te halen.
 
 #### <a name="retrieve-a-policy-for-a-workload-type"></a>Een beleid voor een type werk belasting ophalen
 
@@ -221,7 +221,7 @@ $afsPol =  Get-AzRecoveryServicesBackupProtectionPolicy -Name "dailyafs"
 
 ### <a name="enable-protection-and-apply-the-policy"></a>Beveiliging inschakelen en het beleid Toep assen
 
-Schakel beveiliging in met [Enable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection?view=azps-1.4.0). Nadat het beleid is gekoppeld aan de kluis, worden back-ups geactiveerd volgens het beleids schema.
+Schakel beveiliging in met [Enable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection). Nadat het beleid is gekoppeld aan de kluis, worden back-ups geactiveerd volgens het beleids schema.
 
 In het volgende voor beeld wordt de beveiliging van de Azure-bestands share **testAzureFileShare** in het opslag account **testStorageAcct**ingeschakeld met het beleid **dailyafs**:
 
@@ -237,7 +237,7 @@ WorkloadName       Operation            Status                 StartTime        
 testAzureFS       ConfigureBackup      Completed            11/12/2018 2:15:26 PM     11/12/2018 2:16:11 PM     ec7d4f1d-40bd-46a4-9edb-3193c41f6bf6
 ```
 
-Zie [dit artikel](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageshare?view=azps-4.3.0)voor meer informatie over het ophalen van een lijst met bestands shares voor een opslag account.
+Zie [dit artikel](/powershell/module/az.storage/get-azstorageshare)voor meer informatie over het ophalen van een lijst met bestands shares voor een opslag account.
 
 ## <a name="important-notice-backup-item-identification"></a>Belang rijke mede deling: id van back-upitem
 
@@ -262,7 +262,7 @@ U wordt aangeraden items te vermelden en vervolgens hun unieke naam op te halen 
 
 ## <a name="trigger-an-on-demand-backup"></a>Een on-demand back-up activeren
 
-[Back-up-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem?view=azps-1.4.0) gebruiken om een back-up op aanvraag uit te voeren voor een beveiligde Azure-bestands share:
+[Back-up-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem) gebruiken om een back-up op aanvraag uit te voeren voor een beveiligde Azure-bestands share:
 
 1. Haal het opslag account op uit de container in de kluis die uw back-upgegevens bevat met behulp van [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-Azrecoveryservicesbackupcontainer).
 2. Als u een back-uptaak wilt starten, moet u informatie over de Azure-bestands share ophalen met behulp van [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem).

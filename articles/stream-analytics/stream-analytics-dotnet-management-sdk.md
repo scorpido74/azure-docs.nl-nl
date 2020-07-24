@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: ae352ead9e3ba6980c82ea48dca3db872b8d1e6d
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: de152a636d8751616744887a521b2f94bbd386a1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043441"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077750"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Management .NET SDK: analyse taken instellen en uitvoeren met behulp van de Azure Stream Analytics-API voor .NET
 Meer informatie over het instellen en uitvoeren van analyse taken met behulp van de Stream Analytics-API voor .NET met behulp van de Management .NET SDK. Stel een project in en maak invoer-en uitvoer bronnen, trans formaties en taken voor starten en stoppen. Voor uw analyse taken kunt u gegevens streamen vanuit Blob Storage of van een Event Hub.
@@ -30,7 +30,7 @@ Voordat u aan dit artikel begint, moet u aan de volgende vereisten voldoen:
 
 * Installeer Visual Studio 2019 of 2015.
 * Down load en Installeer [Azure .NET SDK](https://azure.microsoft.com/downloads/).
-* Maak een Azure-resource groep in uw abonnement. Het volgende voor beeld is een voor beeld-Azure PowerShell script. Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview)voor Azure PowerShell informatie.  
+* Maak een Azure-resource groep in uw abonnement. Het volgende voor beeld is een voor beeld-Azure PowerShell script. Zie [Azure PowerShell installeren en configureren](/powershell/azure/)voor Azure PowerShell informatie.  
 
    ```powershell
    # Log in to your Azure account

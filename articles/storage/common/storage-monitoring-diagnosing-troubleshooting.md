@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 94d952bcb0693941624199370de092a581d7479b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7af711ebe21c46663ecd8e803b0f636c34c362ee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518586"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076050"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage bewaken, problemen opsporen en oplossen
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -23,10 +23,6 @@ ms.locfileid: "86518586"
 Diagnose-en probleemoplossings problemen in een gedistribueerde toepassing die wordt gehost in een cloud omgeving, kunnen complexer zijn dan in traditionele omgevingen. Toepassingen kunnen worden geïmplementeerd in een PaaS-of IaaS-infra structuur, on-premises, op een mobiel apparaat of in een bepaalde combi natie van deze omgevingen. Normaal gesp roken wordt het netwerk verkeer van uw toepassing mogelijk via open bare en particuliere netwerken en kan uw toepassing gebruikmaken van meerdere opslag technologieën zoals Microsoft Azure Storage tabellen, blobs, wacht rijen of bestanden, naast andere gegevens archieven, zoals relationele data bases en document databases.
 
 Als u dergelijke toepassingen wilt beheren, moet u ze proactief controleren en inzicht krijgen in het vaststellen en oplossen van alle aspecten van deze en hun afhankelijke technologieën. Als gebruiker van Azure Storage services moet u de opslag services die door uw toepassing worden gebruikt continu bewaken voor eventuele onverwachte wijzigingen in het gedrag (zoals trager dan gebruikelijke reactie tijden), en logboek registratie gebruiken voor het verzamelen van gedetailleerde gegevens en het analyseren van een probleem. De diagnostische gegevens die u van zowel controle als logboek registratie ontvangt, helpen u bij het bepalen van de hoofd oorzaak van het probleem dat de toepassing heeft ondervonden. Vervolgens kunt u het probleem oplossen en bepalen welke stappen u kunt ondernemen om de problemen op te lossen. Azure Storage is een kern service van Azure en vormt een belang rijk onderdeel van de meeste oplossingen die klanten implementeren naar de Azure-infra structuur. Azure Storage bevat mogelijkheden voor het vereenvoudigen van bewakings-, diagnose-en probleem oplossing voor opslag problemen in uw Cloud toepassingen.
-
-> [!NOTE]
-> Registratie wordt op dit moment niet door Azure Files ondersteund.
->
 
 Zie [end-to-end-probleem oplossing met behulp van Azure Storage metrische gegevens en logboek registratie, AzCopy en Message Analyzer](../storage-e2e-troubleshooting.md)voor een praktische hand leiding voor end-to-end probleem oplossing in azure Storage toepassingen.
 

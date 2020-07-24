@@ -1,6 +1,6 @@
 ---
-title: JSON afvlakking en Escapes-regels-Azure Time Series Insights | Microsoft Docs
-description: Meer informatie over de verwerking van JSON, afvlakking en het afhandelen van matrices in Azure Time Series Insights.
+title: JSON afvlakking en Escapes-regels-Azure Time Series Insights Gen2 | Microsoft Docs
+description: Meer informatie over de verwerking van JSON, afvlakking en het afhandelen van matrices in Azure Time Series Insights Gen2.
 author: lyrana
 ms.author: lyhughes
 manager: deepakpalled
@@ -8,19 +8,18 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/04/2020
-ms.custom: seodec18
-ms.openlocfilehash: 45eeebcc092513a0344acaff52c31c2cebfb377c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 07/07/2020
+ms.openlocfilehash: d33b9b4cb50c1be7b316aad2a736bfd6fb074833
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86049855"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075671"
 ---
 # <a name="ingestion-rules"></a>Opname regels
 ### <a name="json-flattening-escaping-and-array-handling"></a>JSON-afvlakking,-Escapes en-verwerking van matrices
 
-Uw Azure Time Series Insights omgeving maakt dynamische kolommen van uw warme en koude Stores en volgt een bepaalde set naamgevings conventies. Wanneer een gebeurtenis wordt opgenomen, wordt een set regels toegepast op de JSON-nettolading en eigenschaps namen. Dit zijn onder andere het escapepen van bepaalde speciale tekens en het afvlakken van geneste JSON-objecten. Het is belang rijk dat u deze regels weet, zodat u begrijpt hoe de vorm van uw JSON invloed heeft op hoe uw gebeurtenissen worden opgeslagen en opgevraagd. Zie de onderstaande tabel voor een volledige lijst met regels. Voor beelden van een & B laten zien hoe u in een matrix efficiënt meerdere tijd reeksen kunt batchren.
+Uw Azure Time Series Insights Gen2-omgeving maakt dynamische kolommen van uw warme en koude Stores en volgt een bepaalde set naam conventies. Wanneer een gebeurtenis wordt opgenomen, wordt een set regels toegepast op de JSON-nettolading en eigenschaps namen. Dit zijn onder andere het escapepen van bepaalde speciale tekens en het afvlakken van geneste JSON-objecten. Het is belang rijk dat u deze regels weet, zodat u begrijpt hoe de vorm van uw JSON invloed heeft op hoe uw gebeurtenissen worden opgeslagen en opgevraagd. Zie de onderstaande tabel voor een volledige lijst met regels. Voor beelden van een & B laten zien hoe u in een matrix efficiënt meerdere tijd reeksen kunt batchren.
 
 > [!IMPORTANT]
 >
@@ -28,8 +27,8 @@ Uw Azure Time Series Insights omgeving maakt dynamische kolommen van uw warme en
 
 | Regel | Voor beeld JSON |Kolom naam in opslag |
 |---|---|---|
-| Het gegevens type TSI wordt toegevoegd aan het einde van de kolom naam als "_ \<dataType\> " | ```"type": "Accumulated Heat"``` | type_string |
-| De [eigenschap tijds tempel](concepts-streaming-ingestion-event-sources.md#event-source-timestamp) van de gebeurtenis bron wordt opgeslagen in de TSI ' tijds tempel ' in de opslag en de waarde die is opgeslagen in UTC. U kunt de tijds tempel eigenschap van uw gebeurtenis aanpassen zodat deze voldoet aan de behoeften van uw oplossing, maar de naam van de kolom in warme en koude opslag is ' tijds tempel '. Andere JSON-eigenschappen (datetime) die niet de bron tijds tempel van de gebeurtenis zijn, worden opgeslagen met _datetime in de kolom naam, zoals vermeld in de bovenstaande regel.  | ```"ts": "2020-03-19 14:40:38.318"``` | tijdstempel |
+| Het gegevens type Azure Time Series Insights Gen2 wordt toegevoegd aan het einde van de kolom naam als "_ \<dataType\> " | ```"type": "Accumulated Heat"``` | type_string |
+| De [eigenschap tijds tempel](concepts-streaming-ingestion-event-sources.md#event-source-timestamp) van de gebeurtenis bron wordt opgeslagen in azure time series Insights Gen2 als tijds tempel in de opslag en de waarde die is opgeslagen in UTC. U kunt de tijds tempel eigenschap van uw gebeurtenis aanpassen zodat deze voldoet aan de behoeften van uw oplossing, maar de naam van de kolom in warme en koude opslag is ' tijds tempel '. Andere JSON-eigenschappen (datetime) die niet de bron tijds tempel van de gebeurtenis zijn, worden opgeslagen met _datetime in de kolom naam, zoals vermeld in de bovenstaande regel.  | ```"ts": "2020-03-19 14:40:38.318"``` | tijdstempel |
 | De namen van JSON-eigenschappen die de speciale tekens bevatten. [\ en ' worden voorafgegaan door [' en ']  |  ```"id.wasp": "6A3090FD337DE6B"``` | [' id. Wasp '] _string |
 | Binnen [' en '] is er nog meer Escapes van enkele aanhalings tekens en backslashes. Een enkele aanhalings tekens worden geschreven als \ ' en een back slash wordt geschreven als\\\ | ```"Foo's Law Value": "17.139999389648"``` | [' Foo \' s wet waarde '] _double |
 | Geneste JSON-objecten worden afgevlakt met een punt als scheidings teken. Het nesten van Maxi maal 10 niveaus wordt ondersteund. |  ```"series": {"value" : 316 }``` | reeks. value_long |
@@ -186,4 +185,4 @@ Met de bovenstaande configuratie en payload worden drie kolommen en één gebeur
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Inzicht in de [doorvoer beperkingen](concepts-streaming-throughput-limitations.md) van uw omgeving
+* Inzicht in de [doorvoer beperkingen](./concepts-streaming-ingress-throughput-limits.md) van uw omgeving

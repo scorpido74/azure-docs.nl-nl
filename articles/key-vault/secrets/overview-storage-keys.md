@@ -9,12 +9,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
-ms.openlocfilehash: 58f41742519effc3959a3868345ed77c64db6341
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8f8a333c880850b239fbaba1ea405b94a1460e8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85508500"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076732"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Sleutels voor opslag accounts beheren met Key Vault en de Azure CLI
 
@@ -53,7 +53,7 @@ Key Vault is een micro soft-toepassing die vooraf is geregistreerd in alle Azure
 Als u deze hand leiding wilt volt ooien, moet u eerst het volgende doen:
 
 - [Installeer de Azure cli](/cli/azure/install-azure-cli).
-- [Een sleutel kluis maken](quick-create-cli.md)
+- [Een sleutelkluis maken](quick-create-cli.md)
 - [Maak een Azure-opslag account](../../storage/common/storage-account-create.md?tabs=azure-cli). De naam van het opslag account mag alleen kleine letters en cijfers bevatten. De naam moet tussen de 3 en 24 tekens lang zijn.
       
 ## <a name="manage-storage-account-keys"></a>Sleutels voor opslag accounts beheren
@@ -90,7 +90,7 @@ az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --storage
 Houd er rekening mee dat machtigingen voor opslag accounts niet beschikbaar zijn op de pagina toegangs beleid van het opslag account in de Azure Portal.
 ### <a name="create-a-key-vault-managed-storage-account"></a>Een door Key Vault beheerd opslag account maken
 
- Maak een Key Vault beheerd opslag account met behulp van de Azure CLI [AZ-opslag](/cli/azure/keyvault/storage?view=azure-cli-latest#az-keyvault-storage-add) opdracht. Stel een regeneratie periode van 90 dagen in. Na 90 dagen Key Vault `key1` de actieve sleutel opnieuw gegenereerd en gewisseld van `key2` naar `key1` . `key1`wordt vervolgens als de actieve sleutel gemarkeerd. Geef de opdracht de volgende parameter waarden:
+ Maak een Key Vault beheerd opslag account met behulp van de Azure CLI [AZ-opslag](/cli/azure/keyvault/storage?view=azure-cli-latest#az-keyvault-storage-add) opdracht. Stel een regeneratie periode van 90 dagen in. Wanneer het tijd is om te draaien, genereert de sleutel kluis de code die niet actief is opnieuw en stelt vervolgens de zojuist gemaakte sleutel in als actief. Slechts een van de sleutels wordt gebruikt voor het uitgeven van SAS-tokens tegelijk. Dit is de actieve sleutel. Geef de opdracht de volgende parameter waarden:
 
 - `--vault-name`: Geef de naam van de sleutel kluis door. Als u de naam van de sleutel kluis wilt weten, gebruikt u de opdracht Azure CLI AZ, sleutel [kluis List](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-list) .
 - `-n`: Geef de naam van uw opslag account door. Als u de naam van uw opslag account wilt weten, gebruikt u de opdracht Azure CLI [AZ Storage account list](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list) .

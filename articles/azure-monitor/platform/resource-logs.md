@@ -1,20 +1,20 @@
 ---
-title: Azure-resource logboeken
+title: Azure-resourcelogboeken
 description: Meer informatie over het streamen van Azure-resource logboeken naar een Log Analytics-werk ruimte in Azure Monitor.
 author: bwren
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 07/17/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 492aae69895d62c784d15cd77405d0c52ec13e3e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a7b24de860b543778d7e6ceabc95d10bf7c44c2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84947045"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077096"
 ---
-# <a name="azure-resource-logs"></a>Azure-resource logboeken
+# <a name="azure-resource-logs"></a>Azure-resourcelogboeken
 Azure-resource logboeken zijn [platform logboeken](platform-logs-overview.md) die inzicht bieden in bewerkingen die zijn uitgevoerd in een Azure-resource. De inhoud van bron Logboeken is afhankelijk van de Azure-service en het resource type. Bron logboeken worden niet standaard verzameld. U moet een diagnostische instelling maken voor elke Azure-resource om de resource logboeken te verzenden naar een Log Analytics-werk ruimte die u wilt gebruiken met [Azure monitor-logboeken](data-platform-logs.md), Azure Event hubs om buiten Azure door te sturen of om te Azure Storage voor archivering.
 
 Zie [Diagnostische instellingen maken om platform logboeken en metrische gegevens naar verschillende bestemmingen te verzenden](diagnostic-settings.md) voor meer informatie over het maken van een diagnostische instelling en het [implementeren van Azure monitor op schaal met behulp van Azure Policy](deploy-scale.md) voor meer informatie over het gebruik van Azure Policy om automatisch een diagnostische instelling te maken voor elke Azure-resource die u maakt.
@@ -85,17 +85,15 @@ Het bovenstaande voor beeld resulteert in het maken van drie tabellen:
 
 
 ### <a name="select-the-collection-mode"></a>De verzamelings modus selecteren
-Met de meeste Azure-resources worden gegevens naar de werk ruimte geschreven in **Azure Diagnostic** of de **resource-specifieke modus** zonder dat u daarvoor een keuze hoeft te doen. Zie de [documentatie voor elke service](diagnostic-logs-schema.md) voor meer informatie over de modus die wordt gebruikt. Alle Azure-Services zullen uiteindelijk gebruikmaken van de resource-specifieke modus. Als onderdeel van deze overgang kunt u met sommige resources een modus selecteren in de diagnostische instelling. Geef de resource-specifieke modus op voor nieuwe diagnostische instellingen, omdat hierdoor de gegevens eenvoudiger te beheren zijn en u mogelijk complexe migraties op een later tijdstip kunt voor komen.
+Met de meeste Azure-resources worden gegevens naar de werk ruimte geschreven in **Azure Diagnostic** of de **resource-specifieke modus** zonder dat u daarvoor een keuze hoeft te doen. Zie de [documentatie voor elke service](./resource-logs-schema.md) voor meer informatie over de modus die wordt gebruikt. Alle Azure-Services zullen uiteindelijk gebruikmaken van de resource-specifieke modus. Als onderdeel van deze overgang kunt u met sommige resources een modus selecteren in de diagnostische instelling. Geef de resource-specifieke modus op voor nieuwe diagnostische instellingen, omdat hierdoor de gegevens eenvoudiger te beheren zijn en u mogelijk complexe migraties op een later tijdstip kunt voor komen.
   
    ![Selector voor de modus Diagnostische instellingen](media/resource-logs-collect-workspace/diagnostic-settings-mode-selector.png)
 
-
-
-
 > [!NOTE]
-> Momenteel kunnen **Azure Diagnostics** en de **resource-specifieke** modus alleen worden geselecteerd bij het configureren van de diagnostische instelling in de Azure Portal. Als u de instelling configureert met CLI, Power shell of rest API, wordt **Azure Diagnostic**standaard gebruikt.
+> Zie voor een voor beeld van het instellen van de verzamelings modus met een resource manager-sjabloon [voor beelden van Resource Manager-sjablonen voor Diagnostische instellingen in azure monitor](../samples/resource-manager-diagnostic-settings.md#diagnostic-setting-for-recovery-services-vault).
 
-U kunt een bestaande diagnostische instelling wijzigen in de resource-specifieke modus. In dit geval blijven de gegevens die al zijn verzameld in de tabel _AzureDiagnostics_ totdat deze is verwijderd volgens de Bewaar instelling voor de werk ruimte. Nieuwe gegevens worden verzameld in de toegewezen tabel. Gebruik de operator [Union](https://docs.microsoft.com/azure/kusto/query/unionoperator) om gegevens op te vragen over beide tabellen.
+
+U kunt een bestaande diagnostische instelling wijzigen in de resource-specifieke modus. In dit geval blijven de gegevens die al zijn verzameld in de tabel _AzureDiagnostics_ totdat deze is verwijderd volgens de Bewaar instelling voor de werk ruimte. Nieuwe gegevens worden verzameld in de toegewezen tabel. Gebruik de operator [Union](/azure/kusto/query/unionoperator) om gegevens op te vragen over beide tabellen.
 
 Ga door met het bekijken van [Azure updates](https://azure.microsoft.com/updates/) blog voor aankondigingen over Azure-Services die ondersteuning bieden voor de resource-specifieke modus.
 
@@ -191,7 +189,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/00000000
 
 Elke PT1H.json-blob bevat een JSON-blob van gebeurtenissen die hebben plaatsgevonden binnen het uur dat is opgegeven in de blob-URL (bijvoorbeeld, h=12). Tijdens het huidige uur worden gebeurtenissen toegevoegd aan het bestand PT1H.json wanneer deze zich voordoen. De minuut waarde (m = 00) is altijd 00, omdat de bron logboek gebeurtenissen worden opgesplitst in afzonderlijke blobs per uur.
 
-In de PT1H.jsop bestand wordt elke gebeurtenis opgeslagen met de volgende indeling. Dit maakt gebruik van een algemeen schema op het hoogste niveau, maar is uniek voor elke Azure-service, zoals beschreven in het [schema voor bron logboeken](diagnostic-logs-schema.md).
+In de PT1H.jsop bestand wordt elke gebeurtenis opgeslagen met de volgende indeling. Dit maakt gebruik van een algemeen schema op het hoogste niveau, maar is uniek voor elke Azure-service, zoals beschreven in het [schema voor bron logboeken](./resource-logs-schema.md).
 
 ``` JSON
 {"time": "2016-07-01T00:00:37.2040000Z","systemId": "46cdbb41-cb9c-4f3d-a5b4-1d458d827ff1","category": "NetworkSecurityGroupRuleCounter","resourceId": "/SUBSCRIPTIONS/s1id1234-5679-0123-4567-890123456789/RESOURCEGROUPS/TESTRESOURCEGROUP/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/TESTNSG","operationName": "NetworkSecurityGroupCounters","properties": {"vnetResourceGuid": "{12345678-9012-3456-7890-123456789012}","subnetPrefix": "10.3.0.0/24","macAddress": "000123456789","ruleName": "/subscriptions/ s1id1234-5679-0123-4567-890123456789/resourceGroups/testresourcegroup/providers/Microsoft.Network/networkSecurityGroups/testnsg/securityRules/default-allow-rdp","direction": "In","type": "allow","matchedConnections": 1988}}

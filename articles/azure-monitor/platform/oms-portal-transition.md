@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 680cd9b44cc447f9bdea38cb9d04fc661fba9c79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b33bd5ba20e21d757e412e9dac7c474308c4561d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77659251"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077160"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS-Portal, verplaatsen naar Azure
 
@@ -40,7 +41,7 @@ Hoewel de meeste functies blijven werken zonder een migratie uit te voeren, moet
 - U moet [uw gebruikers machtigingen migreren](#user-access-and-role-migration) naar het Azure Portal.
 - Zie [uw OMS-update-implementaties migreren naar Azure](../../automation/migrate-oms-update-deployments.md) voor meer informatie over het overstappen van de updatebeheer-oplossing.
 
-Raadpleeg de [Veelgestelde vragen over de overgang van de OMS-Portal naar Azure portal voor log Analytics gebruikers](oms-portal-faq.md) voor informatie over hoe u kunt overstappen naar de Azure Portal. 
+Raadpleeg de [Veelgestelde vragen over de overgang van de OMS-Portal naar Azure portal voor log Analytics gebruikers](../overview.md) voor informatie over hoe u kunt overstappen naar de Azure Portal. 
 
 ## <a name="user-access-and-role-migration"></a>Gebruikers toegang en rollen migreren
 Azure Portal Access Management is rijker en krachtiger dan het toegangs beheer in de OMS-Portal. Zie [uw Azure monitor-werk ruimte voor logboeken ontwerpen](design-logs-deployment.md) voor meer informatie over toegangs beheer in log Analytics.
@@ -69,7 +70,7 @@ U kunt geen nieuwe werk ruimten meer maken met behulp van de OMS-Portal. Volg de
 
 ### <a name="alert-extension"></a>Uitbrei ding voor waarschuwingen  
 
-Er zijn waarschuwingen [uitgebreid naar de Azure Portal](alerts-extend.md) bestaande waarschuwingen worden weer gegeven in de OMS-Portal, maar u kunt ze alleen beheren in azure Portal. Als u waarschuwingen programmatisch opent met behulp van de Log Analytics waarschuwing REST API of Log Analytics waarschuwing resource sjabloon, moet u actie groepen gebruiken in plaats van acties in uw API-aanroepen, Azure Resource Manager-sjablonen en Power shell-opdrachten.
+Er zijn waarschuwingen [uitgebreid naar de Azure Portal](./alerts-unified-log.md) bestaande waarschuwingen worden weer gegeven in de OMS-Portal, maar u kunt ze alleen beheren in azure Portal. Als u waarschuwingen programmatisch opent met behulp van de Log Analytics waarschuwing REST API of Log Analytics waarschuwing resource sjabloon, moet u actie groepen gebruiken in plaats van acties in uw API-aanroepen, Azure Resource Manager-sjablonen en Power shell-opdrachten.
 
 ### <a name="alert-management-solution"></a>Oplossing voor waarschuwings beheer
 Als wijziging ten opzichte van een eerdere aankondiging blijft de [oplossing voor waarschuwings beheer](alert-management-solution.md) beschikbaar en wordt deze volledig ondersteund in de Azure Portal. U kunt door gaan met de installatie van de oplossing van Azure Marketplace.
@@ -101,7 +102,7 @@ Deze oplossing analyseert NSG-stroom logboeken en biedt inzicht in het volgende.
 U kunt de diagnostische instellingen blijven gebruiken om NSG-logboeken te verzenden naar Log Analytics zodat uw bestaande opgeslagen Zoek opdrachten, waarschuwingen en dash boards blijven werken. Klanten die de oplossing al hebben geïnstalleerd, kunnen deze blijven gebruiken tot verdere kennisgeving. Vanaf 5 september wordt de oplossing voor de analyse van netwerk beveiligings groepen verwijderd uit de Marketplace en beschikbaar gesteld via de community als een [Azure Quick](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Operationalinsights)start-sjabloon.
 
 ## <a name="system-center-operations-manager"></a>System Center Operations Manager
-Als u [uw Operations Manager-beheer groep hebt verbonden met log Analytics](om-agents.md), blijft het werken zonder wijzigingen. Voor nieuwe verbindingen moet u echter de instructies in [micro soft System Center Operations Manager Management Pack volgen om Operations Management Suite te configureren](https://blogs.technet.microsoft.com/momteam/2018/07/25/microsoft-system-center-operations-manager-management-pack-to-configure-operations-management-suite/).
+Als u [uw Operations Manager-beheer groep hebt verbonden met log Analytics](om-agents.md), blijft het werken zonder wijzigingen. Voor nieuwe verbindingen moet u echter de instructies in [micro soft System Center Operations Manager Management Pack volgen om Operations Management Suite te configureren](https://techcommunity.microsoft.com/t5/system-center-blog/bg-p/SystemCenterBlog).
 
 ## <a name="next-steps"></a>Volgende stappen
-- Zie [Veelgestelde vragen over de overgang van de OMS-Portal naar Azure portal voor log Analytics gebruikers](oms-portal-faq.md) voor hulp bij het overstappen van de OMS-Portal naar de Azure Portal.
+- Zie [Veelgestelde vragen over de overgang van de OMS-Portal naar Azure portal voor log Analytics gebruikers](../overview.md) voor hulp bij het overstappen van de OMS-Portal naar de Azure Portal.

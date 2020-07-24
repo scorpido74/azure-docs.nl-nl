@@ -4,11 +4,12 @@ description: Meer informatie over de partners van Azure Monitor en hoe u toegang
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: be309bf6caeb716fee86e4542363f5554b4568fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f40d38d182e1a8c233b15f711fd557a5d72e8f30
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84248968"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077328"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Integraties van Azure Monitor-partner
 
@@ -137,7 +138,7 @@ De **ArcSight** van de MicroFocus heeft een slimme connector voor Azure monitor 
 
 Met de micro focus- **Operations Bridge** worden automatisch alle hybride IT-resources bewaakt: elk apparaat, besturings systeem, Data Base, toepassing of service, ongeacht waar het wordt uitgevoerd en past AIOps toe op alle gegevens typen: gebeurtenissen, metrieken, logboeken en afhankelijkheden. Het biedt een unieke combi natie van Quality of Service-bewaking, in combi natie met diepe analyse van toepassings status en bevat een uitgebreide prestatie-en beschikbaarheids bewaking van Microsoft Azure Services. Met Operations Bridge kunnen klanten een enkel glas venster bieden, dat beschikbaar is op elk apparaat met een browser, op basis van de manier waarop zowel bedrijven als IT-belanghebbenden kunnen begrijpen.
 
-Lees meer
+Meer informatie
 - [Overzicht van OB Suite](https://www.microfocus.com/products/operations-bridge-suite/overview)
 - [Downloaden](https://marketplace.microfocus.com/itom/content/obm-management-pack-for-microsoft-azure)
 - [Sitescope](https://docs.microfocus.com/itom/SiteScope:2019.05/MSAzureMonitor) -sitescope is een onderdeel in de operations Bridge Suite.
@@ -269,8 +270,8 @@ Turbonomic levert werkbelasting automatisering voor hybride Clouds door tegelijk
 
 - [Meer informatie over Azure Monitor](../../azure-monitor/overview.md)
 - [Toegang tot metrische gegevens met behulp van de REST API](rest-api-walkthrough.md)
-- [Het activiteiten logboek streamen naar een niet-micro soft-service](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
-- [Bron logboeken streamen naar een niet-micro soft-service](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
+- [Het activiteiten logboek streamen naar een niet-micro soft-service](./activity-log.md#legacy-collection-methods)
+- [Bron logboeken streamen naar een niet-micro soft-service](./resource-logs.md#send-to-azure-event-hubs)
 
 
 
@@ -301,4 +302,3 @@ Turbonomic levert werkbelasting automatisering voor hybride Clouds door tegelijk
 [splunk-doc]: https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk "Splunk-documentatie."
 [sumologic-doc]: https://www.sumologic.com/azure "SumoLogic-documentatie."
 [turbonomic-doc]: https://turbonomic.com/ "Introductie van Turbonomic."
-

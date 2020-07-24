@@ -14,11 +14,12 @@ ms.workload: identity
 ms.date: 01/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 298ec15700537f2368ef33ead267e85f5f22bfd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76b41e25a95f23b66edfbd4715037074537221f9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791789"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076449"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Klassieke abonnementsbeheerders van Azure
 
@@ -29,7 +30,7 @@ In dit artikel wordt beschreven hoe u de rollen mede beheerder en service beheer
 ## <a name="add-a-co-administrator"></a>Een co-beheerder toevoegen
 
 > [!TIP]
-> U hoeft alleen een mede beheerder toe te voegen als de gebruiker klassieke Azure-implementaties moet beheren met behulp van de [Azure Service Management Power shell-module](https://docs.microsoft.com/powershell/module/servicemanagement/azure). Als de gebruiker alleen de Azure Portal gebruikt voor het beheren van de klassieke resources, hoeft u de klassieke beheerder niet toe te voegen aan de gebruiker.
+> U hoeft alleen een mede beheerder toe te voegen als de gebruiker klassieke Azure-implementaties moet beheren met behulp van de [Azure Service Management Power shell-module](/powershell/module/servicemanagement/azure.service). Als de gebruiker alleen de Azure Portal gebruikt voor het beheren van de klassieke resources, hoeft u de klassieke beheerder niet toe te voegen aan de gebruiker.
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als service beheerder of mede beheerder.
 
@@ -37,7 +38,7 @@ In dit artikel wordt beschreven hoe u de rollen mede beheerder en service beheer
 
     Mede beheerders kunnen alleen worden toegewezen bij het abonnements bereik.
 
-1. Klik op **Toegangsbeheer (IAM)** .
+1. Klik op **Toegangsbeheer (IAM)**.
 
 1. Klik op het tabblad **klassieke beheerders** .
 
@@ -82,7 +83,7 @@ Zie [Wat zijn de standaard machtigingen voor gebruikers in azure Active Director
 
 1. Open [Abonnementen](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) en selecteer een abonnement.
 
-1. Klik op **Toegangsbeheer (IAM)** .
+1. Klik op **Toegangsbeheer (IAM)**.
 
 1. Klik op het tabblad **klassieke beheerders** .
 

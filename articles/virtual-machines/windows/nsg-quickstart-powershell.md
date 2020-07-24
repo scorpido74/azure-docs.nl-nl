@@ -7,17 +7,18 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: a0dcc53d84edb4dd697213106c02626df24acfd8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bae6da2e299065bada3b4e8a9657f00ef07e138b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81869403"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075554"
 ---
 # <a name="how-to-open-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>Poorten en eind punten openen voor een virtuele machine in azure met behulp van Power shell
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
 
 ## <a name="quick-commands"></a>Snelle opdrachten
-Als u een netwerk beveiligings groep en ACL-regels wilt maken, moet u [de nieuwste versie van Azure PowerShell geïnstalleerd](/powershell/azureps-cmdlets-docs)hebben. U kunt [deze stappen ook uitvoeren met behulp van de Azure Portal](nsg-quickstart-portal.md).
+Als u een netwerk beveiligings groep en ACL-regels wilt maken, moet u [de nieuwste versie van Azure PowerShell geïnstalleerd](/powershell/azure/)hebben. U kunt [deze stappen ook uitvoeren met behulp van de Azure Portal](nsg-quickstart-portal.md).
 
 Meld u aan bij uw Azure-account:
 
@@ -27,7 +28,7 @@ Connect-AzAccount
 
 Vervang in de volgende voor beelden parameter namen door uw eigen waarden. Voor beelden van parameter namen zijn *myResourceGroup*, *myNetworkSecurityGroup*en *myVnet*.
 
-Maak een regel met [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig). In het volgende voor beeld wordt een regel gemaakt met de naam *myNetworkSecurityGroupRule* om *TCP* -verkeer toe te staan op poort *80*:
+Maak een regel met [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig). In het volgende voor beeld wordt een regel gemaakt met de naam *myNetworkSecurityGroupRule* om *TCP* -verkeer toe te staan op poort *80*:
 
 ```powershell
 $httprule = New-AzNetworkSecurityRuleConfig `
@@ -43,7 +44,7 @@ $httprule = New-AzNetworkSecurityRuleConfig `
     -DestinationPortRange 80
 ```
 
-Vervolgens maakt u de netwerk beveiligings groep met [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup) en wijst u de http-regel die u zojuist hebt gemaakt als volgt toe. In het volgende voor beeld wordt een netwerk beveiligings groep gemaakt met de naam *myNetworkSecurityGroup*:
+Vervolgens maakt u de netwerk beveiligings groep met [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) en wijst u de http-regel die u zojuist hebt gemaakt als volgt toe. In het volgende voor beeld wordt een netwerk beveiligings groep gemaakt met de naam *myNetworkSecurityGroup*:
 
 ```powershell
 $nsg = New-AzNetworkSecurityGroup `
@@ -53,7 +54,7 @@ $nsg = New-AzNetworkSecurityGroup `
     -SecurityRules $httprule
 ```
 
-We gaan nu uw netwerk beveiligings groep toewijzen aan een subnet. In het volgende voor beeld wordt een bestaand virtueel netwerk met de naam *myVnet* toegewezen aan de variabele *$vnet* met [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork):
+We gaan nu uw netwerk beveiligings groep toewijzen aan een subnet. In het volgende voor beeld wordt een bestaand virtueel netwerk met de naam *myVnet* toegewezen aan de variabele *$vnet* met [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork):
 
 ```powershell
 $vnet = Get-AzVirtualNetwork `
@@ -61,7 +62,7 @@ $vnet = Get-AzVirtualNetwork `
     -Name "myVnet"
 ```
 
-Koppel uw netwerk beveiligings groep aan uw subnet met [set-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworksubnetconfig). In het volgende voor beeld wordt het subnet met de naam *mySubnet* gekoppeld aan de netwerk beveiligings groep:
+Koppel uw netwerk beveiligings groep aan uw subnet met [set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig). In het volgende voor beeld wordt het subnet met de naam *mySubnet* gekoppeld aan de netwerk beveiligings groep:
 
 ```powershell
 $subnetPrefix = $vnet.Subnets|?{$_.Name -eq 'mySubnet'}
@@ -73,7 +74,7 @@ Set-AzVirtualNetworkSubnetConfig `
     -NetworkSecurityGroup $nsg
 ```
 
-Werk tot slot het virtuele netwerk bij met [set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetwork) om de wijzigingen van kracht te laten worden:
+Werk tot slot het virtuele netwerk bij met [set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) om de wijzigingen van kracht te laten worden:
 
 ```powershell
 Set-AzVirtualNetwork -VirtualNetwork $vnet
@@ -89,6 +90,5 @@ Voor Maxi maal beschik bare webtoepassingen moet u uw virtuele machines achter e
 In dit voor beeld hebt u een eenvoudige regel gemaakt om HTTP-verkeer toe te staan. In de volgende artikelen vindt u informatie over het maken van meer gedetailleerde omgevingen:
 
 * [Overzicht van Azure Resource Manager](../../azure-resource-manager/management/overview.md)
-* [Wat is een netwerk beveiligings groep?](../../virtual-network/security-overview.md)
+* [Wat is een netwerkbeveiligingsgroep?](../../virtual-network/security-overview.md)
 * [Overzicht van Azure Load Balancer](../../load-balancer/load-balancer-overview.md)
-

@@ -4,18 +4,18 @@ description: Azure Block Chain service beheren met Azure CLI
 ms.date: 11/22/2019
 ms.topic: how-to
 ms.reviewer: janders
-ms.openlocfilehash: fc00bedee5ff55033a1d65c6d5d6bfa766f0f01e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b41bc44c9efbf71621fcfba06e668f42caa0f8c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208158"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076933"
 ---
 # <a name="manage-azure-blockchain-service-using-azure-cli"></a>Azure Block Chain service beheren met Azure CLI
 
 Naast de Azure Portal, kunt u Azure CLI gebruiken voor het beheren van Block Chain leden en transactie knooppunten voor uw Azure Block Chain-service.
 
-Zorg ervoor dat u de nieuwste [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli) hebt geïnstalleerd en bent aangemeld bij een Azure-account in met `az login` .
+Zorg ervoor dat u de nieuwste [Azure cli](/cli/azure/install-azure-cli) hebt geïnstalleerd en bent aangemeld bij een Azure-account in met `az login` .
 
 Vervang in de volgende voor beelden door `<parameter names>` uw eigen waarden.
 
@@ -34,7 +34,7 @@ az resource create \
 
 | Parameter | Beschrijving |
 |---------|-------------|
-| **resource-groep** | De naam van de resource groep waar de Azure Block Chain-Service resources worden gemaakt. |
+| **resource-group** | De naam van de resource groep waar de Azure Block Chain-Service resources worden gemaakt. |
 | **naam** | Een unieke naam die uw Azure Block Chain Service Block Chain-lid aanduidt. De naam wordt gebruikt voor het adres van het open bare eind punt. Bijvoorbeeld `myblockchainmember.blockchain.azure.com`. |
 | **locatie** | Azure-regio waar het block Chain-lid wordt gemaakt. Bijvoorbeeld `eastus`. Kies de locatie die zich het dichtst bij uw gebruikers of uw andere Azure-toepassingen bevindt. |
 | **wachtwoord** | Het wacht woord voor het gebruikers account. Het wacht woord van het lid-account wordt gebruikt voor de verificatie van het open bare eind punt van het block Chain-lid met behulp van basis verificatie. Het wacht woord moet aan drie van de volgende vier vereisten voldoen: de lengte moet tussen 12 & 72 tekens, 1 kleine letter, 1 hoofd letter, 1 cijfer en 1 speciaal teken zijn dat geen hekje (#), procent (%), komma (,), ster (*), back-quote ( \` ), dubbele aanhalings tekens ("), één aanhalings teken (), streepje (-) en semicolumn (;)|
@@ -61,7 +61,7 @@ az resource update \
 
 | Parameter | Beschrijving |
 |---------|-------------|
-| **resource-groep** | De naam van de resource groep waar de Azure Block Chain-Service resources worden gemaakt. |
+| **resource-group** | De naam van de resource groep waar de Azure Block Chain-Service resources worden gemaakt. |
 | **naam** | Naam die uw Azure Block Chain service-lid aanduidt. |
 | **wachtwoord** | Het wacht woord voor het gebruikers account. Het wacht woord moet aan drie van de volgende vier vereisten voldoen: de lengte moet tussen 12 & 72 tekens, 1 kleine letter, 1 hoofd letter, 1 cijfer en 1 speciaal teken zijn dat geen hekje (#), procent (%), komma (,), ster (*), back quote ( \` ), dubbele aanhalings tekens ("), één aanhalings teken (), streepje (-) en punt komma (;). |
 
@@ -80,7 +80,7 @@ az resource create \
 
 | Parameter | Beschrijving |
 |---------|-------------|
-| **resource-groep** | De naam van de resource groep waar de Azure Block Chain-Service resources worden gemaakt. |
+| **resource-group** | De naam van de resource groep waar de Azure Block Chain-Service resources worden gemaakt. |
 | **naam** | De naam van het block Chain-lid van de Azure Block Chain-service dat ook de nieuwe naam van het transactie knooppunt bevat. |
 | **locatie** | Azure-regio waar het block Chain-lid wordt gemaakt. Bijvoorbeeld `eastus`. Kies de locatie die zich het dichtst bij uw gebruikers of uw andere Azure-toepassingen bevindt. |
 | **wachtwoord** | Het wacht woord voor het transactie knooppunt. Het wacht woord moet aan drie van de volgende vier vereisten voldoen: de lengte moet tussen 12 & 72 tekens, 1 kleine letter, 1 hoofd letter, 1 cijfer en 1 speciaal teken zijn dat geen hekje (#), procent (%), komma (,), ster (*), back quote ( \` ), dubbele aanhalings tekens ("), één aanhalings teken (), streepje (-) en punt komma (;). |
@@ -102,7 +102,7 @@ az resource update \
 
 | Parameter | Beschrijving |
 |---------|-------------|
-| **resource-groep** | De naam van de resource groep waarin de Azure Block Chain-Service resources bestaan. |
+| **resource-group** | De naam van de resource groep waarin de Azure Block Chain-Service resources bestaan. |
 | **naam** | De naam van het block Chain-lid van de Azure Block Chain-service dat ook de nieuwe naam van het transactie knooppunt bevat. |
 | **wachtwoord** | Het wacht woord voor het transactie knooppunt. Het wacht woord moet aan drie van de volgende vier vereisten voldoen: de lengte moet tussen 12 & 72 tekens, 1 kleine letter, 1 hoofd letter, 1 cijfer en 1 speciaal teken zijn dat geen hekje (#), procent (%), komma (,), ster (*), back quote ( \` ), dubbele aanhalings tekens ("), één aanhalings teken (), streepje (-) en punt komma (;). |
 
@@ -121,7 +121,7 @@ az resource update \
 
 | Parameter | Beschrijving |
 |---------|-------------|
-| **resource-groep** | De naam van de resource groep waar de Azure Block Chain-Service resources worden gemaakt. |
+| **resource-group** | De naam van de resource groep waar de Azure Block Chain-Service resources worden gemaakt. |
 | **naam** | Naam die uw Azure Block Chain service-lid aanduidt. |
 | **consortiumManagementAccountPassword** | Het account wachtwoord voor het consortium beheer. Het wacht woord moet aan drie van de volgende vier vereisten voldoen: de lengte moet tussen 12 & 72 tekens, 1 kleine letter, 1 hoofd letter, 1 cijfer en 1 speciaal teken zijn dat geen hekje (#), procent (%), komma (,), ster (*), back quote ( \` ), dubbele aanhalings tekens ("), één aanhalings teken (), streepje (-) en punt komma (;). |
   
@@ -138,7 +138,7 @@ az resource update \
 
 | Parameter | Beschrijving |
 |---------|-------------|
-| **resource-groep** | De naam van de resource groep waarin de Azure Block Chain-Service resources bestaan. |
+| **resource-group** | De naam van de resource groep waarin de Azure Block Chain-Service resources bestaan. |
 | **naam** | De naam van het block Chain-lid van de Azure Block Chain-service. |
 | **ruleName** | Regel naam voor white list een IP-adres bereik. Optionele para meter voor firewall regels.|
 | **startIpAddress** | Begin van het IP-adres bereik voor white list. Optionele para meter voor firewall regels.|
@@ -158,7 +158,7 @@ az resource invoke-action \
 
 | Parameter | Beschrijving |
 |---------|-------------|
-| **resource-groep** | De naam van de resource groep waarin de Azure Block Chain-Service resources bestaan. |
+| **resource-group** | De naam van de resource groep waarin de Azure Block Chain-Service resources bestaan. |
 | **naam** | De naam van het block Chain-lid van de Azure Block Chain-service dat ook de nieuwe naam van het transactie knooppunt bevat. |
 
 ## <a name="regenerate-api-keys"></a>API-sleutels opnieuw genereren
@@ -176,7 +176,7 @@ az resource invoke-action \
 
 | Parameter | Beschrijving |
 |---------|-------------|
-| **resource-groep** | De naam van de resource groep waarin de Azure Block Chain-Service resources bestaan. |
+| **resource-group** | De naam van de resource groep waarin de Azure Block Chain-Service resources bestaan. |
 | **naam** | De naam van het block Chain-lid van de Azure Block Chain-service dat ook de nieuwe naam van het transactie knooppunt bevat. |
 | **keyName** | Vervang door \<keyValue\> key1 of Key2. |
 
@@ -193,7 +193,7 @@ az resource delete \
 
 | Parameter | Beschrijving |
 |---------|-------------|
-| **resource-groep** | De naam van de resource groep waarin de Azure Block Chain-Service resources bestaan. |
+| **resource-group** | De naam van de resource groep waarin de Azure Block Chain-Service resources bestaan. |
 | **naam** | De naam van het block Chain-lid van de Azure Block Chain-service dat ook de naam van het transactie knooppunt bevat dat moet worden verwijderd. |
 
 ## <a name="delete-a-blockchain-member"></a>Een Block Chain-lid verwijderen
@@ -209,7 +209,7 @@ az resource delete \
 
 | Parameter | Beschrijving |
 |---------|-------------|
-| **resource-groep** | De naam van de resource groep waarin de Azure Block Chain-Service resources bestaan. |
+| **resource-group** | De naam van de resource groep waarin de Azure Block Chain-Service resources bestaan. |
 | **naam** | De naam van het block Chain-lid van de Azure Block Chain-service dat moet worden verwijderd. |
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
@@ -227,7 +227,7 @@ az role assignment create \
 |---------|-------------|
 | **rolvak** | De naam van de Azure AD-rol. |
 | **toegewezen gebruiker** | Gebruikers-ID voor Azure AD. Bijvoorbeeld: `user@contoso.com` |
-| **ligt** | Het bereik van de roltoewijzing. Dit kan een Block Chain-lid of een transactie knooppunt zijn. |
+| **bereik** | Het bereik van de roltoewijzing. Dit kan een Block Chain-lid of een transactie knooppunt zijn. |
 
 **Voorbeeld:**
 
@@ -263,7 +263,7 @@ az role assignment create \
 |---------|-------------|
 | **rolvak** | De naam van de Azure AD-rol. |
 | **toegewezen gebruiker-object-id** | Groeps-ID of toepassings-ID van Azure AD. |
-| **ligt** | Het bereik van de roltoewijzing. Dit kan een Block Chain-lid of een transactie knooppunt zijn. |
+| **bereik** | Het bereik van de roltoewijzing. Dit kan een Block Chain-lid of een transactie knooppunt zijn. |
 
 **Voorbeeld:**
 
@@ -289,7 +289,7 @@ az role assignment delete \
 |---------|-------------|
 | **rolvak** | De naam van de Azure AD-rol. |
 | **toegewezen gebruiker** | Gebruikers-ID voor Azure AD. Bijvoorbeeld: `user@contoso.com` |
-| **ligt** | Het bereik van de roltoewijzing. Dit kan een Block Chain-lid of een transactie knooppunt zijn. |
+| **bereik** | Het bereik van de roltoewijzing. Dit kan een Block Chain-lid of een transactie knooppunt zijn. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

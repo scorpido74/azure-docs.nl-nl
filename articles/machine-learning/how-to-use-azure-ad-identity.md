@@ -3,18 +3,19 @@ title: AAD-identiteit gebruiken met uw webservice
 titleSuffix: Azure Machine Learning
 description: Gebruik de AAD-identiteit met uw webservice in azure Kubernetes service om toegang te krijgen tot cloud resources tijdens de score.
 services: machine-learning
-author: trevorbye
-ms.author: trbye
+ms.author: larryfr
+author: BlackMist
 ms.reviewer: aashishb
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 02/10/2020
-ms.openlocfilehash: 660cb14bd081dffbf3e9fb5f02b7690212915355
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa434a4e19321e88e388661ccb488f15c98d3a0f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807482"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078068"
 ---
 # <a name="use-azure-ad-identity-with-your-machine-learning-web-service-in-azure-kubernetes-service"></a>Azure AD-identiteit gebruiken met uw machine learning-webservice in de Azure Kubernetes-service
 
@@ -149,6 +150,9 @@ secret_client = SecretClient(
     credential=credential)
 secret = secret_client.get_secret(my_secret_name)
 ```
+
+> [!IMPORTANT]
+> In dit voor beeld wordt het DefaultAzureCredential gebruikt. Als u uw identiteits toegang wilt verlenen met behulp van een specifiek toegangs beleid, raadpleegt [u deel 4: Haal het geheim op uit Azure Key Vault](../key-vault/general/authentication.md#part-4-retrieve-the-secret-from-your-azure-key-vault-in-an-application-python).
 
 ### <a name="access-blob-from-your-web-service"></a>Toegang tot BLOB vanuit uw webservice
 

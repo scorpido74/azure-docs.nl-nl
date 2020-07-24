@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: aahi
 ms.openlocfilehash: b27aa1409d543c157069d2701c49ef54a097e552
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220290"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075226"
 ---
 # <a name="sending-search-requests-to-the-bing-video-search-api"></a>Zoekaanvragen verzenden naar de Bing Video's zoeken-API
 
@@ -37,7 +37,7 @@ Om video's als zoekresultaat te krijgen, verstuurt u een GET-aanvraag naar het v
 https://api.cognitive.microsoft.com/bing/v7.0/videos/search
 ```
    
-In de aanvraag moet u het HTTPS-protocol gebruiken.
+Voor de aanvraag moet het HTTPS-protocol worden gebruikt.
 
 Het is raadzaam dat alle aanvragen afkomstig zijn van een server. Het distribueren van de sleutel als onderdeel van een clienttoepassing biedt een kwaadwillende gebruiker namelijk meer mogelijkheden om de sleutel te onderscheppen. Als u ervoor kiest om alle aanroepen via een server te laten lopen, beschikt u bovendien over een centraal upgradepunt voor toekomstige versies van de API.
 

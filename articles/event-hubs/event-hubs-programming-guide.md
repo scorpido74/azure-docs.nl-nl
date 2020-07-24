@@ -3,15 +3,15 @@ title: .NET-programmeer handleiding-Azure Event Hubs (verouderd) | Microsoft Doc
 description: Dit artikel bevat informatie over het schrijven van code voor Azure-Event Hubs met behulp van de Azure .NET SDK.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: de731d591c367e386fe8ef1eef03f1b90e0fa126
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0186357ec7f0f8541acf33c524a57cdb8e8dc55c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314546"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074843"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>.NET-programmeer handleiding voor Azure Event Hubs (verouderd micro soft. Azure. Event hubs-pakket)
-In dit artikel worden enkele algemene scenario's beschreven voor het schrijven van code met behulp van Azure Event Hubs. Er wordt uitgegaan van een basisbegrip van Event Hubs. Zie het [Overzicht van Event Hubs](event-hubs-what-is-event-hubs.md) voor een conceptueel overzicht van Event Hubs.
+In dit artikel worden enkele algemene scenario's beschreven voor het schrijven van code met behulp van Azure Event Hubs. Er wordt uitgegaan van een basisbegrip van Event Hubs. Zie het [Overzicht van Event Hubs](./event-hubs-about.md) voor een conceptueel overzicht van Event Hubs.
 
 > [!WARNING]
 > Deze hand leiding is voor het oude pakket **micro soft. Azure. Event hubs** . U wordt aangeraden uw code te [migreren](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md) voor het meest recente [Azure. Messa ging. Event hubs](get-started-dotnet-standard-send-v2.md) -pakket.  
@@ -96,7 +96,7 @@ Eén batch mag niet groter zijn dan de limiet van 1 MB van een gebeurtenis. Daar
 
 ## <a name="send-asynchronously-and-send-at-scale"></a>Asynchroon verzenden en op schaal verzenden
 
-U verzendt gebeurtenissen asynchroon naar een Event Hub. Het per ongeluk verzenden van de frequentie verhoogt de snelheid waarmee een client gebeurtenissen kan verzenden. [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) retourneert een [Task](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) -object. U kunt de [RetryPolicy](/dotnet/api/microsoft.servicebus.retrypolicy) -klasse op de client gebruiken om de opties voor de client opnieuw proberen te beheren.
+U verzendt gebeurtenissen asynchroon naar een Event Hub. Het per ongeluk verzenden van de frequentie verhoogt de snelheid waarmee een client gebeurtenissen kan verzenden. [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) retourneert een [Task](/dotnet/api/system.threading.tasks.task?view=netcore-3.1) -object. U kunt de [RetryPolicy](/dotnet/api/microsoft.servicebus.retrypolicy) -klasse op de client gebruiken om de opties voor de client opnieuw proberen te beheren.
 
 ## <a name="event-consumers"></a>Gebeurtenisconsumers
 Met de klasse [EventProcessorHost][] worden gegevens uit Event Hubs verwerkt. Gebruik deze implementatie bij het bouwen van gebeurtenislezers op het .NET-platform. [EventProcessorHost][] biedt een thread-veilige, beveiligde runtimeomgeving met meerdere processen voor implementaties van gebeurtenisprocessors die ook beheer biedt van controlepunten en partitielease.
@@ -149,8 +149,8 @@ Zie het voorbeeld [Op grote schaal veilig publiceren met Event Hubs](https://cod
 
 Volg deze koppelingen voor meer informatie over Event Hubs-scenario‘s:
 
-* [Event Hubs-API-overzicht](event-hubs-api-overview.md)
-* [Wat is Event Hubs](event-hubs-what-is-event-hubs.md)
+* [Event Hubs-API-overzicht](./event-hubs-samples.md)
+* [Wat is Event Hubs](./event-hubs-about.md)
 * [Beschikbaarheid en consistentie in Event Hubs](event-hubs-availability-and-consistency.md)
 * [API-verwijzing voor de gebeurtenisprocessorhost](/dotnet/api/microsoft.servicebus.messaging.eventprocessorhost)
 

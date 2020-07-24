@@ -1,5 +1,5 @@
 ---
-title: Gegevens locaties voor virtueel bureau blad van Windows-Azure
+title: 'Gegevens locaties voor virtueel bureau blad van Windows: 2019-Azure'
 description: Een kort overzicht van de locaties waar de gegevens en meta gegevens van Windows virtueel bureau blad zijn opgeslagen.
 services: virtual-desktop
 author: Heidilohr
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b8cbee74a8f9639fc2c3838f38dabf2a62cf339e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa998ddf8225475bbcf657ed9feee951263d2743
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82614445"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077582"
 ---
 # <a name="data-locations-for-windows-virtual-desktop"></a>Gegevens locaties voor virtueel bureau blad van Windows
 

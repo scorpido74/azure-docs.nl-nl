@@ -3,11 +3,12 @@ title: Ondertekende installatie kopieën beheren
 description: Meer informatie over het inschakelen van inhouds vertrouwen voor uw Azure container Registry en het pushen en pullen van ondertekende installatie kopieën. Content Trust is een functie van de service laag Premium.
 ms.topic: article
 ms.date: 09/06/2019
-ms.openlocfilehash: 74bc61f71fc001d5333fcd3c9ac47fa4dd90218c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34bb56bab869cb1f12541b65c59b06a73b215377
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84509556"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076847"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Inhoud vertrouwen in Azure Container Registry
 
@@ -113,7 +114,7 @@ az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee 
 De `<service principal ID>` kan de **appId**, **objectId** of een van de bijbehorende **servicePrincipalNames** van de service-principal zijn. Zie [Azure Container Registry authentication with service principals](container-registry-auth-service-principal.md) (Azure Container Registry-verificatie met service-principals) voor meer informatie over het werken met service-principals en Azure Container Registry.
 
 > [!IMPORTANT]
-> Nadat een rol is gewijzigd, voert `az acr login` u uit om het lokale identiteits token voor de Azure CLI te vernieuwen zodat de nieuwe rollen van kracht worden. Zie [toegang tot Azure-resources beheren met RBAC en Azure cli](../role-based-access-control/role-assignments-cli.md) voor meer informatie over het controleren van rollen voor een identiteit en het [oplossen van problemen met RBAC voor Azure-resources](../role-based-access-control/troubleshooting.md).
+> Nadat een rol is gewijzigd, voert `az acr login` u uit om het lokale identiteits token voor de Azure CLI te vernieuwen zodat de nieuwe rollen van kracht worden. Zie [toegang tot Azure-resources beheren met RBAC en Azure cli](../role-based-access-control/role-assignments-cli.md) voor meer informatie over het controleren van rollen voor een identiteit en het [oplossen van problemen met Azure RBAC](../role-based-access-control/troubleshooting.md).
 
 ## <a name="push-a-trusted-image"></a>Een vertrouwde installatiekopie pushen
 

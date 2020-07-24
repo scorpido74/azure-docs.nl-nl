@@ -5,29 +5,31 @@ author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: troubleshooting
-ms.date: 06/05/2019
+ms.date: 07/15/2020
 ms.author: lbosq
-ms.openlocfilehash: d9a4e336f582e866fd057f6c281f892ce07b34fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f75374fc88923a0f131d513bebf0ffe1feeca359
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75941846"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076771"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-dbs-api-for-mongodb"></a>Veelvoorkomende problemen met de API van Azure Cosmos DB voor MongoDB oplossen
 
-Azure Cosmos DB implementeert de Wire-protocollen van algemene NoSQL-data bases, waaronder MongoDB. Als gevolg van de implementatie van het wire-protocol, kunt u op transparante wijze communiceren met Azure Cosmos DB door gebruik te maken van de bestaande client-Sdk's, stuur Programma's en hulpprogram ma's die werken met NoSQL-data bases. Azure Cosmos DB maakt geen gebruik van een bron code van de data bases voor het bieden van Wire-compatibele Api's voor een van de NoSQL-data bases. Elk MongoDB-client stuur programma dat inzicht heeft in de wire-protocol versies kan verbinding maken met Azure Cosmos DB.
+In het volgende artikel worden veelvoorkomende fouten en oplossingen voor data bases beschreven met behulp van de Azure Cosmos DB-API voor MongoDB.
 
-Hoewel de API van Azure Cosmos DB voor MongoDB compatibel is met 3,2-versie van het wire-protocol van MongoDB (de query operators en functies die zijn toegevoegd in versie 3,4 zijn momenteel beschikbaar als preview), zijn er enkele aangepaste fout codes die overeenkomen met Azure Cosmos DB specifieke fouten. In dit artikel worden verschillende fouten, fout codes en de stappen beschreven om deze fouten op te lossen.
+>[!Note]
+> Azure Cosmos DB host de MongoDB-engine niet. Het biedt een implementatie van de MongoDB [wire-protocol versie 3,6](mongodb-feature-support-36.md) en de verouderde ondersteuning voor [wire-protocol versie 3,2](mongodb-feature-support.md). sommige van deze fouten zijn daarom alleen te vinden in de API van Azure Cosmos DB voor MongoDb. 
 
 ## <a name="common-errors-and-solutions"></a>Veelvoorkomende fouten en oplossingen
 
-| Fout               | Code  | Description  | Oplossing  |
+| Fout               | Code  | Beschrijving  | Oplossing  |
 |---------------------|-------|--------------|-----------|
+| ExceededTimeLimit   | 50 | De aanvraag heeft de time-out van 60 seconden overschreden. | Er kunnen veel oorzaken voor deze fout zijn. Een van de oorzaken is wanneer de huidige capaciteit van de toegewezen aanvraag eenheden onvoldoende is om de aanvraag te volt ooien. Dit kan worden opgelost door de aanvraag eenheden van die verzameling of Data Base te verg Roten. In andere gevallen kan deze fout worden omzeild door een grote aanvraag in kleinere items te splitsen. |
 | TooManyRequests     | 16500 | Het totale aantal verbruikte aanvraag eenheden is hoger dan de ingerichte aanvraag-eenheids snelheid voor de verzameling en is beperkt. | Overweeg de door Voer die is toegewezen aan een container of een set containers te schalen vanuit de Azure Portal of probeer de bewerking opnieuw uit te voeren. |
 | ExceededMemoryLimit | 16501 | Als multi tenant service heeft de bewerking de geheugen toewijzing van de client overschreden. | Verklein het bereik van de bewerking via meer beperkende query criteria of neem contact op met de ondersteuning van de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Voorbeeld: `db.getCollection('users').aggregate([{$match: {name: "Andy"}}, {$sort: {age: -1}}]))` |
 | Het pad naar de index dat overeenkomt met het opgegeven order-by-item is uitgesloten/de order by-query heeft geen overeenkomende samengestelde index waaruit het kan worden geleverd. | 2 | De query vraagt een sortering op een veld dat niet is geïndexeerd. | Maak een overeenkomende index (of samengestelde index) voor de sorteer query die wordt geprobeerd. |
 | Problemen met wire-versies van MongoDB | - | De oudere versies van MongoDB-Stuur Programma's kunnen de naam van het Azure Cosmos-account in de verbindings reeksen niet detecteren. | Voeg *AppName = @**AccountName** @ * toe aan het einde van de API van uw Cosmos DB voor MongoDb Connection String, waarbij ***AccountName*** de naam van uw Cosmos DB-account is. |
-
 
 ## <a name="next-steps"></a>Volgende stappen
 

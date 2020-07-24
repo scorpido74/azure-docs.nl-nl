@@ -3,14 +3,15 @@ title: Application Insights voor Azure-Cloud Services | Microsoft Docs
 description: Controleer uw web- en werkrollen op een effectieve manier met Application Insights
 ms.topic: conceptual
 ms.date: 09/05/2018
-ms.openlocfilehash: 17813d17a1c40caac5587e37e279be6376992b90
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf75bb145a3b0d7c861d3c92af972b39de11bcdf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537590"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075427"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights voor Azure Cloud Services
-[Application Insights][start] kunt [Azure Cloud service-apps](https://azure.microsoft.com/services/cloud-services/) bewaken voor Beschik baarheid, prestaties, fouten en gebruik door gegevens van Application Insights sdk's te combi neren met [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) gegevens uit uw Cloud Services. Op basis van de feedback die u krijgt over de prestaties en de effectiviteit van uw app tijdens het gebruik, kunt u weldoordachte beslissingen nemen over de richting van het ontwerp in elke fase van de ontwikkelingslevenscyclus.
+[Application Insights][start] kunt [Azure Cloud service-apps](https://azure.microsoft.com/services/cloud-services/) bewaken voor Beschik baarheid, prestaties, fouten en gebruik door gegevens van Application Insights sdk's te combi neren met [Azure Diagnostics](../platform/diagnostics-extension-overview.md) gegevens uit uw Cloud Services. Op basis van de feedback die u krijgt over de prestaties en de effectiviteit van uw app tijdens het gebruik, kunt u weldoordachte beslissingen nemen over de richting van het ontwerp in elke fase van de ontwikkelingslevenscyclus.
 
 ![Overzichts dashboard](./media/cloudservices/overview-graphs.png)
 
@@ -30,7 +31,7 @@ Met deze optie wordt uw app tijdens runtime geinstrumenteerd, zodat u alle telem
 
 Als u deze optie alleen nodig hebt, bent u klaar. 
 
-In de volgende stappen worden [metrische gegevens uit uw app weer gegeven](../../azure-monitor/platform/metrics-charts.md)en wordt er een [query op uw data uitgevoerd met Analytics](../../azure-monitor/app/analytics.md). 
+In de volgende stappen worden [metrische gegevens uit uw app weer gegeven](../../azure-monitor/platform/metrics-charts.md)en wordt er een [query op uw data uitgevoerd met Analytics](../log-query/log-query-overview.md). 
 
 Als u de prestaties in de browser wilt bewaken, kunt u ook [beschikbaarheids tests](../../azure-monitor/app/monitor-web-app-availability.md) instellen en [code toevoegen aan uw webpagina's](../../azure-monitor/app/javascript.md).
 
@@ -131,7 +132,7 @@ Gebruik Visual Studio om de Application Insights-SDK voor elk cloudtoepassingspr
 
 Deze stap is alleen nodig als u volledige SQL-query's wilt vastleggen op .NET Framework. 
 
-1. `\*.csdef`Voeg in bestand [opstart taak](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks) toevoegen toe voor elke rol die vergelijkbaar is met 
+1. `\*.csdef`Voeg in bestand [opstart taak](../../cloud-services/cloud-services-startup-tasks.md) toevoegen toe voor elke rol die vergelijkbaar is met 
 
     ```xml
     <Startup>
@@ -177,7 +178,7 @@ Als er geen gegevens zijn, gaat u als volgt te werk:
 Zie [Probleemoplossing][qna] voor meer informatie .
 
 ## <a name="view-azure-diagnostics-events"></a>Azure Diagnostics gebeurtenissen weer geven
-U vindt de [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) informatie in Application Insights op de volgende locaties:
+U vindt de [Azure Diagnostics](../platform/diagnostics-extension-overview.md) informatie in Application Insights op de volgende locaties:
 
 * Prestatiemeteritems worden weergegeven als aangepaste functies voor het verzamelen van metrische gegevens. 
 * Windows-gebeurtenislogboeken worden als traceringen en aangepaste gebeurtenissen weergegeven.
@@ -241,7 +242,7 @@ Voor een uitgebreide diagnostische ervaring kunt u zien wat er is geresulteerd i
 
 Als u deze weer gave voor werk rollen wilt behaalt, kunt u een aangepaste telemetrie-initialisatie functie gebruiken om een gemeen schappelijk Operation.Id context kenmerk voor alle telemetrie in te stellen. Als u dit doet, kunt u in één oogopslag zien of de latentie of fout melding is veroorzaakt door een afhankelijkheid of code. 
 
-U doet dit als volgt:
+Dit doet u als volgt:
 
 * Stel de correlationId in een call context in [, zoals wordt weer gegeven in dit voor beeld](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L36). In dit geval gebruiken we de aanvraag-ID als de correlationId.
 * Voeg een aangepaste TelemetryInitializer-implementatie toe om de Operation.Id in te stellen op de correlationId die eerder is ingesteld. Zie [ItemCorrelationTelemetryInitializer](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13)voor een voor beeld.
@@ -258,7 +259,7 @@ Voor een algemene afbeelding van uw systeem kunt u de belangrijkste bewakings gr
 
 Als uw systeem gebruikmaakt van andere Azure-Services, zoals Stream Analytics, kunt u ook hun bewakings grafieken toevoegen. 
 
-Als u een mobiele client-app hebt, gebruikt u [App Center](../../azure-monitor/learn/mobile-center-quickstart.md). Maak query’s in [Analytics](../../azure-monitor/app/analytics.md) om de aantallen gebeurtenissen weer te geven en aan het dashboard vast te maken.
+Als u een mobiele client-app hebt, gebruikt u [App Center](../../azure-monitor/learn/mobile-center-quickstart.md). Maak query’s in [Analytics](../log-query/log-query-overview.md) om de aantallen gebeurtenissen weer te geven en aan het dashboard vast te maken.
 
 ## <a name="example"></a>Voorbeeld
 In [het voorbeeld](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) wordt een service gecontroleerd die een webrol en twee werkrollen heeft.
@@ -283,6 +284,6 @@ Hebt u uw app ontwikkeld voor .NET 4.6? .NET 4,6 wordt niet automatisch onderste
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [netlogs]: ../../azure-monitor/app/asp-net-trace-logs.md
 [portal]: https://portal.azure.com/
-[qna]: ../../azure-monitor/app/troubleshoot-faq.md
+[qna]: ../faq.md
 [redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
-[start]: ../../azure-monitor/app/app-insights-overview.md 
+[start]: ../../azure-monitor/app/app-insights-overview.md

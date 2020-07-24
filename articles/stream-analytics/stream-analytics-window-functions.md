@@ -6,12 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/11/2019
-ms.openlocfilehash: 872eec62e7a629d76533aa6c9906cbdb64c32236
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/10/2020
+ms.openlocfilehash: fd741a9401a3936ec02939562e8e85046e829d31
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80745556"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075930"
 ---
 # <a name="introduction-to-stream-analytics-windowing-functions"></a>Inleiding tot Stream Analytics-venster functies
 
@@ -34,7 +35,8 @@ HoppingWindow-functies worden gebruikt om met een vaste tijdstuur vooruit te gaa
 ![Stream Analytics venster verspringen](media/stream-analytics-window-functions/stream-analytics-window-functions-hopping-intro.png)
 
 ## <a name="sliding-window"></a>Schuif venster
-Schuivende venster functies, in tegens telling tot Tumblingvenstertriggers of verspringen Windows, produceren **alleen** uitvoer als er een gebeurtenis optreedt. Elk venster heeft ten minste één gebeurtenis en het venster wordt doorlopend verplaatst naar een ε (epsilon). Net als bij HoppingWindows kunnen gebeurtenissen deel uitmaken van meer dan één SlidingWindow.
+
+Verschuiving van Vensters, in tegens telling tot Tumblingvenstertriggers-of verspringen-Vensters, uitvoer gebeurtenissen alleen voor tijdstippen waarop de inhoud van het venster daad werkelijk wordt gewijzigd. Met andere woorden, wanneer er een gebeurtenis in het venster wordt ingevoerd of afgesloten. Elk venster heeft ten minste één gebeurtenis, zoals in het geval van verspringen Windows, gebeurtenissen kunnen tot meer dan één sliding window behoren
 
 ![Stream Analytics sliding window](media/stream-analytics-window-functions/stream-analytics-window-functions-sliding-intro.png)
 
@@ -49,6 +51,11 @@ Als er gebeurtenissen blijven optreden binnen de opgegeven time-out, blijft het 
 
 Wanneer een partitie sleutel wordt gegeven, worden de gebeurtenissen gegroepeerd op basis van het sleutel-en sessie venster, onafhankelijk van elkaar toegepast op elke groep. Deze partitionering is handig voor gevallen waarin u verschillende sessie Vensters nodig hebt voor verschillende gebruikers of apparaten.
 
+## <a name="snapshot-window"></a>Venster moment opname
+
+Moment opname van Windows-groeps gebeurtenissen met dezelfde tijds tempel. In tegens telling tot andere venster typen waarvoor een specifieke venster functie (zoals [SessionWindow ()](https://docs.microsoft.com/stream-analytics-query/session-window-azure-stream-analytics)is vereist, kunt u een snap shot-venster Toep assen door System. Time Stamp () toe te voegen aan de component Group by.
+
+![Venster voor moment opname van Stream Analytics](media/stream-analytics-window-functions/snapshot.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Inleiding tot Azure Stream Analytics](stream-analytics-introduction.md)
