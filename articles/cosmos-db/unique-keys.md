@@ -5,13 +5,14 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 07/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: f234579c6fb2b6f1bc0cd518b87ea69fae30093a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f5a867a00fa28dcd03842d02be16d88e3a7d2e9f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74869830"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132650"
 ---
 # <a name="unique-key-constraints-in-azure-cosmos-db"></a>Beperkingen voor unieke sleutels in Azure Cosmos DB
 
@@ -19,7 +20,7 @@ Unieke sleutels voegen een laag van gegevens integriteit toe aan een Azure Cosmo
 
 Nadat u een container met een beleid met unieke sleutels hebt gemaakt, wordt het maken van een nieuwe of een update van een bestaand item dat resulteert in een duplicaat in een logische partitie, voor komen, zoals opgegeven door de beperking van de unieke sleutel. De partitie sleutel in combi natie met de unieke sleutel garandeert de uniekheid van een item binnen het bereik van de container.
 
-Denk bijvoorbeeld aan een Azure Cosmos-container met e-mail adres als de unieke-sleutel beperking en `CompanyID` als de partitie sleutel. Wanneer u het e-mail adres van de gebruiker met een unieke sleutel configureert, heeft elk item een uniek e-mail adres binnen een gegeven `CompanyID` . Twee items kunnen niet worden gemaakt met dubbele e-mail adressen en met dezelfde partitie sleutel waarde. 
+Denk bijvoorbeeld aan een Azure Cosmos-container met e-mail adres als de unieke-sleutel beperking en `CompanyID` als de partitie sleutel. Wanneer u het e-mail adres van de gebruiker met een unieke sleutel configureert, heeft elk item een uniek e-mail adres binnen een gegeven `CompanyID` . Twee items kunnen niet worden gemaakt met dubbele e-mail adressen en met dezelfde partitie sleutel waarde. In de SQL-API (core) van Azure Cosmos DB worden items opgeslagen als JSON-waarden. Deze JSON-waarden zijn hoofdletter gevoelig. Wanneer u een eigenschap kiest als een unieke sleutel, kunt u hoofdletter gevoelige waarden voor die eigenschap invoegen. Als u bijvoorbeeld een unieke sleutel hebt gedefinieerd voor de eigenschap naam, komt ' Gaby ' niet overeen met ' Gaby ' en kunt u beide invoegen in de container.
 
 Als u items met hetzelfde e-mail adres wilt maken, maar niet dezelfde voor naam, achternaam en e-mail adres, voegt u meer paden toe aan het beleid voor unieke sleutels. In plaats van een unieke sleutel te maken op basis van het e-mail adres, kunt u ook een unieke sleutel maken met een combi natie van de voor naam, achternaam en e-mail adres. Deze sleutel wordt ook wel een samengestelde unieke sleutel genoemd. In dit geval is elke unieke combi natie van de drie waarden binnen een opgegeven `CompanyID` toegestaan. 
 

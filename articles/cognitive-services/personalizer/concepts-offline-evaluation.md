@@ -3,19 +3,17 @@ title: De offline-evaluatie methode gebruiken-persoonlijker
 titleSuffix: Azure Cognitive Services
 description: In dit artikel wordt uitgelegd hoe u offline-evaluatie kunt gebruiken om de effectiviteit van uw app te meten en uw leer proces te analyseren.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.author: diberry
-ms.openlocfilehash: f8ceef5e80bf15f0ba52a9c289e617018febfb5c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 627f511bb12c16c8f54935d1f782cb7c2c962163
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77623592"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132752"
 ---
 # <a name="offline-evaluation"></a>Offline-evaluatie
 
@@ -55,7 +53,7 @@ Huidige beleids regels die zijn opgenomen in de evaluatie:
 | Leer instellingen | Doel|
 |--|--|
 |**Online beleid**| Het huidige leer beleid dat wordt gebruikt in Personaler |
-|**Basislijn**|De standaard waarde van de toepassing (zoals bepaald door de eerste actie die wordt verzonden in Rangings aanroepen)|
+|**Gebonden**|De standaard waarde van de toepassing (zoals bepaald door de eerste actie die wordt verzonden in Rangings aanroepen)|
 |**Wille keurig beleid**|Een imaginair positie gedrag dat altijd een wille keurige keuze van de acties retourneert uit de opgegeven records.|
 |**Aangepast beleid**|Er zijn extra leer beleid geüpload bij het starten van de evaluatie.|
 |**Geoptimaliseerd beleid**|Als de evaluatie is gestart met de optie om een geoptimaliseerd beleid te detecteren, wordt het ook vergeleken en kunt u het downloaden of het online leer beleid maken, waarbij de huidige wordt vervangen.|
@@ -108,5 +106,5 @@ We raden u aan functie-evaluaties te bekijken en te vragen:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Personaler](how-to-settings.md)
-configureren[offline-evaluaties](how-to-offline-evaluation.md) begrijpen [hoe personaler werkt](how-personalizer-works.md)
+[Persoonlijker configureren](how-to-settings.md) 
+ [Offline-evaluaties uitvoeren](how-to-offline-evaluation.md) Meer informatie [over de werking van personaler](how-personalizer-works.md)

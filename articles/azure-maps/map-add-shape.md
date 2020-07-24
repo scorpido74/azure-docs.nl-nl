@@ -1,19 +1,20 @@
 ---
 title: Een polygoon laag toevoegen aan een kaart | Microsoft Azure kaarten
 description: In dit artikel leert u hoe u een veelhoek en meerdere veelhoeken kunt weer geven op een kaart in de Microsoft Azure Maps Web SDK.
-author: Philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: ecbb5d636b6a6e2fa89d34380e87b6979110f6e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8ae7bc6c7f6aac199d4e3dd386c94d41c20965d
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83648526"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130508"
 ---
 # <a name="add-a-polygon-layer-to-the-map"></a>Een polygoon laag toevoegen aan de kaart
 

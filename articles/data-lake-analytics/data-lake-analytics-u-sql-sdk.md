@@ -4,16 +4,15 @@ description: Meer informatie over het lokaal uitvoeren en testen van U-SQL-taken
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: yanacai
-ms.author: yanacai
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 03/01/2017
-ms.openlocfilehash: 58521b16e0f4ff133fd032abd4451f785256bbee
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: daf72fcf7baba289b4145d06d878c8a7232f1c6a
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110467"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132412"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>U-SQL uitvoeren en testen met Azure Data Lake U-SQL SDK
 
@@ -65,7 +64,7 @@ U kunt zowel een relatief pad als een lokaal absoluut pad gebruiken in U-SQL-scr
 
 Bij het lokaal uitvoeren van het U-SQL-script wordt een werkmap gemaakt tijdens de compilatie onder de huidige actieve directory. Naast de compilatie uitvoer worden de benodigde runtime bestanden voor lokale uitvoeringen schaduw kopie gekopieerd naar deze werkmap. De hoofdmap van de werkmap heet ' ScopeWorkDir ' en de bestanden in de werkmap zijn als volgt:
 
-|Map/bestand|Map/bestand|Map/bestand|Definitie|Description|
+|Map/bestand|Map/bestand|Map/bestand|Definitie|Beschrijving|
 |--------------|--------------|--------------|----------|-----------|
 |C6A101DDCB470506| | |Hash-teken reeks van runtime versie|Schaduw kopie van runtime-bestanden die nodig zijn voor lokale uitvoering|
 | |Script_66AE4909AA0ED06C| |Script naam + hash-teken reeks van scriptpad|Compilatie-uitvoer en logboek registratie van uitvoerings stappen|
@@ -144,15 +143,15 @@ Hier volgen enkele optionele argumenten voor **uitvoeren**:
 
 |Argument|Standaardwaarde|Beschrijving|
 |--------|-------------|-----------|
-|-CodeBehind|False|Het script heeft. cs-code achter|
+|-CodeBehind|Niet waar|Het script heeft. cs-code achter|
 |-CppSDK| |CppSDK Directory|
 |-Data root| Omgevings variabele data root|Data root voor lokale uitvoering, standaard ingesteld op de omgevings variabele LOCALRUN_DATAROOT|
 |-MessageOut| |Berichten op de console naar een bestand dumpen|
 |-Parallel|1|Het plan uitvoeren met de opgegeven parallellisme|
 |-Verwijzingen| |Lijst met paden naar extra referentie-assembly's of gegevens bestanden van code achter, gescheiden door '; '|
-|-UdoRedirect|False|Udo assembly-omleidings configuratie genereren|
+|-UdoRedirect|Niet waar|Udo assembly-omleidings configuratie genereren|
 |-UseDatabase|model|Te gebruiken Data Base voor code achter de tijdelijke assembly registratie|
-|-Verbose|False|Gedetailleerde uitvoer van runtime weer geven|
+|-Verbose|Niet waar|Gedetailleerde uitvoer van runtime weer geven|
 |-WorkDir|Huidige map|Map voor het gebruik en uitvoer van het Compileer programma|
 |-RunScopeCEP|0|Te gebruiken ScopeCEP-modus|
 |-ScopeCEPTempPath|ratuur|Tijdelijk pad dat moet worden gebruikt voor het streamen van gegevens|
@@ -174,7 +173,7 @@ LocalRunHelper compile -Script path_to_usql_script.usql [optional_arguments]
 
 Hier volgen enkele optionele argumenten voor **compileren**:
 
-|Argument|Description|
+|Argument|Beschrijving|
 |--------|-----------|
 | -CodeBehind [standaard waarde ' false ']|Het script heeft. cs-code achter|
 | -CppSDK [standaard waarde]|CppSDK Directory|
@@ -332,13 +331,13 @@ LocalRunHelper.exe biedt de programmeer interfaces voor lokale U-SQL-compilatie,
 
 open bare LocalRunHelper ([System. IO. TextWriter messageOutput = NULL])
 
-|Parameter|Type|Description|
+|Parameter|Type|Beschrijving|
 |---------|----|-----------|
 |messageOutput|System. IO. TextWriter|Stel voor uitvoer berichten in op NULL om console te gebruiken|
 
 ### <a name="properties"></a>Eigenschappen
 
-|Eigenschap|Type|Description|
+|Eigenschap|Type|Beschrijving|
 |--------|----|-----------|
 |AlgebraPath|tekenreeks|Het pad naar het algebra-bestand (algebra-bestand is een van de compilatie resultaten)|
 |CodeBehindReferences|tekenreeks|Als het script extra code achter verwijzingen bevat, geeft u de paden op, gescheiden door|

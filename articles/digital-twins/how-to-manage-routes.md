@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 923ae652872246916b2a4c5e8be95871983dbe95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc22cf5a21709ccacafe068a60541cc9990d1131
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559834"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132259"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins"></a>Eind punten en routes in azure Digital Apparaatdubbels beheren
 
@@ -23,14 +23,9 @@ Ondersteunde eindpunt typen zijn:
 * [Event Grid](../event-grid/overview.md)
 * [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)
 
-Zie [kiezen tussen Azure Messa ging Services](https://docs.microsoft.com/azure/event-grid/compare-messaging-services)voor meer informatie over de verschillende eind punten.
+Zie [*kiezen tussen Azure Messa ging Services*](https://docs.microsoft.com/azure/event-grid/compare-messaging-services)voor meer informatie over de verschillende eind punten.
 
 Eind punten en routes worden beheerd met de [**EventRoutes-api's**](how-to-use-apis-sdks.md), de [.NET-SDK (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)of de [Azure Digital apparaatdubbels cli](how-to-use-cli.md). Ze kunnen ook worden beheerd via de [Azure Portal](https://portal.azure.com).
-
-> [!NOTE]
-> Het beheren van gebeurtenis routes via de Azure Portal is momenteel alleen beschikbaar voor Azure-gebruikers op accounts in een bedrijfs domein. 
->
->Als u een persoonlijk [Microsoft-account (MSA)](https://account.microsoft.com/account/Account)gebruikt, zoals een @outlook.com account, gebruikt u de Azure Digital APPARAATDUBBELS api's of CLI om gebeurtenis routes te beheren, zoals beschreven in dit artikel.
 
 ## <a name="create-an-endpoint-for-azure-digital-twins"></a>Een eind punt maken voor Azure Digital Apparaatdubbels
 
@@ -70,7 +65,14 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
 
 ## <a name="manage-event-routes-with-apis"></a>Gebeurtenis routes beheren met Api's
 
-Als u gegevens daad werkelijk van Azure Digital Apparaatdubbels naar een eind punt wilt verzenden, moet u een gebeurtenis route definiëren. Met Azure Digital Apparaatdubbels **EventRoutes api's** kunnen ontwikkel aars de gebeurtenis stroom, in het hele systeem en op downstream-Services, interactiviteit. Lees meer over gebeurtenis routes in [concepten: route ring van Azure Digital apparaatdubbels-gebeurtenissen](concepts-route-events.md).
+Als u gegevens daad werkelijk van Azure Digital Apparaatdubbels naar een eind punt wilt verzenden, moet u een gebeurtenis route definiëren. Met Azure Digital Apparaatdubbels **EventRoutes api's** kunnen ontwikkel aars de gebeurtenis stroom, in het hele systeem en op downstream-Services, interactiviteit. Lees meer over gebeurtenis routes in [*concepten: route ring van Azure Digital apparaatdubbels-gebeurtenissen*](concepts-route-events.md).
+
+U kunt door gaan met het maken van een gebeurtenis route wanneer de eind punten zijn ingesteld.
+
+>[!NOTE]
+>Als u onlangs uw eind punten hebt geïmplementeerd, controleert u of de implementatie is voltooid **voordat** u deze voor een nieuwe gebeurtenis route probeert te gebruiken. Als de implementatie van de route mislukt omdat de eind punten niet gereed zijn, wacht u enkele minuten en probeert u het opnieuw.
+>
+> Als u deze stroom bijwerkt, kunt u hiervoor het beste een account maken van 2-3 minuten wacht tijd voor de eindpunt service om de implementatie te volt ooien voordat u doorgaat met de installatie van.
 
 In de voor beelden in dit artikel wordt de C#-SDK gebruikt.
 
@@ -145,7 +147,7 @@ Als u een filter wilt toevoegen, kunt u een PUT-aanvraag naar *https://{YourHost
 
 Dit zijn de ondersteunde route filters.
 
-| Bestandsnaam | Description | Schema filteren | Ondersteunde waarden | 
+| Bestandsnaam | Beschrijving | Schema filteren | Ondersteunde waarden | 
 | --- | --- | --- | --- |
 | Type | Het [type gebeurtenis dat](./concepts-route-events.md#types-of-event-messages) door uw digitale dubbele instantie wordt doorlopend | `"filter" : "type = '<eventType>'"` | `Microsoft.DigitalTwins.Twin.Create` <br> `Microsoft.DigitalTwins.Twin.Delete` <br> `Microsoft.DigitalTwins.Twin.Update`<br>`Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br> `Microsoft.DigitalTwins.Relationship.Delete` <br> `microsoft.iot.telemetry`  |
 | Bron | Naam van het Azure Digital Apparaatdubbels-exemplaar | `"filter" : "source = '<hostname>'"`|  **Voor meldingen**:`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net` <br> **Voor telemetrie**:`<yourDigitalTwinInstance>.<yourRegion>.azuredigitaltwins.net/digitaltwins/<twinId>`|
@@ -174,7 +176,7 @@ Wanneer u een filter implementeert of bijwerkt, kan het enkele minuten duren voo
 
 ## <a name="manage-endpoints-and-routes-with-cli"></a>Eind punten en routes beheren met CLI
 
-Eind punten en routes kunnen ook worden beheerd met behulp van de Azure Digital Apparaatdubbels CLI. De opdrachten zijn te vinden in [How to: gebruik de Azure Digital APPARAATDUBBELS cli](how-to-use-cli.md).
+Eind punten en routes kunnen ook worden beheerd met behulp van de Azure Digital Apparaatdubbels CLI. De opdrachten zijn te vinden in [*How to: gebruik de Azure Digital APPARAATDUBBELS cli*](how-to-use-cli.md).
 
 ## <a name="monitor-event-routes"></a>Gebeurtenis routes bewaken
 
@@ -189,4 +191,4 @@ Hier kunt u de metrische gegevens voor uw exemplaar bekijken en aangepaste weer 
 ## <a name="next-steps"></a>Volgende stappen
 
 Meer informatie over de verschillende typen gebeurtenis berichten die u kunt ontvangen:
-* [Instructies: gebeurtenis gegevens interpreteren](how-to-interpret-event-data.md)
+* [*Instructies: gebeurtenis gegevens interpreteren*](how-to-interpret-event-data.md)

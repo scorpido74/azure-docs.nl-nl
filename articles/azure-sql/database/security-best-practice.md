@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 8104302afa84446e2d57c7156f33bc0160e31472
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 00369ae45a13414ce46f324e37afe24be24a48e0
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986775"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132939"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Playbook voor het adresseren van algemene beveiligings vereisten met Azure SQL Database en Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -112,7 +112,7 @@ Centraal identiteits beheer biedt de volgende voor delen:
 > - Het Azure AD-toegangs token wordt opgeslagen in de cache aan de client zijde en de levens duur is afhankelijk van de configuratie van het token. Zie het artikel [levens duur van Configureer bare tokens in azure Active Directory](../../active-directory/develop/active-directory-configurable-token-lifetimes.md)
 > - Zie voor hulp bij het oplossen van problemen met Azure AD-verificatie de volgende blog: [problemen met Azure AD oplossen](https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991).
 
-### <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
+### <a name="azure-multi-factor-authentication"></a>Meervoudige verificatie van Azure
 
 > Vermeld in: OSA-Oefen #2, ISO-Access Control (AC)
 
@@ -240,9 +240,9 @@ Wijs alleen de benodigde [machtigingen](https://docs.microsoft.com/sql/relationa
   - Zorg ervoor dat u geen gebruikers toewijst aan overbodige rollen.
 
 - In Azure Resource Manager:
-  - Gebruik ingebouwde rollen als beschikbaar of aangepast RBAC-rollen en wijs de benodigde machtigingen toe.
-    - [Ingebouwde rollen voor Azure](../../role-based-access-control/built-in-roles.md)
-    - [Aangepaste rollen voor Azure-resources](../../role-based-access-control/custom-roles.md)
+  - Ingebouwde rollen gebruiken als beschikbaar of aangepaste Azure-rollen en de benodigde machtigingen toewijzen.
+    - [Ingebouwde Azure-rollen](../../role-based-access-control/built-in-roles.md)
+    - [Aangepaste Azure-rollen](../../role-based-access-control/custom-roles.md)
 
 **Aanbevolen procedures**:
 
@@ -255,7 +255,7 @@ De volgende aanbevolen procedures zijn optioneel, maar leiden tot betere beheers
 - Maak en gebruik aangepaste rollen met de exacte machtigingen die nodig zijn. Typische rollen die in de praktijk worden gebruikt:
   - Beveiligings implementatie
   - Beheerder
-  - Ontwikkelaar
+  - Developer
   - Ondersteunings personeel
   - Accountant
   - Geautomatiseerde processen
@@ -291,7 +291,7 @@ Schei ding van taken, ook wel schei ding van taken genoemd, beschrijft de vereis
 - Identificeer een uitgebreide hiërarchie van gebruikers (en geautomatiseerde processen) die toegang hebben tot het systeem.
 
 - Rollen maken op basis van de benodigde gebruikers groepen en machtigingen toewijzen aan rollen.
-  - Voor taken op beheer niveau in Azure Portal of via Power shell-Automation kunt u RBAC-rollen gebruiken. Zoek een ingebouwde rol die overeenkomt met de vereiste of maak een aangepaste RBAC-rol met behulp van de beschik bare machtigingen
+  - Voor taken op beheer niveau in Azure Portal of via Power shell-Automation kunt u RBAC-rollen gebruiken. Zoek een ingebouwde rol die overeenkomt met de vereiste of maak een aangepaste Azure-rol met behulp van de beschik bare machtigingen
   - Server functies maken voor Server-brede taken (het maken van nieuwe aanmeldingen, data bases) in een beheerd exemplaar.
   - Maak database rollen voor taken op database niveau.
 
@@ -342,8 +342,8 @@ Voor de lezers die dieper willen zijn in SoD, raden we de volgende bronnen aan:
   - [Opgeslagen procedures ondertekenen](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server)
 
 - Voor Azure resource management:
-  - [Ingebouwde rollen voor Azure](../../role-based-access-control/built-in-roles.md)
-  - [Aangepaste rollen voor Azure-resources](../../role-based-access-control/custom-roles.md)
+  - [Ingebouwde Azure-rollen](../../role-based-access-control/built-in-roles.md)
+  - [Aangepaste Azure-rollen](../../role-based-access-control/custom-roles.md)
   - [Azure AD Privileged Identity Management gebruiken voor verhoogde toegang](https://www.microsoft.com/itshowcase/using-azure-ad-privileged-identity-management-for-elevated-access)
 
 ### <a name="perform-regular-code-reviews"></a>Reguliere code beoordelingen uitvoeren
@@ -376,7 +376,7 @@ Schei ding van taken is niet beperkt tot de gegevens in een Data Base, maar beva
 
 - Zorg ervoor dat u alle bron code-wijzigingen kent. Code kan zich in T-SQL-scripts bevindt. Dit kan ad-hoc opdrachten zijn om uit te voeren of te worden geïmplementeerd in formulieren van weer gaven, functies, triggers en opgeslagen procedures. Het kan een onderdeel zijn van SQL Agent-taak definities (stappen). Het kan ook worden uitgevoerd vanuit SSIS-pakketten, Azure Data Factory en andere services.
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 Gegevens beveiliging is een reeks mogelijkheden voor het beveiligen van belang rijke informatie tegen inbreuk door versleuteling of het afwijzen van een schijf.
 

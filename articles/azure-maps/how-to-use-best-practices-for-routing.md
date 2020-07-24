@@ -1,18 +1,19 @@
 ---
 title: Aanbevolen procedures voor het Azure Maps van Route Service | Microsoft Azure kaarten
 description: Meer informatie over het routeren van Voer tuigen met behulp van Route Service van Microsoft Azure Maps.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/11/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 24fa4c48f6ca03e4049483a9acfff067d5a6a736
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79e9096030aada9fa368bb2e78af323139c0586c
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266692"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132208"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Aanbevolen procedures voor Azure Maps route service
 
@@ -30,7 +31,7 @@ De route richtingen en route matrix-Api's in Azure Maps [route service](https://
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u aanroepen naar de Azure Maps-Api's wilt maken, hebt u een Azure Maps account en een sleutel nodig. Zie [een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps) en [een primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account)voor meer informatie. De primaire sleutel wordt ook wel de primaire abonnements sleutel of abonnements sleutel genoemd.
+Als u aanroepen naar de Azure Maps-Api's wilt maken, hebt u een Azure Maps account en een sleutel nodig. Zie [een account maken](quick-demo-map-app.md#create-an-azure-maps-account) en [een primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account)voor meer informatie. De primaire sleutel wordt ook wel de primaire abonnements sleutel of abonnements sleutel genoemd.
 
 Zie [verificatie beheren in azure Maps](./how-to-manage-authentication.md)voor meer informatie over verificatie in azure Maps. Zie de [routerings dekking](routing-coverage.md)voor meer informatie over de dekking van de route service.
 
@@ -72,7 +73,7 @@ De **travelTimeInSeconds** -waarde van de route berekening bevat de vertraging a
 
 Als u de para meter **computeTravelTimeFor = all** opneemt in uw aanvraag, hebben het samen vattings element in het antwoord de volgende extra velden, inclusief historische verkeers omstandigheden:
 
-| Element | Description|
+| Element | Beschrijving|
 | :--- | :--- |
 | noTrafficTravelTimeInSeconds | De geschatte reis tijd die wordt berekend alsof er geen vertragingen zijn op de route wegens verkeers omstandigheden, bijvoorbeeld vanwege congestie |
 | historicTrafficTravelTimeInSeconds | Geschatte reis tijd berekend met behulp van tijd afhankelijke historische verkeers gegevens |

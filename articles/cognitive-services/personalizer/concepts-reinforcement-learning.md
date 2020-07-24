@@ -3,19 +3,17 @@ title: Versterking van het onderwijs-persoonlijker
 titleSuffix: Azure Cognitive Services
 description: Personaler maakt gebruik van informatie over acties en de huidige context om betere suggesties voor de rang schikking te maken. De informatie over deze acties en context zijn kenmerken of eigenschappen die functies worden genoemd.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
-ms.author: diberry
-ms.openlocfilehash: 36071cdee25cfa99fc54b0e5c0c0aa822cb5fe2f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8b97221de4921e06ddfab610618f37683b990181
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68662843"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132735"
 ---
 # <a name="what-is-reinforcement-learning"></a>Wat is versterking van het onderwijs?
 
@@ -59,7 +57,7 @@ John heeft ook enkele zelf studies gegeven die eerder in de onderwerpen zijn beh
 
 Personaler maakt momenteel gebruik van [Vowpal Wabbit](https://github.com/VowpalWabbit/vowpal_wabbit/wiki) als basis voor de machine learning. Dit kader biedt maximale door Voer en een laagste latentie bij het maken van een persoonlijke classificatie en het model trainen met alle gebeurtenissen.
 
-## <a name="references"></a>Verwijzingen
+## <a name="references"></a>Referenties
 
 * [Contextuele beslissingen nemen met weinig technische schulden](https://arxiv.org/abs/1606.03966)
 * [Een verlagings benadering van een billijke classificatie](https://arxiv.org/abs/1803.02453)

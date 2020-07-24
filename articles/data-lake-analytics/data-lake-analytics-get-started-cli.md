@@ -2,17 +2,15 @@
 title: '& query maken Azure Data Lake Analytics-Azure CLI'
 description: Meer informatie over het gebruik van de Azure-opdracht regel interface voor het maken van een Azure Data Lake Analytics-account en het verzenden van een U-SQL-taak.
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 06/18/2017
-ms.openlocfilehash: e8de36cca8386ed2a8ddba5782b7b48f248192e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 44648f1c01aed221e90029eb64d48576b899b1c4
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564834"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132582"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-cli"></a>Aan de slag met Azure Data Lake Analytics met Azure CLI
 

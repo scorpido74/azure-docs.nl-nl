@@ -1,17 +1,17 @@
 ---
 title: U-SQL-assembly's beheren in een CI/CD-pijp lijn-Azure Data Lake
 description: Meer informatie over de aanbevolen procedures voor het beheren van U-SQL C#-assembly's in een CI/CD-pijp lijn met Azure DevOps.
-author: yanancai
-ms.author: yanacai
+author: liudan66
+ms.author: liud
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 10/30/2018
-ms.openlocfilehash: 9daf2cc6ed176e46399f2cdb2f424a622fdeb812
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 4bb6ee60df291c1939d3bb0d72a9b3992be9b3c0
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115388"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132140"
 ---
 # <a name="best-practices-for-managing-u-sql-assemblies-in-a-cicd-pipeline"></a>Aanbevolen procedures voor het beheren van U-SQL-assembly's in een CI/CD-pijp lijn
 

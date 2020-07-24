@@ -1,18 +1,19 @@
 ---
 title: De Azure Maps ruimtelijke IO-module gebruiken | Microsoft Azure kaarten
 description: Meer informatie over het gebruik van de ruimtelijke IO-module die wordt meegeleverd met de Azure Maps Web-SDK. Deze module biedt krachtige functies waarmee ontwikkel aars gemakkelijk ruimtelijke gegevens kunnen integreren met de Azure Maps Web-SDK.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 02/28/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 1de9dd9721700418b1aa9ba661fc070db1dbedcc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0532b1548af9be04a53f3ba06147fdde4722f307
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80804636"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130695"
 ---
 # <a name="how-to-use-the-azure-maps-spatial-io-module"></a>De Azure Maps ruimtelijke IO-module gebruiken
 
@@ -38,7 +39,7 @@ In deze video vindt u een overzicht van de ruimtelijke IO-module in de Azure Map
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u de ruimtelijke IO-module kunt gebruiken, moet u [een Azure Maps account maken](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-account-with-azure-maps) en [de primaire abonnements sleutel voor uw account ophalen](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#get-the-primary-key-for-your-account).
+Voordat u de ruimtelijke IO-module kunt gebruiken, moet u [een Azure Maps account maken](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-azure-maps-account) en [de primaire abonnements sleutel voor uw account ophalen](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#get-the-primary-key-for-your-account).
 
 ## <a name="installing-the-spatial-io-module"></a>De ruimtelijke IO-module installeren
 

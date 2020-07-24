@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 01bb5f9ae6d8c7a6374a8b1392b061f31fdb63a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fec93169a8c49422c9e310cddc08ae3412b89166
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390581"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132276"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure Digital Apparaatdubbels-modellen beheren
 
@@ -66,7 +66,7 @@ Dit model definieert een naam en een unieke ID voor de patiënt kamer en eigensc
 U kunt aan de slag met deze methode om modellen te definiëren voor de weers huizen, zones of het zieken huis zelf.
 
 > [!TIP]
-> Er is een bibliotheek aan de client zijde beschikbaar voor het parseren en valideren van DTDL. Er wordt een C#-object model gegenereerd van de DTDL-inhoud, die kan worden gebruikt in modellen voor ontwikkel scenario's, zoals het genereren van UI-elementen. U kunt deze bibliotheek ook gebruiken om ervoor te zorgen dat uw modellen geen syntaxis fouten bevatten voordat u ze uploadt. Zie [How-to: model parseren en valideren](how-to-use-parser.md)voor meer informatie over deze bibliotheek en de toegang tot een geconstrueerd voor beeld voor een DTDL-validatie.
+> Er is een bibliotheek aan de client zijde beschikbaar voor het parseren en valideren van DTDL. Er wordt een C#-object model gegenereerd van de DTDL-inhoud, die kan worden gebruikt in modellen voor ontwikkel scenario's, zoals het genereren van UI-elementen. U kunt deze bibliotheek ook gebruiken om ervoor te zorgen dat uw modellen geen syntaxis fouten bevatten voordat u ze uploadt. Zie [*How-to: model parseren en valideren*](how-to-use-parser.md)voor meer informatie over deze bibliotheek en de toegang tot een geconstrueerd voor beeld voor een DTDL-validatie.
 
 ## <a name="manage-models-with-apis"></a>Modellen beheren met Api's.
 
@@ -190,7 +190,7 @@ De status van de buiten gebruik stellen van een model is opgenomen in de records
 
 U kunt alle modellen in uw exemplaar in één keer verwijderen, of u kunt dit op afzonderlijke manieren doen.
 
-Voor een voor beeld van het verwijderen van alle modellen downloadt u de voor beeld-app die wordt gebruikt in de [zelf studie: Verken de basis principes met een voor beeld-client-app](tutorial-command-line-app.md). Het *CommandLoop.cs* -bestand doet dit in een `CommandDeleteAllModels` functie.
+Voor een voor beeld van het verwijderen van alle modellen downloadt u de voor beeld-app die wordt gebruikt in de [*zelf studie: Verken de basis principes met een voor beeld-client-app*](tutorial-command-line-app.md). Het *CommandLoop.cs* -bestand doet dit in een `CommandDeleteAllModels` functie.
 
 In de rest van deze sectie wordt de verwijdering van een model dichter bij de details weer gegeven en wordt getoond hoe u dit kunt doen voor een afzonderlijk model.
 
@@ -247,9 +247,9 @@ Deze status wordt niet door Azure Digital Apparaatdubbels voor komen. Zorg er da
 
 ## <a name="manage-models-with-cli"></a>Modellen beheren met CLI
 
-Modellen kunnen ook worden beheerd met behulp van de Azure Digital Apparaatdubbels CLI. De opdrachten zijn te vinden in [How to: gebruik de Azure Digital APPARAATDUBBELS cli](how-to-use-cli.md).
+Modellen kunnen ook worden beheerd met behulp van de Azure Digital Apparaatdubbels CLI. De opdrachten zijn te vinden in [*How to: gebruik de Azure Digital APPARAATDUBBELS cli*](how-to-use-cli.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie digitale apparaatdubbels maken en beheren op basis van uw modellen:
-* [Instructies: digitale apparaatdubbels beheren](how-to-manage-twin.md)
+* [*Instructies: digitale apparaatdubbels beheren*](how-to-manage-twin.md)

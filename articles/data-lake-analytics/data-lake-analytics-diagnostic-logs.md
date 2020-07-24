@@ -3,16 +3,14 @@ title: Diagnostische logboeken voor Azure Data Lake Analytics inschakelen en wee
 description: Meer informatie over het instellen en openen van Diagnostische logboeken voor Azure Data Lake Analytics
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: jasonwhowell
-ms.author: jasonh
 ms.topic: how-to
 ms.date: 02/12/2018
-ms.openlocfilehash: 9d389c433cb8a049671668cb58b3d80691ff0d16
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: c8c24134c4694a9a2df36ac278452a532a5125ad
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121432"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132599"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Diagnostische logboeken openen voor Azure Data Lake Analytics
 
@@ -128,7 +126,7 @@ Hier volgt een voor beeld van een vermelding in het aanvraag logboek in JSON-ind
 
 #### <a name="request-log-schema"></a>Schema voor aanvraag logboek
 
-| Naam | Type | Description |
+| Naam | Type | Beschrijving |
 | --- | --- | --- |
 | tijd |Tekenreeks |De tijds tempel (in UTC) van het logboek |
 | resourceId |Tekenreeks |De id van de resource waarop de bewerking plaatsvond |
@@ -142,7 +140,7 @@ Hier volgt een voor beeld van een vermelding in het aanvraag logboek in JSON-ind
 
 #### <a name="request-log-properties-schema"></a>Schema eigenschappen van het aanvraag logboek
 
-| Naam | Type | Description |
+| Naam | Type | Beschrijving |
 | --- | --- | --- |
 | HttpMethod |Tekenreeks |De HTTP-methode die wordt gebruikt voor de bewerking. Bijvoorbeeld ophalen. |
 | Pad |Tekenreeks |Het pad waarin de bewerking is uitgevoerd |
@@ -176,9 +174,9 @@ Hier volgt een voor beeld van een vermelding in het audit logboek in JSON-indeli
 }
 ```
 
-#### <a name="audit-log-schema"></a>Schema van auditlogboek
+#### <a name="audit-log-schema"></a>Schema voor auditlogboek
 
-| Naam | Type | Description |
+| Naam | Type | Beschrijving |
 | --- | --- | --- |
 | tijd |Tekenreeks |De tijds tempel (in UTC) van het logboek |
 | resourceId |Tekenreeks |De id van de resource waarop de bewerking plaatsvond |
@@ -196,7 +194,7 @@ Hier volgt een voor beeld van een vermelding in het audit logboek in JSON-indeli
 
 #### <a name="audit-log-properties-schema"></a>Schema eigenschappen van controle logboek
 
-| Naam | Type | Description |
+| Naam | Type | Beschrijving |
 | --- | --- | --- |
 | JobId |Tekenreeks |De ID die aan de taak is toegewezen |
 | JobName |Tekenreeks |De naam die voor de taak is ingesteld |

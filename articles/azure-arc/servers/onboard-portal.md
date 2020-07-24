@@ -6,15 +6,15 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 07/14/2020
+ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: cf09dd1521994f01e5f43b981d4bff540f3b1f40
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fe26731a7f217d0f441a3dea1650f2652677a57f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506448"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133007"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Verbinding maken tussen hybride computers en Azure via de Azure Portal
 
@@ -89,6 +89,10 @@ Als de agent niet kan worden gestart nadat de installatie is voltooid, raadpleeg
 
 1. Open een PowerShell-opdrachtprompt met verhoogde bevoegdheid.
 
+    >[!NOTE]
+    >Het script ondersteunt alleen uitvoering vanaf een 64-bits versie van Windows Power shell.
+    >
+
 1. Ga naar de map of share waarnaar u het script hebt gekopieerd en voer deze uit op de server door het script uit te voeren `./OnboardingScript.ps1` .
 
 Als de agent niet kan worden gestart nadat de installatie is voltooid, raadpleegt u de logboeken voor gedetailleerde informatie over de fout. De logboekmap is *%ProgramFiles%\AzureConnectedMachineAgentAgent\logs*.
@@ -157,7 +161,7 @@ Nadat u de agent hebt geïnstalleerd, configureert u deze om te communiceren met
 
 ## <a name="verify-the-connection-with-azure-arc"></a>De verbinding met Azure Arc controleren
 
-Nadat u de agent hebt geïnstalleerd en geconfigureerd om verbinding te maken met Azure Arc voor servers (preview), gaat u naar de Azure Portal om te controleren of de server met succes is verbonden. Bekijk uw computers in de [Azure Portal](https://aka.ms/hybridmachineportal).
+Nadat u de agent hebt geïnstalleerd en geconfigureerd om verbinding te maken met Azure Arc voor servers (preview), gaat u naar de Azure Portal om te controleren of de server met succes is verbonden. Bekijk uw computers in [Azure Portal](https://aka.ms/hybridmachineportal).
 
 ![Een geslaagde server verbinding](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 

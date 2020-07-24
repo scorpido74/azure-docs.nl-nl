@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e5c57ba56ce236bcf07478e1784eec6d4c632d1c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ca54cb44618da1ff92b12b3ad918da513ab2be2f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82195244"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131817"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>Azure-beveiligings basislijn voor Cosmos DB
 
@@ -78,7 +78,7 @@ Cross-Origin-resource delen configureren:https://docs.microsoft.com/azure/cosmos
 
 Schakel DDoS Protection standaard in op de virtuele netwerken die zijn gekoppeld aan uw Azure Cosmos DB-instanties om te beschermen tegen DDoS-aanvallen. Gebruik Azure Security Center geïntegreerde bedreigings informatie om communicatie met bekende of ongebruikte Internet-IP-adressen te weigeren.
 
-ConfigureAzure Cosmos DB Advanced Threat Protection:https://docs.microsoft.com/azure/cosmos-db/cosmos-db-advanced-threat-protection
+Azure Cosmos DB Advanced Threat Protection configureren:https://docs.microsoft.com/azure/cosmos-db/cosmos-db-advanced-threat-protection
 
 DDoS-beveiliging configureren:https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
 
@@ -121,7 +121,7 @@ Cosmos DB Advanced Threat Protection configureren:https://docs.microsoft.com/azu
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: de complexiteit en administratieve overhead van netwerk beveiligings regels minimaliseren
 
-**Richt lijnen**: voor bronnen die toegang nodig hebben tot uw Azure Cosmos-account, gebruikt u Virtual Network Service Tags om netwerk toegangs beheer te definiëren voor netwerk-securitygGroups of Azure firewall. U kunt servicetags gebruiken in plaats van specifieke IP-adressen wanneer u beveiligingsregels maakt. Door de naam van de service label (bijvoorbeeld AzureCosmosDB) op te geven in het juiste bron-of doel veld van een regel, kunt u het verkeer voor de bijbehorende service toestaan of weigeren. Micro soft beheert de adres voorvoegsels die zijn opgenomen in het servicetag van de service en werkt de servicetag automatisch bij met gewijzigde adressen.
+**Richt lijnen**: voor bronnen die toegang nodig hebben tot uw Azure Cosmos-account, gebruikt u Virtual Network Service Tags om netwerk toegangs beheer te definiëren voor netwerk beveiligings groepen of Azure firewall. U kunt servicetags gebruiken in plaats van specifieke IP-adressen wanneer u beveiligingsregels maakt. Door de naam van de service label (bijvoorbeeld AzureCosmosDB) op te geven in het juiste bron-of doel veld van een regel, kunt u het verkeer voor de bijbehorende service toestaan of weigeren. Micro soft beheert de adres voorvoegsels die zijn opgenomen in het servicetag van de service en werkt de servicetag automatisch bij met gewijzigde adressen.
 
 Meer informatie over het gebruik van service Tags:https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
@@ -686,7 +686,7 @@ Tags maken en gebruiken:https://docs.microsoft.com/azure/azure-resource-manager/
 
 **Hulp: gebruik**Azure Policy om beperkingen toe te voegen voor het type resources dat kan worden gemaakt in klant abonnement (en) met de volgende ingebouwde beleids definities:
 
-- Niet toegestane brontypen
+- Niet toegestane resourcetypen
 
 - Toegestane brontypen
 
@@ -731,7 +731,7 @@ Query's maken met Azure Graph:https://docs.microsoft.com/azure/governance/resour
 
 **Hulp: gebruik**Azure Policy om beperkingen toe te voegen voor het type resources dat kan worden gemaakt in klant abonnement (en) met de volgende ingebouwde beleids definities:
 
-- Niet toegestane brontypen 
+- Niet toegestane resourcetypen 
 
 - Toegestane brontypen
 

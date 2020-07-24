@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 86314fd5bfe103cef8332ee3113f46fb0e39dafc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ffbe10a1f9a1629c74c144b8773a7de89890576
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836359"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132004"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Rollen, machtigingen en beveiliging in Azure Monitor
 
@@ -27,10 +28,10 @@ Personen die de rol bewakings lezer toegewezen kunnen alle bewakings gegevens in
 
 * Bekijk bewakings dashboards in de portal en maak hun eigen persoonlijke bewakings dashboards.
 * Waarschuwings regels weer geven die zijn gedefinieerd in [Azure-waarschuwingen](alerts-overview.md)
-* Query's uitvoeren voor metrische gegevens met behulp van de [Azure Monitor rest API](https://msdn.microsoft.com/library/azure/dn931930.aspx), [Power shell-cmdlets](powershell-quickstart-samples.md)of [kruislingse platform-cli](../samples/cli-samples.md).
+* Query's uitvoeren voor metrische gegevens met behulp van de [Azure Monitor rest API](/rest/api/monitor/metrics), [Power shell-cmdlets](../samples/powershell-samples.md)of [kruislingse platform-cli](../samples/cli-samples.md).
 * Query's uitvoeren op het activiteiten logboek met behulp van de portal, Azure Monitor REST API, Power shell-cmdlets of kruislingse platform-CLI.
 * De [Diagnostische instellingen](diagnostic-settings.md) voor een resource weer geven.
-* Het [logboek profiel](activity-log-export.md) voor een abonnement weer geven.
+* Het [logboek profiel](./activity-log.md#legacy-collection-methods) voor een abonnement weer geven.
 * Instellingen voor automatisch schalen weer geven.
 * Waarschuwings activiteit en instellingen weer geven.
 * Toegang krijgen tot Application Insights gegevens en gegevens weer geven in AI Analytics.
@@ -51,7 +52,7 @@ Personen aan wie de rol bewakings bijdrage is toegewezen, kunnen alle bewakings 
 
 * Publiceer bewakings dashboards als een gedeeld dash board.
 * [Diagnostische instellingen](diagnostic-settings.md) instellen voor een resource.\*
-* Het [logboek profiel](activity-log-export.md) instellen voor een abonnement.\*
+* Het [logboek profiel](./activity-log.md#legacy-collection-methods) instellen voor een abonnement.\*
 * De activiteiten en instellingen voor waarschuwings regels instellen via [Azure-waarschuwingen](alerts-overview.md).
 * Application Insights-webtests en-onderdelen maken.
 * Lijst met gedeelde sleutels van Log Analytics werkruimte.
@@ -66,8 +67,8 @@ Personen aan wie de rol bewakings bijdrage is toegewezen, kunnen alle bewakings 
 > 
 > 
 
-## <a name="monitoring-permissions-and-custom-rbac-roles"></a>Machtigingen en aangepaste RBAC-rollen voor bewaking
-Als de hierboven vermelde ingebouwde rollen niet voldoen aan de exacte behoeften van uw team, kunt u [een aangepaste RBAC-rol maken](../../role-based-access-control/custom-roles.md) met nauw keurige machtigingen. Hieronder vindt u de algemene Azure Monitor RBAC-bewerkingen met de bijbehorende beschrijvingen.
+## <a name="monitoring-permissions-and-azure-custom-roles"></a>Bewakings machtigingen en aangepaste Azure-rollen
+Als de bovenstaande ingebouwde rollen niet voldoen aan de exacte behoeften van uw team, kunt u [een aangepaste Azure-rol maken](../../role-based-access-control/custom-roles.md) met gedetailleerde machtigingen. Hieronder vindt u de algemene Azure Monitor RBAC-bewerkingen met de bijbehorende beschrijvingen.
 
 | Bewerking | Beschrijving |
 | --- | --- |
@@ -96,7 +97,7 @@ Als de hierboven vermelde ingebouwde rollen niet voldoen aan de exacte behoeften
 > 
 > 
 
-U kunt bijvoorbeeld de bovenstaande tabel gebruiken om een aangepaste RBAC-rol te maken voor een ' activiteiten logboek lezer ' zoals deze:
+U kunt bijvoorbeeld de bovenstaande tabel gebruiken om een aangepaste Azure-rol te maken voor een ' activiteiten logboek lezer ' zoals deze:
 
 ```powershell
 $role = Get-AzRoleDefinition "Reader"
@@ -125,7 +126,7 @@ Al deze drie van deze gegevens typen kunnen worden opgeslagen in een opslag acco
 * Ken nooit de machtiging Listkeys ophalen toe voor opslag accounts of event hubs in het abonnements bereik wanneer een gebruiker alleen toegang nodig heeft tot bewakings gegevens. Geef in plaats daarvan deze machtigingen aan de gebruiker op een resource of resource groep (als u een toegewezen controle resource groep hebt).
 
 ### <a name="limiting-access-to-monitoring-related-storage-accounts"></a>Toegang beperken tot opslag accounts met betrekking tot bewaking
-Wanneer een gebruiker of toepassing toegang nodig heeft tot bewakings gegevens in een opslag account, moet u [een account-SAS genereren](https://msdn.microsoft.com/library/azure/mt584140.aspx) op het opslag account dat bewakings gegevens bevat met alleen-lezen toegang op service niveau tot Blob Storage. In Power shell kan dit er als volgt uitzien:
+Wanneer een gebruiker of toepassing toegang nodig heeft tot bewakings gegevens in een opslag account, moet u [een account-SAS genereren](/rest/api/storageservices/create-account-sas) op het opslag account dat bewakings gegevens bevat met alleen-lezen toegang op service niveau tot Blob Storage. In Power shell kan dit er als volgt uitzien:
 
 ```powershell
 $context = New-AzStorageContext -ConnectionString "[connection string for your monitoring Storage Account]"
@@ -134,7 +135,7 @@ $token = New-AzStorageAccountSASToken -ResourceType Service -Service Blob -Permi
 
 Vervolgens kunt u het token toekennen aan de entiteit die van dat opslag account moet worden gelezen en kunnen alle blobs in dat opslag account worden vermeld en gelezen.
 
-Als u deze machtiging ook wilt beheren met RBAC, kunt u die entiteit de machtiging micro soft. Storage/Storage accounts/listkeys ophalen/Action verlenen voor dat specifieke opslag account. Dit is nodig voor gebruikers die een diagnostische instelling of logboek profiel moeten kunnen instellen om te archiveren naar een opslag account. U kunt bijvoorbeeld de volgende aangepaste RBAC-rol maken voor een gebruiker of toepassing die alleen uit één opslag account moet worden gelezen:
+Als u deze machtiging ook wilt beheren met RBAC, kunt u die entiteit de machtiging micro soft. Storage/Storage accounts/listkeys ophalen/Action verlenen voor dat specifieke opslag account. Dit is nodig voor gebruikers die een diagnostische instelling of logboek profiel moeten kunnen instellen om te archiveren naar een opslag account. U kunt bijvoorbeeld de volgende aangepaste Azure-rol maken voor een gebruiker of toepassing die alleen uit één opslag account moet worden gelezen:
 
 ```powershell
 $role = Get-AzRoleDefinition "Reader"
@@ -188,5 +189,3 @@ Zie [netwerk beveiliging en Azure Storage](../../storage/common/storage-network-
 ## <a name="next-steps"></a>Volgende stappen
 * [Meer informatie over RBAC en machtigingen in Resource Manager](../../role-based-access-control/overview.md)
 * [Lees het overzicht van bewaking in azure](../../azure-monitor/overview.md)
-
-

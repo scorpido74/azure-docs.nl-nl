@@ -3,19 +3,17 @@ title: Ethiek en verantwoordelijk gebruik-Personaler
 titleSuffix: Azure Cognitive Services
 description: Deze richt lijnen zijn bedoeld om u te helpen bij het implementeren van personalisatie op een manier waarmee u vertrouwen in uw bedrijf en service kunt bouwen. Zorg ervoor dat u pauzeert om onderzoek te doen, meer te weten te komen over de impact van de persoonlijke instellingen op het leven van mensen. Zoek richt lijnen wanneer dat niet het geval is.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/12/2019
-ms.author: diberry
-ms.openlocfilehash: e422284b871214dbeca31b5dd17b9177a18ad3c8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 602da28f0c235fb0e797a493bc1160631c042a9d
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80478107"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132718"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>Richt lijnen voor de verantwoordelijke implementatie van Personaler
 
@@ -132,7 +130,7 @@ Hier volgen de ontwerp gebieden voor de verantwoordelijke implementaties van AI.
 ### <a name="transparency"></a>Transparantie
 *AI-systemen moeten begrijpelijk zijn*. Met persoonlijke instellingen:
 
-* *Geef gebruikers informatie over de manier waarop de inhoud is aangepast.* U kunt bijvoorbeeld uw gebruikers weer geven `Why These Suggestions?` met een knop met het label dat wordt weer gegeven met de belangrijkste functies van de gebruiker en acties die een rol hebben gespeeld in de resultaten van personaler.
+* *Geef gebruikers informatie over de manier waarop de inhoud is aangepast.* U kunt bijvoorbeeld uw gebruikers weer geven met een knop met het label `Why These Suggestions?` dat wordt weer gegeven met de belangrijkste functies van de gebruiker en acties die een rol hebben gespeeld in de resultaten van personaler.
 * Zorg ervoor dat uw gebruiksrecht overeenkomst vermeldt dat u informatie over gebruikers en hun gedrag gaat gebruiken om de ervaring te personaliseren.
 
 ### <a name="fairness"></a>Verdeling

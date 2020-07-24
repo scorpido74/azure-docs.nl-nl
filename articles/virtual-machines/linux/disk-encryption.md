@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 0847f2360a3562f96454992470e3cc2000f66b11
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fba16f9245c8d438268338329ebadad7a57ef206
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502721"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131919"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Versleuteling aan de server zijde van Azure Disk Storage
 
@@ -58,7 +58,7 @@ Tijdelijke schijven worden op rest versleuteld met door het platform beheerde sl
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-restrictions](../../../includes/virtual-machines-disks-encryption-at-host-restrictions.md)]
 
-#### <a name="supported-regions"></a>Ondersteunde regio’s
+#### <a name="supported-regions"></a>Ondersteunde regio's
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-regions](../../../includes/virtual-machines-disks-encryption-at-host-regions.md)]
 
@@ -70,7 +70,7 @@ Tijdelijke schijven worden op rest versleuteld met door het platform beheerde sl
 
 Hoge beveiligings gevoelige klanten die zich zorgen maken over het risico dat is gekoppeld aan een bepaalde versleutelings algoritme, implementatie of sleutel die wordt aangetast, kunnen nu kiezen voor extra versleutelen met een ander versleutelings algoritme/dezelfde modus op de laag van de infra structuur met behulp van door het platform beheerde versleutelings sleutels. Deze nieuwe laag kan worden toegepast op schijven, moment opnamen en installatie kopieën, die allemaal worden versleuteld met dubbele versleuteling.
 
-### <a name="supported-regions"></a>Ondersteunde regio’s
+### <a name="supported-regions"></a>Ondersteunde regio's
 
 [!INCLUDE [virtual-machines-disks-double-encryption-at-rest-regions](../../../includes/virtual-machines-disks-double-encryption-at-rest-regions.md)]
 
@@ -80,8 +80,7 @@ Hoge beveiligings gevoelige klanten die zich zorgen maken over het risico dat is
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [End-to-end-versleuteling inschakelen met versleuteling op host-CLI](disks-enable-host-based-encryption-cli.md)
-- [Dubbele versleuteling inschakelen bij rest voor beheerde schijven-CLI](disks-enable-double-encryption-at-rest-cli.md)
-- [Door de klant beheerde sleutels voor beheerde schijven inschakelen-CLI](disks-enable-customer-managed-keys-cli.md)
-- [Door de klant beheerde sleutels voor beheerde schijven inschakelen-Portal](disks-enable-customer-managed-keys-portal.md)
+- End-to-end-versleuteling inschakelen met versleuteling op de host met [cli](disks-enable-host-based-encryption-cli.md) of de [Azure Portal](disks-enable-host-based-encryption-portal.md).
+- Schakel dubbele versleuteling in op de rest voor beheerde schijven met [cli](disks-enable-double-encryption-at-rest-cli.md) of de [Azure Portal](disks-enable-double-encryption-at-rest-portal.md).
+- Door de klant beheerde sleutels voor beheerde schijven inschakelen met [cli](disks-enable-customer-managed-keys-cli.md) of de [Azure Portal](disks-enable-customer-managed-keys-portal.md).
 - [Wat is Azure Key Vault?](../../key-vault/general/overview.md)

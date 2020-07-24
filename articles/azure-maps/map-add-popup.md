@@ -1,19 +1,20 @@
 ---
 title: Een pop-upvenster toevoegen aan een punt op een kaart | Microsoft Azure kaarten
 description: In dit artikel leert u hoe u een pop-upvenster kunt toevoegen aan een punt met behulp van de Microsoft Azure Maps Web SDK.
-author: Philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 02/27/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: d7ca2f07e4568257baf72f2f298631b86f776c2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2888f6c58bb67cf68df2263bbabb87180bc57288
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83119257"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130560"
 ---
 # <a name="add-a-popup-to-the-map"></a>Een pop-upvenster toevoegen aan de kaart
 

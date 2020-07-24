@@ -1,19 +1,17 @@
 ---
 title: Meer informatie over Apache Spark code concepten voor Azure Data Lake Analytics U-SQL-ontwikkel aars.
 description: In dit artikel worden Apache Spark concepten beschreven om U-SQL-ontwikkel aars te helpen bij het begrijpen van Spark-code concepten.
-author: guyhay
-ms.author: guyhay
 ms.reviewer: jasonh
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.custom: Understand-apache-spark-code-concepts
 ms.date: 10/15/2019
-ms.openlocfilehash: d7cdcd5a3b176b60bb7801b37a831f8feb08c21f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7b5be20bb8b5eb1d56c1214104037d5d824445b3
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106489"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132344"
 ---
 # <a name="understand-apache-spark-code-for-u-sql-developers"></a>Apache Spark code voor U-SQL-ontwikkel aars begrijpen
 
@@ -131,7 +129,7 @@ De volgende tabel geeft de equivalente typen in Spark, scala en PySpark voor de 
 Zie voor meer informatie:
 
 - [org. apache. Spark. SQL. types](https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.types.package)
-- [Spark SQL-en DataFrames-typen](https://spark.apache.org/docs/latest/sql-reference.html#data-types)
+- [Spark SQL-en DataFrames-typen](https://spark.apache.org/docs/latest/sql-ref-datatypes.html)
 - [Scala-waardetypen](https://www.scala-lang.org/api/current/scala/AnyVal.html)
 - [pyspark. SQL. types](https://spark.apache.org/docs/latest/api/python/pyspark.sql.html#module-pyspark.sql.types)
 

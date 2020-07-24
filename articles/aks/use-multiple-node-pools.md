@@ -4,14 +4,14 @@ description: Meer informatie over het maken en beheren van meerdere knooppunt gr
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: c35b3cdbde79a771eccc42c7c3a60b0ab4e08e8a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 400e595d51f08428b01337e63f6c6e8ba5836794
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250852"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133092"
 ---
-# <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Meerdere knooppunt groepen maken en beheren voor een cluster in azure Kubernetes service (AKS)
+# <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Meerdere knooppuntgroepen maken en beheren voor een cluster in Azure Kubernetes Service (AKS)
 
 In azure Kubernetes service (AKS) worden knoop punten van dezelfde configuratie samen in *knooppunt groepen*gegroepeerd. Deze knooppunt groepen bevatten de onderliggende virtuele machines waarop uw toepassingen worden uitgevoerd. Het eerste aantal knoop punten en hun grootte (SKU) wordt gedefinieerd wanneer u een AKS-cluster maakt, waarmee een [systeem knooppunt groep][use-system-pool]wordt gemaakt. Als u toepassingen wilt ondersteunen die verschillende reken-of opslag vereisten hebben, kunt u extra *gebruikers knooppunt groepen*maken. Systeem knooppunt groepen fungeren het primaire doel van het hosten van essentieel systeem peulen, zoals CoreDNS en tunnelfront. Gebruikers knooppunt groepen gebruiken het primaire doel om uw toepassing te hosten. Toepassing peul kan echter worden gepland op systeem knooppunt groepen als u slechts één groep in uw AKS-cluster wilt hebben. Met gebruikers knooppunt groepen kunt u uw toepassing op een specifieke locatie plaatsen. Gebruik bijvoorbeeld deze extra knooppunt groepen voor gebruikers om Gpu's te bieden voor computerintensieve toepassingen, of om toegang te krijgen tot high-performance SSD-opslag.
 
@@ -72,7 +72,7 @@ Wanneer het cluster gereed is, gebruikt u de opdracht [AZ AKS Get-credentials][a
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-## <a name="add-a-node-pool"></a>Een knooppunt groep toevoegen
+## <a name="add-a-node-pool"></a>Een knooppuntgroep toevoegen
 
 Het cluster dat u in de vorige stap hebt gemaakt, heeft een groep met één knoop punt. We gaan een tweede groep knoop punten toevoegen met behulp van de opdracht [AZ AKS nodepool add][az-aks-nodepool-add] . In het volgende voor beeld wordt een knooppunt groep gemaakt met de naam *mynodepool* die *drie* knoop punten uitvoert:
 
@@ -502,6 +502,9 @@ az aks nodepool add \
     --node-taints sku=gpu:NoSchedule \
     --no-wait
 ```
+
+> [!NOTE]
+> Een Taint kan alleen worden ingesteld voor knooppunt groepen tijdens het maken van een knooppunt groep.
 
 In de volgende voorbeeld uitvoer van de opdracht [AZ AKS nodepool List][az-aks-nodepool-list] ziet u dat *Taintnp* knoop punten *maakt* met de opgegeven *nodeTaints*:
 

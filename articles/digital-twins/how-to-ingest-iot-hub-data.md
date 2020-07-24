@@ -7,11 +7,12 @@ ms.author: cschorm
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 351f7ed131d545d2aa83df753cac3f26e76e4ccb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c73f007f85a963a09de4e05222082fd52f784c0
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84725848"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131562"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>IoT Hub telemetrie opnemen in azure Digital Apparaatdubbels
 
@@ -41,7 +42,7 @@ Dit scenario wordt beschreven in een diagram hieronder:
 
 Voordat u verder gaat met dit voor beeld, moet u de volgende vereisten volt ooien.
 1. Maak een IoT-hub. Zie de sectie *een IOT hub maken* van [deze IOT hub Snelstartgids](../iot-hub/quickstart-send-telemetry-cli.md) voor instructies.
-2. Maak ten minste één Azure-functie voor het verwerken van gebeurtenissen van IoT Hub. Zie [How-to: een Azure-functie instellen voor het verwerken van gegevens](how-to-create-azure-function.md) voor het bouwen van een eenvoudige Azure-functie waarmee verbinding kan worden gemaakt met Azure Digital Apparaatdubbels en Azure Digital apparaatdubbels API-functies kunt aanroepen. De rest van deze procedure wordt gebaseerd op deze functie.
+2. Maak ten minste één Azure-functie voor het verwerken van gebeurtenissen van IoT Hub. Zie [*How-to: een Azure-functie instellen voor het verwerken van gegevens*](how-to-create-azure-function.md) voor het bouwen van een eenvoudige Azure-functie waarmee verbinding kan worden gemaakt met Azure Digital Apparaatdubbels en Azure Digital apparaatdubbels API-functies kunt aanroepen. De rest van deze procedure wordt gebaseerd op deze functie.
 3. Stel een gebeurtenis bestemming in voor hub-gegevens. Ga in het [Azure Portal](https://portal.azure.com/)naar uw IOT hub-exemplaar. Maak onder *gebeurtenissen*een abonnement voor uw Azure-functie. 
 
     :::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="Azure Portal: een gebeurtenis abonnement toevoegen":::
@@ -54,7 +55,7 @@ Voordat u verder gaat met dit voor beeld, moet u de volgende vereisten volt ooie
 
 ## <a name="create-an-azure-function-in-visual-studio"></a>Een Azure-functie maken in Visual Studio
 
-In deze sectie wordt gebruikgemaakt van dezelfde Visual Studio-opstart stappen en Azure function-skelet van [instructies: Stel een Azure-functie in voor het verwerken van gegevens](how-to-create-azure-function.md). Het skelet behandelt verificatie en maakt een service-client, klaar om gegevens te verwerken en Azure Digital Apparaatdubbels-Api's te aanroepen als reactie. 
+In deze sectie wordt gebruikgemaakt van dezelfde Visual Studio-opstart stappen en Azure function-skelet van [*instructies: Stel een Azure-functie in voor het verwerken van gegevens*](how-to-create-azure-function.md). Het skelet behandelt verificatie en maakt een service-client, klaar om gegevens te verwerken en Azure Digital Apparaatdubbels-Api's te aanroepen als reactie. 
 
 De kern van de functie skelet is als volgt:
 
@@ -267,9 +268,9 @@ U hebt nu een Azure-functie die is ingericht voor het lezen en interpreteren van
 
 ## <a name="debug-azure-function-apps-locally"></a>Lokaal fouten opsporen in azure function-apps
 
-U kunt fouten opsporen in azure functions met een Event Grid trigger lokaal. Zie [Debug Event grid trigger lokaal](../azure-functions/functions-debug-event-grid-trigger-local.md)voor meer informatie hierover.
+U kunt fouten opsporen in azure functions met een Event Grid trigger lokaal. Zie [*Debug Event grid trigger lokaal*](../azure-functions/functions-debug-event-grid-trigger-local.md)voor meer informatie hierover.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Meer informatie over het inkomen en uitkomen van gegevens met Azure Digital Apparaatdubbels:
-* [Concepten: integratie met andere services](concepts-integration.md)
+* [*Concepten: integratie met andere services*](concepts-integration.md)

@@ -7,11 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: a817cb0722bff721891cd290ea4a6552c778dddf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 550ed5791df821b1793755f5046da92adf6e3f3a
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84701844"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131545"
 ---
 # <a name="how-to-protect-private-dns-zones-and-records"></a>Persoonlijke DNS-zones en-records beveiligen
 
@@ -23,7 +24,7 @@ In dit artikel wordt uitgelegd hoe u met Azure DNS uw persoonlijke DNS-zones en-
 
 ## <a name="role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer
 
-Met Access Control op basis van rollen (RBAC) van Azure kunt u verfijnd toegangs beheer voor Azure-gebruikers,-groepen en-resources. Met RBAC kunt u het toegangs niveau verlenen dat gebruikers nodig hebben. Zie [Wat is op rollen gebaseerd Access Control](../role-based-access-control/overview.md)voor meer informatie over hoe RBAC u kunt gebruiken om de toegang te beheren.
+Met op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC) kunt u verfijnd toegang beheren voor Azure-gebruikers,-groepen en-resources. Met RBAC kunt u het toegangs niveau verlenen dat gebruikers nodig hebben. Zie [Wat is Azure Role-based Access Control (Azure RBAC)](../role-based-access-control/overview.md)voor meer informatie over hoe RBAC u de toegang helpt te beheren.
 
 ### <a name="the-private-dns-zone-contributor-role"></a>De rol van de Privé-DNS zone Inzender
 
@@ -167,7 +168,7 @@ De eigenschap actions definieert de volgende DNS-specifieke machtigingen:
 * `Microsoft.Network/privateDNSZones/read`verleent toestemming om persoonlijke DNS-zones te lezen, maar niet om ze te wijzigen, zodat u de zone kunt zien waarin de CNAME wordt gemaakt.
 
 > [!NOTE]
-> Het gebruik van een aangepaste RBAC-rol om te voor komen dat record sets worden verwijderd terwijl ze nog steeds kunnen worden bijgewerkt, is geen effectief besturings element. Zo voor komt u dat record sets worden verwijderd, maar niet om te voor komen dat ze worden gewijzigd.  Toegestane wijzigingen zijn het toevoegen en verwijderen van records uit de recordset, inclusief het verwijderen van alle records om een lege recordset te verlaten. Dit heeft hetzelfde effect als het verwijderen van de recordset uit het oogpunt van een DNS-oplossing.
+> Een aangepaste Azure-rol gebruiken om te voor komen dat record sets worden verwijderd terwijl ze nog steeds kunnen worden bijgewerkt, is geen effectief besturings element. Zo voor komt u dat record sets worden verwijderd, maar niet om te voor komen dat ze worden gewijzigd.  Toegestane wijzigingen zijn het toevoegen en verwijderen van records uit de recordset, inclusief het verwijderen van alle records om een lege recordset te verlaten. Dit heeft hetzelfde effect als het verwijderen van de recordset uit het oogpunt van een DNS-oplossing.
 
 Aangepaste roldefinities kunnen momenteel niet worden gedefinieerd via de Azure Portal. Een aangepaste rol op basis van deze roldefinitie kan worden gemaakt met behulp van Azure PowerShell:
 

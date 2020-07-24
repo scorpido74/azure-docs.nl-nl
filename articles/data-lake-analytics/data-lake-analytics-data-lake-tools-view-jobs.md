@@ -2,17 +2,15 @@
 title: Taak browser gebruiken & taak weergave-Azure Data Lake Analytics
 description: In dit artikel wordt beschreven hoe u de taak browser en taak weergave gebruikt voor Azure Data Lake Analytics taken.
 ms.service: data-lake-analytics
-author: jasonwhowell
-ms.author: jasonh
 ms.assetid: bdf27b4d-6f58-4093-ab83-4fa3a99b5650
 ms.topic: how-to
 ms.date: 08/02/2017
-ms.openlocfilehash: e0db5482a48819074fc0552417aa79dbc2e5cf66
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 32684ea72df63de5b82941b3ef44e9d579d09eb4
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120174"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131885"
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics"></a>Taakbrowser en taakweergave gebruiken voor Azure Data Lake Analytics
 De Azure Data Lake Analytics-Service archiveert taken in een query-archief. In dit artikel leert u hoe u taak browser en taak weergave kunt gebruiken in Azure Data Lake-Hulpprogram Ma's voor Visual Studio om de historische taak gegevens te vinden. 
@@ -48,7 +46,7 @@ Taak weergave bevat:
     * Volt ooien: de taak is voltooid (bijvoorbeeld het volt ooien van het bestand).
       
       De taak kan in elke fase mislukken. Bijvoorbeeld compilatie fouten in de fase voor het voorbereiden, time-outfouten in de fase in de wachtrij en uitvoerings fouten in de actieve fase, enzovoort.
-  * Basis gegevens
+  * Algemene informatie
     
       De basis taak informatie wordt weer gegeven in het onderste deel van het deel venster taak overzicht.
     

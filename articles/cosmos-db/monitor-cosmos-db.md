@@ -5,15 +5,15 @@ author: bwren
 services: cosmos-db
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 05/20/2020
+ms.date: 07/22/2020
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: cd100fca074e63c56cd6a19843cc68e1a1ddf214
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 9c2a87f3d70d3873771b3a59114b424efffe4fb9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850287"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130185"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>Bewakings Azure Cosmos DB
 
@@ -23,7 +23,7 @@ U kunt uw gegevens bewaken met metrieken aan de client zijde en aan de server zi
 
 * **Bewaken vanaf Azure Cosmos DB portal:** U kunt bewaken met de metrische gegevens die beschikbaar zijn op het tabblad **metrische gegevens** van het Azure Cosmos-account. De metrische gegevens op dit tabblad bevatten de metrische gegevens voor door Voer, opslag, Beschik baarheid, latentie, consistentie en systeem niveau. Standaard hebben deze metrische gegevens een Bewaar periode van 7 dagen. Zie de sectie [bewakings gegevens die zijn verzameld uit Azure Cosmos DB](#monitoring-from-azure-cosmos-db) van dit artikel voor meer informatie.
 
-* **Controleren met metrische gegevens in azure monitor:** U kunt de metrische gegevens van uw Azure Cosmos-account bewaken en dash boards maken op basis van de Azure Monitor. Azure Monitor de metrische gegevens voor de Azure Cosmos DB standaard verzameld, hoeft u niets expliciet te configureren. Deze metrische gegevens worden verzameld met een granulatie van één minuut, de granulatie kan variëren op basis van de metrische gegevens die u kiest. Standaard hebben deze metrische gegevens een Bewaar periode van 30 dagen. De meeste metrische gegevens die beschikbaar zijn in de vorige opties zijn ook beschikbaar in deze metrische gegevens. Zie de sectie [metrische gegevens analyseren](#analyze-metric-data) in dit artikel voor meer informatie.
+* **Controleren met metrische gegevens in azure monitor:** U kunt de metrische gegevens van uw Azure Cosmos-account bewaken en dash boards maken op basis van de Azure Monitor. Azure Monitor de metrische gegevens voor de Azure Cosmos DB standaard verzameld, hoeft u niets expliciet te configureren. Deze metrische gegevens worden verzameld met een granulatie van één minuut, de granulatie kan variëren op basis van de metrische gegevens die u kiest. Standaard hebben deze metrische gegevens een Bewaar periode van 30 dagen. De meeste metrische gegevens die beschikbaar zijn in de vorige opties zijn ook beschikbaar in deze metrische gegevens. De dimensie waarden voor de metrische gegevens, zoals container naam, zijn niet hoofdletter gevoelig. U moet dus hoofdletter gevoelige vergelijking gebruiken wanneer u teken reeksen vergelijkt met deze dimensie waarden. Zie de sectie [metrische gegevens analyseren](#analyze-metric-data) in dit artikel voor meer informatie.
 
 * **Controleren met Diagnostische logboeken in azure monitor:** U kunt de logboeken van uw Azure Cosmos-account bewaken en dash boards maken op basis van de Azure Monitor. Telemetrie, zoals gebeurtenissen en traceringen die worden uitgevoerd bij een tweede granulatie, worden opgeslagen als Logboeken. Als bijvoorbeeld de door Voer van een container verandert, worden de eigenschappen van een Cosmos-account gewijzigd, worden deze gebeurtenissen vastgelegd in de logboeken. U kunt deze logboeken analyseren door query's uit te voeren op de verzamelde gegevens. Zie de sectie [logboek gegevens analyseren](#analyze-log-data) in dit artikel voor meer informatie.
 

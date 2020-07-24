@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: c4121482c37afcda0f580656bbe583128b7720fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10c9e2c3ecefedded393d6949be1480f2f02973b
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85829394"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131052"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Introductiehandleiding voor Azure-ontwikkelaars
 
@@ -76,7 +76,7 @@ Vanwege het beheer niveau dat u met Vm's hebt, kunt u een groot aantal server we
 
 > **Wanneer gebruiken**: gebruik virtual machines als u volledige controle over uw toepassings infrastructuur wilt of de werk belasting van on-premises toepassingen naar Azure wilt migreren zonder dat u wijzigingen hoeft aan te brengen.
 >
-> **Aan de slag**: een [virtuele Linux-machine](../../virtual-machines/virtual-machines-linux-quick-create-portal.md) of [Windows-VM](../../virtual-machines/virtual-machines-windows-hero-tutorial.md) maken op basis van de Azure Portal.
+> **Aan de slag**: een [virtuele Linux-machine](../../virtual-machines/linux/quick-create-portal.md) of [Windows-VM](../../virtual-machines/windows/quick-create-portal.md) maken op basis van de Azure Portal.
 
 #### <a name="azure-functions-serverless"></a>Azure Functions (serverloos)
 
@@ -141,11 +141,6 @@ Met docker-containers, een vorm van OS-virtualisatie, kunt u toepassingen op een
 
 Azure biedt verschillende manieren om containers in uw toepassingen te gebruiken.
 
-- **Azure docker VM-extensie**: Hiermee kunt u uw virtuele machine configureren met docker-hulpprogram ma's om als docker-host te fungeren.
-
-  > **Wanneer gebruiken**: wanneer u een consistente container implementatie wilt genereren voor uw toepassingen op een virtuele machine of als u [docker opstellen](https://docs.docker.com/compose/overview/)wilt gebruiken.
-  >
-  > **Aan de slag**: [een docker-omgeving maken in azure met behulp van de docker VM-extensie](../../virtual-machines/virtual-machines-linux-dockerextension.md).
 
 - **Azure Kubernetes service**: Hiermee kunt u een cluster van virtuele machines maken, configureren en beheren die vooraf zijn geconfigureerd voor het uitvoeren van toepassingen met containers. Zie [Azure Kubernetes service Introduction](../../aks/intro-kubernetes.md)(Engelstalig) voor meer informatie over de Azure Kubernetes-service.
 
@@ -212,7 +207,7 @@ Of het nu gaat om Vm's inrichten of het publiceren van uw web-apps met continue 
 
 ## <a name="azure-regions"></a>Azure-regio's
 
-Azure is een wereld wijd Cloud platform dat algemeen beschikbaar is in veel regio's over de hele wereld. Wanneer u een service, toepassing of virtuele machine inricht in azure, wordt u gevraagd om een regio te selecteren. Deze regio vertegenwoordigt een specifiek Data Center waarin uw toepassing wordt uitgevoerd of waar uw gegevens worden opgeslagen. Deze regio's komen overeen met specifieke locaties, die worden gepubliceerd op de pagina [Azure-regio's](https://azure.microsoft.com/regions/) .
+Azure is een wereldwijd cloudplatform dat algemeen beschikbaar is in veel regio's over de hele wereld. Wanneer u een service, toepassing of virtuele machine inricht in azure, wordt u gevraagd om een regio te selecteren. Deze regio vertegenwoordigt een specifiek Data Center waarin uw toepassing wordt uitgevoerd of waar uw gegevens worden opgeslagen. Deze regio's komen overeen met specifieke locaties, die worden gepubliceerd op de pagina [Azure-regio's](https://azure.microsoft.com/regions/) .
 
 ### <a name="choose-the-best-region-for-your-application-and-data"></a>De beste regio voor uw toepassing en gegevens kiezen
 
@@ -248,7 +243,7 @@ De [Azure Portal](https://portal.azure.com) is een webtoepassing. U kunt de Azur
 
 ### <a name="rest-apis"></a>REST-API’s
 
-Azure is gebouwd op een set REST-Api's die ondersteuning bieden voor de Azure Portal-gebruikers interface. De meeste van deze REST Api's worden ook ondersteund om uw Azure-resources en-toepassingen programmatisch in te richten en te beheren vanaf elk apparaat met een Internet verbinding. Zie de [Naslag informatie voor Azure rest SDK](https://docs.microsoft.com/rest/api/)voor de volledige set rest API documentatie.
+Azure is gebouwd op een set REST API's die de gebruikersinterface van de Azure-portal ondersteunen. De meeste van deze REST Api's worden ook ondersteund om uw Azure-resources en-toepassingen programmatisch in te richten en te beheren vanaf elk apparaat met een Internet verbinding. Zie de [Naslag informatie voor Azure rest SDK](https://docs.microsoft.com/rest/api/)voor de volledige set rest API documentatie.
 
 ### <a name="apis"></a>API's
 
@@ -290,11 +285,11 @@ En het definiëren van afzonderlijke Azure-account identiteiten, ook wel *gebrui
 
 ### <a name="manage-your-subscriptions"></a>Uw abonnementen beheren
 
-Een abonnement is een logische groepering van Azure-Services die zijn gekoppeld aan een Azure-account. Eén Azure-account kan meerdere abonnementen bevatten. Facturering voor Azure-Services wordt uitgevoerd op basis van per abonnement. Zie [Microsoft Azure Details](https://azure.microsoft.com/support/legal/offer-details/)van de aanbieding voor een lijst met de beschik bare abonnements aanbiedingen op type. Azure-abonnementen hebben een account beheerder die volledige controle heeft over het abonnement. Ze hebben ook een service beheerder die controle heeft over alle services in het abonnement. Zie [beheerders van Azure-abonnementen toevoegen of wijzigen](../../cost-management-billing/manage/add-change-subscription-administrator.md)voor meer informatie over klassieke abonnements beheerders. Aan afzonderlijke accounts kan gedetailleerde controle worden verleend over Azure-resources met behulp [van op rollen gebaseerd toegangs beheer (RBAC)](../../role-based-access-control/overview.md).
+Een abonnement is een logische groepering van Azure-services die is gekoppeld aan een Azure-account. Eén Azure-account kan meerdere abonnementen bevatten. Facturering voor Azure-services wordt uitgevoerd per abonnement. Zie [Microsoft Azure Details](https://azure.microsoft.com/support/legal/offer-details/)van de aanbieding voor een lijst met de beschik bare abonnements aanbiedingen op type. Azure-abonnementen hebben een account beheerder die volledige controle heeft over het abonnement. Ze hebben ook een service beheerder die controle heeft over alle services in het abonnement. Zie [Azure-abonnementsbeheerders toevoegen of wijzigen](../../cost-management-billing/manage/add-change-subscription-administrator.md) voor meer informatie over klassieke abonnementsbeheerders. Aan afzonderlijke accounts kan gedetailleerde controle worden verleend over Azure-resources met behulp [van op rollen gebaseerd toegangs beheer (RBAC)](../../role-based-access-control/overview.md).
 
 #### <a name="resource-groups"></a>Resourcegroepen
 
-Wanneer u nieuwe Azure-Services inricht, doet u dat in een bepaald abonnement. Afzonderlijke Azure-Services, die ook wel resources worden genoemd, worden gemaakt in de context van een resource groep. Resource groepen maken het gemakkelijker om de resources van uw toepassing te implementeren en beheren. Een resource groep moet alle resources bevatten voor uw toepassing die u als een eenheid wilt gebruiken. U kunt resources verplaatsen tussen resource groepen en zelfs naar verschillende abonnementen. Zie [resources verplaatsen naar een nieuwe resource groep of een nieuw abonnement](../../azure-resource-manager/management/move-resource-group-and-subscription.md)voor meer informatie over het verplaatsen van resources.
+Wanneer u nieuwe Azure-Services inricht, doet u dat in een bepaald abonnement. Afzonderlijke Azure-Services, die ook wel resources worden genoemd, worden gemaakt in de context van een resource groep. Resource groepen maken het gemakkelijker om de resources van uw toepassing te implementeren en beheren. Een resource groep moet alle resources bevatten voor uw toepassing die u als een eenheid wilt gebruiken. U kunt resources verplaatsen tussen resource groepen en zelfs naar verschillende abonnementen. Zie [Resources verplaatsen naar een nieuwe resourcegroep of een nieuw abonnement](../../azure-resource-manager/management/move-resource-group-and-subscription.md) voor meer informatie over het verplaatsen van resources.
 
 De Azure Resource Explorer is een uitstekend hulp programma voor het visualiseren van de resources die u al hebt gemaakt in uw abonnement. Zie [Azure resource Explorer gebruiken om resources te bekijken en te wijzigen](../../resource-manager-resource-explorer.md)voor meer informatie.
 
@@ -302,7 +297,7 @@ De Azure Resource Explorer is een uitstekend hulp programma voor het visualisere
 
 Wanneer u toegang verleent tot Azure-resources, is het altijd een best practice om gebruikers de minste bevoegdheid te geven die nodig is om een bepaalde taak uit te voeren.
 
-- **Op rollen gebaseerd toegangs beheer (RBAC)**: in azure kunt u toegang verlenen aan gebruikers accounts (principals) bij een opgegeven Scope: abonnement, resource groep of afzonderlijke resources. Met RBAC kunt u resources in een resource groep implementeren en machtigingen verlenen aan een specifieke gebruiker of groep. Daarnaast kunt u de toegang beperken tot de resources die deel uitmaken van de doel resource groep. U kunt ook toegang verlenen tot één resource, zoals een virtuele machine of een virtueel netwerk. Als u toegang wilt verlenen, wijst u een rol toe aan de gebruiker, groep of Service-Principal. Er zijn veel vooraf gedefinieerde rollen, en u kunt ook uw eigen aangepaste rollen definiëren. Zie [Wat is op rollen gebaseerd toegangs beheer (RBAC)?](../../role-based-access-control/overview.md)voor meer informatie.
+- **Op rollen gebaseerd toegangs beheer (RBAC)**: in azure kunt u toegang verlenen aan gebruikers accounts (principals) bij een opgegeven Scope: abonnement, resource groep of afzonderlijke resources. Met RBAC kunt u resources in een resource groep implementeren en machtigingen verlenen aan een specifieke gebruiker of groep. Daarnaast kunt u de toegang beperken tot de resources die deel uitmaken van de doel resource groep. U kunt ook toegang verlenen tot één resource, zoals een virtuele machine of een virtueel netwerk. Als u toegang wilt verlenen, wijst u een rol toe aan de gebruiker, groep of Service-Principal. Er zijn veel vooraf gedefinieerde rollen, en u kunt ook uw eigen aangepaste rollen definiëren. Zie [Wat is Azure Role-based Access Control (Azure RBAC)?](../../role-based-access-control/overview.md)voor meer informatie.
 
   > **Wanneer u wilt gebruiken**: als u een nauw keurig toegangs beheer voor gebruikers en groepen nodig hebt of als u een gebruiker een eigenaar van een abonnement wilt maken.
   >
@@ -319,7 +314,7 @@ Met Azure Resource Manager kunt u aangepaste labels toewijzen aan afzonderlijke 
 * In de portal
 * In de sjabloon Azure Resource Manager
 * Met behulp van de REST API
-* Azure CLI gebruiken
+* Met behulp van de Azure CLI
 * PowerShell gebruiken
 
 U kunt meerdere labels toewijzen aan elke resource. Zie [Tags gebruiken om uw Azure-resources te organiseren](../../resource-group-using-tags.md)voor meer informatie.

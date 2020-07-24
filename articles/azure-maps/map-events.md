@@ -1,19 +1,20 @@
 ---
 title: Toewijzings gebeurtenissen verwerken | Microsoft Azure kaarten
 description: In dit artikel leert u hoe u een interactieve Web-SDK kunt koppelen met toewijzings gebeurtenissen met behulp van de Microsoft Azure Maps Web SDK.
-author: Philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 09/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 92108873d4a91c845f4a1f2685cf50942513510e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 94ff9cff31703dbfa9c08b2a3e60eb29b0997a86
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83124003"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130457"
 ---
 # <a name="interact-with-the-map"></a>Interactie met de kaart
 
@@ -48,7 +49,7 @@ Met de volgende code worden java script-toewijzings gebeurtenissen toegevoegd aa
 
 De volgende tabel geeft een overzicht van alle ondersteunde gebeurtenissen van de kaart klasse.
 
-| Gebeurtenis               | Description |
+| Gebeurtenis               | Beschrijving |
 |---------------------|-------------|
 | `boxzoomend`        | Deze gebeurtenis wordt geactiveerd wanneer een ' zoom functie ' in vak wordt beëindigd.|
 | `boxzoomstart`      | Deze gebeurtenis wordt geactiveerd wanneer een ' zoom functie ' in vak wordt gestart.|

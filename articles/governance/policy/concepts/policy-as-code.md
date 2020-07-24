@@ -1,14 +1,14 @@
 ---
 title: Beleid ontwerpen als codewerkstromen
 description: Meer informatie over het ontwerpen van werk stromen om uw Azure Policy definities als code te implementeren en om resources automatisch te valideren.
-ms.date: 05/20/2020
+ms.date: 07/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 17964459c6c06e6d7df09da4d3f0813350f209ec
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 02ff979feac1afb5f1664e6387e0abcde69b60eb
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970940"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131494"
 ---
 # <a name="design-policy-as-code-workflows"></a>Beleid ontwerpen als codewerkstromen
 
@@ -20,6 +20,24 @@ Als u de voortgang van uw reis met Cloud governance wilt, kunt u de beleids defi
 Beleid als code is een combi natie van deze ideeën. Behoud in wezen uw beleids definities in broncode beheer en telkens wanneer een wijziging wordt aangebracht, test en valideer deze wijziging. Dit geldt echter niet voor de mate van beleids betrokkenheid bij de infra structuur als code of DevOps.
 
 De validatie stap moet ook een onderdeel zijn van andere workflows voor continue integratie of continue implementatie. Voor beelden hiervan zijn het implementeren van een toepassings omgeving of virtuele infra structuur. Door Azure Policy een vroegtijdig onderdeel van het build-en implementatie proces te valideren, ontdekken de toepassing en de Operations-teams of hun wijzigingen niet voldoen aan het beleid, lang voordat het te laat is en er wordt geprobeerd om te implementeren in de productie omgeving.
+
+## <a name="definitions-and-foundational-information"></a>Definities en basis informatie
+
+Lees de volgende definities en voor beelden voordat u de details van het beleid in de code werk stroom ophaalt:
+
+- [Beleidsdefinitie](./definition-structure.md)
+- [Initiatiefdefinitie](./initiative-definition-structure.md)
+
+De bestands namen worden uitgelijnd op delen van ofwel het beleid of de initiatief definitie:
+- `policy(set).json`-De volledige definitie
+- `policy(set).parameters.json`-Het `properties.parameters` gedeelte van de definitie
+- `policy.rules.json`-Het `properties.policyRule` gedeelte van de definitie
+- `policyset.definitions.json`-Het `properties.policyDefinitions` gedeelte van de definitie
+
+Voor beelden van deze bestands indelingen vindt u in de [Azure Policy github opslag plaats](https://github.com/Azure/azure-policy/):
+
+- Beleids definitie: [een tag toevoegen aan resources](https://github.com/Azure/azure-policy/tree/master/samples/Tags/add-tag)
+- Initiatief definitie: [facturerings Tags](https://github.com/Azure/azure-policy/tree/master/samples/PolicyInitiatives/multiple-billing-tags)
 
 ## <a name="workflow-overview"></a>Overzicht werk stroom
 

@@ -2,18 +2,16 @@
 title: Azure Data Lake Analytics-Azure Portal bewaken
 description: In dit artikel wordt beschreven hoe u de Azure Portal kunt gebruiken om Azure Data Lake Analytics taken op te lossen.
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: b7066d81-3142-474f-8a34-32b0b39656dc
 ms.topic: troubleshooting
 ms.date: 12/05/2016
-ms.openlocfilehash: 08e14765b2b70f1e2567bd6a9cd2d67ee9aed83b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5445ad61295be3637005ead734cc31126c88a440
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121279"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132072"
 ---
 # <a name="monitor-jobs-in-azure-data-lake-analytics-using-the-azure-portal"></a>Taken in Azure Data Lake Analytics bewaken met behulp van de Azure-portal
 

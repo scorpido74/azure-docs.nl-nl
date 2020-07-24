@@ -8,12 +8,12 @@ ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 8f3e670a4f2a49bcce48be1ba0452a36cbf96df1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6aad6201136bb925d5e094de115cc7274cc7872a
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392315"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131409"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Azure Digital Apparaatdubbels gebruiken voor het bijwerken van een Azure Maps binnenste kaart
 
@@ -27,9 +27,9 @@ Deze procedure geldt voor:
 
 ### <a name="prerequisites"></a>Vereisten
 
-* Volg de zelf studie over Azure Digital Apparaatdubbels [: Verbind een end-to-end oplossing](./tutorial-end-to-end.md).
+* Volg de zelf studie over Azure Digital Apparaatdubbels [*: Verbind een end-to-end oplossing*](./tutorial-end-to-end.md).
     * U gaat dit twee verlengen met een extra eind punt en route. U kunt ook een andere functie toevoegen aan uw functie-app vanuit deze zelf studie. 
-* Volg de Azure Maps [zelf studie: gebruik Azure Maps Maker voor het maken van plattegronden](../azure-maps/tutorial-creator-indoor-maps.md) om een Azure Maps binnenste kaart te maken met een *functie statusset*.
+* Volg de Azure Maps [*zelf studie: gebruik Azure Maps Maker voor het maken van plattegronden*](../azure-maps/tutorial-creator-indoor-maps.md) om een Azure Maps binnenste kaart te maken met een *functie statusset*.
     * [Functie-statesets](../azure-maps/creator-indoor-maps.md#feature-statesets) zijn verzamelingen van dynamische eigenschappen (statussen) die zijn toegewezen aan functies van gegevensset, zoals kamers of apparatuur. In de bovenstaande zelf studie van Azure Maps is de statusset voor de functie statusset opgeslagen die u op een kaart wilt weer geven.
     * U hebt uw functie *statusset-id* en Azure Maps *abonnements-id*nodig.
 
@@ -45,11 +45,11 @@ Eerst maakt u een route in azure Digital Apparaatdubbels om alle dubbele update 
 
 ## <a name="create-a-route-and-filter-to-twin-update-notifications"></a>Een route maken en filteren op dubbele update meldingen
 
-Azure Digital Apparaatdubbels-instanties kunnen dubbele update gebeurtenissen verzenden wanneer de status van een twee is bijgewerkt. De [zelf studie over Azure Digital apparaatdubbels: verbinding maken met een end-to-end oplossing](./tutorial-end-to-end.md) die hierboven wordt beschreven, wordt een scenario waarbij een thermo meter wordt gebruikt voor het bijwerken van een temperatuur kenmerk dat is gekoppeld aan de dubbele. U gaat deze oplossing uitbreiden door u te abonneren op update meldingen voor apparaatdubbels en deze informatie te gebruiken om onze kaarten bij te werken.
+Azure Digital Apparaatdubbels-instanties kunnen dubbele update gebeurtenissen verzenden wanneer de status van een twee is bijgewerkt. De zelf studie over Azure Digital Apparaatdubbels [*: verbinding maken met een end-to-end oplossing*](./tutorial-end-to-end.md) die hierboven wordt beschreven, wordt een scenario waarbij een thermo meter wordt gebruikt voor het bijwerken van een temperatuur kenmerk dat is gekoppeld aan de dubbele. U gaat deze oplossing uitbreiden door u te abonneren op update meldingen voor apparaatdubbels en deze informatie te gebruiken om uw kaarten bij te werken.
 
-Dit patroon leest van de ruimte, namelijk direct, in plaats van het IoT-apparaat, dat ons de flexibiliteit geeft om de onderliggende gegevens bron te wijzigen voor de Tempe ratuur zonder dat onze toewijzings logica hoeft te worden bijgewerkt. U kunt bijvoorbeeld meerdere Thermo meters toevoegen of deze ruimte instellen om een thermo meter te delen met een andere ruimte, zonder dat u onze kaart logica hoeft bij te werken.
+Dit patroon leest van de ruimte tussen direct, in plaats van het IoT-apparaat, dat u de flexibiliteit geeft om de onderliggende gegevens bron te wijzigen voor de Tempe ratuur zonder dat u uw toewijzings logica hoeft bij te werken. U kunt bijvoorbeeld meerdere Thermo meters toevoegen of deze ruimte instellen om een thermo meter te delen met een andere ruimte, zonder dat u uw toewijzings logica hoeft bij te werken.
 
-1. Maak een event grid-onderwerp, dat gebeurtenissen ontvangt van ons Azure Digital Apparaatdubbels-exemplaar.
+1. Een event grid-onderwerp maken dat gebeurtenissen ontvangt van uw Azure Digital Apparaatdubbels-exemplaar.
     ```azurecli
     az eventgrid topic create -g <your-resource-group-name> --name <your-topic-name> -l <region>
     ```
@@ -61,14 +61,14 @@ Dit patroon leest van de ruimte, namelijk direct, in plaats van het IoT-apparaat
 
 3. Maak een route in azure Digital Apparaatdubbels om dubbele update gebeurtenissen naar uw eind punt te verzenden.
     ```azurecli
-    az dt route create -n <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my_route> --filter "{ "endpointId": "<endpoint-ID>","filter": "type = 'Microsoft.DigitalTwins.Twin.Update'"}"
+    az dt route create -n <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my_route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
     ```
 
 ## <a name="create-an-azure-function-to-update-maps"></a>Een Azure-functie maken om kaarten bij te werken
 
-U gaat in de [end-to-end-zelf studie](./tutorial-end-to-end.md)een door Event grid geactiveerde functie maken in de functie-app. Met deze functie worden deze meldingen uitgepakt en worden updates naar een Azure Maps-functie statusset verzonden om de Tempe ratuur van één kamer bij te werken. 
+U gaat vanuit de end-to-end-zelf studie een door Event Grid geactiveerde functie maken in uw functie-app ([*zelf studie: een end-to-end oplossing verbinden*](./tutorial-end-to-end.md)). Met deze functie worden deze meldingen uitgepakt en worden updates naar een Azure Maps-functie statusset verzonden om de Tempe ratuur van één kamer bij te werken. 
 
-Raadpleeg het volgende document voor referentie-informatie: [Azure Event grid trigger voor Azure functions](https://docs.microsoft.com/azure/azure-functions/functions-bindings-event-grid-trigger).
+Raadpleeg het volgende document voor referentie-informatie: [*Azure Event grid trigger voor Azure functions*](https://docs.microsoft.com/azure/azure-functions/functions-bindings-event-grid-trigger).
 
 Vervang de functie code door de volgende code. Er worden alleen updates voor de ruimte apparaatdubbels, lees de bijgewerkte Tempe ratuur en verzend die informatie naar Azure Maps.
 
@@ -100,7 +100,7 @@ namespace SampleFunctionsApp
 
             //Parse updates to "space" twins
             if (message["data"]["modelId"].ToString() == "dtmi:contosocom:DigitalTwins:Space;1")
-            {   //Set the ID of the room to be updated in our map. 
+            {   //Set the ID of the room to be updated in your map. 
                 //Replace this line with your logic for retrieving featureID. 
                 string featureID = "UNIT103";
 
@@ -138,9 +138,9 @@ az functionapp config appsettings set --settings "statesetID=<your-Azure-Maps-st
 
 Volg de onderstaande stappen om de Tempe ratuur voor Live bijwerken te bekijken:
 
-1. Begin met het verzenden van gesimuleerde IoT-gegevens door het **DeviceSimulator** -project uit te voeren vanuit de Azure Digital Apparaatdubbels- [zelf studie: verbinding maken met een end-to-end oplossing](tutorial-end-to-end.md). De instructies hiervoor vindt u in de sectie [*simulatie configureren en uitvoeren*](././tutorial-end-to-end.md#configure-and-run-the-simulation) .
+1. Begin met het verzenden van gesimuleerde IoT-gegevens door het **DeviceSimulator** -project uit te voeren vanuit de Azure Digital Apparaatdubbels- [*zelf studie: verbinding maken met een end-to-end oplossing*](tutorial-end-to-end.md). De instructies hiervoor vindt u in de sectie [*simulatie configureren en uitvoeren*](././tutorial-end-to-end.md#configure-and-run-the-simulation) .
 2. Gebruik [de module Azure Maps in het **binnenste** ](../azure-maps/how-to-use-indoor-module.md) om uw binnenste kaarten weer te geven die zijn gemaakt in azure Maps Maker.
-    1. Kopieer de HTML uit het [*voor beeld: gebruik de module binnenste kaarten*](../azure-maps/how-to-use-indoor-module.md#example-use-the-indoor-maps-module) van de zelf studie over de binnenste kaarten [: gebruik de module Azure Maps binnenste](../azure-maps/how-to-use-indoor-module.md) kaarten naar een lokaal bestand.
+    1. Kopieer de HTML uit het [*voor beeld: gebruik de module binnenste kaarten*](../azure-maps/how-to-use-indoor-module.md#example-use-the-indoor-maps-module) van de zelf studie over de binnenste kaarten [*: gebruik de module Azure Maps binnenste*](../azure-maps/how-to-use-indoor-module.md) kaarten naar een lokaal bestand.
     1. Vervang *tilesetId* en *statesetID* in het lokale HTML-bestand door uw waarden.
     1. Open dat bestand in uw browser.
 
@@ -160,5 +160,5 @@ Afhankelijk van de configuratie van uw topologie kunt u deze drie kenmerken opsl
 
 Zie de volgende verwijzingen voor meer informatie over het beheren, bijwerken en ophalen van gegevens uit de apparaatdubbels-grafiek:
 
-* [Instructies: digitale apparaatdubbels beheren](./how-to-manage-twin.md)
-* [Instructies: een query uitvoeren op de dubbele grafiek](./how-to-query-graph.md)
+* [*Instructies: digitale apparaatdubbels beheren*](./how-to-manage-twin.md)
+* [*Instructies: een query uitvoeren op de dubbele grafiek*](./how-to-query-graph.md)

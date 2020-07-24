@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 02/04/2020
+ms.date: 07/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: ac6a00efa7db848e4c05703c81ba835fbf5f77e3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7ac04b29853ce0d4f6ac4004bdfad4effd283170
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103786"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132990"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>Hybride machines op schaal aansluiten op Azure
 
@@ -76,7 +76,7 @@ De rol van de voor bereide **Azure connected-computer** bevat alleen de vereiste
 
 ## <a name="install-the-agent-and-connect-to-azure"></a>De agent installeren en verbinding maken met Azure
 
-Met de volgende stappen wordt de verbonden machine agent op uw hybride computers geïnstalleerd en geconfigureerd met behulp van de-script sjabloon, waarmee vergelijk bare stappen worden uitgevoerd die worden beschreven in de [hybride computers verbinden met Azure vanuit het Azure Portal](onboard-portal.md) -artikel. Het verschil bevindt zich in de laatste stap waarin u de verbinding met Azure Arc tot stand brengt met de `azcmagent` opdracht met behulp van de Service-Principal. 
+Met de volgende stappen wordt de verbonden machine agent op uw hybride computers geïnstalleerd en geconfigureerd met behulp van de-script sjabloon, waarmee vergelijk bare stappen worden uitgevoerd die worden beschreven in de [hybride computers verbinden met Azure vanuit het Azure Portal](onboard-portal.md) -artikel. Het verschil bevindt zich in de laatste stap waarin u de verbinding met Azure Arc tot stand brengt met de `azcmagent` opdracht met behulp van de Service-Principal.
 
 Hieronder vindt u de instellingen die u kunt configureren `azcmagent` om te gebruiken voor de Service-Principal.
 
@@ -110,6 +110,10 @@ msiexec /i AzureConnectedMachineAgent.msi /l*v installationlog.txt /qn | Out-Str
   --subscription-id "{subscriptionID}"
 ```
 
+>[!NOTE]
+>Het script ondersteunt alleen uitvoering vanaf een 64-bits versie van Windows Power shell.
+>
+
 ### <a name="linux-installation-script"></a>Linux-installatie script
 
 Hier volgt een voor beeld van het gekoppelde installatie script van de computer agent voor Linux dat is gewijzigd om de service-principal te gebruiken voor de ondersteuning van een volledig geautomatiseerde, niet-interactieve installatie van de agent.
@@ -131,7 +135,10 @@ azcmagent connect \
   --subscription-id "{subscriptionID}"
 ```
 
-Nadat u de agent hebt geïnstalleerd en geconfigureerd om verbinding te maken met Azure Arc voor servers (preview), gaat u naar de Azure Portal om te controleren of de server met succes is verbonden. Bekijk uw computers in de [Azure Portal](https://aka.ms/hybridmachineportal).
+>[!NOTE]
+>U moet toegangs machtigingen voor het *hoofd* hebben op Linux-machines om **azcmagent**uit te voeren.
+
+Nadat u de agent hebt geïnstalleerd en geconfigureerd om verbinding te maken met Azure Arc voor servers (preview), gaat u naar de Azure Portal om te controleren of de server met succes is verbonden. Bekijk uw computers in [Azure Portal](https://aka.ms/hybridmachineportal).
 
 ![Een geslaagde server verbinding](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 

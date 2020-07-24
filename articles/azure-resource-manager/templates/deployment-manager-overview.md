@@ -4,11 +4,12 @@ description: Hierin wordt beschreven hoe u een service implementeert over veel r
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 006c123dfbb682ff5c498872d7f717a4a09e0bb5
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 27e8c9c0aa2ee86b490d266fc6ff76f263eee7ef
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057922"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130219"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Veilige implementatie procedures met Azure Deployment Manager (open bare preview) inschakelen
 
@@ -29,14 +30,14 @@ U implementeert de topologie sjabloon voordat u de implementatie sjabloon implem
 
 Aanvullende bronnen:
 
-- De [Naslag informatie voor Azure Deployment Manager rest API](/rest/api/deploymentmanager/).
+- De [Azure Deployment Manager REST API-naslaginformatie](/rest/api/deploymentmanager/).
 - [Zelf studie: Azure Deployment Manager gebruiken met Resource Manager-sjablonen](./deployment-manager-tutorial.md).
-- [Zelf studie: status controle gebruiken in Azure Deployment Manager](./deployment-manager-tutorial-health-check.md).
-- [Een Azure Deployment Manager](https://github.com/Azure-Samples/adm-quickstart)-voor beeld.
+- [Zelfstudie: Statuscontrole gebruiken in Azure Deployment Manager](./deployment-manager-tutorial-health-check.md).
+- [Een Azure Deployment Manager-voorbeeld](https://github.com/Azure-Samples/adm-quickstart).
 
 ## <a name="identity-and-access"></a>Identiteit en toegang
 
-Met Deployment Manager worden de implementatie acties uitgevoerd door een door de [gebruiker toegewezen beheerde identiteit](../../active-directory/managed-identities-azure-resources/overview.md) . U maakt deze identiteit voordat u de implementatie start. Het moet toegang hebben tot het abonnement waarmee u de service implementeert, en voldoende machtigingen hebben om de implementatie te volt ooien. Zie [ingebouwde rollen voor Azure-resources](../../role-based-access-control/built-in-roles.md)voor meer informatie over de acties die via rollen worden verleend.
+Met Deployment Manager worden de implementatie acties uitgevoerd door een door de [gebruiker toegewezen beheerde identiteit](../../active-directory/managed-identities-azure-resources/overview.md) . U maakt deze identiteit voordat u de implementatie start. Het moet toegang hebben tot het abonnement waarmee u de service implementeert, en voldoende machtigingen hebben om de implementatie te volt ooien. Zie [ingebouwde rollen in azure](../../role-based-access-control/built-in-roles.md)voor informatie over de acties die via rollen worden verleend.
 
 De identiteit moet zich op dezelfde locatie bevinden als de implementatie.
 

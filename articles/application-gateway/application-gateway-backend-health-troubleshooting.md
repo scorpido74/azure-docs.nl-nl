@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: b5524d0612bf8f5d69979a8392f664e417c5f98d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 531a7fd8547130b4897f3dad0900e1c27fb7fe9a
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808179"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132038"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Problemen met back-endservers oplossen in Application Gateway
 ==================================================
@@ -176,7 +176,7 @@ Controleer ook of NSG/UDR/firewall de toegang tot het IP-adres en de poort van d
 
 | **Fout** | **Acties** |
 | --- | --- |
-| Status code van test komt niet overeen: ontvangen 401 | Controleer of verificatie is vereist voor de back-endserver. Application Gateway tests kunnen op dit moment geen referenties door geven voor verificatie. Sta toe dat \" HTTP 401 \" in een test status code overeenkomt of test naar een pad waarvoor geen verificatie is vereist voor de server. | |
+| Status code van test komt niet overeen: ontvangen 401 | Controleer of verificatie is vereist voor de back-endserver. Application Gateway tests kunnen geen referenties door geven voor authenticatie. Sta toe dat \" HTTP 401 \" in een test status code overeenkomt of test naar een pad waarvoor geen verificatie is vereist voor de server. | |
 | Status code van test komt niet overeen: ontvangen 403 | Toegang verboden. Controleer of toegang tot het pad is toegestaan op de back-endserver. | |
 | Status code van test komt niet overeen: ontvangen 404 | Pagina is niet gevonden. Controleer of het pad naar de hostnaam toegankelijk is op de back-endserver. Wijzig de hostnaam of het pad para meter in een toegankelijke waarde. | |
 | Status code van test komt niet overeen: ontvangen 405 | De test aanvragen voor Application Gateway gebruiken de HTTP GET-methode. Controleer of deze methode is toegestaan op uw server. | |

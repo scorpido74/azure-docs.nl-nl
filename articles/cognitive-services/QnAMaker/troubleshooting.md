@@ -3,13 +3,12 @@ title: Problemen oplossen-QnA Maker
 description: De lijst met alle meest gestelde vragen met betrekking tot de QnA Maker-service helpt u de service sneller en met betere resultaten te gebruiken.
 ms.topic: troubleshooting
 ms.date: 03/25/2020
-ms.author: diberry
-ms.openlocfilehash: 7847e21dbcf07f669d6802fffdd1e43623a72340
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ec994677b17ee21dbf4ee6091be3bdf943572b2e
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80804347"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131987"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Problemen oplossen voor QnA Maker
 
@@ -30,7 +29,7 @@ Meer informatie over [prijs categorieën](Concepts/azure-resources.md).
 <details>
 <summary><b>Het QnAMaker-service-eind punt ophalen</b></summary>
 
-**Antwoord**: QnAMaker service-eind punt is handig voor fout opsporing wanneer u contact opneemt met QnAMaker-ondersteuning of UserVoice. Het eind punt is een URL in dit formulier `https://your-resource-name.azurewebsites.net`:.
+**Antwoord**: QnAMaker service-eind punt is handig voor fout opsporing wanneer u contact opneemt met QnAMaker-ondersteuning of UserVoice. Het eind punt is een URL in dit formulier: `https://your-resource-name.azurewebsites.net` .
 
 1. Ga naar de QnAMaker-service (resource groep) in het [Azure Portal](https://portal.azure.com)
 
@@ -201,7 +200,7 @@ Als u inhoud uit meerdere talen hebt, moet u ervoor zorgen dat u voor elke taal 
 </details>
 
 <details>
-<summary><b>Als QnA Maker retourneert `Runtime core is not initialized,` hoe kan ik het probleem oplossen?</b></summary>
+<summary><b>Als QnA Maker retourneert `Runtime core is not initialized,` Hoe kan ik het probleem oplossen?</b></summary>
 
 **Antwoord**: de schijf ruimte voor uw app-service is mogelijk vol. Stappen om uw schijf ruimte te herstellen:
 
@@ -209,12 +208,12 @@ Als u inhoud uit meerdere talen hebt, moet u ervoor zorgen dat u voor elke taal 
 1. Terwijl u nog steeds op de app-service klikt, selecteert u **ontwikkelingsprogram ma's**en **Geavanceerde hulpprogram Ma's**. vervolgens **gaat u naar**. Hiermee opent u een nieuw browser venster.
 1. Selecteer **console fout opsporing**en vervolgens **cmd** om een opdracht regel programma te openen.
 1. Ga naar de _site/wwwroot/data/QnAMaker/_ map.
-1. Verwijder alle mappen waarvan de naam begint met `rd`.
+1. Verwijder alle mappen waarvan de naam begint met `rd` .
 
     **Verwijder niet** het volgende:
 
-    * KbIdToRankerMappings. txt-bestand
-    * Bestand EndpointSettings. json
+    * KbIdToRankerMappings.txt-bestand
+    * EndpointSettings.jsvoor bestand
     * Map EndpointKeys
 
 1. Start de app service.
@@ -244,7 +243,7 @@ Als u inhoud uit meerdere talen hebt, moet u ervoor zorgen dat u voor elke taal 
 **Antwoord**: u moet de volgende informatie over uw Knowledge Base hebben:
 
 * De Knowledge Base-ID.
-* De geplaatste aangepaste subdomeinnaam van het gepubliceerde eind `host`punt, dat wil zeggen, op de pagina **instellingen** wordt weer gegeven nadat u deze hebt gepubliceerd.
+* De geplaatste aangepaste subdomeinnaam van het gepubliceerde eind punt, dat wil zeggen `host` , op de pagina **instellingen** wordt weer gegeven nadat u deze hebt gepubliceerd.
 * De gepubliceerde eindpunt sleutel van de Knowledge Base-gevonden op de pagina **instellingen** nadat u deze hebt gepubliceerd.
 
 Met deze informatie gaat u naar de app-service van uw bot in de Azure Portal. Wijzig de waarden onder **instellingen-> configuratie-> toepassings instellingen**.

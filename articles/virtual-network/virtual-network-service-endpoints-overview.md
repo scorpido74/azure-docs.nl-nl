@@ -13,11 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 692d86fa27ea42df6fe1128b64e408a5d4a4d08b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6935ea505643f253daf4c0b7d818137f52583682
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444451"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132820"
 ---
 # <a name="virtual-network-service-endpoints"></a>Service-eindpunten voor virtueel netwerk
 
@@ -25,7 +26,7 @@ Virtual Network (VNet) service-eind punt biedt veilige en directe connectiviteit
 
 Deze functie is beschikbaar voor de volgende Azure-Services en-regio's. *Micro soft. \* * resource bevindt zich tussen haakjes. Schakel deze bron in vanaf de subnetten tijdens het configureren van service-eind punten voor uw service:
 
-**Algemeen verkrijgbaar**
+**Algemeen beschikbaar**
 
 - **[Azure Storage](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)** (*micro soft. Storage*): algemeen beschikbaar in alle Azure-regio's.
 - **[Azure SQL database](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*micro soft. SQL*): algemeen beschikbaar in alle Azure-regio's.
@@ -122,7 +123,7 @@ Wanneer u service-eind punten hebt geconfigureerd voor een specifieke service, c
 
 Service-eind punten kunnen worden geconfigureerd op virtuele netwerken, onafhankelijk van een gebruiker met schrijf toegang tot een virtueel netwerk. Voor het beveiligen van Azure-service resources naar een VNet moet de gebruiker gemachtigd zijn voor *micro soft. Network/virtualNetworks/subnets/joinViaServiceEndpoint/Action* voor de toegevoegde subnetten. De ingebouwde rollen van de service beheerder bevatten standaard deze machtiging. U kunt de machtiging wijzigen door aangepaste rollen te maken.
 
-Zie [ingebouwde rollen voor Azure-resources](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)voor meer informatie over ingebouwde rollen. Zie [aangepaste rollen voor Azure-resources](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)voor meer informatie over het toewijzen van specifieke machtigingen aan aangepaste rollen.
+Zie [ingebouwde rollen van Azure](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)voor meer informatie over ingebouwde rollen. Zie [aangepaste rollen voor Azure](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)voor meer informatie over het toewijzen van specifieke machtigingen aan aangepaste rollen.
 
 Virtuele netwerken en Azure-serviceresources kunnen binnen hetzelfde abonnement of in verschillende abonnementen aanwezig zijn. Als de virtuele netwerken en Azure-serviceresources in verschillende abonnementen aanwezig zijn, moeten de resources onder dezelfde Active Directory-tenant (AD) vallen. 
 
@@ -151,4 +152,3 @@ Zie [Veelgestelde vragen over Virtual Network Service-eind punten](https://docs.
 - [Integratie van Azure-Services in virtuele netwerken](virtual-network-for-azure-services.md)
 - [Virtual Network service-eindpunt beleid](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
 - [Azure Resource Manager-sjabloon](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)
-

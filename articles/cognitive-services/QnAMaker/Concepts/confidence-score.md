@@ -3,20 +3,18 @@ title: Betrouwbaarheids Score-QnA Maker
 titleSuffix: Azure Cognitive Services
 description: Een Knowledge Base moet worden gepubliceerd. Zodra de Knowledge Base is gepubliceerd, wordt deze in de runtime-Voorspellings eindpunt opgevraagd met behulp van de generateAnswer-API.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: d901a803311805825c22503af6098e805a67e8f6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: faf24f11763ca2bcd9bb872b09b5d1b69e78bd06
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76843449"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131154"
 ---
 # <a name="the-confidence-score-of-an-answer"></a>De betrouwbaarheids Score van een antwoord
 Wanneer een gebruikers query wordt vergeleken met een Knowledge Base, retourneert QnA Maker relevante antwoorden, samen met een betrouwbaarheids Score. Met deze score wordt het vertrouwen aangegeven dat het antwoord het juiste resultaat voor de opgegeven gebruikers query is.
@@ -57,11 +55,11 @@ Houd bij het kiezen van de drempel waarde rekening met het evenwicht tussen nauw
 > [!NOTE]
 > Nieuwere versies van QnA Maker bevatten verbeteringen in de Score logica en kunnen van invloed zijn op de drempel waarde. Telkens wanneer u de service bijwerkt, moet u ervoor zorgen dat de drempel waarde wordt getest en zo nodig wordt verfijnd. U kunt [hier](https://www.qnamaker.ai/UserSettings)de QnA-Service versie controleren en bekijken hoe u de meest recente updates [hier](../How-To/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates)ophaalt.
 
-## <a name="set-threshold"></a>Drempel waarde instellen
+## <a name="set-threshold"></a>Drempel instellen
 
 Stel de drempel Score in als een eigenschap van de [JSON-hoofd tekst](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration)van de GENERATEANSWER-API. Dit betekent dat u deze instelt voor elke aanroep van GenerateAnswer.
 
-Stel in het bot-Framework de score in als onderdeel van het object Options met [C#](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-c) of [node. js](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-nodejs).
+Stel in het bot-Framework de score in als onderdeel van het object Options met [C#](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-c) of [Node.js](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-nodejs).
 
 ## <a name="improve-confidence-scores"></a>Betrouwbaarheids scores verbeteren
 Als u de betrouwbaarheids Score van een bepaalde reactie op een gebruikers query wilt verbeteren, kunt u de gebruikers query toevoegen aan de Knowledge Base als een andere vraag over dat antwoord. U kunt ook hoofdletter gevoelige [woord wijzigingen](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) gebruiken om synoniemen toe te voegen aan tref woorden in uw KB.

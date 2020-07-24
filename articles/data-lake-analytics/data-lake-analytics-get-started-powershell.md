@@ -2,18 +2,16 @@
 title: '& query maken Azure Data Lake Analytics-Power shell'
 description: Gebruik Azure PowerShell om Azure Data Lake Analytics-accounts te maken en vervolgens U-SQL-taken te verzenden.
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: 8a4e901e-9656-4a60-90d0-d78ff2f00656
 ms.topic: conceptual
 ms.date: 05/04/2017
-ms.openlocfilehash: f59a8df1031affb7cd3ca3c64ad67514e91f1c9d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccee8cef9cfcfc57ac19284b9c42e5c8371aa746
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564810"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132548"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-powershell"></a>Aan de slag met Azure Data Lake Analytics met Azure PowerShell
 
@@ -28,7 +26,7 @@ Informatie over het gebruik van Azure PowerShell om Azure Data Lake Analytics-ac
 Voordat u met deze zelfstudie begint, moet u beschikken over de volgende informatie:
 
 * **Een Azure Data Lake Analytics-account**. Zie [Aan de slag met Data Lake Analytics](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-get-started-portal).
-* **Een werkstation met Azure PowerShell**. Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview).
+* **Een werkstation met Azure PowerShell**. Zie [Azure PowerShell installeren en configureren](/powershell/azure/).
 
 ## <a name="log-in-to-azure"></a>Meld u aan bij Azure.
 

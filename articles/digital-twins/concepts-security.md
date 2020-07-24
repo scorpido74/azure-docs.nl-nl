@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 0a1447e64b606170601e6df6a443f53e3132294d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ec681d0af132d11e18703dce6105352651a70180
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522258"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131613"
 ---
 # <a name="secure-azure-digital-twins-with-role-based-access-control"></a>Azure Digital Apparaatdubbels beveiligen met op rollen gebaseerd toegangs beheer
 
@@ -35,7 +35,7 @@ Voor de verificatie stap moet elke toepassings aanvraag een OAuth 2,0-toegangs t
 
 De autorisatie stap vereist dat een RBAC-rol wordt toegewezen aan de beveiligingsprincipal. De rollen die zijn toegewezen aan een beveiligingsprincipal, bepalen de machtigingen die de principal heeft. Azure Digital Apparaatdubbels biedt RBAC-rollen die sets machtigingen voor Azure Digital Apparaatdubbels-resources omvatten. Deze rollen worden verderop in dit artikel beschreven.
 
-Zie [inzicht in de verschillende rollen](../role-based-access-control/rbac-and-directory-admin-roles.md) in de documentatie van Azure RBAC voor meer informatie over rollen en roltoewijzingen die worden ondersteund in Azure.
+Zie [*inzicht in de verschillende rollen*](../role-based-access-control/rbac-and-directory-admin-roles.md) in de documentatie van Azure RBAC voor meer informatie over rollen en roltoewijzingen die worden ondersteund in Azure.
 
 ### <a name="authentication-with-managed-identities"></a>Verificatie met beheerde identiteiten
 
@@ -46,19 +46,19 @@ Met beheerde identiteiten beheert het Azure-platform deze runtime-identiteit. U 
 ### <a name="authorization-rbac-roles-for-azure-digital-twins"></a>Autorisatie: RBAC-rollen voor Azure Digital Apparaatdubbels
 
 Azure biedt de onderstaande ingebouwde RBAC-rollen voor het verlenen van toegang tot een Azure Digital Apparaatdubbels-resource:
-* Azure Digital Apparaatdubbels-eigenaar (preview): gebruik deze rol om volledige toegang te geven tot Azure Digital Apparaatdubbels-resources.
-* Azure Digital Apparaatdubbels Reader (preview): gebruik deze functie om alleen-lezen toegang te verlenen aan Azure Digital Apparaatdubbels-resources.
+* *Azure Digital apparaatdubbels-eigenaar (preview)* : gebruik deze rol om volledige toegang te geven tot Azure Digital apparaatdubbels-resources.
+* *Azure Digital Apparaatdubbels Reader (preview)* : gebruik deze functie om alleen-lezen toegang te verlenen aan Azure Digital apparaatdubbels-resources.
 
 > [!TIP]
-> De rol Azure Digital Apparaatdubbels Reader (preview) biedt nu ook ondersteuning voor Browse relaties.
+> De rol *Azure Digital Apparaatdubbels Reader (preview)* biedt nu ook ondersteuning voor Browse relaties.
 
-Zie voor meer informatie over hoe ingebouwde rollen worden gedefinieerd [begrijpen functie definities](../role-based-access-control/role-definitions.md) in de documentatie van Azure RBAC. Zie [aangepaste rollen voor Azure-resources](../role-based-access-control/custom-roles.md)voor meer informatie over het maken van aangepaste RBAC-rollen.
+Zie voor meer informatie over hoe ingebouwde rollen worden gedefinieerd [*begrijpen functie definities*](../role-based-access-control/role-definitions.md) in de documentatie van Azure RBAC. Zie [*aangepaste rollen in azure*](../role-based-access-control/custom-roles.md)voor meer informatie over het maken van aangepaste Azure-rollen.
 
 U kunt rollen op twee manieren toewijzen:
-* via het deel venster toegangs beheer (IAM) voor Azure Digital Apparaatdubbels in de Azure Portal (Zie [roltoewijzingen toevoegen of verwijderen met behulp van Azure RBAC en de Azure Portal](../role-based-access-control/role-assignments-portal.md))
+* via het deel venster toegangs beheer (IAM) voor Azure Digital Apparaatdubbels in de Azure Portal (Zie [*roltoewijzingen toevoegen of verwijderen met behulp van Azure RBAC en de Azure Portal*](../role-based-access-control/role-assignments-portal.md))
 * via CLI-opdrachten om een rol toe te voegen of te verwijderen
 
-Voor meer gedetailleerde stappen over hoe u dit doet, kunt u het uitproberen in de [zelf studie over Azure Digital apparaatdubbels: *verbinding maken met een end-to-end oplossing*](tutorial-end-to-end.md).
+Voor meer gedetailleerde stappen over hoe u dit doet, kunt u het uitproberen in de zelf studie over Azure Digital Apparaatdubbels [*: verbinding maken met een end-to-end oplossing*](tutorial-end-to-end.md).
 
 ## <a name="permission-scopes"></a>Machtigingsbereiken
 
@@ -71,8 +71,14 @@ In de volgende lijst worden de niveaus beschreven waarmee u toegang tot Azure Di
 * Digitale dubbele relatie: de acties voor deze bron bepalen de controle over ruwe bewerkingen op [relaties](concepts-twins-graph.md) tussen digitale apparaatdubbels in het dubbele diagram.
 * Gebeurtenis route: de acties voor deze bron bepalen de machtigingen voor het [routeren van gebeurtenissen](concepts-route-events.md) van Azure Digital apparaatdubbels naar een eindpunt service, zoals [Event hub](../event-hubs/event-hubs-about.md), [Event grid](../event-grid/overview.md)of [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md).
 
+## <a name="troubleshooting"></a>Problemen oplossen
+
+Als een gebruiker probeert een actie uit te voeren die niet is toegestaan door hun rol, wordt mogelijk een fout bericht weer gegeven bij het lezen van de service aanvraag `403 (Forbidden)` . Zie [*probleem oplossing: Azure Digital apparaatdubbels-aanvraag is mislukt met status: 403 (verboden)*](troubleshoot-error-403.md)voor meer informatie en stappen voor probleem oplossing.
+
 ## <a name="next-steps"></a>Volgende stappen
 
-* Lees hoe u deze stappen doorloopt met een voor beeld-client toepassing in [*instructies: een client toepassing verifiëren*](how-to-authenticate-client.md).
+* Zie de volgende concepten in actie [*: een exemplaar en authenticatie instellen*](how-to-set-up-instance-scripted.md).
+
+* Bekijk hoe u met deze concepten communiceert vanuit de code van de client toepassing in [*How-to: app-verificatie code schrijven*](how-to-authenticate-client.md).
 
 * Lees meer over [RBAC voor Azure](../role-based-access-control/overview.md).

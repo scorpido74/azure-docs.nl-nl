@@ -1,101 +1,42 @@
 ---
-title: Een clienttoepassing verifiëren
+title: App-verificatie code schrijven
 titleSuffix: Azure Digital Twins
-description: Zie een client toepassing verifiëren op basis van de Azure Digital Apparaatdubbels-service.
+description: Zie verificatie code schrijven in een client toepassing
 author: baanders
 ms.author: baanders
 ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e52307c92d9371af6479f64841c6f269ed10e4b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4d235280ae4a600994eb93ec08c7a13630f9682f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390819"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131579"
 ---
-# <a name="authenticate-a-client-application-with-azure-digital-twins"></a>Een client toepassing verifiëren met Azure Digital Apparaatdubbels
+# <a name="write-client-app-authentication-code"></a>Verificatie code voor client-app schrijven
 
-Nadat u [een Azure Digital apparaatdubbels-exemplaar hebt gemaakt](how-to-set-up-instance.md), kunt u een client toepassing maken die u gaat gebruiken om te communiceren met het exemplaar. Wanneer u een eerste client project hebt ingesteld, wordt in dit artikel beschreven hoe u de client toepassing op de juiste wijze verifieert met het Azure Digital Apparaatdubbels-exemplaar.
+Nadat u [een Azure Digital apparaatdubbels-exemplaar en-verificatie hebt ingesteld](how-to-set-up-instance-scripted.md), kunt u een client toepassing maken die u gaat gebruiken om te communiceren met het exemplaar. Zodra u een eerste client project hebt ingesteld, wordt in dit artikel **beschreven hoe u code in die client-app schrijft om deze te verifiëren voor** het Azure Digital apparaatdubbels-exemplaar.
 
-Dit gebeurt in twee stappen:
-1. Een app-registratie maken
-2. Verificatie code schrijven in een client toepassing
+Er zijn twee benaderingen van voorbeeld code in dit artikel. U kunt de optie gebruiken die geschikt is voor u, afhankelijk van de taal van uw keuze:
+* De eerste sectie van de voorbeeld code maakt gebruik van de Azure Digital Apparaatdubbels .NET (C#) SDK. De SDK maakt deel uit van de Azure-SDK voor .NET en bevindt zich hier: [*Azure IOT Digital-client bibliotheek voor .net*](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core).
+* Het tweede gedeelte van de voorbeeld code is voor gebruikers die niet gebruikmaken van de .NET-SDK en in plaats daarvan gebruikmaken van autorest-gegenereerde Sdk's in andere talen. Zie [*How to: aangepaste sdk's voor Azure Digital Apparaatdubbels maken met auto rest*](how-to-create-custom-sdks.md)voor meer informatie over deze strategie.
 
-[!INCLUDE [Cloud Shell for Azure Digital Twins](../../includes/digital-twins-cloud-shell.md)]
+Meer informatie over de Api's en Sdk's voor Azure Digital Apparaatdubbels vindt u in [*procedures: gebruik de Azure Digital apparaatdubbels-api's en sdk's*](how-to-use-apis-sdks.md).
 
-## <a name="create-an-app-registration"></a>Een app-registratie maken
+## <a name="prerequisites"></a>Vereisten
 
-Als u wilt verifiëren tegen Azure Digital Apparaatdubbels vanuit een client toepassing, moet u een **app-registratie** instellen in [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md).
+Voltooi eerst de installatie stappen in [*instructies: een exemplaar en verificatie instellen*](how-to-set-up-instance-scripted.md). Dit zorgt ervoor dat u een Azure Digital Apparaatdubbels-exemplaar hebt, uw gebruiker heeft toegangs machtigingen en u hebt machtigingen ingesteld voor client toepassingen. Nadat u deze instellingen hebt ingesteld, bent u klaar voor het schrijven van client-app-code.
 
-Met deze app-registratie kunt u toegangs machtigingen voor de [Azure Digital apparaatdubbels-api's](how-to-use-apis-sdks.md)configureren. Uw client-app wordt geverifieerd aan de hand van de app-registratie en daarom worden de geconfigureerde toegangs machtigingen voor de Api's verleend.
+Als u wilt door gaan, hebt u een client-app-project nodig waarin u uw code schrijft. Als u nog geen client-app-project hebt ingesteld, maakt u een eenvoudig project in de taal van uw keuze voor gebruik in deze zelf studie.
 
-Als u een app-registratie wilt maken, moet u de resource-Id's voor de Azure Digital Apparaatdubbels-Api's en de basislijn machtigingen voor de API opgeven. Open een nieuw bestand in uw werkmap en voer het volgende JSON-fragment in om deze details te configureren: 
+## <a name="authentication-and-client-creation-net-c-sdk"></a>Verificatie en client maken: .NET (C#) SDK
 
-```json
-[{
-    "resourceAppId": "0b07f429-9f4b-4714-9392-cc5e8e80c8b0",
-    "resourceAccess": [
-     {
-       "id": "4589bd03-58cb-4e6c-b17f-b580e39652f8",
-       "type": "Scope"
-     }
-    ]
-}]
-``` 
-
-Sla dit bestand *op alsmanifest.jsop*.
-
-> [!NOTE] 
-> Er zijn enkele locaties waar een ' vriendelijke ', lees bare teken reeks `https://digitaltwins.azure.net` kan worden gebruikt voor de app-id van de Azure Digital apparaatdubbels-bron in plaats van de GUID `0b07f429-9f4b-4714-9392-cc5e8e80c8b0` . Zo kunnen bijvoorbeeld veel voor beelden in deze documentatieset authenticatie gebruiken met de MSAL-bibliotheek, en de beschrijvende teken reeks kan hiervoor worden gebruikt. Tijdens deze stap voor het maken van de app-registratie is de GUID-vorm van de ID echter vereist, zoals hierboven wordt weer gegeven. 
-
-Klik in het venster Cloud Shell op het pictogram bestanden uploaden/downloaden en kies uploaden.
-
-:::image type="content" source="media/how-to-authenticate-client/upload-extension.png" alt-text="Cloud Shell venster met de selectie van de Upload optie":::
-Ga naar de *manifest.js* die u zojuist hebt gemaakt en klik op openen.
-
-Voer vervolgens de volgende opdracht uit om een app-registratie te maken (waar nodig tijdelijke aanduidingen vervangen):
-
-```azurecli
-az ad app create --display-name <name-for-your-app> --native-app --required-resource-accesses manifest.json --reply-url http://localhost
-```
-
-De uitvoer van deze opdracht ziet er ongeveer als volgt uit.
-
-:::image type="content" source="media/how-to-authenticate-client/new-app-registration.png" alt-text="Nieuwe AAD-app-registratie":::
-
-Nadat u de app-registratie hebt gemaakt, klikt u op [deze koppeling](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) om naar de pagina Registratie overzicht van Aad-app in het Azure portal te gaan.
-
-Selecteer in dit overzicht de app-registratie die u zojuist hebt gemaakt in de lijst. Hiermee opent u de details op een pagina zoals deze:
-
-:::image type="content" source="media/how-to-authenticate-client/get-authentication-ids.png" alt-text="Azure Portal: verificatie-Id's":::
-
-Noteer de ID van de *toepassings* -id en de *Directory (Tenant)* die op **de** pagina wordt weer gegeven. U gebruikt deze waarden later om een client-app te verifiëren tegen de Azure Digital Apparaatdubbels-Api's.
-
-> [!NOTE]
-> Afhankelijk van uw scenario moet u mogelijk aanvullende wijzigingen aanbrengen in de app-registratie. Hier volgen enkele algemene vereisten waaraan u mogelijk moet voldoen:
-> * Open bare client toegang activeren
-> * Specifieke antwoord-Url's instellen voor web-en bureaublad toegang
-> * Impliciete OAuth2-verificatie stromen toestaan
-> * Als uw Azure-abonnement is gemaakt met behulp van een Microsoft-account zoals Live, Xbox of Hotmail, moet u de *signInAudience* voor de app-registratie instellen ter ondersteuning van persoonlijke accounts.
-> De eenvoudigste manier om deze instellingen in te stellen is door gebruik te maken van de [Azure Portal](https://portal.azure.com/). Zie [een toepassing registreren bij het micro soft Identity-platform](https://docs.microsoft.com/graph/auth-register-app-v2)voor meer informatie over dit proces.
-
-## <a name="write-client-app-authentication-code-net-c-sdk"></a>Client-App-verificatie code schrijven: .NET (C#) SDK
-
-In deze sectie wordt beschreven welke code u moet gebruiken in uw client toepassing om het verificatie proces te volt ooien met behulp van de .NET-SDK (C#).
-De Azure Digital Apparaatdubbels C# SDK maakt deel uit van de Azure SDK voor .NET. Deze bevindt zich hier: [Azure IOT Digital-client bibliotheek voor .net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core).
-
-### <a name="prerequisites"></a>Vereisten
-
-Als u nog geen starter client-app-project hebt ingesteld, maakt u een Basic .NET-project dat u met deze zelf studie kunt gebruiken.
-
-Als u de .NET SDK wilt gebruiken, moet u de volgende pakketten in uw project toevoegen:
+Neem eerst de volgende pakketten op in uw project om de .NET SDK en verificatie hulpprogramma's te gebruiken voor deze procedure:
 * `Azure.DigitalTwins.Core`(versie `1.0.0-preview.2` )
 * `Azure.Identity`
 
-Afhankelijk van uw hulp middelen kunt u dit doen met behulp van Visual Studio package manager of het `dotnet` opdracht regel programma. 
-
-### <a name="authentication-and-client-creation-net"></a>Verificatie en client maken: .NET
+Afhankelijk van uw hulp middelen kunt u de pakketten toevoegen met behulp van Visual Studio package manager of het `dotnet` opdracht regel programma. 
 
 Als u wilt verifiëren met de .NET SDK, gebruikt u een van de methoden voor het verkrijgen van referenties die zijn gedefinieerd in de [Azure. Identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet) -bibliotheek.
 
@@ -146,20 +87,22 @@ DigitalTwinsClientOptions opts =
 client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, opts);
 ```
 
-Zie [How-to: een Azure-functie instellen voor het verwerken van gegevens](how-to-create-azure-function.md) voor een meer uitgebreid voor beeld waarin enkele belang rijke configuratie opties in de context van functions worden uitgelegd.
+Zie [*How-to: een Azure-functie instellen voor het verwerken van gegevens*](how-to-create-azure-function.md) voor een meer uitgebreid voor beeld waarin enkele belang rijke configuratie opties in de context van functions worden uitgelegd.
 
 Als u verificatie in een functie wilt gebruiken, moet u ook rekening houden met het volgende:
 * [Beheerde identiteit inschakelen](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet)
-* [Omgevingsvariabelen](https://docs.microsoft.com/sandbox/functions-recipes/environment-variables?tabs=csharp)
-* Wijs machtigingen toe aan de functions-app waarmee deze toegang kan krijgen tot de Digital Apparaatdubbels-Api's. Zie [How-to: een Azure-functie instellen voor het verwerken van gegevens](how-to-create-azure-function.md) voor meer informatie.
+* [Omgevings variabelen](https://docs.microsoft.com/sandbox/functions-recipes/environment-variables?tabs=csharp) gebruiken waar nodig
+* Wijs machtigingen toe aan de functions-app waarmee deze toegang kan krijgen tot de Digital Apparaatdubbels-Api's. Zie [*How to: een Azure-functie instellen voor het verwerken van gegevens*](how-to-create-azure-function.md)voor meer informatie over Azure functions processen.
 
-## <a name="authentication-in-an-autorest-generated-sdk"></a>Verificatie in een autorest-gegenereerde SDK
+## <a name="authentication-with-an-autorest-generated-sdk"></a>Verificatie met een autorest-gegenereerde SDK
 
-Als u .NET niet gebruikt, kunt u ervoor kiezen om een SDK-bibliotheek te bouwen in een taal van uw keuze, zoals beschreven in [How to: aangepaste sdk's voor Azure Digital Apparaatdubbels maken met auto rest](how-to-create-custom-sdks.md).
+Als u .NET niet gebruikt, kunt u ervoor kiezen om een SDK-bibliotheek te bouwen in een taal van uw keuze, zoals beschreven in [*How to: aangepaste sdk's voor Azure Digital Apparaatdubbels maken met auto rest*](how-to-create-custom-sdks.md).
 
 In deze sectie wordt uitgelegd hoe u in dat geval verifieert.
 
 ### <a name="prerequisites"></a>Vereisten
+
+Eerst moet u de stappen voor het maken van een aangepaste SDK met auto rest volt ooien met behulp van de stappen in [*How to: aangepaste sdk's voor Azure Digital Apparaatdubbels maken met auto rest*](how-to-create-custom-sdks.md).
 
 In dit voor beeld wordt een type script-SDK gebruikt die wordt gegenereerd met auto rest. Als gevolg hiervan is ook het volgende vereist:
 * [msal-js](https://github.com/AzureAD/microsoft-authentication-library-for-js)
@@ -167,7 +110,7 @@ In dit voor beeld wordt een type script-SDK gebruikt die wordt gegenereerd met a
 
 ### <a name="minimal-authentication-code-sample"></a>Mini maal voor beeld van een verificatie code
 
-Als u een .NET-app wilt verifiëren met Azure-Services, kunt u de volgende minimale code gebruiken in uw client-app.
+Als u een app wilt verifiëren met Azure-Services, kunt u de volgende minimale code gebruiken in uw client-app.
 
 U hebt de toepassings-id van de *toepassing (client)* en de *map (Tenant)* van de vorige versie nodig, evenals de URL van uw Azure Digital apparaatdubbels-exemplaar.
 
@@ -248,12 +191,12 @@ export async function login() {
 
 Houd er rekening mee dat de code hierboven de client-ID, Tenant-ID en instantie-URL rechtstreeks in de code plaatst voor eenvoud. het is een goed idee om uw code deze waarden te laten ophalen uit een configuratie bestand of omgevings variabele.
 
-MSAL heeft veel meer opties die u kunt gebruiken voor het implementeren van dingen zoals caching en andere verificatie stromen. Zie [overzicht van micro soft Authentication Library (MSAL) (Engelstalig)](../active-directory/develop/msal-overview.md)voor meer informatie.
+MSAL heeft veel meer opties die u kunt gebruiken voor het implementeren van dingen zoals caching en andere verificatie stromen. Zie [*overzicht van micro soft Authentication Library (MSAL) (Engelstalig)*](../active-directory/develop/msal-overview.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Lees meer over de werking van beveiliging in azure Digital Apparaatdubbels:
-* [Concepten: beveiliging voor Azure Digital Apparaatdubbels Solutions](concepts-security.md)
+* [*Concepten: beveiliging voor Azure Digital Apparaatdubbels Solutions*](concepts-security.md)
 
 Of nu de verificatie is ingesteld, gaat u verder met het maken van modellen in uw exemplaar:
-* [Instructies: aangepaste modellen beheren](how-to-manage-model.md)
+* [*Uitleg: Aangepaste modellen beheren*](how-to-manage-model.md)

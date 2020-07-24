@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 1837d342c4476633ee33a8579abe7389ac9bbddf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce85473e80bfccf1bcff3e21408fd91e4cd428a4
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80476829"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131324"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Instanties in Durable Functions in azure beheren
 
@@ -18,13 +18,13 @@ Als u de extensie [Durable functions](durable-functions-overview.md) gebruikt vo
 
 U kunt bijvoorbeeld exemplaren starten en beëindigen, en u kunt een query uitvoeren op instanties, met inbegrip van de mogelijkheid om query's uit te zoeken op alle exemplaren en query instanties met filters. Daarnaast kunt u gebeurtenissen naar instanties verzenden, wachten op de Orchestration-voltooiing en de HTTP Management-webhook-Url's ophalen. In dit artikel worden ook andere beheer bewerkingen behandeld, zoals het terugspoelen van instanties, het opschonen van de exemplaar geschiedenis en het verwijderen van een taak hub.
 
-In Durable Functions kunt u kiezen hoe u elk van deze beheer bewerkingen wilt implementeren. In dit artikel vindt u voor beelden van de [Azure functions core tools](../functions-run-local.md) voor .net (C#) en Java script.
+In Durable Functions kunt u kiezen hoe u elk van deze beheer bewerkingen wilt implementeren. In dit artikel vindt u voor beelden van het gebruik van de [Azure functions core tools](../functions-run-local.md) voor .net (C#), java script en python.
 
 ## <a name="start-instances"></a>Instanties starten
 
 Het is belang rijk om een instantie van indeling te kunnen starten. Dit wordt vaak gedaan wanneer u een Durable Functions binding in de trigger van een andere functie gebruikt.
 
-De `StartNewAsync` (.net) of `startNew` (Java script)-methode op de [Orchestration-client binding](durable-functions-bindings.md#orchestration-client) start een nieuw exemplaar. Intern in deze methode een bericht in de controle wachtrij, waarmee vervolgens het begin van een functie wordt geactiveerd met de opgegeven naam die gebruikmaakt van de [Orchestration-trigger binding](durable-functions-bindings.md#orchestration-trigger).
+`StartNewAsync`Met de methode (.net), `startNew` (Java script) of `start_new` (python) op de [Orchestration-client binding](durable-functions-bindings.md#orchestration-client) wordt een nieuw exemplaar gestart. Intern in deze methode een bericht in de controle wachtrij, waarmee vervolgens het begin van een functie wordt geactiveerd met de opgegeven naam die gebruikmaakt van de [Orchestration-trigger binding](durable-functions-bindings.md#orchestration-trigger).
 
 Deze asynchrone bewerking is voltooid wanneer het Orchestration-proces is gepland.
 
@@ -102,6 +102,56 @@ module.exports = async function(context, input) {
 };
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+<a name="javascript-function-json"></a>Tenzij anders vermeld, gebruiken de voor beelden op deze pagina de HTTP-trigger met de volgende function.jsop.
+
+**function.json**
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [    
+    {
+      "name": "msg",
+      "type": "queueTrigger",
+      "direction": "in",
+      "queueName": "messages",
+      "connection": "AzureStorageQueuesConnectionString"
+    },
+    {
+      "name": "$return",
+      "type": "http",
+      "direction": "out"
+    },
+    {
+      "name": "starter",
+      "type": "durableClient",
+      "direction": "in"
+    }
+  ],
+  "disabled": false
+}
+```
+
+> [!NOTE]
+> In dit voor beeld worden de doelen Durable Functions versie 2. x. In versie 1. x gebruikt u in `orchestrationClient` plaats van `durableClient` .
+
+**__init__. py**
+
+```python
+import logging
+import azure.functions as func
+import azure.durable_functions as df
+
+async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+    
+    instance_id = await client.start_new('HelloWorld', None, None)
+    logging.log(f"Started orchestration with ID = ${instance_id}.")
+
+```
+
 ---
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
@@ -127,7 +177,7 @@ func durable start-new --function-name HelloWorld --input @counter-data.json --t
 
 Als onderdeel van uw inspanningen om uw orchestrations te beheren, moet u waarschijnlijk informatie verzamelen over de status van een Orchestration-exemplaar (bijvoorbeeld of het normaal of mislukt is voltooid).
 
-De `GetStatusAsync` (.net) of de `getStatus` (Java script)-methode op de [Orchestration-client binding](durable-functions-bindings.md#orchestration-client) voert een query uit op de status van een Orchestration-exemplaar.
+De `GetStatusAsync` (.net), `getStatus` (Java script) of de `get_status` methode (python) op de [Orchestration-client binding](durable-functions-bindings.md#orchestration-client) voert een query uit op de status van een Orchestration-exemplaar.
 
 Er wordt een `instanceId` (vereist), (optioneel), (optioneel) en (optioneel) gebruikt `showHistory` `showHistoryOutput` `showInput` als para meters.
 
@@ -153,7 +203,7 @@ De methode retourneert een object met de volgende eigenschappen:
   * **Beëindigd**: het exemplaar is abrupt gestopt.
 * **Geschiedenis**: de uitvoerings geschiedenis van de indeling. Dit veld wordt alleen ingevuld als deze `showHistory` is ingesteld op `true` .
 
-Deze methode retourneert `null` (.net) of `undefined` (Java script) als het exemplaar niet bestaat.
+Met deze methode wordt `null` (.net), `undefined` (Java script) of `None` (python) geretourneerd als het exemplaar niet bestaat.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -185,6 +235,19 @@ module.exports = async function(context, instanceId) {
 ```
 
 Zie [begin instanties](#javascript-function-json) voor de function.jsbij de configuratie.
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+
+    status = await client.get_status(instance_id)
+    # do something based on the current status
+```
 
 ---
 
@@ -218,7 +281,7 @@ func durable get-history --id 0ab8c55a66644d68a3a8b220b12d209c
 
 In plaats van één exemplaar tegelijk in uw indeling te gebruiken, is het wellicht efficiënter om in één keer op alle query's te zoeken.
 
-U kunt de `GetStatusAsync` (.net) of `getStatusAll` (Java script)-methode gebruiken om de status van alle indelings instanties op te vragen. In .NET kunt u een object door geven `CancellationToken` Als u dit wilt annuleren. De methode retourneert objecten met dezelfde eigenschappen als de `GetStatusAsync` methode met para meters.
+U kunt de `GetStatusAsync` -methode (.net), `getStatusAll` (Java script) of `get_status_all` (python) gebruiken om de status van alle indelings instanties op te vragen. In .NET kunt u een object door geven `CancellationToken` Als u dit wilt annuleren. De methode retourneert objecten met dezelfde eigenschappen als de `GetStatusAsync` methode met para meters.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -253,6 +316,24 @@ module.exports = async function(context, req) {
         context.log(JSON.stringify(instance));
     });
 };
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import logging
+import json
+import azure.functions as func
+import azure.durable_functions as df
+
+
+async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+
+    instances = await client.get_status_all()
+
+    for instance in instances:
+        logging.log(json.dumps(instance))
 ```
 
 Zie [begin instanties](#javascript-function-json) voor de function.jsbij de configuratie.
@@ -331,6 +412,31 @@ module.exports = async function(context, req) {
 
 Zie [begin instanties](#javascript-function-json) voor de function.jsbij de configuratie.
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import logging
+from datetime import datetime
+import json
+import azure.functions as func
+import azure.durable_functions as df
+from azure.durable_functions.models.OrchestrationRuntimeStatus import OrchestrationRuntimeStatus
+
+async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+
+    runtime_status = [OrchestrationRuntimeStatus.Completed, OrchestrationRuntimeStatus.Running]
+
+    instances = await client.get_status_by(
+        datetime(2018, 3, 10, 10, 1, 0),
+        datetime(2018, 3, 10, 10, 23, 59),
+        runtime_status
+    )
+
+    for instance in instances:
+        logging.log(json.dumps(instance))
+```
+
 ---
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
@@ -355,7 +461,7 @@ func durable get-instances --created-after 2018-03-10T13:57:31Z --created-before
 
 Als u een indelings instantie hebt die te lang duurt om uit te voeren, of als u deze alleen wilt stoppen voordat deze is voltooid, hebt u de mogelijkheid om deze te beëindigen.
 
-U kunt de `TerminateAsync` (.net) of de `terminate` (Java script)-methode van de [Orchestration-client binding](durable-functions-bindings.md#orchestration-client) gebruiken om exemplaren te beëindigen. De twee para meters zijn een `instanceId` en een `reason` teken reeks, die worden geschreven naar Logboeken en de status van het exemplaar.
+U kunt de `TerminateAsync` (.net), `terminate` (Java script) of de `terminate` methode (python) van de Orchestration- [client binding](durable-functions-bindings.md#orchestration-client) gebruiken om exemplaren te beëindigen. De twee para meters zijn een `instanceId` en een `reason` teken reeks, die worden geschreven naar Logboeken en de status van het exemplaar.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -387,6 +493,19 @@ module.exports = async function(context, instanceId) {
 ```
 
 Zie [begin instanties](#javascript-function-json) voor de function.jsbij de configuratie.
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+
+    reason = "It was time to be done."
+    return client.terminate(instance_id, reason)
+```
 
 ---
 
@@ -453,6 +572,19 @@ module.exports = async function(context, instanceId) {
 
 Zie [begin instanties](#javascript-function-json) voor de function.jsbij de configuratie.
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+
+    event_data = [1, 2 ,3]
+    return client.raise_event(instance_id, 'MyEvent', event_data)
+```
+
 ---
 
 > [!NOTE]
@@ -493,6 +625,39 @@ Hier volgt een voor beeld van een HTTP-activerings functie die laat zien hoe u d
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpSyncStart/index.js)]
 
 Zie [begin instanties](#javascript-function-json) voor de function.jsbij de configuratie.
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import logging
+import azure.functions as func
+import azure.durable_functions as df
+
+timeout = "timeout"
+retry_interval = "retryInterval"
+
+async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+
+    instance_id = await client.start_new(req.route_params['functionName'], None, req.get_body())
+    logging.log(f"Started orchestration with ID = '${instance_id}'.")
+
+    timeout_in_milliseconds = get_time_in_seconds(req, timeout)
+    timeout_in_milliseconds = timeout_in_milliseconds if timeout_in_milliseconds != None else 30000
+    retry_interval_in_milliseconds = get_time_in_seconds(req, retry_interval)
+    retry_interval_in_milliseconds = retry_interval_in_milliseconds if retry_interval_in_milliseconds != None else 1000
+
+    return client.wait_for_completion_or_create_check_status_response(
+        req,
+        instance_id,
+        timeout_in_milliseconds,
+        retry_interval_in_milliseconds
+    )
+
+def get_time_in_seconds(req: func.HttpRequest, query_parameter_name: str):
+    query_value = req.params.get(query_parameter_name)
+    return query_value if query_value != None else 1000
+```
 
 ---
 
@@ -600,6 +765,22 @@ modules.exports = async function(context, ctx) {
 
 Zie [begin instanties](#javascript-function-json) voor de function.jsbij de configuratie.
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.cosmosdb.cdb.Document:
+    client = df.DurableOrchestrationClient(starter)
+
+    payload = client.create_check_status_response(req, instance_id).get_body().decode()
+
+    return func.cosmosdb.CosmosDBConverter.encode({
+        id: instance_id,
+        payload: payload
+    })
+```
 ---
 
 ## <a name="rewind-instances-preview"></a>Instanties terugspoelen (preview-versie)
@@ -647,6 +828,22 @@ module.exports = async function(context, instanceId) {
 
 Zie [begin instanties](#javascript-function-json) voor de function.jsbij de configuratie.
 
+# <a name="python"></a>[Python](#tab/python)
+
+> [!NOTE]
+> Deze functie wordt momenteel niet ondersteund in python.
+
+<!-- ```python
+import azure.functions as func
+import azure.durable_functions as df
+
+async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+
+    reason = "Orchestrator failed and needs to be revived."
+    return client.rewind(instance_id, reason)
+``` -->
+
 ---
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
@@ -692,6 +889,18 @@ module.exports = async function(context, instanceId) {
 ```
 
 Zie [begin instanties](#javascript-function-json) voor de function.jsbij de configuratie.
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+
+    return client.purge_instance_history(instance_id)
+```
 
 ---
 
@@ -759,7 +968,22 @@ module.exports = async function (context, myTimer) {
     return client.purgeInstanceHistoryBy(createdTimeFrom, createdTimeTo, runtimeStatuses);
 };
 ```
+# <a name="python"></a>[Python](#tab/python)
 
+```python
+import azure.functions as func
+import azure.durable_functions as df
+from azure.durable_functions.models.DurableOrchestrationStatus import OrchestrationRuntimeStatus
+from datetime import datetime, timedelta
+
+async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+    created_time_from = datetime.datetime()
+    created_time_to = datetime.datetime.today + timedelta(days = -30)
+    runtime_statuses = [OrchestrationRuntimeStatus.Completed]
+
+    return client.purge_instance_history_by(created_time_from, created_time_to, runtime_statuses)
+```
 ---
 
 > [!NOTE]

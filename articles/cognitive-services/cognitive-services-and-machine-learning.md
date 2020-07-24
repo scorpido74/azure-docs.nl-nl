@@ -3,18 +3,16 @@ title: Cognitive Services en Machine Learning
 titleSuffix: Azure Cognitive Services
 description: Ontdek hoe Azure Cognitive Services past bij andere Azure-aanbiedingen voor machine learning.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.author: diberry
-ms.openlocfilehash: c8480557d0f27594fa369e4e2451a5d0fe7ad3cc
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 0b034d0135c66852b07e0a2ed2fd69e8c3fdc4a6
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856737"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132837"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services en machine learning
 
@@ -22,11 +20,11 @@ Cognitive Services biedt machine learning mogelijkheden om algemene problemen op
 
 [Cognitive Services](welcome.md) is een groep services die elk verschillende gegeneraliseerde Voorspellings mogelijkheden ondersteunt. De services zijn onderverdeeld in verschillende categorieën om u te helpen de juiste service te vinden. 
 
-|Service categorie|Functie|
+|Service categorie|Doel|
 |--|--|
 |[Besluit](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|Bouw apps die aanbevelingen opleveren voor geïnformeerde en efficiënte besluitvorming.|
-|[Taal](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|Laat uw apps natuurlijke taal verwerken met vooraf gemaakte scripts, sentiment evalueren en leren herkennen wat gebruikers willen.|
-|[Zoeken](https://azure.microsoft.com/services/cognitive-services/directory/search/)|Voeg Bing Search-API's toe aan uw apps en maak het mogelijk om miljarden webpagina's, afbeeldingen, video's en nieuwsartikelen met één API-aanroep te doorzoeken.|
+|[Taal](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|Laat uw apps natuurlijke taal verwerken met vooraf ontwikkelde scripts, evalueer sentiment en leer herkennen wat gebruikers willen.|
+|[Zoeken](https://azure.microsoft.com/services/cognitive-services/directory/search/)|Voeg Bing Search-API's toe aan uw apps en benut de mogelijkheid om miljarden webpagina's, afbeeldingen, video's en nieuwsitems met één API-aanroep te doorzoeken.|
 |[Speech](https://azure.microsoft.com/services/cognitive-services/directory/speech/)|Converteer spraak naar tekst en tekst naar spraak met natuurlijke uitspraak. Vertaal teksten van de ene naar de andere taal en schakel sprekercontrole en -herkenning in.|
 |[Vision](https://azure.microsoft.com/services/cognitive-services/directory/vision/)|Herken, identificeer, indexeer en wijzig uw afbeeldingen, video's en digitale inkt en voorzie deze van ondertitels.|
 ||||
@@ -91,8 +89,8 @@ In de volgende gegevens wordt elke service gecategoriseerd op basis van het type
 
 |Cognitieve service|Geen trainings gegevens vereist|U geeft enkele of alle trainings gegevens op|Real-time of bijna realtime gegevens verzameling|
 |--|--|--|--|
-|[Anomaly Detector](./Anomaly-Detector/overview.md)|x|x|x|
-|Bing Zoeken |x|||
+|[Anomaliedetectie](./Anomaly-Detector/overview.md)|x|x|x|
+|Bing Search |x|||
 |[Computer Vision](./Computer-vision/Home.md)|x|||
 |[Content Moderator](./Content-Moderator/overview.md)|x||x|
 |[Custom Vision](./Custom-Vision-Service/home.md)||x||
@@ -107,7 +105,7 @@ In de volgende gegevens wordt elke service gecategoriseerd op basis van het type
 |[Spraak tekst naar spraak (TTS)](speech-service/text-to-speech.md)|x|x||
 |[Spraak-naar-tekst (STT)](speech-service/speech-to-text.md)|x|x||
 |[Speech Translation](speech-service/speech-translation.md)|x|||
-|[Text Analytics](./text-analytics/overview.md)|x|||
+|[Tekstanalyse](./text-analytics/overview.md)|x|||
 |[Translator](./translator/translator-info-overview.md)|x|||
 |[Translator-aangepaste vertaler](./translator/custom-translator/overview.md)||x||
 
@@ -131,7 +129,7 @@ Cognitive Services die export modellen bieden voor andere machine learning-hulpp
 |--|--|
 |[Custom Vision](./custom-vision-service/home.md)|[Exporteren](./Custom-Vision-Service/export-model-python.md) voor tensor flow voor Android, CoreML voor IOS11, ONNX voor Windows ml|
 
-## <a name="learn-more"></a>Lees meer
+## <a name="learn-more"></a>Meer informatie
 
 * [Architectuur handleiding-wat zijn de machine learning producten van micro soft?](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning)
 * [Machine learning-Inleiding tot diep gaande informatie versus machine learning](../machine-learning/concept-deep-learning-vs-machine-learning.md)

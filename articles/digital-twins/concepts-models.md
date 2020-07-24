@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ab0b08c01478d1375ec2a234dc0277980312f17c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 56ebb32e2d1c2a9bab9592da63e1ada7130bb7ff
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258282"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131630"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Meer informatie over dubbele modellen in azure Digital Apparaatdubbels
 
@@ -24,12 +24,12 @@ Modellen worden geschreven met behulp van de op JSON-LD gebaseerde **Digital-def
 
 ## <a name="digital-twin-definition-language-dtdl-for-writing-models"></a>Digital-dubbele-definitie taal (DTDL) voor het schrijven van modellen
 
-Modellen voor Azure Digital Apparaatdubbels worden gedefinieerd met behulp van de Digital Apparaatdubbels Definition Language (DTDL). DTDL is gebaseerd op JSON-LD en is onafhankelijk van programmeer taal. DTDL is niet exclusief voor Azure Digital Apparaatdubbels, maar wordt ook gebruikt voor het weer geven van apparaatgegevens in andere IoT-Services, zoals [IoT Plug en Play](../iot-pnp/overview-iot-plug-and-play.md). Azure Digital Apparaatdubbels maakt gebruik van DTDL *versie 2*.
+Modellen voor Azure Digital Apparaatdubbels worden gedefinieerd met behulp van de Digital Apparaatdubbels Definition Language (DTDL). DTDL is gebaseerd op JSON-LD en is onafhankelijk van programmeer taal. DTDL is niet exclusief voor Azure Digital Apparaatdubbels, maar wordt ook gebruikt voor het weer geven van apparaatgegevens in andere IoT-Services, zoals [IoT Plug en Play](../iot-pnp/overview-iot-plug-and-play.md). 
+
+Azure Digital Apparaatdubbels maakt gebruik van DTDL *versie 2*. Voor meer informatie over deze versie van DTDL raadpleegt u de documentatie van de specificatie in GitHub: [*Digital Apparaatdubbels Definition Language (DTDL)-versie 2*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md).
 
 > [!TIP] 
 > Niet alle services die gebruikmaken van DTDL, implementeren exact dezelfde functies van DTDL. IoT Plug en Play maakt bijvoorbeeld geen gebruik van de DTDL-functies die voor grafieken gelden, terwijl Azure Digital Apparaatdubbels momenteel geen DTDL-opdrachten implementeert. Voor meer informatie over de DTDL-functies die specifiek zijn voor Azure Digital Apparaatdubbels raadpleegt u de sectie verderop in dit artikel over de [Implementatie Details van Azure Digital APPARAATDUBBELS DTDL](#azure-digital-twins-dtdl-implementation-specifics).
-
-Voor meer informatie over DTDL in het algemeen raadpleegt u de documentatie van spec in GitHub: [Digital Apparaatdubbels Definition Language (DTDL)-versie 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md).
 
 ## <a name="elements-of-a-model"></a>Elementen van een model
 
@@ -62,7 +62,9 @@ Een DTDL-model om compatibel te zijn met Azure Digital Apparaatdubbels, moet aan
 
 Dubbele type modellen kunnen worden geschreven in elke tekst editor. De DTDL-taal volgt de JSON-syntaxis, dus u moet modellen met de extensie *. json*opslaan. Door gebruik te maken van de JSON-extensie biedt veel Program meren-tekst editors de mogelijkheid om basis syntaxis controles uit te voeren en te markeren voor uw DTDL-documenten. Er is ook een [DTDL-extensie](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl) beschikbaar voor [Visual Studio code](https://code.visualstudio.com/).
 
-Hier volgt een voor beeld van een typisch model, geschreven als een DTDL-interface. Het model beschrijft plan eten, elk met een naam, massa en een Tempe ratuur. De planeet kunnen manen als satelliet hebben en kan Craters bevatten.
+Deze sectie bevat een voor beeld van een typisch model, geschreven als een DTDL-interface. Het model beschrijft **plan eten**, elk met een naam, massa en een Tempe ratuur.
+ 
+Houd er rekening mee dat plan eten ook kunnen communiceren met **manen** die hun satellieten zijn, en kan **Craters**bevatten. In het onderstaande voor beeld `Planet` drukt het model verbindingen met deze andere entiteiten af door te verwijzen naar twee externe modellen, `Moon` en `Crater` . Deze modellen worden ook gedefinieerd in de voorbeeld code hieronder, maar worden heel eenvoudig bewaard, zodat ze niet vanuit het primaire voor beeld kunnen worden getraceerd `Planet` .
 
 ```json
 [
@@ -101,6 +103,11 @@ Hier volgt een voor beeld van een typisch model, geschreven als een DTDL-interfa
   },
   {
     "@id": "dtmi:com:contoso:Crater;1",
+    "@type": "Interface",
+    "@context": "dtmi:dtdl:context;2"
+  },
+  {
+    "@id": "dtmi:com:contoso:Moon;1",
     "@type": "Interface",
     "@context": "dtmi:dtdl:context;2"
   }
@@ -204,13 +211,13 @@ Er is een taal-neutraal-voor beeld beschikbaar voor het valideren van model docu
 
 Het DTDL-voor beeld van de validatie functie is gebaseerd op een .NET DTDL-parser-bibliotheek, die beschikbaar is op NuGet als een bibliotheek aan de client zijde: [**micro soft. Azure. DigitalTwins. parser**](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/). U kunt de bibliotheek ook rechtstreeks gebruiken om uw eigen validatie oplossing te ontwerpen. Wanneer u de parser-bibliotheek gebruikt, moet u ervoor zorgen dat u een versie gebruikt die compatibel is met de versie die door Azure Digital Apparaatdubbels wordt uitgevoerd. Tijdens de preview is dit versie *3.7.0*.
 
-Meer informatie over de parser-bibliotheek, inclusief gebruiks voorbeelden, vindt u in [procedures: modellen parseren en valideren](how-to-use-parser.md).
+Meer informatie over de parser-bibliotheek, inclusief gebruiks voorbeelden, vindt u in [*procedures: modellen parseren en valideren*](how-to-use-parser.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie modellen beheren met de DigitalTwinsModels-Api's:
-* [Instructies: aangepaste modellen beheren](how-to-manage-model.md)
+* [*Uitleg: Aangepaste modellen beheren*](how-to-manage-model.md)
 
 Of leer hoe digitale apparaatdubbels worden gemaakt op basis van modellen:
-* [Concepten: Digital apparaatdubbels en het dubbele diagram](concepts-twins-graph.md)
+* [*Concepten: Digital apparaatdubbels en het dubbele diagram*](concepts-twins-graph.md)
 

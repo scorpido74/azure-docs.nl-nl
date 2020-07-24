@@ -8,18 +8,18 @@ ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 0bb0fb268d18ddc152dae45014e2154686762976
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e609e755f02d4321664804bfbb90f979c1c06ead
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259830"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133058"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Versleuteling aan de server zijde van Azure Disk Storage
 
 Met SSE (server side Encryption) beschermt u uw gegevens en kunt u voldoen aan de beveiligings-en nalevings verplichtingen van uw organisatie. Met SSE worden uw gegevens die zijn opgeslagen op Azure Managed disks (besturings systeem en gegevens schijven), op rest automatisch gecodeerd wanneer deze in de cloud worden bewaard. 
 
-Gegevens in azure Managed disks worden transparant versleuteld met 256-bits [AES-versleuteling](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), een van de krach tigste blok versleuteling die beschikbaar is en is compatibel met FIPS 140-2. Zie [crypto GRAFIE API: Next Generation](https://docs.microsoft.com/windows/desktop/seccng/cng-portal) (Engelstalig) voor meer informatie over de onderliggende cryptografische modules die worden beheerd door Azure Managed disks.
+Gegevens in azure Managed disks worden transparant versleuteld met 256-bits [AES-versleuteling](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), een van de krach tigste blok versleuteling die beschikbaar is en is compatibel met FIPS 140-2. Zie [crypto GRAFIE API: Next Generation](/windows/desktop/seccng/cng-portal) (Engelstalig) voor meer informatie over de onderliggende cryptografische modules die worden beheerd door Azure Managed disks.
 
 Versleuteling aan de server zijde heeft geen invloed op de prestaties van beheerde schijven en er zijn geen extra kosten. 
 
@@ -50,9 +50,9 @@ De door de klant beheerde sleutels hebben nu de volgende beperkingen:
 
 ## <a name="encryption-at-host---end-to-end-encryption-for-your-vm-data"></a>Versleuteling van host-end-to-end-versleuteling voor uw VM-gegevens
 
-End-to-end-versleuteling wordt gestart vanaf de VM-host, de Azure-server waaraan uw VM is toegewezen. Gegevens op uw tijdelijke schijven en de caches van het besturings systeem of de gegevens schijf worden opgeslagen op die VM-host. Wanneer u end-to-end-versleuteling inschakelt, worden alle gegevens versleuteld op rest en stromen die zijn versleuteld naar de opslag service, waar deze worden bewaard. End-to-end-versleuteling maakt geen gebruik van de CPU van uw virtuele machine en heeft geen invloed op de prestaties van uw virtuele machine. 
+End-to-end-versleuteling wordt gestart vanaf de VM-host, de Azure-server waaraan uw VM is toegewezen. Gegevens op uw tijdelijke schijven, tijdelijke besturingssysteem schijven en persistente OS/data disk-caches worden opgeslagen op die VM-host. Wanneer u end-to-end-versleuteling inschakelt, worden alle gegevens versleuteld op rest en stromen die zijn versleuteld naar de opslag service, waar deze worden bewaard. End-to-end-versleuteling maakt geen gebruik van de CPU van uw virtuele machine en heeft geen invloed op de prestaties van uw virtuele machine. 
 
-Tijdelijke schijven worden op rest versleuteld met door het platform beheerde sleutels wanneer u end-to-end-versleuteling inschakelt. De caches van het besturings systeem en de gegevens schijf worden op rest versleuteld met door de klant beheerde of door het platform beheerde sleutels, afhankelijk van het versleutelings type. Als een schijf bijvoorbeeld is versleuteld met door de klant beheerde sleutels, wordt de cache voor de schijf versleuteld met door de klant beheerde sleutels en als een schijf wordt versleuteld met door het platform beheerde sleutels, wordt de cache voor de schijf versleuteld met door het platform beheerde sleutels.
+Tijdelijke schijven en tijdelijke besturingssysteem schijven worden op rest versleuteld met door het platform beheerde sleutels wanneer u end-to-end-versleuteling inschakelt. De caches van het besturings systeem en de gegevens schijf worden op rest versleuteld met door de klant beheerde of door het platform beheerde sleutels, afhankelijk van het versleutelings type. Als een schijf bijvoorbeeld is versleuteld met door de klant beheerde sleutels, wordt de cache voor de schijf versleuteld met door de klant beheerde sleutels en als een schijf wordt versleuteld met door het platform beheerde sleutels, wordt de cache voor de schijf versleuteld met door het platform beheerde sleutels.
 
 ### <a name="restrictions"></a>Beperkingen
 
@@ -68,7 +68,7 @@ Tijdelijke schijven worden op rest versleuteld met door het platform beheerde sl
 
 ## <a name="double-encryption-at-rest"></a>Dubbele versleuteling bij rest
 
-Hoge beveiligings gevoelige klanten die zich zorgen maken over het risico dat is gekoppeld aan een bepaalde versleutelings algoritme, implementatie of sleutel die wordt aangetast, kunnen nu kiezen voor extra versleutelen met een ander versleutelings algoritme/dezelfde modus op de laag van de infra structuur met behulp van door het platform beheerde versleutelings sleutels. Deze nieuwe laag kan worden toegepast op schijven, moment opnamen en installatie kopieën, die allemaal worden versleuteld met dubbele versleuteling.
+Hoge beveiligings gevoelige klanten die zich zorgen maken over het risico dat is gekoppeld aan een bepaalde versleutelings algoritme, implementatie of sleutel die wordt aangetast, kunnen nu kiezen voor extra versleutelen met een ander versleutelings algoritme/dezelfde modus op de laag van de infra structuur met behulp van door het platform beheerde versleutelings sleutels. Deze nieuwe laag kan worden toegepast op blijvende besturings systeem-en gegevens schijven, moment opnamen en installatie kopieën, die allemaal worden versleuteld met dubbele versleuteling.
 
 ### <a name="supported-regions"></a>Ondersteunde regio's
 
@@ -76,7 +76,7 @@ Hoge beveiligings gevoelige klanten die zich zorgen maken over het risico dat is
 
 ## <a name="server-side-encryption-versus-azure-disk-encryption"></a>Versleuteling aan de server zijde versus Azure Disk Encryption
 
-[Azure Disk Encryption](../../security/fundamentals/azure-disk-encryption-vms-vmss.md) maakt gebruik van de [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) -functie van Windows voor het versleutelen van beheerde schijven met door de klant beheerde sleutels in de gast-VM.  Versleuteling aan de server zijde met door de klant beheerde sleutels wordt verbeterd op ADE door u in staat te stellen alle typen besturings systemen en installatie kopieën voor uw virtuele machines te gebruiken door gegevens in de opslag service te versleutelen.
+[Azure Disk Encryption](../../security/fundamentals/azure-disk-encryption-vms-vmss.md) maakt gebruik van de [BitLocker](/windows/security/information-protection/bitlocker/bitlocker-overview) -functie van Windows voor het versleutelen van beheerde schijven met door de klant beheerde sleutels in de gast-VM. Versleuteling aan de server zijde met door de klant beheerde sleutels wordt verbeterd op ADE door u in staat te stellen alle typen besturings systemen en installatie kopieën voor uw virtuele machines te gebruiken door gegevens in de opslag service te versleutelen.
 
 > [!IMPORTANT]
 > Door de klant beheerde sleutels zijn gebaseerd op beheerde identiteiten voor Azure-resources, een functie van Azure Active Directory (Azure AD). Wanneer u door de klant beheerde sleutels configureert, wordt er automatisch een beheerde identiteit toegewezen aan uw resources onder de kaften. Als u het abonnement, de resource groep of de beheerde schijf vervolgens verplaatst van een Azure AD-Directory naar een andere, wordt de beheerde identiteit die is gekoppeld aan Managed disks, niet overgebracht naar de nieuwe Tenant, zodat door de klant beheerde sleutels mogelijk niet meer werken. Zie [een abonnement overdragen tussen Azure AD-mappen](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)voor meer informatie.
@@ -84,9 +84,8 @@ Hoge beveiligings gevoelige klanten die zich zorgen maken over het risico dat is
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [End-to-end-versleuteling met versleuteling op host-Power shell inschakelen](disks-enable-host-based-encryption-powershell.md)
-- [Dubbele versleuteling inschakelen bij rest voor uw beheerde schijven-Power shell](disks-enable-double-encryption-at-rest-powershell.md)
-- [Door de klant beheerde sleutels voor uw beheerde schijven inschakelen-Power shell](disks-enable-customer-managed-keys-powershell.md)
-- [Door de klant beheerde sleutels voor uw beheerde schijven inschakelen-Portal](disks-enable-customer-managed-keys-portal.md)
+- End-to-end-versleuteling inschakelen met versleuteling op de host met [Power shell](disks-enable-host-based-encryption-powershell.md) of de [Azure Portal](disks-enable-host-based-encryption-portal.md).
+- Schakel dubbele versleuteling in op de rest voor Managed disks met [Power shell](disks-enable-double-encryption-at-rest-powershell.md) of de [Azure Portal](disks-enable-double-encryption-at-rest-portal.md).
+- Door de klant beheerde sleutels voor beheerde schijven inschakelen met [Power shell](disks-enable-customer-managed-keys-powershell.md) of de [Azure Portal](disks-enable-customer-managed-keys-portal.md).
 - [Bekijk de Azure Resource Manager sjablonen voor het maken van versleutelde schijven met door de klant beheerde sleutels](https://github.com/ramankumarlive/manageddiskscmkpreview)
 - [Wat is Azure Key Vault?](../../key-vault/general/overview.md)

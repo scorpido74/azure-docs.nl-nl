@@ -1,16 +1,16 @@
 ---
-title: Klanten dashboard in micro soft Commercial Marketplace Analytics op partner centrum
+title: Klanten dashboard in micro soft Commercial Marketplace Analytics op partner centrum, Azure Marketplace en Microsoft AppSource
 description: Informatie over toegang tot informatie over uw klanten, met inbegrip van groei trends, met behulp van het dash board van de klant in de analyse van commerciële Marketplace.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 06/15/2020
-ms.openlocfilehash: 9f71a668b3473521e9d8d7c9318ab2e557380845
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: article
+ms.date: 07/22/2020
+ms.openlocfilehash: f4dbdbfc3b835871516233e601881012190169ce
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121755"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131766"
 ---
 # <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>Dashboard Klant in Commerciële marketplace-analyses
 
@@ -29,17 +29,19 @@ In het **dash board** van de klant van het menu **analyseren** worden gegevens w
 - [Klant op geografie](#customer-by-geography)
 - [Klant trends](#customer-trends)
 - [Klanten per orders en gebruik](#customers-by-orders-and-usage)
-- [Klanten per Sku's](#customers-by-skus)
+- [Klanten per plan](#customers-by-plans)
 - [Orders en gebruik per klant type](#orders-and-usage-by-customer-type)
 - [Tabel Klant gegevens](#customer-details-table)
 - [Pagina filters van klant](#customer-page-filters)
+
+De maximale latentie tussen de aanschaf en rapportage van klanten in het partner centrum is 48 uur.
 
 ### <a name="customer-summary"></a>Klanten overzicht
 
 In de sectie Overzicht van klanten wordt een telling weer gegeven van alle klanten, met inbegrip van nieuwe, bestaande en verlopen, tijdens het geselecteerde datum bereik.
 
 - Totaal aantal klanten wordt gedefinieerd als het aantal klanten dat uw aanbieding heeft gekocht en ten minste één bestelling heeft die niet is geannuleerd.
-- Het percentage van de groei in vergelijking met de vorige maand wordt aangegeven door de indicator aantal en omhoog in een groene of neerwaartse indicator rood.
+- Het percentage van de groei van de klant ten opzichte van de vorige maand wordt aangegeven door de indicator aantal en omhoog in een groene of neerwaartse indicator rood.
 - Groei trends worden weer gegeven door staaf diagrammen en de waarde voor elke maand wordt weer gegeven door de muis aanwijzer boven de kolommen van de grafiek te plaatsen.
 
 Er zijn drie **typen klanten**: nieuw, bestaand en overlopend.
@@ -50,9 +52,9 @@ Er zijn drie **typen klanten**: nieuw, bestaand en overlopend.
 
 ### <a name="customer-by-geography"></a>Klant op geografie
 
-In het diagram **klant per geografie** ziet u de aantallen klanten en klanten die zijn aangeschaft tijdens het geselecteerde datum bereik en die worden toegewezen op basis van het land of de regio van de klant. Het licht tot donkerere kleur op de kaart vertegenwoordigt de laag tot hoogste waarde van het aantal van de klant. Klik op een record in de tabel om in te zoomen op een land/regio.
+In het diagram **klant per geografie** ziet u het aantal klanten en klanten dat is aangeschaft tijdens het geselecteerde datum bereik, die zijn toegewezen op basis van het land of de regio van de klant. Het licht tot donkerere kleur op de kaart vertegenwoordigt de laag tot hoogste waarde van het aantal van de klant. Selecteer een record in de tabel om in te zoomen op een land/regio.
 
-In het heatmap wordt het aantal klanten en% per klant land/regio weer gegeven. U kunt de kaart verplaatsen om de exacte locatie te bekijken en in te zoomen op een specifieke locatie. Deze kaart heeft een aanvullend raster waarmee u het% van klanten per locatie kunt bekijken, evenals de klanten die nieuw aan die locatie zijn toegevoegd.
+De heatmap bevat het aantal klanten en het percentage van de klant land/regio. U kunt de kaart verplaatsen om de exacte locatie te bekijken en in te zoomen op een specifieke locatie. Deze kaart heeft een aanvullend raster waarmee u het% van klanten per locatie kunt bekijken, evenals de klanten die nieuw aan die locatie zijn toegevoegd.
 
 ### <a name="customer-trends"></a>Klant trends
 
@@ -71,14 +73,14 @@ De tabel **klanten per orders/gebruik** heeft drie tabbladen: ' orders ', ' geno
 
 Zie bijvoorbeeld het volgende diagram voor genormaliseerd gebruik: het bovenste 30e percentiel van klanten draagt bij tot 87% van het genormaliseerde gebruik cumulatief. Het 30e percentiel van klanten is slechts 1.570.000 uur gebruik.
 
-### <a name="customers-by-skus"></a>Klanten per Sku's
+### <a name="customers-by-plans"></a>Klanten per plan
 
-De **klanten per sku's/gebruiks** diagram worden hieronder beschreven.
+De **klanten per abonnementen/gebruiks** grafieken worden hieronder beschreven.
 
 1. Het Leader Board geeft details weer van de Top 50-klanten gerangschikt op Bestel aantal. Nadat u een klant hebt geselecteerd, worden de gegevens van de klant weer gegeven in de secties 2, 3 en 4 van deze Leader Board.
 2. De details van het klant profiel worden in deze ruimte weer gegeven wanneer uitgevers zijn aangemeld met een rol van eigenaar. Als uitgevers zijn aangemeld met een rol Inzender, is de informatie in deze sectie niet beschikbaar.
-3. In de grafiek orders per Sku's ring wordt de uitsplitsing weer gegeven van de orders die voor Sku's zijn gekocht. De top 5 Sku's met het hoogste aantal orders worden weer gegeven, terwijl de rest van de bestellingen worden gegroepeerd onder ' rest all '.
-4. In de grafiek stoelen per Sku's ring wordt de uitsplitsing weer gegeven van seats die zijn besteld voor Sku's. De top 5 Sku's met de hoogste seats worden weer gegeven, terwijl de rest van de orders worden gegroepeerd onder rest all.
+3. In de grafiek **Orders per abonnementen** ring wordt de uitsplitsing weer gegeven van de orders die zijn gekocht voor plannen. De vijf meest voorkomende plannen met het hoogste aantal orders worden weer gegeven, terwijl de rest van de bestellingen worden gegroepeerd onder ' rest all '.
+4. In de grafiek **stoelen per abonnementen** ring wordt de uitsplitsing van de bestelde stoelen voor plannen weer gegeven. De vijf meest voorkomende plannen met de hoogste seats worden weer gegeven, terwijl de rest van de orders worden gegroepeerd onder rest all.
 
 ### <a name="orders-and-usage-by-customer-type"></a>Orders en gebruik per klant type
 
@@ -95,7 +97,7 @@ In de tabel **klant gegevens** wordt een genummerde lijst met de top 1000-klante
 - Elke kolom in het raster is sorteerbaar.
 - De gegevens kunnen worden geëxtraheerd naar een TSV-bestand als het aantal records kleiner is dan 1000.
 - Als het record nummer groter is dan 1000, worden geëxporteerde gegevens asynchroon in een download pagina voor de volgende 30 dagen geplaatst.
-- Filters kunnen worden toegepast op de tabel om alleen de gegevens weer te geven waarin u bent geïnteresseerd. Gegevens kunnen worden gefilterd op bedrijfs naam, klant-ID, abonnements-ID van de Marketplace, Azure-licentie type, datum van aanschaf, verloren gegane datum, klant-e-mail, land/regio/staat/plaats/post code, klant taal, enzovoort.
+- Filters toep assen op de tabel om alleen de gegevens weer te geven waarin u bent geïnteresseerd. Gegevens filteren op bedrijfs naam, klant-ID, Marketplace-abonnements-ID, Azure-licentie type, datum verkregen, verloren datum, klant-e-mail, land/regio/staat/plaats/post code, klant taal, enzovoort.
 - Wanneer een aanbieding wordt gekocht door een beveiligde klant, worden de gegevens van de **gedetailleerde gegevens** van de klant gemaskeerd (* * * * * * * * * * * *).
 - Details van klant dimensies, zoals de bedrijfs naam, de klant naam en het e-mail adres van de klant, bevinden zich op het niveau van de organisatie-ID en niet op Azure Marketplace of AppSource-transactie niveau.
 
@@ -104,7 +106,7 @@ In de tabel **klant gegevens** wordt een genummerde lijst met de top 1000-klante
 De **pagina** filters van de klant worden toegepast op het pagina niveau van de klant. U kunt meerdere filters selecteren om de grafiek te genereren voor de criteria die u wilt weer geven en de gegevens die u wilt zien in het raster Details van gedetailleerde orders/export. Filters worden toegepast op de gegevens die zijn geëxtraheerd voor het gegevens bereik dat u hebt geselecteerd in de rechter bovenhoek van de pagina Orders.
 
 >[!NOTE]
-> Gedetailleerde definities voor elk van de velden in klant grid, pagina filters en de mogelijke selecties daarvan vindt u in [Veelgestelde vragen en terminologie voor de analyse van commerciële Marketplace](./faq-terminology.md).
+> Gedetailleerde definities voor elk van de velden in het raster van de klant, pagina filters en de mogelijke selecties hiervan vindt u in het onderstaande artikel Veelgestelde vragen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

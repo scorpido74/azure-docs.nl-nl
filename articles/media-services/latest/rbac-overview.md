@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 05/23/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 93b2cd3a2565b14ea07d6db6b14dd146e4223528
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1872d0dd56a0459988e65852340c36493ee53f9f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "66236919"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132242"
 ---
 # <a name="role-based-access-control-rbac-for-media-services-accounts"></a>Op rollen gebaseerd toegangs beheer (RBAC) voor Media Services accounts
 
@@ -36,14 +36,14 @@ foreach (Microsoft.Azure.Management.Media.Models.Operation a in client.Operation
 }
 ```
 
-In het artikel [ingebouwde roldefinities](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) wordt duidelijk aangegeven wat de rol verleent. 
+In het artikel [ingebouwde roldefinities](../../role-based-access-control/built-in-roles.md) wordt duidelijk aangegeven wat de rol verleent. 
 
 Raadpleeg de volgende artikelen voor meer informatie:
 
-- [Klassieke abonnementsbeheerdersrollen, Azure RBAC-rollen en Azure AD-beheerdersrollen](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
-- [Wat is RBAC voor Azure-bronnen?](https://docs.microsoft.com/azure/role-based-access-control/overview)
-- [RBAC gebruiken om toegang te beheren](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest)
-- [Bewerkingen voor de resource provider Media Services](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftmedia)
+- [Klassieke abonnementsbeheerdersrollen, Azure RBAC-rollen en Azure AD-beheerdersrollen](../../role-based-access-control/rbac-and-directory-admin-roles.md)
+- [Wat is Azure RBAC (toegangsbeheer op basis van rollen)?](../../role-based-access-control/overview.md)
+- [RBAC gebruiken om toegang te beheren](../../role-based-access-control/role-assignments-rest.md)
+- [Bewerkingen voor de resource provider Media Services](../../role-based-access-control/resource-provider-operations.md#microsoftmedia)
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -3,19 +3,17 @@ title: 'Functies: actie en context-persoonlijker'
 titleSuffix: Azure Cognitive Services
 description: Personaler maakt gebruik van functies, informatie over acties en context, om betere suggesties te stellen. Functies kunnen zeer algemeen of specifiek voor een item zijn.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.author: diberry
-ms.openlocfilehash: 408501232891a7971d03c89acc647d9ed19609b3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 590416f077fc1ff9430e42e27217548476c9032f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77026146"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132769"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Functies zijn informatie over acties en context
 
@@ -25,8 +23,8 @@ Personaler maakt gebruik van **functies**. Dit is informatie over de **huidige c
 
 U hebt bijvoorbeeld een **functie** over:
 
-* De _gebruiker_ , zoals een `Sports_Shopper`. Dit mag geen afzonderlijke gebruikers-ID zijn. 
-* De _inhoud_ , bijvoorbeeld als een video een `Documentary`, een `Movie`of een `TV Series`is, of een retail-item beschikbaar is in de Store.
+* De _gebruiker_ , zoals een `Sports_Shopper` . Dit mag geen afzonderlijke gebruikers-ID zijn. 
+* De _inhoud_ , bijvoorbeeld als een video een `Documentary` , een `Movie` of een is `TV Series` , of een retail-item beschikbaar is in de Store.
 * De _huidige_ tijds periode, zoals de dag van de week.
 
 Personaler schrijft, beperkt of corrigeert de functies die u kunt verzenden voor acties en context:
@@ -56,7 +54,7 @@ Personaler neemt functies die zijn ingedeeld in naam ruimten. U kunt in uw toepa
 Hier volgen enkele voor beelden van onderdeel naam ruimten die worden gebruikt door toepassingen:
 
 * User_Profile_from_CRM
-* Time
+* Tijd
 * Mobile_Device_Info
 * http_user_agent
 * VideoResolution
@@ -69,10 +67,10 @@ Hier volgen enkele voor beelden van onderdeel naam ruimten die worden gebruikt d
 U kunt functie naam ruimten volgen volgens uw eigen conventies, zolang ze geldige JSON-sleutels zijn. Naam ruimten worden gebruikt om functies in verschillende sets te organiseren en om dubbel zinnigheid te maken met vergelijk bare namen. U kunt naam ruimten beschouwen als een voor voegsel die wordt toegevoegd aan functie namen. Naam ruimten kunnen niet worden genest.
 
 
-In de volgende JSON, `user` `state`, en `device` zijn functie naam ruimten. 
+In de volgende JSON, `user` , `state` en `device` zijn functie naam ruimten. 
 
 > [!Note]
-> We raden u op dit moment ten zeerste aan om namen te gebruiken voor functie naam ruimten die zijn gebaseerd op UTF-8 en beginnen met andere letters. Bijvoorbeeld `user`, `state` `device` , en begin met `u`, `s`, en. `d` Momenteel hebben naam ruimten met dezelfde eerste tekens kunnen leiden tot conflicten in indexen die worden gebruikt voor machine learning.
+> We raden u op dit moment ten zeerste aan om namen te gebruiken voor functie naam ruimten die zijn gebaseerd op UTF-8 en beginnen met andere letters. Bijvoorbeeld, `user` `state` , en `device` begin met `u` , `s` , en `d` . Momenteel hebben naam ruimten met dezelfde eerste tekens kunnen leiden tot conflicten in indexen die worden gebruikt voor machine learning.
 
 JSON-objecten kunnen geneste JSON-objecten en eenvoudige eigenschappen/waarden bevatten. Een matrix kan alleen worden opgenomen als de matrix items getallen zijn. 
 
