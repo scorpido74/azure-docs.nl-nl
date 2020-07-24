@@ -9,13 +9,14 @@ ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 04/27/2020
+ms.date: 07/17/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 31daec93352c0e142075a55c61f2b8d3a6d56fab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10b9e055ce5b1e2ba27d942a987bf6b38291f094
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080232"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031419"
 ---
 # <a name="use-workspace-behind-azure-firewall-for-azure-machine-learning"></a>Werk ruimte achter Azure Firewall gebruiken voor Azure Machine Learning
 
@@ -36,7 +37,7 @@ Maak op uw firewall een netwerk regel die verkeer naar en van de adressen in dit
 
 De hosts in deze sectie zijn eigendom van micro soft en bieden services die nodig zijn om uw werk ruimte goed te laten functioneren.
 
-| **Hostnaam** | **Functie** |
+| **Hostnaam** | **Doel** |
 | ---- | ---- |
 | **\*. batchai.core.windows.net** | Trainings clusters |
 | **ml.azure.com** | Azure Machine Learning Studio |
@@ -57,10 +58,11 @@ De hosts in deze sectie zijn eigendom van micro soft en bieden services die nodi
 
 De hosts in deze sectie worden gebruikt voor het installeren van Python-pakketten. Ze zijn vereist tijdens de ontwikkeling, training en implementatie. 
 
-| **Hostnaam** | **Functie** |
+| **Hostnaam** | **Doel** |
 | ---- | ---- |
 | **anaconda.com** | Gebruikt bij het installeren van Conda-pakketten |
 | **pypi.org** | Gebruikt bij het installeren van PIP-pakketten |
+
 
 ## <a name="r-hosts"></a>R-hosts
 
@@ -69,7 +71,7 @@ De hosts in deze sectie worden gebruikt voor het installeren van R-pakketten. Ze
 > [!IMPORTANT]
 > Intern maakt de R SDK voor Azure Machine Learning gebruik van Python-pakketten. Daarom moet u ook python-hosts via de Firewall toestaan.
 
-| **Hostnaam** | **Functie** |
+| **Hostnaam** | **Doel** |
 | ---- | ---- |
 | **cloud.r-project.org** | Wordt gebruikt bij het installeren van KRANs pakketten. |
 

@@ -1,44 +1,47 @@
 ---
-title: Azure AD SSPR-gegevens vereisten-Azure Active Directory
-description: Gegevens vereisten voor Azure AD self-service voor wachtwoord herstel en hoe deze kunnen worden voldaan
+title: Contact gegevens vooraf invullen voor selfservice voor wachtwoord herstel-Azure Active Directory
+description: Informatie over het vooraf invullen van contact gegevens voor gebruikers van Azure Active Directory self-service voor wachtwoord herstel (SSPR), zodat ze de functie kunnen gebruiken zonder een registratie proces te volt ooien.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 12/09/2019
+ms.date: 07/17/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42f7e120745357d3bd5735cca568bdd6971ea061
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 116fa2a4c71fc8ebc67387cf02090bbd664b862a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80652361"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035380"
 ---
-# <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Wacht woord opnieuw instellen implementeren zonder registratie door eind gebruiker vereist
+# <a name="pre-populate-user-authentication-contact-information-for-azure-active-directory-self-service-password-reset-sspr"></a>Contact gegevens van gebruikers verificatie vooraf invullen voor Azure Active Directory self-service voor wachtwoord herstel (SSPR)
 
-Voor het implementeren van Azure Active Directory (Azure AD) selfservice voor wachtwoord herstel (SSPR), moeten er verificatie gegevens aanwezig zijn. Sommige organisaties hebben hun gebruikers hun verificatie gegevens zelf invoeren. Andere organisaties synchroniseren liever met gegevens die al bestaan in Active Directory. Deze gesynchroniseerde gegevens worden beschikbaar gesteld aan Azure AD en SSPR zonder tussen komst van de gebruiker als u aan de volgende vereisten voldoet:
+Als u Azure Active Directory (Azure AD) self-service voor het opnieuw instellen van wacht woorden (SSPR) wilt gebruiken, moet u de contact gegevens van de verificatie voor een gebruiker bevinden. Sommige organisaties hebben gebruikers hun verificatie gegevens zelf registreren. Andere organisaties synchroniseren liever met verificatie gegevens die al bestaan in Active Directory Domain Services (AD DS). Deze gesynchroniseerde gegevens worden beschikbaar gesteld aan Azure AD en SSPR zonder tussen komst van de gebruiker. Wanneer gebruikers hun wacht woord moeten wijzigen of opnieuw moeten instellen, kunnen ze dit ook doen, zelfs als ze hun contact gegevens nog niet hebben geregistreerd.
 
-* De gegevens in uw on-premises Directory goed indelen.
-* Configureer [Azure AD Connect met behulp van de Express-instellingen](../hybrid/how-to-connect-install-express.md).
+U kunt de contact gegevens van de verificatie vooraf invullen als u aan de volgende vereisten voldoet:
 
-Om goed te kunnen werken, moeten telefoon nummers de notatie *+ CountryCode phonenumber*hebben, bijvoorbeeld + 1 4255551234.
+* U hebt de gegevens in uw on-premises Directory juist opgemaakt.
+* U hebt [Azure AD Connect](../hybrid/how-to-connect-install-express.md) geconfigureerd voor uw Azure AD-Tenant.
+
+Telefoon nummers moeten de indeling *+ CountryCode phonenumber*hebben, zoals *+ 1 4251234567*.
 
 > [!NOTE]
 > Er moet een spatie zijn tussen de land code en het telefoon nummer.
 >
-> Het opnieuw instellen van een wacht woord biedt geen ondersteuning voor telefoon uitbreidingen. Zelfs in de indeling van de + 1-4255551234X12345 worden uitbrei dingen verwijderd voordat de oproep wordt geplaatst.
+> Het opnieuw instellen van wacht woorden biedt geen ondersteuning voor telefoon uitbreidingen. Zelfs in de indeling van de *+ 1-4251234567X12345* worden uitbrei dingen verwijderd voordat de oproep wordt geplaatst.
 
 ## <a name="fields-populated"></a>Velden ingevuld
 
-Als u de standaard instellingen in Azure AD Connect gebruikt, worden de volgende toewijzingen gemaakt:
+Als u de standaard instellingen in Azure AD Connect gebruikt, worden de volgende toewijzingen gemaakt om de contact gegevens van de verificatie voor SSPR in te vullen:
 
-| On-premises Active Directory | Azure AD |
-| --- | --- |
-| telephoneNumber | Bureautelefoon |
-| mobiel | Mobiele telefoon |
+| On-premises Active Directory | Azure AD     |
+|------------------------------|--------------|
+| telephoneNumber              | Zakelijke telefoon |
+| mobiel                       | Mobiele telefoon |
 
 Nadat een gebruiker zijn of haar mobiele telefoon nummer heeft geverifieerd, wordt het *telefoon* veld onder **verificatie contact gegevens** in azure AD ook ingevuld met dit nummer.
 
@@ -48,10 +51,12 @@ Op de pagina **verificatie methoden** voor een Azure AD-gebruiker in de Azure Po
 
 ![Contact gegevens voor verificatie voor een gebruiker in azure AD][Contact]
 
-* Als het veld **telefoon** is ingevuld en **mobiele telefoon** is ingeschakeld in het SSPR-beleid, ziet de gebruiker dat nummer op de registratie pagina voor het opnieuw instellen van het wacht woord en tijdens de werk stroom voor het opnieuw instellen van wacht woorden.
-* Het veld **alternatief telefoon nummer** wordt niet gebruikt voor het opnieuw instellen van wacht woorden.
-* Als het veld **e-mail** is ingevuld en **e-mail adres** is ingeschakeld in het SSPR-beleid, ziet de gebruiker dat e-mail bericht op de registratie pagina voor het opnieuw instellen van het wacht woord en tijdens de werk stroom voor wacht woord opnieuw instellen.
-* Als het veld **alternatief e-mail** gevuld is en **e-mail adres** is ingeschakeld in het SSPR-beleid, ziet de gebruiker dat e-mail bericht **niet** op de registratie pagina voor het opnieuw instellen van het wacht woord, maar ze worden weer geven tijdens de werk stroom voor wacht woord opnieuw instellen.
+De volgende overwegingen zijn van toepassing op deze contact gegevens voor verificatie:
+
+* Als het veld *telefoon* is ingevuld en *mobiele telefoon* is ingeschakeld in het SSPR-beleid, ziet de gebruiker dat nummer op de registratie pagina voor het opnieuw instellen van het wacht woord en tijdens de werk stroom voor het opnieuw instellen van wacht woorden.
+* Het veld *alternatief telefoon nummer* wordt niet gebruikt voor het opnieuw instellen van wacht woorden.
+* Als het veld *e-mail* is ingevuld en *e-mail adres* is ingeschakeld in het SSPR-beleid, ziet de gebruiker dat e-mail bericht op de registratie pagina voor het opnieuw instellen van het wacht woord en tijdens de werk stroom voor wacht woord opnieuw instellen.
+* Als het veld *alternatief e-mail* gevuld is en *e-mail adres* is ingeschakeld in het SSPR-beleid, ziet de gebruiker dat e-mail bericht niet op de registratie pagina voor het opnieuw instellen van het wacht woord, maar ze worden weer geven tijdens de werk stroom voor wacht woord opnieuw instellen.
 
 ## <a name="security-questions-and-answers"></a>Beveiligings vragen en-antwoorden
 
@@ -65,19 +70,25 @@ Wanneer een gebruiker zich registreert, stelt de registratie pagina de volgende 
 * **E-mail verificatie**
 * **Beveiligings vragen en-antwoorden**
 
-Als u een waarde voor **mobiele telefoon** of **alternatief e-mail adres**hebt ingevoerd, kunnen gebruikers deze waarden direct gebruiken om hun wacht woord opnieuw in te stellen, zelfs als ze niet zijn geregistreerd voor de service. Bovendien zien gebruikers die waarden wanneer ze zich voor de eerste keer registreren en ze kunnen ze wijzigen als ze dat willen. Nadat de registratie is geslaagd, worden deze waarden respectievelijk opgeslagen in de velden **verificatie telefoon** en **verificatie-e** .
+Als u een waarde voor *mobiele telefoon* of *alternatief e-mail adres*hebt gegeven, kunnen gebruikers deze waarden direct gebruiken om hun wacht woord opnieuw in te stellen, zelfs als ze niet zijn geregistreerd voor de service.
+
+Gebruikers zien deze waarden ook wanneer ze zich voor de eerste keer registreren en kunnen ze desgewenst wijzigen. Nadat de registratie is geslaagd, worden deze waarden respectievelijk opgeslagen in de velden *verificatie telefoon* en *verificatie-e* .
 
 ## <a name="set-and-read-the-authentication-data-through-powershell"></a>De verificatie gegevens instellen en lezen via Power shell
 
 De volgende velden kunnen worden ingesteld via Power shell:
 
-* **Alternatief e-mailadres**
-* **Mobiele telefoon**
-* **Telefoon nummer van Office**: kan alleen worden ingesteld als u niet synchroniseert met een on-premises Directory
+* *Alternatief e-mailadres*
+* *Mobiele telefoon*
+* *Telefoon (werk)*
+    * Kan alleen worden ingesteld als u niet synchroniseert met een on-premises Directory.
+
+> [!IMPORTANT]
+> Er is een bekend gebrek aan pariteit in opdracht functies tussen Power shell v1 en Power shell v2. De [Microsoft Graph rest API (bèta) voor verificatie methoden](/graph/api/resources/authenticationmethods-overview) is de huidige techniek voor het bieden van moderne interactie.
 
 ### <a name="use-powershell-version-1"></a>Power shell versie 1 gebruiken
 
-Als u aan de slag wilt gaan, moet u [de Azure AD Power shell-module downloaden en installeren](https://msdn.microsoft.com/library/azure/jj151815.aspx#bkmk_installmodule). Nadat u de app hebt geïnstalleerd, kunt u de volgende stappen gebruiken om elk veld te configureren.
+[Down load en installeer de Azure AD Power shell-module](https://msdn.microsoft.com/library/azure/jj151815.aspx#bkmk_installmodule)om aan de slag te gaan. Nadat de app is geïnstalleerd, gebruikt u de volgende stappen om elk veld te configureren.
 
 #### <a name="set-the-authentication-data-with-powershell-version-1"></a>Verificatie gegevens instellen met Power shell versie 1
 
@@ -85,10 +96,10 @@ Als u aan de slag wilt gaan, moet u [de Azure AD Power shell-module downloaden e
 Connect-MsolService
 
 Set-MsolUser -UserPrincipalName user@domain.com -AlternateEmailAddresses @("email@domain.com")
-Set-MsolUser -UserPrincipalName user@domain.com -MobilePhone "+1 1234567890"
-Set-MsolUser -UserPrincipalName user@domain.com -PhoneNumber "+1 1234567890"
+Set-MsolUser -UserPrincipalName user@domain.com -MobilePhone "+1 4251234567"
+Set-MsolUser -UserPrincipalName user@domain.com -PhoneNumber "+1 4252345678"
 
-Set-MsolUser -UserPrincipalName user@domain.com -AlternateEmailAddresses @("email@domain.com") -MobilePhone "+1 1234567890" -PhoneNumber "+1 1234567890"
+Set-MsolUser -UserPrincipalName user@domain.com -AlternateEmailAddresses @("email@domain.com") -MobilePhone "+1 4251234567" -PhoneNumber "+1 4252345678"
 ```
 
 #### <a name="read-the-authentication-data-with-powershell-version-1"></a>De verificatie gegevens lezen met Power shell versie 1
@@ -115,9 +126,9 @@ Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthentic
 
 ### <a name="use-powershell-version-2"></a>Power shell versie 2 gebruiken
 
-Als u aan de slag wilt gaan, moet u [de Azure AD-versie 2 Power shell-module downloaden en installeren](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0). Nadat u de app hebt geïnstalleerd, kunt u de volgende stappen gebruiken om elk veld te configureren.
+[Down load en installeer de Azure AD-versie 2 Power shell-module](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0)om aan de slag te gaan.
 
-Voer de volgende opdrachten uit om snel te installeren vanuit recente versies van Power shell die ondersteuning bieden voor installatie-module. (De eerste regel controleert of de module al is geïnstalleerd.)
+Voer de volgende opdrachten uit om snel te installeren vanuit recente versies van Power shell die ondersteuning bieden voor `Install-Module` . De eerste regel controleert of de module al is geïnstalleerd:
 
 ```PowerShell
 Get-Module AzureADPreview
@@ -125,16 +136,18 @@ Install-Module AzureADPreview
 Connect-AzureAD
 ```
 
+Nadat de module is geïnstalleerd, gebruikt u de volgende stappen om elk veld te configureren.
+
 #### <a name="set-the-authentication-data-with-powershell-version-2"></a>Verificatie gegevens instellen met Power shell versie 2
 
 ```PowerShell
 Connect-AzureAD
 
 Set-AzureADUser -ObjectId user@domain.com -OtherMails @("email@domain.com")
-Set-AzureADUser -ObjectId user@domain.com -Mobile "+1 2345678901"
-Set-AzureADUser -ObjectId user@domain.com -TelephoneNumber "+1 1234567890"
+Set-AzureADUser -ObjectId user@domain.com -Mobile "+1 4251234567"
+Set-AzureADUser -ObjectId user@domain.com -TelephoneNumber "+1 4252345678"
 
-Set-AzureADUser -ObjectId user@domain.com -OtherMails @("emails@domain.com") -Mobile "+1 1234567890" -TelephoneNumber "+1 1234567890"
+Set-AzureADUser -ObjectId user@domain.com -OtherMails @("emails@domain.com") -Mobile "+1 4251234567" -TelephoneNumber "+1 4252345678"
 ```
 
 #### <a name="read-the-authentication-data-with-powershell-version-2"></a>De verificatie gegevens lezen met Power shell versie 2
@@ -151,16 +164,9 @@ Get-AzureADUser | select DisplayName,UserPrincipalName,otherMails,Mobile,Telepho
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Hoe kan ik een geslaagde implementatie van SSPR voltooien?](howto-sspr-deployment.md)
-* [Uw wacht woord opnieuw instellen of wijzigen](../user-help/active-directory-passwords-update-your-own-password.md)
-* [Registreren voor de selfservice voor het opnieuw instellen van een wachtwoord](../user-help/active-directory-passwords-reset-register.md)
-* [Hebt u een vraag over licenties?](concept-sspr-licensing.md)
-* [Welke verificatiemethoden zijn beschikbaar voor gebruikers?](concept-sspr-howitworks.md#authentication-methods)
-* [Wat zijn de beleidsopties bij selfservice voor wachtwoordherstel?](concept-sspr-policy.md)
-* [Wat is Wachtwoord terugschrijven en waarom is dit van belang?](howto-sspr-writeback.md)
-* [Hoe maak ik rapporten van activiteit in selfservice voor wachtwoordherstel?](howto-sspr-reporting.md)
-* [Wat zijn alle opties in selfservice voor wachtwoordherstel en wat houden ze in?](concept-sspr-howitworks.md)
-* [Ik denk dat er iets is verbroken. Hoe kan ik problemen met SSPR oplossen?](active-directory-passwords-troubleshoot.md)
-* [Ik heb een vraag die nog niet is beantwoord](active-directory-passwords-faq.md)
+Wanneer de contact gegevens van de verificatie vooraf zijn ingevuld voor gebruikers, voltooit u de volgende zelf studie om selfservice voor wachtwoord herstel in te scha kelen:
+
+> [!div class="nextstepaction"]
+> [Selfservice voor wachtwoord herstel van Azure AD inschakelen](tutorial-enable-sspr.md)
 
 [Contact]: ./media/howto-sspr-authenticationdata/user-authentication-contact-info.png "Globale beheerders kunnen de contact gegevens voor verificatie van een gebruiker wijzigen"

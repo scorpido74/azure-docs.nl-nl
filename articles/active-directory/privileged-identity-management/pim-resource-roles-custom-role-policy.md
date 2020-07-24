@@ -1,6 +1,6 @@
 ---
-title: Aangepaste rollen gebruiken voor Azure-resources in PIM-Azure AD | Microsoft Docs
-description: Meer informatie over het gebruik van aangepaste rollen voor Azure-resources in Azure AD Privileged Identity Management (PIM).
+title: Aangepaste Azure-rollen gebruiken in PIM-Azure AD | Microsoft Docs
+description: Meer informatie over het gebruik van aangepaste rollen van Azure in Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -14,14 +14,14 @@ ms.subservice: pim
 ms.date: 11/08/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa51508746d0024be0a5acfaeeac62e86db67d3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1c9255de6b9f449a89a994cb3286139daa28ea9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743742"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034096"
 ---
-# <a name="use-custom-roles-for-azure-resources-in-privileged-identity-management"></a>Aangepaste rollen gebruiken voor Azure-resources in Privileged Identity Management
+# <a name="use-azure-custom-roles-in-privileged-identity-management"></a>Aangepaste Azure-rollen gebruiken in Privileged Identity Management
 
 U moet mogelijk strikte Privileged Identity Management PIM-instellingen Toep assen op sommige gebruikers in een geprivilegieerde rol in uw Azure Active Directory (Azure AD)-organisatie, terwijl er meer autonomie voor anderen beschikbaar is. Denk bijvoorbeeld aan een scenario waarin uw organisatie verschillende contract Associates inhuurt om te helpen bij het ontwikkelen van een toepassing die wordt uitgevoerd in een Azure-abonnement.
 
@@ -31,7 +31,7 @@ Volg de stappen die worden beschreven in de volgende sectie voor het instellen v
 
 ## <a name="create-the-custom-role"></a>De aangepaste rol maken
 
-Als u een aangepaste rol voor een resource wilt maken, volgt u de stappen die worden beschreven in [aangepaste rollen maken voor op rollen gebaseerde Access Control van Azure](../role-based-access-control-custom-roles.md).
+Als u een aangepaste rol voor een resource wilt maken, volgt u de stappen die worden beschreven in [aangepaste Azure-rollen](../role-based-access-control-custom-roles.md).
 
 Wanneer u een aangepaste rol maakt, moet u een beschrijvende naam toevoegen, zodat u gemakkelijk kunt onthouden welke ingebouwde rol u wilde dupliceren.
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 12/9/2019
 ms.author: tvoellm
-ms.openlocfilehash: 88899dc697839b16c2b0cd24ac9233f87da26b41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16452337eeda86a9b019897954179bfe6db6e1b2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261219"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031989"
 ---
 # <a name="restrict-user-access-to-data-operations-only"></a>Gebruikerstoegang beperken tot alleen gegevensbewerkingen
 
@@ -51,7 +51,7 @@ Select-AzSubscription $MySubscriptionId
 
 ## <a name="create-the-custom-azure-active-directory-role"></a>De aangepaste Azure Active Directory rol maken
 
-Met het volgende script maakt u een Azure Active Directory roltoewijzing met ' alleen sleutel toegang voor Azure Cosmos-accounts. De rol is gebaseerd op [aangepaste rollen voor Azure-resources](../role-based-access-control/custom-roles.md) en [granulaire acties voor Azure Cosmos DB](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb). Deze rollen en acties maken deel uit van de `Microsoft.DocumentDB` Azure Active Directory naam ruimte.
+Met het volgende script maakt u een Azure Active Directory roltoewijzing met ' alleen sleutel toegang voor Azure Cosmos-accounts. De rol is gebaseerd op [aangepaste Azure-rollen](../role-based-access-control/custom-roles.md) en [gedetailleerde acties voor Azure Cosmos DB](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb). Deze rollen en acties maken deel uit van de `Microsoft.DocumentDB` Azure Active Directory naam ruimte.
 
 1. Maak eerst een JSON-document `AzureCosmosKeyOnlyAccess.json` met de naam met de volgende inhoud:
 

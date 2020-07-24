@@ -3,12 +3,13 @@ title: Recovery Services kluizen maken en configureren
 description: In dit artikel vindt u informatie over het maken en configureren van Recovery Services kluizen waarin de back-ups en herstel punten worden opgeslagen.
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 65f7265dccc5fe28d3503e72bdd6e49123871594
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.custom: references_regions
+ms.openlocfilehash: 244562efdc4c274a79ea27cdfa00dd51ae671fa4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970520"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032949"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Een Recovery Services kluis maken en configureren
 
@@ -21,7 +22,7 @@ Azure Backup beheert automatisch de opslag voor de kluis. U moet opgeven hoe die
 > [!NOTE]
 > Het wijzigen van het **type opslag replicatie** (lokaal redundant/geo-redundant) voor een Recovery Services-kluis moet worden uitgevoerd voordat u back-ups in de kluis configureert. Zodra u een back-up hebt geconfigureerd, is de optie om te wijzigen uitgeschakeld.
 >
->- Als u de back-up nog niet hebt geconfigureerd, [volgt u deze stappen](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy) om de instellingen te controleren en te wijzigen.
+>- Als u de back-up nog niet hebt geconfigureerd, [volgt u deze stappen](#set-storage-redundancy) om de instellingen te controleren en te wijzigen.
 >- Als u de back-up al hebt geconfigureerd en van GRS naar LRS moet verplaatsen, [raadpleegt u deze oplossingen](#how-to-change-from-grs-to-lrs-after-configuring-backup).
 
 1. Klik op de blade **Recovery Services-kluizen** op de nieuwe kluis. Klik onder de sectie **instellingen** op **Eigenschappen**.
@@ -33,14 +34,14 @@ Azure Backup beheert automatisch de opslag voor de kluis. U moet opgeven hoe die
 
    - Als u Azure als een primair eind punt voor back-upopslag gebruikt, wordt u aangeraden de standaard **geo-redundante** instelling te gebruiken.
    - Als Azure niet uw primaire eindpunt is voor back-upopslag, kiest u **Lokaal redundant**, zodat u de kosten voor Azure-opslag verlaagt.
-   - Meer informatie over [geo](../storage/common/storage-redundancy-grs.md) en [lokale](../storage/common/storage-redundancy-lrs.md) redundantie.
+   - Meer informatie over [geo](../storage/common/storage-redundancy.md) en [lokale](../storage/common/storage-redundancy.md) redundantie.
 
 >[!NOTE]
 >De opslag replicatie-instellingen voor de kluis zijn niet relevant voor Azure file share backup, omdat de huidige oplossing moment opname is en er geen gegevens worden overgebracht naar de kluis. Moment opnamen worden opgeslagen in hetzelfde opslag account als de back-up van de bestands share.
 
 ## <a name="set-cross-region-restore"></a>Meerdere regio's herstellen instellen
 
-Als een van de opties voor terugzetten met behulp van cross Region Restore (CRR) kunt u virtuele Azure-machines herstellen in een secundaire regio, een [Azure-gekoppelde regio](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). Met deze optie kunt u:
+Als een van de opties voor terugzetten met behulp van cross Region Restore (CRR) kunt u virtuele Azure-machines herstellen in een secundaire regio, een [Azure-gekoppelde regio](../best-practices-availability-paired-regions.md). Met deze optie kunt u:
 
 - oefeningen uitvoeren als er een controle-of nalevings vereiste is
 - herstel de virtuele machine of de schijf als er sprake is van een nood geval in de primaire regio.
@@ -83,10 +84,10 @@ Meer informatie over het [bewaken van herstel taken van secundaire regio's](back
 We raden u ten zeerste aan de standaard instellingen voor het **type opslag replicatie** en de **beveiligings instellingen** te controleren voordat u back-ups in de kluis configureert.
 
 - **Type opslag replicatie** is standaard ingesteld op **geo-redundant** (GRS). Zodra u de back-up hebt geconfigureerd, is de optie om te wijzigen uitgeschakeld.
-  - Als u de back-up nog niet hebt geconfigureerd, [volgt u deze stappen](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy) om de instellingen te controleren en te wijzigen.
+  - Als u de back-up nog niet hebt geconfigureerd, [volgt u deze stappen](#set-storage-redundancy) om de instellingen te controleren en te wijzigen.
   - Als u de back-up al hebt geconfigureerd en van GRS naar LRS moet verplaatsen, [raadpleegt u deze oplossingen](#how-to-change-from-grs-to-lrs-after-configuring-backup).
 
-- **Voorlopig verwijderen** is standaard **ingeschakeld** op nieuwe kluizen om back-upgegevens te beschermen tegen onbedoelde of schadelijke verwijderingen. [Volg deze stappen](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#enabling-and-disabling-soft-delete) om de instellingen te controleren en te wijzigen.
+- **Voorlopig verwijderen** is standaard **ingeschakeld** op nieuwe kluizen om back-upgegevens te beschermen tegen onbedoelde of schadelijke verwijderingen. [Volg deze stappen](./backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete) om de instellingen te controleren en te wijzigen.
 
 ### <a name="how-to-change-from-grs-to-lrs-after-configuring-backup"></a>Wijzigen van GRS naar LRS na configureren van back-up
 
@@ -123,7 +124,7 @@ Als u de huidige beveiligde gegevens in de GRS-kluis wilt behouden en de beveili
   - U kunt de back-upgegevens alleen herstellen voor niet-verlopen herstel punten in de GRS-kluis.
   - Er moet een nieuwe eerste replica van de gegevens worden gemaakt op de LRS-kluis.
 
-- Voor een Azure-VM kunt u de [beveiliging stoppen met het bewaren van gegevens](backup-azure-manage-vms.md#stop-protecting-a-vm) voor de virtuele machine in de GRS-kluis, de virtuele machine verplaatsen naar een andere resource groep en de virtuele machine vervolgens beveiligen in de LRS-kluis. Zie de [richt lijnen en beperkingen](https://docs.microsoft.com/azure/azure-resource-manager/management/move-limitations/virtual-machines-move-limitations) voor het verplaatsen van een virtuele machine naar een andere resource groep.
+- Voor een Azure-VM kunt u de [beveiliging stoppen met het bewaren van gegevens](backup-azure-manage-vms.md#stop-protecting-a-vm) voor de virtuele machine in de GRS-kluis, de virtuele machine verplaatsen naar een andere resource groep en de virtuele machine vervolgens beveiligen in de LRS-kluis. Zie de [richt lijnen en beperkingen](../azure-resource-manager/management/move-limitations/virtual-machines-move-limitations.md) voor het verplaatsen van een virtuele machine naar een andere resource groep.
 
   Een virtuele machine kan in slechts één kluis tegelijk worden beveiligd. De virtuele machine in de nieuwe resource groep kan echter worden beveiligd op de LRS-kluis, aangezien deze wordt beschouwd als een andere virtuele machine.
 

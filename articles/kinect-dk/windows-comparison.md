@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: article
 keywords: Kinect, Windows, v2, Azure Kinect, Comparison, SDK, verschillen, hardware, software
-ms.openlocfilehash: ec105cef0c52b02c763487fbe5b2d8c018315f4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a8d399370f354524858bdd658ffd65c0494dd4d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67452512"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031572"
 ---
 # <a name="azure-kinect-and-kinect-windows-v2-comparison"></a>Vergelijking van Azure Kinect en Kinect Windows v2
 
@@ -22,8 +22,8 @@ De hardware-en software development kits van Azure Kinect DK hebben verschillen 
 
 In de volgende tabel worden de belangrijkste verschillen tussen de Azure Kinect Development Kit en Kinect voor Windows v2 vermeld.
 
-|    |      | Azure Kinect DK |  Kinect voor Windows v2 |
-|----------|---------------|--------| ------------|
+| Functie | Type | Azure Kinect DK | Kinect voor Windows v2 |
+| ------- | ---- | --------------- | --------------------- |
 | **Audio** | Details  | 7-Mic-cirkel vormige matrix | 4-Mic, lineaire, gefaseerde matrix |
 | **Bewegings sensor** | Details | 3-as Gyro voor de 3-as | versnellings meter van 3 assen |
 | **RGB-camera**    | Details | 3840 x 2160 PX @30 fps | 1920 x 1080 PX @30 fps |
@@ -32,7 +32,7 @@ In de volgende tabel worden de belangrijkste verschillen tussen de Azure Kinect 
 |                   |            | 512 x 512 PX @30 fps |                       |
 |                   |            | 1024x1024 PX @15 fps |                       |
 | **Connectiviteit** | Gegevens | USB 3.1 gen 1 met type USB-C  | USB 3,1 gen 1|
-|  | Voeding | Externe PSU of USB-C | Externe PSU |
+|  | Stroom | Externe PSU of USB-C | Externe PSU |
 |  | Synchronisatie | RGB-& diepte intern, extern apparaat-naar-apparaat| RGB-& diepte alleen intern |
 | **Kunde** | Dimensies | 103 x 39 x 126 mm | 249 x 66 x 67 mm |
 |  | Kansdichtheids | 440 g | 970 g |
@@ -44,7 +44,7 @@ Meer informatie vindt u in het document [Azure KINECT DK-hardware](hardware-spec
 
 De volgende tabel bevat een vergelijking van de toegangs mogelijkheden op laag niveau voor de sensor.
 
-| **Functionaliteit**| **Azure-Kinect** | **Kinect voor Windows** | **Opmerkingen** |
+| **Functionaliteit**| **Azure Kinect** | **Kinect voor Windows** | **Opmerkingen** |
 |---------|---------|------------|---------|
 | **Diepga** | ✔️ | ✔️ |    |   |
 | **IR** | ✔️ | ✔️ |  |

@@ -5,17 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 04/13/2020
+ms.date: 07/14/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa25cffd84ee9255fed8bbaa0f2fb6adf762b47e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6f5cabace81d53edf36ac6be0a2eb8830e6cc5f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84483790"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035074"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Veelgestelde vragen over Azure Multi-Factor Authentication
 
@@ -55,6 +56,8 @@ De optionele velden kunnen worden geconfigureerd in Multi-Factor Authentication-
 
 Het verificatie resultaat (geslaagd of geweigerd) en de reden als het is geweigerd, wordt opgeslagen met de verificatie gegevens. Deze gegevens zijn beschikbaar in verificatie-en gebruiks rapporten.
 
+Zie [gegevens locatie en klant gegevens voor Azure multi-factor Authentication](concept-mfa-data-residency.md)voor meer informatie.
+
 ### <a name="what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users"></a>Welke SMS-korte codes worden gebruikt voor het verzenden van SMS-berichten naar mijn gebruikers?
 
 In het Verenigde Staten gebruiken we de volgende korte SMS-codes:
@@ -69,7 +72,9 @@ In Canada gebruiken we de volgende korte SMS-codes:
 * *759731*
 * *673801*
 
-Er is geen gegarandeerde consistentie op SMS-of voice-Multi-Factor Authentication prompt met hetzelfde nummer. In het belang van onze gebruikers kunnen we op elk gewenst moment korte codes toevoegen of verwijderen, omdat we route aanpassingen aanbrengen om de bezorgings mogelijkheden van SMS te verbeteren. We bieden geen ondersteuning voor korte codes voor landen of regio's, naast de Verenigde Staten en Canada.
+Er is geen gegarandeerde consistentie op SMS-of voice-Multi-Factor Authentication prompt met hetzelfde nummer. In het belang van onze gebruikers kunnen we op elk gewenst moment korte codes toevoegen of verwijderen, omdat we route aanpassingen aanbrengen om de bezorgings mogelijkheden van SMS te verbeteren.
+
+We bieden geen ondersteuning voor korte codes voor landen of regio's, naast de Verenigde Staten en Canada.
 
 ## <a name="billing"></a>Billing
 
@@ -229,7 +234,7 @@ Er zijn verschillende redenen waarom gebruikers kunnen worden gevraagd om hun be
 - De organisatie heeft een MFA-registratie beleid gemaakt en ingeschakeld dat is toegepast op de gebruiker.
 - De gebruiker is eerder geregistreerd voor MFA, maar er is een verificatie methode gekozen die een beheerder heeft uitgeschakeld. De gebruiker moet daarom MFA-registratie opnieuw door lopen om een nieuwe standaard verificatie methode te selecteren.
 
-## <a name="errors"></a>Fouten
+## <a name="errors"></a>Errors
 
 * [Wat moeten gebruikers doen als het fout bericht ' verificatie aanvraag is niet voor een geactiveerd account ' wordt weer gegeven bij het gebruik van meldingen voor mobiele apps?](#what-should-users-do-if-they-see-an-authentication-request-is-not-for-an-activated-account-error-message-when-using-mobile-app-notifications)
 * [Wat moeten gebruikers doen als ze een 0x800434D4L-fout bericht zien wanneer ze zich aanmelden bij een niet-browser toepassing?](#what-should-users-do-if-they-see-a-0x800434d4l-error-message-when-signing-in-to-a-non-browser-application)

@@ -4,12 +4,12 @@ description: Batch ondersteunt Azure AD voor verificatie vanuit de batch-service
 ms.topic: how-to
 ms.date: 01/28/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: a8601c69c37e973118a7ec9521070864caffb101
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 7daf26d7c52e07be999bb93edd6fe694f79d1be2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170306"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032456"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Batch-service oplossingen verifiëren met Active Directory
 
@@ -193,7 +193,7 @@ Hier volgt een voor beeld van een aangepaste roldefinitie:
 }
 ```
 
-Zie [aangepaste rollen voor Azure-resources](../role-based-access-control/custom-roles.md)voor meer algemene informatie over het maken van een aangepaste rol.
+Zie [aangepaste rollen in azure](../role-based-access-control/custom-roles.md)voor meer algemene informatie over het maken van een aangepaste rol.
 
 ### <a name="get-the-tenant-id-for-your-azure-active-directory"></a>De Tenant-ID voor uw Azure Active Directory ophalen
 

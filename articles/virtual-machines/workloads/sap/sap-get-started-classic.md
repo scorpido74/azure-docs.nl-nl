@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: na
 ms.date: 10/04/2016
 ms.author: sedusch
-ms.openlocfilehash: 9525f339861b5de8dc22da753f7c36dcc6eede8a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3ceeb20b138307b40fcd6f8c03d614fc3e811473
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70078996"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035771"
 ---
 # <a name="using-sap-on-linux-virtual-machines-in-azure"></a>SAP gebruiken op virtuele Linux-machines in azure
 Cloud computing is een veelgebruikte term die in de IT-sector steeds belangrijker wordt, zowel voor kleine bedrijven als voor grote ondernemingen en multinationals. Microsoft Azure is het cloudserviceplatform van Microsoft dat een groot aantal nieuwe mogelijkheden biedt. Klanten kunnen toepassingen nu snel als cloudservices inrichten en de inrichting weer ongedaan maken, zodat technische of financiële beperkingen geen rol spelen. In plaats van tijd en geld te investeren in de hardware-infrastructuur kunnen bedrijven zich nu richten op de toepassing, bedrijfsprocessen en de voordelen voor klanten en gebruikers.
 
-Met Microsoft Azure virtuele machines biedt micro soft een uitgebreid IaaS-platform (Infrastructure as a Service). SAP NetWeaver-toepassingen worden ondersteund op virtuele Azure-machines (IaaS). In de volgende witboeken wordt beschreven hoe u toepassingen op basis van SAP netweave op virtuele Windows-machines in azure plant en implementeert. U kunt ook toepassingen op basis van SAP netweave implementeren op [virtuele Windows-machines](../../virtual-machines-windows-classic-sap-get-started.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+Met Microsoft Azure virtuele machines biedt micro soft een uitgebreid IaaS-platform (Infrastructure as a Service). SAP NetWeaver-toepassingen worden ondersteund op virtuele Azure-machines (IaaS). In de volgende witboeken wordt beschreven hoe u toepassingen op basis van SAP netweave op virtuele Windows-machines in azure plant en implementeert. U kunt ook toepassingen op basis van SAP netweave implementeren op [virtuele Windows-machines](./get-started.md?toc=/azure/virtual-machines/windows/classic/toc.json).
 
 [!INCLUDE [virtual-machines-common-classic-sap-get-started](../../../../includes/virtual-machines-common-classic-sap-get-started.md)]
 
@@ -36,5 +36,4 @@ Samen vatting: er is op dit moment geen officiële SAP-ondersteuning voor het ui
 
 Bijgewerkt: december 2015
 
-[Dit artikel vindt u hier](suse-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
+[Dit artikel vindt u hier](./sap-deployment-checklist.md?toc=/azure/virtual-machines/linux/toc.json)

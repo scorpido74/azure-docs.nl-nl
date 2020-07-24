@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: b423cc4cd933f84fccae5c2116be7abbdc288c67
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: edc52198208aa86772704bde7637a2801688da59
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203674"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036128"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Azure Disk Encryption-scenario's voor Windows-VM's
 
@@ -238,7 +238,7 @@ Azure Disk Encryption werkt niet voor de volgende scenario's, functies en techno
 - Gen2 Vm's (zie: [ondersteuning voor virtuele machines van generatie 2 op Azure](generation-2.md#generation-1-vs-generation-2-capabilities))
 - Vm's uit de Lsv2-serie (zie: [Lsv2-serie](../lsv2-series.md))
 - Vm's uit de M-serie met Write Accelerator-schijven.
-- Versleuteling aan de [server zijde Toep assen met door de klant beheerde sleutels](disk-encryption.md) naar een virtuele machine die is versleuteld met ade en omgekeerd.
+- Het Toep assen van ADE op een virtuele machine met een gegevens schijf die is versleuteld met versleuteling aan de [server zijde met door de klant beheerde sleutels](disk-encryption.md) (SSE + CMK), of om SSE + CMK toe te passen op een gegevens schijf op een virtuele machine die is versleuteld met ade.
 - Een virtuele machine die is versleuteld met ADE migreren naar versleuteling aan de [server zijde met door de klant beheerde sleutels](disk-encryption.md).
 
 

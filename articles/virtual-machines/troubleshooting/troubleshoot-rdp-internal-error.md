@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: 8600971ffd23b1c253e8de807d365c46409b37bc
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 4831a084153c28576cca7c40dfefeb8c5ff3c4e6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081448"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036383"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Er treedt een interne fout op wanneer u via Extern bureaublad probeert te verbinden met een Azure-VM
 
@@ -55,8 +55,7 @@ Maak verbinding met de [seriële console en open een Power shell-exemplaar](./se
 
 #### <a name="step-1-check-the-rdp-port"></a>Stap: 1 Controleer de RDP-poort
 
-1. Gebruik in een Power shell-exemplaar de [netstat](https://docs.microsoft.com/windows-server/administration/windows-commands/netstat
-) om te controleren of poort 8080 wordt gebruikt door andere toepassingen:
+1. Gebruik in een Power shell-exemplaar de [netstat](/windows-server/administration/windows-commands/netstat) om te controleren of poort 8080 wordt gebruikt door andere toepassingen:
 
     ```powershell
     Netstat -anob |more
@@ -186,7 +185,7 @@ De RDP-client gebruikt TLS 1,0 als het standaard protocol. Dit kan echter worden
 
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>De besturingssysteem schijf koppelen aan een herstel-VM
 
-1. [Koppel de besturingssysteem schijf aan een herstel-VM](../windows/troubleshoot-recovery-disks-portal.md).
+1. [Koppel de besturingssysteem schijf aan een herstel-VM](./troubleshoot-recovery-disks-portal-windows.md).
 2. Nadat de besturingssysteem schijf is gekoppeld aan de herstel-VM, controleert u of de schijf is gemarkeerd als **online** in de schijf beheer-console. Noteer de stationsletter die is toegewezen aan de gekoppelde besturingssysteem schijf.
 3. Start een Extern bureaublad verbinding met de virtuele machine voor herstel.
 
@@ -299,4 +298,4 @@ Voer het volgende script uit om dump logboek en seriële console in te scha kele
     REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\Terminal Server\WinStations\RDP-Tcp" /v fAllowSecProtocolNegotiation /t REG_DWORD /d 1 /f reg unload HKLM\BROKENSYSTEM
     ```
 
-5. [Ontkoppel de besturingssysteem schijf en maak de virtuele machine opnieuw](../windows/troubleshoot-recovery-disks-portal.md)en controleer of het probleem is opgelost.
+5. [Ontkoppel de besturingssysteem schijf en maak de virtuele machine opnieuw](./troubleshoot-recovery-disks-portal-windows.md)en controleer of het probleem is opgelost.

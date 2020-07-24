@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: alsin
-ms.openlocfilehash: 06cb3fe5d551ddfc95fcbd37cd9620adebd825c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e31a10b1086679b7c2493f5a6d6b62f75e363dd4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70883924"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036468"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Seriële console gebruiken om toegang te krijgen tot de GRUB en de modus voor één gebruiker
 GRand Unified Bootloader (GRUB) is waarschijnlijk het eerste wat u ziet wanneer u een virtuele machine opstart (VM). Omdat deze wordt weer gegeven voordat het besturings systeem is gestart, is GRUB niet toegankelijk via SSH. In GRUB kunt u de opstart configuratie wijzigen zodat deze wordt opgestart in de modus voor één gebruiker, onder andere.
@@ -36,7 +37,7 @@ Als u de modus voor één gebruiker wilt invoeren, voert u GRUB in wanneer de vi
 ## <a name="general-grub-access"></a>Algemene GRUB-toegang
 Als u toegang wilt krijgen tot GRUB, start u de VM opnieuw op terwijl het deel venster seriële console is geopend. Voor sommige distributies is toetsenbord invoer vereist om GRUB weer te geven, en andere worden automatisch GRUB gedurende een paar seconden weer gegeven zodat gebruikers toetsenbord invoer de time-out kan annuleren.
 
-Als u toegang wilt krijgen tot de modus voor één gebruiker, moet u ervoor zorgen dat GRUB is ingeschakeld op de virtuele machine. Afhankelijk van uw distributie kan het nodig zijn om ervoor te zorgen dat GRUB is ingeschakeld. Zie de volgende sectie en onze pagina [ondersteuning voor Linux op Azure](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/) voor informatie over distributie.
+Als u toegang wilt krijgen tot de modus voor één gebruiker, moet u ervoor zorgen dat GRUB is ingeschakeld op de virtuele machine. Afhankelijk van uw distributie kan het nodig zijn om ervoor te zorgen dat GRUB is ingeschakeld. Zie de volgende sectie voor informatie die specifiek is voor distributie.
 
 ### <a name="restart-your-vm-to-access-grub-in-serial-console"></a>De virtuele machine opnieuw opstarten om toegang te krijgen tot GRUB in de seriële console
 U kunt de virtuele machine opnieuw opstarten binnen een seriële console door de muis aanwijzer over de knop **opnieuw opstarten** te wijzen en vervolgens **VM opnieuw starten**te selecteren. Onder aan het deel venster wordt een melding weer gegeven over het opnieuw opstarten.
@@ -112,7 +113,7 @@ Als u GRUB en toegang tot de hoofdmap hebt ingesteld met behulp van de voor gaan
 
    U wordt gevraagd om het beheerders wachtwoord voordat u de modus voor één gebruiker kunt invoeren. Dit wacht woord is de naam die u hebt gemaakt in de vorige instructies.
 
-    ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
+    ![Afbeelding met animatie met een opdracht regel interface. De gebruiker selecteert een server, zoekt het einde van de kernel-regel en voert vervolgens de opgegeven tekst in.](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
 
 ### <a name="enter-single-user-mode-without-root-account-enabled-in-rhel"></a>Voer de modus voor één gebruiker in zonder dat het hoofd account is ingeschakeld in RHEL
 Als u de hoofd gebruiker niet hebt ingeschakeld door de eerdere instructies te volgen, kunt u het basis wachtwoord nog steeds opnieuw instellen door het volgende te doen:
@@ -136,7 +137,7 @@ Als u de hoofd gebruiker niet hebt ingeschakeld door de eerdere instructies te v
 1. U bent nu het hoofd. U kunt het wacht woord opnieuw instellen door in te voeren `passwd` en vervolgens de voor gaande instructies gebruiken om de modus voor één gebruiker in te voeren. 
 1. Wanneer u klaar bent, voert u deze `reboot -f` in om opnieuw op te starten.
 
-![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
+![Afbeelding met animatie met een opdracht regel interface. De gebruiker selecteert een server, zoekt het einde van de kernel-regel en voert de opgegeven opdrachten in.](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
 
 > [!NOTE]
 > Door de voor gaande instructies uit te voeren, gaat u naar de nood shell, zodat u ook taken zoals bewerken kunt uitvoeren `fstab` . Normaal gesp roken wordt u echter aangeraden om uw basis wachtwoord opnieuw in te stellen en dit te gebruiken om de modus voor één gebruiker in te voeren.
@@ -240,7 +241,7 @@ Volg de eerdere instructies voor RHEL om de modus voor één gebruiker in Oracle
 ## <a name="next-steps"></a>Volgende stappen
 Zie voor meer informatie over seriële console:
 * [Documentatie voor Linux-seriële console](serial-console-linux.md)
-* [Seriële console gebruiken om GRUB in diverse distributies in te scha kelen](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/)
+* [Seriële console gebruiken om GRUB in diverse distributies in te scha kelen](/archive/blogs/linuxonazure/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time)
 * [Seriële console gebruiken voor NMI-en SysRq-aanroepen](serial-console-nmi-sysrq.md)
 * [Seriële console voor Windows-Vm's](serial-console-windows.md)
 * [Diagnostische gegevens over opstarten](boot-diagnostics.md)

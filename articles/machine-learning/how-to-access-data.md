@@ -11,19 +11,19 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 07/08/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: d6b1d5c66c1dd15fa12638dd451d1ce2fa8fa79f
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 194864d223d908cc2d8b1d7f14efe81e16bbd058
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146719"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031504"
 ---
 # <a name="connect-to-azure-storage-services"></a>Verbinding maken met Azure Storage-services
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In dit artikel leert u hoe u **verbinding kunt maken met Azure Storage-services via Azure machine learning gegevens opslag**. Data stores Store-verbindings gegevens, zoals uw abonnements-ID en Token autorisatie in uw [Key Vault](https://azure.microsoft.com/services/key-vault/) die aan de werk ruimte zijn gekoppeld, zodat u veilig toegang kunt krijgen tot uw opslag zonder dat u deze hoeft te coderen in uw scripts. 
 
-**Voor niet-ondersteunde opslag oplossingen**en voor het opslaan van de kosten voor de uitvoer van gegevens tijdens ml experimenten, kunt u [uw gegevens](#move) naar een ondersteunde Azure Storage-oplossingen verplaatsen.  U kunt gegevens opslag maken op basis van [deze Azure Storage-oplossingen](#matrix). 
+**Voor niet-ondersteunde opslag oplossingen**en voor het opslaan van de kosten voor de uitvoer van gegevens tijdens ml experimenten, [verplaatst u uw gegevens](#move) naar een ondersteunde Azure Storage-oplossing.  U kunt gegevens opslag maken op basis van [deze Azure Storage-oplossingen](#matrix). 
 
 Zie het artikel over [beveiligde toegang](concept-data.md#data-workflow) als u wilt weten waar gegevens opslag in de werk stroom van Azure machine learning van de gehele Data Access passen.
 
@@ -92,8 +92,9 @@ Nadat Data Store is gemaakt, wordt deze validatie alleen uitgevoerd voor methode
 ### <a name="python-sdk"></a>Python-SDK
 
 Alle registratie methoden bevinden zich op de [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) klasse en hebben het formulier `register_azure_*` .
+
 > [!IMPORTANT]
-> Zie de sectie toegang tot gegevens in een virtueel netwerk als u van plan bent om een gegevens archief te maken voor opslag accounts die zich in een virtueel netwerk bevinden.
+> Zie de sectie [toegang tot gegevens in een virtueel netwerk](#access-data-in-a-virtual-network) als u van plan bent om een gegevens archief te maken voor opslag accounts die zich in een virtueel netwerk bevinden.
 
 U vindt de informatie die u nodig hebt om de `register_azure_*()` methode op de [Azure Portal](https://portal.azure.com)in te vullen.
 
@@ -185,7 +186,7 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
 Maak een nieuwe gegevens opslag in een paar stappen in Azure Machine Learning studio:
 
 > [!IMPORTANT]
-> Als uw gegevens opslag account zich in een virtueel netwerk bevindt, zijn er extra configuratie stappen vereist om ervoor te zorgen dat Studio toegang heeft tot uw gegevens. Zie [Network isolatie & privacy] (How-to-Enable-Virtual-Network. MD # machine learning-Studio) om ervoor te zorgen dat de juiste configuratie stappen worden toegepast. 
+> Als uw gegevens opslag account zich in een virtueel netwerk bevindt, zijn er extra configuratie stappen vereist om ervoor te zorgen dat Studio toegang heeft tot uw gegevens. Zie [netwerk isolatie & privacy](how-to-enable-virtual-network.md#machine-learning-studio) om te controleren of de juiste configuratie stappen worden toegepast. 
 
 1. Meld u aan bij [Azure Machine Learning Studio](https://ml.azure.com/).
 1. Selecteer **gegevens opslag** in het linkerdeel venster onder **beheren**.

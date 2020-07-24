@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f04fcae1ba218949019637e9a101492a487b430f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e27adde84f62f8c8d79389e1de4e867439d5a3be
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85603737"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034734"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Wilt u archiveren wat er nieuw is in Azure Active Directory?
 
@@ -572,7 +572,7 @@ Vanaf 1 juli 2019 heeft micro soft de MFA-server voor nieuwe implementaties gest
 
 ---
 
-## <a name="august-2019"></a>augustus 2019
+## <a name="august-2019"></a>Augustus 2019
 
 ### <a name="enhanced-search-filtering-and-sorting-for-groups-is-available-in-the-azure-ad-portal-public-preview"></a>Uitgebreide zoek-, filter-en sorteer bewerkingen voor groepen zijn beschikbaar in de Azure AD-Portal (open bare preview)
 
@@ -1468,7 +1468,7 @@ We zijn bezig met het bijwerken van de manier waarop Exchange ActiveSync (EAS) d
 
 - Gebruikers locatie, op basis van land, regio of IP-adres
 
-- Aanmeldings risico
+- Aanmeldingsrisico
 
 - Apparaatplatform
 
@@ -2155,7 +2155,7 @@ E-mail berichten van Azure Active Directory (Azure AD) beschikken nu over een bi
 
 - Azure AD-toegangs beoordelingen
 - Azure AD Connect Health (Engelstalig)
-- Azure AD-identiteitsbeveiliging
+- Azure AD Identity Protection
 - Azure AD Privileged Identity Management
 - Certificaat meldingen voor de Enter prise-app verlopen
 - Service meldingen voor de Enter prise-app inrichten
@@ -3058,7 +3058,7 @@ Azure AD Connect is het voorkeurs programma voor het synchroniseren van gegevens
 
 Deze release bevat de volgende updates en wijzigingen:
 
-**Problemen opgelost**
+**Opgeloste problemen**
 
 - Corrigeer het tijd venster op de achtergrond taken voor de pagina partitie filtering wanneer u overschakelt naar de volgende pagina.
 
@@ -3323,7 +3323,7 @@ Zie voor meer informatie [Skype voor bedrijven-topologieën die worden ondersteu
 
 **Type:** Gewijzigde functie **service categorie:** privileged Identity Management **Product capaciteit:** privileged Identity Management
 
-Met de open bare preview-vernieuwing van Azure AD Privileged Identity Management (PIM) voor op rollen gebaseerde Access Control (RBAC) op basis van Azure, kunt u nu het volgende doen:
+Met de open bare preview-vernieuwing van Azure AD Privileged Identity Management (PIM) voor op rollen gebaseerd toegangs beheer (Azure RBAC) van Azure kunt u nu het volgende doen:
 
 * Gebruik gewoon voldoende beheer.
 * Goed keuring vereisen om resource rollen te activeren.

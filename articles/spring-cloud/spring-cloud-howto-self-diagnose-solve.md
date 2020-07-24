@@ -6,11 +6,13 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/29/2020
-ms.openlocfilehash: 581d77a5568b9533d85ff476b63001c8a237bc4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: 1f48cd185f2aa25954627a9ff26f3e59b8e76e7a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84457198"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037309"
 ---
 # <a name="how-to-self-diagnose-and-solve-problems-in-azure-spring-cloud"></a>Zelf diagnose en probleem oplossing in azure lente Cloud
 Azure veer Cloud diagnostiek is een interactieve ervaring om u te helpen bij het oplossen van problemen met uw app. Er is geen configuratie vereist. Wanneer u problemen ondervindt, is er een fout opgetreden in azure lente-Cloud diagnose en vindt u informatie die u helpt bij het oplossen van problemen en het oplossen van het probleem.

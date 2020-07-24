@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/28/2017
-ms.openlocfilehash: 74d3f154f9965e44c9fba42ec094b9240972b40d
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 0387b4363a438ac48142d97b2a829faf38f1895d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044342"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036655"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>Stream Analytics-taken bewaken en beheren met Azure PowerShell-cmdlets
 Meer informatie over het bewaken en beheren van Stream Analytics resources met Azure PowerShell-cmdlets en Power shell-scripts waarmee basis Stream Analytics taken worden uitgevoerd.
@@ -20,7 +20,7 @@ Meer informatie over het bewaken en beheren van Stream Analytics resources met A
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites-for-running-azure-powershell-cmdlets-for-stream-analytics"></a>Vereisten voor het uitvoeren van Azure PowerShell-cmdlets voor Stream Analytics
-* Maak een Azure-resource groep in uw abonnement. Hier volgt een voor beeld van een Azure PowerShell script. Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview)voor Azure PowerShell informatie.  
+* Maak een Azure-resource groep in uw abonnement. Hier volgt een voor beeld van een Azure PowerShell script. Zie [Azure PowerShell installeren en configureren](/powershell/azure/)voor Azure PowerShell informatie.  
 
 Azure PowerShell 0.9.8:  
 

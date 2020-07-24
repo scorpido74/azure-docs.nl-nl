@@ -12,19 +12,20 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
-ms.openlocfilehash: 93b67936166eb73db5e9a15db42c2c6135794108
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9d66dc4f0e2e637ac8512022336f257f5d585a9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78271390"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035737"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>Azure Backup op bestands niveau SAP HANA
 
 ## <a name="introduction"></a>Inleiding
 
-Dit artikel is een verwant artikel voor het maken van een [back-upgids voor SAP Hana op Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide), dat een overzicht en informatie bevat over het aan de slag gaan en meer informatie over Azure backup service-en opslag momentopnamen. 
+Dit artikel is een verwant artikel voor het maken van een [back-upgids voor SAP Hana op Azure virtual machines](./sap-hana-backup-guide.md), dat een overzicht en informatie bevat over het aan de slag gaan en meer informatie over Azure backup service-en opslag momentopnamen. 
 
-Verschillende VM-typen in azure staan een ander aantal aangesloten Vhd's toe. De exacte details worden gedocumenteerd in [grootten voor virtuele Linux-machines in azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes). Voor de tests waarnaar in deze documentatie wordt verwezen, hebben we een Azure VM GS5 gebruikt, waarmee 64 gekoppelde gegevens schijven kunnen worden gekoppeld. Voor grotere SAP HANA systemen is er mogelijk al een groot aantal schijven gemaakt voor gegevens-en logboek bestanden, mogelijk in combi natie met software striping voor optimale IO-door Voer van de schijf. Lees het artikel [SAP Hana opslag configuraties van virtuele Azure-machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)voor meer informatie over aanbevolen schijf configuraties voor SAP Hana implementaties op Azure-vm's. De aanbevelingen die worden gedaan, zijn ook inclusief schijf ruimte aanbevelingen voor lokale back-ups.
+Verschillende VM-typen in azure staan een ander aantal aangesloten Vhd's toe. De exacte details worden gedocumenteerd in [grootten voor virtuele Linux-machines in azure](../../linux/sizes.md). Voor de tests waarnaar in deze documentatie wordt verwezen, hebben we een Azure VM GS5 gebruikt, waarmee 64 gekoppelde gegevens schijven kunnen worden gekoppeld. Voor grotere SAP HANA systemen is er mogelijk al een groot aantal schijven gemaakt voor gegevens-en logboek bestanden, mogelijk in combi natie met software striping voor optimale IO-door Voer van de schijf. Lees het artikel [SAP Hana opslag configuraties van virtuele Azure-machines](./hana-vm-operations-storage.md)voor meer informatie over aanbevolen schijf configuraties voor SAP Hana implementaties op Azure-vm's. De aanbevelingen die worden gedaan, zijn ook inclusief schijf ruimte aanbevelingen voor lokale back-ups.
 
 De standaard methode voor het beheren van back-ups/herstellen op bestands niveau is een back-up op basis van bestanden via SAP HANA Studio of via SAP HANA SQL-instructies. Lees voor meer informatie het artikel [SAP Hana verwijzing naar SQL-en systeem weergaven](https://help.sap.com/hana/SAP_HANA_SQL_and_System_Views_Reference_en.pdf).
 
@@ -34,15 +35,15 @@ In deze afbeelding ziet u het dialoog venster van het menu-item back-up in SAP H
 
 Hoewel deze keuze eenvoudig en direct klinkt, zijn er enkele overwegingen. Een virtuele machine van Azure heeft een beperking van het aantal gegevens schijven dat kan worden bijgevoegd. Het is mogelijk dat er geen capaciteit is om SAP HANA back-upbestanden op te slaan op de bestands systemen van de virtuele machine, afhankelijk van de grootte van de data base en de vereisten voor het door Voer van de schijf, wat software striping kan inhouden op meerdere gegevens schijven. Verderop in dit artikel vindt u diverse opties voor het verplaatsen van deze back-upbestanden en het beheren van beperkingen en prestaties voor bestands grootte bij het afhandelen van terabytes aan gegevens.
 
-Een andere optie, die meer vrijheid biedt met betrekking tot de totale capaciteit, is Azure Blob-opslag. Hoewel één BLOB ook is beperkt tot 1 TB, is de totale capaciteit van één BLOB-container momenteel 500 TB. Daarnaast biedt klanten de keuze om deze optie te selecteren, ook wel ' &quot; cool &quot; Blob Storage ', die een kosten voordelen heeft. Zie [Azure Blob-opslag: dynamische, gekoelde en archief toegangs lagen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal) voor meer informatie over cool Blob Storage.
+Een andere optie, die meer vrijheid biedt met betrekking tot de totale capaciteit, is Azure Blob-opslag. Hoewel één BLOB ook is beperkt tot 1 TB, is de totale capaciteit van één BLOB-container momenteel 500 TB. Daarnaast biedt klanten de keuze om deze optie te selecteren, ook wel ' &quot; cool &quot; Blob Storage ', die een kosten voordelen heeft. Zie [Azure Blob-opslag: dynamische, gekoelde en archief toegangs lagen](../../../storage/blobs/storage-blob-storage-tiers.md?tabs=azure-portal) voor meer informatie over cool Blob Storage.
 
-Gebruik voor extra veiligheid een geografisch gerepliceerd opslag account om de SAP HANA back-ups op te slaan. Zie [Azure Storage redundantie](https://docs.microsoft.com/azure/storage/common/storage-redundancy) voor meer informatie over opslag redundantie en opslag replicatie.
+Gebruik voor extra veiligheid een geografisch gerepliceerd opslag account om de SAP HANA back-ups op te slaan. Zie [Azure Storage redundantie](../../../storage/common/storage-redundancy.md) voor meer informatie over opslag redundantie en opslag replicatie.
 
 Eén kan specifieke Vhd's voor SAP HANA back-ups worden geplaatst in een toegewezen back-upopslag account dat geo-repliceerbaar is. Het is ook mogelijk dat de Vhd's die de SAP HANA back-ups naar een geografisch gerepliceerd opslag account bewaren of naar een opslag account in een andere regio worden gekopieerd.
 
 ## <a name="azure-blobxfer-utility-details"></a>Details van het hulp programma Azure blobxfer
 
-Om directory's en bestanden op te slaan in azure Storage, kan de ene CLI of Power shell gebruiken of een hulp programma ontwikkelen met behulp van een van de [Azure sdk's](https://azure.microsoft.com/downloads/). Er is ook een gebruiks klare hulp programma, AzCopy, voor het kopiëren van gegevens naar Azure Storage. (Zie [gegevens overdragen met het opdracht regel programma AzCopy](../../../storage/common/storage-use-azcopy.md)).
+Om directory's en bestanden op te slaan in azure Storage, kan de ene CLI of Power shell gebruiken of een hulp programma ontwikkelen met behulp van een van de [Azure sdk's](https://azure.microsoft.com/downloads/). Er is ook een gebruiks klare hulp programma, AzCopy, voor het kopiëren van gegevens naar Azure Storage. (Zie [gegevens overdragen met het opdracht regel programma AzCopy](../../../storage/common/storage-use-azcopy-v10.md)).
 
 Daarom is blobxfer gebruikt voor het kopiëren van SAP HANA back-upbestanden. Het is open source en wordt gebruikt door veel klanten in productie omgevingen en is beschikbaar op [github](https://github.com/Azure/blobxfer). Met dit hulp programma kunt u gegevens rechtstreeks naar Azure Blob-opslag of een Azure-bestands share kopiëren. Het biedt ook een aantal nuttige functies, zoals MD5-hash, of automatische parallellisme bij het kopiëren van een map met meerdere bestanden.
 
@@ -64,7 +65,7 @@ Herhaal dezelfde back-up op software-RAID met Striping over vijf gekoppelde Azur
 ## <a name="copy-sap-hana-backup-files-to-azure-blob-storage"></a>SAP HANA back-upbestanden kopiëren naar Azure Blob-opslag
 De waarden voor prestatie cijfers, duur van back-ups en het kopiëren van de duur worden mogelijk niet de meest recente status van de Azure-technologie weer gegeven. Micro soft verbetert Azure-opslag geleidelijk, zodat er meer door Voer en latenties worden geleverd. Daarom zijn de getallen alleen voor demonstratie doeleinden. U moet testen op uw persoonlijke behoeften in de Azure-regio van uw keuze om te kunnen beoordelen met de methode.
 
-Een andere mogelijkheid om snel SAP HANA back-upbestanden op te slaan is Azure Blob-opslag. Eén BLOB-container heeft een limiet van ongeveer 500 TB, genoeg voor SAP HANA systemen, met behulp van M32ts, M32ls, M64ls en GS5 VM-typen van Azure, om voldoende SAP HANA back-ups te blijven. Klanten hebben de keuze tussen &quot; Hot &quot; &quot; -en koude &quot; Blob-opslag (Zie [Azure Blob-opslag: dynamische, koele en archief toegangs lagen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal)).
+Een andere mogelijkheid om snel SAP HANA back-upbestanden op te slaan is Azure Blob-opslag. Eén BLOB-container heeft een limiet van ongeveer 500 TB, genoeg voor SAP HANA systemen, met behulp van M32ts, M32ls, M64ls en GS5 VM-typen van Azure, om voldoende SAP HANA back-ups te blijven. Klanten hebben de keuze tussen &quot; Hot &quot; &quot; -en koude &quot; Blob-opslag (Zie [Azure Blob-opslag: dynamische, koele en archief toegangs lagen](../../../storage/blobs/storage-blob-storage-tiers.md?tabs=azure-portal)).
 
 Met het blobxfer-hulp programma kunt u eenvoudig de SAP HANA back-upbestanden rechtstreeks naar Azure Blob-opslag kopiëren.
 
@@ -89,12 +90,12 @@ Wanneer u het kopiëren van back-ups die worden uitgevoerd op lokale schijven na
 
 ## <a name="copy-sap-hana-backup-files-to-nfs-share"></a>SAP HANA back-upbestanden kopiëren naar NFS-share
 
-Microsoft Azure systeem eigen NFS-shares aanbieden via [Azure NetApp files](https://azure.microsoft.com/services/netapp/). U kunt verschillende volumes van een dozijn van TBs maken om back-ups op te slaan en te beheren. U kunt de volumes ook moment opnamen maken op basis van de technologie van NetApp. Azure NetApp Files (ANF) wordt aangeboden in drie verschillende service niveaus die verschillende opslag doorvoer bieden. Lees de artikel [service niveaus voor Azure NetApp files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)voor meer informatie. U kunt een NFS-volume maken en koppelen vanuit ANF zoals beschreven in het artikel [Snelstartgids: Azure NetApp files instellen en een NFS-volume maken](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes?tabs=azure-portal).
+Microsoft Azure systeem eigen NFS-shares aanbieden via [Azure NetApp files](https://azure.microsoft.com/services/netapp/). U kunt verschillende volumes van een dozijn van TBs maken om back-ups op te slaan en te beheren. U kunt de volumes ook moment opnamen maken op basis van de technologie van NetApp. Azure NetApp Files (ANF) wordt aangeboden in drie verschillende service niveaus die verschillende opslag doorvoer bieden. Lees de artikel [service niveaus voor Azure NetApp files](../../../azure-netapp-files/azure-netapp-files-service-levels.md)voor meer informatie. U kunt een NFS-volume maken en koppelen vanuit ANF zoals beschreven in het artikel [Snelstartgids: Azure NetApp files instellen en een NFS-volume maken](../../../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md?tabs=azure-portal).
 
 Naast het gebruik van systeem eigen NFS-volumes van Azure via ANF, zijn er verschillende mogelijkheden om eigen implementaties te maken die gebruikmaken van NFS-shares in Azure. Het nadeel is dat u zelf deze oplossingen moet implementeren en beheren. Enkele van deze mogelijkheden worden beschreven in de volgende artikelen:
 
-- [Hoge Beschik baarheid voor NFS op Azure Vm's op SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)
-- [GlusterFS in Azure VM's in Red Hat Enterprise Linux voor SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs)
+- [Hoge Beschik baarheid voor NFS op Azure Vm's op SUSE Linux Enterprise Server](./high-availability-guide-suse-nfs.md)
+- [GlusterFS in Azure VM's in Red Hat Enterprise Linux voor SAP NetWeaver](./high-availability-guide-rhel-glusterfs.md)
 
 NFS-shares die zijn gemaakt met behulp van hierboven beschreven, kunnen worden gebruikt om HANA-back-ups rechtstreeks uit te voeren of om back-ups te kopiëren die zijn uitgevoerd op lokale schijven naar die NFS-shares.
 
@@ -103,7 +104,7 @@ NFS-shares die zijn gemaakt met behulp van hierboven beschreven, kunnen worden g
 
 ## <a name="copy-sap-hana-backup-files-to-azure-files"></a>SAP HANA back-upbestanden kopiëren naar Azure Files
 
-Het is mogelijk een Azure Files share te koppelen aan een virtuele machine in azure Linux. In het artikel [Azure File Storage gebruiken met Linux](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-linux) vindt u informatie over het uitvoeren van de configuratie. Lees het artikel [Azure files schaal baarheid en prestatie doelen](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets)voor beperkingen van op Azure files of Azure Premium-bestanden.
+Het is mogelijk een Azure Files share te koppelen aan een virtuele machine in azure Linux. In het artikel [Azure File Storage gebruiken met Linux](../../../storage/files/storage-how-to-use-files-linux.md) vindt u informatie over het uitvoeren van de configuratie. Lees het artikel [Azure files schaal baarheid en prestatie doelen](../../../storage/files/storage-files-scale-targets.md)voor beperkingen van op Azure files of Azure Premium-bestanden.
 
 > [!NOTE]
 > SMB met CIFS File System wordt niet ondersteund door SAP HANA om HANA-back-ups te schrijven. Zie ook [SAP-ondersteunings opmerking #1820529](https://launchpad.support.sap.com/#/notes/1820529). Als gevolg hiervan kunt u deze oplossing alleen gebruiken als eind bestemming van een HANA-database back-up die rechtstreeks is uitgevoerd op lokale gekoppelde schijven

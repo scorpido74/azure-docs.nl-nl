@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 7d2d3871dd9836e2c68155aa82ce01dced128bf3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ea7953be25473357f7ed572fa8b76076edc6f75a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531635"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038114"
 ---
 # <a name="connect-your-illusive-attack-management-system-to-azure-sentinel"></a>Uw illusive-aanvals beheer systeem verbinden met Azure Sentinel
+
+> [!IMPORTANT]
+> De illusive-aanvals beheer systeem gegevens connector in azure Sentinel is momenteel beschikbaar als open bare preview.
+> Deze functie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 In dit artikel wordt uitgelegd hoe u uw [illusive-aanvals beheer systeem](https://www.illusivenetworks.com/technology/platform/attack-detection-system) verbindt met Azure Sentinel. Met de illusive-systeem gegevens connector voor aanvallen kunt u de gegevens van het aanvals-en incident logboek van illusive delen met Azure Sentinel en deze informatie weer geven in specifieke Dash boards die inzicht bieden in de aanvals Risico's van uw organisatie (ASM-dash board) en de ongeoorloofde verplaatsingen volgen in het netwerk van uw organisatie (ADS-dash board).
 
@@ -34,7 +38,7 @@ Configureer een aanvals systeem om syslog-berichten in de CEF-indeling door te s
 
 1. Meld u aan bij de illusive-console en navigeer naar instellingen->rapportage.
 
-1. Syslog-Serversץ zoeken
+1. Syslog-servers zoeken.
 
 1. Geef de volgende informatie op:
    - Hostnaam: IP-adres of FQDN-naam van de Linux-syslog-agent
@@ -44,7 +48,7 @@ Configureer een aanvals systeem om syslog-berichten in de CEF-indeling door te s
 
 1. Klik op toevoegen om de syslog-server toe te voegen.
 
-1. Als u het relevante schema in Log Analytics wilt gebruiken voor het illusive-aanvals beheersysteem, zoekt u naar CommonSecurityLog.
+1. Als u het relevante schema in **Logboeken** voor het illusive-aanvals beheer systeem wilt gebruiken, zoekt u naar **CommonSecurityLog**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

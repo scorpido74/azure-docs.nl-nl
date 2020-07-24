@@ -3,11 +3,12 @@ title: Back-ups maken van SQL Server werk belastingen op Azure Stack
 description: In dit artikel vindt u informatie over het configureren van Microsoft Azure Backup Server (MABS) om SQL Server-data bases op Azure Stack te beveiligen.
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.openlocfilehash: b2d41bdccd67539205b74a0ce277b3b01a685c6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 706050fa37e4234a0ffc902f6b696ebd84e6701e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84192984"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032643"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>Back-up maken van SQL Server op Azure Stack
 
@@ -18,6 +19,34 @@ Het beheer van SQL Server database back-up naar Azure en het herstel van Azure b
 1. Een back-upbeleid maken om SQL Server-data bases te beveiligen
 2. Back-ups op aanvraag maken
 3. De data base herstellen vanaf schijven en Azure
+
+## <a name="prerequisites-and-limitations"></a>Vereisten en beperkingen
+
+* Als u een database met bestanden op een externe bestandsshare hebt, mislukt de beveiliging met fout-id 104. MABS biedt geen ondersteuning voor de beveiliging van SQL Server gegevens op een externe bestands share.
+* MABS kan geen data bases beveiligen die zijn opgeslagen op externe SMB-shares.
+* Zorg ervoor dat de replica's van de [beschikbaarheids groep zijn geconfigureerd als alleen-lezen](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server?view=sql-server-ver15).
+* U moet de systeem account **NTAuthority\System** expliciet toevoegen aan de groep Sysadmin op SQL Server.
+* Wanneer u een herstel bewerking op een andere locatie uitvoert voor een gedeeltelijk Inge sloten data base, moet u ervoor zorgen dat de functie [Inge sloten data bases](/sql/relational-databases/databases/migrate-to-a-partially-contained-database?view=sql-server-ver15#enable) is ingeschakeld voor het SQL-doel exemplaar.
+* Wanneer u een herstel bewerking op een andere locatie uitvoert voor een bestands stroom database, moet u ervoor zorgen dat de functie [Bestands stroom database](/sql/relational-databases/blob/enable-and-configure-filestream?view=sql-server-ver15) is ingeschakeld voor het SQL-doel exemplaar.
+* Beveiliging voor SQL Server AlwaysOn:
+  * MABS detecteert beschikbaarheids groepen bij het uitvoeren van een query bij het maken van de beveiligings groep.
+  * MABS detecteert een failover en gaat verder met de beveiliging van de data base.
+  * MABS ondersteunt configuraties met meerdere site clusters voor een exemplaar van SQL Server.
+* Wanneer u data bases beveiligt die de functie AlwaysOn gebruiken, heeft MABS de volgende beperkingen:
+  * MABS zal het back-upbeleid voor beschikbaarheids groepen dat is ingesteld in SQL Server, op basis van de voor keuren voor back-ups, als volgt door:
+    * Voorkeur voor secundaire: back-ups moeten op een secundaire replica plaatsvinden, behalve wanneer de primaire replica de enige replica online is. Als er meerdere secundaire replica's beschikbaar zijn, wordt het knoop punt met de hoogste back-upprioriteit geselecteerd voor back-up. Als alleen de primaire replica beschikbaar is, moet de back-up op de primaire replica worden uitgevoerd.
+    * Alleen secundaire: back-up mag niet op de primaire replica worden uitgevoerd. Als de primaire replica de enige online replica is, mag de back-up niet plaatsvinden.
+    * Primaire: back-ups moeten altijd op de primaire replica plaatsvinden.
+    * Iedere replica: back-ups kunnen op alle beschikbare replica's in de beschikbaarheidsgroep plaatsvinden. Het knooppunt waarvan een back-up moet worden gemaakt, zal gebaseerd zijn op de back-upprioriteiten voor elk van de knooppunten.
+  * Houd rekening met het volgende:
+    * U kunt back-ups maken van elke Lees bare replica, dat wil zeggen primair, synchroon secundair, asynchroon secundair.
+    * Als een replica wordt uitgesloten van de back-up, bijvoorbeeld als **replica uitsluiten** is ingeschakeld of als niet leesbaar is gemarkeerd, wordt die replica niet geselecteerd voor back-up onder een van de opties.
+    * Als er meerdere replica's beschikbaar en leesbaar zijn, wordt het knoop punt met de hoogste back-upprioriteit geselecteerd voor back-up.
+    * Als de back-up mislukt op het geselecteerde knoop punt, mislukt de back-upbewerking.
+    * Herstel naar de oorspronkelijke locatie wordt niet ondersteund.
+* Back-upproblemen SQL Server 2014 of hoger:
+  * SQL Server 2014 heeft een nieuwe functie toegevoegd voor het maken van een [Data Base voor on-premises SQL Server in Windows Azure Blob-opslag](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure?view=sql-server-ver15). MABS kan niet worden gebruikt om deze configuratie te beveiligen.
+  * Er zijn enkele bekende problemen met de voor keur voor secundaire back-upvoorkeur voor de SQL AlwaysOn-optie. MABS maakt altijd een back-up van secundair. Als er geen secundair kan worden gevonden, mislukt de back-up.
 
 ## <a name="before-you-start"></a>Voordat u begint
 
@@ -95,7 +124,7 @@ Het beheer van SQL Server database back-up naar Azure en het herstel van Azure b
 
     ![Bewaarbeleid](./media/backup-azure-backup-sql/pg-retentionschedule.png)
 
-    In dit voorbeeld geldt het volgende:
+    In dit voorbeeld:
 
     * Back-ups worden eenmaal per dag om 12:00 uur en 8 uur (onderste deel van het scherm) gemaakt en blijven 180 dagen bewaard.
     * De back-up op zaterdag om 12:00 uur wordt 104 weken bewaard

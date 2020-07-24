@@ -16,16 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: ''
-ms.openlocfilehash: df80113b85153f4e52bcbefa7b33dab9da296173
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f78d5f839c5dd7816ae28eeed175503427abb43c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82084818"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035839"
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>SAP-certificeringen en-configuraties die worden uitgevoerd op Microsoft Azure
 
-SAP en micro soft hebben een lange geschiedenis van het samen werken in een sterk partnerschap met wederzijdse voor delen voor hun klanten. Micro soft werkt voortdurend het platform bij en verzendt nieuwe certificerings gegevens naar SAP om ervoor te zorgen dat Microsoft Azure het beste platform is waarop uw SAP-workloads worden uitgevoerd. In de volgende tabellen worden de door Azure ondersteunde configuraties en de lijst met groeiende SAP-certificeringen beschreven. Deze lijst bevat een overzicht van lijsten die hier kunnen afwijken en uit de officiële SAP-lijsten. De gedetailleerde gegevens worden beschreven in het artikel [wat SAP-software ondersteunt voor Azure-implementaties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure)
+SAP en micro soft hebben een lange geschiedenis van het samen werken in een sterk partnerschap met wederzijdse voor delen voor hun klanten. Micro soft werkt voortdurend het platform bij en verzendt nieuwe certificerings gegevens naar SAP om ervoor te zorgen dat Microsoft Azure het beste platform is waarop uw SAP-workloads worden uitgevoerd. In de volgende tabellen worden de door Azure ondersteunde configuraties en de lijst met groeiende SAP-certificeringen beschreven. Deze lijst bevat een overzicht van lijsten die hier kunnen afwijken en uit de officiële SAP-lijsten. De gedetailleerde gegevens worden beschreven in het artikel [wat SAP-software ondersteunt voor Azure-implementaties](./sap-supported-product-on-azure.md)
 
 ## <a name="sap-hana-certifications"></a>SAP HANA-certificeringen
 Referentie
@@ -35,7 +35,7 @@ Referentie
 | SAP-product | Ondersteund besturings systeem | Azure-aanbiedingen |
 | --- | --- | --- |
 | SAP HANA Developer Edition (inclusief de HANA-client software, bestaande uit SQLODBC, ODBO-Windows only, ODBC, JDBC-Stuur Programma's, HANA Studio en HANA-data base) | Red Hat Enterprise Linux, SUSE Linux Enter prise | VM-serie van de D-serie |
-| Bedrijf 1 in HANA | SUSE Linux Enter prise | DS14_v2, M32ts, M32ls, M64ls, M64s <br /> [SAP HANA gecertificeerde IaaS-platforms](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure%23SAP%20Business%20One) |
+| Bedrijf 1 in HANA | SUSE Linux Enterprise | DS14_v2, M32ts, M32ls, M64ls, M64s <br /> [SAP HANA gecertificeerde IaaS-platforms](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure%23SAP%20Business%20One) |
 | SAP S/4 HANA | Red Hat Enterprise Linux, SUSE Linux Enter prise | Gecontroleerde Beschik baarheid voor GS5. Volledige ondersteuning voor M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, M208s_v2, M208ms_v2, M416s_v2, M416ms_v2, <br /> SAP HANA op Azure (grote instanties) [SAP Hana gecertificeerde IaaS-platforms](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
 | Suite op HANA, OLTP | Red Hat Enterprise Linux, SUSE Linux Enter prise | M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, M208s_v2, M208ms_v2, <br /> M416s_v2, M416ms_v2 SAP HANA op Azure (grote instanties) [SAP Hana gecertificeerde IaaS-platformen](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
 | HANA Enter prise voor BW, OLAP | Red Hat Enterprise Linux, SUSE Linux Enter prise | GS5, M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, M208s_v2, M208ms_v2, <br /> M416s_v2, M416ms_v2 SAP HANA op Azure (grote instanties) [SAP Hana gecertificeerde IaaS-platformen](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |

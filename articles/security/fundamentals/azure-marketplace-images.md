@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: terrylan
-ms.openlocfilehash: 3925e39824d1702ff43a6b981ac997ddab658b96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6058b0d72eafe3a44ebdbabf291af05c08e772b3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80548662"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038270"
 ---
 # <a name="security-recommendations-for-azure-marketplace-images"></a>Beveiligings aanbevelingen voor installatie kopieën van Azure Marketplace
 
@@ -27,9 +27,8 @@ Voer altijd een detectie van beveiligings problemen op uw installatie kopie uit 
 
 ## <a name="open-source-based-images"></a>Open-source installatie kopieën
 
-|||
-|--------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Categorie**                                                 | **Selecteren**                                                                                                                                                                                                                                                                              |
+| Categorie | Selecteren |
+| -------- | ----- |
 | Beveiliging                                                     | Installeer de meest recente beveiligings patches voor de Linux-distributie.                                                                                                                                                                                                              |
 | Beveiliging                                                     | Volg de richt lijnen voor de branche om de VM-installatie kopie te beveiligen voor de specifieke Linux-distributie.                                                                                                                                                                                     |
 | Beveiliging                                                     | Beperk de kwets baarheid door minimale footprint te behouden met alleen de benodigde Windows Server-functies,-onderdelen,-services en-netwerk poorten.                                                                                                                                               |
@@ -50,9 +49,8 @@ Voer altijd een detectie van beveiligings problemen op uw installatie kopie uit 
 
 ## <a name="windows-server-based-images"></a>Installatie kopieën op basis van Windows Server
 
-|||
-|-------------| -------------------------|
-| **Categorie**                                                     | **Selecteren**                                                                                                                                                                |
+| Categorie | Selecteren |
+|--------- | ----- |
 | Beveiliging                                                         | Gebruik een veilige basis installatie kopie van het besturings systeem. De VHD die wordt gebruikt voor de bron van een installatie kopie op basis van Windows Server moet afkomstig zijn uit de installatie kopieën van Windows Server-besturings systemen die via Microsoft Azure worden meegeleverd. |
 | Beveiliging                                                         | Installeer alle meest recente beveiligings updates.                                                                                                                                     |
 | Beveiliging                                                         | Toepassingen mogen niet afhankelijk zijn van beperkte gebruikers namen, zoals Administrator, root of admin.                                                                |

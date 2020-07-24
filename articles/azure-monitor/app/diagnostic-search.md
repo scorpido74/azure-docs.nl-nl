@@ -3,11 +3,12 @@ title: Zoek functie gebruiken in Azure-toepassing Insights | Microsoft Docs
 description: Zoek en filter ruwe telemetriegegevens die zijn verzonden door uw web-app.
 ms.topic: conceptual
 ms.date: 07/30/2019
-ms.openlocfilehash: 8039a55784f63030f330d6c1e2061e99b8b63bbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a264f25f92bed1b93848c323fd59eafd7b09215
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84695654"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033612"
 ---
 # <a name="using-search-in-application-insights"></a>Zoeken in Application Insights gebruiken
 
@@ -17,7 +18,7 @@ Search is een functie van [Application Insights](../../azure-monitor/app/app-ins
 
 ## <a name="where-do-you-see-search"></a>Waar ziet u zoeken?
 
-### <a name="in-the-azure-portal"></a>In de Azure Portal
+### <a name="in-the-azure-portal"></a>In Azure Portal
 
 U kunt Diagnostische Zoek opdrachten openen vanaf het tabblad Application Insights overzicht van uw toepassing (in de bovenste balk) of onder onderzoek aan de linkerkant.
 
@@ -147,4 +148,4 @@ De POST gegevens worden niet automatisch geregistreerd, maar u kunt wel [TrackTr
 * [Complexe query's schrijven in analyse](../../azure-monitor/log-query/get-started-portal.md)
 * [Logboeken en aangepaste telemetrie naar Application Insights verzenden](../../azure-monitor/app/asp-net-trace-logs.md)
 * [Testen van Beschik baarheid en reactie snelheid instellen](../../azure-monitor/app/monitor-web-app-availability.md)
-* [Problemen oplossen](../../azure-monitor/app/troubleshoot-faq.md)
+* [Problemen oplossen](../faq.md)

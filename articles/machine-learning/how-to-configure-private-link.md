@@ -9,17 +9,20 @@ ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 03/13/2020
-ms.openlocfilehash: ed3b59b9e6aecb91f4ecb9d569b989b6b2396c48
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.date: 07/14/2020
+ms.openlocfilehash: 4e76a7adf7435cc1bdee3bb4e64f8cc699a16724
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134878"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031215"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Een persoonlijke Azure-koppeling configureren voor een Azure Machine Learning-werk ruimte (preview)
 
-In dit document leert u hoe u een persoonlijke Azure-koppeling kunt gebruiken met uw Azure Machine Learning-werk ruimte. Deze functie is momenteel beschikbaar als preview-versie en is verkrijgbaar in de regio VS Oost, VS West 2, VS Zuid-Centraal. 
+In dit document leert u hoe u een persoonlijke Azure-koppeling kunt gebruiken met uw Azure Machine Learning-werk ruimte. 
+
+> [!IMPORTANT]
+> Het gebruik van een persoonlijke Azure-koppeling met Azure Machine Learning werk ruimte bevindt zich momenteel in de open bare preview. Deze functionaliteit is alleen beschikbaar in de regio's **VS Oost**, **VS West 2**en **VS Zuid-Centraal** . Deze preview-versie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 Met de persoonlijke Azure-koppeling kunt u verbinding maken met uw werk ruimte met behulp van een persoonlijk eind punt. Het persoonlijke eind punt is een reeks privé-IP-adressen in uw virtuele netwerk. Vervolgens kunt u de toegang tot uw werk ruimte beperken tot alleen de privé-IP-adressen. Een persoonlijke koppeling helpt het risico van gegevens exfiltration te verminderen. Zie het artikel over een [persoonlijke Azure-koppeling](/azure/private-link/private-link-overview) voor meer informatie over privé-eind punten.
 
@@ -51,7 +54,7 @@ Bij het implementeren van een sjabloon moet u de volgende informatie opgeven:
 
 Zodra een sjabloon is verzonden en de inrichting is voltooid, bevat de resource groep die uw werk ruimte bevat drie nieuwe artefact typen die betrekking hebben op persoonlijke koppeling:
 
-* Privé-eindpunt
+* Persoonlijk eind punt
 * Netwerkinterface
 * Privé-DNS-zone
 
@@ -112,6 +115,9 @@ Raadpleeg de [virtual machines documentatie](/azure/virtual-machines/)voor meer 
 Als u het Azure Storage-account wilt beveiligen dat door uw werk ruimte wordt gebruikt, plaatst u het in het virtuele netwerk.
 
 Zie [een opslag account voor uw werk ruimte gebruiken](how-to-enable-virtual-network.md#use-a-storage-account-for-your-workspace)voor meer informatie over het opslaan van het opslag account in het virtuele netwerk.
+
+> [!WARNING]
+> Azure Machine Learning biedt geen ondersteuning voor het gebruik van een Azure Storage account waarvoor een persoonlijke koppeling is ingeschakeld.
 
 ## <a name="using-azure-key-vault"></a>Azure Key Vault gebruiken
 

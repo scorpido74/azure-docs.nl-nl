@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: c18604a9f4b95f4b586efaf3201dd0a679d8d316
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9b306bc55c97b977d0f06fa3e7a56f734f2f9db9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60342607"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030637"
 ---
 # <a name="azure-database-for-mysql-videos"></a>Video's Azure Database for MySQL
 
@@ -19,7 +19,7 @@ ms.locfileid: "60342607"
 
 >[!VIDEO https://channel9.msdn.com/Events/Connect/2017/T147/player]
 
-Azure Database for PostgreSQL en Azure Database for MySQL combi neer de Community Edition-data base-engines en-mogelijkheden van een volledig beheerde service, zodat u zich kunt concentreren op uw apps in plaats van een Data Base te beheren. Stel in om een snel overzicht te krijgen van de voor delen van het gebruik van de service, en Bekijk enkele mogelijkheden van de actie.
+Azure Database for PostgreSQL en Azure Database for MySQL combi neer de Community Edition-data base-engines en-mogelijkheden van een volledig beheerde service, zodat u zich kunt concentreren op uw apps in plaats van een Data Base te beheren. Stel in om een snel overzicht te krijgen van de voor delen van het gebruik van de service, en Bekijk enkele mogelijkheden van de actie. Zie een [Azure database for PostgreSQL](https://azure.microsoft.com/resources/videos/create-an-azure-database-for-postgresql-server-in-the-azure-portal) en [Azure database for MySQL](https://azure.microsoft.com/resources/videos/create-an-azure-database-for-mysql-server-by-using-the-azure-portal)maken.
 
 [Diep gaande over de mogelijkheden van beheerde services voor MySQL en PostgreSQL](https://channel9.msdn.com/Events/Connect/2017/T148)
 

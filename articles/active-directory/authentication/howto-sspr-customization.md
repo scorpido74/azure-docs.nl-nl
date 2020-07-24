@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 04/14/2020
+ms.date: 07/17/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54a45602b80db965e3cc79d188dd40034a320b79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8690b1a4b8527a397fcf4c04892e167b5332358d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81394252"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035397"
 ---
 # <a name="customize-the-user-experience-for-azure-active-directory-self-service-password-reset"></a>De gebruikers ervaring voor Azure Active Directory self-service voor wachtwoord herstel aanpassen
 
-Self-service voor wachtwoord herstel (SSPR) biedt gebruikers in Azure Active Directory (Azure AD) de mogelijkheid om hun wacht woord te wijzigen of opnieuw in te stellen, zonder beheerders-of Help Desk. Als het account van een gebruiker is vergrendeld of als het wacht woord is verg eten, kunnen ze de aanwijzingen volgen om zichzelf te deblokkeren en terug te gaan naar het werk. Deze mogelijkheid vermindert helpdesk oproepen en productiviteits verlies wanneer een gebruiker zich niet kan aanmelden bij hun apparaat of een toepassing.
+Self-service voor wachtwoord herstel (SSPR) biedt gebruikers in Azure Active Directory (Azure AD) de mogelijkheid om hun wacht woord te wijzigen of opnieuw in te stellen, zonder beheerders-of Help Desk. Als het account van een gebruiker is vergrendeld of als deze zijn of haar wachtwoord is vergeten, kan de gebruiker de vergrendeling aan de hand van instructies zelf ongedaan maken en weer aan het werk gaan. Op deze manier wordt het aantal telefoontjes naar de helpdesk en productieverlies verminderd wanneer een gebruiker zich niet kan aanmelden bij een apparaat of toepassing.
 
 Als u de SSPR-ervaring voor gebruikers wilt verbeteren, kunt u het uiterlijk aanpassen van de pagina voor het opnieuw instellen van het wacht woord, e-mail meldingen of aanmeldings pagina's. Met deze aanpassings opties kunt u het duidelijk maken dat de gebruiker zich op de juiste plaats bevindt, en ze hun vertrouwen geven om toegang te krijgen tot bedrijfs resources.
     

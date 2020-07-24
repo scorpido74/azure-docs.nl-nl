@@ -3,12 +3,12 @@ title: Sjabloon voor het maken van Resource Health-waarschuwingen
 description: Maak waarschuwingen via een programma waarmee u wordt gewaarschuwd wanneer uw Azure-resources niet meer beschikbaar zijn.
 ms.topic: conceptual
 ms.date: 9/4/2018
-ms.openlocfilehash: 18a3b2df2d159d2903c69debd79cccfc6d0af63e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 399c37f123d06e251514d0cafc3c1c4918ce3edd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255877"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037930"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Resourcestatuswaarschuwingen configureren met Resource Manager-sjablonen
 
@@ -25,7 +25,7 @@ Azure Resource Health houdt u op de hoogte van de huidige en historische status 
 
 Als u de instructies op deze pagina wilt volgen, moet u enkele dingen vooraf instellen:
 
-1. U moet de Azure PowerShell- [module](https://docs.microsoft.com/powershell/azure/install-Az-ps) installeren
+1. U moet de Azure PowerShell- [module](/powershell/azure/install-az-ps) installeren
 2. U moet [een actie groep maken of opnieuw gebruiken](../azure-monitor/platform/action-groups.md) die is geconfigureerd om u op de hoogte te stellen
 
 ## <a name="instructions"></a>Instructies
@@ -454,5 +454,5 @@ Meer informatie over Resource Health:
 
 
 Service Health-waarschuwingen maken:
--  [Waarschuwingen voor Service Health configureren](../azure-monitor/platform/alerts-activity-log-service-notifications.md) 
+-  [Waarschuwingen voor Service Health configureren](./alerts-activity-log-service-notifications-portal.md) 
 -  [Azure-gebeurtenisschema in het activiteitenlogboek](../azure-monitor/platform/activity-log-schema.md)

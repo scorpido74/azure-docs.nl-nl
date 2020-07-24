@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1de9c07c99666ed4011214bd9b426eac8f494991
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: acf60138aaecd914b30a020fdead292eb0ef1473
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82978175"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035975"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-file-share-on-azure"></a>SAP ASCS/SCS instance multi-SID hoge Beschik baarheid met Windows Server Failover Clustering en file share op Azure
 
@@ -41,10 +42,10 @@ In dit artikel wordt uitgelegd hoe u vanuit één ASCS/SCS-installatie overstapt
 >
 >Het maximum aantal SAP-ASCS/SCS-exemplaren in één WSFC-cluster is gelijk aan het maximum aantal privé-front-end Ip's voor elke interne Azure-load balancer.
 >
-> De configuratie die in deze documentatie is geïntroduceerd, wordt nog niet ondersteund voor [Azure-beschikbaarheidszones](https://docs.microsoft.com/azure/availability-zones/az-overview)
+> De configuratie die in deze documentatie is geïntroduceerd, wordt nog niet ondersteund voor [Azure-beschikbaarheidszones](../../../availability-zones/az-overview.md)
 > 
 
-Zie de sectie ' persoonlijke front-end IP per load balancer ' in [netwerk limieten: Azure Resource Manager][networking-limits-azure-resource-manager]voor meer informatie over limieten voor load balancers. Overweeg ook de [azure Standard Load Balancer-SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) te gebruiken in plaats van de basis-SKU van de Azure-Load Balancer.
+Zie de sectie ' persoonlijke front-end IP per load balancer ' in [netwerk limieten: Azure Resource Manager][networking-limits-azure-resource-manager]voor meer informatie over limieten voor load balancers. Overweeg ook de [azure Standard Load Balancer-SKU](../../../load-balancer/load-balancer-standard-availability-zones.md) te gebruiken in plaats van de basis-SKU van de Azure-Load Balancer.
 
 ## <a name="prerequisites"></a>Vereisten
 

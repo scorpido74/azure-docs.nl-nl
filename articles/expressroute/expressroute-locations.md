@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 06/30/2020
 ms.author: cherylmc
-ms.openlocfilehash: 3505427ab88a2241aa2781366c3d15179b03f050
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 72408b4f17aa5e8601095b27478806883739a7a8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231157"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031623"
 ---
-# <a name="expressroute-partners-and-peering-locations"></a>Partners en peeringlocaties voor ExpressRoute
+# <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute-connectiviteits partners en peering-locaties
 
 > [!div class="op_single_selector"]
 > * [Locaties per provider](expressroute-locations.md)
@@ -74,7 +74,7 @@ De volgende tabel toont de locaties per serviceprovider. Als u alle beschikbare 
 
 ### <a name="global-commercial-azure"></a>Wereld wijde commerciële Azure
 
-| **Serviceprovider** | **Microsoft Azure** | **Office 365**  | **Locaties** |
+| **Serviceprovider** | **Microsoft Azure** | **Office 365**  | **Maplocaties** |
 | --- | --- | --- | --- |
 | **[AARNet](https://www.aarnet.edu.au/network-and-services/connectivity-services/azure-expressroute)** |Ondersteund |Ondersteund |Melbourne, Sydney |
 | **[Airtel](https://www.airtel.in/business/#/)** | Ondersteund | Ondersteund | Chennai2, Mumbai2 |
@@ -133,6 +133,7 @@ De volgende tabel toont de locaties per serviceprovider. Als u alle beschikbare 
 | **[Neutrona Networks](https://www.neutrona.com/index.php/azure-expressroute/)** |Ondersteund |Ondersteund |Rotterdam, Los Angeles, Miami, Sao Paulo, Washington DC |
 | **[Next Generation Data](https://www.nextgenerationdata.co.uk/ngd-cloud-gateway/)** |Ondersteund |Ondersteund |Newport (Wales) |
 | **[NEXTDC](https://www.nextdc.com/services/axon-ethernet/microsoft-expressroute)** |Ondersteund |Ondersteund |Melbourne, Perth, Sydney, Sydney2 |
+| **[IDENTIFICATIENUMMER](https://www.nos.pt/empresas/corporate/cloud/cloud/Pages/nos-cloud-connect.aspx)** |Ondersteund |Ondersteund |Amsterdam2 |
 | **[NTT Communications](https://www.ntt.com/en/services/network/virtual-private-network.html)** |Ondersteund |Ondersteund |Amsterdam, Hongkong SAR, Londen, Los Angeles, Osaka, Singapore, Sydney, Tokio, Washington DC |
 | **[NTT EAST](https://business.ntt-east.co.jp/service/crossconnect/)** |Ondersteund |Ondersteund |Tokio |
 | **[NTT Global Data Centers EMEA](https://www.ntt.com/en/services/data-center.html)** |Ondersteund |Ondersteund |Berlijn |
@@ -180,7 +181,7 @@ Azure National Clouds zijn geïsoleerd van elkaar en van wereld wijde commercië
 
 ### <a name="us-government-cloud"></a>Cloud van de Amerikaanse overheid
 
-| **Serviceprovider** | **Microsoft Azure** | **Office 365** | **Locaties** |
+| **Serviceprovider** | **Microsoft Azure** | **Office 365** | **Maplocaties** |
 | --- | --- | --- | --- |
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |Ondersteund |Ondersteund |Chicago, Phoenix, silicone dal, Washington DC |
 | **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |Ondersteund |Ondersteund |New York, Phoenix, San Antonio, Washington DC |
@@ -191,7 +192,7 @@ Azure National Clouds zijn geïsoleerd van elkaar en van wereld wijde commercië
 
 ### <a name="china"></a>China
 
-| **Serviceprovider** | **Microsoft Azure** | **Office 365** | **Locaties** |
+| **Serviceprovider** | **Microsoft Azure** | **Office 365** | **Maplocaties** |
 | --- | --- | --- | --- |
 | **China Telecom** |Ondersteund |Niet ondersteund |Beijing, Beijing2, Shanghai, Shanghai2 |
 | **Unicom China** | Ondersteund | Niet ondersteund | Beijing2, Shanghai2 |
@@ -201,7 +202,7 @@ Zie [ExpressRoute in China](http://www.windowsazure.cn/home/features/expressrout
 
 ### <a name="germany"></a>Duitsland
 
-| **Serviceprovider** | **Microsoft Azure** | **Office 365** | **Locaties** |
+| **Serviceprovider** | **Microsoft Azure** | **Office 365** | **Maplocaties** |
 | --- | --- | --- | --- |
 | **[Colt](https://www.colt.net/direct-connect/azure/)** |Ondersteund |Niet ondersteund |Frankfurt |
 | **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Ondersteund |Niet ondersteund |Frankfurt |
@@ -240,7 +241,7 @@ Als u extern bent en geen glasvezel connectiviteit hebt of als u andere connecti
 
 ## <a name="connectivity-through-additional-service-providers"></a>Connectiviteit via aanvullende service providers
 
-| **Connectiveitsprovider** | **Exchange** | **Locaties** |
+| **Connectiveitsprovider** | **Exchange** | **Maplocaties** |
 | --- | --- | --- |
 | **[1CLOUDSTAR](https://www.1cloudstar.com/service/cloudconnect-azure-expressroute/)** |Equinix |Singapore |
 | **[Airgate Technologies, Inc.](https://www.airgate.ca/)** | Equinix, Cologix | Toronto, Montreal |
@@ -355,7 +356,7 @@ Het inschakelen van particuliere connectiviteit conform uw specifieke behoeften 
 | **[OneAs1a](https://www.oneas1a.com/connectivity.html)** | Azië |
 | **[Orange Networks](https://orange-networks.com/blog/88-azureexpressroute)** | Europa |
 | **[Perficient](https://www.perficient.com/Partners/Microsoft/Cloud/Azure-ExpressRoute)** | Noord-Amerika |
-| **[Presidio](https://info.presidio.com/microsoft-azure-expressroute)** | Noord-Amerika |
+| **[Presidio](https://www.presidio.com/subpage/1107/microsoft-azure)** | Noord-Amerika |
 | **[sol-tec](https://www.sol-tec.com/what-we-do/)** | Europa |
 | **[Venha Pra Nuvem](https://venhapranuvem.com.br/)** | Zuid-Amerika |
 | **[Vigilant.IT](https://vigilant.it/expressroute)** | Australië |

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 50c52369a5a957a4dd6279cac5079e2dea023106
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d264b0ae0b06079a45cd1e862144a6920133901
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61463400"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038439"
 ---
 # <a name="sample-presets-for-media-encoder-standard-mes"></a>Voor beeld van voor instellingen voor Media Encoder Standard (MES)
 
@@ -29,7 +29,7 @@ ms.locfileid: "61463400"
 Media Services volledig ondersteunt het aanpassen van alle waarden in voor instellingen om te voldoen aan uw specifieke behoeften en vereisten voor de code ring. Als u een vooraf ingestelde code ring wilt aanpassen, moet u beginnen met een van de onderstaande systeem voorinstellingen die in deze sectie zijn opgenomen als een sjabloon voor uw aangepaste configuratie. Zie het onderwerp [Media Encoder Standard schema](media-services-mes-schema.md) voor uitleg over wat elk-element in deze voor instellingen betekent en de geldige waarden voor elk element.  
   
 > [!NOTE]
->  Wanneer u een voor instelling voor 4 KB-code ringen gebruikt, moet u het `S3` gereserveerde eenheids type ophalen. Zie [How to scale encoding](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units)(Engelstalig) voor meer informatie.  
+>  Wanneer u een voor instelling voor 4 KB-code ringen gebruikt, moet u het `S3` gereserveerde eenheids type ophalen. Zie [How to scale encoding](./media-services-scale-media-processing-overview.md)(Engelstalig) voor meer informatie.  
 
 #### <a name="video-rotation-default-setting-in-presets"></a>Standaard instelling voor het draaien van video in voor instellingen:
 Wanneer u werkt met Media Encoder Standard, wordt de rotatie van de video standaard ingeschakeld. Als uw video is vastgelegd op een mobiel apparaat in de modus Staand, worden deze voor waarden door deze voor waarden naar de liggende modus geroteerd vóór de code ring.
@@ -86,4 +86,4 @@ Wanneer u werkt met Media Encoder Standard, wordt de rotatie van de video standa
   
  [H264 single bitrate SD van de lage kwaliteit voor Android](media-services-mes-preset-H264-Single-Bitrate-Low-Quality-SD-for-Android.md) produceert één MP4-bestand met een Bitrate van 56 kbps en stereo AAC-audio.  
   
- Zie voor meer informatie met betrekking tot Media Services coderings Programma's een [code ring op aanvraag met Azure Media Services](https://azure.microsoft.com/documentation/articles/media-services-encode-asset/).
+ Zie voor meer informatie met betrekking tot Media Services coderings Programma's een [code ring op aanvraag met Azure Media Services](./media-services-encode-asset.md).

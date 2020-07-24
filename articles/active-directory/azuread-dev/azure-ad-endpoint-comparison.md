@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 07/17/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 67a54a2cd4fa071fd47bcebb9aa53fd11fefd61e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 001de375edab7505ed4687d848aca0ad0965dbfb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80154913"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034904"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Waarom bijwerken naar Microsoft Identity Platform (v2.0)?
 
@@ -141,34 +141,7 @@ App-registraties die ondersteuning bieden voor werk-en school accounts en persoo
 
 ### <a name="restrictions-on-redirect-urls"></a>Beperkingen voor omleidings-Url's
 
-Apps die zijn geregistreerd voor het micro soft-identiteits platform, zijn beperkt tot een beperkt aantal omleidings-URL-waarden. De omleidings-URL voor web-apps en-services moet beginnen met het schema `https` en alle omleidings-URL-waarden moeten één DNS-domein delen.  Het registratie systeem vergelijkt de volledige DNS-naam van de bestaande omleidings-URL naar de DNS-naam van de omleidings-URL die u wilt toevoegen. `http://localhost`wordt ook ondersteund als een omleidings-URL.  
-
-De aanvraag voor het toevoegen van de DNS-naam mislukt als aan een van de volgende voorwaarden wordt voldaan:  
-
-* De volledige DNS-naam van de nieuwe omleidings-URL komt niet overeen met de DNS-naam van de bestaande omleidings-URL.
-* De volledige DNS-naam van de nieuwe omleidings-URL is geen subdomein van de bestaande omleidings-URL.
-
-#### <a name="example-1"></a>Voorbeeld 1
-
-Als de app een omleidings-URL van heeft `https://login.contoso.com` , kunt u een omleidings-URL toevoegen waarbij de DNS-naam precies overeenkomt, zoals wordt weer gegeven in het volgende voor beeld:
-
-`https://login.contoso.com/new`
-
-U kunt ook verwijzen naar een DNS-subdomein van login.contoso.com, zoals wordt weer gegeven in het volgende voor beeld:
-
-`https://new.login.contoso.com`
-
-#### <a name="example-2"></a>Voorbeeld 2
-
-Als u een app wilt hebben met `login-east.contoso.com` en `login-west.contoso.com` omleidings-url's, moet u deze omleidings-url's in de volgende volg orde toevoegen:
-
-`https://contoso.com`  
-`https://login-east.contoso.com`  
-`https://login-west.contoso.com`  
-
-U kunt de laatste twee toevoegen omdat deze subdomeinen zijn van de eerste omleidings-URL, contoso.com.
-
-U kunt slechts 20 antwoord-Url's voor een bepaalde toepassing hebben: deze limiet geldt voor alle app-typen die door de registratie worden ondersteund (een toepassing met één pagina, SPA), systeem eigen client, Web-app en service.  
+Zie de micro soft Identity platform [-](https://docs.microsoft.com/azure/active-directory/develop/reply-url) documentatie voor de meest actuele informatie over beperkingen voor het omleiden van url's voor apps die zijn geregistreerd voor micro soft Identity platform.
 
 Zie [een app registreren met de nieuwe app-registraties-ervaring](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)voor meer informatie over het registreren van een app voor gebruik met micro soft Identity platform.
 

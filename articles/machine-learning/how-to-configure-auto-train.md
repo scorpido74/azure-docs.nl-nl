@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 05/20/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: 528696daf4bddd1f448266243b511e600351606a
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 4815e51d22501d6110f3bc26a878513d6d700ce7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202602"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87031283"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Geautomatiseerde ML-experimenten configureren in Python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -212,26 +212,26 @@ Wanneer u uw experimenten in uw `AutoMLConfig` object configureert, kunt u de in
 De time series- `forecasting` taak vereist extra para meters in het configuratie object:
 
 1. `time_column_name`: De vereiste para meter voor het definiëren van de naam van de kolom in uw trainings gegevens met een geldige time-reeks.
-1. `max_horizon`: Hiermee definieert u de tijds duur die u wilt voors pellen op basis van de periodiciteit van de trainings gegevens. Als u bijvoorbeeld trainings gegevens met dagelijkse tijd korrels hebt, definieert u hoe ver in dagen u het model wilt trainen.
-1. `grain_column_names`: Hiermee definieert u de naam van kolommen die afzonderlijke time series-gegevens bevatten in uw trainings gegevens. Als u bijvoorbeeld de verkoop van een bepaald merk per winkel wilt ramen, definieert u de kolommen Store en merk als korrel. Er worden afzonderlijke time-series en prognoses voor elke korrel/groepering gemaakt. 
+1. `forecast_horizon`: Definieert het aantal Peri Oden dat u wilt forecasten. Het gehele getal is een eenheid van de tijds Erie frequentie. Als u bijvoorbeeld trainings gegevens met een dagelijkse frequentie hebt, definieert u hoe ver uit de dagen waarvoor u het model wilt trainen.
+1. `time_series_id_column_names`: Hiermee worden de kolommen gedefinieerd waarmee de tijd reeks op unieke wijze wordt geïdentificeerd in gegevens die meerdere rijen met dezelfde tijds tempel bevatten. Als u bijvoorbeeld de verkoop van een bepaald merk per winkel wilt ramen, definieert u Store-en merk kolommen als uw tijd reeks-id's. Voor elke groepering worden afzonderlijke prognoses gemaakt. Als de tijd reeks-id's niet zijn gedefinieerd, wordt ervan uitgegaan dat de gegevensset één keer wordt gebruikt.
 
 Zie voor voor beelden van de onderstaande instellingen het voor [beeld-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb).
 
 ```python
-# Setting Store and Brand as grains for training.
-grain_column_names = ['Store', 'Brand']
-nseries = data.groupby(grain_column_names).ngroups
+# Setting Store and Brand as time series identifiers for training.
+time_series_id_column_names = ['Store', 'Brand']
+nseries = data.groupby(time_series_id_column_names).ngroups
 
-# View the number of time series data with defined grains
+# View the number of time series data with defined time series identifiers
 print('Data contains {0} individual time-series.'.format(nseries))
 ```
 
 ```python
 time_series_settings = {
     'time_column_name': time_column_name,
-    'grain_column_names': grain_column_names,
+    'time_series_id_column_names': time_series_id_column_names,
     'drop_column_names': ['logQuantity'],
-    'max_horizon': n_test_periods
+    'forecast_horizon': n_test_periods
 }
 
 automl_config = AutoMLConfig(task = 'forecasting',

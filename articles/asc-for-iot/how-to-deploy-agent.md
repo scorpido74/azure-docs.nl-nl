@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 4253e496aca4cbf71fab7ef0ee388b1356df5c16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82103da3f2547baab62d0d95cf9a6084ef099cba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84456790"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033764"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>Een beveiligings agent op uw IoT-apparaat selecteren en implementeren
 
@@ -43,19 +44,18 @@ De op C gebaseerde beveiligings agent heeft een lagere geheugen capaciteit en is
 
 |     | Op C gebaseerde beveiligings agent | Beveiligings agent op basis van C# |
 | --- | ----------- | --------- |
-| Open-source | Beschikbaar onder een [MIT-licentie](https://en.wikipedia.org/wiki/MIT_License) in [github](https://aka.ms/iot-security-github-c) | Beschikbaar onder een [MIT-licentie](https://en.wikipedia.org/wiki/MIT_License) in [github](https://aka.ms/iot-security-github-cs) |
-| Ontwikkelingstaal    | C | C# |
-| Ondersteunde Windows-platforms? | Nee | Yes |
-| Windows-vereisten | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
-| Ondersteunde Linux-platforms? | Ja, x64 en x86 | Ja, alleen x64 |
-| Linux-vereisten | libunwind8, libcurl3, uuid-runtime, gecontroleerde, audispd-invoeg toepassingen | libunwind8, libcurl3, uuid-runtime, gecontroleerde, audispd-plugins, sudo, netstat, iptables |
-| Schijf ruimte | 10,5 MB | 90 MB |
-| Geheugen capaciteit (gemiddeld) | 5,5 MB | 33 MB |
-| [Verificatie](concept-security-agent-authentication-methods.md) voor IOT hub | Ja | Ja |
-| [Verzameling](how-to-agent-configuration.md#supported-security-events) van beveiligings gegevens | Ja | Ja |
-| Aggregatie van gebeurtenissen | Ja | Ja |
-| Externe configuratie via [beveiligings module dubbele](concept-security-module.md) | Ja | Ja |
-|
+| **Open-source** | Beschikbaar onder een [MIT-licentie](https://en.wikipedia.org/wiki/MIT_License) in [github](https://aka.ms/iot-security-github-c) | Beschikbaar onder een [MIT-licentie](https://en.wikipedia.org/wiki/MIT_License) in [github](https://aka.ms/iot-security-github-cs) |
+| **Ontwikkelingstaal**    | C | C# |
+| **Ondersteunde Windows-platforms?** | Nee | Yes |
+| **Windows-vereisten** | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
+| **Ondersteunde Linux-platforms?** | Ja, x64 en x86 | Ja, alleen x64 |
+| **Vereisten voor Linux** | libunwind8, libcurl3, uuid-runtime, gecontroleerde, audispd-invoeg toepassingen | libunwind8, libcurl3, uuid-runtime, gecontroleerde, audispd-plugins, sudo, netstat, iptables |
+| **Schijf ruimte** | 10,5 MB | 90 MB |
+| **Geheugen capaciteit (gemiddeld)** | 5,5 MB | 33 MB |
+| **[Verificatie](concept-security-agent-authentication-methods.md) voor IOT hub** | Ja | Ja |
+| **[Verzameling](how-to-agent-configuration.md#supported-security-events) van beveiligings gegevens** | Ja | Ja |
+| **Aggregatie van gebeurtenissen** | Ja | Ja |
+| **Externe configuratie via [beveiligings module dubbele](concept-security-module.md)** | Ja | Ja |
 
 ## <a name="security-agent-installation-guidelines"></a>Richt lijnen voor installatie van beveiligings agent
 

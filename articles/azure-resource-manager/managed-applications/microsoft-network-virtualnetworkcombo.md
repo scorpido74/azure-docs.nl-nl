@@ -5,11 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 53c9653b44a6c9d26d49d37b351cf6000676e2d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 711f5293b205c1f500c6d9e08154342285ef959b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75651967"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033195"
 ---
 # <a name="microsoftnetworkvirtualnetworkcombo-ui-element"></a>Gebruikers interface-element van micro soft. Network. VirtualNetworkCombo
 
@@ -19,11 +20,11 @@ Een groep besturings elementen voor het selecteren van een nieuw of bestaand vir
 
 Wanneer de gebruiker een nieuw virtueel netwerk kiest, kan de gebruiker de naam en het adres voorvoegsel van elk subnet aanpassen. Het configureren van subnetten is optioneel.
 
-![Micro soft. Network. VirtualNetworkCombo nieuw](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-new.png)
+![Micro soft. Network. VirtualNetworkCombo nieuw](./media/managed-application-elements/microsoft-network-virtualnetworkcombo-new.png)
 
 Wanneer de gebruiker een bestaand virtueel netwerk kiest, moet de gebruiker elk subnet toewijzen de implementatie sjabloon vereist een bestaand subnet. In dit geval moeten subnetten worden geconfigureerd.
 
-![Micro soft. Network. VirtualNetworkCombo bestaand](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-existing.png)
+![Micro soft. Network. VirtualNetworkCombo bestaand](./media/managed-application-elements/microsoft-network-virtualnetworkcombo-existing.png)
 
 ## <a name="schema"></a>Schema
 

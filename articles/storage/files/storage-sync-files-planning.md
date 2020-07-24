@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 561ec6d59349fca585beda8b1bd60073d2603077
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f09e84d20b1a3c568eea015d92b93a99b8cf024e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85552189"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036791"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planning voor de implementatie van Azure Files Sync
 
@@ -147,7 +147,7 @@ Alleen NTFS-volumes worden ondersteund. ReFS, FAT, FAT32 en andere bestands syst
 
 De volgende tabel bevat de interop-status van NTFS-bestandssysteem functies: 
 
-| Functie | Ondersteuningsstatus | Notities |
+| Functie | Ondersteuningsstatus | Opmerkingen |
 |---------|----------------|-------|
 | ACL’s (toegangsbeheerlijsten) | Volledig ondersteund | Discretionaire toegangs beheer lijsten voor Windows-stijlen worden bewaard door Azure File Sync en worden afgedwongen door Windows Server op server-eind punten. U kunt ook Acl's afdwingen wanneer u de Azure-bestands share rechtstreeks koppelt, maar hiervoor is echter wel extra configuratie vereist. Zie de [sectie identiteit](#identity) voor meer informatie. |
 | Vaste koppelingen | Overgeslagen | |
@@ -303,37 +303,37 @@ Azure File Sync is beschikbaar in de volgende regio's:
 
 | Azure-cloud | Geografische regio | Azure-regio | Regio code |
 |-------------|-------------------|--------------|-------------|
-| Public | Azië | Azië - oost | `eastasia` |
-| Public | Azië | Azië - zuidoost | `southeastasia` |
-| Public | Australië | Australië - oost | `australiaeast` |
-| Public | Australië | Australië - zuidoost | `australiasoutheast` |
-| Public | Brazilië | Brazilië - zuid | `brazilsouth` |
-| Public | Canada | Canada - midden | `canadacentral` |
-| Public | Canada | Canada - oost | `canadaeast` |
-| Public | Europa | Europa - noord | `northeurope` |
-| Public | Europa | Europa -west | `westeurope` |
-| Public | Frankrijk | Frankrijk - centraal | `francecentral` |
-| Public | Frankrijk | Frankrijk-zuid * | `francesouth` |
-| Public | India | India - centraal | `centralindia` |
-| Public | India | India - zuid | `southindia` |
-| Public | Japan | Japan - oost | `japaneast` |
-| Public | Japan | Japan - west | `japanwest` |
-| Public | Korea | Korea - centraal | `koreacentral` |
-| Public | Korea | Korea - zuid | `koreasouth` |
-| Public | Zuid-Afrika | Zuid-Afrika - noord | `southafricanorth` |
-| Public | Zuid-Afrika | Zuid-Afrika-west * | `southafricawest` |
-| Public | VAE | UAE-centraal * | `uaecentral` |
-| Public | VAE | UAE - noord | `uaenorth` |
-| Public | VK | Verenigd Koninkrijk Zuid | `uksouth` |
-| Public | VK | Verenigd Koninkrijk West | `ukwest` |
-| Public | VS | VS - centraal | `centralus` |
-| Public | VS | VS - oost | `eastus` |
-| Public | VS | VS - oost 2 | `eastus2` |
-| Public | VS | VS - noord-centraal | `northcentralus` |
-| Public | VS | VS - zuid-centraal | `southcentralus` |
-| Public | VS | VS - west-centraal | `westcentralus` |
-| Public | VS | VS - west | `westus` |
-| Public | VS | VS - west 2 | `westus2` |
+| Openbaar | Azië | Azië - oost | `eastasia` |
+| Openbaar | Azië | Azië - zuidoost | `southeastasia` |
+| Openbaar | Australië | Australië - oost | `australiaeast` |
+| Openbaar | Australië | Australia Southeast | `australiasoutheast` |
+| Openbaar | Brazilië | Brazil South | `brazilsouth` |
+| Openbaar | Canada | Canada - midden | `canadacentral` |
+| Openbaar | Canada | Canada - oost | `canadaeast` |
+| Openbaar | Europa | Europa - noord | `northeurope` |
+| Openbaar | Europa | Europa - west | `westeurope` |
+| Openbaar | Frankrijk | Frankrijk - centraal | `francecentral` |
+| Openbaar | Frankrijk | Frankrijk-zuid * | `francesouth` |
+| Openbaar | India | India - centraal | `centralindia` |
+| Openbaar | India | India - zuid | `southindia` |
+| Openbaar | Japan | Japan East | `japaneast` |
+| Openbaar | Japan | Japan - west | `japanwest` |
+| Openbaar | Korea | Korea - centraal | `koreacentral` |
+| Openbaar | Korea | Korea - zuid | `koreasouth` |
+| Openbaar | Zuid-Afrika | Zuid-Afrika - noord | `southafricanorth` |
+| Openbaar | Zuid-Afrika | Zuid-Afrika-west * | `southafricawest` |
+| Openbaar | VAE | UAE-centraal * | `uaecentral` |
+| Openbaar | VAE | UAE - noord | `uaenorth` |
+| Openbaar | VK | Verenigd Koninkrijk Zuid | `uksouth` |
+| Openbaar | VK | Verenigd Koninkrijk West | `ukwest` |
+| Openbaar | VS | Central US | `centralus` |
+| Openbaar | VS | VS - oost | `eastus` |
+| Openbaar | VS | US - oost 2 | `eastus2` |
+| Openbaar | VS | VS - noord-centraal | `northcentralus` |
+| Openbaar | VS | South Central US | `southcentralus` |
+| Openbaar | VS | VS - west-centraal | `westcentralus` |
+| Openbaar | VS | VS - west | `westus` |
+| Openbaar | VS | West US 2 | `westus2` |
 | US Gov | VS | VS (overheid) - Arizona | `usgovarizona` |
 | US Gov | VS | VS (overheid) - Texas | `usgovtexas` |
 | US Gov | VS | VS (overheid) - Virginia | `usgovvirginia` |
@@ -360,7 +360,7 @@ Het is ook mogelijk om Data Box te gebruiken om gegevens te migreren naar een Az
 Een veelvoorkomende fout bij het migreren van gegevens naar de nieuwe Azure File Sync-implementatie is het kopiëren van gegevens rechtstreeks naar de Azure-bestands share in plaats van op hun Windows-bestands servers. Hoewel Azure File Sync alle nieuwe bestanden in de Azure-bestands share herkent en deze weer synchroniseert met uw Windows-bestands shares, is dit doorgaans aanzienlijk langzamer dan het laden van gegevens via de Windows-Bestands server. Bij het gebruik van Azure Copy-hulpprogram ma's, zoals AzCopy, is het belang rijk dat u de meest recente versie gebruikt. Raadpleeg de [tabel hulp middelen](storage-files-migration-overview.md#file-copy-tools) voor het kopiëren van bestanden om een overzicht te krijgen van de Azure Copy-hulpprogram ma's om ervoor te zorgen dat u alle belang rijke meta gegevens van een bestand, zoals tijds tempels en acl's, kunt kopiëren.
 
 ## <a name="antivirus"></a>Antivirus
-Omdat anti virus werkt door bestanden te scannen op bekende schadelijke code, kan een antivirus product ertoe leiden dat gelaagde bestanden worden teruggehaald. In versies 4,0 en hoger van de Azure File Sync-agent hebben gelaagde bestanden het beveiligde Windows-kenmerk FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS ingesteld. We raden u aan om te leren werken met uw software leverancier voor meer informatie over het configureren van de oplossing voor het overs laan van het lezen van bestanden met deze kenmerkset (veel doen dat automatisch). 
+Omdat anti virus werkt door bestanden te scannen op bekende schadelijke code, kan een antivirus product ertoe leiden dat gelaagde bestanden worden teruggehaald, wat resulteert in hoge uitstaande kosten. In versies 4,0 en hoger van de Azure File Sync-agent hebben gelaagde bestanden het beveiligde Windows-kenmerk FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS ingesteld. We raden u aan om te leren werken met uw software leverancier voor meer informatie over het configureren van de oplossing voor het overs laan van het lezen van bestanden met deze kenmerkset (veel doen dat automatisch). 
 
 De interne anti-virus oplossingen van micro soft, Windows Defender en System Center Endpoint Protection (SCEP), over het automatisch overs laan van het lezen van bestanden waarvoor dit kenmerk is ingesteld. We hebben deze getest en een klein probleem geïdentificeerd: wanneer u een server aan een bestaande synchronisatie groep toevoegt, worden bestanden die kleiner zijn dan 800 bytes op de nieuwe server ingetrokken (gedownload). Deze bestanden blijven op de nieuwe server en worden niet getierd, omdat ze niet voldoen aan de vereiste voor de laag limiet (>64 KB).
 
@@ -368,9 +368,9 @@ De interne anti-virus oplossingen van micro soft, Windows Defender en System Cen
 > Antivirus leveranciers kunnen de compatibiliteit controleren tussen hun product en Azure File Sync met behulp van de [Azure file sync anti virus Compatibility Test Suite](https://www.microsoft.com/download/details.aspx?id=58322), die beschikbaar is voor downloaden in het micro soft Download centrum.
 
 ## <a name="backup"></a>Backup 
-Net als bij antivirus oplossingen kunnen back-upoplossingen ertoe leiden dat gelaagde bestanden worden teruggehaald. U kunt het beste een Cloud back-upoplossing gebruiken om een back-up te maken van de Azure-bestands share in plaats van een on-premises back-upproduct
+Als Cloud lagen zijn ingeschakeld, mogen oplossingen die rechtstreeks een back-up maken van het server eindpunt of een virtuele machine waarop het server eindpunt zich bevindt, niet worden gebruikt. Met Cloud lagen kan slechts een subset van uw gegevens worden opgeslagen op het server eindpunt, met de volledige gegevensset die zich in uw Azure-bestands share bevindt. Afhankelijk van de gebruikte back-upoplossing, worden gelaagde bestanden overgeslagen en er geen back-ups van gemaakt (omdat ze de FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS kenmerkset hebben), of ze worden op schijf teruggebeld, wat resulteert in hoge uitstaande kosten. U kunt het beste een Cloud back-upoplossing gebruiken om rechtstreeks een back-up te maken van de Azure-bestands share. Zie [about Azure file share backup](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json) (Engelstalig) voor meer informatie of neem contact op met uw back-upprovider om te zien of deze back-ups van Azure-bestands shares ondersteunen.
 
-Als u een on-premises back-upoplossing gebruikt, moeten back-ups worden uitgevoerd op een server in de synchronisatie groep waarvoor Cloud lagen zijn uitgeschakeld. Wanneer u een herstel bewerking uitvoert, gebruikt u de opties op volume-of bestands niveau herstellen. Bestanden die zijn hersteld met de optie herstel op bestands niveau worden gesynchroniseerd naar alle eind punten in de synchronisatie groep en bestaande bestanden worden vervangen door de versie die wordt hersteld vanuit een back-up.  Herstel bewerkingen op volume niveau worden niet vervangen door nieuwere bestands versies in de Azure-bestands share of andere server eindpunten.
+Als u liever een on-premises back-upoplossing gebruikt, moeten back-ups worden uitgevoerd op een server in de synchronisatie groep waarvoor Cloud lagen zijn uitgeschakeld. Wanneer u een herstel bewerking uitvoert, gebruikt u de opties op volume-of bestands niveau herstellen. Bestanden die zijn hersteld met de optie herstel op bestands niveau worden gesynchroniseerd naar alle eind punten in de synchronisatie groep en bestaande bestanden worden vervangen door de versie die wordt hersteld vanuit een back-up.  Herstel bewerkingen op volume niveau worden niet vervangen door nieuwere bestands versies in de Azure-bestands share of andere server eindpunten.
 
 > [!Note]  
 > Herstellen met Bare-Metal (BMR) kan leiden tot onverwachte resultaten en wordt op dit moment niet ondersteund.
@@ -383,7 +383,7 @@ Als u een on-premises back-upoplossing gebruikt, moeten back-ups worden uitgevoe
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Firewall-en proxy-instellingen overwegen](storage-sync-files-firewall-and-proxy.md)
-* [Implementatie van Azure Files plannen](storage-files-planning.md)
+* [Een Azure Files-implementatie plannen](storage-files-planning.md)
 * [Azure Files implementeren](storage-files-deployment-guide.md)
-* [Azure Files SYNC implementeren](storage-sync-files-deployment-guide.md)
+* [Azure File Sync implementeren](storage-sync-files-deployment-guide.md)
 * [Azure File Sync bewaken](storage-sync-files-monitoring.md)

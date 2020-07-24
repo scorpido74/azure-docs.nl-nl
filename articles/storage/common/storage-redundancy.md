@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 07/21/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 903560f5c0400a906918f0c17eafb2e1e09bdd30
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e4ec4925da40cf6051b88d77fbbc35d93ececf87
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518501"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036723"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage redundantie
 
@@ -59,11 +59,11 @@ Micro soft raadt aan om ZRS te gebruiken in de primaire regio voor scenario's di
 
 In de volgende tabel ziet u welke typen opslag accounts ZRS ondersteunen in welke regio's:
 
-|    Type opslagaccount    |    Ondersteunde regio’s    |    Ondersteunde services    |
-|----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-|    Algemeen gebruik v2<sup>1</sup>    | Azië - zuidoost<br /> Australië - oost<br /> Europa - noord<br />  Europa - west<br /> Frankrijk - centraal<br /> Japan - oost<br /> Zuid-Afrika - noord<br /> Verenigd Koninkrijk Zuid<br /> US - centraal<br /> US - oost<br /> US - oost 2<br /> US - west 2    |    Blok-blobs<br /> Pagina-blobs<sup>2</sup><br /> Bestands shares (standaard)<br /> Tabellen<br /> Wachtrijen<br /> |
-|    BlockBlobStorage<sup>1</sup>    | Azië - zuidoost<br /> Australië - oost<br /> Europa - west<br /> US - oost    |    Alleen blok-blobs    |
-|    FileStorage    | Azië - zuidoost<br /> Australië - oost<br /> Europa - west<br /> US - oost    |    Alleen Azure Files    |
+| Type opslagaccount | Ondersteunde regio's | Ondersteunde services |
+|--|--|--|
+| Algemeen gebruik v2<sup>1</sup> | Azië - zuidoost<br /> Australië - oost<br /> Europa - noord<br />  Europa - west<br /> Frankrijk - centraal<br /> Japan East<br /> Zuid-Afrika - noord<br /> Verenigd Koninkrijk Zuid<br /> US - centraal<br /> US - oost<br /> US - oost 2<br /> US - west 2 | Blok-blobs<br /> Pagina-blobs<sup>2</sup><br /> Bestands shares (standaard)<br /> Tabellen<br /> Wachtrijen<br /> |
+| BlockBlobStorage<sup>1</sup> | Azië - zuidoost<br /> Australië - oost<br /> Europa - west<br /> US - oost | Alleen Premium-blok-blobs |
+| FileStorage | Azië - zuidoost<br /> Australië - oost<br /> Europa - west<br /> US - oost | Premium-bestanden alleen shares |
 
 <sup>1</sup> de Archive-laag wordt momenteel niet ondersteund voor ZRS-accounts.<br />
 <sup>2</sup> opslag accounts die Azure Managed disks voor virtuele machines bevatten, gebruiken altijd LRS. Onbeheerde schijven van Azure moeten ook LRS gebruiken. Het is mogelijk om een opslag account te maken voor Azure unmanaged disks die gebruikmaken van GRS, maar dit wordt niet aanbevolen vanwege mogelijke problemen met de consistentie van de asynchrone geo-replicatie. Geen van de beheerde schijven of niet-Managed disks ondersteunen ZRS of GZRS. Zie [prijzen voor Azure Managed disks](https://azure.microsoft.com/pricing/details/managed-disks/)(Engelstalig) voor meer informatie over Managed disks.
@@ -109,7 +109,7 @@ GZRS en RA-GZRS worden ondersteund in de volgende regio's:
 - Azië - zuidoost
 - Europa - noord
 - Europa - west
-- Japan - oost
+- Japan East
 - Verenigd Koninkrijk Zuid
 - US - centraal
 - US - oost
@@ -121,6 +121,9 @@ Zie de prijs informatie voor [blobs](https://azure.microsoft.com/pricing/details
 ## <a name="read-access-to-data-in-the-secondary-region"></a>Lees toegang tot de gegevens in de secundaire regio
 
 Geografisch redundante opslag (met GRS of GZRS) repliceert uw gegevens naar een andere fysieke locatie in de secundaire regio om te beschermen tegen regionale storingen. Deze gegevens zijn echter alleen beschikbaar als alleen-lezen als de klant of micro soft een failover initieert van de primaire naar de secundaire regio. Wanneer u lees toegang tot de secundaire regio inschakelt, zijn uw gegevens te allen tijde beschikbaar om te worden gelezen, met inbegrip van een situatie waarin de primaire regio niet beschikbaar is. Voor lees toegang tot de secundaire regio schakelt u geografisch redundante opslag met lees toegang (RA-GRS) of geo-zone-redundante opslag met lees toegang (RA-GZRS) in.
+
+> [!NOTE]
+> Azure Files biedt geen ondersteuning voor geografisch redundante opslag met lees toegang (RA-GRS) en geografisch redundante opslag met lees toegang (RA-GZRS).
 
 ### <a name="design-your-applications-for-read-access-to-the-secondary"></a>Uw toepassingen ontwerpen voor lees toegang tot de secundaire
 
@@ -146,11 +149,11 @@ De tabellen in de volgende secties bevatten een overzicht van de redundantie opt
 
 In de volgende tabel worden de belangrijkste para meters voor elke redundantie optie beschreven:
 
-| Parameter                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                              |
-| :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
-| Percentage van de duurzaamheid van objecten in een bepaald jaar<sup>1</sup>                                          | ten minste 99,999999999% (11 9) | ten minste 99,9999999999% (12 9) | ten minste 99.99999999999999% (16 9) | ten minste 99.99999999999999% (16 9) |
-| SLA voor Beschik baarheid voor lees aanvragen<sup>1</sup>  | Ten minste 99,9% (99% voor de laag van de cool-toegang) | Ten minste 99,9% (99% voor de laag van de cool-toegang) | Ten minste 99,9% (99% voor de laag met coole toegang) voor GRS<br /><br />Ten minste 99,99% (99,9% voor de laag voor cool-toegang) voor RA-GRS | Ten minste 99,9% (99% voor de laag met coole toegang) voor GZRS<br /><br />Ten minste 99,99% (99,9% voor de laag voor cool-toegang) voor RA-GZRS |
-| SLA voor Beschik baarheid voor schrijf aanvragen<sup>1</sup>  | Ten minste 99,9% (99% voor de laag van de cool-toegang) | Ten minste 99,9% (99% voor de laag van de cool-toegang) | Ten minste 99,9% (99% voor de laag van de cool-toegang) | Ten minste 99,9% (99% voor de laag van de cool-toegang) |
+| Parameter | LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
+|:-|:-|:-|:-|:-|
+| Percentage van de duurzaamheid van objecten in een bepaald jaar<sup>1</sup> | ten minste 99,999999999% (11 9) | ten minste 99,9999999999% (12 9) | ten minste 99.99999999999999% (16 9) | ten minste 99.99999999999999% (16 9) |
+| SLA voor Beschik baarheid voor lees aanvragen<sup>1</sup> | Ten minste 99,9% (99% voor de laag van de cool-toegang) | Ten minste 99,9% (99% voor de laag van de cool-toegang) | Ten minste 99,9% (99% voor de laag met coole toegang) voor GRS<br /><br />Ten minste 99,99% (99,9% voor de laag voor cool-toegang) voor RA-GRS | Ten minste 99,9% (99% voor de laag met coole toegang) voor GZRS<br /><br />Ten minste 99,99% (99,9% voor de laag voor cool-toegang) voor RA-GZRS |
+| SLA voor Beschik baarheid voor schrijf aanvragen<sup>1</sup> | Ten minste 99,9% (99% voor de laag van de cool-toegang) | Ten minste 99,9% (99% voor de laag van de cool-toegang) | Ten minste 99,9% (99% voor de laag van de cool-toegang) | Ten minste 99,9% (99% voor de laag van de cool-toegang) |
 
 <sup>1</sup> zie de [Azure Storage Sla](https://azure.microsoft.com/support/legal/sla/storage/)voor informatie over Azure Storage garanties voor duurzaamheid en beschik baarheid.
 
@@ -158,12 +161,12 @@ In de volgende tabel worden de belangrijkste para meters voor elke redundantie o
 
 In de volgende tabel wordt aangegeven of uw gegevens duurzaam zijn en beschikbaar zijn in een bepaald scenario, afhankelijk van welk type redundantie van toepassing is op uw opslag account:
 
-| Storings scenario                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                              |
-| :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
-| Een knoop punt in een Data Center wordt niet meer beschikbaar                                                                 | Ja                             | Ja                              | Ja                                  | Ja                                 |
-| Een volledig Data Center (zonegebonden of niet-zonegebonden) is niet meer beschikbaar                                           | Nee                              | Ja                              | Ja<sup>1</sup>                                  | Ja                                  |
-| Er treedt een storing op de hele regio op in de primaire regio                                                                                     | Nee                              | Nee                               | Ja<sup>1</sup>                                  | Ja<sup>1</sup>                                  |
-| Lees toegang tot de secundaire regio is beschikbaar als de primaire regio niet beschikbaar is | Nee                              | Nee                               | Ja (met RA-GRS)                                   | Ja (met RA-GZRS)                                 |
+| Storings scenario | LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
+|:-|:-|:-|:-|:-|
+| Een knoop punt in een Data Center wordt niet meer beschikbaar | Ja | Ja | Ja | Ja |
+| Een volledig Data Center (zonegebonden of niet-zonegebonden) is niet meer beschikbaar | No | Yes | Ja<sup>1</sup> | Yes |
+| Er treedt een storing op de hele regio op in de primaire regio | Nee | Nee | Ja<sup>1</sup> | Ja<sup>1</sup> |
+| Lees toegang tot de secundaire regio is beschikbaar als de primaire regio niet beschikbaar is | Nee | Nee | Ja (met RA-GRS) | Ja (met RA-GZRS) |
 
 <sup>1</sup> failover van het account is vereist voor het herstellen van schrijf beschikbaarheid als de primaire regio niet beschikbaar is. Zie [nood herstel en failover van het opslag account](storage-disaster-recovery-guidance.md)voor meer informatie.
 
@@ -171,9 +174,9 @@ In de volgende tabel wordt aangegeven of uw gegevens duurzaam zijn en beschikbaa
 
 In de volgende tabel ziet u welke redundantie opties worden ondersteund door elk type opslag account. Zie [overzicht van opslag accounts](storage-account-overview.md)voor informatie over typen opslag accounts.
 
-| LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                              |
-| :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
-| Algemeen gebruik v2<br /> Algemeen gebruik v1<br /> Blob-opslag blok keren<br /> Blob Storage<br /> File Storage                | Algemeen gebruik v2<br /> Blob-opslag blok keren<br /> File Storage                             | Algemeen gebruik v2<br /> Algemeen gebruik v1<br /> Blob Storage                     | Algemeen gebruik v2                     |
+| LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
+|:-|:-|:-|:-|
+| Algemeen gebruik v2<br /> Algemeen gebruik v1<br /> Blob-opslag blok keren<br /> Blob Storage<br /> File Storage | Algemeen gebruik v2<br /> Blob-opslag blok keren<br /> File Storage | Algemeen gebruik v2<br /> Algemeen gebruik v1<br /> Blob Storage | Algemeen gebruik v2 |
 
 Alle gegevens voor alle opslag accounts worden gekopieerd op basis van de redundantie optie voor het opslag account. Objecten inclusief blok-blobs, toevoeg-blobs, pagina-blobs, wacht rijen, tabellen en bestanden worden gekopieerd. Gegevens in alle lagen, inclusief de laag Archive, worden gekopieerd. Zie [Azure Blob Storage: warme, cool en archief toegangs lagen](../blobs/storage-blob-storage-tiers.md)voor meer informatie over blob-lagen.
 

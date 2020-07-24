@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
-ms.openlocfilehash: f221a0bdf579dbbf42ecf64e18803decfb718456
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0f4e02a76044268946a4a482eaeccf5d622b8a7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80060668"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036261"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Het oplossen van problemen met SSH-verbindingen naar een virtuele Azure Linux-machine waarop zich fouten voordoen, die afsluit vanwege fouten of die wordt geweigerd
 Dit artikel helpt u bij het vinden en corrigeren van de problemen die zich voordoen als gevolg van SSH-fouten (Secure Shell), SSH-verbindings fouten of SSH worden geweigerd wanneer u verbinding probeert te maken met een virtuele Linux-machine (VM). U kunt de Azure Portal-, Azure CLI-of VM-extensie voor toegang voor Linux gebruiken om verbindings problemen op te lossen
@@ -34,7 +34,7 @@ Probeer na elke stap voor het oplossen van problemen opnieuw verbinding te maken
 3. Controleer de regels voor de [netwerk beveiligings groep](../../virtual-network/security-overview.md) om SSH-verkeer toe te staan.
    * Zorg ervoor dat er een regel voor de [netwerk beveiligings groep](#security-rules) bestaat om SSH-verkeer toe te staan (standaard TCP-poort 22).
    * U kunt geen poort omleiding/toewijzing gebruiken zonder een Azure-load balancer te gebruiken.
-4. Controleer de [status](../../resource-health/resource-health-overview.md)van de VM-resource.
+4. Controleer de [status](../../service-health/resource-health-overview.md)van de VM-resource.
    * Zorg ervoor dat de VM-rapporten in orde zijn.
    * Als u [Diagnostische gegevens over opstarten hebt ingeschakeld](boot-diagnostics.md), controleert u of de virtuele machine geen opstart fouten in de logboeken meldt.
 5. [Start de VM opnieuw](#restart-vm)op.
@@ -69,11 +69,11 @@ Vanuit dit menu kunt u ook een gebruiker met sudo-bevoegdheden op de VM maken. G
 
 ### <a name="check-security-rules"></a><a id="security-rules" />Beveiligings regels controleren
 
-Gebruik [IP-stroom controleren](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md) om te controleren of het verkeer van of naar een virtuele machine wordt geblokkeerd door een regel in een netwerk beveiligings groep. U kunt ook de juiste regels voor beveiligings groepen controleren om ervoor te zorgen dat inkomende NSG regel bestaat en de prioriteit van de SSH-poort (standaard 22) wordt weer gegeven. Zie [using effectief security rules to Troubleshooting VM Traffic Flow](../../virtual-network/diagnose-network-traffic-filter-problem.md)voor meer informatie.
+Gebruik [IP-stroom controleren](../../network-watcher/diagnose-vm-network-traffic-filtering-problem.md) om te controleren of het verkeer van of naar een virtuele machine wordt geblokkeerd door een regel in een netwerk beveiligings groep. U kunt ook de juiste regels voor beveiligings groepen controleren om ervoor te zorgen dat inkomende NSG regel bestaat en de prioriteit van de SSH-poort (standaard 22) wordt weer gegeven. Zie [using effectief security rules to Troubleshooting VM Traffic Flow](../../virtual-network/diagnose-network-traffic-filter-problem.md)voor meer informatie.
 
 ### <a name="check-routing"></a>Route ring controleren
 
-Gebruik de [volgende hop](../../network-watcher/network-watcher-check-next-hop-portal.md) -mogelijkheid van Network Watcher om te controleren of een route niet voor komt dat verkeer wordt gerouteerd naar of van een virtuele machine. U kunt ook efficiënte routes bekijken om alle efficiënte routes voor een netwerk interface weer te geven. Zie [het gebruik van efficiënte routes voor het oplossen van problemen met de VM-verkeers stroom](../../virtual-network/diagnose-network-routing-problem.md)voor meer informatie.
+Gebruik de [volgende hop](../../network-watcher/diagnose-vm-network-routing-problem.md) -mogelijkheid van Network Watcher om te controleren of een route niet voor komt dat verkeer wordt gerouteerd naar of van een virtuele machine. U kunt ook efficiënte routes bekijken om alle efficiënte routes voor een netwerk interface weer te geven. Zie [het gebruik van efficiënte routes voor het oplossen van problemen met de VM-verkeers stroom](../../virtual-network/diagnose-network-routing-problem.md)voor meer informatie.
 
 ## <a name="use-the-azure-vm-serial-console"></a>De seriële Azure VM-console gebruiken
 De [seriële console van Azure VM](./serial-console-linux.md) biedt toegang tot een op tekst gebaseerde console voor virtuele Linux-machines. U kunt de-console gebruiken om uw SSH-verbinding in een interactieve shell op te lossen. Zorg ervoor dat u voldoet aan de [vereisten](./serial-console-linux.md#prerequisites) voor het gebruik van seriële console en voer de onderstaande opdrachten uit om uw SSH-connectiviteit verder te verhelpen.
@@ -137,7 +137,7 @@ Maak een bestand `settings.json` met de naam met de volgende inhoud:
 
 ```json
 {
-    "reset_ssh":"True"
+    "reset_ssh":True
 }
 ```
 
@@ -173,7 +173,7 @@ az vm extension set --resource-group philmea --vm-name Ubuntu \
 ```
 
 ## <a name="use-the-azure-classic-cli"></a>De klassieke Azure-CLI gebruiken
-Als u dat nog niet hebt [gedaan, installeert u de klassieke Azure-CLI en maakt u verbinding met uw Azure-abonnement](../../cli-install-nodejs.md). Zorg ervoor dat u de Resource Manager-modus als volgt gebruikt:
+Als u dat nog niet hebt [gedaan, installeert u de klassieke Azure-CLI en maakt u verbinding met uw Azure-abonnement](/cli/azure/install-classic-cli). Zorg ervoor dat u de Resource Manager-modus als volgt gebruikt:
 
 ```azurecli
 azure config mode arm
@@ -232,7 +232,7 @@ azure vm restart --resource-group myResourceGroup --name myVM
 ```
 
 ## <a name="redeploy-a-vm"></a><a id="redeploy-vm" />Een virtuele machine opnieuw implementeren
-U kunt een virtuele machine opnieuw implementeren naar een ander knoop punt in azure, waardoor onderliggende netwerk problemen kunnen worden verholpen. Zie voor meer informatie over het opnieuw implementeren van een VM de [virtuele machine opnieuw implementeren naar het nieuwe Azure-knoop punt](../windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+U kunt een virtuele machine opnieuw implementeren naar een ander knoop punt in azure, waardoor onderliggende netwerk problemen kunnen worden verholpen. Zie voor meer informatie over het opnieuw implementeren van een VM de [virtuele machine opnieuw implementeren naar het nieuwe Azure-knoop punt](./redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json).
 
 > [!NOTE]
 > Nadat deze bewerking is voltooid, gaan tijdelijke schijf gegevens verloren en worden dynamische IP-adressen die zijn gekoppeld aan de virtuele machine, bijgewerkt.
@@ -266,12 +266,12 @@ azure vm redeploy --resource-group myResourceGroup --name myVM
 Voer de volgende stappen uit om de meest voorkomende SSH-verbindings fouten op te lossen voor virtuele machines die zijn gemaakt met behulp van het klassieke implementatie model. Probeer na elke stap opnieuw verbinding te maken met de virtuele machine.
 
 * Externe toegang opnieuw instellen via de [Azure Portal](https://portal.azure.com). Selecteer de virtuele machine op de Azure Portal en selecteer vervolgens **extern opnieuw instellen...**.
-* Start de VM opnieuw. Selecteer de virtuele machine op de [Azure Portal](https://portal.azure.com)en selecteer **opnieuw opstarten**.
+* Start de VM opnieuw op. Selecteer de virtuele machine op de [Azure Portal](https://portal.azure.com)en selecteer **opnieuw opstarten**.
 
-* Implementeer de virtuele machine opnieuw in een nieuw Azure-knoop punt. Zie voor meer informatie over het opnieuw implementeren van een VM de [virtuele machine opnieuw implementeren naar het nieuwe Azure-knoop punt](../windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Implementeer de virtuele machine opnieuw in een nieuw Azure-knoop punt. Zie voor meer informatie over het opnieuw implementeren van een VM de [virtuele machine opnieuw implementeren naar het nieuwe Azure-knoop punt](./redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json).
 
     Nadat deze bewerking is voltooid, gaan tijdelijke schijf gegevens verloren en worden dynamische IP-adressen die zijn gekoppeld aan de virtuele machine, bijgewerkt.
-* Volg de instructies in het [opnieuw instellen van een wacht woord of SSH voor op Linux gebaseerde virtuele machines](../linux/classic/reset-access-classic.md) naar:
+* Volg de instructies in het [opnieuw instellen van een wacht woord of SSH voor op Linux gebaseerde virtuele machines](/previous-versions/azure/virtual-machines/linux/classic/reset-access-classic) naar:
 
   * Stel het wacht woord of de SSH-sleutel opnieuw in.
   * Maak een *sudo* -gebruikers account.
@@ -279,7 +279,7 @@ Voer de volgende stappen uit om de meest voorkomende SSH-verbindings fouten op t
 * Controleer de resource status van de VM voor problemen met het platform.<br>
      Selecteer de VM en blader door de **instellingen**  >  **status controleren**.
 
-## <a name="additional-resources"></a>Extra resources
+## <a name="additional-resources"></a>Aanvullende resources
 * Als u nog steeds niet kunt overstappen op uw virtuele machine na de volgende stappen, raadpleegt u [meer gedetailleerde stappen voor probleem oplossing](detailed-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) om uw probleem op te lossen.
-* Zie [problemen oplossen met toegang tot een toepassing die wordt uitgevoerd op een virtuele machine van Azure](../windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) voor meer informatie over het oplossen van toepassings toegang
-* Voor meer informatie over het oplossen van problemen met virtuele machines die zijn gemaakt met behulp van het klassieke implementatie model raadpleegt [u een wacht woord of ssh opnieuw instellen voor op Linux gebaseerde virtuele machines](../linux/classic/reset-access-classic.md).
+* Zie [problemen oplossen met toegang tot een toepassing die wordt uitgevoerd op een virtuele machine van Azure](./troubleshoot-app-connection.md?toc=/azure/virtual-machines/linux/toc.json) voor meer informatie over het oplossen van toepassings toegang
+* Voor meer informatie over het oplossen van problemen met virtuele machines die zijn gemaakt met behulp van het klassieke implementatie model raadpleegt [u een wacht woord of ssh opnieuw instellen voor op Linux gebaseerde virtuele machines](/previous-versions/azure/virtual-machines/linux/classic/reset-access-classic).

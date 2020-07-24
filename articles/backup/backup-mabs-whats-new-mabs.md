@@ -3,11 +3,12 @@ title: Nieuw in Microsoft Azure Backup Server
 description: Microsoft Azure Backup Server biedt uitgebreide back-upmogelijkheden voor het beveiligen van Vm's, bestanden en mappen, werk belastingen en nog veel meer.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 5f8d0aa83f6d54575b76847efa892864b32c456d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d9d04d9f763549ce15e57f768432cd933cf1414c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84629095"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032439"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server-mabs"></a>Wat is er nieuw in Microsoft Azure Backup Server (MABS)
 
@@ -22,7 +23,7 @@ Microsoft Azure Backup Server (MABS) versie 3 UR1 is de meest recente update en 
 
 MABS v2 heeft [modern Backup Storage](backup-mabs-add-storage.md) (MBS) geïntroduceerd, waardoor het opslag gebruik en de prestaties worden verbeterd. MBS gebruikt ReFS als onderliggend bestands systeem en is ontworpen om gebruik te maken van hybride opslag, zoals gelaagde opslag.
 
-Om de schaal en prestaties van MBS te vervolledigen, raden we u aan om een klein percentage (4% van de totale opslag) van Flash-opslag (SSD) met MABS v3 UR1 als een gelaagd volume in combi natie met DPM-HDD-opslag te gebruiken. MABS v3 UR1 met gelaagde opslag levert 50-70% snellere back-ups. Raadpleeg het DPM-artikel [MBS met tiered Storage instellen](https://docs.microsoft.com/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage) voor stappen voor het configureren van gelaagde opslag.
+Om de schaal en prestaties van MBS te vervolledigen, raden we u aan om een klein percentage (4% van de totale opslag) van Flash-opslag (SSD) met MABS v3 UR1 als een gelaagd volume in combi natie met DPM-HDD-opslag te gebruiken. MABS v3 UR1 met gelaagde opslag levert 50-70% snellere back-ups. Raadpleeg het DPM-artikel [MBS met tiered Storage instellen](/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage) voor stappen voor het configureren van gelaagde opslag.
 
 ### <a name="support-for-refs-volumes-and-refs-volumes-with-deduplication-enabled"></a>Ondersteuning voor ReFS-volumes en ReFS-volumes waarvoor ontdubbeling is ingeschakeld
 
@@ -38,7 +39,7 @@ Met MABS v3 UR1 kunt u een back-up maken van de ReFS-volumes en werk belastingen
 
 ### <a name="azure-vmware-solution-protection-support"></a>Ondersteuning voor Azure VMware-oplossings beveiliging
 
-Met MABS v3 UR1 kunt u nu virtuele machines beveiligen die zijn geïmplementeerd in de [Azure VMware-oplossing](https://docs.microsoft.com/azure/azure-vmware/).
+Met MABS v3 UR1 kunt u nu virtuele machines beveiligen die zijn geïmplementeerd in de [Azure VMware-oplossing](../azure-vmware/index.yml).
 
 ### <a name="vmware-parallel-backups"></a>VMware parallelle back-ups
 
@@ -55,7 +56,7 @@ Met MABS v3 UR1 wordt een extra laag voor verificatie toegevoegd voor kritieke b
 
 ### <a name="offline-backup-improvements"></a>Verbeteringen in offline back-up
 
-MABS v3 UR1 verbetert de ervaring van offline back-ups met de Azure import/export-service. Zie de bijgewerkte stappen [hier](https://docs.microsoft.com/azure/backup/backup-azure-backup-server-import-export)voor meer informatie.
+MABS v3 UR1 verbetert de ervaring van offline back-ups met de Azure import/export-service. Zie de bijgewerkte stappen [hier](./backup-azure-backup-server-import-export.md)voor meer informatie.
 
 >[!NOTE]
 >De update brengt ook de preview voor offline back-ups met behulp van Azure Data Box in MABS. Neem contact [SystemCenterFeedback@microsoft.com](mailto:SystemCenterFeedback@microsoft.com) op met meer informatie.
@@ -69,7 +70,7 @@ MABS v3 UR1 bevat een nieuwe para meter **[-CheckReplicaFragmentation]**. De nie
 Met MABS v3 UR1 wordt ondersteuning voor 32-bits beveiligings agent niet meer ondersteund. Het is niet mogelijk 32-bits werk belastingen te beveiligen na de upgrade van de MABS v3-server naar UR1. Bestaande 32-bits beveiligingsagents hebben een uitgeschakelde status en geplande back-ups mislukken met de **agent is uitgeschakeld** . Als u de back-upgegevens voor deze agents wilt behouden, kunt u de beveiliging stoppen met de optie gegevens behouden. Anders kan de beveiligings agent worden verwijderd.
 
 >[!NOTE]
->Bekijk de [bijgewerkte beveiligings matrix](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix) voor meer informatie over de ondersteunde werk belastingen voor beveiliging met MABS ur 1.
+>Bekijk de [bijgewerkte beveiligings matrix](./backup-mabs-protection-matrix.md) voor meer informatie over de ondersteunde werk belastingen voor beveiliging met MABS ur 1.
 
 ## <a name="whats-new-in-mabs-v3-rtm"></a>Wat is er nieuw in MABS v3 RTM
 
@@ -83,7 +84,7 @@ Met Modern Backup Storage (MBS) in MABS v2 hebben we werkbelasting bewuste opsla
 
 ### <a name="prevent-unexpected-data-loss"></a>Onverwacht gegevens verlies voor komen
 
-In ondernemingen wordt MABS beheerd door een team van beheerders. Hoewel er richt lijnen zijn voor opslag die moet worden gebruikt voor back-ups, kan een onjuist volume dat is gegeven aan MABS als back-upopslag leiden tot verlies van kritieke gegevens. Met MABS v3 kunt u dergelijke scenario's voor komen door de volumes te configureren als die die niet beschikbaar zijn voor opslag met behulp van [deze Power shell-cmdlets](https://docs.microsoft.com/azure/backup/backup-mabs-add-storage).
+In ondernemingen wordt MABS beheerd door een team van beheerders. Hoewel er richt lijnen zijn voor opslag die moet worden gebruikt voor back-ups, kan een onjuist volume dat is gegeven aan MABS als back-upopslag leiden tot verlies van kritieke gegevens. Met MABS v3 kunt u dergelijke scenario's voor komen door de volumes te configureren als die die niet beschikbaar zijn voor opslag met behulp van [deze Power shell-cmdlets](./backup-mabs-add-storage.md).
 
 ### <a name="custom-size-allocation"></a>Toewijzing van aangepaste grootte
 
@@ -114,7 +115,7 @@ MABS v3 kan worden geïnstalleerd met SQL 2017 als de MABS-data base. U kunt de 
 MABS v3 kan worden geïnstalleerd op Windows Server 2019. Als u MABS v3 wilt gebruiken met WS2019, kunt u uw besturings systeem upgraden naar WS2019 voordat u installeert/bijwerkt naar MABS v3 of u kunt een upgrade uitvoeren van uw besturings systeem na het installeren/upgraden van v3 op WS2016.
 
 MABS v3 is een volledige versie en kan rechtstreeks worden geïnstalleerd op Windows Server 2016, Windows Server 2019 of worden bijgewerkt vanaf MABS v2. Lees over de installatie vereisten voordat u een upgrade uitvoert naar of een back-upserver v3 installeert.
-Meer informatie over de installatie-en upgrade stappen voor MABS vindt u [hier](https://docs.microsoft.com/azure/backup/backup-azure-microsoft-azure-backup#software-package).
+Meer informatie over de installatie-en upgrade stappen voor MABS vindt u [hier](./backup-azure-microsoft-azure-backup.md#software-package).
 
 > [!NOTE]
 >

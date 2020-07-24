@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: ec0862a0d4de644630c972387f01feaa1a327e67
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fa87fc874be5e60d018b5663b4655d069930ab88
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500749"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036145"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>Een sleutelkluis voor Azure Disk Encryption maken en configureren
 
@@ -25,7 +25,7 @@ Azure Disk Encryption gebruikt Azure Key Vault om sleutels en geheimen voor schi
 Een sleutelkluis maken en configureren voor gebruik met Azure Disk Encryption bestaat uit drie stappen:
 
 > [!Note]
-> U moet de optie selecteren in de beleids instellingen voor Azure Key Vault toegang om toegang tot Azure Disk Encryption voor volume versleuteling in te scha kelen.
+> U moet de optie selecteren in de beleids instellingen voor Azure Key Vault toegang om toegang tot Azure Disk Encryption voor volume versleuteling in te scha kelen. Als u de firewall hebt ingeschakeld op de sleutel kluis, gaat u naar het tabblad netwerken op de sleutel kluis en schakelt u toegang tot micro soft-vertrouwde services in. 
 
 1. Een resourcegroep maken, indien nodig.
 2. Een sleutelkluis maken. 
@@ -43,7 +43,7 @@ U kunt eventueel ook een sleutelversleutelingssleutel genereren of importeren (K
 
 ## <a name="install-tools-and-connect-to-azure"></a>Hulpprogramma's installeren en verbinding maken met Azure
 
-U kunt de stappen in dit artikel voltooien met de [Azure CLI](/cli/azure/), de [Azure PowerShell AZ-module](/powershell/azure/overview) of de [Azure-portal](https://portal.azure.com).
+U kunt de stappen in dit artikel voltooien met de [Azure CLI](/cli/azure/), de [Azure PowerShell AZ-module](/powershell/azure/) of de [Azure-portal](https://portal.azure.com).
 
 Terwijl de portal toegankelijk is via uw browser, hebben Azure CLI en Azure PowerShell lokale installatie nodig. Zie [Azure Disk Encryption voor Windows: hulpprogram Ma's installeren](disk-encryption-windows.md#install-tools-and-connect-to-azure) voor meer informatie.
 

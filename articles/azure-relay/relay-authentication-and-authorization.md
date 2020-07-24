@@ -3,12 +3,12 @@ title: Verificatie en autorisatie Azure Relay | Microsoft Docs
 description: Dit artikel bevat een overzicht van Shared Access Signature (SAS)-verificatie met de Azure Relay-service.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 63e075bc9bf75005a92866f9fa0f90ddaba2f016
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b0a5c7a092155a006419eedd170a63abed42bb3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85316941"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033374"
 ---
 # <a name="azure-relay-authentication-and-authorization"></a>Verificatie en autorisatie Azure Relay
 
@@ -20,7 +20,7 @@ Met [SAS-verificatie](../service-bus-messaging/service-bus-sas.md) kunt u een ge
 
 U kunt sleutels voor SAS op een relay-naam ruimte configureren. In tegens telling tot Service Bus-berichten ondersteunt [Relay hybride verbindingen](relay-hybrid-connections-protocol.md) niet-geautoriseerde of anonieme afzenders. U kunt anonieme toegang voor de entiteit inschakelen wanneer u deze maakt, zoals wordt weer gegeven in de volgende scherm afbeelding van de portal:
 
-![][0]
+![Een dialoog venster met de titel ' hybride verbinding maken ' heeft een tekstvak ' naam ' en een selectie vakje ' client verificatie vereist ', dat is ingeschakeld.][0]
 
 Als u SAS wilt gebruiken, kunt u een [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) -object configureren op een relay-naam ruimte die uit het volgende bestaat:
 

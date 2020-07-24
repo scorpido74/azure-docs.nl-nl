@@ -15,20 +15,21 @@ ms.workload: infrastructure
 ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ef7161e653ec582708f242b67c643d960d75e27f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27b6e2e3cedcc8eca84644562639e0436e48245d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78255463"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035856"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>Beschik baarheid van SAP HANA binnen een Azure-regio
-In dit artikel worden verschillende beschikbaarheids scenario's binnen één Azure-regio beschreven. Azure heeft veel regio's, verspreid over de hele wereld. Zie [Azure-regio's](https://azure.microsoft.com/regions/)voor de lijst met Azure-regio's. Voor de implementatie van SAP HANA op Vm's binnen één Azure-regio, biedt micro soft de implementatie van één virtuele machine met een HANA-exemplaar. Voor een verhoogde Beschik baarheid kunt u twee virtuele machines implementeren met twee HANA-instanties binnen een [Azure-beschikbaarheidsset](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) die gebruikmaakt van Hana-systeem replicatie voor Beschik baarheid. 
+In dit artikel worden verschillende beschikbaarheids scenario's binnen één Azure-regio beschreven. Azure heeft veel regio's, verspreid over de hele wereld. Zie [Azure-regio's](https://azure.microsoft.com/regions/)voor de lijst met Azure-regio's. Voor de implementatie van SAP HANA op Vm's binnen één Azure-regio, biedt micro soft de implementatie van één virtuele machine met een HANA-exemplaar. Voor een verhoogde Beschik baarheid kunt u twee virtuele machines implementeren met twee HANA-instanties binnen een [Azure-beschikbaarheidsset](../../windows/tutorial-availability-sets.md) die gebruikmaakt van Hana-systeem replicatie voor Beschik baarheid. 
 
-Op dit moment biedt Azure [Azure-beschikbaarheidszones](https://docs.microsoft.com/azure/availability-zones/az-overview). In dit artikel wordt Beschikbaarheidszones niet beschreven. Maar bevat een algemene discussie over het gebruik van beschikbaarheids sets versus Beschikbaarheidszones.
+Op dit moment biedt Azure [Azure-beschikbaarheidszones](../../../availability-zones/az-overview.md). In dit artikel wordt Beschikbaarheidszones niet beschreven. Maar bevat een algemene discussie over het gebruik van beschikbaarheids sets versus Beschikbaarheidszones.
 
 Azure-regio's waar Beschikbaarheidszones worden aangeboden, hebben meerdere data centers. De data centers zijn onafhankelijk van de voeding van voedings bronnen, koeling en netwerk. De reden voor het bieden van verschillende zones binnen één Azure-regio is het implementeren van toepassingen op twee of drie Beschikbaarheidszones die worden aangeboden. Implementaties in verschillende zones, problemen in de stroom en netwerken die van invloed zijn op één Azure-beschikbaarheids zone-infra structuur, de implementatie van uw toepassing binnen een Azure-regio nog steeds functioneel is. Er kan enige gereduceerde capaciteit optreden. Zo kunnen Vm's in de ene zone verloren gaan, maar worden de Vm's in de andere twee zones nog steeds uitgevoerd. 
  
-Een Azure-Beschikbaarheidsset is een logische groeperings functie waarmee u ervoor kunt zorgen dat de VM-resources die u in de Beschikbaarheidsset plaatst, niet van elkaar zijn geïsoleerd wanneer ze worden geïmplementeerd in een Azure-Data Center. Azure zorgt ervoor dat de VM's die u in een beschikbaarheidsset plaatst, op meerdere fysieke servers, rekenrekken, opslageenheden en netwerkswitches worden uitgevoerd. In sommige Azure-documentatie wordt deze configuratie plaatsingen genoemd in verschillende update- [en fout domeinen](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability). Deze plaatsingen bevinden zich doorgaans in een Azure-Data Center. Ervan uitgaande dat energie bronnen en netwerk problemen van invloed zijn op het Data Center dat u implementeert, is dit van invloed op uw capaciteit in één Azure-regio.
+Een Azure-Beschikbaarheidsset is een logische groeperings functie waarmee u ervoor kunt zorgen dat de VM-resources die u in de Beschikbaarheidsset plaatst, niet van elkaar zijn geïsoleerd wanneer ze worden geïmplementeerd in een Azure-Data Center. Azure zorgt ervoor dat de VM's die u in een beschikbaarheidsset plaatst, op meerdere fysieke servers, rekenrekken, opslageenheden en netwerkswitches worden uitgevoerd. In sommige Azure-documentatie wordt deze configuratie plaatsingen genoemd in verschillende update- [en fout domeinen](../../windows/manage-availability.md). Deze plaatsingen bevinden zich doorgaans in een Azure-Data Center. Ervan uitgaande dat energie bronnen en netwerk problemen van invloed zijn op het Data Center dat u implementeert, is dit van invloed op uw capaciteit in één Azure-regio.
 
 De plaatsing van data centers die Azure-beschikbaarheidszones vertegenwoordigen, is een inbreuk tussen het leveren van een acceptabele netwerk latentie tussen services die zijn geïmplementeerd in verschillende zones en een afstand tussen data centers. Natuurlijk rampen is in het ideale geval niet van invloed op de kracht, het netwerk aanbod en de infra structuur voor alle Beschikbaarheidszones in deze regio. Als Monumental Natural rampen zijn weer gegeven, levert Beschikbaarheidszones mogelijk niet altijd de beschik baarheid die u binnen één regio wilt. U kunt nadenken over orkaan Maria dat op 20 september 2017 op het eiland Puerto Rico raakt. De orkaan veroorzaakt een bijna 100 procente bedrukbaar op het eiland 90-km breed.
 
@@ -81,7 +82,7 @@ De architectuur ziet er als volgt uit:
 
 Deze installatie is niet geschikt voor het bereiken van geweldige beoogde herstel punten (RPO) en RTO (Recovery Time objectief). RTO keer dat de volledige data base volledig moet worden hersteld met behulp van de gekopieerde back-ups. Deze installatie is echter handig voor het herstellen van onbedoelde gegevens verwijdering op de belangrijkste instanties. Met deze installatie kunt u op elk gewenst moment herstellen naar een bepaald tijdstip, de gegevens extra heren en de verwijderde gegevens importeren in uw hoofd instantie. Daarom kan het zinvol zijn om een methode voor het kopiëren van back-ups te gebruiken in combi natie met andere functionaliteit voor hoge Beschik baarheid. 
 
-Terwijl back-ups worden gekopieerd, kunt u mogelijk een kleinere virtuele machine gebruiken dan de hoofd-VM waarop het SAP HANA-exemplaar wordt uitgevoerd. Houd er rekening mee dat u een kleiner aantal Vhd's kunt koppelen aan kleinere Vm's. Zie [grootten voor virtuele Linux-machines in azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)voor meer informatie over de limieten van afzonderlijke VM-typen.
+Terwijl back-ups worden gekopieerd, kunt u mogelijk een kleinere virtuele machine gebruiken dan de hoofd-VM waarop het SAP HANA-exemplaar wordt uitgevoerd. Houd er rekening mee dat u een kleiner aantal Vhd's kunt koppelen aan kleinere Vm's. Zie [grootten voor virtuele Linux-machines in azure](../../linux/sizes.md)voor meer informatie over de limieten van afzonderlijke VM-typen.
 
 ### <a name="sap-hana-system-replication-without-automatic-failover"></a>Systeem replicatie SAP HANA zonder automatische failover
 
@@ -107,7 +108,7 @@ In dit scenario is het vooraf laden van gegevens die zijn gerepliceerd naar het 
 
 ### <a name="sap-hana-system-replication-with-automatic-failover"></a>Systeem replicatie SAP HANA met automatische failover
 
-In de standaard-en meest voorkomende beschikbaarheids configuratie binnen één Azure-regio, hebben twee Azure-Vm's met SLES Linux een failovercluster gedefinieerd. Het SLES Linux-cluster is gebaseerd op het [pacemaker](/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) -Framework, in combi natie met een [STONITH](/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) -apparaat. 
+In de standaard-en meest voorkomende beschikbaarheids configuratie binnen één Azure-regio, hebben twee Azure-Vm's met SLES Linux een failovercluster gedefinieerd. Het SLES Linux-cluster is gebaseerd op het [pacemaker](./high-availability-guide-suse-pacemaker.md) -Framework, in combi natie met een [STONITH](./high-availability-guide-suse-pacemaker.md#create-azure-fence-agent-stonith-device) -apparaat. 
 
 Vanuit een SAP HANA perspectief wordt de gebruikte replicatie modus gesynchroniseerd en wordt een automatische failover geconfigureerd. In de tweede VM fungeert het SAP HANA-exemplaar als een hot standby-knoop punt. Het knoop punt stand-by ontvangt een synchrone stroom van wijzigings records van het primaire SAP HANA exemplaar. Omdat trans acties worden doorgevoerd door de toepassing op het primaire knoop punt HANA, wacht het primaire HANA-knoop punt op het bevestigen van het door voeren van de toepassing totdat het secundaire SAP HANA knoop punt bevestigt dat het de commit-record heeft ontvangen. SAP HANA biedt twee synchrone replicatie modi. Zie voor meer informatie en voor een beschrijving van de verschillen tussen deze twee synchrone replicatie modi de SAP-artikel [replicatie modi voor SAP Hana-systeem replicatie](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/c039a1a5b8824ecfa754b55e0caffc01.html).
 
@@ -126,5 +127,4 @@ Ga voor stapsgewijze instructies voor het instellen van deze configuraties in az
 
 Zie voor meer informatie over de beschik baarheid van SAP HANA in azure-regio's:
 
-- [Beschik baarheid van SAP HANA in azure-regio's](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions) 
-
+- [Beschik baarheid van SAP HANA in azure-regio's](./sap-hana-availability-across-regions.md) 

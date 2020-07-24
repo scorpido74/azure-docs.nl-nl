@@ -11,11 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 348082ad96a5efa4d8f866c3675044edf7b6f8a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e3425407fdb131fb1499b2cd085fbe6d427804a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80652161"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035295"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Reporting options for Azure AD password management (Rapportageopties voor Azure AD-wachtwoordbeheer)
 
@@ -50,9 +51,9 @@ In de Azure Portal-ervaring hebben we de manier verbeterd waarop u wacht woord o
 6. Selecteer in het menu **filter** boven aan het deel venster de vervolg keuzelijst **service** en wijzig deze in het Service type **selfservice voor wachtwoord beheer** .
 7. U kunt de lijst eventueel verder filteren door de specifieke **activiteit** te kiezen die u wilt.
 
-### <a name="converged-registration-preview"></a>Geconvergeerde registratie (preview-versie)
+### <a name="combined-registration"></a>Gecombineerde registratie
 
-Als u deelneemt aan de open bare preview van geconvergeerde registratie, vindt u onder **beveiligings**  >  **verificatie methoden**informatie over gebruikers activiteit in de audit Logboeken.
+Als u [gecombineerde registratie](https://docs.microsoft.com/azure/active-directory/authentication/concept-registration-mfa-sspr-combined)hebt ingeschakeld, wordt informatie over gebruikers activiteit in de audit logboeken gevonden onder methoden voor **beveiligings**  >  **verificatie**.
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Beschrijving van de rapport kolommen in de Azure Portal
 

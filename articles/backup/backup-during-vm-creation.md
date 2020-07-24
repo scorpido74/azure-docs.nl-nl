@@ -3,11 +3,12 @@ title: Back-up inschakelen wanneer u een Azure-VM maakt
 description: Hierin wordt beschreven hoe u back-ups inschakelt wanneer u een Azure VM maakt met Azure Backup.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 7739109eb8bad88c9b723e67e13adc78c127499a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7fb6fd25f5031669633641ea02f34180f6f795d4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80672809"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032847"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Back-up inschakelen wanneer u een Azure-VM maakt
 
@@ -29,7 +30,7 @@ Als u nog niet bent aangemeld bij uw account, meldt u zich aan bij de [Azure Por
 
 2. Klik in de Azure Marketplace op **Compute**en selecteer vervolgens een VM-installatie kopie.
 
-3. Stel de virtuele machine in volgens de instructies voor [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal) of [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal) .
+3. Stel de virtuele machine in volgens de instructies voor [Windows](../virtual-machines/windows/quick-create-portal.md) of [Linux](../virtual-machines/linux/quick-create-portal.md) .
 
 4. Klik op het tabblad **beheer** in **back-up inschakelen**op **aan**.
 5. Azure Backup back-ups naar een Recovery Services kluis. Klik op **nieuwe maken** als u geen bestaande kluis hebt.

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: caf73ffbc18a603ace22acfbd0da490048da698a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a2fe1b8bdc80a5265add22bd3602050034471fe2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71058124"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036434"
 ---
 # <a name="troubleshoot-application-connectivity-issues-on-virtual-machines-in-azure"></a>Problemen met toepassingsverbindingen op virtuele machines in Azure oplossen
 
@@ -117,7 +117,7 @@ Als u geen toegang hebt tot de toepassing, controleert u de volgende instellinge
   
   * Controleer of de eindpunt configuratie voor de virtuele machine het binnenkomende verkeer, met name het Protocol (TCP of UDP) en de open bare en particuliere poort nummers toestaat.
   * Controleer of Acl's (toegangs beheer lijsten) op het eind punt geen binnenkomend verkeer van Internet verhinderen.
-  * Zie [eind punten instellen voor een virtuele machine](../windows/classic/setup-endpoints.md)voor meer informatie.
+  * Zie [eind punten instellen voor een virtuele machine](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints)voor meer informatie.
 * Voor virtuele machines die zijn gemaakt met het Resource Manager-implementatie model:
   
   * Controleer of de configuratie van de binnenkomende NAT-regel voor de virtuele machine het binnenkomende verkeer, met name het Protocol (TCP of UDP) en de open bare en particuliere poort nummers toestaat.
@@ -138,11 +138,9 @@ Als u toegang hebt tot de toepassing, moet u ervoor zorgen dat het Internet edge
 
 ## <a name="step-4-if-you-cannot-access-the-application-use-ip-verify-to-check-the-settings"></a>Stap 4 als u geen toegang hebt tot de toepassing, gebruikt u IP controleren om de instellingen te controleren. 
 
-Zie overzicht van Azure- [netwerk bewaking](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)voor meer informatie. 
+Zie overzicht van Azure- [netwerk bewaking](../../network-watcher/network-watcher-monitoring-overview.md)voor meer informatie. 
 
-## <a name="additional-resources"></a>Extra resources
+## <a name="additional-resources"></a>Aanvullende resources
 [Problemen met Extern bureaublad verbindingen met een virtuele Azure-machine op Windows oplossen](troubleshoot-rdp-connection.md)
 
 [Problemen met SSH-verbindingen (Secure Shell) met een op Linux gebaseerde Azure Virtual Machine oplossen](troubleshoot-ssh-connection.md)
-
-

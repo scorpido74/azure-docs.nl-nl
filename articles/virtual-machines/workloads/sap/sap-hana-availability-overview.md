@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bccaf45cf617bd31a584b6c73f3dd08877bc8587
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e44edff9ac81588e4f861b7a1d1ae1a1628d5e04
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71266062"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035635"
 ---
 # <a name="sap-hana-high-availability-for-azure-virtual-machines"></a>SAP HANA hoge Beschik baarheid voor virtuele machines van Azure
 
@@ -37,9 +37,9 @@ In dit artikel wordt ervan uitgegaan dat u bekend bent met het installeren van S
 
 Deze artikelen bieden een goed overzicht van het gebruik van SAP HANA in Azure:
 
-- [Hand matige installatie van SAP HANA met één exemplaar op virtuele machines van Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-get-started)
+- [Hand matige installatie van SAP HANA met één exemplaar op virtuele machines van Azure](./hana-get-started.md)
 - [SAP HANA systeem replicatie in virtuele Azure-machines instellen](sap-hana-high-availability.md)
-- [Back-ups maken van SAP HANA in virtuele Azure-machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)
+- [Back-ups maken van SAP HANA in virtuele Azure-machines](./sap-hana-backup-guide.md)
 
 Het is ook een goed idee om vertrouwd te raken met deze artikelen over SAP HANA:
 
@@ -52,7 +52,7 @@ Het is ook een goed idee om vertrouwd te raken met deze artikelen over SAP HANA:
 - [Automatisch opnieuw starten van SAP HANA-service](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/cf10efba8bea4e81b1dc1907ecc652d3.html)
 - [SAP HANA systeem replicatie configureren](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/676844172c2442f0bf6c8b080db05ae7.html)
 
-Naast het implementeren van Vm's in azure, wordt u aangeraden [de beschik baarheid van virtuele Windows-machines in azure te beheren](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)voordat u uw beschikbaarheids architectuur in azure definieert.
+Naast het implementeren van Vm's in azure, wordt u aangeraden [de beschik baarheid van virtuele Windows-machines in azure te beheren](../../windows/manage-availability.md)voordat u uw beschikbaarheids architectuur in azure definieert.
 
 ## <a name="service-level-agreements-for-azure-components"></a>Service overeenkomst voor Azure-onderdelen
 
@@ -60,16 +60,16 @@ Azure heeft verschillende beschik baarheids overeenkomsten voor verschillende on
 
 In de [Sla voor virtual machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) worden drie verschillende sla's beschreven, voor drie verschillende configuraties:
 
-- Eén virtuele machine die gebruikmaakt van [Azure Premium ssd's](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) voor de besturingssysteem schijf en alle gegevens schijven. Deze optie biedt een maandelijkse uptime van 99,9 procent.
-- Meerdere virtuele machines (ten minste twee) die zijn georganiseerd in een [Azure-beschikbaarheidsset](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets). Deze optie biedt een maandelijkse uptime van 99,95 procent.
-- Meerdere virtuele machines (ten minste twee) die zijn georganiseerd in een [Beschik baarheid zone](https://docs.microsoft.com/azure/availability-zones/az-overview). Met deze optie wordt een maandelijkse uptime van 99,99 procent gegeven.
+- Eén virtuele machine die gebruikmaakt van [Azure Premium ssd's](../../windows/managed-disks-overview.md) voor de besturingssysteem schijf en alle gegevens schijven. Deze optie biedt een maandelijkse uptime van 99,9 procent.
+- Meerdere virtuele machines (ten minste twee) die zijn georganiseerd in een [Azure-beschikbaarheidsset](../../windows/tutorial-availability-sets.md). Deze optie biedt een maandelijkse uptime van 99,95 procent.
+- Meerdere virtuele machines (ten minste twee) die zijn georganiseerd in een [Beschik baarheid zone](../../../availability-zones/az-overview.md). Met deze optie wordt een maandelijkse uptime van 99,99 procent gegeven.
 
 Meet uw beschikbaarheids vereisten met betrekking tot de Sla's die Azure-onderdelen kunnen bieden. Kies vervolgens uw scenario's voor SAP HANA om het vereiste niveau van Beschik baarheid te bepalen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [Beschik baarheid van SAP Hana binnen een Azure-regio](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-one-region).
-- Meer informatie over de [Beschik baarheid van SAP Hana in azure-regio's](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions). 
+- Meer informatie over de [Beschik baarheid van SAP Hana binnen een Azure-regio](./sap-hana-availability-one-region.md).
+- Meer informatie over de [Beschik baarheid van SAP Hana in azure-regio's](./sap-hana-availability-across-regions.md). 
 
 
 
@@ -86,5 +86,3 @@ Meet uw beschikbaarheids vereisten met betrekking tot de Sla's die Azure-onderde
 
 
   
-
-

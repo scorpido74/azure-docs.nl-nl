@@ -1,20 +1,20 @@
 ---
-title: Service Fabric beveiligings basislijn voor Azure Security Bench Mark
+title: Azure-beveiligings basislijn voor Service Fabric
 description: De Service Fabric Security Baseline voorziet in procedure richtlijnen en resources voor het implementeren van de beveiligings aanbevelingen die zijn opgegeven in de Azure Security-Bench Mark.
 author: msmbaldwin
 ms.service: service-fabric
 ms.topic: conceptual
-ms.date: 07/13/2020
+ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d9d5d686c692c45acfff4fa811ed668c17f19861
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 97285ae9eadee3717f0b1a1510627392250424b7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531707"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037862"
 ---
-# <a name="service-fabric-security-baseline-for-azure-security-benchmark"></a>Service Fabric beveiligings basislijn voor Azure Security Bench Mark
+# <a name="azure-security-baseline-for-service-fabric"></a>Azure-beveiligings basislijn voor Service Fabric
 
 De Azure-beveiligings basislijn voor Service Fabric bevat aanbevelingen waarmee u de beveiligings postuur van uw implementatie kunt verbeteren.
 
@@ -468,7 +468,7 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor AAD-gebruik
 
 **Verantwoordelijkheid**: niet van toepassing
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 *Zie [beveiligings beheer: gegevens beveiliging](/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 

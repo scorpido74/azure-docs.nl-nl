@@ -3,11 +3,12 @@ title: Bewaking van web-app-prestaties-Azure-toepassing Insights
 description: Hoe Application Insights past in de devOps-cyclus
 ms.topic: conceptual
 ms.date: 12/21/2018
-ms.openlocfilehash: 24095aade80022d1e1ebb38357971512bfc873c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa62e8840c14e87d24db029d6bb7a215124a0511
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77669689"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033679"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Diepe diagnostische gegevens voor web-apps en services met Application Insights
 ## <a name="why-do-i-need-application-insights"></a>Waarom heb ik Application Insights nodig?
@@ -109,7 +110,7 @@ Toepassings overzicht detecteert automatisch de topologie van uw toepassing, waa
 ![Toepassingskaart](./media/devops/0050.png)
 
 ## <a name="application-insights-analytics"></a>Application Insights Analytics
-Met [Analytics](../../azure-monitor/app/analytics.md)kunt u wille keurige query's schrijven in een krachtige, op SQL gebaseerde taal.  Het is eenvoudig om problemen met de hele app-stack op te lossen omdat verschillende perspectieven aansluiten en u de juiste vragen kunt stellen om service prestaties te correleren met metrische gegevens van uw bedrijf en de ervaring van de klant. 
+Met [Analytics](../log-query/log-query-overview.md)kunt u wille keurige query's schrijven in een krachtige, op SQL gebaseerde taal.  Het is eenvoudig om problemen met de hele app-stack op te lossen omdat verschillende perspectieven aansluiten en u de juiste vragen kunt stellen om service prestaties te correleren met metrische gegevens van uw bedrijf en de ervaring van de klant. 
 
 U kunt een query uitvoeren voor al uw telemetrie-exemplaar en metrische gegevens die zijn opgeslagen in de portal. De taal bevat filter, samen voegen, aggregatie en andere bewerkingen. U kunt velden berekenen en statistische analyses uitvoeren. Er zijn zowel tabellaire als grafische visualisaties.
 
@@ -159,4 +160,3 @@ Het is eenvoudig om aan de slag te gaan met Application Insights. De belangrijks
 * [IIS-servers](../../azure-monitor/app/monitor-performance-live-website-now.md)en ook voor [Azure app service](../../azure-monitor/app/app-insights-overview.md).
 * Instrumenteer uw project tijdens de ontwikkeling. U kunt dit doen voor [ASP.net](../../azure-monitor/app/asp-net.md) -of [Java](../../azure-monitor/app/java-get-started.md) -apps, evenals [Node.js](../../azure-monitor/app/nodejs.md) en een host van [andere typen](../../azure-monitor/app/platforms.md). 
 * Een [wille keurige webpagina](../../azure-monitor/app/javascript.md) instrumenteren door een korte code fragment toe te voegen.
-

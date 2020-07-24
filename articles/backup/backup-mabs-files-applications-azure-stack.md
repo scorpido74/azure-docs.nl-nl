@@ -3,11 +3,12 @@ title: Back-ups maken van bestanden in Azure Stack Vm's
 description: Gebruik Azure Backup voor het maken van back-ups en het herstellen van Azure Stack bestanden en toepassingen naar uw Azure Stack omgeving.
 ms.topic: conceptual
 ms.date: 06/05/2018
-ms.openlocfilehash: 2bcdf7f720708db1487d7d5cdaee41dc93c05728
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07a64e5457963ea4a6d3b39b3f2326dbcfc5e63a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74172321"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032762"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Back-ups maken van bestanden en toepassingen op Azure Stack
 
@@ -43,7 +44,7 @@ Als u Azure Backup Server wilt configureren voor het beveiligen van bestanden in
 
     ![Wizard nieuwe beveiligings groep wordt geopend](./media/backup-mabs-files-applications-azure-stack/5-select-group-members.png)
 
-    Micro soft raadt aan om alle gegevens die een beveiligings beleid zullen delen, in één beveiligings groep te plaatsen. Voor volledige informatie over het plannen en implementeren van beveiligings groepen raadpleegt u het artikel over System Center DPM en [implementeert u beveiligings groepen](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1801).
+    Micro soft raadt aan om alle gegevens die een beveiligings beleid zullen delen, in één beveiligings groep te plaatsen. Voor volledige informatie over het plannen en implementeren van beveiligings groepen raadpleegt u het artikel over System Center DPM en [implementeert u beveiligings groepen](/system-center/dpm/create-dpm-protection-groups).
 
 4. Typ in het scherm **methode voor gegevens beveiliging selecteren** een naam voor de beveiligings groep. Schakel het selectie vakje in **die ik op kortetermijnbeveiliging wil gebruiken met:** en **Ik wil online beveiliging**. Klik op **Volgende**.
 
@@ -132,5 +133,5 @@ U kunt de volgende stappen volgen om Azure Backup Server entiteiten in de Azure 
 
 Raadpleeg een van de volgende artikelen voor meer informatie over het gebruik van Azure Backup Server voor het beveiligen van andere werk belastingen:
 
-* [Back-up van share point-farm maken](https://docs.microsoft.com/azure/backup/backup-mabs-sharepoint-azure-stack)
-* [Een back-up maken van SQL Server](https://docs.microsoft.com/azure/backup/backup-mabs-sql-azure-stack)
+* [Back-up van share point-farm maken](./backup-mabs-sharepoint-azure-stack.md)
+* [Een back-up maken van SQL Server](./backup-mabs-sql-azure-stack.md)

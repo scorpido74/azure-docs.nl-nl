@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/22/2020
 ms.author: v-mibufo
-ms.openlocfilehash: daefaca45adb061295928c64b6a0e328a12d8a3e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 186b1c46303be59e191a1754361e07a2003b997a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85269013"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036179"
 ---
 # <a name="os-start-up--computer-restarted-unexpectedly-or-encountered-an-unexpected-error"></a>Opstarten met het besturings systeem: de computer is onverwacht opnieuw opgestart of er is een onverwachte fout opgetreden
 
@@ -27,7 +27,7 @@ Dit artikel bevat stappen voor het oplossen van problemen waarbij de virtuele ma
 
 ## <a name="symptom"></a>Symptoom
 
-Wanneer u [Diagnostische gegevens over opstarten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) gebruikt om de scherm opname van de virtuele machine weer te geven, ziet u dat de scherm opname wordt weer gegeven met de volgende fout:
+Wanneer u [Diagnostische gegevens over opstarten](./boot-diagnostics.md) gebruikt om de scherm opname van de virtuele machine weer te geven, ziet u dat de scherm opname wordt weer gegeven met de volgende fout:
 
 **De computer is onverwacht opnieuw opgestart of er is een onverwachte fout opgetreden. De Windows-installatie kan niet worden voortgezet. Als u Windows wilt installeren, klikt u op OK om de computer opnieuw op te starten en start u de installatie opnieuw.**
 
@@ -37,7 +37,7 @@ Wanneer u [Diagnostische gegevens over opstarten](https://docs.microsoft.com/azu
 
 ## <a name="cause"></a>Oorzaak
 
-Er wordt geprobeerd een [gegeneraliseerde installatie kopie](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation)te starten met de computer, maar er is een probleem opgetreden vanwege een aangepast antwoord bestand (unattend.xml) dat wordt verwerkt. Aangepaste antwoordbestanden worden niet ondersteund in Azure. 
+Er wordt geprobeerd een [gegeneraliseerde installatie kopie](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation)te starten met de computer, maar er is een probleem opgetreden vanwege een aangepast antwoord bestand (unattend.xml) dat wordt verwerkt. Aangepaste antwoordbestanden worden niet ondersteund in Azure. 
 
 Het antwoord bestand is een speciaal XML-bestand met instellings definities en-waarden voor de configuratie-instellingen die u wilt automatiseren tijdens de installatie van een installatie van een Windows Server-besturings systeem. De configuratie opties bevatten instructies voor het partitioneren van schijven, waar u de Windows-installatie kopie kunt vinden die moet worden geïnstalleerd, de product codes die moeten worden toegepast en andere opdrachten die u wilt uitvoeren.
 
@@ -57,7 +57,7 @@ Deze situatie doet zich voor wanneer een afbeelding is voor bereid voor gebruik 
 
 - Vervang in de vorige opdracht door `<NameOfYourAnswerFile.XML>` de naam van het bestand.
 
-U kunt dit probleem oplossen door [de Azure-richt lijnen voor het voorbereiden/vastleggen van een installatie kopie](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed) te volgen en een nieuwe gegeneraliseerde installatie kopie voor te bereiden. Gebruik bij Sysprep geen `/unattend:<answerfile>` vlag. Gebruik in plaats daarvan alleen de onderstaande vlaggen:
+U kunt dit probleem oplossen door [de Azure-richt lijnen voor het voorbereiden/vastleggen van een installatie kopie](../windows/upload-generalized-managed.md) te volgen en een nieuwe gegeneraliseerde installatie kopie voor te bereiden. Gebruik bij Sysprep geen `/unattend:<answerfile>` vlag. Gebruik in plaats daarvan alleen de onderstaande vlaggen:
 
 `sysprep /oobe /generalize /shutdown`
 

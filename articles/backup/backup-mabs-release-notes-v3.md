@@ -4,11 +4,12 @@ description: In dit artikel vindt u informatie over bekende problemen en tijdeli
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: 2f67b73612bd970c903b179a4a02c787ee0320b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f4900bb129ee67cd75d2b793f4179e3135569a6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84629200"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032558"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Release opmerkingen voor Microsoft Azure Backup Server
 
@@ -53,13 +54,13 @@ In dit artikel vindt u de bekende problemen en tijdelijke oplossingen voor Micro
 
 **Tijdelijke oplossing:** Voer de volgende stappen uit om een upgrade uit te voeren naar MABS V3 met het Russische installatie pakket:
 
-1. Maak een [back-up](https://docs.microsoft.com/sql/relational-databases/backup-restore/create-a-full-database-backup-sql-server?view=sql-server-2017#SSMSProcedure) van uw SQL database en verwijder MABS v2 (de beveiligde gegevens behouden tijdens het verwijderen).
+1. Maak een [back-up](/sql/relational-databases/backup-restore/create-a-full-database-backup-sql-server#SSMSProcedure) van uw SQL database en verwijder MABS v2 (de beveiligde gegevens behouden tijdens het verwijderen).
 2. Voer een upgrade uit naar SQL 2017 (Enter prise) en verwijder rapportage als onderdeel van de upgrade.
-3. [Installeren](https://docs.microsoft.com/sql/reporting-services/install-windows/install-reporting-services?view=sql-server-2017#install-your-report-server) SQL Server Reporting Services (SSRS).
-4. [Installeren](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) SQL Server Management Studio (SSMS).
-5. Rapportage configureren met de para meters zoals beschreven in de [SSRS-configuratie met SQL 2017](https://docs.microsoft.com/azure/backup/backup-azure-microsoft-azure-backup#upgrade-mabs).
+3. [Installeren](/sql/reporting-services/install-windows/install-reporting-services#install-your-report-server) SQL Server Reporting Services (SSRS).
+4. [Installeren](/sql/ssms/download-sql-server-management-studio-ssms) SQL Server Management Studio (SSMS).
+5. Rapportage configureren met de para meters zoals beschreven in de [SSRS-configuratie met SQL 2017](./backup-azure-microsoft-azure-backup.md#upgrade-mabs).
 6. [Installeren](backup-azure-microsoft-azure-backup.md) MABS V3.
-7. [Herstellen](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms?view=sql-server-2017) SQL met behulp van SSMS en voer het hulp programma DPM-Sync uit, zoals [hier](https://docs.microsoft.com/system-center/dpm/back-up-the-dpm-server?view=sc-dpm-2019#using-dpmsync)wordt beschreven.
+7. [Herstellen](/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms) SQL met behulp van SSMS en voer het hulp programma DPM-Sync uit, zoals [hier](/system-center/dpm/back-up-the-dpm-server?view=sc-dpm-2019#using-dpmsync)wordt beschreven.
 8. Werk de eigenschap DataBaseVersion in de tabel dbo. tbl_DLS_GlobalSetting met behulp van de volgende opdracht:
 
     ```sql

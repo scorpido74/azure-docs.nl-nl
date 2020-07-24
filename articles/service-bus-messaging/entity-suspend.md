@@ -3,12 +3,12 @@ title: Azure Service Bus-Messa ging-entiteiten onderbreken
 description: In dit artikel wordt uitgelegd hoe u Azure Service Bus bericht entiteiten (wacht rijen, onderwerpen en abonnementen) tijdelijk kunt onderbreken en opnieuw activeren.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 4c4e554ada8c66b56d5d466c7becfc813701402a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da7c25c8ef9f3daa32984ac26aa62710ab775951
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85339993"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038134"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>Messa ging-entiteiten onderbreken en opnieuw activeren (uitschakelen)
 
@@ -20,7 +20,7 @@ Een opschorting of heractivering kan worden uitgevoerd door de gebruiker of door
 
 In de portal kunt u in het gedeelte **Eigenschappen** voor de respectieve entiteit de status wijzigen. op de volgende scherm afbeelding ziet u de wissel knop voor een wachtrij:
 
-![][1]
+![Scherm afbeelding van de functie Service Bus met de instelling eigenschappen gemarkeerd en de optie wachtrij status is ingesteld op actief en wordt in rood beschreven.][1]
 
 De portal staat alleen volledig uitschakelen van wacht rijen toe. U kunt de verzend-en ontvangst bewerkingen ook afzonderlijk uitschakelen met behulp van de Service Bus [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) -api's in de .NET Framework SDK of met een Azure Resource Manager-sjabloon via Azure CLI of Azure PowerShell.
 

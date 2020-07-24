@@ -16,25 +16,26 @@ ms.workload: infrastructure-services
 ms.date: 03/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a7a92bef85cd4ee7530940a065135e88c7530781
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78a4a22771f7880c48722f410f3a2fae0c66e9c8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78675610"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035788"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>SAP-werkbelastingconfiguraties met Azure-beschikbaarheidszones
-[Azure-beschikbaarheidszones](https://docs.microsoft.com/azure/availability-zones/az-overview) is een van de functies voor hoge Beschik baarheid die Azure biedt. Met Beschikbaarheidszones verbetert u de algehele Beschik baarheid van SAP-workloads op Azure. Deze functie is al beschikbaar in sommige [Azure-regio's](https://azure.microsoft.com/global-infrastructure/regions/). In de toekomst is het beschikbaar in meer regio's.
+[Azure-beschikbaarheidszones](../../../availability-zones/az-overview.md) is een van de functies voor hoge Beschik baarheid die Azure biedt. Met Beschikbaarheidszones verbetert u de algehele Beschik baarheid van SAP-workloads op Azure. Deze functie is al beschikbaar in sommige [Azure-regio's](https://azure.microsoft.com/global-infrastructure/regions/). In de toekomst is het beschikbaar in meer regio's.
 
 In deze afbeelding wordt de basis architectuur van SAP-hoge Beschik baarheid weer gegeven:
 
 ![Standaard configuratie voor hoge Beschik baarheid](./media/sap-ha-availability-zones/standard-ha-config.png)
 
-De SAP-toepassingslaag wordt geïmplementeerd in één Azure- [beschikbaarheidsset](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability). Voor een hoge Beschik baarheid van SAP Central-Services kunt u twee Vm's implementeren in een afzonderlijke beschikbaarheidsset. Gebruik Windows Server failover clustering of pacemaker (Linux) als een Framework met hoge Beschik baarheid met automatische failover in het geval van een infra structuur of software probleem. Zie voor meer informatie over deze implementaties:
+De SAP-toepassingslaag wordt geïmplementeerd in één Azure- [beschikbaarheidsset](../../windows/manage-availability.md). Voor een hoge Beschik baarheid van SAP Central-Services kunt u twee Vm's implementeren in een afzonderlijke beschikbaarheidsset. Gebruik Windows Server failover clustering of pacemaker (Linux) als een Framework met hoge Beschik baarheid met automatische failover in het geval van een infra structuur of software probleem. Zie voor meer informatie over deze implementaties:
 
-- [Een SAP ASCS/SCS-exemplaar op een Windows-failovercluster clusteren met behulp van een gedeelde cluster schijf](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)
-- [Een SAP ASCS/SCS-exemplaar op een Windows-failovercluster clusteren met behulp van de bestands share](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share)
-- [Hoge Beschik baarheid voor SAP NetWeaver op Azure Vm's op SUSE Linux Enterprise Server voor SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)
-- [Azure Virtual Machines hoge Beschik baarheid voor SAP NetWeaver op Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)
+- [Een SAP ASCS/SCS-exemplaar op een Windows-failovercluster clusteren met behulp van een gedeelde cluster schijf](./sap-high-availability-guide-wsfc-shared-disk.md)
+- [Een SAP ASCS/SCS-exemplaar op een Windows-failovercluster clusteren met behulp van de bestands share](./sap-high-availability-guide-wsfc-file-share.md)
+- [Hoge Beschik baarheid voor SAP NetWeaver op Azure Vm's op SUSE Linux Enterprise Server voor SAP-toepassingen](./high-availability-guide-suse.md)
+- [Azure Virtual Machines hoge Beschik baarheid voor SAP NetWeaver op Red Hat Enterprise Linux](./high-availability-guide-rhel.md)
 
 Een vergelijk bare architectuur geldt voor de DBMS-laag van SAP NetWeaver, S/4HANA of Hybris-systemen. U implementeert de DBMS-laag in een actieve/passieve modus met een failover cluster-oplossing om te beschermen tegen infra structuur of software storing. De failover-cluster oplossing kan een DBMS-specifiek failovercluster, Windows Server failover clustering of pacemaker zijn.
 
@@ -56,8 +57,8 @@ Wanneer u Azure-Vm's implementeert in Beschikbaarheidszones en failover-oplossin
 
 - U moet [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/) gebruiken wanneer u implementeert in azure-beschikbaarheidszones. 
 - De toewijzing van zone-inventarisaties aan de fysieke zones wordt vastgesteld op basis van een Azure-abonnement. Als u verschillende abonnementen gebruikt om uw SAP-systemen te implementeren, moet u de ideale zones voor elk abonnement definiëren.
-- U kunt geen Azure-beschikbaarheids sets implementeren binnen een Azure-beschikbaarheids zone, tenzij u [Azure proximity placement Group](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)gebruikt. De manier waarop u de SAP-DBMS-laag en de centrale Services in meerdere zones kunt implementeren en tegelijkertijd de SAP-toepassingslaag implementeert met behulp van beschikbaarheids sets en nog steeds dicht nabij de grenzen van de Vm's wordt beschreven in het artikel [Azure proximity placement groups voor optimale netwerk latentie met SAP-toepassingen](sap-proximity-placement-scenarios.md). Als u geen gebruik maakt van Azure proximity placement groups, moet u een of de andere kiezen als een implementatie raamwerk voor virtuele machines.
-- U kunt geen [Azure Basic-Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) gebruiken om failover-cluster oplossingen te maken op basis van Windows Server failover clustering of Linux pacemaker. In plaats daarvan moet u de [Azure Standard Load Balancer-SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)gebruiken.
+- U kunt geen Azure-beschikbaarheids sets implementeren binnen een Azure-beschikbaarheids zone, tenzij u [Azure proximity placement Group](../../linux/co-location.md)gebruikt. De manier waarop u de SAP-DBMS-laag en de centrale Services in meerdere zones kunt implementeren en tegelijkertijd de SAP-toepassingslaag implementeert met behulp van beschikbaarheids sets en nog steeds dicht nabij de grenzen van de Vm's wordt beschreven in het artikel [Azure proximity placement groups voor optimale netwerk latentie met SAP-toepassingen](sap-proximity-placement-scenarios.md). Als u geen gebruik maakt van Azure proximity placement groups, moet u een of de andere kiezen als een implementatie raamwerk voor virtuele machines.
+- U kunt geen [Azure Basic-Load Balancer](../../../load-balancer/load-balancer-overview.md) gebruiken om failover-cluster oplossingen te maken op basis van Windows Server failover clustering of Linux pacemaker. In plaats daarvan moet u de [Azure Standard Load Balancer-SKU](../../../load-balancer/load-balancer-standard-availability-zones.md)gebruiken.
 
 
 
@@ -90,7 +91,7 @@ Bij deze beslissingen moet u ook rekening houden met de netwerk latentie aanbeve
 
 
 > [!IMPORTANT]
-> Verwacht wordt dat de eerder beschreven metingen verschillende resultaten opleveren in elke Azure-regio die [Beschikbaarheidszones](https://docs.microsoft.com/azure/availability-zones/az-overview)ondersteunt. Zelfs als uw vereisten voor netwerk latentie hetzelfde zijn, moet u mogelijk verschillende implementatie strategieën in verschillende Azure-regio's aannemen, omdat de netwerk latentie tussen zones kan verschillen. In sommige Azure-regio's kan de netwerk latentie tussen de drie verschillende zones aanzienlijk verschillen. In andere regio's is de netwerk latentie tussen de drie verschillende zones mogelijk een uniformer. De claim dat er altijd een netwerk latentie tussen 1 en 2 milliseconden is, is onjuist. De netwerk latentie over Beschikbaarheidszones in azure-regio's kan niet worden gegeneraliseerd.
+> Verwacht wordt dat de eerder beschreven metingen verschillende resultaten opleveren in elke Azure-regio die [Beschikbaarheidszones](../../../availability-zones/az-overview.md)ondersteunt. Zelfs als uw vereisten voor netwerk latentie hetzelfde zijn, moet u mogelijk verschillende implementatie strategieën in verschillende Azure-regio's aannemen, omdat de netwerk latentie tussen zones kan verschillen. In sommige Azure-regio's kan de netwerk latentie tussen de drie verschillende zones aanzienlijk verschillen. In andere regio's is de netwerk latentie tussen de drie verschillende zones mogelijk een uniformer. De claim dat er altijd een netwerk latentie tussen 1 en 2 milliseconden is, is onjuist. De netwerk latentie over Beschikbaarheidszones in azure-regio's kan niet worden gegeneraliseerd.
 
 ## <a name="activeactive-deployment"></a>Actieve/actieve implementatie
 Deze implementatie architectuur heet actief/actief, omdat u uw actieve SAP-toepassings servers in twee of drie zones implementeert. Het SAP Central Services-exemplaar dat gebruik maakt van replicatie, wordt geïmplementeerd tussen twee zones. Hetzelfde geldt voor de DBMS-laag, die wordt geïmplementeerd in dezelfde zones als SAP Central-service.
@@ -103,18 +104,18 @@ Een vereenvoudigd schema van een actieve/actieve implementatie in twee zones kan
 
 De volgende overwegingen zijn van toepassing op deze configuratie:
 
-- Als u geen gebruik maakt van [Azure proximity placement Group](https://docs.microsoft.com/azure/virtual-machines/linux/co-location), behandelt u de Azure-beschikbaarheidszones als fout-en update domeinen voor alle virtuele machines, omdat beschikbaarheids sets niet in azure-beschikbaarheidszones kunnen worden geïmplementeerd.
+- Als u geen gebruik maakt van [Azure proximity placement Group](../../linux/co-location.md), behandelt u de Azure-beschikbaarheidszones als fout-en update domeinen voor alle virtuele machines, omdat beschikbaarheids sets niet in azure-beschikbaarheidszones kunnen worden geïmplementeerd.
 - Als u zonegebonden-implementaties voor de DBMS-laag en de centrale Services wilt combi neren, maar Azure-beschikbaarheids sets voor de toepassingslaag wilt gebruiken, moet u Azure-proximity-groepen gebruiken zoals beschreven in het artikel [Azure proximity placement groups voor optimale netwerk latentie met SAP-toepassingen](sap-proximity-placement-scenarios.md).
-- Voor de load balancers van de failover-clusters van SAP Central Services en de DBMS-laag moet u de [standaard-SKU Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)gebruiken. De basis Load Balancer werkt niet in verschillende zones.
+- Voor de load balancers van de failover-clusters van SAP Central Services en de DBMS-laag moet u de [standaard-SKU Azure Load Balancer](../../../load-balancer/load-balancer-standard-availability-zones.md)gebruiken. De basis Load Balancer werkt niet in verschillende zones.
 - Het virtuele Azure-netwerk dat u hebt geïmplementeerd om het SAP-systeem te hosten, samen met de bijbehorende subnetten, is uitgerekt over zones. U hebt geen afzonderlijke virtuele netwerken nodig voor elke zone.
 - Voor alle virtuele machines die u implementeert, moet u [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/)gebruiken. Niet-beheerde schijven worden niet ondersteund voor zonegebonden-implementaties.
-- Azure Premium Storage en [Ultra-SSD opslag](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd) bieden geen ondersteuning voor elk type opslag replicatie tussen zones. De toepassing (DBMS of SAP Central Services) moet belang rijke gegevens repliceren.
+- Azure Premium Storage en [Ultra-SSD opslag](../../windows/disks-types.md#ultra-disk) bieden geen ondersteuning voor elk type opslag replicatie tussen zones. De toepassing (DBMS of SAP Central Services) moet belang rijke gegevens repliceren.
 - Hetzelfde geldt voor de gedeelde sapmnt-map, een gedeelde schijf (Windows), een CIFS-share (Windows) of een NFS-share (Linux). U moet een technologie gebruiken waarmee deze gedeelde schijven of shares tussen de zones worden gerepliceerd. Deze technologieën worden ondersteund:
-  - Voor Windows is een cluster oplossing die gebruikmaakt van SIOS data keeper, zoals beschreven in [cluster a SAP ASCS/SCS instance op een Windows-failovercluster met behulp van een gedeelde cluster schijf in azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk).
-  - Voor SUSE Linux is een NFS-share die is gebouwd zoals beschreven in [hoge Beschik baarheid voor NFS op Azure-vm's op SuSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs).
+  - Voor Windows is een cluster oplossing die gebruikmaakt van SIOS data keeper, zoals beschreven in [cluster a SAP ASCS/SCS instance op een Windows-failovercluster met behulp van een gedeelde cluster schijf in azure](./sap-high-availability-guide-wsfc-shared-disk.md).
+  - Voor SUSE Linux is een NFS-share die is gebouwd zoals beschreven in [hoge Beschik baarheid voor NFS op Azure-vm's op SuSE Linux Enterprise Server](./high-availability-guide-suse-nfs.md).
     
-    Op dit moment wordt de oplossing die gebruikmaakt van micro soft Scale-out bestandsserver, zoals beschreven in de [Azure-infra structuur voor SAP-hoge Beschik baarheid voorbereiden met behulp van een Windows-failovercluster en bestands share voor SAP ASCS/SCS-instanties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share), niet ondersteund in verschillende zones.
-- De derde zone wordt gebruikt om het SBD-apparaat te hosten voor het geval u een [SuSE Linux pacemaker-cluster](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) of extra toepassings exemplaren bouwt.
+    Op dit moment wordt de oplossing die gebruikmaakt van micro soft Scale-out bestandsserver, zoals beschreven in de [Azure-infra structuur voor SAP-hoge Beschik baarheid voorbereiden met behulp van een Windows-failovercluster en bestands share voor SAP ASCS/SCS-instanties](./sap-high-availability-infrastructure-wsfc-file-share.md), niet ondersteund in verschillende zones.
+- De derde zone wordt gebruikt om het SBD-apparaat te hosten voor het geval u een [SuSE Linux pacemaker-cluster](./high-availability-guide-suse-pacemaker.md#create-azure-fence-agent-stonith-device) of extra toepassings exemplaren bouwt.
 - Als u de uitvoerings tijd consistent wilt maken voor kritieke bedrijfs processen, kunt u proberen bepaalde batch taken en gebruikers te omleiden naar toepassings exemplaren die in de zone actief zijn met het actieve DBMS-exemplaar met behulp van SAP batch Server-groepen, SAP-aanmeldings groepen of RFC-groepen. In het geval van een zonegebonden-failover moet u deze groepen echter hand matig verplaatsen naar exemplaren die worden uitgevoerd op Vm's die in de zone actief zijn met de actieve DB-VM.  
 - In elk van de zones wilt u mogelijk niet-actieve dialoog instanties implementeren. Dit is om direct terug te keren naar de voormalige resource capaciteit als een zone die wordt gebruikt door een deel van uw toepassings exemplaren buiten dienst is.
 
@@ -133,16 +134,16 @@ De volgende overwegingen zijn van toepassing op deze configuratie:
 
 - Beschikbaarheids sets kunnen niet worden geïmplementeerd in Azure-beschikbaarheidszones. Om dat te compenseren, kunt u Azure proximity placement groups gebruiken zoals beschreven in het artikel [Azure proximity placement groups voor optimale netwerk latentie met SAP-toepassingen](sap-proximity-placement-scenarios.md).
 - Wanneer u deze architectuur gebruikt, moet u de status nauw keurig bewaken en proberen om de actieve DBMS-en SAP Central Services-instanties in dezelfde zone als uw geïmplementeerde toepassingslaag te houden. In het geval van een failover van de SAP Central-service of het DBMS-exemplaar, wilt u er zeker van zijn dat u hand matig kunt failback in de zone, waarbij de SAP-toepassingslaag zo snel mogelijk wordt geïmplementeerd.
-- Voor de load balancers van de failover-clusters van SAP Central Services en de DBMS-laag moet u de [standaard-SKU Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)gebruiken. De basis Load Balancer werkt niet in verschillende zones.
+- Voor de load balancers van de failover-clusters van SAP Central Services en de DBMS-laag moet u de [standaard-SKU Azure Load Balancer](../../../load-balancer/load-balancer-standard-availability-zones.md)gebruiken. De basis Load Balancer werkt niet in verschillende zones.
 - Het virtuele Azure-netwerk dat u hebt geïmplementeerd om het SAP-systeem te hosten, samen met de bijbehorende subnetten, is uitgerekt over zones. U hebt geen afzonderlijke virtuele netwerken nodig voor elke zone.
 - Voor alle virtuele machines die u implementeert, moet u [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/)gebruiken. Niet-beheerde schijven worden niet ondersteund voor zonegebonden-implementaties.
-- Azure Premium Storage en [Ultra-SSD opslag](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd) bieden geen ondersteuning voor elk type opslag replicatie tussen zones. De toepassing (DBMS of SAP Central Services) moet belang rijke gegevens repliceren.
+- Azure Premium Storage en [Ultra-SSD opslag](../../windows/disks-types.md#ultra-disk) bieden geen ondersteuning voor elk type opslag replicatie tussen zones. De toepassing (DBMS of SAP Central Services) moet belang rijke gegevens repliceren.
 - Hetzelfde geldt voor de gedeelde sapmnt-map, een gedeelde schijf (Windows), een CIFS-share (Windows) of een NFS-share (Linux). U moet een technologie gebruiken waarmee deze gedeelde schijven of shares tussen de zones worden gerepliceerd. Deze technologieën worden ondersteund:
-    - Voor Windows is een cluster oplossing die gebruikmaakt van SIOS data keeper, zoals beschreven in [cluster a SAP ASCS/SCS instance op een Windows-failovercluster met behulp van een gedeelde cluster schijf in azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk).
-    - Voor SUSE Linux is een NFS-share die is gebouwd zoals beschreven in [hoge Beschik baarheid voor NFS op Azure-vm's op SuSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs).
+    - Voor Windows is een cluster oplossing die gebruikmaakt van SIOS data keeper, zoals beschreven in [cluster a SAP ASCS/SCS instance op een Windows-failovercluster met behulp van een gedeelde cluster schijf in azure](./sap-high-availability-guide-wsfc-shared-disk.md).
+    - Voor SUSE Linux is een NFS-share die is gebouwd zoals beschreven in [hoge Beschik baarheid voor NFS op Azure-vm's op SuSE Linux Enterprise Server](./high-availability-guide-suse-nfs.md).
     
-  Op dit moment wordt de oplossing die gebruikmaakt van micro soft Scale-out bestandsserver, zoals beschreven in de [Azure-infra structuur voor SAP-hoge Beschik baarheid voorbereiden met behulp van een Windows-failovercluster en bestands share voor SAP ASCS/SCS-instanties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share), niet ondersteund in verschillende zones.
-- De derde zone wordt gebruikt om het SBD-apparaat te hosten voor het geval u een [SuSE Linux pacemaker-cluster](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) of extra toepassings exemplaren bouwt.
+  Op dit moment wordt de oplossing die gebruikmaakt van micro soft Scale-out bestandsserver, zoals beschreven in de [Azure-infra structuur voor SAP-hoge Beschik baarheid voorbereiden met behulp van een Windows-failovercluster en bestands share voor SAP ASCS/SCS-instanties](./sap-high-availability-infrastructure-wsfc-file-share.md), niet ondersteund in verschillende zones.
+- De derde zone wordt gebruikt om het SBD-apparaat te hosten voor het geval u een [SuSE Linux pacemaker-cluster](./high-availability-guide-suse-pacemaker.md#create-azure-fence-agent-stonith-device) of extra toepassings exemplaren bouwt.
 - U moet actieve Vm's in de passieve zone implementeren (vanuit een DBMS-punt weergave), zodat u toepassings bronnen kunt starten in het geval van een storing in een zone.
     - [Azure site Recovery](https://azure.microsoft.com/services/site-recovery/) kan momenteel geen actieve vm's repliceren naar actieve vm's tussen zones. 
 - U moet investeren in Automation, zodat u, in het geval van een zone storing, automatisch de SAP-toepassingslaag in de tweede zone kunt starten.
@@ -163,16 +164,16 @@ De volgende overwegingen zijn van toepassing op deze configuratie:
 - Wanneer u deze architectuur gebruikt, moet u de status nauw keurig bewaken en proberen om de actieve DBMS-en SAP Central Services-instanties in dezelfde zone als uw geïmplementeerde toepassingslaag te houden. In het geval van een failover van de SAP Central-service of het DBMS-exemplaar, wilt u er zeker van zijn dat u hand matig kunt failback in de zone, waarbij de SAP-toepassingslaag zo snel mogelijk wordt geïmplementeerd.
 - U moet productie toepassings exemplaren vooraf geïnstalleerd hebben in de virtuele machines waarop de actieve exemplaren van de QA-toepassing worden uitgevoerd.
 - Als er een zone storing optreedt, sluit u de exemplaren van de QA-toepassing af en start u in plaats daarvan de productie-exemplaren. Houd er rekening mee dat u virtuele namen moet gebruiken voor de instanties van de toepassing om dit te laten werken.
-- Voor de load balancers van de failover-clusters van SAP Central Services en de DBMS-laag moet u de [standaard-SKU Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)gebruiken. De basis Load Balancer werkt niet in verschillende zones.
+- Voor de load balancers van de failover-clusters van SAP Central Services en de DBMS-laag moet u de [standaard-SKU Azure Load Balancer](../../../load-balancer/load-balancer-standard-availability-zones.md)gebruiken. De basis Load Balancer werkt niet in verschillende zones.
 - Het virtuele Azure-netwerk dat u hebt geïmplementeerd om het SAP-systeem te hosten, samen met de bijbehorende subnetten, is uitgerekt over zones. U hebt geen afzonderlijke virtuele netwerken nodig voor elke zone.
 - Voor alle virtuele machines die u implementeert, moet u [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/)gebruiken. Niet-beheerde schijven worden niet ondersteund voor zonegebonden-implementaties.
-- Azure Premium Storage en [Ultra-SSD opslag](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd) bieden geen ondersteuning voor elk type opslag replicatie tussen zones. De toepassing (DBMS of SAP Central Services) moet belang rijke gegevens repliceren.
+- Azure Premium Storage en [Ultra-SSD opslag](../../windows/disks-types.md#ultra-disk) bieden geen ondersteuning voor elk type opslag replicatie tussen zones. De toepassing (DBMS of SAP Central Services) moet belang rijke gegevens repliceren.
 - Hetzelfde geldt voor de gedeelde sapmnt-map, een gedeelde schijf (Windows), een CIFS-share (Windows) of een NFS-share (Linux). U moet een technologie gebruiken waarmee deze gedeelde schijven of shares tussen de zones worden gerepliceerd. Deze technologieën worden ondersteund:
-    - Voor Windows is een cluster oplossing die gebruikmaakt van SIOS data keeper, zoals beschreven in [cluster a SAP ASCS/SCS instance op een Windows-failovercluster met behulp van een gedeelde cluster schijf in azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk).
-    - Voor SUSE Linux is een NFS-share die is gebouwd zoals beschreven in [hoge Beschik baarheid voor NFS op Azure-vm's op SuSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs).
+    - Voor Windows is een cluster oplossing die gebruikmaakt van SIOS data keeper, zoals beschreven in [cluster a SAP ASCS/SCS instance op een Windows-failovercluster met behulp van een gedeelde cluster schijf in azure](./sap-high-availability-guide-wsfc-shared-disk.md).
+    - Voor SUSE Linux is een NFS-share die is gebouwd zoals beschreven in [hoge Beschik baarheid voor NFS op Azure-vm's op SuSE Linux Enterprise Server](./high-availability-guide-suse-nfs.md).
 
-  Op dit moment wordt de oplossing die gebruikmaakt van micro soft Scale-out bestandsserver, zoals beschreven in de [Azure-infra structuur voor SAP-hoge Beschik baarheid voorbereiden met behulp van een Windows-failovercluster en bestands share voor SAP ASCS/SCS-instanties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share), niet ondersteund in verschillende zones.
-- De derde zone wordt gebruikt om het SBD-apparaat te hosten voor het geval u een [SuSE Linux pacemaker-cluster](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) of extra toepassings exemplaren bouwt.
+  Op dit moment wordt de oplossing die gebruikmaakt van micro soft Scale-out bestandsserver, zoals beschreven in de [Azure-infra structuur voor SAP-hoge Beschik baarheid voorbereiden met behulp van een Windows-failovercluster en bestands share voor SAP ASCS/SCS-instanties](./sap-high-availability-infrastructure-wsfc-file-share.md), niet ondersteund in verschillende zones.
+- De derde zone wordt gebruikt om het SBD-apparaat te hosten voor het geval u een [SuSE Linux pacemaker-cluster](./high-availability-guide-suse-pacemaker.md#create-azure-fence-agent-stonith-device) of extra toepassings exemplaren bouwt.
 
 
 
@@ -181,11 +182,5 @@ De volgende overwegingen zijn van toepassing op deze configuratie:
 ## <a name="next-steps"></a>Volgende stappen
 Hier volgen enkele volgende stappen voor het implementeren van verschillende Azure-beschikbaarheidszones:
 
-- [Een SAP ASCS/SCS-exemplaar op een Windows-failovercluster clusteren met behulp van een gedeelde cluster schijf in azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)
-- [Azure-infra structuur voor SAP-hoge Beschik baarheid voorbereiden met behulp van een Windows-failovercluster en een bestands share voor SAP ASCS/SCS-instanties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)
-
-
-
-
-
-
+- [Een SAP ASCS/SCS-exemplaar op een Windows-failovercluster clusteren met behulp van een gedeelde cluster schijf in azure](./sap-high-availability-guide-wsfc-shared-disk.md)
+- [Azure-infra structuur voor SAP-hoge Beschik baarheid voorbereiden met behulp van een Windows-failovercluster en een bestands share voor SAP ASCS/SCS-instanties](./sap-high-availability-infrastructure-wsfc-file-share.md)

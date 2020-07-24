@@ -6,11 +6,12 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: cf0c97fd65f9966bf42fa22e2c8f92263952cb7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 333bba2b1d3cd83457196e38b827daa78199f235
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77655647"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033510"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Application Insights voor Azure Functions ondersteunde functies
 
@@ -45,7 +46,7 @@ Zie [afhankelijkheden](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Lo
 | &bull;ServiceBus                     |                   | Yes               | 
 | &bull;EventHub                       |                   | Yes               | 
 | | | | 
-| **Configureer bare**                      |                   |                   |           
+| **Configureerbaar**                      |                   |                   |           
 | &bull;Volledig configureerbaar.<br/>Zie [Azure functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) voor instructies.<br/>Zie [ASP.net core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) voor alle opties.               |                   | Yes                   | 
 
 
@@ -56,11 +57,11 @@ Het automatisch verzamelen van prestatie meter items werkt alleen op Windows-com
 
 ## <a name="live-metrics--secure-control-channel"></a>Live Metrics & kanaal voor beveiligd beheer
 
-De criteria voor aangepaste filters die u opgeeft, worden teruggestuurd naar het onderdeel Live Metrics in de SDK van Application Insights. De filters kunnen mogelijk gevoelige informatie bevatten, zoals customerIDs. U kunt het kanaal veilig maken met een geheime API-sleutel. Zie [het besturings kanaal beveiligen](https://docs.microsoft.com/azure/azure-monitor/app/live-stream#secure-the-control-channel) voor instructies.
+De criteria voor aangepaste filters die u opgeeft, worden teruggestuurd naar het onderdeel Live Metrics in de SDK van Application Insights. De filters kunnen mogelijk gevoelige informatie bevatten, zoals customerIDs. U kunt het kanaal veilig maken met een geheime API-sleutel. Zie [het besturings kanaal beveiligen](./live-stream.md#secure-the-control-channel) voor instructies.
 
 ## <a name="sampling"></a>Steekproeven
 
-Met Azure Functions worden steek proeven standaard in hun configuratie ingeschakeld. Zie [sampling configureren](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling)voor meer informatie.
+Met Azure Functions worden steek proeven standaard in hun configuratie ingeschakeld. Zie [sampling configureren](../../azure-functions/functions-monitoring.md#configure-sampling)voor meer informatie.
 
 Als uw project afhankelijk is van de Application Insights SDK om hand matige telemetrie-tracering uit te voeren, kunnen er vreemde problemen optreden als uw sampling configuratie verschilt van de sampling configuratie van de functies. 
 
