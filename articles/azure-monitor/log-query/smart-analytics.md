@@ -6,16 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/15/2019
-ms.openlocfilehash: 51584ccf5f845be8a06b1e049cae11e636edef11
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82960845e357579b82c493958287cb602d75182e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77659829"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067400"
 ---
 # <a name="log-analytics-smart-analytics-examples"></a>Voor beelden van Log Analytics Smart Analytics
 In dit artikel vindt u voor beelden van het gebruik van slimme Analytics-functies in Log Analytics voor het uitvoeren van analyse van gebruikers activiteit. U kunt deze voor beelden gebruiken om uw eigen toepassingen te analyseren die worden bewaakt door Application Insights of gebruik de concepten in deze query's voor vergelijk bare analyse van andere gegevens. 
 
-Zie de [Kusto-taal referentie](https://docs.microsoft.com/azure/kusto/query/) voor meer informatie over de verschillende tref woorden die in deze voor beelden worden gebruikt. Door loop een [Les over het maken van query's](get-started-queries.md) als u geen ervaring hebt met log Analytics.
+Zie de [Kusto-taal referentie](/azure/kusto/query/) voor meer informatie over de verschillende tref woorden die in deze voor beelden worden gebruikt. Door loop een [Les over het maken van query's](get-started-queries.md) als u geen ervaring hebt met log Analytics.
 
 ## <a name="cohorts-analytics"></a>Analyse van cohortes
 

@@ -3,12 +3,12 @@ title: Systeem status herstellen naar een Windows-Server
 description: Stapsgewijze uitleg voor het herstellen van de Windows Server-systeem status vanuit een back-up in Azure.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 5212e5ea0ed3a8c0e0a8e9d4fa45f1eb6c901bf5
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 8ba4cb5d5617b6a051aec8c54a595e701f62fb87
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184453"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067370"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Systeem status herstellen naar Windows Server
 
@@ -183,7 +183,7 @@ Dit artikel heeft alleen betrekking op het eerste scenario, waarmee u een nonaut
         >[!NOTE]
         >Als u alle Active Directory gegevens herstelt (en er zich geen werkende domein controllers in het forest bevinden), selecteert u in stap 9 hierboven **een bindende terugzet bewerking van Active Directory-bestanden uitvoeren**.
 
-    * Gebruik het hulp programma [Wbadmin](https://docs.microsoft.com/windows-server/administration/windows-commands/wbadmin-start-systemstaterecovery) om de herstel bewerking uit te voeren vanaf de opdracht regel.
+    * Gebruik het hulp programma [Wbadmin](/windows-server/administration/windows-commands/wbadmin-start-systemstaterecovery) om de herstel bewerking uit te voeren vanaf de opdracht regel.
 
         U hebt de versie-id nodig van de back-up die u wilt gebruiken. U kunt een lijst met versie-id's ophalen door de volgende opdracht uit te voeren:
 
@@ -193,7 +193,7 @@ Dit artikel heeft alleen betrekking op het eerste scenario, waarmee u een nonaut
 
         Vervolgens gebruikt u die versie-id om het herstel uit te voeren.
 
-        Als u bijvoorbeeld een nonauthorative- [herstel van AD DS en een bindende terugzet bewerking van de map SYSVOL](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-nonauthoritative-restore) wilt uitvoeren met behulp van de back-up van 04/30/2020 om 9:00 uur, die is opgeslagen op de gedeelde bron `\\servername\share` voor `server01` , typt u:
+        Als u bijvoorbeeld een nonauthorative- [herstel van AD DS en een bindende terugzet bewerking van de map SYSVOL](/windows-server/identity/ad-ds/manage/ad-forest-recovery-nonauthoritative-restore) wilt uitvoeren met behulp van de back-up van 04/30/2020 om 9:00 uur, die is opgeslagen op de gedeelde bron `\\servername\share` voor `server01` , typt u:
 
         ```cmd
         wbadmin start systemstaterecovery -version:04/30/2020-09:00 -backupTarget:\\servername\share -machine:server01 -authsysvol

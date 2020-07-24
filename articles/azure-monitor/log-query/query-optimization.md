@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: 9ae0aec6b87a746ed1f141dcf98f599acd20ab3a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5a454d04701160492539f5c9caba57c9e617401e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82864246"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067474"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Logboek query's in Azure Monitor optimaliseren
 Azure Monitor logboeken maakt gebruik van [Azure Data Explorer (ADX)](/azure/data-explorer/) om logboek gegevens op te slaan en query's uit te voeren voor het analyseren van die gegevens. Het maakt, beheert en onderhoudt de ADX-clusters en optimaliseert deze voor de werk belasting van uw logboek analyse. Wanneer u een query uitvoert, wordt deze geoptimaliseerd en doorgestuurd naar het juiste ADX-cluster waarin de werkruimte gegevens worden opgeslagen. Zowel Azure Monitor-Logboeken als Azure Data Explorer maakt gebruik van veel automatische optimalisatie mechanismen voor query's. Automatische optimalisaties bieden een aanzienlijke Boost, maar in sommige gevallen kunt u de query prestaties aanzienlijk verbeteren. In dit artikel worden de prestatie overwegingen en verschillende technieken uitgelegd om ze op te lossen.
@@ -156,7 +157,7 @@ Heartbeat
 > Deze indicator presenteert alleen CPU van het directe cluster. In een query met meerdere regio's zou het slechts een van de regio's vertegenwoordigen. In een query met meerdere werk ruimten zijn mogelijk niet alle werk ruimten inbegrepen.
 
 ### <a name="avoid-full-xml-and-json-parsing-when-string-parsing-works"></a>Volledige XML-en JSON-parsering voor komen wanneer het parseren van teken reeksen werkt
-Het volledig parseren van een XML-of JSON-object kan gebruikmaken van hoge CPU-en geheugen bronnen. In veel gevallen, wanneer slechts één of twee para meters nodig zijn en de XML-of JSON-objecten eenvoudig zijn, is het eenvoudiger ze te parseren als teken reeksen met behulp van de [operator parse](/azure/kusto/query/parseoperator) of andere [technieken voor het parseren van tekst](/azure/azure-monitor/log-query/parse-text). De prestatie verbetering is aanzienlijk naarmate het aantal records in het XML-of JSON-object toeneemt. Het is essentieel wanneer het aantal records tien tallen miljoenen wordt bereikt.
+Het volledig parseren van een XML-of JSON-object kan gebruikmaken van hoge CPU-en geheugen bronnen. In veel gevallen, wanneer slechts één of twee para meters nodig zijn en de XML-of JSON-objecten eenvoudig zijn, is het eenvoudiger ze te parseren als teken reeksen met behulp van de [operator parse](/azure/kusto/query/parseoperator) of andere [technieken voor het parseren van tekst](./parse-text.md). De prestatie verbetering is aanzienlijk naarmate het aantal records in het XML-of JSON-object toeneemt. Het is essentieel wanneer het aantal records tien tallen miljoenen wordt bereikt.
 
 De volgende query retourneert bijvoorbeeld exact dezelfde resultaten als de bovenstaande query's zonder volledige XML-parsering uit te voeren. Houd er rekening mee dat er bij de structuur van het XML-bestand enkele hypo Thesen worden gemaakt, zoals het FileHash en geen kenmerken hebben. 
 
@@ -218,6 +219,64 @@ SecurityEvent
 | where EventID == 4624 //Logon GUID is relevant only for logon event
 | summarize LoginSessions = dcount(LogonGuid) by Account
 ```
+
+### <a name="avoid-multiple-scans-of-same-source-data-using-conditional-aggregation-functions-and-materialize-function"></a>Vermijd meerdere scans van dezelfde bron gegevens met voorwaardelijke aggregatie functies en de functie realiseren
+Wanneer een query meerdere subquery's heeft die worden samengevoegd met de Opera tors samen voegen of samen voegen, scant elke subquery de hele bron afzonderlijk en worden de resultaten samengevoegd. Hiermee wordt het aantal keer dat gegevens worden gescand in zeer grote gegevens sets, vermenigvuldigd.
+
+Een techniek om dit te voor komen, is door gebruik te maken van de functies voor voorwaardelijke aggregatie. De meeste [aggregatie functies](/azure/data-explorer/kusto/query/summarizeoperator#list-of-aggregation-functions) die worden gebruikt in de samenvattings operator hebben een versie met voor waarden die u in staat stelt om één samenvattings operator met meerdere voor waarden te gebruiken. 
+
+De volgende query's tonen bijvoorbeeld het aantal aanmeldings gebeurtenissen en het aantal proces uitvoerings gebeurtenissen voor elk account. Ze retour neren dezelfde resultaten, maar bij de eerste scan worden de gegevens twee maal gescand, de tweede keer scannen:
+
+```Kusto
+//Scans the SecurityEvent table twice and perform expensive join
+SecurityEvent
+| where EventID == 4624 //Login event
+| summarize LoginCount = count() by Account
+| join 
+(
+    SecurityEvent
+    | where EventID == 4688 //Process execution event
+    | summarize ExecutionCount = count(), ExecutedProcesses = make_set(Process) by Account
+) on Account
+```
+
+```Kusto
+//Scan only once with no join
+SecurityEvent
+| where EventID == 4624 or EventID == 4688 //early filter
+| summarize LoginCount = countif(EventID == 4624), ExecutionCount = countif(EventID == 4688), ExecutedProcesses = make_set_if(Process,EventID == 4688)  by Account
+```
+
+Een andere geval waarbij subquery's niet onnodig worden gefilterd voor de [operator parseren](/azure/data-explorer/kusto/query/parseoperator?pivots=azuremonitor) om ervoor te zorgen dat alleen records worden verwerkt die overeenkomen met een specifiek patroon. Dit is niet nodig omdat de operator parse en andere vergelijk bare Opera tors lege resultaten retour neren wanneer het patroon niet overeenkomt. Hier volgen twee query's die exact dezelfde resultaten retour neren, terwijl de tweede query gegevens slechts één keer scant. In de tweede query is elke parse-opdracht alleen relevant voor de gebeurtenissen. De operator Extend laat zien hoe u naar een lege gegevens situatie verwijst.
+
+```Kusto
+//Scan SecurityEvent table twice
+union(
+SecurityEvent
+| where EventID == 8002 
+| parse EventData with * "<FilePath>" FilePath "</FilePath>" * "<FileHash>" FileHash "</FileHash>" *
+| distinct FilePath
+),(
+SecurityEvent
+| where EventID == 4799
+| parse EventData with * "CallerProcessName\">" CallerProcessName1 "</Data>" * 
+| distinct CallerProcessName1
+)
+```
+
+```Kusto
+//Single scan of the SecurityEvent table
+SecurityEvent
+| where EventID == 8002 or EventID == 4799
+| parse EventData with * "<FilePath>" FilePath "</FilePath>" * "<FileHash>" FileHash "</FileHash>" * //Relevant only for event 8002
+| parse EventData with * "CallerProcessName\">" CallerProcessName1 "</Data>" *  //Relevant only for event 4799
+| extend FilePath = iif(isempty(CallerProcessName1),FilePath,"")
+| distinct FilePath, CallerProcessName1
+```
+
+Als het bovenstaande niet toestaat om subquery's te gebruiken, is een andere techniek een hint voor de query-engine dat er één bron gegevens worden gebruikt in elk daarvan met behulp van de [functie realiseren ()](/azure/data-explorer/kusto/query/materializefunction?pivots=azuremonitor). Dit is handig wanneer de bron gegevens afkomstig zijn uit een functie die meermaals wordt gebruikt in de query.
+
+
 
 ### <a name="reduce-the-number-of-columns-that-is-retrieved"></a>Verminder het aantal kolommen dat wordt opgehaald
 

@@ -3,12 +3,12 @@ title: Offline back-ups voor DPM en Azure Backup Server
 description: Met Azure Backup kunt u gegevens van het netwerk verzenden met behulp van de Azure import/export-service. In dit artikel wordt de werk stroom voor offline back-ups voor DPM en Azure Backup Server uitgelegd.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 3f02c48ddd2c5cd4831d8c7a84dbbf42f55a562a
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: f27a38657bb43a1d1153a0372db0e1f9e284eccc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187792"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067339"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>Offline back-upwerk stroom voor DPM en Azure Backup Server (MABS)
 
@@ -49,7 +49,7 @@ Zorg ervoor dat aan de volgende vereisten wordt voldaan voordat u de werk stroom
 
 * Controleer op de DPM-of MABS-server of micro soft Edge of Internet Explorer 11 is geïnstalleerd en of Java script is ingeschakeld.
 * Maak een Azure Storage-account in hetzelfde abonnement als de Recovery Services kluis.
-* Zorg ervoor dat u over de [benodigde machtigingen](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) beschikt om de Azure Active Directory-toepassing te maken. De werk stroom offline back-up maakt een Azure Active Directory-toepassing in het abonnement dat is gekoppeld aan het Azure Storage-account. Het doel van de toepassing is om Azure Backup te voorzien van beveiligde en scoped toegang tot de Azure-import Service, die is vereist voor de werk stroom voor offline back-ups.
+* Zorg ervoor dat u over de [benodigde machtigingen](../active-directory/develop/howto-create-service-principal-portal.md) beschikt om de Azure Active Directory-toepassing te maken. De werk stroom offline back-up maakt een Azure Active Directory-toepassing in het abonnement dat is gekoppeld aan het Azure Storage-account. Het doel van de toepassing is om Azure Backup te voorzien van beveiligde en scoped toegang tot de Azure-import Service, die is vereist voor de werk stroom voor offline back-ups.
 * Registreer de resource provider micro soft. ImportExport bij het abonnement met het Azure Storage-account. De resource provider registreren:
     1. Klik in het hoofd menu op **abonnementen**.
     2. Als u bent geabonneerd op meerdere abonnementen, selecteert u het abonnement dat u gebruikt voor de offline back-up. Als u slechts één abonnement gebruikt, wordt uw abonnement weer gegeven.
@@ -64,7 +64,7 @@ Zorg ervoor dat aan de volgende vereisten wordt voldaan voordat u de werk stroom
 
 ## <a name="workflow"></a>Werkstroom
 
-De informatie in deze sectie helpt u bij het volt ooien van de werk stroom voor offline back-ups, zodat uw gegevens kunnen worden geleverd aan een Azure-Data Center en naar Azure Storage worden geüpload. Als u vragen hebt over de import service of een aspect van het proces, raadpleegt u de documentatie overzicht van het importeren van de [service](https://docs.microsoft.com/azure/storage/common/storage-import-export-service) .
+De informatie in deze sectie helpt u bij het volt ooien van de werk stroom voor offline back-ups, zodat uw gegevens kunnen worden geleverd aan een Azure-Data Center en naar Azure Storage worden geüpload. Als u vragen hebt over de import service of een aspect van het proces, raadpleegt u de documentatie overzicht van het importeren van de [service](../storage/common/storage-import-export-service.md) .
 
 ## <a name="initiate-offline-backup"></a>Offline back-up initiëren
 
@@ -188,7 +188,7 @@ De hoeveelheid tijd die nodig is voor het verwerken van een Azure import-taak va
 
 ### <a name="monitor-azure-import-job-status"></a>Status van Azure import-taak controleren
 
-U kunt de status van uw import taak controleren vanuit de Azure Portal door te navigeren naar de pagina **import/export-taken** en uw taak te selecteren. Zie het artikel [Storage import export service](https://docs.microsoft.com/azure/storage/common/storage-import-export-service) voor meer informatie over de status van de import taken.
+U kunt de status van uw import taak controleren vanuit de Azure Portal door te navigeren naar de pagina **import/export-taken** en uw taak te selecteren. Zie het artikel [Storage import export service](../storage/common/storage-import-export-service.md) voor meer informatie over de status van de import taken.
 
 ### <a name="complete-the-workflow"></a>De werk stroom volt ooien
 

@@ -1,5 +1,5 @@
 ---
-title: Wat is nieuw?
+title: Wat is er nieuw?
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Meer informatie over de nieuwe functies en documentatie verbeteringen voor Azure SQL Database & SQL Managed instance.
 services: sql-database
@@ -9,21 +9,21 @@ ms.subservice: service
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 05/13/2020
+ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: ed6f164adb9e0a6daf24342021087b2cede3289d
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 4257b2fab5e0cca0cb016794673ed39ae4973895
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981370"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067417"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Wat is er nieuw in Azure SQL Database & SQL Managed instance?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Dit artikel bevat een overzicht van Azure SQL Database en Azure SQL Managed instance-functies die momenteel beschikbaar zijn in de open bare preview. Zie [SQL Database & SQL Managed instance service updates](https://azure.microsoft.com/updates/?product=sql-database)voor SQL database en de updates en verbeteringen van SQL Managed instance. Zie [service-updates](https://azure.microsoft.com/updates)voor updates en verbeteringen voor andere Azure-Services.
 
-## <a name="whats-new"></a>Wat is nieuw?
+## <a name="whats-new"></a>Wat is er nieuw?
 
 Documentatie voor Azure SQL Database en Azure SQL Managed instance is in afzonderlijke secties gesplitst. We hebben ook bijgewerkt hoe we verwijzen naar een beheerd exemplaar van *Azure SQL database beheerde* instantie naar *Azure SQL Managed*instance.
 
@@ -50,7 +50,6 @@ Deze tabel bevat een snelle vergelijking voor de wijziging in de terminologie:
 
 | Functie | Details |
 | ---| --- |
-| Nieuwe hardware gegenereerd met de Fsv2-serie en M-serie| Zie [Hardware-generaties](service-tiers-vcore.md#hardware-generations)voor meer informatie.|
 | Versneld database herstel met afzonderlijke data bases en elastische Pools | Zie [versneld database herstel](../accelerated-database-recovery.md)voor meer informatie.|
 | Gegevensdetectie en -classificatie  |Zie [Azure SQL database en Azure Synapse Analytics data discovery & classificatie](data-discovery-and-classification-overview.md)voor meer informatie.|
 | Taken voor Elastic Database | Zie [elastische taken maken, configureren en beheren](elastic-jobs-overview.md)voor meer informatie. |
@@ -98,8 +97,8 @@ De volgende functies zijn ingeschakeld in het implementatie model voor SQL-behee
 
 |Probleem  |Gedetecteerde datum  |Status  |Opgelost op  |
 |---------|---------|---------|---------|
-|[Hand matige back-up herstellen zonder CONTROLESOM kan mislukken](#restoring-manual-backup-without-checksum-might-fail)|Mei 2020|Heeft tijdelijke oplossing| |
-|[Agent reageert niet meer wanneer u bestaande taken wijzigt, uitschakelt of inschakelt](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|Mei 2020|Automatisch beperkt| |
+|[Hand matige back-up herstellen zonder CONTROLESOM kan mislukken](#restoring-manual-backup-without-checksum-might-fail)|Mei 2020|Opgelost|Juni 2020|
+|[Agent reageert niet meer wanneer u bestaande taken wijzigt, uitschakelt of inschakelt](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|Mei 2020|Opgelost|Juni 2020|
 |[Machtigingen voor de resource groep zijn niet toegepast op een SQL-beheerd exemplaar](#permissions-on-resource-group-not-applied-to-sql-managed-instance)|Feb 2020|Heeft tijdelijke oplossing||
 |[Beperking van hand matige failover via de portal voor failover-groepen](#limitation-of-manual-failover-via-portal-for-failover-groups)|Jan 2020|Heeft tijdelijke oplossing||
 |[SQL Agent-rollen hebben expliciete EXECUTE-machtigingen nodig voor niet-sysadmin-aanmeldingen](#in-memory-oltp-memory-limits-are-not-applied)|Dec 2019|Heeft tijdelijke oplossing||
@@ -238,7 +237,7 @@ De `tempdb` Data Base is altijd gesplitst in 12 gegevens bestanden en de bestand
 
 Elk Algemeen exemplaar van een SQL Managed instance heeft tot 35 TB aan opslag gereserveerd voor Azure Premium-schijf ruimte. Elk database bestand wordt geplaatst op een afzonderlijke fysieke schijf. Schijf grootten kunnen 128 GB, 256 GB, 512 GB, 1 TB of 4 TB zijn. Voor ongebruikte ruimte op de schijf worden geen kosten in rekening gebracht, maar de totale som van Azure Premium-schijf grootten mag niet groter zijn dan 35 TB. In sommige gevallen kan een beheerd exemplaar dat niet 8 TB in totaal nodig heeft, de Azure-limiet van 35 TB overschrijden bij de opslag grootte vanwege interne fragmentatie.
 
-Zo kan een Algemeen exemplaar van een SQL Managed instance een groot bestand hebben met een grootte van 1,2 TB op een schijf van 4 TB. Het bestand kan ook 248 bestanden van 1 GB zijn en die op afzonderlijke schijven van 128 GB worden geplaatst. In dit voorbeeld geldt het volgende:
+Zo kan een Algemeen exemplaar van een SQL Managed instance een groot bestand hebben met een grootte van 1,2 TB op een schijf van 4 TB. Het bestand kan ook 248 bestanden van 1 GB zijn en die op afzonderlijke schijven van 128 GB worden geplaatst. In dit voorbeeld:
 
 - De totale toegewezen schijf ruimte is 1 x 4 TB + 248 x 128 GB = 35 TB.
 - De totale gereserveerde ruimte voor data bases op het exemplaar is 1 x 1,2 TB + 248 x 1 GB = 1,4 TB.
