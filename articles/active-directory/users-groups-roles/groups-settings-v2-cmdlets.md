@@ -14,11 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03c5e3fe7fe84b968b59d0668619b3feddacc4f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce3a97678dea7e7b26caa3b1b091b023eca1a555
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84727820"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015694"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Azure Active Directory versie 2-cmdlets voor groeps beheer
 
@@ -49,7 +50,7 @@ Als u wilt controleren of de module gereed is voor gebruik, gebruikt u de volgen
     Binary     2.0.0.115    azuread                      {Add-AzureADAdministrati...}
 ```
 
-U kunt nu beginnen met het gebruik van de cmdlets in de module. Raadpleeg de online-referentie documentatie voor [Azure Active Directory Power shell-versie 2](/powershell/azure/install-adv2?view=azureadps-2.0)voor een volledige beschrijving van de cmdlets in de Azure ad-module.
+U kunt nu beginnen met het gebruik van de cmdlets in de module. Raadpleeg de online-referentie documentatie voor [Azure Active Directory Power shell-versie 2](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)voor een volledige beschrijving van de cmdlets in de Azure ad-module.
 
 > [!NOTE]
 > De Azure AD Power shell-cmdlets werken niet met de nieuwe Power shell 7, omdat deze is gebaseerd op .net core. We zijn op de hoogte en dit is in het proces van het downloaden van updates. Vanaf nu stellen we suggesties voor het gebruik van de Windows Power shell 5. x-module die moet worden gebruikt voor Azure AD Power shell-bewerkingen. 
@@ -337,7 +338,7 @@ Het terugschrijven van Office 365-groep is een open bare preview-functie van Azu
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt meer Azure Active Directory Power shell-documentatie vinden op [Azure Active Directory-cmdlets](/powershell/azure/install-adv2?view=azureadps-2.0).
+U kunt meer Azure Active Directory Power shell-documentatie vinden op [Azure Active Directory-cmdlets](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0).
 
 * [Toegang tot resources beheren met Azure Active Directory groepen](../fundamentals/active-directory-manage-groups.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
 * [Integrating your on-premises identities with Azure Active Directory (Engelstalig)](../hybrid/whatis-hybrid-identity.md?context=azure/active-directory/users-groups-roles/context/ugr-context)

@@ -1,15 +1,15 @@
 ---
-title: Een Windows Server-container maken op een Azure Kubernetes service (AKS)-cluster
+title: Een Windows Server-container maken op een AKS-cluster met behulp van Azure CLI
 description: Meer informatie over hoe u snel een Kubernetes-cluster maakt, een toepassing implementeert in een Windows Server-container in azure Kubernetes service (AKS) met behulp van de Azure CLI.
 services: container-service
 ms.topic: article
-ms.date: 05/06/2020
-ms.openlocfilehash: 29ee22cb4b28726b25ead6ff78d90de99847666b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/16/2020
+ms.openlocfilehash: 5baa4f807002cc39428eb46e5a86cf59bd022cb2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84886962"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015626"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Een Windows Server-container maken op een Azure Kubernetes service (AKS)-cluster met behulp van Azure CLI
 
@@ -70,7 +70,7 @@ In de volgende voorbeelduitvoer ziet u dat de resourcegroep is gemaakt:
 Als u een AKS-cluster wilt uitvoeren dat knooppunt Pools ondersteunt voor Windows Server-containers, moet uw cluster gebruikmaken van een netwerk beleid dat gebruikmaakt van de invoeg toepassing [Azure cni][azure-cni-about] (Geavanceerd). Zie [Azure cni-netwerken configureren][use-advanced-networking]voor meer informatie over het plannen van de vereiste subnet bereiken en netwerk overwegingen. Gebruik de opdracht [AZ AKS Create][az-aks-create] om een AKS-cluster te maken met de naam *myAKSCluster*. Met deze opdracht worden de benodigde netwerk bronnen gemaakt als deze nog niet bestaan.
 
 * Het cluster is geconfigureerd met twee knoop punten
-* De para meters *Windows-admin-password* en *Windows-admin-username* stellen de beheerders referenties in voor alle Windows Server-containers die op het cluster zijn gemaakt.
+* De para meters *Windows-admin-password* en *Windows-admin-username* stellen de beheerders referenties in voor alle Windows Server-containers die op het cluster zijn gemaakt en moeten voldoen aan de [vereisten voor Windows Server-wacht woorden][windows-server-password].
 * De knooppunt groep gebruikt`VirtualMachineScaleSets`
 
 > [!NOTE]
@@ -294,3 +294,4 @@ Voor meer informatie over AKS en een volledig stapsgewijs voorbeeld van code tot
 [aks-faq]: faq.md
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
+[windows-server-password]: /windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements#reference

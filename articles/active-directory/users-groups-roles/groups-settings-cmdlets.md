@@ -14,11 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b91eb361d4bcae304734817ee7f57141d6f06415
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd060972e562759fcc1071f2c6549578bd3d4ed9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84727854"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015711"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory cmdlets voor het configureren van groepsinstellingen
 
@@ -31,7 +32,7 @@ Voor meer informatie over het voor komen van niet-beheerders gebruikers om bevei
 
 Instellingen voor Office 365-groepen worden geconfigureerd met behulp van een instellingen object en een SettingsTemplate-object. In eerste instantie ziet u geen instellingen objecten in uw directory, omdat uw directory is geconfigureerd met de standaard instellingen. Als u de standaard instellingen wilt wijzigen, moet u een nieuw instellingen object maken met behulp van een instellingen sjabloon. Instellingen sjablonen worden gedefinieerd door micro soft. Er zijn verschillende instellingen sjablonen. Als u de instellingen voor de Office 365-groep voor uw Directory wilt configureren, gebruikt u de sjabloon groep. Unified. Als u de instellingen voor de Office 365-groep wilt configureren voor één groep, gebruikt u de sjabloon met de naam groep. Unified. Guest. Deze sjabloon wordt gebruikt voor het beheren van gast toegang tot een Office 365-groep. 
 
-De cmdlets maken deel uit van de Azure Active Directory Power shell V2-module. Zie het artikel [Azure Active Directory Power shell versie 2](https://docs.microsoft.com/powershell/azuread/)voor instructies voor het downloaden en installeren van de module op uw computer. U kunt de versie 2-versie van de module installeren vanuit [de Power shell-galerie](https://www.powershellgallery.com/packages/AzureAD/).
+De cmdlets maken deel uit van de Azure Active Directory Power shell V2-module. Zie het artikel [Azure Active Directory Power shell versie 2](https://docs.microsoft.com/powershell/azure/active-directory/overview)voor instructies voor het downloaden en installeren van de module op uw computer. U kunt de versie 2-versie van de module installeren vanuit [de Power shell-galerie](https://www.powershellgallery.com/packages/AzureAD/).
 
 ## <a name="install-powershell-cmdlets"></a>PowerShell-cmdlets installeren
 
@@ -318,9 +319,9 @@ Met deze stap worden de instellingen op mapniveau verwijderd, die van toepassing
    ```
 
 ## <a name="cmdlet-syntax-reference"></a>Naslag informatie over de cmdlet-syntaxis
-U kunt meer Azure Active Directory Power shell-documentatie vinden op [Azure Active Directory-cmdlets](/powershell/azure/install-adv2?view=azureadps-2.0).
+U kunt meer Azure Active Directory Power shell-documentatie vinden op [Azure Active Directory-cmdlets](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0).
 
-## <a name="additional-reading"></a>Aanvullende Lees bewerkingen
+## <a name="additional-reading"></a>Meer artikelen
 
 * [Toegang tot resources beheren met Azure Active Directory groepen](../fundamentals/active-directory-manage-groups.md)
 * [Integrating your on-premises identities with Azure Active Directory (Engelstalig)](../hybrid/whatis-hybrid-identity.md)

@@ -3,19 +3,26 @@ title: Een persoonlijk Azure Kubernetes service-cluster maken
 description: Meer informatie over het maken van een AKS-cluster (private Azure Kubernetes service)
 services: container-service
 ms.topic: article
-ms.date: 6/18/2020
-ms.openlocfilehash: c788f2009bdc771bcdde20d1c3dbe9eafdbcffcb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 7/17/2020
+ms.openlocfilehash: 10cbd58807c213418a88b42887cdb76868eac34e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244222"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015646"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Een persoonlijk Azure Kubernetes service-cluster maken
 
-In een particulier cluster heeft het besturings vlak of de API-server interne IP-adressen die zijn gedefinieerd in het [RFC1918-adres toewijzing voor privé-Internets](https://tools.ietf.org/html/rfc1918) . Door gebruik te maken van een persoonlijk cluster, kunt u ervoor zorgen dat het netwerk verkeer tussen uw API-server en uw knooppunt groepen alleen op het particuliere netwerk blijft.
+In een particulier cluster heeft het besturings vlak of de API-server interne IP-adressen die zijn gedefinieerd in het [RFC1918-adres toewijzing voor privé-Internets](https://tools.ietf.org/html/rfc1918) . Door gebruik te maken van een persoonlijk cluster, kunt u ervoor zorgen dat het netwerk verkeer tussen uw API-server en de knooppunt groepen alleen in het particuliere netwerk blijven.
 
 Het besturings vlak of de API-server bevindt zich in een door Azure Kubernetes service (AKS) beheerd Azure-abonnement. Het cluster of de knooppunt groep van een klant bevindt zich in het abonnement van de klant. De server en het cluster of de knooppunt groep kunnen met elkaar communiceren via de [Azure Private Link-service][private-link-service] in het virtuele netwerk van de API-server en een persoonlijk eind punt dat wordt weer gegeven in het subnet van het AKS-cluster van de klant.
+
+## <a name="region-availability"></a>Beschikbaarheid in regio’s
+
+Een persoonlijk cluster is beschikbaar in open bare regio's waar [AKS wordt ondersteund](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service).
+
+* Azure China 21Vianet wordt momenteel niet ondersteund.
+* US Gov-Texas wordt momenteel niet ondersteund vanwege ontbrekende ondersteuning van persoonlijke koppelingen.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -69,13 +76,13 @@ Het maken van een virtuele machine in hetzelfde VNET als het AKS-cluster is de e
 
 ## <a name="virtual-network-peering"></a>Peering op virtueel netwerk
 
-Zoals vermeld, is VNet-peering een manier om toegang te krijgen tot uw persoonlijke cluster. Als u VNet-peering wilt gebruiken, moet u een koppeling instellen tussen het virtuele netwerk en de privé-DNS-zone.
+Zoals gezegd, is peering in virtuele netwerken een manier om toegang te krijgen tot uw persoonlijke cluster. Als u virtuele netwerk peering wilt gebruiken, moet u een koppeling instellen tussen het virtuele netwerk en de privé-DNS-zone.
     
 1. Ga naar de resource groep knoop punt in de Azure Portal.  
 2. Selecteer de privé-DNS-zone.   
 3. Selecteer de koppeling **virtueel netwerk** in het linkerdeel venster.  
 4. Maak een nieuwe koppeling om het virtuele netwerk van de VM toe te voegen aan de privé-DNS-zone. Het duurt enkele minuten voordat de koppeling van de DNS-zone beschikbaar wordt.  
-5. Navigeer in het Azure Portal naar de resource groep die het VNet van het cluster bevat.  
+5. Navigeer in het Azure Portal naar de resource groep die het virtuele netwerk van het cluster bevat.  
 6. Selecteer het virtuele netwerk in het rechterdeel venster. De naam van het virtuele netwerk bevindt zich in de vorm *AKS-vnet- \* *.  
 7. Selecteer **peerings**in het linkerdeel venster.  
 8. Selecteer **toevoegen**, voeg het virtuele netwerk van de VM toe en maak de peering.  
@@ -89,7 +96,7 @@ Zoals vermeld, is VNet-peering een manier om toegang te krijgen tot uw persoonli
 
 1. Wanneer een persoonlijk cluster is ingericht, wordt standaard een persoonlijk eind punt (1) en een privé-DNS-zone (2) gemaakt in de door het cluster beheerde resource groep. Het cluster maakt gebruik van een A-record in de privé zone om het IP-adres van het privé-eind punt voor communicatie met de API-server op te lossen.
 
-2. De privé-DNS-zone wordt alleen gekoppeld aan het VNet waaraan de cluster knooppunten zijn gekoppeld (3). Dit betekent dat het privé-eind punt alleen kan worden omgezet door hosts in het gekoppelde VNet. In scenario's waarin geen aangepaste DNS is geconfigureerd op het VNet (standaard), werkt dit zonder te verlenen als hosts-punt op 168.63.129.16 voor DNS, waarmee records in de privé-DNS-zone kunnen worden omgezet door de koppeling.
+2. De privé-DNS-zone wordt alleen gekoppeld aan het VNet waaraan de cluster knooppunten zijn gekoppeld (3). Dit betekent dat het privé-eind punt alleen kan worden omgezet door hosts in het gekoppelde VNet. In scenario's waarin geen aangepaste DNS is geconfigureerd op het VNet (standaard), werkt dit zonder te verlenen als hosts-punt op 168.63.129.16 voor DNS, waarmee records in de privé-DNS-zone kunnen worden omgezet vanwege de koppeling.
 
 3. In scenario's waarin het VNet dat uw cluster bevat aangepaste DNS-instellingen (4) heeft, mislukt de implementatie van het cluster, tenzij de privé-DNS-zone is gekoppeld aan het VNet dat de aangepaste DNS-resolvers (5) bevat. Deze koppeling kan hand matig worden gemaakt nadat de privé zone is gemaakt tijdens het inrichten van een cluster of via Automation wanneer de zone wordt gedetecteerd met behulp van implementatie mechanismen op basis van gebeurtenissen (bijvoorbeeld Azure Event Grid en Azure Functions).
 
