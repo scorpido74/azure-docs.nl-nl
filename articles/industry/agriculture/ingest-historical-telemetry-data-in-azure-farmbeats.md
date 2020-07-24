@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.custom: has-adal-ref
-ms.openlocfilehash: 3833b27e9f90cbffa2320c84877d4eb5bb6520f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a7d83c327eb1c37478c0c2e5725136d43a91a009
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82613265"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061217"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Historische telemetriegegevens opnemen
 
@@ -61,8 +61,14 @@ Volg deze stappen:
     ```azurepowershell-interactive 
     cd
     ```
+    
+6. Voer de volgende opdracht uit. Hiermee wordt een geverifieerde account verbonden voor Azure AD-aanvragen
 
-6. Voer de volgende opdracht uit. Hiermee wordt een script gedownload naar uw basismap.
+    ```azurepowershell-interactive 
+    Connect-AzureAD
+    ```
+
+7. Voer de volgende opdracht uit. Hiermee wordt een script gedownload naar uw basismap.
 
     ```azurepowershell-interactive 
 
@@ -70,7 +76,7 @@ Volg deze stappen:
 
     ```
 
-7. Voer het volgende script uit. Het script vraagt om de Tenant-id, die kan worden verkregen van **Azure Active Directory**  >  **overzichts** pagina.
+8. Voer het volgende script uit. Het script vraagt om de Tenant-id, die kan worden verkregen van **Azure Active Directory**  >  **overzichts** pagina.
 
     ```azurepowershell-interactive 
 
@@ -78,7 +84,7 @@ Volg deze stappen:
 
     ```
 
-8. Volg de instructies op het scherm voor het vastleggen van de waarden voor het **API-eind punt**, **Tenant-ID**, **client-id**, **client geheim**en **EventHub-verbindings reeks**.
+9. Volg de instructies op het scherm voor het vastleggen van de waarden voor het **API-eind punt**, **Tenant-ID**, **client-id**, **client geheim**en **EventHub-verbindings reeks**.
 
 
 ## <a name="create-device-or-sensor-metadata"></a>Meta gegevens van het apparaat of de sensor maken

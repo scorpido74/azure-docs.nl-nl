@@ -3,12 +3,12 @@ title: Bewaking en logboek registratie-Azure
 description: Dit artikel bevat een overzicht van live video analyses op IoT Edge bewaking en logboek registratie.
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: 807b0623159e0b50285b89da2835e9dd6cb037aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82e4a5879e4c88e462edcddb02866ec9b671d7fe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84261210"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060446"
 ---
 # <a name="monitoring-and-logging"></a>Bewaking en registratie
 
@@ -98,7 +98,7 @@ Live video Analytics op IoT Edge verzendt gebeurtenissen of telemetriegegevens o
      }
    }
    ```
-De gebeurtenissen die door de module worden gegenereerd, worden naar de [IOT Edge-hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)verzonden en van daaruit kan worden doorgestuurd naar andere bestemmingen. 
+De gebeurtenissen die door de module worden gegenereerd, worden naar de [IOT Edge-hub](../../iot-edge/iot-edge-runtime.md#iot-edge-hub)verzonden en van daaruit kan worden doorgestuurd naar andere bestemmingen. 
 
 ## <a name="controlling-events"></a>Gebeurtenissen beheren
 
@@ -110,7 +110,7 @@ U kunt de volgende module dubbele eigenschappen, zoals beschreven in [module dub
    
 De analyse gebeurtenissen worden gegenereerd door knoop punten zoals de bewegings detectie processor of de HTTP-extensie processor, en de IoT hub-sink wordt gebruikt om ze naar de IoT Edge hub te verzenden. 
 
-U kunt de [route ring van alle bovenstaande gebeurtenissen](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes) beheren via een gewenste eigenschap van de $edgeHub module (in het implementatie manifest):
+U kunt de [route ring van alle bovenstaande gebeurtenissen](../../iot-edge/module-composition.md#declare-routes) beheren via een gewenste eigenschap van de $edgeHub module (in het implementatie manifest):
 
 ```
  "$edgeHub": {
@@ -126,26 +126,26 @@ U kunt de [route ring van alle bovenstaande gebeurtenissen](https://docs.microso
  }
 ```
 
-In het bovenstaande is lvaEdge de naam voor de live video Analytics op IoT Edge module en volgt de routerings regel het schema dat is gedefinieerd in de [Declareer routes](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes).
+In het bovenstaande is lvaEdge de naam voor de live video Analytics op IoT Edge module en volgt de routerings regel het schema dat is gedefinieerd in de [Declareer routes](../../iot-edge/module-composition.md#declare-routes).
 
 > [!NOTE]
 > Om ervoor te zorgen dat Analytics-gebeurtenissen de IoT Edge hub bereiken, moet er een-Sink-knoop punt van de IoT-hub worden aangetroffen in het knoop punt van een wille keurig bewegings detectie processor en/of een HTTP extension-processor knooppunt.
 
 ## <a name="event-schema"></a>Gebeurtenisschema
 
-Gebeurtenissen zijn afkomstig van het apparaat aan de rand en kunnen worden gebruikt op de rand of in de Cloud. Gebeurtenissen die worden gegenereerd door live video Analytics op IoT Edge voldoen aan het [streaming-berichten patroon](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct) dat is vastgesteld door Azure IOT hub, met systeem eigenschappen, toepassings eigenschappen en een hoofd tekst.
+Gebeurtenissen zijn afkomstig van het apparaat aan de rand en kunnen worden gebruikt op de rand of in de Cloud. Gebeurtenissen die worden gegenereerd door live video Analytics op IoT Edge voldoen aan het [streaming-berichten patroon](../../iot-hub/iot-hub-devguide-messages-construct.md) dat is vastgesteld door Azure IOT hub, met systeem eigenschappen, toepassings eigenschappen en een hoofd tekst.
 
 ### <a name="summary"></a>Samenvatting
 
 Bij elke gebeurtenis, wanneer deze via de IoT Hub wordt waargenomen, wordt een aantal algemene eigenschappen weer gegeven, zoals hieronder wordt beschreven.
 
-|Eigenschap   |Eigenschapstype| Gegevenstype   |Description|
+|Eigenschap   |Eigenschapstype| Gegevenstype   |Beschrijving|
 |---|---|---|---|
 |bericht-id |systeem |guid|  Unieke gebeurtenis-ID.|
 |onderwerp| applicationProperty |tekenreeks|    Azure Resource Manager pad voor het Media Services-account.|
 |Onderwerp|   applicationProperty |tekenreeks|    Subpad van de entiteit die de gebeurtenis verstuurt.|
 |eventTime| applicationProperty|    tekenreeks| Tijdstip waarop de gebeurtenis is gegenereerd.|
-|Type| applicationProperty |tekenreeks|    Gebeurtenis type-id (zie hieronder).|
+|eventType| applicationProperty |tekenreeks|    Gebeurtenis type-id (zie hieronder).|
 |body|body  |object|    Bepaalde gebeurtenis gegevens.|
 |dataVersion    |applicationProperty|   tekenreeks  |{Major}. Secundair|
 
@@ -180,7 +180,7 @@ Gebeurtenis typen worden toegewezen aan een naam ruimte op basis van het volgend
 
 #### <a name="event-classes"></a>Gebeurtenisklassen
 
-|Klassenaam|Description|
+|Klassenaam|Beschrijving|
 |---|---|
 |Analyse  |Gebeurtenissen die worden gegenereerd als onderdeel van inhouds analyse.|
 |Diagnostiek    |Gebeurtenissen die hulp bieden bij diagnose van problemen en prestaties.|
@@ -200,7 +200,7 @@ De tijd van de gebeurtenis wordt beschreven in de ISO8601-teken reeks en het tij
 
 ## <a name="logging"></a>Logboekregistratie
 
-Net als bij andere IoT Edge modules kunt u ook [de container logboeken](https://docs.microsoft.com/azure/iot-edge/troubleshoot#check-container-logs-for-issues) op het apparaat Edge bekijken. De informatie die naar de logboeken wordt geschreven, kan worden beheerd met de [volgende module dubbele](module-twin-configuration-schema.md) eigenschappen:
+Net als bij andere IoT Edge modules kunt u ook [de container logboeken](../../iot-edge/troubleshoot.md#check-container-logs-for-issues) op het apparaat Edge bekijken. De informatie die naar de logboeken wordt geschreven, kan worden beheerd met de [volgende module dubbele](module-twin-configuration-schema.md) eigenschappen:
 
 * logLevel
 
@@ -222,7 +222,7 @@ Net als bij andere IoT Edge modules kunt u ook [de container logboeken](https://
 
 In bepaalde gevallen moet u mogelijk gedetailleerdere logboeken genereren dan hierboven beschreven, om ondersteuning van Azure te helpen bij het oplossen van een probleem. Er zijn twee stappen om dit te bereiken.
 
-Eerst [koppelt u de module opslag aan de opslag van het apparaat](https://docs.microsoft.com/azure/iot-edge/how-to-access-host-storage-from-module#link-module-storage-to-device-storage) via createOptions. Als u een sjabloon voor de [implementatie manifest](https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp/blob/master/src/edge/deployment.template.json) van snel starten onderzoekt, ziet u het volgende:
+Eerst [koppelt u de module opslag aan de opslag van het apparaat](../../iot-edge/how-to-access-host-storage-from-module.md#link-module-storage-to-device-storage) via createOptions. Als u een sjabloon voor de [implementatie manifest](https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp/blob/master/src/edge/deployment.template.json) van snel starten onderzoekt, ziet u het volgende:
 
 ```
 "createOptions": {

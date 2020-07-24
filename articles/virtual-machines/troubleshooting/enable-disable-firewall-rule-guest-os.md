@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: f9484b81622e208077f0659975f42f46d90d2137
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 17616a223292ec07186b0a3fba264400423977ac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232233"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058760"
 ---
 # <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>Een firewallregel in een gastbesturingssysteem in- of uitschakelen
 
@@ -77,7 +77,7 @@ Als de virtuele machine online is en toegankelijk is op een andere VM in hetzelf
 
 Als de virtuele machine online is en toegankelijk is op een andere VM in hetzelfde virtuele netwerk, kunt u de Volg oplossingen volgen met behulp van de andere VM.
 
-1.  Down load [PSTools](https://docs.microsoft.com/sysinternals/downloads/pstools)op de virtuele machine voor probleem oplossing.
+1.  Down load [PSTools](/sysinternals/downloads/pstools)op de virtuele machine voor probleem oplossing.
 
 2.  Open een CMD-exemplaar en toegang tot de virtuele machine via het interne IP-adres (DIP). 
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/07/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: fc0464c226b8edc2dae01f8ea54c3e5b2e11f2d6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: bb4c689da38606561c657a3e4d85fd9e391267bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244257"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056733"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Azure RBAC gebruiken voor Kubernetes-autorisatie (preview)
 
@@ -35,14 +35,14 @@ De mogelijkheid om RBAC voor Kubernetes-resources van Azure te beheren biedt u d
 - Meld u aan voor de preview-versie <https://aka.ms/aad-rbac-sign-up-form> .
 - Zorg ervoor dat de `EnableAzureRBACPreview` functie vlag is ingeschakeld.
 - Zorg ervoor dat de `AAD-V2` functie vlag is ingeschakeld.
-- Controleer of u de `aks-preview` cli-extensie v 0.4.55 of hoger hebt geïnstalleerd
+- Controleer of u de `aks-preview` [cli-extensie][az-extension-add] v 0.4.55 of hoger hebt geïnstalleerd
 - Zorg ervoor dat u [kubectl v 1.18.3 +][az-aks-install-cli]hebt geïnstalleerd.
 
 #### <a name="register-enableazurerbacpreview-and-aad-v2-preview-features"></a>`EnableAzureRBACPreview`Functies registreren en `AAD-V2` bekijken
 
 Als u een AKS-cluster wilt maken dat gebruikmaakt van Azure RBAC voor Kubernetes-autorisatie, moet u de- `EnableAzureRBACPreview` en- `AAD-V2` functie vlaggen inschakelen voor uw abonnement.
 
-Registreer de `EnableAzureRBACPreview` functie vlag met de opdracht [AZ feature REGI ster][az-feature-register] , zoals weer gegeven in het volgende voor beeld:
+Registreer de `EnableAzureRBACPreview` en `AAD-V2` functie vlaggen met behulp van de opdracht [AZ feature REGI ster][az-feature-register] , zoals wordt weer gegeven in het volgende voor beeld:
 
 ```azurecli-interactive
 az feature register --namespace "Microsoft.ContainerService" --name "EnableAzureRBACPreview"
@@ -64,9 +64,9 @@ Als u klaar bent, vernieuwt u de registratie van de resource provider *micro sof
 az provider register --namespace Microsoft.ContainerService
 ```
 
-#### <a name="install-aks-preview-cli-extension"></a>AKS-preview CLI-extensie installeren
+#### <a name="install-aks-preview-cli-extension"></a>De CLI-extensie aks-preview installeren
 
-Als u een AKS-cluster wilt maken dat gebruikmaakt van Azure RBAC, hebt u de *AKS-preview cli-* extensie versie 0.4.55 of hoger nodig. Installeer de Azure CLI *-extensie AKS-preview* met behulp van de opdracht [AZ extension add][az-extension-add] en controleer vervolgens of er beschik bare updates zijn met behulp van de opdracht [AZ extension update][az-extension-update] :
+Als u een AKS-cluster wilt maken dat gebruikmaakt van Azure RBAC, hebt u de *AKS-preview cli-* extensie versie 0.4.55 of hoger nodig. Installeer de Azure CLI *-extensie AKS-preview* met behulp van de opdracht [AZ extension add][az-extension-add] of installeer beschik bare updates met behulp van de opdracht [AZ extension update][az-extension-update] :
 
 ```azurecli-interactive
 # Install the aks-preview extension

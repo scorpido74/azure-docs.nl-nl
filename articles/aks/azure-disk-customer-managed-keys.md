@@ -3,20 +3,17 @@ title: Een door de klant beheerde sleutel gebruiken voor het versleutelen van Az
 description: Gebruik uw eigen sleutels (BYOK) om AKS-besturings systeem en gegevens schijven te versleutelen.
 services: container-service
 ms.topic: article
-ms.date: 01/12/2020
-ms.openlocfilehash: 6452facc999456c35aa5d1c3bfe6b2f59141b7c5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/17/2020
+ms.openlocfilehash: d8443c9c7a0af7bfb7f146904c913663d82786b8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252042"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057306"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Breng uw eigen sleutels (BYOK) met Azure-schijven in azure Kubernetes service (AKS)
 
 Azure Storage versleutelt alle gegevens in een opslag account in rust. Standaard worden gegevens versleuteld met door micro soft beheerde sleutels. Voor extra controle over versleutelings sleutels kunt u door de [klant beheerde sleutels][customer-managed-keys] leveren voor versleuteling in rust voor het besturings systeem en de gegevens schijven voor uw AKS-clusters.
-
-> [!NOTE]
-> BYOK Linux-en Windows-AKS-clusters zijn beschikbaar in [Azure-regio's][supported-regions] die ondersteuning bieden voor versleuteling aan de server zijde van Azure Managed disks.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -164,7 +161,6 @@ kubectl apply -f byok-azure-disk.yaml
 
 ## <a name="limitations"></a>Beperkingen
 
-* BYOK is momenteel alleen beschikbaar in GA en preview in bepaalde [Azure-regio's][supported-regions]
 * Versleuteling van gegevens schijven ondersteund met Kubernetes-versie 1,17 en hoger   
 * Alleen beschikbaar in regio's waar BYOK wordt ondersteund
 * Versleuteling met door de klant beheerde sleutels is momenteel alleen beschikbaar voor nieuwe AKS-clusters, maar bestaande clusters kunnen niet worden bijgewerkt

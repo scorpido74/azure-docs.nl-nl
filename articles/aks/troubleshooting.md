@@ -4,12 +4,12 @@ description: Meer informatie over het oplossen van veelvoorkomende problemen bij
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: f334f501335e9e384cfcc35b356e61ab66efe7a8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a65e5e2b507f45fe51a8f6406edae4d96affe227
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243678"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056519"
 ---
 # <a name="aks-troubleshooting"></a>AKS-problemen oplossen
 
@@ -80,7 +80,11 @@ AKS heeft HA-besturings plannen die verticaal schalen op basis van het aantal ke
     - https://github.com/helm/helm/issues/4821
     - https://github.com/helm/helm/issues/3500
     - https://github.com/helm/helm/issues/4543
+- **[Is intern verkeer tussen knoop punten geblokkeerd?](#im-receiving-tcp-timeouts-such-as-dial-tcp-node_ip10250-io-timeout)**
 
+## <a name="im-receiving-tcp-timeouts-such-as-dial-tcp-node_ip10250-io-timeout"></a>Ik ontvang `TCP timeouts` , zoals`dial tcp <Node_IP>:10250: i/o timeout`
+
+Deze time-outs kunnen betrekking hebben op het interne verkeer tussen knoop punten die worden geblokkeerd. Controleer of dit verkeer niet wordt geblokkeerd, bijvoorbeeld door [netwerk beveiligings groepen](concepts-security.md#azure-network-security-groups) op het subnet voor de knoop punten van uw cluster.
 
 ## <a name="im-trying-to-enable-role-based-access-control-rbac-on-an-existing-cluster-how-can-i-do-that"></a>Ik probeer op rollen gebaseerd Access Control (RBAC) in te scha kelen op een bestaand cluster. Hoe kan ik dat doen?
 

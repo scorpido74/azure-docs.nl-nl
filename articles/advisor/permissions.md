@@ -3,15 +3,16 @@ title: Machtigingen in Azure Advisor
 description: Advisor-machtigingen en hoe ze de mogelijkheid kunnen blok keren om abonnementen te configureren of aanbevelingen uit te stellen of te negeren.
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: c850d757044066d5c4a793e076436906d715833c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b5dfdeb888b0577a40562536bd7a6dfc271cb19
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75422323"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057589"
 ---
 # <a name="permissions-in-azure-advisor"></a>Machtigingen in Azure Advisor
 
-Azure Advisor biedt aanbevelingen op basis van het gebruik en de configuratie van uw Azure-resources en-abonnementen. Advisor maakt gebruik van de [ingebouwde rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) van op [rollen gebaseerde Access Control](https://docs.microsoft.com/azure/role-based-access-control/overview) (RBAC) om uw toegang tot aanbevelingen en Advisor-functies te beheren. 
+Azure Advisor biedt aanbevelingen op basis van het gebruik en de configuratie van uw Azure-resources en-abonnementen. Advisor maakt gebruik van de [ingebouwde rollen](../role-based-access-control/built-in-roles.md) van op [rollen gebaseerde Access Control](../role-based-access-control/overview.md) (RBAC) om uw toegang tot aanbevelingen en Advisor-functies te beheren. 
 
 ## <a name="roles-and-their-access"></a>Rollen en hun toegang
 
@@ -38,15 +39,15 @@ Als u niet over de juiste machtigingen beschikt, kan de mogelijkheid voor het ui
 
 ### <a name="unable-to-configure-subscriptions-or-resource-groups"></a>Kan geen abonnementen of resource groepen configureren
 
-Wanneer u probeert abonnementen of resource groepen in Advisor te configureren, is het mogelijk dat de optie om op te nemen of uit te sluiten is uitgeschakeld. Deze status geeft aan dat u niet over voldoende machtigingen beschikt voor die resource groep of dit abonnement. U kunt dit probleem oplossen door te leren hoe u [een gebruiker toegang verleent](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal).
+Wanneer u probeert abonnementen of resource groepen in Advisor te configureren, is het mogelijk dat de optie om op te nemen of uit te sluiten is uitgeschakeld. Deze status geeft aan dat u niet over voldoende machtigingen beschikt voor die resource groep of dit abonnement. U kunt dit probleem oplossen door te leren hoe u [een gebruiker toegang verleent](../role-based-access-control/quickstart-assign-role-user-portal.md).
 
 ### <a name="unable-to-postpone-or-dismiss-a-recommendation"></a>Kan een aanbeveling niet uitstellen of negeren
 
-Als er een fout optreedt bij het uitstellen of negeren van een aanbeveling, hebt u mogelijk niet de juiste machtigingen. Zorg ervoor dat u ten minste de Inzender toegang hebt tot de betrokken resource van de aanbeveling die u uitstelt of niet meer wilt gebruiken. U kunt dit probleem oplossen door te leren hoe u [een gebruiker toegang verleent](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal).
+Als er een fout optreedt bij het uitstellen of negeren van een aanbeveling, hebt u mogelijk niet de juiste machtigingen. Zorg ervoor dat u ten minste de Inzender toegang hebt tot de betrokken resource van de aanbeveling die u uitstelt of niet meer wilt gebruiken. U kunt dit probleem oplossen door te leren hoe u [een gebruiker toegang verleent](../role-based-access-control/quickstart-assign-role-user-portal.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 In dit artikel wordt een overzicht gegeven van de manier waarop Advisor gebruikmaakt van RBAC voor het beheren van gebruikers machtigingen en het oplossen van veelvoorkomende problemen. Zie voor meer informatie over Advisor:
 
-- [Wat is Azure Advisor?](https://docs.microsoft.com/azure/advisor/advisor-overview)
-- [Aan de slag met Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-get-started)
+- [Wat is Azure Advisor?](./advisor-overview.md)
+- [Aan de slag met Azure Advisor](./advisor-get-started.md)

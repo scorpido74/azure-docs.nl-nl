@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/01/2019
 ms.author: willzhan
-ms.openlocfilehash: 63b835d5d6c442f19f6d1fbe1710547ab96e1b40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d5d6c7738516337b3db90bbc5d1a94515e96b3ce
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82160236"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060593"
 ---
 # <a name="offline-playready-streaming-for-windows-10-with-media-services-v3"></a>Offline PlayReady streaming voor Windows 10 met Media Services v3
 
@@ -44,7 +44,7 @@ De uitdaging voor het implementeren van de offline modus is het volgende:
 * MP4 wordt ondersteund door veel spelers, coderings Programma's, maar er is geen binding tussen MP4-container en DRM;
 * Op de lange termijn is CFF met CENC de manier om te gaan. Momenteel is het ecosysteem van de hulpprogram ma's/speler echter nog niet aanwezig. We hebben vandaag een oplossing nodig.
  
-Het idee is: smooth streaming-bestands indeling ([piff](https://docs.microsoft.com/iis/media/smooth-streaming/protected-interoperable-file-format)) met H264/AAC heeft een binding met PLAYREADY (AES-128-afdeling). Het afzonderlijke smooth streaming. ismv-bestand (ervan uitgaande dat audio Muxed in video is), is zelf een fMP4 en kan worden gebruikt voor het afspelen. Als een smooth streaming inhoud via PlayReady-versleuteling, wordt elk. ismv-bestand een met PlayReady beschermde gefragmenteerde MP4. We kunnen een. ismv-bestand kiezen met de voorkeurs bitrate en de naam wijzigen als. MP4 voor downloaden.
+Het idee is: smooth streaming-bestands indeling ([piff](/iis/media/smooth-streaming/protected-interoperable-file-format)) met H264/AAC heeft een binding met PLAYREADY (AES-128-afdeling). Het afzonderlijke smooth streaming. ismv-bestand (ervan uitgaande dat audio Muxed in video is), is zelf een fMP4 en kan worden gebruikt voor het afspelen. Als een smooth streaming inhoud via PlayReady-versleuteling, wordt elk. ismv-bestand een met PlayReady beschermde gefragmenteerde MP4. We kunnen een. ismv-bestand kiezen met de voorkeurs bitrate en de naam wijzigen als. MP4 voor downloaden.
 
 Er zijn twee opties voor het hosten van de PlayReady beveiligde MP4 voor progressief downloaden:
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6e2a3e6c7fd5ecd305d00278668ad0bfb9a66001
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 34624358a26fbd52db5832cf3531a6f1d3b91e5b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142439"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061755"
 ---
 # <a name="understand-event-data"></a>Informatie over gebeurtenis gegevens
 
@@ -300,7 +300,7 @@ De bijbehorende melding (als synchroon door de service wordt uitgevoerd, zoals A
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie eind punten en routes maken voor het leveren van gebeurtenissen:
-* [Instructies: eind punten en routes beheren](how-to-manage-routes.md)
+* [*Instructies: eind punten en routes beheren*](how-to-manage-routes.md)
 
 Of lees meer over de Azure Digital Apparaatdubbels Api's en SDK-opties:
-* [Instructies: de Azure Digital Apparaatdubbels-Api's en Sdk's gebruiken](how-to-use-apis-sdks.md)
+* [*Instructies: de Azure Digital Apparaatdubbels-Api's en Sdk's gebruiken*](how-to-use-apis-sdks.md)

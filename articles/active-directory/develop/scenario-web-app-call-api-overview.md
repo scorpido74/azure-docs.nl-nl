@@ -8,14 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5af9e34baf6115e801fbfe35e6e3895e48b360e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0c4bef25a0be12c0335a82345ec998274f1faa67
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80881720"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058404"
 ---
 # <a name="scenario-a-web-app-that-calls-web-apis"></a>Scenario: een web-app die web-Api's aanroept
 
@@ -48,7 +49,7 @@ Daarom registreren ze een geheim (een toepassings wachtwoord of-certificaat) met
 
 Voor de ontwikkeling van dit scenario zijn de volgende specifieke taken vereist:
 
-- Tijdens de registratie van de [toepassing](scenario-web-app-call-api-app-registration.md)moet u een antwoord-URI, geheim of certificaat opgeven dat wordt gedeeld met Azure AD. Als u uw app op verschillende locaties implementeert, kunt u deze informatie voor elke locatie opgeven.
+- Tijdens de registratie van de [toepassing](scenario-web-app-call-api-app-registration.md)moet u een antwoord-URI, geheim of certificaat opgeven dat wordt gedeeld met Azure AD. Als u uw app op verschillende locaties implementeert, geeft u voor elke locatie een antwoord-URI op.
 - De [configuratie](scenario-web-app-call-api-app-configuration.md) van de toepassing moet de client referenties opgeven die met Azure AD zijn gedeeld tijdens de registratie van de toepassing.
 
 ## <a name="next-steps"></a>Volgende stappen

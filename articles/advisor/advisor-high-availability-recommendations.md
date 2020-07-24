@@ -3,12 +3,12 @@ title: Verbeter de betrouw baarheid van uw toepassing met Advisor
 description: Gebruik Azure Advisor om de betrouw baarheid in uw bedrijfs kritieke Azure-implementaties te garanderen en te verbeteren.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 928e0b098cb2cf117eff40d2257fc79dbe114f85
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1eba688a67a8684cdbb6846b389f83e61b349abe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85124619"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057673"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>Verbeter de betrouw baarheid van uw toepassing met behulp van Azure Advisor
 
@@ -59,7 +59,7 @@ Als een Traffic Manager profiel is geconfigureerd voor geografische route ring, 
 
 ## <a name="use-soft-delete-on-your-azure-storage-account-to-save-and-recover-data-after-accidental-overwrite-or-deletion"></a>Gebruik zacht verwijderen in uw Azure Storage-account om gegevens op te slaan en te herstellen nadat het per ongeluk is overschreven of verwijderd
 
-Schakel de optie [voorlopig verwijderen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) in uw opslag account in, zodat verwijderde blobs overstappen naar een voorlopig verwijderde status in plaats van permanent worden verwijderd. Als gegevens worden overschreven, wordt er een voorlopig verwijderde momentopname gegenereerd waarin de status van de overschreven gegevens wordt opgeslagen. Met de functie voor het gebruik van zacht verwijderen kunt u herstellen van onbedoeld verwijderen of overschrijvingen. Advisor identificeert Azure Storage-accounts waarvoor geen tijdelijke verwijdering is ingeschakeld en raadt u aan om deze in te scha kelen.
+Schakel de optie [voorlopig verwijderen](../storage/blobs/soft-delete-overview.md) in uw opslag account in, zodat verwijderde blobs overstappen naar een voorlopig verwijderde status in plaats van permanent worden verwijderd. Als gegevens worden overschreven, wordt er een voorlopig verwijderde momentopname gegenereerd waarin de status van de overschreven gegevens wordt opgeslagen. Met de functie voor het gebruik van zacht verwijderen kunt u herstellen van onbedoeld verwijderen of overschrijvingen. Advisor identificeert Azure Storage-accounts waarvoor geen tijdelijke verwijdering is ingeschakeld en raadt u aan om deze in te scha kelen.
 
 ## <a name="configure-your-vpn-gateway-to-active-active-for-connection-resiliency"></a>Configureer uw VPN-gateway naar actief-actief voor verbindings tolerantie
 
@@ -107,7 +107,7 @@ Vanaf 1 juli 2020 kunt u geen nieuwe Kafka-clusters maken met behulp van Kafka 1
 Vanaf 1 juli 2020 kunt u geen nieuwe Spark-clusters maken met behulp van Spark 2,1 of 2,2 op HDInsight 3,6. U kunt geen nieuwe Spark-clusters maken met behulp van Spark 2,3 op HDInsight 4,0. Bestaande clusters worden zonder ondersteuning van Microsoft uitgevoerd zoals ze zijn. 
 
 ## <a name="enable-virtual-machine-replication"></a>Replicatie van virtuele machines inschakelen
-Virtuele machines waarvoor geen replicatie is ingeschakeld voor een andere regio, zijn niet flexibel voor regionale storingen. Het repliceren van virtuele machines vermindert nadelige gevolgen voor het bedrijf tijdens de uitval van Azure-regio's. Advisor detecteert Vm's waarop replicatie niet is ingeschakeld en raadt aan om deze functie in te scha kelen. Wanneer u replicatie inschakelt en er zich een storing voordoet, kunt u uw virtuele machines snel weer geven in een externe Azure-regio. [Meer informatie over replicatie van virtuele machines.](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)
+Virtuele machines waarvoor geen replicatie is ingeschakeld voor een andere regio, zijn niet flexibel voor regionale storingen. Het repliceren van virtuele machines vermindert nadelige gevolgen voor het bedrijf tijdens de uitval van Azure-regio's. Advisor detecteert Vm's waarop replicatie niet is ingeschakeld en raadt aan om deze functie in te scha kelen. Wanneer u replicatie inschakelt en er zich een storing voordoet, kunt u uw virtuele machines snel weer geven in een externe Azure-regio. [Meer informatie over replicatie van virtuele machines.](../site-recovery/azure-to-azure-quickstart.md)
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Toegang tot aanbevelingen voor hoge Beschik baarheid in Advisor
 

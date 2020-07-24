@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/24/2018
+ms.date: 07/15/2020
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 940ef671ab58074aaded49acb70db68a4971c1f2
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 0ec314e6b5abde60102dacfc81c9303cef16e887
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187027"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058627"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Procedure: app-rollen toevoegen in uw toepassing en deze ontvangen in het token
 
@@ -76,7 +76,7 @@ In het volgende voor beeld ziet `appRoles` u hoe u kunt toewijzen aan `users` .
 > [!NOTE]
 >De `displayName` mag geen spaties bevatten.
 
-U kunt app-rollen definiëren voor het doel `users` , `applications` of beide. Indien beschikbaar voor `applications` , worden app-rollen weer gegeven als toepassings machtigingen op de Blade **vereiste machtigingen** . In het volgende voor beeld ziet u een app-rol die is gericht op een `Application` .
+U kunt app-rollen definiëren voor het doel `users` , `applications` of beide. Wanneer deze beschikbaar is voor `applications` , worden de app-rollen weer gegeven als toepassings machtigingen onder sectie **beheren** > **API-machtigingen > een machtiging > mijn API'S toevoegen > een API > toepassings machtigingen te kiezen**. In het volgende voor beeld ziet u een app-rol die is gericht op een `Application` .
 
 ```Json
 "appId": "8763f1c4-f988-489c-a51e-158e9ef97d6a",
@@ -118,6 +118,10 @@ Wanneer u app-rollen hebt toegevoegd in uw toepassing, kunt u gebruikers en groe
 1. Kies een rol en druk op de knop **selecteren** .
 1. Druk op de knop **toewijzen** aan de onderkant om de toewijzingen van gebruikers en groepen aan de app te volt ooien.
 1. Controleer of de gebruikers en groepen die u hebt toegevoegd, worden weer gegeven in de lijst met bijgewerkte **gebruikers en groepen** .
+
+### <a name="receive-roles-in-tokens"></a>Rollen ontvangen in tokens
+
+Wanneer de gebruikers die zijn toegewezen aan de verschillende app-rollen zich aanmelden bij de toepassing, krijgen hun tokens hun toegewezen rollen in de `roles` claim.
 
 ## <a name="more-information"></a>Meer informatie
 

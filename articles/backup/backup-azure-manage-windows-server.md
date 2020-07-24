@@ -3,15 +3,16 @@ title: Azure Recovery Services-kluizen en-servers beheren
 description: In dit artikel leert u hoe u het overzichts Dashboard van Recovery Services kluis kunt gebruiken om uw Recovery Services kluizen te controleren en te beheren.
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 598e9198ee7e153d8008389f97c0be399a0186ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1b3cc317b8a26b16bbeda9793f87d089f2fbc59f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84234597"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054901"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Recovery Services-kluizen beheren en controleren
 
-In dit artikel wordt uitgelegd hoe u het **overzichts** dashboard van Recovery Services kluis kunt gebruiken om uw Recovery Services kluizen te controleren en te beheren. Wanneer u een Recovery Services kluis in de lijst opent, wordt het **overzichts** dashboard voor de geselecteerde kluis geopend. Het dash board biedt verschillende details over de kluis. Er zijn *tegels* die worden weer gegeven: de status van kritieke en waarschuwings meldingen, in uitvoering en mislukte back-uptaken en de hoeveelheid lokaal redundante opslag (LRS) en geo-redundante opslag (GRS). Als u een back-up maakt van virtuele Azure-machines in de kluis, worden in de [tegel **status van back-up** voor het controleren alle kritieke items weer gegeven](https://docs.microsoft.com/azure/backup/backup-azure-manage-windows-server#backup-pre-check-status). De volgende afbeelding is het **overzichts** dashboard voor **Contoso-kluis**. Op de tegel **Back-upitems** ziet u dat er negen items zijn geregistreerd bij de kluis.
+In dit artikel wordt uitgelegd hoe u het **overzichts** dashboard van Recovery Services kluis kunt gebruiken om uw Recovery Services kluizen te controleren en te beheren. Wanneer u een Recovery Services kluis in de lijst opent, wordt het **overzichts** dashboard voor de geselecteerde kluis geopend. Het dash board biedt verschillende details over de kluis. Er zijn *tegels* die worden weer gegeven: de status van kritieke en waarschuwings meldingen, in uitvoering en mislukte back-uptaken en de hoeveelheid lokaal redundante opslag (LRS) en geo-redundante opslag (GRS). Als u een back-up maakt van virtuele Azure-machines in de kluis, worden in de [tegel **status van back-up** voor het controleren alle kritieke items weer gegeven](#backup-pre-check-status). De volgende afbeelding is het **overzichts** dashboard voor **Contoso-kluis**. Op de tegel **Back-upitems** ziet u dat er negen items zijn geregistreerd bij de kluis.
 
 ![Recovery Services-kluis dashboard](./media/backup-azure-manage-windows-server/rs-vault-blade.png)
 
@@ -177,7 +178,7 @@ Als u een specifiek type beveiligde instantie wilt verkennen, klikt u op het ite
 
 ![lijst met back-uptype](./media/backup-azure-manage-windows-server/list-of-protected-virtual-machines.png)
 
-De lijst met virtuele machines bevat nuttige gegevens: de bijbehorende resource groep, vorige [controle vooraf](https://docs.microsoft.com/azure/backup/backup-azure-manage-windows-server#backup-pre-check-status)voor de back-up, de laatste back-up status en de datum van het meest recente herstel punt. Het beletsel teken in de laatste kolom opent het menu om algemene taken te activeren. De nuttige gegevens die in kolommen zijn opgenomen, verschillen voor elk type back-up.
+De lijst met virtuele machines bevat nuttige gegevens: de bijbehorende resource groep, vorige [controle vooraf](#backup-pre-check-status)voor de back-up, de laatste back-up status en de datum van het meest recente herstel punt. Het beletsel teken in de laatste kolom opent het menu om algemene taken te activeren. De nuttige gegevens die in kolommen zijn opgenomen, verschillen voor elk type back-up.
 
 ![lijst met back-uptype](./media/backup-azure-manage-windows-server/ellipsis-menu.png)
 
@@ -286,4 +287,4 @@ De tegel back-upopslag in het dash board toont de opslag die wordt gebruikt in A
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Windows Server of Windows-client herstellen vanuit Azure](backup-azure-restore-windows-server.md)
-* Zie [Azure backup Overview](backup-introduction-to-azure-backup.md) (Engelstalig) voor meer informatie over Azure backup
+* Zie [Azure backup Overview](./backup-overview.md) (Engelstalig) voor meer informatie over Azure backup

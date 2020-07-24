@@ -5,26 +5,26 @@ ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: fd34595d5ea942602efc920904ff326fc203c088
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 005725acf7270ff87ac9418f27941bdb205ae986
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81380695"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059420"
 ---
-# <a name="understand-data-retention-in-azure-time-series-insights"></a>Gegevens retentie in Azure Time Series Insights begrijpen
+# <a name="understand-data-retention-in-azure-time-series-insights-gen1"></a>Meer informatie over gegevens retentie in Azure Time Series Insights gen1
 
 In dit artikel worden twee primaire instellingen beschreven die van invloed zijn op de Bewaar periode van gegevens in uw Azure Time Series Insights omgeving.
 
 ## <a name="video"></a>Video
 
-### <a name="the-following-video-summarizes-time-series-insights-data-retention-and-how-to-plan-for-itbr"></a>De volgende video bevat een overzicht van Time Series Insights gegevens retentie en hoe u deze kunt plannen.</br>
+### <a name="the-following-video-summarizes-azure-time-series-insights-data-retention-and-how-to-plan-for-itbr"></a>De volgende video bevat een overzicht van Azure Time Series Insights gegevens retentie en hoe u deze kunt plannen.</br>
 
 > [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
 
@@ -36,15 +36,15 @@ Daarnaast heeft uw Azure Time Series Insights omgeving een instelling voor het g
 - **Ingangs onderbrekingen**
 
 > [!NOTE]
-> Wanneer u een nieuwe omgeving maakt, wordt standaard de Bewaar periode geconfigureerd om **oude gegevens te verwijderen**. Deze instelling kan worden in-of uitgeschakeld nadat deze is gemaakt met behulp van de Azure Portal op de pagina **configureren** van de time series Insights omgeving.
-> * Lees voor meer informatie over het configureren van Bewaar beleid het [configureren van Bewaar periode in time series Insights](time-series-insights-how-to-configure-retention.md).
+> Wanneer u een nieuwe omgeving maakt, wordt standaard de Bewaar periode geconfigureerd om **oude gegevens te verwijderen**. Deze instelling kan worden in-of uitgeschakeld nadat deze is gemaakt met behulp van de Azure Portal op de pagina **configureren** van de Azure time series Insights omgeving.
+> * Lees voor meer informatie over het configureren van Bewaar beleid het [configureren van Bewaar periode in azure time series Insights](time-series-insights-how-to-configure-retention.md).
 
 Beide beleids regels voor het bewaren van gegevens worden in meer detail beschreven.
 
 ## <a name="purge-old-data"></a>Oude gegevens opschonen
 
 - **Oude gegevens opschonen** is de standaard instelling voor Azure time series Insights omgevingen.  
-- Het **opschonen van oude gegevens** verdient de voor keur wanneer gebruikers altijd hun *meest recente gegevens* in hun time series Insights omgeving willen hebben.
+- Het **opschonen van oude gegevens** verdient de voor keur wanneer gebruikers altijd hun *meest recente gegevens* in hun Azure time series Insights omgeving willen hebben.
 - Met de instelling **oude gegevens opschonen** worden gegevens *verwijderd* zodra de limieten van de omgeving (de retentie tijd, de grootte of het aantal, afhankelijk van wat het eerste komt) worden bereikt. De Bewaar periode is standaard ingesteld op 30 dagen.
 - De oudste opgenomen gegevens worden eerst opgeschoond (de ' First ' first out '-benadering).
 
@@ -69,7 +69,7 @@ Wanneer het dagelijkse ingangs gemiddelde van deze omgeving meer dan 0,166 GB pe
 - Het helpt u bij het verlies van gegevens, maar u kunt ook een kans maken voor het verlies van uw meest recente gegevens als binnenkomend wordt gepauzeerd na de Bewaar periode van de bron van de gebeurtenis.
 - Zodra de maximum capaciteit van een omgeving is bereikt, worden de gegevens in de omgeving echter onderbroken totdat de volgende aanvullende acties worden uitgevoerd:
 
-   - U verhoogt de maximum capaciteit van de omgeving om meer schaal eenheden toe te voegen, zoals wordt beschreven in [uw time series Insights omgeving schalen](time-series-insights-how-to-scale-your-environment.md).
+   - U verhoogt de maximum capaciteit van de omgeving om meer schaal eenheden toe te voegen, zoals wordt beschreven in [uw Azure time series Insights omgeving schalen](time-series-insights-how-to-scale-your-environment.md).
    - De Bewaar periode voor gegevens is bereikt en de gegevens worden opgeschoond, waardoor de omgeving onder de maximum capaciteit komt.
 
 ### <a name="example-three"></a>Voor beeld drie
@@ -86,16 +86,16 @@ Wanneer ingangs werkzaamheden worden hervat:
 > [!IMPORTANT]
 > Stel waarschuwingen in om te zorgen dat binnenkomend verkeer niet wordt onderbroken. Gegevens verlies is mogelijk omdat de standaard Bewaar periode 1 dag is voor Azure-gebeurtenis bronnen. Wanneer de ingang is onderbroken, verliest u waarschijnlijk de meest recente gegevens, tenzij er extra actie wordt ondernomen. U moet de capaciteit verg Roten of overschakelen om **oude gegevens te verwijderen** om de kans op gegevens verlies te voor komen.
 
-In de betrokken Event Hubs kunt u overwegen om de eigenschap voor het **bewaren van berichten** aan te passen om gegevens verlies te minimaliseren wanneer inkomend onderbreken plaatsvindt in time series Insights.
+In de betrokken Event Hubs kunt u overwegen om de eigenschap voor het **bewaren van berichten** aan te passen om gegevens verlies te minimaliseren wanneer inkomend onderbreken plaatsvindt in azure time series Insights.
 
 [![Bewaren van Event hub-berichten.](media/time-series-insights-concepts-retention/event-hub-retention.png)](media/time-series-insights-concepts-retention/event-hub-retention.png#lightbox)
 
-Als er geen eigenschappen zijn geconfigureerd voor de gebeurtenis bron ( `timeStampPropertyName` ), time series Insights standaard ingesteld op de tijds tempel van de aankomst bij Event hub als de X-as. Als `timeStampPropertyName` is geconfigureerd om iets anders te zijn, zoekt de omgeving naar de geconfigureerde `timeStampPropertyName` waarde in het gegevens pakket wanneer gebeurtenissen worden geparseerd.
+Als er geen eigenschappen zijn geconfigureerd voor de gebeurtenis bron ( `timeStampPropertyName` ), Azure time series Insights standaard ingesteld op de tijds tempel van de aankomst bij Event hub als de X-as. Als `timeStampPropertyName` is geconfigureerd om iets anders te zijn, zoekt de omgeving naar de geconfigureerde `timeStampPropertyName` waarde in het gegevens pakket wanneer gebeurtenissen worden geparseerd.
 
-Lees [hoe u uw time series Insights omgeving kunt schalen](time-series-insights-how-to-scale-your-environment.md) om uw omgeving te schalen, zodat u meer capaciteit hebt of de Bewaar periode kunt verg Roten.
+Lees [hoe u uw Azure time series Insights omgeving kunt schalen](time-series-insights-how-to-scale-your-environment.md) om uw omgeving te schalen, zodat u meer capaciteit hebt of de Bewaar periode kunt verg Roten.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Voor informatie over het configureren of wijzigen van de instellingen voor het bewaren van gegevens, raadpleegt u [retentie configureren in time series Insights](time-series-insights-how-to-configure-retention.md).
+- Voor informatie over het configureren of wijzigen van de instellingen voor het bewaren van gegevens, raadpleegt u [retentie configureren in azure time series Insights](time-series-insights-how-to-configure-retention.md).
 
 - Meer informatie over het [beperken van latentie in azure time series Insights](time-series-insights-environment-mitigate-latency.md).

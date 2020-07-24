@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 2e97442d4104f52c1a76ba8cd1d81c99508bb242
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc442886c4c4c26db5f5cde908ea647e2ee2f1bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81605191"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059015"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Extern bureaublad installeren en configureren om verbinding te maken met een virtuele Linux-machine in azure
 Virtuele Linux-machines (Vm's) in Azure worden meestal beheerd vanaf de opdracht regel met behulp van een SSH-verbinding (Secure Shell). Wanneer u geen ervaring hebt met Linux of voor snelle probleemoplossings scenario's, is het gebruik van extern bureau blad mogelijk eenvoudiger. In dit artikel wordt beschreven hoe u een desktop-omgeving ([xfce](https://www.xfce.org)) en extern bureau blad ([xrdp](http://xrdp.org)) installeert en configureert voor uw virtuele Linux-machine met behulp van het Resource Manager-implementatie model.
@@ -132,11 +133,10 @@ tail -f /var/log/syslog
 
 Andere Linux-distributies zoals Red Hat Enterprise Linux en SUSE kunnen verschillende manieren hebben om services en andere locaties van het logboek bestand om te controleren.
 
-Als er geen antwoord wordt ontvangen in uw extern bureau blad-client en er geen gebeurtenissen in het systeem logboek worden weer gegeven, betekent dit gedrag dat extern bureau blad-verkeer de virtuele machine niet kan bereiken. Controleer de regels voor de netwerk beveiligings groep om ervoor te zorgen dat u een regel hebt voor het toestaan van TCP op poort 3389. Zie problemen [met toepassings connectiviteit oplossen](../windows/troubleshoot-app-connection.md)voor meer informatie.
+Als er geen antwoord wordt ontvangen in uw extern bureau blad-client en er geen gebeurtenissen in het systeem logboek worden weer gegeven, betekent dit gedrag dat extern bureau blad-verkeer de virtuele machine niet kan bereiken. Controleer de regels voor de netwerk beveiligings groep om ervoor te zorgen dat u een regel hebt voor het toestaan van TCP op poort 3389. Zie problemen [met toepassings connectiviteit oplossen](../troubleshooting/troubleshoot-app-connection.md)voor meer informatie.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie [SSH-sleutels voor Linux-Vm's maken in azure](mac-create-ssh-keys.md)voor meer informatie over het maken en gebruiken van SSH-sleutels met virtuele Linux-machines.
 
 Zie [SSH-sleutels gebruiken met Windows](ssh-from-windows.md)voor meer informatie over het gebruik van SSH vanuit Windows.
-

@@ -3,12 +3,12 @@ title: Een Microsoft Azure Recovery Services kluis verwijderen
 description: In dit artikel leert u hoe u afhankelijkheden kunt verwijderen en vervolgens een Azure Backup Recovery Services kluis kunt verwijderen.
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: e6aaab80cabbdd8a58d8adc64409bf1bcd8ebf03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5446c54ac070555987dfc05afa67825f307ee61b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563115"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055203"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Een Azure Backup Recovery Services kluis verwijderen
 
@@ -27,7 +27,7 @@ Als u probeert de kluis te verwijderen zonder de afhankelijkheden te verwijderen
 
 - De kluis kan niet worden verwijderd, omdat er nog resources in de kluis aanwezig zijn. Controleer of er geen back-upitems, beveiligde servers of back-upbeheerser vers zijn gekoppeld aan deze kluis. Hef de registratie van de volgende containers die zijn gekoppeld aan deze kluis op voordat u doorgaat met verwijderen.
 
-- De kluis van Recovery Services kan niet worden verwijderd, omdat er zich in de kluis back-upitems bevinden met de status Voorlopig verwijderd. De voorlopig verwijderde items worden definitief verwijderd na 14 dagen na de Verwijder bewerking. Probeer het verwijderen van de kluis nadat de back-upitems definitief zijn verwijderd en er geen item met de status zacht verwijderd is gebleven in de kluis. Zie [voorlopig verwijderen voor Azure backup](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud)voor meer informatie.
+- De kluis van Recovery Services kan niet worden verwijderd, omdat er zich in de kluis back-upitems bevinden met de status Voorlopig verwijderd. De voorlopig verwijderde items worden definitief verwijderd na 14 dagen na de Verwijder bewerking. Probeer het verwijderen van de kluis nadat de back-upitems definitief zijn verwijderd en er geen item met de status zacht verwijderd is gebleven in de kluis. Zie [voorlopig verwijderen voor Azure backup](./backup-azure-security-feature-cloud.md)voor meer informatie.
 
 ## <a name="proper-way-to-delete-a-vault"></a>Juiste manier om een kluis te verwijderen
 
@@ -36,9 +36,9 @@ Als u probeert de kluis te verwijderen zonder de afhankelijkheden te verwijderen
 
 Als u een kluis goed wilt verwijderen, moet u de stappen in deze volg orde volgen:
 
-- **Stap 1**: Schakel de functie voor voorlopig verwijderen uit. [Hier vindt](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#enabling-and-disabling-soft-delete) u een overzicht van de stappen voor het uitschakelen van de tijdelijke verwijdering.
+- **Stap 1**: Schakel de functie voor voorlopig verwijderen uit. [Hier vindt](./backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete) u een overzicht van de stappen voor het uitschakelen van de tijdelijke verwijdering.
 
-- **Stap 2**: Controleer na het uitschakelen van zacht verwijderen of er eerder items met de status voorlopig verwijderd zijn. Als er items met de status zacht verwijderd zijn, moet u deze *verwijderen* en opnieuw *verwijderen* . [Volg deze stappen](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#permanently-deleting-soft-deleted-backup-items) om items te zoeken die u voorlopig verwijdert en deze permanent te verwijderen.
+- **Stap 2**: Controleer na het uitschakelen van zacht verwijderen of er eerder items met de status voorlopig verwijderd zijn. Als er items met de status zacht verwijderd zijn, moet u deze *verwijderen* en opnieuw *verwijderen* . [Volg deze stappen](./backup-azure-security-feature-cloud.md#permanently-deleting-soft-deleted-backup-items) om items te zoeken die u voorlopig verwijdert en deze permanent te verwijderen.
 
 - **Stap 3**: u moet de volgende drie locaties controleren om te controleren of er beveiligde items zijn:
 
@@ -209,7 +209,7 @@ De beveiliging stoppen en de back-upgegevens verwijderen:
            [<CommonParameters>]
     ```
 
-  Meer [informatie](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupautoprotection?view=azps-2.6.0) over het uitschakelen van de beveiliging voor een met Azure backup beveiligd item.
+  Meer [informatie](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupautoprotection) over het uitschakelen van de beveiliging voor een met Azure backup beveiligd item.
 
 - Stop de beveiliging en verwijder gegevens voor alle met back-ups beveiligde items in de Cloud (bijvoorbeeld: IaaS VM, Azure-bestands share, enzovoort):
 
@@ -225,7 +225,7 @@ De beveiliging stoppen en de back-upgegevens verwijderen:
        [<CommonParameters>]
     ```
 
-    [Meer informatie](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection?view=azps-2.6.0&viewFallbackFrom=azps-2.5.0)   over het uitschakelen van de beveiliging van een item dat is beveiligd met back-up.
+    [Meer informatie](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection)   over het uitschakelen van de beveiliging van een item dat is beveiligd met back-up.
 
 - Gebruik de volgende Power shell-opdracht voor het verwijderen van de back-upgegevens van elke MARS Power shell-module voor on-premises bestanden en mappen die zijn beveiligd met een Azure Backup-Agent (MARS) die wordt gebruikt voor het maken van een back-up naar Azure:
 
@@ -263,7 +263,7 @@ Nadat u de back-upgegevens hebt verwijderd, moet u de registratie van alle on-pr
               [<CommonParameters>]
     ```
 
-    Meer [informatie](https://docs.microsoft.com/powershell/module/az.recoveryservices/unregister-azrecoveryservicesbackupcontainer?view=azps-2.6.0) over het ongedaan maken van de registratie van een Windows-Server of andere container uit de kluis.
+    Meer [informatie](/powershell/module/az.recoveryservices/unregister-azrecoveryservicesbackupcontainer) over het ongedaan maken van de registratie van een Windows-Server of andere container uit de kluis.
 
 - Voor on-premises machines die zijn beveiligd met MABS (Microsoft Azure Backup Server) of DPM naar Azure (System Center Data Protection beheren:
 
@@ -278,7 +278,7 @@ Nadat u de back-upgegevens hebt verwijderd, moet u de registratie van alle on-pr
           [<CommonParameters>]
     ```
 
-    Meer [informatie](https://docs.microsoft.com/powershell/module/az.recoveryservices/unregister-azrecoveryservicesbackupcontainer?view=azps-2.6.0) over het ongedaan maken van de registratie van een container voor back-upbeheer vanuit de kluis.
+    Meer [informatie](/powershell/module/az.recoveryservices/unregister-azrecoveryservicesbackupcontainer) over het ongedaan maken van de registratie van een container voor back-upbeheer vanuit de kluis.
 
 Nadat u de back-ups definitief hebt verwijderd en alle containers hebt geregistreerd, gaat u verder met het verwijderen van de kluis.
 
@@ -293,7 +293,7 @@ Een Recovery Services kluis verwijderen:
       [<CommonParameters>]
    ```
 
-Meer [informatie](https://docs.microsoft.com/powershell/module/az.recoveryservices/remove-azrecoveryservicesvault) over het verwijderen van een Recovery Services-kluis.
+Meer [informatie](/powershell/module/az.recoveryservices/remove-azrecoveryservicesvault) over het verwijderen van een Recovery Services-kluis.
 
 ## <a name="delete-the-recovery-services-vault-by-using-cli"></a>De Recovery Services kluis verwijderen met behulp van CLI
 
@@ -330,7 +330,7 @@ Als u de bestaande Recovery Services-kluis wilt verwijderen, voert u de ondersta
                        [--yes]
     ```
 
-    Raadpleeg dit [artikel](https://docs.microsoft.com/cli/azure/backup/vault?view=azure-cli-latest) voor meer informatie
+    Raadpleeg dit [artikel](/cli/azure/backup/vault?view=azure-cli-latest) voor meer informatie
 
 ## <a name="delete-the-recovery-services-vault-by-using-azure-resource-manager"></a>De Recovery Services kluis verwijderen door gebruik te maken van Azure Resource Manager
 

@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
-ms.openlocfilehash: 551fb0cb9f3745a62d5d84f2c4878bbbbe5ad9a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 37b3e5eff0baee736fc05760e19c31fdc513e23d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79137319"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060372"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Getimede meta gegevens in live streamen signalering 
 
@@ -41,7 +42,7 @@ Deze specificatie bevat een overzicht van verschillende modi die worden onderste
 
 ## <a name="11-terms-used"></a>1,1 gebruikte termen
 
-| Termijn                | Definitie                                                                                                                                                                                                                                    |
+| Term                | Definitie                                                                                                                                                                                                                                    |
 | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | AD-afbreek punt            | Een locatie of tijdstip waarop een of meer advertenties mogen worden gepland voor levering; hetzelfde als beschik bare verkoop kansen.                                                                                                                     |
 | AD-besluit service | externe service die bepaalt welke AD ('s) en de duur van de gebruiker worden weer gegeven. De services worden doorgaans door een partner verschaft en zijn buiten het bereik van dit document.                                                                    |
@@ -79,8 +80,8 @@ De volgende documenten bevatten voorzieningen, die door de verwijzing in deze te
 | [MPEGDASH]        | Informatie technologie--dynamisch adaptief streamen via HTTP (DASH)--deel 1: beschrijving van media presentatie en segment indelingen. Mei 2014. Gemaakt. URLhttps://www.iso.org/standard/65274.html         |
 | [MPEGCMAF]        | Informatie technologie: multi media-toepassings indeling (MPEG-A)--deel 19: common media toepassings indeling (CMAF) voor gesegmenteerde media. Januari 2018. Gemaakt. URLhttps://www.iso.org/standard/71975.html |
 | [MPEGCENC]        | Informatie technologie--MPEG-systeem technologieën--deel 7: algemene versleuteling in ISO-basis bestanden voor media bestands indeling. Februari 2016. Gemaakt. URLhttps://www.iso.org/standard/68042.html                   |
-| [MS-SSTR]         | ["Micro soft Smooth Streaming-Protocol", 15 mei 2014](https://docs.microsoft.com/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251)                                                     |
-| [MS-SSTR-opname]  | [Azure Media Services gefragmenteerde MP4 Live opname-specificatie](https://docs.microsoft.com/azure/media-services/media-services-fmp4-live-ingest-overview)                                                      |
+| [MS-SSTR]         | ["Micro soft Smooth Streaming-Protocol", 15 mei 2014](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251)                                                     |
+| [MS-SSTR-opname]  | [Azure Media Services gefragmenteerde MP4 Live opname-specificatie](./media-services-fmp4-live-ingest-overview.md)                                                      |
 | [RFC8216]         | N. Pantos, ed.; W. mei. HTTP Live Streaming. 2017 augustus. Informatief. [https://tools.ietf.org/html/rfc8216](https://tools.ietf.org/html/rfc8216)                                                            |
 | [RFC4648]         | De Base16-, Base32-en base64-gegevens codering-[https://tools.ietf.org/html/rfc4648](https://tools.ietf.org/html/rfc4648)                                                                                     |
 | RTMP            | ["Het real-time Messa ging-Protocol van Adobe", december 21, 2012](https://www.adobe.com/devnet/rtmp.html)                                                                                                            |
@@ -207,7 +208,7 @@ Het schema voor de EventStream XML-nettolading van [MPEG-DASH] is gedefinieerd a
 ```
 
 ### <a name="built-in-supported-scheme-id-uris"></a>Ingebouwde ondersteunde combi natie van schema-id's
-| URI van schema-ID                 | Description                                                                                                                                                                                                                                          |
+| URI van schema-ID                 | Beschrijving                                                                                                                                                                                                                                          |
 | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | https: \/ /aomedia.org/emsg/ID3 | Hierin wordt beschreven hoe [ID3v2] meta gegevens kunnen worden uitgevoerd als getimede meta gegevens in een CMAF [MPEGCMAF] gefragmenteerde MP4. Zie de [getimede meta gegevens in de indeling common Media Application (CMAF)](https://github.com/AOMediaCodec/id3-emsg) voor meer informatie. |
 
@@ -240,9 +241,9 @@ De volgende sectie bevat de RTMP-' eenvoudige ' modus ' payload, die kan worden 
 | ---------- | ---------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | type       | Tekenreeks     | Vereist  | Het gebeurtenis bericht.  Is ' SpliceOut ' om een eenvoudige modus-Splice aan te wijzen.                                                                                                                                                                                                         |
 | id         | Tekenreeks     | Vereist  | Een unieke id waarmee de Splice of het segment wordt beschreven. Identificeert dit exemplaar van het bericht                                                                                                                                                                                       |
-| duur   | Aantal     | Vereist  | De duur van de splice. Eenheden zijn fractie seconden.                                                                                                                                                                                                                           |
-| elapsed    | Aantal     | Optioneel  | Wanneer het signaal wordt herhaald om afstemming in te ondersteunen, is dit veld de hoeveelheid presentatie tijd die is verstreken sinds de gestarte splice. Eenheden zijn fractie seconden. Wanneer u de eenvoudige modus gebruikt, mag deze waarde de oorspronkelijke duur van de Splice niet overschrijden. |
-| tijd       | Aantal     | Vereist  | Is de tijd van de splices, in de presentatie tijd. Eenheden zijn fractie seconden.                                                                                                                                                                                                |
+| duur   | Getal     | Vereist  | De duur van de splice. Eenheden zijn fractie seconden.                                                                                                                                                                                                                           |
+| elapsed    | Getal     | Optioneel  | Wanneer het signaal wordt herhaald om afstemming in te ondersteunen, is dit veld de hoeveelheid presentatie tijd die is verstreken sinds de gestarte splice. Eenheden zijn fractie seconden. Wanneer u de eenvoudige modus gebruikt, mag deze waarde de oorspronkelijke duur van de Splice niet overschrijden. |
+| tijd       | Getal     | Vereist  | Is de tijd van de splices, in de presentatie tijd. Eenheden zijn fractie seconden.                                                                                                                                                                                                |
 
 ---
  
@@ -269,9 +270,9 @@ In dit scenario moet de volgende Payload worden verzonden vanuit het on-premises
 | WMS        | Tekenreeks     | Vereist  | Het gebeurtenis bericht.  Voor [SCTE-35] berichten moet dit de met base64 gecodeerde [RFC4648] binaire splice_info_section () zijn om berichten te verzenden naar HLS-, Smooth-en dash-clients.                                                                                                                                                                                                                               |
 | type       | Tekenreeks     | Vereist  | Een URN of URL die het bericht schema aangeeft. Voor [SCTE-35] berichten **moet** dit **' scte35 '** zijn om berichten te verzenden naar HLS-, Smooth-en dash-clients, in overeenstemming met [Adobe-Primetime]. De URN: scte: scte35:2013: bin kan eventueel ook worden gebruikt om een bericht [SCTE-35] te Signa leren.                                                                                                        |
 | id         | Tekenreeks     | Vereist  | Een unieke id waarmee de Splice of het segment wordt beschreven. Identificeert dit exemplaar van het bericht.  Berichten met een gelijkwaardige semantiek moeten dezelfde waarde hebben.                                                                                                                                                                                                                                                       |
-| duur   | Aantal     | Vereist  | De duur van de gebeurtenis of het AD-segment, indien bekend. Als dit onbekend is, **moet** de waarde 0 zijn.                                                                                                                                                                                                                                                                                                                    |
-| elapsed    | Aantal     | Optioneel  | Wanneer het AD-signaal [SCTE-35] wordt herhaald om in te stellen, is dit veld de hoeveelheid presentatie tijd die is verstreken sinds de gestarte splice. Eenheden zijn fractie seconden. In de modus [SCTE-35] kan deze waarde groter zijn dan de oorspronkelijke opgegeven duur van de Splice of het segment.                                                                                                                   |
-| tijd       | Aantal     | Vereist  | De presentatie tijd van de gebeurtenis of AD-splice.  De tijd en duur van de presentatie **moeten** worden uitgelijnd met Stream Access points (SAP) van het type 1 of 2, zoals gedefinieerd in [ISO-14496-12] bijlage I. Voor uitgaand HLS **moeten** tijd en duur worden uitgelijnd met de grenzen van het segment. De presentatie tijd en duur van verschillende gebeurtenis berichten binnen dezelfde gebeurtenis stroom mogen elkaar niet overlappen. Eenheden zijn fractie seconden. |
+| duur   | Getal     | Vereist  | De duur van de gebeurtenis of het AD-segment, indien bekend. Als dit onbekend is, **moet** de waarde 0 zijn.                                                                                                                                                                                                                                                                                                                    |
+| elapsed    | Getal     | Optioneel  | Wanneer het AD-signaal [SCTE-35] wordt herhaald om in te stellen, is dit veld de hoeveelheid presentatie tijd die is verstreken sinds de gestarte splice. Eenheden zijn fractie seconden. In de modus [SCTE-35] kan deze waarde groter zijn dan de oorspronkelijke opgegeven duur van de Splice of het segment.                                                                                                                   |
+| tijd       | Getal     | Vereist  | De presentatie tijd van de gebeurtenis of AD-splice.  De tijd en duur van de presentatie **moeten** worden uitgelijnd met Stream Access points (SAP) van het type 1 of 2, zoals gedefinieerd in [ISO-14496-12] bijlage I. Voor uitgaand HLS **moeten** tijd en duur worden uitgelijnd met de grenzen van het segment. De presentatie tijd en duur van verschillende gebeurtenis berichten binnen dezelfde gebeurtenis stroom mogen elkaar niet overlappen. Eenheden zijn fractie seconden. |
 
 ---
 
@@ -290,7 +291,7 @@ Het bericht type ' onCuePoint ' is gedefinieerd in [Adobe-Flash-AS] en heeft de 
 
 | Eigenschap   | Beschrijving                                                                                                                                                                                                                     |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| naam       | De naam moet '**scte35**' zijn door elementair Live.                                                                                                                                                                              |
+| name       | De naam moet '**scte35**' zijn door elementair Live.                                                                                                                                                                              |
 | tijd       | De tijd in seconden waarop het actie punt tijdens de tijd lijn is opgetreden in het video bestand                                                                                                                                           |
 | type       | Het type actie punt moet worden ingesteld op**gebeurtenis**.                                                                                                                                                                             |
 | parameters | Een associatieve matrix met combi natie van naam/waarde-paren die de informatie uit het SCTE-35-bericht bevat, inclusief id en duur. Deze waarden worden geparseerd door Azure Media Services en opgenomen in de label manifest decoratie. |
@@ -416,13 +417,13 @@ De sparse track **moet** worden gedeclareerd in het manifest van de live-server 
 
 | **Kenmerknaam** | **Veld type** | **Vereist?** | **Beschrijving**                                                                                                                                                                                                              |
 | ------------------ | -------------- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| systemBitrate      | Aantal         | Vereist      | **Moet** ' 0 ' zijn, wat een track met een onbekende variabele bitrate aangeeft.                                                                                                                                                          |
+| systemBitrate      | Getal         | Vereist      | **Moet** ' 0 ' zijn, wat een track met een onbekende variabele bitrate aangeeft.                                                                                                                                                          |
 | parentTrackName    | Tekenreeks         | Vereist      | **Moet** de naam zijn van het bovenliggende spoor, waarbij de tijd codes van de sparse track worden uitgelijnd. Het bovenliggende spoor kan geen sparse track zijn.                                                                             |
-| manifestOutput     | Boolean-waarde        | Vereist      | **Moet** ' True ' zijn, om aan te geven dat de sparse track wordt Inge sloten in het Smooth client-manifest.                                                                                                                        |
+| manifestOutput     | Boolean        | Vereist      | **Moet** ' True ' zijn, om aan te geven dat de sparse track wordt Inge sloten in het Smooth client-manifest.                                                                                                                        |
 | Subtype            | Tekenreeks         | Vereist      | **Moet** de vier teken code ' data ' zijn.                                                                                                                                                                                  |
 | Schema             | Tekenreeks         | Vereist      | **Moet** een urn of URL zijn die het bericht schema aangeeft. Voor [SCTE-35] berichten **moet** dit ' urn: SCTE: scte35:2013: bin ' zijn om berichten te verzenden naar HLS-, Smooth-en dash-clients in overeenstemming met [SCTE-35]. |
 | nummer bijhouden          | Tekenreeks         | Vereist      | **Moet** de naam van de sparse track zijn. De tracknaam kan worden gebruikt om meerdere gebeurtenis stromen te onderscheiden met hetzelfde schema. Elke unieke gebeurtenis stroom **moet** een unieke Track naam hebben.                                |
-| lijnen          | Aantal         | Optioneel      | **Moet** de tijd schaal van het bovenliggende spoor zijn.                                                                                                                                                                               |
+| lijnen          | Getal         | Optioneel      | **Moet** de tijd schaal van het bovenliggende spoor zijn.                                                                                                                                                                               |
 
 ---
 

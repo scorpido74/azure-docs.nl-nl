@@ -66,6 +66,9 @@
       items:
         - name: Overzicht
           href: best-practices.md
+        - name: Basislijnarchitectuur voor een AKS-cluster
+          href: /azure/architecture/reference-architectures/containers/aks/secure-baseline-aks/
+          maintainContext: true
         - name: Voor clusteroperators
           items:
             - name: Multitenancy en clusterisolatie

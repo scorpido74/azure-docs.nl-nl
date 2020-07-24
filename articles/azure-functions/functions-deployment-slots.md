@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
-ms.openlocfilehash: f8abc670535f240d436e90c34f7245a3d176f517
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: f84dc17c6c074fc4dbda8a13fad3586a397fdf10
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242777"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055420"
 ---
 # <a name="azure-functions-deployment-slots"></a>Implementatie sleuven Azure Functions
 
@@ -96,7 +96,7 @@ Alle sleuven worden geschaald naar hetzelfde aantal werk rollen als de productie
 
 ## <a name="add-a-slot"></a>Een sleuf toevoegen
 
-U kunt een sleuf toevoegen via de [cli](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create) of via de portal. De volgende stappen laten zien hoe u een nieuwe sleuf maakt in de portal:
+U kunt een sleuf toevoegen via de [cli](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create) of via de portal. De volgende stappen laten zien hoe u een nieuwe sleuf maakt in de portal:
 
 1. Navigeer naar uw functie-app.
 
@@ -110,7 +110,7 @@ U kunt een sleuf toevoegen via de [cli](https://docs.microsoft.com/cli/azure/fun
 
 ## <a name="swap-slots"></a>Wisselings sleuven
 
-U kunt sleuven wisselen via de [cli](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap) of via de portal. De volgende stappen laten zien hoe u sleuven in de portal kunt wisselen:
+U kunt sleuven wisselen via de [cli](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap) of via de portal. De volgende stappen laten zien hoe u sleuven in de portal kunt wisselen:
 
 1. Navigeer naar de functie-app.
 1. Selecteer **implementatie sleuven**en selecteer vervolgens **wisselen**.
@@ -129,7 +129,7 @@ Als een wissel resulteert in een fout of als u simpelweg een wissel wilt herstel
 
 ## <a name="remove-a-slot"></a>Een sleuf verwijderen
 
-U kunt een sleuf verwijderen via de [cli](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete) of via de portal. De volgende stappen laten zien hoe u een sleuf in de portal kunt verwijderen:
+U kunt een sleuf verwijderen via de [cli](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete) of via de portal. De volgende stappen laten zien hoe u een sleuf in de portal kunt verwijderen:
 
 1. Navigeer naar **implementatie sleuven** in de functie-app en selecteer vervolgens de naam van de sleuf.
 
@@ -149,13 +149,13 @@ U kunt een sleuf verwijderen via de [cli](https://docs.microsoft.com/cli/azure/f
 
 ## <a name="automate-slot-management"></a>Sleuf beheer automatiseren
 
-Met de [Azure cli](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest)kunt u de volgende acties voor een sleuf automatiseren:
+Met de [Azure cli](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest)kunt u de volgende acties voor een sleuf automatiseren:
 
-- [creëren](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create)
-- [verwijderd](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete)
-- [list](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-list)
-- [ruil](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)
-- [automatisch wisselen](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-auto-swap)
+- [creëren](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create)
+- [verwijderd](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete)
+- [orderverzamellijst](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-list)
+- [ruil](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)
+- [automatisch wisselen](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-auto-swap)
 
 ## <a name="change-app-service-plan"></a>App Service plan wijzigen
 

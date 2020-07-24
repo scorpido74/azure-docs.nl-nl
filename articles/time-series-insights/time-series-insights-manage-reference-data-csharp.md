@@ -11,16 +11,16 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: f0ce0f7d90540274d24a7e0248e6f197b74033a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8da2355b62d7be36b10ac9a1ce4b53e87b4b288
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81416971"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059216"
 ---
-# <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-using-c"></a>GA referentie gegevens voor een Azure Time Series Insights omgeving beheren met C #
+# <a name="manage-reference-data-for-an-azure-time-series-insights-gen-1-environment-using-c"></a>Referentie gegevens beheren voor een Azure Time Series Insights-omgeving van 1 generatie met C #
 
-In dit artikel wordt beschreven hoe u C#-, [MSAL.net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)-en Azure Active Directory kunt combi neren om PROGRAMMATISCHe API-aanvragen naar de api van Azure Time Series Insights ga [Gegevensbeheer](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)te maken.
+In dit artikel wordt beschreven hoe u C#-, [MSAL.net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)-en Azure Active Directory kunt combi neren om PROGRAMMATISCHe API-aanvragen te maken voor de [referentie Gegevensbeheer API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)van Azure time series Insights gen 1.
 
 > [!TIP]
 > GA C#-code voorbeelden weer geven op [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) .
@@ -30,7 +30,7 @@ In dit artikel wordt beschreven hoe u C#-, [MSAL.net](https://github.com/AzureAD
 De voorbeeld code hieronder bevat de volgende functies:
 
 * Een toegangs Token ophalen met behulp van [MSAL.net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) **PublicClientApplication**.
-* Sequentiële CREATE-, READ-, UPDATE-en DELETE-bewerkingen voor de GA [Reference gegevensbeheer-API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api).
+* Sequentiële bewerkingen voor maken, lezen, bijwerken en verwijderen voor de [referentie gegevensbeheer-API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)van de gen 1.
 * Algemene antwoord codes, inclusief [veelvoorkomende fout codes](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api#validation-and-error-handling).
     
     De referentie Gegevensbeheer-API verwerkt elk item afzonderlijk en een fout met één item verhindert niet dat de anderen kunnen volt ooien. Als uw aanvraag bijvoorbeeld 100 items heeft en er een fout optreedt in een item, worden er 99 items geschreven en wordt er een geweigerd.
@@ -39,8 +39,8 @@ De voorbeeld code hieronder bevat de volgende functies:
 
 Voer de volgende stappen uit voordat u de voorbeeld code compileert en uitvoert:
 
-1. [Richt een GA Azure time series Insights](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started
-) -omgeving in.
+1. [Richt een Azure time series Insights omgeving van gen 1](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started
+) in.
 
 1. Maak in uw omgeving [een set met referentie gegevens](time-series-insights-add-reference-data-set.md) . Gebruik het volgende referentie gegevens schema:
 
@@ -309,4 +309,4 @@ namespace CsharpTsiMsalGaSample
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Lees de naslag documentatie over [referentie gegevensbeheer-API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) voor Ga naar.
+- Lees de naslag informatie over [referentie gegevensbeheer-API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) voor gen 1.

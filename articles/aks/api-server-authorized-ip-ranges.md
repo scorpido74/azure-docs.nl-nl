@@ -4,11 +4,12 @@ description: Meer informatie over het beveiligen van uw cluster met behulp van e
 services: container-service
 ms.topic: article
 ms.date: 11/05/2019
-ms.openlocfilehash: 4d9030e21c3b8f31c18c26fc54dc76d5b8d84a17
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c92d4e00da1cc3d372cca0bf4efbe648ae522608
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85100053"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057472"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Veilige toegang tot de API-server met behulp van geautoriseerde IP-adresbereiken in azure Kubernetes service (AKS)
 
@@ -17,7 +18,7 @@ In Kubernetes ontvangt de API-server aanvragen voor het uitvoeren van acties in 
 Dit artikel laat u zien hoe u met de API-server geautoriseerde IP-adresbereiken kunt beperken welke IP-adressen en CIDRs het beheer vlak kunnen hebben.
 
 > [!IMPORTANT]
-> Voor nieuwe clusters worden geautoriseerde IP-adresbereiken van de API-server alleen ondersteund op de *standaard* -SKU Load Balancer. Bestaande clusters met de *basis* -SKU Load Balancer en de door de API server geautoriseerde IP-adresbereiken blijven werken, maar kunnen niet worden gemigreerd naar een *standaard* -SKU Load Balancer. Deze bestaande clusters blijven werken als hun Kubernetes-versie of besturings vlak wordt geüpgraded.
+> Op clusters die zijn gemaakt na de door de API server geautoriseerde IP-adresbereiken in oktober 2019, worden door API-server geautoriseerde IP-adresbereiken alleen ondersteund voor de *standaard* SKU Load Balancer. Bestaande clusters met de *basis* -SKU Load Balancer en de door de API server geautoriseerde IP-adresbereiken blijven werken, maar kunnen niet worden gemigreerd naar een *standaard* -SKU Load Balancer. Deze bestaande clusters blijven werken als hun Kubernetes-versie of besturings vlak wordt geüpgraded. Geautoriseerde IP-adresbereiken van de API-server worden niet ondersteund voor persoonlijke clusters.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -35,7 +36,7 @@ Zie [Kubernetes core-concepten voor AKS][concepts-clusters-workloads]voor meer i
 
 ## <a name="create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled"></a>Een AKS-cluster maken waarvoor een API-server geautoriseerde IP-adresbereiken is ingeschakeld
 
-Door API server geautoriseerde IP-adresbereiken werken alleen voor nieuwe AKS-clusters en worden niet ondersteund voor particuliere AKS-clusters. Maak een cluster met behulp van de [AZ AKS Create][az-aks-create] en geef de *`--api-server-authorized-ip-ranges`* para meter op om een lijst met geautoriseerde IP-adresbereiken op te geven. Deze IP-adresbereiken zijn meestal adresbereiken die worden gebruikt door uw on-premises netwerken of open bare Ip's. Wanneer u een CIDR-bereik opgeeft, begint u met het eerste IP-adres in het bereik. *137.117.106.90/29* is bijvoorbeeld een geldig bereik, maar zorg ervoor dat u het eerste IP-adres in het bereik opgeeft, zoals *137.117.106.88/29*.
+Maak een cluster met behulp van de [AZ AKS Create][az-aks-create] en geef de *`--api-server-authorized-ip-ranges`* para meter op om een lijst met geautoriseerde IP-adresbereiken op te geven. Deze IP-adresbereiken zijn meestal adresbereiken die worden gebruikt door uw on-premises netwerken of open bare Ip's. Wanneer u een CIDR-bereik opgeeft, begint u met het eerste IP-adres in het bereik. *137.117.106.90/29* is bijvoorbeeld een geldig bereik, maar zorg ervoor dat u het eerste IP-adres in het bereik opgeeft, zoals *137.117.106.88/29*.
 
 > [!IMPORTANT]
 > Uw cluster maakt standaard gebruik van de [standaard-SKU Load Balancer][standard-sku-lb] die u kunt gebruiken om de uitgaande gateway te configureren. Wanneer u toegestane IP-bereiken van de API-server inschakelt tijdens het maken van het cluster, is het open bare IP-adres voor uw cluster standaard ook toegestaan naast de bereiken die u opgeeft. Als u ' of geen waarde voor *'* opgeeft *`--api-server-authorized-ip-ranges`* , wordt de API-server geautoriseerde IP-adresbereiken uitgeschakeld. Als u Power shell gebruikt, gebruikt u *`--api-server-authorized-ip-ranges=""`* (met een gelijkteken) om problemen met het parseren te voor komen.
@@ -58,8 +59,10 @@ az aks create \
 > - Het open bare IP-adres van de firewall
 > - Elk bereik dat netwerken vertegenwoordigt waarvan u het cluster beheert
 > - Als u Azure dev Spaces op uw AKS-cluster gebruikt, moet u [extra bereiken op basis van uw regio][dev-spaces-ranges]toestaan.
-
-> De bovengrens voor het aantal IP-bereiken dat u kunt opgeven, is 3500. 
+>
+> De bovengrens voor het aantal IP-bereiken dat u kunt opgeven, is 200.
+>
+> Het kan zijn dat de regels tot 2min kunnen worden door gegeven. Wacht tijd voor het testen van de verbinding.
 
 ### <a name="specify-the-outbound-ips-for-the-standard-sku-load-balancer"></a>Geef de uitgaande Ip's op voor de standaard-SKU load balancer
 

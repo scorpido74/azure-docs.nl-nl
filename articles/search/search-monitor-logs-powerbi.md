@@ -7,12 +7,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/24/2020
-ms.openlocfilehash: e01ac332e61f51909ff1617f1716cd719b67c319
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d529e4e4b79f0c34eb8f95b028cca730b316d5f6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82127875"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060315"
 ---
 # <a name="visualize-azure-cognitive-search-logs-and-metrics-with-power-bi"></a>Azure Cognitive Search-logboeken en-metrische gegevens visualiseren met Power BI
 Met [Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-what-is-azure-search) kunt u bewerkings logboeken en metrische service gegevens over uw zoek service opslaan in een Azure Storage-account. Op deze pagina vindt u instructies voor het visualiseren van deze informatie met behulp van een app Power BI-sjabloon. De app biedt gedetailleerde inzichten over uw zoek service, inclusief informatie over zoeken, indexeren, bewerkingen en metrische service gegevens.
@@ -27,13 +27,13 @@ U vindt de Power BI sjabloon app **Azure Cognitive Search: Analyseer logboeken e
     1. Ga naar de Azure Cognitive Search-service in de Azure Portal
     1. Selecteer in de sectie bewaking in de linkerkolom **Diagnostische instellingen**
 
-        ![](media/search-monitor-logs-powerbi/diagnostic-settings.png)
+        ![Scherm afbeelding die laat zien hoe u Diagnostische instellingen kunt selecteren in de sectie bewaking van de Azure Cognitive Search-service.](media/search-monitor-logs-powerbi/diagnostic-settings.png)
 
     1. Selecteer **+ Diagnostische instelling toevoegen**
     1. Controleer het **Archief op een opslag account**, geef de gegevens van uw opslag account op en controleer **OperationLogs** en **AllMetrics**
 
-        ![](media/search-monitor-logs-powerbi/add-diagnostic-setting.png)
-    1. Selecteer **Opslaan**.
+        ![Scherm afbeelding die laat zien hoe u selecties selecteert voor metrische gegevens en bron logboek registratie op de pagina Diagnostische instellingen.](media/search-monitor-logs-powerbi/add-diagnostic-setting.png)
+    1. Selecteer **Opslaan**
 
 1. Nadat logboek registratie is ingeschakeld, gebruikt u uw zoek service om logboeken en metrische gegevens te genereren. Het duurt Maxi maal een uur voordat de containers in Blob Storage met deze logboeken worden weer gegeven. U ziet de container **Insights-logs-operationlogs** voor het zoeken naar verkeers logboeken en een **pt1m** -container voor metrische gegevens.
 
@@ -41,48 +41,48 @@ U vindt de Power BI sjabloon app **Azure Cognitive Search: Analyseer logboeken e
 
 1. Nadat u de app hebt geïnstalleerd, selecteert u de app in de lijst met apps in Power BI.
 
-    ![](media/search-monitor-logs-powerbi/azure-search-app-tile.png)
+    ![Scherm opname van de Azure Cognitive Search-app die u wilt selecteren in de lijst met apps.](media/search-monitor-logs-powerbi/azure-search-app-tile.png)
 
 1. Selecteer **verbinden** om uw gegevens te verbinden
 
-    ![](media/search-monitor-logs-powerbi/get-started-with-your-new-app.png)
+    ![Scherm afbeelding die laat zien hoe u verbinding maakt met uw gegevens in de Azure Cognitive Search-app.](media/search-monitor-logs-powerbi/get-started-with-your-new-app.png)
 
 1. Voer de naam in van het opslag account dat uw logboeken en metrische gegevens bevat. De app bekijkt standaard de laatste 10 dagen gegevens, maar deze waarde kan worden gewijzigd met de para meter **dagen** .
 
-    ![](media/search-monitor-logs-powerbi/connect-to-storage-account.png)
+    ![Scherm afbeelding die laat zien hoe u de naam van het opslag account en het aantal dagen in de query kunt invoeren op de pagina verbinding maken met Azure Cognitive Search.](media/search-monitor-logs-powerbi/connect-to-storage-account.png)
 
 1. Selecteer **sleutel** als verificatie methode en geef de sleutel van uw opslag account op. Selecteer **privé** als privacyniveau. Klik op Aanmelden om te beginnen met het laadproces.
 
-    ![](media/search-monitor-logs-powerbi/connect-to-storage-account-step-two.png)
+    ![Scherm afbeelding die laat zien hoe u de verificatie methode, de account sleutel en het privacyniveau kunt invoeren op de pagina verbinding maken met Azure Cognitive Search.](media/search-monitor-logs-powerbi/connect-to-storage-account-step-two.png)
 
 1. Wacht tot de gegevens zijn vernieuwd. Dit kan enige tijd duren, afhankelijk van de hoeveelheid gegevens die u hebt. U kunt zien of de gegevens nog steeds worden vernieuwd op basis van de onderstaande indicator.
 
-    ![](media/search-monitor-logs-powerbi/workspace-view-refreshing.png)
+    ![Scherm afbeelding die laat zien hoe u de informatie op de pagina gegevens vernieuwing kunt lezen.](media/search-monitor-logs-powerbi/workspace-view-refreshing.png)
 
 1. Wanneer het vernieuwen van gegevens is voltooid, selecteert u **Azure Cognitive Search rapport** om het rapport weer te geven.
 
-    ![](media/search-monitor-logs-powerbi/workspace-view-select-report.png)
+    ![Scherm afbeelding die laat zien hoe u het rapport Azure Cognitive Search selecteert op de pagina gegevens vernieuwing.](media/search-monitor-logs-powerbi/workspace-view-select-report.png)
 
 1. Zorg ervoor dat u de pagina vernieuwt nadat u het rapport hebt geopend, zodat het wordt geopend met uw gegevens.
 
-    ![](media/search-monitor-logs-powerbi/powerbi-search.png)
+    ![Scherm opname van het rapport Cognitive Search Power BI van Azure.](media/search-monitor-logs-powerbi/powerbi-search.png)
 
 ## <a name="how-to-change-the-app-parameters"></a>De app-para meters wijzigen
 Als u gegevens uit een ander opslag account wilt visualiseren of het aantal dagen aan gegevens wilt wijzigen, volgt u de onderstaande stappen om de **dagen** en **Storage account** para meters te wijzigen.
 
 1. Ga naar uw Power BI-apps, Zoek uw Azure Cognitive Search-app en selecteer de knop **app bewerken** om de werk ruimte weer te geven.
 
-    ![](media/search-monitor-logs-powerbi/azure-search-app-tile-edit.png)
+    ![Scherm afbeelding die laat zien hoe u de knop app bewerken selecteert voor de Azure Cognitive Search-app.](media/search-monitor-logs-powerbi/azure-search-app-tile-edit.png)
 
 1. Selecteer **instellingen** in de opties voor de gegevensset.
 
-    ![](media/search-monitor-logs-powerbi/workspace-view-select-settings.png)
+    ![Scherm afbeelding waarin wordt weer gegeven hoe u instellingen selecteert in de opties voor de zoek gegevensset van Azure Congnitive.](media/search-monitor-logs-powerbi/workspace-view-select-settings.png)
 
 1. Wijzig op het tabblad gegevens sets de parameter waarden en selecteer **Toep assen**. Als er een probleem is met de verbinding, werkt u de referenties voor de gegevens bron op dezelfde pagina bij.
 
 1. Ga terug naar de werk ruimte en selecteer **Nu vernieuwen** in de opties voor de gegevensset.
 
-    ![](media/search-monitor-logs-powerbi/workspace-view-select-refresh-now.png)
+    ![Scherm afbeelding die laat zien hoe u nu vernieuwen selecteert in de opties voor de zoek gegevensset van Azure Congnitive.](media/search-monitor-logs-powerbi/workspace-view-select-refresh-now.png)
 
 1. Open het rapport om de bijgewerkte gegevens weer te geven. Mogelijk moet u het rapport ook vernieuwen om de meest recente gegevens weer te geven.
 

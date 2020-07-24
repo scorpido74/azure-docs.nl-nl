@@ -4,26 +4,27 @@ description: Meer informatie over het gebruik van proximity placement groups om 
 services: container-service
 manager: gwallace
 ms.topic: article
-ms.date: 06/22/2020
-ms.openlocfilehash: 1bcdfb4bb3c910feeac0521308e1e7d733fbd959
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/10/2020
+author: jluk
+ms.openlocfilehash: f6cb370d258a79420b03baf17ec964b091cdebb7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244069"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056586"
 ---
 # <a name="reduce-latency-with-proximity-placement-groups-preview"></a>Minder latentie met proximity-plaatsings groepen (preview-versie)
 
 > [!Note]
-> Wanneer u proximity placement groups gebruikt met AKS, is de co-locatie alleen van toepassing op de agent knooppunten. Knoop punt naar knoop punt en de bijbehorende gehoste Pod naar pod latentie is verbeterd. De co-locatie heeft geen invloed op de plaatsing van het besturings vlak van een cluster.
+> Wanneer u proximity-plaatsings groepen gebruikt op AKS, is de co-locatie alleen van toepassing op de agent knooppunten. Knoop punt naar knoop punt en de bijbehorende gehoste Pod naar pod latentie is verbeterd. De co-locatie heeft geen invloed op de plaatsing van het besturings vlak van een cluster.
 
-Wanneer u uw toepassing in azure implementeert, wordt er netwerk latentie gemaakt door het verspreiden van virtuele machine-exemplaren (VM) in regio's of beschikbaarheids zones. Dit kan van invloed zijn op de algehele prestaties van uw toepassing. Een proximity-plaatsings groep is een logische groepering die wordt gebruikt om ervoor te zorgen dat Azure Compute-resources zich fysiek dicht bij elkaar bevinden. Sommige toepassingen, zoals gaming, technische simulaties en hoge frequentie handel (HFT) vereisen een lage latentie en taken die snel kunnen worden voltooid. Voor scenario's met High Performance Computing (HPC) zoals deze, kunt u overwegen om [proximity-plaatsings groepen](../virtual-machines/linux/co-location.md#proximity-placement-groups) te gebruiken voor de knooppunt groepen van uw cluster.
+Wanneer u uw toepassing in azure implementeert, wordt er netwerk latentie gemaakt door het verspreiden van virtuele machine-exemplaren (VM) in regio's of beschikbaarheids zones. Dit kan van invloed zijn op de algehele prestaties van uw toepassing. Een proximity-plaatsings groep is een logische groepering die wordt gebruikt om ervoor te zorgen dat Azure Compute-resources zich fysiek dicht bij elkaar bevinden. Sommige toepassingen, zoals gaming, technische simulaties en hoge frequentie handel (HFT) vereisen een lage latentie en taken die snel kunnen worden voltooid. Voor scenario's met High Performance Computing (HPC) zoals deze kunt u overwegen om [proximity placement groups](../virtual-machines/linux/co-location.md#proximity-placement-groups) (PPG) te gebruiken voor de knooppunt groepen van uw cluster.
 
 ## <a name="limitations"></a>Beperkingen
 
-* De Proximity-plaatsings groep omvat één beschikbaarheids zone.
-* Er is geen huidige ondersteuning voor AKS-clusters die gebruikmaken van beschikbaarheids sets voor virtuele machines.
-* U kunt bestaande knooppunt groepen niet wijzigen om een proximity-plaatsings groep te gebruiken.
+* Een proximity-plaatsings groep kan worden toegewezen aan Maxi maal één beschikbaarheids zone.
+* Een knooppunt groep moet Virtual Machine Scale Sets gebruiken om een proximity-plaatsings groep te koppelen.
+* Een knooppunt groep kan alleen een proximity-plaatsings groep koppelen aan de groep van de nodegroep.
 
 > [!IMPORTANT]
 > AKS preview-functies zijn beschikbaar op self-service. Previews worden ' as-is ' en ' as available ' gegeven en zijn uitgesloten van de service level agreements en beperkte garantie. AKS-previews worden gedeeltelijk gedekt door de klant ondersteuning. Daarom zijn deze functies niet bedoeld voor productie gebruik. Zie de volgende ondersteunings artikelen voor meer informatie:
@@ -40,7 +41,7 @@ U moet de volgende resources hebben geïnstalleerd:
 ### <a name="set-up-the-preview-feature-for-proximity-placement-groups"></a>De preview-functie voor proximity-plaatsings groepen instellen
 
 > [!IMPORTANT]
-> Wanneer u proximity placement groups gebruikt met AKS, is de co-locatie alleen van toepassing op de agent knooppunten. Knoop punt naar knoop punt en de bijbehorende gehoste Pod naar pod latentie is verbeterd. De co-locatie heeft geen invloed op de plaatsing van het besturings vlak van een cluster.
+> Wanneer u proximity-plaatsings groepen gebruikt met AKS-knooppunt groepen, is de co-locatie alleen van toepassing op de agent knooppunten. Knoop punt naar knoop punt en de bijbehorende gehoste Pod naar pod latentie is verbeterd. De co-locatie heeft geen invloed op de plaatsing van het besturings vlak van een cluster.
 
 ```azurecli-interactive
 # register the preview feature
@@ -63,6 +64,7 @@ az extension add --name aks-preview
 # Update the extension to make sure you have the latest version installed
 az extension update --name aks-preview
 ```
+
 ## <a name="node-pools-and-proximity-placement-groups"></a>Knooppunt groepen en proximity-plaatsings groepen
 
 De eerste resource die u implementeert met een proximity-plaatsings groep, wordt gekoppeld aan een specifiek Data Center. Aanvullende resources die zijn geïmplementeerd met dezelfde proximity-plaatsings groep, worden in hetzelfde Data Center geplaatst. Wanneer alle resources die gebruikmaken van de Proximity-plaatsings groep zijn gestopt (toewijzing opgeheven) of verwijderd, is deze niet meer gekoppeld.
@@ -70,13 +72,23 @@ De eerste resource die u implementeert met een proximity-plaatsings groep, wordt
 * Veel knooppunt groepen kunnen worden gekoppeld aan één proximity-plaatsings groep.
 * Een knooppunt groep mag alleen worden gekoppeld aan één proximity-plaatsings groep.
 
+### <a name="configure-proximity-placement-groups-with-availability-zones"></a>Proximity-plaatsings groepen configureren met beschikbaarheids zones
+
+> [!NOTE]
+> Voor proximity-plaatsings groepen moet een knooppunt groep Maxi maal één beschikbaarheids zone gebruiken. de [basis-sla voor Azure VM van 99,9%](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_9/) is nog steeds van toepassing op vm's in één zone.
+
+Proximity-plaatsings groepen zijn een concept van een knooppunt groep en zijn gekoppeld aan elke afzonderlijke knooppunt groep. Het gebruik van een PPG-resource heeft geen invloed op de beschik baarheid van AKS-besturings vlak. Dit kan van invloed zijn op hoe een cluster met zones moet worden ontworpen. Het volgende ontwerp wordt aanbevolen om ervoor te zorgen dat een cluster over meerdere zones wordt verdeeld.
+
+* Richt een cluster in met de eerste systeem groep met behulp van drie zones en er is geen proximity-plaatsings groep gekoppeld. Dit zorgt ervoor dat het systeem Peule grond in een specifieke knooppunt groep wordt gespreid over meerdere zones.
+* Voeg extra gebruikers knooppunt Pools toe met een unieke zone en proximity-plaatsings groep die is gekoppeld aan elke pool. Een voor beeld is nodepool1 in zone 1 en PPG1, nodepool2 in zone 2 en PPG2, nodepool3 in zone 3 met PPG3. Dit zorgt voor een cluster niveau, knoop punten worden verdeeld over meerdere zones en elke afzonderlijke knooppunt groep wordt in de aangewezen zone geplaatst met een toegewezen PPG-resource.
+
 ## <a name="create-a-new-aks-cluster-with-a-proximity-placement-group"></a>Een nieuw AKS-cluster maken met een proximity-plaatsings groep
 
-In het volgende voor beeld wordt de opdracht [AZ Group Create][az-group-create] gebruikt voor het maken van een resource groep met de naam *myResourceGroup* in de regio *middenus* . Er wordt een AKS-cluster met de naam *myAKSCluster* gemaakt met behulp van de opdracht [AZ AKS Create][az-aks-create] . 
+In het volgende voor beeld wordt de opdracht [AZ Group Create][az-group-create] gebruikt voor het maken van een resource groep met de naam *myResourceGroup* in de regio *middenus* . Er wordt een AKS-cluster met de naam *myAKSCluster* gemaakt met behulp van de opdracht [AZ AKS Create][az-aks-create] .
 
 Versneld netwerken verbetert de netwerk prestaties van virtuele machines aanzienlijk. In het ideale geval moet u proximity-plaatsings groepen gebruiken in combi natie met versneld netwerken. AKS maakt standaard gebruik van versnelde netwerken op [ondersteunde instanties van virtuele machines](../virtual-network/create-vm-accelerated-networking-cli.md?toc=/azure/virtual-machines/linux/toc.json#limitations-and-constraints), waaronder de meeste virtuele machines van Azure met twee of meer vcpu's.
 
-Maak een nieuw AKS-cluster met een proximity-plaatsings groep:
+Maak een nieuw AKS-cluster met een proximity-plaatsings groep die is gekoppeld aan de eerste groep van het systeem knooppunt:
 
 ```azurecli-interactive
 # Create an Azure resource group
@@ -110,7 +122,7 @@ De opdracht produceert uitvoer, die de *id-* waarde bevat die u nodig hebt voor 
 Gebruik de resource-ID voor de Proximity-plaatsings groep voor de waarde *myPPGResourceID* in de onderstaande opdracht:
 
 ```azurecli-interactive
-# Create an AKS cluster that uses a proximity placement group for the initial node pool
+# Create an AKS cluster that uses a proximity placement group for the initial system node pool only. The PPG has no effect on the cluster control plane.
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \

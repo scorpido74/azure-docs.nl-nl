@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/02/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 918e34114faa7a57e54ec45c1cca8036462a8fa1
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 61e2cdf63e5553ba8d796115284dad9a538c2b81
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187384"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056276"
 ---
 # <a name="manage-certificates-in-azure-automation"></a>Certificaten in Azure Automation beheren
 
@@ -34,7 +34,7 @@ Met de cmdlets in de volgende tabel worden Automation-certificaten met Power she
 |[Remove-AzAutomationCertificate](/powershell/module/Az.Automation/Remove-AzAutomationCertificate?view=azps-3.7.0)|Hiermee verwijdert u een certificaat uit Automation.|
 |[Set-AzAutomationCertificate](/powershell/module/Az.Automation/Set-AzAutomationCertificate?view=azps-3.7.0)|Hiermee stelt u de eigenschappen van een bestaand certificaat in, waaronder het uploaden van het certificaat bestand en het instellen van het wacht woord voor een **PFX** -bestand.|
 
-De cmdlet [add-AzureCertificate](/powershell/module/servicemanagement/azure/add-azurecertificate) kan ook worden gebruikt voor het uploaden van een service certificaat voor de opgegeven Cloud service.
+De cmdlet [add-AzureCertificate](/powershell/module/servicemanagement/azure.service/add-azurecertificate) kan ook worden gebruikt voor het uploaden van een service certificaat voor de opgegeven Cloud service.
 
 ## <a name="internal-cmdlets-to-access-certificates"></a>Interne cmdlets voor toegang tot certificaten
 

@@ -4,11 +4,12 @@ description: In dit artikel vindt u informatie over de bewakings-en meldings mog
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: f4b91302723119e707d12a86480bbaff2eb4bec5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 645bf701a8f8561b2cb4f19378036ada82c4bedd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485089"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054537"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Bewaking Azure Backup werk belastingen
 
@@ -27,7 +28,7 @@ Taken van de volgende Azure Backup oplossingen worden hier weer gegeven:
 - Azure VM Backup
 - Back-up van Azure-bestand
 - Azure-workload back-up, zoals SQL en SAP HANA
-- Azure Backup-agent (MAB)
+- Microsoft Azure Recovery Services-agent (MARS)
 
 Taken van System Center Data Protection Manager (SC-DPM), Microsoft Azure Backup-Server (MABS) worden niet weer gegeven.
 
@@ -43,7 +44,7 @@ Waarschuwingen zijn voornamelijk scenario's waarin gebruikers een melding ontvan
 De volgende scenario's worden door de service gedefinieerd als scenario's met waarschuwingen.
 
 - Back-up-/herstelfouten
-- Back-up is voltooid met waarschuwingen voor Azure Backup-Agent (MAB)
+- Back-up geslaagd met waarschuwingen voor Microsoft Azure Recovery Services MARS-agent
 - Beveiliging stoppen met het bewaren van gegevens of beveiliging tegen stoppen met gegevens verwijderen
 
 ### <a name="alerts-from-the-following-azure-backup-solutions-are-shown-here"></a>Waarschuwingen van de volgende Azure Backup oplossingen worden hier weer gegeven
@@ -51,7 +52,7 @@ De volgende scenario's worden door de service gedefinieerd als scenario's met wa
 - Back-ups van Azure-VM's
 - Azure-bestandsback-ups
 - Back-ups van Azure-workloads, zoals SQL, SAP HANA
-- Azure Backup-agent (MAB)
+- Microsoft Azure Recovery Services-agent (MARS) 
 
 > [!NOTE]
 > Waarschuwingen van System Center Data Protection Manager (SC-DPM), Microsoft Azure Backup-Server (MABS) worden hier niet weer gegeven.

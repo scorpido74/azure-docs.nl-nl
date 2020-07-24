@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 019ae80020dafb54f2c06dd504797f21069914ae
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fc50934b4c301b4eea509ecc22e00c62ca091d75
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507060"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056544"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Ondersteunde Kubernetes-versies in AKS (Azure Kubernetes Service)
 
@@ -162,13 +162,13 @@ Als een cluster geen ondersteuning meer heeft voor meer dan drie (3) secundaire 
 
 Het besturings vlak moet zich in een venster met versies van alle knooppunt groepen bevinden. Ga voor meer informatie over het bijwerken van het besturings vlak of de knooppunt groepen naar documentatie over het [upgraden van knooppunt groepen](use-multiple-node-pools.md#upgrade-a-cluster-control-plane-with-multiple-node-pools).
 
-**Kan ik een versie overs Laan bij een upgrade?**
+**Kan ik meerdere AKS-versies overs Laan tijdens de upgrade van het cluster?**
 
-Nee, het volgen van de aanbevolen kubernetes-AKS biedt alleen ondersteuning voor upgrades naar onmiddellijk volgende patch of secundaire versie. In de Azure Portal worden alleen de versies weer gegeven die u kunt upgraden naar en op de CLI die u kunt uitvoeren `az aks get-upgrades -n MyAKSCluster -g MyResourceGroup` om de beschik bare upgrades van uw huidige versie te zien.
+Wanneer u een ondersteund AKS-cluster bijwerkt, kunnen secundaire versies van Kubernetes niet worden overgeslagen. Bijvoorbeeld: upgrades tussen *1.12. x*  ->  *1.13. x* of *1.13. x*  ->  *1.14. x* zijn toegestaan, maar *1.12. x*  ->  *1.14. x* is niet.
 
-**Hoe kan ik een upgrade uitvoeren naar een ondersteunde versie als ik meerdere versies achter de nieuwste ondersteunde versie heb?**
+Als u een upgrade wilt uitvoeren, van *1.12. x*  ->  *1.14. x*, moet u eerst een upgrade uitvoeren van *1.12. x*  ->  *1.13. x*en vervolgens een upgrade uitvoeren van *1.13. x*  ->  *1.14. x*.
 
-Om binnen de ondersteuning te blijven, moet u voor komen dat u achter meerdere versies van de momenteel ondersteunde lijst valt, maar als u in deze situatie AKS, wordt de upgrade naar de mini maal ondersteunde versie altijd toegestaan.
+Het overs laan van meerdere versies kan alleen worden uitgevoerd wanneer u een upgrade uitvoert van een niet-ondersteunde versie terug naar een ondersteunde versie. U kunt bijvoorbeeld een upgrade uitvoeren van een niet-ondersteund *1,10. x* --> een ondersteunde *1.15. x* kan worden voltooid.
 
 ## <a name="next-steps"></a>Volgende stappen
 

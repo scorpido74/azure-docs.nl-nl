@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: 4eea0529e88e183ab517e8546e3ec1cb3cd0af7d
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: e67769d37b45a9e1344ce6aa72bd1e60e6bfe287
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042931"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061276"
 ---
 # <a name="import-hsm-protected-keys-for-key-vault-ncipher"></a>Met HSM beveiligde sleutels voor Key Vault importeren (nCipher)
 
@@ -62,7 +62,7 @@ Zie de volgende tabel voor een lijst met vereisten voor het nemen van uw eigen s
 | Een abonnement op Azure |Als u een Azure Key Vault wilt maken, hebt u een Azure-abonnement nodig: Meld u aan [voor een gratis proef versie](https://azure.microsoft.com/pricing/free-trial/) |
 | De Azure Key Vault Premium-servicelaag ter ondersteuning van met HSM beveiligde sleutels |Zie de [Azure Key Vault-prijs](https://azure.microsoft.com/pricing/details/key-vault/) website voor meer informatie over de service lagen en mogelijkheden voor Azure Key Vault. |
 | nCipher nShield Hsm's, Smart Cards en ondersteunings software |U moet toegang hebben tot een nCipher Hardware Security module en basis kennis van nCipher nShield Hsm's. Zie [NCipher NShield Hardware Security module](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/how-to-buy) voor de lijst met compatibele modellen of als u een HSM wilt kopen als u deze niet hebt. |
-| De volgende hardware en software:<ol><li>Een offline x64-werk station met een mini maal Windows-besturings systeem van Windows 7 en nCipher nShield-software van ten minste versie 11,50.<br/><br/>Als op dit werk station Windows 7 wordt uitgevoerd, moet u [Microsoft .NET Framework 4,5 installeren](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe).</li><li>Een werk station dat is verbonden met internet en een mini maal Windows-besturings systeem van Windows 7 en [Azure PowerShell](/powershell/azure/overview?view=azps-1.2.0) **Mini maal geïnstalleerde versie 1.1.0** geïnstalleerd.</li><li>Een USB-station of ander draagbaar opslag apparaat met ten minste 16 MB beschik bare ruimte.</li></ol> |Uit veiligheidsoverwegingen raden we u aan het eerste werkstation niet aan te sluiten op een netwerk. Deze aanbeveling wordt echter niet programmatisch afgedwongen.<br/><br/>In de volgende instructies wordt dit werk station aangeduid als het niet-verbonden werk station.</p></blockquote><br/>Als uw Tenant sleutel voor een productie netwerk is, raden we u aan een tweede, afzonderlijk werk station te gebruiken om de hulpprogram ma's te downloaden en de Tenant sleutel te uploaden. Voor testdoeleinden kunt u echter hetzelfde werkstation gebruiken als het eerste.<br/><br/>In de volgende instructies wordt dit tweede werk station aangeduid als het met internet verbonden werk station.</p></blockquote><br/> |
+| De volgende hardware en software:<ol><li>Een offline x64-werk station met een mini maal Windows-besturings systeem van Windows 7 en nCipher nShield-software van ten minste versie 11,50.<br/><br/>Als op dit werk station Windows 7 wordt uitgevoerd, moet u [Microsoft .NET Framework 4,5 installeren](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe).</li><li>Een werk station dat is verbonden met internet en een mini maal Windows-besturings systeem van Windows 7 en [Azure PowerShell](/powershell/azure/?view=azps-1.2.0) **Mini maal geïnstalleerde versie 1.1.0** geïnstalleerd.</li><li>Een USB-station of ander draagbaar opslag apparaat met ten minste 16 MB beschik bare ruimte.</li></ol> |Uit veiligheidsoverwegingen raden we u aan het eerste werkstation niet aan te sluiten op een netwerk. Deze aanbeveling wordt echter niet programmatisch afgedwongen.<br/><br/>In de volgende instructies wordt dit werk station aangeduid als het niet-verbonden werk station.</p></blockquote><br/>Als uw Tenant sleutel voor een productie netwerk is, raden we u aan een tweede, afzonderlijk werk station te gebruiken om de hulpprogram ma's te downloaden en de Tenant sleutel te uploaden. Voor testdoeleinden kunt u echter hetzelfde werkstation gebruiken als het eerste.<br/><br/>In de volgende instructies wordt dit tweede werk station aangeduid als het met internet verbonden werk station.</p></blockquote><br/> |
 
 ## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>Uw sleutel genereren en overdragen naar Azure Key Vault HSM
 
@@ -80,7 +80,7 @@ Voer voor deze eerste stap de volgende procedures uit op uw werk station dat is 
 
 ### <a name="step-11-install-azure-powershell"></a>Stap 1,1: Installeer Azure PowerShell
 
-Op het met internet verbonden werk station downloadt en installeert u de Azure PowerShell module met de-cmdlets voor het beheren van Azure Key Vault. Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview)voor installatie-instructies.
+Op het met internet verbonden werk station downloadt en installeert u de Azure PowerShell module met de-cmdlets voor het beheren van Azure Key Vault. Zie [Azure PowerShell installeren en configureren](/powershell/azure/)voor installatie-instructies.
 
 ### <a name="step-12-get-your-azure-subscription-id"></a>Stap 1,2: uw Azure-abonnements-ID ophalen
 

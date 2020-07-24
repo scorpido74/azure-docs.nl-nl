@@ -3,21 +3,17 @@ title: Azure AD gebruiken in azure Kubernetes service
 description: Meer informatie over het gebruik van Azure AD in azure Kubernetes service (AKS)
 services: container-service
 manager: gwallace
-author: TomGeske
 ms.topic: article
-ms.date: 07/08/2020
+ms.date: 07/20/2020
 ms.author: thomasge
-ms.openlocfilehash: b30c5b0e81f4748d5e94c05d016be83163c1e78e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 06a97126df449b77bf3fcc48bd23231512c9dff2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251124"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056645"
 ---
-# <a name="aks-managed-azure-active-directory-integration-preview"></a>AKS-beheerde Azure Active Directory-integratie (preview-versie)
-
-> [!NOTE]
-> Bestaande AKS-clusters (Azure Kubernetes service) met Azure Active Directory-integratie (Azure AD) worden niet beïnvloed door de nieuwe, door AKS beheerde Azure AD-ervaring.
+# <a name="aks-managed-azure-active-directory-integration"></a>AKS-beheerde Azure Active Directory-integratie
 
 Azure AD-integratie met AKS is ontworpen om de Azure AD-integratie ervaring te vereenvoudigen, waar gebruikers eerder moesten een client-app, een server-app en de Azure AD-Tenant nodig hebben om Lees machtigingen te verlenen aan de Directory. In de nieuwe versie beheert de AKS-resource provider de client-en server-apps voor u.
 
@@ -27,60 +23,72 @@ Cluster beheerders kunnen op rollen gebaseerd toegangs beheer (RBAC) Kubernetes 
 
 Meer informatie over de AAD-integratie stroom vindt u in de [documentatie over integratie concepten van Azure Active Directory](concepts-identity.md#azure-active-directory-integration).
 
+## <a name="region-availability"></a>Beschikbaarheid in regio’s
+
+AKS-beheerde Azure Active Directory integratie is beschikbaar in open bare regio's waar [AKS wordt ondersteund](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service).
+
+* Azure Government wordt momenteel niet ondersteund.
+* Azure China 21Vianet wordt momenteel niet ondersteund.
+
+## <a name="limitations"></a>Beperkingen 
+
+* AKS-beheerde Azure AD-integratie kan niet worden uitgeschakeld
+* niet-RBAC ingeschakelde clusters worden niet ondersteund voor door AKS beheerde AAD-integratie
+* Het wijzigen van de Azure AD-Tenant die is gekoppeld aan AKS beheerde AAD-integratie wordt niet ondersteund
+
 > [!IMPORTANT]
-> AKS preview-functies zijn beschikbaar op self-service. Previews worden ' as-is ' en ' as available ' gegeven en zijn uitgesloten van de service level agreements en beperkte garantie. AKS-previews worden gedeeltelijk gedekt door de klant ondersteuning. Daarom zijn deze functies niet bedoeld voor productie gebruik. Zie de volgende ondersteunings artikelen voor meer informatie:
->
-> - [AKS-ondersteunings beleid](support-policies.md)
+> AKS preview-functies zijn beschikbaar op self-service. Previews worden ' as-is ' en ' as available ' gegeven en zijn uitgesloten van de service level agreements en beperkte garantie. AKS-previews worden gedeeltelijk gedekt door de klant ondersteuning. Daarom zijn deze functies niet bedoeld voor productie gebruik. Zie de volgende ondersteunings artikelen voor meer informatie: 
+> - [AKS-ondersteunings beleid](support-policies.md) 
 > - [Veelgestelde vragen over ondersteuning voor Azure](faq.md)
 
-## <a name="before-you-begin"></a>Voordat u begint
+## <a name="prerequisites"></a>Vereisten
 
-* Zoek de Tenant-ID van uw Azure-account door naar de Azure Portal te gaan en Azure Active Directory > eigenschappen te selecteren > Directory-ID
+* De Azure CLI-versie 2.9.0 of hoger
+* Kubectl met een minimum versie van [1,18](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.18.md#v1180)
 
 > [!Important]
 > U moet Kubectl gebruiken met een minimum versie van 1,18
 
-U moet de volgende resources hebben geïnstalleerd:
-
-- De Azure CLI, versie 2.5.1 of hoger
-- De 0.4.38-uitbrei ding AKS-preview
-- Kubectl met een minimum versie van [1,18](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.18.md#v1180)
-
-Gebruik de volgende Azure CLI-opdrachten om de uitbrei ding AKS-preview of later te installeren of bij te werken:
-
-```azurecli
-az extension add --name aks-preview
-az extension list
-```
-
-```azurecli
-az extension update --name aks-preview
-az extension list
-```
-
 Als u kubectl wilt installeren, gebruikt u de volgende opdrachten:
 
-```azurecli
+```azurecli-interactive
 sudo az aks install-cli
 kubectl version --client
 ```
 
 Gebruik [deze instructies](https://kubernetes.io/docs/tasks/tools/install-kubectl/) voor andere besturings systemen.
 
+```azurecli-interactive 
+az feature register --name AAD-V2 --namespace Microsoft.ContainerService    
+``` 
+
+Het kan enkele minuten duren voordat de status als **geregistreerd**wordt weer gegeven. U kunt de registratie status controleren met behulp van de opdracht [AZ Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list) : 
+
+```azurecli-interactive 
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AAD-V2')].{Name:name,State:properties.state}"    
+``` 
+
+Wanneer de status wordt weer gegeven als geregistreerd, vernieuwt u de registratie van de `Microsoft.ContainerService` resource provider met behulp van de opdracht [AZ provider REGI ster](/cli/azure/provider?view=azure-cli-latest#az-provider-register) :    
+
+```azurecli-interactive 
+az provider register --namespace Microsoft.ContainerService 
+``` 
+
+
+## <a name="before-you-begin"></a>Voordat u begint
+
+Voor uw cluster hebt u een Azure AD-groep nodig. Deze groep is vereist als beheerders groep voor het cluster om cluster beheerders machtigingen te verlenen. U kunt een bestaande Azure AD-groep gebruiken of een nieuwe maken. Registreer de object-ID van uw Azure AD-groep.
+
 ```azurecli-interactive
-az feature register --name AAD-V2 --namespace Microsoft.ContainerService
+# List existing groups in the directory
+az ad group list --filter "displayname eq '<group-name>'" -o table
 ```
 
-Het kan enkele minuten duren voordat de status als **geregistreerd**wordt weer gegeven. U kunt de registratie status controleren met behulp van de opdracht [AZ Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list) :
+Gebruik de volgende opdracht om een nieuwe Azure AD-groep voor uw cluster beheerders te maken:
 
 ```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AAD-V2')].{Name:name,State:properties.state}"
-```
-
-Wanneer de status wordt weer gegeven als geregistreerd, vernieuwt u de registratie van de `Microsoft.ContainerService` resource provider met behulp van de opdracht [AZ provider REGI ster](/cli/azure/provider?view=azure-cli-latest#az-provider-register) :
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
+# Create an Azure AD group
+az ad group create --display-name myAKSAdminGroup --mail-nickname myAKSAdminGroup
 ```
 
 ## <a name="create-an-aks-cluster-with-azure-ad-enabled"></a>Een AKS-cluster maken met Azure AD ingeschakeld
@@ -94,31 +102,19 @@ Een Azure-resource groep maken:
 az group create --name myResourceGroup --location centralus
 ```
 
-U kunt een bestaande Azure AD-groep gebruiken of een nieuwe maken. U hebt de object-ID voor uw Azure AD-groep nodig.
-
-```azurecli-interactive
-# List existing groups in the directory
-az ad group list
-```
-
-Gebruik de volgende opdracht om een nieuwe Azure AD-groep voor uw cluster beheerders te maken:
-
-```azurecli-interactive
-# Create an Azure AD group
-az ad group create --display-name MyDisplay --mail-nickname MyDisplay
-```
-
 Een AKS-cluster maken en beheer toegang inschakelen voor uw Azure AD-groep
 
 ```azurecli-interactive
 # Create an AKS-managed Azure AD cluster
-az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad [--aad-admin-group-object-ids <id>] [--aad-tenant-id <id>]
+az aks create -g myResourceGroup -n myManagedCluster --enable-aad --aad-admin-group-object-ids <id> [--aad-tenant-id <id>]
 ```
 
 Als u een Azure AD-cluster met AKS-beheer hebt gemaakt, is de volgende sectie in de antwoord tekst
-```
+```output
 "AADProfile": {
-    "adminGroupObjectIds": null,
+    "adminGroupObjectIds": [
+      "5d24****-****-****-****-****afa27aed"
+    ],
     "clientAppId": null,
     "managed": true,
     "serverAppId": null,
@@ -127,7 +123,7 @@ Als u een Azure AD-cluster met AKS-beheer hebt gemaakt, is de volgende sectie in
   }
 ```
 
-Het cluster wordt binnen een paar minuten gemaakt.
+Zodra het cluster is gemaakt, kunt u het openen.
 
 ## <a name="access-an-azure-ad-enabled-cluster"></a>Toegang tot een Azure AD-cluster
 
@@ -136,7 +132,7 @@ U hebt de [Azure Kubernetes service-cluster gebruiker](../role-based-access-cont
 De gebruikers referenties ophalen voor toegang tot het cluster:
  
 ```azurecli-interactive
- az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster
+ az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
 ```
 Volg de instructies om u aan te melden.
 
@@ -162,8 +158,33 @@ Als u permanent bent geblokkeerd door geen toegang te hebben tot een geldige Azu
 Als u deze stappen wilt uitvoeren, moet u toegang hebben tot de ingebouwde rol [Azure Kubernetes service cluster admin](../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-admin-role) .
 
 ```azurecli-interactive
-az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster --admin
+az aks get-credentials --resource-group myResourceGroup --name myManagedCluster --admin
 ```
+
+## <a name="upgrading-to-aks-managed-azure-ad-integration"></a>Upgrade uitvoeren naar AKS-beheerde Azure AD-integratie
+
+Als uw cluster gebruikmaakt van verouderde Azure AD-integratie, kunt u een upgrade uitvoeren naar AKS-beheerde Azure AD-integratie.
+
+```azurecli-interactive
+az aks update -g myResourceGroup -n myManagedCluster --enable-aad --aad-admin-group-object-ids <id> [--aad-tenant-id <id>]
+```
+
+Een geslaagde migratie van een Azure AD-cluster met AKS-beheer heeft de volgende sectie in de antwoord tekst
+
+```output
+"AADProfile": {
+    "adminGroupObjectIds": [
+      "5d24****-****-****-****-****afa27aed"
+    ],
+    "clientAppId": null,
+    "managed": true,
+    "serverAppId": null,
+    "serverAppSecret": null,
+    "tenantId": "72f9****-****-****-****-****d011db47"
+  }
+```
+
+Als u toegang wilt krijgen tot het cluster, voert u de [volgende stappen uit][access-cluster].
 
 ## <a name="non-interactive-sign-in-with-kubelogin"></a>Niet-interactief aanmelden met kubelogin
 
@@ -195,3 +216,5 @@ Er zijn een aantal niet-interactieve scenario's, zoals continue integratie pijpl
 [operator-best-practices-identity]: operator-best-practices-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md
 [azure-ad-cli]: azure-ad-integration-cli.md
+[access-cluster]: #access-an-azure-ad-enabled-cluster
+[aad-migrate]: #upgrading-to-aks-managed-azure-ad-integration

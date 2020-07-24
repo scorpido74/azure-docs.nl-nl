@@ -3,12 +3,12 @@ title: Verbeter de prestaties van Azure-apps met Advisor
 description: Gebruik aanbevelingen voor prestaties in Azure Advisor om de snelheid en reactie tijd van uw bedrijfskritische toepassingen te verbeteren.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 45fb1f8844067cb34b415c3897db3b1233ab5c7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ecd6a45dc255f4748ed5074a3adb3d948f4122e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85124483"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057578"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Verbeter de prestaties van Azure-toepassingen met behulp van Azure Advisor
 
@@ -16,7 +16,7 @@ De aanbevelingen voor prestaties in Azure Advisor kunnen helpen de snelheid en r
 
 ## <a name="reduce-dns-time-to-live-on-your-traffic-manager-profile-to-fail-over-to-healthy-endpoints-faster"></a>Verminder DNS-time-to-Live op uw Traffic Manager profiel om sneller een failover uit te kunnen geven naar gezonde eind punten
 
-U kunt [TTL-instellingen (time-to-Live)](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-performance-considerations) gebruiken in uw Azure Traffic Manager-profiel om op te geven hoe snel eind punten moeten worden geswitcheerd als een bepaald eind punt niet meer reageert op query's. Als u de TTL-waarden reduceert, worden clients sneller gerouteerd naar werkende eind punten.
+U kunt [TTL-instellingen (time-to-Live)](../traffic-manager/traffic-manager-performance-considerations.md) gebruiken in uw Azure Traffic Manager-profiel om op te geven hoe snel eind punten moeten worden geswitcheerd als een bepaald eind punt niet meer reageert op query's. Als u de TTL-waarden reduceert, worden clients sneller gerouteerd naar werkende eind punten.
 
 Azure Advisor identificeert Traffic Manager profielen met een langere TTL-configuratie. U kunt het beste de TTL-waarde instellen op 20 seconden of 60 seconden, afhankelijk van het feit of het profiel is geconfigureerd voor [snelle failover](https://azure.microsoft.com/roadmap/fast-failover-and-tcp-probing-in-azure-traffic-manager/).
 
@@ -27,7 +27,7 @@ Azure Advisor biedt een consistente, geconsolideerde weer gave van aanbevelingen
 > [!NOTE]
 > Voordat u aanbevelingen kunt krijgen, moet uw data base gedurende een week worden gebruikt en moet er binnen die week een consistente activiteit zijn. SQL Database Advisor kan gemakkelijker worden geoptimaliseerd voor consistente query patronen dan voor wille keurige bursts van de activiteit.
 
-Zie [SQL database Advisor](https://azure.microsoft.com/documentation/articles/sql-database-advisor/)voor meer informatie.
+Zie [SQL database Advisor](../azure-sql/database/database-advisor-implement-performance-recommendations.md)voor meer informatie.
 
 ## <a name="upgrade-your-storage-client-library-to-the-latest-version-for-better-reliability-and-performance"></a>Upgrade uw Storage-client bibliotheek naar de nieuwste versie voor betere betrouw baarheid en prestaties
 
@@ -39,7 +39,7 @@ Azure Advisor integreert aanbevelingen voor het verbeteren van uw App Service er
 * Detectie van exemplaren waarbij geheugen-of CPU-bronnen worden uitgeput door app-runtime, met opties voor risico beperking.
 * Detectie van exemplaren waarbij het door co-zoeken van bronnen, zoals web-apps en data bases, de prestaties kan verbeteren en de kosten kan verlagen.
 
-Zie [Aanbevolen procedures voor Azure app service](https://azure.microsoft.com/documentation/articles/app-service-best-practices/)voor meer informatie.
+Zie [Aanbevolen procedures voor Azure app service](../app-service/app-service-best-practices.md)voor meer informatie.
 
 ## <a name="use-managed-disks-to-prevent-disk-io-throttling"></a>Managed disks gebruiken om schijf-I/O-beperking te voor komen
 
@@ -53,11 +53,11 @@ Azure Premium Storage biedt schijf ondersteuning met hoge prestaties en lage lat
 
 ## <a name="remove-data-skew-on-your-sql-data-warehouse-tables-to-increase-query-performance"></a>Verscheefing van gegevens in uw SQL Data Warehouse tabellen verwijderen om de query prestaties te verbeteren
 
-Gegevens scheefheid kan leiden tot onnodige gegevens verplaatsing of bron knelpunten wanneer u uw workload uitvoert. Advisor detecteert distributie gegevens scheefheid van meer dan 15%. U wordt aangeraden uw gegevens opnieuw te distribueren en uw tabel distributie sleutel selecties opnieuw te bezoeken. Zie [problemen met scheef trekken oplossen](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-distribute#how-to-tell-if-your-distribution-column-is-a-good-choice)voor meer informatie over het identificeren en verwijderen van scheefheid.
+Gegevens scheefheid kan leiden tot onnodige gegevens verplaatsing of bron knelpunten wanneer u uw workload uitvoert. Advisor detecteert distributie gegevens scheefheid van meer dan 15%. U wordt aangeraden uw gegevens opnieuw te distribueren en uw tabel distributie sleutel selecties opnieuw te bezoeken. Zie [problemen met scheef trekken oplossen](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-distribute.md#how-to-tell-if-your-distribution-column-is-a-good-choice)voor meer informatie over het identificeren en verwijderen van scheefheid.
 
 ## <a name="create-or-update-outdated-table-statistics-in-your-sql-data-warehouse-tables-to-increase-query-performance"></a>Verouderde tabel statistieken in uw SQL Data Warehouse tabellen maken of bijwerken om de query prestaties te verbeteren
 
-Advisor identificeert tabellen die geen actuele [tabel statistieken](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics) hebben en raadt u aan om de statistieken te maken of bij te werken. De query Optimizer in Azure SQL Data Warehouse maakt gebruik van actuele statistieken om de kardinaliteit of het aantal rijen in query resultaten te schatten. Met deze schattingen kan het query optimalisatie programma een query plan maken om de snelste prestaties te bieden.
+Advisor identificeert tabellen die geen actuele [tabel statistieken](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-statistics.md) hebben en raadt u aan om de statistieken te maken of bij te werken. De query Optimizer in Azure SQL Data Warehouse maakt gebruik van actuele statistieken om de kardinaliteit of het aantal rijen in query resultaten te schatten. Met deze schattingen kan het query optimalisatie programma een query plan maken om de snelste prestaties te bieden.
 
 ## <a name="improve-mysql-connection-management"></a>MySQL-verbindingsbeheer verbeteren
 
@@ -76,7 +76,7 @@ Advisor identificeert tabellen die geen gerepliceerde tabellen zijn, maar die zo
 - Het distributie type van de tabel. 
 - Het aantal partities op de SQL Data Warehouse tabel. 
 
-Extra heuristiek kan worden gegeven in de aanbeveling voor context. Zie [SQL Data Warehouse aanbevelingen](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-concept-recommendations#replicate-tables)voor meer informatie over hoe deze aanbeveling wordt bepaald. 
+Extra heuristiek kan worden gegeven in de aanbeveling voor context. Zie [SQL Data Warehouse aanbevelingen](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-recommendations.md#replicate-tables)voor meer informatie over hoe deze aanbeveling wordt bepaald. 
 
 ## <a name="migrate-your-storage-account-to-azure-resource-manager-to-get-the-latest-azure-features"></a>Uw opslag account migreren naar Azure Resource Manager om de nieuwste Azure-functies op te halen
 
@@ -88,7 +88,7 @@ Migreer het implementatie model van uw opslag account naar Azure Resource Manage
 Advisor identificeert zelfstandige opslag accounts die gebruikmaken van het klassieke implementatie model en raadt aan de migratie naar het Resource Manager-implementatie model te migreren.
 
 > [!NOTE]
-> Klassieke waarschuwingen in Azure Monitor zijn in augustus 2019 buiten gebruik gesteld. We raden u aan uw klassieke opslag account bij te werken om Resource Manager te gebruiken om de functionaliteit van waarschuwingen met het nieuwe platform te behouden. Zie [klassieke waarschuwingen buiten](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement#retirement-of-classic-monitoring-and-alerting-platform)gebruik stellen voor meer informatie.
+> Klassieke waarschuwingen in Azure Monitor zijn in augustus 2019 buiten gebruik gesteld. We raden u aan uw klassieke opslag account bij te werken om Resource Manager te gebruiken om de functionaliteit van waarschuwingen met het nieuwe platform te behouden. Zie [klassieke waarschuwingen buiten](../azure-monitor/platform/monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform)gebruik stellen voor meer informatie.
 
 ## <a name="design-your-storage-accounts-to-prevent-reaching-the-maximum-subscription-limit"></a>Uw opslag accounts ontwerpen om te voor komen dat de maximale abonnements limiet wordt bereikt
 
@@ -120,17 +120,17 @@ Advisor detecteert niet-ondersteunde versies van Kubernetes.
 Intensief gebruik van de CPU gedurende een langere periode kan de prestaties van uw werk belasting vertragen. Het verg Roten van de CPU-grootte helpt de runtime van de database query's te optimaliseren en de algehele prestaties te verbeteren. Advisor identificeert servers met een hoog CPU-gebruik waarvoor waarschijnlijk CPU-beperkte werk belastingen worden uitgevoerd en raadt u aan om uw reken kracht te schalen.
 
 ### <a name="reduce-memory-constraints-on-your-azure-database-for-mysql-azure-database-for-postgresql-and-azure-database-for-mariadb-servers-or-move-to-a-memory-optimized-sku"></a>Verminder de geheugen beperkingen op uw Azure Database for MySQL-, Azure Database for PostgreSQL-en Azure Database for MariaDB-servers of ga naar een voor geheugen geoptimaliseerde SKU
-Een lage cache verhouding kan leiden tot tragere query prestaties en meer IOPS. Dit probleem kan worden veroorzaakt door een beschadigd query plan of een geheugenintensieve werk belasting. Het herstellen van het query plan of het [verg Roten](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers) van het geheugen van de Azure Database for PostgreSQL, Azure Database for MySQL of Azure database for MariaDB server helpt de uitvoering van de werk belasting van de data base te optimaliseren. Azure Advisor identificeert servers die worden beïnvloed door deze hoge buffer van groeps verloop. U wordt aangeraden een van de volgende acties uit te voeren: 
+Een lage cache verhouding kan leiden tot tragere query prestaties en meer IOPS. Dit probleem kan worden veroorzaakt door een beschadigd query plan of een geheugenintensieve werk belasting. Het herstellen van het query plan of het [verg Roten](../postgresql/concepts-pricing-tiers.md) van het geheugen van de Azure Database for PostgreSQL, Azure Database for MySQL of Azure database for MariaDB server helpt de uitvoering van de werk belasting van de data base te optimaliseren. Azure Advisor identificeert servers die worden beïnvloed door deze hoge buffer van groeps verloop. U wordt aangeraden een van de volgende acties uit te voeren: 
 - Het query plan herstellen
 - Ga naar een SKU met meer geheugen 
 - Verg root de opslag ruimte om meer IOPS te verkrijgen.
 
 ### <a name="use-an-azure-database-for-mysql-or-azure-database-for-postgresql-read-replica-to-scale-out-reads-for-read-intensive-workloads"></a>Een Azure Database for MySQL of Azure Database for PostgreSQL een replica lezen om Lees bewerkingen voor lees-intensieve workloads uit te schalen
-Advisor maakt gebruik van methodieken op basis van werk belastingen, zoals de verhouding van Lees bewerkingen op de server gedurende de afgelopen zeven dagen om Lees-intensieve workloads te identificeren. Een Azure Database for PostgreSQL-of Azure Database for MySQL resource met een hoge lees-en schrijf ratio kan leiden tot CPU-of geheugen conflicten en leiden tot trage query prestaties. Het toevoegen van een [replica](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) helpt bij het uitschalen van Lees bewerkingen naar de replica server en voor komt CPU-of geheugen beperkingen op de primaire server. Advisor identificeert servers met lees-intensieve workloads en raadt u aan een [Lees replica](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas)toe te voegen   voor het offloaden van sommige Lees workloads.
+Advisor maakt gebruik van methodieken op basis van werk belastingen, zoals de verhouding van Lees bewerkingen op de server gedurende de afgelopen zeven dagen om Lees-intensieve workloads te identificeren. Een Azure Database for PostgreSQL-of Azure Database for MySQL resource met een hoge lees-en schrijf ratio kan leiden tot CPU-of geheugen conflicten en leiden tot trage query prestaties. Het toevoegen van een [replica](../postgresql/howto-read-replicas-portal.md) helpt bij het uitschalen van Lees bewerkingen naar de replica server en voor komt CPU-of geheugen beperkingen op de primaire server. Advisor identificeert servers met lees-intensieve workloads en raadt u aan een [Lees replica](../postgresql/concepts-read-replicas.md)toe te voegen   voor het offloaden van sommige Lees workloads.
 
 
 ### <a name="scale-your-azure-database-for-mysql-azure-database-for-postgresql-or-azure-database-for-mariadb-server-to-a-higher-sku-to-prevent-connection-constraints"></a>Uw Azure Database for MySQL, Azure Database for PostgreSQL of Azure Database for MariaDB server schalen naar een hogere SKU om verbindings beperkingen te voor komen
-Elke nieuwe verbinding met uw database server neemt geheugen in beslag. De prestaties van de database server verslechteren als verbindingen met uw server mislukken vanwege een [bovenlimiet](https://docs.microsoft.com/azure/postgresql/concepts-limits) in het geheugen. Azure Advisor identificeert servers met veel verbindings fouten. Het wordt aanbevolen om de verbindings limieten van uw server te upgraden om meer geheugen beschikbaar te maken voor uw server door een van de volgende acties uit te voeren:
+Elke nieuwe verbinding met uw database server neemt geheugen in beslag. De prestaties van de database server verslechteren als verbindingen met uw server mislukken vanwege een [bovenlimiet](../postgresql/concepts-limits.md) in het geheugen. Azure Advisor identificeert servers met veel verbindings fouten. Het wordt aanbevolen om de verbindings limieten van uw server te upgraden om meer geheugen beschikbaar te maken voor uw server door een van de volgende acties uit te voeren:
 - De reken kracht omhoog schalen. 
 - Gebruik Sku's die zijn geoptimaliseerd voor geheugen en meer reken kracht per kern.
 
@@ -168,4 +168,4 @@ Zie voor meer informatie over Advisor-aanbevelingen:
 * [Aanbevelingen voor de Advisor-betrouw baarheid](advisor-high-availability-recommendations.md)
 * [Aanbevelingen voor de beveiliging van Advisor](advisor-security-recommendations.md)
 * [Aanbevelingen voor operationele uitmuntendheid van Advisor](advisor-operational-excellence-recommendations.md)
-* [Advisor REST API](https://docs.microsoft.com/rest/api/advisor/)
+* [Advisor REST API](/rest/api/advisor/)

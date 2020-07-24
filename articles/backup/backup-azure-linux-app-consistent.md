@@ -4,13 +4,14 @@ description: Maak toepassings consistente back-ups van uw virtuele Linux-machine
 ms.reviewer: anuragm
 ms.topic: conceptual
 ms.date: 01/12/2018
-ms.openlocfilehash: 36eeb9f63c67a01bf37412101e23be035596de94
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d578df45235b3bef314245e4eb7a0976c4d48d6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74173009"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054856"
 ---
-# <a name="application-consistent-backup-of-azure-linux-vms"></a>Toepassings consistente back-up van virtuele Azure Linux-machines
+# <a name="application-consistent-backup-of-azure-linux-vms"></a>Toepassingsconsistente back-up van Azure Linux-VM’s
 
 Bij het maken van back-upmomentopnamen van uw Vm's betekent toepassings consistentie dat uw toepassingen worden gestart wanneer de Vm's worden opgestart nadat deze zijn hersteld. Zo kunt u zich Voorst Ellen dat de consistentie van toepassingen zeer belang rijk is. Om ervoor te zorgen dat uw Linux-Vm's toepassings consistent zijn, kunt u het Linux pre-script en post-script-Framework gebruiken om toepassings consistente back-ups te maken. Het Framework pre-script en post-script ondersteunt door Azure Resource Manager geïmplementeerde virtuele Linux-machines. Scripts voor toepassings consistentie bieden geen ondersteuning voor door Service Manager geïmplementeerde virtuele machines of virtuele Windows-machines.
 
@@ -64,7 +65,7 @@ Pre-scripts aanroepen systeem eigen toepassings-Api's, die de IOs stil leggen en
 
     - **ScriptsExecutionPollTimeSeconds**: Stel de tijd in die de uitbrei ding moet overzetten tussen elke polling en de uitvoering van het script. Als de waarde bijvoorbeeld 2 is, controleert de uitbrei ding of de uitvoering van het script elke 2 seconden is voltooid. De minimum-en maximum waarde die het kan duren, zijn respectievelijk 1 en 5. De waarde moet strikt een geheel getal zijn.
 
-6. Het script Framework is nu geconfigureerd. Als de back-up van de virtuele machine al is geconfigureerd, roept de volgende back-up de scripts aan en wordt de toepassings consistente back-up geactiveerd. Als de back-up van de virtuele machine niet is geconfigureerd, configureert u deze met behulp van back-ups van [virtuele Azure-machines naar Recovery Services-kluizen.](https://docs.microsoft.com/azure/backup/backup-azure-vms-first-look-arm)
+6. Het script Framework is nu geconfigureerd. Als de back-up van de virtuele machine al is geconfigureerd, roept de volgende back-up de scripts aan en wordt de toepassings consistente back-up geactiveerd. Als de back-up van de virtuele machine niet is geconfigureerd, configureert u deze met behulp van back-ups van [virtuele Azure-machines naar Recovery Services-kluizen.](./backup-azure-vms-first-look-arm.md)
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
@@ -85,4 +86,4 @@ Zorg ervoor dat u de juiste logboek registratie toevoegt tijdens het schrijven v
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[VM-back-ups configureren in een Recovery Services kluis](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms)
+[VM-back-ups configureren in een Recovery Services kluis](./backup-azure-vms-first-look-arm.md)

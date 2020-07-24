@@ -14,19 +14,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: d75ba63955deb3fb6ef4a1207754097b0b3be532
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 533990ef0ea88be7f1f06021d7aa398e89f6390b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962676"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060327"
 ---
 # <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Gebruik Azure Queue Storage om Media Services taak meldingen te bewaken met .NET 
 
 > [!NOTE]
-> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Bekijk de nieuwste versie [Media Services v3](../latest/index.yml). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
-Wanneer u coderings taken uitvoert, hebt u vaak een manier nodig om de voortgang van de taak bij te houden. U kunt Media Services configureren voor het leveren van meldingen aan [Azure Queue-opslag](../../storage/storage-dotnet-how-to-use-queues.md). U kunt de voortgang van de taak controleren door meldingen van de wachtrij opslag te ontvangen. 
+Wanneer u coderings taken uitvoert, hebt u vaak een manier nodig om de voortgang van de taak bij te houden. U kunt Media Services configureren voor het leveren van meldingen aan [Azure Queue-opslag](../../storage/queues/storage-dotnet-how-to-use-queues.md). U kunt de voortgang van de taak controleren door meldingen van de wachtrij opslag te ontvangen. 
 
 Berichten die aan de wachtrij opslag worden geleverd, kunnen overal ter wereld worden geopend. De Messa ging-architectuur voor wachtrij opslag is betrouwbaar en zeer schaalbaar. Het navragen van de wachtrij opslag voor berichten wordt aanbevolen om andere methoden te gebruiken.
 
@@ -37,10 +37,10 @@ In dit artikel wordt beschreven hoe u meldings berichten kunt ophalen uit de wac
 ## <a name="considerations"></a>Overwegingen
 Houd rekening met het volgende bij het ontwikkelen van Media Services toepassingen die gebruikmaken van Queue Storage:
 
-* Queue Storage biedt geen garantie voor de bestelde levering van First-in-first-out (FIFO). Zie [Azure queues and Azure service bus queues vergeleken en daarentegen](https://msdn.microsoft.com/library/azure/hh767287.aspx)voor meer informatie.
+* Queue Storage biedt geen garantie voor de bestelde levering van First-in-first-out (FIFO). Zie [Azure queues and Azure service bus queues vergeleken en daarentegen](/previous-versions/azure/hh767287(v=azure.100))voor meer informatie.
 * Queue Storage is geen push service. U moet de wachtrij navragen.
-* U kunt een onbeperkt aantal wacht rijen hebben. Zie [Queue Service rest API](https://docs.microsoft.com/rest/api/storageservices/Queue-Service-REST-API)voor meer informatie.
-* Voor de wachtrij opslag gelden enkele beperkingen en specifieke informatie. Deze worden beschreven in [Azure queues en Azure service bus-wacht rijen vergeleken en daarentegen](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted).
+* U kunt een onbeperkt aantal wacht rijen hebben. Zie [Queue Service rest API](/rest/api/storageservices/queue-service-rest-api)voor meer informatie.
+* Voor de wachtrij opslag gelden enkele beperkingen en specifieke informatie. Deze worden beschreven in [Azure queues en Azure service bus-wacht rijen vergeleken en daarentegen](../../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md).
 
 ## <a name="net-code-example"></a>Voor beeld van .NET-code
 

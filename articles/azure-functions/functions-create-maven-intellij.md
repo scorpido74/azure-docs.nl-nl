@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 7ced455e8124abed75dc7b2bbf7f92eb13613347
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1eb430f94ef545fa74ed225c427a121a47f7cf8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85556463"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055791"
 ---
 # <a name="create-your-first-azure-function-with-java-and-intellij"></a>Uw eerste Azure-functie maken met Java en IntelliJ
 
@@ -31,7 +31,7 @@ Als u een functie wilt ontwikkelen met Java en IntelliJ, installeert u de volgen
 + Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 + Een door [Azure ondersteunde Java Development Kit (JDK)](https://aka.ms/azure-jdks) voor Java 8
 + Een [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) Ultimate Edition of Community Edition geïnstalleerd
-+ [Maven 3.5.0 +](https://maven.apache.org/download.cgi)
++ [Maven 3.5.0+](https://maven.apache.org/download.cgi)
 + Nieuwste [functie kern hulpprogramma's](https://github.com/Azure/azure-functions-core-tools)
 
 
@@ -44,7 +44,7 @@ Als u een functie wilt ontwikkelen met Java en IntelliJ, installeert u de volgen
 2. Open in de zijbalk **Azure Explorer** in uw Azure-account en klik op het pictogram **Aanmelden bij Azure** in de balk boven (of vanuit het IDEA-menu **Hulpprogramma’s/Azure/Aanmelden bij Azure**).
     ![De opdracht Aanmelden bij Azure in IntelliJ][intellij-azure-login]
 
-3. Selecteer **Apparaataanmelding** in het venster **Aanmelden bij Azure** en klik op **Aanmelden** ([andere aanmeldingsopties](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/sign-in-instructions)).
+3. Selecteer **Apparaataanmelding** in het venster **Aanmelden bij Azure** en klik op **Aanmelden** ([andere aanmeldingsopties](/azure/developer/java/toolkit-for-intellij/sign-in-instructions)).
 
    ![Het venster Aanmelden bij Azure met apparaataanmelding geselecteerd][intellij-azure-popup]
 
@@ -156,7 +156,7 @@ In deze sectie gebruikt u Azure-toolkit voor IntelliJ om een lokaal Azure Functi
 U hebt een Java-functies project gemaakt met een door HTTP geactiveerde functie, deze uitvoeren op uw lokale computer en geïmplementeerd in Azure. Breid uw functie nu uit door...
 
 > [!div class="nextstepaction"]
-> [Een Azure Storage wachtrij-uitvoer binding toevoegen](/azure/azure-functions/functions-add-output-binding-storage-queue-java)
+> [Een Azure Storage wachtrij-uitvoer binding toevoegen](./functions-add-output-binding-storage-queue-java.md)
 
 
 [marketplace]:./media/functions-create-first-java-intellij/marketplace.png

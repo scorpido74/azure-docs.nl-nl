@@ -4,11 +4,12 @@ description: Informatie over het oplossen van problemen in de kubelet-logboeken 
 services: container-service
 ms.topic: article
 ms.date: 03/05/2019
-ms.openlocfilehash: b7a74803af916f9e9de72dd528273007ce37832f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2ef38aa76f4ef9152e7bc55a1d74c84ef426f0ac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77595379"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056753"
 ---
 # <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>Kubelet-logboeken ophalen van AKS-clusterknooppunten (Azure Kubernetes Service)
 
@@ -31,6 +32,12 @@ Zodra u verbinding hebt gemaakt met het knoop punt, voert u de volgende opdracht
 ```console
 sudo journalctl -u kubelet -o cat
 ```
+
+> [!NOTE]
+> Voor Windows-knoop punten zijn de logboek gegevens in `C:\k` en kunnen worden weer gegeven met de opdracht *meer* :
+> ```
+> more C:\k\kubelet.log
+> ```
 
 In de volgende voorbeeld uitvoer ziet u de *kubelet* -logboek gegevens:
 

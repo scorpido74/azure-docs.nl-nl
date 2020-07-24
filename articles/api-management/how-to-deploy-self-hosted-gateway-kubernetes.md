@@ -9,12 +9,12 @@ ms.workload: mobile
 ms.topic: article
 ms.author: apimpm
 ms.date: 04/23/2020
-ms.openlocfilehash: 51ce2e0dec8b38c9285f4f4e71dd35056b292b66
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: abcda4ea4b14f058325318661daa574494268780
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254279"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056388"
 ---
 # <a name="deploy-a-self-hosted-gateway-to-kubernetes"></a>Een zelf-hostende gateway implementeren op Kubernetes
 
@@ -22,7 +22,7 @@ In dit artikel worden de stappen beschreven voor het implementeren van het zelf-
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Voltooi de volgende quickstart: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md).
+- Voltooi de volgende snelstartgids: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md).
 - Maak een Kubernetes-cluster.
    > [!TIP]
    > [Clusters met één knoop punt](https://kubernetes.io/docs/setup/#learning-environment) werken goed voor ontwikkelings-en evaluatie doeleinden. Gebruik [Kubernetes Certified](https://kubernetes.io/partners/#conformance) multi-node clusters on-premises of in de Cloud voor productie werkbelastingen.
@@ -33,9 +33,9 @@ In dit artikel worden de stappen beschreven voor het implementeren van het zelf-
 1. Selecteer **gateways** onder **implementatie en infra structuur**.
 2. Selecteer de zelf-hostende gateway resource die u wilt implementeren.
 3. Selecteer **implementatie**.
-4. Een toegangs token in het tekstvak **token** is automatisch gegenereerd voor u, op basis van de standaard waarden voor de **verval datum** en de **geheime sleutel** . Als dat nodig is, kiest u waarden in een van beide of beide besturings elementen om een nieuw token te genereren.
+4. Er is automatisch een toegangs token in het tekstvak **token** voor u gegenereerd, op basis van de standaard waarden voor de **verval datum** en de **geheime sleutel** . Als dat nodig is, kiest u waarden in een van beide of beide besturings elementen om een nieuw token te genereren.
 5. Selecteer het tabblad **Kubernetes** onder **implementatie scripts**.
-6. Selecteer de **<gateway naam>. yml-** bestand koppeling en down load het yaml-bestand.
+6. Selecteer de koppeling van het ** \<gateway-name\> . yml** -bestand en down load het yaml-bestand.
 7. Selecteer het pictogram **kopiëren** in de rechter benedenhoek van het tekstvak **implementeren** om de `kubectl` opdrachten op het klem bord op te slaan.
 8. Plak opdrachten in het venster Terminal (of Command). Met de eerste opdracht maakt u een Kubernetes-geheim dat het toegangs token bevat dat in stap 4 is gegenereerd. Met de tweede opdracht wordt het configuratie bestand dat in stap 6 is gedownload, toegepast op het Kubernetes-cluster en wordt verwacht dat het bestand zich in de huidige map bedient.
 9. Voer de opdrachten uit om de benodigde Kubernetes-objecten in de [standaard naam ruimte](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) te maken en zelf-hostende gateways te starten vanaf de [container installatie kopie](https://aka.ms/apim/sputnik/dhub) die is gedownload van de micro soft-container Registry.
@@ -106,6 +106,12 @@ DNS-naam omzetting speelt een cruciale rol in de mogelijkheid van een zelf-hoste
 Het YAML-bestand in de Azure Portal past het standaard [ClusterFirst](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) -beleid toe. Dit beleid zorgt ervoor dat aanvragen voor naam omzetting die niet zijn opgelost door de cluster-DNS, worden doorgestuurd naar de upstream-DNS-server die is overgenomen van het knoop punt.
 
 Zie de [Kubernetes-website](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service)voor meer informatie over naam omzetting in Kubernetes. Overweeg het [DNS-beleid](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) of de [DNS-configuratie](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-config) zo nodig aan te passen voor uw installatie.
+
+### <a name="custom-domain-names-and-ssl-certificates"></a>Aangepaste domein namen en SSL-certificaten
+
+Als u aangepaste domein namen voor de API Management-eind punten gebruikt, met name als u een aangepaste domein naam gebruikt voor het beheer eindpunt, moet u mogelijk de waarde van `config.service.endpoint` in het ** \<gateway-name\> . yaml** -bestand bijwerken om de standaard domeinnaam te vervangen door de aangepaste domein naam. Zorg ervoor dat het beheer eindpunt toegankelijk is vanaf de pod van de zelf-hostende gateway in het Kubernetes-cluster.
+
+Als het SSL-certificaat dat wordt gebruikt door het beheer eindpunt niet is ondertekend door een bekend CA-certificaat, moet u ervoor zorgen dat het CA-certificaat wordt vertrouwd door de pod van de zelf-hostende gateway.
 
 ### <a name="configuration-backup"></a>Configuratie back-up
 Zie [zelf-hostende gateway-overzicht](self-hosted-gateway-overview.md#connectivity-to-azure)voor meer informatie over het gedrag van zelf-hostende gateway in de aanwezigheid van een tijdelijke Azure-verbindings onderbreking.

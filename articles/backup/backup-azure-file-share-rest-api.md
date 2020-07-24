@@ -3,17 +3,18 @@ title: Back-ups maken van Azure-bestands shares met REST API
 description: Meer informatie over het gebruik van REST API voor het maken van back-ups van Azure-bestands shares in de Recovery Services kluis
 ms.topic: conceptual
 ms.date: 02/16/2020
-ms.openlocfilehash: 2cf385830ec1be17cb62432e6ef9cba7d82a9db1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7059dbae9d448b710880f1f9d72b843a6d77d98b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710606"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055028"
 ---
 # <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>Back-up maken van Azure-bestands share met Azure Backup via rest API
 
 In dit artikel wordt beschreven hoe u een back-up van een Azure-bestands share maakt met behulp van Azure Backup via REST API.
 
-In dit artikel wordt ervan uitgegaan dat u al een Recovery Services-kluis en een beleid voor het configureren van back-ups voor uw bestands share hebt gemaakt. Als dat niet het geval is, raadpleegt u de zelf studies voor het maken van de [kluis](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-createorupdatevault) en het [maken van beleid](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-createorupdatepolicy) rest API voor het maken van nieuwe kluizen en beleid.
+In dit artikel wordt ervan uitgegaan dat u al een Recovery Services-kluis en een beleid voor het configureren van back-ups voor uw bestands share hebt gemaakt. Als dat niet het geval is, raadpleegt u de zelf studies voor het maken van de [kluis](./backup-azure-arm-userestapi-createorupdatevault.md) en het [maken van beleid](./backup-azure-arm-userestapi-createorupdatepolicy.md) rest API voor het maken van nieuwe kluizen en beleid.
 
 Voor dit artikel gebruiken we de volgende bronnen:
 
@@ -31,7 +32,7 @@ Voor dit artikel gebruiken we de volgende bronnen:
 
 ### <a name="discover-storage-accounts-with-unprotected-azure-file-shares"></a>Opslag accounts met niet-beveiligde Azure-bestands shares detecteren
 
-De kluis moet alle Azure Storage-accounts in het abonnement detecteren met bestands shares waarvan een back-up kan worden gemaakt naar de Recovery Services kluis. Dit wordt geactiveerd met behulp van de [vernieuwings bewerking](https://docs.microsoft.com/rest/api/backup/protectioncontainers/refresh). Het is een asynchrone *post* -bewerking die ervoor zorgt dat de kluis de meest recente lijst met alle niet-beveiligde Azure-bestands shares in het huidige abonnement en ' caches ' in de sjabloon krijgt. Zodra de bestands share in de cache is opgeslagen, hebben de Recovery Services toegang tot de bestands share en kunnen deze worden beveiligd.
+De kluis moet alle Azure Storage-accounts in het abonnement detecteren met bestands shares waarvan een back-up kan worden gemaakt naar de Recovery Services kluis. Dit wordt geactiveerd met behulp van de [vernieuwings bewerking](/rest/api/backup/protectioncontainers/refresh). Het is een asynchrone *post* -bewerking die ervoor zorgt dat de kluis de meest recente lijst met alle niet-beveiligde Azure-bestands shares in het huidige abonnement en ' caches ' in de sjabloon krijgt. Zodra de bestands share in de cache is opgeslagen, hebben de Recovery Services toegang tot de bestands share en kunnen deze worden beveiligd.
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01&$filter={$filter}
@@ -55,7 +56,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 #### <a name="responses"></a>Antwoorden
 
-De bewerking vernieuwen is een [asynchrone bewerking](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Dit betekent dat met deze bewerking een andere bewerking wordt gemaakt die afzonderlijk moet worden bijgehouden.
+De bewerking vernieuwen is een [asynchrone bewerking](../azure-resource-manager/management/async-operations.md). Dit betekent dat met deze bewerking een andere bewerking wordt gemaakt die afzonderlijk moet worden bijgehouden.
 
 Er worden twee antwoorden geretourneerd: 202 (geaccepteerd) wanneer een andere bewerking wordt gemaakt en 200 (OK) wanneer de bewerking is voltooid.
 
@@ -107,7 +108,7 @@ Date   : Mon, 27 Jan 2020 10:53:04 GMT
 
 ### <a name="get-list-of-storage-accounts-that-can-be-protected-with-recovery-services-vault"></a>Lijst met opslag accounts ophalen die kunnen worden beveiligd met Recovery Services kluis
 
-Als u wilt controleren of ' caching ' is voltooid, vermeldt u alle Beveilig bare opslag accounts in het abonnement. Ga vervolgens naar het gewenste opslag account in het antwoord. Dit wordt gedaan met behulp van de bewerking [ProtectableContainers ophalen](https://docs.microsoft.com/rest/api/backup/protectablecontainers/list) .
+Als u wilt controleren of ' caching ' is voltooid, vermeldt u alle Beveilig bare opslag accounts in het abonnement. Ga vervolgens naar het gewenste opslag account in het antwoord. Dit wordt gedaan met behulp van de bewerking [ProtectableContainers ophalen](/rest/api/backup/protectablecontainers/list) .
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectableContainers?api-version=2016-12-01&$filter=backupManagementType eq 'AzureStorage'
@@ -159,7 +160,7 @@ Omdat we het *testvault2* -opslag account in de antwoord tekst met de beschrijve
 
 ### <a name="register-storage-account-with-recovery-services-vault"></a>Opslag account registreren bij Recovery Services kluis
 
-Deze stap is alleen nodig als u het opslag account niet eerder hebt geregistreerd bij de kluis. U kunt de kluis registreren via de [ProtectionContainers-register bewerking](https://docs.microsoft.com/rest/api/backup/protectioncontainers/register).
+Deze stap is alleen nodig als u het opslag account niet eerder hebt geregistreerd bij de kluis. U kunt de kluis registreren via de [ProtectionContainers-register bewerking](/rest/api/backup/protectioncontainers/register).
 
 ```http
 PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}?api-version=2016-12-01
@@ -208,7 +209,7 @@ De aanvraag tekst voor het maken is als volgt:
  }
 ```
 
-Raadpleeg [ProtectionContainers-REGI ster](https://docs.microsoft.com/rest/api/backup/protectioncontainers/register#azurestoragecontainer)voor de volledige lijst met definities van de hoofd tekst van de aanvraag en andere details.
+Raadpleeg [ProtectionContainers-REGI ster](/rest/api/backup/protectioncontainers/register#azurestoragecontainer)voor de volledige lijst met definities van de hoofd tekst van de aanvraag en andere details.
 
 Dit is een asynchrone bewerking en retourneert twee antwoorden: "202 geaccepteerd" wanneer de bewerking wordt geaccepteerd en "200 OK" wanneer de bewerking is voltooid.  Als u de bewerkings status wilt bijhouden, gebruikt u de locatie header om de meest recente status van de bewerking op te halen.
 
@@ -240,7 +241,7 @@ U kunt controleren of de registratie is geslaagd op basis van de waarde van de p
 
 ### <a name="inquire-all-unprotected-files-shares-under-a-storage-account"></a>Een query uitvoeren op alle niet-beveiligde bestands shares onder een opslag account
 
-U kunt informatie opvragen over Beveilig bare items in een opslag account met behulp van de [beveiligings containers-query](https://docs.microsoft.com/rest/api/backup/protectioncontainers/inquire) bewerking. Het is een asynchrone bewerking en de resultaten moeten worden gevolgd met behulp van de locatie-header.
+U kunt informatie opvragen over Beveilig bare items in een opslag account met behulp van de [beveiligings containers-query](/rest/api/backup/protectioncontainers/inquire) bewerking. Het is een asynchrone bewerking en de resultaten moeten worden gevolgd met behulp van de locatie-header.
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/inquire?api-version=2016-12-01
@@ -275,7 +276,7 @@ Date  : Mon, 27 Jan 2020 10:53:05 GMT
 
 ### <a name="select-the-file-share-you-want-to-back-up"></a>Selecteer de bestands share waarvan u een back-up wilt maken
 
-U kunt alle Beveilig bare items onder het abonnement weer geven en de gewenste bestands share vinden waarvan u een back-up wilt maken met behulp van de bewerking [BackupprotectableItems ophalen](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list) .
+U kunt alle Beveilig bare items onder het abonnement weer geven en de gewenste bestands share vinden waarvan u een back-up wilt maken met behulp van de bewerking [BackupprotectableItems ophalen](/rest/api/backup/backupprotectableitems/list) .
 
 ```http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupProtectableItems?api-version=2016-12-01&$filter={$filter}
@@ -350,7 +351,7 @@ Het antwoord bevat de lijst met alle niet-beveiligde bestands shares en bevat al
 
 ### <a name="enable-backup-for-the-file-share"></a>Back-up voor de bestands share inschakelen
 
-Nadat de relevante bestands share is geïdentificeerd met de beschrijvende naam, selecteert u het beleid dat u wilt beveiligen. Raadpleeg de [List Policy API](https://docs.microsoft.com/rest/api/backup/backuppolicies/list)voor meer informatie over bestaande beleids regels in de kluis. Selecteer vervolgens het [relevante beleid](https://docs.microsoft.com/rest/api/backup/protectionpolicies/get) door te verwijzen naar de naam van het beleid. Zie [zelf studie beleid maken](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-createorupdatepolicy)voor het maken van beleid.
+Nadat de relevante bestands share is geïdentificeerd met de beschrijvende naam, selecteert u het beleid dat u wilt beveiligen. Raadpleeg de [List Policy API](/rest/api/backup/backuppolicies/list)voor meer informatie over bestaande beleids regels in de kluis. Selecteer vervolgens het [relevante beleid](/rest/api/backup/protectionpolicies/get) door te verwijzen naar de naam van het beleid. Zie [zelf studie beleid maken](./backup-azure-arm-userestapi-createorupdatepolicy.md)voor het maken van beleid.
 
 Het inschakelen van beveiliging is een asynchrone *put* -bewerking die een ' beveiligd item ' maakt.
 
@@ -466,11 +467,11 @@ POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-00000000
 
 Als u een back-up op aanvraag wilt activeren, volgt u de onderdelen van de hoofd tekst van de aanvraag.
 
-| Naam       | Type                       | Description                       |
+| Naam       | Type                       | Beschrijving                       |
 | ---------- | -------------------------- | --------------------------------- |
 | Eigenschappen | AzurefilesharebackupReques | BackupRequestResource-eigenschappen |
 
-Raadpleeg [back-ups activeren voor beveiligde items rest API document](https://docs.microsoft.com/rest/api/backup/backups/trigger#request-body)voor een volledige lijst met definities van de aanvraag tekst en andere details.
+Raadpleeg [back-ups activeren voor beveiligde items rest API document](/rest/api/backup/backups/trigger#request-body)voor een volledige lijst met definities van de aanvraag tekst en andere details.
 
 Voor beeld van aanvraag tekst
 
@@ -488,7 +489,7 @@ Voor beeld van aanvraag tekst
 
 ### <a name="responses"></a>Antwoorden
 
-Het activeren van een back-up op aanvraag is een [asynchrone bewerking](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Dit betekent dat met deze bewerking een andere bewerking wordt gemaakt die afzonderlijk moet worden bijgehouden.
+Het activeren van een back-up op aanvraag is een [asynchrone bewerking](../azure-resource-manager/management/async-operations.md). Dit betekent dat met deze bewerking een andere bewerking wordt gemaakt die afzonderlijk moet worden bijgehouden.
 
 Er worden twee antwoorden geretourneerd: 202 (geaccepteerd) wanneer een andere bewerking wordt gemaakt en 200 (OK) wanneer de bewerking is voltooid.
 
@@ -539,7 +540,7 @@ Zodra de bewerking is voltooid, wordt 200 (OK) geretourneerd met de ID van de re
 }
 ```
 
-Omdat de back-uptaak een langlopende bewerking is, moet deze worden gevolgd zoals uitgelegd in de [taken bewaken met behulp van rest API document](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-managejobs#tracking-the-job).
+Omdat de back-uptaak een langlopende bewerking is, moet deze worden gevolgd zoals uitgelegd in de [taken bewaken met behulp van rest API document](./backup-azure-arm-userestapi-managejobs.md#tracking-the-job).
 
 ## <a name="next-steps"></a>Volgende stappen
 

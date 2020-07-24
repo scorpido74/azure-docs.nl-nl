@@ -4,12 +4,12 @@ description: Query's voor Advisor-gegevens maken in azure resource Graph
 ms.topic: article
 ms.date: 03/12/2020
 ms.author: sagupt
-ms.openlocfilehash: c0786d1d09ff61ddd9c375c68b7199521e319a4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 66bb500d419d1f5537afafd7a2df543ded8cc7ce
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85117831"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057767"
 ---
 # <a name="query-for-advisor-data-in-resource-graph-explorer-azure-resource-graph"></a>Query's uitvoeren voor Advisor-gegevens in resource Graph Explorer (Azure resource Graph)
 
@@ -24,7 +24,7 @@ Advisor-resources zijn nu onboarding naar [Azure resource Graph](https://azure.m
 
 ## <a name="advisor-resource-types-in-azure-graph"></a>Advisor-resource typen in azure Graph
 
-Beschik bare Advisor-resource typen in [resource grafiek](https://docs.microsoft.com/azure/governance/resource-graph/): er zijn drie resource typen beschikbaar voor het uitvoeren van Query's in Advisor-resources. Hier volgt een lijst met de resources die nu beschikbaar zijn voor het uitvoeren van query's in resource grafiek.
+Beschik bare Advisor-resource typen in [resource grafiek](../governance/resource-graph/index.yml): er zijn drie resource typen beschikbaar voor het uitvoeren van Query's in Advisor-resources. Hier volgt een lijst met de resources die nu beschikbaar zijn voor het uitvoeren van query's in resource grafiek.
 * Micro soft. Advisor/configuraties
 * Micro soft. Advisor/aanbevelingen
 * Micro soft. Advisor/onderdrukkingen
@@ -42,4 +42,4 @@ Zie voor meer informatie over Advisor-aanbevelingen:
 * [Aanbevelingen voor Advisor-prestaties](advisor-performance-recommendations.md)
 * [Aanbevelingen voor de beveiliging van Advisor](advisor-security-recommendations.md)
 * [Aanbevelingen voor operationele uitmuntendheid van Advisor](advisor-operational-excellence-recommendations.md)
-* [Advisor REST API](https://docs.microsoft.com/rest/api/advisor/)
+* [Advisor REST API](/rest/api/advisor/)

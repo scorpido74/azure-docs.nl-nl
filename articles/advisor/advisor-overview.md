@@ -3,12 +3,12 @@ title: Inleiding tot Azure Advisor
 description: Gebruik Azure Advisor om uw Azure-implementaties te optimaliseren.
 ms.topic: article
 ms.date: 02/01/2019
-ms.openlocfilehash: 0c6c79dd764f92475b3b0121ae46706c0dfc0bcb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17b68e220b7011dee2cc8fca440d58d980c28e6d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85117774"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057698"
 ---
 # <a name="introduction-to-azure-advisor"></a>Inleiding tot Azure Advisor
 
@@ -51,13 +51,13 @@ U kunt aanbevelingen van Advisor ook weer geven via de resource interface van de
 
 ### <a name="what-permissions-do-i-need-to-access-advisor"></a>Welke machtigingen heb ik nodig voor toegang tot Advisor?
  
-U kunt aanbevelingen van Advisor als *eigenaar*, *bijdrager*of *lezer* van een abonnement benaderen.
+U kunt aanbevelingen van Advisor openen als *eigenaar*, *bijdrager*of *lezer* van een abonnement, resource groep of resource.
 
 ### <a name="what-resources-does-advisor-provide-recommendations-for"></a>Welke resources biedt Advisor aanbevelingen voor?
 
 Advisor biedt aanbevelingen voor Application Gateway, App Services, beschikbaarheids sets, Azure-cache, Azure Data Factory, Azure Database for MySQL, Azure Database for PostgreSQL, Azure Database for MariaDB, Azure ExpressRoute, Azure Cosmos DB, open bare IP-adressen van Azure, SQL Data Warehouse, SQL-servers, opslag accounts, Traffic Manager profielen en virtuele machines.
 
-Azure Advisor bevat ook uw aanbevelingen van [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-recommendations) die aanbevelingen kunnen bevatten voor aanvullende resource typen.
+Azure Advisor bevat ook uw aanbevelingen van [Azure Security Center](../security-center/security-center-recommendations.md) die aanbevelingen kunnen bevatten voor aanvullende resource typen.
 
 ### <a name="can-i-postpone-or-dismiss-a-recommendation"></a>Kan ik een aanbeveling uitstellen of negeren?
 

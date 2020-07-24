@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 895e33a111fe5bb881d198ee4995b9534ca3d528
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 2e2a7f09ac6ff3be119a07ed0a2162525801ceef
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135883"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061855"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Aangepaste Sdk's voor Azure Digital Apparaatdubbels maken met auto rest
 
-Op dit moment is de enige gepubliceerde gegevenslaag SDK voor interactie met de Azure Digital Apparaatdubbels Api's voor .NET (C#). Meer informatie over de .NET SDK en de Api's in het algemeen kunt u vinden in [de procedures: gebruik de Azure Digital Apparaatdubbels api's en sdk's](how-to-use-apis-sdks.md). Als u in een andere taal werkt, leert u in dit artikel hoe u uw eigen SDK kunt genereren in de taal van uw keuze, met behulp van auto rest.
+Op dit moment is de enige gepubliceerde gegevenslaag SDK voor interactie met de Azure Digital Apparaatdubbels Api's voor .NET (C#). Meer informatie over de .NET SDK en de Api's in het algemeen kunt u vinden in [*de procedures: gebruik de Azure Digital Apparaatdubbels api's en sdk's*](how-to-use-apis-sdks.md). Als u in een andere taal werkt, leert u in dit artikel hoe u uw eigen SDK kunt genereren in de taal van uw keuze, met behulp van auto rest.
 
 ## <a name="set-up-your-machine"></a>Uw machine instellen
 
@@ -37,19 +37,19 @@ npm install -g autorest@2.0.4413
 Voer de volgende stappen uit om auto rest te gebruiken voor het Swagger-bestand van de Azure Digital Apparaatdubbels:
 1. Kopieer het Azure Digital Apparaatdubbels Swagger-bestand en de bijbehorende map met voor beelden naar een werkmap.
 2. Gebruik een opdracht prompt venster om over te scha kelen naar die werkmap.
-3. Voer auto rest uit met de volgende opdracht. Vervang de `<language>` tijdelijke aanduiding door de taal van uw keuze: `--python` , `--java` , `--go` , enzovoort (u vindt de volledige lijst met opties in het [Leesmij-bestand](https://github.com/Azure/autorest)voor auto rest.)
+3. Voer auto rest uit met de volgende opdracht. Vervang de `<language>` tijdelijke aanduiding door de taal van uw keuze: `--python` ,, `--java` , enzovoort `--go` . (U vindt de volledige lijst met opties in het [Leesmij-bestand](https://github.com/Azure/autorest)voor auto rest.)
 
 ```cmd/sh
 autorest --input-file=adtApiSwagger.json --<language> --output-folder=ADTApi --add-credentials --azure-arm --namespace=ADTApi
 ```
 
-Als gevolg hiervan ziet u een nieuwe map met de naam *ADTApi* in uw werkmap. De gegenereerde SDK-bestanden hebben de naam ruimte *ADTApi*, die u kunt blijven gebruiken via de rest van de gebruiks voorbeelden in dit artikel.
+Als gevolg hiervan ziet u een nieuwe map met de naam *ADTApi* in uw werkmap. De gegenereerde SDK-bestanden hebben de naam ruimte *ADTApi*. U kunt die naam ruimte blijven gebruiken via de rest van de voor beelden van het gebruik in dit artikel.
 
 Auto rest ondersteunt een breed scala aan taal code generators.
 
 ## <a name="add-the-sdk-to-a-visual-studio-project"></a>De SDK toevoegen aan een Visual Studio-project
 
-U kunt de bestanden die worden gegenereerd door autorest rechtstreeks toevoegen aan een .NET-oplossing. Omdat u waarschijnlijk de Azure Digital Apparaatdubbels SDK in verschillende afzonderlijke projecten (uw client-apps, Azure Functions-apps, enzovoort) nodig hebt, kan het handig zijn om een afzonderlijk project (een .NET-klassebibliotheek) te bouwen op basis van de gegenereerde bestanden. U kunt dit klassen bibliotheek project vervolgens in verschillende oplossingen insluiten als een project verwijzing.
+U kunt de bestanden die worden gegenereerd door autorest rechtstreeks toevoegen aan een .NET-oplossing. Het is echter waarschijnlijk dat u de Azure Digital Apparaatdubbels SDK wilt gebruiken in verschillende afzonderlijke projecten (uw client-apps, Azure Functions-apps, enzovoort). Daarom kan het handig zijn om een afzonderlijk project (een .NET-klassen bibliotheek) te bouwen op basis van de gegenereerde bestanden. Vervolgens kunt u dit klassen bibliotheek project in meerdere oplossingen insluiten als een project verwijzing.
 
 In deze sectie vindt u instructies voor het bouwen van de SDK als een klassen bibliotheek. Dit is een eigen project en kan in andere projecten worden opgenomen. Deze stappen zijn afhankelijk van **Visual Studio** (u kunt de nieuwste versie [hier](https://visualstudio.microsoft.com/downloads/)installeren).
 
@@ -73,7 +73,7 @@ Als u deze wilt toevoegen, opent u *Hulpprogram ma's > NuGet Package Manager > N
 
 1. Controleer in het deel venster of het tabblad *Bladeren* is geselecteerd
 2. Zoek naar *micro soft. rest*
-3. Selecteer de pakketten *ClientRuntime* en *ClientRuntime. Azure* en voeg deze toe aan uw oplossing
+3. Selecteer de `ClientRuntime` pakketten en en `ClientRuntime.Azure` Voeg deze toe aan uw oplossing
 
 U kunt nu het project bouwen en dit toevoegen als een project verwijzing in een Azure Digital Apparaatdubbels-toepassing die u schrijft.
 
@@ -87,7 +87,7 @@ Alle SDK-functies zijn beschikbaar in synchrone en asynchrone versies.
 
 ### <a name="typed-and-untyped-data"></a>Getypte en niet-getypte gegevens
 
-REST API-oproepen retour neren doorgaans objecten die sterk worden getypt. Maar omdat gebruikers met Azure Digital Apparaatdubbels hun eigen aangepaste typen kunnen definiëren voor apparaatdubbels, is het niet mogelijk om statische retour gegevens te definiëren voor veel Azure Digital Apparaatdubbels-aanroepen. In plaats daarvan retour neren de Api's sterk getypeerde wrapper types, waar van toepassing, en de door aangepaste getypte dubbele gegevens bevindt zich in Json.NET-objecten (deze worden gebruikt wanneer het gegevens type ' object ' wordt weer gegeven in de API-hand tekeningen). U kunt deze objecten op de juiste wijze casten in uw code.
+REST API-oproepen retour neren doorgaans sterk getypte objecten. Maar omdat gebruikers met Azure Digital Apparaatdubbels hun eigen aangepaste typen kunnen definiëren voor apparaatdubbels, is het niet mogelijk om statische retour gegevens te definiëren voor veel Azure Digital Apparaatdubbels-aanroepen. In plaats daarvan retour neren de Api's sterk getypeerde wrapper types, indien van toepassing, en de aangepaste, getypte dubbele gegevens bevindt zich in Json.NET-objecten (gebruikt wanneer het gegevens type ' object ' wordt weer gegeven in de API-hand tekeningen). U kunt deze objecten op de juiste wijze casten in uw code.
 
 ### <a name="error-handling"></a>Foutafhandeling
 
@@ -115,7 +115,7 @@ Auto rest genereert twee typen paginerings patronen voor de SDK:
 
 In de niet-query paginerings patroon zijn er twee versies van elke aanroep:
 * Een versie om de eerste aanroep te maken (bijvoorbeeld `DigitalTwins.ListEdges()` )
-* Een versie om volgende pagina's op te halen, met het achtervoegsel ' Next ' (zoals `DigitalTwins.ListEdgesNext()` )
+* Een versie om de volgende pagina's op te halen. Deze aanroepen hebben het achtervoegsel ' volgende ' (bijvoorbeeld `DigitalTwins.ListEdgesNext()` )
 
 Hier volgt een code fragment waarin wordt getoond hoe u een lijst met uitgaande relaties van Azure Digital Apparaatdubbels ophaalt:
 ```csharp
@@ -188,4 +188,4 @@ try
 ## <a name="next-steps"></a>Volgende stappen
 
 Door loop de stappen voor het maken van een client-app waarin u uw SDK kunt gebruiken:
-* [Zelfstudie: Een client-app coderen](tutorial-code.md)
+* [*Zelfstudie: Een client-app coderen*](tutorial-code.md)

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 1e4c989e4550c1ea504a08d3cc975f2add5a4ba2
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 6f521cccdc8814fad8605460bf87c0d0fca20378
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054726"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055614"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>Maak uw eerste functie met Java en eclips 
 
@@ -28,7 +28,7 @@ Als u een functions-app met Java en intereclips wilt ontwikkelen, moet u het vol
 -  [Java Developer Kit](https://www.azul.com/downloads/zulu/), versie 8.
 -  [Apache Maven](https://maven.apache.org), versie 3.0 of hoger.
 -  [Eclips](https://www.eclipse.org/downloads/packages/), met Java-en Maven-ondersteuning.
--  [Azure-CLI](https://docs.microsoft.com/cli/azure)
+-  [Azure CLI](/cli/azure)
 
 > [!IMPORTANT] 
 > De omgevingsvariabele JAVA_HOME moet zijn ingesteld op de installatielocatie van de JDK om deze quickstart te kunnen voltooien.
@@ -43,7 +43,7 @@ Het is raadzaam om ook [Azure functions core tools, versie 2](functions-run-loca
 1. Vul waarden in voor alle velden `resourceGroup` , inclusief, `appName` , en `appRegion` (gebruik een andere appName dan **fabrikam-function-20170920120101928**) en sluit uiteindelijk **af**.
     ![Eclips maven Create2](media/functions-create-first-java-eclipse/functions-create-eclipse2.png)  
 
-Maven maakt de projectbestanden in een nieuwe map met de naam _artifactId_. De gegenereerde code in het project is een eenvoudige, door [http getriggerde](/azure/azure-functions/functions-bindings-http-webhook) functie die de hoofd tekst van de TRIGGERENDE HTTP-aanvraag echot.
+Maven maakt de projectbestanden in een nieuwe map met de naam _artifactId_. De gegenereerde code in het project is een eenvoudige, door [http getriggerde](./functions-bindings-http-webhook.md) functie die de hoofd tekst van de TRIGGERENDE HTTP-aanvraag echot.
 
 ## <a name="run-functions-locally-in-the-ide"></a>Functies lokaal uitvoeren in de IDE
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fd2e5a4d057e1074c6cce0f374846bc9e0a64950
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0ea178655646f7f130476acaffc35c60181968ea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525089"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058707"
 ---
 # <a name="access-the-vmware-solution-by-cloudsimple-portal-from-the-azure-portal"></a>Open de VMware-oplossing via CloudSimple portal van de Azure Portal
 
@@ -23,7 +23,7 @@ Eenmalige aanmelding wordt ondersteund voor toegang tot de CloudSimple-Portal. N
 
 Gebruikers met rollen van de ingebouwde **eigenaar** en **Inzender** hebben toegang tot de CloudSimple-Portal.  De functies moeten worden geconfigureerd voor de resource groep waar de CloudSimple-service wordt geïmplementeerd.  De functies kunnen ook worden geconfigureerd op het CloudSimple-Service object.  Zie het artikel [roltoewijzingen weer geven](../role-based-access-control/check-access.md) voor meer informatie over het controleren van uw rol. Alleen gebruikers met ingebouwde rollen **eigenaar** en **Inzender** hebben toegang tot de CloudSimple-Portal.  De rollen moeten worden geconfigureerd in het abonnement.  Zie het artikel [roltoewijzingen weer geven](../role-based-access-control/check-access.md) voor meer informatie over het controleren van uw rol.
 
-Als u aangepaste rollen gebruikt, moet de rol een van de volgende bewerkingen onder bevatten ```Actions``` .  Zie [aangepaste rollen voor Azure-resources](../role-based-access-control/custom-roles.md)voor meer informatie over aangepaste rollen.  Als een van de bewerkingen deel van uitmaakt ```NotActions``` , heeft de gebruiker geen toegang tot de CloudSimple-Portal.
+Als u aangepaste rollen gebruikt, moet de rol een van de volgende bewerkingen onder bevatten ```Actions``` .  Zie aangepaste rollen voor [Azure](../role-based-access-control/custom-roles.md)voor meer informatie over aangepaste rollen.  Als een van de bewerkingen deel van uitmaakt ```NotActions``` , heeft de gebruiker geen toegang tot de CloudSimple-Portal.
 
 ```
 Microsoft.VMwareCloudSimple/*

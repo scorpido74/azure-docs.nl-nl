@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het oplossen van problemen m
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: ddff3ca8a89d8d5674be00fdebc70b0232cdbd13
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b810b5abfb15a39d19a0571b6ac36a6c86bf0b4f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539054"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054641"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Problemen met de Microsoft Azure Recovery Services-agent (MARS) oplossen
 
@@ -75,6 +75,12 @@ U wordt aangeraden het volgende te controleren voordat u begint met het oplossen
 | Fout  | Mogelijke oorzaak | Aanbevolen acties |
 | ---     | ---     | ---    |
 | <br /><ul><li>De Microsoft Azure Recovery-Service agent kan geen verbinding maken met Microsoft Azure Backup. (ID: 100050) Controleer uw netwerk instellingen en zorg ervoor dat u verbinding kunt maken met internet.<li>(407) proxy-verificatie vereist. |De verbinding wordt geblokkeerd door een proxy. |  <ul><li>Ga in Internet Explorer naar **extra**  >  **Internet opties**  >  **beveiliging**  >  **Internet**. Selecteer **aangepast niveau** en schuif omlaag naar de sectie voor het **downloaden van bestanden** . Selecteer **Inschakelen**.<p>Mogelijk moet u ook [url's en IP-adressen](install-mars-agent.md#verify-internet-access) toevoegen aan uw vertrouwde sites in Internet Explorer.<li>Wijzig de instellingen voor het gebruik van een proxy server. Geef vervolgens de proxyserver gegevens op.<li> Als uw computer beperkte internet toegang heeft, moet u ervoor zorgen dat de firewall-instellingen op de computer of de proxy deze [url's en IP-adressen](install-mars-agent.md#verify-internet-access)toestaan. <li>Als er antivirus software op de server is geïnstalleerd, sluit u deze bestanden uit via de antivirus scan: <ul><li>CBEngine.exe (in plaats van dpmra.exe).<li>CSC.exe (gerelateerd aan .NET Framework). Er is een CSC.exe voor elke .NET Framework versie die op de server is geïnstalleerd. Sluit CSC.exe-bestanden uit voor alle versies van .NET Framework op de betreffende server. <li>De Scratch-map of cache locatie. <br>De standaard locatie voor de Scratch-map of het pad naar de cache is C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch.<li>De bin-map in C:\Program Files\Microsoft Azure Recovery Services Agent\Bin.
+
+## <a name="the-specified-vault-credential-file-cannot-be-used-as-it-is-not-downloaded-from-the-vault-associated-with-this-server"></a>Het opgegeven kluis referentie bestand kan niet worden gebruikt omdat het niet wordt gedownload vanuit de kluis die is gekoppeld aan deze server
+
+| Fout  | Mogelijke oorzaak | Aanbevolen acties |
+| ---     | ---     | ---    |
+| Het opgegeven kluis referentie bestand kan niet worden gebruikt omdat het niet wordt gedownload vanuit de kluis die is gekoppeld aan deze server. (ID: 100110) Geef de juiste kluis referenties op. | Het kluis referentie bestand is afkomstig uit een andere kluis dan die waarop deze server al is geregistreerd. | Zorg ervoor dat de doel computer en de bron machine zijn geregistreerd bij dezelfde Recovery Services kluis. Als de doel server al is geregistreerd bij een andere kluis, gebruikt u de optie **server registreren** om u te registreren bij de juiste kluis.  
 
 ## <a name="backup-jobs-completed-with-warning"></a>Back-uptaken voltooid met waarschuwing
 

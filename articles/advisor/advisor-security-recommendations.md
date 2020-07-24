@@ -3,12 +3,12 @@ title: Resources veiliger maken met Azure Advisor
 description: Gebruik Azure Advisor om de beveiliging van uw Azure-implementaties te verbeteren.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: bf7a316c893600bed18b9392404af5792e2e31f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f130135ed53dc2ba87f46cbf6f9faf0f07cc0654
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85113854"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057652"
 ---
 # <a name="make-resources-more-secure-with-azure-advisor"></a>Resources veiliger maken met Azure Advisor
 
@@ -16,7 +16,7 @@ Azure Advisor biedt u een consistente, geconsolideerde weer gave van aanbeveling
 
 Azure Security Center helpt u bij het detecteren, voorkomen van en reageren op bedreigingen dankzij een verhoogde zichtbaarheid van en controle over de beveiliging van uw Azure-resources. De beveiligings status van uw Azure-resources wordt periodiek geanalyseerd. Wanneer met Security Center potentiële beveiligingsproblemen worden geïdentificeerd, worden er aanbevelingen gedaan. De aanbevelingen begeleiden u bij het configureren van de besturings elementen die u nodig hebt. 
 
-Zie [beveiligings aanbevelingen beheren in azure Security Center](https://azure.microsoft.com/documentation/articles/security-center-recommendations/)voor meer informatie over beveiligings aanbevelingen.
+Zie [beveiligings aanbevelingen beheren in azure Security Center](../security-center/security-center-recommendations.md)voor meer informatie over beveiligings aanbevelingen.
 
 ## <a name="how-to-access-security-recommendations-in-azure-advisor"></a>Toegang tot beveiligings aanbevelingen in Azure Advisor
 
@@ -33,5 +33,5 @@ Zie voor meer informatie over Advisor-aanbevelingen:
 * [Aanbevelingen voor Advisor-prestaties](advisor-performance-recommendations.md)
 * [Aanbevelingen voor de Advisor-betrouw baarheid](advisor-high-availability-recommendations.md)
 * [Aanbevelingen voor operationele uitmuntendheid van Advisor](advisor-operational-excellence-recommendations.md)
-* [Advisor REST API](https://docs.microsoft.com/rest/api/advisor/)
+* [Advisor REST API](/rest/api/advisor/)
  

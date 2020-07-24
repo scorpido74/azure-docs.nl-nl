@@ -1,5 +1,5 @@
 ---
-title: Met HSM beveiligde sleutels genereren en overdragen voor Azure Key Vault-Azure Key Vault | Microsoft Docs
+title: '& overdracht van met HSM beveiligde sleutels genereren – BYOK – Azure Key Vault'
 description: Gebruik dit artikel om u te helpen bij het plannen, genereren en overdragen van uw eigen met HSM beveiligde sleutels voor gebruik met Azure Key Vault. Ook wel bekend als uw eigen sleutel (BYOK).
 services: key-vault
 author: amitbapat
@@ -10,11 +10,12 @@ ms.subservice: keys
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: 52214d42467dfa86b5e085a660a9416904b7de59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4df934f38a8fb657fa4a8de5922d96197a3d02cc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84416695"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061108"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-byok"></a>Met HSM beveiligde sleutels importeren in Key Vault (BYOK)
 
@@ -65,9 +66,9 @@ De volgende tabel bevat de vereisten voor het gebruik van BYOK in Azure Key Vaul
 
 
 
-## <a name="supported-key-types"></a>Ondersteunde sleutel typen
+## <a name="supported-key-types"></a>Ondersteunde sleuteltypen
 
-|Sleutelnaam|Type sleutel|Sleutel grootte|Oorsprong|Description|
+|Sleutelnaam|Type sleutel|Sleutel grootte|Oorsprong|Beschrijving|
 |---|---|---|---|---|
 |Sleutel uitwisselings sleutel (KEK)|RSA| 2.048-bits<br />3.072-bits<br />4.096-bits|Azure Key Vault HSM|Een met HSM ondersteund RSA-sleutel paar dat is gegenereerd in Azure Key Vault|
 |Doel sleutel|RSA|2.048-bits<br />3.072-bits<br />4.096-bits|Leverancier HSM|De sleutel die moet worden overgedragen naar de Azure Key Vault HSM|

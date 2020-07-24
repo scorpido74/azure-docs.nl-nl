@@ -6,17 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/01/2018
-ms.openlocfilehash: 0f5f01c757bf651beddaa76fc3eb8046b21b31eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9163071237041d7c8510a644c573e3763434bb0c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75979397"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060661"
 ---
 # <a name="create-edit-or-extend-json-for-logic-app-workflow-definitions-in-azure-logic-apps"></a>JSON maken, bewerken of uitbreiden voor werkstroomdefinities voor logische apps in Azure Logic Apps
 
 Wanneer u oplossingen voor bedrijfs integratie met geautomatiseerde werk stromen in [Azure Logic apps](../logic-apps/logic-apps-overview.md)maakt, gebruiken de onderliggende definities van logische apps eenvoudige en declaratieve JavaScript object NOTATION (JSON) samen met het schema voor de [werk stroom definitie taal (WDL)](../logic-apps/logic-apps-workflow-definition-language.md) voor de beschrijving en validatie. Met deze indelingen kunnen definities van logische apps eenvoudiger worden gelezen en begrepen zonder dat u iets hoeft te weten over code.
 Als u het maken en implementeren van Logic Apps wilt automatiseren, kunt u logische app-definities als [Azure-resources](../azure-resource-manager/management/overview.md) in [Azure Resource Manager sjablonen](../azure-resource-manager/templates/overview.md)toevoegen.
-Als u logische Apps wilt maken, beheren en implementeren, kunt u vervolgens [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), [Azure CLI](../azure-resource-manager/templates/deploy-cli.md)of de [Azure Logic apps rest-api's](https://docs.microsoft.com/rest/api/logic/)gebruiken.
+Als u logische Apps wilt maken, beheren en implementeren, kunt u vervolgens [Azure PowerShell](/powershell/module/az.logicapp), [Azure CLI](../azure-resource-manager/templates/deploy-cli.md)of de [Azure Logic apps rest-api's](/rest/api/logic/)gebruiken.
 
 Als u de definities van logische apps in JSON wilt gebruiken, opent u de code weergave-editor bij het werken in de Azure Portal of in Visual Studio of kopieert u de definitie naar een gewenste editor.
 Als u geen ervaring hebt met Logic apps, lees dan [hoe u uw eerste logische app maakt](../logic-apps/quickstart-create-first-logic-app-workflow.md).

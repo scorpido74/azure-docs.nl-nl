@@ -2,13 +2,13 @@
 title: Samen werken op Knowledge Base-QnA Maker
 description: Met QnA Maker kunnen meerdere personen samen werken aan een Knowledge Base. Deze functie wordt meegeleverd met de op rollen gebaseerde Access Control van Azure.
 ms.topic: conceptual
-ms.date: 03/17/2020
-ms.openlocfilehash: 1a2908b4b65017f427682627ce5d83b186956a58
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 07/13/2020
+ms.openlocfilehash: 4c550a36dd045873df4bc4a382e1c884466f95ad
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650781"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054044"
 ---
 # <a name="collaboration-with-authors-and-editors"></a>Samen werking met auteurs en editors
 
@@ -30,15 +30,15 @@ De volgende stappen gebruiken de rol samen werken, maar een van de [rollen](../r
 
 1. Meld u aan bij [Azure](https://portal.azure.com/) Portal en ga naar uw QnA Maker-resource.
 
-    ![QnA Maker Resource lijst](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-resource-list.PNG)
+    ![QnA Maker Resource lijst](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-resource-list.png)
 
 1. Ga naar het tabblad **Access Control (IAM)** .
 
-    ![QnA Maker IAM](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam.PNG)
+    ![QnA Maker IAM](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam.png)
 
 1. Selecteer **Toevoegen**.
 
-    ![QnA Maker IAM toevoegen](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.PNG)
+    ![QnA Maker IAM toevoegen](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.png)
 
 1. Selecteer een rol in de volgende lijst:
 
@@ -46,17 +46,23 @@ De volgende stappen gebruiken de rol samen werken, maar een van de [rollen](../r
     |--|
     |Eigenaar|
     |Inzender|
-    |QnA Maker lezer|
-    |QnA Maker editor|
+    |QnA Maker lezer Cognitive Services|
+    |Cognitive Services QnA Maker editor|
     |Cognitive Services gebruiker|
 
-    ![QnA Maker IAM-rol toevoegen](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-role.PNG)
+    :::image type="content" source="../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-add-role-iam.png" alt-text="QnA Maker IAM-rol toevoegen.":::
 
 1. Voer het e-mail adres van de gebruiker in en druk op **Opslaan**.
 
-    ![QnA Maker IAM add e-mail](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-email.PNG)
+    ![QnA Maker IAM add e-mail](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-email.png)
+
+### <a name="view-qna-maker-knowledge-bases"></a>QnA Maker Knowledge bases weer geven
 
 Wanneer de persoon met wie u uw QnA Maker-service hebt gedeeld, zich aanmeldt in de [QnA Maker Portal](https://qnamaker.ai), kunnen ze alle kennissen in die service zien op basis van hun rol.
+
+Wanneer ze een kennis database selecteren, is hun huidige rol op die QnA Maker resource zichtbaar naast de naam van de Knowledge Base.
+
+:::image type="content" source="../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-knowledge-base-role-name.png" alt-text="Scherm opname van de kennis database in de bewerkings modus met de rolnaam tussen haakjes naast de naam van de Knowledge Base in de linkerbovenhoek van de webpagina.":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

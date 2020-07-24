@@ -3,15 +3,16 @@ title: Veelgestelde vragen over het maken van een back-up van Azure-bestanden
 description: In dit artikel vindt u antwoorden op veelgestelde vragen over het beveiligen van uw Azure-bestands shares met de Azure Backup-service.
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: ded1551dad1be34c116e61b9bf59f372169bca5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 134d9520a3c2348b23ec27c6e14eb56468f2002d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488695"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054974"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Vragen over het maken back-ups van Azure-bestanden
 
-In dit artikel vindt u antwoorden op veelgestelde vragen over het maken back-ups van Azure-bestanden. Sommige antwoorden bevatten koppelingen naar artikelen met uitgebreide informatie over het onderwerp. U kunt ook vragen over de Azure Backup-Service plaatsen op de [pagina micro soft Q&een vraag voor een discussie](https://docs.microsoft.com/answers/topics/azure-backup.html).
+In dit artikel vindt u antwoorden op veelgestelde vragen over het maken back-ups van Azure-bestanden. Sommige antwoorden bevatten koppelingen naar artikelen met uitgebreide informatie over het onderwerp. U kunt ook vragen over de Azure Backup-Service plaatsen op de [pagina micro soft Q&een vraag voor een discussie](/answers/topics/azure-backup.html).
 
 Als u kort de secties in dit artikel wilt bekijken, gebruikt u de koppelingen aan de rechterkant, onder **In dit artikel**.
 
@@ -55,7 +56,7 @@ U kunt op elk moment maximaal 200 momentopnamen voor een bestandsshare hebben. D
 
 ### <a name="can-i-recover-from-a-deleted-azure-file-share"></a>Kan ik gegevens herstellen vanuit een verwijderde Azure-bestandsshare?
 
-Als de bestands share de modus voorlopig verwijderd heeft, moet u eerst de verwijdering van de bestands share ongedaan maken om de herstel bewerking uit te voeren. Met de bewerking voor het ongedaan maken van de verwijdering wordt de bestands share in de actieve staat gezet, waar u kunt herstellen naar elk gewenst moment. Ga naar [deze koppeling](https://docs.microsoft.com/azure/storage/files/storage-files-enable-soft-delete?tabs=azure-portal#restore-soft-deleted-file-share) of Zie het script voor het [verwijderen van bestands shares](./scripts/backup-powershell-script-undelete-file-share.md)voor meer informatie over het ongedaan maken van de verwijdering van de bestands share. Als de bestands share permanent wordt verwijderd, kunt u de inhoud en moment opnamen niet meer herstellen.
+Als de bestands share de modus voorlopig verwijderd heeft, moet u eerst de verwijdering van de bestands share ongedaan maken om de herstel bewerking uit te voeren. Met de bewerking voor het ongedaan maken van de verwijdering wordt de bestands share in de actieve staat gezet, waar u kunt herstellen naar elk gewenst moment. Ga naar [deze koppeling](../storage/files/storage-files-enable-soft-delete.md?tabs=azure-portal#restore-soft-deleted-file-share) of Zie het script voor het [verwijderen van bestands shares](./scripts/backup-powershell-script-undelete-file-share.md)voor meer informatie over het ongedaan maken van de verwijdering van de bestands share. Als de bestands share permanent wordt verwijderd, kunt u de inhoud en moment opnamen niet meer herstellen.
 
 ### <a name="can-i-restore-from-backups-if-i-stopped-protection-on-an-azure-file-share"></a>Kan ik gegevens herstellen vanuit back-ups als ik ben gestopt met de beveiliging van een Azure-bestandsshare?
 
@@ -105,7 +106,7 @@ Hier volgt een voor beeld van hoe dit werkt:
 | Dagelijks          | Elke dag om 9 uur              | 50 dagen   |
 | Wekelijks         | Op zondag om 9 uur              | 3 weken   |
 | Maandelijks        | Op de afgelopen maandag om 9 uur         | 1 maand   |
-| Jaar         | In Jan op de derde zondag om 9 uur | 4 jaar   |
+| Jaarlijks         | In Jan op de derde zondag om 9 uur | 4 jaar   |
 
 #### <a name="impact"></a>Impact
 

@@ -5,25 +5,26 @@ author: KarlErickson
 ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
-ms.openlocfilehash: a366a199338539ba8e599bd5f406838f4e7bd21c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 906f3d45edef6180557c54f0ff29cd11a1c96fa3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83996637"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055667"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Java en Gradle gebruiken voor het maken en publiceren van een functie in azure
 
 In dit artikel wordt beschreven hoe u een Java-functie project bouwt en publiceert naar Azure Functions met het opdracht regel programma Gradle. Wanneer u klaar bent, wordt de functie code in azure uitgevoerd in een [hosting abonnement](functions-scale.md#consumption-plan) op de server en wordt geactiveerd door een HTTP-aanvraag. 
 
 > [!NOTE]
-> Als Gradle niet uw voor keur is, Bekijk dan onze vergelijk bare zelf studies voor Java-Ontwikkel aars met [maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java), [IntelliJ idee](/azure/developer/java/toolkit-for-intellij/quickstart-functions) en [VS code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java).
+> Als Gradle niet uw voor keur is, Bekijk dan onze vergelijk bare zelf studies voor Java-Ontwikkel aars met [maven](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java), [IntelliJ idee](/azure/developer/java/toolkit-for-intellij/quickstart-functions) en [VS code](./functions-create-first-function-vs-code.md?pivots=programming-language-java).
 
 ## <a name="prerequisites"></a>Vereisten
 
 Als u functies wilt ontwikkelen met behulp van Java, moet het volgende zijn geïnstalleerd:
 
 - [Java Developer Kit](https://aka.ms/azure-jdks), versie 8
-- [Azure-CLI]
+- [Azure CLI]
 - [Azure functions core tools](./functions-run-local.md#v2) versie 2.6.666 of hoger
 - [Gradle](https://gradle.org/), versie 4,10 en hoger
 
@@ -173,5 +174,5 @@ U hebt een Java-functies project gemaakt met een door HTTP geactiveerde functie,
 > [Een Azure Storage wachtrij-uitvoer binding toevoegen](functions-add-output-binding-storage-queue-java.md)
 
 
-[Azure-CLI]: /cli/azure
+[Azure CLI]: /cli/azure
 [Azure-portal]: https://portal.azure.com

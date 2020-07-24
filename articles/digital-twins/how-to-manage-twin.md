@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e37c680f6bf9e296230232c0d4e0fab5f50ad3cd
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 48b8175ed5f753ffe7b62d3e97f4fe20f60da5ca
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142379"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061604"
 ---
 # <a name="manage-digital-twins"></a>Digitale tweelingen beheren
 
 Entiteiten in uw omgeving worden vertegenwoordigd door [Digital apparaatdubbels](concepts-twins-graph.md). Het beheren van uw digitale apparaatdubbels kan het maken, wijzigen en verwijderen omvatten. Als u deze bewerkingen wilt uitvoeren, kunt u de [**DigitalTwins-api's**](how-to-use-apis-sdks.md), de [.net (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)of de [Azure Digital apparaatdubbels cli](how-to-use-cli.md)gebruiken.
 
-Dit artikel richt zich op het beheren van digitale apparaatdubbels; Zie [How-to: manage the dubbele Graph with relationships](how-to-manage-graph.md)als u wilt werken met relaties en de [dubbele grafiek](concepts-twins-graph.md) als geheel.
+Dit artikel richt zich op het beheren van digitale apparaatdubbels; Zie [*How-to: manage the dubbele Graph with relationships*](how-to-manage-graph.md)als u wilt werken met relaties en de [dubbele grafiek](concepts-twins-graph.md) als geheel.
 
 > [!TIP]
 > Alle SDK-functies zijn beschikbaar in synchrone en asynchrone versies.
@@ -44,7 +44,7 @@ De waarden van het model en de oorspronkelijke eigenschap worden gegeven via de 
 
 ### <a name="initialize-properties"></a>Eigenschappen initialiseren
 
-De twee keer dat er een API wordt gemaakt, accepteert een object dat kan worden geserialiseerd in een geldige JSON-beschrijving van de dubbele eigenschappen. Zie [concepten: Digital apparaatdubbels en de dubbele grafiek](concepts-twins-graph.md) voor een beschrijving van de JSON-indeling voor een dubbele.
+De twee keer dat er een API wordt gemaakt, accepteert een object dat kan worden geserialiseerd in een geldige JSON-beschrijving van de dubbele eigenschappen. Zie [*concepten: Digital apparaatdubbels en de dubbele grafiek*](concepts-twins-graph.md) voor een beschrijving van de JSON-indeling voor een dubbele.
 
 U kunt een parameter object hand matig of via een beschik bare helper-klasse maken. Hier volgt een voor beeld van elk.
 
@@ -91,7 +91,7 @@ object result = await client.GetDigitalTwin(id);
 
 Deze aanroep retourneert twee gegevens als een JSON-teken reeks. 
 
-Als u meerdere apparaatdubbels met één API-aanroep wilt ophalen, raadpleegt u de query-API-voor beelden in [de instructies: Query's uitvoeren op de dubbele grafiek](how-to-query-graph.md).
+Als u meerdere apparaatdubbels met één API-aanroep wilt ophalen, raadpleegt u de query-API-voor beelden in [*de instructies: Query's uitvoeren op de dubbele grafiek*](how-to-query-graph.md).
 
 Bekijk het volgende model (geschreven in [Digital Apparaatdubbels Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL)) dat een *maan*definieert:
 
@@ -168,7 +168,7 @@ foreach (string prop in twin.CustomProperties.Keys)
 }
 ```
 
-Meer informatie over de hulp klassen voor serialisatie vindt u in [How to: gebruik de Azure Digital Apparaatdubbels api's en sdk's](how-to-use-apis-sdks.md).
+Meer informatie over de hulp klassen voor serialisatie vindt u in [*How to: gebruik de Azure Digital Apparaatdubbels api's en sdk's*](how-to-use-apis-sdks.md).
 
 ## <a name="update-a-digital-twin"></a>Een digitale dubbele
 
@@ -337,13 +337,13 @@ async Task FindAndDeleteIncomingRelationshipsAsync(string dtId)
 
 ### <a name="delete-all-digital-twins"></a>Alle digitale apparaatdubbels verwijderen
 
-Voor een voor beeld van het verwijderen van alle apparaatdubbels in een keer, downloadt u de voor beeld-app die wordt gebruikt in de [zelf studie: Verken de basis principes met een voor beeld-client-app](tutorial-command-line-app.md). Het *CommandLoop.cs* -bestand doet dit in een `CommandDeleteAllTwins` functie.
+Voor een voor beeld van het verwijderen van alle apparaatdubbels in een keer, downloadt u de voor beeld-app die wordt gebruikt in de [*zelf studie: Verken de basis principes met een voor beeld-client-app*](tutorial-command-line-app.md). Het *CommandLoop.cs* -bestand doet dit in een `CommandDeleteAllTwins` functie.
 
 ## <a name="manage-twins-with-cli"></a>Apparaatdubbels beheren met CLI
 
-Apparaatdubbels kan ook worden beheerd met behulp van de Azure Digital Apparaatdubbels CLI. De opdrachten zijn te vinden in [How to: gebruik de Azure Digital APPARAATDUBBELS cli](how-to-use-cli.md).
+Apparaatdubbels kan ook worden beheerd met behulp van de Azure Digital Apparaatdubbels CLI. De opdrachten zijn te vinden in [*How to: gebruik de Azure Digital APPARAATDUBBELS cli*](how-to-use-cli.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie relaties tussen uw digitale apparaatdubbels maken en beheren:
-* [Instructies: de dubbele grafiek met relaties beheren](how-to-manage-graph.md)
+* [*Instructies: de dubbele grafiek met relaties beheren*](how-to-manage-graph.md)

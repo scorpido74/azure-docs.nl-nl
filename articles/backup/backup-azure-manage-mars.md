@@ -4,11 +4,12 @@ description: Meer informatie over het beheren en bewaken van back-ups van agents
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 2cd536e191702e2619030c2e0fa06262d2e004ee
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 376e2d53165ab822f75e635b42106e1fe13282a9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057820"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054980"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Back-ups van de agent voor Microsoft Azure Recovery Services (MARS) beheren met behulp van de Azure Backup-Service
 
@@ -22,7 +23,7 @@ Wanneer u het back-upbeleid wijzigt, kunt u nieuwe items toevoegen, bestaande it
 - **Items verwijderen** gebruik deze optie om items te verwijderen waarvan u een back-up wilt maken.
   - Gebruik **uitsluitings instellingen** voor het verwijderen van alle items binnen een volume in plaats van **items te verwijderen**.
   - Als alle selecties in een volume worden gewist, worden oude back-ups van de items bewaard op basis van de Bewaar instellingen op het moment van de laatste back-up, zonder aanpassings bereik.
-  - Als u deze items opnieuw selecteert, worden er geen back-ups gemaakt van de eerste back-up en nieuwe beleids wijzigingen.
+  - Als u deze items opnieuw selecteert, worden de wijzigingen in de eerste back-up en nieuwe beleids regels niet toegepast op oude back-ups.
   - Als u de selectie van het hele volume uitschakelt, blijft de vorige back-up zonder enige bereik voor het wijzigen van het Bewaar beleid.
 - **Instellingen voor uitsluiting** gebruik deze optie om specifieke items uit te sluiten waarvan u een back-up wilt maken.
 
@@ -102,16 +103,16 @@ Er zijn twee manieren om het maken van back-ups van bestanden en mappen te stopp
 1. Open de MARS-beheer console, ga naar het **deel venster acties**en **Selecteer back-up plannen**.
 
     ![Een geplande back-up wijzigen of stoppen.](./media/backup-azure-manage-mars/mars-actions.png)
-1. Selecteer op de pagina **beleids item selecteren** **de optie een back-upschema voor uw bestanden en mappen wijzigen** en klik op **volgende**.
+1. Selecteer op de pagina **beleids item selecteren** de optie **een back-upschema voor uw bestanden en mappen wijzigen** en klik op **volgende**.
 
     ![Een geplande back-up wijzigen of stoppen.](./media/backup-azure-manage-mars/select-policy-item-retain-data.png)
 1. Op de pagina **een geplande back-up wijzigen of stoppen** selecteert **u stoppen met het gebruik van dit back-upschema, maar behoud de opgeslagen back-ups totdat een schema opnieuw wordt geactiveerd**. Selecteer vervolgens **Volgende**.
 
     ![Een geplande back-up wijzigen of stoppen.](./media/backup-azure-manage-mars/stop-schedule-backup.png)
-1. Bekijk de informatie in de **geplande back-up onderbreken** en klik op **volt ooien**.
+1. Controleer de gegevens in **geplande back-ups onderbreken**en klik op **volt ooien**.
 
     ![Een geplande back-up wijzigen of stoppen.](./media/backup-azure-manage-mars/pause-schedule-backup.png)
-1. Controleer in **back-upproces wijzigen** of de back-up voor het plannen van uw planning de status geslaagd heeft en klik op **sluiten** om te volt ooien.
+1. In **back-upproces wijzigen**, controleert u of de back-up van uw planning is geslaagd en klikt u op **sluiten** om te volt ooien.
 
 ### <a name="stop-protection-and-delete-backup-data"></a>Beveiliging stoppen en back-upgegevens verwijderen
 
@@ -123,7 +124,7 @@ Er zijn twee manieren om het maken van back-ups van bestanden en mappen te stopp
 3. Selecteer **volt ooien**op de pagina **een geplande back-up stoppen** .
 
     ![Een geplande back-up stoppen.](./media/backup-azure-delete-vault/stop-schedule-backup.png)
-4. U wordt gevraagd een beveiligings pincode (persoonlijk identificatie nummer) in te voeren, die u hand matig moet genereren. Als u dit wilt doen, meldt u zich eerst aan bij de Azure Portal.
+4. U wordt gevraagd om een beveiligings pincode (persoonlijk identificatie nummer) in te voeren, die u hand matig moet genereren. Als u dit wilt doen, meldt u zich eerst aan bij de Azure Portal.
 5. Ga naar **Recovery Services**eigenschappen van de kluis  >  **instellingen**  >  **Properties**.
 6. Onder **BEVEILIGINGS pincode**selecteert u **genereren**. Deze pincode kopiëren. De pincode is slechts vijf minuten geldig.
 7. Plak de pincode in de beheer console en selecteer **OK**.
@@ -155,17 +156,18 @@ Als u de beveiliging hebt gestopt terwijl u de gegevens behoudt en hebt besloten
 
 Een wachtwoordzin wordt gebruikt voor het versleutelen en ontsleutelen van gegevens tijdens het maken van een back-up of het herstellen van uw on-premises of lokale computer met de MARS-agent naar of van Azure. Als u de wachtwoordzin kwijtraakt of verg eten bent, kunt u de wachtwoordzin opnieuw genereren (mits uw computer nog steeds is geregistreerd bij de Recovery Services kluis en de back-up is geconfigureerd) door de volgende stappen te volgen:
 
-- Ga in de Mars agent-console naar het **deel venster acties**en  >  **Wijzig de eigenschappen** >. Ga vervolgens naar het **tabblad versleuteling**.<br>
-- Selecteer selectie vakje **wachtwoordzin wijzigen** .<br>
-- Voer een nieuwe wachtwoordzin in of klik op **wachtwoordzin genereren**.
-- Klik op **Bladeren** om de nieuwe wachtwoordzin op te slaan.
+1. Ga in de Mars agent-console naar het **deel venster acties**en  >  **Wijzig de eigenschappen** >. Ga vervolgens naar het **tabblad versleuteling**.<br>
+1. Selecteer selectie vakje **wachtwoordzin wijzigen** .<br>
+1. Voer een nieuwe wachtwoordzin in of klik op **wachtwoordzin genereren**.
+1. Klik op **Bladeren** om de nieuwe wachtwoordzin op te slaan.
 
     ![Wachtwoordzin genereren.](./media/backup-azure-manage-mars/passphrase.png)
-- Klik op **OK** om de wijzigingen toe te passen.  Als de [beveiligings functie](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#enable-security-features) is ingeschakeld op de Azure portal voor de Recovery Services kluis, wordt u gevraagd om de beveiligings pincode in te voeren. Volg de stappen in dit [artikel](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#authentication-to-perform-critical-operations)om de pincode te ontvangen.<br>
-- Plak de beveiligings pincode uit de portal en klik op **OK** om de wijzigingen toe te passen.<br>
+
+1. Klik op **OK** om de wijzigingen toe te passen.  Als de [beveiligings functie](./backup-azure-security-feature.md#enable-security-features) is ingeschakeld op de Azure portal voor de Recovery Services kluis, wordt u gevraagd om de beveiligings pincode in te voeren. Volg de stappen in dit [artikel](./backup-azure-security-feature.md#authentication-to-perform-critical-operations)om de pincode te ontvangen.<br>
+1. Plak de beveiligings pincode uit de portal en klik op **OK** om de wijzigingen toe te passen.<br>
 
     ![Wachtwoordzin genereren.](./media/backup-azure-manage-mars/passphrase2.png)
-- Zorg ervoor dat de wachtwoordzin veilig wordt opgeslagen op een andere locatie (anders dan de bron machine), bij voor keur in het Azure Key Vault. Houd alle wachtwoordzin bij als er een back-up van meerdere machines met de MARS-agents wordt gemaakt.
+1. Zorg ervoor dat de wachtwoordzin veilig wordt opgeslagen op een andere locatie (anders dan de bron machine), bij voor keur in het Azure Key Vault. Houd alle wachtwoordzin bij als er een back-up van meerdere machines met de MARS-agents wordt gemaakt.
 
 ## <a name="managing-backup-data-for-unavailable-machines"></a>Back-upgegevens beheren voor niet-beschik bare computers
 
@@ -182,13 +184,14 @@ Voor deze computers zorgt de Azure Backup-service ervoor dat het laatste herstel
 Het beheer van het back-upbeleid voor MARS wordt uitgevoerd via de MARS-console en niet via de portal. Als u de Bewaar instellingen voor bestaande herstel punten wilt uitbreiden voordat ze verlopen, moet u de machine herstellen, de MARS-console installeren en het beleid uitbreiden.
 
 - Voer de volgende stappen uit om de machine te herstellen:
-  - [De VM herstellen naar een andere doel computer](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)
-  - De doel computer opnieuw maken met dezelfde hostnaam als de bron machine
-  - De agent installeren en opnieuw registreren bij dezelfde kluis en met dezelfde wachtwoordzin
-  - Start de MARS-client om de Bewaar periode uit te breiden volgens uw vereisten
+  1. [De VM herstellen naar een andere doel computer](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)
+  1. De doel computer opnieuw maken met dezelfde hostnaam als de bron machine
+  1. De agent installeren en opnieuw registreren bij dezelfde kluis en met dezelfde wachtwoordzin
+  1. Start de MARS-client om de Bewaar periode uit te breiden volgens uw vereisten
 - De zojuist herstelde computer die wordt beveiligd met MARS, blijft back-ups maken.  
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Raadpleeg de [ondersteunings matrix voor de Mars-agent](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent)voor meer informatie over ondersteunde scenario's en beperkingen.
+- Raadpleeg de [ondersteunings matrix voor de Mars-agent](./backup-support-matrix-mars-agent.md)voor meer informatie over ondersteunde scenario's en beperkingen.
 - Meer informatie over het [Bewaar gedrag van back-upbeleid op aanvraag](backup-windows-with-mars-agent.md#set-up-on-demand-backup-policy-retention-behavior).
+- Zie [Veelgestelde vragen over de Mars-agent](backup-azure-file-folder-backup-faq.md)voor meer informatie.

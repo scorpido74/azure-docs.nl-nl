@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Meer informatie over het installeren en configureren van een Basic NGINX ingress-controller in een Azure Kubernetes service-cluster (AKS).
 services: container-service
 ms.topic: article
-ms.date: 04/27/2020
-ms.openlocfilehash: bb7ac1d76e93a95fedc1dfdbfd67d2b057db60e3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/20/2020
+ms.openlocfilehash: d96118e8f9de37432874a9864fc5c35faeb95a5a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499814"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057213"
 ---
 # <a name="create-an-ingress-controller-in-azure-kubernetes-service-aks"></a>Een ingangs controller maken in azure Kubernetes service (AKS)
 
@@ -163,10 +163,10 @@ Beide toepassingen worden nu uitgevoerd op uw Kubernetes-cluster. Als u verkeer 
 
 In het volgende voor beeld wordt verkeer naar *EXTERNAL_IP* doorgestuurd naar de service met de naam `aks-helloworld-one` . Verkeer naar *EXTERNAL_IP/Hello-World-Two* wordt doorgestuurd naar de `aks-helloworld-two` service. Verkeer naar *EXTERNAL_IP/static* wordt doorgestuurd naar de service met de naam `aks-helloworld-one` voor statische activa.
 
-Maak een bestand `hello-world-ingress.yaml` met de naam en kopieer het in het volgende voor beeld YAML.
+Maak een bestand met de naam *Hello-World-ingress. yaml* en kopieer het in het volgende voor beeld YAML.
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: hello-world-ingress
@@ -188,7 +188,7 @@ spec:
           servicePort: 80
         path: /hello-world-two(/|$)(.*)
 ---
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: hello-world-ingress-static

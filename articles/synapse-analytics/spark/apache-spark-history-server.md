@@ -1,5 +1,5 @@
 ---
-title: De uitgebreide Spark-geschiedenis server gebruiken om fouten op te sporen in apps-Apache Spark in azure Synapse
+title: De uitgebreide Spark-geschiedenis server gebruiken om fouten op te sporen in apps
 description: Gebruik de uitgebreide Spark-geschiedenis server voor het opsporen en diagnosticeren van Spark-toepassingen in azure Synapse Analytics.
 services: synapse-analytics
 author: euangMS
@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: b4ee5d064d17d7b11305c6c86dc1d29ddccc642e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8dece3478e00c6f9279767e57e3bb8aca865f45
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85194991"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059989"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Uitgebreide Apache Spark geschiedenis server gebruiken om fouten op te sporen en op te sporen Apache Spark toepassingen
 
@@ -122,11 +122,11 @@ Selecteer **afspelen**om de taak af te spelen. U kunt op elk gewenst moment **st
 
 |Kleur|Betekenis|
 |-|-|
-|Groen|Geslaagd: de taak is voltooid.|
+|Green|Geslaagd: de taak is voltooid.|
 |Oranje|Opnieuw geprobeerd: exemplaren van taken die zijn mislukt, maar die geen invloed hebben op het uiteindelijke resultaat van de taak. Deze taken bevatten dubbele of nieuwe instanties die later kunnen slagen.|
-|Blauw|Uitvoeren: de taak wordt uitgevoerd.|
+|Blue|Uitvoeren: de taak wordt uitgevoerd.|
 |Wit|Wachtend of overgeslagen: de taak wacht op het uitvoeren of het stadium is overgeslagen.|
-|Rood|Mislukt: de taak is mislukt.|
+|Red|Mislukt: de taak is mislukt.|
 
 De volgende afbeelding toont de kleuren groen, oranje en blauw.
 
@@ -157,7 +157,7 @@ Beweeg de muis aanwijzer op het grafiek knooppunt om de knop Info weer te geven 
 
 Op het tabblad taak grafiek worden de knop Info en een klein pictogram weer gegeven als er taken zijn die voldoen aan de volgende voor waarden:
 
-|Voorwaarde|Description|
+|Voorwaarde|Beschrijving|
 |-|-|
 |Gegevens scheef trekken|gegevens lezen grootte > gemiddelde grootte van het lezen van gegevens van alle taken in deze fase * 2 en grootte van gegevens lezen > 10 MB|
 |Tijd verschil|uitvoerings tijd > gemiddelde uitvoerings tijd van alle taken in deze fase * 2 en uitvoerings tijd > 2 minuten|

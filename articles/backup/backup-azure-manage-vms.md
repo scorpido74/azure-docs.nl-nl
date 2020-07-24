@@ -4,11 +4,12 @@ description: Meer informatie over het beheren en bewaken van back-ups van Azure-
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: 6e49d1eed81d15970519299fb6f662c650116d6e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e3fb05b054ea682c315654e6df262e49d592597
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84248580"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054750"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Back-ups van Azure-VM'S beheren met Azure Backup-Service
 
@@ -53,6 +54,17 @@ Vm's op het kluis dashboard weer geven:
 
 ## <a name="manage-backup-policy-for-a-vm"></a>Back-upbeleid voor een VM beheren
 
+### <a name="modify-backup-policy"></a>Back-upbeleid wijzigen
+
+Een bestaand back-upbeleid wijzigen:
+
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/). Open het kluis dashboard.
+2. Selecteer in **> back-upbeleid beheren**het back-upbeleid voor het type Azure virtual machine.
+3.  Klik op wijzigen en wijzig de instellingen.
+
+
+### <a name="switch-backup-policy"></a>Scha kelen tussen back-upbeleid 
+
 Een back-upbeleid beheren:
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com/). Open het kluis dashboard.
@@ -77,6 +89,9 @@ U kunt een back-up op aanvraag uitvoeren van een virtuele machine nadat u de bev
 * Als de eerste back-up in behandeling is, maakt back-ups op aanvraag een volledige kopie van de virtuele machine in de Recovery Services kluis.
 * Als de eerste back-up is voltooid, worden met een back-up op aanvraag alleen wijzigingen van de vorige moment opname naar de Recovery Services kluis verzonden. Dat wil zeggen dat latere back-ups altijd incrementeel zijn.
 * De Bewaar termijn voor een back-up op aanvraag is de Bewaar waarde die u opgeeft wanneer u de back-up triggert.
+
+> [!NOTE]
+> De Azure Backup-service ondersteunt Maxi maal negen back-ups op aanvraag per dag, maar micro soft raadt niet meer dan vier dagelijkse back-ups op aanvraag aan om de beste prestaties te garanderen.
 
 Een back-up op aanvraag activeren:
 
@@ -125,6 +140,9 @@ De beveiliging stoppen en gegevens van een virtuele machine verwijderen:
 
     ![Back-upgegevens verwijderen](./media/backup-azure-manage-vms/delete-backup-data1.png)
 
+> [!NOTE]
+> Na het volt ooien van de Verwijder bewerking worden de gegevens waarvan een back-up is gemaakt 14 dagen in de [modus voorlopig verwijderd](./soft-delete-virtual-machines.md)bewaard. <br>Daarnaast kunt u [voorlopig verwijderen ook in-of uitschakelen](./backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete).
+
 ## <a name="resume-protection-of-a-vm"></a>De beveiliging van een virtuele machine hervatten
 
 Als u de optie [beveiliging stoppen en back-upgegevens behouden](#stop-protection-and-retain-backup-data) hebt gekozen tijdens het stoppen van de beveiliging van de virtuele machine, kunt u **back-up hervatten**gebruiken. Deze optie is niet beschikbaar als u de optie [beveiliging stoppen en back-upgegevens verwijderen](#stop-protection-and-delete-backup-data) kiest of [back-upgegevens verwijdert](#delete-backup-data).
@@ -157,7 +175,7 @@ Er zijn twee manieren om de back-upgegevens van een VM te verwijderen:
 
   * Selecteer **verwijderen**als u de back-upgegevens voor het item wilt verwijderen. Een meldings bericht laat u weten dat de back-upgegevens zijn verwijderd.
 
-Voor het beveiligen van uw gegevens bevat Azure Backup de functie voor voorlopig verwijderen. Met zacht verwijderen, zelfs nadat de back-up (alle herstel punten) van een virtuele machine is verwijderd, worden de back-upgegevens 14 extra dagen bewaard. Zie [de documentatie voor voorlopig verwijderen](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud)voor meer informatie.
+Voor het beveiligen van uw gegevens bevat Azure Backup de functie voor voorlopig verwijderen. Met zacht verwijderen, zelfs nadat de back-up (alle herstel punten) van een virtuele machine is verwijderd, worden de back-upgegevens 14 extra dagen bewaard. Zie [de documentatie voor voorlopig verwijderen](./backup-azure-security-feature-cloud.md)voor meer informatie.
 
   > [!NOTE]
   > Wanneer u back-upgegevens verwijdert, verwijdert u alle gekoppelde herstel punten. U kunt geen specifieke herstel punten kiezen die u wilt verwijderen.
@@ -172,4 +190,4 @@ Voor het beveiligen van uw gegevens bevat Azure Backup de functie voor voorlopig
 
 * Meer informatie over [het maken van een back-up van Azure-vm's vanuit de instellingen van de virtuele machine](backup-azure-vms-first-look-arm.md).
 * Meer informatie over het [herstellen van vm's](backup-azure-arm-restore-vms.md).
-* Meer informatie over het [bewaken van back-ups van Azure-vm's](backup-azure-monitor-vms.md).
+* Meer informatie over het [bewaken van back-ups van Azure-vm's](./backup-azure-monitoring-built-in-monitor.md).

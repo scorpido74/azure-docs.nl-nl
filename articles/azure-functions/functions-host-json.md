@@ -3,14 +3,14 @@ title: host.jsbij verwijzing voor Azure Functions 2. x
 description: Referentie documentatie voor de Azure Functions host.jsin het bestand met v2 runtime.
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 8d9ea01ffd5bcf2adb25d4f1b3900ff291438ac8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 629f579642185c5600586473d1280d9b26f4cba3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85298494"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055297"
 ---
-# <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>host.jsbij verwijzing voor Azure Functions 2. x en hoger 
+# <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Referentie naar host.json voor Azure Functions 2.x en hoger 
 
 > [!div class="op_single_selector" title1="Selecteer de versie van de Azure Functions runtime die u gebruikt: "]
 > * [Versie 1:](functions-host-json-v1.md)
@@ -145,7 +145,7 @@ Zie voor de volledige JSON-structuur het vorige [voor beeld host.jsop bestand](#
 > [!NOTE]
 > Het vastleggen van logboeken kan ertoe leiden dat sommige uitvoeringen niet worden weer gegeven op de Blade Application Insights monitor. Voeg toe aan de waarde om te voor komen dat u Logboeken kunt bemonsteren `excludedTypes: "Request"` `samplingSettings` .
 
-| Eigenschap | Standaard | Description |
+| Eigenschap | Standaard | Beschrijving |
 | --------- | --------- | --------- | 
 | samplingSettings | N.v.t. | Zie [applicationInsights. samplingSettings](#applicationinsightssamplingsettings). |
 | enableLiveMetrics | true | Hiermee wordt de verzameling Live Metrics ingeschakeld. |
@@ -157,7 +157,7 @@ Zie voor de volledige JSON-structuur het vorige [voor beeld host.jsop bestand](#
 
 ### <a name="applicationinsightssamplingsettings"></a>applicationInsights. samplingSettings
 
-|Eigenschap | Standaard | Description |
+|Eigenschap | Standaard | Beschrijving |
 | --------- | --------- | --------- | 
 | isEnabled | true | Hiermee worden steek proeven in-of uitgeschakeld. | 
 | maxTelemetryItemsPerSecond | 20 | Het doel aantal telemetriegegevens dat per seconde op elke server host is geregistreerd. Als uw app op meerdere hosts wordt uitgevoerd, vermindert u deze waarde zodat deze binnen het totale doel tempo van het verkeer blijft. | 
@@ -173,7 +173,7 @@ Zie voor de volledige JSON-structuur het vorige [voor beeld host.jsop bestand](#
 
 ### <a name="applicationinsightshttpautocollectionoptions"></a>applicationInsights. httpAutoCollectionOptions
 
-|Eigenschap | Standaard | Description |
+|Eigenschap | Standaard | Beschrijving |
 | --------- | --------- | --------- | 
 | enableHttpTriggerExtendedInfoCollection | true | Hiermee schakelt u uitgebreide informatie over HTTP-aanvragen in of uit voor HTTP-triggers: inkomende aanvraag correlatie headers, ondersteuning voor meerdere instrumentatie sleutels, HTTP-methode, pad en antwoord. |
 | enableW3CDistributedTracing | true | Hiermee wordt ondersteuning van het W3C-protocol voor gedistribueerde tracering (en het verouderde correlatie schema ingeschakeld) in-of uitgeschakeld. Standaard ingeschakeld als is ingesteld op `enableHttpTriggerExtendedInfoCollection` True. Als `enableHttpTriggerExtendedInfoCollection` is ingesteld op False, is deze vlag alleen van toepassing op uitgaande aanvragen, niet op inkomende aanvragen. |
@@ -181,9 +181,9 @@ Zie voor de volledige JSON-structuur het vorige [voor beeld host.jsop bestand](#
 
 ### <a name="applicationinsightssnapshotconfiguration"></a>applicationInsights. snapshotConfiguration
 
-Voor meer informatie over moment opnamen raadpleegt u [debug-moment opnamen op uitzonde ringen in .net apps](/azure/azure-monitor/app/snapshot-debugger) en lost u problemen op bij het [inschakelen van Application Insights snapshot debugger of het weer geven van moment opnamen](/azure/azure-monitor/app/snapshot-debugger-troubleshoot).
+Voor meer informatie over moment opnamen raadpleegt u [debug-moment opnamen op uitzonde ringen in .net apps](../azure-monitor/app/snapshot-debugger.md) en lost u problemen op bij het [inschakelen van Application Insights snapshot debugger of het weer geven van moment opnamen](../azure-monitor/app/snapshot-debugger-troubleshoot.md).
 
-|Eigenschap | Standaard | Description |
+|Eigenschap | Standaard | Beschrijving |
 | --------- | --------- | --------- | 
 | agentEndpoint | null | Het eind punt dat wordt gebruikt om verbinding te maken met de Application Insights Snapshot Debugger-service. Als de waarde Null is, wordt een standaard eindpunt gebruikt. |
 | captureSnapshotMemoryWeight | 0,5 | Het gewicht dat aan de huidige geheugen grootte van het proces is gegeven om te controleren of er voldoende geheugen beschikbaar is om een moment opname te maken. De verwachte waarde is een groter dan 0 juiste fractie (0 < CaptureSnapshotMemoryWeight < 1). |
@@ -244,7 +244,7 @@ Een lijst met functies die de taak host uitvoert. Een lege matrix houdt in dat a
 
 Hiermee wordt de duur van de time-out voor alle functies aangegeven. Het volgt de teken reeks notatie time span. 
 
-| Type abonnement | Standaard (min.) | Maximum (min.) |
+| Plantype | Standaard (min.) | Maximum (min.) |
 | -- | -- | -- |
 | Verbruik | 5 | 10 |
 | Premium<sup>1</sup> | 30 | -1 (niet-gebonden)<sup>2</sup> |
@@ -275,7 +275,7 @@ Configuratie-instellingen voor de [host Health Monitor](https://github.com/Azure
 }
 ```
 
-|Eigenschap  |Standaard | Description |
+|Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
 |enabled|true|Hiermee wordt aangegeven of de functie is ingeschakeld. | 
 |healthCheckInterval|10 seconden|Het tijds interval tussen de periodieke status controles voor de achtergrond. | 
@@ -307,10 +307,10 @@ Hiermee bepaalt u het gedrag van logboek registratie van de functie-app, met inb
 }
 ```
 
-|Eigenschap  |Standaard | Description |
+|Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|Hiermee wordt gedefinieerd welk niveau van bestands logboek registratie is ingeschakeld.  Opties zijn `never` , `always` , `debugOnly` . |
-|logLevel|N.v.t.|Object dat de logboek categorie filtering definieert voor functies in de app. Versie 2. x en hoger volgen de ASP.NET Core indeling voor het filteren van de logboek categorie. Met deze instelling kunt u logboek registratie voor specifieke functies filteren. Zie [logboek filtering](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) in de ASP.net core-documentatie voor meer informatie. |
+|logLevel|N.v.t.|Object dat de logboek categorie filtering definieert voor functies in de app. Versie 2. x en hoger volgen de ASP.NET Core indeling voor het filteren van de logboek categorie. Met deze instelling kunt u logboek registratie voor specifieke functies filteren. Zie [logboek filtering](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) in de ASP.net core-documentatie voor meer informatie. |
 |console|N.v.t.| De instelling voor de logboek registratie van de [console](#console) . |
 |applicationInsights|N.v.t.| De instelling [applicationInsights](#applicationinsights) . |
 
@@ -330,7 +330,7 @@ Deze instelling is een onderliggend item van [logboek registratie](#logging). He
 }
 ```
 
-|Eigenschap  |Standaard | Description |
+|Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
 |isEnabled|false|Hiermee wordt de logboek registratie van de console in-of uitgeschakeld.| 
 
@@ -374,7 +374,7 @@ Configuratie-instellingen voor het gedrag van Singleton-vergren deling. Zie [git
 }
 ```
 
-|Eigenschap  |Standaard | Description |
+|Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|De periode waarin vergrendelingen op functie niveau worden uitgevoerd. De vergren delingen automatisch verlengen.| 
 |listenerLockPeriod|00:01:00|De periode waarin de luister vergrendelingen worden uitgevoerd.| 

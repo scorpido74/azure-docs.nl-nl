@@ -1,25 +1,21 @@
 ---
-title: Inhoud aan klanten leveren | Microsoft Docs
+title: Inhoud aan klanten leveren
 description: In dit onderwerp vindt u een overzicht van wat er is betrokken bij het leveren van uw inhoud met Azure Media Services.
 services: media-services
-documentationcenter: ''
 author: Juliako
 manager: femila
-editor: ''
 ms.assetid: 89ede54a-6a9c-4814-9858-dcfbb5f4fed5
 ms.service: media-services
 ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 60d75a23609e962547c8c753086e9bef1d4c84eb
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 7a6a717f663e6e1ee5c2371c35557c7c374246fa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956590"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87060364"
 ---
 # <a name="deliver-content-to-customers"></a>Inhoud leveren aan klanten
 Wanneer u uw streaming-of video-on-demand inhoud levert aan klanten, is het doel om video van hoge kwaliteit te leveren aan verschillende apparaten onder verschillende netwerk omstandigheden.
@@ -55,7 +51,7 @@ U kunt filters voor uw assets definiëren met Media Services. Deze filters zijn 
 
 Zie [filters en dynamische manifesten](media-services-dynamic-manifest-overview.md)voor meer informatie.
 
-## <a name="locators"></a><a id="locators"/>Locators
+## <a name="locators"></a><a name="locators"></a>Locators
 Als u uw gebruiker een URL wilt geven die kan worden gebruikt om uw inhoud te streamen of te downloaden, moet u uw asset eerst publiceren door een Locator te maken. Een Locator biedt een toegangs punt voor toegang tot de bestanden in een Asset. Media Services ondersteunt twee typen locators:
 
 * OnDemandOrigin-Locators. Deze worden gebruikt voor het streamen van media (bijvoorbeeld MPEG-DASH, HLS of Smooth Streaming) of het progressief downloaden van bestanden.
@@ -70,9 +66,9 @@ Locators hebben verval datums. In de Azure Portal wordt een verval datum van 100
 > 
 > 
 
-Als u de vervaldatum van een locator wilt bijwerken, gebruikt u [REST](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator)- of [.NET](https://go.microsoft.com/fwlink/?LinkID=533259)-API's. Wanneer u de vervaldatum van een SAS-locator bijwerkt, wordt de URL gewijzigd.
+Als u de vervaldatum van een locator wilt bijwerken, gebruikt u [REST](/rest/api/media/operations/locator#update_a_locator)- of [.NET](https://go.microsoft.com/fwlink/?LinkID=533259)-API's. Wanneer u de vervaldatum van een SAS-locator bijwerkt, wordt de URL gewijzigd.
 
-Locators zijn niet ontworpen voor het beheren van toegangs beheer per gebruiker. U kunt verschillende toegangs rechten verlenen aan afzonderlijke gebruikers met behulp van DRM-oplossingen (Digital Rights Management). Zie [media beveiligen](https://msdn.microsoft.com/library/azure/dn282272.aspx)voor meer informatie.
+Locators zijn niet ontworpen voor het beheren van toegangs beheer per gebruiker. U kunt verschillende toegangs rechten verlenen aan afzonderlijke gebruikers met behulp van DRM-oplossingen (Digital Rights Management). Zie [media beveiligen](/previous-versions/azure/dn282272(v=azure.100))voor meer informatie.
 
 Wanneer u een Locator maakt, kan er een vertraging van 30 seconden optreden vanwege de vereiste processen voor opslag en doorgifte in Azure Storage.
 
@@ -87,7 +83,7 @@ Als u gebruikers wilt voorzien van streaming-Url's, moet u eerst een OnDemandOri
 
 U kunt alleen streamen via TLS als het streaming-eind punt van waaruit u uw inhoud levert, is gemaakt na 10 september 2014. Als uw streaming-Url's zijn gebaseerd op de streaming-eind punten die zijn gemaakt na 10 september 2014, bevat de URL ' streaming.mediaservices.windows.net '. Streaming-Url's die "origin.mediaservices.windows.net" (de oude indeling) bevatten, bieden geen ondersteuning voor TLS. Als uw URL de oude indeling heeft en u via TLS wilt kunnen streamen, maakt u een nieuw streaming-eind punt. Gebruik Url's op basis van het nieuwe streaming-eind punt om uw inhoud te streamen via TLS.
 
-## <a name="streaming-url-formats"></a><a id="URLs"/>Streaming-URL-indelingen
+## <a name="streaming-url-formats"></a><a name="URLs"></a>Streaming-URL-indelingen
 
 ### <a name="mpeg-dash-format"></a>MPEG-DASH-indeling
 {streaming-eindpuntnaam-media services-accountnaam}.streaming.mediaservices.windows.net/{locator-id}/{bestandsnaam}.ism/Manifest(format=mpd-time-csf)
@@ -192,4 +188,3 @@ Sommige van de verouderde Smooth Streaming-clients bieden mogelijk geen onderste
 
 ## <a name="related-topics"></a>Verwante onderwerpen
 [Media Services Locators na Rolling Storage-sleutels bijwerken](media-services-roll-storage-access-keys.md)
-

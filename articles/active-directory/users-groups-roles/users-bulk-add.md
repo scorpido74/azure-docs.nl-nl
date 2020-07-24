@@ -13,11 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a2c9500ecefed02b28c066de80137d8f0882fd5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41329f2f5500db35ee76c9880bdbef984413004b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84731500"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057897"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>Gebruikers bulksgewijs maken in Azure Active Directory
 
@@ -47,6 +48,7 @@ De rijen in een gedownloade CSV-sjabloon zijn als volgt:
 - De vereiste kolommen worden eerst weer gegeven.
 - Het is niet raadzaam om nieuwe kolommen toe te voegen aan de sjabloon. Alle extra kolommen die u toevoegt, worden genegeerd en worden niet verwerkt.
 - U wordt aangeraden de meest recente versie van de CSV-sjabloon zo vaak mogelijk te downloaden.
+- Controleer of er geen onbedoelde witruimte voor/na een veld is. Voor een **principal-naam**van de gebruiker, waardoor een spatie kan worden geïmporteerd.
 
 ## <a name="to-create-users-in-bulk"></a>Gebruikers bulksgewijs maken
 
@@ -79,7 +81,7 @@ Vervolgens kunt u controleren of de gebruikers die u hebt gemaakt in de Azure AD
 
 1. [Meld u aan bij het Azure AD-beheer centrum](https://aad.portal.azure.com) met een account dat een gebruikers beheerder in de organisatie is.
 1. Selecteer **Azure Active Directory**in het navigatie deel venster.
-1. Selecteer onder **Beheren** de optie **Gebruikers**.
+1. Onder **Beheren**, selecteer **Gebruikers**.
 1. Selecteer onder **weer geven** **alle gebruikers** en controleer of de gebruikers die u hebt gemaakt, worden weer gegeven.
 
 ### <a name="verify-users-with-powershell"></a>Gebruikers controleren met Power shell

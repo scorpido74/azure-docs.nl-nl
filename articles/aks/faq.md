@@ -2,13 +2,13 @@
 title: Veelgestelde vragen over Azure Kubernetes service (AKS)
 description: Vind antwoorden op enkele veelgestelde vragen over Azure Kubernetes service (AKS).
 ms.topic: conceptual
-ms.date: 05/14/2020
-ms.openlocfilehash: ba4ceaf0d7f9e3b344b2a6efbb84f2145c4a2f65
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.date: 07/21/2020
+ms.openlocfilehash: 4d93a4f3b58fc38710184f345fd467b2beb32b1a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86275713"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057192"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Veelgestelde vragen over AKS (Azure Kubernetes Service)
 
@@ -79,7 +79,7 @@ Houd er bij het werken met de knooppunt resource groep voor dat u niet:
 
 ## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group"></a>Kan ik tags en andere eigenschappen van de AKS-resources in de knooppunt resource groep wijzigen?
 
-Als u door Azure gemaakte Tags en andere bron eigenschappen in de knooppunt resource groep wijzigt of verwijdert, kunt u onverwachte resultaten krijgen, zoals het schalen en upgraden van fouten. Met AKS kunt u aangepaste tags maken en wijzigen die zijn gemaakt door eind gebruikers. Het is raadzaam om aangepaste labels te maken of te wijzigen, bijvoorbeeld om een bedrijfs eenheid of kosten plaats toe te wijzen. Dit kan worden bereikt door Azure-beleids regels te maken met een bereik voor de beheerde resource groep.
+Als u door Azure gemaakte Tags en andere bron eigenschappen in de knooppunt resource groep wijzigt of verwijdert, kunt u onverwachte resultaten krijgen, zoals het schalen en upgraden van fouten. Met AKS kunt u aangepaste tags maken en wijzigen die door eind gebruikers zijn gemaakt. u kunt deze Tags toevoegen wanneer u [een knooppunt groep maakt](use-multiple-node-pools.md#specify-a-taint-label-or-tag-for-a-node-pool). Het is raadzaam om aangepaste labels te maken of te wijzigen, bijvoorbeeld om een bedrijfs eenheid of kosten plaats toe te wijzen. Dit kan ook worden bereikt door Azure-beleids regels te maken met een bereik voor de beheerde resource groep.
 
 Het wijzigen van door **Azure gemaakte Tags** op resources onder de knooppunt resource groep in het AKS-cluster is echter een niet-ondersteunde actie, waardoor de serviceniveau doelstelling (SLO) wordt verbroken. Zie voor meer informatie [AKS biedt een service overeenkomst?](#does-aks-offer-a-service-level-agreement)
 
@@ -137,7 +137,7 @@ AKS-agent knooppunten worden gefactureerd als standaard virtuele machines van Az
 
 ## <a name="can-i-movemigrate-my-cluster-between-azure-tenants"></a>Kan ik mijn cluster verplaatsen/migreren tussen Azure-tenants?
 
-De `az aks update-credentials` opdracht kan worden gebruikt om een AKS-cluster te verplaatsen tussen Azure-tenants. Volg de instructies in [kiezen om een service-principal bij te werken of te maken](./update-credentials.md) en [werk vervolgens AKS-cluster bij met nieuwe referenties](./update-credentials.md#update-aks-cluster-with-new-service-principal-credentials).
+Het verplaatsen van uw AKS-cluster tussen tenants wordt momenteel niet ondersteund.
 
 ## <a name="can-i-movemigrate-my-cluster-between-subscriptions"></a>Kan ik mijn cluster verplaatsen/migreren tussen abonnementen?
 

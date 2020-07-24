@@ -1,14 +1,14 @@
 ---
-title: Knowledge Base-QnA Maker verbeteren
+title: Suggesties voor actieve trainingen-QnA Maker
 description: Verbeter de kwaliteit van uw kennis basis met actief onderwijs. Beoordeling, accepteren of afwijzen, toevoegen zonder bestaande vragen te verwijderen of te wijzigen.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 88ccbc52e0eb3447d0b99cac9ba41761e292a6fd
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: bb95ddc40e122e2589d0396b94f0de921aab9350
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231774"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053937"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Voorgestelde vragen over actieve trainingen in de Knowledge Base accepteren
 
@@ -139,7 +139,7 @@ De JSON-hoofd tekst heeft verschillende instellingen:
 
 |Eigenschap van JSON-hoofd tekst|Type|Doel|
 |--|--|--|--|
-|`feedbackRecords`|matrix|Lijst met feedback.|
+|`feedbackRecords`|array|Lijst met feedback.|
 |`userId`|tekenreeks|De gebruikers-ID van de persoon die de voorgestelde vragen accepteert. De indeling van de gebruikers-ID is Maxi maal. Een e-mail adres kan bijvoorbeeld een geldige gebruikers-ID zijn in uw architectuur. Optioneel.|
 |`userQuestion`|tekenreeks|De exacte tekst van de query van de gebruiker. Vereist.|
 |`qnaID`|getal|De ID van de vraag die in het [GenerateAnswer-antwoord](metadata-generateanswer-usage.md#generateanswer-response-properties)is gevonden. |
@@ -334,7 +334,7 @@ Wanneer u deze app opnieuw importeert, gaat het actieve leer proces verder met h
 
 
 
-## <a name="best-practices"></a>Best practices
+## <a name="best-practices"></a>Aanbevolen procedures
 
 Zie [Aanbevolen procedures](../Concepts/best-practices.md#active-learning)voor aanbevolen procedures voor het gebruik van actief leren.
 
