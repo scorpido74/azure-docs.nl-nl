@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: cd9a196e5f957782de91cff69c01fbfa5716369a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1717ebd5709c05e33e658d3798494324a702b1d9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82100495"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074045"
 ---
 # <a name="time-sync-for-windows-vms-in-azure"></a>Tijd synchronisatie voor Windows-Vm's in azure
 
@@ -24,7 +24,7 @@ Azure wordt nu ondersteund door een infra structuur waarop Windows Server 2016 w
 >[!NOTE]
 >Bekijk deze [overzichts video op hoog niveau](https://aka.ms/WS2016TimeVideo)voor een snel overzicht van de Windows Time-service.
 >
-> Zie voor meer informatie [nauw keurige tijd voor Windows Server 2016](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time). 
+> Zie voor meer informatie [nauw keurige tijd voor Windows Server 2016](/windows-server/networking/windows-time-service/accurate-time). 
 
 ## <a name="overview"></a>Overzicht
 
@@ -172,9 +172,7 @@ w32tm /dumpreg /subkey:Parameters | findstr /i "ntpserver"
 
 Hieronder vindt u koppelingen naar meer informatie over de tijd synchronisatie:
 
-- [Hulpprogramma’s en instellingen voor de Windows Time-service](https://docs.microsoft.com/windows-server/networking/windows-time-service/Windows-Time-Service-Tools-and-Settings)
-- [Verbeteringen in Windows Server 2016](https://docs.microsoft.com/windows-server/networking/windows-time-service/windows-server-2016-improvements)
-- [Nauw keurige tijd voor Windows Server 2016](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)
-- [Ondersteunings grens voor het configureren van de Windows Time-service voor omgevingen met hoge nauw keurigheid](https://docs.microsoft.com/windows-server/networking/windows-time-service/support-boundary)
-
-
+- [Hulpprogramma’s en instellingen voor de Windows Time-service](/windows-server/networking/windows-time-service/windows-time-service-tools-and-settings)
+- [Verbeteringen in Windows Server 2016](/windows-server/networking/windows-time-service/windows-server-2016-improvements)
+- [Nauw keurige tijd voor Windows Server 2016](/windows-server/networking/windows-time-service/accurate-time)
+- [Ondersteunings grens voor het configureren van de Windows Time-service voor omgevingen met hoge nauw keurigheid](/windows-server/networking/windows-time-service/support-boundary)
