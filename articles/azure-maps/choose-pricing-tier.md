@@ -1,21 +1,21 @@
 ---
 title: De juiste prijs categorie kiezen | Microsoft Azure kaarten
 description: In dit artikel vindt u informatie over de prijs categorieën die worden aangeboden door Microsoft Azure kaarten.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/15/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: a8bf7ff9bacd4fe84ee5b64d0aed5cb271ce06f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b32706822ff16780388f4acb5d59bf3d91e6d91
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335661"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133330"
 ---
-# <a name="choose-the-right-pricing-tier-in-azure-maps"></a>Kies de juiste prijs categorie in Azure Maps
+# <a name="choose-the-right-pricing-tier-in-azure-maps"></a>De juiste prijscategorie kiezen in Azure Maps
 
 Azure Maps biedt twee prijs Categorieën: S0 en S1. Het doel van dit artikel is om u te helpen bij het kiezen van de juiste prijs categorie voor uw behoeften. Als u de juiste prijs categorie wilt kiezen, kunt u de volgende twee vragen stellen.
 

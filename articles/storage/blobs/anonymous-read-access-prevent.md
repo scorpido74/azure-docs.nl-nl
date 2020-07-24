@@ -6,27 +6,29 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/13/2020
+ms.date: 07/23/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 24d726f7600c3ba80833640be8036bf0daa2c014
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e30c4142232a2d695204f5c8f612eb44791c847c
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518721"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133160"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>Anonieme open bare Lees toegang voor containers en blobs voor komen
 
 Anonieme open bare Lees toegang tot containers en blobs in Azure Storage is een handige manier om gegevens te delen, maar kan ook een beveiligings risico opleveren. Het is belang rijk anonieme toegang zorgvuldig te beheren en te begrijpen hoe anonieme toegang tot uw gegevens kan worden geëvalueerd. Operationele complexiteit, menselijke fout of kwaad aardige aanvallen op basis van gegevens die openbaar toegankelijk zijn, kunnen leiden tot dure gegevens inbreuken. Micro soft raadt u aan anonieme toegang alleen in te scha kelen wanneer dit nodig is voor uw toepassings scenario.
 
-Standaard kan een gebruiker met de juiste machtigingen open bare toegang tot containers en blobs configureren. U kunt voor komen dat alle open bare toegang op het niveau van het opslag account. Als u toegang tot open bare blobs voor het opslag account niet toestaat, kunnen containers in het account niet worden geconfigureerd voor open bare toegang. Alle containers die al zijn geconfigureerd voor open bare toegang, accepteren geen anonieme aanvragen meer. Zie [anonieme open bare Lees toegang voor containers en blobs configureren](anonymous-read-access-configure.md)voor meer informatie.
+Open bare toegang tot uw BLOB-gegevens is standaard altijd verboden. Met de standaard configuratie voor een opslag account kan een gebruiker met de juiste machtigingen echter de open bare toegang tot containers en blobs in een opslag account configureren. Voor een betere beveiliging kunt u niet alle open bare toegang tot het opslag account toestaan, ongeacht de instelling voor open bare toegang voor een afzonderlijke container. Door open bare toegang tot het opslag account te weigeren, voor komt u dat een gebruiker open bare toegang kan inschakelen voor een container in het account. Micro soft raadt u aan om open bare toegang tot een opslag account uit te stellen, tenzij dit vereist is voor uw scenario. Het niet toestaan van open bare toegang helpt te voor komen dat inbreuk op gegevens wordt veroorzaakt door ongewenste anonieme toegang.
+
+Wanneer u toegang tot open bare blobs voor het opslag account niet toestaat, worden alle anonieme aanvragen voor dat account door Azure Storage geweigerd. Wanneer open bare toegang niet is toegestaan voor een account, kunnen containers in dat account niet later worden geconfigureerd voor open bare toegang. Alle containers die al zijn geconfigureerd voor open bare toegang, accepteren geen anonieme aanvragen meer. Zie [anonieme open bare Lees toegang voor containers en blobs configureren](anonymous-read-access-configure.md)voor meer informatie.
 
 In dit artikel wordt beschreven hoe u anonieme aanvragen voor een opslag account analyseert en hoe u anonieme toegang voor het hele opslag account of een afzonderlijke container kunt voor komen.
 
 ## <a name="detect-anonymous-requests-from-client-applications"></a>Anonieme aanvragen van client toepassingen detecteren
 
-Als u open bare Lees toegang voor een opslag account niet toestaat, is het risico dat aanvragen worden afgewezen voor containers en blobs die momenteel zijn geconfigureerd voor open bare toegang. Het niet toestaan van open bare toegang voor een opslag account heeft voor rang op de instellingen voor open bare toegang voor alle containers in dat opslag account. Wanneer open bare toegang niet is toegestaan voor het opslag account, zullen toekomstige anonieme aanvragen voor dat account mislukken.
+Als u open bare Lees toegang voor een opslag account niet toestaat, is het risico dat aanvragen worden afgewezen voor containers en blobs die momenteel zijn geconfigureerd voor open bare toegang. Het niet toestaan van open bare toegang voor een opslag account heeft voor rang op de instellingen voor open bare toegang voor afzonderlijke containers in dat opslag account. Wanneer open bare toegang niet is toegestaan voor het opslag account, zullen toekomstige anonieme aanvragen voor dat account mislukken.
 
 Micro soft raadt u aan om logboek registratie en metrische gegevens voor dat account in te scha kelen en patronen van anonieme aanvragen gedurende een tijds interval te analyseren om te begrijpen hoe het niet toestaan van open bare toegang van invloed is op client toepassingen. Metrische gegevens gebruiken om het aantal anonieme aanvragen voor het opslag account te bepalen en Logboeken gebruiken om te bepalen welke containers anoniem worden gebruikt.
 

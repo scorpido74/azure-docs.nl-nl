@@ -2,19 +2,20 @@
 title: Verificatiemethoden
 titleSuffix: Azure Maps
 description: In dit artikel vindt u meer informatie over Azure Active Directory en gedeelde sleutel verificatie. Beide worden gebruikt voor Microsoft Azure Maps Services. Meer informatie over het verkrijgen van Azure Maps-abonnements sleutel.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: fe79b630291959ce4dc8b4743127986088a876ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e270a9a1a773442a4d1d28d9bbfe37639cac7c65
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987543"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133381"
 ---
 # <a name="authentication-with-azure-maps"></a>Verificatie met Azure Maps
 
@@ -89,7 +90,7 @@ Wanneer u Azure RBAC configureert, kiest u een beveiligingsprincipal en past u d
 
 De volgende roldefinitie typen bestaan ter ondersteuning van toepassings scenario's.
 
-| Azure Role definition       | Description                                                                                              |
+| Azure Role definition       | Beschrijving                                                                                              |
 | :-------------------------- | :------------------------------------------------------------------------------------------------------- |
 | Gegevens lezer Azure Maps      | Biedt toegang tot onveranderbare Azure Maps REST Api's.                                                       |
 | Inzender voor Azure Maps gegevens | Biedt toegang tot onveranderlijke Azure Maps REST-Api's. Veranderlijkheid wordt gedefinieerd door de acties: schrijven en verwijderen. |

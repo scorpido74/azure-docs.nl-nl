@@ -2,19 +2,17 @@
 title: bestand opnemen
 description: bestand opnemen
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
 ms.custom: include file
 ms.date: 04/16/2020
-ms.author: diberry
-ms.openlocfilehash: 1c3631b4a2964c5e3a8d8267d1934a5822966342
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ac0192da3afa76c3c21056f218f2b249c44d1c36
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673438"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133816"
 ---
 Cognitive Services biedt twee services voor de verwerking van natuurlijke taal, [Language Understanding](../luis/what-is-luis.md) en [QnA Maker](../qnamaker/overview/overview.md), elk met een ander doel. Begrijpen wanneer u elke service gebruikt en hoe ze elkaar in de compliment hebben.
 
@@ -43,7 +41,7 @@ Als uw chat-bot de tekst ontvangt `How do I get to the Human Resources building 
 
 ## <a name="when-do-you-use-luis"></a>Wanneer gebruikt u LUIS?
 
-Gebruik LUIS als u de bedoeling van de utterance wilt weten als onderdeel van een proces in de chat-bot. Als u doorgaat met de voorbeeld tekst, `How do I get to the Human Resources building on the Seattle North campus?` , wanneer u weet dat de gebruiker zich kan bezig houden met het vinden van een locatie, kunt u de details van de utterance (die is opgetrokken met entiteiten) door geven aan een andere service, zoals een Transport Server, om het antwoord te krijgen.
+Gebruik LUIS als u de bedoeling van een uiting wilt weten als onderdeel van een proces in de chatbot. Als u doorgaat met de voorbeeld tekst, `How do I get to the Human Resources building on the Seattle North campus?` , wanneer u weet dat de gebruiker zich kan bezig houden met het vinden van een locatie, kunt u de details van de utterance (die is opgetrokken met entiteiten) door geven aan een andere service, zoals een Transport Server, om het antwoord te krijgen.
 
 U hoeft LUIS en QnA Maker niet te combi neren om intentie te bepalen.
 
@@ -51,7 +49,7 @@ U kunt de twee services voor deze utterance combi neren als de chat-bot de tekst
 
 ## <a name="when-do-you-use-qna-maker"></a>Wanneer gebruikt u QnA Maker?
 
-Gebruik QnA Maker wanneer u een statische Knowledge Base van antwoorden hebt. Deze kennis database is aangepast aan uw behoeften, die u hebt gemaakt met documenten zoals Pdf's en Url's.
+Gebruik QnA Maker wanneer u een statische Knowledge Base met antwoorden hebt. Deze Knowledge Base is aangepast aan uw behoeften, die u hebt ingebouwd met documenten zoals PDF’s en URL’s.
 
 U kunt door gaan met het voor beeld utterance, `How do I get to the Human Resources building on the Seattle North campus?` , de tekst verzenden als een query naar uw gepubliceerde QnA Maker-service en het beste antwoord ontvangen.
 
@@ -75,7 +73,7 @@ Als uw chat-bot meer informatie nodig heeft dan een van beide services biedt, ku
 
 Gebruik het bot Framework **[Dispatch cli](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** -hulp programma om een proces te bouwen waarmee u met beide services kunt werken. Met dit hulp programma bouwt u een top-LUIS-app van intenties die worden verzonden tussen LUIS en QnA Maker als onderliggende apps. Meer [informatie](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=cs) over de integratie met LUIS, QnA maker en bot Framework.
 
-Gebruik het voor beeld van bot Builder, **NLP met verzen ding**, in [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch) of [node. js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch), om dit type chat-bot te implementeren.
+Gebruik het voor beeld van bot Builder, **NLP met verzen ding**, in [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch) of [Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch), om dit type chat-bot te implementeren.
 
 ## <a name="best-practices"></a>Aanbevolen procedures
 
@@ -84,7 +82,7 @@ Aanbevolen procedures voor elke service implementeren:
 * Best practices voor [Luis](../luis/luis-concept-best-practices.md)
 * Aanbevolen procedures [QnA Maker](../qnamaker/concepts/best-practices.md)
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 * [Language Understanding (LUIS)](../luis/what-is-luis.md)
 * [QnA Maker](../qnamaker/overview/overview.md)

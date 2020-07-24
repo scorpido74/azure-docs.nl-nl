@@ -8,65 +8,14 @@ ms.topic: include
 ms.date: 03/23/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 8956d4f5b2243cab433fcb3abaf2e71da8f8c772
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: a8702f14bfb9aed5a3595203dde1d86ea56a151b
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229411"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133817"
 ---
-Door door de klant beheerde sleutels voor uw schijven in te stellen, moet u resources in een bepaalde volg orde maken, als u deze voor de eerste keer uitvoert. Eerst moet u een Azure Key Vault maken en instellen.
-
-## <a name="set-up-your-azure-key-vault"></a>Uw Azure Key Vault instellen
-
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
-1. Zoek en selecteer **sleutel kluizen**.
-
-    [![server-side-encryption-key-vault-portal-search.png](media/virtual-machines-disk-encryption-portal/server-side-encryption-key-vault-portal-search.png)](media/virtual-machines-disk-encryption-portal/sever-side-encryption-key-vault-portal-search-expanded.png#lightbox)
-
-    > [!IMPORTANT]
-    > De Azure-sleutel kluis, de schijf versleutelings, de virtuele machine, de schijven en moment opnamen moeten allemaal in dezelfde regio en hetzelfde abonnement staan om te kunnen worden geïmplementeerd.
-
-1. Selecteer **+ toevoegen** om een nieuw Key Vault te maken.
-1. Een nieuwe resourcegroep maken.
-1. Voer een naam voor de sleutel kluis in, selecteer een regio en selecteer een prijs categorie.
-1. Selecteer **controleren + maken**, Controleer uw keuzes en selecteer vervolgens **maken**.
-
-    ![Scherm opname van de Azure Key Vault maken. De specifieke waarden weer geven die u maakt](media/virtual-machines-disk-encryption-portal/server-side-encryption-create-a-key-vault.png)
-
-1. Als uw sleutel kluis is geïmplementeerd, selecteert u deze.
-1. Selecteer **sleutels** onder **instellingen**.
-1. Selecteer **Genereren/importeren**.
-
-    ![Scherm opname van het deel venster Key Vault resource-instellingen. Hiermee wordt de knop genereren/importeren in instellingen weer gegeven.](media/virtual-machines-disk-encryption-portal/sever-side-encryption-key-vault-generate-settings.png)
-
-1. Zorg dat het **sleutel type** is ingesteld op **RSA** en **RSA-sleutel grootte** ingesteld op **2048**.
-1. Vul de resterende selecties in zoals u wilt en selecteer vervolgens **maken**.
-
-    ![Scherm afbeelding van de Blade een sleutel maken die wordt weer gegeven nadat de knop genereren/importeren is geselecteerd](media/virtual-machines-disk-encryption-portal/server-side-encryption-create-a-key-generate.png)
-
-## <a name="set-up-your-disk-encryption-set"></a>Uw schijf versleutelings set instellen
-
-1. Zoek naar **schijf versleutelings sets** en selecteer deze.
-1. Selecteer **+ toevoegen**op de Blade **schijf versleutelings sets** .
-
-    ![Scherm afbeelding van het hoofd scherm van de portal voor schijf versleuteling. De knop toevoegen markeren](media/virtual-machines-disk-encryption-portal/sever-side-encryption-create-disk-encryption-set.png)
-
-1. Selecteer uw resource groep, geef uw versleutelings set een naam en selecteer dezelfde regio als uw sleutel kluis.
-1. Selecteer **sleutel kluis en sleutel**.
-1. Selecteer de sleutel kluis en de sleutel die u eerder hebt gemaakt, evenals de versie.
-1. Druk op **selecteren**.
-1. Selecteer **controleren + maken** en vervolgens **maken**.
-
-    ![Scherm opname van de Blade voor het maken van schijf versleuteling. Het abonnement, de resource groep, de naam van de schijf versleutelings, de regio en de sleutel kluis + sleutel kiezer worden weer gegeven.](media/virtual-machines-disk-encryption-portal/server-side-encryption-disk-encryption-set-blade-key.png)
-
-1. Open de schijf versleutelings nadat deze is gemaakt en selecteer de waarschuwing die wordt weer gegeven.
-
-    ![Scherm afbeelding van pop-up van waarschuwing: ' als u een schijf, installatie kopie of moment opname aan een schijf versleutelings wilt koppelen, moet u machtigingen verlenen aan de sleutel kluis. Selecteer deze waarschuwing om door te gaan](media/virtual-machines-disk-encryption-portal/server-side-encryption-disk-encryption-set-alert-fix.png)
-
-Er worden twee meldingen over de pop-up en geslaagd. Als u dit doet, kunt u de schijf versleuteling instellen met uw sleutel kluis.
-
-![Scherm opname van geslaagde machtiging en roltoewijzing voor uw sleutel kluis.](media/virtual-machines-disk-encryption-portal/disk-encryption-notification-success.png)
+[!INCLUDE [virtual-machines-disks-encryption-create-key-vault-portal](virtual-machines-disks-encryption-create-key-vault-portal.md)]
 
 ## <a name="deploy-a-vm"></a>Een virtuele machine implementeren
 
@@ -74,12 +23,12 @@ Nu u de sleutel kluis en de schijf versleutelings hebt gemaakt en ingesteld, kun
 Het implementatie proces van de VM is vergelijkbaar met het standaard implementatieproces, maar de enige verschillen zijn dat u de virtuele machine in dezelfde regio als uw andere resources moet implementeren en u ervoor kiest om een door de klant beheerde sleutel te gebruiken.
 
 1. Zoek naar **virtual machines** en selecteer **+ toevoegen** om een virtuele machine te maken.
-1. Op het tabblad **basis** selecteert u dezelfde regio als uw schijf versleutelings en Azure Key Vault.
-1. Vul op het tabblad **basis** de andere waarden in zoals u wilt.
+1. Selecteer op de Blade **basis** dezelfde regio als uw schijf versleutelings en Azure Key Vault.
+1. Vul op de Blade **Basic** de andere waarden in zoals u wilt.
 
     ![Scherm afbeelding van het maken van de VM, waarbij de regio waarde is gemarkeerd.](media/virtual-machines-disk-encryption-portal/server-side-encryption-create-a-vm-region.png)
 
-1. Op het tabblad **schijven** selecteert u **versleuteling in rust met een door de klant beheerde sleutel**.
+1. Selecteer op **Disks** de Blade schijven **versleuteling in rust met een door de klant beheerde sleutel**.
 1. Selecteer de schijf versleuteling die u hebt ingesteld in de vervolg keuzelijst **schijf versleuteling instellen** .
 1. Breng de resterende selecties naar wens aan.
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 7cf03de2efdb1026934985c225a2a9eecbfbb5a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24e4554e2202c8b5452193e1b0f48cf6c8ada5dd
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84902720"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133815"
 ---
 ## <a name="limitations"></a>Beperkingen
 
@@ -79,7 +79,15 @@ Zodra een toegewezen host is ingericht, wijst Azure deze toe aan de fysieke serv
 
 ## <a name="quotas"></a>Quota
 
-Er is een standaard quotum limiet van 3000 Vcpu's voor toegewezen hosts per regio. Maar het aantal hosts dat u kunt implementeren, wordt ook beperkt door het quotum voor de VM-grootte familie die voor de host wordt gebruikt. Een abonnement op basis van **betalen per gebruik** heeft bijvoorbeeld alleen een quotum van 10 vcpu's beschikbaar voor de Dsv3 grootte serie, in de regio VS-Oost. In dit geval moet u een quotum verhoging tot ten minste 64 Vcpu's aanvragen voordat u een specifieke host kunt implementeren. Selecteer de knop **verhogen** in de rechter bovenhoek om zo nodig een aanvraag in te dienen.
+Er zijn twee typen quota die worden gebruikt wanneer u een toegewezen host implementeert.
+
+1. Quotum voor toegewezen host-vCPU. De standaard quotum limiet is 3000 Vcpu's, per regio.
+1. Quotum voor VM-grootte familie. Een abonnement op basis van **betalen per gebruik** heeft bijvoorbeeld alleen een quotum van 10 vcpu's beschikbaar voor de Dsv3 grootte serie, in de regio VS-Oost. Als u een Dsv3-specifieke host wilt implementeren, moet u een quotum verhoging tot ten minste 64 Vcpu's aanvragen voordat u de toegewezen host kunt implementeren. 
+
+Als u een quotum toename wilt aanvragen, maakt u een ondersteunings aanvraag in de [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+
+Bij het inrichten van een toegewezen host worden zowel een toegewezen host-vCPU als het vCPU quotum van de VM-serie gebruikt, maar wordt de regionale vCPU niet verbruikt.
+
 
 ![Scherm afbeelding van de pagina gebruik en quota's in de portal](./media/virtual-machines-common-dedicated-hosts/quotas.png)
 
@@ -113,7 +121,7 @@ De grootten en typen hardware variëren per regio. Raadpleeg de pagina met [prij
 
 Azure bewaakt en beheert de integriteits status van uw hosts. De volgende statussen worden geretourneerd wanneer u een query op uw host uitvoert:
 
-| Status   | Description       |
+| Status   | Beschrijving       |
 |----------|----------------|
 | Host beschikbaar     | Er zijn geen bekende problemen met de host.   |
 | Host wordt onderzocht  | Er zijn enkele problemen met de host die we op zoek zijn. Dit is een overgangs status die vereist is voor Azure om het bereik en de hoofd oorzaak voor het geïdentificeerde probleem te identificeren. Voor virtuele machines die op de host worden uitgevoerd, kan dit gevolgen hebben. |
