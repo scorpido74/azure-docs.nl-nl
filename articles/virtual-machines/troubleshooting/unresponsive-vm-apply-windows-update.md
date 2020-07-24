@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 16c8eed3377c2191b4345ec59ec1eba8be01369d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76c3f729a8520c7bff7b49a1d2200d7950f8a9f4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80633955"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074299"
 ---
 # <a name="vm-is-unresponsive-with-c01a001d-error-when-applying-windows-update"></a>De VM reageert niet met de fout ' C01A001D ' bij het Toep assen van Windows Update
 
@@ -27,7 +27,7 @@ Dit artikel bevat stappen voor het oplossen van problemen waarbij Windows Update
 
 ## <a name="symptoms"></a>Symptomen
 
-Wanneer u [Diagnostische gegevens over opstarten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) gebruikt om de scherm opname van de virtuele machine weer te geven, wordt de Windows Update (KB) wordt weer gegeven, maar mislukt met fout code: ' C01A001D '.
+Wanneer u [Diagnostische gegevens over opstarten](./boot-diagnostics.md) gebruikt om de scherm opname van de virtuele machine weer te geven, wordt de Windows Update (KB) wordt weer gegeven, maar mislukt met fout code: ' C01A001D '.
 
 ![Windows Update reageert niet](./media/unresponsive-vm-apply-windows-update/unresponsive-windows-update.png)
 
@@ -49,17 +49,17 @@ Een kern bestand kan niet worden gemaakt in het bestands systeem. Het besturings
 
 ### <a name="create-and-access-a-repair-vm"></a>Een herstel-VM maken en openen
 
-1. Volg [de stappen 1-3 van de VM-reparatie opdrachten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) om een herstel-VM voor te bereiden.
+1. Volg [de stappen 1-3 van de VM-reparatie opdrachten](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) om een herstel-VM voor te bereiden.
 2. Maak verbinding met de herstel-VM met behulp van Verbinding met extern bureaublad.
 
 ### <a name="free-up-space-on-the-hard-disk"></a>Ruimte vrijmaken op de harde schijf
 
 Als de schijf niet al 1 TB is, moet u het formaat ervan wijzigen. Zodra de schijf 1 TB is, voert u een schijf opruiming en een defragmentatie van het station uit.
 
-1. Controleer of de schijf vol is. Als de schijf kleiner is dan 1 TB, [kunt u deze uitbreiden tot Maxi maal 1 TB met behulp van Power shell](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json).
+1. Controleer of de schijf vol is. Als de schijf kleiner is dan 1 TB, [kunt u deze uitbreiden tot Maxi maal 1 TB met behulp van Power shell](../windows/expand-os-disk.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json).
 2. Als de schijf 1 TB is, voert u een schijf opruiming uit.
-    - [Ontkoppel de gegevens schijf van de verbroken virtuele machine](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk).
-    - [Koppel de gegevens schijf aan een WERKENDE VM](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps#attach-an-existing-data-disk-to-a-vm).
+    - [Ontkoppel de gegevens schijf van de verbroken virtuele machine](../windows/detach-disk.md).
+    - [Koppel de gegevens schijf aan een WERKENDE VM](../windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm).
     - Gebruik het [hulp programma schijf opruiming](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup) om ruimte vrij te maken.
 3. Nadat u het formaat hebt gewijzigd en opgeschoond, defragmenteert u het station:
 
@@ -115,4 +115,4 @@ Als de schijf niet al 1 TB is, moet u het formaat ervan wijzigen. Zodra de schij
 
 ### <a name="rebuild-the-vm"></a>De virtuele machine opnieuw bouwen
 
-Gebruik [stap 5 van de opdrachten voor het herstellen van de virtuele machine](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) om de virtuele machine opnieuw samen te stellen.
+Gebruik [stap 5 van de opdrachten voor het herstellen van de virtuele machine](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) om de virtuele machine opnieuw samen te stellen.

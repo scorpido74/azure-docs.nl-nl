@@ -3,12 +3,12 @@ title: Live video Analytics implementeren op een IoT Edge apparaat-Azure
 description: In dit artikel worden de stappen beschreven die u helpen bij het implementeren van live video Analytics op uw IoT Edge-apparaat. U kunt dit bijvoorbeeld doen als u toegang hebt tot een lokale Linux-machine en/of eerder een Azure Media Services-account hebt gemaakt.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: 415d22a47e6563e10a1880429537ab182d1ff7a5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ea7a1026f42cd3d8745559bc195a89b7fbcb69a0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519895"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074453"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Live video Analytics implementeren op een IoT Edge apparaat
 
@@ -18,10 +18,10 @@ In dit artikel worden de stappen beschreven die u helpen bij het implementeren v
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Linux-computer die voldoet aan de HW/SW-beperkingen voor live video Analytics
-* Azure-abonnement waarvoor u [eigenaars bevoegdheden](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) hebt
-* [IoT Hub maken en instellen](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal)
-* [IoT Edge-apparaat registreren](https://docs.microsoft.com/azure/iot-edge/how-to-register-device)
-* [De Azure IoT Edge-runtime op op Debian gebaseerde Linux-systemen installeren](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)
+* Azure-abonnement waarvoor u [eigenaars bevoegdheden](../../role-based-access-control/built-in-roles.md#owner) hebt
+* [IoT Hub maken en instellen](../../iot-hub/iot-hub-create-through-portal.md)
+* [IoT Edge-apparaat registreren](../../iot-edge/how-to-register-device.md)
+* [De Azure IoT Edge-runtime op op Debian gebaseerde Linux-systemen installeren](../../iot-edge/how-to-install-iot-edge-linux.md)
 * [Een Azure Media Services-account maken](../latest/create-account-howto.md)
     * Gebruik een van deze regio's: VS-Oost 2, VS-midden, Noord-Centraal VS, Japan-Oost, VS-West 2, VS-West-Centraal, Canada-oost, UK-zuid, Frankrijk-centraal, Frankrijk-zuid, Zwitserland-noord, Zwitserland-west en Japan-West.
     * U wordt aangeraden v2-opslag accounts voor algemeen gebruik (GPv2) te gebruiken
@@ -225,7 +225,7 @@ Nadat u de implementatie hebt gemaakt, keert u terug naar de pagina IoT Edge van
 2.  Controleer in de details van het apparaat of de module Blob Storage wordt vermeld als **opgegeven in de implementatie en wordt gerapporteerd door het apparaat**.
 
 Het kan even duren voordat de module op het apparaat is gestart en vervolgens weer aan IoT Hub is gemeld. Vernieuw de pagina om de bijgewerkte status weer te geven.
-Status code: 200 – OK betekent dat [de runtime van IOT Edge](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime) in orde is en goed werkt.
+Status code: 200 – OK betekent dat [de runtime van IOT Edge](../../iot-edge/iot-edge-runtime.md) in orde is en goed werkt.
 
 ![Status](./media/deploy-iot-edge-device/status.png)
 

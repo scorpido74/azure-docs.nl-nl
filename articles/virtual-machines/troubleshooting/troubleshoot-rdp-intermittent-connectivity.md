@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/24/2018
 ms.author: genli
-ms.openlocfilehash: eec52fb2342ee85932a6e24aa4cb292496beccad
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 60be7c234a0166331c35eb6528eae11bfbbf518f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087296"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074322"
 ---
 # <a name="remote-desktop-disconnects-frequently-in-azure-vm"></a>De verbinding met Extern bureaublad wordt regelmatig verbroken in de Azure-VM
 
@@ -95,7 +95,7 @@ U kunt dit probleem oplossen met behulp van serieel beheer of [de virtuele machi
 
 ### <a name="repair-the-vm-offline"></a>De virtuele machine offline herstellen
 
-1. [Koppel de besturingssysteem schijf aan een herstel-VM](../windows/troubleshoot-recovery-disks-portal.md).
+1. [Koppel de besturingssysteem schijf aan een herstel-VM](./troubleshoot-recovery-disks-portal-windows.md).
 2. Nadat de besturingssysteem schijf is gekoppeld aan de herstel-VM, controleert u of de schijf is gemarkeerd als **online** in de schijf beheer-console. Noteer de stationsletter die is toegewezen aan de gekoppelde besturingssysteem schijf.
 3. Ga naar de map **\Windows\System32\Config** op de besturingssysteem schijf die u hebt gekoppeld. Kopieer alle bestanden in deze map als back-up als een terugdraai actie vereist is.
 4. Start de Register-Editor (regedit.exe).
@@ -184,8 +184,3 @@ U kunt dit probleem oplossen met behulp van serieel beheer of [de virtuele machi
 
 ## <a name="need-help"></a>Hebt u hulp nodig? 
 Neem contact op met ondersteuning. Als u nog steeds hulp nodig hebt, neemt u [contact op met de ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel op te lossen.
-
-
-
-
-

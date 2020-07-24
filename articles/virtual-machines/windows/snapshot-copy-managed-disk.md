@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 92957bd078c04a9bb7ac35f9d30f042a44e10764
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5ecb99c7f64d81d57c5d6d2cb25967913a752b4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82100631"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074124"
 ---
 # <a name="create-a-snapshot"></a>Een momentopname maken
 
@@ -37,7 +37,7 @@ Voer de volgende stappen uit om een moment opname te maken:
 
 ## <a name="use-powershell"></a>PowerShell gebruiken
 
-De volgende stappen laten zien hoe u de VHD-schijf kopieert en de configuratie van de moment opname maakt. U kunt vervolgens een moment opname van de schijf maken met behulp van de cmdlet [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) . 
+De volgende stappen laten zien hoe u de VHD-schijf kopieert en de configuratie van de moment opname maakt. U kunt vervolgens een moment opname van de schijf maken met behulp van de cmdlet [New-AzSnapshot](/powershell/module/az.compute/new-azsnapshot) . 
 
  
 
@@ -53,18 +53,18 @@ De volgende stappen laten zien hoe u de VHD-schijf kopieert en de configuratie v
 2. De VM ophalen:
 
    ```azurepowershell-interactive
-   $vm = get-azvm `
-   -ResourceGroupName $resourceGroupName 
-   -Name $vmName
+   $vm = Get-AzVM `
+       -ResourceGroupName $resourceGroupName `
+       -Name $vmName
    ```
 
 3. De configuratie van de moment opname maken. Voor dit voor beeld is de moment opname van de besturingssysteem schijf:
 
    ```azurepowershell-interactive
-   $snapshot =  New-AzSnapshotConfig 
-   -SourceUri $vm.StorageProfile.OsDisk.ManagedDisk.Id 
-   -Location $location 
-   -CreateOption copy
+   $snapshot =  New-AzSnapshotConfig `
+       -SourceUri $vm.StorageProfile.OsDisk.ManagedDisk.Id `
+       -Location $location `
+       -CreateOption copy
    ```
    
    > [!NOTE]
@@ -73,10 +73,10 @@ De volgende stappen laten zien hoe u de VHD-schijf kopieert en de configuratie v
 4. De moment opname maken:
 
    ```azurepowershell-interactive
-   New-AzSnapshot 
-   -Snapshot $snapshot 
-   -SnapshotName $snapshotName 
-   -ResourceGroupName $resourceGroupName 
+   New-AzSnapshot `
+       -Snapshot $snapshot `
+       -SnapshotName $snapshotName `
+       -ResourceGroupName $resourceGroupName 
    ```
 
 

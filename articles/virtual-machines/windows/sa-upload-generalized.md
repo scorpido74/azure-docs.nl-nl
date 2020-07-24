@@ -9,11 +9,12 @@ ms.date: 05/18/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
 ms.custom: storage-accounts
-ms.openlocfilehash: fc2e2ff0edc09e613b1da0a503eff9d53ebcf7a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d340e37cf64961971c03af8d08a669c27d758116
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84234628"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074199"
 ---
 # <a name="upload-a-generalized-vhd-to-azure-to-create-a-new-vm"></a>Een gegeneraliseerde VHD uploaden naar Azure om een nieuwe virtuele machine te maken
 
@@ -33,9 +34,9 @@ Voor een gegeneraliseerde VHD zijn al uw persoonlijke account gegevens verwijder
   * De virtuele machine generaliseren met Sysprep
 
 ### <a name="generalize-a-windows-virtual-machine-using-sysprep"></a>Een virtuele Windows-machine generaliseren met Sysprep
-In deze sectie wordt beschreven hoe u uw virtuele Windows-machine generaliseren voor gebruik als een installatie kopie. Sysprep verwijdert onder meer al uw persoonlijke accountinformatie en de machine wordt voorbereid om als een installatiekopie te worden gebruikt. Raadpleeg [Sysprep gebruiken: een inleiding](https://technet.microsoft.com/library/bb457073.aspx) voor meer informatie over Sysprep.
+In deze sectie wordt beschreven hoe u uw virtuele Windows-machine generaliseren voor gebruik als een installatie kopie. Sysprep verwijdert onder meer al uw persoonlijke accountinformatie en de machine wordt voorbereid om als een installatiekopie te worden gebruikt. Raadpleeg [Sysprep gebruiken: een inleiding](/previous-versions/windows/it-pro/windows-xp/bb457073(v=technet.10)) voor meer informatie over Sysprep.
 
-Zorg ervoor dat de server functies die op de computer worden uitgevoerd, worden ondersteund door Sysprep. Zie [Sysprep-ondersteuning voor Server functies](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles) voor meer informatie.
+Zorg ervoor dat de server functies die op de computer worden uitgevoerd, worden ondersteund door Sysprep. Zie [Sysprep-ondersteuning voor Server functies](/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles) voor meer informatie.
 
 > [!IMPORTANT]
 > Als u Sysprep uitvoert voordat u de VHD voor het eerst uploadt naar Azure, moet u ervoor zorgen dat u [uw VM hebt voor bereid](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) voordat u Sysprep uitvoert. 
@@ -62,7 +63,7 @@ Zorg ervoor dat de server functies die op de computer worden uitgevoerd, worden 
 Upload de VHD naar een Azure Storage-account.
 
 ### <a name="log-in-to-azure"></a>Meld u aan bij Azure.
-Als u Power shell-versie 1,4 of hoger nog niet hebt geïnstalleerd, leest u [hoe u Azure PowerShell installeert en configureert](/powershell/azure/overview).
+Als u Power shell-versie 1,4 of hoger nog niet hebt geïnstalleerd, leest u [hoe u Azure PowerShell installeert en configureert](/powershell/azure/).
 
 1. Open Azure PowerShell en meld u aan bij uw Azure-account. Er wordt een pop-upvenster geopend om uw Azure-account referenties in te voeren.
    
@@ -105,7 +106,7 @@ Als u een opslag account wilt maken, voert u de volgende stappen uit:
     New-AzResourceGroup -Name myResourceGroup -Location "West US"
     ```
 
-2. Maak een opslag account met de naam **mystorageaccount** in deze resource groep met behulp van de cmdlet [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) :
+2. Maak een opslag account met de naam **mystorageaccount** in deze resource groep met behulp van de cmdlet [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) :
    
     ```powershell
     New-AzStorageAccount -ResourceGroupName myResourceGroup -Name mystorageaccount -Location "West US" `
@@ -114,7 +115,7 @@ Als u een opslag account wilt maken, voert u de volgende stappen uit:
  
 ### <a name="start-the-upload"></a>Het uploaden starten 
 
-Gebruik de cmdlet [add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) om de installatie kopie te uploaden naar een container in uw opslag account. In dit voor beeld wordt het bestand **myVHD. VHD** geüpload van `"C:\Users\Public\Documents\Virtual hard disks\"` naar een opslag account met de naam **mystorageaccount** in de resource groep **myResourceGroup** . Het bestand wordt in de container met de naam **mycontainer** geplaatst en de nieuwe bestands naam wordt **myUploadedVHD. VHD**.
+Gebruik de cmdlet [add-AzVhd](/powershell/module/az.compute/add-azvhd) om de installatie kopie te uploaden naar een container in uw opslag account. In dit voor beeld wordt het bestand **myVHD. VHD** geüpload van `"C:\Users\Public\Documents\Virtual hard disks\"` naar een opslag account met de naam **mystorageaccount** in de resource groep **myResourceGroup** . Het bestand wordt in de container met de naam **mycontainer** geplaatst en de nieuwe bestands naam wordt **myUploadedVHD. VHD**.
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -141,7 +142,7 @@ C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontain
 Afhankelijk van uw netwerk verbinding en de grootte van het VHD-bestand kan het enige tijd duren voordat deze opdracht is voltooid.
 
 
-## <a name="create-a-new-vm"></a>Een nieuwe VM maakt 
+## <a name="create-a-new-vm"></a>Een nieuwe virtuele machine maken 
 
 U kunt nu de geüploade VHD gebruiken om een nieuwe virtuele machine te maken. 
 
@@ -284,5 +285,3 @@ Als u klaar bent, ziet u de zojuist gemaakte vm in de [Azure Portal](https://por
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie [virtuele machines beheren met Azure Resource Manager en Power shell](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)voor meer informatie over het beheren van uw nieuwe virtuele machine met Azure PowerShell.
-
-

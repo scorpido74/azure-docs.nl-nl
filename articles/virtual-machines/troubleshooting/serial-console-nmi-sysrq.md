@@ -13,13 +13,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 3ad68438f5fc015b6a9150d67485b90a095f1a4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 545399e1d7941351ce861ac98d995d5e57006ea1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79250086"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074372"
 ---
-# <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>Seriële console gebruiken voor SysRq- en NMI-aanroepen
+# <a name="use-the-azure-serial-console-for-sysrq-and-nmi-calls"></a>De Azure-seriële console gebruiken voor SysRq-en NMI-aanroepen
 
 ## <a name="system-request-sysrq"></a>Systeem aanvraag (SysRq)
 Een SysRq is een reeks sleutels die worden begrepen door de Linux-bewerkings systeem-kernel, waarmee een reeks vooraf gedefinieerde acties kan worden geactiveerd. Deze opdrachten worden vaak gebruikt bij het oplossen van problemen met de virtuele machine of het herstel kan niet worden uitgevoerd via een traditioneel beheer (bijvoorbeeld als de VM niet reageert). Met de SysRq-functie van Azure Serial console wordt op het drukken van de SysRq-sleutel en de tekens die op een fysiek toetsen bord zijn ingevoerd, gesimuleerd.
@@ -28,11 +29,11 @@ Zodra de SysRq-reeks is geleverd, bepaalt de kernel configuratie hoe het systeem
 
 De Azure Serial console kan worden gebruikt om een SysRq te verzenden naar een virtuele Azure-machine met behulp van het toetsenbord pictogram in de onderstaande opdracht balk.
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
+![Scherm opname van de Azure seriële console. Het toetsenbord pictogram is gemarkeerd en het bijbehorende menu wordt weer gegeven. Dit menu bevat een opdracht Item Send SysRq.](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
 
 Als u de opdracht ' SysRq verzenden ' kiest, wordt er een dialoog venster geopend, waarmee u algemene SysRq-opties kunt opgeven, of een reeks SysRq-opdrachten die in het dialoog venster zijn ingevoerd.  Op die manier kunnen reeksen SysRq een bewerking op hoog niveau uitvoeren, zoals veilig opnieuw opstarten met behulp van: `REISUB` .
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
+![Scherm afbeelding van het dialoog venster SysRq verzenden naar gast. De optie voor het invoeren van opdrachten is geselecteerd en het opdracht venster bevat REISUB.](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
 
 De opdracht SysRq kan niet worden gebruikt op virtuele machines die zijn gestopt of waarvan de kernel een niet-reagerende status heeft. (bijvoorbeeld een kernel paniek).
 
@@ -101,7 +102,7 @@ Een niet-maskeer bare interrupt (NMI) is ontworpen om een signaal te maken dat s
 
 De seriële console kan worden gebruikt om een NMI te verzenden naar een virtuele Azure-machine met behulp van het toetsenbord pictogram in de onderstaande opdracht balk. Zodra de NMI is geleverd, wordt door de configuratie van de virtuele machine bepaald hoe het systeem reageert.  Linux-besturings systemen kunnen worden geconfigureerd om te crashen en een geheugen dump te maken waarbij het besturings systeem een NMI ontvangt.
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
+![Scherm opname van de seriële console. Het toetsenbord pictogram is gemarkeerd en het bijbehorende menu wordt weer gegeven. Het menu bevat een interrupt-item dat niet kan worden gemaskeerd.](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
 
 ### <a name="enable-nmi"></a>NMI inschakelen
 Voor Linux-systemen die sysctl ondersteunen voor het configureren van kernel-para meters, kunt u een paniek inschakelen wanneer deze NMI wordt ontvangen met behulp van het volgende:

@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
-ms.openlocfilehash: d34481587fd48e2eddfd268c39f6bc4f7c4e0c76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3f3dbd74ef74f091ca923f8c09680c6913ac300
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81869421"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074228"
 ---
 # <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>MATLAB-clusters voor gedistribueerde computing maken op virtuele Azure-machines
 Gebruik Microsoft Azure virtuele machines om een of meer MATLAB gedistribueerde Computing Server clusters te maken voor het uitvoeren van uw reken intensief parallelle MATLAB-workloads. Installeer uw MATLAB-software voor gedistribueerde Computing Server op een virtuele machine om te gebruiken als basis installatie kopie en gebruik een Azure Quick Start-sjabloon of Azure PowerShell script (beschikbaar op [github](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster)) om het cluster te implementeren en te beheren. Maak na de implementatie verbinding met het cluster om uw workloads uit te voeren.
@@ -24,7 +25,7 @@ Met behulp van Azure virtual machines kunt u clusters voor gedistribueerde compu
 
 ## <a name="prerequisites"></a>Vereisten
 * **Client computer** : u hebt een Windows-client computer nodig om te communiceren met Azure en het MATLAB gedistribueerde Computing Server-cluster na de implementatie.
-* **Azure PowerShell** -Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview) om het op de client computer te installeren.
+* **Azure PowerShell** -Zie [Azure PowerShell installeren en configureren](/powershell/azure/) om het op de client computer te installeren.
 * **Azure-abonnement** : als u nog geen abonnement hebt, kunt u in slechts een paar minuten een [gratis account](https://azure.microsoft.com/free/) maken. Voor grotere clusters kunt u een abonnement op basis van betalen naar gebruik of andere aankoop opties overwegen.
 * **vcpu's-quotum** : u moet mogelijk het vCPU quotum verhogen voor het implementeren van een groot cluster of meer dan één MATLAB gedistribueerd Computing Server-cluster. Als u een quotum wilt verhogen, opent u gratis [een aanvraag voor een online klant ondersteuning](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) .
 * **MATLAB-, parallelle reken-en MATLAB-server licenties voor gedistribueerde computing** : de scripts gaan ervan uit dat de [gehoste licentie Manager MathWorks](https://www.mathworks.com/help/install/license-management.html) wordt gebruikt voor alle licenties.  

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: 0588f02c6dfb557f32aae56dc742b9390c3cdbcb
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: ba4b8de4b8cf1d1d1b8124185a8006eb7695b21e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955077"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074503"
 ---
 # <a name="media-services-v3-with-playready-license-template"></a>Media Services V3 met PlayReady-licentie sjabloon 
 
@@ -62,7 +62,7 @@ De XML voldoet aan het XML-schema voor de PlayReady-licentie sjabloon dat is ged
 
 Media Services biedt typen die u kunt gebruiken voor het configureren van een PlayReady-licentie sjabloon. 
 
-In het volgende fragment wordt gebruikgemaakt van Media Services .NET-klassen voor het configureren van de PlayReady-licentie sjabloon. De klassen worden gedefinieerd in de naam ruimte [micro soft. Azure. Management. media. model](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models?view=azure-dotnet) . Met het fragment wordt de PlayRight van de PlayReady-licentie geconfigureerd. PlayRight verleent de gebruiker de mogelijkheid om de inhoud af te spelen, afhankelijk van eventuele beperkingen die zijn geconfigureerd in de licentie en op de PlayRight zelf (voor een specifiek beleid). Veel van het beleid voor een PlayRight heeft betrekking op uitvoer beperkingen die de typen uitvoer bepalen waarmee de inhoud kan worden afgespeeld. Het bevat ook alle beperkingen die moeten worden ingevoerd wanneer een bepaalde uitvoer wordt gebruikt. Als DigitalVideoOnlyContentRestriction bijvoorbeeld is ingeschakeld, staat de DRM-runtime alleen toe dat de video wordt weer gegeven via digitale uitvoer. (Analoge video-uitvoer zijn niet toegestaan om de inhoud door te geven.)
+In het volgende fragment wordt gebruikgemaakt van Media Services .NET-klassen voor het configureren van de PlayReady-licentie sjabloon. De klassen worden gedefinieerd in de naam ruimte [micro soft. Azure. Management. media. model](/dotnet/api/microsoft.azure.management.media.models?view=azure-dotnet) . Met het fragment wordt de PlayRight van de PlayReady-licentie geconfigureerd. PlayRight verleent de gebruiker de mogelijkheid om de inhoud af te spelen, afhankelijk van eventuele beperkingen die zijn geconfigureerd in de licentie en op de PlayRight zelf (voor een specifiek beleid). Veel van het beleid voor een PlayRight heeft betrekking op uitvoer beperkingen die de typen uitvoer bepalen waarmee de inhoud kan worden afgespeeld. Het bevat ook alle beperkingen die moeten worden ingevoerd wanneer een bepaalde uitvoer wordt gebruikt. Als DigitalVideoOnlyContentRestriction bijvoorbeeld is ingeschakeld, staat de DRM-runtime alleen toe dat de video wordt weer gegeven via digitale uitvoer. (Analoge video-uitvoer zijn niet toegestaan om de inhoud door te geven.)
 
 > [!IMPORTANT]
 > PlayReady-licentie heeft beperkingen die krachtig zijn. Als de uitvoer beveiliging te beperkend is, is de inhoud mogelijk niet kan worden afgespeeld op sommige clients. Zie voor meer informatie de [nalevings regels voor PlayReady](https://www.microsoft.com/playready/licensing/compliance/).

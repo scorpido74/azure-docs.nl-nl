@@ -7,12 +7,12 @@ ms.date: 10/09/2017
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
-ms.openlocfilehash: f448174842ffd3b7ba14104c30319933c680127d
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 03df7db13ebd3ebec407bb046cc735c835e01068
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232318"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074242"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Geneste virtualisatie inschakelen in een Azure VM
 
@@ -22,7 +22,7 @@ In dit artikel wordt beschreven hoe u Hyper-V op een virtuele Azure-machine insc
 
 ## <a name="create-a-nesting-capable-azure-vm"></a>Een voor nesting geschikte Azure-VM maken
 
-Maak een nieuwe Windows Server 2016 Azure-VM. Bekijk het [artikel Azure Compute unit](acu.md)voor een volledige lijst met grootten voor virtuele machines die ondersteuning bieden voor nesten.
+Maak een nieuwe Windows Server 2016 Azure-VM. Bekijk het [artikel Azure Compute unit](../acu.md)voor een volledige lijst met grootten voor virtuele machines die ondersteuning bieden voor nesten.
 
 Vergeet niet om een VM-grootte te kiezen die groot genoeg is om de vereisten van een virtuele gast machine te ondersteunen. In dit voor beeld gebruiken we een Azure-VM met een grootte van D3_v3. 
 
@@ -30,7 +30,7 @@ U kunt [hier](https://azure.microsoft.com/regions/services/)de regionale Beschik
 
 >[!NOTE]
 >
->Zie [Windows-Vm's maken en beheren met de module Azure PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm) voor gedetailleerde instructies voor het maken van een nieuwe virtuele machine
+>Zie [Windows-Vm's maken en beheren met de module Azure PowerShell](./tutorial-manage-vm.md) voor gedetailleerde instructies voor het maken van een nieuwe virtuele machine
     
 ## <a name="connect-to-your-azure-vm"></a>Verbinding maken met uw Azure VM
 
@@ -181,4 +181,4 @@ In dit voor beeld gebruikt u een adres in het bereik 192.168.0.0/24.
 Open in de virtuele gast machine uw browser en navigeer naar een webpagina.
     ![GuestVM](./media/virtual-machines-nested-virtualization/guest-virtual-machine.png)
 
-Raadpleeg [dit document](https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)voor instructies over het inschakelen van transparante connectiviteit tussen virtuele gast-Vm's en Azure-vm's.
+Raadpleeg [dit document](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)voor instructies over het inschakelen van transparante connectiviteit tussen virtuele gast-Vm's en Azure-vm's.
