@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 4ac818cfd267b781366c0e32c9f93cc885dff99c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 000e30f2656b88c068654fd8099cdff0ce0a4b37
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77566145"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091263"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>Virtuele VMware-machines maken in uw Privécloud
 
@@ -24,7 +25,7 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 
 ## <a name="access-the-cloudsimple-portal"></a>Toegang tot de CloudSimple-portal
 
-1. Selecteer **alle services**.
+1. Selecteer **Alle services**.
 2. Zoek naar **CloudSimple Services**.
 3. Selecteer de CloudSimple-service waarop u uw Privécloud wilt maken.
 4. Klik op de pagina **overzicht** op **Ga naar de CloudSimple-Portal** om een nieuw browser tabblad voor CloudSimple-portal te openen.  Meld u aan met uw aanmeldings referenties voor Azure als u hierom wordt gevraagd.  
@@ -121,9 +122,9 @@ Linux biedt verschillende pakketten voor het instellen van DNS-servers.  Hier vo
 
 In deze micro soft-onderwerpen wordt beschreven hoe u een Windows-Server als een DNS-server en als een DHCP-server instelt.
 
-[Windows Server als DNS-server](https://docs.microsoft.com/windows-server/networking/dns/dns-top)
+[Windows Server als DNS-server](/windows-server/networking/dns/dns-top)
 
-[Windows Server als DHCP-server](https://docs.microsoft.com/windows-server/networking/technologies/dhcp/dhcp-top)
+[Windows Server als DHCP-server](/windows-server/networking/technologies/dhcp/dhcp-top)
 
 ## <a name="customize-networking-configuration-optional"></a>Netwerk configuratie aanpassen (optioneel)
 

@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
-ms.openlocfilehash: c1622ef16155206d779c6d703fc7da568d233e7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bda1acde914aa068fe3a87d307a29583f87af34f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77664776"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091178"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Oplossing VMWare-bewaking (afgeschaft) in Azure Monitor
 
@@ -157,7 +158,7 @@ Het opslaan van logboek query's is een standaard functie in Azure Monitor en kan
 ![DockerDashboardView](./media/vmware/dockerdashboardview.png)
 
 #### <a name="create-alerts-from-queries"></a>Waarschuwingen maken op basis van query's
-Nadat u uw query's hebt gemaakt, wilt u mogelijk de query's gebruiken om u te waarschuwen wanneer er specifieke gebeurtenissen optreden. Zie [waarschuwingen in log Analytics](../platform/alerts-overview.md) voor informatie over het maken van waarschuwingen. Zie voor voor beelden van waarschuwings query's en andere query voorbeelden de [bewaking VMware met log Analytics](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) blog post.
+Nadat u uw query's hebt gemaakt, wilt u mogelijk de query's gebruiken om u te waarschuwen wanneer er specifieke gebeurtenissen optreden. Zie [waarschuwingen in log Analytics](../platform/alerts-overview.md) voor informatie over het maken van waarschuwingen. Zie voor voor beelden van waarschuwings query's en andere query voorbeelden de [bewaking VMware met log Analytics](/archive/blogs/msoms/monitor-vmware-using-oms-log-analytics) blog post.
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 ### <a name="what-do-i-need-to-do-on-the-esxi-host-setting-what-impact-will-it-have-on-my-current-environment"></a>Wat moet ik doen op de ESXi? Wat is de impact van het in mijn huidige omgeving?
@@ -191,7 +192,7 @@ Er kunnen meerdere redenen zijn:
 
     a. Controleer of de Log Analytics agent wordt uitgevoerd met behulp van `ps -ef | grep oms` . Als de service niet wordt uitgevoerd, start u het proces door de opdracht uit te voeren`sudo /opt/microsoft/omsagent/bin/service_control start`
 
-     b. Open het `/etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf`-bestand.
+     b. Open het bestand `/etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf`.
 
      c. Controleer of de juiste gebruikers-en groeps instelling geldig is, vergelijkbaar met:`-rw-r--r-- 1 omsagent omiusers 677 Sep 20 16:46 vmware_esxi.conf`
 

@@ -13,21 +13,22 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: a28d4d96f643c12eeb6aa542db2c6af06f4fd954
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 793ddb8c99a4e21c176374f7cb3445d1a7d8fca0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78244645"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090056"
 ---
 # <a name="live-event-types-comparison"></a>Vergelijking van live gebeurtenis typen
 
-In Azure Media Services kan een [live gebeurtenis](https://docs.microsoft.com/rest/api/media/liveevents) worden ingesteld op een *Pass-Through* -(een on-premises Live coderings programma verzendt een multi-bitrate stroom) of *Live encoding* (een on-premises Live Encoder verzendt een stream met één bitsnelheid). 
+In Azure Media Services kan een [live gebeurtenis](/rest/api/media/liveevents) worden ingesteld op een *Pass-Through* -(een on-premises Live coderings programma verzendt een multi-bitrate stroom) of *Live encoding* (een on-premises Live Encoder verzendt een stream met één bitsnelheid). 
 
 In deze artikelen worden de functies van de live-gebeurtenis typen vergeleken.
 
 ## <a name="types-comparison"></a>Typen vergelijking 
 
-In de volgende tabel worden de functies van de live-gebeurtenis typen vergeleken. De typen worden tijdens het maken ingesteld met behulp van [LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype):
+In de volgende tabel worden de functies van de live-gebeurtenis typen vergeleken. De typen worden tijdens het maken ingesteld met behulp van [LiveEventEncodingType](/rest/api/media/liveevents/create#liveeventencodingtype):
 
 * **LiveEventEncodingType. none** : een on-premises Live coderings programma verzendt een stream met meerdere bitrates. De opgenomen streams passeren de live-gebeurtenis zonder verdere verwerking. Dit wordt ook wel een Pass-through live-gebeurtenis genoemd.
 * **LiveEventEncodingType. Standard** : een on-premises Live coderings programma verzendt een stream met één bitsnelheid naar de live-gebeurtenis en Media Services maakt meerdere bitrate-streams. Als de bijdrage-feed van 720p of hoger is, wordt met de voor instelling **Default720p** een set van 6 omzetting/bitrate-paren gecodeerd (Details worden verderop in het artikel beschreven).
@@ -64,7 +65,7 @@ In de volgende tabel worden de functies van de live-gebeurtenis typen vergeleken
 
 ## <a name="system-presets"></a>Systeem instellingen
 
-De resoluties en bitrates die zijn opgenomen in de uitvoer van het Live coderings programma, worden bepaald door de [standaard instelling](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencoding). Als u gebruikmaakt van een **standaard** Live coderings programma (LiveEventEncodingType. Standard), geeft de *Default720p* -voor instelling een set van 6 omzetting/bitrate-paren die hieronder worden beschreven. Als u een **Premium1080p** Live-coderings programma (LiveEventEncodingType. Premium1080p) gebruikt, geeft de *Default1080p* -voor instelling de uitvoerset van de combi natie van Resolution/bitrate op.
+De resoluties en bitrates die zijn opgenomen in de uitvoer van het Live coderings programma, worden bepaald door de [standaard instelling](/rest/api/media/liveevents/create#liveeventencoding). Als u gebruikmaakt van een **standaard** Live coderings programma (LiveEventEncodingType. Standard), geeft de *Default720p* -voor instelling een set van 6 omzetting/bitrate-paren die hieronder worden beschreven. Als u een **Premium1080p** Live-coderings programma (LiveEventEncodingType. Premium1080p) gebruikt, geeft de *Default1080p* -voor instelling de uitvoerset van de combi natie van Resolution/bitrate op.
 
 > [!NOTE]
 > U kunt de voor instelling Default1080p niet Toep assen op een live gebeurtenis als deze is ingesteld voor standaard Live encoding. er wordt een fout bericht weer geven. Er wordt ook een fout bericht weer geven als u probeert de Default720p-voor instelling toe te passen op een Premium1080p-Live coderings programma.
@@ -73,7 +74,7 @@ De resoluties en bitrates die zijn opgenomen in de uitvoer van het Live codering
 
 Als de bijdrager is van 720p of hoger, wordt de feed door de voor instelling **Default720p** in de volgende 6 lagen gecodeerd. In de onderstaande tabel is de bitsnelheid in kbps, MaxFPS staat voor de Maxi maal toegestane frame frequentie (in frames/seconde), het profiel vertegenwoordigt het H. 264-profiel dat wordt gebruikt.
 
-| Bitsnelheid | Breedte | Height | MaxFPS | Profiel |
+| Bitsnelheid | Breedte | Hoogte | MaxFPS | Profiel |
 | --- | --- | --- | --- | --- |
 | 3500 |1280 |720 |30 |Hoog |
 | 2200 |960 |540 |30 |Hoog |
@@ -90,7 +91,7 @@ Als de bijdrager is van 720p of hoger, wordt de feed door de voor instelling **D
 
 Als de bijdrage-feed van de 1080p-resolutie is, wordt de feed door de voor instelling **Default1080p** in de volgende 6 lagen gecodeerd.
 
-| Bitsnelheid | Breedte | Height | MaxFPS | Profiel |
+| Bitsnelheid | Breedte | Hoogte | MaxFPS | Profiel |
 | --- | --- | --- | --- | --- |
 | 5500 |1920 |1080 |30 |Hoog |
 | 3000 |1280 |720 |30 |Hoog |

@@ -3,12 +3,12 @@ title: Azure Machine Learning als Event Grid bron
 description: Hierin worden de eigenschappen beschreven die worden gegeven voor Machine Learning-werkruimte gebeurtenissen met Azure Event Grid
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: e72123a4f609b93e191c82f11443cbb1de7d012d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e256dbcef8c4e4a1354455843e4466d666c7d7b6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522071"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090668"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>Azure Machine Learning als Event Grid bron
 
@@ -95,12 +95,12 @@ Deze sectie bevat een voor beeld van hoe de gegevens voor elke gebeurtenis eruit
   "eventTime": "2017-06-26T18:41:00.9584103Z",
   "id": "831e1650-001e-001b-66ab-eeb76e069631",
   "data": {
-    "ExperimentId": "0fa9dfaa-cba3-4fa7-b590-23e48548f5c1",
-    "ExperimentName": "automl-local-regression",
-    "RunId": "AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5",
-    "RunType": null,
-    "RunTags": {},
-    "RunProperties": {
+    "experimentId": "0fa9dfaa-cba3-4fa7-b590-23e48548f5c1",
+    "experimentName": "automl-local-regression",
+    "runId": "AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5",
+    "runType": null,
+    "runTags": {},
+    "runProperties": {
         "runTemplate": "automl_child",
         "pipeline_id": "5adc0a4fe02504a586f09a4fcbb241f9a4012062",
         "pipeline_spec": "{\"objects\": [{\"class_name\": \"StandardScaler\", \"module\": \"sklearn.preprocessing\", \"param_args\": [], \"param_kwargs\": {\"with_mean\": true, \"with_std\": false}, \"prepared_kwargs\": {}, \"spec_class\": \"preproc\"}, {\"class_name\": \"LassoLars\", \"module\": \"sklearn.linear_model\", \"param_args\": [], \"param_kwargs\": {\"alpha\": 0.001, \"normalize\": true}, \"prepared_kwargs\": {}, \"spec_class\": \"sklearn\"}], \"pipeline_id\": \"5adc0a4fe02504a586f09a4fcbb241f9a4012062\"}",
@@ -155,12 +155,12 @@ Deze sectie bevat een voor beeld van hoe de gegevens voor elke gebeurtenis eruit
   "eventTime": "2017-06-26T18:41:00.9584103Z",
   "id": "831e1650-001e-001b-66ab-eeb76e069631",
   "data": {
-    "ExperimentId": "0fa9dfaa-cba3-4fa7-b590-23e48548f5c1",
-    "ExperimentName": "automl-local-regression",
-    "RunId": "AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5",
-    "RunType": null,
-    "RunTags": {},
-    "RunProperties": {
+    "experimentId": "0fa9dfaa-cba3-4fa7-b590-23e48548f5c1",
+    "experimentName": "automl-local-regression",
+    "runId": "AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5",
+    "runType": null,
+    "runTags": {},
+    "runProperties": {
         "runTemplate": "automl_child",
         "pipeline_id": "5adc0a4fe02504a586f09a4fcbb241f9a4012062",
         "pipeline_spec": "{\"objects\": [{\"class_name\": \"StandardScaler\", \"module\": \"sklearn.preprocessing\", \"param_args\": [], \"param_kwargs\": {\"with_mean\": true, \"with_std\": false}, \"prepared_kwargs\": {}, \"spec_class\": \"preproc\"}, {\"class_name\": \"LassoLars\", \"module\": \"sklearn.linear_model\", \"param_args\": [], \"param_kwargs\": {\"alpha\": 0.001, \"normalize\": true}, \"prepared_kwargs\": {}, \"spec_class\": \"sklearn\"}], \"pipeline_id\": \"5adc0a4fe02504a586f09a4fcbb241f9a4012062\"}",
@@ -175,7 +175,7 @@ Deze sectie bevat een voor beeld van hoe de gegevens voor elke gebeurtenis eruit
         "scoring_data_location": "aml://artifact/ExperimentRun/dcid.AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5/outputs/scoring_file_v_1_0_0.py",
         "model_data_location": "aml://artifact/ExperimentRun/dcid.AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5/outputs/model.pkl"
     },
-   "RunStatus": "failed"
+   "runStatus": "failed"
    },
   "dataVersion": "",
   "metadataVersion": "1"
@@ -222,12 +222,12 @@ Het gegevens object heeft de volgende eigenschappen voor elk gebeurtenis type:
 
 | Eigenschap | Type | Description |
 | -------- | ---- | ----------- |
-| ExperimentId | tekenreeks | De ID van het experiment waarvan de uitvoering deel uitmaakt. |
-| Experimentnaam | tekenreeks | De naam van het experiment waarvan de uitvoering deel uitmaakt. |
-| RunId | tekenreeks | De ID van de uitvoering die is voltooid. |
-| RunType | tekenreeks | Het type uitvoering van de voltooide uitvoering. |
-| RunTags | object | De labels van de voltooide uitvoering. |
-| RunProperties | object | De eigenschappen van de voltooide uitvoering. |
+| experimentId | tekenreeks | De ID van het experiment waarvan de uitvoering deel uitmaakt. |
+| experimentnaam | tekenreeks | De naam van het experiment waarvan de uitvoering deel uitmaakt. |
+| runId | tekenreeks | De ID van de uitvoering die is voltooid. |
+| runType | tekenreeks | Het type uitvoering van de voltooide uitvoering. |
+| runTags | object | De labels van de voltooide uitvoering. |
+| runProperties | object | De eigenschappen van de voltooide uitvoering. |
 
 ### <a name="microsoftmachinelearningservicesdatasetdriftdetected"></a>Micro soft. MachineLearningServices. DatasetDriftDetected
 
@@ -246,13 +246,13 @@ Het gegevens object heeft de volgende eigenschappen voor elk gebeurtenis type:
 
 | Eigenschap | Type | Description |
 | -------- | ---- | ----------- |
-| ExperimentId | tekenreeks | De ID van het experiment waarvan de uitvoering deel uitmaakt. |
-| Experimentnaam | tekenreeks | De naam van het experiment waarvan de uitvoering deel uitmaakt. |
-| RunId | tekenreeks | De ID van de uitvoering die is voltooid. |
-| RunType | tekenreeks | Het type uitvoering van de voltooide uitvoering. |
-| RunTags | object | De labels van de voltooide uitvoering. |
-| RunProperties | object | De eigenschappen van de voltooide uitvoering. |
-| RunStatus | tekenreeks | De status van de uitvoering. |
+| experimentId | tekenreeks | De ID van het experiment waarvan de uitvoering deel uitmaakt. |
+| experimentnaam | tekenreeks | De naam van het experiment waarvan de uitvoering deel uitmaakt. |
+| runId | tekenreeks | De ID van de uitvoering die is voltooid. |
+| runType | tekenreeks | Het type uitvoering van de voltooide uitvoering. |
+| runTags | object | De labels van de voltooide uitvoering. |
+| runProperties | object | De eigenschappen van de voltooide uitvoering. |
+| runStatus | tekenreeks | De status van de uitvoering. |
 
 ## <a name="tutorials-and-how-tos"></a>Zelfstudies en handleidingen
 | Titel | Beschrijving |

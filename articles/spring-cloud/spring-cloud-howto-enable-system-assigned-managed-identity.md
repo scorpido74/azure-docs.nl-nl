@@ -6,14 +6,15 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/13/2020
-ms.openlocfilehash: 2aadc5806f0c5c610dc28b32039ca944af87ab13
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.custom: devx-track-java
+ms.openlocfilehash: 1b9d7326ec13176fbe65ba430a8a33bb93a48f74
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231723"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091450"
 ---
-# <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>Door het systeem toegewezen beheerde identiteit inschakelen voor Azure lente-Cloud toepassing
+# <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>Door het systeem toegewezen beheerde identiteit inschakelen voor de Azure Spring Cloud-toepassing
 Beheerde identiteiten voor Azure-resources bieden een automatisch beheerde identiteit in Azure Active Directory aan een Azure-resource, zoals uw Azure lente-Cloud toepassing. U kunt deze identiteit gebruiken voor verificatie bij alle services die Microsoft Azure AD-verificatie ondersteunen, zonder dat u aanmeldingsgegevens in uw code hoeft te hebben.
 
 In dit artikel wordt beschreven hoe u door het systeem toegewezen beheerde identiteiten in-en uitschakelt voor een Azure lente-Cloud toepassing met behulp van de Azure Portal en CLI (beschikbaar via versie 0.2.4).

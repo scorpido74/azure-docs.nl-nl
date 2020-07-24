@@ -3,12 +3,12 @@ title: Resource Health-waarschuwingen maken met behulp van Azure Portal
 description: Maak een waarschuwing met behulp van Azure Portal die u op de hoogte stelt wanneer uw Azure-resources niet meer beschikbaar zijn.
 ms.topic: conceptual
 ms.date: 6/23/2020
-ms.openlocfilehash: b44df4f63fa2ae2bde9be431e2df268144a036fa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3a0f4704880d040106a2e4112d621b6d8ffbede6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529213"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091569"
 ---
 # <a name="configure-resource-health-alerts-using-azure-portal"></a>Resourcestatuswaarschuwingen configureren met de Azure-portal
 
@@ -45,7 +45,7 @@ Resource Health waarschuwing met behulp van Azure Portal
 1. Selecteer **service Health**in azure [Portal](https://portal.azure.com/).
 
     ![Service Health selectie](./media/resource-health-alert-monitor-guide/service-health-selection.png)
-2. Selecteer **resource Health**in het gedeelte **resource Health** .
+2. Selecteer **service Health**in het gedeelte **resource Health** .
 3. Selecteer **resource Health alert toevoegen** en vul de velden in.
 4. Onder waarschuwings doel selecteert u het **abonnement**, de **resource typen**, **resource groepen** en de **resource** waarvoor u een waarschuwing wilt ontvangen.
 

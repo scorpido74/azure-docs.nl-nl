@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 10/03/2019
 ms.author: diberry
-ms.openlocfilehash: a49452653f8ac4bcc62758d801a235be0929d314
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 831e766fbb10d616b3fbaf8f878228a9a51ece37
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84686627"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090940"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>Entiteiten per cultuur in uw LUIS-model
 
@@ -44,12 +44,12 @@ De beschik baarheid van een vooraf samengestelde entiteit in een specifieke taal
 
 De volgende entiteiten worden ondersteund:
 
-|Vooraf gebouwde entiteit|```zh-CN``` |
-------|:------:|
+| Vooraf gebouwde entiteit | zh-CN |
+| --------------- | :---: |
 [Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>maand<br>gevormd<br>day   |    V2, V3   |
 [Valuta (Money)](luis-reference-prebuilt-currency.md):<br>Gulden<br>Fractionele eenheid (ex: afronding)  |    V2, V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>tijd<br>time Range   |    V2, V3   |
-[Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>dikte<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    V2, V3   |
+[Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>gewicht<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    V2, V3   |
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    -   |
@@ -66,12 +66,12 @@ De volgende entiteiten worden ondersteund:
 
 De volgende entiteiten worden ondersteund:
 
-|Vooraf gebouwde entiteit|```nl-NL``` |
-------|:------:|
+| Vooraf gebouwde entiteit | nl-NL |
+| --------------- | :---: |
 [Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>maand<br>gevormd<br>day   |    V2, V3   |
 [Valuta (Money)](luis-reference-prebuilt-currency.md):<br>Gulden<br>Fractionele eenheid (ex: afronding)  |    V2, V3   |
 [Datetime](luis-reference-prebuilt-deprecated.md)   |    -   |
-[Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>dikte<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    V2, V3   |
+[Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>gewicht<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    V2, V3   |
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
@@ -88,12 +88,12 @@ De volgende entiteiten worden ondersteund:
 
 De volgende entiteiten worden ondersteund:
 
-|Vooraf gebouwde entiteit|```en-US``` |
-------|:------:|
+| Vooraf gebouwde entiteit | nl-NL |
+| --------------- | :---: |
 [Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>maand<br>gevormd<br>day   |    V2, V3   |
 [Valuta (Money)](luis-reference-prebuilt-currency.md):<br>Gulden<br>Fractionele eenheid (ex: afronding)  |    V2, V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>tijd<br>time Range   |    V2, V3   |
-[Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>dikte<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    V2, V3   |
+[Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>gewicht<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    V2, V3   |
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    V2, V3   |
 [Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
@@ -110,12 +110,12 @@ De volgende entiteiten worden ondersteund:
 
 De volgende entiteiten worden ondersteund:
 
-|Vooraf gebouwde entiteit|```fr-FR``` |
-------|:------:|
+| Vooraf gebouwde entiteit | fr-FR |
+| --------------- | :---: |
 [Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>maand<br>gevormd<br>day   |    V2, V3   |
 [Valuta (Money)](luis-reference-prebuilt-currency.md):<br>Gulden<br>Fractionele eenheid (ex: afronding)  |    V2, V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>tijd<br>time Range   |    V2, V3   |
-[Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>dikte<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    V2, V3   |
+[Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>gewicht<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    V2, V3   |
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
@@ -132,12 +132,12 @@ De volgende entiteiten worden ondersteund:
 
 De volgende entiteiten worden ondersteund:
 
-|Vooraf gebouwde entiteit|```fr-CA``` |
-------|:------:|
+| Vooraf gebouwde entiteit | FR-CA |
+| --------------- | :---: |
 [Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>maand<br>gevormd<br>day   |    V2, V3   |
 [Valuta (Money)](luis-reference-prebuilt-currency.md):<br>Gulden<br>Fractionele eenheid (ex: afronding)  |    V2, V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>tijd<br>time Range   |    V2, V3   |
-[Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>dikte<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    V2, V3   |
+[Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>gewicht<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    V2, V3   |
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
@@ -154,12 +154,12 @@ De volgende entiteiten worden ondersteund:
 
 De volgende entiteiten worden ondersteund:
 
-|Vooraf gebouwde entiteit|```de-DE``` |
-------|:------:|
+|Vooraf gebouwde entiteit | de-DE |
+| -------------- | :---: |
 [Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>maand<br>gevormd<br>day   |    V2, V3   |
 [Valuta (Money)](luis-reference-prebuilt-currency.md):<br>Gulden<br>Fractionele eenheid (ex: afronding)  |    V2, V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>tijd<br>time Range   |    V2, V3   |
-[Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>dikte<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    V2, V3   |
+[Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>gewicht<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    V2, V3   |
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
@@ -178,12 +178,12 @@ Italiaanse vooraf ontwikkelde leeftijd, valuta, dimensie, getal, percentage _res
 
 De volgende entiteiten worden ondersteund:
 
-|Vooraf gebouwde entiteit|```it-IT``` |
-------|:------:|
+| Vooraf gebouwde entiteit | it-IT |
+| --------------- | :---: |
 [Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>maand<br>gevormd<br>day   |    V2, V3   |
 [Valuta (Money)](luis-reference-prebuilt-currency.md):<br>Gulden<br>Fractionele eenheid (ex: afronding)  |    V2, V3   |
 [Datetime](luis-reference-prebuilt-deprecated.md)   |    -   |
-[Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>dikte<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    V2, V3   |
+[Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>gewicht<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    V2, V3   |
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
@@ -200,12 +200,12 @@ De volgende entiteiten worden ondersteund:
 
 De volgende entiteiten worden ondersteund:
 
-|Vooraf gebouwde entiteit|```ja-JP``` |
-------|:------:|
+|Vooraf gebouwde entiteit | ja-JP |
+| -------------- | :---: |
 [Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>maand<br>gevormd<br>day   |    V2,-   |
 [Valuta (Money)](luis-reference-prebuilt-currency.md):<br>Gulden<br>Fractionele eenheid (ex: afronding)  |    V2,-   |
 [Datetime](luis-reference-prebuilt-deprecated.md)   |    -   |
-[Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>dikte<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    V2,-   |
+[Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>gewicht<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    V2,-   |
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
@@ -222,12 +222,12 @@ De volgende entiteiten worden ondersteund:
 
 De volgende entiteiten worden ondersteund:
 
-|Vooraf gebouwde entiteit|```ko-KR``` |
-------|:------:|
+| Vooraf gebouwde entiteit | ko-KR |
+| --------------- | :---: |
 [Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>maand<br>gevormd<br>day   |    -   |
 [Valuta (Money)](luis-reference-prebuilt-currency.md):<br>Gulden<br>Fractionele eenheid (ex: afronding)  |    -   |
 [Datetime](luis-reference-prebuilt-deprecated.md)   |    -   |
-[Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>dikte<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    -   |
+[Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>gewicht<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    -   |
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
@@ -244,12 +244,12 @@ De volgende entiteiten worden ondersteund:
 
 De volgende entiteiten worden ondersteund:
 
-|Vooraf gebouwde entiteit|```pt-BR``` |
-------|:------:|
+| Vooraf gebouwde entiteit | pt-BR |
+| --------------- | :---: |
 [Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>maand<br>gevormd<br>day   |    V2, V3   |
 [Valuta (Money)](luis-reference-prebuilt-currency.md):<br>Gulden<br>Fractionele eenheid (ex: afronding)  |    V2, V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>tijd<br>time Range   |    V2, V3   |
-[Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>dikte<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    V2, V3   |
+[Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>gewicht<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    V2, V3   |
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
@@ -266,12 +266,12 @@ De volgende entiteiten worden ondersteund:
 
 De volgende entiteiten worden ondersteund:
 
-|Vooraf gebouwde entiteit|```es-ES``` |
-------|:------:|
+| Vooraf gebouwde entiteit | es-ES |
+| --------------- | :---: |
 [Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>maand<br>gevormd<br>day   |    V2, V3   |
 [Valuta (Money)](luis-reference-prebuilt-currency.md):<br>Gulden<br>Fractionele eenheid (ex: afronding)  |    V2, V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>tijd<br>time Range   |    V2, V3   |
-[Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>dikte<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    V2, V3   |
+[Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>gewicht<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    V2, V3   |
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
@@ -288,12 +288,12 @@ De volgende entiteiten worden ondersteund:
 
 De volgende entiteiten worden ondersteund:
 
-|Vooraf gebouwde entiteit|```es-MX``` |
-------|:------:|
+| Vooraf gebouwde entiteit | es-MX |
+| --------------- | :---: |
 [Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>maand<br>gevormd<br>day   |    -   |
 [Valuta (Money)](luis-reference-prebuilt-currency.md):<br>Gulden<br>Fractionele eenheid (ex: afronding)  |    -   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>tijd<br>time Range   |    -   |
-[Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>dikte<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    -   |
+[Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>gewicht<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    -   |
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
@@ -316,8 +316,8 @@ De woordgroep is niet beschikbaar in alle subcultuur van Portugees (Brazilië) `
 
 <!--
 
-|Prebuilt entity|```tr-tr``` |
-------|:------:|
+| Prebuilt entity | tr-tr |
+| --------------- | :---: |
 [Age](luis-reference-prebuilt-age.md):<br>year<br>month<br>week<br>day   |    -   |
 [Currency (money)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (ex: penny)  |    -   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    -   |

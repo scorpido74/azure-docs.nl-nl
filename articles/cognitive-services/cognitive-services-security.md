@@ -1,21 +1,21 @@
 ---
-title: Beveiliging
+title: Azure Cognitive Services-beveiliging
 titleSuffix: Azure Cognitive Services
 description: Meer informatie over de verschillende beveiligings overwegingen voor het gebruik van Cognitive Services.
 services: cognitive-services
-author: aahill
+author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.author: aahi
+ms.date: 07/10/2020
+ms.author: erhopf
 ms.custom: tracking-python
-ms.openlocfilehash: d97b944d5d18a39d6eaf84b55363f487a2c17dbf
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 51a9829a7ea19665e1081a48207f176b1a8e68c0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611404"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090838"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure Cognitive Services-beveiliging
 
@@ -51,7 +51,7 @@ Omgevings variabelen zijn naam/waarde-paren, die zijn opgeslagen in een specifie
 
 Als u omgevings variabelen wilt instellen, gebruikt u een van de volgende opdrachten: waarbij de de `ENVIRONMENT_VARIABLE_KEY` benoemde sleutel is en `value` de waarde is die is opgeslagen in de omgevings variabele.
 
-# <a name="command-line"></a>[Opdracht regel](#tab/command-line)
+# <a name="command-line"></a>[Opdrachtregel](#tab/command-line)
 
 Maak een permanente omgevings variabele en wijs deze toe, op basis van de waarde.
 
@@ -203,9 +203,19 @@ Klanten-lockbox is beschikbaar voor deze cognitieve service:
 
 * Translator
 
-Voor Language Understanding heeft micro soft-technici geen toegang tot klant gegevens in de E0-SKU. Als u de mogelijkheid wilt aanvragen om de E0-SKU te gebruiken, vult u het [aanvraag formulier](https://aka.ms/cogsvc-cmk)voor de Luis in en verzendt u dit. Het duurt ongeveer 3-5 werk dagen voordat de status van uw aanvraag wordt weer gegeven. Afhankelijk van de vraag, kunt u in een wachtrij plaatsen en worden goedgekeurd als er ruimte beschikbaar is. Nadat u hebt goedgekeurd voor het gebruik van de E0 SKU met LUIS, moet u een nieuwe Language Understanding resource maken op basis van de Azure Portal en E0 selecteren als prijs categorie. Gebruikers kunnen geen upgrade uitvoeren van de F0 naar de nieuwe E0-SKU.
+Voor de volgende services heeft micro soft-technici geen toegang tot klant gegevens in de E0-laag: 
 
-De spraak service biedt momenteel geen ondersteuning voor Klanten-lockbox. Klant gegevens kunnen echter worden opgeslagen met behulp van BYOS (' uw eigen opslag gebruiken '), zodat u vergelijk bare gegevens besturings elementen kunt behalen voor [klanten-lockbox](../security/fundamentals/customer-lockbox-overview.md). Houd er wel bij dat de gegevens van de speech-service blijven en worden verwerkt in de regio waarin de spraak bron is gemaakt. Dit geldt voor alle gegevens in rust en gegevens die onderweg zijn. Wanneer u aanpassings functies gebruikt, zoals Custom Speech en aangepaste spraak, worden alle klant gegevens overgebracht, opgeslagen en verwerkt in dezelfde regio waar uw BYOS (indien gebruikt) en de speech service-bron zich bevinden.
+* Taalbegrip
+* Face
+* Content Moderator
+* Personalizer
+
+> [!IMPORTANT]
+> Voor **formulier herkenner**hebben micro soft-technici geen toegang tot klant gegevens in resources die zijn gemaakt na 10 juli 2020.
+
+Als u de mogelijkheid wilt aanvragen om de E0-SKU te gebruiken, vult u dit [aanvraag formulier](https://aka.ms/cogsvc-cmk)in en verzendt u dit. Het duurt ongeveer 3-5 werk dagen voordat de status van uw aanvraag wordt weer gegeven. Afhankelijk van de vraag, kunt u in een wachtrij plaatsen en worden goedgekeurd als er ruimte beschikbaar is. Nadat u hebt goedgekeurd voor het gebruik van de E0 SKU met LUIS, moet u een nieuwe resource maken op basis van de Azure Portal en E0 selecteren als prijs categorie. Gebruikers kunnen geen upgrade uitvoeren van de F0 naar de nieuwe E0-SKU.
+
+De spraak service biedt momenteel geen ondersteuning voor Klanten-lockbox. Klant gegevens kunnen echter worden opgeslagen met behulp van uw eigen opslag (BYOS), zodat u vergelijk bare gegevens besturings elementen kunt behalen voor Klanten-lockbox. Houd er wel bij dat de gegevens van de speech-service blijven en worden verwerkt in de regio waarin de spraak bron is gemaakt. Dit geldt voor alle gegevens in rust en gegevens die onderweg zijn. Wanneer u aanpassings functies gebruikt, zoals Custom Speech en aangepaste spraak, worden alle klant gegevens overgebracht, opgeslagen en verwerkt in dezelfde regio waar uw BYOS (indien gebruikt) en de speech service-bron zich bevinden.
 
 > [!IMPORTANT]
 > Micro soft gebruikt **geen** klant gegevens om de spraak modellen te verbeteren. Als eindpunt logboek registratie is uitgeschakeld en er geen aanpassingen worden gebruikt, worden er geen klant gegevens opgeslagen. 

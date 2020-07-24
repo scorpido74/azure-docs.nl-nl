@@ -3,12 +3,12 @@ title: Nalevings aanbod Azure Backup
 description: Samen vatting van nalevings aanbiedingen voor Azure Backup
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: da25c6b9b8206ebd2e7ca1a3d90ec88a6efe04b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f19896c157645104a392a6f5bb163b8d5729536
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80423117"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090991"
 ---
 # <a name="azure-backup-compliance-offerings"></a>Nalevings aanbod Azure Backup
 
@@ -18,32 +18,32 @@ Hieronder vindt u een nalevings aanbod voor Azure Backup om ervoor te zorgen dat
 
 ## <a name="global"></a>Globaal
 
-* [CSA-STAR-Attestation](https://docs.microsoft.com/microsoft-365/compliance/offering-csa-star-attestation)
-* [CSA-Star-certificering](https://docs.microsoft.com/microsoft-365/compliance/offering-csa-star-certification)
-* [CSA-STAR-zelf evaluatie](https://docs.microsoft.com/microsoft-365/compliance/offering-csa-star-self-assessment)
-* [ISO 20000-1:2011](https://docs.microsoft.com/microsoft-365/compliance/offering-iso-20000-1-2011)
-* [ISO 22301](https://docs.microsoft.com/microsoft-365/compliance/offering-iso-22301)
-* [ISO 27001](https://docs.microsoft.com/microsoft-365/compliance/offering-iso-27017)
-* [ISO 27017](https://docs.microsoft.com/microsoft-365/compliance/offering-iso-27017)
-* [ISO 27018](https://docs.microsoft.com/microsoft-365/compliance/offering-iso-27018)
-* [ISO 9001](https://docs.microsoft.com/microsoft-365/compliance/offering-iso-9001)
-* [SOC 1, 2, 3](https://docs.microsoft.com/microsoft-365/compliance/offering-soc)
+* [CSA-STAR-Attestation](/microsoft-365/compliance/offering-csa-star-attestation)
+* [CSA-Star-certificering](/microsoft-365/compliance/offering-csa-star-certification)
+* [CSA-STAR-zelf evaluatie](/microsoft-365/compliance/offering-csa-star-self-assessment)
+* [ISO 20000-1:2011](/microsoft-365/compliance/offering-iso-20000-1-2011)
+* [ISO 22301](/microsoft-365/compliance/offering-iso-22301)
+* [ISO 27001](/microsoft-365/compliance/offering-iso-27017)
+* [ISO 27017](/microsoft-365/compliance/offering-iso-27017)
+* [ISO 27018](/microsoft-365/compliance/offering-iso-27018)
+* [ISO 9001](/microsoft-365/compliance/offering-iso-9001)
+* [SOC 1, 2, 3](/microsoft-365/compliance/offering-soc)
 
 ## <a name="us-government"></a>Amerikaanse overheid
 
-* [DoD DISA L2, N4, N5](https://docs.microsoft.com/microsoft-365/compliance/offering-dod-disa-l2-l4-l5?view=o365-worldwide)
-* [FedRAMP](https://docs.microsoft.com/microsoft-365/compliance/offering-fedramp)
-* [FIPS 140-2](https://docs.microsoft.com/microsoft-365/compliance/offering-fips-140-2)
+* [DoD DISA L2, N4, N5](/microsoft-365/compliance/offering-dod-disa-l2-l4-l5?view=o365-worldwide)
+* [FedRAMP](/microsoft-365/compliance/offering-fedramp)
+* [FIPS 140-2](/microsoft-365/compliance/offering-fips-140-2)
 
 ## <a name="industry"></a>Branche
 
-* [HIPAA](https://docs.microsoft.com/microsoft-365/compliance/offering-hipaa-hitech)
-* [HITRUST](https://docs.microsoft.com/microsoft-365/compliance/offering-hitrust)
-* [PCI DSS](https://docs.microsoft.com/microsoft-365/compliance/offering-pci-dss)
+* [HIPAA](/microsoft-365/compliance/offering-hipaa-hitech)
+* [HITRUST](/microsoft-365/compliance/offering-hitrust)
+* [PCI DSS](/microsoft-365/compliance/offering-pci-dss)
 
 ## <a name="regional"></a>Regionaal
 
-* [CCSL/IRAP (Australië)](https://docs.microsoft.com/microsoft-365/compliance/offering-ccsl-irap-australia)
+* [CCSL/IRAP (Australië)](/microsoft-365/compliance/offering-ccsl-irap-australia)
 * [AVG (EU)](https://www.microsoft.com/trustcenter/privacy/gdpr)
 
 ## <a name="next-steps"></a>Volgende stappen

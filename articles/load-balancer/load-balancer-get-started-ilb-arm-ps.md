@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/02/2020
 ms.author: allensu
-ms.openlocfilehash: dcf54e5a9bee5f7dc6cba9e3cb178027f53ed5fb
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 7e962b87b1bd7ef200aa276d8dbecffd5d3fed04
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961282"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090430"
 ---
 # <a name="create-an-internal-load-balancer-by-using-the-azure-powershell-module"></a>Een interne load balancer maken met behulp van de Azure PowerShell-module
 
@@ -164,7 +164,7 @@ Maak de load balancer en combineer de regelobjecten (inkomende NAT voor RDP, loa
 $NRPLB = New-AzLoadBalancer -ResourceGroupName "NRP-RG" -Name "NRP-LB" -SKU Standard -Location "West US" -FrontendIpConfiguration $frontendIP -InboundNatRule $inboundNATRule1,$inboundNatRule2 -LoadBalancingRule $lbrule -BackendAddressPool $beAddressPool -Probe $healthProbe
 ```
 
-Gebruiken `-SKU Basic` voor het maken van een basis Load Balancer. Microsoft raadt aan om Standard te gebruiken voor productiewerkbelastingen.
+Gebruik `-SKU Basic` om een Basic Load Balancer te maken. Microsoft raadt aan om Standard te gebruiken voor productiewerkbelastingen.
 
 ## <a name="create-the-network-interfaces"></a>De netwerkinterfaces maken
 
@@ -250,7 +250,7 @@ Primary              : False
 
 Wijs de NIC toe aan een virtuele machine met behulp van de opdracht `Add-AzVMNetworkInterface`.
 
-U vindt de stapsgewijze instructies voor het maken van een virtuele machine en de toewijzing ervan aan een NIC in [Een virtuele machine in Azure maken met behulp van PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json).
+U vindt de stapsgewijze instructies voor het maken van een virtuele machine en de toewijzing ervan aan een NIC in [Een virtuele machine in Azure maken met behulp van PowerShell](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fazure%2fload-balancer%2ftoc.json).
 
 ## <a name="add-the-network-interface"></a>Netwerkinterface toevoegen
 

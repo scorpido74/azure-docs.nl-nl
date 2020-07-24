@@ -3,8 +3,8 @@ title: 'Bekende problemen: online migraties naar Azure Database for MySQL'
 titleSuffix: Azure Database Migration Service
 description: Meer informatie over bekende problemen en migratie beperkingen met online migraties naar Azure Database for MySQL bij het gebruik van de Azure Database Migration Service.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: arunkumarthiags
+ms.author: arthiaga
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 8c3de28ea934302086a5b14e61482e6a4ab9a7ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a2e28439efaa1983c4deeff4c6746108fc28e4e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80235280"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090702"
 ---
 # <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>Online migratie problemen & beperkingen voor Azure DB voor MySQL met Azure Database Migration Service
 
@@ -135,6 +135,8 @@ Wanneer u probeert een online migratie uit te voeren vanaf AWS RDS MySQL naar Az
     ```
 
 - In Azure Database Migration Service is de limiet van de data bases die worden gemigreerd in één enkele migratie activiteit vier.
+
+- Azure DMS biedt geen ondersteuning voor de referentiële actie CASCADE, waarmee u een overeenkomende rij in de onderliggende tabel automatisch kunt verwijderen of bijwerken wanneer een rij wordt verwijderd of bijgewerkt in de bovenliggende tabel. Zie de sectie Referentiële acties in de [beperkingen van refererende sleutels](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html)van een artikel voor meer informatie. Voor Azure DMS moet u beperkingen voor refererende sleutels in de doel database server weghalen tijdens het laden van gegevens en kunt u geen referentiële acties gebruiken. Als uw werk belasting afhankelijk is van het bijwerken van een gerelateerde onderliggende tabel via deze referentiële actie, raden we u aan om in plaats daarvan een [dump en herstel](https://docs.microsoft.com/azure/mysql/concepts-migrate-dump-restore) uit te voeren. 
 
 - **Fout:** De Rijgrootte is te groot (> 8126). Het kan helpen om sommige kolommen te wijzigen in tekst of BLOB. In de huidige rij-indeling is het BLOB-voor voegsel van 0 bytes inline opgeslagen.
 

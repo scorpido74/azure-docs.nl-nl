@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: 8faff37e127e80447e0f066ef17e2885d4bcb597
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d79d1bf846cc023b86c3e33b17c91cce77ffe9ee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85799731"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089869"
 ---
 # <a name="protect-your-machines-and-applications"></a>Uw computers en toepassingen beveiligen
 Wanneer Azure Security Center mogelijke beveiligings problemen identificeert, worden er aanbevelingen gemaakt die u door het proces van het configureren van de benodigde besturings elementen leiden om uw resources te beschermen en te beveiligen.

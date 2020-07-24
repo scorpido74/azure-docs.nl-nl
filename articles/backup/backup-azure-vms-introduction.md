@@ -3,15 +3,16 @@ title: Over Azure VM Backup
 description: In dit artikel leest u hoe de Azure Backup-service een back-up maakt van virtuele Azure-machines en hoe u de aanbevolen procedures volgt.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 9838f4993e71f2991500af0e152abee36f996050
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3c73b489404d1e8198fbd984b5188a7a2ccb973f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84322906"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091042"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Een overzicht van Azure VM backup
 
-In dit artikel wordt beschreven hoe de [Azure backup-service](backup-introduction-to-azure-backup.md) een back-up maakt van Azure virtual machines (vm's).
+In dit artikel wordt beschreven hoe de [Azure backup-service](./backup-overview.md) een back-up maakt van Azure virtual machines (vm's).
 
 Azure Backup biedt onafhankelijke en geïsoleerde back-ups om te beschermen tegen onbedoelde vernietiging van de gegevens op uw Vm's. Back-ups worden opgeslagen in een Recovery Services-kluis met ingebouwd beheer van herstelpunten. Configuratie en schalen zijn eenvoudige, back-ups worden geoptimaliseerd en u kunt zo nodig eenvoudig herstellen.
 
@@ -25,8 +26,8 @@ Hier volgt een beschrijving van de manier waarop Azure Backup een back-up voor v
 
 1. Azure Backup start een back-uptaak op basis van het back-upschema dat u opgeeft voor Azure-Vm's die zijn geselecteerd voor back-up.
 1. Tijdens de eerste back-up wordt een back-upextensie op de VM geïnstalleerd als de virtuele machine wordt uitgevoerd.
-    - Voor virtuele Windows-machines wordt de [VMSnapshot-extensie](https://docs.microsoft.com/azure/virtual-machines/extensions/vmsnapshot-windows) geïnstalleerd.
-    - Voor virtuele Linux-machines wordt de [VMSnapshotLinux-extensie](https://docs.microsoft.com/azure/virtual-machines/extensions/vmsnapshot-linux) geïnstalleerd.
+    - Voor virtuele Windows-machines wordt de [VMSnapshot-extensie](../virtual-machines/extensions/vmsnapshot-windows.md) geïnstalleerd.
+    - Voor virtuele Linux-machines wordt de [VMSnapshotLinux-extensie](../virtual-machines/extensions/vmsnapshot-linux.md) geïnstalleerd.
 1. Voor Windows-Vm's waarop wordt uitgevoerd, worden er back-upcoördinaten met Windows Volume Shadow Copy Service (VSS) gebruikt om een app-consistente moment opname van de virtuele machine te maken.
     - Standaard maakt back-ups volledige VSS-back-ups.
     - Als back-up geen app-consistente moment opname kan maken, wordt een bestands consistente moment opname van de onderliggende opslag gebruikt (omdat er geen schrijf bewerkingen voor de toepassing plaatsvinden terwijl de virtuele machine wordt gestopt).
@@ -63,7 +64,7 @@ Er wordt ook een back-up gemaakt van BEKs. Als de BEKs verloren zijn gegaan, kun
 
 Azure Backup maakt moment opnamen volgens het back-upschema.
 
-- **Windows-vm's:** Voor Windows-Vm's coördineert de back-upservice met VSS voor het maken van een app-consistente moment opname van de VM-schijven.  Azure Backup maakt standaard gebruik van een volledige VSS-back-up (de logboeken van de toepassing worden afgekapt, zoals SQL Server op het moment van de back-up om consistente back-ups op toepassings niveau op te halen).  Als u een SQL Server-Data Base gebruikt in een back-up van Azure VM, kunt u de instelling wijzigen voor het maken van een VSS Copy-back-up (om logboeken te behouden). Zie [dit artikel](https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot#troubleshoot-vm-snapshot-issues)voor meer informatie.
+- **Windows-vm's:** Voor Windows-Vm's coördineert de back-upservice met VSS voor het maken van een app-consistente moment opname van de VM-schijven.  Azure Backup maakt standaard gebruik van een volledige VSS-back-up (de logboeken van de toepassing worden afgekapt, zoals SQL Server op het moment van de back-up om consistente back-ups op toepassings niveau op te halen).  Als u een SQL Server-Data Base gebruikt in een back-up van Azure VM, kunt u de instelling wijzigen voor het maken van een VSS Copy-back-up (om logboeken te behouden). Zie [dit artikel](./backup-azure-vms-troubleshoot.md#troubleshoot-vm-snapshot-issues)voor meer informatie.
 
 - **Virtuele Linux-machines:** Als u app-consistente moment opnamen van virtuele Linux-machines wilt maken, gebruikt u het Linux pre-script en post-script-Framework om uw eigen aangepaste scripts te schrijven om consistentie te garanderen.
 
@@ -80,6 +81,9 @@ In de volgende tabel ziet u de verschillende soorten consistentie van moment opn
 **Toepassings consistent** | Met app-consistente back-ups worden geheugen inhoud en I/O-bewerkingen in behandeling vastgelegd. App-consistente moment opnamen maken gebruik van een VSS Writer (of pre/post scripts voor Linux) om de consistentie van de app-gegevens te garanderen voordat een back-up wordt uitgevoerd. | Wanneer u een virtuele machine herstelt met een app-consistente moment opname, wordt de VM opgestart. Er zijn geen gegevens beschadiging of-verlies. De apps beginnen met een consistente status. | Windows: alle VSS-schrijvers zijn geslaagd<br/><br/> Linux: vóór/post-scripts zijn geconfigureerd en geslaagd
 **Bestands systeem consistent** | Bestandssysteem consistente back-ups bieden consistentie door een moment opname van alle bestanden tegelijk te maken.<br/><br/> | Wanneer u een virtuele machine herstelt met een bestandssysteem consistente moment opname, wordt de VM opgestart. Er zijn geen gegevens beschadiging of-verlies. Apps moeten hun eigen mechanisme ' herstellen ' implementeren om ervoor te zorgen dat de herstelde gegevens consistent zijn. | Windows: sommige VSS-schrijvers zijn mislukt <br/><br/> Linux: standaard (als er vooraf/post-scripts niet zijn geconfigureerd of mislukt)
 **Crash-consistent** | Crash-consistente moment opnamen doen zich meestal voor als een Azure-VM wordt afgesloten op het moment van de back-up. Alleen de gegevens die al op de schijf aanwezig zijn op het moment van de back-up worden vastgelegd en er een back-up van wordt gemaakt. | Begint met het opstart proces van de virtuele machine, gevolgd door een schijf controle om beschadigings fouten op te lossen. Gegevens in het geheugen of schrijf bewerkingen die niet naar de schijf zijn overgedragen voordat de crash is verbroken. Apps implementeren hun eigen gegevens verificatie. Een Data Base-app kan bijvoorbeeld het transactie logboek voor verificatie gebruiken. Als het transactie logboek vermeldingen bevat die zich niet in de data base bevinden, worden trans acties teruggedraaid door de data base software totdat de gegevens consistent zijn. | De virtuele machine is afgesloten (status gestopt/toegewezen).
+
+>[!NOTE]
+> Als de inrichtings status is **geslaagd**, neemt Azure backup bestandssysteem consistente back-ups. Als de inrichtings status niet **beschikbaar** of **mislukt**is, worden er crash-consistente back-ups gemaakt. Als de inrichtings status **maakt** of **verwijdert**, betekent dit dat Azure backup de bewerkingen opnieuw probeert uit te voeren.
 
 ## <a name="backup-and-restore-considerations"></a>Overwegingen voor back-up en herstel
 
@@ -107,8 +111,8 @@ Deze algemene scenario's kunnen van invloed zijn op de totale back-uptijd:
 Wanneer u back-ups van VM's configureert, wordt u aangeraden deze procedures te volgen:
 
 - Wijzig de standaardplanningstijden die in een beleid zijn ingesteld. Als de standaardtijd in het beleid bijvoorbeeld 12:00 uur is, verhoogt u de timing met enkele minuten zodat de resources optimaal worden benut.
-- Als u virtuele machines herstelt vanuit één kluis, raden we u ten zeerste aan om andere [v2-opslag accounts voor algemeen](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) gebruik te gebruiken om ervoor te zorgen dat het doel-opslag account niet wordt beperkt. Elke virtuele machine moet bijvoorbeeld een ander opslag account hebben. Als er bijvoorbeeld tien Vm's zijn teruggezet, gebruikt u 10 verschillende opslag accounts.
-- Voor back-ups van virtuele machines die gebruikmaken van Premium Storage, kunt u met direct terugzetten *50%* beschik bare ruimte toewijzen aan de totale toegewezen opslag ruimte. Dit is **alleen** vereist voor de eerste back-up. De 50% vrije ruimte is geen vereiste voor back-ups nadat de eerste back-up is voltooid
+- Als u virtuele machines herstelt vanuit één kluis, raden we u ten zeerste aan om andere [v2-opslag accounts voor algemeen](../storage/common/storage-account-upgrade.md) gebruik te gebruiken om ervoor te zorgen dat het doel-opslag account niet wordt beperkt. Elke virtuele machine moet bijvoorbeeld een ander opslag account hebben. Als er bijvoorbeeld tien Vm's zijn teruggezet, gebruikt u 10 verschillende opslag accounts.
+- Voor het maken van back-ups van virtuele machines die gebruikmaken van Premium Storage met direct terugzetten, raden we aan om *50%* beschik bare ruimte toe te wijzen aan de totale toegewezen opslag ruimte. Dit is **alleen** vereist voor de eerste back-up. De 50% beschik bare ruimte is geen vereiste voor back-ups nadat de eerste back-up is voltooid.
 - De limiet voor het aantal schijven per opslagaccount is relatief ten opzichte van de mate van toegang tot de schijven door toepassingen die worden uitgevoerd op een IaaS-VM (infrastructure as a service). Als er op één opslagaccount vijf tot tien schijven of meer aanwezig zijn, geldt als vuistregel dat de belasting kan worden verdeeld door sommige schijven naar afzonderlijke opslagaccounts te verplaatsen.
 
 ## <a name="backup-costs"></a>Back-upkosten

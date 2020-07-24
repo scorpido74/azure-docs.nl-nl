@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/21/2020
 ms.author: rajosh
-ms.openlocfilehash: e80ec71bef8c34331fac076b7b08be48a9571c2e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: db1de363856fd560fea97f8f9cdf542717c4cca3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107696"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090090"
 ---
 # <a name="build-migration-plan-with-azure-migrate"></a>Migratieplan bouwen met Azure Migrate
 
@@ -151,7 +151,7 @@ Voordat u uw migratie plan voltooit, moet u ervoor zorgen dat de volgende belang
 
 - Ontvang zo nodig ondersteuning voor uw implementatie. Veel organisaties kiezen buiten de hulp om hun Cloud migratie te ondersteunen. Als u snel wilt overschakelen naar Azure en wilt vertrouwen met persoonlijke hulp, overweeg dan een [Azure expert managed service provider](https://www.microsoft.com/solution-providers/search?cacheId=9c2fed4f-f9e2-42fb-8966-4c565f08f11e&ocid=CM_Discovery_Checklist_PDF)   of [FastTrack for Azure](https://azure.microsoft.com/programs/azure-fasttrack/?ocid=CM_Discovery_Checklist_PDF).  
 
-Maak een effectief migratie plan voor de cloud dat gedetailleerde informatie bevat over de lijst/groepen toepassingen die u wilt migreren, de beschik baarheid van apps en data bases en downtime-beperkingen en gewenste migratie mijlpaal. Het migratie plan moet ook bepalen hoe lang het kopiëren van de gegevens duurt en een considerate-buffer voor testen na de migratie en cutover-activiteiten bevat. De tests na de migratie moeten functionele, integratie-, beveiligings-en prestatie tests omvatten om ervoor te zorgen dat de gemigreerde toepassingen naar verwachting werken en dat alle database objecten en gegevens relaties zijn overgedragen naar de Cloud. De tests na de migratie moeten functionele, integratie-, beveiligings-en prestatie tests omvatten om ervoor te zorgen dat de gemigreerde toepassingen naar verwachting werken en dat alle database objecten en gegevens relaties zijn overgedragen naar de Cloud.  
+Maak een effectief migratie plan voor de cloud dat gedetailleerde informatie bevat over de lijst/groepen toepassingen die u wilt migreren, de beschik baarheid van apps en data bases en downtime-beperkingen en gewenste migratie mijlpaal. Het migratie plan moet ook bepalen hoe lang het kopiëren van de gegevens duurt en een considerate-buffer voor testen na de migratie en cutover-activiteiten bevat. De tests na de migratie moeten functionele, integratie-, beveiligings-en prestatie tests omvatten om ervoor te zorgen dat de gemigreerde toepassingen naar verwachting werken en dat alle database objecten en gegevens relaties zijn overgedragen naar de Cloud.  
 
 Gebruik deze analyse voor het bouwen van een migratie schema en het declareren van een onderhouds venster voor het migreren van uw toepassingen en data bases met een minimale downtime van nul en het beperken van de mogelijke operationele/business-impact tijdens de migratie.  
 

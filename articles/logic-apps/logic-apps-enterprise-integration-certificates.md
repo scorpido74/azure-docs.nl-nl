@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/17/2018
-ms.openlocfilehash: 19a1883685193e80da5f1365ec2a30db0b8754f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d57536eee62c415058dd454f3da6ee5f3d04898
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81450137"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090328"
 ---
 # <a name="improve-security-for-b2b-messages-by-using-certificates"></a>De beveiliging van B2B-berichten verbeteren met behulp van certificaten
 
@@ -47,7 +47,7 @@ Als u een *openbaar certificaat* wilt gebruiken in Logic apps die B2B-mogelijkhe
    | Eigenschap | Waarde | Beschrijving | 
    |----------|-------|-------------|
    | **Naam** | <*certificaat naam*> | De naam van uw certificaat, dat is "publicCert" in dit voor beeld | 
-   | **Certificaat type** | Public | Het type van het certificaat |
+   | **Certificaat type** | Openbaar | Het type van het certificaat |
    | **Certificaat** | <*certificaat bestand-naam*> | Klik op het mappictogram naast het vak **certificaat** om het certificaat bestand te zoeken en te selecteren dat u wilt uploaden. |
    ||||
 
@@ -59,7 +59,7 @@ Als u een *openbaar certificaat* wilt gebruiken in Logic apps die B2B-mogelijkhe
 
 ## <a name="upload-a-private-certificate"></a>Een persoonlijk certificaat uploaden
 
-Als u een *persoonlijk certificaat* wilt gebruiken in Logic apps die B2B-mogelijkheden hebben, moet u het certificaat eerst uploaden naar uw integratie account. U moet ook een persoonlijke sleutel hebben die u eerst toevoegt aan [Azure Key Vault](../key-vault/key-vault-get-started.md). 
+Als u een *persoonlijk certificaat* wilt gebruiken in Logic apps die B2B-mogelijkheden hebben, moet u het certificaat eerst uploaden naar uw integratie account. U moet ook een persoonlijke sleutel hebben die u eerst toevoegt aan [Azure Key Vault](../key-vault/general/overview.md). 
 
 Nadat u de eigenschappen hebt gedefinieerd in de [overeenkomsten](logic-apps-enterprise-integration-agreements.md) die u hebt gemaakt, is het certificaat beschikbaar om u te helpen bij het beveiligen van uw B2B-berichten.
 
@@ -68,7 +68,7 @@ Nadat u de eigenschappen hebt gedefinieerd in de [overeenkomsten](logic-apps-ent
 
 1. [Voeg uw persoonlijke sleutel toe aan Azure Key Vault](../key-vault/certificates/certificate-scenarios.md#import-a-certificate) en geef een **sleutel naam**op.
    
-2. Azure Logic Apps machtigen voor het uitvoeren van bewerkingen op Azure Key Vault. Als u toegang wilt verlenen tot de Logic Apps Service-Principal, gebruikt u de Power shell-opdracht [set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy), bijvoorbeeld:
+2. Azure Logic Apps machtigen voor het uitvoeren van bewerkingen op Azure Key Vault. Als u toegang wilt verlenen tot de Logic Apps Service-Principal, gebruikt u de Power shell-opdracht [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy), bijvoorbeeld:
 
    `Set-AzKeyVaultAccessPolicy -VaultName 'TestcertKeyVault' -ServicePrincipalName 
    '7cd684f4-8a78-49b0-91ec-6a35d38739ba' -PermissionsToKeys decrypt, sign, get, list`
@@ -86,7 +86,7 @@ Nadat u de eigenschappen hebt gedefinieerd in de [overeenkomsten](logic-apps-ent
    | Eigenschap | Waarde | Beschrijving | 
    |----------|-------|-------------|
    | **Naam** | <*certificaat naam*> | De naam van uw certificaat, dat is "privateCert" in dit voor beeld | 
-   | **Certificaat type** | Privé | Het type van het certificaat |
+   | **Certificaat type** | Persoonlijk | Het type van het certificaat |
    | **Certificaat** | <*certificaat bestand-naam*> | Klik op het mappictogram naast het vak **certificaat** om het certificaat bestand te zoeken en te selecteren dat u wilt uploaden. Wanneer u een sleutel kluis voor de persoonlijke sleutel gebruikt, is het geüploade bestand het open bare certificaat. | 
    | **Resourcegroep** | <*Integration-account-Resource-Group*> | De resource groep van uw integratie account, dat wil zeggen ' MyResourceGroup ' in dit voor beeld | 
    | **Key Vault** | <*sleutel-kluis-naam*> | De naam van uw Azure-sleutel kluis |

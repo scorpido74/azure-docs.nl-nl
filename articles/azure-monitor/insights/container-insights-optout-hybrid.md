@@ -3,12 +3,12 @@ title: Stoppen met het bewaken van uw hybride Kubernetes-cluster | Microsoft Doc
 description: In dit artikel wordt beschreven hoe u de bewaking van uw hybride Kubernetes-cluster met Azure Monitor voor containers kunt stoppen.
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 86a774737d5269d77c4053ad61ab870b13288aa7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8369c82b83cfbaa7128383c6203aaf584916cae9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84885853"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091195"
 ---
 # <a name="how-to-stop-monitoring-your-hybrid-cluster"></a>Het bewaken van uw hybride cluster stoppen
 
@@ -120,4 +120,4 @@ Het kan enkele minuten duren voordat de configuratie is gewijzigd. Omdat helm uw
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als de Log Analytics-werk ruimte alleen is gemaakt ter ondersteuning van het bewaken van het cluster en het niet meer nodig is, moet u het hand matig verwijderen. Zie [een Azure log Analytics-werk ruimte verwijderen](../../log-analytics/log-analytics-manage-del-workspace.md)als u niet bekend bent met het verwijderen van een werk ruimte.
+Als de Log Analytics-werk ruimte alleen is gemaakt ter ondersteuning van het bewaken van het cluster en het niet meer nodig is, moet u het hand matig verwijderen. Zie [een Azure log Analytics-werk ruimte verwijderen](../platform/delete-workspace.md)als u niet bekend bent met het verwijderen van een werk ruimte.

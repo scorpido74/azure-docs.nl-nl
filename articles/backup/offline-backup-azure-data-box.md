@@ -3,12 +3,12 @@ title: Offline back-ups met behulp van Azure Data Box
 description: Meer informatie over hoe u Azure Data Box kunt gebruiken om grote initiële back-upgegevens offline te brengen van de MARS-agent naar een Recovery Services kluis.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: a60d749f270c9efab0649b49b5c0c41945faddf5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e377ccde714c1486ff731d24d5a0cd64364bca37
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513690"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091025"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Offline back-up Azure Backup met behulp van Azure Data Box
 
@@ -153,7 +153,7 @@ De MARS-agent wordt uitgevoerd in de context van het lokale systeem, zodat hierv
 Om ervoor te zorgen dat u uw Data Box-apparaat als lokaal systeem kunt koppelen met behulp van het NFS-protocol:
 
 1. Schakel de client in voor de NFS-functie op de Windows-Server waarop de MARS-agent is geïnstalleerd. Geef de alternatieve bron- *Wim op: D: \Sources\Install.Wim: 4*.
-1. Down load PSExec van <https://download.sysinternals.com/files/PSTools.zip> naar de server waarop de Mars-agent is geïnstalleerd.
+1. Down load PsExec van de [Sysinternals](/sysinternals/downloads/psexec) -pagina naar de server waarop de Mars-agent is geïnstalleerd.
 1. Open een opdracht prompt met verhoogde bevoegdheid en voer de volgende opdracht uit met de map die *PSExec.exe* als de huidige map bevat.
 
     ```cmd

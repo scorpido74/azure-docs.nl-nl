@@ -8,11 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: 8cd9c1ba85666a6556e24e4966e1e6cb9b7ef124
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77cbd5a3c293b137f49a11263580ef45407c6c2b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84449306"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090464"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>Sleutels voor opslag accounts beheren met Key Vault en Azure PowerShell
 
@@ -53,7 +54,7 @@ Key Vault is een micro soft-toepassing die vooraf is geregistreerd in alle Azure
 Als u deze hand leiding wilt volt ooien, moet u eerst het volgende doen:
 
 - [Installeer de Azure PowerShell-module](/powershell/azure/install-az-ps?view=azps-2.6.0).
-- [Een sleutel kluis maken](quick-create-powershell.md)
+- [Een sleutelkluis maken](quick-create-powershell.md)
 - [Maak een Azure-opslag account](../../storage/common/storage-account-create.md?tabs=azure-powershell). De naam van het opslag account mag alleen kleine letters en cijfers bevatten. De naam moet tussen de 3 en 24 tekens lang zijn.
       
 
@@ -163,7 +164,7 @@ Tags                :
 
 ### <a name="enable-key-regeneration"></a>Sleutel opnieuw genereren inschakelen
 
-Als u wilt dat Key Vault de sleutels van uw opslag account periodiek opnieuw genereert, kunt u de cmdlet Azure PowerShell [add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) gebruiken om een nieuwe periode in te stellen. In dit voor beeld stellen we een regeneratie periode van drie dagen in. Na drie dagen zal Key Vault ' Key2 ' opnieuw genereren en de actieve sleutel van ' Key2 ' naar ' Key1 ' wisselen (vervangen door ' primair ' en ' secundair ' voor klassieke opslag accounts).
+Als u wilt dat Key Vault de sleutels van uw opslag account periodiek opnieuw genereert, kunt u de cmdlet Azure PowerShell [add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) gebruiken om een nieuwe periode in te stellen. In dit voor beeld stellen we een regeneratie periode van drie dagen in. Wanneer het tijd is om te draaien, Key Vault opnieuw genereren van de sleutel die niet actief is. vervolgens wordt de zojuist gemaakte sleutel als actief ingesteld. Slechts een van de sleutels wordt gebruikt voor het verlenen van SAS-tokens tegelijk. Dit is de actieve sleutel.
 
 ```azurepowershell-interactive
 $regenPeriod = [System.Timespan]::FromDays(3)

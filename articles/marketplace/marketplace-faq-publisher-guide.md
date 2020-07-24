@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 05/08/2020
-ms.openlocfilehash: ad4e80c98097955703e4a6fb3c64e93a338f2720
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/22/2020
+ms.openlocfilehash: 93366bf963350bf9cbdbda15ec4070c21a1dc975
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121160"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090141"
 ---
 # <a name="common-questions-about-microsoft-commercial-marketplace"></a>Veelgestelde vragen over micro soft Commercial Marketplace
 
@@ -46,7 +46,7 @@ Bekijk voor meer informatie de video op [Waarom u verkoop via Marketplace](https
 
 ### <a name="is-there-a-listing-fee-for-the-microsoft-commercial-marketplace"></a>Zijn er kosten verbonden aan de micro soft Commercial Marketplace?
 
-Nee, er zijn geen kosten voor het publiceren van aanbiedingen in onze commerciële Marketplace. We houden een klein percentage van de verkoop op als transactie kosten en investeren ze in het Marketplace-programma voor markt beloning, platform innovatie en commerciële Marketplace-bewerkingen.
+Nee, er zijn geen kosten voor het publiceren van aanbiedingen in onze commerciële Marketplace. We houden een klein percentage van de verkoop op als transactie kosten en investeren ze in het Marketplace-programma voor markt beloning, platform innovatie en commerciële Marketplace-bewerkingen. Deze transactie kosten worden gereduceerd voor [Azure IP-](https://docs.microsoft.com/azure/marketplace/marketplace-co-sell) gemotiveerd aanbiedingen.
 
 ### <a name="how-do-i-sign-up-to-be-a-publisher-in-the-microsoft-commercial-marketplace"></a>Hoe kan ik u zich aanmelden voor een uitgever in de micro soft Commercial Marketplace?
 
@@ -311,7 +311,7 @@ Voor het ontvangen van terugbetalingen kunnen klanten binnen een opgegeven perio
 
 Hier volgen enkele bronnen om aan de slag te gaan:
 
-- [Inleiding tot de micro soft Commercial Marketplace](/azure/marketplace/marketplace-publishers-guide)
+- [Inleiding tot de commerciële marketplace van Microsoft](/azure/marketplace/marketplace-publishers-guide)
 - [Micro soft Commercial Marketplace-partner-hub](https://partner.microsoft.com/asset/collection/commercial-marketplace#/)
 - [Welkom bij de commerciële marketplace](index.yml)
 

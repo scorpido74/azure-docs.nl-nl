@@ -4,11 +4,12 @@ description: Vind antwoorden op veelgestelde vragen over het maken van back-ups 
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 11657a5dda79fc550f4c07d4020d75c671335da4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2781646e548f4f530b26ca41466f158597e817d9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84248257"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090974"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Veelgestelde vragen over SQL Server-data bases die worden uitgevoerd op een back-up van Azure VM
 
@@ -48,7 +49,7 @@ De standaard waarde van DefaultBackupTasksThreshold is **20**.
 
 3. Sla de wijzigingen op en sluit het bestand.
 4. Open **Taakbeheer** op het SQL Server-exemplaar. Start de service **AzureWLBackupCoordinatorSvc** opnieuw.<br/> <br/>
- Hoewel deze methode ervoor zorgt dat de back-uptoepassing een groot aantal resources verbruikt, is SQL Server [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor?view=sql-server-2017) een meer algemene manier om limieten op te geven voor de hoeveelheid CPU, fysieke io en het geheugen die door binnenkomende toepassings aanvragen kunnen worden gebruikt.
+ Hoewel deze methode ervoor zorgt dat de back-uptoepassing een groot aantal resources verbruikt, is SQL Server [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) een meer algemene manier om limieten op te geven voor de hoeveelheid CPU, fysieke io en het geheugen die door binnenkomende toepassings aanvragen kunnen worden gebruikt.
 
 > [!NOTE]
 > In de UX kunt u nog steeds een aantal back-ups op elk gewenst moment plannen, maar deze worden verwerkt in een sliding window van de melding 5, volgens het bovenstaande voor beeld.

@@ -3,12 +3,12 @@ title: Veelgestelde vragen over Azure Migrate
 description: Krijg antwoorden op veelgestelde vragen over de Azure Migrate-service.
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 9b71888b284fd9cc125def4758d1e3800a92acf2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 307a1d417b54ad9546c6e409ad8b105ea443da0e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81530314"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090005"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate: algemene vragen
 
@@ -32,6 +32,10 @@ Gebruik Azure Migrate om on-premises infra structuur, toepassingen en gegevens t
 [Azure site Recovery](../site-recovery/site-recovery-overview.md) is een oplossing voor nood herstel. 
 
 Het Azure Migrate: hulp programma voor server migratie maakt gebruik van enige back-end-Site Recovery functionaliteit voor het migreren van een aantal on-premises machines.
+
+## <a name="i-have-a-project-with-the-previous-classic-experience-of-azure-migrate-how-do-i-start-using-the-new-version"></a>Ik heb een project met de vorige klassieke ervaring van Azure Migrate. Hoe kan ik beginnen met het gebruik van de nieuwe versie?
+
+U kunt projecten of onderdelen in de vorige versie niet upgraden naar de nieuwe versie. U moet [een nieuw Azure migrate-project maken](create-manage-projects.md)en er [hulpprogram ma's voor de evaluatie en migratie aan toevoegen](how-to-add-tool-first-time.md) . Gebruik de zelf studies om inzicht te krijgen in het gebruik van de hulpprogram ma's voor evaluatie en migratie die beschikbaar zijn. Als u een Log Analytics werk ruimte aan een klassiek project hebt gekoppeld, kunt u deze koppelen aan een project van de huidige versie nadat u het klassieke project hebt verwijderd.
 
 ## <a name="whats-the-difference-between-azure-migrate-server-assessment-and-the-map-toolkit"></a>Wat is het verschil tussen Azure Migrate: Server analyse en de kaart Toolkit?
 

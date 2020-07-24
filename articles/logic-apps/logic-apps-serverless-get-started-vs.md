@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 06/20/2019
-ms.openlocfilehash: 2e27958dd9379a26ca7e7f4d7e427e5afa216e29
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 86ee81f3802b7ec7f8189123192c20143a08cf3d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75981154"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090243"
 ---
 # <a name="build-your-first-serverless-app-by-using-azure-logic-apps-and-azure-functions-in-visual-studio"></a>Uw eerste serverloze app bouwen met behulp van Azure Logic Apps en Azure Functions in Visual Studio
 
@@ -31,7 +32,7 @@ Als u een serverloze app wilt bouwen in Visual Studio, hebt u het volgende nodig
     > Wanneer u Visual Studio 2019 of 2017 installeert, moet u ervoor zorgen dat u de **Azure Development** -werk belasting selecteert.
 
   * [Microsoft Azure SDK voor .net (versie 2.9.1 of hoger)](https://azure.microsoft.com/downloads/). 
-  Meer informatie over [Azure SDK voor .NET](https://docs.microsoft.com/dotnet/azure/dotnet-tools?view=azure-dotnet).
+  Meer informatie over [Azure SDK voor .NET](/dotnet/azure/dotnet-tools?view=azure-dotnet).
 
   * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation).
 
@@ -43,7 +44,7 @@ Als u een serverloze app wilt bouwen in Visual Studio, hebt u het volgende nodig
 
     * [Visual Studio 2015](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2015)
   
-    U kunt hulpprogramma's van Azure Logic Apps ofwel rechtstreeks vanuit Visual Studio Marketplace downloaden en installeren, of leer [deze extensie te installeren vanuit Visual Studio](https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions). 
+    U kunt hulpprogramma's van Azure Logic Apps ofwel rechtstreeks vanuit Visual Studio Marketplace downloaden en installeren, of leer [deze extensie te installeren vanuit Visual Studio](/visualstudio/ide/finding-and-using-visual-studio-extensions). 
     Zorg ervoor dat u Visual Studio opnieuw opstart na de installatie.
 
   * [Azure functions core tools](https://www.npmjs.com/package/azure-functions-core-tools) voor functies voor lokaal fout opsporing.
@@ -72,7 +73,7 @@ Om aan de slag te gaan, moet u een [Azure-resource groep-project](../azure-resou
 
    1. Selecteer in het vak **een nieuw project maken** de project sjabloon **Azure-resource groep** voor Visual C# of Visual Basic en selecteer vervolgens **volgende**.
 
-   1. Geef de naam en andere project gegevens op die u wilt gebruiken voor de Azure-resource groep. Selecteer **Maken** als u klaar bent.
+   1. Geef de naam en andere project gegevens op die u wilt gebruiken voor de Azure-resource groep. Als u gereed bent, selecteert u **Maken**.
 
 1. Geef uw project een naam en een locatie en selecteer **OK**.
 
@@ -135,7 +136,7 @@ Als u de logische app na de implementatie wilt bewerken, opent u de logische app
 
 ## <a name="create-your-azure-functions-project"></a>Uw Azure Functions-project maken
 
-Als u uw functions-project wilt maken en werken met Java script, Python, F #, Power shell, batch of bash, volgt u de stappen in [werken met Azure functions core tools](../azure-functions/functions-run-local.md). Als u uw Azure-functie wilt ontwikkelen met behulp van C# binnen uw oplossing, gebruikt u een C#-klassebibliotheek door de stappen in [een .net-klassebibliotheek publiceren als functie-app](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/16/publishing-a-net-class-library-as-a-function-app/)te volgen.
+Als u uw functions-project wilt maken en werken met Java script, Python, F #, Power shell, batch of bash, volgt u de stappen in [werken met Azure functions core tools](../azure-functions/functions-run-local.md). Als u uw Azure-functie wilt ontwikkelen met behulp van C# binnen uw oplossing, gebruikt u een C#-klassebibliotheek door de stappen in [een .net-klassebibliotheek publiceren als functie-app](https://azure.microsoft.com/blog/)te volgen.
 
 ## <a name="deploy-functions-from-visual-studio"></a>Functies implementeren vanuit Visual Studio
 

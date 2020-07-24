@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/21/2020
 ms.author: juliako
-ms.openlocfilehash: 9788c4663908497b51fbaaf7f824125d857e7c81
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 33c762e2f2a9bed90991f7b85e0fb83fbb43765c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83774416"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090158"
 ---
 # <a name="get-credentials-to-access-media-services-api"></a>Referenties voor toegang tot Media Services-API ophalen  
 
@@ -26,9 +27,9 @@ Wanneer u Azure AD-verificatie gebruikt voor toegang tot de Azure Media Services
 - **Service-Principal-verificatie** (aanbevolen)
 
     Verifieer een service. Toepassingen die meestal gebruikmaken van deze verificatie methode zijn apps die daemon services, middelste laag Services of geplande taken uitvoeren: Web apps, functie-apps, Logic apps, Api's of een micro service.
-- **Gebruikersverificatie**
+- **Gebruikers verificatie**
 
-    Verifieer een persoon die de app gebruikt om te communiceren met Media Services-resources. De interactieve toepassing moet eerst de gebruiker vragen om referenties. Een voor beeld is een beheer console-app die door geautoriseerde gebruikers wordt gebruikt voor het bewaken van coderings taken of live streamen. 
+    Verifieer een persoon die de app gebruikt om te communiceren met Media Services-resources. De interactieve toepassing moet eerst de gebruiker vragen om referenties. Een voorbeeld is een beheerconsole-app die door geautoriseerde gebruikers wordt gebruikt om coderingstaken of livestreams te bewaken. 
 
 In dit artikel worden de stappen beschreven voor het verkrijgen van referenties voor toegang tot Media Services-API. Kies een van de volgende tabbladen.
 
@@ -55,7 +56,7 @@ Verifieert een service met een Azure Active Directory-app (Azure AD) en een gehe
 
 Met de sectie **uw Aad-app beheren en geheime** kunt u een nieuwe Azure AD-app selecteren of maken en een geheim genereren. Uit veiligheids overwegingen kan het geheim niet worden weer gegeven nadat de Blade is gesloten. De toepassing maakt gebruik van de toepassings-ID en het geheim voor verificatie om een geldig token voor Media Services te verkrijgen.
 
-Zorg ervoor dat u voldoende machtigingen hebt om een toepassing te registreren bij uw Azure AD-Tenant en de toepassing toe te wijzen aan een rol in uw Azure-abonnement. Zie [vereiste machtigingen](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions)voor meer informatie.
+Zorg ervoor dat u voldoende machtigingen hebt om een toepassing te registreren bij uw Azure AD-Tenant en de toepassing toe te wijzen aan een rol in uw Azure-abonnement. Zie [vereiste machtigingen](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)voor meer informatie.
 
 #### <a name="connect-to-media-services-api"></a>Verbinding maken met de Media Services-API
 

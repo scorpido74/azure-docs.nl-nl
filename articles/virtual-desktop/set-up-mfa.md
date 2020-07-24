@@ -5,17 +5,20 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 04/30/2020
+ms.date: 07/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 16abe8d155a0d7d7f65c69e6305da62bd8813ea4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47b1a3a44c494560dde9ffdab004ea576f434ffe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361146"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091297"
 ---
 # <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>Azure Multi-Factor Authentication voor Windows Virtual Desktop inschakelen
+
+>[!IMPORTANT]
+> Als u deze pagina in de herfst 2019-documentatie bezoekt, keert u [terug naar de najaar 2019-documentatie](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md) zodra u klaar bent.
 
 De Windows-client voor Windows Virtual Desktop is een uitstekende optie voor het integreren van virtuele Windows-Bureau bladen met uw lokale computer. Wanneer u echter uw Windows virtueel-bureaublad account in de Windows-client configureert, zijn er bepaalde metingen die u moet uitvoeren om uzelf en uw gebruikers veilig te houden.
 
@@ -36,28 +39,39 @@ U hebt de volgende informatie nodig om aan de slag te gaan:
 
 ## <a name="create-a-conditional-access-policy"></a>Beleid voor voorwaardelijke toegang maken
 
-In deze sectie wordt uitgelegd hoe u een beleid voor voorwaardelijke toegang maakt waarvoor multi-factor Authentication is vereist wanneer verbinding wordt gemaakt met een virtueel Windows-bureau blad.
+U kunt als volgt een beleid voor voorwaardelijke toegang maken waarvoor multi-factor Authentication is vereist wanneer u verbinding maakt met een virtueel bureau blad van Windows:
 
 1. Meld u aan bij de **Azure Portal** als globale beheerder, beveiligings beheerder of beheerder van de voorwaardelijke toegang.
 2. Blader naar **Azure Active Directory**  >  **beveiligings**  >  **voorwaardelijke toegang**.
 3. Selecteer **Nieuw beleid**.
 4. Geef uw beleid een naam. Het is raadzaam dat organisaties een zinvolle norm maken voor de namen van hun beleid.
 5. Onder **Toewijzingen** selecteert u **Gebruikers en groepen**.
-   - Onder **insluiten**selecteert u **gebruikers en groepen**  >  **gebruikers en groepen** selecteren > kiest u de groep die in de vereisten fase is gemaakt.
-   - Selecteer **Voltooid**.
-6. Onder **Cloud-apps of acties**  >  **Include**, selecteert u **apps selecteren**.
-   - Kies **Windows virtueel bureau blad** (app-id 9cdead84-a844-4324-93f2-b2e6bb768d07), **Selecteer**en vervolgens **gereed**.
+6. Onder **insluiten**selecteert u **gebruikers en groepen**  >  **gebruikers en groepen** selecteren > kiest u de groep die u hebt gemaakt in de fase [vereisten](#prerequisites) .
+7. Selecteer **Gereed**.
+8. Onder **Cloud-apps of acties**  >  **Include**, selecteert u **apps selecteren**.
+9. Selecteer een van de volgende groepen apps op basis van de versie van het virtuele Windows-bureau blad dat u gebruikt.
+   - Als u de versie van het najaar 2019 gebruikt, kiest u deze twee apps:
+       - **Virtueel bureau blad van Windows** (app-id 5a0aa725-4958-4b0c-80a9-34562e23f3b7)
+       - **Windows-client voor virtueel bureau blad** (app-id fa4345a4-a730-4230-84a8-7d9651b86739)
+   - Als u de lente 2020-release gebruikt, kiest u deze twee apps in plaats daarvan:
+       -  **Virtueel bureau blad van Windows** (app-id 9cdead84-a844-4324-93f2-b2e6bb768d07)
+       -  **Windows-client voor virtueel bureau blad** (app-id a85cf173-4192-42f8-81fa-777a763e6e2c)
 
-     > [!div class="mx-imgBorder"]
-     > ![Een scherm opname van de pagina Cloud-apps of-acties. De Windows Virtual Desktop-en Windows Virtual Desktop Client-apps worden rood gemarkeerd.](media/cloud-apps-enterprise.png)
+   >[!IMPORTANT]
+   > De Windows-client-apps voor virtueel bureau blad worden gebruikt voor de webclient. Selecteer echter niet de app met de naam Windows Virtual Desktop Azure Resource Manager provider (50e95039-B200-4007-bc97-8d5790743a63). Deze app wordt alleen gebruikt voor het ophalen van de gebruikers feed en hoeft geen MFA te hebben.
+  
+1. Wanneer u uw app hebt geselecteerd, kiest u **selecteren**en selecteert u **gereed**.
 
-     >[!NOTE]
-     >Als u de App-ID wilt vinden van de app die u wilt selecteren, gaat u naar **bedrijfs toepassingen** en selecteert u **micro soft-toepassingen** in de vervolg keuzelijst toepassings type.
+   > [!div class="mx-imgBorder"]
+   > ![Een scherm opname van de pagina Cloud-apps of-acties. De Windows Virtual Desktop-en Windows Virtual Desktop Client-apps worden rood gemarkeerd.](media/cloud-apps-enterprise.png)
 
-7. Onder **toegangs beheer**  >  **toekennen**selecteert u **toegang verlenen**, **multi-factor Authentication vereisen**en **selecteert**u vervolgens.
-8. Onder **toegangs beheer**  >  **sessie**selecteert u **aanmeldings frequentie**, stelt u de waarde in op **1** en de eenheid op **uren**en selecteert u **selecteren**.
-9. Bevestig de instellingen en stel **beleid inschakelen** in **op aan**.
-10. Selecteer **maken** om uw beleid in te scha kelen.
+   >[!NOTE]
+   >Als u de App-ID wilt vinden van de app die u wilt selecteren, gaat u naar **bedrijfs toepassingen** en selecteert u **micro soft-toepassingen** in de vervolg keuzelijst toepassings type.
+
+10. Onder **toegangs beheer**  >  **toekennen**selecteert u **toegang verlenen**, **multi-factor Authentication vereisen**en **selecteert**u vervolgens.
+11. Onder **toegangs beheer**  >  **sessie**selecteert u **aanmeldings frequentie**, stelt u de waarde in op **1** en de eenheid op **uren**en selecteert u **selecteren**.
+12. Bevestig de instellingen en stel **beleid inschakelen** in **op aan**.
+13. Selecteer **maken** om uw beleid in te scha kelen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

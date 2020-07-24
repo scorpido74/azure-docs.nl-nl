@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
-ms.openlocfilehash: 9612114bb368898ccf31b2c8692869b84544b652
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc837405e03ffac41d216a5ba18384208b07aaf1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76721967"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090294"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Gegevens wetenschappen code testen op Azure met het team data Science process en Azure DevOps Services
 Dit artikel bevat voorlopige richt lijnen voor het testen van code in een Data Science-werk stroom. Dergelijke tests bieden gegevens wetenschappers een systematische en efficiënte manier om de kwaliteit en het verwachte resultaat van hun code te controleren. We gebruiken een team data Science process (TDSP)- [project dat gebruikmaakt van de gegevensset van de ICB volwassene voor volwassenen](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) die eerder is gepubliceerd om te laten zien hoe code tests kunnen worden uitgevoerd. 
@@ -137,11 +138,11 @@ Gebruik de volgende stappen voor het instellen en uitvoeren van code testen en e
     
     ![Power shell-Details](./media/code-test/powershell_scripts.PNG)
 
-    bijvoorbeeld Selecteer **& wachtrij opslaan** om het build pipeline-proces te volt ooien.
+    g. Selecteer **& wachtrij opslaan** om het build pipeline-proces te volt ooien.
 
     ![Knop voor opslaan van & wachtrij](./media/code-test/save_and_queue_build_definition.PNG)
 
-Telkens wanneer een nieuwe commit-bewerking naar de code opslagplaats wordt gepusht, wordt het buildproces automatisch gestart. (Hier gebruiken we de Master als opslag plaats, maar u kunt een vertakking definiëren.) Het proces voert het **test1.py** -bestand in de agent machine uit om ervoor te zorgen dat alles wat in de code is gedefinieerd, correct wordt uitgevoerd. 
+Telkens wanneer een nieuwe commit-bewerking naar de code opslagplaats wordt gepusht, wordt het buildproces automatisch gestart. U kunt elke vertakking definiëren. Het proces voert het **test1.py** -bestand in de agent machine uit om ervoor te zorgen dat alles wat in de code is gedefinieerd, correct wordt uitgevoerd. 
 
 Als waarschuwingen correct zijn ingesteld, ontvangt u een melding in het e-mail bericht wanneer de build is voltooid. U kunt ook de status van de build in azure DevOps controleren. Als dit mislukt, kunt u de details van de build controleren en nagaan welk gedeelte wordt verbroken.
 

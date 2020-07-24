@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 05/04/2020
 ms.service: security-center
 ms.topic: conceptual
-ms.openlocfilehash: 18b1b4cb959603f5898e7c725102f35d7abc90cf
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 2dce179365b2640ade3675f19dbacf6fc27b26c2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849018"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089937"
 ---
 # <a name="suppress-alerts-from-azure-security-centers-threat-protection"></a>Waarschuwingen onderdrukken van de bedreigings beveiliging van Azure Security Center
 
@@ -23,9 +23,7 @@ Op deze pagina wordt uitgelegd hoe u regels voor het onderdrukken van waarschuwi
 
 - Release status: **Preview**
 - Vereiste rollen: **beveiligings beheerder** en- **eigenaar** kunnen regels maken/verwijderen. **Beveiligings lezer** en **lezer** kunnen regels weer geven.
-- Clouds 
-    - ✔ Commerciële Clouds
-    - ✔ National/soeverein (US Gov, China gov, andere gov)
+- Clouds: ✔ commerciële Clouds ✔ National/soeverein (US Gov, China gov, andere gov)
 
 
 ## <a name="what-are-suppression-rules"></a>Wat zijn onderdrukkings regels?

@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: 786655f8e8ee7e21f2615361b0bb1ea336ccb479
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 207b597bc865c8234d447759ab8b0f53dc35413c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84190743"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090277"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Veelvoorkomende scenario's, voor beelden, zelf studies en scenario's voor Azure Logic Apps
 
@@ -35,10 +36,10 @@ Hier volgen enkele voor beelden van veelgebruikte triggers:
     * [Terugkerende en geautomatiseerde taken, processen en werkstromen plannen en uitvoeren met Azure Logic Apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)
     * [Zelf studie: automatische, op planning gebaseerde terugkerende werk stromen maken met behulp van Azure Logic Apps](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)
 
-  * De trigger **Wanneer een e-mail wordt ontvangen** , laat uw logische app controleren op nieuwe e-mail van elke e-mail provider die wordt ondersteund door Logic apps, bijvoorbeeld [Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md), [Gmail](https://docs.microsoft.com/connectors/gmail/), [Outlook.com](https://docs.microsoft.com/connectors/outlook/), enzovoort.
+  * De trigger **Wanneer een e-mail wordt ontvangen** , laat uw logische app controleren op nieuwe e-mail van elke e-mail provider die wordt ondersteund door Logic apps, bijvoorbeeld [Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md), [Gmail](/connectors/gmail/), [Outlook.com](/connectors/outlook/), enzovoort.
 
     > [!IMPORTANT]
-    > Als u de Gmail-connector wilt gebruiken, kunnen alleen bedrijfsaccounts van G Suite deze connector zonder beperking in logische apps gebruiken. Als u een Gmail-consumentenaccount hebt, kunt u deze connector alleen gebruiken met specifieke door Google goedgekeurde services, of u kunt [een Google-client-app maken voor verificatie bij uw Gmail-connector](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Zie [Beleid voor gegevensbeveiliging en privacybeleid voor Google-connectors in Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md) voor meer informatie.
+    > Als u de Gmail-connector wilt gebruiken, kunnen alleen bedrijfsaccounts van G Suite deze connector zonder beperking in logische apps gebruiken. Als u een Gmail-consumentenaccount hebt, kunt u deze connector alleen gebruiken met specifieke door Google goedgekeurde services, of u kunt [een Google-client-app maken voor verificatie bij uw Gmail-connector](/connectors/gmail/#authentication-and-bring-your-own-application). Zie [Beleid voor gegevensbeveiliging en privacybeleid voor Google-connectors in Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md) voor meer informatie.
 
     Raadpleeg de volgende onderwerpen voor meer informatie:<p>
 
@@ -104,11 +105,11 @@ U kunt Logic apps volledig ontwikkelen en implementeren met Visual Studio, Azure
 * [Overzicht: implementatie van logische apps automatiseren](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 * [Azure Resource Manager-sjablonen maken voor het automatiseren van de implementatie voor Azure Logic Apps](../logic-apps/logic-apps-create-azure-resource-manager-templates.md)
 * [Azure Resource Manager-sjablonen inzetten voor Azure Logic Apps](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md)
-* [Voor beeld: verbinding maken met Azure Service Bus wacht rijen van Azure Logic Apps en implementeren met Azure-pijp lijnen in azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [Voor beeld: verbinding maken met Azure Storage accounts vanuit Azure Logic Apps en implementeren met Azure-pijp lijnen in azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [Voor beeld: een actie van een functie-app instellen voor Azure Logic Apps en implementeren met Azure-pijp lijnen in azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [Voor beeld: verbinding maken met een integratie account van Azure Logic Apps en implementeren met Azure-pijp lijnen in azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
-* [Voor beeld: Azure-pijp lijnen organiseren met behulp van Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-pipeline-orchestration/azure-devops-orchestration-with-logic-apps/)
+* [Voor beeld: verbinding maken met Azure Service Bus wacht rijen van Azure Logic Apps en implementeren met Azure-pijp lijnen in azure DevOps](/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Voor beeld: verbinding maken met Azure Storage accounts vanuit Azure Logic Apps en implementeren met Azure-pijp lijnen in azure DevOps](/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Voor beeld: een actie van een functie-app instellen voor Azure Logic Apps en implementeren met Azure-pijp lijnen in azure DevOps](/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Voor beeld: verbinding maken met een integratie account van Azure Logic Apps en implementeren met Azure-pijp lijnen in azure DevOps](/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
+* [Voor beeld: Azure-pijp lijnen organiseren met behulp van Azure Logic Apps](/samples/azure-samples/azure-logic-apps-pipeline-orchestration/azure-devops-orchestration-with-logic-apps/)
 
 ### <a name="manage"></a>Beheren
 
@@ -142,7 +143,7 @@ Azure Logic Apps kan worden geïntegreerd met veel services, zoals Azure Functio
 * [Zelf studie: een sociaal dash board met AI-energie maken met behulp van Power BI en Azure Logic Apps](https://aka.ms/logicappsdemo)
 * [Zelfstudie: Wijzigingen in virtuele machines bewaken met Azure Event Grid en Logic Apps](../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md)
 * [Zelf studie: externe bewaking van IoT en meldingen met Azure Logic Apps verbinding maken met uw IoT hub en Postvak](../iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md)
-* [Blog: SOAP-services aanroepen met behulp van Azure Logic Apps](https://blogs.msdn.microsoft.com/logicapps/2016/04/07/using-soap-services-with-logic-apps/)
+* [Blog: SOAP-services aanroepen met behulp van Azure Logic Apps](/archive/blogs/logicapps/using-soap-services-with-logic-apps)
 
 ## <a name="end-to-end-scenarios"></a>End-to-end scenario 's
 

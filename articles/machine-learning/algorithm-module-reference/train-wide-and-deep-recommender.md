@@ -1,5 +1,5 @@
 ---
-title: Afbeeldingsmodel voor score
+title: De module Wide & diep aanbevolen trainen gebruiken
 titleSuffix: Azure Machine Learning
 description: Meer informatie over het gebruik van de module brede & diep aanbevolen voor het trainen van een aanbevelings model.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/12/2020
-ms.openlocfilehash: 2ac5e5874ebb34b68cbfe8be1986852c67b97c21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 234217b6571307db04941cc0b9989d3438cde1b7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84740055"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090175"
 ---
 # <a name="train-wide--deep-recommender"></a>Uitgebreide aanbevolen &er trainen
 In dit artikel wordt beschreven hoe u de module **train & diep aanbevolen** in azure machine learning Designer (preview) gebruikt om een aanbevelings model te trainen. Deze module is gebaseerd op brede & diep gaande lessen, dat door Google wordt voorgesteld.

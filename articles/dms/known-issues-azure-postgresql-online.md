@@ -3,8 +3,8 @@ title: 'Bekende problemen: online migraties van PostgreSQL naar Azure Database f
 titleSuffix: Azure Database Migration Service
 description: Meer informatie over bekende problemen en migratie beperkingen met online migraties van PostgreSQL naar Azure Database for PostgreSQL met behulp van de Azure Database Migration Service.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: arunkumarthiags
+ms.author: arthiaga
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 3d1bc627ccb8814ab2dfb61fb0653ef0ac644038
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 564581a102ac3fab504e82db00ef54b3e45d0c19
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80235270"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090736"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql"></a>Bekende problemen/migratie beperkingen met online migraties van PostgreSQL naar Azure DB voor PostgreSQL
 
@@ -91,12 +91,12 @@ Bekende problemen en beperkingen die zijn gekoppeld aan online migraties van Pos
 
 Wanneer u probeert een online migratie uit te voeren vanaf AWS RDS PostgreSQL naar Azure Database for PostgreSQL, kunnen de volgende fouten optreden.
 
-- **Fout**: de standaard waarde van de kolom {column} in de tabel {table} in de data base {data base} wijkt af van de bron-en doel server. De waarde {waarde op bron} in de bron en {waarde op doel} op het doel.
+- **Fout**: De standaardwaarde van de kolom {kolom} in tabel {tabel} in database {database} is verschillend op bron- en doelservers. De waarde {waarde op bron} in de bron en {waarde op doel} op het doel.
 
   **Beperking**: deze fout treedt op wanneer de standaard waarde op een kolom schema afwijkt van de bron-en doel database.
   **Tijdelijke oplossing**: Zorg ervoor dat het schema op het doel overeenkomt met het schema op de bron. Raadpleeg de [documentatie over Azure postgresql Online Migration](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)voor meer informatie over het migreren van het schema.
 
-- **Fout**: de doel database {Data Base} heeft {aantal Tables}-tabellen, waarbij de bron database {Data Base} de tabellen {aantal tabellen} heeft. Het aantal tabellen op de bron- en doeldatabase moet overeenkomen.
+- **Fout**: Doeldatabase {database} heeft {aantal tabellen} tabellen terwijl brondatabase {database} {aantal tabellen} tabellen heeft. Het aantal tabellen op de bron- en doeldatabase moet overeenkomen.
 
   **Beperking**: deze fout treedt op wanneer het aantal tabellen verschilt van de bron-en doel database.
 

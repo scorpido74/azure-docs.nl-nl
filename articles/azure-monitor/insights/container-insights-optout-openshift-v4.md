@@ -3,12 +3,12 @@ title: Stoppen met het bewaken van uw Azure en Red Hat open Shift v4-cluster | M
 description: In dit artikel wordt beschreven hoe u de bewaking van uw Azure Red Hat open Shift en Red Hat open Shift versie 4-cluster kunt stoppen met Azure Monitor voor containers.
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 768c4db8d72778b555a4f343cf2e23b8fa861991
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf61457b9c8cff40eb3fee2c93c7184fbaae6db5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82196437"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091144"
 ---
 # <a name="how-to-stop-monitoring-your-azure-and-red-hat-openshift-v4-cluster"></a>Het bewaken van uw Azure-en Red Hat open Shift v4-cluster stoppen
 
@@ -49,4 +49,4 @@ Het kan enkele minuten duren voordat de configuratie is gewijzigd. Omdat helm uw
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als de Log Analytics-werk ruimte alleen is gemaakt ter ondersteuning van het bewaken van het cluster en het niet meer nodig is, moet u het hand matig verwijderen. Zie [een Azure log Analytics-werk ruimte verwijderen](../../log-analytics/log-analytics-manage-del-workspace.md)als u niet bekend bent met het verwijderen van een werk ruimte.
+Als de Log Analytics-werk ruimte alleen is gemaakt ter ondersteuning van het bewaken van het cluster en het niet meer nodig is, moet u het hand matig verwijderen. Zie [een Azure log Analytics-werk ruimte verwijderen](../platform/delete-workspace.md)als u niet bekend bent met het verwijderen van een werk ruimte.

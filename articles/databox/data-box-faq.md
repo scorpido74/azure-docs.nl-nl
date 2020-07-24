@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 07/10/2020
+ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 9e54b9add52e484a95cf5a8291dec90a6bb258b8
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 3024c79b6295762636518e3f77d506ad45f73682
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207015"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090753"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: veelgestelde vragen
 
@@ -44,7 +44,9 @@ Nadat u het apparaat hebt ontvangen, kunt u het snel instellen via de lokale web
 A. Als u 40-500 TB aan gegevens hebt die u wilt overdragen naar of van Azure, kunt u profiteren van Data Box. Voor gegevens grootte < 40 TB gebruikt u Data Box Disk en voor de grootte van gegevens > 500 TB, meldt u zich aan voor [Data Box Heavy](data-box-heavy-overview.md).
 
 ### <a name="q-what-is-the-price-of-data-box"></a>V. Wat kost Data Box?
-A. Data Box is verkrijgbaar tegen een nominaal bedrag voor 10 dagen. Als u het productmodel selecteert terwijl u een bestelling in de Azure-portal maakt, zullen de kosten voor het apparaat worden weergegeven. De verzending is ook gratis, maar er zijn wel kosten verbonden aan de Azure-opslag. Ga voor meer informatie naar [Prijzen van Azure Data Box](https://azure.microsoft.com/pricing/details/storage/databox/). 
+A. Data Box is verkrijgbaar tegen een nominaal bedrag voor 10 dagen. Als u het productmodel selecteert terwijl u een bestelling in de Azure-portal maakt, zullen de kosten voor het apparaat worden weergegeven. Standaard verzend kosten en kosten voor Azure Storage zijn ook van toepassing. De export orders volgen een vergelijk bare prijs categorie als voor import orders, maar mogelijk zijn er extra uitgangs kosten van toepassing. 
+
+Ga voor meer informatie naar [Azure data Box prijzen](https://azure.microsoft.com/pricing/details/storage/databox/) en [kosten](https://azure.microsoft.com/pricing/details/bandwidth/)voor uitgaand verkeer. 
 
 ### <a name="q-what-is-the-maximum-amount-of-data-i-can-transfer-with-data-box-in-one-instance"></a>V. Wat is de maximale hoeveelheid gegevens die ik met Data Box in één keer kan overdragen?
 A. Data Box heeft een onbewerkte capaciteit van 100 TB en een bruikbare capaciteit van 80 TB. U kunt met Data Box maximaal 80 TB aan gegevens overdragen. Als u meer gegevens wilt overdragen, moet u meer apparaten bestellen.
@@ -250,7 +252,7 @@ A.  De volgende soorten rapporten zijn beschikbaar ter ondersteuning van de bewa
 A.  De logboeken voor tracering van de koerier worden vastgelegd in de bestelgeschiedenis van Data Box. Dit rapport is beschikbaar nadat het apparaat naar het Azure-datacenter is geretourneerd en de gegevens op de schijven van het apparaat zijn opgeschoond. Voor onmiddellijke behoefte kunt u ook rechtstreeks naar de website van de vervoerder gaan met het order tracking nummer en de tracerings gegevens ophalen.
 
 ### <a name="can-i-transport-the-data-box-to-azure-datacenter"></a>Kan ik de Data Box naar het Azure-datacenter vervoeren? 
-A.  Nee. Als u micro soft Managed Shipping hebt gekozen, kunt u de datum niet transporteren. Het Azure-datacenter accepteert momenteel geen levering van de Data Box door klanten of andere koeriers dan UPS.
+A.  Nee. Als u micro soft Managed Shipping hebt gekozen, kunt u de gegevens niet transporteren. Het Azure-datacenter accepteert momenteel geen levering van de Data Box door klanten of andere koeriers dan UPS.
 
 Als u zelf beheerde verzen ding hebt gekozen, kunt u uw Data Box uit het Azure-Data Center ophalen of verwijderen.
 

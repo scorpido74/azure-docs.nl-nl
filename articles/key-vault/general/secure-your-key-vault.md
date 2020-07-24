@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: sudbalas
-ms.openlocfilehash: 1aea1f3b2401d7b9639c32927ffa7390727d25b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c888fe0f2f4df722948cc6d22e1ef50fd1a3d42
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833635"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090498"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Veilige toegang tot een sleutel kluis
 
@@ -59,7 +59,7 @@ De volgende tabel bevat de eind punten voor de beheer-en gegevens abonnementen.
 
 ## <a name="management-plane-and-rbac"></a>Beheer vlak en RBAC
 
-In het beheer vlak gebruikt u RBAC (op rollen gebaseerd Access Control) om de bewerkingen te autoriseren die een aanroeper kan uitvoeren. In het RBAC-model heeft elk Azure-abonnement een exemplaar van Azure AD. U verleent toegang aan gebruikers, groepen en toepassingen vanuit deze map. Toegang is verleend om resources te beheren in het Azure-abonnement dat gebruikmaakt van het Azure Resource Manager-implementatie model. Als u toegang wilt verlenen, gebruikt u de [Azure Portal](https://portal.azure.com/), de [Azure cli](/cli/azure/install-azure-cli?view=azure-cli-latest), [Azure PowerShell](/powershell/azureps-cmdlets-docs)of de [Azure Resource Manager rest-api's](https://msdn.microsoft.com/library/azure/dn906885.aspx).
+In het beheer vlak gebruikt u RBAC (op rollen gebaseerd Access Control) om de bewerkingen te autoriseren die een aanroeper kan uitvoeren. In het RBAC-model heeft elk Azure-abonnement een exemplaar van Azure AD. U verleent toegang aan gebruikers, groepen en toepassingen vanuit deze map. Toegang is verleend om resources te beheren in het Azure-abonnement dat gebruikmaakt van het Azure Resource Manager-implementatie model. Als u toegang wilt verlenen, gebruikt u de [Azure Portal](https://portal.azure.com/), de [Azure cli](/cli/azure/install-azure-cli?view=azure-cli-latest), [Azure PowerShell](/powershell/azure/)of de [Azure Resource Manager rest-api's](https://msdn.microsoft.com/library/azure/dn906885.aspx).
 
 U maakt een sleutel kluis in een resource groep en beheert de toegang met behulp van Azure AD. U verleent gebruikers of groepen de mogelijkheid om de sleutel kluizen in een resource groep te beheren. U verleent de toegang op een specifiek Scope niveau door de juiste RBAC-rollen toe te wijzen. Als u toegang wilt verlenen aan een gebruiker om sleutel kluizen te beheren, wijst u een vooraf gedefinieerde `key vault Contributor` rol toe aan de gebruiker op een specifiek bereik. De volgende Scope niveaus kunnen worden toegewezen aan een RBAC-rol:
 
@@ -82,7 +82,7 @@ U verleent toegang aan een gebruiker, groep of toepassing om specifieke bewerkin
 
 U kunt de volledige lijst met kluis-en geheime bewerkingen zien en inzicht krijgen in de bewerkingen die zijn toegestaan wanneer u een sleutel kluis toegangs beleid configureert door de volgende referentie te bekijken. [Referentie voor Key Vault bewerking](https://docs.microsoft.com/rest/api/keyvault/#vault-operations)
 
-<a id="key-vault-access-policies"></a>Key Vault toegangs beleid worden machtigingen afzonderlijk verleend aan sleutels, geheimen en certificaten. U kunt een gebruiker alleen toegang geven tot sleutels en niet op geheimen. Toegangs machtigingen voor sleutels, geheimen en certificaten bevinden zich op het niveau van de kluis. Key Vault toegangs beleid biedt geen ondersteuning voor granulaire machtigingen op object niveau, zoals een specifieke sleutel, geheim of certificaat. Als u toegangs beleid wilt instellen voor een sleutel kluis, gebruikt u de [Azure Portal](https://portal.azure.com/), de [Azure cli](/cli/azure/install-azure-cli?view=azure-cli-latest), [Azure PowerShell](/powershell/azureps-cmdlets-docs)of de [rest api's van Key Vault beheer](https://msdn.microsoft.com/library/azure/mt620024.aspx).
+<a id="key-vault-access-policies"></a>Key Vault toegangs beleid worden machtigingen afzonderlijk verleend aan sleutels, geheimen en certificaten. U kunt een gebruiker alleen toegang geven tot sleutels en niet op geheimen. Toegangs machtigingen voor sleutels, geheimen en certificaten bevinden zich op het niveau van de kluis. Key Vault toegangs beleid biedt geen ondersteuning voor granulaire machtigingen op object niveau, zoals een specifieke sleutel, geheim of certificaat. Als u toegangs beleid wilt instellen voor een sleutel kluis, gebruikt u de [Azure Portal](https://portal.azure.com/), de [Azure cli](/cli/azure/install-azure-cli?view=azure-cli-latest), [Azure PowerShell](/powershell/azure/)of de [rest api's van Key Vault beheer](https://msdn.microsoft.com/library/azure/mt620024.aspx).
 
 > [!IMPORTANT]
 > Key Vault toegangs beleid is van toepassing op het niveau van de kluis. Wanneer een gebruiker gemachtigd is om sleutels te maken en te verwijderen, kunnen ze deze bewerkingen uitvoeren op alle sleutels in die sleutel kluis.

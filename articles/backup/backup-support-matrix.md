@@ -3,11 +3,13 @@ title: Ondersteuningsmatrix voor Azure Backup
 description: Bevat een samenvatting van ondersteuningsinstellingen en -beperkingen voor de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: 4946a4627d037053e441152182278c26b4f693fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: f84be4082eb6bc845459b6d88cb3157b2330f23d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84655621"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091008"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Ondersteunings matrix voor Azure Backup
 
@@ -31,10 +33,10 @@ In de volgende tabel worden de functies van Recovery Services kluizen beschreven
 --- | ---
 **Kluizen in het abonnement** | Maximaal 500 Recovery Services-kluizen in één abonnement.
 **Machines in een kluis** | Maxi maal 1.000 Azure-Vm's in één kluis.<br/><br/> Maxi maal 50 MABS-servers kunnen worden geregistreerd in één kluis.
-**Gegevensbronnen** | De maximale grootte van een afzonderlijke [gegevens bron](https://docs.microsoft.com/azure/backup/backup-azure-backup-faq#how-is-the-data-source-size-determined) is 54.400 GB. Deze limiet is niet van toepassing op back-ups van Azure-VM'S. Er gelden geen limieten voor de totale hoeveelheid gegevens waarvan u een back-up kunt maken naar de kluis.
+**Gegevensbronnen** | De maximale grootte van een afzonderlijke [gegevens bron](./backup-azure-backup-faq.md#how-is-the-data-source-size-determined) is 54.400 GB. Deze limiet is niet van toepassing op back-ups van Azure-VM'S. Er gelden geen limieten voor de totale hoeveelheid gegevens waarvan u een back-up kunt maken naar de kluis.
 **Back-ups naar kluis** | **Azure-vm's:** Eenmaal per dag.<br/><br/>**Machines die worden beveiligd door DPM-MABS:** Twee keer per dag.<br/><br/> **Machines maken rechtstreeks back-ups met behulp van de Mars-agent:** Drie keer per dag.
 **Back-ups tussen kluizen** | De back-up bevindt zich in een regio.<br/><br/> U hebt een kluis nodig in elke Azure-regio die virtuele machines bevat waarvan u een back-up wilt maken. U kunt geen back-up maken naar een andere regio.
-**Kluizen verplaatsen** | U kunt [kluizen verplaatsen](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault) tussen abonnementen of tussen resource groepen in hetzelfde abonnement. Het verplaatsen van kluizen over regio's wordt echter niet ondersteund.
+**Kluizen verplaatsen** | U kunt [kluizen verplaatsen](./backup-azure-move-recovery-services-vault.md) tussen abonnementen of tussen resource groepen in hetzelfde abonnement. Het verplaatsen van kluizen over regio's wordt echter niet ondersteund.
 **Gegevens verplaatsen tussen kluizen** | Het verplaatsen van gegevens waarvan een back-up wordt gemaakt tussen kluizen, wordt niet ondersteund.
 **Type kluis opslag wijzigen** | U kunt het type opslag replicatie (geografisch redundante opslag of lokaal redundante opslag) voor een kluis wijzigen voordat er back-ups worden opgeslagen. Nadat een back-ups in de kluis is begonnen, kan het replicatietype niet meer worden gewijzigd.
 
@@ -53,9 +55,9 @@ Dit wordt what's ondersteund als u een back-up wilt maken van on-premises machin
 
 ### <a name="azure-vm-limits"></a>Limieten voor Azure VM's
 
-**Ondergrens** | **Details**
+**Limiet** | **Details**
 --- | ---
-**Azure VM-gegevensschijven** | Zie de [ondersteunings matrix voor Azure VM-back-up](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-storage-support).
+**Azure VM-gegevensschijven** | Zie de [ondersteunings matrix voor Azure VM-back-up](./backup-support-matrix-iaas.md#vm-storage-support).
 **Grootte Azure VM-gegevensschijven** | De afzonderlijke schijf grootte kan Maxi maal 32 TB en Maxi maal 256 TB gecombineerd voor alle schijven in een VM zijn.
 
 ### <a name="azure-vm-backup-options"></a>Azure VM-back-upopties
@@ -128,7 +130,7 @@ Backup ondersteunt de compressie van het back-upverkeer, zoals wordt beschreven 
 
 **Machine** | **Comprimeren naar MABS/DPM (TCP)** | **Comprimeren naar kluis (HTTPS)**
 --- | --- | ---
-**Directe back-ups van on-premises Windows-computers** | NA | ![Yes][green]
+**Directe back-ups van on-premises Windows-computers** | N.v.t. | ![Yes][green]
 **Back-ups van virtuele Azure-machines maken met behulp van VM-extensie** | NA | NA
 **Back-ups op on-premises/Azure-computers met behulp van MABS/DPM** | ![Ja][green] | ![Ja][green]
 
@@ -140,7 +142,7 @@ Backup ondersteunt de compressie van het back-upverkeer, zoals wordt beschreven 
 **Maximale verlooptijd voor een herstelpunt** | Geen limiet
 **Maximale back-upfrequentie naar DPM/MABS** | Om de 15 minuten voor SQL Server<br/><br/> Eenmaal per uur voor andere workloads
 **Maximale back-upfrequentie naar kluis** | **On-premises Windows-machines of Azure vm's met Mars:** Drie per dag<br/><br/> **DPM-MABS:** Twee per dag<br/><br/> **Azure VM-back-up:** Eén per dag
-**Bewaar periode van het herstel punt** | Dagelijks, wekelijks, maandelijks, jaarlijks
+**Bewaarperiode van herstelpunt** | Dagelijks, wekelijks, maandelijks, jaarlijks
 **Maximale bewaarperiode** | Afhankelijk van back-upfrequentie
 **Herstelpunten op DPM-/MABS-schijf** | 64 voor bestands servers; 448 voor app-servers <br/><br/>Onbeperkte tape herstel punten voor on-premises DPM
 

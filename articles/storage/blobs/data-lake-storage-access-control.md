@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 4f5be29dd42b03e86abb2be392ea42f875536fb5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d478723af7d13cc3480f6c2a80bf9b76ba4b84f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84193524"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091348"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Toegangsbeheer in Data Lake Storage Gen2
 
@@ -64,9 +65,9 @@ U kunt geen toegangs beheer lijsten gebruiken om een niveau van toegang te biede
 
 Zie een van de volgende artikelen voor het instellen van machtigingen voor bestands-en mapniveau:
 
-|||
+| Omgeving | Artikel |
 |--------|-----------|
-|Azure Opslagverkenner |[Gebruik Azure Storage Explorer voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2](data-lake-storage-explorer.md#managing-access)|
+|Azure Opslagverkenner |[Azure Storage Explorer gebruiken voor het beheren van adreslijsten, bestanden en ACL's in Azure Data Lake Storage Gen2](data-lake-storage-explorer.md#managing-access)|
 |.NET |[.NET gebruiken voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-dotnet.md)|
 |Java|[Java gebruiken voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-java.md)|
 |Python|[Python gebruiken voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-python.md)|

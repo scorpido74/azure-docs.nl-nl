@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: jlian
-ms.openlocfilehash: 32ff08c62e53384b64981e1c40a3485b17a8ce11
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: f15f0c3f6b442419d3d2e3a253d15465e130eae2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85918758"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090600"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>Ondersteuning voor virtuele netwerken IoT Hub met persoonlijke koppelingen en beheerde identiteit
 
@@ -47,6 +47,8 @@ Voordat u doorgaat, controleert u of aan de volgende vereisten wordt voldaan:
 * Voor apparaten die in on-premises netwerken actief zijn, moet u [VPN (virtueel particulier netwerk)](../vpn-gateway/vpn-gateway-about-vpngateways.md) of [ExpressRoute](https://azure.microsoft.com/services/expressroute/) privé-peering in uw Azure VNet instellen.
 
 ### <a name="set-up-a-private-endpoint-for-iot-hub-ingress"></a>Een persoonlijk eind punt voor IoT Hub ingang instellen
+
+Een persoonlijk eind punt werkt voor IoT Hub Api's (zoals apparaat-naar-Cloud-berichten) en service-Api's (zoals het maken en bijwerken van apparaten).
 
 1. Selecteer in Azure Portal **netwerken**, verbindingen met een **persoonlijk eind punt**en klik op het **+ persoonlijke eind punt**.
 

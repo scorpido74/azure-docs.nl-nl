@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/17/2020
 ms.author: swmachan
-ms.openlocfilehash: 563f4693c358c570caa2566f58002ddfe6c7bc69
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 512632faae453ebdf7cb7b279fe2d29b25d23d6b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584634"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090855"
 ---
 # <a name="translator-30-translate"></a>Translator 3,0: vertalen
 
@@ -43,7 +43,7 @@ Aanvraag parameters die zijn door gegeven voor de query reeks zijn:
     <td><em>Vereiste para meter</em>.<br/>De versie van de API die door de client is aangevraagd. Waarde moet zijn <code>3.0</code> .</td>
   </tr>
   <tr>
-    <td>tot</td>
+    <td>in</td>
     <td><em>Vereiste para meter</em>.<br/>Hiermee geeft u de taal van de uitvoer tekst op. De doel taal moet een van de <a href="./v3-0-languages.md">ondersteunde talen</a> zijn die in het <code>translation</code> bereik zijn opgenomen. Gebruik bijvoorbeeld <code>to=de</code> om naar Duits te vertalen.<br/>Het is mogelijk om naar meerdere talen tegelijk te vertalen door de para meter in de query teken reeks te herhalen. Gebruik bijvoorbeeld <code>to=de&to=it</code> om te vertalen naar Duits en Italiaans.</td>
   </tr>
 </table>
@@ -59,7 +59,7 @@ Aanvraag parameters die zijn door gegeven voor de query reeks zijn:
   </tr>  
   <tr>
     <td>textType</td>
-    <td><em>Optionele para meter</em>.<br/>Hiermee wordt bepaald of de tekst die wordt vertaald tekst zonder opmaak of HTML-tekst is. Een HTML-bestand moet een goed gevormd, volledig element zijn. Mogelijke waarden zijn: <code>plain</code> (standaard) of <code>html</code> .</td>
+    <td><em>Optionele para meter</em>.<br/>Hiermee wordt bepaald of de tekst die wordt vertaald tekst zonder opmaak of HTML-tekst is. Een HTML-bestand moet een goed gevormd, volledig element zijn. Mogelijke waarden zijn: <code>plain</code> (standaard) of <code>html</code>.</td>
   </tr>
   <tr>
     <td>category</td>
@@ -317,6 +317,7 @@ Als u meerdere teken reeksen in één keer verdeelt, hoeft u alleen een matrix m
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}, {'Text':'I am fine, thank you.'}]"
 ```
 
+Het antwoord bevat de vertaling van alle stukjes tekst in dezelfde volg orde als in de aanvraag.
 De antwoord tekst is:
 
 ```
@@ -363,7 +364,7 @@ Als u wilt voor komen dat de vertaling in het gemoeds oog komt, ongeacht de aanw
 
 <table width="100%">
   <th width="20%">ProfanityAction</th>
-  <th>Actie</th>
+  <th>Bewerking</th>
   <tr>
     <td><code>NoAction</code></td>
     <td>Dit is de standaardinstelling. Scheld is van bron naar doel.<br/><br/>

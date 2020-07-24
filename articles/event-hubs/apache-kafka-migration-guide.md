@@ -3,16 +3,17 @@ title: Migreren naar Azure Event Hubs voor Apache Kafka
 description: In dit artikel wordt uitgelegd hoe consumenten en producenten die gebruikmaken van verschillende protocollen (AMQP, Apache Kafka en HTTPS), gebeurtenissen kunnen uitwisselen bij het gebruik van Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 8f6c4cbdcbbc1d589b0803f36305f9a9fe6eebfa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf585cdc0a43c595ec013ba78a2e3ae191c40b8d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322745"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090651"
 ---
 # <a name="migrate-to-azure-event-hubs-for-apache-kafka-ecosystems"></a>Migreren naar Azure Event Hubs voor Apache Kafka-ecosystemen
 Azure Event Hubs geeft een Apache Kafka eind punt weer, waarmee u verbinding kunt maken met Event Hubs met behulp van het Kafka-protocol. Door minimale wijzigingen aan te brengen in uw bestaande Kafka-toepassing, kunt u verbinding maken met Azure Event Hubs en profiteren van de voor delen van het Azure-ecosysteem. Event Hubs voor Kafka-ondersteuning [Apache Kafka versie 1,0](https://kafka.apache.org/10/documentation.html) en hoger.
 
-## <a name="pre-migration"></a>Voorafgaand aan de migratie 
+## <a name="pre-migration"></a>Premigratie 
 
 ### <a name="create-an-azure-account"></a>Een Azure-account maken
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) aan voordat u begint.
@@ -48,7 +49,7 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 
 Als de `sasl.jaas.config` configuratie niet wordt ondersteund in uw Framework, zoekt u de configuraties die worden gebruikt voor het instellen van de sasl gebruikers naam en het wacht woord en gebruiken ze in plaats daarvan. Stel de gebruikers naam `$ConnectionString` en het wacht woord in op uw Event Hubs Connection String.
 
-## <a name="post-migration"></a>Na migratie
+## <a name="post-migration"></a>Postmigratie
 Voer uw Kafka-toepassing uit die gebeurtenissen naar de Event Hub verzendt. Controleer vervolgens of de Event Hub de gebeurtenissen ontvangt met behulp van de Azure Portal. Ga op de pagina **overzicht** van uw event hubs naam ruimte naar de weer gave **berichten** in het gedeelte **metrische gegevens** . U moet de pagina vernieuwen om de grafiek bij te werken. Het kan een paar seconden duren voordat wordt weergegeven dat de berichten zijn ontvangen. 
 
 [![Controleren of de Event Hub de berichten heeft ontvangen](./media/getstarted-dotnet-standard-send-v2/verify-messages-portal.png)](./media/getstarted-dotnet-standard-send-v2/verify-messages-portal.png#lightbox)
@@ -60,4 +61,4 @@ Raadpleeg de volgende artikelen voor meer informatie over Event Hubs en Event Hu
 - [Gids voor het oplossen van problemen met Apache Kafka voor Event Hubs](apache-kafka-troubleshooting-guide.md)
 - [Veelgestelde vragen-Event Hubs voor Apache Kafka](apache-kafka-frequently-asked-questions.md)
 - [Apache Kafka ontwikkelaars handleiding voor Azure Event Hubs](apache-kafka-developer-guide.md)
-- [Aanbevolen configuraties](https://github.com/Azure/azure-event-hubs-for-kafka/blob/master/CONFIGURATION.md)
+- [Aanbevolen configuraties](apache-kafka-configurations.md)

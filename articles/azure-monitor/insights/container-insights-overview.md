@@ -3,12 +3,12 @@ title: Overzicht van Azure Monitor voor containers | Microsoft Docs
 description: In dit artikel worden Azure Monitor beschreven voor containers die de AKS-container Insights-oplossing bewaakt en de waarde die wordt geleverd door de status van uw AKS-clusters en Container Instances in azure te controleren.
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: d176a84d72c92eddd4ffd4fcd1011bda172e5cc4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5fcdd3bfc42e298791e1ab761fa4db432a93dd7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337928"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091161"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>Overzicht van Azure Monitor voor containers
 
@@ -17,7 +17,7 @@ Azure Monitor voor containers is een functie die is ontworpen voor het bewaken v
 - Managed Kubernetes-clusters die worden gehost op de [Azure Kubernetes-service (AKS)](../../aks/intro-kubernetes.md)
 - Zelf beheerde Kubernetes-clusters die worden gehost op Azure met behulp van de [AKS-engine](https://github.com/Azure/aks-engine)
 - [Azure Container Instances](../../container-instances/container-instances-overview.md)
-- Zelf beheerde Kubernetes-clusters die worden gehost op [Azure stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910) of on-premises
+- Zelf beheerde Kubernetes-clusters die worden gehost op [Azure stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910) of on-premises
 - [Azure Red Hat OpenShift](../../openshift/intro-openshift.md)
 - [Kubernetes voor Azure-Arc ingeschakeld](../../azure-arc/kubernetes/overview.md) (preview-versie)
 
@@ -40,7 +40,7 @@ Azure Monitor voor containers biedt een uitgebreide bewakings ervaring met behul
 * Meer informatie over het gedrag van het cluster in gemiddelde en zwaarste belasting. Deze kennis kan u helpen de capaciteits behoeften te identificeren en de maximale belasting te bepalen die het cluster kan vastlopen.
 * Configureer waarschuwingen om u proactief te informeren of op te nemen wanneer het CPU-en geheugen gebruik op knoop punten of containers de drempel waarden overschrijdt, of wanneer er een status wijziging in het cluster optreedt bij het samen vouwen van de infra structuur of de knooppunt status.
 * Integreer met [Prometheus](https://prometheus.io/docs/introduction/overview/) om de metrische gegevens van de toepassing en werk belasting weer te geven die worden verzameld van knoop punten en Kubernetes met behulp van [query's](container-insights-log-search.md) om aangepaste waarschuwingen, Dash boards en gedetailleerde gedetailleerde analyses te maken.
-* Bewaak de werkbelastingen van containers [die zijn geïmplementeerd](https://github.com/Azure/aks-engine) op de AKS-engine on-premises en AKS- [engine op Azure stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908).
+* Bewaak de werkbelastingen van containers [die zijn geïmplementeerd](https://github.com/Azure/aks-engine) op de AKS-engine on-premises en AKS- [engine op Azure stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908).
 * Bewaak de werk belasting van containers [die zijn geïmplementeerd in azure Red Hat open Shift](../../openshift/intro-openshift.md).
 
     >[!NOTE]
@@ -51,7 +51,7 @@ Azure Monitor voor containers biedt een uitgebreide bewakings ervaring met behul
 
 De belangrijkste verschillen in het bewaken van een Windows Server-cluster in vergelijking met een Linux-cluster zijn als volgt:
 
-- Windows heeft geen geheugen-RSS-metriek en is daarom niet beschikbaar voor Windows-knoop punten en-containers. De metrische [werkset](https://docs.microsoft.com/windows/win32/memory/working-set) is beschikbaar.
+- Windows heeft geen geheugen-RSS-metriek en is daarom niet beschikbaar voor Windows-knoop punten en-containers. De metrische [werkset](/windows/win32/memory/working-set) is beschikbaar.
 - Informatie over capaciteit van schijf opslag is niet beschikbaar voor Windows-knoop punten.
 - Alleen pod omgevingen worden bewaakt, niet-docker-omgevingen.
 - Met de preview-versie worden Maxi maal 30 Windows Server-containers ondersteund. Deze beperking is niet van toepassing op Linux-containers.

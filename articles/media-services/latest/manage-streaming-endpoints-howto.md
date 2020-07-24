@@ -14,17 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2020
 ms.author: juliako
-ms.openlocfilehash: 75ba2ad87eabd7ff6b0625ad95ab24a8ae58dd0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb3b319c583422b32798fce9cef4c73a4aa1f8de
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79461041"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090039"
 ---
 # <a name="manage-streaming-endpoints-with--media-services-v3"></a>Streaming-eind punten beheren met Media Services v3
 
 Wanneer uw Media Services-account is gemaakt, wordt er een **standaard** [streaming-eind punt](streaming-endpoint-concept.md) aan uw account toegevoegd met de status **gestopt** . Als u de inhoud wilt streamen en gebruik wilt maken van [dynamische pakketten](dynamic-packaging-overview.md) en [dynamische versleuteling](content-protection-overview.md), moet het streaming-eind punt van waar u inhoud wilt streamen, de status **wordt uitgevoerd** hebben.
 
-In dit artikel wordt beschreven hoe u de [Start](https://docs.microsoft.com/rest/api/media/streamingendpoints/start) -opdracht uitvoert op het streaming-eind punt met behulp van verschillende technologieën. 
+In dit artikel wordt beschreven hoe u de [Start](/rest/api/media/streamingendpoints/start) -opdracht uitvoert op het streaming-eind punt met behulp van verschillende technologieën. 
  
 > [!NOTE]
 > Er worden alleen kosten in rekening gebracht wanneer het streaming-eind punt wordt uitgevoerd.
@@ -45,7 +46,7 @@ POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-00000000
 
 Zie voor meer informatie: 
 
-* De documentatie voor [een StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints/start) -referentie starten.
+* De documentatie voor [een StreamingEndpoint](/rest/api/media/streamingendpoints/start) -referentie starten.
 * Het starten van een streaming-eind punt is een asynchrone bewerking. 
 
     Zie [langlopende bewerkingen](media-services-apis-overview.md)voor meer informatie over het controleren van langlopende bewerkingen.
@@ -69,7 +70,7 @@ az ams streaming-endpoint start [--account-name]
                                 [--subscription]
 ```
 
-Zie [AZ AMS streaming-endpoint start](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest#az-ams-streaming-endpoint-start)voor meer informatie.
+Zie [AZ AMS streaming-endpoint start](/cli/azure/ams/streaming-endpoint?view=azure-cli-latest#az-ams-streaming-endpoint-start)voor meer informatie.
 
 ## <a name="use-sdks"></a>SDK's gebruiken
 
@@ -105,4 +106,4 @@ Bekijk het volledige voor [beeld van .net-code](https://github.com/Azure-Samples
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Media Services v3 OpenAPI-specificatie (Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)
-* [Streaming-eindpunt bewerkingen](https://docs.microsoft.com/rest/api/media/streamingendpoints)
+* [Streaming-eindpunt bewerkingen](/rest/api/media/streamingendpoints)

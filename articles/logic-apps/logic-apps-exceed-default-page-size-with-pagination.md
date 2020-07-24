@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 04/11/2019
-ms.openlocfilehash: 9f114dd0428e13b3e1a205fea353b38b1f8a6f97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d46bf711a46e27b81a1284b5fc55cf403b7da048
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83835356"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090260"
 ---
 # <a name="get-more-data-items-or-records-by-using-pagination-in-azure-logic-apps"></a>Meer gegevens, items of records ophalen met behulp van paginering in Azure Logic Apps
 
@@ -26,16 +27,16 @@ Als u de paginerings instelling inschakelt, worden de pagina's met resultaten op
 
 Hier volgt een lijst met slechts enkele Connect oren waar u de standaard pagina grootte voor specifieke acties kunt overschrijden:
 
-* [Azure Blob Storage](https://docs.microsoft.com/connectors/azureblob/)
-* [Dynamics 365](https://docs.microsoft.com/connectors/dynamicscrmonline/)
-* [Excel](https://docs.microsoft.com/connectors/excel/)
-* [HTTP](https://docs.microsoft.com/azure/connectors/connectors-native-http)
-* [IBM DB2](https://docs.microsoft.com/connectors/db2/)
-* [Microsoft Teams](https://docs.microsoft.com/connectors/teams/)
-* [Oracle Database](https://docs.microsoft.com/connectors/oracle/)
-* [Salesforce](https://docs.microsoft.com/connectors/salesforce/)
-* [SharePoint](https://docs.microsoft.com/connectors/sharepointonline/)
-* [SQL Server](https://docs.microsoft.com/connectors/sql/)
+* [Azure Blob Storage](/connectors/azureblob/)
+* [Dynamics 365](/connectors/dynamicscrmonline/)
+* [Excel](/connectors/excel/)
+* [HTTP](../connectors/connectors-native-http.md)
+* [IBM DB2](/connectors/db2/)
+* [Microsoft Teams](/connectors/teams/)
+* [Oracle Database](/connectors/oracle/)
+* [Salesforce](/connectors/salesforce/)
+* [SharePoint](/connectors/sharepointonline/)
+* [SQL Server](/connectors/sql/)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -83,4 +84,4 @@ Wanneer u paginering inschakelt voor een actie die ondersteuning biedt voor deze
 
 ## <a name="get-support"></a>Ondersteuning krijgen
 
-Ga voor vragen naar de [pagina micro soft Q&een vraag voor Azure Logic apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
+Ga voor vragen naar de [pagina micro soft Q&een vraag voor Azure Logic apps](/answers/topics/azure-logic-apps.html).

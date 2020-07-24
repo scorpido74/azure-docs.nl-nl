@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: c6bd45324313ebc44bd4c59cd6f09e2eaab28d32
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9f8850b83b2af7f0d3007cd716f9e077361a02e2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505139"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091110"
 ---
 # <a name="log-analytics-agent-overview"></a>Overzicht van Log Analytics-agent
 De Azure Log Analytics-agent is ontwikkeld voor uitgebreid beheer over virtuele machines in elke Cloud, on-premises machines en die worden bewaakt door [System Center Operations Manager](/system-center/scom/). De Windows-en Linux-agents verzenden verzamelde gegevens van verschillende bronnen naar uw Log Analytics-werk ruimte in Azure Monitor, evenals alle unieke Logboeken of meet waarden zoals gedefinieerd in een bewakings oplossing. De Log Analytics-agent biedt ook ondersteuning voor inzichten en andere services in Azure Monitor zoals [Azure monitor voor VM's](../insights/vminsights-enable-overview.md), [Azure Security Center](../../security-center/index.yml)en [Azure Automation](../../automation/automation-intro.md).
@@ -153,6 +153,7 @@ De volgende tabel geeft een overzicht van de pakketten die vereist zijn voor de 
 |Glibc |    GNU C-bibliotheek | 2.5-12 
 |Openssl    | OpenSSL-bibliotheken | 1.0. x of 1.1. x |
 |Curl | Krul webclient | 7.15.5 |
+|Python | | 2.6 + of 3.3 +
 |Python-ctypes | | 
 |PAM | Pluggable Authentication Modules | | 
 
@@ -188,10 +189,10 @@ De volgende tabel bevat de proxy-en firewall configuratie-informatie die is vere
 
 |Agentresource|Poorten |Richting |HTTPS-controle overslaan|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Poort 443 |Uitgaand|Ja |  
-|*.oms.opinsights.azure.com |Poort 443 |Uitgaand|Ja |  
-|*.blob.core.windows.net |Poort 443 |Uitgaand|Ja |
-|*.azure-automation.net |Poort 443 |Uitgaand|Ja |
+|*.ods.opinsights.azure.com |Poort 443 |Uitgaand|Yes |  
+|*.oms.opinsights.azure.com |Poort 443 |Uitgaand|Yes |  
+|*.blob.core.windows.net |Poort 443 |Uitgaand|Yes |
+|*.azure-automation.net |Poort 443 |Uitgaand|Yes |
 
 Zie [Azure Government Management](../../azure-government/compare-azure-government-global-azure.md#azure-monitor-logs)voor informatie over de firewall die vereist is voor Azure Government. 
 

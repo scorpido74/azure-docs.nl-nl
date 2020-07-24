@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 2b5c28fccc411a8372ebd6015f796c8309146dfa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2edf1574784ec93448495086fdd05c988a3e55a7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476764"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090532"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Gids voor Azure Key Vault-ontwikkelaars
 
@@ -40,7 +40,7 @@ Voordat u aan de slag gaat met sleutels, geheimen of certificaten in uw sleutel 
 
 - [Sleutel kluizen maken en beheren met CLI](../secrets/quick-create-cli.md)
 - [Sleutel kluizen maken en beheren met Power shell](../secrets/quick-create-powershell.md)
-- [Sleutel kluizen maken en beheren met de Azure-poort](../secrets/quick-create-portal.md)
+- [Sleutel kluizen maken en beheren met de Azure Portal](../secrets/quick-create-portal.md)
 - [Sleutel kluizen maken en beheren met python](../secrets/quick-create-python.md)
 - [Sleutel kluizen maken en beheren met Java](../secrets/quick-create-java.md)
 - [Sleutel kluizen maken en beheren met Node.js](../secrets/quick-create-node.md)
@@ -75,11 +75,11 @@ Zie de [release opmerkingen](dotnet2api-release-notes.md)voor meer informatie ov
 
 In Node.js zijn de API voor Key Vault beheer en de API voor Key Vault object gescheiden. In het volgende overzichts artikel vindt u toegang tot beide. 
 
-[Azure Key Vault modules voor Node.js](/javascript/api/overview/azure/key-vault?view=azure-node-latest)
+[Azure Key Vault modules voor Node.js](https://docs.microsoft.com/javascript/api/overview/azure/key-vault-index?view=azure-node-latest)
 
 #### <a name="python"></a>Python
 
-[Azure Key Vault bibliotheken voor python](/python/api/overview/azure/key-vault?view=azure-python)
+[Azure Key Vault bibliotheken voor python](https://docs.microsoft.com/python/api/overview/azure/key-vault-index?view=azure-python)
 
 #### <a name="azure-cli"></a>Azure CLI
 
@@ -100,7 +100,7 @@ Zie voor meer voor beelden van het gebruik van Key Vault met uw toepassingen:
 
 De volgende artikelen en scenario's bevatten toepassingsspecifieke richt lijnen voor het werken met Azure Key Vault:
 
-- De [Tenant-id van de sleutel kluis wijzigen nadat het abonnement is verplaatst](subscription-move-fix.md) : wanneer u uw Azure-abonnement van Tenant A naar Tenant b verplaatst, zijn uw bestaande sleutel kluizen niet toegankelijk voor de principals (gebruikers en toepassingen) in Tenant b. Los dit probleem op met behulp van deze hand leiding.
+- De [Tenant-id van de sleutel kluis wijzigen nadat het abonnement is verplaatst](move-subscription.md) : wanneer u uw Azure-abonnement van Tenant A naar Tenant b verplaatst, zijn uw bestaande sleutel kluizen niet toegankelijk voor de principals (gebruikers en toepassingen) in Tenant b. Los dit probleem op met behulp van deze hand leiding.
 - Toegang [tot Key Vault achter de firewall](access-behind-firewall.md) : voor toegang tot een sleutel kluis moet de client toepassing voor de sleutel kluis toegang hebben tot meerdere eind punten voor verschillende functies.
 - [Het genereren en overdragen van met HSM beveiligde sleutels voor Azure Key Vault](../keys/hsm-protected-keys.md) : dit helpt u bij het plannen, genereren en vervolgens overdragen van uw eigen met HSM beveiligde sleutels voor gebruik met Azure Key Vault.
 - [Veilige waarden (zoals wacht woorden) door geven tijdens de implementatie](../../azure-resource-manager/templates/key-vault-parameter.md) : wanneer u tijdens de implementatie een beveiligde waarde (zoals een wacht woord) moet door geven als een para meter, kunt u die waarde opslaan als een geheim in een Azure Key Vault en naar de waarde in andere Resource Manager-sjablonen verwijzen.

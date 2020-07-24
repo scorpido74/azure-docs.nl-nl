@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: bb5288d043ab5638bb33c357cea55c64b03fcf1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2d4af5086e3cf4099013969cd359f8e11873c6d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81432123"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090617"
 ---
 # <a name="provide-key-vault-authentication-with-a-managed-identity"></a>Key Vault-verificatie bieden met een beheerde identiteit
 
@@ -35,7 +35,7 @@ U hebt de volgende resources nodig om deze handleiding te voltooien.
    - [Een sleutelkluis maken met Azure PowerShell](../secrets/quick-create-powershell.md)
    - [Een sleutelkluis maken met de Azure-portal](../secrets/quick-create-portal.md).
 - Een bestaande App Service-toepassing waaraan toegang tot de sleutel kluis moet worden verleend. U kunt een snelle versie maken door de stappen in de [app service-documentatie](../../app-service/overview.md)te volgen.
-- [Azure cli](/cli/azure/install-azure-cli?view=azure-cli-latest) of [Azure PowerShell](/powershell/azure/overview). U kunt ook de [Azure-portal](https://portal.azure.com) gebruiken.
+- [Azure cli](/cli/azure/install-azure-cli?view=azure-cli-latest) of [Azure PowerShell](/powershell/azure/). U kunt ook de [Azure-portal](https://portal.azure.com) gebruiken.
 
 
 ## <a name="adding-a-system-assigned-identity"></a>Een door het systeem toegewezen identiteit toevoegen 
@@ -52,7 +52,7 @@ Als u een beheerde identiteit in de portal instelt, moet u eerst een toepassing 
 
 1. Schakel op het tabblad **systeem toegewezen** de optie **status** in **op aan**. Klik op **Opslaan**. 
 
-    ![](../media/managed-identity-system-assigned.png)
+   ![Scherm afbeelding waarin een door het systeem toegewezen identiteit wordt opgeslagen.](../media/managed-identity-system-assigned.png)
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -86,7 +86,7 @@ Noteer de `PrincipalId` , die in de volgende sectie nodig is.
   "type": "SystemAssigned"
 }
 ```
-## <a name="grant-your-app-access-to-key-vault"></a>Uw app toegang geven tot Key Vault 
+## <a name="grant-your-app-access-to-key-vault"></a>Uw app toegang verlenen tot Key Vault 
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -100,7 +100,7 @@ Noteer de `PrincipalId` , die in de volgende sectie nodig is.
 
 1.  Klik op **toevoegen** om het toevoegen van het nieuwe toegangs beleid te volt ooien.
 
-    ![](../media/managed-identity-access-policy.png)
+    ![Scherm opname van het toevoegen van een nieuw toegangs beleid in de Azure Portal.](../media/managed-identity-access-policy.png)
 
 ### <a name="azure-cli"></a>Azure CLI
 

@@ -3,12 +3,12 @@ title: Beheerervaring in meerdere tenants
 description: Azure delegated Resource Management maakt een cross-Tenant beheer mogelijk.
 ms.date: 07/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1b3aa15dd968b4cded831934103a02420d020b9a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: be4f9581e8a276b4296faedb65691232dee2ea95
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521034"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090413"
 ---
 # <a name="cross-tenant-management-experiences"></a>Beheerervaring in meerdere tenants
 
@@ -53,7 +53,7 @@ De meeste taken en services kunnen worden uitgevoerd op gedelegeerde resources i
   - Verbonden computers beheren met Azure-constructs, zoals Azure Policy en tagging
   - Zorg ervoor dat dezelfde set beleids regels wordt toegepast op hybride omgevingen van klanten
   - Azure Security Center gebruiken om de naleving van hybride omgevingen van klanten te bewaken
-- Hybride Kubernetes-clusters op schaal beheren- [Azure Arc for Kubernetes (preview)](../../azure-arc/kubernetes/overview.md):
+- Hybride Kubernetes-clusters op schaal beheren- [Kubernetes van Azure Arc ingeschakeld (preview)](../../azure-arc/kubernetes/overview.md):
   - [Een Kubernetes-cluster verbinden met Azure Arc](../../azure-arc/kubernetes/connect-cluster.md) met gedelegeerde abonnementen en/of resource groepen in azure
   - [GitOps gebruiken](../../azure-arc/kubernetes/use-gitops-connected-cluster.md) voor verbonden clusters
   - Beleid afdwingen in verbonden clusters

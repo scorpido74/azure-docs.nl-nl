@@ -4,12 +4,12 @@ description: Bewaak webtoepassingen voor Beschik baarheid, prestaties en gebruik
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.reviewer: lmolkova
-ms.openlocfilehash: d3d1d8aafaea8dcb9e67b842acfbd493e02e4854
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 955988cd16af5269c474061cf60fb18a040909e3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086242"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091229"
 ---
 # <a name="application-insights-for-net-console-applications"></a>Application Insights voor .NET-console toepassingen
 
@@ -18,7 +18,7 @@ Met [Application Insights](../../azure-monitor/app/app-insights-overview.md) kun
 U hebt een abonnement met [Microsoft Azure](https://azure.com)nodig. Meld u aan met een Microsoft-account, dat u mogelijk hebt voor Windows, Xbox Live of andere micro soft-Cloud Services. Uw team heeft mogelijk een organisatie abonnement op Azure: vraag de eigenaar om u toe te voegen met behulp van uw Microsoft-account.
 
 > [!NOTE]
-> Het is *raadzaam* om het pakket [micro soft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) en de bijbehorende instructies van [hier](../../azure-monitor/app/worker-service.md) te gebruiken voor alle console toepassingen. Deze pakket doelen [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard) en kunnen daarom worden gebruikt in .net Core 2,1 of hoger, en .NET Framework 4.7.2 of hoger.
+> Het is *raadzaam* om het pakket [micro soft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) en de bijbehorende instructies van [hier](../../azure-monitor/app/worker-service.md) te gebruiken voor alle console toepassingen. Deze pakket doelen [`NetStandard2.0`](/dotnet/standard/net-standard) en kunnen daarom worden gebruikt in .net Core 2,1 of hoger, en .NET Framework 4.7.2 of hoger.
 
 ## <a name="getting-started"></a>Aan de slag
 

@@ -4,12 +4,12 @@ description: Meer informatie over het maken van een back-up van een Exchange-Ser
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: b45efa0623edbec47b8ae12d3a97b1e032626530
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d547b1d86b95a4f90d3faaa2f676c7cc37255d3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80396407"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091127"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Met System Center 2012 R2 DPM een back-up maken van een Exchange-server in Azure Backup
 
@@ -38,8 +38,8 @@ Voordat u doorgaat, moet u ervoor zorgen dat aan alle [vereisten](backup-azure-d
 
 Voer de volgende stappen uit om de DPM-beveiligings agent te installeren op de Exchange-Server:
 
-1. Zorg ervoor dat de firewalls correct zijn geconfigureerd. Zie [firewall-uitzonde ringen voor de agent configureren](https://docs.microsoft.com/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019).
-2. Installeer de agent op de Exchange-Server door te klikken op **beheer > agents >** in DPM Administrator-console te installeren. Zie [de DPM-beveiligings agent installeren](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) voor gedetailleerde stappen.
+1. Zorg ervoor dat de firewalls correct zijn geconfigureerd. Zie [firewall-uitzonde ringen voor de agent configureren](/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019).
+2. Installeer de agent op de Exchange-Server door te klikken op **beheer > agents >** in DPM Administrator-console te installeren. Zie [de DPM-beveiligings agent installeren](/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) voor gedetailleerde stappen.
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Een beveiligings groep maken voor de Exchange-Server
 
@@ -49,7 +49,7 @@ Voer de volgende stappen uit om de DPM-beveiligings agent te installeren op de E
 4. Selecteer de Exchange Server-Data Base die u wilt beveiligen en klik op **volgende**.
 
    > [!NOTE]
-   > Als u Exchange 2013 beveiligt, controleert u de [vereisten voor exchange 2013](https://docs.microsoft.com/system-center/dpm/back-up-exchange?view=sc-dpm-2016).
+   > Als u Exchange 2013 beveiligt, controleert u de [vereisten voor exchange 2013](/system-center/dpm/back-up-exchange).
    >
    >
 

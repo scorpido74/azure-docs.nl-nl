@@ -5,20 +5,20 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/26/2019
+ms.date: 07/20/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: f6f4978ef2b6ddc487f60e6a1193164ec07e5548
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3f4ab13c893ec7125ae720cae63b0c1e45f6f3de
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809105"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091280"
 ---
 # <a name="specify-a-customer-provided-key-on-a-request-to-blob-storage-with-net"></a>Geef een door de klant opgegeven sleutel op een aanvraag naar Blob-opslag met .NET
 
-Clients die aanvragen indienen voor Azure Blob-opslag hebben de optie om een versleutelings sleutel op te geven voor een afzonderlijke aanvraag. Met inbegrip van de versleutelings sleutel op de aanvraag biedt gedetailleerde controle over de versleutelings instellingen voor Blob Storage-bewerkingen. Door de klant verschafte sleutels (preview) kunnen worden opgeslagen in Azure Key Vault of in een ander sleutel archief.
+Clients die aanvragen indienen voor Azure Blob-opslag hebben de optie om een versleutelings sleutel op te geven voor een afzonderlijke aanvraag. Met inbegrip van de versleutelings sleutel op de aanvraag biedt gedetailleerde controle over de versleutelings instellingen voor Blob Storage-bewerkingen. Door de klant verschafte sleutels kunnen worden opgeslagen in Azure Key Vault of in een andere sleutel opslag.
 
 In dit artikel wordt uitgelegd hoe u een door de klant opgegeven sleutel kunt opgeven voor een aanvraag met .NET.
 

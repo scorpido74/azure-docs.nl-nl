@@ -3,12 +3,12 @@ title: Antwoorden op veelgestelde vragen
 description: 'Antwoorden op veelgestelde vragen over de functies van Azure Backup, waaronder de Recovery Services-kluis, waarvan een back-up kan worden gemaakt, hoe het werkt, versleuteling en limieten. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 96733ffaae101bb2cf716fda7500a8269ce8e357
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 6d05c06b1d27cd9d1bc396bddad49fcc89ba3ec3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970481"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091076"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - veelgestelde vragen
 
@@ -86,7 +86,7 @@ Windows 10 64-bits | Enterprise, Pro, Home | Op machines moeten de nieuwste serv
 Windows 8.1 64-bits | Enterprise, Pro | Op machines moeten de nieuwste servicepacks en updates worden uitgevoerd.
 Windows 8 64-bits | Enterprise, Pro | Op machines moeten de nieuwste servicepacks en updates worden uitgevoerd.
 Windows 7 64-bits | Ultimate, Enterprise, Professional, Home Premium Home Basic, Starter | Op machines moeten de nieuwste servicepacks en updates worden uitgevoerd.
-server | |
+Server | |
 Windows Server 2019 64-bits | Standard, Datacenter, Essentials | Met de nieuwste servicepacks/updates.
 Windows Server 2016 64-bits | Standard, Datacenter, Essentials | Met de nieuwste servicepacks/updates.
 Windows Server 2012 R2 64-bits | Standard, Datacenter, Foundation | Met de nieuwste servicepacks/updates.
@@ -111,7 +111,7 @@ Windows 8 of hoger | 54.400 GB
 Windows 7 |1700 GB
 Windows Server 2012 of hoger | 54.400 GB
 Windows Server 2008, Windows Server 2008 R2 | 1700 GB
-Azure VM | Zie de [ondersteunings matrix voor Azure VM backup](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-storage-support)
+Azure VM | Zie de [ondersteunings matrix voor Azure VM backup](./backup-support-matrix-iaas.md#vm-storage-support)
 
 ### <a name="how-is-the-data-source-size-determined"></a>Hoe wordt de grootte van de gegevensbron bepaald?
 
@@ -127,7 +127,7 @@ BMR/systeemstatus |Elke afzonderlijke kopie van de BMR of systeemstatus van de m
 
 ### <a name="is-there-a-limit-on-the-amount-of-data-backed-up-using-a-recovery-services-vault"></a>Is er een limiet voor de hoeveelheid gegevens waarvan een back-up wordt gemaakt met een Recovery Services-kluis?
 
-Er is geen limiet voor de totale hoeveelheid gegevens waarvan u een back-up kunt maken met behulp van een Recovery Services kluis. De afzonderlijke gegevens bronnen (met uitzonde ring van virtuele machines van Azure) kunnen Maxi maal 54.400 GB groot zijn. Zie de [sectie kluis limieten in de ondersteunings matrix](https://docs.microsoft.com/azure/backup/backup-support-matrix#vault-support)voor meer informatie over limieten.
+Er is geen limiet voor de totale hoeveelheid gegevens waarvan u een back-up kunt maken met behulp van een Recovery Services kluis. De afzonderlijke gegevens bronnen (met uitzonde ring van virtuele machines van Azure) kunnen Maxi maal 54.400 GB groot zijn. Zie de [sectie kluis limieten in de ondersteunings matrix](./backup-support-matrix.md#vault-support)voor meer informatie over limieten.
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-selected-for-backup"></a>Waarom is de omvang van de gegevens die worden overgebracht naar de Recovery Services-kluis, kleiner dan de hoeveelheid gegevens die zijn geselecteerd voor een back-up?
 

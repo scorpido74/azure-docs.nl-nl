@@ -12,12 +12,12 @@ ms.topic: article
 ms.custom: ''
 ms.date: 05/14/2019
 ms.author: juliako
-ms.openlocfilehash: 7c1b446ccf04199449f012e738f6a03660735f50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b718a0a67381e2b1eb19d2397ecf86e4a9c196d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80382950"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090124"
 ---
 # <a name="how-to-encode-with-a-custom-transform---azure-cli"></a>Coderen met een aangepaste trans formatie-Azure CLI
 
@@ -32,7 +32,7 @@ Bij het maken van aangepaste voor instellingen gelden de volgende overwegingen:
 
 ## <a name="prerequisites"></a>Vereisten
 
-[Maak een Media Services-account](create-account-cli-how-to.md).
+[Een Azure Media Services-account maken](./create-account-howto.md).
 
 Zorg ervoor dat u de naam van de resource groep en de naam van het Media Services account vergeet.
 
@@ -140,6 +140,6 @@ az ams transform create -a amsaccount -g amsResourceGroup -n customTransformName
 
 Als Media Services de trans formatie op de opgegeven video of audio wilt Toep assen, moet u een taak onder die trans formatie indienen. Voor een volledig voor beeld waarin wordt getoond hoe u een taak onder een trans formatie verzendt, raadpleegt u [Quick Start: video bestanden streamen-Azure cli](stream-files-cli-quickstart.md).
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 [Azure-CLI](/cli/azure/ams)

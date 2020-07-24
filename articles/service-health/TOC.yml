@@ -24,7 +24,7 @@
 - name: Procedures
   items:
     - name: Waarschuwingen voor servicestatusgebeurtenissen configureren
-      href: alerts-activity-log-service-notifications.md
+      href: ./alerts-activity-log-service-notifications-portal.md
     - name: Servicestatusmeldingen bekijken met de Azure-portal
       href: service-notifications.md
     - name: Waarschuwingen naar externe systemen verzenden via een webhook

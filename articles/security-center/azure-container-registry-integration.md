@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2020
+ms.date: 07/19/2020
 ms.author: memildin
-ms.openlocfilehash: f3ef633ff0271d74eea7320faadf17685976d3b6
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 2f995f3f6defd73575d9e1bf19326a828f1e6038
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970464"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089903"
 ---
 # <a name="azure-container-registry-integration-with-security-center"></a>Integratie met Security Center Azure Container Registry
 
@@ -30,6 +30,11 @@ Als u zich in de Standard-laag van Azure Security Center bevindt, kunt u de bund
 
 - Release status: **algemene Beschik baarheid**
 - Vereiste rollen: **beveiligings lezer** en [rol van Azure container Registry lezer](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
+- Ondersteunde registers:
+    - ✔ Door Linux gehoste ACR-registers die toegankelijk zijn via het open bare Internet en shell toegang bieden.
+    - ✘ Door Windows gehoste ACR-registers.
+    - ✘ ' Persoonlijke ' registers-Security Center vereist dat uw registers toegankelijk zijn via het open bare Internet. Als u de toegang tot uw registers hebt beperkt met een firewall, een service-eind punt of door gebruik te maken van een persoonlijk eind punt (bijvoorbeeld Azure private link), kunt Security Center momenteel geen verbinding met het REGI ster of scannen.
+    - ✘ Zeer minimale afbeeldingen zoals [docker](https://hub.docker.com/_/scratch/) -werk afbeeldingen, of Distroless-installatie kopieën die alleen een toepassing en de runtime-afhankelijkheden bevatten zonder pakket beheer, shell of besturings systeem.
 - Clouds 
     - ✔ Commerciële Clouds
     - ✘-Cloud voor de Amerikaanse overheid
@@ -40,7 +45,7 @@ Als u zich in de Standard-laag van Azure Security Center bevindt, kunt u de bund
 
 Wanneer een installatie kopie naar het REGI ster wordt gepusht, wordt de installatie kopie automatisch gescand door Security Center. U kunt de scan van een afbeelding activeren door deze naar uw opslag plaats te pushen.
 
-Wanneer de scan is voltooid (doorgaans na ongeveer 10 minuten, maar Maxi maal 40 minuten kan zijn), zijn er conclusies beschikbaar als Security Center aanbevelingen als volgt:
+Wanneer de scan is voltooid (doorgaans na ongeveer 2 minuten, maar Maxi maal 15 minuten kan zijn), zijn er conclusies beschikbaar als Security Center aanbevelingen als volgt:
 
 [![Voor beeld Azure Security Center aanbeveling over zwakke plekken die zijn gedetecteerd in een gehoste installatie kopie van Azure Container Registry (ACR)](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
 
@@ -58,11 +63,6 @@ Security Center identificeert op ARM gebaseerde ACR-registers in uw abonnement e
 
 
 ## <a name="acr-with-security-center-faq"></a>ACR met veelgestelde vragen over Security Center
-
-### <a name="what-types-of-images-can-azure-security-center-scan"></a>Welke typen installatie kopieën kunnen Azure Security Center scannen?
-Security Center scant installatie kopieën op basis van Linux-besturings systemen die shell toegang bieden. 
-
-De Qualys-scanner ondersteunt geen super minimale afbeeldingen zoals [docker](https://hub.docker.com/_/scratch/) -werk afbeeldingen, of Distroless-installatie kopieën die alleen uw toepassing en de runtime-afhankelijkheden bevatten zonder pakket beheer, shell of besturings systeem.
 
 ### <a name="how-does-azure-security-center-scan-an-image"></a>Hoe scant Azure Security Center een afbeelding?
 De installatie kopie wordt opgehaald uit het REGI ster. Het wordt vervolgens uitgevoerd in een geïsoleerde sandbox met de Qualys-scanner die een lijst met bekende beveiligings problemen ophaalt.

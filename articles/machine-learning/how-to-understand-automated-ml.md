@@ -10,11 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 12/05/2019
-ms.openlocfilehash: 119f26f8d5a425462382a873d7ca4bcfdd6f3d03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 18addfc6b7a0002aba26b668481d6bedb612fffc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85214499"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090345"
 ---
 # <a name="understand-automated-machine-learning-results"></a>Geautomatiseerde machine learning-resultaten begrijpen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -22,8 +23,8 @@ ms.locfileid: "85214499"
 In dit artikel leert u hoe u de diagrammen en metrische gegevens voor elk van uw geautomatiseerde machine learning-uitvoeringen kunt weer geven en begrijpen. 
 
 Meer informatie over:
-+ [Metrische gegevens, grafieken en curven voor classificatie modellen](#classification)
-+ [Metrische gegevens, grafieken en grafieken voor regressie modellen](#regression)
++ [Metrische gegevens en grafieken voor classificatie modellen](#classification)
++ [Metrische gegevens en grafieken voor regressie modellen](#regression)
 + [De interpretatie van modellen en de urgentie van het onderdeel](#explain-model)
 
 ## <a name="prerequisites"></a>Vereisten
@@ -77,9 +78,9 @@ De volgende metrische gegevens worden opgeslagen in elke uitvoerings herhaling v
 
 Gegevens|Beschrijving|Berekening|Extra para meters
 --|--|--|--
-AUC_Macro| AUC is het gebied onder de ontvanger van het besturings systeem. Macro is het reken kundige gemiddelde van de AUC voor elke klasse.  | [Berekening](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | Gem = "macro"|
-AUC_Micro| AUC is het gebied onder de ontvanger van het besturings systeem. Micro wordt wereld wijd berekend door de werkelijke positieven en onwaare positieven van elke klasse te combi neren.| [Berekening](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | gemiddelde = "micro"|
-AUC_Weighted  | AUC is het gebied onder de ontvanger van het besturings systeem. Gewogen is het reken kundige gemiddelde van de score voor elke klasse, gewogen op basis van het aantal werkelijke instanties in elke klasse.| [Berekening](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html)|gemiddeld = "gewogen"
+AUC_macro| AUC is het gebied onder de ontvanger van het besturings systeem. Macro is het reken kundige gemiddelde van de AUC voor elke klasse.  | [Berekening](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | Gem = "macro"|
+AUC_micro| AUC is het gebied onder de ontvanger van het besturings systeem. Micro wordt wereld wijd berekend door de werkelijke positieven en onwaare positieven van elke klasse te combi neren.| [Berekening](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | gemiddelde = "micro"|
+AUC_weighted  | AUC is het gebied onder de ontvanger van het besturings systeem. Gewogen is het reken kundige gemiddelde van de score voor elke klasse, gewogen op basis van het aantal werkelijke instanties in elke klasse.| [Berekening](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html)|gemiddeld = "gewogen"
 accuracy|Nauw keurigheid is het percentage voorspelde labels dat exact overeenkomt met de werkelijke labels. |[Berekening](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html) |Geen|
 average_precision_score_macro|De gemiddelde nauw keurigheid van een curve is een gebogen lijn die het gewogen gemiddelde van de nauw keurigheid van elke drempel waarde bereikt, waarbij de toename van de vorige drempel waarde die als gewicht wordt gebruikt, wordt ingetrokken. Macro is het reken kundige gemiddelde van de gemiddelde precisie Score van elke klasse.|[Berekening](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|Gem = "macro"|
 average_precision_score_micro|De gemiddelde nauw keurigheid van een curve is een gebogen lijn die het gewogen gemiddelde van de nauw keurigheid van elke drempel waarde bereikt, waarbij de toename van de vorige drempel waarde die als gewicht wordt gebruikt, wordt ingetrokken. Micro wordt wereld wijd berekend door de werkelijke positieven en de fout-positieven bij elke afsluit proces te combi neren.|[Berekening](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|gemiddelde = "micro"|
@@ -97,6 +98,12 @@ recall_score_macro|Intrekken is het percentage van de juiste label elementen van
 recall_score_micro|Intrekken is het percentage van de juiste label elementen van een bepaalde klasse. Micro wordt wereld wijd berekend door het totale aantal positieve, onwaare negatieven en foutieve positieven te tellen|[Berekening](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|gemiddelde = "micro"|
 recall_score_weighted|Intrekken is het percentage van de juiste label elementen van een bepaalde klasse. Gewogen is het reken kundige gemiddelde van intrekken voor elke klasse, gewogen op basis van het aantal werkelijke instanties in elke klasse.|[Berekening](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|gemiddeld = "gewogen"|
 weighted_accuracy|Gewogen nauw keurigheid is nauw keurig wanneer het gewicht dat aan elk voor beeld is gegeven, gelijk is aan het aandeel van de werkelijke instanties in dat voor beeld van de klasse waar.|[Berekening](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|sample_weight is een vector die gelijk is aan het aandeel van die klasse voor elk element in het doel|
+
+### <a name="binary-vs-multiclass-metrics"></a>Binaire en metrische gegevens met meer klassen
+
+AutoML onderscheidt zich niet tussen binaire en multimetrische metrische gegevens. Dezelfde validatie gegevens worden gerapporteerd, of een gegevensset twee klassen of meer dan twee klassen heeft. Sommige metrische gegevens zijn echter bedoeld voor de classificatie van verschillende klassen. Wanneer dit wordt toegepast op een binaire gegevensset, worden deze metrische gegevens niet als `true` klasse beschouwd, zoals u mogelijk verwacht. Metrische gegevens die duidelijk bedoeld zijn voor multi class, worden met `micro` ,, of geachtervoegseld `macro` `weighted` . Voor beelden zijn `average_precision_score` , `f1_score` ,, en `precision_score` `recall_score` `AUC` .
+
+Een concreet voor beeld maakt dit onderscheid duidelijker: in plaats van het terughalen te berekenen als, wordt het gemiddelde voor `tp / (tp + fn)` het terughalen van multi klassen ( `micro` , `macro` of `weighted` ) voor beide klassen van een gegevensset van een binaire classificatie geclassificeerd. Dit komt overeen met het berekenen van het intrekken van de `true` klasse en de `false` klasse afzonderlijk en vervolgens het gemiddelde van de twee.
 
 <a name="confusion-matrix"></a>
 
@@ -143,15 +150,13 @@ Afhankelijk van het doel van het bedrijfs probleem, kan de perfecte nauw keurigh
 ### <a name="roc-chart"></a>ROC diagram
 
 #### <a name="what-is-a-roc-chart"></a>Wat is een ROC diagram?
-Het besturings kenmerk van de ontvanger (of ROC) is een tekening van de juist geclassificeerde labels versus de onjuist geclassificeerde labels voor een bepaald model. De ROC-curve kan minder informatieve zijn bij het trainen van modellen op gegevens sets met een hoge afwijking, omdat er geen positieve labels worden weer gegeven.
+Het besturings kenmerk van de ontvanger (of ROC) is een tekening van de juist geclassificeerde labels versus de onjuist geclassificeerde labels voor een bepaald model. De ROC-curve kan minder informatieve zijn bij het trainen van modellen op gegevens sets met een hoge onevenwichtige klasse, aangezien de meerderheids klasse de bijdrage van minderheids klassen kan verdrinken.
 
 #### <a name="what-does-automated-ml-do-with-the-roc-chart"></a>Wat doet automatische ML in het schema ROC?
-Automated ML genereert de macro gemiddelde nauwkeurigheid-terughalen, gemiddelde Precision-intrekken en de uitroepen van de precisie die zijn gekoppeld aan alle klassen voor een model. 
-
-Macro: berekent de metrische gegevens onafhankelijk van elke klasse en neemt vervolgens het gemiddelde over, waarbij alle klassen gelijk worden behandeld. Met micro gemiddelde worden de bijdragen van alle klassen echter geaggregeerd om het gemiddelde te berekenen. Micro-Gem is de voor keur als er sprake is van een klasse-onevenwichtigheid in de gegevensset.
+U kunt het gebied onder het ROC diagram visualiseren als het aandeel van de juiste geclassificeerde steek proeven. Een ervaren gebruiker van de ROC grafiek kan er meer uitzien dan het gebied onder de curve en een Intuition ophalen voor de echte positieve en onjuiste positieve tarieven als functie van de classificatie drempel of beslissings grens.
 
 #### <a name="what-does-a-good-model-look-like"></a>Hoe ziet een goed model eruit?
-In het ideale geval heeft het model dichter bij 100% op ware positieve frequentie en dichter bij 0% ONWAAR positief. 
+Een ROC-curve die de linkerbovenhoek benadert met 100% True positief percentage en 0% false positief percentage is het beste model. Een wille keurig model wordt weer gegeven als een platte lijn van linksonder naar de rechter bovenhoek. Erger dan wille keurig zou dip onder de lijn y = x.
 
 ##### <a name="example-1-a-classification-model-with-low-true-labels-and-high-false-labels"></a>Voor beeld 1: een classificatie model met lage labels en hoge onwaar labels
 ![Classificatie model met lage labels en hoog/onwaar labels](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-roc-1.png)
@@ -161,7 +166,8 @@ In het ideale geval heeft het model dichter bij 100% op ware positieve frequenti
 <a name="lift-curve"></a>
 ### <a name="lift-chart"></a>Lift-grafiek
 #### <a name="what-is-a-lift-chart"></a>Wat is een lift diagram?
-Lift grafieken worden gebruikt om de prestaties van een classificatie model te evalueren. Er wordt weer gegeven hoe beter u kunt verwachten met het gegenereerde model, vergeleken met zonder model wat betreft nauw keurigheid.
+Lift grafieken worden gebruikt om de prestaties van classificatie modellen te evalueren. In een lift diagram ziet u hoe vaak een model beter presteert vergeleken met een wille keurig model. Dit geeft u een relatieve prestaties waarbij rekening wordt gehouden met het feit dat de classificatie moeilijker wordt naarmate u het aantal klassen verhoogt. Een wille keurig model heeft een onjuiste voor speld op een hogere Fractie van steek proeven uit een gegevensset met tien klassen vergeleken met een gegevensset met twee klassen.
+
 #### <a name="what-does-automated-ml-do-with-the-lift-chart"></a>Wat doet automatische ML met het lift diagram?
 U kunt de lift van het model dat automatisch is gebouwd met Azure Machine Learning, vergelijken met de basis lijn om de waarde van het betreffende model te bekijken.
 #### <a name="what-does-a-good-model-look-like"></a>Hoe ziet een goed model eruit?
@@ -171,10 +177,10 @@ U kunt de lift van het model dat automatisch is gebouwd met Azure Machine Learni
 ##### <a name="example-2-a-classification-model-that-performs-better-than-a-random-selection-model"></a>Voor beeld 2: een classificatie model dat beter presteert dan een wille keurig selectie model
 ![Een classificatie model dat beter presteert](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-lift-curve2.png)
 <a name="gains-curve"></a>
-### <a name="gains-chart"></a>Grafiek met toename
-#### <a name="what-is-a-gains-chart"></a>Wat is een winst diagram?
+### <a name="cumulative-gains-chart"></a>Grafiek met cumulatieve toename
+#### <a name="what-is-a-cumulative-gains-chart"></a>Wat is een cumulatief winst diagram?
 
-Een winst diagram evalueert de prestaties van een classificatie model door elk deel van de gegevens. Er wordt weer gegeven voor elk percentiel van de gegevensset, hoe beter u kunt verwachten dat ze worden uitgevoerd ten opzichte van een wille keurig selectie model.
+Een cumulatieve toename diagram evalueert de prestaties van een classificatie model door elk deel van de gegevens. In de grafiek wordt voor elk percentiel van de gegevensset weer gegeven hoeveel meer steek proeven nauw keurig zijn geclassificeerd.
 
 #### <a name="what-does-automated-ml-do-with-the-gains-chart"></a>Wat doet automatische ML in het organigram?
 Gebruik het diagram cumulatieve toename om u te helpen bij het kiezen van de indelings beperking met behulp van een percentage dat overeenkomt met een gewenste toename van het model. Deze informatie biedt een andere manier om de resultaten in de bijbehorende Lift-grafiek te bekijken.
@@ -195,7 +201,7 @@ Voor alle classificatie problemen kunt u de kalibratie lijn voor micro-Average, 
 
 Macro: berekent de metrische gegevens onafhankelijk van elke klasse en neemt vervolgens het gemiddelde over, waarbij alle klassen gelijk worden behandeld. Met micro gemiddelde worden de bijdragen van alle klassen echter geaggregeerd om het gemiddelde te berekenen. 
 #### <a name="what-does-a-good-model-look-like"></a>Hoe ziet een goed model eruit?
- Een goed gekalibreerd model wordt uitgelijnd met de lijn y = x, waar het redelijk is in de voor spellingen. Een model dat groter is dan wordt uitgelijnd met de lijn y = 0, waar de voorspelde kans aanwezig is, maar er is geen werkelijke kans. 
+Een goed gekalibreerd model wordt uitgelijnd met de lijn y = x, waarbij de kans wordt gedicteerd dat steek proeven bij elke klasse horen. Een over-vertrouwen model zal de waarschijnlijkheid voors pellen die bijna gelijk zijn aan nul en één, wat zelden duidelijk is over de klasse van elk voor beeld.
 
 
 ##### <a name="example-1-a-well-calibrated-model"></a>Voor beeld 1: een goed gekalibreerd model
@@ -249,11 +255,11 @@ Na elke uitvoering ziet u een voorspelde versus ware grafiek voor elk regressie 
 
 ### <a name="histogram-of-residuals-chart"></a><a name="histo"></a>Grafiek met het histogram van verschillen
 #### <a name="what-is-a-residuals-chart"></a>Wat is een verschillen diagram?
-Een residu vertegenwoordigt een waargenomen y: de voorspelde y. Als u een fout marge met een lage afwijking wilt weer geven, moet het histogram van de resten worden gevormd als klok curve, gecentreerd rond 0. 
+Een rest is het verschil tussen de voor spelling en de werkelijke waarde ( `y_pred - y_true` ). Als u een fout marge met een lage afwijking wilt weer geven, moet het histogram van de resten worden gevormd als klok curve, gecentreerd rond 0. 
 #### <a name="what-does-automated-ml-do-with-the-residuals-chart"></a>Wat doet automatische ML in het diagram verschillen?
 Automatische MILLILITERs bieden automatisch een grafiek van verschillen om de verdeling van fouten in de voor spellingen weer te geven.
 #### <a name="what-does-a-good-model-look-like"></a>Hoe ziet een goed model eruit?
-Een goed model heeft meestal een klok curve of fouten rond nul.
+Een goed model heeft meestal resten die nauw keurig rond nul zijn.
 
 ##### <a name="example-1-a-regression-model-with-bias-in-its-errors"></a>Voor beeld 1: een regressie model met afwijking van fouten
 ![SA-regressie model met afwijking van fouten](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression3.png)

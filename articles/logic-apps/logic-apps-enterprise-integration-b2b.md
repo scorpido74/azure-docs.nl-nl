@@ -8,11 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
-ms.openlocfilehash: b576fc99e2f203bb3d690a8135ee76cee26b3de8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2fd96777a5fe74d44aeed5f6de82e54b2663a024
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82792357"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090379"
 ---
 # <a name="receive-and-confirm--b2b-as2-messages-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>B2B AS2-berichten ontvangen en bevestigen met behulp van Azure Logic Apps en Enterprise Integration Pack
 
@@ -34,7 +35,7 @@ In dit artikel wordt beschreven hoe u een logische app maakt waarmee een HTTP-aa
 
   Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps?](../logic-apps/logic-apps-overview.md) en [Quick Start: uw eerste logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-* Een [integratie account](../logic-apps/logic-apps-enterprise-integration-accounts.md) dat is gekoppeld aan uw Azure-abonnement en is gekoppeld aan uw logische app. De logische app en het integratie account moeten zich op dezelfde locatie of Azure-regio bevinden.
+* Een [integratie account](./logic-apps-enterprise-integration-create-integration-account.md) dat is gekoppeld aan uw Azure-abonnement en is gekoppeld aan uw logische app. De logische app en het integratie account moeten zich op dezelfde locatie of Azure-regio bevinden.
 
 * Ten minste twee [handels partners](../logic-apps/logic-apps-enterprise-integration-partners.md) die u al hebt gedefinieerd in uw integratie account samen met [AS2-en X12-overeenkomsten](logic-apps-enterprise-integration-agreements.md) voor deze partners.
 
@@ -104,7 +105,7 @@ Als u de handels partner wilt melden dat het bericht is ontvangen, kunt u een an
 
 1. Selecteer **nieuwe stap**onder de actie **AS2 decoderen** .
 
-1. Onder **Kies een actie**selecteert u in het zoekvak **ingebouwde**. Typ `condition` in het zoekvak. Selecteer in de lijst **acties** de optie **voor waarde**.
+1. Onder **Kies een actie**selecteert u in het zoekvak **ingebouwde**. Typ `condition` in het zoekvak. Selecteer in de lijst **Acties** de optie **Voorwaarde**.
 
    ![De actie ' voor waarde ' toevoegen](./media/logic-apps-enterprise-integration-b2b/add-condition-action.png)
 

@@ -6,15 +6,16 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: 46989ed2468469443d4e91a1834bc20b12c25a1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb1af437fc663fcb95c768ec295862209a26064e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76908070"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090396"
 ---
 # <a name="view-and-create-queries-for-monitoring-and-tracking-in-azure-monitor-logs-for-azure-logic-apps"></a>Query's weer geven en maken voor het controleren en bijhouden van Azure Monitor logboeken voor Azure Logic Apps
 
-U kunt de onderliggende query's weer geven die de resultaten genereren uit [Azure monitor logboeken](../log-analytics/log-analytics-overview.md) en query's maken waarmee de resultaten worden gefilterd op basis van uw specifieke criteria. U kunt bijvoorbeeld berichten vinden op basis van een specifiek uitwisselings controle nummer. Query's gebruiken de [Kusto-query taal](https://aka.ms/LogAnalyticsLanguageReference), die u kunt bewerken als u andere resultaten wilt weer geven. Zie [Azure monitor-logboek query's](../azure-monitor/log-query/query-language.md)voor meer informatie.
+U kunt de onderliggende query's weer geven die de resultaten genereren uit [Azure monitor logboeken](../azure-monitor/log-query/log-query-overview.md) en query's maken waarmee de resultaten worden gefilterd op basis van uw specifieke criteria. U kunt bijvoorbeeld berichten vinden op basis van een specifiek uitwisselings controle nummer. Query's gebruiken de [Kusto-query taal](https://aka.ms/LogAnalyticsLanguageReference), die u kunt bewerken als u andere resultaten wilt weer geven. Zie [Azure monitor-logboek query's](../azure-monitor/log-query/query-language.md)voor meer informatie.
 
 ## <a name="prerequisites"></a>Vereisten
 

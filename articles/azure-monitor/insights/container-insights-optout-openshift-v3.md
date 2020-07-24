@@ -3,12 +3,12 @@ title: Stoppen met het bewaken van uw Azure Red Hat open Shift v3-cluster | Micr
 description: In dit artikel wordt beschreven hoe u de bewaking van uw Azure Red Hat open Shift-cluster kunt stoppen met Azure Monitor voor containers.
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: e1d3200af62ad185fa942fa2c8f7f3b4e6bfd89b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26c8a574894e117694545508174d0ce7d0f0f5ed
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82196190"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091212"
 ---
 # <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>Het bewaken van uw Azure Red Hat open Shift v3-cluster stoppen
 
@@ -22,7 +22,7 @@ Als u niet bekend bent met het concept van het implementeren van resources met b
 * [Resources implementeren met Resource Manager-sjablonen en Azure PowerShell](../../azure-resource-manager/templates/deploy-powershell.md)
 * [Resources implementeren met Resource Manager-sjablonen en Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
 
-Als u ervoor kiest om de Azure CLI te gebruiken, moet u de CLI eerst lokaal installeren en gebruiken. U moet de Azure CLI-versie 2.0.65 of hoger uitvoeren. Voer uit om uw versie te identificeren `az --version` . Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Als u ervoor kiest om de Azure CLI te gebruiken, moet u de CLI eerst lokaal installeren en gebruiken. U moet de Azure CLI-versie 2.0.65 of hoger uitvoeren. Voer uit om uw versie te identificeren `az --version` . Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](/cli/azure/install-azure-cli).
 
 ### <a name="create-template"></a>Sjabloon maken
 
@@ -128,4 +128,4 @@ ProvisioningState       : Succeeded
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als de werk ruimte alleen is gemaakt ter ondersteuning van het bewaken van het cluster en u deze niet meer nodig hebt, moet u deze hand matig verwijderen. Zie [een Azure log Analytics-werk ruimte verwijderen](../../log-analytics/log-analytics-manage-del-workspace.md)als u niet bekend bent met het verwijderen van een werk ruimte.
+Als de werk ruimte alleen is gemaakt ter ondersteuning van het bewaken van het cluster en u deze niet meer nodig hebt, moet u deze hand matig verwijderen. Zie [een Azure log Analytics-werk ruimte verwijderen](../platform/delete-workspace.md)als u niet bekend bent met het verwijderen van een werk ruimte.

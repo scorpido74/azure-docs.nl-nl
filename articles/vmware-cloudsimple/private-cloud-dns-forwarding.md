@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: aa2af4302613aad23bfd78b4883bbb46c5e5ddbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3571455db6ecc600bf0948087b40c281d72512ce
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76961125"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091246"
 ---
 # <a name="enable-cloudsimple-private-cloud-dns-servers-to-forward-dns-lookup-of-on-premises-resources-to-your-dns-servers"></a>DNS-servers voor CloudSimple-Privécloud inschakelen om DNS-Zoek opdrachten van on-premises resources naar uw DNS-servers door te sturen
 
@@ -31,7 +32,7 @@ Door de DNS-zoek opdracht voor uw on-premises DNS-server door te sturen, kunt u 
 Er moet een netwerk verbinding zijn tussen uw particuliere cloud netwerk en uw on-premises netwerk voor het werken met DNS-door sturen.  U kunt de netwerk verbinding instellen met behulp van:
 
 * [Verbinding maken tussen on-premises en CloudSimple met behulp van ExpressRoute](on-premises-connection.md)
-* [Een site-naar-site-VPN-gateway instellen](https://docs.microsoft.com/azure/vmware-cloudsimple/vpn-gateway#set-up-a-site-to-site-vpn-gateway)
+* [Een site-naar-site-VPN-gateway instellen](./vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)
 
 Voor een goede werking van DNS moet u Firewall poorten openen op deze verbinding.  Gebruikte poorten zijn TCP-poort 53 of UDP-poort 53.
 

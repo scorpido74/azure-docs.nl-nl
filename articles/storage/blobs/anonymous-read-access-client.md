@@ -6,21 +6,21 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/29/2020
+ms.date: 07/22/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: f4263d372b82779fe68a6a15cc7db61a31359e14
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: ac5fad935e5c37df3a8bd64189a59612eaf097aa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86209603"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091365"
 ---
 # <a name="access-public-containers-and-blobs-anonymously-with-net"></a>Anoniem toegang krijgen tot open bare containers en blobs met .NET
 
-Azure Storage ondersteunt anonieme, open bare Lees toegang voor containers en blobs. Clients hebben anoniem toegang tot open bare containers en blobs met behulp van de Azure Storage-client Bibliotheken, en met andere hulpprogram ma's en hulpprogram ma's die ondersteuning bieden voor gegevens toegang tot Azure Storage.
+Azure Storage ondersteunt optionele open bare Lees toegang voor containers en blobs. Clients hebben anoniem toegang tot open bare containers en blobs met behulp van de Azure Storage-client Bibliotheken, en met andere hulpprogram ma's en hulpprogram ma's die ondersteuning bieden voor gegevens toegang tot Azure Storage.
 
-In dit artikel wordt beschreven hoe u vanuit .NET toegang krijgt tot een open bare container of BLOB. Zie voor meer informatie over het configureren van anonieme lees toegang voor een container. Zie voor informatie over het voor komen van anonieme toegang tot een opslag account.
+In dit artikel wordt beschreven hoe u vanuit .NET toegang krijgt tot een open bare container of BLOB. Zie [anonieme open bare Lees toegang voor containers en blobs configureren](anonymous-read-access-configure.md)voor meer informatie over het configureren van anonieme lees toegang voor een container. Zie [anonieme open bare Lees toegang tot containers en blobs voor komen](anonymous-read-access-prevent.md)voor informatie over het voor komen van anonieme toegang tot een opslag account.
 
 Een client die toegang heeft tot containers en blobs anoniem kan gebruikmaken van constructors waarvoor geen referenties zijn vereist. In de volgende voor beelden ziet u een aantal verschillende manieren om te verwijzen naar containers en blobs anoniem.
 

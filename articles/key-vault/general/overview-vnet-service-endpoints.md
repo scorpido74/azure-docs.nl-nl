@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: eff74fca5ac21a7df431b55cd5c307d3e994010b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34e1b7e58a3ceb6c1c2d2b6bc4efd34ee93e9e4e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84792129"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090481"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Virtuele netwerk service-eind punten voor Azure Key Vault
 
@@ -39,7 +39,7 @@ Hier volgen enkele voor beelden van hoe u service-eind punten kunt gebruiken:
 
 Hier volgen de stappen die nodig zijn voor het configureren van firewalls en virtuele netwerken. Deze stappen zijn van toepassing, ongeacht of u Power shell, de Azure CLI of de Azure Portal gebruikt.
 
-1. [Key Vault logboek registratie](logging.md)inschakelen) om gedetailleerde toegangs logboeken te bekijken. Dit helpt in diagnostische gegevens, wanneer firewalls en regels voor virtuele netwerken toegang tot een sleutel kluis verhinderen. (Deze stap is optioneel, maar wordt nadrukkelijk aanbevolen.)
+1. Schakel [Key Vault logboek registratie](logging.md) in om gedetailleerde toegangs logboeken te bekijken. Dit helpt in diagnostische gegevens, wanneer firewalls en regels voor virtuele netwerken toegang tot een sleutel kluis verhinderen. (Deze stap is optioneel, maar wordt nadrukkelijk aanbevolen.)
 2. Schakel **service-eind punten in voor de sleutel kluis** voor virtuele netwerken en subnetten die doel zijn.
 3. Stel firewalls en regels voor virtuele netwerken in voor een sleutel kluis om de toegang tot de sleutel kluis te beperken op basis van specifieke virtuele netwerken, subnetten en IPv4-adresbereiken.
 4. Als deze sleutel kluis toegankelijk moet zijn voor vertrouwde micro soft-Services, schakelt u de optie voor het toestaan van **vertrouwde Azure-Services** om verbinding te maken met Key Vault.
@@ -80,7 +80,7 @@ Hier volgt een lijst met vertrouwde services die toegang mogen hebben tot een sl
 |Azure Event Hubs|[Toegang verlenen tot een sleutel kluis voor het scenario door de klant beheerde sleutels](https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key)|
 |Azure Service Bus|[Toegang verlenen tot een sleutel kluis voor het scenario door de klant beheerde sleutels](https://docs.microsoft.com/azure/service-bus-messaging/configure-customer-managed-key)|
 |Azure Import/Export| [Door de klant beheerde sleutels gebruiken in Azure Key Vault voor de import/export-service](https://docs.microsoft.com/azure/storage/common/storage-import-export-encryption-key-portal)
-|Azure Container Registry|[Register versleuteling met door de klant beheerde sleutels](../../container-registry/container-registry-customer-managed-keys.md)
+|Azure Container Registry|[Register versleuteling met door de klant beheerde sleutels](../../container-registry/container-registry-customer-managed-keys.md)<br><br/>[Artefacten overdragen naar een ander REGI ster](../../container-registry/container-registry-transfer-images.md)
 
 > [!NOTE]
 > U moet de relevante Key Vault toegangs beleid instellen zodat de bijbehorende services toegang krijgen tot Key Vault.

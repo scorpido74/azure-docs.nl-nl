@@ -1,20 +1,20 @@
 ---
 title: Versleuteling van gegevens in de vorm van een reserverings service
 titleSuffix: Azure Cognitive Services
-description: Versleuteling van de gegevens in de rest van de formulier herkenning.
+description: Micro soft biedt door micro soft beheerde coderings sleutels en kunt u ook uw Cognitive Services-abonnementen beheren met uw eigen sleutels, met de naam door de klant beheerde sleutels (CMK). In dit artikel wordt Inge gaan op de gegevens versleuteling van de formulier herkenner en hoe u CMK inschakelt en beheert.
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 07/10/2020
 ms.author: egeaney
-ms.openlocfilehash: b897de94ad8cdb628520f9386b076f762a5cc230
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cf2a6a96517d1c3d63989bc511957019f078cd42
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537949"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090872"
 ---
 # <a name="form-recognizer-encryption-of-data-at-rest"></a>Versleuteling van de gegevens in de rest van de formulier herkenning
 
@@ -31,5 +31,3 @@ Azure Form Recognizer versleutelt uw gegevens automatisch wanneer deze persisten
 
 * [Formulier voor het door de klant beheerde sleutel aanvraag](https://aka.ms/cogsvc-cmk)
 * [Meer informatie over Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
-
-

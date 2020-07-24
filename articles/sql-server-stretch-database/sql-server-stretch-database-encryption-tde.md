@@ -14,11 +14,12 @@ ms.author: blazem
 ms.reviewer: jroth
 manager: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 465338bb793ad7b4fc406e9d1c073b9dc0dc06c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d632d078db55696dad7bb05e72368b13610b5978
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74034016"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091416"
 ---
 # <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure"></a>Transparent Data Encryption (TDE) inschakelen voor Stretch Database in azure
 > [!div class="op_single_selector"]
@@ -29,16 +30,16 @@ ms.locfileid: "74034016"
 
 Met Transparent Data Encryption (TDE) kunt u zich beschermen tegen de dreiging van schadelijke activiteiten door real-time versleuteling en ontsleuteling van de data base, gekoppelde back-ups en transactie logboek bestanden in rust te brengen zonder dat de toepassing hoeft te worden gewijzigd.
 
-TDE versleutelt de opslag van een hele database met behulp van een symmetrische sleutel (de zogeheten databaseversleutelingssleutel). De database versleutelings sleutel wordt beveiligd door een ingebouwd server certificaat. Het ingebouwde server certificaat is uniek voor elke Azure-server. Micro soft roteert deze certificaten ten minste elke 90 dagen automatisch. Zie [transparent Data Encryption (TDE)]voor een algemene beschrijving van TDe.
+TDE versleutelt de opslag van een hele database met behulp van een symmetrische sleutel (de zogenaamde databaseversleutelingssleutel). De database versleutelings sleutel wordt beveiligd door een ingebouwd server certificaat. Het ingebouwde server certificaat is uniek voor elke Azure-server. Micro soft roteert deze certificaten ten minste elke 90 dagen automatisch. Zie [transparent Data Encryption (TDE)]voor een algemene beschrijving van TDe.
 
 ## <a name="enabling-encryption"></a>Versleuteling inschakelen
 Ga als volgt te werk om TDE in te scha kelen voor een Azure-Data Base waarin de gegevens worden opgeslagen die zijn gemigreerd vanuit een SQL Server Data Base met stretch-functionaliteit:
 
 1. Open de data base in de [Azure Portal](https://portal.azure.com)
 2. Klik op de Blade Data Base op de knop **instellingen**
-3. Selecteer de optie voor **transparante gegevens versleuteling**![][1]
-4. Selecteer de instelling **bij** en selecteer vervolgens **Opslaan** .
-   ![][2]
+3. Selecteer de scherm afbeelding van de optie **transparante gegevens versleuteling** ![ van het Azure Portal, met de Blade instellingen zichtbaar. In de sectie algemeen is de transparante gegevens versleuteling gemarkeerd.][1]
+4. Selecteer de **on** -instelling en selecteer **Save** 
+    ![ scherm opname van de Azure Portal opslaan, met de transparante Blade gegevens versleuteling zichtbaar. Gegevens versleuteling is ingeschakeld en de knop Opslaan is gemarkeerd.][2]
 
 ## <a name="disabling-encryption"></a>Versleuteling uitschakelen
 Ga als volgt te werk om TDE uit te scha kelen voor een Azure-Data Base waarin de gegevens worden opgeslagen die zijn gemigreerd vanuit een SQL Server Data Base met stretch-functionaliteit:

@@ -3,16 +3,16 @@ title: Versleuteling van back-upgegevens met door de klant beheerde sleutels
 description: Meer informatie over hoe u met Azure Backup uw back-upgegevens kunt versleutelen met behulp van door de klant beheerde sleutels (CMK).
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: ee64b9f2c6d260d91763cbe2d339640a9fab9967
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: c26466582cbe5a10610f6766160c2b0bc51a4828
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86172549"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091093"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Versleuteling van back-upgegevens met door de klant beheerde sleutels
 
-Met Azure Backup kunt u uw back-upgegevens versleutelen met door de klant beheerde sleutels (CMK) in plaats van door het platform beheerde sleutels te gebruiken. Dit is standaard ingeschakeld. De sleutels die worden gebruikt voor het versleutelen van de back-upgegevens, moeten worden opgeslagen in [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/).
+Met Azure Backup kunt u uw back-upgegevens versleutelen met door de klant beheerde sleutels (CMK) in plaats van door het platform beheerde sleutels te gebruiken. Dit is standaard ingeschakeld. De sleutels die worden gebruikt voor het versleutelen van de back-upgegevens, moeten worden opgeslagen in [Azure Key Vault](../key-vault/index.yml).
 
 De versleutelings sleutel die wordt gebruikt voor het versleutelen van back-ups is mogelijk anders dan die voor de bron. De gegevens worden beveiligd met behulp van een AES 256-gegevens versleutelings sleutel (DEK), die op zijn beurt wordt beveiligd met behulp van uw sleutels (KEK). Hiermee krijgt u volledige controle over de gegevens en de sleutels. Als u versleuteling wilt toestaan, moet de Recovery Services-kluis toegang krijgen tot de versleutelings sleutel in de Azure Key Vault. U kunt de sleutel wijzigen als en wanneer dat nodig is.
 
@@ -31,7 +31,7 @@ In dit artikel komen de volgende onderwerpen aan bod:
 
 - Deze functie **biedt momenteel geen ondersteuning voor het maken van back-ups met Mars agent**en u kunt mogelijk geen met CMK versleutelde kluis gebruiken. De MARS-agent maakt gebruik van een code ring op basis van een wachtwoordzin. Deze functie biedt ook geen ondersteuning voor het maken van back-ups van klassieke virtuele machines.
 
-- Deze functie is niet gerelateerd aan [Azure Disk Encryption](https://docs.microsoft.com/azure/security/fundamentals/azure-disk-encryption-vms-vmss), die gebruikmaakt van versleuteling op basis van een virtuele machine met behulp van BitLocker (voor Windows) en dm-crypt (voor Linux)
+- Deze functie is niet gerelateerd aan [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md), die gebruikmaakt van versleuteling op basis van een virtuele machine met behulp van BitLocker (voor Windows) en dm-crypt (voor Linux)
 
 - De Recovery Services kluis kan alleen worden versleuteld met sleutels die zijn opgeslagen in een Azure Key Vault, die zich in **dezelfde regio**bevinden. Daarnaast moeten sleutels alleen **RSA 2048-sleutels** zijn en de status **ingeschakeld** hebben.
 
@@ -92,7 +92,7 @@ U moet nu toestaan dat de Recovery Services kluis toegang heeft tot de Azure Key
 
 ### <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>Zacht verwijderen inschakelen en beveiliging opschonen op de Azure Key Vault
 
-U moet **voorlopig verwijderen en beveiliging opschonen inschakelen** op uw Azure Key Vault waarin uw versleutelings sleutel wordt opgeslagen. U kunt dit doen vanuit de Azure Key Vault-gebruikers interface, zoals hieronder wordt weer gegeven. (U kunt deze eigenschappen ook instellen tijdens het maken van de Key Vault). Meer informatie over deze Key Vault eigenschappen [vindt u hier](https://docs.microsoft.com/azure/key-vault/general/overview-soft-delete).
+U moet **voorlopig verwijderen en beveiliging opschonen inschakelen** op uw Azure Key Vault waarin uw versleutelings sleutel wordt opgeslagen. U kunt dit doen vanuit de Azure Key Vault-gebruikers interface, zoals hieronder wordt weer gegeven. (U kunt deze eigenschappen ook instellen tijdens het maken van de Key Vault). Meer informatie over deze Key Vault eigenschappen [vindt u hier](../key-vault/general/overview-soft-delete.md).
 
 ![Voorlopig verwijderen en beveiliging opschonen inschakelen](./media/encryption-at-rest-with-cmk/soft-delete-purge-protection.png)
 
@@ -193,13 +193,13 @@ Voordat u kunt door gaan met het configureren van de beveiliging, wordt u aanger
 >
 >Als alle bovenstaande stappen zijn bevestigd, gaat u alleen verder met het configureren van back-up.
 
-Het proces voor het configureren en uitvoeren van back-ups op een Recovery Services kluis die is versleuteld met door de klant beheerde sleutels is hetzelfde als voor een kluis die door het platform beheerde sleutels gebruikt, zonder **wijzigingen in de ervaring**. Dit geldt voor [back-ups van virtuele Azure-machines](https://docs.microsoft.com/azure/backup/quick-backup-vm-portal) en voor het maken van een back-up van werk belastingen die worden uitgevoerd in een virtuele machine (bijvoorbeeld [SAP Hana](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db), [SQL Server](https://docs.microsoft.com/azure/backup/tutorial-sql-backup) data bases).
+Het proces voor het configureren en uitvoeren van back-ups op een Recovery Services kluis die is versleuteld met door de klant beheerde sleutels is hetzelfde als voor een kluis die door het platform beheerde sleutels gebruikt, zonder **wijzigingen in de ervaring**. Dit geldt voor [back-ups van virtuele Azure-machines](./quick-backup-vm-portal.md) en voor het maken van een back-up van werk belastingen die worden uitgevoerd in een virtuele machine (bijvoorbeeld [SAP Hana](./tutorial-backup-sap-hana-db.md), [SQL Server](./tutorial-sql-backup.md) data bases).
 
 ## <a name="restoring-data-from-backup"></a>Gegevens terugzetten vanuit een back-up
 
 ### <a name="vm-backup"></a>VM-back-up
 
-Gegevens die zijn opgeslagen in de Recovery Services kluis, kunnen worden hersteld volgens de stappen die [hier](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms)worden beschreven. Bij het herstellen van een Recovery Services kluis die is versleuteld met door de klant beheerde sleutels, kunt u ervoor kiezen om de herstelde gegevens te versleutelen met een schijf Encryption set (DES).
+Gegevens die zijn opgeslagen in de Recovery Services kluis, kunnen worden hersteld volgens de stappen die [hier](./backup-azure-arm-restore-vms.md)worden beschreven. Bij het herstellen van een Recovery Services kluis die is versleuteld met door de klant beheerde sleutels, kunt u ervoor kiezen om de herstelde gegevens te versleutelen met een schijf Encryption set (DES).
 
 #### <a name="restoring-vm--disk"></a>VM/schijf herstellen
 
